@@ -1,0 +1,364 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[kluwer]{article (Kluwer)}
+# Textclass definition file for kluwer.cls
+# For Kluwer Academic publications:
+# Astrophysics & Space Science, Solar Physics, etc.
+# 
+# Panayotis "PAP" Papasotiriou <papasot@physics.upatras.gr>
+# (based on the first version kindly offered by
+# Peter "Pit" Sütterlin <P.Suetterlin@astro.uu.nl>)
+#
+# 2001-06-15  First version from scratch (due to "Pit").
+# 2001-09-09  Enhanced version (due to "PAP").
+#             Need of ERT is considerably minimized.
+
+# General textclass parameters
+Columns                 1
+Sides                   2
+MaxCounter              Counter_Section
+SecNumDepth             4
+TocDepth                0
+PageStyle               Plain
+
+DefaultFont
+  Family                Roman
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 None
+EndFont
+
+Preamble
+EndPreamble
+
+# Standard style definition
+Style Standard
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             MM
+  ParSkip               0.4
+  Align                 Block
+  AlignPossible         Block, Left, Right, Center
+  LabelType             No_Label
+End
+
+Input stdsections.inc
+NoStyle Chapter
+NoStyle Part
+Input stdlists.inc
+
+# Section style definition
+Style Section
+  Align                 Center
+  AlignPossible         Center
+  Font 
+    Size                Large
+  EndFont
+End
+
+# Subsection style definition
+Style Subsection
+  Font 
+    Series              Medium
+    Size                Normal
+    Shape               SmallCaps
+  EndFont
+End
+
+# Subsubection style definition
+Style Subsubsection
+  Font 
+    Series              Medium
+    Size                Normal
+    Shape               Italic
+  EndFont
+End
+
+# Paragraph style definition
+Style Paragraph
+  Font 
+    Series              Medium
+    Size                Normal
+    Shape               Italic
+  EndFont
+End
+
+# Subparagraph style definition
+Style Subparagraph
+  LeftMargin            ""
+  NextNoIndent          1
+  Font 
+    Series              Medium
+    Size                Normal
+    Shape               Italic
+  EndFont
+End
+
+Input stdlayouts.inc
+NoStyle Verse
+NoStyle Caption
+
+# Title style definition
+Style Title
+  Margin                Static
+  LatexType             Command
+  LatexName             title
+  ParSkip               0.4
+  ItemSep               0
+  TopSep                0
+  BottomSep             0
+  ParSep                1
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+  Font 
+    Size                Largest
+  EndFont
+End
+
+# Subtitle style definition
+Style Subtitle
+  Margin                Static
+  LatexType             Command
+  LatexName             subtitle
+  NextNoIndent          1
+  ParSkip               0.4
+  ItemSep               0
+  TopSep                0.2
+  BottomSep             1.3
+  ParSep                1
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+  Font 
+    Family              Roman
+    Size                Larger
+    Shape               Italic
+  EndFont
+End
+
+# Date style definition
+Style Date
+  Margin                Dynamic
+  LatexType             Command
+  LatexName             date
+  ParSkip               0.4
+  TopSep                1
+  BottomSep             0.5
+  ParSep                1
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+  Font 
+    Size                Large
+  EndFont
+End
+
+# Author style definition
+Style Author
+  Margin                Static
+  LatexType             Command
+  LatexName             author
+  ParSkip               0.4
+  TopSep                1
+  BottomSep             0
+  ParSep                0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+  Font 
+    Size                Normal
+    Series              Bold
+  EndFont
+End
+
+# Address style definition
+Style Address
+  Margin                Static
+  LatexType             Command
+  LatexName             institute
+  ParSkip               0.4
+  TopSep                0.2
+  BottomSep             0
+  Align                 Left
+  LabelType             No_Label
+  Font 
+    Size                normal
+    Shape               Italic
+  EndFont
+End
+
+# AddressForOffprints style definition
+Style AddressForOffprints
+  LatexType             Environment
+  LatexName             ao
+  NextNoIndent          1
+  Margin                First_Dynamic
+  Align                 Block
+  AlignPossible         Block
+  TopSep                1
+  LabelType             Static
+  LabelString           "Address for Offprints:"
+  LabelSep              M
+  LabelFont 
+    Size                Small
+    Shape               Italic
+    Color               Red
+  EndFont
+End
+
+# RunningTitle style definition
+Style RunningTitle
+  LatexType             Command
+  LatexName             runningtitle
+  NextNoIndent          1
+  Margin                Dynamic
+  Align                 Left
+  AlignPossible         Left
+  TopSep                1
+  LabelType             Static
+  LabelString           "Running title:"
+  LabelSep              M
+  Font 
+    Size                Small
+    Series              Bold
+  EndFont
+  LabelFont 
+    Series              Medium
+    Shape               Italic
+    Color               Red
+  EndFont
+End 
+
+# RunningAuthor style definition
+Style RunningAuthor
+  Margin                Dynamic
+  LatexType             Command
+  LatexName             runningauthor
+  NextNoIndent          1
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString           "Running author:"
+  LabelSep              M
+  Font 
+    Size                Small
+    Series              Bold
+  EndFont
+  LabelFont 
+    Series              Medium
+    Shape               Italic
+    Color               Red
+  EndFont
+End 
+
+# Abstract style definition
+Style Abstract 
+  Margin                First_Dynamic
+  LatexType             Environment
+  LatexName             abstract
+  NextNoIndent          1
+  ParIndent             MM
+  ItemSep               0
+  TopSep                1
+  BottomSep             1
+  ParSep                0
+  Align                 Block
+  AlignPossible         Block
+  LabelType             Static
+  LabelString           Abstract.
+  LabelSep              M
+  Font 
+    Size                Small
+  EndFont
+  LabelFont 
+    Series              Bold
+  EndFont
+End 
+
+# Keywords style definition
+Style Keywords
+  Margin                First_Dynamic
+  LatexType             Command
+  LatexName             keywords
+  NextNoIndent          1
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString           "Keywords:"
+  LabelSep              M
+  Font 
+    Size                Small
+  EndFont
+  LabelFont 
+    Series              Bold
+    Size                Small
+  EndFont
+End 
+
+# Acknowledgements style definition
+Style Acknowledgements
+  Margin                Static
+  LatexType             Environment
+  LatexName             acknowledgements
+  NextNoIndent          1
+  ItemSep               0
+  TopSep                1
+  BottomSep             1
+  ParSep                0
+  Align                 Block
+  AlignPossible         Block
+  LabelType             Centered_Top_Environment
+  LabelString           Acknowledgements
+  LabelBottomSep        0.5
+  LabelFont 
+    Series              Bold
+    Size                Large
+  EndFont
+End
+
+# Appendix style definition
+Style Appendix
+  Margin                Static
+  LatexType             Command
+  LatexName             appendix
+  KeepEmpty             1
+  ParSkip               0.4
+  ItemSep               0
+  TopSep                0
+  BottomSep             0
+  ParSep                1
+#  Align                 Block
+#  AlignPossible         Block, Left, Right, Center
+  LabelType             Centered_Top_Environment
+  LabelString		Appendix
+  Font 
+    Series              Bold
+    Size                Large
+  EndFont
+End
+
+# References style definition
+Style References
+  Margin                First_Dynamic	
+  LatexType             Item_Environment	
+  LatexName             thebibliography
+  NextNoIndent          1
+  LeftMargin            MM
+  ParSkip               0.4
+  ItemSep               0
+  TopSep                0.7
+  BottomSep             0.7
+  ParSep                0.5
+  LabelType             Bibliography
+  LabelString           References
+  LabelBottomSep        0.7
+  Align                 Block
+  AlignPossible         Block, Left, Right, Center
+  LabelFont 
+    Family  		Roman
+    Size		Normal
+    Series		Bold
+  EndFont
+End

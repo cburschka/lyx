@@ -1,0 +1,195 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass kluwer
+\language english
+\inputencoding default
+\fontscheme default
+\graphics default
+\float_placement t
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 4
+\tocdepth 0
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{article}
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{opening}
+\layout Title
+
+<Title of the article>
+\layout Subtitle
+
+<Subtitle of the article(if needed)>
+\layout Author
+
+<First-1>.<Middle-1>.
+
+\latex latex 
+ 
+\backslash 
+surname{
+\latex default 
+<Surname-1>
+\latex latex 
+}
+\backslash 
+email{
+\latex default 
+<e-mail-1>
+\latex latex 
+}
+\latex default 
+,
+\newline 
+<First-2>.<Middle-2>.
+
+\latex latex 
+ 
+\backslash 
+surname{
+\latex default 
+<Surname-2>
+\latex latex 
+}
+\backslash 
+email{
+\latex default 
+<e-mail-2>
+\latex latex 
+}
+\latex default 
+ and
+\newline 
+<First-3>.<Middle-3>.
+
+\latex latex 
+ 
+\backslash 
+surname{
+\latex default 
+<Surname-3>
+\latex latex 
+}
+\backslash 
+email{
+\latex default 
+<e-mail-3>
+\latex latex 
+}
+\latex default 
+.
+\layout Address
+
+<Institution and Address>
+\layout RunningTitle
+
+<Running title of the article (printed on top of odd pages)>
+\layout RunningAuthor
+
+<Running author (printed on top of even pages)>
+\layout Abstract
+
+<abstract text>
+\layout Keywords
+
+<Journal approved keywords>
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{opening}
+\layout Section
+
+Introduction
+\layout Standard
+
+<intro text>
+\layout Section
+
+The theory
+\layout Standard
+
+<theory text; a citation reference is included 
+\begin_inset LatexCommand \cite{PaperI}
+
+\end_inset 
+
+>
+\layout Section
+
+The numerical method
+\layout Standard
+
+<numerical method text>
+\layout Section
+
+Results and discussion
+\layout Standard
+
+<results and discussion text>
+\layout Acknowledgements
+
+<acknowledgment text>
+\layout Appendix
+
+\layout Section
+
+An appendix section
+\layout Standard
+
+<appendix text>
+\layout Section
+
+Another appendix section
+\layout Standard
+
+<another appendix text>
+\layout References
+\bibitem [\protect\citeauthoryear{Surname-1 et al.}{year}]{PaperI}
+
+Surname-1, First-1, Middle-1., Surname-2, First-2, Middle-2.
+ and Surname-3, First-3, Middle-3.: year, 
+\emph on 
+Journal abbreviation
+\emph default 
+ 
+\series bold 
+volume
+\series default 
+, page.
+\layout AddressForOffprints
+
+<Address for offprints, printed at the end of the article>
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{article}
+\the_end
