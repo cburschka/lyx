@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX ??\n"
-"POT-Creation-Date: 2000-10-24 20:46+0200\n"
+"POT-Creation-Date: 2000-10-26 20:27+0200\n"
 "PO-Revision-Date: 2000-05-07 17:14+2\n"
 "Last-Translator: anon <anon@anon>\n"
 "Language-Team: he <he@li.org>\n"
@@ -181,7 +181,7 @@ msgstr "!האיגש"
 msgid "Unable to open template"
 msgstr "תינבת חותפל חילצמ אל"
 
-#: src/bufferlist.C:521 src/lyxfunc.C:3125 src/lyxfunc.C:3289
+#: src/bufferlist.C:521 src/lyxfunc.C:3124 src/lyxfunc.C:3287
 msgid "Document is already open:"
 msgstr ""
 
@@ -489,12 +489,11 @@ msgid "Credits"
 msgstr ""
 
 #: src/credits_form.C:19 src/form1.C:43 src/form1.C:117 src/form1.C:261
-#: src/frontends/xforms/form_citation.C:59
-#: src/frontends/xforms/form_copyright.C:37
+#: src/frontends/xforms/form_citation.C:62
 #: src/frontends/xforms/form_document.C:40
 #: src/frontends/xforms/form_index.C:37
 #: src/frontends/xforms/form_paragraph.C:251
-#: src/frontends/xforms/form_print.C:56 src/frontends/xforms/form_ref.C:54
+#: src/frontends/xforms/form_print.C:56 src/frontends/xforms/form_ref.C:57
 #: src/frontends/xforms/form_tabular_create.C:28
 #: src/frontends/xforms/form_url.C:48 src/insets/form_graphics.C:62
 #: src/insets/insetbib.C:60 src/insets/insetinclude.C:52 src/lyx.C:47
@@ -521,7 +520,7 @@ msgid ""
 "because of class conversion from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:477 src/insets/insettext.C:933 src/text.C:3905
+#: src/CutAndPaste.C:477 src/insets/insettext.C:932 src/text.C:3905
 #: src/text.C:3913 src/text.C:3940 src/text2.C:2200 src/text2.C:2313
 msgid "Impossible operation"
 msgstr "תירשפא יתלב הלועפ"
@@ -531,7 +530,7 @@ msgid "Can't paste float into float!"
 msgstr "!ףצ םצע ךותל ףצ םצע קיבדהל לוכי אל"
 
 #: src/CutAndPaste.C:479 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1472 src/insets/insettext.C:935 src/text.C:3907
+#: src/insets/insettabular.C:1472 src/insets/insettext.C:934 src/text.C:3907
 #: src/text.C:3915 src/text.C:3942
 msgid "Sorry."
 msgstr ""
@@ -1976,7 +1975,6 @@ msgid "Myref"
 msgstr ""
 
 #: src/ext_l10n.h:337 src/frontends/gnome/FormUrl.C:119
-#: src/frontends/xforms/form_url.C:33
 msgid "Name"
 msgstr ""
 
@@ -2623,7 +2621,6 @@ msgstr ""
 #. tooltips
 #: src/ext_l10n.h:486 src/frontends/gnome/FormUrl.C:117
 #: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
-#: src/frontends/xforms/form_url.C:28
 #, fuzzy
 msgid "URL"
 msgstr "|u URL"
@@ -2698,7 +2695,7 @@ msgstr ""
 msgid "journal"
 msgstr ""
 
-#: src/ext_l10n.h:504 src/frontends/xforms/form_preferences.C:255
+#: src/ext_l10n.h:504 src/frontends/xforms/form_preferences.C:418
 msgid "landscape"
 msgstr ""
 
@@ -2983,10 +2980,12 @@ msgstr ""
 
 #: src/form1.C:114 src/frontends/xforms/form_document.C:36
 #: src/frontends/xforms/form_document.C:37
+#: src/frontends/xforms/form_graphics.C:52
+#: src/frontends/xforms/form_graphics.C:53
 #: src/frontends/xforms/form_paragraph.C:247
 #: src/frontends/xforms/form_paragraph.C:248
-#: src/frontends/xforms/form_preferences.C:375
-#: src/frontends/xforms/form_preferences.C:376
+#: src/frontends/xforms/form_preferences.C:30
+#: src/frontends/xforms/form_preferences.C:31
 #: src/frontends/xforms/form_print.C:59 src/frontends/xforms/form_print.C:60
 #: src/frontends/xforms/form_tabular_create.C:31
 #: src/frontends/xforms/form_tabular_create.C:32 src/insets/form_graphics.C:56
@@ -2997,15 +2996,8 @@ msgstr ""
 msgid "Apply|#A"
 msgstr "a םושיי|#A"
 
-#: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_document.C:32
-#: src/frontends/xforms/form_document.C:33
-#: src/frontends/xforms/form_paragraph.C:243
-#: src/frontends/xforms/form_paragraph.C:244
-#: src/frontends/xforms/form_preferences.C:379
-#: src/frontends/xforms/form_preferences.C:380
-#: src/frontends/xforms/form_print.C:63 src/frontends/xforms/form_print.C:64
-#: src/frontends/xforms/form_tabular_create.C:35
-#: src/frontends/xforms/form_tabular_create.C:36 src/insets/form_graphics.C:68
+#: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:55
+#: src/frontends/xforms/form_graphics.C:56 src/insets/form_graphics.C:68
 #: src/insets/form_graphics.C:69 src/insets/insetbib.C:63
 #: src/insets/insetbib.C:64 src/insets/insetinclude.C:55
 #: src/insets/insetinclude.C:56 src/layout_forms.C:98 src/lyx.C:53
@@ -3218,7 +3210,6 @@ msgstr ""
 
 #: src/frontends/gnome/FormCitation.C:549
 #: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:53
-#: src/frontends/xforms/form_citation.C:57
 msgid "Text after"
 msgstr ""
 
@@ -3295,7 +3286,6 @@ msgstr ""
 #. goto button labels
 #: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:107
 #: src/frontends/xforms/FormRef.C:280 src/frontends/xforms/FormRef.C:302
-#: src/frontends/xforms/form_ref.C:50
 #, fuzzy
 msgid "Goto reference"
 msgstr "םירויא תפסוה"
@@ -3343,7 +3333,7 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-#: src/frontends/gnome/FormRef.C:301 src/frontends/xforms/form_ref.C:40
+#: src/frontends/gnome/FormRef.C:301
 msgid "Name:"
 msgstr ""
 
@@ -3381,7 +3371,7 @@ msgstr ""
 msgid "*** No Document ***"
 msgstr ""
 
-#: src/frontends/gnome/FormUrl.C:91 src/frontends/xforms/form_url.C:38
+#: src/frontends/gnome/FormUrl.C:91
 msgid "HTML type"
 msgstr ""
 
@@ -3478,7 +3468,7 @@ msgid ""
 msgstr ""
 
 #: src/frontends/kde/copyrightdlgdata.C:95
-#: src/frontends/xforms/form_copyright.C:42
+#: src/frontends/xforms/form_copyright.C:43
 msgid ""
 "LyX is distributed in the hope that it will\n"
 "be useful, but WITHOUT ANY WARRANTY;\n"
@@ -3562,7 +3552,6 @@ msgstr "םיניינעה ןכותב הפצ"
 #: src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
 #: src/frontends/xforms/FormBase.h:125 src/frontends/xforms/FormBase.h:142
 #: src/frontends/xforms/FormInset.h:30 src/frontends/xforms/FormInset.h:54
-#: src/frontends/xforms/form_error.C:30 src/frontends/xforms/form_toc.C:31
 #: src/layout_forms.C:52 src/log_form.C:21 src/lyx_sendfax.C:109
 #: src/lyxvc.C:262 src/mathed/math_forms.C:177
 msgid "Close"
@@ -3571,9 +3560,7 @@ msgstr ""
 #: src/LyXAction.C:155 src/frontends/kde/FormUrl.C:93
 #: src/frontends/xforms/FormBase.h:126 src/frontends/xforms/FormBase.h:143
 #: src/frontends/xforms/FormInset.h:31 src/frontends/xforms/FormInset.h:55
-#: src/frontends/xforms/form_citation.C:62
-#: src/frontends/xforms/form_index.C:32 src/frontends/xforms/form_ref.C:57
-#: src/frontends/xforms/form_url.C:43 src/lyxfunc.C:849
+#: src/lyxfunc.C:849
 msgid "Cancel"
 msgstr "לוטיב"
 
@@ -3692,8 +3679,7 @@ msgstr ""
 msgid "Alignment"
 msgstr ""
 
-#: src/frontends/kde/paraextradlgdata.C:74 src/frontends/xforms/form_toc.C:40
-#: src/lyx.C:56
+#: src/frontends/kde/paraextradlgdata.C:74 src/lyx.C:56
 msgid "Type"
 msgstr ""
 
@@ -3946,7 +3932,7 @@ msgstr ""
 msgid "Reference :"
 msgstr "םירויא תפסוה"
 
-#: src/frontends/kde/refdlg.C:56 src/frontends/xforms/form_ref.C:36
+#: src/frontends/kde/refdlg.C:56
 #, fuzzy
 msgid "Sort"
 msgstr "!רעטצמ"
@@ -4041,22 +4027,46 @@ msgid "Info"
 msgstr ""
 
 #: src/frontends/xforms/form_citation.C:52
+#: src/frontends/xforms/form_citation.C:53
 #, fuzzy
-msgid "Citation style"
+msgid "Citation style|#s"
 msgstr "לדחמ-תרירב ןפוג ןונגס"
 
-#: src/frontends/xforms/form_citation.C:55
-msgid "Text before"
+#: src/frontends/xforms/form_citation.C:56
+#: src/frontends/xforms/form_citation.C:57
+msgid "Text before|#b"
 msgstr ""
 
-#: src/frontends/xforms/form_citation.C:63
-#: src/frontends/xforms/form_index.C:33 src/frontends/xforms/form_url.C:44
-msgid "^["
+#: src/frontends/xforms/form_citation.C:59
+#: src/frontends/xforms/form_citation.C:60
+msgid "Text after|#a"
 msgstr ""
+
+#: src/frontends/xforms/form_citation.C:65
+#: src/frontends/xforms/form_citation.C:66
+#: src/frontends/xforms/form_document.C:32
+#: src/frontends/xforms/form_document.C:33
+#: src/frontends/xforms/form_index.C:32 src/frontends/xforms/form_index.C:33
+#: src/frontends/xforms/form_ref.C:60 src/frontends/xforms/form_ref.C:61
+#: src/frontends/xforms/form_tabular_create.C:35
+#: src/frontends/xforms/form_tabular_create.C:36
+#: src/frontends/xforms/form_url.C:43 src/frontends/xforms/form_url.C:44
+#: src/lyx.C:110
+#, fuzzy
+msgid "Cancel|#C^["
+msgstr "לוטיב|^["
 
 #: src/frontends/xforms/FormCopyright.C:19
 msgid "Copyright and Warranty"
 msgstr ""
+
+#: src/frontends/xforms/form_copyright.C:37
+#: src/frontends/xforms/form_copyright.C:38
+#: src/frontends/xforms/form_error.C:30 src/frontends/xforms/form_error.C:31
+#: src/frontends/xforms/form_toc.C:31 src/frontends/xforms/form_toc.C:32
+#, fuzzy
+msgid "Close|#C^[^M"
+msgstr "הריגס"
 
 #: src/frontends/xforms/FormDocument.C:48
 msgid "Document Layout"
@@ -4093,8 +4103,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:255 src/insets/figinset.C:1939
-#: src/insets/insetexternal.C:129 src/lyxfunc.C:3156 src/lyxfunc.C:3233
-#: src/lyxfunc.C:3365
+#: src/insets/insetexternal.C:129 src/lyxfunc.C:3155 src/lyxfunc.C:3231
+#: src/lyxfunc.C:3363
 msgid "Document"
 msgstr "ךמסמ"
 
@@ -4181,8 +4191,8 @@ msgstr ""
 #: src/frontends/xforms/form_document.C:46
 #: src/frontends/xforms/form_paragraph.C:254
 #: src/frontends/xforms/form_paragraph.C:255
-#: src/frontends/xforms/form_preferences.C:388
-#: src/frontends/xforms/form_preferences.C:389
+#: src/frontends/xforms/form_preferences.C:41
+#: src/frontends/xforms/form_preferences.C:42
 #, fuzzy
 msgid "Restore|#R"
 msgstr "r ךופה רדס|#R"
@@ -4278,9 +4288,9 @@ msgid "Separation"
 msgstr "תואקספ תדרפה"
 
 #: src/frontends/xforms/form_document.C:196
-#: src/frontends/xforms/form_tabular_create.C:39
-msgid "Columns"
-msgstr ""
+#, fuzzy
+msgid "Page cols"
+msgstr "םיפד:"
 
 #: src/frontends/xforms/form_document.C:199
 msgid "Sides"
@@ -4493,29 +4503,19 @@ msgstr ""
 
 #: src/frontends/xforms/form_graphics.C:32
 #: src/frontends/xforms/form_graphics.C:33
-msgid "Graphics File|F#F"
-msgstr ""
+#, fuzzy
+msgid "Graphics File|#F"
+msgstr "f ץבוק|#F"
 
 #: src/frontends/xforms/form_graphics.C:35
-#: src/frontends/xforms/form_graphics.C:36
-msgid "Browse|B#B"
+#: src/frontends/xforms/form_graphics.C:36 src/insets/insetinclude.C:45
+#: src/insets/insetinclude.C:46
+msgid "Browse|#B"
 msgstr ""
 
 #: src/frontends/xforms/form_graphics.C:50
 msgid "Ok"
 msgstr ""
-
-#: src/frontends/xforms/form_graphics.C:52
-#: src/frontends/xforms/form_graphics.C:53
-#, fuzzy
-msgid "Apply|A#A"
-msgstr "a םושיי|#A"
-
-#: src/frontends/xforms/form_graphics.C:55
-#: src/frontends/xforms/form_graphics.C:56
-#, fuzzy
-msgid "Cancel|C#C^["
-msgstr "לוטיב|^["
 
 #: src/frontends/xforms/form_graphics.C:60
 #: src/frontends/xforms/form_graphics.C:75
@@ -4544,48 +4544,56 @@ msgid "% of Column"
 msgstr "תודומע "
 
 #: src/frontends/xforms/form_graphics.C:88
-msgid "in Monochrome"
-msgstr ""
-
-#: src/frontends/xforms/form_graphics.C:90
-msgid "in Grayscale"
+#: src/frontends/xforms/form_graphics.C:89
+msgid "in Monochrome|#M"
 msgstr ""
 
 #: src/frontends/xforms/form_graphics.C:91
-msgid "in Color"
+#: src/frontends/xforms/form_graphics.C:92
+msgid "in Grayscale|#G"
 msgstr ""
 
-#: src/frontends/xforms/form_graphics.C:92
+#: src/frontends/xforms/form_graphics.C:93
+#: src/frontends/xforms/form_graphics.C:94
 #, fuzzy
-msgid "Don't display"
-msgstr "[ת/גצומ אל]"
+msgid "in Color|#C"
+msgstr "הריגס"
 
 #: src/frontends/xforms/form_graphics.C:95
+#: src/frontends/xforms/form_graphics.C:96
+#, fuzzy
+msgid "Don't display|#D"
+msgstr "[ת/גצומ אל]"
+
+#: src/frontends/xforms/form_graphics.C:99
 #, fuzzy
 msgid "Rotate"
 msgstr "בוביס"
 
-#: src/frontends/xforms/form_graphics.C:96
+#: src/frontends/xforms/form_graphics.C:100
+#: src/frontends/xforms/form_graphics.C:101
 #, fuzzy
-msgid "Angle"
-msgstr "חוויר"
+msgid "Angle|#A"
+msgstr "תיווז"
 
-#: src/frontends/xforms/form_graphics.C:98
+#: src/frontends/xforms/form_graphics.C:103
+#: src/frontends/xforms/form_graphics.C:104
 #, fuzzy
-msgid "Inline Figure"
+msgid "Inline Figure|#I"
 msgstr "םירויא תפסוה"
 
-#: src/frontends/xforms/form_graphics.C:102
-#: src/frontends/xforms/form_graphics.C:103
-msgid "Subcaption|S#S"
-msgstr ""
+#: src/frontends/xforms/form_graphics.C:108
+#: src/frontends/xforms/form_graphics.C:109
+#, fuzzy
+msgid "Subcaption|#S"
+msgstr "ןוויכ"
 
 #: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
 msgid "Index"
 msgstr ""
 
 #: src/frontends/xforms/form_index.C:29
-msgid "Keyword|#K#k"
+msgid "Keyword|#K"
 msgstr ""
 
 #: src/frontends/xforms/FormParagraph.C:33
@@ -4600,8 +4608,8 @@ msgstr ""
 
 #. now make them fit together
 #: src/frontends/xforms/FormParagraph.C:119
-#: src/frontends/xforms/FormPreferences.C:183
-#: src/frontends/xforms/FormPreferences.C:197
+#: src/frontends/xforms/FormPreferences.C:202
+#: src/frontends/xforms/FormPreferences.C:216
 msgid "General"
 msgstr ""
 
@@ -4672,10 +4680,10 @@ msgstr ""
 
 #: src/frontends/xforms/form_paragraph.C:83
 #: src/frontends/xforms/form_paragraph.C:84
-#: src/frontends/xforms/form_tabular.C:193
-#: src/frontends/xforms/form_tabular.C:194
-#: src/frontends/xforms/form_tabular.C:301
-#: src/frontends/xforms/form_tabular.C:302
+#: src/frontends/xforms/form_tabular.C:158
+#: src/frontends/xforms/form_tabular.C:159
+#: src/frontends/xforms/form_tabular.C:248
+#: src/frontends/xforms/form_tabular.C:249
 msgid "Center|#n"
 msgstr ""
 
@@ -4765,79 +4773,68 @@ msgstr ""
 msgid "Floatflt|#F"
 msgstr ""
 
+#: src/frontends/xforms/form_paragraph.C:243
+#: src/frontends/xforms/form_paragraph.C:244
+#: src/frontends/xforms/form_preferences.C:34
+#: src/frontends/xforms/form_preferences.C:35
+#: src/frontends/xforms/form_print.C:63 src/frontends/xforms/form_print.C:64
+#, fuzzy
+msgid "Cancel|C#C^["
+msgstr "לוטיב|^["
+
 #: src/frontends/xforms/FormPreferences.C:31
 #, fuzzy
 msgid "Preferences"
 msgstr "םירויא תפסוה"
 
-#: src/frontends/xforms/FormPreferences.C:165
-msgid "Look and Feel"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:168
-msgid "Inputs"
+#: src/frontends/xforms/FormPreferences.C:167
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:171
+msgid " none | ispell | aspell "
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:181
+msgid "Look and Feel"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:184
+msgid "Inputs"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:187
 msgid "Outputs"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:177
+#: src/frontends/xforms/FormPreferences.C:190
+#, fuzzy
+msgid "Spell checker"
+msgstr "תויא תקידב"
+
+#: src/frontends/xforms/FormPreferences.C:196
 #, fuzzy
 msgid "Screen Fonts"
 msgstr "ךסמ תויורשפא"
 
-#: src/frontends/xforms/FormPreferences.C:180
+#: src/frontends/xforms/FormPreferences.C:199
 msgid "Interface"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:189
+#: src/frontends/xforms/FormPreferences.C:208
 #, fuzzy
 msgid "Paths"
 msgstr "m תואחסונ"
 
-#: src/frontends/xforms/FormPreferences.C:194
+#: src/frontends/xforms/FormPreferences.C:213
 #, fuzzy
 msgid "Printer"
 msgstr "הספדה"
 
-#: src/frontends/xforms/form_preferences.C:28
-#: src/frontends/xforms/form_preferences.C:29
-msgid "Show banner|#S"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:33
-#: src/frontends/xforms/form_preferences.C:34
-msgid "Auto region delete|#A"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:38
-#: src/frontends/xforms/form_preferences.C:39
-msgid "Exit confirmation|#E"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:43
-msgid "Display keyboard shortcuts"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:47
-#, fuzzy
-msgid "Autosave interval"
-msgstr ".רתוי שדח תיטמוטוא הרימש ץבוק"
-
-#: src/frontends/xforms/form_preferences.C:55
-#: src/frontends/xforms/form_preferences.C:56
-msgid "File->New asks for name|#N"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:60
-#: src/frontends/xforms/form_preferences.C:61
-msgid "Cursor follows scrollbar|#C"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:65
-msgid "Wheel mouse jump"
-msgstr ""
+#: src/LyXAction.C:152 src/frontends/xforms/form_preferences.C:38
+#: src/lyx_sendfax_main.C:268
+msgid "Save"
+msgstr "הרימש"
 
 #: src/frontends/xforms/form_preferences.C:96 src/lyxfont.C:38
 msgid "Roman"
@@ -4860,214 +4857,282 @@ msgstr ""
 msgid "Allow scaling"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:117
+#: src/frontends/xforms/form_preferences.C:118
 #, fuzzy
 msgid "Encoding"
 msgstr "d דודיק:|#D"
 
-#: src/frontends/xforms/form_preferences.C:120
+#: src/frontends/xforms/form_preferences.C:121
 msgid "tiny"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:123
+#: src/frontends/xforms/form_preferences.C:124
 #, fuzzy
 msgid "script"
 msgstr "p Postscript|#P"
 
-#: src/LColor.C:84 src/frontends/xforms/form_preferences.C:126
+#: src/LColor.C:84 src/frontends/xforms/form_preferences.C:127
 msgid "footnote"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:129
+#: src/frontends/xforms/form_preferences.C:130
 msgid "small"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:132
+#: src/frontends/xforms/form_preferences.C:133
 #, fuzzy
 msgid "large"
 msgstr "הפש:"
 
-#: src/frontends/xforms/form_preferences.C:135
+#: src/frontends/xforms/form_preferences.C:136
 msgid "larger"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:138
+#: src/frontends/xforms/form_preferences.C:139
 #, fuzzy
 msgid "largest"
 msgstr "םיפד:"
 
-#: src/frontends/xforms/form_preferences.C:141
+#: src/frontends/xforms/form_preferences.C:142
 msgid "normal"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:144
+#: src/frontends/xforms/form_preferences.C:145
 msgid "huge"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:147
+#: src/frontends/xforms/form_preferences.C:148
 msgid "huger"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:173
-msgid "Popup Font"
+#: src/frontends/xforms/form_preferences.C:174
+#: src/frontends/xforms/form_preferences.C:175
+msgid "Ascii line length|#A"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:176
-msgid "Menu Font"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:179
+#: src/frontends/xforms/form_preferences.C:183
 #, fuzzy
-msgid "Popup Encoding"
+msgid "TeX encoding"
 msgstr "d דודיק:|#D"
 
-#: src/frontends/xforms/form_preferences.C:182
-#: src/frontends/xforms/form_preferences.C:183
-msgid "Bind file|#B"
-msgstr ""
-
 #: src/frontends/xforms/form_preferences.C:186
-#: src/frontends/xforms/form_preferences.C:192
-#: src/frontends/xforms/form_preferences.C:304
-#: src/frontends/xforms/form_preferences.C:317
-#: src/frontends/xforms/form_preferences.C:326
-#: src/frontends/xforms/form_preferences.C:331
-#: src/frontends/xforms/form_preferences.C:345
-#: src/frontends/xforms/form_preferences.C:350
-msgid "Browse..."
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:188
-#: src/frontends/xforms/form_preferences.C:189
 #, fuzzy
-msgid "User Interface file|#U"
+msgid "Default paper size"
+msgstr "לדחמ תרירב"
+
+#: src/frontends/xforms/form_preferences.C:211
+#, fuzzy
+msgid "Spell command"
+msgstr "הדוקפ רואת"
+
+#: src/frontends/xforms/form_preferences.C:216
+#, fuzzy
+msgid "Use alternative language"
 msgstr "u תרחא הפשב שמתשה:|#U"
 
-#: src/frontends/xforms/form_preferences.C:194
-#: src/frontends/xforms/form_preferences.C:195
-msgid "Override X-Windows dead-keys|#O"
-msgstr ""
-
 #: src/frontends/xforms/form_preferences.C:222
-#, fuzzy
-msgid "command"
-msgstr "c הדוקפ|#C"
-
-#: src/frontends/xforms/form_preferences.C:225
-msgid "page range"
+msgid "Use escape characters"
 msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:228
 #, fuzzy
+msgid "Use personal dictionary"
+msgstr "i ישיאה ןולימל ףסוה|#I"
+
+#: src/frontends/xforms/form_preferences.C:234
+#: src/frontends/xforms/form_preferences.C:349
+#: src/frontends/xforms/form_preferences.C:355
+#: src/frontends/xforms/form_preferences.C:467
+#: src/frontends/xforms/form_preferences.C:480
+#: src/frontends/xforms/form_preferences.C:487
+#: src/frontends/xforms/form_preferences.C:492
+#: src/frontends/xforms/form_preferences.C:502
+#: src/frontends/xforms/form_preferences.C:507
+msgid "Browse..."
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:237
+msgid "Accept compound words"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:241
+#, fuzzy
+msgid "Use input encoding"
+msgstr "d דודיק:|#D"
+
+#: src/frontends/xforms/form_preferences.C:268
+#: src/frontends/xforms/form_preferences.C:269
+msgid "Show banner|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:273
+#: src/frontends/xforms/form_preferences.C:274
+msgid "Auto region delete|#A"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:278
+#: src/frontends/xforms/form_preferences.C:279
+msgid "Exit confirmation|#E"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:283
+msgid "Display keyboard shortcuts"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:287
+#, fuzzy
+msgid "Autosave interval"
+msgstr ".רתוי שדח תיטמוטוא הרימש ץבוק"
+
+#: src/frontends/xforms/form_preferences.C:295
+#: src/frontends/xforms/form_preferences.C:296
+msgid "File->New asks for name|#N"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:300
+#: src/frontends/xforms/form_preferences.C:301
+msgid "Cursor follows scrollbar|#C"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:305
+msgid "Wheel mouse jump"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:336
+msgid "Popup Font"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:339
+msgid "Menu Font"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:342
+#, fuzzy
+msgid "Popup Encoding"
+msgstr "d דודיק:|#D"
+
+#: src/frontends/xforms/form_preferences.C:345
+#: src/frontends/xforms/form_preferences.C:346
+msgid "Bind file|#B"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:351
+#: src/frontends/xforms/form_preferences.C:352
+#, fuzzy
+msgid "User Interface file|#U"
+msgstr "u תרחא הפשב שמתשה:|#U"
+
+#: src/frontends/xforms/form_preferences.C:357
+#: src/frontends/xforms/form_preferences.C:358
+msgid "Override X-Windows dead-keys|#O"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:385
+#, fuzzy
+msgid "command"
+msgstr "c הדוקפ|#C"
+
+#: src/frontends/xforms/form_preferences.C:388
+msgid "page range"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:391
+#, fuzzy
 msgid "copies"
 msgstr "םיקתוע"
 
-#: src/frontends/xforms/form_preferences.C:231
+#: src/frontends/xforms/form_preferences.C:394
 msgid "reverse"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:234
+#: src/frontends/xforms/form_preferences.C:397
 #, fuzzy
 msgid "to printer"
 msgstr "p תספדמ|#P"
 
-#: src/frontends/xforms/form_preferences.C:237
+#: src/frontends/xforms/form_preferences.C:400
 msgid "file extension"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:240
+#: src/frontends/xforms/form_preferences.C:403
 #, fuzzy
 msgid "spool command"
 msgstr "הדוקפ רואת"
 
-#: src/frontends/xforms/form_preferences.C:243
+#: src/frontends/xforms/form_preferences.C:406
 msgid "paper type"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:246
+#: src/frontends/xforms/form_preferences.C:409
 msgid "even pages"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:249
+#: src/frontends/xforms/form_preferences.C:412
 msgid "odd pages"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:252
+#: src/frontends/xforms/form_preferences.C:415
 msgid "collated"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:258
+#: src/frontends/xforms/form_preferences.C:421
 #, fuzzy
 msgid "to file"
 msgstr "[ץבוק ןיא]"
 
-#: src/frontends/xforms/form_preferences.C:261
+#: src/frontends/xforms/form_preferences.C:424
 #, fuzzy
 msgid "extra options"
 msgstr "x תופסונ תויורשפא:|#X"
 
-#: src/frontends/xforms/form_preferences.C:264
+#: src/frontends/xforms/form_preferences.C:427
 msgid "spool printer prefix"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:267
+#: src/frontends/xforms/form_preferences.C:430
 msgid "paper size"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:270
+#: src/frontends/xforms/form_preferences.C:433
 msgid "name"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:273
+#: src/frontends/xforms/form_preferences.C:436
 msgid "adapt output"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:276
+#: src/frontends/xforms/form_preferences.C:439
 msgid "Printer Command and Flags"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:301
+#: src/frontends/xforms/form_preferences.C:464
 #, fuzzy
 msgid "Default path"
 msgstr "לדחמ תרירב"
 
-#: src/frontends/xforms/form_preferences.C:306
+#: src/frontends/xforms/form_preferences.C:469
 msgid "Last file count"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:314
+#: src/frontends/xforms/form_preferences.C:477
 #, fuzzy
 msgid "Template path"
 msgstr "רויאל קיר ריתנ"
 
-#: src/frontends/xforms/form_preferences.C:319
+#: src/frontends/xforms/form_preferences.C:482
 msgid "Check last files"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:323
-msgid "Temp dir"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:328
-msgid "Lastfiles"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:342
+#: src/frontends/xforms/form_preferences.C:494
 msgid "Backup path"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:347
+#: src/frontends/xforms/form_preferences.C:504
 msgid "LyXServer pipe"
 msgstr ""
 
-#: src/LyXAction.C:152 src/frontends/xforms/form_preferences.C:383
-#: src/lyx_sendfax_main.C:268
-msgid "Save"
-msgstr "הרימש"
-
-#: src/frontends/xforms/form_preferences.C:443
-#: src/frontends/xforms/form_preferences.C:444
-msgid "Ascii line length|#A"
+#: src/frontends/xforms/form_preferences.C:512
+msgid "Temp dir"
 msgstr ""
 
 #: src/LyXAction.C:135 src/LyXAction.C:143 src/frontends/xforms/FormPrint.C:37
@@ -5130,30 +5195,32 @@ msgstr " לש "
 msgid " Ref | Page | TextRef | TextPage | PrettyRef "
 msgstr ""
 
-#: src/LyXAction.C:150 src/frontends/xforms/form_ref.C:32
-#: src/frontends/xforms/form_toc.C:35
+#: src/frontends/xforms/form_ref.C:33 src/frontends/xforms/form_ref.C:34
+#: src/frontends/xforms/form_toc.C:36 src/frontends/xforms/form_toc.C:37
 #, fuzzy
-msgid "Update"
+msgid "Update|#U"
 msgstr "DVI ןוכדע"
 
-#: src/frontends/xforms/form_ref.C:33 src/frontends/xforms/form_toc.C:36
-msgid "Update|#U#u"
-msgstr ""
-
-#: src/frontends/xforms/form_ref.C:42
+#: src/frontends/xforms/form_ref.C:37 src/frontends/xforms/form_ref.C:38
 #, fuzzy
-msgid "Reference:"
-msgstr "םירויא תפסוה"
+msgid "Sort|#S"
+msgstr "!רעטצמ"
 
-#: src/frontends/xforms/form_ref.C:44
-msgid "Reference type"
-msgstr ""
+#: src/frontends/xforms/form_ref.C:42 src/frontends/xforms/form_ref.C:43
+#, fuzzy
+msgid "Name:|#N"
+msgstr "ביטגנ|#H"
 
 #: src/frontends/xforms/form_ref.C:45
-msgid "Reference type|#t"
+msgid "Ref:"
 msgstr ""
 
-#: src/frontends/xforms/form_ref.C:51
+#: src/frontends/xforms/form_ref.C:47 src/frontends/xforms/form_ref.C:48
+#, fuzzy
+msgid "Reference type|#R"
+msgstr "םירויא תפסוה"
+
+#: src/frontends/xforms/form_ref.C:53 src/frontends/xforms/form_ref.C:54
 msgid "Goto reference|#G"
 msgstr ""
 
@@ -5182,206 +5249,228 @@ msgid "Warning: Wrong Cursor position, updated window"
 msgstr ""
 
 #: src/frontends/xforms/form_tabular.C:30
-#: src/frontends/xforms/form_tabular.C:31
-#, fuzzy
-msgid "Close|#C"
-msgstr "הריגס"
+#: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
+#: src/insets/insetinfo.C:221
+msgid "Close|#C^["
+msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:69
-#: src/frontends/xforms/form_tabular.C:70
+#: src/frontends/xforms/form_tabular.C:67
+#: src/frontends/xforms/form_tabular.C:68
 msgid "Append Column|#A"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:73
-#: src/frontends/xforms/form_tabular.C:74
+#: src/frontends/xforms/form_tabular.C:71
+#: src/frontends/xforms/form_tabular.C:72
 msgid "Delete Column|#O"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:77
-#: src/frontends/xforms/form_tabular.C:78
+#: src/frontends/xforms/form_tabular.C:75
+#: src/frontends/xforms/form_tabular.C:76
 msgid "Append Row|#p"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:81
-#: src/frontends/xforms/form_tabular.C:82
+#: src/frontends/xforms/form_tabular.C:79
+#: src/frontends/xforms/form_tabular.C:80
 msgid "Delete Row|#w"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:85
-#: src/frontends/xforms/form_tabular.C:86
+#: src/frontends/xforms/form_tabular.C:83
+#: src/frontends/xforms/form_tabular.C:84
 msgid "Set Borders|#S"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:89
-#: src/frontends/xforms/form_tabular.C:90
+#: src/frontends/xforms/form_tabular.C:87
+#: src/frontends/xforms/form_tabular.C:88
 msgid "Unset Borders|#U"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:93
-msgid "Longtable"
-msgstr ""
+#: src/frontends/xforms/form_tabular.C:91
+#: src/frontends/xforms/form_tabular.C:92
+#, fuzzy
+msgid "Longtable|#L"
+msgstr "הלבט%t"
 
+#: src/frontends/xforms/form_tabular.C:94
 #: src/frontends/xforms/form_tabular.C:95
-#: src/frontends/xforms/form_tabular.C:96
+#: src/frontends/xforms/form_tabular.C:277
+#: src/frontends/xforms/form_tabular.C:278
 msgid "Rotate 90°|#9"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:98
+#: src/frontends/xforms/form_tabular.C:97
 msgid "Spec. Table"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:128
-#: src/frontends/xforms/form_tabular.C:228
-msgid "Borders"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:132
-#: src/frontends/xforms/form_tabular.C:133
-#: src/frontends/xforms/form_tabular.C:265
-#: src/frontends/xforms/form_tabular.C:266
+#: src/frontends/xforms/form_tabular.C:122
+#: src/frontends/xforms/form_tabular.C:123
+#: src/frontends/xforms/form_tabular.C:212
+#: src/frontends/xforms/form_tabular.C:213
 #, fuzzy
 msgid "Top|#t"
 msgstr "t םיינש|#T"
 
+#: src/frontends/xforms/form_tabular.C:127
+#: src/frontends/xforms/form_tabular.C:128
+#: src/frontends/xforms/form_tabular.C:217
+#: src/frontends/xforms/form_tabular.C:218
+msgid "Bottom|#b"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:132
+#: src/frontends/xforms/form_tabular.C:133
+#: src/frontends/xforms/form_tabular.C:222
+#: src/frontends/xforms/form_tabular.C:223
+msgid "Left|#l"
+msgstr ""
+
 #: src/frontends/xforms/form_tabular.C:137
 #: src/frontends/xforms/form_tabular.C:138
-#: src/frontends/xforms/form_tabular.C:270
-#: src/frontends/xforms/form_tabular.C:271
-msgid "Bottom|#b"
+#: src/frontends/xforms/form_tabular.C:227
+#: src/frontends/xforms/form_tabular.C:228
+msgid "Right|#r"
 msgstr ""
 
 #: src/frontends/xforms/form_tabular.C:142
 #: src/frontends/xforms/form_tabular.C:143
-#: src/frontends/xforms/form_tabular.C:275
-#: src/frontends/xforms/form_tabular.C:276
-msgid "Left|#l"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:147
-#: src/frontends/xforms/form_tabular.C:148
-#: src/frontends/xforms/form_tabular.C:280
-#: src/frontends/xforms/form_tabular.C:281
-msgid "Right|#r"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:154
-#: src/frontends/xforms/form_tabular.C:234
-msgid "H. Alignment"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:158
-#: src/frontends/xforms/form_tabular.C:159
-#: src/frontends/xforms/form_tabular.C:285
-#: src/frontends/xforms/form_tabular.C:286
+#: src/frontends/xforms/form_tabular.C:232
+#: src/frontends/xforms/form_tabular.C:233
 msgid "Left|#e"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:162
-#: src/frontends/xforms/form_tabular.C:163
-#: src/frontends/xforms/form_tabular.C:289
-#: src/frontends/xforms/form_tabular.C:290
+#: src/frontends/xforms/form_tabular.C:146
+#: src/frontends/xforms/form_tabular.C:147
+#: src/frontends/xforms/form_tabular.C:236
+#: src/frontends/xforms/form_tabular.C:237
 msgid "Right|#i"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:166
-#: src/frontends/xforms/form_tabular.C:167
-#: src/frontends/xforms/form_tabular.C:293
-#: src/frontends/xforms/form_tabular.C:294
+#: src/frontends/xforms/form_tabular.C:150
+#: src/frontends/xforms/form_tabular.C:151
+#: src/frontends/xforms/form_tabular.C:240
+#: src/frontends/xforms/form_tabular.C:241
 #, fuzzy
 msgid "Center|#c"
 msgstr "p תספדמ|#P"
 
-#: src/frontends/xforms/form_tabular.C:170
-msgid "Width of column:"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:175
-#: src/frontends/xforms/form_tabular.C:238
-msgid "V. Alignment"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:185
-msgid "Special Column Alignment"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:189
-#: src/frontends/xforms/form_tabular.C:190
-#: src/frontends/xforms/form_tabular.C:297
-#: src/frontends/xforms/form_tabular.C:298
+#: src/frontends/xforms/form_tabular.C:154
+#: src/frontends/xforms/form_tabular.C:155
+#: src/frontends/xforms/form_tabular.C:244
+#: src/frontends/xforms/form_tabular.C:245
 #, fuzzy
 msgid "Top|#p"
 msgstr "t םיינש|#T"
 
-#: src/frontends/xforms/form_tabular.C:197
-#: src/frontends/xforms/form_tabular.C:198
-#: src/frontends/xforms/form_tabular.C:305
-#: src/frontends/xforms/form_tabular.C:306
+#: src/frontends/xforms/form_tabular.C:162
+#: src/frontends/xforms/form_tabular.C:163
+#: src/frontends/xforms/form_tabular.C:252
+#: src/frontends/xforms/form_tabular.C:253
 msgid "Bottom|#o"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:243
-msgid "Special Cell"
+#: src/frontends/xforms/form_tabular.C:166
+#: src/frontends/xforms/form_tabular.C:256
+msgid "Borders"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:247
-#: src/frontends/xforms/form_tabular.C:248
+#: src/frontends/xforms/form_tabular.C:169
+#: src/frontends/xforms/form_tabular.C:259
+msgid "H. Alignment"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:172
+#: src/frontends/xforms/form_tabular.C:262
+msgid "V. Alignment"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:175
+#: src/frontends/xforms/form_tabular.C:176
+#: src/frontends/xforms/form_tabular.C:265
+#: src/frontends/xforms/form_tabular.C:266
+#, fuzzy
+msgid "Width|#W"
+msgstr "בחור"
+
+#: src/frontends/xforms/form_tabular.C:180
+#: src/frontends/xforms/form_tabular.C:181
+#: src/frontends/xforms/form_tabular.C:268
+#: src/frontends/xforms/form_tabular.C:269
+#, fuzzy
+msgid "Alignment|#A"
+msgstr "|c זוכרמ%R%x42%l"
+
+#: src/frontends/xforms/form_tabular.C:185
+msgid "Special column"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:271
+#: src/frontends/xforms/form_tabular.C:272
 msgid "Multicolumn|#M"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:250
-msgid "Rotate 90°"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:258
-msgid "Special Multicolumn Alignment"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:262
-msgid "Width of multi-column:"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:309
-#: src/frontends/xforms/form_tabular.C:310
+#: src/frontends/xforms/form_tabular.C:274
+#: src/frontends/xforms/form_tabular.C:275
 msgid "Use Minipage|#s"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:336
+#: src/frontends/xforms/form_tabular.C:280
+msgid "Special Cell"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:283
+#, fuzzy
+msgid "Special Multicolumn"
+msgstr "|m (Multicolumn)ירוט בר %B%x44%l"
+
+#: src/frontends/xforms/form_tabular.C:309
+#: src/frontends/xforms/form_tabular.C:310
+msgid "1st Head|#1"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:312
+#: src/frontends/xforms/form_tabular.C:313
+#, fuzzy
+msgid "Head|#H"
+msgstr "h הרזע"
+
+#: src/frontends/xforms/form_tabular.C:315
+#: src/frontends/xforms/form_tabular.C:316
+#, fuzzy
+msgid "Foot|#F"
+msgstr "f םיטנופ:|#F"
+
+#: src/frontends/xforms/form_tabular.C:318
+#: src/frontends/xforms/form_tabular.C:319
+#, fuzzy
+msgid "Last Foot|#L"
+msgstr "l הנבמ"
+
+#: src/frontends/xforms/form_tabular.C:321
+#: src/frontends/xforms/form_tabular.C:322
+#, fuzzy
+msgid "New Page|#N"
+msgstr "ביטגנ|#H"
+
+#: src/frontends/xforms/form_tabular.C:324
 msgid "Header"
 msgstr ""
 
-#: src/frontends/xforms/form_tabular.C:340
-msgid "First Head"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:342
-msgid "Head"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:345
+#: src/frontends/xforms/form_tabular.C:327
 #, fuzzy
 msgid "Footer"
 msgstr "םיטוטיצ"
 
-#: src/frontends/xforms/form_tabular.C:349
-msgid "Foot"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:351
-msgid "Last Foot"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:354
+#: src/frontends/xforms/form_tabular.C:330
 msgid "Special"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:358
-msgid "New Page"
 msgstr ""
 
 #: src/frontends/xforms/FormTabularCreate.C:29
 #, fuzzy
 msgid "Insert Tabular"
 msgstr "הלבט תסנכה"
+
+#: src/frontends/xforms/form_tabular_create.C:39
+msgid "Columns"
+msgstr ""
 
 #: src/frontends/xforms/form_tabular_create.C:43 src/mathed/math_forms.C:133
 msgid "Rows"
@@ -5391,23 +5480,25 @@ msgstr ""
 msgid " TOC | LOF | LOT | LOA "
 msgstr ""
 
-#: src/frontends/xforms/form_toc.C:41
-msgid "Type|#T#t"
-msgstr ""
+#: src/frontends/xforms/form_toc.C:41 src/frontends/xforms/form_toc.C:42
+#, fuzzy
+msgid "Type|#T"
+msgstr "t LaTeX|#T"
 
 #: src/frontends/xforms/FormUrl.C:29
 msgid "Url"
 msgstr ""
 
-#: src/frontends/xforms/form_url.C:29
-msgid "Url|#U"
-msgstr ""
+#: src/frontends/xforms/form_url.C:28 src/frontends/xforms/form_url.C:29
+#, fuzzy
+msgid "URL|#U"
+msgstr "|u URL"
 
-#: src/frontends/xforms/form_url.C:34
+#: src/frontends/xforms/form_url.C:33 src/frontends/xforms/form_url.C:34
 msgid "Name|#N"
 msgstr ""
 
-#: src/frontends/xforms/form_url.C:39
+#: src/frontends/xforms/form_url.C:38 src/frontends/xforms/form_url.C:39
 msgid "HTML type|#H"
 msgstr ""
 
@@ -5643,10 +5734,6 @@ msgstr ""
 msgid "Inline view disabled"
 msgstr ""
 
-#: src/insets/insetinclude.C:45 src/insets/insetinclude.C:46
-msgid "Browse|#B"
-msgstr ""
-
 #: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
 msgid "Don't typeset|#D"
 msgstr ""
@@ -5676,8 +5763,8 @@ msgid "Use include|#U"
 msgstr ""
 
 #. launches dialog
-#: src/insets/insetinclude.C:117 src/lyx_cb.C:211 src/lyxfunc.C:3105
-#: src/lyxfunc.C:3208 src/lyxfunc.C:3263 src/lyxfunc.C:3340
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:211 src/lyxfunc.C:3104
+#: src/lyxfunc.C:3206 src/lyxfunc.C:3261 src/lyxfunc.C:3338
 msgid "Documents"
 msgstr ""
 
@@ -5703,10 +5790,6 @@ msgstr ""
 
 #: src/insets/insetinfo.C:198
 msgid "Opened note"
-msgstr ""
-
-#: src/insets/insetinfo.C:216 src/insets/insetinfo.C:221
-msgid "Close|#C^["
 msgstr ""
 
 #: src/insets/insetlabel.C:49
@@ -5750,24 +5833,24 @@ msgstr ""
 msgid "Multicolumns can only be horizontally."
 msgstr ".םייכנא קר תויהל םילוכי םיירוט-בר םיאת"
 
-#: src/insets/insettext.C:466
+#: src/insets/insettext.C:465
 msgid "Opened Text Inset"
 msgstr ""
 
-#: src/insets/insettext.C:934
+#: src/insets/insettext.C:933
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "!דבלב תחא הקספ ליכהל לוכי הלבטב את"
 
-#: src/insets/insettext.C:994 src/lyxfunc.C:1347
+#: src/insets/insettext.C:993 src/lyxfunc.C:1347
 msgid "Layout "
 msgstr ""
 
-#: src/insets/insettext.C:994 src/lyxfunc.C:1348
+#: src/insets/insettext.C:993 src/lyxfunc.C:1348
 msgid " not known"
 msgstr ""
 
-#: src/insets/insettext.C:1047 src/lyxfunc.C:2187
+#: src/insets/insettext.C:1046 src/lyxfunc.C:2187
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "טנמוגרא רסח"
@@ -6217,6 +6300,11 @@ msgstr "ךמסמה ףוס דע הריחב"
 msgid "Toggle read-only"
 msgstr "דבלב האירק (toggle) הנש"
 
+#: src/LyXAction.C:150
+#, fuzzy
+msgid "Update"
+msgstr "DVI ןוכדע"
+
 #: src/LyXAction.C:151
 #, fuzzy
 msgid "View"
@@ -6620,11 +6708,6 @@ msgstr ""
 msgid "Update result|#U"
 msgstr ""
 
-#: src/lyx.C:110
-#, fuzzy
-msgid "Cancel|#C^["
-msgstr "לוטיב|^["
-
 #: src/lyx_cb.C:185
 msgid "Save failed. Rename and try again?"
 msgstr ""
@@ -6633,7 +6716,7 @@ msgstr ""
 msgid "(If not, document is not saved.)"
 msgstr ""
 
-#: src/lyx_cb.C:212 src/lyxfunc.C:3106
+#: src/lyx_cb.C:212 src/lyxfunc.C:3105
 msgid "Templates"
 msgstr ""
 
@@ -6734,7 +6817,7 @@ msgstr ""
 msgid "Error! Cannot open specified file: "
 msgstr ""
 
-#: src/lyx_cb.C:540 src/mathed/formula.C:1048
+#: src/lyx_cb.C:540 src/mathed/formula.C:1047
 msgid "Enter new label to insert:"
 msgstr ""
 
@@ -7016,19 +7099,19 @@ msgstr ""
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr ""
 
-#: src/lyxfunc.C:2566 src/mathed/formula.C:870
+#: src/lyxfunc.C:2566 src/mathed/formula.C:869
 msgid "Math greek mode on"
 msgstr "לעפומ תינווי-תואחסונ בצמ"
 
-#: src/lyxfunc.C:2577 src/mathed/formula.C:881
+#: src/lyxfunc.C:2577 src/mathed/formula.C:880
 msgid "Math greek keyboard on"
 msgstr "תלעפומ תינווי-תואחסונ תדלקמ"
 
-#: src/lyxfunc.C:2579 src/mathed/formula.C:883
+#: src/lyxfunc.C:2579 src/mathed/formula.C:882
 msgid "Math greek keyboard off"
 msgstr "תקספומ תינווי-תואחסונ תדלקמ"
 
-#: src/lyxfunc.C:2632 src/mathed/formula.C:479
+#: src/lyxfunc.C:2632 src/mathed/formula.C:478
 msgid "Math editor mode"
 msgstr "תואחסונ בצמ"
 
@@ -7064,21 +7147,21 @@ msgstr "חותפ ךמסמ ןיא"
 msgid "Document is read only"
 msgstr "דבלב האירקל אוה ךמסמה"
 
-#: src/lyxfunc.C:3107
+#: src/lyxfunc.C:3106
 msgid "Enter Filename for new document"
 msgstr "שדחה ךמסמל ץבוק םש דלקה"
 
-#: src/lyxfunc.C:3108
+#: src/lyxfunc.C:3107
 msgid "newfile"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/lyxfunc.C:3112 src/lyxfunc.C:3139 src/lyxfunc.C:3217 src/lyxfunc.C:3275
-#: src/lyxfunc.C:3303 src/lyxfunc.C:3313 src/lyxfunc.C:3349
+#: src/lyxfunc.C:3111 src/lyxfunc.C:3138 src/lyxfunc.C:3215 src/lyxfunc.C:3273
+#: src/lyxfunc.C:3301 src/lyxfunc.C:3311 src/lyxfunc.C:3347
 msgid "Canceled."
 msgstr ""
 
-#: src/lyxfunc.C:3127 src/lyxfunc.C:3291
+#: src/lyxfunc.C:3126 src/lyxfunc.C:3289
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -7086,71 +7169,71 @@ msgstr ""
 "?וישכע הזה ךמסמה תא רוגסל םאה\n"
 "(תעכ החותפש הסרגל רובעי טושפ 'אל')"
 
-#: src/lyxfunc.C:3147
+#: src/lyxfunc.C:3146
 msgid "File already exists:"
 msgstr ""
 
-#: src/lyxfunc.C:3149
+#: src/lyxfunc.C:3148
 msgid "Do you want to open the document?"
 msgstr "?ךמסמה תא חותפל ךנוצרב םאה"
 
 #. loads document
-#: src/lyxfunc.C:3151 src/lyxfunc.C:3228
+#: src/lyxfunc.C:3150 src/lyxfunc.C:3226
 msgid "Opening document"
 msgstr "ךמסמ חתופ"
 
-#: src/lyxfunc.C:3158 src/lyxfunc.C:3235
+#: src/lyxfunc.C:3157 src/lyxfunc.C:3233
 msgid "opened."
 msgstr ".חתפנ"
 
-#: src/lyxfunc.C:3179
+#: src/lyxfunc.C:3178
 msgid "Choose template"
 msgstr "תינבת תריחב"
 
-#: src/lyxfunc.C:3209 src/lyxfunc.C:3264 src/lyxfunc.C:3341
+#: src/lyxfunc.C:3207 src/lyxfunc.C:3262 src/lyxfunc.C:3339
 msgid "Examples"
 msgstr "תואמגוד"
 
-#: src/lyxfunc.C:3211
+#: src/lyxfunc.C:3209
 msgid "Select Document to Open"
 msgstr "החיתפל ךמסמ רחב"
 
-#: src/lyxfunc.C:3237
+#: src/lyxfunc.C:3235
 msgid "Could not open document"
 msgstr "ךמסמה תא חותפל יתחלצה אל"
 
-#: src/lyxfunc.C:3266
+#: src/lyxfunc.C:3264
 #, fuzzy
 msgid "Select "
 msgstr "ןוויכ"
 
-#: src/lyxfunc.C:3267
+#: src/lyxfunc.C:3265
 #, fuzzy
 msgid " file to import"
 msgstr "אובייל LaTeX ץבוק תריחב"
 
-#: src/lyxfunc.C:3310
+#: src/lyxfunc.C:3308
 msgid "A document by the name"
 msgstr "םשה לעב ךמסמ"
 
-#: src/lyxfunc.C:3312
+#: src/lyxfunc.C:3310
 msgid "already exists. Overwrite?"
 msgstr "?וילע בותכל .םייק רבכ"
 
-#: src/lyxfunc.C:3343
+#: src/lyxfunc.C:3341
 msgid "Select Document to Insert"
 msgstr "הפסוהל ךמסמ תריחב"
 
 #. Inserts document
-#: src/lyxfunc.C:3361
+#: src/lyxfunc.C:3359
 msgid "Inserting document"
 msgstr "ךמסמ ףיסומ"
 
-#: src/lyxfunc.C:3367
+#: src/lyxfunc.C:3365
 msgid "inserted."
 msgstr ".ףסוה"
 
-#: src/lyxfunc.C:3369
+#: src/lyxfunc.C:3367
 msgid "Could not insert document"
 msgstr "ךמסמ ףיסוהל יתחלצה אל"
 
@@ -7504,7 +7587,7 @@ msgstr "!תואסרג תיירוטסה ןיא"
 msgid "VC History"
 msgstr "תואסרג תיירוטסה"
 
-#: src/LyXView.C:441 src/minibuffer.C:236
+#: src/LyXView.C:441 src/minibuffer.C:239
 msgid " (Changed)"
 msgstr "(הנתשה)"
 
@@ -7512,23 +7595,23 @@ msgstr "(הנתשה)"
 msgid " (read only)"
 msgstr "(דבלב האירקל)"
 
-#: src/mathed/formula.C:898 src/mathed/formula.C:1208
+#: src/mathed/formula.C:897 src/mathed/formula.C:1207
 msgid "TeX mode"
 msgstr "TeX בצמ"
 
-#: src/mathed/formula.C:913
+#: src/mathed/formula.C:912
 msgid "No number"
 msgstr "רפסמ ןיא"
 
-#: src/mathed/formula.C:916
+#: src/mathed/formula.C:915
 msgid "Number"
 msgstr "רפסמ"
 
-#: src/mathed/formula.C:1079
+#: src/mathed/formula.C:1078
 msgid "math text mode"
 msgstr "תואחסונ טסקט בצמ"
 
-#: src/mathed/formula.C:1088
+#: src/mathed/formula.C:1087
 msgid "Invalid action in math mode!"
 msgstr "!תואחסונ בצמב הניקת אל הלועפ"
 
@@ -7667,16 +7750,16 @@ msgstr ""
 msgid "Emphasize"
 msgstr "השגדה"
 
-#: src/minibuffer.C:42 src/minibuffer.C:238
+#: src/minibuffer.C:43 src/minibuffer.C:241
 msgid "Welcome to LyX!"
 msgstr "!LyX-ל םיאבה םיכורב"
 
-#: src/minibuffer.C:69
+#: src/minibuffer.C:61
 msgid "Executing:"
 msgstr "עצבמ:"
 
 #. this is a hack
-#: src/minibuffer.C:239
+#: src/minibuffer.C:242
 msgid "* No document open *"
 msgstr "* חותפ ךמסמ ןיא *"
 
