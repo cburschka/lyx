@@ -4,7 +4,6 @@
 
 #include "support/lyxlib.h"
 #include "LString.h"
-#include "support/filetools.h"
 
 bool lyx::copy(string const & from, string const & to)
 {

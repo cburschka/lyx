@@ -1,5 +1,16 @@
 2000-12-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/copy.C: don't include filetools.h
+
+	* lib/images: revert to old banner, drop the cucumber.
+	
+2000-12-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/converter.C (Formats::View): Change the current directory to
+	the directory of the file.
+                                                                           
+2000-12-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* src/kbsequence.C (addkey): also clear sequence and modifiers if
 	length == 0
 

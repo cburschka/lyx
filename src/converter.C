@@ -179,18 +179,19 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 			command += 'r';
         }
 
-	string command2 = command + " " + OnlyFilename(filename);
-	lyxerr << "Executing command: " << command2 << endl;
-	ShowMessage(buffer, _("Executing command:"), command2);
+	command += " " + QuoteName(OnlyFilename((filename)));
 
-	command += " " + QuoteName(filename);
+	lyxerr << "Executing command: " << command << endl;
+	ShowMessage(buffer, _("Executing command:"), command);
+
+	Path p(OnlyPath(filename));
 	Systemcalls one;
-	int res = one.startscript(Systemcalls::SystemDontWait, command);
+	int const res = one.startscript(Systemcalls::SystemDontWait, command);
 
 	if (res) {
 		WriteAlert(_("Can not view file"),
 			   _("Error while executing"),
-			   command2.substr(0, 50));
+			   command.substr(0, 50));
 		return false;
 	}
 	return true;
@@ -248,7 +249,8 @@ void Converter::ReadFlags()
 
 bool operator<(Converter const & a, Converter const & b)
 {
-	int i = compare_no_case(a.From->prettyname(), b.From->prettyname());
+	int const i = compare_no_case(a.From->prettyname(),
+				      b.From->prettyname());
 	if (i == 0)
 		return compare_no_case(a.To->prettyname(), b.To->prettyname())
 			< 0;
@@ -266,8 +268,8 @@ public:
 		return c.from == from && c.to == to;
 	}
 private:
-	string from;
-	string to;
+	string const & from;
+	string const & to;
 };
 
 
@@ -376,7 +378,7 @@ void Converters::Sort()
 
 int Converters::BFS_init(string const & start, bool clear_visited)
 {
-	int s = formats.GetNumber(start);
+	int const s = formats.GetNumber(start);
 	if (s < 0)
 		return s;
 
@@ -395,12 +397,12 @@ vector<Format const *> const
 Converters::GetReachableTo(string const & target, bool clear_visited)
 {
 	vector<Format const *> result;
-	int s = BFS_init(target, clear_visited);
+	int const s = BFS_init(target, clear_visited);
 	if (s < 0)
 		return result;
 
 	while (!Q.empty()) {
-		int i = Q.front();
+		int const i = Q.front();
 		Q.pop();
 		if (i != s || target != "lyx")
 			result.push_back(&formats.Get(i));
@@ -426,7 +428,7 @@ Converters::GetReachable(string const & from, bool only_viewable,
 		return result;
 
 	while (!Q.empty()) {
-		int i = Q.front();
+		int const i = Q.front();
 		Q.pop();
 		Format const & format = formats.Get(i);
 		if (format.name() == "lyx")
@@ -451,13 +453,13 @@ bool Converters::IsReachable(string const & from, string const & to)
 	if (from == to)
 		return true;
 
-	int s = BFS_init(from);
-	int t = formats.GetNumber(to);
+	int const s = BFS_init(from);
+	int const t = formats.GetNumber(to);
 	if (s < 0 || t < 0)
 		return false;
 
 	while (!Q.empty()) {
-		int i = Q.front();
+		int const i = Q.front();
 		Q.pop();
 		if (i == t)
 			return true;
@@ -480,7 +482,7 @@ Converters::GetPath(string const & from, string const & to)
 	if (from == to)
 		return path;
 
-	int s = BFS_init(from);
+	int const s = BFS_init(from);
 	int t = formats.GetNumber(to);
 	if (s < 0 || t < 0)
 		return path;
@@ -490,7 +492,7 @@ Converters::GetPath(string const & from, string const & to)
 
 	bool found = false;
 	while (!Q.empty()) {
-		int i = Q.front();
+		int const i = Q.front();
 		Q.pop();
 		if (i == t) {
 			found = true;
@@ -499,10 +501,10 @@ Converters::GetPath(string const & from, string const & to)
 		for (vector<int>::iterator it = vertices[i].out_vertices.begin();
 		     it != vertices[i].out_vertices.end(); ++it)
 			if (!visited[*it]) {
-				int j = *it;
+				int const j = *it;
 				visited[j] = true;
 				Q.push(j);
-				int k = it - vertices[i].out_vertices.begin();
+				int const k = it - vertices[i].out_vertices.begin();
 				prev_edge[j] = vertices[i].out_edges[k];
 				prev_vertex[j] = i;
 			}
@@ -675,10 +677,10 @@ bool Converters::Move(string const & from, string const & to, bool copy)
 		return true;
 
 	bool no_errors = true;
-	string path = OnlyPath(from);
-	string base = OnlyFilename(ChangeExtension(from, ""));
-	string to_base = ChangeExtension(to, "");
-	string to_extension = GetExtension(to);
+	string const path = OnlyPath(from);
+	string const base = OnlyFilename(ChangeExtension(from, ""));
+	string const to_base = ChangeExtension(to, "");
+	string const to_extension = GetExtension(to);
 
 	vector<string> files = DirList(OnlyPath(from), GetExtension(from));
 	for (vector<string>::const_iterator it = files.begin();
