@@ -420,13 +420,11 @@ struct MathedRowSt {
 	    for (int i = 0 ; i < n + 1 ; ++i)
 	      w[i] = 0;
 	    next = 0;
-	    //label = 0;
 	    numbered = true;
     }
     ///
     ~MathedRowSt() {
 	    delete[] w;
-	    //delete[] label;
     }
     /// Should be const but...
     MathedRowSt * getNext() const  { return next; }
@@ -437,9 +435,19 @@ struct MathedRowSt {
     ///
     bool isNumbered() const { return numbered; }
     ///
-    int  getBaseline() const { return y; }    
+    int  getBaseline() const { return y; }
     ///
-    int  getTab(int i) { return w[i]; }
+    void setBaseline(int b) { y = b; }
+    ///
+    int ascent() const { return asc; }
+    ///
+    int descent() const { return desc; }
+    ///
+    void ascent(int a) { asc = a; }
+    ///
+    void descent(int d) { desc = d; }
+    ///
+    int  getTab(int i) const { return w[i]; }
     /// 
     void setLabel(string const & l) { label = l; }
     ///
@@ -458,10 +466,6 @@ struct MathedRowSt {
     bool numbered;
     ///
     MathedRowSt * next;
-    ///
-    friend class MathMatrixInset;
-    ///
-    friend class MathedXIter;
 };
 
 
@@ -492,11 +496,6 @@ class MathMatrixInset: public MathParInset {
     ///
     void SetAlign(char, string const &);
     ///
-    char * GetAlign(char * vv) {
-	*vv = v_align;
-	return h_align;
-    }
-    ///
     int GetColumns() const { return nc; }
     ///
     int GetRows() const { return nr; }
@@ -518,7 +517,7 @@ class MathMatrixInset: public MathParInset {
     /// 
     char v_align; // add approp. type
     ///
-    char * h_align;
+    string h_align; // a vector would perhaps be more correct
     /// Vertical structure
     MathedRowSt * row;
 

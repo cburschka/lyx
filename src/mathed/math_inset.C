@@ -287,13 +287,10 @@ void MathFracInset::SetFocus(int /*x*/, int y)
 
 
 MathMatrixInset::MathMatrixInset(int m, int n, short st)
-	: MathParInset(st, "array", LM_OT_MATRIX), nc(m)
+	: MathParInset(st, "array", LM_OT_MATRIX), nc(m),
+	v_align(0), h_align(nc, 'c')
 {
     ws = new int[nc]; 
-    v_align = 0;
-    h_align = new char[nc + 1];
-    for (int i = 0; i < nc; ++i) h_align[i] = 'c'; 
-    h_align[nc] = '\0';
     nr = 0;
     row = 0;
     flag = 15;
@@ -314,13 +311,11 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 
 
 MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
-	: MathParInset(mt->GetStyle(), mt->GetName(), mt->GetType())
+	: MathParInset(mt->GetStyle(), mt->GetName(), mt->GetType()),
+	  nc(mt->nc), v_align(mt->v_align), h_align(mt->h_align)
 {
-	nr = 0;
-    nc = mt->nc;
+    nr = 0;
     ws = new int[nc];
-    h_align = new char[nc + 1];
-    strcpy(h_align, mt->GetAlign(&v_align));
     MathedIter it;
     it.SetData(mt->GetData());
     array = it.Copy();
@@ -329,14 +324,14 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 	//mrow = mt->row; // This must be redundant...
 	while (mrow) {
 	    r = new MathedRowSt(nc + 1);
-	    r->numbered = mrow->numbered;
+	    r->setNumbered(mrow->isNumbered());
 	    //if (mrow->label) 
-	      r->label = mrow->label;
+	      r->setLabel(mrow->getLabel());
 	    if (!ro) 
 	      row = r;
 	    else
-	      ro->next = r;
-	    mrow = mrow->next;
+	      ro->setNext(r);
+	    mrow = mrow->getNext();
 	    ro = r;
 	    ++nr;
 	} 
@@ -352,7 +347,7 @@ MathMatrixInset::~MathMatrixInset()
     
     MathedRowSt * r = row;
     while (r) {
-	MathedRowSt * q = r->next;
+	MathedRowSt * q = r->getNext();
 	delete r;
 	r = q;
     }
@@ -368,7 +363,7 @@ MathedInset * MathMatrixInset::Clone()
 void MathMatrixInset::SetAlign(char vv, string const & hh)
 {
    v_align = vv;
-   ::strncpy(h_align, hh.c_str(), nc);
+   h_align = hh.substr(0, nc); // usr just h_align = hh; perhaps
 }
 
 
@@ -428,31 +423,34 @@ void MathMatrixInset::Metrics()
     // Clean the arrays      
     MathedRowSt * cxrow = row;
     while (cxrow) {   
-	for (i = 0; i <= nc; ++i) cxrow->w[i] = 0;
-	cxrow = cxrow->next;
+	for (i = 0; i <= nc; ++i) cxrow->setTab(i, 0);
+	cxrow = cxrow->getNext();
     }
     
     // Basic metrics
     MathParInset::Metrics();
 	    
-    if (nc <= 1 && !row->next) {
-	row->asc = ascent;
-	row->desc = descent;
+    if (nc <= 1 && !row->getNext()) {
+	row->ascent(ascent);
+	row->descent(descent);
     }
     
     // Vertical positions of each row
     cxrow = row;     
     while (cxrow) {
 	for (i = 0; i < nc; ++i) {
-	    if (cxrow == row || ws[i]<cxrow->w[i]) ws[i]= cxrow->w[i];
-	    if (cxrow->next == 0 && ws[i] == 0) ws[i] = df_width;
+	    if (cxrow == row || ws[i] < cxrow->getTab(i))
+		    ws[i] = cxrow->getTab(i);
+	    if (cxrow->getNext() == 0 && ws[i] == 0) ws[i] = df_width;
 	}
 	
-	cxrow->y = (cxrow == row) ? cxrow->asc:
-	           cxrow->asc + cprow->desc + MATH_ROWSEP + cprow->y;
-	h += cxrow->asc + cxrow->desc + MATH_ROWSEP; 	
+	cxrow->setBaseline((cxrow == row) ?
+			   cxrow->ascent() :
+	           cxrow->ascent() + cprow->descent()
+			   + MATH_ROWSEP + cprow->getBaseline());
+	h += cxrow->ascent() + cxrow->descent() + MATH_ROWSEP; 	
 	cprow = cxrow;
-	cxrow = cxrow->next;
+	cxrow = cxrow->getNext();
     }
     
     hl = Descent();
@@ -460,9 +458,9 @@ void MathMatrixInset::Metrics()
 
     //  Compute vertical align
     switch (v_align) {
-     case 't': ascent = row->y; break;
+     case 't': ascent = row->getBaseline(); break;
      case 'b': ascent = h - hl; break;
-     default:  ascent = (row->next) ? h / 2: h - hl; break;
+     default:  ascent = (row->getNext()) ? h / 2: h - hl; break;
     }
     descent = h - ascent + 2;
     
@@ -471,26 +469,26 @@ void MathMatrixInset::Metrics()
     cxrow = row;
     width = MATH_COLSEP;
     while (cxrow) {   
-	int rg = MATH_COLSEP, ww, lf = 0, * w = cxrow->w;
+	    int rg = MATH_COLSEP, ww, lf = 0; //, * w = cxrow->w;
 	for (i = 0; i < nc; ++i) {
 	    bool isvoid = false;
-	    if (w[i] <= 0) {
-		w[i] = df_width;
+	    if (cxrow->getTab(i) <= 0) {
+		cxrow->setTab(i, df_width);
 		isvoid = true;
 	    }
 	    switch (h_align[i]) {
 	     case 'l': lf = 0; break;
-	     case 'c': lf = (ws[i] - w[i])/2; 
+	     case 'c': lf = (ws[i] - cxrow->getTab(i))/2; 
 		       break;
-	     case 'r': lf = ws[i] - w[i]; break;
+	     case 'r': lf = ws[i] - cxrow->getTab(i); break;
 	    }
-	    ww = (isvoid) ? lf: lf + w[i];
-	    w[i] = lf + rg;
+	    ww = (isvoid) ? lf: lf + cxrow->getTab(i);
+	    cxrow->setTab(i, lf + rg);
 	    rg = ws[i] - ww + MATH_COLSEP;
 	    if (cxrow == row) width += ws[i] + MATH_COLSEP;
 	}
-	cxrow->y -= ascent;
-	cxrow = cxrow->next;
+	cxrow->setBaseline(cxrow->getBaseline() - ascent);
+	cxrow = cxrow->getNext();
     }
 }
 

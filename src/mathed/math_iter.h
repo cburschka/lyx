@@ -383,8 +383,8 @@ inline
 void MathedXIter::getAD(int & a, int & d) const
 { 
     if (crow) {
-	a = crow->asc;
-	d = crow->desc;
+	a = crow->ascent();
+	d = crow->descent();
     } else 
       if (p) {
 	  a = p->Ascent();

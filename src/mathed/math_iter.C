@@ -32,13 +32,13 @@ using std::endl;
 const int SizeInset = sizeof(char*) + 2;
 
 extern int mathed_char_width(short type, int style, byte c);
-extern int mathed_string_width(short type, int style, byte const* s, int ls);
-extern int mathed_char_height(short, int, byte, int&, int&);
+extern int mathed_string_width(short type, int style, byte const * s, int ls);
+extern int mathed_char_height(short, int, byte, int &, int &);
 
 // the builtin memcpy() is broken in egcs and gcc 2.95.x on alpha
 // stations. We provide a hand-made version instead. 
 static inline
-void my_memcpy( void * ps_in, const void * pt_in, size_t n )
+void my_memcpy( void * ps_in, void const * pt_in, size_t n )
 {
     char * ps = static_cast<char *>(ps_in);
     char const * pt = static_cast<char const *>(pt_in);
@@ -67,13 +67,13 @@ byte MathedIter::GetChar() const
 {
     if (IsFont()) { 
 	fcode = array->bf[pos];
-	pos++;
+	++pos;
     }
     return array->bf[pos];
 }
 
 
-byte * MathedIter::GetString(int& len) const
+byte * MathedIter::GetString(int & len) const
 {
     if (IsFont()) { 
 	fcode = array->bf[++pos];
@@ -90,8 +90,8 @@ byte * MathedIter::GetString(int& len) const
 string const MathedIter::GetString() const
 {
 	int ls = 0;
-	byte * s = GetString(ls);
-	return string(reinterpret_cast<char *>(s), ls);
+	byte const * s = GetString(ls);
+	return string(reinterpret_cast<char const *>(s), ls);
 }
 
 	
@@ -124,19 +124,19 @@ bool MathedIter::Next()
 {  
     if (!OK()) return false;
    
-    if (array->bf[pos]<' ') {
+    if (array->bf[pos] < ' ') {
 	fcode = -1;     
-	if (IsTab()) col++;
+	if (IsTab()) ++col;
 	if (IsCR())  {
 	    col = 0;
-	    row++;
+	    ++row;
 	}
     }
 	
     if (IsInset())
       pos += sizeof(char*) + 2;
     else 
-      pos++;
+      ++pos;
     
     if (IsFont()) {
 	fcode = array->bf[pos++];
@@ -160,61 +160,61 @@ bool MathedIter::goNextCode(MathedTextCodes code)
 void MathedIter::goPosAbs(int p)
 {  
     Reset();
-    while (pos<p && Next());
+    while (pos < p && Next());
 }
 
 
 void MathedIter::goPosRel(int dp)
 {  
-    int posx = pos+dp;
+    int const posx = pos + dp;
  
     // is posx a valid position?
-    if (dp<0)
+    if (dp < 0)
       Reset();
-    while (pos<posx && Next());
+    while (pos < posx && Next());
 }
 
 
 void MathedIter::Insert(byte c, MathedTextCodes t)
 {
-    if (c<' ') return;
+    if (c < ' ') return;
     
-    if (t == LM_TC_TAB && col>= ncols-1) 
+    if (t == LM_TC_TAB && col >= ncols - 1) 
       return;
     
     // Never more than one space // array->bf[pos-1] gives error from purify:
     //       Reading 1 byte from 0x47b857 in the heap.
     //  Address 0x47b857 is 1 byte before start of malloc'd block at 0x47b858 of 16 bytes.
-    if (c == ' ' && (array->bf[pos] == ' ' || array->bf[pos-1] == ' ')) 
+    if (c == ' ' && (array->bf[pos] == ' ' || array->bf[pos - 1] == ' ')) 
       return;
 	
     if (IsFont() && array->bf[pos] == t) {
 	fcode = t;
-	pos++;
+	++pos;
     } else
-      if (t!= fcode && pos>0 && MathIsFont(array->bf[pos-1])) {
-	  pos--;
-	  int k;
-	  for (k= pos-1; k>= 0 && array->bf[k]>= ' '; k--);
-	  fcode = (k >= 0 && MathIsFont(array->bf[k])) ? array->bf[k]: -1;
+      if (t != fcode && pos > 0 && MathIsFont(array->bf[pos - 1])) {
+	  --pos;
+	  int k = pos - 1;
+	  for (; k >= 0 && array->bf[k] >= ' '; --k);
+	  fcode = (k >= 0 && MathIsFont(array->bf[k])) ? array->bf[k] : -1;
       }
-    short f = (array->bf[pos]<' ') ? 0: fcode;
-    int shift = (t == fcode) ? 1: ((f) ? 3: 2);
+    short const f = (array->bf[pos] < ' ') ? 0 : fcode;
+    int shift = (t == fcode) ? 1 : ((f) ? 3 : 2);
     
     if (t == LM_TC_TAB || t == LM_TC_CR) {
-	shift--;
+	--shift;
 	c = t;
 	if (t == LM_TC_CR) {
-	    row++;
+	    ++row;
 	    col = 0;
 	} else
-	  col++;
+	  ++col;
     }
  
     if (pos < array->last)
         array->Move(pos, shift);
     else {
-	if (array->last+shift>= array->maxsize) {
+	if (array->last+shift >= array->maxsize) {
 	    array->Resize(array->last+shift);
 	}
 	array->last += shift;
@@ -222,8 +222,8 @@ void MathedIter::Insert(byte c, MathedTextCodes t)
     }
     if (t != fcode) {
 	if (f)  
-	  array->bf[pos+shift-1] = fcode;
- 	if (c>= ' ') {
+	  array->bf[pos + shift - 1] = fcode;
+ 	if (c >= ' ') {
 	    array->bf[pos++] = t;
 	    fcode = t;
 	} else {
@@ -239,19 +239,19 @@ void MathedIter::split(int shift)
 {
    if (pos < array->last) {
       bool fg = false;
-      if (array->bf[pos]>= ' ') {
-	 if (pos> 0 && MathIsFont(array->bf[pos-1]))
-	   pos--;
+      if (array->bf[pos] >= ' ') {
+	 if (pos> 0 && MathIsFont(array->bf[pos - 1]))
+	   --pos;
 	 else { 
 	    fg = true; 
-	    shift++;
+	    ++shift;
 	 }
       }      
       array->Move(pos, shift);
-      if (fg) array->bf[pos+shift-1] = fcode;
+      if (fg) array->bf[pos + shift - 1] = fcode;
    } else {
-      if (array->last+shift>= array->maxsize) {
-	  array->Resize(array->last+shift);
+      if (array->last + shift >= array->maxsize) {
+	  array->Resize(array->last + shift);
       }
       array->last += shift;
    }
@@ -265,15 +265,15 @@ void MathedIter::join(int pos2)
     if (!OK() || pos2<= pos)
       return;    
 
-    short f= fcode;	    
-    if (pos>0 && array->bf[pos]>= ' ' && MathIsFont(array->bf[pos-1])) 
-      pos--;	
+    short f = fcode;
+    if (pos > 0 && array->bf[pos] >= ' ' && MathIsFont(array->bf[pos - 1]))
+      --pos;	
     	    
-    if (MathIsFont(array->bf[pos2-1]))
-      pos2--;
+    if (MathIsFont(array->bf[pos2 - 1]))
+      --pos2;
     
-    if (array->bf[pos2]>= ' ') {
-	for (int p= pos2; p>0; p--) 
+    if (array->bf[pos2] >= ' ') {
+	for (int p = pos2; p > 0; --p) 
 	  if (MathIsFont(array->bf[p])) {
 	      f = array->bf[p];
 	      break;
@@ -281,19 +281,19 @@ void MathedIter::join(int pos2)
 	array->bf[pos++] = f;
     }    
 
-    array->Move(pos2, pos-pos2);
+    array->Move(pos2, pos - pos2);
 }
 
-void MathedIter::Insert(MathedInset* p, int type)
+void MathedIter::Insert(MathedInset * p, int type)
 {
-    int shift = SizeInset;
+    int const shift = SizeInset;
     if (!MathIsInset(type))
       type = LM_TC_INSET;
     split(shift);
     array->bf[pos] = type;
-    my_memcpy(&array->bf[pos+1], &p, sizeof(p));
+    my_memcpy(&array->bf[pos + 1], &p, sizeof(p));
     pos += SizeInset;
-    array->bf[pos-1] = type;
+    array->bf[pos - 1] = type;
     array->bf[array->last] = '\0';
     fcode = -1;
 }
@@ -306,40 +306,38 @@ bool MathedIter::Delete()
    
    int shift = 0;
    byte c = GetChar();
-   if (c>= ' ') { 
-      if (MathIsFont(array->bf[pos-1]) && array->bf[pos+1]<' ') {
-	 int i;
+   if (c >= ' ') { 
+      if (MathIsFont(array->bf[pos - 1]) && array->bf[pos + 1] < ' ') {
 	 shift = 2;
 	 pos--;
-	 for (i= pos-1; i>0 && !MathIsFont(array->bf[i]); i--);
-	 if (i>0 && MathIsFont(array->bf[i]))
+	 int i = pos - 1;
+	 for (; i > 0 && !MathIsFont(array->bf[i]); --i);
+	 if (i > 0 && MathIsFont(array->bf[i]))
 	   fcode = array->bf[i];
       } else
 	shift = 1;      
    } else {
       if (MathIsInset(array->bf[pos]))
 	shift = sizeof(char*) + 2;
-     else 
-      if (c == LM_TC_TAB || c == LM_TC_CR) {
-	 shift++;
+     else if (c == LM_TC_TAB || c == LM_TC_CR) {
+	 ++shift;
 //	 lyxerr <<"Es un tab.";
-      }
-     else {
+      } else {
 	     lyxerr << "Math Warning: expected inset." << endl;
      }
    } 
     
-   if (shift!= 0) {
-      array->Move(pos+shift, -shift);
-      if (pos>= array->last) 
-	 pos = (array->last>0) ? array->last: 0;
+   if (shift != 0) {
+      array->Move(pos + shift, -shift);
+      if (pos >= array->last) 
+	 pos = (array->last > 0) ? array->last : 0;
        return true;
    } else
      return false;
 }
 
 
-LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
+LyxArrayBase * MathedIter::Copy(int pos1, int pos2)
 {
    if (!array) {
 //      lyxerr << "Math error: Attempting to copy a void array." << endl;
@@ -348,31 +346,32 @@ LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
       
 //   int posx = pos;
    ipush(); 
-   LyxArrayBase *t= array, *a;
+   LyxArrayBase * t = array, * a;
     
-   if (pos1>0 || pos2<= array->last) {       
-       short fc= 0;
-       if (pos1>0 && array->bf[pos1]>' ') {
-	   for (int p= pos1; p>= 0; p--) 
+   if (pos1 > 0 || pos2 <= array->last) {       
+       short fc = 0;
+       if (pos1 > 0 && array->bf[pos1] > ' ') {
+	   for (int p = pos1; p >= 0; --p) 
 	     if (MathIsFont(array->bf[p])) {
-		 if (p!= pos1-1)
+		 if (p != pos1 - 1)
 		   fc = array->bf[p];
 		 else
-		   pos1--;
+		   --pos1;
 		 break;
 	     }
        }
 
-       if (pos2>0 && array->bf[pos2]>= ' ' && MathIsFont(array->bf[pos2-1])) 
-	 pos2--;
+       if (pos2 > 0 && array->bf[pos2] >= ' '
+	   && MathIsFont(array->bf[pos2 - 1])) 
+	 --pos2;
 
        int dx = pos2 - pos1;
-       a = new LyxArrayBase(dx+LyxArrayBase::ARRAY_MIN_SIZE);
+       a = new LyxArrayBase(dx + LyxArrayBase::ARRAY_MIN_SIZE);
 //       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
-       my_memcpy(&a->bf[(fc) ? 1: 0], &array->bf[pos1], dx);
+       my_memcpy(&a->bf[(fc) ? 1 : 0], &array->bf[pos1], dx);
        if (fc) {
 	   a->bf[0] = fc;
-	   dx++;
+	   ++dx;
        }
        a->last = dx;
        a->bf[dx] = '\0';
@@ -381,9 +380,9 @@ LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
    SetData(a);
    while (OK()) {
       if (IsInset()) {
-	 MathedInset* inset = GetInset();
+	 MathedInset * inset = GetInset();
 	 inset = inset->Clone();
-	 my_memcpy(&array->bf[pos+1], &inset, sizeof(inset));
+	 my_memcpy(&array->bf[pos + 1], &inset, sizeof(inset));
       }
       Next();
    }
@@ -403,7 +402,7 @@ void MathedIter::Clear()
    Reset();  
    while (OK()) {
       if (IsInset()) {
-	 MathedInset* inset = GetInset();
+	 MathedInset * inset = GetInset();
 	  if (inset->GetType()!= LM_OT_MACRO_ARG)
 	    delete inset;
 	  Delete();
@@ -420,16 +419,16 @@ void MathedIter::checkTabs()
     
 //    MathedIter:Reset();
     while (OK()) {
-        if ((IsTab() && col>= ncols-1) || (IsCR() && !(MthIF_CR&flags))) {
+        if ((IsTab() && col >= ncols - 1) || (IsCR() && !(MthIF_CR & flags))) {
             Delete();
             continue;
         }
-        if (IsCR() && col<ncols-2) {
+        if (IsCR() && col < ncols - 2) {
             Insert(' ', LM_TC_TAB);
 	}
         MathedIter::Next();
     }
-    if (col<ncols-2) {
+    if (col < ncols - 2) {
 	Insert(' ', LM_TC_TAB);
     }
     ipop();
@@ -456,18 +455,19 @@ void MathedXIter::Clean(int pos2)
     
     int pos1 = pos;
     
-    if (pos2<pos1) {  
+    if (pos2 < pos1) {
 	GoBegin();
-	while (pos<pos2 && OK()) { Next();
+	while (pos < pos2 && OK()) {
+		Next();
 	}
 	pos2 = pos1;
 	pos1 = pos;
     }
 
     ipush();
-    while (OK() && pos<pos2) {
+    while (OK() && pos < pos2) {
 	if (IsInset()) {
-	    MathedInset* inset = GetInset();
+	    MathedInset * inset = GetInset();
 	    Next();
 	    if (inset->GetType()!= LM_OT_MACRO_ARG)
 	      delete inset;
@@ -475,9 +475,9 @@ void MathedXIter::Clean(int pos2)
 	} 
 	if (IsCR()) {
 	    if (crow) {
-		MathedRowSt *r = crow->next;
+		MathedRowSt * r = crow->getNext();
 		if (r) {
-		    crow->next = r->next;
+		    crow->setNext(r->getNext());
 		    delete r;
 		}	   
 	    }
@@ -486,7 +486,7 @@ void MathedXIter::Clean(int pos2)
     }    
     ipop();
     
-    if (pos2<= array->Last()) {
+    if (pos2 <= array->Last()) {
 	pos = pos1;
 	join(pos2);
 	checkTabs();
@@ -494,7 +494,7 @@ void MathedXIter::Clean(int pos2)
 }
 
 
-void MathedXIter::Merge(LyxArrayBase *a0)
+void MathedXIter::Merge(LyxArrayBase * a0)
 {
     if (!a0) {
 	    lyxerr[Debug::MATHED]
@@ -504,7 +504,7 @@ void MathedXIter::Merge(LyxArrayBase *a0)
     }
     // All insets must be clonned
     MathedIter it(a0);
-    LyxArrayBase *a = it.Copy();
+    LyxArrayBase * a = it.Copy();
     
     // make rom for the data 
     split(a->Last());
@@ -515,20 +515,20 @@ void MathedXIter::Merge(LyxArrayBase *a0)
     goPosAbs(pos1);
     
     // Complete rows
-    while (pos<pos2 && OK()) {
+    while (pos < pos2 && OK()) {
 	if (IsCR()) {
 	    if (p && p->Permit(LMPF_ALLOW_CR)) {
-		MathedRowSt *r = new MathedRowSt(ncols+1);
+		MathedRowSt * r = new MathedRowSt(ncols+1);
 		if (crow) {
-		    r->next = crow->next;
-		    crow->next = r;
+		    r->setNext(crow->getNext());
+		    crow->setNext(r);
 		  } else {
-		      r->next = 0;
+		      r->setNext(0);
 		  }
 		crow = r;
 	    } else {
 		Delete();
-		pos2--;
+		--pos2;
 	    }
 	}
         Next();    
@@ -591,7 +591,7 @@ byte * MathedXIter::GetString(int & ls) const
    byte const * sxs =  MathedIter::GetString(ls);
    if (ls > 0) {
        strncpy(reinterpret_cast<char*>(s),
-	       reinterpret_cast<const char*>(sxs), ls);
+	       reinterpret_cast<char const *>(sxs), ls);
        x += mathed_string_width(fcode, size, s, ls);
        return &s[0];
    } 	    
@@ -602,8 +602,8 @@ byte * MathedXIter::GetString(int & ls) const
 string const MathedXIter::GetString() const
 {
 	int ls;
-	byte * s = GetString(ls);
-	return string(reinterpret_cast<char*>(s), ls);
+	byte const * s = GetString(ls);
+	return string(reinterpret_cast<char const *>(s), ls);
 }
 
 
@@ -628,14 +628,14 @@ bool MathedXIter::Next()
 	  w = mathed_char_width(fcode, size, c);
       } else
       if (c == LM_TC_TAB && p) {
-//	 w = p->GetTab(col+1);
+//	 w = p->GetTab(col + 1);
 	  w = (crow) ? crow->getTab(col + 1) : 0;
 	 //lyxerr << "WW[" << w << "]";
       } else
       if (c == LM_TC_CR && p) {
 	  x = 0;
-	  if (crow && crow->next) {
-	      crow = crow->next;
+	  if (crow && crow->getNext()) {
+	      crow = crow->getNext();
 	      y = crow->getBaseline();
 	      w = crow->getTab(0);
 	  }
@@ -684,13 +684,13 @@ void MathedXIter::Adjust()
 {
    int posx = pos;
    GoBegin();
-   while (posx>pos && OK()) Next();  
+   while (posx > pos && OK()) Next();  
 }
 
 
 bool MathedXIter::Prev()
 {  
-    if (pos == 0 || (pos == 1 && GetChar()>= ' '))
+    if (pos == 0 || (pos == 1 && GetChar() >= ' '))
       return false;
     
     int pos2 = pos; // pos1
@@ -707,24 +707,27 @@ bool MathedXIter::Prev()
 
 bool MathedXIter::goNextColumn()
 {  
-    int rowp = row, colp= col;
+    int rowp = row;
+    int colp = col;
     while (Next() && col == colp);
     
-    return (col!= colp+1 || rowp!= row);
+    return (col != colp + 1 || rowp != row);
 }
 
 
 bool MathedXIter::Up()
 {
     if (row == 0) return false;
-    int xp = x, rowp = row, colp= col;
+    int xp = x;
+    int rowp = row;
+    int colp= col;
     GoBegin();
-    while (row<rowp-1) Next();
-    while (x<xp && OK() && !IsCR()) {
+    while (row < rowp - 1) Next();
+    while (x < xp && OK() && !IsCR()) {
 	ipush();
 	Next();
     }
-    if (col>colp) // || (stck.col == colp && stck.x<= xp && x>xp))
+    if (col > colp) // || (stck.col == colp && stck.x<= xp && x>xp))
       ipop();
     
     return true;
@@ -733,18 +736,20 @@ bool MathedXIter::Up()
 
 bool MathedXIter::Down()
 {
-	int xp = x, colp= col; // , rowp = row
+    int xp = x;
+    int colp= col;
+    // int rowp = row
     
-    bool res = (IsCR()) ? true: goNextCode(LM_TC_CR);
+    bool res = (IsCR()) ? true : goNextCode(LM_TC_CR);
     if (res) {
         Next();
 	ipush();
-	while (x<xp && OK()) {
+	while (x < xp && OK()) {
 	    ipush();
 	    Next();
 	}
-	if (col>colp || (stck.col == colp && stck.x<= xp && x>xp)) 
-	  ipop(); 	  
+	if (col > colp || (stck.col == colp && stck.x <= xp && x > xp))
+	  ipop();
         return true;
     }
     return false;
@@ -758,18 +763,18 @@ void MathedXIter::addRow()
 		" line in a subparagraph. " << this << endl;
 
 	return;
-    }    
+    }
     // Create new item for the structure    
-    MathedRowSt *r = new MathedRowSt(ncols+1);
+    MathedRowSt * r = new MathedRowSt(ncols + 1);
     if (crow) {
-	r->next = crow->next;
-	crow->next = r;
+	r->setNext(crow->getNext());
+	crow->setNext(r);
     } else {
 	crow = r;
-	r->next = 0;
+	r->setNext(0);
     }    
     // Fill missed tabs in current row
-    while (col<ncols-1) 
+    while (col < ncols - 1) 
       Insert('T', LM_TC_TAB); 
     //newline
     Insert('K', LM_TC_CR);
@@ -779,7 +784,7 @@ void MathedXIter::addRow()
       goNextCode(LM_TC_CR);
     
     // Fill missed tabs in new row
-    while (col<ncols-1) 
+    while (col < ncols - 1) 
       Insert('T', LM_TC_TAB);
     ipop();
 }
@@ -795,20 +800,20 @@ void MathedXIter::delRow()
     ipush();
 //    while (Next()) {
     do {
-	if (IsCR()){
+	if (IsCR()) {
 	    break;
 	} else if (!IsTab()) {
 	    line_empty = false;
 	}
     } while (Next());
-    int p1 = getPos();
+    int const p1 = getPos();
     ipop();
     
     if (line_empty) {
 	
-	MathedRowSt *r = crow->next;
+	MathedRowSt * r = crow->getNext();
 	if (r) {
-	    crow->next = r->next;
+	    crow->setNext(r->getNext());
 	    delete r;
 	}
 	join(p1);
@@ -835,8 +840,8 @@ void MathedXIter::ipop()
     if (p) {
 	crow = p->getRowSt();
 	if (crow)
-	  for (int i= 0; i<row; i++) 
-	    crow = crow->next;
+	  for (int i = 0; i < row; ++i)
+	    crow = crow->getNext();
     }
 }
 
@@ -847,11 +852,11 @@ void MathedXIter::fitCoord(int /*xx*/, int yy)
     int yo = 0;
     
     GoBegin();
-    if (p) 
+    if (p)
       p->GetXY(xo, yo);
     // first fit vertically
     while (crow && OK()) {
-	if (yy >= yo + y - crow->asc && yy <= yo + y + crow->desc) 
+	if (yy >= yo + y - crow->ascent() && yy <= yo + y + crow->descent()) 
 	  break;
 	goNextCode(LM_TC_CR);
 	Next();
@@ -863,22 +868,22 @@ void MathedXIter::fitCoord(int /*xx*/, int yy)
 
 void MathedXIter::setTab(int tx, int tab)
 {
-    if (crow && tab<= ncols) {
-	crow->w[tab] = tx;
-    }
-    else 
-	    lyxerr << "MathErr: No tabs allowed here" << endl;
+	if (crow && tab <= ncols) {
+		crow->setTab(tab, tx);
+	} else
+		lyxerr << "MathErr: No tabs allowed here" << endl;
 }
 
 
 void MathedXIter::subMetrics(int a, int d)
 {
     if (!crow) {
-//	lyxerr << "MathErr: Attempt to submetric a subparagraph." << endl;
+	    lyxerr[Debug::MATHED]
+		    << "MathErr: Attempt to submetric a subparagraph." << endl;
 	return;
-    }    
-    crow->asc = a;
-    crow->desc = d;
+    }
+    crow->ascent(a);
+    crow->descent(d);
 }
 
 
@@ -896,7 +901,7 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
     if (array->empty()) return;
 //    if  (pos2 > array->last) return;
     x1 = x; 
-    while (pos<pos2) {
+    while (pos < pos2) {
 	cx = GetChar();
 	if (cx >= ' ') {
 	    mathed_char_height(FCode(), size, cx, asc, des);
@@ -905,7 +910,7 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 	    limit = false;
 	} else
 	if (MathIsInset(cx)) {
-	    MathedInset *pp = GetInset();
+	    MathedInset * pp = GetInset();
 	    if (cx == LM_TC_UP) {
 		if (!asc && p) {
 		    int xx;
@@ -915,8 +920,7 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 		    asc = yy - asc;
 		}
 		asc += ((limits) ? pp->Height() + 4 : pp->Ascent());
-	    } else
-	      if (cx == LM_TC_DOWN) {
+	    } else if (cx == LM_TC_DOWN) {
 		  if (!des && p) {
 		      int xx;
 		      int yy;
@@ -927,24 +931,22 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 		      des -= yy;
 		  }
 		  des += (limit ? pp->Height()+4: pp->Height()-pp->Ascent()/2);
-	      } else {
-		  asc = pp->Ascent();
-		  des = pp->Descent();
-	      }
+	    } else {
+		asc = pp->Ascent();
+		des = pp->Descent();
+	    }
 	    if (asc > ascent) ascent = asc;
 	    if (des > descent) descent = des;
-	    if (cx!= LM_TC_UP && cx!= LM_TC_DOWN)
+	    if (cx != LM_TC_UP && cx != LM_TC_DOWN)
 	      limit = pp->GetLimits();
-	} else 
-	if (cx == LM_TC_TAB) {
+	} else if (cx == LM_TC_TAB) {
 	    limit = false;                   
-	}      
-	else {
-		lyxerr[Debug::MATHED]
-			<< "Mathed Sel-Error: Unrecognized code["
-			<< cx << ']' << endl;
+	} else {
+	    lyxerr[Debug::MATHED]
+	    	<< "Mathed Sel-Error: Unrecognized code["
+	    	<< cx << ']' << endl;
 	    break;
-	}       
+	}
 	if (pos < pos2)  Next();
    }
     width = x - x1;
@@ -987,7 +989,7 @@ MathedRowSt * MathedXIter::adjustVerticalSt()
 	    if (col >= ncols) ncols = col + 1; 
 	    MathedRowSt * r = new MathedRowSt(ncols + 1); // this leaks
 //	    r->next = crow->next;
-	    crow->next = r;
+	    crow->setNext(r);
 	    crow = r;
 //	    lyxerr << " CX[" << crow << "]";
 	}   
@@ -995,4 +997,3 @@ MathedRowSt * MathedXIter::adjustVerticalSt()
     }
     return mrow;
 }
-

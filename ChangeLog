@@ -1,5 +1,18 @@
 2000-12-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+
+	* src/mathed/math_inset.C (MathMatrixInset): initialize v_align
+	and h_align in default init.
+	adjust calls to MathedRowSt
+
+	* src/mathed/math_iter.C: adjust calls to MathedRowSt
+	* src/mathed/math_iter.h (getAD): ditto
+
+	* src/mathed/math_defs.h (class MathedRowSt): remove friends, add
+	methods setBaseline, ascent, descent
+	(class MathMatrixInset): remove method GetAlign, change h_align
+	from char* to string
+
 	* src/lyxfunc.C (processKeySym): discover the correct argument if
 	the action is LFUN_SELFINSERT
 
