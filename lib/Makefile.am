@@ -3,7 +3,6 @@ DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 		lyxrc.defaults doc/LyXConfig.lyx
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in listerrors
 SUBDIRS = reLyX
-bin_SCRIPTS = listerrors
 
 M4=m4
 CHMOD=chmod
@@ -57,11 +56,14 @@ install-data-local: libinstalldirs
 	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
-install-exec-local: libinstalldirs
+install-exec-local: libinstalldirs listerrors
 	files=`cd ${srcdir} ; echo $(LYXSCRIPTS)` ; \
 	for i in $${files} ; do \
 	   $(INSTALL_SCRIPT) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
+	if [ -s listerrors ]; then \
+	   $(INSTALL_SCRIPT) listerrors $(DESTDIR)$(bindir)/listerrors; \
+	fi
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
