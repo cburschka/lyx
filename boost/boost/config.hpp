@@ -171,7 +171,10 @@
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 8
 #     define BOOST_NO_MEMBER_TEMPLATES
 #   endif
-
+//  LGB
+#   if __GNUC__ == 2 && __GNUC_MINOR__ == 97
+#     define BOOST_NO_STDC_NAMESPACE
+#   endif
 //  Kai C++ ------------------------------------------------------------------//
 
 #elif defined __KCC
