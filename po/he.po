@@ -2,550 +2,440 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # tzafrir Cohen <tzafrir@technion.ac.il>, 2000.
 #
-# I used visual hebrew
-# this one is not finished: the menus are done, and some of the other
-# messages are there.
+# I used visual hebrew. This means it is not done properly:
+# visual hebrew is fine for menus, but even in the forms it is 
+# problematic. It is not a substitiute for real bidi support.
+# this one is not finished: the menus are done. The messages and forms 
+# are partially done.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX VERSION\n"
-"POT-Creation-Date: 2000-04-28 23:28+0200\n"
-"PO-Revision-Date: 2000-04-28 23:36+02:00\n"
-"Last-Translator: tzafrir Cohen <tzafrir@technion.ac.il>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2000-01-23 02:30+0200\n"
+"PO-Revision-Date: 2000-05-07 17:14+2\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: he <he@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset= SET CHARSET\n"
-"Content-Transfer-Encoding: SET ENCODING\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#. sgml2lyx failed
+#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3579 src/bufferlist.C:516
+#: src/bufferlist.C:546 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
+#: src/lyx_sendfax_main.C:262 src/menus.C:1665
+msgid "Error!"
+msgstr "!האיגש"
+
+#: src/buffer.C:222
+msgid "Specified file is unreadable: "
+msgstr "אירק וניא ץבוקה - "
+
+#: src/buffer.C:232
+msgid "Cannot open specified file: "
+msgstr "ץבוקה תא חותפל לוכי אל - "
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:401
+#: src/buffer.C:409
 msgid "Textclass Loading Error!"
 msgstr "!TextClass תניעטב האיגש"
 
-#: src/buffer.C:402
+#: src/buffer.C:410
 msgid "Can't load textclass "
 msgstr "!textclass ןועטל חילצמ אל"
 
-#: src/buffer.C:404
+#: src/buffer.C:412
 msgid "-- substituting default"
-msgstr ""
+msgstr "-- לדחמה תרירב תא ףילחמ"
 
-#: src/buffer.C:1074
+#: src/buffer.C:1052
+msgid "Warning: Ignoring Old Inset"
+msgstr "ןשי Inset מ םלעתמ :הרהזא"
+
+#: src/buffer.C:1133
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f\n"
 msgstr ""
 
-#: src/buffer.C:1078
+#: src/buffer.C:1137
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f\n"
 msgstr ""
 
-#: src/buffer.C:1089
+#: src/buffer.C:1155
 msgid "Warning!"
-msgstr ""
+msgstr "!הרהזא"
 
-#: src/buffer.C:1090
+#: src/buffer.C:1156
 msgid "Reading of document is not complete"
-msgstr ""
+msgstr "המלשוה אל ךמסמה תאירק"
 
-#: src/buffer.C:1091
+#: src/buffer.C:1157
 msgid "Maybe the document is truncated"
-msgstr ""
+msgstr "עוטק ךמסמהש ןכתיי"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1097 src/buffer.C:1104 src/buffer.C:1107
+#: src/buffer.C:1163 src/buffer.C:1170 src/buffer.C:1173
 msgid "ERROR!"
-msgstr ""
+msgstr "ה א י ג ש"
+# is "ERROR" different than "Error" ?
 
-#: src/buffer.C:1098
+#: src/buffer.C:1164
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
+msgstr "!ותוא אורקל 0.10.x הסרגב שמתשה .ןשי LyX טמרופב אוה ךמסמה"
 
-#: src/buffer.C:1104
+#: src/buffer.C:1170
 msgid "Not a LyX file!"
-msgstr ""
+msgstr "!LyX ץבוק אל"
 
-#: src/buffer.C:1107
+#: src/buffer.C:1173
 msgid "Unable to read file!"
-msgstr ""
+msgstr "!ץבוקה תא אורקל חילצמ אל"
 
-#: src/buffer.C:1187
-msgid "Could not delete auto-save file!"
-msgstr ""
+#: src/buffer.C:1189 src/buffer.C:1192
+msgid "Error! Document is read-only: "
+msgstr "דבלב האירקל ךמסמה !האיגש - "
+
+#: src/buffer.C:1202 src/buffer.C:1205
+msgid "Error! Cannot write file: "
+msgstr "ץבוקה תא בותכל לוכי אל !האיגש - "
 
 #: src/buffer.C:1213 src/buffer.C:1216
-msgid "Error! Document is read-only: "
-msgstr ""
-
-#: src/buffer.C:1226 src/buffer.C:1229
-msgid "Error! Cannot write file: "
-msgstr ""
-
-#: src/buffer.C:1237 src/buffer.C:1240
 msgid "Error! Cannot open file: "
-msgstr ""
+msgstr "ץבוקה תא חותפל לוכי אל !האיגש - "
 
-#: src/buffer.C:1286
+#: src/buffer.C:1262
 msgid "Error: Cannot write file:"
-msgstr ""
+msgstr "ץבוקל בותכל לוכי אל :האיגש - "
 
-#: src/buffer.C:1617
+#: src/buffer.C:1368
+msgid "Error: Cannot open temporary file:"
+msgstr "ינמזה ץבוקה תא חותפל לוכי אל !האיגש - "
+
+#: src/buffer.C:1588
 msgid "Error: Cannot open file: "
 msgstr ""
 
-#: src/buffer.C:2211 src/buffer.C:2813 src/buffer.C:3475
+#: src/buffer.C:2151 src/buffer.C:2737 src/buffer.C:3498 src/buffer.C:3520
+#: src/paragraph.C:3610
 msgid "LYX_ERROR:"
 msgstr ""
 
-#: src/buffer.C:2211 src/buffer.C:2813
+#: src/buffer.C:2151 src/buffer.C:2737
 msgid "Cannot write file"
 msgstr ""
 
-#: src/buffer.C:2284 src/buffer.C:2893
+#: src/buffer.C:2223 src/buffer.C:2816
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr ""
 
 #. path to LaTeX file
-#: src/buffer.C:3215
+#: src/buffer.C:3176
 msgid "Running LaTeX..."
 msgstr ""
 
-#: src/buffer.C:3234
+#: src/buffer.C:3195
 msgid "LaTeX did not work!"
 msgstr ""
 
-#: src/buffer.C:3235 src/buffer.C:3306 src/buffer.C:3377
+#: src/buffer.C:3196 src/buffer.C:3267 src/buffer.C:3338
 msgid "Missing log file:"
 msgstr ""
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3237 src/buffer.C:3246 src/buffer.C:3308 src/buffer.C:3317
-#: src/buffer.C:3379 src/buffer.C:3387 src/combox.C:461
+#: src/buffer.C:3198 src/buffer.C:3207 src/buffer.C:3269 src/buffer.C:3278
+#: src/buffer.C:3340 src/buffer.C:3348 src/combox.C:465
 msgid "Done"
 msgstr ""
 
 #. path to Literate file
-#: src/buffer.C:3283
+#: src/buffer.C:3244
 msgid "Running Literate..."
 msgstr ""
 
-#: src/buffer.C:3305
+#: src/buffer.C:3266
 msgid "Literate command did not work!"
 msgstr ""
 
 #. path to Literate file
-#: src/buffer.C:3354
+#: src/buffer.C:3315
 msgid "Building Program..."
 msgstr ""
 
-#: src/buffer.C:3376
+#: src/buffer.C:3337
 msgid "Build did not work!"
 msgstr ""
 
 #. path to LaTeX file
-#: src/buffer.C:3424
+#: src/buffer.C:3384
 msgid "Running chktex..."
 msgstr ""
 
-#: src/buffer.C:3440
+#: src/buffer.C:3400
 msgid "chktex did not work!"
 msgstr ""
 
-#: src/buffer.C:3441
+#: src/buffer.C:3401
 msgid "Could not run with file:"
 msgstr ""
 
-#: src/buffer.C:3476
+#: src/buffer.C:3499 src/buffer.C:3521 src/paragraph.C:3611
 msgid "Cannot open temporary file:"
 msgstr ""
 
-#: src/buffer.C:3554
+#: src/buffer.C:3572
 msgid "Error! Can't open temporary file:"
 msgstr ""
 
-#: src/BufferView2.C:57 src/BufferView2.C:67 src/buffer.C:3561
-#: src/bufferlist.C:409 src/lyx_cb.C:392 src/lyx_cb.C:755 src/lyx_cb.C:782
-#: src/lyx_sendfax_main.C:264 src/menus.C:1697
-msgid "Error!"
-msgstr "!האיגש"
-
-#: src/buffer.C:3562
+#: src/buffer.C:3580
 msgid "Error executing *roff command on table"
 msgstr ""
 
-#: src/bufferlist.C:100 src/bufferlist.C:158 src/lyxvc.C:91 src/lyxvc.C:124
-#: src/lyxvc.C:154
+#: src/buffer.C:3748 src/lyx_cb.C:3211 src/text.C:2052
+msgid "Impossible Operation!"
+msgstr ""
+
+#: src/buffer.C:3749
+msgid "Cannot insert table/list in table."
+msgstr ""
+
+#: src/buffer.C:3750 src/lyx_cb.C:3213 src/text.C:2054 src/text.C:4211
+#: src/text.C:4219 src/text.C:4234 src/text.C:4251 src/text2.C:2194
+#: src/text2.C:2204
+msgid "Sorry."
+msgstr ""
+
+#: src/bufferlist.C:103 src/bufferlist.C:259 src/lyxvc.C:91 src/lyxvc.C:123
+#: src/lyxvc.C:153
 msgid "Changes in document:"
-msgstr ""
+msgstr "ךמסמב םייוניש:"
 
-#: src/bufferlist.C:103 src/bufferlist.C:160
+#: src/bufferlist.C:106 src/bufferlist.C:261
 msgid "Save document?"
-msgstr ""
+msgstr "?ךמסמ רומשל"
 
-#: src/bufferlist.C:120
+#: src/bufferlist.C:123
 msgid "Some documents were not saved:"
-msgstr ""
+msgstr "ורמשנ אל םיכמסמ המכ - "
 
-#: src/bufferlist.C:121
+#: src/bufferlist.C:124
 msgid "Exit anyway?"
-msgstr ""
+msgstr "?תאז לכב תאצל"
 
-#: src/bufferlist.C:245
+#: src/bufferlist.C:139
+msgid "Saving document"
+msgstr "ךמסמ רמוש"
+
+#: src/bufferlist.C:205
+msgid "Document saved as"
+msgstr "ךמסמה רמשנ ובש םשה - "
+
+#: src/bufferlist.C:216
+msgid "Could not delete auto-save file!"
+msgstr "תיטמוטואה הרימשה ץבוק תקיחמ הלשכנ - "
+
+#: src/bufferlist.C:226
+msgid "Save failed!"
+msgstr "!הלשכנ הרימש"
+
+#: src/bufferlist.C:360
 msgid "lyx: Attempting to save document "
-msgstr ""
+msgstr "ל\"נה םשב ךמסמה תא רומשל הסנמ :lyx - "
 
-#: src/bufferlist.C:248
+#: src/bufferlist.C:363
 msgid " as..."
-msgstr ""
+msgstr "כ..."
 
-#: src/bufferlist.C:274
+#: src/bufferlist.C:389
 msgid "  Save seems successful. Phew."
-msgstr ""
+msgstr "...החילצה הרימשהש הארנ"
 
-#: src/bufferlist.C:278
+#: src/bufferlist.C:393
 msgid "  Save failed! Trying..."
-msgstr ""
+msgstr "...הסנמ !הלשכנ הרימש"
 
-#: src/bufferlist.C:281
+#: src/bufferlist.C:396
 msgid "  Save failed! Bummer. Document is lost."
-msgstr ""
+msgstr ".ונניאו היהש ךלה ךמסמ דוע !הלשכנ הרימש"
 
-#: src/bufferlist.C:310
+#: src/bufferlist.C:425
 msgid "An emergency save of this document exists!"
-msgstr ""
+msgstr "!ךמסמה לש םורח תרימש תמייק"
 
-#: src/bufferlist.C:312
+#: src/bufferlist.C:427
 msgid "Try to load that instead?"
-msgstr ""
+msgstr "?םוקמב התוא ןועטל תוסנל"
 
-#: src/bufferlist.C:334
+#: src/bufferlist.C:449
 msgid "Autosave file is newer."
 msgstr ".רתוי שדח תיטמוטוא הרימש ץבוק"
 
-#: src/bufferlist.C:336
+#: src/bufferlist.C:451
 msgid "Load that one instead?"
 msgstr "?םוקמב ותוא ןועטל"
 
-#: src/bufferlist.C:409
+#: src/bufferlist.C:516
 msgid "Unable to open template"
-msgstr ""
+msgstr "תינבת חותפל חילצמ אל"
 
-#: src/bufferlist.C:433 src/lyxfunc.C:2757 src/lyxfunc.C:2909
+#: src/bufferlist.C:547
+msgid "Could not convert file"
+msgstr "ץבוק רימהל חילצמ אל"
+
+#: src/bufferlist.C:560 src/lyxfunc.C:2552 src/lyxfunc.C:2691
+#: src/lyxfunc.C:2770
 msgid "Document is already open:"
 msgstr ""
 
-#: src/bufferlist.C:435
+#: src/bufferlist.C:562
 msgid "Do you want to reload that document?"
 msgstr ""
 
-#: src/bufferlist.C:453
+#: src/bufferlist.C:579
 msgid "File `"
 msgstr "ץבוק `"
 
-#: src/bufferlist.C:454
+#: src/bufferlist.C:580
 msgid "' is read-only."
 msgstr "' דבלב האירקל"
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:469
-msgid "Do you want to retrieve file under version control?"
+#: src/bufferlist.C:594
+msgid "Do you want to retrive file under version control?"
 msgstr ""
 
-#: src/bufferlist.C:477
+#: src/bufferlist.C:602
 msgid "Cannot open specified file:"
 msgstr ""
 
-#: src/bufferlist.C:479
+#: src/bufferlist.C:604
 msgid "Create new document with this name?"
 msgstr ""
 
-#: src/BufferView2.C:58
-msgid "Specified file is unreadable: "
-msgstr "אירקאוניא ץבוקה - "
-
-#: src/BufferView2.C:68
-msgid "Cannot open specified file: "
-msgstr "ץבוקה תא חותפל לוכי אל - "
-
-#: src/BufferView2.C:192 src/insets/insetert.C:67
-#: src/insets/insettabular.C:924 src/lyx_cb.C:2648 src/text.C:2198
-msgid "Impossible Operation!"
-msgstr ""
-
-#: src/BufferView2.C:193
-msgid "Cannot insert table/list in table."
-msgstr ""
-
-#: src/BufferView2.C:194 src/CutAndPaste.C:422 src/CutAndPaste.C:431
-#: src/insets/insetert.C:69 src/insets/insettabular.C:926
-#: src/insets/insettext.C:1480 src/lyx_cb.C:2650 src/text.C:2200
-#: src/text.C:4478 src/text.C:4486 src/text.C:4501 src/text.C:4518
-#: src/text2.C:2354 src/text2.C:2364
-msgid "Sorry."
-msgstr ""
-
-#: src/BufferView2.C:397 src/BufferView2.C:411
-msgid "Open/Close..."
-msgstr ""
-
-#: src/BufferView2.C:424 src/LyXAction.C:357
-msgid "Undo"
-msgstr ""
-
-#: src/BufferView2.C:429
-msgid "No further undo information"
-msgstr ""
-
-#: src/BufferView2.C:440
-msgid "Redo not yet supported in math mode"
-msgstr ""
-
-#: src/BufferView2.C:445 src/LyXAction.C:316
-msgid "Redo"
-msgstr ""
-
-#: src/BufferView2.C:450
-msgid "No further redo information"
-msgstr ""
-
-#: src/BufferView2.C:547
-msgid "Paragraph environment type copied"
-msgstr ""
-
-#: src/BufferView2.C:556
-msgid "Paragraph environment type set"
-msgstr ""
-
-#: src/BufferView2.C:570 src/LyXAction.C:160
-msgid "Copy"
-msgstr "הקתעה"
-
-#: src/BufferView2.C:581 src/LyXAction.C:161
-msgid "Cut"
-msgstr "הריזג"
-
-#: src/BufferView2.C:590 src/LyXAction.C:307
-msgid "Paste"
-msgstr ""
-
-#: src/BufferView2.C:625 src/BufferView2.C:629
-msgid "No more notes"
-msgstr ""
-
-#: src/bufferview_funcs.C:26
-msgid "Inserting Footnote..."
-msgstr ""
-
-#: src/bufferview_funcs.C:61
-msgid "Inserting margin note..."
-msgstr ""
-
-#: src/bufferview_funcs.C:78
-msgid "Error! unknown language"
-msgstr ""
-
-#: src/LyXAction.C:289 src/bufferview_funcs.C:86
-msgid "Melt"
-msgstr ""
-
-#: src/bufferview_funcs.C:118
-msgid "Changed environment depth (in possible range, maybe not)"
-msgstr ""
-
-#: src/bufferview_funcs.C:247
-msgid "Font: "
-msgstr ""
-
-#: src/bufferview_funcs.C:251
-msgid ", Depth: "
-msgstr ""
-
-#: src/bufferview_funcs.C:257
-msgid ", Spacing: "
-msgstr ""
-
-#: src/bufferview_funcs.C:260
-#, fuzzy
-msgid "Single"
-msgstr "ץבוק"
-
-#: src/bufferview_funcs.C:263
-msgid "Onehalf"
-msgstr ""
-
-#: src/bufferview_funcs.C:266
-msgid "Double"
-msgstr ""
-
-#: src/bufferview_funcs.C:269
-msgid "Other ("
-msgstr ""
-
-#: src/BufferView_pimpl.C:219
+#: src/BufferView.C:411
 msgid "Formatting document..."
 msgstr ""
 
-#: src/BufferView_pimpl.C:304 src/BufferView_pimpl.C:308
+#: src/BufferView.C:496 src/BufferView.C:500
 msgid "No more errors"
 msgstr ""
 
-#: src/bullet_forms.C:37
+#: src/bullet_forms.C:45
 msgid "Size|#z"
 msgstr ""
 
-#: src/bullet_forms.C:42 src/credits_form.C:19 src/credits_form.C:59
+#: src/bullet_forms.C:50 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
-#: src/insets/form_graphics.C:62 src/insets/insetbib.C:99
-#: src/insets/insetbib.C:127 src/insets/insetinclude.C:49
-#: src/insets/insetindex.C:55 src/latexoptions.C:21 src/layout_forms.C:72
-#: src/layout_forms.C:282 src/layout_forms.C:418 src/layout_forms.C:482
-#: src/layout_forms.C:702 src/lyx.C:47 src/lyx.C:95
-#: src/mathed/math_forms.C:109 src/print_form.C:41 src/print_form.C:114
-#: src/sp_form.C:38
+#: src/insets/insetbib.C:89 src/insets/insetbib.C:117
+#: src/insets/insetinclude.C:47 src/insets/insetindex.C:56
+#: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
+#: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
+#: src/lyx.C:47 src/lyx.C:95 src/mathed/math_forms.C:111 src/print_form.C:41
+#: src/print_form.C:114 src/sp_form.C:38
 msgid "OK"
 msgstr ""
 
-#: src/bullet_forms.C:45 src/form1.C:114 src/form1.C:287
-#: src/insets/form_graphics.C:56 src/insets/form_graphics.C:57
-#: src/latexoptions.C:24 src/layout_forms.C:68 src/layout_forms.C:236
-#: src/layout_forms.C:286 src/layout_forms.C:392 src/layout_forms.C:421
-#: src/layout_forms.C:479 src/layout_forms.C:706 src/lyx.C:50 src/lyx.C:99
-#: src/lyx_sendfax.C:39 src/mathed/math_forms.C:106
-#: src/mathed/math_forms.C:156 src/mathed/math_forms.C:201 src/print_form.C:44
-#: src/print_form.C:117 src/sp_form.C:62
+#: src/bullet_forms.C:53 src/form1.C:114 src/form1.C:287 src/latexoptions.C:24
+#: src/layout_forms.C:68 src/layout_forms.C:236 src/layout_forms.C:281
+#: src/layout_forms.C:387 src/layout_forms.C:416 src/layout_forms.C:474
+#: src/layout_forms.C:701 src/lyx.C:50 src/lyx.C:99 src/lyx_sendfax.C:39
+#: src/mathed/math_forms.C:108 src/mathed/math_forms.C:158
+#: src/mathed/math_forms.C:203 src/print_form.C:44 src/print_form.C:117
+#: src/sp_form.C:62
 msgid "Apply|#A"
-msgstr ""
+msgstr "a םושיי|#A"
 
-#: src/bullet_forms.C:48 src/form1.C:120 src/form1.C:264 src/form1.C:290
-#: src/insets/form_graphics.C:68 src/insets/form_graphics.C:69
-#: src/insets/insetbib.C:102 src/insets/insetbib.C:103
-#: src/insets/insetbib.C:130 src/insets/insetbib.C:131
-#: src/insets/insetinclude.C:52 src/insets/insetinclude.C:53
-#: src/insets/insetindex.C:59 src/insets/insetindex.C:60 src/latexoptions.C:27
-#: src/layout_forms.C:64 src/layout_forms.C:290 src/layout_forms.C:396
-#: src/layout_forms.C:424 src/layout_forms.C:476 src/layout_forms.C:710
-#: src/lyx.C:53 src/lyx.C:103 src/lyx_gui_misc.C:382 src/lyx_gui_misc.C:386
-#: src/lyx_gui_misc.C:394 src/lyx_sendfax.C:35 src/mathed/math_forms.C:100
-#: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:47
+#: src/bullet_forms.C:56 src/form1.C:120 src/form1.C:264 src/form1.C:290
+#: src/insets/insetbib.C:92 src/insets/insetbib.C:93 src/insets/insetbib.C:120
+#: src/insets/insetbib.C:121 src/insets/insetinclude.C:50
+#: src/insets/insetinclude.C:51 src/insets/insetindex.C:60
+#: src/insets/insetindex.C:61 src/latexoptions.C:27 src/layout_forms.C:64
+#: src/layout_forms.C:285 src/layout_forms.C:391 src/layout_forms.C:419
+#: src/layout_forms.C:471 src/layout_forms.C:705 src/lyx.C:53 src/lyx.C:103
+#: src/lyx_gui_misc.C:388 src/lyx_gui_misc.C:393 src/lyx_gui_misc.C:399
+#: src/lyx_gui_misc.C:408 src/lyx_sendfax.C:35 src/mathed/math_forms.C:102
+#: src/mathed/math_forms.C:132 src/mathed/math_forms.C:200 src/print_form.C:47
 #: src/print_form.C:120 src/sp_form.C:42
 msgid "Cancel|^["
-msgstr ""
+msgstr "לוטיב|^["
 
-#: src/bullet_forms.C:51
+#: src/bullet_forms.C:59
 msgid "LaTeX|#L"
 msgstr ""
 
-#: src/bullet_forms.C:59
+#: src/bullet_forms.C:67
 msgid "1|#1"
 msgstr ""
 
-#: src/bullet_forms.C:63
+#: src/bullet_forms.C:71
 msgid "2|#2"
 msgstr ""
 
-#: src/bullet_forms.C:66
+#: src/bullet_forms.C:74
 msgid "3|#3"
 msgstr ""
 
-#: src/bullet_forms.C:69
+#: src/bullet_forms.C:77
 msgid "4|#4"
 msgstr ""
 
-#: src/bullet_forms.C:74
+#: src/bullet_forms.C:82
 msgid "Bullet Depth"
 msgstr ""
 
-#: src/bullet_forms.C:79
+#: src/bullet_forms.C:87
 msgid "Standard|#S"
 msgstr ""
 
-#: src/bullet_forms.C:84
+#: src/bullet_forms.C:92
 msgid "Maths|#M"
 msgstr ""
 
-#: src/bullet_forms.C:88
+#: src/bullet_forms.C:96
 msgid "Ding 2|#i"
 msgstr ""
 
-#: src/bullet_forms.C:92
+#: src/bullet_forms.C:100
 msgid "Ding 3|#n"
 msgstr ""
 
-#: src/bullet_forms.C:96
+#: src/bullet_forms.C:104
 msgid "Ding 4|#g"
 msgstr ""
 
-#: src/bullet_forms.C:100
+#: src/bullet_forms.C:108
 msgid "Ding 1|#D"
 msgstr ""
 
-#: src/bullet_forms_cb.C:27
+#: src/bullet_forms_cb.C:30
 msgid "Sorry, your libXpm is too old."
 msgstr ""
 
-#: src/bullet_forms_cb.C:28
+#: src/bullet_forms_cb.C:31
 msgid "This feature requires xpm-4.7 (a.k.a 3.4g) or newer."
 msgstr ""
 
-#: src/bullet_forms_cb.C:34
+#: src/bullet_forms_cb.C:32
+msgid "Try running LyX in mono mode (lyx  -Mono)."
+msgstr ""
+
+#: src/bullet_forms_cb.C:37
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
 msgstr ""
 
-#: src/bullet_forms_cb.C:49
+#: src/bullet_forms_cb.C:52
 msgid "Itemize Bullet Selection"
 msgstr ""
 
 #: src/Chktex.C:79
 msgid "ChkTeX warning id #"
-msgstr ""
-
-#: src/ColorHandler.C:82
-msgid "LyX: Unknown X11 color "
-msgstr ""
-
-#: src/ColorHandler.C:83
-#, fuzzy
-msgid " for "
-msgstr " לש "
-
-#: src/ColorHandler.C:84
-msgid "     Using black instead, sorry!."
-msgstr ""
-
-#: src/ColorHandler.C:91
-msgid "LyX: X11 color "
-msgstr ""
-
-#: src/ColorHandler.C:92 src/ColorHandler.C:98
-msgid " allocated for "
-msgstr ""
-
-#: src/ColorHandler.C:97
-msgid "LyX: Using approximated X11 color "
-msgstr ""
-
-#: src/ColorHandler.C:138
-msgid "LyX: Couldn't allocate '"
-msgstr ""
-
-#: src/ColorHandler.C:139
-#, fuzzy
-msgid "' for "
-msgstr " לש "
-
-#: src/ColorHandler.C:140
-msgid " with (r,g,b)=("
-msgstr ""
-
-#: src/ColorHandler.C:143
-msgid "     Using closest allocated color with (r,g,b)=("
 msgstr ""
 
 #: src/credits.C:55
@@ -578,8 +468,8 @@ msgstr ""
 
 #: src/credits_form.C:50
 msgid ""
-"LyX is Copyright 1995 by Matthias Ettrich,\n"
-"1995-2000 LyX Team"
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-1999 LyX Team"
 msgstr ""
 
 #: src/credits_form.C:55
@@ -605,27 +495,11 @@ msgid ""
 "675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
 
-#: src/CutAndPaste.C:420 src/CutAndPaste.C:429 src/insets/insettext.C:1478
-#: src/text.C:4476 src/text.C:4484 src/text.C:4501 src/text.C:4516
-#: src/text2.C:1903 src/text2.C:1915 src/text2.C:2097 src/text2.C:2109
-#: src/text2.C:2188 src/text2.C:2201 src/text2.C:2294 src/text2.C:2307
-#: src/text2.C:2352 src/text2.C:2362
-msgid "Impossible operation"
-msgstr ""
-
-#: src/CutAndPaste.C:421 src/text2.C:2353
-msgid "Can't paste float into float!"
-msgstr ""
-
-#: src/CutAndPaste.C:430 src/text2.C:2363
-msgid "Table cell cannot include more than one paragraph!"
-msgstr ""
-
-#: src/filedlg.C:187
+#: src/filedlg.C:181
 msgid "Warning! Couldn't open directory."
 msgstr ""
 
-#: src/FontLoader.C:247
+#: src/FontLoader.C:219
 msgid "Loading font into X-Server..."
 msgstr ""
 
@@ -693,7 +567,7 @@ msgstr ""
 msgid "Full Screen Preview|#v"
 msgstr ""
 
-#: src/form1.C:105 src/insets/form_graphics.C:40 src/insets/form_graphics.C:41
+#: src/form1.C:105
 msgid "Browse...|#B"
 msgstr ""
 
@@ -705,49 +579,48 @@ msgstr ""
 msgid "Do Translations|#r"
 msgstr ""
 
-#: src/form1.C:129 src/insets/form_graphics.C:73 src/menus.C:173
-#: src/menus.C:184 src/menus.C:293 src/menus.C:294 src/menus.C:295
-#: src/menus.C:368 src/menus.C:369 src/menus.C:370 src/sp_form.C:58
+#: src/form1.C:129 src/menus.C:171 src/menus.C:182 src/menus.C:291
+#: src/menus.C:292 src/menus.C:293 src/menus.C:366 src/menus.C:367
+#: src/menus.C:368 src/sp_form.C:58
 msgid "Options"
-msgstr "תויורשפא"
+msgstr "o תויורשפא"
 
-#: src/form1.C:133 src/insets/form_graphics.C:79 src/insets/form_graphics.C:80
+#: src/form1.C:133
 msgid "Angle:|#L"
-msgstr ""
+msgstr "תיווז"
 
 #: src/form1.C:139
 #, no-c-format
 msgid "% of Page|#g"
-msgstr ""
+msgstr "דומעמ %"
 
 #: src/form1.C:142
 msgid "Default|#t"
-msgstr ""
+msgstr "לדחמה תרירב"
 
 #: src/form1.C:145
 msgid "cm|#m"
-msgstr ""
+msgstr "m מ\"ס|#m"
 
 #: src/form1.C:148
 msgid "inches|#h"
-msgstr ""
+msgstr "h םי'צניא|#h"
 
-#: src/form1.C:153 src/insets/form_graphics.C:84
+#: src/form1.C:153
 msgid "Display"
-msgstr ""
+msgstr "הגוצת"
 
-#: src/form1.C:157 src/insets/form_graphics.C:90
+#: src/form1.C:157
 msgid "Height"
-msgstr ""
+msgstr "הבוג"
 
-#: src/form1.C:161 src/insets/form_graphics.C:96 src/layout_forms.C:634
-#: src/layout_forms.C:717
+#: src/form1.C:161 src/layout_forms.C:629 src/layout_forms.C:712
 msgid "Width"
-msgstr ""
+msgstr "בחור"
 
-#: src/form1.C:165 src/insets/form_graphics.C:101
+#: src/form1.C:165
 msgid "Rotation"
-msgstr ""
+msgstr "בוביס"
 
 #: src/form1.C:171
 msgid "Display in Color|#D"
@@ -827,7 +700,7 @@ msgstr ""
 msgid "Columns"
 msgstr ""
 
-#: src/form1.C:297 src/mathed/math_forms.C:133
+#: src/form1.C:297 src/mathed/math_forms.C:135
 msgid "Rows"
 msgstr ""
 
@@ -867,70 +740,63 @@ msgstr ""
 msgid "Replace All|#A#a"
 msgstr ""
 
-#: src/insets/figinset.C:1064
+#: src/insets/figinset.C:1110
 msgid "[render error]"
 msgstr ""
 
-#: src/insets/figinset.C:1065
+#: src/insets/figinset.C:1111
 msgid "[rendering ... ]"
 msgstr ""
 
-#: src/insets/figinset.C:1068
+#: src/insets/figinset.C:1113
 msgid "[no file]"
-msgstr ""
+msgstr "[ץבוק ןיא]"
 
-#: src/insets/figinset.C:1070
-msgid "[bad file name]"
-msgstr ""
-
-#: src/insets/figinset.C:1072
+#: src/insets/figinset.C:1114
 msgid "[not displayed]"
-msgstr ""
+msgstr "[ת/גצומ אל]"
 
-#: src/insets/figinset.C:1074
+#: src/insets/figinset.C:1115
 msgid "[no ghostscript]"
-msgstr ""
+msgstr "[ghostscript ןיא]"
 
-#: src/insets/figinset.C:1076
+#: src/insets/figinset.C:1117
 msgid "[unknown error]"
-msgstr ""
+msgstr "[העודי אל האיגש]"
 
-#: src/insets/figinset.C:1248
-msgid "Opened figure"
-msgstr ""
-
-#: src/insets/figinset.C:1275
+#: src/insets/figinset.C:1314
 msgid "Figure"
-msgstr ""
+msgstr "רויא"
 
-#: src/insets/figinset.C:1364 src/insets/figinset.C:1427
+#: src/insets/figinset.C:1376 src/insets/figinset.C:1509
 msgid "empty figure path"
-msgstr ""
+msgstr "רויאל קיר ריתנ"
 
-#: src/insets/figinset.C:2003 src/insets/insetgraphics.C:82
+#: src/insets/figinset.C:2157
 msgid "Clipart"
 msgstr ""
 
-#: src/insets/figinset.C:2004 src/lyxfunc.C:2789 src/lyxfunc.C:2852
-#: src/lyxfunc.C:3045
+#: src/insets/figinset.C:2158 src/lyxfunc.C:2584 src/lyxfunc.C:2647
+#: src/lyxfunc.C:2870
 msgid "Document"
-msgstr ""
+msgstr "ךמסמ"
 
-#: src/insets/figinset.C:2010 src/insets/figinset.C:2014
+#: src/insets/figinset.C:2164 src/insets/figinset.C:2168
 msgid "EPS Figure"
-msgstr ""
+msgstr "EPS רויא"
 
-#: src/insets/figinset.C:2027 src/insets/insetgraphics.C:96
+#: src/insets/figinset.C:2182
 msgid "Filename can't contain any of these characters:"
-msgstr ""
+msgstr "ץבוקה םשב עיפוהל רוסא וללה םיותל - "
 
-#: src/insets/figinset.C:2030 src/insets/insetgraphics.C:99
+#: src/insets/figinset.C:2185
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr ""
 
-#: src/insets/form_graphics.C:34 src/insets/form_graphics.C:35
-msgid "Graphics file|#G"
+#. / what appears in the minibuffer when opening
+#: src/insets/figinset.h:51
+msgid "Opened figure"
 msgstr ""
 
 #: src/insets/form_url.C:19
@@ -957,427 +823,230 @@ msgstr ""
 msgid "HTML type|#H"
 msgstr ""
 
-#: src/LyXAction.C:118 src/insets/form_url.C:31 src/insets/inseterror.C:179
-#: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:567
-#: src/layout_forms.C:795 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:262
-#: src/mathed/math_forms.C:177
+#: src/LyXAction.C:115 src/insets/form_url.C:31 src/insets/inseterror.C:167
+#: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:562
+#: src/layout_forms.C:790 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:261
+#: src/mathed/math_forms.C:179
 msgid "Close"
 msgstr ""
 
-#: src/insets/insetbib.C:92
+#: src/insets/insetbib.C:82
 msgid "Key:"
 msgstr ""
 
-#: src/insets/insetbib.C:106 src/insets/insetbib.C:107
+#: src/insets/insetbib.C:96 src/insets/insetbib.C:97
 msgid "Remark:|#R"
 msgstr ""
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
-#: src/insets/insetbib.C:287 src/insets/insetbib.C:288
+#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:269 src/insets/insetbib.C:270
 msgid "Key:|#K"
 msgstr ""
 
-#: src/insets/insetbib.C:134 src/insets/insetbib.C:135
-#: src/insets/insetbib.C:289 src/insets/insetbib.C:290
+#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
+#: src/insets/insetbib.C:271 src/insets/insetbib.C:272
 msgid "Label:|#L"
 msgstr ""
 
-#: src/insets/insetbib.C:188
+#: src/insets/insetbib.C:174
 msgid "Citation"
 msgstr ""
 
-#: src/insets/insetbib.C:298
+#: src/insets/insetbib.C:280
 msgid "Bibliography item"
 msgstr ""
 
-#: src/insets/insetbib.C:321
+#: src/insets/insetbib.C:295
 msgid "BibTeX Generated References"
 msgstr ""
 
-#: src/insets/insetbib.C:432
+#: src/insets/insetbib.C:412
 msgid "Database:"
 msgstr ""
 
-#: src/insets/insetbib.C:433
+#: src/insets/insetbib.C:413
 msgid "Style:  "
 msgstr ""
 
-#: src/insets/insetbib.C:441
+#: src/insets/insetbib.C:421
 msgid "BibTeX"
 msgstr ""
 
-#: src/insets/inset.C:76
-msgid "Opened inset"
-msgstr ""
-
-#: src/insets/inseterror.C:70 src/insets/inseterror.C:91 src/lyx_cb.C:3151
+#: src/insets/inseterror.C:67 src/insets/inseterror.C:86 src/lyx_cb.C:3740
 msgid "Error"
 msgstr ""
 
-#: src/insets/inseterror.C:164
-msgid "Opened error"
-msgstr ""
-
-#: src/insets/inseterror.C:192
+#: src/insets/inseterror.C:180
 msgid "LaTeX Error"
 msgstr ""
 
-#: src/insets/insetert.C:29
-msgid "ERT"
+#. / what appears in the minibuffer when opening
+#: src/insets/inseterror.h:59
+msgid "Opened error"
 msgstr ""
 
-#: src/insets/insetert.C:55
-msgid "Opened ERT Inset"
-msgstr ""
-
-#: src/insets/insetert.C:68
-msgid "Not permitted to change font-types inside ERT-insets!"
-msgstr ""
-
-#: src/insets/insetfoot.C:28
-msgid "foot"
-msgstr ""
-
-#: src/insets/insetfoot.C:51
-msgid "Opened Footnote Inset"
-msgstr ""
-
-#: src/insets/insetgraphics.C:87 src/insets/insetgraphics.C:163
-msgid "Graphics"
-msgstr ""
-
-#: src/insets/insetinclude.C:42 src/insets/insetinclude.C:43
+#: src/insets/insetinclude.C:40 src/insets/insetinclude.C:41
 msgid "Browse|#B"
 msgstr ""
 
-#: src/insets/insetinclude.C:46 src/insets/insetinclude.C:47
+#: src/insets/insetinclude.C:44 src/insets/insetinclude.C:45
 msgid "Don't typeset|#D"
 msgstr ""
 
-#: src/insets/insetinclude.C:56 src/insets/insetinclude.C:57
+#: src/insets/insetinclude.C:54 src/insets/insetinclude.C:55
 msgid "Load|#L"
 msgstr ""
 
-#: src/insets/insetinclude.C:60 src/insets/insetinclude.C:61
+#: src/insets/insetinclude.C:58 src/insets/insetinclude.C:59
 msgid "File name:|#F"
 msgstr ""
 
-#: src/insets/insetinclude.C:64 src/insets/insetinclude.C:65
+#: src/insets/insetinclude.C:62 src/insets/insetinclude.C:63
 msgid "Visible space|#s"
 msgstr ""
 
-#: src/insets/insetinclude.C:69 src/insets/insetinclude.C:70
+#: src/insets/insetinclude.C:67 src/insets/insetinclude.C:68
 msgid "Verbatim|#V"
 msgstr ""
 
-#: src/insets/insetinclude.C:73 src/insets/insetinclude.C:74
+#: src/insets/insetinclude.C:71 src/insets/insetinclude.C:72
 msgid "Use input|#i"
 msgstr ""
 
-#: src/insets/insetinclude.C:77 src/insets/insetinclude.C:78
+#: src/insets/insetinclude.C:75 src/insets/insetinclude.C:76
 msgid "Use include|#U"
 msgstr ""
 
 #. launches dialog
-#: src/insets/insetinclude.C:113 src/lyx_cb.C:244 src/lyxfunc.C:2737
-#: src/lyxfunc.C:2827 src/lyxfunc.C:2887 src/lyxfunc.C:3020 src/menus.C:175
-#: src/menus.C:307 src/menus.C:308 src/menus.C:309
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2532
+#: src/lyxfunc.C:2622 src/lyxfunc.C:2671 src/lyxfunc.C:2744 src/lyxfunc.C:2845
+#: src/menus.C:173 src/menus.C:305 src/menus.C:306 src/menus.C:307
 msgid "Documents"
 msgstr ""
 
 #. Use by default the master's path
-#: src/insets/insetinclude.C:116
+#: src/insets/insetinclude.C:114
 msgid "Select Child Document"
 msgstr ""
 
-#: src/insets/insetinclude.C:260 src/insets/insetinclude.C:301
+#: src/insets/insetinclude.C:258 src/insets/insetinclude.C:293
 msgid "Include"
 msgstr ""
 
-#: src/insets/insetinclude.C:297
+#: src/insets/insetinclude.C:289
 msgid "Input"
 msgstr ""
 
-#: src/insets/insetinclude.C:299
+#: src/insets/insetinclude.C:291
 msgid "Verbatim Input"
 msgstr ""
 
-#: src/insets/insetindex.C:52 src/insets/insetindex.C:53
+#: src/insets/insetindex.C:53 src/insets/insetindex.C:54
 msgid "Keyword:|#K"
 msgstr ""
 
-#: src/insets/insetindex.C:103
+#: src/insets/insetindex.C:104
 msgid "Index"
 msgstr ""
 
-#: src/insets/insetindex.C:110
+#: src/insets/insetindex.C:111
 msgid "Idx"
 msgstr ""
 
-#: src/insets/insetindex.C:138
+#: src/insets/insetindex.C:139
 msgid "PrintIndex"
 msgstr ""
 
-#: src/insets/insetinfo.C:74 src/insets/insetinfo.C:97
-#: src/insets/insetinfo.C:224
+#: src/insets/insetinfo.C:70 src/insets/insetinfo.C:89
+#: src/insets/insetinfo.C:209
 msgid "Note"
 msgstr ""
 
-#: src/insets/insetinfo.C:192
-msgid "Opened note"
-msgstr ""
-
-#: src/insets/insetinfo.C:210 src/insets/insetinfo.C:215 src/lyx.C:155
+#: src/insets/insetinfo.C:195 src/insets/insetinfo.C:200 src/lyx.C:155
 msgid "Close|#C^["
 msgstr ""
 
-#: src/insets/insetloa.C:31
+#. / what appears in the minibuffer when opening
+#: src/insets/insetinfo.h:60
+msgid "Opened note"
+msgstr ""
+
+#. /
+#: src/insets/insetloa.h:37
 msgid "List of Algorithms"
 msgstr ""
 
-#: src/insets/insetlof.C:12
+#. /
+#: src/insets/insetlof.h:35
 msgid "List of Figures"
 msgstr ""
 
-#: src/insets/insetlot.C:12
+#. /
+#: src/insets/insetlot.h:35
 msgid "List of Tables"
 msgstr ""
 
-#: src/insets/insetparent.C:42
+#: src/insets/insetparent.h:41
 msgid "Parent:"
 msgstr ""
 
-#: src/insets/insetref.C:59
+#: src/insets/insetref.C:57
 msgid "Page: "
 msgstr ""
 
-#: src/insets/insetref.C:61
+#: src/insets/insetref.C:59
 msgid "Ref: "
 msgstr ""
 
-#: src/insets/insettabular.C:163
-msgid "Opened Tabular Inset"
-msgstr ""
-
-#: src/insets/insettabular.C:925 src/text.C:2199
-msgid "Multicolumns can only be horizontally."
-msgstr ""
-
-#: src/insets/insettext.C:340
-msgid "Opened Text Inset"
-msgstr ""
-
-#: src/insets/insettext.C:1479
-msgid "Cannot include more than one paragraph!"
-msgstr ""
-
-#: src/insets/insettoc.C:20 src/lyxfunc.C:816
+#. /
+#: src/insets/insettoc.h:35 src/lyxfunc.C:789
 msgid "Table of Contents"
 msgstr ""
 
-#: src/insets/inseturl.C:115
-msgid "Opened Url"
-msgstr ""
-
-#: src/insets/inseturl.C:150
+#: src/insets/inseturl.C:139
 msgid "Insert Url"
 msgstr ""
 
-#: src/insets/inseturl.C:164
+#: src/insets/inseturl.C:153
 msgid "HtmlUrl: "
 msgstr ""
 
-#: src/insets/inseturl.C:166
+#: src/insets/inseturl.C:155
 msgid "Url: "
 msgstr ""
 
-#: src/intl.C:289 src/intl.C:290
+#. /
+#: src/insets/inseturl.h:61
+msgid "Opened Url"
+msgstr ""
+
+#. / what appears in the minibuffer when opening
+#: src/insets/lyxinset.h:95
+msgid "Opened inset"
+msgstr ""
+
+#: src/intl.C:294 src/intl.C:295
 msgid "other..."
 msgstr ""
 
-#: src/intl.C:360
+#: src/intl.C:365
 msgid "Key Mappings"
 msgstr ""
 
-#: src/kbsequence.C:213
+#: src/kbmap.C:245
 msgid "   options: "
 msgstr ""
 
-#: src/language.C:38
-msgid "Afrikaans"
-msgstr ""
-
-#: src/language.C:39
-msgid "American"
-msgstr ""
-
-#: src/language.C:40
-msgid "Arabic"
-msgstr ""
-
-#: src/language.C:41
-msgid "Austrian"
-msgstr ""
-
-#: src/language.C:42
-msgid "Bahasa"
-msgstr ""
-
-#: src/language.C:43
-msgid "Brazil"
-msgstr ""
-
-#: src/language.C:44
-#, fuzzy
-msgid "Breton"
-msgstr "ןוויכ"
-
-#: src/language.C:45
-msgid "Catalan"
-msgstr ""
-
-#: src/language.C:46
-msgid "Croatian"
-msgstr ""
-
-#: src/language.C:47
-msgid "Czech"
-msgstr ""
-
-#: src/language.C:48
-msgid "Danish"
-msgstr ""
-
-#: src/language.C:49
-msgid "Dutch"
-msgstr ""
-
-#: src/language.C:50
-msgid "English"
-msgstr ""
-
-#: src/language.C:51
-msgid "Esperanto"
-msgstr ""
-
-#: src/language.C:52
-msgid "Estonian"
-msgstr ""
-
-#: src/language.C:53
-msgid "Finnish"
-msgstr ""
-
-#: src/language.C:54
-msgid "Francais"
-msgstr ""
-
-#: src/language.C:55
-msgid "French"
-msgstr ""
-
-#: src/language.C:56
-msgid "Frenchb"
-msgstr ""
-
-#: src/language.C:57
-msgid "Galician"
-msgstr ""
-
-#: src/language.C:58
-msgid "German"
-msgstr ""
-
-#: src/language.C:59 src/mathed/math_forms.C:26
-msgid "Greek"
-msgstr ""
-
-#: src/language.C:60
-msgid "Hebrew"
-msgstr ""
-
-#: src/language.C:61
-msgid "Hungarian"
-msgstr ""
-
-#: src/language.C:62
-msgid "Irish"
-msgstr ""
-
-#: src/language.C:63
-msgid "Italian"
-msgstr ""
-
-#: src/language.C:64
-msgid "Lsorbian"
-msgstr ""
-
-#: src/language.C:65
-msgid "Magyar"
-msgstr ""
-
-#: src/language.C:66
-msgid "Norsk"
-msgstr ""
-
-#: src/language.C:67
-msgid "Polish"
-msgstr ""
-
-#: src/language.C:68
-msgid "Portuges"
-msgstr ""
-
-#: src/language.C:69
-msgid "Romanian"
-msgstr ""
-
-#: src/language.C:70
-msgid "Russian"
-msgstr ""
-
-#: src/language.C:71
-msgid "Scottish"
-msgstr ""
-
-#: src/language.C:72
-msgid "Spanish"
-msgstr ""
-
-#: src/language.C:73
-msgid "Slovak"
-msgstr ""
-
-#: src/language.C:74
-msgid "Slovene"
-msgstr ""
-
-#: src/language.C:75
-msgid "Swedish"
-msgstr ""
-
-#: src/language.C:76
-msgid "Turkish"
-msgstr ""
-
-#: src/language.C:77
-msgid "Usorbian"
-msgstr ""
-
-#: src/language.C:78
-msgid "Welsh"
-msgstr ""
-
-#: src/LaTeX.C:175 src/LaTeX.C:200 src/LaTeX.C:265 src/LaTeX.C:315
+#: src/LaTeX.C:148 src/LaTeX.C:165 src/LaTeX.C:225 src/LaTeX.C:271
 msgid "LaTeX run number "
 msgstr ""
 
-#: src/LaTeX.C:227 src/LaTeX.C:293
+#: src/LaTeX.C:188 src/LaTeX.C:249
 msgid "Running MakeIndex."
 msgstr ""
 
-#: src/LaTeX.C:241
+#: src/LaTeX.C:202
 msgid "Running BibTeX."
 msgstr ""
 
@@ -1401,125 +1070,125 @@ msgstr ""
 msgid "Allow accents on ALL characters|#w"
 msgstr ""
 
-#: src/latexoptions.C:51 src/lyxvc.C:266 src/lyxvc.C:267
+#: src/latexoptions.C:51 src/lyxvc.C:265 src/lyxvc.C:266
 msgid "Update|#Uu"
 msgstr ""
 
-#: src/layout.C:1448
+#: src/layout.C:1400
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr ""
 
-#: src/layout.C:1449
+#: src/layout.C:1401
 msgid "Check that the file \"textclass.lst\""
 msgstr ""
 
-#: src/layout.C:1450
+#: src/layout.C:1402
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr ""
 
-#: src/layout.C:1512
+#: src/layout.C:1464
 msgid "LyX wasn't able to find any layout description!"
 msgstr ""
 
-#: src/layout.C:1513
+#: src/layout.C:1465
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr ""
 
-#: src/layout.C:1514
+#: src/layout.C:1466
 msgid "Sorry, has to exit :-("
 msgstr ""
 
 #: src/layout_forms.C:25
 msgid "Separation"
-msgstr ""
+msgstr "תואקספ תדרפה"
 
 #: src/layout_forms.C:33
 msgid "Indent|#I"
-msgstr ""
+msgstr "i יקפוא גוליד|#I"
 
 #: src/layout_forms.C:37
 msgid "Skip|#K"
-msgstr ""
+msgstr "k יכנא חוור|#K"
 
 #: src/layout_forms.C:43
 msgid "Class:|#C"
-msgstr ""
+msgstr "c (class) הקלחמ|#C"
 
 #: src/layout_forms.C:49
 msgid "Pagestyle:|#P"
-msgstr ""
+msgstr "p ףד הנבמ|#P"
 
 #: src/layout_forms.C:54
 msgid "Fonts:|#F"
-msgstr ""
+msgstr "f םיטנופ:|#F"
 
 #: src/layout_forms.C:59
 msgid "Font Size:|#O"
-msgstr ""
+msgstr "o טנופ לדוג:|#O"
 
 #: src/layout_forms.C:76
 msgid "Float Placement:|#L"
-msgstr ""
+msgstr "l םיפצ םוקימ:|#L"
 
 #: src/layout_forms.C:80
 msgid "PS Driver:|#S"
-msgstr ""
+msgstr "s PS רביירד:|#S"
 
 #: src/layout_forms.C:85
 msgid "Encoding:|#D"
-msgstr ""
+msgstr "d דודיק:|#D"
 
 #: src/layout_forms.C:103
 msgid "One|#n"
-msgstr ""
+msgstr "n דחא|#n"
 
 #: src/layout_forms.C:107
 msgid "Two|#T"
-msgstr ""
+msgstr "t םיינש|#T"
 
 #: src/layout_forms.C:113
 msgid "Sides"
-msgstr ""
+msgstr "םידדצ"
 
 #: src/layout_forms.C:127
 msgid "One|#e"
-msgstr ""
+msgstr "e דחא|#e"
 
 #: src/layout_forms.C:131
 msgid "Two|#w"
-msgstr ""
+msgstr "w םיינש|#w"
 
 #: src/layout_forms.C:137
 msgid "Extra Options:|#X"
-msgstr ""
+msgstr "x תופסונ תויורשפא:|#X"
 
-#: src/layout_forms.C:141 src/layout_forms.C:249
+#: src/layout_forms.C:141
 msgid "Language:"
-msgstr ""
+msgstr "הפש:"
 
 #: src/layout_forms.C:151
 msgid "Default Skip:|#u"
-msgstr ""
+msgstr "u יכנא חוויר:|#u"
 
 #: src/layout_forms.C:157
 msgid "Section number depth"
-msgstr ""
+msgstr "םיפיעס רופסמ קמוע:"
 
 #: src/layout_forms.C:162
 msgid "Table of contents depth"
-msgstr ""
+msgstr "םיניינעה ןכותב רופסמ קמוע:"
 
 #: src/layout_forms.C:167
 msgid "Spacing|#g"
-msgstr ""
+msgstr "g חוויר|#g"
 
 #: src/layout_forms.C:173
 msgid "Bullet Shapes|#B"
-msgstr ""
+msgstr "b םיטילבתה תורוצ|#B"
 
 #: src/layout_forms.C:178
 msgid "Use AMS Math|#M"
-msgstr ""
+msgstr "m AMS ילומיסב שמתשה|#M"
 
 #: src/layout_forms.C:211
 msgid "Family:|#F"
@@ -1545,986 +1214,771 @@ msgstr ""
 msgid "Color:|#C"
 msgstr ""
 
-#: src/layout_forms.C:254
+#: src/layout_forms.C:249
 msgid "Toggle on all these|#T"
 msgstr ""
 
-#: src/layout_forms.C:257
+#: src/layout_forms.C:252
 msgid "These are never toggled"
 msgstr ""
 
-#: src/layout_forms.C:262
+#: src/layout_forms.C:257
 msgid "These are always toggled"
 msgstr ""
 
-#: src/layout_forms.C:305
+#: src/layout_forms.C:300
 msgid "Label Width:|#d"
 msgstr ""
 
-#: src/layout_forms.C:309
+#: src/layout_forms.C:304
 msgid "Indent"
 msgstr ""
 
-#: src/layout_forms.C:313
+#: src/layout_forms.C:308
 msgid "Above|#b"
 msgstr ""
 
-#: src/layout_forms.C:315
+#: src/layout_forms.C:310
 msgid "Below|#E"
 msgstr ""
 
-#: src/layout_forms.C:317
+#: src/layout_forms.C:312
 msgid "Above|#o"
 msgstr ""
 
-#: src/layout_forms.C:319
+#: src/layout_forms.C:314
 msgid "Below|#l"
 msgstr ""
 
-#: src/layout_forms.C:321
+#: src/layout_forms.C:316
 msgid "No Indent|#I"
 msgstr ""
 
-#: src/layout_forms.C:325 src/layout_forms.C:589 src/mathed/math_forms.C:92
+#: src/layout_forms.C:320 src/layout_forms.C:584 src/mathed/math_forms.C:94
 msgid "Right|#R"
 msgstr ""
 
-#: src/layout_forms.C:327
+#: src/layout_forms.C:322
 msgid "Left|#f"
 msgstr ""
 
-#: src/layout_forms.C:329
+#: src/layout_forms.C:324
 msgid "Block|#c"
 msgstr ""
 
-#: src/layout_forms.C:331
+#: src/layout_forms.C:326
 msgid "Center|#n"
 msgstr ""
 
-#: src/layout_forms.C:341
+#: src/layout_forms.C:336
 msgid "Above:|#v"
 msgstr ""
 
-#: src/layout_forms.C:345
+#: src/layout_forms.C:340
 msgid "Below:|#w"
 msgstr ""
 
-#: src/layout_forms.C:349
+#: src/layout_forms.C:344
 msgid "Pagebreaks"
 msgstr ""
 
-#: src/layout_forms.C:353
+#: src/layout_forms.C:348
 msgid "Lines"
 msgstr ""
 
-#: src/layout_forms.C:357 src/layout_forms.C:595 src/layout_forms.C:721
+#: src/layout_forms.C:352 src/layout_forms.C:590 src/layout_forms.C:716
 msgid "Alignment"
 msgstr ""
 
-#: src/layout_forms.C:361
+#: src/layout_forms.C:356
 msgid "Vertical Spaces"
 msgstr ""
 
-#: src/layout_forms.C:365
+#: src/layout_forms.C:360
 msgid "ExtraOpt|#X"
 msgstr ""
 
-#: src/layout_forms.C:369
+#: src/layout_forms.C:364
 msgid "Keep|#K"
 msgstr ""
 
-#: src/layout_forms.C:371
+#: src/layout_forms.C:366
 msgid "Keep|#p"
 msgstr ""
 
-#: src/layout_forms.C:388 src/lyx_gui_misc.C:395 src/lyx_sendfax.C:31
+#: src/layout_forms.C:383 src/lyx_gui_misc.C:409 src/lyx_sendfax.C:31
 msgid "OK|#O"
 msgstr ""
 
-#: src/layout_forms.C:427
+#: src/layout_forms.C:422
 msgid "Type:|#T"
 msgstr ""
 
-#: src/layout_forms.C:432
+#: src/layout_forms.C:427
 msgid "Single|#S"
 msgstr ""
 
-#: src/layout_forms.C:434
+#: src/layout_forms.C:429
 msgid "Double|#D"
 msgstr ""
 
-#: src/layout_forms.C:438
+#: src/layout_forms.C:433
 msgid "Text"
 msgstr ""
 
-#: src/layout_forms.C:458
+#: src/layout_forms.C:453
 msgid "Special:|#S"
 msgstr ""
 
-#: src/layout_forms.C:468
+#: src/layout_forms.C:463
 msgid "Margins"
 msgstr ""
 
-#: src/layout_forms.C:472
+#: src/layout_forms.C:467
 msgid "Foot/Head Margins"
 msgstr ""
 
-#: src/layout_forms.C:492
+#: src/layout_forms.C:487
 msgid "Orientation"
 msgstr ""
 
-#: src/layout_forms.C:498
+#: src/layout_forms.C:493
 msgid "Portrait|#o"
 msgstr ""
 
-#: src/layout_forms.C:500
+#: src/layout_forms.C:495
 msgid "Landscape|#L"
 msgstr ""
 
-#: src/layout_forms.C:504
+#: src/layout_forms.C:499
 msgid "Papersize:|#P"
 msgstr ""
 
-#: src/layout_forms.C:508
+#: src/layout_forms.C:503
 msgid "Custom Papersize"
 msgstr ""
 
-#: src/layout_forms.C:512
+#: src/layout_forms.C:507
 msgid "Use Geometry Package|#U"
 msgstr ""
 
-#: src/layout_forms.C:514
+#: src/layout_forms.C:509
 msgid "Width:|#W"
 msgstr ""
 
-#: src/layout_forms.C:517
+#: src/layout_forms.C:512
 msgid "Height:|#H"
 msgstr ""
 
-#: src/layout_forms.C:520
+#: src/layout_forms.C:515
 msgid "Top:|#T"
 msgstr ""
 
-#: src/layout_forms.C:523
+#: src/layout_forms.C:518
 msgid "Bottom:|#B"
 msgstr ""
 
-#: src/layout_forms.C:526
+#: src/layout_forms.C:521
 msgid "Left:|#e"
 msgstr ""
 
-#: src/layout_forms.C:529
+#: src/layout_forms.C:524
 msgid "Right:|#R"
 msgstr ""
 
-#: src/layout_forms.C:532
+#: src/layout_forms.C:527
 msgid "Headheight:|#i"
 msgstr ""
 
-#: src/layout_forms.C:535
+#: src/layout_forms.C:530
 msgid "Headsep:|#d"
 msgstr ""
 
-#: src/layout_forms.C:538
+#: src/layout_forms.C:533
 msgid "Footskip:|#F"
 msgstr ""
 
-#: src/layout_forms.C:573
+#: src/layout_forms.C:568
 msgid "Borders"
 msgstr ""
 
-#: src/layout_forms.C:577 src/layout_forms.C:727
+#: src/layout_forms.C:572 src/layout_forms.C:722
 msgid "Top|#T"
 msgstr ""
 
-#: src/layout_forms.C:581 src/layout_forms.C:733
+#: src/layout_forms.C:576 src/layout_forms.C:728
 msgid "Bottom|#B"
 msgstr ""
 
-#: src/layout_forms.C:585 src/mathed/math_forms.C:95
+#: src/layout_forms.C:580 src/mathed/math_forms.C:97
 msgid "Left|#L"
 msgstr ""
 
-#: src/layout_forms.C:599
+#: src/layout_forms.C:594
 msgid "Special Cell"
 msgstr ""
 
-#: src/layout_forms.C:603
+#: src/layout_forms.C:598
 msgid "Multicolumn|#M"
 msgstr ""
 
-#: src/layout_forms.C:605
+#: src/layout_forms.C:600
 msgid "Append Column|#A"
 msgstr ""
 
-#: src/layout_forms.C:608
+#: src/layout_forms.C:603
 msgid "Delete Column|#O"
 msgstr ""
 
-#: src/layout_forms.C:611
+#: src/layout_forms.C:606
 msgid "Append Row|#p"
 msgstr ""
 
-#: src/layout_forms.C:614
+#: src/layout_forms.C:609
 msgid "Delete Row|#w"
 msgstr ""
 
-#: src/layout_forms.C:617
+#: src/layout_forms.C:612
 msgid "Delete Table|#D"
 msgstr ""
 
-#: src/layout_forms.C:620
+#: src/layout_forms.C:615
 msgid "Column"
 msgstr ""
 
-#: src/layout_forms.C:623
+#: src/layout_forms.C:618
 msgid "Row"
 msgstr ""
 
-#: src/layout_forms.C:626
+#: src/layout_forms.C:621
 msgid "Set Borders|#S"
 msgstr ""
 
-#: src/layout_forms.C:629
+#: src/layout_forms.C:624
 msgid "Unset Borders|#U"
 msgstr ""
 
-#: src/layout_forms.C:632 src/layout_forms.C:646
+#: src/layout_forms.C:627 src/layout_forms.C:641
 msgid "Longtable"
 msgstr ""
 
-#: src/layout_forms.C:637
+#: src/layout_forms.C:632
 msgid "Rotate 90°|#9"
 msgstr ""
 
-#: src/layout_forms.C:639
+#: src/layout_forms.C:634
 msgid "Linebreaks|#N"
 msgstr ""
 
-#: src/layout_forms.C:641
+#: src/layout_forms.C:636
 msgid "Spec. Table"
 msgstr ""
 
-#: src/layout_forms.C:650
+#: src/layout_forms.C:645
 msgid "First Head"
 msgstr ""
 
-#: src/layout_forms.C:652
+#: src/layout_forms.C:647
 msgid "Head"
 msgstr ""
 
-#: src/layout_forms.C:654
+#: src/layout_forms.C:649
 msgid "Foot"
 msgstr ""
 
-#: src/layout_forms.C:656
+#: src/layout_forms.C:651
 msgid "Last Foot"
 msgstr ""
 
-#: src/layout_forms.C:658
+#: src/layout_forms.C:653
 msgid "New Page"
 msgstr ""
 
-#: src/layout_forms.C:660
+#: src/layout_forms.C:655
 msgid "Rotate 90°"
 msgstr ""
 
-#: src/layout_forms.C:662
+#: src/layout_forms.C:657
 msgid "Extra|#X"
 msgstr ""
 
-#: src/layout_forms.C:665
+#: src/layout_forms.C:660
 msgid "Left|#e"
 msgstr ""
 
-#: src/layout_forms.C:668
+#: src/layout_forms.C:663
 msgid "Right|#i"
 msgstr ""
 
-#: src/layout_forms.C:671
+#: src/layout_forms.C:666
 msgid "Center|#C"
 msgstr ""
 
-#: src/layout_forms.C:695
+#: src/layout_forms.C:690
 msgid "Extra Options"
 msgstr ""
 
-#: src/layout_forms.C:699
+#: src/layout_forms.C:694
 msgid "Length|#L"
 msgstr ""
 
-#: src/layout_forms.C:714
+#: src/layout_forms.C:709
 msgid "or %|#o"
 msgstr ""
 
-#: src/layout_forms.C:730
+#: src/layout_forms.C:725
 msgid "Middle|#d"
 msgstr ""
 
-#: src/layout_forms.C:742
+#: src/layout_forms.C:737
 msgid "HFill between Minipage paragraphs|#H"
 msgstr ""
 
-#: src/layout_forms.C:744
+#: src/layout_forms.C:739
 msgid "Start new Minipage|#S"
 msgstr ""
 
-#: src/layout_forms.C:748
+#: src/layout_forms.C:743
 msgid "Indented Paragraph|#I"
 msgstr ""
 
-#: src/layout_forms.C:751
+#: src/layout_forms.C:746
 msgid "Minipage|#M"
 msgstr ""
 
-#: src/layout_forms.C:754
+#: src/layout_forms.C:749
 msgid "Floatflt|#F"
 msgstr ""
 
-#: src/layout_forms.C:779
+#: src/layout_forms.C:774
 msgid "Special Multicolumn Alignment"
 msgstr ""
 
-#: src/layout_forms.C:799
+#: src/layout_forms.C:794
 msgid "Special Column Alignment"
 msgstr ""
 
-#.  LColor::color, gui, latex, x11, lyx
-#: src/LColor.C:42
-msgid "none"
-msgstr ""
-
-#: src/LColor.C:43
-msgid "black"
-msgstr ""
-
-#: src/LColor.C:44
-msgid "white"
-msgstr ""
-
-#: src/LColor.C:45
-msgid "red"
-msgstr ""
-
-#: src/LColor.C:46
-msgid "green"
-msgstr ""
-
-#: src/LColor.C:47
-msgid "blue"
-msgstr ""
-
-#: src/LColor.C:48
-msgid "cyan"
-msgstr ""
-
-#: src/LColor.C:49
-msgid "magenta"
-msgstr ""
-
-#: src/LColor.C:50
-msgid "yellow"
-msgstr ""
-
-#: src/LColor.C:51
-msgid "background"
-msgstr ""
-
-#: src/LColor.C:52
-msgid "foreground"
-msgstr ""
-
-#: src/LColor.C:53
-#, fuzzy
-msgid "selection"
-msgstr "ןוויכ"
-
-#: src/LColor.C:54
-msgid "latex"
-msgstr ""
-
-#: src/LColor.C:55
-msgid "floats"
-msgstr ""
-
-#: src/LColor.C:56
-msgid "note"
-msgstr ""
-
-#: src/LColor.C:57
-msgid "note background"
-msgstr ""
-
-#: src/LColor.C:58
-msgid "note frame"
-msgstr ""
-
-#: src/LColor.C:59
-msgid "depth bar"
-msgstr ""
-
-#: src/LColor.C:60
-msgid "command-inset"
-msgstr ""
-
-#: src/LColor.C:61
-msgid "command-inset background"
-msgstr ""
-
-#: src/LColor.C:62 src/LColor.C:79
-msgid "inset frame"
-msgstr ""
-
-#: src/LColor.C:63
-msgid "accent"
-msgstr ""
-
-#: src/LColor.C:64
-msgid "accent background"
-msgstr ""
-
-#: src/LColor.C:65
-msgid "accent frame"
-msgstr ""
-
-#: src/LColor.C:66
-msgid "minipage line"
-msgstr ""
-
-#: src/LColor.C:67
-msgid "special char"
-msgstr ""
-
-#: src/LColor.C:68
-#, fuzzy
-msgid "math"
-msgstr "הקיטמתמ"
-
-#: src/LColor.C:69
-msgid "math background"
-msgstr ""
-
-#: src/LColor.C:70
-msgid "math frame"
-msgstr ""
-
-#: src/LColor.C:71
-msgid "math cursor"
-msgstr ""
-
-#: src/LColor.C:72
-msgid "math line"
-msgstr ""
-
-#: src/LColor.C:73
-msgid "footnote"
-msgstr ""
-
-#: src/LColor.C:74
-msgid "footnote background"
-msgstr ""
-
-#: src/LColor.C:75
-msgid "footnote frame"
-msgstr ""
-
-#: src/LColor.C:76
-#, fuzzy
-msgid "ert"
-msgstr "הפסוה"
-
-#: src/LColor.C:77
-#, fuzzy
-msgid "inset"
-msgstr "הפסוה"
-
-#: src/LColor.C:78
-msgid "inset background"
-msgstr ""
-
-#: src/LColor.C:80
-#, fuzzy
-msgid "error"
-msgstr "!האיגש"
-
-#: src/LColor.C:81
-msgid "end-of-line marker"
-msgstr ""
-
-#: src/LColor.C:82
-msgid "appendix line"
-msgstr ""
-
-#: src/LColor.C:83
-msgid "vfill line"
-msgstr ""
-
-#: src/LColor.C:84
-msgid "top/bottom line"
-msgstr ""
-
-#: src/LColor.C:85
-msgid "table line"
-msgstr ""
-
-#: src/LColor.C:86
-msgid "tabular line"
-msgstr ""
-
-#: src/LColor.C:88
-msgid "tabularonoff line"
-msgstr ""
-
-#: src/LColor.C:90
-msgid "bottom area"
-msgstr ""
-
-#: src/LColor.C:91
-msgid "page break"
-msgstr ""
-
-#: src/LColor.C:92
-msgid "top of button"
-msgstr ""
-
-#: src/LColor.C:93
-msgid "bottom of button"
-msgstr ""
-
-#: src/LColor.C:94
-msgid "left of button"
-msgstr ""
-
-#: src/LColor.C:95
-msgid "right of button"
-msgstr ""
-
-#: src/LColor.C:96
-msgid "button background"
-msgstr ""
-
-#: src/LColor.C:97
-msgid "inherit"
-msgstr ""
-
-#: src/LColor.C:98
-msgid "ignore"
-msgstr ""
-
-#: src/Literate.C:58
+#: src/Literate.C:57
 msgid "Weaving document"
 msgstr ""
 
-#: src/Literate.C:88
+#: src/Literate.C:87
 msgid "Building program"
 msgstr ""
 
-#: src/LyXAction.C:94
+#: src/LyXAction.C:91
 msgid "Insert appendix"
 msgstr "חפסנ תפסוה"
 
-#: src/LyXAction.C:95
+#: src/LyXAction.C:92
 msgid "Describe command"
 msgstr "הדוקפ רואת"
 
-#: src/LyXAction.C:98
+#: src/LyXAction.C:95
 msgid "Select previous char"
 msgstr "םדוק ות תריחב"
 
-#: src/LyXAction.C:101
+#: src/LyXAction.C:98
 msgid "Insert bibtex"
 msgstr "BibTeX תפסוה"
 
-#: src/LyXAction.C:109
+#: src/LyXAction.C:106
 msgid "Build program"
 msgstr "(Build program) תינכות תיינב"
 
-#: src/LyXAction.C:110
+#: src/LyXAction.C:107
 msgid "Autosave"
 msgstr "תיטמוטוא הרימש"
 
-#: src/LyXAction.C:112
+#: src/LyXAction.C:109
 msgid "Go to beginning of document"
 msgstr "ךמסמה תליחתל רבעמ"
 
-#: src/LyXAction.C:114
+#: src/LyXAction.C:111
 msgid "Select to beginning of document"
 msgstr "ךמסמה תליחת דע הריחב"
 
-#: src/LyXAction.C:117
+#: src/LyXAction.C:114
 msgid "Check TeX"
 msgstr "TeX תקידב"
 
-#: src/LyXAction.C:120
+#: src/LyXAction.C:117
 msgid "Go to end of document"
 msgstr "ךמסמה ףוסל רבעמ"
 
-#: src/LyXAction.C:122
+#: src/LyXAction.C:119
 msgid "Select to end of document"
 msgstr "ךמסמה ףוס דע הריחב"
 
-#: src/LyXAction.C:123
+#: src/LyXAction.C:120
 msgid "Export to"
 msgstr "ל אוצי"
 
-#: src/LyXAction.C:124
+#: src/LyXAction.C:121
 msgid "Fax"
 msgstr "סקפ"
 
-#: src/LyXAction.C:127
+#: src/LyXAction.C:124
 msgid "Import document"
 msgstr "ךמסמ אובי"
 
-#: src/LyXAction.C:130
+#: src/LyXAction.C:127
 msgid "New document"
 msgstr "שדח ךמסמ"
 
-#: src/LyXAction.C:132
+#: src/LyXAction.C:129
 msgid "New document from template"
 msgstr "תינבתמ שדח ךמסמ"
 
-#: src/LyXAction.C:133
+#: src/LyXAction.C:130
 msgid "Open"
 msgstr "החיתפ"
 
-#: src/LyXAction.C:134 src/lyx_cb.C:840 src/print_form.C:72
+#: src/LyXAction.C:132
+msgid "Switch to previous document"
+msgstr "םדוקה ךמסמל רבעמ"
+
+#: src/LyXAction.C:133 src/lyx_cb.C:914 src/print_form.C:72
 msgid "Print"
 msgstr "הספדה"
 
-#: src/LyXAction.C:136
+#: src/LyXAction.C:135
 msgid "Revert to saved"
 msgstr "רומשה קתועל הרזח"
 
-#: src/LyXAction.C:138
+#: src/LyXAction.C:137
 msgid "Toggle read-only"
 msgstr "דבלב האירק (toggle) הנש"
 
-#: src/LyXAction.C:139
+#: src/LyXAction.C:138
 msgid "Update DVI"
 msgstr "DVI ןוכדע"
 
-#: src/LyXAction.C:142
+#: src/LyXAction.C:141
 msgid "Update PostScript"
 msgstr "PostScript ןוכדע"
 
-#: src/LyXAction.C:143
+#: src/LyXAction.C:142
 msgid "View DVI"
 msgstr "DVI-ב הייפצ"
 
-#: src/LyXAction.C:145
+#: src/LyXAction.C:144
 msgid "View PostScript"
 msgstr "PostScript-ב הייפצ"
 
-#: src/LyXAction.C:146 src/lyx_sendfax_main.C:280
+#: src/LyXAction.C:145 src/lyx_sendfax_main.C:278
 msgid "Save"
 msgstr "הרימש"
 
-#: src/LyXAction.C:147
+#: src/LyXAction.C:146
 msgid "Save As"
 msgstr "םשב הרימש"
 
-#: src/LyXAction.C:149 src/lyxfunc.C:692
+#: src/LyXAction.C:148 src/lyxfunc.C:643
 msgid "Cancel"
 msgstr "לוטיב"
 
-#: src/LyXAction.C:150
+#: src/LyXAction.C:149
 msgid "Go one char back"
 msgstr "הרוחא דחא ות הרזח"
 
-#: src/LyXAction.C:152
+#: src/LyXAction.C:151
 msgid "Go one char forward"
 msgstr "המידק דחא ות רבעמ"
 
-#: src/LyXAction.C:155
+#: src/LyXAction.C:154
 msgid "Insert citation"
 msgstr "(citation) טוטיצ תפסוה"
 
-#: src/LyXAction.C:158
+#: src/LyXAction.C:157
 msgid "Execute command"
 msgstr "הדוקפ עוציב"
 
-#: src/LyXAction.C:167
+#: src/LyXAction.C:159 src/lyx_cb.C:2439
+msgid "Copy"
+msgstr "הקתעה"
+
+#: src/LyXAction.C:160 src/lyx_cb.C:2451
+msgid "Cut"
+msgstr "הריזג"
+
+#: src/LyXAction.C:166
 msgid "Decrement environment depth"
 msgstr "הביבסה קמוע תנטקה"
 
-#: src/LyXAction.C:169
+#: src/LyXAction.C:168
 msgid "Increment environment depth"
 msgstr "הביבסה קמוע תלדגה"
 
-#: src/LyXAction.C:171
+#: src/LyXAction.C:170
 msgid "Change environment depth"
 msgstr "הביבסה קמוע יוניש"
 
-#: src/LyXAction.C:172
+#: src/LyXAction.C:171
 msgid "Insert ... dots"
 msgstr "תודוקנ ... תפסוה"
 
-#: src/LyXAction.C:173
+#: src/LyXAction.C:172
 msgid "Go down"
 msgstr "הטמל רבעמ"
 
-#: src/LyXAction.C:175
+#: src/LyXAction.C:174
 msgid "Select next line"
 msgstr "האבה הרושה תריחב"
 
-#: src/LyXAction.C:177
+#: src/LyXAction.C:176
 msgid "Choose Paragraph Environment"
 msgstr "הקספ תביבס תריחב"
 
-#: src/LyXAction.C:179
+#: src/LyXAction.C:178
 msgid "Insert end of sentence period"
 msgstr "הקספ ףוס ןמיס תפסוה"
 
-#: src/LyXAction.C:180
+#: src/LyXAction.C:179
 msgid "Go to next error"
 msgstr "האבה האיגשל רבעמ"
 
-#: src/LyXAction.C:182
+#: src/LyXAction.C:181
 msgid "Remove all error boxes"
 msgstr "האיגשה תואספוק לכ תרסה"
 
-#: src/LyXAction.C:184
-msgid "Insert a new ERT Inset"
-msgstr ""
-
-#: src/LyXAction.C:185 src/lyx_cb.C:2927
+#: src/LyXAction.C:182 src/lyx_cb.C:2391
 msgid "Insert Figure"
 msgstr "םירויא תפסוה"
 
-#: src/LyXAction.C:187
-#, fuzzy
-msgid "Insert Graphics"
-msgstr "חפסנ תפסוה"
-
-#: src/LyXAction.C:192 src/lyxfr0.C:94
+#: src/LyXAction.C:187 src/lyxfr0.C:97
 msgid "Find & Replace"
 msgstr "הפלחהו שופיח"
 
-#: src/LyXAction.C:194
+#: src/LyXAction.C:189
 msgid "Toggle bold"
 msgstr "(bold) הבע (toggle) יוניש"
 
-#: src/LyXAction.C:195
+#: src/LyXAction.C:190
 msgid "Toggle code style"
 msgstr "(code) דוק ןונגס (toggle) יוניש"
 
-#: src/LyXAction.C:196
+#: src/LyXAction.C:191
 msgid "Default font style"
 msgstr "לדחמ-תרירב ןפוג ןונגס"
 
-#: src/LyXAction.C:198
+#: src/LyXAction.C:193
 msgid "Toggle emphasize"
 msgstr "(emphasize) השגדה (toggle) יוניש"
 
-#: src/LyXAction.C:199
+#: src/LyXAction.C:194
 msgid "Toggle user defined style"
 msgstr "שמתשמה ןונגס (toggle) יוניש"
 
-#: src/LyXAction.C:201
+#: src/LyXAction.C:196
 msgid "Toggle noun style"
 msgstr "(noun) םש ןונגס(toggle) יוניש"
 
-#: src/LyXAction.C:202
+#: src/LyXAction.C:197
 msgid "Toggle roman font style"
 msgstr ""
 
-#: src/LyXAction.C:204
+#: src/LyXAction.C:199
+msgid "Toggle RTL"
+msgstr ""
+
+#: src/LyXAction.C:200
 msgid "Toggle sans font style"
 msgstr ""
 
-#: src/LyXAction.C:205
+#: src/LyXAction.C:201
 msgid "Set font size"
 msgstr ""
 
-#: src/LyXAction.C:206
+#: src/LyXAction.C:202
 msgid "Show font state"
 msgstr ""
 
-#: src/LyXAction.C:209
+#: src/LyXAction.C:205
 msgid "Toggle font underline"
 msgstr ""
 
-#: src/LyXAction.C:210 src/LyXAction.C:213
+#: src/LyXAction.C:206
 msgid "Insert Footnote"
 msgstr ""
 
-#: src/LyXAction.C:214
+#: src/LyXAction.C:208
 msgid "Select next char"
 msgstr ""
 
-#: src/LyXAction.C:217
+#: src/LyXAction.C:211
 msgid "Insert horizontal fill"
 msgstr ""
 
-#: src/LyXAction.C:220
+#: src/LyXAction.C:214
 msgid "Insert hyphenation point"
 msgstr ""
 
-#: src/LyXAction.C:222
+#: src/LyXAction.C:216
 msgid "Insert index item"
 msgstr ""
 
-#: src/LyXAction.C:224
+#: src/LyXAction.C:218
 msgid "Insert last index item"
 msgstr ""
 
-#: src/LyXAction.C:225
+#: src/LyXAction.C:219
 msgid "Insert index list"
 msgstr ""
 
-#: src/LyXAction.C:227
+#: src/LyXAction.C:221
 msgid "Turn off keymap"
 msgstr ""
 
-#: src/LyXAction.C:230
+#: src/LyXAction.C:224
 msgid "Use primary keymap"
 msgstr ""
 
-#: src/LyXAction.C:232
+#: src/LyXAction.C:226
 msgid "Use secondary keymap"
 msgstr ""
 
-#: src/LyXAction.C:233
+#: src/LyXAction.C:227
 msgid "Toggle keymap"
 msgstr ""
 
-#: src/LyXAction.C:235
+	#: src/LyXAction.C:229
 msgid "Insert Label"
 msgstr ""
 
-#: src/LyXAction.C:237
-msgid "Change language"
-msgstr ""
-
-#: src/LyXAction.C:238
+#: src/LyXAction.C:231
 msgid "View LaTeX log"
 msgstr ""
 
-#: src/LyXAction.C:243
+#: src/LyXAction.C:236
 msgid "Copy paragraph environment type"
 msgstr ""
 
-#: src/LyXAction.C:249
+#: src/LyXAction.C:242
 msgid "Paste paragraph environment type"
 msgstr ""
 
-#: src/LyXAction.C:256
+#: src/LyXAction.C:249
 msgid "Go to beginning of line"
 msgstr ""
 
-#: src/LyXAction.C:258
+#: src/LyXAction.C:251
 msgid "Select to beginning of line"
 msgstr ""
 
-#: src/LyXAction.C:260
+#: src/LyXAction.C:253
 msgid "Go to end of line"
 msgstr ""
 
-#: src/LyXAction.C:262
+#: src/LyXAction.C:255
 msgid "Select to end of line"
 msgstr ""
 
-#: src/LyXAction.C:264
+#: src/LyXAction.C:257
 msgid "Insert list of algorithms"
 msgstr ""
 
-#: src/LyXAction.C:266
+#: src/LyXAction.C:259
 msgid "Insert list of figures"
 msgstr ""
 
-#: src/LyXAction.C:268
+#: src/LyXAction.C:261
 msgid "Insert list of tables"
 msgstr "תואלבט תמישר תפסוה"
 
-#: src/LyXAction.C:269
+#: src/LyXAction.C:262
 msgid "Exit"
 msgstr "האיצי"
 
-#: src/LyXAction.C:271
+#: src/LyXAction.C:264
 msgid "Insert Margin note"
 msgstr ""
 
-#: src/LyXAction.C:277
+#: src/LyXAction.C:270
 msgid "Math Greek"
 msgstr ""
 
-#: src/LyXAction.C:280
+#: src/LyXAction.C:273
 msgid "Insert math symbol"
 msgstr ""
 
-#: src/LyXAction.C:285
+#: src/LyXAction.C:278
 msgid "Math mode"
 msgstr ""
 
-#: src/LyXAction.C:296
-msgid "Insert a new Number Inset"
+#: src/LyXAction.C:282 src/lyx_cb.C:2483
+msgid "Melt"
 msgstr ""
 
-#: src/LyXAction.C:299
+#: src/LyXAction.C:290
 msgid "Go one paragraph down"
 msgstr ""
 
-#: src/LyXAction.C:301
+#: src/LyXAction.C:292
 msgid "Select next paragraph"
 msgstr ""
 
-#: src/LyXAction.C:303
+#: src/LyXAction.C:294
 msgid "Go one paragraph up"
 msgstr ""
 
-#: src/LyXAction.C:305
+#: src/LyXAction.C:296
 msgid "Select previous paragraph"
 msgstr ""
 
-#: src/LyXAction.C:312
+#: src/LyXAction.C:298 src/lyx_cb.C:2460
+msgid "Paste"
+msgstr ""
+
+#: src/LyXAction.C:303
 msgid "Insert protected space"
 msgstr ""
 
-#: src/LyXAction.C:313
+#: src/LyXAction.C:304
 msgid "Insert quote"
-msgstr ""
+msgstr "טוטיצ תסנכה"
 
-#: src/LyXAction.C:315
+#: src/LyXAction.C:306
 msgid "Reconfigure"
 msgstr ""
 
-#: src/LyXAction.C:320
+#: src/LyXAction.C:307 src/lyx_cb.C:2143
+msgid "Redo"
+msgstr "לוטיב לוטיב"
+
+#: src/LyXAction.C:311
 msgid "Insert cross reference"
 msgstr ""
 
-#: src/LyXAction.C:342 src/lyx_cb.C:2939
+#: src/LyXAction.C:333 src/lyx_cb.C:2403
 msgid "Insert Table"
-msgstr ""
+msgstr "הלבט תסנכה"
 
-#: src/LyXAction.C:344
-msgid "Insert a new Tabular Inset"
-msgstr ""
-
-#: src/LyXAction.C:345
+#: src/LyXAction.C:334
 msgid "Toggle TeX style"
-msgstr ""
+msgstr "TeX ןונגס בצמ יוניש"
 
-#: src/LyXAction.C:347
-msgid "Insert a new Text Inset"
-msgstr ""
-
-#: src/LyXAction.C:349
+#: src/LyXAction.C:336
 msgid "Insert table of contents"
-msgstr ""
+msgstr "םיניינע ןכות תסנכה"
 
-#: src/LyXAction.C:351
+#: src/LyXAction.C:338
 msgid "View table of contents"
-msgstr ""
+msgstr "םיניינעה ןכותב הפצ"
 
-#: src/LyXAction.C:353
+#: src/LyXAction.C:340
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr ""
 
-#: src/LyXAction.C:365
+#: src/LyXAction.C:344 src/lyx_cb.C:2123
+msgid "Undo"
+msgstr ""
+
+#: src/LyXAction.C:352
 msgid "Register document under version control"
 msgstr ""
 
-#: src/LyXAction.C:592
+#: src/LyXAction.C:576
 msgid "No description available!"
 msgstr ""
 
@@ -2580,437 +2034,493 @@ msgstr ""
 msgid "Go to Reference|#G"
 msgstr ""
 
-#: src/lyx_cb.C:220
+#: src/lyx_cb.C:290
 msgid "Save failed. Rename and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:222
+#: src/lyx_cb.C:292
 msgid "(If not, document is not saved.)"
 msgstr ""
 
-#: src/lyx_cb.C:245 src/lyxfunc.C:2738
+#: src/lyx_cb.C:315 src/lyxfunc.C:2533
 msgid "Templates"
 msgstr ""
 
-#: src/lyx_cb.C:250
+#: src/lyx_cb.C:320
 msgid "Enter Filename to Save Document as"
 msgstr ""
 
-#: src/lyx_cb.C:266
+#. Cancel: Do nothing
+#: src/lyx_cb.C:329 src/lyxfunc.C:2539 src/lyxfunc.C:2566 src/lyxfunc.C:2631
+#: src/lyxfunc.C:2680 src/lyxfunc.C:2705 src/lyxfunc.C:2715 src/lyxfunc.C:2760
+#: src/lyxfunc.C:2785 src/lyxfunc.C:2795 src/lyxfunc.C:2854
+msgid "Canceled."
+msgstr ""
+
+#: src/lyx_cb.C:340
 msgid "Same name as document already has:"
 msgstr ""
 
-#: src/lyx_cb.C:268
+#: src/lyx_cb.C:342
 msgid "Save anyway?"
 msgstr ""
 
-#: src/lyx_cb.C:274
+#: src/lyx_cb.C:348
 msgid "Another document with same name open!"
 msgstr ""
 
-#: src/lyx_cb.C:276
+#: src/lyx_cb.C:350
 msgid "Replace with current document?"
 msgstr ""
 
-#: src/lyx_cb.C:284
+#: src/lyx_cb.C:358
 msgid "Document renamed to '"
 msgstr ""
 
-#: src/lyx_cb.C:285
+#: src/lyx_cb.C:360
 msgid "', but not saved..."
 msgstr ""
 
-#: src/lyx_cb.C:291
+#: src/lyx_cb.C:366
 msgid "Document already exists:"
 msgstr ""
 
-#: src/lyx_cb.C:293
+#: src/lyx_cb.C:368
 msgid "Replace file?"
 msgstr ""
 
-#: src/lyx_cb.C:324 src/lyx_cb.C:354
+#: src/lyx_cb.C:399 src/lyx_cb.C:429
 msgid "One error detected"
 msgstr ""
 
-#: src/lyx_cb.C:325 src/lyx_cb.C:355
+#: src/lyx_cb.C:400 src/lyx_cb.C:430
 msgid "You should try to fix it."
 msgstr ""
 
-#: src/lyx_cb.C:328 src/lyx_cb.C:358
+#: src/lyx_cb.C:403 src/lyx_cb.C:433
 msgid " errors detected."
 msgstr ""
 
-#: src/lyx_cb.C:329 src/lyx_cb.C:359
+#: src/lyx_cb.C:404 src/lyx_cb.C:434
 msgid "You should try to fix them."
 msgstr ""
 
-#: src/lyx_cb.C:331
+#: src/lyx_cb.C:406
 msgid "There were errors during the LaTeX run."
 msgstr ""
 
-#: src/lyx_cb.C:344
+#: src/lyx_cb.C:419
 msgid "Wrong type of document"
 msgstr ""
 
-#: src/lyx_cb.C:345
+#: src/lyx_cb.C:420
 msgid "The Build operation is not allowed in this document"
 msgstr ""
 
-#: src/lyx_cb.C:346 src/lyx_cb.C:361
+#: src/lyx_cb.C:421 src/lyx_cb.C:436
 msgid "There were errors during the Build process."
 msgstr ""
 
-#: src/lyx_cb.C:372
+#: src/lyx_cb.C:447
 msgid "Chktex does not work with SGML derived documents."
 msgstr ""
 
-#: src/lyx_cb.C:381
+#: src/lyx_cb.C:456
 msgid "No warnings found."
 msgstr ""
 
-#: src/lyx_cb.C:383
+#: src/lyx_cb.C:458
 msgid "One warning found."
 msgstr ""
 
-#: src/lyx_cb.C:384
+#: src/lyx_cb.C:459
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr ""
 
-#: src/lyx_cb.C:387
+#: src/lyx_cb.C:462
 msgid " warnings found."
 msgstr ""
 
-#: src/lyx_cb.C:388
+#: src/lyx_cb.C:463
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr ""
 
-#: src/lyx_cb.C:390
+#: src/lyx_cb.C:465
 msgid "Chktex run successfully"
 msgstr ""
 
-#: src/lyx_cb.C:392
+#: src/lyx_cb.C:467
 msgid "It seems chktex does not work."
 msgstr ""
 
-#. It seems that, if wait is false, we never get back
-#. the return code of the command. This means that all
-#. the code I added in PrintApplyCB is currently
-#. useless...
-#. CHECK What should we do here?
-#: src/lyx_cb.C:485 src/lyx_cb.C:488
+#: src/lyx_cb.C:553 src/lyx_cb.C:557
 msgid "Executing command:"
 msgstr ""
 
-#: src/lyx_cb.C:712 src/lyxfunc.C:2780
+#: src/lyx_cb.C:784 src/lyx_cb.C:822 src/lyx_cb.C:856 src/lyx_cb.C:884
+#: src/lyxfunc.C:2575
 msgid "File already exists:"
 msgstr ""
 
-#: src/lyx_cb.C:714
+#: src/lyx_cb.C:786 src/lyx_cb.C:824 src/lyx_cb.C:858 src/lyx_cb.C:886
 msgid "Do you want to overwrite the file?"
 msgstr ""
 
-#: src/lyx_cb.C:715
+#: src/lyx_cb.C:787 src/lyx_cb.C:825 src/lyx_cb.C:859 src/lyx_cb.C:887
 msgid "Canceled"
 msgstr ""
 
-#: src/lyx_cb.C:736
+#: src/lyx_cb.C:793
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:742
+#: src/lyx_cb.C:800
 msgid "Nice LaTeX file saved as"
 msgstr ""
 
-#: src/lyx_cb.C:755
+#: src/lyx_cb.C:812
 msgid "Document class must be linuxdoc."
 msgstr ""
 
-#: src/lyx_cb.C:766
+#: src/lyx_cb.C:829
 msgid "Building LinuxDoc SGML file `"
 msgstr ""
 
-#: src/lyx_cb.C:771
+#: src/lyx_cb.C:834
 msgid "LinuxDoc SGML file save as"
 msgstr ""
 
-#: src/lyx_cb.C:783
+#: src/lyx_cb.C:846
 msgid "Document class must be docbook."
 msgstr ""
 
-#: src/lyx_cb.C:794
+#: src/lyx_cb.C:863
 msgid "Building DocBook SGML file `"
 msgstr ""
 
-#: src/lyx_cb.C:799
+#: src/lyx_cb.C:868
 msgid "DocBook SGML file save as"
 msgstr ""
 
-#: src/lyx_cb.C:819
+#: src/lyx_cb.C:893
 msgid "Ascii file saved as"
 msgstr ""
 
-#: src/lyx_cb.C:864 src/lyx_cb.C:891 src/lyx_cb.C:916
+#: src/lyx_cb.C:937
 msgid "Document exported as HTML to file `"
 msgstr ""
 
-#: src/lyx_cb.C:867 src/lyx_cb.C:894 src/lyx_cb.C:919
+#: src/lyx_cb.C:940
 msgid "Unable to convert to HTML the file `"
 msgstr ""
 
-#: src/lyx_cb.C:985
+#: src/lyx_cb.C:997
 msgid "Unknown export type: "
 msgstr ""
 
-#: src/lyx_cb.C:1030
+#: src/lyx_cb.C:1042
 msgid "Autosaving current document..."
 msgstr ""
 
-#: src/lyx_cb.C:1070
+#: src/lyx_cb.C:1082
 msgid "Autosave Failed!"
 msgstr ""
 
-#: src/lyx_cb.C:1126
+#: src/lyx_cb.C:1138
 msgid "File to Insert"
 msgstr ""
 
-#: src/lyx_cb.C:1136
+#: src/lyx_cb.C:1148
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:1143
+#: src/lyx_cb.C:1155
 msgid "Error! Cannot open specified file: "
 msgstr ""
 
-#: src/lyx_cb.C:1178
+#: src/lyx_cb.C:1193
 msgid "Table Of Contents"
 msgstr ""
 
-#: src/lyx_cb.C:1194 src/mathed/formula.C:1044
+#: src/lyx_cb.C:1209 src/mathed/formula.C:1041
 msgid "Enter new label to insert:"
 msgstr ""
 
-#: src/lyx_cb.C:1218
+#: src/lyx_cb.C:1233
 msgid "Insert Reference"
 msgstr ""
 
+#: src/lyx_cb.C:1268
+msgid "Inserting Footnote..."
+msgstr ""
+
+#. Import file
+#: src/lyx_cb.C:1332
+msgid "Importing LinuxDoc SGML file `"
+msgstr ""
+
 #. TeX output asked
-#: src/lyx_cb.C:1302
+#: src/lyx_cb.C:1340
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr ""
 
 #. dvi output asked
-#: src/lyx_cb.C:1308
+#: src/lyx_cb.C:1347
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr ""
 
-#: src/lyx_cb.C:1361
+#: src/lyx_cb.C:1400
 msgid "Converting DocBook SGML to dvi file..."
 msgstr ""
 
-#: src/lyx_cb.C:1389
+#: src/lyx_cb.C:1515
 msgid "Character Style"
-msgstr ""
+msgstr "ות ןונגס"
 
-#: src/lyx_cb.C:1599
+#: src/lyx_cb.C:1721
 msgid "Paragraph Environment"
-msgstr ""
+msgstr "הקספ תביבס"
 
-#: src/lyx_cb.C:1869
+#: src/lyx_cb.C:1976
 msgid "Document Layout"
-msgstr ""
+msgstr "ךמסמ הנבמ"
 
-#: src/lyx_cb.C:1907
+#: src/lyx_cb.C:2015
 msgid "Quotes"
-msgstr ""
+msgstr "םיטוטיצ"
 
-#: src/lyx_cb.C:1955
+#: src/lyx_cb.C:2062
 msgid "LaTeX Preamble"
-msgstr ""
+msgstr "LaTeX תמדקה"
 
-#: src/lyx_cb.C:1972
+#: src/lyx_cb.C:2079
 msgid "Do you want to save the current settings"
-msgstr ""
+msgstr "תויחכונה תורדגהה תא רומשל ךנוצרב םאה"
 
-#: src/lyx_cb.C:1973
+#: src/lyx_cb.C:2080
 msgid "for Character, Document, Paper and Quotes"
-msgstr ""
+msgstr "םיטוטיצו ריינ ,ךמסמ ,ות רובע"
 
-#: src/lyx_cb.C:1974
+#: src/lyx_cb.C:2081
 msgid "as default for new documents?"
+msgstr "?שדח ךמסמ רובע לדחמ תרירבכ"
+
+#: src/lyx_cb.C:2097 src/lyx_cb.C:2110
+msgid "Open/Close..."
 msgstr ""
 
-#: src/lyx_cb.C:2214
+#: src/lyx_cb.C:2128
+msgid "No further undo information"
+msgstr ""
+
+#: src/lyx_cb.C:2138
+msgid "Redo not yet supported in math mode"
+msgstr ""
+
+#: src/lyx_cb.C:2148
+msgid "No further redo information"
+msgstr ""
+
+#: src/lyx_cb.C:2345
+msgid "Font: "
+msgstr ""
+
+#: src/lyx_cb.C:2349
+msgid ", Depth: "
+msgstr ""
+
+#: src/lyx_cb.C:2375
+msgid "Inserting margin note..."
+msgstr ""
+
+#: src/lyx_cb.C:2416
+msgid "Paragraph environment type copied"
+msgstr ""
+
+#: src/lyx_cb.C:2425
+msgid "Paragraph environment type set"
+msgstr ""
+
+#: src/lyx_cb.C:2518
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr ""
+
+#: src/lyx_cb.C:2755
 msgid "Paragraph layout set"
 msgstr ""
 
-#: src/lyx_cb.C:2289
+#: src/lyx_cb.C:2825
 msgid "Should I set some parameters to"
 msgstr ""
 
-#: src/lyx_cb.C:2291
+#: src/lyx_cb.C:2827
 msgid "the defaults of this document class?"
 msgstr ""
 
 #. unable to load new style
-#: src/lyx_cb.C:2300 src/lyx_cb.C:2443 src/lyx_cb.C:2450
+#: src/lyx_cb.C:2836 src/lyx_cb.C:2961 src/lyx_cb.C:2968
 msgid "Conversion Errors!"
 msgstr ""
 
-#: src/lyx_cb.C:2301 src/lyx_cb.C:2451
+#: src/lyx_cb.C:2837 src/lyx_cb.C:2969
 msgid "Unable to switch to new document class."
 msgstr ""
 
-#: src/lyx_cb.C:2302 src/lyx_cb.C:2452
+#: src/lyx_cb.C:2838 src/lyx_cb.C:2970
 msgid "Reverting to original document class."
 msgstr ""
 
-#: src/lyx_cb.C:2428
+#: src/lyx_cb.C:2945
 msgid "Converting document to new document class..."
 msgstr ""
 
-#: src/lyx_cb.C:2438
+#: src/lyx_cb.C:2956
 msgid "One paragraph couldn't be converted"
 msgstr ""
 
-#: src/lyx_cb.C:2441
+#: src/lyx_cb.C:2959
 msgid " paragraphs couldn't be converted"
 msgstr ""
 
-#: src/lyx_cb.C:2444
+#: src/lyx_cb.C:2962
 msgid "into chosen document class"
 msgstr ""
 
-#: src/lyx_cb.C:2530
+#: src/lyx_cb.C:3048
 msgid "Document layout set"
 msgstr ""
 
-#: src/lyx_cb.C:2566
+#: src/lyx_cb.C:3094 src/lyx_cb.C:3098
+msgid "No more notes"
+msgstr ""
+
+#: src/lyx_cb.C:3127
 msgid "Quotes type set"
 msgstr ""
 
-#: src/lyx_cb.C:2628
+#: src/lyx_cb.C:3191
 msgid "LaTeX preamble set"
 msgstr ""
 
-#: src/lyx_cb.C:2649
+#: src/lyx_cb.C:3212
 msgid "Cannot insert table in table."
 msgstr ""
 
-#: src/lyx_cb.C:2654
+#: src/lyx_cb.C:3217
 msgid "Inserting table..."
 msgstr ""
 
-#: src/lyx_cb.C:2721
+#: src/lyx_cb.C:3279
 msgid "Table inserted"
 msgstr ""
 
-#: src/lyx_cb.C:2779 src/lyx_cb.C:2797
+#: src/lyx_cb.C:3336 src/lyx_cb.C:3354
 msgid "ERROR!  Unable to print!"
 msgstr ""
 
-#: src/lyx_cb.C:2780
+#: src/lyx_cb.C:3337
 msgid "Check 'range of pages'!"
 msgstr ""
 
-#: src/lyx_cb.C:2798
+#: src/lyx_cb.C:3355
 msgid "Check 'number of copies'!"
 msgstr ""
 
-#: src/lyx_cb.C:2907
+#: src/lyx_cb.C:3464
 msgid "Error:"
 msgstr ""
 
-#: src/lyx_cb.C:2908
+#: src/lyx_cb.C:3465
 msgid "Unable to print"
 msgstr ""
 
-#: src/lyx_cb.C:2909
+#: src/lyx_cb.C:3466
 msgid "Check that your parameters are correct"
 msgstr ""
 
-#: src/lyx_cb.C:2954
+#: src/lyx_cb.C:3487
 msgid "Inserting figure..."
 msgstr ""
 
-#: src/lyx_cb.C:2959 src/lyx_cb.C:3011
+#: src/lyx_cb.C:3492 src/lyx_cb.C:3543
 msgid "Figure inserted"
 msgstr ""
 
-#: src/lyx_cb.C:3049
+#: src/lyx_cb.C:3573
 msgid "Screen options set"
 msgstr ""
 
-#: src/lyx_cb.C:3079
+#: src/lyx_cb.C:3603
 msgid "LaTeX Options"
 msgstr ""
 
-#: src/lyx_cb.C:3088
+#: src/lyx_cb.C:3612
 msgid "Running configure..."
 msgstr ""
 
-#: src/lyx_cb.C:3095
+#: src/lyx_cb.C:3619
 msgid "Reloading configuration..."
 msgstr ""
 
-#: src/lyx_cb.C:3097
+#: src/lyx_cb.C:3621
 msgid "The system has been reconfigured."
 msgstr ""
 
-#: src/lyx_cb.C:3098
+#: src/lyx_cb.C:3622
 msgid "You need to restart LyX to make use of any"
 msgstr ""
 
-#: src/lyx_cb.C:3099
+#: src/lyx_cb.C:3623
 msgid "updated document class specifications."
 msgstr ""
 
-#: src/lyx_cb.C:3152
+#: src/lyx_cb.C:3741
 msgid "Couldn't find this label"
 msgstr ""
 
-#: src/lyx_cb.C:3153
+#: src/lyx_cb.C:3742
 msgid "in current document."
 msgstr ""
 
-#: src/lyx_cb.C:3185
+#: src/lyx_cb.C:3774
 msgid "*** No Document ***"
 msgstr ""
 
-#: src/lyx_cb.C:3340
+#: src/lyx_cb.C:3939
 msgid "*** No labels found in document ***"
 msgstr ""
 
-#: src/lyxfont.C:37
+#: src/lyxfont.C:39
 msgid "Roman"
 msgstr ""
 
-#: src/lyxfont.C:37
+#: src/lyxfont.C:39
 msgid "Sans serif"
 msgstr ""
 
-#: src/lyxfont.C:37
+#: src/lyxfont.C:39
 msgid "Typewriter"
 msgstr ""
 
-#: src/lyxfont.C:37
+#: src/lyxfont.C:39
 msgid "Symbol"
 msgstr ""
 
-#: src/lyxfont.C:37 src/lyxfont.C:42 src/lyxfont.C:46 src/lyxfont.C:53
-#: src/lyxfont.C:57
+#: src/lyxfont.C:39 src/lyxfont.C:43 src/lyxfont.C:46 src/lyxfont.C:52
+#: src/lyxfont.C:60 src/lyxfont.C:63 src/lyxfont.C:68
 msgid "Inherit"
 msgstr ""
 
-#: src/lyxfont.C:38 src/lyxfont.C:42 src/lyxfont.C:47 src/lyxfont.C:53
-#: src/lyxfont.C:57
+#: src/lyxfont.C:40 src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52
+#: src/lyxfont.C:60 src/lyxfont.C:63 src/lyxfont.C:68
 msgid "Ignore"
 msgstr ""
 
-#: src/lyxfont.C:42
+#: src/lyxfont.C:43
 msgid "Medium"
 msgstr ""
 
-#: src/lyxfont.C:42
+#: src/lyxfont.C:43
 msgid "Bold"
 msgstr ""
 
@@ -3030,511 +2540,629 @@ msgstr ""
 msgid "Smallcaps"
 msgstr ""
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:50
 msgid "Tiny"
 msgstr ""
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:50
 msgid "Smallest"
 msgstr ""
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:50
 msgid "Smaller"
 msgstr ""
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:50
 msgid "Small"
 msgstr ""
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:50
 msgid "Normal"
 msgstr ""
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:50
 msgid "Large"
 msgstr ""
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:51
 msgid "Larger"
 msgstr ""
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:51
 msgid "Largest"
 msgstr ""
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:51
 msgid "Huge"
 msgstr ""
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:51
 msgid "Huger"
 msgstr ""
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:51
 msgid "Increase"
 msgstr ""
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:51
 msgid "Decrease"
 msgstr ""
 
+#: src/lyxfont.C:55
+msgid "tiny"
+msgstr ""
+
+#: src/lyxfont.C:55
+msgid "smallest"
+msgstr ""
+
+#: src/lyxfont.C:55
+msgid "smaller"
+msgstr ""
+
+#: src/lyxfont.C:55
+msgid "small"
+msgstr ""
+
+#: src/lyxfont.C:55
+msgid "normal"
+msgstr ""
+
+#: src/lyxfont.C:55
+msgid "large"
+msgstr ""
+
+#: src/lyxfont.C:56
+msgid "larger"
+msgstr ""
+
+#: src/lyxfont.C:56
+msgid "largest"
+msgstr ""
+
+#: src/lyxfont.C:56
+msgid "huge"
+msgstr ""
+
+#: src/lyxfont.C:56
+msgid "huger"
+msgstr ""
+
+#: src/lyxfont.C:56
+msgid "increase"
+msgstr ""
+
+#: src/lyxfont.C:56
+msgid "decrease"
+msgstr ""
+
 #: src/lyxfont.C:57
+msgid "inherit"
+msgstr ""
+
+#: src/lyxfont.C:57
+msgid "ignore"
+msgstr ""
+
+#: src/lyxfont.C:60
 msgid "Off"
 msgstr ""
 
-#: src/lyxfont.C:57
+#: src/lyxfont.C:60
 msgid "On"
 msgstr ""
 
-#: src/lyxfont.C:57
+#: src/lyxfont.C:60 src/lyxfont.C:63
 msgid "Toggle"
 msgstr ""
 
-#: src/lyxfont.C:402
+#: src/lyxfont.C:63
+msgid "LTR"
+msgstr ""
+
+#: src/lyxfont.C:63
+msgid "RTL"
+msgstr ""
+
+#: src/lyxfont.C:66
+msgid "None"
+msgstr ""
+
+#: src/lyxfont.C:66
+msgid "Black"
+msgstr ""
+
+#: src/lyxfont.C:66
+msgid "White"
+msgstr ""
+
+#: src/lyxfont.C:66
+msgid "Red"
+msgstr ""
+
+#: src/lyxfont.C:66
+msgid "Green"
+msgstr ""
+
+#: src/lyxfont.C:66
+msgid "Blue"
+msgstr ""
+
+#: src/lyxfont.C:67
+msgid "Cyan"
+msgstr ""
+
+#: src/lyxfont.C:67
+msgid "Magenta"
+msgstr ""
+
+#: src/lyxfont.C:68
+msgid "Yellow"
+msgstr ""
+
+#: src/lyxfont.C:68 src/menus.C:169 src/menus.C:277 src/menus.C:278
+#: src/menus.C:279
+msgid "Math"
+msgstr "m תואחסונ"
+
+#: src/lyxfont.C:68
+msgid "Inset"
+msgstr ""
+
+#: src/lyxfont.C:384
 msgid "Emphasis "
 msgstr "השגדה"
 
-#: src/lyxfont.C:405
+#: src/lyxfont.C:386
 msgid "Underline "
 msgstr ""
 
-#: src/lyxfont.C:408
+#: src/lyxfont.C:388
 msgid "Noun "
 msgstr "םש"
 
-#: src/lyxfont.C:410
+#: src/lyxfont.C:390
 msgid "Latex "
 msgstr ""
 
-#: src/lyxfont.C:416
+#: src/lyxfont.C:392
+msgid "Direction "
+msgstr "ןוויכ"
+
+#: src/lyxfont.C:394
 msgid "Default"
 msgstr "לדחמ תרירב"
 
-#: src/lyxfont.C:417
-msgid "Language: "
-msgstr ""
-
-#: src/lyxfr1.C:124 src/lyxfr1.C:161
+#: src/lyxfr1.C:149 src/lyxfr1.C:186
 msgid "Sorry!"
 msgstr "!רעטצמ"
 
-#: src/lyxfr1.C:124 src/lyxfr1.C:161
+#: src/lyxfr1.C:149 src/lyxfr1.C:186
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ".קיר ות וא דדוב חוור ףילחהל ךתורשפאב ןיא"
 
-#: src/lyxfr1.C:192 src/lyxfr1.C:239
+#: src/lyxfr1.C:217 src/lyxfr1.C:265
 msgid "String not found!"
 msgstr "!האצמנ אל תזורחמה"
 
-#: src/lyxfr1.C:196
+#: src/lyxfr1.C:221
 msgid "1 string has been replaced."
 msgstr " :ופלחוהש תוזורחמה רפסמ"
 
-#: src/lyxfr1.C:199
+#: src/lyxfr1.C:224
 msgid " strings have been replaced."
 msgstr " :ופלחוהש תוזורחמה רפסמ"
 
-#: src/lyxfr1.C:235
+#: src/lyxfr1.C:261
 msgid "Found."
 msgstr "אצמנ"
 
-#: src/lyxfunc.C:282
+#: src/lyxfunc.C:263
 msgid "Unknown sequence:"
 msgstr "רכומ אל ףצר:"
 
-#: src/lyxfunc.C:325 src/lyxfunc.C:2687
+#: src/lyxfunc.C:306 src/lyxfunc.C:2482
 msgid "Unknown action"
 msgstr ""
 
 #. no
-#: src/lyxfunc.C:339
+#: src/lyxfunc.C:320
 msgid "Document is read-only"
 msgstr ""
 
 #. no
-#: src/lyxfunc.C:344
+#: src/lyxfunc.C:325
 msgid "Command not allowed without any document open"
 msgstr ""
 
-#: src/lyxfunc.C:585
+#: src/lyxfunc.C:552
 msgid "Text mode"
 msgstr ""
 
-#: src/lyxfunc.C:743
-msgid "Saving document"
+#: src/lyxfunc.C:770
+msgid "Unknown import type: "
 msgstr ""
 
-#: src/lyxfunc.C:1137
+#: src/lyxfunc.C:1100
 msgid "Layout "
 msgstr ""
 
-#: src/lyxfunc.C:1138
+#: src/lyxfunc.C:1101
 msgid " not known"
 msgstr ""
 
-#: src/lyxfunc.C:1298
+#: src/lyxfunc.C:1251
 msgid "No cross-reference to toggle"
 msgstr ""
 
-#: src/lyxfunc.C:1690
+#: src/lyxfunc.C:1635
 msgid "Mark removed"
 msgstr ""
 
-#: src/lyxfunc.C:1695
+#: src/lyxfunc.C:1640
 msgid "Mark set"
 msgstr ""
 
-#: src/lyxfunc.C:1815
+#: src/lyxfunc.C:1748
 msgid "Mark off"
-msgstr ""
+msgstr "לעפומ ןומיס"
 
-#: src/lyxfunc.C:1825
+#: src/lyxfunc.C:1758
 msgid "Mark on"
-msgstr ""
+msgstr "קספומ ןומיס"
 
-#: src/lyxfunc.C:1998
-#, fuzzy
-msgid "Unknown spacing argument: "
-msgstr "רכומ אל ףצר:"
-
-#: src/lyxfunc.C:2236
+#: src/lyxfunc.C:2067
 msgid "Push-toolbar needs argument > 0"
 msgstr ""
 
-#: src/lyxfunc.C:2254
+#: src/lyxfunc.C:2085
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr ""
 
-#: src/lyxfunc.C:2271 src/mathed/formula.C:866
+#: src/lyxfunc.C:2109 src/mathed/formula.C:864
 msgid "Math greek mode on"
-msgstr ""
+msgstr "לעפומ תינווי-תואחסונ בצמ"
 
-#: src/lyxfunc.C:2282 src/mathed/formula.C:877
+#: src/lyxfunc.C:2120 src/mathed/formula.C:875
 msgid "Math greek keyboard on"
-msgstr ""
+msgstr "תלעפומ תינווי-תואחסונ תדלקמ"
 
-#: src/lyxfunc.C:2284 src/mathed/formula.C:879
+#: src/lyxfunc.C:2122 src/mathed/formula.C:877
 msgid "Math greek keyboard off"
-msgstr ""
+msgstr "תקספומ תינווי-תואחסונ תדלקמ"
 
-#: src/lyxfunc.C:2322
+#: src/lyxfunc.C:2157
 msgid "Missing argument"
-msgstr ""
+msgstr "טנמוגרא רסח"
 
-#: src/lyxfunc.C:2338 src/mathed/formula.C:461
+#. / what appears in the minibuffer when opening
+#: src/lyxfunc.C:2173 src/mathed/formula.h:73
 msgid "Math editor mode"
-msgstr ""
+msgstr "תואחסונ בצמ"
 
-#: src/lyxfunc.C:2345
+#: src/lyxfunc.C:2180
 msgid "This is only allowed in math mode!"
-msgstr ""
+msgstr "!תואחסונ בצמב קר רתומ הז"
 
-#: src/lyxfunc.C:2499
+#: src/lyxfunc.C:2334
 msgid "Opening child document "
-msgstr ""
+msgstr "ןב ךמסמ חתופ - "
 
-#: src/lyxfunc.C:2531
+#: src/lyxfunc.C:2366
 msgid "Unknown kind of footnote"
-msgstr ""
+msgstr "תיתחת-תרעה לש רכומ אל גוס"
 
-#: src/lyxfunc.C:2635
+#: src/lyxfunc.C:2435
 msgid "No document open"
-msgstr ""
+msgstr "חותפ ךמסמ ןיא"
 
-#: src/lyxfunc.C:2641
+#: src/lyxfunc.C:2441
 msgid "Document is read only"
-msgstr ""
+msgstr "דבלב האירקל אוה ךמסמה"
 
-#: src/lyxfunc.C:2739
+#: src/lyxfunc.C:2534
 msgid "Enter Filename for new document"
-msgstr ""
+msgstr "שדחה ךמסמל ץבוק םש דלקה"
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:2535
 msgid "newfile"
 msgstr ""
 
-#. Cancel: Do nothing
-#: src/lyxfunc.C:2744 src/lyxfunc.C:2771 src/lyxfunc.C:2836 src/lyxfunc.C:2895
-#: src/lyxfunc.C:2923 src/lyxfunc.C:2933 src/lyxfunc.C:3029
-msgid "Canceled."
-msgstr ""
-
-#: src/lyxfunc.C:2759 src/lyxfunc.C:2911
+#: src/lyxfunc.C:2554 src/lyxfunc.C:2693 src/lyxfunc.C:2772
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
 msgstr ""
+"?וישכע הזה ךמסמה תא רוגסל םאה\n"
+"(תעכ החותפש הסרגל רובעי טושפ 'אל')"
 
-#: src/lyxfunc.C:2782
+#: src/lyxfunc.C:2577
 msgid "Do you want to open the document?"
-msgstr ""
+msgstr "?ךמסמה תא חותפל ךנוצרב םאה"
 
 #. loads document
-#: src/lyxfunc.C:2784 src/lyxfunc.C:2847
+#: src/lyxfunc.C:2579 src/lyxfunc.C:2642
 msgid "Opening document"
-msgstr ""
+msgstr "ךמסמ חתופ"
 
-#: src/lyxfunc.C:2791 src/lyxfunc.C:2854
+#: src/lyxfunc.C:2586 src/lyxfunc.C:2649
 msgid "opened."
-msgstr ""
+msgstr ".חתפנ"
 
-#: src/lyxfunc.C:2800
+#: src/lyxfunc.C:2595
 msgid "Choose template"
-msgstr ""
+msgstr "תינבת תריחב"
 
-#: src/lyxfunc.C:2828 src/lyxfunc.C:2888 src/lyxfunc.C:3021
+#: src/lyxfunc.C:2623 src/lyxfunc.C:2672 src/lyxfunc.C:2745 src/lyxfunc.C:2846
 msgid "Examples"
-msgstr ""
+msgstr "תואמגוד"
 
-#: src/lyxfunc.C:2830
+#: src/lyxfunc.C:2625
 msgid "Select Document to Open"
-msgstr ""
+msgstr "החיתפל ךמסמ רחב"
 
-#: src/lyxfunc.C:2856
+#: src/lyxfunc.C:2651
 msgid "Could not open document"
-msgstr ""
+msgstr "ךמסמה תא חותפל יתחלצה אל"
 
-#: src/lyxfunc.C:2930
+#: src/lyxfunc.C:2674
+msgid "Select ASCII file to Import"
+msgstr "אוביילASCII ץבוק תריחב"
+
+#: src/lyxfunc.C:2712 src/lyxfunc.C:2792
 msgid "A document by the name"
-msgstr ""
+msgstr "םשה לעב ךמסמ"
 
-#: src/lyxfunc.C:2932
+#: src/lyxfunc.C:2714 src/lyxfunc.C:2794
 msgid "already exists. Overwrite?"
-msgstr ""
+msgstr "?וילע בותכל .םייק רבכ"
 
-#: src/lyxfunc.C:2941
-#, fuzzy
-msgid "Importing"
-msgstr "|אובי%m"
+#: src/lyxfunc.C:2720
+msgid "Importing ASCII file"
+msgstr "ASCII ץבוק אביימ"
 
-#: src/lyxfunc.C:2948
+#: src/lyxfunc.C:2724
+msgid "ASCII file "
+msgstr "ASCII ץבוק "
+
+#: src/lyxfunc.C:2726 src/lyxfunc.C:2817
 msgid "imported."
-msgstr ""
+msgstr ".אבוימ"
 
-#: src/lyxfunc.C:2950
-msgid ": import failed."
-msgstr ""
+#: src/lyxfunc.C:2749
+msgid "Select Noweb file to Import"
+msgstr "אובייל NoWeb ץבוק תריחב"
 
-#: src/lyxfunc.C:3023
+#: src/lyxfunc.C:2752
+msgid "Select LaTeX file to Import"
+msgstr "אובייל LaTeX ץבוק תריחב"
+
+#: src/lyxfunc.C:2802
+msgid "Importing LaTeX file"
+msgstr "LaTeX ץבוק אביימ"
+
+#: src/lyxfunc.C:2807
+msgid "Importing Noweb file"
+msgstr "NoWeb ץבוק אביימ"
+
+#: src/lyxfunc.C:2815
+msgid "Noweb file "
+msgstr "NoWeb ץבוק "
+
+#: src/lyxfunc.C:2815
+msgid "LateX file "
+msgstr "LaTeX ץבוק "
+
+#: src/lyxfunc.C:2820
+msgid "Could not import Noweb file"
+msgstr "NoWeb ץבוק אבייל יתחלצה אל"
+
+#: src/lyxfunc.C:2821
+msgid "Could not import LaTeX file"
+msgstr "LaTeX ץבוק אבייל יתחלצה אל"
+
+#: src/lyxfunc.C:2848
 msgid "Select Document to Insert"
-msgstr ""
+msgstr "הפסוהל ךמסמ תריחב"
 
 #. Inserts document
-#: src/lyxfunc.C:3041
+#: src/lyxfunc.C:2866
 msgid "Inserting document"
-msgstr ""
+msgstr "ךמסמ ףיסומ"
 
-#: src/lyxfunc.C:3047
+#: src/lyxfunc.C:2872
 msgid "inserted."
-msgstr ""
+msgstr ".ףסוה"
 
-#: src/lyxfunc.C:3049
+#: src/lyxfunc.C:2874
 msgid "Could not insert document"
-msgstr ""
+msgstr "ךמסמ ףיסוהל יתחלצה אל"
 
-#: src/lyxfunc.C:3063
-msgid "Select LaTeX file to import"
-msgstr ""
-
-#: src/lyxfunc.C:3067 src/lyxfunc.C:3071
-msgid "Select ASCII file to import"
-msgstr ""
-
-#: src/lyxfunc.C:3075
-msgid "Select NoWeb file to import"
-msgstr ""
-
-#: src/lyxfunc.C:3079
-msgid "Select LinuxDoc file to import"
-msgstr ""
-
-#: src/lyxfunc.C:3082
-msgid "Unknown import type: "
-msgstr ""
-
-#: src/lyx_gui.C:357 src/lyx_gui.C:360
+#: src/lyx_gui.C:381 src/lyx_gui.C:384
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr ""
 
-#: src/lyx_gui.C:381
+#: src/lyx_gui.C:410
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr ""
 
-#: src/lyx_gui.C:383
+#: src/lyx_gui.C:412
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr ""
 
-#: src/lyx_gui.C:385
+#: src/lyx_gui.C:414
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr ""
 
-#: src/lyx_gui.C:388
+#: src/lyx_gui.C:417
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
 msgstr ""
 
-#: src/lyx_gui.C:392
+#: src/lyx_gui.C:421
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 
-#: src/lyx_gui.C:394
+#: src/lyx_gui.C:423
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
 msgstr ""
 
-#: src/lyx_gui.C:411
+#: src/lyx_gui.C:434
 msgid " Single | OneHalf | Double | Other "
 msgstr ""
 
-#: src/lyx_gui.C:455
+#: src/lyx_gui.C:473
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr ""
 
-#: src/lyx_gui.C:467
+#: src/lyx_gui.C:485
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
 msgstr ""
 
-#: src/lyx_gui.C:470
+#: src/lyx_gui.C:488
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
 msgstr ""
 
-#: src/lyx_gui.C:516
+#: src/lyx_gui.C:534
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr ""
 
-#: src/lyx_gui.C:600
+#: src/lyx_gui.C:614
 msgid "LyX Banner"
 msgstr ""
 
-#: src/lyx_gui_misc.C:354
+#: src/lyx_gui_misc.C:356
 msgid "Dismiss"
 msgstr ""
 
-#: src/lyx_gui_misc.C:371 src/lyx_gui_misc.C:380 src/lyx_gui_misc.C:384
+#: src/lyx_gui_misc.C:373 src/lyx_gui_misc.C:386 src/lyx_gui_misc.C:391
+#: src/lyx_gui_misc.C:397
 msgid "Yes|Yy#y"
 msgstr ""
 
-#: src/lyx_gui_misc.C:372 src/lyx_gui_misc.C:381 src/lyx_gui_misc.C:385
+#: src/lyx_gui_misc.C:374 src/lyx_gui_misc.C:387 src/lyx_gui_misc.C:392
+#: src/lyx_gui_misc.C:398
 msgid "No|Nn#n"
 msgstr ""
 
-#: src/lyx_gui_misc.C:396
+#: src/lyx_gui_misc.C:410
 msgid "Clear|#e"
 msgstr ""
 
-#: src/lyx_gui_misc.C:409
+#: src/lyx_gui_misc.C:423
 msgid "Any changes will be ignored"
 msgstr ""
 
-#: src/lyx_gui_misc.C:410
+#: src/lyx_gui_misc.C:424
 msgid "The document is read-only:"
 msgstr ""
 
-#: src/lyx_main.C:202
+#: src/lyx_main.C:183
 msgid "Warning: could not determine path of binary."
 msgstr ""
 
-#: src/lyx_main.C:204
+#: src/lyx_main.C:185
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr ""
 
-#: src/lyx_main.C:294
+#: src/lyx_main.C:275
 msgid "LYX_DIR_11x environment variable no good."
 msgstr ""
 
-#: src/lyx_main.C:296
+#: src/lyx_main.C:277
 msgid "System directory set to: "
 msgstr ""
 
-#: src/lyx_main.C:304
+#: src/lyx_main.C:285
 msgid "LyX Warning! Couldn't determine system directory."
 msgstr ""
 
-#: src/lyx_main.C:305
+#: src/lyx_main.C:286
 msgid "Try the '-sysdir' command line parameter or"
 msgstr ""
 
-#: src/lyx_main.C:306
+#: src/lyx_main.C:287
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
 msgstr ""
 
-#: src/lyx_main.C:308
+#: src/lyx_main.C:289
 msgid "containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/lyx_main.C:310
+#: src/lyx_main.C:291
 msgid "Using built-in default "
 msgstr ""
 
-#: src/lyx_main.C:311
+#: src/lyx_main.C:292
 msgid " but expect problems."
 msgstr ""
 
-#: src/lyx_main.C:314
+#: src/lyx_main.C:295
 msgid "Expect problems."
 msgstr ""
 
 #. Nope
-#: src/lyx_main.C:419
+#: src/lyx_main.C:394
 msgid "You don't have a personal LyX directory."
 msgstr ""
 
-#: src/lyx_main.C:420
+#: src/lyx_main.C:395
 msgid "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:421
+#: src/lyx_main.C:396
 msgid "Should I try to set it up for you (recommended)?"
 msgstr ""
 
-#: src/lyx_main.C:422
+#: src/lyx_main.C:397
 msgid "Running without personal LyX directory."
 msgstr ""
 
 #. Tell the user what is going on
-#: src/lyx_main.C:429
+#: src/lyx_main.C:404
 msgid "LyX: Creating directory "
 msgstr ""
 
-#: src/lyx_main.C:430
+#: src/lyx_main.C:405
 msgid " and running configure..."
 msgstr ""
 
-#: src/lyx_main.C:436
+#: src/lyx_main.C:411
 msgid "Failed. Will use "
 msgstr ""
 
-#: src/lyx_main.C:437
+#: src/lyx_main.C:412
 msgid " instead."
 msgstr ""
 
-#: src/lyx_main.C:444
+#: src/lyx_main.C:419
 msgid "Done!"
 msgstr ""
 
-#: src/lyx_main.C:458
+#: src/lyx_main.C:433
 msgid "LyX Warning!"
 msgstr ""
 
-#: src/lyx_main.C:459
+#: src/lyx_main.C:434
 msgid "Error while reading "
 msgstr ""
 
-#: src/lyx_main.C:460
+#: src/lyx_main.C:435
 msgid "Using built-in defaults."
 msgstr ""
 
-#: src/lyx_main.C:470
+#: src/lyx_main.C:445
 msgid "Setting debug level to "
 msgstr ""
 
-#: src/lyx_main.C:481
+#: src/lyx_main.C:456
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -3547,39 +3175,39 @@ msgid ""
 "\t-dbg feature[,feature]...\n"
 "                  select the features to debug.\n"
 "                  Type `lyx -dbg' to see the list of features\n"
+"\t-Reverse        swaps foreground & background colors\n"
+"\t-Mono           runs LyX in black and white mode\n"
+"\t-FastSelection  use a fast routine for drawing selections\n"
+"\n"
 "Check the LyX man page for more options."
 msgstr ""
 
-#: src/lyx_main.C:514
+#: src/lyx_main.C:492
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:532
+#: src/lyx_main.C:511
 msgid "Missing directory for -sysdir switch!"
 msgstr ""
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:537
 msgid "Missing command string after  -x switch!"
 msgstr ""
 
-#: src/lyx_main.C:585
+#: src/lyx_main.C:563
 msgid "Unknown file type '"
 msgstr ""
 
-#: src/lyx_main.C:586
+#: src/lyx_main.C:564
 msgid "' after "
 msgstr ""
 
-#: src/lyx_main.C:587 src/lyx_main.C:591 src/lyx_main.C:611
+#: src/lyx_main.C:565 src/lyx_main.C:570
 msgid " switch!"
 msgstr ""
 
-#: src/lyx_main.C:589
+#: src/lyx_main.C:568
 msgid "Missing file type [eg latex, ps...] after "
-msgstr ""
-
-#: src/lyx_main.C:609
-msgid "Missing type [eg latex, ps...] after "
 msgstr ""
 
 #: src/lyx_sendfax.C:21
@@ -3622,1380 +3250,1382 @@ msgstr ""
 msgid "Comment:"
 msgstr ""
 
-#: src/lyx_sendfax_main.C:40
+#: src/lyx_sendfax_main.C:38
 msgid "Fax File: "
 msgstr ""
 
-#: src/lyx_sendfax_main.C:150 src/lyx_sendfax_main.C:197
-#: src/lyx_sendfax_main.C:236 src/lyx_sendfax_main.C:270
+#: src/lyx_sendfax_main.C:148 src/lyx_sendfax_main.C:195
+#: src/lyx_sendfax_main.C:234 src/lyx_sendfax_main.C:268
 msgid "Empty Phonebook"
 msgstr ""
 
-#: src/lyx_sendfax_main.C:209 src/lyx_sendfax_main.C:248
+#: src/lyx_sendfax_main.C:207 src/lyx_sendfax_main.C:246
 msgid "Save (needed)"
 msgstr ""
 
-#: src/lyx_sendfax_main.C:264
+#: src/lyx_sendfax_main.C:262
 msgid "Cannot open phone book: "
 msgstr ""
 
-#: src/lyx_sendfax_main.C:292
+#: src/lyx_sendfax_main.C:290
 msgid "NO OR EMPTY LOGFILE!"
 msgstr ""
 
-#: src/lyx_sendfax_main.C:299
+#: src/lyx_sendfax_main.C:297
 msgid "Message-Window"
 msgstr ""
 
-#: src/lyx_sendfax_main.C:330
+#: src/lyx_sendfax_main.C:328
 msgid "@L@b@cEmpty Phonebook"
 msgstr ""
 
-#: src/lyx_sendfax_main.C:332
+#: src/lyx_sendfax_main.C:330
 msgid "Phonebook"
 msgstr ""
 
-#: src/LyXSendto.C:39
+#: src/LyXSendto.C:38
 msgid "Send Document to Command"
 msgstr ""
 
-#: src/lyxvc.C:93 src/lyxvc.C:126
+#: src/lyxvc.C:93 src/lyxvc.C:125
 msgid "Save document and proceed?"
 msgstr ""
 
-#: src/lyxvc.C:106
+#: src/lyxvc.C:105
 msgid "LyX VC: Initial description"
 msgstr ""
 
-#: src/lyxvc.C:107
+#: src/lyxvc.C:106
 msgid "(no initial description)"
 msgstr ""
 
-#: src/lyxvc.C:111
+#: src/lyxvc.C:110
 msgid "Info"
 msgstr ""
 
-#: src/lyxvc.C:112
+#: src/lyxvc.C:111
 msgid "This document has NOT been registered."
 msgstr ""
 
-#: src/lyxvc.C:138
+#: src/lyxvc.C:137
 msgid "LyX VC: Log Message"
 msgstr ""
 
-#: src/lyxvc.C:141
+#: src/lyxvc.C:140
 msgid "(no log message)"
 msgstr ""
 
-#: src/lyxvc.C:156
+#: src/lyxvc.C:155
 msgid "Ignore changes and proceed with check out?"
 msgstr ""
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:171
+#: src/lyxvc.C:170
 msgid "When you revert, you will loose all changes made"
 msgstr ""
 
-#: src/lyxvc.C:172
+#: src/lyxvc.C:171
 msgid "to the document since the last check in."
 msgstr ""
 
-#: src/lyxvc.C:173
+#: src/lyxvc.C:172
 msgid "Do you still want to do it?"
-msgstr ""
+msgstr "?הז תא תושעל הצור ןיידע"
 
-#: src/lyxvc.C:276
+#: src/lyxvc.C:275
 msgid "No VC History!"
-msgstr ""
+msgstr "!תואסרג תיירוטסה ןיא"
 
-#: src/lyxvc.C:283
+#: src/lyxvc.C:282
 msgid "VC History"
-msgstr ""
+msgstr "תואסרג תיירוטסה"
 
-#: src/LyXView.C:467 src/minibuffer.C:231
+#: src/LyXView.C:410 src/minibuffer.C:218
 msgid " (Changed)"
-msgstr ""
+msgstr "(הנתשה)"
 
-#: src/LyXView.C:469
+#: src/LyXView.C:412
 msgid " (read only)"
-msgstr ""
+msgstr "(דבלב האירקל)"
 
-#: src/mathed/formula.C:894 src/mathed/formula.C:1191
+#: src/mathed/formula.C:892 src/mathed/formula.C:1188
 msgid "TeX mode"
-msgstr ""
+msgstr "TeX בצמ"
 
-#: src/mathed/formula.C:909
+#: src/mathed/formula.C:907
 msgid "No number"
-msgstr ""
+msgstr "רפסמ ןיא"
 
-#: src/mathed/formula.C:912
+#: src/mathed/formula.C:910
 msgid "Number"
-msgstr ""
+msgstr "רפסמ"
 
-#: src/mathed/formula.C:1076
+#: src/mathed/formula.C:1073
 msgid "math text mode"
-msgstr ""
+msgstr "תואחסונ טסקט בצמ"
 
-#: src/mathed/formula.C:1085
+#: src/mathed/formula.C:1082
 msgid "Invalid action in math mode!"
-msgstr ""
+msgstr "!תואחסונ בצמב הניקת אל הלועפ"
 
-#: src/mathed/formulamacro.C:137 src/mathed/formulamacro.C:163
+#: src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:168
 msgid "Macro: "
-msgstr ""
+msgstr "ורקמ - "
 
-#: src/mathed/formulamacro.C:173
+#. / what appears in the minibuffer when opening
+#: src/mathed/formulamacro.h:62
 msgid "Math macro editor mode"
-msgstr ""
+msgstr "תואחסונ יאורקמ ךרוע בצמ"
 
 #: src/mathed/math_forms.C:19
 msgid "Close "
-msgstr ""
+msgstr "הריגס"
 
 #: src/mathed/math_forms.C:22
 msgid "Functions"
-msgstr ""
+msgstr "תויצקנופ"
 
-#: src/mathed/math_forms.C:30
+#: src/mathed/math_forms.C:28
+msgid "Greek"
+msgstr "תינווי"
+
+#: src/mathed/math_forms.C:32
 msgid "­ Û"
 msgstr ""
 
-#: src/mathed/math_forms.C:34
+#: src/mathed/math_forms.C:36
 msgid "± ´"
 msgstr ""
 
-#: src/mathed/math_forms.C:38
+#: src/mathed/math_forms.C:40
 msgid "£ @"
 msgstr ""
 
-#: src/mathed/math_forms.C:42
+#: src/mathed/math_forms.C:44
 msgid "S  ע"
 msgstr ""
 
-#: src/mathed/math_forms.C:46
+#: src/mathed/math_forms.C:48
 msgid "Misc"
-msgstr ""
+msgstr "תונוש"
 
-#: src/mathed/math_forms.C:127
+#: src/mathed/math_forms.C:129
 msgid "OK  "
-msgstr ""
+msgstr "רושיא  "
 
-#: src/mathed/math_forms.C:140
+#: src/mathed/math_forms.C:142
 msgid "Columns "
-msgstr ""
+msgstr "תודומע "
 
-#: src/mathed/math_forms.C:147
+#: src/mathed/math_forms.C:149
 msgid "Vertical align|#V"
-msgstr ""
+msgstr "יכנא רושי|#V"
 
-#: src/mathed/math_forms.C:152
+#: src/mathed/math_forms.C:154
 msgid "Horizontal align|#H"
-msgstr ""
+msgstr "יקפוא רושי|#H"
 
-#: src/mathed/math_forms.C:195
+#: src/mathed/math_forms.C:197
 msgid "OK "
-msgstr ""
+msgstr "רושיא "
 
-#: src/mathed/math_forms.C:206
+#: src/mathed/math_forms.C:208
 msgid "Thin|#T"
-msgstr ""
+msgstr "קד|#T"
 
-#: src/mathed/math_forms.C:210
+#: src/mathed/math_forms.C:212
 msgid "Medium|#M"
-msgstr ""
+msgstr "ליגר|#M"
 
-#: src/mathed/math_forms.C:214
+#: src/mathed/math_forms.C:216
 msgid "Thick|#H"
-msgstr ""
+msgstr "הבע|#H"
 
-#: src/mathed/math_forms.C:218
+#: src/mathed/math_forms.C:220
 msgid "Negative|#N"
-msgstr ""
+msgstr "ביטגנ|#H"
 
-#: src/mathed/math_forms.C:222
+#: src/mathed/math_forms.C:224
 msgid "Quadratin|#Q"
 msgstr ""
 
-#: src/mathed/math_forms.C:226
+#: src/mathed/math_forms.C:228
 msgid "2Quadratin|#2"
 msgstr ""
 
-#: src/mathed/math_panel.C:108
+#: src/mathed/math_panel.C:109
 msgid "Delimiter"
-msgstr ""
+msgstr "דירפמ"
 
-#: src/mathed/math_panel.C:112
+#: src/mathed/math_panel.C:113
 msgid "Decoration"
-msgstr ""
+msgstr "רוטיע"
 
-#: src/mathed/math_panel.C:116
+#: src/mathed/math_panel.C:117
 msgid "Spacing"
-msgstr ""
+msgstr "חוויר"
 
-#: src/mathed/math_panel.C:120
+#: src/mathed/math_panel.C:121
 msgid "Matrix"
-msgstr ""
+msgstr "הצירטמ"
 
-#: src/mathed/math_panel.C:324
+#: src/mathed/math_panel.C:311
 msgid "Top | Center | Bottom"
-msgstr ""
+msgstr "הלעמל | זכרמ | הטמל"
 
-#: src/mathed/math_panel.C:376
+#: src/mathed/math_panel.C:363
 msgid "Math Panel"
-msgstr ""
+msgstr "תואחסונ לנפ"
 
-#: src/menus.C:163 src/menus.C:182 src/menus.C:223 src/menus.C:224
-#: src/menus.C:225 src/menus.C:354 src/menus.C:355 src/menus.C:356
+#: src/menus.C:161 src/menus.C:180 src/menus.C:221 src/menus.C:222
+#: src/menus.C:223 src/menus.C:352 src/menus.C:353 src/menus.C:354
 msgid "File"
-msgstr "ץבוק"
+msgstr "f ץבוק"
 
-#: src/menus.C:165 src/menus.C:237 src/menus.C:238 src/menus.C:239
+#: src/menus.C:163 src/menus.C:235 src/menus.C:236 src/menus.C:237
 msgid "Edit"
-msgstr "הכירע"
+msgstr "e הכירע"
 
-#: src/menus.C:167 src/menus.C:251 src/menus.C:252 src/menus.C:253
+#: src/menus.C:165 src/menus.C:249 src/menus.C:250 src/menus.C:251
 msgid "Layout"
-msgstr "הנבמ"
+msgstr "l הנבמ"
 
-#: src/menus.C:169 src/menus.C:265 src/menus.C:266 src/menus.C:267
+#: src/menus.C:167 src/menus.C:263 src/menus.C:264 src/menus.C:265
 msgid "Insert"
-msgstr "הפסוה"
+msgstr "i הפסוה"
 
-#: src/menus.C:171 src/menus.C:279 src/menus.C:280 src/menus.C:281
-msgid "Math"
-msgstr "הקיטמתמ"
-
-#: src/menus.C:177 src/menus.C:186 src/menus.C:321 src/menus.C:322
-#: src/menus.C:323 src/menus.C:382 src/menus.C:383 src/menus.C:384
+#: src/menus.C:175 src/menus.C:184 src/menus.C:319 src/menus.C:320
+#: src/menus.C:321 src/menus.C:380 src/menus.C:381 src/menus.C:382
 msgid "Help"
-msgstr "הרזע"
+msgstr "h הרזע"
 
-#: src/menus.C:227 src/menus.C:358
+#: src/menus.C:225 src/menus.C:356
 msgid "MB|#F"
 msgstr ""
 
-#: src/menus.C:241
+#: src/menus.C:239
 msgid "MB|#E"
 msgstr ""
 
-#: src/menus.C:255
+#: src/menus.C:253
 msgid "MB|#L"
 msgstr ""
 
-#: src/menus.C:269
+#: src/menus.C:267
 msgid "MB|#I"
 msgstr ""
 
-#: src/menus.C:283
+#: src/menus.C:281
 msgid "MB|#M"
 msgstr ""
 
-#: src/menus.C:297 src/menus.C:372
+#: src/menus.C:295 src/menus.C:370
 msgid "MB|#O"
 msgstr ""
 
-#: src/menus.C:311
+#: src/menus.C:309
 msgid "MB|#D"
 msgstr ""
 
-#: src/menus.C:325 src/menus.C:386
+#: src/menus.C:323 src/menus.C:384
 msgid "MB|#H"
 msgstr ""
 
-#: src/menus.C:428
+#: src/menus.C:426
 msgid "Screen Options"
 msgstr "ךסמ תויורשפא"
 
-#: src/menus.C:469
-#, fuzzy
+#: src/menus.C:467
 msgid ""
 "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
-"Paragraphs%x32|Noweb%x33|LinuxDoc%x34"
-msgstr "אובי%t|LaTeX...%x30|תורושכ ascii טסקט...%x31|-כ ascii טסקט"
+"Paragraphs%x32|Noweb%x33"
+msgstr ""
+"אובי%t|l LaTeX...%x30|a תורושכ ascii טסקט...%x31|"
+"p תואקספכ ascii טסקט|Noweb"
 
-#: src/menus.C:476 src/menus.C:733
+#: src/menus.C:473 src/menus.C:712
 msgid "FIM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:477 src/menus.C:734
+#: src/menus.C:474 src/menus.C:713
 msgid "FIM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:478 src/menus.C:735
+#: src/menus.C:475 src/menus.C:714
 msgid "FIM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:479 src/menus.C:736
+#: src/menus.C:476 src/menus.C:715
 msgid "FIM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:480 src/menus.C:737
-msgid "FIM|Dd#d#D"
-msgstr ""
-
-#: src/menus.C:489
+#: src/menus.C:485
 msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44|Custom...%x45"
 msgstr ""
-"אוצי%t|LaTeX-כ...%x40|DVI-כ...%x41|PostScript-כ...%x42|Ascii "
-"טסקטכ...%x43|HTML-כ...%x44|המאתה...%x45"
+"אוצי%t|l LaTeX-כ...%x40|d DVI-כ...%x41|p PostScript-כ...%x42|"
+"t Ascii טסקטכ...%x43|h HTML-כ...%x44|m המאתה...%x45"
 
-#: src/menus.C:498
-#, fuzzy
+#: src/menus.C:494
 msgid ""
 "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
-"Text...%x43|as HTML...%x44"
+"Text...%x43"
 msgstr ""
 "אוצי%t|LinuxDoc-כ...%x40|DVI-כ...%x41|PostScript-כ...%x42|Ascii טסקטכ...%x43"
 
-#: src/menus.C:506
-#, fuzzy
+
+#: src/menus.C:501
 msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
-"Text...%x43|as HTML...%x44"
+"Text...%x43"
 msgstr ""
-"אוצי%t|DocBook-כ...%x40|DVI-כ...%x41|PostScript-כ...%x42|Ascii טסקטכ...%x43"
+"אוצי%t|DocBook-כ...%x40|DVI-כ...%x41|PostScript-כ...%x42|"
+"Ascii טסקטכ...%x43"
 
-#: src/menus.C:513
+#: src/menus.C:507
 msgid "FEX|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:514
+#: src/menus.C:508
 msgid "FEX|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:515
+#: src/menus.C:509
 msgid "FEX|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:516
+#: src/menus.C:510
 msgid "FEX|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:517
+#: src/menus.C:512
 msgid "FEX|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:520
+#: src/menus.C:513
 msgid "FEX|mM#m#M"
 msgstr ""
 
-#: src/menus.C:524
+#: src/menus.C:517
 msgid ""
 "New...|New from template...|Open...%l|Close|Save|Save As...|Revert to "
 "saved%l|View dvi|View PostScript|Update dvi|Update PostScript|Build "
 "program%l|Print...|Fax..."
 msgstr ""
-"שדח...|תינבתמ שדח...|חתפ...%l|רוגס|רומש|םשב רומש...|רומשה קתועל "
-"רוזח...%l|dvi-ב הפצ|PostScript-ב הפצ|dvi ןכדע|PostScript ןכדע|(?)הינב "
-"תינכות%l|ספדה...|ססקפ..."
+"n שדח...|t תינבתמ שדח...|o חתפ...%l|c רוגס|s רומש|"
+"a םשב רומש...|r רומשה קתועל רוזח...%l|d dvi-ב הפצ|"
+"w PostScript-ב הפצ|v dvi ןכדע|u PostScript ןכדע|"
+"b הינב תינכות%l|p ספדה...|f ססקפ..."
 
-#: src/menus.C:539 src/menus.C:757
+#: src/menus.C:532 src/menus.C:732
 msgid "FM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:540 src/menus.C:758
+#: src/menus.C:533 src/menus.C:733
 msgid "FM|tT#t#T"
 msgstr ""
 
-#: src/menus.C:541 src/menus.C:759
+#: src/menus.C:534 src/menus.C:734
 msgid "FM|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:542
+#: src/menus.C:535
 msgid "FM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:543
+#: src/menus.C:536
 msgid "FM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:544
+#: src/menus.C:537
 msgid "FM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:545
+#: src/menus.C:538
 msgid "FM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:546
+#: src/menus.C:539
 msgid "FM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:547
+#: src/menus.C:540
 msgid "FM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:548
+#: src/menus.C:541
 msgid "FM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:549
+#: src/menus.C:542
 msgid "FM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:550
+#: src/menus.C:543
 msgid "FM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:551
+#: src/menus.C:544
 msgid "FM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:552
+#: src/menus.C:545
 msgid "FM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:603
+#: src/menus.C:591
 #, no-c-format
 msgid "|Import%m"
-msgstr "|אובי%m"
+msgstr "|i אובי%m"
 
-#: src/menus.C:605
+#: src/menus.C:593
 #, no-c-format
 msgid "|Export%m%l"
-msgstr "|('האיצי'ל ידמ המוד)אוצי%m%l"
+msgstr "|e אוצי%m%l"
 
-#: src/menus.C:607
+#: src/menus.C:595
 #, no-c-format
 msgid "|Exit%l"
-msgstr "|האיצי%l"
+msgstr "|x האיצי%l"
 
-#: src/menus.C:608 src/menus.C:760
+#: src/menus.C:596 src/menus.C:735
 msgid "FM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:609
+#: src/menus.C:597
 msgid "FM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:610 src/menus.C:761
+#: src/menus.C:598 src/menus.C:736
 msgid "FM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:726
-#, fuzzy
+#: src/menus.C:706
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
-"Paragraphs...%x17|Noweb...%x18|LinuxDoc...%x19"
+"Paragraphs...%x17|Noweb...%x18"
 msgstr ""
-"אובי%t|LaTeX...%x15|תורושכ Ascii טסקט...%x16|תואקספכ Ascii "
-"טסקט...%x17|Noweb(?הז המ)...%x18"
+"אובי%t|l LaTeX...%x15|a תורושכ Ascii טסקט...%x16|"
+"p תואקספכ Ascii טסקט...%x17|n Noweb...%x18"
 
-#: src/menus.C:751
+#: src/menus.C:726
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
-msgstr "שדח...|תינבתמ שדח...|חתפ...%l|אובי%m%l|האיצי%l"
+msgstr "n שדח...|t תינבתמ שדח...|o חתפ...%l|i אובי%m%l|x האיצי%l"
 
-#: src/menus.C:841
+#: src/menus.C:814
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
 "Figures/Tables%x25|Close All Figures/Tables%x26%l|Remove all Error Boxes%x27"
 msgstr ""
-"Floats & תופסוה%t|רוגס/חתפ%x21|(Melt) גזמ%x22|תיתחתהו םיילושה תורעה לכ תא "
-"חתפ%x23|תיתחתהו םיילושה תורעה לכ תא רוגס%x24|םירויאהו תואלבטה לכ תא "
-"חתפ%x25|םירויאהו תואלבטה לכ תא רוגס%x26%l|האיגשה תואספוק לכ תא רסה%x27"
+"Floats & תופסוה%t|o רוגס/חתפ%x21|m (Melt) גזמ%x22|"
+"a תיתחתהו םיילושה תורעה לכ תא חתפ%x23|"
+"c תיתחתהו םיילושה תורעה לכ תא רוגס%x24|"
+"f םירויאהו תואלבטה לכ תא חתפ%x25|"
+"t םירויאהו תואלבטה לכ תא רוגס%x26%l|r האיגשה תואספוק לכ תא רסה%x27"
 
-#: src/menus.C:850
+#: src/menus.C:823
 msgid "EMF|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:851
+#: src/menus.C:824
 msgid "EMF|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:852
+#: src/menus.C:825
 msgid "EMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:853
+#: src/menus.C:826
 msgid "EMF|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:854
+#: src/menus.C:827
 msgid "EMF|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:855
+#: src/menus.C:828
 msgid "EMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:856
+#: src/menus.C:829
 msgid "EMF|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:864 src/menus.C:962
+#: src/menus.C:837 src/menus.C:935
 msgid "Table%t"
 msgstr "הלבט%t"
 
-#: src/menus.C:872
+#: src/menus.C:845
 msgid "|Multicolumn%B%x44%l"
-msgstr "|(Multicolumn)ירוט בר %B%x44%l"
+msgstr "|m (Multicolumn)ירוט בר %B%x44%l"
 
-#: src/menus.C:874
+#: src/menus.C:847
 msgid "|Multicolumn%b%x44%l"
-msgstr "|(Multicolumn)ירוט בר %b%x44%l"
+msgstr "|m (Multicolumn)ירוט בר %b%x44%l"
 
-#: src/menus.C:875
+#: src/menus.C:848
 msgid "EMT|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:883
+#: src/menus.C:856
 msgid "|Line Top%B%x36"
-msgstr "|הנוילע הרוש%B%x36"
+msgstr "|t לעמ וק%B%x36"
 
-#: src/menus.C:885
+#: src/menus.C:858
 msgid "|Line Top%b%x36"
-msgstr "|הרוש לעמ%b%x36"
+msgstr "|t לעמ וק%b%x36"
 
-#: src/menus.C:886
+#: src/menus.C:859
 msgid "EMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:894
+#: src/menus.C:867
 msgid "|Line Bottom%B%x37"
-msgstr "|הרוש תיתחת%B%x37"
+msgstr "|b תחתמ וק%B%x37"
 
-#: src/menus.C:896
+#: src/menus.C:869
 msgid "|Line Bottom%b%x37"
-msgstr "|הרוש תיתחת%b%x37"
+msgstr "|b תחתמ וק%b%x37"
 
-#: src/menus.C:897
+#: src/menus.C:870
 msgid "EMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:905
+#: src/menus.C:878
 msgid "|Line Left%B%x38"
-msgstr "|הלאמש הרוש%B%x38"
+msgstr "|l לאמשמ וק%B%x38"
 
-#: src/menus.C:907
+#: src/menus.C:880
 msgid "|Line Left%b%x38"
-msgstr "|הלאמש הרוש%b%x38"
+msgstr "|l לאמשמ וק%b%x38"
 
-#: src/menus.C:908
+#: src/menus.C:881
 msgid "EMT|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:916
+#: src/menus.C:889
 msgid "|Line Right%B%x39%l"
-msgstr "|הנימי הרוש%B%x39%l"
+msgstr "|r ןימימ וק%B%x39%l"
 
-#: src/menus.C:918
+#: src/menus.C:891
 msgid "|Line Right%b%x39%l"
-msgstr "|הנימי הרוש%b%x39%l"
+msgstr "|r ןימימ וק%b%x39%l"
 
-#: src/menus.C:919
+#: src/menus.C:892
 msgid "EMT|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:928
+#: src/menus.C:901
 msgid "|Align Left%R%x40"
-msgstr "|הלאמש רושי%R%x40"
+msgstr "|e הלאמש רושי%R%x40"
 
-#: src/menus.C:930
+#: src/menus.C:903
 msgid "|Align Left%r%x40"
-msgstr "|הלאמש רושי%r%x40"
+msgstr "|e הלאמש רושי%r%x40"
 
-#: src/menus.C:931
+#: src/menus.C:904
 msgid "EMT|eE#e#E"
 msgstr ""
 
-#: src/menus.C:934
+#: src/menus.C:907
 msgid "|Align Right%R%x41"
-msgstr "|הנימי רושי%R%x41"
+msgstr "|i הנימי רושי%R%x41"
 
-#: src/menus.C:936
+#: src/menus.C:909
 msgid "|Align Right%r%x41"
-msgstr "|הנימי רושי%r%x41"
+msgstr "|i הנימי רושי%r%x41"
 
-#: src/menus.C:937
+#: src/menus.C:910
 msgid "EMT|iI#i#I"
 msgstr ""
 
-#: src/menus.C:940
+#: src/menus.C:913
 msgid "|Align Center%R%x42%l"
-msgstr "|זכרמל רושי%R%x42%l"
+msgstr "|c זוכרמ%R%x42%l"
 
-#: src/menus.C:942
+#: src/menus.C:915
 msgid "|Align Center%r%x42%l"
-msgstr "|זכרמל רושי%r%x42%l"
+msgstr "|c זוכרמ%r%x42%l"
 
-#: src/menus.C:943
+#: src/menus.C:916
 msgid "EMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:946
+#: src/menus.C:919
 #, no-c-format
 msgid "|Append Row%x32"
-msgstr "|הרוש ףסוה%x32"
+msgstr "|o הרוש תפסוה%x32"
 
-#: src/menus.C:947
+#: src/menus.C:920
 msgid "EMT|oO#o#O"
 msgstr ""
 
-#: src/menus.C:949
+#: src/menus.C:922
 #, no-c-format
 msgid "|Append Column%x33%l"
-msgstr "|הדומע ףסוה%x33%l"
+msgstr "|u הדומע תפסוה%x33%l"
 
-#: src/menus.C:950
+#: src/menus.C:923
 msgid "EMT|uU#u#U"
 msgstr ""
 
-#: src/menus.C:952
+#: src/menus.C:925
 #, no-c-format
 msgid "|Delete Row%x34"
-msgstr "|הרוש קחמ%x34"
+msgstr "|w הרוש תקיחמ%x34"
 
-#: src/menus.C:953
+#: src/menus.C:926
 msgid "EMT|wW#w#W"
 msgstr ""
 
-#: src/menus.C:955
+#: src/menus.C:928
 #, no-c-format
 msgid "|Delete Column%x35%l"
-msgstr "|הדומע קחמ%x35%l"
+msgstr "|n הדומע תקיחמ%x35%l"
 
-#: src/menus.C:956
+#: src/menus.C:929
 msgid "EMT|nN#n#N"
 msgstr ""
 
-#: src/menus.C:958
+#: src/menus.C:931
 #, no-c-format
 msgid "|Delete Table%x43"
-msgstr "|הלבט קחמ%x43"
+msgstr "|d הלבט תקיחמ%x43"
 
-#: src/menus.C:959
+#: src/menus.C:932
 msgid "EMT|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:964
+#: src/menus.C:937
 #, no-c-format
 msgid "|Insert table%x31"
-msgstr "|הלבט ףסוה%x31"
+msgstr "|i הלבט תפסוה%x31"
 
-#: src/menus.C:965
+#: src/menus.C:938
 msgid "EMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:969
+#: src/menus.C:942
 msgid "Version Control%t"
 msgstr "תואסרג תרקב%t"
 
-#: src/menus.C:972
+#: src/menus.C:945
 #, no-c-format
 msgid "|Register%d%x51"
-msgstr "|רגאמב םושר%d%x51"
+msgstr "|r רגאמב םושר%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:976
+#: src/menus.C:949
 #, no-c-format
 msgid "|Check In Changes%d%x52"
-msgstr "|רגאמב ןכדע(Check In)%d%x52"
+msgstr "|i רגאמב ןכדע(Check In)%d%x52"
 
-#: src/menus.C:978
+#: src/menus.C:951
 #, no-c-format
 msgid "|Check Out for Edit%x53"
-msgstr "|רגאמהמ ןכדע(Check Out)%x53"
+msgstr "|o רגאמהמ ןכדע(Check Out)%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:982
+#: src/menus.C:955
 #, no-c-format
 msgid "|Check In Changes%x52"
-msgstr "|רגאמב ןכדע(Check In)%x52"
+msgstr "|i רגאמב ןכדע(Check In)%x52"
 
-#: src/menus.C:984
+#: src/menus.C:957
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
-msgstr "||רגאמהמ ןכדע(Check Out)%d%x53"
+msgstr "|o רגאמהמ ןכדע(Check Out)%d%x53"
 
-#: src/menus.C:987
+#: src/menus.C:960
 #, no-c-format
 msgid "|Revert to last version%x54"
-msgstr "|רגאמב רומשה קתועל רוזח%x54"
+msgstr "|l רגאמב רומשה קתועל רוזח%x54"
 
-#: src/menus.C:989
+#: src/menus.C:962
 #, no-c-format
 msgid "|Undo last check in%x55"
-msgstr "|רגאמל ןורחא ןוכדע לטב%x55"
+msgstr "|u רגאמל ןורחא ןוכדע לטב%x55"
 
-#: src/menus.C:991
+#: src/menus.C:964
 #, no-c-format
 msgid "|Show History%x56"
-msgstr "|הירוטסה הארה%x56"
+msgstr "|h הירוטסה הארה%x56"
 
-#: src/menus.C:994
+#: src/menus.C:967
 #, no-c-format
 msgid "|Register%x51"
-msgstr "|רגאמב םושר%x51"
+msgstr "|r רגאמב םושר%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:997
+#: src/menus.C:970
 msgid "EMV|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:998
+#: src/menus.C:971
 msgid "EMV|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:999
+#: src/menus.C:972
 msgid "EMV|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:1000
+#: src/menus.C:973
 msgid "EMV|lL#l#l"
 msgstr ""
 
-#: src/menus.C:1001
+#: src/menus.C:974
 msgid "EMV|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1002
+#: src/menus.C:975
 msgid "EMV|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:1005
+#: src/menus.C:978
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
 "Contents...%l|Version Control%m%l|View LaTeX log file%l|Paste Primary "
 "Selection as Lines|Paste Primary Selection as Paragraphs"
 msgstr ""
-"לטב|לוטיב לטב %l|ךותח|קתעה|קבדה%l|הפלחהו שופיח...|האיגשל רובע|הרעהל ךל "
-"|תופסוהו םיפצ%m|הלבט%m|תויא....|TeX תקידב|םיניינע ןכות...%l|תואסרג "
-"תרקב%m%l|LaTeX לש גול ץבוקב הפצ%l|תורושכ תישאר הריחב קבדה|תואקספכ תישאר "
-"הריחב קבדה"
+"u לטב|r לוטיב לטב %l|c ךותח|o קתעה|p קבדה%l|f הפלחהו שופיח...|"
+"e האיגשל רובע|n הרעהל ךל |i תופסוהו םיפצ%m|t הלבט%m|s תויא....|"
+"h TeX תקידב|a םיניינע ןכות...%l|v תואסרג תרקב%m%l|"
+"w LaTeX לש גול ץבוקב הפצ%l|l תורושכ תישאר הריחב קבדה|"
+"g תואקספכ תישאר הריחב קבדה"
 
-#: src/menus.C:1024
+#: src/menus.C:997
 msgid "EM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1025
+#: src/menus.C:998
 msgid "EM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:1026
+#: src/menus.C:999
 msgid "EM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1027
+#: src/menus.C:1000
 msgid "EM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1028
+#: src/menus.C:1001
 msgid "EM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1029
+#: src/menus.C:1002
 msgid "EM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1030
+#: src/menus.C:1003
 msgid "EM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1031
+#: src/menus.C:1004
 msgid "EM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1032
+#: src/menus.C:1005
 msgid "EM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1033
+#: src/menus.C:1006
 msgid "EM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1034
+#: src/menus.C:1007
 msgid "EM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1035
+#: src/menus.C:1008
 msgid "EM|hH#h#H"
 msgstr ""
 
-#: src/menus.C:1036
+#: src/menus.C:1009
 msgid "EM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1037
+#: src/menus.C:1010
 msgid "EM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:1038
+#: src/menus.C:1011
 msgid "EM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1039
+#: src/menus.C:1012
 msgid "EM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1040
+#: src/menus.C:1013
 msgid "EM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1165
+#: src/menus.C:1138
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
 "Depth|LaTeX Preamble...%l|Save layout as default"
 msgstr ""
-"ות...|הקספ...|ךמסמ...|ריינ...|הלבט...|םיטוטיצ...%l|השגדה ןונגס%b|(noun) םש "
-"ןונגס%b|הבע ןונגס%b|TeX ןונגס%b|הביבס קמוע הנש|LaTeX Preamble(?)...%l|לדחמ "
-"תרירבכ הנבמ רומש"
+"c ות...|p הקספ...|d ךמסמ...|a ריינ...|e הלבט...|"
+"q םיטוטיצ...%l|m השגדה ןונגס%b|n (noun) םש ןונגס%b|"
+"b הבע ןונגס%b|t TeX ןונגס%b|v הביבס קמוע הנש"
+"|l LaTeX תמדקה...%l|s לדחמ תרירבכ הנבמ רומש"
 
 # term: layout = הנבמ
-#: src/menus.C:1178
+
+#: src/menus.C:1151
 msgid "LM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1179
+#: src/menus.C:1152
 msgid "LM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1180
+#: src/menus.C:1153
 msgid "LM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1181
+#: src/menus.C:1154
 msgid "LM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1182
+#: src/menus.C:1155
 msgid "LM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1183
+#: src/menus.C:1156
 msgid "LM|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1184
+#: src/menus.C:1157
 msgid "LM|mM#m#M"
 msgstr ""
 
-#: src/menus.C:1185
+#: src/menus.C:1158
 msgid "LM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1186
+#: src/menus.C:1159
 msgid "LM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1187
+#: src/menus.C:1160
 msgid "LM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1188
+#: src/menus.C:1161
 msgid "LM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:1189
+#: src/menus.C:1162
 msgid "LM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1190
+#: src/menus.C:1163
 msgid "LM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1255
+#: src/menus.C:1228
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
-msgstr "ASCII ץבוק אובי%t|תורושכ%x41|תואקספכ%x42"
+msgstr "ASCII ץבוק אובי%t|l תורושכ%x41|p תואקספכ%x42"
 
-#: src/menus.C:1259
+#: src/menus.C:1232
 msgid "IMA|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1260
+#: src/menus.C:1233
 msgid "IMA|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1263
+#: src/menus.C:1236
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
 msgstr ""
-"ןכותו תומישר%t|םיניינע ןכות%x21|םירויא תמישר%x22|תואלבט תמישר%x23|םימתירוגלא "
-"תמישר%x24|סקדניא תמישר%x25|BibTeX תוינפה%x26"
+"ןכותו תומישר%t|t םיניינע ןכות%x21|f םירויא תמישר%x22|"
+"t תואלבט תמישר%x23|a םימתירוגלא תמישר%x24|i סקדניא תמישר%x25|"
+"b BibTeX תוינפה%x26"
 
 # term: figure = רויא
 # term: TOC = ןכות
-#: src/menus.C:1271
+
+#: src/menus.C:1244
 msgid "IMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1272
+#: src/menus.C:1245
 msgid "IMT|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1273
+#: src/menus.C:1246
 msgid "IMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1274
+#: src/menus.C:1247
 msgid "IMT|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1275
+#: src/menus.C:1248
 msgid "IMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1276
+#: src/menus.C:1249
 msgid "IMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1279
+#: src/menus.C:1252
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
 msgstr ""
-"םיפצ%t|ףצ רויא%x71|הפצ הלבט%x72|בחר ףצ רויא%x73|הבחר הפצ הלבט%l%x74|ףצ "
-"םתירוגלא%x75"
+"םיפצ%t|g ףצ רויא%x71|t הפצ הלבט%x72|w בחר ףצ רויא%x73"
+"|i הבחר הפצ הלבט%l%x74|a ףצ םתירוגלא%x75"
 
 # term: float = ףצ
-#: src/menus.C:1286
+
+#: src/menus.C:1259
 msgid "IMF|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1287
+#: src/menus.C:1260
 msgid "IMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1288
+#: src/menus.C:1261
 msgid "IMF|Ww#w#W"
 msgstr ""
 
-#: src/menus.C:1289
+#: src/menus.C:1262
 msgid "IMF|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1290
+#: src/menus.C:1263
 msgid "IMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1293
+#: src/menus.C:1266
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
 "period%x36|Ordinary Quote (\")%x37|Menu Separator %x38"
 msgstr ""
-"םידחוימ םיות%t|(HFill) יכנא יולימ%x31|ףוקימ תדוקנ%x32|ןגומ חוור%x33|הרוש "
-"תריבש%x34|(...) תודקונ שולש%x35|טפשמ ףוסל הדוקנ%x36|(\") תוליגר "
-"תואכרמ%x37|טירפת דירפמ %x38"
+"םידחוימ םיות%t|h יכנא יולימ%x31|p ףוקימ תדוקנ%x32|b ןגומ חוור%x33"
+"|l הרוש תריבש%x34|i (...) תודוקנ שולש%x35|e טפשמ ףוסל הדוקנ%x36"
+"|q (\") תוליגר תואכרמ%x37|m טירפת דירפמ %x38"
 
-#: src/menus.C:1303
+#: src/menus.C:1276
 msgid "IMS|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:1304
+#: src/menus.C:1277
 msgid "IMS|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1305
+#: src/menus.C:1278
 msgid "IMS|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1306
+#: src/menus.C:1279
 msgid "IMS|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1307
+#: src/menus.C:1280
 msgid "IMS|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1308
+#: src/menus.C:1281
 msgid "IMS|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1309
+#: src/menus.C:1282
 msgid "IMS|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1310
+#: src/menus.C:1283
 msgid "IMS|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1313
+#: src/menus.C:1286
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
 "Character%m%l|Note...|Label...|Cross-Reference...|Citation "
 "Reference...|Index entry...|Index entry of last word"
 msgstr ""
-"רויא...|הלבט...%l|ףסומ ץבוק...|ASCII ץבוק אובי%m|LyX ךמסמ סנכה...%l|תיתחת "
-"תרעה|םיילוש תרעה|ףצ םצע%m%l|ןכותו תומישר%m%l|םידחוימ "
-"םיות%m%l|(Note)הרעה...|תיות...|(Cross-Reference)הינפה...|טוטיצ "
-"תיינפה...|סקדניא תסינכ...|הנורחאה הלימהמ סקדניא תסינכ"
+"g רויא...|b הלבט...%l|c ףסומ ץבוק...|a ASCII ץבוק אובי%m|"
+"x LyX ךמסמ סנכה...%l|f תיתחת תרעה|m םיילוש תרעה|o ףצ םצע%m%l|"
+"t ןכותו תומישר%m%l|s םידחוימ םיות%m%l|n הרעה...|l תיות...|"
+"r (Cross-Reference)הינפה...|i טוטיצ תיינפה...|d סקדניא תסינכ...|"
+"w הנורחאה הלימהמ סקדניא תסינכ"
 
-#: src/menus.C:1334
+#: src/menus.C:1307
 msgid "IM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1335
+#: src/menus.C:1308
 msgid "IM|bB#b#B"
 msgstr ""
 
-#: src/menus.C:1336
+#: src/menus.C:1309
 msgid "IM|cC#c#C"
 msgstr ""
 
-#: src/menus.C:1337
+#: src/menus.C:1310
 msgid "IM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1338
+#: src/menus.C:1311
 msgid "IM|Xx#x#X"
 msgstr ""
 
-#: src/menus.C:1339
+#: src/menus.C:1312
 msgid "IM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1340
+#: src/menus.C:1313
 msgid "IM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1341
+#: src/menus.C:1314
 msgid "IM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1342
+#: src/menus.C:1315
 msgid "IM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1343
+#: src/menus.C:1316
 msgid "IM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1344
+#: src/menus.C:1317
 msgid "IM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1345
+#: src/menus.C:1318
 msgid "IM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1346
+#: src/menus.C:1319
 msgid "IM|rR#r#R"
 msgstr ""
 
-#: src/menus.C:1347
+#: src/menus.C:1320
 msgid "IM|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1348
+#: src/menus.C:1321
 msgid "IM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:1349
+#: src/menus.C:1322
 msgid "IM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1351
+#: src/menus.C:1324
 msgid "|URL..."
-msgstr ""
+msgstr "|u URL"
 
-#: src/menus.C:1352
+#: src/menus.C:1325
 msgid "IM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1458
+#: src/menus.C:1431
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
 msgstr ""
-"רבש|יעוביר שרוש|ךירעמ|סקדניא|םוכס|לרגטניא%l|Math בצמ|(?)Display%l|Math לנפ"
+"f רבש|s יעוביר שרוש|e ךירעמ|x סקדניא|u םוכס|i לרגטניא%l|"
+"m החסונ בצמ|d תזכרוממ החסונ%l|p Math לנפ"
 
-#: src/menus.C:1468
+#: src/menus.C:1441
 msgid "MM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1469
+#: src/menus.C:1442
 msgid "MM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1470
+#: src/menus.C:1443
 msgid "MM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1471
+#: src/menus.C:1444
 msgid "MM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1472
+#: src/menus.C:1445
 msgid "MM|uU#u#U"
 msgstr ""
 
-#: src/menus.C:1473
+#: src/menus.C:1446
 msgid "MM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1474
+#: src/menus.C:1447
 msgid "MM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1475
+#: src/menus.C:1448
 msgid "MM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1476
+#: src/menus.C:1449
 msgid "MM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1542
+#: src/menus.C:1515
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
-msgstr "ךסמ יטנופ...|תויא תויורשפא...|תדלקמ...|LaTeX...%l|(?)שדחמ גופנק"
+msgstr ""
+"f ךסמ יטנופ...|s תויא תויורשפא...|k תדלקמ...|l LaTeX...%l|"
+"rשדחמ גופנק"
 
-#: src/menus.C:1548
+#: src/menus.C:1521
 msgid "OM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1549
+#: src/menus.C:1522
 msgid "OM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1550
+#: src/menus.C:1523
 msgid "OM|Kk#k#K"
 msgstr ""
 
-#: src/menus.C:1551
+#: src/menus.C:1524
 msgid "OM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1552
+#: src/menus.C:1525
 msgid "OM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:1596
+#: src/menus.C:1569
 msgid "No Documents Open!%t"
 msgstr "חותפ ךמסמ ןיא%t"
 
-#: src/menus.C:1631
-#, fuzzy
+#: src/menus.C:1603
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
-"Manual|FAQ|Table of Contents|Known Bugs|LaTeX Configuration%l|Copyright and "
+"Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
 "Warranty...|Credits...|Version..."
 msgstr ""
-"אובמ|(?)Tutorial|שמתשמל ךירדמ|תופסונ תונוכת|תישיא המאתה|סנרפר ךירדמ|םיעודי "
-"םיגאב|LaTeX תייצרוגיפנוק%l|(?)תובייחתהו םירצוי תויוכז...|םיטידרק...|הסרג..."
+"i אובמ|t דומיל|u שמתשמל ךירדמ|x תופסונ תונוכת|c תישיא המאתה|"
+"r סנרפר ךירדמ|k םיעודי םיגאב|l LaTeX תייצרוגיפנוק%l|"
+"o (?)תובייחתהו םירצוי תויוכז...|e םיטידרק...|v הסרג..."
 
-#: src/menus.C:1645
+#: src/menus.C:1615
 msgid "HM|Ii#I#i"
 msgstr ""
 
-#: src/menus.C:1646
+#: src/menus.C:1616
 msgid "HM|Tt#T#t"
 msgstr ""
 
-#: src/menus.C:1647
+#: src/menus.C:1617
 msgid "HM|Uu#U#u"
 msgstr ""
 
-#: src/menus.C:1648
+#: src/menus.C:1618
 msgid "HM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1649
+#: src/menus.C:1619
 msgid "HM|Cc#C#c"
 msgstr ""
 
-#: src/menus.C:1650
+#: src/menus.C:1620
 msgid "HM|Rr#R#r"
 msgstr ""
 
-#: src/menus.C:1651
-msgid "HM|Ff#F#f"
-msgstr ""
-
-#: src/menus.C:1652
-msgid "HM|aA#a#A"
-msgstr ""
-
-#: src/menus.C:1653
+#: src/menus.C:1621
 msgid "HM|Kk#K#k"
 msgstr ""
 
-#: src/menus.C:1654
+#: src/menus.C:1622
 msgid "HM|Ll#L#l"
 msgstr ""
 
-#: src/menus.C:1655
+#: src/menus.C:1623
 msgid "HM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1656
+#: src/menus.C:1624
 msgid "HM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1657
+#: src/menus.C:1625
 msgid "HM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:1680
+#: src/menus.C:1648
 msgid "LyX Version "
 msgstr "LyX תסרג: "
 
-#: src/menus.C:1681
+#: src/menus.C:1649
 msgid " of "
 msgstr " לש "
 
-#: src/menus.C:1682
+#: src/menus.C:1650
 msgid "Library directory: "
 msgstr "הירפסה רודמ: "
 
-#: src/menus.C:1684
+#: src/menus.C:1652
 msgid "User directory: "
 msgstr "שמתשמה רודמ: "
 
-#: src/menus.C:1698
+#: src/menus.C:1666
 msgid "Could not find requested Documentation file"
 msgstr "אצמנ אל שקובמ דועית ץבוק"
 
-#: src/menus.C:1702
+#: src/menus.C:1670
 msgid "Opening help file"
 msgstr "הרזע ץבוק תחיתפ"
 
-#: src/minibuffer.C:42 src/minibuffer.C:233
-msgid "Welcome to LyX!"
-msgstr "!LyX-ל םיאבה םיכורב"
-
-#: src/minibuffer.C:69
+#: src/minibuffer.C:55
 msgid "Executing:"
 msgstr "עצבמ:"
 
+#: src/minibuffer.C:220 src/minibuffer.h:22
+msgid "Welcome to LyX!"
+msgstr "!LyX-ל םיאבה םיכורב"
+
 #. this is a hack
-#: src/minibuffer.C:234
+#: src/minibuffer.C:221
 msgid "* No document open *"
 msgstr "* חותפ ךמסמ ןיא *"
 
-#: src/PaperLayout.C:158
+#: src/PaperLayout.C:153
 msgid "Document is read-only.  No changes to layout permitted."
 msgstr ".םירוסא הנבמ ייוניש .דבלב האירקל ךמסמה"
 
-#: src/PaperLayout.C:180
+#: src/PaperLayout.C:175
 msgid "Paper Layout"
 msgstr "ריינה הנבמ"
 
-#: src/PaperLayout.C:212
+#: src/PaperLayout.C:207
 msgid "Paper layout set"
 msgstr "ריינ הנבמ (set) תצובק"
 
-#: src/PaperLayout.C:274 src/ParagraphExtra.C:303 src/TableLayout.C:296
-#: src/TableLayout.C:468
+#: src/PaperLayout.C:269 src/ParagraphExtra.C:297 src/TableLayout.C:297
+#: src/TableLayout.C:469
 msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr ""
+msgstr "10mm :הניקת המגוד .ןיקת אל ךרוא :הרהזא"
 
-#: src/paragraph.C:1708
+#: src/paragraph.C:1970
 msgid "Senseless with this layout!"
-msgstr ""
+msgstr "!יחכונה ךמסמה הנבמ םע םעט רסח"
 
-#: src/ParagraphExtra.C:147
+#: src/ParagraphExtra.C:142
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
+msgstr "ךמסמה הנבמ תא תונשל תורשפא ןיא .דבלב האירקל ךמסמה"
 
-#: src/ParagraphExtra.C:166
+#: src/ParagraphExtra.C:161
 msgid "ParagraphExtra Layout"
 msgstr ""
 
-#: src/ParagraphExtra.C:206
+#: src/ParagraphExtra.C:201
 msgid "ParagraphExtra layout set"
 msgstr ""
 
-#: src/ParagraphExtra.C:313
+#: src/ParagraphExtra.C:307
 msgid "Warning: Invalid percent value (0-100)"
-msgstr ""
+msgstr "(0-100) ןיקת אל םיזוחא ךרע :הרהזא"
 
 #: src/print_form.C:21
 msgid "Print to"
-msgstr ""
+msgstr "לא הספדה"
 
 #: src/print_form.C:31
 msgid "Printer|#P"
-msgstr ""
+msgstr "p תספדמ|#P"
 
 #: src/print_form.C:33
 msgid "File|#F"
-msgstr ""
+msgstr "f ץבוק|#F"
 
 #: src/print_form.C:52
 msgid "All Pages|#G"
-msgstr ""
+msgstr "g םיפדה לכ|#G"
 
 #: src/print_form.C:54
 msgid "Only Odd Pages|#O"
-msgstr ""
+msgstr "o דבלב םייגוז-יא םיפד|#O"
 
 #: src/print_form.C:56
 msgid "Only Even Pages|#E"
-msgstr ""
+msgstr "e דבלב םייגוז םיפד|#E"
 
 #: src/print_form.C:62
 msgid "Normal Order|#N"
-msgstr ""
+msgstr "n ליגר רדס|#N"
 
 #: src/print_form.C:64
 msgid "Reverse Order|#R"
-msgstr ""
+msgstr "r ךופה רדס|#R"
 
 #: src/print_form.C:68
 msgid "Order"
-msgstr ""
+msgstr "רדס"
 
 #: src/print_form.C:76
 msgid "Pages:"
-msgstr ""
+msgstr "םיפד:"
 
 #: src/print_form.C:81
 msgid "Copies"
-msgstr ""
+msgstr "םיקתוע"
 
 #: src/print_form.C:85
 msgid "Count:"
-msgstr ""
+msgstr "רפסמ:"
 
 #: src/print_form.C:88
 msgid "Unsorted|#U"
-msgstr ""
+msgstr "u םינייוממ אל|#U"
 
 #: src/print_form.C:107
 msgid "File Type"
-msgstr ""
+msgstr "ץבוקה גוס"
 
 #: src/print_form.C:111
 msgid "Command:|#C"
-msgstr ""
+msgstr "c הדוקפ|#C"
 
 #: src/print_form.C:125
 msgid "DVI|#D"
-msgstr ""
+msgstr "d DVI|#D"
 
 #: src/print_form.C:127
 msgid "Postscript|#P"
-msgstr ""
+msgstr "p Postscript|#P"
 
 #: src/print_form.C:129
 msgid "LaTeX|#T"
-msgstr ""
+msgstr "t LaTeX|#T"
 
 #: src/print_form.C:132
 msgid "LyX|#L"
-msgstr ""
+msgstr "l LyX|#L"
 
 #: src/print_form.C:134
 msgid "Ascii|#s"
-msgstr ""
+msgstr "s Ascii|#s"
 
-#: src/spellchecker.C:219
+#: src/spellchecker.C:217
 msgid "Spellchecker Options"
-msgstr ""
+msgstr "תויא תויורשפא"
 
-#: src/spellchecker.C:553
+#: src/spellchecker.C:551
 msgid "Spellchecker"
-msgstr ""
+msgstr "תויא תקידב"
 
 #: src/spellchecker.C:658
 msgid ""
@@ -5007,90 +4637,99 @@ msgid ""
 "Check /usr/lib/ispell or set another\n"
 "dictionary in the Spellchecker Options menu."
 msgstr ""
+"\n"
+"\n"
+"תחא *תירשפא* הביס .יהשלכ הביסמ תמ תויאה קדוב לש ךילהתה\n"
+".יחכונה ךמסמה לש הפשל ןולימ ץבוק ךל ןקתומ אלש איה\n"
+"רחא רודמ רדגה וא /usr/lib/ispell:ב לכתסה\n"
+"\"תויורשפא\" טירפתב \"תויא תויורשפא\"ב"
 
-#: src/spellchecker.C:794
+#: src/spellchecker.C:774
 msgid " words checked."
-msgstr ""
+msgstr " :וקדבנש םילימ רפסמ"
 
-#: src/spellchecker.C:796
+#: src/spellchecker.C:776
 msgid " word checked."
-msgstr ""
+msgstr " - הקדבנ הלימ"
 
-#: src/spellchecker.C:798
+#: src/spellchecker.C:778
 msgid "Spellchecking completed!"
-msgstr ""
+msgstr "המלשוה תויאה תקידב"
 
-#: src/spellchecker.C:802
+#: src/spellchecker.C:782
 msgid ""
 "The ispell-process has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
-
+"יהשלכ הביסמ תמ תויאה קדוב לש ךילהתה\n"
+"גרהנ והש ןכתי"
 #: src/sp_form.C:26
 msgid "Use language of document|#D"
-msgstr ""
+msgstr "d ךמסמה לש הפשב שמתשה|#D"
 
 #: src/sp_form.C:28
 msgid "Use alternate language:|#U"
-msgstr ""
+msgstr "u תרחא הפשב שמתשה:|#U"
 
 #: src/sp_form.C:34
 msgid "Treat run-together words as legal|#T"
-msgstr ""
+msgstr "t Treat run-together words as legal|#T"
 
 #: src/sp_form.C:36
 msgid "Input Encoding switch to ispell|#I"
-msgstr ""
+msgstr "i ispell-ל טלקה תפש רטמרפ|#I"
 
 #: src/sp_form.C:46
 msgid "Use alternate personal dictionary:|#P"
-msgstr ""
+msgstr "p רחא ישיא ןולימב שמתשה:|#P"
 
 #: src/sp_form.C:48
 msgid "Extra special chars allowed in words:|#E"
-msgstr ""
+msgstr "e םילימב רתות םתעםוהש םירחא םיפסונ םיוות:|#E"
 
 #: src/sp_form.C:54
 msgid "Dictionary"
-msgstr ""
+msgstr "ןולימ"
 
 #: src/sp_form.C:86
 msgid "Replace"
-msgstr ""
+msgstr "ףלחה"
 
 #: src/sp_form.C:88
 msgid ""
 "Near\n"
 "Misses"
 msgstr ""
+"םילימ\n"
+"תובורק"
 
 #: src/sp_form.C:91
 msgid "Spellchecker Options...|#O"
-msgstr ""
+msgstr "o תויא תקידב תויורשפא|#O"
 
 #: src/sp_form.C:93
 msgid "Start spellchecking|#S"
-msgstr ""
+msgstr "s תויא תקידב לחתה|#S"
 
 #: src/sp_form.C:95
 msgid "Insert in personal dictionary|#I"
-msgstr ""
+msgstr "i ישיאה ןולימל ףסוה|#I"
 
 #: src/sp_form.C:97
 msgid "Ignore word|#g"
-msgstr ""
+msgstr "g הלימהמ םלעתה|#g"
 
 #: src/sp_form.C:99
 msgid "Accept word in this session|#A"
-msgstr ""
+msgstr "a יחכונהsessionל הלימה תא לבק|#A"
 
 #: src/sp_form.C:101
 msgid "Stop spellchecking|#T"
-msgstr ""
+msgstr "t תויא תקידב קספה|#T"
 
 #: src/sp_form.C:103
 msgid "Close Spellchecker|#C^["
-msgstr ""
+msgstr "Esc תויאה תקידבמ אצ|#C^["
 
 #: src/sp_form.C:106
 #, no-c-format
@@ -5104,137 +4743,143 @@ msgstr ""
 
 #: src/sp_form.C:113
 msgid "Replace word|#R"
-msgstr ""
+msgstr "r הלימ ףלחה"
 
-#: src/support/filetools.C:168
+#: src/support/filetools.C:174
 msgid "LyX Internal Error!"
-msgstr ""
+msgstr "תימינפ LyX תאיגש"
 
-#: src/support/filetools.C:169
+#: src/support/filetools.C:175
 msgid "Could not test if directory is writeable"
-msgstr ""
+msgstr "הביתכל ןתינ רודמה םאה קודבל לוכי אל"
 
-#: src/support/filetools.C:370
+#: src/support/filetools.C:378
 msgid "Error! Cannot open directory:"
-msgstr ""
+msgstr "הירפסה תא חותפל לוכי אל !האיגש - "
 
-#: src/support/filetools.C:383
+#: src/support/filetools.C:391
 msgid "Error! Could not remove file:"
-msgstr ""
+msgstr "ץבוקה תא קוחמל לוכי אל !האיגש - "
 
-#: src/support/filetools.C:397
+#: src/support/filetools.C:405
 msgid "Error! Couldn't create temporary directory:"
-msgstr ""
+msgstr "ינמז רודמ רוציל לוכי אל !האיגש - "
 
-#: src/support/filetools.C:413
+#: src/support/filetools.C:421
 msgid "Error! Couldn't delete temporary directory:"
-msgstr ""
+msgstr "ינמז רודמ קוחמל לוכי אל !האיגש - "
 
-#: src/support/filetools.C:466
+#: src/support/filetools.C:474
 msgid "Internal error!"
-msgstr ""
+msgstr "!תימינפ האיגש"
 
-#: src/support/filetools.C:467
+#: src/support/filetools.C:475
 msgid "Call to createDirectory with invalid name"
-msgstr ""
+msgstr "ןיקת אל םש םע createDirectory-ל האירק"
 
-#: src/support/filetools.C:472
+#: src/support/filetools.C:480
 msgid "Error! Couldn't create directory:"
-msgstr ""
+msgstr "רודמ רוציל לוכי אל !האיגש - "
 
 #: src/support/getUserName.C:13
 msgid "unknown"
+msgstr "עודי אל"
+
+#: src/support/path.h:21 src/support/path.h:43
+msgid "Error: Could not change to directory: "
+msgstr "רודמל רובעל לוכי אל !האיגש - "
+
+#: src/support/path.h:37
+msgid "Error: Dir already popped: "
 msgstr ""
 
-#: src/table.C:995 src/tabular.C:963
-msgid "Warning:"
-msgstr ""
-
-#: src/table.C:996 src/tabular.C:964
-msgid "Tabular format < 5 is not supported anymore\n"
-msgstr ""
-
-#: src/table.C:997 src/tabular.C:965
-msgid "Get an older version of LyX (< 1.1.x) for conversion!"
-msgstr ""
-
-#: src/TableLayout.C:232
+#: src/TableLayout.C:233
 msgid "Table Extra Form"
 msgstr ""
 
-#: src/TableLayout.C:252
+#: src/TableLayout.C:253
 msgid "Table Layout"
 msgstr ""
 
-#: src/TableLayout.C:275
+#: src/TableLayout.C:276
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr ""
 
-#: src/TableLayout.C:331
+#: src/TableLayout.C:332
 msgid "Confirm: press Delete-Button again"
 msgstr ""
 
-#: src/text2.C:356
+#: src/text2.C:336
 msgid "Opened float"
 msgstr ""
 
-#: src/text2.C:358
+#: src/text2.C:338
 msgid "Closed float"
 msgstr ""
 
-#: src/text2.C:395
+#: src/text2.C:375
 msgid "Nothing to do"
 msgstr ""
 
-#: src/text2.C:1074
+#: src/text2.C:1066
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
+""
 
-#: src/text2.C:1904 src/text2.C:2098 src/text2.C:2189 src/text2.C:2295
+#: src/text.C:4209 src/text.C:4217 src/text.C:4234 src/text.C:4249
+#: src/text2.C:1825 src/text2.C:1837 src/text2.C:2082 src/text2.C:2095
+#: src/text2.C:2192 src/text2.C:2202
+msgid "Impossible operation"
+msgstr "תירשפא יתלב הלועפ"
+
+#: src/text2.C:1826 src/text2.C:2083
 msgid "Don't know what to do with half floats."
-msgstr ""
+msgstr ".םיפצ םימצע יאצח םע תושעל המ עדוי אל"
 
-#: src/text2.C:1905 src/text2.C:1917 src/text2.C:2099 src/text2.C:2111
-#: src/text2.C:2191 src/text2.C:2203 src/text2.C:2297 src/text2.C:2309
+#: src/text2.C:1827 src/text2.C:1839 src/text2.C:2085 src/text2.C:2097
 msgid "sorry."
-msgstr ""
+msgstr ".רעטצמ"
 
-#: src/text2.C:1916 src/text2.C:2110 src/text2.C:2202 src/text2.C:2308
+#: src/text2.C:1838 src/text2.C:2096
 msgid "Don't know what to do with half tables."
-msgstr ""
+msgstr ".תואלבט יאצח םע תושעל המ עדוי אל"
 
-#: src/text.C:2553
+#: src/text2.C:2193
+msgid "Can't paste float into float!"
+msgstr "!ףצ םצע ךותל ףצ םצע קיבדהל לוכי אל"
+
+#: src/text2.C:2203
+msgid "Table cell cannot include more than one paragraph!"
+msgstr "!דבלב תחא הקספ ליכהל לוכי הלבטב את"
+
+#: src/text.C:2053
+msgid "Multicolumns can only be horizontally."
+msgstr ".םייכנא קר תויהל םילוכי םיירוט-בר םיאת"
+
+#: src/text.C:2454 src/text.C:2482
+msgid "You cannot type two spaces this way.  Please read the Tutorial."
+msgstr ".דומילה ךמסמ תא אורקל ץלמומ .םיפוצר םיחוור ינש דילקהל רשפא יא"
+
+#: src/text.C:2480
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
+msgstr ".דומילה ךמסמ תא אורקל ץלמומ .הקספ תליחתב חוור ףיסוהל רשפא יא"
 
-#: src/text.C:2555
-msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr ""
-
-#: src/text.C:3894 src/text.C:3900
-msgid "Page Break (top)"
-msgstr ""
-
-#: src/text.C:4076 src/text.C:4082
-msgid "Page Break (bottom)"
-msgstr ""
-
-#: src/text.C:4477
+#: src/text.C:4210
 msgid "You can't insert a float in a float!"
-msgstr ""
+msgstr "!ףצ םצע ךותב ףצ םצע סינכהל רשפא יא"
 
-#: src/text.C:4485
+#: src/text.C:4218
 msgid "You can't insert a marginpar in a minipage!"
-msgstr ""
+msgstr "!ףד-ינימ ךותב marginpar סינכהל רשפא יא"
 
-#: src/text.C:4501
+#: src/text.C:4234
 msgid "Cannot cut table."
-msgstr ""
+msgstr ".הלבט רוזגל לוכי אל"
 
-#: src/text.C:4517
+#: src/text.C:4250
 msgid "Float would include float!"
-msgstr ""
+msgstr "!ףצ םצע לולכל לוכי אל ףצ םצע"
