@@ -1,3 +1,7 @@
+2005-01-14  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (start): remove unused variables xpos and ypos.
+
 2005-01-07  Ruurd Reitsma  <rareitsma@yahoo.com>
 
 	* qfont_metrics.C (ascent, descent): correct the metrics returned
