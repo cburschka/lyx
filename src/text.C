@@ -3280,8 +3280,8 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 		by2 = added ? end : (end - arrow_size);
 		break;
 	}
-	case VSpace:: VFILL:
-		str = prefix + " (vertical fill)";
+	case VSpace::VFILL:
+		str = prefix + _(" (vertical fill)");
 		ty1 = ty2 = start;
 		by1 = by2 = end;
 		break;
