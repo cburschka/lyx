@@ -27,6 +27,8 @@ def change_insetgraphics(lines):
 	    break
 	j = find_end_of_inset(lines, i)
 
+	lines[i] = "\\begin_inset Graphics"
+
 	if get_value(lines, "display", i, j) == "default":
 	    j = del_token(lines, "display", i, j)
 	if get_value(lines, "rotateOrigin", i, j) == "leftBaseline":
