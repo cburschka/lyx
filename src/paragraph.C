@@ -73,7 +73,8 @@ LyXParagraph::LyXParagraph()
 	insettable = 0;
 #endif
 	footnoteflag = LyXParagraph::NO_FOOTNOTE;
-
+	footnotekind = LyXParagraph::FOOTNOTE; // should not be needed
+	
 	align = LYX_ALIGN_BLOCK;
 
 	/* table stuff -- begin*/ 
