@@ -1,3 +1,8 @@
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* ui/Makefile.am: enable Qt's uic to process the .ui files
+	when using srcdir != buildir and precompiled headers.
+
 2005-01-13  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.dialogs: add QPrefCygwinPathModule.ui.

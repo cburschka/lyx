@@ -30,4 +30,4 @@ UICFLAGS=-tr qt_
 %.h: %.ui
 	$(UIC) $(UICFLAGS) $< -o $@
 %.C: %.h %.ui $(PCH_FILE)
-	$(UIC) $(UICFLAGS) -impl `echo $^ | sed 's/pch.h.gch//'` -o $@
+	$(UIC) $(UICFLAGS) -impl `echo $^ | sed 's/[^ ]*pch.h.gch//'` -o $@
