@@ -41,6 +41,7 @@ using Liason::setMinibuffer;
 using SigC::slot;
 using std::vector;
 using std::bind2nd;
+using std::remove_if;
 
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
