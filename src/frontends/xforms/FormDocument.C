@@ -360,9 +360,6 @@ void FormDocument::update()
 
 	BufferParams const & params = lv_->buffer()->params;
 
-	setEnabled(dialog_->button_reset_defaults,
-		   !params.hasClassDefaults());
-
 	class_update(params);
 	paper_update(params);
 	language_update(params);
@@ -382,8 +379,8 @@ namespace {
 bool saveParamsAsDefault(BufferParams const &params)
 {
 	if (!AskQuestion(_("Do you want to save the current settings"),
-			_("for document layout"),
-			_("as default for new documents?")))
+			 _("for the document layout as default?"),
+			 _("(they will be valid for any new document)")))
 		return false;
 	
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
@@ -617,9 +614,6 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		setEnabled(paper_->choice_head_sep_units,      use_geom);
 		setEnabled(paper_->choice_foot_skip_units,     use_geom);
 	}
-
-	setEnabled(dialog_->button_reset_defaults,
-		   lv_->buffer()->params.hasClassDefaults());
 
 	switch (data) {
 	case INPUT:

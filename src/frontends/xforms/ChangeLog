@@ -1,3 +1,12 @@
+2001-11-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+       * forms/form_document.fd: Renamed "Save as Class Defaults"
+       to "Save as Document Defaults"
+       * FormDocument.C:
+       Removed the setEnabled-Definitions for the
+       "save_default"-Button since it causes nothing but trouble.
+       Changed the text of AskQuestion on saveParamsAsDefault.
+
 2001-11-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* DropDown.C: fix crash, improve behaviour a bit

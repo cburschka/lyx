@@ -57,7 +57,7 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, INPUT);
   {
-    char const * const dummy = N_("Save as Class Defaults|#v");
+    char const * const dummy = N_("Save as Document Defaults|#v");
     fdui->button_save_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 420, 195, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
