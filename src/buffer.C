@@ -498,7 +498,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 	//lyxerr << "           dot found at " << dot << endl;
 	if (dot != string::npos)
 			tmp_format.erase(dot, 1);
-	file_format = strToInt(tmp_format);
+	int file_format = strToInt(tmp_format);
 	//lyxerr << "format: " << file_format << endl;
 	if (file_format == LYX_FORMAT) {
 		// current format

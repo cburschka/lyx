@@ -317,8 +317,6 @@ private:
 	/// The path to the document file.
 	string filepath_;
 
-	/// Format number of buffer
-	int file_format;
 	///
 	boost::scoped_ptr<Messages> messages_;
 public:
