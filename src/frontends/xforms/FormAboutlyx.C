@@ -5,6 +5,7 @@
  *
  * \author Edwin Leuven
  * \author Angus Leeming
+ * \author Rob Lahaye
  *
  * Full author contact details are available in file CREDITS
  */
@@ -20,10 +21,13 @@
 #include "ControlAboutlyx.h"
 #include "forms/form_aboutlyx.h"
 #include "xforms_helpers.h"
-#include FORMS_H_LOCATION
 #include "Lsstream.h"
+#include "version.h"
 
-using std::getline;
+#include FORMS_H_LOCATION
+
+using std::string;
+
 
 typedef FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > base_class;
 
@@ -38,35 +42,39 @@ void FormAboutlyx::build()
 
 	// create version tab
 	version_.reset(build_aboutlyx_version(this));
-	fl_set_object_label(version_->text_version,
-			    controller().getVersion().c_str());
-	fl_set_object_label(version_->text_copyright,
-			    controller().getCopyright().c_str());
 
-	// create license and warranty tab
+	ostringstream vs;
+	vs << controller().getVersion()
+	   << '\n' << lyx_version_info;
+
+	fl_add_browser_line(version_->browser_version, vs.str().c_str());
+
+	// create credits tab
+ 	credits_.reset(build_aboutlyx_credits(this));
+
+	ostringstream crs;
+	controller().getCredits(crs);
+
+	fl_add_browser_line(credits_->browser_credits, crs.str().c_str());
+
+	// create license tab
 	license_.reset(build_aboutlyx_license(this));
+	int const width = license_->browser_license->w - 10;
 
-	string str = formatted(controller().getLicense(),
-			       license_->text_license->w - 10);
-	fl_set_object_label(license_->text_license, str.c_str());
+	ostringstream cs;
+	cs << controller().getCopyright() << "\n\n"
+	   << formatted(controller().getLicense(), width) << "\n\n"
+	   << formatted(controller().getDisclaimer(), width);
 
-	str = formatted(controller().getDisclaimer(),
-			license_->text_warranty->w - 10);
-	fl_set_object_label(license_->text_warranty, str.c_str());
-
-	// create credits
-	credits_.reset(build_aboutlyx_credits(this));
-	ostringstream ss;
-	controller().getCredits(ss);
-	fl_add_browser_line(credits_->browser_credits, ss.str().c_str());
+	fl_add_browser_line(license_->browser_license, cs.str().c_str());
 
 	// stack tabs
-	fl_addto_tabfolder(dialog_->tabfolder,_("Copyright and Version"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Version"),
 			   version_->form);
-	fl_addto_tabfolder(dialog_->tabfolder,_("License and Warranty"),
-			   license_->form);
-	fl_addto_tabfolder(dialog_->tabfolder,_("Credits"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Credits"),
 			   credits_->form);
+	fl_addto_tabfolder(dialog_->tabfolder, _("License"), 
+			   license_->form);
 
 	// work-around xforms bug re update of folder->x, folder->y coords.
 	setPrehandler(dialog_->tabfolder);

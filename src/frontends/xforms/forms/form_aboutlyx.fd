@@ -5,27 +5,28 @@ Internal Form Definition File
 
 Number of forms: 4
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_aboutlyx
-Width: 450
-Height: 400
+Width: 395
+Height: 365
 Number of Objects: 3
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 450 400
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 395 365
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_SouthEast
 name: 
 callback: 
 argument: 
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 320 360 120 30
+box: 300 335 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -42,8 +43,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Close|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
@@ -51,101 +52,41 @@ argument: 0
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 10 20 430 330
-boxtype: FL_UP_BOX
+box: 0 5 395 325
+boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: 
+label: Tabbed folder
 shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_SouthEast
 name: tabfolder
 callback: 
 argument: 
 
 =============== FORM ===============
 Name: form_aboutlyx_version
-Width: 430
-Height: 310
-Number of Objects: 3
-
---------------------
-class: FL_BOX
-type: FLAT_BOX
-box: 0 0 430 310
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 10 410 110
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Text
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_copyright
-callback: 
-argument: 
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 130 410 170
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Text
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_version
-callback: 
-argument: 
-
-=============== FORM ===============
-Name: form_aboutlyx_credits
-Width: 430
-Height: 310
+Width: 395
+Height: 300
 Number of Objects: 2
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 430 310
+box: 0 0 395 300
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_SouthEast
 name: 
 callback: 
 argument: 
@@ -153,31 +94,31 @@ argument:
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 10 10 410 290
+box: 5 5 385 290
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_BOTTOM
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: browser_credits
+gravity: FL_NorthWest FL_SouthEast
+name: browser_version
 callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
-Name: form_aboutlyx_license
-Width: 430
-Height: 310
-Number of Objects: 3
+Name: form_aboutlyx_credits
+Width: 395
+Height: 300
+Number of Objects: 2
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 430 310
+box: 0 0 395 300
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -187,46 +128,70 @@ lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_SouthEast
 name: 
 callback: 
 argument: 
 
 --------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 10 410 100
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
+class: FL_BROWSER
+type: NORMAL_BROWSER
+box: 5 5 385 290
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_SouthEast
+name: browser_credits
+callback: C_FormBaseInputCB
+argument: 0
+
+=============== FORM ===============
+Name: form_aboutlyx_license
+Width: 395
+Height: 300
+Number of Objects: 2
+
+--------------------
+class: FL_BOX
+type: FLAT_BOX
+box: 0 0 395 300
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Text
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_license
+gravity: FL_NorthWest FL_SouthEast
+name: 
 callback: 
 argument: 
 
 --------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 120 410 180
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
+class: FL_BROWSER
+type: NORMAL_BROWSER
+box: 5 5 385 290
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Text
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_warranty
-callback: 
-argument: 
+gravity: FL_NorthWest FL_SouthEast
+name: browser_license
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_forms

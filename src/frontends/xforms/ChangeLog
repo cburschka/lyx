@@ -1,3 +1,9 @@
+2002-10-22  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* forms/form_aboutlyx.fd: implement the text widgets as browsers
+
+	* FormAboutlyx.C (build): Rearrange tabs. Add Build-info. Prettify.
+
 2002-10-22  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (libxforms_la_SOURCES): arrange list into alphabetical
