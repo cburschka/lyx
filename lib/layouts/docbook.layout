@@ -3,10 +3,8 @@
 # DocBook textclass definition file.
 # Author : Jose' Matos <jamatos@lyx.org>
 
-
-Input db_stdclass.inc
 Input numarticle.inc
-
+Input db_stdclass.inc
 
 # Exclude higher, or equal, sections:
 NoStyle Part
