@@ -250,7 +250,9 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 		string & extra_label = *it;
 
 		++count;
-		if (count > max_number_of_items) {
+		// add a More... submenu if the menu is too long (but
+		// not just for one extra entry!)
+		if (count > max_number_of_items && (i+1) != end) {
 			int tmpmenuid = get_new_submenu(smn, win);
 			lyxerr[Debug::GUI] << "Too many items, creating "
 					   << "new menu " << tmpmenuid << endl;

@@ -1,3 +1,8 @@
+2002-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Menubar_pimpl.C (create_submenu): do not create a "More..."
+	submenu just for one entry
+
 2002-10-15  Angus Leeming  <leeming@lyx.org>
 
 	* XWorkArea.C (work_area_handler): Pass the mouse button correctly to
