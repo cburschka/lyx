@@ -1,3 +1,8 @@
+2002-03-08  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (updateInset): update inset inside inset also
+	if it isn't inside theLockingInset().
+
 2002-03-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (asciiParagraph): redo some of the word and line length

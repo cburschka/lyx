@@ -1192,7 +1192,8 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 
 bool BufferView::Pimpl::available() const
 {
-	if (buffer_ && bv_->text) return true;
+	if (buffer_ && bv_->text)
+		return true;
 	return false;
 }
 
@@ -3405,7 +3406,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 
 void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 {
-	if (!inset)
+	if (!inset || !available())
 		return;
 
 	// first check for locking insets
@@ -3431,9 +3432,14 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 		}
 	}
   
-	// then check the current buffer
-	if (available()) {
-		hideCursor();
+	// then check if the inset is a top_level inset (has no owner)
+	// if yes do the update as always otherwise we have to update the
+	// toplevel inset where this inset is inside
+	Inset * tl_inset = inset;
+	while(tl_inset->owner())
+		tl_inset = tl_inset->owner();
+	hideCursor();
+	if (tl_inset == inset) {
 		update(bv_->text, BufferView::UPDATE);
 		if (bv_->text->updateInset(bv_, inset)) {
 			if (mark_dirty) {
@@ -3446,6 +3452,13 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 			}
 			return;
 		}
+	} else if (static_cast<UpdatableInset *>(tl_inset)
+			   ->updateInsetInInset(bv_, inset))
+	{
+			if (bv_->text->updateInset(bv_,  tl_inset)) {
+				update();
+				updateScrollbar();
+			}
 	}
 }
 

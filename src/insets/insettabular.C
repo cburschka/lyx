@@ -618,6 +618,8 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 		LyXFont font;
 		calculate_dimensions_of_cells(bv, font, true);
 	}
+	if (!locked && what == CELL)
+		what = FULL;
 	if (need_update < what) // only set this if it has greater update
 		need_update = what;
 #if 0 // maybe this should not be done!
@@ -709,10 +711,16 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 
 bool InsetTabular::updateInsetInInset(BufferView * bv, Inset * inset)
 {
-	if (!the_locking_inset)
+	Inset * tl_inset = inset;
+	// look if this inset is really inside myself!
+	while(tl_inset->owner() && tl_inset->owner() != this)
+		tl_inset = tl_inset->owner();
+	// if we enter here it's not ower inset
+	if (!tl_inset->owner())
 		return false;
-	if (the_locking_inset != inset) {
-		if (!the_locking_inset->updateInsetInInset(bv, inset))
+	// we only have to do this if this is a subinset of our cells
+	if (tl_inset != inset) {
+		if (!static_cast<InsetText *>(tl_inset)->updateInsetInInset(bv, inset))
 			return false;
 	}
 	updateLocal(bv, CELL, false);

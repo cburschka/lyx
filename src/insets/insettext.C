@@ -869,15 +869,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	if (!the_locking_inset) {
-		bool found = lt->updateInset(bv, inset);
-		if (clear)
-			lt = 0;
-		if (found)
-			setUpdateStatus(bv, NONE);
-		return found;
-	}
-	if (the_locking_inset != inset) {
+	if (inset->owner() != this) {
 		bool found = the_locking_inset->updateInsetInInset(bv, inset);
 		if (clear)
 			lt = 0;
@@ -890,7 +882,9 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		lt = 0;
 	if (found) {
 		setUpdateStatus(bv, CURSOR_PAR);
-		if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
+		if (the_locking_inset &&
+		    cpar(bv) == inset_par && cpos(bv) == inset_pos)
+		{
 			inset_x = cx(bv) - top_x + drawTextXOffset;
 			inset_y = cy(bv) + drawTextYOffset;
 		}

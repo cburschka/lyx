@@ -1,3 +1,13 @@
+2002-03-08  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (updateLocal): do a FULL update if we're not locked
+	and only a CELL update is asked.
+
+	* insettext.C (updateInsetInInset): update insets inside inset also
+	if it isn't inside the_locking_inset.
+
+	* insettabular.C (updateInsetInInset): ditto.
+
 2002-03-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetexternal.C (doSubstitution): check whether we are using a
