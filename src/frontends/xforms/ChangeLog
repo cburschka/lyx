@@ -1,3 +1,28 @@
+2002-11-08  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
+
+	* xforms_resize.[Ch]: sigh. Hack the "get scaling" part of
+	fl_adjust_form_size out of the xforms source and put it in here as
+	get_scaling_factor. Resizing and then unresizing to get this info
+	produces really nasty results...
+
+	I've put a request into the xforms list.
+
+2002-11-08  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
+
+	* xforms_resize.[Ch]: replace scale_to_fit_tabs and scale_form with
+	get_scale_to_fit and scale_form_horizontally, respectively. The
+	functions are a total re-write, making use of the xforms library's
+	fl_adjust_form_size routine. We therefore get enormously simplified
+	code and consideration of /all/ button objects, not just those
+	tabs in tabfolders.
+
+	* FormBase.C (prepare_to_show):
+	* FormBaseDeprecated.C (prepare_to_show): use the renamed resize
+	functions to scale the dialog so that labels fit within buttons.
+
+	* FormBase.C (prepare_to_show): remove bc().refresh() call, as this
+	is done by the controller.
+
 2002-11-07  Angus Leeming  <leeming@lyx.org>
 
 	* forms/fdfixh.sed: generate the d-tors in a clean way.

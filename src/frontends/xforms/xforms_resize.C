@@ -21,6 +21,79 @@
 
 namespace {
 
+/* This is hacked straight out of the xforms source.
+   It is fl_adjust_form_size without the last few lines that do the
+   adjusting.
+ */
+double get_scaling_factor(FL_FORM * form)
+{
+    FL_OBJECT *ob;
+    float xfactor, yfactor, max_factor, factor;
+    int sw, sh, osize;
+    float xm = 0.5f, ym = 0.5f;
+    int bw;
+
+//      if (fl_no_connection)
+//  	return 1.0f;
+
+    max_factor = factor = 1.0f;
+    for (ob = form->first; ob; ob = ob->next)
+    {
+	if ((ob->align == FL_ALIGN_CENTER || (ob->align & FL_ALIGN_INSIDE) ||
+	     ob->objclass == FL_INPUT) &&
+	    !ob->is_child && *(ob->label) && ob->label[0] != '@' &&
+	    ob->boxtype != FL_NO_BOX &&
+	    (ob->boxtype != FL_FLAT_BOX || ob->objclass == FL_MENU))
+	{
+	    fl_get_string_dimension(ob->lstyle, ob->lsize, ob->label, 
+                       strlen(ob->label), &sw, &sh);
+
+	    bw = (ob->boxtype == FL_UP_BOX || ob->boxtype == FL_DOWN_BOX) ?
+		FL_abs(ob->bw) : 1;
+
+	    if (ob->objclass == FL_BUTTON &&
+		(ob->type == FL_RETURN_BUTTON || ob->type == FL_MENU_BUTTON))
+		sw += FL_min(0.6f * ob->h, 0.6f * ob->w) - 1;
+
+	    if (ob->objclass == FL_BUTTON && ob->type == FL_LIGHTBUTTON)
+		sw += FL_LIGHTBUTTON_MINSIZE + 1;
+
+	    if (sw <= (ob->w - 2 * (bw + xm)) && sh <= (ob->h - 2 * (bw + ym)))
+		continue;
+
+	    if ((osize = ob->w - 2 * (bw + xm)) <= 0)
+		osize = 1;
+	    xfactor = (float) sw / (float)osize;
+
+	    if ((osize = ob->h - 2 * (bw + ym)) <= 0)
+		osize = 1;
+	    yfactor = (float) sh / osize;
+
+	    if (ob->objclass == FL_INPUT)
+	    {
+		xfactor = 1.0f;
+		yfactor = (sh + 1.6f) / osize;
+	    }
+
+	    if ((factor = FL_max(xfactor, yfactor)) > max_factor)
+	    {
+		max_factor = factor;
+	    }
+	}
+    }
+
+    if (max_factor <= 1.0f)
+	return 1.0f;
+
+    max_factor = 0.01f * (int) (max_factor * 100.0f);
+
+    if (max_factor > 1.25f)
+	max_factor = 1.25f;
+
+    return max_factor;
+}
+
+
 // A nasty hack for older xforms versions
 int get_tabfolder_numfolders(FL_OBJECT * folder)
 {
@@ -52,19 +125,6 @@ int get_tabfolder_numfolders(FL_OBJECT * folder)
 
 	return num_folders;
 #endif
-}
-
-
-double get_scaling_factor(FL_FORM * form)
-{
-	// fl_adjust_form_size gives us the info we desire but also resizes
-	// the form, which we don't want :-(
-	double factor = fl_adjust_form_size(form);
-	if (factor > 1.001) {
-		double const inv = 1.0 / factor;
-		fl_scale_form(form, inv, inv);
-	}
-	return factor;
 }
 
 
