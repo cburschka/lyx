@@ -1,3 +1,8 @@
+2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsCacheItem.C (convertToDisplayFormat): don't launch that Alert
+	if the file can't be found.
+
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.[Ch] (update): now passed filepath to determine absolute

@@ -434,8 +434,6 @@ void GCacheItem::convertToDisplayFormat()
 
 	// First, check that the file exists!
 	if (!IsFileReadable(filename)) {
-		Alert::alert(_("File ") + displayed_filename,
-			   _("\nisn't readable or doesn't exist!"));
 		setStatus(ErrorNoFile);
 		return;
 	}

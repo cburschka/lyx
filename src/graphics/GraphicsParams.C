@@ -31,7 +31,7 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 	if (!filepath.empty()) {
 		filename = MakeAbsPath(filename, filepath);
 	}
-	
+
 	if (iparams.clip)
 		bb = iparams.bb;
 
