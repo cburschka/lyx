@@ -46,6 +46,8 @@ What's new
 - make sure to use the graphicx package with the RasterBitmap and XFig
   external templates.
 
+- fix rotation angle of images to be the same as in latex output
+
 - do not ignore zero-length vertical spacing with 'keep' flag.
 
 - fix interaction between sixpack and LyX via lyxserver

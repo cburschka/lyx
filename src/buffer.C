@@ -3190,12 +3190,14 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 void Buffer::sgmlError(Paragraph * /*par*/, int /*pos*/,
 	string const & /*message*/) const
 {
+#ifdef WITH_WARNINGS
 #warning This is wrong we cannot insert an inset like this!!!
 	// I guess this was Jose' so I explain you more or less why this
 	// is wrong. This way you insert something in the paragraph and
 	// don't tell it to LyXText (row rebreaking and undo handling!!!)
 	// I deactivate this code, have a look at BufferView::insertErrors
 	// how you should do this correctly! (Jug 20020315)
+#endif
 #if 0
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);

@@ -1,6 +1,6 @@
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flags,
-dnl and FORMS_H_LOCATION / FORMS_IMAGE_H_LOCATION is also set
+dnl and FORMS_H_LOCATION / FLIMAGE_H_LOCATION is also set
 AC_DEFUN(LYX_PATH_XFORMS,[
  
 LIBS="$XPM_LIB $LIBS"
@@ -17,15 +17,9 @@ AC_CHECK_HEADER(X11/forms.h,[
   lyx_cv_forms_h_location="<X11/forms.h>"],[
 AC_CHECK_HEADER(forms.h,[],[
 LYX_LIB_ERROR(forms.h,forms)])])
- 
-lyx_cv_flimage_h_location="<flimage.h>"
-AC_CHECK_HEADER(X11/flimage.h,[
-  ac_cv_header_flimage_h=yes
-  lyx_cv_flimage_h_location="<X11/flimage.h>"],)
-AC_DEFINE_UNQUOTED(FORMS_IMAGE_H_LOCATION,$lyx_cv_flimage_h_location)
- 
-AC_DEFINE_UNQUOTED(FORMS_H_LOCATION,$lyx_cv_forms_h_location)
- 
+AC_DEFINE_UNQUOTED(FORMS_H_LOCATION,$lyx_cv_forms_h_location, 
+   [define this to the location of forms.h to be used with #include, e.g. <forms.h>])
+
 if test $ac_cv_header_forms_h = yes; then
   AC_CACHE_CHECK([xforms header version],lyx_cv_xfversion,
   [ cat > conftest.$ac_ext <<EOF
@@ -56,74 +50,63 @@ LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
 it is an unproven version and might still have some bugs. You should
 probably use version 0.89.6 (or 0.88) instead) ;;
     0.89*) ;;
+    0.9999*) ;;
     1.0*) ;;
        *) LYX_WARNING(dnl
 Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,]
  since it is newer than 0.89. You might have slight problems with it.);;
 esac
-fi])
+fi
+])
 
 
+ 
 dnl Check whether the xforms library has a viable image loader
 AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
 [
 save_LIBS=$LIBS
-LIBS="-lflimage $XFORMS_LIB -ljpeg $LIBS"
+LIBS="$XFORMS_LIB $LIBS"
 lyx_use_xforms_image_loader=no
-AC_CHECK_FUNCS(flimage_dup,[
-  AC_CHECK_FUNCS(flimage_to_pixmap,[
-    lyx_use_xforms_image_loader=yes
-    AC_CHECK_FUNCS(flimage_enable_ps)])])
-LIBS=$save_LIBS
-test $lyx_use_xforms_image_loader = yes && lyx_flags="$lyx_flags xforms-image-loader" && XFORMS_IMAGE_LIB=-lflimage
- 
-# try without flimage 
-if test $lyx_use_xforms_image_loader = no ; then
-	LIBS="$XFORMS_LIB -ljpeg $LIBS"
-	lyx_use_xforms_image_loader=no
-	AC_CHECK_FUNCS(flimage_dup,[
-	  AC_CHECK_FUNCS(flimage_to_pixmap,[
-	    lyx_use_xforms_image_loader=yes
-	    AC_CHECK_FUNCS(flimage_enable_ps)])])
-	LIBS=$save_LIBS
-
-	# try without -ljpeg
-	if test $lyx_use_xforms_image_loader = no ; then
-		LIBS="$XFORMS_LIB $LIBS"
-		lyx_use_xforms_image_loader=no
-		AC_CHECK_FUNCS(flimage_dup,[
-		  AC_CHECK_FUNCS(flimage_to_pixmap,[
-		    lyx_use_xforms_image_loader=yes
-		    AC_CHECK_FUNCS(flimage_enable_ps)])])
-		LIBS=$save_LIBS
-	fi
- 
-fi
- 
+AC_LANG_SAVE
+AC_LANG_C
+AC_SEARCH_LIBS(flimage_dup, flimage, 
+  [lyx_use_xforms_image_loader=yes
+   if test "$ac_cv_search_flimage_dup" != "none required" ; then
+     XFORMS_IMAGE_LIB="-flimage"
+  fi])
 AC_SUBST(XFORMS_IMAGE_LIB)
- 
+
+if test $lyx_use_xforms_image_loader = yes ; then
+  lyx_flags="$lyx_flags xforms-image-loader"
+  AC_DEFINE(USE_XFORMS_IMAGE_LOADER, 1, 
+            [Define if you want to use xforms built-in image loader])
+  AC_CHECK_FUNCS(flimage_enable_ps)
+  AC_SEARCH_LIBS(flimage_enable_jpeg, jpeg, 
+    [if test "$ac_cv_search_flimage_enable_jpeg" != "none required" ; then
+       save_LIBS="-ljpeg $save_LIBS"
+       XFORMS_IMAGE_LIB="-ljpeg $XFORMS_IMAGE_LIB"
+     fi
+     AC_DEFINE(HAVE_FLIMAGE_ENABLE_JPEG, 1, 
+               [Define if you have the flimage_enable_jpeg function and the jpeg library available.])])
+  AC_CHECK_HEADER(flimage.h,[
+    ac_cv_header_flimage_h=yes
+    lyx_cv_flimage_h_location="<flimage.h>"],
+    [AC_CHECK_HEADER(X11/flimage.h,[
+      ac_cv_header_flimage_h=yes
+      lyx_cv_flimage_h_location="<X11/flimage.h>"],
+      ac_cv_header_flimage_h=no)])
+  if test ac_cv_header_flimage_h = yes ; then
+    AC_DEFINE(HAVE_FLIMAGE_H, 1, [Define if you have the <flimage.h> header file.])
+    AC_DEFINE_UNQUOTED(FLIMAGE_H_LOCATION, $lyx_cv_flimage_h_location, 
+      [define this to the location of flimage.h to be used with #include, e.g. <flimage.h>
+      ])
+  fi
+fi
+
 ### If the gui cannot load images itself, then we default to the
 ### very simple one in graphics/GraphicsImageXPM.[Ch]
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
 	       test $lyx_use_xforms_image_loader = no)
-])
+AC_LANG_RESTORE
+LIBS=$save_LIBS])
 
-
-dnl Check if the image loader needs libjpeg
-AC_DEFUN(LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG,
-[
-    if test "$lyx_use_xforms_image_loader" = "yes" ; then
-	AC_MSG_CHECKING([whether libjpeg is needed])
-	AC_LANG_SAVE
-	AC_LANG_C
-	AC_TRY_LINK([#include FORMS_H_LOCATION
-#include FORMS_IMAGE_H_LOCATION],
-	    [jpeg_abort(0);],
-	    [lyx_need_jpeg=no],[lyx_need_jpeg=yes])
-	AC_LANG_RESTORE
-	AC_MSG_RESULT($lyx_need_jpeg)
-	if test "$lyx_need_jpeg" = "yes" ; then
-	    LIBS="-ljpeg $LIBS"
-	fi
-    fi
-])
