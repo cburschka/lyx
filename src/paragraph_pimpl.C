@@ -260,8 +260,12 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 	//Assert(pos < size());
 
 	// Then this has no meaning. (Lgb)
-	if (!siz || pos == siz)
+	if (!siz || pos == siz) {
+		lyxerr << "getChar() on pos " << pos << " in par id "
+			<< owner_->id() << " of size " << siz
+			<< "  is a bit silly !" << endl;
 		return '\0';
+	}
 
 	return text[pos];
 }

@@ -1,5 +1,10 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* paragraph_pimpl.C: complain about bad getChar()s
+	for a while at least
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* buffer.h:
 	* buffer.C: move paragraph read into a separate function,
 	a little renaming to reflect that.
