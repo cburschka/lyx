@@ -16,10 +16,6 @@ Menuset
 	Submenu "Help|H" "help"
     End
 
-MenuBar "main"
-	Submenu "File|F" "file"
-End
-
     Menubar "main_nobuffer"
 	Submenu "File|F" "file_nobuffer"
 	Submenu "Options|O" "options"
