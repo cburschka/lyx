@@ -71,6 +71,8 @@ void ControlSpellchecker::setParams()
 		}
 
 		if (!speller_->error().empty()) {
+			emergency_exit_ = true;
+			Alert::alert("The spellchecker has failed", speller_->error());
 			clearParams();
 			return;
 		}
@@ -184,7 +186,8 @@ void ControlSpellchecker::stop()
 
 void ControlSpellchecker::clearParams()
 {
-	if (!speller_) return;
+	if (!speller_)
+		return;
 
 	if (speller_->alive()) {
 		speller_->close();
