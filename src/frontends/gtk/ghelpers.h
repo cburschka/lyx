@@ -18,6 +18,8 @@
 namespace lyx {
 namespace frontend {
 
+std::vector<std::string> const buildLengthUnitList();
+
 /** name is the name of the glade file, without path or extension.
  *  Eg, "aboutlyx", "tableCreate".
  */

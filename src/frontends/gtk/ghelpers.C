@@ -13,14 +13,24 @@
 #include "ghelpers.h"
 
 #include "debug.h"
+#include "lengthcommon.h"
 
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
 using std::string;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
+
+vector<string> const buildLengthUnitList()
+{
+	vector<string> data(unit_name_gui, unit_name_gui + num_units);
+
+	return data;
+}
+
 
 string const findGladeFile(string const & name)
 {

@@ -64,7 +64,7 @@
 #include "FormERT.h"
 #include "FormExternal.h"
 #include "FormFloat.h"
-#include "FormGraphics.h"
+#include "GGraphics.h"
 #include "FormInclude.h"
 #include "GLog.h"
 #include "GMathPanel.h"
@@ -239,8 +239,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormFloat(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "graphics") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlGraphics(*dialog));
-		dialog->setView(new FormGraphics(*dialog));
+		dialog->setView(new GGraphics(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));
