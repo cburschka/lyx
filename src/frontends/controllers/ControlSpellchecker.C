@@ -170,8 +170,11 @@ WordLangTuple nextWord(PosIterator & cur, PosIterator const & end,
 	string str;
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
-	for (; cur != end && isLetter(cur); ++cur, ++progress)
-		str += cur.pit()->getChar(cur.pos());
+	for (; cur != end && isLetter(cur); ++cur, ++progress) {
+		if (!cur.pit()->isInset(cur.pos()))
+			str += cur.pit()->getChar(cur.pos());
+	}
+	
 
 	return WordLangTuple(str, lang_code);
 }

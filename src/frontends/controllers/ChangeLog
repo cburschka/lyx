@@ -1,5 +1,10 @@
 2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
 
+	* ControlSpellchecker.C (nextWord): do not send ligature breaks
+	and other nasty insets to the spellchecker
+
+2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
+
 	* ControlSpellchecker.[Ch] (nextWord, check): rewrite of the text 
 	handling parts
 
