@@ -383,13 +383,10 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		ParagraphList::iterator pit = paragraphs.begin();
 		ParagraphList::iterator pend = paragraphs.end();
 
-		int const id = inset->id();
-lyxerr << "inset:" << inset << " " << id << endl;
 		for (; pit != pend; ++pit) {
 			InsetList::iterator it = pit->insetlist.begin();
 			InsetList::iterator const end = pit->insetlist.end();
 			for (; it != end; ++it) {
-lyxerr << "it->inset:" << it->inset << endl;
 				if (it->inset == inset) {
 					lyxerr << "InsetText::lockInsetInInset: 1 a" << endl;
 					text_.setCursorIntern(pit, it->pos);
@@ -398,13 +395,6 @@ lyxerr << "it->inset:" << it->inset << endl;
 					lockInset(bv, inset);
 					lyxerr << "InsetText::lockInsetInInset: 1 c" << endl;
 					return true;
-				}
-				if (it->inset->getInsetFromID(id)) {
-					lyxerr << "InsetText::lockInsetInInset: 2" << endl;
-					text_.setCursorIntern(pit, it->pos);
-					it->inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
-lyxerr << "recurse" << endl;
-					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
 		}

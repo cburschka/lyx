@@ -1,5 +1,10 @@
 2003-09-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
+	* insettext.C: remove block causing problems in lockInsetInInset
+	(mentioned erroneously under Bug #1366)
+
+2003-09-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* insetcollapsable.C: Simplify by using adjustCommand, and fix bug
 	in the process
 
