@@ -40,6 +40,8 @@
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 
+#include <boost/function.hpp>
+
 #include <cstdlib>
 #include <csignal>
 
@@ -123,7 +125,7 @@ LyX::LyX(int & argc, char * argv[])
 		       << batch_command << "'" << endl;
 
 		Buffer * last_loaded = 0;
- 
+
 		vector<string>::iterator it = files.begin();
 		vector<string>::iterator end = files.end();
 		for (; it != end; ++it) {
@@ -153,8 +155,7 @@ LyX::LyX(int & argc, char * argv[])
 
 extern "C" {
 
-static
-void error_handler(int err_sig)
+static void error_handler(int err_sig)
 {
 	switch (err_sig) {
 	case SIGHUP:
@@ -200,7 +201,6 @@ void error_handler(int err_sig)
 
 void LyX::init(bool gui)
 {
-	// Install the signal handlers
 	signal(SIGHUP, error_handler);
 	signal(SIGFPE, error_handler);
 	signal(SIGSEGV, error_handler);
@@ -247,7 +247,6 @@ void LyX::init(bool gui)
 	if (!system_lyxdir.empty())
 		searchpath = MakeAbsPath(system_lyxdir) + ';';
 
-	// LYX_DIR_13x environment variable
 	string const lyxdir = GetEnvPath("LYX_DIR_13x");
 
 	if (!lyxdir.empty()) {
@@ -311,7 +310,6 @@ void LyX::init(bool gui)
 	// Hardcoded dir
 	searchpath += LYX_DIR;
 
-	// If debugging, show complete search path
 	lyxerr[Debug::INIT] << "System directory search path: "
 			    << searchpath << endl;
 
@@ -358,7 +356,7 @@ void LyX::init(bool gui)
 		system_lyxdir = LYX_DIR;
 		path_shown = true;
 	}
-	// Report the system directory if debugging is on
+
 	if (!path_shown)
 		lyxerr[Debug::INIT] << "System directory: '"
 				    << system_lyxdir << '\'' << endl;
@@ -430,9 +428,7 @@ void LyX::init(bool gui)
 	if (!readRcFile("preferences"))
 	    readRcFile("lyxrc");
 
-	// Read encodings
 	readEncodingsFile("encodings");
-	// Read languages
 	readLanguagesFile("languages");
 
 	// Load the layouts
@@ -455,14 +451,12 @@ void LyX::init(bool gui)
 		lyxrc.print();
 	}
 
-	// Create temp directory
 	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
 	system_tempdir = os::getTmpDir();
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << system_tempdir << '\'' << endl;
 	}
 
-	// load the lastfiles mini-database
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
 			    << lyxrc.lastfiles << "'..." << endl;
 	lastfiles.reset(new LastFiles(lyxrc.lastfiles,
@@ -471,7 +465,6 @@ void LyX::init(bool gui)
 }
 
 
-// These are the default bindings known to LyX
 void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 {
 	kbmap->bind("Right", LFUN_RIGHT);
@@ -543,7 +536,6 @@ void LyX::emergencyCleanup()
 }
 
 
-// LyX can optionally take over the handling of deadkeys
 void LyX::deadKeyBindings(kb_keymap * kbmap)
 {
 	// bindKeyings for transparent handling of deadkeys
@@ -570,8 +562,6 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 }
 
 
-// This one is not allowed to use anything on the main form, since that
-// one does not exist yet. (Asger)
 void LyX::queryUserLyXDir(bool explicit_userdir)
 {
 	// Does user directory exist?
@@ -579,11 +569,11 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
 		return;
-	} else {
-		first_start = !explicit_userdir;
 	}
+ 
+	first_start = !explicit_userdir;
 
-	// If the user specified explicitely a directory, ask whether
+	// If the user specified explicitly a directory, ask whether
 	// to create it (otherwise, always create it)
 	if (explicit_userdir &&
 	    !Alert::askQuestion(_("You have specified an invalid LyX directory."),
@@ -595,11 +585,9 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 		return;
 	}
 
-	// Tell the user what is going on
 	lyxerr << _("LyX: Creating directory ") << user_lyxdir
 	       << _(" and running configure...") << endl;
 
-	// Create directory structure
 	if (!createDirectory(user_lyxdir, 0755)) {
 		// Failed, let's use $HOME instead.
 		user_lyxdir = GetEnvPath("HOME");
@@ -615,7 +603,6 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 }
 
 
-// Read the rc file `name'
 bool LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
@@ -726,17 +713,26 @@ void LyX::readEncodingsFile(string const & name)
 
 namespace {
 
-// Set debugging level and report result to user
-void setDebuggingLevel(string const & dbgLevel)
+bool is_gui = true;
+string batch;
+
+/// return the the number of arguments consumed
+typedef boost::function<int, string const &, string const &> cmd_helper;
+
+int parse_dbg(string const & arg, string const &)
 {
-	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
-	lyxerr.level(Debug::value(dbgLevel));
+	if (arg.empty()) {
+		lyxerr << _("List of supported debug flags:") << endl;
+		Debug::showTags(lyxerr);
+		exit(0);
+	}
+	lyxerr << _("Setting debug level to ") << arg << endl;
+	lyxerr.level(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());
+	return 1;
 }
 
-
-// Give command line help
-void commandLineHelp()
+int parse_help(string const &, string const &)
 {
 	lyxerr <<
 		_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -757,141 +753,125 @@ void commandLineHelp()
 		  "                  and file.xxx is the file to be imported.\n"
 		  "\t-version        summarize version and build info\n"
 		  "Check the LyX man page for more details.") << endl;
+	exit(0);
+	return 0;
 }
 
-// Give command line version information
-void commandLineVersionInfo()
+int parse_version(string const &, string const &)
 {
 	lyxerr << "LyX " << lyx_version
 	       << " of " << lyx_release_date << endl;
 	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
 
 	lyxerr << lyx_version_info << endl;
+	exit(0);
+	return 0;
 }
 
+int parse_sysdir(string const & arg, string const &)
+{
+	if (arg.empty()) {
+		lyxerr << _("Missing directory for -sysdir switch") << endl;
+		exit(1);
+	}
+	system_lyxdir = arg;
+	return 1;
+}
+
+int parse_userdir(string const & arg, string const &)
+{
+	if (arg.empty()) {
+		lyxerr << _("Missing directory for -userdir switch") << endl;
+		exit(1);
+	}
+	user_lyxdir = arg;
+	return 1;
+}
+
+int parse_execute(string const & arg, string const &)
+{
+	if (arg.empty()) {
+		lyxerr << _("Missing command string after --execute switch") << endl;
+		exit(1);
+	}
+	batch = arg;
+	// Argh. Setting gui to false segfaults..
+	// FIXME: when ? how ?
+	// is_gui = false;
+	return 1;
+}
+
+int parse_export(string const & type, string const &)
+{
+	if (type.empty()) {
+		lyxerr << _("Missing file type [eg latex, ps...] after "
+			"--export switch") << endl;
+		exit(1);
+	}
+	batch = "buffer-export " + type;
+	is_gui = false;
+	return 1;
+}
+
+int parse_import(string const & type, string const & file)
+{
+	if (type.empty()) {
+		lyxerr << _("Missing file type [eg latex, ps...] after "
+			"--import switch") << endl;
+		exit(1);
+	}
+	if (file.empty()) {
+		lyxerr << _("Missing filename for --import") << endl;
+		exit(1);
+	}
+
+	batch = "buffer-import " + type + " " + file;
+	return 2;
+}
 
 } // namespace anon
 
 
 bool LyX::easyParse(int & argc, char * argv[])
 {
-	bool gui = true;
-	int removeargs = 0; // used when options are read
+	std::map<string, cmd_helper> cmdmap;
+
+	cmdmap["-dbg"] = parse_dbg;
+	cmdmap["-help"] = parse_help;
+	cmdmap["--help"] = parse_help;
+	cmdmap["-version"] = parse_version;
+	cmdmap["--version"] = parse_version;
+	cmdmap["-sysdir"] = parse_sysdir;
+	cmdmap["-userdir"] = parse_userdir;
+	cmdmap["-x"] = parse_execute;
+	cmdmap["--execute"] = parse_execute;
+	cmdmap["-e"] = parse_export;
+	cmdmap["--export"] = parse_export;
+	cmdmap["-i"] = parse_import;
+	cmdmap["--import"] = parse_import;
+
 	for (int i = 1; i < argc; ++i) {
-		string arg = argv[i];
+		std::map<string, cmd_helper>::const_iterator it
+			= cmdmap.find(argv[i]);
 
-		// Check for -dbg int
-		if (arg == "-dbg") {
-			if (i + 1 < argc) {
-				setDebuggingLevel(argv[i + 1]);
-				removeargs = 2;
-			} else {
-				lyxerr << _("List of supported debug flags:")
-				       << endl;
-				Debug::showTags(lyxerr);
-				exit(1);
-			}
-		}
-		// Check for "-sysdir"
-		else if (arg == "-sysdir") {
-			if (i + 1 < argc) {
-				system_lyxdir = argv[i + 1];
-				removeargs = 2;
-			} else {
-				lyxerr << _("Missing directory for -sysdir switch!")
-				       << endl;
-				exit(1);
-			}
-		}
-		// Check for "-userdir"
-		else if (arg == "-userdir") {
-			if (i + 1 < argc) {
-				user_lyxdir = argv[i + 1];
-				removeargs = 2;
-			} else {
-				lyxerr << _("Missing directory for -userdir switch!")
-				       << endl;
-				exit(1);
-			}
-		}
-		// Check for --help or -help
-		else if (arg == "--help" || arg == "-help") {
-			commandLineHelp();
-			exit(0);
-		}
-		// Check for --version or -version
-		else if (arg == "--version" || arg == "-version") {
-			commandLineVersionInfo();
-			exit(0);
-		}
-		// FIXME: why is this commented out ?
-		// Check for "-nw": No XWindows as for emacs this should
-		// give a LyX that could be used in a terminal window.
-		//else if (arg == "-nw") {
-		//	gui = false;
-		//}
+		// don't complain if not found - may be parsed later
+		if (it == cmdmap.end())
+			continue;
 
-		// Check for "-x": Execute commands
-		else if (arg == "-x" || arg == "--execute") {
-			if (i + 1 < argc) {
-				batch_command = string(argv[i + 1]);
-				removeargs = 2;
-			}
-			else
-				lyxerr << _("Missing command string after  -x switch!") << endl;
+		string arg((i + 1 < argc) ? argv[i + 1] : "");
+		string arg2((i + 2 < argc) ? argv[i + 2] : "");
+ 
+		int const remove = 1 + it->second(arg, arg2);
 
-			// Argh. Setting gui to false segfaults..
-			// FIXME: when ? how ?
-			// gui = false;
-		}
-
-		else if (arg == "-e" || arg == "--export") {
-			if (i + 1 < argc) {
-				string type(argv[i+1]);
-				removeargs = 2;
-				batch_command = "buffer-export " + type;
-				gui = false;
-			} else {
-				lyxerr << _("Missing file type [eg latex, "
-					    "ps...] after ")
-				       << arg << _(" switch!") << endl;
-				exit(1);
-			}
-		}
-		else if (arg == "-i" || arg == "--import") {
-			if (i + 1 < argc) {
-				if (!argv[i+2]) {
-					lyxerr << _("Missing filename for --import") << endl;
-					exit(1);
-				}
-
-				string const file(argv[i+2]);
-				string const type(argv[i+1]);
-				removeargs = 3;
-
-				batch_command = "buffer-import " + type + " " + file;
-				lyxerr << "batch_command: "
-				       << batch_command << endl;
-
-			} else {
-				lyxerr << _("Missing type [eg latex, "
-					    "ps...] after ")
-				       << arg << _(" switch!") << endl;
-				exit(1);
-			}
-		}
-
-		if (removeargs > 0) {
-			// Now, remove used arguments by shifting
-			// the following ones removeargs places down.
-			argc -= removeargs;
-			for (int j = i; j < argc; ++j)
-				argv[j] = argv[j + removeargs];
-			--i; // After shift, check this number again.
-			removeargs = 0;
-		}
-
+		// Now, remove used arguments by shifting
+		// the following ones remove places down.
+		argc -= remove;
+		for (int j = i; j < argc; ++j)
+			argv[j] = argv[j + remove];
+		--i;
 	}
 
-	return gui;
+	batch_command = batch;
+
+	return is_gui;
 }

@@ -1,3 +1,13 @@
+2002-08-08  John Levon  <levon@movementarian.org>
+
+	* funcrequest.h: just tedious nonsense
+ 
+	* lyx_main.h:
+	* lyx_main.C: cleanups
+ 
+	* buffer.C: 
+	* vspace.C: remove dead header lyx_main.h
+ 
 2002-08-07  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C (resizeCurrentBuffer): update scrollbar

@@ -31,7 +31,6 @@
 #include "math_mathmlstream.h"
 #include "textpainter.h"
 
-#include "lyx_main.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "debug.h"

@@ -20,7 +20,6 @@
 
 #include "buffer.h"
 #include "bufferlist.h"
-#include "lyx_main.h"
 #include "LyXAction.h"
 #include "lyxrc.h"
 #include "lyxlex.h"

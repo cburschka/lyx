@@ -14,7 +14,6 @@
 
 #include "vspace.h"
 #include "lengthcommon.h"
-#include "lyx_main.h"
 #include "buffer.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
