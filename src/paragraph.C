@@ -86,6 +86,7 @@ Paragraph::Paragraph()
 	enumdepth = 0;
 	itemdepth = 0;
 	bibkey = 0; // ale970302
+	params().clear();
 }
 
 
@@ -106,7 +107,8 @@ Paragraph::Paragraph(Paragraph * par)
 	previous_->next_ = this;
 	// end
 
-	bibkey = 0; // ale970302        
+	bibkey = 0; // ale970302
+	params().clear();
 }
 
 
