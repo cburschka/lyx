@@ -99,9 +99,8 @@ d
 i\
 
 # 2. Rewrite "} FD_xxx;" as   "struct FD_xxx {" and append a d-tor.
-s/} \(.*\);/struct \1 {/p
-# When the wrappers are here, delete this line and the p-print command above
-/struct/s/struct \(.*\) {/	~\1();/
+s/} \(.*\);/struct \1 {\
+	~\1();/
 
 # 3. Paste the contents of the hold space beneath it
 G

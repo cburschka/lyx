@@ -24,14 +24,9 @@ s/FD_form_\(.*\)/FD_\1/
 #       FL_FORM * form;
 # so we must do so here too.
 #
-# 1. Rewrite "fdui->form_xxx->fdui = ..." as "fdui->form->fdui = ..."
-s/fdui->form_\([^ ]*\)->fdui =/fdui->form->fdui =/
-
-# 2. Rewrite "fdui->form_xxx = ..." as "fdui->form = ..."
-s/fdui->form_\([^ ]*\) =/fdui->form =/
-
-# 3. Rewrite "fdui->form_xxx->..." as "fdui->form->..."
-s/fdui->form_\([^ ]*\)->/fdui->form->/
+# Rewrite "fdui->form_xxx" as "fdui->form"
+# xxx is followed by ' ', '->' or ')', so use these to flag when xxx ends.
+/fdui->form/s/\(fdui->form\)_[^ )-]*/\1/
 
 # Replace "forms.h" by FORMS_H_LOCATION in the #include directives
 s/#include \"forms\.h\"/#include FORMS_H_LOCATION/
