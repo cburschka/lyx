@@ -100,9 +100,6 @@ extern bool selection_possible;
 
 extern kb_keymap * toplevel_keymap;
 
-#if 0
-extern void MenuFax(Buffer *);
-#endif
 extern void show_symbols_form(LyXFunc *);
 
 extern LyXAction lyxaction;
@@ -359,17 +356,10 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = !Exporter::IsExportable(buf, "dvi")
 			|| lyxrc.print_command == "none";
 		break;
-#if 0
-	case LFUN_FAX:
-		disable = !Exporter::IsExportable(buf, "ps")
-			|| lyxrc.fax_command == "none";
-		break;
-#else
 	case LFUN_EXPORT:
 		disable = argument == "fax" &&
 			!Exporter::IsExportable(buf, argument);
 		break;
-#endif
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
 		break;
@@ -835,12 +825,6 @@ string const LyXFunc::Dispatch(int ac,
 		owner->getDialogs()->showPrint();
 		break;
 
-#if 0
-	case LFUN_FAX:
-		MenuFax(owner->buffer());
-		break;
-#endif
-		
 	case LFUN_EXPORT:
 		Exporter::Export(owner->buffer(), argument, false);
 		break;

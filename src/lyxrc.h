@@ -74,11 +74,6 @@ enum LyXRCTags {
 	RC_KBMAP,
 	RC_KBMAP_PRIMARY,
 	RC_KBMAP_SECONDARY,
-#if 0
-	RC_FAX_COMMAND,
-	RC_PHONEBOOK,
-	RC_FAXPROGRAM,
-#endif
 	RC_ASCIIROFF_COMMAND,
 	RC_ASCII_LINELEN,
 	RC_NUMLASTFILES,
@@ -260,14 +255,6 @@ enum LyXRCTags {
 	string font_norm_menu;
 	///
 	unsigned int autosave;
-#if 0
-	///
-	string fax_command;
-	///
-	string phone_book;
-	///
-	string fax_program;
-#endif
 	///
 	string ascii_roff_command;
 	///

@@ -819,20 +819,12 @@ InsetText::LocalDispatch(BufferView * bv,
 	    for (string::size_type i = 0; i < arg.length(); ++i) {
 		if (greek_kb_flag) {
 		    if (!math_insert_greek(bv, arg[i])) {
-#if 0
-			bv->owner()->getIntl()->getTrans()->TranslateAndInsert(arg[i], TEXT(bv));
-#else
 			bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], TEXT(bv));
-#endif
 		    } else if (!the_locking_inset) {
 			(void)moveRight(bv, false);
 		    }
 		} else {
-#if 0
-		    bv->owner()->getIntl()->getTrans()->TranslateAndInsert(arg[i], TEXT(bv));
-#else
 		    bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], TEXT(bv));
-#endif
 		}
 	    }
 	}

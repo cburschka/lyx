@@ -8,19 +8,11 @@
 #include "math_defs.h"
 #include "math_parser.h"
 
-#if 0
-#define TOTAL_KEYWORDS 269
-#define MIN_WORD_LENGTH 2
-#define MAX_WORD_LENGTH 18
-#define MIN_HASH_VALUE 8
-#define MAX_HASH_VALUE 490
-#else
 int const TOTAL_KEYWORDS = 269;
 int const MIN_WORD_LENGTH = 2;
 int const MAX_WORD_LENGTH = 18;
 int const MIN_HASH_VALUE = 8;
 int const MAX_HASH_VALUE = 490;
-#endif
 
 /* maximum key range = 483, duplicates = 40 */
 

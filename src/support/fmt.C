@@ -8,10 +8,6 @@
 
 #include "LString.h"
 
-#if 0
-using std::vsnprintf;
-#endif
-
 /* This output manipulator gives the option to use Old style format
    specifications in ostreams. Note that this is done at the expense
    of typesafety, so if possible this manipulator should be avoided.

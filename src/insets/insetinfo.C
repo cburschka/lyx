@@ -82,12 +82,7 @@ void InsetInfo::draw(BufferView * bv, LyXFont const &,
 		     int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
-#if 0
-	LyXFont font(f);
-	
-	// Info-insets are never LaTeX, so just correct the font
-	font.setLatex(LyXFont::OFF).setColor(LColor::note);
-#endif
+
 	// Draw as "Note" in a yellow box
 	x += 1;
 	pain.fillRectangle(int(x), baseline - ascent(bv, labelfont),

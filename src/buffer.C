@@ -115,11 +115,7 @@ extern BufferList bufferlist;
 extern LyXAction lyxaction;
 
 
-#if 0
-static const float LYX_FORMAT = 2.17;
-#else
 static const int LYX_FORMAT = 218;
-#endif
 
 extern int tex_code_break_column;
 
@@ -284,13 +280,8 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 
 	LyXParagraph * return_par = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
-#if 0
-	if (format < 2.16 && params.language->lang() == "hebrew")
-		font.setLanguage(default_language);
-#else
 	if (file_format < 216 && params.language->lang() == "hebrew")
 		font.setLanguage(default_language);
-#endif
 	// If we are inserting, we cheat and get a token in advance
 	bool has_token = false;
 	string pretoken;
@@ -405,13 +396,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 #endif
 		par->depth = depth;
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-#if 0
-		if (format < 2.16 && params.language->lang() == "hebrew")
-			font.setLanguage(default_language);
-#else
 		if (file_format < 216 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
-#endif
 #ifndef NEW_INSETS
 	} else if (token == "\\end_float") {
 		if (!return_par) 
@@ -426,13 +412,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		lex.EatLine();
 		par->layout = LYX_DUMMY_LAYOUT;
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-#if 0
-		if (format < 2.16 && params.language->lang() == "hebrew")
-			font.setLanguage(default_language);
-#else
 		if (file_format < 216 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
-#endif
 	} else if (token == "\\begin_float") {
 		int tmpret = lex.FindToken(string_footnotekinds);
 		if (tmpret == -1) ++tmpret;
@@ -861,13 +842,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		int tmpret = lex.FindToken(string_align);
 		if (tmpret == -1) ++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
-#if 0
-			int tmpret2 = 1;
-			for (; tmpret > 0; --tmpret)
-				tmpret2 = tmpret2 * 2;
-#else
 			int const tmpret2 = int(pow(2.0, tmpret));
-#endif
 			//lyxerr << "Tmpret2 = " << tmpret2 << endl;
 			par->align = LyXAlignment(tmpret2);
 		}
@@ -1103,40 +1078,6 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 		string const token(lex.GetString());
 		if (token == "\\lyxformat") { // the first token _must_ be...
 			lex.EatLine();
-#if 0
-			format = lex.GetFloat();
-			if (format > 1.0) {
-				if (LYX_FORMAT - format > 0.05) {
-					lyxerr << fmt(_("Warning: need lyxformat %.2f but found %.2f"),
-						      LYX_FORMAT, format) << endl;
-				}
-				if (format - LYX_FORMAT > 0.05) {
-					lyxerr << fmt(_("ERROR: need lyxformat %.2f but found %.2f"),
-						      LYX_FORMAT, format) << endl;
-				}
-				bool the_end = readLyXformat2(lex, par);
-				// Formats >= 2.13 support "\the_end" marker
-				if (format < 2.13)
-					the_end = true;
-
-				setPaperStuff();
-
-				if (!the_end)
-					WriteAlert(_("Warning!"),
-						   _("Reading of document is not complete"),
-						   _("Maybe the document is truncated"));
-				// We simulate a safe reading anyways to allow
-				// users to take the chance... (Asger)
-				return true;
-			} // format < 1.0
-			else {
-				WriteAlert(_("ERROR!"),
-					   _("Old LyX file format found. "
-					     "Use LyX 0.10.x to read this!"));
-				return false;
-			}
-
-#else
 			string tmp_format = lex.GetString();
 			//lyxerr << "LyX Format: `" << tmp_format << "'" << endl;
 			// if present remove ".," from string.
@@ -1173,7 +1114,6 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 					   _("Reading of document is not complete"),
 					   _("Maybe the document is truncated"));
 			return true;
-#endif
 		} else { // "\\lyxformat" not found
 			WriteAlert(_("ERROR!"), _("Not a LyX file!"));
 		}
@@ -1313,20 +1253,9 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 
 	// write out a comment in the top of the file
 	ofs << '#' << LYX_DOCVERSION 
-	    << " created this file. For more info see http://www.lyx.org/\n";
-#if 0
-	ofs.setf(ios::showpoint|ios::fixed);
-	ofs.precision(2);
-#ifndef HAVE_LOCALE
-	char dummy_format[512];
-	sprintf(dummy_format, "%.2f", LYX_FORMAT);
-	ofs << "\\lyxformat " <<  dummy_format << "\n";
-#else
-	ofs << "\\lyxformat " << setw(4) <<  LYX_FORMAT << "\n";
-#endif
-#else
-	ofs << "\\lyxformat " << LYX_FORMAT << "\n";
-#endif
+	    << " created this file. For more info see http://www.lyx.org/\n"
+	    << "\\lyxformat " << LYX_FORMAT << "\n";
+
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
 

@@ -18,9 +18,6 @@
 #include "WorkArea.h"
 #include "debug.h"
 #include "support/lstrings.h"
-#if 0
-#include "BufferView.h"
-#endif
 #include "LyXView.h"
 #include "lyxfunc.h"
 
@@ -61,16 +58,8 @@ extern "C" {
 
 
 
-WorkArea::WorkArea(
-#if 0
-	BufferView * o,
-#endif
-	int xpos, int ypos, int width, int height)
-	:
-#if 0
-	owner_(o),
-#endif
-	workareapixmap(0), painter_(*this)
+WorkArea::WorkArea(int xpos, int ypos, int width, int height)
+	: workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
@@ -271,11 +260,7 @@ void WorkArea::scroll_cb(FL_OBJECT * ob, long)
 	// If we really want the accellerating scroll we can do that
 	// from here. IMHO that is a waste of effort since we already
 	// have other ways to move fast around in the document. (Lgb)
-#if 0
-	area->owner_->scrollCB(fl_get_scrollbar_value(ob));
-#else
 	area->scrollCB(fl_get_scrollbar_value(ob));
-#endif
 	waitForX();
 }
 

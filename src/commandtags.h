@@ -188,9 +188,6 @@ enum kb_action {
 	LFUN_DELETE_SKIP,
 	LFUN_MENUNEWTMPLT,		// Asger 1997-02-02
 	LFUN_MENURELOAD,		// Asger 1997-02-02
-#if 0
-	LFUN_FAX,			// Asger 1997-02-10
-#endif
 	LFUN_RECONFIGURE, // 170	// Asger 1997-02-14
 	LFUN_CITATION_INSERT,           // AAS 97-02-23
 	LFUN_INSERT_BIBTEX,             // AAS 97-02-23

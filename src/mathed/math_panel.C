@@ -37,9 +37,6 @@
 #include "matrix.xpm"
 #include "equation.xpm"
 
-#if 0
-using std::free;
-#endif
 
 static LyXFunc * lyxfunc = 0;
 

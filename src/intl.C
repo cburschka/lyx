@@ -27,10 +27,6 @@
 #include "debug.h"
 #include "lyxrc.h"
 
-#if 0
-#include "trans_mgr.h"
-#endif
-
 #include "support/lstrings.h"
 #include "language.h"
 #include "frontends/Dialogs.h" // redrawGUI
@@ -48,9 +44,6 @@ extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code);
 Intl::Intl()
 	: prim_lang(lyxrc.primary_kbmap), 
 	sec_lang(lyxrc.secondary_kbmap)
-#if 0
-	, trans(new TransManager)
-#endif
 {
 	keymapon = lyxrc.use_kbmap;
 	chsetcode = 0;
@@ -64,9 +57,6 @@ Intl::Intl()
 Intl::~Intl()
 {
 	r_.disconnect();
-#if 0
-	delete trans;
-#endif
 }
 
 
@@ -81,11 +71,7 @@ int Intl::SetPrimary(string const & lang)
 {
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Primary: `" << lang << "'" << endl;
-#if 0
-	return trans->SetPrimary(lang);
-#else
 	return trans.SetPrimary(lang);
-#endif
 }
 
 
@@ -93,11 +79,7 @@ int Intl::SetSecondary(string const & lang)
 {
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Secondary: `" << lang << "'" << endl;
-#if 0
-	return trans->SetSecondary(lang);
-#else
 	return trans.SetSecondary(lang);
-#endif
 }
 
 
@@ -143,11 +125,7 @@ void Intl::KeyMapOn(bool on)
 	} else {
 		fl_set_button(fd_form_keymap->KeyOffBtn, 1);
 		fl_hide_object(fd_form_keymap->KeymapErr);
-#if 0
-		trans->DisableKeymap();
-#else
 		trans.DisableKeymap();
-#endif
 	}
 }
 
@@ -180,21 +158,13 @@ void Intl::KeyMapPrim()
 
 	curkeymap = i;
 
-#if 0
-	if (p.empty() || trans->SetPrimary(p)) {
-#else
 	if (p.empty() || trans.SetPrimary(p)) {
-#endif
 		// error selecting keymap
 		fl_show_object(fd_form_keymap->KeymapErr);
 		update();
 	} else {
 		// no error
-#if 0
-		trans->EnablePrimary();
-#else
 		trans.EnablePrimary();
-#endif
 		keymapon = true;
 		primarykeymap = true;
 		fl_hide_object(fd_form_keymap->KeymapErr);
@@ -218,19 +188,6 @@ void Intl::KeyMapSec()
 		p = Language2->getline();
 	curkeymap = i;
 
-#if 0
-	if (p.empty() || trans->SetSecondary(p)) {
-		// error selecting keymap
-		fl_show_object(fd_form_keymap->KeymapErr);
-		update();
-	} else {
-		// no error
-		trans->EnableSecondary();
-		keymapon = true;
-		primarykeymap = false;
-		fl_hide_object(fd_form_keymap->KeymapErr);
-	}
-#else
 	if (p.empty() || trans.SetSecondary(p)) {
 		// error selecting keymap
 		fl_show_object(fd_form_keymap->KeymapErr);
@@ -242,7 +199,6 @@ void Intl::KeyMapSec()
 		primarykeymap = false;
 		fl_hide_object(fd_form_keymap->KeymapErr);
 	}
-#endif
 }
 
 
@@ -352,32 +308,19 @@ void Intl::InitKeyMapper(bool on)
 	if (!Language->select_text(prim_lang)) {
 		Language->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap, prim_lang.c_str());
-	}
-	else
-#if 0
-		trans->SetPrimary(prim_lang);
-#else
+	} else
 		trans.SetPrimary(prim_lang);
-#endif
+
 	if (!Language2->select_text(sec_lang)) {
 		Language2->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap2, sec_lang.c_str());
-	}
-	else
-#if 0
-		trans->SetSecondary(sec_lang);
-#else
+	} else
 		trans.SetSecondary(sec_lang);
-#endif
 
 	KeyMapOn(keymapon);
 	if (keymapon)
 		Keymap(23); // turn primary on
-#if 0
-	trans->setCharset(lyxrc.font_norm);
-#else
 	trans.setCharset(lyxrc.font_norm);
-#endif
 }
 
 
@@ -413,11 +356,7 @@ void Intl::Keymap(long code)
 		break;
 	case 27:	// set new font norm
 		char const * p = fl_get_input(fd_form_keymap->Charset);
-#if 0
-		if (trans->setCharset(p))
-#else
 		if (trans.setCharset(p))
-#endif
 			fl_show_object(fd_form_keymap->ChsetErr);
 		else
 			fl_hide_object(fd_form_keymap->ChsetErr);

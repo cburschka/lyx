@@ -60,13 +60,6 @@ using std::endl;
 using std::ifstream;
 using std::vector;
 
-#if 0
-using std::getenv;
-using std::isalpha;
-using std::isalnum;
-using std::popen;
-#endif
-
 extern string system_lyxdir;
 extern string build_lyxdir;
 extern string user_lyxdir;

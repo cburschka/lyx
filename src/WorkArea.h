@@ -30,19 +30,12 @@ using SigC::Signal2;
 using SigC::Signal3;
 #endif
 
-#if 0
-class BufferView;
-#endif
 
 ///
 class WorkArea {
 public:
 	///
-	WorkArea(
-#if 0
-		BufferView *,
-#endif
-		int xpos, int ypos, int width, int height);
+	WorkArea(int xpos, int ypos, int width, int height);
 	///
 	~WorkArea();
 	///
@@ -110,10 +103,6 @@ public:
 	string const getClipboard() const;
 	///
 	void putClipboard(string const &) const;
-#if 0
-	///
-	BufferView * owner() const { return owner_; }
-#endif
 	// Signals
 	///
 	Signal0<void> workAreaExpose;
@@ -148,10 +137,6 @@ private:
 	FL_OBJECT * work_area;
 	///
 	FL_OBJECT * scrollbar;
-#if 0
-	///
-	BufferView * owner_;
-#endif
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
 	///

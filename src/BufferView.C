@@ -135,64 +135,6 @@ int BufferView::resizeCurrentBuffer()
 }
 
 
-#if 0
-void BufferView::enterView()
-{
-	pimpl_->enterView();
-}
-
-
-void BufferView::leaveView()
-{
-	pimpl_->leaveView();
-}
-
-
-// Callback for scrollbar slider
-void BufferView::scrollCB(double value)
-{
-	pimpl_->scrollCB(value);
-}
-
-
-void BufferView::workAreaMotionNotify(int x, int y, unsigned int state)
-{
-	pimpl_->workAreaMotionNotify(x, y, state);
-}
-
-
-///  Single-click on work area
-void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
-{
-	pimpl_->workAreaButtonPress(xpos, ypos, button);
-}
-
-
-void BufferView::doubleClick(int x, int y, unsigned int button) 
-{
-	pimpl_->doubleClick(x, y, button);
-}
-
-
-void BufferView::tripleClick(int x, int y, unsigned int button)
-{
-	pimpl_->tripleClick(x, y, button);
-}
-
-
-void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
-{
-	pimpl_->workAreaButtonRelease(x, y, button);
-}
-
-
-void BufferView::workAreaExpose()
-{
-	pimpl_->workAreaExpose();
-}
-#endif
-
-
 void BufferView::cursorPrevious(LyXText * text)
 {
 	pimpl_->cursorPrevious(text);

@@ -238,24 +238,6 @@ public:
 
 	///
 	void pushIntoUpdateList(Inset * i);
-#if 0
-	///
-	void workAreaExpose();
-	///
-	void workAreaButtonPress(int x, int y, unsigned int button);
-	///
-	void workAreaButtonRelease(int x, int y, unsigned int button);
-	///
-	void workAreaMotionNotify(int x, int y, unsigned int state);
-	///
-	void doubleClick(int x, int y, unsigned int button);
-	///
-	void tripleClick(int x, int y, unsigned int button);
-	///
-	void enterView();
-	///
-	void leaveView();
-#endif
 	///
 	bool ChangeInsets(Inset::Code code, string const & from, 
 			  string const & to);

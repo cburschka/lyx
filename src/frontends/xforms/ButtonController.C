@@ -1,5 +1,7 @@
 #include <config.h>
 
+#include <algorithm>
+
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__

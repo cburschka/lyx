@@ -48,11 +48,6 @@
 using std::istream;
 using std::endl;
 
-#if 0
-using std::isalpha;
-using std::isdigit;
-using std::isspace;
-#endif
 
 extern MathMatrixInset * create_multiline(short int type, int cols);
 

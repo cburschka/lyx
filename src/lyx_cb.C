@@ -61,10 +61,6 @@ extern BufferView * current_view; // called too many times in this file...
 
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
 
-#if 0
-extern bool send_fax(string const & fname, string const & sendcmd);
-#endif
-
 extern void MenuSendto();
 
 // this should be static, but I need it in buffer.C
@@ -298,32 +294,6 @@ int MenuRunChktex(Buffer * buffer)
 	}
 	return ret;
 }
-
-
-#if 0
-void MenuFax(Buffer * buffer)
-{
-	// Generate postscript file
-	if (!Exporter::Export(buffer, "ps", true))
-		return;
-
-	// Send fax
-	string const ps = OnlyFilename(ChangeExtension(buffer->fileName(), 
-						       ".ps"));
-
-	string path = OnlyPath (buffer->fileName());
-	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
-		path = buffer->tmppath;
-	}
-	Path p(path);
-	if (!lyxrc.fax_program.empty()) {
-                string help2 = subst(lyxrc.fax_program, "$$FName", ps);
-                help2 += " &";
-                Systemcalls one(Systemcalls::System, help2);
-	} else
-		send_fax(ps, lyxrc.fax_command);
-}
-#endif
 
 
 void QuitLyX()
