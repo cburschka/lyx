@@ -26,8 +26,6 @@ extern "C" {
 #include "pspell.h"
 #include "WordLangTuple.h"
 
-using std::endl;
-
 PSpell::PSpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)
 {
