@@ -1,3 +1,10 @@
+2005-03-24  Angus Leeming  <leeming@lyx.org>
+
+	* postats.sh: unset the LANG environment variable because
+	GNU sed and grep have real problems in UTF-8 environments.
+	Add a block to translate Author's names from the local encoding
+	of the po file to XHTML character codes.
+
 2005-03-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* LINGUAS: new file. Lists the languages known to LyX.
