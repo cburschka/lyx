@@ -559,9 +559,10 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	RowList::iterator end = pit->rows.end();
 
 	// remove rows of paragraph
-	for ( ; rit != end; ++rit) {
+	int anchor_cnt = -1;
+	for (int i = 0; rit != end; ++rit, ++i) {
 		if (rit == anchor_row_)
-			anchor_row_ = endRow();
+			anchor_cnt = i;
 		height -= rit->height();
 	}
 	pit->rows.clear();
@@ -586,6 +587,13 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 
 		tmprow->fill(fill(pit, tmprow, workWidth()));
 		setHeightOfRow(pit, tmprow);
+	}
+
+	if (anchor_cnt == -1) {
+		if (anchor_cnt >= pit->rows.size())
+			anchor_cnt = pit->rows.size();
+		anchor_row_ = pit->rows.begin();
+		advance(anchor_row_, anchor_cnt);
 	}
 
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
