@@ -108,9 +108,9 @@ public:
 	///
 	bool isOpen() const;
 	///
-	void open(BufferView *);
+	void open();
 	///
-	void close(BufferView *) const;
+	void close() const;
 	///
 	void markErased();
 	///

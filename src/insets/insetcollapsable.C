@@ -264,7 +264,7 @@ void InsetCollapsable::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetCollapsable: edit left/right" << endl;
 	inset.edit(bv, left);
-	open(bv);
+	open();
 	bv->cursor().push(this);
 }
 
@@ -380,7 +380,7 @@ LyXText * InsetCollapsable::getText(int i) const
 }
 
 
-void InsetCollapsable::open(BufferView *)
+void InsetCollapsable::open()
 {
 	if (!collapsed_)
 		return;
@@ -389,7 +389,7 @@ void InsetCollapsable::open(BufferView *)
 }
 
 
-void InsetCollapsable::close(BufferView * bv) const
+void InsetCollapsable::close() const
 {
 	if (collapsed_)
 		return;

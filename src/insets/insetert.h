@@ -88,15 +88,15 @@ public:
 	///
 	ERTStatus status() const { return status_; }
 	///
-	void open(BufferView *);
+	void open();
 	///
-	void close(BufferView *) const;
+	void close() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// set the status of the inset
-	void status(BufferView *, ERTStatus const st) const;
+	void status(ERTStatus const st) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -130,7 +130,7 @@ private:
 	///
 	void set_latex_font(BufferView *);
 	/// update status on button
-	void updateStatus(BufferView *, bool = false) const;
+	void updateStatus(bool = false) const;
 	///
 	void edit(BufferView * bv, bool left);
 	///

@@ -233,9 +233,9 @@ public:
 	// is the inset open?
 	virtual bool isOpen() const { return false; }
 	/// open the inset
-	virtual void open(BufferView *) {}
+	virtual void open() {}
 	/// close the inset
-	virtual void close(BufferView *) const {}
+	virtual void close() const {}
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
 	virtual bool checkInsertChar(LyXFont &);

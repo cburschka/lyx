@@ -229,11 +229,9 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return new InsetCitation(icp);
 
 		} else if (name == "ert") {
-			InsetERT * inset = new InsetERT(params);
 			InsetERT::ERTStatus s;
 			InsetERTMailer::string2params(cmd.argument, s);
-			inset->status(bv, s);
-			return inset;
+			return new InsetERT(params, s);
 
 		} else if (name == "external") {
 			Buffer const & buffer = *cmd.view()->buffer();

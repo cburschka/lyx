@@ -1,3 +1,10 @@
+2003-11-21  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* factory.C: change call to InsetERT constructor to avoid
+	additional invocation of method status
+	* text2.C (toggleInset): remove redundant update() call
+	* InsetList.[Ch] (insetsOpenCloseBranch): Pass Buffer reference
+	instead of a Bufferview pointer
 
 2003-11-21  André Pönitz  <poenitz@gmx.net>
 

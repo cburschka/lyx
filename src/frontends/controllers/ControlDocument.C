@@ -90,7 +90,7 @@ void ControlDocument::apply()
 	ParIterator pit = buffer()->par_iterator_begin();
 	ParIterator pend = buffer()->par_iterator_end();
 	for (; pit != pend; ++pit) {
-		pit->insetlist.insetsOpenCloseBranch(bufferview());
+		pit->insetlist.insetsOpenCloseBranch(*buffer());
 	}
 }
 

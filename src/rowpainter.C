@@ -361,8 +361,6 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	}
 
 	paintForeignMark(orig_x, orig_font);
-
-	return;
 }
 
 

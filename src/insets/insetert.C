@@ -119,12 +119,12 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 			string const tmp_token = lex.getString();
 
 			if (tmp_token == "Inlined") {
-				status(0, Inlined);
+				status(Inlined);
 			} else if (tmp_token == "Collapsed") {
-				status(0, Collapsed);
+				status(Collapsed);
 			} else {
 				// leave this as default!
-				status(0, Open);
+				status(Open);
 			}
 
 			token_found = true;
@@ -154,9 +154,9 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 
 	if (!token_found) {
 		if (isOpen())
-			status(0, Open);
+			status(Open);
 		else
-			status(0, Collapsed);
+			status(Collapsed);
 	}
 	setButtonLabel();
 }
@@ -237,13 +237,13 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 }
 
 
-void InsetERT::updateStatus(BufferView * bv, bool swap) const
+void InsetERT::updateStatus(bool swap) const
 {
 	if (status_ != Inlined) {
 		if (isOpen())
-			status(bv, swap ? Collapsed : Open);
+			status(swap ? Collapsed : Open);
 		else
-			status(bv, swap ? Open : Collapsed);
+			status(swap ? Open : Collapsed);
 	}
 }
 
@@ -276,7 +276,7 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 	}
 
 	if (status_ != Inlined && hitButton(cmd)) {
-		updateStatus(bv, true);
+		updateStatus(true);
 	} else {
 		FuncRequest cmd1 = cmd;
 #warning metrics?
@@ -409,7 +409,7 @@ void InsetERT::edit(BufferView * bv, bool left)
 		InsetCollapsable::edit(bv, left);
 	}
 	set_latex_font(bv);
-	updateStatus(bv);
+	updateStatus();
 }
 
 
@@ -426,7 +426,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 	case LFUN_INSET_MODIFY: {
 		InsetERT::ERTStatus status_;
 		InsetERTMailer::string2params(cmd.argument, status_);
-		status(bv, status_);
+		status(status_);
 		bv->update();
 		return DispatchResult(true, true);
 	}
@@ -537,13 +537,13 @@ void InsetERT::set_latex_font(BufferView * /*bv*/)
 }
 
 
-// attention this function can be called with bv == 0
-void InsetERT::status(BufferView * bv, ERTStatus const st) const
+void InsetERT::status(ERTStatus const st) const
 {
 	if (st == status_)
 		return;
 
 	status_ = st;
+
 	switch (st) {
 	case Inlined:
 		break;
@@ -554,15 +554,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 	case Collapsed:
 		setCollapsed(true);
 		setButtonLabel();
-#ifdef LOCK
-		if (bv)
-			bv->unlockInset();
-#endif
 		break;
-	}
-	if (bv) {
-		bv->update();
-		bv->buffer()->markDirty();
 	}
 }
 
@@ -574,19 +566,19 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetERT::open(BufferView * bv)
+void InsetERT::open()
 {
 	if (!isOpen())
-		status(bv, Open);
+		status(Open);
 }
 
 
-void InsetERT::close(BufferView * bv) const
+void InsetERT::close() const
 {
 	if (status_ == Collapsed || status_ == Inlined)
 		return;
 
-	status(bv, Collapsed);
+	status(Collapsed);
 }
 
 

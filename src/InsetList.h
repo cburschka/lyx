@@ -17,7 +17,7 @@
 #include <vector>
 
 class InsetOld;
-class BufferView;
+class Buffer;
 
 
 ///
@@ -66,7 +66,7 @@ public:
 	///
 	void decreasePosAfterPos(lyx::pos_type pos);
 	///
-	void insetsOpenCloseBranch(BufferView * bv);
+	void insetsOpenCloseBranch(Buffer const & buf);
 
 private:
 	///

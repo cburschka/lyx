@@ -256,7 +256,7 @@ void LyXText::toggleInset()
 		if (inset_owner && inset_owner->owner()
 		    && inset_owner->owner()->isOpen()) {
 			finishUndo();
-			inset_owner->owner()->close(bv());
+			inset_owner->owner()->close();
 			bv()->getLyXText()->cursorRight(true);
 			bv()->updateParagraphDialog();
 		}
@@ -269,11 +269,9 @@ void LyXText::toggleInset()
 		recUndo(cursor.par());
 
 	if (inset->isOpen())
-		inset->close(bv());
+		inset->close();
 	else
-		inset->open(bv());
-
-	bv()->update();
+		inset->open();
 }
 
 

@@ -158,18 +158,17 @@ void InsetList::decreasePosAfterPos(pos_type pos)
 }
 
 
-void InsetList::insetsOpenCloseBranch(BufferView * bv)
+void InsetList::insetsOpenCloseBranch(Buffer const & buf)
 {
-	BufferParams const & bp = bv->buffer()->params();
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
 		if (it->inset && it->inset->lyxCode() == InsetOld::BRANCH_CODE) {
 			InsetBranch * inset = static_cast<InsetBranch *>(it->inset);
-			if (bp.branchlist().selected(inset->params().branch)) {
-				inset->open(bv);
+			if (buf.params().branchlist().selected(inset->params().branch)) {
+				inset->open();
 			} else {
-				inset->close(bv);
+				inset->close();
 			}
 		}
 	}
