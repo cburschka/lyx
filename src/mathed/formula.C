@@ -153,7 +153,7 @@ int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 		return tpain.textheight();
 	} else {
 		WriteStream wi(os, false, true);
-		wi << ' ' << (par_->asNestInset()->cell(0)) << ' ';
+		wi << (par_->asNestInset()->cell(0));
 		return wi.line();
 	}
 }

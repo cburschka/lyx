@@ -27,7 +27,7 @@ What's new
 - the script used to control the generation of bitmap images for use
   in 'Instant Preview' of math equations has been re-written in python.
   Windows users now have some chance of getting Instant Preview to
-  work for them.
+  work for them
 
 - The built-in Qt dialogs are now correctly translated for the
   languages that Qt supports [Qt >= 3.2 only]
@@ -39,7 +39,7 @@ What's new
 
 ** Bug fixes
 
-* LaTeX input/output:
+* Document input/output:
 
 - partly fix handling of included files; external insets are still not
   working correctly [bug #605]
@@ -59,10 +59,12 @@ What's new
 - fix handling of floats and counters in  svjog and svprobth
   textclasses [bug #1430]
   
-- fix handling of counters in the scrlettr and scrlttr2 classes.
+- fix handling of counters in the scrlettr and scrlttr2 classes
 
 - fix off-by-one-error which caused LyX to chose the wrong custom margin 
-  package.
+  package
+
+- remove extra spaces around math insets in plain text output
 
 * User Interface:
 
@@ -77,12 +79,12 @@ What's new
   looking for translated help files
 
 - prevent activation of the Ok and Apply buttons in the reference
-  dialog when simply manipulating the list of references in the dialog.
+  dialog when simply manipulating the list of references in the dialog
 
 - set the default button in the print dialog, activated on Return, 
   to be the Ok button rather than the Close button. [bug #1465, Qt only]
 
-- enable instant preview to work on solaris machines.
+- enable instant preview to work on solaris machines
 
 - fix an annoying "could not delete temp dir" warning
 
@@ -91,7 +93,7 @@ What's new
 - don't allow the insertion of incomplete citation references, 
   which led to a crash [bug 1617]
 
-- correct the spelling of the "Acknowledgements" style in the APA layout.
+- correct the spelling of the "Acknowledgements" style in the APA layout
 
 * Configuration/Installation:
 
