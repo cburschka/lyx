@@ -1,3 +1,27 @@
+What's new in LyX version 1.1.1?
+--------------------------------
+
+LyX 1.1.1 marks an important change in our development scheme. While
+it does not have many new features, there have been many internal
+changes, many of which have been backported from our old development
+branch (which is now extinct). So while on the surface this version is
+very similar to version 1.0.4, many things happened under the hood. As
+a consequence of this: expect that some new bugs have crept in.
+
+User visible changes in lyx 1.0.1: 
+
+- New export to HTML feature
+
+- All the popups should be more resistant to resize actions.
+
+- normal spaces are automatically made unbreakable if we are in
+  a freespacing mode (LyX-Code), but not in latex mode. The rule used
+  to be that spaces where changed when in typewriter font.
+
+- the default encoding of a new document is now latin1, since it seems
+  to be a reasonable default for many people. Note that you can
+  override this default with the "Save layout as default" feature.
+
 What's new in 1.0.4 compared to LyX version 1.0.3?
 --------------------------------------------------
 

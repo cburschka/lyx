@@ -1,5 +1,10 @@
 1999-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* renamed WHATSNEW to NEWS (usual GNU style), CHANGES to
+	OLD-CHANGES (not used anymore) and modified INSTALL, INSTALL.OS2,
+	README and ANNOUNCE a bit for the next release. More work is
+	needed, of course.
+
 	* src/paragraph.C (SimpleTeXBlanks): spaces are automatically made
 	unbreakable if we are in freespacing mode (LyX-Code), but not in
 	latex mode.
