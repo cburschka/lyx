@@ -1,3 +1,12 @@
+2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ButtonControllerBase.h: C++ mode, inherit privately from
+	noncopyable 
+	* ButtonPolicies.h: ditto
+
+	* ButtonController.h: C++ mode, swap init order of restore_ and
+	cancel_ 
+
 2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlTabularCreate.h:

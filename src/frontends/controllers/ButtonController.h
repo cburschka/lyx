@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -61,8 +62,8 @@ private:
 
 template <class Button, class Widget>
 GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
-	: ButtonControllerBase(cancel, close)
-	, okay_(0), apply_(0), restore_(0), cancel_(0)
+	: ButtonControllerBase(cancel, close),
+	  okay_(0), apply_(0), cancel_(0), restore_(0)
 {}
 
 

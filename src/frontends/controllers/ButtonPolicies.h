@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * \file ButtonPolicies.h
  * \author Allan Rae, rae@lyx.org
@@ -68,7 +69,7 @@
 
     The IgnorantPolicy is a special case that allows anything.
  */
-class ButtonPolicy : public boost::noncopyable {
+class ButtonPolicy : boost::noncopyable {
 public:
 	///
 	virtual ~ButtonPolicy() {}

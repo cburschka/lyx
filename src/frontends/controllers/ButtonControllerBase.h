@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -31,7 +32,7 @@
  * This abstract base class stripped of xforms-specific code by
  * Angus Leeming <a.leeming@ic.ac.uk>
  */
-class ButtonControllerBase : public boost::noncopyable
+class ButtonControllerBase : boost::noncopyable
 {
 public:
 	/** Constructor.
