@@ -843,7 +843,9 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		if ((result & LaTeX::ERRORS)) {
 			// Insert all errors as errors boxes
 			bv->insertErrors(terr);
+#ifdef WITH_WARNINGS
 #warning repaint() or update() or nothing ?
+#endif
 			bv->repaint();
 			bv->fitCursor();
 		}

@@ -33,8 +33,6 @@ public:
 	/// make a duplicate of this inset
 	Inset * clone(Buffer const &, bool same_id = false) const;
 
-	/// this inset is editable
-	EDITABLE editable() const { return IS_EDITABLE; }
 	/// code of the inset
 	Inset::Code lyxCode() const { return Inset::OPTARG_CODE; }
 	/// return an message upon editing

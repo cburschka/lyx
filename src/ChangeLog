@@ -1,3 +1,9 @@
+2004-04-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* LaTeX.C (runMakeIndex, runBibTeX): quote correctly file name
+
+	* converter.C (scanLog): make a #warning conditional
+
 2004-04-08  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_sty.C (boldsymbol_def): modify so that it outputs

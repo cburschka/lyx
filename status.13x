@@ -24,7 +24,12 @@ What's new
 
 ** Bug fixes
 
+- fix toggling of short title inset in some cases
+
 - use opening quotation marks after an opening square bracket
+
+- fix running makeindex and bibtex when the file name contains some
+  special characters [bug #1526]
 
 - Prevent clashes with LaTeX packages defining "\boldsymbol".
 

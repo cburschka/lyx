@@ -1,3 +1,8 @@
+2004-04-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetoptarg.h: remove editable() method, which is already (and
+	better) implemented in InsetCollapsable
+
 2004-03-26  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: silence automake 1.7 warning by removing trailing
