@@ -24,6 +24,7 @@
 #include "buffer.h"
 #include "form_ref.h"
 #include "lyxfunc.h"
+#include "insets/insetref.h"
 
 #include <algorithm>
 
@@ -68,8 +69,9 @@ void FormRef::build()
 {
 	dialog_ = build_ref();
 
-	fl_addto_choice(dialog_->type,
-			_(" Ref | Page | TextRef | TextPage | PrettyRef "));
+	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
+		fl_addto_choice(dialog_->type,
+				_(InsetRef::types[i].gui_name.c_str()));
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -110,7 +112,7 @@ void FormRef::update()
 		fl_activate_object(dialog_->type);
 		fl_set_object_lcol(dialog_->type, FL_BLACK);
 	} else {
-		fl_set_choice(dialog_->type, REF+1);
+		fl_set_choice(dialog_->type, 1);
 
 		fl_activate_object(dialog_->name);
 		fl_set_object_lcol(dialog_->name, FL_BLACK);
@@ -144,6 +146,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 		fl_deactivate_object(dialog_->sort);
 		fl_set_object_lcol(dialog_->browser, FL_INACTIVE);
 		fl_set_object_lcol(dialog_->sort, FL_INACTIVE);
+		fl_set_input(dialog_->ref, "");
 	} else {
 		fl_activate_object(dialog_->browser);
 		fl_set_object_lcol(dialog_->browser, FL_BLACK);
@@ -155,6 +158,8 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 			find(keys.begin(), keys.end(), ref);
 		if (cit == keys.end())
 			cit = keys.begin();
+		if (ref.empty())
+			fl_set_input(dialog_->ref, (*cit).c_str());
 
 		int const i = static_cast<int>(cit - keys.begin());
 		fl_set_browser_topline(dialog_->browser, max(i-5, 1));
@@ -168,7 +173,7 @@ void FormRef::apply()
   	if (!lv_->view()->available())
 		return;
 
-	Type const type = static_cast<Type>(fl_get_choice(dialog_->type) - 1);
+	int const type = fl_get_choice(dialog_->type) - 1;
 	params.setCmdName(getName(type));
 
 	params.setOptions(fl_get_input(dialog_->name));
@@ -261,10 +266,8 @@ bool FormRef::input(FL_OBJECT *, long data)
 	// changed reference type
 	case 5:
 	{
-		Type type = static_cast<Type>( 
-			fl_get_choice(dialog_->type) - 1);
-		if (params.getCmdName() == getName(type)
-		    && inset_) {
+		int const type = fl_get_choice(dialog_->type) - 1;
+		if (params.getCmdName() == getName(type) && inset_) {
 			activate = false;
 		}
 	}
@@ -278,50 +281,17 @@ bool FormRef::input(FL_OBJECT *, long data)
 }
 
 
-FormRef::Type FormRef::getType() const
+int FormRef::getType() const
 {
-	Type type;
-
-	if (params.getCmdName() == "ref" )
-		type = REF;
-
-	else if (params.getCmdName() == "pageref" )
-		type = PAGEREF;
-
-	else if (params.getCmdName() == "vref" )
-		type = VREF;
-
-	else if (params.getCmdName() == "vpageref" )
-		type = VPAGEREF;
-
-	else
-		type = PRETTYREF;
-	
-	return type;
+	string const & command = params.getCmdName();
+	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
+		if (command == InsetRef::types[i].latex_name)
+			return i;
+	return 0;
 }
 
 
-string const FormRef::getName(Type type) const
+string const FormRef::getName(int type) const
 {
-	string name;
-
-	switch (type) {
-	case REF:
-		name = "ref";
-		break;
-	case PAGEREF:
-		name = "pageref";
-		break;
-	case VREF:
-		name = "vref";
-		break;
-	case VPAGEREF:
-		name = "vpageref";
-		break;
-	case PRETTYREF:
-		name = "prettyref";
-		break;
-	}
-	
-	return name;
+	return InsetRef::types[type].latex_name;
 }

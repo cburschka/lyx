@@ -1,3 +1,8 @@
+2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetref.C: Add the array InsetRef::types that contains
+	information about all supported reference types.
+
 2001-01-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinset.h: remove trailing comma in enum.

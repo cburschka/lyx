@@ -27,20 +27,8 @@ public:
 	FormRef(LyXView *, Dialogs *);
 	///
 	~FormRef();
-private:
 	///
-	enum Type {
-		///
-		REF,
-		///
-		PAGEREF,
-		///
-		VREF,
-		///
-		VPAGEREF,
-		///
-		PRETTYREF
-	};
+private:
 	///
 	enum Goto {
 		///
@@ -70,9 +58,9 @@ private:
 	///
 	FD_form_ref * build_ref();
 	///
-	Type getType() const;
+	int getType() const;
 	///
-	string const getName(Type type) const;
+	string const getName(int type) const;
 
 	///
 	Goto toggle;

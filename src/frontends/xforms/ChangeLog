@@ -6,6 +6,7 @@
 	(build): Uncomment calls to addReadOnly().
 	(updateBrowser) Do not disable the update button when there are no 
 	keys.
+	(build, getType, getName): Use InsetRef::types.
 
 2001-01-18  Angus Leeming  <a.leeming@ic.ac.uk>
 

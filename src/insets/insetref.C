@@ -34,17 +34,11 @@ void InsetRef::Edit(BufferView * bv, int, int, unsigned int button)
 string const InsetRef::getScreenLabel() const
 {
 	string temp;
-	if (getCmdName() == "ref")
-		temp = _( "Ref: " );
-	else if (getCmdName() == "pageref")
-		temp = _( "Page: " );
-	else if (getCmdName() == "vref")
-		temp = _( "TextRef: " );
-	else if (getCmdName() == "vpageref")
-		temp = _( "TextPage: " );
-	else
-		temp = _( "PrettyRef: " );
-
+	for (int i = 0; !types[i].latex_name.empty(); ++ i)
+		if (getCmdName() == types[i].latex_name) {
+			temp = _(types[i].short_gui_name);
+			break;
+		}
 	temp += getContents();
 
 	if (!isLatex
@@ -120,3 +114,12 @@ void InsetRef::Validate(LaTeXFeatures & features) const
 	else if (getCmdName() == "prettyref")
 		features.prettyref = true;
 }
+
+InsetRef::type_info InsetRef::types[] = {
+	{ "ref",	N_("Standard"),			N_("Ref: ")},
+	{ "pageref",	N_("Page Number"),		N_("Page: ")},
+	{ "vpageref",	N_("Textual Page Number"),	N_("TextPage: ")},
+	{ "vref",	N_("Standard+Textual Page"),	N_("Ref+Text: ")},
+	{ "prettyref",	N_("PrettyRef"),		N_("PrettyRef: ")},
+	{ "", "", "" }
+};

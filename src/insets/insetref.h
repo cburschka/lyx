@@ -23,6 +23,16 @@ struct LaTeXFeatures;
  */
 class InsetRef : public InsetCommand {
 public:
+	struct type_info {
+		///
+		string latex_name;
+		///
+		string gui_name;
+		///
+		string short_gui_name;
+	};
+	static type_info types[];
+
 	///
 	InsetRef(InsetCommandParams const &, Buffer const &);
 	///
