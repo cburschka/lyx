@@ -1,3 +1,4 @@
+# translation of nn_110104.po to Nynorsk
 # translation of nn_1.3.x.po to Nynorsk
 # translation of nn.po to Nynorsk
 # translation of nn_ny.po to Nynorsk
@@ -5,14 +6,14 @@
 # Norske oversettelser for LyX
 # Copyright (C) 1997-1999 LyX Team
 # Lars Gullik Bjønnes <larsbj@lyx.org>, 1999.
-# Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>, 2003.
+# Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>, 2003, 2004.
 # Ingar Pareliussen <ingar.pareliussen@chembio.ntnu.no>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nn_1.3.x\n"
+"Project-Id-Version: nn_110104\n"
 "POT-Creation-Date: 2004-01-05 17:35+0100\n"
-"PO-Revision-Date: 2003-12-16 22:59+0100\n"
+"PO-Revision-Date: 2004-01-11 14:03+0100\n"
 "Last-Translator: Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2968,8 +2969,7 @@ msgstr "&Delfigur"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
-msgstr ""
-"Er dette berre ein del av delane til ein figurflytar med mange figurar?"
+msgstr "Er dette berre ein del av delane til ein figurflytar med mange figurar?"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
 msgid "Don't un&zip on export"
@@ -4198,8 +4198,7 @@ msgstr "&Eksportformat:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
+msgstr "Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4533,8 +4532,7 @@ msgid "&View"
 msgstr "Vi&s"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis innhaldet i fila (Kan berre nyttast når stigar er vist)"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -5728,62 +5726,50 @@ msgid "NameRowG"
 msgstr "NamneLinjeG"
 
 #: ../lib/layouts/g-brief2.layout:230
-#, fuzzy
 msgid "AddressRowA"
 msgstr "AdresseLinjeA"
 
 #: ../lib/layouts/g-brief2.layout:250
-#, fuzzy
 msgid "AddressRowB"
 msgstr "AdresseLinjeB"
 
 #: ../lib/layouts/g-brief2.layout:269
-#, fuzzy
 msgid "AddressRowC"
 msgstr "AdresseLinjeC"
 
 #: ../lib/layouts/g-brief2.layout:288
-#, fuzzy
 msgid "AddressRowD"
 msgstr "AdresseLinjeD"
 
 #: ../lib/layouts/g-brief2.layout:307
-#, fuzzy
 msgid "AddressRowE"
 msgstr "AdresseLinjeE"
 
 #: ../lib/layouts/g-brief2.layout:326
-#, fuzzy
 msgid "AddressRowF"
 msgstr "AdresseLinjeF"
 
 #: ../lib/layouts/g-brief2.layout:345
-#, fuzzy
 msgid "TelephoneRowA"
 msgstr "TelefonLinjeA"
 
 #: ../lib/layouts/g-brief2.layout:365
-#, fuzzy
 msgid "TelephoneRowB"
 msgstr "TelefonLinjeB"
 
 #: ../lib/layouts/g-brief2.layout:384
-#, fuzzy
 msgid "TelephoneRowC"
 msgstr "TelefonLinjeC"
 
 #: ../lib/layouts/g-brief2.layout:403
-#, fuzzy
 msgid "TelephoneRowD"
 msgstr "TelefonLinjeD"
 
 #: ../lib/layouts/g-brief2.layout:422
-#, fuzzy
 msgid "TelephoneRowE"
 msgstr "TelefonLinjeE"
 
 #: ../lib/layouts/g-brief2.layout:441
-#, fuzzy
 msgid "TelephoneRowF"
 msgstr "TelefonLinjeF"
 
@@ -9936,8 +9922,7 @@ msgstr "Flytt det valte elementet nedover (i den gjeldande lista)"
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
-msgstr ""
-"Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
+msgstr "Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
 
 #: src/frontends/xforms/FormCitation.C:185
 msgid ""
@@ -9956,8 +9941,7 @@ msgstr "Informasjon om det valte elementet."
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr ""
-"Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
+msgstr "Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:202
 msgid ""
@@ -9978,13 +9962,11 @@ msgstr ""
 "ikkje \"van Gogh\"). Nyttig i starten på setningar (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 msgstr "Valfri tekst før litteratur-referansen, f.eks. \"Sjå: <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr "Valfri tekst etter litteratur-referansen, f.eks. \"<Ref> side 10\""
 
 #: src/frontends/xforms/FormCitation.C:214
@@ -10137,8 +10119,7 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Legg prosessen til prosessar som skal drepast."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
+msgid "Add the currently selected child process to the list of processes to kill."
 msgstr "Legg dei valte prosessane til lista over prosessar som skal drepast."
 
 #: src/frontends/xforms/FormForks.C:77
@@ -10454,10 +10435,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objekt som ein kan tilegne fargar."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
 
 #: src/frontends/xforms/FormPreferences.C:551
 msgid "Find a new color."
@@ -10777,8 +10756,7 @@ msgstr "Søk heilt bakover."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr "Eksporter til dette formatet før vi køyrar kommandoen under."
 
 #: src/frontends/xforms/FormSendto.C:52
@@ -10966,9 +10944,8 @@ msgstr "Sjekk kva sider du vil skriva ut."
 
 #: src/frontends/xforms/xforms_helpers.C:287
 #: src/frontends/xforms/xforms_helpers.C:332
-#, fuzzy
 msgid "Failed to open file."
-msgstr "Kan ikkje opnafila"
+msgstr "Kan ikkje opne fila"
 
 #: src/frontends/xforms/xforms_helpers.C:364
 #: src/frontends/xforms/xforms_helpers.C:388
@@ -11802,8 +11779,7 @@ msgstr "Orsak!"
 
 #: src/lyxfind.C:49
 msgid "You cannot replace a single space, nor an empty character."
-msgstr ""
-"Du kan ikkje byta ut eit enkelt mellomrom, ikkje ein tom bokstav heller."
+msgstr "Du kan ikkje byta ut eit enkelt mellomrom, ikkje ein tom bokstav heller."
 
 #: src/lyxfont.C:45
 msgid "Symbol"
@@ -11953,8 +11929,7 @@ msgstr "Syntaks: set-color <lyx_name> <x11_name>"
 #: src/lyxfunc.C:1488
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr ""
-"Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra."
+msgstr "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra."
 
 #: src/lyxfunc.C:1493
 msgid "Set-color "
@@ -12044,8 +12019,7 @@ msgstr "Velkomen til LyX!"
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
+msgstr "Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
 
 #: src/lyxrc.C:1836
 msgid ""
@@ -12134,8 +12108,7 @@ msgstr ""
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr ""
-"Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
+msgstr "Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
 
 #: src/lyxrc.C:1908
 msgid ""
@@ -12150,8 +12123,7 @@ msgstr ""
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
+msgstr "Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
 
 #: src/lyxrc.C:1917
 msgid "The font sizes used for calculating the scaling of the screen fonts."
@@ -12180,8 +12152,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Koding for menyar/oppsprett skrifttypar."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Kor lang tid  mellom kvar automatiske lagring (i sekund). 0 skrur av "
 "automatisk lagring."
@@ -12284,8 +12255,7 @@ msgstr "Maksimal linjelengd for ASCII-filer (LaTeX, SGML eller rein tekst)."
 
 #: src/lyxrc.C:2004
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
-msgstr ""
-"Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til 9)."
+msgstr "Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til 9)."
 
 #: src/lyxrc.C:2008
 msgid "Select to check whether the lastfiles still exist."
@@ -12293,8 +12263,7 @@ msgstr "Sjekk at dei sist opna filene finst enno."
 
 #: src/lyxrc.C:2012
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr ""
-"Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
+msgstr "Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
 
 #: src/lyxrc.C:2016
 msgid "Specify the default paper size."
@@ -12304,8 +12273,7 @@ msgstr "Vel standard papirstorleik."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr ""
-"La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
+msgstr "La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
 
 #: src/lyxrc.C:2027
 msgid "What command runs the spell checker?"
@@ -12328,8 +12296,7 @@ msgid ""
 msgstr "Vel eit alternativt språk. Standarden er å bruke språket i dokumentet."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Vel ei alternativ personleg ordbok. T.d.: \"ispell_engelsk\"."
 
 #: src/lyxrc.C:2046
@@ -12387,17 +12354,14 @@ msgstr ""
 "lagt i den same katalogen som original fila."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
 
 #: src/lyxrc.C:2082
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr ""
-"Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
+msgstr "Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
 
 #: src/lyxrc.C:2086
 msgid ""
@@ -12426,8 +12390,7 @@ msgid ""
 msgstr "Trengs det ein språk endring først i dokumentet?"
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Trengs det ein språk endring sist i dokumentet?"
 
 #: src/lyxrc.C:2106
@@ -12465,8 +12428,7 @@ msgstr "Vis startopp bilete."
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
-msgstr ""
-"Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
+msgstr "Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
 
 #: src/lyxrc.C:2140
 msgid "New documents will be assigned this language."
@@ -12482,8 +12444,7 @@ msgstr "Vis førehandsvising av typesettet av slike ting som matte."
 
 #: src/lyxrc.C:2152
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
+msgstr "Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
 
 #: src/lyxrc.C:2156
 msgid "Scale the preview size to suit."
@@ -15369,3 +15330,4 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "Oggetto"
 #~ msgstr "Oggetto"
+
