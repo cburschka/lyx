@@ -687,22 +687,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_QUIT:
-#if 1
-			// test speed of DocumentIterator
-			lyxerr << "start" << endl;
-			for (DocumentIterator it(owner->buffer()->inset()), end;
-				it != end; it.forwardPos())
-				;
-			lyxerr << "end" << endl;
-#endif
-#if 1
-			// show some sizes
-			lyxerr << "sizeof Paragraph: " << sizeof(Paragraph) << endl;
-			lyxerr << "sizeof Spacing: " << sizeof(Spacing) << endl;
-			lyxerr << "sizeof LyXLength: " << sizeof(LyXLength) << endl;
-			lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
-			lyxerr << "sizeof LyXAlignment: " << sizeof(LyXAlignment) << endl;
-#endif
 			QuitLyX();
 			break;
 
