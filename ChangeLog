@@ -1,5 +1,8 @@
 1999-11-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/Makefile.am (LYX_DIR): add this definition, so that a
+	default path is hardcoded in LyX.
+
 	* configure.in: Use LYX_GNU_GETTEXT.
 
 	* acinclude.m4 (LYX_GNU_GETTEXT): new macro, essentially a copy of

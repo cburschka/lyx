@@ -8,6 +8,7 @@ lyx_LDADD = mathed/mathed.o insets/insets.o support/libsupport.a \
 lyx_DEPENDENCIES = mathed insets support/libsupport.a
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --c++
+LYX_DIR = $(datadir)/$(PACKAGE)
 INCLUDES = -I${top_srcdir}/images
 localedir = $(datadir)/locale
 lyx_SOURCES = \
