@@ -100,3 +100,8 @@ What's new
 - fix compilation with new development versions of xforms
 
 - fix compilation with AikSaurus 1.0
+
+- clean-up properly after completed graphics conversion processes.
+
+- enable graphics conversion using the default convertDefault.sh converter
+  when exporting, even if convertDefault.sh is not executable.

@@ -1,3 +1,9 @@
+2003-08-28  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.C (prepareFile): prepend "convertDefault.sh" with 
+	"sh ", enabling the conversion to be carried out even if the script
+	is not executable.
+
 2003-04-01  John Levon  <levon@movementarian.org>
 
 	* insetgraphicsParams.C (Read): fix reading of subcaptions that
