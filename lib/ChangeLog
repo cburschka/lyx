@@ -1,3 +1,8 @@
+2002-06-23  Dekel Tsur  <dekel@tsur5.tau.ac.il>
+
+	* layouts/heb-article.layout: Fix due to \usepackage{babel}
+	position change in lyx 1.2.0.
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/default.ui: fix ellipses
