@@ -91,8 +91,9 @@ void FormMathsBitmap::build()
 
 	fl_add_box(FL_UP_BOX, 0, 0, w_, h_, "");
 
-	x_ = 0;
-	y_ = 0;
+	x_ = y_ = ww_;
+	y_ += 8;
+
 	int y_close = 0;
 	for (vector<BitmapStore>::const_iterator it = bitmaps_.begin();
 	     it < bitmaps_.end(); ++it) {
@@ -107,9 +108,8 @@ void FormMathsBitmap::build()
 	y_ = y_close + 10;
 
 	char const * const label = _("Close|^[");
-	fdui->button_close =
-		fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30,
-			      idex(label).c_str());
+	fdui->button_close = fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30,
+					   idex(label).c_str());
 	fl_set_button_shortcut(fdui->button_close, scex(label).c_str(), 1);
 	fl_set_object_lsize(fdui->button_close, FL_NORMAL_SIZE);
 	fl_set_object_callback(fdui->button_close, C_FormBaseCancelCB, 0);

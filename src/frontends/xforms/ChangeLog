@@ -1,6 +1,22 @@
+2002-12-02  Angus Leeming  <leeming@lyx.org>
+
+	* FormMathsDeco.[Ch]:
+	* forms/form_maths_deco.fd: removed.
+
+	* Makefile.am:
+	* forms/Makefile.am: commensurate changes.
+
+	* FormMathsPanel.C (build): after all John's work, don't use the
+	button controller for the Close button, since "cancel" makes no sense
+	here.
+	form_maths_deco is just another bitmap dialog; no need for it to have
+	any special code at all.
+
+	* FormMathsBitmap.C (build): position the bmtables correctly.
+
 2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* sevral files: ws changes
+	* several files: ws changes
 
 2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

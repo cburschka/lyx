@@ -23,13 +23,11 @@
 #include "xformsBC.h"
 
 #include "FormMathsBitmap.h"
-#include "FormMathsDeco.h"
 #include "FormMathsDelim.h"
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
 
-#include "forms/form_maths_deco.h"
 #include "forms/form_maths_delim.h"
 #include "forms/form_maths_matrix.h"
 #include "forms/form_maths_space.h"
@@ -51,6 +49,7 @@
 #include "arrows.xbm"
 #include "bop.xbm"
 #include "brel.xbm"
+#include "deco.xbm"
 #include "dots.xbm"
 #include "greek.xbm"
 #include "misc.xbm"
@@ -119,8 +118,6 @@ void FormMathsPanel::build()
 	typedef ButtonController<IgnorantPolicy, xformsBC> BC_ignorant;
 	typedef ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> BC_ok;
 
-	controller().addDaughter(dialog_->button_deco,
-				 new FormMathsDeco, new BC_ignorant);
 	controller().addDaughter(dialog_->button_delim,
 				 new FormMathsDelim, new BC_ok);
 	controller().addDaughter(dialog_->button_matrix,
@@ -131,6 +128,12 @@ void FormMathsPanel::build()
 				 new FormMathsStyle,  new BC_ignorant);
 
 	FormMathsBitmap * bitmap;
+	bitmap = addDaughter(dialog_->button_deco,
+			     _("Maths Decorations & Accents"),
+			     latex_deco, nr_latex_deco);
+	bitmap->addBitmap(12, 3, 4, deco1_width, deco1_height, deco1_bits);
+	bitmap->addBitmap(10, 4, 3, deco2_width, deco2_height, deco2_bits);
+
 	bitmap = addDaughter(dialog_->button_arrow, _("Arrows"),
 			     latex_arrow, nr_latex_arrow);
 	bitmap->addBitmap(20, 5, 4, arrow_width,  arrow_height,  arrow_bits);
@@ -191,8 +194,6 @@ void FormMathsPanel::build()
 			     latex_ams_ops, nr_latex_ams_ops);
 	bitmap->addBitmap(23, 3, 8, ams_ops_width, ams_ops_height,
 			  ams_ops_bits);
-
-	bc().setCancel(dialog_->button_close);
 }
 
 

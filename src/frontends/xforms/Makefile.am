@@ -97,8 +97,6 @@ libxforms_la_SOURCES = \
 	FormLog.h \
 	FormMathsBitmap.C \
 	FormMathsBitmap.h \
-	FormMathsDeco.C \
-	FormMathsDeco.h \
 	FormMathsDelim.C \
 	FormMathsDelim.h \
 	FormMathsMatrix.C \

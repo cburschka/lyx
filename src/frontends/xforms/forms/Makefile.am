@@ -23,7 +23,6 @@ SRCS =  form_aboutlyx.fd \
 	form_graphics.fd \
 	form_include.fd \
 	form_index.fd \
-	form_maths_deco.fd \
 	form_maths_delim.fd \
 	form_maths_matrix.fd \
 	form_maths_panel.fd \
