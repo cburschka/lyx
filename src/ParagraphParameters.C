@@ -71,33 +71,6 @@ bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 }
 
 
-void ParagraphParameters::makeSame(ParagraphParameters const & pp)
-{
-	ParameterStruct tmp(*param);
-	tmp.align = pp.param->align;
-	// tmp.labelwidthstring = pp.params.labelwidthstring;
-	tmp.line_bottom = pp.param->line_bottom;
-	tmp.pagebreak_bottom = pp.param->pagebreak_bottom;
-	tmp.added_space_bottom = pp.param->added_space_bottom;
-	tmp.line_top = pp.param->line_top;
-	tmp.pagebreak_top = pp.param->pagebreak_top;
-	tmp.added_space_top = pp.param->added_space_top;
-	tmp.spacing = pp.param->spacing;
-#ifndef NO_PEXTRA_REALLY
-	tmp.pextra_type = pp.param->pextra_type;
-	tmp.pextra_width = pp.param->pextra_width;
-	tmp.pextra_widthp = pp.param->pextra_widthp;
-	tmp.pextra_alignment = pp.param->pextra_alignment;
-	tmp.pextra_hfill = pp.param->pextra_hfill;
-	tmp.pextra_start_minipage = pp.param->pextra_start_minipage;
-#endif
-	tmp.noindent = pp.param->noindent;
-	tmp.depth = pp.param->depth;
-
-	set_from_struct(tmp);
-}
-
-
 void ParagraphParameters::set_from_struct(ParameterStruct const & ps) 
 {
 	// get new param from container with tmp as template

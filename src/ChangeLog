@@ -1,3 +1,10 @@
+2001-06-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (Paragraph): dont't clear, and just set layout.
+	(makeSameLayout): use params's copy contructor.
+
+	* ParagraphParameters.[Ch] (makeSame): delete method
+
 2001-06-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Variables.[Ch]: fix indentation, rename set to isSet

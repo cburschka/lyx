@@ -25,8 +25,6 @@ public:
 	///
 	bool sameLayout(ParagraphParameters const &) const;
 	///
-	void makeSame(ParagraphParameters const & pp);
-	///
 	VSpace const & spaceTop() const;
 	///
 	void spaceTop(VSpace const &);

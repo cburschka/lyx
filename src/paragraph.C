@@ -115,27 +115,26 @@ Paragraph::Paragraph(Paragraph const & lp)
 	itemdepth = 0;
 	next_ = 0;
 	previous_ = 0;
-	clear();
-
-	makeSameLayout(&lp);
 
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout = lp.layout;
 
         // ale970302
-	if (lp.bibkey)
+	if (lp.bibkey) {
 		bibkey = static_cast<InsetBibKey *>
 			(lp.bibkey->clone(*current_view->buffer()));
-	else
+	} else {
 		bibkey = 0;
+	}
 	
 	// copy everything behind the break-position to the new paragraph
 
 	insetlist = lp.insetlist;
 	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it)
+	     it != insetlist.end(); ++it) {
 		it->inset = it->inset->clone(*current_view->buffer());
+	}
 }
 
 
@@ -921,10 +920,8 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 void Paragraph::makeSameLayout(Paragraph const * par)
 {
 	layout = par->layout;
-	params().makeSame(par->params());
-	
-	// This can be changed after NEW_INSETS is in effect. (Lgb)
-	setLabelWidthString(par->params().labelWidthString());
+	// move to pimpl?
+	params() = par->params();
 }
 
 

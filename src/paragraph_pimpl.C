@@ -40,7 +40,7 @@ Paragraph::Pimpl::Pimpl(Paragraph * owner)
 
 
 Paragraph::Pimpl::Pimpl(Paragraph::Pimpl const & p, Paragraph * owner)
-	: owner_(owner)
+	: params(p.params), owner_(owner)
 {
 	inset_owner = p.inset_owner;
 	text = p.text;
