@@ -507,7 +507,7 @@ void InsetFormula::InsertSymbol(char const* s)
    UpdateLocal();
 }
    
-void InsetFormula::GetCursorPos(int& x, int& y)
+void InsetFormula::GetCursorPos(int& x, int& y) const
 {
     mathcursor->GetPos(x, y);
     x -= par->xo; 

@@ -70,7 +70,7 @@ public:
 	}
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() {return _("Math editor mode");}
+	char const * EditMessage() const {return _("Math editor mode");}
 	///
 	void Edit(int x, int y);
 	///
@@ -84,7 +84,7 @@ public:
 	///
 	void HideInsetCursor();
 	///
-	void GetCursorPos(int &, int &);
+	void GetCursorPos(int &, int &) const;
 	///
 	void ToggleInsetSelection();
 	///

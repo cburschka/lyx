@@ -1,3 +1,11 @@
+1999-11-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/formula.[Ch] (GetCursorPos): add a missing 'const'.
+	(EditMessage): likewise.
+
+	* src/paragraph.C (SimpleTeXSpecialChars): output ~ and ^
+	respectively as \textasciitilde and \textasciicircum.
+
 1999-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.h: made the methods that take iterators

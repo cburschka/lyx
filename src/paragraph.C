@@ -3445,11 +3445,14 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 				column += 1;
 				break;
 
-			case '^': case '~':
-				file += '\\';
-				file += c;
-				file += "{}";
-				column += 3;
+			case '~':
+				file += "\\textasciitilde{}";
+				column += 16;
+				break;
+
+			case '^':
+				file += "\\textasciicircum{}";
+				column += 17;
 				break;
 
 			case '*': case '[': case ']':
