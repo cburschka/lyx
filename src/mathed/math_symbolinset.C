@@ -138,7 +138,12 @@ char const * MathMLtype(string const & s)
 void MathSymbolInset::mathmlize(MathMLStream & os) const
 {
 	char const * type = MathMLtype(sym_->type);
-	os << '<' << type << "> " << name().c_str() << " </" << type << '>';
+	os << '<' << type << "> ";
+	if (sym_->xmlname == "x") // unknown so far
+		os << name().c_str();
+	else
+		os << sym_->xmlname.c_str();
+	os << " </" << type << '>';
 }
 
 

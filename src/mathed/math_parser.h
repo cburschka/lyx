@@ -130,6 +130,8 @@ struct latexkeys {
 	unsigned char latex_font_id;
 	///
 	string type;
+	///
+	string xmlname;
 };
 
 
