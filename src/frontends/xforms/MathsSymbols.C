@@ -319,6 +319,8 @@ char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 		// function is called.
 		data = pixmapFromBitmapData(arg, wx, hx);
 		break;
+	default:
+		break;
 	}
 
 	return data;
