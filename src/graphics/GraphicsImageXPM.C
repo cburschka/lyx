@@ -95,14 +95,14 @@ Pixmap GImageXPM::getPixmap() const
 void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 {
 	if (filename.empty()) {
-		on_finish->emit(false);
+		on_finish->oprator()(false);
 		return;
 	}
 
 	if (!image_.empty()) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Image is loaded already!" << std::endl;
-		on_finish->emit(false);
+		on_finish->operator()(false);
 		return;
 	}
 
@@ -142,7 +142,7 @@ void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 		image_.reset(*xpm_image);
 	}
 
-	on_finish->emit(success == XpmSuccess);
+	on_finish->operator()(success == XpmSuccess);
 }
 
 
