@@ -57,25 +57,29 @@ public:
 
 	/// Return a pixmap that can be displayed on X server.
 	Pixmap getImage() const; 
-
+	///
 	enum ImageStatus {
+		///
 		Loading = 1,
+		///
 		ErrorConverting,
+		///
 		ErrorReading,
+		///
 		Loaded
 	};
 	
 	/// Is the pixmap ready for display?
 	ImageStatus getImageStatus() const; 
 
-	/// Get a notification when the image conversion is done.
-	/// used by an internal callback mechanism.
+	/** Get a notification when the image conversion is done.
+	    used by an internal callback mechanism.
+	*/
 	void imageConverted(int retval);
 
-
 private:
-    /// Private c-tor so that only GraphicsCache can create an instance.
-    GraphicsCacheItem();
+	/// Private c-tor so that only GraphicsCache can create an instance.
+	GraphicsCacheItem();
 
 	/// internal copy mechanism.
 	void copy(GraphicsCacheItem const &);
@@ -85,13 +89,15 @@ private:
 	/// Set the filename this item will be pointing too.
 	bool setFilename(string const & filename);
 
-    ///
-    friend class GraphicsCache;
+	///
+	friend class GraphicsCache;
 
+	///
 	GraphicsCacheItem_pimpl * pimpl;
 
-	/// The filename we refer too, this is used when removing ourselves
-	/// from the cache.
+	/** The filename we refer too.
+	    This is used when removing ourselves from the cache.
+	*/
 	string filename_;
 };
 

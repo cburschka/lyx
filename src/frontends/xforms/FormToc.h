@@ -24,13 +24,10 @@ struct FD_form_toc;
  */
 class FormToc : public FormCommand {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	///
 	FormToc(LyXView *, Dialogs *);
 	///
 	~FormToc();
-
 private:
 	/// Build the dialog
 	virtual void build();

@@ -319,8 +319,11 @@ void LyXView::create_form_form_main(int width, int height)
 }
 
 
+#if FL_REVISION < 89
 extern "C"
 int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev);
+#endif
+
 
 void LyXView::init()
 {
@@ -337,11 +340,13 @@ void LyXView::init()
 		autosave_timeout.setTimeout(lyxrc.autosave * 1000);
 		autosave_timeout.start();
 	}
-	
+
+#if FL_REVISION < 89
 	// Install the raw callback for keyboard events 
 	fl_register_raw_callback(form_,
 				 KeyPressMask,
 				 C_LyXView_KeyPressMask_raw_callback);
+#endif
         intl->InitKeyMapper(lyxrc.use_kbmap);
 }
 
@@ -395,6 +400,7 @@ void LyXView::UpdateDocumentClassChoice()
 }
 
 
+#if FL_REVISION < 89
 // This is necessary, since FL_FREE-Objects doesn't get all keypress events
 // as FL_KEYBOARD events :-(   Matthias 280596
 int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
@@ -439,7 +445,7 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 		// last_time_pressed is 0, that sinifies an autoreapeat
 		// at least on my system. It like some feedback from
 		// others, especially from user running LyX remote.
-		//lyxerr << "Syncing - purging X events." << endl;
+		lyxerr[Debug::KEY] << "Syncing - purging X events." << endl;
 		XSync(fl_get_display(), 1);
 		// This purge make f.ex. scrolling stop imidiatly when
 		// releaseing the PageDown button. The question is if this
@@ -456,6 +462,7 @@ int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 {
 	return LyXView::KeyPressMask_raw_callback(fl, xev);
 }
+#endif
 
 
 // Updates the title of the window with the filename of the current document

@@ -63,6 +63,8 @@ struct BufferView::Pimpl : public Object {
 	///
 	int scrollDown(long time);
 	///
+	void workAreaKeyPress(KeySym, unsigned int state);
+	///
 	void workAreaMotionNotify(int x, int y, unsigned int state);
 	///
 	void workAreaButtonPress(int x, int y, unsigned int button);

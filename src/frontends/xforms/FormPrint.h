@@ -37,36 +37,29 @@ using SigC::Connection;
  */
 class FormPrint : public DialogBase, public noncopyable {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	/// #FormPrint x(LyXFunc ..., Dialogs ...);#
 	FormPrint(LyXView *, Dialogs *);
 	///
 	~FormPrint();
-	//@}
 
-	/**@name Real per-instance Callback Methods */
-	//@{
+	///
 	static  int WMHideCB(FL_FORM *, void *);
+	///
 	static void OKCB(FL_OBJECT *, long);
+	///
 	static void ApplyCB(FL_OBJECT *, long);
+	///
 	static void CancelCB(FL_OBJECT *, long);
+	///
 	static void InputCB(FL_OBJECT *, long);
-	//@}
-
 private:
-	/**@name Slot Methods */
-	//@{
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog.
 	void update();
-	//@}
 
-	/**@name Dialog internal methods */
-	//@{
 	/// Apply from dialog
 	void apply();
 	/// Filter the inputs
@@ -75,10 +68,7 @@ private:
 	void build();
 	///
 	FD_form_print * build_print();
-	//@}
 
-	/**@name Private Data */
-	//@{
 	/// Real GUI implementation.
 	FD_form_print * dialog_;
 	/// Which LyXView do we belong to?
@@ -89,7 +79,6 @@ private:
 	Connection u_;
 	/// Hide connection.
 	Connection h_;
-	//@}
 };
 
 #endif

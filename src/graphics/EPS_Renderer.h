@@ -18,6 +18,7 @@
 
 #include "graphics/Renderer.h"
 
+///
 class EPS_Renderer : public Renderer {
 public:
 	/// c-tor.

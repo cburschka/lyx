@@ -49,7 +49,7 @@ extern bool Lgb_bug_find_hack;
 
 PainterBase & Painter::point(int x, int y, LColor::color c)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "point not called from "
 				"workarea::workhandler\n";
@@ -68,7 +68,7 @@ PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 			enum line_style ls,
 			enum line_width lw)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "line not called from "
 				"workarea::workhandler\n";
@@ -88,7 +88,7 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 			     enum line_style ls,
 			     enum line_width lw)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "lines not called from "
 				"workarea::workhandler\n";
@@ -122,7 +122,7 @@ PainterBase & Painter::rectangle(int x, int y, int w, int h,
 				 enum line_style ls,
 				 enum line_width lw)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "rectangle not called from "
 				"workarea::workhandler\n";
@@ -140,7 +140,7 @@ PainterBase & Painter::rectangle(int x, int y, int w, int h,
 PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 				 LColor::color col)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "fillrectangle not called from "
 				"workarea::workhandler\n";
@@ -157,7 +157,7 @@ PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 			       LColor::color col)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr <<"fillpolygon not called from "
 				"workarea::workhandler\n";
@@ -188,7 +188,7 @@ PainterBase & Painter::arc(int x, int y,
 		  unsigned int w, unsigned int h,
 		  int a1, int a2, LColor::color col)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "arc not called from "
 				"workarea::workhandler\n";
@@ -208,7 +208,7 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 			    LColor::color col,
 			    enum line_style ls, enum line_width lw)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "segments not called from "
 				"workarea::workhandler\n";
@@ -238,7 +238,7 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 
 PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "workAreaExpose not called from "
 				"workarea::workhandler\n";
@@ -295,7 +295,7 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 		return *this;
 	}
 
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "text not called from "
 				"workarea::workhandler\n";
@@ -318,13 +318,11 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 				XDrawString(display, owner.getPixmap(),
 					    gc, tmpx, y, &c, 1);
 				tmpx += lyxfont::XTextWidth(smallfont, &c, 1);
-				//tmpx += lyxfont::width(c, f);
 			} else {
 				lyxfont::XSetFont(display, gc, f);
 				XDrawString(display, owner.getPixmap(),
 					    gc, tmpx, y, &c, 1);
 				tmpx += lyxfont::XTextWidth(f, &c, 1);
-				//tmpx += lyxfont::width(c, f);
 			}
 		}
 	}
@@ -337,7 +335,7 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 			LyXFont const & f)
 {
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::GUI)) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "text not called from "
 				"workarea::workhandler\n";

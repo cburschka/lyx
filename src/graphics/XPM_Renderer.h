@@ -18,12 +18,11 @@
 
 #include "graphics/Renderer.h"
 
+///
 class XPM_Renderer : public Renderer {
 public:
 	/// c-tor.
 	XPM_Renderer();
-	/// d-tor.
-	virtual ~XPM_Renderer();
 
 	/// Load the XPM image and create a pixmap out of it.
 	virtual bool renderImage();

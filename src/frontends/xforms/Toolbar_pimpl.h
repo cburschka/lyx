@@ -47,7 +47,8 @@ public:
 	void set(bool doingmain = false);
 
 	/** this is to be the entry point to the toolbar
-	  frame, where you can change the toolbar realtime. */
+	    frame, where you can change the toolbar realtime.
+	*/
 	void edit();
 	/// add a new button to the toolbar.
     	void add(int , bool doclean = true);
@@ -99,7 +100,9 @@ public:
 	///
 	Combox * combox;
 	/// Starting position
-	int sxpos, sypos;
+	int sxpos;
+	///
+	int sypos;
 	///
 	int xpos;
 	///
@@ -110,12 +113,10 @@ public:
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
 
-	/** more...
-	 */
+	/// more...
 	void reset();
 
-	/** more...
-	 */
+	/// more...
 	void lightReset();
 };
 #endif

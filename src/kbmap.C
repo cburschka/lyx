@@ -180,7 +180,7 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 			if (idx + 1 == seq->length) {
 				string buf;
 				seq->print(buf, true);
-				lyxerr[Debug::KEY]
+				lyxerr[Debug::KBMAP]
 					<< "Warning: New binding for '"
 					<< buf
 					<< "' is overriding old binding..."

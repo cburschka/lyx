@@ -929,7 +929,7 @@ int LyXRC::read(string const & filename)
 			}
 			
 			if ((action = lyxaction.LookupFunc(cmd.c_str()))>= 0) {
-				if (lyxerr.debugging(Debug::KEY)) {
+				if (lyxerr.debugging(Debug::KBMAP)) {
 					lyxerr << "RC_BIND: Sequence `"
 					       << seq << "' Command `"
 					       << cmd << "' Action `"

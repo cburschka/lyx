@@ -19,12 +19,14 @@
 #include "debug.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
+#include "LyXView.h"
+#include "lyxfunc.h"
 
 using std::endl;
 
 FL_OBJECT * figinset_canvas;
 
-// need to make the c++ compiler find the correct version of abs.
+// needed to make the c++ compiler find the correct version of abs.
 // This is at least true for g++.
 using std::abs;
 
@@ -59,7 +61,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 
 	figinset_canvas = 0;
 
-	if (lyxerr.debugging())
+	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "Creating work area: +"
 		       << xpos << '+' << ypos << ' '
 		       << width << 'x' << height << endl;
@@ -76,7 +78,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 	
 	// a box
-	if (lyxerr.debugging())
+	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "\tbackground box: +"
 		       << xpos << '+' << ypos << ' '
 		       << width - 15 << 'x' << height << endl;
@@ -108,7 +110,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 
 	// We add this object as late as possible to avoit problems
 	// with drawing.
-	if (lyxerr.debugging())
+	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "\tfree object: +"
 		       << xpos + bw << '+' << ypos + bw << ' '
 		       << width - 15 - 2 * bw << 'x'
@@ -119,7 +121,8 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 				      width - 15 - 2 * bw, // scrollbarwidth
 				      height - 2 * bw, "",
 				      C_WorkArea_work_area_handler);
-	obj->wantkey = FL_KEY_TAB;
+	//obj->wantkey = FL_KEY_TAB;
+	obj->wantkey = FL_KEY_ALL;
 	obj->u_vdata = this; /* This is how we pass the WorkArea
 				       to the work_area_handler. */
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
@@ -200,7 +203,7 @@ void WorkArea::createPixmap(int width, int height)
 	if (workareapixmap)
 		XFreePixmap(fl_display, workareapixmap);
 
-	if (lyxerr.debugging())
+	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "Creating pixmap ("
 		       << width << 'x' << height << ")" << endl;
 	
@@ -209,7 +212,7 @@ void WorkArea::createPixmap(int width, int height)
 				       width,
 				       height, 
 				       fl_get_visual_depth());
-	if (lyxerr.debugging())
+	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "\tpixmap=" << workareapixmap << endl;
 }
 
@@ -262,7 +265,7 @@ bool Lgb_bug_find_hack = false;
 
 int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				FL_Coord, FL_Coord ,
-				int /*key*/, void * xev)
+				int key, void * xev)
 {
 	static int x_old = -1;
 	static int y_old = -1;
@@ -278,35 +281,28 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!area->work_area ||
 		    !area->work_area->form->visible)
 			return 1;
-		lyxerr.debug() << "Workarea event: DRAW" << endl;
+		lyxerr[Debug::GUI] << "Workarea event: DRAW" << endl;
 		area->createPixmap(area->workWidth(), area->height());
 		Lgb_bug_find_hack = true;
-		//workAreaExpose();
-		area->owner_->workAreaExpose();
+		area->workAreaExpose();
 		Lgb_bug_find_hack = false;
 		break;
 	case FL_PUSH:
 		if (!ev) break;
 		// Should really have used xbutton.state
-		lyxerr.debug() << "Workarea event: PUSH" << endl;
-		//workAreaButtonPress(ev->xbutton.x - ob->x,
-		//		    ev->xbutton.y - ob->y,
-		//		    ev->xbutton.button);
-		
-		area->owner_->workAreaButtonPress(ev->xbutton.x - ob->x,
-					   ev->xbutton.y - ob->y,
-					   ev->xbutton.button);
+		lyxerr[Debug::GUI] << "Workarea event: PUSH" << endl;
+		area->workAreaButtonPress(ev->xbutton.x - ob->x,
+					  ev->xbutton.y - ob->y,
+					  ev->xbutton.button);
+		//area->workAreaKeyPress(XK_Pointer_Button1, ev->xbutton.state);
 		break; 
 	case FL_RELEASE:
 		if (!ev) break;
 		// Should really have used xbutton.state
-		lyxerr.debug() << "Workarea event: RELEASE" << endl;
-		//workAreaButtonRelease(ev->xbutton.x - ob->x,
-		//		      ev->xbutton.y - ob->y,
-		//		      ev->xbutton.button);
-		area->owner_->workAreaButtonRelease(ev->xbutton.x - ob->x,
-					     ev->xbutton.y - ob->y,
-					     ev->xbutton.button);
+		lyxerr[Debug::GUI] << "Workarea event: RELEASE" << endl;
+		area->workAreaButtonRelease(ev->xbutton.x - ob->x,
+				      ev->xbutton.y - ob->y,
+				      ev->xbutton.button);
 		break;
 	case FL_MOUSE:
 		if (!ev || ! area->scrollbar) break;
@@ -314,59 +310,97 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		    ev->xmotion.y != y_old ||
 		    fl_get_scrollbar_value(area->scrollbar) != scrollbar_value_old
 			) {
-			lyxerr.debug() << "Workarea event: MOUSE" << endl;
-			//workAreaMotionNotify(ev->xmotion.x - ob->x,
-			//		     ev->xmotion.y - ob->y,
-			//		     ev->xbutton.state);
-			
-			area->owner_->workAreaMotionNotify(ev->xmotion.x - ob->x,
-						    ev->xmotion.y - ob->y,
-						    ev->xbutton.state);
+			lyxerr[Debug::GUI] << "Workarea event: MOUSE" << endl;
+			area->workAreaMotionNotify(ev->xmotion.x - ob->x,
+					     ev->xmotion.y - ob->y,
+					     ev->xbutton.state);
 		}
 		break;
-	// Done by the raw callback:
-	//  case FL_KEYBOARD: WorkAreaKeyPress(ob, 0,0,0,ev,0); break;
+	case FL_KEYBOARD:
+	{
+		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD";
+		if (static_cast<XEvent*>(ev)->type == KeyPress)
+			lyxerr << "KeyPress" << endl;
+		else
+			lyxerr << "KeyRelease" << endl;
+		
+		KeySym keysym = 0;
+		char s_r[10];
+		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
+		XLookupString(xke, s_r, 10, &keysym, 0);
+		if (lyxerr.debugging(Debug::KEY)) {
+			char const * tmp = XKeysymToString(key);
+			char const * tmp2 = XKeysymToString(keysym);
+			string stm = (tmp ? tmp : "");
+			string stm2 = (tmp2 ? tmp2 : "");
+			
+			lyxerr << "WorkArea: Key is `" << stm << "' ["
+			       << key << "]" << endl;
+			lyxerr << "WorkArea: Keysym is `" << stm2 << "' ["
+			       << keysym << "]" << endl;
+		}
+
+		if (!key) break;
+		
+		KeySym ret_key = (keysym ? keysym : key);
+		unsigned int ret_state = xke->state;
+		
+		static Time last_time_pressed = 0;
+		static unsigned int last_key_pressed = 0;
+		static unsigned int last_state_pressed = 0;
+		if (xke->time - last_time_pressed < 50 // should perhaps be tunable
+		    && xke->state == last_state_pressed
+		    && xke->keycode == last_key_pressed) {
+			lyxerr[Debug::KEY]
+				<< "Workarea: Purging X events." << endl;
+			XSync(fl_get_display(), 1);
+			// This purge make f.ex. scrolling stop immidiatly when
+			// releasing the PageDown button. The question is if
+			// this purging of XEvents can cause any harm...
+			// after some testing I can see no problems, but
+			// I'd like other reports too.
+			break;
+		}
+		last_time_pressed = xke->time;
+		last_key_pressed = xke->keycode;
+		last_state_pressed = xke->state;
+		
+		area->workAreaKeyPress(ret_key, ret_state);
+	}
+	break;
 	case FL_FOCUS:
-		lyxerr.debug() << "Workarea event: FOCUS" << endl;
-		//workAreaFocus();
+		lyxerr[Debug::GUI] << "Workarea event: FOCUS" << endl;
+		area->workAreaFocus();
 		break;
 	case FL_UNFOCUS:
-		lyxerr.debug() << "Workarea event: UNFOCUS" << endl;
-		//workAreaUnfocus();
+		lyxerr[Debug::GUI] << "Workarea event: UNFOCUS" << endl;
+		area->workAreaUnfocus();
 		break;
 	case FL_ENTER:
-		lyxerr.debug() << "Workarea event: ENTER" << endl;
-		//workAreaEnter();
-		area->owner_->enterView();
+		lyxerr[Debug::GUI] << "Workarea event: ENTER" << endl;
+		area->workAreaEnter();
 		break;
 	case FL_LEAVE:
-		lyxerr.debug() << "Workarea event: LEAVE" << endl;
-		//workAreaLeave();
-		area->owner_->leaveView();
+		lyxerr[Debug::GUI] << "Workarea event: LEAVE" << endl;
+		area->workAreaLeave();
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;
-		lyxerr.debug() << "Workarea event: DBLCLICK" << endl;
-		//workAreaDoubleClick(ev->xbutton.x - ob->x,
-		//		    ev->xbutton.y - ob->y,
-		//		    ev->xbutton.button);
-		area->owner_->doubleClick(ev->xbutton.x - ob->x,
-					 ev->xbutton.y - ob->y,
-					 ev->xbutton.button);
+		lyxerr[Debug::GUI] << "Workarea event: DBLCLICK" << endl;
+		area->workAreaDoubleClick(ev->xbutton.x - ob->x,
+					  ev->xbutton.y - ob->y,
+					  ev->xbutton.button);
 		break;
 	case FL_TRPLCLICK:
 		if (!ev) break;
-		lyxerr.debug() << "Workarea event: TRPLCLICK" << endl;
-		//workAreaTripleClick(ev->xbutton.x - ob->x,
-		//		    ev->xbutton.y - ob->y,
-		//		    ev->xbutton.button);
-		area->owner_->tripleClick(ev->xbutton.x - ob->x,
-					 ev->xbutton.y - ob->y,
-					 ev->xbutton.button);
+		lyxerr[Debug::GUI] << "Workarea event: TRPLCLICK" << endl;
+		area->workAreaTripleClick(ev->xbutton.x - ob->x,
+					  ev->xbutton.y - ob->y,
+					  ev->xbutton.button);
 		break;
 	case FL_OTHER:
 		if (!ev) break;
-			lyxerr.debug() << "Workarea event: OTHER" << endl;
+			lyxerr[Debug::GUI] << "Workarea event: OTHER" << endl;
 
 		break;
 	}

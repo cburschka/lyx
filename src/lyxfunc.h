@@ -6,6 +6,7 @@
 #pragma interface
 #endif
 
+#include FORMS_H_LOCATION
 #include "commandtags.h"
 #include "kbsequence.h"
 #include "insets/lyxinset.h"
@@ -48,9 +49,13 @@ public:
 	/// Same again but for xtl buffers.  Still looking for better idea.
 	bool Dispatch(int action, auto_mem_buffer &);
 
+#if FL_REVISION < 89
 	/// A keyboard event is processed to execute a lyx action. 
 	int processKeyEvent(XEvent * ev);
-
+#else
+	///
+	int processKeySym(KeySym k, unsigned int state);
+#endif
 	///
 	func_status getStatus(int ac) const;
 	

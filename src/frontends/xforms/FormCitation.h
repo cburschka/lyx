@@ -23,24 +23,28 @@ struct FD_form_citation;
  */
 class FormCitation : public FormCommand {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	///
 	FormCitation(LyXView *, Dialogs *);
 	///
 	~FormCitation();
-	//@}
-
 private:
 	///
 	enum State {
+		///
 		DOWN,
+		///
 		UP,
+		///
 		DELETE,
+		///
 		ADD,
+		///
 		BIBBRSR,
+		///
 		CITEBRSR,
+		///
 		ON,
+		///
 		OFF
 	};
 	/// Build the dialog

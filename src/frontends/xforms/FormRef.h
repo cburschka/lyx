@@ -23,19 +23,33 @@ struct FD_form_ref;
  */
 class FormRef : public FormCommand {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	///
 	FormRef(LyXView *, Dialogs *);
 	///
 	~FormRef();
-	//@}
-
 private:
 	///
-	enum Type{ REF=0, PAGEREF, VREF, VPAGEREF, PRETTYREF };
+	enum Type{
+		///
+		REF,
+		///
+		PAGEREF,
+		///
+		VREF,
+		///
+		VPAGEREF,
+		///
+		PRETTYREF
+	};
 	///
-	enum Goto{ GOREF=0, GOBACK, GOFIRST };
+	enum Goto{
+		///
+		GOREF,
+		///
+		GOBACK,
+		///
+		GOFIRST
+	};
 
 	/// Build the dialog
 	virtual void build();

@@ -46,37 +46,31 @@ using SigC::Connection;
  */
 class FormPreferences : public DialogBase, public noncopyable {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	/// #FormPreferences x(LyXFunc ..., Dialogs ...);#
 	FormPreferences(LyXView *, Dialogs *);
 	///
 	~FormPreferences();
-	//@}
 
-	/**@name Real per-instance Callback Methods */
-	//@{
+	///
 	static  int WMHideCB(FL_FORM *, void *);
+	///
 	static void OKCB(FL_OBJECT *, long);
+	///
 	static void ApplyCB(FL_OBJECT *, long);
+	///
 	static void CancelCB(FL_OBJECT *, long);
+	///
 	static void InputCB(FL_OBJECT *, long);
+	///
 	static void RestoreCB(FL_OBJECT *, long);
-	//@}
-
 private:
-	/**@name Slot Methods */
-	//@{
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog.
 	void update();
-	//@}
 
-	/**@name Dialog internal methods */
-	//@{
 	/// Apply from dialog
 	void apply();
 	/// Filter the inputs -- return true if entries are valid
@@ -97,10 +91,7 @@ private:
 	FD_form_printer * build_printer();
 	///
 	FD_form_paths * build_paths();
-	//@}
 
-	/**@name Private Data */
-	//@{
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
 	///
@@ -124,10 +115,11 @@ private:
 	/// Hide connection.
 	Connection h_;
 	/// Overcome a dumb xforms sizing bug
-	int minw_, minh_;
+	int minw_;
+	///
+	int minh_;
 	///
 	ButtonController<PreferencesPolicy> * bc_;
-	//@}
 };
 
 #endif

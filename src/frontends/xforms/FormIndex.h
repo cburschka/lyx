@@ -23,14 +23,10 @@ struct FD_form_index;
  */
 class FormIndex : public FormCommand {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	///
 	FormIndex(LyXView *, Dialogs *);
 	///
 	~FormIndex();
-	//@}
-
 private:
 	/// Build the dialog
 	virtual void build();
@@ -44,10 +40,10 @@ private:
 	virtual FL_FORM * const form() const;
 	///
 	FD_form_index * build_index();
-
-
 	/// 
-	int minh, minw;
+	int minh;
+	///
+	int minw;
 	/// Real GUI implementation.
 	FD_form_index * dialog_;
 };

@@ -23,20 +23,19 @@
 #pragma interface
 #endif 
 
-#include <vector> 
-#include <utility> 
+#include <vector>
+#include <utility>
+
 using std::vector;
 using std::pair;
 
 #include FORMS_H_LOCATION
 
-class RadioButtonGroup
-{
+///
+class RadioButtonGroup {
 public:
 	/// Constructor. Allocate space for 'n' items in the group.
 	RadioButtonGroup(unsigned n = 5) : map(n) {};
-	/// Destructor. Cleans up.
-	~RadioButtonGroup() {};
 
 	/// Register a radio button with it's corresponding value.
 	void registerRadioButton(FL_OBJECT *button, int value);
@@ -50,8 +49,11 @@ public:
 	int getButton();
 
 private:
-	typedef pair < FL_OBJECT *, int > ButtonValuePair;
-	typedef vector < ButtonValuePair > ButtonValueMap;
+	///
+	typedef pair<FL_OBJECT *, int> ButtonValuePair;
+	///
+	typedef vector<ButtonValuePair> ButtonValueMap;
+	///
 	ButtonValueMap map;
 };
 

@@ -20,8 +20,8 @@
 
 #include "LString.h"
 #include "frontends/DialogBase.h"
-//#include "form_graphics.h"
 #include "RadioButtonGroup.h"
+#include "support/utility.hpp"
 
 #ifdef __GNUG__
 #pragma interface
@@ -36,8 +36,7 @@ struct FD_form_graphics;
 
 /** This class provides an XForms implementation of the FormGraphics Dialog.
  */
-class FormGraphics: public DialogBase
-{
+class FormGraphics: public DialogBase, public noncopyable {
 public:
 	/// #FormGraphics x(LyXFunc ..., Dialogs ...);#
 	FormGraphics(LyXView *, Dialogs *);
@@ -59,12 +58,6 @@ public:
 	static void InputCB(FL_OBJECT *, long);
 
 private:
-	///
-	FormGraphics()
-: widthButtons(5), heightButtons(4), displayButtons(4) {}
-	//
-FormGraphics(FormGraphics const &) : DialogBase() {}
-
 	/// The maximum digits for the image width (cm, inch, percent)
 	enum {
 	    ///
@@ -86,8 +79,6 @@ FormGraphics(FormGraphics const &) : DialogBase() {}
 	    FILENAME_MAXCHARS = 1024
 	};
 
-	/**@name Slot Methods */
-	//@{
 	/// Save the active inset and show the dialog.
 	void showDialog(InsetGraphics * inset);
 	/// Create the dialog if necessary, update it and display it.
@@ -96,17 +87,13 @@ FormGraphics(FormGraphics const &) : DialogBase() {}
 	void hide();
 	/// Update the dialog
 	void update();
-	//@}
 
-	/**@name Callback methods */
-	//@{
 	/// Apply the changes to the inset.
 	void apply();
 	/// Verify that the input is correct. If not disable ok/apply buttons.
 	void input();
 	/// Open the file browse dialog to select an image file.
 	void browse();
-	//@}
 
 	/// Build the dialog
 	void build();
@@ -117,8 +104,6 @@ FormGraphics(FormGraphics const &) : DialogBase() {}
 	/// Display a file browser dialog and return the file chosen.
 	string browseFile(string const & filename);
 
-	/**@name Data */
-	//@{
 	/// Real GUI implementation.
 	FD_form_graphics * dialog_;
 	/** Which LyXFunc do we use?
@@ -149,9 +134,6 @@ FormGraphics(FormGraphics const &) : DialogBase() {}
 	Connection u_;
 	/// Last used figure path
 	string last_image_path;
-	//@}
-
-}
-;
+};
 
 #endif 

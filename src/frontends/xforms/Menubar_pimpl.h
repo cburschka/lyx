@@ -46,12 +46,14 @@ public:
 	///
 	static void MenuCallback(FL_OBJECT *, long);
 
-	/// Add to "menu" the list of last opened files
-	/// (add "extra_label" to the last entry)
+	/** Add to "menu" the list of last opened files
+	    (add "extra_label" to the last entry)
+	*/
 	void add_lastfiles(int menu, string const & extra_label,
 			   std::vector<int> & smn, StrPool & strpool);
-	/// Add to "menu" the list of opened documents
-	/// (add "extra_label" to the last entry)
+	/** Add to "menu" the list of opened documents
+	    (add "extra_label" to the last entry)
+	*/
 	void add_documents(int menu, string const & extra_label,
 			   std::vector<int> & smn, StrPool & strpool);
 	///
@@ -60,7 +62,7 @@ public:
 			   std::vector<int> & smn, StrPool & strpool);
 
         /// update the state of the menuitems
-        void update() { }
+        void update() {}
 
 private:
 	///

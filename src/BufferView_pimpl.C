@@ -79,6 +79,27 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 {
 	buffer_ = 0;
 	workarea_ = new WorkArea(bv_, xpos, ypos, width, height);
+	// Setup the signals
+	workarea_->workAreaExpose
+		.connect(slot(this, &BufferView::Pimpl::workAreaExpose));
+	workarea_->workAreaEnter
+		.connect(slot(this, &BufferView::Pimpl::enterView));
+	workarea_->workAreaLeave
+		.connect(slot(this, &BufferView::Pimpl::leaveView));
+	workarea_->workAreaButtonPress
+		.connect(slot(this, &BufferView::Pimpl::workAreaButtonPress));
+	workarea_->workAreaButtonRelease
+		.connect(slot(this,
+			      &BufferView::Pimpl::workAreaButtonRelease));
+	workarea_->workAreaMotionNotify
+		.connect(slot(this, &BufferView::Pimpl::workAreaMotionNotify));
+	workarea_->workAreaDoubleClick
+		.connect(slot(this, &BufferView::Pimpl::doubleClick));
+	workarea_->workAreaTripleClick
+		.connect(slot(this, &BufferView::Pimpl::tripleClick));
+	workarea_->workAreaKeyPress
+		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
+	
 	screen_ = 0;
 
 	cursor_timeout.timeout.connect(slot(this,
@@ -490,6 +511,12 @@ int BufferView::Pimpl::scrollDown(long time)
 	
 	bv_->scrollCB(value); 
 	return 0;
+}
+
+
+void BufferView::Pimpl::workAreaKeyPress(KeySym keysym, unsigned int state)
+{
+	bv_->owner()->getLyXFunc()->processKeySym(keysym, state);
 }
 
 

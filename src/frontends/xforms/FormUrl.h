@@ -23,14 +23,10 @@ struct FD_form_url;
  */
 class FormUrl : public FormCommand {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	///
 	FormUrl(LyXView *, Dialogs *);
 	///
 	~FormUrl();
-	//@}
-
 private:
 	/// Build the dialog
 	virtual void build();
@@ -44,9 +40,10 @@ private:
 	virtual FL_FORM * const form() const;
 	///
 	FD_form_url * build_url();
-
 	/// 
-	int minh, minw;
+	int minh;
+	///
+	int minw;
 	/// Real GUI implementation.
 	FD_form_url * dialog_;
 };

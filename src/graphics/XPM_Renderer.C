@@ -27,12 +27,11 @@
 using std::endl;
 using std::ios;
 
+
 XPM_Renderer::XPM_Renderer()
 	: Renderer()
 {}
 
-XPM_Renderer::~XPM_Renderer()
-{}
 
 bool XPM_Renderer::renderImage()
 {
@@ -69,6 +68,7 @@ bool XPM_Renderer::renderImage()
 
 	return true;
 }
+
 
 bool XPM_Renderer::isImageFormatOK(string const & filename) const
 {

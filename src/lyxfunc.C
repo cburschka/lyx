@@ -187,13 +187,142 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 }
 
 
+int LyXFunc::processKeySym(KeySym keysym, unsigned int state) 
+{
+	string argument;
+	
+	if (lyxerr.debugging(Debug::KEY)) {
+		char * tmp = XKeysymToString(keysym);
+		string stm = (tmp ? tmp : "");
+		lyxerr << "KeySym is "
+		       << stm
+		       << "["
+		       << keysym << "]"
+		       << endl;
+	}
+	// Do nothing if we have nothing (JMarc)
+	if (keysym == NoSymbol) {
+		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
+				   << endl;
+		//return 0;
+		return FL_PREEMPT;
+	}
+	
+	// this function should be used always [asierra060396]
+	UpdatableInset * tli = owner->view()->the_locking_inset;
+	if (owner->view()->available() && tli && (keysym == XK_Escape)) {
+		if (tli == tli->GetLockingInset()) {
+			owner->view()->unlockInset(tli);
+			owner->view()->text->CursorRight(owner->view());
+			moveCursorUpdate(false);
+			owner->showState();
+		} else {
+			tli->UnlockInsetInInset(owner->view(),
+						tli->GetLockingInset(),true);
+		}
+		//return 0;
+		return FL_PREEMPT;
+	}
+
+	// Can we be sure that this will work for all X-Windows
+	// implementations? (Lgb)
+	// This code snippet makes lyx ignore some keys. Perhaps
+	// all of them should be explictly mentioned?
+	if((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
+	   || keysym == XK_Mode_switch || keysym == 0x0)
+		return 0;
+
+	// Do a one-deep top-level lookup for
+	// cancel and meta-fake keys. RVDK_PATCH_5
+	cancel_meta_seq.reset();
+
+	int action = cancel_meta_seq.addkey(keysym, state
+					    &(ShiftMask|ControlMask
+					      |Mod1Mask)); 
+
+	// When not cancel or meta-fake, do the normal lookup. 
+	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
+	// Mostly, meta_fake_bit = 0. RVDK_PATCH_5.
+	if ( (action != LFUN_CANCEL) && (action != LFUN_META_FAKE) ) {
+
+		// remove Caps Lock and Mod2 as a modifiers
+		action = keyseq.addkey(keysym,
+				       (state | meta_fake_bit)
+				       &(ShiftMask|ControlMask
+					 |Mod1Mask));      
+	}
+	// Dont remove this unless you know what you are doing.
+	meta_fake_bit = 0;
+		
+	if (action == 0) action = LFUN_PREFIX;
+
+	if (lyxerr.debugging(Debug::KEY)) {
+		string buf;
+		keyseq.print(buf);
+		lyxerr << "Key ["
+		       << action << "]["
+		       << buf << "]"
+#if 0
+		       << "["
+		       << num_bytes << "]"
+#endif
+		       << endl;
+	}
+
+	// already here we know if it any point in going further
+	// why not return already here if action == -1 and
+	// num_bytes == 0? (Lgb)
+
+	if(keyseq.length > 1 || keyseq.length < -1) {
+		string buf;
+		keyseq.print(buf);
+		owner->getMiniBuffer()->Set(buf);
+	}
+
+	if (action == -1) {
+		if (keyseq.length < -1) { // unknown key sequence...
+			string buf;
+			LyXBell();
+			keyseq.print(buf);
+			owner->getMiniBuffer()->Set(_("Unknown sequence:"), buf);
+			return 0;
+		}
+	
+		char isochar = keyseq.getiso();
+		if (!(state & ControlMask) &&
+		    !(state & Mod1Mask) &&
+		    (isochar && keysym < 0xF000)) {
+			argument += isochar;
+		}
+		if (argument.empty()) {
+			lyxerr.debug() << "Empty argument!" << endl;
+			// This can`t possibly be of any use
+			// so we`ll skip the dispatch.
+			return 0;
+		}
+	}
+#if 0
+	else
+		if (action == LFUN_SELFINSERT) {
+			argument = s_r[0];
+		}
+#endif
+        bool tmp_sc = show_sc;
+	show_sc = false;
+	Dispatch(action, argument.c_str());
+	show_sc = tmp_sc;
+	
+	return 0;
+} 
+
+
+#if FL_REVISION < 89
 int LyXFunc::processKeyEvent(XEvent * ev)
 {
 	char s_r[10];
+	KeySym keysym_return = 0;
 	string argument;
 	XKeyEvent * keyevent = &ev->xkey;
-	KeySym keysym_return = 0;
-
 	int num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
 	s_r[num_bytes] = '\0';
 
@@ -207,7 +336,8 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 		       << " and num_bytes is "
 		       << num_bytes
 		       << " the string returned is \""
-		       << s_r << '\"' << endl;
+		       << s_r << '\"'
+		       << endl;
 	}
 	// Do nothing if we have nothing (JMarc)
 	if (num_bytes == 0 && keysym_return == NoSymbol) {
@@ -268,8 +398,10 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 		keyseq.print(buf);
 		lyxerr << "Key ["
 		       << action << "]["
-		       << buf << "]["
-		       << num_bytes << "]" << endl;
+		       << buf << "]"
+		       << "["
+		       << num_bytes << "]"
+		       << endl;
 	}
 
 	// already here we know if it any point in going further
@@ -303,11 +435,12 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 			// so we`ll skip the dispatch.
 			return 0;
 		}
-	} else
+	}
+	else
 		if (action == LFUN_SELFINSERT) {
 			argument = s_r[0];
 		}
-    
+
         bool tmp_sc = show_sc;
 	show_sc = false;
 	Dispatch(action, argument.c_str());
@@ -315,6 +448,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	
 	return 0;
 } 
+#endif
 
 
 LyXFunc::func_status LyXFunc::getStatus(int ac) const

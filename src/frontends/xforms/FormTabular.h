@@ -39,43 +39,43 @@ struct FD_form_create_tabular;
  */
 class FormTabular : public DialogBase, public noncopyable {
 public:
-    /**@name Constructors and Destructors */
-    //@{
     /// #FormTabular x(LyXFunc ..., Dialogs ...);#
     FormTabular(LyXView *, Dialogs *);
     ///
     ~FormTabular();
-    //@}
-
-    /**@name Real per-instance Callback Methods */
-    //@{
+    ///
     static  int WMHideCB(FL_FORM *, void *);
+    ///
     static void CloseCB(FL_OBJECT *, long);
+    ///
     static void OKCB(FL_OBJECT *, long);
+    ///
     static void CancelCB(FL_OBJECT *, long);
+    ///
     static void ApplyCB(FL_OBJECT *, long);
+    ///
     static void InputCB(FL_OBJECT *, long);
-    //@}
 
 private:
-    /**@name Slot Methods */
-    //@{
     /// Create the dialog if necessary, update it and display it.
     void show();
+    ///
     void show_create();
+    ///
     void showInset(InsetTabular *);
     /// Hide the dialog.
     void hide();
+    ///
     void hide_create();
+    ///
     void hideInset(InsetTabular *);
     /// Update the dialog.
     void update();
+    ///
     void updateInset(InsetTabular *);
+    ///
     bool local_update(bool);
-    //@}
     
-    /**@name Dialog internal methods */
-    //@{
     /// Apply from dialog
     void apply_create();
     /// Build the dialog
@@ -94,10 +94,7 @@ private:
     FD_form_longtable_options * build_longtable_options();
     ///
     FD_form_create_tabular * build_create_tabular();
-    //@}
 
-    /**@name Private Data */
-    //@{
     /// Real GUI implementation.
     FD_form_tabular * dialog_;
     ///
@@ -110,7 +107,7 @@ private:
     FD_form_longtable_options * longtable_options_;
     ///
     FD_form_create_tabular * create_tabular_;
-    //
+
     /// Which LyXView do we belong to?
     LyXView * lv_;
     ///
@@ -123,7 +120,6 @@ private:
     InsetTabular * inset_;
     ///
     int actCell_;
-    //@}
 };
 
 #endif

@@ -22,11 +22,11 @@
 #include "X11/Xlib.h"
 #include "support/utility.hpp"
 
-/** Renderer is a base class that is used to take an image format, and render
- * it into a Pixmap in order to be able to display it later on in LyX.
- * Essentially it's job is to load an image format and create a Pixmap from it.
- * It also needs to do various transforms on the image, like Rotation, 
- * Resize and color reduction.
+/** Renderer is a base class that is used to take an image format, and
+    render it into a Pixmap in order to be able to display it later on
+    in LyX. Essentially it's job is to load an image format and create
+    a Pixmap from it. It also needs to do various transforms on the
+    image, like Rotation, Resize and color reduction.
  */
 class Renderer : public noncopyable {
 public:
@@ -56,7 +56,7 @@ protected:
 
 	/// Set the pixmap.
 	void setPixmap(Pixmap pixmap, unsigned int width, unsigned int height);
-
+	///
 	string const & getFilename() const;
 
 private:

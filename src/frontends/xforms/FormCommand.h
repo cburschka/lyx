@@ -31,7 +31,6 @@ class FormCommand : public DialogBase, public noncopyable {
 public:
 	/// Constructor
 	FormCommand(LyXView *, Dialogs *, string const & );
-
 	///
 	static  int WMHideCB(FL_FORM *, void *);
 	///

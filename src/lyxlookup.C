@@ -164,11 +164,13 @@ int LyXLookupString(XEvent * event,
 				<< "LyXLookupString: found DeadEvent" << endl;
 			return 0;
 		}
+#if 1
 		if (XFilterEvent (event, None)) {
-			//lyxerr <<"XFilterEvent");
+			lyxerr[Debug::KEY] <<"XFilterEvent" << endl;
 			*keysym_return = NoSymbol;
                         return 0;
 		}
+#endif
 		if (event->type != KeyPress)
 			lyxerr << "LyXLookupString: wrong event type" 
 			       <<  event->type << endl;
@@ -178,21 +180,33 @@ int LyXLookupString(XEvent * event,
 				       bytes_buffer, keysym_return,
 				       &status_return);
 		switch(status_return) {
+		case XBufferOverflow:
+			lyxerr[Debug::KEY] << "XBufferOverflow" << endl;
+			break;
 		case XLookupBoth:
-			//lyxerr <<"XLookupBoth");
+			lyxerr[Debug::KEY] << "XLookupBoth"
+					   << string(buffer_return, result)
+					   << endl;
 			break;
 		case XLookupChars:
-			//lyxerr <<"XLookupChars");
+			lyxerr[Debug::KEY] << "XLookupChars "
+					   << string(buffer_return, result)
+					   << endl;
+			
 			*keysym_return = NoSymbol;
 			break;
 		case XLookupKeySym:
-			//lyxerr <<"XLookupKeySym");
+			lyxerr[Debug::KEY] << "XLookupKeySym" << endl;
+			result = 0;
+			break;
+		case XLookupNone:
+			lyxerr[Debug::KEY] << "XLookupNone" << endl;
+			*keysym_return = NoSymbol;
 			result = 0;
 			break;
 		default:
-			//lyxerr <<"default");
-			*keysym_return = NoSymbol;
-			result = 0;
+			lyxerr << "Unknown status_return from"
+				" XmbLookupString" << endl;
 			break;
 		}
 	} else {
@@ -202,6 +216,7 @@ int LyXLookupString(XEvent * event,
 	}
 	return result;
 }
+
 
 // This is called after the main window has been destroyed
 void CloseLyXLookup() 

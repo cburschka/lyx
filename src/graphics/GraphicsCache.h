@@ -22,8 +22,8 @@
 #include "GraphicsCacheItem.h"
 #include "support/utility.hpp"
 
-/** GraphicsCache is the manager of the image cache, it is responsible to
-    create the GraphicsCacheItem's and maintain them.
+/** GraphicsCache is the manager of the image cache.
+    It is responsible of create the GraphicsCacheItem's and maintain them.
     
     GraphicsCache is a singleton class, there should be only one instance of
     it at any moment.
