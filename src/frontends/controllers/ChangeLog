@@ -1,3 +1,9 @@
+2001-07-16  Juergen Vigna  <jug@sad.it>
+
+	* ControlSpellchecker.C (show): use the lyxrc.use_pspell flag (if
+	compiled with USE_PSPELL) to be able to switch between ISpell and
+	PSpell classes.
+
 2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	Consistent use of Lsstream.h:
