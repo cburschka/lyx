@@ -122,10 +122,8 @@ public:
 	/// total height (== ascent + descent)
 	virtual int height() const;
 
-	/// Where should we go when we press the up cursor key?
-	virtual bool idxUp(idx_type & idx) const;
-	/// The down key
-	virtual bool idxDown(idx_type & idx) const;
+	/// Where should we go when we press the up or down cursor key?
+	virtual bool idxUpDown(idx_type & idx, bool up) const;
 	/// The left key
 	virtual bool idxLeft(idx_type & idx, pos_type & pos) const;
 	/// The right key

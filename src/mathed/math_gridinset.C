@@ -585,23 +585,21 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUp(idx_type & idx) const
+bool MathGridInset::idxUpDown(idx_type & idx, bool up) const
 {
-	if (idx < ncols())
-		return false;
-	idx -= ncols();
-	return true;
+	if (up) {
+		if (idx < ncols())
+			return false;
+		idx -= ncols();
+		return true;
+	} else {
+		if (idx >= ncols() * (nrows() - 1))
+			return false;
+		idx += ncols();
+		return true;
+	}
 }
 
-	
-bool MathGridInset::idxDown(idx_type & idx) const
-{
-	if (idx >= ncols() * (nrows() - 1))
-		return false;
-	idx += ncols();
-	return true;
-}
-	
 	
 bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
 {

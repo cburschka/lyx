@@ -71,24 +71,16 @@ void MathRootInset::write(WriteStream & os) const
 
 void MathRootInset::normalize(NormalStream & os) const
 {
-	os << "[root " << cell(1) << ' ' << cell(1) << ']';
+	os << "[root " << cell(0) << ' ' << cell(1) << ']';
 }
 
 
-bool MathRootInset::idxUp(idx_type & idx) const
+bool MathRootInset::idxUpDown(idx_type & idx, bool up) const
 {
-	if (idx == 0)
+	bool target = !up; // up ? 0 : 1;
+	if (idx == target)
 		return false;
-	idx = 0;
-	return true;
-}
-
-
-bool MathRootInset::idxDown(idx_type & idx) const
-{
-	if (idx == 1)
-		return false;
-	idx = 1;
+	idx = target;
 	return true;
 }
 

@@ -23,19 +23,11 @@ bool MathFracbaseInset::idxLeft(idx_type &, pos_type &) const
 }
 
 
-bool MathFracbaseInset::idxUp(idx_type & idx) const
+bool MathFracbaseInset::idxUpDown(idx_type & idx, bool up) const
 {
-	if (idx == 0)
+	int target = !up;   // up ? 0 : 1, since upper cell has idx 0
+	if (idx == target)
 		return false;
-	idx = 0;
-	return true;
-}
-
-
-bool MathFracbaseInset::idxDown(idx_type & idx) const
-{
-	if (idx == 1)
-		return false;
-	idx = 1;
+	idx = target;
 	return true;
 }

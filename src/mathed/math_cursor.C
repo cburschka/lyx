@@ -1180,29 +1180,65 @@ bool MathCursor::goUpDown(bool up)
   int xo, yo;
 	getPos(xo, yo);
 
-	// try current cell first
-	xarray().boundingBox(xlow, xhigh, ylow, yhigh);
-	if (up)
-		yhigh = yo - 4;
-	else
-		ylow = yo + 4;
-	if (bruteFind(xo, yo, xlow, xhigh, ylow, yhigh))
-		return true;
+	// try neigbouring script insets
+	// try left
+	if (hasPrevAtom()) {
+		MathScriptInset * p = prevAtom()->asScriptInset();
+		if (p && p->has(up)) {
+			--pos();
+			push(nextAtom());
+			idx() = up; // the superscript has index 1
+			pos() = size();
+			///lyxerr << "updown: handled by scriptinset to the left\n";
+			return true;
+		}
+	}
+
+	// try right
+	if (hasNextAtom()) {
+		MathScriptInset * p = nextAtom()->asScriptInset();
+		if (p && p->has(up)) {
+			push(nextAtom());
+			idx() = up;
+			pos() = 0;
+			///lyxerr << "updown: handled by scriptinset to the right\n";
+			return true;
+		}
+	}
+
+	// try current cell
+	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);
+	//if (up)
+	//	yhigh = yo - 4;
+	//else
+	//	ylow = yo + 4;
+	//if (bruteFind(xo, yo, xlow, xhigh, ylow, yhigh)) {
+	//	lyxerr << "updown: handled by brute find in the same cell\n";
+	//	return true;
+	//}
 
 	// try to find an inset that knows better then we
 	while (1) {
-		// we found a cell that think something "below" us.
-		if (up) {
-			if (par()->idxUp(idx()))
-				break;
-		} else {
-			if (par()->idxDown(idx()))
-				break;
+		// we found a cell that thinks it has something "below" us.
+		if (par()->idxUpDown(idx(), up)) {
+			///lyxerr << "updown: found inset that handles UpDown\n";
+			xarray().boundingBox(xlow, xhigh, ylow, yhigh);
+			// project (xo,yo) onto proper box
+			///lyxerr << "\n   xo: " << xo << " yo: " << yo
+			///       << "\n   xlow: " << xlow << " ylow: " << ylow
+			///       << "\n   xhigh: " << xhigh << " yhigh: " << yhigh;
+			xo = min(max(xo, xlow), xhigh);
+			yo = min(max(yo, ylow), yhigh);
+			///lyxerr << "\n   xo2: " << xo << " yo2: " << yo << "\n";
+			bruteFind(xo, yo, xlow, xhigh, ylow, yhigh);
+			///lyxerr << "updown: handled by final brute find\n";
+			return true;
 		}
 
 		if (!popLeft()) {
 			// no such inset found, just take something "above"
-			return
+			///lyxerr << "updown: handled by strange case\n";
+			return 
 				bruteFind(xo, yo,
 					formula()->xlow(),
 					formula()->xhigh(),
@@ -1210,14 +1246,13 @@ bool MathCursor::goUpDown(bool up)
 					up ? yo - 4 : formula()->yhigh()
 				);
 		}
+		///lyxerr << "updown: looping\n";
 	}
-	xarray().boundingBox(xlow, xhigh, ylow, yhigh);
-	bruteFind(xo, yo, xlow, xhigh, ylow, yhigh);
-	return true;
 }
 
 
-bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
+bool MathCursor::bruteFind
+	(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
 	cursor_type best_cursor;
 	double best_dist = 1e10;
@@ -1230,9 +1265,7 @@ bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhig
 			MathCursorPos const & top = it.position();
 			int xo = top.xpos();
 			int yo = top.ypos();
-			if (xlow - 2 <= xo && xo <= xhigh + 2 &&
-					ylow - 2 <= yo && yo <= yhigh + 2)
-			{
+			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 				if (d < best_dist) {
 					best_dist   = d;
