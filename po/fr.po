@@ -167,7 +167,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2002-05-16 01:51+0200\n"
+"POT-Creation-Date: 2002-06-15 16:36+0200\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -193,7 +193,7 @@ msgstr " paragraphes"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:385 src/buffer.C:397 src/buffer.C:769
+#: src/buffer.C:385 src/buffer.C:397 src/buffer.C:771
 msgid "Textclass Loading Error!"
 msgstr "Erreur de chargement de la classe de document !"
 
@@ -213,132 +213,132 @@ msgstr "un élément inconnu"
 msgid " unknown tokens"
 msgstr " éléments inconnus"
 
-#: src/buffer.C:757
+#: src/buffer.C:759
 msgid "Textclass error"
 msgstr "Erreur de classe de document"
 
-#: src/buffer.C:758
+#: src/buffer.C:760
 msgid "The document uses an unknown textclass \""
 msgstr "Le document utilise une classe inconnue \""
 
-#: src/buffer.C:760
+#: src/buffer.C:762
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX ne sera pas à même de produire correctement une sortie."
 
-#: src/buffer.C:770
+#: src/buffer.C:772
 msgid "Can't load textclass "
 msgstr "Impossible de charger la classe "
 
-#: src/buffer.C:772
+#: src/buffer.C:774
 msgid "-- substituting default"
 msgstr "-- remplacée par la valeur par défaut"
 
-#: src/buffer.C:1283
+#: src/buffer.C:1291
 msgid "Unknown token: "
 msgstr "Élément inconnu : "
 
 #. future format
-#: src/buffer.C:1687 src/buffer.C:1707 src/frontends/xforms/FormGraphics.C:547
+#: src/buffer.C:1695 src/buffer.C:1715 src/frontends/xforms/FormGraphics.C:547
 msgid "Warning!"
 msgstr "Attention !"
 
-#: src/buffer.C:1688
+#: src/buffer.C:1696
 msgid "LyX file format is newer that what"
 msgstr "Le format du fichier est plus récent que"
 
-#: src/buffer.C:1689
+#: src/buffer.C:1697
 msgid "is supported in this LyX version. Expect some problems."
 msgstr ""
 "celui supporté par cette version de LyX. Attendez-vous à des problèmes."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1694 src/buffer.C:1713 src/buffer.C:1716
+#: src/buffer.C:1702 src/buffer.C:1721 src/buffer.C:1724
 msgid "ERROR!"
 msgstr "ERREUR !"
 
-#: src/buffer.C:1695
+#: src/buffer.C:1703
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Format de fichier LyX périmé. Utiliser LyX 0.10.x pour le lire !"
 
-#: src/buffer.C:1708
+#: src/buffer.C:1716
 msgid "Reading of document is not complete"
 msgstr "Lecture du document incomplète"
 
-#: src/buffer.C:1709
+#: src/buffer.C:1717
 msgid "Maybe the document is truncated"
 msgstr "Peut-être le document est-il tronqué"
 
-#: src/buffer.C:1713
+#: src/buffer.C:1721
 msgid "Not a LyX file!"
 msgstr "Ce n'est pas un fichier LyX !"
 
-#: src/buffer.C:1716
+#: src/buffer.C:1724
 msgid "Unable to read file!"
 msgstr "Impossible de lire le fichier !"
 
-#: src/buffer.C:1809 src/buffer.C:1812
+#: src/buffer.C:1817 src/buffer.C:1820
 msgid "Error! Document is read-only: "
 msgstr "Erreur ! Document en lecture seule : "
 
-#: src/buffer.C:1822 src/buffer.C:1825
+#: src/buffer.C:1830 src/buffer.C:1833
 msgid "Error! Cannot write file: "
 msgstr "Erreur ! Impossible d'écrire le fichier : "
 
-#: src/buffer.C:1833 src/buffer.C:1836
+#: src/buffer.C:1841 src/buffer.C:1844
 msgid "Error! Cannot open file: "
 msgstr "Erreur ! Impossible d'ouvrir le fichier : "
 
-#: src/buffer.C:1998 src/ext_l10n.h:182
+#: src/buffer.C:2006 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr "Abstract"
 
-#: src/buffer.C:2001
+#: src/buffer.C:2009
 msgid "Abstract: "
 msgstr "Abstract : "
 
-#: src/buffer.C:2009 src/ext_l10n.h:378
+#: src/buffer.C:2017 src/ext_l10n.h:378
 msgid "References"
 msgstr "Références"
 
-#: src/buffer.C:2012
+#: src/buffer.C:2020
 msgid "References: "
 msgstr " Références : "
 
-#: src/buffer.C:2126
+#: src/buffer.C:2134
 msgid "Error: Cannot write file:"
 msgstr "Erreur : Impossible d'écrire le fichier : "
 
-#: src/buffer.C:2155
+#: src/buffer.C:2163
 msgid "Error: Cannot open file: "
 msgstr "Erreur : Impossible d'ouvrir le fichier : "
 
-#: src/buffer.C:2753 src/buffer.C:3204
+#: src/buffer.C:2761 src/buffer.C:3214
 msgid "LYX_ERROR:"
 msgstr "ERREUR LYX :"
 
-#: src/buffer.C:2753 src/buffer.C:3204
+#: src/buffer.C:2761 src/buffer.C:3214
 msgid "Cannot write file"
 msgstr "Impossible d'écrire le fichier"
 
-#: src/buffer.C:2842 src/buffer.C:3317
+#: src/buffer.C:2850 src/buffer.C:3327
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Erreur : Mauvaise profondeur pour la commande LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3616
+#: src/buffer.C:3626
 msgid "Running chktex..."
 msgstr "Exécution de chktex..."
 
-#: src/buffer.C:3629
+#: src/buffer.C:3639
 msgid "chktex did not work!"
 msgstr "chktex a échoué !"
 
-#: src/buffer.C:3630
+#: src/buffer.C:3640
 msgid "Could not run with file:"
 msgstr "Impossible de le lancer sur le fichier : "
 
-#: src/bufferlist.C:109 src/bufferlist.C:199 src/lyxvc.C:102 src/lyxvc.C:135
-#: src/lyxvc.C:165
+#: src/bufferlist.C:109 src/bufferlist.C:199 src/lyxvc.C:112 src/lyxvc.C:145
+#: src/lyxvc.C:175
 msgid "Changes in document:"
 msgstr "Modifications dans le document : "
 
@@ -1220,47 +1220,38 @@ msgid "center"
 msgstr "centre"
 
 #: src/frontends/controllers/ControlGraphics.C:203
-#, fuzzy
 msgid "left top"
 msgstr "gaucheHaut"
 
 #: src/frontends/controllers/ControlGraphics.C:203
-#, fuzzy
 msgid "left bottom"
 msgstr "gaucheBas"
 
 #: src/frontends/controllers/ControlGraphics.C:203
-#, fuzzy
 msgid "left baseline"
 msgstr "gaucheBase"
 
 #: src/frontends/controllers/ControlGraphics.C:204
-#, fuzzy
 msgid "center top"
 msgstr "centreHaut"
 
 #: src/frontends/controllers/ControlGraphics.C:204
-#, fuzzy
 msgid "center bottom"
 msgstr "centreBas"
 
 #: src/frontends/controllers/ControlGraphics.C:204
-#, fuzzy
 msgid "center baseline"
 msgstr "centreBase"
 
 #: src/frontends/controllers/ControlGraphics.C:205
-#, fuzzy
 msgid "right top"
 msgstr "droiteHaut"
 
 #: src/frontends/controllers/ControlGraphics.C:205
-#, fuzzy
 msgid "right bottom"
 msgstr "droiteBas"
 
 #: src/frontends/controllers/ControlGraphics.C:205
-#, fuzzy
 msgid "right baseline"
 msgstr "droiteBase"
 
@@ -1734,41 +1725,41 @@ msgstr "énorme"
 msgid "Document layout set"
 msgstr "Style de document appliqué"
 
-#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:775
+#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:776
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
-#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:783
+#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:784
 msgid "One paragraph couldn't be converted"
 msgstr "Un paragraphe n'a pas pu être converti"
 
-#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:786
+#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:787
 msgid " paragraphs couldn't be converted"
 msgstr " paragraphes n'ont pas pu être convertis"
 
 #. problem changing class -- warn user and retain old style
 #: src/frontends/qt2/QDocument.C:366 src/frontends/qt2/QDocument.C:373
-#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:788
-#: src/frontends/xforms/FormDocument.C:794
-#: src/frontends/xforms/FormDocument.C:1489
+#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:789
+#: src/frontends/xforms/FormDocument.C:795
+#: src/frontends/xforms/FormDocument.C:1490
 msgid "Conversion Errors!"
 msgstr "Erreurs de conversion !"
 
-#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:789
+#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:790
 msgid "into chosen document class"
 msgstr "dans la classe choisie"
 
-#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:795
+#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:796
 msgid "Errors loading new document class."
 msgstr "Erreurs au chargement de la nouvelle classe."
 
 #: src/frontends/qt2/QDocument.C:375 src/frontends/qt2/QDocument.C:1007
-#: src/frontends/xforms/FormDocument.C:796
-#: src/frontends/xforms/FormDocument.C:1491
+#: src/frontends/xforms/FormDocument.C:797
+#: src/frontends/xforms/FormDocument.C:1492
 msgid "Reverting to original document class."
 msgstr "Retour à la classe originelle."
 
-#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1250
+#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1251
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document en lecture seule. Modifications de style interdites."
 
@@ -1780,7 +1771,7 @@ msgstr "Dois-je donner moi-même à certains paramètres"
 msgid "the defaults of this document class?"
 msgstr "leur valeur par défaut dans cette classe ?"
 
-#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1490
+#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1491
 msgid "Unable to switch to new document class."
 msgstr "Impossible de passer à la nouvelle classe de document."
 
@@ -2129,7 +2120,6 @@ msgid "Browse your directory for BibTeX stylefiles."
 msgstr "Parcourt votre répertoire pour trouver des fichiers de style BibTeX."
 
 #: src/frontends/xforms/FormBibtex.C:68
-#, fuzzy
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
@@ -2139,8 +2129,8 @@ msgstr ""
 "Le style BibTeX à utiliser (un seul autorisé). Insérez-le sans l'extension "
 "par défaut « .bst » et sans le chemin. La plupart des styles BibTeX se "
 "trouvent dans $TEXMF/bibtex/bst. $TEXMF est le répertoire racine de l'arbre "
-"TeX local. Avec Visualiser->Informations TeX vous avez la liste de tous les "
-"styles installés."
+"TeX local. Avec « Visualiser->Informations TeX » vous avez la liste de tous "
+"les styles installés."
 
 #: src/frontends/xforms/FormBibtex.C:71
 msgid ""
@@ -2286,7 +2276,7 @@ msgstr "@2->"
 msgid "#&B"
 msgstr "#&B"
 
-#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122 src/ext_l10n.h:610
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:132 src/ext_l10n.h:610
 msgid "Info"
 msgstr "Informations"
 
@@ -2390,7 +2380,6 @@ msgstr ""
 "le texte (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:211
-#, fuzzy
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et al.\" (Natbib)."
@@ -2451,12 +2440,10 @@ msgid "Use Class Defaults|#C"
 msgstr "Valeurs par Défaut de la Classe|#f"
 
 #: src/frontends/xforms/form_document.C:94
-#, fuzzy
 msgid "Paper size"
 msgstr "Taille :"
 
 #: src/frontends/xforms/form_document.C:96
-#, fuzzy
 msgid "Paper size:|#P"
 msgstr "Taille :|#i"
 
@@ -2547,7 +2534,6 @@ msgid "Class:|#l"
 msgstr "Classe :|#C"
 
 #: src/frontends/xforms/form_document.C:282
-#, fuzzy
 msgid "Page style:|#P"
 msgstr "Mise en Page :|#M"
 
@@ -2702,7 +2688,6 @@ msgid "Document Layout"
 msgstr "Style de Document"
 
 #: src/frontends/xforms/FormDocument.C:110
-#, fuzzy
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
@@ -2715,9 +2700,8 @@ msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr " Rien | Petites marges | Très petites marges | Très grandes marges "
 
 #: src/frontends/xforms/FormDocument.C:201
-#, fuzzy
 msgid " Single | OneHalf | Double | Custom "
-msgstr " Simple | Un et Demi | Double | Autre "
+msgstr " Simple | Un et Demi | Double | Personnalisé "
 
 #: src/frontends/xforms/FormDocument.C:209
 msgid " Smallskip | Medskip | Bigskip | Length "
@@ -2778,7 +2762,7 @@ msgstr "comme valeurs par défaut ?"
 msgid "(they will be valid for any new document)"
 msgstr "(elles seront valables pour tout nouveau document)"
 
-#: src/frontends/xforms/FormDocument.C:1302
+#: src/frontends/xforms/FormDocument.C:1303
 #: src/frontends/xforms/FormParagraph.C:584
 #: src/frontends/xforms/FormTabular.C:578
 #: src/frontends/xforms/FormTabular.C:597
@@ -3211,7 +3195,7 @@ msgstr ""
 "(\n"
 "Gauche|#G"
 
-#: src/frontends/xforms/FormMathsDelim.C:45
+#: src/frontends/xforms/FormMathsDelim.C:46
 msgid "Maths Delimiters"
 msgstr "Délimiteurs Mathématiques"
 
@@ -3500,9 +3484,8 @@ msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr " Aucun | Défaut | Petit | Moyen | Grand | Ressort Vertical | Taille "
 
 #: src/frontends/xforms/FormParagraph.C:129
-#, fuzzy
 msgid " Default | Single | OneHalf | Double | Custom "
-msgstr " Défaut | Simple | Un et Demi | Double | Autre "
+msgstr " Défaut | Simple | Un et Demi | Double | Personnalisé "
 
 #: src/frontends/xforms/FormPreamble.C:24
 msgid "LaTeX preamble"
@@ -4257,7 +4240,6 @@ msgid "Keyboard map"
 msgstr "Réaffectation clavier"
 
 #: src/frontends/xforms/FormPreferences.C:1984
-#, fuzzy
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr " Défaut | Lettre US | Legal US | Executive US | A3 | A4 | A5 | B5 "
 
@@ -6152,7 +6134,7 @@ msgstr "Fonction inconnue ("
 msgid "Saving document"
 msgstr "Enregistrement du document"
 
-#: src/lyxfunc.C:1268 src/mathed/formulabase.C:944
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:945
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
@@ -6282,106 +6264,106 @@ msgstr "Mauvaise option de ligne de commande `"
 msgid "'. Exiting."
 msgstr "'. Sortie du programme."
 
-#: src/lyx_main.C:251
+#: src/lyx_main.C:252
 msgid "Warning: could not determine path of binary."
 msgstr "Avertissment : impossible de trouver l'emplacement du binaire."
 
-#: src/lyx_main.C:253
+#: src/lyx_main.C:254
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "En cas de problème, lancer LyX avec le chemin complet."
 
-#: src/lyx_main.C:362
+#: src/lyx_main.C:363
 msgid "LYX_DIR_12x environment variable no good."
 msgstr "La variable d'environnement LYX_DIR_12x n'est pas utilisable."
 
-#: src/lyx_main.C:364
+#: src/lyx_main.C:365
 msgid "System directory set to: "
 msgstr "Le répertoire système est positionné sur : "
 
-#: src/lyx_main.C:372
+#: src/lyx_main.C:373
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Avertissement LyX ! Impossible de déterminer le répertoire système. "
 
-#: src/lyx_main.C:373
+#: src/lyx_main.C:374
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Essayer le paramètre de ligne de commande '-sysdir' ou "
 
-#: src/lyx_main.C:374
+#: src/lyx_main.C:375
 msgid "set the environment variable LYX_DIR_12x to the LyX system directory "
 msgstr ""
 "positionner la variable d'environnement LYX_DIR_12x sur le répertoire "
 "système "
 
-#: src/lyx_main.C:376
+#: src/lyx_main.C:377
 msgid "containing the file `chkconfig.ltx'."
 msgstr "contenant le fichier `chkconfig.ltx'."
 
-#: src/lyx_main.C:384
+#: src/lyx_main.C:385
 msgid "Using built-in default "
 msgstr "Utilisation des paramètres par défaut "
 
-#: src/lyx_main.C:385
+#: src/lyx_main.C:386
 msgid " but expect problems."
 msgstr " mais attendez-vous à des problèmes."
 
-#: src/lyx_main.C:388
+#: src/lyx_main.C:389
 msgid "Expect problems."
 msgstr "Attendez-vous à des problèmes."
 
-#: src/lyx_main.C:635
+#: src/lyx_main.C:636
 msgid "You have specified an invalid LyX directory."
 msgstr "Vous avez spécifié un répertoire LyX invalide."
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:637
 msgid "It is needed to keep your own configuration."
 msgstr "Il est indispensable pour personnaliser votre configuration."
 
-#: src/lyx_main.C:637
+#: src/lyx_main.C:638
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Dois-je le créer (recommandé) ?"
 
-#: src/lyx_main.C:638
+#: src/lyx_main.C:639
 msgid "Running without personal LyX directory."
 msgstr "Fonctionnement sans répertoire LyX personnel."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:645
+#: src/lyx_main.C:646
 msgid "LyX: Creating directory "
 msgstr "LyX : Création du répertoire "
 
-#: src/lyx_main.C:646
+#: src/lyx_main.C:647
 msgid " and running configure..."
 msgstr " et lancement de configure..."
 
-#: src/lyx_main.C:652
+#: src/lyx_main.C:653
 msgid "Failed. Will use "
 msgstr "Échec. Utilisation de "
 
-#: src/lyx_main.C:653
+#: src/lyx_main.C:654
 msgid " instead."
 msgstr " à la place."
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:661
 msgid "Done!"
 msgstr "Terminé !"
 
-#: src/lyx_main.C:674
+#: src/lyx_main.C:675
 msgid "LyX Warning!"
 msgstr "Avertissment LyX !"
 
-#: src/lyx_main.C:675
+#: src/lyx_main.C:676
 msgid "Error while reading "
 msgstr "Erreur lors de la lecture "
 
-#: src/lyx_main.C:676
+#: src/lyx_main.C:677
 msgid "Using built-in defaults."
 msgstr "Utilisation des réglages par défaut."
 
-#: src/lyx_main.C:778
+#: src/lyx_main.C:779
 msgid "Setting debug level to "
 msgstr "Niveau de débogage "
 
-#: src/lyx_main.C:788
+#: src/lyx_main.C:789
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -6421,31 +6403,35 @@ msgstr ""
 "\t-version           résumé de la version et de la compilation\n"
 "Voir la page man de LyX pour les détails."
 
-#: src/lyx_main.C:835
+#: src/lyx_main.C:836
 msgid "List of supported debug flags:"
 msgstr "Liste des options de débogage acceptées :"
 
-#: src/lyx_main.C:847
+#: src/lyx_main.C:848
 msgid "Missing directory for -sysdir switch!"
 msgstr "Il manque un répertoire pour l'option -sysdir !"
 
-#: src/lyx_main.C:858
+#: src/lyx_main.C:859
 msgid "Missing directory for -userdir switch!"
 msgstr "Il manque un répertoire pour l'option -userdir !"
 
-#: src/lyx_main.C:886
+#: src/lyx_main.C:888
 msgid "Missing command string after  -x switch!"
 msgstr "Il manque une commande pour l'option -x !"
 
-#: src/lyx_main.C:899
+#: src/lyx_main.C:902
 msgid "Missing file type [eg latex, ps...] after "
 msgstr "Type de fichier manquant [par ex. latex, ps...] après l'option "
 
-#: src/lyx_main.C:901 src/lyx_main.C:916
+#: src/lyx_main.C:904 src/lyx_main.C:926
 msgid " switch!"
 msgstr " !"
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:911
+msgid "Missing filename for --import"
+msgstr "Il manque le nom du fichier à importer pour --import"
+
+#: src/lyx_main.C:924
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Type de fichier manquant [par ex. latex, ps...] après l'option "
 
@@ -6979,46 +6965,58 @@ msgstr "Vérifier le contenu du fichier « textclass.lst »"
 msgid "Sorry, has to exit :-("
 msgstr "Désolé, on doit se quitter... :-("
 
-#: src/lyxvc.C:104 src/lyxvc.C:137
+#: src/lyxvc.C:82
+msgid "File not saved"
+msgstr "Fichier non enregistré"
+
+#: src/lyxvc.C:83
+msgid "You must save the file"
+msgstr "Vous devez enregistrer le fichier"
+
+#: src/lyxvc.C:84
+msgid "before it can be registered."
+msgstr "avant d'initialiser le contrôle de révision."
+
+#: src/lyxvc.C:114 src/lyxvc.C:147
 msgid "Save document and proceed?"
 msgstr "Enregistrer le document et continuer ?"
 
-#: src/lyxvc.C:117
+#: src/lyxvc.C:127
 msgid "LyX VC: Initial description"
 msgstr "LyX CV : Description initiale"
 
-#: src/lyxvc.C:118
+#: src/lyxvc.C:128
 msgid "(no initial description)"
 msgstr "(pas de description initiale)"
 
-#: src/lyxvc.C:123
+#: src/lyxvc.C:133
 msgid "This document has NOT been registered."
 msgstr "Le contrôle de version n'a pas été initialisé."
 
-#: src/lyxvc.C:149
+#: src/lyxvc.C:159
 msgid "LyX VC: Log Message"
 msgstr "LyX CV : Message de log"
 
-#: src/lyxvc.C:152
+#: src/lyxvc.C:162
 msgid "(no log message)"
 msgstr "(aucun message de log)"
 
-#: src/lyxvc.C:167
+#: src/lyxvc.C:177
 msgid "Ignore changes and proceed with check out?"
 msgstr "Ignorer les modifications et continuer la récupération ?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:182
+#: src/lyxvc.C:192
 msgid "When you revert, you will loose all changes made"
 msgstr "Si vous revenez à la version précédente, vous perdrez toutes les"
 
-#: src/lyxvc.C:183
+#: src/lyxvc.C:193
 msgid "to the document since the last check in."
 msgstr "modifications apportées au document dans cette version éditable."
 
-#: src/lyxvc.C:184
+#: src/lyxvc.C:194
 msgid "Do you still want to do it?"
 msgstr "Voulez-vous toujours le faire ?"
 
@@ -7026,11 +7024,11 @@ msgstr "Voulez-vous toujours le faire ?"
 msgid " (read only)"
 msgstr " (en lecture seule)"
 
-#: src/mathed/formulabase.C:141 src/mathed/formulabase.C:918
+#: src/mathed/formulabase.C:142 src/mathed/formulabase.C:919
 msgid "Math editor mode"
 msgstr "Mode éditeur mathématique"
 
-#: src/mathed/formulabase.C:661
+#: src/mathed/formulabase.C:662
 msgid "Invalid action in math mode!"
 msgstr "Action invalide en mode mathématique !"
 
