@@ -87,6 +87,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
+		result = DISPATCHED;
 		break;
 
 	default:
