@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "gettext.h"
 
+#include "LColor.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "lyxfont.h"
