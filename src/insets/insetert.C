@@ -57,10 +57,9 @@ void InsetERT::init()
 }
 
 
-InsetERT::InsetERT(BufferParams const & bp, bool collapsed)
-	: InsetCollapsable(bp, collapsed)
+InsetERT::InsetERT(BufferParams const & bp, CollapseStatus status)
+	: InsetCollapsable(bp, status)
 {
-	status_ = collapsed ? Collapsed : Open;
 	init();
 }
 
@@ -79,11 +78,9 @@ auto_ptr<InsetBase> InsetERT::clone() const
 
 
 InsetERT::InsetERT(BufferParams const & bp,
-		   Language const * l, string const & contents, bool collapsed)
-	: InsetCollapsable(bp, collapsed)
+		   Language const * l, string const & contents, CollapseStatus status)
+	: InsetCollapsable(bp, status)
 {
-	status_ = collapsed ? Collapsed : Open;
-
 	LyXFont font(LyXFont::ALL_INHERIT, l);
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
@@ -103,162 +100,16 @@ InsetERT::~InsetERT()
 }
 
 
-void InsetERT::read(Buffer const & buf, LyXLex & lex)
-{
-	bool token_found = false;
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token == "status") {
-			lex.next();
-			string const tmp_token = lex.getString();
-
-			if (tmp_token == "Inlined") {
-				status_ = Inlined;
-			} else if (tmp_token == "Collapsed") {
-				status_ = Collapsed;
-			} else {
-				// leave this as default!
-				status_ = Open;
-			}
-
-			token_found = true;
-		} else {
-			lyxerr << "InsetERT::Read: Missing 'status'-tag!"
-				   << endl;
-			// take countermeasures
-			lex.pushToken(token);
-		}
-	}
-	inset.read(buf, lex);
-
-	if (!token_found) {
-		if (isOpen())
-			status_ = Open;
-		else
-			status_ = Collapsed;
-	}
-	setButtonLabel();
-}
-
-
 void InsetERT::write(Buffer const & buf, ostream & os) const
 {
-	string st;
-
-	switch (status_) {
-	case Open:
-		st = "Open";
-		break;
-	case Collapsed:
-		st = "Collapsed";
-		break;
-	case Inlined:
-		st = "Inlined";
-		break;
-	}
-
-	os << getInsetName() << "\n" << "status "<< st << "\n";
-
-	//inset.writeParagraphData(buf, os);
-	string const layout(buf.params().getLyXTextClass().defaultLayoutName());
-	ParagraphList::iterator par = inset.paragraphs().begin();
-	ParagraphList::iterator end = inset.paragraphs().end();
-	for (; par != end; ++par) {
-		os << "\n\\begin_layout " << layout << "\n";
-		pos_type siz = par->size();
-		for (pos_type i = 0; i < siz; ++i) {
-			Paragraph::value_type c = par->getChar(i);
-			switch (c) {
-			case Paragraph::META_INSET:
-				if (par->getInset(i)->lyxCode() != InsetOld::NEWLINE_CODE) {
-					lyxerr << "Element is not allowed in insertERT"
-					       << endl;
-				} else {
-					par->getInset(i)->write(buf, os);
-				}
-				break;
-
-			case '\\':
-				os << "\n\\backslash \n";
-				break;
-			default:
-				os << c;
-				break;
-			}
-		}
-		os << "\n\\end_layout\n";
-	}
+	os << "ERT" << "\n";
+	InsetCollapsable::write(buf, os);
 }
 
 
 string const InsetERT::editMessage() const
 {
 	return _("Opened ERT Inset");
-}
-
-
-void InsetERT::updateStatus(bool swap) const
-{
-	if (status_ != Inlined) {
-		if (isOpen())
-			status_ = swap ? Collapsed : Open;
-		else
-			status_ = swap ? Open : Collapsed;
-		setButtonLabel();
-	}
-}
-
-
-void InsetERT::lfunMousePress(FuncRequest const & cmd)
-{
-	if (status_ == Inlined)
-		inset.dispatch(cmd);
-	else {
-		idx_type idx = 0;
-		pos_type pos = 0;
-		InsetCollapsable::priv_dispatch(cmd, idx, pos);
-	}
-}
-
-
-bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
-{
-	BufferView * bv = cmd.view();
-
-	if (cmd.button() == mouse_button::button3) {
-		showInsetDialog(bv);
-		return true;
-	}
-
-	if (status_ != Inlined && hitButton(cmd)) {
-		updateStatus(true);
-	} else {
-		FuncRequest cmd1 = cmd;
-#warning metrics?
-		cmd1.y = ascent() + cmd.y - inset.ascent();
-
-		// inlined is special - the text appears above
-		if (status_ == Inlined)
-			inset.dispatch(cmd1);
-		else if (isOpen() && cmd.y > buttonDim().y2) {
-			cmd1.y -= height_collapsed();
-			inset.dispatch(cmd1);
-		}
-	}
-	return false;
-}
-
-
-void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
-{
-	if (status_ == Inlined)
-		inset.dispatch(cmd);
-	else {
-		idx_type idx = 0;
-		pos_type pos = 0;
-		InsetCollapsable::priv_dispatch(cmd, idx, pos);
-	}
 }
 
 
@@ -357,37 +208,19 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
-void InsetERT::edit(BufferView * bv, bool left)
-{
-	if (status_ == Inlined)
-		inset.edit(bv, left);
-	else
-		InsetCollapsable::edit(bv, left);
-	updateStatus();
-}
-
-
 DispatchResult
 InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 
-	case LFUN_MOUSE_PRESS:
-		lfunMousePress(cmd);
-		return DispatchResult(true, true);
-
-	case LFUN_MOUSE_MOTION:
-		lfunMouseMotion(cmd);
-		return DispatchResult(true, true);
-
-	case LFUN_MOUSE_RELEASE:
-		lfunMouseRelease(cmd);
-		return DispatchResult(true, true);
-
 	case LFUN_INSET_MODIFY:
-		InsetERTMailer::string2params(cmd.argument, status_);
-		setButtonLabel();
-		return DispatchResult(true, true);
+                {
+			InsetCollapsable::CollapseStatus st;
+
+			InsetERTMailer::string2params(cmd.argument, st);
+			setStatus(st);
+			return DispatchResult(true, true);
+		}
 
 	case LFUN_LAYOUT:
 	case LFUN_BOLD:
@@ -412,9 +245,9 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 }
 
 
-void InsetERT::setButtonLabel() const
+void InsetERT::setButtonLabel()
 {
-	setLabel(status_ == Collapsed ? getNewLabel(_("ERT")) : _("ERT"));
+	setLabel(status() == Collapsed ? getNewLabel(_("ERT")) : _("ERT"));
 }
 
 
@@ -440,13 +273,6 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 	getDrawFont(pi.base.font);
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
-}
-
-
-void InsetERT::setStatus(CollapseStatus st)
-{
-	status_ = st;
-	setButtonLabel();
 }
 
 

@@ -30,20 +30,18 @@ class Language;
 class InsetERT : public InsetCollapsable {
 public:
 	///
-	InsetERT(BufferParams const &, bool collapsed = false);
+	InsetERT(BufferParams const &, CollapseStatus status = Open);
 	///
 	InsetERT(InsetERT const &);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetERT(BufferParams const &,
-		 Language const *, std::string const & contents, bool collapsed);
+		 Language const *, std::string const & contents, CollapseStatus status);
 	///
 	~InsetERT();
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::ERT_CODE; }
-	///
-	void read(Buffer const & buf, LyXLex & lex);
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
@@ -74,8 +72,6 @@ public:
 	void getDrawFont(LyXFont &) const;
 	///
 	bool forceDefaultParagraphs(InsetOld const *) const { return true; }
-	///
-	void setStatus(CollapseStatus st);
 protected:
 	///
 	virtual
@@ -83,23 +79,9 @@ protected:
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	///
-	void lfunMousePress(FuncRequest const &);
-	///
-	// the bool return is used to see if we opened a dialog so that we can
-	// check this from an outer inset and open the dialog of the outer inset
-	// if that one has one!
-	///
-	bool lfunMouseRelease(FuncRequest const &);
-	///
-	void lfunMouseMotion(FuncRequest const &);
-	///
 	void init();
 	///
-	void setButtonLabel() const;
-	/// update status on button
-	void updateStatus(bool = false) const;
-	///
-	void edit(BufferView * bv, bool left);
+	void setButtonLabel();
 	///
 	bool allowSpellCheck() const { return false; }
 };

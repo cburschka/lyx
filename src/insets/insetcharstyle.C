@@ -105,7 +105,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	xo_ = x;
 	yo_ = y;
 
-	status_ = Inlined;
+	// FIXME: setStatus(Inlined); this is not a const operation
 	inset.setDrawFrame(InsetText::NEVER);
 	inset.draw(pi, x, y);
 

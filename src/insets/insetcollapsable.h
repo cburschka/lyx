@@ -40,8 +40,8 @@ public:
 		Collapsed,
 		Inlined
 	};
-	/// inset is initially collapsed if bool = true
-	InsetCollapsable(BufferParams const &, bool collapsed = false);
+	///
+	InsetCollapsable(BufferParams const &, CollapseStatus status = Open);
 	///
 	InsetCollapsable(InsetCollapsable const & in);
 	///
@@ -81,13 +81,11 @@ public:
 	/// get the screen x,y of the cursor
 	void getCursorPos(int & x, int & y) const;
 	///
-	void setLabel(std::string const & l) const;
+	void setLabel(std::string const & l);
 	///
+	virtual void setButtonLabel() {};
+ 	///
 	void setLabelFont(LyXFont & f);
-#if 0
-	///
-	void setAutoCollapse(bool f);
-#endif
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
@@ -117,7 +115,7 @@ public:
 	///
 	void setBackgroundColor(LColor_color);
 	///
-	virtual void setStatus(CollapseStatus st);
+	void setStatus(CollapseStatus st);
 
 protected:
 	///
@@ -148,9 +146,10 @@ private:
 public:
 	///
 	mutable InsetText inset;
-protected:
+private:
 	///
 	mutable CollapseStatus status_;
+protected:
 	///
 	LyXFont labelfont_;
 	///
@@ -161,10 +160,6 @@ protected:
 	mutable int topbaseline;
 	///
 	mutable std::string label;
-#if 0
-	///
-	bool autocollapse;
-#endif
 };
 
 #endif

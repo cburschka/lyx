@@ -1,3 +1,10 @@
+2003-12-12  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* insetert.[Ch]:
+	* insetcollapsable.[Ch]: Move all CollapseStatus code from
+	insetert to insetcollapsable; introduce virtual function
+	setButtonLabel and invoke it from collapsable
+
 2003-12-12  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C (draw): cache x,y and so enable the

@@ -39,55 +39,91 @@ using std::min;
 using std::ostream;
 
 
-InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
-	: UpdatableInset(), inset(bp), status_(collapsed ? Collapsed : Open),
+InsetCollapsable::InsetCollapsable(BufferParams const & bp, CollapseStatus status)
+	: UpdatableInset(), inset(bp), status_(status),
 	  label("Label")
-#if 0
-	,autocollapse(false)
-#endif
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
 	inset.setDrawFrame(InsetText::ALWAYS);
 	inset.setFrameColor(LColor::collapsableframe);
 	setInsetName("Collapsable");
+
+	setButtonLabel();
 }
 
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 	: UpdatableInset(in), inset(in.inset), status_(in.status_),
 	  labelfont_(in.labelfont_), label(in.label)
-#if 0
-	  ,autocollapse(in.autocollapse)
-#endif
 {
 	inset.setOwner(this);
+	setButtonLabel();
 }
 
 
 void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 {
-	os << "collapsed " << (status_ == Collapsed ? "true" : "false") << "\n";
+	string st;
+
+	switch (status_) {
+	case Open:
+		st = "open";
+		break;
+	case Collapsed:
+		st = "collapsed";
+		break;
+	case Inlined:
+		st = "inlined";
+		break;
+	}
+	os << "status " << st << "\n";
 	inset.text_.write(buf, os);
 }
 
 
 void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 {
+	bool token_found = false;
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();
-		if (token == "collapsed") {
+		if (token == "status") {
 			lex.next();
-			status_ = lex.getBool() ? Collapsed : Open;
+			string const tmp_token = lex.getString();
+
+			if (tmp_token == "inlined") {
+				status_ = Inlined;
+				token_found = true;
+			} else if (tmp_token == "collapsed") {
+				status_ = Collapsed;
+				token_found = true;
+			} else if (tmp_token == "open") {
+				status_ = Open;
+				token_found = true;
+			} else {
+				lyxerr << "InsetCollapsable::read: Missing status!"
+				       << endl;
+				// Take countermeasures
+				lex.pushToken(token);
+			}
 		} else {
-			lyxerr << "InsetCollapsable::Read: Missing collapsed!"
-			       << endl;
-			// Take countermeasures
+			lyxerr << "InsetCollapsable::Read: Missing 'status'-tag!"
+				   << endl;
+			// take countermeasures
 			lex.pushToken(token);
 		}
 	}
 	inset.read(buf, lex);
+
+	if (!token_found) {
+		if (isOpen())
+			status_ = Open;
+		else
+			status_ = Collapsed;
+	}
+
+	setButtonLabel();
 }
 
 
@@ -183,32 +219,31 @@ DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		lyxerr << "InsetCollapsable::lfunMouseRelease 0" << endl;
-		if (hitButton(cmd))
-			showInsetDialog(bv);
+		showInsetDialog(bv);
 		return DispatchResult(true, true);
 	}
 
-	if (status_ == Collapsed) {
+	switch (status_) {
+	case Collapsed:
 		lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 		setStatus(Open);
 		edit(bv, true);
 		return DispatchResult(true, true);
-	}
 
-	if (hitButton(cmd)) {
-		if (status_ == Open) {
-			setStatus(Collapsed);
+	case Open:
+		if (hitButton(cmd)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
+			setStatus(Collapsed);
 			return DispatchResult(false, FINISHED_RIGHT);
-		}
-		setStatus(Open);
-		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-	} else if (status_ == Open && cmd.y > button_dim.y2) {
-		lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
-		return inset.dispatch(adjustCommand(cmd));
+		} else {
+			lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
+			return inset.dispatch(adjustCommand(cmd));
+		}	
+
+	case Inlined:
+		return inset.dispatch(cmd);
 	}
 
-	lyxerr << "InsetCollapsable::lfunMouseRelease 5" << endl;
 	return DispatchResult(true, true);
 }
 
@@ -264,10 +299,7 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 	if (inset.paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
 		la += "...";
 	}
-	if (la.empty()) {
-		la = l;
-	}
-	return la;
+	return la.empty() ? l : la;
 }
 
 
@@ -275,7 +307,7 @@ void InsetCollapsable::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetCollapsable: edit left/right" << endl;
 	inset.edit(bv, left);
-	setStatus(Open);
+	open();
 	bv->cursor().push(this);
 }
 
@@ -303,26 +335,29 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	//	<< "  button y: " << button_dim.y2 << endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
-			if (!status_ && cmd.y > button_dim.y2)
+			if (status_ == Inlined)
+				inset.dispatch(cmd);
+			else if (status_ == Open && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
-			if (!status_)
+			if (status_ == Inlined)
+				inset.dispatch(cmd);
+			else if (status_ == Open && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_RELEASE:
-			if (!status_ && cmd.y > button_dim.y2)
-				inset.dispatch(adjustCommand(cmd));
-			else
-				return lfunMouseRelease(cmd);
-			return DispatchResult(true, true);
+			return lfunMouseRelease(cmd);
 
 		case LFUN_INSET_TOGGLE:
 			if (inset.text_.toggleInset())
 				return DispatchResult(true, true);
-			close();
+			if (status_ == Open)
+				setStatus(Inlined);
+				return DispatchResult(true, true);
+			setStatus(Collapsed);
 			return DispatchResult(false, FINISHED_RIGHT);
 
 		default:
@@ -378,7 +413,8 @@ LyXText * InsetCollapsable::getText(int i) const
 
 void InsetCollapsable::open()
 {
-	setStatus(Open);
+	if (status_ == Collapsed)   // ...but not inlined
+		setStatus(Open);
 }
 
 
@@ -388,15 +424,16 @@ void InsetCollapsable::close()
 }
 
 
-void InsetCollapsable::setLabel(string const & l) const
+void InsetCollapsable::setLabel(string const & l)
 {
 	label = l;
 }
 
 
-void InsetCollapsable::setStatus(CollapseStatus s)
+void InsetCollapsable::setStatus(CollapseStatus st)
 {
-	status_ = s;
+	status_ = st;
+	setButtonLabel();
 }
 
 
@@ -418,18 +455,10 @@ bool InsetCollapsable::insetAllowed(InsetOld::Code code) const
 }
 
 
-void InsetCollapsable::setLabelFont(LyXFont & f)
+void InsetCollapsable::setLabelFont(LyXFont & font)
 {
-	labelfont_ = f;
+	labelfont_ = font;
 }
-
-
-#if 0
-void InsetCollapsable::setAutoCollapse(bool f)
-{
-	autocollapse = f;
-}
-#endif
 
 
 void InsetCollapsable::scroll(BufferView * bv, float sx) const
