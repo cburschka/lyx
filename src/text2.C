@@ -1013,7 +1013,7 @@ void LyXText::setSelection(BufferView * bview)
 
 
 string const LyXText::selectionAsString(Buffer const * buffer,
-					bool label) const
+                                        bool label) const
 {
 	if (!selection.set()) return string();
 	string result;

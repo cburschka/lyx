@@ -1,3 +1,7 @@
+2001-12-27  Juergen Vigna  <jug@sad.it>
+
+	* buffer.C (asciiParagraph): rewrote to hopefully work as expected!
+
 2001-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* tabular_funcs.C: use a "using std::getline" instead of the

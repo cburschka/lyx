@@ -1768,9 +1768,10 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 
 
 string const Buffer::asciiParagraph(Paragraph const * par,
-				    unsigned int linelen) const
+                                    unsigned int linelen) const
 {
 	ostringstream buffer;
+	ostringstream word;
 	Paragraph::depth_type depth = 0;
 	int ltype = 0;
 	Paragraph::depth_type ltype_depth = 0;
@@ -1778,168 +1779,207 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 	bool ref_printed = false;
 
 	int noparbreak = 0;
-	int islatex = 0;
-	if (!par->previous()) {
-		// begins or ends a deeper area ?
-		if (depth != par->params().depth()) {
-			if (par->params().depth() > depth) {
-				while (par->params().depth() > depth) {
-					++depth;
-				}
-			} else {
-				while (par->params().depth() < depth) {
-					--depth;
-				}
+//	if (!par->previous()) {
+#if 0
+	// begins or ends a deeper area ?
+	if (depth != par->params().depth()) {
+		if (par->params().depth() > depth) {
+			while (par->params().depth() > depth) {
+				++depth;
 			}
-		}
-		
-		// First write the layout
-		string const tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
-		if (tmp == "Itemize") {
-			ltype = 1;
-			ltype_depth = depth + 1;
-		} else if (tmp == "Enumerate") {
-			ltype = 2;
-			ltype_depth = depth + 1;
-		} else if (contains(tmp, "ection")) {
-			ltype = 3;
-			ltype_depth = depth + 1;
-		} else if (contains(tmp, "aragraph")) {
-			ltype = 4;
-			ltype_depth = depth + 1;
-		} else if (tmp == "Description") {
-			ltype = 5;
-			ltype_depth = depth + 1;
-		} else if (tmp == "Abstract") {
-			ltype = 6;
-			ltype_depth = 0;
-		} else if (tmp == "Bibliography") {
-			ltype = 7;
-			ltype_depth = 0;
 		} else {
-			ltype = 0;
-			ltype_depth = 0;
+			while (par->params().depth() < depth) {
+				--depth;
+			}
 		}
-		
-		/* maybe some vertical spaces */ 
-		
-		/* the labelwidthstring used in lists */ 
-		
-		/* some lines? */ 
-		
-		/* some pagebreaks? */ 
-		
-		/* noindent ? */ 
-		
-		/* what about the alignment */ 
-	} else {
-		lyxerr << "Should this ever happen?" << endl;
 	}
-
-	for (pos_type i = 0; i < par->size(); ++i) {
-		if (!i && !noparbreak) {
-			if (linelen > 0)
-				buffer << "\n\n";
-			for (Paragraph::depth_type j = 0; j < depth; ++j)
-				buffer << "  ";
-			currlinelen = depth * 2;
-			switch (ltype) {
-			case 0: // Standard
-			case 4: // (Sub)Paragraph
-			case 5: // Description
-				break;
-			case 6: // Abstract
-				if (linelen > 0)
-					buffer << "Abstract\n\n";
-				else
-					buffer << "Abstract: ";
-				break;
-			case 7: // Bibliography
-				if (!ref_printed) {
-					if (linelen > 0)
-						buffer << "References\n\n";
-					else
-						buffer << "References: ";
-					ref_printed = true;
-				}
-				break;
-			default:
-				buffer << par->params().labelString() << " ";
-				break;
-			}
-			if (ltype_depth > depth) {
-				for (Paragraph::depth_type j = ltype_depth - 1; 
-				     j > depth; --j)
-					buffer << "  ";
-				currlinelen += (ltype_depth-depth)*2;
-			}
-		}
+#else
+	depth = par->params().depth();
+#endif
 		
+	// First write the layout
+	string const tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
+	if (tmp == "Itemize") {
+		ltype = 1;
+		ltype_depth = depth + 1;
+	} else if (tmp == "Enumerate") {
+		ltype = 2;
+		ltype_depth = depth + 1;
+	} else if (contains(tmp, "ection")) {
+		ltype = 3;
+		ltype_depth = depth + 1;
+	} else if (contains(tmp, "aragraph")) {
+		ltype = 4;
+		ltype_depth = depth + 1;
+	} else if (tmp == "Description") {
+		ltype = 5;
+		ltype_depth = depth + 1;
+	} else if (tmp == "Abstract") {
+		ltype = 6;
+		ltype_depth = 0;
+	} else if (tmp == "Bibliography") {
+		ltype = 7;
+		ltype_depth = 0;
+	} else {
+		ltype = 0;
+		ltype_depth = 0;
+	}
+		
+	/* maybe some vertical spaces */ 
+		
+	/* the labelwidthstring used in lists */ 
+		
+	/* some lines? */ 
+		
+	/* some pagebreaks? */ 
+		
+	/* noindent ? */ 
+		
+	/* what about the alignment */ 
+//	} else {
+//		lyxerr << "Should this ever happen?" << endl;
+//	}
+
+	// linelen <= 0 is special and means we don't have pargraph breaks
+	if (!noparbreak) {
+		if (linelen > 0)
+			buffer << "\n\n";
+		for (Paragraph::depth_type j = 0; j < depth; ++j)
+			buffer << "  ";
+		currlinelen = depth * 2;
+		//--
+		// we should probably change to the paragraph language in the
+		// gettext here (if possible) so that strings are outputted in
+		// the correct language! (20012712 Jug)
+		//--	
+		switch (ltype) {
+		case 0: // Standard
+		case 4: // (Sub)Paragraph
+		case 5: // Description
+			break;
+		case 6: // Abstract
+			if (linelen > 0)
+				buffer << _("Abstract") << "\n\n";
+			else
+				buffer << _("Abstract: ");
+			break;
+		case 7: // Bibliography
+			if (!ref_printed) {
+				if (linelen > 0)
+					buffer << _("References") << "\n\n";
+				else
+					buffer << _("References: ");
+				ref_printed = true;
+			}
+			break;
+		default:
+			buffer << par->params().labelString() << " ";
+			break;
+		}
+	}
+	string s = buffer.str();
+	if (s.rfind('\n') != string::npos) {
+		string dummy;
+		s = rsplit(buffer.str().c_str(), dummy, '\n');
+	}
+	currlinelen = s.length();
+	if (!currlinelen) {
+		for (Paragraph::depth_type j = 0; j < depth; ++j)
+			buffer << "  ";
+		currlinelen = depth * 2;
+		if (ltype_depth > depth) {
+			for (Paragraph::depth_type j = ltype_depth;
+				 j > depth; --j)
+			{
+				buffer << "  ";
+			}
+			currlinelen += (ltype_depth-depth)*2;
+		}
+	}
+	// this is to change the linebreak to do it by word a bit more intelligent
+	// hopefully! (only in the case where we have a max linelenght!) (Jug)
+	for (pos_type i = 0; i < par->size(); ++i) {
 		char c = par->getUChar(params, i);
-		if (islatex)
-			continue;
 		switch (c) {
 		case Paragraph::META_INSET:
 		{
 			Inset const * inset = par->getInset(i);
 			if (inset) {
-				if (!inset->ascii(this, buffer)) {
+				if (linelen > 0)
+					buffer << word.str();
+				if (inset->ascii(this, buffer)) {
+					// to be sure it breaks paragraph
+					currlinelen += linelen;
+				}
+#if 0
+				else {
 					string dummy;
 					string const s =
 						rsplit(buffer.str().c_str(),
 						       dummy, '\n');
-					currlinelen += s.length();
-				} else {
-					// to be sure it breaks paragraph
-					currlinelen += linelen;
+					currlinelen = s.length();
 				}
+#endif
 			}
 		}
 		break;
 		
 		case Paragraph::META_NEWLINE:
 			if (linelen > 0) {
-				buffer << "\n";
-				for (Paragraph::depth_type j = 0; 
-				     j < depth; ++j)
-					buffer << "  ";
-			}
-			currlinelen = depth * 2;
-			if (ltype_depth > depth) {
-				for (Paragraph::depth_type j = ltype_depth;
-				     j > depth; --j)
-					buffer << "  ";
-				currlinelen += (ltype_depth - depth) * 2;
-			}
-			break;
-			
-		case Paragraph::META_HFILL: 
-			buffer << "\t";
-			break;
-
-		default:
-			if ((linelen > 0) && (currlinelen > (linelen - 10)) &&
-			    (c == ' ') && ((i + 2) < par->size()))
-			{
-				buffer << "\n";
+				buffer << word.str() << "\n";
+				word.str("");
 				for (Paragraph::depth_type j = 0; 
 				     j < depth; ++j)
 					buffer << "  ";
 				currlinelen = depth * 2;
 				if (ltype_depth > depth) {
 					for (Paragraph::depth_type j = ltype_depth;
-					    j > depth; --j)
+						 j > depth; --j)
 						buffer << "  ";
-					currlinelen += (ltype_depth-depth)*2;
+					currlinelen += (ltype_depth - depth) * 2;
 				}
-			} else if (c != '\0') {
-				buffer << c;
-				++currlinelen;
-			} else
-				lyxerr[Debug::INFO] << "writeAsciiFile: NULL char in structure." << endl;
+			}
+			break;
+			
+		case Paragraph::META_HFILL:
+			buffer << word.str() << "\t";
+			currlinelen += word.str().length() + 1;
+			word.str("");
+			break;
+
+		default:
+			if (c == ' ') {
+				buffer << word.str() << ' ';
+				currlinelen += word.str().length() + 1;
+				word.str("");
+			} else {
+				if (c != '\0') {
+					word << c;
+				} else {
+					lyxerr[Debug::INFO] <<
+						"writeAsciiFile: NULL char in structure." << endl;
+				}
+				if ((linelen > 0) &&
+					(currlinelen+word.str().length()) > linelen)
+				{
+					buffer << "\n";
+					for (Paragraph::depth_type j = 0; j < depth; ++j)
+						buffer << "  ";
+					currlinelen = depth * 2;
+					if (ltype_depth > depth) {
+						for (Paragraph::depth_type j = ltype_depth;
+							 j > depth; --j)
+						{
+							buffer << "  ";
+						}
+						currlinelen += (ltype_depth-depth)*2;
+					}
+				}
+			}
 			break;
 		}
 	}
+	buffer << word.str();
 	return buffer.str().c_str();
 }
 
