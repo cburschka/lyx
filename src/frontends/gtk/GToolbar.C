@@ -118,7 +118,7 @@ void GLayoutBox::set(string const & layout)
 
 void GLayoutBox::update()
 {
-	int current_selection = combo_.get_active_row_number();
+	int const current_selection = combo_.get_active_row_number();
 	clear();
 
 	LyXTextClass const & tc = getTextClass(owner_);
