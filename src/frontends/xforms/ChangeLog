@@ -1,3 +1,7 @@
+2002-02-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormGraphics.C (c-tor): prevent resizing of the dialog.
+
 2002-02-03  Herbert Voss  <voss@lyx.org>
 
 	* xforms_helpers.C: fix bug with unit "%" in 

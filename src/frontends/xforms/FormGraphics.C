@@ -49,7 +49,7 @@ int const FILENAME_MAXCHARS = 1024;
 typedef FormCB<ControlGraphics, FormDB<FD_form_graphics> > base_class;
 
 FormGraphics::FormGraphics(ControlGraphics & c)
-	: base_class(c, _("Graphics"))
+	: base_class(c, _("Graphics"), false)
 {}
 
 
