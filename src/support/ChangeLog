@@ -1,3 +1,7 @@
+2005-02-15  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (setEnvPath): compare iterators rather than use tellp().
+
 2005-02-03  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.C (running): call the lyx::kill wrapper function
