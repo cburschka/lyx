@@ -54,8 +54,8 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
 	///
 	const char * EditMessage() const {return _("Opened Url");}

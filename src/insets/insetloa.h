@@ -37,8 +37,8 @@ public:
 	string getScreenLabel() const { return _("List of Algorithms"); }
 
         ///
-	unsigned char Editable() const {
-		return 0; // not yet
+	EDITABLE Editable() const {
+		return NOT_EDITABLE; // not yet
 	}
 	///
 	bool display() const { return true; }

@@ -46,8 +46,8 @@ public:
         ///
 	void Edit(BufferView *, int, int, unsigned int);
         ///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
         ///
         Inset::Code LyxCode() const { return Inset::PARENT_CODE; }

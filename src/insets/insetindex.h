@@ -39,9 +39,9 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	unsigned char Editable() const
+	EDITABLE Editable() const
 	{
-		return 1;
+		return IS_EDITABLE;
 	}
 	///
 	string getScreenLabel() const;
@@ -61,8 +61,8 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int) {}
 	///
-	unsigned char Editable() const{
-		return 1;
+	EDITABLE Editable() const{
+		return IS_EDITABLE;
 	}
 	/// WHY is clone missing? (Lgb)
 	///

@@ -59,9 +59,9 @@ void InsetGraphics::Edit(BufferView *, int, int, unsigned int)
 }
 
 
-unsigned char InsetGraphics::Editable() const
+Inset::EDITABLE InsetGraphics::Editable() const
 {
-	return 1;
+	return IS_EDITABLE;
 }
 
 

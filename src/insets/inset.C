@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "BufferView.h"
 #include "support/lstrings.h"
+#include "Painter.h"
 
 /* Insets default methods */
 
@@ -33,9 +34,9 @@ bool Inset::DirectWrite() const
 }
 
 
-unsigned char Inset::Editable() const
+Inset::EDITABLE Inset::Editable() const
 {
-  return 0;
+  return NOT_EDITABLE;
 }
 
 
@@ -97,9 +98,9 @@ void UpdatableInset::InsetUnlock(BufferView *)
 
 
 // An updatable inset is highly editable by definition
-unsigned char UpdatableInset::Editable() const
+Inset::EDITABLE UpdatableInset::Editable() const
 {
-	return 2; // and what does "2" siginify? (Lgb)
+	return HIGHLY_EDITABLE;
 }
 
 
@@ -154,3 +155,11 @@ UpdatableInset::LocalDispatch(BufferView *, int, string const &)
 #endif
     return UNDISPATCHED; 
 }
+
+int UpdatableInset::getMaxWidth(Painter & pain) const
+{
+    if (owner_)
+        return owner_->getMaxWidth(pain);
+    return pain.paperWidth();
+}
+

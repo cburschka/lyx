@@ -731,7 +731,7 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 	updateScrollbar();
 	
 	// Single left click in math inset?
-	if (inset_hit != 0 && inset_hit->Editable() == 2) {
+	if (inset_hit != 0 && inset_hit->Editable()==Inset::HIGHLY_EDITABLE) {
 		// Highly editable inset, like math
 		selection_possible = false;
 		owner_->updateLayoutChoice();

@@ -207,6 +207,8 @@ void LyXAction::init()
 		  N_("Toggle font underline"), Noop },
 		{ LFUN_FOOTMELT, "footnote-insert", N_("Insert Footnote"),
 		  Noop },
+		{ LFUN_INSET_FOOTNOTE, "footnote-inset-insert",
+		  N_("Insert Footnote"), Noop },
 		{ LFUN_RIGHTSEL, "forward-select", N_("Select next char"),
 		  ReadOnly },
 		{ LFUN_HFILL, "hfill-insert",

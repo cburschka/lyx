@@ -14,12 +14,16 @@ libinsets_la_SOURCES = \
 	inset.C \
 	insetbib.C \
 	insetbib.h \
+	insetcollapsable.C \
+	insetcollapsable.h \
 	insetcommand.C \
 	insetcommand.h \
 	inseterror.C \
 	inseterror.h \
 	insetert.C \
 	insetert.h \
+	insetfoot.C \
+	insetfoot.h \
 	insetgraphics.C \
 	insetgraphics.h \
 	insetinclude.C \

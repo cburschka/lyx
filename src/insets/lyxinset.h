@@ -82,7 +82,17 @@ public:
 		///
 		TEXT_CODE,
 		///
-		SPECIALCHAR_CODE
+		FOOT_CODE,
+		///
+		MARGIN_CODE,
+		///
+		SPECIALCHAR_CODE,
+	};
+
+	enum EDITABLE {
+	    NOT_EDITABLE = 0,
+	    IS_EDITABLE,
+	    HIGHLY_EDITABLE
 	};
 
 	///
@@ -103,7 +113,7 @@ public:
 	///
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
-	virtual unsigned char Editable() const;
+	virtual EDITABLE Editable() const;
 	///
 	virtual bool AutoDelete() const;
 	///
@@ -212,11 +222,14 @@ public:
 	}
 
 	///
-	UpdatableInset() { scx = mx_scx = 0; }
+	UpdatableInset() {
+	    scx = mx_scx = 0;
+	    owner_ = 0;
+	}
 	///
 	//virtual ~UpdatableInset() {}
 	///
-	virtual unsigned char Editable() const;
+	virtual EDITABLE Editable() const;
    
 	/// may call ToggleLockedInsetCursor
 	virtual void ToggleInsetCursor(BufferView *);
@@ -259,7 +272,12 @@ public:
 	///
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
-	virtual int getMaxWidth(UpdatableInset *) const { return -1; }
+	virtual int getMaxWidth(Painter & pain) const;
+	///
+	virtual void setOwner(UpdatableInset * inset) { owner_ = inset; }
+	///
+	virtual UpdatableInset * owner() { return owner_; }
+
 protected:
 	///
 	// virtual void UpdateLocal(bool flag=true);
@@ -272,5 +290,8 @@ private:
 	///
 	int mx_scx;
 	mutable int scx;
+	///
+	UpdatableInset * owner_;
+
 };
 #endif

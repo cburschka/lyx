@@ -49,9 +49,9 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
-	unsigned char Editable() const
+	EDITABLE Editable() const
 	{
-		return 1;
+		return IS_EDITABLE;
 	}
         /// With lyx3 we won't overload these 3 methods
         void Write(ostream &) const;

@@ -37,7 +37,7 @@ public:
 	///
 	string getScreenLabel() const { return getContents(); }
 	///
-	unsigned char Editable() const { return 0; }
+	EDITABLE Editable() const { return NOT_EDITABLE; }
 	///
 	int Latex(ostream &, signed char fragile) const;
 #ifndef USE_OSTREAM_ONLY

@@ -47,8 +47,8 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
         ///
 	bool display() const { return false; }

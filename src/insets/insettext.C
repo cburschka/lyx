@@ -66,8 +66,9 @@ InsetText::InsetText(Buffer * buf)
     interline_space = 1;
     no_selection = false;
     init_inset = true;
-    maxAscent = maxDescent = insetWidth = 0;
+    maxAscent = maxDescent = insetWidth = widthOffset = 0;
     autoBreakRows = false;
+    xpos = 0.0;
 }
 
 
@@ -82,8 +83,9 @@ InsetText::InsetText(InsetText const & ins, Buffer * buf)
     interline_space = 1;
     no_selection = false;
     init_inset = true;
-    maxAscent = maxDescent = insetWidth = 0;
+    maxAscent = maxDescent = insetWidth = widthOffset = 0;
     autoBreakRows = false;
+    xpos = 0.0;
 }
 
 
@@ -153,7 +155,7 @@ void InsetText::Read(LyXLex & lex)
 int InsetText::ascent(Painter & pain, LyXFont const & font) const
 {
     if (init_inset) {
-	computeTextRows(pain);
+	computeTextRows(pain, xpos);
 	init_inset = false;
     }
     if (maxAscent)
@@ -165,7 +167,7 @@ int InsetText::ascent(Painter & pain, LyXFont const & font) const
 int InsetText::descent(Painter & pain, LyXFont const & font) const
 {
     if (init_inset) {
-	computeTextRows(pain);
+	computeTextRows(pain, xpos);
 	init_inset = false;
     }
     if (maxDescent)
@@ -177,34 +179,18 @@ int InsetText::descent(Painter & pain, LyXFont const & font) const
 int InsetText::width(Painter & pain, LyXFont const &) const
 {
     if (init_inset) {
-	computeTextRows(pain);
+	computeTextRows(pain, xpos);
 	init_inset = false;
     }
     return insetWidth;
 }
 
 
-int InsetText::getMaxWidth(UpdatableInset * inset) const
-{
-    if (!the_locking_inset) {
-	    lyxerr << "Text: No locking inset in this inset.\n";
-	return 0;
-    }
-
-    if (the_locking_inset == inset) 
-	return maxWidth;
-
-    return the_locking_inset->getMaxWidth(inset);
-}
-
-
 void InsetText::draw(Painter & pain, LyXFont const & f,
 		     int baseline, float & x) const
 {
-//    if (init_inset) {
-	computeTextRows(pain, x);
-//	init_inset = false;
-//    }
+    xpos = x;
+    computeTextRows(pain, x);
     UpdatableInset::draw(pain, f, baseline, x);
     
     bool do_reset_pos = (x != top_x) || (baseline != top_baseline);
@@ -324,7 +310,7 @@ void InsetText::InsetUnlock(BufferView * bv)
     HideInsetCursor(bv);
     if (hasSelection()) {
 	selection_start = selection_end = actpos;
-	bv->updateInset(this, false);
+	UpdateLocal(bv, false);
     }
     the_locking_inset = 0;
     no_selection = false;
@@ -354,7 +340,7 @@ bool InsetText::UpdateInsetInInset(BufferView * bv, Inset * inset)
         return the_locking_inset->UpdateInsetInInset(bv, inset);
     float x = inset_x;
     inset->draw(bv->getPainter(), real_current_font, inset_y, x);
-    bv->updateInset(this, true);
+    UpdateLocal(bv, true);
     return true;
 }
 
@@ -373,7 +359,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 {
     if (hasSelection()) {
 	selection_start = selection_end = actpos;
-	bv->updateInset(this, false);
+	UpdateLocal(bv, false);
     }
     no_selection = false;
     if (the_locking_inset) {
@@ -419,7 +405,7 @@ void InsetText::InsetMotionNotify(BufferView * bv, int x, int y, int button)
 	setPos(bv, x, y, false);
 	selection_end = actpos;
 	if (old != selection_end)
-	    bv->updateInset(this, false);
+	    UpdateLocal(bv, false);
     }
     no_selection = false;
 }
@@ -457,7 +443,7 @@ InsetText::LocalDispatch(BufferView * bv,
         result = the_locking_inset->LocalDispatch(bv, action, arg);
 	if (result == DISPATCHED) {
 	    the_locking_inset->ToggleInsetCursor(bv);
-	    bv->updateInset(this, false);
+	    UpdateLocal(bv, false);
 	    the_locking_inset->ToggleInsetCursor(bv);
             return result;
         } else if (result == FINISHED) {
@@ -475,8 +461,7 @@ InsetText::LocalDispatch(BufferView * bv,
       case -1:
           par->InsertChar(actpos,arg[0]);
 	  par->SetFont(actpos,real_current_font);
-	  computeTextRows(bv->getPainter());
-	  bv->updateInset(this, true);
+	  UpdateLocal(bv, true);
           ++actpos;
 	  selection_start = selection_end = actpos;
           resetPos(bv);
@@ -485,13 +470,13 @@ InsetText::LocalDispatch(BufferView * bv,
       case LFUN_RIGHTSEL:
           moveRight(bv, false);
 	  selection_end = actpos;
-	  bv->updateInset(this, false);
+	  UpdateLocal(bv, false);
 	  break;
       case LFUN_RIGHT:
           result= DISPATCH_RESULT(moveRight(bv));
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -499,13 +484,13 @@ InsetText::LocalDispatch(BufferView * bv,
       case LFUN_LEFTSEL:
           moveLeft(bv, false);
 	  selection_end = actpos;
-	  bv->updateInset(this, false);
+	  UpdateLocal(bv, false);
 	  break;
       case LFUN_LEFT:
           result= DISPATCH_RESULT(moveLeft(bv));
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -513,13 +498,13 @@ InsetText::LocalDispatch(BufferView * bv,
       case LFUN_DOWNSEL:
           moveDown(bv, false);
 	  selection_end = actpos;
-	  bv->updateInset(this, false);
+	  UpdateLocal(bv, false);
 	  break;
       case LFUN_DOWN:
           result= DISPATCH_RESULT(moveDown(bv));
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -527,13 +512,13 @@ InsetText::LocalDispatch(BufferView * bv,
       case LFUN_UPSEL:
           moveUp(bv, false);
 	  selection_end = actpos;
-	  bv->updateInset(this, false);
+	  UpdateLocal(bv, false);
 	  break;
       case LFUN_UP:
           result= DISPATCH_RESULT(moveUp(bv));
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -542,7 +527,7 @@ InsetText::LocalDispatch(BufferView * bv,
           if (!actpos || par->IsNewline(actpos-1)) {
 	      if (hasSelection()) {
 		  selection_start = selection_end = actpos;
-		  bv->updateInset(this, false);
+		  UpdateLocal(bv, false);
 	      }
               break;
 	  }
@@ -550,11 +535,10 @@ InsetText::LocalDispatch(BufferView * bv,
       case LFUN_DELETE:
           if (Delete()) { // we need update
 	      selection_start = selection_end = actpos;
-	      computeTextRows(bv->getPainter());
-	      bv->updateInset(this, true);
+	      UpdateLocal(bv, true);
           } else if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  }
           break;
       case LFUN_HOME:
@@ -563,7 +547,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	  cx -= SingleWidth(bv->getPainter(), par, actpos);
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -573,7 +557,7 @@ InsetText::LocalDispatch(BufferView * bv,
               cx += SingleWidth(bv->getPainter(), par, actpos);
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -582,7 +566,7 @@ InsetText::LocalDispatch(BufferView * bv,
           InsertInset(bv, new InsetFormula);
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
-	      bv->updateInset(this, false);
+	      UpdateLocal(bv, false);
 	  } else {
 	      selection_start = selection_end = actpos;
 	  }
@@ -959,10 +943,13 @@ bool InsetText::Delete()
 
 bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 {
+    if (inset->Editable() == Inset::IS_EDITABLE) {
+	UpdatableInset *i = (UpdatableInset *)inset;
+	i->setOwner((UpdatableInset *)this);
+    }
     par->InsertChar(actpos, LyXParagraph::META_INSET);
     par->InsertInset(actpos, inset);
-    computeTextRows(bv->getPainter());
-    bv->updateInset(this, true);
+    UpdateLocal(bv, true);
     the_locking_inset = static_cast<UpdatableInset*>(inset);
     inset_x = cx - top_x;
     inset_y = cy;
@@ -1015,8 +1002,7 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 	SetCharFont(s_start, newfont);
 	++s_start;
     }
-    computeTextRows(bv->getPainter());
-    bv->updateInset(this, true);
+    UpdateLocal(bv, true);
 }
 
 
@@ -1051,28 +1037,6 @@ void InsetText::SetCharFont(int pos, LyXFont const & f)
 }
 
 
-// Ok, Jürgen. Here is my small secret message to you. As you can see I
-// played a bit witht he Textinset. (But only through the InsetERT so far).
-// As you can see below I have changed the code to use max/min instead of
-// the if < construct, imo this makes it faster and easier to read. I have
-// also changed rows[rows.size() - 1] to rows.back() makes it clearer that
-// we speak about the last element in the vector. I added a second arg to
-// to this func as well. This makes it possible to take the position of the
-// inset into account when drawing the inset, this is especially needed when
-// the ERT inset is first in a paragraph. I am not sure, but this might have
-// made short ERT (less than one line, just a couple of words) draw
-// incorrectly. You should perhaps have a look yourselves at this.
-// Also (phu...) I use pain to get at paperWidth().
-// This is beginning to look like a very nice Inset (speaking of the ERT
-// inset that is), but in afterthought, do we really need it? Wouldn't a
-// non dynamic inset working in the same way as the floats be more usefull
-// and easier to work with? Jean-Marc has already aired this thought.
-// I tested also a bit on the raw insettext, it seems that it can't break
-// over several lines properly. Other than that it seems to create the basis
-// for insetfloat, insetmarginal and insetfoot just fine. How about a
-// updatable inset that does not open, unless you click on it? uff... I just
-// ramble on. Feel free to remove my comments after you have read them.
-// Lgb
 void InsetText::computeTextRows(Painter & pain, float x) const
 {
     int p,
@@ -1088,7 +1052,6 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 
     if (rows.size())
 	    rows.clear();
-	    //rows.erase(rows.begin(),rows.end());
     int width = wordAscent = wordDescent = 0;
     insetWidth = maxAscent = maxDescent = 0;
     row.asc      = 0;
@@ -1101,11 +1064,7 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    insetWidth += SingleWidth(pain, par, p);
 	    SingleHeight(pain, par, p, asc, desc);
 	    maxAscent = max(maxAscent, asc);
-	    //if (asc > maxAscent)
-	    //maxAscent = asc;
 	    maxDescent = max(maxDescent, desc);
-	    //if (desc > maxDescent)
-	    //maxDescent = desc;
 	}
 	rows[0].asc = maxAscent;
 	rows[0].desc = maxDescent;
@@ -1119,25 +1078,20 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 
     int cw, lastWordWidth = 0;
 
-    //maxWidth = buffer->getUser()->paperWidth();
-    maxWidth = pain.paperWidth();
+    maxWidth = UpdatableInset::getMaxWidth(pain) - widthOffset;
     for(p = 0; p < par->Last(); ++p) {
 	cw = SingleWidth(pain, par, p);
 	width += cw;
 	lastWordWidth += cw;
 	SingleHeight(pain, par, p, asc, desc);
 	wordAscent = max(wordAscent, asc);
-	//if (asc > wordAscent)
-	//    wordAscent = asc;
 	wordDescent = max(wordDescent, desc);
-	//if (desc > wordDescent)
-	//    wordDescent = desc;
 	Inset const * inset = 0;
 	if (((p + 1) < par->Last()) &&
 	    (par->GetChar(p + 1)==LyXParagraph::META_INSET))
 	    inset = par->GetInset(p + 1);
 	if (inset && inset->display()) {
-	    if (!is_first_word_in_row && (width >= maxWidth - x)) {
+	    if (!is_first_word_in_row && (width >= (maxWidth - x))) {
 		// we have to split also the row above
 		rows.back().asc = oasc;
 		rows.back().desc = odesc;
@@ -1146,17 +1100,11 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 		oasc = wordAscent;
 		odesc = wordDescent;
 		insetWidth = max(insetWidth, owidth);
-		//if (insetWidth < owidth)
-		//    insetWidth = owidth;
 		width = lastWordWidth;
 		lastWordWidth = 0;
 	    } else {
 		    oasc = max(oasc, wordAscent);
-		    //if (oasc < wordAscent)
-		    //oasc = wordAscent;
 		    odesc = max(odesc, wordDescent);
-		    //if (odesc < wordDescent)
-		    //odesc = wordDescent;
 	    }
 	    rows.back().asc = oasc;
 	    rows.back().desc = odesc;
@@ -1170,7 +1118,7 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    oasc = odesc = width = lastWordWidth = 0;
 	    is_first_word_in_row = true;
 	    wordAscent = wordDescent = 0;
-	    x = 0.0;
+//	    x = 0.0;
 	    continue;
 	} else if (par->IsSeparator(p)) {
 	    if (width >= maxWidth - x) {
@@ -1188,31 +1136,24 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 		    oasc = wordAscent;
 		    odesc = wordDescent;
 		    insetWidth = max(insetWidth, owidth);
-		    //if (insetWidth < owidth)
-		    //insetWidth = owidth;
 		    width = lastWordWidth;
 		}
 		wordAscent = wordDescent = lastWordWidth = 0;
 		nwp = p + 1;
-		x = 0.0;
+//		x = 0.0;
 		continue;
 	    }
 	    owidth = width;
 	    oasc = max(oasc, wordAscent);
-	    //if (oasc < wordAscent)
-	    //oasc = wordAscent;
 	    odesc = max(odesc, wordDescent);
-	    //if (odesc < wordDescent)
-	    //odesc = wordDescent;
 	    wordAscent = wordDescent = lastWordWidth = 0;
 	    nwp = p + 1;
 	    is_first_word_in_row = false;
 	}
-	x = 0.0;
     }
     // if we have some data in the paragraph we have ascent/descent
     if (p) {
-	if (width >= maxWidth) {
+	if (width >= (maxWidth - x)) {
 	    // assign upper row
 	    rows.back().asc = oasc;
 	    rows.back().desc = odesc;
@@ -1221,25 +1162,16 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    rows.push_back(row);
 	    rows.back().asc = wordAscent;
 	    rows.back().desc = wordDescent;
-	    insetWidth = max(insetWidth, owidth);
-	    //if (insetWidth < owidth)
-	    //insetWidth = owidth;
-	    width -= owidth;
-	    insetWidth = max(insetWidth, width);
-	    //if (insetWidth < width)
-	    //insetWidth = width;
+	    width -= lastWordWidth;
 	} else {
 	    // assign last row data
-		oasc = max(oasc, wordAscent);
-		//if (oasc < wordAscent)
-		//oasc = wordAscent;
-		odesc = min(odesc, wordDescent);
-		//if (odesc < wordDescent)
-		//odesc = wordDescent;
-	    rows.back().asc = oasc;
-	    rows.back().desc = odesc;
+//	    width = lastWordWidth;
+//	    lastWordWidth = 0;
+	    rows.back().asc = max(oasc, wordAscent);
+	    rows.back().desc = max(odesc, wordDescent);
 	}
     }
+    insetWidth = max(insetWidth, width);
     // alocate a dummy row for the endpos
     row.pos = par->Last();
     rows.push_back(row);
@@ -1249,7 +1181,6 @@ void InsetText::computeTextRows(Painter & pain, float x) const
     for (RowList::size_type i = 1; i < rows.size() - 1; ++i) {
 	maxDescent += rows[i].asc + rows[i].desc + interline_space;
     }
-    lyxerr << "Rows: " << rows.size() << endl;
 #if 0
     if (the_locking_inset) {
 	computeBaselines(top_baseline);
@@ -1269,4 +1200,10 @@ void InsetText::computeBaselines(int baseline) const
 	rows[i].baseline = rows[i - 1].baseline + rows[i - 1].desc + 
 	    rows[i].asc + interline_space;
     }
+}
+
+void InsetText::UpdateLocal(BufferView *bv, bool flag)
+{
+    init_inset = flag;
+    bv->updateInset(this, flag);
 }

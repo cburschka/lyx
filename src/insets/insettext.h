@@ -21,10 +21,11 @@
 #include "lyxinset.h"
 #include "lyxparagraph.h"
 #include "LString.h"
-#include "buffer.h"
+//#include "buffer.h"
 
 class Painter;
 class BufferView;
+class Buffer;
 
 /** A text inset is like a TeX box
   
@@ -54,8 +55,6 @@ public:
     ///
     int width(Painter &, LyXFont const & f) const;
     ///
-    int getMaxWidth(UpdatableInset *) const;
-    ///
     void draw(Painter & pain, LyXFont const &, int , float &) const;
     ///
     char const * EditMessage() const;
@@ -65,8 +64,6 @@ public:
     void InsetUnlock(BufferView *);
     ///
     bool UnlockInsetInInset(BufferView *, Inset *, bool lr = false);
-    ///
-    //void UpdateLocal(bool flag=true);
     ///
     bool UpdateInsetInInset(BufferView *, Inset *);
     ///
@@ -115,6 +112,8 @@ public:
 
 protected:
     ///
+    void UpdateLocal(BufferView *, bool);
+    ///
     void WriteParagraphData(ostream &) const;
     ///
     void resetPos(BufferView *);
@@ -127,7 +126,7 @@ protected:
     int SingleWidth(Painter &, LyXParagraph * par, int pos) const;
     ///
     LyXFont GetFont(LyXParagraph * par, int pos) const;
-    ///
+
     Buffer * buffer;
     ///
     LyXFont current_font;
@@ -141,6 +140,8 @@ protected:
     mutable int maxDescent;
     ///
     mutable int insetWidth;
+    ///
+    int widthOffset;
     ///
     bool autoBreakRows;
 
@@ -201,6 +202,8 @@ private:
     int actrow;
     ///
     bool no_selection;
+    ///
+    mutable float xpos;
     ///
     mutable bool init_inset;
     ///

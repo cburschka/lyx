@@ -355,7 +355,7 @@ void LyXText::OpenStuff()
 		 && cursor.par->GetInset(cursor.pos)->Editable()) {
 		owner_->owner()->getMiniBuffer()
 			->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
-		if (cursor.par->GetInset(cursor.pos)->Editable() != 2)
+		if (cursor.par->GetInset(cursor.pos)->Editable() != Inset::HIGHLY_EDITABLE)
 			SetCursorParUndo();
 		cursor.par->GetInset(cursor.pos)->Edit(owner_, 0, 0, 0);
 	} else {

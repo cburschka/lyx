@@ -68,7 +68,7 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
-	unsigned char Editable() const;
+	EDITABLE Editable() const;
 	///
 	Inset * Clone() const;
 	///

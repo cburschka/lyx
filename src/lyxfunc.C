@@ -44,6 +44,7 @@
 #include "insets/insettext.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
+#include "insets/insetfoot.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
@@ -1313,7 +1314,7 @@ string LyXFunc::Dispatch(int ac,
 		    && tmptext->cursor.par->GetChar(tmptext->cursor.pos)
 		    == LyXParagraph::META_INSET
 		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)
-		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)->Editable() == 2){
+		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)->Editable() == Inset::HIGHLY_EDITABLE){
 			Inset * tmpinset = tmptext->cursor.par->GetInset(tmptext->cursor.pos);
 			setMessage(tmpinset->EditMessage());
 			tmpinset->Edit(owner->view(), 0, 0, 0);
@@ -1341,7 +1342,7 @@ string LyXFunc::Dispatch(int ac,
 		    && txt->cursor.par->GetChar(txt->cursor.pos)
 		    == LyXParagraph::META_INSET
 		    && txt->cursor.par->GetInset(txt->cursor.pos)
-		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == 2) {
+		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == Inset::HIGHLY_EDITABLE) {
 			Inset * tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
 			setMessage(tmpinset->EditMessage());
 			tmpinset->Edit(owner->view(),
@@ -1926,6 +1927,12 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSET_ERT:
 	{
 		InsetERT * new_inset = new InsetERT(owner->buffer());
+		owner->view()->insertInset(new_inset);
+		new_inset->Edit(owner->view(), 0, 0, 0);
+	}
+	case LFUN_INSET_FOOTNOTE:
+	{
+		InsetFoot * new_inset = new InsetFoot(owner->buffer());
 		owner->view()->insertInset(new_inset);
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}

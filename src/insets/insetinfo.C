@@ -165,9 +165,9 @@ int InsetInfo::DocBook(ostream &) const
 #endif
 
 
-unsigned char InsetInfo::Editable() const
+Inset::EDITABLE InsetInfo::Editable() const
 {
-	return 1;
+	return IS_EDITABLE;
 }
 
 

@@ -1,0 +1,55 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *
+ *           Copyright (C) 1998 The LyX Team.
+ *
+ *======================================================
+ */
+// The pristine updatable inset: Text
+
+
+#ifndef INSETFOOT_H
+#define INSETFOOT_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include "insetcollapsable.h"
+
+
+class Painter;
+
+/** The footnote inset
+  
+*/
+class InsetFoot : public InsetCollapsable {
+public:
+    ///
+    InsetFoot(Buffer *);
+    ///
+    ~InsetFoot() {}
+    ///
+    InsetFoot * InsetFoot::Clone() const;
+    ///
+    Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
+#ifndef USE_OSTREAM_ONLY
+    ///
+    int Latex(string &, signed char) const;
+#endif
+    ///
+    int Latex(ostream &, signed char) const;
+    ///
+    void Write(ostream &) const;
+    ///
+    void Read(LyXLex &);
+    ///
+    const char * EditMessage() const;
+    ///
+    bool InsertInset(BufferView *, Inset * inset);
+};
+
+#endif

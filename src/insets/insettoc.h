@@ -36,8 +36,8 @@ public:
 	/// On edit, we open the TOC pop-up
 	void Edit(BufferView * bv, int, int, unsigned int);
         ///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
 	///
 	bool display() const { return true; }

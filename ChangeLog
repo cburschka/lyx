@@ -1,3 +1,20 @@
+2000-03-08  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/lyxinset.h: added owner call which tells us if
+	this inset is inside another inset. Changed also the return-type
+	of Editable to an enum so it tells clearer what the return-value is.
+
+	* src/insets/insettext.C (computeTextRows): fixed computing of
+	textinsets which split automatically on more rows.
+
+	* src/insets/insetert.[Ch]: changed this to be of BaseType
+	InsetCollapsable.
+
+	* src/insets/insetfoot.[Ch]: added footnote inset
+
+	* src/insets/insetcollapsable.[Ch]: added this BaseClass for
+ 	collapsable insets (like footnote, ert, ...)
+
 2000-03-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyxdraw.h: remvoe file

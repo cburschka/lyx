@@ -39,8 +39,8 @@ public:
         ///
 	void Edit(BufferView *, int x, int y, unsigned int button);
         ///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
 	///
 	struct Holder {
@@ -78,8 +78,8 @@ public:
         ///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
 	/// A user can't neither insert nor delete this inset
 	bool Deletable() const {
@@ -135,8 +135,8 @@ public:
 	///
 	string getKeys(char delim);
 	///
-	unsigned char Editable() const {
-		return 1;
+	EDITABLE Editable() const {
+		return IS_EDITABLE;
 	}
         ///
         bool addDatabase(string const &);

@@ -146,9 +146,9 @@ bool InsetError::AutoDelete() const
 }
 
 
-unsigned char InsetError::Editable() const
+Inset::EDITABLE InsetError::Editable() const
 {
-	return 1;
+	return IS_EDITABLE;
 }
 
 

@@ -1256,9 +1256,9 @@ void InsetFig::Validate(LaTeXFeatures & features) const
 }
 
 
-unsigned char InsetFig::Editable() const
+Inset::EDITABLE InsetFig::Editable() const
 {
-	return 1;
+	return IS_EDITABLE;
 }
 
 

@@ -68,7 +68,7 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	unsigned char Editable() const;
+	EDITABLE Editable() const;
 	///
 	Inset::Code LyxCode() const;
 	///
