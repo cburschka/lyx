@@ -165,7 +165,8 @@ void child_handler(int)
 	ForkedcallsController & fcc = ForkedcallsController::get();
 
 	// Be safe
-	if (fcc.current_child+1 >= fcc.reaped_children.size())
+	typedef vector<ForkedcallsController::Data>::size_type size_type;
+	if (size_type(fcc.current_child + 1) >= fcc.reaped_children.size())
 		return;
 
 	ForkedcallsController::Data & store =
@@ -260,8 +261,11 @@ void ForkedcallsController::handleCompletedProcesses()
 		Data & store = reaped_children[i];
 
 		if (store.pid == -1) {
-			lyxerr << "LyX: Error waiting for child: "
-			       << strerror(errno) << endl;
+			// Might happen perfectly innocently, eg as a result
+			// of the system (3) call.
+			if (errno)
+				lyxerr << "LyX: Error waiting for child: "
+				       << strerror(errno) << endl;
 			continue;
 		}
 

@@ -1,3 +1,10 @@
+2004-03-27  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcontr.C (child_handler): squash warning about a
+	signed/unsigned comparison.
+	(handleCompletedProcesses): only output a warning about an error
+	waiting for the child if it is indeed an error ;-)
+
 2004-03-26  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.[Ch] (run): new function, replacing runBlocking,
