@@ -18,8 +18,14 @@
  * are almost certainly incorrect for any other platform.
  */
 
+/* The above comment is almost certainly out of date. This file works
+ * on systems other than SGI MIPSpro C++ now.
+ */
+
 /*
  * Revision history:
+ * 21 Sep 2001:
+ *    Only include <cwchar> if BOOST_NO_CWCHAR is defined. (Darin Adler)
  * 10 Aug 2001:
  *    Added MIPS (big endian) to the big endian family. (Jens Maurer)
  * 13 Apr 2001:
@@ -27,7 +33,7 @@
  * 5 Apr 2001:
  *    Added sparc (big endian) processor support (John Maddock).
  * Initial sub:
- * 	Modified by Jens Maurer for gcc 2.95 on x86.
+ *      Modified by Jens Maurer for gcc 2.95 on x86.
  */
 
 #ifndef BOOST_SGI_CPP_LIMITS
@@ -35,9 +41,14 @@
 
 #include <climits>
 #include <cfloat>
-#include <cwchar>             // for WCHAR_MIN and WCHAR_MAX
 #include <boost/config.hpp>
 
+#ifndef BOOST_NO_CWCHAR
+#include <cwchar> // for WCHAR_MIN and WCHAR_MAX
+#endif
+
+// The macros are not named appropriately.  We don't care about integer
+// bit layout, but about floating-point NaN (etc.) bit patterns.
 #if defined(__sparc) || defined(__sparc__) || defined(__powerpc__) || defined(__ppc__) || defined(__hppa) || defined(_MIPSEB)
 #define BOOST_BIG_ENDIAN
 #elif defined(__i386__)
@@ -83,8 +94,16 @@ enum float_denorm_style {
   static const __mem_type __mem_name = __mem_value
 #endif /* BOOST_NO_INCLASS_MEMBER_INITIALIZATION */
 
-// Base class for all specializations of numeric_limits.
+// Deal with min/max for MinGW
+#ifdef min
+# undef min
+#endif
 
+#ifdef max
+# undef max
+#endif
+
+// Base class for all specializations of numeric_limits.
 template <class __number>
 class _Numeric_limits_base {
 public:
@@ -185,7 +204,7 @@ public:
     const unsigned int _S_word[4] = { 0, 0, 0, Word };
     return *reinterpret_cast<const Number*>(
         reinterpret_cast<const char *>(&_S_word)+16-
-		(sizeof(Number) == 12 ? 10 : sizeof(Number)));
+                (sizeof(Number) == 12 ? 10 : sizeof(Number)));
   } 
 };
 
@@ -274,24 +293,23 @@ class numeric_limits<unsigned char>
 {};
 
 #ifndef BOOST_NO_INTRINSIC_WCHAR_T
+template<>
+class numeric_limits<wchar_t>
 #if !defined(WCHAR_MAX) || !defined(WCHAR_MIN)
-#if !defined(_WIN32) && !defined(__CYGWIN__)
-template<>
-class numeric_limits<wchar_t>
-  : public _Integer_limits<wchar_t, INT_MIN, INT_MAX>
-{};
-#else
-template<>
-class numeric_limits<wchar_t>
+#if defined(_WIN32) || defined(__CYGWIN__)
   : public _Integer_limits<wchar_t, 0, USHRT_MAX>
-{};
+#elif defined(__hppa)
+// wchar_t has "unsigned int" as the underlying type
+  : public _Integer_limits<wchar_t, 0, UINT_MAX>
+#else
+// assume that wchar_t has "int" as the underlying type
+  : public _Integer_limits<wchar_t, INT_MIN, INT_MAX>
 #endif
 #else
-template<>
-class numeric_limits<wchar_t>
+// we have WCHAR_MIN and WCHAR_MAX defined, so use it
   : public _Integer_limits<wchar_t, WCHAR_MIN, WCHAR_MAX>
-{};
 #endif
+{};
 #endif
 
 template<>
@@ -329,14 +347,16 @@ class numeric_limits<unsigned long>
 // Some compilers have long long, but don't define the
 // LONGLONG_MIN and LONGLONG_MAX macros in limits.h.  This
 // assumes that long long is 64 bits.
-#if !defined(LONGLONG_MIN) && !defined(LONGLONG_MAX) \
-                           && !defined(ULONGLONG_MAX)
+#if !defined(LONGLONG_MAX) && !defined(ULONGLONG_MAX)
 
-#define ULONGLONG_MAX 0xffffffffffffffffLLU
-#define LONGLONG_MAX 0x7fffffffffffffffLL
-#define LONGLONG_MIN (-LONGLONG_MAX - 1)
+# define ULONGLONG_MAX 0xffffffffffffffffLLU
+# define LONGLONG_MAX 0x7fffffffffffffffLL
 
 #endif
+
+#if !defined(LONGLONG_MIN)
+# define LONGLONG_MIN (-LONGLONG_MAX - 1)
+#endif 
 
 template<>
 class numeric_limits<long long>

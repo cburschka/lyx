@@ -41,6 +41,15 @@ template <typename T>
 struct is_same<T, T>
 { BOOST_STATIC_CONSTANT(bool, value = true); };
 
+#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+//  A definition is required even for integral static constants
+template <typename T, typename U>
+const bool is_same<T, U>::value;
+
+template <typename T>
+const bool is_same<T, T>::value;
+#endif
+
 #else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 #ifdef BOOST_MSVC
@@ -68,8 +77,8 @@ struct is_same {
 
 namespace detail{
    template <class T>
-   ::boost::type_traits::yes_type is_same_helper(T*, T*);
-   ::boost::type_traits::no_type is_same_helper(...);
+   ::boost::type_traits::yes_type BOOST_TT_DECL is_same_helper(T*, T*);
+   ::boost::type_traits::no_type BOOST_TT_DECL is_same_helper(...);
 }
 
 template <typename T, typename U>

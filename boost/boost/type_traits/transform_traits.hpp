@@ -69,7 +69,7 @@ struct add_reference
 template <typename T>
 struct add_reference<T&>
 { typedef T& type; };
-#elif defined(BOOST_MSVC6_MEMBER_TEMPLATES) || !defined(BOOST_NO_MEMBER_TEMPLATES)
+#elif defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 namespace detail{
 
 template <bool x>
@@ -175,9 +175,8 @@ struct add_pointer
 {
 private:
    typedef typename remove_reference<T>::type no_ref_type;
-   typedef typename remove_bounds<no_ref_type>::type no_b_type;
 public:
-   typedef no_b_type* type;
+   typedef no_ref_type* type;
 };
 
 } // namespace boost

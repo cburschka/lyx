@@ -54,8 +54,8 @@ namespace detail{
   struct from_not_void_conversion {
     template <class From, class To>
     struct n_bind {
-      static no_type _m_check(...);
-      static yes_type _m_check(To);
+      static no_type BOOST_TT_DECL _m_check(...);
+      static yes_type BOOST_TT_DECL _m_check(To);
     public:
       void foo(); // avoid warning about all members being private
       static From _m_from;
@@ -83,7 +83,7 @@ template <class From, class To>
 struct is_convertible
 {
  typedef typename detail::conversion_helper<From>::type Selector;
- typedef Selector::template n_bind<From,To> Conversion;
+ typedef typename Selector::template n_bind<From,To> Conversion;
 public:
  enum { value = Conversion::exists };
 };
@@ -95,49 +95,24 @@ public:
 // UDT conversions:
 //
 template <class From, class To>
-struct is_convertible_helper
+struct is_convertible
 {
 private:
+#pragma option push -w-8074
    // This workaround for Borland breaks the EDG C++ frontend,
    // so we only use it for Borland.
    template <class T>
    struct checker
    {
-      static type_traits::no_type _m_check(...);
-      static type_traits::yes_type _m_check(T);
+      static type_traits::no_type BOOST_TT_DECL _m_check(...);
+      static type_traits::yes_type BOOST_TT_DECL _m_check(T);
    };
    static From _m_from;
 public:
    static const bool value = sizeof( checker<To>::_m_check(_m_from) ) == sizeof(type_traits::yes_type);
 
    void foo(); // avoid warning about all members being private
-};
-
-template <class From, class To>
-struct is_convertible
-{
-private:
-   typedef is_convertible_helper<From, To> c_type;
-   enum{ v = c_type::value };
-   char force_it[v ? 1 : 2];
-public:
-   static const bool value = is_convertible_helper<From, To>::value;
-};
-
-template <class From>
-struct is_convertible<From, void>
-{
-   static const bool value = false;
-};
-template <class To>
-struct is_convertible<void, To>
-{
-   static const bool value = false;
-};
-template <>
-struct is_convertible<void, void>
-{
-   static const bool value = true;
+#pragma option pop
 };
 
 #elif defined(__GNUC__)
@@ -170,57 +145,181 @@ public:
    void foo(); // avoid warning about all members being private
 };
 
-template <class From>
-struct is_convertible<From, void>
-{
-   static const bool value = false;
-};
-template <class To>
-struct is_convertible<void, To>
-{
-   static const bool value = false;
-};
-template <>
-struct is_convertible<void, void>
-{
-   static const bool value = true;
-};
+// Declare specializations of is_convertible for all of the floating
+// types to all of the integral types. This suppresses some nasty
+// warnings
 
+# define BOOST_IS_CONVERTIBLE(T1,T2) template<>struct is_convertible<T1,T2>{static const bool value=true;};
+# define BOOST_IS_CONVERTIBLE2(T1,T2)        \
+        BOOST_IS_CONVERTIBLE(T1,signed T2)   \
+        BOOST_IS_CONVERTIBLE(T1,unsigned T2)
+            
+# define BOOST_FLOAT_IS_CONVERTIBLE(F)  \
+   BOOST_IS_CONVERTIBLE(F,char)         \
+   BOOST_IS_CONVERTIBLE2(F,char)        \
+   BOOST_IS_CONVERTIBLE2(F,short)       \
+   BOOST_IS_CONVERTIBLE2(F,int)         \
+   BOOST_IS_CONVERTIBLE2(F,long)        \
+   BOOST_IS_CONVERTIBLE2(F,long long)
+
+BOOST_FLOAT_IS_CONVERTIBLE(float)
+BOOST_FLOAT_IS_CONVERTIBLE(double)
+BOOST_FLOAT_IS_CONVERTIBLE(long double)
+BOOST_FLOAT_IS_CONVERTIBLE(float const)
+BOOST_FLOAT_IS_CONVERTIBLE(double const)
+BOOST_FLOAT_IS_CONVERTIBLE(long double const)
+BOOST_FLOAT_IS_CONVERTIBLE(float volatile)
+BOOST_FLOAT_IS_CONVERTIBLE(double volatile)
+BOOST_FLOAT_IS_CONVERTIBLE(long double volatile)
+BOOST_FLOAT_IS_CONVERTIBLE(float const volatile)
+BOOST_FLOAT_IS_CONVERTIBLE(double const volatile)
+BOOST_FLOAT_IS_CONVERTIBLE(long double const volatile)
+# undef BOOST_FLOAT_IS_CONVERTIBLE
+# undef BOOST_IS_CONVERTIBLE2
+# undef BOOST_IS_CONVERTIBLE
 #else
 
 template <class From, class To>
 struct is_convertible
 {
 private:
-   static type_traits::no_type _m_check(...);
-   static type_traits::yes_type _m_check(To);
+   static type_traits::no_type BOOST_TT_DECL _m_check(...);
+   static type_traits::yes_type BOOST_TT_DECL _m_check(To);
    static From _m_from;
 public:
    BOOST_STATIC_CONSTANT(bool, value = sizeof( _m_check(_m_from) ) == sizeof(type_traits::yes_type));
    void foo(); // avoid warning about all members being private
 };
 
+#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+//  A definition is required even for integral static constants
+template <class From, class To>
+const bool is_convertible<From, To>::value;
+#endif
+
+
+#endif // is_convertible
+
+//
+// Now add the full and partial specialisations
+// for void types, these are common to all the
+// implementation above:
+//
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 template <class From>
 struct is_convertible<From, void>
 {
    BOOST_STATIC_CONSTANT(bool, value = false);
 };
+#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
+template <class From>
+struct is_convertible<From, const void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+template <class From>
+struct is_convertible<From, volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+template <class From>
+struct is_convertible<From, const volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+#endif // BOOST_NO_CV_VOID_SPECIALIZATIONS
 
 template <class To>
 struct is_convertible<void, To>
 {
    BOOST_STATIC_CONSTANT(bool, value = false);
 };
+#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
+template <class To>
+struct is_convertible<const void, To>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+template <class To>
+struct is_convertible<volatile void, To>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+template <class To>
+struct is_convertible<const volatile void, To>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+#endif
+#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 template <>
 struct is_convertible<void, void>
 {
    BOOST_STATIC_CONSTANT(bool, value = true);
 };
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-#endif // is_convertible
+#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
+template <>
+struct is_convertible<void, const void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<void, volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<void, const volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<const void, const void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<const void, volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<const void, const volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<volatile void, const void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<volatile void, volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<volatile void, const volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<const volatile void, const void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<const volatile void, volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+template <>
+struct is_convertible<const volatile void, const volatile void>
+{
+   BOOST_STATIC_CONSTANT(bool, value = true);
+};
+#endif
 
 } // namespace boost
 

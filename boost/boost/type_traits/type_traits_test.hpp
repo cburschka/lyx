@@ -11,7 +11,9 @@
 #define BOOST_TYPE_TRAITS_TEST_HPP
 #include <iostream>
 #include <typeinfo>
+#include <boost/config.hpp>
 #include <boost/utility.hpp>
+#include <boost/type_traits/alignment_traits.hpp>
 //
 // define tests here
 unsigned failures = 0;
@@ -34,14 +36,16 @@ int check_result(int argc, char** argv)
       << failures << " failures found, "
       << expected_failures << " failures expected from this compiler." << std::endl;
    if((argc == 2) 
-   	&& (argv[1][0] == '-')
-   	&& (argv[1][1] == 'a')
-   	&& (argv[1][2] == 0))
+      && (argv[1][0] == '-')
+      && (argv[1][1] == 'a')
+      && (argv[1][2] == 0))
    {
       std::cout << "Press any key to continue...";
       std::cin.get();
    }
-   return (failures == expected_failures) ? 0 : failures;
+   return (failures == expected_failures)
+       ? 0
+       : (failures != 0) ? static_cast<int>(failures) : -1;
 }
 
 
@@ -72,28 +76,23 @@ struct checker<false>
    }
 };
 
+template <class T>
+struct typify{};
+
 template <class T, class U>
 struct type_checker
 {
-   static void check(const char* TT, const char* TU, const char* expression)
+   static void check(const char* TT, const char*, const char* expression)
    {
       ++test_count;
-#ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-      if((typeid(T) != typeid(U))
-         || (::boost::is_reference<T>::value != ::boost::is_reference<U>::value)
-         || (::boost::is_const<T>::value != ::boost::is_const<U>::value)
-         || (::boost::is_volatile<T>::value != ::boost::is_volatile<U>::value))
+      if(typeid(typify<T>) != typeid(typify<U>))
       {
-#endif
          ++failures;
          std::cout << "checking type of " << expression << "...failed" << std::endl;
-         std::cout << "   expected type was " << TT << std::endl;
-         std::cout << "   typeid(" << TT << ") was: " << typeid(T).name() << std::endl;
-         std::cout << "   typeid(" << TU << ") was: " << typeid(U).name() << std::endl;
-         std::cout << "   In template class " << typeid(type_checker<T,U>).name() << std::endl;
-#ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+         std::cout << "   evaluating:  type_checker<" << TT << "," << expression << ">" << std::endl;
+         std::cout << "   expected:    type_checker<" << TT << "," << TT << ">" << std::endl;
+         std::cout << "   but got:     " << typeid(type_checker<T,U>).name() << std::endl;
       }
-#endif
    }
 };
 
@@ -115,6 +114,7 @@ struct type_checker<T,T>
 #define value_fail(v, x) \
       ++test_count; \
       ++failures; \
+      ++expected_failures;\
       std::cout << "checking value of " << #x << "...failed" << std::endl; \
       std::cout << "   " #x " does not compile on this compiler" << std::endl;
 
@@ -197,6 +197,29 @@ struct test_align<T&>
 
 #define align_test(T) test_align<T>::do_it()
 
+template<class T>
+struct test_type_with_align 
+{
+  typedef typename boost::type_with_alignment<
+                     (boost::alignment_of<T>::value)>::type 
+    align_t;
+
+  static void do_it()
+  {
+    int align = boost::alignment_of<T>::value;
+    int new_align = boost::alignment_of<align_t>::value;
+    ++test_count;
+    if (new_align % align != 0) {
+      ++failures;
+      std::cerr << "checking for an object with same alignment as " 
+      << typeid(T).name() << "...failed" << std::endl;
+      std::cerr << "\tfound: " << typeid(align_t).name() << std::endl;
+    }
+  }
+};
+
+#define type_with_align_test(T) test_type_with_align<T>::do_it()
+
 //
 // the following code allows us to test that a particular
 // template functions correctly when instanciated inside another template
@@ -267,18 +290,32 @@ typedef int (UDT::*mf2)();
 typedef int (UDT::*mf3)(int);
 typedef int (UDT::*mf4)(int, float);
 typedef int (UDT::*mp);
+typedef int (UDT::*cmf)(int) const;
 
 // cv-qualifiers applied to reference types should have no effect
 // declare these here for later use with is_reference and remove_reference:
 # ifdef BOOST_MSVC
 #  pragma warning(push)
 #  pragma warning(disable: 4181)
-# endif // BOOST_MSVC
+# elif defined(__ICL)
+#  pragma warning(push)
+#  pragma warning(disable: 21)
+# endif
+//
+// This is intentional:
+// r_type and cr_type should be the same type
+// but some compilers wrongly apply cv-qualifiers
+// to reference types (this may generate a warning
+// on some compilers):
+//
 typedef int& r_type;
 typedef const r_type cr_type;
 # ifdef BOOST_MSVC
 #  pragma warning(pop)
-# endif // BOOST_MSVC
+# elif defined(__ICL)
+#  pragma warning(pop)
+#  pragma warning(disable: 985) // identifier truncated in debug information
+# endif
 
 struct POD_UDT { int x; };
 struct empty_UDT
@@ -313,7 +350,7 @@ union empty_POD_union_UDT{};
 
 class Base { };
 
-class Deriverd : public Base { };
+class Derived : public Base { };
 
 class NonDerived { };
 
@@ -363,7 +400,7 @@ struct int_convertible
 // used to verify that is_empty does not emit
 // spurious warnings or errors.
 //
-struct non_empty : boost::noncopyable
+struct non_empty : private boost::noncopyable
 {
    int i;
 };
@@ -381,8 +418,12 @@ struct test_abc2
    virtual void foo2() = 0;
 };
 
+struct incomplete_type;
+
 
 #endif // BOOST_TYPE_TRAITS_TEST_HPP
+
+
 
 
 

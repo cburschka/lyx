@@ -1,8 +1,9 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
+//  Hinnant & John Maddock 2000.  Permission to copy, use, modify,
+//  sell and distribute this software is granted provided this
+//  copyright notice appears in all copies. This software is provided
+//  "as is" without express or implied warranty, and with no claim as
+//  to its suitability for any purpose.
 //
 //  See http://www.boost.org for most recent version including documentation.
 //
@@ -22,6 +23,15 @@
 #ifndef BOOST_FWD_TYPE_TRAITS_HPP
 #include <boost/type_traits/fwd.hpp>
 #endif
+#ifndef BOOST_TT_REFERENCE_TRAITS_HPP
+# include <boost/type_traits/reference_traits.hpp>
+#endif
+#ifndef BOOST_TT_ARRAY_TRAITS_HPP
+# include <boost/type_traits/array_traits.hpp>
+#endif
+#ifndef BOOST_TT_UTILITY_HPP
+# include <boost/type_traits/utility.hpp>
+#endif 
 
 namespace boost{
 
@@ -179,13 +189,47 @@ namespace detail{
    no_type is_volatile_helper(const void *);
 }
 
+namespace detail
+{
+  template <bool is_ref = true, bool array>
+  struct is_const_impl
+      : ::boost::type_traits::false_unary_metafunction
+  {};
+
+  template <>
+  struct is_const_impl<false,false>
+  {
+      template <class T>
+      struct apply
+      {
+       private:
+          static T* t;
+       public:
+          BOOST_STATIC_CONSTANT(bool, value = (sizeof(detail::yes_type) == sizeof(detail::is_const_helper(t))));
+      };      
+  };
+
+  template <>
+  struct is_const_impl<false,true>
+  {
+      template <class T>
+      struct apply
+      {
+       private:
+          static T t;
+       public:
+          BOOST_STATIC_CONSTANT(bool, value = (sizeof(detail::yes_type) == sizeof(detail::is_const_helper(&t))));
+      };      
+  };
+}
+
 template <typename T>
 struct is_const
+    : ::boost::detail::is_const_impl<
+          is_reference<T>::value
+        , is_array<T>::value
+     >::template apply<T>
 { 
-private:
-   static T t;
-public:
-   BOOST_STATIC_CONSTANT(bool, value = (sizeof(detail::yes_type) == sizeof(detail::is_const_helper(&t))));
 };
 
 template <>
@@ -211,14 +255,49 @@ struct is_const<const volatile void>
 };
 #endif
 
+namespace detail
+{
+  template <bool is_ref = true, bool array>
+  struct is_volatile_impl
+      : ::boost::type_traits::false_unary_metafunction
+  {};
+
+  template <>
+  struct is_volatile_impl<false,false>
+  {
+      template <class T>
+      struct apply
+      {
+       private:
+          static T* t;
+       public:
+          BOOST_STATIC_CONSTANT(bool, value = (sizeof(detail::yes_type) == sizeof(detail::is_volatile_helper(t))));
+      };      
+  };
+
+  template <>
+  struct is_volatile_impl<false,true>
+  {
+      template <class T>
+      struct apply
+      {
+       private:
+          static T t;
+       public:
+          BOOST_STATIC_CONSTANT(bool, value = (sizeof(detail::yes_type) == sizeof(detail::is_volatile_helper(&t))));
+      };      
+  };
+}
+
 template <typename T>
 struct is_volatile
-{
-private:
-   static T t;
-public:
-   BOOST_STATIC_CONSTANT(bool, value = (sizeof(detail::yes_type) == sizeof(detail::is_volatile_helper(&t))));
+    : ::boost::detail::is_volatile_impl<
+          is_reference<T>::value
+        , is_array<T>::value
+     >::template apply<T>
+{ 
 };
+
 
 template <>
 struct is_volatile<void>
@@ -252,7 +331,17 @@ struct is_volatile<const volatile void>
 template <typename T>
 struct add_const
 {
+#if defined(BOOST_MSVC)
+    // This bogus warning will appear when add_const is applied to a
+    // const volatile reference because we can't detect const volatile
+    // references with MSVC6.
+# pragma warning(push)
+# pragma warning(disable:4181) // warning C4181: qualifier applied to reference type ignored
+#endif 
    typedef T const type;
+#if defined(BOOST_MSVC)
+# pragma warning(pop)
+#endif 
 };
 // * convert a type T to volatile type - add_volatile<T>
 // this is not required since the result is always
@@ -261,13 +350,44 @@ struct add_const
 template <typename T>
 struct add_volatile
 {
+#if defined(BOOST_MSVC)
+    // This bogus warning will appear when add_volatile is applied to a
+    // const volatile reference because we can't detect const volatile
+    // references with MSVC6.
+# pragma warning(push)
+# pragma warning(disable:4181) // warning C4181: qualifier applied to reference type ignored
+#endif 
    typedef T volatile type;
+#if defined(BOOST_MSVC)
+# pragma warning(pop)
+#endif 
+};
+// * convert a type T to a const volatile type - add_cv<T>
+// this is not required since the result is always
+// the same as "T const volatile", but it does suppress warnings
+// from some compilers:
+template <typename T>
+struct add_cv
+{
+#if defined(BOOST_MSVC)
+    // This bogus warning will appear when add_volatile is applied to a
+    // const volatile reference because we can't detect const volatile
+    // references with MSVC6.
+# pragma warning(push)
+# pragma warning(disable:4181) // warning C4181: qualifier applied to reference type ignored
+#endif 
+   typedef T const volatile type;
+#if defined(BOOST_MSVC)
+# pragma warning(pop)
+#endif 
 };
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 template <class T>
 struct add_const<T&>{ typedef T& type; };
 template <class T>
 struct add_volatile<T&>{ typedef T& type; };
+template <class T>
+struct add_cv<T&>{ typedef T& type; };
 #endif
 
 } // namespace boost

@@ -10,48 +10,17 @@
 
 //  Classes appear in alphabetical order
 
-//  Revision History
-//  21 May 01  checked_delete() and checked_array_delete() added (Beman Dawes,
-//             suggested by Dave Abrahams, generalizing idea from Vladimir Prus)
-//  21 May 01  made next() and prior() inline (Beman Dawes)  
-//  26 Jan 00  protected noncopyable destructor added (Miki Jovanovic)
-//  10 Dec 99  next() and prior() templates added (Dave Abrahams)
-//  30 Aug 99  moved cast templates to cast.hpp (Beman Dawes)
-//   3 Aug 99  cast templates added
-//  20 Jul 99  name changed to utility.hpp 
-//   9 Jun 99  protected noncopyable default ctor
-//   2 Jun 99  Initial Version. Class noncopyable only contents (Dave Abrahams)
-
 #ifndef BOOST_UTILITY_HPP
 #define BOOST_UTILITY_HPP
 
-#include <boost/config.hpp>        // broken compiler workarounds 
-#include <boost/static_assert.hpp> 
-#include <cstddef>                 // for size_t
-#include <utility>                 // for std::pair
+// certain headers are part of the <utility.hpp> interface
+
+#include <boost/checked_delete.hpp>
+#include <boost/utility/base_from_member.hpp>  
+#include <boost/utility/addressof.hpp>
 
 namespace boost
 {
-//  checked_delete() and checked_array_delete()  -----------------------------//
-
-    // verify that types are complete for increased safety
-
-    template< typename T >
-    inline void checked_delete(T * x)
-    {
-        BOOST_STATIC_ASSERT( sizeof(T) != 0 ); // assert type complete at point
-                                               // of instantiation
-        delete x;
-    }
-
-    template< typename T >
-    inline void checked_array_delete(T  * x)
-    {
-        BOOST_STATIC_ASSERT( sizeof(T) != 0 ); // assert type complete at point
-                                               // of instantiation
-        delete [] x;
-    }
-
 //  next() and prior() template functions  -----------------------------------//
 
     //  Helper functions for classes like bidirectional iterators not supporting
