@@ -1,3 +1,7 @@
+2001-03-23  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* ControlCredits.C (getCredits): add std:: on vector
+
 2001-03-22  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* ControlCredits.C: remove using that is only used once, use

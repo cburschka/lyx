@@ -32,13 +32,13 @@ ControlCredits::ControlCredits(LyXView & lv, Dialogs & d)
 }
 
 
-vector<string> const ControlCredits::getCredits() const
+std::vector<string> const ControlCredits::getCredits() const
 {
 	std::vector<string> data;
 
 	string const name = FileSearch(system_lyxdir, "CREDITS");
 
-	bool found = (!name.empty());
+	bool found(!name.empty());
 
 #warning what are you really doing here... (Lgb)
 	// why not just send a stringstream to the calling func?
