@@ -1305,7 +1305,9 @@ bool MathCursor::script(bool up)
 
 bool MathCursor::interpret(char c)
 {
-	//lyxerr << "interpret 2: '" << c << "'\n";
+
+	// Removed super/subscript handling from here  to ::script -MV
+
 	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
@@ -1410,8 +1412,8 @@ bool MathCursor::interpret(char c)
 	}
 
 	// no special circumstances, so insert the character without any fuss
-	lastcode_ = LM_TC_MIN;
 	insert(c, lastcode_);
+	lastcode_ = LM_TC_MIN;
 	return true;
 }
 
