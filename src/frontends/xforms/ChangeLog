@@ -1,3 +1,7 @@
+2002-10-14  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FontInfo.C (query): Ignore bogus matches of scalable fonts.
+
 2002-10-08  Angus Leeming  <leeming@lyx.org>
 
 	* FeedbackController.C (PrehandlerCB):
