@@ -347,6 +347,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	setState();
 	AllowInput(bv_);
 
+	/// clear the "Formatting Document" message 
+	owner_->message("");
+ 
 	/// get rid of the splash screen if it's not gone already
 	owner_->getDialogs()->destroySplash();
  
@@ -3199,7 +3202,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_UNKNOWN_ACTION:
-		owner_->getLyXFunc()->setErrorMessage(N_("Unknow function!"));
+		owner_->getLyXFunc()->setErrorMessage(N_("Unknown function!"));
 		break;
 	
 	default:

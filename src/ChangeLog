@@ -1,3 +1,13 @@
+2001-06-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* tex-defs.h: remove old unused file
+	 
+2001-06-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: fix typo, remove minibuffer message
+	  when buffer has loaded
+
 2001-06-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxfunc.C (Dispatch): use stringstream

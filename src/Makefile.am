@@ -185,7 +185,6 @@ lyx_SOURCES = \
 	tabular-old.C \
 	tex-accent.C \
 	tex-accent.h \
-	tex-defs.h \
 	tex-strings.C \
 	tex-strings.h \
 	texrow.C \
