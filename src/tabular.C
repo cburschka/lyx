@@ -54,6 +54,13 @@ namespace {
 
 int const WIDTH_OF_LINE = 5;
 
+template <class T>
+string const write_attribute(string const & name, T const & t)
+{
+	string const s = tostr(t);
+	return s.empty() ? s : " " + name + "=\"" + s + "\"";
+}
+
 string const write_attribute(string const & name, string const & t)
 {
 	return t.empty() ? t : " " + name + "=\"" + t + "\"";

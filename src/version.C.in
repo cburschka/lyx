@@ -15,8 +15,5 @@ char const * lyx_version = "@VERSION@";
 ///
 char const * lyx_release_date = "Thu, Jan 30, 2003";
 
-/// This version string is intended to be used in files created by LyX
-char const * lyx_docversion = "LyX 1.4";
-
 /// This is the version information shown by 'lyx -version'
 char const * lyx_version_info = "@VERSION_INFO@";

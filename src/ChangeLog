@@ -1,3 +1,14 @@
+2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer.C (do_writeFile, makeLaTeXFile, makeLinuxDocFile,
+	makeDocBookFile): put the real LyX version in the first line of
+	the file
+
+	* version.h: 
+	* version.C.in: remove lyx_docversion
+
+	* tabular.C (write_attribute): add a template-based version to
+	write enums properly
 
 2003-07-28  André Pönitz  <poenitz@gmx.net>
 
@@ -15,7 +26,6 @@
 	* buffer.C (writeFile): add some compression stuff
 	(do_writeFile): new func, dont call expliti close... will this
 	breake anything?
-
 
 	* Makefile.am (lyx_LDADD): add -lz
 
