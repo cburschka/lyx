@@ -13,7 +13,7 @@
 #include <vector>
 #include <boost/smart_ptr.hpp>
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma interface
 #endif
 

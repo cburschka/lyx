@@ -9,7 +9,7 @@
 
 #include <vector>
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma implementation
 #endif
 

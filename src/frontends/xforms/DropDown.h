@@ -10,7 +10,7 @@
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma interface
 #endif
 

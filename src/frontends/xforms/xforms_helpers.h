@@ -10,7 +10,7 @@
 #ifndef XFORMSHELPERS_H
 #define XFORMSHELPERS_H
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma interface
 #endif
 

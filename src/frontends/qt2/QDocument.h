@@ -18,7 +18,7 @@
 #include "Qt2BC.h"
 #include "QtLyXView.h"
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma interface
 #endif
 

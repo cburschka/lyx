@@ -11,7 +11,7 @@
 #include FORMS_H_LOCATION
 #include XPM_H_LOCATION
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma implementation
 #endif
 

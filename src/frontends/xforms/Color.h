@@ -15,7 +15,7 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#ifdef __GNUG_
+#ifdef __GNUG__
 #pragma interface
 #endif
 
