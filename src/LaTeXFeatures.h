@@ -33,16 +33,16 @@ struct Language;
   in buffer.C and paragraph.C when you do so. */
 struct LaTeXFeatures {
 	///
-	explicit LaTeXFeatures(int n) ;
+	LaTeXFeatures(BufferParams const &, int n) ;
 	/// The packaes needed by the document
-	string getPackages(BufferParams const & params);
+	string getPackages();
 	/// The macros definitions needed by the document
-	string getMacros(BufferParams const & params);
+	string getMacros();
 	/// The definitions needed by the document's textclass
-	string getTClassPreamble(BufferParams const & params);
+	string getTClassPreamble();
 
 	///
-	void showStruct(BufferParams const & params);
+	void showStruct();
 
 	//@Man: Packages
 	//@{
@@ -137,6 +137,9 @@ struct LaTeXFeatures {
 	///
 	LanguageList UsedLanguages;
 	//@}
+	BufferParams const & bufferParams() const;
+private:
+	BufferParams const & params;
 };
 
 #endif

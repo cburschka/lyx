@@ -25,8 +25,8 @@
 
 using std::endl;
 
-LaTeXFeatures::LaTeXFeatures(int n)
-	: layout(n, false)
+LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
+	: layout(n, false), params(p)
 {
 	// packages
 	color = false;
@@ -70,10 +70,11 @@ LaTeXFeatures::LaTeXFeatures(int n)
 }
 
 
-string LaTeXFeatures::getPackages(BufferParams const & params)
+string LaTeXFeatures::getPackages()
 {
 	string packages;
-	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass =
+		textclasslist.TextClass(params.textclass);
 
 	// color.sty
 	if (color) {
@@ -127,8 +128,6 @@ string LaTeXFeatures::getPackages(BufferParams const & params)
 		packages += "\\doublespacing\n";
 		break;
 	case Spacing::Other:
-		//char value[30];
-		//sprintf(value, "%.2f", params.spacing.getValue());
 #ifdef HAVE_SSTREAM
 		std::ostringstream value;
 #else
@@ -185,7 +184,7 @@ string LaTeXFeatures::getPackages(BufferParams const & params)
 }
 
 
-string LaTeXFeatures::getMacros(BufferParams const & /* params */)
+string LaTeXFeatures::getMacros()
 {
 	string macros;
 
@@ -236,10 +235,11 @@ string LaTeXFeatures::getMacros(BufferParams const & /* params */)
 }
 
 
-string LaTeXFeatures::getTClassPreamble(BufferParams const & params)
+string LaTeXFeatures::getTClassPreamble()
 {
 	// the text class specific preamble 
-	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass =
+		textclasslist.TextClass(params.textclass);
 	string tcpreamble = tclass.preamble();
 
 	for (unsigned int i = 0; i < tclass.numLayouts(); ++i) {
@@ -252,11 +252,16 @@ string LaTeXFeatures::getTClassPreamble(BufferParams const & params)
 }	
 
 
-void LaTeXFeatures::showStruct(BufferParams const & params) {
+void LaTeXFeatures::showStruct() {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
-	// packs
-	       << "\n***** Packages:" << getPackages(params)
-	       << "\n***** Macros:" << getMacros(params)
-	       << "\n***** Textclass stuff:" << getTClassPreamble(params)
+	       << "\n***** Packages:" << getPackages()
+	       << "\n***** Macros:" << getMacros()
+	       << "\n***** Textclass stuff:" << getTClassPreamble()
 	       << "\n***** done." << endl;
+}
+
+
+BufferParams const & LaTeXFeatures::bufferParams() const
+{
+	return params;
 }

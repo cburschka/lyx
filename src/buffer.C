@@ -1653,7 +1653,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(tclass.numLayouts());
+	LaTeXFeatures features(params, tclass.numLayouts());
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 	
@@ -1973,13 +1973,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 		string preamble, tmppreamble;
 
 		// The optional packages;
-		preamble = features.getPackages(params);
+		preamble = features.getPackages();
 
 		// this might be useful...
 		preamble += "\n\\makeatletter\n\n";
 
 		// Some macros LyX will need
-		tmppreamble = features.getMacros(params);
+		tmppreamble = features.getMacros();
 
 		if (!tmppreamble.empty()) {
 			preamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
@@ -1988,7 +1988,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 
 		// the text class specific preamble 
-		tmppreamble = features.getTClassPreamble(params);
+		tmppreamble = features.getTClassPreamble();
 		if (!tmppreamble.empty()) {
 			preamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 				"Textclass specific LaTeX commands.\n"
@@ -3721,7 +3721,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 	}
 	
 	if (lyxerr.debugging(Debug::LATEX)) {
-		features.showStruct(params);
+		features.showStruct();
 	}
 }
 
@@ -3924,4 +3924,26 @@ void Buffer::Dispatch(int action, string const & argument)
 		break;
 
 	} // end of switch
+}
+
+void Buffer::ChangeLanguage(Language const * from, Language const * to)
+{
+
+	LyXParagraph * par = paragraph;
+	while (par) {
+		par->ChangeLanguage(from,to);
+		par = par->next;
+	}
+}
+
+bool Buffer::isMultiLingual()
+{
+
+	LyXParagraph * par = paragraph;
+	while (par) {
+		if (par->isMultiLingual())
+			return true;
+		par = par->next;
+	}
+	return false;
 }

@@ -244,10 +244,10 @@ void BufferView::insertInset(Inset * inset, string const & lout,
 	// and cannot do this as the cursor is behind the inset and GetInset
 	// does not return the inset!
 	if (inset->IsTextInset()) {
-		if (text->cursor.par->getParDirection()==LYX_DIR_LEFT_TO_RIGHT)
-			text->CursorLeft();
-		else
+		if (text->cursor.par->isRightToLeftPar())
 			text->CursorRight();
+		else
+			text->CursorLeft();
 	}
 #endif
 	update(-1);

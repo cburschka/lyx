@@ -135,7 +135,7 @@ enum LyXRCTags {
 	RC_MAKE_BACKUP,
 	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
-	RC_NUMBER_INSET,
+	RC_AUTO_NUMBER,
 	RC_LANGUAGE_PACKAGE,
 	RC_LANGUAGE_AUTO_BEGIN,
 	RC_LANGUAGE_AUTO_END,
@@ -165,6 +165,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\alternate_language", RC_ALT_LANG },
 	{ "\\ascii_linelen", RC_ASCII_LINELEN },
 	{ "\\ascii_roff_command", RC_ASCIIROFF_COMMAND },
+	{ "\\auto_number", RC_AUTO_NUMBER },
 	{ "\\auto_region_delete", RC_AUTOREGIONDELETE },
 	{ "\\autosave", RC_AUTOSAVE },
 	{ "\\background_color", RC_BACKGROUND_COLOR },
@@ -212,7 +213,6 @@ keyword_item lyxrcTags[] = {
         { "\\literate_extension", RC_LITERATE_EXTENSION },
 	{ "\\make_backup", RC_MAKE_BACKUP },
 	{ "\\num_lastfiles", RC_NUMLASTFILES },
-	{ "\\number_inset", RC_NUMBER_INSET },
 	{ "\\pdf_mode", RC_PDF_MODE },
 	{ "\\pdf_to_ps_command", RC_PDF_TO_PS_COMMAND },
 	{ "\\pdflatex_command", RC_PDFLATEX_COMMAND },
@@ -363,7 +363,7 @@ void LyXRC::setDefaults() {
 	use_kbmap = false;
 	hasBindFile = false;
 	rtl_support = false;
-	number_inset = "rtl";
+	auto_number = true;
 	language_package = "\\usepackage{babel}";
 	language_auto_begin = true;
 	language_auto_end = true;
@@ -1002,9 +1002,9 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				rtl_support = lexrc.GetBool();
 			break;
-		case RC_NUMBER_INSET:
+		case RC_AUTO_NUMBER:
 			if (lexrc.next())
-				number_inset = lowercase(lexrc.GetString());
+				auto_number = lexrc.GetBool();
 			break;
 		case RC_SHOW_BANNER:
 			if (lexrc.next())
@@ -1327,8 +1327,8 @@ void LyXRC::output(ostream & os) const
 		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
 	case RC_RTL_SUPPORT:
 		os << "\\rtl " << tostr(rtl_support) << "\n";
-	case RC_NUMBER_INSET:
-		os << "\\number_inset " << number_inset << "\n";
+	case RC_AUTO_NUMBER:
+		os << "\\auto_number" << tostr(auto_number) << "\n";
 	case RC_LANGUAGE_AUTO_BEGIN:
 		os << "\\language_auto_begin " 
 		   << tostr(language_auto_begin) << "\n";

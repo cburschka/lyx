@@ -51,10 +51,16 @@ public:
 		FORM_FINAL
 	};
 
+	/// Constructor
+	LyXText(BufferView *, int paperwidth, Buffer *);
+   
+	/// Destructor
+	~LyXText();
+
 	/// points to Buffer.params
-	BufferParams * parameters;
+	BufferParams * bparams;
 	/// points to Buffer
-	Buffer * params;
+	Buffer * buffer;
 	///
 	mutable int number_of_rows;
 	///
@@ -63,12 +69,6 @@ public:
 	mutable LyXFont current_font;
 	/// the current font
 	mutable LyXFont real_current_font;
-
-	/// Constructor
-	LyXText(BufferView *, int paperwidth, Buffer *);
-   
-	/// Destructor
-	~LyXText();
 
 	///
 	void owner(BufferView *);
@@ -602,6 +602,9 @@ private:
 	mutable std::vector<LyXParagraph::size_type> vis2log_list;
 
 	///
+	mutable std::vector<LyXParagraph::size_type> bidi_levels;
+
+	///
 	mutable LyXParagraph::size_type bidi_start;
 
 	///
@@ -609,12 +612,6 @@ private:
 
 	///
 	void ComputeBidiTables(Row *row) const;
-
-	///
-	void ComputeBidiTablesFromTo(Row *row,
-				     LyXParagraph::size_type from,
-				     LyXParagraph::size_type to,
-				     LyXParagraph::size_type offset) const;
 
 	/// Maps positions in the visual string to positions in logical string.
 	inline
@@ -634,6 +631,14 @@ private:
 			return vis2log_list[pos-bidi_start];
 	}
 
+	inline
+	int bidi_level(LyXParagraph::size_type pos) const {
+		if (bidi_start == -1)
+			return 0;
+		else
+			return bidi_levels[pos-bidi_start];
+	}	
+
 	///
 	unsigned char TransformChar(unsigned char c, Letter_Form form) const;
 
@@ -645,6 +650,9 @@ private:
 	  specified row
 	  */
 	LyXParagraph::size_type RowLast(Row const * row) const;
+	///
+	LyXParagraph::size_type RowLastPrintable(Row const * row) const;
+
 	///
 	void charInserted();
 };

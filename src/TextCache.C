@@ -35,7 +35,7 @@ public:
 	text_fits(Buffer * b, unsigned short p)
 		: buf(b), pw(p) {}
 	bool operator()(TextCache::value_type & vt) {
-		if (vt->params == buf && vt->paperWidth() == pw) return true;
+		if (vt->buffer == buf && vt->paperWidth() == pw) return true;
 		return false;
 	}
 private:
@@ -61,7 +61,7 @@ class show_text {
 public:
 	show_text(ostream & o) : os(o) {}
 	void operator()(TextCache::value_type & vt) {
-		os << "\tBuffer: " << vt->params
+		os << "\tBuffer: " << vt->buffer
 		   << "\tWidth: " << vt->paperWidth() << endl;
 	}
 private:
@@ -85,7 +85,7 @@ void TextCache::show(ostream & os, LyXText * lt)
 void TextCache::add(LyXText * text)
 {
 	lyxerr.debug() << "TextCache::add " << text;
-	if (bufferlist.isLoaded(text->params)) {
+	if (bufferlist.isLoaded(text->buffer)) {
 		cache.push_back(text);
 		lyxerr.debug() << " added" << endl;
 	} else {
@@ -115,7 +115,7 @@ public:
 	has_buffer(Buffer * b)
 		: buf(b) {}
 	bool operator()(TextCache::value_type & vt) {
-		if (vt->params == buf) return true;
+		if (vt->buffer == buf) return true;
 		return false;
 	}
 private:

@@ -1378,7 +1378,8 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 #ifdef WITH_WARNINGS
 #warning remove this once we have a proper geometry class
 #endif
-	BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(bv->buffer()->params.papersize);
+	BufferParams::PAPER_SIZE ps =
+		static_cast<BufferParams::PAPER_SIZE>(bv->buffer()->params.papersize);
 	switch (ps) {
 	case BufferParams::PAPER_A4PAPER:
 		add_flags = "-p a4";
@@ -2665,12 +2666,25 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	bool redo = false;
 	BufferParams * params = &(current_view->buffer()->params);
 
+	Language const * old_language = params->language_info;
+	Language const * new_language;
 	params->language = combo_language->getline();
 	Languages::iterator lit = languages.find(params->language);
 	if (lit != languages.end()) 
-		params->language_info = &(*lit).second;
+		new_language = &(*lit).second;
 	else
-		params->language_info = default_language;
+		new_language = default_language;
+
+	if (current_view->available()) {
+		if (old_language != new_language &&
+		    old_language->RightToLeft == new_language->RightToLeft && 
+		    ! current_view->buffer()->isMultiLingual() ) {
+			current_view->buffer()->ChangeLanguage(old_language,
+							       new_language);
+			current_view->buffer()->redraw();
+		}
+	}
+	params->language_info = new_language;
 
 	// If default skip is a "Length" but there's no text in the
 	// input field, reset the kind to "Medskip", which is the default.
@@ -2699,9 +2713,10 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
    
 	if (!current_view->available())
 		return;
-	current_view->text->SetCursor(current_view->text->cursor.par,
-				      current_view->text->cursor.pos);
-	current_view->setState();
+
+        current_view->text->SetCursor(current_view->text->cursor.par,
+                                      current_view->text->cursor.pos);
+        current_view->setState();
 
 	LyXTextClassList::ClassList::size_type new_class =
 		fl_get_choice(fd_form_document->choice_class) - 1;

@@ -572,8 +572,6 @@ string LyXFunc::Dispatch(int ac,
 				return string();
 			else {
 				setMessage(N_("Text mode"));
-				LyXDirection direction = owner->view()->text->
-					cursor.par->getParDirection();
 				switch(action) {
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
@@ -583,7 +581,7 @@ string LyXFunc::Dispatch(int ac,
 					owner->getMiniBuffer()->Set(CurrentState());
 					break;
 				case LFUN_RIGHT:
-					if (direction == LYX_DIR_LEFT_TO_RIGHT) {
+					if (!owner->view()->text->cursor.par->isRightToLeftPar()) {
 						owner->view()->text->CursorRight();
 						moveCursorUpdate(false);
 						owner->getMiniBuffer()->
@@ -591,7 +589,7 @@ string LyXFunc::Dispatch(int ac,
 					}
 					return string();
 				case LFUN_LEFT: 
-					if (direction == LYX_DIR_RIGHT_TO_LEFT) {
+					if (owner->view()->text->cursor.par->isRightToLeftPar()) {
 						owner->view()->text->CursorRight();
 						moveCursorUpdate(false);
 						owner->getMiniBuffer()->
@@ -1111,7 +1109,7 @@ string LyXFunc::Dispatch(int ac,
 		// Pretend we got the name instead.
 		Dispatch(int(LFUN_LAYOUT), 
 			 textclasslist.NameOfLayout(owner->view()->
-						    text->parameters->
+						    text->bparams->
 						    textclass,
 						    sel).c_str());
 		return string();
@@ -1125,7 +1123,7 @@ string LyXFunc::Dispatch(int ac,
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
 		LyXTextClassList::ClassList::size_type tclass =
-			owner->view()->text->parameters->textclass;
+			owner->view()->text->bparams->textclass;
 		pair <bool, LyXTextClass::size_type> layout = 
 			textclasslist.NumberOfLayout(tclass, argument);
 
@@ -1211,38 +1209,47 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_EMPH:
 		Emph();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_BOLD:
 		Bold();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_NOUN:
 		Noun();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_CODE:
 		Code();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_SANS:
 		Sans();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_ROMAN:
 		Roman();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_DEFAULT:
 		StyleReset();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_UNDERLINE:
 		Underline();
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_FONT_SIZE:
 		FontSize(argument);
+		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_FONT_STATE:
@@ -1333,12 +1340,11 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_RIGHT:
 	{
 		LyXText * tmptext = owner->view()->text;
-		LyXDirection direction =
-			tmptext->cursor.par->getParDirection();
+		bool is_rtl = tmptext->cursor.par->isRightToLeftPar();
 		if(!tmptext->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
-		if (direction == LYX_DIR_RIGHT_TO_LEFT)
+		if (is_rtl)
 			tmptext->CursorLeft();
 		if (tmptext->cursor.pos < tmptext->cursor.par->Last()
 		    && tmptext->cursor.par->GetChar(tmptext->cursor.pos)
@@ -1350,7 +1356,7 @@ string LyXFunc::Dispatch(int ac,
 			tmpinset->Edit(owner->view(), 0, 0, 0);
 			break;
 		}
-		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+		if (!is_rtl)
 			tmptext->CursorRight();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
@@ -1363,10 +1369,10 @@ string LyXFunc::Dispatch(int ac,
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
 		LyXText * txt = owner->view()->text;
-		LyXDirection direction = txt->cursor.par->getParDirection();
+		bool is_rtl = txt->cursor.par->isRightToLeftPar();
 		if(!txt->mark_set) owner->view()->beforeChange();
 		owner->view()->update(-2);
-		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+		if (!is_rtl)
 			txt->CursorLeft();
 		if (txt->cursor.pos < txt->cursor.par->Last()
 		    && txt->cursor.par->GetChar(txt->cursor.pos)
@@ -1382,7 +1388,7 @@ string LyXFunc::Dispatch(int ac,
 				       0, 0);
 			break;
 		}
-		if  (direction == LYX_DIR_RIGHT_TO_LEFT)
+		if  (is_rtl)
 			txt->CursorRight();
 
 		owner->view()->text->FinishUndo();
@@ -1484,11 +1490,10 @@ string LyXFunc::Dispatch(int ac,
 		if(!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
-		if (owner->view()->text->cursor.par->getParDirection() 
-		    == LYX_DIR_LEFT_TO_RIGHT)
-			owner->view()->text->CursorRightOneWord();
-		else
+		if (owner->view()->text->cursor.par->isRightToLeftPar())
 			owner->view()->text->CursorLeftOneWord();
+		else
+			owner->view()->text->CursorRightOneWord();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1498,11 +1503,10 @@ string LyXFunc::Dispatch(int ac,
 		if(!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
-		if (owner->view()->text->cursor.par->getParDirection() 
-		    == LYX_DIR_LEFT_TO_RIGHT)
-			owner->view()->text->CursorLeftOneWord();
-		else
+		if (owner->view()->text->cursor.par->isRightToLeftPar())
 			owner->view()->text->CursorRightOneWord();
+		else
+			owner->view()->text->CursorLeftOneWord();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1532,11 +1536,10 @@ string LyXFunc::Dispatch(int ac,
 		/* cursor selection ---------------------------- */
 	case LFUN_RIGHTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->cursor.par->getParDirection()
-		    == LYX_DIR_LEFT_TO_RIGHT)
-			owner->view()->text->CursorRight();
-		else
+		if (owner->view()->text->cursor.par->isRightToLeftPar())
 			owner->view()->text->CursorLeft();
+		else
+			owner->view()->text->CursorRight();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1544,11 +1547,10 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LEFTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->cursor.par->getParDirection()
-		    == LYX_DIR_LEFT_TO_RIGHT)
-			owner->view()->text->CursorLeft();
-		else
+		if (owner->view()->text->cursor.par->isRightToLeftPar())
 			owner->view()->text->CursorRight();
+		else
+			owner->view()->text->CursorLeft();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1620,11 +1622,10 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_WORDRIGHTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->cursor.par->getParDirection()
-		    == LYX_DIR_LEFT_TO_RIGHT)
-			owner->view()->text->CursorRightOneWord();
-		else
+		if (owner->view()->text->cursor.par->isRightToLeftPar())
 			owner->view()->text->CursorLeftOneWord();
+		else
+			owner->view()->text->CursorRightOneWord();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1632,11 +1633,10 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_WORDLEFTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->cursor.par->getParDirection() 
-		    == LYX_DIR_LEFT_TO_RIGHT)
-			owner->view()->text->CursorLeftOneWord();
-		else
+		if (owner->view()->text->cursor.par->isRightToLeftPar())
 			owner->view()->text->CursorRightOneWord();
+		else
+			owner->view()->text->CursorLeftOneWord();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());

@@ -327,9 +327,11 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 
 void LyXParagraph::validate(LaTeXFeatures & features) const
 {
+	BufferParams const & params = features.bufferParams();
+	
 	// this will be useful later
 	LyXLayout const & layout =
-		textclasslist.Style(current_view->buffer()->params.textclass, 
+		textclasslist.Style(params.textclass, 
 				    GetLayout());
 	
 	// check the params.
@@ -340,7 +342,8 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 	features.layout[GetLayout()] = true;
 
 	// then the fonts
-	Language const * doc_language = current_view->buffer()->params.language_info;
+	Language const * doc_language = params.language_info;
+	
 	for (FontList::const_iterator cit = fontlist.begin();
 	     cit != fontlist.end(); ++cit) {
 		if ((*cit).font.noun() == LyXFont::ON) {
@@ -387,8 +390,8 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
         if (layout.needprotect 
 	    && next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
 		features.NeedLyXFootnoteCode = true;
-        if ((current_view->buffer()->params.paragraph_separation == BufferParams::PARSEP_INDENT) &&
-            (pextra_type == LyXParagraph::PEXTRA_MINIPAGE))
+        if (params.paragraph_separation == BufferParams::PARSEP_INDENT
+            && pextra_type == LyXParagraph::PEXTRA_MINIPAGE)
 		features.NeedLyXMinipageIndent = true;
         if (table && table->NeedRotating())
 		features.rotating = true;
@@ -429,7 +432,7 @@ void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
 			// find the entry
 			InsetList::iterator it = lower_bound(insetlist.begin(),
 							     insetlist.end(),
-							     InsetTable(pos,0));
+							     pos, matchIT());
 			if (it != insetlist.end() && (*it).pos == pos)
 				(*it).inset = 0;
 		} else {
@@ -510,6 +513,9 @@ LyXParagraph::~LyXParagraph()
 
         // ale970302
 	delete bibkey;
+	//
+	lyxerr << "LyXParagraph::paragraph_id = "
+	       << LyXParagraph::paragraph_id << endl;
 }
 
 
@@ -531,7 +537,7 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 			// find the entry
 			InsetList::iterator it = lower_bound(insetlist.begin(),
 							     insetlist.end(),
-							     InsetTable(pos,0));
+							     pos, matchIT());
 			if (it != insetlist.end() && (*it).pos == pos) {
 				delete (*it).inset;
 				insetlist.erase(it);
@@ -564,7 +570,7 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		// Update the inset table.
 		for (InsetList::iterator it = upper_bound(insetlist.begin(),
 							  insetlist.end(),
-							  InsetTable(pos,0));
+							  pos, matchIT());
 		     it != insetlist.end(); ++it)
 			--(*it).pos;
 	} else {
@@ -601,7 +607,7 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 	// Update the inset table.
 	for (InsetList::iterator it = lower_bound(insetlist.begin(),
 						  insetlist.end(),
-						  InsetTable(pos,0));
+						  pos, matchIT());
 	     it != insetlist.end(); ++it)
 		++(*it).pos;
 }
@@ -632,12 +638,12 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 		// Add a new entry in the inset table.
 		InsetList::iterator it = lower_bound(insetlist.begin(),
 						     insetlist.end(),
-						     InsetTable(pos,0));
+						     pos, matchIT());
 		if (it != insetlist.end() && (*it).pos == pos)
 			lyxerr << "ERROR (LyXParagraph::InsertInset): "
 				"there is an inset in position: " << pos << endl;
 		else
-			insetlist.insert(it,InsetTable(pos,inset));
+			insetlist.insert(it, InsetTable(pos,inset));
 	}
 }
 
@@ -668,7 +674,7 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 	// Find the inset.
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     InsetTable(pos,0));
+					     pos, matchIT());
 	if (it != insetlist.end() && (*it).pos == pos)
 		return (*it).inset;
 
@@ -700,7 +706,7 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 	// Find the inset.
 	InsetList::const_iterator cit = lower_bound(insetlist.begin(),
 						    insetlist.end(),
-						    InsetTable(pos,0));
+						    pos, matchIT());
 	if (cit != insetlist.end() && (*cit).pos == pos)
 		return (*cit).inset;
 
@@ -1391,9 +1397,6 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 			++pos_first;
 
 		pos_end = pos_first + par->text.size() - 1;
-		// The constructor has already reserved 500 elements
-		//if (pos_end > pos)
-		//	tmp->text.reserve(pos_end - pos);
 
 		for (i = j = pos; i <= pos_end; ++i) {
 			par->CutIntoMinibuffer(i - pos_first);
@@ -1559,15 +1562,6 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 		while (ParFromPos(pos_first) != par)
 			++pos_first;
 		size_type pos_end = pos_first + par->text.size() - 1;
-		// make sure there is enough memory for the now larger
-		// paragraph. This is not neccessary, because
-		// InsertFromMinibuffer will enlarge the memory (it uses
-		// InsertChar of course). But doing it by hand
-		// is MUCH faster! (only one time, not thousend times!!)
-		// Not needed since the constructor aleady have
-		// reserved 500 elements in text.
-		//if (pos_end > pos)
-		//	tmp->text.reserve(pos_end - pos);
 
 		size_type i, j;
 		for (i = j = pos; i <= pos_end; ++i) {
@@ -1667,6 +1661,7 @@ int LyXParagraph::GetEndLabel() const
 	}
 	return END_LABEL_NO_LABEL;
 }
+
 
 LyXTextClass::size_type LyXParagraph::GetLayout() const
 {
@@ -1900,15 +1895,15 @@ LyXParagraph const * LyXParagraph::DepthHook(int deth) const
 int LyXParagraph::AutoDeleteInsets()
 {
 	int count = 0;
-	unsigned int i = 0;
-	while (i < insetlist.size()) {
-		if (insetlist[i].inset && insetlist[i].inset->AutoDelete()) {
-			Erase(insetlist[i].pos); 
-			// Erase() calls to insetlist.erase(&insetlist[i])
-			// so i shouldn't be increased.
+	InsetList::size_type index = 0;
+	while (index < insetlist.size()) {
+		if (insetlist[index].inset && insetlist[index].inset->AutoDelete()) {
+			Erase(insetlist[index].pos); 
+			// Erase() calls to insetlist.erase(&insetlist[index])
+			// so index shouldn't be increased.
 			++count;
 		} else
-			++i;
+			++index;
 	}
 	return count;
 }
@@ -1918,7 +1913,7 @@ Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 {
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     InsetTable(pos, 0));
+					     pos, matchIT());
 	if (it != insetlist.end()) {
 		pos = (*it).pos;
 		return (*it).inset;
@@ -1931,6 +1926,15 @@ Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 int LyXParagraph::GetPositionOfInset(Inset * inset) const
 {
 	// Find the entry.
+	// We could use lower_bound here too, we just need to add
+	// the approp. operator() to matchIT (and change the name
+	// of that struct). Code would then be:
+	// InsetList::const_iterator cit = lower_bound(insetlist.begin(),
+	//                                             insetlist.end(),
+	//                                             inset, matchIT());
+	// if ((*cit).inset == inset) {
+	//         return (*cit).pos;
+	// }
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
 		if ((*cit).inset == inset) {
@@ -2036,12 +2040,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 			while (par &&
 			       par->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
 			       par->footnoteflag != footnoteflag) {
-				LyXDirection dir = (is_rtl)
-					? LYX_DIR_RIGHT_TO_LEFT 
-					: LYX_DIR_LEFT_TO_RIGHT;
 				par = par->TeXFootnote(os, texrow, foot,
 						       foot_texrow, foot_count,
-						       dir);
+						       is_rtl);
 				par->SimpleTeXOnePar(os, texrow);
 				is_rtl = par->GetFontSettings(par->size()-1).isRightToLeft();
 				if (par->next &&
@@ -2057,7 +2058,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		       && par->footnoteflag != footnoteflag) {
 			par = par->TeXFootnote(os, texrow,
 					       foot, foot_texrow, foot_count,
-					       LYX_DIR_LEFT_TO_RIGHT);
+					       false);
 			par->SimpleTeXOnePar(os, texrow);
 			par = par->next;
 		}
@@ -2423,6 +2424,9 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 	
 	texrow.start(this, 0);
 
+	bool is_rtl = getParLanguage()->RightToLeft;
+	bool first_in_cell = true;
+		
 	for (size_type i = 0; i < size(); ++i) {
 		char c = GetChar(i);
 		if (table->IsContRow(current_cell_number + 1)) {
@@ -2431,7 +2435,13 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 			continue;
 		}
 		++column;
-		
+
+		if (first_in_cell && is_rtl) {
+			os << "\\R{";
+			column += 3;
+			first_in_cell = false;
+		}
+
 		// Fully instantiated font
 		LyXFont font = getFont(i);
 		last_font = running_font;
@@ -2491,6 +2501,11 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 						 current_cell_number,
 						 column, texrow);
 			}
+			if (is_rtl && !first_in_cell) {
+				os << "}";
+				first_in_cell = true;
+			}
+
 			// if this cell follow only ContRows till end don't
 			// put the EndOfCell because it is put after the
 			// for(...)
@@ -2521,6 +2536,8 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 		running_font.latexWriteEndChanges(os, basefont, basefont);
 	}
 	++current_cell_number;
+	if (is_rtl && !first_in_cell)
+		os << "}";
 	tmp = table->TexEndOfCell(os, current_cell_number);
 	for (; tmp > 0; --tmp)
 		texrow.newline();
@@ -3773,7 +3790,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 					 ostream & foot, TexRow & foot_texrow,
 					 int & foot_count,
-					 LyXDirection parent_direction)
+					 bool parent_is_rtl)
 {
 	lyxerr[Debug::LATEX] << "TeXFootnote...  " << this << endl;
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
@@ -3812,12 +3829,12 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 	}
 
 	bool need_closing = false;
-	LyXDirection direction = getParDirection();
-	if (direction != parent_direction) {
-		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << "\\L{";
-		else
+	bool is_rtl = isRightToLeftPar();
+	if (is_rtl != parent_is_rtl) {
+		if (is_rtl)
 			os << "\\R{";
+		else
+			os << "\\L{";
 		need_closing = true;
 	}
 	
@@ -4194,47 +4211,52 @@ bool LyXParagraph::IsWord(size_type pos ) const
 	return IsWordChar(GetChar(pos)) ;
 }
 
+
 Language const * LyXParagraph::getParLanguage() const 
 {
-	if (!table && size() > 0)
-		return FirstPhysicalPar()->GetFirstFontSettings().language();
+	if (size() > 0)
+		if (!table)
+			return FirstPhysicalPar()->GetFirstFontSettings()
+				.language();
+		else {
+			for (size_type pos = 0; pos < size(); ++pos)
+				if (IsNewline(pos))
+					return GetFontSettings(pos).language();
+			return GetFirstFontSettings().language();
+		}
 	else if (previous)
 		return previous->getParLanguage();
 	else
 		return current_view->buffer()->params.language_info;
 }
 
-Language const * LyXParagraph::getLetterLanguage(size_type pos) const
+
+bool LyXParagraph::isRightToLeftPar() const
 {
-	return GetFontSettings(pos).language();
+	return lyxrc.rtl_support && !table && getParLanguage()->RightToLeft;
 }
 
-LyXDirection LyXParagraph::getParDirection() const
+
+void LyXParagraph::ChangeLanguage(Language const * from, Language const * to)
 {
-	if (!lyxrc.rtl_support || table)
-		return LYX_DIR_LEFT_TO_RIGHT;
-	else if (getParLanguage()->RightToLeft)
-		return LYX_DIR_RIGHT_TO_LEFT;
-	else
-		return LYX_DIR_LEFT_TO_RIGHT;
+	for(size_type i = 0; i < size(); ++i) {
+		LyXFont font = GetFontSettings(i);
+		if (font.language() == from) {
+			font.setLanguage(to);
+			SetFont(i,font);
+		}
+	}
 }
 
-LyXDirection
-LyXParagraph::getLetterDirection(LyXParagraph::size_type pos) const
-{
-	if (!lyxrc.rtl_support)
-		return LYX_DIR_LEFT_TO_RIGHT;
-	else if (table && IsNewline(pos))
-		return LYX_DIR_LEFT_TO_RIGHT;
 
-	bool is_rtl =  GetFontSettings(pos).isVisibleRightToLeft();
-	if (IsLineSeparator(pos) && 0 < pos && pos < Last() - 1
-	    && !IsLineSeparator(pos + 1)
-	    && !(table && IsNewline(pos + 1))
-	    && ( GetFontSettings(pos - 1).isVisibleRightToLeft() != is_rtl
-		 || GetFontSettings(pos + 1).isVisibleRightToLeft() != is_rtl))
-		return getParDirection();
-	else
-		return (is_rtl) ? LYX_DIR_RIGHT_TO_LEFT
-			: LYX_DIR_LEFT_TO_RIGHT;
+bool LyXParagraph::isMultiLingual()
+{
+	Language const * doc_language =
+		current_view->buffer()->params.language_info;
+	for(size_type i = 0; i < size(); ++i) {
+		LyXFont font = GetFontSettings(i);
+		if (font.language() != doc_language)
+			return true;
+	}
+	return false;
 }

@@ -24,7 +24,6 @@
 #include "vspace.h"
 #include "layout.h"
 #include "support/block.h"
-#include "direction.h"
 #include "language.h"
 
 class BufferParams;
@@ -128,12 +127,11 @@ public:
 	///
 	Language const * getParLanguage() const;
 	///
-	Language const * getLetterLanguage(size_type pos) const;
-
+	bool isRightToLeftPar() const;
 	///
-	LyXDirection getParDirection() const;
+	void ChangeLanguage(Language const * from, Language const * to);
 	///
-	LyXDirection getLetterDirection(size_type pos) const;
+	bool isMultiLingual();
 	
 	///
 	void writeFile(std::ostream &, BufferParams const &, char, char) const;
@@ -183,10 +181,10 @@ public:
 	/** Check if the current paragraph is the last paragraph in a
 	    proof environment */
 	int GetEndLabel() const;
-
+	///
 	Inset * InInset() { return inset_owner; }
-	void SetInsetOwner(Inset *i) { inset_owner = i; }
-
+	///
+	void SetInsetOwner(Inset * i) { inset_owner = i; }
 private:
 	///
 	TextContainer text;
@@ -510,6 +508,7 @@ public:
 	///
 	void SimpleDocBookOneTablePar(std::ostream &, string & extra,
 				      int & desc_on, int depth);
+private:
 	///
 	struct InsetTable {
 		///
@@ -519,7 +518,21 @@ public:
 		///
 		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
 	};
-private:
+	///
+	struct matchIT {
+		/// used by lower_bound
+		inline
+		int operator()(LyXParagraph::InsetTable const & a,
+			       LyXParagraph::size_type pos) const {
+			return a.pos < pos;
+		}
+		/// used by upper_bound
+		inline
+		int operator()(LyXParagraph::size_type pos,
+			       LyXParagraph::InsetTable const & a) const {
+			return pos < a.pos;
+		}
+	};
 	/** A font entry covers a range of positions. Notice that the
 	  entries in the list are inserted in random order.
 	  I don't think it's worth the effort to implement a more effective
@@ -558,7 +571,7 @@ private:
 	LyXParagraph * TeXFootnote(std::ostream &, TexRow & texrow,
 				   std::ostream & foot, TexRow & foot_texrow,
 				   int & foot_count,
-				   LyXDirection par_direction);
+				   bool parent_is_rtl);
 	///
 	bool SimpleTeXOneTablePar(std::ostream &, TexRow & texrow);
 	///
@@ -582,11 +595,5 @@ private:
 	///
 	static unsigned int paragraph_id;
 };
-
-inline bool operator<(LyXParagraph::InsetTable const & a, 
-		      LyXParagraph::InsetTable const & b)
-{
-        return a.pos < b.pos;
-}
 
 #endif

@@ -18,6 +18,8 @@
 #pragma implementation
 #endif
 
+using std::pair;
+
 static LyXParagraph * buf = 0;
 
 CutAndPaste::CutAndPaste()

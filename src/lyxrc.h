@@ -219,7 +219,7 @@ public:
 	///
 	bool rtl_support;
 	///
-	string number_inset;
+	bool auto_number;
 	///
 	bool show_banner;
 	/// Do we have to use a GUI?

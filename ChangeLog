@@ -1,3 +1,31 @@
+2000-04-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/LaTeXFeatures.h: add a const reference to BufferParams, to
+	avoid some uses of current_view. Added also a bufferParams()
+	mathod to get at this.
+
+	* src/lyxtext.h: changed params->buffer and paramters->bparams.
+
+2000-04-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxparagraph.[Ch]: removed
+	operator<(LyXParagraph::InsetTabe..., added a struct matchIT
+	with operators used by lower_bound and
+	upper_bound in InsetTable's
+	Make struct InsetTable private again. Used matchpos.
+
+2000-04-08  Dekel Tsur  <dekel@math.tau.ac.il>
+ 	
+	* src/lyx_cb.C (DocumentApplyCB): When changing the language of the
+	document, the language of existing text is changed (unless the
+	document is multi-lingual)
+
+	* src/buffer.C (ChangeLanguage,isMultiLingual) New methods.
+
+	* src/paragraph.C (ChangeLanguage,isMultiLingual) New methods.
+
+	* A lot of files: A rewrite of the Right-to-Left support.
+                                                                           
 2000-04-10  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (showLockedInsetCursor): small bugfix for

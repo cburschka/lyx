@@ -291,6 +291,11 @@ public:
 	    than one user per buffer. */
 	BufferView * getUser() const { return users; }
 
+	///
+	void ChangeLanguage(Language const * from, Language const * to);
+	///
+	bool isMultiLingual();
+
         //@}
 
 	/// Does this mean that this is buffer local?
