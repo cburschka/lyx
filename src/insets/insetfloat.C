@@ -174,6 +174,15 @@ void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_MOUSE_RELEASE: {
+		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
+			InsetFloatMailer(*this).showDialog(&cur.bv());
+			break;
+		}
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
+	}
+	
 	default:
 		InsetCollapsable::priv_dispatch(cur, cmd);
 		break;
@@ -205,38 +214,46 @@ void InsetFloatParams::read(LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
-		string token = lex.getString();
-		if (token == "placement") {
-			lex.next();
-			placement = lex.getString();
-		} else {
-			// take countermeasures
-			lex.pushToken(token);
-		}
+		type = lex.getString();
+	}
+	if (!lex.isOK())
+		return;
+	lex.next();
+	string token = lex.getString();
+	if (token == "placement") {
 		lex.next();
-		token = lex.getString();
-		if (token == "wide") {
-			lex.next();
-			string const tmptoken = lex.getString();
-			wide = (tmptoken == "true");
-		} else {
-			lyxerr << "InsetFloat::Read:: Missing wide!"
-			       << endl;
-			// take countermeasures
-			lex.pushToken(token);
-		}
+		placement = lex.getString();
+	} else {
+		// take countermeasures
+		lex.pushToken(token);
+	}
+	if (!lex.isOK())
+		return;
+	lex.next();
+	token = lex.getString();
+	if (token == "wide") {
 		lex.next();
-		token = lex.getString();
-		if (token == "sideways") {
-			lex.next();
-			string const tmptoken = lex.getString();
-			sideways = (tmptoken == "true");
-		} else {
-			lyxerr << "InsetFloat::Read:: Missing sideways!"
-			       << endl;
-			// take countermeasures
-			lex.pushToken(token);
-		}
+		string const tmptoken = lex.getString();
+		wide = (tmptoken == "true");
+	} else {
+		lyxerr << "InsetFloat::Read:: Missing wide!"
+		<< endl;
+		// take countermeasures
+		lex.pushToken(token);
+	}
+	if (!lex.isOK())
+		return;
+	lex.next();
+	token = lex.getString();
+	if (token == "sideways") {
+		lex.next();
+		string const tmptoken = lex.getString();
+		sideways = (tmptoken == "true");
+	} else {
+		lyxerr << "InsetFloat::Read:: Missing sideways!"
+		<< endl;
+		// take countermeasures
+		lex.pushToken(token);
 	}
 }
 

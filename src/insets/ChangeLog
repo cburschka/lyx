@@ -1,3 +1,8 @@
+2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetfloat.C (read): fix reading of float params 
+	(recognize "type")
+
 2004-03-31  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* insettext.C (edit): comment the call to updateLocal (dangling now)
