@@ -1,3 +1,11 @@
+2002-07-30  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (parseSingleLyXformat2Token): Use default placement
+	when reading old floats.
+
+	* FloatList.C (FloatList): Change the default placement of figure
+	and tables to "tbp".
+
 2002-07-26  John Levon  <levon@movementarian.org>
 
 	* WorkArea.C (work_area_handler): set y_old and x_old to some

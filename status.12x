@@ -38,6 +38,9 @@ recommended.
   table...): the empty paragraph in the float now is a caption. It
   seems that 1.2.0 behaviour was confusing too many people
 
+- it is now possible to set the float placement parameters to
+  "document defaults"
+
 - when the cursor is inside a collapsible inset, `Edit>Open/close
   float' will leave it after the inset after closing it (this should
   help entering of ERT insets)

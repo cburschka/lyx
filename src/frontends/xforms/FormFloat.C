@@ -27,7 +27,6 @@ FormFloat::FormFloat(ControlFloat & c)
 
 
 // FIX: Needs to be implemented. (Lgb)
-// A way to set to float default is missing.
 // A way to set "force[!]" is missing.
 
 void FormFloat::build()
@@ -40,6 +39,7 @@ void FormFloat::build()
 	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
+	bc().addReadOnly(dialog_->check_default);
 	bc().addReadOnly(dialog_->check_top);
 	bc().addReadOnly(dialog_->check_bottom);
 	bc().addReadOnly(dialog_->check_page);
@@ -54,6 +54,9 @@ void FormFloat::apply()
 	if (fl_get_button(dialog_->check_here_definitely)) {
 		placement += "H";
 	} else {
+		if (fl_get_button(dialog_->check_here)) {
+			placement += "h";
+		}
 		if (fl_get_button(dialog_->check_top)) {
 			placement += "t";
 		}
@@ -63,9 +66,6 @@ void FormFloat::apply()
 		if (fl_get_button(dialog_->check_page)) {
 			placement += "p";
 		}
-		if (fl_get_button(dialog_->check_here)) {
-			placement += "h";
-		}
 	}
 	controller().params().placement = placement;
 }
@@ -73,6 +73,7 @@ void FormFloat::apply()
 
 void FormFloat::update()
 {
+	bool def_placement = false;
 	bool top = false;
 	bool bottom = false;
 	bool page = false;
@@ -81,8 +82,12 @@ void FormFloat::update()
 
 	string placement(controller().params().placement);
 
-	if (contains(placement, "H")) {
+	if (placement.empty()) {
+		def_placement = true;
+
+	} else if (contains(placement, "H")) {
 		here_definitely = true;
+
 	} else {
 		if (contains(placement, "t")) {
 			top = true;
@@ -97,18 +102,41 @@ void FormFloat::update()
 			here = true;
 		}
 	}
+	fl_set_button(dialog_->check_default, def_placement);
 	fl_set_button(dialog_->check_top, top);
 	fl_set_button(dialog_->check_bottom, bottom);
 	fl_set_button(dialog_->check_page, page);
 	fl_set_button(dialog_->check_here, here);
 	fl_set_button(dialog_->check_here_definitely, here_definitely);
-	setEnabled(dialog_->check_here_definitely, controller().params().allow_here_definitely);
+	setEnabled(dialog_->check_here, !def_placement);
+	setEnabled(dialog_->check_top, !def_placement);
+	setEnabled(dialog_->check_bottom, !def_placement);
+	setEnabled(dialog_->check_page, !def_placement);
+	setEnabled(dialog_->check_here_definitely,
+		controller().params().allow_here_definitely && !def_placement);
+
 }
 
 
 ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 {
-	if (ob == dialog_->check_here_definitely) {
+	bool const def_place = fl_get_button(dialog_->check_default);
+	
+	if (ob == dialog_->check_default) {
+		if (def_place) {
+			fl_set_button(dialog_->check_top, false);
+			fl_set_button(dialog_->check_bottom,  false);
+			fl_set_button(dialog_->check_page, false);
+			fl_set_button(dialog_->check_here, false);
+			fl_set_button(dialog_->check_here_definitely, false);
+			}
+		setEnabled(dialog_->check_top, !def_place);
+		setEnabled(dialog_->check_bottom, !def_place);
+		setEnabled(dialog_->check_page, !def_place);
+		setEnabled(dialog_->check_here, !def_place);
+		setEnabled(dialog_->check_here_definitely, !def_place);
+
+	} else if (ob == dialog_->check_here_definitely) {
 		if (fl_get_button(dialog_->check_here_definitely)) {
 			fl_set_button(dialog_->check_top,    false);
 			fl_set_button(dialog_->check_bottom, false);

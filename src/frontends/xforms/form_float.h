@@ -26,6 +26,7 @@ struct FD_form_float {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_close;
+	FL_OBJECT *check_default;
 };
 
 #endif /* FD_form_float_h_ */
