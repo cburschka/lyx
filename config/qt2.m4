@@ -125,7 +125,7 @@ AC_DEFUN(QT2_AC_PATH_MOC,
 
 AC_DEFUN(QT2_PRINT_PROGRAM,
 [
-AC_LANG(C++)
+AC_LANG_CPLUSPLUS
 cat > conftest.$ac_ext <<EOF
 #include "confdefs.h"
 #include <qmovie.h>
@@ -301,7 +301,7 @@ dnl check it is Qt2
 SAVE_CXXFLAGS="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -I$qt2_includes -L$qt2_libraries"
 dnl specify we are definitely C++ compiling first
-AC_LANG(C++)
+AC_LANG_CPLUSPLUS
 AC_TRY_COMPILE([
 #include <qglobal.h>
 ],

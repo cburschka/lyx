@@ -70,7 +70,7 @@ save_LIBS=$LIBS
 LIBS="$XFORMS_LIB $LIBS"
 lyx_use_xforms_image_loader=no
 AC_LANG_SAVE
-AC_LANG(C)
+AC_LANG_C
 
 AC_CHECK_LIB(jpeg, jpeg_read_header,
   [XFORMS_IMAGE_LIB=-ljpeg

@@ -103,7 +103,7 @@ case $host in
   CFLAGS="$CFLAGS -belf"
   AC_CACHE_CHECK([whether the C compiler needs -belf], lt_cv_cc_needs_belf,
     [AC_LANG_SAVE
-     AC_LANG(C)
+     AC_LANG_C
      AC_TRY_LINK([],[],[lt_cv_cc_needs_belf=yes],[lt_cv_cc_needs_belf=no])
      AC_LANG_RESTORE])
   if test x"$lt_cv_cc_needs_belf" != x"yes"; then

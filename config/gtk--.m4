@@ -42,7 +42,7 @@ AC_ARG_ENABLE(gtkmmtest, [  --disable-gtkmmtest     Do not try to compile and ru
     no_gtkmm=yes
   else
     AC_LANG_SAVE
-    AC_LANG(C++)
+    AC_LANG_CPLUSPLUS
 
     GTKMM_CFLAGS=`$GTKMM_CONFIG $gtkmm_config_args --cflags`
     GTKMM_LIBS=`$GTKMM_CONFIG $gtkmm_config_args --libs`
