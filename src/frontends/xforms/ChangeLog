@@ -1,3 +1,8 @@
+2002-01-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FormMathsMatrix.C (AlignFilter): use std::count and add some
+	comments.
+
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MathsSymbols.C (get_pixmap_from_symbol): add a default statement

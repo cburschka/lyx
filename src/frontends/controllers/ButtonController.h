@@ -107,8 +107,8 @@ void GuiBC<Button, Widget>::refreshReadOnly()
 
 	bool const enable = !bp().isReadOnly();
 
-	Widgets::const_iterator end = read_only_.end();
-	Widgets::const_iterator iter = read_only_.begin();
+	typename Widgets::const_iterator end = read_only_.end();
+	typename Widgets::const_iterator iter = read_only_.begin();
 	for (; iter != end; ++iter) {
 		setWidgetEnabled(*iter, enable);
 	}

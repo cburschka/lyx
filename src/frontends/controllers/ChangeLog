@@ -1,3 +1,7 @@
+2002-01-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ButtonController.h (refreshReadOnly): use explicit typename
+
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* helper_funcs.h (browseFile): add default empty button descriptions.
