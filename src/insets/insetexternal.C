@@ -367,12 +367,13 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 	// Replace the inset's store
 	setParams(params, buffer);
 
-	lyxerr[Debug::INFO] << "InsetExternal::Read: "
-			    << "template: '" << params_.templatename
-			    << "' filename: '" << params_.filename.absFilename()
-			    << "' display: '" << params_.display
-			    << "' scale: '" << params_.lyxscale
-			    << '\'' << endl;
+	lyxerr[Debug::EXTERNAL]
+		<< "InsetExternal::Read: "
+		<< "template: '" << params_.templatename
+		<< "' filename: '" << params_.filename.absFilename()
+		<< "' display: '" << params_.display
+		<< "' scale: '" << params_.lyxscale
+		<< '\'' << endl;
 }
 
 
@@ -388,9 +389,10 @@ int InsetExternal::write(string const & format,
 	ExternalTemplate::Formats::const_iterator cit =
 		et.formats.find(format);
 	if (cit == et.formats.end()) {
-		lyxerr << "External template format '" << format
-		       << "' not specified in template "
-		       << params_.templatename << endl;
+		lyxerr[Debug::EXTERNAL]
+			<< "External template format '" << format
+			<< "' not specified in template "
+			<< params_.templatename << endl;
 		return 0;
 	}
 
@@ -454,18 +456,17 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 		return;
 	ExternalTemplate const & et = *et_ptr;
 
-	ExternalTemplate::Formats::const_iterator cit =
-		et.formats.find("LaTeX");
-
+	ExternalTemplate::Formats::const_iterator cit = et.formats.find("LaTeX");
 	if (cit == et.formats.end())
 		return;
 
-	if (!cit->second.requirement.empty()) {
+	if (!cit->second.requirement.empty())
 		features.require(cit->second.requirement);
-	}
-	if (!cit->second.preamble.empty()) {
-		features.addExternalPreamble(cit->second.preamble);
-	}
+
+	ExternalTemplateManager & etm = ExternalTemplateManager::get();
+	string const preamble = etm.getPreambleDefByName(cit->second.preambleName);
+	if (!preamble.empty())
+		features.addExternalPreamble(preamble);
 }
 
 
@@ -511,9 +512,10 @@ void InsetExternal::updateExternal(string const & format,
 		return;
 
 	if (!converters.isReachable(from_format, to_format)) {
-		lyxerr << "InsetExternal::updateExternal. "
-			"Unable to convert from "
-		       << from_format << " to " << to_format << endl;
+		lyxerr[Debug::EXTERNAL]
+			<< "InsetExternal::updateExternal. "
+			<< "Unable to convert from "
+			<< from_format << " to " << to_format << endl;
 		return;
 	}
 
@@ -605,7 +607,7 @@ void editExternal(InsetExternal::Params const & params, Buffer const & buffer)
 
 	support::Path p(buffer.filePath());
 	support::Forkedcall call;
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging(Debug::EXTERNAL)) {
 		lyxerr << "Executing '" << command << "' in '"
 		       << buffer.filePath() << '\'' << endl;
 	}

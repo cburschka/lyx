@@ -48,8 +48,8 @@ struct ExternalTemplate {
 		string updateFormat;
 		/// What features does this external inset require?
 		string requirement;
-		/// What should be inserted into the preamble
-		string preamble;
+		/// Identify the preamble snippet using \c preambleName.
+		string preambleName;
 		///
 		void readFormat(LyXLex &);
 		/// This constructor has to default a command for safety reasons!
@@ -76,17 +76,25 @@ class ExternalTemplateManager : boost::noncopyable {
 public:
 	/// Map from the LyX name of the template to the template structure
 	typedef std::map<string, ExternalTemplate> Templates;
+	/** Map from the LyX name of the preamble definition to the preamble
+	 *  definition itself.
+	 */
+	typedef std::map<string, string> PreambleDefs;
 
 	static ExternalTemplateManager & get();
 	Templates & getTemplates();
 	Templates const & getTemplates() const;
 	/// return the template by LyX name
 	ExternalTemplate const & getTemplateByName(string const & name);
+	string const getPreambleDefByName(string const & name) const;
 private:
 	ExternalTemplateManager();
 	void readTemplates(string const & path);
-	void dumpTemplates() const;
+	void dumpTemplates(std::ostream &) const;
+	void dumpPreambleDefs(std::ostream &) const;
+
 	Templates templates;
+	PreambleDefs preambledefs;
 };
 
 #endif

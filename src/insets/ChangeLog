@@ -12,6 +12,16 @@
 
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
+	* ExternalTemplate.[Ch]: store the preamble snippets in a separate
+	structure outside of the Format struct. Format::preambleName refers to
+	an item in the map of all preamble snippets.
+	Make use of the new Debug::EXTERNAL flag.
+
+	* insetexternal.C: make use of the new Debug::EXTERNAL flag.
+	(validate): Small change due to the changed storage of preamble snippets.
+
+2003-09-04  Angus Leeming  <leeming@lyx.org>
+
 	* insetgraphics.C: #include "support/os.h"
 
 	* insetfoot.h: move #include "LaTeXFeatures.h" out of the header file.

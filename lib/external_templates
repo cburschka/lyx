@@ -1,5 +1,17 @@
 # Basic External Templates for LyX
 
+PreambleDef XFigInput
+	%% This inputs the file if it exists, else prints a warning
+	%% encased in an fbox.
+	\def\stripprefix#1>{}
+	\newcommand*{\xfiginput}[1]{%
+		\edef\tempfilename{#1}%
+		\InputIfFileExists{#1}{}{%
+			\fbox{Could not find
+			\ttfamily\expandafter\stripprefix\meaning\tempfilename
+		!}}}
+PreambleDefEnd
+
 Template XFig
 	GuiName "[XFig: $$Basename]"
 	HelpText
@@ -15,34 +27,14 @@ Template XFig
 		UpdateFormat pstex
 		UpdateResult "$$Basename.pstex_t"
 		Requirement "graphicx"
-		Preamble
-		%% This inputs the file if it exists, else prints a warning
-		%% encased in an fbox.
-		\def\stripprefix#1>{}
-		\newcommand*{\xfiginput}[1]{%
-        		\edef\tempfilename{#1}%
-        		\InputIfFileExists{#1}{}{%
-        		\fbox{Could not find
-			\ttfamily\expandafter\stripprefix\meaning\tempfilename
-		!}}}
-		PreambleEnd
+		Preamble XFigInput
 	FormatEnd
 	Format PDFLaTeX
 		Product "\\xfiginput{$$Basename.pdftex_t}"
 		UpdateFormat pdftex
 		UpdateResult "$$Basename.pdftex_t"
 		Requirement "graphicx"	
-		Preamble
-		%% This inputs the file if it exists, else prints a warning
-		%% encased in an fbox.
-		\def\stripprefix#1>{}
-		\newcommand*{\xfiginput}[1]{%
-        		\edef\tempfilename{#1}%
-        		\InputIfFileExists{#1}{}{%
-        		\fbox{Could not find
-			\ttfamily\expandafter\stripprefix\meaning\tempfilename
-		!}}}
-		PreambleEnd
+		Preamble XFigInput
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"

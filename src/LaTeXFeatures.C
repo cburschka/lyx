@@ -302,12 +302,6 @@ string const LaTeXFeatures::getPackages() const
 		packages << "]{natbib}\n";
 	}
 
-	FeaturesList::const_iterator pit  = preamble_snippets.begin();
-	FeaturesList::const_iterator pend = preamble_snippets.end();
-	for (; pit != pend; ++pit) {
-		packages << *pit << '\n';
-	}
-
 	return STRCONV(packages.str());
 }
 
@@ -315,6 +309,14 @@ string const LaTeXFeatures::getPackages() const
 string const LaTeXFeatures::getMacros() const
 {
 	ostringstream macros;
+
+	if (!preamble_snippets.empty())
+		macros << '\n';
+	FeaturesList::const_iterator pit  = preamble_snippets.begin();
+	FeaturesList::const_iterator pend = preamble_snippets.end();
+	for (; pit != pend; ++pit) {
+		macros << *pit << '\n';
+	}
 
 	if (isRequired("LyX"))
 		macros << lyx_def << '\n';

@@ -71,7 +71,9 @@ struct Debug {
 		///
 		GRAPHICS   = (1 << 21),
 		/// change tracking
-		CHANGES    = (1 << 22)
+		CHANGES    = (1 << 22),
+		///
+		EXTERNAL   = (1 << 23)
 	};
 	///
 	static type const ANY;

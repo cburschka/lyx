@@ -17,11 +17,12 @@
 #include "support/path.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/path_defines.h"
 
 #include <algorithm>
 
-using namespace lyx::support;
+namespace support = lyx::support;
 
 using std::endl;
 using std::ostream;
@@ -41,28 +42,50 @@ ExternalTemplate::FormatTemplate::FormatTemplate()
 ExternalTemplateManager::ExternalTemplateManager()
 {
 	// gimp gnuchess gnuplot ical netscape tetris xpaint
-	readTemplates(user_lyxdir());
-	if (lyxerr.debugging())
-		dumpTemplates();
+	readTemplates(support::user_lyxdir());
+	if (lyxerr.debugging(Debug::EXTERNAL)) {
+		dumpPreambleDefs(lyxerr);
+		lyxerr << '\n';
+		dumpTemplates(lyxerr);
+	}
 }
+
+
+class dumpPreambleDef {
+public:
+	typedef ExternalTemplateManager::PreambleDefs::value_type value_type;
+
+	dumpPreambleDef(ostream & o) : ost(o) {}
+
+	void operator()(value_type const & vt) {
+		ost << "PreambleDef " << vt.first << '\n'
+		    << vt.second
+		    << "PreambleDefEnd" << endl;
+	}
+
+private:
+	ostream & ost;
+};
 
 
 class dumpTemplate {
 public:
-	dumpTemplate(ostream & o)
-		: ost(o) {}
-	void operator()(ExternalTemplateManager::Templates::value_type const & vt) {
+	typedef ExternalTemplateManager::Templates::value_type value_type;
+
+	dumpTemplate(ostream & o) : ost(o) {}
+
+	void operator()(value_type const & vt) {
 		ExternalTemplate const & et = vt.second;
 
-		ost << "Template " << et.lyxName << "\n"
-		    << "\tGuiName " << et.guiName << "\n"
+		ost << "Template " << et.lyxName << '\n'
+		    << "\tGuiName " << et.guiName << '\n'
 		    << "\tHelpText\n"
 		    << et.helpText
 		    << "\tHelpTextEnd\n"
-		    << "\tInputFormat " << et.inputFormat << "\n"
-		    << "\tFileFilter " << et.fileRegExp << "\n"
-		    << "\tEditCommand " << et.editCommand << "\n"
-		    << "\tAutomaticProduction " << et.automaticProduction << "\n";
+		    << "\tInputFormat " << et.inputFormat << '\n'
+		    << "\tFileFilter " << et.fileRegExp << '\n'
+		    << "\tEditCommand " << et.editCommand << '\n'
+		    << "\tAutomaticProduction " << et.automaticProduction << '\n';
 		et.dumpFormats(ost);
 		ost << "TemplateEnd" << endl;
 
@@ -74,18 +97,18 @@ private:
 
 class dumpFormat {
 public:
-	dumpFormat(ostream & o)
-		: ost(o) {}
-	void operator()(ExternalTemplate::Formats::value_type const & vt) const{
+	typedef ExternalTemplate::Formats::value_type value_type;
+
+	dumpFormat(ostream & o) : ost(o) {}
+
+	void operator()(value_type const & vt) const{
 		ExternalTemplate::FormatTemplate const & ft = vt.second;
-		ost << "\tFormat " << vt.first << "\n"
-		    << "\t\tProduct " << ft.product << "\n"
-		    << "\t\tUpdateFormat " << ft.updateFormat << "\n"
-		    << "\t\tUpdateResult " << ft.updateResult << "\n"
-		    << "\t\tRequirement " << ft.requirement << "\n"
-		    << "\t\tPreamble\n"
-		    << ft.preamble
-		    << "\t\tPreambleEnd\n"
+		ost << "\tFormat " << vt.first << '\n'
+		    << "\t\tProduct " << ft.product << '\n'
+		    << "\t\tUpdateFormat " << ft.updateFormat << '\n'
+		    << "\t\tUpdateResult " << ft.updateResult << '\n'
+		    << "\t\tRequirement " << ft.requirement << '\n'
+		    << "\t\tPreamble " << ft.preambleName << '\n'
 		    << "\tFormatEnd\n";
 	}
 private:
@@ -99,9 +122,15 @@ void ExternalTemplate::dumpFormats(ostream & os) const
 }
 
 
-void ExternalTemplateManager::dumpTemplates() const
+void ExternalTemplateManager::dumpPreambleDefs(ostream & os) const
 {
-	for_each(templates.begin(), templates.end(), dumpTemplate(lyxerr));
+	for_each(preambledefs.begin(), preambledefs.end(), dumpPreambleDef(os));
+}
+
+
+void ExternalTemplateManager::dumpTemplates(ostream & os) const
+{
+	for_each(templates.begin(), templates.end(), dumpTemplate(os));
 }
 
 
@@ -132,47 +161,75 @@ ExternalTemplate const & ExternalTemplateManager::getTemplateByName(string const
 }
 
 
+string const
+ExternalTemplateManager::getPreambleDefByName(string const & name) const
+{
+	string const trimmed_name = support::trim(name);
+	if (trimmed_name.empty())
+		return string();
+
+	PreambleDefs::const_iterator it = preambledefs.find(trimmed_name);
+	if (it == preambledefs.end())
+		return string();
+
+	return it->second;
+}
+
+
 void ExternalTemplateManager::readTemplates(string const & path)
 {
-	Path p(path);
+	support::Path p(path);
 
 	enum TemplateTags {
-		TM_TEMPLATE = 1,
-		TM_END
+		TM_PREAMBLEDEF = 1,
+		TM_PREAMBLEDEF_END,
+		TM_TEMPLATE,
+		TM_TEMPLATE_END
 	};
 
 	keyword_item templatetags[] = {
+		{ "preambledef", TM_PREAMBLEDEF },
+		{ "preambledefend", TM_PREAMBLEDEF_END },
 		{ "template", TM_TEMPLATE },
-		{ "templateend", TM_END }
+		{ "templateend", TM_TEMPLATE_END }
 	};
 
-	string filename = LibFileSearch("", "external_templates");
-	if (filename.empty()) {
-		lyxerr << "ExternalTemplateManager::readTemplates: "
-			"No template file" << endl;
+	LyXLex lex(templatetags, TM_TEMPLATE_END);
+
+	string filename = support::LibFileSearch("", "external_templates");
+	if (filename.empty() || !lex.setFile(filename)) {
+		lex.printError("ExternalTemplateManager::readTemplates: "
+			       "No template file");
 		return;
 	}
 
-	LyXLex lex(templatetags, TM_END);
-	if (!lex.setFile(filename)) {
-		lyxerr << "ExternalTemplateManager::readTemplates: "
-			"No template file" << endl;
-		return;
-	}
+	char const * const preamble_end_tag =
+		templatetags[TM_PREAMBLEDEF_END-1].tag;
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {
+		case TM_PREAMBLEDEF: {
+			lex.next();
+			string const name = lex.getString();
+			preambledefs[name] = lex.getLongString(preamble_end_tag);
+		}
+		break;
+
 		case TM_TEMPLATE: {
 			lex.next();
-			string const temp = lex.getString();
-			ExternalTemplate & tmp = templates[temp];
-			tmp.lyxName = temp;
+			string const name = lex.getString();
+			ExternalTemplate & tmp = templates[name];
+			tmp.lyxName = name;
 			tmp.readTemplate(lex);
 		}
 		break;
 
-		case TM_END:
+		case TM_TEMPLATE_END:
 			lex.printError("Warning: End outside Template.");
+		break;
+
+		case TM_PREAMBLEDEF_END:
+			lex.printError("Warning: End outside PreambleDef.");
 		break;
 		}
 	}
@@ -247,7 +304,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 		default:
 			lex.printError("ExternalTemplate::readTemplate: "
 				       "Wrong tag: $$Token");
-			Assert(false);
+			support::Assert(false);
 			break;
 		}
 	}
@@ -299,12 +356,11 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 			break;
 
 		case FO_PREAMBLE:
-			preamble = lex.getLongString("preambleend");
+			lex.next(true);
+			preambleName = lex.getString();
 			break;
 
 		case FO_END:
-			if (lyxerr.debugging())
-				lex.printError("FormatEnd");
 			return;
 		}
 	}

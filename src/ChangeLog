@@ -1,3 +1,10 @@
+2003-09-04  Angus Leeming  <leeming@lyx.org>
+
+	* LaTeXFeatures.C (getMacros): move the output of the preamble_snippets
+	here (from getPackages).
+
+	* debug.[Ch]: add a new EXTERNAL tag.
+
 2003-09-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* text2.C (cursorEnd): simplify
