@@ -31,6 +31,7 @@ using std::istream;
 using std::getline;
 using std::max;
 using std::endl;
+using std::vector;
 
 static int const WIDTH_OF_LINE = 5;
 
