@@ -177,16 +177,22 @@ void LyXText::updateParPositions()
 {
 	ParagraphList::iterator pit = paragraphs().begin();
 	ParagraphList::iterator end = paragraphs().end();
-	for (height = 0; pit != end; ++pit) {
-		pit->y = height;
-		height += pit->height;
+	for (height_ = 0; pit != end; ++pit) {
+		pit->y = height_;
+		height_ += pit->height;
 	}
 }
 
 
-int LyXText::textWidth() const
+int LyXText::width() const
 {
-	return textwidth_;
+	return width_;
+}
+
+
+int LyXText::height() const
+{
+	return height_;
 }
 
 
@@ -355,7 +361,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		RowList::iterator rit = pit->rows.begin();
 		RowList::iterator end = pit->rows.end();
 #warning This is wrong.
-		int minfill = textwidth_;
+		int minfill = maxwidth_;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
@@ -364,14 +370,14 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		x += minfill;
 #endif
 		// also wrong, but much shorter.
-		x += textwidth_ / 2;
+		x += maxwidth_ / 2;
 		break;
 	}
 	}
 	
 
 	if (!pit->params().leftIndent().zero())
-		x += pit->params().leftIndent().inPixels(textWidth());
+		x += pit->params().leftIndent().inPixels(maxwidth_);
 
 	LyXAlignment align;
 
@@ -457,7 +463,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	}
 
 	// maximum pixel width of a row
-	int width = textWidth() - rightMargin(*pit); // - leftMargin(pit, row);
+	int width = maxwidth_ - rightMargin(*pit); // - leftMargin(pit, row);
 	if (width < 0) {
 		row.endpos(end);
 		return;
@@ -1007,11 +1013,11 @@ void LyXText::charInserted()
 
 
 RowMetrics
-LyXText::prepareToPrint(ParagraphList::iterator pit, Row const & row) const
+LyXText::computeRowMetrics(ParagraphList::iterator pit, Row const & row) const
 {
 	RowMetrics result;
 
-	double w = width - row.width();
+	double w = width_ - row.width();
 
 	bool const is_rtl = isRTL(*pit);
 	if (is_rtl)
@@ -1048,7 +1054,7 @@ LyXText::prepareToPrint(ParagraphList::iterator pit, Row const & row) const
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
-	} else if (int(row.width()) < textWidth()) {
+	} else if (int(row.width()) < maxwidth_) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
 		int align;
@@ -1551,7 +1557,7 @@ int LyXText::parOffset(ParagraphList::iterator pit) const
 void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 {
 	// remove rows of paragraph, keep track of height changes
-	height -= pit->height;
+	height_ -= pit->height;
 
 	// clear old data
 	pit->rows.clear();
@@ -1563,7 +1569,7 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	InsetList::iterator iend = pit->insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
-		int const w = textWidth() - leftMargin(pit) - rightMargin(*pit);
+		int const w = maxwidth_ - leftMargin(pit) - rightMargin(*pit);
 		MetricsInfo mi(bv(), getFont(pit, ii->pos), w);
 		ii->inset->metrics(mi, dim);
 	}
@@ -1583,7 +1589,7 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		z = row.endpos();
 	} while (z < pit->size());
 
-	height += pit->height;
+	height_ += pit->height;
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
 }
 
@@ -1615,19 +1621,20 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
 	//BOOST_ASSERT(mi.base.textwidth);
 	if (mi.base.textwidth)
-		textwidth_ = mi.base.textwidth;
+		maxwidth_ = mi.base.textwidth;
 	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
-	//	<< " textWidth: " << textWidth() << "\nfont: " << mi.base.font << endl;
+	//<< " maxWidth: " << maxwidth << "\nfont: " << mi.base.font
+	//<< endl;
 
 	// Rebuild row cache. This recomputes height as well.
 	redoParagraphs(paragraphs().begin(), paragraphs().end());
 
-	width = maxParagraphWidth(paragraphs());
+	width_ = maxParagraphWidth(paragraphs());
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
-	dim.des = height - dim.asc;
-	dim.wid = width;
+	dim.des = height_ - dim.asc;
+	dim.wid = width_;
 }
 
 
@@ -1804,7 +1811,7 @@ int LyXText::ascent() const
 
 int LyXText::descent() const
 {
-	return height - firstRow()->ascent_of_text();
+	return height_ - firstRow()->ascent_of_text();
 }
 
 
@@ -1819,7 +1826,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 	pos_type pos = cur.pos();
 	pos_type cursor_vpos = 0;
 
-	RowMetrics const m = prepareToPrint(pit, row);
+	RowMetrics const m = computeRowMetrics(pit, row);
 	double x = m.x;
 
 	pos_type const row_pos  = row.pos();
@@ -2040,8 +2047,8 @@ int LyXText::dist(int x, int y) const
 
 	if (x < xo_)
 		xx = xo_ - x;
-	else if (x > xo_ + width)
-		xx = x - xo_ - width;
+	else if (x > xo_ + width_)
+		xx = x - xo_ - width_;
 
 	if (y < yo_ - ascent())
 		yy = yo_ - ascent() - y;

@@ -319,8 +319,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		connectBuffer(*buffer_);
 
 		buffer_->text().init(bv_);
-		buffer_->text().textwidth_ = workarea().workWidth();
-		buffer_->text().fullRebreak();
 
 		// If we don't have a text object for this, we make one
 		if (bv_->text() == 0)
@@ -404,8 +402,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	selendpos = cur.selEnd().pos();
 	sel = cur.selection();
 	mark_set = cur.mark();
-	text->textwidth_ = bv_->workWidth();
-	text->fullRebreak();
+	text->init(bv_);
 	update();
 
 	if (par != -1) {
@@ -448,10 +445,11 @@ void BufferView::Pimpl::updateScrollbar()
 
 	LyXText const & t = *bv_->text();
 
-	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", top_y() "
-		<< top_y() << ", default height " << defaultRowHeight() << endl;
+	lyxerr[Debug::GUI] << "Updating scrollbar: h" << t.height()
+			   << ", top_y()" << top_y() << ", default height "
+			   << defaultRowHeight() << endl;
 
-	workarea().setScrollbarParams(t.height, top_y(), defaultRowHeight());
+	workarea().setScrollbarParams(t.height(), top_y(), defaultRowHeight());
 }
 
 
@@ -499,13 +497,13 @@ void BufferView::Pimpl::scroll(int lines)
 	int new_top_y = top_y() + lines * line_height;
 
 	// Restrict to a valid value
-	new_top_y = std::min(t->height - 4 * line_height, new_top_y);
+	new_top_y = std::min(t->height() - 4 * line_height, new_top_y);
 	new_top_y = std::max(0, new_top_y);
 
 	scrollDocView(new_top_y);
 
 	// Update the scrollbar.
-	workarea().setScrollbarParams(t->height, top_y(), defaultRowHeight());
+	workarea().setScrollbarParams(t->height(), top_y(), defaultRowHeight());
 }
 
 

@@ -120,12 +120,12 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      ParagraphList::iterator pit, RowList::iterator rit,
      int xo, int yo)
 	: bv_(bv), pain_(bv_.painter()), text_(text), rit_(rit), row_(*rit),
-	  pit_(pit), xo_(xo), yo_(yo), width_(text_.width)
+	  pit_(pit), xo_(xo), yo_(yo), width_(text_.width())
 {
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo << " yo: " << yo
 	//	<< " pit->y: " << pit_->y
 	//	<< " row: " << (pit_->size() ? pit_->getChar(row_.pos()) : 'X') << endl;
-	RowMetrics m = text_.prepareToPrint(pit, row_);
+	RowMetrics m = text_.computeRowMetrics(pit, row_);
 	x_ = m.x + xo_;
 	separator_ = m.separator;
 	hfill_ = m.hfill;

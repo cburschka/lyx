@@ -72,8 +72,8 @@ using std::string;
 
 
 LyXText::LyXText(BufferView * bv, bool in_inset)
-	: height(0), width(0), textwidth_(bv ? bv->workWidth() : 100),
-		background_color_(LColor::background),
+	: height_(0), width_(0), maxwidth_(bv ? bv->workWidth() : 100),
+	  background_color_(LColor::background),
 	  bv_owner(bv), in_inset_(in_inset), xo_(0), yo_(0)
 {}
 
@@ -87,8 +87,9 @@ void LyXText::init(BufferView * bv)
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit)
 		pit->rows.clear();
 
-	width = bv->workWidth();
-	height = 0;
+	maxwidth_ = bv->workWidth();
+	width_ = maxwidth_;
+	height_ = 0;
 
 	current_font = getFont(beg, 0);
 
@@ -1197,7 +1198,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	Row const & row, int & x, bool & boundary) const
 {
 	x -= xo_;
-	RowMetrics const r = prepareToPrint(pit, row);
+	RowMetrics const r = computeRowMetrics(pit, row);
 	
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();

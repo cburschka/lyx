@@ -290,9 +290,12 @@ public:
 	///
 	void gotoInset(LCursor & cur, InsetOld_code code, bool same_content);
 
-	/// current max text width
-	int textWidth() const;
+	/// current text width
+	int width() const;
 
+	/// current text heigth
+	int height() const;
+	
 	/// updates all counters
 	void updateCounters();
 	/// Returns an inset if inset was hit, or 0 if not.
@@ -321,7 +324,7 @@ public:
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
 	RowMetrics
-	prepareToPrint(ParagraphList::iterator pit, Row const & row) const;
+	computeRowMetrics(ParagraphList::iterator pit, Row const & row) const;
 
 	/// access to our paragraphs
 	ParagraphList & paragraphs() const;
@@ -376,13 +379,13 @@ public:
 
 	friend class LyXScreen;
 
+	///
+	unsigned int width_;
+	///
+	int maxwidth_;
+	///
+	int height_;
 public:
-	///
-	int height;
-	///
-	unsigned int width;
-	///
-	int textwidth_;
 	/// the current font settings
 	LyXFont current_font;
 	/// the current font
