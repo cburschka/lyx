@@ -1,5 +1,8 @@
 2002-12-02  Angus Leeming  <leeming@lyx.org>
 
+	* FormIndex.C (update): if the contents aren't empty, then activate the
+	Ok, Apply buttons on update.
+
 	* FormMathsDeco.[Ch]:
 	* forms/form_maths_deco.fd: removed.
 
