@@ -118,8 +118,8 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 	// We specialize the 95% common case:
 	if (!pit->getDepth()) {
 		LyXFont f = pit->getFontSettings(params, pos);
-		if (pit->inInset())
-			pit->inInset()->getDrawFont(f);
+		if (in_inset_)
+			f.realize(font_);
 		if (layout->labeltype == LABEL_MANUAL && pos < body_pos)
 			return f.realize(layout->reslabelfont);
 		else
@@ -136,8 +136,8 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 	LyXFont font = pit->getFontSettings(params, pos);
 	font.realize(layoutfont);
 
-	if (pit->inInset())
-		pit->inInset()->getDrawFont(font);
+	if (in_inset_)
+		font.realize(font_);
 
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));

@@ -111,18 +111,6 @@ void InsetNote::setButtonLabel()
 }
 
 
-void InsetNote::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCollapsable::metrics(mi, dim);
-	// Contrary to Greyedout, these cannot be construed as part of the
-	// running text: make them stand on their own
-	if (params_.type == "Note" || params_.type == "Comment")
-		if (isOpen())
-			dim.wid = mi.base.textwidth;
-	dim_ = dim;
-}
-
-
 bool InsetNote::showInsetDialog(BufferView * bv) const
 {
 	InsetNoteMailer("note", const_cast<InsetNote &>(*this)).showDialog(bv);

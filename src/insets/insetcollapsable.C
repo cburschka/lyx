@@ -375,12 +375,6 @@ int InsetCollapsable::scroll(bool recursive) const
 }
 
 
-ParagraphList * InsetCollapsable::getParagraphs(int i) const
-{
-	return inset.getParagraphs(i);
-}
-
-
 int InsetCollapsable::numParagraphs() const
 {
 	return inset.numParagraphs();

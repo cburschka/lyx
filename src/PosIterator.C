@@ -33,12 +33,11 @@ PosIterator & PosIterator::operator++()
 		PosIteratorItem & p = stack_.back();
 		
 		if (p.pos < p.pit->size()) {
-			InsetOld * inset = p.pit->getInset(p.pos);
-			if (inset) {
-				ParagraphList * pl = inset->getParagraphs(p.index);
-				if (pl) {
+			if (InsetOld * inset = p.pit->getInset(p.pos)) {
+				if (LyXText * text = inset->getText(p.index)) {
+					ParagraphList & pl = text->paragraphs();
 					p.index++;
-					stack_.push_back(PosIteratorItem(pl, pl->begin(), 0));
+					stack_.push_back(PosIteratorItem(&pl, pl.begin(), 0));
 					return *this;
 				}
 			}
@@ -86,10 +85,10 @@ PosIterator & PosIterator::operator--()
 	if (q.pos < q.pit->size()) {
 		InsetOld * inset = q.pit->getInset(q.pos);
 		if (inset && q.index > 0) {
-			ParagraphList *
-				pl = inset->getParagraphs(q.index - 1);
-			BOOST_ASSERT(pl);
-			stack_.push_back(PosIteratorItem(pl, prior(pl->end()), pl->back().size()));
+			LyXText * text = inset->getText(q.index - 1);
+			BOOST_ASSERT(text);
+			ParagraphList & pl = text->paragraphs();
+			stack_.push_back(PosIteratorItem(&pl, prior(pl.end()), pl.back().size()));
 		}
 	}
 	return *this;
@@ -156,7 +155,8 @@ int distance(PosIterator const & cur, PosIterator const & end)
 {
 	PosIterator p = cur;
 	int count = 0;
-	for (; p != end; ++p, ++count);
+	for (; p != end; ++p, ++count)
+		;
 	return count;
 }
 

@@ -110,26 +110,31 @@ ParIterator & ParIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index) {
 			++(*p.index);
-			ParagraphList * plist = (*p.it)->inset->getParagraphs(*p.index);
-			if (plist && !plist->empty()) {
-				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
-				return *this;
+			if (LyXText * text = (*p.it)->inset->getText(*p.index)) {
+				ParagraphList & plist = text->paragraphs();
+				if (!plist.empty()) {
+					pimpl_->positions.push_back(ParPosition(plist.begin(), plist));
+					return *this;
+				}
 			}
 			++(*p.it);
-		} else
+		} else {
 			// The following line is needed because the value of
 			// p.it may be invalid if inset was added/removed to
 			// the paragraph pointed by the iterator
 			p.it.reset(p.pit->insetlist.begin());
+		}
 
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.pit->insetlist.end();
 		for (; *p.it != end; ++(*p.it)) {
-			ParagraphList * plist = (*p.it)->inset->getParagraphs(0);
-			if (plist && !plist->empty()) {
-				p.index.reset(0);
-				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
-				return *this;
+			if (LyXText * text = (*p.it)->inset->getText(0)) {
+				ParagraphList & plist = text->paragraphs();
+				if (!plist.empty()) {
+					p.index.reset(0);
+					pimpl_->positions.push_back(ParPosition(plist.begin(), plist));
+					return *this;
+				}
 			}
 		}
 
@@ -265,26 +270,31 @@ ParConstIterator & ParConstIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index) {
 			++(*p.index);
-			ParagraphList * plist = (*p.it)->inset->getParagraphs(*p.index);
-			if (plist && !plist->empty()) {
-				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
-				return *this;
+			if (LyXText * text = (*p.it)->inset->getText(*p.index)) {
+				ParagraphList & plist = text->paragraphs();
+				if (!plist.empty()) {
+					pimpl_->positions.push_back(ParPosition(plist.begin(), plist));
+					return *this;
+				}
 			}
 			++(*p.it);
-		} else
+		} else {
 			// The following line is needed because the value of
 			// p.it may be invalid if inset was added/removed to
 			// the paragraph pointed by the iterator
 			p.it.reset(p.pit->insetlist.begin());
+		}
 
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.pit->insetlist.end();
 		for (; *p.it != end; ++(*p.it)) {
-			ParagraphList * plist = (*p.it)->inset->getParagraphs(0);
-			if (plist && !plist->empty()) {
-				p.index.reset(0);
-				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
-				return *this;
+			if (LyXText * text = (*p.it)->inset->getText(*p.index)) {
+				ParagraphList & plist = text->paragraphs();
+				if (!plist.empty()) {
+					p.index.reset(0);
+					pimpl_->positions.push_back(ParPosition(plist.begin(), plist));
+					return *this;
+				}
 			}
 		}
 

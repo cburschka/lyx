@@ -98,8 +98,6 @@ private:
 	void init();
 	///
 	void setButtonLabel() const;
-	///
-	void setLatexFont(BufferView *);
 	/// update status on button
 	void updateStatus(bool = false) const;
 	///

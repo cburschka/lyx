@@ -1,6 +1,16 @@
 
 2003-12-03  André Pönitz  <poenitz@gmx.net>
 
+	* PosIterator.C:
+	* iterators.C:
+	* lyxtext.h:
+	* output_latex.C:
+	* paragraph_funcs.C:
+	* text.C:
+	* text2.C: use Inset::getText instead of Inset::getParagraph
+
+2003-12-03  André Pönitz  <poenitz@gmx.net>
+
 	* buffer.[Ch]:
 	* lyxtext.h:
 	* paragraph_funcs.[Ch]: consolidate parts of Buffer::read() and

@@ -564,11 +564,10 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
 	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
 	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
 	for ( ; pit != end; ++pit) {
-
-		ParagraphList * plist;
+		LyXText * text;
 		// the second '=' below is intentional
-		for (int i = 0; (plist = inset->getParagraphs(i)); ++i)
-			if (plist == &pit.plist())
+		for (int i = 0; (text = inset->getText(i)); ++i)
+			if (&text->paragraphs() == &pit.plist())
 				return pit.outerPar();
 
 		InsetList::iterator ii = pit->insetlist.begin();
@@ -588,10 +587,10 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();
 	for ( ; pit != end; ++pit) {
-		ParagraphList * plist;
+		LyXText * text;
 		// the second '=' below is intentional
-		for (int i = 0; (plist = inset->getParagraphs(i)); ++i)
-			if (plist == &pit.plist())
+		for (int i = 0; (text = inset->getText(i)); ++i)
+			if (&text->paragraphs() == &pit.plist())
 				return *pit.pit();
 
 		InsetList::const_iterator ii = pit->insetlist.begin();

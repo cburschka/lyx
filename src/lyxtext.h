@@ -426,6 +426,9 @@ public:
 	mutable int xo_;
 	mutable int yo_;
 
+	/// our 'outermost' Font
+	LyXFont font_;
+
 
 private:
 	/// rebreaks the given par

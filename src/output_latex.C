@@ -426,7 +426,7 @@ TeXOnePar(Buffer const & buf,
 	return ++pit;
 }
 
-} //anon namespace
+} // anon namespace
 
 //
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end

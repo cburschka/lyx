@@ -1965,14 +1965,6 @@ void InsetTabular::getSelection(int & srow, int & erow,
 }
 
 
-ParagraphList * InsetTabular::getParagraphs(int i) const
-{
-	return i < tabular.getNumberOfCells()
-		? tabular.getCellInset(i).getParagraphs(0)
-		: 0;
-}
-
-
 int InsetTabular::numParagraphs() const
 {
 	return tabular.getNumberOfCells();

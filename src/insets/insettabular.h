@@ -125,17 +125,15 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
-	int scroll(bool recursive=true) const;
+	int scroll(bool recursive = true) const;
 	///
-	void scroll(BufferView *bv, float sx) const {
+	void scroll(BufferView * bv, float sx) const {
 		UpdatableInset::scroll(bv, sx);
 	}
 	///
-	void scroll(BufferView *bv, int offset) const {
+	void scroll(BufferView * bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
-	///
-	ParagraphList * getParagraphs(int) const;
 	///
 	int numParagraphs() const;
 	///

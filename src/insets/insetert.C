@@ -385,12 +385,10 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 
 void InsetERT::edit(BufferView * bv, bool left)
 {
-	if (status_ == Inlined) {
+	if (status_ == Inlined)
 		inset.edit(bv, left);
-	} else {
+	else
 		InsetCollapsable::edit(bv, left);
-	}
-	setLatexFont(bv);
 	updateStatus();
 }
 
@@ -399,9 +397,6 @@ DispatchResult
 InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
-
-	if (inset.paragraphs().begin()->empty())
-		setLatexFont(bv);
 
 	switch (cmd.action) {
 
@@ -428,17 +423,6 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 		bv->owner()->setLayout(inset.paragraphs().begin()->layout()->name());
 		return DispatchResult(true);
 
-	case LFUN_BREAKPARAGRAPH:
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-	case LFUN_BACKSPACE:
-	case LFUN_BACKSPACE_SKIP:
-	case LFUN_DELETE:
-	case LFUN_DELETE_SKIP:
-	case LFUN_DELETE_LINE_FORWARD:
-	case LFUN_CUT:
-		setLatexFont(bv);
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
-
 	default:
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
@@ -459,25 +443,20 @@ bool InsetERT::insetAllowed(InsetOld::Code code) const
 
 void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont tmpfont = mi.base.font;
+	getDrawFont(mi.base.font);
 	InsetCollapsable::metrics(mi, dim);
+	mi.base.font = tmpfont;
 	dim_ = dim;
 }
 
 
 void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
+	LyXFont tmpfont = pi.base.font;
+	getDrawFont(pi.base.font);
 	InsetCollapsable::draw(pi, x, y);
-}
-
-
-void InsetERT::setLatexFont(BufferView * /*bv*/)
-{
-#ifdef SET_HARD_FONT
-	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-	font.setColor(LColor::latex);
-	inset.text_.setFont(bv, font, false);
-#endif
+	pi.base.font = tmpfont;
 }
 
 

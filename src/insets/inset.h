@@ -25,7 +25,6 @@ class LColor_color;
 class FuncRequest;
 class OutputParams;
 class LyXCursor;
-class LyXFont;
 class LyXLex;
 class LyXText;
 class Painter;
@@ -223,10 +222,7 @@ public:
 	/// returns the actual scroll-value
 	virtual int scroll(bool recursive = true) const;
 
-	/// if this insets owns paragraphs (f.ex. InsetText) then it
-	/// should return it's very first one!
-	virtual ParagraphList * getParagraphs(int /*num*/) const { return 0; }
-	///
+	/// if this insets owns text cells (e.g. InsetText) return cell num
 	virtual LyXText * getText(int /*num*/) const { return 0; }
 	///
 	virtual int numParagraphs() const { return 0; }
@@ -256,8 +252,6 @@ public:
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
 	virtual bool noFontChange() const { return false; }
-	//
-	virtual void getDrawFont(LyXFont &) const {}
 
 	/// mark the inset contents as erased (for change tracking)
 	virtual void markErased() {}

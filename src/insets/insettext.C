@@ -176,14 +176,16 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
-	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	setViewCache(mi.base.bv);
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	text_.metrics(mi, dim);
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim_ = dim;
+	font_ = mi.base.font;
+	text_.font_ = mi.base.font;
 }
 
 
@@ -270,9 +272,8 @@ extern LCursor theTempCursor;
 void InsetText::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetText: edit left/right" << endl;
-	setViewCache(bv);
-
 	old_par = -1;
+	setViewCache(bv);
 
 	if (left)
 		text_.setCursorIntern(0, 0);
@@ -289,6 +290,7 @@ void InsetText::edit(BufferView * bv, int x, int y)
 {
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
+
 	sanitizeEmptyText(bv);
 	text_.setCursorFromCoordinates(x - text_.xo_, y + bv->top_y()
 				       - text_.yo_);
@@ -534,12 +536,6 @@ void InsetText::clearInset(Painter & pain, int x, int y) const
 }
 
 
-ParagraphList * InsetText::getParagraphs(int i) const
-{
-	return (i == 0) ? const_cast<ParagraphList*>(&paragraphs()) : 0;
-}
-
-
 LyXText * InsetText::getText(int i) const
 {
 	return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
@@ -574,13 +570,6 @@ void InsetText::collapseParagraphs(BufferView * bv)
 
 		mergeParagraph(bv->buffer()->params(), paragraphs(), first);
 	}
-}
-
-
-void InsetText::getDrawFont(LyXFont & font) const
-{
-	if (owner())
-		owner()->getDrawFont(font);
 }
 
 

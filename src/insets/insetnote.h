@@ -31,8 +31,6 @@ struct InsetNoteParams {
 class InsetNote : public InsetCollapsable {
 public:
 	///
-
-
 	InsetNote(BufferParams const &, std::string const &);
 	/// Copy constructor
 	InsetNote(InsetNote const &);
@@ -50,22 +48,20 @@ public:
 	void read(Buffer const & buf, LyXLex & lex);
 	///
 	void setButtonLabel();
-	///
-	void metrics(MetricsInfo &, Dimension &) const;
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	int latex(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
+	       OutputParams const &) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     OutputParams const &) const;
+	       OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    OutputParams const &) const;
+	       OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
+	       OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

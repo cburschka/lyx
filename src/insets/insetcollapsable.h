@@ -99,8 +99,6 @@ public:
 	///
 	void scroll(BufferView *bv, int offset) const;
 	///
-	ParagraphList * getParagraphs(int) const;
-	///
 	int numParagraphs() const;
 	///
 	LyXText * getText(int) const;

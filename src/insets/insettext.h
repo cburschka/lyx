@@ -15,6 +15,7 @@
 #include "updatableinset.h"
 #include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
+#include "lyxfont.h"
 #include "lyxtext.h"
 
 #include "support/types.h"
@@ -125,8 +126,6 @@ public:
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	ParagraphList * getParagraphs(int) const;
-	///
 	LyXText * getText(int) const;
 
 	/// mark as erased for change tracking
@@ -140,8 +139,6 @@ public:
 	 */
 	void markNew(bool track_changes = false);
 
-	///
-	void getDrawFont(LyXFont &) const;
 	/// append text onto the existing text
 	void appendParagraphs(Buffer * bp, ParagraphList &);
 
@@ -199,5 +196,7 @@ private:
 public:
 	///
 	mutable LyXText text_;
+	///
+	mutable LyXFont font_;
 };
 #endif

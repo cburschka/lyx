@@ -314,25 +314,25 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		align = pit->params().align();
 
 	// set the correct parindent
-	if (pos == 0) {
-		if ((layout->labeltype == LABEL_NO_LABEL
-		     || layout->labeltype == LABEL_TOP_ENVIRONMENT
-		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
-		     || (layout->labeltype == LABEL_STATIC
-			 && layout->latextype == LATEX_ENVIRONMENT
-			 && !isFirstInSequence(pit, paragraphs())))
-		    && align == LYX_ALIGN_BLOCK
-		    && !pit->params().noindent()
-			// in tabulars and ert paragraphs are never indented!
-			&& (!pit->inInset() || !pit->inInset()->owner() ||
-				(pit->inInset()->owner()->lyxCode() != InsetOld::TABULAR_CODE &&
-				 pit->inInset()->owner()->lyxCode() != InsetOld::ERT_CODE))
-		    && (pit->layout() != tclass.defaultLayout() ||
-			bv()->buffer()->params().paragraph_separation ==
-			BufferParams::PARSEP_INDENT)) {
-			x += font_metrics::signedWidth(parindent,
-						  tclass.defaultfont());
-		}
+	if (pos == 0
+	    && (layout->labeltype == LABEL_NO_LABEL
+	       || layout->labeltype == LABEL_TOP_ENVIRONMENT
+	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
+	       || (layout->labeltype == LABEL_STATIC
+	           && layout->latextype == LATEX_ENVIRONMENT
+	           && !isFirstInSequence(pit, paragraphs())))
+	    && align == LYX_ALIGN_BLOCK
+	    && !pit->params().noindent()
+	    // in tabulars and ert paragraphs are never indented!
+	    && (!pit->inInset()
+	        || !pit->inInset()->owner()
+	        || (pit->inInset()->owner()->lyxCode() != InsetOld::TABULAR_CODE
+	            && pit->inInset()->owner()->lyxCode() != InsetOld::ERT_CODE))
+	    && (pit->layout() != tclass.defaultLayout()
+	        || bv()->buffer()->params().paragraph_separation ==
+	           BufferParams::PARSEP_INDENT))
+	{
+		x += font_metrics::signedWidth(parindent, tclass.defaultfont());
 	}
 
 	return x;

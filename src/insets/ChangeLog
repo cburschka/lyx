@@ -1,3 +1,14 @@
+
+2003-12-03  André Pönitz  <poenitz@gmx.net>
+
+	* inset.h: remove getParagraphs()
+
+	* insetcollapsable.[Ch]:
+	* insetert.[Ch]:
+	* insetnote.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.C: use getText()  instead of getParagraphs()
+
 2003-12-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetert.C: fix label text updating bug
