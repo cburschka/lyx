@@ -16,7 +16,7 @@ noinst_LTLIBRARIES = libqt2moc.la
 
 nodist_libqt2moc_la_SOURCES = $(MOCFILES:.C=_moc.C)
 # The trick.
-libqt2moc_la_LINK = touch libqt2moc.la
+libqt2moc_la_LINK = touch libqt2moc.la ; echo
 
 %_moc.C: $(srcdir)/../%.h
 	$(MOC) -o $@ $<

@@ -1,10 +1,16 @@
+2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: remove duplicate entries
+
+	* forms/Makefile.am: improve link trick
+
 2005-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormPreferences.C: store all float/double values as strings.
 	lyxrc.dpi is an int value now.
-	
+
 	* xfont_loader.C: lyxrc.font_sizes is a string now.
-	
+
 	* lyx_gui.C: change getDVI() to int.
 
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
@@ -14,9 +20,9 @@
 
 2005-01-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* freebrowser.c (browser_cb): 
-	* combox.c (combox_handle, state_cb, chosen_cb): 
-	* bmtable.c (handle_bitmaptable, fl_replace_bmtable_item) 
+	* freebrowser.c (browser_cb):
+	* combox.c (combox_handle, state_cb, chosen_cb):
+	* bmtable.c (handle_bitmaptable, fl_replace_bmtable_item)
 	(fl_get_bmtable_item): Silence warnings about unused parameters.
 
 2004-12-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

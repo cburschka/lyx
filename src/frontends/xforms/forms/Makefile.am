@@ -55,7 +55,7 @@ nodist_libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
 # This is a trick so that the actual .la file never gets build,
 # so we do not need to use diskspace and time for it.
 # It is only getting linked into libxforms.la anyway.
-libfdesign_la_LINK = touch libfdesign.la
+libfdesign_la_LINK = touch libfdesign.la ; echo
 
 # These are used to generate the .[Ch] files from the .fd ones.
 SHELL = /bin/sh

@@ -3,10 +3,7 @@
 #include "lyx_forms.h"
 #include <X11/keysym.h>
 #include <X11/X.h>
-#include <X11/X.h> // Window
 #include <X11/Xlib.h>
-#include <X11/Xlib.h> // for Pixmap
-#include <X11/Xlib.h> // for Pixmap, GC
 #include <X11/xpm.h>
 
 #include <boost/assert.hpp>
