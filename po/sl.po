@@ -1,12 +1,12 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.56 2002/11/21 21:23:07 larsbj Exp $
+# $Id: sl.po,v 1.57 2002/11/25 01:51:36 larsbj Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.7pre1\n"
-"POT-Creation-Date: 2002-11-21 20:06+0100\n"
+"POT-Creation-Date: 2002-11-25 02:15+0100\n"
 "PO-Revision-Date: 2002-11-21 21:15+0100\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -28,155 +28,171 @@ msgstr "Pojdi odstavek navzgor"
 msgid " paragraphs"
 msgstr "Odstavek"
 
-#. if the textclass wasn't loaded properly
-#. we need to either substitute another
-#. or stop loading the file.
-#. I can substitute but I don't see how I can
-#. stop loading... ideas??  ARRae980418
-#: src/buffer.C:363 src/buffer.C:375 src/buffer.C:622
+#: src/buffer.C:364 src/buffer.C:367 src/buffer.C:381 src/buffer.C:384
+#: src/buffer.C:641 src/buffer.C:646
 msgid "Textclass Loading Error!"
 msgstr "Napaka pri nalaganju besedilnega razreda!"
 
-#: src/buffer.C:364 src/buffer.C:376
+#: src/buffer.C:365 src/buffer.C:382
 #, fuzzy, c-format
 msgid "When reading %1$s"
 msgstr "GlavaProsojnice"
 
-#: src/buffer.C:368
+#: src/buffer.C:368 src/buffer.C:385
+#, fuzzy
+msgid "When reading "
+msgstr "GlavaProsojnice"
+
+#: src/buffer.C:373
 #, fuzzy
 msgid "Encountered "
 msgstr "Sredina"
 
-#: src/buffer.C:370
+#: src/buffer.C:375
 #, fuzzy
 msgid "one unknown token"
 msgstr "Neznana akcija"
 
-#: src/buffer.C:373
+#: src/buffer.C:378
 #, fuzzy
 msgid " unknown tokens"
 msgstr "Neznana akcija"
 
-#: src/buffer.C:611
+#: src/buffer.C:622 src/buffer.C:627
 msgid "Textclass error"
 msgstr "Napaka v razredu besedila"
 
-#: src/buffer.C:612
+#: src/buffer.C:623
 #, fuzzy, c-format
 msgid "The document uses an unknown textclass \"%1$s\"."
 msgstr "Spis uporablja neznani razred besedila \""
 
-#: src/buffer.C:613
+#: src/buffer.C:624 src/buffer.C:630
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX ne bo mogel izdelati pravilnega izhoda."
 
-#: src/buffer.C:623
+#: src/buffer.C:628
+#, fuzzy
+msgid "The document uses an unknown textclass "
+msgstr "Spis uporablja neznani razred besedila \""
+
+#: src/buffer.C:642
 #, fuzzy, c-format
 msgid "Can't load textclass %1$s"
 msgstr "Ni moè nalo¾iti besedilnega razreda "
 
-#: src/buffer.C:625
+#: src/buffer.C:644 src/buffer.C:649
 msgid "-- substituting default"
 msgstr "-- zamenjana privzeta vrednost"
 
-#: src/buffer.C:929
+#: src/buffer.C:647
+#, fuzzy
+msgid "Can't load textclass "
+msgstr "Ni moè nalo¾iti besedilnega razreda "
+
+#: src/buffer.C:955
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznana akcija"
 
+#: src/buffer.C:959
+#, fuzzy
+msgid "Unknown token: "
+msgstr "Neznana akcija"
+
 #. future format
-#: src/buffer.C:1152 src/buffer.C:1205
+#: src/buffer.C:1184 src/buffer.C:1237
 msgid "Warning!"
 msgstr "Pozor!"
 
-#: src/buffer.C:1153
+#: src/buffer.C:1185
 msgid ""
 "The file was created with a newer version ofLyX. This is likely to cause "
 "problems."
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1159 src/buffer.C:1167 src/buffer.C:1178 src/buffer.C:1211
-#: src/buffer.C:1214
+#: src/buffer.C:1191 src/buffer.C:1199 src/buffer.C:1210 src/buffer.C:1243
+#: src/buffer.C:1246
 msgid "ERROR!"
 msgstr "NAPAKA!"
 
-#: src/buffer.C:1160
+#: src/buffer.C:1192
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Najden stari format datoteke. Preberite ga z LyX 0.10.x!"
 
-#: src/buffer.C:1168
+#: src/buffer.C:1200
 msgid "Can't find conversion script."
 msgstr ""
 
-#: src/buffer.C:1179
+#: src/buffer.C:1211
 msgid "An error occured while running the conversion script."
 msgstr ""
 
-#: src/buffer.C:1206
+#: src/buffer.C:1238
 msgid "Reading of document is not complete"
 msgstr "Branje spisa ni dokonèano"
 
-#: src/buffer.C:1207
+#: src/buffer.C:1239
 msgid "Maybe the document is truncated"
 msgstr "Morda je spis odrezan"
 
-#: src/buffer.C:1211
+#: src/buffer.C:1243
 msgid "Not a LyX file!"
 msgstr "To ni datoteka za LyX!"
 
-#: src/buffer.C:1214
+#: src/buffer.C:1246
 msgid "Unable to read file!"
 msgstr "Datoteke ni moè prebrati!"
 
-#: src/buffer.C:1471 src/ext_l10n.h:222
+#: src/buffer.C:1503 src/ext_l10n.h:222
 msgid "Abstract"
 msgstr "Povzetek"
 
-#: src/buffer.C:1474
+#: src/buffer.C:1506
 #, fuzzy
 msgid "Abstract: "
 msgstr "Povzetek"
 
-#: src/buffer.C:1482 src/ext_l10n.h:415
+#: src/buffer.C:1514 src/ext_l10n.h:415
 msgid "References"
 msgstr "Sklici"
 
-#: src/buffer.C:1485
+#: src/buffer.C:1517
 #, fuzzy
 msgid "References: "
 msgstr " Sklic: "
 
-#: src/buffer.C:1599
+#: src/buffer.C:1631
 msgid "Error: Cannot write file:"
 msgstr "Napaka: Ni moè zapisati datoteke:"
 
-#: src/buffer.C:1629
+#: src/buffer.C:1661
 msgid "Error: Cannot open file: "
 msgstr "Napaka: Ni moè odpreti datoteke:"
 
-#: src/buffer.C:2209 src/buffer.C:2665
+#: src/buffer.C:2241 src/buffer.C:2697
 msgid "LYX_ERROR:"
 msgstr "NAPAKA_LYXA:"
 
-#: src/buffer.C:2209 src/buffer.C:2665
+#: src/buffer.C:2241 src/buffer.C:2697
 msgid "Cannot write file"
 msgstr "Ni moè zapisati datoteke"
 
-#: src/buffer.C:2297 src/buffer.C:2771
+#: src/buffer.C:2329 src/buffer.C:2803
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Napaka: Napaèna globina za ukaz LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3047
+#: src/buffer.C:3079
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:3060
+#: src/buffer.C:3092
 msgid "chktex did not work!"
 msgstr "chktex ni deloval!"
 
-#: src/buffer.C:3061
+#: src/buffer.C:3093
 msgid "Could not run with file:"
 msgstr "Ni moè pognati z datoteko:"
 
@@ -189,72 +205,77 @@ msgstr "Spremembe v spisu:"
 msgid "Save document?"
 msgstr "®elite shraniti spis?"
 
-#: src/bufferlist.C:313
+#: src/bufferlist.C:314
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "lyx: Sku¹a se shraniti spis %s kot..."
 
-#: src/bufferlist.C:326 src/bufferlist.C:339 src/bufferlist.C:353
+#: src/bufferlist.C:318
+#, fuzzy
+msgid "LyX: Attempting to save document "
+msgstr "lyx: Sku¹a se shraniti spis %s kot..."
+
+#: src/bufferlist.C:329 src/bufferlist.C:342 src/bufferlist.C:356
 msgid "  Save seems successful. Phew."
 msgstr "  Zdi se, da je shranjevanje uspelo. Uf."
 
-#: src/bufferlist.C:329 src/bufferlist.C:343
+#: src/bufferlist.C:332 src/bufferlist.C:346
 msgid "  Save failed! Trying..."
 msgstr "  Shranjevanje je spodletelo! Poskus..."
 
-#: src/bufferlist.C:356
+#: src/bufferlist.C:359
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Shranjevanje je spodletelo! Ojoj. Spis je izgubljen."
 
-#: src/bufferlist.C:370 src/bufferlist.C:482 src/BufferView.C:293
-#: src/BufferView.C:303 src/lyx_cb.C:214
+#: src/bufferlist.C:373 src/bufferlist.C:485 src/BufferView.C:293
+#: src/BufferView.C:303 src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Napaka!"
 
-#: src/bufferlist.C:370
+#: src/bufferlist.C:373
 #, fuzzy
 msgid "Cannot open file"
 msgstr "Ni moè pogledati datoteke"
 
-#: src/bufferlist.C:386
+#: src/bufferlist.C:389
 msgid "An emergency save of this document exists!"
 msgstr "Obstaja zasilni izvod tega spisa!"
 
-#: src/bufferlist.C:388
+#: src/bufferlist.C:391
 msgid "Try to load that instead?"
 msgstr "®elite raje poskusiti nalo¾iti to?"
 
-#: src/bufferlist.C:410
+#: src/bufferlist.C:413
 msgid "Autosave file is newer."
 msgstr "Sámoshranjena datoteka je novej¹a."
 
-#: src/bufferlist.C:412
+#: src/bufferlist.C:415
 msgid "Load that one instead?"
 msgstr "®elite raje nalo¾iti njo?"
 
-#: src/bufferlist.C:482
+#: src/bufferlist.C:485
 msgid "Unable to open template"
 msgstr "Vzorca ni moè odpreti"
 
-#: src/bufferlist.C:515 src/lyxfunc.C:1746
+#: src/bufferlist.C:518 src/lyxfunc.C:1789
 msgid "Document is already open:"
 msgstr "Spis je ¾e odprt:"
 
-#: src/bufferlist.C:517
+#: src/bufferlist.C:520
 msgid "Do you want to reload that document?"
 msgstr "®elite ta spis vnoviè nalo¾iti?"
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:546
+#: src/bufferlist.C:549
 msgid "Do you want to retrieve file under version control?"
 msgstr "Ali ¾elite odpreti spis pod nadzorom razlièic?"
 
-#: src/bufferlist.C:554
+#: src/bufferlist.C:557
 msgid "Cannot open specified file:"
 msgstr "Izbrane datoteke ni moè odpreti:"
 
-#: src/bufferlist.C:556
+#: src/bufferlist.C:559
 msgid "Create new document with this name?"
 msgstr "®elite ustvariti nov spis s tem imenom?"
 
@@ -295,39 +316,49 @@ msgstr "Nastavljen tip okolja odstavka"
 msgid "Error! unknown language"
 msgstr "Napaka! Neznan jezik"
 
-#: src/bufferview_funcs.C:162
+#: src/bufferview_funcs.C:163
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/bufferview_funcs.C:167
+#: src/bufferview_funcs.C:165
+#, fuzzy
+msgid "Font: "
+msgstr "Pisava: "
+
+#: src/bufferview_funcs.C:172
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
 #: src/bufferview_funcs.C:174
+#, fuzzy
+msgid ", Depth: "
+msgstr ", globina: "
+
+#: src/bufferview_funcs.C:184
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/bufferview_funcs.C:178 src/frontends/qt2/QDocument.C:95
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:95
 #: src/ext_l10n.h:1009
 msgid "Single"
 msgstr "Enojni"
 
-#: src/bufferview_funcs.C:181
+#: src/bufferview_funcs.C:191
 msgid "Onehalf"
 msgstr "Polovièni"
 
-#: src/bufferview_funcs.C:184 src/frontends/qt2/QDocument.C:99
+#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:99
 #: src/ext_l10n.h:1011
 msgid "Double"
 msgstr "Dvojni"
 
-#: src/bufferview_funcs.C:187
+#: src/bufferview_funcs.C:197
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/bufferview_funcs.C:197
+#: src/bufferview_funcs.C:207
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
@@ -336,169 +367,221 @@ msgstr "Odstavek"
 msgid "Formatting document..."
 msgstr "Urejanje spisa..."
 
-#: src/BufferView_pimpl.C:643
+#: src/BufferView_pimpl.C:644
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:675
+#: src/BufferView_pimpl.C:646
+msgid "Saved bookmark "
+msgstr ""
+
+#: src/BufferView_pimpl.C:680
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:853
+#: src/BufferView_pimpl.C:682
+msgid "Moved to bookmark "
+msgstr ""
+
+#: src/BufferView_pimpl.C:861
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Izberite spis za vstavitev"
 
-#: src/BufferView_pimpl.C:855 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
-#: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:109
-#: src/lyxfunc.C:1590 src/lyxfunc.C:1629 src/lyxfunc.C:1714
+#: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
+#: src/lyxfunc.C:1613 src/lyxfunc.C:1652 src/lyxfunc.C:1757
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Spisi|S"
 
-#: src/BufferView_pimpl.C:857 src/lyxfunc.C:1631 src/lyxfunc.C:1716
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1654 src/lyxfunc.C:1759
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Zgledi"
 
 # src/BufferView_pimpl.C:1460 src/frontends/xforms/FormInclude.C:192
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:870
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:871 src/lyxfunc.C:1645 src/lyxfunc.C:1733
-#: src/lyxfunc.C:1760
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1668 src/lyxfunc.C:1776
+#: src/lyxfunc.C:1803
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView_pimpl.C:883
+#: src/BufferView_pimpl.C:892
 #, fuzzy, c-format
 msgid "Inserting document %1$s ..."
 msgstr "Vstavlja se spis"
 
-#: src/BufferView_pimpl.C:888
+#: src/BufferView_pimpl.C:894
+#, fuzzy
+msgid "Inserting document "
+msgstr "Vstavlja se spis"
+
+#: src/BufferView_pimpl.C:894
+msgid " ..."
+msgstr ""
+
+#: src/BufferView_pimpl.C:901
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView_pimpl.C:892
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1713
+#, fuzzy
+msgid "Document "
+msgstr "Spis"
+
+#: src/BufferView_pimpl.C:903
+#, fuzzy
+msgid " inserted."
+msgstr "uvo¾ena."
+
+#: src/BufferView_pimpl.C:909
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
 
-#: src/BufferView_pimpl.C:1066 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:911
+#, fuzzy
+msgid "Could not insert document "
+msgstr "Spisa ni moè vstaviti"
+
+#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Napaka"
 
-#: src/BufferView_pimpl.C:1067
+#: src/BufferView_pimpl.C:1087
 msgid "Couldn't find this label"
 msgstr "Te oznake ni moè najti"
 
-#: src/BufferView_pimpl.C:1068
+#: src/BufferView_pimpl.C:1088
 msgid "in current document."
 msgstr "v trenutnem spisu."
 
-#: src/BufferView_pimpl.C:1233
+#: src/BufferView_pimpl.C:1253
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Neznana akcija"
 
-#: src/Chktex.C:86
+#: src/Chktex.C:73
 #, fuzzy, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "Opozorilo ChkTeXa #"
 
-#: src/converter.C:180 src/converter.C:215
+#: src/Chktex.C:75
+#, fuzzy
+msgid "ChkTeX warning id # "
+msgstr "Opozorilo ChkTeXa #"
+
+#: src/converter.C:181 src/converter.C:185 src/converter.C:221
 #, fuzzy
 msgid "Cannot view file"
 msgstr "Ni moè pogledati datoteke"
 
-#: src/converter.C:181
+#: src/converter.C:182
 #, fuzzy, c-format
 msgid "No information for viewing %1$s"
 msgstr "Ni podatkov za ogled "
 
-#: src/converter.C:208 src/converter.C:658
+#: src/converter.C:186
+#, fuzzy
+msgid "No information for viewing "
+msgstr "Ni podatkov za ogled "
+
+#: src/converter.C:214 src/converter.C:664
 msgid "Executing command:"
 msgstr "Izvajamo ukaz:"
 
-#: src/converter.C:216 src/converter.C:687
+#: src/converter.C:222 src/converter.C:693
 msgid "Error while executing"
 msgstr "Napaka med izvajanjem"
 
-#: src/converter.C:683
+#: src/converter.C:689
 msgid "There were errors during the Build process."
 msgstr "Med gradnjo so nastale napake."
 
-#: src/converter.C:684 src/converter.C:828 src/converter.C:889
+#: src/converter.C:690 src/converter.C:845 src/converter.C:911
 msgid "You should try to fix them."
 msgstr "Morali bi jih poskusiti odpraviti."
 
-#: src/converter.C:686
+#: src/converter.C:692
 #, fuzzy
 msgid "Cannot convert file"
 msgstr "Datoteke ni moè pretvoriti"
 
-#: src/converter.C:709
+#: src/converter.C:716 src/converter.C:719
 msgid "Error while trying to move directory:"
 msgstr "Napaka pri poskusu premaknitve imenika:"
 
-#: src/converter.C:710 src/converter.C:746
+#: src/converter.C:717 src/converter.C:759
 #, c-format
 msgid "to %1$s"
 msgstr ""
 
-#: src/converter.C:745
+#: src/converter.C:720 src/converter.C:762
+#, fuzzy
+msgid "to "
+msgstr " za "
+
+#: src/converter.C:758 src/converter.C:761
 msgid "Error while trying to move file:"
 msgstr "Napaka pri poskusu premaknitve datoteke:"
 
-#: src/converter.C:823 src/converter.C:884
+#: src/converter.C:840 src/converter.C:906
 msgid "One error detected"
 msgstr "Zaznana ena napaka"
 
-#: src/converter.C:824 src/converter.C:885
+#: src/converter.C:841 src/converter.C:907
 msgid "You should try to fix it."
 msgstr "Morali bi jo poskusiti odpraviti."
 
-#: src/converter.C:827 src/converter.C:888
+#: src/converter.C:844 src/converter.C:910
 msgid " errors detected."
 msgstr " zaznanih napak."
 
-#: src/converter.C:832
+#: src/converter.C:850
 #, fuzzy, c-format
 msgid "There were errors during running of %1$s"
 msgstr "Nastale so napake med izvajanjem "
 
-#: src/converter.C:836 src/converter.C:894
+#: src/converter.C:853
+#, fuzzy
+msgid "There were errors during running of "
+msgstr "Nastale so napake med izvajanjem "
+
+#: src/converter.C:858 src/converter.C:916
 msgid "The operation resulted in"
 msgstr "Rezultat operacije je"
 
-#: src/converter.C:837 src/converter.C:895
+#: src/converter.C:859 src/converter.C:917
 msgid "an empty file."
 msgstr "prazna datoteka."
 
-#: src/converter.C:838 src/converter.C:896
+#: src/converter.C:860 src/converter.C:918
 msgid "Resulting file is empty"
 msgstr "Rezultantna datoteka je prazna"
 
-#: src/converter.C:854
+#: src/converter.C:876
 msgid "Running LaTeX..."
 msgstr "LaTeX se izvaja..."
 
-#: src/converter.C:877
+#: src/converter.C:899
 msgid "LaTeX did not work!"
 msgstr "LaTeX ni deloval!"
 
-#: src/converter.C:878
+#: src/converter.C:900
 msgid "Missing log file:"
 msgstr "Manjka datoteka z dnevnikom:"
 
-#: src/converter.C:891
+#: src/converter.C:913
 msgid "There were errors during the LaTeX run."
 msgstr "Med izvajanjem LaTeXa so nastale napake."
 
@@ -614,9 +697,13 @@ msgstr ""
 msgid "All debugging messages"
 msgstr ""
 
-#: src/debug.C:113
+#: src/debug.C:114
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
+msgstr ""
+
+#: src/debug.C:119
+msgid "Debugging `"
 msgstr ""
 
 #: src/exporter.C:62
@@ -645,17 +732,26 @@ msgstr "Dokument izvo¾en kot "
 msgid " to file `"
 msgstr " v datoteko ,"
 
-#: src/frontends/controllers/biblio.C:100
+#: src/frontends/controllers/biblio.C:101
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
 
-#: src/frontends/controllers/biblio.C:103
+#: src/frontends/controllers/biblio.C:104
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/frontends/controllers/biblio.C:141
+#: src/frontends/controllers/biblio.C:111
+#, fuzzy
+msgid " and "
+msgstr "De¾ela"
+
+#: src/frontends/controllers/biblio.C:113
+msgid "et al."
+msgstr ""
+
+#: src/frontends/controllers/biblio.C:152
 #, fuzzy
 msgid "No year"
 msgstr "Brez ¹tevilke"
@@ -669,7 +765,7 @@ msgstr "Preklièi"
 
 #: src/frontends/controllers/ButtonController.h:73
 #: src/frontends/xforms/FormMathsPanel.C:71
-#: src/frontends/xforms/FormMathsPanel.C:360 src/LyXAction.C:130
+#: src/frontends/xforms/FormMathsPanel.C:285 src/LyXAction.C:130
 #: src/ext_l10n.h:916 src/ext_l10n.h:979 src/ext_l10n.h:1226
 #: src/ext_l10n.h:1302 src/ext_l10n.h:1365
 msgid "Close"
@@ -920,65 +1016,52 @@ msgstr "Uporabni¹ki imenik: "
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/frontends/controllers/ControlDocument.C:78
+#: src/frontends/controllers/ControlDocument.C:77
 #, fuzzy
 msgid "Document settings applied"
 msgstr "Spisi"
 
-#. problem changing class
-#. -- warn user (to retain old style)
-#: src/frontends/controllers/ControlDocument.C:119
-#: src/frontends/controllers/ControlDocument.C:141
-#: src/frontends/xforms/FormDocument.C:783
-#: src/frontends/xforms/FormDocument.C:789
-#: src/frontends/xforms/FormDocument.C:1399
-msgid "Conversion Errors!"
-msgstr "Napake pri spreminjanju!"
-
-#: src/frontends/controllers/ControlDocument.C:120
-#: src/frontends/xforms/FormDocument.C:790
-msgid "Errors loading new document class."
-msgstr "Napaka pri nalaganju razreda novega dokumenta."
-
-#: src/frontends/controllers/ControlDocument.C:121
-#: src/frontends/xforms/FormDocument.C:791
-#: src/frontends/xforms/FormDocument.C:1401
-msgid "Reverting to original document class."
-msgstr "Vraèamo se k izvornem razredu spisa."
-
-#: src/frontends/controllers/ControlDocument.C:128
-#: src/frontends/xforms/FormDocument.C:770
+#: src/frontends/controllers/ControlDocument.C:116
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/frontends/controllers/ControlDocument.C:136
-#: src/frontends/xforms/FormDocument.C:778
+#: src/frontends/controllers/ControlDocument.C:124
 msgid "One paragraph couldn't be converted"
 msgstr "Enega odstavka ni moè spremeniti"
 
-#: src/frontends/controllers/ControlDocument.C:139
-#: src/frontends/xforms/FormDocument.C:781
+#: src/frontends/controllers/ControlDocument.C:127
 msgid " paragraphs couldn't be converted"
 msgstr " odstavkov ni moè spremeniti"
 
-#: src/frontends/controllers/ControlDocument.C:142
-#: src/frontends/xforms/FormDocument.C:784
+#. problem changing class
+#. -- warn user (to retain old style)
+#: src/frontends/controllers/ControlDocument.C:129
+#: src/frontends/controllers/ControlDocument.C:141
+msgid "Conversion Errors!"
+msgstr "Napake pri spreminjanju!"
+
+#: src/frontends/controllers/ControlDocument.C:130
 msgid "into chosen document class"
 msgstr "v izbrani razred spisa"
 
-#: src/frontends/controllers/ControlDocument.C:150
-#: src/frontends/xforms/FormDocument.C:426
+#: src/frontends/controllers/ControlDocument.C:142
+msgid "Errors loading new document class."
+msgstr "Napaka pri nalaganju razreda novega dokumenta."
+
+#: src/frontends/controllers/ControlDocument.C:143
+msgid "Reverting to original document class."
+msgstr "Vraèamo se k izvornem razredu spisa."
+
+#: src/frontends/controllers/ControlDocument.C:151
 msgid "Do you want to save the current settings"
 msgstr "Ali ¾elite shraniti trenutne nastavitve"
 
-#: src/frontends/controllers/ControlDocument.C:151
-#: src/frontends/xforms/FormDocument.C:427
+#: src/frontends/controllers/ControlDocument.C:152
 #, fuzzy
 msgid "for the document layout as default?"
 msgstr "Nastavitev videza spisa"
 
-#: src/frontends/controllers/ControlDocument.C:152
-#: src/frontends/xforms/FormDocument.C:428
+#: src/frontends/controllers/ControlDocument.C:153
 #, fuzzy
 msgid "(they will be valid for any new document)"
 msgstr "Vstavite ime datoteke za novi spis"
@@ -1000,7 +1083,7 @@ msgstr "Izrezek"
 
 #: src/frontends/controllers/ControlGraphics.C:156
 #: src/frontends/qt2/QDocument.C:110 src/frontends/qt2/QDocumentDialog.C:355
-#: src/lyxfont.C:539 src/ext_l10n.h:869 src/ext_l10n.h:1008
+#: src/lyxfont.C:554 src/ext_l10n.h:869 src/ext_l10n.h:1008
 #: src/ext_l10n.h:1114
 msgid "Default"
 msgstr "privzeta"
@@ -1163,21 +1246,18 @@ msgstr "Zamenjan je bil en niz."
 msgid " strings have been replaced."
 msgstr " zamenjanih nizov."
 
-#: src/frontends/controllers/ControlSpellchecker.C:198
-#, fuzzy, c-format
-msgid ""
-"Spellchecking completed!\n"
-"%1$d words checked."
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid "Spellchecking completed!"
 msgstr "Èrkovanje konèano!"
 
-#: src/frontends/controllers/ControlSpellchecker.C:200
-#, fuzzy, c-format
-msgid ""
-"Spellchecking completed!\n"
-"%1$d word checked."
-msgstr "Èrkovanje konèano!"
+#: src/frontends/controllers/ControlSpellchecker.C:204
+#: src/frontends/controllers/ControlSpellchecker.C:210
+#, fuzzy
+msgid "One word checked."
+msgstr "Zaznana ena napaka"
 
-#: src/frontends/controllers/ControlSpellchecker.C:207
+#: src/frontends/controllers/ControlSpellchecker.C:217
 #, fuzzy
 msgid ""
 "The spell checker has died for some reason.\n"
@@ -1486,7 +1566,7 @@ msgid "Packages"
 msgstr "% strani|#s"
 
 #: src/frontends/qt2/QDocumentDialog.C:67
-#: src/frontends/xforms/FormDocument.C:346
+#: src/frontends/xforms/FormDocument.C:341
 msgid "Paper"
 msgstr "Papir"
 
@@ -1497,14 +1577,14 @@ msgstr "Robovi"
 
 #. language settings
 #: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:119
-#: src/frontends/xforms/FormDocument.C:348
+#: src/frontends/xforms/FormDocument.C:343
 #: src/frontends/xforms/FormPreferences.C:246 src/ext_l10n.h:727
 #: src/ext_l10n.h:735
 msgid "Language"
 msgstr "Jezik"
 
 #: src/frontends/qt2/QDocumentDialog.C:70
-#: src/frontends/xforms/FormDocument.C:352
+#: src/frontends/xforms/FormDocument.C:347
 msgid "Bullets"
 msgstr "Pike"
 
@@ -1987,9 +2067,14 @@ msgstr "URL"
 msgid "VCLog"
 msgstr ""
 
-#: src/frontends/qt2/QVCLog.C:50
+#: src/frontends/qt2/QVCLog.C:51
 #, fuzzy, c-format
 msgid "Version control log for %1$s"
+msgstr "Nadzor razlièic"
+
+#: src/frontends/qt2/QVCLog.C:53
+#, fuzzy
+msgid "Version control log for "
 msgstr "Nadzor razlièic"
 
 #: src/frontends/qt2/QWrap.C:36 src/frontends/xforms/FormWrap.C:33
@@ -2025,24 +2110,54 @@ msgstr "V redu|#r"
 msgid "Clear|#e"
 msgstr "Zbri¹i|#z"
 
-#: src/frontends/xforms/ColorHandler.C:89
+#: src/frontends/xforms/ColorHandler.C:91
 #, fuzzy, c-format
 msgid ""
 "LyX: Unknown X11 color %1$s for %2$s\n"
 "     Using black instead, sorry!"
 msgstr "     Namesto tega ¾al uporabljamo èrno!"
 
-#: src/frontends/xforms/ColorHandler.C:98
+#: src/frontends/xforms/ColorHandler.C:97
+msgid "LyX: Unknown X11 color "
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:97
+#, fuzzy
+msgid " for "
+msgstr " za "
+
+#: src/frontends/xforms/ColorHandler.C:99
+#, fuzzy
+msgid ""
+"\n"
+"     Using black instead, sorry!"
+msgstr "     Namesto tega ¾al uporabljamo èrno!"
+
+#: src/frontends/xforms/ColorHandler.C:109
 #, c-format
 msgid "LyX: X11 color %1$s allocated for %2$s"
 msgstr ""
 
-#: src/frontends/xforms/ColorHandler.C:104
+#: src/frontends/xforms/ColorHandler.C:114
+msgid "LyX: X11 color "
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:115
+#: src/frontends/xforms/ColorHandler.C:130
+msgid " allocated for "
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:123
 #, fuzzy, c-format
 msgid "LyX: Using approximated X11 color %1$s allocated for %2$s"
 msgstr "LyX: Uporabljamo pribli¾no barvo za X11 "
 
-#: src/frontends/xforms/ColorHandler.C:146
+#: src/frontends/xforms/ColorHandler.C:129
+#, fuzzy
+msgid "LyX: Using approximated X11 color "
+msgstr "LyX: Uporabljamo pribli¾no barvo za X11 "
+
+#: src/frontends/xforms/ColorHandler.C:174
 #, c-format
 msgid ""
 "LyX: Couldn't allocate '%1$s' for %2$s with (r,g,b)=(%3$d,%4$d,%5$d).\n"
@@ -2050,13 +2165,47 @@ msgid ""
 "Pixel [%9$d] is used."
 msgstr ""
 
+#: src/frontends/xforms/ColorHandler.C:188
+msgid "LyX: Couldn't allocate '"
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:189
+msgid "' for "
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:190
+msgid " with (r,g,b)=("
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:192
+msgid ").\n"
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:193
+msgid "     Using closest allocated color with (r,g,b)=("
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:197
+msgid ""
+") instead.\n"
+"Pixel ["
+msgstr ""
+
+#: src/frontends/xforms/ColorHandler.C:198
+msgid "] is used."
+msgstr ""
+
 #: src/frontends/xforms/combox.C:515
 msgid "Done"
 msgstr "Opravljeno"
 
-#: src/frontends/xforms/FeedbackController.C:169
+#: src/frontends/xforms/FeedbackController.C:172
 #, c-format
 msgid "WARNING! %1$s"
+msgstr ""
+
+#: src/frontends/xforms/FeedbackController.C:179
+msgid "WARNING!"
 msgstr ""
 
 # src/frontends/xforms/FileDialog.C:59
@@ -2234,20 +2383,20 @@ msgstr ""
 msgid "Activate if you want to enter Regular Expressions."
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:57
+#: src/frontends/xforms/FormDocument.C:59
 msgid "Document Layout"
 msgstr "Videz spisa"
 
-#: src/frontends/xforms/FormDocument.C:146
+#: src/frontends/xforms/FormDocument.C:141
 #, fuzzy
 msgid " Single | OneHalf | Double | Custom "
 msgstr " Enojno | Polovièno | Dvojno | Drugo "
 
-#: src/frontends/xforms/FormDocument.C:166
+#: src/frontends/xforms/FormDocument.C:161
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr " Majhen preskok | Srednji preskok | Veliki preskok | Dol¾ina "
 
-#: src/frontends/xforms/FormDocument.C:230
+#: src/frontends/xforms/FormDocument.C:225
 #, fuzzy
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
@@ -2256,24 +2405,24 @@ msgstr ""
 " Privzeto | Prilagojeno | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
 "B3 | B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:233
+#: src/frontends/xforms/FormDocument.C:228
 #, fuzzy
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr ""
 " Noben | A4 z majhnimi robovi (le pokonèen) | A4 z zelo majhnimi robovi (le "
 "pokonèen) | A4 z zelo ¹irokimi robovi (le pokonèen) "
 
-#: src/frontends/xforms/FormDocument.C:283
+#: src/frontends/xforms/FormDocument.C:278
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr ""
 " ``besedilo'' | ''besedilo'' | ,,besedilo`` | ,,besedilo'' | «besedilo» | "
 "»besedilo« "
 
-#: src/frontends/xforms/FormDocument.C:308
+#: src/frontends/xforms/FormDocument.C:303
 msgid " Author-year | Numerical "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:334
+#: src/frontends/xforms/FormDocument.C:329
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -2281,32 +2430,24 @@ msgstr ""
 " privzeti | drobni | indeksi | opombe | mali | obièajni | veliki | Veliki | "
 "VELIKI | ogromni | Ogromni"
 
-#: src/frontends/xforms/FormDocument.C:344
+#: src/frontends/xforms/FormDocument.C:339
 msgid "Document"
 msgstr "Spis"
 
-#: src/frontends/xforms/FormDocument.C:350
-#: src/frontends/xforms/FormGraphics.C:260
+#: src/frontends/xforms/FormDocument.C:345
+#: src/frontends/xforms/FormGraphics.C:264
 msgid "Extra"
 msgstr "Dodatno"
 
-#: src/frontends/xforms/FormDocument.C:359
+#: src/frontends/xforms/FormDocument.C:354
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:383
-msgid "Document layout set"
-msgstr "Nastavitev videza spisa"
-
-#: src/frontends/xforms/FormDocument.C:1236
+#: src/frontends/xforms/FormDocument.C:1097
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Spis je le za branje.  Spremembe videza niso dovoljene."
-
-#: src/frontends/xforms/FormDocument.C:1400
-msgid "Unable to switch to new document class."
-msgstr "Ni moè preklopiti na novi razred spisa."
 
 #: src/frontends/xforms/FormERT.C:29
 #, fuzzy
@@ -2398,130 +2539,135 @@ msgstr ""
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:126
+#: src/frontends/xforms/FormGraphics.C:127
 #, c-format
 msgid "Scale%%|%1$s"
 msgstr ""
 
+#: src/frontends/xforms/FormGraphics.C:129
+#, fuzzy, c-format
+msgid "Scale%%|"
+msgstr "manj¹a"
+
 #. set up the tooltips for the filesection
-#: src/frontends/xforms/FormGraphics.C:132
+#: src/frontends/xforms/FormGraphics.C:136
 #, fuzzy
 msgid "The file you want to insert."
 msgstr "Izberite spis za vstavitev"
 
-#: src/frontends/xforms/FormGraphics.C:134
+#: src/frontends/xforms/FormGraphics.C:138
 msgid "Browse the directories."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:137
+#: src/frontends/xforms/FormGraphics.C:141
 msgid "Scale the image to inserted percentage value."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:139
+#: src/frontends/xforms/FormGraphics.C:143
 msgid "Select display mode for this image."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:142
+#: src/frontends/xforms/FormGraphics.C:146
 msgid "Set the image width to the inserted value."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:144
+#: src/frontends/xforms/FormGraphics.C:148
 #, c-format
 msgid "Select unit for width; Scale% for scaling whole image."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:146
+#: src/frontends/xforms/FormGraphics.C:150
 msgid "Set the image height to the inserted value."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:148
+#: src/frontends/xforms/FormGraphics.C:152
 #, fuzzy
 msgid "Select unit for height."
 msgstr "Izberite spis za odprtje"
 
-#: src/frontends/xforms/FormGraphics.C:150
+#: src/frontends/xforms/FormGraphics.C:154
 msgid ""
 "Do not distort the image. Keep image within \"width\" by \"height\" and obey "
 "aspect ratio."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:154
+#: src/frontends/xforms/FormGraphics.C:158
 msgid ""
 "Pass a filename like \"file.eps.gz\" to the LaTeX output. Useful when LaTeX "
 "should unzip the file. Needs an additional file like \"file.eps.bb\" which "
 "holds the values for the bounding box."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:159
+#: src/frontends/xforms/FormGraphics.C:163
 msgid "Show image only as a rectangle of the original size."
 msgstr ""
 
 #. set up the tooltips for the bounding-box-section
-#: src/frontends/xforms/FormGraphics.C:192
+#: src/frontends/xforms/FormGraphics.C:196
 msgid "The lower left x-value of the bounding box."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:194
+#: src/frontends/xforms/FormGraphics.C:198
 msgid "The lower left y-value of the bounding box."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:196
+#: src/frontends/xforms/FormGraphics.C:200
 msgid ""
 "The upper right x-value of the bounding box; only this input field allows "
 "length + unit, e.g. 5cm and sets the unit for the other input fields."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:200
+#: src/frontends/xforms/FormGraphics.C:204
 msgid "The upper right y-value of the bounding box."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:202
+#: src/frontends/xforms/FormGraphics.C:206
 msgid "Select unit for the bounding box values."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:205
+#: src/frontends/xforms/FormGraphics.C:209
 msgid ""
 "Read the image coordinates new from file. For (e)ps-file the bounding box is "
 "read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
 "PostScript's b(ig) p(oint)."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:210
+#: src/frontends/xforms/FormGraphics.C:214
 msgid "Clip image to the bounding box values."
 msgstr ""
 
 #. set up the tooltips for the extra section
-#: src/frontends/xforms/FormGraphics.C:243
+#: src/frontends/xforms/FormGraphics.C:247
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
 "negative value clockwise."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:247
+#: src/frontends/xforms/FormGraphics.C:251
 msgid "Insert the point of origin for rotation."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:249
+#: src/frontends/xforms/FormGraphics.C:253
 msgid "Enables use of subfigure with its own caption."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:251
+#: src/frontends/xforms/FormGraphics.C:255
 msgid "Insert the optional subfigure caption."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:253
+#: src/frontends/xforms/FormGraphics.C:257
 msgid ""
 "Add any additional latex option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
 msgstr ""
 
 #. add the different tabfolders
-#: src/frontends/xforms/FormGraphics.C:258
+#: src/frontends/xforms/FormGraphics.C:262
 #, fuzzy
 msgid "File"
 msgstr "&Datoteka"
 
-#: src/frontends/xforms/FormGraphics.C:259
+#: src/frontends/xforms/FormGraphics.C:263
 msgid "Bounding Box"
 msgstr ""
 
@@ -2581,59 +2727,59 @@ msgstr "Zgoraj | Sredina | Spodaj"
 msgid "Maths Panel"
 msgstr "Matematièna plo¹èa"
 
-#: src/frontends/xforms/FormMathsPanel.C:82 src/ext_l10n.h:959
+#: src/frontends/xforms/FormMathsPanel.C:136 src/ext_l10n.h:959
 #, fuzzy
 msgid "Arrows"
 msgstr "Brskaj|#B"
 
-#: src/frontends/xforms/FormMathsPanel.C:87
+#: src/frontends/xforms/FormMathsPanel.C:143
 msgid "Binary Ops"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsPanel.C:92
+#: src/frontends/xforms/FormMathsPanel.C:147
 msgid "Bin Relations"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsPanel.C:97 src/ext_l10n.h:545
+#: src/frontends/xforms/FormMathsPanel.C:151 src/ext_l10n.h:545
 #: src/ext_l10n.h:958
 msgid "Greek"
 msgstr "gr¹ko"
 
-#: src/frontends/xforms/FormMathsPanel.C:102
+#: src/frontends/xforms/FormMathsPanel.C:156
 #: src/frontends/xforms/FormPreferences.C:213
 #: src/frontends/xforms/FormPreferences.C:230
 #: src/frontends/xforms/FormPreferences.C:238
 msgid "Misc"
 msgstr "Razno"
 
-#: src/frontends/xforms/FormMathsPanel.C:107 src/ext_l10n.h:960
+#: src/frontends/xforms/FormMathsPanel.C:164 src/ext_l10n.h:960
 #, fuzzy
 msgid "Dots"
 msgstr "Spisi"
 
-#: src/frontends/xforms/FormMathsPanel.C:112
+#: src/frontends/xforms/FormMathsPanel.C:168
 msgid "Big Operators"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsPanel.C:117
+#: src/frontends/xforms/FormMathsPanel.C:172
 #, fuzzy
 msgid "AMS Misc"
 msgstr "Razno"
 
-#: src/frontends/xforms/FormMathsPanel.C:122
+#: src/frontends/xforms/FormMathsPanel.C:177
 msgid "AMS Arrows"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsPanel.C:127
+#: src/frontends/xforms/FormMathsPanel.C:182
 #, fuzzy
 msgid "AMS Relations"
 msgstr "Separacija"
 
-#: src/frontends/xforms/FormMathsPanel.C:132
+#: src/frontends/xforms/FormMathsPanel.C:187
 msgid "AMS Negated Rel"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsPanel.C:137
+#: src/frontends/xforms/FormMathsPanel.C:192
 msgid "AMS Operators"
 msgstr ""
 
@@ -3383,23 +3529,37 @@ msgstr ""
 msgid "[no match]"
 msgstr ""
 
-#: src/importer.C:44
+#: src/importer.C:45
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Uvoz%m"
 
-#: src/importer.C:63
+#: src/importer.C:47
+#, fuzzy
+msgid "Importing "
+msgstr "Uvoz%m"
+
+#: src/importer.C:47 src/lyxfunc.C:957 src/lyxfunc.C:1120 src/lyxfunc.C:1701
+msgid "..."
+msgstr ""
+
+#: src/importer.C:68 src/importer.C:72
 #, fuzzy
 msgid "Cannot import file"
 msgstr "Datoteke ni moè pretvoriti"
 
-#: src/importer.C:64
+#: src/importer.C:69
 #, fuzzy, c-format
 msgid "No information for importing from %1$s"
 msgstr "Ni podatkov za pretvarjanje iz "
 
+#: src/importer.C:73
+#, fuzzy
+msgid "No information for importing from "
+msgstr "Ni podatkov za pretvarjanje iz "
+
 #. we are done
-#: src/importer.C:87
+#: src/importer.C:97
 msgid "imported."
 msgstr "uvo¾ena."
 
@@ -3466,9 +3626,14 @@ msgstr "Noga"
 msgid "ERROR: Nonexistent float type!"
 msgstr ""
 
-#: src/insets/insetfloatlist.C:131
+#: src/insets/insetfloatlist.C:132
 #, fuzzy, c-format
 msgid "List of %1$s"
+msgstr "Seznam tabel"
+
+#: src/insets/insetfloatlist.C:138
+#, fuzzy
+msgid "List of "
 msgstr "Seznam tabel"
 
 #: src/insets/insetfoot.C:39 src/insets/insetfoot.C:47
@@ -3541,19 +3706,29 @@ msgstr "Ni moè pogledati datoteke"
 msgid "into tempdir"
 msgstr ""
 
-#: src/insets/insetgraphics.C:669
+#: src/insets/insetgraphics.C:670 src/insets/insetgraphics.C:674
 #, fuzzy
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Datoteke ni moè pretvoriti"
 
-#: src/insets/insetgraphics.C:670
+#: src/insets/insetgraphics.C:671
 #, fuzzy, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/insets/insetgraphics.C:761
+#: src/insets/insetgraphics.C:675
+#, fuzzy
+msgid "No information for converting from "
+msgstr "Ni podatkov za pretvarjanje iz "
+
+#: src/insets/insetgraphics.C:767
 #, fuzzy, c-format
 msgid "Graphic file: %1$s"
+msgstr "Grafièna datoteka|#D"
+
+#: src/insets/insetgraphics.C:771
+#, fuzzy
+msgid "Graphic file: "
 msgstr "Grafièna datoteka|#D"
 
 #: src/insets/insetinclude.C:206 src/ext_l10n.h:918
@@ -3627,9 +3802,14 @@ msgstr "&Vrh"
 msgid "Opened Optional Argument Inset"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/insetparent.C:45
+#: src/insets/insetparent.C:46
 #, fuzzy, c-format
-msgid "Parent: %1$s"
+msgid "Parent: %s"
+msgstr "Nadrejeni:"
+
+#: src/insets/insetparent.C:48
+#, fuzzy
+msgid "Parent: "
 msgstr "Nadrejeni:"
 
 #: src/insets/insetref.C:118 src/mathed/ref_inset.C:127 src/ext_l10n.h:456
@@ -3760,16 +3940,21 @@ msgstr "  izbire: "
 msgid "English"
 msgstr "angle¹ko"
 
-#: src/LaTeX.C:206 src/LaTeX.C:291 src/LaTeX.C:348
+#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "Tek LaTeXa ¹tevilka "
 
-#: src/LaTeX.C:243 src/LaTeX.C:323
+#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#, fuzzy
+msgid "LaTeX run number "
+msgstr "Tek LaTeXa ¹tevilka "
+
+#: src/LaTeX.C:247 src/LaTeX.C:331
 msgid "Running MakeIndex."
 msgstr "Izvaja se MakeIndex."
 
-#: src/LaTeX.C:258
+#: src/LaTeX.C:262
 msgid "Running BibTeX."
 msgstr "Izvaja se BibTeX."
 
@@ -4565,152 +4750,157 @@ msgstr ""
 msgid "No description available!"
 msgstr "Ni dostopnega opisa!"
 
-#: src/lyx_cb.C:84
+#: src/lyx_cb.C:85
 msgid "Save failed. Rename and try again?"
 msgstr "Shranjevanje spodletelo. ®elite preimenovati in vnoviè poskusiti?"
 
-#: src/lyx_cb.C:86
+#: src/lyx_cb.C:87
 msgid "(If not, document is not saved.)"
 msgstr "(Drugaèe spis ne bo shranjen.)"
 
-#: src/lyx_cb.C:107
+#: src/lyx_cb.C:108
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/lyx_cb.C:111 src/lyxfunc.C:1592
+#: src/lyx_cb.C:112 src/lyxfunc.C:1615
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Vzorci"
 
 # src/lyx_cb.C:181 src/lyxfunc.C:1524 src/lyxfunc.C:1598
-#: src/lyx_cb.C:119 src/lyxfunc.C:1597
+#: src/lyx_cb.C:120 src/lyxfunc.C:1620
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/lyx_cb.C:139
+#: src/lyx_cb.C:140
 msgid "Same name as document already has:"
 msgstr "Enako ime kot spis ¾e ima:"
 
-#: src/lyx_cb.C:141
+#: src/lyx_cb.C:142
 msgid "Save anyway?"
 msgstr "®elite vseeno shraniti?"
 
-#: src/lyx_cb.C:147
+#: src/lyx_cb.C:148
 msgid "Another document with same name open!"
 msgstr "Odprt je drug spis z enakim imenom!"
 
-#: src/lyx_cb.C:149
+#: src/lyx_cb.C:150
 msgid "Replace with current document?"
 msgstr "®elite nadomestiti s trenutnim spisom?"
 
-#: src/lyx_cb.C:157
+#: src/lyx_cb.C:158
 msgid "Document renamed to '"
 msgstr "Spis preimenovan v ,"
 
-#: src/lyx_cb.C:158
+#: src/lyx_cb.C:159
 msgid "', but not saved..."
 msgstr "`, vendar ni shranjen..."
 
-#: src/lyx_cb.C:164
+#: src/lyx_cb.C:165
 msgid "Document already exists:"
 msgstr "Spis ¾e obstaja:"
 
-#: src/lyx_cb.C:166
+#: src/lyx_cb.C:167
 msgid "Replace file?"
 msgstr "®elite nadomestiti datoteko?"
 
-#: src/lyx_cb.C:179
+#: src/lyx_cb.C:180
 #, fuzzy
 msgid "Document could not be saved!"
 msgstr "Nastavitev videza spisa"
 
-#: src/lyx_cb.C:180
+#: src/lyx_cb.C:181
 msgid "Holding the old name."
 msgstr ""
 
-#: src/lyx_cb.C:194
+#: src/lyx_cb.C:195
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex ne deluje s spisi, nastalimi iz SGML."
 
-#: src/lyx_cb.C:203
+#: src/lyx_cb.C:204
 msgid "No warnings found."
 msgstr "Nobenih odkritih opozoril."
 
-#: src/lyx_cb.C:205
+#: src/lyx_cb.C:206
 msgid "One warning found."
 msgstr "Odkrito eno opozorilo."
 
-#: src/lyx_cb.C:206
+#: src/lyx_cb.C:207
 #, fuzzy
 msgid "Use `Navigate->Error' to find it."
 msgstr "Uporabite ,Uredi->Pojdi na napako` za iskanje opozorila."
 
-#: src/lyx_cb.C:209
+#: src/lyx_cb.C:210
 msgid " warnings found."
 msgstr " odkritih opozoril."
 
-#: src/lyx_cb.C:210
+#: src/lyx_cb.C:211
 #, fuzzy
 msgid "Use `Navigate->Error' to find them."
 msgstr "Uporabite ,Uredi->Pojdi na napako` za iskanje opozoril."
 
-#: src/lyx_cb.C:212
+#: src/lyx_cb.C:213
 msgid "Chktex run successfully"
 msgstr "Chktex uspe¹no zagnan"
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:215
 msgid "It seems chktex does not work."
 msgstr "Videti je, da chktex ne deluje."
 
-#: src/lyx_cb.C:271
-#, fuzzy
-msgid "Auto-saving $$f"
+#: src/lyx_cb.C:273
+#, fuzzy, c-format
+msgid "Auto-saving %1$s"
 msgstr "Sámoshranjevanje"
 
-#: src/lyx_cb.C:311
+#: src/lyx_cb.C:275
+#, fuzzy
+msgid "Auto-saving "
+msgstr "Sámoshranjevanje"
+
+#: src/lyx_cb.C:315
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Sámoshranjevanje spodletelo!"
 
-#: src/lyx_cb.C:337
+#: src/lyx_cb.C:341
 msgid "Autosaving current document..."
 msgstr "Trenutni spis se samodejno shranjuje..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:423
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyx_cb.C:436
+#: src/lyx_cb.C:440
 msgid "Error! Specified file is unreadable: "
 msgstr "Napaka! Podana datoteka ni berljiva: "
 
-#: src/lyx_cb.C:443
+#: src/lyx_cb.C:447
 msgid "Error! Cannot open specified file: "
 msgstr "Napaka! Podane datoteke ni moè odpreti:"
 
-#: src/lyx_cb.C:507 src/mathed/math_hullinset.C:795
+#: src/lyx_cb.C:511 src/mathed/math_hullinset.C:795
 msgid "Enter new label to insert:"
 msgstr "Vnesite novo oznako za vstavitev:"
 
-#: src/lyx_cb.C:525
+#: src/lyx_cb.C:529
 msgid "Running configure..."
 msgstr "Zaganjanje prikrojitve..."
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:537
 msgid "Reloading configuration..."
 msgstr "Vnoviè nalagamo prikrojitev..."
 
-#: src/lyx_cb.C:535
+#: src/lyx_cb.C:539
 msgid "The system has been reconfigured."
 msgstr "Sistem se je vnoviè prikrojil."
 
-#: src/lyx_cb.C:536
+#: src/lyx_cb.C:540
 msgid "You need to restart LyX to make use of any"
 msgstr "Vnoviè morate zagnati LyX, da uporabite katerekoli"
 
-#: src/lyx_cb.C:537
+#: src/lyx_cb.C:541
 msgid "updated document class specifications."
 msgstr "osve¾ene doloèitve razreda spisa."
 
@@ -4756,29 +4946,54 @@ msgstr "vkljuèeno"
 msgid "Toggle"
 msgstr "Preklopi"
 
-#: src/lyxfont.C:530
+#: src/lyxfont.C:531
 #, fuzzy, c-format
 msgid "Emphasis %1$s, "
 msgstr "Poudari "
 
-#: src/lyxfont.C:533
+#: src/lyxfont.C:534
+#, fuzzy
+msgid "Emphasis "
+msgstr "Poudari "
+
+#: src/lyxfont.C:539
 #, fuzzy, c-format
 msgid "Underline %1$s, "
 msgstr "podèrtaj "
 
-#: src/lyxfont.C:536
+#: src/lyxfont.C:542
+#, fuzzy
+msgid "Underline "
+msgstr "podèrtaj "
+
+#: src/lyxfont.C:547
 #, fuzzy, c-format
 msgid "Noun %1$s, "
 msgstr "velike èrke "
 
-#: src/lyxfont.C:541
+#: src/lyxfont.C:550
+#, fuzzy
+msgid "Noun "
+msgstr "velike èrke "
+
+#: src/lyxfont.C:557
 #, fuzzy, c-format
 msgid "Language: %1$s, "
 msgstr "Jezik:"
 
-#: src/lyxfont.C:544
+#: src/lyxfont.C:560
+#, fuzzy
+msgid "Language: "
+msgstr "Jezik"
+
+#: src/lyxfont.C:565
 #, fuzzy, c-format
 msgid "  Number %1$s"
+msgstr "©tevilka"
+
+#: src/lyxfont.C:568
+#, fuzzy
+msgid "  Number "
 msgstr "©tevilka"
 
 #: src/lyxfunc.C:227
@@ -4816,88 +5031,131 @@ msgstr "Ukaz ni dovoljen brez odprtega spisa"
 msgid "Unknown function ("
 msgstr "Neznana akcija"
 
-#: src/lyxfunc.C:951
+#: src/lyxfunc.C:952
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Spis se shranjuje"
 
 #: src/lyxfunc.C:955
 #, fuzzy
+msgid "Saving document "
+msgstr "Spis se shranjuje"
+
+#: src/lyxfunc.C:961
+#, fuzzy
 msgid " done."
 msgstr "Pojdi dol"
 
-#: src/lyxfunc.C:1097 src/mathed/formulabase.C:1028
+#: src/lyxfunc.C:1103 src/mathed/formulabase.C:1028
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
-#: src/lyxfunc.C:1109
+#: src/lyxfunc.C:1116
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/lyxfunc.C:1314
+#: src/lyxfunc.C:1119
+#, fuzzy
+msgid "Opening help file "
+msgstr "Odpira se datoteko s pomoèjo"
+
+#: src/lyxfunc.C:1325
 msgid "This is only allowed in math mode!"
 msgstr "To je dovoljeno le v matematiènem naèinu!"
 
-#: src/lyxfunc.C:1356
+#: src/lyxfunc.C:1367
 msgid "Opening child document "
 msgstr "Odpira se podrejeni spis "
 
-#: src/lyxfunc.C:1430
+#: src/lyxfunc.C:1441
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1440
+#: src/lyxfunc.C:1455
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1588
+#: src/lyxfunc.C:1460
+msgid "Set-color "
+msgstr ""
+
+#: src/lyxfunc.C:1461
+msgid " failed - color is undefined or may not be redefined"
+msgstr ""
+
+#: src/lyxfunc.C:1611
 #, fuzzy
 msgid "Select template file"
 msgstr "Izberite ime izhodne datoteke"
 
-#: src/lyxfunc.C:1627
+#: src/lyxfunc.C:1650
 #, fuzzy
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/lyxfunc.C:1663
+#: src/lyxfunc.C:1686
 #, fuzzy
 msgid "No such file"
 msgstr "Seznam tabel"
 
-#: src/lyxfunc.C:1664
+#: src/lyxfunc.C:1687
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "®elite ustvariti nov spis s tem imenom?"
 
-#: src/lyxfunc.C:1665 src/lyxfunc.C:1770
+#: src/lyxfunc.C:1688 src/lyxfunc.C:1813
 #, fuzzy
 msgid "Canceled"
 msgstr "Preklicano."
 
-#: src/lyxfunc.C:1675
+#: src/lyxfunc.C:1699
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis"
 
-#: src/lyxfunc.C:1683
+#: src/lyxfunc.C:1701
+#, fuzzy
+msgid "Opening document "
+msgstr "Odpira se podrejeni spis "
+
+#: src/lyxfunc.C:1711
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Ni odprtih spisov!%t"
 
-#: src/lyxfunc.C:1685
+#: src/lyxfunc.C:1713
+#, fuzzy
+msgid " opened."
+msgstr "Pojdi dol"
+
+#: src/lyxfunc.C:1717
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/lyxfunc.C:1710
+#: src/lyxfunc.C:1720
+#, fuzzy
+msgid "Could not open document "
+msgstr "Spisa ni moè odpreti"
+
+#: src/lyxfunc.C:1747
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyxfunc.C:1748
+#: src/lyxfunc.C:1751
+#, fuzzy
+msgid "Select "
+msgstr "Izberi iz|#S"
+
+#: src/lyxfunc.C:1752
+#, fuzzy
+msgid " file to import"
+msgstr "Izberite spis za vstavitev"
+
+#: src/lyxfunc.C:1791
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -4905,127 +5163,175 @@ msgstr ""
 "Ali ¾elite zdaj zapreti ta spis?\n"
 "('Ne' bo le preklopilo na odprto razlièico)"
 
-#: src/lyxfunc.C:1768
+#: src/lyxfunc.C:1811
 msgid "A document by the name"
 msgstr "Spis z imenom"
 
-#: src/lyxfunc.C:1769
+#: src/lyxfunc.C:1812
 msgid "already exists. Overwrite?"
 msgstr "¾e obstaja. ®elite pisati èezenj?"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1884
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
-#: src/lyx_main.C:104
+#: src/lyx_main.C:105
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:225
+#: src/lyx_main.C:109
+#, fuzzy
+msgid "Wrong command line option `"
+msgstr "ukaz"
+
+#: src/lyx_main.C:110
+msgid "'. Exiting."
+msgstr ""
+
+#: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
 msgstr "Pozor: poti binarne datoteke ni moè ugotoviti."
 
-#: src/lyx_main.C:227
+#: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Èe imate te¾ave, poskusite zagnati LyX z absolutno potjo."
 
-#: src/lyx_main.C:334
+#: src/lyx_main.C:342
 #, fuzzy
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "Okoljska spremenljivka LYX_DIR_11x ni dobra."
 
-#: src/lyx_main.C:336
+#: src/lyx_main.C:344
 msgid "System directory set to: "
 msgstr "Sistemski imenik nastavljen na: "
 
-#: src/lyx_main.C:344
+#: src/lyx_main.C:352
 #, fuzzy
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Opozorilo LyXa! Sistemskega imenika ni moè ugotoviti."
 
-#: src/lyx_main.C:345
+#: src/lyx_main.C:353
 #, fuzzy
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Poskusite parameter ,-sysdir` v ukazni vrstici ali"
 
-#: src/lyx_main.C:346
+#: src/lyx_main.C:354
 #, fuzzy
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr "nastavite okoljsko spremenljivko LYX_DIR_11x na sistemski imenik LyXa,"
 
-#: src/lyx_main.C:348
+#: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
 msgstr "v katerem je datoteka ,chkconfig.ltx`."
 
-#: src/lyx_main.C:356
+#: src/lyx_main.C:365
 #, fuzzy, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Uporabljamo vgrajene privzete vrednosti."
 
-#: src/lyx_main.C:359
+#: src/lyx_main.C:370
+#, fuzzy
+msgid "Using built-in default "
+msgstr "Uporabljamo vgrajene privzete vrednosti."
+
+#: src/lyx_main.C:371
+#, fuzzy
+msgid " but expect problems."
+msgstr "Prièakujte te¾ave."
+
+#: src/lyx_main.C:375
 msgid "Expect problems."
 msgstr "Prièakujte te¾ave."
 
-#: src/lyx_main.C:582
+#: src/lyx_main.C:598
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Ustvarjamo imenik "
 
-#: src/lyx_main.C:586 src/lyx_main.C:618
+#: src/lyx_main.C:602 src/lyx_main.C:650
 msgid "Done!"
 msgstr "Opravljeno!"
 
-#: src/lyx_main.C:596
+#: src/lyx_main.C:612
 #, fuzzy
 msgid "You have specified an invalid LyX directory."
 msgstr "Nimate osebnega imenika za LyX."
 
-#: src/lyx_main.C:597
+#: src/lyx_main.C:613
 msgid "It is needed to keep your own configuration."
 msgstr "Potreben je za vzdr¾evanje va¹e lastne prikrojitve."
 
-#: src/lyx_main.C:598
+#: src/lyx_main.C:614
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Naj ga posku¹amo usposobiti za vas (priporoèeno)?"
 
-#: src/lyx_main.C:599
+#: src/lyx_main.C:615
 msgid "Running without personal LyX directory."
 msgstr "Izvajamo brez osebnega imenika za LyX."
 
-#: src/lyx_main.C:605
+#: src/lyx_main.C:622
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr " in zaganjamo prikrojitev..."
 
-#: src/lyx_main.C:610
+#: src/lyx_main.C:627
+#, fuzzy
+msgid "LyX: Creating directory "
+msgstr "LyX: Ustvarjamo imenik "
+
+#: src/lyx_main.C:628
+#, fuzzy
+msgid " and running configure..."
+msgstr "Zaganjanje prikrojitve..."
+
+#: src/lyx_main.C:636
 #, fuzzy, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Ni uspelo. Uporabljeno bo "
 
-#: src/lyx_main.C:631
+#: src/lyx_main.C:640
+#, fuzzy
+msgid "Failed. Will use "
+msgstr "Ni uspelo. Uporabljeno bo "
+
+#: src/lyx_main.C:641
+msgid " instead."
+msgstr ""
+
+#: src/lyx_main.C:664 src/lyx_main.C:668
 msgid "LyX Warning!"
 msgstr "Opozorilo LyXa!"
 
-#: src/lyx_main.C:632
+#: src/lyx_main.C:665
 #, fuzzy, c-format
 msgid "Error while reading %1$s."
 msgstr "Napaka med branjem "
 
-#: src/lyx_main.C:633
+#: src/lyx_main.C:666 src/lyx_main.C:670
 msgid "Using built-in defaults."
 msgstr "Uporabljamo vgrajene privzete vrednosti."
 
-#: src/lyx_main.C:741
+#: src/lyx_main.C:669
+#, fuzzy
+msgid "Error while reading "
+msgstr "Napaka med branjem "
+
+#: src/lyx_main.C:779
 msgid "List of supported debug flags:"
 msgstr "Seznam podprtih zastavic za razhro¹èevanje:"
 
-#: src/lyx_main.C:745
+#: src/lyx_main.C:784
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavljamo stopnjo razhro¹èevanja na "
 
-#: src/lyx_main.C:754
+#: src/lyx_main.C:788
+#, fuzzy
+msgid "Setting debug level to "
+msgstr "Nastavljamo stopnjo razhro¹èevanja na "
+
+#: src/lyx_main.C:799
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -5064,32 +5370,32 @@ msgstr ""
 "\n"
 "Veè izbir najdete  v referenènem priroèniku za LyX (man lyx)."
 
-#: src/lyx_main.C:790
+#: src/lyx_main.C:835
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:800
+#: src/lyx_main.C:845
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:810
+#: src/lyx_main.C:855
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Manjka ukazni niz za stikalom -x!"
 
-#: src/lyx_main.C:823
+#: src/lyx_main.C:868
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:835
+#: src/lyx_main.C:880
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:840
+#: src/lyx_main.C:885
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Izberite datoteko LaTeX za uvoz"
@@ -5584,9 +5890,14 @@ msgstr "Naèin matematiènega urejanja"
 msgid "Invalid action in math mode!"
 msgstr "Nepravilna operacija v matematiènem naèinu!"
 
-#: src/mathed/formulamacro.C:131
+#: src/mathed/formulamacro.C:132
 #, fuzzy, c-format
-msgid " Macro: %1$s: "
+msgid " Macro: %s: "
+msgstr "Makroukaz: "
+
+#: src/mathed/formulamacro.C:134
+#, fuzzy
+msgid " Macro: "
 msgstr "Makroukaz: "
 
 #: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
@@ -10928,3 +11239,21 @@ msgstr "Drugi ("
 #, fuzzy
 msgid "&Placement:"
 msgstr "Postavitev plovk:|#L"
+
+#, fuzzy
+#~ msgid ""
+#~ "Spellchecking completed!\n"
+#~ "%1$d words checked."
+#~ msgstr "Èrkovanje konèano!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Spellchecking completed!\n"
+#~ "%1$d word checked."
+#~ msgstr "Èrkovanje konèano!"
+
+#~ msgid "Document layout set"
+#~ msgstr "Nastavitev videza spisa"
+
+#~ msgid "Unable to switch to new document class."
+#~ msgstr "Ni moè preklopiti na novi razred spisa."
