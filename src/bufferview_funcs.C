@@ -169,7 +169,7 @@ string const currentState(BufferView * bv)
 			state << _(" at ") << ctime(&change.changetime);
 		state << " : ";
 	}
- 
+
 	// I think we should only show changes from the default
 	// font. (Asger)
 	LyXFont font = text->real_current_font;

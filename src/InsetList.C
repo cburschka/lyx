@@ -19,7 +19,7 @@ struct MatchIt {
 	/// used by lower_bound and upper_bound
 	inline
 	int operator()(InsetList::InsetTable const & a,
-	               InsetList::InsetTable const & b) const
+		       InsetList::InsetTable const & b) const
 	{
 		return a.pos < b.pos;
 	}

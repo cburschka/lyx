@@ -43,11 +43,11 @@ bool operator<(Format const & a, Format const & b)
 }
 
 Format::Format(string const & n, string const & e, string const & p,
-       string const & s, string const & v): name_(n), 
-					    extension_(e), 
-					    prettyname_(p), 
+       string const & s, string const & v): name_(n),
+					    extension_(e),
+					    prettyname_(p),
 					    shortcut_(s),
-					    viewer_(v) 
+					    viewer_(v)
 {}
 
 

@@ -77,14 +77,14 @@ public:
 	lyx::pos_type lastPos() const;
 	/// return the position of the last normal, printable character in this row
 	lyx::pos_type lastPrintablePos() const;
-	
+
 	/**
 	 * Returns the number of separators.
 	 * The separator on the very last column doesnt count.
 	 */
 	int numberOfSeparators() const;
 
-	/** 
+	/**
 	 * Returns the number of hfills. It works like a LaTeX \hfill:
 	 * the hfills at the beginning and at the end are ignored.
 	 * This is much more useful than not to ignore!

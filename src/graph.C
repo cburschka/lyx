@@ -194,5 +194,3 @@ void Graph::addEdge(int s, int t)
 }
 
 vector<Graph::Vertex> Graph::vertices_;
-
-

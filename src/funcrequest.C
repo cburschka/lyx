@@ -112,7 +112,7 @@ void split(vector<string> & args, string str)
 		char c;
 		string s;
 		is >> c;
-		if (c == '"') 
+		if (c == '"')
 			getline(is, s, '"');
 		else {
 			is.putback(c);

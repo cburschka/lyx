@@ -48,11 +48,11 @@ SearchResult LyXFind(BufferView *, LyXText * text,
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
- 
+
 SearchResult findNextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
- 
+
 SearchResult nextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
- 
+
 } // end namespace LyXFind
- 
+
 #endif // LYXFIND_H

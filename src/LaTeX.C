@@ -79,7 +79,7 @@ void showRunMessage(LyXFunc * lf, unsigned int count)
 	lf->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
 }
 
- 
+
 };
 /*
  * CLASS TEXERRORS
@@ -213,7 +213,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	++count;
 	lyxerr[Debug::LATEX] << "Run #" << count << endl;
 	if (lfun) {
-		showRunMessage(lfun, count); 
+		showRunMessage(lfun, count);
 	}
 
 	this->operator()();

@@ -249,10 +249,10 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 		unsigned char c = str[0];
 		str[0] = transformChar(c, pos);
 	}
- 
+
 	bool prev_struckout(isDeletedText(par_, pos));
 	bool prev_newtext(isInsertedText(par_, pos));
- 
+
 	++vpos;
 
 	// collect as much similar chars as we can
@@ -264,10 +264,10 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 
 		if (prev_struckout != isDeletedText(par_, pos))
 			break;
- 
+
 		if (prev_newtext != isInsertedText(par_, pos))
 			break;
- 
+
 		if (arabic && Encodings::IsComposeChar_arabic(c))
 			break;
 		if (hebrew && Encodings::IsComposeChar_hebrew(c))
@@ -525,17 +525,17 @@ void RowPainter::paintChangeBar()
 	pos_type const start = row_.pos();
 	pos_type const end = row_.lastPrintablePos();
 
-	if (!par_.isChanged(start, end)) 
+	if (!par_.isChanged(start, end))
 		return;
- 
+
 	int const height = (row_.next()
-		? row_.height() + row_.next()->top_of_text() 
+		? row_.height() + row_.next()->top_of_text()
 		: row_.baseline());
- 
+
 	pain_.fillRectangle(4, yo_, 5, height, LColor::changebar);
 }
 
- 
+
 void RowPainter::paintAppendix()
 {
 	// FIXME: can be just width_ ?
@@ -628,7 +628,7 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int
 	} else {
 		// adding or removing space
 		bool const added = vsp.kind() != VSpace::LENGTH ||
-		                   vsp.length().len().value() > 0.0;
+				   vsp.length().len().value() > 0.0;
 		ty1 = added ? (start + arrow_size) : start;
 		ty2 = added ? start : (start + arrow_size);
 		by1 = added ? (end - arrow_size) : end;
@@ -942,26 +942,26 @@ bool RowPainter::paintText()
 	bool running_strikeout = false;
 	bool is_struckout = false;
 	float last_strikeout_x = 0.0;
- 
+
 	pos_type vpos = row_.pos();
 	while (vpos <= last) {
 		if (x_ > bv_.workWidth())
 			break;
 		pos_type pos = text_.vis2log(vpos);
- 
+
 		if (x_ + singleWidth(pos) < 0) {
 			x_ += singleWidth(pos);
 			++vpos;
 			continue;
 		}
- 
+
 		is_struckout = isDeletedText(par_, pos);
 
 		if (is_struckout && !running_strikeout) {
 			running_strikeout = true;
 			last_strikeout_x = x_;
 		}
- 
+
 		bool const highly_editable_inset = par_.isInset(pos)
 			&& isHighlyEditableInset(par_.getInset(pos));
 
@@ -974,7 +974,7 @@ bool RowPainter::paintText()
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
 		}
- 
+
 		if (main_body > 0 && pos == main_body - 1) {
 			int const lwidth = font_metrics::width(layout->labelsep,
 				getLabelFont());
@@ -1021,10 +1021,10 @@ bool RowPainter::paintText()
 			++vpos;
 		} else {
 			if (paintFromPos(vpos))
-				return true;	
+				return true;
 		}
 	}
- 
+
 	// if we reach the end of a struck out range, paint it
 	if (running_strikeout) {
 		int const middle = yo_ + row_.top_of_text()
@@ -1073,7 +1073,7 @@ bool RowPainter::paint(int y_offset, int x_offset, int y, bool cleared)
 
 	// changebar
 	paintChangeBar();
- 
+
 	if (row_.isParStart()) {
 		paintFirst();
 	}

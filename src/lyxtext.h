@@ -281,9 +281,9 @@ public:
 	/// accept selected change
 	void acceptChange(BufferView * bv);
 
-	/// reject selected change 
+	/// reject selected change
 	void rejectChange(BufferView * bv);
- 
+
 	/** 'selects" the next word, where the cursor is not in
 	 and returns this word as string. THe cursor will be moved
 	 to the beginning of this word.

@@ -183,7 +183,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 
 	// static due to the setvbuf. Ugly.
 	static char o_buf[BUFSIZ];
-	
+
 	// We need to throw an exception not do this
 	pipein[0] = pipein[1] = pipeout[0] = pipeout[1]
 		= pipeerr[0] = pipeerr[1] = -1;
@@ -232,7 +232,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 	child_.reset(li);
 	if (li->start() == -1) {
 		error_ = _("Could not create an ispell process.\nYou may not have "
-			" the right languages installed.");	
+			" the right languages installed.");
 		child_.reset(0);
 		return;
 	}

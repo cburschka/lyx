@@ -263,9 +263,9 @@ void LyXRC::setDefaults() {
 	// should be moved from the LyXRC class).
 	use_gui = true;
 	pdf_mode = false;
- 
+
 	user_name = lyx::user_name();
-	
+
 	user_email = lyx::user_email();
 
 	if (user_email.empty())
@@ -1109,7 +1109,7 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				user_email = lexrc.getString();
 			break;
- 
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}

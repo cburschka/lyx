@@ -89,11 +89,11 @@ public:
 	/// returns true if the entry should be ommited when disabled
 	bool optional() const { return optional_; }
 	/// returns the status of the lfun associated with this entry
-	FuncStatus const & status() const { return status_; }	
+	FuncStatus const & status() const { return status_; }
 	/// returns the status of the lfun associated with this entry
-	FuncStatus & status() { return status_; }	
+	FuncStatus & status() { return status_; }
 	/// returns the status of the lfun associated with this entry
-	void status(FuncStatus const & status) { status_ = status; }	
+	void status(FuncStatus const & status) { status_ = status; }
 	/// returns the binding associated to this action
 	string const binding() const;
 	/// the description of the  submenu (if relevant)

@@ -113,7 +113,7 @@ string const MenuItem::binding() const
 {
 	if (kind_ != Command)
 		return string();
-	
+
 	// Get the keys bound to this action, but keep only the
 	// first one later
 	string bindings = toplevel_keymap->findbinding(action_);
@@ -131,7 +131,7 @@ Menu & Menu::add(MenuItem const & i, LyXView const * view)
 		items_.push_back(i);
 		return *this;
 	}
-		
+
 	switch (i.kind()) {
 	case MenuItem::Command:
 	{
@@ -173,7 +173,7 @@ Menu & Menu::add(MenuItem const & i, LyXView const * view)
 		break;
 	default:
 		items_.push_back(i);
-	}	
+	}
 
 	return *this;
 }

@@ -157,7 +157,7 @@ Change const BufferView::getCurrentChange()
 	return pimpl_->getCurrentChange();
 }
 
- 
+
 void BufferView::beforeChange(LyXText * text)
 {
 	pimpl_->beforeChange(text);

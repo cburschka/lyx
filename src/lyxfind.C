@@ -310,7 +310,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 	}
 }
 
- 
+
 SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 {
 	Paragraph * par = text->cursor.par();
@@ -363,8 +363,8 @@ SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 		return SR_NOT_FOUND;
 	}
 }
- 
- 
+
+
 SearchResult findNextChange(BufferView * bv, LyXText * text, pos_type & length)
 {
 	if (text->selection.set())
@@ -386,15 +386,15 @@ bool findNextChange(BufferView * bv)
 	bv->update(bv->getLyXText(), BufferView::SELECT | BufferView::FITCUR);
 
 	pos_type length;
- 
+
 	if (bv->theLockingInset()) {
 		bool found = bv->theLockingInset()->nextChange(bv, length);
- 
+
 		// We found the stuff inside the inset so we don't have to
 		// do anything as the inset did all the update for us!
 		if (found)
 			return true;
- 
+
 		// We now are in the main text but if we did a forward
 		// search we have to put the cursor behind the inset.
 		bv->text->cursorRight(bv, true);
@@ -409,13 +409,13 @@ bool findNextChange(BufferView * bv)
 
 	bv->toggleSelection();
 	text->clearSelection();
-	
+
 	SearchResult result = nextChange(bv, text, length);
 
 	lyxerr << "Result is " << result << endl;
- 
+
 	bool found = true;
- 
+
 	// If we found the cursor inside an inset we will get back
 	// SR_FOUND_NOUPDATE and we don't have to do anything as the
 	// inset did it already.
@@ -433,5 +433,5 @@ bool findNextChange(BufferView * bv)
 
 	return found;
 }
- 
+
 } // end lyxfind namespace

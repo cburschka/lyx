@@ -104,7 +104,7 @@ public:
 	void restorePosition(unsigned int i);
 	/// does the given bookmark have a saved position ?
 	bool isSavedPosition(unsigned int i);
- 
+
 	/// return the current change at the cursor
 	Change const getCurrentChange();
 

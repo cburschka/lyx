@@ -19,7 +19,7 @@
 #include <vector>
 
 class Graph {
-public: 
+public:
 	Graph() : numedges_(0) {};
 	///
 	typedef std::vector<int> EdgePath;

@@ -145,7 +145,7 @@ Buffer * BufferList::newBuffer(string const & s, bool ronly)
 	bstore.push_back(tmpbuf);
 	return tmpbuf;
 }
- 
+
 
 void BufferList::closeAll()
 {

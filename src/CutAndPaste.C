@@ -55,7 +55,7 @@ extern BufferView * current_view;
 
 namespace {
 
-// FIXME: stupid name 
+// FIXME: stupid name
 Paragraph * buf = 0;
 textclass_type textclass = 0;
 
@@ -99,27 +99,27 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		}
 		return true;
 	}
- 
+
 	bool actually_erased = false;
- 
+
 	// clear end/begin fragments of the first/last par in selection
 	actually_erased |= (startpar)->erase(start, startpar->size());
 	if ((*endpar)->erase(0, end)) {
-		actually_erased = true; 
+		actually_erased = true;
 		end = 0;
 	}
- 
+
 	// Loop through the deleted pars if any, erasing as needed
- 
+
 	Paragraph * pit = startpar->next();
- 
+
 	while (1) {
 		// *endpar can be 0
 		if (!pit)
 			break;
- 
+
 		Paragraph * next = pit->next();
- 
+
 		// "erase" the contents of the par
 		if (pit != *endpar) {
 			actually_erased |= pit->erase(0, pit->size());
@@ -130,29 +130,29 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 				if (next) {
 					next->previous(pit->previous());
 				}
-	 
+
 				delete pit;
 			}
 		}
- 
+
 		if (pit == *endpar)
 			break;
- 
+
 		pit = next;
 	}
 
-#if 0 // FIXME: why for cut but not copy ? 
+#if 0 // FIXME: why for cut but not copy ?
 	// the cut selection should begin with standard layout
 	if (realcut) {
 		buf->params().clear();
 		buf->bibkey = 0;
 		buf->layout(textclasslist[buffer->params.textclass].defaultLayoutName());
 	}
-#endif 
+#endif
 
 	if (!startpar->next())
 		return true;
- 
+
 	Buffer * buffer = current_view->buffer();
 
 	if (doclear) {
@@ -161,7 +161,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 
 	if (!actually_erased)
 		return true;
- 
+
 	// paste the paragraphs again, if possible
 	if (startpar->hasSameLayout(startpar->next()) ||
 	    startpar->next()->empty()) {
@@ -173,7 +173,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 	return true;
 }
 
- 
+
 bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 				int start, int end, char tc)
 {
