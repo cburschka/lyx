@@ -17,6 +17,7 @@
 #include <cstdlib>
 
 #include "LString.h"
+#include "support/lstrings.h"
 #include "lyx_main.h"
 #include FORMS_H_LOCATION
 #include "lyx.h"
@@ -1220,8 +1221,7 @@ void FootCB(FL_OBJECT*, long)
 
 void LayoutsCB(int sel, void *)
 {
-	string tmp;
-	tmp += sel;
+	string tmp = tostr(sel);
 	current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,
 							 tmp.c_str());
 }

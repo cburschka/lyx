@@ -1,7 +1,12 @@
+1999-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_cb.C (LayoutsCB): fix bug where int was added to a
+	string. 
+
 1999-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxrc.C (Read): RC_PRINTEXSTRAOPTIONS now uses
-	LyXLex::netx() and not eatline() to get its argument.
+	LyXLex::next() and not eatline() to get its argument.
 
 1999-10-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
