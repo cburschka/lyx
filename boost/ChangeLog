@@ -1,3 +1,8 @@
+2003-10-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* boost/config/user.hpp (BOOST_REGEX_NARROW_INSTANTIATE): only
+	define for gcc 2.x
+
 2003-10-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* boost/config/user.hpp (BOOST_REGEX_NARROW_INSTANTIATE): define
