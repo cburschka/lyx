@@ -1,6 +1,11 @@
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* tex2lyx.C (clean_layouts): remove
+
+	* text.C: output lazily the \layout commands using the
+	check_layout function. Remove all explicit \layout tags.
+	(parse_text): pass an optional parameter 'layout'
+	(handle_par): remove
 	
 	* text.C (output_command_layout): renamed from output_layout
 	(parse_environment): new method containing a part of parse_text
