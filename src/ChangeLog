@@ -1,4 +1,7 @@
 2001-01-13  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* paragraph.C (SimpleTeXOnePar) Put \protect before paragraph
+	alignment commands (when needed).
+
 	* text.C (InsertChar): Add ':' to number separator chars.
 
