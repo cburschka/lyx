@@ -74,14 +74,14 @@ bool IsLyXFilename(string const & filename)
 string const MakeLatexName(string const & file)
 {
 	string name = OnlyFilename(file);
-	string path = OnlyPath(file);
+	string const path = OnlyPath(file);
 	
 	for (string::size_type i = 0; i < name.length(); ++i) {
 		name[i] &= 0x7f; // set 8th bit to 0
 	};
 
 	// ok so we scan through the string twice, but who cares.
-	string keep("abcdefghijklmnopqrstuvwxyz"
+	string const keep("abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"@!\"'()*+,-./0123456789:;<=>?[]`|");
 	
@@ -167,7 +167,7 @@ int IsFileWriteable (string const & path)
 //	 -1: error- couldn't find out
 int IsDirWriteable (string const & path)
 {
-        string tmpfl(TmpFileName(path));
+        string const tmpfl(TmpFileName(path));
 
 	if (tmpfl.empty()) {
 		WriteFSAlert(_("LyX Internal Error!"), 
@@ -227,7 +227,7 @@ string const FileSearch(string const & path, string const & name,
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
-	string tmpname = ReplaceEnvironmentPath(name);
+	string const tmpname = ReplaceEnvironmentPath(name);
 	string fullname = MakeAbsPath(tmpname, path);
 	
 	// search first without extension, then with it.
@@ -272,13 +272,13 @@ string const
 i18nLibFileSearch(string const & dir, string const & name, 
 		  string const & ext)
 {
-	string lang = token(string(GetEnv("LANG")), '_', 0);
+	string const lang = token(string(GetEnv("LANG")), '_', 0);
 	
 	if (lang.empty() || lang == "C")
 		return LibFileSearch(dir, name, ext);
 	else {
-		string tmp = LibFileSearch(dir, lang + '_' + name,
-					   ext);
+		string const tmp = LibFileSearch(dir, lang + '_' + name,
+						 ext);
 		if (!tmp.empty())
 			return tmp;
 		else
@@ -290,8 +290,8 @@ i18nLibFileSearch(string const & dir, string const & name,
 string const GetEnv(string const & envname)
 {
         // f.ex. what about error checking?
-        char const * const ch = getenv(envname.c_str());
-        string envstr = !ch ? "" : ch;
+        char const * const ch = ::getenv(envname.c_str());
+        string const envstr = !ch ? "" : ch;
         return envstr;
 }
 
@@ -299,9 +299,9 @@ string const GetEnv(string const & envname)
 string const GetEnvPath(string const & name)
 {
 #ifndef __EMX__
-        string pathlist = subst(GetEnv(name), ':', ';');
+        string const pathlist = subst(GetEnv(name), ':', ';');
 #else
-        string pathlist = subst(GetEnv(name), '\\', '/');
+        string const pathlist = subst(GetEnv(name), '\\', '/');
 #endif
         return strip(pathlist, ';');
 }
@@ -324,7 +324,7 @@ bool PutEnv(string const & envstr)
 	char * leaker = new char[envstr.length() + 1];
 	envstr.copy(leaker, envstr.length());
 	leaker[envstr.length()] = '\0';
-	int retval = lyx::putenv(leaker);
+	int const retval = lyx::putenv(leaker);
 
 	// If putenv does not make a copy of the char const * this
 	// is very dangerous. OTOH if it does take a copy this is the
@@ -337,11 +337,11 @@ bool PutEnv(string const & envstr)
 #else
 #ifdef HAVE_SETENV 
         string varname;
-        string str = envstr.split(varname,'=');
-        int retval = setenv(varname.c_str(), str.c_str(), true);
+        string const str = envstr.split(varname,'=');
+        int const retval = ::setenv(varname.c_str(), str.c_str(), true);
 #else
 	// No environment setting function. Can this happen?
-	int retval = 1; //return an error condition.
+	int const retval = 1; //return an error condition.
 #endif
 #endif
         return retval == 0;
@@ -372,12 +372,12 @@ int DeleteAllFilesInDir (string const & path)
 	//         if (filename == "." || filename == "..")
 	//                 continue;
 	//         string unlinkpath(AddName(path, filename));
-	//         if (remove(unlinkpath.c_str()))
+	//         if (lyx::unlink(unlinkpath))
 	//                 WriteFSAlert(_("Error! Could not remove file:"),
 	//                              unlinkpath);
 	// }
 	// return 0;
-	DIR * dir = opendir(path.c_str());
+	DIR * dir = ::opendir(path.c_str());
 	if (!dir) {
 		WriteFSAlert (_("Error! Cannot open directory:"), path);
 		return -1;
@@ -385,17 +385,17 @@ int DeleteAllFilesInDir (string const & path)
 	struct dirent * de;
 	int return_value = 0;
 	while ((de = readdir(dir))) {
-		string temp = de->d_name;
+		string const temp = de->d_name;
 		if (temp == "." || temp == "..") 
 			continue;
-		string unlinkpath = AddName (path, temp);
+		string const unlinkpath = AddName (path, temp);
 
 		lyxerr.debug() << "Deleting file: " << unlinkpath << endl;
 
 		bool deleted = true;
 		if (FileInfo(unlinkpath).isDir())
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
-		deleted &= (remove(unlinkpath.c_str()) == 0);
+		deleted &= (lyx::unlink(unlinkpath) == 0);
  		if (!deleted) {
 			WriteFSAlert (_("Error! Could not remove file:"), 
 				      unlinkpath);
@@ -408,11 +408,11 @@ int DeleteAllFilesInDir (string const & path)
 
 
 static
-string const CreateTmpDir (string const & tempdir, string const & mask)
+string const CreateTmpDir(string const & tempdir, string const & mask)
 {
-	string tmpfl(TmpFileName(tempdir, mask));
+	string const tmpfl(TmpFileName(tempdir, mask));
 	
-	if ((tmpfl.empty()) || lyx::mkdir (tmpfl.c_str(), 0777)) {
+	if ((tmpfl.empty()) || lyx::mkdir(tmpfl, 0777)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
 		return string();
@@ -422,13 +422,13 @@ string const CreateTmpDir (string const & tempdir, string const & mask)
 
 
 static
-int DestroyTmpDir (string const & tmpdir, bool Allfiles)
+int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 {
 #ifdef __EMX__
 	Path p(user_lyxdir);
 #endif
 	if (Allfiles && DeleteAllFilesInDir(tmpdir)) return -1;
-	if (rmdir(tmpdir.c_str())) { 
+	if (lyx::rmdir(tmpdir)) { 
 		WriteFSAlert(_("Error! Couldn't delete temporary directory:"), 
 			     tmpdir);
 		return -1;
@@ -437,26 +437,26 @@ int DestroyTmpDir (string const & tmpdir, bool Allfiles)
 } 
 
 
-string const CreateBufferTmpDir (string const & pathfor)
+string const CreateBufferTmpDir(string const & pathfor)
 {
 	return CreateTmpDir(pathfor, "lyx_bufrtmp");
 }
 
 
-int DestroyBufferTmpDir (string const & tmpdir)
+int DestroyBufferTmpDir(string const & tmpdir)
 {
 	return DestroyTmpDir(tmpdir, true);
 }
 
 
-string const CreateLyXTmpDir (string const & deflt)
+string const CreateLyXTmpDir(string const & deflt)
 {
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
-		if (lyx::mkdir(deflt.c_str(), 0777)) {
+		if (lyx::mkdir(deflt, 0777)) {
 #ifdef __EMX__
                         Path p(user_lyxdir);
 #endif
-			string t(CreateTmpDir (deflt.c_str(), "lyx_tmp"));
+			string const t(CreateTmpDir(deflt, "lyx_tmp"));
                         return t;
 		} else
                         return deflt;
@@ -464,7 +464,7 @@ string const CreateLyXTmpDir (string const & deflt)
 #ifdef __EMX__
 		Path p(user_lyxdir);
 #endif
-		string t(CreateTmpDir ("/tmp", "lyx_tmp"));
+		string const t(CreateTmpDir("/tmp", "lyx_tmp"));
 		return t;
 	}
 }
@@ -487,7 +487,7 @@ bool createDirectory(string const & path, int permission)
 		return false;
 	}
 
-	if (lyx::mkdir(temp.c_str(), permission)) {
+	if (lyx::mkdir(temp, permission)) {
 		WriteFSAlert (_("Error! Couldn't create directory:"), temp);
 		return false;
 	}
@@ -503,7 +503,7 @@ string const GetCWD ()
   	char * tbuf = new char[n];
   	
   	// Safe. Hopefully all getcwds behave this way!
-  	while (((err = lyx::getcwd (tbuf, n)) == 0) && (errno == ERANGE)) {
+  	while (((err = lyx::getcwd(tbuf, n)) == 0) && (errno == ERANGE)) {
 		// Buffer too small, double the buffersize and try again
     		delete[] tbuf;
     		n = 2 * n;
@@ -611,7 +611,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 string const AddName(string const & path, string const & fname)
 {
 	// Get basename
-	string basename(OnlyFilename(fname));
+	string const basename(OnlyFilename(fname));
 
 	string buf;
 
@@ -661,7 +661,7 @@ string const ExpandPath(string const & path)
 		return RTemp;
 
 	string Temp;
-	string copy(RTemp);
+	string const copy(RTemp);
 
 	// Split by next /
 	RTemp = split(RTemp, Temp, '/');
@@ -904,7 +904,7 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 string const AddPath(string const & path, string const & path_2)
 {
 	string buf;
-	string path2 = CleanupPath(path_2);
+	string const path2 = CleanupPath(path_2);
 
 	if (!path.empty() && path != "." && path != "./") {
 		buf = CleanupPath(path);
@@ -932,7 +932,7 @@ string const AddPath(string const & path, string const & path_2)
 string const
 ChangeExtension(string const & oldname, string const & extension)
 {
-	string::size_type last_slash = oldname.rfind('/');
+	string::size_type const last_slash = oldname.rfind('/');
 	string::size_type last_dot = oldname.rfind('.');
 	if (last_dot < last_slash && last_slash != string::npos)
 		last_dot = string::npos;
@@ -951,8 +951,8 @@ ChangeExtension(string const & oldname, string const & extension)
 /// Return the extension of the file (not including the .)
 string const GetExtension(string const & name)
 {
-	string::size_type last_slash = name.rfind('/');
-	string::size_type last_dot = name.rfind('.');
+	string::size_type const last_slash = name.rfind('/');
+	string::size_type const last_dot = name.rfind('.');
 	if (last_dot != string::npos &&
 	    (last_slash == string::npos || last_dot > last_slash))
 		return name.substr(last_dot + 1,
@@ -1017,7 +1017,8 @@ bool LyXReadLink(string const & File, string & Link)
 {
 	char LinkBuffer[512];
 	// Should be PATH_MAX but that needs autconf support
-	int nRead = readlink(File.c_str(), LinkBuffer, sizeof(LinkBuffer)-1);
+	int const nRead = ::readlink(File.c_str(),
+				     LinkBuffer, sizeof(LinkBuffer) - 1);
 	if (nRead <= 0)
 		return false;
 	LinkBuffer[nRead] = 0;
@@ -1035,7 +1036,7 @@ cmdret const do_popen(string const & cmd)
 	// of course the best would be to have a
 	// pstream (process stream), with the
 	// variants ipstream, opstream
-	FILE * inf = popen(cmd.c_str(), "r");
+	FILE * inf = ::popen(cmd.c_str(), "r");
 	string ret;
 	int c = fgetc(inf);
 	while (c != EOF) {
@@ -1103,7 +1104,7 @@ void removeAutosaveFile(string const & filename)
 	a += '#';
 	FileInfo fileinfo(a);
 	if (fileinfo.exist()) {
-		if (::remove(a.c_str()) != 0) {
+		if (lyx::unlink(a) != 0) {
 			WriteFSAlert(_("Could not delete auto-save file!"), a);
 		}
 	}

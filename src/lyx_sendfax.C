@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -74,7 +74,7 @@ FD_xsendfax *create_form_xsendfax(void)
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
-  //fdui->xsendfax->fdui = fdui;
+  fdui->xsendfax->fdui = fdui;
 
   return fdui;
 }
@@ -92,7 +92,7 @@ FD_phonebook *create_form_phonebook(void)
     fl_set_object_callback(obj, cb_select_phoneno, 0);
   fl_end_form();
 
-  //fdui->phonebook->fdui = fdui;
+  fdui->phonebook->fdui = fdui;
 
   return fdui;
 }
@@ -111,7 +111,7 @@ FD_logfile *create_form_logfile(void)
     fl_set_object_callback(obj, FaxLogfileCloseCB, 0);
   fl_end_form();
 
-  //fdui->logfile->fdui = fdui;
+  fdui->logfile->fdui = fdui;
 
   return fdui;
 }

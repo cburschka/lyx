@@ -14,8 +14,6 @@ src/bufferlist.C
 src/BufferView2.C
 src/bufferview_funcs.C
 src/BufferView_pimpl.C
-src/bullet_forms.C
-src/bullet_forms_cb.C
 src/Chktex.C
 src/ColorHandler.C
 src/combox.C
@@ -127,9 +125,7 @@ src/mathed/math_forms.C
 src/mathed/math_panel.C
 src/MenuBackend.C
 src/minibuffer.C
-src/PaperLayout.C
 src/paragraph.C
-src/ParagraphExtra.C
 src/print_form.C
 src/spellchecker.C
 src/sp_form.C

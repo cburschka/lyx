@@ -254,7 +254,7 @@ void MathMacroArgument::Write(ostream & os, bool fragile)
 
 /* --------------------- MathMacroTemplate ---------------------------*/
 
-MathMacroTemplate::MathMacroTemplate(char const * nm, int na, int flg):
+MathMacroTemplate::MathMacroTemplate(string const & nm, int na, int flg):
     MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO), 
     flags(flg), nargs(na)
 {

@@ -20,7 +20,6 @@
 #include "BufferView.h"
 #include "bibforms.h"
 #include "buffer.h"
-#include "bullet_forms.h"
 #include "form1.h"
 #include "gettext.h"
 #include "include_form.h"
@@ -42,21 +41,12 @@ using std::make_pair;
 
 extern BufferView * current_view;
 
-extern FD_form_paragraph * fd_form_paragraph;
-extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern FD_form_character * fd_form_character;
-extern FD_form_document * fd_form_document;
-extern FD_form_paper * fd_form_paper;
-extern FD_form_table_options * fd_form_table_options;
-extern FD_form_quotes * fd_form_quotes;
 extern FD_form_preamble * fd_form_preamble;
-extern FD_form_table * fd_form_table;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_figure * fd_form_figure;
-extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern FD_LaTeXLog * fd_latex_log;
 extern FD_form_spell_check * fd_form_spell_check;
-extern FD_form_bullet * fd_form_bullet;
 extern FD_panel  * fd_panel;
 extern FD_delim  * fd_delim;
 extern FD_deco   * fd_deco;
@@ -91,31 +81,9 @@ void CloseAllBufferRelatedDialogs()
 	// have been created otherwise hiding one could cause a crash
 	// need the visible check otherwise XForms prints a warning
 	// if hiding an invisible form
-	if (fd_form_paragraph->form_paragraph->visible) {
-		fl_hide_form(fd_form_paragraph->form_paragraph);
-	}
-	if (fd_form_paragraph_extra->form_paragraph_extra->visible) {
-		fl_hide_form(fd_form_paragraph_extra->form_paragraph_extra);
-	}
 	if (fd_form_character->form_character->visible) {
 		fl_hide_form(fd_form_character->form_character);
 	}
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-	if (fd_form_document->form_document->visible) {
-		fl_hide_form(fd_form_document->form_document);
-	}
-	if (fd_form_quotes->form_quotes->visible) {
-		fl_hide_form(fd_form_quotes->form_quotes);
-	}
-	if (fd_form_paper->form_paper->visible) {
-		fl_hide_form(fd_form_paper->form_paper);
-	}
-	if (fd_form_bullet) {
-		if (fd_form_bullet->form_bullet->visible) {
-			fl_hide_form(fd_form_bullet->form_bullet);
-		}
-	}
-#endif
 	if (fd_form_preamble->form_preamble->visible) {
 		fl_hide_form(fd_form_preamble->form_preamble);
 	}
@@ -175,30 +143,8 @@ void CloseAllBufferRelatedDialogs()
 // Again the Signal/Slot mechanism is tailor made for this task.
 void updateAllVisibleBufferRelatedDialogs()
 {
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-	if (fd_form_document->form_document->visible) {
-		UpdateLayoutDocument();
-	}
-	if (fd_form_quotes->form_quotes->visible) {
-		UpdateLayoutQuotes();
-	}
-	if (fd_form_paper->form_paper->visible) {
-		UpdateLayoutPaper();
-	}
-#endif
 	if (fd_form_preamble->form_preamble->visible) {
 		UpdateLayoutPreamble();
-	}
-	if (fd_form_paragraph->form_paragraph->visible) {
-		UpdateLayoutParagraph();
-	}
-	if (fd_form_paragraph_extra->form_paragraph_extra->visible) {
-		UpdateParagraphExtra();
-	}
-	if (fd_form_bullet) {
-		if (fd_form_bullet->form_bullet->visible) {
-			updateBulletForm();
-		}
 	}
 	if (fd_latex_log->LaTeXLog->visible) {
 		LatexLogUpdate(0,0);
@@ -341,7 +287,7 @@ void WriteAlert(string const & s1, string const & s2, string const & s3)
 // Alarms user of something related to files
 void WriteFSAlert(string const & s1, string const & s2)
 {
-	WriteAlert (s1, s2, strerror(errno));
+	WriteAlert(s1, s2, strerror(errno));
 }
 
 

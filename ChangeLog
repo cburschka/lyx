@@ -1,3 +1,61 @@
+2000-09-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/unlink.C src/support/remove.C src/support/mkdir.C:
+	new files use the everwhere possible.
+	
+	* several files: 
+	* src/form1.C src/form1.h src/layout_forms.C src/layout_forms.h
+	src/log_form.C src/lyx.C:
+	regenerated
+	
+	* src/buffer.C (runLaTeX): remove func
+	
+	* src/PaperLayout.C: removed file
+	* src/ParagraphExtra.C: likewise
+	* src/bullet_forms.C: likewise
+	* src/bullet_forms.h: likewise
+	* src/bullet_forms_cb.C: likewise
+	
+	* src/Makefile.am (lyx_SOURCES): remove PaperLayout.C,
+	ParagraphExtra.C, bullet_forms.C, bullet_forms.h and
+	bullet_forms_cb.C 
+
+	* several files: remove all traces of the old fd_form_paragraph,
+	and functions belonging to that.
+	
+	* several files: remove all traces of the old fd_form_document,
+	and functions belonging to that.
+	
+	* several files: constify local variables were possible.
+	
+	* several files: remove all code that was dead when NEW_EXPORT was
+	defined 
+	
+	* several files: removed string::c_str in as many places as
+	possible.
+	
+	* forms/makefile (SRCS,OBJS,COBJS): removed bullet_forms.[fd,c,C]
+	(e): be a bit more outspoken when patching
+	(updatesrc): only move files if changed.
+
+	* forms/layout_forms.h.patch: regenerated
+	
+	* forms/layout_forms.fd: remove form_document and form_paragraph
+	and form_quotes and form_paper and form_table_options and
+	form_paragraph_extra 
+
+	* forms/form1.fd: remove form_table
+
+	* forms/fdfix.sh: remove sed rules for fl_set_object_lcolor and
+	the fdui->... rewrite. Update some comments to xforms 0.88
+
+	* forms/bullet_forms.C.patch: removed file
+	* forms/bullet_forms.fd: likewise
+	* forms/bullet_forms.h.patch: likewise
+	
+	* development/Code_rules/Rules: added a section on switch
+	statements. Updated some comment to xforms 0.88.
+
 2000-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/buffer.C (readFile): make sure that the whole version number

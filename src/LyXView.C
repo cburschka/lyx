@@ -40,8 +40,6 @@
 
 using std::endl;
 
-extern FD_form_document * fd_form_document;
-
 extern void AutoSave(BufferView *);
 extern void QuitLyX();
 LyXTextClass::size_type current_layout = 0;
@@ -311,7 +309,6 @@ void LyXView::init()
 	// Set the textclass choice
 	invalidateLayoutChoice();
 	updateLayoutChoice();
-	UpdateDocumentClassChoice();
 	updateMenubar();
 	
 	// Start autosave timer
@@ -361,20 +358,6 @@ void LyXView::updateLayoutChoice()
 	if (layout != current_layout){
 		toolbar->setLayout(layout);
 		current_layout = layout;
-	}
-}
-
-
-void LyXView::UpdateDocumentClassChoice()
-{
-	// Update the document class display in the document form
-	if (fd_form_document) {
-		fl_clear_choice(fd_form_document->choice_class);
-		for (LyXTextClassList::const_iterator cit = textclasslist.begin();
-		     cit != textclasslist.end(); ++cit) {
-			fl_addto_choice(fd_form_document->choice_class,
-					(*cit).description().c_str());
-		}
 	}
 }
 

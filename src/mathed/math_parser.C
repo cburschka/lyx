@@ -16,7 +16,7 @@
  */
 
 #include <config.h>
-#include <cstdlib>
+
 #include <cctype>
 
 #ifdef __GNUG__
@@ -29,6 +29,7 @@
 #include "math_macro.h"
 #include "math_root.h"
 #include "debug.h"
+#include "support/lyxlib.h"
 
 using std::istream;
 using std::endl;
@@ -45,12 +46,15 @@ enum {
 	FLAG_BRACK_END  = 256   // Next ] ends the parsing process
 };
 
+static
 YYSTYPE yylval;
 
 
-static short mathed_env = LM_EN_INTEXT;
+static
+short mathed_env = LM_EN_INTEXT;
 
-char * mathed_label = 0;
+string mathed_label;
+
 
 char const * latex_mathenv[] = { 
    "math", 
@@ -62,10 +66,12 @@ char const * latex_mathenv[] = {
 };
 
 
+
 char const * latex_mathspace[] = {
    "!", ",", ":", ";", "quad", "qquad"
 };
-   
+
+
 char const * latex_special_chars = "#$%&_{}";
 	    
 // These are lexical codes, not semantic
@@ -92,15 +98,6 @@ static int yylineno;
 static istream * yyis;
 static bool yy_mtextmode= false;
 	    
-static inline
-char * strnew(char const * s)
-{
-	char * s1 = new char[strlen(s) + 1]; // this leaks when not delete[]'ed
-	strcpy(s1, s);
-	return s1;
-}
-
-
 static
 void mathPrintError(string const & msg) 
 {
@@ -142,9 +139,6 @@ void LexInitCodes()
 static
 char LexGetArg(char lf, bool accept_spaces= false)
 {
-	char rg;
-	char * p = &yytext[0];
-   int bcnt = 1;
    unsigned char c;
    char cc;
    while (yyis->good()) {
@@ -158,18 +152,21 @@ char LexGetArg(char lf, bool accept_spaces= false)
 	 break;
       }
    }
-   rg = (lf == '{') ? '}': ((lf == '[') ? ']': ((lf == '(') ? ')': 0));
+   char const rg =
+	   (lf == '{') ? '}' : ((lf == '[') ? ']' : ((lf == '(') ? ')' : 0));
    if (!rg) {
 	   lyxerr << "Math parse error: unknown bracket '"
 		  << lf << "'" << endl;
       return '\0';
-   } 
+   }
+   char * p = &yytext[0];
+   int bcnt = 1;
    do {
       yyis->get(cc);
       c = cc;
       if (c == lf) ++bcnt;
       if (c == rg) --bcnt;
-      if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt>0) *(p++) = c;
+      if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt > 0) *(p++) = c;
    } while (bcnt > 0 && yyis->good());
    *p = '\0';
    return rg;
@@ -180,11 +177,11 @@ static
 int yylex(void)
 {
    static int init_done = 0;
-   unsigned char c;
-   char cc;
    
    if (!init_done) LexInitCodes();
    
+   unsigned char c;
+   char cc;
    while (yyis->good()) {
       yyis->get(cc);
       c = cc;
@@ -192,45 +189,79 @@ int yylex(void)
       if (yy_mtextmode && c == ' ') {
 	  yylval.i= ' ';
 	  return LM_TK_ALPHA;
-      }
+      } else
        
        if (lexcode[c] == LexNewLine) {
 	   ++yylineno; 
 	   continue;
-       }
+       } else
 	 
-      if (lexcode[c] == LexComment)
-	do { yyis->get(cc); c = cc; } while (c != '\n' % yyis->good());  // eat comments
-    
-      if (lexcode[c] == LexDigit || lexcode[c] == LexOther || lexcode[c] == LexMathSpace) { yylval.i = c; return LM_TK_STR; }
-      if (lexcode[c] == LexAlpha) { yylval.i= c; return LM_TK_ALPHA; }
-      if (lexcode[c] == LexBOP)   { yylval.i= c; return LM_TK_BOP; }
-      if (lexcode[c] == LexSelf)  { return c; }   
+       if (lexcode[c] == LexComment) {
+	do {
+	  yyis->get(cc);
+	  c = cc;
+	} while (c != '\n' % yyis->good());  // eat comments
+       } else
+       
+      if (lexcode[c] == LexDigit
+	  || lexcode[c] == LexOther
+	  || lexcode[c] == LexMathSpace) {
+	      yylval.i = c;
+	      return LM_TK_STR;
+      } else
+      if (lexcode[c] == LexAlpha) {
+	      yylval.i= c;
+	      return LM_TK_ALPHA;
+      } else
+      if (lexcode[c] == LexBOP) {
+	      yylval.i= c;
+	      return LM_TK_BOP;
+      } else
+      if (lexcode[c] == LexSelf) {
+	      return c;
+      } else
       if (lexcode[c] == LexArgument) {
 	  yyis->get(cc);
 	  c = cc;
 	  yylval.i = c - '0';
 	  return LM_TK_ARGUMENT; 
-      }
-      if (lexcode[c] == LexOpen)   { return LM_TK_OPEN; }
-      if (lexcode[c] == LexClose)   { return LM_TK_CLOSE; }
-      
+      } else
+      if (lexcode[c] == LexOpen) {
+	      return LM_TK_OPEN;
+      } else
+      if (lexcode[c] == LexClose) {
+	      return LM_TK_CLOSE;
+      } else
       if (lexcode[c] == LexESC)   {
 	 yyis->get(cc);
 	 c = cc;
-	 if (c == '\\')	{ return LM_TK_NEWLINE; }
-	 if (c == '(')	{ yylval.i = LM_EN_INTEXT; return LM_TK_BEGIN; }
-	 if (c == ')')	{ yylval.i = LM_EN_INTEXT; return LM_TK_END; }
-	 if (c == '[')	{ yylval.i = LM_EN_DISPLAY; return LM_TK_BEGIN; }
-	 if (c == ']')	{ yylval.i = LM_EN_DISPLAY; return LM_TK_END; }
+	 if (c == '\\')	{
+		 return LM_TK_NEWLINE;
+	 }
+	 if (c == '(') {
+		 yylval.i = LM_EN_INTEXT;
+		 return LM_TK_BEGIN;
+	 }
+	 if (c == ')') {
+		 yylval.i = LM_EN_INTEXT;
+		 return LM_TK_END;
+	 }
+	 if (c == '[') {
+		 yylval.i = LM_EN_DISPLAY;
+		 return LM_TK_BEGIN;
+	 }
+	 if (c == ']') {
+		 yylval.i = LM_EN_DISPLAY;
+		 return LM_TK_END;
+	 }
 	 if (strchr(latex_special_chars, c)) {
 	     yylval.i = c;
 	     return LM_TK_SPECIAL;
-	 }  
+	 } 
 	 if (lexcode[c] == LexMathSpace) {
 	    int i;
 	    for (i = 0; i < 4 && static_cast<int>(c) != latex_mathspace[i][0]; ++i);
-	    yylval.i = (i < 4) ? i: 0; 
+	    yylval.i = (i < 4) ? i : 0; 
 	    return LM_TK_SPACE; 
 	 }
 	 if (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
@@ -270,6 +301,7 @@ int yylex(void)
 }
 
 
+static
 int parse_align(char * hor, char *)
 {
    int nc = 0;
@@ -279,9 +311,12 @@ int parse_align(char * hor, char *)
 
 
 // Accent hacks only for 0.12. Stolen from Cursor.
+static
 int accent = 0;
+static
 int nestaccent[8];
 
+static
 void setAccent(int ac)
 {
 	if (ac > 0 && accent < 8) {
@@ -291,6 +326,7 @@ void setAccent(int ac)
 }
 
 
+static
 MathedInset * doAccent(byte c, MathedTextCodes t)
 {
 	MathedInset * ac = 0;
@@ -307,6 +343,7 @@ MathedInset * doAccent(byte c, MathedTextCodes t)
 }
 
 
+static
 MathedInset * doAccent(MathedInset * p)
 {
 	MathedInset * ac = 0;
@@ -326,13 +363,14 @@ MathedInset * doAccent(MathedInset * p)
 LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 			    MathParInset ** mtx)
 {
-   int t = yylex(), tprev = 0;
+   int t = yylex();
+   int tprev = 0;
    bool panic = false;
    static int plevel = -1;
    static int size = LM_ST_TEXT;
    MathedTextCodes varcode = LM_TC_VAR;
    MathedInset * binset = 0;
-   static MathMacroTemplate * macro= 0;
+   static MathMacroTemplate * macro = 0;
    
    int brace = 0;
    int acc_brace = 0;
@@ -375,15 +413,15 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	  int na = 0; 
 
 	  LexGetArg('{');
-	  // This name lives until quitting, for that reason
-	  // I didn't care on deleting explicitly. Later I will.
-	  char const * name = strnew(&yytext[1]);
+	  string const name(&yytext[1]);
+	  
 	  // ugly trick to be removed soon (lyx3)
-	  char c; yyis->get(c);
-	  yyis->putback(c);
+	  //char c; yyis->get(c);
+	  //yyis->putback(c);
+	  char const c = yyis->peek();
 	  if (c == '[') {
 	      LexGetArg('[');
-	      na = atoi(yytext);
+	      na = lyx::atoi(yytext);
 	  }  
 	  macro = new MathMacroTemplate(name, na);
 	  flags = FLAG_BRACE|FLAG_BRACE_LAST;
@@ -399,7 +437,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case LM_TK_STR:
       {	  
 	  if (accent) {
-		  data.Insert(doAccent(yylval.i, LM_TC_CONST));
+	    data.Insert(doAccent(yylval.i, LM_TC_CONST));
 	  } else
 	    data.Insert (yylval.i, LM_TC_CONST);
 	  break;
@@ -454,8 +492,8 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       {
 	 if (flags & FLAG_BRACK_ARG) {
 	   flags &= ~FLAG_BRACK_ARG;
-	   char rg = LexGetArg('[');
-	   if (rg!= ']') {
+	   char const rg = LexGetArg('[');
+	   if (rg != ']') {
 	      mathPrintError("Expected ']'");
 	      panic = true;
 	      break;
@@ -541,7 +579,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	    if (accent) {
 		data.Insert(doAccent(yylval.l->id, tc));
 	    } else
-	    data.Insert (yylval.l->id, tc);
+	    data.Insert(yylval.l->id, tc);
 	 } else {
 	    MathFuncInset * bg = new MathFuncInset(yylval.l->name);
 	     if (accent) {
@@ -556,7 +594,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	 if (accent) {
 		 data.Insert(doAccent(yylval.i, LM_TC_BOP));
 	  } else
-	    data.Insert (yylval.i, LM_TC_BOP);
+	    data.Insert(yylval.i, LM_TC_BOP);
 	 break;
       }
     case LM_TK_STY:
@@ -613,13 +651,12 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
        
     case LM_TK_LEFT:
       {
-	 int lfd, rgd;
-	 lfd = yylex();
+	 int lfd = yylex();
 	 if (lfd == LM_TK_SYM || lfd == LM_TK_STR || lfd == LM_TK_BOP|| lfd == LM_TK_SPECIAL)
 	   lfd = (lfd == LM_TK_SYM) ? yylval.l->id: yylval.i;
 //	 lyxerr << "L[" << lfd << " " << lfd << "]";
 	 LyxArrayBase * a = mathed_parse(FLAG_RIGHT);
-	 rgd = yylex();
+	 int rgd = yylex();
 //	 lyxerr << "R[" << rgd << "]";
 	 if (rgd == LM_TK_SYM || rgd == LM_TK_STR || rgd == LM_TK_BOP || rgd == LM_TK_SPECIAL)
 	   rgd = (rgd == LM_TK_SYM) ? yylval.l->id: yylval.i;	 
@@ -657,7 +694,9 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	 break;
       }
       
-    case LM_TK_ACCENT: setAccent(yylval.l->id); break;
+    case LM_TK_ACCENT:
+      setAccent(yylval.l->id);
+      break;
 	  
     case LM_TK_NONUM:
       {
@@ -729,13 +768,12 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	       rg = LexGetArg('{');
 	    }
 	    strcpy(ar, yytext);
-	    int nc = parse_align(ar, ar2);
+	    int const nc = parse_align(ar, ar2);
 	    MathParInset * mm = new MathMatrixInset(nc, 0);
 	    mm->SetAlign(ar2[0], ar);
        	    data.Insert(mm, LM_TC_ACTIVE_INSET);
             mathed_parse(FLAG_END, mm->GetData(), &mm);
-	 } else
-	 if (yylval.i >= LM_EN_INTEXT && yylval.i<= LM_EN_EQNARRAY) {
+	 } else if (yylval.i >= LM_EN_INTEXT && yylval.i<= LM_EN_EQNARRAY) {
 	     if (plevel!= 0) {
 		 mathPrintError("Misplaced environment");
 		 break;
@@ -797,7 +835,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
        
      case LM_TK_LABEL:
        {	   
-	  char rg = LexGetArg('\0', true);
+	  char const rg = LexGetArg('\0', true);
 	  if (rg != '}') {
 	     mathPrintError("Expected '{'");
 	      // debug info
@@ -806,15 +844,9 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	     break;
 	  } 
 	  if (crow) {
-	      // This is removed by crow's destructor. Bad design? yes, this 
-	      // will be changed after 0.12
-	      crow->setLabel(strnew(yytext));
-	  }
-	  else {
-		  // where is this math_label free'ed?
-	          // Supposedly in ~formula, another bad hack,
-	          // give me some time please.
-		  mathed_label = strnew(yytext);
+	      crow->setLabel(yytext);
+	  } else {
+		  mathed_label = yytext;
 	  }
 #ifdef DEBUG
 	  lyxerr << "Label[" << mathed_label << "]" << endl;
@@ -831,7 +863,9 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     if (panic) {
 	    lyxerr << " Math Panic, expect problems!" << endl;
        //   Search for the end command. 
-       do t = yylex (); while (t != LM_TK_END && t);
+       do {
+	       t = yylex ();
+       } while (t != LM_TK_END && t);
     } else
      t = yylex ();
    

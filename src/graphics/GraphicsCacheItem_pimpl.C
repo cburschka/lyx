@@ -13,8 +13,6 @@
 
 #include <map>
 
-#include <unistd.h> // unlink
-
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__
@@ -150,7 +148,7 @@ GraphicsCacheItem_pimpl::loadXPMImage()
 	}
 
 	// remove the xpm file now.
-	::unlink(xpmfile.c_str());
+	lyx::unlink(xpmfile);
 	// and remove the reference to the filename.
 	xpmfile = string();
 }

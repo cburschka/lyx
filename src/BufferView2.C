@@ -716,13 +716,13 @@ void BufferView::replaceWord(string const & replacestring)
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	text->ReplaceSelectionWithString(this, replacestring.c_str());
+	text->ReplaceSelectionWithString(this, replacestring);
    
-	text->SetSelectionOverString(this, replacestring.c_str());
+	text->SetSelectionOverString(this, replacestring);
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
-		text->CursorLeftIntern(this);
+		text->CursorLeft(this);
 	}
 	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }

@@ -38,10 +38,6 @@
 #include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyxlex.h"
-#if 1
-// only to get access to NEW_EXPORT
-#include "exporter.h"
-#endif
 
 using std::endl;
 
@@ -141,7 +137,8 @@ LyX::LyX(int * argc, char * argv[])
 
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
-		lyxerr << "About to handle -x '" << batch_command << "'" << endl;
+		lyxerr << "About to handle -x '"
+		       << batch_command << "'" << endl;
 
 		// no buffer loaded, create one
 		if (!last_loaded)
@@ -568,7 +565,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
-	system(AddName(system_lyxdir, "configure").c_str());
+	::system(AddName(system_lyxdir, "configure").c_str());
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
 
@@ -744,25 +741,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 			if (i + 1 < *argc) {
 				string type(argv[i+1]);
 				removeargs = 2;
-#ifdef NEW_EXPORT
 				batch_command = "buffer-export " + type;
-#else
-				if (type == "tex")
-					type = "latex";
-				else if (type == "ps")
-					type = "postscript";
-				else if (type == "text" || type == "txt")
-					type = "ascii";
-
-				if (type == "latex" || type == "postscript"
-				    || type == "linuxdoc" || type == "docbook"
-				    || type == "ascii" || type == "html") 
-					batch_command = "buffer-export " + type;
-				else
-					lyxerr << _("Unknown file type '")
-					       << type << _("' after ")
-					       << arg << _(" switch!") << endl;
-#endif
 			} else
 				lyxerr << _("Missing file type [eg latex, "
 					    "ps...] after ")

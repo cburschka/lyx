@@ -90,9 +90,8 @@ InsetFloat::InsetFloat(string const & type)
 	font.setColor(LColor::footnote);
 	setLabelFont(font);
 	setAutoCollapse(false);
-//	setInsetName("Float");
 	floatType = type;
-	setInsetName(type.c_str());
+	setInsetName(type);
 	//floatPlacement = "H";
 }
 

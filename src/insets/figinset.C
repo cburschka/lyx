@@ -161,7 +161,7 @@ void kill_gs(int pid, int sig)
 	if (lyxerr.debugging()) 
 		lyxerr << "Killing gs " << pid << endl;
 	lyx::kill(pid, sig);
-	unlink(make_tmp(pid).c_str());
+	lyx::unlink(make_tmp(pid));
 }
 
 
@@ -661,7 +661,7 @@ void runqueue()
 
 			// now chdir into dir with .eps file, to be on the safe
 			// side
-			::chdir(OnlyPath(p->data->fname).c_str());
+			lyx::chdir(OnlyPath(p->data->fname));
 			// make temp file name
 			string tmpf = make_tmp(getpid());
 			if (lyxerr.debugging()) {
@@ -684,7 +684,7 @@ void runqueue()
 			lyxerr.debug() << "Cmd: " 
 				       << lyxrc.ps_command
 				       << " -sDEVICE=x11 "
-				       << tmpf.c_str() << ' '
+				       << tmpf << ' '
 				       << p->data->fname << endl;
 			_exit(0);	// no gs?
 		}
@@ -832,7 +832,7 @@ void sigchldchecker(pid_t pid, int * status)
 				p->broken = false;
 			} else {
 				// remove temporary files
-				unlink(make_tmp(p->gspid).c_str());
+				lyx::unlink(make_tmp(p->gspid));
 				p->gspid = -1;
 				p->broken = true;
 			}
@@ -1952,7 +1952,7 @@ void InsetFig::BrowseFile()
 		buf = MakeAbsPath(p, buf2);
 		buf = OnlyPath(buf);
 	} else {
-		buf = OnlyPath(owner->fileName().c_str());
+		buf = OnlyPath(owner->fileName());
 	}
 	
 	// Does user clipart directory exist?

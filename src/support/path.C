@@ -17,7 +17,7 @@ int Path::pop()
 		//	     pushedDir_);
 		return 0;
 	}
-	if (lyx::chdir(pushedDir_.c_str())) {
+	if (lyx::chdir(pushedDir_)) {
 		// should throw an exception
 		// throw DirChangeError();
 		// The use of WriteFSAlert makes this impossible

@@ -131,10 +131,8 @@ private:
 	BufferView * bufferview;
 	///
 	void invalidateLayoutChoice();
-	///
-	void UpdateDocumentClassChoice();
 public:
-#if FL_REVISION < 89
+#if 0
  	///
  	static int KeyPressMask_raw_callback(FL_FORM *, void * xev);
 #endif

@@ -8,10 +8,6 @@
 extern "C" void GraphicsCB(FL_OBJECT *, long);
 
 
-extern "C" void TableOKCB(FL_OBJECT *, long);
-extern "C" void TableApplyCB(FL_OBJECT *, long);
-extern "C" void TableCancelCB(FL_OBJECT *, long);
-
 extern "C" void SearchForwardCB(FL_OBJECT *, long);
 extern "C" void SearchBackwardCB(FL_OBJECT *, long);
 extern "C" void SearchReplaceCB(FL_OBJECT *, long);
@@ -98,19 +94,6 @@ typedef struct {
 } FD_FileDlg;
 
 extern FD_FileDlg * create_form_FileDlg(void);
-typedef struct {
-	FL_FORM *form_table;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *button_ok;
-	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
-	FL_OBJECT *slider_columns;
-	FL_OBJECT *slider_rows;
-} FD_form_table;
-
-extern FD_form_table * create_form_form_table(void);
 typedef struct {
 	FL_FORM *form_search;
 	void *vdata;

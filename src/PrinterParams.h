@@ -21,7 +21,9 @@
 
 #ifdef ENABLE_ASSERTIONS
 #include "support/LAssert.h"
+extern bool containsOnly(string const &, char const *);
 #endif
+
 
 /**
   This struct contains (or should contain) all the parameters required for
@@ -33,7 +35,7 @@
 */
 struct PrinterParams {
 	///
-	enum Target{
+	enum Target {
 		///
 		PRINTER,
 		///
@@ -131,7 +133,6 @@ struct PrinterParams {
 	void testInvariant() const
 		{
 #ifdef ENABLE_ASSERTIONS
-			extern bool containsOnly(string const &, char const *);
 			if (!from_page.empty()) {
 				// Assert(from_page == number or empty)
 				Assert(containsOnly(from_page, "1234567890"));
@@ -166,6 +167,3 @@ struct PrinterParams {
 };
 
 #endif
-
-
-

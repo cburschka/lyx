@@ -12,8 +12,6 @@
 
 #include <iosfwd>
 
-//#define NEW_EXPORT 1
-
 /** These are all the lyxfunctions (as enums).
     Please add new functions at the end of the enum, right
     before LFUN_LASTACTION.
@@ -29,15 +27,9 @@ enum kb_action {
 	LFUN_MENUWRITEAS,
 	LFUN_MENUPRINT,
 	LFUN_MENUSENDTO,
-#ifndef NEW_EXPORT
-	LFUN_RUNLATEX,
-#endif
         LFUN_BUILDPROG, // 10
 	LFUN_TOCVIEW,
 	LFUN_PREVIEW,
-#ifndef NEW_EXPORT
-	LFUN_PREVIEWPS,
-#endif
 	LFUN_CLOSEBUFFER,
 	LFUN_BUFFER_PRINT,		// ARRae 20000313
 	LFUN_PRINTER_PARAMS_GET,	// ARRae 20000313
@@ -159,9 +151,6 @@ enum kb_action {
 	LFUN_LAYOUT_CHARACTER,
 	LFUN_LAYOUT_PARAGRAPH,
 	LFUN_LAYOUT_DOCUMENT,
-	LFUN_LAYOUT_PAPER,
-	LFUN_LAYOUT_TABLE,
-	LFUN_LAYOUT_QUOTES,
 	LFUN_LAYOUT_PREAMBLE,
         LFUN_LAYOUT_SAVE_DEFAULT,
 	LFUN_DROP_LAYOUTS_CHOICE, // 140
@@ -197,9 +186,6 @@ enum kb_action {
 	LFUN_BACKSPACE_SKIP, // 170
 	LFUN_DELETE_SKIP,
 	LFUN_MENUNEWTMPLT,		// Asger 1997-02-02
-#ifndef NEW_EXPORT
-	LFUN_RUNDVIPS,			// Asger 1997-02-02
-#endif
 	LFUN_MENURELOAD,		// Asger 1997-02-02
 	LFUN_FAX,			// Asger 1997-02-10
 	LFUN_RECONFIGURE,		// Asger 1997-02-14
@@ -239,7 +225,6 @@ enum kb_action {
 	LFUN_LDOTS,                     // Asger 970929
 	LFUN_END_OF_SENTENCE,		// Asger 970929
 	LFUN_RUNCHKTEX,			// Asger 971030
-	LFUN_BUFFERBULLETSSELECT,	// ARRae 971018
 	LFUN_TOGGLECURSORFOLLOW,        // ARRae 971202
 	LFUN_HTMLURL,                   // CFO-G 971121
 	LFUN_URL,                       // CFO-G 971121

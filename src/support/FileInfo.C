@@ -140,9 +140,9 @@ void FileInfo::init()
 void FileInfo::dostat(bool link)
 {
 	if (link) {
-		status = lstat(fname.c_str(), &buf);
+		status = ::lstat(fname.c_str(), &buf);
 	} else {
-		status = stat(fname.c_str(), &buf);
+		status = ::stat(fname.c_str(), &buf);
 	}
 	if (status) err = errno;
 }
@@ -386,3 +386,6 @@ bool FileInfo::access(int p)
 		return false;
 	}
 }
+
+
+

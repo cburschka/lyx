@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -21,12 +21,12 @@ FD_KeyMap *create_form_KeyMap(void)
   fdui->AcceptChset = obj = fl_add_button(FL_NORMAL_BUTTON, 210, 280, 170, 30, idex(_("Set Charset|#C")));fl_set_button_shortcut(obj, scex(_("Set Charset|#C")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->ChsetErr = obj = fl_add_text(FL_NORMAL_TEXT, 210, 310, 170, 30, _("Charset not found!"));
-    fl_set_object_lcol(obj, FL_RED);
+    fl_set_object_lcolor(obj, FL_RED);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE+FL_EMBOSSED_STYLE);
   fdui->KeymapErr = obj = fl_add_text(FL_NORMAL_TEXT, 290, 60, 100, 90, _("Error:\n\nKeymap\nnot found"));
-    fl_set_object_lcol(obj, FL_RED);
+    fl_set_object_lcolor(obj, FL_RED);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE+FL_EMBOSSED_STYLE);
@@ -75,7 +75,7 @@ FD_KeyMap *create_form_KeyMap(void)
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT|FL_ALIGN_INSIDE);
   fl_end_form();
 
-  //fdui->KeyMap->fdui = fdui;
+  fdui->KeyMap->fdui = fdui;
 
   return fdui;
 }
@@ -212,7 +212,7 @@ FD_Figure *create_form_Figure(void)
     fl_set_object_callback(obj, GraphicsCB, 70);
   fl_end_form();
 
-  //fdui->Figure->fdui = fdui;
+  fdui->Figure->fdui = fdui;
 
   return fdui;
 }
@@ -268,39 +268,7 @@ FD_FileDlg *create_form_FileDlg(void)
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
   fl_end_form();
 
-  //fdui->FileDlg->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
-FD_form_table *create_form_form_table(void)
-{
-  FL_OBJECT *obj;
-  FD_form_table *fdui = (FD_form_table *) fl_calloc(1, sizeof(FD_form_table));
-
-  fdui->form_table = fl_bgn_form(FL_NO_BOX, 310, 130);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 310, 130, "");
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 90, 90, 30, _("OK"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, TableOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 110, 90, 90, 30, idex(_("Apply|#A")));fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, TableApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 210, 90, 90, 30, idex(_("Cancel|^[")));fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, TableCancelCB, 0);
-  fdui->slider_columns = obj = fl_add_valslider(FL_HOR_SLIDER, 80, 50, 220, 30, _("Columns"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->slider_rows = obj = fl_add_valslider(FL_HOR_SLIDER, 80, 10, 220, 30, _("Rows"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  fl_end_form();
-
-  //fdui->form_table->fdui = fdui;
+  fdui->FileDlg->fdui = fdui;
 
   return fdui;
 }
@@ -349,7 +317,7 @@ FD_form_search *create_form_form_search(void)
     fl_set_object_callback(obj, SearchReplaceAllCB, 0);
   fl_end_form();
 
-  //fdui->form_search->fdui = fdui;
+  fdui->form_search->fdui = fdui;
 
   return fdui;
 }

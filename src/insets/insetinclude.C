@@ -104,7 +104,7 @@ void include_cb(FL_OBJECT *, long arg)
 	{
 		// Should browsing too be disabled in RO-mode?
 		LyXFileDlg fileDlg;
-		string mpath = OnlyPath(inset->getMasterFilename());
+		string const mpath = OnlyPath(inset->getMasterFilename());
                 string ext;
     
 		if (fl_get_button(form->flag2)) // Use Input Button
@@ -117,15 +117,16 @@ void include_cb(FL_OBJECT *, long arg)
 		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
     
 		// Use by default the master's path
-		string filename = fileDlg.Select(_("Select Child Document"),
-						  mpath, ext, 
-						  inset->getContents());
+		string const filename =
+			fileDlg.Select(_("Select Child Document"),
+				       mpath, ext, 
+				       inset->getContents());
 		XFlush(fl_get_display());
  
 		// check selected filename
 		if (!filename.empty()) {
-			string filename2 = MakeRelPath(filename,
-							mpath);
+			string const filename2 = MakeRelPath(filename,
+							     mpath);
 			if (prefixIs(filename2, ".."))
 				fl_set_input(form->input,
 					     filename.c_str());
@@ -192,7 +193,7 @@ void include_cb(FL_OBJECT *, long arg)
 
 static inline
 string unique_id() {
-	static unsigned int seed=1000;
+	static unsigned int seed = 1000;
 
 	std::ostringstream ost;
 	ost << "file" << ++seed;
@@ -347,22 +348,20 @@ bool InsetInclude::loadIfNeeded() const
 	
 	// the readonly flag can/will be wrong, not anymore I think.
 	FileInfo finfo(getFileName());
-	bool ro = !finfo.writable();
-	return ( bufferlist.readFile(getFileName(), ro) != 0 );
+	bool const ro = !finfo.writable();
+	return bufferlist.readFile(getFileName(), ro) != 0;
 }
 
 
 int InsetInclude::Latex(Buffer const *, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
+	string incfile(getContents());
+	
 	// Do nothing if no file name has been specified
-	if (getContents().empty())
+	if (incfile.empty())
 		return 0;
     
-	// Use += to force a copy of contents (JMarc)
-	// How does that force anything? (Lgb)
-	string incfile(getContents());
-
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -424,12 +423,12 @@ int InsetInclude::Latex(Buffer const *, ostream & os,
 
 int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
 {
+	string incfile(getContents());
+	
 	// Do nothing if no file name has been specified
-	if (getContents().empty())
+	if (incfile.empty())
 		return 0;
     
-	string incfile(getContents());
-
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -461,12 +460,12 @@ int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
 
 int InsetInclude::DocBook(Buffer const *, ostream & os) const
 {
-	// Do nothing if no file name has been specified
-	if (getContents().empty())
-		return 0;
-    
 	string incfile(getContents());
 
+	// Do nothing if no file name has been specified
+	if (incfile.empty())
+		return 0;
+    
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -529,17 +528,16 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 
 vector<string> const InsetInclude::getLabelList() const
 {
-    vector<string> l;
-    string parentname;
+	vector<string> l;
 
-    if (loadIfNeeded()) {
-	Buffer * tmp = bufferlist.getBuffer(getFileName());
-	tmp->setParentName(""); 
-	l = tmp->getLabelList();
-	tmp->setParentName(getMasterFilename());
-    }
+	if (loadIfNeeded()) {
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
+		tmp->setParentName(""); 
+		l = tmp->getLabelList();
+		tmp->setParentName(getMasterFilename());
+	}
 
-    return l;
+	return l;
 }
 
 
@@ -548,9 +546,9 @@ vector<pair<string,string> > const InsetInclude::getKeys() const
 	vector<pair<string,string> > keys;
 	
 	if (loadIfNeeded()) {
-		Buffer *tmp = bufferlist.getBuffer(getFileName());
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName(""); 
-		keys =  tmp->getBibkeyList();
+		keys = tmp->getBibkeyList();
 		tmp->setParentName(getMasterFilename());
 	}
 	

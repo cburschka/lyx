@@ -177,7 +177,7 @@ string const LyXLex::getLongString(string const & endtoken)
 			} 
 
 			if (!prefix.empty() 
-			    && prefixIs(tmpstr, prefix.c_str())) {
+			    && prefixIs(tmpstr, prefix)) {
 				tmpstr.erase(0, prefix.length() - 1);
 			}
 			str += frontStrip(tmpstr, "\t") + '\n';

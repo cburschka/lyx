@@ -43,7 +43,4 @@ public:
 	static
 	string const BufferExtension(Buffer const * buffer);
 };
-
-#define NEW_EXPORT 1
-
 #endif

@@ -80,8 +80,9 @@ string const tostr(T const & t)
 
 
 ///
+template<>
 inline
-string const tostr(bool b)
+string const tostr(bool const & b)
 {
 	return (b ? "true" : "false");
 }
@@ -89,11 +90,17 @@ string const tostr(bool b)
 /// Does the string start with this prefix?
 bool prefixIs(string const &, char const *);
 
+/// Does the string start with this prefix?
+bool prefixIs(string const &, string const &);
+
 /// Does the string end with this char?
 bool suffixIs(string const &, char);
 
 /// Does the string end with this suffix?
 bool suffixIs(string const &, char const *);
+
+/// Does the string end with this suffix?
+bool suffixIs(string const &, string const &);
 
 ///
 bool contains(char const * a, string const & b);
@@ -152,6 +159,10 @@ string const subst(string const & a, char oldchar, char newchar);
 /// Substitutes all instances of oldstr with newstr
 string const subst(string const & a,
 	     char const * oldstr, string const & newstr);
+
+/// substitutes all instances ofr oldstr with newstr
+string const subst(string const & a,
+		   string const & oldstr, string const & newstr);
 
 /** Strips characters off the end of a string.
   #"abccc".strip('c') = "ab".#

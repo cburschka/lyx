@@ -43,7 +43,7 @@ LSubstring::LSubstring(string & s, string::value_type const * p)
 LSubstring::LSubstring(string & s, LRegex const & r)
 	: ps(&s)
 {
-	LRegex::MatchPair res = r.first_match(s);
+	LRegex::MatchPair const res = r.first_match(s);
 	if (res.first != string::npos) {
 		n = res.second;
 		pos = res.first;

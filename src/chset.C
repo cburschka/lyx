@@ -10,6 +10,7 @@
 #include "support/filetools.h"
 #include "support/LRegex.h"
 #include "support/LSubstring.h"
+#include "support/lyxlib.h"
 #include "debug.h"
 
 using std::ifstream;
@@ -29,7 +30,7 @@ bool CharacterSet::loadFile(string const & fname)
 	// open definition file
 	lyxerr[Debug::KBMAP]
 		<< "Reading character set file " << fname << ".cdef" << endl;
-	string filename = LibFileSearch("kbd", fname.c_str(), "cdef");
+	string filename = LibFileSearch("kbd", fname, "cdef");
 	ifstream ifs(filename.c_str());
 	if (!ifs) {
 		lyxerr << "Unable to open character set file" << endl;
@@ -48,8 +49,8 @@ bool CharacterSet::loadFile(string const & fname)
 	while(getline(ifs, line)) {
 		if (reg.exact_match(line)) {
 			LRegex::SubMatches const & sub = reg.exec(line);
-			n = atoi(line.substr(sub[1].first,
-					     sub[1].second).c_str());
+			n = lyx::atoi(line.substr(sub[1].first,
+						  sub[1].second));
 			str = LSubstring(line, sub[2].first, sub[2].second);
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n

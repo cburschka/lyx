@@ -45,7 +45,8 @@ using std::endl;
 using std::vector;
 using std::max;
 
-extern char * mathed_label;
+//extern char * mathed_label;
+extern string mathed_label;
 
 extern char const * latex_special_chars;
 
@@ -325,7 +326,7 @@ int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
-    mathed_write(par, os, &ret, fragile, label.c_str());
+    mathed_write(par, os, &ret, fragile, label);
     return ret;
 }
 
@@ -365,7 +366,9 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 	mathed_parser_file(is, lex.GetLineNo());   
    
 	// Silly hack to read labels. 
-	mathed_label = 0;
+	//mathed_label = 0;
+	mathed_label.erase();
+	
 	mathed_parse(0, 0, &par);
 	par->Metrics();
 	disp_flag = (par->GetType() > 0);
@@ -373,9 +376,11 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 	// Update line number
 	lex.setLineNo(mathed_parser_lineno());
 	
-	if (mathed_label) {
+	//if (mathed_label) {
+	if (!mathed_label.empty()) {
 		label = mathed_label;
-		mathed_label = 0;
+		//mathed_label = 0;
+		mathed_label.erase();
 	}
 	
 	// reading of end_inset in the inset!!!
@@ -941,7 +946,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
  
     case LFUN_MATH_SIZE:
        if (!arg.empty()) {
-	   latexkeys * l = in_word_set (arg.c_str(), strlen(arg.c_str()));
+	   latexkeys * l = in_word_set (arg);
 	   int sz = (l) ? l->id: -1;
 	   mathcursor->SetSize(sz);
 	   UpdateLocal(bv);
@@ -951,7 +956,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_INSERT_MATH:
     {
 	bv->lockedInsetStoreUndo(Undo::INSERT);
-	InsertSymbol(bv, arg.c_str());
+	InsertSymbol(bv, arg);
 	break;
     }
     
@@ -997,7 +1002,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 
        if (n > 0) {
 	   if (isdigit(lf[0])) 
-	     ilf = atoi(lf);
+	     ilf = lyx::atoi(lf);
 	   else 
 	     if (lf[1]) {
 		 l = in_word_set(lf, strlen(lf));
@@ -1009,7 +1014,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	   
 	   if (n > 1) {
 	       if (isdigit(rg[0]))
-		 irg = atoi(rg);
+		 irg = lyx::atoi(rg);
 	       else 
 		 if (rg[1]) {
 		     l = in_word_set(rg, strlen(rg));
@@ -1051,7 +1056,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
        if (!lb.empty() && lb[0] > ' ') {
 	  SetNumber(true);
 	  if (par->GetType() == LM_OT_MPARN) {
-	      mathcursor->setLabel(lb.c_str());
+	      mathcursor->setLabel(lb);
 //	      MathMatrixInset *mt = (MathMatrixInset*)par;
 //	      mt->SetLabel(lb);
 	  } else {

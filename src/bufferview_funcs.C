@@ -27,7 +27,6 @@
 #include "lyx_cb.h"
 #include "layout_forms.h"
 
-extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_character * fd_form_character;
 
 #ifndef NEW_INSETS
@@ -168,10 +167,7 @@ void ProhibitInput(BufferView * bv)
 	/* set the cursor to the watch for all forms and the canvas */ 
 	XDefineCursor(fl_display, bv->owner()->getForm()->window, 
 		      cursor);
-	if (fd_form_paragraph->form_paragraph->visible)
-		XDefineCursor(fl_display,
-			      fd_form_paragraph->form_paragraph->window,
-			      cursor);
+
 	if (fd_form_character->form_character->visible)
 		XDefineCursor(fl_display,
 			      fd_form_character->form_character->window,
@@ -187,9 +183,7 @@ void AllowInput(BufferView * bv)
 	/* reset the cursor from the watch for all forms and the canvas */
    
 	XUndefineCursor(fl_display, bv->owner()->getForm()->window);
-	if (fd_form_paragraph->form_paragraph->visible)
-		XUndefineCursor(fl_display,
-				fd_form_paragraph->form_paragraph->window);
+
 	if (fd_form_character->form_character->visible)
 		XUndefineCursor(fl_display,
 				fd_form_character->form_character->window);

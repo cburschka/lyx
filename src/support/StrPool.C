@@ -17,7 +17,7 @@
 
 StrPool::~StrPool()
 {
-        for (Pool::const_iterator cit = pool_.begin() ; 
+        for (Pool::const_iterator cit = pool_.begin(); 
 	     cit != pool_.end() ; ++cit) {
                 delete[] (*cit);
         }

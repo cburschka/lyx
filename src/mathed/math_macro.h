@@ -142,7 +142,7 @@ class MathMacroTemplate: public MathParInset {
 public:
     /// A template constructor needs all the data
     explicit
-    MathMacroTemplate(char const *, int na = 0, int f = 0);
+    MathMacroTemplate(string const &, int na = 0, int f = 0);
     ///
     ~MathMacroTemplate();
     ///

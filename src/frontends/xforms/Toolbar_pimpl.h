@@ -51,7 +51,7 @@ public:
 	*/
 	void edit();
 	/// add a new button to the toolbar.
-    	void add(int , bool doclean = true);
+    	void add(int, bool doclean = true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar

@@ -60,7 +60,6 @@ using std::sort;
 
 #ifdef BROKEN_HEADERS
 extern "C" int gettimeofday(struct timeval *, struct timezone *);
-#define remove(a) unlink(a)      
 #endif
 
 #ifdef __GNUG__
@@ -183,12 +182,12 @@ LyXFileDlg * LyXFileDlg::pCurrentDlg = 0;
 void LyXFileDlg::Reread()
 {
 	// Opens directory
-	DIR * pDirectory = opendir(pszDirectory.c_str());
+	DIR * pDirectory = ::opendir(pszDirectory.c_str());
 	if (!pDirectory) {
 		WriteFSAlert(_("Warning! Couldn't open directory."), 
 			     pszDirectory);
 		pszDirectory = GetCWD();
-		pDirectory = opendir(pszDirectory.c_str());
+		pDirectory = ::opendir(pszDirectory.c_str());
 	}
 
 	// Clear the present namelist

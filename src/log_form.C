@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -28,7 +28,7 @@ FD_LaTeXLog *create_form_LaTeXLog(void)
     fl_set_object_callback(obj, LatexLogUpdate, 0);
   fl_end_form();
 
-  //fdui->LaTeXLog->fdui = fdui;
+  fdui->LaTeXLog->fdui = fdui;
 
   return fdui;
 }

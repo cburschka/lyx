@@ -195,10 +195,10 @@ void matrix_cb(FL_OBJECT *, long data)
     case MM_APPLY:
     case MM_OK: 
       {
-	 char c = v_align_c[fl_get_choice(fd_matrix->valign)-1];
+	 char c = v_align_c[fl_get_choice(fd_matrix->valign) - 1];
 	 char const * sh = fl_get_input(fd_matrix->halign);
-	 int nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
-	 int ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
+	 int nx = int(fl_get_slider_value(fd_matrix->columns) + 0.5);
+	 int ny = int(fl_get_slider_value(fd_matrix->rows) + 0.5);
 	 if (data == MM_OK) fl_hide_form(fd_matrix->matrix);
 	 std::ostringstream ost;
 	 ost << nx << ' ' << ny << ' ' << c << sh;

@@ -109,9 +109,6 @@ using std::istringstream;
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 
-#ifndef NEW_EXPORT
-extern void MenuExport(Buffer *, string const &);
-#endif
 extern LyXAction lyxaction;
 
 
@@ -189,9 +186,9 @@ void Buffer::setReadonly(bool flag)
 }
 
 
-bool Buffer::saveParamsAsDefaults()
+bool Buffer::saveParamsAsDefaults() // const
 {
-	string fname = AddName(AddPath(user_lyxdir, "templates/"),
+	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
 			       "defaults.lyx");
 	Buffer defaults = Buffer(fname);
 	
@@ -240,7 +237,6 @@ void Buffer::fileName(string const & newfile)
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
 bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
-	string tmptok;
 	int pos = 0;
 	char depth = 0; // signed or unsigned?
 #ifndef NEW_INSETS
@@ -285,19 +281,17 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			pretoken = lex.GetString();
 		}
 
-		// Profiling show this should give a lot: (Asger)
-		string const token = pretoken;
-
-		if (token.empty())
-			continue;
-		the_end_read = parseSingleLyXformat2Token(lex, par, return_par,
-							  token, pos, depth,
-							  font
+		if (pretoken.empty()) continue;
+		
+		the_end_read =
+			parseSingleLyXformat2Token(lex, par, return_par,
+						   pretoken, pos, depth,
+						   font
 #ifndef NEW_INSETS
-							  , footnoteflag,
-							  footnotekind
+						   , footnoteflag,
+						   footnotekind
 #endif
-			);
+				);
 	}
    
 	if (!return_par)
@@ -346,7 +340,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		}
 		pos = 0;
 		lex.EatLine();
-		string layoutname = lex.GetString();
+		string const layoutname = lex.GetString();
 		pair<bool, LyXTextClass::LayoutList::size_type> pp
 			= textclasslist.NumberOfLayout(params.textclass,
 						       layoutname);
@@ -403,7 +397,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// This is the compability reader, unfinished but tested.
 		// (Lgb)
 		lex.next();
-		string tmptok = lex.GetString();
+		string const tmptok = lex.GetString();
 		//lyxerr << "old float: " << tmptok << endl;
 		
 		Inset * inset = 0;
@@ -443,7 +437,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// This _is_ a hack! (Lgb)
 		while(true) {
 			lex.next();
-			string tmp = lex.GetString();
+			string const tmp = lex.GetString();
 			if (tmp == "\\end_deeper") {
 				lyxerr << "\\end_deeper caught!" << endl;
 				if (!depth) {
@@ -657,7 +651,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		params.pagestyle = strip(lex.GetString());
 	} else if (token == "\\bullet") {
 		lex.nextToken();
-		int index = lex.GetInteger();
+		int const index = lex.GetInteger();
 		lex.nextToken();
 		int temp_int = lex.GetInteger();
 		params.user_defined_bullets[index].setFont(temp_int);
@@ -671,7 +665,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		params.user_defined_bullets[index].setSize(temp_int);
 		params.temp_bullets[index].setSize(temp_int);
 		lex.nextToken();
-		string temp_str = lex.GetString();
+		string const temp_str = lex.GetString();
 		if (temp_str != "\\end_bullet") {
 				// this element isn't really necessary for
 				// parsing but is easier for humans
@@ -682,9 +676,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		}
 	} else if (token == "\\bulletLaTeX") {
 		lex.nextToken();
-		int index = lex.GetInteger();
+		int const index = lex.GetInteger();
 		lex.next();
-		string temp_str = lex.GetString(), sum_str;
+		string temp_str = lex.GetString();
+		string sum_str;
 		while (temp_str != "\\end_bullet") {
 				// this loop structure is needed when user
 				// enters an empty string since the first
@@ -706,7 +701,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		params.tocdepth = lex.GetInteger();
 	} else if (token == "\\spacing") {
 		lex.next();
-		string tmp = strip(lex.GetString());
+		string const tmp = strip(lex.GetString());
 		Spacing::Space tmp_space = Spacing::Default;
 		float tmp_val = 0.0;
 		if (tmp == "single") {
@@ -731,7 +726,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		}
 	} else if (token == "\\paragraph_spacing") {
 		lex.next();
-		string tmp = strip(lex.GetString());
+		string const tmp = strip(lex.GetString());
 		if (tmp == "single") {
 			par->spacing.set(Spacing::Single);
 		} else if (tmp == "onehalf") {
@@ -762,7 +757,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		font.setLyXSize(lex.GetString());
 	} else if (token == "\\latex") {
 		lex.next();
-		string tok = lex.GetString();
+		string const tok = lex.GetString();
 		// This is dirty, but gone with LyX3. (Asger)
 		if (tok == "no_latex")
 			font.setLatex(LyXFont::OFF);
@@ -775,7 +770,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				       "`$$Token'");
 	} else if (token == "\\lang") {
 		lex.next();
-		string tok = lex.GetString();
+		string const tok = lex.GetString();
 		Languages::iterator lit = languages.find(tok);
 		if (lit != languages.end()) {
 			font.setLanguage(&(*lit).second);
@@ -788,7 +783,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		font.setEmph(font.setLyXMisc(lex.GetString()));
 	} else if (token == "\\bar") {
 		lex.next();
-		string tok = lex.GetString();
+		string const tok = lex.GetString();
 		// This is dirty, but gone with LyX3. (Asger)
 		if (tok == "under")
 			font.setUnderbar(LyXFont::ON);
@@ -942,7 +937,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 	}
 	
 	lex.next();
-	string tmptok = lex.GetString();
+	string const tmptok = lex.GetString();
 	last_inset_read = tmptok;
 	// test the different insets
 	if (tmptok == "Quotes") {
@@ -1013,7 +1008,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		++pos;
 	} else if (tmptok == "Float") {
 		lex.next();
-		string tmptok = lex.GetString();
+		string const tmptok = lex.GetString();
 		Inset * inset = new InsetFloat(tmptok);
 		inset->Read(this, lex);
 		par->InsertInset(pos, inset, font);
@@ -1090,7 +1085,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 {
 	if (lex.IsOK()) {
 		lex.next();
-		string token(lex.GetString());
+		string const token(lex.GetString());
 		if (token == "\\lyxformat") { // the first token _must_ be...
 			lex.EatLine();
 			format = lex.GetFloat();
@@ -1205,7 +1200,7 @@ bool Buffer::save() const
 	} else {
 		// Saving failed, so backup is not backup
 		if (lyxrc.make_backup) {
-			::rename(s.c_str(), fileName().c_str());
+			lyx::rename(s, fileName());
 		}
 		return false;
 	}
@@ -1295,9 +1290,10 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 
 void Buffer::writeFileAscii(string const & fname, int linelen) 
 {
-	LyXFont font1, font2;
 	Inset * inset;
-	char c, footnoteflag = 0, depth = 0;
+	char c;
+	char footnoteflag = 0;
+	char depth = 0;
 	string tmp;
 	LyXParagraph::size_type i;
 	int j;
@@ -1315,7 +1311,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 		return;
 	}
 
-	string fname1 = TmpFileName();
+	string const fname1 = TmpFileName();
 	LyXParagraph * par = paragraph;
 	while (par) {
 		int noparbreak = 0;
@@ -1367,10 +1363,10 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			} else if (tmp == "Enumerate") {
 				ltype = 2;
 				ltype_depth = depth+1;
-			} else if (strstr(tmp.c_str(), "ection")) {
+			} else if (contains(tmp, "ection")) {
 				ltype = 3;
 				ltype_depth = depth+1;
-			} else if (strstr(tmp.c_str(), "aragraph")) {
+			} else if (contains(tmp, "aragraph")) {
 				ltype = 4;
 				ltype_depth = depth+1;
 			} else if (tmp == "Description") {
@@ -1409,7 +1405,8 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 #endif
 		}
       
-		font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
+		LyXFont font1 =
+			LyXFont(LyXFont::ALL_INHERIT, params.language_info);
                 actcell = 0;
 		for (i = 0, actpos = 1; i < par->size(); ++i, ++actpos) {
 			if (!i && !footnoteflag && !noparbreak){
@@ -1441,7 +1438,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 					currlinelen += (ltype_depth-depth)*2;
 				}
 			}
-			font2 = par->GetFontSettings(params, i);
+			LyXFont font2 = par->GetFontSettings(params, i);
 			if (font1.latex() != font2.latex()) {
 				if (font2.latex() == LyXFont::OFF)
 					islatex = 0;
@@ -1677,7 +1674,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 
 		if (params.inputenc == "auto") {
-			string doc_encoding =
+			string const doc_encoding =
 				params.language_info->encoding()->LatexName();
 
 			// Create a list with all the input encodings used 
@@ -2187,7 +2184,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		        Inset * inset = par->GetInset(0);
 			Inset::Code lyx_code = inset->LyxCode();
 			if (lyx_code == Inset::TOC_CODE){
-				string temp = "toc";
+				string const temp = "toc";
 				sgmlOpenTag(ofs, depth, temp);
 
 				par = par->next;
@@ -2199,13 +2196,13 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		}
 
 		// environment tag closing
-		for( ; depth > par->depth; --depth) {
+		for (; depth > par->depth; --depth) {
 			sgmlCloseTag(ofs, depth, environment_stack[depth]);
 			environment_stack[depth].erase();
 		}
 
 		// write opening SGML tags
-		switch(style.latextype) {
+		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
 			if(depth == par->depth 
 			   && !environment_stack[depth].empty()) {
@@ -2237,7 +2234,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
-			if(depth == par->depth 
+			if (depth == par->depth 
 			   && environment_stack[depth] != style.latexname()
 			   && !environment_stack[depth].empty()) {
 
@@ -2251,7 +2248,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			}
 			if (environment_stack[depth] != style.latexname()) {
 				if(depth == 0) {
-					string temp = "p";
+					string const temp = "p";
 					sgmlOpenTag(ofs, depth, temp);
 				}
 				environment_stack[depth] = style.latexname();
@@ -2320,7 +2317,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 void Buffer::linuxDocHandleFootnote(ostream & os, LyXParagraph * & par,
 				    int const depth)
 {
-	string tag = "footnote";
+	string const tag = "footnote";
 
 	while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
 		sgmlOpenTag(os, depth + 1, tag);
@@ -2379,9 +2376,9 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 	SOME_ENUM present = FOOTNOTE_LIKE;
 
 	while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		if(last == present) {
-			if(inner_span) {
-				if(!tmp_par.empty()) {
+		if (last == present) {
+			if (inner_span) {
+				if (!tmp_par.empty()) {
 					os << tmp_par;
 					tmp_par.erase();
 					sgmlCloseTag(os, depth + 1, inner_tag);
@@ -2392,10 +2389,10 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 			}
 		} else {
 			os << tmp_par;
-			if(!inner_tag.empty()) sgmlCloseTag(os, depth + 1,
+			if (!inner_tag.empty()) sgmlCloseTag(os, depth + 1,
 							    inner_tag);
-			if(!extra_par.empty()) os << extra_par;
-			if(!tag.empty()) sgmlCloseTag(os, depth, tag);
+			if (!extra_par.empty()) os << extra_par;
+			if (!tag.empty()) sgmlCloseTag(os, depth, tag);
 			extra_par.erase();
 
 			switch (par->footnotekind) {
@@ -2521,7 +2518,7 @@ void linux_doc_line_break(ostream & os, unsigned int & colcount,
 void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 				  int desc_on, int const /*depth*/)
 {
-	LyXFont font1, font2;
+	LyXFont font1;
 	char c;
 	Inset * inset;
 	LyXParagraph::size_type main_body;
@@ -2565,7 +2562,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 				font1 = style.font;
 		}
 
-		font2 = par->getFont(params, i);
+		LyXFont const font2 = par->getFont(params, i);
 
 		if (font1.family() != font2.family()) {
 			switch(family_type) {
@@ -2856,7 +2853,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			tmps = style.latexparam();
 			c_params = split(tmps, c_depth,'|');
 			
-			cmd_depth= atoi(c_depth.c_str());
+			cmd_depth= lyx::atoi(c_depth);
 			
 			if(command_flag) {
 				if(cmd_depth<command_base) {
@@ -3141,74 +3138,6 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 }
 
 
-int Buffer::runLaTeX()
-{
-#ifndef NEW_EXPORT
-
-	if (!users->text) return 0;
-
-	ProhibitInput(users);
-
-	// get LaTeX-Filename
-	string name = getLatexName();
-
-	string path = OnlyPath(filename);
-
-	string org_path = path;
-	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
-		path = tmppath;	 
-	}
-
-	Path p(path); // path to LaTeX file
-	users->owner()->getMiniBuffer()->Set(_("Running LaTeX..."));   
-
-	// Remove all error insets
-	bool a = users->removeAutoInsets();
-
-	// Always generate the LaTeX file
-	makeLaTeXFile(name, org_path, false);
-
-	// do the LaTex run(s)
-	TeXErrors terr;
-	string latex_command = lyxrc.pdf_mode ?
-		lyxrc.pdflatex_command : lyxrc.latex_command;
-	LaTeX latex(latex_command, name, filepath);
-	int res = latex.run(terr,
-			    users->owner()->getMiniBuffer()); // running latex
-
-	// check return value from latex.run().
-	if ((res & LaTeX::NO_LOGFILE)) {
-		WriteAlert(_("LaTeX did not work!"),
-			   _("Missing log file:"), name);
-	} else if ((res & LaTeX::ERRORS)) {
-		users->owner()->getMiniBuffer()->Set(_("Done"));
-		// Insert all errors as errors boxes
-		users->insertErrors(terr);
-		
-		// Dvi should also be kept dirty if the latex run
-		// ends up with errors. However it should be possible
-		// to view a dirty dvi too.
-	} else {
-		//no errors or any other things to think about so:
-		users->owner()->getMiniBuffer()->Set(_("Done"));
-	}
-
-	// if we removed error insets before we ran LaTeX or if we inserted
-	// error insets after we ran LaTeX this must be run:
-        if (a || (res & LaTeX::ERRORS)){
-                users->redraw();
-                users->fitCursor();
-                //users->updateScrollbar();
-        }
-        AllowInput(users);
- 
-        return latex.getNumErrors();
-#else
-	return 0;
-#endif
-}
-
-
 int Buffer::runLiterate()
 {
 	if (!users->text) return 0;
@@ -3314,7 +3243,7 @@ int Buffer::buildProgram()
 			  lyxrc.literate_command, lyxrc.literate_error_filter,
 			  lyxrc.build_command, lyxrc.build_error_filter);
         TeXErrors terr;
-        int res = literate.build(terr, users->owner()->getMiniBuffer());
+        int const res = literate.build(terr, users->owner()->getMiniBuffer());
  
         // check return value from literate.build().
         if ((res & Literate::NO_LOGFILE)) {
@@ -3357,10 +3286,10 @@ int Buffer::runChktex()
 	ProhibitInput(users);
 
 	// get LaTeX-Filename
-	string name = getLatexName();
+	string const name = getLatexName();
 	string path = OnlyPath(filename);
 
-	string org_path = path;
+	string const org_path = path;
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = tmppath;	 
 	}
@@ -3369,7 +3298,7 @@ int Buffer::runChktex()
 	users->owner()->getMiniBuffer()->Set(_("Running chktex..."));
 
 	// Remove all error insets
-	bool removedErrorInsets = users->removeAutoInsets();
+	bool const removedErrorInsets = users->removeAutoInsets();
 
 	// Generate the LaTeX file if neccessary
 	makeLaTeXFile(name, org_path, false);
@@ -3427,9 +3356,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 	// so they are tested here
 	for (int i = 0; i < 4; ++i) {
 		if (params.user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
-			int font = params.user_defined_bullets[i].getFont();
+			int const font = params.user_defined_bullets[i].getFont();
 			if (font == 0) {
-				int c = params
+				int const c = params
 					.user_defined_bullets[i]
 					.getCharacter();
 				if (c == 16
@@ -3439,11 +3368,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 				   || c == 31) {
 					features.latexsym = true;
 				}
-			}
-			if (font == 1) {
+			} else if (font == 1) {
 				features.amssymb = true;
-			}
-			else if ((font >= 2 && font <= 5)) {
+			} else if ((font >= 2 && font <= 5)) {
 				features.pifont = true;
 			}
 		}
@@ -3458,9 +3385,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 void Buffer::setPaperStuff()
 {
 	params.papersize = BufferParams::PAPER_DEFAULT;
-	char c1 = params.paperpackage;
+	char const c1 = params.paperpackage;
 	if (c1 == BufferParams::PACKAGE_NONE) {
-		char c2 = params.papersize2;
+		char const c2 = params.papersize2;
 		if (c2 == BufferParams::VM_PAPER_USLETTER)
 			params.papersize = BufferParams::PAPER_USLETTER;
 		else if (c2 == BufferParams::VM_PAPER_USLEGAL)
@@ -3518,7 +3445,7 @@ vector<string> const Buffer::getLabelList()
 	vector<string> label_list;
 	for (inset_iterator it = inset_iterator_begin();
 	     it != inset_iterator_end(); ++it) {
-		vector<string> l = (*it)->getLabelList();
+		vector<string> const l = (*it)->getLabelList();
 		label_list.insert(label_list.end(), l.begin(), l.end());
 	}
 	return label_list;
@@ -3558,8 +3485,9 @@ vector<vector<Buffer::TocItem> > const Buffer::getTocList()
 			}
 		} else if (!par->IsDummy()) {
 #endif
-			char labeltype = textclasslist.Style(params.textclass, 
-							     par->GetLayout()).labeltype;
+			char const labeltype =
+				textclasslist.Style(params.textclass, 
+						    par->GetLayout()).labeltype;
       
 			if (labeltype >= LABEL_COUNTER_CHAPTER
 			    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
@@ -3611,7 +3539,7 @@ vector<pair<string,string> > const Buffer::getBibkeyList()
 					static_cast<InsetBibtex*>(*it)->getKeys();
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			} else if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
-				vector<pair<string,string> > tmp =
+				vector<pair<string,string> > const tmp =
 					static_cast<InsetInclude*>(*it)->getKeys();
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			}
@@ -3640,7 +3568,7 @@ void Buffer::markDepClean(string const & name)
 		dep_clean->master = name;
 		dep_clean->next = 0;
 	} else {
-		DEPCLEAN* item = dep_clean;
+		DEPCLEAN * item = dep_clean;
 		while (item && item->master != name)
 			item = item->next;
 		if (item) {
@@ -3658,10 +3586,11 @@ void Buffer::markDepClean(string const & name)
 bool Buffer::Dispatch(string const & command)
 {
 	// Split command string into command and argument
-	string cmd, line = frontStrip(command);
-	string arg = strip(frontStrip(split(line, cmd, ' ')));
+	string cmd;
+	string line = frontStrip(command);
+	string const arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg);
+	return Dispatch(lyxaction.LookupFunc(cmd), arg);
 }
 
 
@@ -3670,11 +3599,7 @@ bool Buffer::Dispatch(int action, string const & argument)
 	bool dispatched = true;
 	switch (action) {
 		case LFUN_EXPORT: 
-#ifdef NEW_EXPORT
 			Exporter::Export(this, argument, false);
-#else
-			MenuExport(this, argument);
-#endif
 			break;
 
 		default:
@@ -3696,7 +3621,7 @@ void Buffer::resizeInsets(BufferView * bv)
 {
 	/// then remove all LyXText in text-insets
 	LyXParagraph * par = paragraph;
-	for(;par;par = par->next) {
+	for(; par; par = par->next) {
 	    par->resizeInsetsLyXText(bv);
 	}
 }
@@ -3714,7 +3639,6 @@ void Buffer::ChangeLanguage(Language const * from, Language const * to)
 
 bool Buffer::isMultiLingual()
 {
-
 	LyXParagraph * par = paragraph;
 	while (par) {
 		if (par->isMultiLingual(params))
@@ -3727,7 +3651,8 @@ bool Buffer::isMultiLingual()
 
 Buffer::inset_iterator::inset_iterator(LyXParagraph * paragraph,
 				       LyXParagraph::size_type pos)
-	: par(paragraph) {
+	: par(paragraph)
+{
 	it = par->InsetIterator(pos);
 	if (it == par->inset_iterator_end()) {
 		par = par->next;
@@ -3736,7 +3661,8 @@ Buffer::inset_iterator::inset_iterator(LyXParagraph * paragraph,
 }
 
 
-void Buffer::inset_iterator::SetParagraph() {
+void Buffer::inset_iterator::SetParagraph()
+{
 	while (par) {
 		it = par->inset_iterator_begin();
 		if (it != par->inset_iterator_end())

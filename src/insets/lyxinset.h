@@ -107,12 +107,19 @@ public:
 	};
 
 	///
-	enum { TEXT_TO_INSET_OFFSET = 2 };
+	enum {
+		///
+		TEXT_TO_INSET_OFFSET = 2
+	};
 
+	///
 	enum EDITABLE {
-	    NOT_EDITABLE = 0,
-	    IS_EDITABLE,
-	    HIGHLY_EDITABLE
+		///
+		NOT_EDITABLE = 0,
+		///
+		IS_EDITABLE,
+		///
+		HIGHLY_EDITABLE
 	};
 
 	///
@@ -198,25 +205,28 @@ public:
 	///
 	virtual bool InsertInsetAllowed(Inset *) const { return false; }
 	///
-	virtual void setInsetName(const char * s) { name = s; }
+	void setInsetName(string const & s) { name = s; }
 	///
-	virtual string getInsetName() const { return name; }
+	string const getInsetName() const { return name; }
 	///
-	virtual void setOwner(Inset * inset) { owner_ = inset; }
+	void setOwner(Inset * inset) { owner_ = inset; }
 	///
-	virtual Inset * owner() const { return owner_; }
+	Inset * owner() const { return owner_; }
 	///
 	int x() const { return top_x; }
 	///
 	int y() const { return top_baseline; }
+	//
+	// because we could have fake text insets and have to call this
+	// inside them without cast!!!
 	///
-	/// because we could have fake text insets and have to call this
-	/// inside them without cast!!!
 	virtual LyXText * getLyXText(BufferView *) const;
-	virtual void deleteLyXText(BufferView *, bool =true) const {}
+	///
+	virtual void deleteLyXText(BufferView *, bool = true) const {}
+	///
 	virtual void resizeLyXText(BufferView *) const {}
-	// returns the actuall scroll-value
-	int  scroll() const { return scx; }
+	/// returns the actuall scroll-value
+	int scroll() const { return scx; }
 
 protected:
 	///

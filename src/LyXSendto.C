@@ -11,7 +11,6 @@
 #include "lyx_gui_misc.h"
 #include "support/syscall.h"
 #include "gettext.h"
-//#include "lyx_cb.h"
 #include "bufferview_funcs.h"
 #include "exporter.h"
 
@@ -57,18 +56,6 @@ void SendtoApplyCB(FL_OBJECT *, long)
     if (command.empty())
         return;
     Buffer * buffer = current_view->buffer();
-#ifndef NEW_EXPORT
-    if (fl_get_button(fd_form_sendto->radio_ftype_dvi) ||
-        fl_get_button(fd_form_sendto->radio_ftype_ps)) {
-        ProhibitInput(current_view);
-        // Generate dvi file and check if there are errors in the .lyx file
-        if (MakeLaTeXOutput(buffer) > 0) {
-            AllowInput(current_view);
-            return;
-        }
-        AllowInput(current_view);
-    }
-#endif
     string ftypeext;
     if (fl_get_button(fd_form_sendto->radio_ftype_lyx))
         ftypeext = ".lyx";
@@ -79,20 +66,13 @@ void SendtoApplyCB(FL_OBJECT *, long)
     else if (fl_get_button(fd_form_sendto->radio_ftype_ascii))
         ftypeext = ".txt";
     else {
-#ifdef NEW_EXPORT
 	ftypeext = ".ps";
 	if (!Exporter::Export(buffer, "ps", true))
 		return;
-#else
-        ftypeext = ".ps_tmp";
-        if (!CreatePostscript(buffer, true)) {
-	    return;
-	}
-#endif
     }
 
-    string fname = OnlyFilename(ChangeExtension(buffer->getLatexName(),
-						ftypeext));
+    string const fname = OnlyFilename(ChangeExtension(buffer->getLatexName(),
+						      ftypeext));
     if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
     command = subst(command, "$$FName", fname);

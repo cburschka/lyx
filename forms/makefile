@@ -17,15 +17,15 @@ SHELL = /bin/sh
 # Various commands
 FDESIGN = fdesign
 
-SRCS = bullet_forms.fd credits_form.fd form1.fd \
+SRCS = credits_form.fd form1.fd \
 	log_form.fd layout_forms.fd lyx.fd lyx_sendfax.fd math_forms.fd \
 	print_form.fd sp_form.fd
 
-OBJS = bullet_forms.c credits_form.c form1.c \
+OBJS = credits_form.c form1.c \
 	log_form.c layout_forms.c lyx.c lyx_sendfax.c math_forms.c \
 	print_form.c sp_form.c
 
-COBJS = bullet_forms.C credits_form.C form1.C \
+COBJS = credits_form.C form1.C \
 	log_form.C layout_forms.C lyx.C lyx_sendfax.C math_forms.C \
 	print_form.C sp_form.C
 
@@ -52,7 +52,7 @@ e: c
 	for hfil in *.h ; do \
 		if [ -f "$$hfil.patch" ] ; then \
 			(echo "Patching $$hfil with $$hfil.patch" ; \
-			patch -s $$hfil < $$hfil.patch) \
+			patch --verbose $$hfil < $$hfil.patch) \
 		fi; \
 		sed < $$hfil > $$hfil.tmp \
 			-e 's/\(extern\) \(void.*FL_OBJECT\)/\1 "C" \2/' \
@@ -68,9 +68,9 @@ updatesrc: d e
 	@echo "get junk code and errors at compile time.">&2
 	for fil in *.C *.h ; do \
 		if [ $$fil = "math_forms.C" -o $$fil = "math_forms.h" ]; then \
-			cp $$fil ../src/mathed ; \
+			cmp -s $$fil ../src/mathed/$$fil || cp $$fil ../src/mathed ; \
 		else \
-			cp $$fil ../src ; \
+			cmp -s $$fil ../src/$$fil || cp $$fil ../src ; \
 		fi \
 	done
 

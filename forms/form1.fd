@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 5
+Number of forms: 4
 Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
@@ -249,7 +249,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -687,7 +687,7 @@ argument: 2
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -867,7 +867,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -975,7 +975,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1389,120 +1389,6 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
 name: timer
-callback: 
-argument: 
-
-=============== FORM ===============
-Name: form_table
-Width: 310
-Height: 130
-Number of Objects: 6
-
---------------------
-class: FL_BOX
-type: UP_BOX
-box: 0 0 310 130
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_BUTTON
-type: RETURN_BUTTON
-box: 10 90 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: OK
-shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_ok
-callback: TableOKCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 110 90 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Apply|#A
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_apply
-callback: TableApplyCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 210 90 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Cancel|^[
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
-callback: TableCancelCB
-argument: 0
-
---------------------
-class: FL_VALSLIDER
-type: HOR_SLIDER
-box: 80 50 220 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Columns
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
-name: slider_columns
-callback: 
-argument: 
-
---------------------
-class: FL_VALSLIDER
-type: HOR_SLIDER
-box: 80 10 220 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Rows
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
-name: slider_rows
 callback: 
 argument: 
 

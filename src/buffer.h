@@ -161,9 +161,6 @@ public:
 	void latexParagraphs(std::ostream & os, LyXParagraph * par,
 			     LyXParagraph * endpar, TexRow & texrow) const;
 
-	///
-	int runLaTeX();
-
         ///
         int runLiterate();
 

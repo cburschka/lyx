@@ -37,7 +37,7 @@ void DepTable::insert(string const & fi,
 	if (deplist.find(f) == deplist.end()) {
 		if (upd) {
 			one = two;
-			two = lyx::sum(f.c_str());
+			two = lyx::sum(f);
 		}
 		deplist[f] = make_pair(one, two);
 	}
@@ -49,8 +49,8 @@ void DepTable::update()
 	for(DepList::iterator itr = deplist.begin();
 	    itr != deplist.end();
 	    ++itr) {
-		unsigned long one = (*itr).second.second;
-		unsigned long two = lyx::sum((*itr).first.c_str());
+		unsigned long const one = (*itr).second.second;
+		unsigned long const two = lyx::sum((*itr).first);
 		(*itr).second = make_pair(one, two);
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Update dep: " << (*itr).first << " "
@@ -93,7 +93,7 @@ bool DepTable::extchanged(string const & ext) const
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end();
 	     ++cit) {
-		if (suffixIs((*cit).first, ext.c_str())) {
+		if (suffixIs((*cit).first, ext)) {
 			if ((*cit).second.first != (*cit).second.second)
 				return true;
 		}
@@ -115,7 +115,7 @@ void DepTable::remove_files_with_extension(string const & suf)
 	DepList tmp;
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end(); ++cit) {
-		if (!suffixIs((*cit).first, suf.c_str()))
+		if (!suffixIs((*cit).first, suf))
 			tmp[(*cit).first] = (*cit).second;
 	}
 	deplist.swap(tmp);
@@ -126,8 +126,7 @@ void DepTable::write(string const & f) const
 {
 	ofstream ofs(f.c_str());
 	for (DepList::const_iterator cit = deplist.begin();
-	     cit != deplist.end();
-	     ++cit) {
+	     cit != deplist.end(); ++cit) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Write dep: "
 			       << (*cit).first << " "

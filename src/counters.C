@@ -77,7 +77,7 @@ Counters::~Counters()
 void Counters::newCounter(string const & newc)
 {
 	// First check if newc already exist
-	CounterList::const_iterator cit = counterList.find(newc);
+	CounterList::iterator cit = counterList.find(newc);
 	// if alrady exist give warning and return
 	if (cit != counterList.end()) {
 		lyxerr << "The new counter already exist." << endl;
@@ -90,7 +90,7 @@ void Counters::newCounter(string const & newc)
 void Counters::newCounter(string const & newc, string const & oldc)
 {
 	// First check if newc already exist
-	CounterList::const_iterator cit = counterList.find(newc);
+	CounterList::iterator cit = counterList.find(newc);
 	// if already existant give warning and return
 	if (cit != counterList.end()) {
 		lyxerr << "The new counter already exist." << endl;

@@ -11,7 +11,6 @@
 
 #include <config.h>
 #include <cmath>	// fabs()
-#include <cstdlib>	// atoi()
 
 #ifdef __GNUG__
 #pragma implementation "FontLoader.h"

@@ -24,7 +24,7 @@ if [ -f "$2.patch" ]; then
     patch -s $1 < "$2.patch"
 fi
 
-echo "// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext" > $2
+echo "// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext" > $2
 echo "#include <config.h>" >> $2
 echo "#include \"lyx_gui_misc.h\"" >> $2
 echo "#include \"gettext.h\"" >> $2
@@ -56,16 +56,6 @@ echo >> $2
 # For all lines containing "fl_add" and a string containing |, add the
 # shortcut command after the end of this line
 #
-# -e 's/fl_set_object_lcolor/fl_set_object_lcol/' 
-#
-#  For all lines replace "fl_set_object_lcolor" with "fl_set_object_lcol"
-#  This will be removed when we don't support 0.81
-#
-# -e 's/fdui->.*->fdui = fdui/\/\/&/'
-#
-#  For all lines replace "fdui->...->fdui" with "//fdui->...->fdui"
-#  This will be removed when we don't support 0.81
-#
 # -e 's/\(\(FD_[^ ]*\) \*fdui.*\)sizeof(\*fdui)/\1sizeof(\2)/'
 #
 #  Some picky/broken compilers (eg AIX's xlC) don't like evaluating  
@@ -79,7 +69,9 @@ echo >> $2
 # Someone got busy and put spaces in after commas but didn't allow for the
 # autogeneration of the files so their pretty formatting got lost. Not anymore.
 # The second rule cleans up one special case where a comma appears at the end
-# of a string while ensuring "...", "..." isn't affected.
+# of a string while ensuring "...", "..." isn't affected. Update: this seems
+# to have not been fixed in fdesign 0.56 (xforms 0.89), we should probably
+# report it once more. (Lgb)
 #
 # -e 's/stdlib.h/cstdlib/'
 #
@@ -105,8 +97,6 @@ cat $1 | sed \
 -e '/shortcut/ s/".*[|].*"/scex(_(&))/' \
 -e '/fl_add/ s/".*[|].*"/idex(_(&))/' \
 -e '/fl_add/ s/idex(\(.*\)").*$/&fl_set_button_shortcut(obj,scex(\1")),1);/' \
--e 's/fl_set_object_lcolor/fl_set_object_lcol/' \
--e 's/fdui->.*->fdui = fdui/\/\/&/' \
 -e 's/\(\(FD_[^ ]*\) \*fdui.*\)sizeof(\*fdui)/\1sizeof(\2)/' \
 -e 's/,\([^ ]\)/, \1/g' \
 -e 's/\("[^"][^"]*,\) \("\)/\1\2/g' \

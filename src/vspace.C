@@ -420,7 +420,7 @@ VSpace::VSpace (string const & data)
 	else if (prefixIs (input, "vfill"))     kin = VFILL;
 	else if (isValidGlueLength (input, &len))
 		kin = LENGTH;
-	else if (sscanf (input.c_str(), "%f", &value) == 1) {
+	else if (sscanf(input.c_str(), "%f", &value) == 1) {
 		// This last one is for reading old .lyx files
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.

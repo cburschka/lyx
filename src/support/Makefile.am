@@ -31,6 +31,7 @@ libsupport_la_SOURCES = \
 	StrPool.C \
 	StrPool.h \
 	abort.C \
+	atoi.C \
 	block.h \
 	chdir.C \
 	copy.C \
@@ -52,6 +53,7 @@ libsupport_la_SOURCES = \
 	path.h \
 	putenv.C \
 	rename.C \
+	rmdir.C \
 	sstream.h \
 	$(REGEX) syscall.C \
 	syscall.h \
@@ -60,4 +62,5 @@ libsupport_la_SOURCES = \
 	syssingleton.C \
 	translator.h \
 	textutils.h \
+	unlink.C \
 	utility.hpp

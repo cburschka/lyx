@@ -32,10 +32,6 @@
 using std::endl;
 
 extern LyXRC lyxrc;
-#ifndef NEW_EXPORT
-extern bool RunScript(Buffer * buffer, bool wait, string const & command,
-		      string const & orgname = string(), bool need_shell=true);
-#endif
 
 #ifdef CXX_WORKING_NAMESPACES
 namespace Liason 
@@ -53,9 +49,6 @@ PrinterParams getPrinterParams(Buffer * buffer)
 
 bool printBuffer(Buffer * buffer, PrinterParams const & pp) 
 {
-#ifndef NEW_EXPORT
-	bool result(false);
-#endif
 	string command(lyxrc.print_command + ' ');
 	
 	if (pp.target == PrinterParams::PRINTER
@@ -112,7 +105,6 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 
 	command += Converter::dvips_options(buffer) + ' ';
 
-#ifdef NEW_EXPORT
 	if (!Exporter::Export(buffer, "dvi", true))
 		return false;
 
@@ -163,57 +155,6 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		break;
 	}
 	return res == 0;
-#else
-	// Push directory path if necessary.
-	// PS file should go where the source file is unless it's a
-	// read-only directory in which case we write it to tmpdir.
-	// All temporary files go in tmpdir (like spool files).
-	string path = OnlyPath(buffer->fileName());
-	if ((pp.target != PrinterParams::FILE
-	     && lyxrc.use_tempdir)
-	    || (IsDirWriteable(path) < 1)) {
-		path = buffer->tmppath;
-	}
-	Path p(path);
-
-	// there are three cases here:
-	// 1. we print to a file
-	// 2. we print direct to a printer
-	// 3. we print using a spool command (print to file first)
-	switch (pp.target) {
-	case PrinterParams::PRINTER:
-		if (!lyxrc.print_spool_command.empty()) {
-				// case 3
-			command += lyxrc.print_to_file
-				+ QuoteName(pp.file_name);
-			string command2 = lyxrc.print_spool_command
-				+ ' ';
-			if (!pp.printer_name.empty()) {
-				command2 += lyxrc.print_spool_printerprefix
-					+ pp.printer_name;
-			}
-				// First run dvips.
-				// If successful, then spool command
-			if (result = RunScript(buffer, true, command)) {
-				result = RunScript(buffer, false,
-						   command2,
-						   QuoteName(pp.file_name));
-			}
-		} else {
-				// case 2
-			result = RunScript(buffer, false, command);
-		}
-		break;
-
-	case PrinterParams::FILE:
-		// case 1
-		command += lyxrc.print_to_file
-			+ QuoteName(MakeAbsPath(pp.file_name, path));
-		result = RunScript(buffer, false, command);
-		break;
-	}
-	return result;
-#endif
 }
 
 void setMinibuffer(LyXView * lv, char const * msg)

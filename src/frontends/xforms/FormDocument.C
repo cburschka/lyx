@@ -210,7 +210,7 @@ void FormDocument::build()
     fl_end_form();
     // "default" is not part of the languages array any more.
     combo_language->addto("default");
-    for(Languages::const_iterator cit = languages.begin();
+    for(Languages::iterator cit = languages.begin();
 	cit != languages.end(); ++cit) {
 	combo_language->addto((*cit).second.lang().c_str());
     }

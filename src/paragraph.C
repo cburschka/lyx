@@ -1955,7 +1955,7 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
                                 p1 = ppar->pextra_width,
                                 p2 = ppar->pextra_widthp;
                         ppar->SetPExtraType(bparams, ppar->pextra_type,
-                                            p1.c_str(), p2.c_str());
+                                            p1, p2);
                 }
                 if ((par->pextra_type == PEXTRA_NONE) &&
                     npar && (npar->pextra_type != PEXTRA_NONE)) {
@@ -1963,7 +1963,7 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
                                 p1 = npar->pextra_width,
                                 p2 = npar->pextra_widthp;
                         npar->SetPExtraType(bparams, npar->pextra_type,
-                                            p1.c_str(), p2.c_str());
+                                            p1, p2);
                 }
         }
 }
@@ -2024,7 +2024,7 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
                                 p1 = ppar->pextra_width,
                                 p2 = ppar->pextra_widthp;
                         ppar->SetPExtraType(bparams, ppar->pextra_type,
-                                            p1.c_str(), p2.c_str());
+                                            p1, p2);
                 }
                 if ((par->pextra_type == PEXTRA_NONE) &&
                     npar && (npar->pextra_type != PEXTRA_NONE)) {
@@ -2032,7 +2032,7 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
                                 p1 = npar->pextra_width,
                                 p2 = npar->pextra_widthp;
                         npar->SetPExtraType(bparams, npar->pextra_type,
-                                            p1.c_str(), p2.c_str());
+                                            p1, p2);
                 }
         }
 }
@@ -3468,7 +3468,6 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 		need_closing = true;
 	}
 	
-	//BufferParams * params = &current_view->buffer()->params;
 	bool footer_in_body = true;
 	switch (footnotekind) {
 	case LyXParagraph::FOOTNOTE:
@@ -3507,7 +3506,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 				   << pextra_width << "}\n";
 			else
 				os << "\\begin{floatingfigure}{"
-				   << atoi(pextra_widthp.c_str())/100.0
+				   << lyx::atoi(pextra_widthp) / 100.0
 				   << "\\textwidth}\n";
 		} else {
 			os << "\\begin{figure}";
@@ -3989,7 +3988,7 @@ string const LyXParagraph::String(Buffer const * buffer,
 }
 
 
-void LyXParagraph::SetInsetOwner(Inset *i)
+void LyXParagraph::SetInsetOwner(Inset * i)
 {
 	inset_owner = i;
 	for (InsetList::const_iterator cit = insetlist.begin();

@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -21,7 +21,7 @@ FD_form_title *create_form_form_title(void)
     fl_set_object_callback(obj, TimerCB, 0);
   fl_end_form();
 
-  //fdui->form_title->fdui = fdui;
+  fdui->form_title->fdui = fdui;
 
   return fdui;
 }
@@ -59,7 +59,7 @@ FD_form_figure *create_form_form_figure(void)
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
-  //fdui->form_figure->fdui = fdui;
+  fdui->form_figure->fdui = fdui;
 
   return fdui;
 }
@@ -116,7 +116,7 @@ FD_form_external *create_form_form_external(void)
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   fl_end_form();
 
-  //fdui->form_external->fdui = fdui;
+  fdui->form_external->fdui = fdui;
 
   return fdui;
 }

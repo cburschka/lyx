@@ -32,7 +32,8 @@ using std::transform;
 using std::tolower;
 using std::toupper;
 #endif
-	
+
+
 int compare_no_case(string const & s, string const & s2)
 {
 	// ANSI C
@@ -84,7 +85,7 @@ bool isStrInt(string const & str)
 	if (str.empty()) return false;
        
 	// Remove leading and trailing white space chars.
-	string tmpstr = frontStrip(strip(str, ' '), ' ');
+	string const tmpstr = frontStrip(strip(str, ' '), ' ');
 	if (tmpstr.empty()) return false;
        
 	string::const_iterator cit = tmpstr.begin();
@@ -101,9 +102,9 @@ int strToInt(string const & str)
 {
 	if (isStrInt(str)) {
 		// Remove leading and trailing white space chars.
-		string tmpstr = frontStrip(strip(str, ' '), ' ');
+		string const tmpstr = frontStrip(strip(str, ' '), ' ');
 		// Do the conversion proper.
-		return atoi(tmpstr.c_str());
+		return lyx::atoi(tmpstr);
 	} else {
 		return 0;
 	}
@@ -115,7 +116,7 @@ bool isStrDbl(string const & str)
 	if (str.empty()) return false;
 	
 	// Remove leading and trailing white space chars.
-	string tmpstr = frontStrip(strip(str, ' '), ' ');
+	string const tmpstr = frontStrip(strip(str, ' '), ' ');
 	if (tmpstr.empty()) return false;
 	//	if (1 < tmpstr.count('.')) return false;
 
@@ -144,9 +145,9 @@ double strToDbl(string const & str)
 {
 	if (isStrDbl(str)) {
 		// Remove leading and trailing white space chars.
-		string tmpstr = frontStrip(strip(str, ' '), ' ');
+		string const tmpstr = frontStrip(strip(str, ' '), ' ');
 		// Do the conversion proper.
-		return atof(tmpstr.c_str());
+		return ::atof(tmpstr.c_str());
 	} else {
 		return 0.0;
 	}
@@ -203,8 +204,10 @@ bool prefixIs(string const & a, char const * pre)
 {
 	Assert(pre);
 	
-	unsigned int l = strlen(pre);
-	if (l > a.length() || a.empty())
+	unsigned int const l = strlen(pre);
+	string::size_type const alen = a.length();
+	
+	if (l > alen || a.empty())
 		return false;
 	else {
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
@@ -216,6 +219,23 @@ bool prefixIs(string const & a, char const * pre)
 		// implements std::string correctly we have to
 		// use the code above.
 		return a.compare(0, l, pre, l) == 0;
+#endif
+	}
+}
+
+
+bool prefixIs(string const & a, string const & pre)
+{
+	string::size_type const prelen = pre.length();
+	string::size_type const alen = a.length();
+	
+	if (prelen < alen || a.empty())
+		return false;
+	else {
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+		return ::strncmp(a.c_str(), pre.c_str(), prelen) == 0;
+#else
+		return a.compare(0, prelen, pre) == 0;
 #endif
 	}
 }
@@ -251,22 +271,37 @@ bool suffixIs(string const & a, char const * suf)
 }
 
 
+bool suffixIs(string const & a, string const & suf)
+{
+	string::size_type const suflen = suf.length();
+	string::size_type const alen = a.length();
+	
+	if (suflen > alen) {
+		return false;
+	} else {
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+		string tmp(a, alen - suflen);
+		return ::strncmp(tmp.c_str(), suf.c_str(), suflen) == 0;
+#else
+		return a.compare(alen - suflen, suflen, suf);
+#endif
+	}
+}
+
+
 bool contains(char const * a, string const & b)
 {
 	Assert(a);
-	
-	if (!*a || b.empty()) return false;
-	return strstr(a, b.c_str()) != 0;
+	string const at(a);
+	return contains(at, b);
 }
 
 
 bool contains(string const & a, char const * b)
 {
 	Assert(b);
-	
-	if (a.empty())
-		return false;
-	return a.find(b) != string::npos;
+	string const bt(b);
+	return contains(a, bt);
 }
 
 
@@ -281,9 +316,9 @@ bool contains(string const & a, string const & b)
 bool contains(char const * a, char const * b)
 {
 	Assert(a && b);
-	
-	if (!*a || !*b) return false;
-	return strstr(a, b) != 0;
+	string const at(a);
+	string const bt(b);
+	return contains(at, bt);
 }
 
 
@@ -406,6 +441,21 @@ string const subst(string const & a,
 	string lstr(a);
 	string::size_type i = 0;
 	int olen = strlen(oldstr);
+	while((i = lstr.find(oldstr, i)) != string::npos) {
+		lstr.replace(i, olen, newstr);
+		i += newstr.length(); // We need to be sure that we dont
+		// use the same i over and over again.
+	}
+	return lstr;
+}
+
+
+string const subst(string const & a,
+		   string const & oldstr, string const & newstr)
+{
+	string lstr(a);
+	string::size_type i = 0;
+	string::size_type const olen = oldstr.length();
 	while((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont

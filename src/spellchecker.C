@@ -488,7 +488,7 @@ bool sc_still_alive() {
 static
 void sc_clean_up_after_error() 
 {
-	fclose(out);
+	::fclose(out);
 }
 
 // Send word to ispell and get reply
@@ -497,11 +497,11 @@ isp_result * sc_check_word(string const & word)
 {
 	//Please rewrite to use string.
 
-	fputs(word.c_str(), out);
-	fputc('\n', out);
+	::fputs(word.c_str(), out);
+	::fputc('\n', out);
   
 	char buf[1024];
-	fgets(buf, 1024, in); 
+	::fgets(buf, 1024, in); 
   
 	/* I think we have to check if ispell is still alive here because
 	   the signal-handler could have disabled blocking on the fd */
@@ -565,28 +565,28 @@ void close_spell_checker()
 static inline 
 void sc_insert_word(string const & word)
 {
-	fputc('*', out); // Insert word in personal dictionary
-	fputs(word.c_str(), out);
-	fputc('\n', out);
+	::fputc('*', out); // Insert word in personal dictionary
+	::fputs(word.c_str(), out);
+	::fputc('\n', out);
 }
 
 
 static inline 
 void sc_accept_word(string const & word) 
 {
-	fputc('@', out); // Accept in this session
-	fputs(word.c_str(), out);
-	fputc('\n', out);
+	::fputc('@', out); // Accept in this session
+	::fputs(word.c_str(), out);
+	::fputc('\n', out);
 }
 
 static inline
 void sc_store_replacement(string const & mis, string const & cor) {
         if(actual_spell_checker == ASC_ASPELL) {
-                fputs("$$ra ", out);
-                fputs(mis.c_str(), out);
-                fputc(',', out);
-                fputs(cor.c_str(), out);
-                fputc('\n', out);
+                ::fputs("$$ra ", out);
+                ::fputs(mis.c_str(), out);
+                ::fputc(',', out);
+                ::fputs(cor.c_str(), out);
+                ::fputc('\n', out);
         }
 }
 
@@ -599,7 +599,7 @@ void init_spell_checker(BufferParams const &, string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
 	string code;
-	(void)split(lang, code, '_');
+	split(lang, code, '_');
 	config->replace("language-tag", code.c_str());
 	spell_error_object = new_pspell_manager(config);
 	if (pspell_error_number(spell_error_object) != 0) {
@@ -629,6 +629,7 @@ static
 isp_result * sc_check_word(string const & word)
 {
 	isp_result * result = new isp_result;
+#warning Why isnt word_ok a bool? (Lgb)
 	int word_ok = pspell_manager_check(sc, word.c_str());
 	Assert(word_ok != -1);
 
@@ -726,12 +727,12 @@ void ShowSpellChecker(BufferView * bv)
 	fl_set_object_lcol(fd_form_spell_check->input, FL_INACTIVE);
 	fl_set_object_lcol(fd_form_spell_check->browser, FL_INACTIVE);
 
-	while (true){
+	while (true) {
 		obj = fl_do_forms();
-		if (obj == fd_form_spell_check->options){
+		if (obj == fd_form_spell_check->options) {
 			SpellCheckerOptions();
 		}
-		if (obj == fd_form_spell_check->start){
+		if (obj == fd_form_spell_check->start) {
 			// activate insert, accept, and stop
 			fl_activate_object(fd_form_spell_check->insert);
 			fl_activate_object(fd_form_spell_check->accept);

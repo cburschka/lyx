@@ -71,7 +71,7 @@ inline
 int string_width(string const & str) 
 {
 	return fl_get_string_widthTAB(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
-				      str.c_str(),	str.length());
+				      str.c_str(), str.length());
 }
 
 //Defined later, used in set().

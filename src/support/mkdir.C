@@ -5,18 +5,11 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#ifdef CXX_WORKING_NAMESPACES
-namespace lyx {
-	int mkdir(char const * pathname, unsigned long int mode)
-	{
-		return ::mkdir(pathname, mode);
-	}
-}
-#else
+#include "LString.h"
+
 #include "lyxlib.h"
 
-int lyx::mkdir(char const * pathname, unsigned long int mode)
+int lyx::mkdir(string const & pathname, unsigned long int mode)
 {
-	return ::mkdir(pathname, mode);
+	return ::mkdir(pathname.c_str(), mode);
 }
-#endif

@@ -45,7 +45,7 @@ InsetFormulaMacro::InsetFormulaMacro()
 InsetFormulaMacro::InsetFormulaMacro(string nm, int na, bool /*e*/)
         : InsetFormula(true), name(nm)
 {
-    tmacro = MathMacroTable::mathMTable.getTemplate(name.c_str());
+    tmacro = MathMacroTable::mathMTable.getTemplate(name);
     if (!tmacro) {
 	tmacro = new MathMacroTemplate(name.c_str(), na);
 	MathMacroTable::mathMTable.addTemplate(tmacro);
@@ -206,7 +206,7 @@ InsetFormulaMacro::LocalDispatch(BufferView * bv,
 				 int action, string const & arg)
 {
     if (action == LFUN_MATH_MACROARG) {
-	int i = atoi(arg.c_str()) - 1;
+	int i = lyx::atoi(arg) - 1;
 	if (i >= 0 && i < tmacro->getNoArgs()) {
 	    mathcursor->Insert(tmacro->getMacroPar(i), LM_TC_INSET);
 	    InsetFormula::UpdateLocal(bv);

@@ -44,16 +44,8 @@
 using std::endl;
 
 FD_form_title * fd_form_title;
-FD_form_paragraph * fd_form_paragraph;
-FD_form_paragraph_extra * fd_form_paragraph_extra;
 FD_form_character * fd_form_character;
-FD_form_document * fd_form_document;
-FD_form_paper * fd_form_paper;
-FD_form_table_options * fd_form_table_options;
-FD_form_table_extra * fd_form_table_extra;
-FD_form_quotes * fd_form_quotes;
 FD_form_preamble * fd_form_preamble;
-FD_form_table * fd_form_table;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
 FD_LaTeXLog * fd_latex_log; // from log_form.h
@@ -301,31 +293,6 @@ void LyXGUI::create_forms()
 		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 		fl_end_form();
 	}
-	
-	// the paragraph form
-	fd_form_paragraph = create_form_form_paragraph();
-	fl_set_form_atclose(fd_form_paragraph->form_paragraph,
-			    CancelCloseBoxCB, 0);
-	fl_addto_choice(fd_form_paragraph->choice_space_above,
-			_(" None | Defskip | Smallskip "
-			"| Medskip | Bigskip | VFill | Length "));
-	fl_addto_choice(fd_form_paragraph->choice_space_below,
-			_(" None | Defskip | Smallskip "
-			"| Medskip | Bigskip | VFill | Length ")); 
-	fl_set_input_return(fd_form_paragraph->input_space_above,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paragraph->input_space_below,
-			    FL_RETURN_ALWAYS);
-
-        // the paragraph extra form
-	fd_form_paragraph_extra = create_form_form_paragraph_extra();
-	fl_set_form_atclose(fd_form_paragraph_extra->form_paragraph_extra,
-			    CancelCloseBoxCB, 0);
-	fl_set_input_return(fd_form_paragraph_extra->input_pextra_width,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paragraph_extra->input_pextra_widthp,
-			    FL_RETURN_ALWAYS);
-	lyxerr[Debug::INIT] << "Initializing form_paragraph...done" << endl;
 
 	// the character form
 	fd_form_character = create_form_form_character();
@@ -362,111 +329,12 @@ void LyXGUI::create_forms()
 	// build up the combox entries
 	combo_language2->addto(_("No change"));
 	combo_language2->addto(_("Reset"));
-	for(Languages::const_iterator cit = languages.begin();
+	for(Languages::iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 	    if ((*cit).second.lang() != "default")
 		combo_language2->addto((*cit).second.lang().c_str());
 	}
 	combo_language2->select_text(_("No change"));
-
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-	// the document form
-	fd_form_document = create_form_form_document();
-	fl_set_form_atclose(fd_form_document->form_document,
-			    CancelCloseBoxCB, 0);
-	fl_addto_choice(fd_form_document->choice_spacing,
-			_(" Single | OneHalf | Double | Other "));
-
-	fl_set_counter_bounds(fd_form_document->slider_secnumdepth,-2, 5);
-	fl_set_counter_bounds(fd_form_document->slider_tocdepth,-1, 5);
-	fl_set_counter_step(fd_form_document->slider_secnumdepth, 1, 1);
-	fl_set_counter_step(fd_form_document->slider_tocdepth, 1, 1);
-	fl_set_counter_precision(fd_form_document->slider_secnumdepth, 0);
-	fl_set_counter_precision(fd_form_document->slider_tocdepth, 0);
-	fl_addto_form(fd_form_document->form_document);
-	combo_language = new Combox(FL_COMBOX_DROPLIST);
-	ob = fd_form_document->choice_language;
-	combo_language->add(ob->x, ob->y, ob->w, ob->h, 250);
-	combo_language->shortcut("#G", 1);
-	fl_end_form();
-
-	// "default" is not part of the languages array any more.
-	combo_language->addto("default");
-	for(Languages::const_iterator cit = languages.begin();
-	    cit != languages.end(); ++cit) {
-		combo_language->addto((*cit).second.lang().c_str());
-	}
-
-	// not really necessary, but we can do it anyway.
-	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
-	int n;
-        for (n = 0; tex_fonts[n][0]; ++n) {
-	    fl_addto_choice(fd_form_document->choice_fonts, tex_fonts[n]);
-	}
-
-	fl_addto_choice(fd_form_document->choice_inputenc,
-			"default|auto|latin1|latin2|latin5"
-			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
-
-        for (n = 0; tex_graphics[n][0]; ++n) {
-	    fl_addto_choice(fd_form_document->choice_postscript_driver,
-					tex_graphics[n]);
-	}
-	// not really necessary, but we can do it anyway.
-	fl_addto_choice(fd_form_document->choice_pagestyle,
-			"default|empty|plain|headings|fancy");
-	fl_addto_choice(fd_form_document->choice_default_skip,
-			_(" Smallskip | Medskip | Bigskip | Length "));
-	fl_set_input_return(fd_form_document->input_default_skip,
-			    FL_RETURN_ALWAYS);
-	fl_set_form_minsize(fd_form_document->form_document,
-			    fd_form_document->form_document->w,
-			    fd_form_document->form_document->h);
-	lyxerr[Debug::INIT] << "Initializing form_document...done" << endl;
-
-        // the paper form
-	fd_form_paper = create_form_form_paper();
-	fl_set_form_atclose(fd_form_paper->form_paper,
-			    CancelCloseBoxCB, 0);
-	fl_addto_choice(fd_form_paper->choice_papersize2,
-			_(" Default | Custom | USletter | USlegal "
-                        "| USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "));
-	fl_addto_choice(fd_form_paper->choice_paperpackage,
-			_(" None "
-			"| A4 small Margins (only portrait) "
-			"| A4 very small Margins (only portrait) "
-			"| A4 very wide margins (only portrait) "));
-	fl_set_input_return(fd_form_paper->input_custom_width,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_custom_height,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_top_margin,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_bottom_margin,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_left_margin,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_right_margin,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_head_height,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_head_sep,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_paper->input_foot_skip,
-			    FL_RETURN_ALWAYS);
-	lyxerr[Debug::INIT] << "Initializing form_paper...done" << endl;
-#endif
-
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-	// the quotes form
-	fd_form_quotes = create_form_form_quotes();
-	fl_set_form_atclose(fd_form_quotes->form_quotes,
-			    CancelCloseBoxCB, 0);
-	// Is it wrong of me to use « » instead of << >> ? (Lgb)
-	// Maybe if people use a font other than latin1... (JMarc)
-	fl_addto_choice(fd_form_quotes->choice_quotes_language,
-			_(" ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "));
-#endif
 
 	// the preamble form
 	fd_form_preamble = create_form_form_preamble();

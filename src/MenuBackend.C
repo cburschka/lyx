@@ -116,7 +116,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_item
 		case md_item: {
 			lex.next();
-			char * tmp = strdup(lex.GetString().c_str());
+			char * tmp = ::strdup(lex.GetString().c_str());
 			string name = _(tmp);
 			free(tmp);
 			lex.next();
@@ -161,7 +161,7 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_submenu: {
 			lex.next();
-			char * tmp = strdup(lex.GetString().c_str());
+			char * tmp = ::strdup(lex.GetString().c_str());
 			string mlabel = _(tmp);
 			free(tmp);
 			lex.next();

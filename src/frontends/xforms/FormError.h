@@ -23,7 +23,7 @@ struct FD_form_error;
 
 /** This class provides an XForms implementation of the FormError Dialog.
  */
-class FormError : public FormBase, public noncopyable {
+class FormError : public FormBase {
 public:
 	/// Constructor
 	FormError(LyXView *, Dialogs *);

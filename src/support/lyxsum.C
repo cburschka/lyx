@@ -118,3 +118,9 @@ unsigned long lyx::sum(char const * file)
 	string w = ostr.str().c_str();
 	return do_crc(w.begin(), w.end());
 }
+
+
+unsigned long lyx::sum(string const & file) 
+{
+	return lyx::sum(file.c_str());
+}

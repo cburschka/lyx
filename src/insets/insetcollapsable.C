@@ -100,7 +100,7 @@ void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 int InsetCollapsable::ascent_collapsed(Painter & pain, LyXFont const &) const
 {
     int width = 0, ascent = 0, descent = 0;
-    pain.buttonText(0, 0, label.c_str(), labelfont, false, 
+    pain.buttonText(0, 0, label, labelfont, false, 
 		    width, ascent, descent);
     return ascent;
 }
@@ -109,7 +109,7 @@ int InsetCollapsable::ascent_collapsed(Painter & pain, LyXFont const &) const
 int InsetCollapsable::descent_collapsed(Painter & pain, LyXFont const &) const
 {
     int width = 0, ascent = 0, descent = 0;
-    pain.buttonText(0, 0, label.c_str(), labelfont, false, 
+    pain.buttonText(0, 0, label, labelfont, false, 
 		    width, ascent, descent);
     return descent;
 }
@@ -118,7 +118,7 @@ int InsetCollapsable::descent_collapsed(Painter & pain, LyXFont const &) const
 int InsetCollapsable::width_collapsed(Painter & pain, LyXFont const &) const
 {
     int width, ascent, descent;
-    pain.buttonText(TEXT_TO_INSET_OFFSET, 0, label.c_str(), labelfont, false,
+    pain.buttonText(TEXT_TO_INSET_OFFSET, 0, label, labelfont, false,
 		    width, ascent, descent);
     return width + (2*TEXT_TO_INSET_OFFSET);
 }
@@ -156,7 +156,7 @@ void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const &,
 {
     int width = 0;
     pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
-		    baseline, label.c_str(), labelfont, true, width);
+		    baseline, label, labelfont, true, width);
     x += width + TEXT_TO_INSET_OFFSET;
 }
 

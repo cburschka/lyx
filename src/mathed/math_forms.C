@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -55,7 +55,7 @@ FD_panel *create_form_panel(void)
     fl_set_object_callback(obj, button_cb, MM_SQRT);
   fdui->frac = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 40, 15, 30, 30, "");
     fl_set_object_color(obj, FL_MCOL, FL_BLUE);
-    fl_set_object_lcol(obj, FL_COL1);
+    fl_set_object_lcolor(obj, FL_COL1);
     fl_set_object_callback(obj, button_cb, MM_FRAC);
   fdui->delim = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 10, 50, 30, 30, "");
     fl_set_object_color(obj, FL_MCOL, FL_BLUE);
@@ -71,7 +71,7 @@ FD_panel *create_form_panel(void)
     fl_set_object_callback(obj, button_cb, MM_SPACE);
   fl_end_form();
 
-  //fdui->panel->fdui = fdui;
+  fdui->panel->fdui = fdui;
 
   return fdui;
 }
@@ -85,7 +85,7 @@ FD_delim *create_form_delim(void)
   fdui->delim = fl_bgn_form(FL_NO_BOX, 250, 260);
   obj = fl_add_box(FL_UP_BOX, 0, 0, 250, 260, "");
   fdui->menu = obj = fl_add_bmtable(FL_PUSH_BUTTON, 40, 70, 170, 140, "");
-    fl_set_object_lcol(obj, FL_BLUE);
+    fl_set_object_lcolor(obj, FL_BLUE);
     fl_set_object_callback(obj, delim_cb, 2);
 
   fdui->lado = fl_bgn_group();
@@ -111,7 +111,7 @@ FD_delim *create_form_delim(void)
     fl_set_object_callback(obj, delim_cb, MM_OK);
   fl_end_form();
 
-  //fdui->delim->fdui = fdui;
+  fdui->delim->fdui = fdui;
 
   return fdui;
 }
@@ -158,7 +158,7 @@ FD_matrix *create_form_matrix(void)
     fl_set_object_callback(obj, matrix_cb, MM_APPLY);
   fl_end_form();
 
-  //fdui->matrix->fdui = fdui;
+  fdui->matrix->fdui = fdui;
 
   return fdui;
 }
@@ -172,14 +172,14 @@ FD_deco *create_form_deco(void)
   fdui->deco = fl_bgn_form(FL_NO_BOX, 160, 150);
   obj = fl_add_box(FL_UP_BOX, 0, 0, 160, 150, "");
   fdui->menu = obj = fl_add_bmtable(FL_PUSH_BUTTON, 10, 10, 140, 90, "");
-    fl_set_object_lcol(obj, FL_BLUE);
+    fl_set_object_lcolor(obj, FL_BLUE);
     fl_set_object_callback(obj, deco_cb, MM_APPLY);
   obj = fl_add_button(FL_RETURN_BUTTON, 30, 110, 100, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, deco_cb, MM_CLOSE);
   fl_end_form();
 
-  //fdui->deco->fdui = fdui;
+  fdui->deco->fdui = fdui;
 
   return fdui;
 }
@@ -231,7 +231,7 @@ FD_space *create_form_space(void)
 
   fl_end_form();
 
-  //fdui->space->fdui = fdui;
+  fdui->space->fdui = fdui;
 
   return fdui;
 }

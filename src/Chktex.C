@@ -14,7 +14,6 @@
 #include <config.h>
 
 #include <fstream>
-#include <cstdlib> // atoi
 
 #ifdef __GNUG__
 #pragma implementation
@@ -76,7 +75,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 		token = split(token, warno, ':');
 		token = split(token, warning, ':');
 
-		int lineno = atoi(line.c_str());
+		int lineno = lyx::atoi(line);
 		warno = _("ChkTeX warning id #") + warno;
 		terr.insertError(lineno, warno, warning);
 		++retval;

@@ -3,6 +3,7 @@
 #define LYX_CB_H
 
 #include "LString.h"
+#include "lyxfont.h"
 
 class BufferParams;
 

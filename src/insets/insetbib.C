@@ -349,7 +349,7 @@ void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
 bool InsetBibtex::addDatabase(string const & db)
 {
 	string contents(getContents());
-	if (!contains(contents, db.c_str())) {
+	if (!contains(contents, db)) {
 		if (!contents.empty()) 
 			contents += ",";
 		setContents(contents + db);
@@ -361,14 +361,14 @@ bool InsetBibtex::addDatabase(string const & db)
 
 bool InsetBibtex::delDatabase(string const & db)
 {
-	if (contains(getContents(), db.c_str())) {
+	if (contains(getContents(), db)) {
 		string bd = db;
 		int n = tokenPos(getContents(), ',', bd);
 		if (n > 0) {
 			// Weird code, would someone care to explain this?(Lgb)
 			string tmp(", ");
 			tmp += bd;
-			setContents(subst(getContents(), tmp.c_str(), ", "));
+			setContents(subst(getContents(), tmp, ", "));
 		} else if (n == 0)
 			setContents(split(getContents(), bd, ','));
 		else 

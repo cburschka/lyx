@@ -149,11 +149,12 @@ public:
     ///
     void ToggleInsetCursor(BufferView *);
     ///
-    bool TabularFeatures(BufferView * bv, string what);
+    bool TabularFeatures(BufferView * bv, string const & what);
     ///
-    void TabularFeatures(BufferView * bv, int feature, string val = string());
+    void TabularFeatures(BufferView * bv, int feature,
+			 string const & val = string());
     ///
-    int GetActCell() { return actcell; }
+    int GetActCell() const { return actcell; }
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
@@ -162,9 +163,12 @@ public:
     Buffer * BufferOwner() const { return buffer; }
     ///
     LyXText * getLyXText(BufferView *) const;
+    ///
     void resizeLyXText(BufferView *) const;
+    ///
     void OpenLayoutDialog(BufferView *) const;
-    LyXFunc::func_status getStatus(string argument) const;
+    ///
+    LyXFunc::func_status getStatus(string const & argument) const;
 
     //
     // Public structures and variables
@@ -174,7 +178,7 @@ public:
 private:
     ///
     bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
-				       bool =false) const;
+				       bool = false) const;
     ///
     void DrawCellLines(Painter &, int x, int baseline,
 		       int row, int cell) const;
@@ -208,7 +212,7 @@ private:
     ///
     void RemoveTabularRow();
     ///
-    bool hasSelection() const {return ((sel_pos_start != sel_pos_end) ||
+    bool hasSelection() const { return ((sel_pos_start != sel_pos_end) ||
 				       (sel_cell_start != sel_cell_end));}
     ///
     bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,

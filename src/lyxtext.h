@@ -284,10 +284,6 @@ public:
 	///
 	void CursorRight(BufferView *, bool internal = true) const;
 	///
-	void CursorLeftIntern(BufferView *, bool internal = true) const;
-	///
-	void CursorRightIntern(BufferView *, bool internal = true) const;
-	///
 	void CursorLeftOneWord(BufferView *) const;
 	///
 	void CursorRightOneWord(BufferView *) const;

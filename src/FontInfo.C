@@ -11,7 +11,6 @@
 
 #include <config.h>
 #include <cmath>	// fabs()
-#include <cstdlib>	// atoi()
 
 #include FORMS_H_LOCATION
 
@@ -131,7 +130,7 @@ void FontInfo::query()
 		// We have matches. Run them through
 		for(int i = 0; i < matches; ++i) {
 			string name(list[i]);
-			sizes[i] = atoi(token(name, '-', 7).c_str());
+			sizes[i] = lyx::atoi(token(name, '-', 7));
 			strings[i] = name;
 			if (sizes[i] == 0) {
 				if (scaleindex == -1) {

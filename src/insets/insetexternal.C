@@ -42,7 +42,7 @@ InsetExternal::InsetExternal()
 
 InsetExternal::~InsetExternal()
 {
-	remove(tempname.c_str());
+	lyx::unlink(tempname);
 }
 
 
@@ -123,7 +123,7 @@ void InsetExternal::browseCB(FL_OBJECT * ob, long)
 		buf = MakeAbsPath(p, buf2);
 		buf = OnlyPath(buf);
 	} else {
-		buf = OnlyPath(holder->view->buffer()->fileName().c_str());
+		buf = OnlyPath(holder->view->buffer()->fileName());
 	}
        
 	fileDlg.SetButton(0, _("Document"), buf); 
@@ -484,14 +484,14 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {
 
-		int pos = result.find("$$Contents(\"");
-		int end = result.find("\")", pos);
-		string file = result.substr(pos + 12, end - (pos + 12));
+		int const pos = result.find("$$Contents(\"");
+		int const end = result.find("\")", pos);
+		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
 		if (buffer) {
 			// Make sure we are in the directory of the buffer
-			string buf = MakeAbsPath(buffer->fileName());
-			string path = OnlyPath(buf);
+			string const buf = MakeAbsPath(buffer->fileName());
+			string const path = OnlyPath(buf);
 			Path p(path);
 			contents = GetFileContents(file);
 		} else {
@@ -514,7 +514,7 @@ string const InsetExternal::getCurrentTemplate() const
 
 ExternalTemplate const InsetExternal::getTemplate(string const & name) const
 {
-	ExternalTemplateManager::Templates::const_iterator i = 
+	ExternalTemplateManager::Templates::iterator i = 
 		ExternalTemplateManager::get().getTemplates().find(name);
 	// Make sure that the template exists in the map
 	if (i == ExternalTemplateManager::get().getTemplates().end()) {

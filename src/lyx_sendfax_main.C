@@ -127,7 +127,7 @@ bool button_send(string const & fname, string const & sendcmd)
     lyxerr << "CMD: " << cmd << endl;
     Systemcalls one(Systemcalls::System, cmd);
     show_logfile(logfile, false);
-    remove(logfile.c_str());
+    lyx::unlink(logfile);
     return true;
 }
 
@@ -246,7 +246,7 @@ void cb_delete_phoneno(FL_OBJECT *, long )
 
 void cb_save_phoneno(FL_OBJECT *, long )
 {
-    FILE * fp = fopen(phone_book.c_str(), "w");
+    FILE * fp = ::fopen(phone_book.c_str(), "w");
     if (!fp) {
         WriteAlert(_("Error!"), _("Cannot open phone book: "), phone_book);
         return;

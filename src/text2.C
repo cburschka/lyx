@@ -1615,6 +1615,7 @@ char loweralphaCounter(int n)
 }
 
 
+static inline
 char alphaCounter(int n)
 {
 	if (n < 1 || n > 26)
@@ -1624,6 +1625,7 @@ char alphaCounter(int n)
 }
 
 
+static inline
 char hebrewCounter(int n)
 {
 	static const char hebrew[22] = {
@@ -2367,11 +2369,12 @@ bool LyXText::IsStringInText(LyXParagraph * par,
 {
 	if (par) {
 		LyXParagraph::size_type i = 0;
-		while (pos + i < par->Last() && i < str.length()&& 
-		       str[i] == par->GetChar(pos + i)) {
+		while (pos + i < par->Last()
+		       && string::size_type(i) < str.length()
+		       && str[i] == par->GetChar(pos + i)) {
 			++i;
 		}
-		if (str.length() == i)
+		if (str.length() == string::size_type(i))
 			return true;
 	}
 	return false;
@@ -2943,12 +2946,6 @@ void LyXText::SetCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 
 void LyXText::CursorLeft(BufferView * bview, bool internal) const
 {
-	CursorLeftIntern(bview, internal);
-}
-
-
-void LyXText::CursorLeftIntern(BufferView * bview, bool internal) const
-{
 	if (cursor.pos() > 0) {
 		bool boundary = cursor.boundary();
 		SetCursor(bview, cursor.par(), cursor.pos() - 1, true, false);
@@ -2963,12 +2960,6 @@ void LyXText::CursorLeftIntern(BufferView * bview, bool internal) const
 
 
 void LyXText::CursorRight(BufferView * bview, bool internal) const
-{
-	CursorRightIntern(bview, internal);
-}
-
-
-void LyXText::CursorRightIntern(BufferView * bview, bool internal) const
 {
 	if (!internal && cursor.boundary() &&
 	    !cursor.par()->IsNewline(cursor.pos()))

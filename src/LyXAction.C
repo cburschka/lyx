@@ -22,11 +22,6 @@
 // only to get access to NEW_INSETS
 #include "lyxparagraph.h"
 #endif
-#if 1
-// only to get access to NEW_EXPORT
-#include "exporter.h"
-#endif
-
 
 using std::ostream;
 using std::endl;
@@ -137,8 +132,6 @@ void LyXAction::init()
 #endif
 		{ LFUN_IMPORT, "buffer-import",
 		  N_("Import document"), NoBuffer },
-		{ LFUN_BUFFERBULLETSSELECT, "buffer-itemize-bullets-select",
-		  "", Noop },
 		{ LFUN_BUFFER_PRINT, "buffer-print-xtl", N_("Print"),
 		  ReadOnly },
 		{ LFUN_PRINTER_PARAMS_GET, "printer-params-get",
@@ -154,18 +147,8 @@ void LyXAction::init()
 		  N_("Switch to an open document"), ReadOnly },
 		{ LFUN_READ_ONLY_TOGGLE, "buffer-toggle-read-only",
 		  N_("Toggle read-only"), ReadOnly },
-#ifdef NEW_EXPORT
 		{ LFUN_UPDATE, "buffer-update", N_("Update"), ReadOnly },
 		{ LFUN_PREVIEW, "buffer-view", N_("View") , ReadOnly },
-#else
-		{ LFUN_RUNLATEX, "buffer-typeset", N_("Update DVI"),
-		  ReadOnly },
-		{ LFUN_RUNDVIPS, "buffer-typeset-ps",
-		  N_("Update PostScript"), ReadOnly },
-		{ LFUN_PREVIEW, "buffer-view", N_("View DVI") , ReadOnly },
-		{ LFUN_PREVIEWPS, "buffer-view-ps",
-		  N_("View PostScript") , ReadOnly },
-#endif
 		{ LFUN_MENUWRITE, "buffer-write", N_("Save"), ReadOnly },
 		{ LFUN_MENUWRITEAS, "buffer-write-as", N_("Save As"),
 		  ReadOnly },
@@ -283,15 +266,11 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_DOCUMENT, "layout-document", "", ReadOnly },
 		{ LFUN_LAYOUTNO, "layout-number", "", Noop }, // internal only
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", "", ReadOnly },
-		{ LFUN_LAYOUT_PAPER, "layout-paper", "", ReadOnly },
 		{ LFUN_LAYOUT_PASTE, "layout-paste",
 		  N_("Paste paragraph environment type"), Noop },
 		{ LFUN_LAYOUT_PREAMBLE, "layout-preamble", "", ReadOnly },
-		{ LFUN_LAYOUT_QUOTES, "layout-quotes", "", ReadOnly },
 		{ LFUN_LAYOUT_SAVE_DEFAULT, "layout-save-default", "",
 		  ReadOnly },
-		{ LFUN_LAYOUT_TABLE, "layout-table",
-		  N_("Open the table layout"), Noop },
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular",
 		  N_("Open the tabular layout"), Noop },
 		{ LFUN_HOME, "line-begin",
@@ -547,7 +526,6 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 		lyxerr << "Lyx Error: Unrecognized pseudo-action\n";
 		return LFUN_UNKNOWN_ACTION;
 	}
-	
 }
 
 

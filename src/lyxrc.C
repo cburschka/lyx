@@ -933,15 +933,14 @@ int LyXRC::read(string const & filename)
 				break;
 			}
 			
-			if ((action = lyxaction.LookupFunc(cmd.c_str()))>= 0) {
+			if ((action = lyxaction.LookupFunc(cmd))>= 0) {
 				if (lyxerr.debugging(Debug::KBMAP)) {
 					lyxerr << "RC_BIND: Sequence `"
 					       << seq << "' Command `"
 					       << cmd << "' Action `"
 					       << action << '\'' << endl;
 				}
-				res = toplevel_keymap->bind(seq.c_str(),
-							    action);
+				res = toplevel_keymap->bind(seq, action);
 				if (res != 0) {
 					lexrc.printError(
 						"Invalid key sequence `"

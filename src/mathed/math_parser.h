@@ -136,6 +136,4 @@ union YYSTYPE {
     latexkeys * l;
 };
 
-extern YYSTYPE yylval;
-
 #endif

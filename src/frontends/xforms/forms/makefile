@@ -9,9 +9,10 @@
 ###*======================================================*/
 ###
 ###
-### Makefile by Lars Gullik Bjønnes (larsbj@ifi.uio.no)
+### Makefile by Lars Gullik Bjønnes (larsbj@lyx.org)
 ### Modified by Allan Rae <rae@lyx.org>
 ### Rewritten by Angus Leeming.
+### Only update files that really have changed. (Lgb 20000924))
 
 SHELL = /bin/sh
 .SUFFIXES: .fd .c
@@ -43,7 +44,9 @@ all:
 test: clean $(OBJS)
 
 updatesrc: test
-	mv *.C *.h ..
+	for fil in *.C *.h ; do \
+		cmp -s $$fil ../$$fil || mv $$fil .. \
+	done
 
 .fd.C:
 	${SHELL} ./fdfix.sh $<

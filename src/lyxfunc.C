@@ -107,16 +107,10 @@ extern bool MenuWriteAs(Buffer *);
 extern int  MenuRunLaTeX(Buffer *);
 extern int  MenuBuildProg(Buffer *);
 extern int  MenuRunChktex(Buffer *);
-#ifndef NEW_EXPORT
-extern bool CreatePostscript(Buffer *, bool);
-#endif
 extern void MenuPrint(Buffer *);
 extern void MenuSendto();
 extern void QuitLyX();
 extern void MenuFax(Buffer *);
-#ifndef NEW_EXPORT
-extern void MenuExport(Buffer *, string const &);
-#endif
 extern void show_symbols_form(LyXFunc *);
 
 extern LyXAction lyxaction;
@@ -124,22 +118,11 @@ extern LyXAction lyxaction;
 extern tex_accent_struct get_accent(kb_action action);
 
 extern void AutoSave(BufferView *);
-#ifndef NEW_EXPORT
-extern bool PreviewDVI(Buffer *);
-extern bool PreviewPostscript(Buffer *);
-#endif
 extern void MenuInsertLabel(string const &);
 extern void MenuLayoutCharacter();
 extern void MenuLayoutParagraph();
-extern void MenuLayoutDocument();
-extern void MenuLayoutPaper();
-#if 0
-extern void MenuLayoutTable(int flag);
-#endif
-extern void MenuLayoutQuotes();
 extern void MenuLayoutPreamble();
 extern void MenuLayoutSave();
-extern void bulletForm();
 
 extern Buffer * NewLyxFile(string const &);
 extern void LoadLyXFile(string const &);
@@ -486,18 +469,6 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
         static bool noLaTeX = lyxrc.latex_command == "none";
         bool disable = false;
         switch (action) {
-#ifndef NEW_EXPORT
-	case LFUN_PREVIEW:
-		disable = noLaTeX || lyxrc.view_dvi_command == "none";
-		break;
-	case LFUN_PREVIEWPS:
-		disable = noLaTeX || lyxrc.view_ps_command == "none";
-		break;
-	case LFUN_RUNLATEX:
-	case LFUN_RUNDVIPS:
-		disable = noLaTeX;
-		break;
-#endif
 	case LFUN_MENUPRINT:
 		disable = noLaTeX || lyxrc.print_command == "none";
 		break;
@@ -510,27 +481,6 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		else if (argument == "linuxdoc")
 			disable = lyxrc.linuxdoc_to_lyx_command == "none";
 		break;
-#ifndef NEW_EXPORT
-	case LFUN_EXPORT:
-		if (argument == "latex")
-			disable = (! buf->isLatex() && ! buf->isLiterate()) ;
-		else if (argument == "linuxdoc")
-			disable = ! buf->isLinuxDoc();
-		else if (argument == "docbook")
-			disable = ! buf->isDocBook();
-		else if (argument == "dvi" || argument == "postscript")
-			disable = noLaTeX;
-		else if (argument == "html")
-			disable = (buf->isLinuxDoc() 
-				   && lyxrc.linuxdoc_to_html_command == "none")
-				|| (buf->isDocBook() 
-				    && lyxrc.docbook_to_html_command == "none")
-				|| (! buf->isLinuxDoc() && ! buf->isDocBook() 
-				    && lyxrc.html_command == "none");
-		else if (argument == "custom")
-			disable = (! buf->isLatex() && ! buf->isLiterate());
-		break;
-#endif
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
 		break;
@@ -651,7 +601,7 @@ string const LyXFunc::Dispatch(string const & s)
 	string line = frontStrip(s);
 	string arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg);
+	return Dispatch(lyxaction.LookupFunc(cmd), arg);
 }
 
 
@@ -703,7 +653,7 @@ string const LyXFunc::Dispatch(int ac,
 				// this is better
 				pseudoaction = 
 					lyxaction.searchActionArg(action,
-							  	  argument.c_str());
+							  	  argument);
 
 				if (pseudoaction == -1) {
 					pseudoaction = action;
@@ -840,8 +790,8 @@ string const LyXFunc::Dispatch(int ac,
 
 		if (!searched_string.empty() &&
 		    ((action == LFUN_WORDFINDBACKWARD) ? 
-		     ltCur->SearchBackward(owner->view(), searched_string.c_str()) :
-		     ltCur->SearchForward(owner->view(), searched_string.c_str()))) {
+		     ltCur->SearchBackward(owner->view(), searched_string) :
+		     ltCur->SearchForward(owner->view(), searched_string))) {
 
 			// ??? What is that ???
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
@@ -966,7 +916,6 @@ string const LyXFunc::Dispatch(int ac,
 		reloadBuffer();
 		break;
 		
-#ifdef NEW_EXPORT
 	case LFUN_UPDATE:
 		Exporter::Export(owner->buffer(), argument, true);
 		break;
@@ -974,23 +923,6 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_PREVIEW:
 		Exporter::Preview(owner->buffer(), argument);
 		break;
-#else
-	case LFUN_PREVIEW:
-		PreviewDVI(owner->buffer());
-		break;
-			
-	case LFUN_PREVIEWPS:
-		PreviewPostscript(owner->buffer());
-		break;
-		
-	case LFUN_RUNLATEX:
-		MenuRunLaTeX(owner->buffer());
-		break;
-
-	case LFUN_RUNDVIPS:
-		CreatePostscript(owner->buffer(), false);
-		break;
-#endif
 		
         case LFUN_BUILDPROG:
                 MenuBuildProg(owner->buffer());
@@ -1009,11 +941,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 			
 	case LFUN_EXPORT:
-#ifdef NEW_EXPORT
 		Exporter::Export(owner->buffer(), argument, false);
-#else
-		MenuExport(owner->buffer(), argument);
-#endif
 		break;
 
 	case LFUN_IMPORT:
@@ -1428,11 +1356,7 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 
 	case LFUN_LAYOUT_DOCUMENT:
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-		MenuLayoutDocument();
-#else
 		owner->getDialogs()->showLayoutDocument();
-#endif
 		break;
 		
 	case LFUN_LAYOUT_PARAGRAPH:
@@ -1447,16 +1371,6 @@ string const LyXFunc::Dispatch(int ac,
 		MenuLayoutCharacter();
 		break;
 
-#if 0
-	case LFUN_LAYOUT_TABLE:
-	{
-	        int flag = 0;
-	        if (argument == "true") flag = 1;
-		MenuLayoutTable(flag);
-	}
-	break;
-#endif
-	
 	case LFUN_LAYOUT_TABULAR:
 	    if (owner->view()->the_locking_inset) {
 		if (owner->view()->the_locking_inset->LyxCode()==Inset::TABULAR_CODE) {
@@ -1472,18 +1386,6 @@ string const LyXFunc::Dispatch(int ac,
 	    }
 	    break;
 
-	case LFUN_LAYOUT_PAPER:
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-		MenuLayoutPaper();
-#endif
-		break;
-		
-	case LFUN_LAYOUT_QUOTES:
-#ifdef USE_OLD_DOCUMENT_LAYOUT
-		MenuLayoutQuotes();
-#endif
-		break;
-		
 	case LFUN_LAYOUT_PREAMBLE:
 		MenuLayoutPreamble();
 		break;
@@ -1573,7 +1475,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_INSERT_LABEL:
-		MenuInsertLabel(argument.c_str());
+		MenuInsertLabel(argument);
 		break;
 		
 	case LFUN_REF_INSERT:
@@ -2405,7 +2307,7 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		int r = 2, c = 2;
 		if (!argument.empty())
-			sscanf(argument.c_str(),"%d%d", &r, &c);
+			::sscanf(argument.c_str(),"%d%d", &r, &c);
 		InsetTabular * new_inset =
 			new InsetTabular(owner->buffer(), r, c);
 		if (owner->view()->insertInset(new_inset))
@@ -2442,7 +2344,7 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		int  x;
 		long y;
-		sscanf(argument.c_str(), " %d %ld", &x, &y);
+		::sscanf(argument.c_str(), " %d %ld", &x, &y);
 		owner->view()->text->SetCursorFromCoordinates(owner->view(), x, y);
 	}
 	break;
@@ -2495,7 +2397,7 @@ string const LyXFunc::Dispatch(int ac,
 	{
 	        char file_name[100];
 		int  row;
-		sscanf(argument.c_str(), " %s %d", file_name, &row);
+		::sscanf(argument.c_str(), " %s %d", file_name, &row);
 
 		// Must replace extension of the file to be .lyx and get full path
 		string s = ChangeExtension(string(file_name), ".lyx");
@@ -2535,7 +2437,7 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_APROPOS:
 	case LFUN_GETTIP:
 	{
-		int qa = lyxaction.LookupFunc(argument.c_str());
+		int const qa = lyxaction.LookupFunc(argument);
 		setMessage(lyxaction.helpText(static_cast<kb_action>(qa)));
 	}
 	break;
@@ -2656,7 +2558,7 @@ string const LyXFunc::Dispatch(int ac,
 	       
 	case LFUN_INSERT_MATH:
 	{
-		math_insert_symbol(argument.c_str());
+		math_insert_symbol(argument);
 	}
 	break;
 	
@@ -2675,7 +2577,7 @@ string const LyXFunc::Dispatch(int ac,
 				setErrorMessage(N_("Missing argument"));
 		        else {
 				string s1 = token(s, ' ', 1);
-				int na = s1.empty() ? 0: atoi(s1.c_str());
+				int na = s1.empty() ? 0 : lyx::atoi(s1);
 				owner->view()->
 					open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
@@ -2918,11 +2820,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->setState();
 	}
 	break;
-#endif	
-	case LFUN_BUFFERBULLETSSELECT:
-		bulletForm();
-		break;
-		
+#endif
 	case LFUN_TOGGLECURSORFOLLOW:
 		cursor_follows_scrollbar = !cursor_follows_scrollbar;
 		break;
@@ -2981,7 +2879,7 @@ string const LyXFunc::Dispatch(int ac,
 		else 
 			arg = lyxrc.date_insert_format;
 		char datetmp[32];
-		int datetmp_len = strftime(datetmp, 32, arg.c_str(), now_tm);
+		int datetmp_len = ::strftime(datetmp, 32, arg.c_str(), now_tm);
 		for (int i = 0; i < datetmp_len; i++) {
 			owner->view()->text->InsertChar(owner->view(), datetmp[i]);
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

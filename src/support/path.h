@@ -21,7 +21,7 @@ public:
 	{
 		if (!path.empty()) { 
 			pushedDir_ = GetCWD();
-			if (pushedDir_.empty() || lyx::chdir(path.c_str())) {
+			if (pushedDir_.empty() || lyx::chdir(path)) {
 				// should throw an exception
 				// throw DirChangeError();
 				// The use of WriteFSAlert makes this

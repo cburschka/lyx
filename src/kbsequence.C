@@ -100,7 +100,7 @@ int kb_sequence::parse(string const & s)
 {
 	if(s.empty()) return 1;
 
-	int i = 0;
+	string::size_type i = 0;
 	unsigned int mod = 0, nmod = 0;
 	while (i < s.length()) {
 		if(s[i] && (s[i]) <= ' ') ++i;
@@ -142,7 +142,7 @@ int kb_sequence::parse(string const & s)
 			}
 		} else {
 			string tbuf;
-			int j = i;
+			string::size_type j = i;
 			for(; j < s.length() && s[j] > ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 			

@@ -69,8 +69,6 @@ lyx_SOURCES = \
 	Painter.h \
 	PainterBase.C \
 	PainterBase.h \
-	PaperLayout.C \
-	ParagraphExtra.C \
 	PrinterParams.h \
 	Sectioning.h \
 	Sectioning.C \
@@ -100,9 +98,6 @@ lyx_SOURCES = \
 	bufferparams.h \
 	bufferview_funcs.C \
 	bufferview_funcs.h \
-	bullet_forms.C \
-	bullet_forms.h \
-	bullet_forms_cb.C \
 	chset.C \
 	chset.h \
 	combox.C \

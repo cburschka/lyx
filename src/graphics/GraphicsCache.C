@@ -52,7 +52,7 @@ GraphicsCache::~GraphicsCache()
 GraphicsCacheItem *
 GraphicsCache::addFile(string const & filename)
 {
-	CacheType::const_iterator it = cache.find(filename);
+	CacheType::iterator it = cache.find(filename);
 	
 	if (it != cache.end()) {
 		return new GraphicsCacheItem( *((*it).second) );

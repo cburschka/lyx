@@ -275,7 +275,7 @@ bool Converter::Convert(Buffer * buffer, string const & from_file,
 	string to_format = GetExtension(to_file);
 	if (from_format == to_format)
 		if (from_file != to_file)
-			return lyx::rename(from_file.c_str(), to_file.c_str());
+			return lyx::rename(from_file, to_file);
 		else
 			return true;
 
@@ -408,15 +408,15 @@ bool Converter::Convert(Buffer * buffer, string const & from_file,
 					    "$$BaseName", from_base);
 			string to = subst((*it).result_dir,
 					  "$$BaseName", to_base);
-			return lyx::rename(from.c_str(), to.c_str());
+			return lyx::rename(from, to);
 		}
 
 	} else if (outfile != to_file)
 		if ((*it).from == "tex" &&
 		    ( (*it).to == "dvi" || (*it).to == "pdf") )
-			return lyx::copy(outfile.c_str(), to_file.c_str());
+			return lyx::copy(outfile, to_file);
 		else
-			return lyx::rename(outfile.c_str(), to_file.c_str());
+			return lyx::rename(outfile, to_file);
 
         return true;
 }

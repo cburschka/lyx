@@ -284,7 +284,7 @@ void  TransManager::TranslateAndInsert(char c, LyXText * text)
 
 void TransManager::insertVerbatim(string const & str, LyXText * text)
 {	
-	int l = str.length();
+	int const l = str.length();
 	
 	for (int i = 0; i < l; ++i){
 		if (str[i] == '\"' 

@@ -414,7 +414,7 @@ lyxstring::lyxstring(value_type const * s, size_type n)
 {
 	Assert(s && n < npos); // STD!
 	static Srep empty_rep(0, "");
-	if (*s && n) { // s is not empty string and n > 0
+	if (n) { // n > 0
 		rep = new Srep(n, s);
 	} else {
 		++empty_rep.ref;
@@ -549,7 +549,7 @@ void lyxstring::reserve(size_type res_arg)
 // Assignment
 ////////////////
 
-lyxstring & lyxstring::operator= (lyxstring const & x)
+lyxstring & lyxstring::operator=(lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
 
@@ -557,7 +557,7 @@ lyxstring & lyxstring::operator= (lyxstring const & x)
 }
 
 
-lyxstring & lyxstring::operator= (value_type const * s)
+lyxstring & lyxstring::operator=(value_type const * s)
 {
 	Assert(s); // OURS!
 	TestlyxstringInvariant(this);
@@ -605,14 +605,13 @@ lyxstring & lyxstring::assign(lyxstring const & x, size_type pos, size_type n)
 
 lyxstring & lyxstring::assign(value_type const * s, size_type n)
 {
-	Assert(s); // OURS!
+	Assert(s && n < npos); // STD!
 	TestlyxstringInvariant(this);
 
-	n = min(strlen(s), n);
 	if (rep->ref == 1) // recycle rep
 		rep->assign(n, s);
 	else {
-		rep->ref--;
+		--rep->ref;
 		rep = new Srep(n, s);
 	}
 	return *this;
@@ -753,7 +752,7 @@ lyxstring & lyxstring::append(value_type const * p, size_type n)
 
 	if (!*p || !n) return *this;
 	rep = rep->get_own_copy();
-	rep->append(min(n, strlen(p)), p);
+	rep->append(n, p);
 	return *this;
 }
 
@@ -761,12 +760,7 @@ lyxstring & lyxstring::append(value_type const * p, size_type n)
 lyxstring & lyxstring::append(value_type const * p)
 {
 	Assert(p); // OURS!
-	TestlyxstringInvariant(this);
-
-	if (!*p) return *this;
-	rep = rep->get_own_copy();
-	rep->append(strlen(p), p);
-	return *this;
+	return append(p, strlen(p));
 }
 
 
@@ -792,7 +786,7 @@ lyxstring & lyxstring::append(iterator first, iterator last)
 	return *this;
 }
 
-// insert value_typeacters before (*this)[pos]
+// insert characters before (*this)[pos]
 
 lyxstring & lyxstring::insert(size_type pos, lyxstring const & x)
 {
@@ -822,7 +816,7 @@ lyxstring & lyxstring::insert(size_type pos, value_type const * p, size_type n)
 	if (*p && n) {
 		// insert nothing and you change nothing
 		rep = rep->get_own_copy();
-		rep->insert(pos, p, min(n, strlen(p)));
+		rep->insert(pos, p, n);
 	}
 	return *this;
 }
@@ -831,14 +825,7 @@ lyxstring & lyxstring::insert(size_type pos, value_type const * p, size_type n)
 lyxstring & lyxstring::insert(size_type pos, value_type const * p)
 {
 	Assert(p); // OURS!
-	TestlyxstringInvariant(this);
-
-	if (*p) {
-		// insert nothing and you change nothing
-		rep = rep->get_own_copy();
-		rep->insert(pos, p, strlen(p));
-	}
-	return *this;
+	return insert(pos, p, strlen(p));
 }
 
 

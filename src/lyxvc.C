@@ -295,5 +295,5 @@ void LyXVC::showLog()
 	string tmpf = tmpnam(0);
 	vcs->getLog(tmpf);
 	viewLog(tmpf);
-	unlink(tmpf.c_str());
+	lyx::unlink(tmpf);
 }

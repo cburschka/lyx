@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -65,7 +65,7 @@ FD_form_spell_options *create_form_form_spell_options(void)
     fl_set_object_callback(obj, SpellOptionsApplyCB, 0);
   fl_end_form();
 
-  //fdui->form_spell_options->fdui = fdui;
+  fdui->form_spell_options->fdui = fdui;
 
   return fdui;
 }
@@ -118,7 +118,7 @@ FD_form_spell_check *create_form_form_spell_check(void)
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
   fl_end_form();
 
-  //fdui->form_spell_check->fdui = fdui;
+  fdui->form_spell_check->fdui = fdui;
 
   return fdui;
 }

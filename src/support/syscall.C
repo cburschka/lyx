@@ -51,7 +51,7 @@ int Systemcalls::startscript() {
 	switch (start) {
 	case System: 
 	case SystemDontWait:
-		retval = system(command.c_str());
+		retval = ::system(command.c_str());
 		callback();
 		break;
 	case Wait:   

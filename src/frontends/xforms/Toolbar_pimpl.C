@@ -264,7 +264,7 @@ extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 // What are we supposed to do with that??
 int Toolbar::get_toolbar_func(string const & func)
 {
-	int action = lyxaction.LookupFunc(func.c_str());
+	int action = lyxaction.LookupFunc(func);
 	if (action == -1) {
 		if (func == "separator"){
 			action = TOOL_SEPARATOR;

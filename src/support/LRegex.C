@@ -59,9 +59,9 @@ struct LRegex::Impl {
 	{
 		regmatch_t tmp;
 		regexec(preg, str.c_str(), 1, &tmp, 0);
-		unsigned int first = tmp.rm_so != -1 ?
+		unsigned int const first = tmp.rm_so != -1 ?
 			static_cast<unsigned int>(tmp.rm_so) : string::npos;
-		unsigned int second = tmp.rm_eo != -1 ?
+		unsigned int const second = tmp.rm_eo != -1 ?
 			static_cast<unsigned int>(tmp.rm_eo) : string::npos;
 		return make_pair(first, second - first);
 	}
@@ -72,7 +72,7 @@ struct LRegex::Impl {
 		size_t nr = regerror(error_code, preg, 0, 0);
 		char * tmp = new char[nr];
 		regerror(error_code, preg, tmp, nr);
-		string ret(tmp);
+		string const ret(tmp);
 		delete [] tmp;
 		return ret;
 	}
@@ -88,7 +88,8 @@ struct LRegex::Impl {
 		// func much faster, but client code will be simpler,
 		// because then it will only be needed to scan through
 		// all the entries in matches.
-		size_t subs = (preg->re_nsub != 0 ? (preg->re_nsub + 1) : 1);
+		size_t const subs =
+			(preg->re_nsub != 0 ? (preg->re_nsub + 1) : 1);
 		regmatch_t * mat = new regmatch_t[subs];
 		unsigned int first = 0;
 		unsigned int second = 0;

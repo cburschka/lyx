@@ -183,7 +183,7 @@ bool BufferList::close(Buffer * buf)
 		else
 			fname = MakeDisplayPath(buf->fileName(), 50);
 		bool reask = true;
-		while(reask) {
+		while (reask) {
 			switch(AskConfirmation(_("Changes in document:"),
 					       fname,
 					       _("Save document?"))){
@@ -362,7 +362,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 				use_emergency = true;
 			} else {
 				// Here, we should delete the emergency save
-				::unlink(e.c_str());
+				lyx::unlink(e);
 			}
 		}
 	}
@@ -385,7 +385,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 					b->markDirty();
 				} else {
 					// Here, we should delete the autosave
-					::unlink(a.c_str());
+					lyx::unlink(a);
 				}
 			}
 		}
@@ -473,7 +473,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 {
 	// make sure our path is absolute
-	string s = MakeAbsPath(filename);
+	string const s = MakeAbsPath(filename);
 
 	// file already open?
 	if (exists(s)) {

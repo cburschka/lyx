@@ -136,9 +136,9 @@ void LyXFindReplace::SearchReplaceCB()
 		// clear the selection (if there is any) 
 		bv->toggleSelection(false);
 		bv->text->
-			ReplaceSelectionWithString(bv, replacestring.c_str());
+			ReplaceSelectionWithString(bv, replacestring);
 		bv->text->
-			SetSelectionOverString(bv, replacestring.c_str());
+			SetSelectionOverString(bv, replacestring);
 		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 	
@@ -179,9 +179,9 @@ void LyXFindReplace::SearchReplaceAllCB()
 			bv->update(BufferView::SELECT|BufferView::FITCUR);
 			bv->toggleSelection(false);
 			bv->text->
-				ReplaceSelectionWithString(bv, replacestring.c_str());
+				ReplaceSelectionWithString(bv, replacestring);
 			bv->text->
-				SetSelectionOverString(bv, replacestring.c_str());
+				SetSelectionOverString(bv, replacestring);
 			bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE); 
 			++replace_count;
 		}

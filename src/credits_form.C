@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms 0.81) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms > 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -34,7 +34,7 @@ FD_form_credits *create_form_form_credits(void)
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   fl_end_form();
 
-  //fdui->form_credits->fdui = fdui;
+  fdui->form_credits->fdui = fdui;
 
   return fdui;
 }

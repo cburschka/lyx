@@ -1,49 +1,22 @@
---- layout_forms.h.orig	Sat Jun 10 01:48:56 2000
-+++ layout_forms.h	Sat Jun 10 02:10:12 2000
-@@ -3,6 +3,8 @@
- #ifndef FD_form_document_h_
- #define FD_form_document_h_
- 
-+extern "C" {
-+
- /** Callbacks, globals and object handlers **/
- extern void ChoiceClassCB(FL_OBJECT *, long);
- extern void DocumentCancelCB(FL_OBJECT *, long);
-@@ -46,6 +48,29 @@
- extern void TableOptionsCB(FL_OBJECT *, long);
- extern void TableSpeCloseCB(FL_OBJECT *, long);
- 
-+}
-+
-+/* Additional Functions/Methods */
-+
-+#include "bufferparams.h"
-+
-+extern bool UpdateLayoutDocument(BufferParams *params = NULL);
-+extern bool UpdateLayoutPreamble();
-+extern bool UpdateLayoutPaper();
-+extern bool UpdateLayoutQuotes();
-+extern bool UpdateLayoutParagraph();
-+extern bool UpdateParagraphExtra();
-+extern bool UpdateLayoutTable(int);
-+
-+extern void MenuLayoutCharacter();
-+extern void MenuLayoutDocument();
-+extern void MenuLayoutPreamble();
-+extern void MenuLayoutPaper();
-+extern void MenuLayoutQuotes();
-+extern void MenuLayoutParagraph();
-+extern void MenuLayoutTable(int);
-+
-+extern "C" {
- 
- /**** Forms and Objects ****/
- typedef struct {
-@@ -255,5 +280,7 @@
- } FD_form_table_extra;
- 
- extern FD_form_table_extra * create_form_form_table_extra(void);
-+
-+}
- 
- #endif /* FD_form_document_h_ */
+1c1
+< /** Header file generated with fdesign on Tue Sep 26 15:14:15 2000.**/
+---
+> /** Header file generated with fdesign **/
+7,8c7,8
+< extern void CharacterApplyCB(FL_OBJECT *, long);
+< extern void CharacterCloseCB(FL_OBJECT *, long);
+---
+> extern "C" void CharacterApplyCB(FL_OBJECT *, long);
+> extern "C" void CharacterCloseCB(FL_OBJECT *, long);
+10,12c10,12
+< extern void PreambleOKCB(FL_OBJECT *, long);
+< extern void PreambleApplyCB(FL_OBJECT *, long);
+< extern void PreambleCancelCB(FL_OBJECT *, long);
+---
+> extern "C" void PreambleOKCB(FL_OBJECT *, long);
+> extern "C" void PreambleApplyCB(FL_OBJECT *, long);
+> extern "C" void PreambleCancelCB(FL_OBJECT *, long);
+13a14,16
+> /* Some extra funcs */
+> 
+> extern bool UpdateLayoutPreamble();

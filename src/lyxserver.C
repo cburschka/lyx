@@ -55,6 +55,7 @@
 #include "debug.h"
 #include "LyXAction.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 
 #ifdef __EMX__
 #include <cstdlib>
@@ -115,7 +116,7 @@ void LyXComm::openConnection() {
 		NP_NOWAIT|0x01, 0600, 0600, 0);
 	if (rc == ERROR_PIPE_BUSY) {
 #else
-	if (access(tmp.c_str(), F_OK) == 0) {
+	if (::access(tmp.c_str(), F_OK) == 0) {
 #endif
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
@@ -124,12 +125,12 @@ void LyXComm::openConnection() {
 		return;
 	}
 #ifndef __EMX__
-	if (mkfifo(tmp.c_str(), 0600) < 0) {
+	if (::mkfifo(tmp.c_str(), 0600) < 0) {
 		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
 		       << strerror(errno) << endl;
 		return;
 	};
-	infd = open(tmp.c_str(), O_RDONLY|O_NONBLOCK);
+	infd = ::open(tmp.c_str(), O_RDONLY|O_NONBLOCK);
 #else
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
@@ -161,7 +162,7 @@ void LyXComm::openConnection() {
 	tmp = pipename + ".out";
        
 #ifndef __EMX__       
-	if (access(tmp.c_str(), F_OK) == 0) {
+	if (::access(tmp.c_str(), F_OK) == 0) {
 #else
 	rc = DosCreateNPipe(tmp.c_str(), &fd, NP_ACCESS_DUPLEX,
 		NP_NOWAIT|0x01, 0600, 0600, 0);
@@ -175,17 +176,17 @@ void LyXComm::openConnection() {
 		return;
 	}
 #ifndef __EMX__
-	if (mkfifo(tmp.c_str(), 0600) < 0) {
+	if (::mkfifo(tmp.c_str(), 0600) < 0) {
 		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
 		       << strerror(errno) << endl;
 		return;
 	};
-	if (access(tmp.c_str(), F_OK) != 0) {
+	if (::access(tmp.c_str(), F_OK) != 0) {
 		lyxerr << "LyXComm: Pipe " << tmp
 		       << " does not exist" << endl;
 		return;
 	}
-	outfd = open(tmp.c_str(), O_RDWR);
+	outfd = ::open(tmp.c_str(), O_RDWR);
 #else
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
@@ -257,7 +258,7 @@ void LyXComm::closeConnection() {
 			       << '\n' << strerror(errno) << endl;
 		}
 #ifndef __EMX__		// OS/2 named pipes will be automatically removed.
-		if (unlink(tmp.c_str()) < 0){
+		if (lyx::unlink(tmp) < 0){
 			lyxerr << "LyXComm: Could not remove pipe " << tmp
 			       << '\n' << strerror(errno) << endl;
 		};
@@ -274,12 +275,12 @@ void LyXComm::closeConnection() {
 			return;
 		}
 #endif
-		if (close(outfd) < 0) {
+		if (::close(outfd) < 0) {
 			lyxerr << "LyXComm: Could not close pipe " << tmp
 			       << '\n' << strerror(errno) << endl;
 		}
 #ifndef __EMX__
-		if (unlink(tmp.c_str()) < 0){
+		if (lyx::unlink(tmp) < 0){
 			lyxerr << "LyXComm: Could not remove pipe " << tmp
 			       << '\n' << strerror(errno) << endl;
 		};
@@ -375,7 +376,7 @@ void LyXComm::send(string const & msg) {
 	if (!ready) {
 		lyxerr << "LyXComm: Pipes are closed. Could not send "
 		       << msg << endl;
-	} else if (write(outfd, msg.c_str(), msg.length()) < 0) {
+	} else if (::write(outfd, msg.c_str(), msg.length()) < 0) {
 		lyxerr << "LyXComm: Error sending message: " << msg
 		       << '\n' << strerror(errno)
 		       << "\nLyXComm: Resetting connection" << endl;
@@ -421,7 +422,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	lyxerr[Debug::LYXSERVER] << "LyXServer: Received: '"
 				 << msg << '\'' << endl;
  
-	char const *p = msg.c_str();
+	char const * p = msg.c_str();
  
 	// --- parse the string --------------------------------------------
 	//
@@ -523,7 +524,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// connect to the lyxfunc in the single LyXView we
 			// support currently. (Lgb)
 
-			int action = lyxaction.LookupFunc(cmd.c_str());
+			int action = lyxaction.LookupFunc(cmd);
 			//int action = -1;
 			string rval, buf;
 		    

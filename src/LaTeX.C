@@ -83,7 +83,7 @@ void LaTeX::deleteFilesOnError() const
 	// What files do we have to delete?
 
 	// This will at least make latex do all the runs
-	::unlink(depfile.c_str());
+	lyx::unlink(depfile);
 
 	// but the reason for the error might be in a generated file...
 
@@ -91,15 +91,15 @@ void LaTeX::deleteFilesOnError() const
 
 	// bibtex file
 	string bbl = ChangeExtension(ofname, ".bbl");
-	::unlink(bbl.c_str());
+	lyx::unlink(bbl);
 
 	// makeindex file
 	string ind = ChangeExtension(ofname, ".ind");
-	::unlink(ind.c_str());
+	lyx::unlink(ind);
 	
 	// Also remove the aux file
 	string aux = ChangeExtension(ofname, ".aux");
-	::unlink(aux.c_str());
+	lyx::unlink(aux);
 }
 
 

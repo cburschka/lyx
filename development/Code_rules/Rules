@@ -114,6 +114,20 @@ in C++.
 	-NOT-
 	T add(...);
 
+- Avoid using the default cases in switch statements unless you have
+  too. Use the correct type for the switch expression and let the
+  compiler ensure that all cases are exhausted. 
+
+	enum Foo {
+		foo,
+		bar
+	};
+	Foo f = ...;
+	switch (f) {
+	case foo: ...; break;
+	case bar: ...; break;
+	default: ...; break; // not needed and would shadow a wrong use of Foo
+	}
 
 Exceptions
 ----------
@@ -318,7 +332,7 @@ Formatting
 * Using external GUI constructors (XForms fdesign)
 
   - Fdesign generated files should not be changed at all. The only changes
-    needed are gettext, compability with 0.81 or when you have made your own
+    needed are gettext, compability with 0.88 or when you have made your own
     xforms objects and have just a dummy in the .fd file in place of your
     own. In case you have to change the generated files for any of the
     reasons above, you should provide a patch against the clean generated
