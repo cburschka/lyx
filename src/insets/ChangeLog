@@ -1,3 +1,9 @@
+2004-04-20  Angus Leeming  <leeming@lyx.org>
+
+	* render_preview.C (startLoading): remove lyxerr statement.
+	(draw): cosmetics.
+	(getPreviewLoader): new helper function.
+
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.C:
@@ -41,7 +47,7 @@
 	* insetgraphics.C:
 	* insetinclude.C: ensuing simplification of the client code.
 	(statusChanged): now superfluous. Removed.
-	
+
 2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalTemplate.[Ch]: remove editCommand
@@ -57,7 +63,7 @@
 
 2004-04-07  Angus Leeming  <leeming@lyx.org>
 
-	* insetexternal.C (priv_dispatch): 
+	* insetexternal.C (priv_dispatch):
 	* insetinclude.C (priv_dispatch): prevent crash by invoking
 	InsetOld::priv_dispatch at the end of the switch, rather than
 	InsetOld::dispatch...
@@ -78,7 +84,7 @@
 	filename where appropriate
 
 2004-04-05  André Pönitz  <poenitz@gmx.net>
-	
+
 	* insetbase.h: use LCursor & in notifyCursorLeave
 
 2004-04-05  Angus Leeming  <leeming@lyx.org>
@@ -107,7 +113,7 @@
 
 2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* insetfloat.C (read): fix reading of float params 
+	* insetfloat.C (read): fix reading of float params
 	(recognize "type")
 
 2004-03-31  Alfredo Braunstein  <abraunst@lyx.org>
@@ -148,7 +154,7 @@
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetbibtex.[Ch]: bibtopic support.
-	
+
 	* insetfloat.[Ch]: add param \sideways {true|false}
 	(support for sideways floats from rotating.sty).
 
@@ -228,7 +234,7 @@
 
 2004-03-09  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* insetcollapsable.[Ch] (metrics, draw): implemented an inlined-Open 
+	* insetcollapsable.[Ch] (metrics, draw): implemented an inlined-Open
 	submode.
 
 2004-03-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
@@ -238,7 +244,7 @@
 2004-03-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcite.C: Support second \cite option.
-	
+
 	* insetcommand.[Ch]:
 	* insetcommandparams.[Ch]: add second optional argument.
 
@@ -274,7 +280,7 @@
 	* insetbase.C:
 	* insetbase.[Ch]: remove explicit 'DispatchResult' return type and
 	  implicitly assume 'DispatchResult(true, true) with exception of
-	  InsetBase::priv_dispatch which does the equivalent of 
+	  InsetBase::priv_dispatch which does the equivalent of
 	  'retrun DispatchResult(false)'
 
 	* inset*.[Ch] (priv_dispatch): adjust
@@ -296,7 +302,7 @@
 
 2004-02-04  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* insettext.C (edit): 
+	* insettext.C (edit):
 	(updateLocal): use the cur argument instead of the global cursor
 	* insetcollapsable.C (edit): dont call inset.edit(x,y) when opening
 

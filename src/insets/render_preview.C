@@ -14,7 +14,6 @@
 #include "insets/inset.h"
 
 #include "BufferView.h"
-#include "debug.h"
 #include "dimension.h"
 #include "gettext.h"
 #include "LColor.h"
@@ -68,13 +67,19 @@ auto_ptr<RenderBase> RenderPreview::clone(InsetBase const * inset) const
 
 namespace {
 
+graphics::PreviewLoader & getPreviewLoader(Buffer const & buffer)
+{
+	graphics::Previews const & previews = graphics::Previews::get();
+	return previews.loader(buffer);
+}
+
+
 string const statusMessage(BufferView const * bv, string const & snippet)
 {
 	BOOST_ASSERT(bv && bv->buffer());
 
 	Buffer const & buffer = *bv->buffer();
-	graphics::Previews const & previews = graphics::Previews::get();
-	graphics::PreviewLoader const & loader = previews.loader(buffer);
+	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
 	graphics::PreviewLoader::Status const status = loader.status(snippet);
 
 	string message;
@@ -100,11 +105,10 @@ string const statusMessage(BufferView const * bv, string const & snippet)
 graphics::PreviewImage const *
 RenderPreview::getPreviewImage(Buffer const & buffer) const
 {
-	graphics::Previews & previews = graphics::Previews::get();
-	graphics::PreviewLoader & loader = previews.loader(buffer);
+	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
 	return loader.preview(snippet_);
 }
- 
+
 
 void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
@@ -139,25 +143,29 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(*pi.base.bv->buffer());
+	graphics::Image const * const image = pimage ? pimage->image() : 0;
 
-	if (pimage && pimage->image()) {
+	if (image) {
 		pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
-			      *(pimage->image()));
-		return;
+			      *image);
+
+	} else {
+		int const offset = InsetOld::TEXT_TO_INSET_OFFSET;
+
+		pi.pain.rectangle(x + offset,
+				  y - dim_.asc,
+				  dim_.wid - 2 * offset,
+				  dim_.asc + dim_.des,
+				  LColor::foreground);
+
+		LyXFont font(pi.base.font);
+		font.setFamily(LyXFont::SANS_FAMILY);
+		font.setSize(LyXFont::SIZE_FOOTNOTE);
+
+		pi.pain.text(x + offset + 6,
+			     y - font_metrics::maxAscent(font) - 4,
+			     statusMessage(pi.base.bv, snippet_), font);
 	}
-
-	pi.pain.rectangle(x + InsetOld::TEXT_TO_INSET_OFFSET,
-			  y - dim_.asc,
-			  dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
-			  dim_.asc + dim_.des,
-			  LColor::foreground);
-
-	LyXFont font(pi.base.font);
-	font.setFamily(LyXFont::SANS_FAMILY);
-	font.setSize(LyXFont::SIZE_FOOTNOTE);
-	pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
-		     y - font_metrics::maxAscent(font) - 4,
-		     statusMessage(pi.base.bv, snippet_), font);
 }
 
 
@@ -166,10 +174,8 @@ void RenderPreview::startLoading(Buffer const & buffer) const
 	if (status() == LyXRC::PREVIEW_OFF || snippet_.empty())
 		return;
 
-	graphics::Previews & previews = graphics::Previews::get();
-	graphics::PreviewLoader & loader = previews.loader(buffer);
+	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
 	loader.startLoading();
-	lyxerr << "RenderPreview::startLoading: " << snippet_ << std::endl;
 }
 
 
@@ -179,8 +185,7 @@ void RenderPreview::addPreview(string const & latex_snippet,
 	if (status() == LyXRC::PREVIEW_OFF)
 		return;
 
-	graphics::Previews & previews = graphics::Previews::get();
-	graphics::PreviewLoader & loader = previews.loader(buffer);
+	graphics::PreviewLoader & loader = getPreviewLoader(buffer);
 	addPreview(latex_snippet, loader);
 }
 
@@ -215,8 +220,7 @@ void RenderPreview::removePreview(Buffer const & buffer)
 	if (snippet_.empty())
 		return;
 
-	graphics::Previews & previews = graphics::Previews::get();
-	graphics::PreviewLoader & loader = previews.loader(buffer);
+	graphics::PreviewLoader & loader = getPreviewLoader(buffer);
 	loader.remove(snippet_);
 	snippet_.erase();
 }
