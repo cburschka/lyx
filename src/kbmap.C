@@ -30,12 +30,12 @@ using std::endl;
 using std::string;
 
 
-string const kb_keymap::printKeysym(LyXKeySymPtr key,
+string const kb_keymap::printKeySym(LyXKeySym const & key,
 				    key_modifier::state mod)
 {
 	string buf;
 
-	string const s = key->getSymbolName();
+	string const s = key.getSymbolName();
 
 	if (mod & key_modifier::shift)
 		buf += "S-";
@@ -51,7 +51,7 @@ string const kb_keymap::printKeysym(LyXKeySymPtr key,
 
 string const kb_keymap::printKey(kb_key const & key) const
 {
-	return printKeysym(key.code, key.mod.first);
+	return key.code->print(key.mod.first);
 }
 
 

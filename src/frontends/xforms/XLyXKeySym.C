@@ -13,6 +13,7 @@
 #include "XLyXKeySym.h"
 
 #include "debug.h"
+#include "kbmap.h"
 
 #include <X11/keysym.h>
 
@@ -97,6 +98,12 @@ char XLyXKeySym::getISOEncoded(string const &) const
 		c = 0;
 	}
 	return c;
+}
+
+
+string const XLyXKeySym::print(key_modifier::state mod) const
+{
+	return kb_keymap::printKeySym(*this, mod);
 }
 
 

@@ -1,3 +1,10 @@
+2004-03-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* kbsequence.C (print): adjust
+
+	* kbmap.C (printKeySym): rename and change signature
+	(printKey): use LyXKeySym::print()
+
 2004-03-26  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* undo.C: add using std::advance to compile for stlport

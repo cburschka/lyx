@@ -54,6 +54,10 @@ public:
 	 * This relies on user to use the right encoding.
 	 */
 	virtual char getISOEncoded(std::string const & encoding) const;
+
+	///
+	virtual std::string const print(key_modifier::state mod) const;
+
 	///
 	int key() const {
 		return key_;

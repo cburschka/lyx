@@ -14,6 +14,8 @@
 
 #include <string>
 
+#include "key_state.h"
+
 /**
  * This is a base class for representing a keypress.
  * Each frontend has to implement this to provide
@@ -47,6 +49,12 @@ public:
 	 * This relies on user to use the right encoding.
 	 */
 	virtual char getISOEncoded(std::string const & encoding) const = 0;
+
+	/**
+	 * Return a string describing the KeySym with modifier mod.
+	 * This should use the native UI format when applicable
+	 */
+	virtual std::string const print(key_modifier::state mod) const = 0;
 };
 
 

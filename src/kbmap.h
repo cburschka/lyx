@@ -64,8 +64,8 @@ public:
 	 * @param key the key as a keysym
 	 * @param mod the modifiers
 	 */
-	static std::string const printKeysym(LyXKeySymPtr key,
-					key_modifier::state mod);
+	static std::string const printKeySym(LyXKeySym const & key,
+					     key_modifier::state mod);
 
 	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
 

@@ -16,6 +16,7 @@
 #include "qlkey.h"
 #include "qt_helpers.h"
 
+#include <qaccel.h>
 #include <qevent.h>
 #include <qtextcodec.h>
 
@@ -164,6 +165,22 @@ char QLyXKeySym::getISOEncoded(string const & encoding) const
 	if (lyxerr.debugging())
 		lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
 	return c;
+}
+
+
+string const QLyXKeySym::print(key_modifier::state mod) const
+{
+	int tmpkey = key_;
+
+
+	if (mod & key_modifier::shift)
+		tmpkey += Qt::SHIFT;
+	if (mod & key_modifier::ctrl)
+		tmpkey += Qt::CTRL;
+	if (mod & key_modifier::alt)
+		tmpkey += Qt::ALT;
+
+	return fromqstr(QAccel::keyToString(tmpkey));
 }
 
 

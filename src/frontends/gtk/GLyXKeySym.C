@@ -14,6 +14,8 @@
 #include <gdk/gdkkeysyms.h>
 #include "GLyXKeySym.h"
 
+#include "kbmap.h"
+
 using std::string;
 
 
@@ -89,6 +91,12 @@ char GLyXKeySym::getISOEncoded(string const & /*encoding*/) const
 		c = 0;
 	}
 	return c;
+}
+
+
+string const GLyXKeySym::print(key_modifier::state mod) const
+{
+	return kb_keymap::printKeySym(*this, mod);
 }
 
 

@@ -137,7 +137,7 @@ string const kb_sequence::print() const
 	KeySequence::size_type i, length = sequence.size();
 
 	for (i = 0; i < length; ++i) {
-		buf += kb_keymap::printKeysym(sequence[i], modifiers[i].first);
+		buf += kb_keymap::printKeySym(*sequence[i], modifiers[i].first);
 
 		// append a blank
 		if (i + 1 < length) {

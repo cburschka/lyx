@@ -27,6 +27,7 @@ public:
 	virtual bool isModifier() const;
 	virtual std::string getSymbolName() const;
 	virtual char getISOEncoded(std::string const & encoding) const;
+	virtual std::string const print(key_modifier::state mod) const;
 private:
 	unsigned int keyval_;
 };

@@ -45,6 +45,9 @@ public:
 	virtual char getISOEncoded(std::string const & encoding) const;
 
 	///
+	virtual std::string const print(key_modifier::state mod) const;
+
+	///
 	unsigned int keysym() const {
 		return keysym_;
 	}
