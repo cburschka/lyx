@@ -16,8 +16,7 @@
 #include <config.h>
 
 #include <fstream>
-
-#include "Lsstream.h"
+#include <iterator>
 
 #include "support/lyxlib.h"
 
@@ -108,14 +107,20 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 // And this would be the file interface.
 unsigned long lyx::sum(string const & file)
 {
-	ifstream ifs(file.c_str());
+	std::ifstream ifs(file.c_str());
 	if (!ifs) return 0;
-	ifs.unsetf(ios::skipws);
-	ostringstream ostr;
-	ostr << ifs.rdbuf();
-	// The .c_str() is here in case we use our lyxstring class
-	// instead of standard string. 
-	string w = ostr.str().c_str();
-	return do_crc(w.begin(), w.end());
+	
+#ifdef HAVE_DECL_ISTREAMBUF_ITERATOR
+	// This is a lot faster...
+	std::istreambuf_iterator<char> beg(ifs);
+	std::istreambuf_iterator<char> end;
+#else
+	// than this.
+	ifs.unsetf(std::ios::skipws);
+	std::istream_iterator<char> beg(ifs);
+	std::istream_iterator<char> end;
+#endif
+
+	return do_crc(beg, end);
 }
 

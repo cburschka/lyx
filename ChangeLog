@@ -1,3 +1,14 @@
+2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* configure.in:
+	* src/support/lyxsum.C (sum): use istreambuf_iterator when
+	available. 
+
+2001-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* src/support/lyxsum.C (sum): don't use sstream anymore, use
+	istream_iterator directly instead.
+
 2001-05-23  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormInset.C (createInset): fixed bug
