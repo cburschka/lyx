@@ -237,14 +237,36 @@ if test $LINUXDOC != none; then
   linuxdoc_cmd="\\def\\haslinuxdoc{yes}"
 fi
 
+case $LINUXDOC in
+  sgml2lyx)
+    linuxdoc_to_latex_command="sgml2latex"
+    linuxdoc_to_html_command="sgml2html '\$\$FName'"
+    linuxdoc_to_lyx_command="sgml2lyx";;
+  none)
+    linuxdoc_to_latex_command="none"
+    linuxdoc_to_html_command="none"
+    linuxdoc_to_lyx_command="none";;
+esac
+
 # Search for DocBook support
-SEARCH_PROG([for SGML-tools 2.x (DocBook)], DOCBOOK, sgmltools)
+SEARCH_PROG([for SGML-tools 2.x (DocBook) or db2x scripts], DOCBOOK, sgmltools db2dvi)
 chk_docbook=no
 if test $DOCBOOK != none; then
   chk_docbook=yes
   docbook_cmd="\\def\\hasdocbook{yes}"
 fi
 
+case $DOCBOOK in
+  sgmltools)
+    docbook_to_dvi_command="sgmltools -b dvi"
+    docbook_to_html_command="sgmltools -b html '\$\$FName'";;
+  db2dvi)
+    docbook_to_dvi_command="db2dvi"
+    docbook_to_html_command="db2html '\$\$FName'";;
+  none)
+    docbook_to_dvi_command="none"
+    docbook_to_html_command="none";;
+esac
 
 # Search for a spool command
 SEARCH_PROG([for a spool command], LPR, lp lpr)
@@ -350,6 +372,11 @@ cat >lyxrc.defaults <<EOF
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
 \\fax_command "$fax_command"
+\\linuxdoc_to_latex_command "$linuxdoc_to_latex_command"
+\\linuxdoc_to_html_command "$linuxdoc_to_html_command"
+\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
+\\docbook_to_dvi_command "$docbook_to_dvi_command"
+\\docbook_to_html_command "$docbook_to_html_command"
 \\html_command "$html_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"

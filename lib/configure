@@ -638,11 +638,22 @@ if test $LINUXDOC != none; then
   linuxdoc_cmd="\\def\\haslinuxdoc{yes}"
 fi
 
+case $LINUXDOC in
+  sgml2lyx)
+    linuxdoc_to_latex_command="sgml2latex"
+    linuxdoc_to_html_command="sgml2html '\$\$FName'"
+    linuxdoc_to_lyx_command="sgml2lyx";;
+  none)
+    linuxdoc_to_latex_command="none"
+    linuxdoc_to_html_command="none"
+    linuxdoc_to_lyx_command="none";;
+esac
+
 # Search for DocBook support
-echo $ac_n "checking for SGML-tools 2.x (DocBook)""... $ac_c"
-echo "$ac_t""(sgmltools)"
+echo $ac_n "checking for SGML-tools 2.x (DocBook) or db2x scripts""... $ac_c"
+echo "$ac_t""(sgmltools db2dvi)"
 DOCBOOK=
-for ac_prog in sgmltools
+for ac_prog in sgmltools db2dvi
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog ; ac_word=$2
@@ -679,6 +690,17 @@ if test $DOCBOOK != none; then
   docbook_cmd="\\def\\hasdocbook{yes}"
 fi
 
+case $DOCBOOK in
+  sgmltools)
+    docbook_to_dvi_command="sgmltools -b dvi"
+    docbook_to_html_command="sgmltools -b html '\$\$FName'";;
+  db2dvi)
+    docbook_to_dvi_command="db2dvi"
+    docbook_to_html_command="db2html '\$\$FName'";;
+  none)
+    docbook_to_dvi_command="none"
+    docbook_to_html_command="none";;
+esac
 
 # Search for a spool command
 echo $ac_n "checking for a spool command""... $ac_c"
@@ -862,6 +884,11 @@ cat >lyxrc.defaults <<EOF
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
 \\fax_command "$fax_command"
+\\linuxdoc_to_latex_command "$linuxdoc_to_latex_command"
+\\linuxdoc_to_html_command "$linuxdoc_to_html_command"
+\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
+\\docbook_to_dvi_command "$docbook_to_dvi_command"
+\\docbook_to_html_command "$docbook_to_html_command"
 \\html_command "$html_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"

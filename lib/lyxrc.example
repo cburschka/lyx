@@ -466,7 +466,7 @@
 
 # Here you have the command to convert from linuxdoc to html.
 # Example: one html file only.
-#\linuxdoc_to_html_command "sgml2html -s 0"
+#\linuxdoc_to_html_command "sgml2html -s 0 '$$FName'"
 
 # The LinuxDoc to LyX converter
 #\linuxdoc_to_lyx_command "sgml2lyx"
@@ -479,7 +479,7 @@
 #\docbook_to_dvi_command "sgmltools -b dvi"
 
 # Command to convert a docbook file to html
-#\docbook_to_html_command "sgmltools -b html"
+#\docbook_to_html_command "sgmltools -b html '$$FName'"
 
 # Command to convert a docbook file to pdf
 #\docbook_to_pdf_command ""

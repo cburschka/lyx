@@ -1,3 +1,9 @@
+2000-05-03  Jose Abilio Oliveira Matos <jamatos@novalis.fc.up.pt>
+
+	* lib/lyxrc.example: fix examples for exporting SGML to HTML.
+
+	* lib/configure.m4: better autodetection of DocBook tools.
+
 2000-04-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_main.C (easyParse): use lyxerr instead of cerr.
