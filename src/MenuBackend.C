@@ -492,7 +492,8 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 	toc::TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
 		// Handle this later
-		if (cit->first == "TOC") continue;
+		if (cit->first == "TOC")
+			continue;
 
 		// All the rest is for floats
 		Menu * menu = new Menu;
