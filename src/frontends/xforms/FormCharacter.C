@@ -31,7 +31,7 @@ using namespace character;
 typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;
 
 FormCharacter::FormCharacter(ControlCharacter & c)
-	: base_class(c, _("Character Layout"))
+	: base_class(c, _("Character Layout"), false)
 {}
 
 
@@ -45,8 +45,6 @@ void FormCharacter::build()
 {
 	dialog_.reset(build_character());
 
-	fl_set_form_maxsize(dialog_->form, minw_, minh_);
- 
 	vector<FamilyPair> const family = getFamilyData();
 	vector<SeriesPair> const series = getSeriesData();
 	vector<ShapePair>  const shape  = getShapeData();

@@ -24,8 +24,9 @@
 extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *);
 
 
-FormBase::FormBase(ControlButtons & c, string const & t)
-	: ViewBC<xformsBC>(c), minw_(0), minh_(0), title_(t)
+FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
+	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
+	  title_(t)
 {}
 
 
@@ -40,7 +41,11 @@ void FormBase::show()
 {
 	if (!form()) {
 		build();
-
+	}
+	
+	// use minw_ to flag whether the dialog has ever been shown
+	// (Needed now that build() is/should be called from the controller)
+	if (minw_ == 0) {
 		bc().refresh();
  
 		// work around dumb xforms sizing bug
@@ -49,7 +54,7 @@ void FormBase::show()
 
 		fl_set_form_atclose(form(), C_FormBaseWMHideCB, 0);
 	}
-
+	
 	fl_freeze_form(form());
 	update();  // make sure its up-to-date
 	fl_unfreeze_form(form());
@@ -69,6 +74,9 @@ void FormBase::show()
 		// calls to fl_set_form_minsize/maxsize apply only to the next
 		// fl_show_form(), so this comes first.
 		fl_set_form_minsize(form(), minw_, minh_);
+		if (!allow_resize_)
+			fl_set_form_maxsize(form(), minw_, minh_);
+
 		fl_show_form(form(),
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
 			     title_.c_str());

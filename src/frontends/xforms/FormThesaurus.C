@@ -24,7 +24,7 @@
 typedef FormCB<ControlThesaurus, FormDB<FD_form_tabbed_thesaurus> > base_class;
 
 FormThesaurus::FormThesaurus(ControlThesaurus & c)
-	: base_class(c, _("LyX: Thesaurus")),
+	: base_class(c, _("LyX: Thesaurus"), false),
 	clickline_(-1)
 {
 }
@@ -38,8 +38,6 @@ void FormThesaurus::build()
 	adjective_.reset(build_adjective());
 	adverb_.reset(build_adverb());
 	other_.reset(build_other());
-
-	fl_set_form_maxsize(dialog_->form, minw_, minh_);
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setCancel(dialog_->button_close);

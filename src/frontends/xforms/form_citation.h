@@ -31,6 +31,7 @@ struct FD_form_citation {
 	FL_OBJECT *button_search_case;
 	FL_OBJECT *button_previous;
 	FL_OBJECT *button_next;
+	FL_OBJECT *frame_style;
 	FL_OBJECT *choice_style;
 	FL_OBJECT *button_full_author_list;
 	FL_OBJECT *button_force_uppercase;

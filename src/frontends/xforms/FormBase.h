@@ -33,7 +33,7 @@ class FormBase : public ViewBC<xformsBC>
 {
 public:
 	///
-	FormBase(ControlButtons &, string const &);
+	FormBase(ControlButtons &, string const &, bool allowResize);
 	///
 	virtual ~FormBase() {}
 
@@ -59,13 +59,13 @@ private:
 	    that the xform colors have been re-mapped). */
 	virtual void redraw();
 
-protected:
 	/// Overcome a dumb xforms sizing bug
 	mutable int minw_;
 	///
 	mutable int minh_;
+	/// Can the dialog be resized after it has been created?
+	bool allow_resize_;
 
-private:
 	/// dialog title, displayed by WM.
   	string title_;
 };
@@ -76,7 +76,7 @@ class FormDB: public FormBase
 {
 protected:
 	///
-	FormDB(ControlButtons &, string const &);
+	FormDB(ControlButtons &, string const &, bool allowResize=true);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -85,8 +85,8 @@ protected:
 
 
 template <class Dialog>
-FormDB<Dialog>::FormDB(ControlButtons & c, string const & t)
-	: FormBase(c, t)
+FormDB<Dialog>::FormDB(ControlButtons & c, string const & t, bool allowResize)
+	: FormBase(c, t, allowResize)
 {}
 
 
@@ -103,15 +103,16 @@ class FormCB: public Base
 {
 protected:
 	///
-	FormCB(ControlButtons &, string const &);
+	FormCB(ControlButtons &, string const &, bool allowResize=true);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(ControlButtons & c, string const & t)
-	: Base(c, t)
+FormCB<Controller, Base>::FormCB(ControlButtons & c, string const & t,
+				 bool allowResize)
+	: Base(c, t, allowResize)
 {}
 
 

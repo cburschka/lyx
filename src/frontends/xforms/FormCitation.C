@@ -46,12 +46,15 @@ int string_width(string const & str)
 }
 
 
-void fillChoice(FL_OBJECT * choice, vector<string> const & vec)
+void fillChoice(FD_form_citation * dialog, vector<string> vec)
 {
 	string const str = " " + getStringFromVector(vec, " | ") + " ";
 
-	fl_clear_choice(choice);
-	fl_addto_choice(choice, str.c_str());
+	fl_clear_choice(dialog->choice_style);
+	fl_addto_choice(dialog->choice_style, str.c_str());
+
+	// The width of the choice varies with the contents.
+	// Ensure that it is centred in the frame.
 
 	int width = 0;
 	for (vector<string>::const_iterator it = vec.begin();
@@ -59,16 +62,18 @@ void fillChoice(FL_OBJECT * choice, vector<string> const & vec)
 		width = max(width, string_width(*it));
 	}
 
-	// Paranoia checks
-	int const x = max(5, int(choice->x + 0.5 * (choice->w - width)));
-	if (x + width > choice->form->w)
-		width = choice->form->w - 10;
-	
-	fl_set_object_geometry(choice, x, choice->y, width + 5, choice->h);
+	int const dx =
+		max(5, int(0.5 * (dialog->frame_style->w - width)));
+
+	fl_set_object_geometry(dialog->choice_style,
+			       dialog->frame_style->x + dx,
+			       dialog->choice_style->y,
+			       width,
+			       dialog->choice_style->h);
 }
 
-void updateStyle(FL_OBJECT * choice, FL_OBJECT * full, FL_OBJECT * force,
-		 string command)
+
+void updateStyle(FD_form_citation * dialog, string command)
 {
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles =
@@ -80,14 +85,14 @@ void updateStyle(FL_OBJECT * choice, FL_OBJECT * full, FL_OBJECT * force,
 
 	// Use this to initialise the GUI
 	if (cit == styles.end()) {
-		fl_set_choice(choice, 1);
-		fl_set_button(full, 0);
-		fl_set_button(force, 0);
+		fl_set_choice(dialog->choice_style, 1);
+		fl_set_button(dialog->button_full_author_list, 0);
+		fl_set_button(dialog->button_force_uppercase, 0);
 	} else {
 		int const i = int(cit - styles.begin());
-		fl_set_choice(choice, i+1);
-		fl_set_button(full,  cs.full);
-		fl_set_button(force, cs.forceUCase);
+		fl_set_choice(dialog->choice_style, i+1);
+		fl_set_button(dialog->button_full_author_list,  cs.full);
+		fl_set_button(dialog->button_force_uppercase, cs.forceUCase);
 	}
 }
 
@@ -357,7 +362,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 	if (topCitekey != currentCitekey) {
 		int choice = fl_get_choice(dialog_->choice_style);
-		fillChoice(dialog_->choice_style,
+		fillChoice(dialog_.get(),
 			   controller().getCiteStrings(currentCitekey));
 		fl_set_choice(dialog_->choice_style, choice);
 	}
@@ -380,13 +385,10 @@ void FormCitation::update()
 	string key;
 	if (!citekeys.empty()) key = citekeys[0];
 
-	fillChoice(dialog_->choice_style, controller().getCiteStrings(key));
+	fillChoice(dialog_.get(), controller().getCiteStrings(key));
 
 	// Use the citation command to update the GUI
-	updateStyle(dialog_->choice_style, 
-		    dialog_->button_full_author_list,
-		    dialog_->button_force_uppercase,
-		    controller().params().getCmdName());
+	updateStyle(dialog_.get(), controller().params().getCmdName());
 
 	bool const natbib = controller().usingNatbib();
 	setEnabled(dialog_->button_full_author_list, natbib);

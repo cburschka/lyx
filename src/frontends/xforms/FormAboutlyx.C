@@ -25,7 +25,7 @@ using std::getline;
 typedef FormCB<ControlAboutlyx, FormDB<FD_form_aboutlyx> > base_class;
 
 FormAboutlyx::FormAboutlyx(ControlAboutlyx & c)
-	: base_class(c, _("About LyX"))
+	: base_class(c, _("About LyX"), false)
 {}
 
 FL_FORM * FormAboutlyx::form() const
@@ -69,9 +69,6 @@ void FormAboutlyx::build()
 		       license_->form);
 	fl_addto_tabfolder(dialog_->tabbed_folder,_("Credits"),
 		       credits_->form);
-
-	fl_set_form_maxsize( dialog_->form,
-			     dialog_->form->w,  dialog_->form->h);
 
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->close);

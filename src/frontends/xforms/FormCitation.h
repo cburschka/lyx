@@ -56,7 +56,7 @@ private:
 	FD_form_citation * build_citation();
 
 	/// search for a citation
-	void FormCitation::findBiblio(biblio::Direction const dir);
+	void findBiblio(biblio::Direction const dir);
 
 	///
 	void updateBrowser(FL_OBJECT *, std::vector<string> const &) const;

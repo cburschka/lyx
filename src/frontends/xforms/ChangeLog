@@ -1,3 +1,21 @@
+2001-08-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C:
+	* forms/form_citation.fd: a littl;e tweaking to ensure that the
+	style choice remains centred within the frame if its contents change.
+
+	* FormBase.h: added an allow_resize_ member variable. If false
+	resizing the dialog is prohibitted.
+
+	* FormBase.[Ch]:
+	* FormBrowser.[Ch]: modify c-tors to pass this new variable to FormBase.
+
+	* FormAboutlyx.C:
+	* FormCharacter.C:
+	* FormThesaurus.C:
+	make use of this functionality to ensure that the dialog cannot be
+	resized.
+
 2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCitation.h:
