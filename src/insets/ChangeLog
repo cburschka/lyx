@@ -1,3 +1,8 @@
+2002-04-07  Herbert Voss  <voss@perce.de>
+
+	* insetgraphic.C (readFigInset): fix bug with subcaption and
+	rotating
+
 2002-04-08  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphicsparam.C: forgot special option and delete old

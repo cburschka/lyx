@@ -474,14 +474,14 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 		} else if (token == "subcaption") {
 			if (lex.eatLine())
 				params_.subcaptionText = lex.getString();
-			params_.subcaption = true;
 		} else if (token == "label") {
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "angle") {
-			if (lex.next())
+			if (lex.next()) {
 				params_.rotate = true;
 				params_.rotateAngle = lex.getFloat();
+			}
 		} else if (token == "size") {
 			if (lex.next())
 				params_.lyxwidth = LyXLength(lex.getString()+"pt");
