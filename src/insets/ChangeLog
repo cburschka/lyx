@@ -1,3 +1,7 @@
+2001-05-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* insetcite.C (Ascii): add std:: qualifier
+
 2001-05-28  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (resizeLyXText): clear LyXText ONLY if we don't have

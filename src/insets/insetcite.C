@@ -63,7 +63,7 @@ void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-int InsetCitation::Ascii(Buffer const *, ostream & os, int) const
+int InsetCitation::Ascii(Buffer const *, std::ostream & os, int) const
 {
         os << "[" << getContents() << "]";
         return 0;
