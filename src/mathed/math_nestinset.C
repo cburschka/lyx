@@ -557,7 +557,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		if (cur.pos() != cur.lastpos()) {
 			cur.pos() = cur.lastpos();
-		} else if (cur.col() != cur.lastcol()) {
+		} else if (ncols() && (cur.col() != cur.lastcol())) {
 			cur.idx() = cur.idx() - cur.col() + cur.lastcol();
 			cur.pos() = cur.lastpos();
 		} else if (cur.idx() != cur.lastidx()) {
@@ -795,10 +795,16 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
-	case LFUN_INSERT_MATH:
+	case LFUN_INSERT_MATH: {
 		recordUndo(cur, Undo::ATOMIC);
-		cur.niceInsert(cmd.argument);
+		MathArray ar;
+		asArray(cmd.argument, ar);
+		if (ar.size() == 1 && (ar[0].nucleus()->asNestInset())) {
+			cur.handleNest(ar[0]);
+		} else
+			cur.niceInsert(cmd.argument);
 		break;
+		}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = cmd.argument;

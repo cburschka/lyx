@@ -1,3 +1,9 @@
+2005-04-06  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_nestinset.C (doDispatch): fix cursor positioning in
+	non-grid nestinsets, and selection enclosure when inserting 
+	font or deco insets.
+
 2005-04-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_amsarrayinset.C:
