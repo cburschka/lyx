@@ -33,7 +33,6 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "text_funcs.h"
 #include "undo.h"
 #include "vspace.h"
 
@@ -703,7 +702,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_WORDSEL: {
 		LyXCursor cur1 = cursor;
 		LyXCursor cur2;
-		::getWord(*this, cur1, cur2, lyx::WHOLE_WORD, ownerParagraphs());
+		getWord(cur1, cur2, lyx::WHOLE_WORD);
 		setCursor(cur1.par(), cur1.pos());
 		clearSelection();
 		setCursor(cur2.par(), cur2.pos());
@@ -1231,8 +1230,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		gotoInset(InsetOld::NOTE_CODE, false);
 		break;
 
-	case LFUN_REFERENCE_GOTO:
-	{
+	case LFUN_REFERENCE_GOTO: {
 		vector<InsetOld::Code> tmp;
 		tmp.push_back(InsetOld::LABEL_CODE);
 		tmp.push_back(InsetOld::REF_CODE);

@@ -399,7 +399,7 @@ void LyXText::setLayout(string const & layout)
 bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 {
 	ParagraphList::iterator pit = cursorPar();
-	ParagraphList::iterator end = cursorPar();
+	ParagraphList::iterator end = pit;
 	ParagraphList::iterator start = pit;
 
 	if (selection.set()) {

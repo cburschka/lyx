@@ -1,3 +1,21 @@
+
+2003-11-11  André Pönitz  <poenitz@gmx.net>
+
+	* text.C: remove big comment on invalid Paragraph pointers as it is
+	not valid anymore
+
+2003-11-11  André Pönitz  <poenitz@gmx.net>
+
+	* text_funcs.[Ch]: merge with ...
+
+	* text.C: ... this
+
+	* lyxtext.h:
+	* text2.C:
+	* text3.C: adjust
+
+	* Makefile.am: remove text_funcs.[Ch]
+
 2003-11-11  Alfredo Braunstein  <abraunst@libero.it>
 
 	* cursor.C (getPos): return absolute cached y coord

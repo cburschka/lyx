@@ -262,8 +262,6 @@ lyx_SOURCES = \
 	text3.C \
 	textcursor.C \
 	textcursor.h \
-	text_funcs.C \
-	text_funcs.h \
 	toc.C \
 	toc.h \
 	trans.C \

@@ -37,7 +37,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "rowpainter.h"
-#include "text_funcs.h"
 #include "undo.h"
 #include "vspace.h"
 #include "WordLangTuple.h"
@@ -127,31 +126,6 @@ int LyXText::workWidth() const
 	return inset_owner ? inset_owner->textWidth() : bv()->workWidth();
 }
 
-
-// This is the comments that some of the warnings below refers to.
-// There are some issues in this file and I don't think they are
-// really related to the FIX_DOUBLE_SPACE patch. I'd rather think that
-// this is a problem that has been here almost from day one and that a
-// larger userbase with different access patters triggers the bad
-// behaviour. (segfaults.) What I think happen is: In several places
-// we store the paragraph in the current cursor and then moves the
-// cursor. This movement of the cursor will delete paragraph at the
-// old position if it is now empty. This will make the temporary
-// pointer to the old cursor paragraph invalid and dangerous to use.
-// And is some cases this will trigger a segfault. I have marked some
-// of the cases where this happens with a warning, but I am sure there
-// are others in this file and in text2.C. There is also a note in
-// Delete() that you should read. In Delete I store the paragraph->id
-// instead of a pointer to the paragraph. I am pretty sure this faulty
-// use of temporary pointers to paragraphs that might have gotten
-// invalidated (through a cursor movement) before they are used, are
-// the cause of the strange crashes we get reported often.
-//
-// It is very tiresom to change this code, especially when it is as
-// hard to read as it is. Help to fix all the cases where this is done
-// would be greately appreciated.
-//
-// Lgb
 
 int LyXText::singleWidth(ParagraphList::iterator pit, pos_type pos) const
 {
@@ -1142,16 +1116,12 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 }
 
 
-// important for the screen
-
-
 // the cursor set functions have a special mechanism. When they
 // realize, that you left an empty paragraph, they will delete it.
-// They also delete the corresponding row
 
 void LyXText::cursorRightOneWord()
 {
-	::cursorRightOneWord(*this, cursor, ownerParagraphs());
+	cursorRightOneWord(cursor);
 	setCursor(cursorPar(), cursor.pos());
 }
 
@@ -1161,7 +1131,7 @@ void LyXText::cursorRightOneWord()
 void LyXText::cursorLeftOneWord()
 {
 	LyXCursor tmpcursor = cursor;
-	::cursorLeftOneWord(*this, tmpcursor, ownerParagraphs());
+	cursorLeftOneWord(tmpcursor);
 	setCursor(getPar(tmpcursor), tmpcursor.pos());
 }
 
@@ -1170,7 +1140,7 @@ void LyXText::selectWord(word_location loc)
 {
 	LyXCursor from = cursor;
 	LyXCursor to = cursor;
-	::getWord(*this, from, to, loc, ownerParagraphs());
+	getWord(from, to, loc);
 	if (cursor != from)
 		setCursor(from.par(), from.pos());
 	if (to == from)
@@ -1302,7 +1272,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 		to = selection.end;
 	} else {
 		from = cursor;
-		::getWord(*this, from, to, lyx::PARTIAL_WORD, ownerParagraphs());
+		getWord(from, to, lyx::PARTIAL_WORD);
 		setCursor(to.par(), to.pos() + 1);
 	}
 
@@ -1702,4 +1672,113 @@ bool LyXText::isLastRow(ParagraphList::iterator pit, Row const & row) const
 bool LyXText::isFirstRow(ParagraphList::iterator pit, Row const & row) const
 {
 	return row.pos() == 0 && pit == ownerParagraphs().begin();
+}
+
+
+void LyXText::cursorLeftOneWord(LyXCursor & cursor)
+{
+	// treat HFills, floats and Insets as words
+
+	ParagraphList::iterator pit = cursorPar();
+	size_t pos = cursor.pos();
+
+	while (pos &&
+	       (pit->isSeparator(pos - 1) ||
+	        pit->isKomma(pos - 1) ||
+	        pit->isNewline(pos - 1)) &&
+	       !(pit->isHfill(pos - 1) ||
+		 pit->isInset(pos - 1)))
+		--pos;
+
+	if (pos &&
+	    (pit->isInset(pos - 1) ||
+	     pit->isHfill(pos - 1))) {
+		--pos;
+	} else if (!pos) {
+		if (pit != ownerParagraphs().begin()) {
+			--pit;
+			pos = pit->size();
+		}
+	} else {		// Here, cur != 0
+		while (pos > 0 && pit->isWord(pos - 1))
+			--pos;
+	}
+
+	cursor.par(parOffset(pit));
+	cursor.pos(pos);
+}
+
+
+void LyXText::cursorRightOneWord(LyXCursor & cursor)
+{
+	// treat floats, HFills and Insets as words
+	ParagraphList::iterator pit = cursorPar();
+	pos_type pos = cursor.pos();
+
+	if (pos == pit->size() &&
+		boost::next(pit) != ownerParagraphs().end()) {
+		++pit;
+		pos = 0;
+	} else {
+		// Skip through initial nonword stuff.
+		while (pos < pit->size() && !pit->isWord(pos)) {
+			++pos;
+		}
+		// Advance through word.
+		while (pos < pit->size() && pit->isWord(pos)) {
+			++pos;
+		}
+	}
+
+	cursor.par(parOffset(pit));
+	cursor.pos(pos);
+}
+
+
+void LyXText::getWord(LyXCursor & from, LyXCursor & to, word_location const loc)
+{
+	ParagraphList::iterator from_par = getPar(from);
+	ParagraphList::iterator to_par = getPar(to);
+	switch (loc) {
+	case lyx::WHOLE_WORD_STRICT:
+		if (from.pos() == 0 || from.pos() == from_par->size()
+		    || from_par->isSeparator(from.pos())
+		    || from_par->isKomma(from.pos())
+		    || from_par->isNewline(from.pos())
+		    || from_par->isSeparator(from.pos() - 1)
+		    || from_par->isKomma(from.pos() - 1)
+		    || from_par->isNewline(from.pos() - 1)) {
+			to = from;
+			return;
+		}
+		// no break here, we go to the next
+
+	case lyx::WHOLE_WORD:
+		// Move cursor to the beginning, when not already there.
+		if (from.pos() && !from_par->isSeparator(from.pos() - 1)
+		    && !(from_par->isKomma(from.pos() - 1)
+			 || from_par->isNewline(from.pos() - 1)))
+			cursorLeftOneWord(from);
+		break;
+	case lyx::PREVIOUS_WORD:
+		// always move the cursor to the beginning of previous word
+		cursorLeftOneWord(from);
+		break;
+	case lyx::NEXT_WORD:
+		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet"
+		       << endl;
+		break;
+	case lyx::PARTIAL_WORD:
+		break;
+	}
+	to = from;
+	while (to.pos() < to_par->size()
+	       && !to_par->isSeparator(to.pos())
+	       && !to_par->isKomma(to.pos())
+	       && !to_par->isNewline(to.pos())
+	       && !to_par->isHfill(to.pos())
+	       && !to_par->isInset(to.pos()))
+	{
+		to.pos(to.pos() + 1);
+	}
 }

@@ -439,6 +439,11 @@ public:
 	std::string selectionAsString(Buffer const & buffer, bool label) const;
 	///
 	double spacing(Paragraph const &) const;
+	///
+	void cursorLeftOneWord(LyXCursor &);
+	///
+	void cursorRightOneWord(LyXCursor &);
+
 private:
 	/** Cursor related data.
 	  Later this variable has to be removed. There should be now internal
