@@ -73,7 +73,7 @@ def remove_oldfloat(lines, language):
 	new = floats[floattype]+[""]
 	new = new+lines[i2:j]+["\\end_inset ", ""]
 
-	# After a float, all font attribute are reseted.
+	# After a float, all font attributes are reseted.
 	# We need to output '\foo default' for every attribute foo
 	# whose value is not default before the float.
 	# The check here is not accurate, but it doesn't matter
@@ -331,7 +331,7 @@ def get_length(lines, name, start, end):
     x = string.split(lines[i])
     return x[2]+oldunits[int(x[1])]
 
-def append(x, token, value):
+def write_attribute(x, token, value):
     if value != "":
 	x.append("\t"+token+" "+value)
 
@@ -376,21 +376,21 @@ def remove_figinset(lines):
 	    subcaption = 1
 
 	new = ["\\begin_inset Graphics FormatVersion 1"]
-	append(new, "filename", filename)
-	append(new, "display", display)
+	write_attribute(new, "filename", filename)
+	write_attribute(new, "display", display)
 	if subcaption:
 	    new.append("\tsubcaption")
-	append(new, "subcaptionText", subcaptionText)
-	append(new, "size_type", size_type)
-	append(new, "width", width)
-	append(new, "height", height)
+	write_attribute(new, "subcaptionText", subcaptionText)
+	write_attribute(new, "size_type", size_type)
+	write_attribute(new, "width", width)
+	write_attribute(new, "height", height)
 	if rotateAngle != "":
 	    new.append("\trotate")
-	    append(new, "rotateAngle", rotateAngle)
-	new.append("\trotateOrigin leftBaseline")
-	new.append("\tlyxsize_type 1")
-	append(new, "lyxwidth", lyxwidth)
-	append(new, "lyxheight", lyxheight)
+	    write_attribute(new, "rotateAngle", rotateAngle)
+	write_attribute(new, "rotateOrigin", "leftBaseline")
+	write_attribute(new, "lyxsize_type", "1")
+	write_attribute(new, "lyxwidth", lyxwidth)
+	write_attribute(new, "lyxheight", lyxheight)
 	new = new + ["\end_inset"]
 	lines[i:j+1] = new
 
