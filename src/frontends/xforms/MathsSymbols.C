@@ -190,50 +190,32 @@ char const * latex_ams_arrows[] = {
 int const nr_latex_ams_arrows = sizeof(latex_ams_arrows) / sizeof(char const *);
 
 char const * latex_ams_rel[] = {
-	"leqq", "leqslant", "eqslantless",
-	"lesssim", "lessapprox", "approxeq",
-	"lessdot", "lll", "lessgtr",
-	"lesseqgtr", "lesseqqgtr", "doteqdot",
-	"risingdotseq", "fallingdotseq", "backsim",
-	"backsimeq", "subseteqq", "Subset",
-	"sqsubset", "preccurlyeq", "curlyeqprec",
-	"precsim", "precapprox", "vartriangleleft",
-	"trianglelefteq", "vDash", "Vvdash",
-	"smallsmile", "smallfrown", "bumpeq",
-	"Bumpeq", "geqq", "geqslant",
-	"eqslantgtr", "gtrsim", "gtrapprox",
-	"gtrdot", "ggg", "gtrless", 
-	"gtreqless", "gtreqqless", "eqcirc",
-	"circeq", "triangleq", "thicksim",
-	"thickapprox", "supseteqq", "Supset",
-	"sqsupset", "succcurlyeq", "curlyeqsucc",
-	"succsim", "succapprox", "vartriangleright",
-	"trianglerighteq", "Vdash", "shortmid",
-	"shortparallel", "between", "pitchfork", 
-	"varpropto", "blacktriangleleft", "therefore",
-	"backepsilon", "blacktriangleright", "because"
+	"leqq", "leqslant", "eqslantless", "eqslantgtr", "gtrsim", "gtrapprox",
+	"lesssim", "lessapprox", "approxeq", "gtrdot", "ggg", "gtrless",
+	"lessdot", "lll", "lessgtr", "gtreqless", "gtreqqless", "eqcirc",
+	"lesseqgtr", "lesseqqgtr", "doteqdot", "circeq", "triangleq", "thicksim",
+	"risingdotseq", "fallingdotseq", "backsim", "thickapprox", "supseteqq", "Supset",
+	"backsimeq", "subseteqq", "Subset","sqsupset", "succcurlyeq", "curlyeqsucc",
+	"sqsubset", "preccurlyeq", "curlyeqprec", "succsim", "succapprox", "vartriangleright",
+	"precsim", "precapprox", "vartriangleleft", "trianglerighteq", "Vdash", "shortmid",
+	"trianglelefteq", "vDash", "Vvdash", "shortparallel", "between", "pitchfork",
+	"smallsmile", "smallfrown", "bumpeq", "varpropto", "blacktriangleleft", "therefore",
+	"Bumpeq", "geqq", "geqslant", "backepsilon", "blacktriangleright", "because"
 };
 
 int const nr_latex_ams_rel = sizeof(latex_ams_rel) / sizeof(char const *);
 
 char const * latex_ams_nrel[] = {
-	"nless", "nleq", "nleqslant",
-	"nleqq", "lneq", "lneqq",
-	"lvertneqq", "lnsim", "lnapprox", 
-	"nprec", "npreceq", "precnsim",
-	"precnapprox", "nsim", "nshortmid",
-	"nmid", "nvdash", "nvDash",
-	"ntriangleleft", "ntrianglelefteq", "nsubseteq",
-	"subsetneq", "varsubsetneq", "subsetneqq",
-	"varsubsetneqq", "ngtr", "ngeq",
-	"ngeqslant", "ngeqq", "gneq",
-	"gneqq", "gverteqq", "gnsim",
-	"gnapprox", "nsucc", "nsucceq",
-	"succnsim", "succnapprox", "ncong",
-	"nshortparallel", "nparallel", "nvDash",
-	"nVDash", "ntriangleright", "ntrianglerighteq",
-	"nsupseteq", "nsupseteqq", "supsetneq",
-	"varsupsetneq", "supsetneqq", "varsupsetneqq"
+	"nless", "nleq", "nleqslant", "ngeqslant", "ngeqq", "gneq",
+	"nleqq", "lneq", "lneqq","gneqq", "gverteqq", "gnsim",
+	"lvertneqq", "lnsim", "lnapprox", "gnapprox", "nsucc", "nsucceq",
+	"nprec", "npreceq", "precnsim","succnsim", "succnapprox", "ncong",
+	"precnapprox", "nsim", "nshortmid", "nshortparallel", "nparallel", "nvDash",
+	
+	"nmid", "nvdash", "nvDash","nVDash", "ntriangleright", "ntrianglerighteq",
+	"ntriangleleft", "ntrianglelefteq", "nsubseteq", "nsupseteq", "nsupseteqq", "supsetneq",
+	"subsetneq", "varsubsetneq", "subsetneqq", "varsupsetneq", "supsetneqq", "varsupsetneqq",
+	"varsubsetneqq", "ngtr", "ngeq","", "", ""
 };
 
 int const nr_latex_ams_nrel = sizeof(latex_ams_nrel) / sizeof(char const *);

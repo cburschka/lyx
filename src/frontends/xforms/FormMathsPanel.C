@@ -224,9 +224,9 @@ void FormMathsPanel::build()
 	ams_arrows_->addBitmap(32, 3, 11, ams2_width, ams2_height, ams2_bits);
 	ams_arrows_->addBitmap(6, 3, 2, ams3_width, ams3_height, ams3_bits);
 
-	ams_rel_->addBitmap(66, 3, 22, ams_rel_width, ams_rel_height, ams_rel_bits);
+	ams_rel_->addBitmap(66, 6, 11, ams_rel_width, ams_rel_height, ams_rel_bits);
 
-	ams_nrel_->addBitmap(51, 3, 17, ams_nrel_width, ams_nrel_height, ams_nrel_bits);
+	ams_nrel_->addBitmap(51, 6, 9, ams_nrel_width, ams_nrel_height, ams_nrel_bits);
 	
 	ams_ops_->addBitmap(23, 3, 8, ams_ops_width, ams_ops_height, ams_ops_bits);
 

@@ -68,8 +68,6 @@ void FormMathsDeco::build()
 
 void FormMathsDeco::apply()
 {
-	//int const i = fl_get_bmtable(dialog_->bmtable_deco1);
- 
 	if (deco_ >= nr_decoration_names)
 		return;
  

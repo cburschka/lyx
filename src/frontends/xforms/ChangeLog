@@ -4,6 +4,10 @@
 	* forms/form_maths_deco.fd: added math accents as a separate bitmap to
 	the Decorations sub-panel of mathed. See Lamport Table 3.11.
 
+	* FormMathsPanel.C:
+	* MathsSymbols.C: reorganization of the two AMS panels "relations" and
+	"negated relations". Lower and broader.
+
 2002-01-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormTabular.C (update): Remove redundant code.
