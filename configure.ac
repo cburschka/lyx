@@ -291,7 +291,7 @@ dnl work correctly because of some conflict with stdlib.h with g++ 2.96
 dnl We aim to remove this eventually, since we should test as much as
 dnl possible with the compiler which will use the functions (JMarc)
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(memmove memset strchr mkfifo mkstemp mktemp)
+AC_CHECK_FUNCS(mkfifo mkstemp mktemp)
 AC_LANG_POP(C)
 
 AC_FUNC_SELECT_ARGTYPES
@@ -338,23 +338,11 @@ AH_BOTTOM([
 /************************************************************
  ** You should not need to change anything beyond this point */
 
-#ifndef HAVE_STRCHR
-# define strchr(a,b)    index(a,b)
-#endif
-
-#ifndef HAVE_MEMMOVE
-# define memmove(a,b,c) bcopy(b,a,c)
-#endif
-
 #ifndef HAVE_STRERROR
 #if defined(__cplusplus)
 extern "C"
 #endif
 char * strerror(int n);
-#endif
-
-#ifdef BROKEN_HEADERS
-#include "broken_headers.h"
 #endif
 
 #ifdef HAVE_MKSTEMP

@@ -17,14 +17,10 @@
 
 #include "debug.h"
 #include "dimension.h"
+#include "support/lstrings.h"
 #include "textpainter.h"
 
 using std::auto_ptr;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::strchr;
-#endif
-
 
 extern bool has_math_fonts;
 
@@ -32,13 +28,12 @@ namespace {
 
 	bool isBinaryOp(char c)
 	{
-		return strchr("+-<>=/*", c);
+		return lyx::support::contains("+-<>=/*", c);
 	}
 
 
 	bool slanted(char c)
 	{
-		//if (strchr("0123456789;:!|[]().,?+/-*<>=", c)
 		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 	}
 

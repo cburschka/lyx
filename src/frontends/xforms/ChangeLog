@@ -1,3 +1,7 @@
+2004-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* input_validators.C: use support::contains instead of strchr
+
 2004-11-26  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.C (expand_globs): changes due to the changed

@@ -115,7 +115,6 @@ lyx_SOURCES = \
 	boost.C \
 	box.h \
 	box.C \
-	broken_headers.h \
 	buffer.C \
 	buffer.h \
 	buffer_funcs.C \

@@ -1,4 +1,9 @@
+2004-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* broken_headers.h: remove
 	
+	* Makefile.am (lyx_SOURCES): remove broken_headers.h
+
 2004-11-24  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView.[Ch]: remove top_y, introduce anchor_ref,
