@@ -26,121 +26,9 @@
 
 #include <algorithm>
 
-using std::find;
-using std::min;
 using std::vector;
 
 namespace biblio {
-
-namespace {
-
-using namespace biblio;
-
-char const * const citeCommands[] = {
-	"cite", "citet", "citep", "citealt", "citealp", "citeauthor",
-	"citeyear", "citeyearpar" };
-
-unsigned int const nCiteCommands =
-	sizeof(citeCommands) / sizeof(char *);
-
-CiteStyle const citeStyles[] = {
-	CITE, CITET, CITEP, CITEALT, CITEALP,
-	CITEAUTHOR, CITEYEAR, CITEYEARPAR };
-
-unsigned int const nCiteStyles =
-	sizeof(citeStyles) / sizeof(CiteStyle);
-
-CiteStyle const citeStylesFull[] = {
-	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
-
-unsigned int const nCiteStylesFull =
-	sizeof(citeStylesFull) / sizeof(CiteStyle);
-
-CiteStyle const citeStylesUCase[] = {
-	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
-
-unsigned int const nCiteStylesUCase =
-	sizeof(citeStylesUCase) / sizeof(CiteStyle);
-
-
-// The functions doing the dirty work for the search.
-vector<string>::const_iterator
-simpleSearch(InfoMap const & theMap,
-	     vector<string> const & keys,
-	     string const & expr,
-	     vector<string>::const_iterator start,
-	     Direction dir,
-	     bool caseSensitive)
-{
-	string tmp = expr;
-	if (!caseSensitive)
-		tmp = lowercase(tmp);
-
-	vector<string> searchwords = getVectorFromString(tmp, " ");
-
-	// Loop over all keys from start...
-	for (vector<string>::const_iterator it = start;
-	     // End condition is direction-dependent.
-	     (dir == FORWARD) ? (it<keys.end()) : (it>=keys.begin());
-	     // increment is direction-dependent.
-	     (dir == FORWARD) ? (++it) : (--it)) {
-
-		string data = (*it);
-		InfoMap::const_iterator info = theMap.find(*it);
-		if (info != theMap.end())
-			data += " " + info->second;
-		if (!caseSensitive)
-			data = lowercase(data);
-
-		bool found = true;
-
-		// Loop over all search words...
-		for (vector<string>::const_iterator sit = searchwords.begin();
-		     sit != searchwords.end(); ++sit) {
-			if (data.find(*sit) == string::npos) {
-				found = false;
-				break;
-			}
-		}
-
-		if (found) return it;
-	}
-
-	return keys.end();
-}
-
-
-vector<string>::const_iterator
-regexSearch(InfoMap const & theMap,
-	    vector<string> const & keys,
-	    string const & expr,
-	    vector<string>::const_iterator start,
-	    Direction dir)
-{
-	boost::regex reg(STRCONV(expr));
-
-	for (vector<string>::const_iterator it = start;
-	     // End condition is direction-dependent.
-	     (dir == FORWARD) ? (it < keys.end()) : (it >= keys.begin());
-	     // increment is direction-dependent.
-	     (dir == FORWARD) ? (++it) : (--it)) {
-
-		string data = (*it);
-		InfoMap::const_iterator info = theMap.find(*it);
-		if (info != theMap.end())
-			data += " " + info->second;
-
-		if (boost::regex_match(STRCONV(data), reg)) {
-			return it;
-		}
-	}
-
-	return keys.end();
-}
-
-
-} // namespace anon
-
 
 string const familyName(string const & name)
 {
@@ -348,6 +236,87 @@ string const getInfo(InfoMap const & map, string const & key)
 }
 
 
+namespace {
+
+// The functions doing the dirty work for the search.
+vector<string>::const_iterator
+simpleSearch(InfoMap const & theMap,
+	     vector<string> const & keys,
+	     string const & expr,
+	     vector<string>::const_iterator start,
+	     Direction dir,
+	     bool caseSensitive)
+{
+	string tmp = expr;
+	if (!caseSensitive)
+		tmp = lowercase(tmp);
+
+	vector<string> searchwords = getVectorFromString(tmp, " ");
+
+	// Loop over all keys from start...
+	for (vector<string>::const_iterator it = start;
+	     // End condition is direction-dependent.
+	     (dir == FORWARD) ? (it<keys.end()) : (it>=keys.begin());
+	     // increment is direction-dependent.
+	     (dir == FORWARD) ? (++it) : (--it)) {
+
+		string data = (*it);
+		InfoMap::const_iterator info = theMap.find(*it);
+		if (info != theMap.end())
+			data += " " + info->second;
+		if (!caseSensitive)
+			data = lowercase(data);
+
+		bool found = true;
+
+		// Loop over all search words...
+		for (vector<string>::const_iterator sit = searchwords.begin();
+		     sit != searchwords.end(); ++sit) {
+			if (data.find(*sit) == string::npos) {
+				found = false;
+				break;
+			}
+		}
+
+		if (found) return it;
+	}
+
+	return keys.end();
+}
+
+
+vector<string>::const_iterator
+regexSearch(InfoMap const & theMap,
+	    vector<string> const & keys,
+	    string const & expr,
+	    vector<string>::const_iterator start,
+	    Direction dir)
+{
+	boost::regex reg(STRCONV(expr));
+
+	for (vector<string>::const_iterator it = start;
+	     // End condition is direction-dependent.
+	     (dir == FORWARD) ? (it < keys.end()) : (it >= keys.begin());
+	     // increment is direction-dependent.
+	     (dir == FORWARD) ? (++it) : (--it)) {
+
+		string data = (*it);
+		InfoMap::const_iterator info = theMap.find(*it);
+		if (info != theMap.end())
+			data += " " + info->second;
+
+		if (boost::regex_match(STRCONV(data), reg)) {
+			return it;
+		}
+	}
+
+	return keys.end();
+}
+
+
+} // namespace anon
+
+
 vector<string>::const_iterator
 searchKeys(InfoMap const & theMap,
 	   vector<string> const & keys,
@@ -501,6 +470,39 @@ string const parseBibTeX(string data, string const & findkey)
 		}
 	}
 }
+
+
+namespace {
+
+using namespace biblio;
+
+char const * const citeCommands[] = {
+	"cite", "citet", "citep", "citealt", "citealp", "citeauthor",
+	"citeyear", "citeyearpar" };
+
+unsigned int const nCiteCommands =
+	sizeof(citeCommands) / sizeof(char *);
+
+CiteStyle const citeStyles[] = {
+	CITE, CITET, CITEP, CITEALT, CITEALP,
+	CITEAUTHOR, CITEYEAR, CITEYEARPAR };
+
+unsigned int const nCiteStyles =
+	sizeof(citeStyles) / sizeof(CiteStyle);
+
+CiteStyle const citeStylesFull[] = {
+	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
+
+unsigned int const nCiteStylesFull =
+	sizeof(citeStylesFull) / sizeof(CiteStyle);
+
+CiteStyle const citeStylesUCase[] = {
+	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
+
+unsigned int const nCiteStylesUCase =
+	sizeof(citeStylesUCase) / sizeof(CiteStyle);
+
+} // namespace anon
 
 
 CitationStyle const getCitationStyle(string const & command)
