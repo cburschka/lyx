@@ -1,3 +1,8 @@
+2001-07-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ControlSpellchecker.C (getSuggestion): 
+	(getWord): add std:: qualifier
+
 2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ControlSpellchecker.[Ch]: added

@@ -194,7 +194,7 @@ string ControlSpellchecker::getSuggestion()
 	
 	if (w!=0) {
 		tmp = w;
-		if (rtl_) reverse(tmp.begin(), tmp.end());
+		if (rtl_) std::reverse(tmp.begin(), tmp.end());
 	}
 	
 	return tmp;
@@ -204,7 +204,7 @@ string ControlSpellchecker::getSuggestion()
 string ControlSpellchecker::getWord()
 {
 	string tmp = word_;
-	if (rtl_) reverse(tmp.begin(), tmp.end());
+	if (rtl_) std::reverse(tmp.begin(), tmp.end());
 	return tmp;
 }
 
