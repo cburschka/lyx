@@ -22,14 +22,10 @@
 
 #include "FormBaseDeprecated.h"
 
-#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include <map>
 
 class FormMathsBitmap;
-class FormMathsDeco;
-class FormMathsDelim;
-class FormMathsMatrix;
-class FormMathsSpace;
-class FormMathsStyle;
 class FormMathsSub;
 struct FD_maths_panel;
 
@@ -40,12 +36,12 @@ class FormMathsPanel : public FormBaseBD {
 public:
 	///
 	FormMathsPanel(LyXView &, Dialogs &);
-	///
-	void setActive(FormMathsSub *) const;
 	/// dispatch an LFUN:
-	void dispatchFunc(kb_action action) const;
+	void dispatchFunc(kb_action action,
+			  string const & arg = string()) const;
 	/// dispatch a symbol insert
 	void insertSymbol(string const & sym, bool bs = true) const;
+
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();
@@ -61,43 +57,40 @@ private:
 	// Real GUI implementation
 	boost::scoped_ptr<FD_maths_panel> dialog_;
 
-	/// send LFUN_MATH_DISPLAY
-	void mathDisplay() const;
+	/** Add a bitmap dialog to the store of all daughters_ and
+	 *  return a pointer to the dialog, so that bitmaps can be added to it.
+	 */
+	FormMathsBitmap * addDaughter(FL_OBJECT * button, string const & title,
+				      char const * const * data, int size);
 
-	/// Subdialogs
-	boost::scoped_ptr<FormMathsDeco>   deco_;
-	boost::scoped_ptr<FormMathsDelim>  delim_;
-	boost::scoped_ptr<FormMathsMatrix> matrix_;
-	boost::scoped_ptr<FormMathsSpace>  space_;
-	boost::scoped_ptr<FormMathsStyle>  style_;
-	boost::scoped_ptr<FormMathsBitmap> arrow_;
-	boost::scoped_ptr<FormMathsBitmap> boperator_;
-	boost::scoped_ptr<FormMathsBitmap> brelats_;
-	boost::scoped_ptr<FormMathsBitmap> greek_;
-	boost::scoped_ptr<FormMathsBitmap> misc_;
-	boost::scoped_ptr<FormMathsBitmap> dots_;
-	boost::scoped_ptr<FormMathsBitmap> varsize_;
-	boost::scoped_ptr<FormMathsBitmap> ams_misc_;
-	boost::scoped_ptr<FormMathsBitmap> ams_arrows_;
-	boost::scoped_ptr<FormMathsBitmap> ams_rel_;
-	boost::scoped_ptr<FormMathsBitmap> ams_nrel_;
-	boost::scoped_ptr<FormMathsBitmap> ams_ops_;
+	///
+	void showDaughter(FL_OBJECT *);
 
-	/// A pointer to the currently active subdialog
-	mutable FormMathsSub * active_;
+	///
+	typedef boost::shared_ptr<FormMathsSub> DaughterDialog;
+	typedef std::map<FL_OBJECT *, DaughterDialog> Store;
 
-	/// The ButtonController
+	/** The store of all daughter dialogs.
+	 *  The map uses the button on the main panel to identify them.
+	 */
+	Store daughters_;
+
+	/// A pointer to the currently active daughter dialog.
+	FormMathsSub * active_;
+
+	/// The ButtonController.
 	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
 
 
 class FormMathsSub : public FormBaseBD {
-	friend class FormMathsPanel; // has subdialogs to manipulate
-
 public:
 	///
 	FormMathsSub(LyXView &, Dialogs &, FormMathsPanel const &,
 		     string const &, bool allowResize = true);
+
+	///
+	bool isVisible() const;
 
 protected:
 	/// Pointer to the actual instantiation of the ButtonController.
@@ -105,10 +98,6 @@ protected:
 	/// The parent Maths Panel
 	FormMathsPanel const & parent_;
 private:
-	///
-	virtual void connect();
-	///
-	virtual void disconnect();
 	/// The ButtonController
 	ButtonController<IgnorantPolicy, xformsBC> bc_;
 };

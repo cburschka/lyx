@@ -105,10 +105,10 @@ void FormMathsMatrix::apply()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-
-	lv_.dispatch(FuncRequest(LFUN_INSERT_MATRIX, STRCONV(os.str())));
+	parent_.dispatchFunc(LFUN_INSERT_MATRIX, STRCONV(os.str()));
 }
 
+			      
 
 bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 {

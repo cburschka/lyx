@@ -1,3 +1,29 @@
+2002-11-22  Angus Leeming  <leeming@lyx.org>
+
+	The first step towards a math dialog controller...
+
+	* FormBaseDeprecated.h (hide): make public.
+
+	* FormMathsPanel.[Ch] (class FormMathsPanel):
+	(c-tor, build): no longer create the daughters in the c-tor. Wait
+	until build() is invoked to create and initialise them at the same time.
+	(dispatchFunc): now has an additional string argument, making it a
+	more general wrapper for LyXView::dispatch.
+	(mathDisplay, setActive): removed.
+	(daughters_): store the daughter dialogs in a map, using
+	the FL_OBJECT buttons to identify them.
+	(addDaughter, showDaughter): helper functions.
+
+	* FormMathsPanel.[Ch] (class FormMathsSub):
+	(connect, disconect): removed. No need for the daughters to tell the
+	parent that they're active; the parent knows already.
+	(isVisible): new method; wrapper for form()->visible.
+	no need to make FormMathsPanel a friend.
+
+	* FormMathsDelim.C (apply):
+	* FormMathsMatrix.C (apply):
+	use FormMathPanel::dispatchFunc() rather than LyXView::dispatch().
+
 2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormGraphics.C (build): use boost::format

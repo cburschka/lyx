@@ -69,74 +69,7 @@
 FormMathsPanel::FormMathsPanel(LyXView & lv, Dialogs & d)
 	: FormBaseBD(lv, d, _("Maths Panel")),
 	  active_(0), bc_(_("Close"))
-{
-	deco_.reset(  new FormMathsDeco(  lv, d, *this));
-	delim_.reset( new FormMathsDelim( lv, d, *this));
-	matrix_.reset(new FormMathsMatrix(lv, d, *this));
-	space_.reset( new FormMathsSpace( lv, d, *this));
-	style_.reset( new FormMathsStyle( lv, d, *this));
-
-	typedef std::vector<string> StringVec;
-	char const * const * begin = latex_arrow;
-	char const * const * end   = begin + nr_latex_arrow;
-	arrow_.reset(new FormMathsBitmap(lv, d, *this, _("Arrows"),
-					 StringVec(begin, end)));
-
-	begin = latex_bop;
-	end   = begin + nr_latex_bop;
-	boperator_.reset(new FormMathsBitmap(lv, d, *this, _("Binary Ops"),
-					     StringVec(begin, end)));
-
-	begin = latex_brel;
-	end   = begin + nr_latex_brel;
-	brelats_.reset(new FormMathsBitmap(lv, d, *this, _("Bin Relations"),
-					   StringVec(begin, end)));
-
-	begin = latex_greek;
-	end   = begin + nr_latex_greek;
-	greek_.reset(new FormMathsBitmap(lv, d, *this, _("Greek"),
-					 StringVec(begin, end)));
-
-	begin = latex_misc;
-	end   = begin + nr_latex_misc;
-	misc_.reset(new FormMathsBitmap(lv, d, *this, _("Misc"),
-					StringVec(begin, end)));
-
-	begin = latex_dots;
-	end   = begin + nr_latex_dots;
-	dots_.reset(new FormMathsBitmap(lv, d, *this, _("Dots"),
-					StringVec(begin, end)));
-
-	begin = latex_varsz;
-	end   = begin + nr_latex_varsz;
-	varsize_.reset(new FormMathsBitmap(lv, d, *this, _("Big Operators"),
-					   StringVec(begin, end)));
-
-	begin = latex_ams_misc;
-	end   = begin + nr_latex_ams_misc;
-	ams_misc_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Misc"),
-					    StringVec(begin, end)));
-
-	begin = latex_ams_arrows;
-	end   = begin + nr_latex_ams_arrows;
-	ams_arrows_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Arrows"),
-					      StringVec(begin, end)));
-
-	begin = latex_ams_rel;
-	end   = begin + nr_latex_ams_rel;
-	ams_rel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Relations"),
-					   StringVec(begin, end)));
-
-	begin = latex_ams_nrel;
-	end   = begin + nr_latex_ams_nrel;
-	ams_nrel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Negated Rel"),
-					    StringVec(begin, end)));
-
-	begin = latex_ams_ops;
-	end   = begin + nr_latex_ams_ops;
-	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Operators"),
-					   StringVec(begin, end)));
-}
+{}
 
 
 FL_FORM * FormMathsPanel::form() const
@@ -145,9 +78,17 @@ FL_FORM * FormMathsPanel::form() const
 }
 
 
-void FormMathsPanel::setActive(FormMathsSub * a) const
+FormMathsBitmap * FormMathsPanel::addDaughter(FL_OBJECT * button,
+					      string const & title,
+					      char const * const * data,
+					      int size)
 {
-	active_ = a;
+	char const * const * end = data + size;
+	FormMathsBitmap * bitmap =
+		new FormMathsBitmap(lv_, d_, *this, title,
+				    std::vector<string>(data, end));
+	daughters_[button] = DaughterDialog(bitmap);
+	return bitmap;
 }
 
 
@@ -180,149 +121,140 @@ void FormMathsPanel::build()
 	fl_set_pixmap_data(dialog_->button_equation,
 			   const_cast<char**>(equation));
 
-	arrow_->addBitmap(20, 5, 4, arrow_width,  arrow_height,  arrow_bits);
-	arrow_->addBitmap(7,  2, 4, larrow_width, larrow_height, larrow_bits,
+	daughters_[dialog_->button_deco] =
+		DaughterDialog(new FormMathsDeco(lv_, d_, *this));
+	daughters_[dialog_->button_delim] =
+		DaughterDialog(new FormMathsDelim(lv_, d_, *this));
+	daughters_[dialog_->button_matrix] =
+		DaughterDialog(new FormMathsMatrix(lv_, d_, *this));
+	daughters_[dialog_->button_space] =
+		DaughterDialog(new FormMathsSpace(lv_, d_, *this));
+	daughters_[dialog_->button_style] =
+		DaughterDialog(new FormMathsStyle(lv_, d_, *this));
+
+	FormMathsBitmap * bitmap;
+	bitmap = addDaughter(dialog_->button_arrow, _("Arrows"),
+			     latex_arrow, nr_latex_arrow);
+	bitmap->addBitmap(20, 5, 4, arrow_width,  arrow_height,  arrow_bits);
+	bitmap->addBitmap(7,  2, 4, larrow_width, larrow_height, larrow_bits,
 			  false);
-	arrow_->addBitmap(4,  2, 2, darrow_width,  darrow_height, darrow_bits);
+	bitmap->addBitmap(4,  2, 2, darrow_width,  darrow_height, darrow_bits);
 
-	boperator_->addBitmap(31, 4, 8, bop_width, bop_height, bop_bits);
+	bitmap = addDaughter(dialog_->button_boperator, _("Binary Ops"),
+			     latex_bop, nr_latex_bop);
+	bitmap->addBitmap(31, 4, 8, bop_width, bop_height, bop_bits);
 
-	brelats_->addBitmap(35, 4, 9, brel_width, brel_height, brel_bits);
+	bitmap = addDaughter(dialog_->button_brelats, _("Bin Relations"),
+			     latex_brel, nr_latex_brel);
+	bitmap->addBitmap(35, 4, 9, brel_width, brel_height, brel_bits);
 
-	greek_->addBitmap(11, 6, 2, Greek_width, Greek_height, Greek_bits);
-	greek_->addBitmap(28, 7, 4, greek_width, greek_height, greek_bits);
+	bitmap = addDaughter(dialog_->button_greek, _("Greek"),
+			     latex_greek, nr_latex_greek);
+	bitmap->addBitmap(11, 6, 2, Greek_width, Greek_height, Greek_bits);
+	bitmap->addBitmap(28, 7, 4, greek_width, greek_height, greek_bits);
 
-	misc_->addBitmap(29, 5, 6, misc_width, misc_height, misc_bits);
-	misc_->addBitmap(5, 5, 1, misc4_width, misc4_height, misc4_bits);
-	misc_->addBitmap(6, 3, 2, misc2_width, misc2_height, misc2_bits, false);
-	misc_->addBitmap(4, 2, 2, misc3_width, misc3_height, misc3_bits);
+	bitmap = addDaughter(dialog_->button_misc,_("Misc"),
+			     latex_misc, nr_latex_misc);
+	bitmap->addBitmap(29, 5, 6, misc_width, misc_height, misc_bits);
+	bitmap->addBitmap(5, 5, 1, misc4_width, misc4_height, misc4_bits);
+	bitmap->addBitmap(6, 3, 2, misc2_width, misc2_height, misc2_bits,
+			  false);
+	bitmap->addBitmap(4, 2, 2, misc3_width, misc3_height, misc3_bits);
 
-	dots_->addBitmap(4, 4, 1, dots_width, dots_height, dots_bits);
+	bitmap = addDaughter(dialog_->button_dots, _("Dots"),
+			     latex_dots, nr_latex_dots);
+	bitmap->addBitmap(4, 4, 1, dots_width, dots_height, dots_bits);
 
-	varsize_->addBitmap(14, 3, 5, varsz_width, varsz_height, varsz_bits);
+	bitmap = addDaughter(dialog_->button_varsize, _("Big Operators"),
+		     latex_varsz, nr_latex_varsz);
+	bitmap->addBitmap(14, 3, 5, varsz_width, varsz_height, varsz_bits);
 
-	ams_misc_->addBitmap(9, 5, 2, ams1_width, ams1_height, ams1_bits);
-	ams_misc_->addBitmap(26, 3, 9, ams7_width, ams7_height, ams7_bits);
+	bitmap = addDaughter(dialog_->button_ams_misc, _("AMS Misc"),
+			     latex_ams_misc, nr_latex_ams_misc);
+	bitmap->addBitmap(9, 5, 2, ams1_width, ams1_height, ams1_bits);
+	bitmap->addBitmap(26, 3, 9, ams7_width, ams7_height, ams7_bits);
 
-	ams_arrows_->addBitmap(32, 3, 11, ams2_width, ams2_height, ams2_bits);
-	ams_arrows_->addBitmap(6, 3, 2, ams3_width, ams3_height, ams3_bits);
+	bitmap = addDaughter(dialog_->button_ams_arrows, _("AMS Arrows"),
+			     latex_ams_arrows, nr_latex_ams_arrows);
+	bitmap->addBitmap(32, 3, 11, ams2_width, ams2_height, ams2_bits);
+	bitmap->addBitmap(6, 3, 2, ams3_width, ams3_height, ams3_bits);
 
-	ams_rel_->addBitmap(66, 6, 11, ams_rel_width, ams_rel_height, ams_rel_bits);
+	bitmap = addDaughter(dialog_->button_ams_brel, _("AMS Relations"),
+			     latex_ams_rel, nr_latex_ams_rel);
+	bitmap->addBitmap(66, 6, 11, ams_rel_width, ams_rel_height,
+			  ams_rel_bits);
 
-	ams_nrel_->addBitmap(51, 6, 9, ams_nrel_width, ams_nrel_height, ams_nrel_bits);
+	bitmap = addDaughter(dialog_->button_ams_nrel, _("AMS Negated Rel"),
+			     latex_ams_nrel, nr_latex_ams_nrel);
+	bitmap->addBitmap(51, 6, 9, ams_nrel_width, ams_nrel_height,
+			  ams_nrel_bits);
 
-	ams_ops_->addBitmap(23, 3, 8, ams_ops_width, ams_ops_height, ams_ops_bits);
+	bitmap = addDaughter(dialog_->button_ams_ops, _("AMS Operators"),
+			     latex_ams_ops, nr_latex_ams_ops);
+	bitmap->addBitmap(23, 3, 8, ams_ops_width, ams_ops_height,
+			  ams_ops_bits);
 
 	bc().setCancel(dialog_->button_close);
 }
 
 
+void FormMathsPanel::showDaughter(FL_OBJECT * button)
+{
+	Store::iterator it = daughters_.find(button);
+	FormMathsSub * const new_active =
+		(it == daughters_.end()) ? 0 : it->second.get();
+
+	if (active_ != new_active) {
+		if (active_ && active_->isVisible())
+			active_->hide();
+		active_ = new_active;
+	}
+
+	if (active_ && !active_->isVisible())
+		active_->show();
+}
+
+
 bool FormMathsPanel::input(FL_OBJECT * ob, long)
 {
-	if (ob == dialog_->button_greek) {
-		if (active_ && active_ != greek_.get())
-			active_->hide();
-		greek_->show();
+	if (ob == dialog_->button_arrow ||
+	    ob == dialog_->button_boperator ||
+	    ob == dialog_->button_brelats ||
+	    ob == dialog_->button_greek ||
+	    ob == dialog_->button_misc ||
+	    ob == dialog_->button_dots ||
+	    ob == dialog_->button_varsize ||
+	    ob == dialog_->button_ams_misc ||
+	    ob == dialog_->button_ams_arrows ||
+	    ob == dialog_->button_ams_brel ||
+	    ob == dialog_->button_ams_nrel ||
+	    ob == dialog_->button_ams_ops ||
+	    ob == dialog_->button_delim ||
+	    ob == dialog_->button_matrix ||
+	    ob == dialog_->button_deco ||
+	    ob == dialog_->button_space ||
+	    ob == dialog_->button_style) {
+		showDaughter(ob);
 
-	} else if (ob == dialog_->button_arrow) {
-		if (active_ && active_ != arrow_.get())
-			active_->hide();
-		arrow_->show();
+	} else if (ob == dialog_->button_super) {
+		dispatchFunc(LFUN_SUPERSCRIPT);
 
-	} else if (ob == dialog_->button_boperator) {
-		if (active_ && active_ != boperator_.get())
-			active_->hide();
-		boperator_->show();
+	} else if (ob == dialog_->button_sub) {
+		dispatchFunc(LFUN_SUBSCRIPT);
 
-	} else if (ob == dialog_->button_brelats) {
-		if (active_ && active_ != brelats_.get())
-			active_->hide();
-		brelats_->show();
+//  	} else if (ob == dialog_->???) {
+//  		dispatchFunc(LFUN_SUBSCRIPT);
+//  		dispatchFunc(LFUN_LEFT);
+//  		dispatchFunc(LFUN_SUPERSCRIPT);
 
-	} else if (ob == dialog_->button_misc) {
-		if (active_ && active_ != misc_.get())
-			active_->hide();
-		misc_->show();
-
-	} else if (ob == dialog_->button_dots) {
-		if (active_ && active_ != dots_.get())
-			active_->hide();
-		dots_->show();
-
-	} else if (ob == dialog_->button_varsize) {
-		if (active_ && active_ != varsize_.get())
-			active_->hide();
-		varsize_->show();
-
-	} else if (ob == dialog_->button_ams_misc) {
-		if (active_ && active_ != ams_misc_.get())
-			active_->hide();
-		ams_misc_->show();
-
-	} else if (ob == dialog_->button_ams_arrows) {
-		if (active_ && active_ != ams_arrows_.get())
-			active_->hide();
-		ams_arrows_->show();
-
-	} else if (ob == dialog_->button_ams_brel) {
-		if (active_ && active_ != ams_rel_.get())
-			active_->hide();
-		ams_rel_->show();
-
-	} else if (ob == dialog_->button_ams_nrel) {
-		if (active_ && active_ != ams_nrel_.get())
-			active_->hide();
-		ams_nrel_->show();
-
-	} else if (ob == dialog_->button_ams_ops) {
-		if (active_ && active_ != ams_ops_.get())
-			active_->hide();
-		ams_ops_->show();
+	} else if (ob == dialog_->button_equation) {
+		dispatchFunc(LFUN_MATH_DISPLAY);
 
 	} else if (ob == dialog_->button_frac) {
 		insertSymbol("frac");
 
 	} else if (ob == dialog_->button_sqrt) {
 		insertSymbol("sqrt");
-
-	} else if (ob == dialog_->button_super) {
-		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
-
-	} else if (ob == dialog_->button_sub) {
-		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
-
-//  	} else if (ob == dialog_->???) {
-//  		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
-//  		lv_.dispatch(FuncRequest(LFUN_LEFT));
-//  		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
-
-	} else if (ob == dialog_->button_delim) {
-		if (active_ && active_ != delim_.get())
-			active_->hide();
-		delim_->show();
-
-	} else if (ob == dialog_->button_matrix) {
-		if (active_ && active_ != matrix_.get())
-			active_->hide();
-		matrix_->show();
-
-	} else if (ob == dialog_->button_deco) {
-		if (active_ && active_ != deco_.get())
-			active_->hide();
-		deco_->show();
-
-	} else if (ob == dialog_->button_space) {
-		if (active_ && active_ != space_.get())
-			active_->hide();
-		space_->show();
-
-	} else if (ob == dialog_->button_style) {
-		if (active_ && active_ != style_.get())
-			active_->hide();
-		style_->show();
-
-	} else if (ob == dialog_->button_equation) {
-		mathDisplay();
 
 	} else if (ob == dialog_->browser_funcs) {
 		int const i = fl_get_browser(dialog_->browser_funcs) - 1;
@@ -342,17 +274,10 @@ void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
 }
 
 
-void FormMathsPanel::dispatchFunc(kb_action action) const
+void FormMathsPanel::dispatchFunc(kb_action action, string const & arg) const
 {
-	lv_.dispatch(FuncRequest(action));
+	lv_.dispatch(FuncRequest(action, arg));
 }
-
-
-void FormMathsPanel::mathDisplay() const
-{
-	lv_.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
-}
-
 
 
 FormMathsSub::FormMathsSub(LyXView & lv, Dialogs & d, FormMathsPanel const & p,
@@ -361,15 +286,7 @@ FormMathsSub::FormMathsSub(LyXView & lv, Dialogs & d, FormMathsPanel const & p,
 {}
 
 
-void FormMathsSub::connect()
+bool FormMathsSub::isVisible() const
 {
-	parent_.setActive(this);
-	FormBaseBD::connect();
-}
-
-
-void FormMathsSub::disconnect()
-{
-	parent_.setActive(0);
-	FormBaseBD::disconnect();
+	return form() ? form()->visible : false;
 }

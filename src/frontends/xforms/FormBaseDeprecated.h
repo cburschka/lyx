@@ -61,6 +61,8 @@ public:
 
 	/// Create the dialog if necessary, update it and display it.
 	virtual void show();
+	/// Hide the dialog.
+	virtual void hide();
 
 protected: // methods
 
@@ -74,8 +76,6 @@ protected: // methods
 	 */
 	virtual void redraw();
 
-	/// Hide the dialog.
-	virtual void hide();
 	/// Update the dialog.
 	virtual void update() {}
 	/// Connect signals. Also perform any necessary initialisation.

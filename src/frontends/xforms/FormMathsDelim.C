@@ -102,8 +102,7 @@ void FormMathsDelim::apply()
 
 	ostringstream os;
 	os << delim_values[left] << ' ' << delim_values[right];
-
-	lv_.dispatch(FuncRequest(LFUN_MATH_DELIM, STRCONV(os.str())));
+	parent_.dispatchFunc(LFUN_MATH_DELIM, STRCONV(os.str()));
 }
 
 
