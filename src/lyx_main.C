@@ -235,7 +235,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 	vector<string> files;
 
 	for (int argi = argc - 1; argi >= 1; --argi)
-		files.push_back(argv[argi]);
+		files.push_back(os::internal_path(argv[argi]));
 
 	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));

@@ -1,3 +1,8 @@
+2005-03-29  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (priv_exec): call os::internal_path on each file passed
+	to LyX on the command line.
+
 2005-03-25  Stephan Witt  <stephan.witt@beusen.de>
 
 	* vc-backend.C: use QuoteName to protect file names wherever
