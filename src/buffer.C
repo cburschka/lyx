@@ -3732,17 +3732,20 @@ bool Buffer::Dispatch(int action, string const & argument)
 
 void Buffer::resize()
 {
-	/// first resize the BufferViews!
-	if (users) {
+	/// resize the BufferViews!
+	if (users)
 		users->resize();
-	}
+}
+
+
+void Buffer::resizeInsets(BufferView * bv)
+{
 	/// then remove all LyXText in text-insets
 	LyXParagraph * par = paragraph;
 	for(;par;par = par->next) {
-		par->deleteInsetsLyXText(users);
+	    par->resizeInsetsLyXText(bv);
 	}
 }
-
 
 void Buffer::ChangeLanguage(Language const * from, Language const * to)
 {

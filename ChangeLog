@@ -1,5 +1,16 @@
 2000-07-14  Juergen Vigna  <jug@sad.it>
 
+	* src/insets/insettext.C (clear): fixed for multiple paragraps/layouts.
+
+	* src/frontends/xforms/forms/form_tabular.fd: updated a bit.
+
+	* src/insets/insettabular.C (resizeLyXText): need this to be able to
+	do a redraw when the window is resized!
+	(LocalDispatch): small fix so LFUN_TAB works only with locked_inset.
+
+	* src/insets/insettext.C (resizeLyXText): added function to correctly
+	being able to resize the LyXWindow.
+
 	* src/table.C (Read): fixed read on DOS-lyx-file (lf-lr)
 
 2000-07-13  Angus Leeming  <a.leeming@ic.ac.uk>

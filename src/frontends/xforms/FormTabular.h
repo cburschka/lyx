@@ -18,7 +18,6 @@
 #define FORMTABULAR_H
 
 #include "DialogBase.h"
-#include "form_tabular.h"
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Connection;
 #endif
@@ -26,6 +25,12 @@ using SigC::Connection;
 class LyXView;
 class Dialogs;
 class InsetTabular;
+struct FD_form_tabular;
+struct FD_form_tabular_options;
+struct FD_form_column_options;
+struct FD_form_cell_options;
+struct FD_form_longtable_options;
+struct FD_form_create_tabular;
 
 /** This class provides an XForms implementation of the FormTabular Dialog.
     The tabular dialog allows users to set/save their tabular.

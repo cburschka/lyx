@@ -321,7 +321,7 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
     }
     if (!widthCollapsed) {
 	widthCollapsed = width_collapsed(bv->painter(), font);
-	inset->deleteLyXText(bv);
+	inset->resizeLyXText(bv);
 	need_update = FULL;
 	if (owner()) {
 		owner()->update(bv, font);
@@ -330,7 +330,7 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
     }
     if (oldWidth != width(bv, font)) {
 	oldWidth = width(bv, font);
-	inset->deleteLyXText(bv);
+	inset->resizeLyXText(bv);
 	need_update = FULL;
 	if (owner()) {
 		owner()->update(bv, font);
@@ -435,7 +435,15 @@ LyXText * InsetCollapsable::getLyXText(BufferView * bv) const
 }
 
 
-void InsetCollapsable::deleteLyXText(BufferView * bv) const
+void InsetCollapsable::deleteLyXText(BufferView * bv, bool recursive) const
 {
-    inset->deleteLyXText(bv);
+    inset->deleteLyXText(bv, recursive);
+}
+
+
+void InsetCollapsable::resizeLyXText(BufferView * bv) const
+{
+    inset->resizeLyXText(bv);
+    LyXFont font(LyXFont::ALL_SANE);
+    oldWidth = width(bv, font);
 }

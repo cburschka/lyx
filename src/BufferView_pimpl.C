@@ -270,10 +270,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		}
 	}
 	bv_->text->first = screen_->TopCursorVisible(bv_->text);
-	/* this will scroll the
-	 * screen such that the
-	 * cursor becomes
-	 * visible */ 
+	buffer_->resizeInsets(bv_);
+	// this will scroll the screen such that the cursor becomes visible
 	updateScrollbar();
 	redraw();
 	owner_->getMiniBuffer()->Init();

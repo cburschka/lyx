@@ -118,6 +118,8 @@ public:
     ///
     bool InsertInset(BufferView *, Inset *);
     ///
+    bool IsTextInset() const { return true; }
+    ///
     bool display() const { return tabular->IsLongTabular(); }
     ///
     void InsetButtonRelease(BufferView *, int, int, int);
@@ -155,6 +157,8 @@ public:
     int getMaxWidth(Painter & pain, UpdatableInset const *) const;
     ///
     Buffer * BufferOwner() const { return buffer; }
+    ///
+    void resizeLyXText(BufferView *) const;
 
     ///
     /// Public structures and variables

@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_tabular
 Width: 510
-Height: 340
+Height: 285
 Number of Objects: 6
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 510 340
+box: 0 0 510 285
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 10 10 485 240
+box: 0 0 505 245
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 395 300 100 30
+box: 415 250 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,14 +70,14 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 15 300 60 30
+box: 64 250 60 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Column
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -88,14 +88,14 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 85 300 60 30
+box: 5 250 60 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Row
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -106,7 +106,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 250 485 30
+box: 125 250 290 30
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -123,14 +123,14 @@ argument:
 
 =============== FORM ===============
 Name: form_tabular_options
-Width: 485
-Height: 220
+Width: 505
+Height: 227
 Number of Objects: 11
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 485 220
+box: 0 0 505 227
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -327,14 +327,14 @@ argument:
 
 =============== FORM ===============
 Name: form_column_options
-Width: 485
-Height: 220
+Width: 505
+Height: 227
 Number of Objects: 21
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 485 220
+box: 0 0 505 227
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -711,14 +711,14 @@ argument:
 
 =============== FORM ===============
 Name: form_cell_options
-Width: 485
-Height: 220
+Width: 505
+Height: 227
 Number of Objects: 26
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 485 220
+box: 0 0 505 227
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1185,14 +1185,14 @@ argument: 0
 
 =============== FORM ===============
 Name: form_longtable_options
-Width: 485
-Height: 220
+Width: 505
+Height: 227
 Number of Objects: 12
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 485 220
+box: 0 0 505 227
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

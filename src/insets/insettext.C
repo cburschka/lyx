@@ -116,6 +116,19 @@ InsetText::~InsetText()
 }
 
 
+void InsetText::clear()
+{
+    LyXParagraph * p = par->next;
+    delete par;
+    while(p) {
+	par = p;
+	p = p->next;
+	delete par;
+    }
+    par = new LyXParagraph();
+}
+
+
 Inset * InsetText::Clone() const
 {
     InsetText * t = new InsetText(*this);
@@ -323,15 +336,18 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
     if (reinit) {  // && (need_update != CURSOR)) {
 	need_update = INIT;
-	deleteLyXText(bv);
+	resizeLyXText(bv);
 	if (owner())
 	    owner()->update(bv, font, true);
 	return;
     }
-    if (the_locking_inset)
+    if (the_locking_inset) {
+	inset_x = cx(bv) - top_x + drawTextXOffset;
+	inset_y = cy(bv) + drawTextYOffset;
 	the_locking_inset->update(bv, font, reinit);
+    }
     if (need_update == INIT) {
-	deleteLyXText(bv);
+	resizeLyXText(bv);
 	need_update = FULL;
 //	if (!owner() && bv->text)
 //	    bv->text->UpdateInset(bv, this);
@@ -350,7 +366,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
     if (oldw != insetWidth) {
 //	    printf("TW(%p): %d-%d-%d-%d\n",this,insetWidth, oldw,
 //		   textWidth(bv->painter()),static_cast<int>(TEXT(bv)->width));
-	deleteLyXText(bv);
+	resizeLyXText(bv);
 	need_update = FULL;
 #if 0
 	if (owner()) {
@@ -781,6 +797,16 @@ InsetText::LocalDispatch(BufferView * bv,
 	UpdateLocal(bv, CURSOR_PAR, false);
 	break;
     case LFUN_PASTE:
+	if (!autoBreakRows) {
+	    CutAndPaste cap;
+
+	    if (cap.nrOfParagraphs() > 1) {
+		WriteAlert(_("Impossible operation"),
+			   _("Cannot include more than one paragraph!"),
+			   _("Sorry."));
+		break;
+	    }
+	}
 	bv->text->SetUndo(bv->buffer(), Undo::INSERT, 
 	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
 	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
@@ -960,7 +986,7 @@ void InsetText::ToggleInsetCursor(BufferView * bv)
     if (cursor_visible)
         bv->hideLockedInsetCursor();
     else
-        bv->showLockedInsetCursor(cx(bv), cy(bv),
+        bv->showLockedInsetCursor(cx(bv)-1, cy(bv),
 				  asc, desc);
     cursor_visible = !cursor_visible;
 }
@@ -1252,12 +1278,74 @@ LyXText * InsetText::getLyXText(BufferView * bv) const
 }
 
 
-void InsetText::deleteLyXText(BufferView * bv) const
+void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 {
     cache.erase(bv);
-    /// then remove all LyXText in text-insets
-    LyXParagraph * p = par;
-    for(;p;p = p->next) {
+    if (recursive) {
+	/// then remove all LyXText in text-insets
+	LyXParagraph * p = par;
+	for(;p;p = p->next) {
 	    p->deleteInsetsLyXText(bv);
+	}
     }
+}
+
+void InsetText::resizeLyXText(BufferView * bv) const
+{
+    if (!par->next && !par->size()) // not neccessary!
+	return;
+
+    LyXParagraph * lpar = 0;
+    LyXParagraph * selstartpar = 0;
+    LyXParagraph * selendpar = 0;
+    int pos = 0;
+    int selstartpos = 0;
+    int selendpos = 0;
+    int selection = 0;
+    int mark_set = 0;
+
+//    ProhibitInput(bv);
+
+    lpar = TEXT(bv)->cursor.par();
+    pos = TEXT(bv)->cursor.pos();
+    selstartpar = TEXT(bv)->sel_start_cursor.par();
+    selstartpos = TEXT(bv)->sel_start_cursor.pos();
+    selendpar = TEXT(bv)->sel_end_cursor.par();
+    selendpos = TEXT(bv)->sel_end_cursor.pos();
+    selection = TEXT(bv)->selection;
+    mark_set = TEXT(bv)->mark_set;
+    deleteLyXText(bv, (the_locking_inset == 0));
+
+    if (lpar) {
+	TEXT(bv)->selection = true;
+	/* at this point just to avoid the Delete-Empty-Paragraph
+	 * Mechanism when setting the cursor */
+	TEXT(bv)->mark_set = mark_set;
+	if (selection) {
+	    TEXT(bv)->SetCursor(bv, selstartpar, selstartpos);
+	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	    TEXT(bv)->SetCursor(bv, selendpar, selendpos);
+	    TEXT(bv)->SetSelection();
+	    TEXT(bv)->SetCursor(bv, lpar, pos);
+	} else {
+	    TEXT(bv)->SetCursor(bv, lpar, pos);
+	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	    TEXT(bv)->selection = false;
+	}
+    }
+    if (bv->screen())
+	    TEXT(bv)->first = bv->screen()->TopCursorVisible(TEXT(bv));
+    // this will scroll the screen such that the cursor becomes visible 
+    bv->updateScrollbar();
+//    AllowInput(bv);
+    if (the_locking_inset) {
+	/// then resize all LyXText in text-insets
+	inset_x = cx(bv) - top_x + drawTextXOffset;
+	inset_y = cy(bv) + drawTextYOffset;
+	LyXParagraph * p = par;
+	for(;p;p = p->next) {
+	    p->resizeInsetsLyXText(bv);
+	}
+    }
+    need_update = FULL;
 }

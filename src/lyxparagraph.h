@@ -200,6 +200,7 @@ public:
 	void SetInsetOwner(Inset * i);
 	///
 	void deleteInsetsLyXText(BufferView *);
+	void resizeInsetsLyXText(BufferView *);
 private:
 	///
 	TextContainer text;

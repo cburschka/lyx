@@ -66,7 +66,7 @@ public:
     ///
     InsetText & operator= (InsetText const & it);
     ///
-    void clear() const { par->clearContents(); }
+    void clear();
     ///
     void Read(Buffer const *, LyXLex &);
     ///
@@ -153,7 +153,8 @@ public:
 //    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
     ///
     LyXText * getLyXText(BufferView *) const;
-    void deleteLyXText(BufferView *) const;
+    void deleteLyXText(BufferView *, bool recursive=true) const;
+    void resizeLyXText(BufferView *) const;
 
     LyXParagraph * par;
     ///

@@ -162,7 +162,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     if (!cleared && ((need_update == INIT) || (need_update == FULL) ||
 		     (top_x != int(x)) || (top_baseline != baseline))) {
 	int h = ascent(bv, font) + descent(bv, font);
-	int tx = display()? 0:top_x;
+	int tx = display()||!owner()? 0:top_x;
 	int w =  tx? width(bv, font):pain.paperWidth();
 	int ty = baseline - ascent(bv, font);
 	
@@ -567,7 +567,6 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	resetPos(bv);
 	return result;
     }
-    result=DISPATCHED;
 
     if ((action < 0) && arg.empty())
         return FINISHED;
@@ -599,6 +598,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 
     bool hs = hasSelection();
     HideInsetCursor(bv);
+    result=DISPATCHED;
     switch (action) {
 	// Normal chars not handled here
     case -1:
@@ -623,7 +623,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	sel_pos_start = sel_pos_end = cursor.pos();
 	sel_cell_start = sel_cell_end = actcell;
 	if (hs)
-	    UpdateLocal(bv, CURSOR, false);
+	    UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_LEFTSEL:
 	if (tabular->IsFirstCellInRow(actcell) && cellstart(cursor.pos()))
@@ -644,7 +644,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	sel_pos_start = sel_pos_end = cursor.pos();
 	sel_cell_start = sel_cell_end = actcell;
 	if (hs)
-	    UpdateLocal(bv, CURSOR, false);
+	    UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_DOWNSEL:
     {
@@ -664,7 +664,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	sel_pos_start = sel_pos_end = cursor.pos();
 	sel_cell_start = sel_cell_end = actcell;
 	if (hs)
-	    UpdateLocal(bv, CURSOR, false);
+	    UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_UPSEL:
     {
@@ -684,7 +684,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	sel_pos_start = sel_pos_end = cursor.pos();
 	sel_cell_start = sel_cell_end = actcell;
 	if (hs)
-	    UpdateLocal(bv, CURSOR, false);
+	    UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_BACKSPACE:
 	break;
@@ -697,9 +697,9 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
     case LFUN_SHIFT_TAB:
     case LFUN_TAB:
 	if (the_locking_inset) {
-	    the_locking_inset->InsetUnlock(bv);
+	    UnlockInsetInInset(bv, the_locking_inset);
+	    the_locking_inset = 0;
 	}
-	the_locking_inset = 0;
 	if (action == LFUN_TAB)
 	    moveNextCell(bv);
 	else
@@ -707,7 +707,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	sel_pos_start = sel_pos_end = cursor.pos();
 	sel_cell_start = sel_cell_end = actcell;
 	if (hs)
-	    UpdateLocal(bv, CURSOR, false);
+	    UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_LAYOUT_TABLE:
     {
@@ -1348,4 +1348,10 @@ void InsetTabular::recomputeTextInsets(BufferView * bv, const LyXFont & font) co
 //	cell = tabular->GetCellNumber(0, j);
 //	cx += tabular->GetWidthOfColumn(cell);
     }
+}
+
+
+void InsetTabular::resizeLyXText(BufferView *) const
+{
+    need_update = FULL;
 }

@@ -4429,3 +4429,18 @@ void LyXParagraph::deleteInsetsLyXText(BufferView * bv)
 		}
 	}
 }
+
+
+void LyXParagraph::resizeInsetsLyXText(BufferView * bv)
+{
+	// then the insets
+	for (InsetList::const_iterator cit = insetlist.begin();
+	     cit != insetlist.end(); ++cit) {
+		if ((*cit).inset) {
+			if ((*cit).inset->IsTextInset()) {
+				static_cast<UpdatableInset *>
+					((*cit).inset)->resizeLyXText(bv);
+			}
+		}
+	}
+}

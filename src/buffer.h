@@ -89,6 +89,7 @@ public:
 
 	/// should be changed to work for a list.
 	void resize();
+	void resizeInsets(BufferView *);
 
 	/// Update window titles of all users
 	void updateTitles() const;
