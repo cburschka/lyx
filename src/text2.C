@@ -1667,37 +1667,6 @@ void LyXText::insertStringAsParagraphs(BufferView * bview, string const & str)
 }
 
 
-bool LyXText::gotoNextInset(BufferView * bview,
-			    vector<Inset::Code> const & codes,
-			    string const & contents) const
-{
-	LyXCursor res = cursor;
-	Inset * inset;
-	do {
-		if (res.pos() < res.par()->size() - 1) {
-			res.pos(res.pos() + 1);
-		} else  {
-			res.par(res.par()->next());
-			res.pos(0);
-		}
-
-	} while (res.par() &&
-		 !(res.par()->isInset(res.pos())
-		   && (inset = res.par()->getInset(res.pos())) != 0
-		   && find(codes.begin(), codes.end(), inset->lyxCode())
-		   != codes.end()
-		   && (contents.empty() ||
-		       static_cast<InsetCommand *>(res.par()->getInset(res.pos()))->getContents()
-		       == contents)));
-
-	if (res.par()) {
-		setCursor(bview, res.par(), res.pos(), false);
-		return true;
-	}
-	return false;
-}
-
-
 void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 			     pos_type pos)
 {

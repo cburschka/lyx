@@ -144,11 +144,7 @@ private:
 	void hfill();
 	///
 	void smartQuote();
-	///
-	void gotoInset(std::vector<Inset::Code> const & codes,
-		       bool same_content);
-	///
-	void gotoInset(Inset::Code codes, bool same_content);
+
 	///
 	BufferView * bv_;
 	///

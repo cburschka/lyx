@@ -885,7 +885,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 	LyXCursor cursor;
 	text->setCursorFromCoordinates(bv_, cursor, x, y_tmp);
 
-	Inset * inset(checkInset(*text, cursor, x, y_tmp));
+	Inset * inset = checkInset(*text, cursor, x, y_tmp);
 
 	if (inset) {
 		y = y_tmp;
@@ -935,7 +935,7 @@ void BufferView::Pimpl::workAreaResize()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "Expose delete all");
 			textcache.clear();
-			// FIXME: this is aalready done in resizeCurrentBuffer() ??
+			// FIXME: this is already done in resizeCurrentBuffer() ??
 			buffer_->resizeInsets(bv_);
 		} else if (heightChange) {
 			// fitCursor() ensures we don't jump back
@@ -1440,23 +1440,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		bv_->pasteEnvironment();
 		switchKeyMap();
 		break;
-
-	case LFUN_GOTOERROR:
-		gotoInset(Inset::ERROR_CODE, false);
-		break;
-
-	case LFUN_GOTONOTE:
-		gotoInset(Inset::NOTE_CODE, false);
-		break;
-
-	case LFUN_REFERENCE_GOTO:
-	{
-		vector<Inset::Code> tmp;
-		tmp.push_back(Inset::LABEL_CODE);
-		tmp.push_back(Inset::REF_CODE);
-		gotoInset(tmp, true);
-		break;
-	}
 
 	case LFUN_DEPTH_MIN:
 		changeDepth(bv_, bv_->getLyXText(), -1);
@@ -2091,51 +2074,4 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 			updateScrollbar();
 		}
 	}
-}
-
-
-void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
-				  bool same_content)
-{
-	if (!available()) return;
-
-	hideCursor();
-	beforeChange(bv_->text);
-	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-
-	LyXCursor const & cursor = bv_->text->cursor;
-
-	string contents;
-	if (same_content &&
-	    cursor.par()->isInset(cursor.pos())) {
-		Inset const * inset = cursor.par()->getInset(cursor.pos());
-		if (find(codes.begin(), codes.end(), inset->lyxCode())
-		    != codes.end())
-			contents =
-				static_cast<InsetCommand const *>(inset)->getContents();
-	}
-
-
-	if (!bv_->text->gotoNextInset(bv_, codes, contents)) {
-		if (bv_->text->cursor.pos()
-		    || bv_->text->cursor.par() != bv_->text->ownerParagraph()) {
-			LyXCursor tmp = bv_->text->cursor;
-			bv_->text->cursor.par(bv_->text->ownerParagraph());
-			bv_->text->cursor.pos(0);
-			if (!bv_->text->gotoNextInset(bv_, codes, contents)) {
-				bv_->text->cursor = tmp;
-				bv_->owner()->message(_("No more insets"));
-			}
-		} else {
-			bv_->owner()->message(_("No more insets"));
-		}
-	}
-	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-	bv_->text->selection.cursor = bv_->text->cursor;
-}
-
-
-void BufferView::Pimpl::gotoInset(Inset::Code code, bool same_content)
-{
-	gotoInset(vector<Inset::Code>(1, code), same_content);
 }

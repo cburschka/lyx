@@ -432,6 +432,11 @@ public:
 	bool gotoNextInset(BufferView *, std::vector<Inset::Code> const & codes,
 			   string const & contents = string()) const;
 	///
+	void gotoInset(BufferView * bv, std::vector<Inset::Code> const & codes,
+						bool same_content);
+	///
+	void gotoInset(BufferView * bv, Inset::Code code, bool same_content);
+	///
 
 	/* for the greater insets */
 
@@ -480,18 +485,21 @@ public:
 private:
 	///
 	mutable Row * firstrow;
-
 	///
 	mutable Row * lastrow;
 
 	///
 	void cursorLeftOneWord(LyXCursor &) const;
+	///
+	void cursorPrevious(BufferView * bv);
+	///
+	void cursorNext(BufferView * bv);
  
 	///
 	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
 					 lyx::pos_type last, bool boundary) const;
 	///
-	void changeRegionCase(BufferView * bview,
+	void changeRegionCase(BufferView * bv,
 				       LyXCursor const & from,
 				       LyXCursor const & to,
 				       LyXText::TextCase action);
@@ -602,7 +610,7 @@ private:
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
-	void fixCursorAfterDelete(BufferView * bview,
+	void fixCursorAfterDelete(BufferView * bv,
 				  LyXCursor & cur,
 				  LyXCursor const & where) const;
 
