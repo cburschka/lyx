@@ -92,6 +92,14 @@ bool operator==(Aux_Info const & a, Aux_Info const & o)
 
 
 ///
+inline
+bool operator!=(Aux_Info const & a, Aux_Info const & o)
+{
+	return !(a == o);
+}
+
+
+///
 class LaTeX : public noncopyable {
 public:
 	/** Return values from scanLogFile() and run() (to come)

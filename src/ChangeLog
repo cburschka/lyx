@@ -1,3 +1,7 @@
+2001-02-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* LaTeX.h (operator!=): add operator != for Aux_Info 
+
 2001-02-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: remove LaTeXLog.C, log_form.[Ch]
