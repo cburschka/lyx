@@ -133,7 +133,7 @@ def main(argv):
     bg_color = make_texcolor(argv[5])
 
     # External programs used by the script.
-    path = string.split(os.getenv("PATH"), os.pathsep)
+    path = string.split(os.environ["PATH"], os.pathsep)
     latex = find_exe_or_terminate(["pplatex", "latex2e", "latex"], path)
 
     # This can go once dvipng becomes widespread.

@@ -1,3 +1,10 @@
+2004-10-08  José Matos  <jamatos@lyx.org>
+
+	* scripts/legacy_lyxpreview2ppm.py (legacy_conversion):
+	* scripts/lyxpreview2bitmap.py (main):
+	replace os.getenv(x) by os.environ[x] for compatibility with old
+	python versions.
+
 2004-10-01  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/convertDefault.sh: protect shell variables with quotes.

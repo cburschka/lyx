@@ -225,7 +225,7 @@ def legacy_conversion(argv):
     bg_color = argv[5]
 
     # External programs used by the script.
-    path = string.split(os.getenv("PATH"), os.pathsep)
+    path = string.split(os.environ["PATH"], os.pathsep)
     latex   = find_exe_or_terminate(["pplatex", "latex2e", "latex"], path)
     dvips   = find_exe_or_terminate(["dvips"], path)
     gs      = find_exe_or_terminate(["gswin32", "gs"], path)
