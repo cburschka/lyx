@@ -333,7 +333,6 @@ void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 	cursor().selection() = false;
 }
 
-
 void BufferView::putSelectionAt(DocIterator const & cur,
 				int length, bool backwards)
 {

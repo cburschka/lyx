@@ -237,8 +237,8 @@ void BufferView::Pimpl::newFile(string const & filename, string const & tname,
 
 bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 {
-	// get absolute path of file and add ".lyx" to the filename if
-	// necessary
+	// Get absolute path of file and add ".lyx"
+	// to the filename if necessary
 	string s = FileSearch(string(), filename, "lyx");
 
 	bool const found = !s.empty();
@@ -246,7 +246,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	if (!found)
 		s = filename;
 
-	// file already open?
+	// File already open?
 	if (bufferlist.exists(s)) {
 		string const file = MakeDisplayPath(s, 20);
 		string text = bformat(_("The document %1$s is already "
@@ -317,35 +317,38 @@ Painter & BufferView::Pimpl::painter() const
 
 void BufferView::Pimpl::setBuffer(Buffer * b)
 {
-	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
-			    << b << ')' << endl;
+	lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
+			    << "[ b = " << b << "]" << endl;
+
 	if (buffer_)
 		disconnectBuffer();
 
-	// if we are closing current buffer, switch to the first in
+	// If we are closing current buffer, switch to the first in
 	// buffer list.
 	if (!b) {
-		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
-		// we are closing the buffer, use the first buffer as current
+		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
+				    << " No Buffer!" << endl;
+		// We are closing the buffer, use the first buffer as current
 		buffer_ = bufferlist.first();
 		owner_->getDialogs().hideBufferDependent();
 	} else {
-		// set current buffer
+		// Set current buffer
 		buffer_ = b;
 	}
 
-	// reset old cursor
+	// Reset old cursor
 	cursor_ = LCursor(*bv_);
 	anchor_ref_ = 0;
 	offset_ref_ = 0;
 
 
-	// if we're quitting lyx, don't bother updating stuff
+	// If we're quitting lyx, don't bother updating stuff
 	if (quitting)
 		return;
 
 	if (buffer_) {
-		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
+		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
+				    << "Buffer addr: " << buffer_ << endl;
 		connectBuffer(*buffer_);
 
 		cursor_.push(buffer_->inset());
@@ -377,7 +380,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 
 void BufferView::Pimpl::resizeCurrentBuffer()
 {
-	lyxerr[Debug::DEBUG] << "resizeCurrentBuffer" << endl;
+	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
 	owner_->busy(true);
 	owner_->message(_("Formatting document..."));
 
@@ -391,7 +394,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	switchKeyMap();
 	owner_->busy(false);
 
-	// reset the "Formatting..." message
+	// Reset the "Formatting..." message
 	owner_->clearMessage();
 
 	updateScrollbar();
@@ -401,7 +404,8 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 void BufferView::Pimpl::updateScrollbar()
 {
 	if (!bv_->text()) {
-		lyxerr[Debug::DEBUG] << "no text in updateScrollbar" << endl;
+		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+				     << " no text in updateScrollbar" << endl;
 		workarea().setScrollbarParams(0, 0, 0);
 		return;
 	}
@@ -413,12 +417,13 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	lyxerr[Debug::GUI]
-		<< "Updating scrollbar: height: " << t.paragraphs().size()
+		<< BOOST_CURRENT_FUNCTION
+		<< " Updating scrollbar: height: " << t.paragraphs().size()
 		<< " curr par: " << bv_->cursor().bottom().pit()
 		<< " default height " << defaultRowHeight() << endl;
 
-	//it would be better to fix the scrollbar to understand
-	//values in [0..1] and divide everything by wh
+	// It would be better to fix the scrollbar to understand
+	// values in [0..1] and divide everything by wh
 	int const wh = workarea().workHeight() / 4;
 	int const h = t.getPar(anchor_ref_).height();
 	workarea().setScrollbarParams(t.paragraphs().size() * wh, anchor_ref_ * wh + int(offset_ref_ * wh / float(h)), int (wh * defaultRowHeight() / float(h)));
@@ -428,7 +433,8 @@ void BufferView::Pimpl::updateScrollbar()
 
 void BufferView::Pimpl::scrollDocView(int value)
 {
-	lyxerr[Debug::GUI] << "scrollDocView of " << value << endl;
+	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
+			   << "[ value = " << value << "]" << endl;
 
 	if (!buffer_)
 		return;
@@ -565,7 +571,7 @@ void BufferView::Pimpl::workAreaResize()
 	bool const widthChange = workarea().workWidth() != work_area_width;
 	bool const heightChange = workarea().workHeight() != work_area_height;
 
-	// update from work area
+	// Update from work area
 	work_area_width = workarea().workWidth();
 	work_area_height = workarea().workHeight();
 
@@ -577,7 +583,7 @@ void BufferView::Pimpl::workAreaResize()
 	if (widthChange || heightChange)
 		update();
 
-	// always make sure that the scrollbar is sane.
+	// Always make sure that the scrollbar is sane.
 	updateScrollbar();
 	owner_->updateLayoutChoice();
 }
@@ -600,19 +606,21 @@ bool BufferView::Pimpl::fitCursor()
 
 void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 {
-	lyxerr << "BufferView::Pimpl::update(fc=" << fitcursor << ", fu="
-	       << forceupdate << ")  buffer: " << buffer_ << endl;
+	lyxerr << BOOST_CURRENT_FUNCTION
+	       << "[fitcursor = " << fitcursor << ','
+	       << " forceupdate = " << forceupdate
+	       << "]  buffer: " << buffer_ << endl;
 
-	// check needed to survive LyX startup
+	// Check needed to survive LyX startup
 	if (buffer_) {
-		// update macro store
+		// Update macro store
 		buffer_->buildMacros();
-		// first drawing step
+		// First drawing step
 
 		CoordCache backup;
 		std::swap(theCoords, backup);
 		theCoords.startUpdating();
-		//
+
 		ViewMetricsInfo vi = metrics();
 
 		if (fitcursor && fitCursor()) {
@@ -620,7 +628,7 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 			vi = metrics();
 		}
 		if (forceupdate) {
-			// second drawing step
+			// Second drawing step
 			screen().redraw(*bv_, vi);
 		} else {
 			// Abort updating of the coord cache - just restore the old one
@@ -629,7 +637,7 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 	} else
 		screen().greyOut();
 
-	// and the scrollbar
+	// And the scrollbar
 	updateScrollbar();
 	bv_->owner()->view_state_changed();
 }
@@ -703,7 +711,8 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 			b = bufferlist.getBuffer(fname);
 		else {
 			b = bufferlist.newBuffer(fname);
-			::loadLyXFile(b, fname); // don't ask, just load it
+			// Don't ask, just load it
+			::loadLyXFile(b, fname);
 		}
 		if (b)
 			setBuffer(b);
@@ -800,8 +809,8 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 		}
 	}
 
-	// get absolute path of file and add ".lyx" to the filename if
-	// necessary
+	// Get absolute path of file and add ".lyx"
+	// to the filename if necessary
 	filename = FileSearch(string(), filename, "lyx");
 
 	string const disp_fn = MakeDisplayPath(filename);
@@ -833,7 +842,7 @@ void BufferView::Pimpl::trackChanges()
 			 bind(&Paragraph::trackChanges, _1, Change::UNCHANGED));
 		buf->params().tracking_changes = true;
 
-		// we cannot allow undos beyond the freeze point
+		// We cannot allow undos beyond the freeze point
 		buf->undostack().clear();
 	} else {
 		update();
@@ -841,7 +850,7 @@ void BufferView::Pimpl::trackChanges()
 #ifdef WITH_WARNINGS
 #warning changes FIXME
 #endif
-		bool found = lyx::find::findNextChange(bv_);
+		bool const found = lyx::find::findNextChange(bv_);
 		if (found) {
 			owner_->getDialogs().show("changes");
 			return;
@@ -860,13 +869,14 @@ void BufferView::Pimpl::trackChanges()
 
 bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 {
-	lyxerr << "BufferView::Pimpl::workAreaDispatch: request: "
-	  << cmd0 << std::endl;
-	// this is only called for mouse related events including
+	lyxerr << BOOST_CURRENT_FUNCTION
+	       << "[ cmd0 " << cmd0 << "]" << endl;
+
+	// This is only called for mouse related events including
 	// LFUN_FILE_OPEN generated by drag-and-drop.
 	FuncRequest cmd = cmd0;
 
-	// handle drag&drop
+	// Handle drag&drop
 	if (cmd.action == LFUN_FILE_OPEN) {
 		owner_->dispatch(cmd);
 		return true;
@@ -882,7 +892,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// Doesn't go through lyxfunc, so we need to update
 	// the layout choice etc. ourselves
 
-	// e.g. Qt mouse press when no buffer
+	// E.g. Qt mouse press when no buffer
 	if (!available())
 		return false;
 
@@ -894,8 +904,10 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// Build temporary cursor.
 	cmd.y = min(max(cmd.y,-1), bv_->workHeight());
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
-	lyxerr << " * hit inset at tip: " << inset << endl;
-	lyxerr << " * created temp cursor:" << cur << endl;
+	lyxerr << BOOST_CURRENT_FUNCTION
+	       << " * hit inset at tip: " << inset << endl;
+	lyxerr << BOOST_CURRENT_FUNCTION
+	       << " * created temp cursor:" << cur << endl;
 
 	// Put anchor at the same position.
 	cur.resetAnchor();
@@ -917,17 +929,17 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		update(cur.result().update(), cur.result().update());
 	}
 
-	// see workAreaKeyPress
+	// See workAreaKeyPress
 	cursor_timeout.restart();
 	screen().showCursor(*bv_);
 
-	// skip these when selecting
+	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
 		owner_->updateLayoutChoice();
 		owner_->updateToolbars();
 	}
 
-	// slight hack: this is only called currently when we
+	// Slight hack: this is only called currently when we
 	// clicked somewhere, so we force through the display
 	// of the new status here.
 	owner_->clearMessage();
@@ -1000,9 +1012,11 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 
 bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 {
-	//lyxerr << "BufferView::Pimpl::dispatch  cmd: " << cmd << std::endl;
+	//lyxerr << BOOST_CURRENT_FUNCTION
+	//       << [ cmd = " << cmd << "]" << endl;
+
 	// Make sure that the cached BufferView is correct.
-	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
+	lyxerr[Debug::ACTION] << BOOST_CURRENT_FUNCTION
 		<< " action[" << cmd.action << ']'
 		<< " arg[" << cmd.argument << ']'
 		<< " x[" << cmd.x << ']'
@@ -1189,7 +1203,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 ViewMetricsInfo BufferView::Pimpl::metrics()
 {
-	// remove old position cache
+	// Remove old position cache
 	theCoords.clear();
 	BufferView & bv = *bv_;
 	LyXText * const text = bv.text();
@@ -1201,15 +1215,19 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 	lyx::pit_type const pit = anchor_ref_;
 	int pit1 = pit;
 	int pit2 = pit;
-	size_t npit = text->paragraphs().size();
-	lyxerr << "npit: " << npit << " pit1: " << pit1
-		<< " pit2: " << pit2 << endl;
+	size_t const npit = text->paragraphs().size();
 
-	// rebreak anchor par
+	lyxerr << BOOST_CURRENT_FUNCTION
+	       << " npit: " << npit
+	       << " pit1: " << pit1
+	       << " pit2: " << pit2
+	       << endl;
+
+	// Rebreak anchor par
 	text->redoParagraph(pit);
 	int y0 = text->getPar(pit1).ascent() - offset_ref_;
 
-	// redo paragraphs above cursor if necessary
+	// Redo paragraphs above cursor if necessary
 	int y1 = y0;
 	while (y1 > 0 && pit1 > 0) {
 		y1 -= text->getPar(pit1).ascent();
@@ -1219,21 +1237,21 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 	}
 
 
-	// take care of ascent of first line
+	// Take care of ascent of first line
 	y1 -= text->getPar(pit1).ascent();
 
-	//normalize anchor for next time
+	// Normalize anchor for next time
 	anchor_ref_ = pit1;
 	offset_ref_ = -y1;
 
-	// grey at the beginning is ugly
+	// Grey at the beginning is ugly
 	if (pit1 == 0 && y1 > 0) {
 		y0 -= y1;
 		y1 = 0;
 		anchor_ref_ = 0;
 	}
 
-	// redo paragraphs below cursor if necessary
+	// Redo paragraphs below cursor if necessary
 	int y2 = y0;
 	while (y2 < bv.workHeight() && pit2 < int(npit) - 1) {
 		y2 += text->getPar(pit2).descent();
@@ -1242,10 +1260,10 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 		y2 += text->getPar(pit2).ascent();
 	}
 
-	// take care of descent of last line
+	// Take care of descent of last line
 	y2 += text->getPar(pit2).descent();
 
-	// the coordinates of all these paragraphs are correct, cache them
+	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
 		y += text->getPar(pit).ascent();
@@ -1253,6 +1271,10 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 		y += text->getPar(pit).descent();
 	}
 
-	lyxerr << "bv:metrics:  y1: " << y1 << " y2: " << y2 << endl;
+	lyxerr << BOOST_CURRENT_FUNCTION
+	       << " y1: " << y1
+	       << " y2: " << y2
+	       << endl;
+
 	return ViewMetricsInfo(pit1, pit2, y1, y2);
 }
