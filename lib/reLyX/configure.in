@@ -19,8 +19,6 @@ AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
 # if reLyX has already been generated in this directory, delete it first
 test -x reLyX && rm -f reLyX
-# Find an already installed reLyX
-AC_PREFIX_PROGRAM(reLyX)
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$ac_default_prefix
 test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
