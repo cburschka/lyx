@@ -1,3 +1,7 @@
+2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.C (parseSingleLyXformat2Token): stupid bug.
+
 2000-05-05  Juergen Vigna  <jug@sad.it>
 
 	* src/tabular.[Ch]: now using std:vector instead of arrays for all the
