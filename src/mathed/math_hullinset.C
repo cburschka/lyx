@@ -359,8 +359,10 @@ string const latex_string(MathHullInset const & inset)
 
 void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
-	string const snippet = latex_string(*this);
-	preview_->addPreview(snippet, ploader);
+	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
+		string const snippet = latex_string(*this);
+		preview_->addPreview(snippet, ploader);
+	}
 }
 
 

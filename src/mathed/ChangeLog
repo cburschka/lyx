@@ -1,3 +1,8 @@
+2004-04-20  Angus Leeming  <leeming@lyx.org>
+
+	* math_hullinset.C (addPreview): Add the preview only if
+	previewing of math insets is active.
+
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* math_hullinset.C: changes due to changes to LyXRC::preview.
