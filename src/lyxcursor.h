@@ -71,5 +71,7 @@ bool operator==(LyXCursor const & a, LyXCursor const & b);
 bool operator!=(LyXCursor const & a, LyXCursor const & b);
 ///
 bool operator<(LyXCursor const & a, LyXCursor const & b);
+///
+bool operator>(LyXCursor const & a, LyXCursor const & b);
 
 #endif // LYXCURSOR_H

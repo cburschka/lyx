@@ -9,6 +9,7 @@
  */
 
 #include <config.h>
+#include <algorithm>
 
 #include "textcursor.h"
 
@@ -17,7 +18,7 @@ LyXCursor const & TextCursor::selStart() const
 {
 	if (!selection.set())
 		return cursor;
-	return selection.cursor < cursor ? selection.cursor : cursor;
+	return std::min(selection.cursor, cursor);
 }
 
 
@@ -25,7 +26,7 @@ LyXCursor const & TextCursor::selEnd() const
 {
 	if (!selection.set())
 		return cursor;
-	return selection.cursor < cursor ? cursor : selection.cursor;
+	return std::max(selection.cursor, cursor);
 }
 
 

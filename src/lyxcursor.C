@@ -76,3 +76,10 @@ bool operator<(LyXCursor const & a, LyXCursor const & b)
 	return (a.par() < b.par() ||
 		(a.par() == b.par()  && a.pos() < b.pos()));
 }
+
+
+bool operator>(LyXCursor const & a, LyXCursor const & b)
+{
+	return (a.par() > b.par() ||
+		(a.par() == b.par()  && a.pos() > b.pos()));
+}
