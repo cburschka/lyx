@@ -1,6 +1,9 @@
 2001-12-18  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insetButtonPress): fixed stupid bug.
+	(various functions): pay attention that lt is cleared BEFORE calling
+	updateLocal() and try to use it in the right manner (don't use it
+	if it's not really neccessary!)
 
 2001-12-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

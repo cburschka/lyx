@@ -337,6 +337,8 @@ private:
 	void restoreLyXTextState(BufferView *, LyXText *) const;
 	///
 	void reinitLyXText() const;
+	///
+	void collapseParagraphs(BufferParams const & bparams) const;
 	
 	/* Private structures and variables */
 	///
