@@ -100,22 +100,24 @@ bool MathDelimInset::isMatrix() const
 }
 
 
-string MathDelimInset::octavize() const
+void MathDelimInset::octavize(OctaveStream & os) const
 {
 	if (left_ == "|" && right_ == "|")
-		return "det(" + cell(0).octavize() + ")";
-	return left_ + cell(0).octavize() + right_;
+		os << "det(" << cell(0) << ")";
+	else
+		os << left_.c_str() << cell(0) << right_.c_str();
 }
 
 
-string MathDelimInset::maplize() const
+void MathDelimInset::maplize(MapleStream & os) const
 {
 	if (left_ == "|" && right_ == "|") {
 		if (cell(0).isMatrix())	
-			return "linalg[det](" + cell(0).maplize() + ")";
+			os << "linalg[det](" << cell(0) << ")";
 		else
-			return "abs(" + cell(0).maplize() + ")";
+			os << "abs(" << cell(0) << ")";
 	}
-	return left_ + cell(0).maplize() + right_;
+	else
+		os << left_.c_str() << cell(0) << right_.c_str();
 }
 

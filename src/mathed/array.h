@@ -26,6 +26,9 @@ class MathScriptInset;
 class MathMacro;
 class MathWriteInfo;
 class MathMetricsInfo;
+class MathMLStream;
+class MapleStream;
+class OctaveStream;
 class LaTeXFeatures;
 
 #ifdef __GNUG__
@@ -122,11 +125,11 @@ public:
 	MathArray guessAsterisks() const;
 
 	/// interface to Octave
-	string octavize() const;
+	void octavize(OctaveStream &) const;
 	/// interface to Maple
-	string maplize() const;
+	void maplize(MapleStream &) const;
 	/// interface to MathML
-	string mathmlize() const;
+	void mathmlize(MathMLStream &) const;
 
 	///
 	bool isMatrix() const;
@@ -138,5 +141,6 @@ private:
 
 
 std::ostream & operator<<(std::ostream & os, MathArray const & ar);
+
 
 #endif

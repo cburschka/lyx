@@ -49,7 +49,7 @@ void MathExFuncInset::draw(Painter & pain, int x, int y) const
 }
 
 
-string MathExFuncInset::octavize() const
+void MathExFuncInset::octavize(OctaveStream & os) const
 {
-	return name_ + '(' + cell(0).octavize() + ')';
+	os << name_.c_str() << '(' << cell(0) << ')';
 }

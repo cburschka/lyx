@@ -82,11 +82,11 @@ public:
 	void ensure(bool up);
 
 	///
-	virtual string octavize(MathInset const * nuc) const;
+	void octavize(MathInset const * nuc, OctaveStream & os) const;
 	///
-	virtual string maplize(MathInset const * nuc) const;
+	void maplize(MathInset const * nuc, MapleStream & os) const;
 	///
-	virtual string mathmlize(MathInset const * nuc) const;
+	void mathmlize(MathInset const * nuc, MathMLStream & os) const;
 
 public:
 	/// returns x offset for main part

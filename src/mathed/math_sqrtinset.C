@@ -57,7 +57,13 @@ void MathSqrtInset::writeNormal(std::ostream & os) const
 }
 
 
-string MathSqrtInset::maplize() const
+void MathSqrtInset::maplize(MapleStream & os) const
 {
-	return "sqrt(" + cell(0).maplize() + ')';
+	os << "sqrt(" << cell(0) << ')';
+}
+
+
+void MathSqrtInset::mathmlize(MathMLStream & os) const
+{
+	os << "<msqrt>" << cell(0) << "</msqrt>";
 }

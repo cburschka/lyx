@@ -31,11 +31,11 @@ public:
 	bool takesLimits() const;
 
 	///
-	string octavize() const;
+	void maplize(MapleStream &) const;
 	///
-	string maplize() const;
+	void mathmlize(MathMLStream &) const;
 	///
-	string mathmlize() const;
+	void octavize(OctaveStream &) const;
 private:
 	///
 	MathTextCodes code() const;

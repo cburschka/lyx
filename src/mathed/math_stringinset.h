@@ -33,11 +33,11 @@ public:
 	///
 	int width() const;
 	///
-	string & str();
+	void octavize(OctaveStream &) const;
 	///
-	string octavize() const;
+	void maplize(MapleStream &) const;
 	///
-	string maplize() const;
+	void mathmlize(MathMLStream &) const;
 
 private:
 	/// the string

@@ -114,23 +114,27 @@ bool MathSymbolInset::takesLimits() const
 }
 
 
-string MathSymbolInset::octavize() const
+void MathSymbolInset::maplize(MapleStream & os) const
 {
 	if (sym_->name == "cdot")
-		return "*";
-	return sym_->name;
+		os << '*';
+	else
+		os << sym_->name.c_str();
 }
 
 
-string MathSymbolInset::maplize() const
+void MathSymbolInset::mathmlize(MathMLStream & os) const
+{
+	os << sym_->name.c_str();
+}
+
+
+void MathSymbolInset::octavize(OctaveStream & os) const
 {
 	if (sym_->name == "cdot")
-		return "*";
-	return sym_->name;
+		os << '*';
+	else
+		os << sym_->name.c_str();
 }
 
 
-string MathSymbolInset::mathmlize() const
-{
-	return sym_->name;
-}

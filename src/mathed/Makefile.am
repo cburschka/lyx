@@ -72,6 +72,8 @@ libmathed_la_SOURCES = \
 	math_macrotemplate.h \
 	math_macrotable.C \
 	math_macrotable.h \
+	math_mathmlstream.C \
+	math_mathmlstream.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
 	math_metricsinfo.h \

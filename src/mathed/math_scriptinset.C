@@ -346,28 +346,47 @@ bool MathScriptInset::idxLeft(MathInset::idx_type &,
 }
 
 
-string MathScriptInset::maplize(MathInset const * nuc) const
+void MathScriptInset::maplize(MathInset const * nuc, MapleStream & os) const
 {
-	string res;
 	if (nuc)
-		res += nuc->maplize();
+		os << nuc;
 	if (hasDown() && down().data_.size())
-		res += "[" + down().data_.maplize() + "]";
+		os << '[' << down().data_ << ']';
 	if (hasUp() && up().data_.size())
-		res += "^(" + up().data_.maplize() + ")";
-	return res;
+		os << "^(" << up().data_ << ')';
 }
 
 
-string MathScriptInset::octavize(MathInset const * nuc) const
-{
-	return maplize(nuc);
-}
-
-
-string MathScriptInset::mathmlize(MathInset const * nuc) const
+void MathScriptInset::octavize(MathInset const * nuc, OctaveStream & os) const
 {
 	if (nuc)
-		return nuc->mathmlize();
-	return string();
+		os << nuc;
+	if (hasDown() && down().data_.size())
+		os << '[' << down().data_ << ']';
+	if (hasUp() && up().data_.size())
+		os << "^(" << up().data_ << ')';
+}
+
+
+void MathScriptInset::mathmlize(MathInset const * nuc, MathMLStream & os) const
+{
+	bool d = hasDown() && down().data_.size();
+	bool u = hasUp() && up().data_.size();
+
+	if (u)
+		os << "<sup>";
+
+	if (d)
+		os << "<sub>";
+
+	if (nuc)
+		os << nuc;
+	else
+		os << "<mrow/>";
+
+	if (d)
+		os << down().data_ << "</sub>";
+
+	if (u)
+		os << up().data_ << "</sup>";
 }

@@ -63,7 +63,13 @@ void MathFracInset::writeNormal(std::ostream & os) const
 }
 
 
-string MathFracInset::maplize() const
+void MathFracInset::maplize(MapleStream & os) const
 {
-	return '(' + cell(0).maplize() + '/' + cell(1).maplize() + ')';
+	os << '(' << cell(0) << '/' << cell(1) << ')';
+}
+
+
+void MathFracInset::mathmlize(MathMLStream & os) const
+{
+	os << "<mfrac>" << cell(0) << cell(1) << "</mfrac>";
 }

@@ -30,7 +30,7 @@
 
 #include "xarray.h"
 #include "math_defs.h"
-#include "LString.h"
+#include "math_mathmlstream.h"
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a
@@ -255,11 +255,11 @@ public:
 	virtual void handleFont(MathTextCodes) {}
 
 	///
-	virtual string octavize() const;
+	virtual void octavize(OctaveStream &) const;
 	///
-	virtual string maplize() const;
+	virtual void maplize(MapleStream &) const;
 	///
-	virtual string mathmlize() const;
+	virtual void mathmlize(MathMLStream &) const;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);

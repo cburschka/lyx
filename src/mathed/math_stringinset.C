@@ -70,25 +70,42 @@ void MathStringInset::writeNormal(std::ostream & os) const
 }
 
 
-string MathStringInset::octavize() const
+void MathStringInset::maplize(MapleStream & os) const
 {
-	return maplize();
+	if (code_ != LM_TC_VAR || str_.size() <= 1) {
+		os << str_.c_str();
+		return;
+	}	
+
+	// insert '*' between adjacent chars if type is LM_TC_VAR
+	os << str_[0];
+	for (string::size_type i = 1; i < str_.size(); ++i) 
+		os << '*' << str_[i];
 }
 
 
-string MathStringInset::maplize() const
+void MathStringInset::octavize(OctaveStream & os) const
 {
-	if (code_ != LM_TC_VAR)
-		return str_;
-	if (str_.size() <= 1)
-		return str_;
-	string res;
+	if (code_ != LM_TC_VAR || str_.size() <= 1) {
+		os << str_.c_str();
+		return;
+	}	
 
 	// insert '*' between adjacent chars if type is LM_TC_VAR
-	res += str_[0];
-	for (string::size_type i = 1; i < str_.size(); ++i) {
-		res += '*';
-		res += str_[i];
-	}
-	return res;
+	os << str_[0];
+	for (string::size_type i = 1; i < str_.size(); ++i) 
+		os << '*' << str_[i];
+}
+
+
+void MathStringInset::mathmlize(MathMLStream & os) const
+{
+	if (code_ == LM_TC_VAR)
+		os << "<mi>" << str_.c_str() << "</mi>";
+	else if (code_ == LM_TC_CONST)
+		os << "<mn>" << str_.c_str() << "</mn>";
+	else if (code_ == LM_TC_RM || code_ == LM_TC_TEXTRM)
+		os << "<mtext>" << str_.c_str() << "</mtext>";
+	else
+		os << str_.c_str();
 }

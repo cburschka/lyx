@@ -587,40 +587,35 @@ std::vector<MathInset::idx_type>
 }
 
 
-string MathGridInset::octavize() const
+void MathGridInset::octavize(OctaveStream & os) const
 {
-	string res;
-	res += '[';
+	os << '[';
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (row)
-			res += ';';
-		res += '[';
-		for (col_type col = 0; col < ncols(); ++col) {
-			res += cell(index(row, col)).octavize();
-			res += ' ';
-		}
-		res += ']';
+			os << ';';
+		os << '[';
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col)) << ' ';
+		os <<']';
 	}
-	res += ']';
-	return res;
+	os <<']';
 }
 
 
-string MathGridInset::maplize() const
+void MathGridInset::maplize(MapleStream & os) const
 {
-	string res = "array([";
+	os << "array([";
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (row)
-			res += ',';
-		res += '[';
+			os << ',';
+		os << '[';
 		for (col_type col = 0; col < ncols(); ++col) {
 			if (col)
-				res += ',';
-			res += cell(index(row, col)).maplize();
+				os << ',';
+			os << cell(index(row, col));
 		}
-		res += ']';
+		os << ']';
 	}
-	res += "])";
-	return res;
+	os << "])";
 }
 

@@ -44,7 +44,9 @@ public:
 	///
 	bool idxDown(int & idx, int & pos) const;
 	///
-	string octavize() const;
+	void mathmlize(MathMLStream &) const;
+	///
+	void octavize(OctaveStream &) const;
 };
 
 #endif

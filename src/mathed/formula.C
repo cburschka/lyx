@@ -67,16 +67,33 @@ namespace {
 
 	MathArray pipeThroughMaple(string const & extra, MathArray const & ar)
 	{
-		string header = 
-			"readlib(latex):\n"
-			"`latex/csname_font` := ``:\n"
-			"`latex/latex/*` := subs(`\\,`=`\\cdot `,eval(`latex/latex/*`)):\n";
+		string header = "readlib(latex):\n";
+
+		// remove the \\it for variable names
 		//"#`latex/csname_font` := `\\it `:"
+		header +=
+			"`latex/csname_font` := ``:\n";
+
+		// export matrices in (...) instead of [...]
+		header +=
+			"`latex/latex/matrix` := "
+				"subs(`[`=`(`, `]`=`)`,"
+					"eval(`latex/latex/matrix`)):\n";
+
+		// replace \\cdots with proper '*'
+		header +=
+			"`latex/latex/*` := "
+				"subs(`\\,`=`\\cdot `,"
+					"eval(`latex/latex/*`)):\n";
+
 		//"#`latex/latex/symbol` "
 		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
 
 		string trailer = "quit;";
-		string expr = ar.maplize();
+		ostringstream os;
+		MapleStream ms(os);
+		ms << ar;
+		string expr = os.str();
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way by using mint
@@ -119,7 +136,10 @@ namespace {
 	
 	MathArray pipeThroughOctave(string const &, MathArray const & ar)
 	{
-		string expr = ar.octavize();
+		ostringstream os;
+		OctaveStream vs(os);
+		vs << ar;
+		string expr = os.str();
 		string out;
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
@@ -278,13 +298,17 @@ int InsetFormula::ascii(Buffer const * buf, ostream & os, int) const
 
 int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return ascii(buf, os, 0);
+	return docbook(buf, os);
 }
 
 
 int InsetFormula::docbook(Buffer const * buf, ostream & os) const
 {
-	return ascii(buf, os, 0);
+	MathMLStream ms(os);
+	ms << "<equation><alt>";
+	int res = ascii(buf, ms.os_, 0);
+	ms << "</alt>\n<mml>" << par_.nucleus() << "<mml></equation>";
+	return res + 1;
 }
 
 

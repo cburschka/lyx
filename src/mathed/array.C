@@ -194,7 +194,7 @@ MathArray MathArray::glueChars() const
 }
 
 
-bool needAsterisk(MathAtom const & a, MathAtom const & b)
+bool needAsterisk(MathAtom const &, MathAtom const &)
 {
 	return false;
 }
@@ -245,51 +245,47 @@ void MathArray::writeNormal(ostream & os) const
 }
 
 
-string MathArray::octavize() const
+void MathArray::octavize(OctaveStream & os) const
 {
 	MathArray ar = glueChars();
-	string res;
 	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathInset const * p = it->nucleus();
 		if (MathScriptInset const * q = ar.asScript(it)) {
-			res += q->octavize(p);
+			q->octavize(p, os);
 			++it;
 		} else 
-			res += p->octavize();
+			p->octavize(os);
 	}
-	return res;
 }
 
 
-string MathArray::maplize() const
+void MathArray::maplize(MapleStream & os) const
 {
 	MathArray ar = glueChars();
-	string res;
 	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathInset const * p = it->nucleus();
 		if (MathScriptInset const * q = ar.asScript(it)) {
-			res += q->maplize(p);
+			q->maplize(p, os);
 			++it;
 		} else 
-			res += p->maplize();
+			p->maplize(os);
 	}
-	return res;
 }
 
 
-string MathArray::mathmlize() const
+void MathArray::mathmlize(MathMLStream & os) const
 {
 	MathArray ar = glueChars();
-	string res;
+	os << "<mrow>";
 	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathInset const * p = it->nucleus();
 		if (MathScriptInset const * q = ar.asScript(it)) {
-			res += q->mathmlize(p);
+			q->mathmlize(p, os);
 			++it;
 		} else 
-			res += p->mathmlize();
+			p->mathmlize(os);
 	}
-	return res;
+	os << "</mrow>";
 }
 
 

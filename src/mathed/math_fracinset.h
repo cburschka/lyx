@@ -26,7 +26,9 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	string maplize() const;
+	void maplize(MapleStream &) const;
+	///
+	void mathmlize(MathMLStream &) const;
 public:
 	///
 	const bool atop_;

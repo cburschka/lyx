@@ -94,7 +94,13 @@ bool MathRootInset::idxDown(int & idx, int & pos) const
 }
 
 
-string MathRootInset::octavize() const
+void MathRootInset::octavize(OctaveStream & os) const
 {
-	return "root(" + cell(1).octavize() + ',' + cell(0).octavize() + ')';
+	os << "root(" << cell(1) << ',' << cell(0) <<')';
+}
+
+
+void MathRootInset::mathmlize(MathMLStream & os) const
+{
+	os << "<mroot>" << cell(1) << cell(0) << "</mroot>";
 }

@@ -217,22 +217,19 @@ void MathInset::write(MathWriteInfo &) const
 }
 
 
-string MathInset::octavize() const
+void MathInset::octavize(OctaveStream & os) const
 {
-	ostringstream os;
-	writeNormal(os);
-	return os.str();
-	return string();
+	writeNormal(os.os_);
 }
 
 
-string MathInset::maplize() const
+void MathInset::maplize(MapleStream & os) const
 {
-	return octavize();
+	writeNormal(os.os_);
 }
 
 
-string MathInset::mathmlize() const
+void MathInset::mathmlize(MathMLStream & os) const
 {
-	return string();
+	writeNormal(os.os_);
 }

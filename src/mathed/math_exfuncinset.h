@@ -22,7 +22,7 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	string octavize() const;
+	void octavize(OctaveStream &) const;
 
 private:
 	///

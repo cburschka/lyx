@@ -30,9 +30,9 @@ public:
 	///
 	bool isMatrix() const;
 	///
-	string octavize() const;
+	void octavize(OctaveStream &) const;
 	///
-	string maplize() const;
+	void maplize(MapleStream &) const;
 private:
 	///
 	int dw() const;

@@ -26,6 +26,8 @@ public:
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
-	string maplize() const;
+	void maplize(MapleStream &) const;
+	///
+	void mathmlize(MathMLStream &) const;
 };
 #endif

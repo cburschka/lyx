@@ -150,9 +150,9 @@ public:
 	void setDefaults();
 
 	///
-	string octavize() const;
+	void octavize(OctaveStream &) const;
 	///
-	string maplize() const;
+	void maplize(MapleStream &) const;
 
 protected:
 	/// returns proper 'end of line' code for LaTeX
