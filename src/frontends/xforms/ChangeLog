@@ -1,5 +1,10 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* XFormsToolbar.C (show, hide): do nothing if the toolbar is
+	already visible/invisible, respectively.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	* XWorkArea.C (XWorkArea): set the color of the background, hidden
 	frame object to red as an incentive to address the drawing issues
 	of the XForms frontend.

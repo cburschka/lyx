@@ -280,7 +280,10 @@ void C_ToolbarCB(FL_OBJECT * ob, long ac)
 
 void XFormsToolbar::hide(bool update_metrics)
 {
- 	toolbar_->set(Box::Invisible);
+	if (!toolbar_->visible())
+		return;
+
+	toolbar_->set(Box::Invisible);
 	if (update_metrics)
 		owner_.updateMetrics();
 }
@@ -288,7 +291,10 @@ void XFormsToolbar::hide(bool update_metrics)
 
 void XFormsToolbar::show(bool update_metrics)
 {
- 	toolbar_->set(Box::Visible);
+	if (toolbar_->visible())
+		return;
+
+	toolbar_->set(Box::Visible);
 	toolbar_->show();
 	if (update_metrics)
 		owner_.updateMetrics();
