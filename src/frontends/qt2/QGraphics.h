@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -40,11 +41,12 @@ private:
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
-
-	/// browse for a file
-	void browse();
 	/// get bounding box from file
-	void get();
+	void getBB();
+
+	/// Store the LaTeX names for the rotation origins.
+	std::vector<string> origin_ltx;
+
 };
 
 #endif // QGRAPHICS_H

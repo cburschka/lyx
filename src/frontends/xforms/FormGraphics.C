@@ -234,7 +234,7 @@ void FormGraphics::build()
 	// Store the identifiers for later
 	origins_ = getSecond(origindata);
 
-	string const choice = "Default|" + getStringFromVector(getFirst(origindata), "|");
+	string const choice = getStringFromVector(getFirst(origindata), "|");
 	fl_addto_choice(extra_->choice_origin, choice.c_str());
 
 	// set up the tooltips for the extra section
@@ -397,7 +397,7 @@ void FormGraphics::apply()
 	if (origin_pos == 1) {
 		igp.rotateOrigin.erase();
 	} else {
-		igp.rotateOrigin = origins_[origin_pos - 2];
+		igp.rotateOrigin = origins_[origin_pos - 1];
 	}
 
 	igp.subcaption = fl_get_button(extra_->check_subcaption);

@@ -1,3 +1,16 @@
+2002-11-07  John Levon  <levon@movementarian.org>
+
+ 	* QGraphics.[Ch]:
+ 	* QGraphicsDialog.[Ch]:
+ 	* ui/QGraphicsDialog.ui: various fixes so it actually
+	works
+ 
+2002-11-01  Herbert Voss  <voss@perce.de>
+ 
+ 	* QGraphics.[Ch]:
+ 	* QGraphicsDialog.[Ch]:
+ 	* ui/QGraphicsDialog.ui: get scale/rotate working
+ 
 2002-11-04  Angus Leeming  <leeming@lyx.org>
 
 	* QGraphics.C (update_contents): controller.getUnits() ->

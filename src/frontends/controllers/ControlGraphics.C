@@ -145,6 +145,7 @@ size_t const bb_size = sizeof(bb_units) / sizeof(char *);
 // end of each line.
 char const * const rorigin_lyx_strs[] = {
 	// the LaTeX default is leftBaseline
+	"",
 	"leftTop",  "leftBottom", "leftBaseline", // lt lb lB
 	"center", "centerTop", "centerBottom", "centerBaseline", // c ct cb cB
 	"rightTop", "rightBottom", "rightBaseline" }; // rt rb rB
@@ -152,6 +153,7 @@ char const * const rorigin_lyx_strs[] = {
 // These are the strings, corresponding to the above, that the GUI should
 // use. Note that they can/should be translated.
 char const * const rorigin_gui_strs[] = {
+	N_("Default"),
 	N_("Top left"), N_("Bottom left"), N_("Left baseline"),
 	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Center baseline"),
 	N_("Top right"), N_("Bottom right"), N_("Right baseline") };

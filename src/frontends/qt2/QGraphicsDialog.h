@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -29,8 +30,9 @@ public:
 protected slots:
 	virtual void change_adaptor();
 	virtual void change_bb();
+	virtual void change_WUnit();
 	virtual void browse_clicked();
-	virtual void get_clicked();
+	virtual void getBB_clicked();
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -16,12 +17,15 @@
 
 #include "ControlGraphics.h"
 #include "debug.h"
+#include "gettext.h"
 #include "LString.h"
 
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
+#include <qfiledialog.h>
+#include <qcombobox.h>
 
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
@@ -64,6 +68,14 @@ void QGraphicsDialog::change_bb()
 }
 
 
+void QGraphicsDialog::change_WUnit()
+{
+	bool useHeight = (widthUnit->currentItem() > 0);
+	height->setEnabled(useHeight);
+	heightUnit->setEnabled(useHeight);
+}
+
+
 void QGraphicsDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -73,10 +85,18 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 
 void QGraphicsDialog::browse_clicked()
 {
-	form_->browse();
+	QString file = QFileDialog::getOpenFileName(
+		QString::null, _("Files (*)"),
+		this, 0, _("Select a graphic file"));
+	if (!file.isNull()) {
+		string const name = file.latin1();
+		filename->setText(name.c_str());
+		form_->changed();
+	}
 }
 
-void QGraphicsDialog::get_clicked()
+
+void QGraphicsDialog::getBB_clicked()
 {
-	form_->get();
+	form_->getBB();
 }
