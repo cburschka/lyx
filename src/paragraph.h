@@ -330,6 +330,8 @@ public:
 	///
 	RowList::iterator getRow(lyx::pos_type pos);
 	///
+	RowList::const_iterator getRow(lyx::pos_type pos) const;
+	///
 	size_t row(lyx::pos_type pos) const;
 
 	///

@@ -25,22 +25,20 @@ class FuncRequest;
 class InsetTabular;
 class LyXText;
 class Paragraph;
+class Row;
 
 
 // these should go
 class MathHullInset;
-class PainterInfo;
 class MathUnknownInset;
 class MathGridInset;
 
 
 // only needed for gcc 2.95, remove when support terminated
-
-
 template <typename A, typename B>
 bool ptr_cmp(A const * a, B const * b)
 {
-return a == b;
+	return a == b;
 }
 
 
@@ -218,14 +216,18 @@ public:
 
 	//
 	// text-specific part
-	///
+	/// see comment for boundary_ below
 	bool boundary() const { return current().boundary(); }
-	///
+	/// see comment for boundary_ below
 	bool & boundary() { return current().boundary(); }
-	///
+	/// the paragraph we're in
 	Paragraph & paragraph();
-	///
+	/// the paragraph we're in
 	Paragraph const & paragraph() const;
+	/// the row in the paragraph we're in
+	Row & textRow();
+	/// the row in the paragraph we're in
+	Row const & textRow() const;
 	///
 	LyXText * text() const;
 	///

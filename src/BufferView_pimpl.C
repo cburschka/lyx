@@ -45,7 +45,6 @@
 #include "undo.h"
 #include "vspace.h"
 
-#include "insets/insetfloatlist.h"
 #include "insets/insetref.h"
 
 #include "frontends/Alert.h"
@@ -346,7 +345,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 	// Don't forget to update the Layout
 	if (buffer_)
-		owner_->setLayout(bv_->text()->cursorPar()->layout()->name());
+		owner_->setLayout(bv_->text()->getPar(0)->layout()->name());
 
 	if (lyx::graphics::Previews::activated() && buffer_)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
@@ -684,7 +683,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text()->setCursor(par.pit(),
+	bv_->text()->setCursor(bv_->text()->parOffset(par.pit()),
 			     min(par->size(), saved_positions[i].par_pos));
 
 	if (i > 0)
@@ -745,15 +744,6 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 
 InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 {
-#if 0
-	CursorSlice cursor = bv_->getLyXText()->cursor;
-	Buffer::inset_iterator it =
-		find_if(Buffer::inset_iterator(
-			cursorPar(), cursor().pos()),
-			buffer_->inset_iterator_end(),
-			lyx::compare_memfun(&Inset::lyxCode, code));
-	return it != buffer_->inset_iterator_end() ? (*it) : 0;
-#else
 	// Ok, this is a little bit too brute force but it
 	// should work for now. Better infrastructure is coming. (Lgb)
 
@@ -788,7 +778,6 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 		}
 	}
 	return 0;
-#endif
 }
 
 
@@ -1062,32 +1051,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 			bv_->gotoLabel(label);
 	}
 	break;
-
-	case LFUN_FLOAT_LIST:
-		if (tclass.floats().typeExist(cmd.argument)) {
-			InsetBase * inset = new InsetFloatList(cmd.argument);
-		
-			// not quite sure if we want this...
-			bv_->text()->recUndo(bv_->text()->cursor().par());
-			freezeUndo();
-
-			cur.clearSelection();
-			bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
-
-			if (!bv_->text()->cursorPar()->empty()) {
-				bv_->text()->cursorLeft(true);
-				bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
-			}
-
-			bv_->text()->setLayout(tclass.defaultLayoutName());
-			bv_->text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
-			bv_->getLyXText()->insertInset(inset);
-			unFreezeUndo();
-		} else {
-			lyxerr << "Non-existent float type: "
-			       << cmd.argument << endl;
-		}
-		break;
 
 	case LFUN_PARAGRAPH_APPLY:
 		setParagraphParams(*bv_, cmd.argument);

@@ -69,7 +69,7 @@ public:
 			 LyXFont const & font, bool toggleall);
 
 	/// what you expect when pressing <enter> at cursor position
-	void breakParagraph(ParagraphList & paragraphs, char keep_layout = 0);
+	void breakParagraph(LCursor & cur, char keep_layout = 0);
 
 	/** set layout over selection and make a total rebreak of
 	  those paragraphs
@@ -169,8 +169,6 @@ public:
 	/// reject selected change
 	void rejectChange();
 
-	///
-	void setCursor(ParagraphList::iterator pit, lyx::pos_type pos);
 	/// returns true if par was empty and was removed
 	bool setCursor(lyx::paroffset_type par, lyx::pos_type pos,
 		       bool setfont = true, bool boundary = false);
@@ -194,37 +192,37 @@ public:
 	///
 	void edit(LCursor & cur, int x, int y);
 	///
-	void cursorUp(bool selecting = false);
+	void cursorUp(LCursor & cur, bool selecting = false);
 	///
-	void cursorDown(bool selecting = false);
+	void cursorDown(LCursor & cur, bool selecting = false);
 	///
-	bool cursorLeft(bool internal = true);
+	bool cursorLeft(LCursor & cur, bool internal = true);
 	///
-	bool cursorRight(bool internal = true);
+	bool cursorRight(LCursor & cur, bool internal = true);
 	///
-	void cursorLeftOneWord();
+	void cursorLeftOneWord(LCursor & cur);
 	///
-	void cursorRightOneWord();
+	void cursorRightOneWord(LCursor & cur);
 	///
-	void cursorUpParagraph();
+	void cursorUpParagraph(LCursor & cur);
 	///
-	void cursorDownParagraph();
+	void cursorDownParagraph(LCursor & cur);
 	///
-	void cursorHome();
+	void cursorHome(LCursor & cur);
 	///
-	void cursorEnd();
+	void cursorEnd(LCursor & cur);
 	///
-	void cursorPrevious();
+	void cursorPrevious(LCursor & cur);
 	///
-	void cursorNext();
+	void cursorNext(LCursor & cur);
 	///
-	void cursorTop();
+	void cursorTop(LCursor & cur);
 	///
-	void cursorBottom();
+	void cursorBottom(LCursor & cur);
 	///
-	void Delete();
+	void Delete(LCursor & cur);
 	///
-	void backspace();
+	void backspace(LCursor & cur);
 	///
 	bool selectWordWhenUnderCursor(lyx::word_location);
 	///
@@ -342,27 +340,23 @@ public:
 
 	///
 	double spacing(Paragraph const &) const;
-	///
-	void cursorLeftOneWord(CursorSlice &);
-	///
-	void cursorRightOneWord(CursorSlice &);
 
 	///
-	DispatchResult moveRight();
+	DispatchResult moveRight(LCursor & cur);
 	///
-	DispatchResult moveLeft();
+	DispatchResult moveLeft(LCursor & cur);
 	///
-	DispatchResult moveRightIntern(bool front,
+	DispatchResult moveRightIntern(LCursor & cur, bool front,
 		bool activate_inset, bool selecting);
 	///
-	DispatchResult moveLeftIntern(bool front,
+	DispatchResult moveLeftIntern(LCursor & cur, bool front,
 		bool activate_inset, bool selecting);
 	///
-	DispatchResult moveUp();
+	DispatchResult moveUp(LCursor & cur);
 	///
-	DispatchResult moveDown();
+	DispatchResult moveDown(LCursor & cur);
 	///
-	bool checkAndActivateInset(bool front);
+	bool checkAndActivateInset(LCursor & cur, bool front);
 
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
@@ -442,11 +436,11 @@ private:
 	///
 	void setCounter(Buffer const &, ParagraphList::iterator pit);
 	///
-	void deleteWordForward();
+	void deleteWordForward(LCursor & cur);
 	///
-	void deleteWordBackward();
+	void deleteWordBackward(LCursor & cur);
 	///
-	void deleteLineForward();
+	void deleteLineForward(LCursor & cur);
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true

@@ -264,7 +264,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	string const fname = MakeAbsPath(filen);
 
 	cursor().clearSelection();
-	text()->breakParagraph(buffer()->paragraphs());
+	text()->breakParagraph(cursor());
 
 	bool res = buffer()->readFile(fname, text()->cursorPar());
 	resize();
@@ -299,7 +299,9 @@ void BufferView::setCursorFromRow(int row)
 	if (tmpid == -1)
 		text()->setCursor(0, 0);
 	else
-		text()->setCursor(buffer()->getParFromID(tmpid).pit(), tmppos);
+		text()->setCursor(
+			text()->parOffset(buffer()->getParFromID(tmpid).pit()),
+			tmppos);
 }
 
 
@@ -334,7 +336,7 @@ void BufferView::replaceWord(string const & replacestring)
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		t->cursorLeft(this);
+		t->cursorLeft(cursor(), this);
 
 	// FIXME: should be done through LFUN
 	buffer()->markDirty();
@@ -417,7 +419,7 @@ void BufferView::setCursor(ParIterator const & par,
 		(*positions[i].it)->inset->edit(cur, true);
 	cur.resetAnchor();
 	LyXText * lt = par.text(*buffer());
-	lt->setCursor(par.pit(), pos);
+	lt->setCursor(lt->parOffset(par.pit()), pos);
 }
 
 
@@ -449,7 +451,7 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	if (par.inset())
 		top_y(par.outerPar()->y);
 	update();
-	text->setCursor(cur.pit(), cur.pos());
+	text->setCursor(text->parOffset(cur.pit()), cur.pos());
 	cursor().updatePos();
 
 	if (length) {

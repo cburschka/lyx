@@ -482,6 +482,18 @@ Paragraph const & LCursor::paragraph() const
 }
 
 
+Row & LCursor::textRow()
+{
+	return *paragraph().getRow(pos());
+}
+
+
+Row const & LCursor::textRow() const
+{
+	return *paragraph().getRow(pos());
+}
+
+
 LCursor::par_type LCursor::lastpar() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;

@@ -1,4 +1,19 @@
 
+2004-02-12  André Pönitz  <poenitz@gmx.net>
+
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* text3.C: add LCursor & parameter to most cursor movement functions
+
+	* cursor.[Ch]: add textRow() needed members
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* paragraph.[Ch]:
+	* BufferView.C:
+	* BufferView_pimpl.C: adjust
+
 2004-02-11  André Pönitz  <poenitz@gmx.net>
 
 	* lyxfunc.C:
