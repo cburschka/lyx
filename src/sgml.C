@@ -112,46 +112,65 @@ string escapeString(string const & raw)
 }
 
 
-int openTag(Buffer const & buf, ostream & os, Paragraph::depth_type depth,
-	    bool mixcont, string const & name, string const & param)
+void openTag(ostream & os, string const & name, string const & attribute)
 {
-	Counters & counters = buf.params().getLyXTextClass().counters();
-	LyXLayout_ptr const & defaultstyle = buf.params().getLyXTextClass().defaultLayout();
-
-	string attribute = param;
-	// code for paragraphs like the standard paragraph in AGU.
-	if ( defaultstyle->latexname() == name and !defaultstyle->latexparam().empty()) {
-		counters.step(name);
-		int i = counters.value(name);
-		attribute += "" + subst(defaultstyle->latexparam(), "#", tostr(i));
-	}
-
 	if (!name.empty() && name != "!-- --") {
-		if (!mixcont)
-			os << string(depth, ' ');
 		os << '<' << name;
 		if (!attribute.empty())
 			os << " " << attribute;
 		os << '>';
 	}
-
-	return !mixcont;
 }
 
 
-int closeTag(ostream & os, Paragraph::depth_type depth,
-	     bool mixcont, string const & name)
+void closeTag(ostream & os, string const & name)
 {
-	if (!name.empty() && name != "!-- --") {
-		if (!mixcont)
-			os << '\n' << string(depth, ' ');
+	if (!name.empty() && name != "!-- --")
 		os << "</" << name << '>';
+}
+
+
+void openTag(Buffer const & buf, ostream & os, Paragraph const & par)
+{
+	LyXLayout_ptr const & style = par.layout();
+	string const & name = style->latexname();
+	string param = style->latexparam();
+	Counters & counters = buf.params().getLyXTextClass().counters();
+
+	string id = par.getDocbookId();
+	id = id.empty()? "" : " id = \"" + id + "\"";
+
+	string attribute;
+	if(!id.empty()) {
+		if (param.find('#') != string::npos) {
+			string::size_type pos = param.find("id=<");
+			string::size_type end = param.find(">");
+			if( pos != string::npos and end != string::npos)
+				param.erase(pos, end-pos + 1);
+		}
+		attribute = id + ' ' + param;
+	} else {
+		if (param.find('#') != string::npos) {
+			if(!style->counter.empty())
+				counters.step(style->counter);
+			else
+				counters.step(style->latexname());
+			int i = counters.value(name);
+			attribute = subst(param, "#", tostr(i));
+			attribute = subst(attribute, "<", "\"");
+			attribute = subst(attribute, ">", "\"");
+		} else {
+			attribute = param;
+		}
 	}
+	openTag(os, name, attribute);
+}
 
-	if (!mixcont)
-		os << '\n';
 
-	return !mixcont;
+void closeTag(ostream & os, Paragraph const & par)
+{
+	LyXLayout_ptr const & style = par.layout();
+	closeTag(os, style->latexname());
 }
 
 } // namespace sgml

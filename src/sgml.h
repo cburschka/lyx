@@ -20,6 +20,7 @@
 #include <utility>
 
 class Buffer;
+class Paragraph;
 
 namespace sgml {
 
@@ -34,13 +35,16 @@ std::pair<bool, std::string> escapeChar(char c);
 std::string escapeString(std::string const & raw);
 
 /// Opens tag
-int openTag(Buffer const & buf, std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, std::string const & name,
-	    std::string const & param = std::string());
+void openTag(std::ostream & os, std::string const & name,
+	    std::string const & attribute = std::string());
+
+/// Open tag
+void openTag(Buffer const & buf, std::ostream & os, Paragraph const & par);
 
 /// Close tag
-int closeTag(std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, std::string const & name);
+void closeTag(std::ostream & os, std::string const & name);
 
+/// Close tag
+void closeTag(std::ostream & os, Paragraph const & par);
 }
 #endif // SGML_H

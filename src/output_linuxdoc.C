@@ -47,14 +47,14 @@ void linuxdocParagraphs(Buffer const & buf,
 			InsetBase const * inset = pit->getInset(0);
 			if (inset->lyxCode() == InsetOld::TOC_CODE) {
 				string const temp = "toc";
-				sgml::openTag(buf, os, depth, false, temp);
+				sgml::openTag(os, temp);
 				continue;
 			}
 		}
 
 		// environment tag closing
 		for (; depth > pit->params().depth(); --depth) {
-			sgml::closeTag(os, depth, false, environment_stack[depth]);
+			sgml::closeTag(os, environment_stack[depth]);
 			environment_stack[depth].erase();
 		}
 
@@ -63,14 +63,14 @@ void linuxdocParagraphs(Buffer const & buf,
 		case LATEX_PARAGRAPH:
 			if (depth == pit->params().depth()
 			   && !environment_stack[depth].empty()) {
-				sgml::closeTag(os, depth, false, environment_stack[depth]);
+				sgml::closeTag(os, environment_stack[depth]);
 				environment_stack[depth].erase();
 				if (depth)
 					--depth;
 				else
 					os << "</p>";
 			}
-			sgml::openTag(buf, os, depth, false, style->latexname());
+			sgml::openTag(os, style->latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -79,12 +79,12 @@ void linuxdocParagraphs(Buffer const & buf,
 				;
 
 			if (!environment_stack[depth].empty()) {
-				sgml::closeTag(os, depth, false, environment_stack[depth]);
+				sgml::closeTag(os, environment_stack[depth]);
 				os << "</p>";
 			}
 
 			environment_stack[depth].erase();
-			sgml::openTag(buf, os, depth, false, style->latexname());
+			sgml::openTag(os, style->latexname());
 			break;
 
 		case LATEX_ENVIRONMENT:
@@ -94,8 +94,7 @@ void linuxdocParagraphs(Buffer const & buf,
 
 			if (depth == pit->params().depth()
 			    && environment_stack[depth] != latexname) {
-				sgml::closeTag(os, depth, false,
-					     environment_stack[depth]);
+				sgml::closeTag(os, environment_stack[depth]);
 				environment_stack[depth].erase();
 			}
 			if (depth < pit->params().depth()) {
@@ -104,9 +103,9 @@ void linuxdocParagraphs(Buffer const & buf,
 			}
 			if (environment_stack[depth] != latexname) {
 				if (depth == 0) {
-					sgml::openTag(buf, os, depth, false, "p");
+					sgml::openTag(os, "p");
 				}
-				sgml::openTag(buf, os, depth, false, latexname);
+				sgml::openTag(os, latexname);
 
 				if (environment_stack.size() == depth + 1)
 					environment_stack.push_back("!-- --");
@@ -123,12 +122,12 @@ void linuxdocParagraphs(Buffer const & buf,
 			else
 				item_name = "item";
 
-			sgml::openTag(buf, os, depth + 1, false, item_name);
+			sgml::openTag(os, item_name);
 		}
 		break;
 
 		default:
-			sgml::openTag(buf, os, depth, false, style->latexname());
+			sgml::openTag(os, style->latexname());
 			break;
 		}
 
@@ -148,12 +147,12 @@ void linuxdocParagraphs(Buffer const & buf,
 				os << "]]>";
 			break;
 		default:
-			sgml::closeTag(os, depth, false, style->latexname());
+			sgml::closeTag(os, style->latexname());
 			break;
 		}
 	}
 
 	// Close open tags
 	for (int i = depth; i >= 0; --i)
-		sgml::closeTag(os, depth, false, environment_stack[i]);
+		sgml::closeTag(os, environment_stack[i]);
 }

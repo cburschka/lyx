@@ -1032,12 +1032,12 @@ void Buffer::makeLinuxDocFile(string const & fname,
 		ofs << ">\n\n";
 
 		if (params().options.empty())
-			sgml::openTag(*this, ofs, 0, false, top_element);
+			sgml::openTag(ofs, top_element);
 		else {
 			string top = top_element;
 			top += ' ';
 			top += params().options;
-			sgml::openTag(*this, ofs, 0, false, top);
+			sgml::openTag(ofs, top);
 		}
 	}
 
@@ -1049,7 +1049,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 
 	if (!body_only) {
 		ofs << "\n\n";
-		sgml::closeTag(ofs, 0, false, top_element);
+		sgml::closeTag(ofs, top_element);
 	}
 
 	ofs.close();
@@ -1126,10 +1126,10 @@ void Buffer::makeDocBookFile(string const & fname,
 
 	params().getLyXTextClass().counters().reset();
 
-	sgml::openTag(*this, ofs, 0, false, top);
+	sgml::openTag(ofs, top);
 	ofs << '\n';
 	docbookParagraphs(paragraphs(), *this, ofs, runparams);
-	sgml::closeTag(ofs, 0, false, top_element);
+	sgml::closeTag(ofs, top_element);
 
 	ofs.close();
 	if (ofs.fail())

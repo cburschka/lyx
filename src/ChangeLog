@@ -1,3 +1,12 @@
+2004-10-25  José Matos  <jamatos@lyx.org>
+
+	* buffer.C (makeLinuxDocFile, makeDocBookFile):
+	* output_docbook.C (makeParagraph, makeEnvironment, makeCommand):
+	* output_linuxdoc.C (linuxdocParagraphs): use new openTag and closeTag.
+
+	* sgml.[Ch]: new version for open and closeTag for paragraph and
+	for strings. Now they handle the ids of paragraphs.
+
 2004-10-26  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: add mover.[Ch].
