@@ -485,8 +485,11 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 	// changed by loading the contents of the vec...
 	vector<string> browser_keys = getVectorFromBrowser(browser);
 
-	if (browser_keys == keys)
+	if (browser_keys == keys) {
+		fl_deselect_browser(browser);
+		fl_set_browser_topline(browser, 1);
 		return;
+	}
 
 	// They will be changed. Proceed.
 	fl_clear_browser(browser);

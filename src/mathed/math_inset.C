@@ -243,7 +243,7 @@ string asString(MathArray const & ar)
 	std::ostringstream os;
 	WriteStream ws(os);
 	ws << ar;
-	return os.str();
+	return os.str().c_str();
 }
 
 

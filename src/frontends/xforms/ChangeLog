@@ -1,3 +1,8 @@
+2002-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* FormCitation.C (updateBrowser): deselect the highlighted item when
+	updating the browser.
+ 
 2002-10-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* several files: do not include .tmpl files in .C files.

@@ -1,3 +1,8 @@
+2002-10-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_inset.C (asString): add a .c_str() when compiling with
+	lyxstring 
+
 2002-10-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (localDispatch): support the WORD movement lfuns
