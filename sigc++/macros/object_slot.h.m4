@@ -136,6 +136,7 @@ struct [ObjectSlot]NUM($2)_
 OBJECT_SLOT(ARGS(P,0))
 OBJECT_SLOT(ARGS(P,1))
 OBJECT_SLOT(ARGS(P,2))
+OBJECT_SLOT(ARGS(P,3))
 
 #ifdef SIGC_CXX_NAMESPACES
 } // namespace

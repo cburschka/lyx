@@ -125,6 +125,7 @@ struct [AdaptorConvertSlot]NUM($2)[_]NUM($3): public AdaptorSlot_
 
 ADAPTOR_CONVERT_SLOT(ARGS(P,1),ARGS(Q,1))
 ADAPTOR_CONVERT_SLOT(ARGS(P,2),ARGS(Q,2))
+ADAPTOR_CONVERT_SLOT(ARGS(P,3),ARGS(Q,3))
 
 #ifdef SIGC_CXX_NAMESPACES
 } // namespace

@@ -216,6 +216,7 @@ void [Signal]NUM($1)<LIST(void,1,ARG_TYPE($1),[$1],Marsh,1)>::
 BASIC_SIGNAL(ARGS(P,0))
 BASIC_SIGNAL(ARGS(P,1))
 BASIC_SIGNAL(ARGS(P,2))
+BASIC_SIGNAL(ARGS(P,3))
 
 #ifdef SIGC_CXX_NAMESPACES
 } // namespace

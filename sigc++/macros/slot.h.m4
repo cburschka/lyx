@@ -361,6 +361,7 @@ SLOT(ARGS(P,1))
 SLOT(ARGS(P,2))
 SLOT(ARGS(P,3))
 SLOT(ARGS(P,4))
+SLOT(ARGS(P,5))
 
 #ifdef SIGC_CXX_NAMESPACES
 } // namespace

@@ -1,3 +1,11 @@
+2000-08-10  Allan Rae  <rae@lyx.org>
+
+	* development/tools/makeLyXsigc.sh: Updated to allow Signal3.  Note
+	that there are two functions that have to been taken out of line by
+	hand and aren't taken care of in the script.  (Just a reminder note)
+
+	* sigc++/macros/*.h.m4: Updated as above.
+
 2000-08-09  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (draw): small fix for clearing rectangle.

@@ -72,8 +72,8 @@ EOF
 )
 
 
-echo "Limiting to Signal2"
-# we only need up to Signal2
+echo "Limiting to Signal3"
+# we only need up to Signal3
 # NOTE: sigc++ needs 2 slots higher than the number of signals (see bind.h)
 # Anyone feeling keen?
 # How would you like to make this a parameter-controlled stripping of
@@ -83,11 +83,11 @@ for i in `ls $package/sigc++/macros/*.h.m4`; do
   case $i in
     $package/sigc++/macros/slot.h.m4)
         sed < $i > $i.tmp \
-		-e '/.*ARGS(P,[56789]).*/d'
+		-e '/.*ARGS(P,[6789]).*/d'
         ;;
     *)
         sed < $i > $i.tmp \
-		-e '/.*ARGS(P,[3456789]).*/d'
+		-e '/.*ARGS(P,[456789]).*/d'
         ;;
   esac
   rm -f $i
