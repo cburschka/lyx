@@ -118,10 +118,10 @@ void GLayoutBox::set(string const & layout)
 
 void GLayoutBox::update()
 {
+	int current_selection = combo_.get_active_row_number();
 	clear();
 
 	LyXTextClass const & tc = getTextClass(owner_);
-
 	LyXTextClass::const_iterator it = tc.begin();
 	LyXTextClass::const_iterator const end = tc.end();
 
@@ -132,6 +132,7 @@ void GLayoutBox::update()
 			Gtk::TreeModel::Row row = *iter;
 			row[cols_.name] = Glib::locale_to_utf8((*it)->name());
 		}
+	combo_.set_active(current_selection);
 	internal_ = false;
 
 	// now that we've loaded something into the combobox, forget
