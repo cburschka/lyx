@@ -442,17 +442,19 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		}
 
 		else if (t.cat() == catBegin) {
-			os << '{';
-			parse(p, os, FLAG_BRACE_LAST, mode);	
-			os << '}';
+			if (mode == MATH_MODE)
+				os << '{';
+			else
+				handle_ert(os, "{");
 		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			p.error("found '}' unexpectedly");
-			//lyx::Assert(0);
-			//add(cell, '}', LM_TC_TEX);
+			if (mode == MATH_MODE)
+				os << '}';
+			else
+				handle_ert(os, "}");
 		}
 
 		else if (t.cat() == catAlign) 
@@ -493,9 +495,8 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		// control sequences
 		//
 
-		else if (t.cs() == "lyxlock") {
-			// ignored;
-		}
+		else if (t.cs() == "lyxlock")
+			; // ignored
 
 		else if (t.cs() == "newcommand" || t.cs() == "providecommand") {
 			string const name = p.verbatimItem();
@@ -572,12 +573,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 						+ curr_env() + "}");
 				active_environments.pop();
 				if (is_math_env(name)) {
-					end_inset(os);	
 					os << "\\end{" << name << "}";
+					end_inset(os);	
 				} else if (mode == MATH_MODE) {
 					os << "\\end{" << name << "}";
 				} else
-					;
+					os << "\n\\layout Standard\n\n";
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -721,6 +722,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				h_preamble << t.asInput();
 			else {
 				// heuristic: read up to next non-nested space
+				/*
 				string s = t.asInput();
 				string z = p.verbatimItem();
 				while (p.good() && z != " " && z.size()) {
@@ -730,6 +732,8 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				}
 				cerr << "found ERT: " << s << endl;
 				handle_ert(os, s + ' ');
+				*/
+				handle_ert(os, t.asInput() + ' ');
 			}
 		}
 
