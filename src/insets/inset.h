@@ -246,6 +246,8 @@ public:
 	int id() const;
 	///
 	void id(int id_arg);
+	/// lock cell with given index
+	virtual void edit(BufferView *, int /*index*/) {}
 
 	/// used to toggle insets
 	// is the inset open?

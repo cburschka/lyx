@@ -271,6 +271,16 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 }
 
 
+void InsetCollapsable::edit(BufferView * bv, int index)
+{
+	lyxerr << "InsetCollapsable: edit" << endl;
+	if (!bv->lockInset(this))
+		lyxerr << "InsetCollapsable: can't lock index " << index << endl;
+	inset.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+	first_after_edit = true;
+}
+
+
 dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
 	//lyxerr << "InsetCollapsable::localDispatch: "

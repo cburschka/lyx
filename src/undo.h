@@ -49,55 +49,49 @@ public:
 		/// Atomic - each of these will have its own entry in the stack
 		ATOMIC
 	};
-	///
-	Undo(undo_kind kind, int text,
-	     int first, int last,
-	     int cursor, int cursor_pos,
-	     ParagraphList const & par_arg);
+	/// constructor
+	Undo(undo_kind kind, int text, int index,
+		int first_par, int end_par, int cursor_par, int cursor_pos);
 
-	/// Which kind of operation are we recording for?
+	/// which kind of operation are we recording for?
 	undo_kind kind;
 
 	/// hosting LyXText counted from buffer begin
 	int text;
 
-	/// Offset to the first paragraph in the main document paragraph list
-	int first_par_offset;
+	/// cell in a tabular or similar
+	int index;
 
-	/// Offset to the last paragraph from the end of the main par. list
-	int last_par_offset;
+	/// offset to the first paragraph in the paragraph list
+	int first_par;
 
-	/**
-	 * Offset from the start of the main document paragraph list,
-	 * except if inside an inset, in which case it's the offset
-	 * inside the hosting inset.
-	 */
-	int cursor_par_offset;
+	/// offset to the last paragraph from the end of parargraph list
+	int end_par;
 
-	/// The position of the cursor in the hosting paragraph
+	/// offset to the first paragraph in the paragraph list
+	int cursor_par;
+
+	/// the position of the cursor in the hosting paragraph
 	int cursor_pos;
 
-	/// The contents of the paragraphs saved
+	/// the contents of the paragraphs saved
 	ParagraphList pars;
 };
 
 
-/// This will undo the last action - returns false if no undo possible
+/// this will undo the last action - returns false if no undo possible
 bool textUndo(BufferView *);
 
-/// This will redo the last undo - returns false if no redo possible
+/// this will redo the last undo - returns false if no redo possible
 bool textRedo(BufferView *);
 
-/// Makes sure the next operation will be stored
+/// makes sure the next operation will be stored
 void finishUndo();
 
-/**
- * Whilst undo is frozen, all actions do not get added
- * to the undo stack
- */
+/// whilst undo is frozen, all actions do not get added to the undo stack
 void freezeUndo();
 
-/// Track undos again
+/// track undos again
 void unFreezeUndo();
 
 /**
@@ -110,14 +104,14 @@ void unFreezeUndo();
 void recordUndo(Undo::undo_kind kind,
 	LyXText const * text, lyx::paroffset_type first, lyx::paroffset_type last);
 
-/// Convienience: Prepare undo when change in a single paragraph.
+/// convienience: prepare undo when change in a single paragraph
 void recordUndo(Undo::undo_kind kind,
 	LyXText const * text, lyx::paroffset_type par);
 
-/// Convienience: Prepare undo for the paragraph that contains the cursor
+/// convienience: prepare undo for the paragraph that contains the cursor
 void recordUndo(BufferView *, Undo::undo_kind kind);
 
-/// Are we avoiding tracking undos currently ?
+/// are we avoiding tracking undos currently?
 extern bool undo_frozen;
 
 #endif // UNDO_FUNCS_H

@@ -169,6 +169,15 @@ InsetOld * ParIterator::inset() const
 }
 
 
+int ParIterator::index() const
+{
+	if (pimpl_->positions.size() <= 1)
+		return 0;
+
+	return *(pimpl_->positions[pimpl_->positions.size() - 2].index);
+}
+
+
 Paragraph & ParIterator::operator*() const
 {
 	return *pimpl_->positions.back().pit;

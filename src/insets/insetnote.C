@@ -57,8 +57,7 @@ InsetNote::InsetNote(InsetNote const & in)
 
 InsetNote::~InsetNote()
 {
-	InsetNoteMailer mailer("note", *this);
-	mailer.hideDialog();
+	InsetNoteMailer("note", *this).hideDialog();
 }
 
 

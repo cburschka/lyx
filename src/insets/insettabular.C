@@ -636,6 +636,30 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
+void InsetTabular::edit(BufferView * bv, int index)
+{
+	lyxerr << "InsetTabular::edit" << endl;
+	if (!bv->lockInset(this)) {
+		lyxerr << "InsetTabular::Cannot lock inset (2)" << endl;
+		return;
+	}
+
+	locked = true;
+	the_locking_inset = 0;
+	inset_x = 0;
+	inset_y = 0;
+	actcell = index;
+	clearSelection();
+	resetPos(bv);
+	bv->fitCursor();
+
+	UpdatableInset & inset = tabular.getCellInset(actcell);
+	inset.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+	if (the_locking_inset)
+		updateLocal(bv);
+}
+
+
 dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 {
 	// We need to save the value of the_locking_inset as the call to

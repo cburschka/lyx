@@ -19,17 +19,10 @@
 #include "buffer.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "funcrequest.h"
 #include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
 
-#include "insets/updatableinset.h"
-#include "insets/insettext.h"
-
-#include <iostream>
-
-using std::endl;
 using lyx::paroffset_type;
 
 
@@ -39,87 +32,118 @@ bool undo_finished;
 /// Whether actions are not added to the undo stacks.
 bool undo_frozen;
 
-Undo::Undo(undo_kind kind_arg, int text_arg,
-	   int first, int last,
-	   int cursor, int cursor_pos_arg,
-	   ParagraphList const & par)
+Undo::Undo(undo_kind kind_, int text_, int index_,
+	   int first_par_, int end_par_, int cursor_par_, int cursor_pos_)
 	:
-		kind(kind_arg),
-		text(text_arg),
-		first_par_offset(first),
-		last_par_offset(last),
-		cursor_par_offset(cursor),
-		cursor_pos(cursor_pos_arg),
-		pars(par)
+		kind(kind_),
+		text(text_),
+		index(index_),
+		first_par(first_par_),
+		end_par(end_par_),
+		cursor_par(cursor_par_),
+		cursor_pos(cursor_pos_)
 {}
-
-
-std::ostream & operator<<(std::ostream & os, Undo const & undo)
-{
-	return os << " text: " << undo.text
-		<< " first: " << undo.first_par_offset
-		<< " last: " << undo.last_par_offset
-		<< " cursor: " << undo.cursor_par_offset
-		<< "/" << undo.cursor_pos;
-}
 
 
 namespace {
 
+std::ostream & operator<<(std::ostream & os, Undo const & undo)
+{
+	return os << " text: " << undo.text
+		<< " index: " << undo.index
+		<< " first: " << undo.first_par
+		<< " from end: " << undo.end_par
+		<< " cursor: " << undo.cursor_par
+		<< "/" << undo.cursor_pos;
+}
+
+
+// translates LyXText pointer into offset count from document begin
+ParIterator text2pit(LyXText * text, int & tcount)
+{
+	tcount = 0;
+	Buffer * buf = text->bv()->buffer();
+	ParIterator pit = buf->par_iterator_begin();
+	ParIterator end = buf->par_iterator_end();
+
+	// it.text() returns 0 for outermost text.
+	if (text == text->bv()->text)
+		return pit;
+
+	for ( ; pit != end; ++pit, ++tcount)
+		if (pit.text() == text)
+			return pit;
+	lyxerr << "undo: should not happen" << std::endl;
+	return end;
+}
+
+
+// translates offset from buffer begin to ParIterator
+ParIterator num2pit(BufferView * bv, int num)
+{
+	Buffer * buf = bv->buffer();
+	ParIterator pit = buf->par_iterator_begin();
+	ParIterator end = buf->par_iterator_end();
+
+	for ( ; num && pit != end; ++pit, --num)
+		;
+	
+	if (pit != end)
+		return pit;
+
+	// don't crash early...
+	lyxerr << "undo: num2pit: num: " << num << std::endl;
+	BOOST_ASSERT(false);
+	return buf->par_iterator_begin();
+}
+
+
+// translates offset from buffer begin to LyXText
+LyXText * pit2text(BufferView * bv, ParIterator const & pit)
+{
+	LyXText * text = pit.text();
+	return text ? text : bv->text;
+}
+
+
 void recordUndo(Undo::undo_kind kind,
-	LyXText * text, paroffset_type firstpar, paroffset_type lastpar,
+	LyXText * text, paroffset_type first_par, paroffset_type last_par,
 	limited_stack<Undo> & stack)
 {
 	Buffer * buf = text->bv()->buffer();
 
-	ParagraphList & plist = text->ownerParagraphs();
-	ParagraphList::iterator first = plist.begin();
-	advance(first, firstpar);
-	ParagraphList::iterator last = plist.begin();
-	advance(last, lastpar);
-
-	// try to find the appropriate list by counting the
-	// texts from buffer begin
-	ParIterator null = buf->par_iterator_end();
-
-	int tcount = 0;
-	// it.text() returns 0 for outermost text.
-	if (text != text->bv()->text)
-		for (ParIterator it = buf->par_iterator_begin(); it != null; ++it, ++tcount)
-			if (it.text() == text)
-				break;
-		
-	// and calculate a stable reference to them
-	int const first_offset = firstpar;
-	int const last_offset = plist.size() - lastpar;
+	int const end_par = text->ownerParagraphs().size() - last_par;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// overlapping only with insert and delete inside one paragraph:
 	// nobody wants all removed character appear one by one when undoing.
-	if (! undo_finished && kind != Undo::ATOMIC) {
+	if (!undo_finished && kind != Undo::ATOMIC) {
 		// Check whether storing is needed.
-		if (! buf->undostack().empty()
+		if (!buf->undostack().empty()
 		    && buf->undostack().top().kind == kind
-		    && buf->undostack().top().first_par_offset == first_offset
-		    && buf->undostack().top().last_par_offset == last_offset) {
+		    && buf->undostack().top().first_par == first_par
+		    && buf->undostack().top().end_par == end_par) {
 			// No additonal undo recording needed -
 			// effectively, we combine undo recordings to one.
 			return;
 		}
 	}
 
-	// Record the cursor position in a stable way.
-	int const cursor_offset = text->cursor.par();
-
 	// make and push the Undo entry
-	stack.push(Undo(kind, tcount,
-		first_offset, last_offset,
-		cursor_offset, text->cursor.pos(),
-		ParagraphList()));
-	lyxerr << "undo record: " << stack.top() << endl;
+	int textnum;
+	ParIterator pit = text2pit(text, textnum);
+	stack.push(Undo(kind, textnum, pit.index(),
+		first_par, end_par, text->cursor.par(), text->cursor.pos()));
+	lyxerr << "undo record: " << stack.top() << std::endl;
 
 	// record the relevant paragraphs
 	ParagraphList & undo_pars = stack.top().pars;
+
+	ParagraphList & plist = text->ownerParagraphs();
+	ParagraphList::iterator first = plist.begin();
+	advance(first, first_par);
+	ParagraphList::iterator last = plist.begin();
+	advance(last, last_par);
 
 	for (ParagraphList::iterator it = first; it != last; ++it) {
 		undo_pars.push_back(*it);
@@ -133,29 +157,20 @@ void recordUndo(Undo::undo_kind kind,
 }
 
 
-// Returns false if no undo possible.
+// returns false if no undo possible
 bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 {
-	lyxerr << "undo, performing: " << undo << endl;
-	Buffer * buf = bv->buffer();
-	ParIterator plit = buf->par_iterator_begin();
-	ParIterator null = buf->par_iterator_end();
-
-	int tcount = undo.text;
-	for ( ; tcount && plit != null; ++plit, --tcount)
-		;
-
-	LyXText * text = plit.text();
-	if (!text)
-		text = bv->text;
+	lyxerr << "undo, performing: " << undo << std::endl;
+	ParIterator pit = num2pit(bv, undo.text);
+	LyXText * text = pit2text(bv, pit);
 	ParagraphList & plist = text->ownerParagraphs();
 
 	// remove new stuff between first and last
 	{
 		ParagraphList::iterator first = plist.begin();
-		advance(first, undo.first_par_offset);
+		advance(first, undo.first_par);
 		ParagraphList::iterator last = plist.begin();
-		advance(last, plist.size() - undo.last_par_offset);
+		advance(last, plist.size() - undo.end_par);
 		plist.erase(first, ++last);
 	}
 
@@ -164,21 +179,23 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 		plist.assign(undo.pars.begin(), undo.pars.end());
 	} else {
 		ParagraphList::iterator first = plist.begin();
-		advance(first, undo.first_par_offset);
+		advance(first, undo.first_par);
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
 	}
 
 	// set cursor
-	lyxerr <<   "undo, text: " << text << " inset: " << plit.inset() << endl;
-	InsetOld * inset = plit.inset();
+	lyxerr <<   "undo, text: " << undo.text
+		<< " inset: " << pit.inset()
+		<< " index: " << undo.index
+		<< std::endl;
+	InsetOld * inset = pit.inset();
 	if (inset) {
-		// Magic needed to cope with inset locking
-		FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
-		inset->localDispatch(cmd);
+		// magic needed to cope with inset locking
+		inset->edit(bv, undo.index);
 	}
 
 	// set cursor again to force the position to be the right one
-	text->setCursorIntern(undo.cursor_par_offset, undo.cursor_pos);
+	text->setCursorIntern(undo.cursor_par, undo.cursor_pos);
 
 	// clear any selection
 	text->clearSelection();
@@ -193,15 +210,12 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 }
 
 
-// Returns false if no undo possible.
+// returns false if no undo possible
 bool textUndoOrRedo(BufferView * bv,
 	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
 {
 	if (stack.empty()) {
-		/*
-		 * Finish the undo operation in the case there was no entry
-		 * on the stack to perform.
-		 */
+		// nothing to do
 		freezeUndo();
 		bv->unlockInset(bv->theLockingInset());
 		finishUndo();
@@ -216,17 +230,19 @@ bool textUndoOrRedo(BufferView * bv,
 	if (!undo_frozen) {
 		otherstack.push(undo);
 		otherstack.top().pars.clear();
-		Buffer * buf = bv->buffer();
-		ParagraphList & plist = buf->paragraphs();
-		if (undo.first_par_offset + undo.last_par_offset <= int(plist.size())) {
+		ParIterator pit = num2pit(bv, undo.text);
+		ParagraphList & plist = pit.plist();
+		if (undo.first_par + undo.end_par <= int(plist.size())) {
 			ParagraphList::iterator first = plist.begin();
-			advance(first, undo.first_par_offset);
+			advance(first, undo.first_par);
 			ParagraphList::iterator last = plist.begin();
-			advance(last, plist.size() - undo.last_par_offset + 1);
+			advance(last, plist.size() - undo.end_par + 1);
 			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
-		//otherstack.top().cursor_pos = text;
-		//lyxerr << " undo other: " << otherstack.top() << endl;
+		LyXText * text = pit2text(bv, pit);
+		otherstack.top().cursor_pos = text->cursor.pos();
+		otherstack.top().cursor_par = text->cursor.par();
+		lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
 
 	// Now we can unlock the inset for safety because the inset
@@ -245,21 +261,21 @@ bool textUndoOrRedo(BufferView * bv,
 
 void freezeUndo()
 {
-	// This is dangerous and for internal use only.
+	// this is dangerous and for internal use only
 	undo_frozen = true;
 }
 
 
 void unFreezeUndo()
 {
-	// This is dangerous and for internal use only.
+	// this is dangerous and for internal use only
 	undo_frozen = false;
 }
 
 
 void finishUndo()
 {
-	// Makes sure the next operation will be stored.
+	// makes sure the next operation will be stored
 	undo_finished = true;
 }
 
@@ -281,12 +297,11 @@ bool textRedo(BufferView * bv)
 void recordUndo(Undo::undo_kind kind,
 	LyXText const * text, paroffset_type first, paroffset_type last)
 {
-	if (!undo_frozen) {
-		Buffer * buf = text->bv()->buffer();
-		recordUndo(kind, const_cast<LyXText *>(text),
-			first, last, buf->undostack());
-		buf->redostack().clear();
-	}
+	if (undo_frozen)
+		return;
+	Buffer * buf = text->bv()->buffer();
+	recordUndo(kind, const_cast<LyXText *>(text), first, last, buf->undostack());
+	buf->redostack().clear();
 }
 
 

@@ -205,9 +205,11 @@ public:
 	Buffer const & buffer() const;
 
 	/// set the owning buffer
-	void buffer(Buffer * b);
+	void buffer(Buffer * buf);
 
 private:
+	/// lock cell with given index
+	void edit(BufferView * bv, int index);
 	///
 	void lfunMousePress(FuncRequest const &);
 	///

@@ -44,8 +44,10 @@ public:
 	/// returns 'innermost' LyXText if in an inset or '0' instead of
 	//bv->text
 	LyXText * text() const;
-	///
+	/// returns innermost inset
 	InsetOld * inset() const;
+	/// returns index of cell in innermost inset
+	int index() const;
 	///
 	size_t size() const;
 	///

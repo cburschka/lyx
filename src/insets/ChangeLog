@@ -1,3 +1,10 @@
+
+2003-10-15  André Pönitz  <poenitz@gmx.net>
+
+	* insetcollapsable.[Ch]
+	* insettabular.[Ch]
+	* inset.h: re-add some edit(bv, index) method called by undo
+
 2003-10-14  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.[Ch] (view, cache, view_):
