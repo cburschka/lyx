@@ -77,9 +77,6 @@ int IsFileWriteable (string const & path);
 ///
 bool IsLyXFilename(string const & filename);
 
-///
-bool IsSGMLFilename(string const & filename);
-
 /** Returns the path of a library data file.
   Search the file name.ext in the subdirectory dir of
   \begin{enumerate}

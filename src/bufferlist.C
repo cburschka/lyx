@@ -36,7 +36,6 @@
 #include "vc-backend.h"
 #include "TextCache.h"
 
-extern int RunLinuxDoc(BufferView *, int, string const &);
 extern BufferView * current_view; // called too many times in this file...
 
 using std::find;
@@ -426,26 +425,6 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	// make sure our path is absolute
 	string s = MakeAbsPath(filename);
 
-	// Is this done too early?
-	// Is it LinuxDoc?
-	if (IsSGMLFilename(s)) {
-		FileInfo fi(s);
-		if (fi.exist() && fi.readable()) {
-			if (!RunLinuxDoc(current_view, -1, s)) {
-				s = ChangeExtension (s, ".lyx", false);
-			} else { // sgml2lyx failed
-				WriteAlert(_("Error!"),
-					   _("Could not convert file"), s);
-				return 0;
-			}
-		} else {
-			// just change the extension and it will be
-			// handled like a regular lyx file that does
-			// not exist.
-			s = ChangeExtension(s, ".lyx", false);
-		}
-	}
-	
 	// file already open?
 	if (exists(s)) {
 		if (AskQuestion(_("Document is already open:"), 

@@ -1283,7 +1283,6 @@ void LayoutsCB(int sel, void *)
 
 /*
  * SGML Linuxdoc support:
- * (flag == -1) import SGML file
  * (flag == 0) make TeX output
  * (flag == 1) make dvi output
  */
@@ -1302,37 +1301,27 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 	}
 	Path p(path);
 	
-	if (flag != -1) {
-		if (!bv->available())
-			return 0;
-		bv->buffer()->makeLinuxDocFile(name, 0);
+	if (!bv->available())
+		return 0;
+	bv->buffer()->makeLinuxDocFile(name, 0);
 #ifdef WITH_WARNINGS
 #warning remove this once we have a proper geometry class
 #endif
-		BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(bv->buffer()->params.papersize);
-		switch (ps) {
-		case BufferParams::PAPER_A4PAPER:
-			add_flags = "-p a4";
-			break;
-		case BufferParams::PAPER_USLETTER:
-			add_flags = "-p letter";
-			break;
-		default: /* nothing to be done yet ;-) */     break; 
-		}
+	BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(bv->buffer()->params.papersize);
+	switch (ps) {
+	case BufferParams::PAPER_A4PAPER:
+		add_flags = "-p a4";
+		break;
+	case BufferParams::PAPER_USLETTER:
+		add_flags = "-p letter";
+		break;
+	default: /* nothing to be done yet ;-) */     break; 
 	}
 	
 	ProhibitInput();
 	
 	Systemcalls one;
 	switch (flag) {
-	case -1: /* Import file */
-		bv->owner()->getMiniBuffer()->Set(_("Importing LinuxDoc SGML file `"), 
-				MakeDisplayPath(filename), "'...");
-		s2 = "sgml2lyx " + lyxrc.sgml_extra_options + ' ' 
-			+ name;
-		if (one.startscript(Systemcalls::System, s2)) 
-			errorcode = 1;
-		break;
 	case 0: /* TeX output asked */
 	      bv->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to TeX file..."));
 		s2 = "sgml2latex " + add_flags + " -o tex "

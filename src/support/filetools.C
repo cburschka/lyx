@@ -64,12 +64,6 @@ bool IsLyXFilename(string const & filename)
 }
 
 
-bool IsSGMLFilename(string const & filename)
-{
-	return contains(filename, ".sgml");
-}
-
-
 // Substitutes spaces with underscores in filename (and path)
 string MakeLatexName(string const & file)
 {

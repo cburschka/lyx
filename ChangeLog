@@ -1,3 +1,14 @@
+2000-03-17 José Abílio Matos <jamatos@lyx.org>
+	* src/lyx_cb.C (RunLinuxDoc) Removed the flag==-1 option for linuxdoc 
+	import based on the filename.
+	
+	* src/bufferlist.C () Removed the call to RunLinuxDoc where a linuxdoc
+	file would be imported at start, if the filename where of a sgml file.
+
+	* src/support/filetools.C (IsSGMLfilename) Removed, no longer needed.
+	
+	* src/support/filetools.h (IsSGMLfilename) Removed, no longer needed.
+	
 2000-03-16 Dekel Tsur <dekel@math.tau.ac.il>
 	* src/lyxfont.h Replaced the member variable bits.direction by the
  	member variable lang. Made many changes in other files.
