@@ -169,8 +169,7 @@ LyX:
 Moreover, the following generic configure flags may be useful:
 
   o --prefix=DIRECTORY specifies the root directory to use for
-    installation. [defaults to where lyx has already been installed or
-    /usr/local]
+    installation. [defaults to /usr/local]
 
   o --datadir=DIRECTORY gives the directory where all extra LyX 
     files (lyxrc example, documentation, templates and layouts

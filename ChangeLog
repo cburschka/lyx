@@ -1,3 +1,10 @@
+2001-11-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: document change in --prefix behaviour.
+
+	* configure.in: do not use AC_PREFIX_PROGRAM, which is broken in
+	autoconf 2.5[012].
+
 2001-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in: check also for locale.h, so that things work out
