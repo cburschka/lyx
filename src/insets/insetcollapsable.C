@@ -151,7 +151,7 @@ void InsetCollapsable::draw(Painter & pain, LyXFont const & f,
     draw_collapsed(pain, f, baseline, x);
     x -= TEXT_TO_INSET_OFFSET;
 
-    int w =  InsetText::width(pain, f) + TEXT_TO_INSET_OFFSET;
+    int w =  InsetText::width(pain, f) + 2 * TEXT_TO_INSET_OFFSET;
     int h = ascent(pain,f) + descent(pain, f);
     
     pain.rectangle(int(x), baseline - ascent(pain, f), w, h, framecolor);

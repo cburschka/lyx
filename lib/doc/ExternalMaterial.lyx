@@ -278,13 +278,15 @@ your
 \emph default 
  responsibility to do this to keep the produced files current at all times:
  before printing, before exporting, before viewing, etc.
- To help you with this task, you can use the 
+ At some time in the future, it might be possible that LyX will help you
+ with this task.
+ It would be nice to use a 
 \family sans 
 Edit\SpecialChar \menuseparator
 Update all external inset
 \family default 
- command that will update all external insets that use a manual template.
- But be prepared that it might take some time for the updating to finish.
+ command to update all external insets that use a manual template.
+ But be prepared that it might take some time for the updating to implemented.
 \layout Standard
 
 At the bottom of the dialog, you find the normal 

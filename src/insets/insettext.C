@@ -179,7 +179,7 @@ int InsetText::ascent(Painter & pain, LyXFont const & font) const
     }
     long int y_temp = 0;
     Row * row = text->GetRowNearY(y_temp);
-    return row->ascent_of_text();
+    return row->ascent_of_text() + 2;
 }
 
 
@@ -192,7 +192,7 @@ int InsetText::descent(Painter & pain, LyXFont const & font) const
     }
     long int y = 0;
     Row * row = text->GetRowNearY(y);
-    return text->height - row->ascent_of_text();
+    return text->height - row->ascent_of_text() + 2;
 }
 
 
@@ -203,7 +203,8 @@ int InsetText::width(Painter & pain, LyXFont const &) const
 	computeTextRows(pain);
 	init_inset = false;
     }
-    return text->width;
+    return std::max(static_cast<long int>(getMaxTextWidth(pain, this)),
+		    text->width);
 //    return insetWidth;
 }
 
@@ -230,17 +231,31 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
 	inset_y = text->cursor.y() + drawTextYOffset;
     }
     if (drawLockedFrame && locked) {
-	pain.rectangle(int(x), baseline - ascent(pain, f), insetWidth,
+	pain.rectangle(int(x), baseline - ascent(pain, f), width(pain, f),
 		       ascent(pain,f) + descent(pain, f), frame_color);
     }
     x += TEXT_TO_INSET_OFFSET; // place for border
 #if 1
+    // Dump all rowinformation:
+    long y_dummy = 0;
+    Row * tmprow = text->GetRowNearY(y_dummy);
+    lyxerr << "Baseline Paragraph Pos Height Ascent Fill\n";
+    while (tmprow) {
+	lyxerr << tmprow->baseline() << '\t'
+	       << tmprow->par() << '\t'
+	       << tmprow->pos() << '\t'
+	       << tmprow->height() << '\t'
+	       << tmprow->ascent_of_text() << '\t'
+	       << tmprow->fill() << '\n';
+	tmprow = tmprow->next();
+    }
+    lyxerr.flush();
     long int y = 0;
     Row * row = text->GetRowNearY(y);
-    y += baseline - row->ascent_of_text();
+    y += baseline - row->ascent_of_text() + 1;
     text->width = 0;
     while (row != 0) {
-	text->GetVisibleRow(current_view, y, top_x, row, y);
+	text->GetVisibleRow(current_view, y, x, row, y);
 	y += row->height();
 	row = row->next();
     }

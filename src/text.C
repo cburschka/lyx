@@ -1611,7 +1611,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
        && (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par())) {     
 	  
 	  /* the paper margins */ 
-	  if (!par->next)
+	  if (!par->next && bv_owner)
 	    maxdesc += LYX_PAPER_MARGIN;
 	
 	  /* add the vertical spaces, that the user added */
@@ -3793,7 +3793,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	int ww = workWidth(bview);
 	if (ww < 0)
 		ww = bview->workWidth();
-	pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height());
+	if (bv_owner)
+		pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height());
 	
 	if (selection) {
 		/* selection code */
@@ -4623,6 +4624,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #ifndef NEW_TABULAR
 	}
 #endif
+	// Jürgen!!! FIX This! (NOW!!!) (please)
 	width = max(x - x_offset, float(width));
 }
 
