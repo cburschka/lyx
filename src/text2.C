@@ -1057,16 +1057,6 @@ void LyXText::SetSelection()
 	if (sel_start_cursor.par == sel_end_cursor.par && 
 	    sel_start_cursor.pos == sel_end_cursor.pos)
 		selection = false;
-
-	// Stuff what we got on the clipboard. Even if there is no selection.
-
-	// There is a problem with having the stuffing here in that the
-	// larger the selection the slower LyX will get. This can be
-	// solved by running the line below only when the selection has
-	// finished. The solution used currently just works, to make it
-	// faster we need to be more clever and probably also have more
-	// calls to stuffClipboard. (Lgb)
-	owner_->stuffClipboard(selectionAsString());
 }
 
 
@@ -2197,6 +2187,17 @@ void LyXText::CutSelection(bool doclear)
 
 void LyXText::CutSelection(bool doclear)
 {
+
+	// Stuff what we got on the clipboard. Even if there is no selection.
+	
+	// There is a problem with having the stuffing here in that the
+	// larger the selection the slower LyX will get. This can be
+	// solved by running the line below only when the selection has
+	// finished. The solution used currently just works, to make it
+	// faster we need to be more clever and probably also have more
+	// calls to stuffClipboard. (Lgb)
+	owner_->stuffClipboard(selectionAsString());
+
     // This doesn't make sense, if there is no selection
     if (!selection)
 	return;
@@ -2393,6 +2394,17 @@ void LyXText::CopySelection()
 
 void LyXText::CopySelection()
 {
+
+	// Stuff what we got on the clipboard. Even if there is no selection.
+
+	// There is a problem with having the stuffing here in that the
+	// larger the selection the slower LyX will get. This can be
+	// solved by running the line below only when the selection has
+	// finished. The solution used currently just works, to make it
+	// faster we need to be more clever and probably also have more
+	// calls to stuffClipboard. (Lgb)
+	owner_->stuffClipboard(selectionAsString());
+
 	// this doesnt make sense, if there is no selection
 	if (!selection)
 		return;

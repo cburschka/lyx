@@ -90,9 +90,11 @@ void InsetIndex::Edit(BufferView * bv, int, int, unsigned int)
 	if(bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());
 
-	if (!index_form)
+	if (!index_form) {
 		index_form = create_form_index_form();
-	
+		fl_set_form_atclose(index_form->index_form, CancelCloseBoxCB, 0);
+	}
+
 	index_form->index_form->u_vdata = this;
 	fl_set_input(index_form->key, getContents().c_str());
 	if (index_form->index_form->visible) {

@@ -1,3 +1,16 @@
+2000-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetindex.C (Edit): add a callback when popup is
+	closed by the WM.
+
+	* src/text2.C (CopySelection): 
+	(CutSelection): 
+	(SetSelection): stuff thing in the X clipboard at cut/copy time,
+	not at selection time.
+
+	* src/support/lyxsum.C (sum): '\0' teminate file read when using
+	strstream. 
+
 2000-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxrc.C (read): make sure the .kmap files exist when a keymap

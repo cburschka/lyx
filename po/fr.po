@@ -102,6 +102,9 @@
 # -------------------------------------------------------------------------
 # JPC 27 Juin 2000
 # reprise des 4 ou 5 "fuzzy" non traités précédemment
+# -------------------------------------------------------------------------
+# JPC 28 Juin 2000
+# correction de "destinataire ??" en "ancre" pour les popups html
 
 msgid ""
 msgstr ""
@@ -1111,11 +1114,11 @@ msgstr ""
 
 #: src/insets/form_url.C:23
 msgid "Name"
-msgstr "Destinataire"
+msgstr "Ancre"
 
 #: src/insets/form_url.C:24 src/lyx.C:175
 msgid "Name|#N"
-msgstr "Destinataire|#N"
+msgstr "Ancre|#N"
 
 #: src/insets/form_url.C:27
 msgid "HTML type"
@@ -1123,7 +1126,7 @@ msgstr "type HTML"
 
 #: src/insets/form_url.C:28
 msgid "HTML type|#H"
-msgstr "type HTML"
+msgstr "type HTML|#H"
 
 #: src/LyXAction.C:118 src/insets/form_url.C:31 src/insets/inseterror.C:179
 #: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:567
