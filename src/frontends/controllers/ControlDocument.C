@@ -72,14 +72,15 @@ void ControlDocument::apply()
 
 	// FIXME: do we need to use return value from classApply() here? (Lgb)
 	classApply();
-	lv_.view()->redoCurrentBuffer();
 
 	view().apply();
 	buffer()->params = *bp_;
+	
+	lv_.view()->redoCurrentBuffer();
 
 	buffer()->markDirty();
 
-	lv_.message(_("Document Settings Applied"));
+	lv_.message(_("Document settings applied"));
 }
 
 
@@ -107,14 +108,17 @@ void ControlDocument::setLanguage()
 
 bool ControlDocument::classApply()
 {
-	BufferParams & params = lv_.buffer()->params;
-	unsigned int const old_class = bp_->textclass;
+	BufferParams & params = buffer()->params;
+	unsigned int const old_class = params.textclass;
+	unsigned int const new_class = bp_->textclass;
+
 	// exit if nothing changes
-	if (params.textclass == old_class)
-		return true;
+	if (new_class == old_class) {
+		 return true;
+	}
 
 	// try to load new_class
-	if (!textclasslist[params.textclass].load()) {
+	if (!textclasslist[new_class].load()) {
 		// problem changing class
 		// -- warn user (to retain old style)
 		Alert::alert(_("Conversion Errors!"),
@@ -124,9 +128,11 @@ bool ControlDocument::classApply()
 	}
 
 	// successfully loaded
+	view().apply();
+	buffer()->params = *bp_;
 	lv_.message(_("Converting document to new document class..."));
 	int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
-		old_class, params.textclass,
+		old_class, new_class,
 		&*(lv_.buffer()->paragraphs.begin()),
 		lv_.buffer()->params);
 	if (ret) {
@@ -140,13 +146,17 @@ bool ControlDocument::classApply()
 		Alert::alert(_("Conversion Errors!"),s,
 			     _("into chosen document class"));
 	}
-	//lv_.view()->redoCurrentBuffer();
 	return true;
 }
 
 
 void ControlDocument::saveAsDefault()
 {
+	if (!Alert::askQuestion(_("Do you want to save the current settings"),
+				_("for the document layout as default?"),
+				_("(they will be valid for any new document)")))
+		return;
+		
 	lv_.buffer()->params.preamble = bp_->preamble;
 
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),

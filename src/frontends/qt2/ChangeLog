@@ -1,3 +1,13 @@
+2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QDocument.ui:
+	* QDocumentDialog.C:
+	* QDocument.[Ch]: 
+	Implement "Save as default" and "Use class defaults"
+	
+	* QDocumentDialog.C: Fix dialog update on class change
+	implement lyxrc.auto_reset_options
+
 2002-11-07  John Levon  <levon@movementarian.org>
 
  	* QGraphics.[Ch]:

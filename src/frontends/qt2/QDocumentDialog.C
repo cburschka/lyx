@@ -310,8 +310,10 @@ void QDocumentDialog::setTitle(int item)
 /*
  * public slot
  */
-void QDocumentDialog::saveDocDefault()
-{}
+void QDocumentDialog::saveDefaultClicked()
+{
+	form_->saveDocDefault();
+}
 
 
 /*
@@ -326,9 +328,9 @@ void QDocumentDialog::restore()
 /*
  * public slot
  */
-void QDocumentDialog::useClassDefaults()
+void QDocumentDialog::useDefaultsClicked()
 {
-    qWarning( "DocumentDialog::useClassDefaults() not yet implemented!" );
+    form_->useClassDefaults();
 }
 
 
@@ -475,10 +477,23 @@ void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 
 void QDocumentDialog::classChanged()
 {
-	updateFontsize(form_->controller().textClass().opt_fontsize(),
-		       form_->controller().params().fontsize);
+	unsigned int tc = layoutModule->classCO->currentItem();
 
-	updatePagestyle(form_->controller().textClass().opt_pagestyle(),
-			form_->controller().params().pagestyle);
+	BufferParams & params = form_->controller().params();
+	params.textclass = layoutModule->classCO->currentItem();
 
+	if (lyxrc.auto_reset_options) {
+		params.textclass = tc;
+		params.useClassDefaults();
+		form_->update_contents();
+	} else {
+		// update the params which are needed in any case
+		// (fontsizes, pagestyle)
+		params.textclass = tc;
+		updateFontsize(form_->controller().textClass().opt_fontsize(),
+			params.fontsize);
+
+		updatePagestyle(form_->controller().textClass().opt_pagestyle(),
+			params.pagestyle);
+	}
 }

@@ -1,3 +1,8 @@
+2002-11-07  Juergen Spitzmueller <j.spitzmueller@gmx.de>
+
+	* ControlDocument.C: (SaveAsDefault) make it work.
+	fix buffer update on class change
+
 2002-11-06  Angus Leeming  <leeming@lyx.org>
 
 	* biblio.C (searchKeys and helper functions): rewritten entirely

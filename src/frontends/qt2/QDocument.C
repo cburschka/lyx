@@ -594,3 +594,21 @@ void QDocument::update_contents()
 	dialog_->marginsModule->footskipLE->setText(
 		tostr(LyXLength(params.footskip).value()).c_str());
 }
+
+
+void QDocument::saveDocDefault()
+{
+	// we have to apply the params first
+	apply();
+	controller().saveAsDefault();
+}
+
+void QDocument::useClassDefaults()
+{
+	BufferParams & params = controller().params();
+
+	params.textclass = dialog_->layoutModule->classCO->currentItem();
+	params.useClassDefaults();
+	update_contents();
+}
+

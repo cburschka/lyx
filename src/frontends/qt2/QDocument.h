@@ -41,6 +41,10 @@ private:
 	void update_contents();
 	/// build the dialog
 	void build_dialog();
+	/// save as default template
+	void saveDocDefault();
+	/// reset to default params
+	void useClassDefaults();
 	///
 	std::vector<string> lang_;
 };

@@ -50,9 +50,9 @@ public:
 public slots:
 	void setTitle(int);
 	void change_adaptor();
-	void saveDocDefault();
+	void saveDefaultClicked();
 	void restore();
-	void useClassDefaults();
+	void useDefaultsClicked();
 protected slots:
 	void setLSpacing(int);
 	void setMargins(int);
