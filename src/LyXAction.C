@@ -145,7 +145,6 @@ void LyXAction::init()
 		{ LFUN_END_OF_SENTENCE, "end-of-sentence-period-insert", Noop },
 		{ LFUN_ENVIRONMENT_INSERT, "environment-insert", Noop },
 		{ LFUN_GOTOERROR, "error-next", ReadOnly },
-		{ LFUN_REMOVEERRORS, "error-remove-all", ReadOnly },
 		{ LFUN_INSET_ERT, "ert-insert", Noop },
 		{ LFUN_FILE_INSERT, "file-insert", Noop },
 		{ LFUN_FILE_INSERT_ASCII, "file-insert-ascii", Noop },

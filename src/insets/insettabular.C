@@ -722,7 +722,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 
 	if (cmd.action == LFUN_INSET_EDIT) {
-		
+
 		if (!bv->lockInset(this)) {
 			lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
 			return DISPATCHED;

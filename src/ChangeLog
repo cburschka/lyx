@@ -1,3 +1,23 @@
+2003-05-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* undo_funcs.C (textHandleUndo): comment out next/previous stuff
+	(createUndo): ditto
+	(textUndoOrRedo): comment out a currently unused var.
+
+	* paragraph.h (NO_NEXT): enable NO_NEXT
+
+	* lyxfunc.C (dispatch): remove LFUN_REMOVEERRORS
+
+	* lfuns.h: remove LFUN_REMOVEERRORS and adjust lfun numbers.
+
+	* exporter.C (Export): adjust for removeAutoInsets removal.
+
+	* buffer.C (runChktex): adjust for removeAutoInsets removal.
+
+	* LyXAction.C (init): remove LFUN_REMOVEERRORS
+
+	* BufferView.[Ch] (removeAutoInsets): delete function
+
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
 	* latexrunparams.h: add fragile and use_babel variables.

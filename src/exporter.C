@@ -33,14 +33,6 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// from that the removal of auto insets is best done here.  This ensures
 	// we always have a clean buffer for inserting errors found during export.
 	BufferView * bv = buffer->getUser();
-	if (bv) {
-		// Remove all error insets
-		if (bv->removeAutoInsets()) {
-#warning repaint() or update() or nothing ?
-			bv->repaint();
-			bv->fitCursor();
-		}
-	}
 
 	string backend_format;
 	LatexRunParams runparams;

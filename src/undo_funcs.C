@@ -145,18 +145,21 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 	// Thread the end of the undo onto the par in front if any.
 	if (!undo.pars.empty()) {
-		undo.pars.back()->next(&**behind);
-		if (behind != end)
-			(&**behind)->previous(undo.pars.back());
+#warning FIXME
+		//undo.pars.back()->next(&**behind);
+		//if (behind != end)
+		//(&**behind)->previous(undo.pars.back());
 	}
 
 	// Put the new stuff in the list if there is one.
 	Paragraph * undopar = undo.pars.empty() ? 0 : undo.pars.front();
 	if (!undo.pars.empty()) {
-		undo.pars.front()->previous(&**before);
-		if (before != end)
-			(&**before)->next(undopar);
-		else {
+#warning FIXME
+		//undo.pars.front()->previous(&**before);
+		if (before != end) {
+#warning FIXME
+			//(&**before)->next(undopar);
+		} else {
 			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
 			ParIterator op = bv->buffer()->getParFromID(id);
 			if (op != end && op->inInset()) {
@@ -254,8 +257,9 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	// And here it's safe enough to delete all removed paragraphs.
 	vector<Paragraph *>::iterator pit = deletelist.begin();
 	for(; pit != deletelist.end(); ++pit) {
-		(*pit)->previous(0);
-		(*pit)->next(0);
+#warning FIXME
+		//(*pit)->previous(0);
+		//(*pit)->next(0);
 		delete (*pit);
 	}
 
@@ -280,8 +284,9 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	int behind_number = -1;
 	int inset_id = -1;
 
-	if (first->previous())
-		before_number = first->previous()->id();
+#warning FIXME
+	//if (first->previous())
+	//	before_number = first->previous()->id();
 	if (behind)
 		behind_number = behind->id();
 	if (first->inInset())
@@ -312,28 +317,31 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 
 	Paragraph const * end = 0;
 
-	if (behind)
-		end = behind->previous();
-	else {
+	if (behind) {
+#warning FIXME
+		//end = behind->previous();
+	}else {
 		end = first;
-		while (end->next())
-			end = end->next();
+#warning FIXME
+		//while (end->next())
+		//	end = end->next();
 	}
 
-	if (first && end && (first != end->next()) &&
-	    ((before_number != behind_number) ||
-		 ((before_number < 0) && (behind_number < 0))))
-	{
-		undo_pars.push_back(new Paragraph(*first, true));
-		for (Paragraph * tmppar = first; tmppar != end && tmppar->next(); ) {
-			tmppar = tmppar->next();
-			undo_pars.push_back(new Paragraph(*tmppar, true));
-			size_t const n = undo_pars.size();
-			undo_pars[n - 2]->next(undo_pars[n - 1]);
-			undo_pars[n - 1]->previous(undo_pars[n - 2]);
-		}
-		undo_pars.back()->next(0);
-	}
+#warning FIXME
+//	if (first && end && (first != end->next()) &&
+//	    ((before_number != behind_number) ||
+//		 ((before_number < 0) && (behind_number < 0))))
+//	{
+//		undo_pars.push_back(new Paragraph(*first, true));
+//		for (Paragraph * tmppar = first; tmppar != end && tmppar->next(); ) {
+//			tmppar = tmppar->next();
+//			undo_pars.push_back(new Paragraph(*tmppar, true));
+//			size_t const n = undo_pars.size();
+//			undo_pars[n - 2]->next(undo_pars[n - 1]);
+//			undo_pars[n - 1]->previous(undo_pars[n - 2]);
+//		}
+//		undo_pars.back()->next(0);
+//	}
 
 	// A memory optimization: Just store the layout
 	// information when only edit.
@@ -359,9 +367,9 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 // Returns false if no undo possible.
 bool textUndoOrRedo(BufferView * bv,
 	limited_stack<boost::shared_ptr<Undo> > & stack,
-	limited_stack<boost::shared_ptr<Undo> > & otherstack)
+		    limited_stack<boost::shared_ptr<Undo> > & /*otherstack*/)
 {
-	Buffer * b = bv->buffer();
+	//Buffer * b = bv->buffer();
 
 	if (stack.empty()) {
 		finishNoUndo(bv);

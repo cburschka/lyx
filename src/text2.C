@@ -427,10 +427,10 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 // set layout over selection and make a total rebreak of those paragraphs
 void LyXText::setLayout(string const & layout)
 {
-	LyXCursor tmpcursor = cursor;  // store the current cursor 
+	LyXCursor tmpcursor = cursor;  // store the current cursor
 
 	// if there is no selection just set the layout
-	// of the current paragraph 
+	// of the current paragraph
 	if (!selection.set()) {
 		selection.start = cursor;  // dummy selection
 		selection.end = cursor;

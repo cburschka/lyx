@@ -1958,9 +1958,6 @@ int Buffer::runChktex()
 	Path p(path); // path to LaTeX file
 	users->owner()->message(_("Running chktex..."));
 
-	// Remove all error insets
-	bool const removedErrorInsets = users->removeAutoInsets();
-
 	// Generate the LaTeX file if neccessary
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
@@ -1981,13 +1978,6 @@ int Buffer::runChktex()
 		users->showErrorList(_("ChkTeX"));
 	}
 
-	// if we removed error insets before we ran chktex or if we inserted
-	// error insets after we ran chktex, this must be run:
-	if (removedErrorInsets || res) {
-#warning repaint needed here, or do you mean update() ?
-		users->repaint();
-		users->fitCursor();
-	}
 	users->owner()->busy(false);
 
 	return res;

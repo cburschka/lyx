@@ -41,7 +41,7 @@ InsetError::~InsetError()
 
 dispatch_result InsetError::localDispatch(FuncRequest const & cmd)
 {
-	dispatch_result result = UNDISPATCHED;
+	// UNUSED: dispatch_result result = UNDISPATCHED;
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_RELEASE:

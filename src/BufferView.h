@@ -153,8 +153,6 @@ public:
 	/// redo last action
 	void redo();
 
-	/// removes all autodeletable insets
-	bool removeAutoInsets();
 	/// get the stored error list
 	ErrorList const & getErrorList() const;
 	/// clears the stored error list

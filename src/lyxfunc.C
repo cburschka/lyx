@@ -490,7 +490,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INSET_SETTINGS: {
 		disable = true;
 		UpdatableInset * inset = view()->theLockingInset();
-		
+
 		if (!inset)
 			break;
 
@@ -1124,14 +1124,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_MENUSEARCH:
 		owner->getDialogs().showSearch();
-		break;
-
-	case LFUN_REMOVEERRORS:
-		if (view()->removeAutoInsets()) {
-#warning repaint() or update() or nothing ?
-			view()->repaint();
-			view()->fitCursor();
-		}
 		break;
 
 	case LFUN_DEPTH_MIN:

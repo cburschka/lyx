@@ -34,7 +34,7 @@ class TexRow;
 // Define this if you want to try out the new storage container for
 // paragraphs. (Lgb)
 // This is non working and far from finished.
-// #define NO_NEXT 1
+#define NO_NEXT 1
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
