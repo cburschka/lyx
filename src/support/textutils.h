@@ -39,14 +39,6 @@ bool IsLineSeparatorChar(char c)
 }
 
 
-/// return true if the char is a meta-character for hfill
-inline
-bool IsHfillChar(char c)
-{
-	return (c == Paragraph::META_HFILL);
-}
-
-
 /// return true if the char is a meta-character for an inset
 inline
 bool IsInsetChar(char c)
@@ -119,7 +111,6 @@ bool IsWordChar(unsigned char c)
 {
 	return !(IsSeparatorChar(c)
 		  || IsKommaChar(c)
-		  || IsHfillChar(c)
 		  || IsInsetChar(c));
 }
 

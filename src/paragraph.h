@@ -40,9 +40,7 @@ public:
 	///
 	enum META_KIND {
 		///
-		META_HFILL = 1,
-		///
-		META_NEWLINE,
+		META_NEWLINE = 2,
 		///
 		META_INSET
 	};

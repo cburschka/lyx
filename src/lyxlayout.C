@@ -529,7 +529,7 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
 	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
-	{ "counter_chapter",	      LA_COUNTER_CHAPTER },
+	{ "counter_chapter",          LA_COUNTER_CHAPTER },
 	{ "counter_enumi",            LA_COUNTER_ENUMI },
 	{ "counter_enumii",           LA_COUNTER_ENUMII },
 	{ "counter_enumiii",          LA_COUNTER_ENUMIII },
@@ -544,7 +544,7 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	{ "sensitive",                LA_SENSITIVE },
 	{ "static",                   LA_STATIC },
 	{ "top_environment",          LA_TOP_ENVIRONMENT }
-};
+	};
 
 	pushpophelper pph(lexrc, labelTypeTags, LA_BIBLIO);
 	int le = lexrc.lex();

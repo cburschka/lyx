@@ -33,6 +33,8 @@ public:
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
 	void write(Buffer const * buf, ostream & os) const;
+	/// We don't need \begin_inset and \end_inset
+	bool directWrite() const { return true; }
 };
 
 #endif

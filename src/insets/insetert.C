@@ -208,7 +208,6 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_INSET:
-			case Paragraph::META_HFILL:
 				lyxerr << "Element is not allowed in insertERT"
 				       << endl;
 			case Paragraph::META_NEWLINE:

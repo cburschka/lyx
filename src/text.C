@@ -221,23 +221,26 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 		if (font.language()->RightToLeft()) {
 			if (font.language()->lang() == "arabic" &&
 			    (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
-			     lyxrc.font_norm_type == LyXRC::ISO_10646_1))
+			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)) {
 				if (Encodings::IsComposeChar_arabic(c))
 					return 0;
 				else
 					c = transformChar(c, par, pos);
-			else if (font.language()->lang() == "hebrew" &&
+			} else if (font.language()->lang() == "hebrew" &&
 				 Encodings::IsComposeChar_hebrew(c))
 				return 0;
 		}
 		return font_metrics::width(c, font);
 
-	} else if (IsHfillChar(c)) {
-		// Because of the representation as vertical lines
-		return 3;
-	} else if (c == Paragraph::META_INSET) {
+	}
+
+	if (c == Paragraph::META_INSET) {
 		Inset * tmpinset = par->getInset(pos);
 		if (tmpinset) {
+			if (tmpinset->lyxCode() == Inset::HFILL_CODE) {
+				// Because of the representation as vertical lines
+				return 3;
+			}
 #if 1
 			// this IS needed otherwise on initialitation we don't get the fill
 			// of the row right (ONLY on initialization if we read a file!)
@@ -245,10 +248,11 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 			tmpinset->update(bview, font);
 #endif
 			return tmpinset->width(bview, font);
-		} else
-			return 0;
+		}
+		return 0;
+	}
 
-	} else if (IsSeparatorChar(c))
+	if (IsSeparatorChar(c))
 		c = ' ';
 	else if (IsNewlineChar(c))
 		c = 'n';
@@ -2311,7 +2315,7 @@ void LyXText::changeCase(BufferView & bview, LyXText::TextCase action)
 			continue;
 		}
 		unsigned char c = par->getChar(pos);
-		if (!IsInsetChar(c) && !IsHfillChar(c)) {
+		if (!IsInsetChar(c)) {
 			switch (action) {
 			case text_lowercase:
 				c = lowercase(c);

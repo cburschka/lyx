@@ -26,8 +26,6 @@ pair<bool, string> escapeChar(char c)
 	string str;
 
 	switch (c) {
-	case Paragraph::META_HFILL:
-		break;
 	case Paragraph::META_NEWLINE:
 		str = '\n';
 		break;

@@ -265,10 +265,6 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 			os << "\n\\newline \n";
 			column = 0;
 			break;
-		case META_HFILL:
-			os << "\n\\hfill \n";
-			column = 0;
-			break;
 		case '\\':
 			os << "\n\\backslash \n";
 			column = 0;
@@ -433,7 +429,6 @@ void Paragraph::insertInset(pos_type pos, Inset * inset, LyXFont const & font, C
 bool Paragraph::insetAllowed(Inset::Code code)
 {
 	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
-
 	if (pimpl_->inset_owner)
 		return pimpl_->inset_owner->insetAllowed(code);
 	return true;
@@ -443,7 +438,6 @@ bool Paragraph::insetAllowed(Inset::Code code)
 Inset * Paragraph::getInset(pos_type pos)
 {
 	lyx::Assert(pos < size());
-
 	return insetlist.get(pos);
 }
 
@@ -451,7 +445,6 @@ Inset * Paragraph::getInset(pos_type pos)
 Inset const * Paragraph::getInset(pos_type pos) const
 {
 	lyx::Assert(pos < size());
-
 	return insetlist.get(pos);
 }
 
@@ -470,11 +463,11 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 	}
 
 	LyXFont retfont;
-	if (cit != end) {
+	if (cit != end)
 		retfont = cit->font();
-	} else if (pos == size() && !empty()) {
+	else if (pos == size() && !empty())
 		retfont = getFontSettings(bparams, pos - 1);
-	} else
+	else
 		retfont = LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
 
 	return retfont;
@@ -1291,7 +1284,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 bool Paragraph::isHfill(pos_type pos) const
 {
-	return IsHfillChar(getChar(pos));
+	return IsInsetChar(getChar(pos))
+					&& getInset(pos)->lyxCode() == Inset::HFILL_CODE;
 }
 
 
@@ -1424,25 +1418,22 @@ string const Paragraph::asString(Buffer const * buffer, bool label) const
 string const Paragraph::asString(Buffer const * buffer,
 				 pos_type beg, pos_type end, bool label) const
 {
-	ostringstream ost;
+	ostringstream os;
 
 	if (beg == 0 && label && !params().labelString().empty())
-		ost << params().labelString() << ' ';
+		os << params().labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
 		value_type const c = getUChar(buffer->params, i);
 		if (IsPrintable(c))
-			ost << c;
+			os << c;
 		else if (c == META_NEWLINE)
-			ost << '\n';
-		else if (c == META_HFILL)
-			ost << '\t';
-		else if (c == META_INSET) {
-			getInset(i)->ascii(buffer, ost);
-		}
+			os << '\n';
+		else if (c == META_INSET) 
+			getInset(i)->ascii(buffer, os);
 	}
 
-	return STRCONV(ost.str());
+	return STRCONV(os.str());
 }
 
 
@@ -1451,10 +1442,9 @@ void Paragraph::setInsetOwner(Inset * i)
 	pimpl_->inset_owner = i;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it) 
 		if (it.getInset())
 			it.getInset()->setOwner(i);
-	}
 }
 
 

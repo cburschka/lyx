@@ -71,15 +71,9 @@ public:
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 	///
-	Inset::Code lyxCode() const
-	{
-		return Inset::SPECIALCHAR_CODE;
-	}
+	Inset::Code lyxCode() const { return Inset::SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const
-	{
-		return true;
-	};
+	bool directWrite() const { return true; }
 	///
 	void validate(LaTeXFeatures &) const;
 

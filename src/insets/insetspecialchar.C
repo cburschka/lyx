@@ -35,6 +35,7 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 	return kind_;
 }
 
+
 int InsetSpecialChar::ascent(BufferView *, LyXFont const & font) const
 {
 	return font_metrics::maxAscent(font);

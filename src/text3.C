@@ -949,13 +949,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		specialChar(this, bv, InsetSpecialChar::LDOTS);
 		break;
 
-	case LFUN_HFILL:
-		bv->hideCursor();
-		update(bv, false);
-		insertChar(bv, Paragraph::META_HFILL);
-		update(bv);
-		break;
-
 	case LFUN_END_OF_SENTENCE:
 		specialChar(this, bv, InsetSpecialChar::END_OF_SENTENCE);
 		break;
@@ -1617,6 +1610,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INDEX_PRINT:
 	case LFUN_PARENTINSERT:
 	case LFUN_TOC_INSERT:
+	case LFUN_HFILL:
 		// do nothing fancy
 		doInsertInset(this, cmd, false, false);
 		break;

@@ -497,9 +497,11 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     value_type const c)
 {
 	if (style.pass_thru) {
-		if (c != '\0') os << c;
+		if (c != '\0')
+			os << c;
 		return;
 	}
+
 	// Two major modes:  LaTeX or plain
 	// Handle here those cases common to both modes
 	// and then split to handle the two modes separately.
@@ -572,11 +574,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		}
 		basefont = owner_->getLayoutFont(bparams);
 		running_font = basefont;
-		break;
-
-	case Paragraph::META_HFILL:
-		os << "\\hfill{}";
-		column += 7;
 		break;
 
 	default:

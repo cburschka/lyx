@@ -49,6 +49,7 @@
 
 #include "insets/inset.h"
 #include "insets/inseterror.h"
+#include "insets/insethfill.h"
 #include "insets/insetlabel.h"
 #include "insets/insetref.h"
 #include "insets/inseturl.h"
@@ -966,7 +967,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->insertInset(pos, inset, font, current_change);
 		++pos;
 	} else if (token == "\\hfill") {
-		par->insertChar(pos, Paragraph::META_HFILL, font, current_change);
+		par->insertInset(pos, new InsetHFill(),
+			LyXFont(LyXFont::ALL_INHERIT, params.language));
 		++pos;
 	} else if (token == "\\change_unchanged") {
 		// Hack ! Needed for empty paragraphs :/
@@ -1617,19 +1619,12 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 			}
 			break;
 
-		case Paragraph::META_HFILL:
-			buffer << word << "\t";
-			currlinelen += word.length() + 1;
-			word.erase();
-			break;
-
 		default:
 			if (c == ' ') {
 				if (linelen > 0 &&
 				    currlinelen + word.length() > linelen - 10) {
 					buffer << "\n";
-					pair<int, string> p =
-						addDepth(depth, ltype_depth);
+					pair<int, string> p = addDepth(depth, ltype_depth);
 					buffer << p.second;
 					currlinelen = p.first;
 				}
