@@ -1,3 +1,8 @@
+2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (dist-hook): only try to get lyxdoc if not already
+	present. 
+
 2001-07-23  juergen.sp@t-online.de  <Jürgen Spitzmüller>
 
 	* bind/*.bind: add binding for ligature-break-insert

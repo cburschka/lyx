@@ -1,5 +1,8 @@
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* Makefile.am (EXTRA_DIST): add files that is not part or the
+	binary here.
+
 	* insetcollapsable.h: remove autocollapsable (no users), remove
 	draw_label, change_label_with_text and companion code. Remove args
 	from some methods.
