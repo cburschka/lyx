@@ -6,6 +6,8 @@
 
 	* math_cursor.C: do not move into insets that don't have inner cells yet
 
+	* formulabase.C: fix memory leak
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (insetAllowed): allow insertion of label

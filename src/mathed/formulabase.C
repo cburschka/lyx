@@ -135,10 +135,7 @@ InsetFormulaBase::InsetFormulaBase(InsetFormulaBase const & f)
 
 InsetFormulaBase::~InsetFormulaBase()
 {
-#ifdef WITH_WARNINGS
-#warning leak this for a while...
-#endif
-	//delete par_;
+	delete par_;
 }
 
 
