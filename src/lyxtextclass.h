@@ -111,6 +111,8 @@ public:
 	///
 	std::string const & options() const;
 	///
+	std::string const & class_header() const;
+	///
 	std::string const & pagestyle() const;
 	///
 	std::string const & preamble() const;
@@ -185,6 +187,8 @@ private:
 	std::string options_;
 	///
 	std::string pagestyle_;
+	///
+	std::string class_header_;
 	///
 	std::string defaultlayout_;
 	/// preamble text to support layout styles

@@ -470,6 +470,7 @@ enum ClassOptionsTags {
 	CO_FONTSIZE = 1,
 	CO_PAGESTYLE,
 	CO_OTHER,
+	CO_HEADER,
 	CO_END
 };
 
@@ -479,6 +480,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 	keyword_item classOptionsTags[] = {
 		{"end", CO_END },
 		{"fontsize", CO_FONTSIZE },
+		{"header", CO_HEADER },
 		{"other", CO_OTHER },
 		{"pagestyle", CO_PAGESTYLE }
 	};
@@ -505,6 +507,10 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 		case CO_OTHER:
 			lexrc.next();
 			options_ = lexrc.getString();
+			break;
+		case CO_HEADER:
+			lexrc.next();
+			class_header_ = subst(lexrc.getString(), "&quot;", "\"");
 			break;
 		case CO_END:
 			getout = true;
@@ -923,6 +929,12 @@ string const & LyXTextClass::opt_pagestyle() const
 string const & LyXTextClass::options() const
 {
 	return options_;
+}
+
+
+string const & LyXTextClass::class_header() const
+{
+	return class_header_;
 }
 
 
