@@ -2212,6 +2212,7 @@ int LyXTabular::Latex(Buffer const * buf,
 			++cell;
 		}
 		os << "\\\\\n";
+		++ret;
 		ret += TeXBottomHLine(os, i);
 		if (IsLongTabular()) {
 			if (i == (endhead.row - 1)) {
