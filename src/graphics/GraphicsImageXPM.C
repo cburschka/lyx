@@ -384,9 +384,9 @@ string const unique_color_string(XpmImage const & image);
 // create a copy (using malloc and strcpy). If (!in) return 0; 
 char * clone_c_string(char const * in);
  
-// Given a string of the form #ff0571 create a string for the appropriate
-// grayscale or monochrome color.
-char * mapcolor(char * color, bool toGray);
+// Given a string of the form #ff0571 create appropriate grayscale and
+// monochrome colors.
+void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr);
 
 } // namespace anon
 
@@ -401,9 +401,8 @@ GImageXPM::Data::Data()
 
 GImageXPM::Data::~Data()
 {
-	// Introduce temporary memory leak to fix crash.
-//	if (colorTable_.unique())
-//		free_color_table(colorTable_.get(), ncolors_);
+	if (colorTable_.unique())
+		free_color_table(colorTable_.get(), ncolors_);
 }
 
 
@@ -465,17 +464,40 @@ void GImageXPM::Data::reset(XpmImage & image)
 
 	// 2. Ensure that the color table has g_color and m_color entries
 	XpmColor * table = colorTable_.get();
+	string buggy_color;
 
 	for (size_t i = 0; i < ncolors_; ++i) {
-		// If the c_color is defined and the equivalent
-		// grayscale one is not, then define it.
-		if (table[i].c_color && !table[i].g_color)
-			table[i].g_color = mapcolor(table[i].c_color, true);
+		XpmColor & entry = table[i];
+		if (!entry.c_color)
+			continue;
+
+		// A work-around for buggy XPM files that may be created by
+		// ImageMagick's convert.
+		string c_color = entry.c_color;
+		if (c_color[0] == '#' && c_color.size() > 7) {
+			if (buggy_color.empty())
+				buggy_color = c_color;
+
+			c_color = c_color.substr(0, 7);
+			free(entry.c_color);
+			entry.c_color = clone_c_string(c_color.c_str());
+		}
 
 		// If the c_color is defined and the equivalent
-		// monochrome one is not, then define it.
-		if (table[i].c_color && !table[i].m_color)
-			table[i].m_color = mapcolor(table[i].c_color, false);
+		// grayscale or monochrome ones are not, then define them.
+		mapcolor(entry.c_color, &entry.g_color, &entry.m_color);
+	}
+
+	if (!buggy_color.empty()) {
+		lyxerr << "The XPM file contains silly colors, "
+		       << "an example being \""
+		       << buggy_color << "\".\n"
+		       << "This was cropped to \""
+		       << buggy_color.substr(0, 7)
+		       << "\" so you can see something!\n"
+		       << "If this file was created by ImageMagick's convert,\n"
+		       << "then upgrading may cure the problem."
+		       << std::endl;
 	}
 }
 
@@ -529,19 +551,27 @@ unsigned int GImageXPM::Data::color_none_id() const
 
 namespace {
 
-// Given a string of the form #ff0571 create a string for the appropriate
-// grayscale or monochrome color.
-char * mapcolor(char * color, bool toGray)
+// Given a string of the form #ff0571 create appropriate grayscale and
+// monochrome colors.
+void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr)
 {
-	if (!color)
-		return 0;
+	if (!c_color)
+		return;
+
+	char * g_color = *g_color_ptr;
+	char * m_color = *m_color_ptr;
+
+	if (g_color && m_color)
+		// Already filled.
+		return;
 	
 	Display * display = GUIRunTime::x11Display();
 	Colormap cmap     = GUIRunTime::x11Colormap();
 	XColor xcol;
 	XColor ccol;
-	if (XLookupColor(display, cmap, color, &xcol, &ccol) == 0)
-		return 0;
+	if (XLookupColor(display, cmap, c_color, &xcol, &ccol) == 0)
+		// Unable to parse c_color.
+		return;
 
 	// Note that X stores the RGB values in the range 0 - 65535
 	// whilst we require them in the range 0 - 255.
@@ -551,20 +581,27 @@ char * mapcolor(char * color, bool toGray)
 
 	// This gives a good match to a human's RGB to luminance conversion.
 	// (From xv's Postscript code --- Mike Ressler.)
-	int mapped_color = int((0.32 * r) + (0.5 * g) + (0.18 * b));
-	if (!toGray) // monochrome
-		mapped_color = (mapped_color < 128) ? 0 : 255;
+	int const gray = int((0.32 * r) + (0.5 * g) + (0.18 * b));
 
-	ostringstream ostr;
+	ostringstream gray_stream;
+	gray_stream << "#" << std::setbase(16) << std::setfill('0')
+		    << std::setw(2) << gray
+		    << std::setw(2) << gray
+		    << std::setw(2) << gray;
 
-	ostr << "#" << std::setbase(16) << std::setfill('0')
-	     << std::setw(2) << mapped_color
-	     << std::setw(2) << mapped_color
-	     << std::setw(2) << mapped_color;
+	int const mono = (gray < 128) ? 0 : 255;
+	ostringstream mono_stream;
+	mono_stream << "#" << std::setbase(16) << std::setfill('0')
+		    << std::setw(2) << mono
+		    << std::setw(2) << mono
+		    << std::setw(2) << mono;
 
-	// This string is going into an XpmImage struct, so create a copy that
+	// This string is going into an XpmImage struct, so create copies that
 	// libXPM can free successfully.
-	return clone_c_string(ostr.str().c_str());
+	if (!g_color)
+		*g_color_ptr = clone_c_string(gray_stream.str().c_str());
+	if (!m_color)
+		*m_color_ptr = clone_c_string(mono_stream.str().c_str());
 }
 
 
@@ -591,7 +628,8 @@ void free_color_table(XpmColor * table, size_t size)
 		free(table[i].g4_color);
 		free(table[i].c_color);
 	}
-	free(table);
+	// Don't free the table itself. Let the shared_c_ptr do that.
+	// free(table);
 }
 
 
@@ -619,7 +657,7 @@ bool contains_color_none(XpmImage const & image)
 
 string const unique_color_string(XpmImage const & image)
 {
-	string id(image.cpp, 'A');
+	string id(image.cpp, ' ');
 
 	for(;;) {
 		bool found_it = false;
@@ -631,25 +669,35 @@ string const unique_color_string(XpmImage const & image)
 			}
 		}
 
-		if (!found_it)
+		if (!found_it) {
+			std::cerr << "unique_color_string: \"" << id
+				  << "\"" << std::endl;
 			return id;
+		}
 
-		// A base 57 counter!
-		// eg AAAz+1 = AABA, AABz+1 = AACA, AAzz+1 = ABAA
+		// Loop over the printable characters in the ASCII table.
+		// Ie, count from char 32 (' ') to char 126 ('~')
+		// A base 94 counter!
 		string::size_type current_index = id.size() - 1;
 		bool continue_loop = true;
 		while(continue_loop) {
 			continue_loop = false;
-			
-			if (id[current_index] == 'z') {
-				continue_loop = true;
-				if (current_index == 0) // failed!
-					break;
 
-				id[current_index] = 'A';
+			
+			if (id[current_index] == 126) {
+				continue_loop = true;
+				if (current_index == 0)
+					// Unable to find a unique string
+					return image.colorTable[0].string;
+
+				id[current_index] = 32;
 				current_index -= 1;
 			} else {
 				id[current_index] += 1;
+				// Note that '"' is an illegal char in this
+				// context
+				if (id[current_index] == '"')
+					id[current_index] += 1;
 			}
 		}
 		if (continue_loop)

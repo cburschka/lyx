@@ -19,8 +19,10 @@
 #include "GraphicsParams.h"
 #include "insets/insetgraphics.h"
 
-// I think that graphicsInit should become Dialogs::graphicsInit.
-// These #includes would then be moved there.
+
+// I think that graphicsInit should become a new Dialogs::graphicsInit 
+// static method.
+// These #includes would then be moved to Dialogs.C.
 // Angus 25 Feb 2002
 #include "GraphicsImageXPM.h"
 //#include "xformsGraphicsImage.h"

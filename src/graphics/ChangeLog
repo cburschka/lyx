@@ -1,5 +1,17 @@
 2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* GraphicsCache.C: improve commentary to graphicsInit and where it
+	should really go.
+
+	* GraphicsImageXPM.C (~Data, free_color_table): resolve the crash
+	that became a memory leak properly. (Let the shared_c_ptr free the
+	color table.)
+	(reset, mapcolor): tidy up and introduce a work around for XPM files
+	with crappy color entries. Print out a nice friendly message on what's
+	gone wrong and how to resolve it properly.
+
+2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* GraphicsImageXPM.[Ch]: more rigorous use of types (signed/unsigned).
 	(Data d-tor): introduce memory leak temporarily, to "fix" a crash
 	in free_color_table.
