@@ -155,6 +155,7 @@ def update_tabular(lines):
                         while cell_info[m][4] == '1':
                             m = m + columns
                             l = l + 1
+                            if l >= rows: break
                             paragraph = paragraph + cell_content[l][k]
                     else:
                         paragraph = cell_content[j][k]
