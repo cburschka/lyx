@@ -4,7 +4,6 @@
 <glade-interface>
 
 <widget class="GtkDialog" id="dialog">
-  <property name="visible">True</property>
   <property name="title" translatable="yes">Table of Contents</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
