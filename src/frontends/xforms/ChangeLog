@@ -1,5 +1,10 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* XWorkArea.C (XWorkArea): revert the red color of the frame widget.
+	Instead, set it to LColor::background.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	* XFormsToolbar.C (show, hide): do nothing if the toolbar is
 	already visible/invisible, respectively.
 

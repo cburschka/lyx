@@ -12,11 +12,14 @@
 #include <config.h>
 
 #include "XWorkArea.h"
+
+#include "Color.h"
 #include "XFormsView.h"
+#include "XLyXKeySym.h"
 
 #include "debug.h"
-#include "XLyXKeySym.h"
 #include "funcrequest.h"
+#include "LColor.h"
 #include "Timeout.h"
 
 #include <boost/bind.hpp>
@@ -116,11 +119,11 @@ XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
-#ifdef WITH_WARNINGS
-#warning "I've set this to red as an incentive to address the drawing issues \
-of the XForms frontend. Angus 4 May, 2004"
-#endif
-	fl_set_object_color(obj, FL_RED, FL_MCOL);
+	unsigned int r, g, b;
+	if (getRGBColor(LColor::background, r, g, b)) {
+		fl_mapcolor(FL_FREE_COL12, r, g, b);
+		fl_set_object_color(obj, FL_FREE_COL12, FL_MCOL);
+	}
 
 	// The scrollbar.
 	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR, 0, 0, w, h, "");
