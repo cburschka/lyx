@@ -203,9 +203,29 @@ void Toolbar::Pimpl::openLayoutList()
 }
 
 
+namespace {
+
+QMainWindow::ToolBarDock getPosition(ToolbarBackend::Flags const & flags)
+{
+	if (flags & ToolbarBackend::TOP)
+		return QMainWindow::Top;
+	if (flags & ToolbarBackend::BOTTOM)
+		return QMainWindow::Bottom;
+	if (flags & ToolbarBackend::LEFT)
+		return QMainWindow::Left;
+	if (flags & ToolbarBackend::RIGHT)
+		return QMainWindow::Right;
+	return QMainWindow::Top;
+}
+
+};
+
+
 void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
 {
-	QToolBar * qtb = new QToolBar(qt_(tb.name), owner_);
+	QToolBar * qtb = new QToolBar(qt_(tb.name), owner_, getPosition(tb.flags));
+	// give visual separation between adjacent toolbars
+	qtb->addSeparator();
 
 	ToolbarBackend::item_iterator it = tb.items.begin();
 	ToolbarBackend::item_iterator end = tb.items.end();
@@ -213,7 +233,7 @@ void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
 		add(qtb, it->first, it->second);
 
 	toolbars_[tb.name] = qtb;
-	displayToolbar(tb, tb.display_type == ToolbarBackend::ON);
+	displayToolbar(tb, tb.flags & ToolbarBackend::ON);
 
 }
 
@@ -235,6 +255,10 @@ void Toolbar::Pimpl::add(QToolBar * tb, int action, string const & tooltip)
 			proxy_.get(), SLOT(layout_selected(const QString &)));
 		break;
 	}
+	case ToolbarBackend::MINIBUFFER:
+		owner_->addCommandBuffer(tb);
+		tb->setHorizontalStretchable(true);
+		break;
 	default: {
 		QPixmap p = QPixmap(toolbarbackend.getIcon(action).c_str());
 		QToolButton * button =

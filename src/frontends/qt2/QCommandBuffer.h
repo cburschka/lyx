@@ -12,18 +12,17 @@
 #ifndef QCOMMANDBUFFER_H
 #define QCOMMANDBUFFER_H
 
-
-#include <qtoolbar.h>
+#include <qwidget.h>
 
 class QtView;
 class QCommandEdit;
 class QListBoxItem;
 class ControlCommandBuffer;
 
-class QCommandBuffer : public QToolBar {
+class QCommandBuffer : public QWidget {
 	Q_OBJECT
 public:
-	QCommandBuffer(QtView * view, ControlCommandBuffer & control);
+	QCommandBuffer(QtView * view, QWidget * parent, ControlCommandBuffer & control);
 
 	/// focus the edit widget
 	void focus_command();

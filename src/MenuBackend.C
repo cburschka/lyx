@@ -390,7 +390,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	for (; docit != end; ++docit, ++ii) {
 		int const action =
 			lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *docit);
-		string label = MakeDisplayPath(*docit, 30);
+		string label = MakeDisplayPath(*docit, 20);
 		if (ii < 10)
 			label = tostr(ii) + ". " + label + '|' + tostr(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, action), view);

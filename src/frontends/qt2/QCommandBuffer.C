@@ -22,8 +22,10 @@
 
 #include <qcombobox.h>
 #include <qlistbox.h>
-#include <qtoolbutton.h>
 #include <qpixmap.h>
+#include <qlayout.h>
+#include <qtooltip.h>
+#include <qpushbutton.h>
 
 #include "LString.h"
 
@@ -61,34 +63,36 @@ protected:
 } // end of anon
 
 
-QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
-	: QToolBar(view), view_(view), controller_(control)
+QCommandBuffer::QCommandBuffer(QtView * view, QWidget * parent, ControlCommandBuffer & control)
+	: QWidget(parent), view_(view), controller_(control)
 {
-	setHorizontalStretchable(true);
-
 	QPixmap qpup(toqstr(LibFileSearch("images", "up", "xpm")));
 	QPixmap qpdown(toqstr(LibFileSearch("images", "down", "xpm")));
 
-	QToolButton * up = new QToolButton(qpup, qt_("Previous command"), "", this, SLOT(up()), this);
-	up->setFocusPolicy(NoFocus);
-	up->show();
-	QToolButton * down = new QToolButton(qpdown, qt_("Next command"), "", this, SLOT(down()), this);
-	down->setFocusPolicy(NoFocus);
-	down->show();
+	QVBoxLayout * top = new QVBoxLayout(this);
+	QHBoxLayout * layout = new QHBoxLayout(0);
+
+	QPushButton * up = new QPushButton(qpup, "", this);
+	QToolTip::add(up, qt_("Previous command"));
+	connect(up, SIGNAL(clicked()), this, SLOT(up()));
+	QPushButton * down = new QPushButton(qpdown, "", this);
+	QToolTip::add(down, qt_("Next command"));
+	connect(down, SIGNAL(clicked()), this, SLOT(down()));
 
 	edit_ = new QCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
 	edit_->setFocusPolicy(ClickFocus);
-	edit_->show();
-	setStretchableWidget(edit_);
-
-	show();
 
 	connect(edit_, SIGNAL(escapePressed()), this, SLOT(cancel()));
 	connect(edit_, SIGNAL(returnPressed()), this, SLOT(dispatch()));
 	connect(edit_, SIGNAL(tabPressed()), this, SLOT(complete()));
 	connect(edit_, SIGNAL(upPressed()), this, SLOT(up()));
 	connect(edit_, SIGNAL(downPressed()), this, SLOT(down()));
+
+	layout->addWidget(up, 0);
+	layout->addWidget(down, 0);
+	layout->addWidget(edit_, 10);
+	top->addLayout(layout);
 }
 
 

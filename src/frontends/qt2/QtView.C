@@ -54,7 +54,7 @@ qfont_loader fontloader;
 
 
 QtView::QtView(unsigned int width, unsigned int height)
-	: QMainWindow(), LyXView()
+	: QMainWindow(), LyXView(), commandbuffer_(0)
 {
 	resize(width, height);
 
@@ -71,12 +71,6 @@ QtView::QtView(unsigned int width, unsigned int height)
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
 	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
-	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
-
-	commandbuffer_ = new QCommandBuffer(this, *controlcommand_);
-
-	addToolBar(commandbuffer_, Bottom, true);
-
 	//  assign an icon to main form
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
@@ -84,6 +78,10 @@ QtView::QtView(unsigned int width, unsigned int height)
 
 	// make sure the buttons are disabled if needed
 	updateToolbar();
+
+	// allowing the toolbars to tear off is too easily done,
+	// and we don't save their orientation anyway. Disable the handle.
+	setToolBarsMovable(false);
 }
 
 
@@ -96,6 +94,13 @@ void QtView::setWindowTitle(string const & t, string const & it)
 {
 	setCaption(toqstr(t));
 	setIconText(toqstr(it));
+}
+
+
+void QtView::addCommandBuffer(QWidget * parent)
+{
+	commandbuffer_ = new QCommandBuffer(this, parent, *controlcommand_);
+	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
 }
 
 
@@ -115,7 +120,8 @@ void QtView::clearMessage()
 
 void QtView::focus_command_widget()
 {
-	commandbuffer_->focus_command();
+	if (commandbuffer_)
+		commandbuffer_->focus_command();
 }
 
 

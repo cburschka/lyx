@@ -1,3 +1,15 @@
+2003-04-15  John Levon  <levon@movementarian.org>
+
+	* QCommandBuffer.h:
+	* QCommandBuffer.C: make a widget not a toolbar
+
+	* QtView.h:
+	* QtView.C: don't let the toolbars be movable.
+	Create addCommandBuffer(), and handle no command buffer.
+
+	* Toolbar_pimpl.C: handle toolbar placement flags, and
+	Minibuffer.
+
 2003-04-14  John Levon  <levon@movementarian.org>
 
 	* QPrefs.C: fix warning

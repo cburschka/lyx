@@ -287,8 +287,8 @@ void Toolbar::Pimpl::add(int action, string const & tooltip)
 	case ToolbarBackend::SEPARATOR:
 		xpos += sepspace;
 		break;
-	case ToolbarBackend::NEWLINE:
-		// Not supported yet.
+	case ToolbarBackend::MINIBUFFER:
+		// Not implemented
 		break;
 	case ToolbarBackend::LAYOUTS:
 		xpos += standardspacing;

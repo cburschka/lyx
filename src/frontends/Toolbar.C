@@ -48,17 +48,10 @@ void Toolbar::update(bool in_math, bool in_table)
 	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
 
 	for (; cit != end; ++cit) {
-		switch (cit->display_type) {
-			case ToolbarBackend::OFF:
-			case ToolbarBackend::ON:
-				break;
-			case ToolbarBackend::MATH:
-				pimpl_->displayToolbar(*cit, in_math);
-				break;
-			case ToolbarBackend::TABLE:
-				pimpl_->displayToolbar(*cit, in_table);
-				break;
-		}
+		if (cit->flags & ToolbarBackend::MATH)
+			pimpl_->displayToolbar(*cit, in_math);
+		else if (cit->flags & ToolbarBackend::TABLE)
+			pimpl_->displayToolbar(*cit, in_table);
 	}
 }
 

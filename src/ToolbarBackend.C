@@ -22,7 +22,10 @@
 
 #include "frontends/controllers/ControlMath.h"
 
+#include <vector>
+
 using std::endl;
+using std::vector;
 
 ToolbarBackend toolbarbackend;
 
@@ -33,14 +36,15 @@ enum tooltags {
 	TO_ENDTOOLBAR,
 	TO_SEPARATOR,
 	TO_LAYOUTS,
+	TO_MINIBUFFER,
 	TO_LAST
 };
-
 
 struct keyword_item toolTags[TO_LAST - 1] = {
 	{ "end", TO_ENDTOOLBAR },
 	{ "item", TO_ADD },
 	{ "layouts", TO_LAYOUTS },
+	{ "minibuffer", TO_MINIBUFFER },
 	{ "separator", TO_SEPARATOR }
 };
 
@@ -64,20 +68,38 @@ void ToolbarBackend::read(LyXLex & lex)
 
 	Toolbar tb;
 	tb.name = lex.getString();
-
 	lex.next(true);
-	string type = lex.getString();
-	if (!compare_ascii_no_case(type, "off"))
-		tb.display_type = OFF;
-	else if (!compare_ascii_no_case(type, "on"))
-		tb.display_type = ON;
-	else if (!compare_ascii_no_case(type, "math"))
-		tb.display_type = MATH;
-	else if (!compare_ascii_no_case(type, "table"))
-		tb.display_type = TABLE;
-	else {
-		lyxerr << "ToolbarBackend::read: unrecognised token:`"
-		       << type << '\'' << endl;
+	
+	tb.flags = static_cast<Flags>(0);
+	string flagstr = lex.getString();
+	vector<string> flags = getVectorFromString(flagstr);
+
+	vector<string>::const_iterator cit = flags.begin();
+	vector<string>::const_iterator end = flags.end();
+
+	for (; cit != end; ++cit) {
+		int flag = 0;
+		if (!compare_ascii_no_case(*cit, "off"))
+			flag = OFF;
+		else if (!compare_ascii_no_case(*cit, "on"))
+			flag = ON;
+		else if (!compare_ascii_no_case(*cit, "math"))
+			flag = MATH;
+		else if (!compare_ascii_no_case(*cit, "table"))
+			flag = TABLE;
+		else if (!compare_ascii_no_case(*cit, "top"))
+			flag = TOP;
+		else if (!compare_ascii_no_case(*cit, "bottom"))
+			flag = BOTTOM;
+		else if (!compare_ascii_no_case(*cit, "left"))
+			flag = LEFT;
+		else if (!compare_ascii_no_case(*cit, "right"))
+			flag = RIGHT;
+		else {
+			lyxerr << "ToolbarBackend::read: unrecognised token:`"
+			       << *cit << '\'' << endl;
+		}
+		tb.flags = static_cast<Flags>(tb.flags | flag);
 	}
 
 	bool quit = false;
@@ -99,6 +121,10 @@ void ToolbarBackend::read(LyXLex & lex)
 					<< func << '\'' << endl;
 				add(tb, func, tooltip);
 			}
+			break;
+
+		case TO_MINIBUFFER:
+			add(tb, MINIBUFFER);
 			break;
 
 		case TO_SEPARATOR:

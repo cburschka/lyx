@@ -24,12 +24,12 @@ class ToolbarBackend {
 public:
 	/// The special toolbar actions
 	enum ItemType {
+		/// the command buffer
+		MINIBUFFER = -3,
 		/// adds space between buttons in the toolbar
-		SEPARATOR = -3,
+		SEPARATOR = -2,
 		/// a special combox insead of a button
-		LAYOUTS = -2,
-		/// begin a new line of button (not working)
-		NEWLINE = -1
+		LAYOUTS = -1,
 	};
 
 	/// action, tooltip
@@ -38,12 +38,16 @@ public:
 	/// the toolbar items
 	typedef std::vector<std::pair<int, string> > Items;
 
-	/// possibly display types
-	enum DisplayType {
-		OFF, //< never shown
-		ON, //< always shown
-		MATH, //< shown when in math
-		TABLE //< shown when in table
+	/// toolbar flags
+	enum Flags {
+		ON = 1, //< always shown
+		OFF = 2, //< never shown
+		MATH = 4, //< shown when in math
+		TABLE = 8, //< shown when in table
+		TOP = 16, //< show at top
+		BOTTOM = 32, //< show at bottom
+		LEFT = 64, //< show at left
+		RIGHT = 128 //< show at right
 	};
 
 	/// a toolbar
@@ -52,8 +56,8 @@ public:
 		string name;
 		/// toolbar contents
 		Items items;
-		/// display type
-		DisplayType display_type;
+		/// flags
+		Flags flags;
 	};
 
 	typedef std::vector<Toolbar> Toolbars;

@@ -395,10 +395,18 @@ End
 #
 # Toolbar "Name" "on" 
 #
-# The second parameter is the status, and can be "on", "off", "math"
-# or "table". The last two make the toolbars appear and disappear automatically.
+# The second parameter are the flags :
 #
-# Only three commands are allowed inside the begin_toolbar and end_toolbar
+# on: the toolbar is visible
+# off: the toolbar is not visible
+# math: the toolbar is visible only when in math
+# table: the toolbar is visible only when in a table
+# top: the toolbar should be at the top of the window
+# bottom: the toolbar should be at the bottom of the window
+# left: the toolbar should be at the left of the window
+# right: the toolbar should be at the right of the window
+#
+# Only four commands are allowed inside the begin_toolbar and end_toolbar
 # directives: 
 #   Item "<action> [<parameter>]" adds an icon to the toolbar performing
 #          "<action> <parameter>"
@@ -410,6 +418,8 @@ End
 #
 #   Separator adds some spacing to the toolbar
 #
+#   Minibuffer adds the command buffer (Qt only, only one may exist)
+#
 # The icons are found in the lib/image direcory under the name
 # action.xpm or action_parameter.xpm.
 #
@@ -417,7 +427,7 @@ End
 #
 # This is the default toolbar:
 
-Toolbar "Standard" "on"
+Toolbar "Standard" "on,top"
     Layouts
     Item "Open document" "file-open"
     Item "Save document" "buffer-write"
@@ -441,4 +451,8 @@ Toolbar "Standard" "on"
     Separator
     Item "Insert graphics" "dialog-show-new-inset graphics"
     Item "Insert table" "tabular-insert"
+End
+
+Toolbar "Command Buffer" "on,bottom"
+    Minibuffer
 End

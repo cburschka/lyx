@@ -46,6 +46,9 @@ public:
 	/// clear status message
 	virtual void clearMessage();
 
+	/// add the command buffer
+	void addCommandBuffer(QWidget * parent);
+
 public slots:
 	/// menu item has been selected
 	void activated(int id);

@@ -1,0 +1,545 @@
+# This is the default LyX user interface definition file.         -*- text -*-
+# The syntax should be straightforward enough.
+
+# General aims : consistent naming, smaller menus, more accurate enable/disable
+
+Menuset
+
+    Menubar
+# Make the first 4 menus be as much as expected as possible
+	Submenu "File|F" "file"
+	Submenu "Edit|E" "edit"
+	Submenu "View|V" "view"
+	Submenu "Insert|I" "insert"
+	Submenu "Navigate|N" "navigate"
+	Submenu "Document|D" "document"
+	Submenu "Tools|T" "tools"
+	Submenu "Help|H" "help"
+    End
+
+#
+# FILE MENU
+#
+
+    Menu "file"
+	Item "New|N" "buffer-new"
+	Item "New from Template...|T" "buffer-new-template"
+	Item "Open...|O" "file-open"
+# This seems a much more sensible place to me
+	Submenu "Open recent|t" "lastfiles"
+	Separator
+	Item "Close|C" "buffer-close"
+	Item "Save|S" "buffer-write"
+	Item "Save As...|A" "buffer-write-as"
+	Item "Revert|R" "buffer-reload"
+	Submenu "Version Control|V" "file_vc"
+	Separator
+	Submenu "Import|I" "file_import"
+	Submenu "Export|E" "file_export"
+	Item "Print...|P" "buffer-print"
+	OptItem "Fax...|F" "buffer-export fax"
+	Separator
+	Item "Exit|x" "lyx-quit"
+    End
+
+    Menu "lastfiles"
+	Lastfiles
+    End
+ 
+    Menu "file_vc"
+	OptItem "Register...|R" "vc-register"
+	OptItem "Check In Changes...|I" "vc-check-in"
+	OptItem "Check Out for Edit|O" "vc-check-out"
+	OptItem "Revert to Last Version|L" "vc-revert"
+	OptItem "Undo Last Check In|U" "vc-undo-last"
+	OptItem "Show History|H" "vc-history"
+    End
+
+    Menu "file_import"
+	ImportFormats
+    End
+
+    Menu "file_export"
+	ExportFormats
+	Item "Custom...|C" "buffer-export custom"
+    End
+
+#
+# EDIT MENU
+#
+
+    Menu "edit"
+	Item "Undo|U" "undo"
+	Item "Redo|d" "redo"
+	Separator
+	Item "Cut|C" "cut"
+	Item "Copy|o" "copy"
+	Item "Paste|a" "paste"
+	Item "Find & Replace...|F" "find-replace"
+	Separator
+	Item "Text Style...|S" "layout-character"
+	Item "Paragraph Settings...|a" "layout-paragraph"
+	Separator
+# Mathed b0rkage means these don't work properly
+	OptSubmenu "Table|T" "edit_tabular"
+	OptSubmenu "Math|M" "edit_math"
+	Separator
+	OptItem "Increase List Depth|I" "depth-increment"
+	OptItem "Decrease List Depth|D" "depth-decrement"
+# This is where the context-specific stuff is supposed to go.
+# The idea is that everything on here can disappear and should
+# only appear when relevant (getStatus). Only stuff that needs
+# a right-click to bring up the dialog should appear here (it is not
+# obvious what the context is for the others)
+	OptItem "Table Settings..." "dialog-show-next-inset tabular"
+	OptItem "TeX Code Settings..." "dialog-show-next-inset ert"
+	OptItem "Float Settings..." "dialog-show-next-inset float"
+	OptItem "Minipage Settings..." "dialog-show-next-inset minipage"
+	OptItem "Text Wrap Settings..." "dialog-show-next-inset wrap"
+    End
+
+# not much we can do to help here
+    Menu "edit_tabular"
+	Item "Add Row|A" "tabular-feature append-row"
+	Item "Delete Row|w" "tabular-feature delete-row"
+	Separator
+	Item "Add Column|u" "tabular-feature append-column"
+	Item "Delete Column|D" "tabular-feature delete-column"
+	Separator
+	Item "Multicolumn|M" "tabular-feature multicolumn"
+	Separator
+	Item "Top Line|T" "tabular-feature toggle-line-top"
+	Item "Bottom Line|B" "tabular-feature toggle-line-bottom"
+	Item "Left Line|L" "tabular-feature toggle-line-left"
+	Item "Right Line|R" "tabular-feature toggle-line-right"
+	Separator
+	Item "Left aligned|e" "tabular-feature align-left"
+	Item "Centered|C" "tabular-feature align-center"
+	Item "Right aligned|i" "tabular-feature align-right"
+	Separator
+	Item "Top aligned|o" "tabular-feature valign-top"
+	Item "Vertically Centered|V" "tabular-feature valign-center"
+	Item "Bottom aligned|g" "tabular-feature valign-bottom"
+    End
+
+    Menu "edit_math"
+	Item "Toggle Numbering|N" "math-number"
+	Item "Toggle Numbering of Line|u" "math-nonumber"
+	Submenu "Change Limits Type|L" "edit_math_limits"
+	Separator
+	Submenu "Change Formula Type|F" "edit_math_mutate"
+	Separator
+	Submenu "Use Computer Algebra System|S" "edit_math_extern"
+	Separator
+	Submenu "Alignment|A" "edit_math_align"
+	Separator
+	Item "Add Row|R" "tabular-feature append-row"
+	Item "Delete Row|D" "tabular-feature delete-row"
+	Item "Copy Row" "tabular-feature copy-row"
+	Item "Swap Rows" "tabular-feature swap-row"
+	Separator
+	Item "Add Column|C" "tabular-feature append-column"
+	Item "Delete Column|e" "tabular-feature delete-column"
+	Item "Copy Column" "tabular-feature copy-column"
+	Item "Swap Columns" "tabular-feature swap-column"
+    End
+
+    Menu "edit_math_limits"
+	 Item "Default|t"  "math-limits empty"
+	 Item "Display|D"  "math-limits limits"
+	 Item "Inline|I"  "math-limits nolimits"
+    End
+
+    Menu "edit_math_extern"
+	Item "Octave" "math-extern octave"
+	Item "Maxima" "math-extern maxima"
+	Item "Mathematica" "math-extern mathematica"
+	Separator
+	Item "Maple, simplify" "math-extern maple simplify"
+	Item "Maple, factor" "math-extern maple factor"
+	Item "Maple, evalm" "math-extern maple evalm"
+	Item "Maple, evalf" "math-extern maple evalf"
+    End
+
+    Menu "edit_math_mutate"
+	Item "Inline Formula|I" "math-mutate simple"
+	Item "Displayed Formula|D" "math-mutate equation"
+	Item "Eqnarray Environment|q" "math-mutate eqnarray"
+	Item "Align Environment|A" "math-mutate align"
+	Item "AlignAt Environment" "math-mutate alignat"
+	Item "Flalign Environment|f" "math-mutate flalign"
+	Item "Gather Environment" "math-mutate gather"
+	Item "Multline Environment" "math-mutate multline"
+    End
+
+    Menu "edit_math_align"
+	Item "Left-aligned|L" "tabular-feature align-left"
+	Item "Centered|C" "tabular-feature align-center"
+	Item "Right-aligned|R" "tabular-feature align-right"
+	Separator
+	Item "Top-aligned|T" "tabular-feature valign-top"
+	Item "Centered Vertically|e" "tabular-feature valign-center"
+	Item "Bottom-aligned|B" "tabular-feature valign-bottom"
+    End
+
+#
+# VIEW MENU
+#
+
+    Menu "view"
+	Item "Open Float|O" "inset-toggle"
+# A common feature request JMarc wants to see
+#	Item "Open All Footnotes|F" "open-footnotes"
+#	Item "Close All Footnotes|C" "close-footnotes"
+# FIXME: better in Document menu ? Not sure.
+	Item "Remove All Error Boxes|E" "error-remove-all"
+	Item "Display Tooltips|D" "toggle-tooltips"
+	Separator
+	Submenu "Update|U" "document_update"
+	ViewFormats
+	Separator
+        Documents
+    End
+ 
+    Menu "document_update"
+	UpdateFormats
+    End
+
+#
+# INSERT MENU
+#
+    Menu "insert"
+# Try and group things a little better, and percolate the most
+# commonly used to good positions (exception being mathed, but
+# most people using mathed learn key shortcuts quite quickly anyway)
+	Item "Citation Reference...|C" "dialog-show-new-inset citation"
+	Item "Cross Reference...|R" "dialog-show-new-inset ref"
+	Item "Label...|L" "label-insert"
+	Item "Index Entry|I" "index-insert"
+	Separator
+	Submenu "Math|h" "insert_math"
+	Submenu "Special Character|S" "insert_special"
+	Submenu "Float|a" "insert_float"
+	Submenu "List / TOC|O" "insert_toc"
+# YUCK
+	Submenu "File|e" "insert_file"
+	Submenu "Note|N" "insert_note"
+	Separator
+# I'm going to kill this dumb dialog, but for now ...
+	Item "Table...|T" "tabular-insert"
+	Item "Minipage|p" "minipage-insert"
+	Item "Graphics...|G" "dialog-show-new-inset graphics"
+	Item "URL...|U" "url-insert"
+	Item "Short Title" "optional-insert"
+	Item "TeX|X" "ert-insert"
+	Item "External Material...|x" "dialog-show-new-inset external"
+	Item "Child document...|d" "dialog-show-new-inset include"
+    End
+
+# Not great, but the main Insert menu is seriously unwieldly
+    Menu "insert_note"
+	Item "Footnote|F" "footnote-insert"
+	Item "Marginal Note|M" "marginalnote-insert"
+	Item "Note|N" "note-insert"
+    End
+
+    Menu "insert_special"
+	Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free-apply; "
+	Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free-apply; "
+	Item "Horizontal Fill|H" "hfill-insert"
+	Item "Hyphenation Point|P" "hyphenation-point-insert"
+	Item "Ligature Break|k" "ligature-break-insert"
+	Item "Protected Blank|B" "protected-space-insert"
+	Item "Linebreak|L" "break-line"
+	Item "Ellipsis|i" "dots-insert"
+	Item "End of Sentence|E" "end-of-sentence-period-insert"
+	Item "Ordinary Quote|Q" "self-insert \""
+	Item "Menu Separator|M" "menu-separator-insert"
+    End
+
+    Menu "insert_math"
+	Item "Inline Formula|I" "math-mode"
+	Item "Display Formula|D" "math-display"
+	Item "Eqnarray Environment|E" "command-sequence math-mode; math-mutate eqnarray;"
+	Item "AMS align Environment|A" "command-sequence math-mode; math-mutate align;"
+	Item "AMS alignat Environment|t" "command-sequence math-mode; math-mutate alignat;"
+	Item "AMS flalign Environment|f" "command-sequence math-mode; math-mutate flalign;"
+	Item "AMS gather Environment" "command-sequence math-mode; math-mutate gather;"
+	Item "AMS multline Environment" "command-sequence math-mode; math-mutate multline;"
+	Separator
+	Item "Array Environment|y" "math-matrix 2 2"
+	Item "Cases Environment|C" "math-insert \cases"
+	Separator
+	Submenu "Font Change|f" "insert_math_font"
+	Item "Math Panel|l" "math-panel"
+    End
+
+    Menu "insert_math_font"
+	Item "Math normal font" "math-insert \mathnormal"
+	Separator
+	Item "Math calligraphic family" "math-insert \mathcal"
+	Item "Math fraktur family" "math-insert \mathfrak"
+	Item "Math roman family" "math-insert \mathrm"
+	Item "Math sans serif family" "math-insert \mathsf"
+	Separator
+	Item "Math bold series" "math-insert \mathbf"
+	Separator
+	Item "Text normal font" "math-insert \textnormal"
+	Separator
+	Item "Text roman family" "math-insert \textrm"
+	Item "Text sans serif family" "math-insert \textsf"
+	Item "Text typewriter family" "math-insert \texttt"
+	Separator
+	Item "Text bold series" "math-insert \textbf"
+	Item "Text medium series" "math-insert \textmd"
+	Separator
+	Item "Text italic shape" "math-insert \textit"
+	Item "Text small caps shape" "math-insert \textsc"
+	Item "Text slanted shape" "math-insert \textsl"
+	Item "Text upright shape" "math-insert \textup"
+		End
+
+    Menu "insert_float"
+	FloatInsert
+# This has got to be better than "Wrap", anyway
+	Item "Text Wrap Float|W" "wrap-insert figure"
+    End
+
+    Menu "insert_toc"
+	Item "Table of Contents|C" "toc-insert"
+	FloatListInsert
+	Item "Index List|I" "index-print"
+	Item "BibTeX Reference...|B" "dialog-show-new-inset bibtex"
+    End
+
+    Menu "insert_file"
+	Item "LyX Document...|X" "file-insert"
+	Item "ASCII as Lines...|L" "file-insert-ascii"
+	Item "ASCII as Paragraphs...|P" "file-insert-ascii-para"
+    End
+
+#
+# DOCUMENT MENU
+#
+ 
+    Menu "document"
+	OptItem "Build Program|B" "build-program"
+	Item "LaTeX Log File...|L" "latex-view-log"
+	Item "Table of Contents...|T" "toc-view"
+	Separator
+	Submenu "Change tracking|C" "edit_change"
+	Item "LaTeX Preamble...|P" "layout-preamble"
+	Item "Settings...|S" "layout-document"
+	Item "Start Appendix Here|A" "appendix"
+    End
+ 
+    Menu "edit_change"
+	Item "Track changes|T" "track-changes"
+	Item "Merge changes...|M" "merge-changes"
+	Item "Accept all changes|A" "accept-all-changes"
+	Item "Reject all changes|R" "reject-all-changes"
+    End
+
+#
+# NAVIGATE MENU
+#
+    Menu "navigate"
+	Submenu "Bookmarks|B" "navigate_bookmarks"
+	Item "Error|E" "error-next"
+	Item "Note|N" "note-next"
+	Item "Refs|R" "reference-goto"
+	Separator
+	Toc
+    End
+
+    Menu "navigate_bookmarks"
+	Item "Save Bookmark 1|S" "bookmark-save 1"
+	Item "Save Bookmark 2" "bookmark-save 2"
+	Item "Save Bookmark 3" "bookmark-save 3"
+	Separator
+	Item "Go to Bookmark 1|1" "bookmark-goto 1"
+	Item "Go to Bookmark 2|2" "bookmark-goto 2"
+	Item "Go to Bookmark 3|3" "bookmark-goto 3"
+    End
+
+#
+# TOOLS MENU
+#
+ 
+    Menu "tools"
+	Item "Spellchecker...|S" "spellchecker"
+	OptItem "Thesaurus...|T" "thesaurus-entry"
+	OptItem "Check TeX|h" "buffer-chktex"
+	Separator
+	Item "View Child Processes...|C" "show-forks"
+	Item "TeX Information...|I" "help-Texinfo"
+	Separator
+# A LOT of applications have Tools->Prefs. Remember this
+# should be rarely used - Edit menu is not a good place to
+# have it.
+	Item "Preferences...|P" "dialog-preferences"
+	Item "Reconfigure|R" "reconfigure"
+    End
+ 
+#
+# HELP MENU
+#
+    Menu "help"
+	Item "Introduction|I" "help-open Intro"
+	Item "Tutorial|T" "help-open Tutorial"
+	Item "User's Guide|U" "help-open UserGuide"
+	Item "Extended Features|E" "help-open Extended"
+	Item "Customization|C" "help-open Customization"
+	Item "FAQ|F" "help-open FAQ"
+	Item "Table of Contents|a" "help-open TOC"
+	Item "LaTeX Configuration|L" "help-open LaTeXConfig"
+	Separator
+	Item "About LyX...|X" "help-aboutlyx"
+    End
+
+End
+
+# A Toolbar starts like :
+#
+# Toolbar "Name" "on" 
+#
+# The second parameter are the flags :
+#
+# on: the toolbar is visible
+# off: the toolbar is not visible
+# math: the toolbar is visible only when in math
+# table: the toolbar is visible only when in a table
+# top: the toolbar should be at the top of the window
+# bottom: the toolbar should be at the bottom of the window
+# left: the toolbar should be at the left of the window
+# right: the toolbar should be at the right of the window
+#
+# Only four commands are allowed inside the begin_toolbar and end_toolbar
+# directives: 
+#   Item "The tooltip" "<action> [<parameter>]" adds an icon to the toolbar performing
+#          "<action> <parameter>"
+#      Examples:
+#      Item "Small font" "font-size small"
+#      Item Emphasized set-emph
+#
+#   Layouts adds the layouts combo-box to the toolbar
+#
+#   Separator adds some spacing to the toolbar
+#
+#   Minibuffer adds the command buffer (Qt only, only one may exist)
+#
+# The icons are found in the lib/image direcory under the name
+# action.xpm or action_parameter.xpm, except for math-insert, which
+# is e.g. lib/image/math/sum.xpm. Note that some characters are
+# replaced (e.g. ')' -> rbracket).
+#
+#  All other lyx commands will get a "unknown" icon.
+#
+# This is the default toolbar:
+
+# slight rationalisations here
+
+Toolbar "Standard" "on,top"
+    Layouts
+    Item "New document" "buffer-new"
+    Item "Open document" "file-open"
+    Item "Save document" "buffer-write"
+    Item "Print document" "buffer-print"
+    Separator
+    Item "Undo" "undo"
+    Item "Redo" "redo"
+    Item "Cut" "cut"
+    Item "Copy" "copy"
+    Item "Paste" "paste"
+    Item "Find and replace" "find-replace"
+    Separator
+    Item "Toggle emphasis style" "font-emph"
+    Item "Toggle noun style" "font-noun"
+    Item "Toggle user style" "font-free-apply"
+    Separator
+    Item "Insert math" "math-mode"
+    Item "Insert graphics" "dialog-show-new-inset graphics"
+    Item "Insert table" "tabular-insert 4 4"
+End
+
+Toolbar "Extra" "off,top"
+    Item "Numbered list" "layout Enumerate"
+    Item "Itemized list" "layout Itemize"
+    Item "List" "layout List"
+    Item "Description" "layout Description"
+    Item "Increase depth" "depth-increment"
+    Item "Decrease depth" "depth-decrement"
+    Separator
+    Item "Insert figure float" "float-insert figure"
+    Item "Insert table float" "float-insert table"
+    Item "Insert label" "label-insert"
+    Item "Insert cross-reference" "dialog-show-new-inset ref"
+    Item "Insert citation" "dialog-show-new-inset citation"
+    Item "Insert index entry" "index-insert"
+    Separator
+    Item "Insert footnote" "footnote-insert"
+    Item "Insert margin note" "marginalnote-insert"
+    Item "Insert note" "note-insert"
+    Item "Insert URL" "url-insert"
+    Item "Insert TeX" "ert-insert"
+    Item "Include file" "dialog-show-new-inset include"
+    Separator
+    Item "Text Style" "layout-character"
+    Item "Paragraph Style" "layout-paragraph"
+    Item "Table of contents" "toc-view"
+    Item "Check spelling" "spellchecker"
+    Item "Thesaurus" "thesaurus-entry"
+End
+
+Toolbar "Table" "off,bottom"
+    Item "Add row" "tabular-feature append-row"
+    Item "Add column" "tabular-feature append-column"
+    Item "Delete row" "tabular-feature delete-row"
+    Item "Delete column" "tabular-feature delete-column"
+    Separator
+    Item "Set top line" "tabular-feature toggle-line-top"
+    Item "Set bottom line" "tabular-feature toggle-line-bottom"
+    Item "Set left line" "tabular-feature toggle-line-left"
+    Item "Set right line" "tabular-feature toggle-line-right"
+    Item "Set all lines" "tabular-feature set-all-lines"
+    Item "Unset all lines" "tabular-feature unset-all-lines"
+    Separator
+    Item "Left aligned" "tabular-feature align-left"
+    Item "Centered" "tabular-feature align-center"
+    Item "Right aligned" "tabular-feature align-right"
+    Item "Top aligned" "tabular-feature valign-top"
+    Item "Vertically centered" "tabular-feature valign-center"
+    Item "Bottom aligned" "tabular-feature valign-bottom"
+    Separator
+    Item "Rotate cell" "tabular-feature set-rotate-cell"
+    Item "Rotate table" "tabular-feature set-rotate-tabular"
+    Item "Set multi-column" "tabular-feature multicolumn"
+End
+
+Toolbar "Math" "off,bottom"
+    Item "Show math panel" "math-panel"
+    Item "Set display mode" "math-display"
+    Item "Subscript" "math-subscript"
+    Item "Superscript" "math-superscript"
+    Item "Insert root" "math-insert \sqrt"
+    Item "Insert square root" "math-insert \root"
+    Item "Insert sum" "math-insert \sum"
+    Item "Insert integral" "math-insert \int"
+    Item "Insert product" "math-insert \prod"
+    Separator
+    Item "Insert fraction" "math-insert \frac"
+    Item "Insert ( )" "math-delim ( )"
+    Item "Insert [ ]" "math-delim [ ]"
+    Item "Insert { }" "math-delim { }"
+    Separator
+    Item "Insert matrix" "math-matrix 2 2"
+    Item "Insert cases" "math-insert \cases"
+    Item "Add row" "tabular-feature append-row"
+    Item "Add column" "tabular-feature append-column"
+    Item "Delete row" "tabular-feature delete-row"
+    Item "Delete column" "tabular-feature delete-column"
+End
+
+Toolbar "Command Buffer" "off,bottom"
+    Minibuffer
+End

@@ -1,3 +1,12 @@
+2003-04-15  John Levon  <levon@movementarian.org>
+
+	* ui/new.ui: add new ui for testing
+
+2003-04-15  John Levon  <levon@movementarian.org>
+
+	* ui/default.ui: add toolbar placement flags,
+	and Minibuffer
+
 2003-04-11  Rob Lahaye  <lahaye@users.sourceforge.net>
 
 	* configure.m4: add another Grace conversion from agr to ppm.
@@ -10,7 +19,6 @@
 
 	* ToolbarBackend.h:
 	* ToolbarBackend.C: handle toolbar on/off settings
-
 
 2003-04-10  John Levon  <levon@movementarian.org>
 

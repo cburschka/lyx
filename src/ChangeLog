@@ -1,3 +1,11 @@
+2003-04-15  John Levon  <levon@movementarian.org>
+
+	* MenuBackend.C: make the doc files length shorter
+
+	* ToolbarBackend.h:
+	* ToolbarBackend.C: handle toolbar placement flags,
+	Minibuffer
+
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph_pimpl.C (simpleTeXSpecialChars): take a outerfont arg,
