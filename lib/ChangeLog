@@ -1,3 +1,9 @@
+2002-08-15  Juergen Spitzmueller <j.spitzmueller@gmx.de>
+
+	* bind/de_menus.bind: cleanup shortcuts for section layouts. Starred
+	versions are now obtained by prepending a * to the section number
+	(similar to the new behaviour in menus.bind); add binding for \part.
+
 2002-08-15  John Levon  <levon@movementarian.org>
 
 	* scripts/convertDefault.sh: use /bin/sh not /bin/bash
