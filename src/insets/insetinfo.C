@@ -132,26 +132,6 @@ int InsetInfo::Latex(ostream &, signed char /*fragile*/, bool /*free_spc*/) cons
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetInfo::Latex(string &, signed char /*fragile*/, bool /*free_spc*/) const
-{
-	return 0;
-}
-
-
-int InsetInfo::Linuxdoc(string &) const
-{
-	return 0;
-}
-
-
-int InsetInfo::DocBook(string &) const
-{
-	return 0;
-}
-
-#else
-
 int InsetInfo::Linuxdoc(ostream &) const
 {
 	return 0;
@@ -162,7 +142,6 @@ int InsetInfo::DocBook(ostream &) const
 {
 	return 0;
 }
-#endif
 
 
 Inset::EDITABLE InsetInfo::Editable() const

@@ -36,10 +36,6 @@ public:
     Inset * Clone() const;
     ///
     Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
-#ifndef USE_OSTREAM_ONLY
-    ///
-    int Latex(string &, signed char) const;
-#endif
     ///
     int Latex(ostream &, signed char, bool fp) const;
     ///

@@ -251,27 +251,6 @@ int InsetCommand::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetCommand::Latex(string & file, signed char /*fragile*/, bool/*fs*/) const
-{
-	file += getCommand();
-	return 0;
-}
-
-
-int InsetCommand::Linuxdoc(string &/*file*/) const
-{
-	return 0;
-}
-
-
-int InsetCommand::DocBook(string &/*file*/) const
-{
-	return 0;
-}
-
-#else
-
 int InsetCommand::Linuxdoc(ostream &) const
 {
 	return 0;
@@ -282,7 +261,6 @@ int InsetCommand::DocBook(ostream &) const
 {
 	return 0;
 }
-#endif
 
 
 Inset * InsetCommand::Clone() const

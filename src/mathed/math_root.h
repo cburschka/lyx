@@ -40,12 +40,6 @@ class MathRootInset: public MathSqrtInset {
     void draw(Painter &, int x, int baseline);
     ///
     void Write(ostream &);
-	
-#ifndef USE_OSTREAM_ONLY
-    ///
-    void Write(string & file);
-#endif
-	
     ///
     void Metrics();
     ///

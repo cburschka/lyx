@@ -19,7 +19,6 @@
 #include "LString.h"
 #include "support/LOstream.h"
 
-#define USE_OSTREAM_ONLY 1
 
 /* The features the text class offers for tables */ 
 
@@ -167,17 +166,10 @@ public:
 
 	// cell <0 will tex the preamble
 	// returns the number of printed newlines
-#ifdef USE_OSTREAM_ONLY
 	///
 	int TexEndOfCell(ostream &, int cell);
 	///
 	int DocBookEndOfCell(ostream &, int cell, int & depth);
-#else
-	///
-	int TexEndOfCell(string & file, int cell);
-	///
-	int DocBookEndOfCell(string & file, int cell, int & depth);
-#endif
 #if 0
 	///
 	int RoffEndOfCell(ostream &, int cell);

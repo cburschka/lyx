@@ -663,7 +663,6 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-#ifdef USE_OSTREAM_ONLY
 int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 				    LyXFont const & prev) const
 {
@@ -747,165 +746,8 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	}
 	return count;
 }
-#else
-int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base,
-				    LyXFont const & prev) const
-{
-	LyXFont f = *this;
-	f.reduce(base);
-	
-	if (f.bits == inherit)
-		return 0;
-	
-	int count = 0;
-	bool env = false;
-
-	FONT_DIRECTION direction = f.direction();
-	if (direction != prev.direction()) {
-		if (direction == LTR_DIR) {
-			file += "\\L{";
-			count += 3;
-			env = true; //We have opened a new environment
-		}
-		if (direction == RTL_DIR) {
-			file += "\\R{";
-			count += 3;
-			env = true; //We have opened a new environment
-		}
-	}
-
-	if (f.family() != INHERIT_FAMILY) {
-		file += '\\';
-		file += LaTeXFamilyNames[f.family()];
-		file += '{';
-		count += LaTeXFamilyNames[f.family()].length() + 2;
-		env = true; //We have opened a new environment
-	}
-	if (f.series() != INHERIT_SERIES) {
-		file += '\\';
-		file += LaTeXSeriesNames[f.series()];
-		file += '{';
-		count += LaTeXSeriesNames[f.series()].length() + 2;
-		env = true; //We have opened a new environment
-	}
-	if (f.shape() != INHERIT_SHAPE) {
-		file += '\\';
-		file += LaTeXShapeNames[f.shape()];
-		file += '{';
-		count += LaTeXShapeNames[f.shape()].length() + 2;
-		env = true; //We have opened a new environment
-	}
-	if (f.color() != LColor::inherit) {
-		file += "\\textcolor{";
-		file += lcolor.getLaTeXName(f.color());
-		file += "}{";
-		count += lcolor.getLaTeXName(f.color()).length() + 13;
-		env = true; //We have opened a new environment
-	}
-	if (f.emph() == ON) {
-		file += "\\emph{";
-		count += 6;
-		env = true; //We have opened a new environment
-	}
-	if (f.underbar() == ON) {
-		file += "\\underbar{";
-		count += 10;
-		env = true; //We have opened a new environment
-	}
-	// \noun{} is a LyX special macro
-	if (f.noun() == ON) {
-		file += "\\noun{";
-		count += 8;
-		env = true; //We have opened a new environment
-	}
-	if (f.size() != INHERIT_SIZE) {
-		// If we didn't open an environment above, we open one here
-		if (!env) {
-			file += '{';
-			++count;
-		}
-		file += '\\';
-		file += LaTeXSizeNames[f.size()];
-		file += ' ';
-		count += LaTeXSizeNames[f.size()].length() + 2;
-	}
-	return count;
-}
-#endif
 
 
-#ifndef USE_OSTREAM_ONLY
-/// Writes ending block of LaTeX needed to close use of this font
-// Returns number of chars written
-// This one corresponds to latexWriteStartChanges(). (Asger)
-int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base,
-				  LyXFont const & next) const
-{
-	LyXFont f = *this; // why do you need this?
-	f.reduce(base); // why isn't this just "reduce(base);" (Lgb)
-	// Because this function is const. Everything breaks if this
-	// method changes the font it represents. There is no speed penalty
-	// by using the temporary. (Asger)
-
-	if (f.bits == inherit)
-		return 0;
-	
-	int count = 0;
-	bool env = false;
-
-	FONT_DIRECTION direction = f.direction();
-	if ( direction != next.direction()
-	    && (direction == RTL_DIR || direction == LTR_DIR) ) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-
-	if (f.family() != INHERIT_FAMILY) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.series() != INHERIT_SERIES) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.shape() != INHERIT_SHAPE) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.color() != LColor::inherit) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.emph() == ON) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.underbar() == ON) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.noun() == ON) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.size() != INHERIT_SIZE) {
-		// We only have to close if only size changed
-		if (!env) {
-			file += '}';
-			++count;
-		}
-	}
-	return count;
-}
-#else
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
@@ -976,7 +818,6 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 	}
 	return count;
 }
-#endif
 
 
 LColor::color LyXFont::realColor() const

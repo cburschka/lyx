@@ -158,7 +158,6 @@ void MathMacro::SetFocus(int x, int y)
 
 void MathMacro::Write(ostream & os)
 {
-#ifdef USE_OSTREAM_ONLY
     if (tmplate->flags & MMF_Exp) {
 	    lyxerr[Debug::MATHED] << "Expand " << tmplate->flags
 				  << ' ' << MMF_Exp << endl; 
@@ -198,59 +197,7 @@ void MathMacro::Write(ostream & os)
 		    os << ' ';
 	}
     }
-#else
-   string output;
-   MathMacro::Write(output);
-   os << output;
-#endif
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-void MathMacro::Write(string &file)
-{
-    if (tmplate->flags & MMF_Exp) {
-	    lyxerr[Debug::MATHED] << "Expand " << tmplate->flags
-				  << ' ' << MMF_Exp << endl; 
-	tmplate->update(this);
-	tmplate->Write(file);
-    } else {
-	if (tmplate->flags & MMF_Env) {
-	  file += "\\begin{";
-	  file += name;
-	  file += "} ";
-	} else {
-	  file += '\\';
-	  file += name;
-	}
-//	if (options) { 
-//	  file += '[';
-//	  file += options;
-//	  file += ']';
-//      }
-	
-	if (!(tmplate->flags & MMF_Env) && nargs > 0) 
-	  file += '{';
-	
-	for (int i = 0; i < nargs; ++i) {
-	    array = args[i].array;
-	    MathParInset::Write(file);
-	    if (i < nargs - 1)  
-	      file += "}{";
-	}   
-	if (tmplate->flags & MMF_Env) {
-	    file += "\\end{";
-	    file += name;
-	    file += '}';
-	} else {
-	    if (nargs > 0) 
-	        file += '}';
-	    else
-	        file += ' ';
-	}
-    }
-}
-#endif
 
 
 /*---------------  Macro argument -----------------------------------*/
@@ -314,32 +261,12 @@ void MathMacroArgument::Metrics()
 
 void MathMacroArgument::Write(ostream & os)
 {
-#ifdef USE_OSTREAM_ONLY
     if (expnd_mode) {
 	MathParInset::Write(os);
     } else {
 	    os << '#' << number << ' ';
     }
-#else
-   string output;
-   MathMacroArgument::Write(output);
-   os << output;
-#endif
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-void MathMacroArgument::Write(string & file)
-{
-    if (expnd_mode) {
-	MathParInset::Write(file);
-    } else {
-	file += '#';
-	file += tostr(number);
-	file += ' ';
-    }
-}
-#endif
 
 
 /* --------------------- MathMacroTemplate ---------------------------*/
@@ -461,30 +388,6 @@ void MathMacroTemplate::WriteDef(ostream & os)
     Write(os); 
     os << "}\n";
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-void MathMacroTemplate::WriteDef(string & file)
-{
-    file += "\n\\newcommand{\\";
-    file += name;
-    file += '}';
-      
-    if (nargs > 0 ) {
-      file += '[';
-      file += tostr(nargs);
-      file += ']';
-    }
-    
-    file += '{';
-    
-    for (int i = 0; i < nargs; ++i) {
-	args[i].setExpand(false);
-    }	 
-    Write(file); 
-    file += "}\n";
-}
-#endif
 
 
 void MathMacroTemplate::setArgument(LyxArrayBase * a, int i)

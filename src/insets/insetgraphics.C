@@ -16,6 +16,95 @@
 
 #include "insets/insetgraphics.h"
 #include "Painter.h"
+#include "form_graphics.h"
+#include "lyx_gui_misc.h"
+#include "filedlg.h"
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+
+extern string system_lyxdir;
+extern string user_lyxdir;
+extern string system_tempdir;
+
+string browseFile();
+
+void GraphicxCB(FL_OBJECT * obj, long arg) 
+{
+	lyxerr << "GraphicxCB: obj = " << obj << " arg = " << arg << endl;
+	switch (arg) {
+	case 0: // The graphics file
+		lyxerr << "Set the graphics file in InsetGraphics" << endl;
+		break;
+	case 1: // The file browser
+		browseFile();
+		break;
+	case 2: // The Apply button
+		lyxerr << "Scan the form and set the "
+			"InsetGraphics accordingly." << endl;
+		break;
+	case 3: // The OK button
+		GraphicxCB(obj, 2); // do the apply
+		GraphicxCB(obj, 4); // do the cancel
+		break;
+	case 4: // The Cancel button
+		lyxerr << "Just hide the form and do nothing else!" << endl;
+		break;
+	case 99:
+		lyxerr << "Not implemented yet..." << endl;
+		break;
+	default:
+		lyxerr << "Unknown callback value!" << endl;
+		break;
+	}
+}
+
+
+string browseFile()
+{
+	// This function is probably not good enough yet, and does need some
+	// arguemnts to tell what dir to start looking in.
+	
+	static string current_figure_path = ".";
+
+	LyXFileDlg fileDlg;
+
+	// Does user clipart directory exist?
+	string bufclip = AddName (user_lyxdir, "clipart");	
+	FileInfo fileInfo(bufclip);
+	if (!(fileInfo.isOK() && fileInfo.isDir()))
+		// No - bail out to system clipart directory
+		bufclip = AddName (system_lyxdir, "clipart");	
+
+
+	fileDlg.SetButton(0, _("Clipart"), bufclip); 
+
+	bool error = false;
+	string buf;
+	do {
+		string p = fileDlg.Select(_("Graphics"),
+				   current_figure_path,
+				   "*ps", string());
+
+		if (p.empty()) return p;
+
+		current_figure_path = OnlyPath(p);
+
+		if (p.find_first_of("#~$% ") != string::npos) {
+			WriteAlert(_("Filename can't contain any "
+				     "of these characters:"),
+				   // xgettext:no-c-format
+				   _("space, '#', '~', '$' or '%'.")); 
+			error = true;
+		}
+	} while (error);
+
+	return buf;
+}
+
+
+InsetGraphics::InsetGraphics()
+	: form(0)
+{}
 
 
 int InsetGraphics::ascent(Painter &, LyXFont const &) const 
@@ -54,8 +143,22 @@ void InsetGraphics::draw(Painter & pain, LyXFont const & font,
 
 void InsetGraphics::Edit(BufferView *, int, int, unsigned int)
 {
-	// Here we want to popup a dialog from which we get the
-	// graphics paramters.
+	lyxerr.debug() << "InsetGraphics::Edit" << endl;
+
+	if (!form) {
+		form = create_form_Graphics();
+		fl_set_form_atclose(form->Graphics, CancelCloseBoxCB, 0);
+		fl_set_object_return(form->Angle, FL_RETURN_ALWAYS);
+		fl_set_object_return(form->Width, FL_RETURN_ALWAYS);
+		fl_set_object_return(form->Height, FL_RETURN_ALWAYS);
+	}
+
+	if (form->Graphics->visible) {
+		fl_raise_form(form->Graphics);
+	} else {
+		fl_show_form(form->Graphics, FL_PLACE_MOUSE | FL_PLACE_SIZE,
+			     FL_FULLBORDER, _("Graphics"));
+	}
 }
 
 
@@ -69,6 +172,8 @@ void InsetGraphics::Write(ostream & os) const
 {
 	// The question on the file format is still open.
 	// Suggestions?
+	// perhaps a format that is xml-parsable
+	//<graphics name="test.eps"/>
 	os << "GRAPHICS\n";
 }
 
@@ -225,26 +330,6 @@ int InsetGraphics::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) cons
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetGraphics::Latex(string & /*file*/, signed char /*fragile*/, bool/*fs*/) const
-{
-	return 0;
-}
-
-
-int InsetGraphics::Linuxdoc(string & /*file*/) const
-{
-	return 0;
-}
-
-
-int InsetGraphics::DocBook(string & /*file*/) const
-{
-	return 0;
-}
-
-#else
-
 int InsetGraphics::Linuxdoc(ostream &) const
 {
 	return 0;
@@ -255,7 +340,6 @@ int InsetGraphics::DocBook(ostream &) const
 {
 	return 0;
 }
-#endif
 
 
 void InsetGraphics::Validate(LaTeXFeatures & /*features*/) const

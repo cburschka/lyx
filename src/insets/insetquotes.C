@@ -226,7 +226,6 @@ void InsetQuotes::Read(LyXLex & lex)
 
 int InsetQuotes::Latex(ostream & os, signed char /*fragile*/, bool) const
 {
-#ifdef USE_OSTREAM_ONLY
 	string doclang = 
 		current_view->buffer()->GetLanguage();
 	int quoteind = quote_index[side][language];
@@ -262,75 +261,8 @@ int InsetQuotes::Latex(ostream & os, signed char /*fragile*/, bool) const
 
 	os << qstr;
 	return 0;
-#else
-	string quote;
-	int res = Latex(quote, 0, 0);
-	os << quote;
-	return res;
-#endif
 }
 
-
-#ifndef USE_OSTREAM_ONLY
-int InsetQuotes::Latex(string & file, signed char /*fragile*/, bool /*free_spc*/) const
-{
-	string doclang = 
-		current_view->buffer()->GetLanguage();
-	int quoteind = quote_index[side][language];
-	string qstr;
-	
-	if (lyxrc->fontenc == "T1") {
-		qstr = latex_quote_t1[times][quoteind];
-	}
-	else if (doclang == "default") {
-		qstr = latex_quote_ot1[times][quoteind];
-	} 
-	else if (language == InsetQuotes::FrenchQ 
-		 && times == InsetQuotes::DoubleQ
-		 && doclang == "frenchb") {
-		if (side == InsetQuotes::LeftQ) 
-			qstr = "\\og{}";
-		else 
-			qstr = " \\fg{}";
-	} 
-	else 
-		qstr = latex_quote_babel[times][quoteind];
-
-	// protect against !` and ?` ligatures.
-	if ((suffixIs(file, '?') || suffixIs(file, '!'))
-	    && qstr[0] == '`')
-		qstr = "{}" + qstr;
-
-	file += qstr;
-	return 0;
-}
-
-
-int InsetQuotes::Linuxdoc(string & file) const
-{
-	file += "\"";
-
-	return 0;
-}
-
-
-int InsetQuotes::DocBook(string & file) const
-{
-	if(times == InsetQuotes::DoubleQ) {
-		if (side == InsetQuotes::LeftQ)
-			file += "&ldquo;";
-		else
-			file += "&rdquo;";
-	} else {
-		if (side == InsetQuotes::LeftQ)
-			file += "&lsquo;";
-		else
-			file += "&rsquo;";
-	}
-	return 0;
-}
-
-#else
 
 int InsetQuotes::Linuxdoc(ostream & os) const
 {
@@ -354,7 +286,6 @@ int InsetQuotes::DocBook(ostream & os) const
 	}
 	return 0;
 }
-#endif
 
 
 void InsetQuotes::Validate(LaTeXFeatures & features) const 

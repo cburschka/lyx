@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *          Copyright (C) 1998 The LyX Team.
+ *          Copyright 1998 The LyX Team.
  *
  *======================================================*/
 
@@ -40,62 +40,43 @@ Inset * InsetFoot::Clone() const
 }
 
 
-const char * InsetFoot::EditMessage() const
+char const * InsetFoot::EditMessage() const
 {
     return _("Opened Footnote Inset");
 }
 
-#ifndef USE_OSTREAM_ONLY
-int InsetFoot::Latex(string & l, signed char fragile) const
-{
-    int i;
-    
-    if (fragile) 
-	l += "\\footnotetext{";
-    else 
-	l += "\\footnote{";
-
-    i = InsetText::Latex(l, fragile);
-    l += "}";
-
-    return i;
-}
-#endif
 
 int InsetFoot::Latex(ostream & os, signed char fragile, bool fp) const
 {
-    int i;
-    
-    if (fragile) 
-	os << "\\footnotetext{";
-    else 
-	os << "\\footnote{";
-
-    i = InsetText::Latex(os, fragile, fp);
-    os << "}";
-
-    return i;
+	if (fragile) 
+		os << "\\footnotetext{";
+	else 
+		os << "\\footnote{";
+	
+	int i = InsetText::Latex(os, fragile, fp);
+	os << "}";
+	
+	return i;
 }
+
 
 void InsetFoot::Write(ostream & os) const
 {
-    os << "Foot\n";
-    os << "\ncollapsed ";
-    if (display())
-	os << "false";
-    else
-	os << "true";
-    os << "\n";
-    WriteParagraphData(os);
+	os << "Foot\n"
+	   << "\ncollapsed ";
+	if (display())
+		os << "false\n";
+	else
+		os << "true\n";
+	WriteParagraphData(os);
 }
+
 
 void InsetFoot::Read(LyXLex & lex)
 {
     if (lex.IsOK()) {
-	string token, tmptok;
-        
 	lex.next();
-        token = lex.GetString();
+        string token = lex.GetString();
 	if (token == "collapsed") {
 	    lex.next();
 	    collapsed = lex.GetBool();
@@ -104,7 +85,8 @@ void InsetFoot::Read(LyXLex & lex)
     InsetText::Read(lex);
 }
 
-bool InsetFoot::InsertInset(BufferView *bv, Inset * inset)
+
+bool InsetFoot::InsertInset(BufferView * bv, Inset * inset)
 {
     if ((inset->LyxCode() == Inset::FOOT_CODE) ||
 	(inset->LyxCode() == Inset::MARGIN_CODE)) {

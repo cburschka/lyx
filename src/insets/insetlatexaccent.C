@@ -752,29 +752,6 @@ int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) c
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetLatexAccent::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
-{
-	file += contents;
-	return 0;
-}
-
-
-int InsetLatexAccent::Linuxdoc(string & file) const
-{
-	file += contents;
-	return 0;
-}
-
-
-int InsetLatexAccent::DocBook(string & file) const
-{
-	file += contents;
-	return 0;
-}
-
-#else
-
 int InsetLatexAccent::Linuxdoc(ostream & os) const
 {
 	os << contents;
@@ -787,7 +764,6 @@ int InsetLatexAccent::DocBook(ostream & os) const
 	os << contents;
 	return 0;
 }
-#endif
 
 
 bool InsetLatexAccent::Deletable() const

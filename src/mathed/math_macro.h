@@ -50,10 +50,6 @@ public:
     MathedInset * Clone();
 	///
     void Write(ostream &);
-#ifndef USE_OSTREAM_ONLY
-	///
-    void Write(string &);
-#endif
 	///
     bool setArgumentIdx(int);
 	///
@@ -120,17 +116,12 @@ public:
     void draw(Painter &, int x, int baseline);
 	///
     void Write(ostream &);
-#ifndef USE_OSTREAM_ONLY
-	///
-    void Write(string &);
-#endif
     ///
     void setNumber(int n) { number = n; }
     /// Is expanded or not
     void setExpand(bool e) { expnd_mode = e; }
     /// Is expanded or not
     bool getExpand() { return expnd_mode; }
-    
 private:
 	///
     bool expnd_mode;
@@ -152,10 +143,6 @@ public:
     void Metrics();
 	///
     void WriteDef(ostream &);
-#ifndef USE_OSTREAM_ONLY
-	///
-    void WriteDef(string &);
-#endif
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
     ///

@@ -317,7 +317,6 @@ bool InsetInclude::loadIfNeeded() const
 
 int InsetInclude::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
 {
-#ifdef USE_OSTREAM_ONLY
 	// Do nothing if no file name has been specified
 	if (contents.empty())
 		return 0;
@@ -383,92 +382,7 @@ int InsetInclude::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) cons
 	}
 
 	return 0;
-#else
-	string include_file;
-	signed char dummy = 0;
-	Latex(include_file, dummy, 0);
-	os << include_file;
-	return 0;
-#endif
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-int InsetInclude::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
-{
-	// Do nothing if no file name has been specified
-	if (contents.empty())
-		return 0;
-    
-	// Use += to force a copy of contents (JMarc)
-	string incfile += contents;
-
-	if (loadIfNeeded()) {
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
-
-		if (tmp->params.textclass != master->params.textclass) {
-			lyxerr << "ERROR: Cannot handle include file `"
-			       << MakeDisplayPath(getFileName())
-			       << "' which has textclass `"
-			       << textclasslist.NameOfClass(tmp->params.textclass)
-			       << "' instead of `"
-			       << textclasslist.NameOfClass(master->params.textclass)
-			       << "'." << endl;
-			return 0;
-		}
-		
-		// write it to a file (so far the complete file)
-		string writefile =
-			ChangeExtension(getFileName(), ".tex", false);
-		if (!master->tmppath.empty()
-		    && !master->niceFile) {
-			incfile = subst(incfile, '/','@');
-#ifdef __EMX__
-			incfile = subst(incfile, ':', '$');
-#endif
-			writefile = AddName(master->tmppath, incfile);
-		} else
-			writefile = getFileName();
-		writefile = ChangeExtension(writefile, ".tex", false);
-		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
-		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
-		
-		tmp->markDepClean(master->tmppath);
-		
-		tmp->makeLaTeXFile(writefile,
-				   OnlyPath(getMasterFilename()), 
-				   master->niceFile, true);
-	} 
-
-	if (isVerb()) {
-		file += '\\';
-		file += command + '{';
-		file += incfile + '}';
-	} 
-	else if (isInput()) {
-		// \input wants file with extension (default is .tex)
-		if (!IsLyXFilename(getFileName())) {
-			file += '\\';
-			file += command + '{';
-			file += incfile + '}';
-		} else {
-			file += '\\';
-			file += command + '{';
-			file += ChangeExtension(incfile, ".tex", false)
-				+ '}';
-		}
-	} else {
-		// \include don't want extension and demands that the
-		// file really have .tex
-		file += '\\';
-		file += command + '{';
-		file += 	ChangeExtension(incfile, string(), false)
-			+ '}';
-	}
-
-	return 0;
-}
-#endif
 
 
 void InsetInclude::Validate(LaTeXFeatures & features) const

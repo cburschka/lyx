@@ -79,29 +79,6 @@ int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/,
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/, 
-			     bool /*free_spacing*/) const
-{
-    int ret = 1;
-    tmacro->WriteDef(file);
-    return ret;
-}
-
-
-int InsetFormulaMacro::Linuxdoc(string &/*file*/) const
-{
-    return 0;
-}
-
-
-int InsetFormulaMacro::DocBook(string &/*file*/) const
-{
-    return 0;
-}
-
-#else
-
 int InsetFormulaMacro::Linuxdoc(ostream &) const
 {
     return 0;
@@ -112,7 +89,6 @@ int InsetFormulaMacro::DocBook(ostream &) const
 {
     return 0;
 }
-#endif
 
 
 void InsetFormulaMacro::Read(LyXLex & lex)

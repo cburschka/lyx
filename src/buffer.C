@@ -1576,7 +1576,6 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 }
 
 
-#ifdef USE_OSTREAM_ONLY
 void Buffer::makeLaTeXFile(string const & fname, 
 			   string const & original_path,
 			   bool nice, bool only_body)
@@ -2108,531 +2107,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 	
 	lyxerr.debug() << "Finished making latex file." << endl;
 }
-#else
-void Buffer::makeLaTeXFile(string const & fname, 
-			   string const & original_path,
-			   bool nice, bool only_body)
-{
-	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
-	
-	niceFile = nice; // this will be used by Insetincludes.
-
-	tex_code_break_column = lyxrc->ascii_linelen;
-
-        LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
-
-	ofstream ofs(fname.c_str());
-	if (!ofs) {
-		WriteFSAlert(_("Error: Cannot open file: "), fname);
-		return;
-	}
-	
-	// validate the buffer.
-	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(tclass.numLayouts());
-	validate(features);
-	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
-	
-	texrow.reset();
-	// The starting paragraph of the coming rows is the 
-	// first paragraph of the document. (Asger)
-	texrow.start(paragraph, 0);
-
-	string LFile;
-	
-	if (!only_body && nice) {
-		LFile += "%% " LYX_DOCVERSION " created this file.  "
-		         "For more info, see http://www.lyx.org/.\n";
-		LFile += "%% Do not edit unless you really know what you are doing.\n";
-		texrow.newline();
-		texrow.newline();
-	}
-	lyxerr.debug() << "lyx header finished" << endl;
-	// There are a few differences between nice LaTeX and usual files:
-	// usual is \batchmode and has a 
-	// special input@path to allow the including of figures
-	// with either \input or \includegraphics (what figinsets do).
-	// batchmode is not set if there is a tex_code_break_column.
-	// In this case somebody is interested in the generated LaTeX,
-	// so this is OK. input@path is set when the actual parameter
-	// original_path is set. This is done for usual tex-file, but not
-	// for nice-latex-file. (Matthias 250696)
-	if (!only_body) {
-		if (!nice){
-			// code for usual, NOT nice-latex-file
-			LFile += "\\batchmode\n"; // changed
-			// from \nonstopmode
-			texrow.newline();
-		}
-		if (!original_path.empty()) {
-			LFile += "\\makeatletter\n";
-			texrow.newline();
-			LFile += "\\def\\input@path{{" + original_path
-				 + "/}}\n";
-			texrow.newline();
-			LFile += "\\makeatother\n";
-			texrow.newline();
-		}
-		
-		LFile += "\\documentclass";
-		
-		string options; // the document class options.
-		
-		if (tokenPos(tclass.opt_fontsize(), '|', params.fontsize) >= 0) {
-			// only write if existing in list (and not default)
-			options += params.fontsize;
-			options += "pt,";
-		}
-		
-		
-		if (!params.use_geometry &&
-		    (params.paperpackage == BufferParams::PACKAGE_NONE)) {
-			switch (params.papersize) {
-			case BufferParams::PAPER_A4PAPER:
-				options += "a4paper,";
-				break;
-			case BufferParams::PAPER_USLETTER:
-				options += "letterpaper,";
-				break;
-			case BufferParams::PAPER_A5PAPER:
-				options += "a5paper,";
-				break;
-			case BufferParams::PAPER_B5PAPER:
-				options += "b5paper,";
-				break;
-			case BufferParams::PAPER_EXECUTIVEPAPER:
-				options += "executivepaper,";
-				break;
-			case BufferParams::PAPER_LEGALPAPER:
-				options += "legalpaper,";
-				break;
-			}
-		}
-
-		// if needed
-		if (params.sides != tclass.sides()) {
-			switch (params.sides) {
-			case LyXTextClass::OneSide:
-				options += "oneside,";
-				break;
-			case LyXTextClass::TwoSides:
-				options += "twoside,";
-				break;
-			}
-
-		}
-
-		// if needed
-		if (params.columns != tclass.columns()) {
-			if (params.columns == 2)
-				options += "twocolumn,";
-			else
-				options += "onecolumn,";
-		}
-
-		if (!params.use_geometry 
-		    && params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-			options += "landscape,";
-		
-		// language should be a parameter to \documentclass		
-		if (params.language != "default") {
-			if (params.language == "hebrew")
-				options += "english,";
-			else if (lyxrc->rtl_support)
-				options += "hebrew,";
-			options += params.language + ',';
-		} else if (lyxrc->rtl_support)
-			options += "hebrew,english,";
-
-		// the user-defined options
-		if (!params.options.empty()) {
-			options += params.options + ',';
-		}
-		
-		if (!options.empty()){
-			options = strip(options, ',');
-			LFile += '[';
-			LFile += options;
-			LFile += ']';
-		}
-		
-		LFile += '{';
-		LFile += textclasslist.LatexnameOfClass(params.textclass);
-		LFile += "}\n";
-		texrow.newline();
-		// end of \documentclass defs
-		
-		// font selection must be done before loading fontenc.sty
-		if (params.fonts != "default") {
-			LFile += "\\usepackage{" + params.fonts + "}\n";
-			texrow.newline();
-		}
-		// this one is not per buffer
-		if (lyxrc->fontenc != "default") {
-			LFile += "\\usepackage[" + lyxrc->fontenc
-				 + "]{fontenc}\n";
-			texrow.newline();
-		}
-		if (params.inputenc != "default") {
-			LFile += "\\usepackage[" + params.inputenc
-				 + "]{inputenc}\n";
-			texrow.newline();
-		}
-		
-		/* at the very beginning the text parameters */
-		if (params.paperpackage != BufferParams::PACKAGE_NONE) {
-			switch (params.paperpackage) {
-			case BufferParams::PACKAGE_A4:
-				LFile += "\\usepackage{a4}\n";
-				texrow.newline();
-				break;
-			case BufferParams::PACKAGE_A4WIDE:
-				LFile += "\\usepackage{a4wide}\n";
-				texrow.newline();
-				break;
-			case BufferParams::PACKAGE_WIDEMARGINSA4:
-				LFile += "\\usepackage[widemargins]{a4}\n";
-				texrow.newline();
-				break;
-			}
-		}
-		if (params.use_geometry) {
-			LFile += "\\usepackage{geometry}\n";
-			texrow.newline();
-			LFile += "\\geometry{verbose";
-			if (params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-				LFile += ",landscape";
-			switch (params.papersize2) {
-			case BufferParams::VM_PAPER_CUSTOM:
-				if (!params.paperwidth.empty())
-					LFile += ",paperwidth="
-						 + params.paperwidth;
-				if (!params.paperheight.empty())
-					LFile += ",paperheight="
-						 + params.paperheight;
-				break;
-			case BufferParams::VM_PAPER_USLETTER:
-				LFile += ",letterpaper";
-				break;
-			case BufferParams::VM_PAPER_USLEGAL:
-				LFile += ",legalpaper";
-				break;
-			case BufferParams::VM_PAPER_USEXECUTIVE:
-				LFile += ",executivepaper";
-				break;
-			case BufferParams::VM_PAPER_A3:
-				LFile += ",a3paper";
-				break;
-			case BufferParams::VM_PAPER_A4:
-				LFile += ",a4paper";
-				break;
-			case BufferParams::VM_PAPER_A5:
-				LFile += ",a5paper";
-				break;
-			case BufferParams::VM_PAPER_B3:
-				LFile += ",b3paper";
-				break;
-			case BufferParams::VM_PAPER_B4:
-				LFile += ",b4paper";
-				break;
-			case BufferParams::VM_PAPER_B5:
-				LFile += ",b5paper";
-				break;
-			default:
-				// default papersize ie BufferParams::VM_PAPER_DEFAULT
-				switch (lyxrc->default_papersize) {
-				case BufferParams::PAPER_DEFAULT: // keep compiler happy
-				case BufferParams::PAPER_USLETTER:
-					LFile += ",letterpaper";
-					break;
-				case BufferParams::PAPER_LEGALPAPER:
-					LFile += ",legalpaper";
-					break;
-				case BufferParams::PAPER_EXECUTIVEPAPER:
-					LFile += ",executivepaper";
-					break;
-				case BufferParams::PAPER_A3PAPER:
-					LFile += ",a3paper";
-					break;
-				case BufferParams::PAPER_A4PAPER:
-					LFile += ",a4paper";
-					break;
-				case BufferParams::PAPER_A5PAPER:
-					LFile += ",a5paper";
-					break;
-				case BufferParams::PAPER_B5PAPER:
-					LFile += ",b5paper";
-					break;
-				}
-			}
-			if (!params.topmargin.empty())
-				LFile += ",tmargin=" + params.topmargin;
-			if (!params.bottommargin.empty())
-				LFile += ",bmargin=" + params.bottommargin;
-			if (!params.leftmargin.empty())
-				LFile += ",lmargin=" + params.leftmargin;
-			if (!params.rightmargin.empty())
-				LFile += ",rmargin=" + params.rightmargin;
-			if (!params.headheight.empty())
-				LFile += ",headheight=" + params.headheight;
-			if (!params.headsep.empty())
-				LFile += ",headsep=" + params.headsep;
-			if (!params.footskip.empty())
-				LFile += ",footskip=" + params.footskip;
-			LFile += "}\n";
-			texrow.newline();
-		}
-		if (params.use_amsmath
-		    && !prefixIs(textclasslist.LatexnameOfClass(params.textclass), "ams")) {
-			LFile += "\\usepackage{amsmath}\n";
-		}
-
-		if (tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle) >= 0) {
-			if (params.pagestyle == "fancy") {
-				LFile += "\\usepackage{fancyhdr}\n";
-				texrow.newline();
-			}
-			LFile += "\\pagestyle{" + params.pagestyle + "}\n";
-			texrow.newline();
-		}
-
-		// We try to load babel late, in case it interferes
-		// with other packages.
-		if (params.language != "default" || lyxrc->rtl_support ) {
-			LFile += "\\usepackage{babel}\n";
-			texrow.newline();
-		}
-
-		if (params.secnumdepth != tclass.secnumdepth()) {
-			LFile += "\\setcounter{secnumdepth}{";
-			LFile += tostr(params.secnumdepth);
-			LFile += "}\n";
-			texrow.newline();
-		}
-		if (params.tocdepth != tclass.tocdepth()) {
-			LFile += "\\setcounter{tocdepth}{";
-			LFile += tostr(params.tocdepth);
-			LFile += "}\n";
-			texrow.newline();
-		}
-		
-		if (params.paragraph_separation) {
-			switch (params.defskip.kind()) {
-			case VSpace::SMALLSKIP: 
-				LFile += "\\setlength\\parskip{\\smallskipamount}\n";
-				break;
-			case VSpace::MEDSKIP:
-				LFile += "\\setlength\\parskip{\\medskipamount}\n";
-				break;
-			case VSpace::BIGSKIP:
-				LFile += "\\setlength\\parskip{\\bigskipamount}\n";
-				break;
-			case VSpace::LENGTH:
-				LFile += "\\setlength\\parskip{"
-					 + params.defskip.length().asLatexString()
-					 + "}\n";
-				break;
-			default: // should never happen // Then delete it.
-				LFile += "\\setlength\\parskip{\\medskipamount}\n";
-				break;
-			}
-			texrow.newline();
-			
-			LFile += "\\setlength\\parindent{0pt}\n";
-			texrow.newline();
-		}
-
-		// Write out what we've generated so far...and reset LFile
-		ofs << LFile;
-		LFile.clear(); 
-
-		// Now insert the LyX specific LaTeX commands...
-		string preamble, tmppreamble;
-
-		// The optional packages;
-		preamble = features.getPackages(params);
-
-		// this might be useful...
-		preamble += "\n\\makeatletter\n\n";
-
-		// Some macros LyX will need
-		tmppreamble = features.getMacros(params);
-
-		if (!tmppreamble.empty()) {
-			preamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-				"LyX specific LaTeX commands.\n"
-				+ tmppreamble + '\n';
-		}
-
-		// the text class specific preamble 
-		tmppreamble = features.getTClassPreamble(params);
-		if (!tmppreamble.empty()) {
-			preamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-				"Textclass specific LaTeX commands.\n"
-				+ tmppreamble + '\n';
-		}
-
-		/* the user-defined preamble */
-		if (!params.preamble.empty()) {
-			preamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-				"User specified LaTeX commands.\n"
-				+ params.preamble + '\n';
-		}
-
-		preamble += "\\makeatother\n\n";
-
-		// Itemize bullet settings need to be last in case the user
-		// defines their own bullets that use a package included
-		// in the user-defined preamble -- ARRae
-		// Actually it has to be done much later than that
-		// since some packages like frenchb make modifications
-		// at \begin{document} time -- JMarc 
-		string bullets_def;
-		for (int i = 0; i < 4; ++i) {
-			if (params.user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
-				if (bullets_def.empty())
-					bullets_def="\\AtBeginDocument{\n";
-				bullets_def += "  \\renewcommand{\\labelitemi";
-				switch (i) {
-				// `i' is one less than the item to modify
-				case 0:
-					break;
-				case 1:
-					bullets_def += 'i';
-					break;
-				case 2:
-					bullets_def += "ii";
-					break;
-				case 3:
-					bullets_def += 'v';
-					break;
-				}
-				bullets_def += "}{" + 
-				  params.user_defined_bullets[i].getText() 
-				  + "}\n";
-			}
-		}
-
-		if (!bullets_def.empty())
-		  preamble += bullets_def + "}\n\n";
-
-		for (int j = countChar(preamble, '\n'); j-- ;) {
-			texrow.newline();
-		}
-
-		ofs << preamble;
-
-		// make the body.
-		LFile += "\\begin{document}\n\n";
-		texrow.newline();
-		texrow.newline();
-	} // only_body
-	lyxerr.debug() << "preamble finished, now the body." << endl;
-	
-	bool was_title = false;
-	bool already_title = false;
-	string ftnote;
-	TexRow ft_texrow;
-	int ftcount = 0;
-	int loop_count = 0;
-
-	LyXParagraph * par = paragraph;
-
-	// if only_body
-	while (par) {
-		++loop_count;
-		if (par->IsDummy())
-			lyxerr[Debug::LATEX] << "Error in MakeLateXFile."
-					     << endl;
-		LyXLayout const & layout =
-			textclasslist.Style(params.textclass,
-					    par->layout);
-	    
-	        if (layout.intitle) {
-			if (already_title) {
-				lyxerr <<"Error in MakeLatexFile: You"
-					" should not mix title layouts"
-					" with normal ones." << endl;
-			} else
-				was_title = true;
-	        } else if (was_title && !already_title) {
-			LFile += "\\maketitle\n";
-			texrow.newline();
-			already_title = true;
-			was_title = false;		    
-		}
-		// We are at depth 0 so we can just use
-		// ordinary \footnote{} generation
-		// flag this with ftcount
-		ftcount = -1;
-		if (layout.isEnvironment()
-                    || par->pextra_type != LyXParagraph::PEXTRA_NONE) {
-			par = par->TeXEnvironment(LFile, texrow,
-						  ftnote, ft_texrow, ftcount);
-		} else {
-			par = par->TeXOnePar(LFile, texrow,
-					     ftnote, ft_texrow, ftcount);
-		}
-
-		// Write out what we've generated...and reset LFile
-		if (ftcount >= 1) {
-			if (ftcount > 1) {
-				LFile += "\\addtocounter{footnote}{-";
-				LFile += tostr(ftcount - 1);
-				LFile += '}';
-			}
-			LFile += ftnote;
-			texrow += ft_texrow;
-			ftnote.clear();
-			ft_texrow.reset();
-			ftcount = 0;
-		}
-		if (loop_count == 2) {
-			// fwrite()ing every second time through the loop
-			// gains a few extra % of speed; going higher than
-			// 2 will slow things down again.  I'll look at
-			// LFile.length() in a future revision.  ARRae
-			ofs << LFile;
-			LFile.clear();
-			loop_count = 0;
-		}
-	}
-
-	// It might be that we only have a title in this document
-	if (was_title && !already_title) {
-		LFile += "\\maketitle\n";
-		texrow.newline();
-	}
-
-	if (!only_body) {
-		LFile += "\\end{document}\n";
-		texrow.newline();
-	
-		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
-	} else {
-		lyxerr[Debug::LATEX] << "LaTeXFile for inclusion made."
-				     << endl;
-	}
-
-	// Just to be sure. (Asger)
-	texrow.newline();
-
-	// Write out what we've generated...and reset LFile
-	ofs << LFile;
-	LFile.clear();
-
-	// tex_code_break_column's value is used to decide
-	// if we are in batchmode or not (within mathed_write()
-	// in math_write.C) so we must set it to a non-zero
-	// value when we leave otherwise we save incorrect .lyx files.
-	tex_code_break_column = lyxrc->ascii_linelen;
-
-	// How to check if the close went ok when using fstreams
-	ofs.close();
-	lyxerr.debug() << "Finished making latex file." << endl;
-}
-#endif
 
 
 bool Buffer::isLatex() const
@@ -2878,24 +2352,12 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 	    tpar->layout == textclasslist.NumberOfLayout(params.textclass,
 							 "Caption").second) {
 		sgmlOpenTag(os, depth + 1, inner_tag);
-#ifdef USE_OSTREAM_ONLY
 		string extra_par;
 		SimpleDocBookOnePar(os, extra_par, tpar,
 				    desc_on, depth + 2);
 		sgmlCloseTag(os, depth+1, inner_tag);
 		if(!extra_par.empty())
 			os << extra_par;
-#else
-		string tmp_par, extra_par;
-		SimpleDocBookOnePar(tmp_par, extra_par, tpar,
-				    desc_on, depth + 2);
-		tmp_par = strip(tmp_par);
-		tmp_par = frontStrip(tmp_par);
-		os << tmp_par;
-		sgmlCloseTag(os, depth+1, inner_tag);
-		if(!extra_par.empty())
-			os << extra_par;
-#endif
 	}
 }
 
@@ -2981,7 +2443,6 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 		if (par->layout != textclasslist
 		    .NumberOfLayout(params.textclass,
 				    "Caption").second) {
-#ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 			ostringstream ost;
 #else
@@ -2996,8 +2457,6 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 			char * ctmp = ost.str();
 			tmp_par += ctmp;
 			delete [] ctmp;
-#endif
-#else
 #endif
 		}
 		tmp_par = frontStrip(strip(tmp_par));
@@ -3209,15 +2668,8 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 			++char_line_count;
 		} else if (c == LyXParagraph::META_INSET) {
 			inset = par->GetInset(i);
-#ifdef USE_OSTREAM_ONLY
 			inset->Linuxdoc(os);
-#else
-			string tmp_out;
-			inset->Linuxdoc(tmp_out);
-			os << tmp_out;
-#endif
-		}
-		else {
+		} else {
 			string sgml_string;
 			if (par->linuxDocConvertChar(c, sgml_string)
 			    && !style.free_spacing) { // in freespacing
@@ -3503,24 +2955,12 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 		}
 
 		do {
-#ifdef USE_OSTREAM_ONLY
 			string extra_par;
 			SimpleDocBookOnePar(ofs, extra_par, par, desc_on,
 					    depth + 1 + command_depth);
 			par = par->next;
 			DocBookHandleFootnote(ofs, par,
 					      depth + 1 + command_depth);
-#else
-			string tmp_par, extra_par;
-
-			SimpleDocBookOnePar(tmp_par, extra_par, par, desc_on,
-					    depth + 1 + command_depth);
-			ofs << tmp_par;
-
-			par = par->next;
-			DocBookHandleFootnote(ofs, par,
-					      depth + 1 + command_depth);
-#endif
 		}
 		while(par && par->IsDummy());
 
@@ -3582,7 +3022,6 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 }
 
 
-#ifdef USE_OSTREAM_ONLY
 void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				 LyXParagraph * par, int & desc_on,
 				 int const depth) 
@@ -3713,133 +3152,6 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 	}
 	os << '\n';
 }
-#else
-void Buffer::SimpleDocBookOnePar(string & file, string & extra,
-				 LyXParagraph * par, int & desc_on,
-				 int const depth) 
-{
-	if (par->table) {
-		par->SimpleDocBookOneTablePar(file, extra, desc_on, depth);
-		return;
-	}
-	LyXFont font1, font2;
-	char c;
-	Inset * inset;
-	LyXParagraph::size_type main_body;
-	int j;
-	string emph= "emphasis";
-	bool emph_flag= false;
-
-	LyXLayout const & style = textclasslist.Style(params.textclass,
-						      par->GetLayout());
-
-	if (style.labeltype != LABEL_MANUAL)
-		main_body = 0;
-	else
-		main_body = par->BeginningOfMainBody();
-
-	/* gets paragraph main font */
-	if (main_body > 0)
-		font1 = style.labelfont;
-	else
-		font1 = style.font;
-
-	int char_line_count = depth;
-	if(!style.free_spacing)
-		for (j = 0; j < depth; ++j)
-			file += ' ';
-
-	/* parsing main loop */
-	for (LyXParagraph::size_type i = 0;
-	     i < par->size(); ++i) {
-		font2 = par->getFont(i);
-
-		/* handle <emphasis> tag */
-		if (font1.emph() != font2.emph() && i) {
-			if (font2.emph() == LyXFont::ON) {
-				file += "<emphasis>";
-				emph_flag= true;
-			}else {
-				file += "</emphasis>";
-				emph_flag= false;
-			}
-		}
-      
-		c = par->GetChar(i);
-
-		if (c == LyXParagraph::META_INSET) {
-			inset = par->GetInset(i);
-			string tmp_out;
-			inset->DocBook(tmp_out);
-
-			//
-			// This code needs some explanation:
-			// Two insets are treated specially
-			//   label if it is the first element in a command paragraph
-			//         desc_on == 3
-			//   graphics inside tables or figure floats can't go on
-			//   title (the equivalente in latex for this case is caption
-			//   and title should come first
-			//         desc_on == 4
-			//
-			if(desc_on!= 3 || i!= 0) {
-				if(!tmp_out.empty() && tmp_out[0] == '@') {
-					if(desc_on == 4)
-						extra += frontStrip(tmp_out, '@');
-					else
-						file += frontStrip(tmp_out, '@');
-				}
-				else
-					file += tmp_out;
-			}
-		} else if (font2.latex() == LyXFont::ON) {
-			// "TeX"-Mode on ==> SGML-Mode on.
-			if (c!= '\0')
-				file += c;
-			++char_line_count;
-		}
-		else {
-			string sgml_string;
-			if (par->linuxDocConvertChar(c, sgml_string)
-			    && !style.free_spacing) { // in freespacing
-				                     // mode, spaces are
-				                     // non-breaking characters
-				// char is ' '
-				if (desc_on == 1) {
-					++char_line_count;
-					file += '\n';
-					file += "</term><listitem><para>";
-					desc_on = 2;
-				}
-				else  {
-					file += c;
-				}
-			}
-			else {
-				file += sgml_string;
-			}
-		}
-		font1 = font2;
-	}
-
-	/* needed if there is an optional argument but no contents */
-	if (main_body > 0 && main_body == par->size()) {
-		font1 = style.font;
-	}
-	if (emph_flag) {
-		file += "</emphasis>";
-	}
-	
-	/* resets description flag correctly */
-	switch(desc_on){
-	case 1:
-		/* <term> not closed... */
-		file += "</term>";
-		break;
-	}
-	file += '\n';
-}
-#endif
 
 
 int Buffer::runLaTeX()

@@ -191,7 +191,6 @@ void InsetSpecialChar::Read(LyXLex & lex)
 int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/,
 			    bool free_space) const
 {
-#ifdef USE_OSTREAM_ONLY
 	switch (kind) {
 	case HYPHENATION:	  os << "\\-";	break;
 	case END_OF_SENTENCE:	  os << "\\@.";	break;
@@ -200,57 +199,8 @@ int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/,
 	case PROTECTED_SEPARATOR: os << (free_space ? " " : "~"); break;
 	}
 	return 0;
-#else
-	string command;
-	signed char dummy = 0;
-	Latex(command, dummy, free_space);
-	os << command;
-	return 0;
-#endif
 }
 
-
-#ifndef USE_OSTREAM_ONLY
-int InsetSpecialChar::Latex(string & file, signed char /*fragile*/,
-			    bool free_space) const
-{
-	switch (kind) {
-	case HYPHENATION:	file += "\\-";	break;
-	case END_OF_SENTENCE:	file += "\\@.";	break;
-	case LDOTS:		file += "\\ldots{}";	break;
-	case MENU_SEPARATOR:    file += "\\lyxarrow{}"; break;
-	case PROTECTED_SEPARATOR: file += (free_space ? " " : "~"); break;
-	}
-	return 0;
-}
-
-
-int InsetSpecialChar::Linuxdoc(string & file) const
-{
-	switch (kind) {
-	case HYPHENATION:	file += "";	break;
-	case END_OF_SENTENCE:	file += "";	break;
-	case LDOTS:		file += "...";	break;
-	case MENU_SEPARATOR:    file += "->";   break;
-	case PROTECTED_SEPARATOR:    file += " ";   break;
-	}
-	return 0;
-}
-
-
-int InsetSpecialChar::DocBook(string & file) const
-{
-	switch (kind) {
-	case HYPHENATION:	file += "";	break;
-	case END_OF_SENTENCE:	file += "";	break;
-	case LDOTS:		file += "...";	break;
-	case MENU_SEPARATOR:    file += "->";   break;
-	case PROTECTED_SEPARATOR:    file += " ";   break;
-	}
-	return 0;
-}
-
-#else
 
 int InsetSpecialChar::Linuxdoc(ostream & os) const
 {
@@ -276,7 +226,6 @@ int InsetSpecialChar::DocBook(ostream & os) const
 	}
 	return 0;
 }
-#endif
 
 
 Inset * InsetSpecialChar::Clone() const

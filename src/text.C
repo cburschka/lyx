@@ -2966,14 +2966,10 @@ char * LyXText::SelectNextWord(float & value)
 	/* Start the selection from here */
 	sel_cursor = cursor;
 
-#ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 	ostringstream latex;
 #else
 	ostrstream latex;
-#endif
-#else
-	string latex;
 #endif
 	/* and find the end of the word 
 	   (optional hyphens are part of a word) */
@@ -2982,22 +2978,16 @@ char * LyXText::SelectNextWord(float & value)
 	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		       && cursor.par->GetInset(cursor.pos) != 0
 		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0, false) == 0
-#ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
 #else
 		&& string(latex.str(), 3) == "\\-" // this is not nice at all
 #endif
-#else
-		       && latex == "\\-"
-#endif
 			   ))
 		cursor.pos++;
 
-#ifdef USE_OSTREAM_ONLY
 #ifndef HAVE_SSTREAM
 	delete [] latex.str();
-#endif
 #endif
 	// Finally, we copy the word to a string and return it
 	char * str = 0;
@@ -3024,14 +3014,10 @@ void LyXText::SelectSelectedWord()
 	/* set the sel cursor */
 	sel_cursor = cursor;
 
-#ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 	ostringstream latex;
 #else
 	ostrstream latex;
-#endif
-#else
-	string latex;
 #endif
 	
 	/* now find the end of the word */
@@ -3040,22 +3026,16 @@ void LyXText::SelectSelectedWord()
 	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		       && cursor.par->GetInset(cursor.pos) != 0
 		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0, false) == 0
-#ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
 #else
 		       && string(latex.str(), 3) == "\\-"
 #endif
-#else
-		       && latex == "\\-"
-#endif
 			   )))
 		cursor.pos++;
 	
-#ifdef USE_OSTREAM_ONLY
 #ifndef HAVE_SSTREAM
 	delete [] latex.str();
-#endif
 #endif
 	SetCursor(cursor.par, cursor.pos);
 	
@@ -3732,10 +3712,33 @@ void LyXText::GetVisibleRow(int offset,
 			y_top += LYX_PAPER_MARGIN;
 		
 		if (row_ptr->par->pagebreak_top){ /* draw a top pagebreak  */
+#if 0
 			pain.line(0, offset + y_top + 2 * DefaultHeight(),
 				  paperwidth,
 				  offset + y_top + 2 * DefaultHeight(),
 				  LColor::pagebreak, Painter::line_onoffdash);
+#else
+			LyXFont pb_font;
+			pb_font.setColor(LColor::pagebreak).decSize();
+			int w = 0, a = 0, d = 0;
+			pain.line(0, offset + y_top + 2*DefaultHeight(),
+				  paperwidth, 
+				  offset + y_top + 2*DefaultHeight(),
+				  LColor::pagebreak, 
+				  Painter::line_onoffdash)
+				.rectText(0,
+					  0,
+					  _("Page Break (top)"),
+					  pb_font,
+					  LColor::background,
+					  LColor::background, false, w, a, d);
+			pain.rectText((paperwidth - w)/2,
+				      offset +y_top + 2*DefaultHeight() +d,
+				      _("Page Break (top)"),
+				      pb_font,
+				      LColor::background,
+				      LColor::background);
+#endif
 			y_top += 3 * DefaultHeight();
 		}
 		
@@ -3885,10 +3888,34 @@ void LyXText::GetVisibleRow(int offset,
 		
 		/* draw a bottom pagebreak */ 
 		if (firstpar->pagebreak_bottom) {
+#if 0
 			pain.line(0, offset + y_bottom - 2 * DefaultHeight(),
 				  paperwidth,
 				  offset + y_bottom - 2 * DefaultHeight(),
 				  LColor::pagebreak, Painter::line_onoffdash);
+#else
+			LyXFont pb_font;
+			pb_font.setColor(LColor::pagebreak).decSize();
+			int w = 0, a = 0, d = 0;
+			pain.line(0,
+				  offset + y_bottom - 2 * DefaultHeight(), 
+				  paperwidth, 
+				  offset + y_bottom - 2 * DefaultHeight(),
+				  LColor::pagebreak,
+				  Painter::line_onoffdash)
+				.rectText(0,
+					  0,
+					  _("Page Break (bottom)"),
+					  pb_font,
+					  LColor::background,
+					  LColor::background, false, w, a, d);
+			pain.rectText((paperwidth - w)/2,
+				      offset +y_top + 2*DefaultHeight() +d,
+				      _("Page Break (bottom)"),
+				      pb_font,
+				      LColor::background,
+				      LColor::background);
+#endif
 			y_bottom -= 3 * DefaultHeight();
 		}
 		

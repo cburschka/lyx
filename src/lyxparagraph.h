@@ -150,7 +150,6 @@ public:
 	///
 	void readSimpleWholeFile(istream &);
 
-#ifdef USE_OSTREAM_ONLY
 	///
 	LyXParagraph * TeXOnePar(ostream &, TexRow & texrow,
 				 ostream & foot, TexRow & foot_texrow,
@@ -162,19 +161,6 @@ public:
 	LyXParagraph * TeXEnvironment(ostream &, TexRow & texrow,
 				      ostream & foot, TexRow & foot_texrow,
 				      int & foot_count);
-#else
-	///
-	LyXParagraph * TeXOnePar(string & file, TexRow & texrow,
-				 string & foot, TexRow & foot_texrow,
-				 int & foot_count);
-	///
-	bool SimpleTeXOnePar(string & file, TexRow & texrow);
-
-	///
-	LyXParagraph * TeXEnvironment(string & file, TexRow & texrow,
-				      string & foot, TexRow & foot_texrow,
-				      int & foot_count);
-#endif	
 	///
 	LyXParagraph * Clone() const;
 	
@@ -484,7 +470,6 @@ public:
 #endif
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
-#ifdef USE_OSTREAM_ONLY
 	///
 	void DocBookContTableRows(ostream &, string & extra, int & desc_on,
 				  size_type i,
@@ -492,15 +477,6 @@ public:
 	///
 	void SimpleDocBookOneTablePar(ostream &, string & extra,
 				      int & desc_on, int depth);
-#else
-	///
-	void DocBookContTableRows(string & file, string & extra, int & desc_on,
-				  size_type i,
-				  int current_cell_number, int & column);
-	///
-	void SimpleDocBookOneTablePar(string & file, string & extra,
-				      int & desc_on, int depth);
-#endif
 private:
 	/** A font entry covers a range of positions. Notice that the
 	  entries in the list are inserted in random order.
@@ -539,7 +515,6 @@ private:
 	typedef list<InsetTable> InsetList;
 	///
 	InsetList insetlist;
-#ifdef USE_OSTREAM_ONLY
 	///
 	LyXParagraph * TeXDeeper(ostream &, TexRow & texrow,
 				 ostream & foot, TexRow & foot_texrow,
@@ -567,35 +542,6 @@ private:
 				   LyXLayout const & style,
 				   size_type & i,
 				   int & column, char const c);
-#else
-	///
-	LyXParagraph * TeXDeeper(string & file, TexRow & texrow,
-				   string & foot, TexRow & foot_texrow,
-				   int & foot_count);
-	///
-	LyXParagraph * TeXFootnote(string & file, TexRow & texrow,
-				   string & foot, TexRow & foot_texrow,
-				   int & foot_count,
-				   LyXDirection par_direction);
-	///
-	bool SimpleTeXOneTablePar(string & file, TexRow & texrow);
-	///
-	bool TeXContTableRows(string & file, size_type i,
-			      int current_cell_number,
-                              int & column, TexRow & texrow);
-	///
-	void SimpleTeXBlanks(string & file, TexRow & texrow,
-			     size_type const i,
-			     int & column, LyXFont const & font,
-			     LyXLayout const & style);
-	///
-	void SimpleTeXSpecialChars(string & file, TexRow & texrow,
-				   LyXFont & font, LyXFont & running_font,
-				   LyXFont & basefont, bool & open_font,
-				   LyXLayout const & style,
-				   size_type & i,
-				   int & column, char const c);
-#endif
 	///
 	unsigned int id_;
 	///

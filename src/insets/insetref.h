@@ -62,19 +62,10 @@ public:
         void gotoLabel();
 	///
 	int Latex(ostream &, signed char fragile, bool free_spc) const;
-#ifndef USE_OSTREAM_ONLY
-	///
-	int Latex(string & file, signed char fragile, bool free_spc) const;
-	///
-	int Linuxdoc(string & file) const;
-	///
-	int DocBook(string & file) const;
-#else
 	///
 	int Linuxdoc(ostream &) const;
 	///
 	int DocBook(ostream &) const;
-#endif
 private:
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;

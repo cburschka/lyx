@@ -184,7 +184,7 @@ dnl Check the version of g++
   elif test $ac_cv_prog_cxx_g = yes; then
     case $gxx_version in
       2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
-      2.95.*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      2.95.*)  CXXFLAGS="-g $lyx_opt";;
       2.96*)   CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;

@@ -81,40 +81,6 @@ int InsetRef::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetRef::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
-{
-	if(getOptions().empty())
-		file += escape(getCommand());
-	else {
-		string ns;
-		InsetCommand clone = InsetCommand(getCmdName(),
-						  getContents(), ns);
-		file += escape(clone.getCommand());
-	}
-	return 0;
-}
-
-
-int InsetRef::Linuxdoc(string & file) const
-{
-	file += "<ref id=\"" + getContents()
-		+ "\" name=\""+ getOptions() +"\" >" ;
-
-	return 0;
-}
-
-
-int InsetRef::DocBook(string & file) const
-{
-	file += "<link linkend=\"" + getContents()
-		+ "\">"+ getOptions() +"</link>" ;
-
-	return 0;
-}
-
-#else
-
 int InsetRef::Linuxdoc(ostream & os) const
 {
 	os << "<ref id=\"" << getContents()
@@ -129,7 +95,6 @@ int InsetRef::DocBook(ostream & os) const
 	   << "\">" << getOptions() << "</link>";
 	return 0;
 }
-#endif
 
 
 // This function escapes 8-bit characters and other problematic characters

@@ -9,6 +9,8 @@ libinsets_la_SOURCES = \
 	BoundingBox.h \
 	figinset.C \
 	figinset.h \
+	form_graphics.C \
+	form_graphics.h \
 	form_url.C \
 	form_url.h \
 	inset.C \

@@ -357,17 +357,10 @@ private:
         ///
 	void SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 				  int desc_on, int const depth);
-#ifdef USE_OSTREAM_ONLY
         ///
 	void SimpleDocBookOnePar(ostream &, string & extra,
 				 LyXParagraph * par, int & desc_on,
 				 int const depth);
-#else
-        ///
-	void SimpleDocBookOnePar(string & file, string & extra,
-				 LyXParagraph * par, int & desc_on,
-				 int const depth);
-#endif
 
 	/// LinuxDoc.
 	void push_tag(ostream & os, char const * tag,

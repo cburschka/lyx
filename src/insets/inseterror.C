@@ -107,26 +107,6 @@ int InsetError::Latex(ostream &, signed char /*fragile*/, bool /*fs*/) const
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetError::Latex(string &, signed char /*fragile*/, bool /*fs*/) const
-{
-	return 0;
-}
-
-
-int InsetError::Linuxdoc(string &) const
-{
-	return 0;
-}
-
-
-int InsetError::DocBook(string &) const
-{
-	return 0;
-}
-
-#else
-
 int InsetError::Linuxdoc(ostream &) const
 {
 	return 0;
@@ -137,7 +117,6 @@ int InsetError::DocBook(ostream &) const
 {
 	return 0;
 }
-#endif
 
 
 bool InsetError::AutoDelete() const

@@ -3,10 +3,6 @@
 #ifndef LYX_ALGO_H
 #define LYX_ALGO_H
 
-#include <algorithm>
-
-// using std::less;
-
 // Both these functions should ideally be placed into namespace lyx.
 // Also the using std::less should not be used.
 
@@ -19,7 +15,7 @@ bool sorted(For first, For last)
 	if (first == last) return true;
 	For tmp = first;
 	while (++tmp != last) {
-		if (less(*tmp, *first++)) return false;
+		if (*tmp < *first++) return false;
 	}
 	return true;
 }

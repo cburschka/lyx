@@ -21,9 +21,13 @@
 #include "vspace.h"
 #include "insets/BoundingBox.h"
 
+struct FD_Graphics;
+
 ///
 class InsetGraphics : public Inset {
 public:
+	///
+	InsetGraphics();
 	///
 	int ascent(Painter &, LyXFont const &) const;
 	///
@@ -46,19 +50,11 @@ public:
 	 fragile commands by adding a \protect before.
 	 */
 	int Latex(ostream &, signed char fragile, bool free_spc) const;
-#ifndef USE_OSTREAM_ONLY
-	///
-	int Latex(string & file, signed char fragile, bool free_spc) const;
-	///
-	int Linuxdoc(string & /*file*/) const;
-	///
-	int DocBook(string & /*file*/) const;
-#else
 	///
 	int Linuxdoc(ostream &) const;
 	///
 	int DocBook(ostream &) const;
-#endif
+
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 
@@ -67,7 +63,17 @@ public:
   
 	///
 	Inset * Clone() const;
+	/// Set the graphics file
+	void graphicsFile(string const & f) {
+		graphicsfile = f;
+	}
+	/// Get the graphics file
+	string const & graphicsFile() const {
+		return graphicsfile;
+	}
 private:
+	///
+	FD_Graphics * form;
 	///
 	string graphicsfile;
 	///

@@ -26,7 +26,6 @@ class BufferView;
 
 struct LaTeXFeatures;
 
-#define USE_OSTREAM_ONLY 1
 
 /// Insets
 class Inset {
@@ -126,21 +125,13 @@ public:
 	 If the freee_spc (freespacing) variable is set, then this inset
 	 is in a free-spacing paragraph.
 	 */
-	virtual int Latex(ostream &, signed char fragile, bool free_spc) const = 0;
+	virtual int Latex(ostream &, signed char fragile,
+			  bool free_spc) const = 0;
 
-#ifndef USE_OSTREAM_ONLY
-	///
-	virtual int Latex(string & file, signed char fragile, bool free_spc) const = 0;
-	///
-	virtual int Linuxdoc(string & /*file*/) const = 0;
-	///
-	virtual int DocBook(string & /*file*/) const = 0;
-#else
 	///
 	virtual int Linuxdoc(ostream &) const = 0;
 	///
 	virtual int DocBook(ostream &) const = 0;
-#endif
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures & features) const;
 	///

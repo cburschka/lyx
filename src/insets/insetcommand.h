@@ -48,19 +48,10 @@ public:
 	void Read(LyXLex & lex);
 	/// 
 	virtual int Latex(ostream &, signed char fragile, bool free_spc) const;
-#ifndef USE_OSTREAM_ONLY
-	///
-	virtual int Latex(string & file, signed char fragile, bool free_spc) const;
-	///
-	virtual int Linuxdoc(string & file) const;
-	///
-	virtual int DocBook(string & file) const;
-#else
 	///
 	virtual int Linuxdoc(ostream &) const;
 	///
 	virtual int DocBook(ostream &) const;
-#endif
 	///
 	Inset * Clone() const;
 	///  

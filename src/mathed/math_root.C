@@ -136,29 +136,9 @@ void MathRootInset::SetFocus(int x, int)
 
 void MathRootInset::Write(ostream & os)
 {
-#ifdef USE_OSTREAM_ONLY
 	os << '\\' << name << '[';
 	uroot->Write(os);  
 	os << "]{";
 	MathParInset::Write(os);
 	os << '}';
-#else
-   string output;
-   MathRootInset::Write(output);
-   os << output;
-#endif
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-void MathRootInset::Write(string & outf)
-{ 
-   outf += '\\';
-   outf += name;
-   outf += '[';
-   uroot->Write(outf);  
-   outf += "]{";
-   MathParInset::Write(outf);
-   outf += '}';
-}
-#endif

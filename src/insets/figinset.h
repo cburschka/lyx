@@ -39,19 +39,10 @@ public:
 	void Read(LyXLex & lex);
 	///
 	int Latex(ostream &, signed char fragile, bool free_space) const;
-#ifndef USE_OSTREAM_ONLY
-	///
-	int Latex(string & file, signed char fragile, bool free_space) const;
-	///
-	int Linuxdoc(string & file) const;
-	///
-	int DocBook(string & file) const;
-#else
 	///
 	int Linuxdoc(ostream &) const;
 	///
 	int DocBook(ostream &) const;
-#endif
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 

@@ -33,8 +33,6 @@
 
 class Painter;
 
-#define USE_OSTREAM_ONLY 1
-
 ///
 enum math_align {
 	///
@@ -234,11 +232,6 @@ class MathedInset  {
     /// Write LaTeX and Lyx code
     virtual void Write(ostream &) = 0;
 
-#ifndef USE_OSTREAM_ONLY
-    /// Write LaTeX and Lyx code
-    virtual void Write(string & file) = 0;
-#endif
-   
     /// Reproduces itself
     virtual MathedInset * Clone() = 0;
    
@@ -336,11 +329,6 @@ class MathParInset: public MathedInset  {
     /// Write LaTeX code
     virtual void Write(ostream &);
 
-#ifndef USE_OSTREAM_ONLY
-    /// Write LaTeX code
-    virtual void Write(string & file);
-#endif
-	
     ///
     virtual void Metrics();
     ///
@@ -496,12 +484,6 @@ class MathMatrixInset: public MathParInset {
     void draw(Painter &, int, int);
     ///
     void Write(ostream &);
-	
-#ifndef USE_OSTREAM_ONLY
-    ///
-    void Write(string & file);
-#endif
-	
     ///
     void Metrics();
     ///
@@ -550,12 +532,6 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 ///
 void mathed_write(MathParInset *, ostream &, int *, char fragile,
 		  char const * label = 0);
-
-#ifndef USE_OSTREAM_ONLY
-///
-void mathed_write(MathParInset *, string &, int *, char fragile,
-		  char const * label = 0);
-#endif
 
 ///
 void mathed_parser_file(istream &, int);

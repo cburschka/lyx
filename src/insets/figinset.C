@@ -109,9 +109,6 @@ static int gs_allcolors;		// number of all colors
 
 static list<int> pidwaitlist; // pid wait list
 
-//extern Colormap color_map;
-
-
 
 static
 GC createGC()
@@ -149,8 +146,9 @@ void addpidwait(int pid)
 }
 
 
-extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
-			      XEvent * ev, void *)
+extern "C"
+int GhostscriptMsg(FL_OBJECT *, Window, int, int,
+		   XEvent * ev, void *)
 {
 	char tmp[128];
 
@@ -1202,34 +1200,6 @@ int InsetFig::Latex(ostream & os, signed char /* fragile*/, bool /* fs*/) const
 }
 
 
-#ifndef USE_OSTREAM_ONLY
-int InsetFig::Latex(string & file, signed char /* fragile*/, bool/* fs*/) const
-{
-	Regenerate();
-	file += cmd + ' ';
-	return 0;
-}
-
-
-int InsetFig::Linuxdoc(string &/*file*/) const
-{
-	return 0;
-}
-
-
-int InsetFig::DocBook(string & file) const
-{
-	string figurename = fname;
-
-	if(suffixIs(figurename, ".eps"))
-		figurename.erase(fname.length() - 5);
-
-	file += "@<graphic fileref=\"" + figurename + "\"></graphic>";
-	return 0;
-}
-
-#else
-
 int InsetFig::Linuxdoc(ostream &) const
 {
 	return 0;
@@ -1246,7 +1216,6 @@ int InsetFig::DocBook(ostream & os) const
 	os << "@<graphic fileref=\"" << figurename << "\"></graphic>";
 	return 0;
 }
-#endif
 
 
 void InsetFig::Validate(LaTeXFeatures & features) const

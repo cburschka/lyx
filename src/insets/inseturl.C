@@ -168,56 +168,14 @@ string InsetUrl::getScreenLabel() const
 
 int InsetUrl::Latex(ostream & os, signed char fragile, bool free_spc) const
 {
-#ifdef USE_OSTREAM_ONLY
 	if (!getOptions().empty())
 		os << getOptions() + ' ';
 	if (fragile)
 		os << "\\protect";
 	os << "\\url{" << getContents() << '}';
 	return 0;
-#else
-	string latex_output;
-	int res = Latex(latex_output, fragile, free_spc);
-	os << latex_output;
-
-	return res;
-#endif
 }
 
-
-#ifndef USE_OSTREAM_ONLY
-int InsetUrl::Latex(string & file, signed char fragile, bool /*free_spc*/) const
-{
-	if (!getOptions().empty())
-		file += getOptions() + ' ';
-	if (fragile)
-		file += "\\protect";
-
-	file += "\\url{" + getContents() + '}';
-
-	return 0;
-}
-
-
-int InsetUrl::Linuxdoc(string & file) const
-{
-	file +=  "<"+ getCmdName() +
-		 " url=\""  + getContents()+"\"" +
-		 " name=\"" + getOptions() +"\">";
-
-	return 0;
-}
-
-
-int InsetUrl::DocBook(string & file) const
-{
-	file +=  "<ulink url=\""  + getContents() + "\">" +
-		 getOptions() +"</ulink>";
-
-	return 0;
-}
-
-#else
 
 int InsetUrl::Linuxdoc(ostream & os) const
 {
@@ -235,7 +193,6 @@ int InsetUrl::DocBook(ostream & os) const
 	   << getOptions() << "</ulink>";
 	return 0;
 }
-#endif
 
 
 void InsetUrl::Validate(LaTeXFeatures & features) const

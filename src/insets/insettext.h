@@ -78,19 +78,10 @@ public:
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
     int Latex(ostream &, signed char, bool free_spc) const;
-#ifndef USE_OSTREAM_ONLY
-    ///
-    int Latex(string &, signed char, bool free_spc) const;
-    ///
-    int Linuxdoc(string &) const { return 0; }
-    ///
-    int DocBook(string &) const { return 0; }
-#else
     ///
     int Linuxdoc(ostream &) const { return 0; }
     ///
     int DocBook(ostream &) const { return 0; }
-#endif
     ///
     void Validate(LaTeXFeatures & features) const;
     ///

@@ -239,7 +239,6 @@ void InsetBibKey::setCounter(int c)
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
 void InsetBibKey::Write(ostream & os) const
 {
-#ifdef USE_OSTREAM_ONLY
 	os << "\\bibitem ";
 	if (!options.empty()) {
 		os << '['
@@ -247,16 +246,6 @@ void InsetBibKey::Write(ostream & os) const
 	}
 	os << '{'
 	   << contents << "}\n";
-#else
-	string s;
-	if (!options.empty()) {
-		s += '[';
-		s += options + ']';
-	}
-	s += '{';
-	s += contents + '}';
-	os << "\\bibitem " << s << "\n";
-#endif
 }
 
 
@@ -323,7 +312,6 @@ string InsetBibtex::getScreenLabel() const
 
 int InsetBibtex::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 {
-#ifdef USE_OSTREAM_ONLY
 	// this looks like an horrible hack and it is :) The problem
 	// is that owner is not initialized correctly when the bib
 	// inset is cut and pasted. Such hacks will not be needed
@@ -358,59 +346,8 @@ int InsetBibtex::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 	os << "\\bibliographystyle{" << style << "}\n"
 	   << "\\bibliography{" << db_out << "}\n";
 	return 2;
-#else
-	string bib;
-	signed char dummy = 0;
-	int result = Latex(bib, dummy, 0);
-	os << bib;
-	return result;
-#endif
 }
 
-
-#ifndef USE_OSTREAM_ONLY
-int InsetBibtex::Latex(string & file, signed char /*fragile*/, bool/*fs*/) const
-{
-	// this looks like an horrible hack and it is :) The problem
-	// is that owner is not initialized correctly when the bib
-	// inset is cut and pasted. Such hacks will not be needed
-	// later (JMarc)
-	if (!owner) {
-		owner = current_view->buffer();
-	}
-	// If we generate in a temp dir, we might need to give an
-	// absolute path there. This is a bit complicated since we can
-	// have a comma-separated list of bibliographies
-	string adb, db_out;
-	string db_in = getContents();
-	db_in = split(db_in, adb, ',');
-	while(!adb.empty()) {
-		if (!owner->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
-			adb = MakeAbsPath(adb, owner->filepath);
-		db_out += adb;
-		db_out += ',';
-		db_in= split(db_in, adb,',');
-	}
-	db_out = strip(db_out, ',');
-	// Idem, but simpler
-	string style;
-	if (!owner->niceFile 
-	    && IsFileReadable(MakeAbsPath(getOptions(), owner->filepath)
-			      + ".bst")) 
-		style = MakeAbsPath(getOptions(), owner->filepath);
-	else
-		style = getOptions();
-
-	file += "\\bibliographystyle{";
-	file += style;
-	file += "}\n";
-	file += "\\bibliography{";
-	file += db_out;
-	file += "}\n";
-	return 2;
-}
-#endif
 
 // This method returns a comma separated list of Bibtex entries
 string InsetBibtex::getKeys(char delim)

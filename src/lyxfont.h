@@ -35,7 +35,6 @@
 #undef OFF
 #endif
 
-#define USE_OSTREAM_ONLY 1
 
 class LyXLex;
 
@@ -295,7 +294,6 @@ public:
 	void lyxWriteChanges(LyXFont const & orgfont, ostream &) const;
 
 
-#ifdef USE_OSTREAM_ONLY
 	/** Writes the head of the LaTeX needed to change to this font.
 	    Writes to string, the head of the LaTeX needed to change
 	    to this font. Returns number of chars written. Base is the
@@ -309,21 +307,7 @@ public:
 	*/
 	int latexWriteEndChanges(ostream &, LyXFont const & base,
 				 LyXFont const & next) const;
-#else
-	/** Writes the head of the LaTeX needed to change to this font.
-	    Writes to string, the head of the LaTeX needed to change
-	    to this font. Returns number of chars written. Base is the
-	    font state active now.
-	*/
-	int latexWriteStartChanges(string &, LyXFont const & base,
-				   LyXFont const & prev) const;
-	/** Writes tha tail of the LaTeX needed to chagne to this font.
-	    Returns number of chars written. Base is the font state we want
-	    to achieve.
-	*/
-	int latexWriteEndChanges(string &, LyXFont const & base,
-				 LyXFont const & next) const;
-#endif 
+
 	/// Build GUI description of font state
 	string stateText() const;
 

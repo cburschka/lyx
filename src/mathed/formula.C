@@ -299,57 +299,18 @@ void InsetFormula::Write(ostream & os) const
 }
 
 
-int InsetFormula::Latex(ostream & os, signed char fragile,
-#ifdef USE_OSTREAM_ONLY
-			bool) const
-#else
-			bool free_spc) const
-#endif
+int InsetFormula::Latex(ostream & os, signed char fragile, bool) const
 {
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
-#ifdef USE_OSTREAM_ONLY
     if (fragile < 0)
 	    par->Write(os);
     else
 	    mathed_write(par, os, &ret, fragile, label.c_str());
-    
-#else
-    string output;
-    InsetFormula::Latex(output, fragile, free_spc);
-    os << output;
-#endif
     return ret;
 }
 
-
-#ifndef USE_OSTREAM_ONLY
-int InsetFormula::Latex(string & file, signed char fragile) const
-{
-    int ret = 0;
-//#warning Alejandro, the number of lines is not returned in this case
-// This problem will disapear at 0.13.
-    if (fragile < 0)
-        par->Write(file);
-    else
-        mathed_write(par, file, &ret, fragile, label.c_str());
-    return ret;
-}
-
-
-int InsetFormula::Linuxdoc(string &/*file*/) const
-{
-    return 0;
-}
-
-
-int InsetFormula::DocBook(string &/*file*/) const
-{
-    return 0;
-}
-
-#else
 
 int InsetFormula::Linuxdoc(ostream &) const
 {
@@ -361,7 +322,6 @@ int InsetFormula::DocBook(ostream&) const
 {
     return 0;
 }
-#endif
 
 
 // Check if uses AMS macros 

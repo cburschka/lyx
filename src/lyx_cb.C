@@ -3549,18 +3549,3 @@ extern "C" void RefHideCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_ref->form_ref);
 }
-
-#ifndef USE_OSTREAM_ONLY
-#ifdef WITH_WARNINGS
-#warning UGLY!!
-#endif
-// I know we shouldn't put anything in here but this seems the fastest
-// way to do this (and the cleanest for now). This function just inserts
-// a newline in the string and the inserts 'depth'-spaces so that the
-// code is indented in the right way!!!
-void addNewlineAndDepth(string & file, int depth)
-{
-	file += '\n';
-	file.append(depth, ' ');
-}
-#endif

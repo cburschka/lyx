@@ -49,14 +49,3 @@ int InsetParent::Latex(ostream & os, signed char fragile, bool free_spc) const
 	InsetCommand::Latex(os, fragile, free_spc);
 	return 0;
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-// LaTeX must just ignore this command
-int InsetParent::Latex(string & file, signed char fragile, bool free_spc) const
-{
-	file += "%%#{lyx}";
-	InsetCommand::Latex(file, fragile, free_spc);
-	return 0;
-}
-#endif

@@ -626,35 +626,12 @@ InsetText::LocalDispatch(BufferView * bv,
 }
 
 
-int InsetText::Latex(ostream & os, signed char /*fragile*/,
-#ifdef USE_OSTREAM_ONLY
-		     bool) const
-#else
-		     bool free_spc) const
-#endif
+int InsetText::Latex(ostream & os, signed char /*fragile*/, bool) const
 {
-#ifdef USE_OSTREAM_ONLY
 	TexRow texrow;
 	int ret = par->SimpleTeXOnePar(os, texrow);
 	return ret;
-#else
-    string fstr;
-
-    int i = Latex(fstr, fragile, free_spc);
-    os << fstr;
-    return i;
-#endif
 }
-
-
-#ifndef USE_OSTREAM_ONLY
-int InsetText::Latex(string & file, signed char /* fragile */) const
-{
-    TexRow texrow;
-
-    return par->SimpleTeXOnePar(file, texrow);
-}
-#endif
 
 
 void InsetText::Validate(LaTeXFeatures & features) const

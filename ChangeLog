@@ -1,3 +1,19 @@
+2000-03-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/math_delim.C (search_deco): return a
+	math_deco_struct* instead of index.
+
+2000-03-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* All files with a USE_OSTREAM_ONLY within: removed all code that
+	was unused when USE_OSTREAM_ONLY is defined.
+	
+	* src/support/lyxalgo.h (sorted): rewrote to use plain '<' instead
+	of any less. Removed header and using.
+
+	* src/text.C (GetVisibleRow): draw the string "Page Break
+	(top/bottom)" on screen when drawing a pagebreak line.
+
 2000-03-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/doc/LaTeXConfig.lyx.in: add description of textclass llncs.

@@ -331,8 +331,15 @@ private:
 bool init_deco_table::init = false;
 static init_deco_table idt;
 
+// If we had exceptions we could return a reference in stead and not
+// have to check for a null pointer in mathed_draw_deco
+
+#define USE_EXCEPTIONS 0
+#if USE_EXCEPTIONS
+struct deco_not_found {};
+
 static
-int search_deco(int code)
+math_deco_struct const & search_deco(int code)
 {
 	math_deco_struct * res =
 		lower_bound(math_deco_table,
@@ -340,26 +347,65 @@ int search_deco(int code)
 			    code, math_deco_compare());
 	if (res != math_deco_table + math_deco_table_size &&
 	    res->code == code)
-		return res - math_deco_table;
-	return -1;
+		return *res;
+	throw deco_not_found();
 }
 
+#else
+
+static
+math_deco_struct const * search_deco(int code)
+{
+	math_deco_struct * res =
+		lower_bound(math_deco_table,
+			    math_deco_table + math_deco_table_size,
+			    code, math_deco_compare());
+	if (res != math_deco_table + math_deco_table_size &&
+	    res->code == code)
+		return res;
+	return 0;
+}
+#endif
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 {
 	Matriz mt, sqmt;
 	float xx, yy, x2, y2;
 	int i = 0;
+
+#if USE_EXCEPTIONS
+	math_deco_struct mds;
+	try {
+		mds = search_deco(code);
+	}
+	catch (deco_not_found) {
+		// Should this ever happen?
+		lyxerr << "Deco was not found. Programming error?" << endl;
+		return;
+	}
    
-	int j = search_deco(code);   
-	if (j < 0) return;
-   
-	int r = math_deco_table[j].angle;
-	float * d = math_deco_table[j].data;
+	int r = mds.angle;
+	float * d = mds.data;
 	
-	if (h > 70 && (math_deco_table[j].code == int('(')
-		       || math_deco_table[j].code == int(')')))
+	if (h > 70 && (mds.code == int('(')
+		       || mds.code == int(')')))
 		d = parenthHigh;
+#else
+	math_deco_struct const * mds = search_deco(code);
+	if (!mds) {
+		// Should this ever happen?
+		lyxerr << "Deco was not found. Programming error?" << endl;
+		return;
+	}
+	
+   
+	int r = mds->angle;
+	float * d = mds->data;
+	
+	if (h > 70 && (mds->code == int('(')
+		       || mds->code == int(')')))
+		d = parenthHigh;
+#endif
 	
 	mt.rota(r);
 	mt.escala(w, h);
@@ -393,7 +439,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 		{
 			int xp[32], yp[32];
 			n = int(d[i++]);
-			for (j = 0; j < n; ++j) {
+			for (int j = 0; j < n; ++j) {
 				xx = d[i++]; yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
 				if (code == 4) 
