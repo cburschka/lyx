@@ -56,8 +56,6 @@ libmathed_la_SOURCES = \
 	math_rowst.h \
 	math_spaceinset.C \
 	math_spaceinset.h \
-	math_sqrtinset.C \
-	math_sqrtinset.h \
 	math_symbols.C \
 	math_utils.C \
 	math_write.C \

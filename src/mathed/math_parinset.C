@@ -11,6 +11,8 @@
 #include "math_rowst.h"
 #include "math_parinset.h"
 
+using std::endl;
+
 extern int number_of_newlines;
 
 

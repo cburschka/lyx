@@ -18,9 +18,9 @@ public:
 	///
 	void Metrics();
 	///
-	inline bool GetLimits() const;
+	bool GetLimits() const;
 	///
-	inline void SetLimits(bool);
+	void SetLimits(bool);
 protected:
 	///
 	int lims;

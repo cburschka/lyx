@@ -6,6 +6,7 @@
 #include "array.h"
 #include "mathed/support.h"
 
+using std::endl;
 
 MathedXIter::MathedXIter()
 	: MathedIter(), sx(0), sw(0)

@@ -15,9 +15,9 @@ public:
 	///
 	void Write(std::ostream &, bool fragile);
 	///
-	inline void Metrics();
+	void Metrics();
 	///
-	inline void SetSpace(int sp);
+	void SetSpace(int sp);
 	///
 	int GetSpace() { return space; }
 protected:

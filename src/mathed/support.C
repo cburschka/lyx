@@ -10,6 +10,11 @@
 #include "matriz.h"
 #include "symbol_def.h"
 
+using std::sort;
+using std::lower_bound;
+using std::endl;
+using std::max;
+
 extern LyXFont WhichFont(short type, int size);
 
 char const * math_font_name[] = {

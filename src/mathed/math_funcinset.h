@@ -23,7 +23,7 @@ public:
 	///
 	void Metrics();
 	///
-	inline bool GetLimits() const;
+	bool GetLimits() const;
 protected:
 	///
 	int ln;

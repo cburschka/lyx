@@ -1,3 +1,17 @@
+2001-02-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Makefile.am (libmathed_la_SOURCES): remove duplicate
+	math_sqrtinset. 
+
+	* support.C: 
+	* math_xiter.C: 
+	* math_parinset.C: add a bunch of "using" directives.
+
+	* math_funcinset.h: 
+	* math_decorationinset.h: 
+	* math_bigopinset.h: 
+	* math_spaceinset.h: remove more couples of inline.
+
 2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_xiter.h: remove a couple of "inline"
