@@ -14,12 +14,13 @@
 #include "output_docbook.h"
 
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferparams.h"
 #include "counters.h"
 #include "debug.h"
-#include "lyxtext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "ParagraphList_fwd.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
 

@@ -1,3 +1,29 @@
+2005-02-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (updateCounters, setCounter, expandLabel): move to
+	buffer_funcs.
+
+	* buffer_funcs.C (updateCounters): turn into a free standing
+	function and add a buffer parameter. Remove dead code for tracking
+	labelstring change.
+	(setCounter): change into a free-standing function which gets a
+	dociterator as argument. Use this iterator to fix captions in a
+	simple way. When no float is found above the caption, use the
+	labelstring of the caption layout as default.
+
+	* text.C (breakParagraph, backspace): 
+	* text2.C (init, setLayout, changeDepth):
+	* text3.C (dispatch): 
+	* CutAndPaste.C (cutSelection, pasteSelection): pass a buffer to
+	updateCounters.
+
+	* dociterator.C (forwardPar): make it much faster by calling
+	forwardPos() only when really necessary.
+
+	* output_docbook.C (makeCommand): adapt to expandLabel move.
+
+	* cursor.C: remove unused variable
+
 2005-02-24  Johnathan Burchill  <jkerrb@users.sourceforge.net>
 
 	* paragraph_funcs.C: fix crash when pasting insets in change 

@@ -20,6 +20,7 @@
 
 #include "author.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
@@ -1074,7 +1075,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
 		pars_[next_par].erase(0);
 
-	updateCounters();
+	updateCounters(cur.buffer());
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
@@ -1609,7 +1610,7 @@ void LyXText::backspace(LCursor & cur)
 				--cur.pos();
 
 			// the counters may have changed
-			updateCounters();
+			updateCounters(cur.buffer());
 			setCursor(cur, cur.pit(), cur.pos(), false);
 		}
 	} else {

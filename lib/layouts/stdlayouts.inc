@@ -71,7 +71,7 @@ Style Caption
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Sensitive
-	LabelString   Caption
+	LabelString	      "Senseless!"
 	OptionalArgs          1
 	LabelFont
 	  Series              Bold

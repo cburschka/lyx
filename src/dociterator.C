@@ -382,8 +382,27 @@ void DocIterator::forwardPosNoDescend()
 void DocIterator::forwardPar()
 {
 	forwardPos();
-	while (!empty() && (!inTexted() || pos() != 0))
+
+#if 0
+	DocIterator cmp(*this);
+#endif
+	
+	while (!empty() && (!inTexted() || pos() != 0)) {
+		if (inTexted()) {
+			pos_type const lastp = lastpos();
+			Paragraph const & par = paragraph();
+			pos_type & pos = top().pos();
+			while (pos < lastp && !par.isInset(pos))
+				++pos;
+		}
 		forwardPos();
+	}
+
+#if 0
+	while (!cmp.empty() && (!cmp.inTexted() || cmp.pos() != 0))
+		cmp.forwardPos();
+	BOOST_ASSERT(cmp == *this);
+#endif
 }
 
 

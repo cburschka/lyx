@@ -261,8 +261,6 @@ public:
 	/// current text heigth
 	int height() const;
 
-	/// updates all counters
-	void updateCounters();
 	/// Returns an inset if inset was hit, or 0 if not.
 	InsetBase * checkInsetHit(int x, int y) const;
 
@@ -375,8 +373,6 @@ private:
 	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old);
 
 	///
-	void setCounter(Buffer const &, pit_type pit);
-	///
 	void deleteWordForward(LCursor & cur);
 	///
 	void deleteWordBackward(LCursor & cur);
@@ -401,10 +397,5 @@ private:
 
 /// return the default height of a row in pixels, considering font zoom
 int defaultRowHeight();
-
-///
-std::string expandLabel(LyXTextClass const & textclass,
-		LyXLayout_ptr const & layout, bool appendix);
-
 
 #endif // LYXTEXT_H

@@ -20,6 +20,7 @@
 #include "FloatList.h"
 #include "FuncStatus.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
@@ -297,6 +298,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		Paragraph & par = cur.paragraph();
 		bool start = !par.params().startOfAppendix();
 
+#ifdef WITH_WARNINGS
+#warning The code below only makes sense a top level.
+// Should LFUN_APPENDIX be restricted to top-level paragraphs?
+#endif
 		// ensure that we have only one start_of_appendix in this document
 		for (pit_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
 			if (pars_[tmp].params().startOfAppendix()) {
@@ -310,7 +315,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		updateCounters();
+		updateCounters(cur.buffer());
 		break;
 	}
 

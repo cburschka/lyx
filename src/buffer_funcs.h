@@ -12,12 +12,15 @@
 #ifndef BUFFER_FUNCS_H
 #define BUFFER_FUNCS_H
 
+#include "lyxlayout_ptr_fwd.h"
+
 #include <string>
 
 
 class Buffer;
 class DocIterator;
 class ErrorList;
+class LyXTextClass;
 class TeXErrors;
 
 /**
@@ -41,6 +44,13 @@ void bufferErrors(Buffer const &, ErrorList const &);
 
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);
+
+/// Expand the counters for the labelstring of \c layout
+std::string expandLabel(LyXTextClass const & textclass,
+		LyXLayout_ptr const & layout, bool appendix);
+
+/// updates all counters
+void updateCounters(Buffer const &);
 
 
 #endif // BUFFER_FUNCS_H

@@ -503,7 +503,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		text->updateCounters();
+		updateCounters(cur.buffer());
 	}
 
 	if (cur.inMathed()) {
@@ -596,7 +596,7 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 		cur.resetAnchor();
 		text->setCursor(cur, ppp.first, ppp.second);
 		cur.setSelection();
-		text->updateCounters();
+		updateCounters(cur.buffer());
 	}
 
 	if (cur.inMathed()) {

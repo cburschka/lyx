@@ -74,6 +74,7 @@
 #include "support/types.h"
 
 #include <boost/bind.hpp>
+#include <boost/current_function.hpp>
 
 #include <functional>
 #include <vector>

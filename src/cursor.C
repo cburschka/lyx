@@ -123,8 +123,6 @@ namespace {
 	{
 		BOOST_ASSERT(!cursor.empty());
 		CursorSlice bottom = cursor[0];
-		LyXText * text = bottom.text();
-		BOOST_ASSERT(text);
 
 		DocIterator it = doc_iterator_begin(bottom.inset());
 		DocIterator const et = doc_iterator_end(bottom.inset());

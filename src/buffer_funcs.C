@@ -18,15 +18,24 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "dociterator.h"
+#include "counters.h"
 #include "errorlist.h"
+#include "Floating.h"
+#include "FloatList.h"
 #include "gettext.h"
 #include "LaTeX.h"
+#include "lyxtextclass.h"
 #include "paragraph.h"
+#include "ParagraphList_fwd.h"
+#include "ParagraphParameters.h"
+#include "pariterator.h"
 #include "lyxvc.h"
 #include "texrow.h"
 #include "vc-backend.h"
 
 #include "frontends/Alert.h"
+
+#include "insets/insetbibitem.h"
 
 #include "support/filetools.h"
 #include "support/fs_extras.h"
@@ -35,6 +44,7 @@
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
 
+using lyx::pit_type;
 using lyx::support::bformat;
 using lyx::support::LibFileSearch;
 using lyx::support::MakeDisplayPath;
@@ -42,6 +52,7 @@ using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::unlink;
 
+using std::min;
 using std::string;
 
 namespace fs = boost::filesystem;
@@ -252,3 +263,255 @@ int countWords(DocIterator const & from, DocIterator const & to)
 
 	return count;
 }
+
+
+namespace {
+
+void incrementItemDepth(ParagraphList & pars, pit_type pit, pit_type first_pit)
+{
+	int const cur_labeltype = pars[pit].layout()->labeltype;
+
+	if (cur_labeltype != LABEL_ENUMERATE && cur_labeltype != LABEL_ITEMIZE)
+		return;
+
+	int const cur_depth = pars[pit].getDepth();
+
+	pit_type prev_pit = pit - 1;
+	while (true) {
+		int const prev_depth = pars[prev_pit].getDepth();
+		int const prev_labeltype = pars[prev_pit].layout()->labeltype;
+		if (prev_depth == 0 && cur_depth > 0) {
+			if (prev_labeltype == cur_labeltype) {
+				pars[pit].itemdepth = pars[prev_pit].itemdepth + 1;
+			}
+			break;
+		} else if (prev_depth < cur_depth) {
+			if (prev_labeltype == cur_labeltype) {
+				pars[pit].itemdepth = pars[prev_pit].itemdepth + 1;
+				break;
+			}
+		} else if (prev_depth == cur_depth) {
+			if (prev_labeltype == cur_labeltype) {
+				pars[pit].itemdepth = pars[prev_pit].itemdepth;
+				break;
+			}
+		}
+		if (prev_pit == first_pit)
+			break;
+
+		--prev_pit;
+	}
+}
+
+
+void resetEnumCounterIfNeeded(ParagraphList & pars, pit_type pit,
+	pit_type firstpit, Counters & counters)
+{
+	if (pit == firstpit)
+		return;
+
+	int const cur_depth = pars[pit].getDepth();
+	pit_type prev_pit = pit - 1;
+	while (true) {
+		int const prev_depth = pars[prev_pit].getDepth();
+		int const prev_labeltype = pars[prev_pit].layout()->labeltype;
+		if (prev_depth <= cur_depth) {
+			if (prev_labeltype != LABEL_ENUMERATE) {
+				switch (pars[pit].itemdepth) {
+				case 0:
+					counters.reset("enumi");
+				case 1:
+					counters.reset("enumii");
+				case 2:
+					counters.reset("enumiii");
+				case 3:
+					counters.reset("enumiv");
+				}
+			}
+			break;
+		}
+
+		if (prev_pit == firstpit)
+			break;
+
+		--prev_pit;
+	}
+}
+
+
+// set the counter of a paragraph. This includes the labels
+void setCounter(Buffer const & buf, ParIterator & it)
+{
+	Paragraph & par = *it;
+	BufferParams const & bufparams = buf.params();
+	LyXTextClass const & textclass = bufparams.getLyXTextClass();
+	LyXLayout_ptr const & layout = par.layout();
+	Counters & counters = textclass.counters();
+
+	// Always reset
+	par.itemdepth = 0;
+
+	if (it.pit() == 0) {
+		par.params().appendix(par.params().startOfAppendix());
+	} else {
+		par.params().appendix(it.plist()[it.pit() - 1].params().appendix());
+		if (!par.params().appendix() &&
+		    par.params().startOfAppendix()) {
+			par.params().appendix(true);
+			textclass.counters().reset();
+		}
+
+		// Maybe we have to increment the item depth.
+		incrementItemDepth(it.plist(), it.pit(), 0);
+	}
+
+	// erase what was there before
+	par.params().labelString(string());
+
+	if (layout->margintype == MARGIN_MANUAL) {
+		if (par.params().labelWidthString().empty())
+			par.setLabelWidthString(layout->labelstring());
+	} else {
+		par.setLabelWidthString(string());
+	}
+
+	// is it a layout that has an automatic label?
+	if (layout->labeltype == LABEL_COUNTER) {
+		counters.step(layout->counter);
+		string label = expandLabel(textclass, layout, par.params().appendix());
+		par.params().labelString(label);
+	} else if (layout->labeltype == LABEL_ITEMIZE) {
+		// At some point of time we should do something more
+		// clever here, like:
+		//   par.params().labelString(
+		//    bufparams.user_defined_bullet(par.itemdepth).getText());
+		// for now, use a simple hardcoded label
+		string itemlabel;
+		switch (par.itemdepth) {
+		case 0:
+			itemlabel = "*";
+			break;
+		case 1:
+			itemlabel = "-";
+			break;
+		case 2:
+			itemlabel = "@";
+			break;
+		case 3:
+			itemlabel = "·";
+			break;
+		}
+
+		par.params().labelString(itemlabel);
+	} else if (layout->labeltype == LABEL_ENUMERATE) {
+		// Maybe we have to reset the enumeration counter.
+		resetEnumCounterIfNeeded(it.plist(), it.pit(), 0, counters);
+
+		// FIXME
+		// Yes I know this is a really, really! bad solution
+		// (Lgb)
+		string enumcounter = "enum";
+
+		switch (par.itemdepth) {
+		case 2:
+			enumcounter += 'i';
+		case 1:
+			enumcounter += 'i';
+		case 0:
+			enumcounter += 'i';
+			break;
+		case 3:
+			enumcounter += "iv";
+			break;
+		default:
+			// not a valid enumdepth...
+			break;
+		}
+
+		counters.step(enumcounter);
+
+		par.params().labelString(counters.enumLabel(enumcounter));
+	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
+		counters.step("bibitem");
+		int number = counters.value("bibitem");
+		if (par.bibitem()) {
+			par.bibitem()->setCounter(number);
+			par.params().labelString(layout->labelstring());
+		}
+		// In biblio should't be following counters but...
+	} else if (layout->labeltype == LABEL_SENSITIVE) {
+		// Search for the first float or wrap inset in the iterator
+		string type;
+		size_t i = it.depth();
+		while (i > 0) {
+			--i;
+			InsetBase * const in = &it[i].inset();
+			if (in->lyxCode() == InsetBase::FLOAT_CODE
+			    || in->lyxCode() == InsetBase::WRAP_CODE) 
+				type = in->getInsetName();
+				break;
+		}
+
+		string s;
+		if (!type.empty()) {
+			Floating const & fl = textclass.floats().getType(type);
+
+			counters.step(fl.type());
+
+			// Doesn't work... yet.
+			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
+		} else {
+			// par->SetLayout(0);
+			s = buf.B_(layout->labelstring());
+		}
+
+		par.params().labelString(s);
+	} else
+		par.params().labelString(buf.B_(layout->labelstring()));
+}
+
+} // anon namespace
+
+
+void updateCounters(Buffer const & buf)
+{
+	// start over
+	buf.params().getLyXTextClass().counters().reset();
+
+	for (ParIterator it = par_iterator_begin(buf.inset()); it; ++it) {
+		// reduce depth if necessary
+		if (it.pit()) {
+			Paragraph const & prevpar = it.plist()[it.pit() - 1];
+			it->params().depth(min(it->params().depth(),
+					       prevpar.getMaxDepthAfter()));
+		} else
+			it->params().depth(0);
+
+		// set the counter for this paragraph
+		setCounter(buf, it);
+	}
+}
+
+
+string expandLabel(LyXTextClass const & textclass,
+	LyXLayout_ptr const & layout, bool appendix)
+{
+	string fmt = appendix ?
+		layout->labelstring_appendix() : layout->labelstring();
+
+	// handle 'inherited level parts' in 'fmt',
+	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
+	size_t const i = fmt.find('@', 0);
+	if (i != string::npos) {
+		size_t const j = fmt.find('@', i + 1);
+		if (j != string::npos) {
+			string parent(fmt, i + 1, j - i - 1);
+			string label = expandLabel(textclass, textclass[parent], appendix);
+			fmt = string(fmt, 0, i) + label + string(fmt, j + 1, string::npos);
+		}
+	}
+
+	return textclass.counters().counterLabel(fmt);
+}
+
+
