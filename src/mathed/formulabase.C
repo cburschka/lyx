@@ -614,7 +614,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_SUBSCRIPT:
 	{
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->script((action == LFUN_SUPERSCRIPT));
+		mathcursor->script(action == LFUN_SUPERSCRIPT);
 		updateLocal(bv, true);
 		break;
 	}

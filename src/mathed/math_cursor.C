@@ -1390,6 +1390,15 @@ bool MathCursor::interpret(string const & s)
 
 bool MathCursor::script(bool up)
 {
+	// Hack to get \\^ and \\_ working
+	if (inMacroMode() && macroName() == "\\") {
+		if (up)
+			interpret("\\mathcircumflex");
+		else
+			interpret('_');
+		return true;
+	}
+
 	macroModeClose();
 	selCut();
 	if (hasPrevAtom() && prevAtom()->asScriptInset()) {
