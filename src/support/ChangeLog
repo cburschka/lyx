@@ -1,3 +1,9 @@
+2005-01-01  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* os_win32.C (internal_path): remove the call to MakeLatexName as
+	it is (1) unnecessary and (2) leads to an infinite loop as
+	MakeLatexName calls AddName which calls internal_path...
+
 2004-12-19  Angus Leeming  <leeming@lyx.org>
 
 	* path_defines.C.in (setLyxPaths): on a Windows build,

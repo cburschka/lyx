@@ -68,7 +68,7 @@ void init(int /* argc */, char * argv[])
 		tmp.erase(tmp.length()-6, string::npos);
 	binpath_ = tmp;
 
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	tmpdir_ = "/tmp";
 	homepath_ = GetEnvPath("HOME");
 	nulldev_ = "/dev/null";
@@ -116,7 +116,7 @@ string::size_type common_path(string const & p1, string const & p2)
 string external_path(string const & p)
 {
 	string dos_path;
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	// Translate from cygwin path syntax to dos path syntax
 	if (is_absolute_path(p)) {
 		char dp[MAX_PATH];
@@ -146,18 +146,14 @@ string external_path(string const & p)
 // the Win32/DOS pathnames into Cygwin pathnames.
 string internal_path(string const & p)
 {
-#ifdef __CYGWIN__
-	char pp[MAX_PATH];
-	cygwin_conv_to_posix_path(p.c_str(), pp);
-	string const posix_path = MakeLatexName(pp);
-#else
-	string const posix_path = subst(p,"\\","/");
-#endif
-	lyxerr[Debug::DEPEND]
-		<< "<Win32 path correction> ["
-		<< p << "]->>["
-		<< posix_path << ']' << endl;
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	char posix_path[MAX_PATH];
+	posix_path[0] = '\0';
+	cygwin_conv_to_posix_path(p.c_str(), posix_path);
 	return posix_path;
+#else
+	return subst(p,"\\","/");
+#endif
 }
 
 
@@ -187,13 +183,13 @@ char const * popen_read_mode()
 }
 
 
-string binpath()
+string const & binpath()
 {
 	return binpath_;
 }
 
 
-string binname()
+string const & binname()
 {
 	return binname_;
 }
@@ -205,7 +201,7 @@ void setTmpDir(string const & p)
 }
 
 
-string getTmpDir()
+string const & getTmpDir()
 {
 	return tmpdir_;
 }
@@ -225,7 +221,7 @@ string const & nulldev()
 
 shell_type shell()
 {
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	return UNIX;
 #else
 	return CMD_EXE;
