@@ -696,7 +696,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		
 		else if (t.cat() == catAlign) {
 			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
-			return;
+			array.push_back(new MathCharInset('&', LM_TC_SPECIAL));
 		}
 		
 		else if (t.cat() == catSuper)
@@ -728,10 +728,11 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cs() == "\\") {
 			curr_skip_ = getArg('[', ']');
-			if (!(flags & FLAG_NEWLINE))
-				lyxerr[Debug::MATHED]
+			if (flags & FLAG_NEWLINE)
+				return;
+			lyxerr[Debug::MATHED]
 					<< "found newline unexpectedly, array: '" << array << "'\n";
-			return;
+			array.push_back(createMathInset("\\"));
 		}
 	
 		else if (t.cs() == "limits") 
