@@ -36,7 +36,7 @@ using std::vector;
 typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;
 
 QToc::QToc(ControlToc & c, Dialogs &)
-	: base_class(c, _("Table of contents"))
+	: base_class(c, _("Table of contents")), depth_(1)
 {}
 
 
@@ -79,7 +79,7 @@ void QToc::updateToc(int newdepth)
 	char const * str = dialog_->typeCO->currentText().latin1();
 	string type (str ? str : "");
 
-	Buffer::SingleList const & contents = controller().getContents(type);
+	toc::Toc const & contents = controller().getContents(type);
 
 	// Check if all elements are the same.
 	if (newdepth == depth_ && toclist == contents) {
@@ -107,7 +107,7 @@ void QToc::updateToc(int newdepth)
 	// rather than QListViewItem; and the TOC can move in and out an arbitrary number
 	// of levels
 
-	for (Buffer::SingleList::const_iterator iter = toclist.begin();
+	for (toc::Toc::const_iterator iter = toclist.begin();
 		iter != toclist.end(); ++iter) {
 		if (iter->depth == curdepth) {
 			// insert it after the last one we processed
@@ -155,7 +155,7 @@ void QToc::updateToc(int newdepth)
 
 void QToc::select(string const & text)
 {
-	Buffer::SingleList::const_iterator iter = toclist.begin();
+	toc::Toc::const_iterator iter = toclist.begin();
 
 	for (; iter != toclist.end(); ++iter) {
 		if (iter->str == text)
@@ -168,7 +168,7 @@ void QToc::select(string const & text)
 		return;
 	}
 
-	controller().Goto(iter->par->id());
+	controller().goTo(*iter);
 }
 
 

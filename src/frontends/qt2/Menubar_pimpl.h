@@ -38,8 +38,6 @@ struct Menubar::Pimpl {
 public:
 	///
 	Pimpl(LyXView *, MenuBackend const &);
-	///
-	void set(string const &);
 	/// Opens a top-level submenu given its name
 	void openByName(string const &);
 

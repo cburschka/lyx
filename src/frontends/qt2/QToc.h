@@ -16,6 +16,7 @@
 #endif
 
 #include "ControlToc.h"
+#include "toc.h"
 
 #include "Qt2Base.h"
 
@@ -52,7 +53,7 @@ private:
 	virtual void build_dialog();
 
 	/// the toc list
-	Buffer::SingleList toclist;
+	toc::Toc toclist;
 
 	/// depth of list shown
 	int depth_;
