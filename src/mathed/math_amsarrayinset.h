@@ -8,6 +8,10 @@
 #pragma interface
 #endif
 
+//
+// used for [pbvV]matrix, psmatrix etc
+//
+
 
 class MathAMSArrayInset : public MathGridInset {
 public:

@@ -233,6 +233,13 @@ NormalStream & operator<<(NormalStream & ns, char c)
 }
 
 
+NormalStream & operator<<(NormalStream & ns, int i)
+{
+	ns.os() << i;
+	return ns;
+}
+
+
 
 //////////////////////////////////////////////////////////////////////
 

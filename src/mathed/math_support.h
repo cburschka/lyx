@@ -41,5 +41,6 @@ void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 
 void augmentFont(LyXFont & f, string const & cmd);
 
+bool isFontName(string const & name);
 
 #endif

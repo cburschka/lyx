@@ -53,112 +53,6 @@ typedef std::map<string, latexkeys> WordList;
 WordList theWordList;
 
 
-struct key_type {
-	///
-	string name;
-	///
-	string inset;
-	///
-	string extra;
-};
-
-
-key_type wordlist_array[] =
-{
-	{"!",  "space", ""},
-	{",",  "space", ""},
-	{":",  "space", ""},
-	{";",  "space", ""},
-	{"Vmatrix",  "matrix", ""},
-	{"acute",  "decoration", ""},
-	{"bar",  "decoration", ""},
-	{"begin",  "begin", ""},
-	{"bf",  "oldfont", ""},
-	{"bmatrix",  "matrix", ""},
-	{"acute",  "decoration", ""},
-	{"breve",  "decoration", ""},
-	{"cal",  "oldfont", ""},
-	{"cdots",  "dots", ""},
-	{"check",  "decoration", ""},
-	{"ddot",  "decoration", ""},
-	{"dddot",  "decoration", ""},
-	{"ddots",  "dots", ""},
-	{"displaystyle",  "style", ""},
-	{"dot",  "decoration", ""},
-	{"dotsb",  "dots", ""},
-	{"dotsc",  "dots", ""},
-	{"dotsi",  "dots", ""},
-	{"dotsm",  "dots", ""},
-	{"dotso",  "dots", ""},
-	{"end",  "end", ""},
-	{"fbox",  "fbox", ""},
-	{"frak",  "font", ""},
-	{"grave",  "decoration", ""},
-	{"hat",  "decoration", ""},
-	{"it",  "oldfont", ""},
-	{"label",  "label", ""},
-	{"ldots",  "dots", ""},
-	{"left",  "left", ""},
-	{"lyxnegspace",  "space", ""},
-	{"lyxposspace",  "space", ""},
-	{"mathbb",  "font", ""},
-	{"mathbf",  "font", ""},
-	{"mathcal",  "font", ""},
-	{"mathfrak",  "font", ""},
-	{"mathit",  "font", ""},
-	{"mathnormal",  "font", ""},
-	{"mathring",  "decoration", ""},
-	{"mathrm",  "font", ""},
-	{"mathsf",  "font", ""},
-	{"mathtt",  "font", ""},
-	{"matrix",  "matrix", ""},
-	{"mbox",  "mbox", ""},
-	{"newcommand",  "newcommand", ""},
-	{"overbrace",  "decoration", ""},
-	{"overleftarrow",  "decoration", ""},
-	{"overline",  "decoration", ""},
-	{"overrightarrow",  "decoration", ""},
-	{"overleftrightarrow", "decoration", ""},
-	{"pageref",  "ref", ""},
-	{"parbox",  "parbox", ""},
-	{"pmatrix",  "matrix", ""},
-	{"prettyref",  "ref", ""},
-	{"protect",  "protect", ""},
-	{"qquad",  "space", ""},
-	{"quad",  "space", ""},
-	{"ref",  "ref", ""},
-	{"right",  "right", ""},
-	{"rm",  "oldfont", ""},
-	{"scriptscriptstyle",  "style", ""},
-	{"scriptstyle",  "style", ""},
-	{"text",    "font", "mathtext"},
-	{"textbf",  "font", "mathtext"},
-	{"textipa", "font", "mathtext"},
-	{"textit",  "font", "mathtext"},
-	{"textmd",  "font", "mathtext"},
-	{"textrm",  "font", "mathtext"},
-	{"textsl",  "font", "mathtext"},
-	{"textup",  "font", "mathtext"},
-	{"textstyle",  "style", ""},
-	{"tilde",  "decoration", ""},
-	{"tt",  "oldfont", ""},
-	{"underbar",  "decoration", ""},
-	{"underbrace",  "decoration", ""},
-	{"underleftarrow", "decoration", ""},
-	{"underline",  "decoration", ""},
-	{"underrightarrow", "decoration", ""},
-	{"underleftrightarrow", "decoration", ""},
-	{"underset",  "underset", ""},
-	{"vdots",  "dots", ""},
-	{"vec",  "decoration", ""},
-	{"vmatrix",  "matrix", ""},
-	{"vpageref",  "ref", ""},
-	{"vref",  "ref", ""},
-	{"widehat",  "decoration", ""},
-	{"widetilde",  "decoration", ""}
-};
-
-
 bool math_font_available(string & name)
 {
 	LyXFont f;
@@ -179,9 +73,15 @@ bool math_font_available(string & name)
 }
 
 
-void readSymbols(string const & filename)
+void initSymbols()
 {
+	string const filename = LibFileSearch(string(), "symbols");
 	lyxerr[Debug::MATHED] << "read symbols from " << filename << "\n";
+	if (filename.empty()) {
+		lyxerr << "Could not find symbols file\n";
+		return;
+	}
+
 	std::ifstream fs(filename.c_str());
 	while (fs) {
 		int charid     = 0;
@@ -189,40 +89,51 @@ void readSymbols(string const & filename)
 		latexkeys tmp;
 		string line;
 		getline(fs, line);
-		istringstream is(line);
-		is	>> tmp.name
-				>> tmp.inset
-				>> charid
-				>> fallbackid
-				>> tmp.extra
-				>> tmp.xmlname;
-		if (!is)
+		if (line.size() > 1 && line[0] == '#')
 			continue;
+		istringstream is(line);
+		is >> tmp.name >> tmp.inset;
+		if (isFontName(tmp.inset)) 
+			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
+		else
+			is >> tmp.extra;
+		if (!is) {
+			lyxerr[Debug::MATHED] << "skipping line '" << line << "'\n";
+			lyxerr[Debug::MATHED]
+				<< tmp.name << ' ' << tmp.inset << ' ' << tmp.extra << "\n";
+			continue;
+		}
 
-		// tmp.inset _is_ the fontname here.
-		// create fallbacks if necessary
-		if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra=="special") {
-			lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << "\n";
-			tmp.draw = tmp.name;
-		} else if (math_font_available(tmp.inset)) {
-			lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << "\n";
-			tmp.draw += char(charid);
-		} else if (fallbackid) {
-			if (tmp.inset == "cmex")
-				tmp.inset  = "lyxsymbol";
-			else
-				tmp.inset  = "lyxboldsymbol";
-			lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << "\n";
-			tmp.draw += char(fallbackid); 
+		if (isFontName(tmp.inset)) {
+			// tmp.inset _is_ the fontname here.
+			// create fallbacks if necessary
+			if (tmp.extra=="func" || tmp.extra=="funclim" || tmp.extra=="special") {
+				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << "\n";
+				tmp.draw = tmp.name;
+			} else if (math_font_available(tmp.inset)) {
+				lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << "\n";
+				tmp.draw += char(charid);
+			} else if (fallbackid) {
+				if (tmp.inset == "cmex")
+					tmp.inset  = "lyxsymbol";
+				else
+					tmp.inset  = "lyxboldsymbol";
+				lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << "\n";
+				tmp.draw += char(fallbackid); 
+			} else {
+				lyxerr[Debug::MATHED] << "faking " << tmp.name << "\n";
+				tmp.draw = tmp.name;
+				tmp.inset = "lyxtex";
+			}
 		} else {
-			lyxerr[Debug::MATHED] << "faking " << tmp.name << "\n";
-			tmp.draw = tmp.name;
-			tmp.inset = "lyxtex";
+			// it's a proper inset
+			lyxerr[Debug::MATHED] << "inset " << tmp.inset << " used for "
+				<< tmp.name << "\n";
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
 			lyxerr[Debug::MATHED] << "readSymbols: inset " << tmp.name
-			       << " already exists.\n";
+				<< " already exists.\n";
 		else
 			theWordList[tmp.name] = tmp;
 		lyxerr[Debug::MATHED] << "read symbol '" << tmp.name
@@ -231,26 +142,6 @@ void readSymbols(string const & filename)
 					<<  "  extra: " << tmp.extra
 					<< "'\n";
 	}
-}
-
-
-void initSymbols()
-{
-	unsigned const n = sizeof(wordlist_array) / sizeof(wordlist_array[0]);
-	for (key_type * p = wordlist_array; p != wordlist_array + n; ++p) {
-		latexkeys tmp;
-		tmp.name  = p->name;
-		tmp.inset = p->inset;
-		tmp.draw  = p->name;
-		theWordList[p->name] = tmp;
-	}
-
-	lyxerr[Debug::MATHED] << "reading symbols file\n";
-	string const file = LibFileSearch(string(), "symbols");
-	if (file.empty())
-		lyxerr << "Could not find symbols file\n";
-	else
-		readSymbols(file);
 }
 
 

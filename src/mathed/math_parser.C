@@ -249,8 +249,6 @@ private:
 	void error(string const & msg);
 	/// dump contents to screen
 	void dump() const;
-
-private:
 	///
 	void tokenize(istream & is);
 	///
@@ -656,7 +654,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 
 		if (flags & FLAG_OPTION) {
 			if (t.cat() == catOther && t.character() == '[') {
-				// skip the bracket and collect everything to the clsing bracket
+				// skip the bracket and collect everything to the closing bracket
 				flags |= FLAG_BRACK_LAST;
 				continue;
 			}

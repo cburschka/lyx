@@ -589,18 +589,31 @@ fontinfo fontinfos[] = {
 };
 
 
-fontinfo * searchFont(string const & name)
+fontinfo * lookupFont(string const & name)
 {
-	int const n = sizeof(fontinfos) / sizeof(fontinfo);
 	//lyxerr << "searching font '" << name << "'\n"; 
+	int const n = sizeof(fontinfos) / sizeof(fontinfo);
 	for (int i = 0; i < n; ++i)
 		if (fontinfos[i].cmd_ == name) {
 			//lyxerr << "found '" << i << "'\n"; 
 			return fontinfos + i;
 		}
+	return 0;
+}
+
+
+fontinfo * searchFont(string const & name)
+{
+	fontinfo * f = lookupFont(name);
+	return f ? f : fontinfos;
 	// this should be mathnormal
-	return fontinfos;
 	//return searchFont("mathnormal");
+}
+
+
+bool isFontName(string const & name)
+{
+	return lookupFont(name);
 }
 
 

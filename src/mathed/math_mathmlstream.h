@@ -93,6 +93,8 @@ NormalStream & operator<<(NormalStream &, MathArray const &);
 NormalStream & operator<<(NormalStream &, char const *);
 ///
 NormalStream & operator<<(NormalStream &, char);
+///
+NormalStream & operator<<(NormalStream &, int);
 
 
 

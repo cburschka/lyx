@@ -259,6 +259,7 @@ string MathHullInset::label(row_type row) const
 
 void MathHullInset::label(row_type row, string const & label)
 {
+	lyxerr << "setting label '" << label << "' for row " << row << endl;
 	label_[row] = label;
 }
 
