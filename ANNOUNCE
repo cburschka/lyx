@@ -1,15 +1,15 @@
-Public release of LyX version 1.3.3
+Public release of LyX version 1.3.4
 ===================================
 
-We are pleased to announce the release of LyX 1.3.3.
+We are pleased to announce the release of LyX 1.3.4.
 
-This is a maintenance release which improves upon 1.3.2 in
+This is a maintenance release which improves upon 1.3.3 in
 four main areas:
-  * import of old LyX files and export to DocBook have been improved;
-  * many small bugs in the Qt frontend have been fixed;
-  * MacOSX users can now compile LyX and enjoy the native MacOSX interface;
-  * several languages now benefit from an improved translation of
-    the user interface amd documentation.
+	* ability to open documents that are not supported by your
+	  latex installation
+	* more new Qt features (improved selection, drag-and-drop)
+	* better Mac OS X support
+	* polish of the interface localization
 
 The complete list of improvements and fixes can be found at the end of
 this message.
@@ -26,35 +26,35 @@ http://www.lyx.org/ has to say on the subject:
    (this port requires an X server). It can also run natively on Mac
    OS X, thanks to the Qt/Mac library.
 
-You can download LyX 1.3.3 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.3.4 here (the .bz2 are compressed with bzip2,
 which yields smaller files) :
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.3.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.3.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.3.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.3.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.4.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.4.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.4.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.4.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will also host
 the .bz2 versions):
 
-        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.3.tar.gz
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.3.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.3.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.3.tar.gz
-        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.3.tar.gz
+        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.4.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.4.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.4.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.4.tar.gz
+        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.4.tar.gz
 
 
 Prebuilt binaries (mainly rpms for linux distributions) should soon be
 available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.3.3/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.3.4/
 
-If you already have the LyX 1.3.2 sources, you may want to apply one
+If you already have the LyX 1.3.3 sources, you may want to apply one
 of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.3.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.3.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.4.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.4.bz2
 
 
-If you find what you think is a bug in LyX 1.3.3, you may either
+If you find what you think is a bug in LyX 1.3.4, you may either
 e-mail the LyX developers' mailing list (lyx-devel@lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -67,97 +67,4 @@ Enjoy!
 The LyX team.
 
 
-
-What's new
-==========
-
-** Updates
-
-- add basic support for the memoir class
-
-- add Proof layout to elsart class and get sections to be numbered
-
-- make LyX compile almost out-of-the-box with Qt/Mac (see README.MacOSX)
-
-- add a bit of documentation of the AGU journals support in the
-  Extended manual; small tweaks to the english documentation; german
-  documentation overhaul; french documentation and examples update
-
-- completely new italian localization; french, german, russian and
-  slovenian localization updates
-
-** Bug fixes
-
-- fix possible crash when changing text class [bug #1050]
-
-- fix language setting when switching textclass
-
-- fix math bug where formulas containing for example a \prettyref
-  would not be parsed correctly [bug #1126]
-
-- speed up conversion of large old files on some systems
-
-- fix bad conversion of tables from LyX 1.0 [bug #1045]
-
-- convert old files (0.11 series) correctly, suppressing space
-  between number and units [bug #763]
-
-- fix docbook export with nested environments [bug #821]
-
-- output newline and hfill correctly in docbook [bug #1148]
-
-- when pressing delete or backspace over a selection, do not modify
-  the clipboard [bug #1049]
-
-- when inserting a float or a note over a selection, make sure that
-  the insets and font changes in the selection are correctly kept
-  (note however that doing this now modifies the clipboard)
-
-- clean-up properly after completed graphics conversion processes.
-
-- enable graphics conversion using the default convertDefault.sh converter
-  when exporting, even if convertDefault.sh is not executable.
-
-- work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
-
-- fix bug where browsing for files in graphics inset would always
-  return an absolute path [bug #1028, Qt only]
-
-- do not write in preference file the colors which are still at their
-  default value [bug #1069, Qt only]
-
-- fix loading of symbol fonts [Qt 3.2.0 only]
-
-- fix loading of symbol fonts on solaris
-
-- fix the math panel symbols [Qt 3.2.0 only]
-
-- do not reset natbib style when adding a new entry to a citation [Qt
-  only]
-
-- allow insertion of width strings like "2.5in" into tabular dialog
-  [Qt only]
-
-- fix some cases where the View>TeX information dialog would get
-  confused because the same file gets listed several times
-
-- remove annoying message on console when LyX tries to make TeX fonts
-  available to the X server
-
-- it was not possible to view the french versions of the Extended and
-  Customization manual.
-
-- the lib/configure script now works correctly with zsh [bug #977]
-
-- add missing c_str.sed file in the distribution
-
-- hopefully really fix problems with patch requiring aclocal-1.6
-
-- fix compilation on HP-UX 11.x
-
-- do not report failed inlining when compiling with gcc
-
-- fix compilation with new development versions of xforms
-
-- fix compilation with AikSaurus 1.0
 

@@ -31,18 +31,18 @@ What's new
 
 - add support for drag-n-drop opening of lyx files [Qt only]
 
-- add support for opening files with LyX in finder [Qt/Mac only]
-
 - add support for intelligent scrolling with the mouse cursor [Qt only]
 
-- make MacOSX build relocatable
+- improvements in LyX/Mac: support for opening files with LyX in
+  finder, the LyX.app bundle can now be moved around and contains its
+  own fonts (for math equations)
 
 - add support for \boldsymbol in math editor
 
 - add support for g-brief2 textclass
 
-- update basque, danish, finnish, german, italian, nynorsk, romanian,
-  spanish and slovenian interface localizations
+- update basque, danish, finnish, french, german, italian, nynorsk,
+  romanian, spanish and slovenian interface localizations
 
 - remove localization for the following languages, since they were too
   incomplete to be useful: bulgarian, catalan, czech, hebrew,
