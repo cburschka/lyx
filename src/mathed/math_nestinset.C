@@ -297,9 +297,32 @@ void MathNestInset::normalize(NormalStream & os) const
 }
 
 
-void MathNestInset::notifyCursorLeaves(idx_type idx)
+void MathNestInset::notifyCursorLeaves(LCursor & cur)
 {
-	cell(idx).notifyCursorLeaves();
+/*
+	MathArray & ar = cur.cell();
+	// remove base-only "scripts"
+	for (pos_type i = 0; i + 1 < size(); ++i) {
+		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
+		if (p && p->cell(0).empty() && p->cell(1).empty()) {
+			MathArray ar = p->nuc();
+			erase(i);
+			insert(i, ar);
+			mathcursor->adjust(i, ar.size() - 1);
+		}
+	}
+
+	// glue adjacent font insets of the same kind
+	for (pos_type i = 0; i + 1 < size(); ++i) {
+		MathFontInset * p = operator[](i).nucleus()->asFontInset();
+		MathFontInset const * q = operator[](i + 1)->asFontInset();
+		if (p && q && p->name() == q->name()) {
+			p->cell(0).append(q->cell(0));
+			erase(i + 1);
+			mathcursor->adjust(i, -1);
+		}
+	}
+*/
 }
 
 
@@ -583,7 +606,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	bool remove_inset = false;
 
 	DispatchResult result(true);
-	bool was_macro     = cur.inMacroMode();
+	bool was_macro = cur.inMacroMode();
 
 	cur.normalize();
 	cur.touch();
@@ -821,7 +844,7 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
-	//string tc = mathcursor::getLastCode();
+	//string tc = "mathnormal"; 
 	bool ret = true;
 	switch (cmd.action) {
 #if 0
@@ -994,9 +1017,10 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 
 bool MathNestInset::interpret(LCursor & cur, char c)
 {
-	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	lyxerr << "interpret 2: '" << c << "'" << endl;
 	cur.clearTargetX();
-	if (cur.inMacroArgMode()) {
+	/// are we currently typing '#1' or '#2' or...?
+	if (cur.pos() > 0 && cur.prevAtom()->getChar() == '#') {
 		cur.posLeft();
 		cur.plainErase();
 #ifdef WITH_WARNINGS
@@ -1164,16 +1188,24 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		// convert the thing to our left to a scriptinset or create a new
 		// one if in the very first position of the array
 		if (cur.pos() == 0) {
+			lyxerr << "new scriptinset" << endl;
 			cur.insert(new MathScriptInset(up));
 		} else {
-			--cur.pos();
-			cur.cell()[cur.pos()] = MathAtom(new MathScriptInset(cur.nextAtom(), up));
+			lyxerr << "converting prev atom " << endl;
+			cur.prevAtom() = MathAtom(new MathScriptInset(cur.prevAtom(), up));
 		}
+		lyxerr << "new scriptinset 2: cur:\n" << cur << endl;
+		--cur.pos();
+		lyxerr << "new scriptinset 3: cur:\n" << cur << endl;
 		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
+		lyxerr << "new scriptinset 3: inset:\n" << inset << endl;
 		cur.push(*inset);
 		cur.idx() = 1;
 		cur.pos() = 0;
 	}
+	lyxerr << "pasting 1: safe:\n" << safe << endl;
 	cur.paste(safe);
+	cur.resetAnchor();
+	lyxerr << "pasting 2: safe:\n" << safe << endl;
 	return true;
 }

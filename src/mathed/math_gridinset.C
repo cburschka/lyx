@@ -14,11 +14,13 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+
 #include "BufferView.h"
+#include "FuncStatus.h"
+#include "LColor.h"
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
-#include "LColor.h"
 
 #include "frontends/Painter.h"
 
@@ -1184,6 +1186,37 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	default:
 		MathNestInset::priv_dispatch(cur, cmd);
-		return;
 	}
+}
+
+
+bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	bool ret = true;
+	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE:
+#if 0
+		// should be more precise
+		if (v_align_ == '\0') {
+			flag.enable(true);
+			break;
+		}
+		if (cmd.argument.empty()) {
+			flag.enable(false);
+			break;
+		}
+		if (!contains("tcb", cmd.argument[0])) {
+			flag.enable(false);
+			break;
+		}
+		flag.setOnOff(cmd.argument[0] == v_align_);
+#endif
+		flag.enabled(true);
+		break;
+	default:
+		ret = MathNestInset::getStatus(cur, cmd, flag);
+		break;
+	}
+	return ret;
 }

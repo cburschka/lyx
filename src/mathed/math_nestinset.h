@@ -67,7 +67,7 @@ public:
 	/// access to the lock
 	void lock(bool);
 	/// get notification when the cursor leaves this inset
-	void notifyCursorLeaves(idx_type);
+	void notifyCursorLeaves(LCursor & cur);
 
 	/// direct access to the cell
 	MathArray & cell(idx_type);

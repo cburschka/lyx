@@ -84,27 +84,19 @@ bool MathScriptInset::idxLast(LCursor & cur) const
 
 MathArray const & MathScriptInset::down() const
 {
-#if 1
 	if (nargs() == 3)
 		return cell(2);
 	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
-#else
-	return nargs() == 3 ? cell(2) : cell(1);
-#endif
 }
 
 
 MathArray & MathScriptInset::down()
 {
-#if 1
 	if (nargs() == 3)
 		return cell(2);
 	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
-#else
-	return nargs() == 3 ? cell(2) : cell(1);
-#endif
 }
 
 
@@ -313,9 +305,12 @@ bool MathScriptInset::hasLimits() const
 
 void MathScriptInset::removeScript(bool up)
 {
+	lyxerr << "MathNestInset::removeScript: 1 up: " << up << endl;
 	if (nargs() == 2) {
+		lyxerr << "MathNestInset::removeScript: a up: " << up << endl;
 		if (up == cell_1_is_up_)
 			cells_.pop_back();
+		lyxerr << "MathNestInset::removeScript: b up: " << up << endl;
 	} else if (nargs() == 3) {
 		if (up == true) {
 			swap(cells_[1], cells_[2]);
@@ -323,7 +318,9 @@ void MathScriptInset::removeScript(bool up)
 		} else {
 			cell_1_is_up_ = true;
 		}
+		cells_.pop_back();
 	}
+	lyxerr << "MathNestInset::removeScript: 2 up: " << up << endl;
 }
 
 
@@ -335,16 +332,16 @@ bool MathScriptInset::has(bool up) const
 
 bool MathScriptInset::hasUp() const
 {
-	//lyxerr << "hasUp: " << bool(idxOfScript(true)) << endl;
 	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
+	//lyxerr << "hasUp: " << bool(idxOfScript(true)) << endl;
 	return idxOfScript(true);
 }
 
 
 bool MathScriptInset::hasDown() const
 {
-	//lyxerr << "hasDown: " << bool(idxOfScript(false)) << endl;
 	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
+	//lyxerr << "hasDown: " << bool(idxOfScript(false)) << endl;
 	return idxOfScript(false);
 }
 
@@ -354,7 +351,7 @@ InsetBase::idx_type MathScriptInset::idxOfScript(bool up) const
 	if (nargs() == 1)
 		return 0;
 	if (nargs() == 2)
-		return cell_1_is_up_ == up ? 1 : 0;
+		return (cell_1_is_up_ == up) ? 1 : 0;
 	if (nargs() == 3)
 		return up ? 1 : 2;
 	BOOST_ASSERT(false);
@@ -393,7 +390,7 @@ bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
 	}
 
 	// Are we 'up'?
-	if (cur.idx() == idxOfScript(true)) {
+	if (has(up) && cur.idx() == idxOfScript(true)) {
 		// can't go further up
 		if (up)
 			return false;
@@ -404,7 +401,7 @@ bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
 	}
 
 	// Are we 'down'?
-	if (cur.idx() == idxOfScript(false)) {
+	if (has(up) && cur.idx() == idxOfScript(false)) {
 		// can't go further down
 		if (!up)
 			return false;
@@ -556,11 +553,26 @@ void MathScriptInset::infoize2(std::ostream & os) const
 }
 
 
-void MathScriptInset::notifyCursorLeaves(idx_type idx)
+void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 {
-	MathNestInset::notifyCursorLeaves(idx);
+	MathNestInset::notifyCursorLeaves(cur);
 
+#if 1
 	// remove empty scripts if possible
+<<<<<<< math_scriptinset.C
+	if (cur.idx() == 2 && cell(2).empty()) {
+		// must be a subscript...
+		removeScript(false);
+		// sanitize cursor, even if this slice will be removed immediately
+		cur.idx() = 0;
+		cur.pos() = 0;
+	} else if (cur.idx() == 1 && cell(1).empty()) {
+		// could be either subscript or super script
+		removeScript(cell_1_is_up_);
+		// sanitize cursor, even if this slice will be removed immediately
+		cur.idx() = 0;
+		cur.pos() = 0;
+=======
 	if (idx == 2 && nargs() > 2 && cell(2).empty()) {
 		removeScript(false); // must be a subscript...
 	} else if (idx == 1 && nargs() > 1 && cell(1).empty()) {
@@ -571,7 +583,9 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 		} else if (nargs() == 1) {
 			cells_.pop_back();
 		}
+>>>>>>> 1.114
 	}
+#endif
 }
 
 

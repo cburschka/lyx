@@ -71,13 +71,13 @@ public:
 	void limits(int lim) { limits_ = lim; }
 	/// get limits
 	int limits() const { return limits_; }
-	/// returns subscript
+	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
 	MathArray const & down() const;
-	/// returns subscript
+	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
 	MathArray & down();
-	/// returns superscript
+	/// returns superscript. Always run 'hasUp' or 'has(true)' before!
 	MathArray const & up() const;
-	/// returns superscript
+	/// returns superscript. Always run 'hasUp' or 'has(true)' before!
 	MathArray & up();
 	/// returns nucleus
 	MathArray const & nuc() const;
@@ -122,7 +122,7 @@ private:
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
 	/// clean up empty cells
-	void notifyCursorLeaves(idx_type idx);
+	void notifyCursorLeaves(LCursor & cur);
 
 	/// possible subscript (index 0) and superscript (index 1)
 	bool cell_1_is_up_;
