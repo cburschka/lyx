@@ -20,6 +20,8 @@
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
 
+#include <functional>
+
 using lyx::support::compare_ascii_no_case;
 using lyx::support::getFormatFromContents;
 using lyx::support::MakeDisplayPath;

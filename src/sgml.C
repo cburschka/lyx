@@ -220,7 +220,7 @@ void openTag(Buffer const & buf, ostream & os, OutputParams const & runparams, P
 		if (param.find('#') != string::npos) {
 			string::size_type pos = param.find("id=<");
 			string::size_type end = param.find(">");
-			if( pos != string::npos and end != string::npos)
+			if( pos != string::npos && end != string::npos)
 				param.erase(pos, end-pos + 1);
 		}
 		attribute = id + ' ' + param;

@@ -12,6 +12,8 @@
 
 #include "Sectioning.h"
 
+using std::string;
+
 string const & Section::name() const
 {
 	return name_;

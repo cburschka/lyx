@@ -88,7 +88,7 @@ ParagraphList::const_iterator searchEnvironment(ParagraphList::const_iterator co
 		if(p->params().depth() < par->params().depth())
 			return p;
 
-		if( style->latexname() != bstyle->latexname() and p->params().depth() == par->params().depth() )
+		if( style->latexname() != bstyle->latexname() && p->params().depth() == par->params().depth() )
 			return p;
 	}
 	return pend;
@@ -132,7 +132,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	// Opening outter tag
 	sgml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
-	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->pass_thru)
+	if (bstyle->latextype == LATEX_ENVIRONMENT && bstyle->pass_thru)
 		os << "<![CDATA[";
 
 	while (par != pend) {
@@ -204,7 +204,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		}
 	}
 
-	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->pass_thru)
+	if (bstyle->latextype == LATEX_ENVIRONMENT && bstyle->pass_thru)
 		os << "]]>";
 
 	// Closing outter tag

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "math_xyarrowinset.h"
-#include "math_xymatrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
@@ -27,9 +26,9 @@ MathXYArrowInset::MathXYArrowInset()
 {}
 
 
-auto_ptr<InsetBase> MathXYArrowInset::clone() const
+std::auto_ptr<InsetBase> MathXYArrowInset::clone() const
 {
-	return auto_ptr<InsetBase>(new MathXYArrowInset(*this));
+	return std::auto_ptr<InsetBase>(new MathXYArrowInset(*this));
 }
 
 

@@ -41,6 +41,7 @@
 
 #include <sstream>
 #include <iostream>
+#include <limits>
 
 using lyx::graphics::PreviewLoader;
 

@@ -16,7 +16,7 @@
 class LyXFont;
 
 /// Simple wrapper around three ints
-struct Dimension {
+class Dimension {
 public:
 	/// constructor
 	Dimension() : wid(0), asc(0), des(0) {}

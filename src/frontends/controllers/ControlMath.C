@@ -18,6 +18,8 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
+#include <functional>
+
 using std::string;
 
 namespace lyx {

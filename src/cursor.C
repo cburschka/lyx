@@ -50,6 +50,7 @@
 #include <boost/current_function.hpp>
 
 #include <sstream>
+#include <limits>
 
 using lyx::pit_type;
 

@@ -77,7 +77,9 @@ void UpdatableInset::scroll(BufferView & bv, int offset) const
 		else
 			scx += offset;
 	} else {
+#ifdef WITH_WARNINGS
 #warning metrics?
+#endif
 		if (!scx && xo_ + width() < bv.workWidth() - 20)
 			return;
 		if (xo_ - scx + offset + width() < bv.workWidth() - 20) {

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "BranchList.h"
+#include <algorithm>
 
 using std::string;
 

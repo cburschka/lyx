@@ -15,7 +15,7 @@
 
 #include "insetcommand.h"
 
-struct LaTeXFeatures;
+class LaTeXFeatures;
 
 /** The url inset
  */

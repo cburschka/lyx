@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "math_binaryopinset.h"
-#include "PainterInfo.h"
+#include "metricsinfo.h"
 #include "support/std_ostream.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -26,7 +26,7 @@ MathBinaryOpInset::MathBinaryOpInset(char op)
 {}
 
 
-auto_ptr<InsetBase> MathBinaryOpInset::clone() const
+std::auto_ptr<InsetBase> MathBinaryOpInset::clone() const
 {
 	return auto_ptr<InsetBase>(new MathBinaryOpInset(*this));
 }

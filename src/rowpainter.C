@@ -515,7 +515,9 @@ void RowPainter::paintFirst()
 					} else {
 						spacing_val = buffer.params().spacing().getValue();
 					}
+#ifdef WITH_WARNINGS
 #warning Look is this correct?
+#endif
 					int const labeladdon = int(font_metrics::maxHeight(font) * layout->spacing.getValue() * spacing_val);
 
 					int const maxdesc = int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val)
