@@ -219,7 +219,7 @@ void Buffer::resetAutosaveTimers() const
 }
 
 
-void Buffer::fileName(string const & newfile)
+void Buffer::setFileName(string const & newfile)
 {
 	filename = MakeAbsPath(newfile);
 	filepath = OnlyPath(filename);

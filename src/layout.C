@@ -871,7 +871,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 					error = do_readStyle(lexrc, lay);
 				} else {
 					LyXLayout lay;
-					lay.name(name);
+					lay.setName(name);
 					if (!(error = do_readStyle(lexrc, lay)))
 						layoutlist.push_back(lay);
 				}

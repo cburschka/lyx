@@ -1,3 +1,15 @@
+2000-10-12    <larsbj@baywatch.lyx.org>
+
+	* src/support/lyxfunctional.h: add operator= that takes a reference
+
+	* src/lyxserver.C (mkfifo): make first arg const
+
+	* src/layout.h: renamed name(...) to setName(...) to work around
+	bugs in egcs.
+
+	* src/buffer.C (setFileName): had to change name of function to
+	work around bugs in egcs. (renamed from fileName) 
+
 2000-10-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/translator.h: move helper template clsses to

@@ -41,6 +41,12 @@ public:
 		return *this;
 	}
 
+	back_insert_fun_iterator &
+	operator=(Type & val) {
+		container.push_back((val.*pmf)());
+		return *this;
+	}
+
 	back_insert_fun_iterator & operator*() {
 		return *this;
 	}

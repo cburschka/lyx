@@ -72,8 +72,8 @@ using std::endl;
 // provide an empty mkfifo() if we do not have one. This disables the
 // lyxserver. 
 #ifndef HAVE_MKFIFO
-int	mkfifo( char *__path, mode_t __mode ) {
-	return 0;
+int mkfifo(char const * __path, mode_t __mode ) {
+        return 0;
 }
 #endif
 

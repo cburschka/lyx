@@ -236,7 +236,7 @@ public:
 	string const getLatexName(bool no_path = true) const;
 
 	/// Change name of buffer. Updates "read-only" flag.
-	void fileName(string const & newfile);
+	void setFileName(string const & newfile);
 
 	/// Name of the document's parent
 	void setParentName(string const &);

@@ -254,7 +254,7 @@ bool MenuWriteAs(Buffer * buffer)
 				bufferlist.close(bufferlist.getBuffer(s));
 
 				// Ok, change the name of the buffer, but don't save!
-				buffer->fileName(s);
+				buffer->setFileName(s);
 				buffer->markDirty();
 
 				ShowMessage(buffer, _("Document renamed to '"),
@@ -271,7 +271,7 @@ bool MenuWriteAs(Buffer * buffer)
 	}
 
 	// Ok, change the name of the buffer
-	buffer->fileName(s);
+	buffer->setFileName(s);
 	buffer->markDirty();
 	bool unnamed = buffer->isUnnamed();
 	buffer->setUnnamed(false);
@@ -280,7 +280,7 @@ bool MenuWriteAs(Buffer * buffer)
 	// of the document.
 	// Hope this is fixed this way! (Jug)
 	if (!MenuWrite(buffer)) {
-	    buffer->fileName(oldname);
+	    buffer->setFileName(oldname);
 	    buffer->setUnnamed(unnamed);
 	    ShowMessage(buffer, _("Document could not be saved!"),
 			_("Holding the old name."), MakeDisplayPath(oldname));

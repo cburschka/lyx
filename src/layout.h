@@ -210,7 +210,7 @@ public:
 	///
 	string const & name() const { return name_; }
 	///
-	void name(string const & n) { name_ = n; }
+	void setName(string const & n) { name_ = n; }
 	///
 	string const & obsoleted_by() const { return obsoleted_by_; }
 	///
