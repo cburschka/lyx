@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.4pre2\n"
-"POT-Creation-Date: 2000-06-01 20:12+0300\n"
+"POT-Creation-Date: 2000-06-06 13:11+0200\n"
 "PO-Revision-Date: 2000-05-26 14:20+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
 "Language-Team: Finnish, out-of-team\n"
@@ -166,8 +166,8 @@ msgid "Error! Can't open temporary file:"
 msgstr "Virhe! V‰liaikaistiedostoa ei voi avata:"
 
 #: src/BufferView2.C:61 src/BufferView2.C:71 src/buffer.C:3605
-#: src/bufferlist.C:408 src/lyx_cb.C:396 src/lyx_cb.C:759 src/lyx_cb.C:785
-#: src/lyx_sendfax_main.C:264 src/menus.C:2096
+#: src/bufferlist.C:411 src/lyx_cb.C:396 src/lyx_cb.C:759 src/lyx_cb.C:785
+#: src/lyx_sendfax_main.C:264 src/menus.C:2130
 msgid "Error!"
 msgstr "Virhe!"
 
@@ -175,12 +175,12 @@ msgstr "Virhe!"
 msgid "Error executing *roff command on table"
 msgstr "Virhe suoritettaessa *roff-komentoa taulukkoon"
 
-#: src/bufferlist.C:100 src/bufferlist.C:158 src/lyxvc.C:91 src/lyxvc.C:124
+#: src/bufferlist.C:100 src/bufferlist.C:161 src/lyxvc.C:91 src/lyxvc.C:124
 #: src/lyxvc.C:154
 msgid "Changes in document:"
 msgstr "Muutoksia asiakirjassa:"
 
-#: src/bufferlist.C:103 src/bufferlist.C:160
+#: src/bufferlist.C:103 src/bufferlist.C:163
 msgid "Save document?"
 msgstr "Haluatko tallentaa asiakirjan?"
 
@@ -192,73 +192,73 @@ msgstr "Asiakirjoja j‰i tallentamatta:"
 msgid "Exit anyway?"
 msgstr "Haluatko silti lopettaa?"
 
-#: src/bufferlist.C:244
+#: src/bufferlist.C:247
 msgid "lyx: Attempting to save document "
 msgstr "lyx: Asiakirjaa yritet‰‰n tallentaa "
 
-#: src/bufferlist.C:247
+#: src/bufferlist.C:250
 msgid " as..."
 msgstr " nimell‰..."
 
-#: src/bufferlist.C:273
+#: src/bufferlist.C:276
 msgid "  Save seems successful. Phew."
 msgstr "  Tallennus ilmeisesti onnistui. Huh."
 
-#: src/bufferlist.C:277
+#: src/bufferlist.C:280
 msgid "  Save failed! Trying..."
 msgstr "  Tallennus ep‰onnistui! Yritet‰‰n..."
 
-#: src/bufferlist.C:280
+#: src/bufferlist.C:283
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Tallennus ep‰onnistui! Asiakirjaa ei voitu palauttaa."
 
-#: src/bufferlist.C:309
+#: src/bufferlist.C:312
 msgid "An emergency save of this document exists!"
 msgstr "Asiakirjasta on olemassa h‰t‰tallennusversio!"
 
-#: src/bufferlist.C:311
+#: src/bufferlist.C:314
 msgid "Try to load that instead?"
 msgstr "Lataatko sen mieluummin?"
 
-#: src/bufferlist.C:333
+#: src/bufferlist.C:336
 msgid "Autosave file is newer."
 msgstr "Automaattinen tallennusversio on tuoreempi."
 
-#: src/bufferlist.C:335
+#: src/bufferlist.C:338
 msgid "Load that one instead?"
 msgstr "Lataatko sen mieluummin?"
 
-#: src/bufferlist.C:408
+#: src/bufferlist.C:411
 msgid "Unable to open template"
 msgstr "Mallitiedostoa ei voi avata"
 
-#: src/bufferlist.C:432 src/lyxfunc.C:2746 src/lyxfunc.C:2898
+#: src/bufferlist.C:435 src/lyxfunc.C:2746 src/lyxfunc.C:2898
 msgid "Document is already open:"
 msgstr "Asiakirja on jo avoinna:"
 
-#: src/bufferlist.C:434
+#: src/bufferlist.C:437
 msgid "Do you want to reload that document?"
 msgstr "Haluatko avata asiakirjan uudelleen?"
 
-#: src/bufferlist.C:452
+#: src/bufferlist.C:455
 msgid "File `"
 msgstr "Tiedosto `"
 
-#: src/bufferlist.C:453
+#: src/bufferlist.C:456
 msgid "' is read-only."
 msgstr "' on kirjoitussuojattu."
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:468
+#: src/bufferlist.C:471
 msgid "Do you want to retrieve file under version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/bufferlist.C:476
+#: src/bufferlist.C:479
 msgid "Cannot open specified file:"
 msgstr "Valittua tiedostoa ei voi avata:"
 
-#: src/bufferlist.C:478
+#: src/bufferlist.C:481
 msgid "Create new document with this name?"
 msgstr "Luodaanko uusi asiakirja t‰ll‰ nimell‰?"
 
@@ -270,16 +270,16 @@ msgstr "Annettua tiedostoa ei voi lukea: "
 msgid "Cannot open specified file: "
 msgstr "Valittua tiedostoa ei voi avata:"
 
-#: src/BufferView2.C:202 src/insets/insetert.C:66
+#: src/BufferView2.C:203 src/insets/insetert.C:66
 #: src/insets/insettabular.C:1130 src/lyx_cb.C:2651 src/text.C:2294
 msgid "Impossible Operation!"
 msgstr "Mahdoton toiminto!"
 
-#: src/BufferView2.C:203
+#: src/BufferView2.C:204
 msgid "Cannot insert table/list in table."
 msgstr "Taulukkoa/listaa ei voi lis‰t‰ taulukon sis‰‰n."
 
-#: src/BufferView2.C:204 src/CutAndPaste.C:424 src/CutAndPaste.C:433
+#: src/BufferView2.C:205 src/CutAndPaste.C:424 src/CutAndPaste.C:433
 #: src/insets/insetert.C:68 src/insets/insettabular.C:1132
 #: src/insets/insettext.C:1510 src/lyx_cb.C:2653 src/text.C:2296
 #: src/text.C:4636 src/text.C:4644 src/text.C:4659 src/text.C:4676
@@ -287,51 +287,51 @@ msgstr "Taulukkoa/listaa ei voi lis‰t‰ taulukon sis‰‰n."
 msgid "Sorry."
 msgstr "Valitettavasti."
 
-#: src/BufferView2.C:402 src/BufferView2.C:416
+#: src/BufferView2.C:403 src/BufferView2.C:417
 msgid "Open/Close..."
 msgstr "Avaa/Sulje..."
 
-#: src/BufferView2.C:429 src/LyXAction.C:362
+#: src/BufferView2.C:430 src/LyXAction.C:362
 msgid "Undo"
 msgstr "Kumoa"
 
-#: src/BufferView2.C:434
+#: src/BufferView2.C:435
 msgid "No further undo information"
 msgstr "Ei en‰‰ mit‰‰n kumottavaa"
 
-#: src/BufferView2.C:445
+#: src/BufferView2.C:446
 msgid "Redo not yet supported in math mode"
 msgstr "\"Tee uudelleen\" ei viel‰ toimi matematiikkatilassa"
 
-#: src/BufferView2.C:450 src/LyXAction.C:320
+#: src/BufferView2.C:451 src/LyXAction.C:320
 msgid "Redo"
 msgstr "Tee uudelleen"
 
-#: src/BufferView2.C:455
+#: src/BufferView2.C:456
 msgid "No further redo information"
 msgstr "Ei en‰‰ mit‰‰n uudelleen teht‰v‰‰"
 
-#: src/BufferView2.C:552
+#: src/BufferView2.C:553
 msgid "Paragraph environment type copied"
 msgstr "Kappaletyyli kopioitu"
 
-#: src/BufferView2.C:561
+#: src/BufferView2.C:562
 msgid "Paragraph environment type set"
 msgstr "Kappaletyyli asetettu"
 
-#: src/BufferView2.C:575 src/LyXAction.C:160
+#: src/BufferView2.C:576 src/LyXAction.C:160
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/BufferView2.C:586 src/LyXAction.C:161
+#: src/BufferView2.C:587 src/LyXAction.C:161
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/BufferView2.C:595 src/LyXAction.C:311
+#: src/BufferView2.C:596 src/LyXAction.C:311
 msgid "Paste"
 msgstr "Liit‰"
 
-#: src/BufferView2.C:630 src/BufferView2.C:634
+#: src/BufferView2.C:631 src/BufferView2.C:635
 msgid "No more notes"
 msgstr "Ei lis‰‰ huomautuksia"
 
@@ -426,8 +426,8 @@ msgstr "K‰yt‰|#K"
 #: src/insets/insetindex.C:59 src/insets/insetindex.C:60 src/latexoptions.C:27
 #: src/layout_forms.C:64 src/layout_forms.C:290 src/layout_forms.C:396
 #: src/layout_forms.C:424 src/layout_forms.C:476 src/layout_forms.C:710
-#: src/lyx.C:53 src/lyx.C:103 src/lyx_gui_misc.C:383 src/lyx_gui_misc.C:387
-#: src/lyx_gui_misc.C:394 src/lyx_sendfax.C:35 src/mathed/math_forms.C:100
+#: src/lyx.C:53 src/lyx.C:103 src/lyx_gui_misc.C:423 src/lyx_gui_misc.C:427
+#: src/lyx_gui_misc.C:434 src/lyx_sendfax.C:35 src/mathed/math_forms.C:100
 #: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:47
 #: src/print_form.C:120 src/sp_form.C:42
 msgid "Cancel|^["
@@ -752,9 +752,9 @@ msgstr "N‰yt‰ kehys|#h"
 msgid "Do Translations|#r"
 msgstr "Muuta mittakaavaa|#a"
 
-#: src/form1.C:129 src/insets/form_graphics.C:73 src/menus.C:196
-#: src/menus.C:207 src/menus.C:344 src/menus.C:345 src/menus.C:346
-#: src/menus.C:419 src/menus.C:420 src/menus.C:421 src/sp_form.C:58
+#: src/form1.C:129 src/insets/form_graphics.C:73 src/menus.C:197
+#: src/menus.C:208 src/menus.C:345 src/menus.C:346 src/menus.C:347
+#: src/menus.C:420 src/menus.C:421 src/menus.C:422 src/sp_form.C:58
 msgid "Options"
 msgstr "Asetukset"
 
@@ -992,7 +992,7 @@ msgstr "URL|#U"
 msgid "Name"
 msgstr "Nimi:"
 
-#: src/insets/form_url.C:24 src/lyx.C:174
+#: src/insets/form_url.C:24 src/lyx.C:175
 msgid "Name|#N"
 msgstr "Nimi:|#N"
 
@@ -1129,8 +1129,8 @@ msgstr "K‰yt‰ sis‰llytyst‰|#i"
 
 #. launches dialog
 #: src/insets/insetinclude.C:114 src/lyx_cb.C:248 src/lyxfunc.C:2726
-#: src/lyxfunc.C:2816 src/lyxfunc.C:2876 src/lyxfunc.C:3020 src/menus.C:198
-#: src/menus.C:358 src/menus.C:359 src/menus.C:360
+#: src/lyxfunc.C:2816 src/lyxfunc.C:2876 src/lyxfunc.C:3020 src/menus.C:199
+#: src/menus.C:359 src/menus.C:360 src/menus.C:361
 msgid "Documents"
 msgstr "Asiakirjat"
 
@@ -1176,7 +1176,7 @@ msgstr "Huomautus"
 msgid "Opened note"
 msgstr "Huomautus avattiin"
 
-#: src/insets/insetinfo.C:210 src/insets/insetinfo.C:215 src/lyx.C:158
+#: src/insets/insetinfo.C:210 src/insets/insetinfo.C:215 src/lyx.C:159
 msgid "Close|#C^["
 msgstr "Sulje|#S^["
 
@@ -1709,7 +1709,7 @@ msgstr "Pid‰|#P"
 msgid "Keep|#p"
 msgstr "Pid‰|#d"
 
-#: src/layout_forms.C:388 src/lyx_gui_misc.C:395 src/lyx_sendfax.C:31
+#: src/layout_forms.C:388 src/lyx_gui_misc.C:435 src/lyx_sendfax.C:31
 msgid "OK|#O"
 msgstr "OK|#O"
 
@@ -2647,19 +2647,19 @@ msgstr "P‰ivit‰|uU#P"
 msgid "Type|Tt#t"
 msgstr "Tyyppi:|Tt#t"
 
-#: src/lyx.C:154
+#: src/lyx.C:155
 msgid "Update|#U"
 msgstr "P‰ivit‰|#P"
 
-#: src/lyx.C:162
+#: src/lyx.C:163
 msgid "Insert Reference|#I^M"
 msgstr "Lis‰‰ viite|#L^M"
 
-#: src/lyx.C:166
+#: src/lyx.C:167
 msgid "Insert Page Number|#P"
 msgstr "Lis‰‰ sivunnumero|#i"
 
-#: src/lyx.C:170
+#: src/lyx.C:171
 msgid "Go to Reference|#G"
 msgstr "Siirry viitteeseen|#v"
 
@@ -2667,17 +2667,21 @@ msgstr "Siirry viitteeseen|#v"
 msgid "Sort keys|#S"
 msgstr "J‰rjest‰ nimikkeet:|#L"
 
-#: src/lyx.C:181
+#: src/lyx.C:182
 msgid "Insert vReference|#V"
 msgstr "Lis‰‰ viite ja sijainti|#vV"
 
-#: src/lyx.C:185
+#: src/lyx.C:186
 msgid "Insert vPage Number|#N"
 msgstr "Lis‰‰ sivuviite|#nN"
 
-#: src/lyx.C:189
+#: src/lyx.C:190
 msgid "Insert Pretty Ref|#T"
 msgstr "Lis‰‰ sanallinen viite|#tT"
+
+#: src/lyx.C:194
+msgid "Go Back|#B"
+msgstr ""
 
 #: src/lyx_cb.C:224
 msgid "Save failed. Rename and try again?"
@@ -3075,7 +3079,7 @@ msgstr "t‰ss‰ asiakirjassa"
 msgid "*** No Document ***"
 msgstr "*** Ei asiakirjaa ***"
 
-#: src/lyx_cb.C:3267
+#: src/lyx_cb.C:3286
 msgid "*** No labels found in document ***"
 msgstr "*** Asiakirjassa ei ole nimikkeit‰ ***"
 
@@ -3518,27 +3522,27 @@ msgstr " Sis‰llys | Kuvat | Taulukot | Algoritmit"
 msgid "LyX Banner"
 msgstr "LyX-avauskuva"
 
-#: src/lyx_gui_misc.C:355
+#: src/lyx_gui_misc.C:395
 msgid "Dismiss"
 msgstr "Sulje"
 
-#: src/lyx_gui_misc.C:372 src/lyx_gui_misc.C:381 src/lyx_gui_misc.C:385
+#: src/lyx_gui_misc.C:412 src/lyx_gui_misc.C:421 src/lyx_gui_misc.C:425
 msgid "Yes|Yy#y"
 msgstr "Kyll‰|kK#k"
 
-#: src/lyx_gui_misc.C:373 src/lyx_gui_misc.C:382 src/lyx_gui_misc.C:386
+#: src/lyx_gui_misc.C:413 src/lyx_gui_misc.C:422 src/lyx_gui_misc.C:426
 msgid "No|Nn#n"
 msgstr "Ei|eE#e"
 
-#: src/lyx_gui_misc.C:396
+#: src/lyx_gui_misc.C:436
 msgid "Clear|#e"
 msgstr "Tyhjenn‰|#Tt"
 
-#: src/lyx_gui_misc.C:409
+#: src/lyx_gui_misc.C:449
 msgid "Any changes will be ignored"
 msgstr "Muutoksia ei oteta huomioon"
 
-#: src/lyx_gui_misc.C:410
+#: src/lyx_gui_misc.C:450
 msgid "The document is read-only:"
 msgstr "Asiakirja on kirjoitussuojattu:"
 
@@ -3985,85 +3989,85 @@ msgstr " Yl‰ | Keski | Ala"
 msgid "Math Panel"
 msgstr "Matematiikkapaneeli"
 
-#: src/menus.C:182 src/menus.C:205 src/menus.C:246 src/menus.C:247
-#: src/menus.C:248 src/menus.C:405 src/menus.C:406 src/menus.C:407
+#: src/menus.C:183 src/menus.C:206 src/menus.C:247 src/menus.C:248
+#: src/menus.C:249 src/menus.C:406 src/menus.C:407 src/menus.C:408
 msgid "File"
 msgstr "Tiedosto"
 
-#: src/menus.C:184 src/menus.C:260 src/menus.C:261 src/menus.C:262
+#: src/menus.C:185 src/menus.C:261 src/menus.C:262 src/menus.C:263
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: src/menus.C:186 src/menus.C:274 src/menus.C:275 src/menus.C:276
+#: src/menus.C:187 src/menus.C:275 src/menus.C:276 src/menus.C:277
 msgid "TOC"
 msgstr "Sis‰llys"
 
-#: src/menus.C:188 src/menus.C:288 src/menus.C:289 src/menus.C:290
+#: src/menus.C:189 src/menus.C:289 src/menus.C:290 src/menus.C:291
 msgid "Refs"
 msgstr "Viitteet"
 
-#: src/menus.C:190 src/menus.C:302 src/menus.C:303 src/menus.C:304
+#: src/menus.C:191 src/menus.C:303 src/menus.C:304 src/menus.C:305
 msgid "Layout"
 msgstr "Muotoile"
 
-#: src/menus.C:192 src/menus.C:316 src/menus.C:317 src/menus.C:318
+#: src/menus.C:193 src/menus.C:317 src/menus.C:318 src/menus.C:319
 msgid "Insert"
 msgstr "Lis‰‰"
 
-#: src/menus.C:194 src/menus.C:330 src/menus.C:331 src/menus.C:332
+#: src/menus.C:195 src/menus.C:331 src/menus.C:332 src/menus.C:333
 msgid "Math"
 msgstr "Matematiikka"
 
-#: src/menus.C:200 src/menus.C:209 src/menus.C:372 src/menus.C:373
-#: src/menus.C:374 src/menus.C:433 src/menus.C:434 src/menus.C:435
+#: src/menus.C:201 src/menus.C:210 src/menus.C:373 src/menus.C:374
+#: src/menus.C:375 src/menus.C:434 src/menus.C:435 src/menus.C:436
 msgid "Help"
 msgstr "Ohje"
 
-#: src/menus.C:250 src/menus.C:409
+#: src/menus.C:251 src/menus.C:410
 msgid "MB|#F"
 msgstr "MB|#T"
 
-#: src/menus.C:264
+#: src/menus.C:265
 msgid "MB|#E"
 msgstr "MB|#M"
 
-#: src/menus.C:278
+#: src/menus.C:279
 msgid "MB|#T"
 msgstr "MB|#S"
 
-#: src/menus.C:292
+#: src/menus.C:293
 msgid "MB|#R"
 msgstr "MB|#V"
 
-#: src/menus.C:306
+#: src/menus.C:307
 msgid "MB|#L"
 msgstr "MB|#u"
 
-#: src/menus.C:320
+#: src/menus.C:321
 msgid "MB|#I"
 msgstr "MB|#L"
 
-#: src/menus.C:334
+#: src/menus.C:335
 msgid "MB|#M"
 msgstr "MB|#e"
 
-#: src/menus.C:348 src/menus.C:423
+#: src/menus.C:349 src/menus.C:424
 msgid "MB|#O"
 msgstr "MB|#A"
 
-#: src/menus.C:362
+#: src/menus.C:363
 msgid "MB|#D"
 msgstr "MB|#k"
 
-#: src/menus.C:376 src/menus.C:437
+#: src/menus.C:377 src/menus.C:438
 msgid "MB|#H"
 msgstr "MB|#O"
 
-#: src/menus.C:479
+#: src/menus.C:480
 msgid "Screen Options"
 msgstr "N‰yttˆasetukset"
 
-#: src/menus.C:520
+#: src/menus.C:521
 msgid ""
 "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
 "Paragraphs%x32|Noweb%x33|LinuxDoc%x34"
@@ -4071,27 +4075,27 @@ msgstr ""
 "Tuo%t|LaTeX...%x30|ASCII-teksti rivein‰...%x31|ASCII-teksti "
 "kappaleina...%x32|Noweb...%x33|LinuxDoc%x34"
 
-#: src/menus.C:527 src/menus.C:784
+#: src/menus.C:528 src/menus.C:785
 msgid "FIM|Ll#l#L"
 msgstr "FIM|Ll#l#L"
 
-#: src/menus.C:528 src/menus.C:785
+#: src/menus.C:529 src/menus.C:786
 msgid "FIM|Aa#a#A"
 msgstr "FIM|Aa#a#A"
 
-#: src/menus.C:529 src/menus.C:786
+#: src/menus.C:530 src/menus.C:787
 msgid "FIM|Pp#p#P"
 msgstr "FIM|kK#k#K"
 
-#: src/menus.C:530 src/menus.C:787
+#: src/menus.C:531 src/menus.C:788
 msgid "FIM|Nn#n#N"
 msgstr "FIM|Nn#n#N"
 
-#: src/menus.C:531 src/menus.C:788
+#: src/menus.C:532 src/menus.C:789
 msgid "FIM|Dd#d#D"
 msgstr "FIM|Dd#d#D"
 
-#: src/menus.C:540
+#: src/menus.C:541
 msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44|Custom...%x45"
@@ -4099,7 +4103,7 @@ msgstr ""
 "Vie%t|LaTeXina...%x40|DVI:n‰...%x41|PostScriptina...%x42|ASCII-tekstin‰...%x4"
 "3|HTML:n‰...%x44|Omana muotona...%x45"
 
-#: src/menus.C:549
+#: src/menus.C:550
 msgid ""
 "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44"
@@ -4107,7 +4111,7 @@ msgstr ""
 "Vie%t|LinuxDoc...%x40|DVI...%x41|PostScript...%x42|ASCII-teksti...%43|HTML..."
 "%x44"
 
-#: src/menus.C:557
+#: src/menus.C:558
 msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44"
@@ -4115,31 +4119,31 @@ msgstr ""
 "Vie%t|DocBook...%x40|DVI...%x41|PostScript...%x42|ASCII-teksti...%43|HTML...%"
 "x44"
 
-#: src/menus.C:564
+#: src/menus.C:565
 msgid "FEX|Ll#l#L"
 msgstr "FEX|Ll#l#L"
 
-#: src/menus.C:565
+#: src/menus.C:566
 msgid "FEX|Dd#d#D"
 msgstr "FEX|Dd#d#D"
 
-#: src/menus.C:566
+#: src/menus.C:567
 msgid "FEX|Pp#p#P"
 msgstr "FEX|Pp#p#P"
 
-#: src/menus.C:567
+#: src/menus.C:568
 msgid "FEX|Tt#t#T"
 msgstr "FEX|Aa#a#A"
 
-#: src/menus.C:568
+#: src/menus.C:569
 msgid "FEX|Hh#h#H"
 msgstr "FEX|Hh#h#H"
 
-#: src/menus.C:571
+#: src/menus.C:572
 msgid "FEX|mM#m#M"
 msgstr "FEX|Oo#o#O"
 
-#: src/menus.C:575
+#: src/menus.C:576
 msgid ""
 "New...|New from template...|Open...%l|Close|Save|Save As...|Revert to "
 "saved%l|View dvi|View PostScript|Update dvi|Update PostScript|Build "
@@ -4149,90 +4153,90 @@ msgstr ""
 "kaikki muutokset%l|N‰yt‰ DVI:n‰|N‰yt‰ PostScriptina|P‰ivit‰ DVI|P‰ivit‰ "
 "PostScript|Build-ohjelma%l|Tulosta...|Faksaa..."
 
-#: src/menus.C:590 src/menus.C:808
+#: src/menus.C:591 src/menus.C:809
 msgid "FM|Nn#n#N"
 msgstr "FM|UuN#u#U"
 
-#: src/menus.C:591 src/menus.C:809
+#: src/menus.C:592 src/menus.C:810
 msgid "FM|tT#t#T"
 msgstr "FM|mM#m#M"
 
-#: src/menus.C:592 src/menus.C:810
+#: src/menus.C:593 src/menus.C:811
 msgid "FM|Oo#o#O"
 msgstr "FM|Aa#a#A"
 
-#: src/menus.C:593
+#: src/menus.C:594
 msgid "FM|Cc#c#C"
 msgstr "FM|Ss#s#S"
 
-#: src/menus.C:594
+#: src/menus.C:595
 msgid "FM|Ss#s#S"
 msgstr "FM|Tt#t#T"
 
-#: src/menus.C:595
+#: src/menus.C:596
 msgid "FM|Aa#a#A"
 msgstr "FM|nN#n#N"
 
-#: src/menus.C:596
+#: src/menus.C:597
 msgid "FM|Rr#r#R"
 msgstr "FM|Hh#h#H"
 
-#: src/menus.C:597
+#: src/menus.C:598
 msgid "FM|dD#d#D"
 msgstr "FM|Dd#d#D"
 
-#: src/menus.C:598
+#: src/menus.C:599
 msgid "FM|wW#w#W"
 msgstr "FM|cC#c#C"
 
-#: src/menus.C:599
+#: src/menus.C:600
 msgid "FM|vV#v#V"
 msgstr "FM|vV#v#V"
 
-#: src/menus.C:600
+#: src/menus.C:601
 msgid "FM|Uu#u#U"
 msgstr "FM|iI#i#I"
 
-#: src/menus.C:601
+#: src/menus.C:602
 msgid "FM|Bb#b#B"
 msgstr "FM|Bb#b#B"
 
-#: src/menus.C:602
+#: src/menus.C:603
 msgid "FM|Pp#p#P"
 msgstr "FM|lL#l#L"
 
-#: src/menus.C:603
+#: src/menus.C:604
 msgid "FM|Ff#f#F"
 msgstr "FM|Ff#f#F"
 
-#: src/menus.C:654
+#: src/menus.C:655
 #, no-c-format
 msgid "|Import%m"
 msgstr "|Tuo%m"
 
-#: src/menus.C:656
+#: src/menus.C:657
 #, no-c-format
 msgid "|Export%m%l"
 msgstr "|Vie%m%l"
 
-#: src/menus.C:658
+#: src/menus.C:659
 #, no-c-format
 msgid "|Exit%l"
 msgstr "|Lopeta%l"
 
-#: src/menus.C:659 src/menus.C:811
+#: src/menus.C:660 src/menus.C:812
 msgid "FM|Ii#i#I"
 msgstr "FM|oO#o#O"
 
-#: src/menus.C:660
+#: src/menus.C:661
 msgid "FM|Ee#e#E"
 msgstr "FM|eE#e#E"
 
-#: src/menus.C:661 src/menus.C:812
+#: src/menus.C:662 src/menus.C:813
 msgid "FM|xX#x#X"
 msgstr "FM|pP#p#P"
 
-#: src/menus.C:777
+#: src/menus.C:778
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
 "Paragraphs...%x17|Noweb...%x18|LinuxDoc...%x19"
@@ -4240,11 +4244,11 @@ msgstr ""
 "Tuo%t|LaTeX...%x15|ASCII-teksti rivein‰...%x16|ASCII-teksti "
 "kappaleina...%x17|Noweb...%x18|LinuxDoc...%x19"
 
-#: src/menus.C:802
+#: src/menus.C:803
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
 msgstr "Uusi...|Uusi mallista...|Avaa...%l|Tuo%m%l|Lopeta%l"
 
-#: src/menus.C:892
+#: src/menus.C:893
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
@@ -4255,265 +4259,265 @@ msgstr ""
 "alaviitteet/reunahuomautukset%x24|Avaa kaikki kuvat/taulukot%x25|Sulje "
 "kaikki kuvat/taulukot%x26|Poista kaikki virhelaatikot%x27"
 
-#: src/menus.C:901
+#: src/menus.C:902
 msgid "EMF|Oo#o#O"
 msgstr "EMF|Aa#a#A"
 
-#: src/menus.C:902
+#: src/menus.C:903
 msgid "EMF|Mm#m#M"
 msgstr "EMF|Pp#p#P"
 
-#: src/menus.C:903
+#: src/menus.C:904
 msgid "EMF|Aa#a#A"
 msgstr "EMF|aA#a#A"
 
-#: src/menus.C:904
+#: src/menus.C:905
 msgid "EMF|Cc#c#C"
 msgstr "EMF|rR#r#R"
 
-#: src/menus.C:905
+#: src/menus.C:906
 msgid "EMF|Ff#f#F"
 msgstr "EMF|kK#k#K"
 
-#: src/menus.C:906
+#: src/menus.C:907
 msgid "EMF|Tt#t#T"
 msgstr "EMF|tT#t#T"
 
-#: src/menus.C:907
+#: src/menus.C:908
 msgid "EMF|Rr#r#R"
 msgstr "EMF|vV#v#V"
 
-#: src/menus.C:916 src/menus.C:1014 src/menus.C:1081
+#: src/menus.C:917 src/menus.C:1015 src/menus.C:1082
 msgid "Table%t"
 msgstr "Taulukko%t"
 
-#: src/menus.C:923 src/menus.C:1017
+#: src/menus.C:924 src/menus.C:1018
 msgid "|Multicolumn%B%x44%l"
 msgstr "|Yhdistetyt sarakkeet%B%x44%l"
 
-#: src/menus.C:925 src/menus.C:1019
+#: src/menus.C:926 src/menus.C:1020
 msgid "|Multicolumn%b%x44%l"
 msgstr "|Yhdistetyt sarakkeet%b%x44%l"
 
-#: src/menus.C:926 src/menus.C:1020
+#: src/menus.C:927 src/menus.C:1021
 msgid "EMT|Mm#m#M"
 msgstr "EMT|dD#d#D"
 
-#: src/menus.C:933 src/menus.C:1023
+#: src/menus.C:934 src/menus.C:1024
 msgid "|Line Top%B%x36"
 msgstr "|Viiva yll‰%B%x36"
 
-#: src/menus.C:935 src/menus.C:1025
+#: src/menus.C:936 src/menus.C:1026
 msgid "|Line Top%b%x36"
 msgstr "|Viiva yll‰%b%x36"
 
-#: src/menus.C:936 src/menus.C:1026
+#: src/menus.C:937 src/menus.C:1027
 msgid "EMT|Tt#t#T"
 msgstr "EMT|yY#y#Y"
 
-#: src/menus.C:943 src/menus.C:1029
+#: src/menus.C:944 src/menus.C:1030
 msgid "|Line Bottom%B%x37"
 msgstr "|Viiva alla%B%x37"
 
-#: src/menus.C:945 src/menus.C:1031
+#: src/menus.C:946 src/menus.C:1032
 msgid "|Line Bottom%b%x37"
 msgstr "|Viiva alla%b%x37"
 
-#: src/menus.C:946 src/menus.C:1032
+#: src/menus.C:947 src/menus.C:1033
 msgid "EMT|Bb#b#B"
 msgstr "EMT|aA#a#A"
 
-#: src/menus.C:953 src/menus.C:1035
+#: src/menus.C:954 src/menus.C:1036
 msgid "|Line Left%B%x38"
 msgstr "|Viiva vasemmalla%B%x38"
 
-#: src/menus.C:955 src/menus.C:1037
+#: src/menus.C:956 src/menus.C:1038
 msgid "|Line Left%b%x38"
 msgstr "|Viiva vasemmalla%b%x38"
 
-#: src/menus.C:956 src/menus.C:1038
+#: src/menus.C:957 src/menus.C:1039
 msgid "EMT|Ll#l#L"
 msgstr "EMT|Vv#v#V"
 
-#: src/menus.C:963 src/menus.C:1041
+#: src/menus.C:964 src/menus.C:1042
 msgid "|Line Right%B%x39%l"
 msgstr "|Viiva oikealla%B%x39%l"
 
-#: src/menus.C:965 src/menus.C:1043
+#: src/menus.C:966 src/menus.C:1044
 msgid "|Line Right%b%x39%l"
 msgstr "|Viiva oikealla%b%x39%l"
 
-#: src/menus.C:966 src/menus.C:1044
+#: src/menus.C:967 src/menus.C:1045
 msgid "EMT|Rr#r#R"
 msgstr "EMT|oO#o#O"
 
-#: src/menus.C:975 src/menus.C:1048
+#: src/menus.C:976 src/menus.C:1049
 msgid "|Align Left%R%x40"
 msgstr "|Tasaa vasemmalle%R%x40"
 
-#: src/menus.C:977 src/menus.C:1050
+#: src/menus.C:978 src/menus.C:1051
 msgid "|Align Left%r%x40"
 msgstr "|Tasaa vasemmalle%r%x40"
 
-#: src/menus.C:978 src/menus.C:1051
+#: src/menus.C:979 src/menus.C:1052
 msgid "EMT|eE#e#E"
 msgstr "EMT|Tt#t#T"
 
-#: src/menus.C:981 src/menus.C:1054
+#: src/menus.C:982 src/menus.C:1055
 msgid "|Align Right%R%x41"
 msgstr "|Tasaa oikealle%R%x41"
 
-#: src/menus.C:983 src/menus.C:1056
+#: src/menus.C:984 src/menus.C:1057
 msgid "|Align Right%r%x41"
 msgstr "|Tasaa oikealle%r%x41"
 
-#: src/menus.C:984 src/menus.C:1057
+#: src/menus.C:985 src/menus.C:1058
 msgid "EMT|iI#i#I"
 msgstr "EMT|sS#s#S"
 
-#: src/menus.C:987 src/menus.C:1060
+#: src/menus.C:988 src/menus.C:1061
 msgid "|Align Center%R%x42%l"
 msgstr "|Keskit‰%R%x42%l"
 
-#: src/menus.C:989 src/menus.C:1062
+#: src/menus.C:990 src/menus.C:1063
 msgid "|Align Center%r%x42%l"
 msgstr "|Keskit‰%r%x42%l"
 
-#: src/menus.C:990 src/menus.C:1063
+#: src/menus.C:991 src/menus.C:1064
 msgid "EMT|Cc#c#C"
 msgstr "EMT|Kk#k#K"
 
-#: src/menus.C:993 src/menus.C:1066
+#: src/menus.C:994 src/menus.C:1067
 #, no-c-format
 msgid "|Append Row%x32"
 msgstr "|Lis‰‰ rivi%x32"
 
-#: src/menus.C:994 src/menus.C:1067
+#: src/menus.C:995 src/menus.C:1068
 msgid "EMT|oO#o#O"
 msgstr "EMT|Ll#l#L"
 
-#: src/menus.C:996 src/menus.C:1069
+#: src/menus.C:997 src/menus.C:1070
 #, no-c-format
 msgid "|Append Column%x33%l"
 msgstr "|Lis‰‰ sarake%x33%l"
 
-#: src/menus.C:997 src/menus.C:1070
+#: src/menus.C:998 src/menus.C:1071
 msgid "EMT|uU#u#U"
 msgstr "EMT|iI#i#I"
 
-#: src/menus.C:999 src/menus.C:1072
+#: src/menus.C:1000 src/menus.C:1073
 #, no-c-format
 msgid "|Delete Row%x34"
 msgstr "|Poista rivi%x34"
 
-#: src/menus.C:1000 src/menus.C:1073
+#: src/menus.C:1001 src/menus.C:1074
 msgid "EMT|wW#w#W"
 msgstr "EMT|rR#r#R"
 
-#: src/menus.C:1002 src/menus.C:1075
+#: src/menus.C:1003 src/menus.C:1076
 #, no-c-format
 msgid "|Delete Column%x35%l"
 msgstr "|Poista sarake%x35%l"
 
-#: src/menus.C:1003 src/menus.C:1076
+#: src/menus.C:1004 src/menus.C:1077
 msgid "EMT|nN#n#N"
 msgstr "EMT|Pp#p#P"
 
-#: src/menus.C:1005 src/menus.C:1078
+#: src/menus.C:1006 src/menus.C:1079
 #, no-c-format
 msgid "|Delete Table%x43"
 msgstr "|Poista taulukko%x43"
 
-#: src/menus.C:1006 src/menus.C:1079
+#: src/menus.C:1007 src/menus.C:1080
 msgid "EMT|Dd#d#D"
 msgstr "EMT|uU#u#U"
 
-#: src/menus.C:1083
+#: src/menus.C:1084
 #, no-c-format
 msgid "|Insert table%x31"
 msgstr "|Lis‰‰ taulukko%x31"
 
-#: src/menus.C:1084
+#: src/menus.C:1085
 msgid "EMT|Ii#i#I"
 msgstr "EMT|Ll#l#L"
 
-#: src/menus.C:1088
+#: src/menus.C:1089
 msgid "Version Control%t"
 msgstr "Versiohallinta%t"
 
-#: src/menus.C:1091
+#: src/menus.C:1092
 #, no-c-format
 msgid "|Register%d%x51"
 msgstr "|Rekisterˆi%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:1095
+#: src/menus.C:1096
 #, no-c-format
 msgid "|Check In Changes%d%x52"
 msgstr "|Kirjaa muutokset%d%x52"
 
-#: src/menus.C:1097
+#: src/menus.C:1098
 #, no-c-format
 msgid "|Check Out for Edit%x53"
 msgstr "|Kirjaa ulos muokattavaksi%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:1101
+#: src/menus.C:1102
 #, no-c-format
 msgid "|Check In Changes%x52"
 msgstr "|Kirjaa muutokset%x52"
 
-#: src/menus.C:1103
+#: src/menus.C:1104
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
 msgstr "|Kirjaa ulos muokattavaksi%d%x53"
 
-#: src/menus.C:1106
+#: src/menus.C:1107
 #, no-c-format
 msgid "|Revert to last version%x54"
 msgstr "|Palauta viimeisin versio%x54"
 
-#: src/menus.C:1108
+#: src/menus.C:1109
 #, no-c-format
 msgid "|Undo last check in%x55"
 msgstr "|Peruuta viimeisin kirjautuminen%x55"
 
-#: src/menus.C:1110
+#: src/menus.C:1111
 #, no-c-format
 msgid "|Show History%x56"
 msgstr "|N‰yt‰ historia%x56"
 
-#: src/menus.C:1113
+#: src/menus.C:1114
 #, no-c-format
 msgid "|Register%x51"
 msgstr "|Rekisterˆi%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:1116
+#: src/menus.C:1117
 msgid "EMV|Rr#r#R"
 msgstr "EMV|Rr#r#R"
 
-#: src/menus.C:1117
+#: src/menus.C:1118
 msgid "EMV|Ii#i#I"
 msgstr "EMV|Kk#k#K"
 
-#: src/menus.C:1118
+#: src/menus.C:1119
 msgid "EMV|Oo#o#O"
 msgstr "EMV|uU#u#U"
 
-#: src/menus.C:1119
+#: src/menus.C:1120
 msgid "EMV|lL#l#l"
 msgstr "EMV|Pp#p#P"
 
-#: src/menus.C:1120
+#: src/menus.C:1121
 msgid "EMV|Uu#u#U"
 msgstr "EMV|eE#e#E"
 
-#: src/menus.C:1121
+#: src/menus.C:1122
 msgid "EMV|Hh#h#H"
 msgstr "EMV|hH#h#H"
 
-#: src/menus.C:1124
+#: src/menus.C:1125
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4527,120 +4531,124 @@ msgstr ""
 "aulukkoluettelo|Algoritmiluettelo|Versiohallinta%m%l|N‰yt‰ LaTeX "
 "lokitiedosto%l|Liit‰ X-valinta rivein‰|Liit‰ X-valinta kappaleina"
 
-#: src/menus.C:1146
+#: src/menus.C:1147
 msgid "EM|Uu#u#U"
 msgstr "EM|uU#u#U"
 
-#: src/menus.C:1147
+#: src/menus.C:1148
 msgid "EM|Rr#r#R"
 msgstr "EM|dD#d#D"
 
-#: src/menus.C:1148
+#: src/menus.C:1149
 msgid "EM|Cc#c#C"
 msgstr "EM|Ll#l#L"
 
-#: src/menus.C:1149
+#: src/menus.C:1150
 msgid "EM|oO#o#O"
 msgstr "EM|Kk#k#K"
 
-#: src/menus.C:1150
+#: src/menus.C:1151
 msgid "EM|Pp#p#P"
 msgstr "EM|iI#i#i"
 
-#: src/menus.C:1151
+#: src/menus.C:1152
 msgid "EM|Ff#f#F"
 msgstr "EM|Ee#e#E"
 
-#: src/menus.C:1152
+#: src/menus.C:1153
 msgid "EM|Ee#e#E"
 msgstr "EM|vV#v#V"
 
-#: src/menus.C:1153
+#: src/menus.C:1154
 msgid "EM|Nn#n#N"
 msgstr "EM|mM#m#M"
 
-#: src/menus.C:1154
+#: src/menus.C:1155
 msgid "EM|Ii#i#I"
 msgstr "EM|aA#a#A"
 
 #. fl_setpup_shortcut(EditMenu, 10, scex(_("EM|Tt#t#T")));
-#: src/menus.C:1156
+#: src/menus.C:1157
 msgid "EM|Ss#s#S"
 msgstr "EM|Oo#o#O"
 
-#: src/menus.C:1157
+#: src/menus.C:1158
 msgid "EM|hH#h#H"
 msgstr "EM|Xx#x#X"
 
-#: src/menus.C:1158
+#: src/menus.C:1159
 msgid "EM|Tt#t#T"
 msgstr "EM|Tt#t#T"
 
 #. fl_setpup_shortcut(EditMenu, 14, scex(_("EM|Ff#f#F")));
 #. fl_setpup_shortcut(EditMenu, 15, scex(_("EM|bB#b#B")));
 #. fl_setpup_shortcut(EditMenu, 16, scex(_("EM|mM#m#M")));
-#: src/menus.C:1162
+#: src/menus.C:1163
 msgid "EM|Vv#v#V"
 msgstr "EM|rR#r#R"
 
-#: src/menus.C:1163
+#: src/menus.C:1164
 msgid "EM|wW#w#W"
 msgstr "EM|Nn#n#N"
 
-#: src/menus.C:1164
+#: src/menus.C:1165
 msgid "EM|Ll#l#L"
 msgstr "EM|‰ƒ#‰#ƒ"
 
-#: src/menus.C:1165
+#: src/menus.C:1166
 msgid "EM|gG#g#G"
 msgstr "EM|pP#p#P"
 
-#: src/menus.C:1360
+#: src/menus.C:1366
 #, no-c-format
 msgid "List of Figures%m"
 msgstr "Kuvaluettelo%m"
 
-#: src/menus.C:1362
+#: src/menus.C:1368
 #, no-c-format
 msgid "List of Tables%m"
 msgstr "Taulukkoluettelo%m"
 
-#: src/menus.C:1364
+#: src/menus.C:1370
 #, no-c-format
 msgid "List of Algorithms%m"
 msgstr "Algoritmiluettelo%m"
 
-#: src/menus.C:1474
+#: src/menus.C:1503
 #, no-c-format
 msgid "Insert Reference%m"
 msgstr "Lis‰‰ viite%m"
 
-#: src/menus.C:1476
+#: src/menus.C:1505
 #, no-c-format
 msgid "Insert Page Number%m"
 msgstr "Lis‰‰ sivunumero%m"
 
-#: src/menus.C:1478
+#: src/menus.C:1507
 #, no-c-format
 msgid "Insert vref%m"
 msgstr "Lis‰‰ viite ja sijainti%m"
 
-#: src/menus.C:1480
+#: src/menus.C:1509
 #, no-c-format
 msgid "Insert vpageref%m"
 msgstr "Lis‰‰ sivuviite%m"
 
-#: src/menus.C:1482
+#: src/menus.C:1511
 #, no-c-format
 msgid "Insert Pretty Ref%m"
 msgstr "Lis‰‰ sanallinen viite%m"
 
-#: src/menus.C:1484
+#: src/menus.C:1513
 #, no-c-format
 msgid "Goto Reference%m"
 msgstr "Siirry viitteeseen%m"
 
-#: src/menus.C:1561
+#: src/menus.C:1527
+msgid "Go Back"
+msgstr ""
+
+#: src/menus.C:1595
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b%l|Change Environment "
@@ -4650,75 +4658,75 @@ msgstr ""
 "stus%b|Nimityyli%b|Lihavoitu%b|TeX-tyyli%b%l|Muuta ymp‰ristˆtasoa|LaTeXin "
 "aloitusosa...|Liitteen alku%l|Tallenna muotoilu oletukseksi"
 
-#: src/menus.C:1575
+#: src/menus.C:1609
 msgid "LM|Cc#c#C"
 msgstr "LM|Mm#m#M"
 
-#: src/menus.C:1576
+#: src/menus.C:1610
 msgid "LM|Pp#p#P"
 msgstr "LM|Kk#k#K"
 
-#: src/menus.C:1577
+#: src/menus.C:1611
 msgid "LM|Dd#d#D"
 msgstr "LM|Aa#a#A"
 
-#: src/menus.C:1578
+#: src/menus.C:1612
 msgid "LM|aA#a#A"
 msgstr "LM|Ss#s#S"
 
-#: src/menus.C:1579
+#: src/menus.C:1613
 msgid "LM|eE#e#E"
 msgstr "LM|Tt#t#T"
 
-#: src/menus.C:1580
+#: src/menus.C:1614
 msgid "LM|Qq#q#Q"
 msgstr "LM|Ll#l#L"
 
-#: src/menus.C:1581
+#: src/menus.C:1615
 msgid "LM|mM#m#M"
 msgstr "LM|oO#o#O"
 
-#: src/menus.C:1582
+#: src/menus.C:1616
 msgid "LM|Nn#n#N"
 msgstr "LM|Nn#n#N"
 
-#: src/menus.C:1583
+#: src/menus.C:1617
 msgid "LM|Bb#b#B"
 msgstr "LM|vV#v#V"
 
-#: src/menus.C:1584
+#: src/menus.C:1618
 msgid "LM|Tt#t#T"
 msgstr "LM|Xx#x#X"
 
-#: src/menus.C:1585
+#: src/menus.C:1619
 msgid "LM|vV#v#V"
 msgstr "LM|yY#y#Y"
 
-#: src/menus.C:1586
+#: src/menus.C:1620
 msgid "LM|Ll#l#L"
 msgstr "LM|eE#e#E"
 
-#: src/menus.C:1587
+#: src/menus.C:1621
 msgid "LM|xX#x#X"
 msgstr "LM|iI#i#I"
 
-#: src/menus.C:1588
+#: src/menus.C:1622
 msgid "LM|Ss#s#S"
 msgstr "LM|uU#u#U"
 
-#: src/menus.C:1654
+#: src/menus.C:1688
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "Lis‰‰ ASCII-tiedosto%t|Rivein‰%x41|Kappaleina%x42"
 
-#: src/menus.C:1658
+#: src/menus.C:1692
 msgid "IMA|Ll#l#L"
 msgstr "IMA|Rr#r#R"
 
-#: src/menus.C:1659
+#: src/menus.C:1693
 msgid "IMA|Pp#p#P"
 msgstr "IMA|Kk#k#K"
 
-#: src/menus.C:1662
+#: src/menus.C:1696
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4726,31 +4734,31 @@ msgstr ""
 "Luettelot%t|Sis‰llysluettelo%x21|Kuvat%x22|Taulukot%x23|Algoritmit%x24|Hakemi"
 "sto%x25|BibTeX-viitteet%x26"
 
-#: src/menus.C:1670
+#: src/menus.C:1704
 msgid "IMT|Cc#c#C"
 msgstr "IMT|Ss#s#S"
 
-#: src/menus.C:1671
+#: src/menus.C:1705
 msgid "IMT|Ff#f#F"
 msgstr "IMT|Kk#k#K"
 
-#: src/menus.C:1672
+#: src/menus.C:1706
 msgid "IMT|Tt#t#T"
 msgstr "IMT|Tt#t#T"
 
-#: src/menus.C:1673
+#: src/menus.C:1707
 msgid "IMT|Aa#a#A"
 msgstr "IMT|Aa#a#A"
 
-#: src/menus.C:1674
+#: src/menus.C:1708
 msgid "IMT|Ii#i#I"
 msgstr "IMT|Hh#h#H"
 
-#: src/menus.C:1675
+#: src/menus.C:1709
 msgid "IMT|Bb#b#B"
 msgstr "IMT|Bb#b#B"
 
-#: src/menus.C:1678
+#: src/menus.C:1712
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4758,27 +4766,27 @@ msgstr ""
 "Irralliset osat%t|Irrallinen kuva%x71|Irrallinen taulukko%x72|Irrallinen "
 "leve‰ kuva%x73|Irrallinen leve‰ taulukko%l%x74|Irrallinen algoritmi%x75"
 
-#: src/menus.C:1685
+#: src/menus.C:1719
 msgid "IMF|gG#g#G"
 msgstr "IMF|Kk#k#K"
 
-#: src/menus.C:1686
+#: src/menus.C:1720
 msgid "IMF|Tt#t#T"
 msgstr "IMF|Tt#t#T"
 
-#: src/menus.C:1687
+#: src/menus.C:1721
 msgid "IMF|Ww#w#W"
 msgstr "IMF|Ll#l#L"
 
-#: src/menus.C:1688
+#: src/menus.C:1722
 msgid "IMF|iI#i#I"
 msgstr "IMF|eE#e#E"
 
-#: src/menus.C:1689
+#: src/menus.C:1723
 msgid "IMF|Aa#a#A"
 msgstr "IMF|Aa#a#A"
 
-#: src/menus.C:1692
+#: src/menus.C:1726
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
@@ -4788,39 +4796,39 @@ msgstr ""
 "v‰lilyˆnti%x33|Rivinvaihto%x34|Ellipsis(...)%x35|Virkkeen lopun "
 "piste%x36|Tavallinen lainausmerkki(\")%x37|Valikkoerotusmerkki %x38"
 
-#: src/menus.C:1702
+#: src/menus.C:1736
 msgid "IMS|Hh#h#H"
 msgstr "IMS|Vv#v#V"
 
-#: src/menus.C:1703
+#: src/menus.C:1737
 msgid "IMS|Pp#p#P"
 msgstr "IMS|Tt#t#T"
 
-#: src/menus.C:1704
+#: src/menus.C:1738
 msgid "IMS|Bb#b#B"
 msgstr "IMS|Kk#k#K"
 
-#: src/menus.C:1705
+#: src/menus.C:1739
 msgid "IMS|Ll#l#L"
 msgstr "IMS|Rr#r#R"
 
-#: src/menus.C:1706
+#: src/menus.C:1740
 msgid "IMS|iI#i#I"
 msgstr "IMS|Ee#e#E"
 
-#: src/menus.C:1707
+#: src/menus.C:1741
 msgid "IMS|Ee#e#E"
 msgstr "IMS|Vv#v#V"
 
-#: src/menus.C:1708
+#: src/menus.C:1742
 msgid "IMS|Qq#q#Q"
 msgstr "IMS|lL#l#L"
 
-#: src/menus.C:1709
+#: src/menus.C:1743
 msgid "IMS|Mm#m#M"
 msgstr "IMS|mM#m#M"
 
-#: src/menus.C:1712
+#: src/menus.C:1746
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4832,79 +4840,79 @@ msgstr ""
 "osat%m%l|Luettelot%m%l|Erikoismerkki%m%l|Huomautus...|Nimike...|Viite...|L‰hd"
 "eviite...|Hakemistoviite...|Hakemistoviite edelt‰v‰st‰ sanasta"
 
-#: src/menus.C:1733
+#: src/menus.C:1767
 msgid "IM|gG#g#G"
 msgstr "IM|Kk#k#K"
 
-#: src/menus.C:1734
+#: src/menus.C:1768
 msgid "IM|bB#b#B"
 msgstr "IM|Tt#t#T"
 
-#: src/menus.C:1735
+#: src/menus.C:1769
 msgid "IM|cC#c#C"
 msgstr "IM|Ss#s#S"
 
-#: src/menus.C:1736
+#: src/menus.C:1770
 msgid "IM|Aa#a#A"
 msgstr "IM|Cc#c#C"
 
-#: src/menus.C:1737
+#: src/menus.C:1771
 msgid "IM|Xx#x#X"
 msgstr "IM|Xx#x#X"
 
-#: src/menus.C:1738
+#: src/menus.C:1772
 msgid "IM|Ff#f#F"
 msgstr "IM|Aa#a#A"
 
-#: src/menus.C:1739
+#: src/menus.C:1773
 msgid "IM|Mm#m#M"
 msgstr "IM|Rr#r#R"
 
-#: src/menus.C:1740
+#: src/menus.C:1774
 msgid "IM|oO#o#O"
 msgstr "IM|oO#o#O"
 
-#: src/menus.C:1741
+#: src/menus.C:1775
 msgid "IM|Tt#t#T"
 msgstr "IM|Ll#l#L"
 
-#: src/menus.C:1742
+#: src/menus.C:1776
 msgid "IM|Ss#s#S"
 msgstr "IM|Ee#e#E"
 
-#: src/menus.C:1743
+#: src/menus.C:1777
 msgid "IM|Nn#n#N"
 msgstr "IM|Hh#h#H"
 
-#: src/menus.C:1744
+#: src/menus.C:1778
 msgid "IM|Ll#l#L"
 msgstr "IM|Nn#n#N"
 
-#: src/menus.C:1745
+#: src/menus.C:1779
 msgid "IM|rR#r#R"
 msgstr "IM|Vv#v#V"
 
-#: src/menus.C:1746
+#: src/menus.C:1780
 msgid "IM|iI#i#I"
 msgstr "IM|iI#i#I"
 
-#: src/menus.C:1747
+#: src/menus.C:1781
 msgid "IM|dD#d#D"
 msgstr "IM|kK#k#K"
 
-#: src/menus.C:1748
+#: src/menus.C:1782
 msgid "IM|wW#w#W"
 msgstr "IM|eE#e#E"
 
-#: src/menus.C:1750
+#: src/menus.C:1784
 msgid "|URL..."
 msgstr "|URL..."
 
-#: src/menus.C:1751
+#: src/menus.C:1785
 msgid "IM|Uu#u#U"
 msgstr "IM|Uu#u#U"
 
-#: src/menus.C:1857
+#: src/menus.C:1891
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
@@ -4912,74 +4920,74 @@ msgstr ""
 "Murtolauseke|Neliˆjuuri|Eksponentti|Alaindeksi|Summa|Integraali%l|Matematiikk"
 "atila|N‰yt‰ kaava%l|Matematiikkapaneeli..."
 
-#: src/menus.C:1867
+#: src/menus.C:1901
 msgid "MM|Ff#f#F"
 msgstr "MM|Mm#m#M"
 
-#: src/menus.C:1868
+#: src/menus.C:1902
 msgid "MM|Ss#s#S"
 msgstr "MM|Nn#n#N"
 
-#: src/menus.C:1869
+#: src/menus.C:1903
 msgid "MM|Ee#e#E"
 msgstr "MM|Ee#e#E"
 
-#: src/menus.C:1870
+#: src/menus.C:1904
 msgid "MM|xX#x#X"
 msgstr "MM|Aa#a#A"
 
-#: src/menus.C:1871
+#: src/menus.C:1905
 msgid "MM|uU#u#U"
 msgstr "MM|Ss#s#S"
 
-#: src/menus.C:1872
+#: src/menus.C:1906
 msgid "MM|Ii#i#I"
 msgstr "MM|Ii#i#I"
 
-#: src/menus.C:1873
+#: src/menus.C:1907
 msgid "MM|Mm#m#M"
 msgstr "MM|tT#t#T"
 
-#: src/menus.C:1874
+#: src/menus.C:1908
 msgid "MM|Dd#d#D"
 msgstr "MM|kK#k#K"
 
-#: src/menus.C:1875
+#: src/menus.C:1909
 msgid "MM|Pp#p#P"
 msgstr "MM|pP#p#P"
 
-#: src/menus.C:1941
+#: src/menus.C:1975
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 "N‰yttˆkirjasinlajit...|Oikolukuasetukset...|N‰pp‰imistˆ...|LaTeX...%l|Konfigu"
 "roi uudelleen"
 
-#: src/menus.C:1947
+#: src/menus.C:1981
 msgid "OM|Ff#f#F"
 msgstr "OM|kK#k#K"
 
-#: src/menus.C:1948
+#: src/menus.C:1982
 msgid "OM|Ss#s#S"
 msgstr "OM|Oo#o#O"
 
-#: src/menus.C:1949
+#: src/menus.C:1983
 msgid "OM|Kk#k#K"
 msgstr "OM|Nn#n#N"
 
-#: src/menus.C:1950
+#: src/menus.C:1984
 msgid "OM|Ll#l#L"
 msgstr "OM|Ll#l#L"
 
-#: src/menus.C:1951
+#: src/menus.C:1985
 msgid "OM|Rr#r#R"
 msgstr "OM|uU#u#U"
 
-#: src/menus.C:1995
+#: src/menus.C:2029
 msgid "No Documents Open!%t"
 msgstr "Avoimia asiakirjoja ei ole!%t"
 
-#: src/menus.C:2030
+#: src/menus.C:2064
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|FAQ|Table of Contents|Known Bugs|LaTeX Configuration%l|Copyright and "
@@ -4990,79 +4998,79 @@ msgstr ""
 "kysymykset|Sis‰llysluettelo|Tunnetut viat|LateX-asetukset%l|Tekij‰noikeudet "
 "ja takuu...|Kiitokset...|Versio..."
 
-#: src/menus.C:2044
+#: src/menus.C:2078
 msgid "HM|Ii#I#i"
 msgstr "HM|Jj#j#J"
 
-#: src/menus.C:2045
+#: src/menus.C:2079
 msgid "HM|Tt#T#t"
 msgstr "HM|Oo#o#O"
 
-#: src/menus.C:2046
+#: src/menus.C:2080
 msgid "HM|Uu#U#u"
 msgstr "Hm|Kk#k#K"
 
-#: src/menus.C:2047
+#: src/menus.C:2081
 msgid "HM|xX#x#X"
 msgstr "HM|eE#e#E"
 
-#: src/menus.C:2048
+#: src/menus.C:2082
 msgid "HM|Cc#C#c"
 msgstr "HM|Mm#m#M"
 
-#: src/menus.C:2049
+#: src/menus.C:2083
 msgid "HM|Rr#R#r"
 msgstr "HM|Hh#h#H"
 
-#: src/menus.C:2050
+#: src/menus.C:2084
 msgid "HM|Ff#F#f"
 msgstr "HM|Uu#u#U"
 
-#: src/menus.C:2051
+#: src/menus.C:2085
 msgid "HM|aA#a#A"
 msgstr "HM|Ss#s#S"
 
-#: src/menus.C:2052
+#: src/menus.C:2086
 msgid "HM|Kk#K#k"
 msgstr "HM|iI#i#I"
 
-#: src/menus.C:2053
+#: src/menus.C:2087
 msgid "HM|Ll#L#l"
 msgstr "HM|Ll#L#l"
 
-#: src/menus.C:2054
+#: src/menus.C:2088
 msgid "HM|oO#o#O"
 msgstr "HM|Tt#t#T"
 
-#: src/menus.C:2055
+#: src/menus.C:2089
 msgid "HM|eE#e#E"
 msgstr "HM|Kk#k#K"
 
-#: src/menus.C:2056
+#: src/menus.C:2090
 msgid "HM|Vv#v#V"
 msgstr "HM|Vv#v#V"
 
-#: src/menus.C:2079
+#: src/menus.C:2113
 msgid "LyX Version "
 msgstr "LyX-versio"
 
-#: src/menus.C:2080
+#: src/menus.C:2114
 msgid " of "
 msgstr " "
 
-#: src/menus.C:2081
+#: src/menus.C:2115
 msgid "Library directory: "
 msgstr "Kirjastohakemisto:"
 
-#: src/menus.C:2083
+#: src/menus.C:2117
 msgid "User directory: "
 msgstr "K‰ytt‰j‰n hakemisto:"
 
-#: src/menus.C:2097
+#: src/menus.C:2131
 msgid "Could not find requested Documentation file"
 msgstr "Haluttua asiakirjaa ei voitu lˆyt‰‰."
 
-#: src/menus.C:2101
+#: src/menus.C:2135
 msgid "Opening help file"
 msgstr "Ohjetiedosto avautuu"
 
