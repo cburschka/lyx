@@ -417,12 +417,18 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	DocIterator pos = cur.selectionBegin();
 	DocIterator posend = cur.selectionEnd();
 
+	lyxerr << "pos: " << pos << " posend: " << posend << endl;
+
 	BufferParams const & params = bv()->buffer()->params();
 
-	for (; pos != posend; pos.forwardChar()) {
-		LyXFont f = getFont(pos.par(), pos.pos());
-		f.update(font, params.language, toggleall);
-		setCharFont(pos.par(), pos.pos(), f);
+	// Don't use forwardChar here as posend might have
+	// pos() == lastpos() and forwardChar would miss it.
+	for (; pos != posend; pos.forwardPos()) {
+		if (pos.pos() != pos.lastpos()) {
+			LyXFont f = getFont(pos.par(), pos.pos());
+			f.update(font, params.language, toggleall);
+			setCharFont(pos.par(), pos.pos(), f);
+		}
 	}
 
 	redoParagraphs(beg, end + 1);

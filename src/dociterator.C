@@ -103,6 +103,7 @@ MathAtom & DocIterator::prevAtom()
 MathAtom const & DocIterator::nextAtom() const
 {
 	BOOST_ASSERT(!empty());
+	lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
 	BOOST_ASSERT(pos() < lastpos());
 	return cell()[pos()];
 }
@@ -111,6 +112,7 @@ MathAtom const & DocIterator::nextAtom() const
 MathAtom & DocIterator::nextAtom()
 {
 	BOOST_ASSERT(!empty());
+	lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
 	BOOST_ASSERT(pos() < lastpos());
 	return cell()[pos()];
 }

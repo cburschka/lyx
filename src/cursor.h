@@ -96,10 +96,6 @@ public:
 	void selPaste(size_t n);
 	///
 	void selHandle(bool selecting);
-	/// start selection
-	void selStart();
-	/// clear selection
-	void selClear();
 	/// clears or deletes selection depending on lyxrc setting
 	void selClearOrDel();
 	//

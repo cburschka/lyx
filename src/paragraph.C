@@ -1671,14 +1671,14 @@ void Paragraph::cleanChanges()
 
 Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
 {
-	BOOST_ASSERT(!size() || pos < size());
+	BOOST_ASSERT(empty() || pos < size());
 	return pimpl_->lookupChange(pos);
 }
 
 
 Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
 {
-	BOOST_ASSERT(!size() || pos < size());
+	BOOST_ASSERT(empty() || pos < size());
 	return pimpl_->lookupChangeFull(pos);
 }
 

@@ -861,7 +861,6 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	//lyxerr << "*** workAreaDispatch: request: " << cmd << std::endl;
 	LCursor cur(*bv_);
 	cur.push(bv_->buffer()->inset());
-	cur.resetAnchor();
 	cur.selection() = bv_->cursor().selection();
 
 	// Doesn't go through lyxfunc, so we need to update
@@ -873,13 +872,16 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 	screen().hideCursor();
 
-	// either the inset under the cursor or the
+	// Either the inset under the cursor or the
 	// surrounding LyXText will handle this event.
 
-	// built temporary path to inset
+	// Build temporary cursor.
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
 	lyxerr << "hit inset at tip: " << inset << endl;
 	lyxerr << "created temp cursor:\n" << cur << endl;
+
+	// Put anchor at the same position.
+	cur.resetAnchor();
 
 	// Try to dispatch to an non-editable inset near this position
 	// via the temp cursor. If the inset wishes to change the real
@@ -889,15 +891,10 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	if (inset)
 		inset->dispatch(cur, cmd);
 
-	// Now dispatch to the real cursor. Any change to the cursor
-	// is immediate.
+	// Now dispatch to the temporary cursor. If the real cursor should
+	// be modified, the inset's dispatch has to do so explicitly. 
 	if (!res.dispatched())
 		res = cur.dispatch(cmd);
-
-	// If the request was dispatched the temp cursor should have been
-	// in a way to be used as new 'real' cursor.
-	if (res.dispatched())
-		bv_->cursor() = cur;
 
 	// Redraw if requested or necessary.
 	if (res.update())

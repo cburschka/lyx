@@ -150,7 +150,7 @@ bool operator<(CursorSlice const & p, CursorSlice const & q)
 	if (&p.inset() != &q.inset()) {
 		lyxerr << "can't compare cursor and anchor in different insets\n"
 		       << "p: " << p << '\n' << "q: " << q << endl;
-		return true;
+		BOOST_ASSERT(false);
 	}
 	if (p.idx() != q.idx())
 		return p.idx() < q.idx();

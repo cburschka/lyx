@@ -138,7 +138,7 @@ namespace {
 
 		if (sel.empty()) {
 			cur.insert(new MathHullInset);
-			cur.dispatch(FuncRequest(LFUN_RIGHT));
+			cur.nextInset()->edit(cur, true);
 			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
@@ -1079,6 +1079,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			lyxerr << "BufferView::Pimpl::dispatch: no selection possible\n";
 			break;
 		}
+
+		// ignore motions deeper nested than the real anchor
+		LCursor & bvcur = cur.bv().cursor();
+		if (bvcur.selection() && bvcur.anchor_.size() < cur.size())
+			break;
+
 		CursorSlice old = cur.top();
 		setCursorFromCoordinates(cur, cmd.x, cmd.y);
 
@@ -1140,6 +1146,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishUndo();
 		cur.x_target() = cursorX(cur.top());
 
+		// Set cursor here.
+		bv->cursor() = cur;
+
+		// Don't allow selection after a big jump.
 		if (bv->fitCursor())
 			selection_possible = false;
 
@@ -1153,6 +1163,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 			selection_possible = false;
 		}
+
 		break;
 	}
 

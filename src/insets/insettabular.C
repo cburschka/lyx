@@ -410,6 +410,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "  cur:\n" << cur << endl;
 	CursorSlice sl = cur.top();
+	LCursor & bvcur = cur.bv().cursor();
 
 	switch (cmd.action) {
 
@@ -420,7 +421,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = false;
 		setPos(cur, cmd.x, cmd.y);
 		cur.resetAnchor();
-		cur.bv().cursor().setCursor(cur, false);
+		bvcur = cur;
 		//if (cmd.button() == mouse_button::button2)
 		//	dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
@@ -429,13 +430,16 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_MOTION:
 		if (cmd.button() != mouse_button::button1)
 			break;
+		// ignore motions deeper nested than the real anchor
+		if (bvcur.selection() && bvcur.anchor_.size() < cur.size())
+			break;
 		setPos(cur, cmd.x, cmd.y);
-		cur.bv().cursor().setCursor(cur, true);
-		//lyxerr << "# InsetTabular::MouseMotion\n" << cur.bv().cursor() << endl;
+		bvcur.setCursor(cur, true);
+		//lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		//lyxerr << "# InsetTabular::MouseRelease\n" << cur.bv().cursor() << endl;
+		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
@@ -1725,7 +1729,7 @@ void InsetTabular::addPreview(PreviewLoader & loader) const
 
 bool InsetTabular::tablemode(LCursor & cur) const
 {
-	return cur.selBegin().idx() != cur.selEnd().idx();
+	return cur.selection() && cur.selBegin().idx() != cur.selEnd().idx();
 }
 
 

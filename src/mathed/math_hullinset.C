@@ -783,7 +783,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 
 void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "*** MathHullInset: request: " << cmd << endl;
+	//lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
 	case LFUN_BREAKLINE:

@@ -316,15 +316,27 @@ bool LCursor::posRight()
 
 CursorSlice & LCursor::anchor()
 {
+	if (anchor_.size() < size()) {
+		lyxerr << "anchor_.size() < cursor_.size() "
+			"should not happen when accessing the anchor" << endl;
+		BOOST_ASSERT(false);
+	}
 	BOOST_ASSERT(!anchor_.empty());
-	return anchor_.back();
+	// this size is cursor_.size()
+	return anchor_[size() - 1];
 }
 
 
 CursorSlice const & LCursor::anchor() const
 {
+	if (anchor_.size() < size()) {
+		lyxerr << "anchor_.size() < cursor_.size() "
+			"should not happen when accessing the anchor" << endl;
+		BOOST_ASSERT(false);
+	}
+	// this size is cursor_.size()
 	BOOST_ASSERT(!anchor_.empty());
-	return anchor_.back();
+	return anchor_[size() - 1];
 }
 
 
@@ -364,6 +376,7 @@ void LCursor::setSelection()
 {
 	selection() = true;
 	// a selection with no contents is not a selection
+#warning doesnt look ok
 	if (par() == anchor().par() && pos() == anchor().pos())
 		selection() = false;
 }
@@ -493,13 +506,6 @@ string LCursor::grabAndEraseSelection()
 	eraseSelection();
 	selection() = false;
 	return res;
-}
-
-
-void LCursor::selClear()
-{
-	resetAnchor();
-	clearSelection();
 }
 
 

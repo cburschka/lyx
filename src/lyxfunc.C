@@ -511,6 +511,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.enabled(false);
 	}
 
+	//lyxerr << "LyXFunc::getStatus: got: " << flag.enabled() << endl;
 	return flag;
 }
 
@@ -1254,13 +1255,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		case LFUN_EXTERNAL_EDIT: {
 			FuncRequest fr(action, argument);
 			InsetExternal().dispatch(view()->cursor(), fr);
-			break;
-		}
-
-		case LFUN_BREAKLINE: {
-#ifdef WITH_WARNINGS
-#warning swallow 'Return' if the minibuffer is focused. But how?
-#endif
 			break;
 		}
 

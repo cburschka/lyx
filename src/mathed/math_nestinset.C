@@ -571,7 +571,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_ESCAPE:
 		if (cur.selection())
-			cur.selClear();
+			cur.clearSelection();
 		else
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
@@ -964,7 +964,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
 		asArray(cur.bv().getClipboard(), ar);
-		cur.selClear();
+		cur.clearSelection();
 		cur.setScreenPos(cmd.x, cmd.y);
 		cur.insert(ar);
 		cur.bv().update();
@@ -987,9 +987,9 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	if (cmd.button() == mouse_button::button1) {
 		first_x = cmd.x;
 		first_y = cmd.y;
-		cur.selClear();
 		//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
 		lyxerr << "lfunMousePress: setting cursor to: " << cur << endl;
+		cur.resetAnchor();
 		cur.bv().cursor() = cur;
 	}
 
@@ -1011,10 +1011,6 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 	first_x = cmd.x;
 	first_y = cmd.y;
 
-	if (!cur.selection())
-		cur.selBegin();
-
-	//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
 	cur.bv().cursor().setCursor(cur, true);
 }
 
