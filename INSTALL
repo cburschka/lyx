@@ -75,6 +75,10 @@ instead of 2.[12], and this causes occasional crashes.
 
 In addition, you must have libXpm version 4.7 or newer.
 
+Note that the Qt and Gnome frontends are still under development, and
+as a result are only useful if you want to help out with testing and
+development.
+ 
 If you make modifications to files in src/ (for example by applying a
 patch), you will need to have the GNU gettext package installed, due
 to some dependencies in the makefiles. You can find the latest version
@@ -139,6 +143,10 @@ flags:
     You can use this feature to install more than one version of LyX on
     the same system. You can optionally specify a "version" of your own,
     by doing something like : ./configure --with-version-suffix=-latestcvs
+
+    Note that the standard configure options --program-prefix,--program-suffix
+    and the others will not affect the shared LyX directory etc. so it
+    is recommended that you use --with-version-suffix (or --prefix) instead.
 
   o --enable-optimization=VALUE enables you to set optimization to a
     higher level as the default (-O), for example --enable-optimization=-O3.
