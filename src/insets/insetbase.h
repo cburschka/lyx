@@ -79,6 +79,8 @@ public:
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
+	/// draw inset selection if necessary
+	virtual void drawSelection(PainterInfo &, int, int) const {}
 	///
 	virtual bool editing(BufferView * bv) const;
 	/// draw four angular markers
@@ -322,6 +324,8 @@ public:
 	virtual bool display() const { return false; }
 	// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
+	/// dumps content to lyxerr
+	virtual void dump() const;
 	///
 	virtual void write(Buffer const &, std::ostream &) const {}
 	///

@@ -170,9 +170,12 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
 	pi.pain.rectangle(x, a, w, h, LColor::mathframe);
 
+#warning FIXME
+#if 0
 	LCursor & cur = p.base.bv->cursor();
 	if (cur.isInside(this))
 		cur.drawSelection(pi);
+#endif
 
 	pi.pain.text(x + 2, y, prefix(), font);
 

@@ -31,8 +31,7 @@ public:
 	/// draw background if locked
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
-	void drawSelection(PainterInfo & pi,
-		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 	/// appends itself with macro arguments substituted
 	void substitute(MathMacro const & macro);
 	/// identifies NestInsets

@@ -905,7 +905,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 			res = bv_->text()->dispatch(cur, cmd);
 		}
 
-		if (bv_->fitCursor() || res.update()) {
+		if (fitCursor() || res.update()) {
 			bv_->update();
 			cur.updatePos();
 		}
@@ -947,7 +947,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		// if it wishes to do so.
 		DispatchResult res = cur.dispatch(cmd);
 
-		if (bv_->fitCursor() || res.update())
+		if (fitCursor() || res.update())
 			bv_->update();
 
 		// see workAreaKeyPress

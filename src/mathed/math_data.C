@@ -232,7 +232,7 @@ void MathArray::metrics(MetricsInfo & mi) const
 		for (const_iterator it = begin(), et = end(); it != et; ++it) {
 			(*it)->metrics(mi, d);
 			dim_ += d;
-			it->width_ = d.wid;
+			//it->width_ = d.wid;
 		}
 	}
 }
@@ -263,9 +263,9 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
-		pi.width = it->width_;
+		//pi.width = it->width_;
 		(*it)->draw(pi, x, y);
-		x += it->width_;
+		x += (*it)->width();
 	}
 }
 
@@ -294,7 +294,8 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->drawT(pain, x, y);
-		x += it->width_;
+		//x += (*it->width_;
+		x += 2;
 	}
 }
 
@@ -313,7 +314,9 @@ int MathArray::pos2x(size_type pos, int glue) const
 		const_iterator it = begin() + i;
 		if ((*it)->getChar() == ' ')
 			x += glue;
-		x += it->width_;
+		lyxerr << "char: " << (*it)->getChar()
+			<< "width: " << (*it)->width() << std::endl;
+		x += (*it)->width();
 	}
 	return x;
 }
@@ -334,7 +337,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 		lastx = currx;
 		if ((*it)->getChar() == ' ')
 			currx += glue;
-		currx += it->width_;
+		currx += (*it)->width();
 	}
 	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
 		--it;

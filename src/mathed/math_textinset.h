@@ -30,8 +30,8 @@ public:
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	/// draw selection background
-	void drawSelection(PainterInfo & pi,
-		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
+	//void drawSelection(PainterInfo & pi,
+	//	idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	/// moves cursor up or down
 	//bool idxUpDown2(LCursor & pos, bool up) const;
 protected:

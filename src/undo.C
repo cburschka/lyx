@@ -123,7 +123,7 @@ void recordUndo(Undo::undo_kind kind,
 	ParIterator pit = text2pit(buf, text, textnum);
 	stack.push(Undo(kind, textnum, pit.index(),
 		first_par, end_par, text->cursor().par(), text->cursor().pos()));
-	lyxerr << "undo record: " << stack.top() << std::endl;
+	//lyxerr << "undo record: " << stack.top() << std::endl;
 
 	// record the relevant paragraphs
 	ParagraphList & undo_pars = stack.top().pars;

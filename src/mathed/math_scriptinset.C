@@ -444,13 +444,14 @@ void MathScriptInset::mathematica(MathematicaStream & os) const
 	if (u)
 		os << "^(" << up() << ')';
 
-	if (nuc().size())
+	if (nuc().size()) {
 		if (d)
 			os << ',' << down() << ']';
+	}
 }
 
 
-void MathScriptInset::mathmlize( MathMLStream & os) const
+void MathScriptInset::mathmlize(MathMLStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();

@@ -114,14 +114,14 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 			safepos = i;
 			++spaces;
 			// restart chunk with size of the space
-			curr = cell(0)[i].width_;
+			curr = cell(0)[i]->width();
 			continue;
 		}
 
 		if (c != '\n') {
 			// This is a regular char. Go on if we either don't care for
 			// the width limit or have not reached that limit.
-			curr += cell(0)[i].width_;
+			curr += cell(0)[i]->width();
 			if (curr + safe <= mi.base.textwidth)
 				continue;
 		}
@@ -187,8 +187,10 @@ void MathTextInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+/*
 void MathTextInset::drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const
 {
 	cache_.drawSelection(pi, idx1, pos1, idx2, pos2);
 }
+*/

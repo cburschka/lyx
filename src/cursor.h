@@ -354,8 +354,6 @@ public:
 	/// are we currently typing '#1' or '#2' or...?
 	bool inMacroArgMode() const;
 
-	/// draws light-blue selection background
-	void drawSelection(PainterInfo & pi);
 	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom
 	void handleNest(MathAtom const & at, int cell = 0);

@@ -194,10 +194,11 @@ int RowPainter::leftMargin() const
 
 void RowPainter::paintInset(pos_type const pos)
 {
-	InsetBase * inset = const_cast<InsetBase *>(pit_->getInset(pos));
+	InsetBase const * inset = pit_->getInset(pos);
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_));
 	pi.base.font = getFont(pos);
+	inset->drawSelection(pi, int(x_), yo_ + row_.baseline());
 	inset->draw(pi, int(x_), yo_ + row_.baseline());
 	x_ += inset->width();
 }

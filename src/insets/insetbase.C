@@ -12,6 +12,7 @@
 
 #include "insetbase.h"
 
+#include "buffer.h"
 #include "BufferView.h"
 #include "LColor.h"
 #include "cursor.h"
@@ -222,6 +223,13 @@ bool InsetBase::covers(int x, int y) const
 			&& x <= xo() + width()
 			&& y >= yo() - ascent()
 			&& y <= yo() + descent();
+}
+
+
+void InsetBase::dump() const
+{
+	Buffer buf("foo", 1);
+	write(buf, lyxerr);
 }
 
 

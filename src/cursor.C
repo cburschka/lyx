@@ -1179,16 +1179,6 @@ string LCursor::macroName()
 }
 
 
-void LCursor::drawSelection(PainterInfo & pi)
-{
-	if (!selection())
-		return;
-	CursorSlice i1 = selBegin();
-	CursorSlice i2 = selEnd();
-	i1.asMathInset()->drawSelection(pi, i1.idx_, i1.pos_, i2.idx_, i2.pos_);
-}
-
-
 void LCursor::handleNest(MathAtom const & a, int c)
 {
 	MathAtom t = a;
@@ -1510,6 +1500,7 @@ bool LCursor::idxRight()
 bool LCursor::script(bool up)
 {
 	// Hack to get \\^ and \\_ working
+	lyxerr << "handling script: up: " << up << endl;
 	if (inMacroMode() && macroName() == "\\") {
 		if (up)
 			niceInsert(createMathInset("mathcircumflex"));
@@ -1533,8 +1524,7 @@ bool LCursor::script(bool up)
 		pos() = lastpos();
 	} else if (pos() != 0) {
 		--pos();
-		cell()[pos()]
-			= MathAtom(new MathScriptInset(nextAtom(), up));
+		cell()[pos()] = MathAtom(new MathScriptInset(nextAtom(), up));
 		push(inset());
 		idx() = up;
 		pos() = 0;
@@ -1553,7 +1543,7 @@ bool LCursor::script(bool up)
 
 bool LCursor::interpret(char c)
 {
-	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	lyxerr << "interpret 2: '" << c << "'" << endl;
 	clearTargetX();
 	if (inMacroArgMode()) {
 		posLeft();

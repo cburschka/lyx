@@ -25,7 +25,7 @@ public:
 	/// create inset with single script and given nucleus
 	MathScriptInset(MathAtom const & at, bool up);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -98,9 +98,7 @@ public:
 	void infoize2(std::ostream & os) const;
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/// returns x offset for main part
 	int dxx() const;

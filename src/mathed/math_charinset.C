@@ -84,6 +84,7 @@ void MathCharInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		width_ += 2 * font_metrics::width(' ', font_);
 	lyxerr << "MathCharInset::metrics: " << dim << endl;
 #endif
+	dim_ = dim;
 }
 
 

@@ -12,11 +12,12 @@
 #ifndef MATH_CHARINSET_H
 #define MATH_CHARINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 
+#warning this should not derive from the fat MathDimInset
 
 /// The base character inset.
-class MathCharInset : public MathInset {
+class MathCharInset : public MathDimInset {
 public:
 	///
 	explicit MathCharInset(char c);
@@ -30,6 +31,7 @@ public:
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
+
 	///
 	void write(WriteStream & os) const;
 	///
