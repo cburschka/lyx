@@ -31,7 +31,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// find the next merge chunk and highlight it
-	void find();
+	bool find();
 
 	/// return date of change
 	string const getChangeDate();

@@ -5,18 +5,19 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_changes
-Width: 400
-Height: 190
-Number of Objects: 8
+Width: 380
+Height: 185
+Number of Objects: 9
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 400 190
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 380 185
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 270 110 120 30
+box: 255 120 120 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -42,8 +43,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Reject change|#R
 shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+resize: FL_RESIZE_X
+gravity: FL_South FL_South
 name: button_reject
 callback: C_FormDialogView_InputCB
 argument: 0
@@ -51,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 110 100 30
+box: 5 120 120 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -60,8 +61,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Next change|#N
 shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+resize: FL_RESIZE_X
+gravity: FL_South FL_South
 name: button_next
 callback: C_FormDialogView_InputCB
 argument: 0
@@ -69,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 130 110 120 30
+box: 130 120 120 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -78,8 +79,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Accept change|#A
 shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+resize: FL_RESIZE_X
+gravity: FL_South FL_South
 name: button_accept
 callback: C_FormDialogView_InputCB
 argument: 0
@@ -87,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 310 150 80 30
+box: 285 155 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -105,17 +106,17 @@ argument: 0
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 10 150 20
+box: 5 5 150 25
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Accept change ?
+label: Changed by:
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_NorthWest
 name: 
 callback: 
 argument: 
@@ -123,36 +124,54 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 40 380 30
-boxtype: FL_NO_BOX
+box: 5 30 370 30
+boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: text
+label: author
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: author
+gravity: FL_West FL_East
+name: text_author
 callback: 
 argument: 
 
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 70 380 30
-boxtype: FL_NO_BOX
+box: 5 85 370 30
+boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: text
+label: date
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: date
+gravity: FL_West FL_East
+name: text_date
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 5 60 150 25
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: on:
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: 
 callback: 
 argument: 
 

@@ -24,9 +24,9 @@ ControlChanges::ControlChanges(Dialog & parent)
 {}
 
 
-void ControlChanges::find()
+bool ControlChanges::find()
 {
-	lyxfind::findNextChange(kernel().bufferview());
+	return lyxfind::findNextChange(kernel().bufferview());
 }
 
 
@@ -35,7 +35,10 @@ string const ControlChanges::getChangeDate()
 	Change c(kernel().bufferview()->getCurrentChange());
 	if (c.type == Change::UNCHANGED || !c.changetime)
 		return string();
-	return ctime(&c.changetime);
+
+	// ctime adds newline; trim it off!
+	string const date = rtrim(ctime(&c.changetime), "\n");
+	return date;
 }
 
 

@@ -1,3 +1,8 @@
+2003-03-13  Rob Lahaye  <lahaye@snu.ac.kr>
+
+        * ControlChanges.[Ch]: ControlChanges::find() returns the bool
+        from lyxfind::findNextChange(), instead of void.
+
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
 	* Dialog.h (initialiseParams): return a bool to indicate successful
