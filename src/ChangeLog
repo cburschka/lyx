@@ -1,3 +1,7 @@
+2002-03-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text.C (breakParagraph): fix a setting layout to '0' problem.
+
 2002-03-05  José Abílio Oliveira Matos  <jamatos@novalis.fc.up.pt>
 
 	* buffer.C (makeLinuxDocFile, makeDocBookFile): take in account the

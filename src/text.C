@@ -1679,8 +1679,9 @@ void LyXText::breakAgainOneRow(BufferView * bview, Row * row)
 
 void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 {
-   LyXLayout const & layout =
-	   textclasslist[bview->buffer()->params.textclass][cursor.par()->layout()];
+	LyXTextClass const & tclass =
+		textclasslist[bview->buffer()->params.textclass];
+   LyXLayout const & layout = tclass[cursor.par()->layout()];
 
    // this is only allowed, if the current paragraph is not empty or caption
    if ((cursor.par()->size() <= 0)
@@ -1709,10 +1710,10 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
    if (layout.labeltype == LABEL_SENSITIVE) {
      if (!cursor.pos())
 	     // set to standard-layout
-	     cursor.par()->applyLayout(0);
+	     cursor.par()->applyLayout(tclass.defaultLayoutName());
      else
 	     // set to standard-layout
-	     cursor.par()->next()->applyLayout(0);
+	     cursor.par()->next()->applyLayout(tclass.defaultLayoutName());
    }
    
    /* if the cursor is at the beginning of a row without prior newline, 
