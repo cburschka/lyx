@@ -1,3 +1,7 @@
+2004-04-16  Angus Leeming  <leeming@lyx.org>
+
+	* render_graphic.h (checksum_, hasFileChanged): unused, so removed.
+
 2004-04-13  Angus Leeming  <leeming@lyx.org>
 
 	* render_base.[Ch] (clone): now takes an InsetBase ptr to enable

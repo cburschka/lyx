@@ -39,7 +39,6 @@ using std::auto_ptr;
 
 
 RenderGraphic::RenderGraphic(InsetBase const * inset)
-	: checksum_(0)
 {
 	loader_.connect(boost::bind(&LyX::updateInset,
 				    boost::cref(LyX::cref()), inset));
@@ -50,8 +49,7 @@ RenderGraphic::RenderGraphic(RenderGraphic const & other,
 			     InsetBase const * inset)
 	: RenderBase(other),
 	  loader_(other.loader_),
-	  params_(other.params_),
-	  checksum_(0)
+	  params_(other.params_)
 {
 	loader_.connect(boost::bind(&LyX::updateInset,
 				    boost::cref(LyX::cref()), inset));
@@ -72,16 +70,6 @@ void RenderGraphic::update(graphics::Params const & params)
 		BOOST_ASSERT(AbsolutePath(params_.filename));
 		loader_.reset(params_.filename, params_);
 	}
-}
-
-
-bool RenderGraphic::hasFileChanged() const
-{
-	unsigned long const new_checksum = loader_.checksum();
-	bool const file_has_changed = checksum_ != new_checksum;
-	if (file_has_changed)
-		checksum_ = new_checksum;
-	return file_has_changed;
 }
 
 

@@ -33,9 +33,6 @@ public:
 	/// Refresh the info about which file to display and how to display it.
 	void update(lyx::graphics::Params const & params);
 
-	/// Is the stored checksum different to that of the graphics loader?
-	bool hasFileChanged() const;
-
 	/// equivalent to dynamic_cast
 	virtual RenderGraphic * asGraphic() { return this; }
 
@@ -46,9 +43,6 @@ private:
 	/// The stored data.
 	lyx::graphics::Loader loader_;
 	lyx::graphics::Params params_;
-
-	/// Cached variable (not copied).
-	mutable unsigned long checksum_;
 };
 
 
