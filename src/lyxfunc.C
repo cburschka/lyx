@@ -273,10 +273,31 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	} else if (action == LFUN_SELFINSERT) {
 		// We must set the argument to the char looked up by
 		// XKeysymToString
-		char const * tmp = XKeysymToString(keysym);
-		// if (!argument.empty()) {
-		argument = tmp ? tmp : "";
-		// }
+		XKeyEvent xke;
+		xke.type = KeyPress;
+		xke.serial = 0;
+		xke.send_event = False;
+		xke.display = fl_get_display();
+		xke.window = 0;
+		xke.root = 0;
+		xke.subwindow = 0;
+		xke.time = 0;
+		xke.x = 0;
+		xke.y = 0;
+		xke.x_root = 0;
+		xke.y_root = 0;
+		xke.state = state;
+		xke.keycode = XKeysymToKeycode(fl_get_display(), keysym);
+		xke.same_screen = True;
+		char ret[10];
+		KeySym tmpkeysym;
+		int res = XLookupString(&xke, ret, 10, &tmpkeysym, 0);
+		//Assert(keysym == tmpkeysym);
+		lyxerr[Debug::KEY] << "TmpKeysym ["
+				   << tmpkeysym << "]" << endl;
+		
+		if (res > 0)
+			argument = string(ret, res);
 		lyxerr[Debug::KEY] << "SelfInsert arg["
 				   << argument << "]" << endl;
 	}
@@ -1823,7 +1844,7 @@ string const LyXFunc::Dispatch(int ac,
 				owner->view()->text->cursor;
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			// It is possible to make it a lot faster still
-			// just comment out the lone below...
+			// just comment out the line below...
 			owner->view()->showCursor();
 		} else {
 			owner->view()->cut();
@@ -1939,7 +1960,7 @@ string const LyXFunc::Dispatch(int ac,
 					owner->view()->text->cursor;
 				owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 				// It is possible to make it a lot faster still
-				// just comment out the lone below...
+				// just comment out the line below...
 				owner->view()->showCursor();
 			}
 		} else {

@@ -1,5 +1,22 @@
+2000-12-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/WorkArea.C (work_area_handler): simplify the key/keysym
+	handling for XForms 0.89, this might have rendered some cases
+	unusable. I have at least deadkeys, accent-xxx and KP_x working.
+	Please report proplems. 
+
+	* src/lyxfunc.C (processKeySym): make the self-insert handling
+	work as it should
+
+2000-12-18  Baruch Even  <baruch.even@writeme.com>
+
+	* src/LaTeX.C (deplog): fix spelling errors
+	* src/text2.C (CutSelection): ditto
+	* src/lyxfunc.C (Dispatch): ditto
+
 2000-12-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* lib/layouts/stdlayouts.inc: only allow align Center for Caption
 
 	* src/mathed/math_inset.C (MathMatrixInset): initialize v_align
 	and h_align in default init.

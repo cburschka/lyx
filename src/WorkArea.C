@@ -372,18 +372,27 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!key) {
 			// We migth have to add more keysyms here also,
 			// we will do that as the issues arise. (Lgb)
-			if (keysym == XK_space)
+			if (keysym == XK_space) {
 				ret_key = keysym;
-			else
+				lyxerr[Debug::KEY] << "Using keysym [A]"
+						   << endl;
+			} else
 				break;
 		} else {
 			// It seems that this was a bit optimistic...
 			// With this hacking things seems to be better (Lgb)
-			if (static_cast<unsigned char>(key) == key
-				&& !iscntrl(key))
-				ret_key = key;
-			else
+			//if (!iscntrl(key)) {
+			//	ret_key = key;
+			//	lyxerr[Debug::KEY]
+			//		<< "Using key [B]\n"
+			//		<< "Uchar["
+			//		<< static_cast<unsigned char>(key)
+			//		<< endl;
+			//} else {
 				ret_key = (keysym ? keysym : key);
+				lyxerr[Debug::KEY] << "Using keysym [B]"
+						   << endl;
+				//}
 		}
 		
 #endif	

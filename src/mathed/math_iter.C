@@ -506,11 +506,13 @@ void MathedXIter::Merge(LyxArrayBase * a0)
     MathedIter it(a0);
     LyxArrayBase * a = it.Copy();
     
-    // make rom for the data 
+    // make room for the data 
     split(a->Last());
     array->MergeF(a, pos, a->Last());
 
-    int pos1= pos, pos2 = pos + a->Last(); // pos3= 0;
+    int pos1 = pos;
+    int pos2 = pos + a->Last();
+    // int pos3 = 0;
 
     goPosAbs(pos1);
     

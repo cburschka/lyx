@@ -89,8 +89,8 @@ Style Caption
   LabelSep		xx
   ParSkip		0.4
   TopSep		0.5
-  Align			Block
-  AlignPossible		Block, Left
+  Align			Center
+  AlignPossible		Center
   LabelType		Sensitive
   LabelString		Caption
 

@@ -2189,7 +2189,7 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 		return;
    
 	// OK, we have a selection. This is always between sel_start_cursor
-	// and sel_end cursor
+	// and sel_end_cursor
 #ifndef NEW_INSETS
 	// Check whether there are half footnotes in the selection
 	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
