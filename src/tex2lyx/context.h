@@ -46,6 +46,9 @@ struct Context {
 	/// Start a new paragraph
 	void new_paragraph(std::ostream & os);
 
+	/// Add extra stuff if not already there
+	void add_extra_stuff(std::string const &);
+
 	// Do we need to output some \begin_layout command before the
 	// next characters?
 	bool need_layout;

@@ -38,6 +38,7 @@ using std::vector;
 
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
+using lyx::support::contains;
 
 
 // thin wrapper around parse_text using a string
@@ -134,7 +135,7 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 	if (value == "-")
 		value = "-1.0";
 	// 'cM' is a valid LaTeX length unit. Change it to 'cm'
-	if (lyx::support::contains(len, '\\'))
+	if (contains(len, '\\'))
 		unit = trim(string(len, i));
 	else
 		unit = lyx::support::lowercase(trim(string(len, i)));
@@ -144,13 +145,10 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 
 // A simple function to translate a latex length to something lyx can
 // understand. Not perfect, but rather best-effort.
-string translate_len(string const & length)
+bool translate_len(string const & length, string & valstring, string & unit)
 {
-	string unit;
-	string valstring;
-	// If the input is invalid, return what we have.
 	if (!splitLatexLength(length, valstring, unit))
-		return length;
+		return false;
 	// LyX uses percent values
 	double value;
 	istringstream iss(valstring);
@@ -161,23 +159,64 @@ string translate_len(string const & length)
 	string const percentval = oss.str();
 	// a normal length
 	if (unit.empty() || unit[0] != '\\')
-		return valstring + unit;
+		return true;
 	const string::size_type i = unit.find(" ", i);
 	string const endlen = (i == string::npos) ? string() : string(unit, i);
-	if (unit == "\\textwidth")
-		return percentval + "text%" + endlen;
-	else if (unit == "\\columnwidth")
-		return percentval + "col%" + endlen;
-	else if (unit == "\\paperwidth")
-		return percentval + "page%" + endlen;
-	else if (unit == "\\linewidth")
-		return percentval + "line%" + endlen;
-	else if (unit == "\\paperheight")
-		return percentval + "pheight%" + endlen;
-	else if (unit == "\\textheight")
-		return percentval + "theight%" + endlen;
-	else
-		return valstring + unit;
+	if (unit == "\\textwidth") {
+		valstring = percentval;
+		unit = "text%" + endlen;
+	} else if (unit == "\\columnwidth") {
+		valstring = percentval;
+		unit = "col%" + endlen;
+	} else if (unit == "\\paperwidth") {
+		valstring = percentval;
+		unit = "page%" + endlen;
+	} else if (unit == "\\linewidth") {
+		valstring = percentval;
+		unit = "line%" + endlen;
+	} else if (unit == "\\paperheight") {
+		valstring = percentval;
+		unit = "pheight%" + endlen;
+	} else if (unit == "\\textheight") {
+		valstring = percentval;
+		unit = "theight%" + endlen;
+	}
+	return true;
+}
+
+
+string translate_len(string const & length)
+{
+	string unit;
+	string value;
+	if (translate_len(length, value, unit))
+		return value + unit;
+	// If the input is invalid, return what we have.
+	return length;
+}
+
+
+/*!
+ * Translates a LaTeX length into \param value, \param unit and
+ * \param special parts suitable for a box inset.
+ * The difference from translate_len() is that a box inset knows about
+ * some special "units" that are stored in \param special.
+ */
+void translate_box_len(string const & length, string & value, string & unit, string & special)
+{
+	if (translate_len(length, value, unit)) {
+		if (unit == "\\height" || unit == "\\depth" ||
+		    unit == "\\totalheight" || unit == "\\width") {
+			special = unit.substr(1);
+			// The unit is not used, but LyX requires a dummy setting
+			unit = "in";
+		} else
+			special = "none";
+	} else {
+		value.clear();
+		unit = length;
+		special = "none";
+	}
 }
 
 
@@ -281,7 +320,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
-			os << "collapsed true\n\n";
+			os << "status collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 			end_inset(os);
 		}
@@ -367,6 +406,108 @@ bool parse_command(string const & command, Parser & p, ostream & os,
 }
 
 
+/// Parses a minipage or parbox
+void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
+               Context & parent_context, bool use_parbox)
+{
+	string position;
+	string inner_pos;
+	string height_value = "0";
+	string height_unit = "pt";
+	string height_special = "none";
+	string latex_height;
+	if (p.next_token().asInput() == "[") {
+		position = p.getArg('[', ']');
+		if (position != "t" && position != "c" && position != "b") {
+			position = "c";
+			cerr << "invalid position for minipage/parbox" << endl;
+		}
+		if (p.next_token().asInput() == "[") {
+			latex_height = p.getArg('[', ']');
+			translate_box_len(latex_height, height_value, height_unit, height_special);
+
+			if (p.next_token().asInput() == "[") {
+				inner_pos = p.getArg('[', ']');
+				if (inner_pos != "c" && inner_pos != "t" &&
+				    inner_pos != "b" && inner_pos != "s") {
+					inner_pos = position;
+					cerr << "invalid inner_pos for minipage/parbox"
+					     << endl;
+				}
+			}
+		}
+	}
+	string width_value;
+	string width_unit;
+	string const latex_width = p.verbatim_item();
+	translate_len(latex_width, width_value, width_unit);
+	if (contains(width_unit, "\\") || contains(height_unit, "\\")) {
+		// LyX can't handle length variables
+		ostringstream ss;
+		if (use_parbox)
+			ss << "\\parbox";
+		else
+			ss << "\\begin{minipage}";
+		if (!position.empty())
+			ss << '[' << position << ']';
+		if (!latex_height.empty())
+			ss << '[' << latex_height << ']';
+		if (!inner_pos.empty())
+			ss << '[' << inner_pos << ']';
+		ss << "{" << latex_width << "}";
+		if (use_parbox)
+			ss << '{';
+		handle_ert(os, ss.str(), parent_context);
+		parent_context.new_paragraph(os);
+		parse_text_in_inset(p, os, flags, outer, parent_context);
+		if (use_parbox)
+			handle_ert(os, "}", parent_context);
+		else
+			handle_ert(os, "\\end{minipage}", parent_context);
+	} else {
+		// LyX does not like empty positions, so we have
+		// to set them to the LaTeX default values here.
+		if (position.empty())
+			position = "c";
+		if (inner_pos.empty())
+			inner_pos = position;
+		parent_context.check_layout(os);
+		begin_inset(os, "Box Frameless\n");
+		os << "position \"" << position << "\"\n";
+		os << "hor_pos \"c\"\n";
+		os << "has_inner_box 1\n";
+		os << "inner_pos \"" << inner_pos << "\"\n";
+		os << "use_parbox " << use_parbox << "\n";
+		os << "width \"" << width_value << width_unit << "\"\n";
+		os << "special \"none\"\n";
+		os << "height \"" << height_value << height_unit << "\"\n";
+		os << "height_special \"" << height_special << "\"\n";
+		os << "status open\n\n";
+		parse_text_in_inset(p, os, flags, outer, parent_context);
+		end_inset(os);
+#ifdef PRESERVE_LAYOUT
+		// lyx puts a % after the end of the minipage
+		if (p.next_token().cat() == catNewline && p.next_token().cs().size() > 1) {
+			// new paragraph
+			//handle_comment(os, "%dummy", parent_context);
+			p.get_token();
+			p.skip_spaces();
+			parent_context.new_paragraph(os);
+		}
+		else if (p.next_token().cat() == catSpace || p.next_token().cat() == catNewline) {
+			//handle_comment(os, "%dummy", parent_context);
+			p.get_token();
+			p.skip_spaces();
+			// We add a protected space if something real follows
+			if (p.good() && p.next_token().cat() != catComment) {
+				os << "\\InsetSpace ~\n";
+			}
+		}
+#endif
+	}
+}
+
+
 void parse_environment(Parser & p, ostream & os, bool outer,
 		       Context & parent_context)
 {
@@ -400,7 +541,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			os << "placement " << p.getArg('[', ']') << '\n';
 		}
 		os << "wide " << tostr(is_starred)
-		   << "\ncollapsed false\n\n";
+		   << "\nstatus open\n\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		// We don't need really a new paragraph, but
@@ -408,71 +549,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parent_context.new_paragraph(os);
 	}
 
-	else if (name == "minipage") {
-		string position = "1";
-		string inner_pos = "0";
-		string height = "0pt";
-		string latex_position;
-		string latex_inner_pos;
-		string latex_height;
-		if (p.next_token().asInput() == "[") {
-			latex_position = p.getArg('[', ']');
-			switch(latex_position[0]) {
-			case 't': position = "0"; break;
-			case 'c': position = "1"; break;
-			case 'b': position = "2"; break;
-			default:
-				cerr << "invalid position for minipage"
-				     << endl;
-				break;
-			}
-			if (p.next_token().asInput() == "[") {
-				latex_height = p.getArg('[', ']');
-				height = translate_len(latex_height);
-
-				if (p.next_token().asInput() == "[") {
-					latex_inner_pos = p.getArg('[', ']');
-					switch(latex_inner_pos[0]) {
-					case 'c': inner_pos = "0"; break;
-					case 't': inner_pos = "1"; break;
-					case 'b': inner_pos = "2"; break;
-					case 's': inner_pos = "3"; break;
-					default:
-						cerr << "invalid inner_pos for minipage"
-						     << endl;
-						break;
-					}
-				}
-			}
-		}
-		string width = translate_len(p.verbatim_item());
-		if (width[0] == '\\') {
-			// lyx can't handle length variables
-			ostringstream ss;
-			ss << "\\begin{minipage}";
-			if (!latex_position.empty())
-				ss << '[' << latex_position << ']';
-			if (!latex_height.empty())
-				ss << '[' << latex_height << ']';
-			if (!latex_inner_pos.empty())
-				ss << '[' << latex_inner_pos << ']';
-			ss << "{" << width << "}";
-			handle_ert(os, ss.str(), parent_context);
-			parent_context.new_paragraph(os);
-			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-			handle_ert(os, "\\end{minipage}", parent_context);
-		} else {
-			parent_context.check_layout(os);
-			begin_inset(os, "Minipage\n");
-			os << "position " << position << '\n';
-			os << "inner_position " << inner_pos << '\n';
-			os << "height \"" << height << "\"\n";
-			os << "width \"" << width << "\"\n";
-			os << "collapsed false\n\n";
-			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-			end_inset(os);
-		}
-	}
+	else if (name == "minipage")
+		parse_box(p, os, FLAG_END, outer, parent_context, false);
 
 	// Alignment settings
 	else if (name == "center" || name == "flushleft" || name == "flushright" ||
@@ -483,11 +561,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.new_paragraph(os);
 		}
 		if (name == "flushleft" || name == "raggedright")
-			parent_context.extra_stuff += "\\align left ";
+			parent_context.add_extra_stuff("\\align left ");
 		else if (name == "flushright" || name == "raggedleft")
-			parent_context.extra_stuff += "\\align right ";
+			parent_context.add_extra_stuff("\\align right ");
 		else
-			parent_context.extra_stuff += "\\align center ";
+			parent_context.add_extra_stuff("\\align center ");
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty ..
 		parent_context.extra_stuff.erase();
@@ -534,8 +612,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "comment") {
 		parent_context.check_layout(os);
-		begin_inset(os, "Comment\n");
-		os << "collapsed false\n";
+		begin_inset(os, "Note Comment\n");
+		os << "status open\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+	}
+
+	else if (name == "lyxgreyedout") {
+		parent_context.check_layout(os);
+		begin_inset(os, "Note Greyedout\n");
+		os << "status open\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 	}
@@ -796,12 +882,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "noindent") {
 			p.skip_spaces();
-			context.extra_stuff += "\\noindent ";
+			context.add_extra_stuff("\\noindent ");
 		}
 
 		else if (t.cs() == "appendix") {
 			p.skip_spaces();
-			context.extra_stuff += "\\start_of_appendix ";
+			context.add_extra_stuff("\\start_of_appendix ");
 		}
 
 		// Must attempt to parse "Section*" before "Section".
@@ -925,7 +1011,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Foot\n");
-			os << "collapsed true\n\n";
+			os << "status collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
 		}
@@ -934,7 +1020,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Marginal\n");
-			os << "collapsed true\n\n";
+			os << "status collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
 		}
@@ -1269,6 +1355,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << '{' << p.verbatim_item() << "}\n";
 			end_inset(os);
 		}
+
+		else if (t.cs() == "parbox")
+			parse_box(p, os, FLAG_ITEM, outer, context, true);
 
 		else if (t.cs() == "smallskip" ||
 		         t.cs() == "medskip" ||

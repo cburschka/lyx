@@ -143,7 +143,7 @@ void handle_package(string const & name, string const & options)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2 \n"
-	   << "\\lyxformat 225\n"
+	   << "\\lyxformat 228\n"
 	   << "\\textclass " << h_textclass << "\n"
 	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (!h_options.empty())

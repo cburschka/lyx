@@ -12,6 +12,7 @@
 
 #include <iostream>
 
+#include "support/lstrings.h"
 #include "context.h"
 
 using std::ostream;
@@ -152,6 +153,13 @@ void Context::new_paragraph(ostream & os)
 {
 	check_end_layout(os);
 	need_layout = true;
+}
+
+
+void Context::add_extra_stuff(std::string const & stuff)
+{
+	if (!lyx::support::contains(extra_stuff, stuff))
+		extra_stuff += stuff;
 }
 
 
