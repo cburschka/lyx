@@ -45,7 +45,7 @@ public:
 	///
 	Paragraph * operator*() { return positions.back().par; }
 	///
-	vector<ParPosition>::size_type size() const 
+	std::vector<ParPosition>::size_type size() const 
 		{ return positions.size(); }
 	///
 	friend
