@@ -6,7 +6,6 @@
 
 #include <config.h>
 
-#include "Lsstream.h"
 #include "tex2lyx.h"
 
 #include <iostream>
@@ -15,6 +14,7 @@
 using std::cerr;
 using std::endl;
 using std::ostream;
+using std::string;
 using std::vector;
 
 

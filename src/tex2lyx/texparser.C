@@ -2,9 +2,9 @@
 #include <config.h>
 
 #include "texparser.h"
-#include "Lsstream.h"
 
 #include <iostream>
+#include <sstream>
 
 using std::cerr;
 using std::endl;
@@ -13,6 +13,7 @@ using std::ios;
 using std::istream;
 using std::istringstream;
 using std::ostream;
+using std::string;
 using std::vector;
 
 
@@ -126,7 +127,7 @@ Parser::Parser(istream & is)
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0)
 {
-	istringstream is(STRCONV(s));
+	istringstream is(s);
 	tokenize(is);
 }
 

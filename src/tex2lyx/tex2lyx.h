@@ -24,11 +24,13 @@ std::string parse_text(Parser & p, unsigned flags, const bool outer);
 void handle_comment(Parser & p);
 std::string const trim(std::string const & a, char const * p = " \t\n\r");
 
-void split(std::string const & s, std::vector<std::string> & result, char delim = ',');
-std::string join(std::vector<std::string> const & input, char const * delim);
+void split(std::string const & s, std::vector<std::string> & result,
+	char delim = ',');
+std::string join(std::vector<std::string> const & input,
+	char const * delim);
 
 bool is_math_env(std::string const & name);
-char const ** is_known(string const & str, char const ** what);
+char const ** is_known(std::string const & str, char const ** what);
 
 // Access to environment stack
 extern std::vector<std::string> active_environments;

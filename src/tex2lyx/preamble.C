@@ -6,11 +6,11 @@
 
 #include <config.h>
 
-#include "Lsstream.h"
 #include "tex2lyx.h"
 
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -21,6 +21,7 @@ using std::istream;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+using std::string;
 using std::vector;
 
 

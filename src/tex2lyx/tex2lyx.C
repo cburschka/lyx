@@ -4,15 +4,13 @@
 
 // {[(
 
-#include <config.h>
-
-#include "Lsstream.h"
 #include "tex2lyx.h"
 
 #include <cctype>
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 
 using std::cout;
@@ -25,6 +23,7 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::stringstream;
+using std::string;
 using std::vector;
 
 
@@ -63,7 +62,7 @@ string const trim(string const & a, char const * p)
 void split(string const & s, vector<string> & result, char delim)
 {
 	//cerr << "split 1: '" << s << "'\n";
-	istringstream is(STRCONV(s));
+	istringstream is(s);
 	string t;
 	while (getline(is, t, delim))
 		result.push_back(t);
@@ -79,7 +78,7 @@ string join(vector<string> const & input, char const * delim)
 			os << delim;
 		os << input[i];
 	}
-	return STRCONV(os.str());
+	return os.str();
 }
 
 

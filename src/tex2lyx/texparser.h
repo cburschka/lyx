@@ -1,12 +1,13 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "LString.h"
 #include <vector>
+#include <string>
+
 
 enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, MATHTEXT_MODE, TABLE_MODE};
 
-mode_type asMode(mode_type oldmode, string const & str);
+mode_type asMode(mode_type oldmode, std::string const & str);
 
 
 // These are TeX's catcodes
@@ -62,22 +63,22 @@ public:
 	///
 	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
 	///
-	Token(string const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
+	Token(std::string const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
 
 	///
-	string const & cs() const { return cs_; }
+	std::string const & cs() const { return cs_; }
 	///
 	CatCode cat() const { return cat_; }
 	///
 	char character() const { return char_; }
 	///
-	string asString() const;
+	std::string asString() const;
 	///
-	string asInput() const;
+	std::string asInput() const;
 
 private:
 	///
-	string cs_;
+	std::string cs_;
 	///
 	char char_;
 	///
@@ -97,7 +98,7 @@ public:
 	///
 	Parser(std::istream & is);
 	///
-	Parser(string const & s);
+	Parser(std::string const & s);
 
 	///
 	int lineno() const { return lineno_; }
@@ -107,13 +108,13 @@ public:
 	void dump() const;
 
 	///
-	string getArg(char left, char right);
+	std::string getArg(char left, char right);
 	/// getArg('[', ']') including the brackets
-	string getOpt();
+	std::string getOpt();
 	///
 	char getChar();
 	///
-	void error(string const & msg);
+	void error(std::string const & msg);
 	///
 	void tokenize(std::istream & is);
 	///
@@ -129,13 +130,13 @@ public:
 	/// skips spaces if any
 	void skip_spaces();
 	///
-	void lex(string const & s);
+	void lex(std::string const & s);
 	///
 	bool good() const;
 	///
-	string verbatim_item();
+	std::string verbatim_item();
 	///
-	string verbatimOption();
+	std::string verbatimOption();
 
 	///
 	void setCatCode(char c, CatCode cat);
@@ -150,5 +151,6 @@ public:
 	///
 	unsigned pos_;
 };
+
 
 #endif
