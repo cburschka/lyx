@@ -914,16 +914,19 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 #endif
 
 		if (flags & FLAG_ITEM) {
+			if (t.cat() == catSpace)
+				continue;
+
 			flags &= ~FLAG_ITEM;
 			if (t.cat() == catBegin) { 
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				flags |= FLAG_BRACE_LAST;
 				continue;
-			} else {
-				// handle only this single token, leave the loop if done
-				flags |= FLAG_LEAVE;
 			}
+
+			// handle only this single token, leave the loop if done
+			flags |= FLAG_LEAVE;
 		}
 
 		if (flags & FLAG_BLOCK) {
