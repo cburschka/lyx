@@ -119,7 +119,7 @@ void FormDocument::build()
 
     // The language is a combo-box and has to be inserted manually
     FL_OBJECT * obj = language_->choice_language;
-    fl_addto_form(language_->form_doc_language);
+    fl_addto_form(language_->form);
     combo_language = new Combox(FL_COMBOX_DROPLIST);
     combo_language->add(obj->x, obj->y, obj->w, obj->h, 200);
     combo_language->shortcut("#L",1);
@@ -156,18 +156,18 @@ void FormDocument::build()
     fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
     fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
-    fl_set_form_atclose(dialog_->form_tabbed_document,
+    fl_set_form_atclose(dialog_->form,
 			FormDocument::WMHideCB, 0);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Document"),
-		       class_->form_doc_class);
+		       class_->form);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Paper"),
-                       paper_->form_doc_paper);
+                       paper_->form);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Language"),
-                       language_->form_doc_language);
+                       language_->form);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Extra"),
-                       options_->form_doc_options);
+                       options_->form);
     fbullet = fl_addto_tabfolder(dialog_->tabbed_folder,_("Bullets"),
-				 bullets_->form_doc_bullet);
+				 bullets_->form);
     if ((XpmVersion < 4) || (XpmVersion == 4 && XpmRevision < 7)) {
 	    lyxerr << _("Your version of libXpm is older than 4.7.\n"
 			"The `bullet' tab of the document popup "
@@ -183,10 +183,10 @@ void FormDocument::show()
 	build();
 
     update();  // make sure its up-to-date
-    if (dialog_->form_tabbed_document->visible) {
-        fl_raise_form(dialog_->form_tabbed_document);
+    if (dialog_->form->visible) {
+        fl_raise_form(dialog_->form);
     } else {
-        fl_show_form(dialog_->form_tabbed_document,
+        fl_show_form(dialog_->form,
                      FL_PLACE_MOUSE | FL_FREE_SIZE,
                      FL_TRANSIENT, _("Document Layout"));
 	u_ = d_->updateBufferDependent.connect(
@@ -198,8 +198,8 @@ void FormDocument::show()
 
 void FormDocument::hide()
 {
-    if (dialog_->form_tabbed_document->visible) {
-        fl_hide_form(dialog_->form_tabbed_document);
+    if (dialog_->form->visible) {
+        fl_hide_form(dialog_->form);
         u_.disconnect();
         h_.disconnect();
     }
@@ -645,7 +645,7 @@ void FormDocument::paper_update()
     fl_set_input(paper_->input_head_height, params.headheight.c_str());
     fl_set_input(paper_->input_head_sep, params.headsep.c_str());
     fl_set_input(paper_->input_foot_skip, params.footskip.c_str());
-    fl_set_focus_object(paper_->form_doc_paper, paper_->choice_papersize2);
+    fl_set_focus_object(paper_->form, paper_->choice_papersize2);
 }
 
 void FormDocument::bullets_update()
@@ -686,32 +686,32 @@ void FormDocument::free()
     if (dialog_) {
         hide();
         if (class_) {
-            fl_free_form(class_->form_doc_class);
+            fl_free_form(class_->form);
             delete class_;
             class_ = 0;
         }
         if (paper_) {
-            fl_free_form(paper_->form_doc_paper);
+            fl_free_form(paper_->form);
             delete paper_;
             paper_ = 0;
         }
         if (language_) {
 	    delete combo_language;
-            fl_free_form(language_->form_doc_language);
+            fl_free_form(language_->form);
             delete language_;
             language_ = 0;
         }
         if (options_) {
-            fl_free_form(options_->form_doc_options);
+            fl_free_form(options_->form);
             delete options_;
             options_ = 0;
         }
         if (bullets_) {
-            fl_free_form(bullets_->form_doc_bullet);
+            fl_free_form(bullets_->form);
             delete bullets_;
             bullets_ = 0;
         }
-        fl_free_form(dialog_->form_tabbed_document);
+        fl_free_form(dialog_->form);
         delete dialog_;
         dialog_ = 0;
     }
@@ -933,7 +933,7 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
     /* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
     
     if (data != current_bullet_panel) {
-	fl_freeze_form(bullets_->form_doc_bullet);
+	fl_freeze_form(bullets_->form);
 	current_bullet_panel = data;
 
 	/* free the current pixmap */
@@ -970,7 +970,7 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
 	fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,
 				   LibFileSearch("images", new_panel.c_str()).c_str());
 	fl_redraw_object(bullets_->bmtable_bullet_panel);
-	fl_unfreeze_form(bullets_->form_doc_bullet);
+	fl_unfreeze_form(bullets_->form);
     }
 }
 

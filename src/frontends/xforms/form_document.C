@@ -8,17 +8,24 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_document.h"
-#include "FormDocument.h" 
+#include "FormDocument.h"
 #include "bmtable.h"
 #include "support/filetools.h"
+
+FD_form_tabbed_document::~FD_form_tabbed_document()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_tabbed_document * FormDocument::build_tabbed_document()
 {
   FL_OBJECT *obj;
   FD_form_tabbed_document *fdui = new FD_form_tabbed_document;
 
-  fdui->form_tabbed_document = fl_bgn_form(FL_NO_BOX, 465, 450);
-  fdui->form_tabbed_document->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 465, 450);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 450, "");
   fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 20, 15, 435, 365, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -37,19 +44,26 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   fl_end_form();
 
-  fdui->form_tabbed_document->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_doc_paper::~FD_form_doc_paper()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_doc_paper * FormDocument::build_doc_paper()
 {
   FL_OBJECT *obj;
   FD_form_doc_paper *fdui = new FD_form_doc_paper;
 
-  fdui->form_doc_paper = fl_bgn_form(FL_NO_BOX, 440, 345);
-  fdui->form_doc_paper->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 230, 85, 200, 100, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
@@ -148,19 +162,26 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
-  fdui->form_doc_paper->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_doc_class::~FD_form_doc_class()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_doc_class * FormDocument::build_doc_class()
 {
   FL_OBJECT *obj;
   FD_form_doc_class *fdui = new FD_form_doc_class;
 
-  fdui->form_doc_class = fl_bgn_form(FL_NO_BOX, 440, 345);
-  fdui->form_doc_class->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 200, 120, 80, _("Separation"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -240,19 +261,26 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, InputCB, 0);
   fl_end_form();
 
-  fdui->form_doc_class->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_doc_language::~FD_form_doc_language()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_doc_language * FormDocument::build_doc_language()
 {
   FL_OBJECT *obj;
   FD_form_doc_language *fdui = new FD_form_doc_language;
 
-  fdui->form_doc_language = fl_bgn_form(FL_NO_BOX, 440, 345);
-  fdui->form_doc_language->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 40, 120, 290, 110, _("Quote Style    "));
   fdui->choice_inputenc = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 70, 190, 30, idex(_("Encoding:|#D")));
@@ -278,19 +306,26 @@ FD_form_doc_language * FormDocument::build_doc_language()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_form();
 
-  fdui->form_doc_language->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_doc_options::~FD_form_doc_options()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_doc_options * FormDocument::build_doc_options()
 {
   FL_OBJECT *obj;
   FD_form_doc_options *fdui = new FD_form_doc_options;
 
-  fdui->form_doc_options = fl_bgn_form(FL_NO_BOX, 440, 345);
-  fdui->form_doc_options->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
   fdui->input_float_placement = obj = fl_add_input(FL_NORMAL_INPUT, 155, 60, 120, 30, idex(_("Float Placement:|#L")));
     fl_set_button_shortcut(obj, scex(_("Float Placement:|#L")), 1);
@@ -310,19 +345,26 @@ FD_form_doc_options * FormDocument::build_doc_options()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_form();
 
-  fdui->form_doc_options->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_doc_bullet::~FD_form_doc_bullet()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_doc_bullet * FormDocument::build_doc_bullet()
 {
   FL_OBJECT *obj;
   FD_form_doc_bullet *fdui = new FD_form_doc_bullet;
 
-  fdui->form_doc_bullet = fl_bgn_form(FL_NO_BOX, 440, 345);
-  fdui->form_doc_bullet->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
+  fdui->form->u_vdata = this;
   fl_set_border_width(-1);
   obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
   fl_set_border_width(-3);
@@ -331,7 +373,9 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
   fl_set_object_lcol(obj, FL_BLUE);
   fl_set_object_boxtype(obj, FL_UP_BOX);
   fl_set_bmtable_pixmap_file(obj, 6, 6,
-			     LibFileSearch("images", "standard.xpm").c_str());
+			     LibFileSearch("images",
+					   "standard",
+					   "xpm").c_str());
   fl_set_border_width(-1);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 95, 20, 255, 70, "");
   fdui->choice_bullet_size = obj = fl_add_choice(FL_NORMAL_CHOICE, 15, 45, 65, 30, idex(_("Size|#z")));
@@ -344,8 +388,6 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
     fl_set_button_shortcut(obj, scex(_("LaTeX|#L")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_FIXED_STYLE);
-    fl_set_input_return(obj, FL_RETURN_CHANGED);
-    fl_set_input_maxchars(obj, 80);
     fl_set_object_callback(obj, InputBulletLaTeXCB, 0);
 
   fdui->radio_bullet_depth = fl_bgn_group();
@@ -408,7 +450,7 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
 
   fl_end_form();
 
-  fdui->form_doc_bullet->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

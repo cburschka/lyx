@@ -1,4 +1,5 @@
-/** Header file generated with fdesign on Wed Aug  2 13:56:57 2000.**/
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_print_h_
 #define FD_form_print_h_
@@ -12,8 +13,9 @@ extern  "C" void C_FormPrintCancelCB(FL_OBJECT *, long);
 
 /**** Forms and Objects ****/
 struct FD_form_print {
+	~FD_form_print();
 
-	FL_FORM *form_print;
+	FL_FORM *form;
 	FL_OBJECT *input_printer;
 	FL_OBJECT *input_file;
 	FL_OBJECT *group_radio_printto;

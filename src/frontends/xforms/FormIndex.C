@@ -27,7 +27,7 @@
 #include "lyxfunc.h"
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Index")), dialog_(0), minh(0), minw(0)
+	: FormCommand(lv, d, _("Index")), minh(0), minw(0), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -39,7 +39,6 @@ FormIndex::FormIndex(LyXView * lv, Dialogs * d)
 
 FormIndex::~FormIndex()
 {
-	free();
 	delete dialog_;
 }
 
@@ -56,8 +55,8 @@ void FormIndex::build()
 
 FL_FORM * const FormIndex::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->form_index
-		return dialog_->form_index;
+	if( dialog_ ) // no need to test for dialog_->form
+		return dialog_->form;
 	else
 		return 0;
 }

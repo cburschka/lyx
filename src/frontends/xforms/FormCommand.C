@@ -83,18 +83,6 @@ void FormCommand::show()
 }
 
 
-void FormCommand::free()
-{
-	// we don't need to delete u and h here because
-	// hide() does that after disconnecting.
-	if( form() ) {
-		if( form()->visible )
-			hide();
-		fl_free_form(form());
-	}
-}
-
-
 void FormCommand::hide()
 {
 	if (form() && form()->visible) {

@@ -40,11 +40,9 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "lyxserver.h"
-#include "FontLoader.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "CutAndPaste.h"
-#include "TextCache.h"
 
 using std::ifstream;
 using std::copy;
@@ -70,7 +68,6 @@ extern FD_form_quotes * fd_form_quotes;
 extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
 extern FD_form_figure * fd_form_figure;
-extern FD_form_screen * fd_form_screen;
 extern FD_form_bullet * fd_form_bullet;
 
 extern BufferView * current_view; // called too many times in this file...
@@ -2829,43 +2826,6 @@ extern "C" void FigureOKCB(FL_OBJECT * ob, long data)
 {
 	FigureApplyCB(ob, data);
 	FigureCancelCB(ob, data);
-}
-
-
-extern "C" void ScreenApplyCB(FL_OBJECT *, long)
-{
-	lyxrc.roman_font_name = fl_get_input(fd_form_screen->input_roman);
-	lyxrc.sans_font_name = fl_get_input(fd_form_screen->input_sans);
-	lyxrc.typewriter_font_name = fl_get_input(fd_form_screen->input_typewriter);
-	lyxrc.font_norm = fl_get_input(fd_form_screen->input_font_norm);
-	lyxrc.set_font_norm_type();
-	lyxrc.zoom = atoi(fl_get_input(fd_form_screen->intinput_size));
-	fontloader.update();
-
-	// Of course we should only to the resize and the textcahce.clear
-	// if values really changed...but not very important right now. (Lgb)
-	
-	// All buffers will need resize
-	bufferlist.resize();
-	// We also need to empty the textcache so that
-	// the buffer will be formatted correctly after
-	// a zoom change.
-	textcache.clear();
-	
-	current_view->owner()->getMiniBuffer()->Set(_("Screen options set"));
-}
-
-
-extern "C" void ScreenCancelCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_screen->form_screen);
-}
-
-
-extern "C" void ScreenOKCB(FL_OBJECT * ob, long data)
-{
-	ScreenCancelCB(ob, data);
-	ScreenApplyCB(ob, data);
 }
 
 

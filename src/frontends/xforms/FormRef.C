@@ -35,8 +35,7 @@ static int formw;
 static int formh;
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference")), dialog_(0),
-	  toggle(GOBACK)
+	: FormCommand(lv, d, _("Reference")), toggle(GOBACK), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -48,7 +47,6 @@ FormRef::FormRef(LyXView * lv, Dialogs * d)
 
 FormRef::~FormRef()
 {
-	free();
 	delete dialog_;
 }
 
@@ -93,8 +91,8 @@ void FormRef::build()
 
 FL_FORM * const FormRef::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->form_ref
-		return dialog_->form_ref;
+	if ( dialog_ ) // no need to test for dialog_->form_ref
+		return dialog_->form;
 	else
 		return 0;
 }

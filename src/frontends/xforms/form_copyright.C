@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_copyright.h"
-#include "FormCopyright.h" 
+#include "FormCopyright.h"
+
+FD_form_copyright::~FD_form_copyright()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_copyright * FormCopyright::build_copyright()
 {
   FL_OBJECT *obj;
   FD_form_copyright *fdui = new FD_form_copyright;
 
-  fdui->form_copyright = fl_bgn_form(FL_NO_BOX, 450, 430);
-  fdui->form_copyright->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 430);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 430, "");
   obj = fl_add_text(FL_NORMAL_TEXT, 10, 10, 430, 50, _("LyX is Copyright (C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -38,7 +45,7 @@ FD_form_copyright * FormCopyright::build_copyright()
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
   fl_end_form();
 
-  fdui->form_copyright->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

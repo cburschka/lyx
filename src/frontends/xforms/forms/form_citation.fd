@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_citation
-Width: 430
-Height: 770
+Width: 435
+Height: 665
 Number of Objects: 13
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 430 770
+box: 0 0 435 665
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 10 30 180 370
+box: 10 30 180 300
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -51,7 +51,7 @@ argument: CITEBRSR
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 240 30 180 370
+box: 240 30 180 300
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -141,7 +141,7 @@ argument: DOWN
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 10 440 410 110
+box: 10 360 410 80
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -159,7 +159,7 @@ argument:
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 160 570 130 30
+box: 160 470 130 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -177,7 +177,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 100 620 250 30
+box: 100 520 250 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -195,7 +195,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 100 660 250 30
+box: 100 570 250 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -213,7 +213,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 230 730 90 30
+box: 230 630 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -231,7 +231,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 330 730 90 30
+box: 330 630 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

@@ -432,6 +432,7 @@ void LyXAction::init()
 		{ LFUN_INSET_LIST, "list-insert", "", Noop },
 		{ LFUN_INSET_THEOREM, "theorem-insert", "", Noop },
 		{ LFUN_INSET_CAPTION, "caption-insert", "", Noop },
+		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", "", NoBuffer },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

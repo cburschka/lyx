@@ -1,4 +1,5 @@
-/** Header file generated with fdesign on Wed Aug  2 13:56:57 2000.**/
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_url_h_
 #define FD_form_url_h_
@@ -10,8 +11,9 @@ extern  "C" void C_FormCommandOKCB(FL_OBJECT *, long);
 
 /**** Forms and Objects ****/
 struct FD_form_url {
+	~FD_form_url();
 
-	FL_FORM *form_url;
+	FL_FORM *form;
 	FL_OBJECT *url;
 	FL_OBJECT *name;
 	FL_OBJECT *radio_html;

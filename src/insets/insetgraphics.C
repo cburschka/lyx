@@ -670,8 +670,13 @@ InsetGraphicsParams InsetGraphics::getParams() const
 
 Inset * InsetGraphics::Clone() const
 {
-    InsetGraphics * newInset = new InsetGraphics;
-    newInset->setParams(getParams());
-    
+	InsetGraphics * newInset = new InsetGraphics;
+
+	newInset->cacheHandle = cacheHandle;
+	newInset->pixmap = pixmap;
+	newInset->pixmapInitialized = pixmapInitialized;
+
+	newInset->setParams(getParams());
+
 	return newInset;
 }

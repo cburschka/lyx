@@ -1,4 +1,5 @@
-/** Header file generated with fdesign on Wed Aug  2 13:56:57 2000.**/
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_toc_h_
 #define FD_form_toc_h_
@@ -10,8 +11,9 @@ extern  "C" void C_FormCommandCancelCB(FL_OBJECT *, long);
 
 /**** Forms and Objects ****/
 struct FD_form_toc {
+	~FD_form_toc();
 
-	FL_FORM *form_toc;
+	FL_FORM *form;
 	FL_OBJECT *browser;
 	FL_OBJECT *type;
 };

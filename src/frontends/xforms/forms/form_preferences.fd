@@ -344,7 +344,7 @@ label: Encoding
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_encoding
+name: input_screen_encoding
 callback: C_FormPreferencesInputCB
 argument: 0
 
@@ -602,7 +602,7 @@ label: Encoding
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_encoding
+name: input_popup_encoding
 callback: C_FormPreferencesInputCB
 argument: 0
 
@@ -1239,14 +1239,14 @@ argument:
 
 =============== FORM ===============
 Name: form_preferences
-Width: 460
+Width: 475
 Height: 435
-Number of Objects: 5
+Number of Objects: 6
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 460 435
+box: 0 0 475 435
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1264,7 +1264,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 250 395 90 30
+box: 275 395 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1282,7 +1282,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 350 395 90 30
+box: 375 395 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1300,7 +1300,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 150 395 90 30
+box: 175 395 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1332,6 +1332,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: tabfolder_prefs
 callback: 
 argument: 
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 395 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_restore
+callback: C_FormPreferencesRestoreCB
+argument: 0
 
 ==============================
 create_the_forms

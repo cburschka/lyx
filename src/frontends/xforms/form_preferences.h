@@ -1,4 +1,5 @@
-/** Header file generated with fdesign on Wed Aug  2 13:56:57 2000.**/
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_bind_h_
 #define FD_form_bind_h_
@@ -19,18 +20,21 @@ extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormPreferencesApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormPreferencesCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormPreferencesOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormPreferencesRestoreCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
 struct FD_form_bind {
+	~FD_form_bind();
 
-	FL_FORM *form_bind;
+	FL_FORM *form;
 	FL_OBJECT *input_bind;
 	FL_OBJECT *button_bind_file_browse;
 };
 struct FD_form_misc {
+	~FD_form_misc();
 
-	FL_FORM *form_misc;
+	FL_FORM *form;
 	FL_OBJECT *check_banner;
 	FL_OBJECT *check_auto_region_delete;
 	FL_OBJECT *check_exit_confirm;
@@ -39,14 +43,15 @@ struct FD_form_misc {
 	FL_OBJECT *counter_line_len;
 };
 struct FD_form_screen_fonts {
+	~FD_form_screen_fonts();
 
-	FL_FORM *form_screen_fonts;
+	FL_FORM *form;
 	FL_OBJECT *input_roman;
 	FL_OBJECT *input_sans;
 	FL_OBJECT *input_typewriter;
 	FL_OBJECT *counter_zoom;
 	FL_OBJECT *check_scalable;
-	FL_OBJECT *input_encoding;
+	FL_OBJECT *input_screen_encoding;
 	FL_OBJECT *input_tiny;
 	FL_OBJECT *input_script;
 	FL_OBJECT *input_footnote;
@@ -59,15 +64,17 @@ struct FD_form_screen_fonts {
 	FL_OBJECT *input_huger;
 };
 struct FD_form_interface_fonts {
+	~FD_form_interface_fonts();
 
-	FL_FORM *form_interface_fonts;
+	FL_FORM *form;
 	FL_OBJECT *input_popup_font;
 	FL_OBJECT *input_menu_font;
-	FL_OBJECT *input_encoding;
+	FL_OBJECT *input_popup_encoding;
 };
 struct FD_form_printer {
+	~FD_form_printer();
 
-	FL_FORM *form_printer;
+	FL_FORM *form;
 	FL_OBJECT *input_command;
 	FL_OBJECT *input_page_range;
 	FL_OBJECT *input_copies;
@@ -88,8 +95,9 @@ struct FD_form_printer {
 	FL_OBJECT *check_adapt_output;
 };
 struct FD_form_paths {
+	~FD_form_paths();
 
-	FL_FORM *form_paths;
+	FL_FORM *form;
 	FL_OBJECT *input_default_path;
 	FL_OBJECT *button_document_browse;
 	FL_OBJECT *counter_lastfiles;
@@ -106,12 +114,14 @@ struct FD_form_paths {
 	FL_OBJECT *button_backup_path_browse;
 };
 struct FD_form_preferences {
+	~FD_form_preferences();
 
-	FL_FORM *form_preferences;
+	FL_FORM *form;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *tabfolder_prefs;
+	FL_OBJECT *button_restore;
 };
 
 #endif /* FD_form_bind_h_ */

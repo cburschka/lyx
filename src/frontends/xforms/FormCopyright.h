@@ -55,8 +55,6 @@ private:
 	void build();
 	///
 	FD_form_copyright * build_copyright();
-	/// Explicitly free the dialog.
-	void free();
 
 	/// Real GUI implementation.
 	FD_form_copyright * dialog_;

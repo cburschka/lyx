@@ -27,9 +27,8 @@
 #include "lyxfunc.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url")), dialog_(0), minh(0), minw(0)
+	: FormCommand(lv, d, _("Url")), minh(0), minw(0), dialog_(0)
 {
-	dialog_ = 0;
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
 	// storing a copy because we won't be disconnecting.
@@ -40,7 +39,6 @@ FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 
 FormUrl::~FormUrl()
 {
-	free();
 	delete dialog_;
 }
 
@@ -57,8 +55,8 @@ void FormUrl::build()
 
 FL_FORM * const FormUrl::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->form_url
-		return dialog_->form_url;
+	if( dialog_ ) // no need to test for dialog_->form
+		return dialog_->form;
 	else
 		return 0;
 }

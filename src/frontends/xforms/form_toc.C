@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_toc.h"
-#include "FormToc.h" 
+#include "FormToc.h"
+
+FD_form_toc::~FD_form_toc()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_toc * FormToc::build_toc()
 {
   FL_OBJECT *obj;
   FD_form_toc *fdui = new FD_form_toc;
 
-  fdui->form_toc = fl_bgn_form(FL_NO_BOX, 420, 340);
-  fdui->form_toc->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 420, 340);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 420, 340, "");
   fdui->browser = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 10, 400, 280, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
@@ -37,7 +44,7 @@ FD_form_toc * FormToc::build_toc()
     fl_set_object_callback(obj, C_FormCommandApplyCB, 0);
   fl_end_form();
 
-  fdui->form_toc->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

@@ -1,5 +1,5 @@
---- bullet_forms.c.orig	Fri Jun  9 17:38:18 2000
-+++ bullet_forms.c	Fri Jun  9 17:39:31 2000
+--- bullet_forms.c.orig	Thu Aug 10 00:38:18 2000
++++ bullet_forms.c	Thu Aug 10 00:38:18 2000
 @@ -3,6 +3,8 @@
  #include "forms.h"
  #include <stdlib.h>
@@ -28,7 +28,7 @@
 +     fl_set_object_boxtype(obj, FL_UP_BOX);
 +     fl_set_bmtable_pixmap_file(obj, 6, 6,
 +				LibFileSearch("images",
-+					      "standard.xpm").c_str());
++					      "standard", "xpm").c_str());
 +
 +  fl_set_border_width(-1);
    obj = fl_add_frame(FL_ENGRAVED_FRAME,95,20,255,70,"");

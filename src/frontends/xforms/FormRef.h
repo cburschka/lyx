@@ -65,13 +65,13 @@ private:
 	///
 	string getName( Type type ) const;
 
-	/// Real GUI implementation.
-	FD_form_ref * dialog_;
-
 	///
 	Goto toggle;
 	/// 
 	std::vector<string> refs;
+
+	/// Real GUI implementation.
+	FD_form_ref * dialog_;
 };
 
 #endif

@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_preferences.h"
-#include "FormPreferences.h" 
+#include "FormPreferences.h"
+
+FD_form_bind::~FD_form_bind()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_bind * FormPreferences::build_bind()
 {
   FL_OBJECT *obj;
   FD_form_bind *fdui = new FD_form_bind;
 
-  fdui->form_bind = fl_bgn_form(FL_NO_BOX, 450, 320);
-  fdui->form_bind->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
   fdui->input_bind = obj = fl_add_input(FL_NORMAL_INPUT, 145, 80, 190, 30, _("Bind file"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -25,19 +32,26 @@ FD_form_bind * FormPreferences::build_bind()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_form();
 
-  fdui->form_bind->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_misc::~FD_form_misc()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_misc * FormPreferences::build_misc()
 {
   FL_OBJECT *obj;
   FD_form_misc *fdui = new FD_form_misc;
 
-  fdui->form_misc = fl_bgn_form(FL_NO_BOX, 450, 320);
-  fdui->form_misc->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
   fdui->check_banner = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 30, 240, 30, _("Show banner"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -73,19 +87,26 @@ FD_form_misc * FormPreferences::build_misc()
     fl_set_counter_step(obj, 1, 1);
   fl_end_form();
 
-  fdui->form_misc->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_screen_fonts::~FD_form_screen_fonts()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_screen_fonts * FormPreferences::build_screen_fonts()
 {
   FL_OBJECT *obj;
   FD_form_screen_fonts *fdui = new FD_form_screen_fonts;
 
-  fdui->form_screen_fonts = fl_bgn_form(FL_NO_BOX, 450, 320);
-  fdui->form_screen_fonts->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
   fdui->input_roman = obj = fl_add_input(FL_NORMAL_INPUT, 210, 5, 200, 30, _("Roman"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -108,7 +129,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->input_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 210, 95, 200, 30, _("Encoding"));
+  fdui->input_screen_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 210, 95, 200, 30, _("Encoding"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesInputCB, 0);
   fdui->input_tiny = obj = fl_add_input(FL_FLOAT_INPUT, 140, 165, 70, 30, _("tiny"));
@@ -143,19 +164,26 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
     fl_set_object_callback(obj, C_FormPreferencesInputCB, 0);
   fl_end_form();
 
-  fdui->form_screen_fonts->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_interface_fonts::~FD_form_interface_fonts()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_interface_fonts * FormPreferences::build_interface_fonts()
 {
   FL_OBJECT *obj;
   FD_form_interface_fonts *fdui = new FD_form_interface_fonts;
 
-  fdui->form_interface_fonts = fl_bgn_form(FL_NO_BOX, 450, 320);
-  fdui->form_interface_fonts->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
   fdui->input_popup_font = obj = fl_add_input(FL_NORMAL_INPUT, 215, 50, 200, 30, _("Popup"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -163,24 +191,31 @@ FD_form_interface_fonts * FormPreferences::build_interface_fonts()
   fdui->input_menu_font = obj = fl_add_input(FL_NORMAL_INPUT, 215, 80, 200, 30, _("Menu"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesInputCB, 0);
-  fdui->input_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 215, 110, 200, 30, _("Encoding"));
+  fdui->input_popup_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 215, 110, 200, 30, _("Encoding"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesInputCB, 0);
   fl_end_form();
 
-  fdui->form_interface_fonts->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_printer::~FD_form_printer()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_printer * FormPreferences::build_printer()
 {
   FL_OBJECT *obj;
   FD_form_printer *fdui = new FD_form_printer;
 
-  fdui->form_printer = fl_bgn_form(FL_NO_BOX, 450, 320);
-  fdui->form_printer->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
   fdui->input_command = obj = fl_add_input(FL_NORMAL_INPUT, 130, 60, 80, 30, _("command"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -238,19 +273,26 @@ FD_form_printer * FormPreferences::build_printer()
     fl_set_object_callback(obj, C_FormPreferencesInputCB, 0);
   fl_end_form();
 
-  fdui->form_printer->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_paths::~FD_form_paths()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_paths * FormPreferences::build_paths()
 {
   FL_OBJECT *obj;
   FD_form_paths *fdui = new FD_form_paths;
 
-  fdui->form_paths = fl_bgn_form(FL_NO_BOX, 450, 320);
-  fdui->form_paths->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
   fdui->input_default_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 10, 170, 30, _("Default path"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -300,36 +342,47 @@ FD_form_paths * FormPreferences::build_paths()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_form();
 
-  fdui->form_paths->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_preferences::~FD_form_preferences()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_preferences * FormPreferences::build_preferences()
 {
   FL_OBJECT *obj;
   FD_form_preferences *fdui = new FD_form_preferences;
 
-  fdui->form_preferences = fl_bgn_form(FL_NO_BOX, 460, 435);
-  fdui->form_preferences->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 460, 435, "");
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 250, 395, 90, 30, idex(_("Apply|#A")));
+  fdui->form = fl_bgn_form(FL_NO_BOX, 475, 435);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 475, 435, "");
+  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 275, 395, 90, 30, idex(_("Apply|#A")));
     fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 395, 90, 30, idex(_("Cancel|^[")));
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 375, 395, 90, 30, idex(_("Cancel|^[")));
     fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesCancelCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 150, 395, 90, 30, _("Ok"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 175, 395, 90, 30, _("Ok"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesOKCB, 0);
   fdui->tabfolder_prefs = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 450, 385, "");
     fl_set_object_boxtype(obj, FL_FLAT_BOX);
+  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 395, 90, 30, idex(_("Restore|#R")));
+    fl_set_button_shortcut(obj, scex(_("Restore|#R")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormPreferencesRestoreCB, 0);
   fl_end_form();
 
-  fdui->form_preferences->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

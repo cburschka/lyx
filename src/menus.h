@@ -61,8 +61,6 @@ private:
 	///
 	void create_menus(int air);
 	///
-	void ScreenOptions();
-	///
 	void showCopyright();
 	///
 	void showLicense();

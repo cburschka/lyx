@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_tabular.h"
-#include "FormTabular.h" 
+#include "FormTabular.h"
+
+FD_form_tabular::~FD_form_tabular()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_tabular * FormTabular::build_tabular()
 {
   FL_OBJECT *obj;
   FD_form_tabular *fdui = new FD_form_tabular;
 
-  fdui->form_tabular = fl_bgn_form(FL_NO_BOX, 510, 295);
-  fdui->form_tabular->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 295);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 510, 295, "");
   fdui->tabFolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 0, 0, 505, 250, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -36,19 +43,26 @@ FD_form_tabular * FormTabular::build_tabular()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
-  fdui->form_tabular->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_tabular_options::~FD_form_tabular_options()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_tabular_options * FormTabular::build_tabular_options()
 {
   FL_OBJECT *obj;
   FD_form_tabular_options *fdui = new FD_form_tabular_options;
 
-  fdui->form_tabular_options = fl_bgn_form(FL_NO_BOX, 505, 227);
-  fdui->form_tabular_options->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 280, 20, 120, 75, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
@@ -87,19 +101,26 @@ FD_form_tabular_options * FormTabular::build_tabular_options()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
-  fdui->form_tabular_options->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_column_options::~FD_form_column_options()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_column_options * FormTabular::build_column_options()
 {
   FL_OBJECT *obj;
   FD_form_column_options *fdui = new FD_form_column_options;
 
-  fdui->form_column_options = fl_bgn_form(FL_NO_BOX, 505, 227);
-  fdui->form_column_options->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 20, 20, 170, 105, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
@@ -179,19 +200,26 @@ FD_form_column_options * FormTabular::build_column_options()
     fl_set_object_callback(obj, C_FormTabularInputCB, 0);
   fl_end_form();
 
-  fdui->form_column_options->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_cell_options::~FD_form_cell_options()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_cell_options * FormTabular::build_cell_options()
 {
   FL_OBJECT *obj;
   FD_form_cell_options *fdui = new FD_form_cell_options;
 
-  fdui->form_cell_options = fl_bgn_form(FL_NO_BOX, 505, 227);
-  fdui->form_cell_options->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 335, 115, 155, 100, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 115, 180, 100, "");
@@ -283,19 +311,26 @@ FD_form_cell_options * FormTabular::build_cell_options()
     fl_set_object_callback(obj, C_FormTabularInputCB, 0);
   fl_end_form();
 
-  fdui->form_cell_options->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_longtable_options::~FD_form_longtable_options()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_longtable_options * FormTabular::build_longtable_options()
 {
   FL_OBJECT *obj;
   FD_form_longtable_options *fdui = new FD_form_longtable_options;
 
-  fdui->form_longtable_options = fl_bgn_form(FL_NO_BOX, 505, 227);
-  fdui->form_longtable_options->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 20, 100, 75, "");
   obj = fl_add_text(FL_NORMAL_TEXT, 15, 10, 85, 20, _("Header"));
@@ -324,19 +359,26 @@ FD_form_longtable_options * FormTabular::build_longtable_options()
     fl_set_object_callback(obj, C_FormTabularInputCB, 0);
   fl_end_form();
 
-  fdui->form_longtable_options->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+
+FD_form_create_tabular::~FD_form_create_tabular()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_create_tabular * FormTabular::build_create_tabular()
 {
   FL_OBJECT *obj;
   FD_form_create_tabular *fdui = new FD_form_create_tabular;
 
-  fdui->form_create_tabular = fl_bgn_form(FL_NO_BOX, 310, 130);
-  fdui->form_create_tabular->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 310, 130);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 310, 130, "");
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 90, 90, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -359,7 +401,7 @@ FD_form_create_tabular * FormTabular::build_create_tabular()
     fl_set_object_resize(obj, FL_RESIZE_X);
   fl_end_form();
 
-  fdui->form_create_tabular->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

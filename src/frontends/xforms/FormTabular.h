@@ -18,6 +18,8 @@
 #define FORMTABULAR_H
 
 #include "DialogBase.h"
+#include "support/utility.hpp"
+
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Connection;
 #endif
@@ -35,7 +37,7 @@ struct FD_form_create_tabular;
 /** This class provides an XForms implementation of the FormTabular Dialog.
     The tabular dialog allows users to set/save their tabular.
  */
-class FormTabular : public DialogBase {
+class FormTabular : public DialogBase, public noncopyable {
 public:
     /**@name Constructors and Destructors */
     //@{
@@ -56,9 +58,6 @@ public:
     //@}
 
 private:
-    FormTabular() {}
-    FormTabular(FormTabular &) : DialogBase() {}
-    
     /**@name Slot Methods */
     //@{
     /// Create the dialog if necessary, update it and display it.
@@ -95,9 +94,6 @@ private:
     FD_form_longtable_options * build_longtable_options();
     ///
     FD_form_create_tabular * build_create_tabular();
-    ///
-    /// Explicitly free the dialog.
-    void free();
     //@}
 
     /**@name Private Data */
@@ -114,17 +110,20 @@ private:
     FD_form_longtable_options * longtable_options_;
     ///
     FD_form_create_tabular * create_tabular_;
-    ///
+    //
     /// Which LyXView do we belong to?
     LyXView * lv_;
+    ///
     Dialogs * d_;
     /// Update connection.
     Connection u_;
     /// Hide connection.
     Connection h_;
-    //@}
+    ///
     InsetTabular * inset_;
+    ///
     int actCell_;
+    //@}
 };
 
 #endif

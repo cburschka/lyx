@@ -49,7 +49,6 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 
 FormCitation::~FormCitation()
 {
-	free();
 	delete dialog_;
 }
 
@@ -70,8 +69,8 @@ void FormCitation::build()
 
 FL_FORM * const FormCitation::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->citation
-		return dialog_->form_citation;
+	if( dialog_ ) // no need to test for dialog_->form
+		return dialog_->form;
 	else
 		return 0;
 }
@@ -109,8 +108,8 @@ void FormCitation::update()
 
 	int noKeys = max( bibkeys.size(), citekeys.size() );
 
-	// Place bounds, so that 4 <= noKeys <= 15
-	noKeys = max( 4, min(15, noKeys) );
+	// Place bounds, so that 4 <= noKeys <= 10
+	noKeys = max( 4, min(10, noKeys) );
 
 	// Re-size the form to accommodate the new browser size
 	int size = 20 * noKeys;
@@ -200,15 +199,15 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	int const hinfo  = dialog_->infoBrsr->h;
 	int const hother = 140;
 	hbrsr = max( hbrsr, 175 );
-	int wform = dialog_->form_citation->w;
+	int wform = dialog_->form->w;
 	int hform = hbrsr + hother;
 
 	if( bibPresent ) hform += hinfo + 30;
-	fl_set_form_size( dialog_->form_citation, wform, hform );
+	fl_set_form_size( dialog_->form, wform, hform );
 
-	// No resizing is alowed in the y-direction
-	fl_set_form_minsize( dialog_->form_citation, wform,   hform );
-	fl_set_form_maxsize( dialog_->form_citation, 3*wform, hform );
+	// No resizing is allowed in the y-direction
+	fl_set_form_minsize( dialog_->form, wform,   hform );
+	fl_set_form_maxsize( dialog_->form, 3*wform, hform );
 
 	int y = 0;
 	fl_set_object_geometry( dialog_->box, 0, y, wform, hform );

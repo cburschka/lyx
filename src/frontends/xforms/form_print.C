@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_print.h"
-#include "FormPrint.h" 
+#include "FormPrint.h"
+
+FD_form_print::~FD_form_print()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_print * FormPrint::build_print()
 {
   FL_OBJECT *obj;
   FD_form_print *fdui = new FD_form_print;
 
-  fdui->form_print = fl_bgn_form(FL_NO_BOX, 340, 360);
-  fdui->form_print->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 340, 360);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 360, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 215, 320, 90, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
@@ -115,7 +122,7 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_callback(obj, C_FormPrintInputCB, 0);
   fl_end_form();
 
-  fdui->form_print->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

@@ -60,7 +60,6 @@ using std::max;
 using std::min;
 using std::sort;
 
-extern FD_form_screen * fd_form_screen;
 extern BufferList bufferlist;
 
 // I would really prefere to see most or all of these 'extern's disappear.
@@ -452,37 +451,6 @@ void Menus::create_menus(int air)
 		fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 		obj= obj->next;
 	} while (obj != 0 && obj->objclass != FL_END_GROUP);
-}
-
-
-void Menus::ScreenOptions()
-{
-	static int ow = -1, oh;
-
-	// this is not very nice....
-	fl_set_input(fd_form_screen->input_roman, 
-		     lyxrc.roman_font_name.c_str());
-	fl_set_input(fd_form_screen->input_sans, 
-		     lyxrc.sans_font_name.c_str());
-	fl_set_input(fd_form_screen->input_typewriter,
-		     lyxrc.typewriter_font_name.c_str());
-	fl_set_input(fd_form_screen->input_font_norm, 
-		     lyxrc.font_norm.c_str());
-	char tmpstring[10];
-	sprintf(tmpstring, "%d", lyxrc.zoom);
-	fl_set_input(fd_form_screen->intinput_size, tmpstring);
-	if (fd_form_screen->form_screen->visible) {
-		fl_raise_form(fd_form_screen->form_screen);
-	} else {
-		fl_show_form(fd_form_screen->form_screen,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
-			     _("Screen Options"));
-		if (ow < 0) {
-			ow = fd_form_screen->form_screen->w;
-			oh = fd_form_screen->form_screen->h;
-		}
-		fl_set_form_minsize(fd_form_screen->form_screen, ow, oh);
-	}
 }
 
 
@@ -2012,17 +1980,15 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int OptionsMenu = fl_defpup(FL_ObjWin(ob),
-				    _("Screen Fonts..."
-				      "|Spellchecker Options..."
+				    _("|Spellchecker Options..."
 				      "|Keyboard...%l"
 				      "|Reconfigure"
 				      "|Preferences"));
 
-	fl_setpup_shortcut(OptionsMenu, 1, scex(_("OM|Ff#f#F")));
-	fl_setpup_shortcut(OptionsMenu, 2, scex(_("OM|Ss#s#S")));
-	fl_setpup_shortcut(OptionsMenu, 3, scex(_("OM|Kk#k#K")));
-	fl_setpup_shortcut(OptionsMenu, 4, scex(_("OM|Rr#r#R")));
-	fl_setpup_shortcut(OptionsMenu, 5, scex(_("OM|Pp#p#P")));
+	fl_setpup_shortcut(OptionsMenu, 1, scex(_("OM|Ss#s#S")));
+	fl_setpup_shortcut(OptionsMenu, 2, scex(_("OM|Kk#k#K")));
+	fl_setpup_shortcut(OptionsMenu, 3, scex(_("OM|Rr#r#R")));
+	fl_setpup_shortcut(OptionsMenu, 4, scex(_("OM|Pp#p#P")));
 
 	if(lyxrc.isp_command == "none") 
 		fl_setpup_mode(OptionsMenu, 2, FL_PUP_GREY);
@@ -2037,11 +2003,10 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	fl_set_object_boxtype(ob, FL_FLAT_BOX);
 	fl_redraw_object(ob);
 	switch (choice){
-	case 1: men->ScreenOptions(); break;
-	case 2: SpellCheckerOptions(); break;      
-	case 3: men->_view->getIntl()->MenuKeymap(); break;
-	case 4: tmpfunc->Dispatch(LFUN_RECONFIGURE); break;
-	case 5: men->_view->getDialogs()->showPreferences(); break;
+	case 1: SpellCheckerOptions(); break;      
+	case 2: men->_view->getIntl()->MenuKeymap(); break;
+	case 3: tmpfunc->Dispatch(LFUN_RECONFIGURE); break;
+	case 4: men->_view->getDialogs()->showPreferences(); break;
 	default: break;
 	}   
 	fl_freepup(OptionsMenu);

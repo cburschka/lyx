@@ -23,6 +23,7 @@
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
+#include "ButtonController.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -33,29 +34,44 @@ C_GENERICCB(FormPreferences, OKCB)
 C_GENERICCB(FormPreferences, ApplyCB)
 C_GENERICCB(FormPreferences, CancelCB)
 C_GENERICCB(FormPreferences, InputCB)
+C_GENERICCB(FormPreferences, RestoreCB)
 
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: dialog_(0), bind_(0), misc_(0), screen_fonts_(0),
-	  interface_fonts_(0), printer_(0), paths_(0),
-	  lv_(lv), d_(d), u_(0), h_(0), status(DIALOG_UNMODIFIED)
+	: dialog_(0), bind_(0), misc_(0), screen_fonts_(0), interface_fonts_(0),
+	  printer_(0), paths_(0), lv_(lv), d_(d), u_(0), h_(0),
+	  minw_(0), minh_(0),
+	  bc_(new ButtonController<PreferencesPolicy>(_("Cancel"), _("Close")))
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showPreferences.connect(slot(this,&FormPreferences::show));
+	d->showPreferences.connect(slot(this, &FormPreferences::show));
 }
 
 
 FormPreferences::~FormPreferences()
 {
-	free();
+	delete dialog_;
+	delete bc_;
 }
 
 
 void FormPreferences::build()
 {
 	dialog_ = build_preferences();
+
+	// manage the restore, save, apply and cancel/close buttons
+	bc_->setOkay(dialog_->button_ok);
+	bc_->setApply(dialog_->button_apply);
+	bc_->setCancel(dialog_->button_cancel);
+	bc_->setUndoAll(dialog_->button_restore);
+	bc_->refresh();
+
+	// Workaround dumb xforms sizing bug
+	minw_ = dialog_->form->w;
+	minh_ = dialog_->form->h;
+
 	bind_ =	build_bind();
 	screen_fonts_ = build_screen_fonts();
 	interface_fonts_ = build_interface_fonts();
@@ -74,7 +90,8 @@ void FormPreferences::build()
 	fl_set_input_return(screen_fonts_->input_sans, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_typewriter,
 			    FL_RETURN_CHANGED);
-	fl_set_input_return(screen_fonts_->input_encoding, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_screen_encoding,
+			    FL_RETURN_CHANGED);
 	fl_set_counter_return(screen_fonts_->counter_zoom, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_tiny, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_script, FL_RETURN_CHANGED);
@@ -91,7 +108,7 @@ void FormPreferences::build()
 			    FL_RETURN_CHANGED);
 	fl_set_input_return(interface_fonts_->input_menu_font,
 			    FL_RETURN_CHANGED);
-	fl_set_input_return(interface_fonts_->input_encoding,
+	fl_set_input_return(interface_fonts_->input_popup_encoding,
 			    FL_RETURN_CHANGED);
 	// printer
 	fl_set_input_return(printer_->input_command, FL_RETURN_CHANGED);
@@ -122,24 +139,24 @@ void FormPreferences::build()
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Bindings"),
-			   bind_->form_bind);
+			   bind_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Screen Fonts"),
-			   screen_fonts_->form_screen_fonts);
+			   screen_fonts_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Interface Fonts"),
-			   interface_fonts_->form_interface_fonts);
+			   interface_fonts_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Miscellaneous"),
-			   misc_->form_misc);
+			   misc_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Printer"),
-			   printer_->form_printer);
+			   printer_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Paths"),
-			   paths_->form_paths);
+			   paths_->form);
 
-	fl_set_form_atclose(dialog_->form_preferences,
+	fl_set_form_atclose(dialog_->form,
 			    C_FormPreferencesWMHideCB, 0);
 
 	// deactivate the various browse buttons because they
@@ -166,18 +183,15 @@ void FormPreferences::show()
 	}
 	update();  // make sure its up-to-date
 
-	if (dialog_->form_preferences->visible) {
-		fl_raise_form(dialog_->form_preferences);
+	if (dialog_->form->visible) {
+		fl_raise_form(dialog_->form);
 	} else {
-		status = DIALOG_UNMODIFIED;
-		fl_deactivate_object(dialog_->button_ok);
-		fl_deactivate_object(dialog_->button_apply);
-		fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
-		fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
-
-		fl_show_form(dialog_->form_preferences,
+		fl_set_form_minsize(dialog_->form,
+				    minw_,
+				    minh_);
+		fl_show_form(dialog_->form,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_FULLBORDER,
+			     FL_TRANSIENT,
 			     _("Preferences"));
 	}
 }
@@ -186,9 +200,10 @@ void FormPreferences::show()
 void FormPreferences::hide()
 {
 	if (dialog_
-	    && dialog_->form_preferences
-	    && dialog_->form_preferences->visible) {
-		fl_hide_form(dialog_->form_preferences);
+	    && dialog_->form
+	    && dialog_->form->visible) {
+		bc_->hide();
+		fl_hide_form(dialog_->form);
 	}
 }
 
@@ -200,7 +215,11 @@ void FormPreferences::apply()
 	// is made.  For example, screen zoom and font types.  These could be
 	// handled either by signals/slots in lyxrc or just directly call the
 	// associated functions here.
-
+	// There are other problems with this scheme.  We really should check
+	// what we copy to make sure that it really is necessary to do things
+	// like update the screen fonts because that flushes the textcache
+	// and other stuff which may cost us a lot on slower/high-load machines.
+	
 	// Bind tab
 	lyxrc.bind_file = fl_get_input(bind_->input_bind);
 	// Misc tab
@@ -214,41 +233,81 @@ void FormPreferences::apply()
 		(fl_get_counter_value(misc_->counter_autosave));
 	lyxrc.ascii_linelen = static_cast<unsigned int>
 		(fl_get_counter_value(misc_->counter_line_len));
-	// Screen fonts
-	lyxrc.roman_font_name = fl_get_input(screen_fonts_->input_roman);
-	lyxrc.sans_font_name = fl_get_input(screen_fonts_->input_sans);
-	lyxrc.typewriter_font_name = fl_get_input(screen_fonts_->
-						  input_typewriter);
-	lyxrc.font_norm = fl_get_input(screen_fonts_->input_encoding);
-	lyxrc.use_scalable_fonts =
-		fl_get_button(screen_fonts_->check_scalable);
-	lyxrc.zoom = static_cast<unsigned int>
-		(fl_get_counter_value(screen_fonts_->counter_zoom));
-	lyxrc.font_sizes[LyXFont::SIZE_TINY] = 
-		strToDbl(fl_get_input(screen_fonts_->input_tiny));
-	lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] =
-		strToDbl(fl_get_input(screen_fonts_->input_script));
-	lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] =
-		strToDbl(fl_get_input(screen_fonts_->input_footnote));
-	lyxrc.font_sizes[LyXFont::SIZE_SMALL] =
-		strToDbl(fl_get_input(screen_fonts_->input_small));
-	lyxrc.font_sizes[LyXFont::SIZE_NORMAL] =
-		strToDbl(fl_get_input(screen_fonts_->input_normal));
-	lyxrc.font_sizes[LyXFont::SIZE_LARGE] =
-		strToDbl(fl_get_input(screen_fonts_->input_large));
-	lyxrc.font_sizes[LyXFont::SIZE_LARGER] =
-		strToDbl(fl_get_input(screen_fonts_->input_larger));
-	lyxrc.font_sizes[LyXFont::SIZE_LARGEST] =
-		strToDbl(fl_get_input(screen_fonts_->input_largest));
-	lyxrc.font_sizes[LyXFont::SIZE_HUGE] =
-		strToDbl(fl_get_input(screen_fonts_->input_huge));
-	lyxrc.font_sizes[LyXFont::SIZE_HUGER] =
-		strToDbl(fl_get_input(screen_fonts_->input_huger));
-	// interface fonts
+	// Interface fonts
 	lyxrc.popup_font_name =
 		fl_get_input(interface_fonts_->input_popup_font);
 	lyxrc.menu_font_name = fl_get_input(interface_fonts_->input_menu_font);
-	lyxrc.font_norm_menu = fl_get_input(interface_fonts_->input_encoding);
+	lyxrc.font_norm_menu =
+		fl_get_input(interface_fonts_->input_popup_encoding);
+	// Screen fonts
+	if (lyxrc.roman_font_name !=
+	    fl_get_input(screen_fonts_->input_roman) ||
+	    lyxrc.sans_font_name !=
+	    fl_get_input(screen_fonts_->input_sans) ||
+	    lyxrc.typewriter_font_name !=
+	    fl_get_input(screen_fonts_->input_typewriter) ||
+	    lyxrc.font_norm !=
+	    fl_get_input(screen_fonts_->input_screen_encoding) ||
+	    lyxrc.use_scalable_fonts !=
+	    fl_get_button(screen_fonts_->check_scalable) ||
+	    lyxrc.zoom != static_cast<unsigned int>
+	    (fl_get_counter_value(screen_fonts_->counter_zoom)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_TINY] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_tiny)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_script)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_footnote)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_SMALL] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_small)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_NORMAL] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_normal)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_LARGE] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_large)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_LARGER] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_larger)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_LARGEST] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_largest)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_HUGE] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_huge)) ||
+	    lyxrc.font_sizes[LyXFont::SIZE_HUGER] !=
+	    strToDbl(fl_get_input(screen_fonts_->input_huger))) {
+		// Something has changed so copy all of them and then force
+		// an update of the screen fonts (ie. redraw every buffer)
+		lyxrc.roman_font_name = fl_get_input(screen_fonts_->input_roman);
+		lyxrc.sans_font_name = fl_get_input(screen_fonts_->input_sans);
+		lyxrc.typewriter_font_name = fl_get_input(screen_fonts_->
+							  input_typewriter);
+		lyxrc.font_norm = fl_get_input(screen_fonts_->
+					       input_screen_encoding);
+		lyxrc.use_scalable_fonts =
+			fl_get_button(screen_fonts_->check_scalable);
+		lyxrc.zoom = static_cast<unsigned int>
+			(fl_get_counter_value(screen_fonts_->counter_zoom));
+		lyxrc.font_sizes[LyXFont::SIZE_TINY] = 
+			strToDbl(fl_get_input(screen_fonts_->input_tiny));
+		lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] =
+			strToDbl(fl_get_input(screen_fonts_->input_script));
+		lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] =
+			strToDbl(fl_get_input(screen_fonts_->input_footnote));
+		lyxrc.font_sizes[LyXFont::SIZE_SMALL] =
+			strToDbl(fl_get_input(screen_fonts_->input_small));
+		lyxrc.font_sizes[LyXFont::SIZE_NORMAL] =
+			strToDbl(fl_get_input(screen_fonts_->input_normal));
+		lyxrc.font_sizes[LyXFont::SIZE_LARGE] =
+			strToDbl(fl_get_input(screen_fonts_->input_large));
+		lyxrc.font_sizes[LyXFont::SIZE_LARGER] =
+		strToDbl(fl_get_input(screen_fonts_->input_larger));
+		lyxrc.font_sizes[LyXFont::SIZE_LARGEST] =
+			strToDbl(fl_get_input(screen_fonts_->input_largest));
+		lyxrc.font_sizes[LyXFont::SIZE_HUGE] =
+			strToDbl(fl_get_input(screen_fonts_->input_huge));
+		lyxrc.font_sizes[LyXFont::SIZE_HUGER] =
+			strToDbl(fl_get_input(screen_fonts_->input_huger));
+		// Now update the buffers
+		// Can anything below here affect the redraw process?
+		lv_->getLyXFunc()->Dispatch(LFUN_SCREEN_FONT_UPDATE);
+	}
 	// printer
 	lyxrc.print_adapt_output = fl_get_button(printer_->check_adapt_output);
 	lyxrc.print_command = fl_get_input(printer_->input_command);
@@ -284,6 +343,8 @@ void FormPreferences::apply()
 	lyxrc.make_backup = fl_get_button(paths_->check_make_backups);
 	lyxrc.num_lastfiles = static_cast<unsigned int>
 		(fl_get_counter_value(paths_->counter_lastfiles));
+
+	bc_->apply();
 }
 
 
@@ -313,7 +374,7 @@ void FormPreferences::update()
 			     lyxrc.sans_font_name.c_str());
 		fl_set_input(screen_fonts_->input_typewriter,
 			     lyxrc.typewriter_font_name.c_str());
-		fl_set_input(screen_fonts_->input_encoding,
+		fl_set_input(screen_fonts_->input_screen_encoding,
 			     lyxrc.font_norm.c_str());
 		fl_set_button(screen_fonts_->check_scalable,
 			     lyxrc.use_scalable_fonts);
@@ -344,7 +405,7 @@ void FormPreferences::update()
 			     lyxrc.popup_font_name.c_str());
 		fl_set_input(interface_fonts_->input_menu_font,
 			     lyxrc.menu_font_name.c_str());
-		fl_set_input(interface_fonts_->input_encoding,
+		fl_set_input(interface_fonts_->input_popup_encoding,
 			     lyxrc.font_norm_menu.c_str());
 		// printer
 		fl_set_button(printer_->check_adapt_output,
@@ -406,7 +467,7 @@ void FormPreferences::update()
 }
 
 
-void FormPreferences::input()
+bool FormPreferences::input()
 {
 	bool activate = true;
 	//
@@ -440,6 +501,7 @@ void FormPreferences::input()
 			|| !AbsolutePath(fl_get_input(paths_->
 						      input_backup_path)))))) {
 		activate = false;
+		lyxerr[Debug::GUI] << "Preferences: Path is wrong\n";
 	}
 
 	//  fontsizes -- tiny < script < footnote etc.
@@ -456,6 +518,7 @@ void FormPreferences::input()
 		// make sure they all have positive entries
 		// Also note that an empty entry is returned as 0.0 by strToDbl
 		activate = false;
+		lyxerr[Debug::GUI] << "Preferences: Sizes are wrong\n";
 	} else if (strToDbl(fl_get_input(screen_fonts_->input_tiny)) >
 		   strToDbl(fl_get_input(screen_fonts_->input_script)) ||
 		   strToDbl(fl_get_input(screen_fonts_->input_script)) >
@@ -475,40 +538,10 @@ void FormPreferences::input()
 		   strToDbl(fl_get_input(screen_fonts_->input_huge)) >
 		   strToDbl(fl_get_input(screen_fonts_->input_huger))) {
 		activate = false;
+		lyxerr[Debug::GUI] << "Preferences: Sizes are wrong\n";
 	}
 
-	//
-	// You can modify the dialog and still have the buttons disabled
-	status = DIALOG_MODIFIED;
-
-	if (status == DIALOG_MODIFIED
-	    && activate) {
-		fl_activate_object(dialog_->button_ok);
-		fl_activate_object(dialog_->button_apply);
-		fl_set_object_lcol(dialog_->button_ok, FL_BLACK);
-		fl_set_object_lcol(dialog_->button_apply, FL_BLACK);
-	} else {
-		fl_deactivate_object(dialog_->button_ok);
-		fl_deactivate_object(dialog_->button_apply);
-		fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
-		fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
-	}
-}
-
-
-void FormPreferences::free()
-{
-	// we don't need to delete u and h here because
-	// hide() does that after disconnecting.
-	if (dialog_) {
-		if (dialog_->form_preferences
-		    && dialog_->form_preferences->visible) {
-			hide();
-		}
-		fl_free_form(dialog_->form_preferences);
-		delete dialog_;
-		dialog_ = 0;
-	}
+	return activate;
 }
 
 
@@ -527,7 +560,7 @@ void FormPreferences::OKCB(FL_OBJECT * ob, long)
 	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
 	pre->apply();
 	pre->hide();
-
+ 
 	pre->lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
 }
 
@@ -549,5 +582,14 @@ void FormPreferences::CancelCB(FL_OBJECT * ob, long)
 void FormPreferences::InputCB(FL_OBJECT * ob, long)
 {
 	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
+	pre->bc_->valid(pre->input());
+}
+
+
+void FormPreferences::RestoreCB(FL_OBJECT * ob, long)
+{
+	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
+	pre->update();
 	pre->input();
+	pre->bc_->undoAll();
 }

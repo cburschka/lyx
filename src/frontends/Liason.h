@@ -48,15 +48,15 @@ class BufferParams;
 namespace Liason
 {
 #endif
-/**@name Global support functions */
-//@{
-/// get global printer parameters
-PrinterParams getPrinterParams(Buffer *);
-/// print the current buffer
-bool printBuffer(Buffer *, PrinterParams const &);
-/// set the minibuffer
-void setMinibuffer(LyXView *, char const  * msg);
-//@}
+	/**@name Global support functions */
+	//@{
+	/// get global printer parameters
+	PrinterParams getPrinterParams(Buffer *);
+	/// print the current buffer
+	bool printBuffer(Buffer *, PrinterParams const &);
+	/// set the minibuffer
+	void setMinibuffer(LyXView *, char const  * msg);
+	//@}
 
 #ifdef CXX_WORKING_NAMESPACES
 }

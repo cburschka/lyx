@@ -7,6 +7,8 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ ${SIGC_CFL
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\
+	ButtonPolicies.C \
+	ButtonPolicies.h \
 	Dialogs.h \
 	DialogBase.h \
 	Liason.C \

@@ -57,8 +57,6 @@ protected:
 	virtual void update() = 0;
 	/// Apply from dialog (modify or create inset)
 	virtual void apply() = 0;
-	/// Explicitly free the dialog.
-	void free();
 	/// delete derived class variables from hide()
 	virtual void clearStore() {}
 	/// Pointer to the actual instantiation of the xform's form

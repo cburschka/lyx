@@ -11,7 +11,7 @@
 ###
 ### Makefile by Lars Gullik Bjønnes (larsbj@ifi.uio.no)
 ### Modified by Allan Rae <rae@lyx.org>
-###
+### Rewritten by Angus Leeming.
 
 SHELL = /bin/sh
 .SUFFIXES: .fd .c
@@ -31,51 +31,23 @@ SRCS := form_citation.fd \
 	form_toc.fd \
 	form_url.fd
 
-
-OBJS := $(SRCS:.fd=.c)
-
-COBJS := $(SRCS:.fd=.C)
+OBJS := $(SRCS:.fd=.C)
 
 all:
 	@echo "This is a makefile intended for the maintainer only."
 	@echo "Only run it if you are absolutely sure about what you"
 	@echo "are doing."
 
-c: $(OBJS)
+test: clean $(OBJS)
 
-d: c $(COBJS)
+updatesrc: test
+	mv *.C *.h ..
 
-
-# Modify the header files using the instructions in fdfixh.sed
-e: c
-	@echo "Modifying header files using the instructions in fdfixh.sed";\
-	for hfil in *.h ; do \
-		if [ -f "$$hfil.patch" ] ; then \
-			(echo "Patching $$hfil with $$hfil.patch" ; \
-			patch -s $$hfil < $$hfil.patch) \
-		fi; \
-		sed -f fdfixh.sed < $$hfil > $$hfil.tmp; \
-		mv $$hfil.tmp $$hfil; \
-	done
-
-updatesrc: d e
-
-.fd.c:
-	$(FDESIGN) -convert $<
-
-.c.C:
-	${SHELL} ./fdfix.sh $< $@
-	rm $<
-	@if [ -f "$@.patch" ] ; then \
-		(echo "Patching $@ with $@.patch" ; \
-		patch -s $@ < $@.patch) \
-	fi;
+.fd.C:
+	${SHELL} ./fdfix.sh $<
 
 clean:
 	rm -f *.[hcC] *.bak
 
 distclean: clean
 	rm -f *.orig *.rej *~
-
-install: clean updatesrc
-	cp *.C *.h ..

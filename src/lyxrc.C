@@ -1553,3 +1553,6 @@ void LyXRC::set_font_norm_type()
 
 // The global instance
 LyXRC lyxrc;
+
+// The global copy of the system lyxrc entries (everything except preferences)
+//LyXRC system_lyxrc;

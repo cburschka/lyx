@@ -48,19 +48,49 @@ FormPrint::FormPrint(LyXView * lv, Dialogs * d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showPrint.connect(slot(this,&FormPrint::show));
+	d->showPrint.connect(slot(this, &FormPrint::show));
 }
 
 
 FormPrint::~FormPrint()
 {
-	free();
+	delete dialog_;
 }
 
 
 void FormPrint::build()
 {
 	dialog_ = build_print();
+
+	// allow controlling of input and ok/apply (de)activation
+	fl_set_input_return(dialog_->input_printer,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_file,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_from_page,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_to_page,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_count,
+			    FL_RETURN_CHANGED);
+
+	// limit these inputs to unsigned integers
+	fl_set_input_filter(dialog_->input_from_page,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_to_page,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_count,
+			    fl_unsigned_int_filter);
+
+	// what limits (if any) make sense for these?
+	fl_set_input_maxchars(dialog_->input_printer, 255);
+	fl_set_input_maxchars(dialog_->input_file, 255);
+	fl_set_input_maxchars(dialog_->input_from_page, 4); // 9999
+	fl_set_input_maxchars(dialog_->input_to_page, 4);   // 9999
+	fl_set_input_maxchars(dialog_->input_count, 4);     // 9999
+
+	fl_set_form_atclose(dialog_->form,
+			    C_FormPrintWMHideCB, 0);
 }
 
 
@@ -68,46 +98,20 @@ void FormPrint::show()
 {
 	if (!dialog_) {
 		build();
-		// allow controlling of input and ok/apply (de)activation
-		fl_set_input_return(dialog_->input_printer,
-				    FL_RETURN_CHANGED);
-		fl_set_input_return(dialog_->input_file,
-				    FL_RETURN_CHANGED);
-		fl_set_input_return(dialog_->input_from_page,
-				    FL_RETURN_CHANGED);
-		fl_set_input_return(dialog_->input_to_page,
-				    FL_RETURN_CHANGED);
-		fl_set_input_return(dialog_->input_count,
-				    FL_RETURN_CHANGED);
-
-		// limit these inputs to unsigned integers
-		fl_set_input_filter(dialog_->input_from_page,
-				    fl_unsigned_int_filter);
-		fl_set_input_filter(dialog_->input_to_page,
-				    fl_unsigned_int_filter);
-		fl_set_input_filter(dialog_->input_count,
-				    fl_unsigned_int_filter);
-
-		// what limits (if any) make sense for these?
-		fl_set_input_maxchars(dialog_->input_printer, 255);
-		fl_set_input_maxchars(dialog_->input_file, 255);
-		fl_set_input_maxchars(dialog_->input_from_page, 4); // 9999
-		fl_set_input_maxchars(dialog_->input_to_page, 4);   // 9999
-		fl_set_input_maxchars(dialog_->input_count, 4);     // 9999
-		
-		fl_set_form_atclose(dialog_->form_print,
-				    C_FormPrintWMHideCB, 0);
 	}
 
 	update();  // make sure its up-to-date
 
-	if (dialog_->form_print->visible) {
-		fl_raise_form(dialog_->form_print);
+	if (dialog_->form->visible) {
+		fl_raise_form(dialog_->form);
 	} else {
-		fl_show_form(dialog_->form_print,
+		fl_show_form(dialog_->form,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_FULLBORDER,
+			     FL_TRANSIENT,
 			     _("Print"));
+		fl_set_form_minsize(dialog_->form,
+				    dialog_->form->w,
+				    dialog_->form->h);
 		u_ = d_->updateBufferDependent.connect(slot(this,
 							    &FormPrint::update));
 		h_ = d_->hideBufferDependent.connect(slot(this,
@@ -119,9 +123,9 @@ void FormPrint::show()
 void FormPrint::hide()
 {
 	if (dialog_
-	    && dialog_->form_print
-	    && dialog_->form_print->visible) {
-		fl_hide_form(dialog_->form_print);
+	    && dialog_->form
+	    && dialog_->form->visible) {
+		fl_hide_form(dialog_->form);
 		u_.disconnect();
 		h_.disconnect();
 	}
@@ -323,22 +327,6 @@ void FormPrint::input()
 		fl_deactivate_object(dialog_->button_apply);
 		fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
 		fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
-	}
-}
-
-
-void FormPrint::free()
-{
-	// we don't need to delete u and h here because
-	// hide() does that after disconnecting.
-	if (dialog_) {
-		if (dialog_->form_print
-		    && dialog_->form_print->visible) {
-			hide();
-		}
-		fl_free_form(dialog_->form_print);
-		delete dialog_;
-		dialog_ = 0;
 	}
 }
 

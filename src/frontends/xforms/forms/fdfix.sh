@@ -3,109 +3,58 @@
 # NOTE: This is NOT the same fdfix.sh as in ${top_srcdir}/forms
 #       It is a modified version to suit use for gui-indep.
 #
-if [ "$1" = "$2" ]; then
-    echo "Input and Output file can not be the same."
-    exit 1
-fi
-
-if [ -f $2 ]; then
-	echo "Output file already exists, overwrite?"
-	read
-	if [ "$REPLY" != "y" ];	then
-	    exit 0
-	fi
-fi
 
 if [ ! -f $1 ]; then
-    echo "Input file does not exist, can not continue"
+    echo "Input file does not exist. Cannot continue"
     exit 1
 fi
 
-# If there is a patch for the inputfile patch the input file with it.
-if [ -f "$1.patch" ]; then
-    echo "Patching $1 with $1.patch"
-    patch -s $1 < "$1.patch"
+FDESIGN=fdesign
+base=`basename $1 .fd`
+
+if [ $1 = $base ]; then
+    echo "Input file is not a .fd file. Cannot continue"
+    exit 1
 fi
 
-echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $2
-echo "#include <config.h>" >> $2
-echo "#include \"lyx_gui_misc.h\"" >> $2
-echo "#include \"gettext.h\"" >> $2
-echo >> $2
+cin=$base.c
+cout=$base.C
+hin=$base.h
+hout=$base.H
 
-# The commands to sed does this:
-#
-# -e 's/#include \"forms\.h\"/#include FORMS_H_LOCATION/'
-#
-#  Replace "forms.h" by FORMS_H_LOCATION in #include directives. This
-#  macro is defined in config.h and is either <forms.h> or
-#  <X11/forms.h>. 
-#
-#  -e "/#include \"form_.*\"/a\\
-#  #include \"$classname.h\" "
-#
-#   For all lines containing "#include "form_*"", append a line
-#   containing the header file of the parent class
-#
-# -e '/fl_/ s/".[^|]*"/_(&)/'
-#  
-#  For all lines containing "fl_" and a string _not_ containing |,
-#  replace the string with _(string)
-#
-# -e '/shortcut/ s/".*[|].*"/scex(_(&))/'
-#
-#  For all lines containing "shortcut" and a string containing |, replace
-#  the string with scex(_(string))
-#
-# -e '/fl_add/ s/".*[|].*"/idex(_(&))/'
-#
-#  For all lines containing "fl_add" and a string containing |, replace
-#  the string with idex(_(string))
-#
-# -e '/fl_add/ s/idex("\(.*\)").*$/&\
-#     fl_set_button_shortcut(obj,"\1",1);/'
-#
-# For all lines containing "fl_add" and a string containing |, add the
-# shortcut command after the end of this line
-#
-# -e 's/\(\(FD_[^ ]*\) \*fdui =\).*sizeof(\*fdui))/\1 new \2/'
-#
-# We use new/delete not malloc/free so change to suit.
-#
-# -e "s/\(FD_f\([^ _]*\)_\([^ ]*\)\) \*create_form_form[^ ]*/\1 * $classname::build_\3()/"
-#
-# Fixup the name of the create_form... function to have a signature matching
-# that of the method it will become.
-#
-# -e 's/\(fdui->form[^ ]*\)\(.*bgn_form.*\)/\1\2\
-#     \1->u_vdata = this;/' \
-#
-# We need to store a pointer to the dialog in u_vdata so that the callbacks
-# will work.
-#
-# -e 's/,\([^ ]\)/, \1/g'
-#
-# Someone got busy and put spaces in after commas but didn't allow for the
-# autogeneration of the files so their pretty formatting got lost. Not anymore.
-#
-
-classname=`basename $1 .c | cut -c6-`
+classname=`echo $base | cut -c6-`
 firstchar=`echo $classname | cut -c1 | tr a-z A-Z`
 rest=`echo $classname | cut -c2-`
 classname=Form$firstchar$rest
-export classname
 
-cat $1 | sed \
--e 's/#include \"forms\.h\"/#include FORMS_H_LOCATION/' \
--e "/#include \"form_.*\"/a\\
-#include \"$classname.h\" " \
--e '/fl_/ s/".[^|]*"/_(&)/' \
--e '/shortcut/ s/".*[|].*"/scex(_(&))/' \
--e '/fl_add/ s/".*[|].*"/idex(_(&))/' \
--e '/fl_add/ s/idex(\(.*\)").*$/&\
-    fl_set_button_shortcut(obj,scex(\1")),1);/' \
--e 's/\(\(FD_[^ ]*\) \*fdui =\).*sizeof(\*fdui))/\1 new \2/' \
--e "s/\(FD_f\([^ _]*\)_\([^ ]*\)\) \*create_form_form[^ ]*/\1 * $classname::build_\3()/" \
--e 's/\(fdui->form[^ ]*\)\(.*bgn_form.*\)/\1\2\
-  \1->u_vdata = this;/' \
--e 's/,\([^ ]\)/, \1/g' >> $2
+# Create .c and .h files
+$FDESIGN -convert $1
+
+# Modify .h file for use by LyX
+echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $hout
+sed -f fdfixh.sed < $hin >> $hout
+
+# Patch the .h file if a patch exists
+if [ -f "$hout.patch" ] ; then
+    echo "Patching $hout with $hout.patch"
+    patch -s $hout < $hout.patch
+fi
+
+# Modify .c file for use by LyX
+echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $cout
+echo "#include <config.h>" >> $cout
+echo "#include \"lyx_gui_misc.h\"" >> $cout
+echo "#include \"gettext.h\"" >> $cout
+echo >> $cout
+
+sed -f fdfixc.sed < $cin | sed -e "s/CLASSNAME/$classname/" >> $cout
+
+# Patch the .C file if a patch exists
+if [ -f "$cout.patch" ] ; then
+    echo "Patching $cout with $cout.patch"
+    patch -s $cout < $cout.patch
+fi
+
+# Clean up, to leave .C and .h files
+rm -f $cin $hin
+mv $hout $hin

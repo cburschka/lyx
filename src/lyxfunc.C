@@ -92,6 +92,8 @@ using std::istringstream;
 #include "menus.h"
 #endif
 #include "FloatList.h"
+#include "FontLoader.h"
+#include "TextCache.h"
 
 using std::pair;
 using std::endl;
@@ -2843,6 +2845,22 @@ string LyXFunc::Dispatch(int ac,
 		lyxrc.write("preferences");
 	}
 	break;
+
+	case LFUN_SCREEN_FONT_UPDATE:
+	{
+		// handle the screen font changes.
+		// 
+		lyxrc.set_font_norm_type();
+		fontloader.update();
+		// Of course we should only do the resize and the textcache.clear
+		// if values really changed...but not very important right now. (Lgb)
+		// All buffers will need resize
+		bufferlist.resize();
+		// We also need to empty the textcache so that
+		// the buffer will be formatted correctly after
+		// a zoom change.
+		textcache.clear();
+	}
 
 	case LFUN_SET_COLOR:
 	{

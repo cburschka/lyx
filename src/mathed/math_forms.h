@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Jun 19 12:55:08 2000.**/
+/** Header file generated with fdesign **/
 
 #ifndef FD_panel_h_
 #define FD_panel_h_

@@ -1,4 +1,5 @@
-/** Header file generated with fdesign on Mon Aug  7 17:11:47 2000.**/
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_ref_h_
 #define FD_form_ref_h_
@@ -11,8 +12,9 @@ extern  "C" void C_FormCommandCancelCB(FL_OBJECT *, long);
 
 /**** Forms and Objects ****/
 struct FD_form_ref {
+	~FD_form_ref();
 
-	FL_FORM *form_ref;
+	FL_FORM *form;
 	FL_OBJECT *browser;
 	FL_OBJECT *update;
 	FL_OBJECT *sort;

@@ -265,5 +265,6 @@ public:
 
 ///
 extern LyXRC lyxrc;
-
+///
+//extern LyXRC system_lyxrc;
 #endif

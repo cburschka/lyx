@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Jul 31 11:17:12 2000.**/
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_title_h_
 #define FD_form_title_h_
@@ -9,10 +9,6 @@ extern "C" void TimerCB(FL_OBJECT *, long);
 extern "C" void FigureOKCB(FL_OBJECT *, long);
 extern "C" void FigureApplyCB(FL_OBJECT *, long);
 extern "C" void FigureCancelCB(FL_OBJECT *, long);
-
-extern "C" void ScreenOKCB(FL_OBJECT *, long);
-extern "C" void ScreenApplyCB(FL_OBJECT *, long);
-extern "C" void ScreenCancelCB(FL_OBJECT *, long);
 
 extern "C" void ExternalTemplateCB(FL_OBJECT *, long);
 extern "C" void ExternalBrowseCB(FL_OBJECT *, long);
@@ -44,19 +40,6 @@ typedef struct {
 } FD_form_figure;
 
 extern FD_form_figure * create_form_form_figure(void);
-typedef struct {
-	FL_FORM *form_screen;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *input_roman;
-	FL_OBJECT *input_sans;
-	FL_OBJECT *input_typewriter;
-	FL_OBJECT *input_font_norm;
-	FL_OBJECT *intinput_size;
-} FD_form_screen;
-
-extern FD_form_screen * create_form_form_screen(void);
 typedef struct {
 	FL_FORM *form_external;
 	void *vdata;

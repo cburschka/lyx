@@ -147,7 +147,7 @@ void FormGraphics::build()
             InsetGraphicsParams::NONE);
     
     // Connect a signal to hide the window when the window manager orders it.
-    fl_set_form_atclose(dialog_->form_graphics,
+    fl_set_form_atclose(dialog_->form,
 			    C_FormGraphicsWMHideCB, 0);
 }
 
@@ -162,12 +162,12 @@ void FormGraphics::show()
     update();
     
     // If the form is visible
-	if (dialog_->form_graphics->visible) {
+	if (dialog_->form->visible) {
         // Raise it.
-		fl_raise_form(dialog_->form_graphics);
+		fl_raise_form(dialog_->form);
 	} else {
         // Otherwise (invisible), show it.
-		fl_show_form(dialog_->form_graphics,
+		fl_show_form(dialog_->form,
 			     FL_PLACE_MOUSE,
 			     FL_FULLBORDER,
 			     _("Graphics"));
@@ -204,10 +204,10 @@ void FormGraphics::hide()
 {
     // If the dialog exists, and the form is allocated and visible.
 	if (dialog_
-	        && dialog_->form_graphics
-	        && dialog_->form_graphics->visible) {
+	        && dialog_->form
+	        && dialog_->form->visible) {
         // Hide the form
-		fl_hide_form(dialog_->form_graphics);
+		fl_hide_form(dialog_->form);
 
         // And disconnect the signals.
         u_.disconnect();
@@ -225,26 +225,14 @@ void FormGraphics::hide()
 
 void FormGraphics::free()
 {
-    // hide() will disconnect the signals so we need not worry about them.
-	if (dialog_) {
-		if (dialog_->form_graphics) {
-            // If the dialog is visible, hide it.
-            if (dialog_->form_graphics->visible) {
-			    hide();
-		    }
-           
-            // Remove all associations for the radio buttons
-            widthButtons.reset();
-            heightButtons.reset();
-            displayButtons.reset();
+	// Remove all associations for the radio buttons
+	widthButtons.reset();
+	heightButtons.reset();
+	displayButtons.reset();
             
-            // Free the form.
-		    fl_free_form(dialog_->form_graphics);
-        }
-
-		delete dialog_;
-		dialog_ = 0;
-	}
+	// Free the form.
+	delete dialog_;
+	dialog_ = 0;
 }
 
 void FormGraphics::apply()

@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_url.h"
-#include "FormUrl.h" 
+#include "FormUrl.h"
+
+FD_form_url::~FD_form_url()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_url * FormUrl::build_url()
 {
   FL_OBJECT *obj;
   FD_form_url *fdui = new FD_form_url;
 
-  fdui->form_url = fl_bgn_form(FL_NO_BOX, 520, 140);
-  fdui->form_url->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 520, 140);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 520, 140, "");
   fdui->url = obj = fl_add_input(FL_NORMAL_INPUT, 70, 20, 440, 30, _("URL"));
     fl_set_input_shortcut(obj, scex(_("Url|#U")), 1);
@@ -43,7 +50,7 @@ FD_form_url * FormUrl::build_url()
     fl_set_object_callback(obj, C_FormCommandOKCB, 0);
   fl_end_form();
 
-  fdui->form_url->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

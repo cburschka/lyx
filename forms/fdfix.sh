@@ -74,12 +74,12 @@ echo >> $2
 #  reported to its authors).
 #
 # -e 's/,\([^ ]\)/, \1/g' \
-# -e 's/\("[^"]*,\) \("\)/\1\2/g'
+# -e 's/\("[^"][^"]*,\) \("\)/\1\2/g'
 #
 # Someone got busy and put spaces in after commas but didn't allow for the
 # autogeneration of the files so their pretty formatting got lost. Not anymore.
 # The second rule cleans up one special case where a comma appears at the end
-# of a string.
+# of a string while ensuring "...", "..." isn't affected.
 #
 # -e 's/stdlib.h/cstdlib/'
 #
@@ -109,7 +109,7 @@ cat $1 | sed \
 -e 's/fdui->.*->fdui = fdui/\/\/&/' \
 -e 's/\(\(FD_[^ ]*\) \*fdui.*\)sizeof(\*fdui)/\1sizeof(\2)/' \
 -e 's/,\([^ ]\)/, \1/g' \
--e 's/\("[^"]*,\) \("\)/\1\2/g' \
+-e 's/\("[^"][^"]*,\) \("\)/\1\2/g' \
 -e '/fl_.*"[^"]*%.*"/i\
   // xgettext:no-c-format' \
 -e 's/NULL/0/' \

@@ -275,6 +275,7 @@ enum kb_action {
 	LFUN_SCROLL_INSET,              // Jug 20000801
 	LFUN_INDEX_INSERT,              // Angus 20000803
 	LFUN_REF_CREATE,                // Angus 20000807
+	LFUN_SCREEN_FONT_UPDATE,	// ARRae 20000813
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

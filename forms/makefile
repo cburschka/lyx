@@ -43,6 +43,11 @@ d: c $(COBJS)
 #
 # We need the callbacks to all be declared as:  extern "C" void
 #
+# -e 's,\(generated with fdesign\)\(.*\)\(\*\*/\),\1 \3,';\
+#
+# Clean up the line with the date in it.  This means we'll have fewer false
+# updates (where the only thing that changed was the date).
+#
 e: c
 	for hfil in *.h ; do \
 		if [ -f "$$hfil.patch" ] ; then \
@@ -50,7 +55,8 @@ e: c
 			patch -s $$hfil < $$hfil.patch) \
 		fi; \
 		sed < $$hfil > $$hfil.tmp \
-			-e 's/\(extern\) \(void.*FL_OBJECT\)/\1 "C" \2/' ; \
+			-e 's/\(extern\) \(void.*FL_OBJECT\)/\1 "C" \2/' \
+			-e 's,\(generated with fdesign\)\(.*\)\(\*\*/\),\1 \3,';\
 		mv $$hfil.tmp $$hfil; \
 	done
 

@@ -8,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_ref.h"
-#include "FormRef.h" 
+#include "FormRef.h"
+
+FD_form_ref::~FD_form_ref()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_ref * FormRef::build_ref()
 {
   FL_OBJECT *obj;
   FD_form_ref *fdui = new FD_form_ref;
 
-  fdui->form_ref = fl_bgn_form(FL_NO_BOX, 530, 340);
-  fdui->form_ref->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 530, 340);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 530, 340, "");
   fdui->browser = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 10, 270, 280, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
@@ -52,7 +59,7 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_callback(obj, C_FormCommandCancelCB, 0);
   fl_end_form();
 
-  fdui->form_ref->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }

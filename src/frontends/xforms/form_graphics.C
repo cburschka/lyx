@@ -1,6 +1,5 @@
 // File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 #include <config.h>
-
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 
@@ -9,15 +8,22 @@
 #include FORMS_H_LOCATION
 #include <stdlib.h>
 #include "form_graphics.h"
-#include "FormGraphics.h" 
+#include "FormGraphics.h"
+
+FD_form_graphics::~FD_form_graphics()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
 
 FD_form_graphics * FormGraphics::build_graphics()
 {
   FL_OBJECT *obj;
   FD_form_graphics *fdui = new FD_form_graphics;
 
-  fdui->form_graphics = fl_bgn_form(FL_NO_BOX, 410, 390);
-  fdui->form_graphics->u_vdata = this;
+  fdui->form = fl_bgn_form(FL_NO_BOX, 410, 390);
+  fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 410, 390, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
@@ -98,8 +104,9 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormGraphicsInputCB, 0);
   fl_end_form();
 
-  fdui->form_graphics->fdui = fdui;
+  fdui->form->fdui = fdui;
 
   return fdui;
 }
 /*---------------------------------------*/
+

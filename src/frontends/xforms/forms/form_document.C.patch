@@ -1,18 +1,18 @@
---- form_document.C.old	Fri Aug 11 15:30:33 2000
-+++ form_document.C	Fri Aug 11 15:32:41 2000
+--- form_document.C.orig	Mon Aug 14 13:17:32 2000
++++ form_document.C	Mon Aug 14 13:22:59 2000
 @@ -9,6 +9,8 @@
  #include <stdlib.h>
  #include "form_document.h"
- #include "FormDocument.h" 
+ #include "FormDocument.h"
 +#include "bmtable.h"
 +#include "support/filetools.h"
  
- FD_form_tabbed_document * FormDocument::build_tabbed_document()
+ FD_form_tabbed_document::~FD_form_tabbed_document()
  {
-@@ -321,10 +323,16 @@
+@@ -363,10 +365,18 @@
  
-   fdui->form_doc_bullet = fl_bgn_form(FL_NO_BOX, 440, 345);
-   fdui->form_doc_bullet->u_vdata = this;
+   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
+   fdui->form->u_vdata = this;
 +  fl_set_border_width(-1);
    obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
 -  fdui->bmtable_bullet_panel = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 90, 105, 260, 180, "");
@@ -24,17 +24,10 @@
 +  fl_set_object_lcol(obj, FL_BLUE);
 +  fl_set_object_boxtype(obj, FL_UP_BOX);
 +  fl_set_bmtable_pixmap_file(obj, 6, 6,
-+			     LibFileSearch("images", "standard.xpm").c_str());
++			     LibFileSearch("images",
++					   "standard",
++					   "xpm").c_str());
 +  fl_set_border_width(-1);
    obj = fl_add_frame(FL_ENGRAVED_FRAME, 95, 20, 255, 70, "");
    fdui->choice_bullet_size = obj = fl_add_choice(FL_NORMAL_CHOICE, 15, 45, 65, 30, idex(_("Size|#z")));
      fl_set_button_shortcut(obj, scex(_("Size|#z")), 1);
-@@ -336,6 +344,8 @@
-     fl_set_button_shortcut(obj, scex(_("LaTeX|#L")), 1);
-     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-     fl_set_object_lstyle(obj, FL_FIXED_STYLE);
-+    fl_set_input_return(obj, FL_RETURN_CHANGED);
-+    fl_set_input_maxchars(obj, 80);
-     fl_set_object_callback(obj, InputBulletLaTeXCB, 0);
- 
-   fdui->radio_bullet_depth = fl_bgn_group();

@@ -2,8 +2,8 @@ AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 		lyxrc.defaults doc/LyXConfig.lyx
 pkgdata_SCRIPTS = configure configure.cmd
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-SUBDIRS    = reLyX
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in listerrors
+SUBDIRS = reLyX
 bin_SCRIPTS = listerrors
 
 BIND = bind/*.bind

@@ -33,13 +33,15 @@ FormCopyright::FormCopyright(LyXView * lv, Dialogs * d)
 
 FormCopyright::~FormCopyright()
 {
-	free();
+	delete dialog_;
 }
 
 
 void FormCopyright::build()
 {
-  dialog_ = build_copyright();
+	dialog_ = build_copyright();
+	fl_set_form_atclose(dialog_->form,
+			    C_FormCopyrightWMHideCB, 0);
 }
 
 
@@ -47,14 +49,12 @@ void FormCopyright::show()
 {
 	if (!dialog_) {
 		build();
-		fl_set_form_atclose(dialog_->form_copyright,
-				    C_FormCopyrightWMHideCB, 0);
 	}
 
-	if (dialog_->form_copyright->visible) {
-		fl_raise_form(dialog_->form_copyright);
+	if (dialog_->form->visible) {
+		fl_raise_form(dialog_->form);
 	} else {
-		fl_show_form(dialog_->form_copyright,
+		fl_show_form(dialog_->form,
 			     FL_PLACE_MOUSE,
 			     FL_FULLBORDER,
 			     _("Copyright and Warranty"));
@@ -66,27 +66,10 @@ void FormCopyright::show()
 void FormCopyright::hide()
 {
 	if (dialog_
-	    && dialog_->form_copyright
-	    && dialog_->form_copyright->visible) {
-		fl_hide_form(dialog_->form_copyright);
+	    && dialog_->form
+	    && dialog_->form->visible) {
+		fl_hide_form(dialog_->form);
 		h_.disconnect();
-	}
-	free();
-}
-
-
-void FormCopyright::free()
-{
-	// we don't need to delete h here because
-	// hide() does that after disconnecting.
-	if (dialog_) {
-		if (dialog_->form_copyright
-		    && dialog_->form_copyright->visible) {
-			hide();
-		}
-		fl_free_form(dialog_->form_copyright);
-		delete dialog_;
-		dialog_ = 0;
 	}
 }
 

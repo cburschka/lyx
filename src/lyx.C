@@ -65,53 +65,6 @@ FD_form_figure *create_form_form_figure(void)
 }
 /*---------------------------------------*/
 
-FD_form_screen *create_form_form_screen(void)
-{
-  FL_OBJECT *obj;
-  FD_form_screen *fdui = (FD_form_screen *) fl_calloc(1, sizeof(FD_form_screen));
-
-  fdui->form_screen = fl_bgn_form(FL_NO_BOX, 390, 220);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 390, 220, "");
-  fdui->input_roman = obj = fl_add_input(FL_NORMAL_INPUT, 140, 10, 240, 30, idex(_("Roman font|#R")));fl_set_button_shortcut(obj, scex(_("Roman font|#R")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->input_sans = obj = fl_add_input(FL_NORMAL_INPUT, 140, 40, 240, 30, idex(_("Sans serif font|#S")));fl_set_button_shortcut(obj, scex(_("Sans serif font|#S")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->input_typewriter = obj = fl_add_input(FL_NORMAL_INPUT, 140, 70, 240, 30, idex(_("Typewriter font|#T")));fl_set_button_shortcut(obj, scex(_("Typewriter font|#T")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->input_font_norm = obj = fl_add_input(FL_NORMAL_INPUT, 140, 100, 240, 30, idex(_("Font norm|#N")));fl_set_button_shortcut(obj, scex(_("Font norm|#N")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->intinput_size = obj = fl_add_input(FL_INT_INPUT, 140, 140, 50, 30, idex(_("Font zoom|#Z")));fl_set_button_shortcut(obj, scex(_("Font zoom|#Z")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
-    fl_set_object_resize(obj, FL_RESIZE_X);
-  obj = fl_add_button(FL_RETURN_BUTTON, 60, 180, 100, 30, _("OK"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, ScreenOKCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 170, 180, 100, 30, idex(_("Apply|#A")));fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, ScreenApplyCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 280, 180, 100, 30, idex(_("Cancel|^[")));fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, ScreenCancelCB, 0);
-  fl_end_form();
-
-  //fdui->form_screen->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
 FD_form_external *create_form_form_external(void)
 {
   FL_OBJECT *obj;

@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Jul 17 21:08:23 2000.**/
+/** Header file generated with fdesign **/
 
 #ifndef FD_LaTeXLog_h_
 #define FD_LaTeXLog_h_

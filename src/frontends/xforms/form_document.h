@@ -1,4 +1,5 @@
-/** Header file generated with fdesign on Fri Aug 11 15:45:35 2000.**/
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
 
 #ifndef FD_form_tabbed_document_h_
 #define FD_form_tabbed_document_h_
@@ -22,16 +23,18 @@ extern  "C" void BulletPanelCB(FL_OBJECT *, long);
 
 /**** Forms and Objects ****/
 struct FD_form_tabbed_document {
+	~FD_form_tabbed_document();
 
-	FL_FORM *form_tabbed_document;
+	FL_FORM *form;
 	FL_OBJECT *tabbed_folder;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *text_warning;
 };
 struct FD_form_doc_paper {
+	~FD_form_doc_paper();
 
-	FL_FORM *form_doc_paper;
+	FL_FORM *form;
 	FL_OBJECT *choice_paperpackage;
 	FL_OBJECT *greoup_radio_orientation;
 	FL_OBJECT *radio_portrait;
@@ -50,8 +53,9 @@ struct FD_form_doc_paper {
 	FL_OBJECT *text_warning;
 };
 struct FD_form_doc_class {
+	~FD_form_doc_class();
 
-	FL_FORM *form_doc_class;
+	FL_FORM *form;
 	FL_OBJECT *choice_doc_fonts;
 	FL_OBJECT *choice_doc_fontsize;
 	FL_OBJECT *choice_doc_class;
@@ -72,8 +76,9 @@ struct FD_form_doc_class {
 	FL_OBJECT *input_doc_spacing;
 };
 struct FD_form_doc_language {
+	~FD_form_doc_language();
 
-	FL_FORM *form_doc_language;
+	FL_FORM *form;
 	FL_OBJECT *choice_inputenc;
 	FL_OBJECT *choice_quotes_language;
 	FL_OBJECT *radio_single;
@@ -81,8 +86,9 @@ struct FD_form_doc_language {
 	FL_OBJECT *choice_language;
 };
 struct FD_form_doc_options {
+	~FD_form_doc_options();
 
-	FL_FORM *form_doc_options;
+	FL_FORM *form;
 	FL_OBJECT *input_float_placement;
 	FL_OBJECT *slider_secnumdepth;
 	FL_OBJECT *slider_tocdepth;
@@ -90,8 +96,9 @@ struct FD_form_doc_options {
 	FL_OBJECT *check_use_amsmath;
 };
 struct FD_form_doc_bullet {
+	~FD_form_doc_bullet();
 
-	FL_FORM *form_doc_bullet;
+	FL_FORM *form;
 	FL_OBJECT *bmtable_bullet_panel;
 	FL_OBJECT *choice_bullet_size;
 	FL_OBJECT *input_bullet_latex;

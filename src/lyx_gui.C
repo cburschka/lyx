@@ -63,7 +63,6 @@ FD_form_preamble * fd_form_preamble;
 FD_form_table * fd_form_table;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
-FD_form_screen * fd_form_screen;
 FD_LaTeXLog * fd_latex_log; // from log_form.h
 Combox * combo_language;
 Combox * combo_language2;
@@ -524,11 +523,6 @@ void LyXGUI::create_forms()
 	fl_set_form_atclose(fd_form_figure->form_figure,
 			    CancelCloseBoxCB, 0);
 	fl_set_button(fd_form_figure->radio_postscript, 1);
-
-	// the screen form
-	fd_form_screen = create_form_form_screen();
-	fl_set_form_atclose(fd_form_screen->form_screen,
-			    CancelCloseBoxCB, 0);
 
 	// the latex log form
 	fd_latex_log = create_form_LaTeXLog();

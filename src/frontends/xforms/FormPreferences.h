@@ -26,6 +26,9 @@
 
 class LyXView;
 class Dialogs;
+class PreferencesPolicy;
+template <class x> class ButtonController;
+
 struct FD_form_preferences;
 struct FD_form_bind;
 struct FD_form_misc;
@@ -58,6 +61,7 @@ public:
 	static void ApplyCB(FL_OBJECT *, long);
 	static void CancelCB(FL_OBJECT *, long);
 	static void InputCB(FL_OBJECT *, long);
+	static void RestoreCB(FL_OBJECT *, long);
 	//@}
 
 private:
@@ -75,8 +79,8 @@ private:
 	//@{
 	/// Apply from dialog
 	void apply();
-	/// Filter the inputs
-	void input();
+	/// Filter the inputs -- return true if entries are valid
+	bool input();
 	/// Build the dialog
 	void build();
 	///
@@ -93,8 +97,6 @@ private:
 	FD_form_printer * build_printer();
 	///
 	FD_form_paths * build_paths();
-	/// Explicitly free the dialog.
-	void free();
 	//@}
 
 	/**@name Private Data */
@@ -115,13 +117,16 @@ private:
 	FD_form_paths * paths_;
 	/// Which LyXView do we belong to?
 	LyXView * lv_;
+	///
 	Dialogs * d_;
 	/// Update connection.
 	Connection u_;
 	/// Hide connection.
 	Connection h_;
+	/// Overcome a dumb xforms sizing bug
+	int minw_, minh_;
 	///
-	EnumDialogStatus status;
+	ButtonController<PreferencesPolicy> * bc_;
 	//@}
 };
 

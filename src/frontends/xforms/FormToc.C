@@ -39,7 +39,6 @@ FormToc::FormToc(LyXView * lv, Dialogs * d)
 
 FormToc::~FormToc()
 {
-	free();
 	delete dialog_;
 }
 
@@ -62,8 +61,8 @@ void FormToc::build()
 
 FL_FORM * const FormToc::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->form_toc
-		return dialog_->form_toc;
+	if ( dialog_ ) // no need to test for dialog_->form
+		return dialog_->form;
 	else
 		return 0;
 }

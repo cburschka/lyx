@@ -1,3 +1,79 @@
+2000-08-14  Allan Rae  <rae@lyx.org>
+
+	* lib/Makefile.am: listerrors cleaning
+
+	* lib/listerrors: removed -- generated file
+	* acinclude.m4: ditto
+	* sigc++/acinclude.m4: ditto
+
+	* src/frontends/xforms/forms/form_citation.fd:
+	* src/frontends/xforms/FormCitation.C (setSize): Made the form a more
+	manageable size.
+
+	* src/frontends/xforms/forms/makefile: I renamed the `install` target
+	`updatesrc` and now we have a `test` target that does what `updatesrc`
+	used to do. I didn't like having an install target that wasn't related
+	to the dist.
+
+	* src/frontends/xforms/Form*.[hC]: Removed the free() member functions
+	on all except FormGraphics.  This may yet happen. Followed by a major
+	cleanup including using FL_TRANSIENT for most of the dialogs.  More
+	changes to come when the ButtonController below is introduced.
+
+	* src/frontends/xforms/ButtonController.h: New file for managing up to
+	four buttons on a dialog according to an externally defined policy.
+	* src/frontends/xforms/Makefile.am: added above
+
+	* src/frontends/ButtonPolicies.[hC]: New files full of policies for Ok,
+	Apply and Cancel/Close buttons and everything in between and beyond.
+	* src/frontends/Makefile.am: added above.
+
+	* src/frontends/xforms/forms/form_preferences.fd:
+	* src/frontends/xforms/FormPreferences.[hC]: Uses the ButtonController
+	and removed variable 'status' as a result. Fixed the set_minsize thing.
+	Use the new screen-font-update after checking screen fonts were changed
+	Added a "Restore" button to restore the original lyxrc values while
+	editing.  This restores everything not just the last input changed.
+	That's still a tricky one.  As is the "LyX: this shouldn't happen..."
+
+	* src/LyXAction.C: screen-font-update added for updating buffers after
+	screen font settings have been changed.
+	* src/commandtags.h: ditto
+	* src/lyxfunc.C: ditto
+
+	* forms/lyx.fd: removed screen fonts dialog.
+	* src/lyx_gui.C: ditto
+	* src/menus.[Ch]: ditto
+	* src/lyx.[Ch]: ditto
+	* src/lyx_cb.C: ditto + code from here moved to make screen-font-update.
+	And people wonder why progress on GUII is slow.  Look at how scattered
+	this stuff was!  It takes forever just find it all.
+
+	* forms/fdfix.sh: Fixup the spacing after commas.
+	* forms/makefile: Remove date from generated files. Fewer clashes now.
+	* forms/bullet_forms.C.patch: included someones handwritten changes
+
+	* src/lyxrc.[Ch]: Added a commented out system_lyxrc.  Will use it RSN
+	once I've discovered why LyXRC was made noncopyable.
+	* src/lyx_main.C: ditto
+
+2000-08-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/forms/fdfix.sh:
+	* src/frontends/xforms/forms/fdfixh.sed:
+	* src/frontends/xforms/forms/fdfixc.sed: New file from Angus
+	* src/frontends/xforms/Form*.[hC]:
+	* src/frontends/xforms/form_*.[hC]: Massive rewrite of the generation
+	scripts to rename all the "FL_OBJECT * form_xxxx" to "form" and to
+	provide a destructor for the struct FD_form_xxxx. Another version of
+	the set_[max|min]size workaround and a few other cleanups. Actually,
+	Angus' patch from 20000809.
+
+2000-08-13	Baruch Even  <baruch.even@writeme.com>
+
+	* src/insets/insetgraphics.C (Clone): Added several fields that needed
+	copying.
+
 2000-08-11  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetgraphics.C (InsetGraphics): changing init

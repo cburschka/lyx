@@ -49,7 +49,14 @@ FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 
 FormTabular::~FormTabular()
 {
-    free();
+    // we don't need to disconnect u and h here because
+    // their destructors do that.
+    delete dialog_;
+    delete tabular_options_;
+    delete column_options_;
+    delete cell_options_;
+    delete longtable_options_;
+    delete create_tabular_;
 }
 
 
@@ -72,15 +79,15 @@ void FormTabular::build()
 			FL_RETURN_CHANGED);
 
     fl_addto_tabfolder(dialog_->tabFolder, _("Tabular"),
-		       tabular_options_->form_tabular_options);
+		       tabular_options_->form);
     fl_addto_tabfolder(dialog_->tabFolder, _("Column/Row"),
-		       column_options_->form_column_options);
+		       column_options_->form);
     fl_addto_tabfolder(dialog_->tabFolder, _("Cell"),
-		       cell_options_->form_cell_options);
+		       cell_options_->form);
     fl_addto_tabfolder(dialog_->tabFolder, _("LongTable"),
-		       longtable_options_->form_longtable_options);
+		       longtable_options_->form);
     
-    fl_set_form_atclose(dialog_->form_tabular,
+    fl_set_form_atclose(dialog_->form,
 			C_FormTabularWMHideCB, 0);
 
     fl_set_slider_bounds(create_tabular_->slider_rows, 1, 50);
@@ -89,7 +96,7 @@ void FormTabular::build()
     fl_set_slider_value(create_tabular_->slider_columns, 5);
     fl_set_slider_precision(create_tabular_->slider_rows, 0);
     fl_set_slider_precision(create_tabular_->slider_columns, 0);
-    fl_set_form_atclose(create_tabular_->form_create_tabular, 
+    fl_set_form_atclose(create_tabular_->form, 
                         C_FormTabularWMHideCB, 0);
 }
 
@@ -101,10 +108,10 @@ void FormTabular::show()
     }
     update();  // make sure its up-to-date
 
-    if (dialog_->form_tabular->visible) {
-	fl_raise_form(dialog_->form_tabular);
+    if (dialog_->form->visible) {
+	fl_raise_form(dialog_->form);
     } else {
-	fl_show_form(dialog_->form_tabular,
+	fl_show_form(dialog_->form,
 		     FL_PLACE_MOUSE | FL_FREE_SIZE,
 		     FL_TRANSIENT,
 		     _("Tabular Layout"));
@@ -125,8 +132,8 @@ void FormTabular::showInset(InsetTabular * ti)
 
 void FormTabular::hide()
 {
-    if (dialog_ && dialog_->form_tabular && dialog_->form_tabular->visible) {
-	fl_hide_form(dialog_->form_tabular);
+    if (dialog_ && dialog_->form && dialog_->form->visible) {
+	fl_hide_form(dialog_->form);
 	u_.disconnect();
 	h_.disconnect();
 	inset_ = 0;
@@ -153,45 +160,8 @@ void FormTabular::update()
 void FormTabular::updateInset(InsetTabular * ti)
 {
     inset_ = ti;
-    if (ti && dialog_ && dialog_->form_tabular->visible) {
+    if (ti && dialog_ && dialog_->form->visible) {
 	update();
-    }
-}
-
-
-void FormTabular::free()
-{
-    // we don't need to delete u and h here because
-    // hide() does that after disconnecting.
-    if (dialog_) {
-	if (dialog_->form_tabular
-	    && dialog_->form_tabular->visible) {
-	    hide();
-	}
-	fl_free_form(dialog_->form_tabular);
-	delete dialog_;
-	dialog_ = 0;
-
-	fl_free_form(tabular_options_->form_tabular_options);
-	delete tabular_options_;
-	tabular_options_ = 0;
-
-	fl_free_form(column_options_->form_column_options);
-	delete column_options_;
-	column_options_ = 0;
-
-	fl_free_form(cell_options_->form_cell_options);
-	delete cell_options_;
-	cell_options_ = 0;
-
-	fl_free_form(longtable_options_->form_longtable_options);
-	delete longtable_options_;
-	longtable_options_ = 0;
-
-	hide_create();
-	fl_free_form(create_tabular_->form_create_tabular);
-	delete create_tabular_;
-	create_tabular_ = 0;
     }
 }
 
@@ -718,21 +688,13 @@ void FormTabular::show_create()
     if (!dialog_) {
 	build();
     }
-    if (create_tabular_->form_create_tabular->visible) {
-        fl_raise_form(create_tabular_->form_create_tabular);
+    if (create_tabular_->form->visible) {
+        fl_raise_form(create_tabular_->form);
     } else {
-        fl_show_form(create_tabular_->form_create_tabular,
+        fl_show_form(create_tabular_->form,
 		     FL_PLACE_MOUSE | FL_FREE_SIZE,
                      FL_FULLBORDER, _("Insert Tabular"));
     }
-}
-
-
-void FormTabular::hide_create()
-{
-    if (create_tabular_->form_create_tabular &&
-	create_tabular_->form_create_tabular->visible)
-        fl_hide_form(create_tabular_->form_create_tabular);
 }
 
 
@@ -749,6 +711,14 @@ void FormTabular::apply_create()
 	delete in;
     }
 //    comm->setMinibuffer(_("Tabular mode"));
+}
+
+
+void FormTabular::hide_create()
+{
+    if (create_tabular_->form &&
+	create_tabular_->form->visible)
+        fl_hide_form(create_tabular_->form);
 }
 
 

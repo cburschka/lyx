@@ -75,8 +75,6 @@ private:
 	void build();
 	///
 	FD_form_print * build_print();
-	/// Explicitly free the dialog.
-	void free();
 	//@}
 
 	/**@name Private Data */
@@ -85,6 +83,7 @@ private:
 	FD_form_print * dialog_;
 	/// Which LyXView do we belong to?
 	LyXView * lv_;
+	///
 	Dialogs * d_;
 	/// Update connection.
 	Connection u_;
