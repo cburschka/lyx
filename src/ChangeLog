@@ -1,3 +1,8 @@
+2001-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ShareContainer.h: define a proper ShareContainer::value_type
+	type (and use typename to please compaq cxx)
+
 2001-03-06  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* lyxparagraph.h: move serveral local vars to
@@ -8,7 +13,8 @@
 	* paragraph.C: changes because of the above.
 
 	* lyxfont.h: remove copy constructor and copy assignment. (the
-	default ones is ok), move number inside FontBits. move inlines to lyxfont.C
+	default ones is ok), move number inside FontBits. move inlines to
+	lyxfont.C 
 
 	* lyxfont.C: add number to initializaton of statics, move several
 	inlines here. constify several local vars. some whitespace

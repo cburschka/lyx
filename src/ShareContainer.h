@@ -15,7 +15,9 @@ public:
 	///
 	typedef std::vector<boost::shared_ptr<Share> > Params;
 	///
-	Params::value_type
+	typedef typename Params::value_type value_type;
+	///
+	value_type
 	get(Share const & ps) const {
 		// First see if we already have this ps in the container
 		Params::iterator it = params.begin();
@@ -24,7 +26,7 @@ public:
 			if (ps == *(*it).get())
 				break;
 		}
-		Params::value_type tmp;
+		value_type tmp;
 		if (it == end) {
 			// ok we don't have it so we should
 			// insert it.
@@ -44,14 +46,14 @@ public:
 private:
 	///
 	struct comp {
-		int operator()(Params::value_type const & p1,
-			       Params::value_type const & p2) {
+		int operator()(value_type const & p1,
+			       value_type const & p2) {
 			return p1.use_count() < p2.use_count();
 		}
 	};
 	///
 	struct isUnique {
-		bool operator()(Params::value_type const & p) const {
+		bool operator()(value_type const & p) const {
 			return p.unique();
 		}
 	};
