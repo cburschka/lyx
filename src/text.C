@@ -376,12 +376,6 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 } // namespace anon
 
 
-BufferView * LyXText::bv()
-{
-	BOOST_ASSERT(bv_owner != 0);
-	return bv_owner;
-}
-
 
 BufferView * LyXText::bv() const
 {
@@ -1017,7 +1011,7 @@ namespace {
 
 }
 
-void LyXText::breakParagraph(LCursor & cur, char keep_layout)
+void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 {
 	BOOST_ASSERT(this == cur.text());
 	// allow only if at start or end, or all previous is new text
@@ -1045,41 +1039,36 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	if (cur.pos() != cur.lastpos() && cpar.isLineSeparator(cur.pos()))
 		cpar.erase(cur.pos());
 
-	// break the paragraph
+	// How should the layout for the new paragraph be?
+	int preserve_layout = 0;
 	if (keep_layout)
-		keep_layout = 2;
+		preserve_layout = 2;
 	else
-		keep_layout = layout->isEnvironment();
+		preserve_layout = layout->isEnvironment();
 
-	// we need to set this before we insert the paragraph. IMO the
-	// breakParagraph call should return a bool if it inserts the
-	// paragraph before or behind and we should react on that one
-	// but we can fix this in 1.3.0 (Jug 20020509)
+	// We need to remember this before we break the paragraph, because
+	// that invalidates the layout variable
+	bool sensitive = layout->labeltype == LABEL_SENSITIVE;
+
+	// we need to set this before we insert the paragraph.
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
+
 	::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
-			 cur.pos(), keep_layout);
+			 cur.pos(), preserve_layout);
+
+	// After this, neither paragraph contains any rows!
 
 	cpit = cur.pit();
 	pit_type next_par = cpit + 1;
 
 	// well this is the caption hack since one caption is really enough
-	if (layout->labeltype == LABEL_SENSITIVE) {
+	if (sensitive) {
 		if (cur.pos() == 0)
 			// set to standard-layout
 			pars_[cpit].applyLayout(tclass.defaultLayout());
 		else
 			// set to standard-layout
 			pars_[next_par].applyLayout(tclass.defaultLayout());
-	}
-
-	// if the cursor is at the beginning of a row without prior newline,
-	// move one row up!
-	// This touches only the screen-update. Otherwise we would may have
-	// an empty row on the screen
-	if (cur.pos() != 0 && cur.textRow().pos() == cur.pos()
-	    && !pars_[cpit].isNewline(cur.pos() - 1))
-	{
-		cursorLeft(cur);
 	}
 
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
@@ -1172,8 +1161,8 @@ void LyXText::insertChar(LCursor & cur, char c)
 				cur.message(_("You cannot insert a space at the "
 					"beginning of a paragraph. Please read the Tutorial."));
 				sent_space_message = true;
-				return;
 			}
+			return;
 		}
 		BOOST_ASSERT(cur.pos() > 0);
 		if (par.isLineSeparator(cur.pos() - 1)
@@ -1686,7 +1675,7 @@ void LyXText::redoParagraph(pit_type const pit)
 
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
-	par.dim_ = dim;
+	par.dim() = dim;
 	//lyxerr << "redoParagraph: " << par.rows().size() << " rows\n";
 }
 

@@ -58,7 +58,7 @@ class RowPainter {
 public:
 	/// initialise and run painter
 	RowPainter(PainterInfo & pi, LyXText const & text,
-		pit_type pit, Row & row, int x, int y);
+		pit_type pit, Row const & row, int x, int y);
 
 	// paint various parts
 	void paintAppendix();
@@ -101,7 +101,7 @@ private:
 	ParagraphList & pars_;
 
 	/// The row to paint
-	Row & row_;
+	Row const & row_;
 
 	/// Row's paragraph
 	pit_type const pit_;
@@ -119,7 +119,7 @@ private:
 
 
 RowPainter::RowPainter(PainterInfo & pi,
-	LyXText const & text, pit_type pit, Row & row, int x, int y)
+	LyXText const & text, pit_type pit, Row const & row, int x, int y)
 	: bv_(*pi.base.bv), pain_(pi.pain), text_(text), pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
 	  xo_(x), yo_(y), width_(text_.width())
@@ -178,7 +178,7 @@ void RowPainter::paintInset(pos_type const pos)
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	pi.base.font = getFont(pos);
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
-	theCoords.insets_.add(inset, int(x_), yo_);
+	theCoords.insets().add(inset, int(x_), yo_);
 	inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
 	x_ += inset->width();
@@ -738,12 +738,12 @@ void paintPar
 
 	Paragraph & par = text.paragraphs()[pit];
 
-	RowList::iterator const rb = par.rows().begin();
-	RowList::iterator const re = par.rows().end();
-	theCoords.pars_[&text][pit] = Point(x, y);
+	RowList::const_iterator const rb = par.rows().begin();
+	RowList::const_iterator const re = par.rows().end();
+	theCoords.parPos()[&text][pit] = Point(x, y);
 
 	y -= rb->ascent();
-	for (RowList::iterator rit = rb; rit != re; ++rit) {
+	for (RowList::const_iterator rit = rb; rit != re; ++rit) {
 		y += rit->ascent();
 		bool const inside = (y + rit->descent() >= 0
 				       && y - rit->ascent() < ww);
@@ -801,12 +801,12 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 	}
 
 	// and grey out above (should not happen later)
-	lyxerr << "par ascent: " << text->getPar(vi.p1).ascent() << endl;
+//	lyxerr << "par ascent: " << text->getPar(vi.p1).ascent() << endl;
 	if (vi.y1 > 0)
 		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, LColor::bottomarea);
 
 	// and possibly grey out below
-	lyxerr << "par descent: " << text->getPar(vi.p1).ascent() << endl;
+//	lyxerr << "par descent: " << text->getPar(vi.p1).ascent() << endl;
 	if (vi.y2 < bv.workHeight())
 		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, LColor::bottomarea);
 }

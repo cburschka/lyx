@@ -70,7 +70,7 @@ public:
 		bool toggleall);
 
 	/// what you expect when pressing <enter> at cursor position
-	void breakParagraph(LCursor & cur, char keep_layout = 0);
+	void breakParagraph(LCursor & cur, bool keep_layout = false);
 
 	/// set layout over selection
 	pit_type setLayout(pit_type start, pit_type end,
@@ -124,7 +124,7 @@ public:
 		FuncStatus & status) const;
 
 	/// access to out BufferView. This should go...
-	BufferView * bv();
+//	BufferView * bv();
 	/// access to out BufferView. This should go...
 	BufferView * bv() const;
 

@@ -21,8 +21,15 @@ class LyXFont;
 class Paragraph;
 class ParagraphList;
 
-
-///
+/**
+ * This breaks a paragraph at the specified position.
+ * The new paragraph will:
+ * get the default layout, when flag == 0
+ * will inherit the existing one, except for depth, when flag == 1
+ * will inherit the existing one, including depth, when flag == 2
+ * Be aware that the old or new paragraph does not contain any rows
+ * after this.
+ */
 void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
 		    lyx::pit_type par,

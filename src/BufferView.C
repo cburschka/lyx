@@ -290,10 +290,17 @@ void BufferView::hideCursor()
 	screen().hideCursor();
 }
 
-
-LyXText * BufferView::getLyXText() const
+LyXText * BufferView::getLyXText()
 {
 	LyXText * text = cursor().innerText();
+	BOOST_ASSERT(text);
+	return text;
+}
+
+
+LyXText const * BufferView::getLyXText() const
+{
+	LyXText const * text = cursor().innerText();
 	BOOST_ASSERT(text);
 	return text;
 }

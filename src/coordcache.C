@@ -21,20 +21,24 @@ void lyxbreaker(void const * data, const char * hint, int size)
 }
 
 
-void lyxaborter(int x, int y)
-{
-	lyxerr << "abort on x: " << x << " y: " << y << std::endl;
-	BOOST_ASSERT(false);
-}
-
-
 void CoordCache::clear()
 {
+	BOOST_ASSERT(updating);
 	arrays_.clear();
 	insets_.clear();
 	pars_.clear();
 }
 
+void CoordCache::startUpdating() {
+	BOOST_ASSERT(!updating);
+	updating = true;
+}
+
+
+void CoordCache::doneUpdating() {
+	BOOST_ASSERT(updating);
+	updating = false;
+}
 
 Point CoordCache::get(LyXText const * text, lyx::pit_type pit)
 {

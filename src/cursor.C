@@ -1086,7 +1086,7 @@ Encoding const * LCursor::getEncoding() const
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
-	LyXText & text = *sl.text();
+	LyXText const & text = *sl.text();
 	LyXFont font = text.getPar(sl.pit()).getFont(
 		bv().buffer()->params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
 	return font.language()->encoding();
@@ -1127,7 +1127,7 @@ LyXFont LCursor::getFont() const
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
-	LyXText & text = *sl.text();
+	LyXText const & text = *sl.text();
 	LyXFont font = text.getPar(sl.pit()).getFont(
 		bv().buffer()->params(),
 		sl.pos(),

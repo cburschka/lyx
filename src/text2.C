@@ -119,7 +119,7 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 		InsetBase * inset = iit->inset;
 #if 1
 		lyxerr << "examining inset " << inset << endl;
-		if (theCoords.insets_.has(inset))
+		if (theCoords.getInsets().has(inset))
 			lyxerr
 				<< " xo: " << inset->xo() << "..."
 				<< inset->xo() + inset->width()
@@ -1122,8 +1122,8 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 pit_type LyXText::getPitNearY(int y) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
-	BOOST_ASSERT(theCoords.pars_.find(this) != theCoords.pars_.end());
-	CoordCache::InnerParPosCache const & cc = theCoords.pars_[this];
+	BOOST_ASSERT(theCoords.getParPos().find(this) != theCoords.getParPos().end());
+	CoordCache::InnerParPosCache const & cc = theCoords.getParPos().find(this)->second;
 	lyxerr << "LyXText::getPitNearY: y: " << y << " cache size: "
 		<< cc.size() << endl;
 
@@ -1282,8 +1282,6 @@ void LyXText::cursorUp(LCursor & cur)
 
 void LyXText::cursorDown(LCursor & cur)
 {
-
-
 	Paragraph const & par = cur.paragraph();
 	int const row = par.pos2row(cur.pos());
 	int const x = cur.targetX();

@@ -102,7 +102,10 @@ public:
 	Change const getCurrentChange();
 
 	/// return the lyxtext we are using
-	LyXText * getLyXText() const;
+	LyXText * getLyXText();
+
+	/// return the lyxtext we are using
+	LyXText const * getLyXText() const;
 
 	/// simple replacing. Use the font of the first selected character
 	void replaceSelectionWithString(std::string const & str);

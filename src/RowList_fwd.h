@@ -16,6 +16,11 @@
 
 #include <vector>
 
+/**
+ * Each paragraph is broken up into a number of rows on the screen.
+ * This is a list of such on-screen rows, ordered from the top row
+ * downwards.
+ */
 typedef std::vector<Row> RowList;
 
 #endif

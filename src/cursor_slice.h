@@ -97,7 +97,9 @@ public:
 	/// see comment for the member
 	bool & boundary() { return boundary_; }
 	///
-	LyXText * text() const;
+	LyXText * text();
+	///
+	LyXText const * text() const;
 	///
 	UpdatableInset * asUpdatableInset() const;
 	///

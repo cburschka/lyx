@@ -411,17 +411,17 @@ int MathArray::dist(int x, int y) const
 void MathArray::setXY(int x, int y) const
 {
 	//lyxerr << "setting position cache for MathArray " << this << std::endl;
-	theCoords.arrays_.add(this, x, y);
+	theCoords.arrays().add(this, x, y);
 }
 
 
 int MathArray::xo() const
 {
-	return theCoords.arrays_.x(this);
+	return theCoords.getArrays().x(this);
 }
 
 
 int MathArray::yo() const
 {
-	return theCoords.arrays_.y(this);
+	return theCoords.getArrays().y(this);
 }

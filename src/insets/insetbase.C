@@ -293,13 +293,13 @@ bool InsetBase::editing(BufferView * bv) const
 
 int InsetBase::xo() const
 {
-	return theCoords.insets_.x(this);
+	return theCoords.getInsets().x(this);
 }
 
 
 int InsetBase::yo() const
 {
-	return theCoords.insets_.y(this);
+	return theCoords.getInsets().y(this);
 }
 
 
@@ -310,7 +310,7 @@ bool InsetBase::covers(int x, int y) const
 	//	<< " x1: " << xo() << " x2: " << xo() + width()
 	//	<< " y1: " << yo() - ascent() << " y2: " << yo() + descent()
 	//	<< std::endl;
-	return theCoords.insets_.has(this)
+	return theCoords.getInsets().has(this)
 			&& x >= xo()
 			&& x <= xo() + width()
 			&& y >= yo() - ascent()

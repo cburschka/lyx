@@ -104,7 +104,13 @@ MathArray & CursorSlice::cell() const
 }
 
 
-LyXText * CursorSlice::text() const
+LyXText * CursorSlice::text()
+{
+	BOOST_ASSERT(inset_);
+	return inset_->getText(idx_);
+}
+
+LyXText const * CursorSlice::text() const
 {
 	BOOST_ASSERT(inset_);
 	return inset_->getText(idx_);

@@ -1,3 +1,9 @@
+2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* math_data.C:
+	* math_diminset.C:
+	* math_nestinset.C: Use new cursor accessors.
+
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* math_parser.C,math_sizeinset.C: use convert<> instead of

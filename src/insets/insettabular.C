@@ -1024,7 +1024,7 @@ int dist(InsetOld const & inset, int x, int y)
 {
 	int xx = 0;
 	int yy = 0;
-	Point o = theCoords.insets_.xy(&inset);
+	Point o = theCoords.getInsets().xy(&inset);
 	int const xo = o.x_;
 	int const yo = o.y_;
 
@@ -1055,7 +1055,7 @@ InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 	idx_type idx_min = 0;
 	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0; i < nargs(); ++i) {
-		if (theCoords.insets_.has(tabular.getCellInset(i).get())) {
+		if (theCoords.getInsets().has(tabular.getCellInset(i).get())) {
 			int d = dist(*tabular.getCellInset(i), x, y);
 			if (d < dist_min) {
 				dist_min = d;

@@ -43,7 +43,7 @@ void UpdatableInset::scroll(BufferView & bv, double s) const
 	}
 
 	int const workW = bv.workWidth();
-	int xo_ = theCoords.insets_.x(this);
+	int xo_ = theCoords.getInsets().x(this);
 	int const tmp_xo_ = xo_ - scx;
 
 	if (tmp_xo_ > 0 && tmp_xo_ + width() < workW)
@@ -63,7 +63,7 @@ void UpdatableInset::scroll(BufferView & bv, double s) const
 
 void UpdatableInset::scroll(BufferView & bv, int offset) const
 {
-	int const xo_ = theCoords.insets_.x(this);
+	int const xo_ = theCoords.getInsets().x(this);
 	if (offset > 0) {
 		if (!scx && xo_ >= 20)
 			return;

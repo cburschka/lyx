@@ -1,3 +1,10 @@
+2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* inset.C:
+	* insetbase.C:
+	* insettabular.C:
+	* updatableinset.C: Use new cursor accessors.
+
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insetinclude.C (loadIfNeeded): rewrite to use boost.filesystem

@@ -123,7 +123,13 @@ MathAtom & DocIterator::nextAtom()
 }
 
 
-LyXText * DocIterator::text() const
+LyXText * DocIterator::text()
+{
+	BOOST_ASSERT(!empty());
+	return top().text();
+}
+
+LyXText const * DocIterator::text() const
 {
 	BOOST_ASSERT(!empty());
 	return top().text();
@@ -146,12 +152,14 @@ Paragraph const & DocIterator::paragraph() const
 
 Row & DocIterator::textRow()
 {
+	BOOST_ASSERT(!paragraph().rows().empty());
 	return paragraph().getRow(pos());
 }
 
 
 Row const & DocIterator::textRow() const
 {
+	BOOST_ASSERT(!paragraph().rows().empty());
 	return paragraph().getRow(pos());
 }
 
@@ -233,7 +241,18 @@ bool DocIterator::inTexted() const
 }
 
 
-LyXText * DocIterator::innerText() const
+LyXText * DocIterator::innerText()
+{
+	BOOST_ASSERT(!empty());
+	// go up until first non-0 text is hit
+	// (innermost text is 0 in mathed)
+	for (int i = size() - 1; i >= 0; --i)
+		if (operator[](i).text())
+			return operator[](i).text();
+	return 0;
+}
+
+LyXText const * DocIterator::innerText() const
 {
 	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit

@@ -445,7 +445,6 @@ void BufferView::Pimpl::scrollDocView(int value)
 	t.redoParagraph(anchor_ref_);
 	int const h = t.getPar(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
-	lyxerr << "scrolling: " << value << std::endl;
 	update();
 
 	if (!lyxrc.cursor_follows_scrollbar)
@@ -612,6 +611,7 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 
 		CoordCache backup;
 		std::swap(theCoords, backup);
+		theCoords.startUpdating();
 		//
 		ViewMetricsInfo vi = metrics();
 
@@ -622,8 +622,11 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 		if (forceupdate) {
 			// second drawing step
 			screen().redraw(*bv_, vi);
-		} else
+			theCoords.doneUpdating();
+		} else {
+			// Abort updating of the coord cache - just restore the old one
 			std::swap(theCoords, backup);
+		}
 	} else
 		screen().greyOut();
 
@@ -743,7 +746,7 @@ void BufferView::Pimpl::switchKeyMap()
 
 void BufferView::Pimpl::center()
 {
-	CursorSlice const & bot = bv_->cursor().bottom();
+	CursorSlice & bot = bv_->cursor().bottom();
 	lyx::pit_type const pit = bot.pit();
 	bot.text()->redoParagraph(pit);
 	Paragraph const & par = bot.text()->paragraphs()[pit];
@@ -1247,7 +1250,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 	int y = y1;
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
 		y += text->getPar(pit).ascent();
-		theCoords.pars_[text][pit] = Point(0, y);
+		theCoords.parPos()[text][pit] = Point(0, y);
 		y += text->getPar(pit).descent();
 	}
 

@@ -2,6 +2,38 @@
 
 	* lyxlex_pimpl.h: #include <fstream>.
 
+	* BufferView.[Ch] (getLyXText): add a const version.
+
+	* BufferView_pimpl.C: add debug aids.
+
+	* RowList_fwd.h:
+	* buffer.h:
+	* lyxrow.h:
+	* paragraph_funcs.h: add commentary explaining what the class does.
+
+
+	* coordcache.[Ch]: add lots of commentary.
+	(startUpdating, doneUpdating): debug aids.
+	(arrays, insets, parPos, getParPos): accessors to private data.
+
+	* cursor_slice.[Ch] (text): add a const version.
+	* dociterator.[Ch] (text, innerText): add const versions.
+
+	* lyxtext.h (breakParagraph): change the keep_layout arg to a
+	bool.
+
+	* paragraph.C (getRow, pos2ros): add asserts.
+
+	* paragraph.h: add commentary. Lots of.
+
+	* paragraph.[Ch] (metrucs, draw): removed.
+
+	* cursor.C:
+	* rowpainter.[Ch]: const-correct changes.
+
+	* text.C: various obvious clean-ups. Removal of ancient cruft.
+	Bug fixes, even.
+	
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* vc-backend.C (find_file): rewrite to use boost.filesystem

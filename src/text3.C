@@ -353,7 +353,7 @@ bool LyXText::isRTL(Paragraph const & par) const
 void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
-	//lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
+	lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
 
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();

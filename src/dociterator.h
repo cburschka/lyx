@@ -151,11 +151,15 @@ public:
 	/// the row in the paragraph we're in
 	Row const & textRow() const;
 	///
-	LyXText * text() const;
+	LyXText * text();
+	///
+	LyXText const * text() const;
 	///
 	InsetBase * innerInsetOfType(int code) const;
 	///
-	LyXText * innerText() const;
+	LyXText * innerText();
+	///
+	LyXText const * innerText() const;
 
 	//
 	// elementary moving

@@ -180,8 +180,8 @@ Point coordOffset(DocIterator const & dit)
 Point getPos(DocIterator const & dit)
 {
 	CursorSlice const & bot = dit.bottom();
-	CoordCache::InnerParPosCache & cache = theCoords.pars_[bot.text()];
-	CoordCache::InnerParPosCache::iterator it = cache.find(bot.pit());
+	CoordCache::InnerParPosCache const & cache = theCoords.getParPos().find(bot.text())->second;
+	CoordCache::InnerParPosCache::const_iterator it = cache.find(bot.pit());
 	if (it == cache.end()) {
 		//lyxerr << "cursor out of view" << std::endl;
 		return Point(-1,-1);
@@ -195,7 +195,7 @@ Point getPos(DocIterator const & dit)
 // this could be used elsewhere as well?
 CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
-	CoordCache::InnerParPosCache & cache = theCoords.pars_[dit.bottom().text()];
+	CoordCache::InnerParPosCache const & cache = theCoords.getParPos().find(dit.bottom().text())->second;
 
 	if (cache.find(dit.bottom().pit()) != cache.end())
 		return CUR_INSIDE;

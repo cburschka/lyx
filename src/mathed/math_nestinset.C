@@ -110,23 +110,23 @@ void MathNestInset::getCursorPos(CursorSlice const & sl,
 // absolute again when actually drawing the cursor. What a mess.
 	BOOST_ASSERT(ptr_cmp(&sl.inset(), this));
 	MathArray const & ar = sl.cell();
-	if (!theCoords.arrays_.has(&ar)) {
-		// this can (semi-)legally happen if we jsut created this cell
+	if (!theCoords.getArrays().has(&ar)) {
+		// this can (semi-)legally happen if we just created this cell
 		// and it never has been drawn before. So don't ASSERT.
 		//lyxerr << "no cached data for array " << &ar << endl;
 		x = 0;
 		y = 0;
 		return;
 	}
-	Point const pt = theCoords.arrays_.xy(&ar);
-	if (!theCoords.insets_.has(this)) {
+	Point const pt = theCoords.getArrays().xy(&ar);
+	if (!theCoords.getInsets().has(this)) {
 		// same as above
 		//lyxerr << "no cached data for inset " << this << endl;
 		x = 0;
 		y = 0;
 		return;
 	}
-	Point const pt2 = theCoords.insets_.xy(this);
+	Point const pt2 = theCoords.getInsets().xy(this);
 	//lyxerr << "retrieving position cache for MathArray "
 	//	<< pt.x_ << ' ' << pt.y_ << std::endl;
 	x = pt.x_ - pt2.x_ + ar.pos2x(sl.pos());

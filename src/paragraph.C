@@ -1795,6 +1795,8 @@ bool Paragraph::allowEmpty() const
 
 Row & Paragraph::getRow(pos_type pos)
 {
+	BOOST_ASSERT(!rows().empty());
+
 	RowList::iterator rit = rows_.end();
 	RowList::iterator const begin = rows_.begin();
 
@@ -1807,6 +1809,8 @@ Row & Paragraph::getRow(pos_type pos)
 
 Row const & Paragraph::getRow(pos_type pos) const
 {
+	BOOST_ASSERT(!rows().empty());
+
 	RowList::const_iterator rit = rows_.end();
 	RowList::const_iterator const begin = rows_.begin();
 
@@ -1819,6 +1823,8 @@ Row const & Paragraph::getRow(pos_type pos) const
 
 size_t Paragraph::pos2row(pos_type pos) const
 {
+	BOOST_ASSERT(!rows().empty());
+
 	RowList::const_iterator rit = rows_.end();
 	RowList::const_iterator const begin = rows_.begin();
 
@@ -1873,11 +1879,3 @@ void Paragraph::dump() const
 	}
 }
 
-//void Paragraph::metrics(MetricsInfo & mi, Dimension & dim, LyXText & text)
-//{
-//}
-//
-//
-//void draw(PainterInfo & pi, int x, int y, LyXText & text) const
-//{
-//}

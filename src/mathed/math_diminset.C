@@ -40,5 +40,5 @@ int MathDimInset::width() const
 void MathDimInset::setPosCache(PainterInfo const &, int x, int y) const
 {
 	//lyxerr << "MathDimInset: cache to " << x << " " << y << std::endl;
-	theCoords.insets_.add(this, x, y);
+	theCoords.insets().add(this, x, y);
 }

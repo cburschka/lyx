@@ -134,7 +134,7 @@ public:
 				  lyx::depth_type depth) const;
 
 	/// Can we drop the standard paragraph wrapper?
-	bool Paragraph::emptyTag() const;
+	bool emptyTag() const;
 
 	/// Get the id of the paragraph, usefull for docbook and linuxdoc
 	std::string getID(Buffer const & buf,
@@ -293,7 +293,7 @@ public:
 		BOOST_ASSERT(pos < int(text_.size()));
 		return text_[pos];
 	}
-	///
+	/// Get the char, but mirror all bracket characters if it is right-to-left
 	value_type getUChar(BufferParams const &, lyx::pos_type pos) const;
 	/// The position must already exist.
 	void setChar(lyx::pos_type pos, value_type c);
@@ -326,6 +326,9 @@ public:
 	InsetBase * getInset(lyx::pos_type pos);
 	///
 	InsetBase const * getInset(lyx::pos_type pos) const;
+	///
+	InsetList insetlist;
+
 
 	///
 	bool isHfill(lyx::pos_type pos) const;
@@ -344,7 +347,7 @@ public:
 	/// returns -1 if inset not found
 	int getPositionOfInset(InsetBase const * inset) const;
 
-	///
+	/// Returns the number of line breaks and white-space stripped at the start
 	int stripLeadingSpaces();
 
 	/// return true if we allow multiple spaces
@@ -352,7 +355,7 @@ public:
 
 	/// return true if we allow this par to stay empty
 	bool allowEmpty() const;
-	////
+	/// 
 	unsigned char transformChar(unsigned char c, lyx::pos_type pos) const;
 	///
 	ParagraphParameters & params();
@@ -366,37 +369,34 @@ public:
 	///
 	size_t pos2row(lyx::pos_type pos) const;
 
-	///
-	InsetList insetlist;
-
 	/// total height of paragraph
 	unsigned int height() const { return dim_.height(); }
 	/// total width of paragraph, may differ from workwidth
 	unsigned int width() const { return dim_.width(); }
 	unsigned int ascent() const { return dim_.ascent(); }
 	unsigned int descent() const { return dim_.descent(); }
-	///
+	/// LyXText updates the rows using this access point
 	RowList & rows() { return rows_; }
-	///
+	/// The painter and others use this
 	RowList const & rows() const { return rows_; }
 
-	// compute paragraph metrics	
-	void metrics(MetricsInfo & mi, Dimension & dim, LyXText & text);
-	// draw paragraph
-	void draw(PainterInfo & pi, int x, int y, LyXText & text) const;
-	/// dump some information
-	void dump() const;
+	/// LyXText::redoParagraph updates this
+	Dimension & dim() { return dim_; }
 
+	/// dump some information to lyxerr
+	void dump() const;
+private:
 	/// cached dimensions of paragraph
 	Dimension dim_;
 
-private:
 	///
 	mutable RowList rows_;
 	///
 	LyXLayout_ptr layout_;
-	/// keeping this here instead of in the pimpl makes LyX >10% faster
-	// for average tasks as buffer loading/switching etc.
+	/**
+	 * Keeping this here instead of in the pimpl makes LyX >10% faster
+	 * for average tasks as buffer loading/switching etc.
+	 */
 	TextContainer text_;
 	/// end of label
 	lyx::pos_type begin_of_body_;
@@ -406,7 +406,6 @@ private:
 	friend class Paragraph::Pimpl;
 	///
 	Pimpl * pimpl_;
-
 };
 
 
