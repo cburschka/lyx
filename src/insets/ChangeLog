@@ -1,3 +1,9 @@
+2003-08-28  Angus Leeming  <leeming@lyx.org>
+
+        * insetgraphics.C (prepareFile): prepend "convertDefault.sh" with
+        "sh ", enabling the conversion to be carried out even if the script
+        is not executable.
+
 2003-08-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* most files: change to use const Buffer refs
@@ -165,10 +171,10 @@
 	* insetfootlike.C:
 	* insettabular.C: parantheses, localize vars etc.
 
-2003-07-29	Martin Vermeer  <martin.vermeer@hut.fi>
+2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetnote.C: Implement a newenvironment in preamble for
-    greyedout. Patch provided by Jürgen Spitzmüller.
+	greyedout. Patch provided by Jürgen Spitzmüller.
 
 2003-07-29  Angus Leeming  <leeming@lyx.org>
 

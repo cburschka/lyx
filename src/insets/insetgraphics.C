@@ -441,7 +441,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// from ImageMagic: convert from:inname.from to:outname.to
 	if (!converters.convert(&buf, temp_file, outfile_base, from, to)) {
 		string const command =
-			LibFileSearch("scripts", "convertDefault.sh") +
+			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
 				' ' + from + ':' + temp_file + ' ' +
 				to + ':' + outfile_base + '.' + to;
 		lyxerr[Debug::GRAPHICS]
