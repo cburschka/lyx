@@ -3232,10 +3232,27 @@ void BufferView::Pimpl::smartQuote()
 
 void BufferView::Pimpl::insertAndEditInset(Inset * inset)
 {
+#if 0
 	if (insertInset(inset))
 		inset->edit(bv_);
 	else
 		delete inset;
+#else
+	bool gotsel = false;
+
+	if (bv_->getLyXText()->selection.set()) {
+		bv_->getLyXText()->cutSelection(bv_, true, false);
+		gotsel = true;
+	}
+
+	if (insertInset(inset)) {
+		inset->edit(bv_);
+		if (gotsel)
+			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION);
+	}
+	else 
+		delete inset;
+#endif
 }
 
 
