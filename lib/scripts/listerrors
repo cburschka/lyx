@@ -5,15 +5,15 @@ Expects to read from stdin and output to stdout.
 """
 
 __author__ = "Kayvan A. Sylvan <kayvan@sylvan.com>"
-__date__ = "$Date: 2002/03/19 21:42:48 $"
-__version__ = "$Revision: 1.1 $"
+__date__ = "$Date: 2002/03/25 23:29:30 $"
+__version__ = "$Revision: 1.2 $"
 __credits__ = """Edmar Wienskoski Jr. <edmar-w-jr@technologist.com>
     original Literate support for LyX.
 Bernard Michael Hurley <berhardh@westherts.ac.uk>
     modifications to original listerrors."""
 __copyright__ = "Copyright 2002 - The LyX team."
 
-import sys
+import sys, string
 
 def write_error(msg, tool = "noweb", line_number = 1):
   """Write out the given message in TeX error style.
@@ -37,8 +37,7 @@ def getline(file = sys.stdin):
   global __lines
   lines = __lines
   if lines:
-    line = lines[-1]
-    lines = lines[:-1]
+    line = lines.pop()
   else:
     line = file.readline()
   return line
@@ -47,7 +46,7 @@ def pushline(line):
   "push a line onto the pushback stack."
   global __lines
   lines = __lines
-  lines += (line,) # push a list onto the stack, not individual letters
+  lines.append(line)
 
 def main():
   """Entry point for listerrors. Takes no options.
@@ -65,19 +64,19 @@ def noweb_try(line):
 
   Returns 1 on success, 0 otherwise. Outputs on stdout."""
   retval = 0
-  if line.find(": unescaped << in documentation chunk") != -1:
-    line_parts = line.split(':')
+  if string.find(line, ": unescaped << in documentation chunk") != -1:
+    line_parts = string.split(line, ':')
     num_str = line_parts[1]
     num_len = len(num_str)
     i = 0
-    while i < num_len and num_str[i].isdigit(): i += 1
+    while i < num_len and (num_str[i] in string.digits): i = i + 1
     if i == num_len:
       write_error(":" + line_parts[2], "noweb", int(num_str))
       retval = 1
   if (not retval):
-    left = line.find("<<")
+    left = string.find(line, "<<")
     if (left != -1) and ((left + 2) < len(line)) and \
-       (line[left+2:].find(">>") != -1):
+       (string.find(line[left+2:], ">>") != -1):
       write_error(line, "noweb");
       retval = 1;
   if (not retval):
@@ -94,7 +93,7 @@ def noweb_try(line):
       "This can't happen:",
       "non-numeric line number in")
     for msg in msgs_to_try:
-      if line.find(msg) != -1:
+      if string.find(line, msg) != -1:
         write_error(line, "noweb")
         retval = 1
         break
@@ -105,23 +104,22 @@ def gcc_try(line):
 
   Returns 1 on success, 0 otherwise. Outputs on stdout."""
   retval = 0
-  first_space = line.find(' ')
+  first_space = string.find(line, ' ')
   if first_space > 1: # The smallest would be "X: "
     if line[first_space - 1] == ':':
       header_to_see = line[:first_space - 1]
       next_line = getline()
       if next_line and next_line[:first_space - 1] == header_to_see:
         num_end = first_space
-        while next_line[num_end].isdigit(): num_end += 1
+        while next_line[num_end] in string.digits: num_end = num_end + 1
         if num_end > first_space: # good!
           num_str = next_line[first_space:num_end]
-          msgs = []
-          msgs += (line[first_space:],)
-          msgs += (next_line[num_end + 1:],)
+          msgs = [line[first_space:]]
+          msgs.append(next_line[num_end + 1:])
           header_to_see = next_line[:num_end]
           next_line = getline()
           while next_line and next_line[:num_end] == header_to_see:
-            msgs += (next_line[num_end + 1:],)
+            msgs.append(next_line[num_end + 1:])
             next_line = getline()
           if next_line: pushline(next_line)
           write_error(msgs, "gcc", int(num_str))
@@ -138,12 +136,12 @@ def xlc_try(line):
   Returns 1 on success, 0 otherwise. Outputs on stdout."""
   retval = 0
   if line[0] == '"': # This is the first character of all xlc errors
-    next_quote = line.find('"', 1)
-    first_space = line.find(' ')
+    next_quote = string.find(line, '"', 1)
+    first_space = string.find(line, ' ')
     if (next_quote != -1) and (first_space > next_quote): # no space inisde quotes
       if line[first_space - 1:first_space + 6] == ", line ":
         num_start = num_end = first_space + 6
-        while line[num_end].isdigit(): num_end += 1
+        while line[num_end] in string.digits: num_end = num_end + 1
         if num_end > num_start:
           write_error(line, "xlc", int(line[num_start : num_end]))
           retval = 1

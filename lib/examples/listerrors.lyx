@@ -242,9 +242,9 @@ Expects to read from stdin and output to stdout.
 __author__ = "Kayvan A.
  Sylvan <kayvan@sylvan.com>"
 \newline 
-__date__ = "$Date: 2002/03/19 21:42:48 $"
+__date__ = "$Date: 2002/03/25 23:29:30 $"
 \newline 
-__version__ = "$Revision: 1.1 $"
+__version__ = "$Revision: 1.2 $"
 \newline 
 __credits__ = """Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
@@ -259,7 +259,7 @@ __copyright__ = "Copyright 2002 - The LyX team."
 \newline 
 
 \newline 
-import sys
+import sys, string
 \newline 
 
 \newline 
@@ -363,9 +363,7 @@ def getline(file = sys.stdin):
 \newline 
   if lines:
 \newline 
-    line = lines[-1]
-\newline 
-    lines = lines[:-1]
+    line = lines.pop()
 \newline 
   else:
 \newline 
@@ -391,7 +389,7 @@ def pushline(line):
 \newline 
   lines = __lines
 \newline 
-  lines += (line,) # push a list onto the stack, not individual letters
+  lines.append(line)
 \newline 
 
 \newline 
@@ -509,9 +507,9 @@ unescaped < < in documentation chunk
 
 <<Look for the unescaped angle-brackets in documentation>>=
 \newline 
-if line.find(": unescaped << in documentation chunk") != -1:
+if string.find(line, ": unescaped << in documentation chunk") != -1:
 \newline 
-  line_parts = line.split(':')
+  line_parts = string.split(line, ':')
 \newline 
   num_str = line_parts[1]
 \newline 
@@ -519,7 +517,7 @@ if line.find(": unescaped << in documentation chunk") != -1:
 \newline 
   i = 0
 \newline 
-  while i < num_len and num_str[i].isdigit(): i += 1
+  while i < num_len and (num_str[i] in string.digits): i = i + 1
 \newline 
   if i == num_len:
 \newline 
@@ -538,13 +536,13 @@ Some noweb messages are simply about undefined scraps.
 \newline 
 if (not retval):
 \newline 
-  left = line.find("<<")
+  left = string.find(line, "<<")
 \newline 
   if (left != -1) and ((left + 2) < len(line)) and 
 \backslash 
 
 \newline 
-     (line[left+2:].find(">>") != -1):
+     (string.find(line[left+2:], ">>") != -1):
 \newline 
     write_error(line, "noweb");
 \newline 
@@ -586,7 +584,7 @@ if (not retval):
 \newline 
   for msg in msgs_to_try:
 \newline 
-    if line.find(msg) != -1:
+    if string.find(line, msg) != -1:
 \newline 
       write_error(line, "noweb")
 \newline 
@@ -647,7 +645,7 @@ The error message starts with a gcc header (as above) without an associated
 
 <<Handle the gcc error message>>= 
 \newline 
-first_space = line.find(' ')
+first_space = string.find(line, ' ')
 \newline 
 if first_space > 1: # The smallest would be "X: "
 \newline 
@@ -661,7 +659,7 @@ if first_space > 1: # The smallest would be "X: "
 \newline 
       num_end = first_space
 \newline 
-      while next_line[num_end].isdigit(): num_end += 1
+      while next_line[num_end] in string.digits: num_end = num_end + 1
 \newline 
       if num_end > first_space: # good!
 \newline 
@@ -686,11 +684,9 @@ At the point in the code that we know that we are in the middle of an error
 \newline 
 num_str = next_line[first_space:num_end]
 \newline 
-msgs = []
+msgs = [line[first_space:]]
 \newline 
-msgs += (line[first_space:],)
-\newline 
-msgs += (next_line[num_end + 1:],)
+msgs.append(next_line[num_end + 1:])
 \newline 
 header_to_see = next_line[:num_end]
 \newline 
@@ -698,7 +694,7 @@ next_line = getline()
 \newline 
 while next_line and next_line[:num_end] == header_to_see:
 \newline 
-  msgs += (next_line[num_end + 1:],)
+  msgs.append(next_line[num_end + 1:])
 \newline 
   next_line = getline()
 \newline 
@@ -754,9 +750,9 @@ def xlc_try(line):
 \newline 
   if line[0] == '"': # This is the first character of all xlc errors
 \newline 
-    next_quote = line.find('"', 1)
+    next_quote = string.find(line, '"', 1)
 \newline 
-    first_space = line.find(' ')
+    first_space = string.find(line, ' ')
 \newline 
     if (next_quote != -1) and (first_space > next_quote): # no space inisde
  quotes
@@ -765,7 +761,7 @@ def xlc_try(line):
 \newline 
         num_start = num_end = first_space + 6
 \newline 
-        while line[num_end].isdigit(): num_end += 1
+        while line[num_end] in string.digits: num_end = num_end + 1
 \newline 
         if num_end > num_start:
 \newline 

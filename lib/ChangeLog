@@ -1,3 +1,16 @@
+2002-03-19  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* examples/listerrors.lyx: Fixed to run with python-1.5 as well
+	as with latest python-2.2
+	
+	* scripts/listerrors: Re-generated from listerrors.lyx
+
+2002-03-25  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Makefile.am (install-xfonts): fix the target when no X fonts
+	have been found.
+	General: do not use $$(foo) instead of $${foo} for shell variables!
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Minipage.lyx:

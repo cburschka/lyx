@@ -552,10 +552,12 @@ EOF
 ######## X FONTS
 # create a fonts.dir file to make X fonts available to LyX
 echo "checking for TeX fonts"
+
 fontlist="cmex10 cmmi10 cmr10 cmsy10 eufm10 msam10 msbm10"
 rm -f xfonts/fonts.dir xfonts/fonts.scale xfonts/tmpfonts
 
 num=0
+touch xfonts/tmpfonts
 for font in $fontlist ; do
   MSG_CHECKING([for $font])
   result=no
