@@ -1,3 +1,8 @@
+2000-04-27  Juergen Vigna  <jug@sad.it>
+
+	* src/CutAndPaste.C (pasteSelection): last paragraph was not returned
+	correctly only last pos this was a bug.
+
 2000-04-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* release of lyx-1.1.5pre1

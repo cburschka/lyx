@@ -325,8 +325,8 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	(*par)->ParFromPos(pos)->PasteParagraph();
 	
 	// store the new cursor position
-	tmppar = lastbuffer;
-	tmppos = lastbuffer->Last();
+	*par = lastbuffer;
+	pos  = lastbuffer->Last();
 	
 	// maybe some pasting
 	if (lastbuffer->Next() && paste_the_end) {
@@ -343,7 +343,6 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	}
 	// restore the simple cut buffer
 	buf = simple_cut_clone;
-	pos = tmppos;
     }
 
     return true;
