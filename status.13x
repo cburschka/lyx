@@ -24,6 +24,8 @@ What's new
 
 - add Proof layout to elsart class and get sections to be numbered
 
+- make LyX compile almost out-of-the-box with Qt/Mac
+
 - add a bit of documentation of the AGU journals support in the
   Extended manual; french documentation and examples update; small
   tweaks to the english documentation
@@ -93,3 +95,5 @@ What's new
 - do not report failed inlining when compiling with gcc
 
 - fix compilation with new development versions of xforms
+
+- fix compilation with AikSaurus 1.0
