@@ -162,27 +162,33 @@
 # REMARQUE : Les expressions traduites à l'identique (par ex. "Point"->"Point")
 # sont recopiées, l'absence de traduction signifiant que l'expression n'a
 # pas encore été traitée
+# -----------------------------------------------------------------------------
+# AR 26 novembre 2001 : Préparation pour la 1.1.6fix4
+# "token" traduit par "symbole"
+# À voir : déterminer quels noms d'environnement sont à traduire,
+# suivant les classes dans lesquelles ils apparaissent
+
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2001-07-21 00:31+0200\n"
-"PO-Revision-Date: 2001-06-23 02:56+01:00\n"
-"Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
-"Language-Team: lyxfr "
-"<http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr.html>\n"
+"Project-Id-Version: LyX 1.1.6fix4\n"
+"POT-Creation-Date: 2001-11-26 13:02+0100\n"
+"PO-Revision-Date: 2001-11-26 02:56+01:00\n"
+"Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
+"Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
+"html>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/buffer.C:321
+#: src/buffer.C:323
 msgid "Couldn't set the layout for "
 msgstr "N'a pas pu fixer le format pour "
 
-#: src/buffer.C:323
+#: src/buffer.C:325
 msgid "one paragraph"
 msgstr "un paragraphe"
 
-#: src/buffer.C:326
+#: src/buffer.C:328
 msgid " paragraphs"
 msgstr " paragraphes"
 
@@ -191,134 +197,150 @@ msgstr " paragraphes"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:328 src/buffer.C:545
+#: src/buffer.C:330 src/buffer.C:342 src/buffer.C:559
 msgid "Textclass Loading Error!"
 msgstr "Erreur de chargement de la classe de document !"
 
-#: src/buffer.C:329
+#: src/buffer.C:331 src/buffer.C:343
 msgid "When reading "
 msgstr "En lisant "
 
-#: src/CutAndPaste.C:447 src/buffer.C:383
+#: src/buffer.C:335
+msgid "Encountered "
+msgstr "Rencontré "
+
+#: src/buffer.C:337
+msgid "one unknown token"
+msgstr "un symbole inconnu"
+
+#: src/buffer.C:340
+msgid " unknown tokens"
+msgstr " symboles inconnus"
+
+#: src/CutAndPaste.C:447 src/buffer.C:397
 msgid "Layout had to be changed from\n"
 msgstr "Le style de paragraphe est passé de\n"
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:398
 #: src/converter.C:554
 msgid " to "
 msgstr " vers "
 
-#: src/buffer.C:533
+#: src/buffer.C:547
 msgid "Textclass error"
 msgstr "Erreur de classe de document"
 
-#: src/buffer.C:534
+#: src/buffer.C:548
 msgid "The document uses an unknown textclass \""
 msgstr "Le document utilise une classe inconnue \""
 
-#: src/buffer.C:536
+#: src/buffer.C:550
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX ne sera pas à même de produire correctement une sortie."
 
-#: src/buffer.C:546
+#: src/buffer.C:560
 msgid "Can't load textclass "
 msgstr "Impossible de charger la classe "
 
-#: src/buffer.C:548
+#: src/buffer.C:562
 msgid "-- substituting default"
 msgstr "-- remplacée par la valeur par défaut"
 
-#: src/buffer.C:1105
+#: src/buffer.C:990
+msgid "Unknown token: "
+msgstr "Symbole inconnu : "
+
+#: src/buffer.C:1118
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Attention : nécessite le format lyx %.2f, pas le %.2f"
 
-#: src/buffer.C:1109
+#: src/buffer.C:1122
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "ERREUR : nécessite le format lyx %.2f, pas le %.2f"
 
 #. future format
-#: src/buffer.C:1120 src/buffer.C:1147 src/buffer.C:1167
+#: src/buffer.C:1133 src/buffer.C:1160 src/buffer.C:1180
 msgid "Warning!"
 msgstr "Attention !"
 
-#: src/buffer.C:1121 src/buffer.C:1168
+#: src/buffer.C:1134 src/buffer.C:1181
 msgid "Reading of document is not complete"
 msgstr "Lecture du document incomplète"
 
-#: src/buffer.C:1122 src/buffer.C:1169
+#: src/buffer.C:1135 src/buffer.C:1182
 msgid "Maybe the document is truncated"
 msgstr "Peut-être le document est-il tronqué"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1128 src/buffer.C:1154 src/buffer.C:1173 src/buffer.C:1176
+#: src/buffer.C:1141 src/buffer.C:1167 src/buffer.C:1186 src/buffer.C:1189
 msgid "ERROR!"
 msgstr "ERREUR !"
 
-#: src/buffer.C:1129 src/buffer.C:1155
+#: src/buffer.C:1142 src/buffer.C:1168
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Format de fichier LyX périmé. Utiliser LyX 0.10.x pour le lire !"
 
-#: src/buffer.C:1148
+#: src/buffer.C:1161
 msgid "LyX file format is newer that what"
 msgstr "Le format du fichier est plus récent que"
 
-#: src/buffer.C:1149
+#: src/buffer.C:1162
 msgid "is supported in this LyX version. Expect some problems."
 msgstr ""
 "celui supporté par cette version de LyX. Attendez-vous à des problèmes."
 
-#: src/buffer.C:1173
+#: src/buffer.C:1186
 msgid "Not a LyX file!"
 msgstr "Ce n'est pas un fichier LyX !"
 
-#: src/buffer.C:1176
+#: src/buffer.C:1189
 msgid "Unable to read file!"
 msgstr "Impossible de lire le fichier !"
 
-#: src/buffer.C:1270 src/buffer.C:1273
+#: src/buffer.C:1283 src/buffer.C:1286
 msgid "Error! Document is read-only: "
 msgstr "Erreur ! Document en lecture seule : "
 
-#: src/buffer.C:1283 src/buffer.C:1286
+#: src/buffer.C:1296 src/buffer.C:1299
 msgid "Error! Cannot write file: "
 msgstr "Erreur ! Impossible d'écrire le fichier : "
 
-#: src/buffer.C:1294 src/buffer.C:1297
+#: src/buffer.C:1307 src/buffer.C:1310
 msgid "Error! Cannot open file: "
 msgstr "Erreur ! Impossible d'ouvrir le fichier : "
 
-#: src/buffer.C:1593
+#: src/buffer.C:1606
 msgid "Error: Cannot write file:"
 msgstr "Erreur : Impossible d'écrire le fichier : "
 
-#: src/buffer.C:1627
+#: src/buffer.C:1640
 msgid "Error: Cannot open file: "
 msgstr "Erreur : Impossible d'ouvrir le fichier : "
 
-#: src/buffer.C:2263 src/buffer.C:2912
+#: src/buffer.C:2284 src/buffer.C:2931
 msgid "LYX_ERROR:"
 msgstr "ERREUR LYX :"
 
-#: src/buffer.C:2263 src/buffer.C:2912
+#: src/buffer.C:2284 src/buffer.C:2931
 msgid "Cannot write file"
 msgstr "Impossible d'écrire le fichier"
 
-#: src/buffer.C:2350 src/buffer.C:2996
+#: src/buffer.C:2371 src/buffer.C:3015
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Erreur : Mauvaise profondeur pour la commande LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3317
+#: src/buffer.C:3336
 msgid "Running chktex..."
 msgstr "Exécution de chktex..."
 
-#: src/buffer.C:3330
+#: src/buffer.C:3349
 msgid "chktex did not work!"
 msgstr "chktex a échoué !"
 
-#: src/buffer.C:3331
+#: src/buffer.C:3350
 msgid "Could not run with file:"
 msgstr "Impossible de le lancer sur le fichier : "
 
@@ -381,33 +403,33 @@ msgstr "Erreur !"
 msgid "Unable to open template"
 msgstr "Impossible d'ouvrir le modèle"
 
-#: src/bufferlist.C:476 src/lyxfunc.C:3074 src/lyxfunc.C:3237
+#: src/bufferlist.C:480 src/lyxfunc.C:3074 src/lyxfunc.C:3237
 msgid "Document is already open:"
 msgstr "Le document est déjà ouvert :"
 
-#: src/bufferlist.C:478
+#: src/bufferlist.C:482
 msgid "Do you want to reload that document?"
 msgstr "Voulez-vous recharger ce document ?"
 
-#: src/bufferlist.C:496
+#: src/bufferlist.C:500
 msgid "File `"
 msgstr "Le fichier `"
 
-#: src/bufferlist.C:497
+#: src/bufferlist.C:501
 msgid "' is read-only."
 msgstr "' est en lecture seule."
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:512
+#: src/bufferlist.C:516
 msgid "Do you want to retrieve file under version control?"
 msgstr "Éditer le fichier sous contrôle de version ?"
 
-#: src/bufferlist.C:520
+#: src/bufferlist.C:524
 msgid "Cannot open specified file:"
 msgstr "Impossible d'ouvrir le fichier spécifié :"
 
-#: src/bufferlist.C:522
+#: src/bufferlist.C:526
 msgid "Create new document with this name?"
 msgstr "Créer un nouveau document avec ce nom ?"
 
@@ -717,8 +739,8 @@ msgstr ""
 "à cause de la conversion de la classe\n"
 
 # à revoir
-#: src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3961
-#: src/text.C:3969 src/text.C:3996 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3956
+#: src/text.C:3964 src/text.C:3991 src/text2.C:2191 src/text2.C:2304
 msgid "Impossible operation"
 msgstr "Opération interdite"
 
@@ -727,8 +749,8 @@ msgid "Can't paste float into float!"
 msgstr "Coller un flottant dans un flottant est interdit !"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3963
-#: src/text.C:3971 src/text.C:3998
+#: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3958
+#: src/text.C:3966 src/text.C:3993
 msgid "Sorry."
 msgstr "Désolé."
 
@@ -1458,174 +1480,178 @@ msgid "Address"
 msgstr "Adresse"
 
 #: src/ext_l10n.h:162
+msgid "AddressForOffprints"
+msgstr "AdreessePourOffprints"
+
+#: src/ext_l10n.h:163
 msgid "Addsec"
 msgstr "AjoutSec"
 
-#: src/ext_l10n.h:163
+#: src/ext_l10n.h:164
 msgid "Addsec*"
 msgstr "AjoutSec*"
 
-#: src/ext_l10n.h:164
+#: src/ext_l10n.h:165
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/ext_l10n.h:165
+#: src/ext_l10n.h:166
 msgid "Affil"
 msgstr "Appart."
 
-#: src/ext_l10n.h:166
+#: src/ext_l10n.h:167
 msgid "Affiliation"
 msgstr "Affiliation"
 
-#: src/ext_l10n.h:167
+#: src/ext_l10n.h:168
 msgid "Algorithm"
 msgstr "Algorithme"
 
-#: src/ext_l10n.h:168
+#: src/ext_l10n.h:169
 msgid "AMS"
 msgstr "AMS"
 
-#: src/ext_l10n.h:169
+#: src/ext_l10n.h:170
 msgid "And"
 msgstr "Et"
 
-#: src/ext_l10n.h:170
+#: src/ext_l10n.h:171
 msgid "Anlagen"
 msgstr "Anlagen"
 
-#: src/ext_l10n.h:171
+#: src/ext_l10n.h:172
 msgid "Anrede"
 msgstr "Anrede"
 
-#: src/ext_l10n.h:172
+#: src/ext_l10n.h:173
 msgid "Appendices"
 msgstr "Appendices"
 
-#: src/ext_l10n.h:173
+#: src/ext_l10n.h:174
 msgid "Appendix"
 msgstr "Appendice"
 
-#: src/ext_l10n.h:174
+#: src/ext_l10n.h:175
 msgid "AT_RISE:"
 msgstr "LEVER_RIDEAU:"
 
-#: src/ext_l10n.h:175
+#: src/ext_l10n.h:176
 msgid "Author"
 msgstr "Auteur"
 
-#: src/ext_l10n.h:176
+#: src/ext_l10n.h:177
 msgid "Author_Email"
 msgstr "EMail_Auteur"
 
-#: src/ext_l10n.h:177
-msgid "Author_Running"
-msgstr ""
-
 #: src/ext_l10n.h:178
+msgid "Author_Running"
+msgstr "Auteur_Courant"
+
+#: src/ext_l10n.h:179
 msgid "Author_URL"
 msgstr "URL_Auteur"
 
-#: src/ext_l10n.h:179
+#: src/ext_l10n.h:180
 msgid "Axiom"
 msgstr "Axiome"
 
-#: src/ext_l10n.h:180
+#: src/ext_l10n.h:181
 msgid "Backaddress"
 msgstr "Adresse_Retour"
 
-#: src/ext_l10n.h:181
+#: src/ext_l10n.h:182
 msgid "Bank"
 msgstr "Banque"
 
-#: src/ext_l10n.h:182
+#: src/ext_l10n.h:183
 msgid "BankAccount"
 msgstr "CompteBancaire"
 
-#: src/ext_l10n.h:183
+#: src/ext_l10n.h:184
 msgid "BankCode"
 msgstr "CodeBanque"
 
-#: src/ext_l10n.h:184
+#: src/ext_l10n.h:185
 msgid "Betreff"
 msgstr "Betreff"
 
-#: src/ext_l10n.h:185
+#: src/ext_l10n.h:186
 msgid "Bibliography"
 msgstr "Bibliographie"
 
-#: src/ext_l10n.h:186
+#: src/ext_l10n.h:187
 msgid "Biography"
 msgstr "Biographie"
 
-#: src/ext_l10n.h:187
+#: src/ext_l10n.h:188
 msgid "BLZ"
 msgstr "BLZ"
 
-#: src/ext_l10n.h:188
+#: src/ext_l10n.h:189
 msgid "Brieftext"
 msgstr "Brieftext"
 
-#: src/ext_l10n.h:189
+#: src/ext_l10n.h:190
 msgid "Caption"
 msgstr "Légende"
 
-#: src/ext_l10n.h:190
+#: src/ext_l10n.h:191
 msgid "Case"
 msgstr "Cas"
 
-#: src/ext_l10n.h:191
+#: src/ext_l10n.h:192
 msgid "cc"
 msgstr "cc"
 
-#: src/ext_l10n.h:192
+#: src/ext_l10n.h:193
 msgid "CC"
 msgstr "CC"
 
-#: src/ext_l10n.h:193
+#: src/ext_l10n.h:194
 msgid "CenteredCaption"
 msgstr "LégendeCentrée"
 
-#: src/ext_l10n.h:194
+#: src/ext_l10n.h:195
 msgid "Chapter"
 msgstr "Chapitre"
 
-#: src/ext_l10n.h:195
+#: src/ext_l10n.h:196
 msgid "Chapter*"
 msgstr "Chapitre*"
 
-#: src/ext_l10n.h:196
+#: src/ext_l10n.h:197
 msgid "Chapter_Exercises"
 msgstr "Exercices_Chapitre"
 
-#: src/ext_l10n.h:197
+#: src/ext_l10n.h:198
 msgid "Citta"
 msgstr "Citta"
 
-#: src/ext_l10n.h:198
+#: src/ext_l10n.h:199
 msgid "Claim"
 msgstr "Affirmation"
 
-#: src/ext_l10n.h:199
+#: src/ext_l10n.h:200
 msgid "Claim*"
 msgstr "Affirmation*"
 
-#: src/ext_l10n.h:200
+#: src/ext_l10n.h:201
 msgid "Closing"
 msgstr "Fermeture"
 
-#: src/ext_l10n.h:201
+#: src/ext_l10n.h:202
 msgid "Code"
 msgstr "Code"
 
-#: src/ext_l10n.h:202
+#: src/ext_l10n.h:203
 msgid "Comment"
 msgstr "Commentaire"
 
-#: src/ext_l10n.h:203 src/ext_l10n.h:205
+#: src/ext_l10n.h:204
 msgid "Conclusion"
 msgstr "Conclusion"
 
-#: src/ext_l10n.h:204
+#: src/ext_l10n.h:205
 msgid "Conclusion*"
 msgstr "Conclusion*"
 
@@ -1633,7 +1659,7 @@ msgstr "Conclusion*"
 msgid "Condition"
 msgstr "Condition"
 
-#: src/ext_l10n.h:207 src/ext_l10n.h:209
+#: src/ext_l10n.h:207
 msgid "Conjecture"
 msgstr "Conjecture"
 
@@ -1641,1064 +1667,1096 @@ msgstr "Conjecture"
 msgid "Conjecture*"
 msgstr "Conjecture*"
 
-#: src/ext_l10n.h:210
+#: src/ext_l10n.h:209
 msgid "CopNum"
 msgstr "NumCopie"
 
-#: src/ext_l10n.h:211
+#: src/ext_l10n.h:210
 msgid "Copyright"
 msgstr "Copyright"
 
-#: src/ext_l10n.h:212
+#: src/ext_l10n.h:211
 msgid "Corollary"
 msgstr "Corollaire"
 
-#: src/ext_l10n.h:213
+#: src/ext_l10n.h:212
 msgid "Corollary*"
 msgstr "Corollaire*"
 
-#: src/ext_l10n.h:214
+#: src/ext_l10n.h:213
 msgid "Criterion"
 msgstr "Critère"
 
-#: src/ext_l10n.h:215
+#: src/ext_l10n.h:214
 msgid "CrossList"
 msgstr "ListeCroisée"
 
-#: src/ext_l10n.h:216
+#: src/ext_l10n.h:215
 msgid "Current_Address"
 msgstr "Adresse_Actuelle"
 
-#: src/ext_l10n.h:217
+#: src/ext_l10n.h:216
 msgid "CURTAIN"
 msgstr "RIDEAU"
 
-#: src/ext_l10n.h:218
+#: src/ext_l10n.h:217
 msgid "Customer"
 msgstr "Client"
 
 # contrainte de longueur
-#: src/ext_l10n.h:219
+#: src/ext_l10n.h:218
 msgid "Data"
 msgstr "Données"
 
-#: src/ext_l10n.h:220
+#: src/ext_l10n.h:219
 msgid "Date"
 msgstr "Date"
 
-#: src/ext_l10n.h:221
+#: src/ext_l10n.h:220
 msgid "Datum"
 msgstr ""
 
-#: src/ext_l10n.h:222
+#: src/ext_l10n.h:221
 msgid "Dedication"
 msgstr "Dédicace"
 
-#: src/ext_l10n.h:223
+#: src/ext_l10n.h:222
 msgid "Dedicatory"
 msgstr "Dédicace"
 
-#: src/ext_l10n.h:224 src/ext_l10n.h:226 src/ext_l10n.h:228 src/ext_l10n.h:230
+#: src/ext_l10n.h:223
 msgid "Definition"
 msgstr "Définition"
 
-#: src/ext_l10n.h:225 src/ext_l10n.h:227 src/ext_l10n.h:229
+#: src/ext_l10n.h:224
 msgid "Definition*"
 msgstr "Définition*"
 
-#: src/ext_l10n.h:231
+#: src/ext_l10n.h:225
 msgid "Description"
 msgstr "Description"
 
-#: src/ext_l10n.h:232
+#: src/ext_l10n.h:226
 msgid "Dialogue"
 msgstr "Dialogue"
 
-#: src/ext_l10n.h:233
+#: src/ext_l10n.h:227
 msgid "Email"
 msgstr "Email"
 
-#: src/ext_l10n.h:234
+#: src/ext_l10n.h:228
 msgid "EMail"
 msgstr "EMail"
 
-#: src/ext_l10n.h:235
+#: src/ext_l10n.h:229
 msgid "encl"
 msgstr "PJ"
 
-#: src/ext_l10n.h:236
+#: src/ext_l10n.h:230
 msgid "Encl."
 msgstr "P.J."
 
-#: src/ext_l10n.h:237
+#: src/ext_l10n.h:231
 msgid "Encl"
 msgstr "P.J."
 
-#: src/ext_l10n.h:238
+#: src/ext_l10n.h:232
 msgid "End_All_Slides"
 msgstr "Fin_Diapos"
 
-#: src/ext_l10n.h:239
+#: src/ext_l10n.h:233
 msgid "Enumerate"
 msgstr "Énumération"
 
-#: src/ext_l10n.h:240
+#: src/ext_l10n.h:234
 msgid "Example"
 msgstr "Exemple"
 
-#: src/ext_l10n.h:241
+#: src/ext_l10n.h:235
 msgid "Example*"
 msgstr "Exemple*"
 
-#: src/ext_l10n.h:242
+#: src/ext_l10n.h:236
 msgid "Exercise"
 msgstr "Exercice"
 
-#: src/ext_l10n.h:243
+#: src/ext_l10n.h:237
 msgid "EXT."
 msgstr "EXT."
 
 # contrainte de longueur
-#: src/ext_l10n.h:244
+#: src/ext_l10n.h:238
 msgid "Extratitle"
 msgstr "TitreSuppl."
 
-#: src/ext_l10n.h:245
+#: src/ext_l10n.h:239
 msgid "Fact"
 msgstr "Fait"
 
-#: src/ext_l10n.h:246
+#: src/ext_l10n.h:240
 msgid "Fact*"
 msgstr "Fait*"
 
-#: src/ext_l10n.h:247
+#: src/ext_l10n.h:241
 msgid "FADE_IN:"
 msgstr ""
 
-#: src/ext_l10n.h:248
+#: src/ext_l10n.h:242
 msgid "FADE_OUT:"
 msgstr ""
 
-#: src/ext_l10n.h:249
+#: src/ext_l10n.h:243
+msgid "FADE_OUT"
+msgstr ""
+
+#: src/ext_l10n.h:244
 msgid "FigCaption"
 msgstr "LégendeFig"
 
-#: src/ext_l10n.h:250
+#: src/ext_l10n.h:245
 msgid "FirstAuthor"
 msgstr "PremierAuteur"
 
 # contrainte de longueur
-#: src/ext_l10n.h:251
+#: src/ext_l10n.h:246
 msgid "FirstName"
 msgstr "Prénom"
 
-#: src/ext_l10n.h:252
+#: src/ext_l10n.h:247
 msgid "FitBitmap"
 msgstr "AjusteBitmap"
 
-#: src/ext_l10n.h:253
+#: src/ext_l10n.h:248
 msgid "FitFigure"
 msgstr "AjusteFigure"
 
-#: src/ext_l10n.h:254
+#: src/ext_l10n.h:249
 msgid "Foilhead"
 msgstr ""
 
-#: src/ext_l10n.h:255
+#: src/ext_l10n.h:250
 msgid "Footernote"
 msgstr "NoteBasPage"
 
-#: src/ext_l10n.h:256
+#: src/ext_l10n.h:251
 msgid "FourAffiliations"
 msgstr "QuatreAffiliations"
 
-#: src/ext_l10n.h:257
+#: src/ext_l10n.h:252
 msgid "FourAuthors"
 msgstr "QuatreAuteurs"
 
-#: src/ext_l10n.h:258
+#: src/ext_l10n.h:253
 msgid "FrontMatter"
 msgstr ""
 
-#: src/ext_l10n.h:259
+#. now make them fit together
+#: src/ext_l10n.h:254 src/frontends/xforms/FormParagraph.C:132
+msgid "General"
+msgstr "Général"
+
+#: src/ext_l10n.h:255
 msgid "Gruss"
 msgstr "Gruss"
 
-#: src/ext_l10n.h:260
+#: src/ext_l10n.h:256
 msgid "Headnote"
 msgstr "En-tête"
 
-#: src/ext_l10n.h:261
+#: src/ext_l10n.h:257
 msgid "HTTP"
 msgstr "HTTP"
 
-#: src/ext_l10n.h:262
+#: src/ext_l10n.h:258
 msgid "IhrSchreiben"
 msgstr "IhrSchreiben"
 
-#: src/ext_l10n.h:263
+#: src/ext_l10n.h:259
 msgid "IhrZeichen"
 msgstr "IhrZeichen"
 
-#: src/ext_l10n.h:264
+#: src/ext_l10n.h:260
 msgid "Institute"
 msgstr "Institut"
 
-#: src/ext_l10n.h:265
+#: src/ext_l10n.h:261
 msgid "Institution"
 msgstr "Institution"
 
-#: src/ext_l10n.h:266
+#: src/ext_l10n.h:262
 msgid "INT."
 msgstr "INT."
 
-#: src/ext_l10n.h:267
+#: src/ext_l10n.h:263
+msgid "INTERCUT"
+msgstr ""
+
+#: src/ext_l10n.h:264
 msgid "InvisibleText"
 msgstr "TexteInvisible"
 
-#: src/ext_l10n.h:268
+#: src/ext_l10n.h:265
 msgid "Invoice"
 msgstr "Facture"
 
-#: src/ext_l10n.h:269
+#: src/ext_l10n.h:266
 msgid "Itemize"
 msgstr "ListePuces"
 
-#: src/ext_l10n.h:270 src/frontends/gnome/FormCitation.C:531
+#: src/ext_l10n.h:267 src/frontends/gnome/FormCitation.C:531
 msgid "Journal"
 msgstr "Journal"
 
-#: src/ext_l10n.h:271 src/frontends/gnome/FormIndex.C:89
+#: src/ext_l10n.h:268 src/frontends/gnome/FormIndex.C:89
 #: src/frontends/xforms/form_index.C:28
 msgid "Keyword"
 msgstr "Mot-Clé"
 
-#: src/ext_l10n.h:272
+#: src/ext_l10n.h:269
 msgid "Keywords"
 msgstr "Mots-Clés"
 
-#: src/ext_l10n.h:273
+#: src/ext_l10n.h:270
 msgid "Konto"
 msgstr "Konto"
 
-#: src/ext_l10n.h:274
+#: src/ext_l10n.h:271
 msgid "Labeling"
 msgstr "Étiquetage"
 
-#: src/ext_l10n.h:275
+#: src/ext_l10n.h:272
 msgid "Land"
 msgstr "Pays"
 
-#: src/ext_l10n.h:276
+#: src/ext_l10n.h:273
 msgid "LandscapeSlide"
 msgstr "DiapoPaysage"
 
-#: src/ext_l10n.h:277
+#: src/ext_l10n.h:274
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: src/ext_l10n.h:278
+#: src/ext_l10n.h:275
 msgid "LaTeX_Title"
 msgstr "Titre_LaTeX"
 
-#: src/ext_l10n.h:279
+#: src/ext_l10n.h:276
 msgid "Left_Header"
 msgstr "En-tête_Gauche"
 
-#: src/ext_l10n.h:280
+#: src/ext_l10n.h:277
 msgid "Lemma"
 msgstr "Lemme"
 
-#: src/ext_l10n.h:281
+#: src/ext_l10n.h:278
 msgid "Lemma*"
 msgstr "Lemme*"
 
-#: src/ext_l10n.h:282
+#: src/ext_l10n.h:279
 msgid "Letter"
 msgstr "Lettre"
 
-#: src/ext_l10n.h:283
+#: src/ext_l10n.h:280
 msgid "List"
 msgstr "Liste"
 
-#: src/ext_l10n.h:284
+#: src/ext_l10n.h:281
 msgid "ListOfSlides"
 msgstr "ListeDiapos"
 
-#: src/ext_l10n.h:285
+#: src/ext_l10n.h:282
 msgid "Literal"
 msgstr "Littéral"
 
-#: src/ext_l10n.h:286
+#: src/ext_l10n.h:283
 msgid "Location"
 msgstr "Adresse"
 
-#: src/ext_l10n.h:287
+#: src/ext_l10n.h:284
 msgid "Lowertitleback"
 msgstr "VersoTitreBas"
 
-#: src/ext_l10n.h:288
+#: src/ext_l10n.h:285
 msgid "LyX-Code"
 msgstr "LyX-Code"
 
-#: src/ext_l10n.h:289
+#: src/ext_l10n.h:286
 msgid "Mail"
 msgstr "Courrier"
 
-#: src/ext_l10n.h:290
+#: src/ext_l10n.h:287
 msgid "MarkBoth"
 msgstr "DoubleMarque"
 
-#: src/ext_l10n.h:291
+#: src/ext_l10n.h:288
 msgid "MathLetters"
 msgstr "LettresMathématiques"
 
-#: src/ext_l10n.h:292
+#: src/ext_l10n.h:289
 msgid "MeinZeichen"
 msgstr "MeinZeichen"
 
-#: src/ext_l10n.h:293
+#: src/ext_l10n.h:290
 msgid "Minisec"
 msgstr "Minisec"
 
-#: src/ext_l10n.h:294
+#: src/ext_l10n.h:291 src/frontends/xforms/Menubar_pimpl.C:257
+msgid "More"
+msgstr "Poursuivre"
+
+#: src/ext_l10n.h:292
 msgid "msnumber"
 msgstr ""
 
-#: src/ext_l10n.h:295
+#: src/ext_l10n.h:293
 msgid "My_Address"
 msgstr "Mon_Adresse"
 
-#: src/ext_l10n.h:296
+#: src/ext_l10n.h:294
 msgid "Myref"
 msgstr "Ma_Réf"
 
-#: src/ext_l10n.h:297
+#: src/ext_l10n.h:295
 msgid "MyRef"
 msgstr "MesRéfs"
 
 # Nom tout simplement ?
-#: src/ext_l10n.h:298 src/frontends/gnome/FormUrl.C:119
+#: src/ext_l10n.h:296 src/frontends/gnome/FormUrl.C:119
 msgid "Name"
 msgstr "Destinataire"
 
-#: src/ext_l10n.h:299
+#: src/ext_l10n.h:297
 msgid "Narrative"
 msgstr "Narratif"
 
-#: src/ext_l10n.h:300
+#: src/ext_l10n.h:298
 msgid "Notation"
 msgstr "Notation"
 
-#: src/ext_l10n.h:301 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
+#: src/ext_l10n.h:299 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
 #: src/insets/insetinfo.C:231
 msgid "Note"
 msgstr "Note"
 
-#: src/ext_l10n.h:302
+#: src/ext_l10n.h:300
 msgid "Note*"
 msgstr "Note*"
 
-#: src/ext_l10n.h:303
+#: src/ext_l10n.h:301
 msgid "NoteToEditor"
 msgstr "Note_À_l'Éditeur"
 
-#: src/ext_l10n.h:304
+#: src/ext_l10n.h:302
 msgid "Offprint"
 msgstr "Offprint"
 
-#: src/ext_l10n.h:305
+#: src/ext_l10n.h:303
 msgid "Offprints"
 msgstr "Offprints"
 
-#: src/ext_l10n.h:306
+#: src/ext_l10n.h:304
 msgid "Offsets"
 msgstr "Offsets"
 
-#: src/ext_l10n.h:307
+#: src/ext_l10n.h:305
 msgid "Oggetto"
 msgstr "Oggetto"
 
-#: src/ext_l10n.h:308
+#: src/ext_l10n.h:306
 msgid "Opening"
 msgstr "Ouverture"
 
-#: src/ext_l10n.h:309
+#: src/ext_l10n.h:307
 msgid "Ort"
 msgstr "Ort"
 
-#: src/ext_l10n.h:310
+#: src/ext_l10n.h:308
 msgid "Overlay"
 msgstr "SurCouche"
 
-#: src/ext_l10n.h:311
+#: src/ext_l10n.h:309
 msgid "PACS"
 msgstr ""
 
-#: src/ext_l10n.h:312
+#: src/ext_l10n.h:310
 msgid "Paragraph"
 msgstr "Paragraphe"
 
-#: src/ext_l10n.h:313
+#: src/ext_l10n.h:311
 msgid "Paragraph*"
 msgstr "Paragraphe*"
 
-#: src/ext_l10n.h:314
+#: src/ext_l10n.h:312
 msgid "Part"
 msgstr "Partie"
 
-#: src/ext_l10n.h:315
+#: src/ext_l10n.h:313
 msgid "Part*"
 msgstr "Partie*"
 
-#: src/ext_l10n.h:316
+#: src/ext_l10n.h:314
 msgid "Petit"
 msgstr "Petit"
 
-#: src/ext_l10n.h:317
+#: src/ext_l10n.h:315
 msgid "Phone"
 msgstr "Téléphone"
 
 # Placement ou endroit ?
-#: src/ext_l10n.h:318
+#: src/ext_l10n.h:316
 msgid "Place"
 msgstr ""
 
-#: src/ext_l10n.h:319
+#: src/ext_l10n.h:317
 msgid "PlaceFigure"
 msgstr "PlacementFigure"
 
-#: src/ext_l10n.h:320
+#: src/ext_l10n.h:318
 msgid "PlaceTable"
 msgstr "PlacementTableau"
 
-#: src/ext_l10n.h:321
+#: src/ext_l10n.h:319
 msgid "PortraitSlide"
 msgstr "DiapoPortrait"
 
-#: src/ext_l10n.h:322
+#: src/ext_l10n.h:320
 msgid "PostalCommend"
 msgstr ""
 
-#: src/ext_l10n.h:323
+#: src/ext_l10n.h:321
 msgid "Postvermerk"
 msgstr "Postvermerk"
 
-#: src/ext_l10n.h:324
+#: src/ext_l10n.h:322
 msgid "Preprint"
 msgstr "Preprint"
 
-#: src/ext_l10n.h:325
+#: src/ext_l10n.h:323
 msgid "Problem"
 msgstr "Problème"
 
-#: src/ext_l10n.h:326
+#: src/ext_l10n.h:324
 msgid "ProgressContents"
 msgstr ""
 
-#: src/ext_l10n.h:327
+#: src/ext_l10n.h:325
 msgid "Proof"
 msgstr "Preuve"
 
-#: src/ext_l10n.h:328
+#: src/ext_l10n.h:326
 msgid "Property"
 msgstr "Propriété"
 
-#: src/ext_l10n.h:329
+#: src/ext_l10n.h:327
 msgid "Proposition"
 msgstr "Proposition"
 
-#: src/ext_l10n.h:330
+#: src/ext_l10n.h:328
 msgid "Proposition*"
 msgstr "Proposition*"
 
-#: src/ext_l10n.h:331
+#: src/ext_l10n.h:329
 msgid "ps"
 msgstr "ps"
 
-#: src/ext_l10n.h:332
+#: src/ext_l10n.h:330
 msgid "PS"
 msgstr "PS"
 
-#: src/ext_l10n.h:333
+#: src/ext_l10n.h:331
 msgid "Publishers"
 msgstr "Éditeurs"
 
-#: src/ext_l10n.h:334
+#: src/ext_l10n.h:332
 msgid "Question"
 msgstr "Question"
 
-#: src/ext_l10n.h:335
+#: src/ext_l10n.h:333
 msgid "Quotation"
 msgstr "Citation"
 
-#: src/ext_l10n.h:336
+#: src/ext_l10n.h:334
 msgid "Quote"
 msgstr "Cite"
 
-#: src/ext_l10n.h:337
+#: src/ext_l10n.h:335
 msgid "Received"
 msgstr "Reçu"
 
-#: src/ext_l10n.h:338 src/frontends/kde/refdlg.C:62
+#: src/ext_l10n.h:336 src/frontends/kde/refdlg.C:62
 #: src/frontends/xforms/FormRef.C:36
 msgid "Reference"
 msgstr "Référence"
 
-#: src/ext_l10n.h:339
+#: src/ext_l10n.h:337
 msgid "References"
 msgstr "Références"
 
-#: src/ext_l10n.h:340
+#: src/ext_l10n.h:338
 msgid "Remark"
 msgstr "Remarque"
 
-#: src/ext_l10n.h:341
+#: src/ext_l10n.h:339
 msgid "Remark*"
 msgstr "Remarque*"
 
-#: src/ext_l10n.h:342
+#: src/ext_l10n.h:340
 msgid "Remarks"
 msgstr "Remarques"
 
-#: src/ext_l10n.h:343
+#: src/ext_l10n.h:341
 msgid "RetourAdresse"
 msgstr "AdresseRetour"
 
-#: src/ext_l10n.h:344
+#: src/ext_l10n.h:342
 msgid "ReturnAddress"
 msgstr "AdresseRetour"
 
-#: src/ext_l10n.h:345
+#: src/ext_l10n.h:343
 msgid "REVTEX_Title"
 msgstr "Titre_REVTEX"
 
-#: src/ext_l10n.h:346
+#: src/ext_l10n.h:344
 msgid "Right_Address"
 msgstr "Adresse_À_Droite"
 
-#: src/ext_l10n.h:347
+#: src/ext_l10n.h:345
 msgid "Right_Header"
 msgstr "En-tête_Droite"
 
-#: src/ext_l10n.h:348
+#: src/ext_l10n.h:346
 msgid "RightHeader"
 msgstr "En-têteDroite"
 
-#: src/ext_l10n.h:349
+#: src/ext_l10n.h:347
 msgid "Rotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:350
+#: src/ext_l10n.h:348
+msgid "RunningAuthor"
+msgstr "AuteurCourant"
+
+#: src/ext_l10n.h:349
 msgid "Running_LaTeX_Title"
-msgstr ""
+msgstr "Titre_LaTeX_Courant"
+
+#: src/ext_l10n.h:350
+msgid "RunningTitle"
+msgstr "TitreCourant"
 
 #: src/ext_l10n.h:351
-msgid "SCENE"
-msgstr "SCENE"
+msgid "Scene"
+msgstr "Scène"
 
 #: src/ext_l10n.h:352
-msgid "SCENE*"
-msgstr "SCENE*"
+msgid "SCENE"
+msgstr "SCÈNE"
 
 #: src/ext_l10n.h:353
+msgid "SCENE*"
+msgstr "SCÈNE*"
+
+#: src/ext_l10n.h:354
 msgid "Scrap"
 msgstr "Scrap"
 
-#: src/ext_l10n.h:354
+#: src/ext_l10n.h:355
 msgid "Section"
 msgstr "Section"
 
-#: src/ext_l10n.h:355
+#: src/ext_l10n.h:356
 msgid "Section*"
 msgstr "Section*"
 
-#: src/ext_l10n.h:356
+#: src/ext_l10n.h:357
 msgid "Send_To_Address"
 msgstr "Envoi_À_Adresse"
 
-#: src/ext_l10n.h:357
+#: src/ext_l10n.h:358
 msgid "Seriate"
 msgstr ""
 
-#: src/ext_l10n.h:358
+#: src/ext_l10n.h:359
 msgid "SGML"
 msgstr "SGML"
 
-#: src/ext_l10n.h:359
+#: src/ext_l10n.h:360
 msgid "ShortFoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:360
+#: src/ext_l10n.h:361
 msgid "ShortRotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:361
+#: src/ext_l10n.h:362
 msgid "ShortTitle"
 msgstr "TitreCourt"
 
-#: src/ext_l10n.h:362
+#: src/ext_l10n.h:363
 msgid "Signature"
 msgstr "Signature"
 
 # contrainte de longueur
-#: src/ext_l10n.h:363
+#: src/ext_l10n.h:364
 msgid "Slide"
 msgstr "Diapo"
 
 # contrainte de longueur
-#: src/ext_l10n.h:364
+#: src/ext_l10n.h:365
 msgid "Slide*"
 msgstr "Diapo*"
 
-#: src/ext_l10n.h:365
+#: src/ext_l10n.h:366
 msgid "SlideContents"
 msgstr "ContenuDiapo"
 
-#: src/ext_l10n.h:366
+#: src/ext_l10n.h:367
 msgid "SlideHeading"
 msgstr "TitreDiapo"
 
-#: src/ext_l10n.h:367
+#: src/ext_l10n.h:368
 msgid "SlideSubHeading"
 msgstr "SousTitreDiapo"
 
-#: src/ext_l10n.h:368
+#: src/ext_l10n.h:369
 msgid "Solution"
 msgstr "Solution"
 
 # ou "Acteur" ou "Intervenant" (Hollywood/Broadway)
-#: src/ext_l10n.h:369
+#: src/ext_l10n.h:370
 msgid "Speaker"
 msgstr "Personnage"
 
 # contrainte de longueur
-#: src/ext_l10n.h:370
+#: src/ext_l10n.h:371
 msgid "Specialmail"
 msgstr "CourrierSpécial"
 
-#: src/ext_l10n.h:371
+#: src/ext_l10n.h:372
 msgid "Stadt"
 msgstr "Stadt"
 
-#: src/ext_l10n.h:372
+#: src/ext_l10n.h:373
 msgid "Standard"
 msgstr "Standard"
 
-#: src/ext_l10n.h:373
+#: src/ext_l10n.h:374
 msgid "State"
 msgstr "État"
 
-#: src/ext_l10n.h:374
+#: src/ext_l10n.h:375
 msgid "Strasse"
 msgstr "Strasse"
 
-#: src/ext_l10n.h:375
+#: src/ext_l10n.h:376
 msgid "Street"
 msgstr "Rue"
 
-#: src/ext_l10n.h:376
+#: src/ext_l10n.h:377
 msgid "Subject"
 msgstr "Sujet"
 
-#: src/ext_l10n.h:377
+#: src/ext_l10n.h:378
 msgid "Subjectclass"
 msgstr ""
 
-#: src/ext_l10n.h:378
+#: src/ext_l10n.h:379
 msgid "Subparagraph"
 msgstr "SousParagraphe"
 
-#: src/ext_l10n.h:379
+#: src/ext_l10n.h:380
 msgid "Subparagraph*"
 msgstr "SousParagraphe*"
 
-#: src/ext_l10n.h:380 src/ext_l10n.h:382 src/ext_l10n.h:384 src/ext_l10n.h:386
-#: src/ext_l10n.h:388
+#: src/ext_l10n.h:381
 msgid "Subsection"
 msgstr "SousSection"
 
-#: src/ext_l10n.h:381 src/ext_l10n.h:383 src/ext_l10n.h:385 src/ext_l10n.h:387
+#: src/ext_l10n.h:382
 msgid "Subsection*"
 msgstr "SousSection*"
 
-#: src/ext_l10n.h:389
+#: src/ext_l10n.h:383
 msgid "SubSection"
 msgstr "SousSection"
 
-#: src/ext_l10n.h:390
+#: src/ext_l10n.h:384
 msgid "Subsubsection"
 msgstr "SousSousSection"
 
-#: src/ext_l10n.h:391
+#: src/ext_l10n.h:385
 msgid "Subsubsection*"
 msgstr "SousSousSection*"
 
-#: src/ext_l10n.h:392
+#: src/ext_l10n.h:386
 msgid "Subtitle"
 msgstr "SousTitre"
 
-#: src/ext_l10n.h:393
+#: src/ext_l10n.h:387
 msgid "SubTitle"
 msgstr "SousTitre"
 
-#: src/ext_l10n.h:394
+#: src/ext_l10n.h:388
 msgid "Summary"
 msgstr "Résumé"
 
-#: src/ext_l10n.h:395
+#: src/ext_l10n.h:389
 msgid "Surname"
 msgstr "Surnom"
 
-#: src/ext_l10n.h:396
+#: src/ext_l10n.h:390
 msgid "TableComments"
 msgstr "RemarquesTableau"
 
-#: src/ext_l10n.h:397
+#: src/ext_l10n.h:391
 msgid "TableRefs"
 msgstr "RéfsTableau"
 
-#: src/ext_l10n.h:398
+#: src/ext_l10n.h:392
 msgid "Telefax"
 msgstr "Telefax"
 
-#: src/ext_l10n.h:399
+#: src/ext_l10n.h:393
 msgid "Telefon"
 msgstr "Telefon"
 
-#: src/ext_l10n.h:400
+#: src/ext_l10n.h:394
 msgid "Telephone"
 msgstr "Téléphone"
 
-#: src/ext_l10n.h:401
+#: src/ext_l10n.h:395
 msgid "Telex"
 msgstr "Telex"
 
-#: src/ext_l10n.h:402
+#: src/ext_l10n.h:396
 msgid "Thanks"
 msgstr "Remerciements"
 
-#: src/ext_l10n.h:403
+#: src/ext_l10n.h:397
 msgid "Theorem"
 msgstr "Théorème"
 
-#: src/ext_l10n.h:404
+#: src/ext_l10n.h:398
 msgid "Theorem*"
 msgstr "Théorème*"
 
-#: src/ext_l10n.h:405
+#: src/ext_l10n.h:399
 msgid "TheoremTemplate"
 msgstr "ModèleThéorème"
 
-#: src/ext_l10n.h:406
+#: src/ext_l10n.h:400
 msgid "Thesaurus"
 msgstr ""
 
-#: src/ext_l10n.h:407
+#: src/ext_l10n.h:401
 msgid "ThickLine"
 msgstr "LigneÉpaisse"
 
-#: src/ext_l10n.h:408
+#: src/ext_l10n.h:402
 msgid "ThreeAffiliations"
 msgstr "TroisAffiliations"
 
-#: src/ext_l10n.h:409
+#: src/ext_l10n.h:403
 msgid "ThreeAuthors"
 msgstr "TroisAuteurs"
 
-#: src/ext_l10n.h:410
+#: src/ext_l10n.h:404
 msgid "TickList"
 msgstr ""
 
-#: src/ext_l10n.h:411 src/frontends/gnome/FormCitation.C:529
+#: src/ext_l10n.h:405 src/frontends/gnome/FormCitation.C:529
 msgid "Title"
 msgstr "Titre"
 
-#: src/ext_l10n.h:412
+#: src/ext_l10n.h:406
 msgid "Titlehead"
 msgstr "En-têteTitre"
 
-#: src/ext_l10n.h:413
+#: src/ext_l10n.h:407
+msgid "TITLE_OVER:"
+msgstr ""
+
+#: src/ext_l10n.h:408
 msgid "TOC_Author"
 msgstr "Auteur_TdM"
 
-#: src/ext_l10n.h:414
+#: src/ext_l10n.h:409
 msgid "TOC_Title"
 msgstr "Titre_TdM"
 
-#: src/ext_l10n.h:415
+#: src/ext_l10n.h:410
 msgid "Topic"
 msgstr ""
 
-#: src/ext_l10n.h:416
+#: src/ext_l10n.h:411
 msgid "Town"
 msgstr "Ville"
 
-#: src/ext_l10n.h:417
+#: src/ext_l10n.h:412
 msgid "Transition"
 msgstr "Transition"
 
-#: src/ext_l10n.h:418
+#: src/ext_l10n.h:413
 msgid "Trans_Keywords"
 msgstr ""
 
-#: src/ext_l10n.h:419
+#: src/ext_l10n.h:414
 msgid "TranslatedAbstract"
 msgstr "AbstractTraduit"
 
-#: src/ext_l10n.h:420
+#: src/ext_l10n.h:415
 msgid "Translated_Title"
 msgstr "Titre_Traduit"
 
-#: src/ext_l10n.h:421
+#: src/ext_l10n.h:416
 msgid "Translator"
 msgstr "Traducteur"
 
-#: src/ext_l10n.h:422
+#: src/ext_l10n.h:417
 msgid "TwoAffiliations"
 msgstr "DeuxAffiliations"
 
-#: src/ext_l10n.h:423
+#: src/ext_l10n.h:418
 msgid "TwoAuthors"
 msgstr "DeuxAuteurs"
 
-#: src/ext_l10n.h:424
+#: src/ext_l10n.h:419
 msgid "Unterschrift"
 msgstr "Unterschrift"
 
-#: src/ext_l10n.h:425
+#: src/ext_l10n.h:420
 msgid "Uppertitleback"
 msgstr "VersoTitreHaut"
 
 #. tooltips
-#: src/ext_l10n.h:426 src/frontends/gnome/FormUrl.C:117
+#: src/ext_l10n.h:421 src/frontends/gnome/FormUrl.C:117
 #: src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
 msgid "URL"
 msgstr "URL"
 
 # Texto mieux que "Mot à mot" ? - AR
 # Retour à verbatim (cf intro) - JPC
-#: src/ext_l10n.h:427
+#: src/ext_l10n.h:422
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/ext_l10n.h:428
+#: src/ext_l10n.h:423
 msgid "Verse"
 msgstr "Vers"
 
-#: src/ext_l10n.h:429
+#: src/ext_l10n.h:424
 msgid "Verteiler"
 msgstr "Verteiler"
 
-#: src/ext_l10n.h:430
+#: src/ext_l10n.h:425
 msgid "VisibleText"
 msgstr "TexteVisible"
 
-#: src/ext_l10n.h:431
+#: src/ext_l10n.h:426
 msgid "Yourmail"
 msgstr "Votremail"
 
-#: src/ext_l10n.h:432
+#: src/ext_l10n.h:427
 msgid "YourMail"
 msgstr "VotreMail"
 
-#: src/ext_l10n.h:433
+#: src/ext_l10n.h:428
 msgid "Yourref"
 msgstr "Votreréf"
 
-#: src/ext_l10n.h:434
+#: src/ext_l10n.h:429
 msgid "YourRef"
 msgstr "VotreRéf"
 
-#: src/ext_l10n.h:435
+#: src/ext_l10n.h:430
 msgid "Zusatz"
 msgstr "Zusatz"
 
-#: src/ext_l10n.h:436
+#: src/ext_l10n.h:431
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: src/ext_l10n.h:437
+#: src/ext_l10n.h:432
 msgid "American"
 msgstr "Américain"
 
-#: src/ext_l10n.h:438
+#: src/ext_l10n.h:433
 msgid "Arabic"
 msgstr "Arabe"
 
-#: src/ext_l10n.h:439
+#: src/ext_l10n.h:434
 msgid "Austrian"
 msgstr "Autrichien"
 
-#: src/ext_l10n.h:440
+#: src/ext_l10n.h:435
 msgid "Bahasa"
 msgstr "Bahasa"
 
-#: src/ext_l10n.h:441
+#: src/ext_l10n.h:436
 msgid "Portuguese (Brazil)"
 msgstr "Portugais (Brésil)"
 
-#: src/ext_l10n.h:442
+#: src/ext_l10n.h:437
 msgid "Breton"
 msgstr "Breton"
 
-#: src/ext_l10n.h:443
+#: src/ext_l10n.h:438
 msgid "British"
 msgstr "Anglais Britannique"
 
-#: src/ext_l10n.h:444
+#: src/ext_l10n.h:439
 msgid "Canadian"
 msgstr "Canadien"
 
-#: src/ext_l10n.h:445
+#: src/ext_l10n.h:440
 msgid "French Canadian"
 msgstr "Français Canadien"
 
-#: src/ext_l10n.h:446
+#: src/ext_l10n.h:441
 msgid "Catalan"
 msgstr "Catalan"
 
-#: src/ext_l10n.h:447
+#: src/ext_l10n.h:442
 msgid "Croatian"
 msgstr "Croate"
 
-#: src/ext_l10n.h:448
+#: src/ext_l10n.h:443
 msgid "Czech"
 msgstr "Tchèque"
 
-#: src/ext_l10n.h:449
+#: src/ext_l10n.h:444
 msgid "Danish"
 msgstr "Danois"
 
-#: src/ext_l10n.h:450
+#: src/ext_l10n.h:445
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: src/ext_l10n.h:451 src/language.C:35
+#: src/ext_l10n.h:446 src/language.C:35
 msgid "English"
 msgstr "Anglais"
 
-#: src/ext_l10n.h:452
+#: src/ext_l10n.h:447
 msgid "Esperanto"
 msgstr "Espéranto"
 
-#: src/ext_l10n.h:453
+#: src/ext_l10n.h:448
 msgid "Estonian"
 msgstr "Estonien"
 
-#: src/ext_l10n.h:454
+#: src/ext_l10n.h:449
 msgid "Finnish"
 msgstr "Finnois"
 
-#: src/ext_l10n.h:455
+#: src/ext_l10n.h:450
 msgid "French"
 msgstr "Français"
 
-#: src/ext_l10n.h:456
+#: src/ext_l10n.h:451
 msgid "French (GUTenberg)"
 msgstr "Français (GUTenberg)"
 
-#: src/ext_l10n.h:457
+#: src/ext_l10n.h:452
 msgid "Galician"
 msgstr "Galicien"
 
-#: src/ext_l10n.h:458
+#: src/ext_l10n.h:453
 msgid "German"
 msgstr "Allemand"
 
-#: src/ext_l10n.h:459
+#: src/ext_l10n.h:454
 msgid "German (new spelling)"
 msgstr "Allemand (nouvelle orthographe)"
 
-#: src/ext_l10n.h:460 src/mathed/math_forms.C:26
+#: src/ext_l10n.h:455 src/mathed/math_forms.C:26
 msgid "Greek"
 msgstr "Grec"
 
-#: src/ext_l10n.h:461
+#: src/ext_l10n.h:456
 msgid "Hebrew"
 msgstr "Hébreu"
 
-#: src/ext_l10n.h:462
+#: src/ext_l10n.h:457
 msgid "Irish"
 msgstr "Irlandais"
 
-#: src/ext_l10n.h:463
+#: src/ext_l10n.h:458
 msgid "Italian"
 msgstr "Italien"
 
-#: src/ext_l10n.h:464
+#: src/ext_l10n.h:459
 msgid "Lsorbian"
 msgstr "Bas-Sorbe"
 
-#: src/ext_l10n.h:465
+#: src/ext_l10n.h:460
 msgid "Magyar"
 msgstr "Magyar"
 
-#: src/ext_l10n.h:466
+#: src/ext_l10n.h:461
 msgid "Norsk"
 msgstr "Norvégien"
 
-#: src/ext_l10n.h:467
+#: src/ext_l10n.h:462
 msgid "Polish"
 msgstr "Polonais"
 
-#: src/ext_l10n.h:468
+#: src/ext_l10n.h:463
 msgid "Portugese"
 msgstr "Portugais"
 
-#: src/ext_l10n.h:469
+#: src/ext_l10n.h:464
 msgid "Romanian"
 msgstr "Roumain"
 
-#: src/ext_l10n.h:470
+#: src/ext_l10n.h:465
 msgid "Russian"
 msgstr "Russe"
 
-#: src/ext_l10n.h:471
+#: src/ext_l10n.h:466
 msgid "Scottish"
 msgstr "Écossais"
 
-#: src/ext_l10n.h:472
+#: src/ext_l10n.h:467
 msgid "Serbian"
 msgstr "Serbe"
 
-#: src/ext_l10n.h:473
+#: src/ext_l10n.h:468
 msgid "Serbo-Croatian"
 msgstr "Serbo-Croate"
 
-#: src/ext_l10n.h:474
+#: src/ext_l10n.h:469
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: src/ext_l10n.h:475
+#: src/ext_l10n.h:470
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: src/ext_l10n.h:476
+#: src/ext_l10n.h:471
 msgid "Slovene"
 msgstr "Slovène"
 
-#: src/ext_l10n.h:477
+#: src/ext_l10n.h:472
 msgid "Swedish"
 msgstr "Suédois"
 
-#: src/ext_l10n.h:478
+#: src/ext_l10n.h:473
 msgid "Thai"
 msgstr "Thaï"
 
-#: src/ext_l10n.h:479
+#: src/ext_l10n.h:474
 msgid "Turkish"
 msgstr "Turc"
 
-#: src/ext_l10n.h:480
+#: src/ext_l10n.h:475
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: src/ext_l10n.h:481
+#: src/ext_l10n.h:476
 msgid "Usorbian"
 msgstr "Haut-Sorbe"
 
-#: src/ext_l10n.h:482
+#: src/ext_l10n.h:477
 msgid "Welsh"
 msgstr "Gallois"
 
@@ -4025,7 +4083,7 @@ msgstr " paragraphes n'ont pas pu être convertis"
 #. problem changing class -- warn user and retain old style
 #: src/frontends/xforms/FormDocument.C:439
 #: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1108
+#: src/frontends/xforms/FormDocument.C:1107
 msgid "Conversion Errors!"
 msgstr "Erreurs de conversion !"
 
@@ -4038,7 +4096,7 @@ msgid "Errors loading new document class."
 msgstr "Erreurs au chargement de la nouvelle classe."
 
 #: src/frontends/xforms/FormDocument.C:448
-#: src/frontends/xforms/FormDocument.C:1110
+#: src/frontends/xforms/FormDocument.C:1109
 msgid "Reverting to original document class."
 msgstr "Retour à la classe originelle."
 
@@ -4046,15 +4104,15 @@ msgstr "Retour à la classe originelle."
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document en lecture seule. Modifications de style interdites."
 
-#: src/frontends/xforms/FormDocument.C:1100
+#: src/frontends/xforms/FormDocument.C:1099
 msgid "Should I set some parameters to"
 msgstr "Dois-je donner moi-même à certains paramètres"
 
-#: src/frontends/xforms/FormDocument.C:1101
+#: src/frontends/xforms/FormDocument.C:1100
 msgid "the defaults of this document class?"
 msgstr "leur valeur par défaut dans cette classe ?"
 
-#: src/frontends/xforms/FormDocument.C:1109
+#: src/frontends/xforms/FormDocument.C:1108
 msgid "Unable to switch to new document class."
 msgstr "Impossible de passer à la nouvelle classe de document."
 
@@ -4414,11 +4472,6 @@ msgstr "Style de Paragraphe"
 #: src/frontends/xforms/FormParagraph.C:95
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr " Aucun | Défaut | Petit | Moyen | Grand | Ressort Vertical | Valeur "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:132
-msgid "General"
-msgstr "Général"
 
 #: src/frontends/xforms/FormParagraph.C:680
 #: src/frontends/xforms/FormParagraph.C:717
@@ -5627,10 +5680,6 @@ msgstr "ERREUR ! Impossible d'imprimer !"
 #: src/frontends/xforms/input_validators.C:103
 msgid "Check 'range of pages'!"
 msgstr "Vérifier les pages sélectionnées !"
-
-#: src/frontends/xforms/Menubar_pimpl.C:257
-msgid "More"
-msgstr "Poursuivre"
 
 #: src/frontends/xforms/Menubar_pimpl.C:298
 #, no-c-format
@@ -7664,7 +7713,7 @@ msgstr " !"
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Type de fichier manquant [par ex. latex, ps...] après "
 
-#: src/lyxrc.C:1644
+#: src/lyxrc.C:1650
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -7672,7 +7721,7 @@ msgstr ""
 "L'encodage de police pour le paquetage LaTeX2e fontenc. T1 est vivement "
 "recommandé pour toutes les langues autres que l'anglais."
 
-#: src/lyxrc.C:1648
+#: src/lyxrc.C:1654
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -7680,55 +7729,55 @@ msgstr ""
 "L'imprimante par défaut. Si aucune n'est spécifiée, LyX se sert de la "
 "variable d'environnement PRINTER."
 
-#: src/lyxrc.C:1652
+#: src/lyxrc.C:1658
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Votre programme d'impression favori, par ex. \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:1656
+#: src/lyxrc.C:1662
 msgid "The option to print only even pages."
 msgstr "L'option pour n'imprimer que les pages paires."
 
-#: src/lyxrc.C:1660
+#: src/lyxrc.C:1666
 msgid "The option to print only odd pages."
 msgstr "L'option pour n'imprimer que les pages impaires."
 
-#: src/lyxrc.C:1664
+#: src/lyxrc.C:1670
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "L'option pour spécifier la liste des pages à imprimer, séparées par une "
 "virgule"
 
-#: src/lyxrc.C:1668
+#: src/lyxrc.C:1674
 msgid "The option for specifying the number of copies to print."
 msgstr "L'option pour spécifier le nombre de copies à imprimer."
 
-#: src/lyxrc.C:1672
+#: src/lyxrc.C:1678
 msgid "The option for specifying whether the copies should be collated."
 msgstr "L'option pour spécifier si les copies doivent être accolées."
 
-#: src/lyxrc.C:1676
+#: src/lyxrc.C:1682
 msgid "The option to reverse the order of the pages printed."
 msgstr "L'option pour inverser l'ordre d'impression des pages."
 
-#: src/lyxrc.C:1680
+#: src/lyxrc.C:1686
 msgid "The option to print out in landscape."
 msgstr "L'option pour imprimer en format paysage."
 
-#: src/lyxrc.C:1684
+#: src/lyxrc.C:1690
 msgid "The option to specify paper type."
 msgstr "L'option pour spécifier le type de papier."
 
-#: src/lyxrc.C:1688
+#: src/lyxrc.C:1694
 msgid "Option to specify the dimensions of the print paper."
 msgstr "L'option pour spécifier les dimensions du papier."
 
-#: src/lyxrc.C:1692
+#: src/lyxrc.C:1698
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "L'option à transmettre au programme d'impression pour imprimer sur une "
 "imprimante donnée."
 
-#: src/lyxrc.C:1696
+#: src/lyxrc.C:1702
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -7736,19 +7785,19 @@ msgstr ""
 "Sélectionnez pour que LyX transmette le nom de l'imprimante de destination à "
 "votre commande d'impression."
 
-#: src/lyxrc.C:1700
+#: src/lyxrc.C:1706
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 "L'option à transmettre au programme d'impression pour imprimer dans un "
 "fichier donné."
 
-#: src/lyxrc.C:1704
+#: src/lyxrc.C:1710
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 "L'extension du fichier de sortie du programme d'impression. D'habitude c'est "
 "\"ps\"."
 
-#: src/lyxrc.C:1708
+#: src/lyxrc.C:1714
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -7756,7 +7805,7 @@ msgstr ""
 "Options supplémentaires à transmettre au programme d'impression après toutes "
 "les autres, mais avant le nom du fichier DVI à imprimer."
 
-#: src/lyxrc.C:1712
+#: src/lyxrc.C:1718
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -7766,7 +7815,7 @@ msgstr ""
 "puis appelle sur ce fichier un programme de spoule d'impression séparé, avec "
 "le nom et les paramètres indiqués."
 
-#: src/lyxrc.C:1716
+#: src/lyxrc.C:1722
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -7774,7 +7823,7 @@ msgstr ""
 "Si vous spécifiez un nom d'imprimante dans la fenêtre Imprimer, le paramètre "
 "est transmis avec le nom de l'imprimante à la commande de spoule."
 
-#: src/lyxrc.C:1720
+#: src/lyxrc.C:1726
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -7782,7 +7831,7 @@ msgstr ""
 "LyX détecte tout seul la résolution de votre moniteur en DPI (points par "
 "pouce). Si ça ne va pas, changez le réglage ici."
 
-#: src/lyxrc.C:1725
+#: src/lyxrc.C:1731
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -7791,49 +7840,49 @@ msgstr ""
 "Le facteur d'agrandissement des polices d'écran. Avec 100% les polices "
 "feront à peu près la même taille que sur le papier."
 
-#: src/lyxrc.C:1729
+#: src/lyxrc.C:1735
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Les tailles de police utilisées pour calculer l'ajustement des polices "
 "d'écran"
 
-#: src/lyxrc.C:1735
+#: src/lyxrc.C:1741
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Les polices d'écran dans lesquelles s'affiche le texte en cours d'édition."
 
-#: src/lyxrc.C:1739
+#: src/lyxrc.C:1745
 msgid "The font for menus (and groups titles in popups)."
 msgstr "La police des menus (et des onglets des fenêtres)."
 
-#: src/lyxrc.C:1743
+#: src/lyxrc.C:1749
 msgid "The font for popups."
 msgstr "La police des fenêtres."
 
-#: src/lyxrc.C:1747
+#: src/lyxrc.C:1753
 msgid "The encoding for the screen fonts."
 msgstr "L'encodage des polices d'écran."
 
-#: src/lyxrc.C:1751
+#: src/lyxrc.C:1757
 msgid "The encoding for the menu/popups fonts."
 msgstr "L'encodage de police des menus et fenêtres."
 
-#: src/lyxrc.C:1758
+#: src/lyxrc.C:1764
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "L'intervalle de temps entre deux sauvegardes automatiques (en secondes). 0 "
 "signifie pas de sauvegarde."
 
-#: src/lyxrc.C:1762
+#: src/lyxrc.C:1768
 msgid "The default path for your documents."
 msgstr "Le répertoire par défaut de vos documents."
 
-#: src/lyxrc.C:1766
+#: src/lyxrc.C:1772
 msgid "The path that LyX will set when offering to choose a template."
 msgstr "Le répertoire dans lequel LyX enregistre par défaut les modèles."
 
-#: src/lyxrc.C:1770
+#: src/lyxrc.C:1776
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -7841,7 +7890,7 @@ msgstr ""
 "LyX y mettra ses répertoires temporaires. Ils seront effacés quand vous "
 "quitterez LyX."
 
-#: src/lyxrc.C:1774
+#: src/lyxrc.C:1780
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
@@ -7849,11 +7898,11 @@ msgstr ""
 "Sélectionnez si vous voulez utiliser une structure de répertoires "
 "temporaires pour stocker les sorties TeX temporaires."
 
-#: src/lyxrc.C:1778
+#: src/lyxrc.C:1784
 msgid "The file where the last-files information should be stored."
 msgstr "Le fichier qui retient les fichiers récemment ouverts."
 
-#: src/lyxrc.C:1782
+#: src/lyxrc.C:1788
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -7861,7 +7910,7 @@ msgstr ""
 "Désélectionnez si vous ne voulez pas que le texte sélectionné soit remplacé "
 "automatiquement par ce que vous tapez."
 
-#: src/lyxrc.C:1786
+#: src/lyxrc.C:1792
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
@@ -7869,15 +7918,15 @@ msgstr ""
 "Cochez pour que LyX se charge de gérer les touches mortes (comme l'accent "
 "cironflexe) définies sur votre clavier."
 
-#: src/lyxrc.C:1791
+#: src/lyxrc.C:1797
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Démarre le serveur LyX. Les tubes reçoivent l'extension supplémentaire "
-"\".in\" et \".out\". Réservé aux utilisateurs avancés."
+"Démarre le serveur LyX. Les tubes reçoivent l'extension supplémentaire \".in"
+"\" et \".out\". Réservé aux utilisateurs avancés."
 
-#: src/lyxrc.C:1795
+#: src/lyxrc.C:1801
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -7885,7 +7934,7 @@ msgstr ""
 "Fichier de raccourcis clavier (bind). Vous pouvez mettre son chemin absolu, "
 "ou bien LyX cherchera dans ses répertoires bind/ global et local."
 
-#: src/lyxrc.C:1799
+#: src/lyxrc.C:1805
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -7893,7 +7942,7 @@ msgstr ""
 "Le fichier d'interface utilisateur (UI). Vous pouvez mettre son chemin "
 "absolu, ou bien LyX cherchera dans ses répertoires ui/ global et local."
 
-#: src/lyxrc.C:1805
+#: src/lyxrc.C:1811
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -7901,7 +7950,7 @@ msgstr ""
 "Pour choisir le fichier de réaffectation clavier. Vous en avez besoin si "
 "vous tapez par exemple des documents en allemand sur un clavier français."
 
-#: src/lyxrc.C:1819
+#: src/lyxrc.C:1825
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
@@ -7911,7 +7960,7 @@ msgstr ""
 "sortie ASCII. Par ex. \"groff -t -Tlatin1 $$FName\" où $$FName est le "
 "fichier d'entrée. Si vous mettez \"none\", LyX utilise une fonction interne."
 
-#: src/lyxrc.C:1823
+#: src/lyxrc.C:1829
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
@@ -7919,22 +7968,22 @@ msgstr ""
 "Longueur maximum d'une ligne dans un fichier exporté en ASCII (LaTeX, SGML "
 "ou texte brut)."
 
-#: src/lyxrc.C:1827
+#: src/lyxrc.C:1833
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr ""
 "Nombre maximum de fichiers récents. On peut en avoir jusqu'à 9 dans le menu "
 "Fichier."
 
-#: src/lyxrc.C:1831
+#: src/lyxrc.C:1837
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Sélectionnez pour vérifier si les fichiers récents existent toujours."
 
-#: src/lyxrc.C:1838
+#: src/lyxrc.C:1844
 msgid "Specify the default paper size."
 msgstr "Spécifie la taille de papier par défaut."
 
 # Trouver un meilleur exemple !
-#: src/lyxrc.C:1845
+#: src/lyxrc.C:1851
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -7942,11 +7991,11 @@ msgstr ""
 "Autoriser ou non les mots composés accolés, comme \"diskdrive\" pour \"disk "
 "drive\"."
 
-#: src/lyxrc.C:1849
+#: src/lyxrc.C:1855
 msgid "What command runs the spell checker?"
 msgstr "Quelle commande lance le correcteur orthographique ?"
 
-#: src/lyxrc.C:1853
+#: src/lyxrc.C:1859
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
@@ -7956,24 +8005,24 @@ msgstr ""
 "vous n'arrivez pas à vérifier les mots avec des caractères accentués. Ne "
 "marche pas forcément avec tous les dictionnaires."
 
-#: src/lyxrc.C:1858
+#: src/lyxrc.C:1864
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Spécifie une autre langue. La langue par défaut est celle du document."
 
-#: src/lyxrc.C:1863
+#: src/lyxrc.C:1869
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
-"Spécifie un fichier de dictionnaire personnel. Par exemple "
-"\"ispell_francais\"."
+"Spécifie un fichier de dictionnaire personnel. Par exemple \"ispell_francais"
+"\"."
 
-#: src/lyxrc.C:1868
+#: src/lyxrc.C:1874
 msgid "Specify additional chars that can be part of a word."
 msgstr "Spécifie des caractères spéciaux pouvant faire partie d'un mot."
 
-#: src/lyxrc.C:1872
+#: src/lyxrc.C:1878
 msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
@@ -7983,15 +8032,15 @@ msgstr ""
 "existante la plus proche. Désélectionnez si vos polices ajustées ne sont pas "
 "belles et si vous avez beaucoup de tailles de police."
 
-#: src/lyxrc.C:1876
+#: src/lyxrc.C:1882
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
-"Définit comment lancer chktex. Par ex. \"chktex -n11 -n1 -n3 -n6 -n9 -n22 "
-"-n25 -n30 -n38\". Voir la documentation de ChkTeX."
+"Définit comment lancer chktex. Par ex. \"chktex -n11 -n1 -n3 -n6 -n9 -n22 -"
+"n25 -n30 -n38\". Voir la documentation de ChkTeX."
 
-#: src/lyxrc.C:1880
+#: src/lyxrc.C:1886
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -8000,7 +8049,7 @@ msgstr ""
 "déplacez avec la barre de défilement. Cochez si vous préférez avoir toujours "
 "le curseur à l'écran."
 
-#: src/lyxrc.C:1884
+#: src/lyxrc.C:1890
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
@@ -8009,7 +8058,7 @@ msgstr ""
 "modifiés. (LyX demandera toujours si vous voulez enregistrer les documents "
 "modifiés.)"
 
-#: src/lyxrc.C:1888
+#: src/lyxrc.C:1894
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
@@ -8019,12 +8068,12 @@ msgstr ""
 "exécutée, avec une liste de raccourcis lui correspondant. Désélectionnez si "
 "LyX paraît lent."
 
-#: src/lyxrc.C:1892
+#: src/lyxrc.C:1898
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "Désélectionnez si vous ne voulez pas que LyX crée des copies de sauvegarde."
 
-#: src/lyxrc.C:1896
+#: src/lyxrc.C:1902
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -8032,14 +8081,14 @@ msgstr ""
 "Le répertoire dans lequel mettre les copies de sauvegarde. Si laissé vide, "
 "LyX mettra la copie de sauvegarde dans le même répertoire que l'original."
 
-#: src/lyxrc.C:1900
+#: src/lyxrc.C:1906
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Sélectionnez pour activer le support des langues écrites de droite à gauche "
 "(par ex. l'hébreu ou l'arabe)."
 
-#: src/lyxrc.C:1904
+#: src/lyxrc.C:1910
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -8047,15 +8096,15 @@ msgstr ""
 "Sélectionnez pour activer le soulignement des mots dans une langue autre que "
 "celle du document."
 
-#: src/lyxrc.C:1908
+#: src/lyxrc.C:1914
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "La commande latex pour charger le paquetage linguistique. Par exemple "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:1912
+#: src/lyxrc.C:1918
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -8063,7 +8112,7 @@ msgstr ""
 "Désélectionnez si vous ne voulez pas que la langue soit un paramètre de "
 "\\documentclass."
 
-#: src/lyxrc.C:1916
+#: src/lyxrc.C:1922
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -8071,18 +8120,18 @@ msgstr ""
 "Désélectionnez si vous ne voulez pas utiliser babel quand la langue du "
 "document est la langue par défaut."
 
-#: src/lyxrc.C:1920
+#: src/lyxrc.C:1926
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Sélectionnez s'il faut une commande de langue au début du document."
 
-#: src/lyxrc.C:1924
+#: src/lyxrc.C:1930
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Sélectionnez s'il faut une commande de langue à la fin du document."
 
-#: src/lyxrc.C:1928
+#: src/lyxrc.C:1934
 msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -8092,15 +8141,15 @@ msgstr ""
 "Par exemple \\selectlanguage{$$lang} où $$lang est le nom de la seconde "
 "langue."
 
-#: src/lyxrc.C:1932
+#: src/lyxrc.C:1938
 msgid "The latex command for changing back to the language of the document."
 msgstr "La commande latex pour revenir à la langue du document."
 
-#: src/lyxrc.C:1936
+#: src/lyxrc.C:1942
 msgid "The latex command for local changing of the language."
 msgstr "La commande latex pour un changement local de langue."
 
-#: src/lyxrc.C:1941
+#: src/lyxrc.C:1947
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -8109,17 +8158,17 @@ msgstr ""
 "Accepte les formats strftime normaux ; faites man strftime pour plus de "
 "détails. Par ex. \"%A, %e. %B %Y\"."
 
-#: src/lyxrc.C:1945
+#: src/lyxrc.C:1951
 msgid "De-select if you don't want the startup banner."
 msgstr "Désélectionnez si vous ne voulez pas la bannière de démarrage."
 
-#: src/lyxrc.C:1949
+#: src/lyxrc.C:1955
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
 msgstr ""
 "Le pas de déplacement de la molette (pour les souris à molette ou à cinq "
 "boutons)."
 
-#: src/lyxrc.C:1962
+#: src/lyxrc.C:1968
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
@@ -8127,11 +8176,11 @@ msgstr ""
 "Si vous voulez déterminer un nom de fichier à la création du document ou au "
 "premier enregistrement."
 
-#: src/lyxrc.C:1966
+#: src/lyxrc.C:1972
 msgid "New documents will be assigned this language."
 msgstr "C'est la langue qui sera désignée pour les nouveaux documents."
 
-#: src/lyxrc.C:1970
+#: src/lyxrc.C:1976
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Nombre maximum de mots dans l'initialisation d'une nouvelle étiquette"
 
@@ -8555,31 +8604,31 @@ msgstr "Impossible d'effacer le fichier de sauvegarde !"
 msgid "unknown"
 msgstr "inconnu"
 
-#: src/tabular.C:1705
+#: src/tabular.C:1708
 msgid "Warning:"
 msgstr "Attention !"
 
-#: src/tabular.C:1706
+#: src/tabular.C:1709
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr "Le format Tabular < 5 n'est plus supporté\n"
 
-#: src/tabular.C:1707
+#: src/tabular.C:1710
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Utilisez une ancienne version de LyX (< 1.1.x) pour la conversion !"
 
-#: src/text2.C:411
+#: src/text2.C:405
 msgid "Opened float"
 msgstr "Flottant ouvert"
 
-#: src/text2.C:413
+#: src/text2.C:407
 msgid "Closed float"
 msgstr "Flottant fermé"
 
-#: src/text2.C:456
+#: src/text2.C:450
 msgid "Nothing to do"
 msgstr "Rien à faire"
 
-#: src/text2.C:1275
+#: src/text2.C:1269
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -8587,15 +8636,15 @@ msgstr ""
 "Pas de changement de police défini. Utiliser Format->Caractère pour le "
 "définir."
 
-#: src/text2.C:2198 src/text2.C:2311
+#: src/text2.C:2192 src/text2.C:2305
 msgid "Don't know what to do with half floats."
 msgstr "Je ne sais pas manipuler les parties de flottants."
 
-#: src/text2.C:2199 src/text2.C:2313
+#: src/text2.C:2193 src/text2.C:2307
 msgid "sorry."
 msgstr "désolé."
 
-#: src/text.C:2003
+#: src/text.C:1998
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -8603,28 +8652,28 @@ msgstr ""
 "Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/text.C:2005
+#: src/text.C:2000
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ici. Lisez le Manuel d'Apprentissage."
 
-#: src/text.C:3462 src/text.C:3468
+#: src/text.C:3457 src/text.C:3463
 msgid "Page Break (top)"
 msgstr "Saut de Page (Haut)"
 
-#: src/text.C:3662 src/text.C:3668
+#: src/text.C:3657 src/text.C:3663
 msgid "Page Break (bottom)"
 msgstr "Saut de Page (Bas)"
 
-#: src/text.C:3962
+#: src/text.C:3957
 msgid "You can't insert a float in a float!"
 msgstr "Insérer un flottant dans un flottant est interdit !"
 
-#: src/text.C:3970
+#: src/text.C:3965
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Insérer un [marginpar] dans une minipage est interdit !"
 
-#: src/text.C:3997
+#: src/text.C:3992
 msgid "Float would include float!"
 msgstr "Un flottant inclurait un flottant !"
 
@@ -9649,9 +9698,6 @@ msgstr "Un flottant inclurait un flottant !"
 # contrainte de longueur
 #~ msgid "Section-numbered"
 #~ msgstr "Section-numérotée"
-
-#~ msgid "Send"
-#~ msgstr "Envoi"
 
 #~ msgid "style"
 #~ msgstr "style"
