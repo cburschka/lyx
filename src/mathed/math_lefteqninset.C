@@ -4,6 +4,7 @@
 
 #include "math_lefteqninset.h"
 #include "math_support.h"
+#include "support/LOstream.h"
 
 
 MathLefteqnInset::MathLefteqnInset()
@@ -23,13 +24,14 @@ void MathLefteqnInset::metrics(MathMetricsInfo & mi) const
 	dim_.a = cell(0).ascent() + 2;
 	dim_.d = cell(0).descent() + 2;
 	dim_.w = 4;
+	metricsMarkers2();
 }
 
 
-void MathLefteqnInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathLefteqnInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	cell(0).draw(pain, x + 2, y);
-	//mathed_draw_framebox(pain, x, y, this);
+	cell(0).draw(pi, x + 2, y);
+	drawMarkers2(pi, x, y);
 }
 
 
@@ -37,3 +39,11 @@ string MathLefteqnInset::name() const
 {
 	return "lefteqn";
 }
+
+
+void MathLefteqnInset::infoize(std::ostream & os) const
+{
+	os << "Lefteqn ";
+}
+
+

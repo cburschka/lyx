@@ -22,5 +22,7 @@ public:
 	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo & pi, int x, int y) const;
+	///
+	void infoize(std::ostream & os) const;
 };
 #endif
