@@ -1,5 +1,11 @@
 2003-09-08  Angus Leeming  <leeming@lyx.org>
 
+	* FormFiledialog.C (UserCache::add, GroupCache::add): convert
+	uid_t, gid_t to int to avoid compiler complaining about call to
+	overloaded tostr being ambiguous.
+
+2003-09-08  Angus Leeming  <leeming@lyx.org>
+
 	* Alert_pimpl.C:
 	* FileDialog.C:
 	* FormBibtex.C:

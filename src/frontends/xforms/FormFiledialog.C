@@ -116,7 +116,7 @@ private:
 void UserCache::add(uid_t ID) const
 {
 	struct passwd const * entry = getpwuid(ID);
-	users[ID] = entry ? entry->pw_name : tostr(ID);
+	users[ID] = entry ? entry->pw_name : tostr(int(ID));
 }
 
 
@@ -149,7 +149,7 @@ string const & GroupCache::find(gid_t ID) const
 void GroupCache::add(gid_t ID) const
 {
 	struct group const * entry = getgrgid(ID);
-	groups[ID] = entry ? entry->gr_name : tostr(ID);
+	groups[ID] = entry ? entry->gr_name : tostr(int(ID));
 }
 
 // local instances
