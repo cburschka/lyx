@@ -1,5 +1,8 @@
 1999-12-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/bind/fi_menus.bind: new file, from
+	pauli.virtanen@saunalahti.fi. 
+
 	* src/buffer.C (getBibkeyList): pass the parameter delim to
 	InsetInclude::getKeys and InsetBibtex::getKeys.
 
