@@ -463,4 +463,25 @@ int defaultRowHeight();
 std::string expandLabel(LyXTextClass const & textclass,
 		LyXLayout_ptr const & layout, bool appendix);
 
+
+class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
+{
+public:
+	FontIterator(LyXText const & text, ParagraphList::iterator pit,
+		     lyx::pos_type pos);
+	
+	LyXFont operator*() const;
+	FontIterator & operator++();
+	LyXFont * operator->();
+
+private:
+	LyXText const & text_;
+	ParagraphList::iterator pit_;
+	lyx::pos_type pos_;
+	LyXFont font_;
+	lyx::pos_type endspan_;
+	lyx::pos_type bodypos_;
+};
+
+
 #endif // LYXTEXT_H

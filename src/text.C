@@ -444,6 +444,37 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 
 };
 
+FontIterator::FontIterator(LyXText const & text, ParagraphList::iterator pit,
+			   lyx::pos_type pos)
+	: text_(text), pit_(pit), pos_(pos),
+	  font_(text.getFont(pit, pos)),
+	  endspan_(pit->getEndPosOfFontSpan(pos)),
+	  bodypos_(pit->beginOfBody())
+{}
+
+
+LyXFont FontIterator::operator*() const
+{
+       return font_;
+}
+
+
+LyXFont * FontIterator::operator->()
+{
+	return &font_;
+}
+
+
+FontIterator & FontIterator::operator++()
+{
+	++pos_;
+	if (pos_ > endspan_ || pos_ == bodypos_) {
+		font_ = text_.getFont(pit_, pos_);
+		endspan_ = pit_->getEndPosOfFontSpan(pos_);
+	}
+	return *this;
+}
+
 
 void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 {
@@ -481,14 +512,10 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
 
-
-	// We re-use the font resolution for the entire font span when possible
-	LyXFont font = getFont(pit, pos);
-	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(pos);
-
+	FontIterator fi = FontIterator(*this, pit, pos);
 	pos_type point = end;
 	pos_type i = pos;
-	for ( ; i < end; ++i) {
+	for ( ; i < end; ++i, ++fi) {
 		if (pit->isNewline(i)) {
 			point = i + 1;
 			break;
@@ -508,13 +535,8 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 
 		char const c = pit->getChar(i);
 
-		if (i > endPosOfFontSpan) {
-			font = getFont(pit, i);
-			endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
-		}
-
 		{
-			int thiswidth = singleWidth(pit, i, c, font);
+			int thiswidth = singleWidth(pit, i, c, *fi);
 
 			// add the auto-hfill from label end to the body
 			if (body_pos && i == body_pos) {
@@ -582,10 +604,8 @@ void LyXText::setRowWidth(ParagraphList::iterator pit, Row & row) const
 	pos_type i = row.pos();
 
 	if (i < end) {
-		// We re-use the font resolution for the entire span when possible
-		LyXFont font = getFont(pit, i);
-		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
-		for ( ; i < end; ++i) {
+		FontIterator fi = FontIterator(*this, pit, i);
+		for ( ; i < end; ++i, ++fi) {
 			if (body_pos > 0 && i == body_pos) {
 				w += font_metrics::width(labelsep, getLabelFont(pit));
 				if (pit->isLineSeparator(i - 1))
@@ -593,12 +613,7 @@ void LyXText::setRowWidth(ParagraphList::iterator pit, Row & row) const
 				w = max(w, labelEnd(pit));
 			}
 			char const c = pit->getChar(i);
-			if (IsPrintable(c) && i > endPosOfFontSpan) {
-				// We need to get the next font
-				font = getFont(pit, i);
-				endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
-			}
-			w += singleWidth(pit, i, c, font);
+			w += singleWidth(pit, i, c, *fi);
 		}
 	}
 

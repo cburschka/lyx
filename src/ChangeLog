@@ -1,3 +1,12 @@
+
+2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* lyxtext.h: add FontIterator class 
+
+	* text.C (FontIterator, operator*, operator->, operator++): add
+	(rowBreakPoint, setRowWidth): adjust (fixing a
+	rebreaking bug)
+
 2004-02-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (workAreaDispatch): allow also
