@@ -814,7 +814,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	bool env = false;
 
 	if (language()->babel() != base.language()->babel() &&
-	    language()->babel() != prev.language()->babel()) {
+	    language() != prev.language()) {
 		if (isRightToLeft() != prev.isRightToLeft()) {
 			if (isRightToLeft()) {
 				os << "\\R{";

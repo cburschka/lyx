@@ -1633,7 +1633,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
 
-		LyXFont const & last_font = running_font;
+		LyXFont const last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
@@ -1647,7 +1647,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		}
 
 		// We end font definition before blanks
-		if (font != running_font && open_font) {
+		if (open_font &&
+		    (font != running_font ||
+		     font.language() != running_font.language()))
+		{
 			column += running_font.latexWriteEndChanges(os,
 								    basefont,
 								    (i == main_body-1) ? basefont : font);
@@ -1665,7 +1668,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		}
 
 		// Do we need to change font?
-		if (font != running_font && i != main_body - 1) {
+		if ((font != running_font ||
+		     font.language() != running_font.language()) &&
+			i != main_body - 1)
+		{
 			column += font.latexWriteStartChanges(os, basefont,
 							      last_font);
 			running_font = font;

@@ -1,5 +1,7 @@
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
+	* paragraph.C (simpleTeXOnePar): fix closing of foreignlanguage tags.
+
 	* BufferView2.C (showLockedInsetCursor): use iy
 	(fitLockedInsetCursor): ditto
 
