@@ -1,12 +1,10 @@
-2003-02-26  Angus Leeming  <angus@localhost.localdomain>
-
-	* PreviewLoader.C (startLoading): Prevent a crash if the user is
-	not using a tmp directory.
-
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewedInset.[Ch]: strip out the caching of the BufferView and
 	use the cache of the parent inset instead.
+
+	* PreviewLoader.C (startLoading): Prevent a crash if the user is
+	not using a tmp directory.
 
 2003-02-26  Alfredo Braunstein  <abraunst@libero.it>
 
