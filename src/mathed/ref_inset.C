@@ -143,10 +143,11 @@ dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 
 
 RefInset::ref_type_info RefInset::types[] = {
-	{ "ref",	N_("Standard"),			N_("Ref: ")},
-	{ "pageref",	N_("Page Number"),		N_("Page: ")},
-	{ "vpageref",	N_("Textual Page Number"),	N_("TextPage: ")},
-	{ "vref",	N_("Standard+Textual Page"),	N_("Ref+Text: ")},
-	{ "prettyref",	N_("PrettyRef"),		N_("PrettyRef: ")},
+	{ "ref",       N_("Standard"),              N_("Ref: ")},
+	{ "eqref",     N_("Equation"),              N_("EqRef: ")},
+	{ "pageref",   N_("Page Number"),           N_("Page: ")},
+	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
+	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
+	{ "prettyref", N_("PrettyRef"),             N_("PrettyRef: ")},
 	{ "", "", "" }
 };

@@ -294,6 +294,7 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 			   || cmdName == "htmlurl") {
 			inset = new InsetUrl(inscmd);
 		} else if (cmdName == "ref"
+			   || cmdName == "eqref"
 			   || cmdName == "pageref"
 			   || cmdName == "vref"
 			   || cmdName == "vpageref"
