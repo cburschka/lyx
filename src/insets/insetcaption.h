@@ -28,8 +28,6 @@ public:
 	///
 	virtual bool display() const;
 	///
-	virtual bool needFullRow() const;
-	///
 	virtual InsetOld::Code lyxCode() const;
 	///
 	virtual string const editMessage() const;
@@ -47,13 +45,6 @@ public:
 
 inline
 bool InsetCaption::display() const
-{
-	return true;
-}
-
-
-inline
-bool InsetCaption::needFullRow() const
 {
 	return true;
 }

@@ -63,8 +63,6 @@ public:
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///
-	//virtual bool needFullRow() const { return true; }
-	///
 	void metrics(MetricsInfo &, Dimension &) const; 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

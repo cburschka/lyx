@@ -40,8 +40,6 @@ public:
 	bool isTextInset() const { return true; }
 	///
 	LyXLayout_ptr const & layout() const;
-	///
-	bool needFullRow() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should
             be closed before generating this inset. This is needed for
             insets that may contain several paragraphs */
