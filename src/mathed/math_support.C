@@ -308,6 +308,7 @@ named_deco_struct deco_table[] = {
 	{"mathring",       ring,       0 },
 
 	// Dots
+	{"dots",           hline3,     0 },
 	{"ldots",          hline3,     0 },
 	{"cdots",          hline3,     0 },
 	{"vdots",          hline3,     1 },
