@@ -18,6 +18,8 @@
 
 #include <qglobal.h>
 
+using std::pair;
+using std::make_pair;
 
 string makeFontName(string const & family, string const & foundry)
 {
