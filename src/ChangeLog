@@ -1,20 +1,25 @@
+2002-07-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView_pimpl.C: add connection objects and use them...
+	(Pimpl): here.
+
 2002-07-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* MenuBackend.C (expandLastfiles): 
-	(expandDocuments): 
-	(expandFormats): 
-	(expandFloatListInsert): 
-	(expandFloatInsert): 
+	* MenuBackend.C (expandLastfiles):
+	(expandDocuments):
+	(expandFormats):
+	(expandFloatListInsert):
+	(expandFloatInsert):
 	(expand): split expand in parts
 
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: use lyx_gui::exit()
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXAction.C: show the failing pseudo action
- 
+
 2002-07-22  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (readFile): Run the lyxconvert script in order to read
@@ -31,16 +36,16 @@
 	* LyXAction.C:
 	* commandtags.h:
 	* lyxfunc.C: remove LFUN_TOOLBAR_PUSH
- 
+
 2002-07-22  Herbert Voss  <voss@lyx.org>
 
 	* lengthcommon.C:
 	* lyxlength.[Ch]: add support for the vertical lengths
-	
+
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* toc.[Ch]: std:: fixes
- 
+
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxrc.C: do not include lyx_main.h
@@ -48,26 +53,26 @@
 	* LaTeXFeatures.h: use a list<string> instead of a vector<string>
 	for layouts
 
-	* lyxrc.C: 
-	* encoding.C: 
-	* bufferlist.C: 
+	* lyxrc.C:
+	* encoding.C:
+	* bufferlist.C:
 	* BufferView2.C: include "lyxlex.h"
 
-	* tabular.h: 
+	* tabular.h:
 	* bufferparams.h: do not #include "lyxlex.h"
 
 	* lyxtextclasslist.C (Add): remove method
 	(classlist): renamed to classlist_
 
-	* paragraph_pimpl.C: 
-	* paragraph.C: 
-	* text2.C: 
-	* CutAndPaste.C: 
-	* bufferview_funcs.C: 
-	* bufferlist.C: 
-	* text.C: 
-	* LaTeXFeatures.C: 
-	* buffer.C: 
+	* paragraph_pimpl.C:
+	* paragraph.C:
+	* text2.C:
+	* CutAndPaste.C:
+	* bufferview_funcs.C:
+	* bufferlist.C:
+	* text.C:
+	* LaTeXFeatures.C:
+	* buffer.C:
 	* toc.C (getTocList): use BufferParams::getLyXTextClass
 
 	* toc.C (getTocList): use InsetFloat::addToToc
@@ -102,17 +107,17 @@
 
 2002-07-20  John Levon  <moz@compsoc.man.ac.uk>
 
-	* paragraph_pimpl.C: constify 
+	* paragraph_pimpl.C: constify
 
 	* BufferView_pimpl.C:
 	* LaTeX.C:
 	* lyxfunc.C: fix dispatch in a nicer way
- 
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* lyxfunc.C (dispatch): 
-	* BufferView_pimpl.C: 
-	* BufferView_pimpl.h: 
+	* lyxfunc.C (dispatch):
+	* BufferView_pimpl.C:
+	* BufferView_pimpl.h:
 	* BufferView.C:
 	* BufferView.h: rename Dispatch() to dispatch()
 
@@ -145,12 +150,12 @@
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: move minibuffer completion handling out of here
- 
+
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C:
 	* LaTeX.C: fix dispatch calls
- 
+
 2002-07-19  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text.C (drawChars): Fix Arabic text rendering.
@@ -160,12 +165,12 @@
 	* LyXAction.C:
 	* commandtags.h:
 	* lyxfunc.C: remove message-push/pop
- 
+
 	* lyxserver.C:
 	* lyxfunc.h:
 	* lyxfunc.C: rationalise some code by removing verboseDispatch
 	  in favour of a bool argument to dispatch()
- 
+
 2002-07-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyx_main.C (init): make sure to read symlinks as absolute paths
@@ -176,7 +181,7 @@
 	* lyxfunc.C: no need for commandshortcut to be a member
 
 2002-07-15  André Pönitz <poenitz@gmx.net>
-	
+
 	* converter.C: add support for $$s (scripts from lib/scripts dir)
 	* lyx_main.C: white space
 
@@ -186,16 +191,16 @@
 	* bufferlist.C:
 	* lyxrc.h:
 	* lyxrc.C: remove second exit confirmation
- 
+
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView.h:
-	* BufferView.C: 
-	* BufferView2.C: 
+	* BufferView.C:
+	* BufferView2.C:
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C:
-	* lyxfunc.C: s/setState/switchKeyMap/, s/showState/view_state_changed/ 
- 
+	* lyxfunc.C: s/setState/switchKeyMap/, s/showState/view_state_changed/
+
 2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MenuBackend.C (expand): add numeric shortcuts to document menu
@@ -204,26 +209,26 @@
 
 2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* lyxfont.C (setLyXFamily): 
-	(setLyXSeries): 
-	(setLyXShape): 
-	(setLyXSize): 
-	(setLyXMisc): 
-	(lyxRead): 
-	* debug.C (value): 
+	* lyxfont.C (setLyXFamily):
+	(setLyXSeries):
+	(setLyXShape):
+	(setLyXSize):
+	(setLyXMisc):
+	(lyxRead):
+	* debug.C (value):
 	* buffer.C (asciiParagraph): use ascii_lowercase
 
 2002-07-15  Mike Fabian  <mfabian@suse.de>
 
-	* lyxlex_pimpl.C (search_kw): 
-	* lyxlex.C (getLongString): 
-	* converter.h (operator<): 
-	* converter.C (operator<): 
-	* buffer.C (parseSingleLyXformat2Token): 
-	(asciiParagraph): 
-	* ToolbarDefaults.C (read): 
-	* MenuBackend.C (checkShortcuts): 
-	(read): 
+	* lyxlex_pimpl.C (search_kw):
+	* lyxlex.C (getLongString):
+	* converter.h (operator<):
+	* converter.C (operator<):
+	* buffer.C (parseSingleLyXformat2Token):
+	(asciiParagraph):
+	* ToolbarDefaults.C (read):
+	* MenuBackend.C (checkShortcuts):
+	(read):
 	* LColor.C (getFromGUIName):
 	(getFromLyXName): use the compare_ascii_no_case instead of
 	compare_no_case, because in turkish, 'i' is not the lowercase
@@ -237,14 +242,14 @@
 2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView.C (resize): check there's a buffer to resize
- 
+
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: remove dead code
 
 	* lyxserver.h:
 	* lyxserver.C: use lyx_guii::set_read_callback
- 
+
 2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxfunc.C (dispatch): Correct cursor behaviour when exiting
@@ -261,30 +266,30 @@
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: use lyx_gui::update_fonts()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: use lyx_gui::update_color()
- 
+
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* bufferlist.C:
-	* lyxfunc.h: 
+	* lyxfunc.h:
 	* lyxfunc.C:
 	* lyxrc.h:
 	* lyxrc.C: remove file->new asks for name option, and let
 	  buffer-new take an argument
- 
+
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: remove unneeded extra repaint()
- 
+
 2002-07-10  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXAction.C: allow command-sequence with NoBuffer
 
 	* lyxfunc.C: don't insist on trailing ';' for command-sequence
- 
+
 2002-07-10  Angus Leeming  <leeming@lyx.org>
 
 	* lyxrc.[Ch]: preview_scale_factor should be a float not an int.
@@ -296,12 +301,12 @@
 2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lengthcommon.h: whitespace
- 
-	* lyxfunc.C: update scrollbar after goto paragraph 
+
+	* lyxfunc.C: update scrollbar after goto paragraph
 
 	* lyxtext.h: factor out page break drawing, and fix it so
 	  page break/added space paints as selected nicely
- 
+
 2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: add FIXMEs, clean up a little
@@ -312,7 +317,7 @@
 
 2002-07-08  André Pönitz <poenitz@gmx.net>
 
-	* BufferView_pimpl.C: apply John's patch for #93. 
+	* BufferView_pimpl.C: apply John's patch for #93.
 
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 

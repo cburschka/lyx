@@ -44,24 +44,24 @@ XMiniBuffer::XMiniBuffer(XFormsView * v, ControlCommandBuffer & control,
 	input_obj_ = create_input_box(FL_NORMAL_INPUT, x, y, h, w);
 	info_timer_.reset(new Timeout(1500));
 	idle_timer_.reset(new Timeout(6000));
-	info_timer_->timeout.connect(boost::bind(&XMiniBuffer::info_timeout, this));
-	idle_timer_->timeout.connect(boost::bind(&XMiniBuffer::idle_timeout, this));
-	idle_timer_->start(); 
+	info_con = info_timer_->timeout.connect(boost::bind(&XMiniBuffer::info_timeout, this));
+	idle_con = idle_timer_->timeout.connect(boost::bind(&XMiniBuffer::idle_timeout, this));
+	idle_timer_->start();
 	messageMode();
 }
+
+
+// This is here so that scoped ptr will not require a complete type.
+XMiniBuffer::~XMiniBuffer()
+{}
 
 
 // thanks for nothing, xforms (recursive creation not allowed)
 void XMiniBuffer::dd_init()
 {
 	dropdown_.reset(new DropDown(the_buffer_));
-	dropdown_->result.connect(boost::bind(&XMiniBuffer::set_complete_input, this, _1));
-	dropdown_->keypress.connect(boost::bind(&XMiniBuffer::append_char, this, _1));
-}
-
-
-XMiniBuffer::~XMiniBuffer()
-{
+	result_con = dropdown_->result.connect(boost::bind(&XMiniBuffer::set_complete_input, this, _1));
+	keypress_con = dropdown_->keypress.connect(boost::bind(&XMiniBuffer::append_char, this, _1));
 }
 
 
@@ -82,7 +82,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			info_timer_->stop();
 			info_timeout();
 		}
- 
+
 		char const * tmp = fl_get_input(ob);
 		input = tmp ? tmp : "";
 
@@ -100,7 +100,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			}
 			return 1;
 		}
- 
+
 		case XK_Up:
 #ifdef XK_KP_Up
 		case XK_KP_Up:
@@ -114,13 +114,13 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			}
 			return 1;
 		}
- 
+
 		case 9:
 		case XK_Tab:
 		{
 			string new_input;
 			vector<string> comp = controller_.completions(input, new_input);
-			 
+
 			if (comp.empty() && new_input == input) {
 				show_info(_("[no match]"), input);
 				break;
@@ -131,7 +131,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 				show_info(("[only completion]"), new_input + " ");
 				break;
 			}
-				 
+
 			set_input(new_input);
 
 			int x,y,w,h;
@@ -215,7 +215,7 @@ void XMiniBuffer::freeze()
 	fl_set_object_prehandler(input_obj_, 0);
 }
 
- 
+
 void XMiniBuffer::show_info(string const & info, string const & input, bool append)
 {
 	stored_input_ = input;
@@ -226,21 +226,21 @@ void XMiniBuffer::show_info(string const & info, string const & input, bool appe
 		set_input(info);
 	info_timer_->start();
 }
- 
+
 
 void XMiniBuffer::idle_timeout()
 {
 	set_input(currentState(view_->view()));
 }
 
- 
+
 void XMiniBuffer::info_timeout()
 {
 	info_shown_ = false;
 	set_input(stored_input_);
 }
 
- 
+
 bool XMiniBuffer::isEditingMode() const
 {
 	return the_buffer_->focus;
@@ -284,8 +284,8 @@ void XMiniBuffer::append_char(char c)
 
 	fl_set_input(the_buffer_, str.c_str());
 }
- 
- 
+
+
 void XMiniBuffer::set_complete_input(string const & str)
 {
 	if (!str.empty()) {
@@ -293,8 +293,8 @@ void XMiniBuffer::set_complete_input(string const & str)
 		// an argument immediately
 		set_input(str + " ");
 	}
-} 
- 
+}
+
 
 void XMiniBuffer::message(string const & str)
 {
@@ -302,7 +302,7 @@ void XMiniBuffer::message(string const & str)
 		set_input(str);
 }
 
- 
+
 void XMiniBuffer::set_input(string const & str)
 {
 	fl_set_input(the_buffer_, str.c_str());

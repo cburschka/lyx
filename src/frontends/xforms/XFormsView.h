@@ -54,7 +54,7 @@ public:
 
 	/// callback for close event from window manager
 	static int atCloseMainFormCB(FL_FORM *, void *);
- 
+
 	/// display a status message
 	virtual void message(string const & str);
 
@@ -73,6 +73,13 @@ private:
 	void create_form_form_main(Dialogs & d, int width, int height);
 	/// the minibuffer
 	boost::scoped_ptr<XMiniBuffer> minibuffer_;
+	///
+	boost::signals::connection view_state_con;
+	///
+	boost::signals::connection focus_con;
+	///
+	boost::signals::connection redraw_con;
+
 	/// the main form.
 	FL_FORM * form_;
 };

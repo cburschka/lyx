@@ -35,7 +35,7 @@
 #include "BufferView.h"
 
 #include <boost/bind.hpp>
-
+#include <boost/signals/connection.hpp>
 using std::abs;
 using std::endl;
 
@@ -62,12 +62,12 @@ XFormsView::XFormsView(int width, int height)
 	create_form_form_main(*getDialogs(), width, height);
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
-	view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
-	focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
- 
+	view_state_con = view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
+	focus_con = focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
+
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
-	getDialogs()->redrawGUI.connect(boost::bind(&XFormsView::redraw, this));
+	redraw_con = getDialogs()->redrawGUI.connect(boost::bind(&XFormsView::redraw, this));
 }
 
 
@@ -196,13 +196,13 @@ void XFormsView::message(string const & str)
 	minibuffer_->message(str);
 }
 
- 
+
 void XFormsView::show_view_state()
 {
 	message(getLyXFunc()->view_status_message());
 }
- 
- 
+
+
 // How should this actually work? Should it prohibit input in all BufferViews,
 // or just in the current one? If "just the current one", then it should be
 // placed in BufferView. If "all BufferViews" then LyXGUI (I think) should

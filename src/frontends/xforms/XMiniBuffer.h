@@ -15,7 +15,8 @@
 #include FORMS_H_LOCATION
 
 #include <boost/scoped_ptr.hpp>
- 
+#include <boost/signals/connection.hpp>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -27,9 +28,11 @@ class Timeout;
 /// in xforms, the minibuffer is both a status bar and a command buffer
 class XMiniBuffer {
 public:
+	///
 	XMiniBuffer(XFormsView * o, ControlCommandBuffer & control,
 		    FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
 
+	///
 	~XMiniBuffer();
 
 	/// create drop down
@@ -43,14 +46,14 @@ public:
 
 	/// show a message
 	void message(string const & str);
- 
+
 	/// focus the buffer for editing mode
 	void focus() { messageMode(false); }
- 
+
 	/// disable event management
 	void freeze();
- 
-protected:
+
+private:
 	/// Are we in editing mode?
 	bool isEditingMode() const;
 
@@ -59,14 +62,14 @@ protected:
 
 	/// go back to "at rest" message
 	void idle_timeout();
- 
+
 	/**
 	 * Append "c" to the current input contents when the completion
 	 * list is displayed and has focus.
 	 */
 	void append_char(char c);
- 
-	/// completion selection callback 
+
+	/// completion selection callback
 	void set_complete_input(string const & str);
 
 	/// set the minibuffer content in editing mode
@@ -77,7 +80,7 @@ protected:
 
 	/// go into message mode
 	void messageMode(bool on = true);
- 
+
 	/// show a temporary message whilst in edit mode
 	void show_info(string const & info, string const & input, bool append = true);
 
@@ -89,13 +92,21 @@ protected:
 
 	/// idle timer
 	boost::scoped_ptr<Timeout> idle_timer_;
- 
+
+	///
+	boost::signals::connection info_con;
+	///
+	boost::signals::connection idle_con;
+	///
+	boost::signals::connection result_con;
+	///
+	boost::signals::connection keypress_con;
 	/// This is the input widget object
 	FL_OBJECT * the_buffer_;
 
 	/// the input box
 	FL_OBJECT * input_obj_;
- 
+
 	/// the controller we use
 	ControlCommandBuffer & controller_;
 
@@ -108,5 +119,5 @@ protected:
 	/// are we showing an informational temporary message ?
 	bool info_shown_;
 };
- 
+
 #endif // XMINIBUFFER_H

@@ -1,3 +1,12 @@
+2002-07-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* XMiniBuffer.h: add connection objects, and use them
+	* XMiniBuffer.C (XMiniBuffer): here and
+	(dd_init): here
+
+	* XFormsView.h: add connection objects, use them
+	* XFormsView.C (XFormsView): here
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XFormsView.C: don't call toolbar_->set() 
@@ -9,21 +18,21 @@
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add lyx_gui::exit()
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar_pimpl.h:
-	* Toolbar_pimpl.C: remove ->push() 
+	* Toolbar_pimpl.C: remove ->push()
 
 2002-07-22  Herbert Voss  <voss@lyx.org>
 
 	* FormGraphics.C: add tooltips, changesize_type to size_kind.
 	some rearrangements to the code
-	
+
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormToc.C: std:: fix
- 
+
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.h: do not include "MenuBackend.h" and "commandtags.h"
@@ -33,11 +42,11 @@
 
 	* Toolbar_pimpl.C: use BufferParams::getLyXTextClass
 
-	* FormSendto.C: 
-	* FormParagraph.C: 
-	* FormMinipage.C: 
-	* FormGraphics.C: 
-	* FormForks.C: 
+	* FormSendto.C:
+	* FormParagraph.C:
+	* FormMinipage.C:
+	* FormGraphics.C:
+	* FormForks.C:
 	* FormCitation.C:
 	* DropDown.C: update to use new getString and getVector
 
@@ -46,13 +55,13 @@
 	getStringFromBrowser and getSelectedStringFromBrowser with
 	getString, which works with input, choice and browser objects
 
-	* Menubar_pimpl.C: 
+	* Menubar_pimpl.C:
 	* FormToc.C: update to use new toc.[Ch]
 
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XFormsView.C: move autosave timer to LyXView.C
- 
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.[Ch]: remove support for multiple menubars
@@ -61,16 +70,16 @@
 
 	* XMiniBuffer.h:
 	* XMiniBuffer.C: cleanup, make start/end history work as before
- 
+
 2002-07-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormMathsDelim.C:
 	* FormMathsMatrix.C: fix dispatch calls nicely
- 
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (add_toc): avoid crash when there is no document
-	open 
+	open
 
 	* Menubar_pimpl.[Ch]: turn owner_ into a XFormsView, to avoid casting
 
@@ -83,29 +92,29 @@
 
 	* DropDown.h:
 	* DropDown.C: remove unneeded LyXView *
- 
+
 	* XFormsView.h:
 	* XFormsView.C: changes for minibuffer rework
- 
+
 	* XMiniBuffer.h:
 	* XMiniBuffer.C: use ControlCommandBuffer. Move relevant
 	  old code to here
- 
+
 	* lyx_gui.C: add FIXME
- 
+
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
-	* FormMathsDelim.C: 
+	* FormMathsDelim.C:
 	* FormMathsMatrix.C: fix dispatch calls
- 
+
 2002-07-18  John Levon  <moz@compsoc.man.ac.uk>
 
-	* Menubar_pimpl.C: 
-	* Toolbar_pimpl.C: 
+	* Menubar_pimpl.C:
+	* Toolbar_pimpl.C:
 	* lyx_gui.C:
 	* XformsView.C: remove initMiniBuffer(), verboseDispatch()
 
-	* xfont_loader.C: remove call to messagePush(),Pop() 
+	* xfont_loader.C: remove call to messagePush(),Pop()
 
 2002-07-17  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -125,12 +134,12 @@
 
 	* FormPreferences.C:
 	* forms/form_preferences.fd: remove 2nd exit confirmation
- 
+
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XFormsView.h:
 	* XFormsView.C: hook up view_state_changed
- 
+
 2002-07-16  Angus Leeming  <leeming@lyx.org>
 
 	* XPainter.C: add some #ifdef ugliness to enable the home grown image
@@ -146,7 +155,7 @@
 	* xformsImage.C: add isDrawable()
 
 	* XPainter.C: use static cast to xformsImage
- 
+
 2002-07-14  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (C_read_callback): give it extern "C" linkage.
@@ -154,11 +163,11 @@
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add set_read_callback()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: move init_graphics() into setup
- 
+
 2002-07-12  Angus Leeming  <leeming@lyx.org>
 
 	* xformsImage.C (width): apply fudge irrespective of library version.
@@ -167,40 +176,40 @@
 
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: remove unused (de)activate()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: implement update_fonts(), font_available()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add update_color()
- 
+
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormPreferences.C:
 	* forms/form_preferences.fd: remove file->new asks for name
- 
+
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h:
 	* XWorkArea.C: do a copy area on redraw when no geometry change
- 
+
 2002-07-11  Herbert Voss  <voss@perce.de>
- 
- 	* FormGraphics.C (input): test also the height for %-value, when
- 	importing the latex-value into the lyx-view
- 
+
+	* FormGraphics.C (input): test also the height for %-value, when
+	importing the latex-value into the lyx-view
+
 2002-07-10  Andrew Zabolotny  <zap@cobra.ru>
 
-	* XMiniBuffer.C (peek_event): 
-	* combox.C (peek_event): 
+	* XMiniBuffer.C (peek_event):
+	* combox.C (peek_event):
 	* DropDown.C (peek): support keypad keys
 
 2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xscreen.C: add const
- 
+
 2002-07-09  Angus Leeming  <leeming@lyx.org>
 
 	* xformsImage.C (scale): use boost::tie.

@@ -118,8 +118,24 @@ extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 namespace {
 
-const unsigned int saved_positions_num = 20;
+unsigned int const saved_positions_num = 20;
 
+// All the below connection objects are needed because of a bug in some
+// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
+// to these connections we avoid a segfault upon startup, and also at exit.
+// (Lgb)
+
+boost::signals::connection timecon;
+boost::signals::connection doccon;
+boost::signals::connection resizecon;
+boost::signals::connection bpresscon;
+boost::signals::connection breleasecon;
+boost::signals::connection motioncon;
+boost::signals::connection doublecon;
+boost::signals::connection triplecon;
+boost::signals::connection kpresscon;
+boost::signals::connection selectioncon;
+boost::signals::connection lostcon;
 
 } // anon namespace
 
@@ -133,27 +149,27 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	screen_.reset(LyXScreenFactory::create(workarea()));
 
 	// Setup the signals
-	workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
-	workarea().workAreaResize
+	doccon = workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
+	resizecon = workarea().workAreaResize
 		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
-	workarea().workAreaButtonPress
+	bpresscon = workarea().workAreaButtonPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonPress, this, _1, _2, _3));
-	workarea().workAreaButtonRelease
+	breleasecon = workarea().workAreaButtonRelease
 		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonRelease, this, _1, _2, _3));
-	workarea().workAreaMotionNotify
+	motioncon = workarea().workAreaMotionNotify
 		.connect(boost::bind(&BufferView::Pimpl::workAreaMotionNotify, this, _1, _2, _3));
-	workarea().workAreaDoubleClick
+	doublecon = workarea().workAreaDoubleClick
 		.connect(boost::bind(&BufferView::Pimpl::doubleClick, this, _1, _2, _3));
-	workarea().workAreaTripleClick
+	triplecon = workarea().workAreaTripleClick
 		.connect(boost::bind(&BufferView::Pimpl::tripleClick, this, _1, _2, _3));
-	workarea().workAreaKeyPress
+	kpresscon = workarea().workAreaKeyPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaKeyPress, this, _1, _2));
-	workarea().selectionRequested
+	selectioncon = workarea().selectionRequested
 		.connect(boost::bind(&BufferView::Pimpl::selectionRequested, this));
-	workarea().selectionLost
+	lostcon = workarea().selectionLost
 		.connect(boost::bind(&BufferView::Pimpl::selectionLost, this));
 
-	cursor_timeout.timeout.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
+	timecon = cursor_timeout.timeout.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
 	cursor_timeout.start();
 	saved_positions.resize(saved_positions_num);
 }
@@ -376,7 +392,7 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	LyXText const & t = *bv_->text;
- 
+
 	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", first_y "
 		<< t.first_y << ", default height " << t.defaultHeight() << endl;
 
@@ -1301,15 +1317,15 @@ void BufferView::Pimpl::toggleToggle()
 void BufferView::Pimpl::center()
 {
 	LyXText * t = bv_->text;
- 
+
 	beforeChange(t);
 	int const half_height = workarea().workHeight() / 2;
 	int new_y = 0;
- 
+
 	if (t->cursor.y() > half_height) {
 		new_y = t->cursor.y() - half_height;
 	}
- 
+
 	// FIXME: can we do this w/o calling screen directly ?
 	// This updates first_y but means the fitCursor() call
 	// from the update(FITCUR) doesn't realise that we might
@@ -1317,10 +1333,10 @@ void BufferView::Pimpl::center()
 	// the scrollbar to be updated as it should, so we have
 	// to do it manually. Any operation that does a center()
 	// and also might have moved first_y must make sure to call
-	// updateScrollbar() currently. Never mind that this is a 
+	// updateScrollbar() currently. Never mind that this is a
 	// pretty obfuscated way of updating t->first_y
 	screen().draw(t, bv_, new_y);
- 
+
 	update(t, BufferView::SELECT | BufferView::FITCUR);
 }
 
@@ -3267,7 +3283,7 @@ void BufferView::Pimpl::insertAndEditInset(Inset * inset)
 		if (gotsel)
 			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION);
 	}
-	else 
+	else
 		delete inset;
 #endif
 }
