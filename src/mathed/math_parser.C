@@ -46,6 +46,8 @@
 #include "support/lstrings.h"
 
 using std::istream;
+using std::ostream;
+using std::ios;
 using std::endl;
 
 
@@ -128,7 +130,7 @@ enum {
 	FLAG_NEWLINE    = 1 << 6,  //  next \\\\ ends the parsing process
 	FLAG_ITEM       = 1 << 7,  //  read a (possibly braced token)
 	FLAG_BLOCK      = 1 << 8,  //  next block ends the parsing process
-	FLAG_LEAVE      = 1 << 9,  //  leave the loop at the end
+	FLAG_LEAVE      = 1 << 9   //  leave the loop at the end
 };
 
 

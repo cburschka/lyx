@@ -1,3 +1,5 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -7,6 +9,7 @@
 #include "mathed/support.h"
 #include "support/LOstream.h"
 
+using std::max;
 
 MathDelimInset::MathDelimInset(latexkeys const * l, latexkeys const * r)
 	: MathNestInset(1), left_(l), right_(r)
