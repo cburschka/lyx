@@ -22,13 +22,14 @@
 #include "gettext.h"
 #include "combox.h"
 #include "helper_funcs.h"
+#include "frnt_lang.h"
 
 #include "support/lstrings.h"
 
 using std::vector;
 using std::find;
 
-using namespace character;
+using namespace frnt;
 
 typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;
 
@@ -53,7 +54,7 @@ void FormCharacter::build()
 	vector<SizePair>     const size     = getSizeData();
 	vector<BarPair>      const bar      = getBarData();
 	vector<ColorPair>    const color    = getColorData();
-	vector<LanguagePair> const language = getLanguageData();
+	vector<LanguagePair> const langs = getLanguageData();
 
 	// Store the identifiers for later
 	family_ = getSecond(family);
@@ -62,7 +63,7 @@ void FormCharacter::build()
 	size_   = getSecond(size);
 	bar_    = getSecond(bar);
 	color_  = getSecond(color);
-	lang_   = getSecond(language);
+	lang_   = getSecond(langs);
 
 	// create a string of entries " entry1 | entry2 | entry3 | entry4 "
 	// with which to initialise the xforms choice object.
@@ -99,9 +100,10 @@ void FormCharacter::build()
 	fl_end_form();
 
 	// build up the combox entries
-	for (vector<LanguagePair>::const_iterator cit = language.begin();
-	     cit != language.end(); ++cit) {
-		combo_language2_->addto(_(cit->first));
+	vector<LanguagePair>::const_iterator it  = langs.begin();
+	vector<LanguagePair>::const_iterator end = langs.end();
+	for (; it != end; ++it) {
+		combo_language2_->addto(_(it->first));
 	}
 	combo_language2_->select(1);
 
@@ -205,7 +207,7 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_bar);
-	if (bar_[pos-1] != character::IGNORE)
+	if (bar_[pos-1] != frnt::IGNORE)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_color);

@@ -185,6 +185,8 @@ private:
 	boost::scoped_ptr<Combox> combo_doc_class;
 	/// The ButtonController
 	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
+	///
+	std::vector<string> lang_;
 };
 
 

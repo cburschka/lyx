@@ -52,7 +52,7 @@ void ControlCharacter::setParams()
 	    getSeries()   != LyXFont::IGNORE_SERIES ||
 	    getShape()    != LyXFont::IGNORE_SHAPE  ||
 	    getSize()     != LyXFont::IGNORE_SIZE ||
-	    getBar()      != character::IGNORE ||
+	    getBar()      != frnt::IGNORE ||
 	    getColor()    != LColor::ignore ||
 	    font_->language() != ignore_language)
 		bc().valid();
@@ -132,51 +132,51 @@ void ControlCharacter::setSize(LyXFont::FONT_SIZE val)
 }
 
 
-character::FONT_STATE ControlCharacter::getBar() const
+frnt::FONT_STATE ControlCharacter::getBar() const
 {
 	if (!font_.get())
-		return character::IGNORE;
+		return frnt::IGNORE;
 
 	if (font_->emph() == LyXFont::TOGGLE)
-		return character::EMPH_TOGGLE;
+		return frnt::EMPH_TOGGLE;
 
 	if (font_->underbar() == LyXFont::TOGGLE)
-		return character::UNDERBAR_TOGGLE;
+		return frnt::UNDERBAR_TOGGLE;
 
 	if (font_->noun() == LyXFont::TOGGLE)
-		return character::NOUN_TOGGLE;
+		return frnt::NOUN_TOGGLE;
 
 	if (font_->emph() == LyXFont::IGNORE &&
 	    font_->underbar() == LyXFont::IGNORE &&
 	    font_->noun() == LyXFont::IGNORE)
-		return character::IGNORE;
+		return frnt::IGNORE;
 
-	return character::INHERIT;
+	return frnt::INHERIT;
 }
 
 
-void ControlCharacter::setBar(character::FONT_STATE val)
+void ControlCharacter::setBar(frnt::FONT_STATE val)
 {
 	switch (val) {
-	case character::IGNORE:
+	case frnt::IGNORE:
 		font_->setEmph(LyXFont::IGNORE);
 		font_->setUnderbar(LyXFont::IGNORE);
 		font_->setNoun(LyXFont::IGNORE);
 		break;
 
-	case character::EMPH_TOGGLE:
+	case frnt::EMPH_TOGGLE:
 		font_->setEmph(LyXFont::TOGGLE);
 		break;
 
-	case character::UNDERBAR_TOGGLE:
+	case frnt::UNDERBAR_TOGGLE:
 		font_->setUnderbar(LyXFont::TOGGLE);
 		break;
 
-	case character::NOUN_TOGGLE:
+	case frnt::NOUN_TOGGLE:
 		font_->setNoun(LyXFont::TOGGLE);
 		break;
 
-	case character::INHERIT:
+	case frnt::INHERIT:
 		font_->setEmph(LyXFont::INHERIT);
 		font_->setUnderbar(LyXFont::INHERIT);
 		font_->setNoun(LyXFont::INHERIT);

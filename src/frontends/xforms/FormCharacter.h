@@ -68,7 +68,7 @@ private:
 	///
 	std::vector<LyXFont::FONT_SIZE>    size_;
 	///
-	std::vector<character::FONT_STATE> bar_;
+	std::vector<frnt::FONT_STATE>      bar_;
 	///
 	std::vector<LColor::color>         color_;
 	///

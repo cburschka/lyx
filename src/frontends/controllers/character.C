@@ -20,11 +20,10 @@
 
 #include "gettext.h"
 #include "character.h"
-#include "language.h"
 
 using std::vector;
 
-namespace character {
+namespace frnt {
 
 vector<FamilyPair> const getFamilyData()
 {
@@ -175,23 +174,4 @@ vector<ColorPair> const getColorData()
 	return color;
 }
 
-
-vector<LanguagePair> const getLanguageData()
-{
-	vector<LanguagePair> langs(languages.size() + 2);
-
-	langs[0].first = N_("No change"); langs[0].second = "No change";
-	langs[1].first = N_("Reset");     langs[1].second = "Reset";
-
-	vector<string>::size_type i = 2;
-	for (Languages::const_iterator cit = languages.begin();
-	     cit != languages.end(); ++cit) {
-		langs[i].first  = cit->second.display();
-		langs[i].second = cit->second.lang();
-		++i;
-	}
-
-	return langs;
-}
-
-} // namespace character
+} // namespace frnt

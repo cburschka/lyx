@@ -13,6 +13,8 @@ libcontrollers_la_SOURCES= \
 	biblio.h \
 	character.C \
 	character.h \
+	frnt_lang.C \
+	frnt_lang.h \
 	ButtonController.h \
 	ButtonControllerBase.C \
 	ButtonControllerBase.h \

@@ -23,7 +23,7 @@
 #include "LColor.h"
 
 /** Functions of use to the character GUI controller and view */
-namespace character {
+namespace frnt {
 	///
 	enum FONT_STATE {
 		///
@@ -50,8 +50,6 @@ namespace character {
 	typedef std::pair<string, FONT_STATE> BarPair;
 	///
 	typedef std::pair<string, LColor::color> ColorPair;
-	///
-	typedef std::pair<string, string> LanguagePair;
 
 	///
 	std::vector<FamilyPair>   const getFamilyData();
@@ -65,9 +63,7 @@ namespace character {
 	std::vector<BarPair>      const getBarData();
 	///
 	std::vector<ColorPair>    const getColorData();
-	///
-	std::vector<LanguagePair> const getLanguageData();
 
-} // namespace character
+} // namespace frnt
 
 #endif // CHARACTERHELPERS

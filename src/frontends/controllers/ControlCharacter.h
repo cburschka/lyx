@@ -36,7 +36,7 @@ public:
 	///
 	void setSize(LyXFont::FONT_SIZE);
 	///
-	void setBar(character::FONT_STATE);
+	void setBar(frnt::FONT_STATE);
 	///
 	void setColor(LColor::color);
 	///
@@ -53,7 +53,7 @@ public:
 	///
 	LyXFont::FONT_SIZE getSize() const;
 	///
-	character::FONT_STATE getBar() const;
+	frnt::FONT_STATE getBar() const;
 	///
 	LColor::color getColor() const;
 	///

@@ -1,11 +1,16 @@
 2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* character.[Ch] (getLanguageData): returns a vector<LanguagePair>
-	where LanguagePair is a display string and an identifying string.
-	The display string is internationalised.
+	* character.[Ch]: rename namespace character as namespace frnt.
+
+	* frnt_lang.[Ch]: new file. Move getLanguageData from character.[Ch]
+	as several dialogs will use this info. The function now returns a
+	vector<LanguagePair> where LanguagePair is a display string and an
+	identifying string. The display string is internationalised.
 
 	* ControlCharacter.C (getLanguage, setLanguage): Do not internationalise
 	the identifying strings, "No change" and "Reset".
+
+	* Makefile.am: add frnt_lang.[Ch].
 
 2002-04-25  Herbert Voss  <voss@lyx.org>
 

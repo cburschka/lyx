@@ -26,6 +26,7 @@
 #include "vspace.h"
 #include "bmtable.h"
 #include "language.h"
+#include "frnt_lang.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
@@ -241,6 +242,10 @@ void FormDocument::build()
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
 			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
 
+	vector<frnt::LanguagePair> const langs = frnt::getLanguageData();
+	// Store the identifiers for later
+	lang_ = getSecond(langs);
+
 	// The language is a combo-box and has to be inserted manually
 	obj = language_->choice_language;
 	fl_deactivate_object(obj);
@@ -252,10 +257,12 @@ void FormDocument::build()
 	combo_language->setcallback(ComboInputCB, this);
 	fl_end_form();
 
-	for (Languages::const_iterator cit = languages.begin();
-	     cit != languages.end(); ++cit) {
-		combo_language->addto(cit->second.lang());
+	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
+	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	for (; lit != lend; ++lit) {
+		combo_language->addto(_(lit->first));
 	}
+	combo_language->select(1);
 
 	fl_addto_choice(language_->choice_quotes_language,
 			_(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
@@ -887,9 +894,9 @@ bool FormDocument::language_apply(BufferParams & params)
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
+	int const pos = combo_language->get();
 	Language const * old_language = params.language;
-	Language const * new_language =
-		languages.getLanguage(combo_language->getline());
+	Language const * new_language = languages.getLanguage(lang_[pos-1]);
 	if (!new_language)
 		new_language = default_language;
 
@@ -1083,12 +1090,29 @@ void FormDocument::class_update(BufferParams const & params)
 }
 
 
+namespace {
+
+template<class A>
+typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
+{
+	typename vector<A>::const_iterator it =
+		std::find(vec.begin(), vec.end(), val);
+	if (it == vec.end())
+		return 0;
+	return it - vec.begin();
+}
+
+} // namespace anon
+
+
 void FormDocument::language_update(BufferParams const & params)
 {
 	if (!language_.get())
 		return;
 
-	combo_language->select(params.language->lang());
+	int const pos = int(findPos(lang_, params.language->lang()));
+	combo_language->select(pos+1);
+
 	fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
 	fl_set_choice(language_->choice_quotes_language, params.quotes_language + 1);
 	fl_set_button(language_->radio_single, 0);
