@@ -666,12 +666,12 @@ MathCursor::pos_type MathCursor::pos() const
 }
 
 
-void MathCursor::adjust(pos_type from, size_type size)
+void MathCursor::adjust(pos_type from, difference_type diff)
 {
 	if (cursor().pos_ > from)
-		cursor().pos_ += size;
+		cursor().pos_ += diff;
 	if (Anchor_.back().pos_ > from)
-		Anchor_.back().pos_ += size;
+		Anchor_.back().pos_ += diff;
 	// just to be on the safe side
 	// theoretically unecessary
 	normalize();

@@ -46,6 +46,8 @@ class MathCursor {
 public:
 	/// short of anything else reasonable
 	typedef MathInset::size_type       size_type;
+	/// type for column numbers
+	typedef MathArray::difference_type difference_type;
 	/// type for cursor positions within a cell
 	typedef MathInset::pos_type        pos_type;
 	/// type for cell indices
@@ -114,8 +116,8 @@ public:
 	void popToEnclosingHull();
 	/// go up to the hull inset
 	void popToHere(MathInset const * p);
-	/// adjust position after deletion/insertion
-	void adjust(pos_type from, size_type size);
+	/// adjust anchor position after deletions/insertions
+	void adjust(pos_type from, difference_type diff);
 	///
 	InsetFormulaBase * formula() const;
 	/// current offset in the current cell
@@ -273,7 +275,7 @@ private:
 	/// the name of the macro we are currently inputting
 	string macroName() const;
 	/// where in the curent cell does the macro name start?
-	MathInset::difference_type macroNamePos() const;
+	difference_type macroNamePos() const;
 	/// can we enter the inset?
 	bool openable(MathAtom const &, bool selection) const;
 	/// write access to cursor cell position
