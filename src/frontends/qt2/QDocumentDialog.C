@@ -41,6 +41,7 @@
 #include <qlabel.h>
 #include <qmultilineedit.h>
 #include <qlineedit.h>
+#include <qlistview.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qradiobutton.h>
@@ -237,24 +238,11 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)),
 		 this , SLOT(change_adaptor()));
 
-	// bullets
-	connect(bulletsModule->bullet1LE, SIGNAL(textChanged(const QString&)),
+	// bullets 
+	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bulletsize1CO, SIGNAL(activated(int)),
+	connect(bulletsModule->bulletsLV, SIGNAL(selectionChanged()),
 		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bullet2LE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bulletsize2CO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bullet3LE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bulletsize3CO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bullet4LE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
-	connect(bulletsModule->bulletsize4CO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
-
 }
 
 

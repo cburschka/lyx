@@ -13,19 +13,15 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>335</width>
-            <height>216</height>
+            <width>199</width>
+            <height>166</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Form3</string>
+        <string>Form1</string>
     </property>
-    <property stdset="1">
-        <name>mouseTracking</name>
-        <bool>true</bool>
-    </property>
-    <vbox>
+    <grid>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -34,631 +30,136 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget>
-            <class>QLayoutWidget</class>
+        <widget row="0"  column="0" >
+            <class>QListView</class>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Bullets</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Size</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+        <item>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string>default</string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string></string>
+                </property>
+                <property>
+                    <name>text</name>
+                    <string>default</string>
+                </property>
+                <property>
+                    <name>pixmap</name>
+                    <pixmap></pixmap>
+                </property>
+                <property>
+                    <name>pixmap</name>
+                    <pixmap></pixmap>
+                </property>
+                <item>
+                    <property>
+                        <name>text</name>
+                        <string></string>
+                    </property>
+                    <property>
+                        <name>text</name>
+                        <string>default</string>
+                    </property>
+                    <property>
+                        <name>pixmap</name>
+                        <pixmap></pixmap>
+                    </property>
+                    <property>
+                        <name>pixmap</name>
+                        <pixmap></pixmap>
+                    </property>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string></string>
+                        </property>
+                        <property>
+                            <name>text</name>
+                            <string>default</string>
+                        </property>
+                        <property>
+                            <name>pixmap</name>
+                            <pixmap></pixmap>
+                        </property>
+                        <property>
+                            <name>pixmap</name>
+                            <pixmap></pixmap>
+                        </property>
+                    </item>
+                </item>
+            </item>
+        </item>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout5</cstring>
+                <cstring>bulletsLV</cstring>
             </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>0</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget row="4"  column="3" >
-                    <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>default</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>tiny</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>script</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>footnote</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>small</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>normal</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>LARGE</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>huge</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Huge</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bulletsize4CO</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 4 bullet size</string>
-                    </property>
-                </widget>
-                <widget row="3"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bullet3LE</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 3 bullet</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="2" >
-                    <class>QToolButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>setbullet2TB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>focusPolicy</name>
-                        <enum>TabFocus</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Choose</string>
-                    </property>
-                    <property stdset="1">
-                        <name>popupDelay</name>
-                        <number>1</number>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Shows menu with bullet options</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="2" >
-                    <class>QToolButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>setbullet1TB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>focusPolicy</name>
-                        <enum>TabFocus</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Choose</string>
-                    </property>
-                    <property stdset="1">
-                        <name>popupDelay</name>
-                        <number>1</number>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Shows menu with bullet options</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bullet1LE</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 1 bullet</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="3" >
-                    <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>default</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>tiny</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>script</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>footnote</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>small</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>normal</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>LARGE</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>huge</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Huge</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bulletsize1CO</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 1 bullet size</string>
-                    </property>
-                </widget>
-                <spacer row="0"  column="0" >
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Vertical</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget row="0"  column="3" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>sizeL</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Si&amp;ze:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>bulletsize1CO</cstring>
-                    </property>
-                </widget>
-                <widget row="4"  column="2" >
-                    <class>QToolButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>setbullet4TB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>focusPolicy</name>
-                        <enum>TabFocus</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Choose</string>
-                    </property>
-                    <property stdset="1">
-                        <name>popupDelay</name>
-                        <number>1</number>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Shows menu with bullet options</string>
-                    </property>
-                </widget>
-                <widget row="0"  column="1" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>latexL</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Name</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>bullet1LE</cstring>
-                    </property>
-                </widget>
-                <widget row="3"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>TextLabel1_3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Level &amp;3 :</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>bullet3LE</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>TextLabel1</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Level &amp;1 :</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>bullet1LE</cstring>
-                    </property>
-                </widget>
-                <spacer row="0"  column="2" >
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer2</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Vertical</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget row="4"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>TextLabel1_4</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Level &amp;4 :</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>bullet4LE</cstring>
-                    </property>
-                </widget>
-                <widget row="2"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bullet2LE</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 2 bullet</string>
-                    </property>
-                </widget>
-                <widget row="4"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bullet4LE</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 4 bullet</string>
-                    </property>
-                </widget>
-                <widget row="3"  column="2" >
-                    <class>QToolButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>setbullet3TB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>focusPolicy</name>
-                        <enum>TabFocus</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Choose</string>
-                    </property>
-                    <property stdset="1">
-                        <name>popupDelay</name>
-                        <number>1</number>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Shows menu with bullet options</string>
-                    </property>
-                </widget>
-                <widget row="3"  column="3" >
-                    <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>default</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>tiny</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>script</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>footnote</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>small</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>normal</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>LARGE</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>huge</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Huge</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bulletsize3CO</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 3 bullet size</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="3" >
-                    <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>default</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>tiny</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>script</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>footnote</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>small</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>normal</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Large</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>LARGE</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>huge</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Huge</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bulletsize2CO</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Level 2 bullet size</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>TextLabel1_2</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Level &amp;2 :</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>bullet2LE</cstring>
-                    </property>
-                </widget>
-            </grid>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>5</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>allColumnsShowFocus</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>rootIsDecorated</name>
+                <bool>true</bool>
+            </property>
         </widget>
-        <spacer>
+        <spacer row="2"  column="0" >
             <property>
                 <name>name</name>
-                <cstring>Spacer25</cstring>
+                <cstring>Spacer2</cstring>
             </property>
             <property stdset="1">
                 <name>orientation</name>
@@ -676,20 +177,163 @@
                 </size>
             </property>
         </spacer>
-    </vbox>
+        <widget row="1"  column="0" >
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout1</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QToolButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>setbulletTB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Set &amp;Bullet</string>
+                    </property>
+                    <property stdset="1">
+                        <name>popupDelay</name>
+                        <number>1</number>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Size:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>bulletsizeCO</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QComboBox</class>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>default</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>tiny</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>script</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>footnote</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>small</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>normal</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>large</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>Large</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>LARGE</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>huge</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>Huge</string>
+                        </property>
+                    </item>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>bulletsizeCO</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </grid>
 </widget>
-<tabstops>
-    <tabstop>bullet1LE</tabstop>
-    <tabstop>setbullet1TB</tabstop>
-    <tabstop>bulletsize1CO</tabstop>
-    <tabstop>bullet2LE</tabstop>
-    <tabstop>setbullet2TB</tabstop>
-    <tabstop>bulletsize2CO</tabstop>
-    <tabstop>bullet3LE</tabstop>
-    <tabstop>setbullet3TB</tabstop>
-    <tabstop>bulletsize3CO</tabstop>
-    <tabstop>bullet4LE</tabstop>
-    <tabstop>setbullet4TB</tabstop>
-    <tabstop>bulletsize4CO</tabstop>
-</tabstops>
+<connections>
+    <connection>
+        <sender>bulletsizeCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>BulletsModuleBase</receiver>
+        <slot>setSize(int)</slot>
+    </connection>
+    <connection>
+        <sender>bulletsLV</sender>
+        <signal>selectionChanged(QListViewItem*)</signal>
+        <receiver>BulletsModuleBase</receiver>
+        <slot>setActive(QListViewItem*)</slot>
+    </connection>
+    <slot access="protected">setActive(QListViewItem*)</slot>
+    <slot access="protected">setSize(int)</slot>
+</connections>
 </UI>
