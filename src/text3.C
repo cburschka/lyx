@@ -675,10 +675,13 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_SETXY: {
 		int x = 0;
 		int y = 0;
-		if (::sscanf(cmd.argument.c_str(), " %d %d", &x, &y) != 2)
+		istringstream is(cmd.argument.c_str());
+		is >> x >> y;
+		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"
 			       << cmd.argument << std::endl;
-		setCursorFromCoordinates(bv, x, y);
+		else 
+			setCursorFromCoordinates(bv, x, y);
 		break;
 	}
 
