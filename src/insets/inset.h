@@ -19,6 +19,7 @@
 #include <vector>
 #include "LString.h"
 #include "LColor.h"
+#include "insetbase.h"
 #include "frontends/mouse_state.h"
 #include "support/types.h"
 
@@ -40,7 +41,7 @@ namespace grfx {
 }
 
 /// Insets
-class Inset {
+class Inset : public InsetBase {
 public:
 	/** This is not quite the correct place for this enum. I think
 	    the correct would be to let each subclass of Inset declare
@@ -140,34 +141,8 @@ public:
 		HIGHLY_EDITABLE
 	};
 
-	/** Dispatch result codes
-	    Now that nested updatable insets are allowed, the local dispatch
-	    becomes a bit complex, just two possible results (boolean)
-	    are not enough.
-
-	    DISPATCHED          = the inset catched the action
-	    DISPATCHED_NOUPDATE = the inset catched the action and no update
-				  is needed here to redraw the inset
-	    FINISHED            = the inset must be unlocked as a result
-				  of the action
-	    FINISHED_RIGHT      = FINISHED, but put the cursor to the RIGHT of
-				  the inset.
-	    FINISHED_UP         = FINISHED, but put the cursor UP of
-				  the inset.
-	    FINISHED_DOWN       = FINISHED, but put the cursor DOWN of
-				  the inset.
-	    UNDISPATCHED        = the action was not catched, it should be
-				  dispatched by lower level insets
-	*/
-	enum RESULT {
-		UNDISPATCHED = 0,
-		DISPATCHED,
-		DISPATCHED_NOUPDATE,
-		FINISHED,
-		FINISHED_RIGHT,
-		FINISHED_UP,
-		FINISHED_DOWN
-	};
+	///
+	typedef InsetBase::dispatch_result RESULT;
 
 	///
 	Inset();
@@ -372,6 +347,7 @@ public:
 	 */
 	virtual void generatePreview() const {}
 
+
 protected:
 	///
 	mutable int top_x;
@@ -536,6 +512,7 @@ public:
 	///
 	virtual bool searchBackward(BufferView *, string const &,
 				    bool = true, bool = false);
+
 
 protected:
 	///

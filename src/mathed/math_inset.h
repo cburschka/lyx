@@ -27,6 +27,7 @@
 
 #include "LString.h"
 #include "frontends/mouse_state.h"
+#include "insets/insetbase.h"
 #include "math_data.h"
 
 /**
@@ -82,7 +83,7 @@ class Dimension;
 class FuncRequest;
 
 
-class MathInset {
+class MathInset : public InsetBase {
 public:
 	/// short of anything else reasonable
 	typedef MathArray::size_type        size_type;
@@ -96,6 +97,8 @@ public:
 	typedef size_type                   row_type;
 	/// type for column numbers
 	typedef size_type                   col_type;
+	///
+	typedef InsetBase::dispatch_result  result_type;
 
 	/// our members behave nicely...
 	MathInset() {}
@@ -229,12 +232,6 @@ public:
 	virtual bool isRelOp() const { return false; }
 	/// -1: text mode, 1: math mode, 0 undecided
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
-	/// Dispatch result codes, see inset/inset.h
-	enum result_type {
-		UNDISPATCHED = 0, DISPATCHED, DISPATCHED_NOUPDATE,
-		FINISHED, FINISHED_RIGHT, FINISHED_UP, FINISHED_DOWN,
-		DISPATCHED_POP
-	};
 
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// will this get written as a single block in {..}

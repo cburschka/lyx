@@ -17,6 +17,7 @@ libinsets_la_SOURCES = \
 	ExternalTemplate.h \
 	inset.C \
 	inset.h \
+	insetbase.h \
 	insetbib.C \
 	insetbib.h \
 	insetbutton.C \

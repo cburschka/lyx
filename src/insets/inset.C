@@ -39,14 +39,16 @@ using std::endl;
 unsigned int Inset::inset_id = 0;
 
 Inset::Inset()
-	: top_x(0), topx_set(false), top_baseline(0), scx(0),
+	:	InsetBase(),
+		top_x(0), topx_set(false), top_baseline(0), scx(0),
 	  id_(inset_id++), owner_(0), par_owner_(0),
 	  background_color_(LColor::inherit)
 {}
 
 
 Inset::Inset(Inset const & in, bool same_id)
-	: top_x(0), topx_set(false), top_baseline(0), scx(0), owner_(0),
+	:	InsetBase(),
+		top_x(0), topx_set(false), top_baseline(0), scx(0), owner_(0),
 	  name_(in.name_), background_color_(in.background_color_)
 {
 	if (same_id)
