@@ -1,8 +1,12 @@
+2002-12-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* MenuBackend.C (expandToc): gettext on float names.
+
 2002-12-03  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
- 
- 	* lyxlength.[Ch]: set default unit to UNIT_NONE,
- 	implement bool empty() [bug 490]
- 
+
+	* lyxlength.[Ch]: set default unit to UNIT_NONE,
+	implement bool empty() [bug 490]
+
 2002-12-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C, CutAndPaste.C: use BoostFormat.h not boost/format.hpp

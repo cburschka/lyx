@@ -505,7 +505,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 					   label, ccit->action()));
 		}
 		MenuItem item(MenuItem::Submenu,
-			      floats[cit->first]->second.name());
+			      _(floats[cit->first]->second.name()));
 		item.submenu(menu);
 		tomenu.add(item);
 	}
