@@ -9,28 +9,33 @@
 
 #include <config.h>
  
-#include "lyx_gui.h"
- 
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
- 
 #include "debug.h"
 #include "gettext.h"
  
+#include <fcntl.h>
+#include <boost/bind.hpp>
+ 
+#include "lyx_gui.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
-
+ 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
 #include "BufferView.h"
-#include "QtView.h"
- 
-#include <fcntl.h>
 
-#include <boost/bind.hpp>
+// Dear Lord, deliver us from Evil,
+// aka the Qt headers
+#include <boost/shared_ptr.hpp>
+#include <boost/function/function0.hpp>
+#include <boost/signals/signal1.hpp>
+ 
+#include "QtView.h"
+#include "QLImage.h"
  
 #include <qapplication.h>
  
@@ -109,7 +114,10 @@ void lyx_gui::start(string const & batch, vector<string> files)
  
 void lyx_gui::init_graphics()
 {
-	// FIXME
+	using namespace grfx;
+
+	Image::newImage = boost::bind(&QLImage::newImage);
+	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
 }
 
 

@@ -7,11 +7,6 @@ INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-if USE_BASIC_IMAGE_LOADER
-else
-XFORMSIMAGE = xformsImage.C xformsImage.h
-endif
-
 nodist_libqt2xforms_la_SOURCES = \
 	Color.h \
 	Color.C \
@@ -19,7 +14,6 @@ nodist_libqt2xforms_la_SOURCES = \
 	DropDown.C \
 	Tooltips.h \
 	Tooltips.C \
-	$(XFORMSIMAGE) \
 	xforms_helpers.h \
 	xforms_helpers.C
 

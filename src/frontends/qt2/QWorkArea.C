@@ -31,6 +31,7 @@
 #include <qpainter.h>
 #include <qmainwindow.h>
 #include <qlayout.h>
+#include <qclipboard.h>
  
 using std::endl;
 using std::abs;
@@ -77,20 +78,22 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 }
 
 
-void QWorkArea::haveSelection(bool ) const
+void QWorkArea::haveSelection(bool) const
 {
-	// FIXME 
+	// not possible in Qt !
 }
 
  
 string const QWorkArea::getClipboard() const 
 {
-	// FIXME 
-	return "nothing"; 
+	QString str = QApplication::clipboard()->text(); 
+	if (str.isNull())
+		return string();
+	return str.latin1();
 }
 
 	
-void QWorkArea::putClipboard(string const &) const
+void QWorkArea::putClipboard(string const & str) const
 {
-	// FIXME
+	QApplication::clipboard()->setText(str.c_str());
 }

@@ -14,7 +14,7 @@ FileDialog
  
 GraphicsImage
 
-	- remove X dependencies here (?) (*)
+	- remove getPixmap() 
  
 LyXServer
 
@@ -24,7 +24,6 @@ lyx_gui (qt)
 
 	- move out lyxserver
 	- do dpi
-	- initialise graphics
  
 Menubar_pimpl
 
@@ -85,11 +84,18 @@ qlkey
 
 	- finish off the lists
  
+QLImage
+
+	- get jpeg etc. to work
+	- get rotation etc. to work
+	- get mono/color to work
+	- get bgcolor and clipping to work 
+
+ 
 QLPainter
 
 	- work out why buttons look ugly and fix
 	- check ::arc() works
-	- implement ::image + image loader grfx stuff etc. (*)(*)
 
 QLyXKeySym
 
@@ -103,7 +109,7 @@ QMiniBuffer
 
 QParagraph
 
-	- implement me (MVCed already) (*)
+	- implement me (MVCed already) (*) [Edwin is working on this]
 
 QPreferences
 
@@ -128,10 +134,6 @@ QTabular
 QTexinfo
 
 	- fix "View" when path not shown
-
-QWorkArea
-
-	- clipboard code missing
 
 QtView
 

@@ -13,8 +13,8 @@
 #endif
 
 #include <iostream>
+#include <boost/scoped_array.hpp>
  
-//#include "graphics/GraphicsImage.h"
 #include "font_metrics.h"
 #include "support/lstrings.h" 
 #include "lyxrc.h"
@@ -24,12 +24,11 @@
 #include "QWorkArea.h"
 #include "qfont_loader.h"
 #include "QLPainter.h"
+#include "QLImage.h"
  
 #include <qpainter.h>
 #include <qbrush.h> 
 #include <qcolor.h>
-
-#include <boost/scoped_array.hpp>
 
 using std::endl;
 
@@ -184,19 +183,11 @@ Painter & QLPainter::arc(int x, int y,
 }
 
  
-Painter & QLPainter::image(int , int , 
-	int , int ,
-	grfx::Image const & )
+Painter & QLPainter::image(int x, int y, 
+	int w, int h,
+	grfx::Image const & i)
 {
-#if 0 // FIXME
-	XGCValues val;
-	val.function = GXcopy;
-	GC gc = XCreateGC(display(), owner_.getPixmap(),
-		GCFunction, &val);
-	XCopyArea(display(), image.getPixmap(), owner_.getPixmap(), 
-		gc, 0, 0, w, h, x, y);
-	XFreeGC(display(), gc);
-#endif
+	qp_->drawPixmap(x, y, static_cast<grfx::QLImage const &>(i).qpixmap(), 0, 0, w, h);
 	return *this;
 }
 

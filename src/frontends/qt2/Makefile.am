@@ -32,6 +32,8 @@ libqt2_la_SOURCES = \
 	Toolbar_pimpl.h \
 	QContentPane.C \
 	QContentPane.h \
+	QLImage.C \
+	QLImage.h \
 	QLPainter.C \
 	QLPainter.h \
 	QLyXKeySym.C \

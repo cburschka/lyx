@@ -1,3 +1,15 @@
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* QLImage.h:
+	* QLImage.C: initial image loader
+
+	* lyx_gui.C: initialise graphics
+
+	* QLPainter.C: draw images
+
+	* QWorkArea.C: implement clipboard as much as possible
+ 
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* dialog files: add unused Dialogs paramater to allow compile
