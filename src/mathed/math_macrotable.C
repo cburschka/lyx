@@ -26,15 +26,17 @@ void MathMacroTable::dump()
 	lyxerr << "\n------------------------------------------\n";
 	table_type::const_iterator it;
 	for (it = macro_table.begin(); it != macro_table.end(); ++it)
-		lyxerr << it->first << " [" << it->second->nargs() << "] : "
+		lyxerr << it->first << " [" << it->second.nargs() << "] : "
 			<< it->second << "\n";
 	lyxerr << "------------------------------------------\n";
 }
 
 
-void MathMacroTable::insertTemplate(MathMacroTemplate const * p)
+void MathMacroTable::insertTemplate(MathMacroTemplate const & p)
 {
-	macro_table[p->name()] = const_cast<MathMacroTemplate *>(p);
+	if (macro_table.find(p.name()) != macro_table.end()) 
+		lyxerr << "macro '" << p.name() << "' not new\n";
+	macro_table[p.name()] = p;
 }
 
 
@@ -49,19 +51,16 @@ MathMacroTemplate & MathMacroTable::provideTemplate(string const & name)
 		       << name << "' available.\n";
 	}
 		
-	return *pos->second;
+	return pos->second;
 }
 
 
 void MathMacroTable::createTemplate
 	(string const & name, int na, string const & text)
 {
-	MathMacroTemplate * t = new MathMacroTemplate(name, na);
-	t->cell(0) = mathed_parse_cell(text);
+	MathMacroTemplate t(name, na);
+	t.cell(0) = mathed_parse_cell(text);
 	insertTemplate(t);
-#ifdef WITH_WARNINGS
-#warning who frees this?
-#endif
 }
 
 
@@ -110,9 +109,8 @@ void MathMacroTable::builtinMacros()
 		MathInset * inset = new MathDelimInset('(', ')');
 		inset->push_back(frac);
 
-		MathMacroTemplate * t = new MathMacroTemplate("binom", 2);
-		t->push_back(inset);
-
+		MathMacroTemplate t("binom", 2);
+		t.push_back(inset);
 		insertTemplate(t);
 	}
 

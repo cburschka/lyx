@@ -13,6 +13,9 @@
 
 	* math_funcinset.[Ch]: bring red color back
 
+	* math_macro*.[Ch]: move ownership of the templates from the formulamacro
+	inset to the mcaro table
+
 2001-08-01  André Pönitz  <poenitz@gmx.net>
 
 	* math_cursor.C:

@@ -4,6 +4,7 @@
 
 #include <map>
 #include "LString.h"
+#include "math_macrotemplate.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,13 +12,13 @@
 
 
 class MathMacro;
-class MathMacroTemplate;
+
 
 ///
 struct MathMacroTable {
 public:
 	///
-	static void insertTemplate(MathMacroTemplate const *);
+	static void insertTemplate(MathMacroTemplate const &);
 	///
 	static MathMacroTemplate & provideTemplate(string const &);
 	///
@@ -30,7 +31,7 @@ public:
 	static void builtinMacros();
 private:
 	///
-	typedef std::map<string, MathMacroTemplate *> table_type;
+	typedef std::map<string, MathMacroTemplate> table_type;
 	//
 	static table_type macro_table;
 public:

@@ -35,13 +35,7 @@ public:
 	///
 	InsetFormulaMacro();
 	///
-	InsetFormulaMacro(InsetFormulaMacro const &);
-	///
 	explicit InsetFormulaMacro(string name, int na);
-	///
-	~InsetFormulaMacro();
-	///
-	void operator=(InsetFormulaMacro const &);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -81,8 +75,6 @@ private:
 	MathMacroTemplate const & tmacro() const;
 	/// prefix in inset
 	string prefix() const;
-	///
-	MathMacroTemplate const * tmacro_;
 };
 
 #endif

@@ -309,7 +309,7 @@ void MathInset::code(MathTextCodes t)
 
 void MathInset::metrics(MathStyles st) const
 {
-	lyxerr[Debug::MATHED] << "MathInset::metrics() called directly!\n";
+	lyxerr << "MathInset::metrics() called directly!\n";
 	size_ = st;
 }
 

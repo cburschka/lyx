@@ -43,38 +43,20 @@ using std::ostream;
 extern MathCursor * mathcursor;
 
 InsetFormulaMacro::InsetFormulaMacro()
-	: tmacro_(new MathMacroTemplate("unknown", 0))
-{}
-
-
-InsetFormulaMacro::InsetFormulaMacro(InsetFormulaMacro const & m)
-	: InsetFormulaBase(m),
-		tmacro_(static_cast<MathMacroTemplate *>(m.tmacro_->clone()))
-{}
-
-
-InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
-	: tmacro_(new MathMacroTemplate(nm, na))
 {
-	MathMacroTable::insertTemplate(tmacro_);
+	setInsetName("unknown");
 }
 
 
-InsetFormulaMacro::~InsetFormulaMacro()
+InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 {
-#ifdef WITH_WARNINGS
-#warning Need to unregister from MathMacroTable.
-#endif
-	// Instead of unregister an delete leak this until it gets fixed
-	//delete tmacro_;
+	setInsetName(nm);
+	MathMacroTable::createTemplate(nm, na, string());
 }
 
 
 Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 {
-#ifdef WITH_WARNINGS
-#warning This should not be needed in reality...
-#endif
 	return new InsetFormulaMacro(*this);
 }
 
@@ -114,10 +96,10 @@ int InsetFormulaMacro::docBook(ostream & os) const
 
 void InsetFormulaMacro::read(LyXLex & lex)
 {
-	// Awful hack...
-	delete tmacro_;
-	tmacro_ = mathed_parse_macro(lex);
-	MathMacroTable::insertTemplate(tmacro_);
+	MathMacroTemplate * t = mathed_parse_macro(lex);
+	MathMacroTable::insertTemplate(*t);
+	setInsetName(t->name());
+	delete t;
 	metrics();
 }
 
@@ -175,7 +157,7 @@ InsetFormulaMacro::localDispatch(BufferView * bv,
 
 MathMacroTemplate const & InsetFormulaMacro::tmacro() const
 {
-	return *tmacro_;
+	return MathMacroTable::provideTemplate(getInsetName());
 }
 
 
@@ -193,13 +175,13 @@ MathInsetTypes InsetFormulaMacro::getType() const
 
 MathInset const * InsetFormulaMacro::par() const
 {
-	return tmacro_;
+	return &tmacro();
 }
 
 
 void InsetFormulaMacro::metrics() const
 {
-	tmacro_->metrics(LM_ST_TEXT);
+	tmacro().metrics(LM_ST_TEXT);
 }
 
 
@@ -229,7 +211,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	// formula
 	float t = tmacro().width() + 5;
 	x -= t;
-	tmacro_->draw(pain, int(x), baseline);
+	tmacro().draw(pain, int(x), baseline);
 	x += t;
 }
 

@@ -36,8 +36,6 @@ public:
 private:
 	///
 	int numargs_;
-	/// unimplemented
-	void operator=(MathMacroTemplate const &);
 };
 
 #endif
