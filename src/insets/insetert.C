@@ -668,8 +668,9 @@ void InsetERT::open(BufferView * bv)
 
 void InsetERT::close(BufferView * bv) const
 {
-	if (collapsed_)
+	if (status_ == Collapsed || status_ == Inlined)
 		return;
+
 	status(bv, Collapsed);
 }
 
