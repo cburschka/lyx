@@ -270,12 +270,11 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	for (int i = 0; i < tabular.rows(); ++i) {
 		int nx = x;
 		idx = tabular.getCellNumber(i, 0);
-		if (y + tabular.getDescentOfRow(i) <= 0 &&
-			  y - tabular.getAscentOfRow(i) < pi.pain.paperHeight())
-		{
-			y += tabular.getDescentOfRow(i) +
-					tabular.getAscentOfRow(i + 1) +
-					tabular.getAdditionalHeight(i + 1);
+		if (y + tabular.getDescentOfRow(i) <= 0 
+		    && y - tabular.getAscentOfRow(i) < pi.pain.paperHeight()) {
+			y += tabular.getDescentOfRow(i) 
+				+ tabular.getAscentOfRow(i + 1) 
+				+ tabular.getAdditionalHeight(i + 1);
 			continue;
 		}
 		for (int j = 0; j < tabular.columns(); ++j) {
@@ -965,6 +964,7 @@ void InsetTabular::getCursorPos(LCursor const & cur, int & x, int & y) const
 
 InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 {
+	lyxerr << "# InsetTabular::setPos()  x=" << x << " y=" << y << endl;
 	int idx_min = 0;
 	int dist_min = 1000000;
 	for (idx_type i = 0; i < nargs(); ++i) {

@@ -767,15 +767,16 @@ void RowPainter::paintText()
 		if (x_ > bv_.workWidth())
 			break;
 
-		pos_type pos = text_.bidi.vis2log(vpos);
+		pos_type const pos = text_.bidi.vis2log(vpos);
 
 		if (pos >= par_.size()) {
 			++vpos;
 			continue;
 		}
 
-		if (x_ + singleWidth(pos) < 0) {
-			x_ += singleWidth(pos);
+		const int width_pos = singleWidth(pos);
+		if (x_ + width_pos < 0) {
+			x_ += width_pos;
 			++vpos;
 			continue;
 		}
@@ -803,7 +804,7 @@ void RowPainter::paintText()
 			int const lwidth = font_metrics::width(layout->labelsep,
 				getLabelFont());
 
-			x_ += label_hfill_ + lwidth - singleWidth(body_pos - 1);
+			x_ += label_hfill_ + lwidth - width_pos;
 		}
 
 		if (par_.isHfill(pos)) {
@@ -833,7 +834,7 @@ void RowPainter::paintText()
 			x_ += 2;
 			++vpos;
 		} else if (par_.isSeparator(pos)) {
-			x_ += singleWidth(pos);
+			x_ += width_pos;
 			if (pos >= body_pos)
 				x_ += separator_;
 			++vpos;

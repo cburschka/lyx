@@ -448,15 +448,11 @@ int LyXText::singleWidth(Paragraph const & par, pos_type pos) const
 int LyXText::singleWidth(Paragraph const & par,
 			 pos_type pos, char c, LyXFont const & font) const
 {
-	if (pos >= par.size()) {
-		lyxerr << "in singleWidth(), pos: " << pos << endl;
-		BOOST_ASSERT(false);
-		return 0;
-	}
+	BOOST_ASSERT(pos < par.size());
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
-		if (!font.language()->RightToLeft()) {
+		if (font.language()->RightToLeft()) {
 			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 			    && font.language()->lang() == "arabic") {
@@ -465,7 +461,7 @@ int LyXText::singleWidth(Paragraph const & par,
 				else
 					c = par.transformChar(c, pos);
 			} else if (font.language()->lang() == "hebrew" &&
-				 Encodings::IsComposeChar_hebrew(c))
+				   Encodings::IsComposeChar_hebrew(c))
 				return 0;
 		}
 		return font_metrics::width(c, font);
@@ -2121,5 +2117,9 @@ int LyXText::dist(int x, int y) const
 	else if (y > yo_ + descent())
 		yy = y - yo_ - descent();
 
+	lyxerr << " xo_=" << xo_ << "  yo_=" << yo_ 
+	       << " width_=" << width_ << " ascent=" << ascent()
+	       << " descent=" << descent() 
+	       << " dist=" << xx+yy <<endl;
 	return xx + yy;
 }

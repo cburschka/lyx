@@ -1,3 +1,14 @@
+2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (setCounter): reduce number of calls to pars_[pit]
+
+	* text.C (singleWidth): add an assert, fix a test
+
+	* rowpainter.C (paintText): reduce number of calls to singleWidth
+
+	* paragraph.C (isHfill): 
+	(isNewline): ws only
+
 2004-08-14  André Pönitz  <poenitz@gmx.net>
 	
 	* text.C:

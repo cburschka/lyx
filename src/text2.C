@@ -708,22 +708,23 @@ void resetEnumCounterIfNeeded(ParagraphList & pars, par_type pit,
 // set the counter of a paragraph. This includes the labels
 void LyXText::setCounter(Buffer const & buf, par_type pit)
 {
+	Paragraph & par = pars_[pit];
 	BufferParams const & bufparams = buf.params();
 	LyXTextClass const & textclass = bufparams.getLyXTextClass();
-	LyXLayout_ptr const & layout = pars_[pit].layout();
+	LyXLayout_ptr const & layout = par.layout();
 	par_type first_pit = 0;
 	Counters & counters = textclass.counters();
 
 	// Always reset
-	pars_[pit].itemdepth = 0;
+	par.itemdepth = 0;
 
 	if (pit == first_pit) {
-		pars_[pit].params().appendix(pars_[pit].params().startOfAppendix());
+		par.params().appendix(par.params().startOfAppendix());
 	} else {
-		pars_[pit].params().appendix(pars_[pit - 1].params().appendix());
-		if (!pars_[pit].params().appendix() &&
-		    pars_[pit].params().startOfAppendix()) {
-			pars_[pit].params().appendix(true);
+		par.params().appendix(pars_[pit - 1].params().appendix());
+		if (!par.params().appendix() &&
+		    par.params().startOfAppendix()) {
+			par.params().appendix(true);
 			textclass.counters().reset();
 		}
 
@@ -732,13 +733,13 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 	}
 
 	// erase what was there before
-	pars_[pit].params().labelString(string());
+	par.params().labelString(string());
 
 	if (layout->margintype == MARGIN_MANUAL) {
-		if (pars_[pit].params().labelWidthString().empty())
-			pars_[pit].setLabelWidthString(layout->labelstring());
+		if (par.params().labelWidthString().empty())
+			par.setLabelWidthString(layout->labelstring());
 	} else {
-		pars_[pit].setLabelWidthString(string());
+		par.setLabelWidthString(string());
 	}
 
 	// is it a layout that has an automatic label?
@@ -746,16 +747,16 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 		BufferParams const & bufparams = buf.params();
 		LyXTextClass const & textclass = bufparams.getLyXTextClass();
 		counters.step(layout->counter);
-		string label = expandLabel(textclass, layout, pars_[pit].params().appendix());
-		pars_[pit].params().labelString(label);
+		string label = expandLabel(textclass, layout, par.params().appendix());
+		par.params().labelString(label);
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
 		// At some point of time we should do something more
 		// clever here, like:
-		//   pars_[pit].params().labelString(
-		//    bufparams.user_defined_bullet(pars_[pit].itemdepth).getText());
+		//   par.params().labelString(
+		//    bufparams.user_defined_bullet(par.itemdepth).getText());
 		// for now, use a simple hardcoded label
 		string itemlabel;
-		switch (pars_[pit].itemdepth) {
+		switch (par.itemdepth) {
 		case 0:
 			itemlabel = "*";
 			break;
@@ -770,7 +771,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 			break;
 		}
 
-		pars_[pit].params().labelString(itemlabel);
+		par.params().labelString(itemlabel);
 	} else if (layout->labeltype == LABEL_ENUMERATE) {
 		// Maybe we have to reset the enumeration counter.
 		resetEnumCounterIfNeeded(pars_, pit, first_pit, counters);
@@ -780,7 +781,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 		// (Lgb)
 		string enumcounter = "enum";
 
-		switch (pars_[pit].itemdepth) {
+		switch (par.itemdepth) {
 		case 2:
 			enumcounter += 'i';
 		case 1:
@@ -798,13 +799,13 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 
 		counters.step(enumcounter);
 
-		pars_[pit].params().labelString(counters.enumLabel(enumcounter));
+		par.params().labelString(counters.enumLabel(enumcounter));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");
-		if (pars_[pit].bibitem()) {
-			pars_[pit].bibitem()->setCounter(number);
-			pars_[pit].params().labelString(layout->labelstring());
+		if (par.bibitem()) {
+			par.bibitem()->setCounter(number);
+			par.params().labelString(layout->labelstring());
 		}
 		// In biblio should't be following counters but...
 	} else {
@@ -853,7 +854,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 				s = _("Senseless: ");
 			}
 		}
-		pars_[pit].params().labelString(s);
+		par.params().labelString(s);
 
 	}
 }
