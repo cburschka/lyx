@@ -1,6 +1,11 @@
 LyX file-format changes
 -----------------------
 
+2003-08-19  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* attribute valignment="center" is replaced by valignment="middle"
+	for tabular columns and cells
+
 2003-07-28  José Matos  <jamatos@lyx.org>
 
 	* \the_end is replaced with \end_document

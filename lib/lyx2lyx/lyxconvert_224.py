@@ -15,7 +15,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from parser_tools import find_token, find_tokens
+import re
+from parser_tools import find_token, find_tokens, find_end_of_inset
 from sys import stderr
 from string import replace, split
 
@@ -75,8 +76,27 @@ def layout2begin_layout(lines):
         if i == -1:
             return
 
-        lines[i]= replace(lines[i], '\\layout', '\\begin_layout')
+        lines[i] = replace(lines[i], '\\layout', '\\begin_layout')
         i = i + 1
+
+def valignment_middle(lines, start, end):
+    for i in range(start, end):
+        if re.search('^<(column|cell) .*valignment="center".*>$', lines[i]):
+            lines[i] = replace(lines[i], 'valignment="center"', 'valignment="middle"')
+
+def table_valignment_middle(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, '\\begin_inset  Tabular', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(lines, i + 1)
+        if j == -1:
+            #this should not happen
+            valignment_middle(lines, i + 1, len(lines))
+            return
+        valignment_middle(lines, i + 1, j)
+        i = j + 1
 
 def end_document(lines):
     i = find_token(lines, "\\the_end", 0)
@@ -89,6 +109,7 @@ def convert(header, body):
     add_end_layout(body)
     layout2begin_layout(body)
     end_document(body)
+    table_valignment_middle(body)
 
 if __name__ == "__main__":
     pass
