@@ -82,29 +82,28 @@ public:
 	bool useBabel() const;
 
 private:
-	std::list<string> usedLayouts;
+	std::list<string> usedLayouts_;
 
 	/// Static preamble bits from the external material insets
 	typedef std::list<string> FeaturesList;
 	///
-	FeaturesList features;
+	FeaturesList features_;
 	///
-	FeaturesList preamble_snippets;
+	FeaturesList preamble_snippets_;
 	///
 	typedef std::set<Language const *> LanguageList;
 	///
-	LanguageList UsedLanguages;
+	LanguageList UsedLanguages_;
 	///
 	typedef std::set<string> UsedFloats;
 	///
-	UsedFloats usedFloats;
+	UsedFloats usedFloats_;
 	///
 	typedef std::map<string , string> FileMap;
 	///
-	FileMap IncludedFiles;
+	FileMap IncludedFiles_;
 	///
-	///
-	BufferParams const & params;
+	BufferParams const & params_;
 };
 
 #endif

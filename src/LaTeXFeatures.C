@@ -43,7 +43,7 @@ using std::set;
 
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p)
-	: params(p)
+	: params_(p)
 {}
 
 
@@ -60,7 +60,7 @@ void LaTeXFeatures::require(string const & name)
 	if (isRequired(name))
 		return;
 
-	features.push_back(name);
+	features_.push_back(name);
 }
 
 
@@ -76,11 +76,11 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 		return;
 	}
 
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params_.getLyXTextClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
-		list<string>::const_iterator cit = usedLayouts.begin();
-		list<string>::const_iterator end = usedLayouts.end();
+		list<string>::const_iterator cit = usedLayouts_.begin();
+		list<string>::const_iterator end = usedLayouts_.end();
 		for (; cit != end; ++cit) {
 			if (layoutname == *cit)
 				return;
@@ -92,7 +92,7 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 			useLayout(lyt->depends_on());
 			--level;
 		}
-		usedLayouts.push_back(layoutname);
+		usedLayouts_.push_back(layoutname);
 	} else {
 		lyxerr << "LaTeXFeatures::useLayout: layout `"
 		       << layoutname << "' does not exist in this class"
@@ -105,26 +105,26 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 
 bool LaTeXFeatures::isRequired(string const & name) const
 {
-	return find(features.begin(), features.end(), name) != features.end();
+	return find(features_.begin(), features_.end(), name) != features_.end();
 }
 
 
 void LaTeXFeatures::addExternalPreamble(string const & preamble)
 {
-	FeaturesList::const_iterator begin = preamble_snippets.begin();
-	FeaturesList::const_iterator end   = preamble_snippets.end();
+	FeaturesList::const_iterator begin = preamble_snippets_.begin();
+	FeaturesList::const_iterator end   = preamble_snippets_.end();
 	if (find(begin, end, preamble) == end)
-		preamble_snippets.push_back(preamble);
+		preamble_snippets_.push_back(preamble);
 }
 
 
 void LaTeXFeatures::useFloat(string const & name)
 {
-	usedFloats.insert(name);
+	usedFloats_.insert(name);
 	// We only need float.sty if we use non builtin floats, or if we
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
-	Floating const & fl = params.getLyXTextClass().floats().getType(name);
+	Floating const & fl = params_.getLyXTextClass().floats().getType(name);
 	if (!fl.type().empty() && !fl.builtin()) {
 		require("float");
 	}
@@ -133,19 +133,19 @@ void LaTeXFeatures::useFloat(string const & name)
 
 void LaTeXFeatures::useLanguage(Language const * lang)
 {
-	UsedLanguages.insert(lang);
+	UsedLanguages_.insert(lang);
 }
 
 
 void LaTeXFeatures::includeFile(string const & key, string const & name)
 {
-	IncludedFiles[key] = name;
+	IncludedFiles_[key] = name;
 }
 
 
 bool LaTeXFeatures::hasLanguages() const
 {
-	return !UsedLanguages.empty();
+	return !UsedLanguages_.empty();
 }
 
 
@@ -154,8 +154,8 @@ string LaTeXFeatures::getLanguages() const
 	ostringstream languages;
 
 	for (LanguageList::const_iterator cit =
-		    UsedLanguages.begin();
-	     cit != UsedLanguages.end();
+		    UsedLanguages_.begin();
+	     cit != UsedLanguages_.end();
 	     ++cit)
 		languages << (*cit)->babel() << ',';
 
@@ -166,9 +166,9 @@ string LaTeXFeatures::getLanguages() const
 set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 {
 	set<string> encodings;
-	for (LanguageList::const_iterator it =
-		     UsedLanguages.begin();
-	     it != UsedLanguages.end(); ++it)
+	LanguageList::const_iterator it  = UsedLanguages_.begin();
+	LanguageList::const_iterator end = UsedLanguages_.end();
+	for (; it != end; ++it)
 		if ((*it)->encoding()->LatexName() != doc_encoding)
 			encodings.insert((*it)->encoding()->LatexName());
 	return encodings;
@@ -200,7 +200,7 @@ int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params_.getLyXTextClass();
 
 	//
 	//  These are all the 'simple' includes.  i.e
@@ -219,17 +219,17 @@ string const LaTeXFeatures::getPackages() const
 
 	if (isRequired("amsmath")
 	    && !tclass.provides(LyXTextClass::amsmath)
-	    && params.use_amsmath != BufferParams::AMS_OFF) {
+	    && params_.use_amsmath != BufferParams::AMS_OFF) {
 		packages << "\\usepackage{amsmath}\n";
 	}
 
 	// color.sty
 	if (isRequired("color")) {
-		if (params.graphicsDriver == "default")
+		if (params_.graphicsDriver == "default")
 			packages << "\\usepackage[usenames]{color}\n";
 		else
 			packages << "\\usepackage["
-				 << params.graphicsDriver
+				 << params_.graphicsDriver
 				 << ",usenames"
 				 << "]{color}\n";
 	}
@@ -242,12 +242,12 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// graphicx.sty
-	if (isRequired("graphicx") && params.graphicsDriver != "none") {
-		if (params.graphicsDriver == "default")
+	if (isRequired("graphicx") && params_.graphicsDriver != "none") {
+		if (params_.graphicsDriver == "default")
 			packages << "\\usepackage{graphicx}\n";
 		else
 			packages << "\\usepackage["
-				 << params.graphicsDriver
+				 << params_.graphicsDriver
 				 << "]{graphicx}\n";
 	}
 
@@ -261,12 +261,12 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// setspace.sty
-	if ((params.spacing().getSpace() != Spacing::Single
-	     && !params.spacing().isDefault())
+	if ((params_.spacing().getSpace() != Spacing::Single
+	     && !params_.spacing().isDefault())
 	    || isRequired("setspace")) {
 		packages << "\\usepackage{setspace}\n";
 	}
-	switch (params.spacing().getSpace()) {
+	switch (params_.spacing().getSpace()) {
 	case Spacing::Default:
 	case Spacing::Single:
 		// we dont use setspace.sty so dont print anything
@@ -280,12 +280,12 @@ string const LaTeXFeatures::getPackages() const
 		break;
 	case Spacing::Other:
 		packages << "\\setstretch{"
-			 << params.spacing().getValue() << "}\n";
+			 << params_.spacing().getValue() << "}\n";
 		break;
 	}
 
 	// amssymb.sty
-	if (isRequired("amssymb") || params.use_amsmath == BufferParams::AMS_ON)
+	if (isRequired("amssymb") || params_.use_amsmath == BufferParams::AMS_ON)
 		packages << "\\usepackage{amssymb}\n";
 	// url.sty
 	if (isRequired("url") && ! tclass.provides(LyXTextClass::url))
@@ -296,7 +296,7 @@ string const LaTeXFeatures::getPackages() const
 	// natbib.sty
 	if (isRequired("natbib") && ! tclass.provides(LyXTextClass::natbib)) {
 		packages << "\\usepackage[";
-		if (params.use_numerical_citations) {
+		if (params_.use_numerical_citations) {
 			packages << "numbers";
 		} else {
 			packages << "authoryear";
@@ -312,10 +312,10 @@ string const LaTeXFeatures::getMacros() const
 {
 	ostringstream macros;
 
-	if (!preamble_snippets.empty())
+	if (!preamble_snippets_.empty())
 		macros << '\n';
-	FeaturesList::const_iterator pit  = preamble_snippets.begin();
-	FeaturesList::const_iterator pend = preamble_snippets.end();
+	FeaturesList::const_iterator pit  = preamble_snippets_.begin();
+	FeaturesList::const_iterator pend = preamble_snippets_.end();
 	for (; pit != pend; ++pit) {
 		macros << *pit << '\n';
 	}
@@ -381,12 +381,13 @@ string const LaTeXFeatures::getBabelOptions() const
 {
 	ostringstream tmp;
 
-	for (LanguageList::const_iterator cit = UsedLanguages.begin();
-	     cit != UsedLanguages.end(); ++cit)
-		if (!(*cit)->latex_options().empty())
-			tmp << (*cit)->latex_options() << '\n';
-	if (!params.language->latex_options().empty())
-		tmp << params.language->latex_options() << '\n';
+	LanguageList::const_iterator it  = UsedLanguages_.begin();
+	LanguageList::const_iterator end =  UsedLanguages_.end();
+	for (; it != end; ++it)
+		if (!(*it)->latex_options().empty())
+			tmp << (*it)->latex_options() << '\n';
+	if (!params_.language->latex_options().empty())
+		tmp << params_.language->latex_options() << '\n';
 
 	return tmp.str();
 }
@@ -395,13 +396,13 @@ string const LaTeXFeatures::getBabelOptions() const
 string const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params_.getLyXTextClass();
 	ostringstream tcpreamble;
 
 	tcpreamble << tclass.preamble();
 
-	list<string>::const_iterator cit = usedLayouts.begin();
-	list<string>::const_iterator end = usedLayouts.end();
+	list<string>::const_iterator cit = usedLayouts_.begin();
+	list<string>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
 		tcpreamble << tclass[*cit]->preamble();
 	}
@@ -428,8 +429,8 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 	ostringstream sgmlpreamble;
 	string const basename = OnlyPath(fname);
 
-	FileMap::const_iterator end = IncludedFiles.end();
-	for (FileMap::const_iterator fi = IncludedFiles.begin();
+	FileMap::const_iterator end = IncludedFiles_.end();
+	for (FileMap::const_iterator fi = IncludedFiles_.begin();
 	     fi != end; ++fi)
 		sgmlpreamble << "\n<!ENTITY " << fi->first
 			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
@@ -450,21 +451,21 @@ void LaTeXFeatures::showStruct() const {
 
 BufferParams const & LaTeXFeatures::bufferParams() const
 {
-	return params;
+	return params_;
 }
 
 
 void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 {
-	FloatList const & floats = params.getLyXTextClass().floats();
+	FloatList const & floats = params_.getLyXTextClass().floats();
 
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.
 	// \floatstyle{ruled}
 	// \newfloat{algorithm}{htbp}{loa}
 	// \floatname{algorithm}{Algorithm}
-	UsedFloats::const_iterator cit = usedFloats.begin();
-	UsedFloats::const_iterator end = usedFloats.end();
+	UsedFloats::const_iterator cit = usedFloats_.begin();
+	UsedFloats::const_iterator end = usedFloats_.end();
 	// ostringstream floats;
 	for (; cit != end; ++cit) {
 		Floating const & fl = floats.getType((*cit));
