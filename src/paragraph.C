@@ -38,6 +38,8 @@ using std::ostream;
 using std::endl;
 using std::fstream;
 using std::ios;
+using std::lower_bound;
+using std::upper_bound;
 
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
@@ -479,14 +481,14 @@ void LyXParagraph::Clear()
 	noindent = false;
 
         pextra_type = PEXTRA_NONE;
-        pextra_width.clear();
-        pextra_widthp.clear();
+        pextra_width.erase();
+        pextra_widthp.erase();
         pextra_alignment = MINIPAGE_ALIGN_TOP;
         pextra_hfill = false;
         pextra_start_minipage = false;
 
-        labelstring.clear();
-	labelwidthstring.clear();
+        labelstring.erase();
+	labelwidthstring.erase();
 	layout = 0;
 	bibkey = 0;
 	
@@ -1770,7 +1772,7 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 		* npar = 0;
 
         par->layout = new_layout;
-	par->labelwidthstring.clear();
+	par->labelwidthstring.erase();
 	par->align = LYX_ALIGN_LAYOUT;
 	par->added_space_top = VSpace(VSpace::NONE);
 	par->added_space_bottom = VSpace(VSpace::NONE);
@@ -2683,7 +2685,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 	bool retval = false;
 	switch (c) {
 	case LyXParagraph::META_HFILL:
-		sgml_string.clear();
+		sgml_string.erase();
 		break;
 	case LyXParagraph::META_NEWLINE:
 		sgml_string = '\n';
@@ -2732,7 +2734,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 		sgml_string = ' ';
 		break;
 	case '\0': // Ignore :-)
-		sgml_string.clear();
+		sgml_string.erase();
 		break;
 	default:
 		sgml_string = c;
@@ -4086,8 +4088,8 @@ void LyXParagraph::UnsetPExtraType()
 		return;
     
 	pextra_type = PEXTRA_NONE;
-	pextra_width.clear();
-	pextra_widthp.clear();
+	pextra_width.erase();
+	pextra_widthp.erase();
 
 	if (textclasslist.Style(current_view->buffer()->params.textclass, 
 				layout).isEnvironment()) {
@@ -4111,8 +4113,8 @@ void LyXParagraph::UnsetPExtraType()
 		while (par && (par->layout == layout)
 		       && (par->depth == depth)) {
 			par->pextra_type = PEXTRA_NONE;
-			par->pextra_width.clear();
-			par->pextra_widthp.clear();
+			par->pextra_width.erase();
+			par->pextra_widthp.erase();
 			par = par->NextAfterFootnote();
 			if (par && (par->depth > depth))
 				par->UnsetPExtraType();

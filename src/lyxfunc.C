@@ -457,7 +457,7 @@ string LyXFunc::Dispatch(int ac,
         
         // we have not done anything wrong yet.
         errorstat = false;
-	dispatch_buffer.clear();
+	dispatch_buffer.erase();
 	
 	// if action is a pseudo-action, we need the real action
 	if (lyxaction.isPseudoAction(ac)) {
@@ -481,7 +481,7 @@ string LyXFunc::Dispatch(int ac,
 	if (getStatus(action) & Disabled)
 		goto exit_with_message;
 
-	commandshortcut.clear();
+	commandshortcut.erase();
 	
 	if (lyxrc.display_shortcuts && show_sc) {
 		if (action != LFUN_SELFINSERT) {

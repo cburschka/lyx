@@ -32,6 +32,7 @@
 #include "gettext.h"
 
 using std::ifstream;
+using std::getline;
 
 /*
  * CLASS Chktex

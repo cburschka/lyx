@@ -29,6 +29,7 @@
 #include "gettext.h"
 
 using std::ifstream;
+using std::getline;
 using std::endl;
 
 extern BufferList bufferlist;

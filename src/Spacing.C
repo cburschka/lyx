@@ -83,13 +83,10 @@ string Spacing::writeEnvirBegin() const
 	case Default: break; // do nothing
 	case Single:
 		return "\\begin{singlespace}";
-		break;
 	case Onehalf:
 		return "\\begin{onehalfspace}";
-		break;
 	case Double:
 		return "\\begin{doublespace}";
-		break;
 	case Other:
 #ifdef HAVE_SSTREAM
 		ostringstream ost;
@@ -105,7 +102,6 @@ string Spacing::writeEnvirBegin() const
 			return ost.str();
 		}
 #endif
-		break;
 	}
 	return string();
 }
@@ -117,16 +113,12 @@ string Spacing::writeEnvirEnd() const
 	case Default: break; // do nothing
 	case Single:
 		return "\\end{singlespace}";
-		break;
 	case Onehalf:
 		return "\\end{onehalfspace}";
-		break;
 	case Double:
 		return "\\end{doublespace}";
-		break;
 	case Other:
 		return "\\end{spacing}";
-		break;
 	}
 	return string();
 }

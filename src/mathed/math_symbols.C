@@ -41,6 +41,7 @@
 
 using std::max;
 using std::endl;
+using std::ostream;
 
 extern short greek_kb_flag;
 

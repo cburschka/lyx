@@ -51,7 +51,7 @@
 #include "debug.h"
 #include "support/lstrings.h"
 
-
+using std::reverse;
 using std::endl;
 
 // Spellchecker status

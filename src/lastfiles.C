@@ -23,6 +23,7 @@
 #include "debug.h"
 
 using std::ifstream;
+using std::getline;
 using std::ofstream;
 using std::copy;
 using std::ostream_iterator;

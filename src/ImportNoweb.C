@@ -19,6 +19,7 @@
 
 #include <fstream>
 using std::ifstream;
+using std::getline;
 
 #include "ImportNoweb.h"
 #include "lyxrc.h"

@@ -284,6 +284,8 @@ private: //////////////////////////////////////////////////////////////////
 	///
         cellstruct & operator=(cellstruct const &);
 	///
+	void setBuffer(Buffer * buf);
+	///
 	int cellno;
 	///
 	int width_of_cell;

@@ -21,6 +21,7 @@
 #include "support/LOstream.h"
 
 using std::ostream;
+using std::endl;
 
 InsetFoot::InsetFoot(Buffer * bf)
 		: InsetCollapsable(bf)

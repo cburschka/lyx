@@ -125,7 +125,7 @@ Buffer::Buffer(string const & file, bool ronly)
 	lyxvc.buffer(this);
 	if (read_only || (lyxrc.use_tempdir)) {
 		tmppath = CreateBufferTmpDir();
-	} else tmppath.clear();
+	} else tmppath.erase();
 }
 
 
@@ -2278,7 +2278,7 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 		// environment tag closing
 		for( ; depth > par->depth; --depth) {
 			sgmlCloseTag(ofs, depth, environment_stack[depth]);
-			environment_stack[depth].clear();
+			environment_stack[depth].erase();
 		}
 
 		// write opening SGML tags
@@ -2287,7 +2287,7 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 			if(depth == par->depth 
 			   && !environment_stack[depth].empty()) {
 				sgmlCloseTag(ofs, depth, environment_stack[depth]);
-				environment_stack[depth].clear();
+				environment_stack[depth].erase();
 				if(depth) 
 					--depth;
 				else
@@ -2308,7 +2308,7 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 				ofs << "</p>";
 			}
 
-			environment_stack[depth].clear();
+			environment_stack[depth].erase();
 			sgmlOpenTag(ofs, depth, style.latexname());
 			break;
 
@@ -2320,11 +2320,11 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 
 				sgmlCloseTag(ofs, depth,
 					     environment_stack[depth]);
-				environment_stack[depth].clear();
+				environment_stack[depth].erase();
 			}
 			if (depth < par->depth) {
 			       depth = par->depth;
-			       environment_stack[depth].clear();
+			       environment_stack[depth].erase();
 			}
 			if (environment_stack[depth] != style.latexname()) {
 				if(depth == 0) {
@@ -2448,7 +2448,7 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 			if(inner_span) {
 				if(!tmp_par.empty()) {
 					os << tmp_par;
-					tmp_par.clear();
+					tmp_par.erase();
 					sgmlCloseTag(os, depth + 1, inner_tag);
 					sgmlOpenTag(os, depth + 1, inner_tag);
 				}
@@ -2461,7 +2461,7 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 							    inner_tag);
 			if(!extra_par.empty()) os << extra_par;
 			if(!tag.empty()) sgmlCloseTag(os, depth, tag);
-			extra_par.clear();
+			extra_par.erase();
 
 			switch (par->footnotekind) {
 			case LyXParagraph::FOOTNOTE:
@@ -2496,7 +2496,7 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 			if ((present == TAB_LIKE) || (present == FIG_LIKE)) {
 				DocBookHandleCaption(os, inner_tag, depth,
 						     desc_on, par);
-				inner_tag.clear();
+				inner_tag.erase();
 			} else {
 				sgmlOpenTag(os, depth + 1, inner_tag);
 			}
@@ -2873,8 +2873,8 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 			}
 			sgmlCloseTag(ofs, depth + command_depth,
 				     environment_stack[depth]);
-			environment_stack[depth].clear();
-			environment_inner[depth].clear();
+			environment_stack[depth].erase();
+			environment_inner[depth].erase();
 		}
 
 		if(depth == par->depth
@@ -2893,8 +2893,8 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 			sgmlCloseTag(ofs, depth + command_depth,
 				     environment_stack[depth]);
 			
-			environment_stack[depth].clear();
-			environment_inner[depth].clear();
+			environment_stack[depth].erase();
+			environment_inner[depth].erase();
                 }
 
 		// Write opening SGML tags.
@@ -2965,7 +2965,7 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 		case LATEX_ITEM_ENVIRONMENT:
 			if (depth < par->depth) {
 				depth = par->depth;
-				environment_stack[depth].clear();
+				environment_stack[depth].erase();
 			}
 
 			if (environment_stack[depth] != style.latexname()) {

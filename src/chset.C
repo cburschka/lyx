@@ -13,6 +13,7 @@
 #include "debug.h"
 
 using std::ifstream;
+using std::getline;
 using std::pair;
 using std::make_pair;
 using std::endl;
@@ -20,7 +21,7 @@ using std::endl;
 bool CharacterSet::loadFile(string const & fname)
 {
 	map_.clear();
-	name_.clear();
+	name_.erase();
 	
 	if (fname.empty() || fname == "ascii") 
 		return true;	// ascii 7-bit

@@ -421,7 +421,7 @@ void LyXFileDlg::SetButton(int iIndex, string const & pszName,
 		*pTemp = pszPath;
 	} else {
 		fl_hide_object(pObject);
-		(*pTemp).clear();
+		(*pTemp).erase();
 	}
 }
 
@@ -579,7 +579,7 @@ bool LyXFileDlg::HandleDoubleClick()
 			Temp += pszTemp;
 		} else {
 			// Directory higher up
-			Temp.clear();
+			Temp.erase();
 			for (int i = 0; i < iSelect; ++i) {
 				string piece = fl_get_browser_line(pFileDlgForm->List, i+1);
 				// The '+2' is here to count the '@b' (JMarc)

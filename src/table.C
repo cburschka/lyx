@@ -29,6 +29,7 @@
 
 using std::ostream;
 using std::istream;
+using std::getline;
 using std::max;
 using std::endl;
 

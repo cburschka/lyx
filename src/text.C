@@ -571,7 +571,7 @@ int LyXText::LeftMargin(Row const * row) const
 	
 	/* table stuff -- begin */ 
 	if (row->par->table)
-		parindent.clear();
+		parindent.erase();
 	/* table stuff -- end */
 	
 	int x = LYX_PAPER_MARGIN;
@@ -603,7 +603,7 @@ int LyXText::LeftMargin(Row const * row) const
 				    textclasslist.Style(buffer->params.textclass,
 							newpar->GetLayout())
 				    .nextnoindent)
-					parindent.clear();
+					parindent.erase();
 			}
 		}
 	} else {
@@ -632,7 +632,7 @@ int LyXText::LeftMargin(Row const * row) const
 		
 		if (newpar && !row->par->GetLayout()) {
 			if (newpar->FirstPhysicalPar()->noindent)
-				parindent.clear();
+				parindent.erase();
 			else
 				parindent = textclasslist
 					.Style(buffer->params.textclass, 

@@ -340,7 +340,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		KmodInfo i;
 		i.accent = accent;
 		i.allowed = lyx_accent_table[accent].native;
-		i.data.clear();
+		i.data.erase();
 		i.exception_list = 0;
 		
 		string res = trans_fsm_.currentState->deadkey(c, i);

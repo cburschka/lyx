@@ -289,7 +289,7 @@ string strip(string const & a, char const c)
 	if (i != string::npos) 
 		tmp.erase(i + 1, string::npos);
 	else
-		tmp.clear(); // only c in the whole string
+		tmp.erase(); // only c in the whole string
 	return tmp;
 }
 
@@ -326,7 +326,7 @@ string split(string const & a, string & piece, char delim)
 		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
 	} else if (i == 0) {
-		piece.clear();
+		piece.erase();
 		tmp = a.substr(i + 1);
 	} else {
 		piece = a;
@@ -354,7 +354,7 @@ string rsplit(string const & a, string & piece, char delim)
 		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
 	} else { // delimter was not found
-		piece.clear();
+		piece.erase();
 	}
 	return tmp;
 }

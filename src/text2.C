@@ -1575,7 +1575,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 	}
    
 	if (!par->labelstring.empty()) {
-		par->labelstring.clear();
+		par->labelstring.erase();
 	}
    
 	if (layout.margintype == MARGIN_MANUAL) {
@@ -1598,12 +1598,12 @@ void LyXText::SetCounter(LyXParagraph * par) const
 				if (!layout.labelstring().empty())
 					par->labelstring = layout.labelstring();
 				else
-					par->labelstring.clear();
+					par->labelstring.erase();
                         } else {
 				if (!layout.labelstring_appendix().empty())
 					par->labelstring = layout.labelstring_appendix();
 				else
-					par->labelstring.clear();
+					par->labelstring.erase();
 			}
 
 #ifdef HAVE_SSTREAM

@@ -371,7 +371,7 @@ int Trans::Load(string const & language)
 	if (res == 0) {
 		name_ = language;
 	} else
-		name_.clear();
+		name_.erase();
 
 	return res;
 }

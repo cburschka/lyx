@@ -792,7 +792,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	// and current buffer's textclass (number). */    
 	LyXTextClassList::ClassList::size_type tclass =
 	    buffer->params.textclass;
-	pair <bool, LyXTextClass::size_type> layout = 
+	std::pair <bool, LyXTextClass::size_type> layout = 
 	    textclasslist.NumberOfLayout(tclass, arg);
 
 	// If the entry is obsolete, use the new one instead.

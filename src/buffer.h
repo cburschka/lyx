@@ -157,7 +157,7 @@ public:
 	// LaTeX all paragraphs from par to endpar,
 	// if endpar == 0 then to the end
 	//
-	void latexParagraphs(ostream & os, LyXParagraph *par,
+	void latexParagraphs(std::ostream & os, LyXParagraph *par,
 			     LyXParagraph *endpar, TexRow & texrow);
 
 	///

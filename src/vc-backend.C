@@ -18,6 +18,7 @@
 
 using std::endl;
 using std::ifstream;
+using std::getline;
 
 int VCS::doVCCommand(string const & cmd, string const & path)
 {

@@ -120,7 +120,7 @@ void LyXComm::openConnection() {
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
-		pipename.clear();
+		pipename.erase();
 		return;
 	}
 #ifndef __EMX__
@@ -171,7 +171,7 @@ void LyXComm::openConnection() {
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
-		pipename.clear();
+		pipename.erase();
 		return;
 	}
 #ifndef __EMX__
@@ -343,7 +343,7 @@ void LyXComm::callback(int fd, void *v)
 			{
 				lyxerr << "LyxComm: truncated command: " 
 				       << lsbuf << endl;
-				lsbuf.clear();
+				lsbuf.erase();
 			}
 			break; // reset connection
 		}
@@ -498,7 +498,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				}
 				if (i < serv->numclients) {
 					serv->numclients--;
-					serv->clients[i].clear();
+					serv->clients[i].erase();
 					lyxerr[Debug::LYXSERVER]
 						<< "LyXServer: Client "
 						<< client << " said goodbye"

@@ -248,7 +248,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 		lyxerr[Debug::INIT]
 			<< "Checking whether LyX is run in place... no"
 			<< endl;
-		build_lyxdir.clear();
+		build_lyxdir.erase();
 	}
 
         bool FollowLink;

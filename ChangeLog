@@ -1,3 +1,12 @@
+2000-05-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* (various *.C files): add using std::foo directives to please dec
+	cxx.
+
+	* replace calls to string::clear() to string::erase() (Angus)
+
+	* src/cheaders/cmath: modified to provide std::abs.
+
 2000-05-04  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C: Prepared all for inserting of multiple

@@ -28,6 +28,7 @@
 
 using std::ostream;
 using std::istream;
+using std::getline;
 using std::max;
 using std::endl;
 
@@ -963,7 +964,7 @@ static bool getTokenValue(string const str, const char * token, string & ret)
 
     if ((pos < 0) || (ch != '='))
 	return false;
-    ret.clear();
+    ret.erase();
     pos += strlen(token)+1;
     ch = str[pos];
     if ((ch != '"') && (ch != '\'')) { // only read till next space
@@ -984,7 +985,7 @@ static bool getTokenValue(string const str, const char * token, int & num)
 
     if ((pos < 0) || (ch != '='))
 	return false;
-    ret.clear();
+    ret.erase();
     pos += strlen(token)+1;
     ch = str[pos];
     if ((ch != '"') && (ch != '\'')) { // only read till next space
@@ -1008,7 +1009,7 @@ static bool getTokenValue(string const str, const char * token, bool & flag)
 
     if ((pos < 0) || (ch != '='))
 	return false;
-    ret.clear();
+    ret.erase();
     pos += strlen(token)+1;
     ch = str[pos];
     if ((ch != '"') && (ch != '\'')) { // only read till next space

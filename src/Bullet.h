@@ -27,7 +27,7 @@
 class Bullet {
 public:
 	///
-	Bullet(int f = -1, int c = -1, int s = -1);
+	Bullet(const int f = -1, const int c = -1, const int s = -1);
 
 	///
 	explicit Bullet(string const &);

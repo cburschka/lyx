@@ -748,7 +748,7 @@ string ReplaceEnvironmentPath(string const & path)
 		if (!regexMatch(copy1, RegExp)) {
 			// No EndChar inside. So we are finished
 			result1 += CompareString + result0;
-			result0.clear();
+			result0.erase();
 			continue;
 		}
 

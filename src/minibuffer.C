@@ -140,7 +140,7 @@ extern "C" int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event,
 
 void MiniBuffer::ExecCommand()
 {
-	text.clear();
+	text.erase();
 	fl_set_input(the_buffer, "");
 	fl_set_focus_object(owner->getForm(), the_buffer);
 }
@@ -253,7 +253,7 @@ void MiniBuffer::Reset()
 {
 	if (!text_stored.empty()){
 		Set(text_stored);
-		text_stored.clear();
+		text_stored.erase();
 	}
 }
 
