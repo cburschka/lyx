@@ -17,7 +17,7 @@
 OutputParams::OutputParams()
 	: flavor(LATEX), nice(false), moving_arg(false),
 	  free_spacing(false), use_babel(false),
-	  mixed_content(false), linelen(0), depth(0),
+	  linelen(0), depth(0),
 	  exportdata(new ExportData)
 {}
 

@@ -1356,7 +1356,7 @@ bool Paragraph::emptyTag() const
 }
 
 
-string Paragraph::getID() const
+string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) const
 {
 	for (pos_type i = 0; i < size(); ++i) {
 		if (isInset(i)) {
@@ -1364,7 +1364,7 @@ string Paragraph::getID() const
 			InsetBase::Code lyx_code = inset->lyxCode();
 			if (lyx_code == InsetBase::LABEL_CODE) {
 				string const id = static_cast<InsetCommand const *>(inset)->getContents();
-				return "id=\"" + sgml::cleanID(id) + "\"";
+				return "id=\"" + sgml::cleanID(buf, runparams, id) + "\"";
 			}
 		}
 

@@ -73,12 +73,6 @@ struct OutputParams {
 	*/
 	bool use_babel;
 
-	/** Used for docbook to see if inside a region of mixed content.
-	    In that case all the white spaces are significant and cannot appear
-	    at the begin or end.
-	*/
-	bool mixed_content;
-
 	/** Line length to use with plaintext export.
 	*/
 	lyx::size_type linelen;

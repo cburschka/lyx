@@ -107,7 +107,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 		if (par->layout() == defaultstyle && par->emptyTag()) {
 			par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
 		} else {
-			sgml::openTag(buf, os, *par);
+			sgml::openTag(buf, os, runparams, *par);
 			par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
 			sgml::closeTag(os, *par);
 			os << '\n';
@@ -130,7 +130,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	string item_tag;
 
 	// Opening outter tag
-	sgml::openTag(buf, os, *pbegin);
+	sgml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
 	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->pass_thru)
 		os << "<![CDATA[";
@@ -138,7 +138,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	while (par != pend) {
 		LyXLayout_ptr const & style = par->layout();
 		ParagraphList::const_iterator send;
-		string id = par->getID();
+		string id = par->getID(buf, runparams);
 		string wrapper = "";
 		pos_type sep = 0;
 
@@ -225,7 +225,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	LyXLayout_ptr const & bstyle = par->layout();
 
 	//Open outter tag
-	sgml::openTag(buf, os, *pbegin);
+	sgml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
 
 	// Label around sectioning number:

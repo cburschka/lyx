@@ -1346,7 +1346,7 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 
 	string bname = name;
 	if (!label(0).empty()) 
-		bname += " id=\"" + sgml::cleanID(label(0)) + "\"";
+		bname += " id=\"" + sgml::cleanID(buf, runparams, label(0)) + "\"";
 	ms << MTag(bname.c_str());
 
 	ostringstream ls;
@@ -1371,11 +1371,8 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 	
 	ms <<  "<graphic fileref=\"eqn/";
 	if ( !label(0).empty()) 
-		ms << sgml::cleanID(label(0));
+		ms << sgml::cleanID(buf, runparams, label(0));
 	else {
-		// Some arbitrary unique number for this os. 
-		// Note that each call of math_hullinset::docbook()
-		// will increase the os position by at least 60 chars or more
 		ms << sgml::uniqueID("anon");
 	}
 	if (runparams.flavor == OutputParams::XML) 

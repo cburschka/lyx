@@ -2215,9 +2215,7 @@ int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row,
 		}
 
 		os << '>';
-		OutputParams runp = runparams;
-		runp.mixed_content = true;
-		ret += getCellInset(cell).docbook(buf, os, runp);
+		ret += getCellInset(cell).docbook(buf, os, runparams);
 		os << "</entry>\n";
 		++cell;
 	}

@@ -133,7 +133,8 @@ public:
 	bool Paragraph::emptyTag() const;
 
 	/// Get the id of the paragraph, usefull for docbook and linuxdoc
-	std::string getID() const;
+	std::string getID(Buffer const & buf,
+			  OutputParams const & runparams) const;
 
 	// Get the first word of a paragraph, return the position where it left
 	lyx::pos_type getFirstWord(Buffer const & buf,

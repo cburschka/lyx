@@ -14,6 +14,7 @@
 
 
 #include "command_inset.h"
+class Buffer;
 
 // for \ref
 class RefInset : public CommandInset {
@@ -40,7 +41,7 @@ public:
 	/// linuxdoc output
 	int linuxdoc(std::ostream & os, OutputParams const &) const;
 	/// docbook output
-	int docbook(std::ostream & os, OutputParams const &) const;
+	int docbook(Buffer const & buf, std::ostream & os, OutputParams const &) const;
 
 	/// small wrapper for the time being
 	DispatchResult localDispatch(FuncRequest & cmd);

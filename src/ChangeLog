@@ -1,3 +1,13 @@
+2004-11-02  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (docbook):
+	* paragraph.C (getID):	
+	* sgml.[Ch] (openTag, cleanID): escape characters inside ids to
+	garantee that the output is always legal.
+
+	* tabular.C (docbook):
+	* outputprams.[Ch]: remove mixed contents.
+
 2004-11-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text2.C (setCounter): prevent endless loop

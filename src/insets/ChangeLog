@@ -1,3 +1,13 @@
+2004-11-02  José Matos  <jamatos@lyx.org>
+
+	* insetcharstyle.C (docbook):
+	* insetlabel.C (linuxdoc, docbook):	
+	* insetref.C (linuxdoc, docbook): escape chacters in id to produce
+	always legal output.
+
+	* insettabular.C (docbook): mixed content no longer belongs to
+	output parameters.
+
 2004-11-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcharstyle.C (priv_dispatch): prevent paragraph breaks 

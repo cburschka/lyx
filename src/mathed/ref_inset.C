@@ -14,6 +14,7 @@
 
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
+#include "buffer.h"
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -138,16 +139,16 @@ int RefInset::linuxdoc(std::ostream & os, OutputParams const &) const
 }
 
 
-int RefInset::docbook(std::ostream & os, OutputParams const & runparams) const
+int RefInset::docbook(Buffer const & buf, std::ostream & os, OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
-		os << "<xref linkend=\"" << sgml::cleanID(asString(cell(0)));
+		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, asString(cell(0)));
 		if (runparams.flavor == OutputParams::XML) 
 			os << "\"/>";
 		else
 			os << "\">";
 	} else {
-		os << "<link linkend=\"" << sgml::cleanID(asString(cell(0)))
+		os << "<link linkend=\"" << sgml::cleanID(buf, runparams, asString(cell(0)))
 		   << "\">" << asString(cell(1)) << "</link>";
 	}
 

@@ -17,6 +17,7 @@
 #include "bufferparams.h"
 #include "counters.h"
 #include "lyxtext.h"
+#include "outputparams.h"
 #include "paragraph.h"
 
 #include "support/lstrings.h"
@@ -120,7 +121,7 @@ string const uniqueID(string const label)
 }
 
 
-string cleanID(std::string const & orig, std::string const & allowed)
+string cleanID(Buffer const & buf, OutputParams const & runparams, std::string const & orig)
 {
 	// The standard DocBook SGML declaration only allows letters,
 	// digits, '-' and '.' in a name.
@@ -130,15 +131,16 @@ string cleanID(std::string const & orig, std::string const & allowed)
 	// and adds a number for uniqueness.
 	// If you know what you are doing, you can set allowed==""
 	// to disable this mangling.
-	
+	LyXTextClass const & tclass = buf.params().getLyXTextClass();
+	string const allowed = runparams.flavor == OutputParams::XML? ".-_:":tclass.options();
+
+	if (allowed.empty())
+		return orig;
+
 	string::const_iterator it  = orig.begin();
 	string::const_iterator end = orig.end();
 
 	string content;
-
-	if (allowed.empty()) {
-		return orig;
-	}
 
 	typedef map<string, string> MangledMap;
 	static MangledMap mangledNames;
@@ -204,14 +206,14 @@ void closeTag(ostream & os, string const & name)
 }
 
 
-void openTag(Buffer const & buf, ostream & os, Paragraph const & par)
+void openTag(Buffer const & buf, ostream & os, OutputParams const & runparams, Paragraph const & par)
 {
 	LyXLayout_ptr const & style = par.layout();
 	string const & name = style->latexname();
 	string param = style->latexparam();
 	Counters & counters = buf.params().getLyXTextClass().counters();
 
-	string id = par.getID();
+	string id = par.getID(buf, runparams);
 
 	string attribute;
 	if(!id.empty()) {

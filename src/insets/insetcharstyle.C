@@ -201,7 +201,7 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 	ParagraphList::const_iterator par = paragraphs().begin();
         ParagraphList::const_iterator end = paragraphs().end();
 
-	sgml::openTag(os, params_.latexname, par->getID() + params_.latexparam);
+	sgml::openTag(os, params_.latexname, par->getID(buf, runparams) + params_.latexparam);
 
         for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,

@@ -21,6 +21,7 @@
 
 class Buffer;
 class Paragraph;
+class OutputParams;
 
 namespace sgml {
 
@@ -34,10 +35,11 @@ std::pair<bool, std::string> escapeChar(char c);
 /// Escape a word instead of a single character
 std::string escapeString(std::string const & raw);
 
-/// replaces illegal chars like ':' or '_' from SGML ID attributes
-std::string cleanID(std::string const & orig, std::string const & allowed = std::string());
+/// replaces illegal characters from SGML/XML ID attributes
+std::string cleanID(Buffer const & buf, OutputParams const & runparams,
+		    std::string const & orig);
 
-/// returns a uniq numeric id
+/// returns a unique numeric id
 std::string const uniqueID(std::string const label);
 
 /// Opens tag
@@ -45,7 +47,8 @@ void openTag(std::ostream & os, std::string const & name,
 	    std::string const & attribute = std::string());
 
 /// Open tag
-void openTag(Buffer const & buf, std::ostream & os, Paragraph const & par);
+void openTag(Buffer const & buf, std::ostream & os,
+	     OutputParams const & runparams, Paragraph const & par);
 
 /// Close tag
 void closeTag(std::ostream & os, std::string const & name);

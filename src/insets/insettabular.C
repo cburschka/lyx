@@ -924,15 +924,11 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os,
 
 	if (!master) {
 		os << "<informaltable>";
-		if (runparams.mixed_content)
-			os << endl;
 		++ret;
 	}
 	ret += tabular.docbook(buf, os, runparams);
 	if (!master) {
 		os << "</informaltable>";
-		if (runparams.mixed_content)
-			os << endl;
 		++ret;
 	}
 	return ret;

@@ -102,24 +102,24 @@ int InsetRef::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetRef::linuxdoc(Buffer const &, ostream & os,
-		       OutputParams const &) const
+int InsetRef::linuxdoc(Buffer const & buf, ostream & os,
+		       OutputParams const & runparams) const
 {
-	os << "<ref id=\"" << sgml::cleanID(getContents())
+	os << "<ref id=\"" << sgml::cleanID(buf, runparams, getContents())
 	   << "\" name=\"" << getOptions() << "\" >";
 	return 0;
 }
 
 
-int InsetRef::docbook(Buffer const &, ostream & os,
+int InsetRef::docbook(Buffer const & buf, ostream & os,
 		      OutputParams const & runparams) const
 {
 	if (getOptions().empty() && runparams.flavor == OutputParams::XML) {
-		os << "<xref linkend=\"" << sgml::cleanID(getContents()) << "\" />";
+		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, getContents()) << "\" />";
 	} else if (getOptions().empty()) {
-		os << "<xref linkend=\"" << sgml::cleanID(getContents()) << "\">";
+		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, getContents()) << "\">";
 	} else {
-		os << "<link linkend=\"" << sgml::cleanID(getContents())
+		os << "<link linkend=\"" << sgml::cleanID(buf, runparams, getContents())
 		   << "\">" << getOptions() << "</link>";
 	}
 

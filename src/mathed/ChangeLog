@@ -1,3 +1,9 @@
+2004-11-02  José Matos  <jamatos@lyx.org>
+
+	* ref_inset.[Ch] (docbook):
+	* math_hullinset.C (docbook): remove useless comment. Escape the
+	id to always be valid.
+
 2004-10-29  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* math_hullinset.C (docbook):
