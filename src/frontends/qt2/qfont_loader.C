@@ -120,7 +120,7 @@ bool addFontPath()
 		QWidget w;
 		int n;
 		char ** p = XGetFontPath(w.x11Display(), &n);
-		if (std::find(p, p+n, dir) != p+n)
+		if (std::find(p, p + n, dir) != p + n)
 			return false;
 		lyxerr << "Adding " << dir << " to the font path.\n";
 		string const command = "xset fp+ " + dir;
