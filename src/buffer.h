@@ -187,9 +187,6 @@ public:
 	///
 	bool isLyxClean() const { return lyx_clean; }
 	
-	/// changed Heinrich Bauer, 23/03/98
-	bool isDviClean() const;
-	
         ///
         bool isNwClean() const { return nw_clean; }
        
@@ -210,9 +207,6 @@ public:
 		bak_clean = true;
 	}
 
-	/// changed Heinrich Bauer, 23/03/98
-	void markDviClean();
-	
         ///
         void markNwClean() { nw_clean = true; }
        
@@ -221,9 +215,6 @@ public:
 	
 	///
 	void markDepClean(string const & name);
-	
-	///
-	void markDviDirty();
 	
         ///
         void markNwDirty() { nw_clean = false; }
@@ -234,9 +225,7 @@ public:
 			lyx_clean = false;
 			updateTitles();
 		}
-		dvi_clean_tmpd = false;
-		dvi_clean_orgd = false;
-                nw_clean = false;
+		nw_clean = false;
 		bak_clean = false;
 		DEPCLEAN * tmp = dep_clean;
 		while (tmp) {
@@ -401,14 +390,6 @@ private:
 	/// is autosave needed
 	mutable bool bak_clean;
 	
-	/** do we need to run LaTeX, changed 23/03/98, Heinrich Bauer
-	    We have to distinguish between TeX-runs executed in the original
-	    directory (in which the original LyX-file resides) and TeX-runs
-	    executed in a temporary directory. The first situation is valid
-	    for a dvi-export, the latter one for printing or previewing. */
-	bool dvi_clean_orgd;
-	bool dvi_clean_tmpd;
-
         /// do we need to run weave/tangle
         bool nw_clean;
 

@@ -1,3 +1,9 @@
+2000-06-10  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyxparagraph.h
+
+	* src/paragraph.C: Changed fontlist to a sorted vector.
+                                         
 2000-06-19  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView.h: added screen() function.

@@ -384,11 +384,11 @@ int MakeLaTeXOutput(Buffer * buffer)
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
-	//if (!buffer->isDviClean()) {
-		Path p(path);
-		ret = MenuRunLaTeX(buffer);
-		//}
-	return ret;
+		
+    Path p(path);
+	ret = MenuRunLaTeX(buffer);
+	
+    return ret;
 }
 
 
@@ -720,7 +720,6 @@ void MenuMakeLaTeX(Buffer * buffer)
 			buffer->makeLaTeXFile(s, string(), true);
 		ShowMessage(buffer, _("Nice LaTeX file saved as"), 
 			    MakeDisplayPath(s));
-		buffer->markDviDirty();
 	}
 }
 
@@ -1244,8 +1243,7 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 		s2 = lyxrc.linuxdoc_to_latex_command + ' ' + add_flags + " -o dvi " + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
-		} else
-			bv->buffer()->markDviClean();
+		} 
 		break;
 	default: /* unknown output */
 		break;
@@ -1297,8 +1295,7 @@ int RunDocBook(int flag, string const & filename)
 		string s2 = lyxrc.docbook_to_dvi_command + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
-		} else
-			current_view->buffer()->markDviClean();
+		}
 	}
 	break;
 	default: /* unknown output */

@@ -546,12 +546,15 @@ private:
 	  I don't think it's worth the effort to implement a more effective
 	  datastructure, because the number of different fonts in a paragraph
 	  is limited. (Asger)
+	  Nevertheless, I decided to store fontlist using a sorted vector:
+	  fontlist = { {pos_1,font_1} , {pos_2,font_2} , ... } where
+	  pos_1 < pos_2 < ..., font_{i-1} != font_i for all i,
+	  and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
+	  (font_1 covers the chars 0,...,pos_1) (Dekel)
 	*/
 	struct FontTable  {
-		/// Start position of paragraph this font attribute covers
+		/// End position of paragraph this font attribute covers
 		size_type pos;
-		/// Ending position of paragraph this font attribute covers
-		size_type pos_end;
 		/** Font. Interpretation of the font values:
 		If a value is LyXFont::INHERIT_*, it means that the font 
 		attribute is inherited from either the layout of this
@@ -562,9 +565,28 @@ private:
 		allowed in these font tables.
 		*/
 		LyXFont font;
+		///
+		FontTable(size_type p, LyXFont const & f) {pos = p; font = f;}
 	};
+	friend struct matchFT;
 	///
-	typedef std::list<FontTable> FontList;
+	struct matchFT {
+		/// used by lower_bound
+		inline
+		int operator()(LyXParagraph::FontTable const & a,
+			       LyXParagraph::size_type pos) const {
+			return a.pos < pos;
+		}
+		/// used by upper_bound
+		inline
+		int operator()(LyXParagraph::size_type pos,
+			       LyXParagraph::FontTable const & a) const {
+			return pos < a.pos;
+		}
+	};
+
+	///
+	typedef std::vector<FontTable> FontList;
 	///
 	FontList fontlist;
 	///

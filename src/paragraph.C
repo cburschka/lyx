@@ -370,23 +370,13 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 					     << (*cit).font.stateText(0)
 					     << endl;
 		}
-#if 0
+
 		Language const * language = (*cit).font.language();
 		if (language != doc_language) {
 			features.UsedLanguages.insert(language);
 			lyxerr[Debug::LATEX] << "Found language "
-					     << language->lang << endl;
+					     << language->lang() << endl;
 		}
-#endif
-	}
-
-	// This is not efficient. I plan to use the code above, after I
-	// change the fontlist handling.
-	for (size_type i = 0; i < size(); ++i) {
-		Language const * language =
-			GetFontSettings(params, i).language();
-		if (language != doc_language)
-			features.UsedLanguages.insert(language);
 	}
 
 	// then the insets
@@ -563,28 +553,31 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 			}
 		}
 		text.erase(text.begin() + pos);
+
 		// Erase entries in the tables.
-		for (FontList::iterator it = fontlist.begin();
-		     it != fontlist.end(); ++it) {
-			if (pos >= (*it).pos && pos <= (*it).pos_end) {
-				if ((*it).pos == (*it).pos_end) {
-					// If it is a multi-character font
-					// entry, we just make it smaller
-					// (see update below), otherwise we
-					// should delete it.
-					fontlist.erase(it);
-					break;
-				}
+		FontList::iterator it = lower_bound(fontlist.begin(),
+						    fontlist.end(),
+						    pos, matchFT());
+		if (it != fontlist.end() && (*it).pos == pos &&
+		    (pos == 0 || 
+		     (it != fontlist.begin() && (*(it-1)).pos == pos - 1))) {
+			// If it is a multi-character font
+			// entry, we just make it smaller
+			// (see update below), otherwise we
+			// should delete it.
+			unsigned int i = it - fontlist.begin();
+			fontlist.erase(fontlist.begin() + i);
+			it = fontlist.begin() + i;
+			if (i > 0 && i < fontlist.size() &&
+			    fontlist[i-1].font == fontlist[i].font) {
+				fontlist.erase(fontlist.begin() + i-1);
+				it = fontlist.begin() + i-1;
 			}
 		}
+
 		// Update all other entries.
-		for (FontList::iterator it = fontlist.begin();
-		     it != fontlist.end(); ++it) {
-			if ((*it).pos > pos)
-				(*it).pos--;
-			if ((*it).pos_end >= pos)
-				(*it).pos_end--;
-		}
+		for (; it != fontlist.end(); ++it)
+			--(*it).pos;
 
 		// Update the inset table.
 		for (InsetList::iterator it = upper_bound(insetlist.begin(),
@@ -615,13 +608,11 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 	}
 	text.insert(text.begin() + pos, c);
 	// Update the font table.
-	for (FontList::iterator it = fontlist.begin();
-	     it != fontlist.end(); ++it) {
-		if ((*it).pos >= pos)
-			(*it).pos++;
-		if ((*it).pos_end >= pos)
-			(*it).pos_end++;
-	}
+	for (FontList::iterator it = lower_bound(fontlist.begin(),
+						 fontlist.end(),
+						 pos, matchFT());
+	     it != fontlist.end(); ++it)
+		++(*it).pos;
    
 	// Update the inset table.
 	for (InsetList::iterator it = lower_bound(insetlist.begin(),
@@ -747,17 +738,11 @@ LyXFont LyXParagraph::GetFontSettings(BufferParams const & bparams,
 				      LyXParagraph::size_type pos) const
 {
 	if (pos < size()) {
-#ifdef SORTED_FONT_LIST
-		for (FontList::const_iterator cit = fontlist.begin();
-		     cit != fontlist.end() && pos <= (*cit).pos_end; ++cit)
-			if (pos >= (*cit).pos)
-				return (*cit).font;
-#else
-		for (FontList::const_iterator cit = fontlist.begin();
-		     cit != fontlist.end(); ++cit)
-			if (pos >= (*cit).pos && pos <= (*cit).pos_end)
-				return (*cit).font;
-#endif
+		FontList::const_iterator cit = lower_bound(fontlist.begin(),
+						    fontlist.end(),
+						    pos, matchFT());
+		if (cit != fontlist.end())
+			return (*cit).font;
 	}
 	// > because last is the next unused position, and you can 
 	// use it if you want
@@ -790,15 +775,8 @@ LyXFont LyXParagraph::GetFontSettings(BufferParams const & bparams,
 LyXFont LyXParagraph::GetFirstFontSettings() const
 {
 	if (size() > 0) {
-#ifdef SORTED_FONT_LIST
-		if (!fontlist.empty() && fontlist.front().pos == 0)
-			return fontlist.front().font;
-#else
-		for (FontList::const_iterator cit = fontlist.begin();
-		     cit != fontlist.end(); ++cit)
-			if (0 >= (*cit).pos && 0 <= (*cit).pos_end)
-				return (*cit).font;
-#endif
+		if (!fontlist.empty())
+			return fontlist[0].font;
 	} else if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
 		return NextAfterFootnote()->GetFirstFontSettings();
 	return LyXFont(LyXFont::ALL_INHERIT);
@@ -866,13 +844,22 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 				 LyXParagraph::size_type endpos) const
 {
 	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
-	for (FontList::const_iterator cit = fontlist.begin();
-	     cit != fontlist.end(); ++cit) {
-		if (startpos <= (*cit).pos_end && endpos >= (*cit).pos) {
-			LyXFont::FONT_SIZE size = (*cit).font.size();
-			if (size > maxsize && size <= LyXFont::SIZE_HUGER)
-				maxsize = size;
-		}
+	if (fontlist.empty())
+		return maxsize;
+	
+	FontList::const_iterator end_it = lower_bound(fontlist.begin(),
+						      fontlist.end(),
+						      endpos, matchFT());
+	if (end_it != fontlist.end())
+		++end_it;
+
+	for (FontList::const_iterator cit = lower_bound(fontlist.begin(),
+							fontlist.end(),
+							startpos, matchFT());
+	     cit != end_it; ++cit) {
+		LyXFont::FONT_SIZE size = (*cit).font.size();
+		if (size > maxsize && size <= LyXFont::SIZE_HUGER)
+			maxsize = size;
 	}
 	return maxsize;
 }
@@ -1089,7 +1076,6 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 		}
 		return;
 	}
-	LyXFont patternfont(LyXFont::ALL_INHERIT);
 
 	// First, reduce font against layout/label font
 	// Update: The SetCharFont() routine in text2.C already
@@ -1097,106 +1083,50 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	// No need to simplify this because it will disappear
 	// in a new kernel. (Asger)
 	// Next search font table
-	FontList::iterator tmp = fontlist.begin();
-	for (; tmp != fontlist.end(); ++tmp) {
-		if (pos >= (*tmp).pos && pos <= (*tmp).pos_end) {
-			break;
-		}
-	}
-	if (tmp == fontlist.end()) { // !found
-		// if we did not find a font entry, but if the font at hand
-		// is the same as default, we just forget it
-		if (font == patternfont) return;
 
-		// ok, we did not find a font entry. But maybe there is exactly
-		// the needed font ientry one position left
-		FontList::iterator tmp2 = fontlist.begin();
-		for (; tmp2 != fontlist.end(); ++tmp2) {
-			if (pos - 1 >= (*tmp2).pos
-			    && pos - 1 <= (*tmp2).pos_end)
-				break;
-		}
-		if (tmp2 != fontlist.end()) {
-			// ok there is one, maybe it is exactly
-			// the needed font
-			if ((*tmp2).font == font) {
-				// put the position under the font
-				(*tmp2).pos_end++;
-				return;
-			}
-		}
-		// Add a new entry in the
-		// fontlist for the position
-		FontTable ft;
-		ft.pos = pos;
-		ft.pos_end = pos;
-		ft.font = font; // or patternfont
-		// It seems that using font instead of patternfont here
-		// fixes all the problems. This also surfaces a "bug" in
-		// the old code.
-		fontlist.insert(fontlist.begin(), ft);
-	} else if ((*tmp).pos != (*tmp).pos_end) { // we found a font entry. maybe we have to split it and create a new one.
+	FontList::iterator it = lower_bound(fontlist.begin(),
+					    fontlist.end(),
+					    pos, matchFT());
+	unsigned int i = it - fontlist.begin();
+	bool notfound = it == fontlist.end();
 
-// more than one character
-		if (pos == (*tmp).pos) {
-			// maybe we should enlarge the left fonttable
-			FontList::iterator tmp2 = fontlist.begin();
-			for (; tmp2 != fontlist.end(); ++tmp2) {
-				if (pos - 1 >= (*tmp2).pos
-				    && pos - 1 <= (*tmp2).pos_end)
-					break;
-			}
-			// Is there is one, and is it exactly
-			// the needed font?
-			if (tmp2 != fontlist.end() &&
-			    (*tmp2).font == font) {
-				// Put the position under the font
-				(*tmp2).pos_end++;
-				(*tmp).pos++;
-				return;
-			}
+	if (!notfound && fontlist[i].font == font)
+		return;
 
-			// Add a new entry in the
-			// fontlist for the position
-			FontTable ft;
-			ft.pos = pos + 1;
-			ft.pos_end = (*tmp).pos_end;
-			ft.font = (*tmp).font;
-			(*tmp).pos_end = pos;
-			(*tmp).font = font;
-			fontlist.insert(fontlist.begin(), ft);
-		} else if (pos == (*tmp).pos_end) {
-			// Add a new entry in the
-			// fontlist for the position
-			FontTable ft;
-			ft.pos = (*tmp).pos;
-			ft.pos_end = (*tmp).pos_end - 1;
-			ft.font = (*tmp).font;
-			(*tmp).pos = (*tmp).pos_end;
-			(*tmp).font = font;
-			fontlist.insert(fontlist.begin(), ft);
-		} else {
-			// Add a new entry in the
-			// fontlist for the position
-			FontTable ft;
-			ft.pos = (*tmp).pos;
-			ft.pos_end = pos - 1;
-			ft.font = (*tmp).font;
-			
-			FontTable ft2;
-			ft2.pos = pos + 1;
-			ft2.pos_end = (*tmp).pos_end;
-			ft2.font = (*tmp).font;
-			
-			(*tmp).pos = pos;
-			(*tmp).pos_end = pos;
-			(*tmp).font = font;
-			
-			fontlist.insert(fontlist.begin(), ft);
-			fontlist.insert(fontlist.begin(), ft2);
-		}
-	} else {
-		(*tmp).font = font;
+	bool begin = pos == 0 || notfound ||
+		(i > 0 && fontlist[i-1].pos == pos - 1);
+	// Is position pos is a beginning of a font block?
+	bool end = !notfound && fontlist[i].pos == pos;
+	// Is position pos is the end of a font block?
+	if (begin && end) { // A single char block
+		if (i+1 < fontlist.size() &&
+		    fontlist[i+1].font == font) {
+			// Merge the singleton block with the next block
+			fontlist.erase(fontlist.begin() + i);
+			if (i > 0 && fontlist[i-1].font == font)
+				fontlist.erase(fontlist.begin() + i-1);
+		} else if (i > 0 && fontlist[i-1].font == font) {
+			// Merge the singleton block with the previous block
+			fontlist[i-1].pos = pos;
+			fontlist.erase(fontlist.begin() + i);
+		} else
+			fontlist[i].font = font;
+	} else if (begin) {
+		if (i > 0 && fontlist[i-1].font == font)
+			fontlist[i-1].pos = pos;
+		else
+			fontlist.insert(fontlist.begin() + i,
+					FontTable(pos, font));
+	} else if (end) {
+		fontlist[i].pos = pos - 1;
+		if (!(i+1 < fontlist.size() &&
+		      fontlist[i+1].font == font))
+			fontlist.insert(fontlist.begin() + i+1,
+					FontTable(pos, font));
+	} else { // The general case. The block is splitted into 3 blocks
+		fontlist.insert(fontlist.begin() + i, 
+				FontTable(pos - 1, fontlist[i].font));
+		fontlist.insert(fontlist.begin() + i+1, FontTable(pos, font));
 	}
 }
 
