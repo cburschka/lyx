@@ -31,8 +31,8 @@
 #include "form_preferences.h"
 #include "input_validators.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 #include "language.h"
+#include "lyxfunc.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "combox.h"
@@ -1086,8 +1086,7 @@ bool FormPreferences::Converters::Browser()
 	fl_set_input(dialog_->input_flags, c.flags.c_str());
 
 	fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
-	fl_set_button_shortcut(dialog_->button_add,
-				scex(_("Modify|#M")), 1);
+	fl_set_button_shortcut(dialog_->button_add, scex(_("Modify|#M")), 1);
 
 	setEnabled(dialog_->button_add,    false);
 	setEnabled(dialog_->button_delete, true);
@@ -1117,17 +1116,15 @@ bool FormPreferences::Converters::Input()
 	fl_freeze_form(dialog_->form);
 
 	if (sel < 0) {
-		fl_set_object_label(dialog_->button_add,
-				     idex(_("Add|#A")));
-		fl_set_button_shortcut(dialog_->button_add,
-					scex(_("Add|#A")), 1);
+		fl_set_object_label(dialog_->button_add, idex(_("Add|#A")));
+		fl_set_button_shortcut(dialog_->button_add, 
+				       scex(_("Add|#A")), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
 		setEnabled(dialog_->button_delete, false);
 
 	} else {
-		fl_set_object_label(dialog_->button_add,
-				     idex(_("Modify|#M")));
+		fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
 		fl_set_button_shortcut(dialog_->button_add,
 					scex(_("Modify|#M")), 1);
 		
@@ -1137,7 +1134,7 @@ bool FormPreferences::Converters::Input()
 		setEnabled(dialog_->button_delete, true);
 	}
 
-	string const command = fl_get_input(dialog_->input_converter);
+	string const command = strip(fl_get_input(dialog_->input_converter));
 	bool const enable = !(command.empty() || from == to);
 	setEnabled(dialog_->button_add, enable);
 
@@ -1164,7 +1161,7 @@ string const FormPreferences::Converters::GetFrom() const
 string const FormPreferences::Converters::GetTo() const
 {
 	::Formats::FormatList::size_type const i =
-		fl_get_choice(dialog_->choice_from);
+		fl_get_choice(dialog_->choice_to);
 
 	if (i > 0 && i <= local_formats.size())
 		return local_formats.Get(i-1).name();

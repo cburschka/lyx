@@ -1,3 +1,9 @@
+2001-06-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormPreferences.C white-space change in various places.
+	(Converters::GetTo): get the contents of "to" not "from"! Thus fix bug
+	that disabled addition of new converters.
+
 2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormToc.C (input): change test slightly.

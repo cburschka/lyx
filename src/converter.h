@@ -89,7 +89,7 @@ public:
 	///
 	typedef FormatList::const_iterator const_iterator;
 	///
-	Format const & Get(int i) const {
+	Format const & Get(FormatList::size_type i) const {
 		return formatlist[i];
 	}
 	///
