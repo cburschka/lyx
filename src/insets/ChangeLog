@@ -1,3 +1,8 @@
+2001-07-19  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* figinset.C (RegisterFigure): Print debug message only when
+	current_view is available.
+
 2001-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* many files: update to match the change below
