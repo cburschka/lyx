@@ -89,12 +89,14 @@ vref              ref         none
 # spaces                      
 lyxnegspace       space       none
 lyxposspace       space       none
-qquad             space       none
-quad              space       none
+!                 space       none
+negmedspace       space       none
+negthickspace     space       none
 ,                 space       none
 :                 space       none
 ;                 space       none
-!                 space       none
+quad              space       none
+qquad             space       none
                               
 # styles                      
 displaystyle      style       0
