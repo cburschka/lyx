@@ -68,7 +68,7 @@ What's new
 - fix bug with graphics files which name contain a '.'
 
 - fix bug in the xforms image loader, where images would be cropped by
-  a couple pixels
+  a few pixels
 
 - when a viewer has not been found (set to "none"), remove the
   corresponding View menu entry
@@ -77,6 +77,9 @@ What's new
 
 - fix bad latex output with math array environment included in an
   eqnarray environment
+
+- fix bug where \limits statements (as obtained in math with M-m l)
+  would not be read back from the lyx file.
 
 - do not output labels in latex when numbering is off
 

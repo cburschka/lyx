@@ -1045,8 +1045,10 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			}
 			p->ensure(up);
 			parse_into(p->cell(up), FLAG_ITEM);
-			p->limits(limits);
-			limits = 0;
+			if (limits) {
+				p->limits(limits);
+				limits = 0;
+			}
 		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_END))
