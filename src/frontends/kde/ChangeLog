@@ -1,0 +1,11 @@
+2000-01-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormTabularCreate.C: use LFUN_INSET_TABULAR Dispatch
+	  instead of creating by hand
+
+	* FormUrl.C: add accelerators for Close and Cancel
+
+	* paradlg.C: add accelerators for Close and Cancel,
+	  clean the code up a little
+
+	* printdlg.C: add FIXME for later

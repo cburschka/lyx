@@ -86,7 +86,7 @@ void ParaDialog::setReadOnly(bool readonly)
 	ok->setEnabled(!readonly);
 	apply->setEnabled(!readonly);
 	restore->setEnabled(!readonly);
-	cancel->setText(readonly ? _("Close") : _("Cancel"));
+	cancel->setText(readonly ? _("&Close") : _("&Cancel"));
 }
 
 void ParaDialog::setLabelWidth(const char *text)
@@ -130,53 +130,30 @@ void ParaDialog::setChecks(bool labove, bool lbelow, bool pabove, bool pbelow, b
 
 void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kindbelow, bool keepabove, bool keepbelow)
 {
-	switch (kindabove) {
-		case VSpace::NONE:
-			generalpage->abovepage->spaceabove->setCurrentItem(0);
-			break;
-		case VSpace::DEFSKIP:
-			generalpage->abovepage->spaceabove->setCurrentItem(1);
-			break;
-		case VSpace::SMALLSKIP:
-			generalpage->abovepage->spaceabove->setCurrentItem(2);
-			break;
-		case VSpace::MEDSKIP:
-			generalpage->abovepage->spaceabove->setCurrentItem(3);
-			break;
-		case VSpace::BIGSKIP:
-			generalpage->abovepage->spaceabove->setCurrentItem(4);
-			break;
-		case VSpace::VFILL:
-			generalpage->abovepage->spaceabove->setCurrentItem(5);
-			break;
-		case VSpace::LENGTH:
-			generalpage->abovepage->spaceabove->setCurrentItem(6);
-			break;
-	}
-	switch (kindbelow) {
-		case VSpace::NONE:
-			generalpage->belowpage->spacebelow->setCurrentItem(0);
-			break;
-		case VSpace::DEFSKIP:
-			generalpage->belowpage->spacebelow->setCurrentItem(1);
-			break;
-		case VSpace::SMALLSKIP:
-			generalpage->belowpage->spacebelow->setCurrentItem(2);
-			break;
-		case VSpace::MEDSKIP:
-			generalpage->belowpage->spacebelow->setCurrentItem(3);
-			break;
-		case VSpace::BIGSKIP:
-			generalpage->belowpage->spacebelow->setCurrentItem(4);
-			break;
-		case VSpace::VFILL:
-			generalpage->belowpage->spacebelow->setCurrentItem(5);
-			break;
-		case VSpace::LENGTH:
-			generalpage->belowpage->spacebelow->setCurrentItem(6);
-			break;
-	}
+	int item;
 
+	switch (kindabove) {
+		case VSpace::NONE: item = 0; break;
+		case VSpace::DEFSKIP: item = 1; break;
+		case VSpace::SMALLSKIP: item = 2; break;
+		case VSpace::MEDSKIP: item = 3; break;
+		case VSpace::BIGSKIP: item = 4; break;
+		case VSpace::VFILL: item = 5; break;
+		case VSpace::LENGTH: item = 6; break;
+	}
+	generalpage->abovepage->spaceabove->setCurrentItem(item);
+
+	switch (kindbelow) {
+		case VSpace::NONE: item = 0; break;
+		case VSpace::DEFSKIP: item = 1; break;
+		case VSpace::SMALLSKIP: item = 2; break;
+		case VSpace::MEDSKIP: item = 3; break;
+		case VSpace::BIGSKIP: item = 4; break;
+		case VSpace::VFILL: item = 5; break;
+		case VSpace::LENGTH: item = 6; break;
+	}
+	generalpage->belowpage->spacebelow->setCurrentItem(item);
+	 
 	generalpage->abovepage->spaceabovevalue->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->abovepage->spaceabovevalueunits->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->abovepage->spaceaboveplus->setEnabled(kindabove == VSpace::LENGTH);

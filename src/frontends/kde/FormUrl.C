@@ -83,14 +83,14 @@ void FormUrl::update(bool switched)
 		dialog_->urlname->setFocusPolicy(QWidget::NoFocus);
 		dialog_->url->setFocusPolicy(QWidget::NoFocus);
 		dialog_->buttonOk->setEnabled(false);
-		dialog_->buttonCancel->setText(_("Close"));
+		dialog_->buttonCancel->setText(_("&Close"));
 		dialog_->htmlurl->setEnabled(false);
 	} else {
 		dialog_->urlname->setFocusPolicy(QWidget::StrongFocus);
 		dialog_->url->setFocusPolicy(QWidget::StrongFocus);
 		dialog_->url->setFocus();
 		dialog_->buttonOk->setEnabled(true);
-		dialog_->buttonCancel->setText(_("Cancel"));
+		dialog_->buttonCancel->setText(_("&Cancel"));
 		dialog_->htmlurl->setEnabled(true);
 	}
 }

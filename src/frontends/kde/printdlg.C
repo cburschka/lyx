@@ -18,6 +18,8 @@
 
 #define Inherited PrintDialogData
 
+/* FIXME: tab order is out of whack */
+
 PrintDialog::PrintDialog(FormPrint *f, QWidget* parent, const char * name)
 	: PrintDialogData(parent, name), form_(f)
 {

@@ -22,6 +22,7 @@
 #include "QtLyXView.h"
 #include "BufferView.h"
 #include "insets/insettabular.h"  
+#include "support/lstrings.h"
 
 FormTabularCreate::FormTabularCreate(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
@@ -42,9 +43,8 @@ void FormTabularCreate::apply(unsigned int rows, unsigned cols)
 	if (!lv_->view()->available())
 		return;
 
-	InsetTabular * in = new InsetTabular(*lv_->buffer(), rows, cols);
-	if (!lv_->view()->open_new_inset(in))
-		delete in;
+	string tmp = tostr(rows) + " " + tostr(cols);
+	lv_->getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, tmp);
 }
 
 void FormTabularCreate::show()
