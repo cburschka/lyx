@@ -56,8 +56,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.0\n"
-"POT-Creation-Date: 2003-04-11 00:26+0200\n"
-"PO-Revision-Date: 2003-04-11 00:00+0100\n"
+"POT-Creation-Date: 2003-04-30 00:00+0200\n"
+"PO-Revision-Date: 2003-04-30 02:00+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -506,9 +506,9 @@ msgstr "£ @"
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:153
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:459
 #: src/frontends/xforms/FormMathsPanel.C:157
-#: src/frontends/xforms/FormPreferences.C:213
-#: src/frontends/xforms/FormPreferences.C:230
-#: src/frontends/xforms/FormPreferences.C:238
+#: src/frontends/xforms/FormPreferences.C:240
+#: src/frontends/xforms/FormPreferences.C:257
+#: src/frontends/xforms/FormPreferences.C:265
 msgid "Misc"
 msgstr "Diverses"
 
@@ -644,7 +644,7 @@ msgstr "Format & Tastaturkürzel"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:719
 msgid "User Interface file:|#U"
-msgstr "User-Interface-Datei:|#U"
+msgstr "GUI-Datei:|#U"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:737
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
@@ -697,14 +697,14 @@ msgid "RGB"
 msgstr "RGB"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1055
-#: src/frontends/xforms/FormPreferences.C:1082
-#: src/frontends/xforms/FormPreferences.C:1084
-#: src/frontends/xforms/FormPreferences.C:1124
-#: src/frontends/xforms/FormPreferences.C:1126
-#: src/frontends/xforms/FormPreferences.C:1360
-#: src/frontends/xforms/FormPreferences.C:1362
-#: src/frontends/xforms/FormPreferences.C:1406
-#: src/frontends/xforms/FormPreferences.C:1408
+#: src/frontends/xforms/FormPreferences.C:1109
+#: src/frontends/xforms/FormPreferences.C:1111
+#: src/frontends/xforms/FormPreferences.C:1151
+#: src/frontends/xforms/FormPreferences.C:1153
+#: src/frontends/xforms/FormPreferences.C:1387
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1433
+#: src/frontends/xforms/FormPreferences.C:1435
 msgid "Modify|#M"
 msgstr "Ändern|#d"
 
@@ -765,7 +765,7 @@ msgid "Advanced Options"
 msgstr "Erweiterte Optionen"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1457
-#: src/frontends/xforms/FormPreferences.C:207
+#: src/frontends/xforms/FormPreferences.C:234
 msgid "Interface"
 msgstr "Benutzerschnittstelle"
 
@@ -857,10 +857,10 @@ msgstr "Betrachter:|#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1991
 #: ../src/frontends/xforms/forms/form_preferences.fd:2141
-#: src/frontends/xforms/FormPreferences.C:1115
-#: src/frontends/xforms/FormPreferences.C:1117
-#: src/frontends/xforms/FormPreferences.C:1397
-#: src/frontends/xforms/FormPreferences.C:1399
+#: src/frontends/xforms/FormPreferences.C:1142
+#: src/frontends/xforms/FormPreferences.C:1144
+#: src/frontends/xforms/FormPreferences.C:1424
+#: src/frontends/xforms/FormPreferences.C:1426
 msgid "Add|#A"
 msgstr "Hinzufügen|#H"
 
@@ -1133,11 +1133,11 @@ msgstr "Alle Autoren|#A"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:332
 msgid "Force upper case|#u"
-msgstr "Großbuchstabe am Anfang|#o"
+msgstr "Großschreibung erzwingen|#o"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:350
 msgid "Text before:|#b"
-msgstr "Text zuvor:|#z"
+msgstr "Text davor:|#z"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:368
 msgid "Text after:|#T"
@@ -1257,7 +1257,7 @@ msgstr "Suche:|#S"
 
 #: ../src/frontends/xforms/forms/form_search.fd:62
 msgid "Replace with:|#w"
-msgstr "Ersetze durch:|#E"
+msgstr "Ersetzen durch:|#E"
 
 #: ../src/frontends/xforms/forms/form_search.fd:80
 msgid "Find next"
@@ -1278,7 +1278,7 @@ msgstr "Alles ersetzen|#A"
 
 #: ../src/frontends/xforms/forms/form_search.fd:188
 msgid "Search backwards|#S"
-msgstr "Suche rückwärts|#S"
+msgstr "Rückwärts suchen|#R"
 
 #: ../src/frontends/xforms/forms/form_include.fd:115
 msgid "Load|#L"
@@ -2108,7 +2108,7 @@ msgstr "&Übernehmen"
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279 src/LyXAction.C:152
 #: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
 msgid "Cancel"
-msgstr "Abbruch"
+msgstr "Abbrechen"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -2404,7 +2404,7 @@ msgstr "&Einheiten:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:70
-#: src/frontends/xforms/FormDocument.C:351
+#: src/frontends/xforms/FormDocument.C:367
 msgid "Bullets"
 msgstr "Aufzählungszeichen"
 
@@ -2494,7 +2494,7 @@ msgstr "Index-Eintrag"
 
 #: ../src/frontends/qt2/ui/QPrefColorsModule.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:133
-#: src/frontends/xforms/FormPreferences.C:210
+#: src/frontends/xforms/FormPreferences.C:237
 msgid "Colors"
 msgstr "Farben"
 
@@ -2625,8 +2625,8 @@ msgstr "&Sprache:"
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
 #: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:347
-#: src/frontends/xforms/FormPreferences.C:246
+#: src/frontends/xforms/FormDocument.C:363
+#: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
 msgstr "Sprache"
 
@@ -2781,7 +2781,7 @@ msgstr "Nur ganze &Wörter"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
 msgid "Find &Next"
-msgstr "Suche &nächstes"
+msgstr "&Nächstes suchen"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
 msgid "Replace &All"
@@ -2824,7 +2824,7 @@ msgid "Output as a hyperlink ?"
 msgstr "Als Hyperlink ausgeben ?"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
-#: src/frontends/xforms/FormPreferences.C:243
+#: src/frontends/xforms/FormPreferences.C:270
 msgid "Spell checker"
 msgstr "Rechtschreibprüfung"
 
@@ -3369,7 +3369,7 @@ msgstr "&Entfernen"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:169
 msgid "&GUI name:"
-msgstr "Name im &GUI:"
+msgstr "&GUI-Name:"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:184
 msgid "F&ormat:"
@@ -3876,7 +3876,7 @@ msgstr "&Dummy"
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
 #: src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Cancel"
-msgstr "&Abbruch"
+msgstr "&Abbrechen"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -3996,11 +3996,11 @@ msgstr "Nach dem Zitat einzufügender Text"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:542
 msgid "Text after:"
-msgstr "Text nach:"
+msgstr "Text danach:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:55
-#: src/frontends/xforms/FormCitation.C:461
+#: src/frontends/xforms/FormCitation.C:467
 msgid "Not yet supported"
 msgstr "Noch nicht unterstützt"
 
@@ -4010,7 +4010,7 @@ msgstr "Vor dem Zitat einzufügender Text"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:583
 msgid "Text before:"
-msgstr "Text vor:"
+msgstr "Text davor:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:601
 msgid "Natbib citation style to use"
@@ -4172,13 +4172,13 @@ msgid "File:"
 msgstr "Datei:"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
+#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:44
 msgid "About LyX"
 msgstr "Über LyX"
 
-#. stack tabs
+#. Stack tabs
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
-#: src/frontends/xforms/FormAboutlyx.C:70
+#: src/frontends/xforms/FormAboutlyx.C:85
 msgid "Version"
 msgstr "Version"
 
@@ -4187,7 +4187,7 @@ msgid "Version goes here"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
-#: src/frontends/xforms/FormAboutlyx.C:72
+#: src/frontends/xforms/FormAboutlyx.C:87
 msgid "Credits"
 msgstr "Ruhm und Ehre"
 
@@ -4438,7 +4438,7 @@ msgstr "Den Vorspann mit einem externen Editor bearbeiten"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
+#: src/frontends/xforms/FormPreferences.C:103
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -4587,7 +4587,7 @@ msgstr "&Gerade Seiten drucken"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
 msgid "Re&verse order"
-msgstr "&Letzte Seite zuerst"
+msgstr "&Umgekehrte Reihenfolge"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
 msgid "Print in reverse order"
@@ -4648,7 +4648,7 @@ msgstr "&Seiten-Stil:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
 msgid "&Indent"
-msgstr "&Einzug"
+msgstr "&Einrückung"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
 msgid "S&kip"
@@ -4656,7 +4656,7 @@ msgstr "&Abstand"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
 msgid "Float &placement:"
-msgstr "&Platzierung des Gleitobjekts:"
+msgstr "Gleitobjekt-&Platzierung:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
 msgid "&Font && size:"
@@ -4687,7 +4687,7 @@ msgid "Save settings as LyX's default template"
 msgstr "Einstellungen als LyX-Standard-Vorlage speichern"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
-#: src/frontends/xforms/FormPreferences.C:204
+#: src/frontends/xforms/FormPreferences.C:231
 msgid "Screen Fonts"
 msgstr "Bildschirmschriften"
 
@@ -6594,7 +6594,7 @@ msgstr "Suchen & Ersetzen...|S"
 
 #: ../lib/ui/default.ui:74
 msgid "Tabular|T"
-msgstr "Tabellen|T"
+msgstr "Tabelle|T"
 
 #: ../lib/ui/default.ui:75
 msgid "Math|M"
@@ -7679,7 +7679,7 @@ msgstr "Auswählen bis zum Anfang des Dokuments"
 
 #: src/LyXAction.C:128
 msgid "Check TeX"
-msgstr "TeX-Befehle überprüfen"
+msgstr "TeX prüfen"
 
 #: src/LyXAction.C:131
 msgid "Go to end of document"
@@ -9292,7 +9292,7 @@ msgid "Layout"
 msgstr "Format"
 
 #: src/frontends/qt2/QDocumentDialog.C:67
-#: src/frontends/xforms/FormDocument.C:345
+#: src/frontends/xforms/FormDocument.C:361
 msgid "Paper"
 msgstr "Seite"
 
@@ -9366,7 +9366,7 @@ msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
 #: src/frontends/qt2/QGraphics.C:53 src/frontends/qt2/QPrefsDialog.C:135
-#: src/frontends/xforms/FormGraphics.C:64
+#: src/frontends/xforms/FormGraphics.C:70
 msgid "Graphics"
 msgstr "Grafik"
 
@@ -9518,7 +9518,7 @@ msgid "Look and feel"
 msgstr "Aussehen"
 
 #: src/frontends/qt2/QPrefsDialog.C:83
-#: src/frontends/xforms/FormPreferences.C:198
+#: src/frontends/xforms/FormPreferences.C:225
 msgid "Outputs"
 msgstr "Ausgabe"
 
@@ -9541,17 +9541,17 @@ msgid "Date format"
 msgstr "Datumsformat"
 
 #: src/frontends/qt2/QPrefsDialog.C:148
-#: src/frontends/xforms/FormPreferences.C:235
+#: src/frontends/xforms/FormPreferences.C:262
 msgid "Printer"
 msgstr "Drucker"
 
 #: src/frontends/qt2/QPrefsDialog.C:151
-#: src/frontends/xforms/FormPreferences.C:227
+#: src/frontends/xforms/FormPreferences.C:254
 msgid "Paths"
 msgstr "Pfade"
 
 #: src/frontends/qt2/QPrefsDialog.C:153
-#: src/frontends/xforms/FormPreferences.C:221
+#: src/frontends/xforms/FormPreferences.C:248
 msgid "Converters"
 msgstr "Konverter"
 
@@ -9753,16 +9753,16 @@ msgstr ""
 msgid "*"
 msgstr "*"
 
-#: src/frontends/xforms/FormAboutlyx.C:74
+#: src/frontends/xforms/FormAboutlyx.C:89
 msgid "License"
 msgstr "Lizenz"
 
-#: src/frontends/xforms/FormBase.C:347
+#: src/frontends/xforms/FormBase.C:349
 #, c-format
 msgid "WARNING! %1$s"
 msgstr "ACHTUNG! %1$s"
 
-#: src/frontends/xforms/FormBase.C:354
+#: src/frontends/xforms/FormBase.C:356
 msgid "WARNING!"
 msgstr "ACHTUNG!"
 
@@ -9813,25 +9813,25 @@ msgstr ""
 msgid "Choose a BibTeX style from the list."
 msgstr "Wählen Sie einen BibTeX-Stil aus der Liste."
 
-#: src/frontends/xforms/FormBibtex.C:92
+#: src/frontends/xforms/FormBibtex.C:95
 msgid ""
 "Updates your TeX system for a new bibstyle list. Only the styles which are "
 "in directories where TeX finds them are listed!"
 msgstr ""
 
-#: src/frontends/xforms/FormBibtex.C:106
+#: src/frontends/xforms/FormBibtex.C:109
 msgid "Select Database"
 msgstr "Wählen Sie eine Datenbank"
 
-#: src/frontends/xforms/FormBibtex.C:107
+#: src/frontends/xforms/FormBibtex.C:110
 msgid "*.bib| BibTeX Databases (*.bib)"
 msgstr "*.bib| BibTeX-Datenbanken (*.bib)"
 
-#: src/frontends/xforms/FormBibtex.C:119
+#: src/frontends/xforms/FormBibtex.C:122
 msgid "Select BibTeX-Style"
 msgstr "Wählen Sie einen BibTeX-Stil"
 
-#: src/frontends/xforms/FormBibtex.C:120
+#: src/frontends/xforms/FormBibtex.C:123
 msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr "*.bst| BibTeX-Stile (*.bst)"
 
@@ -9864,7 +9864,7 @@ msgstr ""
 "Einträge, die zitiert werden. Wählen Sie sie mit den Pfeil-Knöpfen aus dem "
 "rechten Auswahlfenster."
 
-#: src/frontends/xforms/FormCitation.C:183
+#: src/frontends/xforms/FormCitation.C:185
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
@@ -9874,18 +9874,18 @@ msgstr ""
 "Referenz\") geladen haben.  Kopieren Sie die gewünschten Einträge mit den "
 "Pfeil-Knöpfen in das linke Auswahlfenster."
 
-#: src/frontends/xforms/FormCitation.C:188
+#: src/frontends/xforms/FormCitation.C:192
 msgid "Information about the selected entry"
 msgstr "Informationen über den ausgewählten Eintrag"
 
-#: src/frontends/xforms/FormCitation.C:193
+#: src/frontends/xforms/FormCitation.C:199
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 msgstr ""
 "Hier können Sie auswählen, wie das Zitat im Text aussehen soll (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:196
+#: src/frontends/xforms/FormCitation.C:202
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et al.\" (Natbib)."
@@ -9893,7 +9893,7 @@ msgstr ""
 "Bitte aktivieren, wenn Sie bei mehr als drei Autoren alle Namen zitieren "
 "wollen und nicht \"<Erster Autor> et al.\" (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:199
+#: src/frontends/xforms/FormCitation.C:205
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
@@ -9902,21 +9902,21 @@ msgstr ""
 "Bitte aktivieren, wenn sie den ersten Buchstaben des Namens in groß wünschen "
 "(\"Van Gogh\" statt \"van Gogh\"). Hilfreich am Satzanfang (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:202
+#: src/frontends/xforms/FormCitation.C:208
 msgid ""
 "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 msgstr "Optionaler Text, der vor dem Zitat erscheint, z.B. \"siehe <Zitat>\""
 
-#: src/frontends/xforms/FormCitation.C:205
+#: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr "Optionaler Text, der hinter dem Zitat erscheint, z.B. \"S. 12\""
 
-#: src/frontends/xforms/FormCitation.C:208
+#: src/frontends/xforms/FormCitation.C:214
 msgid "Search your database (all fields will be searched)."
 msgstr "Suche in der Datenbank (alle Felder werden durchsucht)."
 
-#: src/frontends/xforms/FormCitation.C:211
+#: src/frontends/xforms/FormCitation.C:217
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
@@ -9925,24 +9925,24 @@ msgstr ""
 "Kleinschreibung bei der Suche: \"bibtex\" findet \"bibtex\", aber nicht "
 "\"BibTeX\"."
 
-#: src/frontends/xforms/FormCitation.C:214
+#: src/frontends/xforms/FormCitation.C:220
 msgid "Activate if you want to enter Regular Expressions."
 msgstr ""
 "Aktivieren Sie diesen Schalter wenn Sie reguläre Ausdrücke verwenden wollen."
 
-#: src/frontends/xforms/FormDocument.C:59
+#: src/frontends/xforms/FormDocument.C:70
 msgid "Document Layout"
 msgstr "Dokumentformat"
 
-#: src/frontends/xforms/FormDocument.C:145
+#: src/frontends/xforms/FormDocument.C:156
 msgid " Single | OneHalf | Double | Custom "
 msgstr " Einfach | Anderthalb | Doppelt | Benutzerdefiniert "
 
-#: src/frontends/xforms/FormDocument.C:165
+#: src/frontends/xforms/FormDocument.C:176
 msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr " Klein | Mittel | Groß | Länge "
 
-#: src/frontends/xforms/FormDocument.C:229
+#: src/frontends/xforms/FormDocument.C:240
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
@@ -9950,19 +9950,19 @@ msgstr ""
 " Standard | Benutzerdefiniert | US letter | US legal | US executive | A3 | "
 "A4 | A5 | B3 | B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:232
+#: src/frontends/xforms/FormDocument.C:243
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr " Keine | Schmale Ränder | Sehr schmale Ränder | Sehr breite Ränder "
 
-#: src/frontends/xforms/FormDocument.C:282
+#: src/frontends/xforms/FormDocument.C:293
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``Text'' | ''Text'' | ,,Text`` | ,,Text'' | «Text» | »Text« "
 
-#: src/frontends/xforms/FormDocument.C:307
+#: src/frontends/xforms/FormDocument.C:318
 msgid " Author-year | Numerical "
 msgstr " Autor-Jahr | Nummerisch "
 
-#: src/frontends/xforms/FormDocument.C:333
+#: src/frontends/xforms/FormDocument.C:344
 msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger "
@@ -9970,16 +9970,17 @@ msgstr ""
 " Standard | Winzig | Kleinst | Kleiner | Klein | Normal | Groß | Größer | "
 "Größt | Riesig | Riesiger "
 
-#: src/frontends/xforms/FormDocument.C:343
+#. Stack tabs
+#: src/frontends/xforms/FormDocument.C:359
 msgid "Document"
 msgstr "Dokument"
 
-#: src/frontends/xforms/FormDocument.C:349
-#: src/frontends/xforms/FormGraphics.C:266
+#: src/frontends/xforms/FormDocument.C:365
+#: src/frontends/xforms/FormGraphics.C:276
 msgid "Extra"
 msgstr "Extra"
 
-#: src/frontends/xforms/FormDocument.C:358
+#: src/frontends/xforms/FormDocument.C:374
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
@@ -9987,7 +9988,7 @@ msgstr ""
 "Sie verwenden eine alte Version (< 4.7) der libXpm.\n"
 "Daher wurde der Dialog \"Aufzählungszeichen\" deaktiviert."
 
-#: src/frontends/xforms/FormDocument.C:1105
+#: src/frontends/xforms/FormDocument.C:1121
 msgid "Document is read-only. No changes to layout permitted."
 msgstr ""
 "Das Dokument ist schreibgeschützt. Es sind keine Formatierungsänderungen "
@@ -10056,157 +10057,157 @@ msgstr "Unterprozesse"
 msgid "All currently running child processes forked by LyX."
 msgstr "Alle derzeit laufenden, von LyX gestarteten Unterprozesse."
 
-#: src/frontends/xforms/FormForks.C:62
+#: src/frontends/xforms/FormForks.C:64
 msgid "A list of all child processes to kill."
 msgstr "Eine Liste aller zu beendenden Unterprozesse."
 
-#: src/frontends/xforms/FormForks.C:67
+#: src/frontends/xforms/FormForks.C:71
 msgid "Add all processes to the list of processes to kill."
 msgstr "Alle Prozesse zur Liste der zu beendenden Prozesse hinzufügen."
 
-#: src/frontends/xforms/FormForks.C:70
+#: src/frontends/xforms/FormForks.C:74
 msgid ""
 "Add the currently selected child process to the list of processes to kill."
 msgstr ""
 "Den ausgewählten Unterprozess zur Liste der zu beendenden Prozesse "
 "hinzufügen."
 
-#: src/frontends/xforms/FormForks.C:73
+#: src/frontends/xforms/FormForks.C:77
 msgid "Remove the currently selected item from the list of processes to kill."
 msgstr ""
 "Den ausgewählten Prozess aus Liste der zu beendenden Prozesse entfernen."
 
-#: src/frontends/xforms/FormGraphics.C:123
+#: src/frontends/xforms/FormGraphics.C:129
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
 msgstr "Standard|Monochrom|Graustufen|Farbe|Nicht anzeigen"
 
-#: src/frontends/xforms/FormGraphics.C:127
+#: src/frontends/xforms/FormGraphics.C:133
 #, c-format
 msgid "Scale%%%%|%1$s"
 msgstr "Größe%%%%|%1$s"
 
-#: src/frontends/xforms/FormGraphics.C:130
+#: src/frontends/xforms/FormGraphics.C:136
 #, no-c-format
 msgid "Scale%%|"
 msgstr "Größe%%|"
 
 #. set up the tooltips for the filesection
-#: src/frontends/xforms/FormGraphics.C:137
+#: src/frontends/xforms/FormGraphics.C:143
 msgid "The file you want to insert."
 msgstr "Das einzufügende LyX-Dokument."
 
-#: src/frontends/xforms/FormGraphics.C:139
+#: src/frontends/xforms/FormGraphics.C:145
 msgid "Browse the directories."
 msgstr "Durchsuche die Verzeichnisse."
 
-#: src/frontends/xforms/FormGraphics.C:142
+#: src/frontends/xforms/FormGraphics.C:148
 msgid "Scale the image to inserted percentage value."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:144
+#: src/frontends/xforms/FormGraphics.C:150
 msgid "Select display mode for this image."
 msgstr "Wählen Sie den Darstellungsmodus für dieses Bild."
 
-#: src/frontends/xforms/FormGraphics.C:147
+#: src/frontends/xforms/FormGraphics.C:153
 msgid "Set the image width to the inserted value."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:150
+#: src/frontends/xforms/FormGraphics.C:156
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
 msgstr ""
 "Wählen Sie eine Einheit für die Breite; Größe% skaliert das gesamte Bild."
 
-#: src/frontends/xforms/FormGraphics.C:152
+#: src/frontends/xforms/FormGraphics.C:158
 msgid "Set the image height to the inserted value."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:154
+#: src/frontends/xforms/FormGraphics.C:160
 msgid "Select unit for height."
 msgstr "Wählen Sie eine Einheit für die Höhe."
 
-#: src/frontends/xforms/FormGraphics.C:156
+#: src/frontends/xforms/FormGraphics.C:162
 msgid ""
 "Do not distort the image. Keep image within \"width\" by \"height\" and obey "
 "aspect ratio."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:160
+#: src/frontends/xforms/FormGraphics.C:166
 msgid ""
 "Pass a filename like \"file.eps.gz\" to the LaTeX output. Useful when LaTeX "
 "should unzip the file. Needs an additional file like \"file.eps.bb\" which "
 "holds the values for the bounding box."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:165
+#: src/frontends/xforms/FormGraphics.C:171
 msgid "Show image only as a rectangle of the original size."
 msgstr "Zeige das Bild nur als ein Rechteck in Originalgröße an."
 
 #. set up the tooltips for the bounding-box-section
-#: src/frontends/xforms/FormGraphics.C:198
+#: src/frontends/xforms/FormGraphics.C:204
 msgid "The lower left x-value of the bounding box."
 msgstr "Der untere, linke x-Wert der Begrenzungsbox."
 
-#: src/frontends/xforms/FormGraphics.C:200
+#: src/frontends/xforms/FormGraphics.C:206
 msgid "The lower left y-value of the bounding box."
 msgstr "Der untere, linke y-Wert der Begrenzungsbox."
 
-#: src/frontends/xforms/FormGraphics.C:202
+#: src/frontends/xforms/FormGraphics.C:208
 msgid ""
 "The upper right x-value of the bounding box; only this input field allows "
 "length + unit, e.g. 5cm and sets the unit for the other input fields."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:206
+#: src/frontends/xforms/FormGraphics.C:212
 msgid "The upper right y-value of the bounding box."
 msgstr "Der obere, rechte y-Wert der Begrenzungsbox."
 
-#: src/frontends/xforms/FormGraphics.C:208
+#: src/frontends/xforms/FormGraphics.C:214
 msgid "Select unit for the bounding box values."
 msgstr "Wählen Sie eine Einheit für die Werte der Begrenzungsbox."
 
-#: src/frontends/xforms/FormGraphics.C:211
+#: src/frontends/xforms/FormGraphics.C:217
 msgid ""
 "Read the image coordinates new from file. For (e)ps-file the bounding box is "
 "read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
 "PostScript's b(ig) p(oint)."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:216
+#: src/frontends/xforms/FormGraphics.C:222
 msgid "Clip image to the bounding box values."
 msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 
 #. set up the tooltips for the extra section
-#: src/frontends/xforms/FormGraphics.C:249
+#: src/frontends/xforms/FormGraphics.C:255
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
 "negative value clockwise."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:253
+#: src/frontends/xforms/FormGraphics.C:259
 msgid "Insert the point of origin for rotation."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:255
+#: src/frontends/xforms/FormGraphics.C:261
 msgid "Enables use of subfigure with its own caption."
 msgstr "Ermöglicht eine Teilabbildung mit eigener Beschriftung."
 
-#: src/frontends/xforms/FormGraphics.C:257
+#: src/frontends/xforms/FormGraphics.C:263
 msgid "Insert the optional subfigure caption."
 msgstr "Fügen Sie die optionale Beschriftung der Teilabbildung ein."
 
-#: src/frontends/xforms/FormGraphics.C:259
+#: src/frontends/xforms/FormGraphics.C:265
 msgid ""
 "Add any additional LaTeX option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
 msgstr ""
 
-#. add the different tabfolders
-#: src/frontends/xforms/FormGraphics.C:264
+#. Stack tabs
+#: src/frontends/xforms/FormGraphics.C:274
 msgid "File"
 msgstr "Datei"
 
-#: src/frontends/xforms/FormGraphics.C:265
+#: src/frontends/xforms/FormGraphics.C:275
 msgid "Bounding Box"
 msgstr "Begrenzungsbox"
 
@@ -10353,74 +10354,74 @@ msgstr " (Standard)"
 msgid "LaTeX preamble"
 msgstr "LaTeX-Vorspann"
 
-#: src/frontends/xforms/FormPreferences.C:186
+#: src/frontends/xforms/FormPreferences.C:213
 msgid "Look & Feel"
 msgstr "Aussehen"
 
-#: src/frontends/xforms/FormPreferences.C:189
+#: src/frontends/xforms/FormPreferences.C:216
 msgid "Lang Opts"
 msgstr "Sprach-Optionen"
 
-#: src/frontends/xforms/FormPreferences.C:192
+#: src/frontends/xforms/FormPreferences.C:219
 msgid "Conversion"
 msgstr "Konvertierung"
 
-#: src/frontends/xforms/FormPreferences.C:195
+#: src/frontends/xforms/FormPreferences.C:222
 msgid "Inputs"
 msgstr "Eingabe"
 
-#: src/frontends/xforms/FormPreferences.C:218
+#: src/frontends/xforms/FormPreferences.C:245
 msgid "Formats"
 msgstr "Formate"
 
-#: src/frontends/xforms/FormPreferences.C:513
+#: src/frontends/xforms/FormPreferences.C:540
 msgid "LyX objects that can be assigned a color."
 msgstr "LyX-Objekte, denen eine Farbe zugewiesen werden kann."
 
-#: src/frontends/xforms/FormPreferences.C:516
+#: src/frontends/xforms/FormPreferences.C:543
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Verändern der Farbe des LyX-Objekts. Hinweis: Sie müssen die Änderung mit "
 "\"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:524
+#: src/frontends/xforms/FormPreferences.C:551
 msgid "Find a new color."
 msgstr "Eine neue Farbe wählen."
 
-#: src/frontends/xforms/FormPreferences.C:527
+#: src/frontends/xforms/FormPreferences.C:554
 msgid "Toggle between RGB and HSV color spaces."
 msgstr "Wechseln zwischen RGB und HSV Darstellung."
 
-#: src/frontends/xforms/FormPreferences.C:710
+#: src/frontends/xforms/FormPreferences.C:737
 msgid "GUI background"
 msgstr "GUI (Hintergrund)"
 
-#: src/frontends/xforms/FormPreferences.C:716
+#: src/frontends/xforms/FormPreferences.C:743
 msgid "GUI text"
 msgstr "GUI (Text)"
 
-#: src/frontends/xforms/FormPreferences.C:722
+#: src/frontends/xforms/FormPreferences.C:749
 msgid "GUI selection"
 msgstr "GUI (Auswahl)"
 
-#: src/frontends/xforms/FormPreferences.C:728
+#: src/frontends/xforms/FormPreferences.C:755
 msgid "GUI pointer"
 msgstr "GUI (Zeiger)"
 
-#: src/frontends/xforms/FormPreferences.C:963
+#: src/frontends/xforms/FormPreferences.C:990
 msgid "All the currently defined converters known to LyX."
 msgstr "Alle LyX derzeit bekannten und definierten Konverter."
 
-#: src/frontends/xforms/FormPreferences.C:966
+#: src/frontends/xforms/FormPreferences.C:993
 msgid "Convert \"from\" this format"
 msgstr "\"Von\" diesem Format konvertieren"
 
-#: src/frontends/xforms/FormPreferences.C:969
+#: src/frontends/xforms/FormPreferences.C:996
 msgid "Convert \"to\" this format"
 msgstr "\"Nach\" diesem Format konvertieren"
 
-#: src/frontends/xforms/FormPreferences.C:972
+#: src/frontends/xforms/FormPreferences.C:999
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
@@ -10430,13 +10431,13 @@ msgstr ""
 "Dateiname ohne Endung und $$o ist der Name der Ausgabedatei. $$s kann als "
 "Pfad zur Sammlung der LyX-eigenen Konvertierungsskripte verwendet werden."
 
-#: src/frontends/xforms/FormPreferences.C:978
+#: src/frontends/xforms/FormPreferences.C:1005
 msgid ""
 "Extra information for the Converter class, whether and how to parse the "
 "result, and various other things."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:982
+#: src/frontends/xforms/FormPreferences.C:1009
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
@@ -10444,12 +10445,12 @@ msgstr ""
 "Den ausgewählten Konverter aus der Liste entfernen.  Hinweis: Sie müssen die "
 "Änderung mit \"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:986
-#: src/frontends/xforms/FormPreferences.C:1258
+#: src/frontends/xforms/FormPreferences.C:1013
+#: src/frontends/xforms/FormPreferences.C:1285
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/frontends/xforms/FormPreferences.C:987
+#: src/frontends/xforms/FormPreferences.C:1014
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
@@ -10457,7 +10458,7 @@ msgstr ""
 "Den ausgewählten Konverter zur Liste hinzufügen.  Hinweis: Sie müssen die "
 "Änderung mit \"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:990
+#: src/frontends/xforms/FormPreferences.C:1017
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
@@ -10465,33 +10466,33 @@ msgstr ""
 "Die Einstellungen für den ausgewählten Konverter verändern.  Hinweis: Sie "
 "müssen die Änderung mit \"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:1235
+#: src/frontends/xforms/FormPreferences.C:1262
 msgid "All the currently defined formats known to LyX."
 msgstr "Alle LyX bekannten und definierten Ausgabeformate."
 
-#: src/frontends/xforms/FormPreferences.C:1238
+#: src/frontends/xforms/FormPreferences.C:1265
 msgid "The format identifier."
 msgstr "Name des Formates."
 
-#: src/frontends/xforms/FormPreferences.C:1241
+#: src/frontends/xforms/FormPreferences.C:1268
 msgid "The format name as it will appear in the menus."
 msgstr "Name des Formates, wie es in Menüs erscheint."
 
-#: src/frontends/xforms/FormPreferences.C:1244
+#: src/frontends/xforms/FormPreferences.C:1271
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
 "Tastaturkürzel.  Verwenden Sie einen Buchstaben aus dem Menü-Namen.  Klein- "
 "und Großschreibung werden unterschieden."
 
-#: src/frontends/xforms/FormPreferences.C:1248
+#: src/frontends/xforms/FormPreferences.C:1275
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
 msgstr "Wird verwendet, um eine Datei zu erkennen, z.B. ps, pdf, tex."
 
-#: src/frontends/xforms/FormPreferences.C:1251
+#: src/frontends/xforms/FormPreferences.C:1278
 msgid "The command used to launch the viewer application."
 msgstr "Der Befehl, um die Betrachter-Anwendung zu starten."
 
-#: src/frontends/xforms/FormPreferences.C:1254
+#: src/frontends/xforms/FormPreferences.C:1281
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
@@ -10499,7 +10500,7 @@ msgstr ""
 "Das ausgewählte Format aus der Liste entfernen.  Hinweis: Sie müssen die "
 "Änderung mit \"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:1259
+#: src/frontends/xforms/FormPreferences.C:1286
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
@@ -10507,7 +10508,7 @@ msgstr ""
 "Das ausgewählte Format zur Liste hinzufügen.  Hinweis: Sie müssen die "
 "Änderung mit \"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:1262
+#: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
@@ -10515,49 +10516,49 @@ msgstr ""
 "Die Einstellungen für das ausgewählte Format verändern.  Hinweis: Sie müssen "
 "die Änderung mit \"Übernehmen\" aktivieren."
 
-#: src/frontends/xforms/FormPreferences.C:1377
+#: src/frontends/xforms/FormPreferences.C:1404
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
 "werden.  Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/xforms/FormPreferences.C:1860
+#: src/frontends/xforms/FormPreferences.C:1887
 msgid "Monochrome|Grayscale|Color|Do not display"
 msgstr "Monochrom|Graustufen|Farbe|Nicht anzeigen"
 
-#: src/frontends/xforms/FormPreferences.C:1949
+#: src/frontends/xforms/FormPreferences.C:1976
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr " Standard | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 
-#: src/frontends/xforms/FormPreferences.C:2190
+#: src/frontends/xforms/FormPreferences.C:2217
 msgid "Default path"
 msgstr "Standard-Pfad"
 
-#: src/frontends/xforms/FormPreferences.C:2195
+#: src/frontends/xforms/FormPreferences.C:2222
 msgid "Template path"
 msgstr "Pfad für Vorlagen"
 
-#: src/frontends/xforms/FormPreferences.C:2200
+#: src/frontends/xforms/FormPreferences.C:2227
 msgid "Temporary dir"
 msgstr "Temporäres Verzeichnis"
 
-#: src/frontends/xforms/FormPreferences.C:2205
+#: src/frontends/xforms/FormPreferences.C:2232
 msgid "Last files"
 msgstr "Zuletzt geöffnete Dateien"
 
-#: src/frontends/xforms/FormPreferences.C:2210
+#: src/frontends/xforms/FormPreferences.C:2237
 msgid "Backup path"
 msgstr "Pfad für Sicherungen"
 
-#: src/frontends/xforms/FormPreferences.C:2215
+#: src/frontends/xforms/FormPreferences.C:2242
 msgid "LyX server pipes"
 msgstr "LyX-Server-Pipes"
 
-#: src/frontends/xforms/FormPreferences.C:2674
+#: src/frontends/xforms/FormPreferences.C:2701
 msgid "Fonts must be positive!"
 msgstr "Schriften müssen positiv sein!"
 
-#: src/frontends/xforms/FormPreferences.C:2697
+#: src/frontends/xforms/FormPreferences.C:2724
 msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
@@ -10565,7 +10566,7 @@ msgstr ""
 "Schriften müssen in der Reihenfolge Winzig > Kleinst > Kleiner > Klein > "
 "Normal > Groß > Größer > Größt > Riesig > Riesiger eingegeben werden."
 
-#: src/frontends/xforms/FormPreferences.C:2826
+#: src/frontends/xforms/FormPreferences.C:2853
 msgid " ispell | aspell "
 msgstr " ispell | aspell "
 
@@ -10748,32 +10749,33 @@ msgid "Shows word count and progress on spell check."
 msgstr ""
 "Zeigt die Anzahl der Wörter und den Fortschritt der Rechtschreibprüfung."
 
-#: src/frontends/xforms/FormTabular.C:43
+#: src/frontends/xforms/FormTabular.C:54
 msgid "Edit table settings"
 msgstr "Tabellen-Einstellungen bearbeiten"
 
-#: src/frontends/xforms/FormTabular.C:116
+#. Stack tabs
+#: src/frontends/xforms/FormTabular.C:132
 msgid "Tabular"
 msgstr "Tabelle"
 
-#: src/frontends/xforms/FormTabular.C:118
+#: src/frontends/xforms/FormTabular.C:134
 msgid "Column/Row"
 msgstr "Zeile/Spalte"
 
-#: src/frontends/xforms/FormTabular.C:120
+#: src/frontends/xforms/FormTabular.C:136
 msgid "Cell"
 msgstr "Eintrag"
 
-#: src/frontends/xforms/FormTabular.C:122
+#: src/frontends/xforms/FormTabular.C:138
 msgid "LongTable"
 msgstr "Lange Tabelle"
 
-#: src/frontends/xforms/FormTabular.C:521
+#: src/frontends/xforms/FormTabular.C:537
 msgid "Wrong Cursor position, updated window"
 msgstr "Falsche Cursorposition, Fenster aktualisiert"
 
-#: src/frontends/xforms/FormTabular.C:542
-#: src/frontends/xforms/FormTabular.C:560
+#: src/frontends/xforms/FormTabular.C:558
+#: src/frontends/xforms/FormTabular.C:576
 msgid "Invalid Length (valid example: 10mm)"
 msgstr "Ungültige Länge (gültiges Beispiel: 10mm)"
 
@@ -10807,7 +10809,7 @@ msgstr ""
 msgid "Double click to view contents of file."
 msgstr "Doppelklicken um den Inhalt der Datei anzusehen."
 
-#: src/frontends/xforms/FormTexinfo.C:66
+#: src/frontends/xforms/FormTexinfo.C:68
 msgid ""
 "Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you "
 "install a new TeX class or style. You need write permissions for the TeX-"
