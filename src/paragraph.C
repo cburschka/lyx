@@ -1458,6 +1458,9 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 	LyXParagraph * tmp = new LyXParagraph(this);
 #endif
 
+	if (inset_owner)
+		tmp->SetInsetOwner(inset_owner);
+
 #ifndef NEW_INSETS
 	tmp->footnoteflag = footnoteflag;
 	tmp->footnotekind = footnotekind;
