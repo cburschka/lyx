@@ -1,7 +1,12 @@
 
 #include "math_parinset.h"
 #include "math_mathmlstream.h"
-#include "debug.h"
+
+
+MathParInset::MathParInset(MathArray const & ar)
+{
+	cells_[0] = ar;
+}
 
 
 void MathParInset::metrics(MathMetricsInfo & mi) const

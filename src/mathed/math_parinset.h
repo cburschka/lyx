@@ -8,6 +8,8 @@ public:
 	///
 	MathParInset() {}
 	///
+	MathParInset(MathArray const & ar);
+	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
 	void metrics(MathMetricsInfo & mi) const;

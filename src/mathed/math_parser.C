@@ -512,11 +512,11 @@ bool Parser::parse(MathAtom & at)
 	parse(ar, false, MathInset::UNDECIDED_MODE);
 	if (ar.size() != 1 || ar.front()->getType() == "none") {
 		lyxerr << "unusual contents found: " << ar << endl;
-		at = MathAtom(new MathParInset);
-		if (at->nargs() > 0)
-			at.nucleus()->cell(0) = ar;
-		else
-			lyxerr << "unusual contents found: " << ar << endl;
+		at = MathAtom(new MathParInset(ar));
+		//if (at->nargs() > 0)
+		//	at.nucleus()->cell(0) = ar;
+		//else
+		//	lyxerr << "unusual contents found: " << ar << endl;
 		return true;
 	}
 	at = ar[0];
