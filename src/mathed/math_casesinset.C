@@ -8,6 +8,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
+#include "support/LOstream.h"
 
 
 MathCasesInset::MathCasesInset(row_type n)
