@@ -21,6 +21,7 @@
 #include "FormFloat.h"
 #include "form_float.h"
 #include "support/lstrings.h"
+#include "xforms_helpers.h"
 
 typedef FormCB<ControlFloat, FormDB<FD_form_float> > base_class;
 
@@ -105,6 +106,7 @@ void FormFloat::update()
 	fl_set_button(dialog_->radio_page, page);
 	fl_set_button(dialog_->radio_here, here);
 	fl_set_button(dialog_->button_here_definitely, here_definitely);
+	setEnabled(dialog_->button_here_definitely, controller().params().allow_here_definitely);
 }
 
 

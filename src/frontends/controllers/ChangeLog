@@ -1,3 +1,8 @@
+2001-12-11  Michael A. Koziarski <michael@koziarski.org>
+
+	* ControlFloat.[Ch]: changes to prevent here definitely being used
+	with wide figures.
+
 2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ControlThesaurus.h: do not include <config.h> in header files

@@ -1,3 +1,8 @@
+2001-12-11  Michael A. Koziarski <michael@koziarski.org>
+
+	* FormFloat.C: changes to prevent here definitely being used
+	with wide figures.
+
 2001-12-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormMathsMatrix.C (AlignFilter): Allow entering the '|' char.

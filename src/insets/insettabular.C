@@ -961,14 +961,16 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		int const ocell = actcell;
 		// if we are starting a selection, only select
 		// the current cell at the beginning
-		if (hasSelection()) { 
+		if (hasSelection()) {
 			moveDown(bv, false);
+			if ((ocell == sel_cell_end) ||
+			    (tabular->column_of_cell(ocell)>tabular->column_of_cell(actcell)))
+				setSelection(start, tabular->GetCellBelow(sel_cell_end));
+			else
+				setSelection(start, tabular->GetLastCellBelow(sel_cell_end));
+		} else {
+			setSelection(start, start);
 		}
-		if ((ocell == sel_cell_end) ||
-		    (tabular->column_of_cell(ocell)>tabular->column_of_cell(actcell)))
-			setSelection(start, tabular->GetCellBelow(sel_cell_end));
-		else
-			setSelection(start, tabular->GetLastCellBelow(sel_cell_end));
 		updateLocal(bv, SELECTION, false);
 	}
 	break;
@@ -986,12 +988,14 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		// the current cell at the beginning
 		if (hasSelection()) {
 			moveUp(bv, false);
+			if ((ocell == sel_cell_end) ||
+			    (tabular->column_of_cell(ocell)>tabular->column_of_cell(actcell)))
+				setSelection(start, tabular->GetCellAbove(sel_cell_end));
+			else
+				setSelection(start, tabular->GetLastCellAbove(sel_cell_end));
+		} else {
+			setSelection(start, start);
 		}
-		if ((ocell == sel_cell_end) ||
-		    (tabular->column_of_cell(ocell)>tabular->column_of_cell(actcell)))
-			setSelection(start, tabular->GetCellAbove(sel_cell_end));
-		else
-			setSelection(start, tabular->GetLastCellAbove(sel_cell_end));
 		updateLocal(bv, SELECTION, false);
 	}
 	break;

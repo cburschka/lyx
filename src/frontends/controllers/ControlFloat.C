@@ -57,10 +57,12 @@ FloatParams const ControlFloat::getParams(InsetFloat const & inset)
 
 
 FloatParams::FloatParams()
-	: placement("htbp")
+	: placement("htbp"),
+	  allow_here_definitely(true)
 {}
 
 
 FloatParams::FloatParams(InsetFloat const & inset)
-	: placement(inset.placement())
+	: placement(inset.placement()), 
+	  allow_here_definitely(!inset.wide())
 {}
