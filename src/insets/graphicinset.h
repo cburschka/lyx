@@ -43,8 +43,6 @@ public:
 	
 	/// Refresh the info about which file to display and how to display it.
 	void update(grfx::Params const & params);
-	/// File name, image size, rotation angle etc.
-	grfx::Params const & params() const;
 
 	/// compute the size of the object returned in dim
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -64,10 +62,13 @@ public:
 	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection connect(slot_type const &) const;
 
+private:
+	/// Not implemented.
+	GraphicInset & operator=(GraphicInset const &);
+
 	/// The message to display instead of the graphic itself.
 	string const statusMessage() const;
 
-private:
 	enum DisplayType {
 		IMAGE,
 		STATUS_MESSAGE,

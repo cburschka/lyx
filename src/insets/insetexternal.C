@@ -64,9 +64,9 @@ InsetExternal::Params::Params()
 
 
 InsetExternal::InsetExternal()
-	: graphic_(new GraphicInset)
+	: renderer_(new GraphicInset)
 {
-	graphic_->connect(boost::bind(&InsetExternal::statusChanged, this));
+	renderer_->connect(boost::bind(&InsetExternal::statusChanged, this));
 	params_.templ = ExternalTemplateManager::get().getTemplates().begin()->second;
 }
 
@@ -75,9 +75,9 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 	: Inset(other),
 	  boost::signals::trackable(),
 	  params_(other.params_),
-	  graphic_(new GraphicInset(*other.graphic_))
+	  renderer_(new GraphicInset(*other.renderer_))
 {
-	graphic_->connect(boost::bind(&InsetExternal::statusChanged, this));
+	renderer_->connect(boost::bind(&InsetExternal::statusChanged, this));
 }
 
 
@@ -98,7 +98,7 @@ InsetExternal::~InsetExternal()
 
 void InsetExternal::statusChanged()
 {
-	BufferView * bv = graphic_->view();
+	BufferView * bv = renderer_->view();
 	if (bv)
 		bv->updateInset(this);
 }
@@ -139,19 +139,19 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 
 void InsetExternal::cache(BufferView * bv) const
 {
-	graphic_->view(bv);
+	renderer_->view(bv);
 }
 
 
 void InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	graphic_->metrics(mi, dim);
+	renderer_->metrics(mi, dim);
 }
 
 
 void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 {
-	graphic_->draw(pi, x, y);
+	renderer_->draw(pi, x, y);
 }
 
 
@@ -192,9 +192,9 @@ void InsetExternal::setParams(Params const & p, string const & filepath)
 
 	// Update the display using the new parameters.
 	if (params_.filename.empty() || !filepath.empty())
-		graphic_->update(get_grfx_params(params_, filepath));	
+		renderer_->update(get_grfx_params(params_, filepath));	
 	string const msg = doSubstitution(0, params_.templ.guiName);
-	graphic_->setNoDisplayMessage(msg);
+	renderer_->setNoDisplayMessage(msg);
 }
 
 
@@ -310,9 +310,9 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 
 	// Update the display using the new parameters.
 	if (buffer)
-		graphic_->update(get_grfx_params(params_, buffer->filePath()));
+		renderer_->update(get_grfx_params(params_, buffer->filePath()));
 	string const msg = doSubstitution(0, params_.templ.guiName);
-	graphic_->setNoDisplayMessage(msg);
+	renderer_->setNoDisplayMessage(msg);
 }
 
 
@@ -523,7 +523,7 @@ void InsetExternal::editExternal() const
 	if (et.editCommand.empty())
 		return;
 
-	BufferView const * bv = graphic_->view();
+	BufferView const * bv = renderer_->view();
 	Buffer const * buffer = bv ? bv->buffer() : 0;
 	if (!buffer)
 		return;

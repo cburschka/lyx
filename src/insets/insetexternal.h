@@ -127,7 +127,7 @@ private:
 	mutable string tempname_;
 
 	/// The thing that actually draws the image on LyX's screen.
-	boost::scoped_ptr<GraphicInset> const graphic_;
+	boost::scoped_ptr<GraphicInset> const renderer_;
 };
 
 

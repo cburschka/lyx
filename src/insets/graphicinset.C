@@ -50,12 +50,6 @@ void GraphicInset::update(grfx::Params const & params)
 }
 
 
-grfx::Params const & GraphicInset::params() const
-{
-	return params_;
-}
-
-
 bool GraphicInset::hasFileChanged() const
 {
 	unsigned long const new_checksum = loader_.checksum();

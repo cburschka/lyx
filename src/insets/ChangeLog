@@ -1,3 +1,11 @@
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* graphicinset.[Ch] (params): removed.
+	* graphicinset.h (operator=): declared private but not defined.
+	(statusMessage): made private.
+
+	* insetexternal.[Ch]: graphic_ renamed as renderer_.
+
 2003-06-07  John Levon  <levon@movementarian.org>
 
 	* insetert.C (latex): make a newline mean just that not
