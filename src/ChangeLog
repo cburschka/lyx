@@ -1,3 +1,7 @@
+2004-11-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lengthcommon.C (unitFromString): fix off-by-one error (bug 1682)
+
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): remove the verbose argument
