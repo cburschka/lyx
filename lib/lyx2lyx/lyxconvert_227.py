@@ -33,18 +33,21 @@ def convert_collapsable(lines):
         if i == -1:
             break
 
-        if lines[i][:16] == "\\begin_inset Box":
-            # Skip box parameters
-            i = i + 10
-        else:
-            # We are interested in the next line
+        # Seach for a line starting 'collapsed'
+        # If, however, we find a line starting '\layout' (_always_ present)
+        # then break with a warning message
+        i = i + 1
+        while 1:
+            if (lines[i] == "collapsed false"):
+                lines[i] = "status open"
+                break
+            elif (lines[i] == "collapsed true"):
+                lines[i] = "status collapsed"
+                break
+            elif (lines[i][:7] == "\\layout"):
+                sys.stderr.write("Malformed lyx file\n")
+                break
             i = i + 1
-        if (lines[i] == "collapsed false"):
-            lines[i] = "status open"
-        elif (lines[i] == "collapsed true"):
-            lines[i] = "status collapsed"
-        else:
-            sys.stderr.write("Malformed lyx file\n")
 
         i = i + 1
 

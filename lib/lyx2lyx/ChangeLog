@@ -1,3 +1,9 @@
+2003-12-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyxconvert_227.py (convert_collapsable): 
+	* lyxrevert_228.py (convert_collapsable): a more robust method of
+	finding the collapsed status.
+
 2003-12-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxrevert_228.py: fix box status conversion
