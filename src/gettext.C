@@ -3,6 +3,7 @@
 #include "LString.h"
 #include "gettext.h"
 
+#ifdef ENABLE_NLS
 
 char const * _(char const * str)
 {
@@ -20,3 +21,5 @@ string const _(string const & str)
 	delete [] tmp;
 	return ret;
 }
+
+#endif
