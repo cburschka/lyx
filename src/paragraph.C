@@ -690,6 +690,8 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 
 bool LyXParagraph::InsertInsetAllowed(Inset * inset)
 {
+	lyxerr << "LyXParagraph::InsertInsetAllowed" << endl;
+	
 	if (inset_owner)
 		return inset_owner->InsertInsetAllowed(inset);
 	return true;
@@ -3330,8 +3332,13 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 					//... but we should avoid ligatures
 					if ((c == '>' || c == '<')
 					    && i <= size() - 2
-					    && GetChar(i + 1) == c){
-						os << "\\textcompwordmark{}";
+					    && GetChar(i + 1) == c) {
+						//os << "\\textcompwordmark{}";
+						// Jean-Marc, have a look at
+						// this. I think this works
+						// equally well:
+						os << "\\,{}";
+						// Lgb
 						column += 19;
 					}
 					break;

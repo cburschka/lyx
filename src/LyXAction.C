@@ -399,6 +399,7 @@ void LyXAction::init()
 		{ LFUN_INSET_MINIPAGE, "minipage-inset-insert", "", Noop },
 		{ LFUN_INSET_FLOAT, "float-inset-insert", "", Noop },
 		{ LFUN_INSET_LIST, "list-inset-insert", "", Noop },
+		{ LFUN_INSET_THEOREM, "theorem-inset-insert", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

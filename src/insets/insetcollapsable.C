@@ -22,6 +22,7 @@
 #include "insets/insettext.h"
 #include "support/LOstream.h"
 #include "support/lstrings.h"
+#include "debug.h"
 
 class LyXText;
 
@@ -53,6 +54,18 @@ Inset * InsetCollapsable::Clone() const
 
     result->collapsed = collapsed;
     return result;
+}
+
+
+bool InsetCollapsable::InsertInset(BufferView * bv, Inset * in)
+{
+    if (!InsertInsetAllowed(in)) {
+	lyxerr << "InsetCollapsable::InsertInset: "
+		"Unable to insert inset." << endl;
+	return false;
+    }
+    
+    return inset->InsertInset(bv, in);
 }
 
 
@@ -377,7 +390,7 @@ void InsetCollapsable::ToggleInsetCursor(BufferView * bv)
 
 UpdatableInset * InsetCollapsable::GetLockingInset()
 {
-    UpdatableInset *in = inset->GetLockingInset();
+    UpdatableInset * in = inset->GetLockingInset();
     if (inset == in)
 	return this;
     return in;
@@ -392,7 +405,8 @@ UpdatableInset * InsetCollapsable::GetFirstLockingInsetOfType(Inset::Code c)
 }
 
 
-void InsetCollapsable::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
+void InsetCollapsable::SetFont(BufferView * bv,
+			       LyXFont const & font, bool toggleall)
 {
     inset->SetFont(bv, font, toggleall);
 }
@@ -413,4 +427,3 @@ void InsetCollapsable::deleteLyXText(BufferView * bv)
 {
     inset->deleteLyXText(bv);
 }
-

@@ -55,9 +55,9 @@ public:
 	ALWAYS
     };
     ///
-    explicit
     InsetText();
     ///
+    explicit
     InsetText(InsetText const &);
     ///
     ~InsetText();

@@ -20,8 +20,6 @@
 
 #include "insetcollapsable.h"
 
-class Painter;
-
 /** A colapsable text inset
   
   To write full ert (including styles and other insets) in a given
@@ -32,20 +30,17 @@ public:
 	///
 	InsetERT();
 	///
-	~InsetERT() {}
-	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	Inset * Clone() const;
 	///
 	char const * EditMessage() const;
 	///
-	bool InsertInset(BufferView *, Inset *);
+	bool InsertInset(BufferView *, Inset *) { return false; }
 	///
 	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
 	///
 	void Edit(BufferView *, int, int, unsigned int);
-	///
 };
 
 #endif

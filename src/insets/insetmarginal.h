@@ -16,22 +16,15 @@
 #pragma interface
 #endif
 
-#include "insetcollapsable.h"
-
-class Painter;
+#include "insetfootlike.h"
 
 /** The marginal note inset
   
 */
-class InsetMarginal : public InsetCollapsable {
+class InsetMarginal : public InsetFootlike {
 public:
 	///
-	explicit
 	InsetMarginal();
-	///
-	~InsetMarginal() {}
-	///
-	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	Inset * Clone() const;
 	///
@@ -41,11 +34,9 @@ public:
 	///
 	const char * EditMessage() const;
 	///
-	bool InsertInset(BufferView *, Inset * inset);
-	///
 	bool InsertInsetAllowed(Inset * inset) const;
 	///
-//	LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
+	//LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif

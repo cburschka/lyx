@@ -100,7 +100,9 @@ public:
 		///
 		TABULAR_CODE,
 		///
-		EXTERNAL_CODE
+		EXTERNAL_CODE,
+		///
+		THEOREM_CODE
 	};
 
 	///
@@ -275,8 +277,6 @@ public:
 
 	///
 	UpdatableInset() { scx = mx_scx = 0; }
-	///
-	//virtual ~UpdatableInset() {}
 	///
 	virtual EDITABLE Editable() const;
    

@@ -9,8 +9,8 @@
  * ======================================================
  */
 
-#ifndef InsetList_H
-#define InsetList_H
+#ifndef InsetTheorem_H
+#define InsetTheorem_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -18,21 +18,21 @@
 
 #include "insetcollapsable.h"
 
-class Painter;
-
 /** The footnote inset
   
 */
-class InsetList : public InsetCollapsable {
+class InsetTheorem : public InsetCollapsable {
 public:
 	///
-	InsetList();
+	InsetTheorem();
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	Inset * Clone() const;
 	///
-	Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
+	Inset::Code LyxCode() const { return Inset::THEOREM_CODE; }
+	///
+	bool display() const { return true; }
 	///
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
@@ -40,7 +40,7 @@ public:
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
 	///
-//	LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
+	//LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif

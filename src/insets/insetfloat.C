@@ -80,16 +80,16 @@ using std::endl;
 
 InsetFloat::InsetFloat() : InsetCollapsable()
 {
-    setLabel(_("float"));
-    LyXFont font(LyXFont::ALL_SANE);
-    font.decSize();
-    font.decSize();
-    font.setColor(LColor::footnote);
-    setLabelFont(font);
-    setAutoCollapse(false);
-    setInsetName("Float");
-    floatType = "table";
-    floatPlacement = "H";
+	setLabel(_("float"));
+	LyXFont font(LyXFont::ALL_SANE);
+	font.decSize();
+	font.decSize();
+	font.setColor(LColor::footnote);
+	setLabelFont(font);
+	setAutoCollapse(false);
+	setInsetName("Float");
+	floatType = "table";
+	floatPlacement = "H";
 }
 
 
@@ -130,17 +130,17 @@ void InsetFloat::Validate(LaTeXFeatures & features) const
 
 Inset * InsetFloat::Clone() const
 {
-    InsetFloat * result = new InsetFloat;
-    result->inset->init(inset);
+	InsetFloat * result = new InsetFloat;
+	result->inset->init(inset);
 
-    result->collapsed = collapsed;
-    return result;
+	result->collapsed = collapsed;
+	return result;
 }
 
 
 char const * InsetFloat::EditMessage() const
 {
-    return _("Opened Float Inset");
+	return _("Opened Float Inset");
 }
 
 
@@ -153,40 +153,33 @@ int InsetFloat::Latex(Buffer const * buf,
 		os << "[" << floatPlacement << "]";
 	os << "%\n";
     
-    int i = inset->Latex(buf, os, fragile, fp);
-    os << "\\end{" << floatType << "}%\n";
-    
-    return i + 2;
-}
-
-
-bool InsetFloat::InsertInset(BufferView * bv, Inset * in)
-{
-    if (!InsertInsetAllowed(in))
-	return false;
-
-    return inset->InsertInset(bv, in);
+	int i = inset->Latex(buf, os, fragile, fp);
+	os << "\\end{" << floatType << "}%\n";
+	
+	return i + 2;
 }
 
 
 bool InsetFloat::InsertInsetAllowed(Inset * in) const
 {
-    if ((in->LyxCode() == Inset::FOOT_CODE) ||
-	(in->LyxCode() == Inset::MARGIN_CODE)) {
-	return false;
-    }
-    return true;
+	if ((in->LyxCode() == Inset::FOOT_CODE) ||
+	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+		return false;
+	}
+	return true;
 }
+
 
 #if 0
 LyXFont InsetFloat::GetDrawFont(BufferView * bv,
 				LyXParagraph * p, int pos) const
 {
-    LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
-    fn.decSize().decSize();
-    return fn;
+	LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
+	fn.decSize().decSize();
+	return fn;
 }
 #endif
+
 
 void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 {
@@ -202,3 +195,4 @@ void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 		InsetCollapsable::InsetButtonRelease(bv, x, y, button);
 	}
 }
+

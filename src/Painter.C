@@ -41,9 +41,6 @@ Painter::Painter(WorkArea & wa)
 }
 
 
-Painter::~Painter() {}
-
-
 /* Basic drawing routines */
 
 extern bool Lgb_bug_find_hack;

@@ -61,6 +61,7 @@ using std::istringstream;
 #include "insets/insetfloat.h"
 #include "insets/insetlist.h"
 #include "insets/insettabular.h"
+#include "insets/insettheorem.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
@@ -2077,7 +2078,17 @@ string LyXFunc::Dispatch(int ac,
 			delete new_inset;
 	}
 	break;
-	
+
+	case LFUN_INSET_THEOREM:
+	{
+		InsetTheorem * new_inset = new InsetTheorem;
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
+	}
+	break;
+
 	case LFUN_INSET_TABULAR:
 	{
 		int r = 2, c = 2;

@@ -37,6 +37,8 @@ libinsets_la_SOURCES = \
 	insetfloat.C \
 	insetfoot.C \
 	insetfoot.h \
+	insetfootlike.C \
+	insetfootlike.h \
 	insetgraphics.C \
 	insetgraphics.h \
 	insetinclude.C \
@@ -71,6 +73,8 @@ libinsets_la_SOURCES = \
 	insetspecialchar.h \
 	insettabular.C \
 	insettabular.h \
+	insettheorem.C \
+	insettheorem.h \
 	insettext.C \
 	insettext.h \
 	insettoc.C \

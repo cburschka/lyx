@@ -28,11 +28,8 @@
 class MathRootInset: public MathSqrtInset {
  public:
     ///
-	explicit
+    explicit
     MathRootInset(short st = LM_ST_TEXT);
-    ///
-	// explicit
-    //    MathRootInset(MathSqrtInset &);
     ///
     ~MathRootInset();
     ///

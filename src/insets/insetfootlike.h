@@ -11,37 +11,31 @@
 // The pristine updatable inset: Text
 
 
-#ifndef INSETFOOT_H
-#define INSETFOOT_H
+#ifndef InsetFootlike_H
+#define InsetFootlike_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "insetfootlike.h"
+#include "insetcollapsable.h"
 
 /** The footnote inset
   
 */
-class InsetFoot : public InsetFootlike {
+class InsetFootlike : public InsetCollapsable {
 public:
 	///
-	InsetFoot();
+	InsetFootlike();
 	///
-	Inset * Clone() const;
-	///
-	Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
-	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
-	///
-	const char * EditMessage() const;
-	///
-	bool InsertInsetAllowed(Inset * inset) const;
+	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	//LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif
+
+
 
 
 

@@ -347,7 +347,7 @@ void LyXRC::setDefaults() {
 	override_x_deadkeys = true;
 	autosave = 300;
 	auto_region_delete = true;
-	ascii_linelen = 75;
+	ascii_linelen = 65;
 	num_lastfiles = 4;
 	check_lastfiles = true;
 	make_backup = true;

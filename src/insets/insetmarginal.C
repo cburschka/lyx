@@ -18,32 +18,20 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
-#include "Painter.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
+#include "debug.h"
 
 using std::ostream;
 using std::endl;
 
+
 InsetMarginal::InsetMarginal()
-	: InsetCollapsable()
+	: InsetFootlike()
 {
-    setLabel(_("margin"));
-    LyXFont font(LyXFont::ALL_SANE);
-    font.decSize();
-    font.decSize();
-    font.setColor(LColor::footnote);
-    setLabelFont(font);
-    setAutoCollapse(false);
-    setInsetName("Marginal");
-}
-
-
-void InsetMarginal::Write(Buffer const * buf, ostream & os) const
-{
-    os << getInsetName() << "\n";
-    InsetCollapsable::Write(buf, os);
+	setLabel(_("margin"));
+	setInsetName("Marginal");
 }
 
 
@@ -59,7 +47,7 @@ Inset * InsetMarginal::Clone() const
 
 char const * InsetMarginal::EditMessage() const
 {
-    return _("Opened Marginal Note Inset");
+	return _("Opened Marginal Note Inset");
 }
 
 
@@ -75,15 +63,6 @@ int InsetMarginal::Latex(Buffer const * buf,
 }
 
 
-bool InsetMarginal::InsertInset(BufferView * bv, Inset * in)
-{
-    if (!InsertInsetAllowed(in))
-	return false;
-
-    return inset->InsertInset(bv, in);
-}
-
-
 bool InsetMarginal::InsertInsetAllowed(Inset * in) const
 {
     if ((in->LyxCode() == Inset::FOOT_CODE) ||
@@ -92,6 +71,7 @@ bool InsetMarginal::InsertInsetAllowed(Inset * in) const
     }
     return true;
 }
+
 
 #if 0
 LyXFont InsetMarginal::GetDrawFont(BufferView * bv,

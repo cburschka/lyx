@@ -222,7 +222,7 @@ class MathedInset  {
     /// A math inset has a name (usually its LaTeX name), type and font-size
     MathedInset(char const * nm, short ot, short st);
     ///
-	explicit
+    explicit
     MathedInset(MathedInset *);
     ///
     virtual ~MathedInset() {}
@@ -318,7 +318,7 @@ class MathParInset: public MathedInset  {
     MathParInset(short st = LM_ST_TEXT, char const * nm = 0,
 		 short ot = LM_OT_MIN);
     ///
-	explicit
+    explicit
     MathParInset(MathParInset *);
     ///
     virtual ~MathParInset();
@@ -417,7 +417,7 @@ class MathParInset: public MathedInset  {
  */
 struct MathedRowSt {    
     ///
-	explicit
+    explicit
     MathedRowSt(int n) {
 	    w = new int[n + 1]; // this leaks
 	    asc = desc = y = 0;
@@ -476,10 +476,10 @@ struct MathedRowSt {
 class MathMatrixInset: public MathParInset {
  public: 
     ///
-	explicit
+    explicit
     MathMatrixInset(int m = 1, int n = 1, short st = LM_ST_TEXT);
     ///
-	explicit
+    explicit
     MathMatrixInset(MathMatrixInset *);
     ///
     MathedInset * Clone();

@@ -71,6 +71,7 @@
 #include "insets/insetfloat.h"
 #include "insets/insetlist.h"
 #include "insets/insettabular.h"
+#include "insets/insettheorem.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "LaTeX.h"
@@ -871,6 +872,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			inset->Read(this, lex);
 			par->InsertInset(pos, inset, font);
 			++pos;
+		} else if (tmptok == "Theorem") {
+			Inset * inset = new InsetList;
+			inset->Read(this, lex);
+			par->InsertInset(pos, inset, font);
+			++pos;
 		} else if (tmptok == "GRAPHICS") {
 			Inset * inset = new InsetGraphics;
 				//inset->Read(this, lex);
@@ -1613,7 +1619,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		string options; // the document class options.
 		
-		if (tokenPos(tclass.opt_fontsize(), '|', params.fontsize) >= 0) {
+		if (tokenPos(tclass.opt_fontsize(),
+			     '|', params.fontsize) >= 0) {
 			// only write if existing in list (and not default)
 			options += params.fontsize;
 			options += "pt,";
@@ -1825,7 +1832,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 
-		if (tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle) >= 0) {
+		if (tokenPos(tclass.opt_pagestyle(),
+			     '|', params.pagestyle) >= 0) {
 			if (params.pagestyle == "fancy") {
 				ofs << "\\usepackage{fancyhdr}\n";
 				texrow.newline();
@@ -1881,16 +1889,15 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 
 		// Now insert the LyX specific LaTeX commands...
-		string preamble, tmppreamble;
 
 		// The optional packages;
-		preamble = features.getPackages();
+		string preamble(features.getPackages());
 
 		// this might be useful...
-		preamble += "\n\\makeatletter\n\n";
+		preamble += "\n\\makeatletter\n";
 
 		// Some macros LyX will need
-		tmppreamble = features.getMacros();
+		string tmppreamble(features.getMacros());
 
 		if (!tmppreamble.empty()) {
 			preamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
@@ -1913,7 +1920,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 				+ params.preamble + '\n';
 		}
 
-		preamble += "\\makeatother\n\n";
+		preamble += "\\makeatother\n";
 
 		// Itemize bullet settings need to be last in case the user
 		// defines their own bullets that use a package included
@@ -1957,8 +1964,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		ofs << preamble;
 
 		// make the body.
-		ofs << "\\begin{document}\n\n";
-		texrow.newline();
+		ofs << "\\begin{document}\n";
 		texrow.newline();
 	} // only_body
 	lyxerr.debug() << "preamble finished, now the body." << endl;
@@ -2009,11 +2015,12 @@ void Buffer::makeLaTeXFile(string const & fname,
 	lyxerr.debug() << "Finished making latex file." << endl;
 }
 
+
 //
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
 //
-void Buffer::latexParagraphs(ostream & ofs, LyXParagraph *par,
-			     LyXParagraph *endpar, TexRow & texrow) const
+void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
+			     LyXParagraph * endpar, TexRow & texrow) const
 {
 	bool was_title = false;
 	bool already_title = false;
@@ -2104,6 +2111,7 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph *par,
 	}
 }
 
+
 bool Buffer::isLatex() const
 {
 	return textclasslist.TextClass(params.textclass).outputType() == LATEX;
@@ -2174,10 +2182,10 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	LaTeXFeatures features(params, tclass.numLayouts());
 	validate(features);
 
-	if(nice)
-		tex_code_break_column = lyxrc.ascii_linelen;
-	else
-		tex_code_break_column = 0;
+	//if(nice)
+	tex_code_break_column = lyxrc.ascii_linelen;
+	//else
+	//tex_code_break_column = 0;
 
 	texrow.reset();
 
@@ -2186,8 +2194,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		if (params.preamble.empty() && sgml_includedfiles.empty()) {
 			ofs << "<!doctype linuxdoc system>\n\n";
-		}
-		else {
+		} else {
 			ofs << "<!doctype linuxdoc system [ "
 			    << params.preamble << sgml_includedfiles << " \n]>\n\n";
 		}
@@ -2590,31 +2597,29 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 			case 0:
 			       	if (font2.family() == LyXFont::TYPEWRITER_FAMILY) {
 			        	push_tag(os, "tt", stack_num, stack);
-					family_type= 1;
+					family_type = 1;
 				}
 				else if (font2.family() == LyXFont::SANS_FAMILY) {
 				        push_tag(os, "sf", stack_num, stack);
-					family_type= 2;
+					family_type = 2;
 				}
 				break;
 			case 1:
 				pop_tag(os, "tt", stack_num, stack);
 				if (font2.family() == LyXFont::SANS_FAMILY) {
 			        	push_tag(os, "sf", stack_num, stack);
-					family_type= 2;
-				}
-				else {
-					family_type= 0;
+					family_type = 2;
+				} else {
+					family_type = 0;
 				}
 				break;
 			case 2:
 				pop_tag(os, "sf", stack_num, stack);
 				if (font2.family() == LyXFont::TYPEWRITER_FAMILY) {
 			        	push_tag(os, "tt", stack_num, stack);
-					family_type= 1;
-				}
-				else {
-					family_type= 0;
+					family_type = 1;
+				} else {
+					family_type = 0;
 				}
 			}
 		}
@@ -2624,8 +2629,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		        if (font2.series() == LyXFont::BOLD_SERIES) {
 			        push_tag(os, "bf", stack_num, stack);
 				is_bold = true;
-			}
-			else if (is_bold) {
+			} else if (is_bold) {
 			        pop_tag(os, "bf", stack_num, stack);
 				is_bold = false;
 			}
@@ -2637,31 +2641,28 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 			case 0:
 			       	if (font2.shape() == LyXFont::ITALIC_SHAPE) {
 			        	push_tag(os, "it", stack_num, stack);
-					shape_type= 1;
-				}
-				else if (font2.shape() == LyXFont::SLANTED_SHAPE) {
+					shape_type = 1;
+				} else if (font2.shape() == LyXFont::SLANTED_SHAPE) {
 				        push_tag(os, "sl", stack_num, stack);
-					shape_type= 2;
+					shape_type = 2;
 				}
 				break;
 			case 1:
 				pop_tag(os, "it", stack_num, stack);
 				if (font2.shape() == LyXFont::SLANTED_SHAPE) {
 			        	push_tag(os, "sl", stack_num, stack);
-					shape_type= 2;
-				}
-				else {
-					shape_type= 0;
+					shape_type = 2;
+				} else {
+					shape_type = 0;
 				}
 				break;
 			case 2:
 				pop_tag(os, "sl", stack_num, stack);
 				if (font2.shape() == LyXFont::ITALIC_SHAPE) {
 			        	push_tag(os, "it", stack_num, stack);
-					shape_type= 1;
-				}
-				else {
-					shape_type= 0;
+					shape_type = 1;
+				} else {
+					shape_type = 0;
 				}
 			}
 		}
@@ -2700,13 +2701,11 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 					linux_doc_line_break(os, char_line_count, 6);
 					os << "</tag>";
 					desc_on = 2;
-				}
-				else  {
+				} else  {
 					linux_doc_line_break(os, char_line_count, 1);
 					os << c;
 				}
-			}
-			else {
+			} else {
 				os << sgml_string;
 				char_line_count += sgml_string.length();
 			}
@@ -2783,10 +2782,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	LaTeXFeatures features(params, tclass.numLayouts());
 	validate(features);
 
-	if(nice)
-		tex_code_break_column = lyxrc.ascii_linelen;
-	else
-		tex_code_break_column = 0;
+	//if(nice)
+	tex_code_break_column = lyxrc.ascii_linelen;
+	//else
+	//tex_code_break_column = 0;
 
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
@@ -2891,19 +2890,16 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 						if(!command_stack[j].empty())
 							sgmlCloseTag(ofs, j, command_stack[j]);
 					command_depth= command_base= cmd_depth;
-				}
-				else if(cmd_depth <= command_depth) {
+				} else if(cmd_depth <= command_depth) {
 					for(int j = command_depth;
 					    j >= cmd_depth; --j)
 
 						if(!command_stack[j].empty())
 							sgmlCloseTag(ofs, j, command_stack[j]);
 					command_depth= cmd_depth;
-				}
-				else
+				} else
 					command_depth= cmd_depth;
-			}
-			else {
+			} else {
 				command_depth = command_base = cmd_depth;
 				command_flag = true;
 			}
@@ -2973,8 +2969,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				item_name= "term";
 				sgmlOpenTag(ofs, depth + 1 + command_depth,
 					    item_name);
-			}
-			else {
+			} else {
 				item_name= "para";
 				sgmlOpenTag(ofs, depth + 1 + command_depth,
 					    item_name);

@@ -26,10 +26,7 @@ class Painter;
 class InsetMinipage : public InsetCollapsable {
 public:
 	///
-	explicit
 	InsetMinipage();
-	///
-	~InsetMinipage() {}
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -40,8 +37,6 @@ public:
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
 	const char * EditMessage() const;
-	///
-	bool InsertInset(BufferView *, Inset * inset);
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
 	///

@@ -200,6 +200,8 @@ public:
 		len (l),
 	        kp (false) {}
 
+	///
+	explicit
 	VSpace(float v, LyXLength::UNIT u) : 
 		kin (LENGTH), 
 		len (v, u),

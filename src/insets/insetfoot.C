@@ -18,31 +18,19 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
-#include "Painter.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
+#include "debug.h"
 
 using std::ostream;
 using std::endl;
 
-InsetFoot::InsetFoot() : InsetCollapsable()
+
+InsetFoot::InsetFoot() : InsetFootlike()
 {
     setLabel(_("foot"));
-    LyXFont font(LyXFont::ALL_SANE);
-    font.decSize();
-    font.decSize();
-    font.setColor(LColor::footnote);
-    setLabelFont(font);
-    setAutoCollapse(false);
     setInsetName("Foot");
-}
-
-
-void InsetFoot::Write(Buffer const * buf, ostream & os) const 
-{
-    os << getInsetName() << "\n";
-    InsetCollapsable::Write(buf, os);
 }
 
 
@@ -74,15 +62,6 @@ int InsetFoot::Latex(Buffer const * buf,
 }
 
 
-bool InsetFoot::InsertInset(BufferView * bv, Inset * in)
-{
-    if (!InsertInsetAllowed(in))
-	return false;
-
-    return inset->InsertInset(bv, in);
-}
-
-
 bool InsetFoot::InsertInsetAllowed(Inset * in) const
 {
     if ((in->LyxCode() == Inset::FOOT_CODE) ||
@@ -91,6 +70,7 @@ bool InsetFoot::InsertInsetAllowed(Inset * in) const
     }
     return true;
 }
+
 
 #if 0
 LyXFont InsetFoot::GetDrawFont(BufferView * bv,

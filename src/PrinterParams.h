@@ -108,8 +108,6 @@ struct PrinterParams {
 		{
 			testInvariant();
 		}
-	///
-	~PrinterParams() {}
 	//@}
 
 

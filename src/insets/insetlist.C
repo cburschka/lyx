@@ -21,6 +21,7 @@
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
+#include "debug.h"
 
 using std::ostream;
 using std::endl;
@@ -85,15 +86,6 @@ int InsetList::Latex(Buffer const * buf,
 }
 
 
-bool InsetList::InsertInset(BufferView * bv, Inset * in)
-{
-	if (!InsertInsetAllowed(in))
-		return false;
-	
-	return inset->InsertInset(bv, in);
-}
-
-
 bool InsetList::InsertInsetAllowed(Inset * in) const
 {
 	if ((in->LyxCode() == Inset::FOOT_CODE) ||
@@ -102,6 +94,7 @@ bool InsetList::InsertInsetAllowed(Inset * in) const
 	}
 	return true;
 }
+
 
 #if 0
 LyXFont InsetList::GetDrawFont(BufferView * bv,LyXParagraph * p, int pos) const

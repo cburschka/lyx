@@ -36,9 +36,6 @@ public:
 	/// Constructor 
 	explicit Painter(WorkArea &);
 	
-	/// Destructor
-	~Painter();
-	
 	/**@Basic drawing routines */
 	/// Draw a line from point to point
 	PainterBase & line(int x1, int y1, int x2, int y2, 

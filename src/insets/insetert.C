@@ -16,7 +16,6 @@
 #include "insetert.h"
 #include "gettext.h"
 #include "lyxfont.h"
-#include "Painter.h"
 #include "buffer.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
@@ -40,8 +39,8 @@ InsetERT::InsetERT() : InsetCollapsable()
 
 void InsetERT::Write(Buffer const * buf, ostream & os) const 
 {
-	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+    os << getInsetName() << "\n";
+    InsetCollapsable::Write(buf, os);
 }
 
 
@@ -57,13 +56,7 @@ Inset * InsetERT::Clone() const
 
 char const * InsetERT::EditMessage() const 
 {
-	return _("Opened ERT Inset");
-}
-
-
-bool InsetERT::InsertInset(BufferView *, Inset *)
-{
-    return false;
+    return _("Opened ERT Inset");
 }
 
 
@@ -73,6 +66,7 @@ void InsetERT::SetFont(BufferView *, LyXFont const &, bool)
 	       _("Not permitted to change font-types inside ERT-insets!"),
 	       _("Sorry."));
 }
+
 
 void InsetERT::Edit(BufferView * bv, int x, int y, unsigned int button)
 {

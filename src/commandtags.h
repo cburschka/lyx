@@ -259,6 +259,7 @@ enum kb_action {
 	LFUN_INSET_MINIPAGE,            // Lgb 20000627
 	LFUN_INSET_FLOAT,               // Lgb 20000627
 	LFUN_INSET_LIST,                // Lgb 20000627
+	LFUN_INSET_THEOREM,             // Lgb 20000630
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

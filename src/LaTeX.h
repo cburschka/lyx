@@ -63,42 +63,6 @@ private:
 ///
 class LaTeX {
 public:
-	/** All the different files produced by TeX.
-	    
-	    This is the files mentioned on page 208-9 in Lamports book +
-	    .ltx and .tex files.
-	*/
-	enum TEX_FILES {
-		///
-		NO_FILES = 0,
-		/// used for table of contents et.al.
-		AUX = 1,
-		/// written by BibTeX
-		BBL = 2,
-		/// LaTeX's output
-		DVI = 4,
-		/// glossary (not supported by LyX so far)
-		GLO = 8,
-		///index
-		IDX = 16,
-		/// written by makeindex
-		IND = 32,
-		/// list of figures
-		LOF = 64,
-		/// the LaTeX log file
-		LOG = 128,
-		/// list of tables
-		LOT = 256,
-		/// table of contents
-		TOC = 512,
-		/// latex files
-		LTX = 1024,
-		/// tex files
-		TEX = 2048,
-		/// list of algorithms
-		LOA = 4096
-	};
-	
 	/** Return values from scanLogFile() and run() (to come)
 
 	  This enum should be enlarged a bit so that one could
@@ -167,9 +131,6 @@ protected:
 	void deplog(DepTable & head);
 
 	///
-	void deptex(DepTable & head);
-	
-	///
 	int scanLogFile(TeXErrors &);
 
 	///
@@ -192,11 +153,6 @@ protected:
 	
 	///
 	string path;
-	///
-	TEX_FILES tex_files;
-	
-	///
-	int file_count;
 
 	// used by scanLogFile
 	int num_errors;

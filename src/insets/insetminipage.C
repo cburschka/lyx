@@ -21,6 +21,7 @@
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
+#include "debug.h"
 
 using std::ostream;
 using std::endl;
@@ -103,15 +104,6 @@ int InsetMinipage::Latex(Buffer const * buf,
 }
 
 
-bool InsetMinipage::InsertInset(BufferView * bv, Inset * in)
-{
-	if (!InsertInsetAllowed(in))
-		return false;
-	
-	return inset->InsertInset(bv, in);
-}
-
-
 bool InsetMinipage::InsertInsetAllowed(Inset * in) const
 {
 	if ((in->LyxCode() == Inset::FLOAT_CODE) ||
@@ -120,6 +112,7 @@ bool InsetMinipage::InsertInsetAllowed(Inset * in) const
 	}
 	return true;
 }
+
 
 #if 0
 LyXFont InsetMinipage::GetDrawFont(BufferView * bv,

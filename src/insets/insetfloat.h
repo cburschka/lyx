@@ -26,10 +26,7 @@ class Painter;
 class InsetFloat : public InsetCollapsable {
 public:
 	///
-	explicit
 	InsetFloat();
-	///
-	~InsetFloat() {}
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -44,8 +41,6 @@ public:
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
 	const char * EditMessage() const;
-	///
-	bool InsertInset(BufferView *, Inset * inset);
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
 	///

@@ -106,8 +106,7 @@ void InsetText::init(InsetText const * ins)
 
 InsetText::~InsetText()
 {
-    LyXParagraph * p;
-    p = par->next;
+    LyXParagraph * p = par->next;
     delete par;
     while(p) {
 	par = p;
@@ -139,7 +138,7 @@ void InsetText::WriteParagraphData(Buffer const * buf, ostream & os) const
 
 void InsetText::Read(Buffer const * buf, LyXLex & lex)
 {
-	string token;
+    string token;
     int pos = 0;
     LyXParagraph * return_par = 0;
     char depth = 0; // signed or unsigned?

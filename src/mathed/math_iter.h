@@ -51,7 +51,7 @@ class MathedIter {
 	ncols = row = col = 0;
     }
     ///
-	explicit
+    explicit
     MathedIter(LyxArrayBase *);
     ///
     virtual ~MathedIter() { }
@@ -169,8 +169,6 @@ class MathedXIter: public MathedIter {
     MathedXIter() : MathedIter(), sx(0), sw(0) { x = y = size = 0;  p = 0; crow = 0; }
     ///
     MathedXIter(MathParInset*);
-    ///
-    ~MathedXIter() { };
     ///
     void SetData(MathParInset *);
     ///

@@ -31,10 +31,8 @@
 class MathedCursor {
  public:
     ///
-	explicit
+    explicit
     MathedCursor(MathParInset * p);
-    ///
-    ~MathedCursor() { };
     ///
     void Insert(byte, MathedTextCodes t = LM_TC_MIN);
     ///

@@ -37,12 +37,12 @@ class MathMacro : public MathParInset
 {
 public:
     /// A macro can only be builded from an existing template
-	explicit
+    explicit
     MathMacro(MathMacroTemplate *);
     /// or from another macro.
-	explicit
+    explicit
     MathMacro(MathMacro *);
-	///
+    ///
     ~MathMacro();
     ///
     void draw(Painter &, int, int);
@@ -105,12 +105,16 @@ private:
 class MathMacroArgument: public MathParInset {
 public:
     ///
-    MathMacroArgument() { expnd_mode = false; number = 1;  SetType(LM_OT_MACRO_ARG); }
+    MathMacroArgument() {
+	    expnd_mode = false;
+	    number = 1;
+	    SetType(LM_OT_MACRO_ARG);
+    }
     ///
-	explicit
+    explicit
     MathMacroArgument(int);
     ///
-	~MathMacroArgument() { lyxerr << "help, destroyme!" << std::endl; }
+    ~MathMacroArgument() { lyxerr << "help, destroyme!" << std::endl; }
     ///
     MathedInset * Clone() { return this; }
 	///
@@ -126,9 +130,9 @@ public:
     /// Is expanded or not
     bool getExpand() { return expnd_mode; }
 private:
-	///
+    ///
     bool expnd_mode;
-	///
+    ///
     int number;
 };
 
@@ -137,15 +141,15 @@ private:
 class MathMacroTemplate: public MathParInset {
 public:
     /// A template constructor needs all the data
-	explicit
+    explicit
     MathMacroTemplate(char const *, int na = 0, int f = 0);
-	///
+    ///
     ~MathMacroTemplate();
-	///
+    ///
     void draw(Painter &, int, int);
-	///
+    ///
     void Metrics();
-	///
+    ///
     void WriteDef(std::ostream &, bool fragile);
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
@@ -161,7 +165,7 @@ public:
     MathParInset * getMacroPar(int) const;
     ///
     void SetMacroFocus(int &, int, int);
-	///
+    ///
     void setEditMode(bool);
 
     /// Replace the appropriate arguments with a specific macro's data
@@ -189,30 +193,30 @@ typedef MathMacroTemplate * MathMacroTemplateP;
 ///
 class MathMacroTable {
 public:
-	///
-	explicit
+    ///
+    explicit
     MathMacroTable(int);
-	///
+    ///
     ~MathMacroTable();
-	///
+    ///
     void addTemplate(MathMacroTemplate *);
-	///
+    ///
     MathMacro * getMacro(char const *) const;
-	///
+    ///
     MathMacroTemplate * getTemplate(char const *) const;
-	///
+    ///
     void builtinMacros();
-	///
+    ///
     static MathMacroTable mathMTable;
-	///
+    ///
     static bool built;
     
 private:
-	///
+    ///
     const int max_macros;
-	///
+    ///
     int num_macros;
-	///
+    ///
     MathMacroTemplateP * macro_table;
 };
 

@@ -41,10 +41,7 @@ public:
     ///
     static int const TEXT_TO_BOTTOM_OFFSET = 2;
     ///
-    explicit
     InsetCollapsable();
-    ///
-    ~InsetCollapsable() {}
     ///
     Inset * Clone() const;
     ///
@@ -65,6 +62,8 @@ public:
     void Edit(BufferView *, int, int, unsigned int);
     ///
     EDITABLE Editable() const;
+    ///
+    bool InsertInset(BufferView *, Inset * inset);
     ///
     bool IsTextInset() const { return true; }
     ///

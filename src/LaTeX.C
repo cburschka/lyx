@@ -51,29 +51,6 @@ using std::endl;
 
 extern BufferList bufferlist;
 
-struct texfile_struct {
-	LaTeX::TEX_FILES file;
-	char const * extension;
-};
-
-static
-const texfile_struct all_files[] = {
-	{ LaTeX::AUX, ".aux"},
-	{ LaTeX::BBL, ".bbl"},
-	{ LaTeX::DVI, ".dvi"},
-	{ LaTeX::GLO, ".glo"},
-	{ LaTeX::IDX, ".idx"},
-	{ LaTeX::IND, ".ind"},
-	{ LaTeX::LOF, ".lof"},
-	{ LaTeX::LOA, ".loa"},
-	{ LaTeX::LOG, ".log"},
-	{ LaTeX::LOT, ".lot"},
-	{ LaTeX::TOC, ".toc"},
-	{ LaTeX::LTX, ".ltx"},
-	{ LaTeX::TEX, ".tex"}
-};
-
-
 /*
  * CLASS TEXERRORS
  */
@@ -92,8 +69,6 @@ void TeXErrors::insertError(int line, string const & error_desc,
 LaTeX::LaTeX(string const & latex, string const & f, string const & p)
 		: cmd(latex), file(f), path(p)
 {
-	tex_files = NO_FILES;
-	file_count = sizeof(all_files) / sizeof(texfile_struct);
 	num_errors = 0;
 	depfile = file + ".dep";
 }
@@ -213,7 +188,6 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 
 	// update the dependencies.
 	deplog(head); // reads the latex log
-	deptex(head); // checks for latex files
 	head.update();
 
 	// 0.5
@@ -622,7 +596,10 @@ void LaTeX::deplog(DepTable & head)
 
 	LRegex reg1(")* *\\(([^ ]+).*");
 	LRegex reg2("File: ([^ ]+).*");
-
+	LRegex reg3("No file ([^ ]+)\\..*");
+	LRegex reg4("\\\\openout[0-9]+.*=.*`([^ ]+)'\\..*");
+	LRegex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
+	
 	ifstream ifs(logfile.c_str());
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.
@@ -641,6 +618,14 @@ void LaTeX::deplog(DepTable & head)
 					       sub[1].second);
 		} else if (reg2.exact_match(token)) {
 			LRegex::SubMatches const & sub = reg2.exec(token);
+			foundfile = LSubstring(token, sub[1].first,
+					       sub[1].second);
+		} else if (reg3.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg3.exec(token);
+			foundfile = LSubstring(token, sub[1].first,
+					       sub[1].second);
+		} else if (reg4.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg4.exec(token);
 			foundfile = LSubstring(token, sub[1].first,
 					       sub[1].second);
 		} else {
@@ -672,7 +657,7 @@ void LaTeX::deplog(DepTable & head)
 		// (2) foundfile is in the tmpdir
 		//     insert it into head
 		if (FileInfo(OnlyFilename(foundfile)).exist()) {
-			if (suffixIs(foundfile, ".aux")) {
+			if (unwanted.exact_match(foundfile)) {
 				lyxerr[Debug::DEPEND]
 					<< "We don't want "
 					<< OnlyFilename(foundfile)
@@ -699,22 +684,5 @@ void LaTeX::deplog(DepTable & head)
 		lyxerr[Debug::DEPEND]
 			<< "Not a file or we are unable to find it."
 			<< endl;
-	}
-}
-
-
-void LaTeX::deptex(DepTable & head)
-{
-	int except = AUX|LOG|DVI|BBL|IND|GLO; 
-	string tmp;
-	FileInfo fi;
-	for (int i = 0; i < file_count; ++i) {
-		if (!(all_files[i].file & except)) {
-			tmp = OnlyFilename(ChangeExtension(file,
-							   all_files[i].extension));
-			lyxerr[Debug::DEPEND] << "deptex: " << tmp << endl;
-			if (fi.newFile(tmp).exist())
-				head.insert(tmp);
-		}
 	}
 }
