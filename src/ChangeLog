@@ -1,3 +1,7 @@
+2003-05-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lyxtextclass.C (operator): remove caching (bug 1050)
+
 2003-06-03  John Levon  <levon@movementarian.org>
 
 	* ispell.C: HPUX build fix from Albert Chin

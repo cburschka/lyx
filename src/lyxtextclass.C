@@ -740,12 +740,6 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
-	static string lastLayoutName;
-	static LayoutList::difference_type lastLayoutIndex;
-
-	if (name == lastLayoutName)
-		return layoutlist_[lastLayoutIndex];
-
 	LayoutList::const_iterator cit =
 		find_if(layoutlist_.begin(),
 			layoutlist_.end(),
@@ -759,9 +753,6 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 		// we require the name to exist
 		lyx::Assert(false);
 	}
-
-	lastLayoutName = name;
-	lastLayoutIndex = std::distance(layoutlist_.begin(), cit);
 
 	return (*cit);
 }

@@ -25,6 +25,8 @@ What's new
 
 ** Bug fixes
 
+- fix possible crash when changing text class [bug #1050]
+
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
 - fix bug where browsing for files in graphics inset would always
