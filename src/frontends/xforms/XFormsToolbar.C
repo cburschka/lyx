@@ -15,6 +15,7 @@
 
 #include "XFormsToolbar.h"
 
+#include "Color.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
 
@@ -26,13 +27,18 @@
 #include "gettext.h"
 #include "lyxfunc.h"
 
+#include "support/lstrings.h"
+
 #include "lyx_forms.h"
+#include "lyx_xpm.h"
 #include "combox.h"
 
 #include <boost/bind.hpp>
 
 using lyx::frontend::Box;
 using lyx::frontend::BoxList;
+
+using lyx::support::compare_ascii_no_case;
 
 using std::distance;
 using std::endl;
@@ -70,27 +76,33 @@ LyXTextClass const & getTextClass(LyXView const & lv)
 
 
 XFormsToolbar::toolbarItem::toolbarItem()
-	: icon(0)
+	: icon(0),
+	  unused_pixmap(0),
+	  active_pixmap(0),
+	  active_mask(0),
+	  inactive_pixmap(0),
+	  inactive_mask(0)
 {}
 
 
 XFormsToolbar::toolbarItem::~toolbarItem()
 {
-	// Lars said here that ~XFormsView() dealt with the icons.
-	// This is not true. But enabling this causes crashes,
-	// because somehow we kill the same icon twice :(
-	// FIXME
-	//kill_icon();
+	kill_icon();
 }
 
 
 void XFormsToolbar::toolbarItem::kill_icon()
 {
-	if (icon) {
-		fl_delete_object(icon);
-		fl_free_object(icon);
-		icon = 0;
-	}
+	if (unused_pixmap)
+		// XForms will take care of cleaning up the other pixmap
+		XFreePixmap(fl_get_display(), unused_pixmap);
+
+	unused_pixmap = 0;
+	active_pixmap = 0;
+	active_mask = 0;
+	inactive_pixmap = 0;
+	inactive_mask = 0;
+	icon = 0;
 }
 
 
@@ -109,6 +121,62 @@ XFormsToolbar::toolbarItem::operator=(toolbarItem const & ti)
 	return *this;
 }
 
+
+void XFormsToolbar::toolbarItem::generateInactivePixmaps()
+{
+	if (!icon || icon->objclass != FL_PIXMAPBUTTON)
+		return;
+
+	// Store the existing (active) pixmap.
+	fl_get_pixmap_pixmap(icon, &active_pixmap, &active_mask);
+
+	if (active_pixmap == 0 || active_mask == 0)
+		return;
+
+	// Create an XpmImage of this (active) pixmap. It's this that
+	// we're going to manipulate.
+	XpmImage xpm_image;
+	XpmCreateXpmImageFromPixmap(fl_get_display(),
+				    active_pixmap,
+				    active_mask,
+				    &xpm_image,
+				    0);
+
+	// Produce a darker shade of the button background as the
+	// inactive color. Note the 'hsv.v - 0.2'.
+	unsigned int r, g, b;
+	fl_getmcolor(FL_PIXMAPBUTTON_COL1, &r, &g, &b);
+	HSVColor hsv(RGBColor(r, g, b));
+	hsv.v = std::max(0.0, hsv.v - 0.2);
+	string const inactive_color = X11hexname(RGBColor(hsv));
+
+	// Set all color table entries in xpm_image that aren't
+	// "none" to inactive_color
+	for (uint i = 0; i != xpm_image.ncolors; ++i) {
+		XpmColor & ct = xpm_image.colorTable[i];
+		if (ct.c_color &&
+		    compare_ascii_no_case("none", ct.c_color) == 0)
+			continue;
+
+		// Note that this is a c-struct, so use c memory funcs.
+		if (ct.c_color)
+			free(ct.c_color);
+		ct.c_color = (char *)malloc(inactive_color.size() + 1);
+		strcpy(ct.c_color, inactive_color.c_str());
+	}
+
+	// Generate pixmaps of this modified xpm_image.
+	Screen * screen = ScreenOfDisplay(fl_get_display(), fl_screen);
+
+	XpmCreatePixmapFromXpmImage(fl_get_display(),
+				    XRootWindowOfScreen(screen),
+				    &xpm_image,
+				    &inactive_pixmap,
+				    &inactive_mask,
+				    0);
+
+	XpmFreeXpmImage(&xpm_image);
+}
 
 
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
@@ -290,8 +358,8 @@ void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 
 void XFormsToolbar::update()
 {
-	ToolbarList::const_iterator p = toollist_.begin();
-	ToolbarList::const_iterator end = toollist_.end();
+	ToolbarList::iterator p = toollist_.begin();
+	ToolbarList::iterator end = toollist_.end();
 	for (; p != end; ++p) {
 		if (!p->icon)
 			continue;
@@ -311,13 +379,24 @@ void XFormsToolbar::update()
 			fl_set_object_color(p->icon, FL_MCOL, FL_BLUE);
 			fl_set_object_boxtype(p->icon, FL_UP_BOX);
 		}
+
+		// This must go here rather than in XFormsToolbar::add, else
+		// LyX aborts with a BadPixmap error.
+		if (!p->active_pixmap)
+			p->generateInactivePixmaps();
+
 		if (status.enabled()) {
 			fl_activate_object(p->icon);
+			fl_set_pixmap_pixmap(p->icon,
+					     p->active_pixmap,
+					     p->active_mask);
+			p->unused_pixmap = p->inactive_pixmap;
 		} else {
-			// Is there a way here to specify a
-			// mask in order to show that the
-			// button is disabled? (JMarc)
 			fl_deactivate_object(p->icon);
+			fl_set_pixmap_pixmap(p->icon,
+					     p->inactive_pixmap,
+					     p->inactive_mask);
+			p->unused_pixmap = p->active_pixmap;
 		}
 	}
 

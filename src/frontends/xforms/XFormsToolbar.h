@@ -76,6 +76,8 @@ public:
 
 		toolbarItem & operator=(toolbarItem const & ti);
 
+		void generateInactivePixmaps();
+
 		/// deallocate icon
 		void kill_icon();
 
@@ -83,6 +85,12 @@ public:
 		FuncRequest func;
 		/// icon for this item
 		FL_OBJECT * icon;
+		///
+		Pixmap unused_pixmap;
+		Pixmap active_pixmap;
+		Pixmap active_mask;
+		Pixmap inactive_pixmap;
+		Pixmap inactive_mask;
 	};
 
 	///
