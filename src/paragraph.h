@@ -302,8 +302,10 @@ public:
 	mutable RowList rows;
 	/// last draw y position (baseline of top row)
 	int y;
-	///
-	int height;
+	/// total height of paragraph
+	unsigned int height;
+	/// total width of paragraph, may differ from workwidth
+	unsigned int width;
 
 private:
 	///

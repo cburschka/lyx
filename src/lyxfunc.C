@@ -955,16 +955,17 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 			if (result == FINISHED_UP) {
-				RowList::iterator const irow = view()->text->cursorRow();
-				if (irow != view()->text->firstRow()) {
+				LyXText * text = view()->text;
+				RowList::iterator const rit = text->cursorRow();
+				if (text->isFirstRow(text->cursorPar(), *rit)) {
 #if 1
-					view()->text->setCursorFromCoordinates(
-						view()->text->cursor.x() + inset_x,
-						view()->text->cursor.y() -
-						irow->baseline() - 1);
-					view()->text->cursor.x_fix(view()->text->cursor.x());
+					text->setCursorFromCoordinates(
+						text->cursor.x() + inset_x,
+						text->cursor.y() -
+						rit->baseline() - 1);
+					text->cursor.x_fix(text->cursor.x());
 #else
-					view()->text->cursorUp(view());
+					text->cursorUp(view());
 #endif
 					moveCursorUpdate();
 				} else {
@@ -975,20 +976,21 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 			if (result == FINISHED_DOWN) {
-				RowList::iterator const irow = view()->text->cursorRow();
-				if (irow != view()->text->lastRow()) {
+				LyXText * text = view()->text;
+				RowList::iterator const rit = text->cursorRow();
+				if (text->isLastRow(text->cursorPar(), *rit)) {
 #if 1
-					view()->text->setCursorFromCoordinates(
-						view()->text->cursor.x() + inset_x,
-						view()->text->cursor.y() -
-						irow->baseline() +
-						irow->height() + 1);
-					view()->text->cursor.x_fix(view()->text->cursor.x());
+					text->setCursorFromCoordinates(
+						text->cursor.x() + inset_x,
+						text->cursor.y() -
+						rit->baseline() +
+						rit->height() + 1);
+					text->cursor.x_fix(text->cursor.x());
 #else
-					view()->text->cursorDown(view());
+					text->cursorDown(view());
 #endif
 				} else {
-					view()->text->cursorRight(view());
+					text->cursorRight(view());
 				}
 				moveCursorUpdate();
 				owner->clearMessage();

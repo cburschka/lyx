@@ -1168,15 +1168,14 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 	row.top_of_text(row.baseline() - font_metrics::maxAscent(font));
 
 	row.width(maxwidth);
+
 	if (inset_owner) {
 		width = max(0, workWidth());
-		RowList::iterator rit = firstRow();
-		RowList::iterator end = endRow();
-		ParagraphList::iterator it = ownerParagraphs().begin();
-		while (rit != end) {
-			if (rit->width() > width)
-				width = rit->width();
-			nextRow(it, rit);
+		ParagraphList::iterator pit = ownerParagraphs().begin();
+		ParagraphList::iterator end = ownerParagraphs().end();
+		for ( ; pit != end; ++pit) {
+			if (width < pit->width)
+				width = pit->width;
 		}
 	}
 }
@@ -1186,7 +1185,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 {
 	// allow only if at start or end, or all previous is new text
 	if (cursor.pos() && cursor.pos() != cursorPar()->size()
-		&& cursorPar()->isChangeEdited(0, cursor.pos()))
+	    && cursorPar()->isChangeEdited(0, cursor.pos()))
 		return;
 
 	LyXTextClass const & tclass =
@@ -1626,8 +1625,9 @@ WordLangTuple const LyXText::selectNextWordToSpellcheck(float & value)
 				return word;
 			cursor.par(cursor.par() + 1);
 			cursor.pos(0);
-		} else
-				cursor.pos(cursor.pos() + 1);
+		} else {
+			cursor.pos(cursor.pos() + 1);
+		}
 	}
 	int const tmppar = cursor.par();
 
@@ -2125,11 +2125,15 @@ int LyXText::parOffset(ParagraphList::iterator pit) const
 }
 
 
-int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
+void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 {
 	// remove rows of paragraph, keep track of height changes
 	height -= pit->height;
+
+	// clear old data
 	pit->rows.clear();
+	pit->height = 0;
+	pit->width = 0;
 
 	// redo insets
 	InsetList::iterator ii = pit->insetlist.begin();
@@ -2141,17 +2145,14 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	}
 
 	// rebreak the paragraph
-	int par_width = 0;
 	int const ww = workWidth();
-	pit->height = 0;
-
 	for (pos_type z = 0; z < pit->size() + 1; ) {
 		Row row(z);
 		z = rowBreakPoint(pit, row) + 1;
 		row.endpos(z);
 		int const f = fill(pit, row, ww);
-		int const w = ww - f;
-		par_width = std::max(par_width, w);
+		unsigned int const w = ww - f;
+		pit->width = std::max(pit->width, w);
 		row.fill(f);
 		row.width(w);
 		prepareToPrint(pit, row);
@@ -2161,22 +2162,16 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		pit->rows.push_back(row);
 	}
 	height += pit->height;
-
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
-	return par_width;
 }
 
 
-int LyXText::redoParagraphs(ParagraphList::iterator start,
+void LyXText::redoParagraphs(ParagraphList::iterator pit,
   ParagraphList::iterator end)
 {
-	int pars_width = 0;
-	for ( ; start != end; ++start) {
-		int par_width = redoParagraphInternal(start);
-		pars_width = std::max(par_width, pars_width);
-	}
+	for ( ; pit != end; ++pit)
+		redoParagraphInternal(pit);
 	updateRowPositions();
-	return pars_width;
 }
 
 
@@ -2202,14 +2197,30 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	//BOOST_ASSERT(mi.base.textwidth);
 
 	// rebuild row cache
-	width  = 0;
-	///height = 0;
-
 	//anchor_y_ = 0;
-	width = redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
+	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
+
+	width = 0;
+	ParagraphList::iterator pit = ownerParagraphs().begin();
+	ParagraphList::iterator end = ownerParagraphs().end();
+	for ( ; pit != end; ++pit) 
+		width = std::max(pit->width, width);
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
 	dim.des = height - dim.asc;
 	dim.wid = std::max(mi.base.textwidth, int(width));
+}
+
+
+bool LyXText::isLastRow(ParagraphList::iterator pit, Row const & row) const
+{
+	return row.endpos() >= pit->size()
+	       && boost::next(pit) == ownerParagraphs().end();
+}
+
+
+bool LyXText::isFirstRow(ParagraphList::iterator pit, Row const & row) const
+{
+	return row.pos() == 0 && pit == ownerParagraphs().begin();
 }

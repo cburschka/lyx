@@ -1,3 +1,17 @@
+
+2003-10-23  André Pönitz  <poenitz@gmx.net>
+
+	* lyxtext.h:
+	* text.C (isLastRow, isFirstRow): new functions
+
+	* paragraph.h: new width cache member
+
+	* rowpainter.C: replace RowList::iterator with Row & where possible
+
+	* lyxfunc.C: replace several view()->text with a single call
+
+	* toc.C: fix 'unused' warning
+
 2003-10-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxlex_pimpl.C (setFile,setStream): be sure to use correct types

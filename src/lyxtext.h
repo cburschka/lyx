@@ -122,7 +122,7 @@ public:
 	void setFont(LyXFont const &, bool toggleall = false);
 
 	/// rebreaks all paragaphs between the given pars.
-	int redoParagraphs(ParagraphList::iterator begin,
+	void redoParagraphs(ParagraphList::iterator begin,
 			    ParagraphList::iterator end);
 	/// rebreaks the given par
 	void redoParagraph(ParagraphList::iterator pit);
@@ -130,8 +130,8 @@ public:
 	/// rebreaks the cursor par
 	void redoParagraph();
 private:
-	/// rebreaks the given par, return max row width
-	int redoParagraphInternal(ParagraphList::iterator pit);
+	/// rebreaks the given par
+	void redoParagraphInternal(ParagraphList::iterator pit);
 public:
 
 	///
@@ -485,6 +485,11 @@ public:
 	/// return previous row crossing paragraph boundaries
 	void previousRow(ParagraphList::iterator & pit,
 		RowList::iterator & rit) const;
+
+	/// is this row the last in the text?
+	bool isLastRow(ParagraphList::iterator pit, Row const & row) const;
+	/// is this row the first in the text?
+	bool isFirstRow(ParagraphList::iterator pit, Row const & row) const;
 
 	///
 	std::string selectionAsString(Buffer const & buffer, bool label) const;

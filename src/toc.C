@@ -69,7 +69,6 @@ TocList const getTocList(Buffer const & buf)
 	TocList toclist;
 
 	BufferParams const & bufparams = buf.params();
-	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();
