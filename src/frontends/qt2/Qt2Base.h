@@ -1,27 +1,22 @@
 // -*- C++ -*-
 /**
  * \file Qt2Base.h
- * Copyright 2000-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
- 
 #ifndef QT2BASE_H
 #define QT2BASE_H
-
-#include <config.h>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "ViewBase.h"
-#include "LString.h"
-#include "debug.h"
-#include "ButtonPolicies.h"
-
 #include <boost/scoped_ptr.hpp>
 
 #include <qfont.h>

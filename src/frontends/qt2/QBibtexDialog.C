@@ -1,13 +1,20 @@
 /**
  * \file QBibtexDialog.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-#include <vector> 
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include <vector>
 #include "ControlBibtex.h"
 #include "gettext.h"
 #include "debug.h"
@@ -24,7 +31,7 @@
 
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
- 
+
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),
 	form_(form)
@@ -67,7 +74,7 @@ void QBibtexDialog::addPressed()
 		for(unsigned int i = 0; i!=databaseLB->count(); i++) {
 			if (databaseLB->text(i).latin1()==f)
 				present = true;
-			
+
 		}
 		if (!present) {
 			databaseLB->insertItem(f.c_str());

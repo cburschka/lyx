@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file QMinipage.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QMINIPAGE_H

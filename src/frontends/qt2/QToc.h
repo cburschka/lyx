@@ -1,11 +1,13 @@
 // -*- C++ -*-
 /**
  * \file QToc.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author John Levon
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author Kalle Dalheimer
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QTOC_H
@@ -15,10 +17,8 @@
 #pragma interface
 #endif
 
-#include "ControlToc.h"
-#include "toc.h"
-
 #include "Qt2Base.h"
+#include "toc.h"
 
 class ControlToc;
 class QTocDialog;

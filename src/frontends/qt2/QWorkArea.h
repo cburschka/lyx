@@ -1,11 +1,13 @@
 // -*- C++ -*-
 /**
  * \file QWorkArea.h
- * Copyright 1995-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QWORKAREA_H
@@ -15,17 +17,15 @@
 #pragma interface
 #endif
 
-#include <utility>
-
 #include "WorkArea.h"
 #include "QLPainter.h"
 #include "QContentPane.h"
- 
+
 #include <qwidget.h>
 #include <qscrollbar.h>
 #include <qpixmap.h>
 
- 
+
 /**
  * Qt-specific implementation of the work area
  * (buffer view GUI)
@@ -34,9 +34,9 @@
  * Hopefully soon we can just use QScrollView ...
  */
 class QWorkArea : public WorkArea, public QWidget {
- 
+
 	friend class QContentPane;
- 
+
 public:
 
 	QWorkArea(int x, int y, int w, int h);
@@ -48,9 +48,9 @@ public:
 	virtual int workWidth() const { return content_->width(); }
 	/// return the height of the content pane
 	virtual int workHeight() const { return content_->height(); }
-	/// 
+	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
- 
+
 	/// a selection exists
 	virtual void haveSelection(bool) const;
 	///
@@ -69,9 +69,9 @@ private:
 	QScrollBar * scrollbar_;
 	/// content
 	QContentPane * content_;
- 
+
 	/// our painter
 	QLPainter painter_;
 };
- 
+
 #endif // QWORKAREA_H

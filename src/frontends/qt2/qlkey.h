@@ -1,20 +1,24 @@
+// -*- C++ -*-
 /**
  * \file qlkey.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QLKEY_H
 #define QLKEY_H
- 
-#include <config.h>
-#include <qnamespace.h>
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include <qnamespace.h>
 #include "LString.h"
-#include "debug.h"
- 
+
 /**
  * Return true if the key event is a modifier.
  */
@@ -32,13 +36,13 @@ bool q_is_modifier(int qkey)
 			return true;
 
 		// AltGr becomes Key_unknown on at least one keyboard
-		case Qt::Key_unknown: 
+		case Qt::Key_unknown:
 			return true;
 	}
 	return false;
 }
 
- 
+
 /**
  * Return the numeric Qt Key corresponding to the
  * given symbol name.
@@ -296,7 +300,7 @@ int string_to_qkey(string const & str)
 	if (str == "thorn") return Qt::Key_thorn;
 	if (str == "ydiaeresis") return Qt::Key_ydiaeresis;
 
-	// FIXME, correct for all these ? 
+	// FIXME, correct for all these ?
 	if (str == "Super_L") return Qt::Key_Super_L;
 	if (str == "Super_R") return Qt::Key_Super_R;
 	if (str == "Menu") return Qt::Key_Menu;
@@ -305,11 +309,11 @@ int string_to_qkey(string const & str)
 	if (str == "Help") return Qt::Key_Help;
 	if (str == "Bar") return Qt::Key_Bar;
 	if (str == "BackTab") return Qt::Key_Backtab;
- 
+
 	return Qt::Key_unknown;
 }
 
- 
+
 /**
  * qkey_to_string - convert Qt keypress into LyX
  *

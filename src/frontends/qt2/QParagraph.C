@@ -1,9 +1,11 @@
 /**
  * \file QParagraph.C
- * Copyright 2000-2001 The LyX Team.
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
+ * \author Edwin Leuven 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

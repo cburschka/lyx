@@ -1,12 +1,19 @@
 /**
  * \file QTexinfoDialog.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
+ * \author Edwin Leuven 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <vector>
 
 #include "LString.h"

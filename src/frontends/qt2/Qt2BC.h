@@ -1,12 +1,14 @@
 // -*- C++ -*-
 /**
  * \file Qt2BC.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Allan Rae, rae@lyx.org
- * \author Angus Leeming, a.leeming@ic.ac.uk
- * \author Baruch Even, baruch.even@writeme.com
+ * \author Allan Rae
+ * \author Angus Leeming
+ * \author Baruch Even
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QT2BC_H

@@ -1,10 +1,12 @@
 /**
  * \file QCitation.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author Angus Leeming 
+ * \author Kalle Dalheimer 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

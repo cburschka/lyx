@@ -1,9 +1,11 @@
 /**
  * \file Menubar_pimpl.C
- * Copyright 1999-2001 The LyX Team.
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author  Lars Gullik Bjønnes, larsbj@lyx.org
+ * \author  Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -28,10 +30,10 @@
 
 #include "QtView.h"
 #include "QLPopupMenu.h"
- 
+
 #include <qmenubar.h>
 #include <qcursor.h>
- 
+
 using std::endl;
 using std::vector;
 using std::max;
@@ -39,7 +41,7 @@ using std::min;
 using std::for_each;
 using std::pair;
 
-Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe) 
+Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
 {
 	Menu::const_iterator m = mbe.getMenubar().begin();
@@ -54,8 +56,8 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 
 void Menubar::Pimpl::openByName(string const & name)
 {
-	NameMap::const_iterator const cit = name_map_.find(name); 
-	if (cit == name_map_.end()) 
+	NameMap::const_iterator const cit = name_map_.find(name);
+	if (cit == name_map_.end())
 		return;
 
 	// this will have to do I'm afraid.

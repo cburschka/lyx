@@ -1,19 +1,23 @@
+// -*- C++ -*-
 /**
  * \file QDelimiterDialog.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QDELIMITERDIALOG_H
 #define QDELIMITERDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-#include "LString.h"
- 
 #include "ui/QDelimiterDialogBase.h"
+#include "LString.h"
 
 class QMath;
 class IconPalette;
@@ -37,12 +41,12 @@ protected:
 private:
 	void set_label(QLabel * label, string const & str);
 
-	/// symbol of left delimiter 
+	/// symbol of left delimiter
 	string left_;
 
 	/// symbol of right delimiter
 	string right_;
- 
+
 	/// owning form
 	QMath * form_;
 };

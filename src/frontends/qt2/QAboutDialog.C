@@ -1,10 +1,18 @@
 /**
  * \file QAboutDialog.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author Kalle Dalheimer 
+ *
+ * Full author contact details are available in file CREDITS
  */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "QAboutDialog.h"
 

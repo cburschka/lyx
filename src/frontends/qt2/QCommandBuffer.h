@@ -1,25 +1,28 @@
+// -*- C++ -*-
 /**
  * \file QCommandBuffer.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QCOMMANDBUFFER_H
 #define QCOMMANDBUFFER_H
 
-#include <config.h>
-#include "LString.h"
- 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include <qtoolbar.h>
-#include <qtimer.h>
- 
+
 class QtView;
 class QCommandEdit;
 class QListBoxItem;
 class ControlCommandBuffer;
- 
+
 class QCommandBuffer : public QToolBar {
 	Q_OBJECT
 public:
@@ -28,7 +31,7 @@ public:
 
 	/// focus the edit widget
 	void focus_command();
- 
+
 public slots:
 	/// cancel command compose
 	void cancel();
@@ -42,7 +45,7 @@ public slots:
 	void up();
 	/// down
 	void down();
- 
+
 private:
 	/// owning view
 	QtView * view_;
@@ -52,7 +55,6 @@ private:
 
 	/// command widget
 	QCommandEdit * edit_;
-
 };
 
 #endif // QCOMMANDBUFFER_H

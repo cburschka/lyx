@@ -1,10 +1,12 @@
 /**
  * \file qfont_metrics.C
- * Copyright 1995-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,22 +1,25 @@
+// -*- C++ -*-
 /**
  * \file iconpalette.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef ICONPALETTE_H
 #define ICONPALETTE_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-#include "LString.h"
- 
 #include <qwidget.h>
-
+#include "LString.h"
+#include <utility>
 #include <vector>
-#include <algorithm>
 
 class QPixmap;
 class QPushButton;
@@ -38,17 +41,17 @@ signals:
 
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
- 
+
 protected slots:
 	virtual void clicked();
 
 private:
 	int maxcol_;
- 
+
 	QGridLayout * layout_;
- 
+
 	typedef std::pair<QPushButton *, string> Button;
- 
+
 	std::vector<Button> buttons_;
 };
 

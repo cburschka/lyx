@@ -1,15 +1,20 @@
+// -*- C++ -*-
 /**
  * \file QFloatDialog.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QFLOATDIALOG_H
 #define QFLOATDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "ui/QFloatDialogBase.h"
 
@@ -26,7 +31,7 @@ protected slots:
 	virtual void tbhpClicked();
 	virtual void heredefinitelyClicked();
 	virtual void spanClicked();
- 
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

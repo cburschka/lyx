@@ -1,28 +1,27 @@
 // -*- C++ -*-
 /**
  * \file qfont_loader.h
- * Copyright 1997 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QFONTLOADER_H
-#define QFONTLOADER_H 
+#define QFONTLOADER_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <config.h>
-#include <boost/smart_ptr.hpp>
- 
 #include "lyxfont.h"
- 
-#include "LString.h"
 
 #include <qfont.h>
 #include <qfontmetrics.h>
+
+#include <boost/scoped_ptr.hpp>
 
 /**
  * Qt font loader for LyX. Matches LyXFonts against
@@ -39,7 +38,7 @@ public:
 
 	/// do we have anything matching?
 	bool available(LyXFont const & f);
- 
+
 	/// get the QFont for this LyXFont
 	QFont const & get(LyXFont const & f);
 
@@ -58,14 +57,14 @@ private:
 		/// metrics on the font
 		QFontMetrics metrics;
 	};
- 
+
 	/// get font info (font + metrics) for the given LyX font. Does not fail.
 	font_info const * getfontinfo(LyXFont const & f);
- 
+
 	/// BUTT ugly !
-	boost::scoped_ptr<font_info> fontinfo_[LyXFont::NUM_FAMILIES][2][4][10]; 
+	boost::scoped_ptr<font_info> fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
 extern qfont_loader fontloader;
- 
+
 #endif // QFONT_LOADER_H

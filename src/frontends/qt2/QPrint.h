@@ -1,11 +1,13 @@
 // -*- C++ -*-
 /**
  * \file QPrint.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
- * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author John Levon
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QPRINT_H
@@ -19,7 +21,6 @@
 
 class ControlPrint;
 class QPrintDialog;
-class Dialogs;
 
 ///
 class QPrint

@@ -1,25 +1,29 @@
 /**
  * \file FileDialog_private.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
 
-#include "LString.h"
-#include "support/lstrings.h"
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include <qapplication.h>
-#include <qfiledialog.h>
-#include <qtoolbutton.h> 
+#include <qtoolbutton.h>
+
+#include "FileDialog_private.h"
 
 #include "QtLyXView.h"
 #include "debug.h"
 #include "funcrequest.h"
-
-#include "FileDialog_private.h"
+#include "lyxfunc.h"
+#include "support/lstrings.h"
 
 namespace {
 	/// return the Qt form of the label
@@ -35,7 +39,7 @@ namespace {
 		return label;
 	}
 }
- 
+
 LyXFileDialog::LyXFileDialog(string const & p, string const & m, string const & t,
 		FileDialog::Button const & b1, FileDialog::Button const & b2)
 	: QFileDialog(p.c_str(), m.c_str(), qApp->mainWidget(), t.c_str(), true),
@@ -43,7 +47,7 @@ LyXFileDialog::LyXFileDialog(string const & p, string const & m, string const & 
 {
 	setCaption(t.c_str());
 
-	if (!b1.first.empty()) { 
+	if (!b1.first.empty()) {
 		b1_dir_ = b1.second;
 		b1_ = new QToolButton(this);
 		connect(b1_, SIGNAL(clicked()), this, SLOT(buttonClicked()));

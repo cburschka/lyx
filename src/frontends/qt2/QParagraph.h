@@ -1,18 +1,24 @@
 // -*- C++ -*-
 /**
  * \file QParagraph.h
- * Copyright 2001 LyX Team
- * see the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author Edwin Leuven
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QPARAGRAPH_H
 #define QPARAGRAPH_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "Qt2Base.h"
+#include <vector>
 
 class ControlParagraph;
 class QParagraphDialog;
@@ -33,7 +39,7 @@ private:
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
-	
+
 	std::vector<string> units_;
 };
 

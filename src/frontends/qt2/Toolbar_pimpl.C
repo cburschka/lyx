@@ -1,9 +1,12 @@
 /**
  * \file Toolbar_pimpl.C
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes, larsbj@lyx.org
- * \uathor John Levon <moz@compsoc.man.ac.uk>
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -23,27 +26,27 @@
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
-#include "support/lstrings.h" 
+#include "support/lstrings.h"
 
 #include "QtView.h"
- 
+
 #include "Toolbar_pimpl.h"
- 
+
 #include <boost/tuple/tuple.hpp>
- 
+
 #include <qtoolbar.h>
 #include <qcombobox.h>
 #include <qtooltip.h>
 #include <qsizepolicy.h>
- 
+
 using std::endl;
 
 namespace {
- 
+
 QPixmap getIconPixmap(int action)
 {
 	FuncRequest f = lyxaction.retrieveActionArg(action);
- 
+
 	string xpm_name;
 
 	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
@@ -52,14 +55,14 @@ QPixmap getIconPixmap(int action)
 		string const name = lyxaction.getActionName(f.action);
 		if (!f.argument.empty())
 			xpm_name = subst(name + ' ' + f.argument, ' ','_');
-		else 
+		else
 			xpm_name = name;
 	}
 
 	string fullname = LibFileSearch("images", xpm_name, "xpm");
 
 	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Full icon name is `" 
+		lyxerr[Debug::GUI] << "Full icon name is `"
 				       << fullname << "'" << endl;
 		return QPixmap(fullname.c_str());
 	}
@@ -67,7 +70,7 @@ QPixmap getIconPixmap(int action)
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Using default `unknown' icon" 
+		lyxerr[Debug::GUI] << "Using default `unknown' icon"
 				       << endl;
 	}
 	return QPixmap(fullname.c_str());
@@ -75,16 +78,16 @@ QPixmap getIconPixmap(int action)
 
 } // namespace anon
 
- 
+
 class QLComboBox : public QComboBox {
 public:
 	QLComboBox(QWidget * parent) : QComboBox(parent) {}
 	void popup() { QComboBox::popup(); }
 };
 
- 
+
 Toolbar::Pimpl::Pimpl(LyXView * o, int, int)
-	: owner_(static_cast<QtView *>(o)), 
+	: owner_(static_cast<QtView *>(o)),
 	combo_(0)
 {
 	proxy_.reset(new ToolbarProxy(*this));
@@ -100,14 +103,14 @@ void Toolbar::Pimpl::update()
 {
 	ButtonMap::const_iterator p = map_.begin();
 	ButtonMap::const_iterator end = map_.end();
- 
+
 	for (; p != end; ++p) {
 		QToolButton * button = p->first;
 		int action = p->second;
- 
-		FuncStatus const status = 
+
+		FuncStatus const status =
 			owner_->getLyXFunc().getStatus(action);
- 
+
 		button->setToggleButton(true);
 		button->setOn(status.onoff(true));
 		button->setEnabled(!status.disabled());
@@ -129,15 +132,15 @@ void Toolbar::Pimpl::button_selected(QToolButton * button)
 
 	owner_->getLyXFunc().dispatch(cit->second, true);
 }
- 
+
 
 void Toolbar::Pimpl::changed_layout(string const & sel)
 {
 	owner_->centralWidget()->setFocus();
- 
+
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
-	
+
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
@@ -149,17 +152,17 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 	lyxerr << "ERROR (Toolbar::Pimpl::layoutSelected): layout not found!"
 	       << endl;
 }
- 
+
 
 void Toolbar::Pimpl::setLayout(string const & layout)
 {
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
- 
+
 	string const & name = _(tc[layout]->name());
- 
+
 	int i;
- 
+
 	for (i = 0; i < combo_->count(); ++i) {
 		if (name == combo_->text(i).latin1())
 			break;
@@ -177,17 +180,17 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 
 void Toolbar::Pimpl::updateLayoutList(bool force)
 {
-	// if we don't need an update, don't ... 
+	// if we don't need an update, don't ...
 	if (combo_->count() && !force)
 		return;
- 
+
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
- 
-	combo_->setUpdatesEnabled(false); 
- 
+
+	combo_->setUpdatesEnabled(false);
+
 	combo_->clear();
- 
+
 	LyXTextClass::const_iterator cit = tc.begin();
 	LyXTextClass::const_iterator end = tc.end();
 	for (; cit != end; ++cit) {
@@ -223,7 +226,7 @@ void Toolbar::Pimpl::add(int action)
 	if (!toolbars_.size()) {
 		toolbars_.push_back(new QToolBar(owner_));
 	}
- 
+
 	switch (action) {
 	case ToolbarDefaults::SEPARATOR:
 		toolbars_.back()->addSeparator();
@@ -237,13 +240,13 @@ void Toolbar::Pimpl::add(int action)
 		combo_->setSizePolicy(p);
 		combo_->setFocusPolicy(QWidget::ClickFocus);
 		combo_->setMinimumWidth(combo_->sizeHint().width());
- 
+
 		QObject::connect(combo_, SIGNAL(activated(const QString &)),
 			proxy_.get(), SLOT(layout_selected(const QString &)));
 		break;
 	}
 	default: {
-		QToolButton * tb = 
+		QToolButton * tb =
 			new QToolButton(getIconPixmap(action),
 			_(lyxaction.helpText(action)).c_str(), "",
 			proxy_.get(), SLOT(button_selected()), toolbars_.back());

@@ -1,15 +1,22 @@
 /**
  * \file QSearchDialog.C
- * Copyright 2001 The LyX Team.
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "ControlSearch.h"
 #include "QSearchDialog.h"
+#include "QSearch.h"
 #include "debug.h"
 
 #include <qpushbutton.h>

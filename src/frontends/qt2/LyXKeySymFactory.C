@@ -1,13 +1,19 @@
 /**
  * \file LyXKeySymFactory.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Asger & Juergen
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
  
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "frontends/LyXKeySymFactory.h"
 
 #include "QLyXKeySym.h"

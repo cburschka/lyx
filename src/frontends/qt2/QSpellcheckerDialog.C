@@ -1,12 +1,18 @@
 /**
  * \file QSpellcheckerDialog.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
@@ -26,7 +32,43 @@ QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 }
 
 
-void QSpellcheckerDialog:: suggestionChanged(const QString & str)
+void QSpellcheckerDialog::stop()
+{
+	form_->stop();
+}
+
+
+void QSpellcheckerDialog::acceptClicked()
+{
+	form_->accept();
+}
+
+
+void QSpellcheckerDialog::spellcheckClicked()
+{
+	form_->spellcheck();
+}
+
+
+void QSpellcheckerDialog::addClicked()
+{
+	form_->add();
+}
+
+
+void QSpellcheckerDialog::replaceClicked()
+{
+	form_->replace();
+}
+
+
+void QSpellcheckerDialog::ignoreClicked()
+{
+	form_->ignore();
+}
+
+
+void QSpellcheckerDialog::suggestionChanged(const QString & str)
 {
 	if (replaceCO->count() != 0)
 		replaceCO->changeItem(str, 0);
@@ -37,7 +79,7 @@ void QSpellcheckerDialog:: suggestionChanged(const QString & str)
 }
 
 
-void QSpellcheckerDialog:: replaceChanged(const QString & str)
+void QSpellcheckerDialog::replaceChanged(const QString & str)
 {
 	if (suggestionsLB->currentText() == str)
 		return;

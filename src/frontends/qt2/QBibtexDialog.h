@@ -1,22 +1,28 @@
+// -*- C++ -*-
 /**
  * \file QBibtexDialog.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QBIBTEXDIALOG_H
 #define QBIBTEXDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "ui/QBibtexDialogBase.h"
 
 class QBibtex;
 
 class QBibtexDialog : public QBibtexDialogBase
-{ Q_OBJECT
+{
+	Q_OBJECT
 
 public:
 	QBibtexDialog(QBibtex * form);
@@ -28,7 +34,6 @@ protected slots:
 	virtual void deletePressed();
 	virtual void styleChanged(const QString &);
 	virtual void databaseChanged();
-
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);

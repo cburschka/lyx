@@ -1,9 +1,11 @@
 // -*- C++ -*-
 /**
  * \file Dialogs_impl.h
- * Copyright 1995-2002 The LyX Team.
- * See the file COPYING.
- * \author Angus Leeming <leeming@lyx.org>
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef DIALOGS_IMPL_H

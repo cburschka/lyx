@@ -1,13 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file Qt2Base.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *		   LyX, The Document Processor
+ * \author Angus Leeming
  *
- *		   Copyright 2000 The LyX Team.
- *
- * ======================================================
- *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

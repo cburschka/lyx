@@ -1,13 +1,19 @@
 /**
  * \file lyx_gui.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -56,8 +62,8 @@ extern BufferList bufferlist;
 namespace {
 	/// good ol' "easy to use" Qt again
 	float getDPI() { return 95; }
-};
- 
+}
+
 // FIXME: wrong place !
 LyXServer * lyxserver;
 
@@ -154,12 +160,12 @@ bool lyx_gui::font_available(LyXFont const & font)
 	return fontloader.available(font);
 }
 
- 
+
 namespace {
 	map<int, io_callback *> io_callbacks;
 }
 
- 
+
 void lyx_gui::set_read_callback(int fd, LyXComm * comm)
 {
 	io_callbacks[fd] = new io_callback(fd, comm);

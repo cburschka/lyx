@@ -1,27 +1,27 @@
 // -*- C++ -*-
 /**
  * \file QDocument.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author Kalle Dalheimer
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 
 #ifndef QDOCUMENT_H
 #define QDOCUMENT_H
 
-#include "Qt2Base.h"
-#include "Qt2BC.h"
-#include "QtLyXView.h"
-
-#include <boost/scoped_ptr.hpp>
-
-#include <vector>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "Qt2Base.h"
+#include "Qt2BC.h"
+//#include "QtLyXView.h"
+
+#include <boost/scoped_ptr.hpp>
 
 class ControlDocument;
 class QDocumentDialog;

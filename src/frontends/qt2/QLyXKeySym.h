@@ -1,11 +1,13 @@
 // -*- C++ -*-
 /**
  * \file QLyXKeySym.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Asger and Juergen
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QLYXKEYSYM_H
@@ -21,7 +23,7 @@
 #include <qstring.h>
 
 class QKeyEvent;
- 
+
 /**
  * Qt-specific key press.
  *
@@ -44,7 +46,7 @@ public:
 
 	/// Is this a modifier key only?
 	virtual bool isModifier() const;
-	
+
 	/// return the LyX symbolic name
 	virtual string getSymbolName() const;
 
@@ -60,7 +62,7 @@ public:
 private:
 	/// the Qt sym value
 	int key_;
-	/// the event string value 
+	/// the event string value
 	QString text_;
 };
 

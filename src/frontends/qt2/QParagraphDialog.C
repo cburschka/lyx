@@ -1,13 +1,23 @@
 /**
  * \file QParagraphDialog.C
  * Copyright 2001 LyX Team
- * see the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author John Levon
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "QParagraphDialog.h"
+#include "QParagraph.h"
 
 #include <qlineedit.h>
 #include <qcombobox.h>
@@ -28,10 +38,10 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 		form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
-	
+
 
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
-	// disabled to allow glue spacing for latexperts 
+	// disabled to allow glue spacing for latexperts
 	//valueAbove->setValidator(new QDoubleValidator(valueAbove));
 	//valueBelow->setValidator(new QDoubleValidator(valueBelow));
 }
@@ -53,7 +63,7 @@ void QParagraphDialog::enableAbove(int)
 	bool const enable = spacingAbove->currentItem()==6;
 	valueAbove->setEnabled(enable);
 	unitAbove->setEnabled(enable);
-	
+
 }
 
 void QParagraphDialog::enableBelow(int)

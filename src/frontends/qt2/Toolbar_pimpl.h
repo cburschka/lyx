@@ -1,45 +1,44 @@
 // -*- C++ -*-
 /**
  * \file Toolbar_pimpl.h
- * Copyright 2002 the LyX Team
- * Copyright 1996-2001 Lars Gullik Bjønnes
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes, larsbj@lyx.org
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef TOOLBAR_PIMPL_H
 #define TOOLBAR_PIMPL_H
 
-#include <config.h>
-#include <map>
-#include <vector>
-
-#include <boost/smart_ptr.hpp>
- 
-#include "frontends/Toolbar.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "frontends/Toolbar.h"
+
 #include <qobject.h>
 #include <qtoolbutton.h>
- 
+
+#include <boost/scoped_ptr.hpp>
+#include <map>
+#include <vector>
+
 class QtView;
 class QToolBar;
 class QLComboBox;
 class ToolbarProxy;
 
 struct Toolbar::Pimpl {
- 
+
 	friend class ToolbarProxy;
- 
+
 public:
 	Pimpl(LyXView * o, int x, int y);
 
 	~Pimpl();
-	
+
 	/// add a new button to the toolbar.
     	void add(int action);
 
@@ -59,8 +58,8 @@ private:
 	void changed_layout(string const & sel);
 
 	void button_selected(QToolButton * button);
- 
-	QtView * owner_; 
+
+	QtView * owner_;
 
 	boost::scoped_ptr<ToolbarProxy> proxy_;
 
@@ -71,10 +70,10 @@ private:
 	typedef std::map<QToolButton *, int> ButtonMap;
 
 	ButtonMap map_;
- 
+
 };
 
- 
+
 // moc is mind-numbingly stupid
 class ToolbarProxy : public QObject {
 	Q_OBJECT
@@ -82,9 +81,9 @@ class ToolbarProxy : public QObject {
 public:
 	ToolbarProxy(Toolbar::Pimpl & owner)
 		: owner_(owner) { };
- 
+
 public slots:
- 
+
 	void layout_selected(const QString & str) {
 		owner_.changed_layout(str.latin1());
 	}
@@ -99,5 +98,5 @@ public slots:
 private:
 	Toolbar::Pimpl & owner_;
 };
- 
+
 #endif

@@ -1,18 +1,24 @@
+// -*- C++ -*-
 /**
  * \file QSpellcheckerDialog.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QSPELLCHECKERDIALOG_H
 #define QSPELLCHECKERDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-#include "QSpellchecker.h"
 #include "ui/QSpellcheckerDialogBase.h"
+
+class QSpellchecker;
 
 class QSpellcheckerDialog : public QSpellcheckerDialogBase
 { Q_OBJECT
@@ -21,25 +27,12 @@ public:
 	QSpellcheckerDialog(QSpellchecker * form);
 
 protected slots:
-	virtual void stop() {
-		form_->stop();
-	}
-
-	virtual void acceptClicked() {
-		form_->accept();
-	}
-	virtual void spellcheckClicked() {
-		form_->spellcheck();
-	}
-	virtual void addClicked() {
-		form_->add();
-	}
-	virtual void replaceClicked() {
-		form_->replace();
-	}
-	virtual void ignoreClicked() {
-		form_->ignore();
-	}
+	virtual void stop();
+	virtual void acceptClicked();
+	virtual void spellcheckClicked();
+	virtual void addClicked();
+	virtual void replaceClicked();
+	virtual void ignoreClicked();
 	virtual void suggestionChanged(const QString &);
 	virtual void replaceChanged(const QString &);
 

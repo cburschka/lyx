@@ -1,16 +1,21 @@
+// -*- C++ -*-
 /**
  * \file QRefDialog.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author Kalle Dalheimer
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QREFDIALOG_H
 #define QREFDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "ui/QRefDialogBase.h"
 

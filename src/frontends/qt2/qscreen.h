@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file qscreen.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QSCREEN_H
@@ -14,13 +16,13 @@
 #pragma interface
 #endif
 
-#include <boost/smart_ptr.hpp>
- 
 #include "screen.h"
-#include "QWorkArea.h"
- 
 #include <qrect.h>
- 
+#include <boost/scoped_ptr.hpp>
+
+class WorkArea;
+
+
 /**
  * Qt implementation of toolkit-specific parts of LyXScreen.
  */
@@ -34,10 +36,10 @@ public:
 	 * draw the screen from a given position
 	 * @param y the text position to draw from
 	 *
-	 * Uses as much of the already printed pixmap as possible 
+	 * Uses as much of the already printed pixmap as possible
 	 */
 	virtual void draw(LyXText *, BufferView *, unsigned int y);
- 
+
 	/**
 	 * showManualCursor - display the caret on the work area
 	 * @param text the lyx text containing the cursor
@@ -50,24 +52,24 @@ public:
 	virtual void showManualCursor(LyXText const *, int x, int y,
 			      int asc, int desc,
 			      Cursor_Shape shape);
-	
+
 	/// unpaint the cursor painted by showManualCursor()
 	virtual void hideCursor();
- 
+
 protected:
 	/// get the work area
 	virtual WorkArea & workarea() const { return owner_; }
- 
+
 	/// repaint the whole content immediately
 	void repaint();
- 
+
 	/// copies specified area of pixmap to screen
-	virtual void expose(int x, int y, int exp_width, int exp_height); 
+	virtual void expose(int x, int y, int exp_width, int exp_height);
 
 private:
 	/// our owning widget
 	QWorkArea & owner_;
- 
+
 	/// the mini-pixmap used for backing store for the blinking cursor
 	boost::scoped_ptr<QPixmap> nocursor_pixmap_;
 

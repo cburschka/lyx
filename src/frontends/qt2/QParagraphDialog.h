@@ -1,22 +1,25 @@
 // -*- C++ -*-
 /**
  * \file QParagraphDialog.h
- * Copyright 2001 LyX Team
- * see the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author John Levon
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QPARAGRAPHDIALOG_H
 #define QPARAGRAPHDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-#include "QParagraph.h"
 #include "ui/QParagraphDialogBase.h"
 
-#include <qevent.h>
+class QParagraph;
 
 class QParagraphDialog : public QParagraphDialogBase
 {
@@ -28,7 +31,7 @@ protected:
 	void closeEvent (QCloseEvent * e);
 private:
 	QParagraph * form_;
-	
+
 protected slots:
 	void change_adaptor();
 	void enableAbove(int);

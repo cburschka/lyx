@@ -1,9 +1,11 @@
 /**
  * \file QToc.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -19,6 +21,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+#include "ControlToc.h"
 #include "QToc.h"
 #include "QTocDialog.h"
 #include "Qt2BC.h"

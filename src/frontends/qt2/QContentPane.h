@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file QContentPane.h
- * Copyright 1995-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QCONTENTPANE_H
@@ -14,17 +16,13 @@
 #pragma interface
 #endif
 
-#include <config.h>
-#include <utility>
-#include <boost/smart_ptr.hpp>
-
 #include <qwidget.h>
-#include <qscrollbar.h>
-#include <qpixmap.h>
 #include <qevent.h>
+#include <qpixmap.h>
+#include <boost/scoped_ptr.hpp>
 
-class QWorkArea; 
- 
+class QWorkArea;
+
 /// for emulating triple click
 struct double_click {
 	int x;
@@ -39,7 +37,7 @@ struct double_click {
 
 	double_click()
 		: x(0), y(0), state(Qt::NoButton), active(false) {}
- 
+
 	double_click(QMouseEvent * e)
 		: x(e->x()), y(e->y()),
 		state(e->button()), active(true) {}
@@ -50,40 +48,40 @@ struct double_click {
  */
 class QContentPane : public QWidget {
 	Q_OBJECT
- 
+
 public:
 	QContentPane(QWorkArea * parent);
-	 
+
 	/// return the backing pixmap
-	QPixmap * pixmap() const { return pixmap_.get(); } 
- 
+	QPixmap * pixmap() const { return pixmap_.get(); }
+
 protected:
 	/// repaint part of the widget
 	void paintEvent(QPaintEvent * e);
 	/// widget has been resized
 	void resizeEvent(QResizeEvent * e);
- 
+
 	/// mouse button press
 	void mousePressEvent(QMouseEvent * e);
-	/// mouse button release 
+	/// mouse button release
 	void mouseReleaseEvent(QMouseEvent * e);
-	/// mouse double click of button 
+	/// mouse double click of button
 	void mouseDoubleClickEvent(QMouseEvent * e);
 	/// mouse motion
 	void mouseMoveEvent(QMouseEvent * e);
- 
+
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
- 
+
 public slots:
 	void doubleClickTimeout();
- 
+
 	void scrollBarChanged(int);
- 
+
 private:
 	/// owning widget
 	QWorkArea * wa_;
- 
+
 	/// the double buffered pixmap
 	boost::scoped_ptr<QPixmap> pixmap_;
 

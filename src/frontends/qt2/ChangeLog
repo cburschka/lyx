@@ -1,3 +1,17 @@
+2002-09-24  Angus Leeming  <leeming@lyx.org>
+
+	* most files: "standard-conforming" Licence declaration.
+	Remove trailing whitespace.
+
+	* many header files: do not #include <config.h>.
+	Remove unnecessary #includes by using forward declarations.
+	Add as first line: // -*- C++ -*-
+	Move several definitions of virtual functions out of line 
+	as they are unlikely to be inlined anyway (and it reduces
+	header file dependencies)...
+
+	* many files: added g++ #pragma directives.
+
 2002-09-23  Angus Leeming  <leeming@lyx.org>
 
 	* QMath.h: forward declare QMathDialog.

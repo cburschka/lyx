@@ -1,16 +1,21 @@
+// -*- C++ -*-
 /**
  * \file QCharacterDialog.h
- * Copyright 2001 the LyX Team
- * see the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QCHARACTERDIALOG_H
 #define QCHARACTERDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "QCharacter.h"
 #include "ui/QCharacterDialogBase.h"

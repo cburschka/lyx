@@ -1,14 +1,21 @@
 /**
  * \file QPrintDialog.C
  * Copyright 2001 LyX Team
- * see the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author John Levon
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
- 
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <gettext.h>
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -34,7 +41,7 @@ QPrintDialog::QPrintDialog(QPrint * f)
 		form_, SLOT(slotClose()));
 }
 
- 
+
 void QPrintDialog::change_adaptor()
 {
 	form_->changed();

@@ -1,13 +1,19 @@
 /**
  * \file QCitationDialog.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author Kalle Dalheimer
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
- 
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <algorithm>
 
 #include "gettext.h"
@@ -23,7 +29,9 @@
 #include <qpushbutton.h>
 
 #include "QCitationDialog.h"
- 
+#include "QCitation.h"
+#include "support/lstrings.h"
+
 using std::vector;
 using std::find;
 using std::max;
@@ -242,6 +250,12 @@ void QCitationDialog::slotNextClicked()
 }
 
 
+void QCitationDialog::changed_adaptor()
+{
+	form_->changed();
+}
+
+
 void QCitationDialog::doFind(biblio::Direction dir)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
@@ -281,7 +295,7 @@ void QCitationDialog::doFind(biblio::Direction dir)
 		if (cit == form_->bibkeys.end())
 			return;
 	}
-	
+
 	int const found = int(cit - form_->bibkeys.begin());
 	if (found == sel) {
 		return;

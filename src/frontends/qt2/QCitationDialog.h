@@ -1,20 +1,25 @@
+// -*- C++ -*-
 /**
  * \file QCitationDialog.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author Kalle Dalheimer
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QCITATIONDIALOG_H
 #define QCITATIONDIALOG_H
 
-#include <config.h>
-#include "support/lstrings.h"
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-#include "QCitation.h"
 #include "ui/QCitationDialogBase.h"
 #include "controllers/biblio.h"
+
+class QCitation;
 
 class QCitationDialog : public QCitationDialogBase
 { Q_OBJECT
@@ -33,10 +38,7 @@ protected slots:
 	virtual void slotDownClicked();
 	virtual void slotPreviousClicked();
 	virtual void slotNextClicked();
-
-	virtual void changed_adaptor() {
-		form_->changed();
-	}
+	virtual void changed_adaptor();
 
 private:
 	void doFind(biblio::Direction dir);

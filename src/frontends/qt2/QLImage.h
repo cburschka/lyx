@@ -1,11 +1,13 @@
 // -*- C++ -*-
 /**
  * \file QLImage.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author Angus Leeming
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QLIMAGE_H
@@ -16,9 +18,9 @@
 #endif
 
 #include "graphics/GraphicsImage.h"
- 
+
 #include <qpixmap.h>
- 
+
 namespace grfx {
 
 class QLImage : public Image
@@ -43,10 +45,10 @@ public:
 	/// Get the image height
 	virtual unsigned int getHeight() const;
 
-	// FIXME 
-	virtual bool isDrawable() const { return true; } 
- 
-	/** 
+	// FIXME
+	virtual bool isDrawable() const { return true; }
+
+	/**
 	 * Load the image file into memory.
 	 * The process is asynchronous, so this method starts the loading.
 	 * When finished, the Image::finishedLoading signal is emitted.

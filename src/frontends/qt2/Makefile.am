@@ -59,6 +59,7 @@ libqt2_la_SOURCES = \
 	iconpalette.h \
 	iconpalette.C \
 	io_callback.h \
+	io_callback.C \
 	lengthcombo.C \
 	lengthcombo.h \
 	lyx_gui.C \

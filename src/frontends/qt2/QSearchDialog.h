@@ -1,19 +1,25 @@
+// -*- C++ -*-
 /**
  * \file QSearchDialog.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QSEARCHDIALOG_H
 #define QSEARCHDIALOG_H
 
-#include <config.h>
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-#include "QSearch.h"
 #include "ui/QSearchDialogBase.h"
+#include "LString.h"
 
+class QSearch;
 class QCloseEvent;
 class QComboBox;
 
@@ -39,7 +45,6 @@ private:
 	void remember(string const & find, QComboBox & combo);
 
 	QSearch * form_;
-
 };
 
 #endif // QSEARCHDIALOG_H

@@ -1,16 +1,23 @@
+// -*- C++ -*-
 /**
  * \file QCommandEdit.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef QCOMMANDEDIT_H
 #define QCOMMANDEDIT_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include <qlineedit.h>
- 
+
 class QCommandEdit : public QLineEdit {
 	Q_OBJECT
 public:
@@ -20,16 +27,16 @@ public:
 signals:
 	/// cancel
 	void escapePressed();
- 
+
 	/// up history
 	void upPressed();
- 
+
 	/// down history
 	void downPressed();
- 
+
 	/// complete
 	void rightPressed();
- 
+
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 };
