@@ -323,6 +323,8 @@ private:
 	///
 	int cy(BufferView *) const;
 	///
+	int ciy(BufferView *) const;
+	///
 	lyx::pos_type cpos(BufferView *) const;
 	///
 	Paragraph * cpar(BufferView *) const;

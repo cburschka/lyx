@@ -1,5 +1,7 @@
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C: new function ciy() and use it for setting inset_y.
+
 	* insetert.C (draw): fix the x return for collapsed version.
 
 2002-04-07  Herbert Voss  <voss@perce.de>

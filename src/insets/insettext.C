@@ -425,7 +425,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (the_locking_inset && (cpar(bv) == inset_par)
 		&& (cpos(bv) == inset_pos)) {
 		inset_x = cx(bv) - top_x + drawTextXOffset;
-		inset_y = cy(bv) + drawTextYOffset;
+		inset_y = ciy(bv) + drawTextYOffset;
 	}
 	if (!cleared && (need_update == CURSOR)
 	    && !getLyXText(bv)->selection.set()) {
@@ -559,7 +559,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 
 	if (the_locking_inset) {
 		inset_x = cx(bv) - top_x + drawTextXOffset;
-		inset_y = cy(bv) + drawTextYOffset;
+		inset_y = ciy(bv) + drawTextYOffset;
 		the_locking_inset->update(bv, font, reinit);
 	}
 
@@ -786,7 +786,7 @@ void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
 	inset_x = cx(bv) - top_x + drawTextXOffset;
-	inset_y = cy(bv) + drawTextYOffset;
+	inset_y = ciy(bv) + drawTextYOffset;
 	inset_pos = cpos(bv);
 	inset_par = cpar(bv);
 	inset_boundary = cboundary(bv);
@@ -832,7 +832,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
 			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy(bv) + drawTextYOffset;
+			inset_y = ciy(bv) + drawTextYOffset;
 		} else {
 			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
 		}
@@ -910,7 +910,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		    cpar(bv) == inset_par && cpos(bv) == inset_pos)
 		{
 			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy(bv) + drawTextYOffset;
+			inset_y = ciy(bv) + drawTextYOffset;
 		}
 	}
 	return found;
@@ -943,7 +943,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			// otherwise unlock the_locking_inset and lock the new inset
 			the_locking_inset->insetUnlock(bv);
 			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy(bv) + drawTextYOffset;
+			inset_y = ciy(bv) + drawTextYOffset;
 			the_locking_inset = 0;
 			inset->insetButtonPress(bv, x - inset_x,
 						y - inset_y, button);
@@ -1044,7 +1044,7 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 							y - inset_y, button);
 		} else {
 			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy(bv) + drawTextYOffset;
+			inset_y = ciy(bv) + drawTextYOffset;
 			ret = inset->insetButtonRelease(bv, x - inset_x,
 							y - inset_y, button);
 			inset->edit(bv, x - inset_x,
@@ -1747,7 +1747,7 @@ void InsetText::showInsetCursor(BufferView * bv, bool show)
 		int const asc = lyxfont::maxAscent(font);
 		int const desc = lyxfont::maxDescent(font);
 
-		bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
+		bv->fitLockedInsetCursor(cx(bv), ciy(bv), asc, desc);
 		if (show)
 			bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 		setCursorVisible(true);
@@ -2020,7 +2020,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		if (y < 0)
 			y = insetDescent;
 		inset_x = cx(bv) - top_x + drawTextXOffset;
-		inset_y = cy(bv) + drawTextYOffset;
+		inset_y = ciy(bv) + drawTextYOffset;
 		inset->edit(bv, x - inset_x, y - inset_y, button);
 		if (!the_locking_inset)
 			return false;
@@ -2134,6 +2134,13 @@ int InsetText::cy(BufferView * bv) const
 {
 	LyXFont font;
 	return getLyXText(bv)->cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
+}
+
+
+int InsetText::ciy(BufferView * bv) const
+{
+	LyXFont font;
+	return getLyXText(bv)->cursor.iy() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -2286,7 +2293,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	restoreLyXTextState(bv, t);
 	if (the_locking_inset) {
 		inset_x = cx(bv) - top_x + drawTextXOffset;
-		inset_y = cy(bv) + drawTextYOffset;
+		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
 	if (bv->screen()) {
@@ -2327,7 +2334,7 @@ void InsetText::reinitLyXText() const
 		restoreLyXTextState(bv, t);
 		if (the_locking_inset) {
 			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy(bv) + drawTextYOffset;
+			inset_y = ciy(bv) + drawTextYOffset;
 		}
 		if (bv->screen()) {
 			t->first_y = bv->screen()->topCursorVisible(t);
