@@ -246,6 +246,7 @@ Menuset
   Separator
 	Item "Array Environment|y" "math-matrix 2 2"
 	Item "Cases Environment|C" "math-insert \cases"
+	Item "Split Environment|S" "math-insert \split"
   Separator
 	Submenu "Font Change|f" "insert_math_font"
 	Item "Math Panel|l" "math-panel"
