@@ -1,3 +1,19 @@
+2001-01-09  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.C (OldFormatRead): convert the footer/header information
+	to the right row.
+	(getTokenValue): chaned this functions again.
+	(string2type): added a bunch of this functions per type.
+	(Write): use type2string and write columns first.
+	(type2string): added a bunch of this functions per type.
+	(TeXBottomHLine): 
+	(TeXTopHLine): check row parameter.
+
+2001-01-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/tabular.C (getTokenValue): Fix crash with malformed files.
+	(Read): Read the rotate attribute.
+
 2001-01-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/FormDocument.C (CheckChoiceClass): fix
