@@ -23,8 +23,11 @@
 #pragma interface
 #endif
 
-class LyXView;
+class Combox;
+class Command;
 class Dialogs;
+class Format;
+class LyXView;
 struct FD_form_colours;
 struct FD_form_converters;
 struct FD_form_formats;
@@ -39,8 +42,6 @@ struct FD_form_preferences;
 struct FD_form_printer;
 struct FD_form_screen_fonts;
 struct FD_form_spellchecker;
-class Combox;
-class Format;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -54,9 +55,8 @@ public:
 	///
 	static void ComboLanguageCB(int, void *, Combox *);
 	///
-	static void FeedbackCB(FL_OBJECT *, long);
-	///
-	void feedbackPost(FL_OBJECT *, int);
+	static int FeedbackCB(FL_OBJECT *, int,
+			      FL_Coord, FL_Coord, int, void *);
 
 private:
 	/// helper struct for Colours
@@ -88,6 +88,8 @@ private:
 	virtual void build();
 	/// control which feedback message is output
 	void feedback( FL_OBJECT * );
+	/// The handler for the preemptive feedback
+	void Feedback(FL_OBJECT *, int);
 	///
 	virtual FL_FORM * form() const;
 
@@ -181,6 +183,8 @@ private:
 	///
 	bool inputColours(FL_OBJECT const * const);
 	///
+	bool inputConverters( FL_OBJECT const * const );
+	///
 	bool inputFormats( FL_OBJECT const * const );
 	///
 	bool inputLanguage(FL_OBJECT const * const);
@@ -230,24 +234,45 @@ private:
 	void ColoursUpdateBrowser( int );
 	///
 	void ColoursUpdateRGB();
-	///
-	bool FormatsInputAdd();
-	///
-	bool FormatsInputBrowser();
-	///
-	bool FormatsInputDelete();
-	///
-	bool FormatsInputInput();
 
 	///
-	bool WriteableDir( string const & ) const;
+	bool ConvertersAdd();
 	///
-	bool ReadableDir( string const & ) const;
+	bool ConvertersBrowser();
 	///
-	bool WriteableFile( string const &, string const & = string() ) const;
+	void ConvertersClear() const;
+	///
+	bool ConvertersContainFormat( Format const &) const;
+	///
+	bool ConvertersDelete();
+	///
+	bool ConvertersInput();
+	///
+	bool ConvertersSetCommand( Command & ) const;
+	///
+	void ConvertersUpdateChoices();
 
-	/// The timer post handler.
-	void setPostHandler( FL_OBJECT * ) const;
+	bool FormatsAdd();
+	///
+	bool FormatsBrowser();
+	///
+	void FormatsClear() const;
+	///
+	bool FormatsDelete();
+	///
+	bool FormatsInput();
+
+	///
+	bool WriteableDir( string const & );
+	///
+	bool ReadableDir( string const & );
+	///
+	bool WriteableFile( string const &, string const & = string() );
+
+	///
+	void setPreHandler( FL_OBJECT * ) const;
+	///
+	void printWarning( string const & );
 
 	/// Type definitions from the fdesign produced header file.
 	FD_form_preferences * build_preferences();
@@ -320,11 +345,11 @@ private:
 	Combox * combo_kbmap_1;
 	///
 	Combox * combo_kbmap_2;
-	/// 
-	FL_OBJECT * feedbackObj;
 
 	/// A vector of Formats, to be manipulated in the Format browser.
 	std::vector<Format> formats_vec;
+	/// A vector of Commands, to be manipulated in the Converter browser.
+	std::vector<Command> commands_vec;
 	/// A vector of RGB colours and associated name.
 	static std::vector<X11Colour> colourDB;
 	/** A collection of kmap files.
@@ -333,6 +358,8 @@ private:
 	    Eg, system_lyxdir/kbd/american2.kmap, american2
 	*/
 	static std::pair<std::vector<string>, std::vector<string> > dirlist;
+	///
+	bool warningPosted;
 };
 
 inline

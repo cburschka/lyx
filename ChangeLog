@@ -1,3 +1,25 @@
+2000-11-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/frontends/xforms/FormParagraph.C (updateLanguage): Check
+	iterators to prevent crash.
+
+2000-11-08  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/converter.h (getprettyname, getFromToPrettyname): new methods.
+
+	* src/frontends/xforms/xform_macros.h (C_PREPOSTHANDLER): new macro
+	shortcut for xforms CB to the preemptive or post-handler function.
+
+	* src/frontends/xforms/forms/form_preferences.fd (form_preferences):
+	removed the HIDDEN_TIMER as it's no longer used.
+	Various other small changes.
+
+	* src/frontends/xforms/FormPreferences.[Ch]: removed timer. Use a
+	preemptive handler to obtain feedback, rather than the post-handler.
+	(ColoursLoadBrowser): find "black" and "white" based on RGB values
+	rather than name.
+	Formats tab is now complete. Converters tab is nearly so.
+
 2000-11-09  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (~InsetText): 

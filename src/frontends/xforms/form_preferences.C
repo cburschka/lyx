@@ -45,7 +45,6 @@ FD_form_preferences * FormPreferences::build_preferences()
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 0, 425, 470, 1, "");
   fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 5, 430, 460, 70, "");
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-  fdui->timer_feedback = obj = fl_add_timer(FL_HIDDEN_TIMER, 107, 390, 50, 30, "");
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -464,7 +463,7 @@ FD_form_converters * FormPreferences::build_converters()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  fdui->browser_converters = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_("All converters|#A")));
+  fdui->browser_all = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_("All converters|#A")));
     fl_set_button_shortcut(obj, scex(_("All converters|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
@@ -516,7 +515,7 @@ FD_form_formats * FormPreferences::build_formats()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  fdui->browser_formats = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_("All formats|#A")));
+  fdui->browser_all = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_("All formats|#A")));
     fl_set_button_shortcut(obj, scex(_("All formats|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
@@ -572,22 +571,22 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
-  fdui->check_banner = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 15, 310, 30, idex(_("Show banner|#S")));
+  fdui->check_banner = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 15, 30, 30, idex(_("Show banner|#S")));
     fl_set_button_shortcut(obj, scex(_("Show banner|#S")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->check_auto_region_delete = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 45, 310, 30, idex(_("Auto region delete|#A")));
+  fdui->check_auto_region_delete = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 45, 30, 30, idex(_("Auto region delete|#A")));
     fl_set_button_shortcut(obj, scex(_("Auto region delete|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->check_exit_confirm = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 75, 310, 30, idex(_("Exit confirmation|#E")));
+  fdui->check_exit_confirm = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 75, 30, 30, idex(_("Exit confirmation|#E")));
     fl_set_button_shortcut(obj, scex(_("Exit confirmation|#E")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->check_display_shrtcuts = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 105, 310, 30, _("Display keyboard shortcuts"));
+  fdui->check_display_shrtcuts = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 105, 30, 30, _("Display keyboard shortcuts"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
@@ -599,12 +598,12 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
     fl_set_counter_bounds(obj, 0, 1200);
     fl_set_counter_value(obj, 300);
     fl_set_counter_step(obj, 1, 1);
-  fdui->check_ask_new_file = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 135, 310, 30, idex(_("File->New asks for name|#N")));
+  fdui->check_ask_new_file = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 135, 30, 30, idex(_("File->New asks for name|#N")));
     fl_set_button_shortcut(obj, scex(_("File->New asks for name|#N")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->check_cursor_follows_scrollbar = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 165, 310, 30, idex(_("Cursor follows scrollbar|#C")));
+  fdui->check_cursor_follows_scrollbar = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 165, 30, 30, idex(_("Cursor follows scrollbar|#C")));
     fl_set_button_shortcut(obj, scex(_("Cursor follows scrollbar|#C")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -661,7 +660,7 @@ FD_form_interface * FormPreferences::build_interface()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 148, 80, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 24, 230, 310, 30, idex(_("Override X-Windows dead-keys|#O")));
+  fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 24, 230, 30, 30, idex(_("Override X-Windows dead-keys|#O")));
     fl_set_button_shortcut(obj, scex(_("Override X-Windows dead-keys|#O")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -740,7 +739,7 @@ FD_form_printer * FormPreferences::build_printer()
   fdui->input_name = obj = fl_add_input(FL_NORMAL_INPUT, 130, 10, 80, 30, _("name"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->check_adapt_output = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 240, 10, 120, 30, _("adapt output"));
+  fdui->check_adapt_output = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 240, 10, 30, 30, _("adapt output"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 0, 60, 452, 260, _("Printer Command and Flags"));

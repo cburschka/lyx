@@ -47,7 +47,6 @@ struct FD_form_preferences {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *text_warning;
-	FL_OBJECT *timer_feedback;
 };
 struct FD_form_outer_tab {
 	~FD_form_outer_tab();
@@ -142,7 +141,7 @@ struct FD_form_converters {
 	~FD_form_converters();
 
 	FL_FORM *form;
-	FL_OBJECT *browser_converters;
+	FL_OBJECT *browser_all;
 	FL_OBJECT *button_delete;
 	FL_OBJECT *button_add;
 	FL_OBJECT *input_converter;
@@ -154,7 +153,7 @@ struct FD_form_formats {
 	~FD_form_formats();
 
 	FL_FORM *form;
-	FL_OBJECT *browser_formats;
+	FL_OBJECT *browser_all;
 	FL_OBJECT *input_format;
 	FL_OBJECT *input_gui_name;
 	FL_OBJECT *button_delete;

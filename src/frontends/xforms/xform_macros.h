@@ -18,4 +18,13 @@ extern "C" int C_##FN##METHOD(FL_FORM * ob, void * d)		\
 	return FN::METHOD(ob, d);				\
 }
 
+// The CB used by the preempive and post-object handlers.
+#define C_PREPOSTHANDLER(FN, METHOD)				\
+extern "C" int C_##FN##METHOD(FL_OBJECT * ob, int event,	\
+			    FL_Coord mx, FL_Coord my, 		\
+			    int key, void * xev)		\
+{								\
+	return FN::METHOD(ob, event, mx, my, key, xev);		\
+}
+
 #endif

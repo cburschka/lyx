@@ -1610,11 +1610,11 @@ string LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_SCREEN_FONT_ENCODING:
-		str = N_("The norm for the screen fonts.");
+		str = N_("The encoding for the screen fonts.");
 		break;
 		
 	case RC_SCREEN_FONT_ENCODING_MENU:
-		str = N_("The norm for the menu/popups fonts.");
+		str = N_("The encoding for the menu/popups fonts.");
 		break;
 		
 	case RC_SET_COLOR:

@@ -48,6 +48,10 @@ public:
 	string const getname() const {
 		return name;
 	}
+	///
+	string const getprettyname() const {
+		return prettyname;
+	}
 };
 
 ///
@@ -85,6 +89,11 @@ struct Command {
 	bool visited;
 	/// Used by the BFS algorithm
 	std::vector<Command>::iterator previous;
+	///
+	std::pair<string, string> const getFromToPrettyname() const {
+		return std::pair<string, string>(from->prettyname,
+						 to->prettyname);
+	}
 };
 
 class FormatPair {
