@@ -549,6 +549,8 @@ fontinfo fontinfos[] = {
 	                  inh_shape, LColor::math},
 	{"mathtt",        LyXFont::TYPEWRITER_FAMILY, inh_series,
 	                  inh_shape, LColor::math},
+	{"mathit",        inh_family, inh_series,
+	                  LyXFont::ITALIC_SHAPE, LColor::math},
 	{"cmex",          LyXFont::CMEX_FAMILY, inh_series,
 	                  inh_shape, LColor::none},
 	{"cmm",           LyXFont::CMM_FAMILY, inh_series,
