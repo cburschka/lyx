@@ -323,6 +323,12 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	parent_context.check_end_layout(os);
 	Context context(true, parent_context.textclass, newlayout,
 			parent_context.layout);
+	if (parent_context.deeper_paragraph) {
+		// We are beginning a nested environment after a
+		// deeper paragraph inside the outer list environment.
+		// Therefore we don't need to output a "begin deeper".
+		context.need_end_deeper = true;
+	}
 	context.check_deeper(os);
 	context.check_layout(os);
 	if (context.layout->optionalargs > 0) {
@@ -338,6 +344,11 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	}
 	parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
+	if (parent_context.deeper_paragraph) {
+		// We must suppress the "end deeper" because we
+		// suppressed the "begin deeper" above.
+		context.need_end_deeper = false;
+	}
 	context.check_end_deeper(os);
 	// We don't need really a new paragraph, but
 	// we must make sure that the next item gets a \begin_layout.
@@ -589,6 +600,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		   newlayout->isEnvironment()) {
 		Context context(true, parent_context.textclass, newlayout,
 				parent_context.layout);
+		if (parent_context.deeper_paragraph) {
+			// We are beginning a nested environment after a
+			// deeper paragraph inside the outer list environment.
+			// Therefore we don't need to output a "begin deeper".
+			context.need_end_deeper = true;
+		}
 		parent_context.check_end_layout(os);
 		switch (context.layout->latextype) {
 		case  LATEX_LIST_ENVIRONMENT:
@@ -606,6 +623,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		context.check_deeper(os);
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
+		if (parent_context.deeper_paragraph) {
+			// We must suppress the "end deeper" because we
+			// suppressed the "begin deeper" above.
+			context.need_end_deeper = false;
+		}
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
 	}

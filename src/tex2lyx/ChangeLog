@@ -1,3 +1,8 @@
+2004-06-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (output_command_layout, parse_environment): fix bug 1446
+	by passing parent_context.deeper_paragraph to the child context
+
 2004-06-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* preamble.C, text.C: s/wether/whether/g
