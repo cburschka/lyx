@@ -62,7 +62,7 @@ libfdesign_la_LINK = touch libfdesign.la
 # These are used to generate the .[Ch] files from the .fd ones.
 SHELL = /bin/sh
 SCRIPT = $(srcdir)/fdfix.sh
-SUFFIXES = .fd
+SUFFIX = .fd
 
-%.C: %.fd $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed $(srcdir)/tmp_str.sed
+.fd.C: $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed $(srcdir)/tmp_str.sed
 	$(SHELL) $(SCRIPT) $<
