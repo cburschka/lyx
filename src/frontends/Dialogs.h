@@ -63,6 +63,11 @@ public:
 	Dialogs(LyXView *);
 	//@}
 
+	/** Called bu the graphics cache to connect the approriate frontend
+	 *  image loading routines to the LyX kernel.
+	 */
+	static void initialiseGraphics();
+
 	/** Redraw all visible dialogs because, for example, the GUI colours
 	    have been re-mapped. */
 	static SigC::Signal0<void> redrawGUI;

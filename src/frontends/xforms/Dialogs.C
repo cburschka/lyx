@@ -128,6 +128,12 @@ Dialogs::Dialogs(LyXView * lv)
 	hideAll.connect(hideBufferDependent.slot());
 }
 
+// Called bu the graphics cache to connect the approriate frontend
+// image loading routines to the LyX kernel.
+void Dialogs::initialiseGraphics()
+{
+}
+
 /*****************************************************************************
 
 Q.  WHY does Dialogs::Dialogs pass `this' to dialog constructors?
