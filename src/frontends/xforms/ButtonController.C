@@ -19,7 +19,7 @@ using std::vector;
 ButtonController::ButtonController(ButtonPolicy * bp,
 				   char const * cancel, char const * close)
 	: bp_(bp), okay_(0), apply_(0), cancel_(0), undo_all_(0),
-	  read_only_(), trigger_change_(),
+	  read_only_(), dont_trigger_change_(),
 	  cancel_label(cancel), close_label(close)
 {
 	Assert(bp);
@@ -150,13 +150,14 @@ void ButtonController::readWrite()
 
 bool ButtonController::valid(bool v, FL_OBJECT * obj)
 { 
-	if (obj && !trigger_change_.empty()) {
+	if (obj && !dont_trigger_change_.empty()) {
 		vector<FL_OBJECT *>::const_iterator cit =
-			find(trigger_change_.begin(), trigger_change_.end(),
+			find(dont_trigger_change_.begin(),
+			     dont_trigger_change_.end(),
 			     obj);
 
-		// Only trigger a change if the obj is in the list
-		if (cit != trigger_change_.end()) {
+		// Only trigger a change if the obj is not in the list
+		if (cit == dont_trigger_change_.end()) {
 			if (v) {
 				input(ButtonPolicy::SMI_VALID);
 			} else {

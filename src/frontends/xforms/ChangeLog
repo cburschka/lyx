@@ -1,3 +1,12 @@
+2001-02-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonController.[Ch]: changed trigger_change_ vector and associated
+	methods to dont_trigger_change_ because FL_OBJECTs that trigger a
+	callback to InputCB() but don't trigger a change in the state of the
+	Ok, Apply buttons are much rarer than those that do.
+
+	* FormCitation.C (build): associated change.
+
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ButtonController.C: include algorithm

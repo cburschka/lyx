@@ -97,12 +97,8 @@ void FormCitation::build()
 	bc_.addReadOnly(dialog_->textBefore);
 	bc_.addReadOnly(dialog_->textAftr);
 
-	bc_.addTriggerChange(dialog_->addBtn);
-	bc_.addTriggerChange(dialog_->delBtn);
-	bc_.addTriggerChange(dialog_->upBtn);
-	bc_.addTriggerChange(dialog_->downBtn);
-	bc_.addTriggerChange(dialog_->textBefore);
-	bc_.addTriggerChange(dialog_->textAftr);
+	bc_.addDontTriggerChange(dialog_->citeBrsr);
+	bc_.addDontTriggerChange(dialog_->bibBrsr);
 }
 
 

@@ -90,12 +90,12 @@ public:
 	}
 
 	///
-	void addTriggerChange(FL_OBJECT * obj) {
-		trigger_change_.push_back(obj);
+	void addDontTriggerChange(FL_OBJECT * obj) {
+		dont_trigger_change_.push_back(obj);
 	}
 	///
-	void eraseTriggerChange() {
-		trigger_change_.clear();
+	void eraseDontTriggerChange() {
+		dont_trigger_change_.clear();
 	}
 
 	/* Action Functions */
@@ -135,8 +135,8 @@ private:
 	FL_OBJECT * undo_all_;
 	/// List of items to be deactivated when in one of the read-only states
 	std::list<FL_OBJECT *> read_only_;
-	/// List of items that will trigger a change in activation status.
-	std::vector<FL_OBJECT *> trigger_change_;
+	/// container of items that do not trigger a change in activation status
+	std::vector<FL_OBJECT *> dont_trigger_change_;
 	///
 	char const * cancel_label;
 	///
