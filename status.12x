@@ -47,6 +47,10 @@ What's new
 
 - fix bug where error insets were not correctly removed
 
+- fix some cursor bugs with right-to-ledft languages
+
+- fix Arabic text rendering
+
 - fix bug where using case changing commands on the last word of a
   paragraph would change the whole document (without any undo possible!)
 
