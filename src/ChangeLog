@@ -1,3 +1,7 @@
+2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxfont.h: include LColor.h to satisfy concept checks.
+
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pariterator.h: add typdefs for value_type, difference_type,

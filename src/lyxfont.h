@@ -15,10 +15,11 @@
 #ifndef LYXFONT_H
 #define LYXFONT_H
 
+#include "LColor.h"
+
 #include <iosfwd>
 #include <string>
 
-class LColor_color;
 class LyXLex;
 class BufferParams;
 class Language;

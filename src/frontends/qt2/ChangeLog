@@ -1,3 +1,8 @@
+2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* QPrefsDialog.h: include LColor.h to satisfy concept checks.
+	* lcolorcache.h: ditto
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QtView.C (hasFocus): new method
@@ -11,22 +16,22 @@
 
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* QLToolbar.C (activated, clicked): 
+	* QLToolbar.C (activated, clicked):
 	* QtView.C (activated): do not use the verbose argument to dispatch
 
 2004-11-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* QPrefsDialog.C (new_format(), remove_format()): fix crash when 
+	* QPrefsDialog.C (new_format(), remove_format()): fix crash when
 	adding new formats (add missing converters().update() call) [bug 1692]
-	
+
 	* QPrefsDialog.[Ch]:
-	* ui/QPrefConvertersModule.C: improve ui for converter changes 
+	* ui/QPrefConvertersModule.C: improve ui for converter changes
 	[bug 1488].
 
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* QLImage.C (loadableFormats): use bind, equal_to instead of
-	compare_memfun 
+	compare_memfun
 
 	* lyx_gui.C (start): use for_each instead of explict for loop
 

@@ -1,3 +1,7 @@
+2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Painter.h: include LColor.h to satisfy concept checks.
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* LyXView.h (hasFocus): new abstract virtual function

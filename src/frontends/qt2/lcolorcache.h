@@ -12,12 +12,11 @@
 #ifndef LCOLORCACHE_H
 #define LCOLORCACHE_H
 
+#include "LColor.h"
+
 #include <map>
 
 #include <qcolor.h>
-
-
-class LColor_color;
 
 
 // FIXME: use a fixed-size array not a map ?

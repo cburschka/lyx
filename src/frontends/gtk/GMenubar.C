@@ -11,6 +11,11 @@
 
 #include <config.h>
 
+// Too hard to make concept checks work with this file
+#ifdef _GLIBCPP_CONCEPT_CHECKS
+#undef _GLIBCPP_CONCEPT_CHECKS
+#endif
+
 #include "GMenubar.h"
 #include "GView.h"
 #include "ghelpers.h"

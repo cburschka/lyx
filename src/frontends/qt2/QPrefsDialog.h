@@ -12,6 +12,8 @@
 #ifndef QPREFSDIALOG_H
 #define QPREFSDIALOG_H
 
+#include "LColor.h"
+
 #include "ui/QPrefsDialogBase.h"
 
 #include <vector>

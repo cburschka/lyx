@@ -1,3 +1,8 @@
+2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Disable concept checks with the use of ugly preprocessor stuff
+	in several files. 
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* GView.C (hasFocus): new method, always returns true for now
@@ -23,7 +28,7 @@
 	* The Box dialog:
 	  Dialogs.C, Makefile.am, GBox.C, GBox.h
 	* ghelpers.[Ch], GGraphics.[Ch]: new functions unitsComboFromLength
-		and getDefaultUnit take functionality that was in GGraphics into 
+		and getDefaultUnit take functionality that was in GGraphics into
 		ghelpers
 
 2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -32,7 +37,7 @@
 
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* GToolbar.C (selected, clicked): 
+	* GToolbar.C (selected, clicked):
 	* GMenubar.C (onCommandActivate): do not use the verbose argument
 	to dispatch
 

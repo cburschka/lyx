@@ -1,7 +1,7 @@
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* forkedcontr.C (find_pid): simplify and also make pass concept
-	checks. 
+	checks.
 	(handleCompletedProcesses): make sure that we do not slice the
 	object and satisfy concept checks.
 

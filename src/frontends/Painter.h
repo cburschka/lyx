@@ -13,10 +13,11 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
+#include "LColor.h"
+
 #include <string>
 
 
-class LColor_color;
 class LyXFont;
 
 namespace lyx {

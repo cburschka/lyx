@@ -10,6 +10,11 @@
 
 #include <config.h>
 
+// Too hard to make concept checks work with this file
+#ifdef _GLIBCPP_CONCEPT_CHECKS
+#undef _GLIBCPP_CONCEPT_CHECKS
+#endif
+
 #include "GMathsMatrix.h"
 #include "ControlMath.h"
 
@@ -111,17 +116,17 @@ void GMathsMatrix::updateHorzAlignEntry()
 		     columnsspin_->get_adjustment()->get_value()) {
 		// erase last character of stripped
 		stripped = stripped.erase(stripped.length() - 1,1);
-		barcount = 	countbars(stripped);
+		barcount =	countbars(stripped);
 	}
 
 	while (stripped.length() - barcount <
 	       columnsspin_->get_adjustment()->get_value()) {
 		stripped = stripped + "c";
-		barcount = 	countbars(stripped);
+		barcount =	countbars(stripped);
 	}
 
   if (orig.compare(stripped) != 0) {
-  	ignoreHorzAlign_ = true;
+	ignoreHorzAlign_ = true;
 		horzalignentry_->set_text(stripped);
 		ignoreHorzAlign_ = false;
 	}
