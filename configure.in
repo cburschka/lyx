@@ -201,10 +201,8 @@ case "$lyx_use_frontend" in
 	    FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
 	    ;;
 	esac
-	FRONTEND_INFO=`cat <<EOF
-    libXpm version:               ${XPM_VERSION}\n\
-    libforms version:             ${XFORMS_VERSION}\n
-`
+	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
+    libforms version:             ${XFORMS_VERSION}\n"
 	;;
   gnome)
     AM_PATH_GTKMM(1.2.1,,
@@ -340,8 +338,7 @@ LYX_CHECK_DECL_HDRS(mkstemp,[unistd.h stdlib.h])
 ### Some information on what just happened
 real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
 real_datadir=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
-VERSION_INFO=`cat <<EOF
-Configuration\n\
+VERSION_INFO="Configuration\n\
   Host type:                      ${host}\n\
   Special build flags:           ${lyx_flags}\n\
   C   Compiler:                   ${CC}\n\
@@ -352,8 +349,7 @@ Configuration\n\
   Frontend:                       ${lyx_use_frontend}\n\
 ${FRONTEND_INFO}\
   LyX binary dir:                 ${real_bindir}\n\
-  LyX files dir:                  ${real_datadir}\n
-`
+  LyX files dir:                  ${real_datadir}\n"
 
 AC_SUBST(VERSION_INFO)
 
