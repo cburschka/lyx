@@ -1,198 +1,352 @@
-/*
- * FormCitation.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
- * Changed for Qt2 implementation by Kalle Dalheimer, kalle@klaralvdalens-datakonsult.se
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ *
+ *           LyX, The Document Processor
+ *
+ *           Copyright 2000 The LyX Team.
+ *
+ * ======================================================
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
-#include <algorithm>
-#include <support/lstrings.h>
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "FormCitationDialogImpl.h"
-#undef emit
-
-#include "Dialogs.h"
 #include "FormCitation.h"
-#include "gettext.h"
-#include "buffer.h"
-#include "LyXView.h"
-#include "lyxfunc.h"
-#include "lyxfont.h"
 
+#include <qcombobox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
 
-using SigC::slot;
-using std::vector;
-using std::pair;
+#undef emit
+#include "qt2BC.h"
+#include "ControlCitation.h"
+#include "gettext.h"
+#include "support/lstrings.h"
+#include "biblio.h"
+#include "helper_funcs.h"
+
+
 using std::find;
+using std::max;
+using std::min;
+using std::pair;
 using std::sort;
+using std::vector;
 
-FormCitation::FormCitation(LyXView *v, Dialogs *d)
-    : dialog_(0), lv_(v), d_(d), inset_(0), ih_(0)
+typedef Qt2CB<ControlCitation, Qt2DB<FormCitationDialogImpl> > base_class;
+
+FormCitation::FormCitation(ControlCitation & c)
+    : base_class(c, _("Citation"))
+{}
+
+
+void FormCitation::apply()
 {
-    // let the dialog be shown
-    // This is a permanent connection so we won't bother
-    // storing a copy because we won't be disconnecting.
-    d->showCitation.connect(slot(this, &FormCitation::showCitation));
-    d->createCitation.connect(slot(this, &FormCitation::createCitation));
-}
-
-FormCitation::~FormCitation()
-{
-    delete dialog_;
-}
-
-
-void FormCitation::showCitation(InsetCommand * inset)
-{
-    if (inset == 0) return;  // maybe we should Assert this?
-
-    // If connected to another inset, disconnect from it.
-    if (inset_)
-	ih_.disconnect();
-
-    inset_    = inset;
-    params    = inset->params();
-    ih_ = inset->hideDialog.connect(slot(this, &FormCitation::hide));
-    show();
-}
-
-
-void FormCitation::createCitation(string const & arg)
-{
-    if (inset_) {
-	ih_.disconnect();
-	inset_ = 0;
-    }
-
-    params.setFromString(arg);
-    show();
+    controller().params().setCmdName("cite");
+    controller().params().setContents(getStringFromVector(citekeys));
+    
+    string const after  = dialog_->textAfterED->text().latin1();
+    controller().params().setOptions(after);
 }
 
 
 void FormCitation::hide()
 {
-    if( dialog_ )
-	dialog_->hide();
+    citekeys.clear();
+    bibkeys.clear();
+    
+    Qt2Base::hide();
 }
 
 
-
-void FormCitation::show()
+void FormCitation::build()
 {
-    if (!dialog_)
-	dialog_ = new FormCitationDialogImpl(this, 0, _("LyX: Citation Reference"), false);
+    // PENDING(kalle) Parent?
+    dialog_.reset( new FormCitationDialogImpl( this ));
 
-    dialog_->show();
+    dialog_->searchTypePB->setOn( false );
+    dialog_->searchTypePB->setText( _( "Simple" ) );
+    
+    // Manage the ok, apply, restore and cancel/close buttons
+    bc().setOK(dialog_->okPB);
+    bc().setApply(dialog_->applyPB);
+    bc().setCancel(dialog_->cancelPB);
+    bc().setUndoAll(dialog_->restorePB);
 
-    update();
+    bc().addReadOnly(dialog_->addPB);
+    bc().addReadOnly(dialog_->delPB);
+    bc().addReadOnly(dialog_->upPB);
+    bc().addReadOnly(dialog_->downPB);
+    bc().addReadOnly(dialog_->citationStyleCO);
+    bc().addReadOnly(dialog_->textBeforeED);
+    bc().addReadOnly(dialog_->textAfterED);
+
+    bc().refresh();
+}	
+
+#if K
+ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
+{
+    ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
+    
+    biblio::InfoMap const & theMap = controller().bibkeysInfo();
+    
+    if (ob == dialog_->browser_bib) {
+	fl_deselect_browser(dialog_->browser_cite);
+	
+	unsigned int const sel = fl_get_browser(dialog_->browser_bib);
+	if (sel < 1 || sel > bibkeys.size())
+	    return ButtonPolicy::SMI_NOOP;
+	
+	// Put into browser_info the additional info associated with
+	// the selected browser_bib key
+	fl_clear_browser(dialog_->browser_info);
+	
+	string const tmp = formatted(biblio::getInfo(theMap,
+						     bibkeys[sel-1]),
+				     dialog_->browser_info->w-10 );
+	fl_add_browser_line(dialog_->browser_info, tmp.c_str());
+
+	// Highlight the selected browser_bib key in browser_cite if
+	// present
+	vector<string>::const_iterator cit =
+	    find(citekeys.begin(), citekeys.end(), bibkeys[sel-1]);
+	
+	if (cit != citekeys.end()) {
+	    int const n = int(cit - citekeys.begin());
+	    fl_select_browser_line(dialog_->browser_cite, n+1);
+	    fl_set_browser_topline(dialog_->browser_cite, n+1);
+	}
+	
+	if (!controller().isReadonly()) {
+	    if (cit != citekeys.end()) {
+		setBibButtons(OFF);
+		setCiteButtons(ON);
+	    } else {
+		setBibButtons(ON);
+		setCiteButtons(OFF);
+	    }
+	}
+	
+    } else if (ob == dialog_->browser_cite) {
+	unsigned int const sel = fl_get_browser(dialog_->browser_cite);
+	if (sel < 1 || sel > citekeys.size())
+	    return ButtonPolicy::SMI_NOOP;
+	
+	if (!controller().isReadonly()) {
+	    setBibButtons(OFF);
+	    setCiteButtons(ON);
+	}
+	
+	// Highlight the selected browser_cite key in browser_bib
+	vector<string>::const_iterator cit =
+	    find(bibkeys.begin(), bibkeys.end(), citekeys[sel-1]);
+	
+	if (cit != bibkeys.end()) {
+	    int const n = int(cit - bibkeys.begin());
+	    fl_select_browser_line(dialog_->browser_bib, n+1);
+	    fl_set_browser_topline(dialog_->browser_bib, n+1);
+	    
+	    // Put into browser_info the additional info associated
+	    // with the selected browser_cite key
+	    fl_clear_browser(dialog_->browser_info);
+	    string const tmp =
+		formatted(biblio::getInfo(theMap,
+					  bibkeys[sel-1]),
+			  dialog_->browser_info->w-10);
+	    fl_add_browser_line(dialog_->browser_info, tmp.c_str());
+	}
+
+    } else if (ob == dialog_->button_add) {
+	unsigned int const sel = fl_get_browser(dialog_->browser_bib);
+	if (sel < 1 || sel > bibkeys.size())
+	    return ButtonPolicy::SMI_NOOP;
+	
+	// Add the selected browser_bib key to browser_cite
+	fl_addto_browser(dialog_->browser_cite,
+			 bibkeys[sel-1].c_str());
+	citekeys.push_back(bibkeys[sel-1]);
+
+	int const n = int(citekeys.size());
+	fl_select_browser_line(dialog_->browser_cite, n);
+	
+	setBibButtons(OFF);
+	setCiteButtons(ON);
+	activate = ButtonPolicy::SMI_VALID;
+	
+    } else if (ob == dialog_->button_del) {
+	unsigned int const sel = fl_get_browser(dialog_->browser_cite);
+	if (sel < 1 || sel > citekeys.size())
+	    return ButtonPolicy::SMI_NOOP;
+	
+	// Remove the selected key from browser_cite
+	fl_delete_browser_line(dialog_->browser_cite, sel) ;
+	citekeys.erase(citekeys.begin() + sel-1);
+	
+	setBibButtons(ON);
+	setCiteButtons(OFF);
+	activate = ButtonPolicy::SMI_VALID;
+	
+    } else if (ob == dialog_->button_up) {
+	unsigned int const sel = fl_get_browser(dialog_->browser_cite);
+	if (sel < 2 || sel > citekeys.size())
+	    return ButtonPolicy::SMI_NOOP;
+	
+	// Move the selected key up one line
+	vector<string>::iterator it = citekeys.begin() + sel-1;
+	string const tmp = *it;
+	
+	fl_delete_browser_line(dialog_->browser_cite, sel);
+	citekeys.erase(it);
+	
+	fl_insert_browser_line(dialog_->browser_cite, sel-1, tmp.c_str());
+	fl_select_browser_line(dialog_->browser_cite, sel-1);
+	citekeys.insert(it-1, tmp);
+	setCiteButtons(ON);
+	activate = ButtonPolicy::SMI_VALID;
+	
+    } else if (ob == dialog_->button_down) {
+	unsigned int const sel = fl_get_browser(dialog_->browser_cite);
+	if (sel < 1 || sel > citekeys.size()-1)
+	    return ButtonPolicy::SMI_NOOP;
+	
+	// Move the selected key down one line
+	vector<string>::iterator it = citekeys.begin() + sel-1;
+	string const tmp = *it;
+	
+	fl_delete_browser_line(dialog_->browser_cite, sel);
+	citekeys.erase(it);
+	
+	fl_insert_browser_line(dialog_->browser_cite, sel+1, tmp.c_str());
+	fl_select_browser_line(dialog_->browser_cite, sel+1);
+	citekeys.insert(it+1, tmp);
+	setCiteButtons(ON);
+	activate = ButtonPolicy::SMI_VALID;
+	
+    } else if (ob == dialog_->button_search_type) {
+	if (fl_get_button(dialog_->button_search_type))
+	    fl_set_object_label(dialog_->button_search_type,
+				_("Regex"));
+	else
+	    fl_set_object_label(dialog_->button_search_type,
+				_("Simple"));
+	return ButtonPolicy::SMI_NOOP;
+	
+    } else if (ob == dialog_->button_previous ||
+	       ob == dialog_->button_next) {
+	
+	string const str = fl_get_input(dialog_->input_search);
+	
+	biblio::Direction const dir =
+	    (ob == dialog_->button_previous) ?
+	    biblio::BACKWARD : biblio::FORWARD;
+	
+	biblio::Search const type =
+	    fl_get_button(dialog_->button_search_type) ?
+	    biblio::REGEX : biblio::SIMPLE;
+	
+	vector<string>::const_iterator start = bibkeys.begin();
+	int const sel = fl_get_browser(dialog_->browser_bib);
+	if (sel >= 1 && sel <= int(bibkeys.size()))
+	    start += sel-1;
+	
+	// Find the NEXT instance...
+	if (dir == biblio::FORWARD)
+	    start += 1;
+	else
+	    start -= 1;
+	
+	vector<string>::const_iterator const cit =
+	    biblio::searchKeys(theMap, bibkeys, str,
+			       start, type, dir);
+	
+	if (cit == bibkeys.end())
+	    return ButtonPolicy::SMI_NOOP;
+	
+	int const found = int(cit - bibkeys.begin()) + 1;
+	if (found == sel)
+	    return ButtonPolicy::SMI_NOOP;
+	
+	// Update the display
+	int const top = max(found-5, 1);
+	fl_set_browser_topline(dialog_->browser_bib, top);
+	fl_select_browser_line(dialog_->browser_bib, found);
+	input(dialog_->browser_bib, 0);
+	
+    } else if (ob == dialog_->choice_style ||
+	       ob == dialog_->input_before ||
+	       ob == dialog_->input_after) {
+	activate = ButtonPolicy::SMI_VALID;
+    }
+    
+    return activate;
 }
+#endif
 
 
 void FormCitation::update()
 {
-    bibkeys.clear();
-    bibkeysInfo.clear();
-
-    vector<pair<string,string> > blist =
-	lv_->buffer()->getBibkeyList();
-    sort(blist.begin(), blist.end());
-
-    for (unsigned int i = 0; i < blist.size(); ++i) {
-	bibkeys.push_back(blist[i].first);
-	bibkeysInfo.push_back(blist[i].second);
-    }
-    blist.clear();
-
-    updateBrowser(dialog_->bibliographyKeysLB, bibkeys);
-
+    // Make the list of all available bibliography keys
+    bibkeys = biblio::getKeys(controller().bibkeysInfo());
+    updateBrowser(dialog_->bibLB, bibkeys);
+    
     // Ditto for the keys cited in this inset
-    citekeys.clear();
-    string tmp, keys(params.getContents());
-    keys = frontStrip(split(keys, tmp, ','));
-    while (!tmp.empty()) {
-	citekeys.push_back(tmp);
-	keys = frontStrip(split(keys, tmp, ','));
-    }
-    updateBrowser(dialog_->insetKeysLB, citekeys);
+    citekeys = getVectorFromString(controller().params().getContents());
+    updateBrowser(dialog_->citeLB, citekeys);
 
     // No keys have been selected yet, so...
     dialog_->infoML->clear();
     setBibButtons(OFF);
     setCiteButtons(OFF);
 
-    dialog_->textAfterED->setText( params.getOptions().c_str() );
+    int noKeys = int(max(bibkeys.size(), citekeys.size()));
+
+    // Place bounds, so that 4 <= noKeys <= 10
+    noKeys = max(4, min(10, noKeys));
+
+    dialog_->textAfterED->setText( controller().params().getOptions().c_str());
 }
 
 
-void FormCitation::updateBrowser( QListBox* listbox,
+void FormCitation::updateBrowser( QListBox* browser,
 				  vector<string> const & keys) const
 {
-    listbox->clear();
+    browser->clear();
 
-    for (unsigned int i = 0; i < keys.size(); ++i)
-	listbox->insertItem( keys[i].c_str() );
+    for (vector<string>::const_iterator it = keys.begin();
+	 it < keys.end(); ++it) {
+	string key = frontStrip(strip(*it));
+	browser->insertItem( key.c_str() );
+    }
 }
 
 
 void FormCitation::setBibButtons(State status) const
 {
-    dialog_->leftPB->setEnabled( status == ON );
+    dialog_->addPB->setEnabled( (status == ON) );
 }
 
 
 void FormCitation::setCiteButtons(State status) const
 {
-    int const sel     = dialog_->insetKeysLB->currentItem();
-    int const maxline = dialog_->insetKeysLB->count();
-
+    int const sel     = dialog_->citeLB->currentItem();
+    int const maxline = dialog_->citeLB->count()-1;
     bool const activate      = (status == ON);
-    bool const activate_up   = (activate && sel != 1);
+    bool const activate_up   = (activate && sel != 0);
     bool const activate_down = (activate && sel != maxline);
 
-    dialog_->stopPB->setEnabled(activate);
-    dialog_->upPB->setEnabled(activate_up);
-    dialog_->downPB->setEnabled(activate_down);
-}
-
-
-void FormCitation::apply()
-{
-    if (lv_->buffer()->isReadonly()) return;
-
-    string contents;
-    for (unsigned int i = 0; i < citekeys.size(); ++i) {
-	if (i > 0) contents += ",";
-	contents += citekeys[i];
-    }
-
-    params.setContents(contents);
-    params.setOptions( dialog_->textAfterED->text().latin1() );
-
-    if (inset_ != 0) {
-	// Only update if contents have changed
-	if (params != inset_->params()) {
-	    inset_->setParams(params);
-	    lv_->view()->updateInset(inset_, true);
-	}
-    } else {
-	lv_->getLyXFunc()->Dispatch(LFUN_CITATION_INSERT,
-				    params.getAsString());
-    }
+    dialog_->delPB->setEnabled( activate );
+    dialog_->upPB->setEnabled( activate_up );
+    dialog_->downPB->setEnabled( activate_down );
 }
 
 

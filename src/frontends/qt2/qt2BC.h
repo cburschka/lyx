@@ -25,6 +25,7 @@
 #pragma interface
 #endif
 
+class QWidget;
 class QButton;
 
 #include "ButtonController.h"
@@ -59,7 +60,7 @@ public:
 		undo_all_ = obj;
 	}
 	///
-	void addReadOnly(QButton * obj) {
+	void addReadOnly(QWidget * obj) {
 		read_only_.push_front(obj);
 	}
 	///
@@ -81,7 +82,7 @@ private:
 	///
 	QButton * undo_all_;
 	/// List of items to be deactivated when in one of the read-only states
-	std::list<QButton *> read_only_;
+	std::list<QWidget *> read_only_;
 };
 
 #endif // XFORMSBC_H

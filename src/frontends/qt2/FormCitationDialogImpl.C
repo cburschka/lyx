@@ -1,5 +1,5 @@
 /**
- * $Id: FormCitationDialogImpl.C,v 1.2 2001/03/26 19:34:45 kalle Exp $
+ * $Id: FormCitationDialogImpl.C,v 1.3 2001/03/29 18:58:47 kalle Exp $
  */
 
 #include "FormCitationDialogImpl.h"
@@ -41,7 +41,7 @@ FormCitationDialogImpl::~FormCitationDialogImpl()
 }
 
 
-
+#if 0
 // These slots correspond to the XForms input() method.
 void FormCitationDialogImpl::slotBibSelected( int sel )
 {
@@ -191,3 +191,4 @@ void FormCitationDialogImpl::close_adaptor()
     form_->close();
     hide();
 }
+#endif

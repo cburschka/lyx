@@ -57,7 +57,7 @@ void qt2BC::refresh()
 		bool enable = true;
 		if (bp().isReadOnly()) enable = false;
 
-		for (std::list<QButton *>::iterator iter = read_only_.begin();
+		for (std::list<QWidget *>::iterator iter = read_only_.begin();
 		     iter != read_only_.end(); ++iter) {
 		    (*iter)->setEnabled( enable );
 		}

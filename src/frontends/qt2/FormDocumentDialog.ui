@@ -50,11 +50,11 @@
                 <hbox>
                     <property stdset="1">
                         <name>margin</name>
-                        <number>11</number>
+                        <number>-1</number>
                     </property>
                     <property stdset="1">
                         <name>spacing</name>
-                        <number>6</number>
+                        <number>-1</number>
                     </property>
                     <widget>
                         <class>QLayoutWidget</class>
@@ -3724,7 +3724,7 @@
                                     <class>QToolButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>bulletPanelDing4PB</cstring>
+                                        <cstring>bulletDing4PB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>geometry</name>
@@ -4100,7 +4100,7 @@
                                         <class>QLineEdit</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>bulletLatexED</cstring>
+                                            <cstring>latexED</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>maxLength</name>
@@ -4698,7 +4698,7 @@
         <slot>slotClose()</slot>
     </connection>
     <connection>
-        <sender>bulletLatexED</sender>
+        <sender>latexED</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletLaTeX(const QString&amp;)</slot>
@@ -4734,7 +4734,7 @@
         <slot>slotBulletDing3()</slot>
     </connection>
     <connection>
-        <sender>bulletPanelDing4PB</sender>
+        <sender>bulletDing4PB</sender>
         <signal>clicked()</signal>
         <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDing4()</slot>
@@ -4868,7 +4868,7 @@
     <tabstop>postscriptDriverCO</tabstop>
     <tabstop>useAmsMathCB</tabstop>
     <tabstop>bulletSizeCO</tabstop>
-    <tabstop>bulletLatexED</tabstop>
+    <tabstop>latexED</tabstop>
     <tabstop>restorePB</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>applyPB</tabstop>

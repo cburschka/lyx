@@ -1,96 +1,70 @@
-/* FormCitation.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
- * Changed for Qt2 port by Kalle Dalheimer, kalle@klaralvdalens-datakonsult.se
- */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ *
+ *           LyX, The Document Processor
+ *
+ *           Copyright 2000 The LyX Team.
+ *
+ * ======================================================
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+*/
 
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
-#include "DialogBase.h"
-#include "insets/insetcommand.h"
-
-#include <vector> 
- 
-class Dialogs;
-class LyXView;
-class FormCitationDialog;
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 class QListBox;
 
-class FormCitation : public DialogBase {
-    friend class FormCitationDialogImpl;
-public: 
-	/**@name Constructors and Destructors */
-	//@{
+#include "Qt2Base.h"
+#undef emit
+
+/** This class provides a Qt2 implementation of the Citation Dialog.
+    @author Kalle Dalheimer
+*/
+class ControlCitation;
+class FormCitationDialogImpl;
+
+class FormCitation : public Qt2CB<ControlCitation, Qt2DB<FormCitationDialogImpl> > {
+public:
+    ///
+    FormCitation(ControlCitation &);
+
+private:
+    ///
+    enum State {
 	///
-	FormCitation(LyXView *, Dialogs *);
-	/// 
-	~FormCitation();
-	//@}
-
-	/// Apply changes
-	void apply();
-private: 
+	ON,
 	///
-	enum State {
-		ON,
-		///
-		OFF
-	};
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog.
-	void update();
+	OFF
+    };
 
-	void setBibButtons(State status) const;
-	void setCiteButtons(State status) const;
+    /// Set the Params variable for the Controller.
+    virtual void apply();
+    /// Build the dialog.
+    virtual void build();
+    /// Hide the dialog.
+    virtual void hide();
+    /// Update dialog before/whilst showing it.
+    virtual void update();
+    // 	/// Filter the inputs on callback from xforms
+    // 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	/// create a Citation inset
-	void createCitation(string const &);
-	/// edit a Citation inset
-	void showCitation(InsetCommand* );
- 
-	/// update a listbox
-	void updateBrowser( QListBox* listbox,
-			    std::vector<string> const & keys) const;
- 
-	/// Real GUI implementation.
-	FormCitationDialog * dialog_;
+    void updateBrowser(QListBox*, std::vector<string> const &) const;
+    ///
+    void setBibButtons(State) const;
+    ///
+    void setCiteButtons(State) const;
 
-	/// the LyXView we belong to
-	LyXView * lv_;
- 
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	/// pointer to the inset if any
-	InsetCommand * inset_;
-	/// insets params
-	InsetCommandParams params;
-	/// is the inset we are reading from a readonly buffer ?
-	bool readonly;
-	
-	/// Inset hide connection.
-	SigC::Connection ih_;
-
-	std::vector<string> citekeys;
-	///
-	std::vector<string> bibkeys;
-	///
-	std::vector<string> bibkeysInfo;
+    ///
+    std::vector<string> citekeys;
+    ///
+    std::vector<string> bibkeys;
 };
 
-#endif
+#endif // FORMCITATION_H

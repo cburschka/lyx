@@ -11,8 +11,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>388</width>
-            <height>482</height>
+            <width>391</width>
+            <height>601</height>
         </rect>
     </property>
     <property stdset="1">
@@ -62,7 +62,7 @@
                             <class>QPushButton</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>leftPB</cstring>
+                                <cstring>addPB</cstring>
                             </property>
                             <property stdset="1">
                                 <name>sizePolicy</name>
@@ -84,7 +84,7 @@
                             <class>QPushButton</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>stopPB</cstring>
+                                <cstring>delPB</cstring>
                             </property>
                             <property stdset="1">
                                 <name>sizePolicy</name>
@@ -180,7 +180,7 @@
                     </item>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>bibliographyKeysLB</cstring>
+                        <cstring>bibLB</cstring>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -197,7 +197,7 @@
                     </item>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>insetKeysLB</cstring>
+                        <cstring>citeLB</cstring>
                     </property>
                     <property stdset="1">
                         <name>selectionMode</name>
@@ -257,6 +257,151 @@
             <property>
                 <name>name</name>
                 <cstring>Spacer3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget>
+            <class>QGroupBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>GroupBox4</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Search</string>
+            </property>
+            <vbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout35</cstring>
+                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>searchED</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QPushButton</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>PushButton14</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Previous</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout36</cstring>
+                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QPushButton</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>searchTypePB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Simple</string>
+                            </property>
+                            <property stdset="1">
+                                <name>toggleButton</name>
+                                <bool>true</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>toggleButton</name>
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property>
+                                <name>name</name>
+                                <cstring>Spacer2_2</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>orientation</name>
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>sizeType</name>
+                                <enum>Expanding</enum>
+                            </property>
+                            <property>
+                                <name>sizeHint</name>
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget>
+                            <class>QPushButton</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>PushButton15</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Next</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+        <spacer>
+            <property>
+                <name>name</name>
+                <cstring>Spacer1</cstring>
             </property>
             <property stdset="1">
                 <name>orientation</name>
@@ -499,25 +644,25 @@
 </images>
 <connections>
     <connection>
-        <sender>insetKeysLB</sender>
+        <sender>citeLB</sender>
         <signal>selected(int)</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotInsetSelected(int)</slot>
     </connection>
     <connection>
-        <sender>bibliographyKeysLB</sender>
+        <sender>bibLB</sender>
         <signal>selected(int)</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotBibSelected(int)</slot>
     </connection>
     <connection>
-        <sender>leftPB</sender>
+        <sender>addPB</sender>
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotAddClicked()</slot>
     </connection>
     <connection>
-        <sender>stopPB</sender>
+        <sender>delPB</sender>
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotDelClicked()</slot>

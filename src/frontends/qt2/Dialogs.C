@@ -17,6 +17,7 @@
 
 #include "Dialogs.h"
 
+#include "FormCitationDialogImpl.h"
 #include "FormCopyrightDialogImpl.h"
 #undef emit
 
@@ -41,8 +42,11 @@
 //#include "FormUrl.h"
 
 #include "BufferView.h"
+#include "buffer.h"
 
+#include "controllers/ControlCitation.h"
 #include "controllers/ControlCopyright.h"
+
 #include "GUI.h"
 
 #include "qt2BC.h"
@@ -57,15 +61,13 @@ Dialogs::Dialogs(LyXView * lv)
     splash_.reset( new FormSplash(lv, this) );
 
     // dialogs that have been converted to new scheme
+    add( new GUICitation<FormCitation, qt2BC>( *lv, *this ) );
     add( new GUICopyright<FormCopyright, qt2BC>( *lv, *this ) );
-
 
     // ------------------------------------------
 
     // dialogs that are still old-style
     add( new FormCharacter(lv, this));
-    add( new FormCitation(lv, this));
-    //	add(new FormCopyright(lv, this));
 
     // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-22
     //    add( new FormCredits(lv, this));
