@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.1\n"
-"POT-Creation-Date: 2002-12-13 16:04+0100\n"
+"POT-Creation-Date: 2003-01-08 15:06+0100\n"
 "PO-Revision-Date: 2000-01-20 02:56+01:00\n"
 "Last-Translator: Fulvio Boggia <muci@freenet.hut.fi>\n"
 "Language-Team: Italiano <it@li.org>\n"
@@ -223,8 +223,8 @@ msgstr "  Salvataggio fallito! Sto provando..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Salvataggio fallito! Accidenti. Il documento è perso."
 
-#: src/BufferView2.C:72 src/BufferView2.C:82 src/bufferlist.C:369
-#: src/bufferlist.C:481 src/lyx_cb.C:218
+#: src/bufferlist.C:369 src/bufferlist.C:481 src/BufferView2.C:72
+#: src/BufferView2.C:82 src/lyx_cb.C:219
 msgid "Error!"
 msgstr "Errore!"
 
@@ -350,8 +350,8 @@ msgstr ", Profondità: "
 msgid ", Spacing: "
 msgstr "Spaziatura"
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:652
-#: src/frontends/qt2/QDocument.C:111
+#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
+#: src/ext_l10n.h:652
 #, fuzzy
 msgid "Single"
 msgstr "Singole|#S"
@@ -360,15 +360,15 @@ msgstr "Singole|#S"
 msgid "Onehalf"
 msgstr ""
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:654
-#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
+#: src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518
+#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:654
 #, fuzzy
 msgid "Double"
 msgstr "Doppie|#D"
@@ -402,7 +402,7 @@ msgstr "Scegli il documento da inserire"
 #: src/BufferView_pimpl.C:1629 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:165
 #: src/frontends/controllers/ControlGraphics.C:153
-#: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:113
+#: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:114
 #: src/lyxfunc.C:1740 src/lyxfunc.C:1824 src/lyxfunc.C:1865 src/lyxfunc.C:1952
 #, fuzzy
 msgid "Documents|#o#O"
@@ -427,9 +427,8 @@ msgstr "Annullato."
 msgid "Inserting document"
 msgstr "Sto inserendo il documento"
 
-#: src/BufferView_pimpl.C:1663 src/ext_l10n.h:635
-#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1799
-#: src/lyxfunc.C:1919
+#: src/BufferView_pimpl.C:1663 src/frontends/xforms/FormDocument.C:327
+#: src/lyxfunc.C:1799 src/lyxfunc.C:1919 src/ext_l10n.h:635
 msgid "Document"
 msgstr "Documento"
 
@@ -490,11 +489,6 @@ msgstr "Mancano gli argomenti"
 #: src/BufferView_pimpl.C:3233
 msgid "Word `"
 msgstr ""
-
-#: src/BufferView_pimpl.C:3234
-#, fuzzy
-msgid "' indexed."
-msgstr "."
 
 #: src/BufferView_pimpl.C:3391
 #, fuzzy
@@ -593,7 +587,7 @@ msgstr "Non riesco a scrivere il file"
 msgid "No information for converting from "
 msgstr ""
 
-#: src/CutAndPaste.C:425 src/CutAndPaste.C:428 src/converter.C:594
+#: src/converter.C:594 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 #, fuzzy
 msgid " to "
 msgstr " di "
@@ -865,19 +859,19 @@ msgid "No year"
 msgstr "Nessun numero"
 
 #. /
-#: src/LyXAction.C:156 src/ext_l10n.h:569 src/ext_l10n.h:603
-#: src/ext_l10n.h:762 src/ext_l10n.h:899
-#: src/frontends/controllers/ButtonController.h:73 src/lyxfunc.C:1084
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:156
+#: src/lyxfunc.C:1084 src/ext_l10n.h:569 src/ext_l10n.h:603 src/ext_l10n.h:762
+#: src/ext_l10n.h:899
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/LyXAction.C:129 src/ext_l10n.h:1098 src/ext_l10n.h:1157
 #: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/FormMathsPanel.C:70
 #: src/frontends/xforms/FormMathsPanel.C:406
-#: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:129
+#: src/ext_l10n.h:1098 src/ext_l10n.h:1157
 msgid "Close"
 msgstr "Chiudi"
 
@@ -963,8 +957,8 @@ msgstr "Piccolo"
 msgid "Normal"
 msgstr "Normale"
 
-#: src/ext_l10n.h:743 src/frontends/controllers/character.C:105
-#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
+#: src/lyxfont.C:56 src/ext_l10n.h:743
 msgid "Large"
 msgstr "Grande"
 
@@ -976,8 +970,8 @@ msgstr "Molto grande"
 msgid "Largest"
 msgstr "Grandissimo"
 
-#: src/ext_l10n.h:746 src/frontends/controllers/character.C:111
-#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
+#: src/lyxfont.C:57 src/ext_l10n.h:746
 msgid "Huge"
 msgstr "Enorme"
 
@@ -1147,7 +1141,7 @@ msgstr "Seleziona la linea successiva"
 msgid "Clipart|#C#c"
 msgstr "Galleria"
 
-#: src/ext_l10n.h:859 src/frontends/controllers/ControlGraphics.C:201
+#: src/frontends/controllers/ControlGraphics.C:201 src/ext_l10n.h:859
 #, fuzzy
 msgid "center"
 msgstr "Centrato|#t"
@@ -1298,7 +1292,6 @@ msgid "Filename can't contain any of these characters:"
 msgstr "Il nome del file non può contenere nessuno di questi caratteri:"
 
 #: src/frontends/controllers/helper_funcs.C:61
-#, c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "spazio, '#', '~', '$' or '%'."
 
@@ -1310,8 +1303,8 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: src/ext_l10n.h:537 src/ext_l10n.h:1061 src/frontends/qt2/Alert_pimpl.C:45
-#: src/frontends/qt2/QParagraphDialog.C:49
+#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:537 src/ext_l10n.h:1061
 #, fuzzy
 msgid "&Cancel"
 msgstr "Annulla"
@@ -1325,19 +1318,19 @@ msgstr "Stampa"
 msgid "*|All files"
 msgstr ""
 
-#: src/ext_l10n.h:836 src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845
-#: src/frontends/qt2/lengthcombo.C:19
+#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:836 src/ext_l10n.h:839
+#: src/ext_l10n.h:842 src/ext_l10n.h:845
 msgid "cm"
 msgstr ""
 
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
-#: src/frontends/qt2/lengthcombo.C:20
+#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:837 src/ext_l10n.h:840
+#: src/ext_l10n.h:843 src/ext_l10n.h:846
 #, fuzzy
 msgid "in"
 msgstr "Minuscolo"
 
-#: src/ext_l10n.h:835 src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844
-#: src/frontends/qt2/lengthcombo.C:21
+#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:835 src/ext_l10n.h:838
+#: src/ext_l10n.h:841 src/ext_l10n.h:844
 msgid "pt"
 msgstr ""
 
@@ -1371,7 +1364,7 @@ msgstr ""
 msgid "dd"
 msgstr "Aggiungi a|#g"
 
-#: src/ext_l10n.h:473 src/frontends/qt2/lengthcombo.C:29
+#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:473
 msgid "cc"
 msgstr ""
 
@@ -1390,7 +1383,6 @@ msgid "%c"
 msgstr ""
 
 #: src/frontends/qt2/lengthcombo.C:33
-#, c-format
 msgid "%l"
 msgstr ""
 
@@ -1398,8 +1390,8 @@ msgstr ""
 msgid "FIXME - describe the units."
 msgstr ""
 
-#: src/ext_l10n.h:528 src/frontends/qt2/QAbout.C:32
-#: src/frontends/xforms/FormAboutlyx.C:28
+#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
+#: src/ext_l10n.h:528
 msgid "About LyX"
 msgstr ""
 
@@ -1412,8 +1404,8 @@ msgstr "Oggetto bibliografico"
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/ext_l10n.h:560 src/frontends/qt2/QBibtex.C:114
-#: src/frontends/qt2/QBibtexDialog.C:77
+#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
+#: src/ext_l10n.h:560
 #, fuzzy
 msgid "Other ..."
 msgstr "altro..."
@@ -1437,13 +1429,13 @@ msgstr "Database:"
 msgid "Select a BibTeX database to add"
 msgstr "Database:"
 
-#: src/ext_l10n.h:570 src/frontends/qt2/QCharacter.C:31
+#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:570
 #, fuzzy
 msgid "Character"
 msgstr "Insieme dei caratteri:|#I"
 
-#: src/ext_l10n.h:599 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:117
+#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
+#: src/ext_l10n.h:599
 msgid "Citation"
 msgstr "Citazione"
 
@@ -1458,30 +1450,30 @@ msgstr "Il ripristino non è stato ancora implementato in modo matematico"
 msgid "Document Settings"
 msgstr "Documenti"
 
-#: src/ext_l10n.h:671 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:568
+#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:568 src/ext_l10n.h:671
 msgid "Default"
 msgstr "Predefinito"
 
-#: src/ext_l10n.h:672 src/ext_l10n.h:1009 src/ext_l10n.h:1018
-#: src/frontends/qt2/QDocument.C:73
+#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:672 src/ext_l10n.h:1009
+#: src/ext_l10n.h:1018
 #, fuzzy
 msgid "Custom"
 msgstr "Dimensioni alternative"
 
-#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:74
+#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:673
 #, fuzzy
 msgid "USletter"
 msgstr "Sinistra"
 
-#: src/ext_l10n.h:674 src/frontends/qt2/QDocument.C:75
+#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:674
 msgid "USlegal"
 msgstr ""
 
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:76
+#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:675
 msgid "USexecutive"
 msgstr ""
 
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:77
+#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:676
 msgid "A3"
 msgstr ""
 
@@ -1489,88 +1481,88 @@ msgstr ""
 msgid "A4"
 msgstr ""
 
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:79
+#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:677
 msgid "A5"
 msgstr ""
 
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:80
+#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:678
 msgid "B3"
 msgstr ""
 
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:81
+#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:679
 msgid "B4"
 msgstr ""
 
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:82
+#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:680
 msgid "B5"
 msgstr ""
 
-#: src/ext_l10n.h:682 src/ext_l10n.h:1003 src/ext_l10n.h:1012
-#: src/ext_l10n.h:1046 src/frontends/qt2/QDocument.C:84
+#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:682 src/ext_l10n.h:1003
+#: src/ext_l10n.h:1012 src/ext_l10n.h:1046
 #, fuzzy
 msgid "None"
 msgstr "Fatto"
 
-#: src/ext_l10n.h:683 src/frontends/qt2/QDocument.C:85
+#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:683
 msgid "A4 small Margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:684 src/frontends/qt2/QDocument.C:86
+#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:684
 msgid "A4 very small Margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:87
+#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:685
 msgid "A4 very wide margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:653 src/frontends/qt2/QDocument.C:112
+#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:653
 msgid "OneHalf"
 msgstr ""
 
-#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:655
 #, fuzzy
 msgid "Other"
 msgstr "Altro...|#l"
 
 #. the document language page
+#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
+#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
+#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
 #: src/ext_l10n.h:640 src/ext_l10n.h:656 src/ext_l10n.h:705 src/ext_l10n.h:736
-#: src/ext_l10n.h:855 src/frontends/qt2/QDocument.C:116
-#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
-#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
-#: src/frontends/qt2/QDocument.C:579
+#: src/ext_l10n.h:855
 #, fuzzy
 msgid "default"
 msgstr "Predefinito"
 
-#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:117
+#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:657
 msgid "10"
 msgstr ""
 
-#: src/ext_l10n.h:658 src/frontends/qt2/QDocument.C:118
+#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:658
 #, fuzzy
 msgid "11"
 msgstr "1|#1"
 
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:119
+#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:659
 msgid "12"
 msgstr ""
 
-#: src/ext_l10n.h:641 src/frontends/qt2/QDocument.C:125
+#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:641
 #, fuzzy
 msgid "empty"
 msgstr ", Profondità: "
 
-#: src/ext_l10n.h:556 src/ext_l10n.h:642 src/frontends/qt2/QDocument.C:126
+#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:556 src/ext_l10n.h:642
 #, fuzzy
 msgid "plain"
 msgstr "Spaziatura"
 
-#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:127
+#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:643
 #, fuzzy
 msgid "headings"
 msgstr "Mappa dei tasti"
 
-#: src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:128
+#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:644
 msgid "fancy"
 msgstr ""
 
@@ -1593,77 +1585,77 @@ msgstr ""
 msgid "Length"
 msgstr "Lungh.|#h"
 
-#: src/ext_l10n.h:706 src/frontends/qt2/QDocument.C:153
+#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:706
 #, fuzzy
 msgid "auto"
 msgstr " di "
 
-#: src/ext_l10n.h:707 src/frontends/qt2/QDocument.C:154
+#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:707
 #, fuzzy
 msgid "latin1"
 msgstr "Titolo|#t"
 
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:155
+#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:708
 #, fuzzy
 msgid "latin2"
 msgstr "Titolo|#t"
 
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:156
+#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:709
 #, fuzzy
 msgid "latin3"
 msgstr "Titolo|#t"
 
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:157
+#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:710
 #, fuzzy
 msgid "latin4"
 msgstr "Titolo|#t"
 
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:158
+#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:711
 #, fuzzy
 msgid "latin5"
 msgstr "Titolo|#t"
 
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:159
+#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:712
 #, fuzzy
 msgid "latin9"
 msgstr "Titolo|#t"
 
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:160
+#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:713
 msgid "koi8-r"
 msgstr ""
 
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:161
+#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:714
 msgid "koi8-u"
 msgstr ""
 
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:162
+#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:715
 msgid "cp866"
 msgstr ""
 
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:163
+#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:716
 msgid "cp1251"
 msgstr ""
 
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:164
+#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:717
 msgid "iso88595"
 msgstr ""
 
-#: src/ext_l10n.h:720 src/frontends/qt2/QDocument.C:171
+#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:720
 #, fuzzy
 msgid "``text''"
 msgstr "LaTeX "
 
-#: src/ext_l10n.h:721 src/frontends/qt2/QDocument.C:172
+#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:721
 #, fuzzy
 msgid "''text''"
 msgstr "LaTeX "
 
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:173
+#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:722
 #, fuzzy
 msgid ",,text``"
 msgstr "LaTeX "
 
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:174
+#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:723
 #, fuzzy
 msgid ",,text''"
 msgstr "LaTeX "
@@ -1678,45 +1670,45 @@ msgstr "LaTeX "
 msgid "»text«"
 msgstr "LaTeX "
 
-#: src/ext_l10n.h:737 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171
+#: src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:737
 #, fuzzy
 msgid "tiny"
 msgstr "Minuscolo"
 
-#: src/ext_l10n.h:738 src/frontends/qt2/QDocument.C:198
+#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:738
 msgid "script"
 msgstr ""
 
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:199
+#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:739
 #, fuzzy
 msgid "footnote"
 msgstr "Inserisci una nota a piè di pagina"
 
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180
+#: src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:740
 #, fuzzy
 msgid "small"
 msgstr "Piccolo"
 
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183
+#: src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:741
 #, fuzzy
 msgid "normal"
 msgstr "Normale"
 
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186
+#: src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:742
 #, fuzzy
 msgid "large"
 msgstr "Grande"
 
-#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:204
+#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:744
 msgid "LARGE"
 msgstr ""
 
-#: src/ext_l10n.h:745 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195
+#: src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:745
 #, fuzzy
 msgid "huge"
 msgstr "Enorme"
@@ -1779,8 +1771,8 @@ msgstr "predefiniti di questa classe di documenti?"
 msgid "Unable to switch to new document class."
 msgstr "Non sono in grado di passare alla nuova classe del documento."
 
-#: src/ext_l10n.h:772 src/frontends/qt2/QError.C:23
-#: src/frontends/xforms/FormError.C:24
+#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
+#: src/ext_l10n.h:772
 msgid "LaTeX Error"
 msgstr "Errore di LaTeX"
 
@@ -1817,12 +1809,12 @@ msgstr ""
 msgid "Include"
 msgstr "Includi"
 
-#: src/ext_l10n.h:538 src/ext_l10n.h:895 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
+#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
+#: src/insets/insetindex.C:61 src/ext_l10n.h:538 src/ext_l10n.h:895
 msgid "Index"
 msgstr "Indice"
 
-#: src/ext_l10n.h:900 src/frontends/qt2/QLog.C:33
+#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:900
 msgid "Log"
 msgstr ""
 
@@ -1846,7 +1838,7 @@ msgstr "Non ho trovato avvisi."
 msgid "No LaTeX log file found"
 msgstr "Non ho trovato avvisi."
 
-#: src/ext_l10n.h:1047 src/frontends/qt2/QMinipage.C:33
+#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1047
 #, fuzzy
 msgid "Minipage"
 msgstr "Minipagina"
@@ -1860,13 +1852,13 @@ msgstr "Ho impostato la struttura del paragrafo"
 msgid "LyX: Paragraph Settings"
 msgstr "Ambiente del paragrafo"
 
-#: src/ext_l10n.h:533 src/ext_l10n.h:544 src/ext_l10n.h:598 src/ext_l10n.h:771
-#: src/ext_l10n.h:774 src/ext_l10n.h:792 src/ext_l10n.h:797 src/ext_l10n.h:873
-#: src/ext_l10n.h:892 src/ext_l10n.h:903 src/ext_l10n.h:917
-#: src/ext_l10n.h:1068 src/ext_l10n.h:1117 src/ext_l10n.h:1127
-#: src/ext_l10n.h:1129 src/ext_l10n.h:1141 src/ext_l10n.h:1171
-#: src/ext_l10n.h:1183 src/ext_l10n.h:1188 src/ext_l10n.h:1198
-#: src/ext_l10n.h:1202 src/frontends/qt2/QParagraphDialog.C:49
+#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:533
+#: src/ext_l10n.h:544 src/ext_l10n.h:598 src/ext_l10n.h:771 src/ext_l10n.h:774
+#: src/ext_l10n.h:792 src/ext_l10n.h:797 src/ext_l10n.h:873 src/ext_l10n.h:892
+#: src/ext_l10n.h:903 src/ext_l10n.h:917 src/ext_l10n.h:1068
+#: src/ext_l10n.h:1117 src/ext_l10n.h:1127 src/ext_l10n.h:1129
+#: src/ext_l10n.h:1141 src/ext_l10n.h:1171 src/ext_l10n.h:1183
+#: src/ext_l10n.h:1188 src/ext_l10n.h:1198 src/ext_l10n.h:1202
 #, fuzzy
 msgid "&Close"
 msgstr "Chiudi"
@@ -1891,9 +1883,9 @@ msgstr ""
 msgid "Editor"
 msgstr "Modifica"
 
-#: src/LyXAction.C:137 src/LyXAction.C:144 src/ext_l10n.h:1069
-#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:35
-#: src/frontends/xforms/form_print.C:133
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
+#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:137 src/LyXAction.C:144
+#: src/ext_l10n.h:1069
 msgid "Print"
 msgstr "Stampa"
 
@@ -1921,7 +1913,7 @@ msgstr "Nero"
 msgid "Go back"
 msgstr "Nero"
 
-#: src/ext_l10n.h:1105 src/frontends/qt2/QRef.C:103
+#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1105
 #, fuzzy
 msgid "&Goto"
 msgstr "Inferiore|#f"
@@ -1932,8 +1924,8 @@ msgstr "Inferiore|#f"
 msgid "Go to reference"
 msgstr "Vai al riferimento|#V"
 
-#: src/ext_l10n.h:610 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/form_citation.C:78
+#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
+#: src/ext_l10n.h:610
 msgid "Search"
 msgstr ""
 
@@ -1942,7 +1934,7 @@ msgstr ""
 msgid "ShowFile"
 msgstr "File"
 
-#: src/ext_l10n.h:1130 src/frontends/qt2/QSpellchecker.C:27
+#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1130
 #, fuzzy
 msgid "Spellchecker"
 msgstr "Correttore"
@@ -1952,8 +1944,7 @@ msgstr "Correttore"
 msgid "Spellcheck complete"
 msgstr "Il correttore ha finito!"
 
-#: src/ext_l10n.h:536 src/ext_l10n.h:568 src/ext_l10n.h:601 src/ext_l10n.h:760
-#: src/ext_l10n.h:770 src/ext_l10n.h:898 src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/qt2/QSpellchecker.C:114
 #: src/frontends/xforms/form_bibitem.C:35
 #: src/frontends/xforms/form_bibtex.C:35
 #: src/frontends/xforms/form_citation.C:173
@@ -1968,16 +1959,17 @@ msgstr "Il correttore ha finito!"
 #: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
 #: src/frontends/xforms/form_sendto.C:46
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64
+#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:536 src/ext_l10n.h:568
+#: src/ext_l10n.h:601 src/ext_l10n.h:760 src/ext_l10n.h:770 src/ext_l10n.h:898
 msgid "OK"
 msgstr "OK"
 
-#: src/ext_l10n.h:1150 src/frontends/qt2/QTabularCreate.C:28
+#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1150
 #, fuzzy
 msgid "Insert table"
 msgstr "Inserisci una tabella"
 
-#: src/ext_l10n.h:447 src/ext_l10n.h:1173 src/frontends/qt2/QThesaurus.C:28
+#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:447 src/ext_l10n.h:1173
 msgid "Thesaurus"
 msgstr ""
 
@@ -1986,8 +1978,8 @@ msgstr ""
 msgid "Table of contents"
 msgstr "Sommario"
 
-#: src/ext_l10n.h:460 src/ext_l10n.h:1191 src/ext_l10n.h:1194
-#: src/frontends/qt2/QURL.C:25
+#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:460 src/ext_l10n.h:1191
+#: src/ext_l10n.h:1194
 msgid "URL"
 msgstr ""
 
@@ -2058,9 +2050,10 @@ msgstr ""
 msgid "*"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsBitmap.C:89
 #: src/frontends/xforms/form_aboutlyx.C:29
-#: src/frontends/xforms/form_forks.C:66 src/frontends/xforms/form_search.C:73
+#: src/frontends/xforms/form_forks.C:66
+#: src/frontends/xforms/FormMathsBitmap.C:89
+#: src/frontends/xforms/form_search.C:73
 #: src/frontends/xforms/form_tabular.C:31
 msgid "Close|^["
 msgstr "Chiudi|^["
@@ -2084,7 +2077,7 @@ msgstr "Diritti di Copia e Garanzia"
 msgid "License and Warranty"
 msgstr "Diritti di Copia e Garanzia"
 
-#: src/ext_l10n.h:531 src/frontends/xforms/FormAboutlyx.C:65
+#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:531
 msgid "Credits"
 msgstr "Ringraziamenti"
 
@@ -2153,8 +2146,8 @@ msgstr ""
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
-"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In "
-"\"View->TeX Information\" you can list all installed styles."
+"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"View-"
+">TeX Information\" you can list all installed styles."
 msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:71
@@ -2306,7 +2299,7 @@ msgstr ""
 msgid "#&B"
 msgstr ""
 
-#: src/ext_l10n.h:608 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:132
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:132 src/ext_l10n.h:608
 msgid "Info"
 msgstr "Informazioni"
 
@@ -2328,7 +2321,7 @@ msgstr ""
 msgid "Next|#N"
 msgstr "Nome|#N"
 
-#: src/ext_l10n.h:605 src/frontends/xforms/form_citation.C:116
+#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:605
 #, fuzzy
 msgid "Citation style"
 msgstr "Citazione"
@@ -2441,8 +2434,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:226
 msgid ""
-"Activate if you want to have case sensitive search: \"bibtex\" finds "
-"\"bibtex\", but not \"BibTeX\"."
+"Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
+"\", but not \"BibTeX\"."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:229
@@ -2482,7 +2475,7 @@ msgstr "Larghezza:|#h"
 msgid "Height:|#H"
 msgstr "Altezza:|#l"
 
-#: src/ext_l10n.h:687 src/frontends/xforms/form_document.C:123
+#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:687
 msgid "Orientation"
 msgstr "Orientamento"
 
@@ -2495,7 +2488,7 @@ msgstr "Verticale (Portrait)|#V"
 msgid "Landscape|#L"
 msgstr "Orizzontale (Landscape)|#z"
 
-#: src/ext_l10n.h:690 src/frontends/xforms/form_document.C:143
+#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:690
 msgid "Margins"
 msgstr "Margini"
 
@@ -2539,7 +2532,7 @@ msgstr "Separazione int.|#S"
 msgid "Footskip:|#F"
 msgstr "Salto piè pagina|#g"
 
-#: src/ext_l10n.h:666 src/frontends/xforms/form_document.C:254
+#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:666
 msgid "Separation"
 msgstr "Separazione"
 
@@ -2548,7 +2541,7 @@ msgstr "Separazione"
 msgid "Page cols"
 msgstr "Pagine:"
 
-#: src/ext_l10n.h:660 src/frontends/xforms/form_document.C:256
+#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:660
 msgid "Sides"
 msgstr "Lati"
 
@@ -2687,7 +2680,7 @@ msgstr "3|#3"
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/ext_l10n.h:747 src/frontends/xforms/form_document.C:608
+#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:747
 msgid "Bullet Depth"
 msgstr "Profondità"
 
@@ -2715,7 +2708,7 @@ msgstr "Simboli 3|#o"
 msgid "Ding 4|#g"
 msgstr "Simboli 4|#l"
 
-#: src/ext_l10n.h:634 src/frontends/xforms/FormDocument.C:58
+#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:634
 msgid "Document Layout"
 msgstr "Struttura del documento"
 
@@ -2760,24 +2753,24 @@ msgstr ""
 " predefinita | minuscola | script | piè pagina | piccola | normale | larga | "
 "molto larga | larghissima | enorme | gigante"
 
-#: src/ext_l10n.h:669 src/frontends/xforms/FormDocument.C:329
+#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:669
 #, fuzzy
 msgid "Paper"
 msgstr "Incolla"
 
-#: src/ext_l10n.h:576 src/ext_l10n.h:584 src/ext_l10n.h:702
 #: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:257
+#: src/frontends/xforms/FormPreferences.C:257 src/ext_l10n.h:576
+#: src/ext_l10n.h:584 src/ext_l10n.h:702
 msgid "Language"
 msgstr "Lingua"
 
-#: src/ext_l10n.h:728 src/ext_l10n.h:851
-#: src/frontends/xforms/FormDocument.C:333
+#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:728
+#: src/ext_l10n.h:851
 #, fuzzy
 msgid "Extra"
 msgstr "Altro"
 
-#: src/ext_l10n.h:734 src/frontends/xforms/FormDocument.C:335
+#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:734
 #, fuzzy
 msgid "Bullets"
 msgstr "Profondità"
@@ -2804,8 +2797,8 @@ msgstr "Inserisci il nome del file per il nuovo documento"
 
 #: src/frontends/xforms/FormDocument.C:1303
 #: src/frontends/xforms/FormParagraph.C:584
-#: src/frontends/xforms/FormTabular.C:578
-#: src/frontends/xforms/FormTabular.C:597
+#: src/frontends/xforms/FormTabular.C:582
+#: src/frontends/xforms/FormTabular.C:601
 #, fuzzy
 msgid "Invalid Length (valid example: 10mm)"
 msgstr "Attenzione: lunghezza non valida (esempio valido: 10mm)"
@@ -2908,7 +2901,7 @@ msgstr "Utente2|#2"
 msgid "Warning! Couldn't open directory."
 msgstr "Attenzione! Non riesco ad aprire la directory."
 
-#: src/ext_l10n.h:798 src/frontends/xforms/form_float.C:29
+#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:798
 #, fuzzy
 msgid "Placement"
 msgstr "Posiz. ogg. flottanti:|#z"
@@ -3055,8 +3048,8 @@ msgstr "Dimensioni alternative"
 msgid "Value|#V"
 msgstr "Blu"
 
-#: src/ext_l10n.h:825 src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444
+#: src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:825
 #, no-c-format
 msgid "%"
 msgstr ""
@@ -3168,7 +3161,7 @@ msgid "Get LaTeX size|#L"
 msgstr "LaTeX|#L"
 
 #. add the different tabfolders
-#: src/ext_l10n.h:805 src/frontends/xforms/FormGraphics.C:190
+#: src/frontends/xforms/FormGraphics.C:190 src/ext_l10n.h:805
 #, fuzzy
 msgid "File"
 msgstr "File"
@@ -3317,8 +3310,8 @@ msgstr "Chiudi "
 msgid "Functions"
 msgstr "Funzioni"
 
-#: src/ext_l10n.h:504 src/frontends/xforms/FormMathsPanel.C:102
 #: src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:102 src/ext_l10n.h:504
 msgid "Greek"
 msgstr "Greco"
 
@@ -3337,17 +3330,17 @@ msgstr ""
 msgid "£ @"
 msgstr ""
 
+#: src/frontends/xforms/form_maths_panel.C:51
+#: src/frontends/xforms/form_maths_panel.C:114
 #: src/frontends/xforms/FormMathsPanel.C:108
 #: src/frontends/xforms/FormPreferences.C:224
 #: src/frontends/xforms/FormPreferences.C:241
 #: src/frontends/xforms/FormPreferences.C:249
-#: src/frontends/xforms/form_maths_panel.C:51
-#: src/frontends/xforms/form_maths_panel.C:114
 msgid "Misc"
 msgstr "Altro"
 
-#: src/frontends/xforms/FormMathsPanel.C:115
 #: src/frontends/xforms/form_maths_panel.C:77
+#: src/frontends/xforms/FormMathsPanel.C:115
 #, fuzzy
 msgid "Dots"
 msgstr "Documenti"
@@ -3442,8 +3435,8 @@ msgstr "LaTeX "
 msgid "Maths Styles & Fonts"
 msgstr ""
 
-#: src/ext_l10n.h:811 src/ext_l10n.h:827
-#: src/frontends/xforms/form_minipage.C:28
+#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:811
+#: src/ext_l10n.h:827
 msgid "Width"
 msgstr "Largh."
 
@@ -3586,7 +3579,7 @@ msgstr " Singola | Mezza | Doppia | Altro "
 msgid "LaTeX preamble"
 msgstr "Preambolo di LaTeX"
 
-#: src/LyXAction.C:153 src/frontends/xforms/form_preferences.C:39
+#: src/frontends/xforms/form_preferences.C:39 src/LyXAction.C:153
 msgid "Save"
 msgstr "Salva"
 
@@ -3659,7 +3652,7 @@ msgstr "Grandissimo"
 msgid "huger"
 msgstr "Gigante"
 
-#: src/ext_l10n.h:821 src/frontends/xforms/form_preferences.C:201
+#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:821
 #, fuzzy
 msgid "Size"
 msgstr "Dimensione|#D"
@@ -3753,6 +3746,7 @@ msgstr ""
 msgid "RGB"
 msgstr ""
 
+#: src/frontends/xforms/form_preferences.C:387
 #: src/frontends/xforms/FormPreferences.C:1072
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1111
@@ -3761,7 +3755,6 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1342
 #: src/frontends/xforms/FormPreferences.C:1385
 #: src/frontends/xforms/FormPreferences.C:1387
-#: src/frontends/xforms/form_preferences.C:387
 #, fuzzy
 msgid "Modify|#M"
 msgstr "Medio|#M"
@@ -3857,8 +3850,8 @@ msgstr "Usa input|#i"
 msgid "Advanced Options"
 msgstr "Stile del carattere"
 
-#: src/frontends/xforms/FormPreferences.C:218
 #: src/frontends/xforms/form_preferences.C:608
+#: src/frontends/xforms/FormPreferences.C:218
 msgid "Interface"
 msgstr ""
 
@@ -3964,12 +3957,12 @@ msgstr ""
 msgid "Viewer|#V"
 msgstr "Visualizza il file DVI"
 
+#: src/frontends/xforms/form_preferences.C:814
+#: src/frontends/xforms/form_preferences.C:887
 #: src/frontends/xforms/FormPreferences.C:1103
 #: src/frontends/xforms/FormPreferences.C:1105
 #: src/frontends/xforms/FormPreferences.C:1376
 #: src/frontends/xforms/FormPreferences.C:1378
-#: src/frontends/xforms/form_preferences.C:814
-#: src/frontends/xforms/form_preferences.C:887
 #, fuzzy
 msgid "Add|#A"
 msgstr "Aggiungi a|#g"
@@ -4512,7 +4505,7 @@ msgstr " di "
 msgid "Order"
 msgstr "Ordine"
 
-#: src/ext_l10n.h:1093 src/frontends/xforms/form_print.C:139
+#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1093
 msgid "Copies"
 msgstr "Copie"
 
@@ -4555,8 +4548,8 @@ msgstr "Vai al riferimento|#V"
 msgid "Goto reference|#G"
 msgstr "Vai al riferimento|#V"
 
-#: src/ext_l10n.h:371 src/ext_l10n.h:1099 src/ext_l10n.h:1107
-#: src/frontends/xforms/FormRef.C:33
+#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:371 src/ext_l10n.h:1099
+#: src/ext_l10n.h:1107
 #, fuzzy
 msgid "Reference"
 msgstr "Inserisci un riferimento"
@@ -4634,7 +4627,7 @@ msgstr ""
 msgid "Replace"
 msgstr "Cambia"
 
-#: src/ext_l10n.h:1143 src/frontends/xforms/form_spellchecker.C:37
+#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1143
 #, fuzzy
 msgid "Suggestions"
 msgstr "Destinazione:"
@@ -4915,12 +4908,12 @@ msgstr "Giallo"
 msgid "LongTable"
 msgstr "Tabella lunga"
 
-#: src/frontends/xforms/FormTabular.C:558
+#: src/frontends/xforms/FormTabular.C:562
 #, fuzzy
 msgid "Wrong Cursor position, updated window"
 msgstr "Attenzione: la posizione del cursore è sbagliata!"
 
-#: src/ext_l10n.h:663 src/frontends/xforms/form_tabular_create.C:45
+#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:663
 msgid "Columns"
 msgstr "Colonne"
 
@@ -5077,8 +5070,8 @@ msgstr "Non riesco a stampare"
 msgid "Check 'range of pages'!"
 msgstr ""
 
-#: src/ext_l10n.h:327 src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352
+#: src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:327
 #, fuzzy
 msgid "More"
 msgstr "ignora"
@@ -5355,7 +5348,7 @@ msgstr "Minipagina"
 msgid "Opened Minipage Inset"
 msgstr "Inserto aperto"
 
-#: src/LColor.C:65 src/insets/insetnote.C:39
+#: src/insets/insetnote.C:39 src/LColor.C:65
 #, fuzzy
 msgid "note"
 msgstr "Nota"
@@ -5369,7 +5362,7 @@ msgstr "Inserto aperto"
 msgid "Parent:"
 msgstr "Genitore:"
 
-#: src/ext_l10n.h:412 src/insets/insetref.C:110
+#: src/insets/insetref.C:110 src/ext_l10n.h:412
 #, fuzzy
 msgid "Standard"
 msgstr "Standard|#S"
@@ -5471,7 +5464,7 @@ msgstr "HTML URL:"
 msgid "   options: "
 msgstr "   opzioni: "
 
-#: src/ext_l10n.h:495 src/language.C:45
+#: src/language.C:45 src/ext_l10n.h:495
 msgid "English"
 msgstr ""
 
@@ -6196,148 +6189,153 @@ msgstr ""
 msgid "No description available!"
 msgstr "Nessuna descrizione disponibile!"
 
-#: src/lyx_cb.C:88
+#: src/lyx_cb.C:89
 msgid "Save failed. Rename and try again?"
 msgstr "Salvataggio fallito. Vuoi rinominare il file e riprovare?"
 
-#: src/lyx_cb.C:90
+#: src/lyx_cb.C:91
 msgid "(If not, document is not saved.)"
 msgstr "(Se non vuoi, il documento non sarà salvato.)"
 
-#: src/lyx_cb.C:111
+#: src/lyx_cb.C:112
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Inserisci il nome del file con cui salvare il documento"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1742 src/lyxfunc.C:1826
+#: src/lyx_cb.C:116 src/lyxfunc.C:1742 src/lyxfunc.C:1826
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modelli"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1747 src/lyxfunc.C:1831
+#: src/lyx_cb.C:124 src/lyxfunc.C:1747 src/lyxfunc.C:1831
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/lyx_cb.C:143
+#: src/lyx_cb.C:144
 msgid "Same name as document already has:"
 msgstr "Lo stesso nome di documento già esiste:"
 
-#: src/lyx_cb.C:145
+#: src/lyx_cb.C:146
 msgid "Save anyway?"
 msgstr "Salvarlo comunque?"
 
-#: src/lyx_cb.C:151
+#: src/lyx_cb.C:152
 msgid "Another document with same name open!"
 msgstr "Un altro documento con lo stesso nome è già aperto!"
 
-#: src/lyx_cb.C:153
+#: src/lyx_cb.C:154
 msgid "Replace with current document?"
 msgstr "Vuoi sostituirlo con il documento attuale?"
 
-#: src/lyx_cb.C:161
+#: src/lyx_cb.C:162
 msgid "Document renamed to '"
 msgstr "Il documento è stato rinominato con '"
 
-#: src/lyx_cb.C:162
+#: src/lyx_cb.C:163
 msgid "', but not saved..."
 msgstr "', ma non è stato salvato..."
 
-#: src/lyx_cb.C:168
+#: src/lyx_cb.C:169
 msgid "Document already exists:"
 msgstr "Il documento già esiste."
 
-#: src/lyx_cb.C:170
+#: src/lyx_cb.C:171
 msgid "Replace file?"
 msgstr "Vuoi sostituire il file?"
 
-#: src/lyx_cb.C:183
+#: src/lyx_cb.C:184
 #, fuzzy
 msgid "Document could not be saved!"
 msgstr "Ho impostato la struttura del documento"
 
-#: src/lyx_cb.C:184
+#: src/lyx_cb.C:185
 msgid "Holding the old name."
 msgstr ""
 
-#: src/lyx_cb.C:198
+#: src/lyx_cb.C:199
 #, fuzzy
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex non funziona con LinuxDoc"
 
-#: src/lyx_cb.C:207
+#: src/lyx_cb.C:208
 msgid "No warnings found."
 msgstr "Non ho trovato avvisi."
 
-#: src/lyx_cb.C:209
+#: src/lyx_cb.C:210
 msgid "One warning found."
 msgstr "Ho rilevato un avviso"
 
-#: src/lyx_cb.C:210
+#: src/lyx_cb.C:211
 #, fuzzy
 msgid "Use `Navigate->Error' to find it."
 msgstr "Usa 'Modifica->Vai all'errore' per trovarlo."
 
-#: src/lyx_cb.C:213
+#: src/lyx_cb.C:214
 msgid " warnings found."
 msgstr " avvisi rilevati."
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:215
 #, fuzzy
 msgid "Use `Navigate->Error' to find them."
 msgstr "Usa 'Modifica->Vai all'errore' per trovarli."
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:217
 msgid "Chktex run successfully"
 msgstr "Chktex è stato eseguito con successo"
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:219
 msgid "It seems chktex does not work."
 msgstr "Sembra che chktex non funzioni."
 
-#: src/lyx_cb.C:265
-msgid "Autosaving current document..."
-msgstr "Sto salvando automaticamente il documento corrente..."
+#: src/lyx_cb.C:276
+#, fuzzy
+msgid "Auto-saving $$f"
+msgstr "Salvataggio automatico"
 
-#: src/lyx_cb.C:305
+#: src/lyx_cb.C:316
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "L'autosalvataggio non ha funzionato!"
 
-#: src/lyx_cb.C:384
+#: src/lyx_cb.C:342
+msgid "Autosaving current document..."
+msgstr "Sto salvando automaticamente il documento corrente..."
+
+#: src/lyx_cb.C:424
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Scegli il documento da inserire"
 
-#: src/lyx_cb.C:401
+#: src/lyx_cb.C:441
 msgid "Error! Specified file is unreadable: "
 msgstr "Errore! Il file specificato non puo essere letto: "
 
-#: src/lyx_cb.C:408
+#: src/lyx_cb.C:448
 #, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Errore! Non riesco a trovare il file indicato."
 
-#: src/lyx_cb.C:473 src/mathed/formula.C:437
+#: src/lyx_cb.C:513 src/mathed/formula.C:437
 msgid "Enter new label to insert:"
 msgstr "Nuova etichetta da inserire:"
 
-#: src/lyx_cb.C:491
+#: src/lyx_cb.C:531
 msgid "Running configure..."
 msgstr "Sto eseguendo configure..."
 
-#: src/lyx_cb.C:499
+#: src/lyx_cb.C:539
 msgid "Reloading configuration..."
 msgstr "Sto caricando di nuovo la configurazione..."
 
-#: src/lyx_cb.C:501
+#: src/lyx_cb.C:541
 msgid "The system has been reconfigured."
 msgstr "Il sistema è stato riconfigurato."
 
-#: src/lyx_cb.C:502
+#: src/lyx_cb.C:542
 msgid "You need to restart LyX to make use of any"
 msgstr "Devi riavviare LyX per poter utilizzare"
 
-#: src/lyx_cb.C:503
+#: src/lyx_cb.C:543
 msgid "updated document class specifications."
 msgstr "qualunque specifica della classe del documento modificata"
 
@@ -6567,7 +6565,7 @@ msgstr "già esiste. Vuoi sovrascriverlo?"
 msgid "Welcome to LyX!"
 msgstr "Benvenuto in LyX!"
 
-#: src/LyXView.C:230 src/lyxfunc.C:2103
+#: src/lyxfunc.C:2103 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Modificato)"
 
@@ -7040,8 +7038,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -7096,8 +7094,8 @@ msgstr ""
 
 #: src/lyxrc.C:1948
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1952
@@ -11540,6 +11538,10 @@ msgstr ""
 #, fuzzy
 msgid "Version control log"
 msgstr "Contollo della versione%t"
+
+#, fuzzy
+#~ msgid "' indexed."
+#~ msgstr "."
 
 #, fuzzy
 #~ msgid "Close|^C"

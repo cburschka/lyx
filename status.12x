@@ -21,6 +21,8 @@ What's new
 
 - updated italian User Guide
 
+- updated french localization
+
 ** Bug fixes
 
 - fix bug where the configure script would try to delete the /dev/null
@@ -33,12 +35,13 @@ What's new
   custom margins
 
 - fix bug where horizontal alignment would be reset automatically to
-  "left" in the tabular dialog.
+  "left" in the tabular dialog
 
-- fix functions word-find-forward and word-find-backward, which
-  meaning was inverted
+- fix functions word-find-forward and word-find-backward, the meanings
+  of which were inverted
 
-- when the lyx binary was actually a symbolic link, LyX printed
-  annoying debug messages on console; they are debug messages now
+- when the lyx binary was invoked through a symbolic link, LyX would
+  print annoying messages on the console; they are now output only
+  when debugging.
 
 - fix an installation issue with solaris
