@@ -21,6 +21,7 @@
 #include "converter.h"
 #include "debug.h"
 #include "lyxrc.h"
+#include "lyxtextclasslist.h"
 #include "LColor.h"
 
 #include "insets/inset.h"
@@ -43,18 +44,22 @@
 using std::endl;
 using std::find;
 using std::find_if;
+using std::getline;
 using std::make_pair;
 using std::setfill;
 using std::setw;
 using std::sort;
 
 using std::map;
+using std::ifstream;
 using std::ofstream;
 using std::ostream;
 using std::pair;
 using std::vector;
 
 namespace {
+
+double getScalingFactor(Buffer &);
 
 typedef pair<string, string> StrPair;
 
@@ -137,6 +142,8 @@ private:
 	void dumpPreamble(ostream &) const;
 	///
 	void dumpData(ostream &, vector<StrPair> const &) const;
+	///
+	double fontScalingFactor() const;
 
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
@@ -164,6 +171,8 @@ private:
 	PreviewLoader & parent_;
 	///
 	Buffer const & buffer_;
+	///
+	mutable double font_scaling_factor_;
 };
 
 
@@ -277,7 +286,7 @@ bool PreviewLoader::Impl::haveConverter()
 
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
-	: parent_(p), buffer_(b)
+	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
 {}
 
 
@@ -426,9 +435,12 @@ void PreviewLoader::Impl::startLoading()
 	of.close();
 
 	// The conversion command.
+	double const scaling_factor = fontScalingFactor();
+	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
+				<< scaling_factor << endl;
 	ostringstream cs;
 	cs << pconverter_->command << " " << latexfile << " "
-	   << tostr(0.01 * lyxrc.dpi * lyxrc.zoom);
+	   << scaling_factor;
 
 	string const command = cs.str().c_str();
 
@@ -567,4 +579,79 @@ void PreviewLoader::Impl::dumpData(ostream & os,
 	}
 }
 
+
+double PreviewLoader::Impl::fontScalingFactor() const
+{
+	static double const lyxrc_preview_scale_factor = 0.9;
+
+	if (font_scaling_factor_ > 0.01)
+		return font_scaling_factor_;
+
+	font_scaling_factor_ =  getScalingFactor(const_cast<Buffer &>(buffer_));
+	return font_scaling_factor_;
+}
+
+
 } // namespace grfx
+
+
+namespace {
+
+double getScalingFactor(Buffer & buffer)
+{
+	static double const lyxrc_preview_scale_factor = 0.9;
+	double scale_factor = 0.01 * lyxrc.dpi * lyxrc.zoom *
+		lyxrc_preview_scale_factor;
+
+	// Has the font size been set explicitly?
+	string const & fontsize = buffer.params.fontsize;
+	lyxerr[Debug::GRAPHICS] << "PreviewLoader::scaleToFitLyXView()\n"
+				<< "font size is " << fontsize << endl;
+
+	if (isStrUnsignedInt(fontsize))
+		return 10.0 * scale_factor / strToDbl(fontsize);
+
+	// No. We must extract it from the LaTeX class file.
+	LyXTextClass const & tclass = textclasslist[buffer.params.textclass];
+	string const textclass(tclass.latexname() + ".cls");
+	string const classfile(findtexfile(textclass, "cls"));
+
+	lyxerr[Debug::GRAPHICS] << "text class is " << textclass << '\n'
+				<< "class file is " << classfile << endl;
+	
+	ifstream ifs(classfile.c_str());
+	if (!ifs.good()) {
+		lyxerr[Debug::GRAPHICS] << "Unable to open class file!" << endl;
+		return scale_factor;
+	}
+
+	string str;
+	double scaling = scale_factor;
+
+	while (ifs.good()) {
+		getline(ifs, str);
+		// To get the default font size, look for a line like
+		// "\ExecuteOptions{letterpaper,10pt,oneside,onecolumn,final}"
+		if (!prefixIs(str, "\\ExecuteOptions"))
+			continue;
+
+		str = split(str, '{');
+		int count = 0;
+		string tok = token(str, ',', count++);
+		while (!isValidLength(tok) && !tok.empty())
+			tok = token(str, ',', count++);
+
+		if (!tok.empty()) {
+			lyxerr[Debug::GRAPHICS]
+				<< "Extracted default font size from "
+				"LaTeX class file successfully!" << endl;
+			LyXLength fsize(tok);
+			scaling *= 10.0 / fsize.value();
+			break;
+		}
+	}
+
+	return scaling;
+}
+
+} // namespace anon

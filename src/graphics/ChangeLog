@@ -1,3 +1,8 @@
+2002-07-08  Herbert Voss  <voss@lyx.org>
+
+	* PreviewLoader.C: use of preview_size_factor to get the right
+	font-size! 0.9 is the default.
+
 2002-07-08  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C: Add "delayed" and "showlabels" options to the

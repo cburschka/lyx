@@ -36,7 +36,7 @@ struct PreviewImage::Impl : public boost::signals::trackable {
 	///
 	void startLoading();	
 	///
-	Image const * image() const { return iloader_->image(); }
+	Image const * image();
 	///
 	void statusChanged();
 
@@ -134,6 +134,12 @@ void PreviewImage::Impl::startLoading()
 	iloader_->startLoading();
 }
 
+
+Image const * PreviewImage::Impl::image()
+{
+//  	startLoading();
+	return iloader_->image();
+}
 
 void PreviewImage::Impl::statusChanged()
 {
