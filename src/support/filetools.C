@@ -35,7 +35,6 @@
 // FIXME Interface violation
 #include "gettext.h"
 #include "debug.h"
-//#include "format.h"
 
 #include <boost/assert.hpp>
 #include <boost/regex.hpp>
@@ -896,25 +895,6 @@ string const GetExtension(string const & name)
 }
 
 
-#if 0
-namespace {
-
-class FormatExtensionsEqual : public std::unary_function<Format, bool> {
-public:
-	FormatExtensionsEqual(string const & extension)
-		: extension_(extension) {}
-	bool operator()(Format const & f) const
-	{
-		return f.extension() == extension_;
-	}
-private:
-	string extension_;
-};
-
-} // namespace anon
-#endif
-
-
 // the different filetypes and what they contain in one of the first lines
 // (dots are any characters).		(Herbert 20020131)
 // AGR	Grace...
@@ -942,9 +922,6 @@ private:
 // ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
 // Z	\037\235		UNIX compress
 
-/// return the "extension" which belongs to the contents.
-/// for no knowing contents return the extension. Without
-/// an extension and unknown contents we return "user"
 string const getFormatFromContents(string const & filename)
 {
 	// paranoia check
@@ -1090,33 +1067,10 @@ string const getFormatFromContents(string const & filename)
 		return format;
 	}
 
-	string const ext(GetExtension(filename));
 	lyxerr[Debug::GRAPHICS]
 		<< "filetools(getFormatFromContents)\n"
 		<< "\tCouldn't find a known format!\n";
-#if 0
-	// This just cannot be here. It is a blatant violation of interfaces.
-	// Nothing in support should have any knowledge of internal structures
-	// in the rest of lyx. This case needs to be explictly checked for
-	// in the places where this function is called. Also it makes the
-	// function name a lie. (Lgb)
-	if (!ext.empty()) {
-		// this is ambigous if two formats have the same extension,
-		// but better than nothing
-		Formats::const_iterator cit =
-			find_if(formats.begin(), formats.end(),
-			        FormatExtensionsEqual(ext));
-		if (cit != formats.end()) {
-			lyxerr[Debug::GRAPHICS]
-				<< "\twill guess format from file extension: "
-				<< ext << " -> " << cit->name() << endl;
-			return cit->name();
-		}
-	}
-#endif
-	lyxerr[Debug::GRAPHICS]
-		<< "\twill use a \"user\" defined format" << endl;
-	return "user";
+	return string();
 }
 
 

@@ -86,6 +86,13 @@ public:
 	}
 	/// \returns format named \p name if it exists, otherwise 0
 	Format const * getFormat(std::string const & name) const;
+	/*!
+	 * Get the format of \p filename from file contents or, if this
+	 * fails, from file extension.
+	 * \returns file format if it could be found, otherwise an empty
+	 * string.
+	 */
+	std::string getFormatFromFile(std::string const & filename) const;
 	///
 	int getNumber(std::string const & name) const;
 	///

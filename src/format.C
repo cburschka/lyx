@@ -59,6 +59,19 @@ private:
 	string name_;
 };
 
+
+class FormatExtensionsEqual : public std::unary_function<Format, bool> {
+public:
+	FormatExtensionsEqual(string const & extension)
+		: extension_(extension) {}
+	bool operator()(Format const & f) const
+	{
+		return f.extension() == extension_;
+	}
+private:
+	string extension_;
+};
+
 } //namespace anon
 
 bool operator<(Format const & a, Format const & b)
@@ -107,6 +120,34 @@ Format const * Formats::getFormat(string const & name) const
 		return &(*cit);
 	else
 		return 0;
+}
+
+
+string Formats::getFormatFromFile(string const & filename) const
+{
+	if (filename.empty())
+		return string();
+
+	string const format = lyx::support::getFormatFromContents(filename);
+	if (!format.empty())
+		return format;
+
+	// try to find a format from the file extension.
+	string const ext(lyx::support::GetExtension(filename));
+        if (!ext.empty()) {
+		// this is ambigous if two formats have the same extension,
+		// but better than nothing
+		Formats::const_iterator cit =
+			find_if(formatlist.begin(), formatlist.end(),
+			        FormatExtensionsEqual(ext));
+		if (cit != formats.end()) {
+			lyxerr[Debug::GRAPHICS]
+				<< "\twill guess format from file extension: "
+				<< ext << " -> " << cit->name() << std::endl;
+			return cit->name();
+		}
+	}
+	return string();
 }
 
 

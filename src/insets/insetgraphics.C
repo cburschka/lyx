@@ -95,7 +95,6 @@ using lyx::support::contains;
 using lyx::support::FileName;
 using lyx::support::float_equal;
 using lyx::support::GetExtension;
-using lyx::support::getFormatFromContents;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
 using lyx::support::OnlyFilename;
@@ -453,7 +452,7 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 		// Nothing to do...
 		return std::make_pair(IDENTICAL_CONTENTS, file_out);
 
-	Mover const & mover = movers(getFormatFromContents(file_in));
+	Mover const & mover = movers(formats.getFormatFromFile(file_in));
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		lyxerr[Debug::GRAPHICS]
@@ -617,7 +616,12 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		}
 	}
 
-	string const from = getFormatFromContents(temp_file);
+	string const from = formats.getFormatFromFile(temp_file);
+	if (from.empty()) {
+		lyxerr[Debug::GRAPHICS]
+			<< "\tCould not get file format." << endl;
+		return orig_file;
+	}
 	string const to   = findTargetFormat(from, runparams);
 	string const ext  = formats.extension(to);
 	lyxerr[Debug::GRAPHICS]
@@ -895,10 +899,12 @@ InsetGraphicsParams const & InsetGraphics::params() const
 }
 
 
-void InsetGraphics::editGraphics(InsetGraphicsParams const & p, Buffer const & buffer) const
+void InsetGraphics::editGraphics(InsetGraphicsParams const & p,
+                                 Buffer const & buffer) const
 {
 	string const file_with_path = p.filename.absFilename();
-	formats.edit(buffer, file_with_path, getFormatFromContents(file_with_path));
+	formats.edit(buffer, file_with_path,
+	             formats.getFormatFromFile(file_with_path));
 }
 
 

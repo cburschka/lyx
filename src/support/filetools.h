@@ -140,7 +140,10 @@ ChangeExtension(std::string const & oldname, std::string const & extension);
 /// Return the extension of the file (not including the .)
 std::string const GetExtension(std::string const & name);
 
-/// Guess the file format name (as in Format::name()) from contents
+/** Guess the file format name (as in Format::name()) from contents.
+ Normally you don't want to use this directly, but rather
+ Formats::getFormatFromFile().
+ */
 std::string const getFormatFromContents(std::string const & name);
 
 /// check for zipped file

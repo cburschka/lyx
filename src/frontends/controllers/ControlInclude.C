@@ -99,8 +99,8 @@ string const ControlInclude::browse(string const & in_name, Type in_type) const
 
 void ControlInclude::load(string const & file)
 {
-	string const format = support::getFormatFromContents(file);
-	if (format == "lyx")
+	string const ext = support::GetExtension(file);
+	if (ext == "lyx")
 		kernel().dispatch(FuncRequest(LFUN_CHILDOPEN, file));
 	else
 		// tex file or other text file in verbatim mode

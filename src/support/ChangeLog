@@ -1,3 +1,9 @@
+2004-11-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filetools.[Ch] (getFormatFromContents): don't guess format from
+	extension, return string() instead of "user" if the format could
+	not be determined
+
 2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Make it clearer where include files are comming from. 

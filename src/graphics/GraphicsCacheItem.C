@@ -17,6 +17,7 @@
 #include "GraphicsImage.h"
 
 #include "debug.h"
+#include "format.h"
 
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
@@ -32,7 +33,6 @@ using support::FileMonitor;
 using support::IsFileReadable;
 using support::MakeDisplayPath;
 using support::OnlyFilename;
-using support::getFormatFromContents;
 using support::tempName;
 using support::unlink;
 using support::unzipFile;
@@ -401,7 +401,13 @@ void CacheItem::Impl::convertToDisplayFormat()
 		<< "\n\twith displayed filename: " << displayed_filename
 		<< endl;
 
-	string from = getFormatFromContents(filename);
+	string const from = formats.getFormatFromFile(filename);
+	if (from.empty()) {
+		setStatus(ErrorConverting);
+		lyxerr[Debug::GRAPHICS]
+			<< "\tCould not determine file format." << endl;
+		return;
+	}
 	lyxerr[Debug::GRAPHICS]
 		<< "\n\tThe file contains " << from << " format data." << endl;
 	string const to = findTargetFormat(from);

@@ -1,3 +1,8 @@
+2004-11-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ControlInclude.C (browse): Use GetExtension() instead of
+	getFormatFromContents()
+
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlRef.C (gotoRef, gotoBookmark): 

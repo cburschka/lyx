@@ -1,3 +1,8 @@
+2004-11-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format.[Ch] (getFormatFromFile): new method
+	* exporter.C: s/getFormatFromContents/formats.getFormatFromFile/
+
 2004-11-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lengthcommon.C (unitFromString): fix off-by-one error (bug 1682)

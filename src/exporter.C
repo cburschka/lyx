@@ -39,7 +39,6 @@ using lyx::support::AddName;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
-using lyx::support::getFormatFromContents;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
@@ -208,7 +207,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		CopyStatus status = SUCCESS;
 		for (vector<ExportedFile>::const_iterator it = files.begin();
 				it != files.end() && status != CANCEL; ++it) {
-			string const fmt = getFormatFromContents(it->sourceName);
+			string const fmt =
+				formats.getFormatFromFile(it->sourceName);
 			status = copyFile(fmt, it->sourceName,
 			                  MakeAbsPath(it->exportName, dest),
 			                  it->exportName, status == FORCE);

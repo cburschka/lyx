@@ -56,7 +56,7 @@ void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
 	string const file_with_path = params.filename.absFilename();
 	formats.edit(buffer, file_with_path,
-	             support::getFormatFromContents(file_with_path));
+	             formats.getFormatFromFile(file_with_path));
 }
 
 
@@ -174,7 +174,7 @@ void updateExternal(InsetExternalParams const & params,
 			return; // NOT_NEEDED
 
 		// Try and ascertain the file format from its contents.
-		from_format = support::getFormatFromContents(abs_from_file);
+		from_format = formats.getFormatFromFile(abs_from_file);
 		if (from_format.empty())
 			return; // FAILURE
 

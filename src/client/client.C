@@ -13,7 +13,6 @@
 #include <config.h>
 
 #include "debug.h"
-#include "format.h"
 #include "support/lstrings.h"
 
 #include <boost/filesystem/operations.hpp>
@@ -52,10 +51,6 @@ using std::cout;
 using std::cerr;
 using std::cin;
 using std::endl;
-
-
-// hack to link in libsupport 
-Formats formats;
 
 
 namespace support {
