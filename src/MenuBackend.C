@@ -340,7 +340,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				action = LFUN_PREVIEW;
 				break;
 			case MenuItem::UpdateFormats:
-				formats = Exporter::GetExportableFormats(buf, true);
+				formats = Exporter::GetExportableFormats(buf, false);
 				action = LFUN_UPDATE;
 				break;
 			default:

@@ -902,7 +902,8 @@ int LyXRC::read(string const & filename)
 				command = lexrc.getString();
 			if (lexrc.next())
 				flags = lexrc.getString();
-			if (command.empty() || command == "none")
+			if (command.empty()
+ 			    || token(command, ' ', 0) == "none")
 				converters.erase(from, to);
 			else
 				converters.add(from, to, command, flags);
@@ -912,8 +913,11 @@ int LyXRC::read(string const & filename)
 			string format, command;
 			if (lexrc.next())
 				format = lexrc.getString();
-			if (lexrc.next())
+			if (lexrc.next()) {
 				command = lexrc.getString();
+				if (token(command, ' ', 0) == "none")
+ 					command.erase();
+			}
 			formats.setViewer(format, command);
 			break;
 		}

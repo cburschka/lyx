@@ -32,14 +32,11 @@ What's new
 
 - update cl2emult textclass
 
-- small cleanup of UserGuide; update to German User Guide and Extended
-  manual.
+- small cleanup of UserGuide; update to German and French documentation
 
-- update german and danish localization of the interface
+- update french, german and danish localization of the interface
 
 ** Bug fixes
-
-- the reference dialog now lists the labels of the current buffer.
 
 - fix bug where special characters in equations label confuse LyX
   (this was a new bug in 1.2.1)
@@ -49,9 +46,17 @@ What's new
 
 - fix bug with handling of EPSI files (this was a new bug in 1.2.1)
 
+- fix lockup when changing the layout of several paragraphs at the
+  same time (and the layout of the first paragraph is already correct)
+
 - fix bug with graphics files which name contain a '.'
 
+- when a viewer has not been found (set to "none"), remove the
+  corresponding View menu entry
+
 - fix placement of cursor with mouse in presence of hfills
+
+- the reference dialog now lists the labels of the current buffer
 
 - fix the thesaurus dialog so that it can be closed with the Escape key
 

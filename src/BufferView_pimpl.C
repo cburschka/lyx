@@ -1861,11 +1861,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		{
 			Paragraph * spar = lt->selection.start.par();
 			Paragraph * epar = lt->selection.end.par()->next();
-			while(spar != epar) {
+			while (spar != epar) {
 				if (spar->layout() != current_layout) {
 					change_layout = true;
 					break;
 				}
+				spar = spar->next();
 			}
 		}
 		if (change_layout) {
