@@ -27,7 +27,7 @@ struct ColInfo
 
 struct RowInfo
 {
-	RowInfo() : topline(false), bottomline(false) {} 
+	RowInfo() : topline(false), bottomline(false) {}
 	bool topline;     // horizontal line above
 	int  bottomline;  // horizontal line below
 };

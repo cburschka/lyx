@@ -8,7 +8,7 @@ from LyX's point of view should connect its xxxChanged() signal to
 a the dialog's changed_adaptor() slot, which in turn should call
 form_->changed(). If you are using a more complicated thing anyway,
 then remember to call form_->changed() at the end (if it has changed !)
- 
+
 Every non-trivial widget should have a tooltip. If you don't know
 what to write, write "FIXME", and it can fixed later. Don't be afraid
 to use QWhatsThis too, but this must be done in the derived class's
@@ -19,17 +19,17 @@ constructor, and use _("..."). Non-trivial means that things like "OK"
 maintain compatibility.
 
 Remember to check tab order on a dialog (third icon, with blue bars in designer).
- 
+
 Remember to check sensible resizing behaviour on a dialog.
 
 Remember to use Edit->Check Accelerators
 
 If necessary, you should override Qt2Base::isValid() for determining the validity
 of the current dialog's contents.
- 
+
 OK/Apply/Restore/Close should be connected in the derived class's constructor
 to call form_->slotOK() etc. Refer to close/cancel as close in the source.
- 
+
 Override update_contents() to update the dialog, not update(), and build_dialog(),
 not build(). Only these functions may change dialog widgets that may emit changed()
 during initialisation, to prevent the button controller from changing its state.
@@ -39,7 +39,7 @@ should use Qt2Base::changed() in all circumstances. However, if you must call
 the buttoncontroller, make sure to respect Qt2Base::updating_
 
 Don't #undef emit - #include "QtLyXView.h" instead
- 
+
 Naming conventions
 ------------------
 
@@ -47,14 +47,14 @@ QFoo.[Ch]              The file that interacts with the controller
 QFooDialog.[Ch]        The implementation of the dialog, derived from the generated files
 ui/QFooDialog.ui       The designer file
 ui/QFooDialogBase.[Ch] Generated files from QFooDialog.ui
- 
+
 slots should be named e.g. slotFooClicked(), slotFooSelected(), where foo is the name
 of the widget.
- 
+
 Widgets should be named like "fooXX", where XX is one of the following
 widget types :
 
-CB - check box 
+CB - check box
 CO - combo box
 ED - line edit
 LA - label
@@ -62,7 +62,7 @@ ML -
 PB - push button
 (FIXME: complete this)
 
- 
+
 Stuff to be aware of
 --------------------
 

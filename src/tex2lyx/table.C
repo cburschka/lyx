@@ -142,7 +142,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 					ci.special += t.character();
 					int const nargs = special_columns[t.character()];
 					for (int i = 0; i < nargs; ++i)
-						ci.special += "{" + p.verbatim_item() + "}"; 
+						ci.special += "{" + p.verbatim_item() + "}";
 					//cerr << "handling special column '" << t << "' " << nargs
 					//	<< "  '" << ci.special << "'\n";
 					colinfo.push_back(ci);
@@ -265,7 +265,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			p.error("found 'end' unexpectedly");
 		}
 
-		else 
+		else
 			os << t.asInput();
 	}
 }
@@ -312,7 +312,7 @@ void handle_tabular(Parser & p, ostream & os,
 
 	vector< vector<CellInfo> > cellinfo(lines.size());
 	vector<RowInfo> rowinfo(lines.size());
-	
+
 	// split into rows
 	//cerr << "// split into rows\n";
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
@@ -320,7 +320,7 @@ void handle_tabular(Parser & p, ostream & os,
 		// init row
 		cellinfo[row].resize(colinfo.size());
 
-		// split row	
+		// split row
 		vector<string> dummy;
 		//cerr << "\n########### LINE: " << lines[row] << "########\n";
 		split(lines[row], dummy, HLINE);
@@ -338,7 +338,7 @@ void handle_tabular(Parser & p, ostream & os,
 		//cerr << "line: " << row << " below 2: " << dummy[2] <<  "\n";
 		//cerr << "line: " << row << " cells 1: " << dummy[1] <<  "\n";
 
-		for (int i = 0; i <= 2; i += 2) {	
+		for (int i = 0; i <= 2; i += 2) {
 			//cerr << "   reading from line string '" << dummy[i] << "'\n";
 			Parser p1(dummy[i]);
 			while (p1.good()) {
@@ -356,7 +356,7 @@ void handle_tabular(Parser & p, ostream & os,
 							handle_hline_above(rowinfo[row], cellinfo[row]);
 							//cerr << "above row: " << row << endl;
 						}
-					} else {	
+					} else {
 						//cerr << "below row: " << row << endl;
 						handle_hline_below(rowinfo[row], cellinfo[row]);
 					}
@@ -391,14 +391,14 @@ void handle_tabular(Parser & p, ostream & os,
 				cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
 			//cerr << "cell content: '" << cells[cell] << "'\n";
 			Parser p(cells[cell]);
-			p.skip_spaces();	
+			p.skip_spaces();
 			//cells[cell] << "'\n";
 			if (p.next_token().cs() == "multicolumn") {
 				// how many cells?
 				p.get_token();
 				size_t const ncells = string2int(p.verbatim_item());
 
-				// special cell properties alignment	
+				// special cell properties alignment
 				vector<ColInfo> t;
 				handle_colalign(p, t);
 				cellinfo[row][col].multi     = 1;
@@ -420,7 +420,7 @@ void handle_tabular(Parser & p, ostream & os,
 				if (t.front().rightline > 1)
 					cellinfo[row][col + 1].leftline = true;
 
-			} else {	
+			} else {
 				// FLAG_END is a hack, we need to read all of it
 				cellinfo[row][col].leftline = colinfo[col].leftline;
 				cellinfo[row][col].rightline = colinfo[col].rightline;
@@ -480,7 +480,7 @@ void handle_tabular(Parser & p, ostream & os,
 			os << "<cell";
 			if (cell.multi)
 				os << " multicolumn=\"" << cell.multi << "\"";
-			os << " alignment=\"" << verbose_align(cell.align) 
+			os << " alignment=\"" << verbose_align(cell.align)
 			   << "\""
 			   << " valignment=\"top\"";
 			if (cell.topline)
@@ -505,7 +505,7 @@ void handle_tabular(Parser & p, ostream & os,
 		}
 		os << "</row>\n";
 	}
-			
+
 	os << "</lyxtabular>\n";
 }
 

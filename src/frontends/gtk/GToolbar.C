@@ -91,7 +91,7 @@ void GToolbar::add(ToolbarBackend::Toolbar const & tb)
 }
 
 
-void GToolbar::add(Gtk::Toolbar * toolbar, 
+void GToolbar::add(Gtk::Toolbar * toolbar,
 			 int action,
 			 string const & tooltip)
 {
@@ -114,7 +114,7 @@ void GToolbar::add(Gtk::Toolbar * toolbar,
 	}
 	default:
 	{
-		Glib::ustring xpmName = 
+		Glib::ustring xpmName =
 			Glib::locale_to_utf8(toolbarbackend.getIcon(action));
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
 		if (xpmName.size() == 0) {
@@ -125,7 +125,7 @@ void GToolbar::add(Gtk::Toolbar * toolbar,
 						   action),
 					tip));
 		} else {
-			Gtk::Image * image = 
+			Gtk::Image * image =
 				Gtk::manage(new Gtk::Image(xpmName));
 			image->show();
 			toolbar->tools().push_back(

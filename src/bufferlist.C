@@ -308,7 +308,6 @@ bool BufferList::exists(string const & s) const
 bool BufferList::isLoaded(Buffer const * b) const
 {
 	BOOST_ASSERT(b);
-
 	BufferStorage::const_iterator cit =
 		find(bstore.begin(), bstore.end(), b);
 	return cit != bstore.end();

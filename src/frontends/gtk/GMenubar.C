@@ -184,13 +184,13 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 			bool on, off;
 			on = flag.onoff(true);
 			off = flag.onoff(false);
-			
+
 			if (on || off) {
 				gmenu->items().push_back(
 					Gtk::Menu_Helpers::CheckMenuElem(
 						labelTrans(i->label(),
 							   i->shortcut())));
-				Gtk::CheckMenuItem& citem = 
+				Gtk::CheckMenuItem& citem =
 					static_cast<Gtk::CheckMenuItem&>(
 						gmenu->items().back());
 				citem.set_active(on);

@@ -25,7 +25,7 @@ bool ControlBranch::initialiseParams(string const & data)
 	InsetBranchParams params;
 	InsetBranchMailer::string2params(data, params);
 	params_.reset(new InsetBranchParams(params));
-	
+
 	return true;
 }
 

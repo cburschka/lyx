@@ -18,7 +18,7 @@ Unmarked items are known unfixed but probably unverified bugs.
 
 ----------------------------------------------------------------------
 
-General hints for bug reports: 
+General hints for bug reports:
 
   - keep the items small
 
@@ -30,7 +30,7 @@ General hints for bug reports:
 
   - check this list regularly, comment on the marked items.
 
-  - plain ASCII text please, not much more than 70 chars per column 
+  - plain ASCII text please, not much more than 70 chars per column
 
 Dekel:
 
@@ -40,7 +40,7 @@ Dekel:
 Eran Tromer:
 
 
-- When selecting, maybe give a visual indication of the "original" 
+- When selecting, maybe give a visual indication of the "original"
   anchor, when it differs from the "actual" one.
 
 Rainer Dorsch:
@@ -52,7 +52,7 @@ Rainer Dorsch:
   it.
 
 
-Marcus (Suran@gmx.net) 
+Marcus (Suran@gmx.net)
 
 - In math-mode I can switch back to text-mode in a formula but then I am
   not able to type Umlauts.
@@ -62,40 +62,40 @@ Marcus (Suran@gmx.net)
 
 
 From: Álvaro Tejero Cantero <alvaro@antalia.com>
- 
-- I suggest creating a different "kewybinding namespace" for the formulas, 
- since you could put to good use all those keybindings from the menu (M-?, 
- C-?) thath currently do their job PLUS getting you out of the formula. 
- Seriously, it'd be great to have more keys free, so M-d t would be time 
+
+- I suggest creating a different "kewybinding namespace" for the formulas,
+ since you could put to good use all those keybindings from the menu (M-?,
+ C-?) thath currently do their job PLUS getting you out of the formula.
+ Seriously, it'd be great to have more keys free, so M-d t would be time
  derivative and M-d ? derivative with respect to the variable ?. And so on.
- 
-- I'm no experienced C++ programmer, but if you consider it appropriate, I 
- could write a scritp in python for this one (I'm also very optimistic). Tell 
+
+- I'm no experienced C++ programmer, but if you consider it appropriate, I
+ could write a scritp in python for this one (I'm also very optimistic). Tell
  me what you think:
-  
-   Flattening macros. Sometimes it's annoying the fact that once you have 
- written a macro, you can't touch at it's "constant parts". I call flattening 
+
+   Flattening macros. Sometimes it's annoying the fact that once you have
+ written a macro, you can't touch at it's "constant parts". I call flattening
  to the process of substituting all macros with LaTeX code.
- 
-   Task: designing a macro substitution system that reads from a file 
- (possibly the same file as the document's) the macros and parses the document 
+
+   Task: designing a macro substitution system that reads from a file
+ (possibly the same file as the document's) the macros and parses the document
  doing the appropriate replacements
- 
-  This is very useful, because sometimes you have a big expression in a macro 
- and you want to change an index only. What do you do then?. You retype 
- everything (perhaps several times in the document) or you create extremely 
- generic and parametrizable macros that aren't very fast to fill in the 
+
+  This is very useful, because sometimes you have a big expression in a macro
+ and you want to change an index only. What do you do then?. You retype
+ everything (perhaps several times in the document) or you create extremely
+ generic and parametrizable macros that aren't very fast to fill in the
  majority of cases.
- 
- 
-- cut&paste inside math-mode doesn't work the X fashion (middle button doesn't 
+
+
+- cut&paste inside math-mode doesn't work the X fashion (middle button doesn't
  paste anything).
- 
-- I remember having heard that a search-replace function was planned, so I 
- won't repeat that. Only that the flattening option would be then easier to 
+
+- I remember having heard that a search-replace function was planned, so I
+ won't repeat that. Only that the flattening option would be then easier to
  implement on top of that.
- 
-- Some math symbols aren't very well supported (to my knowledge). I'm 
+
+- Some math symbols aren't very well supported (to my knowledge). I'm
   thinking of [] options.
 
 Jules Bean:
@@ -105,14 +105,14 @@ LyX (unless it really isn't very common).  b) Actions which are used
 frequently should be a single key-press, even if that's not very easy to
 remember. You learn it.  c) Actions which are used rarely should be
 mnemonic -- easy to remember -- even if they are multiple keypresses.
-Things you do rarely you care less about the time it takes to perform. 
+Things you do rarely you care less about the time it takes to perform.
 
 As an aside, you may think that I'm whining over nothing. However, when
 you enter math mode as often as I do (often more than once a sentence) it
 gets very annoying, especially as compared to simply typing '$' in plain
 emacs. Also, you may say 'why don't you just change your bindings file?'. I
 will ;) but I wanted to start some discussion on this since it can benefit
-everyone! 
+everyone!
 
 More serious, though, than the number of characters which need to be typed
 is the confusing nature of the command. 'M-c m', typed once, puts you into
@@ -122,17 +122,17 @@ into normal math-mode.  IMO, 'modal' keys should either be idempotent (so
 hitting it the second time does nothing) or self-inverting. In fact, the
 inverse to 'M-c m' is either 'ESC' or simply a space typed at the end of
 the block --- which is confusing, since they're not of the same 'shape' as
-the command that got you in there. 
+the command that got you in there.
 
 Now, I'm not saying that 'space' shouldn't be allowed as a short-cut to get
 you out of math-mode; it's a most useful and natural one, I like it a lot.
-However, on balance I think M-c m should also have that effect. 
+However, on balance I think M-c m should also have that effect.
 
-3) Math-mode inconsistencies 
+3) Math-mode inconsistencies
 
 Sometimes 'the same action' has the same keystroke both within and
 without math-mode. This is very sensible. However, it is very annoying when
-they don't behave the way you're expecting them to. 
+they don't behave the way you're expecting them to.
 
 For example, 'M-c e' puts you into 'emphasise' mode.  Ignoring the fact
 that in text mode this is italics, and in math-mode it stands for the
@@ -141,31 +141,31 @@ the fact that they have the same keys. However, in math-mode, 'M-c e' is
 idempotent, (and you need 'M-c space' to get back into normal) whereas in
 text-mode 'M-c e' is self-inverse. These are the two possibilities I listed
 as acceptable before, but consistency would be nice ;-) IMO, self-inverse
-would be best for both. 
+would be best for both.
 
-5) Proposal : a 'ligatures' or 'autocorrect' system 
+5) Proposal : a 'ligatures' or 'autocorrect' system
 
 One of the very minor, but useful, features of TeX is the way it lets you
 type the nearest approximation to what you want using a 'typewriter
 keyboard', and substitutes the typographically neat equivalent. In
 particular, 'fancy' quotes (") and en and em dashes (---). I propose that
 this UI element could be taken up a level into LyX, with a system that does
-the following (for example): 
+the following (for example):
 
--> becomes \rightarrow 
-<- becomes \leftarrow 
-=> becomes \Rightarrow (etc..) 
-==> becomes \Longrightarrow (etc..) 
+-> becomes \rightarrow
+<- becomes \leftarrow
+=> becomes \Rightarrow (etc..)
+==> becomes \Longrightarrow (etc..)
 
 This may only be appropriate in math mode, of course.  This family bug me
 in particular because they take ages to type using a \-escape. Undoubtedly
 sharp minds will think of others, and also we need some way of actually
-typing those sequences as literals when we want them. 
+typing those sequences as literals when we want them.
 
-6) Scope macros: 
+6) Scope macros:
 
 The current macro system is clever, but could be neater. One improvement
-I'd like is to let LyX know about TeX's scoping rules... 
+I'd like is to let LyX know about TeX's scoping rules...
 
 
 Yves Bastide:

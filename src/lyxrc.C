@@ -524,7 +524,7 @@ int LyXRC::read(string const & filename)
 					default_papersize =
 						PAPER_LEGALPAPER;
 				else if (size == "executive")
-					default_papersize = 
+					default_papersize =
 						PAPER_EXECUTIVEPAPER;
 				else if (size == "a3")
 					default_papersize =

@@ -103,9 +103,9 @@ void InsetFloatList::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCommand::metrics(mi, dim);
 	int center_indent = (mi.base.textwidth - dim.wid) / 2;
-    Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);      
+    Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
 	button().setBox(b);
-	
+
 	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }

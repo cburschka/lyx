@@ -47,7 +47,7 @@ GView::GView()
 	set_default_size(500, 550);
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
-	string const iconName = 
+	string const iconName =
 		lyx::support::LibFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())
 		set_icon_from_file(iconName);

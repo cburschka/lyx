@@ -49,7 +49,7 @@ private:
 	Display * display;
 	///
 	Colormap colormap;
-	/// 
+	///
 	std::vector<GC> colorGCcache;
 	///
 	GC getGCForeground(string const & s);

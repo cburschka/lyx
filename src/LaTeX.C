@@ -227,7 +227,7 @@ int LaTeX::run(TeXErrors & terr)
 	++count;
 	lyxerr[Debug::LATEX] << "Run #" << count << endl;
 	message(runMessage(count));
-	
+
 	startscript();
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {

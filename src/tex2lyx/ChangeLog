@@ -35,7 +35,7 @@
 
 	* context.C (begin_layout, end_layout, begin_deeper, end_deeper):
 	tiny helper functions
-	(check_layout): 
+	(check_layout):
 	(check_end_deeper): add special handling for the case of a normal
 	paragraph inside a list-like environment.
 
@@ -66,14 +66,14 @@
 	(parse_environment): remove existing depth handling code, which is
 	handled transparently by the Context struct; make unknown
 	environments work (again?) through ERT
-	 
+
 	* test-structure.tex: new test file, used to try out various
 	layouts combinations
 
 	* tex2lyx.C:
 	* tex2lyx.h:
 	* table.C: update to use Context struct
-	
+
 	* context.[Ch]: new helper struct which is passed to parse_*
 	functions and handles *_layout and *_deeper tags output
 
@@ -107,7 +107,7 @@
 	check_layout function. Remove all explicit \layout tags.
 	(parse_text): pass an optional parameter 'layout'
 	(handle_par): remove
-	
+
 	* text.C (output_command_layout): renamed from output_layout
 	(parse_environment): new method containing a part of parse_text
 
@@ -184,7 +184,7 @@
 	textclass for its existence. Also handle wide floats naturally.
 
 	* tex2lyx.h: associated changes to function declarations.
-	
+
 2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* texparser.C (catInit): same warning avoidance as in math_parser.C

@@ -46,7 +46,7 @@ public:
 public:
 	/// these are intentionally public as things like
 	///
-	///   dim.asc += 20; 
+	///   dim.asc += 20;
 	///
 	/// are used all over the place and "hiding" those behind
 	///

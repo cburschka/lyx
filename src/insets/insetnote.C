@@ -187,7 +187,7 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 	} else if (pt == "Greyedout") {
 		os << "%\n\\end{lyxgreyedout}\n";
 		i += 4;
-	} 
+	}
 	return i;
 }
 

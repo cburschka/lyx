@@ -3,22 +3,22 @@ Inset 'Xyz' is implemented by 'MathXyzInset' in 'math_xyzinset.[hC]'
 
 
 Inset hierarchy:
-                                   
-                                   MathInset   
+
+                                   MathInset
                                 (abstract base)
 
                          /            |             \
 
               Dim                  Char                   MacroArg
-         (thing that need       (for things formerly 
-          the width_/ascent_     known as characters) 
+         (thing that need       (for things formerly
+          the width_/ascent_     known as characters)
           /descent_ cache)
-        
+
           /             \
 
        Nest              Dots  Func  Space  Symbol Bigop Noglyph
-  (for thing with      
-   nested content)     
+  (for thing with
+   nested content)
 
         |         \
 
@@ -33,5 +33,5 @@ Inset hierarchy:
 
 There are only two "real LyXInsets" in here:
 
-Formula       - containing a pointer to a  MathHullInset 
+Formula       - containing a pointer to a  MathHullInset
 FormulaMacro  - containing a pointer to a  MathMacroTemplate

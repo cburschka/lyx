@@ -85,7 +85,7 @@ public:
 		const_cast<GdkWindow*>(workArea_.get_window()->gobj())); }
 	Glib::RefPtr<Gdk::Pixmap> getPixmap() { return workAreaPixmap_; }
 	Glib::RefPtr<Gdk::GC> getGC() { return workAreaGC_; }
-	Glib::RefPtr<Gdk::Colormap> getColormap() 
+	Glib::RefPtr<Gdk::Colormap> getColormap()
 	{ return workArea_.get_colormap(); }
 	XftDraw * getXftDraw() { return draw_; }
 	ColorHandler & getColorHandler() { return colorHandler_; }

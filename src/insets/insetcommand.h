@@ -68,7 +68,7 @@ public:
 	string const & getOptions() const { return p_.getOptions(); }
 	///
 	ButtonRenderer & button() const { return button_; }
-	
+
 protected:
 	///
 	string const getCommand() const { return p_.getCommand(); }

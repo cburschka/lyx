@@ -32,7 +32,7 @@ enum Styles {
 };
 
 
-// 
+//
 // This is the part common to MetricsInfo and PainterInfo
 //
 struct MetricsBase {

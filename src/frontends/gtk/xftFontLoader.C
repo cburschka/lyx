@@ -132,7 +132,7 @@ XftPattern * xftFontLoader::getFontPattern(LyXFont::FONT_FAMILY family,
 	case LyXFont::BOLD_SERIES:
 		fweight = XFT_WEIGHT_BOLD;
 		break;
-	default: 
+	default:
 		fweight = XFT_WEIGHT_MEDIUM;
 		break;
 	}
@@ -148,7 +148,7 @@ XftPattern * xftFontLoader::getFontPattern(LyXFont::FONT_FAMILY family,
 	case LyXFont::SLANTED_SHAPE:
 		fslant = XFT_SLANT_OBLIQUE;
 		break;
-	default: 
+	default:
 		fslant = XFT_SLANT_ROMAN;
 		break;
 	}

@@ -349,13 +349,13 @@ void FormDocument::build()
 				   bmtablefile.c_str());
 
 	picker_.reset(new FormColorpicker);
-	
+
 	// the document branches form
 	branch_.reset(build_document_branch(this));
 
 	fl_set_object_color(branch_->button_color,
 		GUI_COLOR_CHOICE, GUI_COLOR_CHOICE);
-	
+
 	bcview().addReadOnly(branch_->input_all_branches);
 	bcview().addReadOnly(branch_->button_add_branch);
 	bcview().addReadOnly(branch_->button_remove_branch);
@@ -741,7 +741,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 		unsigned i = fl_get_browser(branch_->browser_all_branches);
 		string const current_branch =
 			fl_get_browser_line(branch_->browser_all_branches, i);
-		
+
 		RGBColor before;
 		string x11hexname = params.branchlist().getColor(current_branch);
 		if (x11hexname[0] == '#') {
@@ -1031,7 +1031,7 @@ void FormDocument::branch_apply(BufferParams & params)
 	branchlist_.clear();
 }
 
-		
+
 void FormDocument::UpdateClassParams(BufferParams const & params)
 {
 	// These are the params that have to be updated on any class change
@@ -1301,11 +1301,11 @@ void FormDocument::branch_update(BufferParams const & params)
 {
 	if (!branch_.get())
 		return;
-	
+
 	string const all_branches = params.branchlist().allBranches();
 	fl_clear_browser(branch_->browser_all_branches);
 	string current_branch("none");
-	
+
 	if (!all_branches.empty()) {
 		std::vector<string> vec = getVectorFromString(all_branches, "|");
 		for (unsigned i = 0; i < vec.size(); ++i) {

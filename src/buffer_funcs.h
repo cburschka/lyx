@@ -19,7 +19,7 @@ class TeXErrors;
 class ErrorList;
 
 /**
- *  Loads a LyX file \c filename into \c Buffer 
+ *  Loads a LyX file \c filename into \c Buffer
  *  and \return success status.
  */
 bool loadLyXFile(Buffer *, string const & filename);
@@ -27,7 +27,7 @@ bool loadLyXFile(Buffer *, string const & filename);
 /* Make a new file (buffer) with name \c filename based on a template
  * named \c templatename
  */
-Buffer * newFile(string const & filename, string const & templatename, 
+Buffer * newFile(string const & filename, string const & templatename,
 		 bool isNamed = false);
 
 ///return the format of the buffer on a string

@@ -28,7 +28,7 @@ Toolbar::~Toolbar()
 }
 
 
-void Toolbar::init() 
+void Toolbar::init()
 {
 	// extracts the toolbars from the backend
 	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();

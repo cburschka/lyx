@@ -123,8 +123,8 @@ xforms_objects = \
 	../xforms/xformsImage.lo \
 	../xforms/xforms_resize.lo
 
-#	../xforms/Dialogs.lo 
-#	../xforms/FormFiledialog.lo 
+#	../xforms/Dialogs.lo
+#	../xforms/FormFiledialog.lo
 #	../xforms/FileDialog.lo
 #	../xforms/FormAboutlyx.lo
 

@@ -313,7 +313,7 @@ bool GWorkArea::onKeyPress(GdkEventKey * event)
 void GWorkArea::onClipboardGet(Gtk::SelectionData & /*selection_data*/,
 			       guint /*info*/)
 {
-	selectionRequested();	
+	selectionRequested();
 }
 
 

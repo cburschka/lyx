@@ -63,7 +63,7 @@ public:
 	///
 	string const getScreenLabel(Buffer const &) const;
 	///
-	void metrics(MetricsInfo &, Dimension &) const; 
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 private:

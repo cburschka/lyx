@@ -36,7 +36,7 @@ void FormBranch::build()
 	dialog_.reset(build_branch(this));
 
 	fl_addto_choice(dialog_->choice_branch, all_branches.c_str());
-	
+
 	bcview().setOK(dialog_->button_ok);
 	bcview().setApply(dialog_->button_apply);
 	bcview().setCancel(dialog_->button_cancel);

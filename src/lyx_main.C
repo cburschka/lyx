@@ -118,12 +118,12 @@ LyX::LyX(int & argc, char * argv[])
 	init(want_gui);
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
-	if (want_gui) 
+	if (want_gui)
 		lyx_gui::parse_lyxrc();
 
 	vector<string> files;
 
-	for (int argi = argc - 1; argi >= 1; --argi) 
+	for (int argi = argc - 1; argi >= 1; --argi)
 		files.push_back(argv[argi]);
 
 	if (first_start)
@@ -149,7 +149,7 @@ LyX::LyX(int & argc, char * argv[])
 			} else {
 				Buffer * buf = bufferlist.newBuffer(s, false);
 				buf->error.connect(boost::bind(&LyX::printError, this, _1));
-				if (loadLyXFile(buf, s)) 
+				if (loadLyXFile(buf, s))
 					last_loaded = buf;
 				else
 					bufferlist.release(buf);
@@ -163,7 +163,7 @@ LyX::LyX(int & argc, char * argv[])
 				QuitLyX();
 				exit(!success);
 			}
-		} 
+		}
 		files.clear(); // the files are already loaded
 	}
 

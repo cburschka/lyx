@@ -80,7 +80,7 @@ dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 		InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
 		return DISPATCHED;
 	case LFUN_MOUSE_RELEASE:
-		if (button().box().contains(cmd.x, cmd.y)) 
+		if (button().box().contains(cmd.x, cmd.y))
 			InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
 		return DISPATCHED;
 

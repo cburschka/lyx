@@ -31,7 +31,7 @@ inline int getScreen()
 
 inline Window getRootWindow()
 {
-	static Window rootWin = 
+	static Window rootWin =
 		GDK_WINDOW_XID(Gdk::Display::get_default()->
 			       get_default_screen()->
 			       get_root_window()->gobj());

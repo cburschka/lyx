@@ -53,10 +53,10 @@ public:
 	undo_kind kind;
 
 	/**
-	 * ID of hosting inset if the cursor is in one. 
+	 * ID of hosting inset if the cursor is in one.
 	 * if -1, then the cursor is not in an inset.
 	 * if >= 0, then the cursor is in inset with given id.
-	 */ 
+	 */
 	int inset_id;
 
 	/// Offset to the first paragraph in the main document paragraph list

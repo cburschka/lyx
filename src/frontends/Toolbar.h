@@ -28,7 +28,7 @@ public:
 	///
 	Toolbar();
 
-	/// 
+	///
 	virtual ~Toolbar();
 
 	/// Initialize toolbar from backend
@@ -57,7 +57,7 @@ private:
 	virtual void update() = 0;
 
 	/// show or hide a toolbar
-	virtual void displayToolbar(ToolbarBackend::Toolbar const & tb, 
+	virtual void displayToolbar(ToolbarBackend::Toolbar const & tb,
 				    bool show) = 0;
 
 	/// Populate the layout combox.

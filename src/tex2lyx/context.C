@@ -41,7 +41,7 @@ void end_deeper(ostream & os)
 {
 	os << "\n\\end_deeper \n";
 }
-	
+
 }
 
 Context::Context(bool need_layout_,
@@ -101,9 +101,9 @@ void Context::check_layout(ostream & os)
 }
 
 
-void Context::check_end_layout(ostream & os) 
+void Context::check_end_layout(ostream & os)
 {
-	if (need_end_layout) {		
+	if (need_end_layout) {
 		end_layout(os);
 		need_end_layout = false;
 	}
@@ -125,7 +125,7 @@ void Context::check_deeper(ostream & os)
 }
 
 
-void Context::check_end_deeper(ostream & os) 
+void Context::check_end_deeper(ostream & os)
 {
 	if (need_end_deeper) {
 		end_deeper(os);

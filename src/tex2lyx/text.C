@@ -136,7 +136,7 @@ string translate_len(string const & len)
 		return len;
 }
 
-		
+
 void begin_inset(ostream & os, string const & name)
 {
 	os << "\n\\begin_inset " << name;
@@ -190,7 +190,7 @@ private:
 
 
 LyXLayout_ptr findLayout(LyXTextClass const & textclass,
-			 string const & name) 
+			 string const & name)
 {
 	LyXTextClass::const_iterator it  = textclass.begin();
 	LyXTextClass::const_iterator end = textclass.end();
@@ -209,7 +209,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	context.check_deeper(os);
 	context.check_layout(os);
 	if (context.layout->optionalargs > 0) {
-		string s; 
+		string s;
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
@@ -278,7 +278,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			}
 			if (p.next_token().asInput() == "[") {
 				height = translate_len(p.getArg('[', ']'));
-			
+
 				if (p.next_token().asInput() == "[") {
 					switch(p.getArg('[', ']')[0]) {
 					case 't': inner_pos = "0"; break;
@@ -370,7 +370,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			flags |= FLAG_LEAVE;
 		}
 
-		if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) 
+		if (t.character() == ']' && (flags & FLAG_BRACK_LAST))
 			return;
 
 		//
@@ -404,7 +404,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// extended to other quotes, but is not so easy (a
 		// left english quote is the same as a right german
 		// quote...)
-		else if (t.asInput() == "`" 
+		else if (t.asInput() == "`"
 			 && p.next_token().asInput() == "`") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
@@ -412,8 +412,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
-		}	
-		else if (t.asInput() == "'" 
+		}
+		else if (t.asInput() == "'"
 			 && p.next_token().asInput() == "'") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
@@ -421,7 +421,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
-		}	
+		}
 
 
 		else if (t.cat() == catLetter ||
@@ -450,14 +450,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.character() == '~') {
 				if (context.layout->free_spacing)
 					os << ' ';
-				else 
+				else
 					os << "\\InsetSpace ~\n";
 			} else
 				os << t.character();
 		}
 
 		else if (t.cat() == catBegin) {
-// FIXME??? 
+// FIXME???
 			// special handling of size changes
 			context.check_layout(os);
 			bool const is_size = is_known(p.next_token().cs(), known_sizes);
@@ -529,7 +529,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "item") {
 			// should be done automatically by Parser::tokenize
 			//p.skip_spaces();
-			string s; 
+			string s;
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
 				Context newcontext(false, context.textclass);
@@ -583,7 +583,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "includegraphics") {
 			map<string, string> opts = split_map(p.getArg('[', ']'));
 			string name = p.verbatim_item();
-			
+
 			context.check_layout(os);
 			begin_inset(os, "Graphics ");
 			os << "\n\tfilename " << name << '\n';
@@ -595,7 +595,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				   << translate_len(opts["height"]) << '\n';
 			end_inset(os);
 		}
-		
+
 		else if (t.cs() == "footnote") {
 			context.check_layout(os);
 			begin_inset(os, "Foot\n");
@@ -661,7 +661,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << name << "\n";
 				end_inset(os);
 				p.get_token(); // swallow second arg
-			} else 
+			} else
 				handle_ert(os, "\\listof{" + name + "}", context);
 		}
 
@@ -745,7 +745,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\size " << known_coded_sizes[where - known_sizes] << "\n";
 		}
 
-		else if (t.cs() == "LyX" || t.cs() == "TeX" 
+		else if (t.cs() == "LyX" || t.cs() == "TeX"
 			 || t.cs() == "LaTeX") {
 			context.check_layout(os);
 			os << t.cs();
@@ -811,8 +811,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#" 
-			    || t.cs() == "$" || t.cs() == "{" || t.cs() == "}" 
+		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#"
+			    || t.cs() == "$" || t.cs() == "{" || t.cs() == "}"
 			    || t.cs() == "%") {
 			context.check_layout(os);
 			os << t.cs();
@@ -877,12 +877,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "\n\\newline \n";
 			}
 		}
-	
+
 		else if (t.cs() == "input" || t.cs() == "include"
 			 || t.cs() == "verbatiminput") {
 			string name = '\\' + t.cs();
 			if (t.cs() == "verbatiminput"
-			    && p.next_token().asInput() == "*") 
+			    && p.next_token().asInput() == "*")
 				name += p.get_token().asInput();
 			context.check_layout(os);
 			begin_inset(os, "Include ");

@@ -90,7 +90,7 @@ keyword_item bindTags[] = {
 }
 
 
-bool kb_keymap::read(string const & bind_file) 
+bool kb_keymap::read(string const & bind_file)
 {
 	const int bindCount = sizeof(bindTags) / sizeof(keyword_item);
 
@@ -101,7 +101,7 @@ bool kb_keymap::read(string const & bind_file)
 	string const tmp = i18nLibFileSearch("bind", bind_file, "bind");
 	lexrc.setFile(tmp);
 	if (!lexrc.isOK()) {
-		lyxerr << "kb_keymap::read: cannot open bind file:" 
+		lyxerr << "kb_keymap::read: cannot open bind file:"
 		       << tmp << endl;
 		return false;
 	}
@@ -120,7 +120,7 @@ bool kb_keymap::read(string const & bind_file)
 		case BN_BIND:
 		{
 			string seq, cmd;
-			
+
 			if (lexrc.next()) {
 				seq = lexrc.getString();
 			} else {
@@ -128,7 +128,7 @@ bool kb_keymap::read(string const & bind_file)
 				error = true;
 				break;
 			}
-			
+
 			if (lexrc.next(true)) {
 				cmd = lexrc.getString();
 			} else {
@@ -136,7 +136,7 @@ bool kb_keymap::read(string const & bind_file)
 				error = true;
 				break;
 			}
-			
+
 			int action = lyxaction.LookupFunc(cmd);
 			if (!action == LFUN_UNKNOWN_ACTION) {
 				lexrc.printError("BN_BIND: Unknown LyX"
@@ -144,7 +144,7 @@ bool kb_keymap::read(string const & bind_file)
 				error = true;
 				break;
 			}
-			
+
 			bind(seq, kb_action(action));
 			break;
 		}
@@ -163,7 +163,7 @@ bool kb_keymap::read(string const & bind_file)
 	}
 
 	if (error)
-		lyxerr << "kb_keymap::read: error while reading bind file:" 
+		lyxerr << "kb_keymap::read: error while reading bind file:"
 		       << tmp << endl;
 	return !error;
 }

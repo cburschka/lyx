@@ -33,7 +33,7 @@ void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 //std::string parse_text(Parser & p, unsigned flags, const bool outer,
 //		       Context & context);
 
-void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags, 
+void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
 			 bool outer, Context & context);
 
 

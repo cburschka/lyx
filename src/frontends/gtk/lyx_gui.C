@@ -107,7 +107,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
 	if (xeev->error_code == BadWindow) {
 		lyxerr << "BadWindow received !" << std::endl;
 		lyxerr << "If you're using xforms 1.0 or greater, "
-		       << " please report this to lyx-devel@lists.lyx.org" 
+		       << " please report this to lyx-devel@lists.lyx.org"
 		       << std::endl;
 		return 0;
 	}

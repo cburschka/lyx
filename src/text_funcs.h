@@ -10,7 +10,7 @@
  * Full author contact details are available in file CREDITS.
  *
  * This file contains some utility functions for actually mutating
- * the text contents of a document 
+ * the text contents of a document
  */
 
 #ifndef TEXT_FUNCS_H

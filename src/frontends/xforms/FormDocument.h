@@ -40,7 +40,7 @@ enum GuiColors {
 	GUI_COLOR_CHOICE   = FL_FREE_COL15
 };
 
-		
+
 }
 
 
@@ -123,7 +123,7 @@ private:
 	///
 	boost::scoped_ptr<FD_document_branch>   branch_;
 	///
-	boost::scoped_ptr<FormColorpicker> picker_;	
+	boost::scoped_ptr<FormColorpicker> picker_;
 	///
 	int ActCell;
 	///

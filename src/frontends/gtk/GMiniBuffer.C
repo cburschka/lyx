@@ -188,7 +188,7 @@ bool GMiniBuffer::onKeyPress(GdkEventKey * event)
 	switch (event->keyval) {
 	case GDK_Down:
 	{
-		Glib::ustring const h = 
+		Glib::ustring const h =
 			Glib::locale_to_utf8(controller_.historyDown());
 		if (h.empty())
 			showInfo("[End of history]", false);
@@ -198,7 +198,7 @@ bool GMiniBuffer::onKeyPress(GdkEventKey * event)
 	}
 	case GDK_Up:
 	{
-		Glib::ustring const h = 
+		Glib::ustring const h =
 			Glib::locale_to_utf8(controller_.historyUp());
 		if (h.empty())
 			showInfo("[Beginning of history]", false);
@@ -214,7 +214,7 @@ bool GMiniBuffer::onKeyPress(GdkEventKey * event)
 		Glib::ustring new_input, input;
 		string new_input_locale;
 		input = entry_.get_text();
-		std::vector<string> comp = 
+		std::vector<string> comp =
 			controller_.completions(Glib::locale_from_utf8(input),
 						new_input_locale);
 		new_input = Glib::locale_to_utf8(new_input_locale);

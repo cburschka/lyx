@@ -1,10 +1,10 @@
-// -*- C++ -*- 
+// -*- C++ -*-
 /**
- * \file BranchList.h 
+ * \file BranchList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  * \author Martin Vermeer
- * 
+ *
  * Full author contact details are available in file CREDITS.
  *
  *
@@ -17,7 +17,7 @@
  * A branch has a name, can either be selected or not, and uses a
  * user-specifyable background colour. All these can be set and
  * queried.
- * 
+ *
  * \class BranchList
  *
  * A class containing a vector of all defined branches within a
@@ -43,7 +43,7 @@ public:
 	bool getSelected() const;
 	///
 	void setSelected(bool);
-	/// 
+	///
 	string const getColor() const;
 	///
 	void setColor(string const &);
@@ -63,7 +63,7 @@ class BranchList {
 public:
 	///
 	BranchList() : separator_("|") {}
-	
+
 	///
 	typedef std::list<Branch> List;
 
@@ -79,7 +79,7 @@ public:
 	List::const_iterator end() const { return list.end(); }
 	///
 	string getColor(string const &) const;
-	///	
+	///
 	void setColor(string const &, string const &);
 	/// Select/deselect multiple branches given in '|'-separated string
 	void setSelected(string const &, bool);
@@ -91,11 +91,11 @@ public:
 	bool selected(string const &) const;
 	/// return, as a '|'-separated string, all branch names
 	string allBranches() const;
-	/// 
+	///
 	string allSelected() const;
 	///
 	string const separator() const;
-	
+
 private:
 	///
 	List list;

@@ -75,7 +75,7 @@ public:
 
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
-	
+
 	/// show the cursor if it is not visible
 	void showCursor(BufferView & bv);
 

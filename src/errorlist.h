@@ -25,14 +25,14 @@ struct ErrorItem {
 	int par_id;
 	int pos_start;
 	int pos_end;
-	ErrorItem(string const & error, string const & description, 
+	ErrorItem(string const & error, string const & description,
 		  int parid, int posstart, int posend);
 	ErrorItem();
 };
 
 class ErrorList : private std::vector<ErrorItem>
 {
-public:	
+public:
 	ErrorList() : std::vector<ErrorItem> () {};
 
 	using std::vector<ErrorItem>::push_back;

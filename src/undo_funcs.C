@@ -68,8 +68,8 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	// Nobody wants all removed character appear one by one when undoing.
 	if (! undo_finished && kind != Undo::ATOMIC) {
 		// Check whether storing is needed.
-		if (! buf->undostack().empty() 
-		    && buf->undostack().top().kind == kind 
+		if (! buf->undostack().empty()
+		    && buf->undostack().top().kind == kind
 		    && buf->undostack().top().first_par_offset == first_offset
 		    && buf->undostack().top().last_par_offset == last_offset) {
 			// No additonal undo recording needed -
@@ -117,7 +117,7 @@ bool performUndoOrRedo(BufferView * bv, Undo & undo)
 		advance(last, plist.size() - undo.last_par_offset);
 		plist.erase(first, ++last);
 	}
-		
+
 	// Re-insert old stuff instead
 	{
 		if (plist.empty()) {

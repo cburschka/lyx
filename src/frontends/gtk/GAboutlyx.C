@@ -83,7 +83,7 @@ Glib::ustring translateMarkup(Glib::ustring const & lyxMarkup)
 		case IN_ITALIC:
 			switch (*it) {
 			case '\n':
-				state = BEGIN;	
+				state = BEGIN;
 				pangoMarkup += "</i>\n";
 				break;
 			default:

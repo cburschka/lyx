@@ -110,7 +110,7 @@ public:
 
 private:
 	friend class InsetIncludeMailer;
-	
+
 	///
 	void write(std::ostream &) const;
 	///

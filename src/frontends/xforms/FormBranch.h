@@ -26,7 +26,7 @@ public:
 	/// Constructor
 	FormBranch(Dialog &);
 private:
-	/// 
+	///
 	virtual void apply();
 	/// Build the dialog
 	virtual void build();

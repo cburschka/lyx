@@ -14,7 +14,7 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
 	paper.h
 
 LYX_PRE_LIBS = mathed/libmathed.la insets/libinsets.la \
-	frontends/libfrontends.la 
+	frontends/libfrontends.la
 
 LYX_POST_LIBS = frontends/controllers/libcontrollers.la \
 	graphics/libgraphics.la \
@@ -29,12 +29,12 @@ endif
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@
 
-bin_PROGRAMS = lyx 
+bin_PROGRAMS = lyx
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
 EXTRA_PROGRAMS = lyx-xforms lyx-qt lyx-gtk
 
 lyx_xforms_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
-	frontends/xforms/libxforms.la $(LYX_POST_LIBS) $(OTHERLIBS) 
+	frontends/xforms/libxforms.la $(LYX_POST_LIBS) $(OTHERLIBS)
 
 lyx_xforms_SOURCES = main.C
 

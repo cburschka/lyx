@@ -42,7 +42,7 @@
  * - A logical color, such as no color, inherit, math
  */
 
-class LColor 
+class LColor
 // made copyable for same reasons as LyXRC was made copyable. See there for
 // explanation.
 {
@@ -183,7 +183,7 @@ public:
 		ignore
 	};
 
-	
+
 	///
 	LColor();
 	///
@@ -194,11 +194,11 @@ public:
 	void operator=(LColor const &);
 
 	///
-	void LColor::fill(LColor::color c, 
+	void LColor::fill(LColor::color c,
 			string const & lyxname,
 			string const & x11name = string(),
-			string const & latexname = string(), 
-			string const & guiname = string()); 
+			string const & latexname = string(),
+			string const & guiname = string());
 
 	/// set the given LyX color to the color defined by the X11 name given
 	void setColor(LColor::color col, string const & x11name);

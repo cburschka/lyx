@@ -159,7 +159,7 @@ GC LyXColorHandler::getGCForeground(string const & s)
 	return XCreateGC(display, drawable,
 					   GCForeground | GCFunction, &val);
 }
-		
+
 // Gets GC according to color
 // Uses caching
 GC LyXColorHandler::getGCForeground(LColor::color c)

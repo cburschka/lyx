@@ -142,7 +142,7 @@ void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
 void QWorkArea::dropEvent(QDropEvent* event)
 {
 	QStringList files;
-	
+
 	if (QUriDrag::decodeLocalFiles(event, files)) {
 		lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!"
 				   << endl;

@@ -72,7 +72,7 @@ public:
 	Box box() const { return button_box_; }
 	///
 	void setBox(Box b) { button_box_ = b; }
-	
+
 private:
 	/// The stored data.
 	string text_;

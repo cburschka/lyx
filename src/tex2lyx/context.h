@@ -32,7 +32,7 @@ struct Context {
 
 	// Output a \end_deeper if needed
 	void check_end_deeper(std::ostream & os);
-	
+
 	// dump content on stream (for debugging purpose), with
 	// description \c desc.
 	void dump(std::ostream &, std::string const & desc = "context") const;
@@ -54,7 +54,7 @@ struct Context {
 	// we are handling a standard paragraph in an itemize-like
 	// environment
 	bool deeper_paragraph;
-	
+
 	// The textclass of the document. Could actually be a global variable
 	LyXTextClass const & textclass;
 	// The layout of the current paragraph
@@ -62,6 +62,6 @@ struct Context {
 	// The layout of the outer paragraph (for environment layouts)
 	LyXLayout_ptr parent_layout;
 };
-	
+
 
 #endif

@@ -36,7 +36,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 	return private_->open(path, mask, suggested);
 }
 
-		
+
 FileDialog::Result const FileDialog::opendir(string const & path,
 					     string const & suggested)
 {

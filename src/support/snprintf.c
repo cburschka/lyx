@@ -743,7 +743,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
               { precision = num_of_digits+1; precision_specified = 1; }
           }
        /* zero padding to specified precision? */
-          if (num_of_digits < precision) 
+          if (num_of_digits < precision)
             number_of_zeros_to_pad = precision - num_of_digits;
         }
      /* zero padding to specified minimal field width? */

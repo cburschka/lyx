@@ -9,7 +9,7 @@
  */
 
 #include <config.h>
- 
+
 #include "support/std_sstream.h"
 #include "support/std_string.h"
 
@@ -58,4 +58,4 @@ string const tostr(string const & s)
 {
 	return s;
 }
- 
+

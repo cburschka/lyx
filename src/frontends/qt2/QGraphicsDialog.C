@@ -81,7 +81,7 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 
 void QGraphicsDialog::browse_clicked()
 {
-	string const str = 
+	string const str =
 		form_->controller().Browse(fromqstr(filename->text()));
 	filename->setText(toqstr(str));
 	form_->changed();

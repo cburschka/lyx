@@ -44,7 +44,7 @@ struct LatexRunParams {
 	    paragraph.
 	*/
 	bool free_spacing;
-	
+
 	/** This var is set by the return value from BufferParams::writeLaTeX
 	 */
 	bool use_babel;
