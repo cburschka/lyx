@@ -109,6 +109,7 @@ src/frontends/xforms/FormMathsPanel.C
 src/frontends/xforms/FormMathsSpace.C
 src/frontends/xforms/FormMathsStyle.C
 src/frontends/xforms/FormMinipage.C
+src/frontends/xforms/FormNote.C
 src/frontends/xforms/FormParagraph.C
 src/frontends/xforms/FormPreamble.C
 src/frontends/xforms/FormPreferences.C
@@ -170,6 +171,7 @@ src/lyxvc.C
 src/mathed/formulabase.C
 src/mathed/formulamacro.C
 src/mathed/math_hullinset.C
+src/mathed/math_macrotemplate.C
 src/mathed/math_parboxinset.C
 src/mathed/ref_inset.C
 src/paragraph.C
