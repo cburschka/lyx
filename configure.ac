@@ -70,7 +70,6 @@ dnl we do not need that currently (and probably all our supported
 dnl compiler allow that)
 dnl LYX_CXX_PARTIAL
 LYX_CXX_EXPLICIT
-LYX_CXX_CHEADERS
 LYX_CXX_GLOBAL_CSTD
 LYX_STD_COUNT
 dnl we disable rtti for now

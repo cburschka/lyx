@@ -405,25 +405,6 @@ AC_DEFUN([LYX_CXX_PARTIAL], [
 ])
 
 
-dnl Usage: LYX_CXX_CHEADERS : checks whether the C++ compiler
-dnl   provides wrappers for C headers and use our alternate version otherwise.
-AC_DEFUN([LYX_CXX_CHEADERS],[
-AC_CACHE_CHECK(for C headers wrappers,lyx_cv_cxx_cheaders,
- [AC_TRY_CPP([
-#include <clocale>
-#include <cctype>
-#include <cerrno>
-#include <cmath>
-#include <csignal>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <ctime>],[lyx_cv_cxx_cheaders=yes],[lyx_cv_cxx_cheaders=no])])
-if test $lyx_cv_cxx_cheaders = no ; then
-  LYX_ADD_INC_DIR(lyx_cppflags,\$(top_srcdir)/src/cheaders)
-fi])
-
-
 dnl Usage: LYX_CXX_GLOBAL_CSTD: checks whether C library functions
 dnl   are already in the global namespace
 AC_DEFUN([LYX_CXX_GLOBAL_CSTD],[

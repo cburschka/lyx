@@ -277,22 +277,6 @@ lyx_SOURCES = \
 	vspace.C \
 	vspace.h
 
-dist_noinst_DATA = \
-	cheaders/ChangeLog \
-	cheaders/cassert \
-	cheaders/cctype \
-	cheaders/cerrno \
-	cheaders/climits \
-	cheaders/clocale \
-	cheaders/cmath \
-	cheaders/csignal \
-	cheaders/cstdarg \
-	cheaders/cstddef \
-	cheaders/cstdio \
-	cheaders/cstdlib \
-	cheaders/cstring \
-	cheaders/ctime
-
 version.C: stamp-version
 	@:
 
