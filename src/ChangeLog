@@ -1,5 +1,13 @@
 2002-11-07  John Levon  <levon@movementarian.org>
 
+	* text.C: fix progress value for spellchecker 
+ 
+	* toc.C: fix navigate menu for insetwrap inside minipage
+
+	* paragraph_funcs.C: added FIXME for suspect code
+ 
+2002-11-07  John Levon  <levon@movementarian.org>
+
 	* BufferView_pimpl.C: fix redrawing of insets
 	  on buffer switch
  

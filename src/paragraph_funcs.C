@@ -62,6 +62,14 @@ void breakParagraph(BufferParams const & bparams,
 
 		// copy everything behind the break-position
 		// to the new paragraph
+
+#ifdef WITH_WARNINGS
+#warning this seems wrong
+#endif
+		/* FIXME: if !keepempty, empty() == true, then we reach
+		 * here with size() == 0. So pos_end becomes - 1. Why
+		 * doesn't this cause problems ???
+		 */
 		pos_type pos_end = par->size() - 1;
 		pos_type i = pos;
 		pos_type j = pos;

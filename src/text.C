@@ -2392,7 +2392,8 @@ LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 	if (the_locking_inset) {
 		WordLangTuple word = the_locking_inset->selectNextWordToSpellcheck(bview, value);
 		if (!word.word().empty()) {
-			value += float(cursor.y())/float(height);
+			value += float(cursor.y());
+			value /= float(height); 
 			return word;
 		}
 		// we have to go on checking so move cursor to the next char

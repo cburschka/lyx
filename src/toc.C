@@ -28,6 +28,7 @@
 #include "insets/insetfloat.h"
 #include "insets/insetwrap.h"
 #include "debug.h"
+#include "iterators.h"
 
 using std::vector;
 using std::max;
@@ -72,11 +73,14 @@ TocList const getTocList(Buffer const * buf)
 	TocList toclist;
 	if (!buf)
 		return toclist;
-	Paragraph * par = &*(buf->paragraphs.begin());
 
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 
-	while (par) {
+	ParIterator pit = buf->par_iterator_begin();
+	ParIterator end = buf->par_iterator_end();
+	for (; pit != end; ++pit) {
+		Paragraph * par = *pit;
+ 
 #ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
 #endif
@@ -106,8 +110,6 @@ TocList const getTocList(Buffer const * buf)
 				il->addToToc(toclist, buf);
 			}
 		}
-
-		par = par->next();
 	}
 	return toclist;
 }
