@@ -1,3 +1,10 @@
+2000-08-25  Juergen Vigna  <jug@sad.it>
+
+	* src/lyxscreen.h: add force_clear variable and fuction to force
+	a clear area when redrawing in LyXText.
+
+	* src/text.C (GetVisibleRow): look if the screen forces a redraw.
+
 2000-08-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* some whitespace and comment changes.

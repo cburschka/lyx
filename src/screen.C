@@ -47,7 +47,7 @@ GC createGC()
 
 // Constructor
 LyXScreen::LyXScreen(WorkArea & o) //, LyXText * text_ptr)
-	: owner(o) //, text(text_ptr)
+	: owner(o), force_clear(true) //, text(text_ptr)
 {
 	// the cursor isnt yet visible
 	cursor_visible = false;
@@ -108,7 +108,8 @@ void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2, int y_offset, int x_o
 		y += row->height();
 		row = row->next();
 	}
-   
+	force_clear = false;
+
 	// maybe we have to clear the screen at the bottom
 	if ((y < y2) && text->bv_owner) {
 		owner.getPainter().fillRectangle(0, y,
@@ -135,6 +136,7 @@ void LyXScreen::DrawOneRow(LyXText * text, Row * row, long y_text,
 		} while (text->status == LyXText::CHANGED_IN_DRAW);
 		text->status = st;
 	}
+	force_clear = false;
 }
 
 

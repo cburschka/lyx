@@ -36,6 +36,7 @@
 #include "tracer.h"
 #include "font.h"
 #include "encoding.h"
+#include "lyxscreen.h"
 
 using std::max;
 using std::min;
@@ -3928,12 +3929,13 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	bool clear_area = true;
 	Inset * inset = 0;
 
-	if ((last == row_ptr->pos()) &&
+	if (!bview->screen()->forceClear() && (last == row_ptr->pos()) &&
 	    (row_ptr->par()->GetChar(row_ptr->pos()) == LyXParagraph::META_INSET) &&
 	    (inset = row_ptr->par()->GetInset(row_ptr->pos()))) {
 		clear_area = inset->doClearArea();
 	}
-	if (cleared) { // we don't need to clear it's already done!!!
+	// we don't need to clear it's already done!!!
+	if (cleared) {
 		clear_area = true;
 	} else if (clear_area) {
 		int w = (inset_owner ? inset_owner->width(bview, font) : ww);

@@ -84,6 +84,8 @@ public:
 	    If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
 	    we only update the current row. */
 	void Update(LyXText *, int y_offset=0, int x_offset=0);
+	///
+	bool forceClear() const { return force_clear; }
 
 	///
 	bool cursor_visible;
@@ -113,6 +115,8 @@ private:
 	int cursor_pixmap_h;
 	///
 	GC gc_copy;
+	///
+	bool force_clear;
 };
 
 #endif
