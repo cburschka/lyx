@@ -88,7 +88,7 @@ void MathArrayInset::write(WriteStream & os) const
 
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\end{" << name_ << "}\n";
+	os << "\\end{" << name_ << "}";
 }
 
 
