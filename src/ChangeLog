@@ -9,6 +9,10 @@
 	* text.C:
 	* text2.C: make redoParagraph more independent of current cursor
 
+	* lyxtext.h (need_update, needUpdate, postPaint, clearPaint):
+	* text.C:
+	* text2.C: remove unneeded members
+
 2003-07-30  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph.[Ch] (copyIntoMinibuffer): removed unused function

@@ -363,8 +363,6 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	paintRows(*bv, text_, rit, x, 0, yo, y2, yo);
 
-	text_.clearPaint();
-
 	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked))
 		drawFrame(pain, int(start_x));
 
@@ -388,10 +386,6 @@ void InsetText::drawFrame(Painter & pain, int x) const
 void InsetText::setUpdateStatus(int what) const
 {
 	need_update |= what;
-	// we will to redraw us full if our LyXText wants it
-	if (text_.needRefresh())
-		need_update |= FULL;
-
 	// this to not draw a selection when we redraw all of it!
 	if (need_update & CURSOR && !(need_update & SELECTION)) {
 		if (text_.selection.set())
@@ -412,17 +406,15 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 	text_.partialRebreak();
 	setUpdateStatus(what);
 	bool flag = mark_dirty ||
-		((need_update != CURSOR && need_update != NONE) ||
-		 text_.needRefresh() || text_.selection.set());
+		(need_update != CURSOR && need_update != NONE) ||
+		text_.selection.set();
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
 	bv->fitCursor();
 
-	if (flag) {
-		text_.postPaint();
+	if (flag)
 		bv->updateInset(const_cast<InsetText *>(this));
-	}
 
 	if (need_update == CURSOR)
 		need_update = NONE;

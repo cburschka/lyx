@@ -126,7 +126,6 @@ void LyXText::top_y(int newy)
 	anchor_row_offset_ = newy - y;
 	lyxerr[Debug::GUI] << "changing reference to row: " << &*anchor_row_
 	       << " offset: " << anchor_row_offset_ << endl;
-	postPaint();
 }
 
 
@@ -1542,8 +1541,6 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 		cursorLeft(bv());
 	}
 
-	postPaint();
-
 	removeParagraph(cursorRow());
 
 	// set the dimensions of the cursor row
@@ -1732,8 +1729,6 @@ void LyXText::insertChar(char c)
 
 			setHeightOfRow(boost::prior(row));
 
-			postPaint();
-
 			breakAgainOneRow(row);
 
 			current_font = rawtmpfont;
@@ -1760,7 +1755,6 @@ void LyXText::insertChar(char c)
 	}
 
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
-		postPaint();
 		breakAgainOneRow(row);
 
 		RowList::iterator next_row = boost::next(row);
@@ -1788,7 +1782,6 @@ void LyXText::insertChar(char c)
 	} else {
 		// FIXME: similar code is duplicated all over - make resetHeightOfRow
 		setHeightOfRow(row);
-		postPaint();
 
 		current_font = rawtmpfont;
 		real_current_font = realtmpfont;
@@ -2266,9 +2259,6 @@ void LyXText::changeCase(LyXText::TextCase action)
 
 		++pos;
 	}
-
-	if (getRow(to) != getRow(from))
-		postPaint();
 }
 
 
@@ -2350,10 +2340,7 @@ void LyXText::backspace()
 				cursorLeft(bv());
 
 				// the layout things can change the height of a row !
-				int const tmpheight = cursorRow()->height();
 				setHeightOfRow(cursorRow());
-				if (cursorRow()->height() != tmpheight)
-					postPaint();
 				return;
 			}
 		}
@@ -2406,8 +2393,6 @@ void LyXText::backspace()
 			else
 				if (cursor.pos())
 					cursor.pos(cursor.pos() - 1);
-
-			postPaint();
 
 			// remove the lost paragraph
 			// This one is not safe, since the paragraph that the tmprow and the
@@ -2531,7 +2516,6 @@ void LyXText::backspace()
 				y -= tmprow->height();
 				tmprow->fill(fill(tmprow, workWidth()));
 				setHeightOfRow(tmprow);
-				postPaint();
 
 				setCursor(cursor.par(), cursor.pos(),
 					  false, cursor.boundary());
@@ -2559,8 +2543,6 @@ void LyXText::backspace()
 			if (lastPos(*this, row) == row->par()->size() - 1)
 				removeRow(boost::next(row));
 
-			postPaint();
-
 			breakAgainOneRow(row);
 			// will the cursor be in another row now?
 			if (boost::next(row) != rows().end() &&
@@ -2575,7 +2557,6 @@ void LyXText::backspace()
 			// set the dimensions of the row
 			row->fill(fill(row, workWidth()));
 			setHeightOfRow(row);
-			postPaint();
 			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
 		}
 	}

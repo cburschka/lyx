@@ -156,10 +156,6 @@ bool performUndoOrRedo(BufferView * bv, Undo & undo)
 	}
 
 	finishUndo();
-
-	// And repaint the lot
-	bv->text->postPaint();
-
 	return true;
 }
 
@@ -177,7 +173,6 @@ bool textUndoOrRedo(BufferView * bv,
 		freezeUndo();
 		bv->unlockInset(bv->theLockingInset());
 		finishUndo();
-		bv->text->postPaint();
 		unFreezeUndo();
 		return false;
 	}

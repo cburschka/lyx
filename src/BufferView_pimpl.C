@@ -650,7 +650,6 @@ void BufferView::Pimpl::update()
 {
 	lyxerr << "BufferView::update()\n";
 	screen().redraw(*bv_);
-	bv_->text->clearPaint();
 }
 
 

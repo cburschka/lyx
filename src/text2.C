@@ -65,7 +65,6 @@ LyXText::LyXText(BufferView * bv)
 	  inset_owner(0), the_locking_inset(0), bv_owner(bv)
 {
 	anchor_row_ = rows().end();
-	need_refresh_ = true;
 }
 
 
@@ -74,7 +73,6 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv)
 {
 	anchor_row_ = rows().end();
-	need_refresh_ = true;
 }
 
 
@@ -84,7 +82,6 @@ void LyXText::init(BufferView * bview)
 
 	rowlist_.clear();
 	width = height = 0;
-	need_refresh_ = true;
 
 	anchor_row_ = rows().end();
 	anchor_row_offset_ = 0;
@@ -608,8 +605,6 @@ void LyXText::redoHeightOfParagraph()
 		setHeightOfRow(tmprow);
 	}
 
-	postPaint();
-
 	setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
 }
 
@@ -958,7 +953,6 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 		params.noindent(noindent);
 		tmppit = boost::prior(pit);
 	}
-	postPaint();
 
 	redoParagraphs(selection.start.par(), endpit);
 
@@ -1468,7 +1462,6 @@ void LyXText::insertStringAsParagraphs(string const & str)
 void LyXText::checkParagraph(ParagraphList::iterator pit, pos_type pos)
 {
 	breakAgain(getRow(pit, pos));
-	postPaint();
 	setCursorIntern(cursor.par(), cursor.pos(), false, cursor.boundary());
 }
 
@@ -2126,7 +2119,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 		if (getRow(old_cursor) != rows().begin()) {
 			RowList::iterator prevrow = boost::prior(getRow(old_cursor));
-			postPaint();
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			#warning FIXME. --end() iterator is usable here
@@ -2157,7 +2149,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			setHeightOfRow(prevrow);
 		} else {
 			RowList::iterator nextrow = boost::next(getRow(old_cursor));
-			postPaint();
 
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
@@ -2212,29 +2203,6 @@ ParagraphList & LyXText::ownerParagraphs() const
 		return inset_owner->paragraphs;
 	}
 	return bv_owner->buffer()->paragraphs;
-}
-
-
-bool LyXText::needRefresh() const
-{
-	return need_refresh_;
-}
-
-
-void LyXText::clearPaint()
-{
-	need_refresh_ = false;
-}
-
-
-void LyXText::postPaint()
-{
-	need_refresh_ = true;
-
-	// We are an inset's lyxtext. Tell the top-level lyxtext
-	// it needs to update the row we're in.
-	if (inset_owner)
-		bv()->text->postPaint();
 }
 
 

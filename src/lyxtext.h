@@ -167,12 +167,6 @@ public:
 	/// compute text metrics
 	void metrics(MetricsInfo & mi, Dimension & dim);
 
-	/// clear any pending paints
-	void clearPaint();
-
-	/// submit repaint request
-	void postPaint();
-
 	///
 	InsetOld::RESULT dispatch(FuncRequest const & cmd);
 
@@ -181,16 +175,6 @@ public:
 	BufferView * bv() const;
 
 	friend class LyXScreen;
-
-	/**
-	 * Return the status. This represents what repaints are
-	 * pending after some operation (e.g. inserting a char).
-	 */
-	bool needRefresh() const;
-
-private:
-	// do we need a refresh?
-	bool need_refresh_;
 
 public:
 	/// only the top-level LyXText has this non-zero
