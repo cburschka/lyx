@@ -1,3 +1,9 @@
+2005-03-05  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (output_command_layout): Use parse_text instead of
+	parse_text_in_inset to avoid creating a new context
+	* text.C (parse_text): translate \thanks to footnote in title layouts
+
 2005-02-25  Angus Leeming  <leeming@lyx.org>
 
 	* context.h: declare as "class Font" rather than "struct Font".

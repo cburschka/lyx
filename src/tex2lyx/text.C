@@ -447,7 +447,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 	}
-	parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+	parse_text(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
 	if (parent_context.deeper_paragraph) {
 		// We must suppress the "end deeper" because we
@@ -1310,7 +1310,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "footnote") {
+		else if (t.cs() == "footnote" ||
+		         (t.cs() == "thanks" && context.layout->intitle)) {
 			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Foot\n");
