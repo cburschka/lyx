@@ -2215,6 +2215,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 
 pos_type LyXText::x2pos(pit_type pit, int row, int x) const
 {
+	BOOST_ASSERT(row < pars_[pit].rows().size());
 	bool bound = false;
 	Row const & r = pars_[pit].rows()[row];
 	return r.pos() + getColumnNearX(pit, r, x, bound);

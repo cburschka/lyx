@@ -987,8 +987,8 @@ bool LyXText::cursorUp(LCursor & cur)
 					  x2pos(cur.pit(), row - 1, x));
 	} else if (cur.pit() > 0) {
 		--cur.pit();
-		updateNeeded |= setCursor(cur, cur.pit(),
-					  x2pos(cur.pit(), par.rows().size() - 1, x));
+		//cannot use 'par' now
+		updateNeeded |= setCursor(cur, cur.pit(), x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
 	}
 
 	cur.x_target() = x;
