@@ -126,8 +126,14 @@ public:
 		ost << "\tFormat " << vt.first << '\n'
 		    << "\t\tProduct " << ft.product << '\n'
 		    << "\t\tUpdateFormat " << ft.updateFormat << '\n'
-		    << "\t\tUpdateResult " << ft.updateResult << '\n'
-		    << "\t\tRequirement " << ft.requirement << '\n';
+		    << "\t\tUpdateResult " << ft.updateResult << '\n';
+
+		vector<string>::const_iterator qit = ft.requirements.begin();
+		vector<string>::const_iterator qend = ft.requirements.end();
+		for (; qit != qend; ++qit) {
+			lyxerr << "req:" << *qit << std::endl;
+			ost << "\t\tRequirement " << *qit << '\n';
+		}
 
 		typedef vector<Template::Option> Options;
 		Options::const_iterator oit  = ft.options.begin();
@@ -502,7 +508,7 @@ void Template::Format::readFormat(LyXLex & lex)
 
 		case FO_REQUIREMENT:
 			lex.next(true);
-			requirement = lex.getString();
+			requirements.push_back(lex.getString());
 			break;
 
 		case FO_PREAMBLE:

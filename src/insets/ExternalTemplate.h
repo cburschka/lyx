@@ -70,7 +70,7 @@ public:
 		/// The format of this file.
 		std::string updateFormat;
 		/// What features does this external inset require?
-		std::string requirement;
+		std::vector<std::string> requirements;
 		/// A collection of preamble snippets identified by name.
 		std::vector<std::string> preambleNames;
 		/// A list of options to the basic command.

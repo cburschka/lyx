@@ -737,13 +737,15 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	if (cit == et.formats.end())
 		return;
 
-	if (!cit->second.requirement.empty())
-		features.require(cit->second.requirement);
+	vector<string>::const_iterator it  = cit->second.requirements.begin();
+	vector<string>::const_iterator end = cit->second.requirements.end();
+	for (; it != end; ++it)
+		features.require(*it);
 
 	external::TemplateManager & etm = external::TemplateManager::get();
 
-	vector<string>::const_iterator it  = cit->second.preambleNames.begin();
-	vector<string>::const_iterator end = cit->second.preambleNames.end();
+	it  = cit->second.preambleNames.begin();
+	end = cit->second.preambleNames.end();
 	for (; it != end; ++it) {
 		string const preamble = etm.getPreambleDefByName(*it);
 		if (!preamble.empty())
