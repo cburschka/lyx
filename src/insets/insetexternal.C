@@ -235,7 +235,10 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 {
 	string result;
 	string const basename = ChangeExtension(params_.filename, string());
-	string const filepath = OnlyPath(MakeAbsPath(params_.filename));
+	string filepath = "";
+	if (buffer && (!buffer->niceFile)) {
+		filepath = OnlyPath(MakeAbsPath(buffer->fileName()));
+	}
 	result = subst(s, "$$FName", params_.filename);
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$Parameters", params_.parameters);

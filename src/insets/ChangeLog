@@ -1,3 +1,10 @@
+2001-10-31  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* insetexternal.C (doSubstitution): Fix filepath ($$FPath in
+	external_templates) to use the buffer->fileName() but only if
+	previewing. Generating a TeX file should make FPath return
+	"".
+
 2001-10-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetert.h:

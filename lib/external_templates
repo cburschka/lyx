@@ -108,7 +108,7 @@ Template ChessDiagram
 	EditCommand "xboard -lpf $$FName -mode EditPosition"
 	AutomaticProduction true
 	Format LaTeX
-		Product "\\loadgame{$$FPath/$$Basename}\\showboard"
+		Product "\\loadgame{$$FPath$$Basename}\\showboard"
 		Requirement "chess"
 	FormatEnd
 	Format Ascii

@@ -1,3 +1,15 @@
+2001-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* examples/iecc05.fen: 
+	* examples/iecc07.fen: 
+	* examples/iecc12.fen:
+	* lib/examples/chessgame.lyx: an example for the new chess support.
+
+2001-10-31  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* external_templates: Minor tweak. Changed $$FPath/$$Basename
+	to $$FPath$$Basename.
+
 2001-10-30  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* external_templates: Fix up the help message for ChessDiagram

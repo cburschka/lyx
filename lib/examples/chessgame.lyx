@@ -1,0 +1,255 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass article
+\begin_preamble
+\usepackage{chess-workshop-symbols}
+\end_preamble
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize 12
+\spacing single 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 1
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\topmargin 0in
+\bottommargin 0.5in
+\headheight 0in
+\headsep 0in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 2
+\papersides 1
+\paperpagestyle empty
+
+\layout Title
+
+Email Chess Game analyzed
+\layout Author
+
+Kayvan A.
+ Sylvan
+\newline 
+<kayvan@sylvan.com>
+\layout Date
+
+
+\emph on 
+Game start 05/29/2001
+\layout Standard
+
+The following game was played at the IECC (International Email Chess Club).
+ It is presented as an example of the fun you can have with LyX's new chess
+ support.
+ You must have xboard installed on your machine to be able to open and view
+ the chess positions from LyX.
+\layout Standard
+\line_top \line_bottom 
+
+\noun on 
+Sylvan, Kayvan
+\hfill 
+Wakeham, Marc 
+\newline 
+(1623)
+\hfill 
+(1639)
+\layout Standard
+
+
+\begin_inset ERT
+status Open
+
+\layout Standard
+
+\backslash 
+newgame
+\backslash 
+smallboard%
+\layout Standard
+
+\backslash 
+mainline{1. e4 c5 2. Nc3 d6 3. g3 Nc6 4. Bg2 e6 5. Nge2}
+\end_inset 
+
+
+\layout Standard
+\added_space_top medskip 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+[
+\end_inset 
+
+
+\begin_inset External ChessDiagram,"iecc05.fen",""
+
+\end_inset 
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+]
+\backslash 
+printknightmove{g1}{e2}
+\backslash 
+highlight{d4,f4}
+\end_inset 
+
+
+\layout Standard
+
+So far, so good.
+ This is all according to theory.
+\layout Standard
+
+
+\begin_inset ERT
+status Open
+
+\layout Standard
+
+\backslash 
+mainline{5... Be7?!} 
+\backslash 
+variation{5... Nge7}
+\backslash 
+equal %
+\layout Standard
+
+\backslash 
+mainline{6. d4 cxd4 7. Nxd4 a6}
+\end_inset 
+
+
+\layout Standard
+
+With 7...\SpecialChar ~
+a6, we are back in the well-trodden theory of this opening.
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+[
+\end_inset 
+
+
+\begin_inset External ChessDiagram,"iecc07.fen",""
+
+\end_inset 
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+]
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset ERT
+status Open
+
+\layout Standard
+
+\backslash 
+mainline{8. Nxc6 bxc6 9. O-O Bb7 10. Qg4 Bf6 11. Bf4 Ne7 12. Rad1}
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+[
+\end_inset 
+
+
+\begin_inset External ChessDiagram,"iecc12.fen",""
+
+\end_inset 
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+]
+\backslash 
+printarrow{a1}{d1}
+\end_inset 
+
+
+\layout Standard
+
+White continues to develop pieces and also sets a trap for Black.
+\layout Standard
+
+
+\begin_inset ERT
+status Open
+
+\layout Standard
+
+\backslash 
+mainline{12... O-O?} This loses instantly.
+\layout Standard
+Best was 
+\backslash 
+variation{12... e5 13. Be3 Qc7 14. Na4 O-O}
+\backslash 
+wbetter
+\layout Standard
+
+\backslash 
+mainline{13. e5!} Black's knight and bishop form a bumbling pair here, the Bishop is doomed.
+\layout Standard
+
+\backslash 
+mainline{13... Nd5!? 14. Bxd5 cxd5 15. exf6 Qxf6 16. Bxd6 Rfd8 17. Bc7 Rd7 18. Bf4 1-0 }%
+\layout Standard
+
+\backslash 
+[
+\backslash 
+showboard
+\backslash 
+]
+\end_inset 
+
+
+\the_end
