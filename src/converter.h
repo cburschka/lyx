@@ -48,6 +48,8 @@ public:
 
 	/// The converter is latex or its derivatives
 	bool latex;
+	/// The converter is xml
+	bool xml;
 	/// Do we need to run the converter in the original directory?
 	bool original_dir;
 	/// This converter needs the .aux files

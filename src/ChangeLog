@@ -1,3 +1,10 @@
+2004-05-13  José Matos  <jamatos@lyx.org>
+
+	* converter.h:
+	* converter.C (Converter, readFlags): add xml member.
+	* outputparams.h: add XML flavor.
+	* buffer.C (makeDocBookFile): add support for the sgml/xml distinction.
+
 2004-05-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): 

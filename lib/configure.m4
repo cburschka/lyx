@@ -521,6 +521,7 @@ cat >$outfile <<EOF
 \\Format date       ""     "date command"          "" ""	""
 \\Format dateout    tmp    "date (output)"         "" ""	""
 \\Format docbook    sgml    DocBook                B  ""	""
+\\Format docbook-xml xml    "Docbook (xml)"        "" "" ""
 \\Format dvi        dvi     DVI                    D  "$DVI_VIEWER"	""
 \\Format eps        eps     EPS                    "" "$EPS_VIEWER"	""
 \\Format fax        ""      Fax                    "" ""	""
@@ -554,6 +555,7 @@ cat >$outfile <<EOF
 \\Format xpm        xpm     XPM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 
 \\converter date       dateout    "date +%d-%m-%Y > \$\$o"	""
+\\converter docbook    docbook-xml "cp \$\$i \$\$o" "xml"
 \\converter docbook    dvi        "$docbook_to_dvi_command"	""
 \\converter docbook    html       "$docbook_to_html_command"	""
 \\converter dvi        pdf3       "$dvi_to_pdf_command"	""

@@ -20,6 +20,7 @@
 #include "Bullet.h"
 #include "Chktex.h"
 #include "debug.h"
+#include "encoding.h"
 #include "errorlist.h"
 #include "exporter.h"
 #include "format.h"
@@ -1065,6 +1066,10 @@ void Buffer::makeDocBookFile(string const & fname,
 	string top_element = tclass.latexname();
 
 	if (!only_body) {
+		if (runparams.flavor == OutputParams::XML)
+			ofs << "<?xml version=\"1.0\" encoding=\""
+			    << params().language->encoding()->Name() << "\"?>\n";
+
 		ofs << subst(tclass.class_header(), "#", top_element);
 
 		string preamble = params().preamble;
@@ -1090,7 +1095,8 @@ void Buffer::makeDocBookFile(string const & fname,
 	}
 	sgml::openTag(ofs, 0, false, top);
 
-	ofs << "<!-- SGML/XML file was created by LyX " << lyx_version
+	ofs << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
+	    << " file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
 	params().getLyXTextClass().counters().reset();

@@ -19,7 +19,8 @@ struct OutputParams {
 	//
 	enum FLAVOR {
 		LATEX,
-		PDFLATEX
+		PDFLATEX,
+		XML
 	};
 
 	OutputParams()

@@ -104,7 +104,7 @@ private:
 
 Converter::Converter(string const & f, string const & t, string const & c,
 	  string const & l): from(f), to(t), command(c), flags(l),
-			     From(0), To(0), latex(false),
+			     From(0), To(0), latex(false), xml(false),
 			     original_dir(false), need_aux(false)
 {}
 
@@ -118,6 +118,8 @@ void Converter::readFlags()
 		flag_value = split(flag_value, flag_name, '=');
 		if (flag_name == "latex")
 			latex = true;
+		else if (flag_name == "xml")
+			xml = true;
 		else if (flag_name == "originaldir")
 			original_dir = true;
 		else if (flag_name == "needaux")
@@ -264,6 +266,8 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 		if (conv.latex)
 			if (contains(conv.to, "pdf"))
 				return OutputParams::PDFLATEX;
+		if (conv.xml)
+			return OutputParams::XML;
 	}
 	return OutputParams::LATEX;
 }
