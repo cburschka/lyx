@@ -24,7 +24,6 @@ src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
 src/frontends/controllers/ControlLog.C
-src/frontends/controllers/ControlNote.C
 src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrefs.C
 src/frontends/controllers/ControlPrint.C
@@ -68,7 +67,6 @@ src/frontends/qt2/QLPrintDialog.C
 src/frontends/qt2/QMath.C
 src/frontends/qt2/QMathDialog.C
 src/frontends/qt2/QMathMatrixDialog.C
-src/frontends/qt2/QMinipage.C
 src/frontends/qt2/QNote.C
 src/frontends/qt2/QParagraph.C
 src/frontends/qt2/QPrefs.C
@@ -120,7 +118,6 @@ src/frontends/xforms/FormMathsMatrix.C
 src/frontends/xforms/FormMathsPanel.C
 src/frontends/xforms/FormMathsSpace.C
 src/frontends/xforms/FormMathsStyle.C
-src/frontends/xforms/FormMinipage.C
 src/frontends/xforms/FormNote.C
 src/frontends/xforms/FormParagraph.C
 src/frontends/xforms/FormPreamble.C
@@ -162,7 +159,6 @@ src/insets/insetinclude.C
 src/insets/insetindex.C
 src/insets/insetlist.C
 src/insets/insetmarginal.C
-src/insets/insetminipage.C
 src/insets/insetnote.C
 src/insets/insetoptarg.C
 src/insets/insetpagebreak.C
