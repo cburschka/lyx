@@ -3,6 +3,8 @@
 	* formulabase.C (insetButtonPress): set the mathcursor in case we
 	don't have one. This happens when clicking on a non locked mathed
 	inset with any button != 1.
+	(insetButtonPress): Forgot about this the Panel should NEVER be
+	opened in a Press event ONLY in the Release event!
 
 2002-04-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 

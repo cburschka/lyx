@@ -342,10 +342,13 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 		mathcursor->selClear();
 		mathcursor->setPos(x + xo_, y + yo_);
 	}
+#if 0
+#warning Never launch a Dialog on "Press" event ONLY on "Release" event!
 	if (button == 3) {
 		// launch math panel for right mouse button
 		bv->owner()->getDialogs()->showMathPanel();
 	}
+#endif
 #endif
 	bv->updateInset(this, false);
 }
