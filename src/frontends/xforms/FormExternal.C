@@ -22,6 +22,7 @@
 #include "xformsBC.h"
 
 #include "insets/ExternalTemplate.h"
+#include "insets/insetexternal.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -43,7 +44,7 @@ FormExternal::FormExternal(Dialog & parent)
 
 void FormExternal::apply()
 {
-	InsetExternal::Params params = controller().params();
+	InsetExternalParams params = controller().params();
 
 	string const buffer_path = kernel().bufferFilepath();
 	params.filename.set(getString(dialog_->input_filename), buffer_path);
@@ -123,7 +124,7 @@ void FormExternal::build()
 
 void FormExternal::update()
 {
-	InsetExternal::Params const & params = controller().params();
+	InsetExternalParams const & params = controller().params();
 
 	string const buffer_path = kernel().bufferFilepath();
 	string const name = params.filename.outputFilename(buffer_path);

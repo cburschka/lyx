@@ -14,15 +14,21 @@
 #ifndef CONTROLEXTERNAL_H
 #define CONTROLEXTERNAL_H
 
-
 #include "Dialog.h"
-#include "insets/insetexternal.h"
+
 #include <boost/scoped_ptr.hpp>
 
+#include <string>
+#include <vector>
+
+
+class InsetExternalParams;
 
 namespace lyx {
 namespace external {
+
 class Template;
+
 } // namespace external
 } // namespace lyx
 
@@ -41,9 +47,9 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	///
-	InsetExternal::Params const & params() const;
+	InsetExternalParams const & params() const;
 	///
-	void setParams(InsetExternal::Params const &);
+	void setParams(InsetExternalParams const &);
 
 	///
 	void editExternal();
@@ -57,7 +63,7 @@ public:
 	std::string const Browse(std::string const &) const;
 private:
 	///
-	boost::scoped_ptr<InsetExternal::Params> params_;
+	boost::scoped_ptr<InsetExternalParams> params_;
 };
 
 #endif // CONTROLEXTERNAL_H

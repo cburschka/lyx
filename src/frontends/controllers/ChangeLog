@@ -1,3 +1,8 @@
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.[Ch]: InsetExternal::Params -> InsetExternalParams.
+	(getTemplatePtr): removed. Use function in ExternalSupport.
+
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ControlBox.C:

@@ -18,6 +18,8 @@
 #include "helper_funcs.h"
 #include "lyxrc.h"
 
+#include "insets/insetexternal.h"
+#include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
 
 
@@ -34,7 +36,7 @@ ControlExternal::ControlExternal(Dialog & parent)
 
 bool ControlExternal::initialiseParams(string const & data)
 {
-	params_.reset(new InsetExternal::Params);
+	params_.reset(new InsetExternalParams);
 	InsetExternalMailer::string2params(data, kernel().buffer(), *params_);
 	return true;
 }
@@ -54,14 +56,14 @@ void ControlExternal::dispatchParams()
 }
 
 
-void ControlExternal::setParams(InsetExternal::Params const & p)
+void ControlExternal::setParams(InsetExternalParams const & p)
 {
 	BOOST_ASSERT(params_.get());
 	*params_ = p;
 }
 
 
-InsetExternal::Params const & ControlExternal::params() const
+InsetExternalParams const & ControlExternal::params() const
 {
 	BOOST_ASSERT(params_.get());
 	return *params_;
@@ -121,18 +123,6 @@ external::Template ControlExternal::getTemplate(int i) const
 }
 
 
-namespace {
-
-external::Template const * getTemplatePtr(InsetExternal::Params const & params)
-{
-	external::TemplateManager const & etm =
-		external::TemplateManager::get();
-	return etm.getTemplateByName(params.templatename());
-}
-
-} // namespace anon
-
-
 string const ControlExternal::Browse(string const & input) const
 {
 	string const title =  _("Select external file");
@@ -141,7 +131,8 @@ string const ControlExternal::Browse(string const & input) const
 
 	/// Determine the template file extension
 	string pattern = "*";
-	external::Template const * const et_ptr = getTemplatePtr(params());
+	external::Template const * const et_ptr =
+		external::getTemplatePtr(params());
 	if (et_ptr)
 		pattern = et_ptr->fileRegExp;
 

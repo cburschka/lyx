@@ -225,7 +225,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 
 		} else if (name == "external") {
 			Buffer const & buffer = *cmd.view()->buffer();
-			InsetExternal::Params iep;
+			InsetExternalParams iep;
 			InsetExternalMailer::string2params(cmd.argument,
 							   buffer, iep);
 			InsetExternal * inset = new InsetExternal;

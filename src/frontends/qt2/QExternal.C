@@ -15,6 +15,7 @@
 #include "qt_helpers.h"
 
 #include "insets/ExternalTemplate.h"
+#include "insets/insetexternal.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -64,7 +65,7 @@ void QExternal::build_dialog()
 
 void QExternal::update_contents()
 {
-	InsetExternal::Params const & params = controller().params();
+	InsetExternalParams const & params = controller().params();
 
 	string const name =
 		params.filename.outputFilename(kernel().bufferFilepath());
@@ -104,7 +105,7 @@ string const QExternal::helpText() const
 
 void QExternal::apply()
 {
-	InsetExternal::Params params = controller().params();
+	InsetExternalParams params = controller().params();
 
 	params.filename.set(fromqstr(dialog_->fileED->text()),
 			    kernel().bufferFilepath());

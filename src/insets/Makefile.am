@@ -13,6 +13,8 @@ EXTRA_DIST = \
 libinsets_la_SOURCES = \
 	mailinset.C \
 	mailinset.h \
+	ExternalSupport.C \
+	ExternalSupport.h \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
 	renderers.C \

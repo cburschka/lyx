@@ -22,108 +22,104 @@
 #include <boost/signals/trackable.hpp>
 
 
+/** No two InsetExternalParams variables can have the same temporary file.
+ *  This struct has copy-semantics but the copy constructor
+ *  and assignment operator simply call the default constructor.
+ *  Use of this struct enables us to use the compiler-generated
+ *  copy constructor and assignment operator for the
+ *  InsetExternalParams struct.
+ */
+namespace lyx {
+namespace external {
+
+struct TempName {
+	TempName();
+	TempName(TempName const &);
+	~TempName();
+	TempName & operator=(TempName const &);
+	std::string const & operator()() const { return tempname_; }
+private:
+	std::string tempname_;
+};
+
+} // namespace external
+} // namespace lyx
+
+
+/// hold parameters settable from the GUI
+struct InsetExternalParams {
+	InsetExternalParams();
+
+	void write(Buffer const &, std::ostream &) const;
+	bool read(Buffer const &, LyXLex &);
+
+	/// The name of the tempfile used for manipulations.
+	std::string const & tempname() const { return tempname_(); }
+
+	/// The template currently in use.
+	void settemplate(std::string const &);
+	std::string const & templatename() const { return templatename_; }
+
+	/// The external file.
+	lyx::support::FileName filename;
+	/// How the inset is to be displayed by LyX.
+	lyx::graphics::DisplayType display;
+	/// The scale of the displayed graphic (if shown).
+	unsigned int lyxscale;
+
+private:
+	lyx::external::TempName tempname_;
+	std::string templatename_;
+};
+
+
 class RenderInset;
 
 ///
 class InsetExternal : public InsetOld, public boost::signals::trackable
 {
-	/** No two Params variables can have the same temporary file.
-	 *  This struct has copy-semantics but the copy constructor
-	 *  and assignment operator simply call the default constructor.
-	 *  Use of this struct enables us to use the compiler-generated
-	 *  copy constructor and assignment operator for the Params struct.
-	 */
-	struct TempName {
-		TempName();
-		TempName(TempName const &);
-		~TempName();
-		TempName & operator=(TempName const &);
-		std::string const & operator()() const { return tempname_; }
-	private:
-		std::string tempname_;
-	};
-
 public:
-	/// hold parameters settable from the GUI
-	struct Params {
-		Params();
-
-		void write(Buffer const &, std::ostream &) const;
-		bool read(Buffer const &, LyXLex &);
-
-		/// The name of the tempfile used for manipulations.
-		std::string const & tempname() const { return tempname_(); }
-
-		/// the current template used
-		void settemplate(std::string const &);
-		std::string const & templatename() const { return templatename_; }
-
-		/// the filename
-		lyx::support::FileName filename;
-		/// how the inset is displayed by LyX
-		lyx::graphics::DisplayType display;
-		/// The scale of the displayed graphic (If shown).
-		unsigned int lyxscale;
-
-	private:
-		TempName tempname_;
-		std::string templatename_;
-	};
-
 	InsetExternal();
 	///
 	InsetExternal(InsetExternal const &);
 	///
 	virtual ~InsetExternal();
 	///
+	virtual std::auto_ptr<InsetBase> clone() const;
+	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
+
+	///
+	virtual InsetOld::Code lyxCode() const { return EXTERNAL_CODE; }
+	///
+	virtual EDITABLE editable() const { return IS_EDITABLE; }
+
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual EDITABLE editable() const { return IS_EDITABLE; }
-	///
 	virtual void write(Buffer const &, std::ostream &) const;
 	///
 	virtual void read(Buffer const &, LyXLex & lex);
 
-	/** returns the number of rows (\n's) of generated tex code.
-	 fragile == true means, that the inset should take care about
-	 fragile commands by adding a \protect before.
-	 If the free_spc (freespacing) variable is set, then this inset
-	 is in a free-spacing paragraph.
-	 */
+	/// \returns the number of rows (\n's) of generated code.
 	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
-	/// write ASCII output to the ostream
+	///
 	virtual int ascii(Buffer const &, std::ostream &, int linelen) const;
-	/// write LinuxDoc output to the ostream
+	///
 	virtual int linuxdoc(Buffer const &, std::ostream &) const;
-	/// write DocBook output to the ostream
-	virtual int docbook(Buffer const &, std::ostream &, bool mixcont) const;
+	///
+	virtual int docbook(Buffer const &, std::ostream &,
+			    bool mixcont) const;
 
-	/// Updates needed features for this inset.
+	/// Update needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;
 
-	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual InsetOld::Code lyxCode() const { return EXTERNAL_CODE; }
-
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-
-	/// return a copy of our current params
-	Params const & params() const;
-
-	/// Set the inset parameters.
-	virtual void setParams(Params const &, Buffer const &);
-
-	/** update the file represented by the template.
-	    If \param external_in_tmpdir == true, then the generated file is
-	    place in the buffer's temporary directory.
-	*/
-	void updateExternal(std::string const &, Buffer const &,
-			    bool external_in_tmpdir) const;
+	InsetExternalParams const & params() const;
+	void setParams(InsetExternalParams const &, Buffer const &);
 
 private:
 	/** This method is connected to the graphics loader, so we are
@@ -131,17 +127,8 @@ private:
 	 */
 	void statusChanged();
 
-	/** Write the output for a specific file format
-	    and generate any external data files.
-	    If \param external_in_tmpdir == true, then the generated file is
-	    place in the buffer's temporary directory.
-	*/
-	int write(std::string const & format, Buffer const &, std::ostream &,
-		  bool external_in_tmpdir = false) const;
-
-	/// the current params
-	Params params_;
-
+	/// The current params
+	InsetExternalParams params_;
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<RenderInset> renderer_;
 };
@@ -161,10 +148,10 @@ public:
 	virtual std::string const inset2string(Buffer const &) const;
 	///
 	static void string2params(std::string const &, Buffer const &,
-				  InsetExternal::Params &);
+				  InsetExternalParams &);
 	///
-	static std::string const params2string(InsetExternal::Params const &,
-					  Buffer const &);
+	static std::string const params2string(InsetExternalParams const &,
+					       Buffer const &);
 private:
 	///
 	static std::string const name_;
