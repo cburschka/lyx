@@ -1,3 +1,21 @@
+2001-12-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am: added the new files to sources, removed layout.C
+	
+	* layout.C: removed file
+	
+	* layout.h: remove LYX_DUMMY_LAYOUT
+
+	* lyxtextclasslist.C (NumberOfLayout): do not special case dummy
+	layout.
+
+	* lyxlayout.[Ch]:
+	* lyxtextclass.[Ch]:
+	* lyxtextclasslist.[Ch]: new files 
+
+	* include order changes to a lot of files, also changes because of
+	the six new files.
+	
 2001-12-27  Juergen Vigna  <jug@sad.it>
 
 	* buffer.C (asciiParagraph): more fixes.

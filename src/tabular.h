@@ -16,14 +16,15 @@
 #pragma interface
 #endif
 
-#include <iosfwd>
-#include <vector>
-
 #include "lyxlex.h"
 #include "layout.h"
 #include "LString.h"
-#include "insets/insettext.h"
 #include "lyxlength.h"
+
+#include "insets/insettext.h"
+
+#include <iosfwd>
+#include <vector>
 
 class InsetTabular;
 class LaTeXFeatures;

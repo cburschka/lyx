@@ -21,6 +21,8 @@
 #include "encoding.h"
 #include "lyxrc.h"
 #include "debug.h"
+#include "lyxtextclasslist.h"
+
 #include "support/LAssert.h"
 
 using lyx::pos_type;

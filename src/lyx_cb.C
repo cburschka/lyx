@@ -10,11 +10,6 @@
 
 #include <config.h>
 
-#include <fstream>
-#include <algorithm>
-#include <utility> 
-#include <iostream>
-
 #include "lyx_cb.h"
 #include "lyx_main.h"
 #include "buffer.h"
@@ -25,17 +20,26 @@
 #include "LyXView.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
+#include "gettext.h"
+#include "BufferView.h"
+#include "lyxtextclasslist.h"
+
+#include "insets/insetlabel.h"
+
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/GUIRunTime.h"
-#include "insets/insetlabel.h"
+
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/syscall.h"
 #include "support/lstrings.h"
-#include "gettext.h"
-#include "BufferView.h"
+
+#include <fstream>
+#include <algorithm>
+#include <utility> 
+#include <iostream>
 
 using std::vector;
 using std::ifstream;
@@ -159,7 +163,7 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 {
 	string fname = buffer->fileName();
-	string oldname = fname;
+	string const oldname = fname;
 
 	if (filename.empty()) {
 

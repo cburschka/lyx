@@ -19,15 +19,17 @@
 #include "BufferView.h"
 #include "paragraph.h"
 #include "lyxfont.h"
-#include "frontends/Alert.h"
 #include "lyxtext.h"
 #include "buffer.h"
-#include "support/lstrings.h"
 #include "lyx_cb.h"
 #include "language.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
+#include "lyxtextclasslist.h"
 
+#include "frontends/Alert.h"
+
+#include "support/lstrings.h"
 
 void emph(BufferView * bv)
 {

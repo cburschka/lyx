@@ -17,7 +17,7 @@
 #include "lyxtext.h"
 #include "LString.h"
 #include "paragraph.h"
-#include "layout.h"
+#include "lyxtextclasslist.h"
 #include "LyXView.h"
 #include "undo_funcs.h"
 #include "buffer.h"

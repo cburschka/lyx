@@ -14,35 +14,38 @@
 #pragma implementation
 #endif
 
-#include <algorithm>
-#include <fstream>
-#include <csignal>
-
 #include "paragraph.h"
 #include "paragraph_pimpl.h"
-#include "support/textutils.h"
 #include "lyxrc.h"
 #include "layout.h"
 #include "language.h"
 #include "tex-strings.h"
 #include "buffer.h"
 #include "bufferparams.h"
-#include "support/FileInfo.h"
-#include "support/LAssert.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "insets/insetinclude.h"
-#include "insets/insetbib.h"
-#include "insets/insettext.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 #include "lyx_gui_misc.h"
 #include "texrow.h"
-#include "support/lyxmanip.h"
 #include "BufferView.h"
 #include "encoding.h"
 #include "ParameterStruct.h"
 #include "gettext.h"
+#include "lyxtextclasslist.h"
+
+#include "insets/insetinclude.h"
+#include "insets/insetbib.h"
+#include "insets/insettext.h"
+
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/lyxmanip.h"
+#include "support/FileInfo.h"
+#include "support/LAssert.h"
+#include "support/textutils.h"
+
+#include <algorithm>
+#include <fstream>
+#include <csignal>
 
 using std::ostream;
 using std::endl;

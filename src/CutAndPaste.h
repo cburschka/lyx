@@ -15,9 +15,10 @@
 #pragma interface
 #endif
 
-#include "layout.h"
+#include "support/types.h"
 
 class Paragraph;
+class BufferParams;
 
 ///
 class CutAndPaste {
@@ -25,16 +26,16 @@ public:
 	///
 	static
 	bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
-                      int start, int & end, char tc, bool doclear = false,
-					  bool realcut = true);
+			  int start, int & end, char tc, bool doclear = false,
+			  bool realcut = true);
 	///
 	static
 	bool copySelection(Paragraph * startpar, Paragraph * endpar,
-                       int start, int end, char tc);
+			   int start, int end, char tc);
 	///
 	static
 	bool pasteSelection(Paragraph ** par, Paragraph ** endpar,
-                        int & pos, char tc);
+			    int & pos, char tc);
 	///
 	static
 	int nrOfParagraphs();

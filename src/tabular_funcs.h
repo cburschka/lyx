@@ -19,7 +19,6 @@
 #endif
 
 #include "LString.h"
-#include "layout.h"
 #include "tabular.h"
 
 #include <iosfwd>

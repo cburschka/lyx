@@ -41,7 +41,7 @@
 #include "support/lyxfunctional.h"
 #include "support/LAssert.h"
 
-#include <assert.h>
+#include <cassert>
 #include <algorithm>
 #include <functional>
 
@@ -101,7 +101,8 @@ bool BufferList::empty() const
 }
 
 
-bool BufferList::qwriteOne(Buffer * buf, string const & fname, string & unsaved_list)
+bool BufferList::qwriteOne(Buffer * buf, string const & fname,
+			   string & unsaved_list)
 {
 	bool reask = true;
 	while (reask) {
@@ -137,9 +138,9 @@ bool BufferList::qwriteOne(Buffer * buf, string const & fname, string & unsaved_
 bool BufferList::qwriteAll()
 {
 	string unsaved;
-	for (BufferStorage::iterator it = bstore.begin();
-	     it != bstore.end(); ++it)
-	{
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it) {
 		if (!(*it)->isLyxClean()) {
 			string fname;
 			if ((*it)->isUnnamed())
@@ -182,7 +183,9 @@ bool BufferList::close(Buffer * buf)
 	// Trace back why we need to use buf->getUser here.
 	// Perhaps slight rewrite is in order? (Lgb)
 	
-        if (buf->getUser()) buf->getUser()->insetUnlock();
+        if (buf->getUser())
+		buf->getUser()->insetUnlock();
+	
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		if (buf->getUser())
 			buf->getUser()->owner()->prohibitInput();
@@ -256,9 +259,9 @@ int BufferList::unlockInset(UpdatableInset * inset)
 {
 	lyx::Assert(inset);
 	
-	//if (!inset) return 1;
-	for (BufferStorage::iterator it = bstore.begin();
-	     it != bstore.end(); ++it) {
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it) {
 		if ((*it)->getUser()
 		    && (*it)->getUser()->theLockingInset() == inset) {
 			(*it)->getUser()->insetUnlock();
@@ -271,8 +274,9 @@ int BufferList::unlockInset(UpdatableInset * inset)
 
 void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 {
-	for (BufferStorage::iterator it = bstore.begin();
-	     it != bstore.end(); ++it) {
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it) {
 		if (!(*it)->isDepClean(mastertmpdir)) {
 			string writefile = mastertmpdir;
 			writefile += '/';
@@ -300,7 +304,8 @@ void BufferList::emergencyWrite(Buffer * buf)
 
 	
 	// No need to save if the buffer has not changed.
-	if (buf->isLyxClean()) return;
+	if (buf->isLyxClean())
+		return;
 	
 	lyxerr << fmt(_("lyx: Attempting to save document %s as..."),
 		      buf->isUnnamed() ? OnlyFilename(buf->fileName()).c_str()
@@ -354,7 +359,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 {
 	Buffer * b = bstore.newBuffer(s, ronly);
 
-	string ts = s;
+	string ts(s);
 	string e = OnlyPath(s);
 	string a = e;
 	// File information about normal file

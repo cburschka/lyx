@@ -45,6 +45,7 @@
 #include "BufferView.h"
 #include "ParagraphParameters.h"
 #include "iterators.h"
+#include "lyxtextclasslist.h"
 
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
@@ -460,9 +461,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 		lex.eatLine();
 		string const layoutname = lex.getString();
+		//lyxerr << "Looking for layout '"
+		// << layoutname << "'!" << endl;
+		
 		pair<bool, layout_type> pp
 		  = textclasslist.NumberOfLayout(params.textclass, layoutname);
 
+		//lyxerr << "Result: " << pp.first << "/" << pp.second << endl;
+		
 #ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
 			ert_comp.active = true;
@@ -536,6 +542,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			} else {
 				// layout not found
 				// use default layout "Standard" (0)
+				//lyxerr << "Layout '" << layoutname
+				//       << "' was not found!" << endl;
+				
 				par->layout = 0;
 				++unknown_layouts;
 				string const s = _("Layout had to be changed from\n")
@@ -728,21 +737,25 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->params().startOfAppendix(true);
 	} else if (token == "\\paragraph_separation") {
 		int tmpret = lex.findToken(string_paragraph_separation);
-		if (tmpret == -1) ++tmpret;
+		if (tmpret == -1)
+			++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) 
 			params.paragraph_separation =
 				static_cast<BufferParams::PARSEP>(tmpret);
 	} else if (token == "\\defskip") {
 		lex.nextToken();
 		params.defskip = VSpace(lex.getString());
+#ifndef NO_COMPABILITY
 	} else if (token == "\\epsfig") { // obsolete
 		// Indeed it is obsolete, but we HAVE to be backwards
 		// compatible until 0.14, because otherwise all figures
 		// in existing documents are irretrivably lost. (Asger)
 		params.readGraphicsDriver(lex);
+#endif
 	} else if (token == "\\quotes_language") {
 		int tmpret = lex.findToken(string_quotes_language);
-		if (tmpret == -1) ++tmpret;
+		if (tmpret == -1)
+			++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) {
 			InsetQuotes::quote_language tmpl = 
 				InsetQuotes::EnglishQ;
@@ -805,7 +818,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.use_numerical_citations = lex.getInteger();
 	} else if (token == "\\paperorientation") {
 		int tmpret = lex.findToken(string_orientation);
-		if (tmpret == -1) ++tmpret;
+		if (tmpret == -1)
+			++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) 
 			params.orientation = static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
 	} else if (token == "\\paperwidth") {
@@ -2004,7 +2018,9 @@ void Buffer::writeFileAscii(ostream & ofs, int linelen)
 	ofs << "\n";
 }
 
+
 bool use_babel;
+
 
 void Buffer::makeLaTeXFile(string const & fname, 
 			   string const & original_path,

@@ -153,7 +153,8 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 
 int lyxfont::signedWidth(string const & s, LyXFont const & f)
 {
-	if (s.empty()) return 0;
+	if (s.empty())
+		return 0;
 	if (s[0] == '-')
 		return -width(s.substr(1, s.length() - 1), f);
 	else

@@ -18,7 +18,10 @@
 
 #include "paragraph.h"
 #include "ParagraphParameters.h"
+
 #include <boost/array.hpp>
+
+class LyXLayout;
 
 struct Paragraph::Pimpl {
 	///

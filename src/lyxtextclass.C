@@ -1,0 +1,540 @@
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *          Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-2001 The LyX Team.
+ *
+ * ======================================================
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "lyxtextclass.h"
+#include "debug.h"
+#include "lyxlex.h"
+
+#include "support/lstrings.h"
+#include "support/LAssert.h"
+#include "support/lyxfunctional.h"
+#include "support/filetools.h"
+
+using std::endl;
+
+
+/* ******************************************************************* */
+
+LyXTextClass::LyXTextClass(string const & fn, string const & cln,
+			   string const & desc)
+	: name_(fn), latexname_(cln), description_(desc)
+{
+	outputType_ = LATEX;
+	columns_ = 1;
+	sides_ = OneSide;
+	secnumdepth_ = 3;
+	tocdepth_ = 3;
+	pagestyle_ = "default";
+	maxcounter_ = LABEL_COUNTER_CHAPTER;
+	defaultfont_ = LyXFont(LyXFont::ALL_SANE);
+	opt_fontsize_ = "10|11|12";
+	opt_pagestyle_ = "empty|plain|headings|fancy";
+	provides_ = nothing;
+	loaded = false;
+}
+
+
+bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
+{
+	lyxerr[Debug::TCLASS] << "Reading style " << lay.name() << endl;
+	if (!lay.Read(lexrc, *this)) {
+		// Reslove fonts
+		lay.resfont = lay.font;
+#ifndef INHERIT_LANGUAGE
+		lay.resfont.realize(defaultfont());
+		lay.reslabelfont = lay.labelfont;
+		lay.reslabelfont.realize(defaultfont());
+#else
+		lay.resfont.realize(defaultfont(), default_language);
+		lay.reslabelfont = lay.labelfont;
+		lay.reslabelfont.realize(defaultfont(), default_language);
+#endif
+		return false; // no errors
+	} 
+	lyxerr << "Error parsing style `" << lay.name() << "'" << endl;
+	return true;
+}
+
+
+enum TextClassTags {
+	TC_OUTPUTTYPE = 1,
+	TC_INPUT,
+	TC_STYLE,
+	TC_NOSTYLE,
+	TC_COLUMNS,
+	TC_SIDES,
+	TC_PAGESTYLE,
+	TC_DEFAULTFONT,
+	TC_MAXCOUNTER,
+	TC_SECNUMDEPTH,
+	TC_TOCDEPTH,
+	TC_CLASSOPTIONS,
+	TC_PREAMBLE,
+	TC_PROVIDESAMSMATH,
+	TC_PROVIDESMAKEIDX,
+	TC_PROVIDESURL,
+	TC_LEFTMARGIN,
+	TC_RIGHTMARGIN
+};
+
+
+// Reads a textclass structure from file.
+bool LyXTextClass::Read(string const & filename, bool merge)
+{
+	keyword_item textClassTags[] = {
+		{ "classoptions",    TC_CLASSOPTIONS },
+		{ "columns",         TC_COLUMNS },
+		{ "defaultfont",     TC_DEFAULTFONT },
+		{ "input",           TC_INPUT },
+		{ "leftmargin",      TC_LEFTMARGIN },
+		{ "maxcounter",      TC_MAXCOUNTER },
+		{ "nostyle",         TC_NOSTYLE },
+		{ "outputtype",      TC_OUTPUTTYPE },
+		{ "pagestyle",       TC_PAGESTYLE },
+		{ "preamble",        TC_PREAMBLE },
+		{ "providesamsmath", TC_PROVIDESAMSMATH },
+		{ "providesmakeidx", TC_PROVIDESMAKEIDX },
+		{ "providesurl",     TC_PROVIDESURL },
+		{ "rightmargin",     TC_RIGHTMARGIN },
+		{ "secnumdepth",     TC_SECNUMDEPTH },
+		{ "sides",           TC_SIDES },
+		{ "style",           TC_STYLE },
+		{ "tocdepth",        TC_TOCDEPTH }
+	};
+
+	if (!merge)
+		lyxerr[Debug::TCLASS] << "Reading textclass "
+				      << MakeDisplayPath(filename)
+				      << endl;
+	else
+		lyxerr[Debug::TCLASS] << "Reading input file "
+				     << MakeDisplayPath(filename)
+				     << endl;
+	
+	LyXLex lexrc(textClassTags, TC_RIGHTMARGIN);
+	bool error = false;
+
+        lexrc.setFile(filename);
+	if (!lexrc.isOK()) error = true; 
+
+	// parsing
+	while (lexrc.isOK() && !error) {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_FEOF:
+			continue; 
+
+		case LyXLex::LEX_UNDEF:                                 
+			lexrc.printError("Unknown TextClass tag `$$Token'");
+			error = true;
+			continue; 
+		default: break;
+		}
+		switch (static_cast<TextClassTags>(le)) {
+		case TC_OUTPUTTYPE:   // output type definition
+			readOutputType(lexrc);
+			break;
+			
+		case TC_INPUT: // Include file
+		        if (lexrc.next()) {
+		        	string tmp = LibFileSearch("layouts",
+							    lexrc.getString(), 
+							    "layout");
+				
+				if (Read(tmp, true)) {
+					lexrc.printError("Error reading input"
+							 "file: "+tmp);
+					error = true;
+				}
+			}
+			break;
+
+		case TC_STYLE:
+			if (lexrc.next()) {
+				string name = subst(lexrc.getString(),
+						    '_', ' ');
+				if (hasLayout(name)) {
+					LyXLayout & lay = GetLayout(name);
+					error = do_readStyle(lexrc, lay);
+				} else {
+					LyXLayout lay;
+					lay.setName(name);
+					if (!(error = do_readStyle(lexrc, lay)))
+						layoutlist.push_back(lay);
+				}
+			}
+			else {
+				lexrc.printError("No name given for style: `$$Token'.");
+				error = true;
+			}
+			break;
+
+		case TC_NOSTYLE:
+			if (lexrc.next()) {
+				string const style = subst(lexrc.getString(),
+						     '_', ' ');
+				if (!delete_layout(style))
+					lexrc.printError("Cannot delete style"
+							 " `$$Token'");
+			}
+			break;
+
+		case TC_COLUMNS:
+			if (lexrc.next())
+				columns_ = lexrc.getInteger();
+			break;
+			
+		case TC_SIDES:
+			if (lexrc.next()) {
+				switch (lexrc.getInteger()) {
+				case 1: sides_ = OneSide; break;
+				case 2: sides_ = TwoSides; break;
+				default:
+					lyxerr << "Impossible number of page"
+						" sides, setting to one."
+					       << endl;
+					sides_ = OneSide;
+					break;
+				}
+			}
+			break;
+			
+		case TC_PAGESTYLE:
+		        lexrc.next();
+			pagestyle_ = strip(lexrc.getString());
+			break;
+			
+		case TC_DEFAULTFONT:
+			defaultfont_.lyxRead(lexrc);
+			if (!defaultfont_.resolved()) {
+				lexrc.printError("Warning: defaultfont should "
+						 "be fully instantiated!");
+#ifndef INHERIT_LANGUAGE
+				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE));
+#else
+				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE),
+				                     default_language);
+#endif
+			}
+			break;
+
+		case TC_MAXCOUNTER:
+			readMaxCounter(lexrc);
+			break;
+
+		case TC_SECNUMDEPTH:
+			lexrc.next();
+			secnumdepth_ = lexrc.getInteger();
+			break;
+
+		case TC_TOCDEPTH:
+			lexrc.next();
+			tocdepth_ = lexrc.getInteger();
+			break;
+
+			// First step to support options 
+	        case TC_CLASSOPTIONS:
+			readClassOptions(lexrc);
+		        break;
+
+		case TC_PREAMBLE:
+			preamble_ = lexrc.getLongString("EndPreamble");
+			break;
+
+		case TC_PROVIDESAMSMATH:
+			if (lexrc.next() && lexrc.getInteger())
+				provides_ |= amsmath;
+			break;
+
+		case TC_PROVIDESMAKEIDX:
+			if (lexrc.next() && lexrc.getInteger())
+				provides_ |= makeidx;
+			break;
+
+		case TC_PROVIDESURL:
+			if (lexrc.next() && lexrc.getInteger())
+				provides_ = url;
+			break;
+
+		case TC_LEFTMARGIN:	// left margin type
+		        if (lexrc.next())
+				leftmargin_ = lexrc.getString();
+			break;			
+
+		case TC_RIGHTMARGIN:	// right margin type
+			if (lexrc.next())
+				rightmargin_ = lexrc.getString();
+			break;
+		}
+	}	
+
+	if (!merge) { // we are at top level here.
+		lyxerr[Debug::TCLASS] << "Finished reading textclass " 
+				      << MakeDisplayPath(filename)
+				      << endl;
+	} else
+		lyxerr[Debug::TCLASS] << "Finished reading input file " 
+				      << MakeDisplayPath(filename)
+				      << endl;
+
+	return error;
+}
+
+
+void LyXTextClass::readOutputType(LyXLex & lexrc)
+{
+	keyword_item outputTypeTags[] = {
+		{ "docbook", DOCBOOK },
+		{ "latex", LATEX },
+		{ "linuxdoc", LINUXDOC },
+		{ "literate", LITERATE }
+	};
+
+	pushpophelper pph(lexrc, outputTypeTags, LITERATE);
+
+	int le = lexrc.lex();
+	switch (le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown output type `$$Token'");
+		return;
+	case LATEX:
+	case LINUXDOC:
+	case DOCBOOK:
+	case LITERATE:
+		outputType_ = static_cast<OutputType>(le);
+		break;
+	default:
+		lyxerr << "Unhandled value " << le
+		       << " in LyXTextClass::readOutputType." << endl;
+
+		break;
+	}
+}
+
+
+enum MaxCounterTags {
+	MC_COUNTER_CHAPTER = 1,
+	MC_COUNTER_SECTION,
+	MC_COUNTER_SUBSECTION,
+	MC_COUNTER_SUBSUBSECTION,
+	MC_COUNTER_PARAGRAPH,
+	MC_COUNTER_SUBPARAGRAPH,
+	MC_COUNTER_ENUMI,
+	MC_COUNTER_ENUMII,
+	MC_COUNTER_ENUMIII,
+	MC_COUNTER_ENUMIV
+};
+
+
+void LyXTextClass::readMaxCounter(LyXLex & lexrc)
+{
+	keyword_item maxCounterTags[] = {
+		{"counter_chapter", MC_COUNTER_CHAPTER },
+		{"counter_enumi", MC_COUNTER_ENUMI },
+		{"counter_enumii", MC_COUNTER_ENUMII },
+		{"counter_enumiii", MC_COUNTER_ENUMIII },
+		{"counter_enumiv", MC_COUNTER_ENUMIV },
+		{"counter_paragraph", MC_COUNTER_PARAGRAPH },
+		{"counter_section", MC_COUNTER_SECTION },
+		{"counter_subparagraph", MC_COUNTER_SUBPARAGRAPH },
+		{"counter_subsection", MC_COUNTER_SUBSECTION },
+		{"counter_subsubsection", MC_COUNTER_SUBSUBSECTION }
+	};
+
+	pushpophelper pph(lexrc, maxCounterTags, MC_COUNTER_ENUMIV);
+	int le = lexrc.lex();
+	switch (le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown MaxCounter tag `$$Token'");
+		return; 
+	default: break;
+	}
+	switch (static_cast<MaxCounterTags>(le)) {
+	case MC_COUNTER_CHAPTER:
+		maxcounter_ = LABEL_COUNTER_CHAPTER;
+		break;
+	case MC_COUNTER_SECTION:
+		maxcounter_ = LABEL_COUNTER_SECTION;
+		break;
+	case MC_COUNTER_SUBSECTION:
+		maxcounter_ = LABEL_COUNTER_SUBSECTION;
+		break;
+	case MC_COUNTER_SUBSUBSECTION:
+		maxcounter_ = LABEL_COUNTER_SUBSUBSECTION;
+		break;
+	case MC_COUNTER_PARAGRAPH:
+		maxcounter_ = LABEL_COUNTER_PARAGRAPH;
+		break;
+	case MC_COUNTER_SUBPARAGRAPH:
+		maxcounter_ = LABEL_COUNTER_SUBPARAGRAPH;
+		break;
+	case MC_COUNTER_ENUMI:
+		maxcounter_ = LABEL_COUNTER_ENUMI;
+		break;
+	case MC_COUNTER_ENUMII:
+		maxcounter_ = LABEL_COUNTER_ENUMII;
+		break;
+	case MC_COUNTER_ENUMIII:
+		maxcounter_ = LABEL_COUNTER_ENUMIII;
+		break;
+	case MC_COUNTER_ENUMIV:
+		maxcounter_ = LABEL_COUNTER_ENUMIV;
+		break;
+	}
+}
+
+
+enum ClassOptionsTags {
+	CO_FONTSIZE = 1,
+	CO_PAGESTYLE,
+	CO_OTHER,
+	CO_END
+};
+
+
+void LyXTextClass::readClassOptions(LyXLex & lexrc)
+{
+	keyword_item classOptionsTags[] = {
+		{"end", CO_END },
+		{"fontsize", CO_FONTSIZE },
+		{"other", CO_OTHER },
+		{"pagestyle", CO_PAGESTYLE }
+	};
+
+	lexrc.pushTable(classOptionsTags, CO_END);
+	bool getout = false;
+	while (!getout && lexrc.isOK()) {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			continue; 
+		default: break;
+		}
+		switch (static_cast<ClassOptionsTags>(le)) {
+		case CO_FONTSIZE:
+			lexrc.next();
+			opt_fontsize_ = strip(lexrc.getString());
+			break;
+		case CO_PAGESTYLE:
+			lexrc.next();
+			opt_pagestyle_ = strip(lexrc.getString()); 
+			break;
+		case CO_OTHER:
+			lexrc.next();
+			options_ = lexrc.getString();
+			break;
+		case CO_END:
+			getout = true;
+			break;
+		}
+	}
+	lexrc.popTable();
+}
+
+
+LyXFont const & LyXTextClass::defaultfont() const
+{
+	return defaultfont_;
+}
+
+
+string const & LyXTextClass::leftmargin() const
+{
+	return leftmargin_;
+}
+
+
+string const & LyXTextClass::rightmargin() const
+{
+	return rightmargin_;
+}
+
+
+bool LyXTextClass::hasLayout(string const & name) const
+{
+	return find_if(layoutlist.begin(), layoutlist.end(),
+		       lyx::compare_memfun(&LyXLayout::name, name))
+		!= layoutlist.end();
+}
+
+
+LyXLayout const & LyXTextClass::GetLayout (string const & name) const
+{
+	LayoutList::const_iterator cit =
+		find_if(layoutlist.begin(),
+			layoutlist.end(),
+			lyx::compare_memfun(&LyXLayout::name, name));
+	lyx::Assert(cit != layoutlist.end()); // we require the name to exist
+	return (*cit);
+}
+
+
+LyXLayout & LyXTextClass::GetLayout(string const & name)
+{
+	LayoutList::iterator it =
+		find_if(layoutlist.begin(),
+			layoutlist.end(),
+			lyx::compare_memfun(&LyXLayout::name, name));
+	lyx::Assert(it != layoutlist.end()); // we require the name to exist
+	return (*it);
+}
+
+
+bool LyXTextClass::delete_layout(string const & name)
+{
+	LayoutList::iterator it =
+		remove_if(layoutlist.begin(), layoutlist.end(),
+			  lyx::compare_memfun(&LyXLayout::name, name));
+	LayoutList::iterator end = layoutlist.end();
+	bool const ret = (it != end);
+	layoutlist.erase(it, end);
+	return ret;
+}
+
+
+// Load textclass info if not loaded yet
+void LyXTextClass::load()
+{
+	if (loaded) return;
+
+	// Read style-file
+	string const real_file = LibFileSearch("layouts", name_, "layout");
+
+	if (Read(real_file)) {
+		lyxerr << "Error reading `"
+		       << MakeDisplayPath(real_file)
+		       << "'\n(Check `" << name_
+		       << "')\nCheck your installation and "
+			"try Options/Reconfigure..." << endl;
+	}
+	loaded = true;
+}
+
+
+std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p)
+{
+	switch (p) {
+	case LyXTextClass::OneSide:
+		os << "1";
+		break;
+	case LyXTextClass::TwoSides:
+		os << "2";
+		break;
+	}
+	return os;
+}

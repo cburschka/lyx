@@ -1,27 +1,28 @@
-
 #include <config.h>
-
-#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include "frontends/Dialogs.h"
 
 #include "insetinclude.h"
 #include "buffer.h"
 #include "bufferlist.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "support/filetools.h"
 #include "lyxrc.h"
 #include "LyXView.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
+#include "lyxtextclasslist.h"
+
+#include "frontends/Dialogs.h"
+
+#include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/lstrings.h"
-#include "layout.h"
+
+#include <cstdlib>
+
 
 using std::ostream;
 using std::endl;

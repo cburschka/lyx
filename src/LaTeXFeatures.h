@@ -17,12 +17,14 @@
 #pragma interface
 #endif
 
+#include "support/types.h"
+
+#include "LString.h"
+
 #include <vector>
 #include <set>
 #include <list>
-
-#include "LString.h"
-#include "layout.h"
+#include <map>
 
 class BufferParams; 
 struct Language;
@@ -41,7 +43,6 @@ struct Language;
     when you do so.
 */
 class LaTeXFeatures {
-
 public:
 	///
 	LaTeXFeatures(BufferParams const &, lyx::layout_type n) ;

@@ -20,17 +20,19 @@
 #include "FormParagraph.h"
 #include "form_paragraph.h"
 #include "Dialogs.h"
-#include "support/lstrings.h" 
 #include "Liason.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"
 #include "BufferView.h"
+#include "lyxtextclasslist.h"
 #include "Spacing.h"
 #include "ParagraphParameters.h"
 #include "input_validators.h"
 #include "helper_funcs.h"
+
+#include "support/lstrings.h" 
 
 using Liason::setMinibuffer;
 using SigC::slot;

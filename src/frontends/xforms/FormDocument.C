@@ -18,20 +18,16 @@
 #pragma implementation
 #endif
 
-#include "Alert.h"
- 
 #include "FormDocument.h"
 #include "form_document.h"
+#include "Alert.h"
 #include "Dialogs.h"
-#include "layout.h"
+#include "lyxtextclasslist.h"
 #include "combox.h"
 #include "tex-strings.h"
 #include "bufferparams.h"
-#include "insets/insetquotes.h"
 #include "vspace.h"
 #include "bmtable.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 #include "language.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
@@ -46,6 +42,11 @@
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "helper_funcs.h" 
 #include "lyx_main.h" // for user_lyxdir
+
+#include "insets/insetquotes.h"
+
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;

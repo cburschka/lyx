@@ -18,15 +18,19 @@
 #include "lyxfont.h"
 #include "language.h"
 #include "buffer.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxtext.h"
+#include "debug.h"
+#include "lyxtextclasslist.h"
+
+#include "insets/insettext.h"
+
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
-#include "debug.h"
+
+#include "support/LOstream.h"
 
 using std::ostream;
 using lyx::pos_type;

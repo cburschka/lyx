@@ -28,6 +28,7 @@
 #include "gettext.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
@@ -70,7 +71,7 @@
 #include <ctime>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <locale.h>
+#include <clocale>
 
 
 extern lyx::layout_type current_layout;

@@ -26,11 +26,13 @@
 #include "func_status.h"
 #include "BufferView.h"
 #include "buffer.h"
+#include "lyxtextclasslist.h"
 #include "LyXAction.h"
 #include "MathsSymbols.h" 
+#include "gettext.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h" 
-#include "gettext.h"
 
 using std::endl;
 
@@ -42,18 +44,21 @@ const int sepspace = 6; // extra space
 const int buttonwidth = 30; // the standard button width
 const int height = 30; // the height of all items in the toolbar
 
-Toolbar::Pimpl::toolbarItem::toolbarItem() {
+Toolbar::Pimpl::toolbarItem::toolbarItem()
+{
 	action = LFUN_NOACTION;
 	icon = 0;
 }
 
 
-Toolbar::Pimpl::toolbarItem::~toolbarItem() {
+Toolbar::Pimpl::toolbarItem::~toolbarItem()
+{
 	clean();
 }
 
 
-void Toolbar::Pimpl::toolbarItem::clean() {
+void Toolbar::Pimpl::toolbarItem::clean()
+{
 	if (icon) {
 		fl_delete_object(icon);
 		fl_free_object(icon);
@@ -63,7 +68,8 @@ void Toolbar::Pimpl::toolbarItem::clean() {
 
 
 Toolbar::Pimpl::toolbarItem & 
-Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti) {
+Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
+{
 	// Are we assigning the object onto itself?
 	if (this == &ti)
 		return *this;
@@ -177,6 +183,7 @@ void Toolbar::Pimpl::deactivate()
 	}
 }
 
+
 void Toolbar::Pimpl::update()
 {
 	ToolbarList::const_iterator p = toollist.begin();
@@ -239,7 +246,8 @@ void Toolbar::Pimpl::layoutSelected()
 }
  
 
-void Toolbar::Pimpl::setLayout(int layout) {
+void Toolbar::Pimpl::setLayout(int layout)
+{
 	if (combox) {
 		LyXTextClass const & tc =
 			textclasslist.TextClass(owner->buffer()->
@@ -313,8 +321,11 @@ extern "C" {
 }
 
 
-void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
-	string name, arg, xpm_name;
+void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
+{
+	string name;
+	string arg;
+	string xpm_name;
 	kb_action act;
 
 	if (lyxaction.isPseudoAction(action)) {

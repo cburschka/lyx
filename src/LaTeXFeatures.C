@@ -11,27 +11,28 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "LaTeXFeatures.h"
+#pragma implementation
 #endif
 
-#include "LString.h"
+#include "LaTeXFeatures.h"
 #include "debug.h"
 #include "lyx_sty.h"
 #include "lyxrc.h"
-#include "LaTeXFeatures.h"
 #include "bufferparams.h"
-#include "layout.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
+#include "lyxtextclasslist.h"
 #include "FloatList.h"
 #include "language.h"
 #include "encoding.h"
+#include "LString.h"
 
-using std::endl;
-using std::set;
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 using lyx::layout_type;
 using lyx::textclass_type;
+
+using std::endl;
+using std::set;
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p, layout_type n)
 	: layout(n, false), params(p)

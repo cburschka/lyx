@@ -9,19 +9,21 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "CutAndPaste.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "paragraph.h"
-#include "insets/inseterror.h"
 #include "lyx_gui_misc.h"
 #include "lyxcursor.h"
 #include "gettext.h"
 #include "iterators.h"
+#include "lyxtextclasslist.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
+#include "insets/inseterror.h"
 
 using std::pair;
 using lyx::pos_type;

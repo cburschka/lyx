@@ -9,8 +9,6 @@
  * ====================================================== */
 
 #include <config.h>
-#include <cstdlib>
-#include <fcntl.h>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -18,9 +16,6 @@
 
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
-#include "support/filetools.h"
-#include "support/os.h"
-#include "support/lyxlib.h"
 #include "figure_form.h"
 #include "print_form.h"
 #include "tex-strings.h"
@@ -39,8 +34,16 @@
 #endif
 #include "bufferlist.h"
 #include "ColorHandler.h"
+
 #include "frontends/GUIRunTime.h"
 #include "frontends/xforms/xforms_helpers.h" // for XformColor
+
+#include "support/filetools.h"
+#include "support/os.h"
+#include "support/lyxlib.h"
+
+#include <cstdlib>
+#include <fcntl.h>
 
 using std::endl;
 
@@ -136,25 +139,27 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	
 	// If width is not set by geometry, check it against monitor width
 	if (!(geometryBitmask & 4)) {
-		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
+		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
 		if (WidthOfScreen(scr) - 8 < width)
 			width = WidthOfScreen(scr) - 8;
 	}
 
 	// If height is not set by geometry, check it against monitor height
 	if (!(geometryBitmask & 8)) {
-		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
+		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
 		if (HeightOfScreen(scr) - 24 < height)
 			height = HeightOfScreen(scr) - 24;
 	}
 
 	// Recalculate xpos if it's negative
 	if (geometryBitmask & 16)
-		xpos += WidthOfScreen(ScreenOfDisplay(fl_get_display(), fl_screen)) - width; //DefaultScreen(fl_get_display())) - width;
+		xpos += WidthOfScreen(ScreenOfDisplay(fl_get_display(),
+						      fl_screen)) - width;
 
 	// Recalculate ypos if it's negative
 	if (geometryBitmask & 32)
-		ypos += HeightOfScreen(ScreenOfDisplay(fl_get_display(), fl_screen)) - height; //DefaultScreen(fl_get_display())) - height;
+		ypos += HeightOfScreen(ScreenOfDisplay(fl_get_display(),
+						       fl_screen)) - height;
 
 	// Initialize the LyXColorHandler
 	lyxColorHandler.reset(new LyXColorHandler);
@@ -291,10 +296,8 @@ void LyXGUI::create_forms()
 
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.
-	{
-		string filename = AddName(user_lyxdir, "preferences.xform");
-		XformsColor::read( filename );
-	}
+	string const filename = AddName(user_lyxdir, "preferences.xform");
+	XformsColor::read( filename );
 	
 	// Show the main & title form
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;

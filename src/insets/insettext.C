@@ -23,7 +23,7 @@
 #include "buffer.h"
 #include "LyXView.h"
 #include "BufferView.h"
-#include "layout.h"
+#include "lyxtextclasslist.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
 #include "lyxtext.h"

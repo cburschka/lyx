@@ -20,6 +20,7 @@
 #include "Painter.h"
 #include "font.h"
 #include "lyxlex.h"
+#include "lyxfont.h"
 
 using std::ostream;
 using std::max;

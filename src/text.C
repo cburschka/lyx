@@ -12,7 +12,7 @@
 
 #include "lyxtext.h"
 #include "lyxrow.h"
-#include "layout.h"
+#include "lyxtextclasslist.h"
 #include "paragraph.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"

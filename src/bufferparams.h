@@ -21,8 +21,10 @@
 #include "vspace.h"
 #include "Spacing.h"
 #include "Bullet.h"
+#include "lyxtextclass.h"
+
 #include "insets/insetquotes.h"
-#include "layout.h"
+
 #include <boost/array.hpp>
 
 

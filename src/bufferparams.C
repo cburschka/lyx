@@ -9,10 +9,9 @@
  * ====================================================== */
 
 #include <config.h>
-#include <cstdlib>
 
 #ifdef __GNUG__
-#pragma implementation "bufferparams.h"
+#pragma implementation
 #endif
 
 #include "bufferparams.h"
@@ -20,10 +19,14 @@
 #include "layout.h"
 #include "vspace.h"
 #include "debug.h"
-#include "support/lyxlib.h"
-#include "support/lstrings.h"
 #include "lyxrc.h"
 #include "language.h"
+#include "lyxtextclasslist.h"
+
+#include "support/lyxlib.h"
+#include "support/lstrings.h"
+
+#include <cstdlib>
 
 using std::ostream;
 using std::endl;

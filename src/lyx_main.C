@@ -9,32 +9,25 @@
  * ====================================================== */
 
 #include <config.h>
-
-#include <cstdlib>
-#include <csignal>
+#include <version.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <version.h>
 #include "lyx_main.h"
 #include "lyx_gui.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
-#include "frontends/Alert.h"
-#include "frontends/GUIRunTime.h"
 #include "lyxrc.h"
-#include "support/path.h"
-#include "support/filetools.h"
 #include "buffer.h"
 #include "bufferlist.h"
 #include "debug.h"
-#include "support/FileInfo.h"
 #include "lastfiles.h"
 #include "intl.h"
 #include "lyxserver.h"
-#include "layout.h"
+//#include "layout.h"
+#include "lyxtextclasslist.h"
 #include "gettext.h"
 #include "kbmap.h"
 #include "MenuBackend.h"
@@ -43,7 +36,17 @@
 #include "encoding.h"
 #include "converter.h"
 #include "language.h"
+
+#include "frontends/Alert.h"
+#include "frontends/GUIRunTime.h"
+
+#include "support/path.h"
+#include "support/filetools.h"
+#include "support/FileInfo.h"
 #include "support/os.h"
+
+#include <cstdlib>
+#include <csignal>
 
 using std::endl;
 
@@ -240,10 +243,9 @@ void LyX::init(bool gui)
 	// Determine path of binary
 	//
 
-	string fullbinpath;
 	string binpath = os::binpath();
 	string binname = os::binname();
-	fullbinpath = binpath;
+	string fullbinpath = binpath;
 
 	if (binpath.empty()) {
 		lyxerr << _("Warning: could not determine path of binary.")
@@ -413,12 +415,12 @@ void LyX::init(bool gui)
 	//
 
 	// Default template path: system_dir/templates
-	if (lyxrc.template_path.empty()){
+	if (lyxrc.template_path.empty()) {
 		lyxrc.template_path = AddPath(system_lyxdir, "templates");
 	}
    
 	// Default lastfiles file: $HOME/.lyx/lastfiles
-	if (lyxrc.lastfiles.empty()){
+	if (lyxrc.lastfiles.empty()) {
 		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
 	}
 
