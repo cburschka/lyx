@@ -102,7 +102,7 @@ LyX::LyX(int * argc, char * argv[])
 			lyxerr << _("Wrong command line option `")
 			       << argv[argi]
 			       << _("'. Exiting.") << endl;
-			exit(0);
+			exit(1);
 		}
 	}
 
@@ -154,15 +154,16 @@ LyX::LyX(int * argc, char * argv[])
 		if (!last_loaded)
 			last_loaded = bufferlist.newFile("tmpfile", string());
 
+		bool success = false;
+ 
 		// try to dispatch to last loaded buffer first
-		bool dispatched	= last_loaded->dispatch(batch_command);
+		bool dispatched	= last_loaded->dispatch(batch_command, &success);
 
 		// if this was successful, return.
 		// Maybe we could do something more clever than aborting...
 		if (dispatched) {
-			lyxerr << "We are done!" << endl;
 			QuitLyX();
-			return;
+			exit(!success);
 		}
 
 		// otherwise, let the GUI handle the batch command
@@ -835,7 +836,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 				lyxerr << _("List of supported debug flags:")
 				       << endl;
 				Debug::showTags(lyxerr);
-				exit(0);
+				exit(1);
 			}
 		}
 		// Check for "-sysdir"
@@ -846,7 +847,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 			} else {
 				lyxerr << _("Missing directory for -sysdir switch!")
 				       << endl;
-				exit(0);
+				exit(1);
 			}
 		}
 		// Check for "-userdir"
@@ -857,7 +858,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 			} else {
 				lyxerr << _("Missing directory for -userdir switch!")
 				       << endl;
-				exit(0);
+				exit(1);
 			}
 		}
 		// Check for --help or -help
@@ -870,6 +871,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 			commandLineVersionInfo();
 			exit(0);
 		}
+		// FIXME: why is this commented out ? 
 		// Check for "-nw": No XWindows as for emacs this should
 		// give a LyX that could be used in a terminal window.
 		//else if (arg == "-nw") {
@@ -886,7 +888,8 @@ bool LyX::easyParse(int * argc, char * argv[])
 				lyxerr << _("Missing command string after  -x switch!") << endl;
 
 			// Argh. Setting gui to false segfaults..
-			//gui = false;
+			// FIXME: when ? how ? 
+			// gui = false;
 		}
 
 		else if (arg == "-e" || arg == "--export") {
@@ -895,25 +898,34 @@ bool LyX::easyParse(int * argc, char * argv[])
 				removeargs = 2;
 				batch_command = "buffer-export " + type;
 				gui = false;
-			} else
+			} else {
 				lyxerr << _("Missing file type [eg latex, "
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
+				exit(1);
+			}
 		}
 		else if (arg == "-i" || arg == "--import") {
 			if (i + 1 < *argc) {
-				string const type(argv[i+1]);
+				if (!argv[i+2]) {
+					lyxerr << _("Missing filename for --import") << endl;
+					exit(1);
+				}
+ 
 				string const file(argv[i+2]);
+				string const type(argv[i+1]);
 				removeargs = 3;
-
+ 
 				batch_command = "buffer-import " + type + " " + file;
 				lyxerr << "batch_command: "
 				       << batch_command << endl;
 
-			} else
+			} else {
 				lyxerr << _("Missing type [eg latex, "
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
+				exit(1);
+			}
 		}
 
 		if (removeargs > 0) {

@@ -3883,24 +3883,28 @@ void Buffer::markDepClean(string const & name)
 }
 
 
-bool Buffer::dispatch(string const & command)
+bool Buffer::dispatch(string const & command, bool * result)
 {
 	// Split command string into command and argument
 	string cmd;
 	string line = frontStrip(command);
 	string const arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return dispatch(lyxaction.LookupFunc(cmd), arg);
+	return dispatch(lyxaction.LookupFunc(cmd), arg, result);
 }
 
 
-bool Buffer::dispatch(int action, string const & argument)
+bool Buffer::dispatch(int action, string const & argument, bool * result)
 {
 	bool dispatched = true;
+ 
 	switch (action) {
-		case LFUN_EXPORT:
-			Exporter::Export(this, argument, false);
+		case LFUN_EXPORT: {
+			bool const tmp = Exporter::Export(this, argument, false);
+			if (result)
+				*result = tmp;
 			break;
+		}
 
 		default:
 			dispatched = false;

@@ -73,10 +73,10 @@ public:
 	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it
 	*/
-	bool dispatch(string const & command);
+	bool dispatch(string const & command, bool * result = 0);
 
 	/// Maybe we know the function already by number...
-	bool dispatch(int ac, string const & argument);
+	bool dispatch(int ac, string const & argument, bool * result = 0);
 
 	///
 	void resizeInsets(BufferView *);

@@ -1,3 +1,10 @@
+2002-05-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_main.C:
+	* buffer.h:
+	* buffer.C: fix command line crash and give useful
+	  exit status on some errors
+ 
 2002-05-24  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fix the cursor selection after
