@@ -278,15 +278,15 @@ string const LaTeXFeatures::getPackages() const
 
 	// natbib.sty
 	if (natbib) {
-		string options("[]");
-		if (params.use_numerical_citations)
-			options.insert(1, "numbers");
-		else
-			options.insert(1, "authoryear");
-		packages << "\\usepackage" << options << "{natbib}\n";
+		packages << "\\usepackage[";
+		if (params.use_numerical_citations) {
+			packages << "numbers";
+		} else {
+			packages << "authoryear";
+		}
+		packages << "]{natbib}\n";
 	}
 	
-
 	packages << externalPreambles;
 
 	return packages.str().c_str();

@@ -47,9 +47,7 @@ public:
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
-	EDITABLE editable() const {
-		return IS_EDITABLE;
-	}
+	EDITABLE editable() const { return IS_EDITABLE; } 
 	/// A user can't neither insert nor delete this inset
 	bool deletable() const {
 		return false;
