@@ -1,3 +1,6 @@
+2003-08-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* BufferView_pimpl.C: _Always_ use std::endl with lyxerr
 
 2003-08-01  André Pönitz  <poenitz@gmx.net>
 
@@ -60,10 +63,10 @@
 	* factory.C: submenu for Note/Comment/Greyedout
 
 2003-07-29  Alfredo Braunstein  <abraunst@libero.it>
-	
+
 	* lyx_main.C (LyX):
 	* BufferView_pimpl.C (loadLyXFile): fix to bugs 1287 and 1297 + ws
-	
+
 2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* LaTeXFeatures.C:

@@ -188,10 +188,10 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
 	string s = FileSearch(string(), filename, "lyx");
-	
+
 	bool const found = !s.empty();
 
-	if (!found) 
+	if (!found)
 		s = filename;
 
 	// file already open?
@@ -404,14 +404,14 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->text->fullRebreak();
 		update();
 	} else {
-		lyxerr << "text not available!\n";
+		lyxerr << "text not available!" << endl;
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.
 		bv_->text = textcache.findFit(buffer_, workarea().workWidth());
 		if (bv_->text) {
-			lyxerr << "text in cache!\n";
+			lyxerr << "text in cache!" << endl;
 			if (lyxerr.debugging()) {
-				lyxerr << "Found a LyXText that fits:\n";
+				lyxerr << "Found a LyXText that fits:" << endl;
 				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea().workWidth(), bv_->text)));
 			}
 			// Set the owner of the newly found text
@@ -421,7 +421,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 			resizeInsets(bv_);
 		} else {
-			lyxerr << "no text in cache!\n";
+			lyxerr << "no text in cache!" << endl;
 			bv_->text = new LyXText(bv_);
 			resizeInsets(bv_);
 			bv_->text->init(bv_);
@@ -639,7 +639,7 @@ void BufferView::Pimpl::workAreaResize()
 
 void BufferView::Pimpl::update()
 {
-	lyxerr << "BufferView::update()\n";
+	lyxerr << "BufferView::update()" << endl;
 	screen().redraw(*bv_);
 }
 
