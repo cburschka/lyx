@@ -1124,7 +1124,9 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 			inset_y = ciy(bv) + drawTextYOffset;
 			cmd1.x = cmd.x - inset_x;
 			cmd1.y = cmd.x - inset_y;
-			ret = inset->localDispatch(cmd1);
+// note that we should do ret = inset->localDispatch(cmd1) 
+// and fix this instead (Alfredo);
+			ret = true;
 			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
 		}
 		updateLocal(bv, CURSOR_PAR, false);
