@@ -280,6 +280,36 @@ void LyX::priv_exec(int & argc, char * argv[])
 }
 
 
+/*
+Signals and Windows
+===================
+The SIGHUP signal does not exist on Windows and does not need to be handled.
+
+Windows handles SIGFPE and SIGSEGV signals as expected.
+
+Cntl+C interrupts (mapped to SIGINT by Windows' POSIX compatability layer)
+cause a new thread to be spawned. This may well result in unexpected
+behaviour by the single-threaded LyX.
+
+SIGTERM signals will come only from another process actually sending
+that signal using 'raise' in Windows' POSIX compatability layer. It will
+not come from the general "terminate process" methods that everyone
+actually uses (and which can't be trapped). Killing an app 'politely' on
+Windows involves first sending a WM_CLOSE message, something that is
+caught already by the Qt frontend.
+
+For more information see:
+
+http://aspn.activestate.com/ASPN/Mail/Message/ActiveTcl/2034055
+...signals are mostly useless on Windows for a variety of reasons that are
+Windows specific...
+
+'UNIX Application Migration Guide, Chapter 9'
+http://msdn.microsoft.com/library/en-us/dnucmg/html/UCMGch09.asp
+
+'How To Terminate an Application "Cleanly" in Win32'
+http://support.microsoft.com/default.aspx?scid=kb;en-us;178893
+*/
 extern "C" {
 
 static void error_handler(int err_sig)
@@ -306,9 +336,11 @@ static void error_handler(int err_sig)
 	// This shouldn't matter here, however, as we've already invoked
 	// emergencyCleanup.
 	switch (err_sig) {
+#ifdef SIGHUP
 	case SIGHUP:
 		lyxerr << "\nlyx: SIGHUP signal caught\nBye." << endl;
 		break;
+#endif
 	case SIGFPE:
 		lyxerr << "\nlyx: SIGFPE signal caught\nBye." << endl;
 		break;
@@ -326,14 +358,20 @@ static void error_handler(int err_sig)
 	}
 
 	// Deinstall the signal handlers
+#ifdef SIGHUP
 	signal(SIGHUP, SIG_DFL);
+#endif
 	signal(SIGINT, SIG_DFL);
 	signal(SIGFPE, SIG_DFL);
 	signal(SIGSEGV, SIG_DFL);
 	signal(SIGTERM, SIG_DFL);
 
+#ifdef SIGHUP
 	if (err_sig == SIGSEGV ||
 	    (err_sig != SIGHUP && !GetEnv("LYXDEBUG").empty()))
+#else
+	if (err_sig == SIGSEGV || !GetEnv("LYXDEBUG").empty())
+#endif
 		lyx::support::abort();
 	exit(0);
 }
@@ -351,7 +389,9 @@ void LyX::printError(ErrorItem const & ei)
 
 void LyX::init(bool gui)
 {
+#ifdef SIGHUP
 	signal(SIGHUP, error_handler);
+#endif
 	signal(SIGFPE, error_handler);
 	signal(SIGSEGV, error_handler);
 	signal(SIGINT, error_handler);
