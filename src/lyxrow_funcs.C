@@ -22,8 +22,6 @@ bool isParEnd(LyXText const & lt, RowList::iterator rit)
 }
 
 
-// It seems that this is only used in LyXText, it
-// perhaps this function should be moved into LyXText. (Lgb)
 pos_type lastPos(LyXText const & lt, RowList::iterator rit)
 {
 	if (rit->par()->empty())

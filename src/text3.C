@@ -35,6 +35,7 @@
 #include "insets/insetcommand.h"
 #include "insets/insetnewline.h"
 #include "undo_funcs.h"
+#include "text_funcs.h"
 
 #include <ctime>
 #include <clocale>
@@ -1014,7 +1015,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_TRANSPOSE_CHARS:
 		update();
-		transposeChars();
+		transposeChars(*this, cursor);
 		if (inset_owner)
 			bv->updateInset(inset_owner);
 		update();

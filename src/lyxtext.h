@@ -405,8 +405,6 @@ public:
 	};
 	/// Change the case of the word at cursor position.
 	void changeCase(TextCase action);
-	///
-	void transposeChars();
 
 	///
 	void toggleInset();

@@ -1,3 +1,13 @@
+2003-04-02  John Levon  <levon@movementarian.org>
+
+	* lyxtext.h:
+	* text.C:
+	* Makefile.am:
+	* text_funcs.h:
+	* text_funcs.C: make transposeChars a free function
+
+	* lyxrow_funcs.C: remove wrong comment
+
 2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxtext.h: adjust
