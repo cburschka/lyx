@@ -794,9 +794,13 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	}
 
 	// Maybe we want to edit a bibitem ale970302
-	if (bv_->text->cursor.par()->bibkey && x < 20 +
-	    bibitemMaxWidth(bv_, textclasslist[buffer_->params.textclass].defaultfont())) {
-		bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, mouse_button::none);
+	if (bv_->text->cursor.par()->bibkey) {
+		bool const is_rtl = bv_->text->cursor.par()->isRightToLeftPar(buffer_->params);
+		int const width = bibitemMaxWidth(bv_, textclasslist[buffer_->params.textclass].defaultfont());
+		if ((is_rtl && x > bv_->text->workWidth(bv_)-20-width) ||
+		    (!is_rtl && x < 20+width)) {
+			bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, mouse_button::none);
+		}
 	}
 
 	return;
