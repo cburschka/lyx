@@ -1,7 +1,22 @@
 // -*- C++ -*-
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ *
+ * ====================================================== */
+
 
 #ifndef TOOLBARDEFAULTS_H
 #define TOOLBARDEFAULTS_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include <vector>
 
@@ -12,6 +27,16 @@ class LyXLex;
 ///
 class ToolbarDefaults {
 public:
+        /// The special toolbar actions
+	enum  ItemType {
+		/// adds space between buttons in the toolbar
+		SEPARATOR=-3,
+		/// a special combox insead of a button
+		LAYOUTS=-2,
+		/// begin a new line of button (not working)
+		NEWLINE=-1
+	};
+
 	///
 	typedef std::vector<int> Defaults;
 	///
@@ -49,7 +74,9 @@ private:
 	Defaults defaults;
 };
 
+//The global instance
+extern ToolbarDefaults toolbardefaults;
+
+
 #endif
-
-
 

@@ -31,6 +31,10 @@ libxforms_la_SOURCES = \
 	FormTabular.h \
 	form_tabular.C \
 	form_tabular.h \
+	Toolbar_pimpl.C \
+	Toolbar_pimpl.h \
+	Menubar_pimpl.C \
+	Menubar_pimpl.h \
 	input_validators.h \
 	input_validators.c \
 	xform_macros.h

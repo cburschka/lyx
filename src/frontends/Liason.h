@@ -26,6 +26,10 @@
 #ifndef LIASON_H
 #define LIASON_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 class PrinterParams;
 class Buffer;
 

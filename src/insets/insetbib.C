@@ -9,7 +9,6 @@
 
 #include FORMS_H_LOCATION  
 #include "insetbib.h"
-#include "combox.h"
 #include "buffer.h"
 #include "debug.h"
 #include "lyx_gui_misc.h"

@@ -1,6 +1,20 @@
 // -*- C++ -*-
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ * ====================================================== */
+
 #ifndef TRACER_H
 #define TRACER_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "debug.h"
 #include "LString.h"

@@ -1,7 +1,20 @@
 // -*- C++ -*-
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ * ====================================================== */
 
 #ifndef LYXDEBUG_H
 #define LYXDEBUG_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include <iosfwd>
 
@@ -24,7 +37,7 @@ struct Debug {
 		///
 		KEY        = (1 << 2),   // 4
 		///
-		TOOLBAR    = (1 << 3),   // 8
+		GUI        = (1 << 3),   // 8
 		///
 		PARSER     = (1 << 4),   // 16
 		///
@@ -55,7 +68,7 @@ struct Debug {
 		INSETS     = (1 << 17)
 	};
 	///
-	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
+	static const type ANY = type(INFO | INIT | KEY | GUI |
 				     PARSER | LYXRC | KBMAP | LATEX |
 				     MATHED | FONT | TCLASS | LYXVC |
 				     LYXSERVER | ROFF | ACTION | LYXLEX |

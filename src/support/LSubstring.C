@@ -12,6 +12,10 @@
 #include <config.h>
 #endif
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "LSubstring.h"
 
 

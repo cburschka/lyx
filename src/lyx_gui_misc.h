@@ -14,6 +14,10 @@
 #ifndef LYX_GUI_MISC_H
 #define LYX_GUI_MISC_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include <utility>  /* needed for pair<> definition */

@@ -15,6 +15,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <stdlib.h>
 #include "bmtable.h"
 #include XPM_H_LOCATION

@@ -28,6 +28,7 @@ using std::istringstream;
 #pragma implementation
 #endif
 
+#include "version.h"
 #include "lyxlookup.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
@@ -64,7 +65,6 @@ using std::istringstream;
 #include "insets/insettheorem.h"
 #include "insets/insetcaption.h"
 #include "mathed/formulamacro.h"
-#include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
 #include "minibuffer.h"
 #include "vspace.h"
@@ -86,9 +86,14 @@ using std::istringstream;
 #include "layout.h"
 #include "WorkArea.h"
 #include "lyxfr1.h"
-#include "menus.h"
 #include "bufferview_funcs.h"
 #include "frontends/Dialogs.h"
+#include "frontends/Toolbar.h"
+#ifdef NEW_MENUBAR
+#include "frontends/Menubar.h"
+#else
+#include "menus.h"
+#endif
 #include "FloatList.h"
 
 using std::pair;
@@ -343,6 +348,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 				// no
 				setErrorMessage(N_("Document is read-only"));
 				flag |= LyXFunc::Disabled;
+				return flag;
 			}
 		} else {
 			// no
@@ -351,9 +357,6 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			flag |= LyXFunc::Disabled;
 		}
 	}
-
-	if (flag & LyXFunc::Disabled)
-		return flag;
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
@@ -409,6 +412,20 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = ! owner->view()->text->cursor.par()->table;
 		break;
 #endif
+	case LFUN_VC_REGISTER:
+		disable = buf->lyxvc.inUse();
+		break;
+	case LFUN_VC_CHECKIN:
+		disable = !buf->lyxvc.inUse() || buf->isReadonly();
+		break;
+	case LFUN_VC_CHECKOUT:
+		disable = !buf->lyxvc.inUse() || !buf->isReadonly();
+		break;
+	case LFUN_VC_REVERT:
+	case LFUN_VC_UNDO:
+	case LFUN_VC_HISTORY:
+		disable = !buf->lyxvc.inUse();
+		break;
 	default:
 		break;
         }
@@ -1046,6 +1063,42 @@ string LyXFunc::Dispatch(int ac,
 		owner->getDialogs()->showCopyright();
 		break;
 
+	case LFUN_HELP_CREDITS:
+		owner->getDialogs()->showCredits();
+		break;
+
+        case LFUN_HELP_OPEN: {
+		string arg = argument;
+		if (arg.empty()) {
+			setErrorMessage(N_("Missing argument"));
+			break;
+		}
+		ProhibitInput(owner->view());
+		string fname = i18nLibFileSearch("doc", arg, "lyx");
+		if (fname.empty()) {
+			lyxerr << "LyX: unable to find documentation file `"
+			       << arg << "'. Bad installation?" << endl;
+			AllowInput(owner->view());
+			break;
+		}
+		owner->getMiniBuffer()->Set(_("Opening help file"),
+					    MakeDisplayPath(fname),"...");
+		owner->view()->buffer(bufferlist.loadLyXFile(fname,false));
+		AllowInput(owner->view());
+		break;
+        }
+
+	case LFUN_HELP_VERSION: 
+		ProhibitInput(owner->view());
+		fl_show_message((string(_("LyX Version ")) + LYX_VERSION 
+				 + _(" of ") + LYX_RELEASE).c_str(),
+				(_("Library directory: ")
+				 + MakeDisplayPath(system_lyxdir)).c_str(),
+				(_("User directory: ") 
+				 + MakeDisplayPath(user_lyxdir)).c_str());
+		AllowInput(owner->view());
+		break;
+
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
 	{
@@ -1089,6 +1142,11 @@ string LyXFunc::Dispatch(int ac,
 	}
 	
 	// --- buffers ----------------------------------------
+
+        case LFUN_SWITCHBUFFER:
+                owner->view()->buffer(bufferlist.getBuffer(argument));
+		break;
+
 
 	case LFUN_FILE_INSERT:
 	{
@@ -1174,10 +1232,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 			owner->view()->text->
 				SetLayout(owner->view(), layout.second);
-			owner->getToolbar()->combox->
-				select(owner->view()->
-				       text->cursor.par()->
-				       GetLayout() + 1);
+			owner->setLayout(layout.second);
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			owner->view()->setState();
 		}
@@ -1221,7 +1276,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_DROP_LAYOUTS_CHOICE:
-		owner->getToolbar()->combox->Show();
+		owner->getToolbar()->openLayoutList();
 		break;
 
 	case LFUN_LANGUAGE:
@@ -1348,7 +1403,11 @@ string LyXFunc::Dispatch(int ac,
 	break;
 		
 	case LFUN_MENU_OPEN_BY_NAME:
+#ifdef NEW_MENUBAR
+		owner->getMenubar()->openByName(argument);
+#else
 		owner->getMenus()->openByName(argument);
+#endif
 		break; // RVDK_PATCH_5
 		
 	case LFUN_SPELLCHECK:
@@ -2290,15 +2349,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_PUSH_TOOLBAR:
 	{
 		int nth = strToInt(argument);
-		if (lyxerr.debugging(Debug::TOOLBAR)) {
-			lyxerr << "LFUN_PUSH_TOOLBAR: argument = `"
-			       << argument << "'\n"
-			       << "LFUN_PUSH_TOOLBAR: nth = `"
-			       << nth << "'" << endl;
-		}
-		
 		if (nth <= 0) {
-			LyXBell();
 			setErrorMessage(N_("Push-toolbar needs argument > 0"));
 		} else {
 			owner->getToolbar()->push(nth);
@@ -2308,7 +2359,7 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_ADD_TO_TOOLBAR:
 	{
-		if (lyxerr.debugging(Debug::TOOLBAR)) {
+		if (lyxerr.debugging(Debug::GUI)) {
 			lyxerr << "LFUN_ADD_TO_TOOLBAR:"
 				"argument = `" << argument << '\'' << endl;
 		}
@@ -2316,7 +2367,6 @@ string LyXFunc::Dispatch(int ac,
 		//lyxerr <<string("Argument: ") + argument);
 		//lyxerr <<string("Tmp     : ") + tmp);
 		if (tmp.empty()) {
-			LyXBell();
 			setErrorMessage(N_("Usage: toolbar-add-to <LyX command>"));
 		} else {
 			owner->getToolbar()->add(argument, false);

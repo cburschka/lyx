@@ -16,7 +16,6 @@
 #pragma interface
 #endif
 
-#include "ToolbarDefaults.h"
 #include "bufferparams.h"
 
 /// This contains the runtime configuration of LyX
@@ -38,9 +37,9 @@ public:
 	///
 	int ReadBindFile(string const & name = "cua");
 	///
-	ToolbarDefaults toolbardefaults;
-	///
 	string bind_file;
+	///
+	string ui_file;
 	///
 	string printer;
 	///

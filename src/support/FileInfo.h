@@ -12,6 +12,10 @@
 #ifndef FILE_INFO_H
 #define FILE_INFO_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include <ctime>
 
 #include <unistd.h>

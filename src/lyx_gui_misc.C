@@ -11,6 +11,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <cerrno>
 #include "lyx_gui_misc.h"
 #include "BufferView.h"

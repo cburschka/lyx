@@ -12,6 +12,10 @@
 #ifndef LYXCURSOR_H
 #define LYXCURSOR_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "lyxparagraph.h"
 
 struct Row;

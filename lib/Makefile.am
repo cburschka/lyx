@@ -17,17 +17,19 @@ LAYOUT = layouts/*.layout layouts/*.inc
 LYXSCRIPTS = scripts/*
 TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls
+UI = ui/*.ui
 
 LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(LYXSCRIPTS)
+	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI) $(LYXSCRIPTS)
 
 LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(LYXSCRIPTS)
+	$(LAYOUT) $(TEMPL) $(UI) $(TEXSUPPORT) $(LYXSCRIPTS)
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
                textclass.lst packages.lst external_templates
 
-LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts templates tex
+LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts \
+             templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 	external_templates $(LYXLIBDIRS) build-listerrors

@@ -16,6 +16,10 @@
 #ifndef BMTABLE_H
 #define BMTABLE_H 
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include FORMS_H_LOCATION
 
 #if defined(__cplusplus)

@@ -70,8 +70,7 @@
 \bind "S-C-quotedbl"           "quote-insert"
 
 \bind "C-x a"                  "buffer-auto-save"
-#\bind "C-x b"                  "buffer-previous"
-\bind "C-x c"                  "lyx-quit"
+#\bind "C-x b"                 "buffer-previous"
 \bind "C-x d"                  "buffer-new"
 \bind "C-x g"                  "buffer-view-ps"
 \bind "C-x k"                  "buffer-close"

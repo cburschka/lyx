@@ -267,56 +267,12 @@
 #\set_color mathlines yellow
 
 #
-# TOOLBAR SECTION ########################################################
+# UI SECTION ########################################################
 #
 
-# Setup your favorite Toolbar here:
-# Only three commands are allowed inside the begin_toolbar and end_toolbar
-# directives: 
-#   \add <action> [<parameter>] adds an icon to the toolbar performing
-#          "<action> <parameter>"
-#      Examples:
-#      \add font-size small
-#      \add set-emph
-#
-#   \layouts adds the layouts combo-box to the toolbar
-#
-#   \separator adds some spacing to the toolbar
-#
-# These actions have icons (please give us more :-):
-#   buffer-open, buffer-close, buffer-print, buffer-write, font-emph,
-#   font-noun, font-free, footnote-insert, depth-next, copy, cut, paste,
-#   tex-mode, math-mode, marginpar-insert, figure-insert, table-insert,
-#   melt, lyx-quit, buffer-export ascii|latex, font-bold, font-sans, 
-#   buffer-typeset, buffer-view, buffer-view-ps, symbol_insert [parameter]
-#
-#  All other lyx commands will get a "unknown" icon.
-#
-# This is the default toolbar:
-#\begin_toolbar
-#\layouts
-#\add buffer-open
-#\add buffer-write
-#\add buffer-print
-#\separator
-#\add cut
-#\add copy
-#\add paste
-#\separator
-#\add font-emph
-#\add font-noun
-#\add font-free
-#\separator
-#\add footnote-insert
-#\add marginpar-insert
-#\add depth-next
-#\separator
-#\add tex-mode
-#\add math-mode
-#\separator
-#\add figure-insert
-#\add table-insert
-#\end_toolbar
+# Choose your UI (user interface) definition here. The .ui files are in the 
+# directory "lib/ui" and contains the definition of the menu and the toolbar.
+#\ui_file "default"
 
 #
 # PRINTER SECTION ########################################################

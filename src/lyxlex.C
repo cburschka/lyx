@@ -1,8 +1,15 @@
-//  Generalized simple lexical analizer.
-//  It can be used for simple syntax parsers, like lyxrc,
-//  texclass and others to come.   [asierra30/03/96]
-//
-//   Copyright 1996 Lyx Team.
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1996-2000 The LyX Team.
+ *
+ *   Generalized simple lexical analizer.
+ *   It can be used for simple syntax parsers, like lyxrc,
+ *   texclass and others to come.   [asierra30/03/96]
+ *
+ * ====================================================== */
 
 #include <config.h>
 

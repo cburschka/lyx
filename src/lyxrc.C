@@ -47,8 +47,7 @@ extern kb_keymap * toplevel_keymap;
 
 
 enum LyXRCTags {
-	RC_BEGINTOOLBAR = 1,
-	RC_FONT_ENCODING,
+	RC_FONT_ENCODING = 1,
 	RC_PRINTER,
 	RC_PRINT_COMMAND,
 	RC_PRINTEVENPAGEFLAG,
@@ -98,6 +97,7 @@ enum LyXRCTags {
 	RC_SERVERPIPE,
 	RC_INPUT,
 	RC_BINDFILE,
+	RC_UIFILE,
 	RC_KBMAP,
 	RC_KBMAP_PRIMARY,
 	RC_KBMAP_SECONDARY,
@@ -169,7 +169,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\auto_region_delete", RC_AUTOREGIONDELETE },
 	{ "\\autosave", RC_AUTOSAVE },
 	{ "\\backupdir_path", RC_BACKUPDIR_PATH },
-	{ "\\begin_toolbar", RC_BEGINTOOLBAR },
 	{ "\\bind", RC_BIND },
 	{ "\\bind_file", RC_BINDFILE },
 	{ "\\build_command", RC_BUILD_COMMAND },
@@ -257,6 +256,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\spell_command", RC_SPELL_COMMAND },
 	{ "\\tempdir_path", RC_TEMPDIRPATH },
 	{ "\\template_path", RC_TEMPLATEPATH },
+	{ "\\ui_file", RC_UIFILE },
 	{ "\\use_alt_language", RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", RC_USE_ESC_CHARS },
 	{ "\\use_gui", RC_USE_GUI },
@@ -282,6 +282,7 @@ LyXRC::LyXRC()
 
 
 void LyXRC::setDefaults() {
+	ui_file = "default";
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
 	printer = GetEnv("PRINTER");
@@ -460,10 +461,10 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 			
-		case RC_BEGINTOOLBAR:
-			// this toolbar should be changed to be a completely
-			// non gui toolbar. (Lgb)
-			toolbardefaults.read(lexrc);
+		case RC_UIFILE: 
+			if (lexrc.next()) {
+				ui_file = lexrc.GetString();
+			}
 			break;
 			
 		case RC_KBMAP:
@@ -1145,8 +1146,8 @@ void LyXRC::output(ostream & os) const
 		// bindings is not written to the preferences file.
 	case RC_BINDFILE:
 		// bind files are not done here.
-	case RC_BEGINTOOLBAR:
-		// Toolbar is not written here (yet).
+	case RC_UIFILE:
+		os << "\\ui_file \"" << ui_file << "\"\n";
 	//case RC_SET_COLOR:
 		// color bindings not written to preference file.
 		// And we want to be warned about that. (Lgb)

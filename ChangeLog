@@ -1,3 +1,79 @@
+2000-07-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (writeFileAscii): Define actcell as an int instead
+	of int*.
+
+2000-07-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Lot of files: add pragma interface/implementation.
+	
+	* src/lyx_main.C (ReadUFile): new method. Read the UI file.
+
+	* lib/ui/default.ui: new file (ans new directory). Contains the
+	default menu and toolbar.
+
+	* src/lyxrc.[Ch]: new variable ui_file. Move toolbardefaults to
+	global space. Toolbars are now read (as menus) in ui files. 
+
+	* src/debug.C: change Debug::TOOLBAR to Debug::GUI.
+
+	* src/lyxfunc.C (getStatus): do not exit immediately if a command
+	is disabled because the document is read-only. We want to have the
+	toggle state of the function anyway.
+	(getStatus): add code for LFUN_VC* functions (mimicking what is
+	done in old-style menus)
+	
+	* src/lyxfunc.C (Dispatch): news functions LFUN_SWITCHBUFFER,
+	LFUN_HELP_CREDITS, LFUN_HELP_VERSION, LFUN_HELP_OPEN.
+
+	* src/LyXView.[Ch]: add code for the NEW_MENUBAR define.
+	* src/BufferView_pimpl.C: ditto. 
+	* src/lyxfunc.C: ditto. 	
+
+	* src/LyXView.h: add a define NEW_MENUBAR (commented out by
+	default). This replaces old-style menus by new ones.
+	
+	* src/MenuBackend.[Ch]: new classes MenuBackend, Menu and
+	MenuItem. Contain the data structure of a menu.
+
+	* src/insets/insettext.C: use LyXView::setLayout instead of
+	accessing directly the toolbar combox.
+	* src/lyxfunc.C (Dispatch): ditto.
+
+	* src/LyXView.C (setLayout): new method, which just calls
+	Toolbar::setLayout(). 
+	(updateLayoutChoice): move part of this method in Toolbar.
+
+	* src/toolbar.[Ch]: removed.
+	
+	* src/frontend/xforms/Toolbar_pimpl.[Ch]: new files. The xforms
+	implementation the toolbar. 
+
+	* src/frontend/Toolbar.[Ch]: new files. The abstract interface of
+	the toolbar. It might make sense to merge it with ToolbarDefaults
+	later. 
+	(setLayout): new function. 
+	(updateLayoutList): ditto.
+	(openLayoutList): ditto.
+	
+	* src/frontend/xforms/Toolbar_pimpl.[Ch]: new files. Contain the
+	xforms implementation of the toolbar.
+	(get_toolbar_func): comment out, since I do not
+	know what it is good for. 
+	
+	* src/ToolbarDefaults.h: Add the ItemType enum.
+
+	* src/support/StrPool.[Ch]: new class. Acts as a reference holder
+	for a list of allocated C strings. Used in Menubar xforms
+	implementation to avoid memory leaks.
+
+	* src/support/lstrings.[Ch] (uppercase): new version taking and
+	returning a char.
+	(lowercase): ditto.
+
+	* lib/bind/xemacs.bind: remove bogus binding for lyx-quit.
+	* lib/bind/emacs.bind: ditto.
+
 2000-07-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/toolbar.h: include commandtags.h instead of lyxfunc.h,
@@ -23,7 +99,7 @@
 	* src/paragraph.C (SimpleTeXOnePar): NEW_INSETS: move some #ifdef
 	to correct place.
 
-	* src/buffer.C (parseSingleLyXformat2Token: NEW_INSETS: fix the
+	* src/buffer.C (parseSingleLyXformat2Token): NEW_INSETS: fix the
 	planemet in reading of old style floats, fix the \end_deeper
 	problem when reading old style floats. 
 

@@ -8,6 +8,10 @@
  *
  * ====================================================== */
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <config.h>
 
 #ifdef HAVE_XOPENIM
@@ -22,6 +26,7 @@
 #endif
 #include <clocale>
 
+#include "lyxlookup.h"
 #include "debug.h"
 #include "lyxrc.h"
 

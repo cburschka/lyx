@@ -1,4 +1,18 @@
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ * ====================================================== */
+
 #include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include <algorithm>
 
@@ -141,7 +155,17 @@ double strToDbl(string const & str)
 	}
 }
 
+/// 
+char lowercase(char c) 
+{ 
+	return tolower(c); 
+}
 
+/// 
+char uppercase(char c) 
+{ 
+	return toupper(c); 
+}
 
 string lowercase(string const & a)
 {
@@ -150,7 +174,7 @@ string lowercase(string const & a)
 	string::iterator result = tmp.begin();
 	for (string::iterator first = tmp.begin();
 	     first != tmp.end(); ++first, ++result) {
-		*result = tolower(*first);
+		*result = lowercase(*first);
 	}
 //#else
 //	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
@@ -166,7 +190,7 @@ string uppercase(string const & a)
 	string::iterator result = tmp.begin();
 	for (string::iterator first = tmp.begin();
 	     first != tmp.end(); ++first, ++result) {
-		*result = toupper(*first);
+		*result = uppercase(*first);
 	}
 //#else
 //	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);

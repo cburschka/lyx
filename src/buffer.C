@@ -1292,7 +1292,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 	int j;
 	int ltype = 0;
 	int ltype_depth = 0;
-	int * actcell = 0;
+	int actcell = 0;
 	int actpos = 0;
 #ifndef NEW_TABULAR
 	int h;

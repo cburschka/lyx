@@ -16,22 +16,17 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "toolbar.h"
+#pragma implementation
 #endif
 
-#include "lyx_main.h"
-#include "lyx_gui_misc.h"
-#include "lyx.h"
-#include "toolbar.h"
+#include "Toolbar_pimpl.h"
 #include "lyxfunc.h"
-#include "lyxlex.h"
 #include "debug.h"
-#include "combox.h"
 #include "LyXView.h"
+#include "BufferView.h"
+#include "buffer.h"
 #include "LyXAction.h"
-#include "support/lstrings.h"
 #include "support/filetools.h"
-#include "lyxrc.h"
 
 using std::endl;
 
@@ -40,16 +35,24 @@ extern void LayoutsCB(int, void *);
 extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 
+// some constants
+const int standardspacing = 2; // the usual space between items
+const int sepspace = 6; // extra space
+const int buttonwidth = 30; // the standard button width
+const int height = 30; // the height of all items in the toolbar
 
-Toolbar::toolbarItem::toolbarItem()
-{
+Toolbar::Pimpl::toolbarItem::toolbarItem() {
 	action = LFUN_NOACTION;
 	icon = 0;
 }
 
 
-void Toolbar::toolbarItem::clean()
-{
+Toolbar::Pimpl::toolbarItem::~toolbarItem() {
+	clean();
+}
+
+
+void Toolbar::Pimpl::toolbarItem::clean() {
 	if (icon) {
 		fl_delete_object(icon);
 		fl_free_object(icon);
@@ -58,16 +61,9 @@ void Toolbar::toolbarItem::clean()
 }
 
 
-Toolbar::toolbarItem::~toolbarItem()
-{
-	clean();
-}
-
-
-Toolbar::toolbarItem &
-Toolbar::toolbarItem::operator=(Toolbar::toolbarItem const & ti)
-{
-	// do we have to check icon and IsBitmap too?
+Toolbar::Pimpl::toolbarItem & 
+Toolbar::Pimpl::toolbarItem::operator=(const toolbarItem & ti) {
+	// do we have to check icon too?
 	action = ti.action;
 	icon = 0; // locally we need to get the icon anew
 	
@@ -75,29 +71,21 @@ Toolbar::toolbarItem::operator=(Toolbar::toolbarItem const & ti)
 }
 
 
-Toolbar::Toolbar(LyXView * o, int x, int y)
+
+Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
 	: owner(o), sxpos(x), sypos(y)
 {
 	combox = 0;
 #if FL_REVISION < 89
 	bubble_timer = 0;
 #endif
-	reset();
-
-	// extracts the default toolbar actions from LyXRC
-	for (ToolbarDefaults::const_iterator cit =
-		     lyxrc.toolbardefaults.begin();
-	     cit != lyxrc.toolbardefaults.end(); ++cit) {
-		add((*cit));
-		lyxerr[Debug::TOOLBAR] << "tool action: "
-				       << (*cit) << endl;
-	}
 }
 
 
 #if FL_REVISION < 89
 // timer-cb for bubble-help (Matthias)
-void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
+static 
+void BubbleTimerCB(FL_OBJECT *, long data)
 {
 	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
 	// The trick we use to get the help text is to read the
@@ -111,26 +99,27 @@ void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
 
 extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 {
-	Toolbar::BubbleTimerCB(ob, data);
+	BubbleTimerCB(ob, data);
 }
 
 
 // post_handler for bubble-help (Matthias)
-int Toolbar::BubblePost(FL_OBJECT *ob, int event,
+static
+int BubblePost(FL_OBJECT *ob, int event,
 			FL_Coord /*mx*/, FL_Coord /*my*/,
 			int /*key*/, void */*xev*/)
 {
-	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_vdata);
+	FL_OBJECT * bubble_timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
 	
 	// We do not test for empty help here, since this can never happen
 	if(event == FL_ENTER){
-		fl_set_object_callback(t->bubble_timer,
+		fl_set_object_callback(bubble_timer,
 				       C_Toolbar_BubbleTimerCB,
 				       reinterpret_cast<long>(ob));
-		fl_set_timer(t->bubble_timer, 1);
+		fl_set_timer(bubble_timer, 1);
 	}
 	else if(event != FL_MOTION){
-		fl_set_timer(t->bubble_timer, 0);
+		fl_set_timer(bubble_timer, 0);
 		fl_hide_oneliner();
 	}
 	return 0;
@@ -141,12 +130,12 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 				    FL_Coord /*mx*/, FL_Coord /*my*/, 
 				    int key, void * xev)
 {
-	return Toolbar::BubblePost(ob, event, 0, 0, key, xev);
+	return BubblePost(ob, event, 0, 0, key, xev);
 }
 #endif
 
 
-void Toolbar::activate()
+void Toolbar::Pimpl::activate()
 {
 	ToolbarList::const_iterator p = toollist.begin();
 	for (; p != toollist.end(); ++p) {
@@ -157,7 +146,7 @@ void Toolbar::activate()
 }
 
 
-void Toolbar::deactivate()
+void Toolbar::Pimpl::deactivate()
 {
 	ToolbarList::const_iterator p = toollist.begin();
 	for (; p != toollist.end(); ++p) {
@@ -167,7 +156,7 @@ void Toolbar::deactivate()
 	}
 }
 
-void Toolbar::update()
+void Toolbar::Pimpl::update()
 {
 	ToolbarList::const_iterator p = toollist.begin();
 	for (; p != toollist.end(); ++p) {
@@ -199,22 +188,67 @@ void Toolbar::update()
 }
 
 
-void Toolbar::ToolbarCB(FL_OBJECT * ob, long ac)
+void Toolbar::Pimpl::setLayout(int layout) {
+	if (combox)
+		combox->select(layout+1);
+}
+
+
+void Toolbar::Pimpl::updateLayoutList(bool force)
 {
-	Toolbar * t = static_cast<Toolbar*>(ob->u_vdata);
+	// Update the layout display
+	if (!combox) return;
+
+	// If textclass is different, we need to update the list
+	if (combox->empty() || force) {
+		combox->clear();
+		LyXTextClass const & tc =
+			textclasslist.TextClass(owner->buffer()->
+						params.textclass);
+		for (LyXTextClass::const_iterator cit = tc.begin();
+		     cit != tc.end(); ++cit) {
+			if ((*cit).obsoleted_by().empty())
+				combox->addline((*cit).name().c_str());
+			else
+				combox->addline(("@N" + (*cit).name()).c_str());
+		}
+	}
+	// we need to do this.
+	combox->Redraw();
+}
+
+void Toolbar::Pimpl::clearLayoutList()
+{
+	if (combox) {
+		combox->clear();
+		combox->Redraw();
+	}
+}
+
+void Toolbar::Pimpl::openLayoutList()
+{
+	if (combox)
+		combox->Show();
+}
+
+static
+void ToolbarCB(FL_OBJECT * ob, long ac)
+{
+	LyXView * owner = static_cast<LyXView *>(ob->u_vdata);
 	
-	string res = t->owner->getLyXFunc()->Dispatch(int(ac));
+	string res = owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
-		lyxerr[Debug::TOOLBAR] << res << endl;
+		lyxerr[Debug::GUI] << res << endl;
 }
 
 
 extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 {
-	Toolbar::ToolbarCB(ob, data);
+	ToolbarCB(ob, data);
 }
 
-
+#if 0
+// What are we supposed to do with that??
 int Toolbar::get_toolbar_func(string const & func)
 {
 	int action = lyxaction.LookupFunc(func.c_str());
@@ -227,6 +261,8 @@ int Toolbar::get_toolbar_func(string const & func)
 	}
 	return action;
 }
+#endif
+
 
 static
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
@@ -234,8 +270,6 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 	kb_action act;
 
 	if (lyxaction.isPseudoAction(action)) {
-		lyxerr[Debug::TOOLBAR] << "Pseudo action " << action << endl;
-
 		act = lyxaction.retrieveActionArg(action, arg);
 		name = lyxaction.getActionName(act);
 		xpm_name = subst(name + ' ' + arg, ' ','_');
@@ -245,20 +279,17 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 		xpm_name = name;
 	}
 
-	lyxerr[Debug::TOOLBAR] << "Icon name for action " << action
-			       << " is `" << xpm_name << "'" << endl;
-	
 	string fullname = LibFileSearch("images", xpm_name, "xpm");
 
 	if (!fullname.empty()) {
-		lyxerr[Debug::TOOLBAR] << "Full icon name is `" 
+		lyxerr[Debug::GUI] << "Full icon name is `" 
 				       << fullname << "'" << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 		return;
 	}
 
 	if (act == LFUN_INSERT_MATH && !arg.empty()) {
-		lyxerr[Debug::TOOLBAR] << "Using mathed-provided icon" << endl;
+		lyxerr[Debug::GUI] << "Using mathed-provided icon" << endl;
 		char const ** pixmap = get_pixmap_from_symbol(arg.c_str(),
 							buttonwidth,
 							height);
@@ -269,13 +300,13 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
-		lyxerr[Debug::TOOLBAR] << "Using default `unknown' icon" 
+		lyxerr[Debug::GUI] << "Using default `unknown' icon" 
 				       << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 	}
 }
 
-void Toolbar::set(bool doingmain)
+void Toolbar::Pimpl::set(bool doingmain)
 {
 	// we shouldn't set if we have not cleaned
 	if (!cleaned) return;
@@ -297,10 +328,13 @@ void Toolbar::set(bool doingmain)
 	ToolbarList::iterator item = toollist.begin();
 	for (; item != toollist.end(); ++item) {
 		switch(item->action){
-		case TOOL_SEPARATOR:
+		case ToolbarDefaults::SEPARATOR:
 			xpos += sepspace;
 			break;
-		case TOOL_LAYOUTS:
+		case ToolbarDefaults::NEWLINE:
+			// Not supported yet.
+			break;
+		case ToolbarDefaults::LAYOUTS:
 			xpos += standardspacing;
 			if (!combox)
 				combox = new Combox(FL_COMBOX_DROPLIST);
@@ -332,10 +366,11 @@ void Toolbar::set(bool doingmain)
 			fl_set_object_helper(obj, help.c_str());	
 #else
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
+			obj->u_cdata = reinterpret_cast<char *>(bubble_timer);
 #endif
 
-			// The toolbar that this object belongs too.
-			obj->u_vdata = this;
+			// The view that this object belongs to.
+			obj->u_vdata = owner;
 
 			setPixmap(obj, item->action, buttonwidth, height);
 			// we must remember to update the positions
@@ -363,7 +398,7 @@ void Toolbar::set(bool doingmain)
 }
 
 
-void Toolbar::add(int action, bool doclean)
+void Toolbar::Pimpl::add(int action, bool doclean)
 {
 	if (doclean && !cleaned) clean();
 
@@ -401,7 +436,7 @@ void Toolbar::add(int action, bool doclean)
 }
 
 
-void Toolbar::clean()
+void Toolbar::Pimpl::clean()
 {
 	//reset(); // I do not understand what this reset() is, anyway
 
@@ -413,7 +448,7 @@ void Toolbar::clean()
 	//toollist.clear();
 	toollist.erase(toollist.begin(), toollist.end());
 
-	lyxerr[Debug::TOOLBAR] << "Combox: " << combox << endl;
+	lyxerr[Debug::GUI] << "Combox: " << combox << endl;
 	if (combox) {
 		delete combox;
 		combox = 0;
@@ -421,19 +456,18 @@ void Toolbar::clean()
 
 	if (owner)
 		fl_unfreeze_form(owner->getForm());
-	lyxerr[Debug::TOOLBAR] << "toolbar cleaned" << endl;
+	lyxerr[Debug::GUI] << "toolbar cleaned" << endl;
 	cleaned = true;
 }
 
 
-void Toolbar::push(int nth)
+void Toolbar::Pimpl::push(int nth)
 {
-	lyxerr[Debug::TOOLBAR] << "Toolbar::push: trying to trigger no `"
+	lyxerr[Debug::GUI] << "Toolbar::push: trying to trigger no `"
 			       << nth << '\'' << endl;
 	
 	if (nth <= 0 || nth >= int(toollist.size())) {
 		// item nth not found...
-		LyXBell();
 		return;
 	}
 
@@ -441,32 +475,14 @@ void Toolbar::push(int nth)
 }
 
 
-void Toolbar::add(string const & func, bool doclean)
-{
-	int tf = lyxaction.LookupFunc(func);
-
-	if (tf == -1) {
-		lyxerr << "Toolbar::add: no LyX command called`"
-		       << func << "'exists!" << endl; 
-	} else {
-		add(tf, doclean);
-	}
-}
-
-
-void Toolbar::reset() 
+void Toolbar::Pimpl::reset() 
 {
 	//toollist = 0; // what is this supposed to do?
 	cleaned = false;
 	lightReset();
 }
 
-//  void Toolbar::lightReset()
-//  {
-//  	standardspacing = 2; // the usual space between items
-//  	sepspace = 6; // extra space
-//  	xpos = sxpos - standardspacing;
-//  	ypos = sypos;
-//  	buttonwidth = 30; // the standard button width
-//  	height = 30; // the height of all items in the toolbar
-//  }
+void Toolbar::Pimpl::lightReset() {
+	xpos = sxpos - standardspacing;
+	ypos = sypos;
+}

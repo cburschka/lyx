@@ -38,7 +38,6 @@
 #include "CutAndPaste.h"
 #include "font.h"
 #include "minibuffer.h"
-#include "toolbar.h"
 #include "LColor.h"
 #include "support/textutils.h"
 #include "support/LAssert.h"
@@ -420,7 +419,7 @@ void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
 	TEXT(bv)->selection)
 	    bv->updateInset(this, mark_dirty);
     if (old_par != cpar(bv)) {
-	    bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
+	    bv->owner()->setLayout(cpar(bv)->GetLayout());
 	    old_par = cpar(bv);
     }
 }
@@ -467,11 +466,10 @@ void InsetText::InsetUnlock(BufferView * bv)
     TEXT(bv)->selection = 0;
     UpdateLocal(bv, CLEAR_FRAME, false);
     if (owner())
-	    bv->owner()->getToolbar()->combox->
-		    select(owner()->getLyXText(bv)->cursor.par()->GetLayout()+1);
+	    bv->owner()->setLayout(owner()->getLyXText(bv)
+				    ->cursor.par()->GetLayout());
     else
-	    bv->owner()->getToolbar()->combox->select(bv->text->cursor.par()->
-						      GetLayout()+1);
+	    bv->owner()->setLayout(bv->text->cursor.par()->GetLayout());
 }
 
 
@@ -594,7 +592,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 					   y+TEXT(bv)->first+insetAscent);
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
-	bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
+	bv->owner()->setLayout(cpar(bv)->GetLayout());
 	old_par = cpar(bv);
     }
 }
@@ -866,7 +864,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	if (cur_layout != layout.second) {
 	    cur_layout = layout.second;
 	    TEXT(bv)->SetLayout(bv, layout.second);
-	    bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
+	    bv->owner()->setLayout(cpar(bv)->GetLayout());
 	    UpdateLocal(bv, CURSOR_PAR, true);
 	}
     }

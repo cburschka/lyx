@@ -21,12 +21,14 @@
 #include "TextCache.h"
 #include "bufferlist.h"
 #include "insets/insetbib.h"
-#include "menus.h"
 #include "lyx_gui_misc.h"
 #include "lyxrc.h"
 #include "intl.h"
 #include "support/LAssert.h"
 #include "frontends/Dialogs.h"
+#ifndef NEW_MENUBAR
+# include "menus.h"
+#endif
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -44,6 +46,7 @@ bool selection_possible = false;
 extern BufferList bufferlist;
 extern char ascii_type;
 
+extern "C" void TimerCB(FL_OBJECT *, long); 
 extern void sigchldhandler(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
@@ -130,7 +133,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		buffer_->addUser(bv_);
-		owner_->getMenus()->showMenus();
 		// If we don't have a text object for this, we make one
 		if (bv_->text == 0) {
 			resizeCurrentBuffer();
@@ -139,12 +141,21 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			updateScrollbar();
 		}
 		bv_->text->first = screen_->TopCursorVisible(bv_->text);
+#ifdef NEW_MENUBAR
+		owner_->updateMenubar();
+#else
+		owner_->getMenus()->showMenus();
+#endif
 		redraw();
 		owner_->getDialogs()->updateBufferDependent();
 		bv_->insetWakeup();
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
+#ifdef NEW_MENUBAR
+		owner_->updateMenubar();
+#else
 		owner_->getMenus()->hideMenus();
+#endif
 		updateScrollbar();
 		workarea_->redraw();
 

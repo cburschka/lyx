@@ -15,6 +15,10 @@
 #ifndef LYX_MAIN_H
 #define LYX_MAIN_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include <csignal>
 
 #include "LString.h"
@@ -83,6 +87,8 @@ private:
 	void queryUserLyXDir(bool explicit_userdir);
 	///
         void ReadRcFile(string const & name);
+	/// Read the ui file `name'
+	void ReadUIFile(string const & name);
         ///
 	bool easyParse(int * argc, char * argv[]);
 	//@}

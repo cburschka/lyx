@@ -1,7 +1,22 @@
 // -*- C++ -*-
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ *
+ * ====================================================== */
+
 
 #ifndef COUNTERS_H
 #define COUTNERS_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include <map>
 #include <sigc++/signal_system.h>

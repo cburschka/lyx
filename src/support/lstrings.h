@@ -8,6 +8,10 @@
 #ifndef LSTRINGS_H
 #define LSTRINGS_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include <cstring>
 #include <cctype>
 
@@ -53,6 +57,12 @@ bool isStrDbl(string const & str);
 
 ///
 double strToDbl(string const & str);
+
+/// 
+char lowercase(char c);
+
+/// 
+char uppercase(char c);
 
 ///
 string lowercase(string const &);

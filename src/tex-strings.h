@@ -1,7 +1,20 @@
 // -*- C++ -*-
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ * ====================================================== */
 
 #ifndef TEX_STRINGS
 #define TEX_STRINGS
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 // this file should perhaps be split into even smaler parts
 

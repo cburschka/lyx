@@ -1,18 +1,20 @@
 // -*- C++ -*-
-/*
-  This file is part of
-  ======================================================
-  
-  LyX, The Document Processor
-  
-  Copyright 1995 Matthias Ettrich
-  copyright 1995-2000 The LyX Team.
-  
-  ======================================================
-  */
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ * ====================================================== */
 
 #ifndef LYX_STY_H
 #define LYX_STY_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "LString.h"
 

@@ -10,6 +10,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "encoding.h"
 
 Uchar tab_iso8859_1[256] = {

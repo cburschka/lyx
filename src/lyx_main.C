@@ -13,6 +13,10 @@
 #include <cstdlib>
 #include <csignal>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "version.h"
 #include "lyx_main.h"
 #include "lyx_gui.h"
@@ -31,6 +35,11 @@
 #include "layout.h"
 #include "gettext.h"
 #include "kbmap.h"
+#ifdef NEW_MENUBAR
+# include "MenuBackend.h"
+#endif
+#include "ToolbarDefaults.h"
+#include "lyxlex.h"
 
 using std::endl;
 
@@ -89,8 +98,6 @@ LyX::LyX(int * argc, char * argv[])
 		}
 	}
 	
-
-
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
 	init(argc, argv, gui);
@@ -403,6 +410,8 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	if (!lyxrc.hasBindFile)
 		lyxrc.ReadBindFile();
 
+	// Read menus
+	ReadUIFile(lyxrc.ui_file);
 
 	// Bind the X dead keys to the corresponding LyX functions if
 	// necessary. 
@@ -572,6 +581,65 @@ void LyX::ReadRcFile(string const & name)
 		}
 	} else
 	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+}
+
+
+// Read the ui file `name'
+void LyX::ReadUIFile(string const & name)
+{
+	enum Uitags {
+		ui_menuset = 1,
+		ui_toolbar,
+		ui_last
+	};
+
+	struct keyword_item uitags[ui_last-1] = {
+		{ "menuset", ui_menuset },
+		{ "toolbar", ui_toolbar }
+	};
+
+	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
+	
+	string ui_path = LibFileSearch("ui", name, "ui");
+
+	if (ui_path.empty()) {
+	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		return;
+	}
+	
+	lyxerr[Debug::INIT] << "Found " << name
+			    << " in " << ui_path << endl;
+	LyXLex lex(uitags, ui_last - 1);
+	lex.setFile(ui_path);
+	if (lyxerr.debugging(Debug::PARSER))
+		lex.printTable(lyxerr);
+
+	while (lex.IsOK()) {
+		switch(lex.lex()) {
+		case ui_menuset: 
+#ifdef NEW_MENUBAR
+			menubackend.read(lex);
+			break;
+#else
+			// Skip any menu definition and fall over to toolbar.
+			// This is a hack, but it is supposed to go away...
+			do {
+				lex.next();
+				if (!lex.IsOK()) return;
+			}
+			while (lex.lex() != ui_toolbar);
+#endif
+
+		case ui_toolbar:
+			toolbardefaults.read(lex);
+			break;
+
+		default:
+			lex.printError("LyX::ReadUFile: "
+				       "Unknown menu tag: `$$Token'");
+			break;
+		}
+	}
 }
 
 

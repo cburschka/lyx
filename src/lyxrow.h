@@ -12,6 +12,10 @@
 #ifndef LYXROW_H
 #define LYXROW_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "lyxparagraph.h"
 
 ///

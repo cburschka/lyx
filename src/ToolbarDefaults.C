@@ -1,15 +1,30 @@
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
+ *
+ *
+ * ====================================================== */
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <config.h>
 
 #include "ToolbarDefaults.h"
 #include "LyXAction.h"
-#include "toolbar.h"
+#include "lyxlex.h"
 #include "debug.h"
 #include "lyxlex.h"
 
 using std::endl;
 
 extern LyXAction lyxaction;
-
+ToolbarDefaults toolbardefaults;
 
 ToolbarDefaults::ToolbarDefaults()
 {
@@ -22,34 +37,33 @@ void ToolbarDefaults::add(int action)
 	defaults.push_back(action);
 }
 
-
 void ToolbarDefaults::init() 
 {
-	add(Toolbar::TOOL_LAYOUTS);
+	add(LAYOUTS);
 	add(LFUN_MENUOPEN);
 	//add(LFUN_CLOSEBUFFER);
 	add(LFUN_MENUWRITE);
 	add(LFUN_MENUPRINT);
-	add(Toolbar::TOOL_SEPARATOR);
+	add(SEPARATOR);
 
 	add(LFUN_CUT);
 	add(LFUN_COPY);
 	add(LFUN_PASTE);
-	add(Toolbar::TOOL_SEPARATOR);
+	add(SEPARATOR);
 	
 	add(LFUN_EMPH);
 	add(LFUN_NOUN);
 	add(LFUN_FREE);
-	add(Toolbar::TOOL_SEPARATOR);
+	add(SEPARATOR);
 	
 	add(LFUN_FOOTMELT);
 	add(LFUN_MARGINMELT);
 	add(LFUN_DEPTH);
-	add(Toolbar::TOOL_SEPARATOR);
+	add(SEPARATOR);
 
 	add(LFUN_TEX);
         add(LFUN_MATH_MODE);
-	add(Toolbar::TOOL_SEPARATOR);
+	add(SEPARATOR);
 
 	add(LFUN_FIGURE);
 	add(LFUN_TABLE);
@@ -68,18 +82,18 @@ enum _tooltags {
 
 
 struct keyword_item toolTags[TO_LAST - 1] = {
-	{ "\\add", TO_ADD },
-	{ "\\end_toolbar", TO_ENDTOOLBAR },
-        { "\\layouts", TO_LAYOUTS },
-        { "\\newline", TO_NEWLINE },
-        { "\\separator", TO_SEPARATOR }
+	{ "end", TO_ENDTOOLBAR },
+	{ "icon", TO_ADD },
+        { "layouts", TO_LAYOUTS },
+        { "newline", TO_NEWLINE },
+        { "separator", TO_SEPARATOR }
 };
 
 
 void ToolbarDefaults::read(LyXLex & lex) 
 {
-		//consistency check
-	if (lex.GetString() != "\\begin_toolbar")
+	//consistency check
+	if (compare_no_case(lex.GetString(), "toolbar"))
 		lyxerr << "Toolbar::read: ERROR wrong token:`"
 		       << lex.GetString() << '\'' << endl;
 
@@ -95,14 +109,14 @@ void ToolbarDefaults::read(LyXLex & lex)
 	
 	while (lex.IsOK() && !quit) {
 		
-		lyxerr[Debug::TOOLBAR] << "Toolbar::read: current lex text: `"
+		lyxerr[Debug::GUI] << "Toolbar::read: current lex text: `"
 				       << lex.GetString() << '\'' << endl;
 
 		switch(lex.lex()) {
 		case TO_ADD:
-			if (lex.EatLine()) {
+			if (lex.next()) {
 				func = lex.GetString();
-				lyxerr[Debug::TOOLBAR]
+				lyxerr[Debug::GUI]
 					<< "Toolbar::read TO_ADD func: `"
 					<< func << "'" << endl;
 				add(func);
@@ -110,15 +124,15 @@ void ToolbarDefaults::read(LyXLex & lex)
 			break;
 		   
 		case TO_SEPARATOR:
-			add(Toolbar::TOOL_SEPARATOR);
+			add(SEPARATOR);
 			break;
 		   
 		case TO_LAYOUTS:
-			add(Toolbar::TOOL_LAYOUTS);
+			add(LAYOUTS);
 			break;
 		   
 		case TO_NEWLINE:
-			add(Toolbar::TOOL_NEWLINE);
+			add(NEWLINE);
 			break;
 			
 		case TO_ENDTOOLBAR:
@@ -133,6 +147,7 @@ void ToolbarDefaults::read(LyXLex & lex)
 		}
 	}
 	lex.popTable();
+	lex.next();
 }
 
 

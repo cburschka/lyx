@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  * 
@@ -21,7 +20,6 @@
 #include "LyXView.h"
 #include "lyx_main.h"
 #include "lyxlookup.h"
-#include "toolbar.h"
 #include "minibuffer.h"
 #include "lyxfunc.h"
 #include "debug.h"
@@ -32,8 +30,15 @@
 #include "layout.h"
 #include "lyxtext.h"
 #include "buffer.h"
-#include "menus.h"
 #include "frontends/Dialogs.h"
+#include "frontends/Toolbar.h"
+#ifdef NEW_MENUBAR
+# include "frontends/Menubar.h"
+# include "MenuBackend.h"
+#else
+# include "menus.h"
+#endif
+#include "ToolbarDefaults.h"
 #include "lyx_gui_misc.h"	// [update,Close]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
 
@@ -77,7 +82,11 @@ LyXView::LyXView(int width, int height)
 
 LyXView::~LyXView()
 {
+#ifdef NEW_MENUBAR
+	delete menubar;
+#else
 	delete menus;
+#endif
 	delete toolbar;
 	delete bufferview;
 	delete minibuffer;
@@ -119,6 +128,10 @@ Toolbar * LyXView::getToolbar() const
 	return toolbar;
 }
 
+void LyXView::setLayout(int layout)
+{
+	toolbar->setLayout(layout);
+}
 
 LyXFunc * LyXView::getLyXFunc() const
 {
@@ -132,10 +145,28 @@ MiniBuffer * LyXView::getMiniBuffer() const
 }
 
 
+#ifdef NEW_MENUBAR
+Menubar * LyXView::getMenubar() const
+{
+	return menubar;
+}
+
+
+void LyXView::updateMenubar() 
+{
+	if ((!view() || !view()->buffer())
+	    && menubackend.hasMenu("main_nobuffer"))
+		menubar->set("main_nobuffer");
+	else
+		menubar->set("main");
+}
+
+#else
 Menus * LyXView::getMenus() const
 {
 	return menus;
 }
+#endif
 
 
 Intl * LyXView::getIntl() const
@@ -212,14 +243,17 @@ void LyXView::create_form_form_main(int width, int height)
 	//
 	// THE MENUBAR
 	//
-
+#ifdef NEW_MENUBAR
+	menubar = new Menubar(this, menubackend);
+#else	
 	menus = new Menus(this, air);
+#endif
 
 	//
 	// TOOLBAR
 	//
 
-	toolbar = new Toolbar(this, air, 30 + air + bw);
+	toolbar = new Toolbar(this, air, 30 + air + bw, toolbardefaults);
 
 	// Setup the toolbar
 	toolbar->set(true);
@@ -284,6 +318,9 @@ void LyXView::init()
 	invalidateLayoutChoice();
 	updateLayoutChoice();
 	UpdateDocumentClassChoice();
+#ifdef NEW_MENUBAR
+	updateMenubar();
+#endif
 	
 	// Start autosave timer
 	if (lyxrc.autosave) {
@@ -307,41 +344,28 @@ void LyXView::invalidateLayoutChoice()
 
 void LyXView::updateLayoutChoice()
 {
-	// Update the layout display
-	if (!toolbar->combox) return;
-
 	// This has a side-effect that the layouts are not showed when no
 	// document is loaded.
-	if (bufferview == 0 || bufferview->buffer() == 0) {
-		toolbar->combox->clear();
-		toolbar->combox->Redraw();
+	if (!view() || !view()->buffer()) {
+		toolbar->clearLayoutList();
 		return;	
 	}
 
-	// If textclass is different, we need to update the list
-	if (toolbar->combox->empty() ||
-	    (last_textclass != int(buffer()->params.textclass))) {
-		toolbar->combox->clear();
-		LyXTextClass const & tc =
-			textclasslist.TextClass(buffer()->params.textclass);
-		for (LyXTextClass::const_iterator cit = tc.begin();
-		     cit != tc.end(); ++cit) {
-			if ((*cit).obsoleted_by().empty())
-				toolbar->combox->addline((*cit).name().c_str());
-			else
-				toolbar->combox->addline(("@N" + (*cit).name()).c_str());
-		}
+	// Update the layout display
+	if (last_textclass != int(buffer()->params.textclass)) {
+		toolbar->updateLayoutList(true);
 		last_textclass = int(buffer()->params.textclass);
 		current_layout = 0;
-	}
-	// we need to do this.
-	toolbar->combox->Redraw();
+	} else
+		toolbar->updateLayoutList(false);
+
+	
 
 	LyXTextClass::size_type layout =
 		bufferview->text->cursor.par()->GetLayout();
 
 	if (layout != current_layout){
-		toolbar->combox->select(layout + 1);
+		toolbar->setLayout(layout);
 		current_layout = layout;
 	}
 }

@@ -3,12 +3,16 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = @FRONTEND@
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${srcdir}/../
+INCLUDES = -I${srcdir}/.. -I${srcdir}/@FRONTEND@
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\
 	Dialogs.h \
 	DialogBase.h \
 	Liason.C \
-	Liason.h
+	Liason.h \
+	Menubar.C \
+	Menubar.h \
+	Toolbar.C \
+	Toolbar.h
 

@@ -20,12 +20,20 @@
 
 #include "Timeout.h"
 
+// uncomment this line to try out the new menus
+//#define NEW_MENUBAR
+
 class LyXFunc;
 class Toolbar;
 class MiniBuffer;
 class Intl;
 class Buffer;
+#ifdef NEW_MENUBAR
+class Menubar;
+#else
 class Menus;
+#endif
+
 class BufferView;
 class Dialogs;
 
@@ -71,15 +79,25 @@ public:
 	/// return a pointer to the toolbar
 	Toolbar * getToolbar() const;
 
+	/// sets the layout in the toolbar layout combox
+	void setLayout(int layout);
+
 	/// return a pointer to the lyxfunc
 	LyXFunc * getLyXFunc() const;
 
 	/// return a pointer to the minibuffer
 	MiniBuffer * getMiniBuffer() const;
 
+#ifdef NEW_MENUBAR
+	///
+	Menubar * getMenubar() const;
+
+	///
+	void updateMenubar();
+#else
 	///
 	Menus * getMenus() const;
-
+#endif
 	///
 	Intl * getIntl() const;
 
@@ -105,8 +123,13 @@ private:
 	Toolbar * toolbar;
 	/// 
 	MiniBuffer * minibuffer;
+#ifdef NEW_MENUBAR
+	///
+	Menubar * menubar;
+#else
 	///
 	Menus * menus;
+#endif
 	///
 	Intl * intl;
 	///

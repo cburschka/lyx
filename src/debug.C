@@ -31,7 +31,7 @@ static error_item errorTags[] = {
 	{ Debug::INFO,		"info",		"General information"},
 	{ Debug::INIT,		"init",		"Program initialisation"},
 	{ Debug::KEY,		"key",		"Keyboard events handling"},
-	{ Debug::TOOLBAR,	"toolbar",	"Toolbar handling"},
+	{ Debug::GUI,		"gui",		"GUI handling"},
 	{ Debug::PARSER,	"parser",	"Lyxlex grammer parser"},
 	{ Debug::LYXRC,		"lyxrc",	"Configuration files reading"},
 	{ Debug::KBMAP,		"kbmap",	"Custom keyboard definition"},

@@ -11,8 +11,10 @@
  *
  * ====================================================== */
 
-#ifndef TOOLBAR_H
-#define TOOLBAR_H
+#ifndef TOOLBAR_PIMPL_H
+#define TOOLBAR_PIMPL_H
+
+#include "frontends/Toolbar.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -22,40 +24,25 @@
 #include FORMS_H_LOCATION
 #include "commandtags.h"
 #include "combox.h"
+#include "ToolbarDefaults.h"
 
-class LyXView;
-
-/** The LyX toolbar class
-  This class {\em is} the LyX toolbar, and is not likely to be enhanced
-  further until we begin the move to Qt. We will probably have to make our
-  own QToolBar, at least until Troll Tech makes theirs.
+/** The LyX xforms toolbar class
   */
-class Toolbar {
+struct Toolbar::Pimpl {
 public:
 	///
-	Toolbar(LyXView * o, int x, int y);
+	Pimpl(LyXView * o, int x, int y);
 
 	///
-	~Toolbar() {
+	~Pimpl() {
 		clean();
 	}
 	
+#if 0
 	///
 	int get_toolbar_func(string const & func);
+#endif
 	
-        /// The special toolbar actions
-	enum  TOOLBARITEMS {
-		/// adds space between buttons in the toolbar
-		TOOL_SEPARATOR = -1,
-		/// a special combox insead of a button
-		TOOL_LAYOUTS = -2,
-		/// begin a new line of button (not working)
-		TOOL_NEWLINE = -3
-	};
-
-	///
-	Combox * combox;
-
 	/// (re)sets the toolbar
 	void set(bool doingmain = false);
 
@@ -64,8 +51,6 @@ public:
 	void edit();
 	/// add a new button to the toolbar.
     	void add(int , bool doclean = true);
-	/// name of func instead of kb_action
-	void add(string const & , bool doclean = true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar
@@ -74,18 +59,16 @@ public:
         void deactivate();
 	/// update the state of the icons
 	void update();
-	///
-	static void ToolbarCB(FL_OBJECT *, long);
 
-#if FL_REVISION < 89
-	///
-	static void BubbleTimerCB(FL_OBJECT *, long);
-	///
-	static int BubblePost(FL_OBJECT * ob, int event,
-			      FL_Coord mx, FL_Coord my, int key, void * xev);
-#endif
+	/// select the right layout in the combox
+	void setLayout(int layout);
+	/// Populate the layout combox; re-do everything if force is true.
+	void updateLayoutList(bool force);
+	/// Drop down the layout list
+	void openLayoutList();
+	/// Erase the layout list
+	void clearLayoutList();
 
-private:
 	///
 	struct toolbarItem
 	{
@@ -113,6 +96,8 @@ private:
 	///
 	FL_OBJECT * bubble_timer;
 #endif
+	///
+	Combox * combox;
 	/// Starting position
 	int sxpos, sypos;
 	///
@@ -120,18 +105,8 @@ private:
 	///
 	int ypos;
 	///
-	int buttonwidth;
-	///
-	int height;
-	///
-	int standardspacing;
-	///
-	int sepspace;
-	///
 	bool cleaned;
 
-	///
-	char const ** getPixmap(kb_action, string const & arg = string());
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
 
@@ -141,13 +116,6 @@ private:
 
 	/** more...
 	 */
-	void lightReset() {
-		standardspacing = 2; // the usual space between items
-		sepspace = 6; // extra space
-		xpos = sxpos - standardspacing;
-		ypos = sypos;
-		buttonwidth = 30; // the standard button width
-		height = 30; // the height of all items in the toolbar
-	}
+	void lightReset();
 };
 #endif
