@@ -19,6 +19,8 @@ public:
 	///
 	MathCharInset(char c, MathTextCodes t);
 	///
+	MathCharInset(char c, MathTextCodes t, bool needbs);
+	///
 	MathInset * clone() const;
 	///
 	MathTextCodes nativeCode(char c) const;
@@ -56,7 +58,9 @@ public:
 private:
 	/// the character
 	char char_;
-	/// 
+	/// the font to be used on screen
 	MathTextCodes code_;
+	/// do wee need a backslash when writing LaTeX?
+	bool needbs_;
 };
 #endif
