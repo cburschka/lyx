@@ -546,7 +546,7 @@ def convert(file):
     fix_oldfloatinset(file.body)
     update_tabular(file.body)
     remove_pextra(file.body)
-    remove_oldfloat(file.body, opt)
+    remove_oldfloat(file.body, file)
     remove_figinset(file.body)
     remove_oldertinset(file.body)
     remove_oldert(file.body)
