@@ -1637,7 +1637,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 		}
 
-		buf->simpleDocBookOnePar(os, &*pit, desc_on, depth + 1 + command_depth);
+		buf->simpleDocBookOnePar(os, pit, desc_on, depth + 1 + command_depth);
 
 		string end_tag;
 		// write closing SGML tags

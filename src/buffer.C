@@ -1319,7 +1319,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			break;
 		}
 
-		simpleLinuxDocOnePar(ofs, &*pit, depth);
+		simpleLinuxDocOnePar(ofs, pit, depth);
 
 		ofs << "\n";
 		// write closing SGML tags
@@ -1412,8 +1412,8 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 
 // Handle internal paragraph parsing -- layout already processed.
 void Buffer::simpleLinuxDocOnePar(ostream & os,
-	Paragraph * par,
-	Paragraph::depth_type /*depth*/)
+	ParagraphList::iterator par,
+	Paragraph::depth_type /*depth*/) const
 {
 	LyXLayout_ptr const & style = par->layout();
 

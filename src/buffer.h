@@ -156,10 +156,11 @@ public:
 	///
 	void simpleDocBookOnePar(std::ostream &,
 				 ParagraphList::iterator par, int & desc_on,
-				 Paragraph::depth_type depth) const ;
+				 Paragraph::depth_type depth) const;
 	///
-	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par,
-				  Paragraph::depth_type depth);
+	void simpleLinuxDocOnePar(std::ostream & os,
+	       ParagraphList::iterator par,
+				 Paragraph::depth_type depth) const;
 	///
 	void makeLinuxDocFile(string const & filename,
 			      bool nice, bool only_body = false);
