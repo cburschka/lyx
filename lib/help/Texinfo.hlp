@@ -1,11 +1,11 @@
 					Texinfo.hlp
 
-@bClass Files: 
-	shows the installed TeX Document classes.
+@bLatex Classes: 
+	shows the installed LaTeX Document classes.
 	Remember, that these classes are only available
 	in LyX if a corresponding LyX-Layout file exists!
 
-@bStyle Files: 
+@bLatex Styles: 
 	shows the installed TeX Style files, which are 
 	available in LyX by default, like "babel" or through 
 
@@ -13,7 +13,7 @@
 
 	in LaTeX-preamble (Layout->preamble)
 
-@bBibTeX Stylefiles: 
+@bBibTeX Styles: 
 	shows the installed stylefiles for BibTeX. 
 	They can be load through 
 @i	insert->Lists&Toc->BibTeX Reference->Style
@@ -21,8 +21,8 @@
 @bRescan: 
 	Runs the script TexFiles.sh to build new file lists.
 
-@bwith full Path: 
-	toggles view of the file lists
+@bShow Path: 
+	toggles the view of the file lists
 
 @bView: 
 	shows the contents of the marked file. Only
@@ -30,12 +30,9 @@
 
 @bRun TeXhash: 
 	runs the script texhash which builds the a new LaTeX tree. 
-	Needed if you install a new TeX class or style! It runs only
-	with user-rights! Therefore you need the write-permissions
+	Needed if you install a new TeX class or style! It runs here
+	only with user-rights! Therefore you need the write-permissions
 	for the tex-dirs, often /var/lib/texmf and other.
 
 @bHelp: 
 	shows this file
-
-
-2001-10-01 / Herbert Voss <voss@perce.de>

@@ -198,7 +198,6 @@ Menuset
 	Separator
 	Item "TeX|T" "ert-insert"
 	Item "Minipage|p" "minipage-insert"
-	Item "Old-Graphics..." "figure-insert"
 	Item "Graphics...|G" "graphics-insert"
 	Item "Tabular Material...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
@@ -399,6 +398,6 @@ Toolbar
     Icon "marginalnote-insert"
     Icon "depth-next"
     Separator
-    Icon "figure-insert"
+    Icon "graphic-insert"
     Icon "dialog-tabular-insert"
 End
