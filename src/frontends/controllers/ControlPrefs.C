@@ -51,6 +51,8 @@ void ControlPrefs::apply()
 	view().apply();
 	lyxrc = rc_;
 
+	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);
+
 	// The Save button has been pressed
 	if (isClosing()) {
 		lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
@@ -154,10 +156,4 @@ void ControlPrefs::setConverters(Converters const & conv)
 void ControlPrefs::setFormats(Formats const & form)
 {
 	formats = form;
-}
-
-
-void ControlPrefs::setCurrentAuthor()
-{
-	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);
 }

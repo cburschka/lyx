@@ -1,5 +1,9 @@
 2003-02-08  John Levon  <levon@movementarian.org>
 
+	* FormPreferences.C: don't call setCurrentAuthor explicitly
+
+2003-02-08  John Levon  <levon@movementarian.org>
+
 	* Makefile.am:
 	* forms/Makefile.am:
 	* forms/form_changes.fd:

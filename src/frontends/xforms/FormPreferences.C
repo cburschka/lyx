@@ -1447,7 +1447,6 @@ void FormPreferences::Identity::apply(LyXRC & rc) const
 {
 	rc.user_name = fl_get_input(dialog_->input_user_name);
 	rc.user_email = fl_get_input(dialog_->input_user_email);
-	parent_.controller().setCurrentAuthor();
 }
 
 
