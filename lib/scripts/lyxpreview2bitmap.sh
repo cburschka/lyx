@@ -53,7 +53,7 @@
 
 # These four programs are used by the script.
 # Adjust their names to suit your setup.
-LATEX=latex
+test -n "$LATEX" || LATEX=latex
 DVIPS=dvips
 GS=gs
 PNMCROP=pnmcrop
