@@ -128,7 +128,7 @@ void LexInitCodes()
    
    lexcode['!'] = lexcode[','] = lexcode[':'] = lexcode[';'] = LexMathSpace;
    lexcode['('] = lexcode[')'] = lexcode['|'] = lexcode['.'] = lexcode['?'] = LexOther; 
-   lexcode['\'']= LexAlpha;
+   lexcode['\'']= lexcode['@'] = LexAlpha;
    
    lexcode['['] = lexcode[']'] = lexcode['^'] = lexcode['_'] = 
    lexcode['&'] = LexSelf;  

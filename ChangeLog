@@ -1,5 +1,11 @@
 2000-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/mathed/math_parser.C (LexInitCodes): set lexcode of "@" to
+	LexAlpha. 
+
+	* src/mathed/formula.C (LocalDispatch): add '@' as an LM_TC_VAR
+	character. 
+
 	* src/lyxlex.C (GetFloat): rewrite to use strToDbl() and
 	understand ',' instead of '.'.
 	(GetInteger): rewrite to use strToInt().
