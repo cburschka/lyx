@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.1.6-fix3\n"
-"POT-Creation-Date: 2003-01-14 02:14+0100\n"
+"POT-Creation-Date: 2003-01-23 22:14+0100\n"
 "PO-Revision-Date: 2002-12-19 18:59+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -15,9 +15,15 @@ msgstr ""
 "X-Generator: KBabel 0.9.5\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
+#: ../src/frontends/xforms/forms/form_error.fd:61
 #: ../src/frontends/xforms/forms/form_forks.fd:169
+#: ../src/frontends/xforms/forms/form_maths_panel.fd:44
+#: ../src/frontends/xforms/forms/form_maths_space.fd:170
+#: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
+#: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
 msgid "Close|^["
 msgstr "Zavrie»|^["
@@ -42,6 +48,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_filedialog.fd:206
 #: ../src/frontends/xforms/forms/form_float.fd:152
 #: ../src/frontends/xforms/forms/form_forks.fd:133
+#: ../src/frontends/xforms/forms/form_graphics.fd:80
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:116
@@ -56,11 +63,11 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -73,9 +80,11 @@ msgstr "Znaèka...|n"
 
 #: ../src/frontends/xforms/forms/form_bibitem.fd:98
 #: ../src/frontends/xforms/forms/form_bibtex.fd:98
+#: ../src/frontends/xforms/forms/form_character.fd:170
 #: ../src/frontends/xforms/forms/form_citation.fd:404
 #: ../src/frontends/xforms/forms/form_document.fd:62
 #: ../src/frontends/xforms/forms/form_ert.fd:151
+#: ../src/frontends/xforms/forms/form_external.fd:223
 #: ../src/frontends/xforms/forms/form_filedialog.fd:224
 #: ../src/frontends/xforms/forms/form_float.fd:188
 #: ../src/frontends/xforms/forms/form_graphics.fd:98
@@ -185,7 +194,6 @@ msgid "Restore|#R"
 msgstr "O&bnovi»"
 
 #: ../src/frontends/xforms/forms/form_browser.fd:62
-#: ../src/frontends/xforms/forms/form_error.fd:61
 #: ../src/frontends/xforms/forms/form_texinfo.fd:98
 #: ../src/frontends/xforms/forms/form_toc.fd:98
 #, fuzzy
@@ -213,19 +221,15 @@ msgid "Shape:|#H"
 msgstr "Tvar|#T"
 
 #: ../src/frontends/xforms/forms/form_character.fd:116
+#: ../src/frontends/xforms/forms/form_document.fd:1577
 #, fuzzy
-msgid "Size:|#Z"
+msgid "Size:|#z"
 msgstr "Veµkos»:|#e"
 
 #: ../src/frontends/xforms/forms/form_character.fd:134
 #, fuzzy
 msgid "Misc:|#M"
 msgstr "Rôzne"
-
-#: ../src/frontends/xforms/forms/form_character.fd:170
-#, fuzzy
-msgid "Cancel|#N^["
-msgstr "Zru¹i»|^["
 
 #: ../src/frontends/xforms/forms/form_character.fd:188
 #, fuzzy
@@ -349,12 +353,14 @@ msgid "Size:|#S"
 msgstr "Veµkos»:|#e"
 
 #: ../src/frontends/xforms/forms/form_document.fd:248
+#: ../src/frontends/xforms/forms/form_graphics.fd:284
 #: ../src/frontends/xforms/forms/form_wrap.fd:62
 #, fuzzy
 msgid "Width:|#W"
 msgstr "©írka"
 
 #: ../src/frontends/xforms/forms/form_document.fd:284
+#: ../src/frontends/xforms/forms/form_graphics.fd:356
 #, fuzzy
 msgid "Height:|#H"
 msgstr "Vý¹ka"
@@ -375,8 +381,8 @@ msgid "Landscape|#L"
 msgstr "na ¹írku"
 
 #: ../src/frontends/xforms/forms/form_document.fd:410
-#: src/frontends/qt2/QDocumentDialog.C:69
-#: src/frontends/qt2/QDocumentDialog.C:267
+#: src/frontends/qt2/QDocumentDialog.C:68
+#: src/frontends/qt2/QDocumentDialog.C:264
 msgid "Margins"
 msgstr "Okraje"
 
@@ -430,12 +436,11 @@ msgid "Sides"
 msgstr "Váha|#V"
 
 #: ../src/frontends/xforms/forms/form_document.fd:758
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:183
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:128
 msgid "Separation"
 msgstr "Separácia"
 
 #: ../src/frontends/xforms/forms/form_document.fd:776
-#: ../src/frontends/xforms/forms/form_tabular_create.fd:98
 #, fuzzy
 msgid "Columns"
 msgstr "Ståpce"
@@ -501,16 +506,19 @@ msgid "Skip|#K"
 msgstr "Medzerou|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1215
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
 #, fuzzy
 msgid "Quote Style"
 msgstr "Typ úvodzoviek    "
 
 #: ../src/frontends/xforms/forms/form_document.fd:1233
+#: ../src/frontends/xforms/forms/form_preferences.fd:326
 #, fuzzy
 msgid "Encoding:|#E"
 msgstr "Kódovanie"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1251
+#: ../src/frontends/xforms/forms/form_toc.fd:80
 #, fuzzy
 msgid "Type:|#T"
 msgstr "Typ:"
@@ -569,14 +577,9 @@ msgstr "Citácia"
 msgid "Bullet depth"
 msgstr "Odrá¾ky"
 
-#: ../src/frontends/xforms/forms/form_document.fd:1577
-#, fuzzy
-msgid "Size|#z"
-msgstr "Veµkos»:|#e"
-
 #: ../src/frontends/xforms/forms/form_document.fd:1595
 #, fuzzy
-msgid "LaTeX|#L"
+msgid "LaTeX:|#L"
 msgstr "LaTeX...|L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1631
@@ -646,19 +649,19 @@ msgstr "Vlo¾i»|I"
 
 #: ../src/frontends/xforms/forms/form_external.fd:43
 #, fuzzy
-msgid "Template|#t"
+msgid "Template:|#t"
 msgstr "©ablóna|#¹"
 
 #: ../src/frontends/xforms/forms/form_external.fd:79
 #: ../src/frontends/xforms/forms/form_graphics.fd:176
 #: ../src/frontends/xforms/forms/form_print.fd:373
 #, fuzzy
-msgid "File|#F"
+msgid "File:|#F"
 msgstr "Súbor|S"
 
 #: ../src/frontends/xforms/forms/form_external.fd:115
 #, fuzzy
-msgid "Parameters|#P"
+msgid "Parameters:|#P"
 msgstr "Parametre|#P"
 
 #: ../src/frontends/xforms/forms/form_external.fd:133
@@ -675,11 +678,6 @@ msgstr "Zobrazi» výsledok|#V"
 #, fuzzy
 msgid "Update result|#U"
 msgstr "Aktualizova» výsledok|#A"
-
-#: ../src/frontends/xforms/forms/form_external.fd:223
-#, fuzzy
-msgid "Cancel|#C^["
-msgstr "Zru¹i»|^["
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:62
 #, fuzzy
@@ -763,11 +761,11 @@ msgid "Document default|#D"
 msgstr "Formát dokumentu"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:43
-msgid "Forked child processes|#F"
+msgid "Forked child processes:|#F"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:61
-msgid "Kill processes|#K"
+msgid "Kill processes:|#K"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:79
@@ -776,10 +774,6 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:97
 msgid "@->"
-msgstr ""
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:80
-msgid "Ok"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
@@ -805,22 +799,12 @@ msgstr "Nezobrazova»|#b"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:266
 #, fuzzy
-msgid "Scale|#S"
+msgid "Scale:|#S"
 msgstr "©peciálne"
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:284
-#, fuzzy
-msgid "Width|#W"
-msgstr "©írka"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:338
 msgid "Maintain aspect ratio|#M"
 msgstr ""
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:356
-#, fuzzy
-msgid "Height|#H"
-msgstr "Vý¹ka"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:374
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:251
@@ -829,17 +813,17 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:392
 #, fuzzy
-msgid "Display|#D"
+msgid "Display:|#D"
 msgstr "Nezobrazova»|#b"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:434
 #, fuzzy
-msgid "Right top|#R"
+msgid "Right top:|#R"
 msgstr "Vpravo"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:470
 #, fuzzy
-msgid "Left bottom|#L"
+msgid "Left bottom:|#L"
 msgstr "Èiara dole|d"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:506
@@ -870,7 +854,7 @@ msgstr "Otáèanie"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:638
 #, fuzzy
-msgid "LaTeX options|#L"
+msgid "LaTeX options:|#L"
 msgstr "extra nastavenia"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:656
@@ -878,17 +862,17 @@ msgid "deg"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:674
-msgid "Origin|#O"
+msgid "Origin:|#O"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:692
 #, fuzzy
-msgid "Subfigure|#S"
+msgid "Subfigure:|#S"
 msgstr "Podobrázok|#á"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:710
 #, fuzzy
-msgid "Angle|#A"
+msgid "Angle:|#A"
 msgstr "Uhol:|#L"
 
 #: ../src/frontends/xforms/forms/form_include.fd:115
@@ -927,7 +911,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_index.fd:43
 #, fuzzy
-msgid "Keyword|#K"
+msgid "Keyword:|#K"
 msgstr "Kµúèové slovo"
 
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:152
@@ -953,39 +937,28 @@ msgstr "Vµavo"
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:44
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:116
 #, fuzzy
-msgid "Rows"
+msgid "Rows:"
 msgstr "Riadky"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:65
+#: ../src/frontends/xforms/forms/form_tabular_create.fd:98
 #, fuzzy
-msgid "Columns "
+msgid "Columns:"
 msgstr "Ståpce"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:86
 #, fuzzy
-msgid "Vertical align|#V"
+msgid "Vertical align:|#V"
 msgstr "Vertikálne zarovnávanie|#V"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:104
 #, fuzzy
-msgid "Horizontal align|#H"
+msgid "Horizontal align:|#H"
 msgstr "Horizontálne zarovnávanie|#H"
-
-#: ../src/frontends/xforms/forms/form_maths_panel.fd:44
-#: ../src/frontends/xforms/forms/form_maths_space.fd:170
-#: ../src/frontends/xforms/forms/form_maths_style.fd:80
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Zavrie»"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:62
 #, fuzzy
-msgid "Functions"
+msgid "Functions:"
 msgstr "Funkcie"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:81
@@ -1107,6 +1080,8 @@ msgid "Middle|#d"
 msgstr "Na &stred"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:169
+#: ../src/frontends/xforms/forms/form_tabular.fd:452
+#: ../src/frontends/xforms/forms/form_tabular.fd:892
 #, fuzzy
 msgid "Bottom|#B"
 msgstr "&Dole"
@@ -1184,6 +1159,8 @@ msgid "Right|#R"
 msgstr "Vpravo"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:512
+#: ../src/frontends/xforms/forms/form_tabular.fd:470
+#: ../src/frontends/xforms/forms/form_tabular.fd:910
 #: ../src/frontends/xforms/forms/form_wrap.fd:116
 #, fuzzy
 msgid "Left|#L"
@@ -1215,23 +1192,18 @@ msgstr "Veµkos» písma:|#O"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:272
 #, fuzzy
-msgid "Roman|#R"
+msgid "Roman:|#R"
 msgstr "Roman"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:290
 #, fuzzy
-msgid "Sans Serif|#S"
+msgid "Sans Serif:|#S"
 msgstr "Sans Serif"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:308
 #, fuzzy
-msgid "Typewriter|#T"
+msgid "Typewriter:|#T"
 msgstr "Písací stroj"
-
-#: ../src/frontends/xforms/forms/form_preferences.fd:326
-#, fuzzy
-msgid "Encoding|#E"
-msgstr "Kódovanie"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
@@ -1239,63 +1211,72 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
 #, fuzzy
-msgid "Zoom %|#Z"
+msgid "Zoom %:|#Z"
 msgstr "Zväè¹enie %|#Z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:385
 #, fuzzy
-msgid "Screen DPI|#D"
+msgid "Screen DPI:|#D"
 msgstr "DPI pre obrazovku|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:407
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:257
-msgid "tiny"
-msgstr "drobné"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:532
+#, fuzzy
+msgid "Tiny:"
+msgstr "Drobné"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:425
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:472
 #, fuzzy
-msgid "smallest"
+msgid "Smallest:"
 msgstr "Najmen¹ie"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:443
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:487
 #, fuzzy
-msgid "smaller"
+msgid "Smaller:"
 msgstr "Men¹í"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:461
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:275
-msgid "small"
-msgstr "malé"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:502
+#, fuzzy
+msgid "Small:"
+msgstr "Malé"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:479
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:281
-msgid "normal"
-msgstr "normálne"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:517
+#, fuzzy
+msgid "Normal:"
+msgstr "Normálny"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:497
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:287
-msgid "large"
-msgstr "veµké"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:547
+#, fuzzy
+msgid "Large:"
+msgstr "Veµké"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:515
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:405
 #, fuzzy
-msgid "larger"
-msgstr "veµké"
+msgid "Larger:"
+msgstr "Väè¹í"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:533
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:420
 #, fuzzy
-msgid "largest"
+msgid "Largest:"
 msgstr "Najväè¹ie"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:551
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:305
-msgid "huge"
-msgstr "ozrutné"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:442
+#, fuzzy
+msgid "Huge:"
+msgstr "Obrovské"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:569
 #, fuzzy
-msgid "huger"
-msgstr "ozrutné"
+msgid "Huger:"
+msgstr "Obrovské"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:587
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:52
@@ -1308,17 +1289,18 @@ msgid "Popup Fonts & Encoding"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:647
-msgid "Normal Font|#N"
-msgstr ""
+#, fuzzy
+msgid "Normal Font:|#N"
+msgstr "Tuèný ¹týl|u"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:665
 #, fuzzy
-msgid "Bold Font|#B"
+msgid "Bold Font:|#B"
 msgstr "Tuèný ¹týl|u"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
 #, fuzzy
-msgid "Popup Encoding|#P"
+msgid "Popup Encoding:|#P"
 msgstr "Kódovanie"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:701
@@ -1327,12 +1309,12 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:719
 #, fuzzy
-msgid "User Interface file|#U"
+msgid "User Interface file:|#U"
 msgstr "Súbor s pou¾íva». rozhraním|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:755
 #, fuzzy
-msgid "Bind file|#f"
+msgid "Bind file:|#f"
 msgstr "Bind súbor"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:773
@@ -1342,7 +1324,7 @@ msgid "Browse...|#w"
 msgstr "Prechádza»..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:815
-msgid "LyX objects|#L"
+msgid "LyX objects:|#L"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:833
@@ -1405,12 +1387,12 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1154
 #, fuzzy
-msgid "Wheel mouse jump"
+msgid "Wheel mouse jump:"
 msgstr "Skok kolieska my¹i"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1176
 #, fuzzy
-msgid "Autosave interval"
+msgid "Autosave interval:"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1198
@@ -1419,28 +1401,28 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1217
 #, fuzzy
-msgid "Graphics display|#G"
+msgid "Graphics display:|#G"
 msgstr "Grafika"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
 #, fuzzy
-msgid "Spell command|#S"
+msgid "Spell command:|#S"
 msgstr "spool príkaz"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
 #, fuzzy
-msgid "Use alternative language|#a"
+msgid "Alternative language:|#a"
 msgstr "Pou¾i» alternatívny jazyk|#a"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1313
 #, fuzzy
-msgid "Use escape characters|#e"
+msgid "Escape characters:|#e"
 msgstr "©peciálne znaky|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1349
 #, fuzzy
-msgid "Use personal dictionary|#d"
-msgstr "Pou¾i» osobný slovník|#o"
+msgid "Personal dictionary:|#d"
+msgstr "Osobný slovník"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1403
 #, fuzzy
@@ -1469,12 +1451,12 @@ msgstr "Jazykové nast."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1535
 #, fuzzy
-msgid "Package|#P"
+msgid "Package:|#P"
 msgstr "Balíèek|#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1553
 #, fuzzy
-msgid "Default language|#l"
+msgid "Default language:|#l"
 msgstr "Prednastavený jazyk|#j"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1571
@@ -1485,12 +1467,14 @@ msgid ""
 msgstr "Kµúèové slovo"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1589
-msgid "1st|#1"
-msgstr ""
+#, fuzzy
+msgid "1st:|#1"
+msgstr "1|#1"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1607
-msgid "2nd|#2"
-msgstr ""
+#, fuzzy
+msgid "2nd:|#2"
+msgstr "Súbor|S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1625
 #, fuzzy
@@ -1527,43 +1511,43 @@ msgstr "G|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1769
 #, fuzzy
-msgid "Command start|#s"
+msgid "Command start:|#s"
 msgstr "Poèiatoèný príkaz|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1787
 #, fuzzy
-msgid "Command end|#e"
+msgid "Command end:|#e"
 msgstr "Ukonèovací príkaz|#U"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1883
 #, fuzzy
-msgid "All formats|#l"
+msgid "All formats:|#l"
 msgstr "Formáty"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1901
 #: ../src/frontends/xforms/forms/form_ref.fd:225
 #, fuzzy
-msgid "Format|#F"
+msgid "Format:|#F"
 msgstr "Formáty"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1919
 #, fuzzy
-msgid "GUI name|#G"
+msgid "GUI name:|#G"
 msgstr "GUI názov|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1937
 #, fuzzy
-msgid "Shortcut|#S"
+msgid "Shortcut:|#S"
 msgstr "Klávesová skratka|#s"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1955
 #, fuzzy
-msgid "Extension|#E"
+msgid "Extension:|#E"
 msgstr "Prípona|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1973
 #, fuzzy
-msgid "Viewer|#V"
+msgid "Viewer:|#V"
 msgstr "Prezeranie|P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1991
@@ -1583,31 +1567,33 @@ msgstr "Zmaza» riadok"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2051
 #, fuzzy
-msgid "All converters|#l"
+msgid "All converters:|#l"
 msgstr "Konvertor"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2069
 #, fuzzy
-msgid "From|#F"
+msgid "From:|#F"
 msgstr "Z|#Z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2087
-msgid "To|#T"
-msgstr ""
+#: ../src/frontends/xforms/forms/form_print.fd:188
+#, fuzzy
+msgid "To:|#T"
+msgstr "&Hore"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2105
 #, fuzzy
-msgid "Converter|#C"
+msgid "Converter:|#C"
 msgstr "Konvertor"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2123
 #, fuzzy
-msgid "Extra flags|#E"
+msgid "Extra flags:|#E"
 msgstr "Upravi» súbor|#U"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2201
 #, fuzzy
-msgid "Default path|#p"
+msgid "Default path:|#p"
 msgstr "©tandardná cesta"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2219
@@ -1626,47 +1612,47 @@ msgstr "Prechádza»..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2237
 #, fuzzy
-msgid "Template path|#T"
+msgid "Template path:|#T"
 msgstr "Cesta k ¹ablónam"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2273
 #, fuzzy
-msgid "Temp dir|#d"
+msgid "Temp dir:|#d"
 msgstr "Doèasný prieèinok"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2328
 #, fuzzy
-msgid "Check last files|#C"
+msgid "Check last files:|#C"
 msgstr "Zvoµte ¹ablónu"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2383
 #, fuzzy
-msgid "Last file count|#L"
+msgid "Last file count:|#L"
 msgstr "Posledné súbory"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2405
 #, fuzzy
-msgid "Backup path|#B"
+msgid "Backup path:|#B"
 msgstr "Cesta k zálohám"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2460
 #, fuzzy
-msgid "LyXServer pipe|#S"
+msgid "LyXServer pipe:|#S"
 msgstr "Rúry LyX Serveru"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2520
 #, fuzzy
-msgid "date format|#f"
+msgid "Date format:|#f"
 msgstr "formát dátumu|#f"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2562
 #, fuzzy
-msgid "name"
-msgstr "Meno"
+msgid "Name:"
+msgstr "Názov:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2580
 #, fuzzy
-msgid "adapt output"
+msgid "Adapt output"
 msgstr "adaptácia výstupu"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2598
@@ -1676,112 +1662,114 @@ msgstr "Pou¾ívateµský príkaz"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2616
 #, fuzzy
-msgid "command"
+msgid "Command:"
 msgstr "príkaz"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2634
 #, fuzzy
-msgid "page range"
+msgid "Page range:"
 msgstr "rozsah strán"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2652
 #, fuzzy
-msgid "copies"
+msgid "Copies:"
 msgstr "Kópie"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2670
 #, fuzzy
-msgid "reverse"
+msgid "Reverse:"
 msgstr "opaèné"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2688
 #, fuzzy
-msgid "to printer"
+msgid "To printer:"
 msgstr "do tlaèiarne"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2706
 #, fuzzy
-msgid "file extension"
+msgid "File extension:"
 msgstr "prípona súboru"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2724
 #, fuzzy
-msgid "spool command"
+msgid "Spool command:"
 msgstr "spool príkaz"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2742
 #, fuzzy
-msgid "paper type"
+msgid "Paper type:"
 msgstr "typ papiera"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2760
 #, fuzzy
-msgid "even pages"
+msgid "Even pages:"
 msgstr "párne strany"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2778
 #, fuzzy
-msgid "odd pages"
+msgid "Odd pages:"
 msgstr "nepárne strany"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2796
 #, fuzzy
-msgid "collated"
+msgid "Collated:"
 msgstr "Uspo&riada»"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2814
 #, fuzzy
-msgid "landscape"
+msgid "Landscape:"
 msgstr "na ¹írku"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2832
 #, fuzzy
-msgid "to file"
-msgstr " do súboru `"
+msgid "To file:"
+msgstr "do súboru"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2850
 #, fuzzy
-msgid "extra options"
-msgstr "extra nastavenia"
+msgid "Extra options:"
+msgstr "Extra nastavenia"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2868
-msgid "spool printer prefix"
-msgstr ""
+#, fuzzy
+msgid "Spool printer prefix:"
+msgstr "do tlaèiarne"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2886
 #, fuzzy
-msgid "paper size"
+msgid "Paper size:"
 msgstr "veµkos» papiera"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2964
-msgid "Ascii line length|#A"
+msgid "ASCII line length:|#A"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2986
 #, fuzzy
-msgid "TeX encoding|#T"
+msgid "TeX encoding:|#T"
 msgstr "TeX kódovanie|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3004
 #, fuzzy
-msgid "Default paper size|#p"
+msgid "Default paper size:|#p"
 msgstr "Prednastavená veµkos» papiera|#p"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3022
-msgid "Outside code interaction"
+msgid "Outside Code Interaction"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
-msgid "ascii roff|#r"
+msgid "ASCII roff:|#r"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3058
-msgid "checktex|#c"
-msgstr ""
+#, fuzzy
+msgid "Checktex:|#c"
+msgstr "Na stred"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3076
 #, fuzzy
-msgid "DVI paper option|#D"
+msgid "DVI paper option:|#D"
 msgstr "extra nastavenia"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3094
@@ -1808,11 +1796,6 @@ msgstr "Kópie"
 msgid "Sorted|#S"
 msgstr "Stav"
 
-#: ../src/frontends/xforms/forms/form_print.fd:188
-#, fuzzy
-msgid "to|#t"
-msgstr "na"
-
 #: ../src/frontends/xforms/forms/form_print.fd:224
 #, fuzzy
 msgid "Reverse order|#R"
@@ -1835,7 +1818,7 @@ msgstr "Tlaèi» iba strany s párnym èíslom"
 
 #: ../src/frontends/xforms/forms/form_print.fd:355
 #, fuzzy
-msgid "Printer|#P"
+msgid "Printer:|#P"
 msgstr "Tlaèiareò"
 
 #: ../src/frontends/xforms/forms/form_print.fd:427
@@ -1844,7 +1827,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_print.fd:445
 #, fuzzy
-msgid "From|#m"
+msgid "From:|#m"
 msgstr "Z|#Z"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:80
@@ -1854,10 +1837,11 @@ msgstr "Stav"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:170
 #, fuzzy
-msgid "Document|#D"
+msgid "Document:|#D"
 msgstr "Dokumenty|D"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:189
+#: ../src/frontends/xforms/forms/form_url.fd:62
 #, fuzzy
 msgid "Name:|#N"
 msgstr "Názov:"
@@ -1908,16 +1892,16 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
 #, fuzzy
-msgid "Export format|#E"
+msgid "Export format:|#E"
 msgstr "Potvrdenie ukonèenia|#u"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:61
 #, fuzzy
-msgid "Command|#C"
+msgid "Command:|#C"
 msgstr "príkaz"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:44
-msgid "Word count"
+msgid "Word count:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
@@ -1957,12 +1941,6 @@ msgstr "Ignorova»"
 #, fuzzy
 msgid "Accept|#A"
 msgstr "Prípustný"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
-#: ../src/frontends/xforms/forms/form_thesaurus.fd:62
-#, fuzzy
-msgid "Close|#C^["
-msgstr "Zavrie»|^["
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:242
 msgid "0 %"
@@ -2047,18 +2025,6 @@ msgstr ""
 msgid "Top|#t"
 msgstr "&Hore"
 
-#: ../src/frontends/xforms/forms/form_tabular.fd:452
-#: ../src/frontends/xforms/forms/form_tabular.fd:892
-#, fuzzy
-msgid "Bottom|#b"
-msgstr "&Dole"
-
-#: ../src/frontends/xforms/forms/form_tabular.fd:470
-#: ../src/frontends/xforms/forms/form_tabular.fd:910
-#, fuzzy
-msgid "Left|#l"
-msgstr "Vµavo"
-
 #: ../src/frontends/xforms/forms/form_tabular.fd:488
 #: ../src/frontends/xforms/forms/form_tabular.fd:928
 #, fuzzy
@@ -2105,7 +2071,7 @@ msgstr "&Dole"
 #: ../src/frontends/xforms/forms/form_tabular.fd:688
 #: ../src/frontends/xforms/forms/form_tabular.fd:1146
 #, fuzzy
-msgid "LaTeX Argument|#A"
+msgid "LaTeX Argument:|#A"
 msgstr "Zarovnanie|#A"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:706
@@ -2165,7 +2131,7 @@ msgstr "Èíslo strany"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1638
 #: ../src/frontends/xforms/forms/form_tabular.fd:1656
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:131
-#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:101
+#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:147
 msgid "Double"
 msgstr "Dvojité"
 
@@ -2226,12 +2192,12 @@ msgstr "Nahradi»"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
 #, fuzzy
-msgid "Entry : "
+msgid "Entry:"
 msgstr "Extra"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
 #, fuzzy
-msgid "Selection :"
+msgid "Selection:"
 msgstr "Výber"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
@@ -2239,20 +2205,10 @@ msgstr "Výber"
 msgid "Meanings|#M"
 msgstr "Pri èítaní "
 
-#: ../src/frontends/xforms/forms/form_toc.fd:80
-#, fuzzy
-msgid "Type|#T"
-msgstr "LaTeX|#T"
-
 #: ../src/frontends/xforms/forms/form_url.fd:44
 #, fuzzy
-msgid "URL|#U"
+msgid "URL:|#U"
 msgstr "URL...|U"
-
-#: ../src/frontends/xforms/forms/form_url.fd:62
-#, fuzzy
-msgid "Name|#N"
-msgstr "Meno"
 
 #: ../src/frontends/xforms/forms/form_url.fd:80
 msgid "HTML type|#H"
@@ -2276,12 +2232,12 @@ msgstr "©tandardný"
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
 #, fuzzy
 msgid "Form1"
 msgstr "Formáty"
@@ -2301,7 +2257,7 @@ msgid "Cite &Style:"
 msgstr "Typ úvodzoviek    "
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
-#: src/frontends/qt2/QDocumentDialog.C:71
+#: src/frontends/qt2/QDocumentDialog.C:70
 #: src/frontends/xforms/FormDocument.C:347
 msgid "Bullets"
 msgstr "Odrá¾ky"
@@ -2311,7 +2267,7 @@ msgstr "Odrá¾ky"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:104
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:121
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
-#: src/frontends/qt2/QDocument.C:135 src/frontends/qt2/QDocument.C:145
+#: src/frontends/qt2/QDocument.C:126 src/frontends/qt2/QDocument.C:136
 #, fuzzy
 msgid "default"
 msgstr "©tandardný"
@@ -2326,6 +2282,10 @@ msgstr "Odrá¾ky"
 msgid "&Size:"
 msgstr "Veµkos»:|#e"
 
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:257
+msgid "tiny"
+msgstr "drobné"
+
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:263
 msgid "script"
 msgstr "skript"
@@ -2333,6 +2293,18 @@ msgstr "skript"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:269
 msgid "footnote"
 msgstr "poznámka"
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:275
+msgid "small"
+msgstr "malé"
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:281
+msgid "normal"
+msgstr "normálne"
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:287
+msgid "large"
+msgstr "veµké"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:293
 #: src/frontends/controllers/character.C:145 src/lyxfont.C:57
@@ -2342,6 +2314,10 @@ msgstr "Veµké"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:299
 msgid "LARGE"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:305
+msgid "huge"
+msgstr "ozrutné"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:311
 #: src/frontends/controllers/character.C:157 src/lyxfont.C:58
@@ -2356,64 +2332,69 @@ msgstr "Formáty"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
 #, fuzzy
-msgid "Document &class :"
+msgid "Document &class:"
 msgstr "Dokument exportovaný ako "
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
 #, fuzzy
-msgid "Op&tions :"
+msgid "Op&tions:"
 msgstr "Mo¾nosti"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
 #, fuzzy
-msgid "Page &style :"
+msgid "Page &style:"
 msgstr "©týl strany:|#©"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:142
-#, fuzzy
-msgid "&Font && size :"
-msgstr "Veµkos» písma:|#O"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:161
-#, fuzzy
-msgid "Float &placement:"
-msgstr "Umiestnenie objektov:|#U"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:231
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
 #, fuzzy
 msgid "&Indent"
 msgstr "Odsadenie"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:242
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
 #, fuzzy
 msgid "S&kip"
 msgstr "Medzerou|#M"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
+#, fuzzy
+msgid "Float &placement:"
+msgstr "Umiestnenie objektov:|#U"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
+#, fuzzy
+msgid "&Font && size:"
+msgstr "Veµkos» písma:|#O"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
+#, fuzzy
+msgid "&Line spacing:"
+msgstr "Medzera"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:64
+#, fuzzy
+msgid "&Single"
+msgstr "Jednoduché"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:75
+#, fuzzy
+msgid "&Double"
+msgstr "Dvojité"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
+#, fuzzy
+msgid "&Type:"
+msgstr "Typ:"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:144
 #, fuzzy
 msgid "&Language:"
 msgstr "Jazyk:"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:70
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:167
 #, fuzzy
-msgid "Quote style"
-msgstr "Typ úvodzoviek    "
-
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:93
-#, fuzzy
-msgid "&Single"
-msgstr "Jednoduché"
-
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:104
-#, fuzzy
-msgid "&Double"
-msgstr "Dvojité"
-
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:129
-#, fuzzy
-msgid "&Type:"
-msgstr "Typ:"
+msgid "&Encoding:"
+msgstr "Kódovanie"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:45
 #, fuzzy
@@ -2457,46 +2438,36 @@ msgstr "Vý¹ka hlavièky:|#i"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:45
 #, fuzzy
-msgid "Numbering depth"
+msgid "Numbering Depth"
 msgstr "Håbka vnorenia oddielov"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:64
 #, fuzzy
-msgid "&Section :"
+msgid "&Section:"
 msgstr "Oddiel"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:79
 #, fuzzy
-msgid "&Table of contents :"
+msgid "&Table of contents:"
 msgstr "Obsah"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:41
-#: src/frontends/qt2/QDocumentDialog.C:67
+#: src/frontends/qt2/QDocumentDialog.C:73
 #, fuzzy
 msgid "Packages"
 msgstr "Balíèek|#B"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:78
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:60
 #, fuzzy
 msgid "Use AMS &math"
 msgstr "Pou¾i» AMS Matematiku|#M"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:125
-#, fuzzy
-msgid "Line spacing :"
-msgstr "Medzera"
-
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:136
-#, fuzzy
-msgid "Encoding:"
-msgstr "Kódovanie"
-
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:149
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:73
 msgid "Options"
 msgstr "Mo¾nosti"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:168
-msgid "Postscript &driver :"
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:92
+msgid "Postscript &driver:"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:62
@@ -2511,7 +2482,7 @@ msgstr "Nový dokument"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:84
 #, fuzzy
-msgid "Paper size"
+msgid "Paper Size"
 msgstr "veµkos» papiera"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:111
@@ -2521,8 +2492,8 @@ msgstr "Vý¹ka"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 #, fuzzy
 msgid "&Width:"
 msgstr "©írka"
@@ -2553,10 +2524,288 @@ msgid "&Dummy"
 msgstr "Súhrn"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:179
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:121
 #: src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Cancel"
 msgstr "&Zru¹i»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+#, fuzzy
+msgid "Bibtex"
+msgstr "BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+#, fuzzy
+msgid "Databa&ses"
+msgstr "Databázy:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+#, fuzzy
+msgid "Available BibTeX databases"
+msgstr "Dostupné kµúèe"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr "&Prida»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+msgid "Add a BibTeX file manually"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "Prechádza»..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
+#, fuzzy
+msgid "Browse for a BibTeX database file"
+msgstr "Prepnutie ¹týlu TeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+#, fuzzy
+msgid "&Delete"
+msgstr "Vymaza»|#m"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+#, fuzzy
+msgid "St&yle"
+msgstr "©týl:  "
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "Prepnutie ¹týlu TeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#, fuzzy
+msgid "&Browse..."
+msgstr "Prechádza»..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+#, fuzzy
+msgid "Choose a style file"
+msgstr "Zvoµte ¹ablónu"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "&Aktualizova»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+#, fuzzy
+msgid "Update style list"
+msgstr "Upravi» nastavenia"
+
+#. /
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
+msgid "Cancel"
+msgstr "Zru¹i»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+#, fuzzy
+msgid "Add bibliography to &TOC"
+msgstr "Polo¾ka literatúry"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "Zobrazi» obsah"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+#, fuzzy
+msgid "Character"
+msgstr "Znak...|Z"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+#, fuzzy
+msgid "&Family:"
+msgstr "Rodina:|#R"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+#, fuzzy
+msgid "&Series:"
+msgstr "Váha|#V"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+msgid "Font series"
+msgstr ""
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Jazyk"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+#, fuzzy
+msgid "Font shape"
+msgstr "Písmo: "
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+#, fuzzy
+msgid "Font color"
+msgstr "Písmo: "
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+#, fuzzy
+msgid "S&hape:"
+msgstr "Tvar|#T"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+#, fuzzy
+msgid "&Color:"
+msgstr "Farby"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+#, fuzzy
+msgid "&Toggle all"
+msgstr "Prepnú» tuèné"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+#, fuzzy
+msgid "toggle font on all of the above"
+msgstr "V¹etky tieto prepnú»|#i"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+#, fuzzy
+msgid "Never Toggled"
+msgstr "Toto nie je nikdy zapnuté"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+#, fuzzy
+msgid "Si&ze:"
+msgstr "Veµkos»:|#e"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+#, fuzzy
+msgid "Font size"
+msgstr "Veµkos» písma:|#O"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+#, fuzzy
+msgid "Always Toggled"
+msgstr "Toto nie je nikdy vypnuté"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+#, fuzzy
+msgid "&Misc:"
+msgstr "Rôzne"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+#, fuzzy
+msgid "Auto apply"
+msgstr "&Pou¾i»"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+msgid "&OK"
+msgstr "&OK"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+msgid "&Apply"
+msgstr "&Pou¾i»"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+msgid "&Close"
+msgstr "&Zavrie»"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
@@ -2564,39 +2813,15 @@ msgid "Citation"
 msgstr "Citácia"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 msgid "&Restore"
 msgstr "O&bnovi»"
-
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:168
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-msgid "&Apply"
-msgstr "&Pou¾i»"
-
-#. /
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:942
-msgid "Cancel"
-msgstr "Zru¹i»"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -2632,10 +2857,10 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 msgid "New Item"
 msgstr ""
 
@@ -2767,33 +2992,76 @@ msgstr "Vlo¾i»|I"
 msgid "Insert the delimiters"
 msgstr "Vlo¾i» poslednú polo¾ku indexu"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-msgid "&Close"
-msgstr "&Zavrie»"
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+#, fuzzy
+msgid "title here"
+msgstr "HlavièkaNadpisu"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+#, fuzzy
+msgid "Use Class Defaults"
+msgstr "Kontrola posledných súborov|#K"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+#, fuzzy
+msgid "Reset default params of the current class"
+msgstr "prednastavené hodnoty tejto triedy dokumentov?"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+#, fuzzy
+msgid "Save as Document Defaults"
+msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné|U"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[nezobrazené]"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+#, fuzzy
+msgid "Display"
+msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+#, fuzzy
+msgid "&Collapsed"
+msgstr "Usporiadané|#U"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+#, fuzzy
+msgid "&Open"
+msgstr "Otvori»"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+msgid "Show ERT contents"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "LaTeX chyba"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+#, fuzzy
+msgid "LaTeX error messages"
+msgstr "LaTeX chyba"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 #, fuzzy
@@ -2806,7 +3074,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
 #, fuzzy
-msgid "Advanced placement options"
+msgid "Advanced Placement Options"
 msgstr "Extra nastavenia"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:94
@@ -2871,1510 +3139,23 @@ msgstr "Zvlá¹tny ståpec"
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:157
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-msgid "&OK"
-msgstr "&OK"
-
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
-#: src/insets/insetindex.C:70
-msgid "Index"
-msgstr "Index"
-
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-#, fuzzy
-msgid "&Keyword"
-msgstr "Kµúèové slovo"
-
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
-msgid "Index entry"
-msgstr "Polo¾ka indexu"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
-#, fuzzy
-msgid "LyX: Math Panel"
-msgstr "Matematický panel"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:98
-#, fuzzy
-msgid "Insert root"
-msgstr "Vlo¾i» úvodzovky"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:117
-#, fuzzy
-msgid "Insert spacing"
-msgstr "Medzera"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:136
-msgid "Set limits style"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:155
-#, fuzzy
-msgid "Set math font"
-msgstr "Nastavi» veµkos» písma"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
-msgid "Insert fraction (\frac)"
-msgstr "Vlo¾enie citácie"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
-msgid "Toggle between display mode"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
-#, fuzzy
-msgid "Insert matrix"
-msgstr "Vlo¾i» prílohu"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
-#, fuzzy
-msgid "Subscript"
-msgstr "Dolný index|D"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
-#, fuzzy
-msgid "Superscript"
-msgstr "Horný index|H"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
-msgid "Show delimiter and bracket dialog"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:381
-#, fuzzy
-msgid "&Functions"
-msgstr "Funkcie"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
-#, fuzzy
-msgid "Select a function or operator to insert"
-msgstr "Zvoµte dokument na vlo¾enie"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
-#, fuzzy
-msgid "Symbols"
-msgstr "Symbol"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:493
-#, fuzzy
-msgid "Operators"
-msgstr "Esperanto"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:499
-msgid "Big operators"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:505
-#, fuzzy
-msgid "Relations"
-msgstr "Separácia"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:517
-#: src/frontends/xforms/FormMathsPanel.C:137
-#, fuzzy
-msgid "Arrows"
-msgstr "Prechádza»"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:529
-msgid "Frame decorations"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:535
-msgid "Miscellaneous"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:541
-#, fuzzy
-msgid "AMS operators"
-msgstr "Separácia"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:547
-#, fuzzy
-msgid "AMS relations"
-msgstr "Separácia"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:553
-#, fuzzy
-msgid "AMS negated relations"
-msgstr "Separácia"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:559
-#, fuzzy
-msgid "AMS arrows"
-msgstr "Prechádza»"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:565
-#, fuzzy
-msgid "AMS Miscellaneous"
-msgstr "Rôzne"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
-#, fuzzy
-msgid "Select a page of symbols"
-msgstr "Zvolené kµúèe"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
-msgid "&Detach panel"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:659
-msgid "Open this panel as a separate window"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
-#, fuzzy
-msgid "Minipage settings"
-msgstr "Minipage"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
-#, fuzzy
-msgid "Top"
-msgstr "&Hore"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
-#, fuzzy
-msgid "Middle"
-msgstr "Na &stred"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
-#, fuzzy
-msgid "Bottom"
-msgstr "&Dole"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
-#, fuzzy
-msgid "Vertical alignment"
-msgstr "Vertikálne zarovnávanie|#V"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
-#, fuzzy
-msgid "A&lignment:"
-msgstr "Zarovnanie"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:158
-msgid "Units of width value"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:170
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:176
-#, fuzzy
-msgid "Width value"
-msgstr "©írka"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:181
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:187
-msgid "&Units:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
-msgstr "Nastavenia"
-
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-#, fuzzy
-msgid "&Save"
-msgstr "Ulo¾i»"
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
-msgid "ASCII settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:56
-#, fuzzy
-msgid "&roff command:"
-msgstr "Pou¾ívateµský príkaz"
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
-#, fuzzy
-msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Toto je maximálna då¾ka riadku pri exporte ASCII súboru (LaTeX, SGML alebo "
-"be¾ný text)."
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
-msgid "Output &line length:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:139
-msgid "External app for formating tables in ASCII output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:133
-#: src/frontends/xforms/FormPreferences.C:210
-msgid "Colors"
-msgstr "Farby"
-
-#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:56
-#, fuzzy
-msgid "&Colors"
-msgstr "Farby"
-
-#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:93
-#, fuzzy
-msgid "&Alter ..."
-msgstr "iné..."
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:22
-#, fuzzy
-msgid "File Conversion"
-msgstr "Chyby konverzie!"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:56
-#, fuzzy
-msgid "&Converters"
-msgstr "Konvertor"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:106
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:86
-#, fuzzy
-msgid "&New"
-msgstr "text"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:117
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:110
-#, fuzzy
-msgid "&Remove"
-msgstr "O&bnovi»"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:176
-#, fuzzy
-msgid "C&onverter:"
-msgstr "Konvertor"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:212
-#, fuzzy
-msgid "&To:"
-msgstr "&Hore"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-#, fuzzy
-msgid "F&rom:"
-msgstr "Z|#Z"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
-#, fuzzy
-msgid "E&xtra flag:"
-msgstr "Upravi» súbor|#U"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:281
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:282
-#, fuzzy
-msgid "&Modify"
-msgstr "Modifikova»|#M"
-
-#: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
-#, fuzzy
-msgid "Date Format"
-msgstr "formát dátumu|#f"
-
-#: ../src/frontends/qt2/ui/QPrefDateModule.ui:56
-#, fuzzy
-msgid "&Date format:"
-msgstr "formát dátumu|#f"
-
-#: ../src/frontends/qt2/ui/QPrefDateModule.ui:71
-msgid "Date format for strftime output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:22
-#, fuzzy
-msgid "Display insets"
-msgstr "Grafika"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-#, fuzzy
-msgid "Monochrome"
-msgstr "monochromaticky|#m"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-#, fuzzy
-msgid "Grayscale"
-msgstr "v odtieòoch ¹edi|#o"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-#, fuzzy
-msgid "Color"
-msgstr "Farby"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
-#, fuzzy
-msgid "Do not display"
-msgstr "Nezobrazova»|#b"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:87
-#, fuzzy
-msgid "Display &Graphics:"
-msgstr "Grafika"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
-msgid "Instant &preview"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:22
-#, fuzzy
-msgid "File Formats"
-msgstr "Formáty"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:56
-#, fuzzy
-msgid "&File formats"
-msgstr "Formáty"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:169
-#, fuzzy
-msgid "&GUI name:"
-msgstr "GUI názov|#G"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:184
-#, fuzzy
-msgid "F&ormat:"
-msgstr "Formáty"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:206
-#, fuzzy
-msgid "&Viewer:"
-msgstr "Zobrazi»"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:228
-#, fuzzy
-msgid "S&hortcut:"
-msgstr "Klávesová skratka|#s"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:243
-#, fuzzy
-msgid "E&xtension:"
-msgstr "Prípona|#P"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:137
-#, fuzzy
-msgid "Keyboard"
-msgstr "Kµúèové slovo"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-#, fuzzy
-msgid "Bro&wse..."
-msgstr "Prechádza»..."
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
-#, fuzzy
-msgid "S&econd:"
-msgstr "Oddiel"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:106
-#, fuzzy
-msgid "&First:"
-msgstr "Prvé_meno"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:121
-#, fuzzy
-msgid "Br&owse..."
-msgstr "Prechádza»..."
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:136
-#, fuzzy
-msgid "Use &keyboard map"
-msgstr "Klávesnicové mapy"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:81
-#, fuzzy
-msgid "Language settings"
-msgstr "Jazykové nast."
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:41
-#, fuzzy
-msgid "Command s&tart:"
-msgstr "Poèiatoèný príkaz|#P"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:84
-#, fuzzy
-msgid "&Default language:"
-msgstr "Prednastavený jazyk|#j"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:99
-#, fuzzy
-msgid "Command e&nd:"
-msgstr "Ukonèovací príkaz|#U"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:114
-#, fuzzy
-msgid "Language pac&kage:"
-msgstr "Jazyk:"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:129
-#, fuzzy
-msgid "Auto &begin"
-msgstr "Automatický zaèiatok|#z"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-#, fuzzy
-msgid "Use &babel"
-msgstr "Pou¾i» zahrnutie|#u"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
-#, fuzzy
-msgid "&Global"
-msgstr "G|#G"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:183
-msgid "&Right-to-left language support"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:194
-#, fuzzy
-msgid "Auto &end"
-msgstr "Automatický zaèiatok|#z"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:205
-#, fuzzy
-msgid "Mark &foreign languages"
-msgstr "Oznaèi» cudzie|#O"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
-#, fuzzy
-msgid "LaTeX settings"
-msgstr "extra nastavenia"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "©tandardný"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
-#, fuzzy
-msgid "US Letter"
-msgstr "List"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:80
-msgid "Legal"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:86
-#, fuzzy
-msgid "Executive"
-msgstr "Cvièenie"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:92
-#: src/frontends/qt2/QDocument.C:117
-msgid "A3"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:98
-#: src/frontends/qt2/QDocument.C:118
-msgid "A4"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:104
-#: src/frontends/qt2/QDocument.C:119
-msgid "A5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:110
-#: src/frontends/qt2/QDocument.C:122
-msgid "B5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:133
-#, fuzzy
-msgid "Te&X encoding:"
-msgstr "TeX kódovanie|#T"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:148
-#, fuzzy
-msgid "Default paper si&ze:"
-msgstr "Prednastavená veµkos» papiera|#p"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
-msgid "&Reset class options when document class changes"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
-#, fuzzy
-msgid "Set class options to default on class change"
-msgstr ""
-"Oznaète, ak nechcete, aby aktuálna voµba bola automaticky nahradená s tým, "
-"èo pí¹ete."
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
-#, fuzzy
-msgid "External applications"
-msgstr "extra nastavenia"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:222
-#, fuzzy
-msgid "Chec&kTeX command :"
-msgstr "Vykonanie príkazu"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
-#, fuzzy
-msgid "DVI viewer paper size options:"
-msgstr "extra nastavenia"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
-msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
-msgid "CheckTeX start options and flags"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
-#, fuzzy
-msgid "&Backup directory :"
-msgstr "Prieèinok pou¾ívateµa: "
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:122
-#, fuzzy
-msgid "&Document templates :"
-msgstr "Dokument exportovaný ako "
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:137
-#, fuzzy
-msgid "Ly&XServer pipe :"
-msgstr "Rúry LyX Serveru"
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:152
-#, fuzzy
-msgid "&Use temporary directory"
-msgstr "Prieèinok pou¾ívateµa: "
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
-#, fuzzy
-msgid "&Working directory :"
-msgstr "LyX: Vytváram prieèinok "
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
-#, fuzzy
-msgid "Printer settings"
-msgstr "Minipage"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
-#, fuzzy
-msgid "Printer &name :"
-msgstr "Tlaèiareò"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
-#, fuzzy
-msgid "Printer co&mmand:"
-msgstr "Pou¾ívateµský príkaz"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
-#, fuzzy
-msgid "Name of the default printer"
-msgstr "Urèenie prednastavenej veµkosti papiera"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
-#, fuzzy
-msgid "Adapt outp&ut"
-msgstr "adaptácia výstupu"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:123
-msgid "Use printer name explicitely"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
-#, fuzzy
-msgid "Command options"
-msgstr "príkaz"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
-#, fuzzy
-msgid "Re&verse:"
-msgstr "opaèné"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
-#, fuzzy
-msgid "To p&rinter:"
-msgstr "do tlaèiarne"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:222
-#, fuzzy
-msgid "Paper si&ze:"
-msgstr "veµkos» papiera"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:251
-#, fuzzy
-msgid "To &file:"
-msgstr "do súboru"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:287
-#, fuzzy
-msgid "Spool &command:"
-msgstr "spool príkaz"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:316
-#, fuzzy
-msgid "&Odd pages:"
-msgstr "nepárne strany"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:338
-#, fuzzy
-msgid "Paper t&ype:"
-msgstr "typ papiera"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:360
-#, fuzzy
-msgid "E&xtra options:"
-msgstr "Extra nastavenia"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:375
-msgid "Spool pref&ix:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:397
-#, fuzzy
-msgid "Co&llated:"
-msgstr "Uspo&riada»"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:419
-#, fuzzy
-msgid "&Even pages:"
-msgstr "párne strany"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:434
-#, fuzzy
-msgid "File ex&tension:"
-msgstr "prípona súboru"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
-#, fuzzy
-msgid "Lan&dscape:"
-msgstr "na ¹írku"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:478
-#, fuzzy
-msgid "Co&pies:"
-msgstr "Kópie"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:493
-#, fuzzy
-msgid "Pa&ge range:"
-msgstr "rozsah strán"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
-msgid "Specify the command option names for your printer command"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
-#: src/frontends/xforms/FormPreferences.C:204
-msgid "Screen Fonts"
-msgstr "Písmo obrazovky"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
-#, fuzzy
-msgid "Sa&ns Serif :"
-msgstr "Sans Serif"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
-#, fuzzy
-msgid "T&ypewriter :"
-msgstr "Písací stroj"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
-#, fuzzy
-msgid "&Roman :"
-msgstr "Roman"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
-#, fuzzy
-msgid "Screen &DPI:"
-msgstr "DPI pre obrazovku|#D"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
-#, fuzzy
-msgid "&Zoom %:"
-msgstr "Zväè¹enie %|#Z"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
-#, fuzzy
-msgid "Font sizes"
-msgstr "Veµkos» písma:|#O"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:405
-#, fuzzy
-msgid "Larger:"
-msgstr "Väè¹í"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:420
-#, fuzzy
-msgid "Largest:"
-msgstr "Najväè¹ie"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:442
-#, fuzzy
-msgid "Huge:"
-msgstr "Obrovské"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
-#, fuzzy
-msgid "Hugest:"
-msgstr "Obrovské"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:472
-#, fuzzy
-msgid "Smallest:"
-msgstr "Najmen¹ie"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:487
-#, fuzzy
-msgid "Smaller:"
-msgstr "Men¹í"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:502
-#, fuzzy
-msgid "Small:"
-msgstr "Malé"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:517
-#, fuzzy
-msgid "Normal:"
-msgstr "Normálny"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:532
-#, fuzzy
-msgid "Tiny:"
-msgstr "Drobné"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:547
-#, fuzzy
-msgid "Large:"
-msgstr "Veµké"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
-#: src/frontends/xforms/FormPreferences.C:243
-msgid "Spell checker"
-msgstr "Kontrola pravopisu"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-#, fuzzy
-msgid "Spell chec&ker program:"
-msgstr "Kontrola pravopisu"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:106
-#, fuzzy
-msgid "Al&ternative language:"
-msgstr "Pou¾i» alternatívny jazyk|#a"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
-#, fuzzy
-msgid "Escape Cha&racters:"
-msgstr "©peciálne znaky|#e"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
-#, fuzzy
-msgid "Personal &dictionary:"
-msgstr "Osobný slovník"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:187
-msgid "ispell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:193
-msgid "aspell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
-#, fuzzy
-msgid "Accept compound &words"
-msgstr "Akceptova» zlo¾ené slová|#z"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
-#, fuzzy
-msgid "Use input encod&ing"
-msgstr "Pou¾i» kódovanie vstupu|#v"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:22
-msgid "UI"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
-#, fuzzy
-msgid "B&rowse..."
-msgstr "Prechádza»..."
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:67
-#, fuzzy
-msgid "&User interface file:"
-msgstr "Súbor s pou¾íva». rozhraním|#S"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:82
-#, fuzzy
-msgid "&Bind file:"
-msgstr "Bind súbor"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:139
-#, fuzzy
-msgid "Scrolling"
-msgstr "Medzera"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:173
-#, fuzzy
-msgid "W&heel mouse scroll :"
-msgstr "Skok kolieska my¹i"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-#, fuzzy
-msgid "Cursor follo&ws scrollbar"
-msgstr "Kurzor nasleduje posuvník|#K"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
-#, fuzzy
-msgid "Documents"
-msgstr "Dokument"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:233
-#, fuzzy
-msgid "B&ackup documents "
-msgstr "Ulo¾i» dokument?"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:280
-#, fuzzy
-msgid " every"
-msgstr "Prekrytie"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:310
-#, fuzzy
-msgid "minutes"
-msgstr "Èiara"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:338
-msgid "&Maximum last files :"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-msgid "Search and replace"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-#, fuzzy
-msgid "&Find:"
-msgstr "Nájs»|#n"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-#, fuzzy
-msgid "Replace &with:"
-msgstr "Nahradi» s|#s"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-#, fuzzy
-msgid "Case &sensitive"
-msgstr "Citlivý na veµkos»|#c#C"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-#, fuzzy
-msgid "&Replace"
-msgstr "Nahradi»"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-#, fuzzy
-msgid "Replace &All "
-msgstr "Nahradi» v¹etko|#A#a"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-#, fuzzy
-msgid "File: "
-msgstr "Súbor `"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-#, fuzzy
-msgid "Insert table"
-msgstr "Vlo¾i» tabuµku"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-#, fuzzy
-msgid "&Rows:"
-msgstr "Riadky"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-#, fuzzy
-msgid "Number of rows"
-msgstr "Poèet tlaèených kópií"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-#, fuzzy
-msgid "&Columns:"
-msgstr "Ståpce"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-#, fuzzy
-msgid "Number of columns"
-msgstr "Percent ståpca"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
-#: src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr "Synonymický slovník"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-#, fuzzy
-msgid "Entry"
-msgstr "Extra"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-#, fuzzy
-msgid "Thesaurus entries"
-msgstr "Synonymický slovník"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-msgid "Select a related word"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-#, fuzzy
-msgid "&Selection"
-msgstr "Výber"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-#, fuzzy
-msgid "The selected entry"
-msgstr "Polo¾ka referencie"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-#, fuzzy
-msgid "Insert URL"
-msgstr "Vlo¾i» znaèku"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
-msgid "&URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-#, fuzzy
-msgid "&Name"
-msgstr "Meno"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr "Názov asociovaný s URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-#, fuzzy
-msgid "&Generate hyperlink"
-msgstr "Generova» hyperlinky"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr "Výstup ako hyperlink ?"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-#, fuzzy
-msgid "Wrap Options"
-msgstr "Extra nastavenia"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-#, fuzzy
-msgid "Default (outer)"
-msgstr "©tandardná cesta"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "Vµavo"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "Vpravo"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-#, fuzzy
-msgid "Outer"
-msgstr "Iné ("
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-#, fuzzy
-msgid "&Placement:"
-msgstr "Miesto"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
-msgid "&Key"
-msgstr "Kµúè"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
-msgid "The citation key"
-msgstr "Vlo¾enie citácie"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-#, fuzzy
-msgid "&Label"
-msgstr "Oznaèovanie"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
-#, fuzzy
-msgid "The label as it appears in the document"
-msgstr "Názov formátu, tak ako sa objaví v ponuke."
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
-#: src/frontends/xforms/FormAboutlyx.C:70
-#, fuzzy
-msgid "Version"
-msgstr "LyX verzia "
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
-#, fuzzy
-msgid "Version goes here"
-msgstr "Kontrola verzií"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
-#: src/frontends/xforms/FormAboutlyx.C:72
-msgid "Credits"
-msgstr "Kredity"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
-#: ../lib/layouts/apa.layout:192
-msgid "Copyright"
-msgstr "Autorské práva"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-#, fuzzy
-msgid "Bibtex"
-msgstr "BibTeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-#, fuzzy
-msgid "Databa&ses"
-msgstr "Databázy:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-msgid "BibTeX database to use"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-#, fuzzy
-msgid "Available BibTeX databases"
-msgstr "Dostupné kµúèe"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-msgid "&Add"
-msgstr "&Prida»"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-msgid "Add a BibTeX database file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-msgid "Add a BibTeX file manually"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-#, fuzzy
-msgid "Browse for a BibTeX database file"
-msgstr "Prepnutie ¹týlu TeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-#, fuzzy
-msgid "&Delete"
-msgstr "Vymaza»|#m"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-#, fuzzy
-msgid "St&yle"
-msgstr "©týl:  "
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "Prepnutie ¹týlu TeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#, fuzzy
-msgid "&Browse..."
-msgstr "Prechádza»..."
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-#, fuzzy
-msgid "Choose a style file"
-msgstr "Zvoµte ¹ablónu"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-msgid "&Update"
-msgstr "&Aktualizova»"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-#, fuzzy
-msgid "Update style list"
-msgstr "Upravi» nastavenia"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-#, fuzzy
-msgid "Add bibliography to &TOC"
-msgstr "Polo¾ka literatúry"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "Zobrazi» obsah"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:66
-#: src/frontends/qt2/QCharacter.C:39
-#, fuzzy
-msgid "Character"
-msgstr "Znak...|Z"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-#, fuzzy
-msgid "&Family:"
-msgstr "Rodina:|#R"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-msgid "Font family"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-#, fuzzy
-msgid "&Series:"
-msgstr "Váha|#V"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-msgid "Font series"
-msgstr ""
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Jazyk"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-#, fuzzy
-msgid "Font shape"
-msgstr "Písmo: "
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-#, fuzzy
-msgid "Font color"
-msgstr "Písmo: "
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-#, fuzzy
-msgid "S&hape:"
-msgstr "Tvar|#T"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-#, fuzzy
-msgid "&Color:"
-msgstr "Farby"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-#, fuzzy
-msgid "&Toggle all"
-msgstr "Prepnú» tuèné"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-#, fuzzy
-msgid "toggle font on all of the above"
-msgstr "V¹etky tieto prepnú»|#i"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-#, fuzzy
-msgid "Never toggled"
-msgstr "Toto nie je nikdy zapnuté"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-#, fuzzy
-msgid "Si&ze:"
-msgstr "Veµkos»:|#e"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-#, fuzzy
-msgid "Font size"
-msgstr "Veµkos» písma:|#O"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-#, fuzzy
-msgid "Always toggled"
-msgstr "Toto nie je nikdy vypnuté"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-#, fuzzy
-msgid "&Misc:"
-msgstr "Rôzne"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-#, fuzzy
-msgid "Auto apply"
-msgstr "&Pou¾i»"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:71
-#, fuzzy
-msgid "Use Class Defaults"
-msgstr "Kontrola posledných súborov|#K"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:75
-#, fuzzy
-msgid "Reset default params of the current class"
-msgstr "prednastavené hodnoty tejto triedy dokumentov?"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:93
-#, fuzzy
-msgid "Save as Document Defaults"
-msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné|U"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:97
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:228
-#, fuzzy
-msgid "title here"
-msgstr "HlavièkaNadpisu"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "LaTeX chyba"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-#, fuzzy
-msgid "LaTeX error messages"
-msgstr "LaTeX chyba"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[nezobrazené]"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-#, fuzzy
-msgid "&Collapsed"
-msgstr "Usporiadané|#U"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
-msgid "&Open"
-msgstr "Otvori»"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-msgid "Show ERT contents"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
-#, fuzzy
-msgid "External Material"
-msgstr "Externý materiál...|x"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-#, fuzzy
-msgid "&File:"
-msgstr "&Súbor"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
-#, fuzzy
-msgid "Filename"
-msgstr "Súbor:|#S"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
-#, fuzzy
-msgid "&View Result"
-msgstr "Zobrazi» výsledok|#V"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
-#, fuzzy
-msgid "View the file"
-msgstr "Prezrie»zoznam tabuliek"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
-#, fuzzy
-msgid "&Update Result"
-msgstr "Aktualizova» výsledok|#A"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
-msgid "Update the material"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
-#, fuzzy
-msgid "Available templates"
-msgstr "Dostupné kµúèe"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
-#, fuzzy
-msgid "&Template:"
-msgstr "©ablóny"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
-#, fuzzy
-msgid "Parameters"
-msgstr "Parametre|#P"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
-#, fuzzy
-msgid "&Parameters:"
-msgstr "Parametre|#P"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
-#, fuzzy
-msgid "&Edit file"
-msgstr "Upravi» súbor|#U"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
-msgid "Edit the file externally"
-msgstr ""
-
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
 #, fuzzy
 msgid "&Graphics"
 msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#, fuzzy
+msgid "&File:"
+msgstr "&Súbor"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
 #, fuzzy
 msgid "File name of image"
 msgstr "Súbor:|#S"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-#, fuzzy
-msgid "&Browse ..."
-msgstr "Prechádza»..."
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
 #, fuzzy
@@ -4383,7 +3164,7 @@ msgstr "Zvoµte "
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
 #, fuzzy
-msgid "LyX display"
+msgid "LyX Display"
 msgstr "Nezobrazova»|#b"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
@@ -4397,7 +3178,7 @@ msgstr "Zobrazi» informácie o autorských právach"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
 #, fuzzy
-msgid "Display :"
+msgid "Display:"
 msgstr "Grafika"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
@@ -4406,9 +3187,36 @@ msgstr "Grafika"
 msgid "Screen display"
 msgstr "[nezobrazené]"
 
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "©tandardný"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+#, fuzzy
+msgid "Monochrome"
+msgstr "monochromaticky|#m"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+#, fuzzy
+msgid "Grayscale"
+msgstr "v odtieòoch ¹edi|#o"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+#, fuzzy
+msgid "Color"
+msgstr "Farby"
+
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
 #, fuzzy
-msgid "Scale :"
+msgid "Scale:"
 msgstr "©peciálne"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
@@ -4554,13 +3362,22 @@ msgstr "Matematický re¾im"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
 #, fuzzy
-msgid "Ca&ption :"
+msgid "Ca&ption:"
 msgstr "Názov"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Zavrie»"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
 #, fuzzy
@@ -4624,6 +3441,25 @@ msgstr "Skrátenýnadpis"
 msgid "Show LaTeX preview"
 msgstr "Preambula LaTeXu"
 
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
+#: src/insets/insetindex.C:70
+msgid "Index"
+msgstr "Index"
+
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+#, fuzzy
+msgid "&Keyword"
+msgstr "Kµúèové slovo"
+
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
+msgid "Index entry"
+msgstr "Polo¾ka indexu"
+
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
 msgid "Log"
 msgstr ""
@@ -4633,184 +3469,191 @@ msgstr ""
 msgid "Update the display"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
 #, fuzzy
-msgid "Center"
-msgstr "Na stred"
+msgid "LyX: Math Panel"
+msgstr "Matematický panel"
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:98
 #, fuzzy
-msgid "&Vertical:"
-msgstr "Vertikálna medzera"
+msgid "Insert root"
+msgstr "Vlo¾i» úvodzovky"
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:117
 #, fuzzy
-msgid "&Horizontal:"
-msgstr "Horizontálne zarovnávanie|#H"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
-#, fuzzy
-msgid "&General"
-msgstr "V¹eobecné"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
-msgid "Justified"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
-#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:97
-msgid "Single"
-msgstr "Jednoduché"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
-msgid "1.5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
-#: src/frontends/qt2/QDocumentDialog.C:342
-#, fuzzy
-msgid "Custom"
-msgstr "Zákazník"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
-#, fuzzy
-msgid "L&ine spacing:"
+msgid "Insert spacing"
 msgstr "Medzera"
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:136
+msgid "Set limits style"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:155
 #, fuzzy
-msgid "Alig&nment:"
+msgid "Set math font"
+msgstr "Nastavi» veµkos» písma"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
+#, fuzzy
+msgid "Insert fraction (\frac)"
+msgstr "Vlo¾enie citácie"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
+msgid "Toggle between display mode"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
+#, fuzzy
+msgid "Insert matrix"
+msgstr "Vlo¾i» prílohu"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
+#, fuzzy
+msgid "Subscript"
+msgstr "Dolný index|D"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
+#, fuzzy
+msgid "Superscript"
+msgstr "Horný index|H"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
+msgid "Show delimiter and bracket dialog"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:381
+#, fuzzy
+msgid "&Functions"
+msgstr "Funkcie"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
+#, fuzzy
+msgid "Select a function or operator to insert"
+msgstr "Zvoµte dokument na vlo¾enie"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
+#, fuzzy
+msgid "Symbols"
+msgstr "Symbol"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:493
+#, fuzzy
+msgid "Operators"
+msgstr "Esperanto"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:499
+msgid "Big operators"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:505
+#, fuzzy
+msgid "Relations"
+msgstr "Separácia"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:517
+#: src/frontends/xforms/FormMathsPanel.C:137
+#, fuzzy
+msgid "Arrows"
+msgstr "Prechádza»"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:529
+msgid "Frame decorations"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:535
+msgid "Miscellaneous"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:541
+#, fuzzy
+msgid "AMS operators"
+msgstr "Separácia"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:547
+#, fuzzy
+msgid "AMS relations"
+msgstr "Separácia"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:553
+#, fuzzy
+msgid "AMS negated relations"
+msgstr "Separácia"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:559
+#, fuzzy
+msgid "AMS arrows"
+msgstr "Prechádza»"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:565
+#, fuzzy
+msgid "AMS Miscellaneous"
+msgstr "Rôzne"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
+#, fuzzy
+msgid "Select a page of symbols"
+msgstr "Zvolené kµúèe"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
+msgid "&Detach panel"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:659
+msgid "Open this panel as a separate window"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
+#, fuzzy
+msgid "Minipage settings"
+msgstr "Minipage"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#, fuzzy
+msgid "Top"
+msgstr "&Hore"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
+#, fuzzy
+msgid "Middle"
+msgstr "Na &stred"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#, fuzzy
+msgid "Bottom"
+msgstr "&Dole"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
+#, fuzzy
+msgid "Vertical alignment"
+msgstr "Vertikálne zarovnávanie|#V"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
+#, fuzzy
+msgid "A&lignment:"
 msgstr "Zarovnanie"
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-#, fuzzy
-msgid "No &indent"
-msgstr "Notácia"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
-#, fuzzy
-msgid "&Spacing"
-msgstr "Medzera"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
-#, fuzzy
-msgid "Above paragraph"
-msgstr "jeden odsek"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
-#, fuzzy
-msgid "S&pacing:"
-msgstr "Medzera"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
-msgid "&Keep space:"
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:158
+msgid "Units of width value"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:170
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:176
 #, fuzzy
-msgid "&Unit:"
-msgstr "Písmo: "
+msgid "Width value"
+msgstr "©írka"
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
-#, fuzzy
-msgid "&Value:"
-msgstr "Hodnota"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
-msgid "None"
-msgstr "¾iadne"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
-#, fuzzy
-msgid "DefSkip"
-msgstr "Definovaná"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
-#, fuzzy
-msgid "SmallSkip"
-msgstr "Malá"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
-#, fuzzy
-msgid "MedSkip"
-msgstr "Stredná"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
-#, fuzzy
-msgid "BigSkip"
-msgstr "Veµká"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
-msgid "VFill"
-msgstr "Výplnok"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
-#, fuzzy
-msgid "Below paragraph"
-msgstr "jeden odsek"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
-#, fuzzy
-msgid "&Lines && Pagebreaks"
-msgstr "Zlom strany"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-#, fuzzy
-msgid "Label width"
-msgstr "©írka znaèky"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-#, fuzzy
-msgid "Lon&gest label"
-msgstr "Dlhá tabuµka|#l"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
-#, fuzzy
-msgid "L&ines"
-msgstr "Èiara"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
-#, fuzzy
-msgid "A&bove"
-msgstr "Nad:|#N"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
-#, fuzzy
-msgid "B&elow"
-msgstr "Pod:|#P"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
-#, fuzzy
-msgid "&Page breaks"
-msgstr "Zalomenie strany"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
-#, fuzzy
-msgid "Abo&ve"
-msgstr "Nad:|#N"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
-#, fuzzy
-msgid "Belo&w"
-msgstr "Pod:|#P"
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:181
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:187
+msgid "&Units:"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
 #, fuzzy
@@ -4823,7 +3666,7 @@ msgid "The LaTeX pre-amble"
 msgstr "Preambula LaTeXu"
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit ..."
+msgid "&Edit..."
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
@@ -5019,6 +3862,49 @@ msgstr "Dostupné referencie"
 msgid "&Document:"
 msgstr "Dokument"
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+msgid "Search and replace"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+#, fuzzy
+msgid "&Find:"
+msgstr "Nájs»|#n"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+#, fuzzy
+msgid "Replace &with:"
+msgstr "Nahradi» s|#s"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+#, fuzzy
+msgid "Case &sensitive"
+msgstr "Citlivý na veµkos»|#c#C"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+#, fuzzy
+msgid "&Replace"
+msgstr "Nahradi»"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+#, fuzzy
+msgid "Replace &All"
+msgstr "Nahradi» v¹etko|#A#a"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
 #, fuzzy
 msgid "Custom Export"
@@ -5042,6 +3928,11 @@ msgstr ""
 #, fuzzy
 msgid "Available export converters"
 msgstr "Dostupné kµúèe"
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+#, fuzzy
+msgid "File:"
+msgstr "Súbor `"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
@@ -5141,6 +4032,30 @@ msgstr ""
 #, fuzzy
 msgid "Block"
 msgstr "Do bloku"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "Vµavo"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#, fuzzy
+msgid "Center"
+msgstr "Na stred"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "Vpravo"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
 #, fuzzy
@@ -5364,7 +4279,7 @@ msgid "Set a page break on the current row"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
-msgid "Current cell :"
+msgid "Current cell:"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
@@ -5374,6 +4289,163 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
 msgid "Current column position"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr "Synonymický slovník"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+#, fuzzy
+msgid "Entry"
+msgstr "Extra"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
+#, fuzzy
+msgid "Thesaurus entries"
+msgstr "Synonymický slovník"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+msgid "Select a related word"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+#, fuzzy
+msgid "&Selection"
+msgstr "Výber"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+#, fuzzy
+msgid "The selected entry"
+msgstr "Polo¾ka referencie"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
+#, fuzzy
+msgid "Table Of Contents"
+msgstr "Obsah"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
+#, fuzzy
+msgid "&Type"
+msgstr "Typ"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
+msgid "Contents list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+#, fuzzy
+msgid "Insert URL"
+msgstr "Vlo¾i» znaèku"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+#, fuzzy
+msgid "&URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+#, fuzzy
+msgid "&Name"
+msgstr "Meno"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr "Názov asociovaný s URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+#, fuzzy
+msgid "&Generate hyperlink"
+msgstr "Generova» hyperlinky"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr "Výstup ako hyperlink ?"
+
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+#, fuzzy
+msgid "Version control log"
+msgstr "Kontrola verzií"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+#, fuzzy
+msgid "Wrap Options"
+msgstr "Extra nastavenia"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+#, fuzzy
+msgid "Default (outer)"
+msgstr "©tandardná cesta"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+#, fuzzy
+msgid "Outer"
+msgstr "Iné ("
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+#, fuzzy
+msgid "&Placement:"
+msgstr "Miesto"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+#, fuzzy
+msgid "&Rows:"
+msgstr "Riadky"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+#, fuzzy
+msgid "Number of rows"
+msgstr "Poèet tlaèených kópií"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+#, fuzzy
+msgid "&Columns:"
+msgstr "Ståpce"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+#, fuzzy
+msgid "Number of columns"
+msgstr "Percent ståpca"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#, fuzzy
+msgid "&Vertical:"
+msgstr "Vertikálna medzera"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#, fuzzy
+msgid "&Horizontal:"
+msgstr "Horizontálne zarovnávanie|#H"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
 msgid "LaTeX classes"
@@ -5430,24 +4502,889 @@ msgstr ""
 msgid "Close this dialog"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-#, fuzzy
-msgid "Table Of Contents"
-msgstr "Obsah"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
-msgid "&Type"
-msgstr "Typ"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
-msgid "Contents list"
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
+msgid "ASCII settings"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:56
 #, fuzzy
-msgid "Version control log"
+msgid "&roff command:"
+msgstr "Pou¾ívateµský príkaz"
+
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
+#, fuzzy
+msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
+msgstr ""
+"Toto je maximálna då¾ka riadku pri exporte ASCII súboru (LaTeX, SGML alebo "
+"be¾ný text)."
+
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
+msgid "Output &line length:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:139
+msgid "External app for formating tables in ASCII output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:133
+#: src/frontends/xforms/FormPreferences.C:210
+msgid "Colors"
+msgstr "Farby"
+
+#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:56
+#, fuzzy
+msgid "&Colors"
+msgstr "Farby"
+
+#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:93
+#, fuzzy
+msgid "&Alter..."
+msgstr "iné..."
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:22
+#, fuzzy
+msgid "File Conversion"
+msgstr "Chyby konverzie!"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:56
+#, fuzzy
+msgid "&Converters"
+msgstr "Konvertor"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:106
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:86
+#, fuzzy
+msgid "&New"
+msgstr "text"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:117
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:110
+#, fuzzy
+msgid "&Remove"
+msgstr "O&bnovi»"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:176
+#, fuzzy
+msgid "C&onverter:"
+msgstr "Konvertor"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:212
+#, fuzzy
+msgid "&To:"
+msgstr "&Hore"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
+#, fuzzy
+msgid "F&rom:"
+msgstr "Z|#Z"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
+#, fuzzy
+msgid "E&xtra flag:"
+msgstr "Upravi» súbor|#U"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:281
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:282
+#, fuzzy
+msgid "&Modify"
+msgstr "Modifikova»|#M"
+
+#: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
+#, fuzzy
+msgid "Date Format"
+msgstr "formát dátumu|#f"
+
+#: ../src/frontends/qt2/ui/QPrefDateModule.ui:56
+#, fuzzy
+msgid "&Date format:"
+msgstr "formát dátumu|#f"
+
+#: ../src/frontends/qt2/ui/QPrefDateModule.ui:71
+msgid "Date format for strftime output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:22
+#, fuzzy
+msgid "Display insets"
+msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
+#, fuzzy
+msgid "Do not display"
+msgstr "Nezobrazova»|#b"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:87
+#, fuzzy
+msgid "Display &Graphics:"
+msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
+msgid "Instant &preview"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:22
+#, fuzzy
+msgid "File Formats"
+msgstr "Formáty"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:56
+#, fuzzy
+msgid "&File formats"
+msgstr "Formáty"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:169
+#, fuzzy
+msgid "&GUI name:"
+msgstr "GUI názov|#G"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:184
+#, fuzzy
+msgid "F&ormat:"
+msgstr "Formáty"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:206
+#, fuzzy
+msgid "&Viewer:"
+msgstr "Zobrazi»"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:228
+#, fuzzy
+msgid "S&hortcut:"
+msgstr "Klávesová skratka|#s"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:243
+#, fuzzy
+msgid "E&xtension:"
+msgstr "Prípona|#P"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:137
+#, fuzzy
+msgid "Keyboard"
+msgstr "Kµúèové slovo"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
+#, fuzzy
+msgid "S&econd:"
+msgstr "Oddiel"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:106
+#, fuzzy
+msgid "&First:"
+msgstr "Prvé_meno"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:121
+#, fuzzy
+msgid "Br&owse..."
+msgstr "Prechádza»..."
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:136
+#, fuzzy
+msgid "Use &keyboard map"
+msgstr "Klávesnicové mapy"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:81
+#, fuzzy
+msgid "Language settings"
+msgstr "Jazykové nast."
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:41
+#, fuzzy
+msgid "Command s&tart:"
+msgstr "Poèiatoèný príkaz|#P"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:84
+#, fuzzy
+msgid "&Default language:"
+msgstr "Prednastavený jazyk|#j"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:99
+#, fuzzy
+msgid "Command e&nd:"
+msgstr "Ukonèovací príkaz|#U"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:114
+#, fuzzy
+msgid "Language pac&kage:"
+msgstr "Jazyk:"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:129
+#, fuzzy
+msgid "Auto &begin"
+msgstr "Automatický zaèiatok|#z"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
+#, fuzzy
+msgid "Use &babel"
+msgstr "Pou¾i» zahrnutie|#u"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
+#, fuzzy
+msgid "&Global"
+msgstr "G|#G"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:183
+msgid "&Right-to-left language support"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:194
+#, fuzzy
+msgid "Auto &end"
+msgstr "Automatický zaèiatok|#z"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:205
+#, fuzzy
+msgid "Mark &foreign languages"
+msgstr "Oznaèi» cudzie|#O"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
+#, fuzzy
+msgid "LaTeX settings"
+msgstr "extra nastavenia"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
+#, fuzzy
+msgid "US Letter"
+msgstr "List"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:80
+msgid "Legal"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:86
+#, fuzzy
+msgid "Executive"
+msgstr "Cvièenie"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:92
+#: src/frontends/qt2/QDocument.C:108
+msgid "A3"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:98
+#: src/frontends/qt2/QDocument.C:109
+msgid "A4"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:104
+#: src/frontends/qt2/QDocument.C:110
+msgid "A5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:110
+#: src/frontends/qt2/QDocument.C:113
+msgid "B5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:133
+#, fuzzy
+msgid "Te&X encoding:"
+msgstr "TeX kódovanie|#T"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:148
+#, fuzzy
+msgid "Default paper si&ze:"
+msgstr "Prednastavená veµkos» papiera|#p"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
+msgid "&Reset class options when document class changes"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
+#, fuzzy
+msgid "Set class options to default on class change"
+msgstr ""
+"Oznaète, ak nechcete, aby aktuálna voµba bola automaticky nahradená s tým, "
+"èo pí¹ete."
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
+#, fuzzy
+msgid "External Applications"
+msgstr "extra nastavenia"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:222
+#, fuzzy
+msgid "Chec&kTeX command:"
+msgstr "Vykonanie príkazu"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
+#, fuzzy
+msgid "DVI viewer paper size options:"
+msgstr "extra nastavenia"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
+msgid "Optional paper size flag (-paper) for some DVI viewers"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
+msgid "CheckTeX start options and flags"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
+#, fuzzy
+msgid "&Backup directory:"
+msgstr "Prieèinok pou¾ívateµa: "
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:122
+#, fuzzy
+msgid "&Document templates:"
+msgstr "Dokument exportovaný ako "
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:137
+#, fuzzy
+msgid "Ly&XServer pipe:"
+msgstr "Rúry LyX Serveru"
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:152
+#, fuzzy
+msgid "&Use temporary directory"
+msgstr "Prieèinok pou¾ívateµa: "
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
+#, fuzzy
+msgid "&Working directory:"
+msgstr "LyX: Vytváram prieèinok "
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
+#, fuzzy
+msgid "Printer settings"
+msgstr "Minipage"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
+#, fuzzy
+msgid "Printer &name:"
+msgstr "Tlaèiareò"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
+#, fuzzy
+msgid "Printer co&mmand:"
+msgstr "Pou¾ívateµský príkaz"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
+#, fuzzy
+msgid "Name of the default printer"
+msgstr "Urèenie prednastavenej veµkosti papiera"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
+#, fuzzy
+msgid "Adapt outp&ut"
+msgstr "adaptácia výstupu"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:123
+msgid "Use printer name explicitely"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
+#, fuzzy
+msgid "Command Options"
+msgstr "príkaz"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
+#, fuzzy
+msgid "Re&verse:"
+msgstr "opaèné"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
+#, fuzzy
+msgid "To p&rinter:"
+msgstr "do tlaèiarne"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:222
+#, fuzzy
+msgid "Paper si&ze:"
+msgstr "veµkos» papiera"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:251
+#, fuzzy
+msgid "To &file:"
+msgstr "do súboru"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:287
+#, fuzzy
+msgid "Spool &command:"
+msgstr "spool príkaz"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:316
+#, fuzzy
+msgid "&Odd pages:"
+msgstr "nepárne strany"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:338
+#, fuzzy
+msgid "Paper t&ype:"
+msgstr "typ papiera"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:360
+#, fuzzy
+msgid "E&xtra options:"
+msgstr "Extra nastavenia"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:375
+msgid "Spool pref&ix:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:397
+#, fuzzy
+msgid "Co&llated:"
+msgstr "Uspo&riada»"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:419
+#, fuzzy
+msgid "&Even pages:"
+msgstr "párne strany"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:434
+#, fuzzy
+msgid "File ex&tension:"
+msgstr "prípona súboru"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
+#, fuzzy
+msgid "Lan&dscape:"
+msgstr "na ¹írku"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:478
+#, fuzzy
+msgid "Co&pies:"
+msgstr "Kópie"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:493
+#, fuzzy
+msgid "Pa&ge range:"
+msgstr "rozsah strán"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
+msgid "Specify the command option names for your printer command"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
+#: src/frontends/xforms/FormPreferences.C:204
+msgid "Screen Fonts"
+msgstr "Písmo obrazovky"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
+#, fuzzy
+msgid "Sa&ns Serif:"
+msgstr "Sans Serif"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
+#, fuzzy
+msgid "T&ypewriter:"
+msgstr "Písací stroj"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
+#, fuzzy
+msgid "&Roman:"
+msgstr "Roman"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
+#, fuzzy
+msgid "Screen &DPI:"
+msgstr "DPI pre obrazovku|#D"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
+#, fuzzy
+msgid "&Zoom %:"
+msgstr "Zväè¹enie %|#Z"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
+#, fuzzy
+msgid "Font Sizes"
+msgstr "Veµkos» písma:|#O"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
+#, fuzzy
+msgid "Hugest:"
+msgstr "Obrovské"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
+#: src/frontends/xforms/FormPreferences.C:243
+msgid "Spell checker"
+msgstr "Kontrola pravopisu"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
+#, fuzzy
+msgid "Spell chec&ker program:"
+msgstr "Kontrola pravopisu"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:106
+#, fuzzy
+msgid "Al&ternative language:"
+msgstr "Pou¾i» alternatívny jazyk|#a"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
+#, fuzzy
+msgid "Escape Cha&racters:"
+msgstr "©peciálne znaky|#e"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
+#, fuzzy
+msgid "Personal &dictionary:"
+msgstr "Osobný slovník"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:187
+msgid "ispell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:193
+msgid "aspell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#, fuzzy
+msgid "Accept compound &words"
+msgstr "Akceptova» zlo¾ené slová|#z"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#, fuzzy
+msgid "Use input encod&ing"
+msgstr "Pou¾i» kódovanie vstupu|#v"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:22
+msgid "UI"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
+#, fuzzy
+msgid "B&rowse..."
+msgstr "Prechádza»..."
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:67
+#, fuzzy
+msgid "&User interface file:"
+msgstr "Súbor s pou¾íva». rozhraním|#S"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:82
+#, fuzzy
+msgid "&Bind file:"
+msgstr "Bind súbor"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:139
+#, fuzzy
+msgid "Scrolling"
+msgstr "Medzera"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:173
+#, fuzzy
+msgid "W&heel mouse scroll:"
+msgstr "Skok kolieska my¹i"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
+#, fuzzy
+msgid "Cursor follo&ws scrollbar"
+msgstr "Kurzor nasleduje posuvník|#K"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
+#, fuzzy
+msgid "Documents"
+msgstr "Dokument"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:233
+#, fuzzy
+msgid "B&ackup documents "
+msgstr "Ulo¾i» dokument?"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:280
+#, fuzzy
+msgid " every"
+msgstr "Prekrytie"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:310
+#, fuzzy
+msgid "minutes"
+msgstr "Èiara"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:338
+msgid "&Maximum last files:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
+#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
+#: src/frontends/xforms/FormAboutlyx.C:70
+#, fuzzy
+msgid "Version"
+msgstr "LyX verzia "
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
+#, fuzzy
+msgid "Version goes here"
 msgstr "Kontrola verzií"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
+#: src/frontends/xforms/FormAboutlyx.C:72
+msgid "Credits"
+msgstr "Kredity"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
+#: ../lib/layouts/apa.layout:192
+msgid "Copyright"
+msgstr "Autorské práva"
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+#, fuzzy
+msgid "&Save"
+msgstr "Ulo¾i»"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+#, fuzzy
+msgid "&Key"
+msgstr "Kµúè"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+#, fuzzy
+msgid "The citation key"
+msgstr "Vlo¾enie citácie"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+#, fuzzy
+msgid "&Label"
+msgstr "Oznaèovanie"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "Názov formátu, tak ako sa objaví v ponuke."
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
+#, fuzzy
+msgid "External Material"
+msgstr "Externý materiál...|x"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
+#, fuzzy
+msgid "Filename"
+msgstr "Súbor:|#S"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
+#, fuzzy
+msgid "&View Result"
+msgstr "Zobrazi» výsledok|#V"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
+#, fuzzy
+msgid "View the file"
+msgstr "Prezrie»zoznam tabuliek"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
+#, fuzzy
+msgid "&Update Result"
+msgstr "Aktualizova» výsledok|#A"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
+msgid "Update the material"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
+#, fuzzy
+msgid "Available templates"
+msgstr "Dostupné kµúèe"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
+#, fuzzy
+msgid "&Template:"
+msgstr "©ablóny"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
+#, fuzzy
+msgid "Parameters"
+msgstr "Parametre|#P"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
+#, fuzzy
+msgid "&Parameters:"
+msgstr "Parametre|#P"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
+#, fuzzy
+msgid "&Edit file"
+msgstr "Upravi» súbor|#U"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
+msgid "Edit the file externally"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
+#, fuzzy
+msgid "&General"
+msgstr "V¹eobecné"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
+msgid "Justified"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
+msgid "Single"
+msgstr "Jednoduché"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
+msgid "1.5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
+#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocumentDialog.C:342
+#, fuzzy
+msgid "Custom"
+msgstr "Zákazník"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
+#, fuzzy
+msgid "L&ine spacing:"
+msgstr "Medzera"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+#, fuzzy
+msgid "Alig&nment:"
+msgstr "Zarovnanie"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
+#, fuzzy
+msgid "No &indent"
+msgstr "Notácia"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
+#, fuzzy
+msgid "&Spacing"
+msgstr "Medzera"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
+#, fuzzy
+msgid "Above paragraph"
+msgstr "jeden odsek"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
+#, fuzzy
+msgid "S&pacing:"
+msgstr "Medzera"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
+msgid "&Keep space:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+#, fuzzy
+msgid "&Unit:"
+msgstr "Písmo: "
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
+#, fuzzy
+msgid "&Value:"
+msgstr "Hodnota"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
+msgid "None"
+msgstr "¾iadne"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
+#, fuzzy
+msgid "DefSkip"
+msgstr "Definovaná"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
+#: src/frontends/qt2/QDocument.C:131
+#, fuzzy
+msgid "SmallSkip"
+msgstr "Malá"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
+#: src/frontends/qt2/QDocument.C:132
+#, fuzzy
+msgid "MedSkip"
+msgstr "Stredná"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
+#: src/frontends/qt2/QDocument.C:133
+#, fuzzy
+msgid "BigSkip"
+msgstr "Veµká"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
+msgid "VFill"
+msgstr "Výplnok"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
+#, fuzzy
+msgid "Below paragraph"
+msgstr "jeden odsek"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
+#, fuzzy
+msgid "&Lines && Pagebreaks"
+msgstr "Zlom strany"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
+#, fuzzy
+msgid "Label width"
+msgstr "©írka znaèky"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
+#, fuzzy
+msgid "Lon&gest label"
+msgstr "Dlhá tabuµka|#l"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
+#, fuzzy
+msgid "L&ines"
+msgstr "Èiara"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
+#, fuzzy
+msgid "A&bove"
+msgstr "Nad:|#N"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
+#, fuzzy
+msgid "B&elow"
+msgstr "Pod:|#P"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
+#, fuzzy
+msgid "&Page Breaks"
+msgstr "Zalomenie strany"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
+#, fuzzy
+msgid "Abo&ve"
+msgstr "Nad:|#N"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
+#, fuzzy
+msgid "Belo&w"
+msgstr "Pod:|#P"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+#, fuzzy
+msgid "Insert table"
+msgstr "Vlo¾i» tabuµku"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -5685,7 +5622,7 @@ msgstr "Kµúèové slová"
 #: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
 #: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:73
+#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -7150,11 +7087,11 @@ msgstr ""
 msgid "Welsh"
 msgstr "Walesky"
 
-#: ../lib/ui/default.ui:7 src/MenuBackend.C:682
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:684
 msgid "File|F"
 msgstr "Súbor|S"
 
-#: ../lib/ui/default.ui:8 src/MenuBackend.C:683
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:685
 msgid "Edit|E"
 msgstr "Upravi»|E"
 
@@ -7174,7 +7111,7 @@ msgstr "Prezeranie|P"
 msgid "Navigate|N"
 msgstr "Navigácia|N"
 
-#: ../lib/ui/default.ui:13 src/MenuBackend.C:685
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:687
 msgid "Documents|D"
 msgstr "Dokumenty|D"
 
@@ -7191,7 +7128,7 @@ msgstr "Nový...|N"
 msgid "New from Template...|T"
 msgstr "Nový zo ¹ablóny...|b"
 
-#: ../lib/ui/default.ui:24 src/MenuBackend.C:655
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:657
 msgid "Open...|O"
 msgstr "Otvori»...|O"
 
@@ -7216,7 +7153,7 @@ msgstr "Registrova»|R"
 msgid "Version Control|V"
 msgstr "Kontrola verzie|K"
 
-#: ../lib/ui/default.ui:32 src/MenuBackend.C:656
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:658
 msgid "Import|I"
 msgstr "Importova»|I"
 
@@ -7237,7 +7174,8 @@ msgid "Exit|x"
 msgstr "Koniec|K"
 
 #: ../lib/ui/default.ui:43
-msgid "Register|R"
+#, fuzzy
+msgid "Register...|R"
 msgstr "Registrova»|R"
 
 #: ../lib/ui/default.ui:44
@@ -7294,7 +7232,7 @@ msgstr "Vlo¾i» externú selekciu (zo schránku)|x"
 msgid "Find & Replace...|F"
 msgstr "Nájs» a nahradi»|h"
 
-#: ../lib/ui/default.ui:74 ../lib/ui/default.ui:302
+#: ../lib/ui/default.ui:74
 msgid "Tabular|T"
 msgstr "Formát tabuµky|t"
 
@@ -7310,8 +7248,13 @@ msgstr " (iba pre èítanie)"
 
 #: ../lib/ui/default.ui:78
 #, fuzzy
-msgid "Spellchecker|S"
+msgid "Spellchecker...|S"
 msgstr "Kontrola pravopisu"
+
+#: ../lib/ui/default.ui:79
+#, fuzzy
+msgid "Thesaurus..."
+msgstr "Synonymický slovník"
 
 #: ../lib/ui/default.ui:80
 msgid "Check TeX|h"
@@ -7328,7 +7271,7 @@ msgstr "Uzavretý plávajúci objekt"
 
 #: ../lib/ui/default.ui:84
 #, fuzzy
-msgid "Preferences|P"
+msgid "Preferences...|P"
 msgstr "Nastavenia"
 
 #: ../lib/ui/default.ui:85
@@ -7660,7 +7603,7 @@ msgstr "Skrátenýnadpis"
 
 #: ../lib/ui/default.ui:203
 #, fuzzy
-msgid "Index Entry|I"
+msgid "Index Entry...|I"
 msgstr "Polo¾ka indexu|i"
 
 #: ../lib/ui/default.ui:204
@@ -7923,18 +7866,23 @@ msgstr "Ascii ako odstavce...|o"
 
 #: ../lib/ui/default.ui:299
 #, fuzzy
-msgid "Character|C"
+msgid "Character...|C"
 msgstr "Znak...|Z"
 
 #: ../lib/ui/default.ui:300
 #, fuzzy
-msgid "Paragraph|P"
+msgid "Paragraph...|P"
 msgstr "Odstavec"
 
 #: ../lib/ui/default.ui:301
 #, fuzzy
-msgid "Document|D"
+msgid "Document...|D"
 msgstr "Dokumenty|D"
+
+#: ../lib/ui/default.ui:302
+#, fuzzy
+msgid "Tabular...|T"
+msgstr "Formát tabuµky|t"
 
 #: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
@@ -7964,7 +7912,7 @@ msgstr "Zvý¹enie håbky vnorenia"
 
 #: ../lib/ui/default.ui:311
 #, fuzzy
-msgid "Preamble|r"
+msgid "Preamble...|r"
 msgstr "Preambula LaTeXu...|L"
 
 #: ../lib/ui/default.ui:312
@@ -8078,146 +8026,149 @@ msgstr "Nastavenie LaTeXu|L"
 msgid "About LyX|X"
 msgstr ""
 
-#: src/BufferView.C:293 src/BufferView.C:303 src/bufferlist.C:373
-#: src/bufferlist.C:485 src/lyx_cb.C:215
+#: src/BufferView.C:299 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Chyba!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:300
 msgid "Specified file is unreadable: "
 msgstr "©pecifikovaný súbor je neèitateµný: "
 
-#: src/BufferView.C:304
-msgid "Cannot open specified file: "
-msgstr "Nie je mo¾né otvori» ¹pecifikovaný súbor: "
+#: src/BufferView.C:309 src/lyx_cb.C:447
+#, fuzzy
+msgid "Error! Cannot open specified file:"
+msgstr "Chyba! Nemô¾em otvori» ¹pecifikovaný súbor:"
 
-#: src/BufferView.C:564 src/LyXAction.C:377
+#: src/BufferView.C:569 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Vráti» spä»"
 
-#: src/BufferView.C:569
+#: src/BufferView.C:574
 msgid "No further undo information"
 msgstr "Nie je viac informácií pre funkciu Vráti» spä»"
 
-#: src/BufferView.C:581 src/LyXAction.C:334
+#: src/BufferView.C:586 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Opakova» vrátené"
 
-#: src/BufferView.C:586
+#: src/BufferView.C:591
 msgid "No further redo information"
 msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
 
-#: src/BufferView.C:597
+#: src/BufferView.C:602
 msgid "Paragraph environment type copied"
 msgstr "Parametre odstavca sú skopírované"
 
-#: src/BufferView.C:606
+#: src/BufferView.C:611
 msgid "Paragraph environment type set"
 msgstr "Parametre odstavca sú nastavené"
 
-#: src/BufferView_pimpl.C:270
+#: src/BufferView_pimpl.C:287
 msgid "Formatting document..."
 msgstr "Formátujem dokument..."
 
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:661
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:663
 msgid "Saved bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:697
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:699
 msgid "Moved to bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:878
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:880 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1681 src/lyxfunc.C:1786
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokumenty|D"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
+#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1683 src/lyxfunc.C:1788
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Príklady"
 
-#: src/BufferView_pimpl.C:870
+#: src/BufferView_pimpl.C:887 src/lyx_cb.C:120 src/lyxfunc.C:1649
+#: src/lyxfunc.C:1688
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
-#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
+#: src/BufferView_pimpl.C:896 src/lyxfunc.C:1697 src/lyxfunc.C:1717
+#: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
 msgid "Canceled."
 msgstr "Zru¹ené."
 
-#: src/BufferView_pimpl.C:892
+#: src/BufferView_pimpl.C:909
 #, fuzzy, c-format
-msgid "Inserting document %1$s ..."
+msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument"
 
-#: src/BufferView_pimpl.C:894
+#: src/BufferView_pimpl.C:911
 #, fuzzy
 msgid "Inserting document "
 msgstr "Vkladám dokument"
 
-#: src/BufferView_pimpl.C:894
-msgid " ..."
+#: src/BufferView_pimpl.C:911 src/importer.C:47 src/lyxfunc.C:986
+#: src/lyxfunc.C:1149 src/lyxfunc.C:1730
+msgid "..."
 msgstr ""
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:918
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument exportovaný ako "
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:920 src/lyxfunc.C:1742
 #, fuzzy
 msgid "Document "
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:920
 #, fuzzy
 msgid " inserted."
 msgstr "importované."
 
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:926
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dokument nie je mo¾né vlo¾i»"
 
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:928
 #, fuzzy
 msgid "Could not insert document "
 msgstr "Dokument nie je mo¾né vlo¾i»"
 
-#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1103 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Chyba"
 
-#: src/BufferView_pimpl.C:1087
+#: src/BufferView_pimpl.C:1104
 msgid "Couldn't find this label"
 msgstr "Nemô¾em nájs» túto znaèku"
 
-#: src/BufferView_pimpl.C:1088
+#: src/BufferView_pimpl.C:1105
 msgid "in current document."
 msgstr "v aktuálnom dokumente."
 
-#: src/BufferView_pimpl.C:1253
+#: src/BufferView_pimpl.C:1270
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Neznáma akcia"
@@ -8590,11 +8541,11 @@ msgstr "Vlo¾enie citácie"
 msgid "Execute command"
 msgstr "Vykonanie príkazu"
 
-#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
+#: src/LyXAction.C:165 src/MenuBackend.C:675 src/text3.C:1053
 msgid "Copy"
 msgstr "Kopírova»"
 
-#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
+#: src/LyXAction.C:166 src/MenuBackend.C:674 src/text3.C:1048
 msgid "Cut"
 msgstr "Vystrihnú»"
 
@@ -8883,7 +8834,7 @@ msgstr "Prejs» o jeden odstavec hore"
 msgid "Select previous paragraph"
 msgstr "Zvoli» predchádzajúci odstavec"
 
-#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
+#: src/LyXAction.C:323 src/MenuBackend.C:676 src/text3.C:1030
 msgid "Paste"
 msgstr "Vlo¾i»"
 
@@ -8969,8 +8920,8 @@ msgstr ""
 msgid "No description available!"
 msgstr "®iadny popis nie je k dispozícií!"
 
-#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
-#: src/MenuBackend.C:415 src/MenuBackend.C:485
+#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:396
+#: src/MenuBackend.C:417 src/MenuBackend.C:487
 msgid "No Documents Open!"
 msgstr "®iadny dokument nie je otvorený!"
 
@@ -8984,28 +8935,28 @@ msgstr "Ascii text ako riadky"
 msgid "ASCII text as paragraphs"
 msgstr "Ascii text ako odstavce"
 
-#: src/MenuBackend.C:517
+#: src/MenuBackend.C:519
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Bez obsahu%i"
 
-#: src/MenuBackend.C:654
+#: src/MenuBackend.C:656
 msgid "New...|N"
 msgstr "Nový...|N"
 
-#: src/MenuBackend.C:657
+#: src/MenuBackend.C:659
 msgid "Quit|Q"
 msgstr "Koniec|K"
 
-#: src/MenuBackend.C:665
+#: src/MenuBackend.C:667
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:667
+#: src/MenuBackend.C:669
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:675
+#: src/MenuBackend.C:677
 msgid "Emphasize"
 msgstr "Zvýrazni»"
 
@@ -9059,9 +9010,10 @@ msgstr "Chyba textovej triedy"
 msgid "The document uses an unknown textclass \"%1$s\"."
 msgstr "Dokument pou¾íva neznámu textovú triedu \""
 
-#: src/buffer.C:624 src/buffer.C:630
-msgid "LyX will not be able to produce output correctly."
-msgstr "LyX nebude schopný vyprodukova» správne výstup."
+#: src/buffer.C:624 src/buffer.C:630 src/buffer.C:644 src/buffer.C:649
+#, fuzzy
+msgid "-- substituting default."
+msgstr "--nahrádzam implicitnú hodnotu"
 
 #: src/buffer.C:628
 #, fuzzy
@@ -9072,10 +9024,6 @@ msgstr "Dokument pou¾íva neznámu textovú triedu \""
 #, fuzzy, c-format
 msgid "Can't load textclass %1$s"
 msgstr "Nemô¾em naèíta» textovú triedu "
-
-#: src/buffer.C:644 src/buffer.C:649
-msgid "-- substituting default"
-msgstr "--nahrádzam implicitnú hodnotu"
 
 #: src/buffer.C:647
 #, fuzzy
@@ -9237,7 +9185,7 @@ msgstr "Chcete rad¹ej túto pou¾i»?"
 msgid "Unable to open template"
 msgstr "Nie je mo¾né otvori» ¹ablónu"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1819
+#: src/bufferlist.C:518 src/lyxfunc.C:1818
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otvorený:"
 
@@ -9287,8 +9235,9 @@ msgstr ", Håbka: "
 msgid ", Spacing: "
 msgstr ", Riadkovanie: "
 
-#: src/bufferview_funcs.C:191
-msgid "Onehalf"
+#: src/bufferview_funcs.C:191 src/frontends/qt2/QDocument.C:145
+#, fuzzy
+msgid "OneHalf"
 msgstr "Polovièné"
 
 #: src/bufferview_funcs.C:197
@@ -9683,6 +9632,7 @@ msgid "Select external file"
 msgstr "Zvoli» nasledujúci riadok"
 
 #: src/frontends/controllers/ControlGraphics.C:84
+#: src/frontends/qt2/QGraphicsDialog.C:95
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Zvoµte názov výstupu"
@@ -9844,18 +9794,18 @@ msgstr "1 re»azec bol nahradený."
 msgid " strings have been replaced."
 msgstr " re»azce boli nahradené."
 
-#: src/frontends/controllers/ControlSpellchecker.C:196
+#: src/frontends/controllers/ControlSpellchecker.C:178
 #, fuzzy
 msgid "Spellchecking completed!"
 msgstr "Kontrola pravopisu je dokonèená!"
 
-#: src/frontends/controllers/ControlSpellchecker.C:204
-#: src/frontends/controllers/ControlSpellchecker.C:210
+#: src/frontends/controllers/ControlSpellchecker.C:186
+#: src/frontends/controllers/ControlSpellchecker.C:192
 #, fuzzy
 msgid "One word checked."
 msgstr "Jedna chyba nájdená"
 
-#: src/frontends/controllers/ControlSpellchecker.C:217
+#: src/frontends/controllers/ControlSpellchecker.C:199
 msgid ""
 "The spell checker has died for some reason.\n"
 "Maybe it has been killed."
@@ -9906,7 +9856,7 @@ msgstr "®iadne zmeny"
 msgid "Roman"
 msgstr "Roman"
 
-#: src/frontends/controllers/character.C:39
+#: src/frontends/controllers/character.C:39 src/lyxfont.C:45
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
@@ -10042,8 +9992,14 @@ msgid "Filename can't contain any of these characters:"
 msgstr "Názov súboru nemô¾e obsahova» tieto znaky:"
 
 #: src/frontends/controllers/helper_funcs.C:65
+#: src/frontends/controllers/helper_funcs.C:119
 msgid "space, '#', '~', '$' or '%'."
 msgstr "medzera, '#', '~', '$' a '%'."
+
+#: src/frontends/controllers/helper_funcs.C:117
+#, fuzzy
+msgid "directory name can't contain any of these characters:"
+msgstr "Názov súboru nemô¾e obsahova» tieto znaky:"
 
 #: src/frontends/gnome/GLog.C:55 src/frontends/qt2/QLog.C:56
 #, fuzzy
@@ -10057,11 +10013,13 @@ msgstr "Log LaTeXu"
 
 #: src/frontends/gnome/GLog.C:64 src/frontends/qt2/QLog.C:65
 #, fuzzy
-msgid "No build log file found"
+msgid "No build log file found."
 msgstr "Logovací súbor LaTeXu nebol nájdený"
 
 #: src/frontends/gnome/GLog.C:66 src/frontends/qt2/QLog.C:67
-msgid "No LaTeX log file found"
+#: src/frontends/xforms/FormLog.C:43
+#, fuzzy
+msgid "No LaTeX log file found."
 msgstr "Logovací súbor LaTeXu nebol nájdený"
 
 #: src/frontends/qt2/Alert_pimpl.C:46 src/frontends/qt2/Alert_pimpl.C:53
@@ -10082,14 +10040,15 @@ msgstr "LyX: Url"
 msgid "LyX: "
 msgstr "LyX: Url"
 
-#: src/frontends/qt2/FileDialog.C:61
+#: src/frontends/qt2/FileDialog.C:61 src/frontends/qt2/FileDialog.C:91
 #, fuzzy
 msgid "All files (*)"
 msgstr " do súboru `"
 
-#: src/frontends/qt2/FileDialog.C:91
-msgid "*|All files"
-msgstr ""
+#: src/frontends/qt2/FileDialog.C:116
+#, fuzzy
+msgid "Directories"
+msgstr "Prieèinok pou¾ívateµa: "
 
 #: src/frontends/qt2/QBibitem.C:34
 #, fuzzy
@@ -10148,110 +10107,90 @@ msgstr "Autor"
 msgid "Numerical"
 msgstr "Americky"
 
-#: src/frontends/qt2/QDocument.C:82
+#: src/frontends/qt2/QDocument.C:88
 #, fuzzy
 msgid "``text''"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:83
+#: src/frontends/qt2/QDocument.C:89
 #, fuzzy
 msgid "''text''"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:84
+#: src/frontends/qt2/QDocument.C:90
 #, fuzzy
 msgid ",,text``"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:85
+#: src/frontends/qt2/QDocument.C:91
 #, fuzzy
 msgid ",,text''"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:86
+#: src/frontends/qt2/QDocument.C:92
 #, fuzzy
 msgid "«text»"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:87
+#: src/frontends/qt2/QDocument.C:93
 #, fuzzy
 msgid "»text«"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:99
-#, fuzzy
-msgid "OneHalf"
-msgstr "Polovièné"
-
-#: src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:105
 #, fuzzy
 msgid "US letter"
 msgstr "List"
 
-#: src/frontends/qt2/QDocument.C:115
+#: src/frontends/qt2/QDocument.C:106
 msgid "US legal"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:116
+#: src/frontends/qt2/QDocument.C:107
 msgid "US executive"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:120
+#: src/frontends/qt2/QDocument.C:111
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:121
+#: src/frontends/qt2/QDocument.C:112
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:136
+#: src/frontends/qt2/QDocument.C:127
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:137
+#: src/frontends/qt2/QDocument.C:128
 #, fuzzy
 msgid "11"
 msgstr "1|#1"
 
-#: src/frontends/qt2/QDocument.C:138
+#: src/frontends/qt2/QDocument.C:129
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:140
-#, fuzzy
-msgid "Smallskip"
-msgstr "Malá"
-
-#: src/frontends/qt2/QDocument.C:141
-#, fuzzy
-msgid "Medskip"
-msgstr "Stredná"
-
-#: src/frontends/qt2/QDocument.C:142
-#, fuzzy
-msgid "Bigskip"
-msgstr "Veµká"
-
-#: src/frontends/qt2/QDocument.C:143
+#: src/frontends/qt2/QDocument.C:134
 msgid "Length"
 msgstr "Då¾ka"
 
-#: src/frontends/qt2/QDocument.C:146
+#: src/frontends/qt2/QDocument.C:137
 #, fuzzy
 msgid "empty"
 msgstr "Håbka"
 
-#: src/frontends/qt2/QDocument.C:147
+#: src/frontends/qt2/QDocument.C:138
 #, fuzzy
 msgid "plain"
 msgstr "Medzera"
 
-#: src/frontends/qt2/QDocument.C:148
+#: src/frontends/qt2/QDocument.C:139
 #, fuzzy
 msgid "headings"
 msgstr "Pri èítaní "
 
-#: src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocument.C:140
 msgid "fancy"
 msgstr ""
 
@@ -10260,13 +10199,13 @@ msgstr ""
 msgid "Layout"
 msgstr "Formát "
 
-#: src/frontends/qt2/QDocumentDialog.C:68
+#: src/frontends/qt2/QDocumentDialog.C:67
 #: src/frontends/xforms/FormDocument.C:341
 msgid "Paper"
 msgstr "Papier"
 
-#: src/frontends/qt2/QDocumentDialog.C:72
-#: src/frontends/qt2/QDocumentDialog.C:276
+#: src/frontends/qt2/QDocumentDialog.C:71
+#: src/frontends/qt2/QDocumentDialog.C:273
 #, fuzzy
 msgid "Numbering"
 msgstr "Èíslo"
@@ -10283,27 +10222,27 @@ msgstr "Dokument"
 
 #: src/frontends/qt2/QDocumentDialog.C:261
 #, fuzzy
-msgid "LaTeX Packages"
-msgstr "Preambula LaTeXu"
-
-#: src/frontends/qt2/QDocumentDialog.C:264
-#, fuzzy
 msgid "Papersize and Orientation"
 msgstr "Orientácia"
 
-#: src/frontends/qt2/QDocumentDialog.C:270
+#: src/frontends/qt2/QDocumentDialog.C:267
 msgid "Language Settings and Quote Style"
 msgstr ""
 
-#: src/frontends/qt2/QDocumentDialog.C:273
+#: src/frontends/qt2/QDocumentDialog.C:270
 #, fuzzy
 msgid "Bullet Types"
 msgstr "Odrá¾ky"
 
-#: src/frontends/qt2/QDocumentDialog.C:279
+#: src/frontends/qt2/QDocumentDialog.C:276
 #, fuzzy
 msgid "Bibliography Settings"
 msgstr "Polo¾ka literatúry"
+
+#: src/frontends/qt2/QDocumentDialog.C:279
+#, fuzzy
+msgid "LaTeX Packages and Options"
+msgstr "Preambula LaTeXu"
 
 #: src/frontends/qt2/QDocumentDialog.C:282
 msgid "LaTeX Preamble"
@@ -10361,11 +10300,6 @@ msgstr "©peciálne"
 #, fuzzy
 msgid "Files (*)"
 msgstr "Súbor `"
-
-#: src/frontends/qt2/QGraphicsDialog.C:95
-#, fuzzy
-msgid "Select a graphic file"
-msgstr "Zvoµte názov výstupu"
 
 #: src/frontends/qt2/QLPrintDialog.C:55
 msgid "PostScript files (*.ps)"
@@ -10498,7 +10432,7 @@ msgid "Paragraph Layout"
 msgstr "Formát odstavca"
 
 #: src/frontends/qt2/QParagraph.C:304 src/frontends/xforms/FormParagraph.C:287
-#: src/paragraph.C:820
+#: src/paragraph.C:819
 msgid "Senseless with this layout!"
 msgstr "V tomto formáte nemá zmysel!"
 
@@ -10765,7 +10699,7 @@ msgstr ""
 msgid "] is used."
 msgstr ""
 
-#: src/frontends/xforms/FileDialog.C:62
+#: src/frontends/xforms/FileDialog.C:82
 msgid "*"
 msgstr ""
 
@@ -10948,7 +10882,8 @@ msgid " Single | OneHalf | Double | Custom "
 msgstr "Jeden | Jeden a pol | Dva | Iné "
 
 #: src/frontends/xforms/FormDocument.C:161
-msgid " Smallskip | Medskip | Bigskip | Length "
+#, fuzzy
+msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr "Malá| Stredná | Veµká | Iná "
 
 #: src/frontends/xforms/FormDocument.C:225
@@ -11016,8 +10951,8 @@ msgstr "Mo¾nosti"
 msgid "Edit external file"
 msgstr "Súbor s externou prílohou"
 
-#: src/frontends/xforms/FormFiledialog.C:193
-#: src/frontends/xforms/FormFiledialog.C:362
+#: src/frontends/xforms/FormFiledialog.C:194
+#: src/frontends/xforms/FormFiledialog.C:363
 msgid "Warning! Couldn't open directory."
 msgstr "Varovanie! Nie je mo¾né otvori» prieèinok."
 
@@ -11246,11 +11181,6 @@ msgstr "Log LaTeXu"
 msgid "LyX: Literate Programming Build Log"
 msgstr ""
 
-#: src/frontends/xforms/FormLog.C:43
-#, fuzzy
-msgid "No LaTeX log file found."
-msgstr "Logovací súbor LaTeXu nebol nájdený"
-
 #: src/frontends/xforms/FormLog.C:44
 #, fuzzy
 msgid "No Literate Programming build log file found."
@@ -11333,7 +11263,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormParagraph.C:132
 #, fuzzy
-msgid "None|Defskip|Smallskip|Medskip|Bigskip|VFill|Length"
+msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
 msgstr "¾iadna | prednastavená | malá | stredná | veµká | výplnok | då¾ka "
 
 #: src/frontends/xforms/FormParagraph.C:136
@@ -11567,34 +11497,34 @@ msgstr "implicitná | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgid "Default path"
 msgstr "©tandardná cesta"
 
-#: src/frontends/xforms/FormPreferences.C:2194
+#: src/frontends/xforms/FormPreferences.C:2195
 msgid "Template path"
 msgstr "Cesta k ¹ablónam"
 
-#: src/frontends/xforms/FormPreferences.C:2198
+#: src/frontends/xforms/FormPreferences.C:2200
 #, fuzzy
 msgid "Temporary dir"
 msgstr "Doèasný prieèinok"
 
-#: src/frontends/xforms/FormPreferences.C:2202
+#: src/frontends/xforms/FormPreferences.C:2205
 #, fuzzy
 msgid "Last files"
 msgstr "Posledné súbory"
 
-#: src/frontends/xforms/FormPreferences.C:2206
+#: src/frontends/xforms/FormPreferences.C:2210
 msgid "Backup path"
 msgstr "Cesta k zálohám"
 
-#: src/frontends/xforms/FormPreferences.C:2210
+#: src/frontends/xforms/FormPreferences.C:2215
 #, fuzzy
 msgid "LyX server pipes"
 msgstr "Rúry LyX Serveru"
 
-#: src/frontends/xforms/FormPreferences.C:2667
+#: src/frontends/xforms/FormPreferences.C:2673
 msgid "Fonts must be positive!"
 msgstr "Písmo musí by» pozitívne!"
 
-#: src/frontends/xforms/FormPreferences.C:2690
+#: src/frontends/xforms/FormPreferences.C:2696
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
@@ -11602,7 +11532,7 @@ msgstr ""
 "Písma musia vstupova» v poradí drobné > skript > poznámka > malé > normálne "
 "> veµké > väè¹ie > najväè¹ie > obrovské > ozrutné"
 
-#: src/frontends/xforms/FormPreferences.C:2819
+#: src/frontends/xforms/FormPreferences.C:2825
 #, fuzzy
 msgid " ispell | aspell "
 msgstr " ¾iadne | ispell | aspell "
@@ -12019,10 +11949,6 @@ msgstr "Importujem"
 msgid "Importing "
 msgstr "Importujem"
 
-#: src/importer.C:47 src/lyxfunc.C:987 src/lyxfunc.C:1150 src/lyxfunc.C:1731
-msgid "..."
-msgstr ""
-
 #: src/importer.C:68 src/importer.C:72
 #, fuzzy
 msgid "Cannot import file"
@@ -12070,8 +11996,10 @@ msgid "Opened ERT Inset"
 msgstr "Otvorený ERT prílohy"
 
 #: src/insets/insetert.C:248 src/insets/insettabular.C:2090
-msgid "Impossible Operation!"
-msgstr "Nemo¾ná operácia!"
+#: src/insets/insettext.C:1411
+#, fuzzy
+msgid "Impossible operation!"
+msgstr "Nemo¾ná operácia"
 
 #: src/insets/insetert.C:249
 msgid "Not permitted to change font-types inside ERT-insets!"
@@ -12199,12 +12127,12 @@ msgstr "®iadne informácie pre konverziu z "
 
 #: src/insets/insetgraphics.C:775
 #, fuzzy, c-format
-msgid "Graphic file: %1$s"
+msgid "Graphics file: %1$s"
 msgstr "Grafický súbor|#f"
 
 #: src/insets/insetgraphics.C:779
 #, fuzzy
-msgid "Graphic file: "
+msgid "Graphics file: "
 msgstr "Grafický súbor|#f"
 
 #: src/insets/insetinclude.C:226
@@ -12327,23 +12255,19 @@ msgstr "Viacståpcové bunky mô¾u by» iba horizontálne."
 msgid "Opened Text Inset"
 msgstr "Otvorený text prílohy"
 
-#: src/insets/insettext.C:1411
-msgid "Impossible operation"
-msgstr "Nemo¾ná operácia"
-
 #: src/insets/insettext.C:1412
 msgid "Cannot include more than one paragraph!"
 msgstr "Nemô¾em zahrnú»viac ako jeden odstavec!"
 
-#: src/insets/insettext.C:1487 src/text3.C:1104
+#: src/insets/insettext.C:1487 src/text3.C:1130
 msgid "Layout "
 msgstr "Formát "
 
-#: src/insets/insettext.C:1487 src/text3.C:1105
+#: src/insets/insettext.C:1487 src/text3.C:1131
 msgid " not known"
 msgstr " neznámy"
 
-#: src/insets/insettext.C:1540 src/text3.C:886
+#: src/insets/insettext.C:1540 src/text3.C:912
 msgid "Unknown spacing argument: "
 msgstr "Neznámy parameter riadkovania: "
 
@@ -12475,14 +12399,10 @@ msgstr "(Ak ne, tak dokument nie je ulo¾ený.)"
 msgid "Choose a filename to save document as"
 msgstr "Vlo¾te názov súboru, pod ktorým sa má dokument ulo¾i»"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1645
+#: src/lyx_cb.C:112 src/lyxfunc.C:1644
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "©ablóna|#¹"
-
-#: src/lyx_cb.C:120 src/lyxfunc.C:1650
-msgid "*.lyx|LyX Documents (*.lyx)"
-msgstr ""
 
 #: src/lyx_cb.C:140
 msgid "Same name as document already has:"
@@ -12586,10 +12506,6 @@ msgstr "Zvoµte dokument na vlo¾enie"
 msgid "Error! Specified file is unreadable: "
 msgstr "Chyba ¹pecifikovaný súbor je neèitateµný: "
 
-#: src/lyx_cb.C:447
-msgid "Error! Cannot open specified file: "
-msgstr "Chyba! Nemô¾em otvori» ¹pecifikovaný súbor:"
-
 #: src/lyx_cb.C:511 src/mathed/math_hullinset.C:798
 msgid "Enter new label to insert:"
 msgstr "Vlo¾i» novú znaèku:"
@@ -12614,160 +12530,160 @@ msgstr "Musíte LyX spusti» znovu, aby ste mohli pou¾íva»"
 msgid "updated document class specifications."
 msgstr "aktualizované ¹pecifikácie tried dokumentov."
 
-#: src/lyx_main.C:105
+#: src/lyx_main.C:110
 #, fuzzy, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlé nastavenie príkazového riadku `"
 
-#: src/lyx_main.C:109
+#: src/lyx_main.C:114
 #, fuzzy
 msgid "Wrong command line option `"
 msgstr "Zlé nastavenie príkazového riadku `"
 
-#: src/lyx_main.C:110
+#: src/lyx_main.C:115
 msgid "'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:233
+#: src/lyx_main.C:238
 msgid "Warning: could not determine path of binary."
 msgstr "Varovanie: nemô¾em urèi» cestu k binárke."
 
-#: src/lyx_main.C:235
+#: src/lyx_main.C:240
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Ak máte problémy, pokúste sa spusti» LyX s absolútnou cestou."
 
-#: src/lyx_main.C:342
+#: src/lyx_main.C:347
 #, fuzzy
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "LYX_DIR_11x nastavenie prostredia nie je správne."
 
-#: src/lyx_main.C:344
+#: src/lyx_main.C:349
 msgid "System directory set to: "
 msgstr "Nastavenie systémového adresára: "
 
-#: src/lyx_main.C:352
+#: src/lyx_main.C:357
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Varovanie LyXu! Nemô¾em urèi» systémový prieèinok. "
 
-#: src/lyx_main.C:353
+#: src/lyx_main.C:358
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Skúste '-sysdir' ako parameter v príkazovom riadku alebo"
 
-#: src/lyx_main.C:354
+#: src/lyx_main.C:359
 #, fuzzy
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr "nastavte premennú prostredia LYX_DIR_11x na systémový prieèinok LyXu "
 
-#: src/lyx_main.C:356
+#: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
 msgstr "obsahujúci súbor `chkconfig.ltx'."
 
-#: src/lyx_main.C:365
+#: src/lyx_main.C:370
 #, fuzzy, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Pou¾ijú sa prednastavené hodnoty."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:375
 #, fuzzy
 msgid "Using built-in default "
 msgstr "Pou¾ijú sa prednastavené hodnoty."
 
-#: src/lyx_main.C:371
+#: src/lyx_main.C:376
 #, fuzzy
 msgid " but expect problems."
 msgstr "Oèakávajte problémy."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:380
 msgid "Expect problems."
 msgstr "Oèakávajte problémy."
 
-#: src/lyx_main.C:593
+#: src/lyx_main.C:598
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/lyx_main.C:597 src/lyx_main.C:645
+#: src/lyx_main.C:602 src/lyx_main.C:650
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:607
+#: src/lyx_main.C:612
 msgid "You have specified an invalid LyX directory."
 msgstr "©pecifikovali ste neplatný LyX prieèinok."
 
-#: src/lyx_main.C:608
+#: src/lyx_main.C:613
 msgid "It is needed to keep your own configuration."
 msgstr "Potrebujete ho pre uchovávanie vá¹ho nastavenia."
 
-#: src/lyx_main.C:609
+#: src/lyx_main.C:614
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Mám ho pre vás vytvori» (doporuèené)?"
 
-#: src/lyx_main.C:610
+#: src/lyx_main.C:615
 msgid "Running without personal LyX directory."
 msgstr "Spú¹»am bez osobného prieèinku LyXu."
 
-#: src/lyx_main.C:617
+#: src/lyx_main.C:622
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr " a spú¹»am konfiguráciu..."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:627
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/lyx_main.C:623
+#: src/lyx_main.C:628
 #, fuzzy
 msgid " and running configure..."
 msgstr "Spú¹»am konfigurovanie..."
 
-#: src/lyx_main.C:631
+#: src/lyx_main.C:636
 #, fuzzy, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Nepodarilo sa. Pou¾i» "
 
-#: src/lyx_main.C:635
+#: src/lyx_main.C:640
 #, fuzzy
 msgid "Failed. Will use "
 msgstr "Nepodarilo sa. Pou¾i» "
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:641
 msgid " instead."
 msgstr ""
 
-#: src/lyx_main.C:659 src/lyx_main.C:663
+#: src/lyx_main.C:664 src/lyx_main.C:668
 msgid "LyX Warning!"
 msgstr "Varovanie LyXu!"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:665
 #, fuzzy, c-format
 msgid "Error while reading %1$s."
 msgstr "Chyba pri èítaní "
 
-#: src/lyx_main.C:661 src/lyx_main.C:665
+#: src/lyx_main.C:666 src/lyx_main.C:670
 msgid "Using built-in defaults."
 msgstr "Pou¾ijú sa prednastavené hodnoty."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:669
 #, fuzzy
 msgid "Error while reading "
 msgstr "Chyba pri èítaní "
 
-#: src/lyx_main.C:774
+#: src/lyx_main.C:779
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich parametrov: "
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:784
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavujem úroveò ladenia na "
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:788
 #, fuzzy
 msgid "Setting debug level to "
 msgstr "Nastavujem úroveò ladenia na "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:799
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12807,32 +12723,32 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Check the LyX man page for more details."
 
-#: src/lyx_main.C:830
+#: src/lyx_main.C:835
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba prieèinok pre prepínaè -sysdir!"
 
-#: src/lyx_main.C:840
+#: src/lyx_main.C:845
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba prieèinok pre prepínaè -userdir!"
 
-#: src/lyx_main.C:850
+#: src/lyx_main.C:855
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový re»azec po prepínaèi -x!"
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:868
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po "
 
-#: src/lyx_main.C:875
+#: src/lyx_main.C:880
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po "
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:885
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "súbor na importovanie"
@@ -12844,10 +12760,6 @@ msgstr "¥utujem!"
 #: src/lyxfind.C:49
 msgid "You cannot replace a single space, nor an empty character."
 msgstr "Nemô¾em nahradi» jednoduchú medzeru ani prázdny znak."
-
-#: src/lyxfont.C:45
-msgid "Sans serif"
-msgstr "Sans serif"
 
 #: src/lyxfont.C:45
 msgid "Symbol"
@@ -12954,137 +12866,137 @@ msgstr "Dokument je iba na èítanie"
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:701
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:706
+#: src/lyxfunc.C:705
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:982
+#: src/lyxfunc.C:981
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument"
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:984
 #, fuzzy
 msgid "Saving document "
 msgstr "Ukladám dokument"
 
-#: src/lyxfunc.C:991
+#: src/lyxfunc.C:990
 #, fuzzy
 msgid " done."
 msgstr "Prejs» dole"
 
-#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1132 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/lyxfunc.C:1146
+#: src/lyxfunc.C:1145
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s Pomocníkom"
 
-#: src/lyxfunc.C:1149
+#: src/lyxfunc.C:1148
 #, fuzzy
 msgid "Opening help file "
 msgstr "Otváram súbor s Pomocníkom"
 
-#: src/lyxfunc.C:1355
+#: src/lyxfunc.C:1354
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povolené len v matematickom re¾ime!"
 
-#: src/lyxfunc.C:1397
+#: src/lyxfunc.C:1396
 msgid "Opening child document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1471
+#: src/lyxfunc.C:1470
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1485
+#: src/lyxfunc.C:1484
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1489
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1490
 #, fuzzy
 msgid " failed - color is undefined or may not be redefined"
 msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1641
+#: src/lyxfunc.C:1640
 #, fuzzy
 msgid "Select template file"
 msgstr "Zvoµte názov výstupu"
 
-#: src/lyxfunc.C:1680
+#: src/lyxfunc.C:1679
 #, fuzzy
 msgid "Select document to open"
 msgstr "Zvoµte dokument pre otvorenie"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1715
 #, fuzzy
 msgid "No such file"
 msgstr "Posledné súbory"
 
-#: src/lyxfunc.C:1717
+#: src/lyxfunc.C:1716
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Vytvori» nový dokument s týmto názvom?"
 
-#: src/lyxfunc.C:1729
+#: src/lyxfunc.C:1728
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Otváram dokument"
 
-#: src/lyxfunc.C:1731
+#: src/lyxfunc.C:1730
 #, fuzzy
 msgid "Opening document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1740
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "®iadny dokument nie je otvorený!"
 
-#: src/lyxfunc.C:1743
+#: src/lyxfunc.C:1742
 #, fuzzy
 msgid " opened."
 msgstr "Prejs» dole"
 
-#: src/lyxfunc.C:1747
+#: src/lyxfunc.C:1746
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Dokument sa nedá otvori»"
 
-#: src/lyxfunc.C:1750
+#: src/lyxfunc.C:1749
 #, fuzzy
 msgid "Could not open document "
 msgstr "Dokument sa nedá otvori»"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1776
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/lyxfunc.C:1781
+#: src/lyxfunc.C:1780
 #, fuzzy
 msgid "Select "
 msgstr "Zvoµte "
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1781
 #, fuzzy
 msgid " file to import"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1820
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -13092,15 +13004,15 @@ msgstr ""
 "Chcete teraz zavrie» tento dokument?\n"
 "('Nie' iba prepne do otvorenej verzie)"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1840
 msgid "A document by the name"
 msgstr "Dokument s menom"
 
-#: src/lyxfunc.C:1842
+#: src/lyxfunc.C:1841
 msgid "already exists. Overwrite?"
 msgstr "u¾ existuje. Prepísa»?"
 
-#: src/lyxfunc.C:1914
+#: src/lyxfunc.C:1913
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
@@ -13543,7 +13455,10 @@ msgid "De-select if you don't want the startup banner."
 msgstr "Voµba, èi si neprajete transparent pri ¹tarte."
 
 #: src/lyxrc.C:2127
-msgid "The wheel movement factor (for mice with wheels or five button mice)."
+#, fuzzy
+msgid ""
+"The number of lines that are scrolled by mice with wheels or five button "
+"mice."
 msgstr ""
 "Faktor pohybu kolieska (pre my¹ s kolieskami alebo piatimi tlaèítkami)."
 
@@ -13784,25 +13699,227 @@ msgstr ""
 msgid "No more insets"
 msgstr "U¾ nie je viac poznámok"
 
-#: src/text3.C:947
+#: src/text3.C:973
 msgid "Mark off"
 msgstr "Znaèka vypnutá"
 
-#: src/text3.C:955
+#: src/text3.C:981
 msgid "Mark on"
 msgstr "Znaèka zapnutá"
 
-#: src/text3.C:962
+#: src/text3.C:988
 msgid "Mark removed"
 msgstr "Znaèka odstránená"
 
-#: src/text3.C:966
+#: src/text3.C:992
 msgid "Mark set"
 msgstr "Znaèka nastavená"
 
-#: src/text3.C:1086
+#: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Size:|#Z"
+#~ msgstr "Veµkos»:|#e"
+
+#, fuzzy
+#~ msgid "Cancel|#N^["
+#~ msgstr "Zru¹i»|^["
+
+#, fuzzy
+#~ msgid "Cancel|#C^["
+#~ msgstr "Zru¹i»|^["
+
+#, fuzzy
+#~ msgid "Width|#W"
+#~ msgstr "©írka"
+
+#, fuzzy
+#~ msgid "Height|#H"
+#~ msgstr "Vý¹ka"
+
+#, fuzzy
+#~ msgid "Rows"
+#~ msgstr "Riadky"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Ståpce"
+
+#, fuzzy
+#~ msgid "Encoding|#E"
+#~ msgstr "Kódovanie"
+
+#, fuzzy
+#~ msgid "smallest"
+#~ msgstr "Najmen¹ie"
+
+#, fuzzy
+#~ msgid "smaller"
+#~ msgstr "Men¹í"
+
+#, fuzzy
+#~ msgid "larger"
+#~ msgstr "veµké"
+
+#, fuzzy
+#~ msgid "largest"
+#~ msgstr "Najväè¹ie"
+
+#, fuzzy
+#~ msgid "huger"
+#~ msgstr "ozrutné"
+
+#, fuzzy
+#~ msgid "Use alternative language|#a"
+#~ msgstr "Pou¾i» alternatívny jazyk|#a"
+
+#, fuzzy
+#~ msgid "Use escape characters|#e"
+#~ msgstr "©peciálne znaky|#e"
+
+#, fuzzy
+#~ msgid "Use personal dictionary|#d"
+#~ msgstr "Pou¾i» osobný slovník|#o"
+
+#, fuzzy
+#~ msgid "name"
+#~ msgstr "Meno"
+
+#, fuzzy
+#~ msgid "adapt output"
+#~ msgstr "adaptácia výstupu"
+
+#, fuzzy
+#~ msgid "command"
+#~ msgstr "príkaz"
+
+#, fuzzy
+#~ msgid "page range"
+#~ msgstr "rozsah strán"
+
+#, fuzzy
+#~ msgid "copies"
+#~ msgstr "Kópie"
+
+#, fuzzy
+#~ msgid "reverse"
+#~ msgstr "opaèné"
+
+#, fuzzy
+#~ msgid "to printer"
+#~ msgstr "do tlaèiarne"
+
+#, fuzzy
+#~ msgid "file extension"
+#~ msgstr "prípona súboru"
+
+#, fuzzy
+#~ msgid "spool command"
+#~ msgstr "spool príkaz"
+
+#, fuzzy
+#~ msgid "paper type"
+#~ msgstr "typ papiera"
+
+#, fuzzy
+#~ msgid "even pages"
+#~ msgstr "párne strany"
+
+#, fuzzy
+#~ msgid "odd pages"
+#~ msgstr "nepárne strany"
+
+#, fuzzy
+#~ msgid "collated"
+#~ msgstr "Uspo&riada»"
+
+#, fuzzy
+#~ msgid "landscape"
+#~ msgstr "na ¹írku"
+
+#, fuzzy
+#~ msgid "to file"
+#~ msgstr " do súboru `"
+
+#, fuzzy
+#~ msgid "extra options"
+#~ msgstr "extra nastavenia"
+
+#, fuzzy
+#~ msgid "paper size"
+#~ msgstr "veµkos» papiera"
+
+#, fuzzy
+#~ msgid "to|#t"
+#~ msgstr "na"
+
+#, fuzzy
+#~ msgid "Close|#C^["
+#~ msgstr "Zavrie»|^["
+
+#, fuzzy
+#~ msgid "Bottom|#b"
+#~ msgstr "&Dole"
+
+#, fuzzy
+#~ msgid "Left|#l"
+#~ msgstr "Vµavo"
+
+#, fuzzy
+#~ msgid "Entry : "
+#~ msgstr "Extra"
+
+#, fuzzy
+#~ msgid "Type|#T"
+#~ msgstr "LaTeX|#T"
+
+#, fuzzy
+#~ msgid "Name|#N"
+#~ msgstr "Meno"
+
+#, fuzzy
+#~ msgid "Quote style"
+#~ msgstr "Typ úvodzoviek    "
+
+#, fuzzy
+#~ msgid "&Browse ..."
+#~ msgstr "Prechádza»..."
+
+#~ msgid "Cannot open specified file: "
+#~ msgstr "Nie je mo¾né otvori» ¹pecifikovaný súbor: "
+
+#~ msgid "LyX will not be able to produce output correctly."
+#~ msgstr "LyX nebude schopný vyprodukova» správne výstup."
+
+#~ msgid "Onehalf"
+#~ msgstr "Polovièné"
+
+#~ msgid "No LaTeX log file found"
+#~ msgstr "Logovací súbor LaTeXu nebol nájdený"
+
+#, fuzzy
+#~ msgid "Smallskip"
+#~ msgstr "Malá"
+
+#, fuzzy
+#~ msgid "Medskip"
+#~ msgstr "Stredná"
+
+#, fuzzy
+#~ msgid "Bigskip"
+#~ msgstr "Veµká"
+
+#, fuzzy
+#~ msgid "Select a graphic file"
+#~ msgstr "Zvoµte názov výstupu"
+
+#~ msgid "Impossible Operation!"
+#~ msgstr "Nemo¾ná operácia!"
+
+#~ msgid "Sans serif"
+#~ msgstr "Sans serif"
 
 #, fuzzy
 #~ msgid "Replacement:|#R"

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6fix1\n"
-"POT-Creation-Date: 2003-01-14 02:14+0100\n"
+"POT-Creation-Date: 2003-01-23 22:14+0100\n"
 "PO-Revision-Date: 2002-12-19 18:59+0100\n"
 "Last-Translator: Zrubecz László <zrubi@k2.jozsef.kando.hu>\n"
 "Language-Team: Magyar <magyar@lists.linux.hu>\n"
@@ -12,9 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
+#: ../src/frontends/xforms/forms/form_error.fd:61
 #: ../src/frontends/xforms/forms/form_forks.fd:169
+#: ../src/frontends/xforms/forms/form_maths_panel.fd:44
+#: ../src/frontends/xforms/forms/form_maths_space.fd:170
+#: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
+#: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
 msgid "Close|^["
 msgstr "Bezár|^["
@@ -39,6 +45,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_filedialog.fd:206
 #: ../src/frontends/xforms/forms/form_float.fd:152
 #: ../src/frontends/xforms/forms/form_forks.fd:133
+#: ../src/frontends/xforms/forms/form_graphics.fd:80
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:116
@@ -53,11 +60,11 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -70,9 +77,11 @@ msgstr "Címke...|C"
 
 #: ../src/frontends/xforms/forms/form_bibitem.fd:98
 #: ../src/frontends/xforms/forms/form_bibtex.fd:98
+#: ../src/frontends/xforms/forms/form_character.fd:170
 #: ../src/frontends/xforms/forms/form_citation.fd:404
 #: ../src/frontends/xforms/forms/form_document.fd:62
 #: ../src/frontends/xforms/forms/form_ert.fd:151
+#: ../src/frontends/xforms/forms/form_external.fd:223
 #: ../src/frontends/xforms/forms/form_filedialog.fd:224
 #: ../src/frontends/xforms/forms/form_float.fd:188
 #: ../src/frontends/xforms/forms/form_graphics.fd:98
@@ -182,7 +191,6 @@ msgid "Restore|#R"
 msgstr "&Visszaállít"
 
 #: ../src/frontends/xforms/forms/form_browser.fd:62
-#: ../src/frontends/xforms/forms/form_error.fd:61
 #: ../src/frontends/xforms/forms/form_texinfo.fd:98
 #: ../src/frontends/xforms/forms/form_toc.fd:98
 #, fuzzy
@@ -210,19 +218,15 @@ msgid "Shape:|#H"
 msgstr "Alak:|#A"
 
 #: ../src/frontends/xforms/forms/form_character.fd:116
+#: ../src/frontends/xforms/forms/form_document.fd:1577
 #, fuzzy
-msgid "Size:|#Z"
+msgid "Size:|#z"
 msgstr "Méret:|#M"
 
 #: ../src/frontends/xforms/forms/form_character.fd:134
 #, fuzzy
 msgid "Misc:|#M"
 msgstr "Egyéb"
-
-#: ../src/frontends/xforms/forms/form_character.fd:170
-#, fuzzy
-msgid "Cancel|#N^["
-msgstr "Mégsem|^["
 
 #: ../src/frontends/xforms/forms/form_character.fd:188
 #, fuzzy
@@ -345,12 +349,14 @@ msgid "Size:|#S"
 msgstr "Méret:|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:248
+#: ../src/frontends/xforms/forms/form_graphics.fd:284
 #: ../src/frontends/xforms/forms/form_wrap.fd:62
 #, fuzzy
 msgid "Width:|#W"
 msgstr "Szélesség"
 
 #: ../src/frontends/xforms/forms/form_document.fd:284
+#: ../src/frontends/xforms/forms/form_graphics.fd:356
 #, fuzzy
 msgid "Height:|#H"
 msgstr "Magasság"
@@ -371,8 +377,8 @@ msgid "Landscape|#L"
 msgstr "Fekvõ|#F"
 
 #: ../src/frontends/xforms/forms/form_document.fd:410
-#: src/frontends/qt2/QDocumentDialog.C:69
-#: src/frontends/qt2/QDocumentDialog.C:267
+#: src/frontends/qt2/QDocumentDialog.C:68
+#: src/frontends/qt2/QDocumentDialog.C:264
 msgid "Margins"
 msgstr "Margók"
 
@@ -426,12 +432,11 @@ msgid "Sides"
 msgstr "Vastagság:|#V"
 
 #: ../src/frontends/xforms/forms/form_document.fd:758
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:183
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:128
 msgid "Separation"
 msgstr "Szétválasztás"
 
 #: ../src/frontends/xforms/forms/form_document.fd:776
-#: ../src/frontends/xforms/forms/form_tabular_create.fd:98
 #, fuzzy
 msgid "Columns"
 msgstr "Oszlopok"
@@ -497,16 +502,19 @@ msgid "Skip|#K"
 msgstr "Kihagyás|#y"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1215
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
 #, fuzzy
 msgid "Quote Style"
 msgstr "Idézõjel stílus"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1233
+#: ../src/frontends/xforms/forms/form_preferences.fd:326
 #, fuzzy
 msgid "Encoding:|#E"
 msgstr "Kódolás"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1251
+#: ../src/frontends/xforms/forms/form_toc.fd:80
 #, fuzzy
 msgid "Type:|#T"
 msgstr "Típus:"
@@ -565,14 +573,9 @@ msgstr "Irodalomra hivatkozás"
 msgid "Bullet depth"
 msgstr "Jelek"
 
-#: ../src/frontends/xforms/forms/form_document.fd:1577
-#, fuzzy
-msgid "Size|#z"
-msgstr "Méret:|#M"
-
 #: ../src/frontends/xforms/forms/form_document.fd:1595
 #, fuzzy
-msgid "LaTeX|#L"
+msgid "LaTeX:|#L"
 msgstr "LaTeX...|L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1631
@@ -640,19 +643,19 @@ msgstr "Beszúrás|B"
 
 #: ../src/frontends/xforms/forms/form_external.fd:43
 #, fuzzy
-msgid "Template|#t"
+msgid "Template:|#t"
 msgstr "Sablon|#S"
 
 #: ../src/frontends/xforms/forms/form_external.fd:79
 #: ../src/frontends/xforms/forms/form_graphics.fd:176
 #: ../src/frontends/xforms/forms/form_print.fd:373
 #, fuzzy
-msgid "File|#F"
+msgid "File:|#F"
 msgstr "Fájl|F"
 
 #: ../src/frontends/xforms/forms/form_external.fd:115
 #, fuzzy
-msgid "Parameters|#P"
+msgid "Parameters:|#P"
 msgstr "Betûkészlet|#e"
 
 #: ../src/frontends/xforms/forms/form_external.fd:133
@@ -669,11 +672,6 @@ msgstr "newfile"
 #, fuzzy
 msgid "Update result|#U"
 msgstr "&Frissít"
-
-#: ../src/frontends/xforms/forms/form_external.fd:223
-#, fuzzy
-msgid "Cancel|#C^["
-msgstr "Mégsem|^["
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:62
 #, fuzzy
@@ -757,11 +755,11 @@ msgid "Document default|#D"
 msgstr "Dokumentum formátum"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:43
-msgid "Forked child processes|#F"
+msgid "Forked child processes:|#F"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:61
-msgid "Kill processes|#K"
+msgid "Kill processes:|#K"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:79
@@ -770,10 +768,6 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:97
 msgid "@->"
-msgstr ""
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:80
-msgid "Ok"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
@@ -799,22 +793,12 @@ msgstr "Ne jelenítse meg|#t"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:266
 #, fuzzy
-msgid "Scale|#S"
+msgid "Scale:|#S"
 msgstr "Kisebb"
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:284
-#, fuzzy
-msgid "Width|#W"
-msgstr "Szélesség"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:338
 msgid "Maintain aspect ratio|#M"
 msgstr ""
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:356
-#, fuzzy
-msgid "Height|#H"
-msgstr "Magasság"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:374
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:251
@@ -823,17 +807,17 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:392
 #, fuzzy
-msgid "Display|#D"
+msgid "Display:|#D"
 msgstr "Ne jelenítse meg|#t"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:434
 #, fuzzy
-msgid "Right top|#R"
+msgid "Right top:|#R"
 msgstr "Jobbra"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:470
 #, fuzzy
-msgid "Left bottom|#L"
+msgid "Left bottom:|#L"
 msgstr "Balra"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:506
@@ -864,7 +848,7 @@ msgstr "Elforgatás"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:638
 #, fuzzy
-msgid "LaTeX options|#L"
+msgid "LaTeX options:|#L"
 msgstr "egyéb opciók"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:656
@@ -872,17 +856,17 @@ msgid "deg"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:674
-msgid "Origin|#O"
+msgid "Origin:|#O"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:692
 #, fuzzy
-msgid "Subfigure|#S"
+msgid "Subfigure:|#S"
 msgstr "Részábra|#R"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:710
 #, fuzzy
-msgid "Angle|#A"
+msgid "Angle:|#A"
 msgstr "Szög:|#S"
 
 #: ../src/frontends/xforms/forms/form_include.fd:115
@@ -921,7 +905,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_index.fd:43
 #, fuzzy
-msgid "Keyword|#K"
+msgid "Keyword:|#K"
 msgstr "Kulcsszó"
 
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:152
@@ -947,39 +931,28 @@ msgstr "Balra"
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:44
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:116
 #, fuzzy
-msgid "Rows"
+msgid "Rows:"
 msgstr "Sorok"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:65
+#: ../src/frontends/xforms/forms/form_tabular_create.fd:98
 #, fuzzy
-msgid "Columns "
+msgid "Columns:"
 msgstr "Oszlopok"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:86
 #, fuzzy
-msgid "Vertical align|#V"
+msgid "Vertical align:|#V"
 msgstr "Függõleges igazítás|#F"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:104
 #, fuzzy
-msgid "Horizontal align|#H"
+msgid "Horizontal align:|#H"
 msgstr "Vízszintes igazítás|#V"
-
-#: ../src/frontends/xforms/forms/form_maths_panel.fd:44
-#: ../src/frontends/xforms/forms/form_maths_space.fd:170
-#: ../src/frontends/xforms/forms/form_maths_style.fd:80
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Bezár"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:62
 #, fuzzy
-msgid "Functions"
+msgid "Functions:"
 msgstr "Függvények"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:81
@@ -1101,6 +1074,8 @@ msgid "Middle|#d"
 msgstr "Közép|#z"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:169
+#: ../src/frontends/xforms/forms/form_tabular.fd:452
+#: ../src/frontends/xforms/forms/form_tabular.fd:892
 #, fuzzy
 msgid "Bottom|#B"
 msgstr "Alsó:|#s"
@@ -1178,6 +1153,8 @@ msgid "Right|#R"
 msgstr "Jobbra"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:512
+#: ../src/frontends/xforms/forms/form_tabular.fd:470
+#: ../src/frontends/xforms/forms/form_tabular.fd:910
 #: ../src/frontends/xforms/forms/form_wrap.fd:116
 #, fuzzy
 msgid "Left|#L"
@@ -1209,23 +1186,18 @@ msgstr "Betûméret:|#r"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:272
 #, fuzzy
-msgid "Roman|#R"
+msgid "Roman:|#R"
 msgstr "Román"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:290
 #, fuzzy
-msgid "Sans Serif|#S"
+msgid "Sans Serif:|#S"
 msgstr "Vastagság:|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:308
 #, fuzzy
-msgid "Typewriter|#T"
+msgid "Typewriter:|#T"
 msgstr "Típus"
-
-#: ../src/frontends/xforms/forms/form_preferences.fd:326
-#, fuzzy
-msgid "Encoding|#E"
-msgstr "Kódolás"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
@@ -1233,63 +1205,72 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
 #, fuzzy
-msgid "Zoom %|#Z"
+msgid "Zoom %:|#Z"
 msgstr "Méret %"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:385
 #, fuzzy
-msgid "Screen DPI|#D"
+msgid "Screen DPI:|#D"
 msgstr "Képernyõ DPI|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:407
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:257
-msgid "tiny"
-msgstr "apró"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:532
+#, fuzzy
+msgid "Tiny:"
+msgstr "Apró"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:425
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:472
 #, fuzzy
-msgid "smallest"
+msgid "Smallest:"
 msgstr "Legkisebb"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:443
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:487
 #, fuzzy
-msgid "smaller"
+msgid "Smaller:"
 msgstr "Kisebb"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:461
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:275
-msgid "small"
-msgstr "kicsi"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:502
+#, fuzzy
+msgid "Small:"
+msgstr "Kicsi"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:479
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:281
-msgid "normal"
-msgstr "normál"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:517
+#, fuzzy
+msgid "Normal:"
+msgstr "Normál"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:497
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:287
-msgid "large"
-msgstr "nagy"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:547
+#, fuzzy
+msgid "Large:"
+msgstr "Nagy"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:515
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:405
 #, fuzzy
-msgid "larger"
-msgstr "nagy"
+msgid "Larger:"
+msgstr "Nagyobb"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:533
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:420
 #, fuzzy
-msgid "largest"
+msgid "Largest:"
 msgstr "Legnagyobb"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:551
-#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:305
-msgid "huge"
-msgstr "óriás"
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:442
+#, fuzzy
+msgid "Huge:"
+msgstr "Óriás"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:569
 #, fuzzy
-msgid "huger"
-msgstr "óriás"
+msgid "Huger:"
+msgstr "Óriás"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:587
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:52
@@ -1302,17 +1283,18 @@ msgid "Popup Fonts & Encoding"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:647
-msgid "Normal Font|#N"
-msgstr ""
+#, fuzzy
+msgid "Normal Font:|#N"
+msgstr "Félkövér|F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:665
 #, fuzzy
-msgid "Bold Font|#B"
+msgid "Bold Font:|#B"
 msgstr "Félkövér|F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
 #, fuzzy
-msgid "Popup Encoding|#P"
+msgid "Popup Encoding:|#P"
 msgstr "Kódolás"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:701
@@ -1321,12 +1303,12 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:719
 #, fuzzy
-msgid "User Interface file|#U"
+msgid "User Interface file:|#U"
 msgstr "UI fájl|#U"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:755
 #, fuzzy
-msgid "Bind file|#f"
+msgid "Bind file:|#f"
 msgstr "Bind fájl"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:773
@@ -1336,7 +1318,7 @@ msgid "Browse...|#w"
 msgstr "Tallóz..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:815
-msgid "LyX objects|#L"
+msgid "LyX objects:|#L"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:833
@@ -1399,12 +1381,12 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1154
 #, fuzzy
-msgid "Wheel mouse jump"
+msgid "Wheel mouse jump:"
 msgstr "Görgös egér lapozása"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1176
 #, fuzzy
-msgid "Autosave interval"
+msgid "Autosave interval:"
 msgstr "Az automatikus mentés sikertelen volt!"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1198
@@ -1413,28 +1395,28 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1217
 #, fuzzy
-msgid "Graphics display|#G"
+msgid "Graphics display:|#G"
 msgstr "Grafika"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
 #, fuzzy
-msgid "Spell command|#S"
+msgid "Spell command:|#S"
 msgstr "spool parancs"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
 #, fuzzy
-msgid "Use alternative language|#a"
+msgid "Alternative language:|#a"
 msgstr "Más nyelv használata|#a"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1313
 #, fuzzy
-msgid "Use escape characters|#e"
+msgid "Escape characters:|#e"
 msgstr "Escape karakterek használata|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1349
 #, fuzzy
-msgid "Use personal dictionary|#d"
-msgstr "Személyes szótár használata|#h"
+msgid "Personal dictionary:|#d"
+msgstr "Saját szótár"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1403
 msgid "Accept compound words|#w"
@@ -1462,12 +1444,12 @@ msgstr "minilap vonal"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1535
 #, fuzzy
-msgid "Package|#P"
+msgid "Package:|#P"
 msgstr "Csomag|#g"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1553
 #, fuzzy
-msgid "Default language|#l"
+msgid "Default language:|#l"
 msgstr "Alapértelmezett nyelv|#l"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1571
@@ -1478,12 +1460,13 @@ msgid ""
 msgstr "Kulcsszó"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1589
-msgid "1st|#1"
+msgid "1st:|#1"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1607
-msgid "2nd|#2"
-msgstr ""
+#, fuzzy
+msgid "2nd:|#2"
+msgstr "Fájl|F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1625
 #, fuzzy
@@ -1519,43 +1502,43 @@ msgstr "G|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1769
 #, fuzzy
-msgid "Command start|#s"
+msgid "Command start:|#s"
 msgstr "parancs"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1787
 #, fuzzy
-msgid "Command end|#e"
+msgid "Command end:|#e"
 msgstr "parancs"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1883
 #, fuzzy
-msgid "All formats|#l"
+msgid "All formats:|#l"
 msgstr "Formátumok"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1901
 #: ../src/frontends/xforms/forms/form_ref.fd:225
 #, fuzzy
-msgid "Format|#F"
+msgid "Format:|#F"
 msgstr "Formátumok"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1919
 #, fuzzy
-msgid "GUI name|#G"
+msgid "GUI name:|#G"
 msgstr "GUI név|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1937
 #, fuzzy
-msgid "Shortcut|#S"
+msgid "Shortcut:|#S"
 msgstr "Gyorsbillentyû|#b"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1955
 #, fuzzy
-msgid "Extension|#E"
+msgid "Extension:|#E"
 msgstr "Kiterjesztés|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1973
 #, fuzzy
-msgid "Viewer|#V"
+msgid "Viewer:|#V"
 msgstr "Nézet|N"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1991
@@ -1575,31 +1558,33 @@ msgstr "Sor törlése|r"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2051
 #, fuzzy
-msgid "All converters|#l"
+msgid "All converters:|#l"
 msgstr "Átalakítók"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2069
 #, fuzzy
-msgid "From|#F"
+msgid "From:|#F"
 msgstr "Forrás|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2087
-msgid "To|#T"
-msgstr ""
+#: ../src/frontends/xforms/forms/form_print.fd:188
+#, fuzzy
+msgid "To:|#T"
+msgstr "Felsõ:|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2105
 #, fuzzy
-msgid "Converter|#C"
+msgid "Converter:|#C"
 msgstr "Átalakítók"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2123
 #, fuzzy
-msgid "Extra flags|#E"
+msgid "Extra flags:|#E"
 msgstr "Kilépéskor rákérdezés|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2201
 #, fuzzy
-msgid "Default path|#p"
+msgid "Default path:|#p"
 msgstr "Alapértelmezett könyvtár"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2219
@@ -1618,45 +1603,46 @@ msgstr "Tallóz..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2237
 #, fuzzy
-msgid "Template path|#T"
+msgid "Template path:|#T"
 msgstr "Sablonok könyvtára"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2273
 #, fuzzy
-msgid "Temp dir|#d"
+msgid "Temp dir:|#d"
 msgstr "Temp könyvtár"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2328
 #, fuzzy
-msgid "Check last files|#C"
+msgid "Check last files:|#C"
 msgstr "Válassza ki a sablont"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2383
 #, fuzzy
-msgid "Last file count|#L"
+msgid "Last file count:|#L"
 msgstr "Utoljára megnyitott"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2405
 #, fuzzy
-msgid "Backup path|#B"
+msgid "Backup path:|#B"
 msgstr "Biztonsági mentés"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2460
-msgid "LyXServer pipe|#S"
-msgstr ""
+#, fuzzy
+msgid "LyXServer pipe:|#S"
+msgstr "Vastagság:|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2520
 #, fuzzy
-msgid "date format|#f"
+msgid "Date format:|#f"
 msgstr "dátum formátum|#f"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2562
 #, fuzzy
-msgid "name"
-msgstr "Név"
+msgid "Name:"
+msgstr "Név:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2580
-msgid "adapt output"
+msgid "Adapt output"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2598
@@ -1666,112 +1652,114 @@ msgstr "Felhasználói parancsok"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2616
 #, fuzzy
-msgid "command"
+msgid "Command:"
 msgstr "parancs"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2634
 #, fuzzy
-msgid "page range"
+msgid "Page range:"
 msgstr "hatáskör"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2652
 #, fuzzy
-msgid "copies"
+msgid "Copies:"
 msgstr "Másolatok"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2670
 #, fuzzy
-msgid "reverse"
+msgid "Reverse:"
 msgstr "fordított sorrend"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2688
 #, fuzzy
-msgid "to printer"
+msgid "To printer:"
 msgstr "nyomtató"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2706
 #, fuzzy
-msgid "file extension"
+msgid "File extension:"
 msgstr "kiterjesztés"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2724
 #, fuzzy
-msgid "spool command"
+msgid "Spool command:"
 msgstr "spool parancs"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2742
 #, fuzzy
-msgid "paper type"
+msgid "Paper type:"
 msgstr "papír típus"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2760
 #, fuzzy
-msgid "even pages"
+msgid "Even pages:"
 msgstr "páros oldalak"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2778
 #, fuzzy
-msgid "odd pages"
+msgid "Odd pages:"
 msgstr "páratlan oldalak"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2796
 #, fuzzy
-msgid "collated"
+msgid "Collated:"
 msgstr "rendezve"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2814
 #, fuzzy
-msgid "landscape"
+msgid "Landscape:"
 msgstr "Fekvõ|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2832
 #, fuzzy
-msgid "to file"
-msgstr " következõ néven `"
+msgid "To file:"
+msgstr "fájlba"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2850
 #, fuzzy
-msgid "extra options"
+msgid "Extra options:"
 msgstr "Egyéb beállítások"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2868
-msgid "spool printer prefix"
-msgstr ""
+#, fuzzy
+msgid "Spool printer prefix:"
+msgstr "nyomtató"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2886
 #, fuzzy
-msgid "paper size"
+msgid "Paper size:"
 msgstr "papírméret"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2964
-msgid "Ascii line length|#A"
+msgid "ASCII line length:|#A"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2986
 #, fuzzy
-msgid "TeX encoding|#T"
+msgid "TeX encoding:|#T"
 msgstr "TeX kódolás|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3004
 #, fuzzy
-msgid "Default paper size|#p"
+msgid "Default paper size:|#p"
 msgstr "Alap papírméret|#p"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3022
-msgid "Outside code interaction"
+msgid "Outside Code Interaction"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
-msgid "ascii roff|#r"
+msgid "ASCII roff:|#r"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3058
-msgid "checktex|#c"
-msgstr ""
+#, fuzzy
+msgid "Checktex:|#c"
+msgstr "Középre"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3076
 #, fuzzy
-msgid "DVI paper option|#D"
+msgid "DVI paper option:|#D"
 msgstr "egyéb opciók"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3094
@@ -1798,11 +1786,6 @@ msgstr "Másolatok"
 msgid "Sorted|#S"
 msgstr "Rész (part)"
 
-#: ../src/frontends/xforms/forms/form_print.fd:188
-#, fuzzy
-msgid "to|#t"
-msgstr "-"
-
 #: ../src/frontends/xforms/forms/form_print.fd:224
 #, fuzzy
 msgid "Reverse order|#R"
@@ -1825,7 +1808,7 @@ msgstr "páros oldalak"
 
 #: ../src/frontends/xforms/forms/form_print.fd:355
 #, fuzzy
-msgid "Printer|#P"
+msgid "Printer:|#P"
 msgstr "Nyomtató"
 
 #: ../src/frontends/xforms/forms/form_print.fd:427
@@ -1834,7 +1817,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_print.fd:445
 #, fuzzy
-msgid "From|#m"
+msgid "From:|#m"
 msgstr "Forrás|#F"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:80
@@ -1844,10 +1827,11 @@ msgstr "Rész (part)"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:170
 #, fuzzy
-msgid "Document|#D"
+msgid "Document:|#D"
 msgstr "Dokumentum|D"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:189
+#: ../src/frontends/xforms/forms/form_url.fd:62
 #, fuzzy
 msgid "Name:|#N"
 msgstr "Név:"
@@ -1898,16 +1882,16 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
 #, fuzzy
-msgid "Export format|#E"
+msgid "Export format:|#E"
 msgstr "Kilépéskor rákérdezés|#e"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:61
 #, fuzzy
-msgid "Command|#C"
+msgid "Command:|#C"
 msgstr "parancs"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:44
-msgid "Word count"
+msgid "Word count:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
@@ -1946,12 +1930,6 @@ msgstr "Kihagy"
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 msgid "Accept|#A"
 msgstr ""
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
-#: ../src/frontends/xforms/forms/form_thesaurus.fd:62
-#, fuzzy
-msgid "Close|#C^["
-msgstr "Bezár|^["
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:242
 msgid "0 %"
@@ -2036,18 +2014,6 @@ msgstr ""
 msgid "Top|#t"
 msgstr "Felsõ:|#e"
 
-#: ../src/frontends/xforms/forms/form_tabular.fd:452
-#: ../src/frontends/xforms/forms/form_tabular.fd:892
-#, fuzzy
-msgid "Bottom|#b"
-msgstr "Alsó:|#s"
-
-#: ../src/frontends/xforms/forms/form_tabular.fd:470
-#: ../src/frontends/xforms/forms/form_tabular.fd:910
-#, fuzzy
-msgid "Left|#l"
-msgstr "Balra"
-
 #: ../src/frontends/xforms/forms/form_tabular.fd:488
 #: ../src/frontends/xforms/forms/form_tabular.fd:928
 #, fuzzy
@@ -2094,7 +2060,7 @@ msgstr "Alsó:|#s"
 #: ../src/frontends/xforms/forms/form_tabular.fd:688
 #: ../src/frontends/xforms/forms/form_tabular.fd:1146
 #, fuzzy
-msgid "LaTeX Argument|#A"
+msgid "LaTeX Argument:|#A"
 msgstr "Igazítás|#I"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:706
@@ -2154,7 +2120,7 @@ msgstr "Nem tudom kinyomtatni"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1638
 #: ../src/frontends/xforms/forms/form_tabular.fd:1656
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:131
-#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:101
+#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:147
 msgid "Double"
 msgstr "Dupla"
 
@@ -2214,12 +2180,12 @@ msgstr "Cserél"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
 #, fuzzy
-msgid "Entry : "
+msgid "Entry:"
 msgstr "Extra"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
 #, fuzzy
-msgid "Selection :"
+msgid "Selection:"
 msgstr "kijelölés"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
@@ -2227,20 +2193,10 @@ msgstr "kijelölés"
 msgid "Meanings|#M"
 msgstr "Grafikus felület (GUI) kezelés"
 
-#: ../src/frontends/xforms/forms/form_toc.fd:80
-#, fuzzy
-msgid "Type|#T"
-msgstr "LaTeX|#T"
-
 #: ../src/frontends/xforms/forms/form_url.fd:44
 #, fuzzy
-msgid "URL|#U"
+msgid "URL:|#U"
 msgstr "URL...|U"
-
-#: ../src/frontends/xforms/forms/form_url.fd:62
-#, fuzzy
-msgid "Name|#N"
-msgstr "Név"
 
 #: ../src/frontends/xforms/forms/form_url.fd:80
 msgid "HTML type|#H"
@@ -2264,12 +2220,12 @@ msgstr "Alapérték"
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
 #, fuzzy
 msgid "Form1"
 msgstr "Formátumok"
@@ -2289,7 +2245,7 @@ msgid "Cite &Style:"
 msgstr "Idézõjel stílus"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
-#: src/frontends/qt2/QDocumentDialog.C:71
+#: src/frontends/qt2/QDocumentDialog.C:70
 #: src/frontends/xforms/FormDocument.C:347
 msgid "Bullets"
 msgstr "Jelek"
@@ -2299,7 +2255,7 @@ msgstr "Jelek"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:104
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:121
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
-#: src/frontends/qt2/QDocument.C:135 src/frontends/qt2/QDocument.C:145
+#: src/frontends/qt2/QDocument.C:126 src/frontends/qt2/QDocument.C:136
 #, fuzzy
 msgid "default"
 msgstr "Alapérték"
@@ -2314,6 +2270,10 @@ msgstr "Jelek"
 msgid "&Size:"
 msgstr "Méret:|#M"
 
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:257
+msgid "tiny"
+msgstr "apró"
+
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:263
 msgid "script"
 msgstr "kézirás"
@@ -2321,6 +2281,18 @@ msgstr "kézirás"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:269
 msgid "footnote"
 msgstr "lábjegyzet"
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:275
+msgid "small"
+msgstr "kicsi"
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:281
+msgid "normal"
+msgstr "normál"
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:287
+msgid "large"
+msgstr "nagy"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:293
 #: src/frontends/controllers/character.C:145 src/lyxfont.C:57
@@ -2330,6 +2302,10 @@ msgstr "Nagy"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:299
 msgid "LARGE"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/BulletsModuleBase.ui:305
+msgid "huge"
+msgstr "óriás"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:311
 #: src/frontends/controllers/character.C:157 src/lyxfont.C:58
@@ -2344,64 +2320,69 @@ msgstr "Formátumok"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
 #, fuzzy
-msgid "Document &class :"
+msgid "Document &class:"
 msgstr "A dokumentum exportálva a"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
 #, fuzzy
-msgid "Op&tions :"
+msgid "Op&tions:"
 msgstr "Beállítások"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
 #, fuzzy
-msgid "Page &style :"
+msgid "Page &style:"
 msgstr "Oldal stílusa:|#d"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:142
-#, fuzzy
-msgid "&Font && size :"
-msgstr "Betûméret:|#r"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:161
-#, fuzzy
-msgid "Float &placement:"
-msgstr "Lebegõ obj.|#j"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:231
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
 #, fuzzy
 msgid "&Indent"
 msgstr "Behúzás"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:242
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
 #, fuzzy
 msgid "S&kip"
 msgstr "Kihagyás|#y"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
+#, fuzzy
+msgid "Float &placement:"
+msgstr "Lebegõ obj.|#j"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
+#, fuzzy
+msgid "&Font && size:"
+msgstr "Betûméret:|#r"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
+#, fuzzy
+msgid "&Line spacing:"
+msgstr "Kihagyás"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:64
+#, fuzzy
+msgid "&Single"
+msgstr "Szimpla"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:75
+#, fuzzy
+msgid "&Double"
+msgstr "Dupla"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
+#, fuzzy
+msgid "&Type:"
+msgstr "Típus:"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:144
 #, fuzzy
 msgid "&Language:"
 msgstr "Nyelv"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:70
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:167
 #, fuzzy
-msgid "Quote style"
-msgstr "Idézõjel stílus"
-
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:93
-#, fuzzy
-msgid "&Single"
-msgstr "Szimpla"
-
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:104
-#, fuzzy
-msgid "&Double"
-msgstr "Dupla"
-
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:129
-#, fuzzy
-msgid "&Type:"
-msgstr "Típus:"
+msgid "&Encoding:"
+msgstr "Kódolás"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:45
 #, fuzzy
@@ -2445,46 +2426,36 @@ msgstr "Fejléc mag.:|#c"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:45
 #, fuzzy
-msgid "Numbering depth"
+msgid "Numbering Depth"
 msgstr "Részek számozása"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:64
 #, fuzzy
-msgid "&Section :"
+msgid "&Section:"
 msgstr "Rész"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:79
 #, fuzzy
-msgid "&Table of contents :"
+msgid "&Table of contents:"
 msgstr "Tartalomjegyzék"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:41
-#: src/frontends/qt2/QDocumentDialog.C:67
+#: src/frontends/qt2/QDocumentDialog.C:73
 #, fuzzy
 msgid "Packages"
 msgstr "Csomag|#g"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:78
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:60
 #, fuzzy
 msgid "Use AMS &math"
 msgstr "AMS Math használata|#M"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:125
-#, fuzzy
-msgid "Line spacing :"
-msgstr "Kihagyás"
-
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:136
-#, fuzzy
-msgid "Encoding:"
-msgstr "Kódolás"
-
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:149
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:73
 msgid "Options"
 msgstr "Beállítások"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:168
-msgid "Postscript &driver :"
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:92
+msgid "Postscript &driver:"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:62
@@ -2499,7 +2470,7 @@ msgstr "Új dokumentum"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:84
 #, fuzzy
-msgid "Paper size"
+msgid "Paper Size"
 msgstr "papírméret"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:111
@@ -2509,8 +2480,8 @@ msgstr "Magasság"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 #, fuzzy
 msgid "&Width:"
 msgstr "Szélesség"
@@ -2540,10 +2511,293 @@ msgid "&Dummy"
 msgstr "Összegzés"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:179
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:121
 #: src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Cancel"
 msgstr "&Mégsem"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+#, fuzzy
+msgid "Bibtex"
+msgstr "BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+#, fuzzy
+msgid "Databa&ses"
+msgstr "Adatbázis:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+#, fuzzy
+msgid "BibTeX database to use"
+msgstr "Adatbázis:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+#, fuzzy
+msgid "Available BibTeX databases"
+msgstr "Adatbázis:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+#, fuzzy
+msgid "&Add"
+msgstr "Hozzáad"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+#, fuzzy
+msgid "Add a BibTeX database file"
+msgstr "Adatbázis:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+#, fuzzy
+msgid "Add a BibTeX file manually"
+msgstr "Adatbázis:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "Tallóz..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
+#, fuzzy
+msgid "Browse for a BibTeX database file"
+msgstr "Adatbázis:"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+#, fuzzy
+msgid "&Delete"
+msgstr "Töröl|#T"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+#, fuzzy
+msgid "St&yle"
+msgstr "Stílus:  "
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "TeX stílus (be/ki)"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#, fuzzy
+msgid "&Browse..."
+msgstr "Tallóz..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+#, fuzzy
+msgid "Choose a style file"
+msgstr "Válassza ki a sablont"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "&Frissít"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+#, fuzzy
+msgid "Update style list"
+msgstr "Beállítások módosítása"
+
+#. /
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+#, fuzzy
+msgid "Add bibliography to &TOC"
+msgstr "Irodalomjegyzék"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "Tartalomjegyzék megtekintése"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+#, fuzzy
+msgid "Character"
+msgstr "Betûkészlet|#e"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+#, fuzzy
+msgid "&Family:"
+msgstr "Család:|#C"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+#, fuzzy
+msgid "Font family"
+msgstr "Család:|#C"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+#, fuzzy
+msgid "&Series:"
+msgstr "Vastagság:|#V"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+#, fuzzy
+msgid "Font series"
+msgstr "Betûméret:|#r"
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Nyelv"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+#, fuzzy
+msgid "Font shape"
+msgstr "Betûméret:|#r"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+msgid "Font color"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+#, fuzzy
+msgid "S&hape:"
+msgstr "Alak:|#A"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+#, fuzzy
+msgid "&Color:"
+msgstr "Színek"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+#, fuzzy
+msgid "&Toggle all"
+msgstr "Félkövér (be/ki)"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+#, fuzzy
+msgid "toggle font on all of the above"
+msgstr "Az összeset váltsa|#t"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+#, fuzzy
+msgid "Never Toggled"
+msgstr "Ezeket sosem váltsa"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+#, fuzzy
+msgid "Si&ze:"
+msgstr "Méret:|#M"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+#, fuzzy
+msgid "Font size"
+msgstr "Betûméret:|#r"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+#, fuzzy
+msgid "Always Toggled"
+msgstr "Ezeket mindíg váltsa"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+#, fuzzy
+msgid "&Misc:"
+msgstr "Egyéb"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+#, fuzzy
+msgid "Auto apply"
+msgstr "&Alkalmaz"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+msgid "&OK"
+msgstr "&OK"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+msgid "&Apply"
+msgstr "&Alkalmaz"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+msgid "&Close"
+msgstr "&Bezár"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
@@ -2551,39 +2805,15 @@ msgid "Citation"
 msgstr "Irodalomra hivatkozás"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 msgid "&Restore"
 msgstr "&Visszaállít"
-
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:168
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-msgid "&Apply"
-msgstr "&Alkalmaz"
-
-#. /
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:942
-msgid "Cancel"
-msgstr "Mégsem"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -2617,10 +2847,10 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 msgid "New Item"
 msgstr ""
 
@@ -2750,33 +2980,76 @@ msgstr "Beszúrás|B"
 msgid "Insert the delimiters"
 msgstr "Utolsó tárgymutató bejegyzés beszúrása"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-msgid "&Close"
-msgstr "&Bezár"
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+#, fuzzy
+msgid "Use Class Defaults"
+msgstr "Utoljára megny. fájlja|#U"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+#, fuzzy
+msgid "Reset default params of the current class"
+msgstr " dokumentum osztály alapértelmezésére?"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+#, fuzzy
+msgid "Save as Document Defaults"
+msgstr "Formátum mentése alapértelmezettként|a"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[nincs megjelenítve]"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+#, fuzzy
+msgid "Display"
+msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+#, fuzzy
+msgid "&Collapsed"
+msgstr "rendezve"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+#, fuzzy
+msgid "&Open"
+msgstr "Megnyit"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+#, fuzzy
+msgid "Show ERT contents"
+msgstr "Nincs tartalomjegyzék%i"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "LaTeX Hiba"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+#, fuzzy
+msgid "LaTeX error messages"
+msgstr "LaTeX Hiba"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 #, fuzzy
@@ -2789,7 +3062,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
 #, fuzzy
-msgid "Advanced placement options"
+msgid "Advanced Placement Options"
 msgstr "Betûtípus"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:94
@@ -2855,1507 +3128,23 @@ msgstr "Speciális oszlop"
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:157
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-msgid "&OK"
-msgstr "&OK"
-
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
-#: src/insets/insetindex.C:70
-msgid "Index"
-msgstr "Tárgymutató"
-
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-#, fuzzy
-msgid "&Keyword"
-msgstr "Kulcsszó"
-
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
-#, fuzzy
-msgid "Index entry"
-msgstr "Tárgymutató bejegyzés...|T"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
-#, fuzzy
-msgid "LyX: Math Panel"
-msgstr "Képletszerkesztõ"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:98
-#, fuzzy
-msgid "Insert root"
-msgstr "Idézet beillesztése"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:117
-#, fuzzy
-msgid "Insert spacing"
-msgstr "Kihagyás"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:136
-msgid "Set limits style"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:155
-#, fuzzy
-msgid "Set math font"
-msgstr "Betûméret beállítása"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-msgid "Insert fraction (\frac)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
-msgid "Toggle between display mode"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
-#, fuzzy
-msgid "Insert matrix"
-msgstr "Függelék beillesztése"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
-#, fuzzy
-msgid "Subscript"
-msgstr "Alsó index|A"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
-#, fuzzy
-msgid "Superscript"
-msgstr "Felsõ index|F"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
-msgid "Show delimiter and bracket dialog"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:381
-#, fuzzy
-msgid "&Functions"
-msgstr "Függvények"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
-#, fuzzy
-msgid "Select a function or operator to insert"
-msgstr "Válassza ki a beillesztendõ dokumentumot"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
-msgid "Symbols"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:493
-#, fuzzy
-msgid "Operators"
-msgstr "Eszperantó"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:499
-msgid "Big operators"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:505
-#, fuzzy
-msgid "Relations"
-msgstr "Szétválasztás"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:517
-#: src/frontends/xforms/FormMathsPanel.C:137
-#, fuzzy
-msgid "Arrows"
-msgstr "Tallóz..."
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:529
-msgid "Frame decorations"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:535
-msgid "Miscellaneous"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:541
-#, fuzzy
-msgid "AMS operators"
-msgstr "Szétválasztás"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:547
-#, fuzzy
-msgid "AMS relations"
-msgstr "Szétválasztás"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:553
-#, fuzzy
-msgid "AMS negated relations"
-msgstr "Szétválasztás"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:559
-#, fuzzy
-msgid "AMS arrows"
-msgstr "Tallóz..."
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:565
-#, fuzzy
-msgid "AMS Miscellaneous"
-msgstr "Egyéb"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
-#, fuzzy
-msgid "Select a page of symbols"
-msgstr "TeX stílus (be/ki)"
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
-msgid "&Detach panel"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:659
-msgid "Open this panel as a separate window"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
-#, fuzzy
-msgid "Minipage settings"
-msgstr "minilap vonal"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
-#, fuzzy
-msgid "Top"
-msgstr "Felsõ:|#e"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
-#, fuzzy
-msgid "Middle"
-msgstr "Közép|#z"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
-#, fuzzy
-msgid "Bottom"
-msgstr "Alsó:|#s"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
-#, fuzzy
-msgid "Vertical alignment"
-msgstr "Függõleges igazítás|#F"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
-#, fuzzy
-msgid "A&lignment:"
-msgstr "Igazítás"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:158
-msgid "Units of width value"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:170
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:176
-#, fuzzy
-msgid "Width value"
-msgstr "Szélesség"
-
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:181
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:187
-msgid "&Units:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-#, fuzzy
-msgid "&Save"
-msgstr "Ment"
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
-msgid "ASCII settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:56
-#, fuzzy
-msgid "&roff command:"
-msgstr "Felhasználói parancsok"
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
-#, fuzzy
-msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Ez a maximum sorhossz egy exportált ASCII fájl esetén (LaTeX, SGML vagy "
-"egyszerû szöveg)."
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
-msgid "Output &line length:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:139
-msgid "External app for formating tables in ASCII output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:133
-#: src/frontends/xforms/FormPreferences.C:210
-msgid "Colors"
-msgstr "Színek"
-
-#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:56
-#, fuzzy
-msgid "&Colors"
-msgstr "Színek"
-
-#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:93
-#, fuzzy
-msgid "&Alter ..."
-msgstr "egyéb..."
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:22
-#, fuzzy
-msgid "File Conversion"
-msgstr "Átalakítási hiba!"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:56
-#, fuzzy
-msgid "&Converters"
-msgstr "Átalakítók"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:106
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:86
-#, fuzzy
-msgid "&New"
-msgstr "szöveg"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:117
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:110
-#, fuzzy
-msgid "&Remove"
-msgstr "&Visszaállít"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:176
-#, fuzzy
-msgid "C&onverter:"
-msgstr "Átalakítók"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:212
-#, fuzzy
-msgid "&To:"
-msgstr "Felsõ:|#e"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-#, fuzzy
-msgid "F&rom:"
-msgstr "Forrás|#F"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
-#, fuzzy
-msgid "E&xtra flag:"
-msgstr "Kilépéskor rákérdezés|#e"
-
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:281
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:282
-#, fuzzy
-msgid "&Modify"
-msgstr "Módosít|#M"
-
-#: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
-#, fuzzy
-msgid "Date Format"
-msgstr "dátum formátum|#f"
-
-#: ../src/frontends/qt2/ui/QPrefDateModule.ui:56
-#, fuzzy
-msgid "&Date format:"
-msgstr "dátum formátum|#f"
-
-#: ../src/frontends/qt2/ui/QPrefDateModule.ui:71
-msgid "Date format for strftime output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:22
-#, fuzzy
-msgid "Display insets"
-msgstr "Grafika"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-#, fuzzy
-msgid "Monochrome"
-msgstr "Fekete-fehér|#h"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-#, fuzzy
-msgid "Grayscale"
-msgstr "Szürkeárnyalatos|#z"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-#, fuzzy
-msgid "Color"
-msgstr "Színek"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
-#, fuzzy
-msgid "Do not display"
-msgstr "Ne jelenítse meg|#t"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:87
-#, fuzzy
-msgid "Display &Graphics:"
-msgstr "Grafika"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
-msgid "Instant &preview"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:22
-#, fuzzy
-msgid "File Formats"
-msgstr "Formátumok"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:56
-#, fuzzy
-msgid "&File formats"
-msgstr "Formátumok"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:169
-#, fuzzy
-msgid "&GUI name:"
-msgstr "GUI név|#G"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:184
-#, fuzzy
-msgid "F&ormat:"
-msgstr "Formátumok"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:206
-#, fuzzy
-msgid "&Viewer:"
-msgstr "Nézet"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:228
-#, fuzzy
-msgid "S&hortcut:"
-msgstr "Gyorsbillentyû|#b"
-
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:243
-#, fuzzy
-msgid "E&xtension:"
-msgstr "Kiterjesztés|#e"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:137
-#, fuzzy
-msgid "Keyboard"
-msgstr "Kulcsszó"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-#, fuzzy
-msgid "Bro&wse..."
-msgstr "Tallóz..."
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
-#, fuzzy
-msgid "S&econd:"
-msgstr "Rész"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:106
-#, fuzzy
-msgid "&First:"
-msgstr "Keresztnév"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:121
-#, fuzzy
-msgid "Br&owse..."
-msgstr "Tallóz..."
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:136
-#, fuzzy
-msgid "Use &keyboard map"
-msgstr "Billentyûzet kiosztás"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:81
-#, fuzzy
-msgid "Language settings"
-msgstr "minilap vonal"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:41
-#, fuzzy
-msgid "Command s&tart:"
-msgstr "parancs"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:84
-#, fuzzy
-msgid "&Default language:"
-msgstr "Alapértelmezett nyelv|#l"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:99
-#, fuzzy
-msgid "Command e&nd:"
-msgstr "parancs"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:114
-#, fuzzy
-msgid "Language pac&kage:"
-msgstr "Nyelv:"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:129
-msgid "Auto &begin"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-#, fuzzy
-msgid "Use &babel"
-msgstr "Új oldalon kezdve|#o"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
-#, fuzzy
-msgid "&Global"
-msgstr "G|#G"
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:183
-msgid "&Right-to-left language support"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:194
-msgid "Auto &end"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:205
-#, fuzzy
-msgid "Mark &foreign languages"
-msgstr "Idegen jelölése|#j"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
-#, fuzzy
-msgid "LaTeX settings"
-msgstr "egyéb opciók"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "Alapérték"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
-#, fuzzy
-msgid "US Letter"
-msgstr "Levél"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:80
-msgid "Legal"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:86
-#, fuzzy
-msgid "Executive"
-msgstr "Feladat"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:92
-#: src/frontends/qt2/QDocument.C:117
-msgid "A3"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:98
-#: src/frontends/qt2/QDocument.C:118
-msgid "A4"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:104
-#: src/frontends/qt2/QDocument.C:119
-msgid "A5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:110
-#: src/frontends/qt2/QDocument.C:122
-msgid "B5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:133
-#, fuzzy
-msgid "Te&X encoding:"
-msgstr "TeX kódolás|#T"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:148
-#, fuzzy
-msgid "Default paper si&ze:"
-msgstr "Alap papírméret|#p"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
-msgid "&Reset class options when document class changes"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
-#, fuzzy
-msgid "Set class options to default on class change"
-msgstr ""
-"Kapcsolja ki ha nem akarja, hogy az aktuális kijelölés "
-"automatikusanfelülíródjon azzal amit gépel."
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
-#, fuzzy
-msgid "External applications"
-msgstr "Egyéb beállítások"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:222
-#, fuzzy
-msgid "Chec&kTeX command :"
-msgstr "Parancs végrehajtása"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
-#, fuzzy
-msgid "DVI viewer paper size options:"
-msgstr "egyéb opciók"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
-msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
-msgid "CheckTeX start options and flags"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
-#, fuzzy
-msgid "&Backup directory :"
-msgstr "A felhasználó könyvtára: "
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:122
-#, fuzzy
-msgid "&Document templates :"
-msgstr "A dokumentum exportálva a"
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:137
-msgid "Ly&XServer pipe :"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:152
-#, fuzzy
-msgid "&Use temporary directory"
-msgstr "A felhasználó könyvtára: "
-
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
-#, fuzzy
-msgid "&Working directory :"
-msgstr "LyX: Könyvtár létrehozása "
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
-#, fuzzy
-msgid "Printer settings"
-msgstr "minilap vonal"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
-#, fuzzy
-msgid "Printer &name :"
-msgstr "Nyomtató"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
-#, fuzzy
-msgid "Printer co&mmand:"
-msgstr "Felhasználói parancsok"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
-#, fuzzy
-msgid "Name of the default printer"
-msgstr "Adja meg az alapértelmezett papírméretet."
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
-msgid "Adapt outp&ut"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:123
-msgid "Use printer name explicitely"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
-#, fuzzy
-msgid "Command options"
-msgstr "parancs"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
-#, fuzzy
-msgid "Re&verse:"
-msgstr "fordított sorrend"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
-#, fuzzy
-msgid "To p&rinter:"
-msgstr "nyomtató"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:222
-#, fuzzy
-msgid "Paper si&ze:"
-msgstr "papírméret"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:251
-#, fuzzy
-msgid "To &file:"
-msgstr "fájlba"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:287
-#, fuzzy
-msgid "Spool &command:"
-msgstr "spool parancs"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:316
-#, fuzzy
-msgid "&Odd pages:"
-msgstr "páratlan oldalak"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:338
-#, fuzzy
-msgid "Paper t&ype:"
-msgstr "papír típus"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:360
-#, fuzzy
-msgid "E&xtra options:"
-msgstr "Egyéb beállítások"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:375
-msgid "Spool pref&ix:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:397
-#, fuzzy
-msgid "Co&llated:"
-msgstr "rendezve"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:419
-#, fuzzy
-msgid "&Even pages:"
-msgstr "páros oldalak"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:434
-#, fuzzy
-msgid "File ex&tension:"
-msgstr "kiterjesztés"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
-#, fuzzy
-msgid "Lan&dscape:"
-msgstr "Fekvõ|#F"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:478
-#, fuzzy
-msgid "Co&pies:"
-msgstr "Másolatok"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:493
-#, fuzzy
-msgid "Pa&ge range:"
-msgstr "hatáskör"
-
-#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
-msgid "Specify the command option names for your printer command"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
-#: src/frontends/xforms/FormPreferences.C:204
-msgid "Screen Fonts"
-msgstr "Képernyõ"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
-#, fuzzy
-msgid "Sa&ns Serif :"
-msgstr "Vastagság:|#V"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
-#, fuzzy
-msgid "T&ypewriter :"
-msgstr "Típus"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
-#, fuzzy
-msgid "&Roman :"
-msgstr "Román"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
-#, fuzzy
-msgid "Screen &DPI:"
-msgstr "Képernyõ DPI|#D"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
-#, fuzzy
-msgid "&Zoom %:"
-msgstr "Méret %"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
-#, fuzzy
-msgid "Font sizes"
-msgstr "Betûméret:|#r"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:405
-#, fuzzy
-msgid "Larger:"
-msgstr "Nagyobb"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:420
-#, fuzzy
-msgid "Largest:"
-msgstr "Legnagyobb"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:442
-#, fuzzy
-msgid "Huge:"
-msgstr "Óriás"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
-#, fuzzy
-msgid "Hugest:"
-msgstr "Óriás"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:472
-#, fuzzy
-msgid "Smallest:"
-msgstr "Legkisebb"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:487
-#, fuzzy
-msgid "Smaller:"
-msgstr "Kisebb"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:502
-#, fuzzy
-msgid "Small:"
-msgstr "Kicsi"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:517
-#, fuzzy
-msgid "Normal:"
-msgstr "Normál"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:532
-#, fuzzy
-msgid "Tiny:"
-msgstr "Apró"
-
-#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:547
-#, fuzzy
-msgid "Large:"
-msgstr "Nagy"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
-#: src/frontends/xforms/FormPreferences.C:243
-msgid "Spell checker"
-msgstr "Helyesírás-ellenõrzõ"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-#, fuzzy
-msgid "Spell chec&ker program:"
-msgstr "Helyesírás-ellenõrzõ"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:106
-#, fuzzy
-msgid "Al&ternative language:"
-msgstr "Más nyelv használata|#a"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
-#, fuzzy
-msgid "Escape Cha&racters:"
-msgstr "Escape karakterek használata|#e"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
-#, fuzzy
-msgid "Personal &dictionary:"
-msgstr "Saját szótár"
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:187
-msgid "ispell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:193
-msgid "aspell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
-msgid "Accept compound &words"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
-#, fuzzy
-msgid "Use input encod&ing"
-msgstr "Folytatólagosan|#t"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:22
-msgid "UI"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
-#, fuzzy
-msgid "B&rowse..."
-msgstr "Tallóz..."
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:67
-#, fuzzy
-msgid "&User interface file:"
-msgstr "UI fájl|#U"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:82
-#, fuzzy
-msgid "&Bind file:"
-msgstr "Bind fájl"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:139
-#, fuzzy
-msgid "Scrolling"
-msgstr "Sortávolság:|#z"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:173
-#, fuzzy
-msgid "W&heel mouse scroll :"
-msgstr "Görgös egér lapozása"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-#, fuzzy
-msgid "Cursor follo&ws scrollbar"
-msgstr "A kurzor követi a gördítõsávot|#k"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
-#, fuzzy
-msgid "Documents"
-msgstr "Dokumentum"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:233
-#, fuzzy
-msgid "B&ackup documents "
-msgstr "Menti a dokumentumot?"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:280
-#, fuzzy
-msgid " every"
-msgstr "fordított sorrend"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:310
-#, fuzzy
-msgid "minutes"
-msgstr "Vonal"
-
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:338
-msgid "&Maximum last files :"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-#, fuzzy
-msgid "Search and replace"
-msgstr "Keres és Cserél"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-#, fuzzy
-msgid "&Find:"
-msgstr "Keresendõ:|#K"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-#, fuzzy
-msgid "Replace &with:"
-msgstr "Új szöveg:|#j"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-#, fuzzy
-msgid "Case &sensitive"
-msgstr "kisb./NAGYB.|#i"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-#, fuzzy
-msgid "&Replace"
-msgstr "Cserél"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-#, fuzzy
-msgid "Replace &All "
-msgstr "Mindet|#M"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-#, fuzzy
-msgid "File: "
-msgstr "A(z) `"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-#, fuzzy
-msgid "Insert table"
-msgstr "Táblázat beillesztése"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-#, fuzzy
-msgid "&Rows:"
-msgstr "Sorok"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-#, fuzzy
-msgid "Number of rows"
-msgstr "  Szám "
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-#, fuzzy
-msgid "&Columns:"
-msgstr "Oszlopok"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-#, fuzzy
-msgid "Number of columns"
-msgstr "% az oszlopnak"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
-#: src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-#, fuzzy
-msgid "Entry"
-msgstr "Extra"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-msgid "Thesaurus entries"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-#, fuzzy
-msgid "Select a related word"
-msgstr "Következõ sor kiválasztása"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-#, fuzzy
-msgid "&Selection"
-msgstr "kijelölés"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-msgid "The selected entry"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-#, fuzzy
-msgid "Insert URL"
-msgstr "Címke beillesztése"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
-msgid "&URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-#, fuzzy
-msgid "&Name"
-msgstr "Név"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-msgid "&Generate hyperlink"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-#, fuzzy
-msgid "Wrap Options"
-msgstr "Egyéb beállítások"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-#, fuzzy
-msgid "Default (outer)"
-msgstr "Alapértelmezett könyvtár"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "Balra"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "Jobbra"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-#, fuzzy
-msgid "Outer"
-msgstr "Adott ("
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-#, fuzzy
-msgid "&Placement:"
-msgstr "Lebegõ obj.|#j"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
-msgid "&Key"
-msgstr "Kulcs"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
-msgid "The citation key"
-msgstr "Irodalomra hivatkozás"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-#, fuzzy
-msgid "&Label"
-msgstr "Címke:|#C"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
-#, fuzzy
-msgid "The label as it appears in the document"
-msgstr "A formátum neve, ahogy megjelenik a menükben."
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
-#: src/frontends/xforms/FormAboutlyx.C:70
-#, fuzzy
-msgid "Version"
-msgstr "Verzió...|V"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
-msgid "Version goes here"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
-#: src/frontends/xforms/FormAboutlyx.C:72
-msgid "Credits"
-msgstr "Érdemek"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
-#: ../lib/layouts/apa.layout:192
-msgid "Copyright"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-#, fuzzy
-msgid "Bibtex"
-msgstr "BibTeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-#, fuzzy
-msgid "Databa&ses"
-msgstr "Adatbázis:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-#, fuzzy
-msgid "BibTeX database to use"
-msgstr "Adatbázis:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-#, fuzzy
-msgid "Available BibTeX databases"
-msgstr "Adatbázis:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-#, fuzzy
-msgid "&Add"
-msgstr "Hozzáad"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-#, fuzzy
-msgid "Add a BibTeX database file"
-msgstr "Adatbázis:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-#, fuzzy
-msgid "Add a BibTeX file manually"
-msgstr "Adatbázis:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-#, fuzzy
-msgid "Browse for a BibTeX database file"
-msgstr "Adatbázis:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-#, fuzzy
-msgid "&Delete"
-msgstr "Töröl|#T"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-#, fuzzy
-msgid "St&yle"
-msgstr "Stílus:  "
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "TeX stílus (be/ki)"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#, fuzzy
-msgid "&Browse..."
-msgstr "Tallóz..."
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-#, fuzzy
-msgid "Choose a style file"
-msgstr "Válassza ki a sablont"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-msgid "&Update"
-msgstr "&Frissít"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-#, fuzzy
-msgid "Update style list"
-msgstr "Beállítások módosítása"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-#, fuzzy
-msgid "Add bibliography to &TOC"
-msgstr "Irodalomjegyzék"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "Tartalomjegyzék megtekintése"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:66
-#: src/frontends/qt2/QCharacter.C:39
-#, fuzzy
-msgid "Character"
-msgstr "Betûkészlet|#e"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-#, fuzzy
-msgid "&Family:"
-msgstr "Család:|#C"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-#, fuzzy
-msgid "Font family"
-msgstr "Család:|#C"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-#, fuzzy
-msgid "&Series:"
-msgstr "Vastagság:|#V"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-#, fuzzy
-msgid "Font series"
-msgstr "Betûméret:|#r"
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Nyelv"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-#, fuzzy
-msgid "Font shape"
-msgstr "Betûméret:|#r"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-msgid "Font color"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-#, fuzzy
-msgid "S&hape:"
-msgstr "Alak:|#A"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-#, fuzzy
-msgid "&Color:"
-msgstr "Színek"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-#, fuzzy
-msgid "&Toggle all"
-msgstr "Félkövér (be/ki)"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-#, fuzzy
-msgid "toggle font on all of the above"
-msgstr "Az összeset váltsa|#t"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-#, fuzzy
-msgid "Never toggled"
-msgstr "Ezeket sosem váltsa"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-#, fuzzy
-msgid "Si&ze:"
-msgstr "Méret:|#M"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-#, fuzzy
-msgid "Font size"
-msgstr "Betûméret:|#r"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-#, fuzzy
-msgid "Always toggled"
-msgstr "Ezeket mindíg váltsa"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-#, fuzzy
-msgid "&Misc:"
-msgstr "Egyéb"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-#, fuzzy
-msgid "Auto apply"
-msgstr "&Alkalmaz"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:71
-#, fuzzy
-msgid "Use Class Defaults"
-msgstr "Utoljára megny. fájlja|#U"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:75
-#, fuzzy
-msgid "Reset default params of the current class"
-msgstr " dokumentum osztály alapértelmezésére?"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:93
-#, fuzzy
-msgid "Save as Document Defaults"
-msgstr "Formátum mentése alapértelmezettként|a"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:97
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:228
-msgid "title here"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "LaTeX Hiba"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-#, fuzzy
-msgid "LaTeX error messages"
-msgstr "LaTeX Hiba"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[nincs megjelenítve]"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-#, fuzzy
-msgid "&Collapsed"
-msgstr "rendezve"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
-msgid "&Open"
-msgstr "Megnyit"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-#, fuzzy
-msgid "Show ERT contents"
-msgstr "Nincs tartalomjegyzék%i"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
-#, fuzzy
-msgid "External Material"
-msgstr "Egyéb dolgok...|d"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-#, fuzzy
-msgid "&File:"
-msgstr "&Fájl"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
-#, fuzzy
-msgid "Filename"
-msgstr "Fájlnév:|#j"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
-#, fuzzy
-msgid "&View Result"
-msgstr "newfile"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
-#, fuzzy
-msgid "View the file"
-msgstr "Táblázatok listája megtekintése"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
-#, fuzzy
-msgid "&Update Result"
-msgstr "&Frissít"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
-msgid "Update the material"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
-#, fuzzy
-msgid "Available templates"
-msgstr "Beállítások mentése"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
-#, fuzzy
-msgid "&Template:"
-msgstr "Sablonok"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
-#, fuzzy
-msgid "Parameters"
-msgstr "Betûkészlet|#e"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
-#, fuzzy
-msgid "&Parameters:"
-msgstr "Betûkészlet|#e"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
-#, fuzzy
-msgid "&Edit file"
-msgstr "fájlba"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
-msgid "Edit the file externally"
-msgstr ""
-
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
 #, fuzzy
 msgid "&Graphics"
 msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#, fuzzy
+msgid "&File:"
+msgstr "&Fájl"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
 #, fuzzy
 msgid "File name of image"
 msgstr "Válassza ki a beillesztendõ dokumentumot"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-#, fuzzy
-msgid "&Browse ..."
-msgstr "Tallóz..."
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
 #, fuzzy
@@ -4364,7 +3153,7 @@ msgstr "Következõ sor kiválasztása"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
 #, fuzzy
-msgid "LyX display"
+msgid "LyX Display"
 msgstr "Ne jelenítse meg|#t"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
@@ -4377,7 +3166,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
 #, fuzzy
-msgid "Display :"
+msgid "Display:"
 msgstr "Grafika"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
@@ -4386,9 +3175,36 @@ msgstr "Grafika"
 msgid "Screen display"
 msgstr "[nincs megjelenítve]"
 
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "Alapérték"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+#, fuzzy
+msgid "Monochrome"
+msgstr "Fekete-fehér|#h"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+#, fuzzy
+msgid "Grayscale"
+msgstr "Szürkeárnyalatos|#z"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+#, fuzzy
+msgid "Color"
+msgstr "Színek"
+
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
 #, fuzzy
-msgid "Scale :"
+msgid "Scale:"
 msgstr "Kisebb"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
@@ -4534,13 +3350,22 @@ msgstr "Képletszerkesztõ"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
 #, fuzzy
-msgid "Ca&ption :"
+msgid "Ca&ption:"
 msgstr "Irodalomra hivatkozás"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Bezár"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
 #, fuzzy
@@ -4605,6 +3430,26 @@ msgstr "&Fájl"
 msgid "Show LaTeX preview"
 msgstr "Bevezetõ LaTeX parancsok"
 
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
+#: src/insets/insetindex.C:70
+msgid "Index"
+msgstr "Tárgymutató"
+
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+#, fuzzy
+msgid "&Keyword"
+msgstr "Kulcsszó"
+
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
+#, fuzzy
+msgid "Index entry"
+msgstr "Tárgymutató bejegyzés...|T"
+
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
 msgid "Log"
 msgstr ""
@@ -4614,185 +3459,189 @@ msgstr ""
 msgid "Update the display"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
 #, fuzzy
-msgid "Center"
-msgstr "Középre"
+msgid "LyX: Math Panel"
+msgstr "Képletszerkesztõ"
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:98
 #, fuzzy
-msgid "&Vertical:"
-msgstr "Függõleges térköz"
+msgid "Insert root"
+msgstr "Idézet beillesztése"
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:117
 #, fuzzy
-msgid "&Horizontal:"
-msgstr "Vízszintes igazítás|#V"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
-#, fuzzy
-msgid "&General"
-msgstr "Általános"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
-#, fuzzy
-msgid "Justified"
-msgstr "Testreszabás|s"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
-#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:97
-msgid "Single"
-msgstr "Szimpla"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
-msgid "1.5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
-#: src/frontends/qt2/QDocumentDialog.C:342
-#, fuzzy
-msgid "Custom"
-msgstr "Ügyfél"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
-#, fuzzy
-msgid "L&ine spacing:"
+msgid "Insert spacing"
 msgstr "Kihagyás"
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:136
+msgid "Set limits style"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:155
 #, fuzzy
-msgid "Alig&nment:"
+msgid "Set math font"
+msgstr "Betûméret beállítása"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
+msgid "Insert fraction (\frac)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
+msgid "Toggle between display mode"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
+#, fuzzy
+msgid "Insert matrix"
+msgstr "Függelék beillesztése"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
+#, fuzzy
+msgid "Subscript"
+msgstr "Alsó index|A"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
+#, fuzzy
+msgid "Superscript"
+msgstr "Felsõ index|F"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
+msgid "Show delimiter and bracket dialog"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:381
+#, fuzzy
+msgid "&Functions"
+msgstr "Függvények"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
+#, fuzzy
+msgid "Select a function or operator to insert"
+msgstr "Válassza ki a beillesztendõ dokumentumot"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
+msgid "Symbols"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:493
+#, fuzzy
+msgid "Operators"
+msgstr "Eszperantó"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:499
+msgid "Big operators"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:505
+#, fuzzy
+msgid "Relations"
+msgstr "Szétválasztás"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:517
+#: src/frontends/xforms/FormMathsPanel.C:137
+#, fuzzy
+msgid "Arrows"
+msgstr "Tallóz..."
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:529
+msgid "Frame decorations"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:535
+msgid "Miscellaneous"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:541
+#, fuzzy
+msgid "AMS operators"
+msgstr "Szétválasztás"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:547
+#, fuzzy
+msgid "AMS relations"
+msgstr "Szétválasztás"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:553
+#, fuzzy
+msgid "AMS negated relations"
+msgstr "Szétválasztás"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:559
+#, fuzzy
+msgid "AMS arrows"
+msgstr "Tallóz..."
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:565
+#, fuzzy
+msgid "AMS Miscellaneous"
+msgstr "Egyéb"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
+#, fuzzy
+msgid "Select a page of symbols"
+msgstr "TeX stílus (be/ki)"
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
+msgid "&Detach panel"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:659
+msgid "Open this panel as a separate window"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
+#, fuzzy
+msgid "Minipage settings"
+msgstr "minilap vonal"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#, fuzzy
+msgid "Top"
+msgstr "Felsõ:|#e"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
+#, fuzzy
+msgid "Middle"
+msgstr "Közép|#z"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#, fuzzy
+msgid "Bottom"
+msgstr "Alsó:|#s"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
+#, fuzzy
+msgid "Vertical alignment"
+msgstr "Függõleges igazítás|#F"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
+#, fuzzy
+msgid "A&lignment:"
 msgstr "Igazítás"
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-#, fuzzy
-msgid "No &indent"
-msgstr "Oldaltípus"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
-#, fuzzy
-msgid "&Spacing"
-msgstr "Sortávolság:|#z"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
-#, fuzzy
-msgid "Above paragraph"
-msgstr "Ugrás egy bekezdéssel feljebb"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
-#, fuzzy
-msgid "S&pacing:"
-msgstr ", Sortávolság"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
-msgid "&Keep space:"
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:158
+msgid "Units of width value"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:170
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:176
 #, fuzzy
-msgid "&Unit:"
-msgstr "Betûkészlet: "
+msgid "Width value"
+msgstr "Szélesség"
 
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
-#, fuzzy
-msgid "&Value:"
-msgstr "Érték"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
-msgid "None"
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:181
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:187
+msgid "&Units:"
 msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
-#, fuzzy
-msgid "DefSkip"
-msgstr "Kihagyás:|h"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
-#, fuzzy
-msgid "SmallSkip"
-msgstr "Kicsi"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
-#, fuzzy
-msgid "MedSkip"
-msgstr "Közepes"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
-msgid "BigSkip"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
-#, fuzzy
-msgid "VFill"
-msgstr "Kitöltés|K"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
-#, fuzzy
-msgid "Below paragraph"
-msgstr "Ugrás egy bekezdéssel feljebb"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
-#, fuzzy
-msgid "&Lines && Pagebreaks"
-msgstr "Új oldal"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-#, fuzzy
-msgid "Label width"
-msgstr "Címke széless.:|#s"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-#, fuzzy
-msgid "Lon&gest label"
-msgstr "Címke beillesztése"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
-#, fuzzy
-msgid "L&ines"
-msgstr "Vonal"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
-#, fuzzy
-msgid "A&bove"
-msgstr "Felette:|#t"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
-#, fuzzy
-msgid "B&elow"
-msgstr "Alatta:|#A"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
-#, fuzzy
-msgid "&Page breaks"
-msgstr "Új oldal"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
-#, fuzzy
-msgid "Abo&ve"
-msgstr "Felette:|#t"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
-#, fuzzy
-msgid "Belo&w"
-msgstr "Alatta:|#A"
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
 #, fuzzy
@@ -4805,7 +3654,7 @@ msgid "The LaTeX pre-amble"
 msgstr "Bevezetõ LaTeX parancsok"
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit ..."
+msgid "&Edit..."
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
@@ -4998,6 +3847,50 @@ msgstr "Beállítások mentése"
 msgid "&Document:"
 msgstr "Dokumentum"
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+#, fuzzy
+msgid "Search and replace"
+msgstr "Keres és Cserél"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+#, fuzzy
+msgid "&Find:"
+msgstr "Keresendõ:|#K"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+#, fuzzy
+msgid "Replace &with:"
+msgstr "Új szöveg:|#j"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+#, fuzzy
+msgid "Case &sensitive"
+msgstr "kisb./NAGYB.|#i"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+#, fuzzy
+msgid "&Replace"
+msgstr "Cserél"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+#, fuzzy
+msgid "Replace &All"
+msgstr "Mindet|#M"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
 #, fuzzy
 msgid "Custom Export"
@@ -5021,6 +3914,11 @@ msgstr ""
 #, fuzzy
 msgid "Available export converters"
 msgstr "Beállítások mentése"
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+#, fuzzy
+msgid "File:"
+msgstr "A(z) `"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
@@ -5121,6 +4019,30 @@ msgstr ""
 #, fuzzy
 msgid "Block"
 msgstr "fekete"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "Balra"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#, fuzzy
+msgid "Center"
+msgstr "Középre"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "Jobbra"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
 #, fuzzy
@@ -5343,7 +4265,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
 #, fuzzy
-msgid "Current cell :"
+msgid "Current cell:"
 msgstr "Középre"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
@@ -5354,6 +4276,161 @@ msgstr "Középre"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
 msgid "Current column position"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+#, fuzzy
+msgid "Entry"
+msgstr "Extra"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
+msgid "Thesaurus entries"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+#, fuzzy
+msgid "Select a related word"
+msgstr "Következõ sor kiválasztása"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+#, fuzzy
+msgid "&Selection"
+msgstr "kijelölés"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+msgid "The selected entry"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
+#, fuzzy
+msgid "Table Of Contents"
+msgstr "Tartalomjegyzék"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
+#, fuzzy
+msgid "&Type"
+msgstr "Típus"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
+msgid "Contents list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+#, fuzzy
+msgid "Insert URL"
+msgstr "Címke beillesztése"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+#, fuzzy
+msgid "&URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+#, fuzzy
+msgid "&Name"
+msgstr "Név"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+msgid "&Generate hyperlink"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+#, fuzzy
+msgid "Version control log"
+msgstr "LyX verziószám: "
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+#, fuzzy
+msgid "Wrap Options"
+msgstr "Egyéb beállítások"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+#, fuzzy
+msgid "Default (outer)"
+msgstr "Alapértelmezett könyvtár"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+#, fuzzy
+msgid "Outer"
+msgstr "Adott ("
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+#, fuzzy
+msgid "&Placement:"
+msgstr "Lebegõ obj.|#j"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+#, fuzzy
+msgid "&Rows:"
+msgstr "Sorok"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+#, fuzzy
+msgid "Number of rows"
+msgstr "  Szám "
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+#, fuzzy
+msgid "&Columns:"
+msgstr "Oszlopok"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+#, fuzzy
+msgid "Number of columns"
+msgstr "% az oszlopnak"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#, fuzzy
+msgid "&Vertical:"
+msgstr "Függõleges térköz"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#, fuzzy
+msgid "&Horizontal:"
+msgstr "Vízszintes igazítás|#V"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
 #, fuzzy
@@ -5412,24 +4489,884 @@ msgstr ""
 msgid "Close this dialog"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-#, fuzzy
-msgid "Table Of Contents"
-msgstr "Tartalomjegyzék"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
-msgid "&Type"
-msgstr "Típus"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
-msgid "Contents list"
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
+msgid "ASCII settings"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:56
 #, fuzzy
-msgid "Version control log"
-msgstr "LyX verziószám: "
+msgid "&roff command:"
+msgstr "Felhasználói parancsok"
+
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
+#, fuzzy
+msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
+msgstr ""
+"Ez a maximum sorhossz egy exportált ASCII fájl esetén (LaTeX, SGML vagy "
+"egyszerû szöveg)."
+
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
+msgid "Output &line length:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:139
+msgid "External app for formating tables in ASCII output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:133
+#: src/frontends/xforms/FormPreferences.C:210
+msgid "Colors"
+msgstr "Színek"
+
+#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:56
+#, fuzzy
+msgid "&Colors"
+msgstr "Színek"
+
+#: ../src/frontends/qt2/ui/QPrefColorsModule.ui:93
+#, fuzzy
+msgid "&Alter..."
+msgstr "egyéb..."
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:22
+#, fuzzy
+msgid "File Conversion"
+msgstr "Átalakítási hiba!"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:56
+#, fuzzy
+msgid "&Converters"
+msgstr "Átalakítók"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:106
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:86
+#, fuzzy
+msgid "&New"
+msgstr "szöveg"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:117
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:110
+#, fuzzy
+msgid "&Remove"
+msgstr "&Visszaállít"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:176
+#, fuzzy
+msgid "C&onverter:"
+msgstr "Átalakítók"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:212
+#, fuzzy
+msgid "&To:"
+msgstr "Felsõ:|#e"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
+#, fuzzy
+msgid "F&rom:"
+msgstr "Forrás|#F"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
+#, fuzzy
+msgid "E&xtra flag:"
+msgstr "Kilépéskor rákérdezés|#e"
+
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:281
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:282
+#, fuzzy
+msgid "&Modify"
+msgstr "Módosít|#M"
+
+#: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
+#, fuzzy
+msgid "Date Format"
+msgstr "dátum formátum|#f"
+
+#: ../src/frontends/qt2/ui/QPrefDateModule.ui:56
+#, fuzzy
+msgid "&Date format:"
+msgstr "dátum formátum|#f"
+
+#: ../src/frontends/qt2/ui/QPrefDateModule.ui:71
+msgid "Date format for strftime output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:22
+#, fuzzy
+msgid "Display insets"
+msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
+#, fuzzy
+msgid "Do not display"
+msgstr "Ne jelenítse meg|#t"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:87
+#, fuzzy
+msgid "Display &Graphics:"
+msgstr "Grafika"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
+msgid "Instant &preview"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:22
+#, fuzzy
+msgid "File Formats"
+msgstr "Formátumok"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:56
+#, fuzzy
+msgid "&File formats"
+msgstr "Formátumok"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:169
+#, fuzzy
+msgid "&GUI name:"
+msgstr "GUI név|#G"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:184
+#, fuzzy
+msgid "F&ormat:"
+msgstr "Formátumok"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:206
+#, fuzzy
+msgid "&Viewer:"
+msgstr "Nézet"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:228
+#, fuzzy
+msgid "S&hortcut:"
+msgstr "Gyorsbillentyû|#b"
+
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:243
+#, fuzzy
+msgid "E&xtension:"
+msgstr "Kiterjesztés|#e"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:137
+#, fuzzy
+msgid "Keyboard"
+msgstr "Kulcsszó"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
+#, fuzzy
+msgid "S&econd:"
+msgstr "Rész"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:106
+#, fuzzy
+msgid "&First:"
+msgstr "Keresztnév"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:121
+#, fuzzy
+msgid "Br&owse..."
+msgstr "Tallóz..."
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:136
+#, fuzzy
+msgid "Use &keyboard map"
+msgstr "Billentyûzet kiosztás"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:81
+#, fuzzy
+msgid "Language settings"
+msgstr "minilap vonal"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:41
+#, fuzzy
+msgid "Command s&tart:"
+msgstr "parancs"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:84
+#, fuzzy
+msgid "&Default language:"
+msgstr "Alapértelmezett nyelv|#l"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:99
+#, fuzzy
+msgid "Command e&nd:"
+msgstr "parancs"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:114
+#, fuzzy
+msgid "Language pac&kage:"
+msgstr "Nyelv:"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:129
+msgid "Auto &begin"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
+#, fuzzy
+msgid "Use &babel"
+msgstr "Új oldalon kezdve|#o"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
+#, fuzzy
+msgid "&Global"
+msgstr "G|#G"
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:183
+msgid "&Right-to-left language support"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:194
+msgid "Auto &end"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:205
+#, fuzzy
+msgid "Mark &foreign languages"
+msgstr "Idegen jelölése|#j"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
+#, fuzzy
+msgid "LaTeX settings"
+msgstr "egyéb opciók"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
+#, fuzzy
+msgid "US Letter"
+msgstr "Levél"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:80
+msgid "Legal"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:86
+#, fuzzy
+msgid "Executive"
+msgstr "Feladat"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:92
+#: src/frontends/qt2/QDocument.C:108
+msgid "A3"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:98
+#: src/frontends/qt2/QDocument.C:109
+msgid "A4"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:104
+#: src/frontends/qt2/QDocument.C:110
+msgid "A5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:110
+#: src/frontends/qt2/QDocument.C:113
+msgid "B5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:133
+#, fuzzy
+msgid "Te&X encoding:"
+msgstr "TeX kódolás|#T"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:148
+#, fuzzy
+msgid "Default paper si&ze:"
+msgstr "Alap papírméret|#p"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
+msgid "&Reset class options when document class changes"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
+#, fuzzy
+msgid "Set class options to default on class change"
+msgstr ""
+"Kapcsolja ki ha nem akarja, hogy az aktuális kijelölés "
+"automatikusanfelülíródjon azzal amit gépel."
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
+#, fuzzy
+msgid "External Applications"
+msgstr "Egyéb beállítások"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:222
+#, fuzzy
+msgid "Chec&kTeX command:"
+msgstr "Parancs végrehajtása"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
+#, fuzzy
+msgid "DVI viewer paper size options:"
+msgstr "egyéb opciók"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
+msgid "Optional paper size flag (-paper) for some DVI viewers"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
+msgid "CheckTeX start options and flags"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
+#, fuzzy
+msgid "&Backup directory:"
+msgstr "A felhasználó könyvtára: "
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:122
+#, fuzzy
+msgid "&Document templates:"
+msgstr "A dokumentum exportálva a"
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:137
+msgid "Ly&XServer pipe:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:152
+#, fuzzy
+msgid "&Use temporary directory"
+msgstr "A felhasználó könyvtára: "
+
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
+#, fuzzy
+msgid "&Working directory:"
+msgstr "LyX: Könyvtár létrehozása "
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
+#, fuzzy
+msgid "Printer settings"
+msgstr "minilap vonal"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
+#, fuzzy
+msgid "Printer &name:"
+msgstr "Nyomtató"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
+#, fuzzy
+msgid "Printer co&mmand:"
+msgstr "Felhasználói parancsok"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
+#, fuzzy
+msgid "Name of the default printer"
+msgstr "Adja meg az alapértelmezett papírméretet."
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
+msgid "Adapt outp&ut"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:123
+msgid "Use printer name explicitely"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
+#, fuzzy
+msgid "Command Options"
+msgstr "parancs"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
+#, fuzzy
+msgid "Re&verse:"
+msgstr "fordított sorrend"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
+#, fuzzy
+msgid "To p&rinter:"
+msgstr "nyomtató"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:222
+#, fuzzy
+msgid "Paper si&ze:"
+msgstr "papírméret"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:251
+#, fuzzy
+msgid "To &file:"
+msgstr "fájlba"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:287
+#, fuzzy
+msgid "Spool &command:"
+msgstr "spool parancs"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:316
+#, fuzzy
+msgid "&Odd pages:"
+msgstr "páratlan oldalak"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:338
+#, fuzzy
+msgid "Paper t&ype:"
+msgstr "papír típus"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:360
+#, fuzzy
+msgid "E&xtra options:"
+msgstr "Egyéb beállítások"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:375
+msgid "Spool pref&ix:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:397
+#, fuzzy
+msgid "Co&llated:"
+msgstr "rendezve"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:419
+#, fuzzy
+msgid "&Even pages:"
+msgstr "páros oldalak"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:434
+#, fuzzy
+msgid "File ex&tension:"
+msgstr "kiterjesztés"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
+#, fuzzy
+msgid "Lan&dscape:"
+msgstr "Fekvõ|#F"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:478
+#, fuzzy
+msgid "Co&pies:"
+msgstr "Másolatok"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:493
+#, fuzzy
+msgid "Pa&ge range:"
+msgstr "hatáskör"
+
+#: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
+msgid "Specify the command option names for your printer command"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
+#: src/frontends/xforms/FormPreferences.C:204
+msgid "Screen Fonts"
+msgstr "Képernyõ"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
+#, fuzzy
+msgid "Sa&ns Serif:"
+msgstr "Vastagság:|#V"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
+#, fuzzy
+msgid "T&ypewriter:"
+msgstr "Típus"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
+#, fuzzy
+msgid "&Roman:"
+msgstr "Román"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
+#, fuzzy
+msgid "Screen &DPI:"
+msgstr "Képernyõ DPI|#D"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
+#, fuzzy
+msgid "&Zoom %:"
+msgstr "Méret %"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
+#, fuzzy
+msgid "Font Sizes"
+msgstr "Betûméret:|#r"
+
+#: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
+#, fuzzy
+msgid "Hugest:"
+msgstr "Óriás"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
+#: src/frontends/xforms/FormPreferences.C:243
+msgid "Spell checker"
+msgstr "Helyesírás-ellenõrzõ"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
+#, fuzzy
+msgid "Spell chec&ker program:"
+msgstr "Helyesírás-ellenõrzõ"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:106
+#, fuzzy
+msgid "Al&ternative language:"
+msgstr "Más nyelv használata|#a"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
+#, fuzzy
+msgid "Escape Cha&racters:"
+msgstr "Escape karakterek használata|#e"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
+#, fuzzy
+msgid "Personal &dictionary:"
+msgstr "Saját szótár"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:187
+msgid "ispell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:193
+msgid "aspell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+msgid "Accept compound &words"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#, fuzzy
+msgid "Use input encod&ing"
+msgstr "Folytatólagosan|#t"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:22
+msgid "UI"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
+#, fuzzy
+msgid "B&rowse..."
+msgstr "Tallóz..."
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:67
+#, fuzzy
+msgid "&User interface file:"
+msgstr "UI fájl|#U"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:82
+#, fuzzy
+msgid "&Bind file:"
+msgstr "Bind fájl"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:139
+#, fuzzy
+msgid "Scrolling"
+msgstr "Sortávolság:|#z"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:173
+#, fuzzy
+msgid "W&heel mouse scroll:"
+msgstr "Görgös egér lapozása"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
+#, fuzzy
+msgid "Cursor follo&ws scrollbar"
+msgstr "A kurzor követi a gördítõsávot|#k"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
+#, fuzzy
+msgid "Documents"
+msgstr "Dokumentum"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:233
+#, fuzzy
+msgid "B&ackup documents "
+msgstr "Menti a dokumentumot?"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:280
+#, fuzzy
+msgid " every"
+msgstr "fordított sorrend"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:310
+#, fuzzy
+msgid "minutes"
+msgstr "Vonal"
+
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:338
+msgid "&Maximum last files:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
+#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
+#: src/frontends/xforms/FormAboutlyx.C:70
+#, fuzzy
+msgid "Version"
+msgstr "Verzió...|V"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
+msgid "Version goes here"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
+#: src/frontends/xforms/FormAboutlyx.C:72
+msgid "Credits"
+msgstr "Érdemek"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
+#: ../lib/layouts/apa.layout:192
+msgid "Copyright"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+#, fuzzy
+msgid "&Save"
+msgstr "Ment"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+#, fuzzy
+msgid "&Key"
+msgstr "Kulcs"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+#, fuzzy
+msgid "The citation key"
+msgstr "Irodalomra hivatkozás"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+#, fuzzy
+msgid "&Label"
+msgstr "Címke:|#C"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "A formátum neve, ahogy megjelenik a menükben."
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
+#, fuzzy
+msgid "External Material"
+msgstr "Egyéb dolgok...|d"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
+#, fuzzy
+msgid "Filename"
+msgstr "Fájlnév:|#j"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
+#, fuzzy
+msgid "&View Result"
+msgstr "newfile"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
+#, fuzzy
+msgid "View the file"
+msgstr "Táblázatok listája megtekintése"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
+#, fuzzy
+msgid "&Update Result"
+msgstr "&Frissít"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
+msgid "Update the material"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
+#, fuzzy
+msgid "Available templates"
+msgstr "Beállítások mentése"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
+#, fuzzy
+msgid "&Template:"
+msgstr "Sablonok"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
+#, fuzzy
+msgid "Parameters"
+msgstr "Betûkészlet|#e"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
+#, fuzzy
+msgid "&Parameters:"
+msgstr "Betûkészlet|#e"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
+#, fuzzy
+msgid "&Edit file"
+msgstr "fájlba"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
+msgid "Edit the file externally"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
+#, fuzzy
+msgid "&General"
+msgstr "Általános"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
+#, fuzzy
+msgid "Justified"
+msgstr "Testreszabás|s"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
+msgid "Single"
+msgstr "Szimpla"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
+msgid "1.5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
+#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocumentDialog.C:342
+#, fuzzy
+msgid "Custom"
+msgstr "Ügyfél"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
+#, fuzzy
+msgid "L&ine spacing:"
+msgstr "Kihagyás"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+#, fuzzy
+msgid "Alig&nment:"
+msgstr "Igazítás"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
+#, fuzzy
+msgid "No &indent"
+msgstr "Oldaltípus"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
+#, fuzzy
+msgid "&Spacing"
+msgstr "Sortávolság:|#z"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
+#, fuzzy
+msgid "Above paragraph"
+msgstr "Ugrás egy bekezdéssel feljebb"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
+#, fuzzy
+msgid "S&pacing:"
+msgstr ", Sortávolság"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
+msgid "&Keep space:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+#, fuzzy
+msgid "&Unit:"
+msgstr "Betûkészlet: "
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
+#, fuzzy
+msgid "&Value:"
+msgstr "Érték"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
+msgid "None"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
+#, fuzzy
+msgid "DefSkip"
+msgstr "Kihagyás:|h"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
+#: src/frontends/qt2/QDocument.C:131
+#, fuzzy
+msgid "SmallSkip"
+msgstr "Kicsi"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
+#: src/frontends/qt2/QDocument.C:132
+#, fuzzy
+msgid "MedSkip"
+msgstr "Közepes"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
+#: src/frontends/qt2/QDocument.C:133
+msgid "BigSkip"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
+#, fuzzy
+msgid "VFill"
+msgstr "Kitöltés|K"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
+#, fuzzy
+msgid "Below paragraph"
+msgstr "Ugrás egy bekezdéssel feljebb"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
+#, fuzzy
+msgid "&Lines && Pagebreaks"
+msgstr "Új oldal"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
+#, fuzzy
+msgid "Label width"
+msgstr "Címke széless.:|#s"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
+#, fuzzy
+msgid "Lon&gest label"
+msgstr "Címke beillesztése"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
+#, fuzzy
+msgid "L&ines"
+msgstr "Vonal"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
+#, fuzzy
+msgid "A&bove"
+msgstr "Felette:|#t"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
+#, fuzzy
+msgid "B&elow"
+msgstr "Alatta:|#A"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
+#, fuzzy
+msgid "&Page Breaks"
+msgstr "Új oldal"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
+#, fuzzy
+msgid "Abo&ve"
+msgstr "Felette:|#t"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
+#, fuzzy
+msgid "Belo&w"
+msgstr "Alatta:|#A"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+#, fuzzy
+msgid "Insert table"
+msgstr "Táblázat beillesztése"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -5667,7 +5604,7 @@ msgstr "Kulcsszavak"
 #: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
 #: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:73
+#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
@@ -7138,11 +7075,11 @@ msgstr ""
 msgid "Welsh"
 msgstr ""
 
-#: ../lib/ui/default.ui:7 src/MenuBackend.C:682
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:684
 msgid "File|F"
 msgstr "Fájl|F"
 
-#: ../lib/ui/default.ui:8 src/MenuBackend.C:683
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:685
 msgid "Edit|E"
 msgstr "Szerkesztés|e"
 
@@ -7162,7 +7099,7 @@ msgstr "Nézet|N"
 msgid "Navigate|N"
 msgstr "Felépítés|p"
 
-#: ../lib/ui/default.ui:13 src/MenuBackend.C:685
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:687
 msgid "Documents|D"
 msgstr "Dokumentum|D"
 
@@ -7179,7 +7116,7 @@ msgstr "Új...|j"
 msgid "New from Template...|T"
 msgstr "Új, sablon alapján...|a"
 
-#: ../lib/ui/default.ui:24 src/MenuBackend.C:655
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:657
 msgid "Open...|O"
 msgstr "Megnyit|n"
 
@@ -7204,7 +7141,7 @@ msgstr "Regisztrál|R"
 msgid "Version Control|V"
 msgstr ""
 
-#: ../lib/ui/default.ui:32 src/MenuBackend.C:656
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:658
 msgid "Import|I"
 msgstr "Importál|I"
 
@@ -7225,7 +7162,8 @@ msgid "Exit|x"
 msgstr "Kilép|K"
 
 #: ../lib/ui/default.ui:43
-msgid "Register|R"
+#, fuzzy
+msgid "Register...|R"
 msgstr "Regisztrál|R"
 
 #: ../lib/ui/default.ui:44
@@ -7281,7 +7219,7 @@ msgstr "Beilleszt a vágólapról|p"
 msgid "Find & Replace...|F"
 msgstr "Keres és Cserél|C"
 
-#: ../lib/ui/default.ui:74 ../lib/ui/default.ui:302
+#: ../lib/ui/default.ui:74
 msgid "Tabular|T"
 msgstr "Táblázat|T"
 
@@ -7297,8 +7235,12 @@ msgstr " (csak olvasható)"
 
 #: ../lib/ui/default.ui:78
 #, fuzzy
-msgid "Spellchecker|S"
+msgid "Spellchecker...|S"
 msgstr "Helyesírás-ellenõrzõ"
+
+#: ../lib/ui/default.ui:79
+msgid "Thesaurus..."
+msgstr ""
 
 #: ../lib/ui/default.ui:80
 msgid "Check TeX|h"
@@ -7315,7 +7257,7 @@ msgstr "Zárt lebegõ objektum"
 
 #: ../lib/ui/default.ui:84
 #, fuzzy
-msgid "Preferences|P"
+msgid "Preferences...|P"
 msgstr "Beállítások"
 
 #: ../lib/ui/default.ui:85
@@ -7647,7 +7589,7 @@ msgstr "Alcím"
 
 #: ../lib/ui/default.ui:203
 #, fuzzy
-msgid "Index Entry|I"
+msgid "Index Entry...|I"
 msgstr "Tárgymutató bejegyzés...|T"
 
 #: ../lib/ui/default.ui:204
@@ -7910,18 +7852,23 @@ msgstr "Ascii bekezdésenként|b"
 
 #: ../lib/ui/default.ui:299
 #, fuzzy
-msgid "Character|C"
+msgid "Character...|C"
 msgstr "Betûkészlet|#e"
 
 #: ../lib/ui/default.ui:300
 #, fuzzy
-msgid "Paragraph|P"
+msgid "Paragraph...|P"
 msgstr "Bekezdés"
 
 #: ../lib/ui/default.ui:301
 #, fuzzy
-msgid "Document|D"
+msgid "Document...|D"
 msgstr "Dokumentum|D"
+
+#: ../lib/ui/default.ui:302
+#, fuzzy
+msgid "Tabular...|T"
+msgstr "Táblázat|T"
 
 #: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
@@ -7952,7 +7899,7 @@ msgstr "Környezet mélységének növelése"
 
 #: ../lib/ui/default.ui:311
 #, fuzzy
-msgid "Preamble|r"
+msgid "Preamble...|r"
 msgstr "LaTeX elõtag...|L"
 
 #: ../lib/ui/default.ui:312
@@ -8066,147 +8013,150 @@ msgstr "LaTeX beállítások|b"
 msgid "About LyX|X"
 msgstr ""
 
-#: src/BufferView.C:293 src/BufferView.C:303 src/bufferlist.C:373
-#: src/bufferlist.C:485 src/lyx_cb.C:215
+#: src/BufferView.C:299 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Hiba!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:300
 msgid "Specified file is unreadable: "
 msgstr "A megadott fájl nem olvasható: "
 
-#: src/BufferView.C:304
-msgid "Cannot open specified file: "
-msgstr "Nem lehet megnyitni a következõ fájlt: "
+#: src/BufferView.C:309 src/lyx_cb.C:447
+#, fuzzy
+msgid "Error! Cannot open specified file:"
+msgstr "Hiba! A megadott fájlt nem lehet megnyitni:"
 
-#: src/BufferView.C:564 src/LyXAction.C:377
+#: src/BufferView.C:569 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Visszavon"
 
-#: src/BufferView.C:569
+#: src/BufferView.C:574
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nem lehet tovább 'visszavonni'"
 
-#: src/BufferView.C:581 src/LyXAction.C:334
+#: src/BufferView.C:586 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Újra"
 
-#: src/BufferView.C:586
+#: src/BufferView.C:591
 msgid "No further redo information"
 msgstr "Nem lehet tovább 'újra' csinálni"
 
-#: src/BufferView.C:597
+#: src/BufferView.C:602
 msgid "Paragraph environment type copied"
 msgstr "Bekezdés stílusa lemásolva"
 
-#: src/BufferView.C:606
+#: src/BufferView.C:611
 msgid "Paragraph environment type set"
 msgstr "Bekezdés stílusa beállítva"
 
-#: src/BufferView_pimpl.C:270
+#: src/BufferView_pimpl.C:287
 msgid "Formatting document..."
 msgstr "Dokumentum formázása..."
 
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:661
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:663
 msgid "Saved bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:697
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:699
 msgid "Moved to bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:878
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beillesztendõ dokumentumot"
 
-#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:880 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1681 src/lyxfunc.C:1786
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokumentum|D"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
+#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1683 src/lyxfunc.C:1788
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Példák"
 
-#: src/BufferView_pimpl.C:870
+#: src/BufferView_pimpl.C:887 src/lyx_cb.C:120 src/lyxfunc.C:1649
+#: src/lyxfunc.C:1688
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
-#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
+#: src/BufferView_pimpl.C:896 src/lyxfunc.C:1697 src/lyxfunc.C:1717
+#: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
 msgid "Canceled."
 msgstr "Megszakítva."
 
-#: src/BufferView_pimpl.C:892
+#: src/BufferView_pimpl.C:909
 #, fuzzy, c-format
-msgid "Inserting document %1$s ..."
+msgid "Inserting document %1$s..."
 msgstr "Dokumentum beillesztése"
 
-#: src/BufferView_pimpl.C:894
+#: src/BufferView_pimpl.C:911
 #, fuzzy
 msgid "Inserting document "
 msgstr "Dokumentum beillesztése"
 
-#: src/BufferView_pimpl.C:894
-msgid " ..."
+#: src/BufferView_pimpl.C:911 src/importer.C:47 src/lyxfunc.C:986
+#: src/lyxfunc.C:1149 src/lyxfunc.C:1730
+msgid "..."
 msgstr ""
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:918
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "A dokumentum exportálva a"
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:920 src/lyxfunc.C:1742
 #, fuzzy
 msgid "Document "
 msgstr "Dokumentum"
 
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:920
 #, fuzzy
 msgid " inserted."
 msgstr "' importálása megtörtént."
 
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:926
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "A dokumentumot nem tudom beilleszteni"
 
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:928
 #, fuzzy
 msgid "Could not insert document "
 msgstr "A dokumentumot nem tudom beilleszteni"
 
-#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1103 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Hiba"
 
-#: src/BufferView_pimpl.C:1087
+#: src/BufferView_pimpl.C:1104
 msgid "Couldn't find this label"
 msgstr "Nem találom ezt a címkét"
 
-#: src/BufferView_pimpl.C:1088
+#: src/BufferView_pimpl.C:1105
 msgid "in current document."
 msgstr "a megadott dokumentumban."
 
-#: src/BufferView_pimpl.C:1253
+#: src/BufferView_pimpl.C:1270
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Ismeretlen tevékenység"
@@ -8578,11 +8528,11 @@ msgstr ""
 msgid "Execute command"
 msgstr "Parancs végrehajtása"
 
-#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
+#: src/LyXAction.C:165 src/MenuBackend.C:675 src/text3.C:1053
 msgid "Copy"
 msgstr "Másol"
 
-#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
+#: src/LyXAction.C:166 src/MenuBackend.C:674 src/text3.C:1048
 msgid "Cut"
 msgstr "Kivág"
 
@@ -8870,7 +8820,7 @@ msgstr "Ugrás egy bekezdéssel feljebb"
 msgid "Select previous paragraph"
 msgstr "Elõzõ bekezdés választása"
 
-#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
+#: src/LyXAction.C:323 src/MenuBackend.C:676 src/text3.C:1030
 msgid "Paste"
 msgstr "Beilleszt"
 
@@ -8954,8 +8904,8 @@ msgstr ""
 msgid "No description available!"
 msgstr "Leírás nem elérhetõ!"
 
-#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
-#: src/MenuBackend.C:415 src/MenuBackend.C:485
+#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:396
+#: src/MenuBackend.C:417 src/MenuBackend.C:487
 msgid "No Documents Open!"
 msgstr "Nincs nyitva dokumentum!"
 
@@ -8969,28 +8919,28 @@ msgstr "Ascii szöveg soronként"
 msgid "ASCII text as paragraphs"
 msgstr "Ascii szöveg bekezdésenként"
 
-#: src/MenuBackend.C:517
+#: src/MenuBackend.C:519
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Nincs tartalomjegyzék%i"
 
-#: src/MenuBackend.C:654
+#: src/MenuBackend.C:656
 msgid "New...|N"
 msgstr "Új...|j"
 
-#: src/MenuBackend.C:657
+#: src/MenuBackend.C:659
 msgid "Quit|Q"
 msgstr ""
 
-#: src/MenuBackend.C:665
+#: src/MenuBackend.C:667
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:667
+#: src/MenuBackend.C:669
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:675
+#: src/MenuBackend.C:677
 msgid "Emphasize"
 msgstr "Kiemelés"
 
@@ -9047,9 +8997,10 @@ msgstr "Szövegosztály hiba"
 msgid "The document uses an unknown textclass \"%1$s\"."
 msgstr "A dokumentum ismeretlen szövegosztályt használ, \""
 
-#: src/buffer.C:624 src/buffer.C:630
-msgid "LyX will not be able to produce output correctly."
-msgstr "így nem lehet pontos végeredményt létrehozni"
+#: src/buffer.C:624 src/buffer.C:630 src/buffer.C:644 src/buffer.C:649
+#, fuzzy
+msgid "-- substituting default."
+msgstr "-- helyettesítem az alapértelmezettel"
 
 #: src/buffer.C:628
 #, fuzzy
@@ -9060,10 +9011,6 @@ msgstr "A dokumentum ismeretlen szövegosztályt használ, \""
 #, fuzzy, c-format
 msgid "Can't load textclass %1$s"
 msgstr "Nem sikerült betölteni a szövegosztályt "
-
-#: src/buffer.C:644 src/buffer.C:649
-msgid "-- substituting default"
-msgstr "-- helyettesítem az alapértelmezettel"
 
 #: src/buffer.C:647
 #, fuzzy
@@ -9225,7 +9172,7 @@ msgstr "Inkább  azt nyissam meg?"
 msgid "Unable to open template"
 msgstr "Nem sikerült a sablon betöltése"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1819
+#: src/bufferlist.C:518 src/lyxfunc.C:1818
 msgid "Document is already open:"
 msgstr "A dokumentum már nyitva van:"
 
@@ -9275,8 +9222,9 @@ msgstr ", Mélység: "
 msgid ", Spacing: "
 msgstr ", Sortávolság"
 
-#: src/bufferview_funcs.C:191
-msgid "Onehalf"
+#: src/bufferview_funcs.C:191 src/frontends/qt2/QDocument.C:145
+#, fuzzy
+msgid "OneHalf"
 msgstr "Másfeles"
 
 #: src/bufferview_funcs.C:197
@@ -9661,6 +9609,7 @@ msgid "Select external file"
 msgstr "Következõ sor kiválasztása"
 
 #: src/frontends/controllers/ControlGraphics.C:84
+#: src/frontends/qt2/QGraphicsDialog.C:95
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Következõ sor kiválasztása"
@@ -9820,18 +9769,18 @@ msgstr "1 sztring lett kicserélve."
 msgid " strings have been replaced."
 msgstr " szting lett kicserélve."
 
-#: src/frontends/controllers/ControlSpellchecker.C:196
+#: src/frontends/controllers/ControlSpellchecker.C:178
 #, fuzzy
 msgid "Spellchecking completed!"
 msgstr "Helyesírás-ellenõrzés kész."
 
-#: src/frontends/controllers/ControlSpellchecker.C:204
-#: src/frontends/controllers/ControlSpellchecker.C:210
+#: src/frontends/controllers/ControlSpellchecker.C:186
+#: src/frontends/controllers/ControlSpellchecker.C:192
 #, fuzzy
 msgid "One word checked."
 msgstr "Egy hibát észleltem"
 
-#: src/frontends/controllers/ControlSpellchecker.C:217
+#: src/frontends/controllers/ControlSpellchecker.C:199
 msgid ""
 "The spell checker has died for some reason.\n"
 "Maybe it has been killed."
@@ -9882,7 +9831,7 @@ msgstr "Változatlan"
 msgid "Roman"
 msgstr ""
 
-#: src/frontends/controllers/character.C:39
+#: src/frontends/controllers/character.C:39 src/lyxfont.C:45
 msgid "Sans Serif"
 msgstr ""
 
@@ -10018,8 +9967,14 @@ msgid "Filename can't contain any of these characters:"
 msgstr "A fájlnév nem tartalmazhatja az alábbi karakterek egyikét sem:"
 
 #: src/frontends/controllers/helper_funcs.C:65
+#: src/frontends/controllers/helper_funcs.C:119
 msgid "space, '#', '~', '$' or '%'."
 msgstr "szóköz, '#', '~', '$' vagy '%'."
+
+#: src/frontends/controllers/helper_funcs.C:117
+#, fuzzy
+msgid "directory name can't contain any of these characters:"
+msgstr "A fájlnév nem tartalmazhatja az alábbi karakterek egyikét sem:"
 
 #: src/frontends/gnome/GLog.C:55 src/frontends/qt2/QLog.C:56
 msgid "Build log"
@@ -10032,11 +9987,13 @@ msgstr "LaTeX napló"
 
 #: src/frontends/gnome/GLog.C:64 src/frontends/qt2/QLog.C:65
 #, fuzzy
-msgid "No build log file found"
+msgid "No build log file found."
 msgstr "Nem találtam LaTeX log fájlt"
 
 #: src/frontends/gnome/GLog.C:66 src/frontends/qt2/QLog.C:67
-msgid "No LaTeX log file found"
+#: src/frontends/xforms/FormLog.C:43
+#, fuzzy
+msgid "No LaTeX log file found."
 msgstr "Nem találtam LaTeX log fájlt"
 
 #: src/frontends/qt2/Alert_pimpl.C:46 src/frontends/qt2/Alert_pimpl.C:53
@@ -10056,14 +10013,15 @@ msgstr "Betûkészlet: "
 msgid "LyX: "
 msgstr ""
 
-#: src/frontends/qt2/FileDialog.C:61
+#: src/frontends/qt2/FileDialog.C:61 src/frontends/qt2/FileDialog.C:91
 #, fuzzy
 msgid "All files (*)"
 msgstr " következõ néven `"
 
-#: src/frontends/qt2/FileDialog.C:91
-msgid "*|All files"
-msgstr ""
+#: src/frontends/qt2/FileDialog.C:116
+#, fuzzy
+msgid "Directories"
+msgstr "A felhasználó könyvtára: "
 
 #: src/frontends/qt2/QBibitem.C:34
 #, fuzzy
@@ -10124,107 +10082,88 @@ msgstr "Szerzõ"
 msgid "Numerical"
 msgstr "Amerikai"
 
-#: src/frontends/qt2/QDocument.C:82
+#: src/frontends/qt2/QDocument.C:88
 #, fuzzy
 msgid "``text''"
 msgstr "szöveg"
 
-#: src/frontends/qt2/QDocument.C:83
+#: src/frontends/qt2/QDocument.C:89
 #, fuzzy
 msgid "''text''"
 msgstr "szöveg"
 
-#: src/frontends/qt2/QDocument.C:84
+#: src/frontends/qt2/QDocument.C:90
 #, fuzzy
 msgid ",,text``"
 msgstr "szöveg"
 
-#: src/frontends/qt2/QDocument.C:85
+#: src/frontends/qt2/QDocument.C:91
 #, fuzzy
 msgid ",,text''"
 msgstr "szöveg"
 
-#: src/frontends/qt2/QDocument.C:86
+#: src/frontends/qt2/QDocument.C:92
 #, fuzzy
 msgid "«text»"
 msgstr "szöveg"
 
-#: src/frontends/qt2/QDocument.C:87
+#: src/frontends/qt2/QDocument.C:93
 #, fuzzy
 msgid "»text«"
 msgstr "szöveg"
 
-#: src/frontends/qt2/QDocument.C:99
-#, fuzzy
-msgid "OneHalf"
-msgstr "Másfeles"
-
-#: src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:105
 #, fuzzy
 msgid "US letter"
 msgstr "Levél"
 
-#: src/frontends/qt2/QDocument.C:115
+#: src/frontends/qt2/QDocument.C:106
 msgid "US legal"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:116
+#: src/frontends/qt2/QDocument.C:107
 msgid "US executive"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:120
+#: src/frontends/qt2/QDocument.C:111
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:121
+#: src/frontends/qt2/QDocument.C:112
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:136
+#: src/frontends/qt2/QDocument.C:127
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:137
+#: src/frontends/qt2/QDocument.C:128
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:138
+#: src/frontends/qt2/QDocument.C:129
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:140
-#, fuzzy
-msgid "Smallskip"
-msgstr "Kicsi"
-
-#: src/frontends/qt2/QDocument.C:141
-#, fuzzy
-msgid "Medskip"
-msgstr "Közepes"
-
-#: src/frontends/qt2/QDocument.C:142
-msgid "Bigskip"
-msgstr ""
-
-#: src/frontends/qt2/QDocument.C:143
+#: src/frontends/qt2/QDocument.C:134
 msgid "Length"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:146
+#: src/frontends/qt2/QDocument.C:137
 msgid "empty"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:147
+#: src/frontends/qt2/QDocument.C:138
 #, fuzzy
 msgid "plain"
 msgstr "Kihagyás"
 
-#: src/frontends/qt2/QDocument.C:148
+#: src/frontends/qt2/QDocument.C:139
 #, fuzzy
 msgid "headings"
 msgstr "Grafikus felület (GUI) kezelés"
 
-#: src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocument.C:140
 msgid "fancy"
 msgstr ""
 
@@ -10233,13 +10172,13 @@ msgstr ""
 msgid "Layout"
 msgstr "Formátum:"
 
-#: src/frontends/qt2/QDocumentDialog.C:68
+#: src/frontends/qt2/QDocumentDialog.C:67
 #: src/frontends/xforms/FormDocument.C:341
 msgid "Paper"
 msgstr "Papír"
 
-#: src/frontends/qt2/QDocumentDialog.C:72
-#: src/frontends/qt2/QDocumentDialog.C:276
+#: src/frontends/qt2/QDocumentDialog.C:71
+#: src/frontends/qt2/QDocumentDialog.C:273
 #, fuzzy
 msgid "Numbering"
 msgstr "Szám"
@@ -10256,27 +10195,27 @@ msgstr "Dokumentum"
 
 #: src/frontends/qt2/QDocumentDialog.C:261
 #, fuzzy
-msgid "LaTeX Packages"
-msgstr "LaTeX napló"
-
-#: src/frontends/qt2/QDocumentDialog.C:264
-#, fuzzy
 msgid "Papersize and Orientation"
 msgstr "Oldaltípus"
 
-#: src/frontends/qt2/QDocumentDialog.C:270
+#: src/frontends/qt2/QDocumentDialog.C:267
 msgid "Language Settings and Quote Style"
 msgstr ""
 
-#: src/frontends/qt2/QDocumentDialog.C:273
+#: src/frontends/qt2/QDocumentDialog.C:270
 #, fuzzy
 msgid "Bullet Types"
 msgstr "Jelek"
 
-#: src/frontends/qt2/QDocumentDialog.C:279
+#: src/frontends/qt2/QDocumentDialog.C:276
 #, fuzzy
 msgid "Bibliography Settings"
 msgstr "Irodalomjegyzék"
+
+#: src/frontends/qt2/QDocumentDialog.C:279
+#, fuzzy
+msgid "LaTeX Packages and Options"
+msgstr "LaTeX napló"
 
 #: src/frontends/qt2/QDocumentDialog.C:282
 #, fuzzy
@@ -10335,11 +10274,6 @@ msgstr "Kisebb"
 #, fuzzy
 msgid "Files (*)"
 msgstr "A(z) `"
-
-#: src/frontends/qt2/QGraphicsDialog.C:95
-#, fuzzy
-msgid "Select a graphic file"
-msgstr "Következõ sor kiválasztása"
 
 #: src/frontends/qt2/QLPrintDialog.C:55
 msgid "PostScript files (*.ps)"
@@ -10472,7 +10406,7 @@ msgid "Paragraph Layout"
 msgstr "Bekezdés formátuma"
 
 #: src/frontends/qt2/QParagraph.C:304 src/frontends/xforms/FormParagraph.C:287
-#: src/paragraph.C:820
+#: src/paragraph.C:819
 msgid "Senseless with this layout!"
 msgstr "Értelmetlen ezzel a formátummal!"
 
@@ -10738,7 +10672,7 @@ msgstr ""
 msgid "] is used."
 msgstr ""
 
-#: src/frontends/xforms/FileDialog.C:62
+#: src/frontends/xforms/FileDialog.C:82
 msgid "*"
 msgstr ""
 
@@ -10921,7 +10855,8 @@ msgid " Single | OneHalf | Double | Custom "
 msgstr " Szimpla | Másfeles | Dupla | Egyéb "
 
 #: src/frontends/xforms/FormDocument.C:161
-msgid " Smallskip | Medskip | Bigskip | Length "
+#, fuzzy
+msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr " Kicsi | Közepes | Nagy | Adott: "
 
 #: src/frontends/xforms/FormDocument.C:225
@@ -10987,8 +10922,8 @@ msgstr "Beállítások"
 msgid "Edit external file"
 msgstr ""
 
-#: src/frontends/xforms/FormFiledialog.C:193
-#: src/frontends/xforms/FormFiledialog.C:362
+#: src/frontends/xforms/FormFiledialog.C:194
+#: src/frontends/xforms/FormFiledialog.C:363
 msgid "Warning! Couldn't open directory."
 msgstr "Figyelem! A könytárat nem sikerült megnyitni."
 
@@ -11217,11 +11152,6 @@ msgstr "LaTeX napló"
 msgid "LyX: Literate Programming Build Log"
 msgstr ""
 
-#: src/frontends/xforms/FormLog.C:43
-#, fuzzy
-msgid "No LaTeX log file found."
-msgstr "Nem találtam LaTeX log fájlt"
-
 #: src/frontends/xforms/FormLog.C:44
 #, fuzzy
 msgid "No Literate Programming build log file found."
@@ -11304,7 +11234,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormParagraph.C:132
 #, fuzzy
-msgid "None|Defskip|Smallskip|Medskip|Bigskip|VFill|Length"
+msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
 msgstr " Nincs | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 
 #: src/frontends/xforms/FormParagraph.C:136
@@ -11539,33 +11469,33 @@ msgstr " alapérték | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgid "Default path"
 msgstr "Alapértelmezett könyvtár"
 
-#: src/frontends/xforms/FormPreferences.C:2194
+#: src/frontends/xforms/FormPreferences.C:2195
 msgid "Template path"
 msgstr "Sablonok könyvtára"
 
-#: src/frontends/xforms/FormPreferences.C:2198
+#: src/frontends/xforms/FormPreferences.C:2200
 #, fuzzy
 msgid "Temporary dir"
 msgstr "Temp könyvtár"
 
-#: src/frontends/xforms/FormPreferences.C:2202
+#: src/frontends/xforms/FormPreferences.C:2205
 #, fuzzy
 msgid "Last files"
 msgstr "Utoljára megnyitott"
 
-#: src/frontends/xforms/FormPreferences.C:2206
+#: src/frontends/xforms/FormPreferences.C:2210
 msgid "Backup path"
 msgstr "Biztonsági mentés"
 
-#: src/frontends/xforms/FormPreferences.C:2210
+#: src/frontends/xforms/FormPreferences.C:2215
 msgid "LyX server pipes"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2667
+#: src/frontends/xforms/FormPreferences.C:2673
 msgid "Fonts must be positive!"
 msgstr "A betûméretnek nagyobbnak kell lennie 0 -nál!"
 
-#: src/frontends/xforms/FormPreferences.C:2690
+#: src/frontends/xforms/FormPreferences.C:2696
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
@@ -11573,7 +11503,7 @@ msgstr ""
 "A betûméreteknek a következõ sorrendben kell növekedniük:apró > kézírás > "
 "lábjegyzet > kicsi > normál > nagy > nagyobb > legnagyobb > óriás > hatalmas."
 
-#: src/frontends/xforms/FormPreferences.C:2819
+#: src/frontends/xforms/FormPreferences.C:2825
 #, fuzzy
 msgid " ispell | aspell "
 msgstr "nincs | ispell | aspell "
@@ -11987,10 +11917,6 @@ msgstr "Importálás"
 msgid "Importing "
 msgstr "Importálás"
 
-#: src/importer.C:47 src/lyxfunc.C:987 src/lyxfunc.C:1150 src/lyxfunc.C:1731
-msgid "..."
-msgstr ""
-
 #: src/importer.C:68 src/importer.C:72
 #, fuzzy
 msgid "Cannot import file"
@@ -12038,7 +11964,9 @@ msgid "Opened ERT Inset"
 msgstr ""
 
 #: src/insets/insetert.C:248 src/insets/insettabular.C:2090
-msgid "Impossible Operation!"
+#: src/insets/insettext.C:1411
+#, fuzzy
+msgid "Impossible operation!"
 msgstr "Lehetetlen mûvelet!"
 
 #: src/insets/insetert.C:249
@@ -12167,12 +12095,12 @@ msgstr "Nem tudom hogy kell átalakítani "
 
 #: src/insets/insetgraphics.C:775
 #, fuzzy, c-format
-msgid "Graphic file: %1$s"
+msgid "Graphics file: %1$s"
 msgstr "Kép fájl|#f"
 
 #: src/insets/insetgraphics.C:779
 #, fuzzy
-msgid "Graphic file: "
+msgid "Graphics file: "
 msgstr "Kép fájl|#f"
 
 #: src/insets/insetinclude.C:226
@@ -12294,23 +12222,19 @@ msgstr "Összevont oszlop csak vízszintesen leht."
 msgid "Opened Text Inset"
 msgstr ""
 
-#: src/insets/insettext.C:1411
-msgid "Impossible operation"
-msgstr "Lehetetlen mûvelet!"
-
 #: src/insets/insettext.C:1412
 msgid "Cannot include more than one paragraph!"
 msgstr "Nem tartalmazhat egynél több bekezdést!"
 
-#: src/insets/insettext.C:1487 src/text3.C:1104
+#: src/insets/insettext.C:1487 src/text3.C:1130
 msgid "Layout "
 msgstr "Formátum:"
 
-#: src/insets/insettext.C:1487 src/text3.C:1105
+#: src/insets/insettext.C:1487 src/text3.C:1131
 msgid " not known"
 msgstr " nem ismert"
 
-#: src/insets/insettext.C:1540 src/text3.C:886
+#: src/insets/insettext.C:1540 src/text3.C:912
 msgid "Unknown spacing argument: "
 msgstr ""
 
@@ -12441,14 +12365,10 @@ msgstr "(Ha nem, a dokumentum nincs mentve.)"
 msgid "Choose a filename to save document as"
 msgstr "Adja meg a dokumentum új nevét"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1645
+#: src/lyx_cb.C:112 src/lyxfunc.C:1644
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Sablon|#S"
-
-#: src/lyx_cb.C:120 src/lyxfunc.C:1650
-msgid "*.lyx|LyX Documents (*.lyx)"
-msgstr ""
 
 #: src/lyx_cb.C:140
 msgid "Same name as document already has:"
@@ -12552,10 +12472,6 @@ msgstr "Válassza ki a beillesztendõ dokumentumot"
 msgid "Error! Specified file is unreadable: "
 msgstr "Hiba! A megadott fájl nem olvasható:"
 
-#: src/lyx_cb.C:447
-msgid "Error! Cannot open specified file: "
-msgstr "Hiba! A megadott fájlt nem lehet megnyitni:"
-
 #: src/lyx_cb.C:511 src/mathed/math_hullinset.C:798
 msgid "Enter new label to insert:"
 msgstr "A beszúrandó címke:"
@@ -12580,162 +12496,162 @@ msgstr "Újra kell indítania a LyX-et, hogy életbe lépjenek"
 msgid "updated document class specifications."
 msgstr "a frissített dokumentum osztály meghatározások.."
 
-#: src/lyx_main.C:105
+#: src/lyx_main.C:110
 #, fuzzy, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hibás parancssori opció"
 
-#: src/lyx_main.C:109
+#: src/lyx_main.C:114
 #, fuzzy
 msgid "Wrong command line option `"
 msgstr "Hibás parancssori opció"
 
-#: src/lyx_main.C:110
+#: src/lyx_main.C:115
 msgid "'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:233
+#: src/lyx_main.C:238
 msgid "Warning: could not determine path of binary."
 msgstr "Figyelem: nem sikerült meghatározni a program elérési útvonalát."
 
-#: src/lyx_main.C:235
+#: src/lyx_main.C:240
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr ""
 "Ha gondjai vannak, próbálja abszolút elérési útvonallal indítani a LyX -et."
 
-#: src/lyx_main.C:342
+#: src/lyx_main.C:347
 #, fuzzy
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "A LYX_DIR_11x környezeti változó nem jó."
 
-#: src/lyx_main.C:344
+#: src/lyx_main.C:349
 msgid "System directory set to: "
 msgstr "A rendszerkönyvtár a következõ:"
 
-#: src/lyx_main.C:352
+#: src/lyx_main.C:357
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "LyX Figyelmeztetés! Nem sikerült meghatározni a rendszerkönyvtárat."
 
-#: src/lyx_main.C:353
+#: src/lyx_main.C:358
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Próbálja '-sysdir' kapcsolót használni, vagy "
 
-#: src/lyx_main.C:354
+#: src/lyx_main.C:359
 #, fuzzy
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr ""
 "állítsa a LYX_DIR_11x környezeti változót arra a könyvtárra beállítani, "
 
-#: src/lyx_main.C:356
+#: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
 msgstr "ami tartalmazza a `chkconfig.ltx' fájlt."
 
-#: src/lyx_main.C:365
+#: src/lyx_main.C:370
 #, fuzzy, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "A beépített alapértékeket használom"
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:375
 #, fuzzy
 msgid "Using built-in default "
 msgstr "A beépített alapértékeket használom"
 
-#: src/lyx_main.C:371
+#: src/lyx_main.C:376
 #, fuzzy
 msgid " but expect problems."
 msgstr "Problémák várhatóak."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:380
 msgid "Expect problems."
 msgstr "Problémák várhatóak."
 
-#: src/lyx_main.C:593
+#: src/lyx_main.C:598
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Könyvtár létrehozása "
 
-#: src/lyx_main.C:597 src/lyx_main.C:645
+#: src/lyx_main.C:602 src/lyx_main.C:650
 msgid "Done!"
 msgstr "Kész!"
 
-#: src/lyx_main.C:607
+#: src/lyx_main.C:612
 msgid "You have specified an invalid LyX directory."
 msgstr "Érvénytelen könyvtárat adott meg."
 
-#: src/lyx_main.C:608
+#: src/lyx_main.C:613
 msgid "It is needed to keep your own configuration."
 msgstr "A saját beállításainak megõrzéséhez szüksége van rá."
 
-#: src/lyx_main.C:609
+#: src/lyx_main.C:614
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Megprópáljam létrehozni önnek (ajánlott)?"
 
-#: src/lyx_main.C:610
+#: src/lyx_main.C:615
 msgid "Running without personal LyX directory."
 msgstr "Futás személyes LyX könyvtár nélkül."
 
-#: src/lyx_main.C:617
+#: src/lyx_main.C:622
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr " és a konfigurációs program futtatása..."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:627
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "LyX: Könyvtár létrehozása "
 
-#: src/lyx_main.C:623
+#: src/lyx_main.C:628
 #, fuzzy
 msgid " and running configure..."
 msgstr "Beállítások újratöltése..."
 
-#: src/lyx_main.C:631
+#: src/lyx_main.C:636
 #, fuzzy, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Nem sikerült. Helyette a "
 
-#: src/lyx_main.C:635
+#: src/lyx_main.C:640
 #, fuzzy
 msgid "Failed. Will use "
 msgstr "Nem sikerült. Helyette a "
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:641
 msgid " instead."
 msgstr ""
 
-#: src/lyx_main.C:659 src/lyx_main.C:663
+#: src/lyx_main.C:664 src/lyx_main.C:668
 msgid "LyX Warning!"
 msgstr "LyX figyelmeztetés!"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:665
 #, fuzzy, c-format
 msgid "Error while reading %1$s."
 msgstr "Hiba beolvasás közben "
 
-#: src/lyx_main.C:661 src/lyx_main.C:665
+#: src/lyx_main.C:666 src/lyx_main.C:670
 msgid "Using built-in defaults."
 msgstr "A beépített alapértékeket használom"
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:669
 #, fuzzy
 msgid "Error while reading "
 msgstr "Hiba beolvasás közben "
 
-#: src/lyx_main.C:774
+#: src/lyx_main.C:779
 msgid "List of supported debug flags:"
 msgstr "A támogatott ellenörzési lehetõségek:"
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:784
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Hibakeresési [debug] szint "
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:788
 #, fuzzy
 msgid "Setting debug level to "
 msgstr "Hibakeresési [debug] szint "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:799
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12776,32 +12692,32 @@ msgstr ""
 "                  és a fájl.xxx az importálandó fájl.\n"
 "Olvassa el a LyX kézikönyv oldalt (man) további részletekért."
 
-#: src/lyx_main.C:830
+#: src/lyx_main.C:835
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Hiányzik a könyvtárnév a -sysdir kapcsolóhoz!"
 
-#: src/lyx_main.C:840
+#: src/lyx_main.C:845
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Hiányzik a könyvtár a -userdir kapcsolóhoz!"
 
-#: src/lyx_main.C:850
+#: src/lyx_main.C:855
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Hiányzik a paraméter az -x kapcsolóhoz!"
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:868
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Hiányzik a fájltípus [pl.: latex, ps...]  a "
 
-#: src/lyx_main.C:875
+#: src/lyx_main.C:880
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Hiányzik a fájltípus [pl.: latex, ps...]  a "
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:885
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -12812,10 +12728,6 @@ msgstr "Sajnálom."
 #: src/lyxfind.C:49
 msgid "You cannot replace a single space, nor an empty character."
 msgstr "Nem lehet üres karaktert és szóközt kicserélni."
-
-#: src/lyxfont.C:45
-msgid "Sans serif"
-msgstr ""
 
 #: src/lyxfont.C:45
 msgid "Symbol"
@@ -12923,136 +12835,136 @@ msgstr "Csak olvasható dokumentum"
 msgid "Command not allowed without any document open"
 msgstr "A parancs nem megengedett nyitott dokumentum nélkül"
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:701
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Ismeretlen tevékenység"
 
-#: src/lyxfunc.C:706
+#: src/lyxfunc.C:705
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Ismeretlen tevékenység"
 
-#: src/lyxfunc.C:982
+#: src/lyxfunc.C:981
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése"
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:984
 #, fuzzy
 msgid "Saving document "
 msgstr "Dokumentum mentése"
 
-#: src/lyxfunc.C:991
+#: src/lyxfunc.C:990
 #, fuzzy
 msgid " done."
 msgstr "Ugrás lefelé"
 
-#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1132 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Hiányzó kapcsoló"
 
-#: src/lyxfunc.C:1146
+#: src/lyxfunc.C:1145
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgó megnyitása"
 
-#: src/lyxfunc.C:1149
+#: src/lyxfunc.C:1148
 #, fuzzy
 msgid "Opening help file "
 msgstr "Súgó megnyitása"
 
-#: src/lyxfunc.C:1355
+#: src/lyxfunc.C:1354
 msgid "This is only allowed in math mode!"
 msgstr "Ez csak a képletszerkesztõben megengedett!"
 
-#: src/lyxfunc.C:1397
+#: src/lyxfunc.C:1396
 msgid "Opening child document "
 msgstr "Gyerek dokumentum nyitása"
 
-#: src/lyxfunc.C:1471
+#: src/lyxfunc.C:1470
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1485
+#: src/lyxfunc.C:1484
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1489
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1490
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1641
+#: src/lyxfunc.C:1640
 #, fuzzy
 msgid "Select template file"
 msgstr "Következõ sor kiválasztása"
 
-#: src/lyxfunc.C:1680
+#: src/lyxfunc.C:1679
 #, fuzzy
 msgid "Select document to open"
 msgstr "Válassza ki a megnyitni kívánt dokumentumot"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1715
 #, fuzzy
 msgid "No such file"
 msgstr "Utoljára megnyitott"
 
-#: src/lyxfunc.C:1717
+#: src/lyxfunc.C:1716
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Készít új dokumentumot ezzel a névvel?"
 
-#: src/lyxfunc.C:1729
+#: src/lyxfunc.C:1728
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása"
 
-#: src/lyxfunc.C:1731
+#: src/lyxfunc.C:1730
 #, fuzzy
 msgid "Opening document "
 msgstr "Gyerek dokumentum nyitása"
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1740
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Nincs nyitva dokumentum!"
 
-#: src/lyxfunc.C:1743
+#: src/lyxfunc.C:1742
 #, fuzzy
 msgid " opened."
 msgstr "Ugrás lefelé"
 
-#: src/lyxfunc.C:1747
+#: src/lyxfunc.C:1746
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentumot nem tudom megnyitni"
 
-#: src/lyxfunc.C:1750
+#: src/lyxfunc.C:1749
 #, fuzzy
 msgid "Could not open document "
 msgstr "A dokumentumot nem tudom megnyitni"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1776
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Válassza ki a beillesztendõ dokumentumot"
 
-#: src/lyxfunc.C:1781
+#: src/lyxfunc.C:1780
 #, fuzzy
 msgid "Select "
 msgstr "Döntött"
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1781
 #, fuzzy
 msgid " file to import"
 msgstr "Válassza ki a beillesztendõ dokumentumot"
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1820
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -13060,15 +12972,15 @@ msgstr ""
 "Be akarja zárni a dokumentumot most?\n"
 "(A 'Nem' csak át fog váltani a nyitott verzióra)"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1840
 msgid "A document by the name"
 msgstr "Egy dokumentum  ezen a néven"
 
-#: src/lyxfunc.C:1842
+#: src/lyxfunc.C:1841
 msgid "already exists. Overwrite?"
 msgstr "már nyitva van. Felülírjam?"
 
-#: src/lyxfunc.C:1914
+#: src/lyxfunc.C:1913
 msgid "Welcome to LyX!"
 msgstr "Üdvözljük a LyX -ben!"
 
@@ -13490,7 +13402,10 @@ msgid "De-select if you don't want the startup banner."
 msgstr "Kapcsolja ki, ha nem szeretné látni a indulásnál a logót."
 
 #: src/lyxrc.C:2127
-msgid "The wheel movement factor (for mice with wheels or five button mice)."
+#, fuzzy
+msgid ""
+"The number of lines that are scrolled by mice with wheels or five button "
+"mice."
 msgstr "A görgõ mozgási sebessége (görgõs vagy 5 gombos egereknél)."
 
 #: src/lyxrc.C:2140
@@ -13725,25 +13640,216 @@ msgstr ""
 msgid "No more insets"
 msgstr "Nincs több megjegyzés"
 
-#: src/text3.C:947
+#: src/text3.C:973
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/text3.C:955
+#: src/text3.C:981
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/text3.C:962
+#: src/text3.C:988
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/text3.C:966
+#: src/text3.C:992
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/text3.C:1086
+#: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Size:|#Z"
+#~ msgstr "Méret:|#M"
+
+#, fuzzy
+#~ msgid "Cancel|#N^["
+#~ msgstr "Mégsem|^["
+
+#, fuzzy
+#~ msgid "Cancel|#C^["
+#~ msgstr "Mégsem|^["
+
+#, fuzzy
+#~ msgid "Width|#W"
+#~ msgstr "Szélesség"
+
+#, fuzzy
+#~ msgid "Height|#H"
+#~ msgstr "Magasság"
+
+#, fuzzy
+#~ msgid "Rows"
+#~ msgstr "Sorok"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Oszlopok"
+
+#, fuzzy
+#~ msgid "Encoding|#E"
+#~ msgstr "Kódolás"
+
+#, fuzzy
+#~ msgid "smallest"
+#~ msgstr "Legkisebb"
+
+#, fuzzy
+#~ msgid "smaller"
+#~ msgstr "Kisebb"
+
+#, fuzzy
+#~ msgid "larger"
+#~ msgstr "nagy"
+
+#, fuzzy
+#~ msgid "largest"
+#~ msgstr "Legnagyobb"
+
+#, fuzzy
+#~ msgid "huger"
+#~ msgstr "óriás"
+
+#, fuzzy
+#~ msgid "Use alternative language|#a"
+#~ msgstr "Más nyelv használata|#a"
+
+#, fuzzy
+#~ msgid "Use escape characters|#e"
+#~ msgstr "Escape karakterek használata|#e"
+
+#, fuzzy
+#~ msgid "Use personal dictionary|#d"
+#~ msgstr "Személyes szótár használata|#h"
+
+#, fuzzy
+#~ msgid "name"
+#~ msgstr "Név"
+
+#, fuzzy
+#~ msgid "command"
+#~ msgstr "parancs"
+
+#, fuzzy
+#~ msgid "page range"
+#~ msgstr "hatáskör"
+
+#, fuzzy
+#~ msgid "copies"
+#~ msgstr "Másolatok"
+
+#, fuzzy
+#~ msgid "reverse"
+#~ msgstr "fordított sorrend"
+
+#, fuzzy
+#~ msgid "to printer"
+#~ msgstr "nyomtató"
+
+#, fuzzy
+#~ msgid "file extension"
+#~ msgstr "kiterjesztés"
+
+#, fuzzy
+#~ msgid "spool command"
+#~ msgstr "spool parancs"
+
+#, fuzzy
+#~ msgid "paper type"
+#~ msgstr "papír típus"
+
+#, fuzzy
+#~ msgid "even pages"
+#~ msgstr "páros oldalak"
+
+#, fuzzy
+#~ msgid "odd pages"
+#~ msgstr "páratlan oldalak"
+
+#, fuzzy
+#~ msgid "collated"
+#~ msgstr "rendezve"
+
+#, fuzzy
+#~ msgid "landscape"
+#~ msgstr "Fekvõ|#F"
+
+#, fuzzy
+#~ msgid "to file"
+#~ msgstr " következõ néven `"
+
+#, fuzzy
+#~ msgid "extra options"
+#~ msgstr "Egyéb beállítások"
+
+#, fuzzy
+#~ msgid "paper size"
+#~ msgstr "papírméret"
+
+#, fuzzy
+#~ msgid "to|#t"
+#~ msgstr "-"
+
+#, fuzzy
+#~ msgid "Close|#C^["
+#~ msgstr "Bezár|^["
+
+#, fuzzy
+#~ msgid "Bottom|#b"
+#~ msgstr "Alsó:|#s"
+
+#, fuzzy
+#~ msgid "Left|#l"
+#~ msgstr "Balra"
+
+#, fuzzy
+#~ msgid "Entry : "
+#~ msgstr "Extra"
+
+#, fuzzy
+#~ msgid "Type|#T"
+#~ msgstr "LaTeX|#T"
+
+#, fuzzy
+#~ msgid "Name|#N"
+#~ msgstr "Név"
+
+#, fuzzy
+#~ msgid "Quote style"
+#~ msgstr "Idézõjel stílus"
+
+#, fuzzy
+#~ msgid "&Browse ..."
+#~ msgstr "Tallóz..."
+
+#~ msgid "Cannot open specified file: "
+#~ msgstr "Nem lehet megnyitni a következõ fájlt: "
+
+#~ msgid "LyX will not be able to produce output correctly."
+#~ msgstr "így nem lehet pontos végeredményt létrehozni"
+
+#~ msgid "Onehalf"
+#~ msgstr "Másfeles"
+
+#~ msgid "No LaTeX log file found"
+#~ msgstr "Nem találtam LaTeX log fájlt"
+
+#, fuzzy
+#~ msgid "Smallskip"
+#~ msgstr "Kicsi"
+
+#, fuzzy
+#~ msgid "Medskip"
+#~ msgstr "Közepes"
+
+#, fuzzy
+#~ msgid "Select a graphic file"
+#~ msgstr "Következõ sor kiválasztása"
+
+#~ msgid "Impossible Operation!"
+#~ msgstr "Lehetetlen mûvelet!"
 
 #, fuzzy
 #~ msgid "Replacement:|#R"
