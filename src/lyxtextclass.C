@@ -50,8 +50,12 @@ struct compare_name {
 
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 			   string const & desc, bool texClassAvail )
-	: name_(fn), latexname_(cln), description_(desc),
-	  floatlist_(new FloatList), ctrs_(new Counters), texClassAvail_(texClassAvail)
+	: texClassAvail_(texClassAvail),
+	  name_(fn),
+	  latexname_(cln),
+	  description_(desc),
+	  floatlist_(new FloatList),
+	  ctrs_(new Counters)
 {
 	outputType_ = LATEX;
 	columns_ = 1;

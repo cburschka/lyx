@@ -1,3 +1,8 @@
+2003-11-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyxtextclass.C (LyXTextClass): fix warning about variable
+	initialization in constructor being re-ordered to match declaration.
+
 2003-10-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lengthcommon.C: add empty unit_name* entries for UNIT_NONE (bug
