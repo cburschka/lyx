@@ -31,6 +31,7 @@
 #include "LyXView.h"
 #include "lyxfunc.h"
 #include "insets/insettext.h"
+#include "frontends/Dialogs.h"
 
 extern void MenuLayoutTabular(bool, InsetTabular *);
 extern bool UpdateLayoutTabular(bool, InsetTabular *);
@@ -45,6 +46,8 @@ using std::max;
 using std::endl;
 
 #define cellstart(p) ((p % 2) == 0)
+
+//#define USE_NEW_LAYOUT 1
 
 InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 {
@@ -85,6 +88,10 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
 InsetTabular::~InsetTabular()
 {
     delete tabular;
+#ifdef USE_NEW_LAYOUT
+    if (buffer->getUser())
+	buffer->getUser()->owner()->getDialogs()->hideTabular(this);
+#endif
 }
 
 
@@ -475,28 +482,6 @@ bool InsetTabular::InsertInset(BufferView * bv, Inset * inset)
 }
 
 
-void InsetTabular::InsetButtonRelease(BufferView * bv,
-				      int x, int y, int button)
-{
-    if (button == 3) {
-	if (the_locking_inset) {
-	    UpdatableInset * i;
-	    if ((i=the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))) {
-		i->InsetButtonRelease(bv, x, y, button);
-		return;
-	    }
-	}
-	MenuLayoutTabular(true, this);
-	return;
-    }
-    if (the_locking_inset) {
-        the_locking_inset->InsetButtonRelease(bv, x-inset_x, y-inset_y,button);
-        return;
-    }
-    no_selection = false;
-}
-
-
 void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 {
     if (hasSelection()) {
@@ -524,13 +509,36 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	ActivateCellInset(bv, x, y, button);
 	the_locking_inset->InsetButtonPress(bv, x-inset_x, y-inset_y, button);
     }
-    
+}
+
+
+void InsetTabular::InsetButtonRelease(BufferView * bv,
+				      int x, int y, int button)
+{
+    if (button == 3) {
+	if (the_locking_inset) {
+	    UpdatableInset * i;
+	    if ((i=the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))) {
+		i->InsetButtonRelease(bv, x, y, button);
+		return;
+	    }
+	}
+#ifdef USE_NEW_LAYOUT
+        bv->owner()->getDialogs()->showTabular(this);
 #if 0
-    if (button == 3)
-        bview->getOwner()->getPopups().showFormTabular();
-    else if (ocell != actcell)
-        bview->getOwner()->getPopups().updateFormTabular();
+	else if (ocell != actcell)
+		bview->getOwner()->getPopups().updateTabular();
 #endif
+#else
+	MenuLayoutTabular(true, this);
+#endif
+	return;
+    }
+    if (the_locking_inset) {
+        the_locking_inset->InsetButtonRelease(bv, x-inset_x, y-inset_y,button);
+        return;
+    }
+    no_selection = false;
 }
 
 

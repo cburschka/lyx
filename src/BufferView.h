@@ -173,7 +173,7 @@ public:
 	bool insertInset(Inset * inset, string const & lout = string(),
 			 bool no_table = false);
 	/// open and lock an updatable inset
-	void open_new_inset(UpdatableInset * new_inset);
+	bool open_new_inset(UpdatableInset * new_inset);
 	/// Inserts a lyx file at cursor position. Returns false if it fails.
 	bool insertLyXFile(string const & file);
 	///

@@ -869,7 +869,11 @@ string LyXFunc::Dispatch(int ac,
 	}
 		
 	case LFUN_TABLE:
+#ifndef NEW_TABULAR
 		Table();
+#else
+		owner->getDialogs()->showTabularCreate();
+#endif
 		break;
 		
 	case LFUN_FIGURE:

@@ -22,7 +22,8 @@ FDESIGN = fdesign
 SRCS := form_citation.fd \
 	form_copyright.fd \
 	form_preferences.fd \
-	form_print.fd
+	form_print.fd \
+	form_tabular.fd
 
 
 OBJS := $(SRCS:.fd=.c)
@@ -78,5 +79,5 @@ clean:
 distclean: clean
 	rm -f *.orig *.rej *~
 
-install: updatesrc
+install: clean updatesrc
 	cp *.C *.h ..

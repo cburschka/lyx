@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Thu Jul  6 17:01:34 2000.**/
+/** Header file generated with fdesign on Tue Jul 11 11:01:26 2000.**/
 
 #ifndef FD_form_print_h_
 #define FD_form_print_h_

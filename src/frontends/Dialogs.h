@@ -41,6 +41,7 @@ class InsetBibKey;
 class InsetCitation;
 class InsetBibtex;
 class InsetInfo;
+class InsetTabular;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
@@ -76,11 +77,13 @@ public:
 	///
 	Signal0<void> showLogFile;
 	///
-	Signal0<void> showTable;
+	Signal1<void, InsetTabular *> showTabular;
 	///
-	Signal0<void> updateTable; // needed for InsetTabular-Update
+	Signal1<void, InsetTabular *> updateTabular;
 	///
-	Signal0<void> showTableNew;
+	Signal1<void, InsetTabular *> hideTabular;
+	///
+	Signal0<void> showTabularCreate;
 	///
 	Signal0<void> showCharacter;
 	///

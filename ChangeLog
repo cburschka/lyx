@@ -1,5 +1,8 @@
 2000-07-11  Juergen Vigna  <jug@sad.it>
 
+	* src/BufferView2.C (open_new_inset): changed to a bool returnvalue
+	as the insertInset could not be good!
+
 	* src/screen.C (ToggleSelection): fixed toggle selection bug as
 	the bool param should not be last.
 

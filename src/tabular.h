@@ -292,6 +292,10 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	bool bottom_line;
 	///
+	bool left_line;
+	///
+	bool right_line;
+	///
 	bool linebreaks;
 	///
 	int rotate;

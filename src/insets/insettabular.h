@@ -58,6 +58,7 @@ class LyXLex;
 class Painter;
 class BufferView;
 class Buffer;
+class Dialogs;
 
 class InsetTabular : public UpdatableInset {
 public:

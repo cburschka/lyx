@@ -272,11 +272,12 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 
 
 // Open and lock an updatable inset
-void BufferView::open_new_inset(UpdatableInset * new_inset)
+bool BufferView::open_new_inset(UpdatableInset * new_inset)
 {
 	beforeChange();
 	text->FinishUndo();
-	insertInset(new_inset);
+	if (!insertInset(new_inset))
+		return false;
 	text->CursorLeft(this);
 	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
     	new_inset->Edit(this, 0, 0, 0);

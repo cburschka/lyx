@@ -516,6 +516,7 @@ void LyXGUI::create_forms()
 	fl_set_form_atclose(fd_form_preamble->form_preamble,
 			    CancelCloseBoxCB, 0);
 
+#ifndef NEW_TABULAR
 	// the table form
 	fd_form_table = create_form_form_table();
 	fl_set_form_atclose(fd_form_table->form_table, CancelCloseBoxCB, 0);
@@ -526,6 +527,7 @@ void LyXGUI::create_forms()
 	fl_set_slider_precision(fd_form_table->slider_rows, 0);
 	fl_set_slider_precision(fd_form_table->slider_columns, 0);
 	lyxerr[Debug::INIT] << "Initializing form_table...done" << endl;
+#endif
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();
