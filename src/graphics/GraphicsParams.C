@@ -109,6 +109,7 @@ BoundingBox::BoundingBox()
 
 
 BoundingBox::BoundingBox(string const & bb)
+	: xl(0), yb(0), xr(0), yt(0)
 {
 	if (bb.empty())
 		return;
@@ -139,18 +140,22 @@ BoundingBox::BoundingBox(string const & bb)
 	// want the bounding box in Postscript pixels.
 	// Note further that there are 72 Postscript pixels per inch.
 	double const scaling_factor = 7200.0 / (lyxrc.dpi * lyxrc.zoom);
-	xl = uint(scaling_factor * length_xl.inPixels(1, 1));
-	yb = uint(scaling_factor * length_yb.inPixels(1, 1));
-	xr = uint(scaling_factor * length_xr.inPixels(1, 1));
-	yt = uint(scaling_factor * length_yt.inPixels(1, 1));
+	unsigned int const xl_tmp =
+		uint(scaling_factor * length_xl.inPixels(1, 1));
+	unsigned int const yb_tmp =
+		uint(scaling_factor * length_yb.inPixels(1, 1));
+	unsigned int const xr_tmp =
+		uint(scaling_factor * length_xr.inPixels(1, 1));
+	unsigned int const yt_tmp =
+		uint(scaling_factor * length_yt.inPixels(1, 1));
 
-	if (xr <= xl || yt <= yb) {
-		xl = 0;
-		yb = 0;
-		xr = 0;
-		yt = 0;
+	if (xr <= xl || yt <= yb)
 		return;
-	}
+
+	xl = xl_tmp;
+	yb = yb_tmp;
+	xr = xr_tmp;
+	yt = yt_tmp;
 }
 
 
