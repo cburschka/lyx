@@ -954,6 +954,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_INSERT_MATH:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		InsertSymbol(bv, arg);
+		UpdateLocal(bv);
 		break;
 
 
