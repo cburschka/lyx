@@ -105,6 +105,13 @@ void QFloat::update_contents()
  
 void QFloat::apply()
 {
+	controller().params().wide = dialog_->spanCB->isChecked(); 
+
+	if (dialog_->defaultsCB->isChecked()) {
+		controller().params().placement = "";
+		return;
+	}
+ 
 	string placement;
 
 	if (dialog_->heredefinitelyCB->isChecked()) {
@@ -127,5 +134,4 @@ void QFloat::apply()
 		}
 	}
 	controller().params().placement = placement;
-	controller().params().wide = dialog_->spanCB->isChecked(); 
 }
