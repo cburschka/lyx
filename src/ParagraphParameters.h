@@ -56,22 +56,6 @@ public:
 	///
 	void noindent(bool);
 	///
-	bool lineTop() const;
-	///
-	void lineTop(bool);
-	///
-	bool lineBottom() const;
-	///
-	void lineBottom(bool);
-	///
-	bool pagebreakTop() const;
-	///
-	void pagebreakTop(bool);
-	///
-	bool pagebreakBottom() const;
-	///
-	void pagebreakBottom(bool);
-	///
 	LyXAlignment align() const;
 	///
 	void align(LyXAlignment);

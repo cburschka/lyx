@@ -324,6 +324,10 @@ enum kb_action {
 	LFUN_INSERT_BRANCH,
 	LFUN_INSET_DIALOG_SHOW,
 	LFUN_INSERT_BOX,
+	LFUN_INSERT_LINE,
+	LFUN_INSERT_PAGEBREAK,
+	// 250
+	LFUN_REPEAT,
 
 	LFUN_LASTACTION                  // end of the table
 };

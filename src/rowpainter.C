@@ -81,7 +81,6 @@ private:
 	void paintHebrewComposeChar(lyx::pos_type & vpos);
 	void paintArabicComposeChar(lyx::pos_type & vpos);
 	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
-	int paintPageBreak(string const & label, int y);
 	int paintAppendixStart(int y);
 	int paintLengthMarker(string const & prefix, VSpace const & vsp, int start);
 	void paintText();
@@ -96,8 +95,6 @@ private:
 
 	/// return the label font for this row
 	LyXFont const getLabelFont() const;
-
-	char const transformChar(char c, lyx::pos_type pos) const;
 
 	/// return pixel width for the given pos
 	int singleWidth(lyx::pos_type pos) const;
@@ -135,7 +132,12 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      ParagraphList::iterator pit, RowList::iterator rit,
      int y_offset, int x_offset, int y)
 	: bv_(bv), pain_(bv_.painter()), text_(text), rit_(rit), row_(*rit),
-	  pit_(pit), xo_(x_offset), yo_(y_offset), y_(y)
+	  pit_(pit), xo_(x_offset), yo_(y_offset),
+		x_(row_.x()), y_(y),
+		width_(text_.workWidth()),
+		separator_(row_.fill_separator()),
+		hfill_(row_.fill_hfill()),
+		label_hfill_(row_.fill_label_hfill())
 {}
 
 
@@ -162,12 +164,6 @@ int RowPainter::singleWidth(lyx::pos_type pos, char c) const
 LyXFont const RowPainter::getLabelFont() const
 {
 	return text_.getLabelFont(pit_);
-}
-
-
-char const RowPainter::transformChar(char c, lyx::pos_type pos) const
-{
-	return text_.transformChar(c, *pit_, pos);
 }
 
 
@@ -231,7 +227,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 
 	// first char
 	char c = pit_->getChar(pos);
-	c = transformChar(c, pos);
+	c = pit_->transformChar(c, pos);
 	str +=c;
 	++vpos;
 
@@ -265,7 +261,7 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 	str += pit_->getChar(pos);
 	if (arabic) {
 		unsigned char c = str[0];
-		str[0] = transformChar(c, pos);
+		str[0] = pit_->transformChar(c, pos);
 	}
 
 	bool prev_struckout = isDeletedText(*pit_, pos);
@@ -296,16 +292,15 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 			break;
 
 		if (arabic)
-			c = transformChar(c, pos);
+			c = pit_->transformChar(c, pos);
 		str += c;
 		++vpos;
 	}
 
-	if (prev_struckout) {
+	if (prev_struckout)
 		orig_font.setColor(LColor::strikeout);
-	} else if (prev_newtext) {
+	else if (prev_newtext)
 		orig_font.setColor(LColor::newtext);
-	}
 
 	// Draw text and set the new x position
 	//lyxerr << "paint row: yo_ " << yo_ << " baseline: " << row_.baseline()
@@ -394,23 +389,22 @@ void RowPainter::paintSelection()
 	ParagraphList::iterator endpit = text_.getPar(text_.selection.end);
 	RowList::iterator startrow = startpit->getRow(text_.selection.start.pos());
 	RowList::iterator endrow = endpit->getRow(text_.selection.end.pos());
+	int const h = row_.height();
 
 	if (text_.bidi.same_direction()) {
 		int x;
 		int y = yo_;
 		int w;
-		int h = row_.height();
 
 		if (startrow == rit_ && endrow == rit_) {
 			if (startx < endx) {
 				x = int(xo_) + startx;
 				w = endx - startx;
-				pain_.fillRectangle(x, y, w, h, LColor::selection);
 			} else {
 				x = int(xo_) + endx;
 				w = startx - endx;
-				pain_.fillRectangle(x, y, w, h, LColor::selection);
 			}
+			pain_.fillRectangle(x, y, w, h, LColor::selection);
 		} else if (startrow == rit_) {
 			int const x = is_rtl ? int(xo_) : int(xo_ + startx);
 			int const w = is_rtl ? startx : (width_ - startx);
@@ -423,10 +417,11 @@ void RowPainter::paintSelection()
 			pain_.fillRectangle(int(xo_), y, width_, h, LColor::selection);
 		}
 		return;
-	} else if (startrow != rit_ && endrow != rit_) {
+	}
+	
+	if (startrow != rit_ && endrow != rit_) {
 		if (y_ > starty && y_ < endy) {
 			int w = width_;
-			int h = row_.height();
 			pain_.fillRectangle(int(xo_), yo_, w, h, LColor::selection);
 		}
 		return;
@@ -434,7 +429,7 @@ void RowPainter::paintSelection()
 
 	if ((startrow != rit_ && !is_rtl) || (endrow != rit_ && is_rtl))
 		pain_.fillRectangle(int(xo_), yo_,
-			int(x_), row_.height(), LColor::selection);
+			int(x_), h, LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
 	pos_type const end = row_.endpos();
@@ -473,15 +468,13 @@ void RowPainter::paintSelection()
 			(endrow != rit_ || pos < text_.selection.end.pos())) {
 			// Here we do not use x_ as xo_ was added to x_.
 			pain_.fillRectangle(int(old_tmpx), yo_,
-				int(tmpx - old_tmpx + 1),
-				row_.height(), LColor::selection);
+				int(tmpx - old_tmpx + 1), h, LColor::selection);
 		}
 	}
 
 	if ((startrow != rit_ && is_rtl) || (endrow != rit_ && !is_rtl)) {
 		pain_.fillRectangle(int(xo_ + tmpx),
-				      yo_, int(bv_.workWidth() - tmpx),
-				      row_.height(), LColor::selection);
+			yo_, int(bv_.workWidth() - tmpx), h, LColor::selection);
 	}
 }
 
@@ -547,7 +540,7 @@ void RowPainter::paintDepthBar()
 		int const w = PAPER_MARGIN / 5;
 		int x = int(w * i + xo_);
 		// only consider the changebar space if we're drawing outer left
-		if (!xo_)
+		if (xo_ == 0)
 			x += CHANGEBAR_MARGIN;
 		int const h = yo_ + row_.height() - 1 - (i - next_depth - 1) * 3;
 
@@ -561,7 +554,8 @@ void RowPainter::paintDepthBar()
 }
 
 
-int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int start)
+int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp,
+	int start)
 {
 	if (vsp.kind() == VSpace::NONE)
 		return 0;
@@ -627,31 +621,6 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int
 }
 
 
-int RowPainter::paintPageBreak(string const & label, int y)
-{
-	LyXFont pb_font;
-	pb_font.setColor(LColor::pagebreak);
-	pb_font.decSize();
-
-	int w = 0;
-	int a = 0;
-	int d = 0;
-	font_metrics::rectText(label, pb_font, w, a, d);
-
-	int const text_start = int(xo_ + (width_ - w) / 2);
-	int const text_end = text_start + w;
-
-	pain_.rectText(text_start, y + d, label, pb_font, LColor::none, LColor::none);
-
-	pain_.line(int(xo_), y, text_start, y,
-		   LColor::pagebreak, Painter::line_onoffdash);
-	pain_.line(text_end, y, int(xo_ + width_), y,
-		   LColor::pagebreak, Painter::line_onoffdash);
-
-	return 3 * defaultRowHeight();
-}
-
-
 int RowPainter::paintAppendixStart(int y)
 {
 	LyXFont pb_font;
@@ -690,11 +659,6 @@ void RowPainter::paintFirst()
 	if (text_.isFirstRow(pit_, row_) && !text_.isInInset())
 		y_top += PAPER_MARGIN;
 
-	// draw a top pagebreak
-	if (parparams.pagebreakTop())
-		y_top += paintPageBreak(_("Page Break (top)"),
-			yo_ + y_top + 2 * defaultRowHeight());
-
 	// draw the additional space if needed:
 	y_top += paintLengthMarker(_("Space above"), parparams.spaceTop(),
 			yo_ + y_top);
@@ -721,21 +685,6 @@ void RowPainter::paintFirst()
 	}
 
 	int const ww = bv_.workWidth();
-
-	// draw a top line
-	if (parparams.lineTop()) {
-		int const asc = font_metrics::ascent('x', getFont(0));
-
-		y_top += asc;
-
-		int const w = (text_.isInInset() ? text_.inset_owner->width() : ww);
-		int const xp = static_cast<int>(text_.isInInset() ? xo_ : 0);
-		pain_.line(xp, yo_ + y_top, xp + w, yo_ + y_top,
-			LColor::topline, Painter::line_solid,
-			Painter::line_thick);
-
-		y_top += asc;
-	}
 
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 	bool const is_seq = isFirstInSequence(pit_, text_.ownerParagraphs());
@@ -839,32 +788,10 @@ void RowPainter::paintLast()
 
 	int const ww = bv_.workWidth();
 
-	// draw a bottom pagebreak
-	if (parparams.pagebreakBottom()) {
-		y_bottom -= paintPageBreak(_("Page Break (bottom)"),
-			yo_ + y_bottom - 2 * defaultRowHeight());
-	}
-
 	// draw the additional space if needed:
 	int const height = getLengthMarkerHeight(bv_, parparams.spaceBottom());
 	y_bottom -= paintLengthMarker(_("Space below"), parparams.spaceBottom(),
 			     yo_ + y_bottom - height);
-
-	// draw a bottom line
-	if (parparams.lineBottom()) {
-		int const asc = font_metrics::ascent('x',
-			getFont(max(pos_type(0), pit_->size() - 1)));
-
-		y_bottom -= asc;
-
-		int const w = text_.isInInset() ? text_.inset_owner->width() : ww;
-		int const xp = int(text_.isInInset() ? xo_ : 0);
-		int const y = yo_ + y_bottom;
-		pain_.line(xp, y, xp + w, y, LColor::topline, Painter::line_solid,
-			  Painter::line_thick);
-
-		y_bottom -= asc;
-	}
 
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 	int const endlabel = getEndLabel(pit_, text_.ownerParagraphs());
@@ -919,10 +846,10 @@ void RowPainter::paintText()
 	bool is_struckout = false;
 	int last_strikeout_x = 0;
 
-	pos_type vpos = row_.pos();
-	while (vpos < end) {
+	for (pos_type vpos = row_.pos(); vpos <= end; ) {
 		if (x_ > bv_.workWidth())
 			break;
+
 		pos_type pos = text_.bidi.vis2log(vpos);
 
 		if (pos >= pit_->size()) {
@@ -949,8 +876,7 @@ void RowPainter::paintText()
 		// if we reach the end of a struck out range, paint it
 		// we also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
-			int const middle = yo_ + row_.top_of_text()
-				+ (row_.baseline() - row_.top_of_text()) / 2;
+			int const middle = yo_ + (row_.baseline() + row_.top_of_text()) / 2;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
@@ -1001,8 +927,7 @@ void RowPainter::paintText()
 
 	// if we reach the end of a struck out range, paint it
 	if (running_strikeout) {
-		int const middle = yo_ + row_.top_of_text()
-			+ ((row_.baseline() - row_.top_of_text()) / 2);
+		int const middle = yo_ + (row_.baseline() + row_.top_of_text()) / 2;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
@@ -1012,18 +937,11 @@ void RowPainter::paintText()
 
 void RowPainter::paint()
 {
-	width_       = text_.workWidth();
-	x_           = row_.x();
-	separator_   = row_.fill_separator();
-	hfill_       = row_.fill_hfill();
-	label_hfill_ = row_.fill_label_hfill();
-
 	// FIXME: what is this fixing ?
 	if (text_.isInInset() && x_ < 0)
 		x_ = 0;
 	x_ += xo_;
 
-	// If we're *not* at the top-level of rows, then the
 	// background has already been cleared.
 	if (&text_ == bv_.text)
 		paintBackground();

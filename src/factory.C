@@ -36,12 +36,14 @@
 #include "insets/insetinclude.h"
 #include "insets/insetindex.h"
 #include "insets/insetlabel.h"
+#include "insets/insetline.h"
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetnote.h"
 #include "insets/insetbox.h"
 #include "insets/insetbranch.h"
 #include "insets/insetoptarg.h"
+#include "insets/insetpagebreak.h"
 #include "insets/insetref.h"
 #include "insets/insetspace.h"
 #include "insets/insettabular.h"
@@ -73,30 +75,35 @@ InsetOld * createInset(FuncRequest const & cmd)
 	case LFUN_HFILL:
 		return new InsetHFill;
 
+	case LFUN_INSERT_LINE:
+		return new InsetLine;
+
+	case LFUN_INSERT_PAGEBREAK:
+		return new InsetPagebreak;
+
 	case LFUN_INSET_MINIPAGE:
 		return new InsetMinipage(params);
 
-	case LFUN_INSERT_NOTE:
-		{
-			string arg = cmd.getArg(0);
-			if (arg.empty())
-				arg = "Note";
-			return new InsetNote(params, arg);
-		}
-	case LFUN_INSERT_BOX:
-		{
-			string arg = cmd.getArg(0);
-			if (arg.empty())
-				arg = "Boxed";
-			return new InsetBox(params, arg);
-		}
-	case LFUN_INSERT_BRANCH:
-		{
-			string arg = cmd.getArg(0);
-			if (arg.empty())
-				arg = "none";
-			return new InsetBranch(params, arg);
-		}
+	case LFUN_INSERT_NOTE: {
+		string arg = cmd.getArg(0);
+		if (arg.empty())
+			arg = "Note";
+		return new InsetNote(params, arg);
+	}
+
+	case LFUN_INSERT_BOX: {
+		string arg = cmd.getArg(0);
+		if (arg.empty())
+			arg = "Boxed";
+		return new InsetBox(params, arg);
+	}
+
+	case LFUN_INSERT_BRANCH: {
+		string arg = cmd.getArg(0);
+		if (arg.empty())
+			arg = "none";
+		return new InsetBranch(params, arg);
+	}
 
 	case LFUN_INSET_ERT:
 		return new InsetERT(params);

@@ -1323,8 +1323,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 
 		bv_->text->setLayout(lay);
 
-		bv_->text->setParagraph(0, 0,
-				   0, 0,
+		bv_->text->setParagraph(
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
 				   Spacing(),
 				   LYX_ALIGN_LAYOUT,

@@ -720,10 +720,6 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 				if (cursor.pos() == 0
 				    && !(params.spaceTop() == VSpace (VSpace::NONE))) {
 					setParagraph(
-						 params.lineTop(),
-						 params.lineBottom(),
-						 params.pagebreakTop(),
-						 params.pagebreakBottom(),
 						 VSpace(VSpace::NONE),
 						 params.spaceBottom(),
 						 params.spacing(),
@@ -768,10 +764,6 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			ParagraphParameters & params = cursorPar()->params();
 			if (cursor.pos() == 0 && !(params.spaceTop() == VSpace(VSpace::NONE))) {
 				setParagraph(
-					 params.lineTop(),
-					 params.lineBottom(),
-					 params.pagebreakTop(),
-					 params.pagebreakBottom(),
 					 VSpace(VSpace::NONE),
 				   params.spaceBottom(),
 					 params.spacing(),
@@ -816,10 +808,6 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			ParagraphParameters & params = getPar(cur)->params();
 			if (params.spaceTop() == VSpace(VSpace::NONE)) {
 				setParagraph(
-					 params.lineTop(),
-					 params.lineBottom(),
-					 params.pagebreakTop(),
-					 params.pagebreakBottom(),
 					 VSpace(VSpace::DEFSKIP), params.spaceBottom(),
 					 params.spacing(),
 					 params.align(),
@@ -1525,6 +1513,8 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INDEX_PRINT:
 	case LFUN_TOC_INSERT:
 	case LFUN_HFILL:
+	case LFUN_INSERT_LINE:
+	case LFUN_INSERT_PAGEBREAK:
 		// do nothing fancy
 		doInsertInset(this, cmd, false, false);
 		break;

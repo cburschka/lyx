@@ -84,8 +84,6 @@ void FormParagraph::build()
 	bcview().setRestore(dialog_->button_restore);
 
 	// disable for read-only documents
-	bcview().addReadOnly(dialog_->check_line_above);
-	bcview().addReadOnly(dialog_->check_pagebreak_above);
 	bcview().addReadOnly(dialog_->choice_space_above);
 	bcview().addReadOnly(dialog_->input_space_above);
 	bcview().addReadOnly(dialog_->check_space_above);
@@ -94,8 +92,6 @@ void FormParagraph::build()
 	bcview().addReadOnly(dialog_->choice_linespacing);
 	bcview().addReadOnly(dialog_->input_linespacing);
 
-	bcview().addReadOnly(dialog_->check_line_below);
-	bcview().addReadOnly(dialog_->check_pagebreak_below);
 	bcview().addReadOnly(dialog_->choice_space_below);
 	bcview().addReadOnly(dialog_->input_space_below);
 	bcview().addReadOnly(dialog_->check_space_below);
@@ -149,19 +145,11 @@ void FormParagraph::build()
 	fl_addto_choice(dialog_->choice_unit_space_below, units.c_str());
 
 	// set up the tooltips
-	string str = _("Add a separator line above this paragraph.");
-	tooltips().init(dialog_->check_line_above, str);
-	str = _("Enforce a page break above this paragraph.");
-	tooltips().init(dialog_->check_pagebreak_above, str);
-	str = _("Add additional space above this paragraph.");
+	string str = _("Add additional space above this paragraph.");
 	tooltips().init(dialog_->choice_space_above, str);
 	str = _("Never suppress space (e.g. at top of page or new page).");
 	tooltips().init(dialog_->check_space_above, str);
 
-	str = _("Add a separator line below this paragraph.");
-	tooltips().init(dialog_->check_line_below, str);
-	str = _("Enforce a page break below this paragraph.");
-	tooltips().init(dialog_->check_pagebreak_below, str);
 	str = _("Add additional space below this paragraph.");
 	tooltips().init(dialog_->choice_space_below, str);
 	str = _("Never suppress space (e.g. at bottom of page or new page).");
@@ -213,22 +201,6 @@ void FormParagraph::apply()
 				     dialog_->check_space_below);
 
 	controller().params().spaceBottom(space_below);
-
-	// lines and pagebreaks
-	bool const line_above = fl_get_button(dialog_->check_line_above);
-	controller().params().lineTop(line_above);
-
-	bool const line_below = fl_get_button(dialog_->check_line_below);
-	controller().params().lineBottom(line_below);
-
-	bool const pagebreak_above =
-		fl_get_button(dialog_->check_pagebreak_above);
-	controller().params().pagebreakTop(pagebreak_above);
-
-	bool const pagebreak_below =
-		fl_get_button(dialog_->check_pagebreak_below);
-	controller().params().pagebreakBottom(pagebreak_below);
-
 
 	// alignment
 	LyXAlignment const alignment =
@@ -335,20 +307,7 @@ void FormParagraph::update()
 	setEnabled(dialog_->radio_align_right,
 		   bool(alignpos & LYX_ALIGN_RIGHT));
 
-	// no inset-text-owned paragraph may have pagebreaks
-	bool ininset = controller().inInset();
-	setEnabled(dialog_->check_pagebreak_above, !ininset);
-	setEnabled(dialog_->check_pagebreak_below, !ininset);
-
 	// lines, pagebreaks and indent
-	fl_set_button(dialog_->check_line_above,
-		      controller().params().lineTop());
-	fl_set_button(dialog_->check_line_below,
-		      controller().params().lineBottom());
-	fl_set_button(dialog_->check_pagebreak_above,
-		      controller().params().pagebreakTop());
-	fl_set_button(dialog_->check_pagebreak_below,
-		      controller().params().pagebreakBottom());
 	fl_set_button(dialog_->check_noindent,
 		      controller().params().noindent());
 

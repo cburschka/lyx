@@ -31,7 +31,9 @@
 #include "insets/insetbibitem.h"
 #include "insets/insethfill.h"
 #include "insets/insetlatexaccent.h"
+#include "insets/insetline.h"
 #include "insets/insetnewline.h"
+#include "insets/insetpagebreak.h"
 #include "insets/insetoptarg.h"
 #include "insets/insetspace.h"
 #include "insets/insetspecialchar.h"
@@ -118,10 +120,6 @@ void breakParagraph(BufferParams const & bparams,
 		tmp->params().align(par->params().align());
 		tmp->setLabelWidthString(par->params().labelWidthString());
 
-		tmp->params().lineBottom(par->params().lineBottom());
-		par->params().lineBottom(false);
-		tmp->params().pagebreakBottom(par->params().pagebreakBottom());
-		par->params().pagebreakBottom(false);
 		tmp->params().spaceBottom(par->params().spaceBottom());
 		par->params().spaceBottom(VSpace(VSpace::NONE));
 
@@ -157,8 +155,6 @@ void breakParagraph(BufferParams const & bparams,
 	if (pos)
 		return;
 
-	tmp->params().lineTop(par->params().lineTop());
-	tmp->params().pagebreakTop(par->params().pagebreakTop());
 	tmp->params().spaceTop(par->params().spaceTop());
 	par->params().clear();
 
@@ -216,9 +212,7 @@ void mergeParagraph(BufferParams const & bparams,
 	ParagraphList::iterator the_next = boost::next(par);
 
 	// first the DTP-stuff
-	par->params().lineBottom(the_next->params().lineBottom());
 	par->params().spaceBottom(the_next->params().spaceBottom());
-	par->params().pagebreakBottom(the_next->params().pagebreakBottom());
 
 	pos_type pos_end = the_next->size() - 1;
 	pos_type pos_insert = par->size();
@@ -510,20 +504,8 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		if (pit->params().pagebreakTop()) {
-			os << "\\newpage";
-			further_blank_line = true;
-		}
 		if (pit->params().spaceTop().kind() != VSpace::NONE) {
 			os << pit->params().spaceTop().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
-
-		if (pit->params().lineTop()) {
-			os << "\\lyxline{\\"
-			   << pit->getFont(bparams, 0, outerFont(pit, paragraphs)).latexSize()
-			   << '}'
-			   << "\\vspace{-1\\parskip}";
 			further_blank_line = true;
 		}
 
@@ -666,18 +648,9 @@ TeXOnePar(Buffer const & buf,
 
 	if (in == 0 || !in->forceDefaultParagraphs(in)) {
 		further_blank_line = false;
-		if (pit->params().lineBottom()) {
-			os << "\\lyxline{\\" << font.latexSize() << '}';
-			further_blank_line = true;
-		}
 
 		if (pit->params().spaceBottom().kind() != VSpace::NONE) {
 			os << pit->params().spaceBottom().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
-
-		if (pit->params().pagebreakBottom()) {
-			os << "\\newpage";
 			further_blank_line = true;
 		}
 
@@ -969,6 +942,10 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\hfill") {
 		par.insertInset(par.size(), new InsetHFill, font, change);
+	} else if (token == "\\lyxline") {
+		par.insertInset(par.size(), new InsetLine, font, change);
+	} else if (token == "\\newpage") {
+		par.insertInset(par.size(), new InsetPagebreak, font, change);
 	} else if (token == "\\change_unchanged") {
 		// Hack ! Needed for empty paragraphs :/
 		// FIXME: is it still ??

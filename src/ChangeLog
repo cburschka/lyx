@@ -1,3 +1,27 @@
+2003-10-27  André Pönitz  <poenitz@gmx.net>
+
+	* lfuns.h: new LFUN_REPEAT, LFUN_INSERT_LINE, LFUN_INSERT_PAGEBREAK
+
+	* factory.C: handle new InsetPagebreak, InsetLine
+
+	* ParagraphParameters.h: remove [line|pagebreak]_[above|below]
+	and move handling into new InsetPagebreak, InsetLine
+
+	* BufferView_pimpl.C:
+	* LyXAction.C:
+	* ParagraphParameters.C:
+	* ParameterStruct.h:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* paragraph.C:
+	* paragraph.h:
+	* paragraph_funcs.C:
+	* paragraph_pimpl.C:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
 2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text.C: 

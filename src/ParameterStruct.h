@@ -35,14 +35,6 @@ struct ParameterStruct {
 	///
 	bool noindent;
 	///
-	bool line_top;
-	///
-	bool line_bottom;
-	///
-	bool pagebreak_top;
-	///
-	bool pagebreak_bottom;
-	///
 	LyXAlignment align;
 	///
 	depth_type depth;
@@ -61,8 +53,7 @@ struct ParameterStruct {
 
 inline
 ParameterStruct::ParameterStruct()
-	: noindent(false), line_top(false), line_bottom(false),
-	  pagebreak_top(false), pagebreak_bottom(false),
+	: noindent(false),
 	  align(LYX_ALIGN_BLOCK), depth(0), start_of_appendix(false),
 	  appendix(false)
 {}
@@ -76,10 +67,6 @@ bool operator==(ParameterStruct const & ps1,
 		&& ps1.added_space_bottom == ps2.added_space_bottom
 		&& ps1.spacing == ps2.spacing
 		&& ps1.noindent == ps2.noindent
-		&& ps1.line_top == ps2.line_top
-		&& ps1.line_bottom == ps2.line_bottom
-		&& ps1.pagebreak_top == ps2.pagebreak_top
-		&& ps1.pagebreak_bottom == ps2.pagebreak_bottom
 		&& ps1.align == ps2.align
 		&& ps1.depth == ps2.depth
 		&& ps1.start_of_appendix == ps2.start_of_appendix
@@ -87,7 +74,6 @@ bool operator==(ParameterStruct const & ps1,
 		&& ps1.labelstring == ps2.labelstring
 		&& ps1.labelwidthstring == ps2.labelwidthstring
 		&& ps1.leftindent == ps2.leftindent;
-
 }
 
 #endif

@@ -1433,3 +1433,38 @@ RowList::iterator Paragraph::getRow(pos_type pos)
 
 	return rit;
 }
+
+
+unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
+{
+	if (!Encodings::is_arabic(c))
+		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && IsDigit(c))
+			return c + (0xb0 - '0');
+		else
+			return c;
+
+	unsigned char const prev_char = pos > 0 ? getChar(pos - 1) : ' ';
+	unsigned char next_char = ' ';
+
+	for (pos_type i = pos + 1, end = size(); i < end; ++i) {
+		unsigned char const par_char = getChar(i);
+		if (!Encodings::IsComposeChar_arabic(par_char)) {
+			next_char = par_char;
+			break;
+		}
+	}
+
+	if (Encodings::is_arabic(next_char)) {
+		if (Encodings::is_arabic(prev_char) &&
+			!Encodings::is_arabic_special(prev_char))
+			return Encodings::TransformChar(c, Encodings::FORM_MEDIAL);
+		else
+			return Encodings::TransformChar(c, Encodings::FORM_INITIAL);
+	} else {
+		if (Encodings::is_arabic(prev_char) &&
+			!Encodings::is_arabic_special(prev_char))
+			return Encodings::TransformChar(c, Encodings::FORM_FINAL);
+		else
+			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
+	}
+}

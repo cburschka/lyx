@@ -72,7 +72,8 @@ LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
 	: height(0), width(0), anchor_y_(0),
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv),
-	  in_inset_(ininset), paragraphs_(&paragraphs)
+	  in_inset_(ininset), paragraphs_(&paragraphs),
+		cache_pos_(-1)
 {
 }
 
@@ -90,6 +91,7 @@ void LyXText::init(BufferView * bview)
 	height = 0;
 
 	anchor_y_ = 0;
+	cache_pos_ = -1;
 
 	current_font = getFont(beg, 0);
 
@@ -653,8 +655,7 @@ string LyXText::getStringToIndex()
 // they do not duplicate themself and you cannnot make dirty things with
 // them!
 
-void LyXText::setParagraph(bool line_top, bool line_bottom,
-			   bool pagebreak_top, bool pagebreak_bottom,
+void LyXText::setParagraph(
 			   VSpace const & space_top,
 			   VSpace const & space_bottom,
 			   Spacing const & spacing,
@@ -693,14 +694,10 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 
 		ParagraphList::iterator const pit = cursorPar();
 		ParagraphParameters & params = pit->params();
-
-		params.lineTop(line_top);
-		params.lineBottom(line_bottom);
-		params.pagebreakTop(pagebreak_top);
-		params.pagebreakBottom(pagebreak_bottom);
 		params.spaceTop(space_top);
 		params.spaceBottom(space_bottom);
 		params.spacing(spacing);
+
 		// does the layout allow the new alignment?
 		LyXLayout_ptr const & layout = pit->layout();
 

@@ -186,6 +186,8 @@ void LyXAction::init()
 		{ LFUN_INSERT_LABEL, "label-insert", Noop },
 		{ LFUN_INSET_OPTARG, "optional-insert", Noop },
 		{ LFUN_INSERT_BIBITEM, "bibitem-insert", Noop },
+		{ LFUN_INSERT_LINE, "line-insert", Noop },
+		{ LFUN_INSERT_PAGEBREAK, "pagebreak-insert", Noop },
 		{ LFUN_LANGUAGE, "language", Noop },
 		{ LFUN_LAYOUT, "layout", Noop },
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", ReadOnly },
@@ -320,6 +322,7 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_APPLY, "paragraph-params-apply", Noop },
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop },
 		{ LFUN_EXTERNAL_EDIT, "external-edit", Noop },
+		{ LFUN_REPEAT, "repeat", NoBuffer },
 		{ LFUN_NOACTION, "", Noop }
 	};
 

@@ -53,10 +53,6 @@ ParagraphParameters::ParagraphParameters()
 void ParagraphParameters::clear()
 {
 	ParameterStruct tmp(*param);
-	tmp.line_top = false;
-	tmp.line_bottom = false;
-	tmp.pagebreak_top = false;
-	tmp.pagebreak_bottom = false;
 	tmp.added_space_top = VSpace(VSpace::NONE);
 	tmp.added_space_bottom = VSpace(VSpace::NONE);
 	tmp.spacing.set(Spacing::Default);
@@ -79,12 +75,7 @@ ParagraphParameters::depth_type ParagraphParameters::depth() const
 bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 {
 	return param->align == pp.param->align &&
-		param->line_bottom == pp.param->line_bottom &&
-		param->pagebreak_bottom == pp.param->pagebreak_bottom &&
 		param->added_space_bottom == pp.param->added_space_bottom &&
-
-		param->line_top == pp.param->line_top &&
-		param->pagebreak_top == pp.param->pagebreak_top &&
 		param->added_space_top == pp.param->added_space_top &&
 		param->spacing == pp.param->spacing &&
 		param->noindent == pp.param->noindent &&
@@ -151,62 +142,6 @@ void ParagraphParameters::noindent(bool ni)
 {
 	ParameterStruct tmp(*param);
 	tmp.noindent = ni;
-	set_from_struct(tmp);
-}
-
-
-bool ParagraphParameters::lineTop() const
-{
-	return param->line_top;
-}
-
-
-void ParagraphParameters::lineTop(bool lt)
-{
-	ParameterStruct tmp(*param);
-	tmp.line_top = lt;
-	set_from_struct(tmp);
-}
-
-
-bool ParagraphParameters::lineBottom() const
-{
-	return param->line_bottom;
-}
-
-
-void ParagraphParameters::lineBottom(bool lb)
-{
-	ParameterStruct tmp(*param);
-	tmp.line_bottom = lb;
-	set_from_struct(tmp);
-}
-
-
-bool ParagraphParameters::pagebreakTop() const
-{
-	return param->pagebreak_top;
-}
-
-
-void ParagraphParameters::pagebreakTop(bool pbt)
-{
-	ParameterStruct tmp(*param);
-	tmp.pagebreak_top = pbt;
-	set_from_struct(tmp);
-}
-
-
-bool ParagraphParameters::pagebreakBottom() const
-{
-	return param->pagebreak_bottom;
-}
-
-
-void ParagraphParameters::pagebreakBottom(bool pbb)
-{
-	ParameterStruct tmp(*param);
-	tmp.pagebreak_bottom = pbb;
 	set_from_struct(tmp);
 }
 
@@ -327,14 +262,6 @@ void ParagraphParameters::read(LyXLex & lex)
 			spaceTop(VSpace(VSpace::VFILL));
 		} else if (token == "\\fill_bottom") {
 			spaceBottom(VSpace(VSpace::VFILL));
-		} else if (token == "\\line_top") {
-			lineTop(true);
-		} else if (token == "\\line_bottom") {
-			lineBottom(true);
-		} else if (token == "\\pagebreak_top") {
-			pagebreakTop(true);
-		} else if (token == "\\pagebreak_bottom") {
-			pagebreakBottom(true);
 		} else if (token == "\\start_of_appendix") {
 			startOfAppendix(true);
 		} else if (token == "\\paragraph_spacing") {
@@ -405,18 +332,6 @@ void ParagraphParameters::write(ostream & os) const
 		os << "\\labelwidthstring "
 		   << labelWidthString() << '\n';
 
-	// Lines above or below?
-	if (lineTop())
-		os << "\\line_top ";
-	if (lineBottom())
-		os << "\\line_bottom ";
-
-	// Pagebreaks above or below?
-	if (pagebreakTop())
-		os << "\\pagebreak_top ";
-	if (pagebreakBottom())
-		os << "\\pagebreak_bottom ";
-
 	// Start of appendix?
 	if (startOfAppendix())
 		os << "\\start_of_appendix ";
@@ -455,10 +370,7 @@ void setParagraphParams(BufferView & bv, string const & data)
 	params.read(lex);
 
 	LyXText * text = bv.getLyXText();
-	text->setParagraph(params.lineTop(),
-			   params.lineBottom(),
-			   params.pagebreakTop(),
-			   params.pagebreakBottom(),
+	text->setParagraph(
 			   params.spaceTop(),
 			   params.spaceBottom(),
 			   params.spacing(),

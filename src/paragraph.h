@@ -290,7 +290,8 @@ public:
 
 	/// return true if we allow this par to stay empty
 	bool allowEmpty() const;
-
+	////
+	unsigned char transformChar(unsigned char c, lyx::pos_type pos) const;
 	///
 	ParagraphParameters & params();
 	///

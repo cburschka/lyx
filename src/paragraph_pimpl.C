@@ -736,8 +736,6 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	BufferParams const & bparams = features.bufferParams();
 
 	// check the params.
-	if (params.lineTop() || params.lineBottom())
-		features.require("lyxline");
 	if (!params.spacing().isDefault())
 		features.require("setspace");
 

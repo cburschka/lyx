@@ -76,6 +76,8 @@ libinsets_la_SOURCES = \
 	insetlabel.h \
 	insetlatexaccent.C \
 	insetlatexaccent.h \
+	insetline.C \
+	insetline.h \
 	insetmarginal.h \
 	insetmarginal.C \
 	insetminipage.C \
@@ -86,6 +88,8 @@ libinsets_la_SOURCES = \
 	insetnote.h \
 	insetoptarg.C \
 	insetoptarg.h \
+	insetpagebreak.C \
+	insetpagebreak.h \
 	insetquotes.C \
 	insetquotes.h \
 	insetref.C \

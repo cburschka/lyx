@@ -207,11 +207,6 @@ void QParagraph::apply()
 	Spacing const spacing(linespacing, other);
 	params.spacing(spacing);
 
-	// lines and pagebreaks
-	params.lineTop(dialog_->lineAbove->isChecked());
-	params.lineBottom(dialog_->lineBelow->isChecked());
-	params.pagebreakTop(dialog_->pagebreakAbove->isChecked());
-	params.pagebreakBottom(dialog_->pagebreakBelow->isChecked());
 	// label width
 	params.labelWidthString(fromqstr(dialog_->labelWidth->text()));
 	// indendation
@@ -328,16 +323,6 @@ void QParagraph::update_contents()
 
 	//LyXAlignment alignpos = controller().alignPossible();
 
-	// no inset-text-owned paragraph may have pagebreaks
-	bool ininset = controller().inInset();
-	dialog_->pagebreakAbove->setEnabled(!ininset);
-	dialog_->pagebreakBelow->setEnabled(!ininset);
-
-	// lines, pagebreaks and indent
-	dialog_->lineAbove->setChecked(params.lineTop());
-	dialog_->lineBelow->setChecked(params.lineBottom());
-	dialog_->pagebreakAbove->setChecked(params.pagebreakTop());
-	dialog_->pagebreakBelow->setChecked(params.pagebreakBottom());
 	dialog_->indentCB->setChecked(!params.noindent());
 
 	// linespacing

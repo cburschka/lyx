@@ -130,44 +130,6 @@ int LyXText::getRealCursorX() const
 }
 
 
-#warning FIXME  This function seems to belong outside of LyxText.
-unsigned char LyXText::transformChar(unsigned char c, Paragraph const & par,
-				     pos_type pos) const
-{
-	if (!Encodings::is_arabic(c))
-		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && IsDigit(c))
-			return c + (0xb0 - '0');
-		else
-			return c;
-
-	unsigned char const prev_char = pos > 0 ? par.getChar(pos - 1) : ' ';
-	unsigned char next_char = ' ';
-
-	pos_type const par_size = par.size();
-
-	for (pos_type i = pos + 1; i < par_size; ++i) {
-		unsigned char const par_char = par.getChar(i);
-		if (!Encodings::IsComposeChar_arabic(par_char)) {
-			next_char = par_char;
-			break;
-		}
-	}
-
-	if (Encodings::is_arabic(next_char)) {
-		if (Encodings::is_arabic(prev_char) &&
-			!Encodings::is_arabic_special(prev_char))
-			return Encodings::TransformChar(c, Encodings::FORM_MEDIAL);
-		else
-			return Encodings::TransformChar(c, Encodings::FORM_INITIAL);
-	} else {
-		if (Encodings::is_arabic(prev_char) &&
-			!Encodings::is_arabic_special(prev_char))
-			return Encodings::TransformChar(c, Encodings::FORM_FINAL);
-		else
-			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
-	}
-}
-
 // This is the comments that some of the warnings below refers to.
 // There are some issues in this file and I don't think they are
 // really related to the FIX_DOUBLE_SPACE patch. I'd rather think that
@@ -223,7 +185,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 				if (Encodings::IsComposeChar_arabic(c))
 					return 0;
 				else
-					c = transformChar(c, *pit, pos);
+					c = pit->transformChar(c, pos);
 			} else if (font.language()->lang() == "hebrew" &&
 				 Encodings::IsComposeChar_hebrew(c))
 				return 0;
@@ -803,15 +765,6 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		// add the vertical spaces, that the user added
 		maxasc += getLengthMarkerHeight(*bv(), pit->params().spaceTop());
 
-		// do not forget the DTP-lines!
-		// there height depends on the font of the nearest character
-		if (pit->params().lineTop())
-
-			maxasc += 2 * font_metrics::ascent('x', getFont(pit, 0));
-		// and now the pagebreaks
-		if (pit->params().pagebreakTop())
-			maxasc += 3 * defaultRowHeight();
-
 		if (pit->params().startOfAppendix())
 			maxasc += 3 * defaultRowHeight();
 
@@ -860,36 +813,29 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		// a section, or between the items of a itemize or enumerate
 		// environment.
 
-		if (!pit->params().pagebreakTop()) {
-			ParagraphList::iterator prev =
-				depthHook(pit, ownerParagraphs(),
-					  pit->getDepth());
-			if (prev != pit && prev->layout() == layout &&
-				prev->getDepth() == pit->getDepth() &&
-				prev->getLabelWidthString() == pit->getLabelWidthString())
-			{
-				layoutasc = (layout->itemsep * defaultRowHeight());
-			} else if (pit != ownerParagraphs().begin() || row.pos() != 0) {
-				tmptop = layout->topsep;
+		ParagraphList::iterator prev =
+			depthHook(pit, ownerParagraphs(),
+					pit->getDepth());
+		if (prev != pit && prev->layout() == layout &&
+			prev->getDepth() == pit->getDepth() &&
+			prev->getLabelWidthString() == pit->getLabelWidthString())
+		{
+			layoutasc = (layout->itemsep * defaultRowHeight());
+		} else if (pit != ownerParagraphs().begin() || row.pos() != 0) {
+			tmptop = layout->topsep;
 
-				if (tmptop > 0)
-					layoutasc = (tmptop * defaultRowHeight());
-			} else if (pit->params().lineTop()) {
-				tmptop = layout->topsep;
+			if (tmptop > 0)
+				layoutasc = (tmptop * defaultRowHeight());
+		}
 
-				if (tmptop > 0)
-					layoutasc = (tmptop * defaultRowHeight());
-			}
-
-			prev = outerHook(pit, ownerParagraphs());
-			if (prev != ownerParagraphs().end())  {
-				maxasc += int(prev->layout()->parsep * defaultRowHeight());
-			} else if (pit != ownerParagraphs().begin()) {
-				ParagraphList::iterator prior_pit = boost::prior(pit);
-				if (prior_pit->getDepth() != 0 ||
-				    prior_pit->layout() == layout) {
-					maxasc += int(layout->parsep * defaultRowHeight());
-				}
+		prev = outerHook(pit, ownerParagraphs());
+		if (prev != ownerParagraphs().end())  {
+			maxasc += int(prev->layout()->parsep * defaultRowHeight());
+		} else if (pit != ownerParagraphs().begin()) {
+			ParagraphList::iterator prior_pit = boost::prior(pit);
+			if (prior_pit->getDepth() != 0 ||
+					prior_pit->layout() == layout) {
+				maxasc += int(layout->parsep * defaultRowHeight());
 			}
 		}
 	}
@@ -904,21 +850,10 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		// add the vertical spaces, that the user added
 		maxdesc += getLengthMarkerHeight(*bv(), pit->params().spaceBottom());
 
-		// do not forget the DTP-lines!
-		// there height depends on the font of the nearest character
-		if (pit->params().lineBottom())
-			maxdesc += 2 * font_metrics::ascent('x',
-					getFont(pit, max(pos_type(0), pit->size() - 1)));
-
-		// and now the pagebreaks
-		if (pit->params().pagebreakBottom())
-			maxdesc += 3 * defaultRowHeight();
-
 		// and now the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
-		if (!pit->params().pagebreakBottom()
-		    && nextpit != ownerParagraphs().end()) {
+		if (nextpit != ownerParagraphs().end()) {
 			ParagraphList::iterator comparepit = pit;
 			float usual = 0;
 			float unusual = 0;
@@ -1678,9 +1613,7 @@ void LyXText::backspace()
 				    && cursorPar()->getAlign() == tmppit->getAlign()) {
 					// Inherit bottom DTD from the paragraph below.
 					// (the one we are deleting)
-					tmppit->params().lineBottom(cursorPar()->params().lineBottom());
 					tmppit->params().spaceBottom(cursorPar()->params().spaceBottom());
-					tmppit->params().pagebreakBottom(cursorPar()->params().pagebreakBottom());
 				}
 
 				cursorLeft(bv());
@@ -1752,7 +1685,11 @@ void LyXText::backspace()
 
 ParagraphList::iterator LyXText::cursorPar() const
 {
-	return getPar(cursor.par());
+	if (cursor.par() != cache_pos_) {
+		cache_pos_ = cursor.par();
+		cache_par_ = getPar(cache_pos_);
+	}
+	return cache_par_;
 }
 
 

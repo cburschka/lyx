@@ -1266,18 +1266,15 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
-	{
 		if (!ensureBufferClean(view()))
 			break;
 		if (!owner->buffer()->lyxvc().inUse()) {
 			owner->buffer()->lyxvc().registrer();
 			view()->reload();
 		}
-	}
-	break;
+		break;
 
 	case LFUN_VC_CHECKIN:
-	{
 		if (!ensureBufferClean(view()))
 			break;
 		if (owner->buffer()->lyxvc().inUse()
@@ -1285,11 +1282,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			owner->buffer()->lyxvc().checkIn();
 			view()->reload();
 		}
-	}
-	break;
+		break;
 
 	case LFUN_VC_CHECKOUT:
-	{
 		if (!ensureBufferClean(view()))
 			break;
 		if (owner->buffer()->lyxvc().inUse()
@@ -1297,22 +1292,17 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			owner->buffer()->lyxvc().checkOut();
 			view()->reload();
 		}
-	}
-	break;
+		break;
 
 	case LFUN_VC_REVERT:
-	{
 		owner->buffer()->lyxvc().revert();
 		view()->reload();
-	}
-	break;
+		break;
 
 	case LFUN_VC_UNDO:
-	{
 		owner->buffer()->lyxvc().undoLast();
 		view()->reload();
-	}
-	break;
+		break;
 
 	// --- buffers ----------------------------------------
 
@@ -1328,20 +1318,19 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		open(argument);
 		break;
 
-	case LFUN_LAYOUT_TABULAR:
-	    if (view()->theLockingInset()) {
-		if (view()->theLockingInset()->lyxCode()== InsetOld::TABULAR_CODE) {
-		    InsetTabular * inset = static_cast<InsetTabular *>
-			(view()->theLockingInset());
-		    inset->openLayoutDialog(view());
-		} else if (view()->theLockingInset()->
-			   getFirstLockingInsetOfType(InsetOld::TABULAR_CODE)!=0) {
-		    InsetTabular * inset = static_cast<InsetTabular *>(
-			view()->theLockingInset()->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE));
-		    inset->openLayoutDialog(view());
+	case LFUN_LAYOUT_TABULAR: {
+		UpdatableInset * tli = view()->theLockingInset();
+		if (tli) {
+			if (tli->lyxCode() == InsetOld::TABULAR_CODE) {
+				static_cast<InsetTabular *>(tli)->openLayoutDialog(view());
+			} else if (tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE)) {
+				static_cast<InsetTabular *>(
+					tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE))
+						->openLayoutDialog(view());
+			}
 		}
-	    }
-	    break;
+		break;
+	}
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		owner->getToolbar().openLayoutList();
@@ -1362,18 +1351,15 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 
 	case LFUN_NOTIFY:
-	{
 		dispatch_buffer = keyseq.print();
 		lyxserver->notifyClient(dispatch_buffer);
-	}
-	break;
+		break;
 
-	case LFUN_GOTOFILEROW:
-	{
+	case LFUN_GOTOFILEROW: {
 		string file_name;
 		int row;
-		istringstream istr(argument.c_str());
-		istr >> file_name >> row;
+		istringstream is(argument);
+		is >> file_name >> row;
 		if (prefixIs(file_name, getTmpDir())) {
 			// Needed by inverse dvi search. If it is a file
 			// in tmpdir, call the apropriated function
@@ -1381,7 +1367,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		} else {
 			// Must replace extension of the file to be .lyx
 			// and get full path
-			string const s(ChangeExtension(file_name, ".lyx"));
+			string const s = ChangeExtension(file_name, ".lyx");
 			// Either change buffer or load the file
 			if (bufferlist.exists(s)) {
 				view()->buffer(bufferlist.getBuffer(s));
@@ -1395,15 +1381,13 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->center();
 		// see BufferView_pimpl::center()
 		view()->updateScrollbar();
+		break;
 	}
-	break;
 
-	case LFUN_GOTO_PARAGRAPH:
-	{
-		istringstream istr(argument.c_str());
-
+	case LFUN_GOTO_PARAGRAPH: {
+		istringstream is(argument);
 		int id;
-		istr >> id;
+		is >> id;
 		ParIterator par = owner->buffer()->getParFromID(id);
 		if (par == owner->buffer()->par_iterator_end()) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
@@ -1442,15 +1426,14 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_LIMITS:
-	{
 		setErrorMessage(N_("This is only allowed in math mode!"));
-	}
-	break;
+		break;
 
 	// passthrough hat and underscore outside mathed:
 	case LFUN_SUBSCRIPT:
 		dispatch(FuncRequest(view(), LFUN_SELFINSERT, "_"));
 		break;
+
 	case LFUN_SUPERSCRIPT:
 		dispatch(FuncRequest(view(), LFUN_SELFINSERT, "^"));
 		break;
@@ -1499,22 +1482,18 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			data = InsetCommandMailer::params2string(name, p);
 		}
 		owner->getDialogs().show(name, data, 0);
+		break;
 	}
-	break;
 
-	case LFUN_DIALOG_SHOW_NEXT_INSET: {
-	}
-	break;
+	case LFUN_DIALOG_SHOW_NEXT_INSET: 
+		break;
 
 	case LFUN_INSET_DIALOG_SHOW: {
-		LyXText * lt = view()->getLyXText();
-		InsetOld * inset = lt->getInset();
-		if (inset) {
-			FuncRequest cmd(view(), LFUN_INSET_DIALOG_SHOW);
-			inset->dispatch(cmd);
-		}
+		InsetOld * inset = view()->getLyXText()->getInset();
+		if (inset) 
+			inset->dispatch(FuncRequest(view(), LFUN_INSET_DIALOG_SHOW));
+		break;
 	}
-	break;
 
 	case LFUN_DIALOG_UPDATE: {
 		string const & name = argument;
@@ -1527,8 +1506,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		} else if (name == "paragraph") {
 			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		}
+		break;
 	}
-	break;
 
 	case LFUN_DIALOG_HIDE:
 		Dialogs::hide(argument, 0);
@@ -1538,8 +1517,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		owner->getDialogs().disconnect(argument);
 		break;
 
-	case LFUN_CHILDOPEN:
-	{
+	case LFUN_CHILDOPEN: {
 		string const filename =
 			MakeAbsPath(argument, owner->buffer()->filePath());
 		setMessage(N_("Opening child document ") +
@@ -1549,8 +1527,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			view()->buffer(bufferlist.getBuffer(filename));
 		else
 			view()->loadLyXFile(filename);
+		break;
 	}
-	break;
 
 	case LFUN_TOGGLECURSORFOLLOW:
 		lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
@@ -1572,44 +1550,51 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		owner->getIntl().ToggleKeyMap();
 		break;
 
+	case LFUN_REPEAT: {
+		// repeat command
+		string countstr;
+		argument = split(argument, countstr, ' ');
+		istringstream is(countstr);
+		int count = 0;
+		is >> count;	
+		lyxerr << "repeat: count: " << count << " cmd: " << argument << endl;
+		for (int i = 0; i < count; ++i)
+			dispatch(lyxaction.lookupFunc(argument));
+		break;
+	}
+
 	case LFUN_SEQUENCE:
-	{
 		// argument contains ';'-terminated commands
 		while (!argument.empty()) {
 			string first;
 			argument = split(argument, first, ';');
 			dispatch(lyxaction.lookupFunc(first));
 		}
-	}
-	break;
+		break;
 
-	case LFUN_SAVEPREFERENCES:
-	{
+	case LFUN_SAVEPREFERENCES: {
 		Path p(user_lyxdir());
 		lyxrc.write("preferences");
+		break;
 	}
-	break;
 
 	case LFUN_SCREEN_FONT_UPDATE:
-	{
 		// handle the screen font changes.
 		lyxrc.set_font_norm_type();
 		lyx_gui::update_fonts();
 		// All visible buffers will need resize
 		view()->resize();
 		view()->update();
-	}
-	break;
+		break;
 
-	case LFUN_SET_COLOR:
-	{
+	case LFUN_SET_COLOR: {
 		string lyx_name;
 		string const x11_name = split(argument, lyx_name, ' ');
 		if (lyx_name.empty() || x11_name.empty()) {
 			setErrorMessage(N_("Syntax: set-color <lyx_name>"
 						" <x11_name>"));
 			break;
-			}
+		}
 
 		bool const graphicsbg_changed =
 			(lyx_name == lcolor.getLyXName(LColor::graphicsbg) &&
@@ -1630,9 +1615,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 #warning FIXME!! The graphics cache no longer has a changeDisplay method.
 #endif
 #if 0
-			lyx::graphics::GCache & gc =
-				lyx::graphics::GCache::get();
-			gc.changeDisplay(true);
+			lyx::graphics::GCache::get().changeDisplay(true);
 #endif
 		}
 
@@ -1645,24 +1628,20 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 
 	case LFUN_FORKS_KILL:
-	{
-		if (!isStrInt(argument))
-			break;
-
-		pid_t const pid = strToInt(argument);
-		ForkedcallsController & fcc = ForkedcallsController::get();
-		fcc.kill(pid);
+		if (isStrInt(argument)) {
+			pid_t const pid = strToInt(argument);
+			ForkedcallsController & fcc = ForkedcallsController::get();
+			fcc.kill(pid);	
+		}
 		break;
-	}
 
 	case LFUN_TOOLTIPS_TOGGLE:
 		owner->getDialogs().toggleTooltips();
 		break;
 
-	case LFUN_EXTERNAL_EDIT: {
+	case LFUN_EXTERNAL_EDIT:
 		InsetExternal().dispatch(FuncRequest(view(), action, argument));
 		break;
-	}
 
 	default:
 		// Then if it was none of the above

@@ -298,11 +298,9 @@ public:
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
 	 last. When a paragraph is broken, the top settings rest, the bottom
-	 settings are given to the new one. So I can make shure, they do not
-	 duplicate themself (and you cannnot make dirty things with them! )
+	 settings are given to the new one.
 	 */
-	void setParagraph(bool line_top, bool line_bottom,
-			  bool pagebreak_top, bool pagebreak_bottom,
+	void setParagraph(
 			  VSpace const & space_top,
 			  VSpace const & space_bottom,
 			  Spacing const & spacing,
@@ -375,10 +373,6 @@ public:
 
 	/// return the color of the canvas
 	LColor_color backgroundColor() const;
-
-
-	unsigned char transformChar(unsigned char c, Paragraph const & par,
-				    lyx::pos_type pos) const;
 
 	/**
 	 * Returns the left beginning of the text.
@@ -466,6 +460,10 @@ private:
 	///TextCursor cursor_;
 	/// prohibit this as long as there are back pointers...
 	LyXText(LyXText const &);
+
+	// cache for cursorPar()
+	mutable ParagraphList::iterator cache_par_;
+	mutable int cache_pos_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

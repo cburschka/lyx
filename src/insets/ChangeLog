@@ -1,3 +1,13 @@
+
+2003-10-27  André Pönitz  <poenitz@gmx.net>
+
+	* insetpagebreak.[Ch]: new inset for page breaks
+
+	* insetline.[Ch]: new inset for vertical lines
+
+	* Makefile.am:
+	* inset.h: adjust
+
 2003-10-25  Angus Leeming  <leeming@lyx.org>
 
 	* render_base.h (asButton, asGraphic, asPreview, asMonitoredPreview):
