@@ -135,7 +135,7 @@ void handle_package(string const & name, string const & options)
 
 
 
-void end_preamble(ostream & os, LyXTextClass const & textclass)
+void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "# tex2lyx 0.0.3 created this file\n"
 	   << "\\lyxformat 224\n"
@@ -166,7 +166,7 @@ void end_preamble(ostream & os, LyXTextClass const & textclass)
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
 	   << "\\tracking_changes " << h_tracking_changes << "\n"
-	   << "\\end_header\n\n\\begin_layout Standard\n";
+	   << "\\end_header\n\n\\layout Standard\n";
 }
 
 

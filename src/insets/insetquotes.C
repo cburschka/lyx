@@ -37,7 +37,15 @@ using std::auto_ptr;
 
 namespace {
 
-// codes used to read/write quotes to LyX files
+/* codes used to read/write quotes to LyX files
+ * e    ``english''
+ * s    ''spanish''
+ * g    ,,german``
+ * p    ,,polish''
+ * f    <<french>>
+ * a    >>danish<<
+ */
+
 char const * const language_char = "esgpfa";
 char const * const side_char = "lr" ;
 char const * const times_char = "sd";

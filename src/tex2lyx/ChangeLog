@@ -1,3 +1,11 @@
+2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C:
+	* tex2lyx.C:
+	* preamble.C:
+	* table.C: \begin_layout -> \layout. We are not quite ready for
+	that yet
+
 2003-07-28  José Matos  <jamatos@lyx.org>
 
 	* text.C:
@@ -8,7 +16,10 @@
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (parse_text): read environment from layout file too. Now,
-	all layout entries are supported (but many hacks remain)
+	all layout entries are supported (but many hacks remain); note
+	that the nesting support is broken and will have to be completely
+	redone
+	(parse_text): basic support for english double quotes
 
 	* table.C (handle_tabular): make the output more similar to LyX
 	and fix a little
