@@ -30,4 +30,3 @@ ostream & operator<<(ostream & o, Box const & b)
 	return o << "x1,y1: " << b.x1 << "," << b.y1
 		<< " x2,y2: " << b.x2 << "," << b.y2 << std::endl;
 }
- 

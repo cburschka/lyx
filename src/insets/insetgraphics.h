@@ -44,8 +44,6 @@ public:
 	///
 	int width(BufferView *, LyXFont const &) const;
 	///
-	bool display() const { return true; }
-	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
 	void edit(BufferView *, int, int, unsigned int);

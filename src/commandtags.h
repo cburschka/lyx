@@ -253,7 +253,6 @@ enum kb_action {
 	LFUN_HELP_OPEN, // 220          // Jug 990627
 	LFUN_DATE_INSERT,	              // jdblair 20000131
 	LFUN_LANGUAGE,                  // Dekel 20000203
-	LFUN_INSET_TEXT,	              // Jug 20000214
 	LFUN_INSET_ERT,	                // Jug 20000218
 	LFUN_INSET_GRAPHICS,            // Lgb 20000226
 	LFUN_INSET_FOOTNOTE,            // Jug 20000307

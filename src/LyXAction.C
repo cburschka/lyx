@@ -379,8 +379,6 @@ void LyXAction::init()
 		  N_("Tabular Features"), Noop },
 		{ LFUN_INSET_TABULAR, "tabular-insert",
 		  N_("Insert a new Tabular Inset"), Noop },
-		{ LFUN_INSET_TEXT, "text-insert",
-		  N_("Insert a new Text Inset"), Noop },
 #if 0
 		{ LFUN_INSET_THEOREM, "theorem-insert", "", Noop },
 #endif

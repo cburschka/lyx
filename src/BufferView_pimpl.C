@@ -2751,10 +2751,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 	
-	case LFUN_INSET_TEXT:
-		insertAndEditInset(new InsetText(buffer_->params));
-		break;
-	
 	case LFUN_INSET_ERT:
 		insertAndEditInset(new InsetERT(buffer_->params));
 		break;

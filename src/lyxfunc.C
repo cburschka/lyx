@@ -568,9 +568,6 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	// the functions which insert insets
 	Inset::Code code = Inset::NO_CODE;
 	switch (action) {
-	case LFUN_INSET_TEXT:
-		code = Inset::TEXT_CODE;
-		break;
 	case LFUN_INSET_ERT:
 		code = Inset::ERT_CODE;		
 		break;
