@@ -1,3 +1,11 @@
+2004-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* QLPainter.C (image): set the background colour to
+	LColor::graphicsbg.
+
+	* QLImage.C (setPixmap_impl): remove commented out xforms code
+	to set pixmap background colour.
+
 2004-05-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* QGraphics.C: #include <cmath> (STLport compile fix for floor())

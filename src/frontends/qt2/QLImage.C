@@ -158,7 +158,7 @@ QImage & toGray(QImage & img)
 {
 	if (img.width() == 0 || img.height() == 0)
 		return img;
- 
+
 	int const pixels = img.depth() > 8 ?
 		img.width() * img.height() : img.numColors();
 
@@ -197,17 +197,6 @@ bool QLImage::setPixmap_impl(Params const & params)
 		default:
 			break;
 	}
-// FIXME
-#if 0
-	unsigned int fill = packedcolor(LColor::graphicsbg);
-	if (fill != image_->fill_color) {
-		// the background color has changed.
-		// Note that in grayscale/monochrome images the background is
-		// grayed also, so this call will have no visible effect. Sorry!
-		flimage_replace_pixel(image_, image_->fill_color, fill);
-		image_->fill_color = fill;
-	}
-#endif
 
 	return true;
 }

@@ -166,7 +166,11 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 void QLPainter::image(int x, int y, int w, int h,
 	lyx::graphics::Image const & i)
 {
-	qp_->drawPixmap(x, y, static_cast<lyx::graphics::QLImage const &>(i).qpixmap(), 0, 0, w, h);
+	lyx::graphics::QLImage const & qlimage =
+		static_cast<lyx::graphics::QLImage const &>(i);
+
+	fillRectangle(x, y, w, h, LColor::graphicsbg);
+	qp_->drawPixmap(x, y, qlimage.qpixmap(), 0, 0, w, h);
 }
 
 
