@@ -75,8 +75,13 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	: bv_(b), owner_(o), cursor_timeout(400)
 {
 	buffer_ = 0;
+#if 0
 	workarea_ = new WorkArea(bv_, xpos, ypos, width, height);
+#else
+	workarea_ = new WorkArea(xpos, ypos, width, height);
+#endif
 	// Setup the signals
+	workarea_->scrollCB.connect(slot(this, &BufferView::Pimpl::scrollCB));
 	workarea_->workAreaExpose
 		.connect(slot(this, &BufferView::Pimpl::workAreaExpose));
 	workarea_->workAreaEnter
@@ -472,7 +477,7 @@ int BufferView::Pimpl::scrollUp(long time)
    
 	workarea_->setScrollbarValue(value);
    
-	bv_->scrollCB(value); 
+	scrollCB(value); 
 	return 0;
 }
 
@@ -502,7 +507,7 @@ int BufferView::Pimpl::scrollDown(long time)
 
 	workarea_->setScrollbarValue(value);
 	
-	bv_->scrollCB(value); 
+	scrollCB(value); 
 	return 0;
 }
 
@@ -1352,7 +1357,7 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 	screen_->HideCursor();
 	bv_->beforeChange();
 	
-	string clip(workarea_->getClipboard());
+	string const clip(workarea_->getClipboard());
 	
 	if (clip.empty()) return;
 

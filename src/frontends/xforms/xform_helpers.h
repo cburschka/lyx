@@ -6,12 +6,12 @@
 #endif
 
 #include <utility> // pair
-#include <config.h>
+//#include <config.h>
 #include "LString.h"
 #include "Color.h"
 
 // Take a string and add breaks so that it fits into a desired label width, w
-string formatted( string const &label, int w, int size, int style );
+string formatted(string const &label, int w, int size, int style);
 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
@@ -19,11 +19,11 @@ string formatted( string const &label, int w, int size, int style );
     pattern: *.ps etc.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-string const browseFile( string const & filename,
-			 string const & title,
-			 string const & pattern, 
-			 std::pair<string,string> const & dir1,
-			 std::pair<string,string> const & dir2 );
+string const browseFile(string const & filename,
+			string const & title,
+			string const & pattern, 
+			std::pair<string,string> const & dir1,
+			std::pair<string,string> const & dir2);
 
 /// struct holding xform-specific colors
 struct XformColor : public NamedColor {

@@ -1,3 +1,87 @@
+2000-12-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/FileInfo.h: move unistd.h to after sys/types.h and
+	sys/stat.h. 
+
+	* src/support/FileInfo.C: don't include sys/types. and sys/stat.h
+
+	* src/mathed/math_inset.h: move LString.h to be included first
+
+	* src/insets/insetfloat.C: adjust for change in private variable names
+
+	* src/frontends/xforms/xform_helpers.h : don't include config.h
+
+	* src/frontends/xforms/xform_helpers.C: adjust the order of
+	includes, some whitespace changes.
+	
+
+	* src/trans.C (Load): constify filename and res
+
+	* src/text2.C (SetCounter): call Floating::name() 
+
+	* src/screen.C: change to not use owner from WorkArea, but from
+	text instead.
+
+	* src/lyxfunc.C: adjust because of changes in Intl.
+
+	* src/intl.h: make trans a object instead of pointer, inlucd
+	trans_mgr.h in this file.
+	(getTrans): return a reference to TransManager
+
+	* src/intl.C: don't include trans_mgr.h here
+	modify calls to trans to work on object instead of on pointer
+
+	* src/WorkArea.h: add using for Signal1
+	comment out forward decl of BufferView.
+	add signal scrollCB
+	remove class variable owner_ and getter method for this.
+
+	* src/WorkArea.C: don't include BufferView.h
+	(WorkArea): change to not take a BufferView.h, use signals
+	instead.
+	(scroll_cb): emit signal
+
+	* src/LaTeXFeatures.C: include Floatlist.h
+	(getPackages): only load flot.sty when needed
+	(getMacros): prepare for outputting the correct code to preamble.
+
+	* src/Floating.h: make all variables private + rename to var_.
+	(Floating): default ctor
+	(Floating): complex ctor to set a complete Floating
+	(type): getter
+	(placement): getter
+	(name): getter
+	(builtin): getter
+
+	* src/FloatList.C (FloatList): use Floating's constructor
+	(begin): new method
+	(end): ditto
+	(newFloat): call type()
+	(defaultPlacement): call placement()
+	(operator): new operator
+
+	* src/BufferView_pimpl.C (Pimpl): modify call to WorkArea
+	(scrollUp): call pimpl's scrollCB
+	(scrollDown): ditto
+	(pasteClipboard): constify clip
+
+	* src/BufferView2.C (insertLyXFile): constify fname, fi and c.
+	(insertErrors): constify desctext, errortext, msgtxt and errorrow
+	(open_new_inset): delete some commented code.
+
+	* src/BufferView.[Ch] (enterView): comment out
+	(leaveView): ditto
+	(scrollCB): ditto
+	(workAreaMotionNotify): ditto
+	(workAreaButtonPress): ditto
+	(doubleClick): ditto
+	(tripleClick): ditto
+	(workAreaButtonRelease): ditto
+	(workAreaExpose): ditto
+
+	* config/lyxinclude.m4 (cross_compiling): small stuff to be able
+	to compile with cvs gcc (2.97).
+
 2000-12-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/ui/default.ui: menu structure cleanup.

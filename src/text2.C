@@ -2037,7 +2037,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 				Floating const & fl
 					= floatList.getType(tmp->type());
 				// We should get the correct number here too.
-				s = fl.name + " #:";
+				s = fl.name() + " #:";
 			} else {
 				/* par->SetLayout(0); 
 				   s = layout->labelstring;  */

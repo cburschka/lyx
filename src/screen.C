@@ -116,8 +116,13 @@ void LyXScreen::DrawFromTo(LyXText * text,
 		LyXText::text_status st = text->status;
 		do {
 			text->status = st;
+#if 0
 			text->GetVisibleRow(owner.owner(), y + y_offset,
 					    x_offset, row, y + text->first);
+#else
+			text->GetVisibleRow(text->bv_owner, y + y_offset,
+					    x_offset, row, y + text->first);
+#endif
 		} while (text->status == LyXText::CHANGED_IN_DRAW);
 		text->status = st;
 		y += row->height();
@@ -146,8 +151,13 @@ void LyXScreen::DrawOneRow(LyXText * text, Row * row, int y_text,
 		LyXText::text_status st = text->status;
 		do {
 			text->status = st;
+#if 0
 			text->GetVisibleRow(owner.owner(), y, x_offset, row,
 					    y + text->first);
+#else
+			text->GetVisibleRow(text->bv_owner, y, x_offset, row,
+					    y + text->first);
+#endif
 		} while (text->status == LyXText::CHANGED_IN_DRAW);
 		text->status = st;
 	}
@@ -214,10 +224,17 @@ void LyXScreen::ShowCursor(LyXText const * text)
 {
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
+#if 0
 		if (text->real_current_font.language() !=
 		    owner.owner()->buffer()->params.language
 		    || text->real_current_font.isVisibleRightToLeft()
 		    != owner.owner()->buffer()->params.language->RightToLeft())
+#else
+		if (text->real_current_font.language() !=
+		    text->bv_owner->buffer()->params.language
+		    || text->real_current_font.isVisibleRightToLeft()
+		    != text->bv_owner->buffer()->params.language->RightToLeft())
+#endif
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
 		ShowManualCursor(text, text->cursor.x(), text->cursor.y(),

@@ -1954,7 +1954,11 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_BACKSPACE:
 	{
 		if (!owner->view()->text->selection) {
+#if 0
 			if (owner->getIntl()->getTrans()->backspace()) {
+#else
+			if (owner->getIntl()->getTrans().backspace()) {
+#endif
 				owner->view()->text->Backspace(owner->view());
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
@@ -2417,10 +2421,16 @@ string const LyXFunc::Dispatch(int ac,
 		
 		if (keyseq.length == -1 && keyseq.getiso() != 0) 
 			c = keyseq.getiso();
-		
+
+#if 0
 		owner->getIntl()->getTrans()->
 			deadkey(c, get_accent(action).accent, 
 				owner->view()->text);
+#else
+		owner->getIntl()->getTrans()
+			.deadkey(c, get_accent(action).accent, 
+				owner->view()->text);
+#endif
 		
 		// Need to reset, in case the minibuffer calls these
 		// actions
@@ -2942,9 +2952,17 @@ string const LyXFunc::Dispatch(int ac,
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {
 					if (!math_insert_greek(argument[i]))
+#if 0
 						owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
+#else
+						owner->getIntl()->getTrans().TranslateAndInsert(argument[i], owner->view()->text);
+#endif
 				} else
+#if 0
 					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
+#else
+					owner->getIntl()->getTrans().TranslateAndInsert(argument[i], owner->view()->text);
+#endif
 			}
 
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

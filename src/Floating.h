@@ -25,18 +25,78 @@
 class Floating {
 public:
 	///
-	string type;
+	Floating();
 	///
-	string placement;
+	Floating(string const & type, string const & placement,
+		 string const & ext, string const & within,
+		 string const & style, string const & name,
+		 bool builtin = false);
 	///
-	string ext;
+	string const & type() const;
 	///
-	string within;
+	string const & placement() const;
 	///
-	string style;
+	string const & name() const;
 	///
-	string name;
+	bool builtin() const;
+private:
 	///
-	bool builtin;
+	string type_;
+	///
+	string placement_;
+	///
+	string ext_;
+	///
+	string within_;
+	///
+	string style_;
+	///
+	string name_;
+	///
+	bool builtin_;
 };
+
+
+inline
+Floating::Floating() 
+{}
+
+
+inline
+Floating::Floating(string const & type, string const & placement,
+		   string const & ext, string const & within,
+		   string const & style, string const & name,
+		   bool builtin)
+	: type_(type), placement_(placement), ext_(ext), within_(within),
+	  style_(style), name_(name), builtin_(builtin)
+{}
+
+
+inline
+string const & Floating::type() const
+{
+	return type_;
+}
+
+
+inline
+string const & Floating::placement() const
+{
+	return placement_;
+}
+
+
+inline
+string const & Floating::name() const
+{
+	return name_;
+}
+
+
+inline
+bool Floating::builtin() const
+{
+	return builtin_;
+}
+
 #endif

@@ -12,13 +12,20 @@
 #pragma interface
 #endif
 
+#include <sigc++/signal_system.h>
 #include "LString.h"
 #include "form1.h"
-#include <sigc++/signal_system.h>
+
+#if 1
+#include "trans_mgr.h"
+#endif
 
 class LyXText;
 class Combox;
+
+#if 0
 class TransManager;
+#endif
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Object;
@@ -61,8 +68,13 @@ public:
 	/// initialize key mapper
 	void InitKeyMapper(bool on);
 
+#if 0
 	/// Get the Translation Manager
 	TransManager * getTrans();
+#else
+	// Get the Translation Manager
+	TransManager & getTrans();
+#endif
 	///
 	bool keymapon;
 	///
@@ -97,17 +109,30 @@ private:
 	string & prim_lang;
 	///
 	string & sec_lang;
+#if 0
 	///
 	TransManager * trans;
+#else
+	///
+	TransManager trans;
+#endif
 	/// Redraw connection.
 	Connection r_;
 };
 
 
+#if 0
 inline
 TransManager * Intl::getTrans()
 {
 	return trans;
 }
+#else
+inline
+TransManager & Intl::getTrans()
+{
+	return trans;
+}
+#endif
 
 #endif

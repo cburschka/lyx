@@ -53,10 +53,10 @@ bool BufferView::insertLyXFile(string const & filen)
 {
 	if (filen.empty()) return false;
 
-	string fname = MakeAbsPath(filen);
+	string const fname = MakeAbsPath(filen);
 
 	// check if file exist
-	FileInfo fi(fname);
+	FileInfo const fi(fname);
 
 	if (!fi.readable()) {
 		WriteAlert(_("Error!"),
@@ -75,7 +75,7 @@ bool BufferView::insertLyXFile(string const & filen)
 		return false;
 	}
 	
-	char c = ifs.peek();
+	char const c = ifs.peek();
        
 	LyXLex lex(0, 0);
 	lex.setStream(ifs);
@@ -93,6 +93,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	resize();
 	return res;
 }
+
 
 bool BufferView::removeAutoInsets()
 {
@@ -145,10 +146,10 @@ void BufferView::insertErrors(TeXErrors & terr)
 	for (TeXErrors::Errors::const_iterator cit = terr.begin();
 	     cit != terr.end();
 	     ++cit) {
-		string desctext((*cit).error_desc);
-		string errortext((*cit).error_text);
-		string msgtxt = desctext + '\n' + errortext;
-		int errorrow = (*cit).error_in_line;
+		string const desctext((*cit).error_desc);
+		string const errortext((*cit).error_text);
+		string const msgtxt = desctext + '\n' + errortext;
+		int const errorrow = (*cit).error_in_line;
 
 		// Insert error string for row number
 		int tmpid = -1; 
@@ -269,8 +270,6 @@ bool BufferView::open_new_inset(UpdatableInset * new_inset)
 		delete new_inset;
 		return false;
 	}
-//	text->CursorLeft(this);
-//	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
     	new_inset->Edit(this, 0, 0, 0);
 	return true;
 }
@@ -769,7 +768,7 @@ void BufferView::hideLockedInsetCursor()
 
 void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
-	if (theLockingInset() && available()){
+	if (theLockingInset() && available()) {
 		y += text->cursor.y() + theLockingInset()->InsetInInsetY();
 		if (pimpl_->screen_->FitManualCursor(text, x, y, asc, desc))
 			updateScrollbar();
@@ -821,9 +820,9 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 	// first check for locking insets
 	if (theLockingInset()) {
 		if (theLockingInset() == inset) {
-			if (text->UpdateInset(this, inset)){
+			if (text->UpdateInset(this, inset)) {
 				update();
-				if (mark_dirty){
+				if (mark_dirty) {
 					if (buffer()->isLyxClean())
 						owner()->getMiniBuffer()->
 							setTimer(4);
@@ -851,7 +850,7 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 	if (available()) {
 		hideCursor();
 		update(BufferView::UPDATE);
-		if (text->UpdateInset(this, inset)){
+		if (text->UpdateInset(this, inset)) {
 			if (mark_dirty)
 				update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			else 
@@ -860,6 +859,7 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 		}
 	}
 }
+
 
 bool BufferView::ChangeRefs(string const & from, string const & to)
 {
@@ -918,6 +918,7 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 
 	return ChangeRefs(from, to);
 }
+
 
 UpdatableInset * BufferView::theLockingInset() const
 {

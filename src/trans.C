@@ -363,7 +363,7 @@ string const Trans::process(char c, TransManager & k)
 
 int Trans::Load(string const & language)
 {
-	string filename = LibFileSearch("kbd", language, "kmap");
+	string const filename = LibFileSearch("kbd", language, "kmap");
 	if (filename.empty())
 		return -1;
 
@@ -371,7 +371,7 @@ int Trans::Load(string const & language)
 	LyXLex lex(kmapTags, K_LAST-1);
 	lex.setFile(filename);
 	
-	int res = Load(lex);
+	int const res = Load(lex);
 
 	if (res == 0) {
 		name_ = language;

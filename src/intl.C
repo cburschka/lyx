@@ -26,7 +26,11 @@
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "debug.h"
 #include "lyxrc.h"
+
+#if 0
 #include "trans_mgr.h"
+#endif
+
 #include "support/lstrings.h"
 #include "language.h"
 #include "frontends/Dialogs.h" // redrawGUI
@@ -43,8 +47,10 @@ extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code);
 
 Intl::Intl()
 	: prim_lang(lyxrc.primary_kbmap), 
-	sec_lang(lyxrc.secondary_kbmap),
-	trans(new TransManager)
+	sec_lang(lyxrc.secondary_kbmap)
+#if 0
+	, trans(new TransManager)
+#endif
 {
 	keymapon = lyxrc.use_kbmap;
 	chsetcode = 0;
@@ -54,10 +60,13 @@ Intl::Intl()
 	r_ = Dialogs::redrawGUI.connect(slot(this, &Intl::redraw));
 }
 
+
 Intl::~Intl()
 {
 	r_.disconnect();
+#if 0
 	delete trans;
+#endif
 }
 
 
@@ -72,7 +81,11 @@ int Intl::SetPrimary(string const & lang)
 {
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Primary: `" << lang << "'" << endl;
+#if 0
 	return trans->SetPrimary(lang);
+#else
+	return trans.SetPrimary(lang);
+#endif
 }
 
 
@@ -80,7 +93,11 @@ int Intl::SetSecondary(string const & lang)
 {
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Secondary: `" << lang << "'" << endl;
+#if 0
 	return trans->SetSecondary(lang);
+#else
+	return trans.SetSecondary(lang);
+#endif
 }
 
 
@@ -107,7 +124,7 @@ void Intl::update()
 
 
 void Intl::KeyMapOn(bool on)
-	/* turn on/off key mappings, status in keymapon */
+	// turn on/off key mappings, status in keymapon
 {
 	keymapon = on;
 
@@ -126,7 +143,11 @@ void Intl::KeyMapOn(bool on)
 	} else {
 		fl_set_button(fd_form_keymap->KeyOffBtn, 1);
 		fl_hide_object(fd_form_keymap->KeymapErr);
+#if 0
 		trans->DisableKeymap();
+#else
+		trans.DisableKeymap();
+#endif
 	}
 }
 
@@ -159,13 +180,21 @@ void Intl::KeyMapPrim()
 
 	curkeymap = i;
 
+#if 0
 	if (p.empty() || trans->SetPrimary(p)) {
+#else
+	if (p.empty() || trans.SetPrimary(p)) {
+#endif
 		// error selecting keymap
 		fl_show_object(fd_form_keymap->KeymapErr);
 		update();
 	} else {
 		// no error
+#if 0
 		trans->EnablePrimary();
+#else
+		trans.EnablePrimary();
+#endif
 		keymapon = true;
 		primarykeymap = true;
 		fl_hide_object(fd_form_keymap->KeymapErr);
@@ -179,7 +208,7 @@ void Intl::KeyMapSec()
 	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn2, 1);
 
-	/* read text from choice */
+	// read text from choice
 	int const i = Language2->get();
 
 	string p;
@@ -189,6 +218,7 @@ void Intl::KeyMapSec()
 		p = Language2->getline();
 	curkeymap = i;
 
+#if 0
 	if (p.empty() || trans->SetSecondary(p)) {
 		// error selecting keymap
 		fl_show_object(fd_form_keymap->KeymapErr);
@@ -200,7 +230,21 @@ void Intl::KeyMapSec()
 		primarykeymap = false;
 		fl_hide_object(fd_form_keymap->KeymapErr);
 	}
+#else
+	if (p.empty() || trans.SetSecondary(p)) {
+		// error selecting keymap
+		fl_show_object(fd_form_keymap->KeymapErr);
+		update();
+	} else {
+		// no error
+		trans.EnableSecondary();
+		keymapon = true;
+		primarykeymap = false;
+		fl_hide_object(fd_form_keymap->KeymapErr);
+	}
+#endif
 }
+
 
 void Intl::LCombo(int, void * v, Combox * combox)
 {
@@ -211,6 +255,7 @@ void Intl::LCombo(int, void * v, Combox * combox)
 	    itl->Keymap(43);
 	return;
 }
+
 
 void Intl::DispatchCallback(FL_OBJECT * ob, long code)
 {
@@ -223,7 +268,7 @@ void Intl::DispatchCallback(FL_OBJECT * ob, long code)
 	
 	Intl * itl = static_cast<Intl *>(ob->u_vdata);
 
-	if (itl!= 0) itl->Keymap(code);
+	if (itl != 0) itl->Keymap(code);
 }
 
 
@@ -234,7 +279,7 @@ extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code)
 
 
 void Intl::InitKeyMapper(bool on)
-	/* initialize key mapper */
+	// initialize key mapper
 {
 	lyxerr[Debug::INIT] << "Initializing key mappings..." << endl;
 
@@ -308,21 +353,31 @@ void Intl::InitKeyMapper(bool on)
 		Language->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap, prim_lang.c_str());
 	}
-	else 
+	else
+#if 0
 		trans->SetPrimary(prim_lang);
-
+#else
+		trans.SetPrimary(prim_lang);
+#endif
 	if (!Language2->select_text(sec_lang)) {
 		Language2->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap2, sec_lang.c_str());
 	}
 	else
+#if 0
 		trans->SetSecondary(sec_lang);
+#else
+		trans.SetSecondary(sec_lang);
+#endif
 
 	KeyMapOn(keymapon);
 	if (keymapon)
 		Keymap(23); // turn primary on
-
+#if 0
 	trans->setCharset(lyxrc.font_norm);
+#else
+	trans.setCharset(lyxrc.font_norm);
+#endif
 }
 
 
@@ -336,7 +391,7 @@ void Intl::Keymap(long code)
 	// spagetti example using a switch... (Lgb)
 	switch (code) {
 	case 0:
-		/* cancel/hide */
+		// cancel/hide
 		fl_hide_form(fd_form_keymap->KeyMap);
 		break;
 	case 3:
@@ -356,9 +411,13 @@ void Intl::Keymap(long code)
 			KeyMapSec();
 		}
 		break;
-	case 27:	/* set new font norm */
+	case 27:	// set new font norm
 		char const * p = fl_get_input(fd_form_keymap->Charset);
+#if 0
 		if (trans->setCharset(p))
+#else
+		if (trans.setCharset(p))
+#endif
 			fl_show_object(fd_form_keymap->ChsetErr);
 		else
 			fl_hide_object(fd_form_keymap->ChsetErr);

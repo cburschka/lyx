@@ -232,6 +232,7 @@ public:
 
 	///
 	void pushIntoUpdateList(Inset * i);
+#if 0
 	///
 	void workAreaExpose();
 	///
@@ -248,6 +249,7 @@ public:
 	void enterView();
 	///
 	void leaveView();
+#endif
 	///
 	bool ChangeRefs(string const & from, string const & to);
 	///

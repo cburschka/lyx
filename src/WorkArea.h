@@ -25,17 +25,24 @@
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
+using SigC::Signal1;
 using SigC::Signal2;
 using SigC::Signal3;
 #endif
 
+#if 0
 class BufferView;
+#endif
 
 ///
 class WorkArea {
 public:
 	///
-	WorkArea(BufferView *, int xpos, int ypos, int width, int height);
+	WorkArea(
+#if 0
+		BufferView *,
+#endif
+		int xpos, int ypos, int width, int height);
 	///
 	~WorkArea();
 	///
@@ -103,12 +110,15 @@ public:
 	string const getClipboard() const;
 	///
 	void putClipboard(string const &) const;
+#if 0
 	///
 	BufferView * owner() const { return owner_; }
-
+#endif
 	// Signals
 	///
 	Signal0<void> workAreaExpose;
+	///
+	Signal1<void, double> scrollCB;
 	///
 	Signal2<void, KeySym, unsigned int> workAreaKeyPress;
 	///
@@ -138,8 +148,10 @@ private:
 	FL_OBJECT * work_area;
 	///
 	FL_OBJECT * scrollbar;
+#if 0
 	///
 	BufferView * owner_;
+#endif
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
 	///

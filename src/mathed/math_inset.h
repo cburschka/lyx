@@ -26,9 +26,9 @@
 #pragma interface
 #endif
 
+#include "LString.h"
 #include "math_defs.h"
 #include "symbol_def.h"
-#include "LString.h"
 
 /**
  Functions or LaTeX names for objects that I don't know how to draw.

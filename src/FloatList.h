@@ -27,7 +27,13 @@ public:
 	///
 	typedef std::map<string, Floating> List;
 	///
+	typedef List::const_iterator const_iterator;
+	///
 	FloatList();
+	///
+	const_iterator begin() const;
+	///
+	const_iterator end() const;
 	///
 	void newFloat(Floating const & fl);
 	///
@@ -36,6 +42,8 @@ public:
 	bool typeExist(string const & t) const;
 	///
 	Floating const & getType(string const & t) const;
+	///
+	const_iterator operator[](string const & t) const;
 private:
 	///
 	List list;

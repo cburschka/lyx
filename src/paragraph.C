@@ -840,8 +840,7 @@ LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 				"position does not exist. "
 			       << pos << " (" << static_cast<int>(pos)
 			       << ")" << endl;
-	}
-	else if (pos > 0) {
+	} else if (pos > 0) {
 		return GetFontSettings(bparams, pos - 1);
 	}
 #else
@@ -854,6 +853,7 @@ LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 
 	//return LyXFont(LyXFont::ALL_INHERIT);
 }
+
 
 // Gets uninstantiated font setting at position 0
 LyXFont const LyXParagraph::GetFirstFontSettings() const

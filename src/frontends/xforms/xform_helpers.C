@@ -5,13 +5,14 @@
 
 #include FORMS_H_LOCATION
 
+#include <fstream> // ofstream
+#include <vector>
+
 #ifdef __GNUG_
 #pragma implementation
 #endif
 
-#include <vector>
 #include "xform_helpers.h"
-#include <fstream> // ofstream
 #include "lyxlex.h"
 #include "filedlg.h" // LyXFileDlg
 #include "support/FileInfo.h"
@@ -24,10 +25,10 @@ using std::pair;
 using std::vector;
 
 // Take a string and add breaks so that it fits into a desired label width, w
-string formatted( string const & sin, int w, int size, int style )
+string formatted(string const & sin, int w, int size, int style)
 {
 	string sout;
-	if (sin.empty() ) return sout;
+	if (sin.empty()) return sout;
 
 	// break sin up into a vector of individual words
 	vector<string> sentence;
@@ -69,27 +70,27 @@ string formatted( string const & sin, int w, int size, int style )
 }
 
 
-string const browseFile( string const & filename,
-			 string const & title,
-			 string const & pattern, 
-			 pair<string,string> const & dir1,
-			 pair<string,string> const & dir2 )
+string const browseFile(string const & filename,
+			string const & title,
+			string const & pattern, 
+			pair<string,string> const & dir1,
+			pair<string,string> const & dir2)
 {
 	string lastPath = ".";
-	if( !filename.empty() ) lastPath = OnlyPath(filename);
+	if (!filename.empty()) lastPath = OnlyPath(filename);
 
 	LyXFileDlg fileDlg;
 
-	if( !dir1.second.empty() ) {
-		FileInfo fileInfo( dir1.second );
-		if( fileInfo.isOK() && fileInfo.isDir() )
-			fileDlg.SetButton( 0, _(dir1.first), dir1.second );
+	if (!dir1.second.empty()) {
+		FileInfo fileInfo(dir1.second);
+		if (fileInfo.isOK() && fileInfo.isDir())
+			fileDlg.SetButton(0, _(dir1.first), dir1.second);
 	}
 
-	if( !dir2.second.empty() ) {
-		FileInfo fileInfo( dir2.second );
-		if( fileInfo.isOK() && fileInfo.isDir() )
-		    fileDlg.SetButton( 1, _(dir2.first), dir2.second );
+	if (!dir2.second.empty()) {
+		FileInfo fileInfo(dir2.second);
+		if (fileInfo.isOK() && fileInfo.isDir())
+		    fileDlg.SetButton(1, _(dir2.first), dir2.second);
 	}
 
 	bool error = false;
@@ -97,7 +98,7 @@ string const browseFile( string const & filename,
 	do {
 		string p = fileDlg.Select(_(title),
 		                          lastPath,
-		                          pattern, OnlyFilename(filename) );
+		                          pattern, OnlyFilename(filename));
 
 		if (p.empty()) return p;
 

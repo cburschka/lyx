@@ -53,9 +53,9 @@ public:
 	bool wide() const;
 private:
 	///
-	string floatType;
+	string floatType_;
 	///
-	string floatPlacement;
+	string floatPlacement_;
 	///
 	bool wide_;
 };

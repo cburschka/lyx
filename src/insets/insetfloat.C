@@ -3,9 +3,9 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *          Copyright 1998 The LyX Team.
+ *          Copyright 1998-2000 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -90,7 +90,7 @@ InsetFloat::InsetFloat(string const & type)
 	font.setColor(LColor::footnote);
 	setLabelFont(font);
 	setAutoCollapse(false);
-	floatType = type;
+	floatType_ = type;
 	setInsetName(type);
 	//floatPlacement = "H";
 }
@@ -99,13 +99,13 @@ InsetFloat::InsetFloat(string const & type)
 void InsetFloat::Write(Buffer const * buf, ostream & os) const
 {
 	os << "Float " // getInsetName()
-	   << floatType << '\n';
+	   << floatType_ << '\n';
 
-	if (floatPlacement.empty()) {
+	if (floatPlacement_.empty()) {
 		os << "placement "
-		   << floatList.getType(floatType).placement << "\n";
+		   << floatList.getType(floatType_).placement() << "\n";
 	} else {
-		os << "placement " << floatPlacement << "\n";
+		os << "placement " << floatPlacement_ << "\n";
 	}
 	
 	InsetCollapsable::Write(buf, os);
@@ -119,7 +119,7 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 		string token = lex.GetString();
 		if (token == "placement") {
 			lex.next();
-			floatPlacement = lex.GetString();
+			floatPlacement_ = lex.GetString();
 		} else {
 			lyxerr << "InsetFloat::Read: Missing placement!"
 			       << endl;
@@ -131,13 +131,13 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 
 void InsetFloat::Validate(LaTeXFeatures & features) const
 {
-	features.usedFloats.insert(floatType);
+	features.usedFloats.insert(floatType_);
 }
 
 
 Inset * InsetFloat::Clone(Buffer const &) const
 {
-	InsetFloat * result = new InsetFloat(floatType);
+	InsetFloat * result = new InsetFloat(floatType_);
 	result->inset->init(inset);
 
 	result->collapsed = collapsed;
@@ -154,14 +154,14 @@ string const InsetFloat::EditMessage() const
 int InsetFloat::Latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
-	os << "\\begin{" << floatType << "}";
-	if (!floatPlacement.empty()
-	    && floatPlacement != floatList.defaultPlacement(floatType))
-		os << "[" << floatPlacement << "]";
+	os << "\\begin{" << floatType_ << "}";
+	if (!floatPlacement_.empty()
+	    && floatPlacement_ != floatList.defaultPlacement(floatType_))
+		os << "[" << floatPlacement_ << "]";
 	os << "%\n";
     
-	int i = inset->Latex(buf, os, fragile, fp);
-	os << "\\end{" << floatType << "}%\n";
+	int const i = inset->Latex(buf, os, fragile, fp);
+	os << "\\end{" << floatType_ << "}%\n";
 	
 	return i + 2;
 }
@@ -195,7 +195,7 @@ void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 
 string const & InsetFloat::type() const 
 {
-	return floatType;
+	return floatType_;
 }
 
 
@@ -204,12 +204,12 @@ void InsetFloat::wide(bool w)
 	wide_ = w;
 	if (wide_) {
 		string lab(_("float:"));
-		lab += floatType;
+		lab += floatType_;
 		lab += "*";
 		setLabel(lab);
 	} else {
 		string lab(_("float:"));
-		lab += floatType;
+		lab += floatType_;
 		setLabel(lab);
 	}
 }

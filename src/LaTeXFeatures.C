@@ -23,6 +23,8 @@
 #include "bufferparams.h"
 #include "layout.h"
 #include "support/filetools.h"
+#include "FloatList.h"
+
 using std::endl;
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
@@ -252,11 +254,22 @@ string const LaTeXFeatures::getPackages()
 		packages += "\\usepackage{prettyref}\n";
 
 	// float.sty
-	// This is not correct and needs fixing.
-	// We don't need float.sty if we only use unchanged
-	// table and figure floats. (Lgb)
-	if (!usedFloats.empty())
-		packages += "\\usepackage{float}\n";
+	// We only need float.sty if we use non builtin floats. This includes
+	// modified table and figure floats. (Lgb)
+	if (!usedFloats.empty()) {
+		bool use_float = false;
+		UsedFloats::const_iterator beg = usedFloats.begin();
+		UsedFloats::const_iterator end = usedFloats.end();
+		for (; beg != end; ++beg) {
+			Floating const & fl = floatList.getType((*beg));
+			if (!fl.type().empty() && !fl.builtin()) {
+				use_float = true;
+				break;
+			}
+		}
+		if (use_float)
+			packages += "\\usepackage{float}\n";
+	}
 	
 	packages += externalPreambles;
 
@@ -317,6 +330,22 @@ string const LaTeXFeatures::getMacros()
 	// \floatstyle{ruled}
 	// \newfloat{algorithm}{htbp}{loa}
 	// \floatname{algorithm}{Algorithm}
+	UsedFloats::const_iterator beg = usedFloats.begin();
+	UsedFloats::const_iterator end = usedFloats.end();
+	for (; beg != end; ++beg) {
+		Floating const & fl = floatList.getType((*beg));
+		
+		// We have to special case "table" and "figure"
+		if ((fl.type() == "tabular" && !fl.builtin()) ||
+		    (fl.type() == "figure" && !fl.builtin())) {
+			// Output code to modify "table" or "figure"
+			// but only if builtin == false
+			
+		} else {
+			// The other non builtin floats.
+		}
+	}
+
 	return macros;
 }
 

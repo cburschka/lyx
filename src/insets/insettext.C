@@ -799,7 +799,11 @@ InsetText::LocalDispatch(BufferView * bv,
 	    }
 	    TEXT(bv)->ClearSelection();
 	    for (string::size_type i = 0; i < arg.length(); ++i) {
+#if 0
 		bv->owner()->getIntl()->getTrans()->TranslateAndInsert(arg[i], TEXT(bv));
+#else
+		bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], TEXT(bv));
+#endif
 	    }
 	}
 	UpdateLocal(bv, CURSOR_PAR, true);

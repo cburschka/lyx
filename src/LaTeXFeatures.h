@@ -134,9 +134,9 @@ struct LaTeXFeatures {
 	///
 	LanguageList UsedLanguages;
 	///
-	typedef std::set<string> FloatList;
+	typedef std::set<string> UsedFloats;
 	///
-	FloatList usedFloats;
+	UsedFloats usedFloats;
 	///
 	typedef std::map<string , string> FileMap;
 	///

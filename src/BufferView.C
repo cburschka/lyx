@@ -141,6 +141,7 @@ void BufferView::gotoError()
 }
 
 
+#if 0
 void BufferView::enterView()
 {
 	pimpl_->enterView();
@@ -195,6 +196,7 @@ void BufferView::workAreaExpose()
 {
 	pimpl_->workAreaExpose();
 }
+#endif
 
 
 void BufferView::cursorPrevious(LyXText * text)
