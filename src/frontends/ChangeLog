@@ -1,3 +1,8 @@
+2004-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Dialogs.h: include <map> since it is used in this file, fixes
+	compilation with boost 1.32.0.
+
 2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Painter.h: include LColor.h to satisfy concept checks.

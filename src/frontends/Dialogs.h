@@ -16,6 +16,8 @@
 #include <boost/signal.hpp>
 #include <boost/utility.hpp>
 
+#include <map>
+
 class InsetBase;
 class LyXView;
 
