@@ -79,12 +79,8 @@ libgnome_la_SOURCES = \
 	GnomeBase.h \
 	GUIRunTime.C \
 	FileDialog.C \
-	FormCopyright.C \
-	FormCopyright.h \
 	FormTabularCreate.C \
 	FormTabularCreate.h \
-	FormCredits.C \
-	FormCredits.h \
 	FormError.C \
 	FormError.h \
 	FormUrl.C \
@@ -94,6 +90,10 @@ libgnome_la_SOURCES = \
 	Timeout_pimpl.C \
 	Timeout_pimpl.h
 
+#	FormCopyright.C \
+#	FormCopyright.h \
+#	FormCredits.C \
+#	FormCredits.h \
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \
 #	GUI_initialize.C \

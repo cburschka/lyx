@@ -24,8 +24,6 @@
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
-#include "ControlCopyright.h"
-#include "ControlCredits.h"
 #include "ControlError.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
@@ -35,8 +33,6 @@
 #include "GUI.h"
 
 #include "FormUrl.h"
-#include "FormCredits.h"
-#include "FormCopyright.h"
 #include "FormError.h"
 #include "FormTabularCreate.h"
 /*
@@ -74,8 +70,6 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 Dialogs::Dialogs(LyXView * lv)
 {
 	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));
-	add(new GUICredits<FormCredits, gnomeBC>(*lv, *this));
-	add(new GUICopyright<FormCopyright, gnomeBC>(*lv, *this));
 	add(new GUIError<FormError, gnomeBC>(*lv, *this));
 	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
 

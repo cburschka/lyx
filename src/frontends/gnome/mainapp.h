@@ -13,6 +13,7 @@
 
 #include <gnome--/app.h>
 #include <gnome--/appbar.h>
+#include <gnome--/app-helper.h>
 #include <gtk--/frame.h>
 #include <gtk--/accelgroup.h>
 
@@ -26,15 +27,18 @@
 class GLyxAppWin: public Gnome::App
 {
  public:
+  ///
+  typedef Gnome::UI::Array<Gnome::UI::Info> Array;
+  
   GLyxAppWin();
   ~GLyxAppWin();
 
   /// set menu of the window
-  void set_menu(Gnome::UI::Array &);
+  void set_menu(Array &);
   /// update menu
   void update_menu(string path,
 		   int noelms,
-		   Gnome::UI::Array &);
+		   Array &);
   /// add action area
   void add_action(Gtk::Container &, string title, bool expand=false, Gtk::AccelGroup * acgr=0);
   /// remove action area

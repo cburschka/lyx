@@ -1,3 +1,15 @@
+2001-07-16  Baruch Even  <baruch@lyx.org>
+
+	* Makefile.am:
+	* Dialogs.C: Removed Citation and Copyright dialogs from build. Left them
+	in repository until they get redone as About Dialog.
+	
+	* FileDialog.C:
+	* Menubar_pimpl.C:
+	* Menubar_pimpl.h:
+	* mainapp.C:
+	* mainapp.h: Various fixed to get Gnome FE (FrontEnd) to compile again.
+
 2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	Consistent use of Lsstream.h:

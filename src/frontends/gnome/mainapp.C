@@ -53,7 +53,7 @@ void GLyxAppWin::init()
   fm.push_back(Gnome::MenuItems::Open());
   menus.push_back(Gnome::Menus::File(fm));
 
-  Gnome::UI::Array menu = menus;
+  GLyxAppWin::Array menu = menus;
   gnome_app_create_menus(this->gtkobj(),
 			 menu.gtkobj());
 
@@ -86,7 +86,7 @@ void GLyxAppWin::init()
 }
 
 
-void GLyxAppWin::set_menu(Gnome::UI::Array &menu)
+void GLyxAppWin::set_menu(Array &menu)
 {
   // clean up and install new menus
   gnome_app_remove_menus(this->gtkobj(),"/",menusize_);
@@ -95,7 +95,7 @@ void GLyxAppWin::set_menu(Gnome::UI::Array &menu)
   menusize_ = menu.size();
 }
 
-void GLyxAppWin::update_menu(string path, int noelms, Gnome::UI::Array &menu)
+void GLyxAppWin::update_menu(string path, int noelms, Array &menu)
 {
   // remove "noelms" items and install new items from "menu"
   gnome_app_remove_menus(this->gtkobj(),path.c_str(),noelms);

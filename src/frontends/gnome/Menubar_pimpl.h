@@ -19,6 +19,7 @@
 #include "gettext.h"
 #include "LString.h"
 #include <gnome--/app.h>
+#include <gnome--/app-helper.h>
 #include "frontends/Menubar.h"
 #include "commandtags.h"
 #include "buffer.h"
@@ -80,7 +81,7 @@ protected:
   /// lists (toc, lof, lot, loa)
   struct ListsHolder {
     string path;
-    Gnome::UI::Array lst;
+    Gnome::UI::Array<Gnome::UI::Info> lst;
 
     ListsHolder () { }
     ListsHolder (const ListsHolder & a) { path = a.path; lst = a.lst; }
@@ -95,7 +96,7 @@ private:
   MenuBackend const * menubackend_;
   ///
   string current_menu_name_;
-  Gnome::UI::Array Menu_;
+  Gnome::UI::Array<Gnome::UI::Info> Menu_;
 
   ///
   bool ignore_action_;
