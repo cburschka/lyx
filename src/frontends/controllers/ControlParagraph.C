@@ -27,7 +27,6 @@
 #include "ParagraphParameters.h"
 
 #include "frontends/LyXView.h"
-
 #include "support/LAssert.h"
 
 
@@ -55,7 +54,13 @@ bool ControlParagraph::inInset() const
 
 LyXAlignment ControlParagraph::alignPossible() const
 {
-	return alignpos_;
+	return alignpossible_;
+}
+
+
+LyXAlignment ControlParagraph::alignDefault() const
+{
+	return aligndefault_;
 }
 
 
@@ -111,7 +116,10 @@ void ControlParagraph::setParams()
 		pp_->align(layout->align);
 
 	/// is alignment possible
-	alignpos_ = layout->alignpossible;
+	alignpossible_ = layout->alignpossible;
+
+	/// set default alignment
+	aligndefault_ = layout->align;
 
 	/// is paragraph in inset
 	ininset_ = par_->inInset();

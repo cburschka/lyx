@@ -17,6 +17,7 @@
 #endif
 
 #include "FormBase.h"
+#include "RadioButtonGroup.h"
 
 struct FD_paragraph;
 class ControlParagraph;
@@ -38,6 +39,9 @@ private:
 
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	/// alignment radio buttons
+	RadioButtonGroup alignment_;
 };
 
 #endif

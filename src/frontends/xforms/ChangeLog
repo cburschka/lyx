@@ -1,3 +1,10 @@
+2002-10-29  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormParagraph.[Ch]:
+	* forms/form_paragraph.fd: a large-scale reorganisation and clean-up
+	of the code to make it more transparent. Use RadioButtonGroup and
+	ChaekedGlueLength for the same reason. Add tooltips.
+
 2002-10-28  Angus Leeming  <leeming@lyx.org>
 
 	* FeedbackController.C (PrehandlerCB): show tooltips for browser

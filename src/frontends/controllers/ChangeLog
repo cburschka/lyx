@@ -1,3 +1,8 @@
+2002-10-29  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* ControlParagraph.[Ch] (alignDefault): new method, returning the
+	default alignment (block, left, right, center) of this paragraph.
+
 2002-10-25  John Levon  <levon@movementarian.org>
 
 	* ControlPrint.C: using endl

@@ -40,6 +40,8 @@ public:
 	///
 	LyXAlignment alignPossible() const;
 	///
+	LyXAlignment alignDefault() const;
+	///
 	void changedParagraph();
 private:
 	/// Get changed parameters and Dispatch them to the kernel.
@@ -52,7 +54,9 @@ private:
 	///
 	bool ininset_;
 	///
-	LyXAlignment alignpos_;
+	LyXAlignment alignpossible_;
+	///
+	LyXAlignment aligndefault_;
 };
 
 #endif // CONTROLPARAGRAPH_H
