@@ -747,11 +747,6 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			else
 				cell->back() = MathAtom(new MathScriptInset(cell->back(), up));
 			MathScriptInset * p = cell->back().nucleus()->asScriptInset();
-			// special handling of {}-bases
-			// is this always correct?
-			if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
-					p->nuc().back()->extraBraces())
-				p->nuc() = p->nuc().back()->asNestInset()->cell(0);
 			parse(p->cell(up), FLAG_ITEM, mode);
 			if (limits) {
 				p->limits(limits);

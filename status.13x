@@ -34,11 +34,14 @@ What's new
 
 - new "polski" keymap, useful for entering Polish on a QWERTY keyboard
 
-- updated french translation of menus
+- updated french and polish translation of menus
 
-- updates to Extended Manual and Customization Manual
+- updates to the Extended and Customization manuals
 
 ** Bug fixes
+
+- fix mathed bug where curly brackets in, e.g. {a^b}^c, would get lost
+  and cause TeX errors
 
 - delete lyxserver pipes on exit [bug #865, Qt only]
 
