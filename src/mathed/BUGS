@@ -1,0 +1,357 @@
+Items marked with
+
+  //   - are probably fixed, the reporter is asked to verify this
+         and report success or failure
+
+  ??   - are not reproducable, the reporter is asked to verify this
+         and report success or failure
+
+  ::   - are questions or comments to the reporter, containing question
+         on how to reproduce the bug exactly or things like that
+
+  !!   - mark "not a bug, a feature" replies, usually with a request for
+         further discussion
+
+Unmarked items are known unfixed but probably unverified bugs.
+
+----------------------------------------------------------------------
+
+General hints for bug reports: 
+
+  - keep the items small
+
+  - do not provide excessive information on how to reproduce the bug
+    if this is obvious
+
+  - if a bug is partly fixed, report it as "fixed" and a new bug item
+    that contains the unfixed part only
+
+  - check this list regularly, comment on the marked items.
+
+  - plain ASCII text please, not much more than 70 chars per column 
+
+----------------------------------------------------------------------
+
+
+
+Dekel:
+
+Array/eqnarray
+
+// - Ctrl+enter doesn't work
+
+// - When creating a matrix/align/eqnarray all columns are centered.
+
+
+Macros:
+
+?? - When changing the macro definition, all instances are not updated.
+
+:: I cannot reproduce this.
+
+?? - If I have macros \newcommand{\foo}[1]{[#1]} and
+??   \newcommand{\foox}{\foo{x}} then when an instance of \foox is drawn on
+??   screen, there are two black frames.  While this is "correct", it is
+??   annoying.
+
+:: This is partially fixed?
+
+- LyX crashes when you define a recursive macro
+
+Misc:
+
+- If I have x_{1}^{2}, I put the cursor before the 2, and press backspace,
+  the result is 'x2'. The correct result should be 'x_{1}2'
+
+- If I mark some text and then press ^, then the marked text is deleted.
+  The correct behavior is to put the marked text in the superscript.
+
+- Pressing <down> when cursor is in subscript will move the cursor up
+  (to the base of the subscript) instead of exiting the inset.
+  The same problem happen in fractions
+
+!! If you type something there you will see that the corsor has left the
+!! inset. That's mor or less a "feature". If you don't like it, propose a
+!! method how a subscript inset can figure out what is "optically" lower
+!! on screen.
+
+// - When you press the mouse just to the left of the middle point of
+//   some char, the cursor will be positioned to the right of the char.
+
+- It is possible to put two or more consecutive spaces in math text mode
+
+// - Text in superscript is not smaller than normal text.
+
+?? - After insertion of \sum, the cursor is in invalid location
+??    There is still a problem when doing c-m \sum S-C-M
+
+?? - The height of the frame is often wrong (e.g. x^2)
+??    For example $\sum x$ in an inline formula
+
+- InsetFormula::validate is broken
+
+// - Changing math space length by pressing the space-bar key doesn't work
+!!  it's M-m space now. 
+
+- The drawing of decorations on screen is very different than latex.
+   (a low priority bug).
+
+- If I change '\alpha' to bold, the result is \mathbf{a}
+
+- Just moving the cursor in a math inset causes changing the buffer status
+  to (changed).
+
+
+Eran Tromer:
+
+- When exiting the formula during selection, the anchor moves to the
+  left of the formula and there's no way to go back.
+
+// - Scripts are too large. $\log_2$ exceeds inset frame (non-displayed).
+
+- You need two <right> to get past \vec{v}, and all sort of other
+  insetish behavior.
+
+- \vec{several-characters} doesn't work. \overrightarrow does.
+
+- When the cursor is in a subscript (and either isn't at the end of 
+  the subscript or there's no subsubscript), pressing <down> should
+  try to *really* go down (to the next line, or denumerator, or 
+  whatever). Currently it goes *up*. Ditto for superscripts.
+
+:: Please see comment to Dekel's report on the same problem.
+
+// - When choosing to insert "\left\Vert \right\Vert" parenthesis using
+//   the maths [sic] panel, a "\left( \right." is inserted instead.
+
+ - Formula inside tabular cell: red frame of cell inset and purple 
+   frame of formula can overlap, causing leftovers when leaving 
+   formula. To get an example, insert a 1x1 tabular into a new document,
+   enter the cell its cell and press 
+   M-m ( M-f 1 <right> <right> <right>       (zoom=100, screenDPI=100)
+
+- When selecting multiple cells in a array using the keyboard, <left>
+  etc. should can move whole cell at a time -- no need to navigate 
+  within cells.
+
+- When selecting, maybe give a visual indication of the "original" 
+  anchor, when it differs from the "actual" one.
+
+// - C-v always pastes into the end of the current math inset, instead of
+//   the cursor location.
+
+- Placement of cursor using mouse is seriously broken.
+  Example 1: large fractions.
+  Example 2: type into a new document: 
+  "M-d xxxxxxxxx <right> M-x footnote-insert"
+  Can't reach most places in the formula using mouse.
+
+
+
+Rainer Dorsch:
+
+- Entering \mathbf{c} in math mode is displayed as written (without
+  backslash)
+
+
+Marcus (Suran@gmx.net) 
+
+// - In math-mode I can switch back to text-mode in a formula but then I am
+//   not able to type Umlauts.
+
+?? - Having selected some part of a formula and creating a fraction with that
+??   part in the top my selection-buffer is replaced with the part.
+
+- If the math-panel has the focus I can type text but not switch into
+  math-mode or use some of the other keyboard-shortcuts.
+
+- In the default-configuration there are shortcuts for al greek characters
+  _except_ varphi wich is used extensively as a default-variable-name.
+
+
+From: Álvaro Tejero Cantero <alvaro@antalia.com>
+ 
+- the most annoying bug by far: bold is "inherited" to super and subscripts.
+ 
+- when you get into equation array mode, the previous equation(s) remain(s) 
+ unaligned. I would be soo much faster to have LyX pick the last equal sign 
+ from the previous line as a reference for the alignment (and a good heuristic 
+ for the 80% of cases, with the advantage that we don't lose anything 
+ enforcing it). This is another case that slows down a lot when typing 
+ because, as the previous one, requires going back and correcting.
+ 
+- the movement is sometimes clumsy inside this arrayed equations: ie. C-a (or 
+ "home" are understood as "beginning of the formula" instead of "beginning of 
+ the equation". Again, a lot of movement has to be made. I suggest mapping 
+ "beginning of doc" with "beginning of formula" and so on (very intuitive), in 
+ case you don't deem appropriate the "namespace idea" below.
+ 
+//- movement between macro boxes is also weird, but in this one it's perhaps 
+// just me.  
+ 
+- I suggest creating a different "kewybinding namespace" for the formulas, 
+ since you could put to good use all those keybindings from the menu (M-?, 
+ C-?) thath currently do their job PLUS getting you out of the formula. 
+ Seriously, it'd be great to have more keys free, so M-d t would be time 
+ derivative and M-d ? derivative with respect to the variable ?. And so on.
+ 
+- I'm no experienced C++ programmer, but if you consider it appropriate, I 
+ could write a scritp in python for this one (I'm also very optimistic). Tell 
+ me what you think:
+  
+   Flattening macros. Sometimes it's annoying the fact that once you have 
+ written a macro, you can't touch at it's "constant parts". I call flattening 
+ to the process of substituting all macros with LaTeX code.
+ 
+   Task: designing a macro substitution system that reads from a file 
+ (possibly the same file as the document's) the macros and parses the document 
+ doing the appropriate replacements
+ 
+  This is very useful, because sometimes you have a big expression in a macro 
+ and you want to change an index only. What do you do then?. You retype 
+ everything (perhaps several times in the document) or you create extremely 
+ generic and parametrizable macros that aren't very fast to fill in the 
+ majority of cases.
+ 
+ 
+- undo-redo seems too coarse in math-mode. You end up losing substantial 
+ fragments of your formula. I hate that when it affects tensors,;).
+ 
+- cut&paste inside math-mode doesn't work the X fashion (middle button doesn't 
+ paste anything).
+ 
+- I remember having heard that a search-replace function was planned, so I 
+ won't repeat that. Only that the flattening option would be then easier to 
+ implement on top of that.
+ 
+- There's something I keep wondering about.. how do new math symbols get into 
+ LyX. Do they get ever?. I don't know if it can be done, but if you tell me 
+ where to "draw" those symbols or how, I would very glad start doing it. LyX 
+ deserves to have support (visual support) for all the AMSTeX constructs. But 
+ there must be something structural going on there, because otherwise more 
+ math symbols would be ready by now.. just a thought.
+ 
+- Some math symbols aren't very well supported (to my knowledge). I'm 
+  thinking of underbraces with extra data in them,or [] options.
+
+
+Herbert Voss:
+
+- it's not possible to enter superscript when the
+  ^-char works as a dead key. with the second ^-
+  or the space the cursor jumps outside the mathbox.
+
+
+Jules Bean:
+
+
+- I've been using Lyx for a year or two now, and I have some thoughts on
+  improving the interface. Not the GUI, as such, but the basic Human-Machine
+  interface --- the efficiency with which I can enter information into it. 
+
+There are a couple of general principles I'm try to uphold here: 
+
+a) If something's easy & quick in LaTeX then it should be easy & quick in
+LyX (unless it really isn't very common).  b) Actions which are used
+frequently should be a single key-press, even if that's not very easy to
+remember. You learn it.  c) Actions which are used rarely should be
+mnemonic -- easy to remember -- even if they are multiple keypresses.
+Things you do rarely you care less about the time it takes to perform. 
+
+2) Math-mode entry  Under the xemacs keybindings, which I use, (damn it,
+I don't want to confuse my poor muscle memory more than necessary by
+learning too many different bindings for the same actions), the key
+sequence to enter math-mode is 'M-c m'. I'm not sure exactly what to
+propose instead, but I really think this needs to be only one keypress. 
+
+As an aside, you may think that I'm whining over nothing. However, when
+you enter math mode as often as I do (often more than once a sentence) it
+gets very annoying, especially as compared to simply typing '$' in plain
+emacs. Also, you may say 'why don't you just change your bindings file?'. I
+will ;) but I wanted to start some discussion on this since it can benefit
+everyone! 
+
+More serious, though, than the number of characters which need to be typed
+is the confusing nature of the command. 'M-c m', typed once, puts you into
+math-mode. However, typing 'M-c m' again doesn't put you out of math-mode
+--- it puts you into math-text mode. Then hitting it again puts you back
+into normal math-mode.  IMO, 'modal' keys should either be idempotent (so
+hitting it the second time does nothing) or self-inverting. In fact, the
+inverse to 'M-c m' is either 'ESC' or simply a space typed at the end of
+the block --- which is confusing, since they're not of the same 'shape' as
+the command that got you in there. 
+
+Now, I'm not saying that 'space' shouldn't be allowed as a short-cut to get
+you out of math-mode; it's a most useful and natural one, I like it a lot.
+However, on balance I think M-c m should also have that effect. 
+
+3) Math-mode inconsistencies 
+
+Sometimes 'the same action' has the same keystroke both within and
+without math-mode. This is very sensible. However, it is very annoying when
+they don't behave the way you're expecting them to. 
+
+For example, 'M-c e' puts you into 'emphasise' mode.  Ignoring the fact
+that in text mode this is italics, and in math-mode it stands for the
+calligraphic character set, I think of these as the same action, so I like
+the fact that they have the same keys. However, in math-mode, 'M-c e' is
+idempotent, (and you need 'M-c space' to get back into normal) whereas in
+text-mode 'M-c e' is self-inverse. These are the two possibilities I listed
+as acceptable before, but consistency would be nice ;-) IMO, self-inverse
+would be best for both. 
+
+4) ERT in math-mode 
+
+Math-mode doesn't handle ERT very well at all. It flips back out of
+TeX-mode as soon as you type any special character.  Very annoying if I
+wish to typeset an \xymatrix inside math-mode (see also my comment above
+about table-like environments), since I can't type the &. In fact, my
+xymatrices end up as $$\xymatrix{..}$$ in text-mode ERT. Also rather
+annoying when you want to use a \macro with more than one argument (but not
+fatally so). 
+
+5) Proposal : a 'ligatures' or 'autocorrect' system 
+
+One of the very minor, but useful, features of TeX is the way it lets you
+type the nearest approximation to what you want using a 'typewriter
+keyboard', and substitutes the typographically neat equivalent. In
+particular, 'fancy' quotes (") and en and em dashes (---). I propose that
+this UI element could be taken up a level into LyX, with a system that does
+the following (for example): 
+
+-> becomes \rightarrow 
+<- becomes \leftarrow 
+=> becomes \Rightarrow (etc..) 
+==> becomes \Longrightarrow (etc..) 
+
+This may only be appropriate in math mode, of course.  This family bug me
+in particular because they take ages to type using a \-escape. Undoubtedly
+sharp minds will think of others, and also we need some way of actually
+typing those sequences as literals when we want them. 
+
+6) Scope macros: 
+
+The current macro system is clever, but could be neater. One improvement
+I'd like is to let LyX know about TeX's scoping rules... 
+
+
+Yves Bastide:
+
+- use AMS's \text instead of \mbox.  It supports accented characters,
+  among others...  (selected via validate()?)
+
+
+Jean-Marc:
+
+> \def\neq{\not=} \let\ne=\neq
+>    \let\le=\leq
+>    \let\ge=\geq
+>     \let\owns=\ni
+>    \let\gets=\leftarrow
+>    \let\to=\rightarrow
+> % \let\@@sqrt\sqrtsign
+> \let\|=\Vert
+
+Angus:
+
+- make math lables editable
