@@ -1350,10 +1350,6 @@ string const LyXFunc::dispatch(int ac,
 		owner->getDialogs()->showPreamble();
 		break;
 		
-	case LFUN_LAYOUT_SAVE_DEFAULT:
-		MenuLayoutSave(owner->view());
-		break;
-		
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		owner->getToolbar()->openLayoutList();
 		break;

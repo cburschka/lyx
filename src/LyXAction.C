@@ -257,8 +257,6 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_PASTE, "layout-paste",
 		  N_("Paste paragraph environment type"), Noop },
 		{ LFUN_LAYOUT_PREAMBLE, "layout-preamble", "", ReadOnly },
-		{ LFUN_LAYOUT_SAVE_DEFAULT, "layout-save-default", "",
-		  ReadOnly },
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular",
 		  N_("Open the tabular layout"), Noop },
 		{ LFUN_HOME, "line-begin",

@@ -526,18 +526,6 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 }
 
 
-void MenuLayoutSave(BufferView * bv)
-{
-	if (!bv->available())
-		return;
-
-	if (AskQuestion(_("Do you want to save the current settings"),
-			_("for document layout"),
-			_("as default for new documents?")))
-		bv->buffer()->saveParamsAsDefaults();
-}
-
-
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
 void Reconfigure(BufferView * bv)

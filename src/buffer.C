@@ -240,22 +240,6 @@ void Buffer::setReadonly(bool flag)
 }
 
 
-bool Buffer::saveParamsAsDefaults() // const
-{
-	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
-			       "defaults.lyx");
-	Buffer defaults = Buffer(fname);
-	
-	// Use the current buffer's parameters as default
-	defaults.params = params;
-	
-	// add an empty paragraph. Is this enough?
-	defaults.paragraph = new Paragraph;
-
-	return defaults.writeFile(defaults.filename, false);
-}
-
-
 /// Update window titles of all users
 // Should work on a list
 void Buffer::updateTitles() const

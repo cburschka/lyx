@@ -1,3 +1,15 @@
+2001-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* FormDocument.C (class_apply): 
+	(paper_apply): 
+	(language_apply): 
+	(options_apply): 
+	(bullets_apply): add a version of these methods taking a
+	BufferParams& parameters. The original versions are now wrappers
+	around these. 
+	(saveParamsAsDefault): new function, moved from old
+	LFUN_LAYOUT_SAVE_DEFAULT code.
+
 2001-11-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:

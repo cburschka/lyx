@@ -33,8 +33,6 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
 ///
 void MenuInsertLabel(BufferView * bv, string const & arg);
 ///
-void MenuLayoutSave(BufferView * bv);
-///
 void Reconfigure(BufferView * bv);
 #endif
 

@@ -45,6 +45,7 @@
 #include "debug.h"
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "helper_funcs.h" 
+#include "lyx_main.h" // for user_lyxdir
 
 using Liason::setMinibuffer;
 using SigC::slot;
@@ -370,6 +371,34 @@ void FormDocument::update()
 }
 
 
+namespace {
+// should this go elsewhere? Maybe a ControllerDocument? (JMarc)
+/** Save the buffer's parameters as user default.
+    This function saves a file \c user_lyxdir/templates/defaults.lyx
+    which parameters are those of the current buffer. This file
+    is used as a default template when creating a new
+    file. Returns \c true on success.
+*/
+bool saveParamsAsDefault(BufferParams const &params)
+{
+	if (!AskQuestion(_("Do you want to save the current settings"),
+			_("for document layout"),
+			_("as default for new documents?")))
+		return false;
+	
+	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
+				     "defaults.lyx");
+	Buffer defaults = Buffer(fname);
+	defaults.params = params;
+	
+	// add an empty paragraph. Is this enough?
+	defaults.paragraph = new Paragraph;
+		
+	return defaults.writeFile(defaults.fileName(), false);
+}
+
+} //namespace
+
 bool FormDocument::input( FL_OBJECT * ob, long data )
 {
 	State cb = static_cast<State>( data );
@@ -438,7 +467,13 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 	}
 
 	if (ob == dialog_->button_save_defaults) {
-		lv_->getLyXFunc()->dispatch(LFUN_LAYOUT_SAVE_DEFAULT);
+		BufferParams params;
+		class_apply(params);
+		paper_apply(params);
+		language_apply(params);
+		options_apply(params);
+		bullets_apply(params);
+		saveParamsAsDefault(params);
 	}
 
 	if (ob == dialog_->button_reset_defaults) {
@@ -899,13 +934,13 @@ bool FormDocument::options_apply()
 void FormDocument::bullets_apply(BufferParams & params)
 {
 	/* update the bullet settings */
-	BufferParams & params_doc = lv_->buffer()->params;
+	BufferParams & buf_params = lv_->buffer()->params;
 
 	// a little bit of loop unrolling
-	params.user_defined_bullets[0] = params_doc.temp_bullets[0];
-	params.user_defined_bullets[1] = params_doc.temp_bullets[1];
-	params.user_defined_bullets[2] = params_doc.temp_bullets[2];
-	params.user_defined_bullets[3] = params_doc.temp_bullets[3];
+	params.user_defined_bullets[0] = buf_params.temp_bullets[0];
+	params.user_defined_bullets[1] = buf_params.temp_bullets[1];
+	params.user_defined_bullets[2] = buf_params.temp_bullets[2];
+	params.user_defined_bullets[3] = buf_params.temp_bullets[3];
 }
 
 

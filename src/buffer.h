@@ -70,14 +70,6 @@ public:
 	/// Destructor
 	~Buffer();
 
-	/** Save the buffer's parameters as user default.
-	    This function saves a file \c user_lyxdir/templates/defaults.lyx
-	    which parameters are those of the current buffer. This file
-	    is used as a default template when creating a new
-	    file. Returns \c true on success.
-	*/
-	bool saveParamsAsDefaults();
-
 	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it
 	*/
