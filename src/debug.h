@@ -55,13 +55,16 @@ struct Debug {
 		INSETS     = (1 << 17)
 	};
 	///
-	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
-				     PARSER | LYXRC | KBMAP | LATEX |
-				     MATHED | FONT | TCLASS | LYXVC |
-				     LYXSERVER | ROFF | ACTION | LYXLEX |
-				     DEPEND | INSETS);
+//  	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
+//  				     PARSER | LYXRC | KBMAP | LATEX |
+//  				     MATHED | FONT | TCLASS | LYXVC |
+//  				     LYXSERVER | ROFF | ACTION | LYXLEX |
+//  				     DEPEND | INSETS);
 	///
-	friend inline void operator|=(Debug::type & d1, Debug::type d2);
+	static type const ANY;
+	
+	///
+//  	friend inline void operator|=(Debug::type & d1, Debug::type d2);
 	
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.

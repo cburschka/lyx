@@ -232,6 +232,10 @@
 # the same as what LaTeX calls latin1.
 #\screen_font_encoding iso8859-2
 
+# The norm for the menu/popups fonts. The default is an empty string, which
+# causes to use the screen fonts norm (defined by \screen_font_encoding).
+#\screen_font_encoding_menu iso8859-2
+
 # The font for popups. It is set to 
 #    <font_popup>-*-*-*-?-*-*-*-*-<font_encoding>.
 # The default  is:

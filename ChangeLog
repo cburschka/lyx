@@ -1,7 +1,38 @@
+2000-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/debug.[Ch]: some fixes to help compiling with RH7.0
+	wonderful compiler.
+
 2000-10-11  Baruch Even  <baruch.even@writeme.com>
 
+	* src/buffer.C (writeFile): Added test for errors on writing, this
+	catches all errors and not only file system full errors as intended.
+
+2000-10-11  Baruch Even  <baruch.even@writeme.com>
+
+	* src/minibuffer.h:
+	* src/minibuffer.C: Changed the method ExecCommand to
+	PrepareForCommand to convey its real action.
+
 	* src/minibuffer.C (peek_event): Added action when mouse clicks to
-	clear the minibuffer.
+	clear the minibuffer and prepare to enter a command.
+
+	* src/mathed/formula.C (LocalDispatch): Changed to conform with
+	the rename from ExecCommand to PrepareForCommand.
+	* src/lyxfunc.C (Dispatch): ditto.
+
+2000-09-14  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/LaTeX.C (scanLogFile): Don't ignore a "File ended while..." 
+	error.
+
+2000-10-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/lyxrc.example: add description for
+	\screen_font_encoding_menu. 
+
+	* src/lyx_gui.C (create_forms): better fix for crash with
+	translated interface.
 
 2000-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -64,7 +95,7 @@
 
 2000-09-29  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/paragraph.C (TeXFootnote): Fixed bug with LTR table floats.
+	* src/paragraph.C (TeXFootnote): Fixed bug with RTL table floats.
 	
 2000-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

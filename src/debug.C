@@ -52,6 +52,13 @@ static error_item errorTags[] = {
 
 static const int numErrorTags = sizeof(errorTags)/sizeof(error_item);
 
+       
+Debug::type const Debug::ANY = Debug::type(
+       Debug::INFO | Debug::INIT | Debug::KEY |
+       Debug::PARSER | Debug::LYXRC | Debug::KBMAP | Debug::LATEX |
+       Debug::MATHED | Debug::FONT | Debug::TCLASS | Debug::LYXVC |
+       Debug::LYXSERVER | Debug::ROFF | Debug::ACTION | Debug::LYXLEX |
+       Debug::DEPEND | Debug::INSETS);
 
 Debug::type Debug::value(string const & val) 
 {

@@ -687,7 +687,7 @@ string LyXFunc::Dispatch(int ac,
 
 	// --- Misc -------------------------------------------
 	case LFUN_EXEC_COMMAND:
-		owner->getMiniBuffer()->ExecCommand(); 
+		owner->getMiniBuffer()->PrepareForCommand(); 
 		break;
 		
 	case LFUN_CANCEL:                   // RVDK_PATCH_5

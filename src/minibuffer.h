@@ -35,7 +35,7 @@ public:
 	///
 	void Init();
 	///
-	void ExecCommand();
+	void PrepareForCommand();
 	/** allows to store and reset the contents one time. Usefull
 	  for status messages like "load font" (Matthias)
 	  */

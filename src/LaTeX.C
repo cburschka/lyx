@@ -556,12 +556,14 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				if (++count > 10)
 					break;
 			} while (!prefixIs(tmp, "l."));
-			if (prefixIs(tmp, "l.")) {
+			if (prefixIs(tmp, "l.") ||
+			    contains(token, "File ended while")) {
 				// we have a latex error
 				retval |=  TEX_ERROR;
 				// get the line number:
 				int line = 0;
-				sscanf(tmp.c_str(), "l.%d", &line);
+				if (prefixIs(tmp, "l."))
+					sscanf(tmp.c_str(), "l.%d", &line);
 				// get the rest of the message:
 				string errstr(tmp, tmp.find(' '));
 				errstr += '\n';

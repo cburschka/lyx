@@ -396,15 +396,14 @@ void LyXGUI::create_forms()
 	fl_end_form();
 
 	// "default" is not part of the languages array any more.
-	combo_language->addto("default");
-	combo_language2->addto(_("No change"));
-	combo_language2->addto(_("Reset"));
+	combo_language->addline("default");
+	combo_language2->addline(_("No change"));
+	combo_language2->addline(_("Reset"));
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 		combo_language->addto((*cit).second.lang.c_str());
 		combo_language2->addto((*cit).second.lang.c_str());
 	}
-	combo_language2->select_text(_("No change"));
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
