@@ -20,6 +20,7 @@
 #include "ControlBranch.h"
 #include "ControlChanges.h"
 #include "ControlCitation.h"
+#include "ControlDocument.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -49,6 +50,7 @@
 #include "FormChanges.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
+#include "FormDocument.h"
 #include "FormErrorList.h"
 #include "FormERT.h"
 #include "FormExternal.h"
@@ -117,9 +119,9 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "error", "errorlist" , "ert", "external", "file", "findreplace",
-"float", "graphics", "include", "index", "label", "log", "mathpanel",
-"mathaccents", "matharrows", "mathoperators", "mathrelations",
+"citation", "document", "error", "errorlist" , "ert", "external", "file",
+"findreplace", "float", "graphics", "include", "index", "label", "log",
+"mathpanel", "mathaccents", "matharrows", "mathoperators", "mathrelations",
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
 "mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
@@ -192,6 +194,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new FormCitation(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "document") {
+		dialog->setController(new ControlDocument(*dialog));
+		dialog->setView(new FormDocument(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));

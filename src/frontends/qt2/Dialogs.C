@@ -19,6 +19,7 @@
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
+#include "ControlDocument.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -50,6 +51,7 @@
 #include "QChanges.h"
 #include "QCharacter.h"
 #include "QCitation.h"
+#include "QDocument.h"
 #include "QErrorList.h"
 #include "QERT.h"
 #include "QExternal.h"
@@ -92,10 +94,10 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "error", "errorlist", "ert", "external", "file", "findreplace",
-"float", "graphics", "include", "index", "label", "log", "mathpanel",
-"mathdelimiter", "mathmatrix", "note", "paragraph", "print", "ref", "sendto",
-"tabular", "tabularcreate", "texinfo",
+"citation", "document", "error", "errorlist", "ert", "external", "file",
+"findreplace", "float", "graphics", "include", "index", "label", "log",
+"mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "print",
+"ref", "sendto", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -165,6 +167,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new QCitation(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "document") {
+		dialog->setController(new ControlDocument(*dialog));
+		dialog->setView(new QDocument(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));

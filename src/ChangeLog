@@ -1,5 +1,10 @@
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
+	* lyxfunc.C (dispatch): the specialization Dialogs::showDocument
+	has died. Fall through to the generic Dialogs::show("document").
+	
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
 	* lfuns.h:
 	* LyXAction.C: new lfuns LFUN_LANGUAGE_BUFFER, LFUN_TEXTCLASS_APPLY,
 	LFUN_TEXTCLASS_LOAD, LFUN_SAVE_AS_DEFAULT, LFUN_BUFFERPARAMS_APPLY.

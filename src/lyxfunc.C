@@ -1024,8 +1024,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				if (!data.empty())
 					owner->getDialogs().show("character", data);
 			}
-			else if (name == "document")
-				owner->getDialogs().showDocument();
 			else if (name == "preamble")
 				owner->getDialogs().showPreamble();
 			else if (name == "preferences")

@@ -12,7 +12,7 @@
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "BranchList.h"
 #include "RadioButtonGroup.h"
 
@@ -35,22 +35,13 @@ struct FD_document_options;
 struct FD_document_bullet;
 struct FD_document_branch;
 
-namespace {
-
-enum GuiColors {
-	GUI_COLOR_CHOICE   = FL_FREE_COL15
-};
-
-
-}
-
-
 /** This class provides an XForms implementation of the FormDocument dialog.
  *  The table-layout-form here changes values for latex-tabulars
  */
-class FormDocument : public FormCB<ControlDocument, FormDB<FD_document> > {
+class FormDocument
+	: public FormController<ControlDocument, FormView<FD_document> > {
 public:
-	FormDocument();
+	FormDocument(Dialog &);
 private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */

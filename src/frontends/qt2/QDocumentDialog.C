@@ -12,6 +12,7 @@
 
 #include "bufferparams.h"
 #include "debug.h"
+#include "gettext.h"
 #include "lyxrc.h"
 
 #include "controllers/ControlDocument.h"

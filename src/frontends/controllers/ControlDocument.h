@@ -12,40 +12,41 @@
 #ifndef CONTROLDOCUMENT_H
 #define CONTROLDOCUMENT_H
 
-#include "ControlDialog_impl.h"
-
+#include "Dialog.h"
 #include "support/types.h"
-
 #include <boost/scoped_ptr.hpp>
 
 class BufferParams;
-class Language;
 class LyXTextClass;
 
 
 /** A controller for Document dialogs.
  */
-class ControlDocument : public ControlDialogBD {
+class ControlDocument : public Dialog::Controller {
 public:
 	///
-	ControlDocument(LyXView &, Dialogs &);
+	ControlDocument(Dialog &);
 	///
 	~ControlDocument();
 	///
-	void setLanguage();
+	virtual bool initialiseParams(std::string const & data);
 	///
-	LyXTextClass textClass();
+	virtual void clearParams();
 	///
-	BufferParams & params();
+	virtual void dispatchParams();
 	///
-	void saveAsDefault();
+	virtual bool isBufferDependent() const { return true; }
+	///
+	LyXTextClass const & textClass() const;
+	///
+	BufferParams & params() const;
+	///
+	void setLanguage() const;
+	///
+	void saveAsDefault() const;
 	///
 	bool loadTextclass(lyx::textclass_type tc) const;
 private:
-	/// apply settings
-	void apply();
-	/// set the params before show or update
-	void setParams();
 	///
 	boost::scoped_ptr<BufferParams> bp_;
 };

@@ -17,11 +17,10 @@
 #include "controllers/GUI.h"
 #include "ButtonController.h"
 
-#include "ControlDocument.h"
+#include "Qt2BC.h"
+
 #include "ControlSpellchecker.h"
 
-#include "QDocument.h"
-#include "QDocumentDialog.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
@@ -34,9 +33,6 @@
 
 
 
-typedef GUI<ControlDocument, QDocument, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-DocumentDialog;
-
 typedef GUI<ControlPrefs, QPrefs, OkApplyCancelPolicy, Qt2BC>
 PrefsDialog;
 
@@ -46,15 +42,13 @@ SpellcheckerDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-	DocumentDialog      document;
 	PrefsDialog         prefs;
 	SpellcheckerDialog  spellchecker;
 };
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: document(lv, d),
-	  prefs(lv, d),
+	: prefs(lv, d),
 	  spellchecker(lv, d)
 {}
 
@@ -71,15 +65,9 @@ Dialogs::~Dialogs()
 }
 
 
-void Dialogs::showDocument()
-{
-	pimpl_->document.controller().show();
-}
-
-
 void Dialogs::showPreamble()
 {
-	pimpl_->document.controller().show();
+	show("document");
 	// Oh Angus, won't you help a poor child ?
 	//pimpl_->document.view()->showPreamble();
 }

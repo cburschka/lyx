@@ -1,3 +1,10 @@
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added document dialog.
+	* Dialogs2.C (showDocument): removed.
+
+	* QDocument.[Ch]: converted to the Dialog-based scheme.
+
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QBibtex.C:

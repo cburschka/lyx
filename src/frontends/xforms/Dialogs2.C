@@ -18,10 +18,6 @@
 #include "xformsBC.h"
 #include "xforms_helpers.h"
 
-#include "ControlDocument.h"
-#include "FormDocument.h"
-#include "forms/form_document.h"
-
 #include "ControlPreamble.h"
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
@@ -34,9 +30,6 @@
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
-
-typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-DocumentDialog;
 
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
@@ -51,7 +44,6 @@ SpellcheckerDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-	DocumentDialog      document;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	SpellcheckerDialog  spellchecker;
@@ -59,8 +51,7 @@ struct Dialogs::Impl {
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: document(lv, d),
-	  preamble(lv, d),
+	: preamble(lv, d),
 	  preferences(lv, d),
 	  spellchecker(lv, d)
 {}
@@ -75,12 +66,6 @@ void Dialogs::init_pimpl()
 Dialogs::~Dialogs()
 {
 	delete pimpl_;
-}
-
-
-void Dialogs::showDocument()
-{
-	pimpl_->document.controller().show();
 }
 
 

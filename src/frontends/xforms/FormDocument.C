@@ -14,8 +14,9 @@
 #include <config.h>
 
 #include "FormDocument.h"
-#include "ControlDocument.h"
 #include "forms/form_document.h"
+
+#include "controllers/ControlDocument.h"
 
 #include "bmtable.h"
 #include "checkedwidgets.h"
@@ -76,13 +77,17 @@ enum {
 	JURABIB
 };
 
+enum GuiColors {
+	GUI_COLOR_CHOICE = FL_FREE_COL15
+};
+
 } // namespace anon
 
 
-typedef FormCB<ControlDocument, FormDB<FD_document> > base_class;
+typedef FormController<ControlDocument, FormView<FD_document> > base_class;
 
-FormDocument::FormDocument()
-	: base_class(_("Document Settings"), scalableTabfolders),
+FormDocument::FormDocument(Dialog & parent)
+	: base_class(parent, _("Document Settings"), scalableTabfolders),
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {}
@@ -1307,8 +1312,7 @@ void FormDocument::bullets_update(BufferParams const & params)
 	     (XpmVersion==4 && XpmRevision<7)))
 		return;
 
-	bool const isLinuxDoc =
-		controller().docType() == ControlDocument::LINUXDOC;
+	bool const isLinuxDoc = kernel().docType() == Kernel::LINUXDOC;
 	setEnabled(fbullet, !isLinuxDoc);
 
 	if (isLinuxDoc) return;
@@ -1369,7 +1373,7 @@ void FormDocument::branch_update(BufferParams const & params)
 
 void FormDocument::checkReadOnly()
 {
-	if (bc().readOnly(controller().bufferIsReadonly())) {
+	if (bc().readOnly(kernel().isBufferReadonly())) {
 		postWarning(_("Document is read-only."
 			      " No changes to layout permitted."));
 	} else {

@@ -13,14 +13,11 @@
 #ifndef QDOCUMENT_H
 #define QDOCUMENT_H
 
-
-#include "Qt2Base.h"
-#include "Qt2BC.h"
-
+#include "QDialogView.h"
 #include "BranchList.h"
-
 #include <boost/scoped_ptr.hpp>
 #include <string>
+#include <vector>
 
 
 class ControlDocument;
@@ -29,13 +26,13 @@ class LengthCombo;
 class  QLineEdit;
 
 class QDocument
-	: public Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> >
+	: public QController<ControlDocument, QView<QDocumentDialog> >
 {
 public:
 
 	friend class QDocumentDialog;
 
-	QDocument();
+	QDocument(Dialog &);
 
 	void showPreamble();
 

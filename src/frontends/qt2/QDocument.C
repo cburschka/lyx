@@ -10,23 +10,26 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "qt_helpers.h"
-
-#include "ControlDocument.h"
-#include "QDocument.h"
-#include "QDocumentDialog.h"
+#include "controllers/ControlDocument.h"
 
 #include "bufferparams.h"
+#include "debug.h"
 #include "language.h"
 #include "helper_funcs.h" // getSecond()
 #include "frnt_lang.h"
+#include "gettext.h"
 #include "lyxrc.h" // defaultUnit
 #include "tex-strings.h" // tex_graphics
 #include "support/tostr.h"
 #include "support/lstrings.h"
 #include "lyxtextclasslist.h"
 #include "floatplacement.h"
+
+#include "QDocument.h"
+#include "QDocumentDialog.h"
+#include "Qt2BC.h"
+
+#include "qt_helpers.h"
 
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
@@ -45,7 +48,7 @@ using std::vector;
 using std::string;
 
 
-typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
+typedef QController<ControlDocument, QView<QDocumentDialog> > base_class;
 
 
 namespace {
@@ -59,8 +62,8 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 }
 
 
-QDocument::QDocument()
-	: base_class(_("LyX: Document Settings")),
+QDocument::QDocument(Dialog & parent)
+	: base_class(parent, _("LyX: Document Settings")),
 		lang_(getSecond(frnt::getLanguageData(false)))
 {}
 

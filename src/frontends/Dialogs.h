@@ -66,8 +66,6 @@ public:
 	   Put into some sort of alphabetical order */
 	//@{
 	///
-	void showDocument();
-	///
 	void showPreamble();
 	///
 	void showPreferences();
