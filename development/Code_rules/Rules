@@ -1,9 +1,9 @@
 Rules for the code in LyX
 -------------------------
-[updated from the C++STYLE distrubuted with the GNU C++ Standard]
+[updated from the C++STYLE distributed with the GNU C++ Standard]
 
 The aim of this file is to serve as a guide for the developers, to aid us to
-get clean and uniform code. This document is still uncomplete.
+get clean and uniform code. This document is still incomplete.
 
 We really like to have new developers joining the LyX Project. However
 since we have had problems in the past with developers leaving the
@@ -24,8 +24,8 @@ In general, if you want to contribute to the main source, we expect at least
 that you:
 
 - the most important rule first: kiss (keep it simple stupid), always
-  use a simple implementation in favour of a more complicated one.
-  This eases maintenence a lot.
+  use a simple implementation in favor of a more complicated one.
+  This eases maintenance a lot.
 - write good C++ code: Readable, well commented and taking advantage of the 
   OO model. Follow the formatting guidelines. See Formatting.
 - adapt the code to the structures already existing in LyX, or in case that 
@@ -42,16 +42,16 @@ that you:
   Constructs.
 
 
-Submiting Code
-------------------
+Submitting Code
+---------------
 
 It is implicitly understood that all patches contributed to The LyX
-Project is under the Gnu General Public Lisence, it you have a problem
+Project is under the Gnu General Public License, it you have a problem
 with that, don't contribute code.
 
 Also please don't just pup up out of the blue with a huge patch (or
 small) that changes something substantial in LyX. Always discuss your
-ideas with the developers on the developers mailinglist.
+ideas with the developers on the developers mailing list.
 
 When you create the patch, please use "diff -up" since we find that a
 lot easier to read than the other diff formats. Also please do not
@@ -82,8 +82,8 @@ in C++.
 
 - Make the scope of a variable as small as possible.
 
-- Prefere preincrement to postincrement whenever possible.
-  Preincrement has potential of beeing faster than postincrement. Just
+- Prefer preincrement to postincrement whenever possible.
+  Preincrement has potential of being faster than postincrement. Just
   thing about the obvious implementations of pre/post-increment. This
   rule applies to decrement too.
 
@@ -106,7 +106,7 @@ in C++.
 		...;
 	}
 
-- For functions and metods that returns a non-POD type T, return T
+- For functions and methods that return a non-POD type T, return T
   const instead. This gives better type checking, and will give a
   compiler warning when temporaries are used wrongly.
 
@@ -149,8 +149,8 @@ Sutters book[ExC++]
 	basic guarantee can work safely in some settings.
 
 2. Strong guarantee: If an operation terminates because of an
-	exception, program state will remain uncanged.
-	This always implies commit-or-rollback samantics, including
+	exception, program state will remain unchanged.
+	This always implies commit-or-rollback semantics, including
 	that no references or iterators into the container be
 	invalidated if an operation fails. For example, if a Stack
 	client calls Top and then attempts a Push that fails because
@@ -164,8 +164,8 @@ Sutters book[ExC++]
 	Probably the most interesting point here is that when you
 	implement the basic guarantee, the strong guarantee often
 	comes for free. For example, in our Stack implementation,
-	alost everything we did was needed to satisfy just the basic
-	guarantee -- and what's presented above very nearly satisfires
+	almost everything we did was needed to satisfy just the basic
+	guarantee -- and what's presented above very nearly satisfies
 	the strong guarantee, with little of no extra work. Not half
 	bad, considering all the trouble we went to.
 
@@ -176,7 +176,7 @@ Sutters book[ExC++]
 3. Nothrow guarantee: The function will not emit an exception under any
    	circumstances.
 	Overall exception safety isn't possible unless certain
-	functions are guaranteed not to throw. In particualr, we've
+	functions are guaranteed not to throw. In particular, we've
 	seen that this is true for destructors; later in this
 	miniseries, we'll see that it's also needed in certain helper
 	functions, such as Swap(). 
@@ -196,7 +196,7 @@ bad_allocation if the requested memory is not available.
 Formatting
 ----------
 
-* Only one delaration on each line.
+* Only one declaration on each line.
 	int a;
 	int b;
 	-NOT-
@@ -215,7 +215,7 @@ Formatting
 	char *p = "flop"; // wrong
 	char &c = *p;     // wrong
 
-  Some time ago we had a huge discusion on this subject and after
+  Some time ago we had a huge discussion on this subject and after
   convincing argumentation from Asger this is what we decided. Also note
   that we will have:
 	char const * p;
@@ -269,7 +269,7 @@ Formatting
 
 * Use existing structures
 
-  - Use string whereever possible. LyX will someday move to Unicode, and
+  - Use string wherever possible. LyX will someday move to Unicode, and
     that will be easy if everybody uses string now.
 
   - Check out the filename and path tools in filetools.h
@@ -278,7 +278,7 @@ Formatting
     and the regex class.
 
   - Use the DebugStream class to report errors and messages using
-    the lyxerr instantation.
+    the lyxerr instantiation.
 
   [add description of other existing structures]
 
@@ -306,7 +306,7 @@ Formatting
 
   - The documentation is generated from the header files.
   - You document for the other developers, not for yourself.
-  - You should document what the funtion do, not the implementation.
+  - You should document what the function does, not the implementation.
   - in the .C files you document the implementation.
   - Single line description (///), multiple lines description (/** ... */)
   - You make the documentation by doing "make srcdoc" in the root,
@@ -355,7 +355,7 @@ deciding what kind of function to add to a class interface:
 	if (f needs to be virtual)
 		make f a member function of C;
 	else if (f is operator>> or operator<<) {
-		make f a non-member funtion;
+		make f a non-member function;
 		if (f needs access to non-public members of C)
 			make f a friend of C;
 	} else if (f needs type conversions on its left-most argument) {
@@ -368,7 +368,7 @@ deciding what kind of function to add to a class interface:
 		make f a member function of C;
  
 Unfortunately, to make the best use of this kind of Class API's we
-need namespaces. As soon as Jean-Marc stop using gcc 2.8 and other
+need namespaces. As soon as Jean-Marc stops using gcc 2.8 and other
 compilers seem more or less up to date on namespaces we will begin to
 use them. _BUT_ we should begin to use the above algoritm ASAP. We
 should also go through old code and apply this algorithm to the

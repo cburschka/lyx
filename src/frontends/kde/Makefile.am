@@ -9,6 +9,7 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 # just to make sure, automake makes them 
 BUILTSOURCES =	formcitationdialog_moc.C \
 		formcopyrightdialog_moc.C \
+		formcopyrightdialogdata_moc.C \
 		formindexdialog_moc.C \
 		formindexdialogdata_moc.C \
 		formprintdialog_moc.C \
@@ -66,6 +67,7 @@ libkde_la_SOURCES = \
 	formcopyrightdialog.C \
 	formcopyrightdialog.h \
 	formcopyrightdialogdata.C \
+	formcopyrightdialogdata.h \
 	formindexdialog.C \
 	formindexdialog.h \
 	formindexdialogdata.C \
@@ -105,6 +107,8 @@ dist-hook:
 
 # dialog file dependencies
 
+formcopyrightdialogdata.C formcopyrightdialogdata.h: dlg/formcopyrightdialog.dlg
+	$(QTARCH) -g dlg/formcopyrightdialog.dlg
 formindexdialogdata.C formindexdialogdata.h: dlg/formindexdialog.dlg
 	$(QTARCH) -g dlg/formindexdialog.dlg
 formprintdialogdata.C formprintdialogdata.h: dlg/formprintdialog.dlg
@@ -120,6 +124,8 @@ formcitationdialog_moc.C: formcitationdialog.h
 formcopyrightdialog.C: formcopyrightdialog_moc.C
 formcopyrightdialog_moc.C: formcopyrightdialog.h
 	$(MOC) formcopyrightdialog.h -o formcopyrightdialog_moc.C
+formcopyrightdialogdata_moc.C: formcopyrightdialogdata.h
+	$(MOC) formcopyrightdialogdata.h -o formcopyrightdialogdata_moc.C
 
 formindexdialog.C: formindexdialog_moc.C
 formindexdialog_moc.C: formindexdialog.h

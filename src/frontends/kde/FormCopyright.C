@@ -39,8 +39,8 @@ FormCopyright::~FormCopyright()
 void FormCopyright::show()
 {
 	if (!dialog_)
-		dialog_ = new FormCopyrightDialog(0, _("Copyright and Warranty"),
-						  false);
+		dialog_ = new FormCopyrightDialog(0, _("LyX: Copyright and Warranty"));
+
 	if (!dialog_->isVisible())
 		h_ = d_->hideAll.connect(slot(this, &FormCopyright::hide));
 	dialog_->show();

@@ -1,3 +1,15 @@
+2000-10-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/kde/Makefile.am:
+	* src/frontends/kde/FormCopyright.C:
+	* src/frontends/kde/formcopyrightdialog.C:
+	* src/frontends/kde/formcopyrightdialog.h:
+	* src/frontends/kde/formcopyrightdialogdata.C:
+	* src/frontends/kde/formcopyrightdialogdata.h:
+	* src/frontends/kde/dlg/formcopyrightdialog.kdevdlg:
+	* src/frontends/kde/dlg/formcopyrightdialog.dlg: convert
+	copyright to use qtarch
+
 2000-10-12  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/encoding.C (read): Fixed bug that caused an error message at 
@@ -9,18 +21,20 @@
 
 2000-10-13  Allan Rae  <rae@lyx.org>
 
-	* src/frontends/xforms/FormPreferences.C (input): reworking the checking
+	* src/frontends/xforms/FormPreferences.C (input): reworking the
+	checking 
 	(build, update, apply): New inputs in various tabfolders
 
 	* src/frontends/xforms/FormToc.C: use new button policy.
-	* src/frontends/ButtonPolicies.h (class IgnorantPolicy): for dialogs that
-	either can't use any existing policy or where it just doesn't care.
+	* src/frontends/ButtonPolicies.h (class IgnorantPolicy): for
+	dialogs that either can't use any existing policy or where it just
+	doesn't care. 
 
 	* src/frontends/xforms/FormTabular.h: removed copyright notice that
 	said it was mine.
 
-	* src/lyx_gui_misc.[Ch] (updateAllVisibleBufferRelatedDialogs): added a
-	bool parameter which is ignored.
+	* src/lyx_gui_misc.[Ch] (updateAllVisibleBufferRelatedDialogs):
+	added a bool parameter which is ignored.
 
 	* src/buffer.C (setReadonly):
 	* src/BufferView_pimpl.C (buffer): 
@@ -68,11 +82,12 @@
 	parameter or have two update functions.  I chose to go with one.
 	I did try removing update() from here and FormBase and defining the
 	appropriate update signatures in FormBaseB[DI] but then ran into the
-	problem of the update() call in FormBase::show().  Whatever I did to get
-	around that would require another function and that just got more
-	confusing.  Hence the decision to make everyone have an update(bool).
-	An alternative might have been to override show() in FormBaseB[DI] and
-	that would allow the different and appropriate update signatures.
+	problem of the update() call in FormBase::show().  Whatever I did
+	to get around that would require another function and that just
+	got more confusing.  Hence the decision to make everyone have an
+	update(bool). An alternative might have been to override show() in
+	FormBaseB[DI] and that would allow the different and appropriate
+	update signatures. 
 
 	* src/frontends/Dialogs.h (updateBufferDependent): now takes a bool.
 	true == buffer change occurred.  I decided against using a default
@@ -276,7 +291,7 @@
 
 	* src/support/fmt.C: new file
 	(fmt): new func, can be used for a printf substitute when still
-	using iostreams ex. lyxerr << fmg("Hello %s", "Jürgen") << endl;
+	using iostreams ex. lyxerr << fmt("Hello %s", "Jürgen") << endl;
 
 	* src/support/StrPool.C: add some comments
 
