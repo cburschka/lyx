@@ -1996,7 +1996,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 
 			} else {
 				if (c != '\0') {
-					word.push_back(c);
+					word += c;
 				} else {
 					lyxerr[Debug::INFO] <<
 						"writeAsciiFile: NULL char in structure." << endl;

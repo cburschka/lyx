@@ -1,5 +1,8 @@
 2002-03-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* buffer.C (asciiParagraph): use += operator for char append to
+	string.
+
 	* paragraph.C (getFontSettings): compare >= not just >
 	(highestFontInRange): ditto
 	(setFont): ditto
