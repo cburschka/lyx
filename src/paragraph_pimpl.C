@@ -16,6 +16,7 @@
 
 #include "paragraph_pimpl.h"
 #include "texrow.h"
+#include "language.h"
 #include "bufferparams.h"
 #include "encoding.h"
 #include "lyxrc.h"

@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
+#include "language.h"
 #include "FontLoader.h"
 #include "support/lstrings.h"
 #include "bufferparams.h" // stateText
@@ -156,6 +157,11 @@ bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
 {
 	return !(fb1 == *this);
 }
+
+
+LyXFont::LyXFont()
+	: bits(sane), lang(default_language)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT1)

@@ -46,6 +46,7 @@
 #include "LString.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"
+#include "language.h"
 #include "debug.h"
 #include "encoding.h"
 #include "sp_ispell.h"

@@ -20,10 +20,10 @@
 
 #include "LString.h"
 #include "LColor.h"
-#include "language.h"
 
 class LyXLex;
 class BufferParams;
+class Language;
 
 
 ///
@@ -377,12 +377,6 @@ LyXFont::FONT_SHAPE LyXFont::shape() const
 {
 	return bits.shape;
 }
-
-
-inline
-LyXFont::LyXFont()
-	: bits(sane), lang(default_language)
-{}
 
 
 inline

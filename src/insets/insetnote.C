@@ -17,6 +17,7 @@
 #include "insetnote.h"
 #include "gettext.h"
 #include "lyxfont.h"
+#include "language.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "lyxtext.h"

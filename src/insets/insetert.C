@@ -16,6 +16,7 @@
 #include "insetert.h"
 #include "gettext.h"
 #include "lyxfont.h"
+#include "language.h"
 #include "buffer.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
