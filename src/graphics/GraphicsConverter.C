@@ -13,23 +13,19 @@
 #include "GraphicsConverter.h"
 
 #include "converter.h"
-#include "format.h"
 #include "debug.h"
+#include "format.h"
 
 #include "support/filetools.h"
-#include "support/forkedcall.h"
 #include "support/forkedcallqueue.h"
 #include "support/tostr.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
 
 #include "Lsstream.h"
-#include "support/LOstream.h"
 #include <fstream>
-#include <sys/types.h> // needed for pid_t
 
 namespace support = lyx::support;
 
@@ -47,6 +43,7 @@ using support::unlink;
 
 using std::endl;
 using std::ostream;
+
 
 namespace lyx {
 namespace graphics {

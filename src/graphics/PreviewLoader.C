@@ -18,29 +18,21 @@
 #include "format.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "LColor.h"
-#include "Lsstream.h"
-
-#include "insets/inset.h"
 
 #include "frontends/lyx_gui.h" // hexname
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/forkedcontr.h"
-#include "support/tostr.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/tostr.h"
 
 #include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
 
+#include "Lsstream.h"
 #include <fstream>
 #include <iomanip>
-#include <list>
-#include <map>
-#include <utility>
-#include <vector>
 
 namespace support = lyx::support;
 

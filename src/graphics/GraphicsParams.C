@@ -10,13 +10,14 @@
 
 #include <config.h>
 
-#include <cstdlib>
-
 #include "GraphicsParams.h"
-#include "Lsstream.h"
+
 #include "lyxlength.h"
 
+#include "Lsstream.h"
+
 using std::abs;
+
 
 namespace lyx {
 namespace graphics {

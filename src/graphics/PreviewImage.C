@@ -11,14 +11,13 @@
 #include <config.h>
 
 #include "PreviewImage.h"
-#include "PreviewLoader.h"
 #include "GraphicsImage.h"
 #include "GraphicsLoader.h"
+#include "PreviewLoader.h"
 
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
 
 namespace support = lyx::support;
 

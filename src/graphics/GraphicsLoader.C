@@ -12,18 +12,13 @@
 
 #include "GraphicsLoader.h"
 
-#include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 #include "LoaderQueue.h"
 
-#include "frontends/LyXView.h"
-
 #include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
 
-#include <list>
 
 namespace lyx {
 namespace graphics {
@@ -63,7 +58,6 @@ private:
 
 	///
 	Params params_;
-
 };
 
 

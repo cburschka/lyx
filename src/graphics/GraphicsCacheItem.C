@@ -13,20 +13,17 @@
 #include <config.h>
 
 #include "GraphicsCacheItem.h"
-#include "GraphicsImage.h"
 #include "GraphicsConverter.h"
-
-#include "support/FileMonitor.h"
+#include "GraphicsImage.h"
 
 #include "debug.h"
 
-#include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/FileMonitor.h"
+#include "support/LAssert.h"
 #include "support/lyxlib.h"
 
-#include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
 
 namespace support = lyx::support;
 

@@ -11,15 +11,11 @@
 #include <config.h>
 
 #include "PreviewedInset.h"
-#include "GraphicsImage.h"
-#include "PreviewLoader.h"
 #include "PreviewImage.h"
+#include "PreviewLoader.h"
 #include "Previews.h"
 
-#include "buffer.h"
 #include "BufferView.h"
-
-#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 

@@ -19,11 +19,8 @@
 
 #include "support/filetools.h"
 
-#include "frontends/lyx_gui.h"
-
-#include <map>
-
 namespace support = lyx::support;
+
 
 namespace lyx {
 namespace graphics {
