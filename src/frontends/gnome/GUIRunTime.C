@@ -121,3 +121,34 @@ void GUIRunTime::setDefaults()
 			| FL_PDMenuFontSize
 			| FL_PDBorderWidth, &cntl);
 }
+
+
+#include "XFormsView.h"
+LyXView * GUIRunTime::createMainView(int w, int h)
+{
+	return new XFormsView(w, h);
+}
+
+	
+Display * GUIRunTime::x11Display()
+{
+	return fl_get_display();
+}
+
+
+int GUIRunTime::x11Screen()
+{
+	return fl_screen;
+}
+
+
+Colormap GUIRunTime::x11Colormap()
+{
+	return fl_state[fl_get_vclass()].colormap;
+}
+
+
+int GUIRunTime::x11VisualDepth()
+{
+	return fl_get_visual_depth();
+}

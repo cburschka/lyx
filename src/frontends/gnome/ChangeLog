@@ -1,5 +1,9 @@
 2001-07-16  Baruch Even  <baruch@lyx.org>
 
+	* GUIRunTime.C: Added some functions that were required lately.
+
+2001-07-16  Baruch Even  <baruch@lyx.org>
+
 	* Makefile.am:
 	* Dialogs.C: Removed Citation and Copyright dialogs from build. Left them
 	in repository until they get redone as About Dialog.
