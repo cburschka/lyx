@@ -1,3 +1,8 @@
+2002-11-21  John Levon  <levon@movementarian.org>
+
+	* qscreen.C: show content pane cursor even when
+	  focus is on dialog, command buffer etc.
+ 
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C: don't pass empty commands to math

@@ -61,12 +61,6 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 	if (!qApp->focusWidget())
 		return;
 
-	string const focusname(qApp->focusWidget()->name());
-
-	// Probably a hack
-	if (focusname != "content_pane")
-		return;
-
 	int const y1 = max(y - text->first_y - asc, 0);
 	int const y_tmp = min(y - text->first_y + desc, owner_.height());
 
