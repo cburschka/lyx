@@ -16,13 +16,15 @@
 #include "math_parser.h"
 #include "math_streamstr.h"
 #include "LColor.h"
+
+#include "support/std_ostream.h"
 #include "frontends/Painter.h"
 
 using std::auto_ptr;
 
 
-MathFboxInset::MathFboxInset(latexkeys const * key)
-	: MathNestInset(1), key_(key)
+MathFboxInset::MathFboxInset()
+	: MathNestInset(1)
 {}
 
 
@@ -34,20 +36,14 @@ auto_ptr<InsetBase> MathFboxInset::clone() const
 
 MathInset::mode_type MathFboxInset::currentMode() const
 {
-	if (key_->name == "fbox")
-		return TEXT_MODE;
-	return MATH_MODE;
+	return TEXT_MODE;
 }
 
 
 void MathFboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (key_->name == "fbox") {
-		FontSetChanger dummy(mi.base, "textnormal");
-		cell(0).metrics(mi, dim);
-	} else {
-		cell(0).metrics(mi, dim);
-	}
+	FontSetChanger dummy(mi.base, "textnormal");
+	cell(0).metrics(mi, dim);
 	metricsMarkers(dim, 5); // 5 pixels margin
 	dim_ = dim;
 }
@@ -57,23 +53,26 @@ void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
 		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
-	if (key_->name == "fbox") {
-		FontSetChanger dummy(pi.base, "textnormal");
-		cell(0).draw(pi, x + 5, y);
-	} else {
-		cell(0).draw(pi, x + 5, y);
-	}
+	FontSetChanger dummy(pi.base, "textnormal");
+	cell(0).draw(pi, x + 5, y);
 	setPosCache(pi, x, y);
 }
 
 
 void MathFboxInset::write(WriteStream & os) const
 {
-	os << '\\' << key_->name << '{' << cell(0) << '}';
+	os << "\\fbox{" << cell(0) << '}';
 }
 
 
 void MathFboxInset::normalize(NormalStream & os) const
 {
-	os << '[' << key_->name << ' ' << cell(0) << ']';
+	os << "[fbox " << cell(0) << ']';
 }
+
+
+void MathFboxInset::infoize(std::ostream & os) const
+{
+	os << "FBox: ";
+}
+

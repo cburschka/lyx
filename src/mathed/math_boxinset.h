@@ -26,7 +26,7 @@ public:
 	///
 	explicit MathBoxInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

@@ -21,9 +21,9 @@ class latexkeys;
 class MathFboxInset : public MathNestInset {
 public:
 	///
-	MathFboxInset(latexkeys const * key);
+	MathFboxInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const;
 	///
@@ -34,9 +34,8 @@ public:
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
-private:
 	///
-	latexkeys const * key_;
+	void infoize(std::ostream & os) const;
 };
 
 #endif

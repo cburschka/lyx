@@ -253,12 +253,12 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathSpaceInset(l->name));
 		if (inset == "dots")
 			return MathAtom(new MathDotsInset(l));
-		if (inset == "mbox")
-			return MathAtom(new MathBoxInset(l->name));
+//		if (inset == "mbox")
+//			return MathAtom(new MathBoxInset(l->name));
 	//	if (inset == "parbox")
 	//		return MathAtom(new MathParboxInset);
-		if (inset == "fbox")
-			return MathAtom(new MathFboxInset(l));
+//		if (inset == "fbox")
+//			return MathAtom(new MathFboxInset(l));
 		if (inset == "style")
 			return MathAtom(new MathSizeInset(l));
 		if (inset == "font")
@@ -275,6 +275,10 @@ MathAtom createMathInset(string const & s)
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
+	if (s == "mbox")
+		return MathAtom(new MathBoxInset("mbox"));
+	if (s == "fbox")
+		return MathAtom(new MathFboxInset());
 	if (s == "framebox")
 		return MathAtom(new MathFrameboxInset);
 	if (s == "makebox")

@@ -1178,6 +1178,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					return;
 				}
 
+#if 0
 				else if (l->inset == "parbox") {
 					// read optional positioning and width
 					string pos   = parse_verbatim_option();
@@ -1187,6 +1188,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					cell->back().nucleus()->asParboxInset()->setPosition(pos);
 					cell->back().nucleus()->asParboxInset()->setWidth(width);
 				}
+#endif
 
 				else {
 					MathAtom at = createMathInset(t.cs());
@@ -1214,7 +1216,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				//}
 				for (MathInset::idx_type i = start; i < at->nargs(); ++i) {
 					parse(at.nucleus()->cell(i), FLAG_ITEM, m);
-					parse1(grid, FLAG_SKIPSPACE, mode, numbered);
+					skipSpaces();
 				}
 				cell->push_back(at);
 			}
