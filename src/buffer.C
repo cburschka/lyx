@@ -476,6 +476,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			lyxerr << "Layout '" << layoutname << "' does not"
 			       << " exist in textclass '" << tclass.name()
 			       << "'." << endl;
+			lyxerr << "Trying to use default layout instead."
+			       << endl;
+			layoutname = tclass.defaultLayoutName();
 		}
 		
 #ifndef NO_COMPABILITY
