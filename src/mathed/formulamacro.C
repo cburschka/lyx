@@ -140,38 +140,6 @@ int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 }
 
 
-
-UpdatableInset::RESULT
-InsetFormulaMacro::localDispatch(BufferView * bv,
-				 kb_action action, string const & arg)
-{
-	RESULT result = DISPATCHED;
-	switch (action) {
-		case LFUN_MATH_MACROARG: {
-			int const i = lyx::atoi(arg);
-			lyxerr << "inserting macro arg " << i << "\n";
-			//if (i > 0 && i <= par()->numargs()) {
-				mathcursor->insert(MathAtom(new MathMacroArgument(i)));
-				updateLocal(bv, true);
-			//} else {
-			//	lyxerr << "not in range 0.." << par()->numargs() << "\n";
-			//}
-			break;
-		}
-		
-		default: {
-			result = InsetFormulaBase::localDispatch(bv, action, arg);
-			// force redraw if anything happened
-			if (result != UNDISPATCHED) {
-				bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
-				bv->updateInset(this, false);
-			}
-		}
-	}
-	return result;
-}
-
-
 MathAtom const & InsetFormulaMacro::par() const
 {
 	return MathMacroTable::provide(getInsetName());

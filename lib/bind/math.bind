@@ -50,15 +50,15 @@
 \bind "M-m S-N"			"math-nonumber"
 \bind "M-m 8"			"math-insert \infty"
 
-\bind "M-m o 1"    "math-macro-arg 1"
-\bind "M-m o 2"    "math-macro-arg 2"
-\bind "M-m o 3"    "math-macro-arg 3"
-\bind "M-m o 4"    "math-macro-arg 4"
-\bind "M-m o 5"    "math-macro-arg 5"
-\bind "M-m o 6"    "math-macro-arg 6"
-\bind "M-m o 7"    "math-macro-arg 7"
-\bind "M-m o 8"    "math-macro-arg 8"
-\bind "M-m o 9"    "math-macro-arg 9"
+\bind "M-m o 1"   "self-insert \#1"
+\bind "M-m o 2"   "self-insert \#2"
+\bind "M-m o 3"   "self-insert \#3"
+\bind "M-m o 4"   "self-insert \#4"
+\bind "M-m o 5"   "self-insert \#5"
+\bind "M-m o 6"   "self-insert \#6"
+\bind "M-m o 7"   "self-insert \#7"
+\bind "M-m o 8"   "self-insert \#8"
+\bind "M-m o 9"   "self-insert \#9"
 
 \bind "M-m t t"   "math-mutate dump"
 \bind "M-m t a"   "math-mutate align"
@@ -166,5 +166,3 @@
 \bind "M-m g S-W"    "math-insert \Omega"
 \bind "M-m g S-X"    "math-insert \Xi"
 \bind "M-m g S-Y"    "math-insert \Varphi"
-
-

@@ -143,8 +143,7 @@ enum kb_action {
 	LFUN_MATH_NONUMBER,             // Alejandro 180696
 	LFUN_MATH_SIZE,                 // Alejandro 150896
 	LFUN_MATH_MACRO,                // ale970510
-	LFUN_MATH_MACROARG,  // 120     // ale970510 
-	LFUN_MATH_EXTERN,               // Andre' 20010424
+	LFUN_MATH_EXTERN,    // 120     // Andre' 20010424
 	LFUN_MATH_PANEL,                // Andre' 20010522
 	LFUN_MATH_VALIGN,               // Andre' 20010522
 	LFUN_MATH_HALIGN,               // Andre' 20010522
