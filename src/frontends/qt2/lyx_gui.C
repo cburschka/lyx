@@ -145,24 +145,14 @@ void start(string const & batch, vector<string> const & files)
 	view.show();
 	view.init();
 
-	Buffer * last = 0;
-
 	// FIXME: some code below needs moving
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
 
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
-	for (; cit != end; ++cit) {
-		Buffer * b = bufferlist.newBuffer(*cit);
-		if (loadLyXFile(b, *cit))
-			last = b;
-	}
-
-	// switch to the last buffer successfully loaded
-	if (last) {
-		view.view()->buffer(last);
-	}
+	for (; cit != end; ++cit)
+		view.view()->loadLyXFile(*cit, true);
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {

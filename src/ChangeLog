@@ -1,4 +1,9 @@
 
+2003-06-26  Alfredo Brauntein  <abraunst@lyx.org>
+
+	* lyx_main.C (LyX): get full path of document loaded on the 
+	command line	
+
 2003-06-26  André Pönitz  <poenitz@gmx.net>
 
 	* lyxcursor.[Ch]: move rarely used operator==,!= out of line

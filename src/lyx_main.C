@@ -143,20 +143,23 @@ LyX::LyX(int & argc, char * argv[])
 
 		Buffer * last_loaded = 0;
 
-		vector<string>::iterator it = files.begin();
-		vector<string>::iterator end = files.end();
+		vector<string>::const_iterator it = files.begin();
+		vector<string>::const_iterator end = files.end();
+
 		for (; it != end; ++it) {
-			last_loaded = bufferlist.newBuffer(*it, false);
+			// get absolute path of file and add ".lyx" to 
+			// the filename if necessary
+			string s = FileSearch(string(), *it, "lyx");
+			if (s.empty()) {
+				s = *it;
+			}
+
+			last_loaded = bufferlist.newBuffer(s, false);
 			last_loaded->parseError.connect(boost::bind(&LyX::printError, this, _1));
-			loadLyXFile(last_loaded, *it);
+			loadLyXFile(last_loaded, s);
 		}
 
 		files.clear();
-
-		// no buffer loaded, create one
-		string const tmpfile = "tmpfile";
-		if (!last_loaded)
-			last_loaded = newFile(tmpfile, string());
 
 		bool success = false;
 
