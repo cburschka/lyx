@@ -1,3 +1,19 @@
+2001-02-05  Baruch Even  <baruch.even@writeme.com>
+
+	* insetgraphics.C: Updated automatic image conversion, it now goes into
+	temporary directory instead of with the image itself.
+
+2001-01-21  Baruch Even  <baruch@ev-en.org>
+
+	* insetgraphics.C: Added Docbook support. Added Automatic image conversion
+	to EPS or PNG when needed (support bitmap graphics).
+
+2000-11-02  Baruch Even  <baruch@ev-en.org>
+
+	* insetgraphics.C:
+	* insetgraphiscParams.C: Some cleaning up, changing from std::endl to '\n'
+	and removal of commented out code.
+
 2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetbib.C (callback): Update citations if the key has changed.

@@ -9,10 +9,6 @@
  *          This file Copyright 2000 Baruch Even
  * ================================================= */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 #include "LyXImage.h"
 
@@ -21,11 +17,11 @@
 #include "support/LAssert.h"
 
 LyXImage::LyXImage()
-	: pixmap_(0), pixmapInitialized(false)
+	: pixmap_(0), pixmapInitialized(false), width_(0), height_(0)
 {}
 
-LyXImage::LyXImage(Pixmap pixmap)
-	: pixmap_(pixmap), pixmapInitialized(true)
+LyXImage::LyXImage(Pixmap pixmap, unsigned int width, unsigned int height)
+	: pixmap_(pixmap), pixmapInitialized(true), width_(width), height_(height)
 {}
 
 LyXImage::~LyXImage()

@@ -17,9 +17,11 @@ How to use it for now:
 Immediate tasks:
 	* Make the inline viewing work, there is a preliminary work going on,
 		need to finish it up.
+	* Support automatic image format conversion, create both a PNG and EPS output.
 
 	* Polishing tasks:
-		* Add messages in the empty rectangle to say how are we doing.
+		* Add messages in the empty rectangle (in the buffer view) to say how are 
+		  we doing.
 			- Implemented, needs testing.
 		* Clean up GraphicsCacheItem(_pimpl)
     	* Pop up a dialog if the widget version is higher than what we accept.
@@ -40,26 +42,12 @@ Known BUGS:
     * Bug in FileDlg class (src/filedlg.[hC]) when selecting a file and then
         pressing ok, it counts as if no real selection done. Apparently
         when choosing a file it doesn't update the select file input line.
-	* Inline viewing is still not completely operational, in fact it is no 
+	* Inline viewing is still not completely operational, in fact it is now
 		disabled. To enable it enable the define:
 		INSETGRAPHICS_INLINE_VIEW
- 
-Current PROBLEMS:
-    
-    * How to support both PDF and PS output, should we do the conversion
-        or should we just give the bounding box and tell latex how to do the
-        conversion itself?
-        I (Baruch Even) tend towards doing the conversion ourselves, otherwise
-        we need to give latex quite a few translation commands and from the
-        graphicx package docs it appears that it takes quite a bit of memory
-        on the side of TeXing.
-	
-TODO Basics:
- 
-    * Add support for more features so that it will be better than insetfig.
-        * Keep aspect ratio radio button
- 
-    * Work on inline viewing of image.
+	* If we are trying to create a file in a read-only directory and there
+		are graphics that need converting, the converting will fail because
+		it is done in-place, into the same directory as the original image.
  
 TODO Before initial production release:
     * Replace insetfig everywhere
@@ -77,13 +65,14 @@ TODO Before initial production release:
 TODO Extended features:
  
     * Advanced Latex tab folder.
-    * Add even more options to make it better than insetfig.
+    * Add support for more features so that it will be better than insetfig.
+        * Keep aspect ratio radio button
         * Support for complete control over the latex parameters for TeXperts
         * What advanced features the users want to do?
             Implement them in a non latex dependent way, but a logical way.
             LyX should translate it to latex or any other fitting format.
     * Add a way to roll the image file into the file format.
-    * When loading if the image is not found in the expected place, try
+    * When loading, if the image is not found in the expected place, try
        to find it in the clipart, or in the same directory with the image.
     * Keep a tab on the image file, if it changes, update the lyx view.
 	* The image choosing dialog could show thumbnails of the image formats
@@ -134,35 +123,13 @@ TODO Extended features:
  *  documents (i.e. prefer imagemagick eps2png over eps2pdf)
  */
 
-/* Current Stage:
- *  Embryonic.
- *
- * PLAN:
- *  Finish basic support:
- *      Inline image viewing
- *
- *  Do Release quality support:
- *      Allow to change display depth
- *      Make default figure instead of InsetFig
- *      Add to LyX (probably after 1.1.6 is released)
- *      
- *  Extended features:
- *      Output format conversion
- *      Print depth changes
- *      Image file tracking of changes.
- *
- *  Extended^2:
- *      Image roll-in (how? when? why?)
- *          This means to add the image inside the LyX file, usefull when
- *          transferring the file around.
- */
-
-
 #include <config.h> 
 
 #ifdef __GNUG__
 #pragma implementation
 #endif 
+
+#define INSETGRAPHICS_INLINE_VIEW
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
@@ -177,29 +144,33 @@ TODO Extended features:
 #include "frontends/support/LyXImage.h"
 #include "Painter.h"
 #include "lyx_gui_misc.h"
-#include "filedlg.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
 #include "lyxtext.h"
+#include "lyxrc.h"
 #include "font.h" // For the lyxfont class.
 #include <algorithm> // For the std::max
-#include "lyxrc.h"
-
+#include "support/lyxmanip.h"
 #include "debug.h"
 
+extern string system_tempdir;
 
 using std::ostream;
 using std::endl;
 using std::max;
 
+// This function is a utility function
+inline
+string const RemoveExtension(string const & filename)
+{
+	return ChangeExtension(filename, string());
+}
+
+
 // Initialize only those variables that do not have a constructor.
 InsetGraphics::InsetGraphics()
-#ifdef IG_OLDPARAMS
-	: use_bb(false), hiresbb(false), angle(0.0), origin(DEFAULT)
-	, keepaspectratio(false), scale(0.0), clip(false), draft(false)
-	, cacheHandle(0)
-#endif 
-	: cacheHandle(0), pixmap(0), pixmapInitialized(false)
+	: cacheHandle(0), pixmap(0), updateImage(false)
 {}
 
 InsetGraphics::~InsetGraphics()
@@ -213,27 +184,29 @@ InsetGraphics::statusMessage() const
 {
 	char const * msg = 0;
 
-#ifdef INSETGRAPHICS_INLINE_VIEW		
-	switch (status) {
-	case GraphicsCacheItem::UnknownError:
-		msg = _("Unknown Error");
-		break;
+#ifdef INSETGRAPHICS_INLINE_VIEW
+	if (cacheHandle) {
+		switch (cacheHandle->getImageStatus()) {
+		case GraphicsCacheItem::UnknownError:
+			msg = _("Unknown Error");
+			break;
 
-	case GraphicsCacheItem::Loading:
-		msg = _("Loading...");
-		break;
+		case GraphicsCacheItem::Loading:
+			msg = _("Loading...");
+			break;
 
-	case GraphicsCacheItem::ErrorReading:
-		msg = _("Error reading");
-		break;
+		case GraphicsCacheItem::ErrorReading:
+			msg = _("Error reading");
+			break;
 
-	case GraphicsCacheItem::ErrorConverting:
-		msg = _("Error converting");
-		break;
+		case GraphicsCacheItem::ErrorConverting:
+			msg = _("Error converting");
+			break;
 
-	case GraphicsCacheItem::Loaded:
-		// No message to write.
-		break;
+		case GraphicsCacheItem::Loaded:
+			// No message to write.
+			break;
+		}
 	}
 #else
 	msg = _("Inline view disabled");
@@ -244,8 +217,8 @@ InsetGraphics::statusMessage() const
 
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
-	if (pixmapInitialized)
-		return cacheHandle->getHeight();
+	if (pixmap)
+		return pixmap->getHeight();
 	else
 		return 50;
 }
@@ -260,35 +233,46 @@ int InsetGraphics::descent(BufferView *, LyXFont const &) const
 
 int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
-	if (pixmapInitialized)
-		return cacheHandle->getWidth();
+	if (pixmap)
+		return pixmap->getWidth();
 	else {
 		char const * msg = statusMessage();
-		int font_width = lyxfont::width(msg, font);
+		int font_width = 0;
+		
+		if (msg)
+			font_width = lyxfont::width(msg, font);
 		
 		return max(50, font_width + 15);
 	}
 }
-
 
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
                          int baseline, float & x, bool) const
 {
 	Painter & paint = bv->painter();
 
-	int lwidth = width(bv, font);
 	int ldescent = descent(bv, font);
 	int lascent = ascent(bv, font);
+	int lwidth = width(bv, font);
+
+	// Make sure x is updated upon exit from this routine
+	float old_x = x;
+	x += lwidth;
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
-	if (pixmapInitialized) {
+	if (pixmap) {
 
-		paint.image(int(x) + 2, baseline - lascent,
+		paint.image(int(old_x) + 2, baseline - lascent,
 		             lwidth - 4, lascent + ldescent,
 		             pixmap);
 	} else {
-#ifdef INSETGRAPHICS_INLINE_VIEW		
+#ifdef INSETGRAPHICS_INLINE_VIEW
+		if (!updateImage) {
+			updateImage = true;
+			updateInset();
+		}
+		
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
 		if (cacheHandle)
@@ -298,7 +282,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		if (status == GraphicsCacheItem::Loaded) {
 			// It is, get it and inform the world.
 			pixmap = cacheHandle->getImage();
-			pixmapInitialized = true;
 
 			// Tell BufferView we need to be updated!
 			bv->text->status = LyXText::CHANGED_IN_DRAW;
@@ -308,7 +291,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 		char const * msg = statusMessage();
 		
-		paint.rectangle(int(x) + 2, baseline - lascent,
+		paint.rectangle(int(old_x) + 2, baseline - lascent,
 		                lwidth - 4,
 		                lascent + ldescent);
 
@@ -318,22 +301,21 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			msgFont.setFamily(LyXFont::SANS_FAMILY);
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			string const justname = OnlyFilename (params.filename);
-			paint.text(int(x + 8), baseline - lyxfont::maxAscent(msgFont) - 4,
-				  justname, msgFont);
+			paint.text(int(old_x) + 8, 
+					baseline - lyxfont::maxAscent(msgFont) - 4,
+				    justname, msgFont);
 
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			paint.text(int(x + 8), baseline - 4, msg, strlen(msg), msgFont);
+			paint.text(int(old_x) + 8, baseline - 4, 
+					msg, strlen(msg), msgFont);
 		}
 	}
-
-	// Add the image width to the row width.
-	x += lwidth;
 }
 
 
 void InsetGraphics::Edit(BufferView *bv, int, int, unsigned int)
 {
-	bv->owner()->getDialogs() -> showGraphics(this);
+	bv->owner()->getDialogs()->showGraphics(this);
 }
 
 
@@ -350,60 +332,6 @@ void InsetGraphics::Write(Buffer const * buf, ostream & os) const
 	params.Write(buf, os);
 }
 
-#if 0
-// Baruch Even 2000-07-08
-
-// A Thought for another way to read the file...
-// The map should be a static part of the object or a static part of this
-// file and should be filled during program start.
-// The questions are:
-// 1. Is this cleaner?
-// 2. Is there no hidden performance costs?
-//
-// Regarding 2 I can already see that we will have two copies of the strings
-// one in the data part of the program and one in the map, but that won't be
-// more than say 2K (overestimation here), there is no real benefit to put
-// it in the map since there aren't that many configuration items that will
-// make it a faster solution, it might just be a bit cleaner.
-// (a map stores either in a hash or a kind of a balanced tree).
-
-void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
-{
-	typedef map < string, enum TOKENS > ReadActionMap;
-	static ReadActionMap const readMap;
-
-	bool finished = false;
-
-	while (lex.IsOK() && !finished) {
-		lex.next();
-
-		string const token = lex.GetString();
-		lyxerr.debug() << "Token: '" << token << '\'' << endl;
-
-		if (token.empty())
-			continue;
-
-		ReadActionMap::const_iterator it =
-		    readMap.find(token);
-
-		if (it == readMap.end()) {
-			lyxerr << "Unknown keyword, skipping." << endl;
-			continue;
-		}
-
-		switch (it.second) {
-		case FILENAME_TOKEN:
-			break;
-		case VERSION_TOKEN:
-			break;
-		default:
-			break;
-		}
-
-
-	}
-}
-#endif 
 
 void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
 {
@@ -432,7 +360,7 @@ void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
 		}
 		else {
 			if (! params.Read(buf, lex, token))
-				lyxerr << "Unknown token, " << token << ",skipping." << endl;
+				lyxerr << "Unknown token, " << token << ", skipping." << endl;
 		}
 	}
 
@@ -466,11 +394,80 @@ void formatResize(ostream & os, string const & key,
 	}
 }
 
+string const
+InsetGraphics::createLatexOptions() const
+{
+	// Calculate the options part of the command, we must do it to a string
+	// stream since we might have a trailing comma that we would like to remove
+	// before writing it to the output stream.
+	std::ostringstream options;
+
+	formatResize(options, "width", params.widthResize, params.widthSize);
+	formatResize(options, "height", params.heightResize, params.heightSize);
+
+	if (params.rotateAngle != 0) {
+		options << "angle="
+			<< params.rotateAngle << ',';
+	}
+
+	string opts = options.str().c_str();
+	opts = strip(opts, ',');
+
+	return opts;
+}
+
+
+
+string const 
+InsetGraphics::prepareFile(Buffer const *buf) const
+{
+
+	// do_convert = Do we need to convert the file?
+	// nice = Do we create a nice version?
+	//        This is used when exporting the latex file only.
+	// 
+	// 
+	// if (!do_convert)
+	//   return original filename
+	// 
+	// if (!nice)
+	//   convert_place = temp directory
+	//   return new filename in temp directory
+	// else
+	//   convert_place = original file directory
+	//   return original filename without the extension
+	//
+	
+	// Get the extension (format) of the original file.
+	string const extension = GetExtension(params.filename);
+	
+	// Are we creating a PDF or a PS file?
+	// (Should actually mean, are we usind latex or pdflatex).
+	string const image_target = (lyxrc.pdf_mode ? "png" : "eps");
+
+	if (extension == image_target)
+		return params.filename;
+
+	string outfile;
+	if (!buf->niceFile) {
+		string const temp = AddName(buf->tmppath, params.filename);
+		outfile = RemoveExtension(temp);
+	} else {
+		string const path = OnlyPath(buf->fileName());
+		string const relname = MakeRelPath(params.filename, path);
+		outfile = RemoveExtension(relname);
+	}
+
+	converters.Convert(buf, params.filename, outfile, extension, image_target);
+	
+	return outfile;
+}
+
 int InsetGraphics::Latex(Buffer const *buf, ostream & os,
-                         bool /*fragile*/, bool/*fs*/) const
+		bool /*fragile*/, bool/*fs*/) const
 {
 	// MISSING: We have to decide how to do the order of the options
-	// that is dependent of order, like witdth, height, angle. Should
+	// that is dependent of order, like width, height, angle. Should
 	// we rotate before scale? Should we let the user decide?
 	// bool rot_before_scale; ?
 
@@ -484,195 +481,63 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 	// If there is no file specified, just output a message about it in
 	// the latex output.
 	if (params.filename.empty()) {
-		os << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
-		<< _("empty figure path")
-		<< '}'
-		<< endl;
+		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
+			<< _("empty figure path")
+			<< "}\n";
 
-		return 1;
-	}
-
-	// Calculate the options part of the command, we must do it to a string
-	// stream since we might have a trailing comma that we would like to remove
-	// before writing it to the output stream.
-	std::ostringstream options;
-
-	formatResize(options, "width", params.widthResize, params.widthSize);
-	formatResize(options, "height", params.heightResize, params.heightSize);
-
-	if (params.rotateAngle != 0) {
-		options << "angle="
-		<< params.rotateAngle << ',';
+		return 1; // One end of line marker added to the stream.
 	}
 
-#ifdef IG_OLDPARAMS
-	if (bb.isSet() && use_bb) {
-		options << "bb="
-		<< bb.llx << ' ' << bb.lly << ' '
-		<< bb.urx << ' ' << bb.ury << ',';
-	}
-	if (hiresbb) {
-		options << "hiresbb,";
-	}
-	if (viewport.isSet()) {
-		options << "viewport="
-		<< viewport.llx << ' ' << viewport.lly << ' '
-		<< viewport.urx << ' ' << viewport.ury << ',';
-	}
-	if (trim.isSet()) {
-		options << "trim="
-		<< trim.llx << ' ' << trim.lly << ' '
-		<< trim.urx << ' ' << trim.ury << ',';
-	}
-	if (natheight.value() != 0) {
-		options << "natheight=" << natheight.asString() << ',';
-	}
-	if (natwidth.value() != 0) {
-		options << "natwidth=" << natwidth.asString() << ',';
-	}
-	if (angle != 0.0) {
-		options << "angle=" << angle << ',';
-	}
-	if (origin != DEFAULT) {
-		switch (origin) {
-		case DEFAULT: break;
-		case LEFTTOP:
-			options << "origin=lt,";
-			break;
-		case LEFTCENTER:
-			options << "origin=lc,";
-			break;
-		case LEFTBASELINE:
-			options << "origin=lB,";
-			break;
-		case LEFTBOTTOM:
-			options << "origin=lb,";
-			break;
-		case CENTERTOP:
-			options << "origin=ct,";
-			break;
-		case CENTER:
-			options << "origin=c,";
-			break;
-		case CENTERBASELINE:
-			options << "origin=cB,";
-			break;
-		case CENTERBOTTOM:
-			options << "origin=cb,";
-			break;
-		case RIGHTTOP:
-			options << "origin=rt,";
-			break;
-		case RIGHTCENTER:
-			options << "origin=rc,";
-			break;
-		case RIGHTBASELINE:
-			options << "origin=rB,";
-			break;
-		case RIGHTBOTTOM:
-			options << "origin=rb,";
-			break;
-		}
-	}
-	if (g_width.value() != 0) {
-		options << "width=" << g_width.asString() << ',';
-	}
-	if (g_height.value() != 0) {
-		options << "height=" << g_height.asString() << ',';
-	}
-	if (totalheight.value() != 0) {
-		options << "totalheight=" << totalheight.asString() << ',';
-	}
-	if (keepaspectratio) {
-		options << "keepaspectratio,";
-	}
-	if (scale != 0.0) {
-		options << "scale=" << scale << ',';
-	}
-	if (clip) {
-		options << "clip,";
-	}
-	if (draft) {
-		options << "draft,";
-	}
-	if (!type.empty()) {
-		options << "type=" << type << ',';
+	// Keep count of newlines that we issued.
+	int newlines = 0;
 
-		// These should be present only when type is used.
-		if (!ext.empty()) {
-			options << "ext=" << type << ',';
-		}
-		if (!read.empty()) {
-			options << "read=" << type << ',';
-		}
-		if (!command.empty()) {
-			options << "command=" << type << ',';
-		}
-	}
-#endif 
-
-	string opts(options.str().c_str());
-	opts = strip(opts, ',');
-
+	// This variables collect all the latex code that should be before and
+	// after the actual includegraphics command.
+	string before;
+	string after;
 
 	// If it's not an inline image, surround it with the centering paragraph.
 	if (! params.inlineFigure) {
-		os << endl
-		<< "\\vspace{0.3cm}" << endl
-		<< "{\\par\\centering ";
+		before += "\n" "\\vspace{0.3cm}\n" "{\\par\\centering ";
+		after = " \\par}\n" "\\vspace{0.3cm}\n" + after;
+		newlines += 4;
 	}
 
 	// Do we want subcaptions?
 	if (params.subcaption) {
-		os << "\\subfigure[" << params.subcaptionText << "]{";
+		before += "\\subfigure[" + params.subcaptionText + "]{";
+		after = '}' + after;
 	}
 
-	// We never used the starred form, we use the "clip" option instead.
-	os << "\\includegraphics";
+	// We never use the starred form, we use the "clip" option instead.
+	os << before << "\\includegraphics";
 
+	// Write the options if there are any.
+	string const opts = createLatexOptions();
 	if (!opts.empty()) {
 		os << '[' << opts << ']';
 	}
 
 	// Make the filename relative to the lyx file
-	string filename = MakeRelPath(params.filename, OnlyPath(buf->fileName()));
-
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
-	filename = ChangeExtension(filename, string());
+	string const filename = prepareFile(buf);
+	
+	os << '{' << filename << '}' << after;
 
-	os << '{' << filename << '}';
-
-	// Do we want a subcaption?
-	if (params.subcaption) {
-		// Close the subcaption command
-		os << '}';
-	}
-
-	// Is this an inline graphics?
-	if (!params.inlineFigure) {
-		os << " \\par}" << endl
-		<< "\\vspace{0.3cm}" << endl;
-	}
-
-	// How do we decide to what format should we export?
-	string extension = GetExtension(params.filename);
-	if (lyxrc.pdf_mode) {
-		if (extension != "jpg")
-			converters.Convert(buf,
-					   params.filename, params.filename,
-					   extension, "png");
-	} else
-		converters.Convert(buf, params.filename, params.filename,
-				   extension, "eps");
-
-	return 1;
+	// Return how many newlines we issued.
+	return newlines;
 }
 
 
 int InsetGraphics::Ascii(Buffer const *, ostream &, int) const
 {
-	// No graphics in ascii output.
+	// No graphics in ascii output. Possible to use gifscii to convert
+	// images to ascii approximation.
+	
+	// 1. Convert file to ascii using gifscii
+	// 2. Read ascii output file and add it to the output stream.
+	
 	return 0;
 }
 
@@ -683,10 +548,19 @@ int InsetGraphics::Linuxdoc(Buffer const *, ostream &) const
 	return 0;
 }
 
-
-int InsetGraphics::DocBook(Buffer const *, ostream &) const
+// For explanation on inserting graphics into DocBook checkout:
+// http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
+// See also the docbook guide at http://www.docbook.org/
+int InsetGraphics::DocBook(Buffer const * buf, ostream & os) const
 {
-	// No graphics in DocBook output. Should check how/what to add.
+	// Change the path to be relative to the main file.
+	string const buffer_dir = OnlyPath(buf->fileName());
+	string const filename = RemoveExtension(MakeRelPath(params.filename, buffer_dir));
+
+	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will 
+	// need to switch to MediaObject. However, for now this is sufficient and 
+	// easier to use.
+	os << "<graphic fileref=\"" << filename << "\"></graphic>";
 	return 0;
 }
 
@@ -707,18 +581,18 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 // dialog.
 void InsetGraphics::updateInset() const
 {
-	// If file changed...
-
 #ifdef INSETGRAPHICS_INLINE_VIEW	
-	GraphicsCache * gc = GraphicsCache::getInstance();
-	GraphicsCacheItem * temp = 0;
+	if (updateImage) {
+		GraphicsCache * gc = GraphicsCache::getInstance();
+		GraphicsCacheItem * temp = 0;
 
-	if (!params.filename.empty()) {
-		temp = gc->addFile(params.filename);
+		if (!params.filename.empty()) {
+			temp = gc->addFile(params.filename);
+		}
+
+		delete cacheHandle;
+		cacheHandle = temp;
 	}
-
-	delete cacheHandle;
-	cacheHandle = temp;
 #else
 	cacheHandle = 0;
 #endif
@@ -754,7 +628,7 @@ Inset * InsetGraphics::Clone(Buffer const &) const
 	else
 		newInset->cacheHandle = 0;
 	newInset->pixmap = pixmap;
-	newInset->pixmapInitialized = pixmapInitialized;
+	newInset->updateImage = updateImage;
 
 	newInset->setParams(getParams());
 

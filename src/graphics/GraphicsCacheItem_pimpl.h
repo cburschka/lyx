@@ -22,7 +22,7 @@
 
 #include XPM_H_LOCATION
 #include "LString.h"
-#include "graphics/Renderer.h"
+#include "graphics/ImageLoader.h"
 #include "support/syscall.h"
 
 #include "sigc++/signal_system.h"
@@ -38,14 +38,8 @@ public:
 	/// d-tor, frees the image structures.
 	~GraphicsCacheItem_pimpl();
 	
-	/// Get the height of the image. Returns -1 on error.
-	int getHeight() const; 
-	
-	/// Get the width of the image. Returns -1 on error.
-	int getWidth() const;
-
 	/// Return a pixmap that can be displayed on X server.
-	LyXImage * getImage() const; 
+	LyXImage * getImage() const { return image_; };
 
 	typedef GraphicsCacheItem::ImageStatus ImageStatus;
 	
@@ -74,16 +68,12 @@ private:
 
 	/// The file name of the XPM file.
 	string xpmfile;
-	/// The image height
-	int height_;
-	/// The image width
-	int width_;
 	/// Is the pixmap loaded?
 	ImageStatus imageStatus_;
 	/// The image pixmap
-	LyXImage * pixmap_;
+	LyXImage * image_;
 	/// The rendering object.
-	Renderer * renderer;
+	ImageLoader * imageLoader;
 
 	/// The system caller, runs the convertor.
 	Systemcalls syscall;

@@ -12,10 +12,6 @@
 #ifndef LYXIMAGE_H
 #define LYXIMAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 // We need it to know what version to use.
 #include <config.h>
 

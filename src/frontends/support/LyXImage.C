@@ -9,10 +9,6 @@
  *          This file Copyright 2000 Baruch Even
  * ================================================= */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 #include "LyXImage.h"
 

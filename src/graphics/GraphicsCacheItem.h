@@ -49,12 +49,6 @@ public:
 	/// Assignment operator.
 	GraphicsCacheItem & operator=(GraphicsCacheItem const &);
 	
-	/// Get the height of the image. Returns -1 on error.
-	int getHeight() const; 
-	
-	/// Get the width of the image. Returns -1 on error.
-	int getWidth() const; 
-
 	/// Return a pixmap that can be displayed on X server.
 	LyXImage * getImage() const; 
 	///

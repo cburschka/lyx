@@ -1,0 +1,10 @@
+2001-01-21  Baruch Even  <baruch@ev-en.org>
+
+	* LyXImage.h:
+	* LyXImage.C: Removal of the #pragma interface/implementation because of
+	bad interaction with the inclusion of the real implementation, it resulted
+	in errors while linking.
+
+	* LyXImage_X.h:
+	* LyXImage_X.C: Stored the width and height of the image in the image
+	object.

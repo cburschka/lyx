@@ -8,15 +8,13 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libgraphics_la_SOURCES = \
-	Renderer.h \
-	Renderer.C \
-	XPM_Renderer.h \
-	XPM_Renderer.C \
-	EPS_Renderer.h \
-	EPS_Renderer.C \
 	GraphicsCache.h \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \
 	GraphicsCacheItem.C \
 	GraphicsCacheItem_pimpl.h \
 	GraphicsCacheItem_pimpl.C \
+	ImageLoaderXPM.h \
+	ImageLoaderXPM.C \
+	ImageLoader.h \
+	ImageLoader.C 

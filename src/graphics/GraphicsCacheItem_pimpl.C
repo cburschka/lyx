@@ -23,8 +23,7 @@
 #include "GraphicsCacheItem_pimpl.h"
 
 #include "frontends/support/LyXImage.h"
-#include "graphics/XPM_Renderer.h"
-#include "graphics/EPS_Renderer.h"
+#include "ImageLoaderXPM.h"
 #include "support/filetools.h"
 #include "debug.h"
 #include "support/LAssert.h"
@@ -34,24 +33,24 @@ using std::map;
 
 
 GraphicsCacheItem_pimpl::GraphicsCacheItem_pimpl()
-	: height_(-1), width_(-1), imageStatus_(GraphicsCacheItem::Loading),
-	  pixmap_(0), renderer(0), refCount(0)
+	: imageStatus_(GraphicsCacheItem::Loading),
+	  image_(0), imageLoader(0), refCount(0)
 {}
 
 
 GraphicsCacheItem_pimpl::~GraphicsCacheItem_pimpl()
 {
-	delete pixmap_;
-	delete renderer;
+	delete image_; image_ = 0;
+	delete imageLoader; imageLoader = 0;
 }
 
 
 bool
 GraphicsCacheItem_pimpl::setFilename(string const & filename)
 {
+	imageLoader = new ImageLoaderXPM();
 	imageStatus_ = GraphicsCacheItem::Loading;
-
-	renderer = new XPM_Renderer();
+	
 	if (renderXPM(filename))
 		return true;
 	
@@ -66,7 +65,7 @@ static CallbackMap callbackMap;
 
 
 void
-callback(string cmd, int retval)
+static callback(string cmd, int retval)
 {
 	lyxerr << "callback, cmd=" << cmd << ", retval=" << retval << endl;
 
@@ -83,6 +82,8 @@ GraphicsCacheItem_pimpl::imageConverted(int retval)
 	lyxerr << "imageConverted, retval=" << retval << endl;
 
 	if (retval) {
+		lyxerr << "(GraphicsCacheItem_pimpl::imageConverter) "
+			"Error converting image." << endl;
 		imageStatus_ = GraphicsCacheItem::ErrorConverting;
 		return;
 	}
@@ -133,16 +134,14 @@ GraphicsCacheItem_pimpl::renderXPM(string const & filename)
 void
 GraphicsCacheItem_pimpl::loadXPMImage()
 {
-	if (!renderer->setFilename(xpmfile)) {
-		return;
-	}
-
-	if (renderer->renderImage()) {
-		pixmap_ = renderer->getPixmap();
-		width_ = renderer->getWidth();
-		height_ = renderer->getHeight();
+	lyxerr << "Loading XPM Image... ";
+	
+	if (imageLoader->loadImage(xpmfile)) {
+		lyxerr << "Success." << endl;
+		image_ = imageLoader->getImage();
 		imageStatus_ = GraphicsCacheItem::Loaded;
 	} else {
+		lyxerr << "Fail." << endl;
 		imageStatus_ = GraphicsCacheItem::ErrorReading;
 	}
 

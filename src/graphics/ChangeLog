@@ -1,0 +1,8 @@
+2001-01-21  Baruch Even  <baruch@ev-en.org>
+
+	* GraphicsCacheItem.[Ch]: Changes due to the storage of width and height
+	in the image itself and minor cleanups.
+
+	* GraphicsCacheItem_impl.[Ch]: Changes due to the switch to use a new
+	ImageLoader class instead of the older Renderer class. This means change
+	of responsibilities.

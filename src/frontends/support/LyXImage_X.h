@@ -12,10 +12,6 @@
 #ifndef LYXIMAGE_X_H
 #define LYXIMAGE_X_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "frontends/support/LyXImage.h"
 #include <X11/Xlib.h>
 
@@ -26,18 +22,28 @@ public:
 	///
 	LyXImage();
 	///
-	LyXImage(Pixmap pixmap);
+	LyXImage(Pixmap pixmap, unsigned int width, unsigned int height);
 	///
 	~LyXImage();
 
 	///
 	Pixmap getPixmap() const;
-
+	
+	/// Get the image width
+	unsigned int getWidth() const { return width_; }
+	
+	/// Get the image height
+	unsigned int getHeight() const { return height_; }
+	
 private:
 	/// The pixmap itself.
 	Pixmap pixmap_;
 	/// Is the pixmap initialized?
 	bool pixmapInitialized;
+	/// Width of the image
+	unsigned int width_;
+	/// Height of the image
+	unsigned int height_;
 };
 
 #endif

@@ -43,8 +43,9 @@ GraphicsCacheItem::setFilename(string const & filename)
 
 
 GraphicsCacheItem::GraphicsCacheItem(GraphicsCacheItem const & gci)
+	: pimpl(0)
 {
-	pimpl = 0;
+	// copy will set the actual value of the pimpl.
 	copy(gci);
 }
 
@@ -88,7 +89,7 @@ GraphicsCacheItem::destroy()
 				// even before it is deleted.
 				GraphicsCacheItem_pimpl * temp = pimpl;
 				pimpl = 0;
-				delete temp; 
+				delete temp; temp = 0;
 			}
 			GraphicsCache * gc = GraphicsCache::getInstance();
 			gc->removeFile(filename_);
@@ -100,13 +101,5 @@ GraphicsCacheItem::destroy()
 GraphicsCacheItem::ImageStatus 
 GraphicsCacheItem::getImageStatus() const { return pimpl->imageStatus_; }
 
-
-int 
-GraphicsCacheItem::getHeight() const { return pimpl->height_; }	
-
-
-int 
-GraphicsCacheItem::getWidth() const { return pimpl->width_; }
-
 LyXImage * 
-GraphicsCacheItem::getImage() const { return pimpl->pixmap_; }
+GraphicsCacheItem::getImage() const { return pimpl->getImage(); }

@@ -22,8 +22,6 @@
 
 #include "support/LAssert.h"
 
-using std::endl;
-
 /// This variable keeps a tab on whether the translator was set with the
 /// translations.
 static bool translatorsSet = false;
@@ -205,87 +203,14 @@ void writeResize(ostream & os, string const & key,
 	os << ' ' << key << "Resize ";
 
 	os << resizeTranslator.find(resize);
-#if 0
-	// Old code, before using translators
-	switch (resize) {
-	case InsetGraphicsParams::DEFAULT_SIZE:
-		os << "default";
-		break;
-
-	case InsetGraphicsParams::CM:
-		os << "cm";
-		break;
-
-	case InsetGraphicsParams::INCH:
-		os << "inch";
-		break;
-
-	case InsetGraphicsParams::PERCENT_PAGE:
-		os << "percentOfPage";
-		break;
-
-	case InsetGraphicsParams::PERCENT_COLUMN:
-		os << "percentOfColumnt";
-		break;
-	}
-#endif 
-	os << ' ' << key << ' ' << size << endl;
+	os << ' ' << key << ' ' << size << '\n';
 }
 
 static void writeOrigin(ostream & os,
                         InsetGraphicsParams::Origin origin)
 {
 	os << " rotateOrigin " << originTranslator.find(origin);
-
-#if 0
-	// Old method.
-	switch (origin) {
-	case InsetGraphicsParams:: DEFAULT:
-		os << "default";
-		break;
-	case InsetGraphicsParams::	LEFTTOP:
-		os << "LeftTop";
-		break;
-	case InsetGraphicsParams::	LEFTCENTER:
-		os << "LeftCenter";
-		break;
-	case InsetGraphicsParams::	LEFTBASELINE:
-		os << "LeftBaseLine";
-		break;
-	case InsetGraphicsParams::	LEFTBOTTOM:
-		os << "LeftBottom";
-		break;
-	case InsetGraphicsParams::	CENTERTOP:
-		os << "CenterTop";
-		break;
-	case InsetGraphicsParams::	CENTER:
-		os << "Center";
-		break;
-	case InsetGraphicsParams::	CENTERBASELINE:
-		os << "CenterBaseLine";
-		break;
-	case InsetGraphicsParams::	CENTERBOTTOM:
-		os << "CenterBottom";
-		break;
-	case InsetGraphicsParams::	RIGHTTOP:
-		os << "RightTop";
-		break;
-	case InsetGraphicsParams::	RIGHTCENTER:
-		os << "RightCenter";
-		break;
-	case InsetGraphicsParams::	RIGHTBASELINE:
-		os << "RightBaseLine";
-		break;
-	case InsetGraphicsParams::	RIGHTBOTTOM:
-		os << "RightBottom";
-		break;
-		// Current REFERENCE_POINT is aliased to LEFTBASELINE
-		//    case InsetGraphicsParams::	REFERENCE_POINT:
-	}
-
-#endif 
-
-	os << endl;
+	os << '\n';
 }
 
 void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
@@ -294,31 +219,11 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 	if (! filename.empty()) {
 		os << "filename "
 		<< MakeRelPath(filename, OnlyPath(buf->fileName()))
-		<< endl;
+		<< '\n';
 	}
 
 	// Save the display type
-	os << " display " << displayTranslator.find(display) << endl;
-#if 0
-	switch (display) {
-	case COLOR:
-		os << "color";
-		break;
-
-	case GRAYSCALE:
-		os << "grayscale";
-		break;
-
-	case MONOCHROME:
-		os << "monochrome";
-		break;
-
-	case NONE:
-		os << "none";
-		break;
-	}
-	os << endl;
-#endif 
+	os << " display " << displayTranslator.find(display) << '\n';
 
 	// Save the inline status
 	if (inlineFigure)
@@ -329,14 +234,14 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 		os << " subcaption";
 
 	if (! subcaptionText.empty())
-		os << " subcaptionText \"" << subcaptionText << '\"' << endl;
+		os << " subcaptionText \"" << subcaptionText << '\"' << '\n';
 
 	writeResize(os, "width", widthResize, widthSize);
 	writeResize(os, "height", heightResize, heightSize);
 
 	writeOrigin(os, rotateOrigin);
 	if (rotateAngle != 0)
-		os << " rotateAngle " << rotateAngle << endl;
+		os << " rotateAngle " << rotateAngle << '\n';
 }
 
 
@@ -347,23 +252,6 @@ void readResize(InsetGraphicsParams * igp, bool height,
 	InsetGraphicsParams::Resize resize = InsetGraphicsParams::DEFAULT_SIZE;
 
 	resize = resizeTranslator.find(token);
-#if 0
-	// Old code, before translator.
-	if (token == "default")
-		resize = InsetGraphicsParams::DEFAULT_SIZE;
-	else if (token == "cm")
-		resize = InsetGraphicsParams::CM;
-	else if (token == "inch")
-		resize = InsetGraphicsParams::INCH;
-	else if (token == "percentOfPage")
-		resize = InsetGraphicsParams::PERCENT_PAGE;
-	else if (token == "percentOfColumn")
-		resize = InsetGraphicsParams::PERCENT_COLUMN;
-	else {
-		lyxerr << "BUG: When reading resize value of InsetGraphicsParam"
-		" unknown token found '" << token << '\'' << endl;
-	}
-#endif 
 
 	if (height)
 		igp->heightResize = resize;
@@ -394,21 +282,6 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		string const type = lex.GetString();
 
 		display = displayTranslator.find(type);
-#if 0
-		if (type == "color")
-			display = COLOR;
-		else if (type == "grayscale")
-			display = GRAYSCALE;
-		else if (type == "monochrome")
-			display = MONOCHROME;
-		else if (type == "none")
-			display = NONE;
-		else {
-			display = MONOCHROME;
-			lyxerr << "BUG: When reading InsetGraphicsParams"
-			" display has an unknown type " << type << endl;
-		}
-#endif 
 	} else if (token == "inline") {
 		inlineFigure = true;
 	} else if (token == "subcaption") {
