@@ -61,6 +61,7 @@ class RowPainter {
 public:
 	/// initialise painter
 	RowPainter(BufferView const & bv, LyXText const & text,
+		ParagraphList::iterator pit,
 		RowList::iterator rit, int y_offset, int x_offset, int y);
 
 	/// do the painting
@@ -128,11 +129,10 @@ private:
 
 
 RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
-     RowList::iterator rit,
+     ParagraphList::iterator pit, RowList::iterator rit,
      int y_offset, int x_offset, int y)
 	: bv_(bv), pain_(bv_.painter()), text_(text), row_(rit),
-	  pit_(text.getPar(rit)),
-		xo_(x_offset), yo_(y_offset), y_(y)
+	  pit_(pit), xo_(x_offset), yo_(y_offset), y_(y)
 {}
 
 
@@ -523,13 +523,20 @@ void RowPainter::paintDepthBar()
 		return;
 
 	Paragraph::depth_type prev_depth = 0;
-	if (row_ != text_.rows().begin())
-		prev_depth = text_.getPar(boost::prior(row_))->getDepth();
-	Paragraph::depth_type next_depth = 0;
+	if (row_ != text_.firstRow()) {
+		ParagraphList::iterator pit2 = pit_;
+		if (row_ == text_.beginRow(pit2))
+			--pit2;
+		prev_depth = pit2->getDepth();
+	}
 
-	RowList::iterator next_row = boost::next(row_);
-	if (next_row != text_.rows().end())
-		next_depth = text_.getPar(next_row)->getDepth();
+	Paragraph::depth_type next_depth = 0;
+	if (row_ != text_.lastRow()) {
+		ParagraphList::iterator pit2 = pit_;
+		if (boost::next(row_) == text_.endRow(pit2))
+			++pit2;
+		next_depth = pit2->getDepth();
+	}
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
 		int const w = PAPER_MARGIN / 5;
@@ -1057,7 +1064,8 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 }
 
 
-void paintRowsHelper(BufferView const & bv, LyXText const & text,
+void paintRow(BufferView const & bv, LyXText const & text,
+	ParagraphList::iterator pit,
 	RowList::iterator rit, int y_offset, int x_offset, int y)
 {
 	// fix up missing metrics() call for main LyXText
@@ -1088,7 +1096,7 @@ void paintRowsHelper(BufferView const & bv, LyXText const & text,
 #endif
 	}
 
-	RowPainter painter(bv, text, rit, y_offset, x_offset, y);
+	RowPainter painter(bv, text, pit, rit, y_offset, x_offset, y);
 	painter.paint();
 }
 
@@ -1099,7 +1107,8 @@ int paintRows(BufferView const & bv, LyXText const & text,
 	RowList::iterator end = text.rows().end();
 	while (rit != end && yf < y2) {
 		//const_cast<LyXText &>(text).setHeightOfRow(rit);
-		paintRowsHelper(bv, text, rit, y + yo, xo, y + text.top_y());
+		ParagraphList::iterator pit = text.getPar(rit);
+		paintRow(bv, text, pit, rit, y + yo, xo, y + text.top_y());
 		y += rit->height();
 		yf += rit->height();
 		++rit;
