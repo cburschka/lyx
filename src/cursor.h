@@ -184,6 +184,13 @@ private:
 	/// are we on the way to get one?
 	bool mark_;
 
+public:
+	/// the actual cursor position
+	int xo_;
+	int yo_;
+
+private:
+
 	//
 	// math specific stuff that could be promoted to "global" later
 	//
