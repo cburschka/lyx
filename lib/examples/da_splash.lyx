@@ -1,0 +1,175 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\language danish
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Velkommen til LyX!
+\layout Section*
+
+7 ting du bør vide om brugen af LyX
+\layout Enumerate
+
+LyX indeholder grundig dokumentation --- brug den! Start med 
+\family sans 
+\bar under 
+H
+\bar default 
+jælp\SpecialChar \menuseparator
+
+\bar under 
+I
+\bar default 
+ntroduktion
+\family default 
+, som vil give dig et meget kort overblik over dokumentationen\SpecialChar \@.
+ Lær derefter
+ om LyX med
+\family sans 
+ 
+\bar under 
+H
+\bar default 
+jælp\SpecialChar \menuseparator
+
+\bar under 
+G
+\bar default 
+ennemgang\SpecialChar \@.
+
+\layout Enumerate
+
+LyX er, hvad vi kalder en 
+\begin_inset Quotes eld
+\end_inset 
+
+dokument behandler
+\begin_inset Quotes erd
+\end_inset 
+
+\SpecialChar \@.
+ Den er grundlæggende forskellig fra almindelige tekstbehandlere --- på
+ en måde letter det skrivning af dokumenter\SpecialChar \@.
+ Men bare rolig, den er kun en
+ smule anderledes\SpecialChar \@.
+ Dokumentationen vil gøre dette tydeligt for dig
+\begin_float footnote 
+\layout Standard
+
+Fik vi nævnt, at du bør læse dokumentationen?
+\end_float 
+.
+\layout Enumerate
+
+Resultaterne fra LyX ser fantastiske ud! Vælg 
+\family sans 
+\bar under 
+V
+\bar default 
+is\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+ nu, så kan du selv se.
+\layout Enumerate
+
+Ja, LyX kan efterligne (næsten) al LaTeX's funktioner\SpecialChar \@.
+ Og ja, LyX kan importere
+ LaTeX-filer\SpecialChar \@.
+ Erfarne LaTeX-brugere kan skimme resten af 
+\emph on 
+Gennemgangen
+\emph default 
+ og derefter læse afsnittet 
+\begin_inset Quotes eld
+\end_inset 
+
+LyX for LaTeX-brugere
+\begin_inset Quotes erd
+\end_inset 
+
+\SpecialChar \@.
+ (Alle andre: bare rolig, du behøver ikke at kende noget til LaTeX for at
+ kunne bruge LyX\SpecialChar \@.
+)
+\layout Enumerate
+
+Yes, LyX can mimic (almost) all LaTeX functionality.
+ And yes, LyX can import LaTeX files.
+ Experienced LaTeX users should skim the rest of the 
+\emph on 
+Tutorial
+\emph default 
+, then read the 
+\begin_inset Quotes eld
+\end_inset 
+
+LyX for LaTeX Users
+\begin_inset Quotes erd
+\end_inset 
+
+ chapter.
+ (Everyone else: don't worry, you don't need to know LaTeX to use LyX.) 
+\layout Enumerate
+
+LyX har mange funktioner for dem, der læser eller skriver på andre sprog
+ end engelsk\SpecialChar \@.
+ Derover kan tastebindinger, værktøjslinie og mange andre egenskaber
+ kan ændres (de fleste ved at rette i 
+\family typewriter 
+lyxrc
+\family default 
+-filen).
+ Se 
+\family sans 
+\bar under 
+H
+\bar default 
+jælp\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+ersonliggørelse
+\family default 
+ for detaljer\SpecialChar \@.
+
+\layout Enumerate
+
+LyX's hjemmeside er på 
+\family typewriter 
+
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+
+\family default 
+\SpecialChar \@.
+ Find oplysninger om LyX, abonnér på LyX's postlister, tag en grafisk rundtur
+ m.m\SpecialChar \@.
+
+\the_end
