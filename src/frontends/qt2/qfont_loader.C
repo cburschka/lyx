@@ -20,6 +20,11 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "BufferView.h"
+
+#include <qglobal.h>
+#if QT_VERSION < 0x030000
+#include "support/lstrings.h"
+#endif
  
 using std::endl;
  
@@ -149,5 +154,24 @@ bool qfont_loader::available(LyXFont const & f)
 	if (!lyxrc.use_gui)
 		return false;
 
+#if QT_VERSION >= 0x030000
 	return getfontinfo(f)->font.exactMatch();
+#else
+	string tmp;
+	switch (f.family()) {
+	case LyXFont::SYMBOL_FAMILY:  tmp = "symbol"; break;
+	case LyXFont::CMR_FAMILY:     tmp = "cmr10"; break;
+	case LyXFont::CMSY_FAMILY:    tmp = "cmsy10"; break;
+	case LyXFont::CMM_FAMILY:     tmp = "cmmi10"; break;
+	case LyXFont::CMEX_FAMILY:    tmp = "cmex10"; break;
+	case LyXFont::MSA_FAMILY:     tmp = "msam10"; break;
+	case LyXFont::MSB_FAMILY:     tmp = "msbm10"; break;
+	default: break;
+	}
+	if (tmp.empty())
+		return false;
+	else
+		return token(getfontinfo(f)->font.rawName().latin1(), '-', 2)
+			== tmp;
+#endif
 }
