@@ -53,16 +53,16 @@ using lyx::pos_type;
 
 LyXText::LyXText(BufferView * bv)
 	: height(0), width(0), first_y(0),
-	  bv_owner(bv), inset_owner(0), the_locking_inset(0),
-	  need_break_row(0), refresh_y(0), refresh_row(0),
+	  inset_owner(0), the_locking_inset(0), need_break_row(0), 
+	  refresh_y(0), refresh_row(0), bv_owner(bv), 
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
 {}
 
 
 LyXText::LyXText(InsetText * inset)
 	:  height(0), width(0), first_y(0),
-	   bv_owner(0), inset_owner(inset), the_locking_inset(0),
-	   need_break_row(0), refresh_y(0), refresh_row(0),
+	   inset_owner(inset), the_locking_inset(0), need_break_row(0), 
+	   refresh_y(0), refresh_row(0), bv_owner(0), 
 	   status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
 {}
 

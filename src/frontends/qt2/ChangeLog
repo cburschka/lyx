@@ -1,3 +1,9 @@
+2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QBibtexDialog.C: Fix browsing mechanism of *.sty files (bug 773).
+
+	* ui/QBibtexDialogBase.ui: Remove unused Update button (bug 773).
+
 2003-02-13  John Levon  <levon@movementarian.org>
 
 	* ui/QSpellcheckerDialogBase.ui: A&dd not &Add, bug 884

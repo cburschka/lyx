@@ -1,3 +1,8 @@
+2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text2.C (LyXText): change order of initilizers to shut off
+	warnings 
+
 2003-02-14  John Levon  <levon@movementarian.org>
 
 	* buffer.C: use ParIterator for getParFromID()

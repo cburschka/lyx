@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>285</width>
-            <height>333</height>
+            <width>281</width>
+            <height>315</height>
         </rect>
     </property>
     <property stdset="1">
@@ -213,25 +213,6 @@
                 <string>Choose a style file</string>
             </property>
         </widget>
-        <widget row="7"  column="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>styleListPB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Update</string>
-            </property>
-            <property stdset="1">
-                <name>autoDefault</name>
-                <bool>false</bool>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Update style list</string>
-            </property>
-        </widget>
         <widget row="9"  column="0"  rowspan="1"  colspan="2" >
             <class>QLayoutWidget</class>
             <property stdset="1">
@@ -376,7 +357,6 @@
     <tabstop>deletePB</tabstop>
     <tabstop>stylePB</tabstop>
     <tabstop>styleCB</tabstop>
-    <tabstop>styleListPB</tabstop>
     <tabstop>bibtocCB</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>closePB</tabstop>
