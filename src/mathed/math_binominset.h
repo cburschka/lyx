@@ -10,7 +10,7 @@
  */
 
 #ifndef MATH_BINOMINSET_H
-#define MATH_DINOMINSET_H
+#define MATH_BINOMINSET_H
 
 #include "math_fracbase.h"
 
