@@ -739,7 +739,8 @@ int BufferView::lockInset(UpdatableInset * inset)
 void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()) {
-		y += text->cursor.y;
+		y += text->cursor.y +
+		    the_locking_inset->InsetInInsetY();
 		pimpl_->screen->ShowManualCursor(x, y, asc, desc,
 					 LyXScreen::BAR_SHAPE);
 	}

@@ -1,5 +1,11 @@
 2000-04-10  Juergen Vigna  <jug@sad.it>
 
+	* src/BufferView2.C (showLockedInsetCursor): small bugfix for
+	misplaced cursor when inset in inset is locked.
+
+	* src/insets/insettext.C (LocalDispatch): small fix so that a
+	BREAKLINE is not inserted if we don't permit it with autBreakRows.
+
 	* src/insets/insetfoot.C (GetDrawFont): implemented this as the
 	footnote font should be decreased in size twice when displaying.
 

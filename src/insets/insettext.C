@@ -693,6 +693,8 @@ InsetText::LocalDispatch(BufferView * bv,
 	return DISPATCHED;
     case LFUN_BREAKPARAGRAPH:
     case LFUN_BREAKLINE:
+	if (!autoBreakRows)
+	    return DISPATCHED;
 	bv->text->SetUndo(Undo::INSERT, 
 	    bv->text->cursor.par->ParFromPos(bv->text->cursor.pos)->previous,
 	    bv->text->cursor.par->ParFromPos(bv->text->cursor.pos)->next);
