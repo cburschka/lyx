@@ -1,47 +1,48 @@
 
-			   Building LyX/Mac
+		        Building LyX/Mac-1.3.4
 
 		  Ronald Florence <ron@18james.com>
 
+   LyX/Mac is built from the LyX source, the GPL-licensed Trolltech
+   Qt/Mac library, and a custom application bundle.  Qt-3.1.2 as
+   patched here is fully functional with MacOS-10.2 and 10.3.
 
-   Make sure you have installed the MacOSX development tools.  The
-   procedure described here builds LyX-1.3.4 linked with a static Qt
-   library and installs the LyX and Start-LyX applications.
+   You will need the MacOSX development tools.  The procedure
+   described here builds LyX linked with a static Qt library.  If you
+   are using the tcsh shell, change the "export VAR=value" statements
+   to "setenv VAR value".
 
-   Download the GPL-licensed MacOSX Qt 3.1.2 library source code from
-   <ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit>.  Untar
-   the .tar.gz file in a convenient directory in /usr/local/src or
-   /usr/local, cd to the Qt source directory, then:
+   1.  Download the GPL-licensed Qt/Mac library source code from
+       <ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit>,
+       untar in a convenient directory, cd to the top of the Qt source
+       hierarcy, and:
 
-     setenv QTDIR `pwd` 
-     patch -p0 < lyx-src-directory/development/MacOSX/qt.patch
+     export QTDIR=`pwd` 
+     patch -p0 < LYX-SOURCE-DIRECTORY/development/MacOSX/qt.patch
      sudo gcc_select 2 
      ./configure -static   [for Panther, use "./configure -static -lresolv"]
      make 
- 
-   Using the same terminal session, cd to the top of the LyX source
-   hierarchy, and:
 
-     setenv LDFLAGS "-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
+   2.  Download the LyX/Mac framework from
+       <ftp://ftp.lyx.org/pub/lyx/contrib/lyx-mac-1.3.4-framework.tar.gz>
+       and unpack it in /Applications
+ 
+   3.  Using the same terminal session you used to build the Qt
+       library, cd to the top of the LyX source hierarchy, and:
+
+     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
      ./configure --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man
      make
-
-   Download the LyX Framework <http://www.18james.com/code/LyX.tar.gz>
-   and run the installer. Then in the terminal where you built LyX:
-
      make install
      rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
      sudo gcc_select 3 
 
+
    For information on configuring LyX/Mac, please see the howto at
    <http://www.18james.com/lyx_on_aqua.html>. The binary installation
-   of LyX/Mac sets the PATH in ~/.MacOSX/environment.plist, installs
-   the LyX math fonts, configures LyX to use the reLyX and noweb2lyx
-   commands in the application package and to use system defaults for
-   viewers, sets up the lyxpipe, installs several LaTeX packages, and
-   includes lyxeditor and the functionality for inverse DVI search
-   with some DVI-previewers.  You will need to do this configuration
-   manually if you build LyX/Mac yourself.
+   of LyX/Mac installs additional LaTeX fonts and packages, and
+   provides additional functionality including inverse DVI search with
+   some DVI-previewers.
 
    The information on this page is believed to be accurate, has been
    used successfully on many systems and sites, and has benefited from
