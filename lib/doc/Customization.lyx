@@ -1605,11 +1605,11 @@ Submenu
 s.
 \layout Section
 
-Converters, Formats and Viewers
+Converters, Formats, Viewers, Editors and Copiers
 \layout Standard
 
-LyX has a new and powerful mechanism to convert to and from any file format
- using external programs.
+LyX has a powerful mechanism to convert to and from any file format using
+ external programs.
  Define a pair of formats, e.g.
 
 \family typewriter 
@@ -1666,7 +1666,7 @@ ools\SpecialChar \menuseparator
 \bar under 
 P
 \bar default 
-references:Converters
+references:Conversion
 \family default 
  dialog.
  For example, to change the 
@@ -1689,6 +1689,55 @@ M
 odify
 \family default 
 .
+\layout Standard
+
+Editors are like viewers: Each Format can have an Editor associated to it,
+ and they can be altered via the 
+\family sans 
+\bar under 
+T
+\bar default 
+ools\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+references:Conversion
+\family default 
+ dialog.
+ LyX uses them whenever an included file
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+This can be an included 
+\family typewriter 
+.tex
+\family default 
+ file, a verbatim included text file, external material or an included graphics
+ file.
+\end_inset 
+
+ needs to be edited.
+\layout Standard
+
+Finally, each Format can have a Copier associated to it.
+ Since all conversions from one Format to another take place in a temporary
+ directory, it is sometimes necessary to modify a file before copying it
+ to the temporary directory
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+For example, the file may reference other files with relative filenames,
+ which will become invalid in the temporary directory
+\end_inset 
+
+.
+ This is done by the Copier: It copies a file to (or from) the temporary
+ directory and may modify it in the process.
 \layout Section
 
 BibTeX and makeindex
@@ -4693,7 +4742,7 @@ There are two situations you are likely to encounter when wanting to support
 ) files.
 \layout Subsection
 
-A layout for an 
+A layout for a 
 \family sans 
 sty
 \family default 
@@ -7470,6 +7519,15 @@ Including External Material
 Background
 \layout Standard
 
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+This section is completely outdated.
+\end_inset 
+
 One often requested feature from LyX users is to be able to interface LyX
  with XFig, Dia, or other similar applications that specialize in producing
  a certain kind of diagram, figure, schematic or whatever material might
@@ -7610,6 +7668,15 @@ ghostview
  ultimately be more productive.
 \layout Standard
 
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+This paragraph is outdated
+\end_inset 
+
 So, all in all, LyX has information about a number of different programs
  to use behind the scenes in order to realize all of this machinery.
  This information, in fact, is exactly what is contained in the templates.
@@ -7670,6 +7737,15 @@ nsert
  view, edit or produce the material that is used in the resulting file.
 \layout Standard
 
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+This paragraph is outdated
+\end_inset 
+
 At the top of this dialog, there is a drop-down list where you can chose
  which template should be used.
  Just below the template drop-down, there's a text area with a short blurb
@@ -7691,6 +7767,15 @@ Browse
  no need to give access to it in the user interface.
 \layout Standard
 
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+This paragraph is outdated
+\end_inset 
+
 At the bottom of the dialog, you'll find a general input box called 
 \family sans 
 Parameters
@@ -7701,6 +7786,15 @@ Parameters
  template, but it typically allows you to define variations on how the produced
  file should be generated.
 \layout Standard
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+This paragraph is outdated
+\end_inset 
 
 At the right side of the dialog, you'll find three buttons: 
 \family sans 
@@ -7845,8 +7939,599 @@ lib/external_templates
 .lyx/external_templates
 \family default 
 .
- At some point in time, hopefully somebody will document the template contents,
- and the syntax used to define your templates.
+\layout Standard
+
+A typical template looks like this:
+\layout LyX-Code
+
+Template XFig
+\layout LyX-Code
+
+GuiName "XFig: $$AbsOrRelPathParent$$Basename"
+\layout LyX-Code
+
+HelpText
+\layout LyX-Code
+
+An XFig figure.
+\layout LyX-Code
+
+HelpTextEnd
+\layout LyX-Code
+
+InputFormat fig
+\layout LyX-Code
+
+FileFilter "*.fig"
+\layout LyX-Code
+
+AutomaticProduction true
+\layout LyX-Code
+
+Transform Rotate
+\layout LyX-Code
+
+Transform Resize
+\layout LyX-Code
+
+Format LaTeX
+\layout LyX-Code
+
+TransformCommand Rotate RotationLatexCommand
+\layout LyX-Code
+
+TransformCommand Resize ResizeLatexCommand
+\layout LyX-Code
+
+Product "$$RotateFront$$ResizeFront
+\layout LyX-Code
+
+         
+\backslash 
+
+\backslash 
+input{$$AbsOrRelPathMaster$$Basename.pstex_t}
+\layout LyX-Code
+
+         $$ResizeBack$$RotateBack"
+\layout LyX-Code
+
+UpdateFormat pstex
+\layout LyX-Code
+
+UpdateResult "$$AbsPath$$Basename.pstex_t"
+\layout LyX-Code
+
+Requirement "graphicx"
+\layout LyX-Code
+
+ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
+\layout LyX-Code
+
+ReferencedFile latex "$$AbsPath$$Basename.eps"
+\layout LyX-Code
+
+ReferencedFile dvi "$$AbsPath$$Basename.eps"
+\layout LyX-Code
+
+FormatEnd
+\layout LyX-Code
+
+Format PDFLaTeX
+\layout LyX-Code
+
+TransformCommand Rotate RotationLatexCommand
+\layout LyX-Code
+
+TransformCommand Resize ResizeLatexCommand
+\layout LyX-Code
+
+Product "$$RotateFront$$ResizeFront
+\layout LyX-Code
+
+         
+\backslash 
+
+\backslash 
+input{$$AbsOrRelPathMaster$$Basename.pdftex_t}
+\layout LyX-Code
+
+         $$ResizeBack$$RotateBack"
+\layout LyX-Code
+
+UpdateFormat pdftex
+\layout LyX-Code
+
+UpdateResult "$$AbsPath$$Basename.pdftex_t"
+\layout LyX-Code
+
+Requirement "graphicx"
+\layout LyX-Code
+
+ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
+\layout LyX-Code
+
+ReferencedFile latex "$$AbsPath$$Basename.pdf"
+\layout LyX-Code
+
+FormatEnd
+\layout LyX-Code
+
+Format Ascii
+\layout LyX-Code
+
+Product "$$Contents(
+\backslash 
+"$$AbsPath$$Basename.asc
+\backslash 
+")"
+\layout LyX-Code
+
+UpdateFormat asciixfig
+\layout LyX-Code
+
+UpdateResult "$$AbsPath$$Basename.asc"
+\layout LyX-Code
+
+FormatEnd
+\layout LyX-Code
+
+Format DocBook
+\layout LyX-Code
+
+Product "<graphic fileref=
+\backslash 
+"$$AbsOrRelPathMaster$$Basename.eps
+\backslash 
+">
+\layout LyX-Code
+
+         </graphic>"
+\layout LyX-Code
+
+UpdateFormat eps
+\layout LyX-Code
+
+UpdateResult "$$AbsPath$$Basename.eps"
+\layout LyX-Code
+
+ReferencedFile docbook "$$AbsPath$$Basename.eps"
+\layout LyX-Code
+
+ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+\layout LyX-Code
+
+FormatEnd
+\layout LyX-Code
+
+Format LinuxDoc
+\layout LyX-Code
+
+Product "[XFig: $$FName]"
+\layout LyX-Code
+
+FormatEnd
+\layout LyX-Code
+
+TemplateEnd
+\layout Standard
+
+As you can see, the template is enclosed in 
+\family typewriter 
+Template
+\family default 
+ \SpecialChar \ldots{}
+ 
+\family typewriter 
+TemplateEnd
+\family default 
+.
+ It contains a header specifying some general settings, and for each supported
+ primary document file format a section 
+\family typewriter 
+Format
+\family default 
+ \SpecialChar \ldots{}
+ 
+\family typewriter 
+FormatEnd
+\family default 
+.
+\layout Subsection
+
+The template header
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Template\SpecialChar ~
+<id>
+\family default 
+\series default 
+ A unique name for the template.
+ It must not contain substitution macros (see below).
+\layout Description
+
+
+\family typewriter 
+\series medium 
+GuiName\SpecialChar ~
+<guiname>
+\family default 
+\series default 
+ The text that is displayed on the button.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+HelpText\SpecialChar ~
+<text>\SpecialChar ~
+HelpTextEnd
+\family default 
+\series default 
+ The help text that is used in the External dialog.
+ Provide enough information to explain to the user just what the template
+ can provide him with.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+InputFormat\SpecialChar ~
+<format>
+\family default 
+\series default 
+ The file format of the original file.
+ This must be the name of a format that is known to LyX (see the 
+\family sans 
+\bar under 
+T
+\bar default 
+ools\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+references:Conversion
+\family default 
+ dialog).
+ Use 
+\family typewriter 
+"*"
+\family default 
+ if the template can handle original files of more than one format.
+ LyX will attempt to interrogate the file itself in order to deduce its
+ format in this case.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+FileFilter\SpecialChar ~
+<pattern>
+\family default 
+\series default 
+ A glob pattern that is used in the file dialog to filter out the desired
+ files.
+ If there is more than one possible file extension (e.g.\SpecialChar ~
+tgif has 
+\family typewriter 
+.obj
+\family default 
+ and 
+\family typewriter 
+.tgo
+\family default 
+), use something like 
+\family typewriter 
+"*.{obj,tgo}"
+\family default 
+.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+AutomaticProduction\SpecialChar ~
+true|false
+\family default 
+\series default 
+ Wether the file represented by the template must be generated by LyX.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Transform\SpecialChar ~
+Rotate|Resize|Clip|Extra
+\family default 
+\series default 
+ This command specifies which transformations are supported by this template.
+ It may occur zero or more times.
+ This command enables the corresponding tabs in the external dialog.
+ Each 
+\family typewriter 
+Transform
+\family default 
+ command must have either a corresponding 
+\family typewriter 
+TransformCommand
+\family default 
+ or a 
+\family typewriter 
+TransformOption
+\family default 
+ command in the 
+\family typewriter 
+Format
+\family default 
+ section.
+ Otherwise the transformation will not be supported by that format.
+\layout Subsection
+
+The Format section
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Format\SpecialChar ~
+LaTeX|PDFLaTeX|Ascii|DocBook|LinuxDoc
+\family default 
+\series default 
+ The primary document file format that this format definition is for.
+ Not every template has a sensible representation in all document file formats.
+ Please define nevertheless a 
+\family typewriter 
+Format
+\family default 
+ section for all formats.
+ Use a dummy text when no representation is available (see the LinuxDoc
+ format in the example above).
+ Then you can at least see a reference to the external material in the exported
+ document.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+TransformCommand\SpecialChar ~
+Rotate\SpecialChar ~
+RotationLatexCommand
+\family default 
+\series default 
+ This command specifies that the built in LaTeX command should be used for
+ rotation.
+ This command may occur once or not at all.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+TransformCommand\SpecialChar ~
+Resize\SpecialChar ~
+ResizeLatexCommand
+\family default 
+\series default 
+ This command specifies that the built in LaTeX command should be used for
+ resizing.
+ This command may occur once or not at all.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+TransformOption\SpecialChar ~
+Rotate\SpecialChar ~
+RotationLatexOption
+\family default 
+\series default 
+ This command specifies that rotation is done via an optional argument.
+ This command may occur once or not at all.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+TransformOption\SpecialChar ~
+Resize\SpecialChar ~
+ResizeLatexOption
+\family default 
+\series default 
+ This command specifies that resizing is done via an optional argument.
+ This command may occur once or not at all.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+TransformOption\SpecialChar ~
+Clip\SpecialChar ~
+ClipLatexOption
+\family default 
+\series default 
+ This command specifies that clipping is done via an optional argument.
+ This command may occur once or not at all.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+TransformOption\SpecialChar ~
+Extra\SpecialChar ~
+ExtraLatexOption
+\family default 
+\series default 
+ This command specifies that an extra optional argument is used.
+ This command may occur once or not at all.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Product\SpecialChar ~
+<text>
+\family default 
+\series default 
+ The text that is inserted in the exported document.
+ This is actually the most important command and can be quite complex.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+UpdateFormat\SpecialChar ~
+<format>
+\family default 
+\series default 
+ The file format of the converted file.
+ This must be the name of a format that is known to LyX (see the 
+\family sans 
+\bar under 
+T
+\bar default 
+ools\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+references:Conversion
+\family default 
+ dialog).
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+UpdateResult\SpecialChar ~
+<filename>
+\family default 
+\series default 
+ The file name of the converted file.
+ The file name must be absolute.
+ This command must occur exactly once.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+ReferencedFile\SpecialChar ~
+<format>\SpecialChar ~
+<filename>
+\family default 
+\series default 
+ This command denotes files that are created by the conversion process and
+ are needed for a particular export format.
+ If the filename is relative, it is interpreted relative to the master document.
+ This command may be given zero or more times.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Requirement\SpecialChar ~
+<package>
+\family default 
+\series default 
+ The name of a required LaTeX package.
+ The package is included via 
+\family typewriter 
+
+\backslash 
+usepackage{}
+\family default 
+ in the LaTeX preamble.
+ This command may occur zero or more times.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Preamble\SpecialChar ~
+<name>
+\family default 
+\series default 
+ This command specifies a preamble snippet that will be included in the
+ LaTeX preamble.
+ It has to be defined using
+\family typewriter 
+ PreambleDef
+\family default 
+ \SpecialChar \ldots{}
+ 
+\family typewriter 
+PreambleDefEnd
+\family default 
+.
+ This command may occur zero or more times.
+\layout Description
+
+
+\family typewriter 
+\series medium 
+Option\SpecialChar ~
+<name>\SpecialChar ~
+<value>
+\family default 
+\series default 
+ This command defines an additional macro 
+\family typewriter 
+$$<name>
+\family default 
+ for substitution in 
+\family typewriter 
+Product
+\family default 
+.
+ 
+\family typewriter 
+<value>
+\family default 
+ itself may contain substitution macros.
+ The advantage over using 
+\family typewriter 
+<value>
+\family default 
+ directly in 
+\family typewriter 
+Product
+\family default 
+ is that the substituted value of 
+\family typewriter 
+$$<name>
+\family default 
+ is sanitized so that it is a valid optional argument in the document format.
+ This command may occur zero or more times.
+\layout Subsection
+
+Preamble definitions
+\layout Standard
+
+The external template configuration file may contain additional preamble
+ definitions enclosed by 
+\family typewriter 
+PreambleDef
+\family default 
+ \SpecialChar \ldots{}
+ 
+\family typewriter 
+PreambleDefEnd
+\family default 
+.
+ They can be used by the templates in the 
+\family typewriter 
+Format
+\family default 
+ section.
 \layout Section
 
 The substitution mechanism
@@ -7859,16 +8544,44 @@ When the external material facility invokes an external program, it is done
 \layout Standard
 
 Also, whenever external material is to be displayed, the name will be produced
- by the substitution mechanism.
+ by the substitution mechanism, and most other commands in the template
+ definition support substitution as well.
 \layout Standard
 
 The available macros are the following:
 \layout Description
 
 $$FName The filename of the file specified in the external material dialog.
+ This is either an absolute name, or it is relative to the LyX document.
 \layout Description
 
-$$Basename The filename without the extension.
+$$Basename The filename without path and without the extension.
+\layout Description
+
+$$Extension The file extension (including the dot).
+\layout Description
+
+$$FPath The path part of 
+\family typewriter 
+$$FName
+\family default 
+ (absolute name or relative to the LyX document).
+\layout Description
+
+$$AbsPath The absolute file path.
+\layout Description
+
+$$RelPathMaster The file path, relative to the master LyX document.
+\layout Description
+
+$$RelPathParent The file path, relative to the LyX document.
+\layout Description
+
+$$AbsOrRelPathMaster The file path, absolute or relative to the master LyX
+ document.
+\layout Description
+
+$$AbsOrRelPathParent The file path, absolute or relative to the LyX document.
 \layout Description
 
 $$Tempname A name and full path to a temporary file which will be automatically
@@ -7896,16 +8609,148 @@ $$Sysdir This macro will expand to the absolute path of the system directory.
  bundled with LyX.
 \layout Standard
 
-In addition to these, the facility will expand general environment variables
- with a syntax like 
+All path macros contain a trailing directory separator, so you can construct
+ e.g.
+ the absolute filename with 
 \family typewriter 
-${PATH}
+$$AbsPath$$Basename$$Extension
 \family default 
 .
+\layout Standard
+
+The macros above are substituted in all commands unless otherwise noted.
+ The command 
+\family typewriter 
+Product
+\family default 
+ supports additionally the following substitutions if they are enabled by
+ the 
+\family typewriter 
+Transform
+\family default 
+ and 
+\family typewriter 
+TransformCommand
+\family default 
+ commands:
+\layout Description
+
+$$ResizeFront The front part of the resize command.
+\layout Description
+
+$$ResizeBack The back part of the resize command.
+\layout Description
+
+$$RotateFront The front part of the rotation command.
+\layout Description
+
+$$RotateBack The back part of the rotation command.
+\layout Standard
+
+The value string of the 
+\family typewriter 
+Option
+\family default 
+ command supports additionally the following substitutions if they are enabled
+ by the 
+\family typewriter 
+Transform
+\family default 
+ and 
+\family typewriter 
+TransformOption
+\family default 
+ commands:
+\layout Description
+
+$$Clip The clip option.
+\layout Description
+
+$$Extra The extra option.
+\layout Description
+
+$$Resize The resize option.
+\layout Description
+
+$$Rotate The rotation option.
+\layout Standard
+
+You may ask why there are so many path macros.
+ There are mainly two reasons:
+\layout Standard
+
+First, relative and absolute file names should remain relative or absolute,
+ respectively.
+ Users may have reasons to prefer either form.
+ Relative names are useful for portable documents that should work on different
+ machines, for example.
+ Absolute names may be required by some programs.
+\layout Standard
+
+Second, LaTeX treats relative file names differently than LyX and other
+ programs in nested included files.
+ For LyX, a relative file name is always relative to the document that contains
+ the file name.
+ For LaTeX, it is always relative to the master document.
+ These two definitions are identical if you have only one document, but
+ differ if you have a master document that includes part documents.
+ That means that relative filenames must be transformed when presented to
+ LaTeX.
+ Fortunately LyX does this automatically for you if you choose the right
+ macros.
+\layout Standard
+
+So which path macro should be used in new template definitions? The rule
+ is not difficult:
+\layout Itemize
+
+Use 
+\family typewriter 
+$$AbsPath
+\family default 
+ if an absolute path is required.
+\layout Itemize
+
+Use 
+\family typewriter 
+$$AbsOrRelPathMaster
+\family default 
+ if the substituted string is some kind of LaTeX input.
+\layout Itemize
+
+Else use 
+\family typewriter 
+$$AbsOrRelPathParent
+\family default 
+ in order to preserve the user's choice.
+\layout Standard
+
+There are special cases where this rule does not work and e.g.\SpecialChar ~
+relative names
+ are needed, but normally it will work just fine.
+ One example for such a case is the command 
+\family typewriter 
+ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
+\family default 
+ in the XFig template above: We can't use the absolute name because the
+ copier for 
+\family typewriter 
+.pstex_t
+\family default 
+ files needs the relative name in order to rewrite the file content.
 \layout Section
 
 Security discussion
 \layout Standard
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+This section is outdated
+\end_inset 
 
 The external material feature interfaces with a lot of external programs
  and does so automatically, so we have to consider the security implications
