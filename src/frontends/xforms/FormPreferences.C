@@ -1827,6 +1827,7 @@ void FormPreferences::LnFmisc::apply() const
 		fl_get_button(dialog_->check_cursor_follows_scrollbar);
 	lyxrc.dialogs_iconify_with_main =
 		fl_get_button(dialog_->check_dialogs_iconify_with_main);
+	lyxrc.preview = fl_get_button(dialog_->check_preview_latex);
 	lyxrc.autosave = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_autosave));
 	lyxrc.wheel_jump = static_cast<unsigned int>
@@ -1872,6 +1873,7 @@ void FormPreferences::LnFmisc::build()
 	setPrehandler(dialog_->check_ask_new_file);
 	setPrehandler(dialog_->check_cursor_follows_scrollbar);
 	setPrehandler(dialog_->check_dialogs_iconify_with_main);
+	setPrehandler(dialog_->check_preview_latex);
 	setPrehandler(dialog_->counter_wm_jump);
 	setPrehandler(dialog_->radio_display_monochrome);
 	setPrehandler(dialog_->radio_display_grayscale);
@@ -1895,6 +1897,8 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription(LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR);
 	else if (ob == dialog_->check_dialogs_iconify_with_main)
 		str = lyxrc.getDescription(LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN);
+	else if (ob == dialog_->check_preview_latex)
+		str = lyxrc.getDescription(LyXRC::RC_PREVIEW);
 	else if (ob == dialog_->counter_autosave)
 		str = lyxrc.getDescription(LyXRC::RC_AUTOSAVE);
 	else if (ob == dialog_->counter_wm_jump)
@@ -1919,6 +1923,8 @@ void FormPreferences::LnFmisc::update()
 		      lyxrc.cursor_follows_scrollbar);
 	fl_set_button(dialog_->check_dialogs_iconify_with_main,
 		      lyxrc.dialogs_iconify_with_main);
+	fl_set_button(dialog_->check_preview_latex,
+		      lyxrc.preview);
 	fl_set_counter_value(dialog_->counter_autosave, lyxrc.autosave);
 	fl_set_counter_value(dialog_->counter_wm_jump, lyxrc.wheel_jump);
 
