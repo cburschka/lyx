@@ -1,3 +1,10 @@
+2004-04-07  Angus Leeming  <angus@localhost.localdomain>
+
+	* insetexternal.C (priv_dispatch): 
+	* insetinclude.C (priv_dispatch): prevent crash by invoking
+	InsetOld::priv_dispatch at the end of the switch, rather than
+	InsetOld::dispatch...
+
 2004-04-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetcollapsable.C:

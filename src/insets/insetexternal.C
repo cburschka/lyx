@@ -472,7 +472,7 @@ void InsetExternal::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::dispatch(cur, cmd);
+		InsetOld::priv_dispatch(cur, cmd);
 	}
 }
 
