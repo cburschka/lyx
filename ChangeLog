@@ -1,7 +1,16 @@
+1999-10-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/reLyX/Makefile.am: added RelyxFigure.pm and Verbatim.pm as
+	per Kayvan's instructions.
+
 1999-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/Makefile.am: add a definition for localedir, so that locales
 	are found after installation (Kayvan)
+
+1999-10-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* development/.cvsignore: new file.
 
 1999-10-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

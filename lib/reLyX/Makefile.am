@@ -8,6 +8,7 @@ man_MANS = reLyX.1
 EXTRA_DIST = BUGS BasicLyX.pm CHANGES CleanTeX.pm LastLyX.pm MANIFEST \
 	MakePreamble.pm ReadCommands.pm RelyxTable.pm reLyX.pod \
 	reLyXmain.pl syntax.default test.ltx test.lyx reLyX.man \
+	RelyxFigure.pm Verbatim.pm \
 	$(LYXDISTDIRS)
 
 LIBINSTFILES = *.pm *.pl README BUGS CHANGES reLyX.pod syntax.default Text/*.pm

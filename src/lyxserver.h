@@ -9,8 +9,8 @@
 *
 *======================================================*/
 
-#ifndef _LYXSERVER_H_
-#define _LYXSERVER_H_
+#ifndef LYXSERVER_H
+#define LYXSERVER_H
 
 #ifdef __GNUG__
 #pragma interface
