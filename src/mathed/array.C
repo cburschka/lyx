@@ -280,3 +280,16 @@ byte & MathedArray::operator[](int i)
 {
 	return bf_[i];
 }
+
+
+void MathedArray::dump(ostream & os) const
+{
+	buffer_type::const_iterator cit = bf_.begin();
+	buffer_type::const_iterator end = bf_.end();
+	for (; cit != end; ++cit) {
+		os << (*cit);
+	}
+	os << endl;
+}
+
+	

@@ -43,16 +43,17 @@ MathedIter::MathedIter()
 {}
 
 
-
 MathedArray * MathedIter::GetData() const
 {
 	return array;
 }
 
+
 short MathedIter::fcode() const
 {
 	return fcode_; 
 }
+
 
 void MathedIter::fcode(short c) const
 {

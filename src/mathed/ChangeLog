@@ -1,5 +1,37 @@
 2001-02-28  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* formulamacro.C (Read): add comment.
+
+	* math_parser.C (mathed_parse): fix another potential problem by
+	passing a freestanding mathedarray.
+
+	* math_root.C (GetData): add const version
+
+	* math_parinset.C (~MathParInset): delete
+	(GetData): add const version
+
+	* math_matrixinset.C (MathMatrixInset): delete pointer version,
+	make it a proper copy constructor instead
+	(Clone): change acc.
+	(MathMatrixInset): remvoe default val for m and n
+
+	* math_macro.C (GetData): add const version
+
+	* math_fracinset.C (GetData): add const version
+
+	* math_cursor.C (SelCopy): make p1 and p2 const
+	(SelCut): make p1 and p2 const
+
+	* formula.h: add '_' on priv vars. Cnages in formula.C acc. to this
+	(LyxCode): move inline out of class
+	(ConvertFont): ditto
+	(display): ditto
+
+	* array.[Ch] (dump): method added for debugging purposes
+
+	* math_parser.C (mathed_parse): pass a freestanding mathedarray to
+	mathed_parse when reading a matrix.
+
 	* math_spaceinset.[Ch]: add pragma, make variables private add
 	'_', change order of method definitions.
 

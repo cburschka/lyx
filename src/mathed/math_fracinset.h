@@ -39,6 +39,8 @@ public:
 	///
 	MathedArray & GetData();
 	///
+	MathedArray const & GetData() const;
+	///
 	bool setArgumentIdx(int i); // was bool Up/down(void);
 	///
 	int getArgumentIdx() const;

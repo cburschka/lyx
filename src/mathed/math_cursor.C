@@ -899,8 +899,9 @@ void MathedCursor::MacroModeClose()
 void MathedCursor::SelCopy()
 {
 	if (selection) {
-		int p1 = (cursor->getPos() < selpos) ? cursor->getPos() : selpos;
-		int p2 = (cursor->getPos() > selpos) ?
+		int const p1 = (cursor->getPos() < selpos) ?
+			cursor->getPos() : selpos;
+		int const p2 = (cursor->getPos() > selpos) ?
 			cursor->getPos() : selpos;
 		selarray = *(cursor->GetData());
 		selarray.shrink(p1, p2);
@@ -916,8 +917,10 @@ void MathedCursor::SelCut()
 		if (cursor->getPos() == selpos)
 			return;
 
-		int p1 = (cursor->getPos() < selpos) ? cursor->getPos() : selpos;
-		int p2 = (cursor->getPos() > selpos) ? cursor->getPos() : selpos;
+		int const p1 = (cursor->getPos() < selpos) ?
+			cursor->getPos() : selpos;
+		int const p2 = (cursor->getPos() > selpos) ?
+			cursor->getPos() : selpos;
 		selarray = *(cursor->GetData());
 		selarray.shrink(p1, p2);
 		cursor->Clean(selpos);

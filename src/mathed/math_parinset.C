@@ -35,12 +35,6 @@ MathParInset::MathParInset(short st, string const & nm, short ot)
 }
 
 
-// This is virtual and needed.
-MathParInset::~MathParInset()
-{
-}
-
-
 MathedInset * MathParInset::Clone()
 {
 	return new MathParInset(*this);
@@ -431,6 +425,12 @@ bool MathParInset::Permit(short f) const
 
 
 MathedArray & MathParInset::GetData()
+{
+	return array;
+}
+
+
+MathedArray const & MathParInset::GetData() const
 {
 	return array;
 }

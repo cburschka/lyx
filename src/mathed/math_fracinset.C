@@ -87,6 +87,15 @@ MathedArray & MathFracInset::GetData()
 }
 
 
+MathedArray const & MathFracInset::GetData() const
+{
+	if (idx_ == 0)
+		return array;
+	else
+		return den_.GetData();
+}
+
+
 bool MathFracInset::Inside(int x, int y) 
 {
 	int const xx = xo() - (width - w0_) / 2;

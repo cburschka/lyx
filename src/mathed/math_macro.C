@@ -140,6 +140,12 @@ MathedArray & MathMacro::GetData()
 } 
 
 
+MathedArray const & MathMacro::GetData() const
+{ 
+	return args_[idx_].array; 
+} 
+
+
 int MathMacro::GetColumns() const
 {
 	return tmplate_->getMacroPar(idx_)->GetColumns();

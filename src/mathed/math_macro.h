@@ -62,6 +62,8 @@ public:
 	///
 	MathedArray & GetData();
 	///
+	MathedArray const & GetData() const;
+	///
 	MathedRowSt * getRowSt() const;
 	///
 	void setData(MathedArray const &);

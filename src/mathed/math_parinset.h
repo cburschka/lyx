@@ -19,8 +19,6 @@ public:
 	MathParInset(short st = LM_ST_TEXT, string const & nm = string(),
 		     short ot = LM_OT_MIN);
 	///
-	virtual ~MathParInset();
-	///
 	virtual MathedInset * Clone();
 	/// Draw the object on a drawable
 	virtual void draw(Painter &, int x, int baseline);
@@ -34,6 +32,8 @@ public:
 	virtual void setData(MathedArray const &);
 	///
 	virtual MathedArray & GetData();
+	///
+	virtual MathedArray const & GetData() const;
 	/// Paragraph position
 	virtual void GetXY(int &, int &) const;
 	///

@@ -693,7 +693,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				rt->setArgumentIdx(0);
 				MathedArray ar;
 				mathed_parse(ar, FLAG_BRACK_END, &rt);
-				rt->setData(ar);
+				rt->setData(ar); // I belive that line is not needed (Lgb)
 				rt->setArgumentIdx(1);
 			} else {
 				yyis->putback(c);
@@ -701,7 +701,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			}
 			MathedArray ar;
 			mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST, &rt);
-			rt->setData(ar);
+			rt->setData(ar); // I belive that this line is not needed (Lgb)
 			data.insertInset(rt, LM_TC_ACTIVE_INSET);
 			break;
 		}
@@ -833,7 +833,8 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				MathParInset * mm = new MathMatrixInset(nc, 0);
 				mm->SetAlign(ar2[0], ar);
 				data.insertInset(mm, LM_TC_ACTIVE_INSET);
-				mathed_parse(mm->GetData(), FLAG_END, &mm);
+				MathedArray dat;
+				mathed_parse(dat, FLAG_END, &mm);
 			} else if (is_eqn_type(yylval.i)) {
 				if (plevel!= 0) {
 					mathPrintError("Misplaced environment");
@@ -884,7 +885,9 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				if (p) {
 					data.insertInset(p, p->getTCode());
 					p->setArgumentIdx(0);
-					mathed_parse(p->GetData(), FLAG_END, reinterpret_cast<MathParInset**>(&p));
+					//mathed_parse(p->GetData(), FLAG_END, reinterpret_cast<MathParInset**>(&p));
+					MathedArray dat;
+					mathed_parse(dat, FLAG_END, reinterpret_cast<MathParInset**>(&p));
 //		 for (int i = 0; p->setArgumentIdx(i); ++i)
 //		   p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 				} else 

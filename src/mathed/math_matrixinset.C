@@ -34,15 +34,15 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 }
 
 
-MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
-	: MathParInset(mt->GetStyle(), mt->GetName(), mt->GetType()),
-	  nc_(mt->nc_), nr_(0), ws_(mt->nc_),
-	  v_align_(mt->v_align_), h_align_(mt->h_align_)
+MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
+	: MathParInset(mt.GetStyle(), mt.GetName(), mt.GetType()),
+	  nc_(mt.nc_), nr_(0), ws_(mt.nc_),
+	  v_align_(mt.v_align_), h_align_(mt.h_align_)
 {
-	array = mt->GetData();
-	if (mt->row_ != 0) {
+	array = mt.GetData();
+	if (mt.row_ != 0) {
 		MathedRowSt * ro = 0;
-		MathedRowSt * mrow = mt->row_;
+		MathedRowSt * mrow = mt.row_;
 
 		while (mrow) {
 			MathedRowSt * r = new MathedRowSt(nc_ + 1);
@@ -59,7 +59,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 		}
 	} else   
 		row_ = 0;
-	flag = mt->flag;
+	flag = mt.flag;
 }
 
 
@@ -76,7 +76,7 @@ MathMatrixInset::~MathMatrixInset()
 
 MathedInset * MathMatrixInset::Clone()
 {
-	return new MathMatrixInset(this);
+	return new MathMatrixInset(*this);
 }
 
 

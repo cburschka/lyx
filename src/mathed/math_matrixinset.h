@@ -19,10 +19,10 @@ class MathMatrixInset : public MathParInset {
 public: 
 	///
 	explicit
-	MathMatrixInset(int m = 1, int n = 1, short st = LM_ST_TEXT);
+	MathMatrixInset(int m, int n, short st = LM_ST_TEXT);
 	///
 	explicit
-	MathMatrixInset(MathMatrixInset *);
+	MathMatrixInset(MathMatrixInset const &);
 	///
 	~MathMatrixInset();
 	///

@@ -105,7 +105,8 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 	MathedArray ar;
 	
 	mathed_parse(ar, 0, reinterpret_cast<MathParInset **>(&tmacro_));
-
+	// since tmacro_ == 0 when mathed_parse is called we need to sett
+	// its contents explicitly afterwards (Lgb)
 	tmacro_->setData(ar);
 	
 	// Update line number

@@ -50,6 +50,8 @@ public:
 	///
 	MathedArray & GetData();
 	///
+	MathedArray const & GetData() const;
+	///
 	bool setArgumentIdx(int i);
 	///
 	int getArgumentIdx() const;

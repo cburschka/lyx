@@ -75,6 +75,15 @@ MathedArray & MathRootInset::GetData()
 }
 
 
+MathedArray const & MathRootInset::GetData() const
+{
+	if (idx_ == 1)
+		return array;
+	else
+		return uroot_.GetData();
+}
+
+
 bool MathRootInset::Inside(int x, int y)
 {
 	return (uroot_.Inside(x, y) || MathSqrtInset::Inside(x, y));

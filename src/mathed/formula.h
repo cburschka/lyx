@@ -66,27 +66,21 @@ public:
 	///
 	Inset * Clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::MATH_CODE; }
+	Inset::Code LyxCode() const;
 	///
-	LyXFont const ConvertFont(LyXFont const & f) const {
-		// We have already discussed what was here
-		LyXFont font(f);
-	        font.setLatex(LyXFont::OFF);
-	        return font;
-	}
-
+	LyXFont const ConvertFont(LyXFont const & f) const;
 	/// what appears in the minibuffer when opening
 	string const EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
-	bool display() const { return (disp_flag) ? true: false; }
+	bool display() const;
 	///
 	void display(bool);
 	///
 	void ToggleInsetCursor(BufferView *);
 	///
-	void ShowInsetCursor(BufferView *, bool show=true);
+	void ShowInsetCursor(BufferView *, bool show = true);
 	///
 	void HideInsetCursor(BufferView *);
 	///
@@ -124,8 +118,32 @@ protected:
     
 private:
 	///
-	bool disp_flag;
+	bool disp_flag_;
 	///
-	string label;
+	string label_;
 };
+
+
+inline
+Inset::Code InsetFormula::LyxCode() const
+{
+	return Inset::MATH_CODE;
+}
+
+
+inline
+LyXFont const InsetFormula::ConvertFont(LyXFont const & f) const
+{
+	// We have already discussed what was here
+	LyXFont font(f);
+	font.setLatex(LyXFont::OFF);
+	return font;
+}
+
+
+inline
+bool InsetFormula::display() const
+{
+	return (disp_flag_) ? true : false;
+}
 #endif

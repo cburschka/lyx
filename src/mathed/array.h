@@ -17,6 +17,7 @@
 #define MATHEDARRAY_H
 
 #include <vector>
+#include <iosfwd>
 
 #include "mathed/support.h"
 
@@ -110,6 +111,8 @@ public:
 	void resize(int newsize);
 	/// Make sure we can access at least \a needed elements
 	void need_size(int needed);
+	///
+	void dump(ostream &) const;
 private:
 	/// Buffer
 	buffer_type bf_;
