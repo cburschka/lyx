@@ -1,5 +1,9 @@
 2001-09-04  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlCharacter.C: fix Michael's bug: In the "Character layout"
+	dialog, set all options to "reset", close the dialog, re-open it ->
+	the options are set incorrectly.
+
 	* ControlButtons.[Ch]: add an is_closing_ variable and isClosing method.
 	When Applying it's useful to know whether the dialog is about to close
 	or not (no point refreshing the display for example).

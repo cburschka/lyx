@@ -78,9 +78,9 @@ void ControlCharacter::apply()
 
 LyXFont::FONT_FAMILY ControlCharacter::getFamily() const
 {
-	if (font_.get())
-		return font_->family();
-	return LyXFont::IGNORE_FAMILY;
+	if (!font_.get())
+		return LyXFont::IGNORE_FAMILY;
+	return font_->family();
 }
 
 
@@ -92,9 +92,9 @@ void ControlCharacter::setFamily(LyXFont::FONT_FAMILY val)
 
 LyXFont::FONT_SERIES ControlCharacter::getSeries() const
 {
-	if (font_.get())
-		return font_->series();
-	return LyXFont::IGNORE_SERIES;
+	if (!font_.get())
+		return LyXFont::IGNORE_SERIES;
+	return font_->series();
 }
 
 
@@ -106,9 +106,9 @@ void ControlCharacter::setSeries(LyXFont::FONT_SERIES val)
 
 LyXFont::FONT_SHAPE ControlCharacter::getShape() const
 {
-	if (font_.get())
-		return font_->shape();
-	return LyXFont::IGNORE_SHAPE;
+	if (!font_.get())
+		return LyXFont::IGNORE_SHAPE;
+	return font_->shape();
 }
 
 
@@ -120,9 +120,9 @@ void ControlCharacter::setShape(LyXFont::FONT_SHAPE val)
 
 LyXFont::FONT_SIZE ControlCharacter::getSize() const
 {
-	if (font_.get())
-		return font_->size();
-	return LyXFont::IGNORE_SIZE;
+	if (!font_.get())
+		return LyXFont::IGNORE_SIZE;
+	return font_->size();
 }
 
 
@@ -134,17 +134,24 @@ void ControlCharacter::setSize(LyXFont::FONT_SIZE val)
 
 character::FONT_STATE ControlCharacter::getBar() const
 {
-	if (font_.get()) {
-		if (font_->emph() != LyXFont::IGNORE)
-			return character::EMPH_TOGGLE;
+	if (!font_.get())
+		return character::IGNORE;
 
-		else if (font_->underbar() != LyXFont::IGNORE)
-	    		return character::UNDERBAR_TOGGLE;
+	if (font_->emph() == LyXFont::TOGGLE)
+		return character::EMPH_TOGGLE;
 
-		else if (font_->noun() != LyXFont::IGNORE)
-	    		return character::NOUN_TOGGLE;
-	}
-	return character::IGNORE;
+	if (font_->underbar() == LyXFont::TOGGLE)
+		return character::UNDERBAR_TOGGLE;
+
+	if (font_->noun() == LyXFont::TOGGLE)
+		return character::NOUN_TOGGLE;
+
+	if (font_->emph() == LyXFont::IGNORE &&
+	    font_->underbar() == LyXFont::IGNORE &&
+	    font_->noun() == LyXFont::IGNORE)
+		return character::IGNORE;
+
+	return character::INHERIT;
 }
 
 
@@ -180,29 +187,10 @@ void ControlCharacter::setBar(character::FONT_STATE val)
 
 LColor::color ControlCharacter::getColor() const
 {
-	LColor::color col = LColor::ignore;
-    
-	if (font_.get()) {
-		switch (font_->color()) {
-		case LColor::ignore:
-		case LColor::none:
-		case LColor::black:
-		case LColor::white:
-		case LColor::red:
-		case LColor::green:
-		case LColor::blue:
-		case LColor::cyan:
-		case LColor::magenta:
-		case LColor::yellow:
-		case LColor::inherit:
-			break;
-		default:
-			col = font_->color();
-			break;
-		}
-	}
+	if (!font_.get())
+		return LColor::ignore;
 
-	return col;
+	return font_->color();
 }
 
 
