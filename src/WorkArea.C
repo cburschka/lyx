@@ -33,11 +33,16 @@ FL_OBJECT * figinset_canvas;
 // This is at least true for g++.
 //using std::abs;
 
-static inline
+namespace {
+
+//static
+inline
 void waitForX()
 {
 	XSync(fl_get_display(), 0);
 }
+
+} // anon namespace
 
 
 extern "C" {
@@ -55,7 +60,6 @@ extern "C" {
 						   0, 0, key, xev);
         }
 }
-
 
 
 WorkArea::WorkArea(int xpos, int ypos, int width, int height)

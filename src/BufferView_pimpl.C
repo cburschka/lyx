@@ -80,14 +80,17 @@ extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 const unsigned int saved_positions_num = 20;
 
-static inline
+namespace {
+
+//static
+inline
 void waitForX()
 {
 	XSync(fl_get_display(), 0);
 }
 
 
-static
+//static
 void SetXtermCursor(Window win)
 {
 	static Cursor cursor;
@@ -100,6 +103,8 @@ void SetXtermCursor(Window win)
 	XDefineCursor(fl_get_display(), win, cursor);
 	XFlush(fl_get_display());
 }
+
+} // anon namespace
 
 
 BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,

@@ -156,8 +156,11 @@ public:
     // protected method "clickInButton" (Lgb)
 protected:
     ///
-    mutable int
-	button_length, button_top_y, button_bottom_y;
+    mutable int button_length;
+    ///
+    mutable int button_top_y;
+    ///
+    mutable int button_bottom_y;
 
 private:
     ///

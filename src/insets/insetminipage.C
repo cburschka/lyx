@@ -69,6 +69,7 @@ InsetMinipage::InsetMinipage()
 	setLabelFont(font);
 	setAutoCollapse(false);
 	setInsetName("Minipage");
+	collapsed = false;
 }
 
 

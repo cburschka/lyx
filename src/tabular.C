@@ -1225,11 +1225,11 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 static inline
 void l_getline(istream & is, string & str)
 {
-    str = string();
-    while(str.empty()) {
+    str.erase();
+    while (str.empty()) {
 	getline(is, str);
-	if (!str.empty() && str[str.length()-1] == '\r')
-	    str.erase(str.length()-1);
+	if (!str.empty() && str[str.length() - 1] == '\r')
+	    str.erase(str.length() - 1);
     }
 }
 

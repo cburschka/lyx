@@ -1,3 +1,10 @@
+2001-03-17  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* tabular.C (l_getline): use string::erase, small whitespace change.
+
+	* BufferView_pimpl.C: try the anon namespace.
+	* WorkArea.C: ditto
+
 2001-03-16  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (workAreaButtonRelease): return only on button==2
