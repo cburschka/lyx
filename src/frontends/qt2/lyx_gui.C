@@ -131,8 +131,6 @@ void lyx_gui::parse_lyxrc()
 void lyx_gui::start(string const & batch, vector<string> const & files)
 {
 	// initial geometry
-	int xpos = -1;
-	int ypos = -1;
 	unsigned int width = 690;
 	unsigned int height = 510;
 
