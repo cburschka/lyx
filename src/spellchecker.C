@@ -337,7 +337,7 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 
 		argv[argc++] = 0;
 
-		execvp("ispell", const_cast<char * const *>(argv));
+		execvp(argv[0], const_cast<char * const *>(argv));
 
 		// free the memory used by string::copy in the
 		// setup of argv

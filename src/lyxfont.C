@@ -289,14 +289,13 @@ void LyXFont::update(LyXFont const & newfont,
 	setNoun(setMisc(newfont.noun(), noun()));
 	setLatex(setMisc(newfont.latex(), latex()));
 
-	if (newfont.language() != ignore_language)
-		if (language() == newfont.language())
-			if (language() == document_language)
-				setLanguage(default_language);
-			else
-				setLanguage(document_language);
+	if (newfont.language() == language() && toggleall)
+		if (language() == document_language)
+			setLanguage(default_language);
 		else
-			setLanguage(newfont.language());
+			setLanguage(document_language);
+	else if (newfont.language() != ignore_language)
+		setLanguage(newfont.language());
 
 	if (newfont.color() == color() && toggleall)
 		setColor(LColor::inherit); // toggle 'back'

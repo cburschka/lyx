@@ -51,9 +51,6 @@ public:
 	  main initialization.
 	  */
 	void init();
-	///
-	LyXView *lyxViews; // or something so that several views
-	// on the same time can be allowed.
 
 	/// Register the buffer with the first fount LyXView in lyxViews
 	void regBuf(Buffer*);
@@ -79,6 +76,9 @@ private:
 	//@{
 	/// The LyX that owns this GUI.
 	LyX *_owner;
+	///
+	LyXView *lyxViews; // or something so that several views
+	// on the same time can be allowed.
 	/// Do we have a gui?
 	bool gui;
 	//@}

@@ -51,7 +51,7 @@ public:
 	///
     MathedInset * Clone();
 	///
-    void Write(std::ostream &);
+    void Write(std::ostream &, signed char fragile);
 	///
     bool setArgumentIdx(int);
 	///
@@ -118,7 +118,7 @@ public:
 	///
     void draw(Painter &, int x, int baseline);
 	///
-    void Write(std::ostream &);
+    void Write(std::ostream &, signed char fragile);
     ///
     void setNumber(int n) { number = n; }
     /// Is expanded or not
@@ -146,7 +146,7 @@ public:
 	///
     void Metrics();
 	///
-    void WriteDef(std::ostream &);
+    void WriteDef(std::ostream &, signed char fragile);
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
     ///

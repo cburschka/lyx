@@ -69,16 +69,15 @@ Inset * InsetFormulaMacro::Clone() const
 void InsetFormulaMacro::Write(ostream & os) const
 {
 	os << "FormulaMacro ";
-	Latex(os, 0, false);
+	tmacro->WriteDef(os, 0);
 }
 
 
 int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/, 
 			     bool /*free_spacing*/) const
 {
-    int ret = 1;
-    tmacro->WriteDef(os);
-    return ret;
+    tmacro->WriteDef(os, 1);
+    return 1;
 }
 
 

@@ -137,11 +137,11 @@ void MathRootInset::SetFocus(int x, int)
 }
 
 
-void MathRootInset::Write(ostream & os)
+void MathRootInset::Write(ostream & os, signed char fragile)
 {
 	os << '\\' << name << '[';
-	uroot->Write(os);  
+	uroot->Write(os, fragile);  
 	os << "]{";
-	MathParInset::Write(os);
+	MathParInset::Write(os, fragile);
 	os << '}';
 }

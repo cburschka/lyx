@@ -1,3 +1,29 @@
+2000-04-17  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* forms/layout_forms.fd
+	* src/layout_forms.h
+	* src/layout_forms.C (create_form_form_character)
+	* src/lyx_cb.C (UserFreeFont)
+	* src/lyx_gui.C (create_forms): Added GUI support for multi-lingual
+       documents (in the layout->character popup).
+
+2000-04-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/spellchecker.C (create_ispell_pipe): fix a bug where
+	\spell_command was in fact not honored (from Kevin Atkinson).
+
+	* src/lyx_gui.C (~LyXGUI): make sure lyxViews is deleted when
+	quitting (Angus)
+
+	* src/lyx_gui.h: make lyxViews private (Angus)
+
+2000-04-15  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_write.C
+	(MathMatrixInset::Write) Put \protect before \begin{array} and
+	\end{array} if fragile
+ 	(MathParInset::Write): Put \protect before \\ if fragile
+
 2000-04-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/WorkArea.C (work_area_handler): call BufferView::enterView

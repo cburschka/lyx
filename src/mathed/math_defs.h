@@ -231,7 +231,7 @@ class MathedInset  {
     virtual void draw(Painter &, int x, int baseline) = 0;	
 
     /// Write LaTeX and Lyx code
-    virtual void Write(std::ostream &) = 0;
+    virtual void Write(std::ostream &, signed char fragile) = 0;
 
     /// Reproduces itself
     virtual MathedInset * Clone() = 0;
@@ -329,7 +329,7 @@ class MathParInset: public MathedInset  {
     virtual void draw(Painter &, int x, int baseline);
 
     /// Write LaTeX code
-    virtual void Write(std::ostream &);
+    virtual void Write(std::ostream &, signed char fragile);
 
     ///
     virtual void Metrics();
@@ -488,7 +488,7 @@ class MathMatrixInset: public MathParInset {
     ///
     void draw(Painter &, int, int);
     ///
-    void Write(std::ostream &);
+    void Write(std::ostream &, signed char fragile);
     ///
     void Metrics();
     ///
@@ -535,7 +535,7 @@ class MathMatrixInset: public MathParInset {
 LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 			    MathParInset ** mt);
 ///
-void mathed_write(MathParInset *, std::ostream &, int *, char fragile,
+void mathed_write(MathParInset *, std::ostream &, int *, signed char fragile,
 		  char const * label = 0);
 
 ///

@@ -318,7 +318,7 @@ int InsetFormula::Latex(ostream & os, signed char fragile, bool) const
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
     if (fragile < 0)
-	    par->Write(os);
+	    par->Write(os, fragile);
     else
 	    mathed_write(par, os, &ret, fragile, label.c_str());
     return ret;

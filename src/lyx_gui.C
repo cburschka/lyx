@@ -67,6 +67,7 @@ FD_form_ref * fd_form_ref;
 FD_LaTeXOptions * fd_latex_options; // from latexoptions.h
 FD_LaTeXLog * fd_latex_log; // from latexoptions.h
 Combox * combo_language;
+Combox * combo_language2;
 
 extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
@@ -154,7 +155,7 @@ extern "C" int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 
 
 LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
-	: _owner(owner)
+  : _owner(owner), lyxViews(0)
 {
 	gui = GUI;
 	if (!gui)
@@ -198,6 +199,8 @@ LyXGUI::~LyXGUI()
         // here.  asierra-970604
 	delete lyxserver;
 	lyxserver = 0;
+	delete lyxViews;
+	lyxViews = 0;
 
 	CloseLyXLookup();
 }
@@ -393,6 +396,12 @@ void LyXGUI::create_forms()
 	fl_set_form_minsize(fd_form_character->form_character,
 			    fd_form_character->form_character->w,
 			    fd_form_character->form_character->h);
+	fl_addto_form(fd_form_character->form_character);
+	combo_language2 = new Combox(FL_COMBOX_DROPLIST);
+	FL_OBJECT * ob = fd_form_character->choice_language;
+	combo_language2->add(ob->x, ob->y, ob->w, ob->h, 250);
+	combo_language2->shortcut("#L", 1);
+	fl_end_form();
 
 	// the document form
 	fd_form_document = create_form_form_document();
@@ -409,17 +418,20 @@ void LyXGUI::create_forms()
 	fl_set_counter_precision(fd_form_document->slider_tocdepth, 0);
 	fl_addto_form(fd_form_document->form_document);
 	combo_language = new Combox(FL_COMBOX_DROPLIST);
-	FL_OBJECT * ob = fd_form_document->choice_language;
+	ob = fd_form_document->choice_language;
 	combo_language->add(ob->x, ob->y, ob->w, ob->h, 250);
 	combo_language->shortcut("#G", 1);
 	fl_end_form();
 
 	// "default" is not part of the languages array any more.
 	combo_language->addto("default");
+	combo_language2->addto("No change");
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 		combo_language->addto((*cit).second.lang.c_str());
+		combo_language2->addto((*cit).second.lang.c_str());
 	}
+	combo_language2->select_text("No change");
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");

@@ -45,7 +45,7 @@ char const * math_font_name[] = {
 
 
 void
-MathSpaceInset::Write(ostream & os)
+MathSpaceInset::Write(ostream & os, signed char /* fragile */)
 {
    if (space >= 0 && space < 6) {
 	   os << '\\' << latex_mathspace[space] << ' ';
@@ -54,21 +54,21 @@ MathSpaceInset::Write(ostream & os)
 
 
 void
-MathDotsInset::Write(ostream & os)
+MathDotsInset::Write(ostream & os, signed char /* fragile */)
 {
 	os << '\\' << name << ' ';
 }
 
 
-void MathSqrtInset::Write(ostream & os)
+void MathSqrtInset::Write(ostream & os, signed char fragile)
 {
 	os << '\\' << name << '{';
-	MathParInset::Write(os); 
+	MathParInset::Write(os, fragile); 
 	os << '}';
 }
 
 
-void MathDelimInset::Write(ostream & os)
+void MathDelimInset::Write(ostream & os, signed char fragile)
 {
     latexkeys * l = (left != '|') ? lm_get_key_by_id(left, LM_TK_SYM): 0;
     latexkeys * r = (right != '|') ? lm_get_key_by_id(right, LM_TK_SYM): 0;
@@ -82,7 +82,7 @@ void MathDelimInset::Write(ostream & os)
 		os << char(left) << ' ';
         }
     }
-   MathParInset::Write(os);
+   MathParInset::Write(os, fragile);
    os << "\\right";
    if (r) {
 	   os << '\\' << r->name << ' ';
@@ -96,16 +96,16 @@ void MathDelimInset::Write(ostream & os)
 }
 
 
-void MathDecorationInset::Write(ostream & os)
+void MathDecorationInset::Write(ostream & os, signed char fragile)
 {
 	latexkeys * l = lm_get_key_by_id(deco, LM_TK_WIDE);
 	os << '\\' << l->name << '{';
-	MathParInset::Write(os);  
+	MathParInset::Write(os, fragile);  
 	os << '}';
 }
 
 
-void MathAccentInset::Write(ostream & os)
+void MathAccentInset::Write(ostream & os, signed char fragile)
 {
 	latexkeys * l = lm_get_key_by_id(code, LM_TK_ACCENT);
 	os << '\\' << l->name;
@@ -115,7 +115,7 @@ void MathAccentInset::Write(ostream & os)
 		os << ' ';
 	
 	if (inset) {
-		inset->Write(os);
+		inset->Write(os, fragile);
 	} else {
 		if (fn>= LM_TC_RM && fn<= LM_TC_TEXTRM) {
 			os << '\\'
@@ -139,7 +139,7 @@ void MathAccentInset::Write(ostream & os)
 }
 
 
-void MathBigopInset::Write(ostream & os)
+void MathBigopInset::Write(ostream & os, signed char /* fragile */)
 {
     bool limp = GetLimits();
     
@@ -157,17 +157,17 @@ void MathBigopInset::Write(ostream & os)
 }
 
 
-void MathFracInset::Write(ostream & os)
+void MathFracInset::Write(ostream & os, signed char fragile)
 {
 	os << '\\' << name << '{';
-	MathParInset::Write(os);
+	MathParInset::Write(os, fragile);
 	os << "}{";
-	den->Write(os);
+	den->Write(os, fragile);
 	os << '}';
 }
 
 
-void MathParInset::Write(ostream & os)
+void MathParInset::Write(ostream & os, signed char fragile)
 {
 	if (!array) return;
 	int brace = 0;
@@ -228,7 +228,7 @@ void MathParInset::Write(ostream & os)
 					os << "^{";
 				if (cx == LM_TC_DOWN)
 					os << "_{";
-				p->Write(os);
+				p->Write(os, fragile);
 				if (cx == LM_TC_UP || cx == LM_TC_DOWN)
 					os << '}';
 				data.Next();
@@ -253,6 +253,8 @@ void MathParInset::Write(ostream & os)
 						}
 						crow = crow->getNext();
 					}
+					if (fragile)
+						os << "\\protect";
 					os << "\\\\\n";
 					++number_of_newlines;
 					data.Next();
@@ -286,9 +288,11 @@ void MathParInset::Write(ostream & os)
 }
 
 
-void MathMatrixInset::Write(ostream & os)
+void MathMatrixInset::Write(ostream & os, signed char fragile)
 {
     if (GetType() == LM_OT_MATRIX){
+	    if (fragile)
+		    os << "\\protect";
 	    os << "\\begin{"
 	       << name
 	       << '}';
@@ -302,9 +306,12 @@ void MathMatrixInset::Write(ostream & os)
 	   << "}\n";
 	++number_of_newlines;
     }
-    MathParInset::Write(os);
+    MathParInset::Write(os, fragile);
     if (GetType() == LM_OT_MATRIX){
-	    os << "\n\\end{"
+	    os << "\n";
+	    if (fragile)
+		    os << "\\protect";
+	    os << "\\end{"
 	       << name
 	       << '}';
 	++number_of_newlines;
@@ -313,7 +320,7 @@ void MathMatrixInset::Write(ostream & os)
 
 
 void mathed_write(MathParInset * p, ostream & os, int * newlines,
-		  char fragile, char const * label)
+		  signed char fragile, char const * label)
 {
    number_of_newlines = 0;
    short mathed_env = p->GetType();
@@ -358,7 +365,7 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
      ++number_of_newlines;
    }
 
-   p->Write(os);
+   p->Write(os, fragile);
    
    if (mathed_env == LM_EN_INTEXT){
 	   if (fragile) os << "\\protect";

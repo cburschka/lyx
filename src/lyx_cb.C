@@ -56,6 +56,7 @@ using std::istream_iterator;
 using std::pair;
 
 extern Combox * combo_language;
+extern Combox * combo_language2;
 extern BufferList bufferlist;
 extern void show_symbols_form();
 extern FD_form_title * fd_form_title;
@@ -2059,6 +2060,14 @@ LyXFont UserFreeFont()
 	case 11: font.setColor(LColor::inherit); break;
 	}
 
+ 	string language = combo_language2->getline();
+ 	Languages::iterator lit = languages.find(language);
+ 	if (lit != languages.end()) 
+ 		font.setLanguage(&(*lit).second);
+ 	else
+ 		font.setLanguage(ignore_language);
+
+
 	return font; 
 }
 
@@ -2227,6 +2236,7 @@ extern "C" void CharacterApplyCB(FL_OBJECT *, long)
 	// all other uses of ToggleAndShow() (JMarc)
 	toggleall = fl_get_button(fd_form_character->check_toggle_all);
 	ToggleAndShow(current_view, UserFreeFont());
+	current_view->setState();
 	toggleall = true;
 }
 

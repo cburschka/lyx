@@ -158,13 +158,13 @@ void MathMacro::SetFocus(int x, int y)
 }
 
 
-void MathMacro::Write(ostream & os)
+void MathMacro::Write(ostream & os, signed char fragile)
 {
     if (tmplate->flags & MMF_Exp) {
 	    lyxerr[Debug::MATHED] << "Expand " << tmplate->flags
 				  << ' ' << MMF_Exp << endl; 
 	tmplate->update(this);
-	tmplate->Write(os);
+	tmplate->Write(os, fragile);
     } else {
 	if (tmplate->flags & MMF_Env) {
 		os << "\\begin{"
@@ -184,7 +184,7 @@ void MathMacro::Write(ostream & os)
 	
 	for (int i = 0; i < nargs; ++i) {
 	    array = args[i].array;
-	    MathParInset::Write(os);
+	    MathParInset::Write(os, fragile);
 	    if (i < nargs - 1)  
 		    os << "}{";
 	}   
@@ -261,10 +261,10 @@ void MathMacroArgument::Metrics()
 }
 
 
-void MathMacroArgument::Write(ostream & os)
+void MathMacroArgument::Write(ostream & os, signed char fragile)
 {
     if (expnd_mode) {
-	MathParInset::Write(os);
+	MathParInset::Write(os, fragile);
     } else {
 	    os << '#' << number << ' ';
     }
@@ -375,7 +375,7 @@ void MathMacroTemplate::update(MathMacro * macro)
 }
     
 
-void MathMacroTemplate::WriteDef(ostream & os)
+void MathMacroTemplate::WriteDef(ostream & os, signed char fragile)
 {
 	os << "\n\\newcommand{\\" << name << "}";
       
@@ -387,7 +387,7 @@ void MathMacroTemplate::WriteDef(ostream & os)
     for (int i = 0; i < nargs; ++i) {
 	args[i].setExpand(false);
     }	 
-    Write(os); 
+    Write(os, fragile); 
     os << "}\n";
 }
 
