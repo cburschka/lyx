@@ -1,3 +1,10 @@
+2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormBase.C: no longer transient dialogs, XMapWindow()
+	  in attempt to de-iconify
+
+	* FormDocument.C: remove DO_USE_DEFAULT_LANGUAGE
+
 2001-02-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormDocument.C (checkMarginValues): Activate "use geometry" button 

@@ -223,10 +223,7 @@ void FormDocument::build()
     combo_language->shortcut("#L",1);
     combo_language->setcallback(ComboInputCB, this);
     fl_end_form();
-    // "default" is not part of the languages array any more.
-#ifdef DO_USE_DEFAULT_LANGUAGE
-    combo_language->addto("default");
-#endif
+
     for (Languages::const_iterator cit = languages.begin();
 	cit != languages.end(); ++cit) {
 	combo_language->addto((*cit).second.lang());
