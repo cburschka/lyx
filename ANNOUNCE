@@ -1,56 +1,24 @@
-Public release of LyX version 1.2.2
+Public release of LyX version 1.2.3
 ===================================
 
-What is LyX?
-------------
+We are glad to announce the release of LyX 1.2.3.
 
-LyX is an advanced open-source "document processor". Unlike standard
-word processors, LyX encourages writing based on the structure of your
-documents, not their appearance, It lets you concentrate on writing,
-leaving details of visual layout to the software.
+LyX 1.2.3 is a maintenance release. It mainly fixes a very bad bug
+where configuring LyX as root could lead to deleting the /dev/null
+special device (this does not impact users of prebuilt binaries).
+Also, a bug where LyX would create zombie processes has been fixed.
 
-With the familiar face of a WISYWIG word processor, LyX produces high
-quality, professional output -- using LaTeX, an industrial
-strength typesetting engine. No knowledge of LaTeX is required to
-use LyX; however, there is also a "TeX mode" which allows you to enter
-plain LaTeX commands.
+In case you are wondering what LyX is, here is what
+http://www.lyx.org/ has to say on the subject:
 
-All in all, LyX is a complete environment for writing documents. It has
-superior support for scientific writing, but works well for any kind of
-document.
+  LyX is an advanced open source document processor that encourages an
+  approach to writing based on the structure of your documents, not their
+  appearance. LyX lets you concentrate on writing, leaving details of 
+  visual layout to the software.
 
-Read more about LyX (including screenshots) at:
-
-    http://www.lyx.org/
-
-What can LyX do?
-----------------
-
-A very incomplete feature list:
-
-- "standard" word processing: fonts, cut & paste, infinite undo...
-- footnotes, citations, cross-referencing, faxes, spellchecking
-- almost any math expression (with a simple, but powerfull interface)
-- automatic, multilevel outline support (enumerated or bullets)
-- tables and embedded figures support (with automatic conversion)
-- import LaTeX or ASCII
-- export LaTeX, ASCII, DVI, PostScript, LinuxDoc-SGML, DocBook-SGML
-- fair support for non-English documents and/or menus
-- extensive documentation, including a tutorial
-- version control using RCS (some support for CVS)
-
-How stable is LyX?
-------------------
-
-This release is considered stable, but as with any software, you should 
-take appropriate back-up steps in a production environment.
-
-Where can I get it?
--------------------
-
-LyX is distributed under the GNU General Public Licence (GPL), which
-means that you can not only use it freely, but also modify and
-redistribute it, provided that you include the source of the program.
+  LyX runs on many Unix platforms (including MacOS X), OS/2, and under
+  Windows/Cygwin. Note that all these ports use the same xforms interface 
+  and therefore need an X server. 
 
 The main LyX site is
 
@@ -63,38 +31,60 @@ with mirrors at
         ftp://gd.tuwien.ac.at/publishing/tex/lyx/
         ftp://ftp.ntua.gr/pub/X11/LyX/
         ftp://ftp.icm.edu.pl/vol/rzm0/lyx/
-	
-The source code package is available at:
 
-        ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.2.2.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.2.2.tar.gz
+You can download LyX 1.2.3 here :
 
-and at the mirrors listed above.
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.2.3.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.2.3.tar.gz
 
-You need to have XForms version 0.88 or newer to compile your own 
-version.  Version 1.0 is highly recommended. LyX should also compile
-with 0.88 and 0.89.6.
+Prebuild binaries (mainly rpms for linux distributions) should soon be 
+available at
+	ftp://ftp.lyx.org/pub/lyx/bin/1.2.3
 
-Credits
--------
+If you already have LyX 1.2.2 sources, you may want to apply the
+following patch instead
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.2.3.gz  
+ 
+If you find what you think is a bug in LyX 1.2.3, you may either
+e-mail the LyX user's mailing list (lyx-users@lists.lyx.org), or open
+a bug report at http://bugzilla.lyx.org
 
-The LyX Team is composed of volunteers from around the world.  Many, many 
-people have helped make the 1.2.2 release possible, including:
-
-    Lars Gullik Bjoennes, Alejandro Aguilar Sierra, Asger Alstrup,
-    Jean-Marc Lasgouttes, Juergen Vigna, John P. Weiss, Bernhard Iselborn,
-    Andre Spiegel, Allan Rae, Henner Zeller, Robert van der Kamp,
-    David L. Johnson, Amir Karger, Joacim Persson, Peter Suetterlin,
-    SMiyata, Alkis Polyzotis, ...
-
-Special thanks should go to Matthias Ettrich who started it all.
-
-Feedback
---------
-
-Please direct any comments or questions to the appropriate mailing list as
-described on the LyX homepage (http://www.lyx.org/).
+If you're having trouble using the new version of LyX, or have a question,
+first check out http://www.lyx.org/help/, and e-mail the LyX user's list if you
+can't find an answer there.  
 
 Enjoy!
 
-The LyX Team
+The LyX team.
+
+
+ 
+What's new
+==========
+
+** Updates
+
+- updated italian User Guide
+
+** Bug fixes
+
+- fix bug where the configure script would try to delete the /dev/null
+  device when there has been an error in configuration step
+
+- fix bug where autosaving would leave a lot of zombie processes after
+  a long time
+
+- fix problem where it was not possible to force some values to 0 in
+  custom margins
+
+- fix bug where horizontal alignment would be reset automatically to
+  "left" in the tabular dialog.
+
+- fix functions word-find-forward and word-find-backward, which
+  meaning was inverted
+
+- when the lyx binary was actually a symbolic link, LyX printed
+  annoying debug messages on console; they are debug messages now
+
+- fix an installation issue with solaris
+

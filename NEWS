@@ -1,3 +1,38 @@
+What's new in version 1.2.3?
+----------------------------
+
+LyX 1.2.3 is a maintenance release. It mainly fixes a very bad bug
+where configuring LyX as root could lead to deleting the /dev/null
+special device (this does not impact users of prebuilt binaries).
+Also, a bug where LyX would create zombie processes has been fixed.
+
+** Updates
+
+- updated italian User Guide
+
+** Bug fixes
+
+- fix bug where the configure script would try to delete the /dev/null
+  device when there has been an error in configuration step
+
+- fix bug where autosaving would leave a lot of zombie processes after
+  a long time
+
+- fix problem where it was not possible to force some values to 0 in
+  custom margins
+
+- fix bug where horizontal alignment would be reset automatically to
+  "left" in the tabular dialog.
+
+- fix functions word-find-forward and word-find-backward, which
+  meaning was inverted
+
+- when the lyx binary was actually a symbolic link, LyX printed
+  annoying debug messages on console; they are debug messages now
+
+- fix an installation issue with solaris
+
+
 What's new in version 1.2.2?
 ----------------------------
 
