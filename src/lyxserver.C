@@ -50,7 +50,6 @@
 #include "lyxserver.h"
 #include "lyx_main.h"
 #include "debug.h"
-#include "LyXAction.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -77,9 +76,6 @@ int mkfifo(char const * __path, mode_t __mode) {
 
 
 /* === variables ========================================================= */
-
-extern LyXAction lyxaction;
-
 
 extern "C" {
 
@@ -501,25 +497,20 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// connect to the lyxfunc in the single LyXView we
 			// support currently. (Lgb)
 
-			kb_action action = static_cast<kb_action>(lyxaction.LookupFunc(cmd));
-			//int action = -1;
-			string rval, buf;
 
-			if (action>= 0) {
-				rval = serv->func->dispatch(action, arg);
-			} else {
-				rval = "Unknown command";
-			}
-
-      //modified june 1999 stefano@zool.su.se:
+			serv->func->verboseDispatch(cmd + ' ' + arg, false);
+			string const rval = serv->func->getMessage();
+			
+			//modified june 1999 stefano@zool.su.se:
 			//all commands produce an INFO or ERROR message
 			//in the output pipe, even if they do not return
 			//anything. See chapter 4 of Customization doc.
-			if (action<0 || serv->func->errorStat())
+			string buf;
+			if (serv->func->errorStat())
 				buf = "ERROR:";
 			else
 				buf = "INFO:";
-			buf += string(client) + ":" + cmd	+ ":" + rval + "\n";
+			buf += client + ":" + cmd + ":" +  rval + "\n";
 			serv->pipes.send(buf);
 
 			// !!! we don't do any error checking -

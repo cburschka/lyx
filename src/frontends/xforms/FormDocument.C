@@ -497,6 +497,7 @@ bool FormDocument::input(FL_OBJECT * ob, long data)
 		language_apply(params);
 		options_apply(params);
 		bullets_apply(params);
+		params.preamble = lv_->buffer()->params.preamble;
 		saveParamsAsDefault(params);
 	}
 
