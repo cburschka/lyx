@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2001-03-07\n"
 "Last-Translator: Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -5122,7 +5122,7 @@ msgstr "Pliki tymczasowe"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 msgid "Graphic file:"
 msgstr ""
 
@@ -7173,7 +7173,7 @@ msgstr "Wywo³anie createDirectory z nieprawid³ow± nazw±"
 msgid "Error! Couldn't create directory:"
 msgstr "B³±d! Nie mo¿na utworzyæ katalogu:"
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "Nie mo¿na usun±æ pliku auto-zapisu!"
 
@@ -7211,33 +7211,33 @@ msgstr "Nic do zrobienia"
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 msgid "Page Break (top)"
 msgstr ""
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 #, fuzzy
 msgid "Space above"
 msgstr "Spec-tabela"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3558
+#: src/text.C:3560
 msgid "Space below"
 msgstr ""
 

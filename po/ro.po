@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.3\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2000-12-27 12:45+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
 "Language-Team: Romanian <ro-kde@egroups.com>\n"
@@ -5219,7 +5219,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Fiºier grafic|#F"
@@ -7289,7 +7289,7 @@ msgstr "Apel de creare director cu nume eronat"
 msgid "Error! Couldn't create directory:"
 msgstr "Eroare! Nu pot crea directorul:"
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "Nu pot ºterge fiºierul de auto-salvare!"
 
@@ -7329,7 +7329,7 @@ msgstr "Nimic de fãcut"
 msgid "Cannot index more than one paragraph!"
 msgstr "Celula de tabel nu poate include mai mult de un paragraf!"
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -7337,26 +7337,26 @@ msgstr ""
 "Nu puteþi insera un spaþiu la începutul unui paragraf.  Citiþi mai întîi "
 "Tutorialul."
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Nu puteþi pune douã spaþii în acest mod. Citiþi Tutorialul."
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Ruperi de paginã"
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 #, fuzzy
 msgid "Space above"
 msgstr "Spaþiere deasupra"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3558
+#: src/text.C:3560
 #, fuzzy
 msgid "Space below"
 msgstr "Spaþiere dedesubt"

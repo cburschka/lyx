@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2000-01-20 02:51+01:00\n"
 "Last-Translator: Joacim Persson <sp2joap1@ida.his.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -5293,7 +5293,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Fil|#F"
@@ -7361,7 +7361,7 @@ msgstr "Anrop till createDirectory med ogiltigt namn"
 msgid "Error! Couldn't create directory:"
 msgstr "Fel! Kunde inte skapa katalog:"
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "Kunde inte ta bort autolagrad fil!"
 
@@ -7401,7 +7401,7 @@ msgstr "Ingenting att göra"
 msgid "Cannot index more than one paragraph!"
 msgstr "En tabellcell kan bara innehålla högst ett stycke!"
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -7409,26 +7409,26 @@ msgstr ""
 "Du kan inte mata in ett mellanslag i början på ett stycke. Läs "
 "Nybörjarkursen."
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Du kan inte mata in två mellanslag i rad sådär. Läs Nybörjarkursen."
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Sidbrytning"
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 #, fuzzy
 msgid "Space above"
 msgstr "Mellanrum"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3558
+#: src/text.C:3560
 #, fuzzy
 msgid "Space below"
 msgstr "Mellanrum"

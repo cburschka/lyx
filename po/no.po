@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.2.0\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2002-05-07 14:35+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -4915,7 +4915,7 @@ msgstr "into tempdir"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 msgid "Graphic file:"
 msgstr "Grafikkfil"
 
@@ -6957,7 +6957,7 @@ msgstr "Kall til createDirectory men ugyldig navn"
 msgid "Error! Couldn't create directory:"
 msgstr "Feil! Kunne ikke lage folder:"
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "Kunne ikke slette autolagre fil!"
 
@@ -6994,7 +6994,7 @@ msgstr "Nothing to index!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Cannot index more than one paragraph!"
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -7002,24 +7002,24 @@ msgstr ""
 "Du kan ikke sette inn et mellomrom i begynnelsen av et avsnitt. Les "
 "'Tutorial'."
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Det er ikke mulig å bruke to mellomrom pe denne meten. Les 'Tutorial.'"
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 msgid "Page Break (top)"
 msgstr "Ny side (topp)"
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 msgid "Space above"
 msgstr "Space above"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr "Ny side (bunn)"
 
-#: src/text.C:3558
+#: src/text.C:3560
 msgid "Space below"
 msgstr "Space below"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.1\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2000-01-20 02:56+01:00\n"
 "Last-Translator: Fulvio Boggia <muci@freenet.hut.fi>\n"
 "Language-Team: Italiano <it@li.org>\n"
@@ -5299,7 +5299,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 msgid "Graphic file:"
 msgstr ""
 
@@ -7386,7 +7386,7 @@ msgstr "Chiamata di createDirectory con un nome non valido"
 msgid "Error! Couldn't create directory:"
 msgstr "Errore! Non riesco a creare la directory:"
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "Non riesco a cancellare il file di auto-salvataggio!"
 
@@ -7426,7 +7426,7 @@ msgstr "Non devo fare nulla :-)"
 msgid "Cannot index more than one paragraph!"
 msgstr "La cella di una tabella non può includere più di un paragrafo!"
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -7434,27 +7434,27 @@ msgstr ""
 "Non puoi inserire uno spazio all'inizio di un paragrafo. Per favore, leggi "
 "il Tutorial."
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial."
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Inter. pagina"
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 #, fuzzy
 msgid "Space above"
 msgstr "Spaziatura"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3558
+#: src/text.C:3560
 #, fuzzy
 msgid "Space below"
 msgstr "Spaziatura"

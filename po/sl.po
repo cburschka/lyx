@@ -1,12 +1,12 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.55.2.3 2002/12/03 17:26:49 lasgouttes Exp $
+# $Id: sl.po,v 1.55.2.4 2002/12/13 16:04:08 lasgouttes Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.7pre1\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2001-05-05 18:55+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -5215,7 +5215,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Grafièna datoteka|#D"
@@ -7270,7 +7270,7 @@ msgstr "Klic funkcije ,createDirectory` z napaènim imenom"
 msgid "Error! Couldn't create directory:"
 msgstr "Napaka! Imenika ni moè ustvariti:"
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "Samodejno shranjene datoteke ni moè zbrisati!"
 
@@ -7310,32 +7310,32 @@ msgstr "Nièesar ni moè storiti"
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 msgid "Page Break (top)"
 msgstr "Prelom strani (vrh)"
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 #, fuzzy
 msgid "Space above"
 msgstr "&Presledek zgoraj"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr "Prelom strani (dno)"
 
-#: src/text.C:3558
+#: src/text.C:3560
 #, fuzzy
 msgid "Space below"
 msgstr "Presledek &spodaj"

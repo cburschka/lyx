@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX ??\n"
-"POT-Creation-Date: 2002-12-03 18:13+0100\n"
+"POT-Creation-Date: 2002-12-13 16:04+0100\n"
 "PO-Revision-Date: 2000-05-07 17:14+2\n"
 "Last-Translator: anon <anon@anon>\n"
 "Language-Team: he <he@li.org>\n"
@@ -5123,7 +5123,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:809
+#: src/insets/insetgraphics.C:819
 #, fuzzy
 msgid "Graphic file:"
 msgstr "f ץבוק|#F"
@@ -7129,7 +7129,7 @@ msgstr "ןיקת אל םש םע createDirectory-ל האירק"
 msgid "Error! Couldn't create directory:"
 msgstr "רודמ רוציל לוכי אל !האיגש - "
 
-#: src/support/filetools.C:1378
+#: src/support/filetools.C:1360
 msgid "Could not delete auto-save file!"
 msgstr "תיטמוטואה הרימשה ץבוק תקיחמ הלשכנ - "
 
@@ -7166,31 +7166,31 @@ msgstr ""
 msgid "Cannot index more than one paragraph!"
 msgstr "!דבלב תחא הקספ ליכהל לוכי הלבטב את"
 
-#: src/text.C:1935
+#: src/text.C:1937
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ".דומילה ךמסמ תא אורקל ץלמומ .הקספ תליחתב חוור ףיסוהל רשפא יא"
 
-#: src/text.C:1937
+#: src/text.C:1939
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ".דומילה ךמסמ תא אורקל ץלמומ .םיפוצר םיחוור ינש דילקהל רשפא יא"
 
-#: src/text.C:3368 src/text.C:3370
+#: src/text.C:3370 src/text.C:3372
 msgid "Page Break (top)"
 msgstr ""
 
 #. draw the additional space if needed:
-#: src/text.C:3377
+#: src/text.C:3379
 #, fuzzy
 msgid "Space above"
 msgstr "חוויר"
 
-#: src/text.C:3547 src/text.C:3549
+#: src/text.C:3549 src/text.C:3551
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3558
+#: src/text.C:3560
 #, fuzzy
 msgid "Space below"
 msgstr "חוויר"

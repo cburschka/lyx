@@ -19,7 +19,7 @@ What's new
 
 ** Updates
 
-- LyX build with the newly released xforms 1.0. Actually, it is
+- LyX builds with the newly released xforms 1.0. Actually, it is
   advised to use this version of xforms, since it fixes many bugs and
   support for older versions will probably be dropped in LyX 1.3.0
 
@@ -55,8 +55,6 @@ What's new
 
 ** Bug fixes
 
-- fix rendering of Arabic text
-
 - fix bug where special characters in equations label confuse LyX
   (this was a new bug in 1.2.1)
 
@@ -81,6 +79,8 @@ What's new
 
 - when a viewer has not been found (set to "none"), remove the
   corresponding View menu entry
+
+- fix rendering of Arabic text
 
 - fix bad latex output with language changes in nested environment
 
