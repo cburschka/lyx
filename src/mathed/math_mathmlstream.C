@@ -11,6 +11,77 @@ using std::ostream;
 using std::strlen;
 
 
+WriteStream::WriteStream(ostream & os, bool fragile, bool latex)
+	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
+	  pendingspace_(false), line_(0)
+{}
+
+
+WriteStream::WriteStream(ostream & os)
+	: os_(os), fragile_(false), firstitem_(false), latex_(false),
+	  pendingspace_(false), line_(0)
+{}
+
+
+void WriteStream::addlines(unsigned int n)
+{
+	line_ += n;
+}
+
+
+WriteStream & operator<<(WriteStream & ws, MathAtom const & at)
+{
+	at->write(ws);
+	return ws;
+}
+
+
+WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
+{
+	write(ar, ws);
+	return ws;
+}
+
+
+WriteStream & operator<<(WriteStream & ws, char const * s)
+{
+	ws.os() << s;
+	ws.addlines(int(lyx::count(s, s + strlen(s), '\n')));
+	return ws;
+}
+
+
+WriteStream & operator<<(WriteStream & ws, char c)
+{
+	if (ws.pendingSpace()) {
+		if (isalpha(c))
+			ws.os() << ' ';
+		ws.pendingSpace(false);
+	}
+	ws.os() << c;
+	if (c == '\n')
+		ws.addlines(1);
+	return ws;
+}
+
+
+WriteStream & operator<<(WriteStream & ws, int i)
+{
+	ws.os() << i;
+	return ws;
+}
+
+
+WriteStream & operator<<(WriteStream & ws, unsigned int i)
+{
+	ws.os() << i;
+	return ws;
+}
+
+
+//////////////////////////////////////////////////////////////////////
+
+
 MathMLStream::MathMLStream(ostream & os)
 	: os_(os), tab_(0), line_(0), lastchar_(0)
 {}
@@ -228,63 +299,3 @@ NormalStream & operator<<(NormalStream & ns, int i)
 
 //////////////////////////////////////////////////////////////////////
 
-
-WriteStream::WriteStream(ostream & os, bool fragile, bool latex)
-	: os_(os), fragile_(fragile), latex_(latex), firstitem_(false), line_(0)
-{}
-
-
-WriteStream::WriteStream(ostream & os)
-	: os_(os), fragile_(false), latex_(false), firstitem_(false), line_(0)
-{}
-
-
-void WriteStream::addlines(unsigned int n)
-{
-	line_ += n;
-}
-
-
-WriteStream & operator<<(WriteStream & ws, MathAtom const & at)
-{
-	at->write(ws);
-	return ws;
-}
-
-
-WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
-{
-	write(ar, ws);
-	return ws;
-}
-
-
-WriteStream & operator<<(WriteStream & ws, char const * s)
-{
-	ws.os() << s;
-	ws.addlines(int(lyx::count(s, s + strlen(s), '\n')));
-	return ws;
-}
-
-
-WriteStream & operator<<(WriteStream & ws, char c)
-{
-	ws.os() << c;
-	if (c == '\n')
-		ws.addlines(1);
-	return ws;
-}
-
-
-WriteStream & operator<<(WriteStream & ws, int i)
-{
-	ws.os() << i;
-	return ws;
-}
-
-
-WriteStream & operator<<(WriteStream & ws, unsigned int i)
-{
-	ws.os() << i;
-	return ws;
-}

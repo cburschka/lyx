@@ -14,6 +14,61 @@ class MathArray;
 class MathInset;
 class MathAtom;
 
+//
+// LaTeX/LyX
+//
+
+class WriteStream {
+public:
+	///
+	WriteStream(std::ostream & os, bool fragile, bool latex);
+	///
+	explicit WriteStream(std::ostream & os_);
+	///
+	int line() const { return line_; }
+	///
+	bool fragile() const { return fragile_; }
+	///
+	bool latex() const { return latex_; }
+	///
+	std::ostream & os() { return os_; }
+	///
+	bool & firstitem() { return firstitem_; }
+	///
+	void addlines(unsigned int);
+	/// writes space if next thing is isalpha()
+	void pendingSpace(bool how) { pendingspace_ = how; }
+	/// writes space if next thing is isalpha()
+	bool pendingSpace() const { return pendingspace_; }
+private:
+	///
+	std::ostream & os_;
+	/// do we have to write \\protect sometimes
+	bool fragile_;
+	/// are we at the beginning of an MathArray?
+	bool firstitem_;
+	/// are we writing to .tex?
+	int latex_;
+	/// do we have a space pending?
+	bool pendingspace_;
+	///
+	int line_;
+};
+
+///
+WriteStream & operator<<(WriteStream &, MathAtom const &);
+///
+WriteStream & operator<<(WriteStream &, MathArray const &);
+///
+WriteStream & operator<<(WriteStream &, char const *);
+///
+WriteStream & operator<<(WriteStream &, char);
+///
+WriteStream & operator<<(WriteStream &, int);
+///
+WriteStream & operator<<(WriteStream &, unsigned int);
+
+
 
 //
 //  MathML
@@ -188,53 +243,5 @@ OctaveStream & operator<<(OctaveStream &, char);
 OctaveStream & operator<<(OctaveStream &, int);
 
 
-
-//
-// LaTeX/LyX
-//
-
-class WriteStream {
-public:
-	///
-	WriteStream(std::ostream & os, bool fragile, bool latex);
-	///
-	explicit WriteStream(std::ostream & os_);
-	///
-	int line() const { return line_; }
-	///
-	bool fragile() const { return fragile_; }
-	///
-	bool latex() const { return latex_; }
-	///
-	std::ostream & os() { return os_; }
-	///
-	bool & firstitem() { return firstitem_; }
-	///
-	void addlines(unsigned int);
-private:
-	///
-	std::ostream & os_;
-	///
-	bool fragile_;
-	/// are we writing to .tex?
-	int latex_;
-	/// are we at the beginning of an MathArray?
-	bool firstitem_;
-	///
-	int line_;
-};
-
-///
-WriteStream & operator<<(WriteStream &, MathAtom const &);
-///
-WriteStream & operator<<(WriteStream &, MathArray const &);
-///
-WriteStream & operator<<(WriteStream &, char const *);
-///
-WriteStream & operator<<(WriteStream &, char);
-///
-WriteStream & operator<<(WriteStream &, int);
-///
-WriteStream & operator<<(WriteStream &, unsigned int);
 
 #endif

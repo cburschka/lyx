@@ -209,7 +209,8 @@ void MathInset::drawT(TextPainter &, int, int) const
 
 void MathInset::write(WriteStream & os) const
 {
-	os << '\\' << name().c_str() << ' ';
+	os << '\\' << name().c_str();
+	os.pendingSpace(true);
 }
 
 

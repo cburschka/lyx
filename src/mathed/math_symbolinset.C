@@ -170,7 +170,8 @@ void MathSymbolInset::octavize(OctaveStream & os) const
 
 void MathSymbolInset::write(WriteStream & os) const
 {
-	os << '\\' << name() << ' ';
+	os << '\\' << name();
+	os.pendingSpace(true);
 }
 
 

@@ -293,10 +293,12 @@ void MathNestInset::write(WriteStream & os) const
 	os << '\\' << name().c_str();
 	for (unsigned i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
-	if (lock_ && !os.latex())
-		os << "\\lyxlock ";
 	if (nargs() == 0)
-		os << ' ';
+		os.pendingSpace(true);
+	if (lock_ && !os.latex()) {
+		os << "\\lyxlock";
+		os.pendingSpace(true);
+	}
 }
 
 

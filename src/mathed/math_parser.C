@@ -648,8 +648,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catLetter)
 			cell->push_back(MathAtom(new MathCharInset(t.character())));
 
-		else if (t.cat() == catSpace && mode != MathInset::MATH_MODE)
-			cell->push_back(MathAtom(new MathCharInset(t.character())));
+		else if (t.cat() == catSpace && mode != MathInset::MATH_MODE) {
+			if (cell->empty() || cell->back()->getChar() != ' ')
+				cell->push_back(MathAtom(new MathCharInset(t.character())));
+		}
 
 		else if (t.cat() == catNewline && mode != MathInset::MATH_MODE)
 			cell->push_back(MathAtom(new MathCharInset(t.character())));

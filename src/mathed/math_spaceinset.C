@@ -111,6 +111,8 @@ void MathSpaceInset::normalize(NormalStream & os) const
 
 void MathSpaceInset::write(WriteStream & os) const
 {
-	if (space_ >= 0 && space_ < nSpace)
-		os << '\\' << latex_mathspace[space_] << ' ';
+	if (space_ >= 0 && space_ < nSpace) {
+		os << '\\' << latex_mathspace[space_];
+		os.pendingSpace(true);
+	}
 }
