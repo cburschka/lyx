@@ -688,8 +688,8 @@ void InsetText::validate(LaTeXFeatures & features) const
 
 void InsetText::getCursorPos(BufferView *, int & x, int & y) const
 {
-	x = cx() - xo_;
-	y = cy();
+	x = text_.cursor.x() + TEXT_TO_INSET_OFFSET;
+	y = text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -903,18 +903,6 @@ LColor_color InsetText::frameColor() const
 void InsetText::setFrameColor(LColor_color col)
 {
 	frame_color_ = col;
-}
-
-
-int InsetText::cx() const
-{
-	return text_.cursor.x() + xo_ + TEXT_TO_INSET_OFFSET;
-}
-
-
-int InsetText::cy() const
-{
-	return text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 

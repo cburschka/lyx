@@ -213,10 +213,6 @@ private:
 	///
 	void removeNewlines();
 	///
-	int cx() const;
-	///
-	int cy() const;
-	///
 	lyx::pos_type cpos() const;
 	///
 	ParagraphList::iterator cpar() const;
