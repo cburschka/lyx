@@ -1,3 +1,8 @@
+2003-07-29  Angus Leeming  <leeming@lyx.org>
+
+	* filename.[Ch] (relFilename, outputFilename): the 'path' arg
+	defaults to string() because MakeRelPath can accept that.
+
 2003-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am: contidionalize USE_COMPRESSION

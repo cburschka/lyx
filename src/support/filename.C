@@ -43,9 +43,9 @@ string const FileName::relFilename(string const & path) const
 }
 
 
-string const FileName::outputFilename(string const & buffer_path) const
+string const FileName::outputFilename(string const & path) const
 {
-	return save_abs_path_ ? name_ : MakeRelPath(name_, buffer_path);
+	return save_abs_path_ ? name_ : MakeRelPath(name_, path);
 }
 
 

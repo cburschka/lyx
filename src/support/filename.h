@@ -35,8 +35,10 @@ public:
 
 	bool saveAbsPath() const { return save_abs_path_; }
 	string const absFilename() const { return name_; }
-	string const relFilename(string const & buffer_path) const;
-	string const outputFilename(string const & buffer_path) const;
+	/// \param buffer_path if empty, uses `pwd`
+	string const relFilename(string const & buffer_path = string()) const;
+	/// \param buf_path if empty, uses `pwd`
+	string const outputFilename(string const & buf_path = string()) const;
 
 private:
 	string name_;
