@@ -33,6 +33,7 @@ libqt2_la_LIBADD = \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsMatrix.lo \
 	../xforms/FormMathsPanel.lo \
+	../xforms/FormMathsStyle.lo \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormParagraph.lo \
 	../xforms/FormPreferences.lo \
@@ -58,6 +59,7 @@ libqt2_la_LIBADD = \
 	../xforms/form_maths_matrix.lo \
 	../xforms/form_maths_panel.lo \
 	../xforms/form_maths_space.lo \
+	../xforms/form_maths_style.lo \
 	../xforms/form_paragraph.lo \
 	../xforms/input_validators.lo \
 	../xforms/xformsBC.lo \

@@ -14,6 +14,7 @@
 #include "ui/QThesaurusDialogBase.h"
 
 class QThesaurus;
+class QListViewItem;
 
 class QThesaurusDialog : public QThesaurusDialogBase
 { Q_OBJECT
@@ -27,8 +28,8 @@ protected slots:
 	virtual void change_adaptor();
 	virtual void entryChanged();
 	virtual void replaceClicked();
-	virtual void selectionChanged(const QString &);
-	virtual void selectionClicked(const QString &);
+	virtual void selectionChanged(QListViewItem *);
+	virtual void selectionClicked(QListViewItem *);
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);

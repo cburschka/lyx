@@ -9,8 +9,6 @@
 #ifndef QBIBITEMDIALOG_H
 #define QBIBITEMDIALOG_H
  
-#include <config.h>
- 
 #include "ui/QBibitemDialogBase.h"
 
 class QBibitem;

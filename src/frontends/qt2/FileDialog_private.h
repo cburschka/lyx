@@ -11,7 +11,7 @@
 #define FILEDIALOG_PRIVATE_H
 
 #include <config.h>
-
+ 
 #include <qfiledialog.h>
 
 #include "LString.h"
@@ -35,7 +35,7 @@ public slots:
 
 private:
 	LyXView * lv_;
-	int action_;
+	kb_action action_;
 };
 
 #endif // FILEDIALOG_PRIVATE_H

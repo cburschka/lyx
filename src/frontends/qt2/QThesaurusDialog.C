@@ -16,9 +16,8 @@
 #include "Dialogs.h"
 #include "QThesaurus.h"
 
-#include <qwidget.h>
 #include <qpushbutton.h>
-#include <qlistbox.h>
+#include <qlistview.h>
 #include <qlineedit.h> 
 
 QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
@@ -55,57 +54,49 @@ void QThesaurusDialog::replaceClicked()
 }
 
  
-void QThesaurusDialog::selectionChanged(const QString & str)
+void QThesaurusDialog::selectionChanged(QListViewItem * item)
 {
 	if (form_->readOnly())
 		return;
  
-	string const entry(str.latin1());
+	string const entry(item->text(0).latin1());
 	replaceED->setText(entry.c_str());
 	replacePB->setEnabled(true);
 	form_->changed();
 }
 
  
-void QThesaurusDialog::selectionClicked(const QString & str)
+void QThesaurusDialog::selectionClicked(QListViewItem * item)
 {
-	selectionChanged(str);
-	entryED->setText(str);
+	entryED->setText(item->text(0));
+	selectionChanged(item);
 	updateLists();
 }
 
  
 void QThesaurusDialog::updateLists()
 {
-	ControlThesaurus & control(form_->controller());
-	string const entry(entryED->text().latin1());
-
-	nounsLB->clear();
-	verbsLB->clear();
-	adjectivesLB->clear();
-	adverbsLB->clear();
-	otherLB->clear();
+	meaningsLV->clear();
  
 	std::vector<string> matches;
 
-	matches = control.getNouns(entry);
-	for (std::vector<string>::const_iterator cit = matches.begin();
-		cit != matches.end(); ++cit)
-		nounsLB->insertItem(cit->c_str());
-	matches = control.getVerbs(entry);
-	for (std::vector<string>::const_iterator cit = matches.begin();
-		cit != matches.end(); ++cit)
-		verbsLB->insertItem(cit->c_str());
-	matches = control.getAdjectives(entry);
-	for (std::vector<string>::const_iterator cit = matches.begin();
-		cit != matches.end(); ++cit)
-		adjectivesLB->insertItem(cit->c_str());
-	matches = control.getAdverbs(entry);
-	for (std::vector<string>::const_iterator cit = matches.begin();
-		cit != matches.end(); ++cit)
-		adverbsLB->insertItem(cit->c_str());
-	matches = control.getOthers(entry);
-	for (std::vector<string>::const_iterator cit = matches.begin();
-		cit != matches.end(); ++cit)
-		otherLB->insertItem(cit->c_str());
+	meaningsLV->setUpdatesEnabled(false);
+ 
+	Thesaurus::Meanings meanings = form_->controller().getMeanings(entryED->text().latin1());
+ 
+	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
+		cit != meanings.end(); ++cit) {
+		QListViewItem * i = new QListViewItem(meaningsLV);
+		i->setText(0, cit->first.c_str());
+		i->setOpen(true);
+		for (std::vector<string>::const_iterator cit2 = cit->second.begin();
+			cit2 != cit->second.end(); ++cit2) {
+				QListViewItem * i2 = new QListViewItem(i);
+				i2->setText(0, cit2->c_str());
+				i2->setOpen(true);
+			}
+	}
+ 
+	meaningsLV->setUpdatesEnabled(true);
+	meaningsLV->update();
 }

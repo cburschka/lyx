@@ -1,3 +1,14 @@
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: 
+	* FileDialog_private.h: fix compile
+
+	* QThesaurus.h:
+	* QThesaurus.C:
+	* QThesaurusDialog.h:
+	* QThesaurusDialog.C:
+	* ui/QThesaurusDialog.ui: new thesaurus code 
+ 
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* QMinipage.C (apply, update_contents): MinipageParams::width renamed

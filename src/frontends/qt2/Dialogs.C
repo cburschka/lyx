@@ -65,38 +65,7 @@
 #include "buffer.h"
 #include "Qt2BC.h"
 
-// the controllers
-#include "controllers/ControlAboutlyx.h"
-#include "controllers/ControlBibitem.h"
-#include "controllers/ControlBibtex.h"
-#include "controllers/ControlCharacter.h"
-#include "controllers/ControlCitation.h"
-#include "controllers/ControlError.h"
-#include "controllers/ControlERT.h"
-#include "controllers/ControlExternal.h"
-#include "controllers/ControlGraphics.h"
-#include "controllers/ControlInclude.h"
-#include "controllers/ControlIndex.h"
-#include "controllers/ControlLog.h"
-#include "controllers/ControlMinipage.h"
-#include "controllers/ControlPreamble.h"
-#include "controllers/ControlPrint.h"
-#include "controllers/ControlRef.h"
-#include "controllers/ControlSearch.h"
-#include "controllers/ControlSpellchecker.h"
-#include "controllers/ControlTabularCreate.h"
-#include "controllers/ControlThesaurus.h"
-#include "controllers/ControlUrl.h"
-#include "controllers/ControlVCLog.h"
-#if 0
-#include "controllers/ControlToc.h"
-#endif
-
 // xforms stuff
-#include "controllers/ControlERT.h"
-#include "controllers/ControlFloat.h"
-#include "controllers/ControlShowFile.h"
-#include "controllers/ControlToc.h"
 #include "xforms/FormBrowser.h"
 #include "xforms/form_browser.h"
 #include "xforms/FormDocument.h"

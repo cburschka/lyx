@@ -53,8 +53,3 @@ void QThesaurus::replace()
 {
 	controller().replace(dialog_->replaceED->text().latin1());
 }
-
-
-void QThesaurus::apply()
-{
-}

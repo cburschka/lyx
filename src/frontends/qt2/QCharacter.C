@@ -9,6 +9,8 @@
 
 #include <config.h>
 
+#include <vector>
+
 #include "gettext.h"
 #include "support/lstrings.h"
 

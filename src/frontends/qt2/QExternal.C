@@ -9,7 +9,6 @@
 #include <config.h>
 #include <vector> 
 
-#include "LString.h" 
 #include "QExternalDialog.h"
 #include "ControlExternal.h"
 #include "QExternal.h"

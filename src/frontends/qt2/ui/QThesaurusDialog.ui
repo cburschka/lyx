@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>478</width>
+            <width>466</width>
             <height>442</height>
         </rect>
     </property>
@@ -81,13 +81,6 @@
                         <cstring>Spacer2</cstring>
                     </property>
                     <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>7</hsizetype>
-                            <vsizetype>1</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property stdset="1">
                         <name>orientation</name>
                         <enum>Horizontal</enum>
                     </property>
@@ -106,175 +99,33 @@
             </hbox>
         </widget>
         <widget>
-            <class>QTabWidget</class>
+            <class>QListView</class>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Thesaurus entries</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
             <property stdset="1">
                 <name>name</name>
-                <cstring>TabWidget2</cstring>
+                <cstring>meaningsLV</cstring>
             </property>
-            <widget>
-                <class>QWidget</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>tab</cstring>
-                </property>
-                <attribute>
-                    <name>title</name>
-                    <string>&amp;Nouns</string>
-                </attribute>
-                <hbox>
-                    <property stdset="1">
-                        <name>margin</name>
-                        <number>11</number>
-                    </property>
-                    <property stdset="1">
-                        <name>spacing</name>
-                        <number>6</number>
-                    </property>
-                    <widget>
-                        <class>QListBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>nounsLB</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>columnMode</name>
-                            <enum>FitToHeight</enum>
-                        </property>
-                        <property>
-                            <name>toolTip</name>
-                            <string>Matching nouns</string>
-                        </property>
-                    </widget>
-                </hbox>
-            </widget>
-            <widget>
-                <class>QWidget</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>tab</cstring>
-                </property>
-                <attribute>
-                    <name>title</name>
-                    <string>&amp;Verbs</string>
-                </attribute>
-                <hbox>
-                    <property stdset="1">
-                        <name>margin</name>
-                        <number>11</number>
-                    </property>
-                    <property stdset="1">
-                        <name>spacing</name>
-                        <number>6</number>
-                    </property>
-                    <widget>
-                        <class>QListBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>verbsLB</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>columnMode</name>
-                            <enum>FitToHeight</enum>
-                        </property>
-                    </widget>
-                </hbox>
-            </widget>
-            <widget>
-                <class>QWidget</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>tab</cstring>
-                </property>
-                <attribute>
-                    <name>title</name>
-                    <string>&amp;Adjectives</string>
-                </attribute>
-                <hbox>
-                    <property stdset="1">
-                        <name>margin</name>
-                        <number>11</number>
-                    </property>
-                    <property stdset="1">
-                        <name>spacing</name>
-                        <number>6</number>
-                    </property>
-                    <widget>
-                        <class>QListBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>adjectivesLB</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>columnMode</name>
-                            <enum>FitToHeight</enum>
-                        </property>
-                    </widget>
-                </hbox>
-            </widget>
-            <widget>
-                <class>QWidget</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>tab</cstring>
-                </property>
-                <attribute>
-                    <name>title</name>
-                    <string>A&amp;dverbs</string>
-                </attribute>
-                <hbox>
-                    <property stdset="1">
-                        <name>margin</name>
-                        <number>11</number>
-                    </property>
-                    <property stdset="1">
-                        <name>spacing</name>
-                        <number>6</number>
-                    </property>
-                    <widget>
-                        <class>QListBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>adverbsLB</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>columnMode</name>
-                            <enum>FitToHeight</enum>
-                        </property>
-                    </widget>
-                </hbox>
-            </widget>
-            <widget>
-                <class>QWidget</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>tab</cstring>
-                </property>
-                <attribute>
-                    <name>title</name>
-                    <string>&amp;Other</string>
-                </attribute>
-                <hbox>
-                    <property stdset="1">
-                        <name>margin</name>
-                        <number>11</number>
-                    </property>
-                    <property stdset="1">
-                        <name>spacing</name>
-                        <number>6</number>
-                    </property>
-                    <widget>
-                        <class>QListBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>otherLB</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>columnMode</name>
-                            <enum>FitToHeight</enum>
-                        </property>
-                    </widget>
-                </hbox>
-            </widget>
+            <property stdset="1">
+                <name>allColumnsShowFocus</name>
+                <bool>true</bool>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Select a related word</string>
+            </property>
         </widget>
         <widget>
             <class>QLayoutWidget</class>
@@ -415,79 +266,25 @@
         <slot>replaceClicked()</slot>
     </connection>
     <connection>
-        <sender>nounsLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
+        <sender>meaningsLV</sender>
+        <signal>currentChanged(QListViewItem*)</signal>
         <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
+        <slot>selectionChanged(QListViewItem *)</slot>
     </connection>
     <connection>
-        <sender>nounsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
+        <sender>meaningsLV</sender>
+        <signal>doubleClicked(QListViewItem*)</signal>
         <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionClicked(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>verbsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionClicked(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>verbsLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>adjectivesLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionClicked(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>adjectivesLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>adverbsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionClicked(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>adverbsLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>otherLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionClicked(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>otherLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
+        <slot>selectionClicked(QListViewItem *)</slot>
     </connection>
     <slot access="public">change_adaptor()</slot>
     <slot access="public">entryChanged()</slot>
-    <slot access="public">selectionClicked(const QString &amp;)</slot>
     <slot access="public">replaceClicked()</slot>
-    <slot access="public">selectionChanged(const QString &amp;)</slot>
+    <slot access="public">selectionChanged(QListViewItem *)</slot>
+    <slot access="public">selectionClicked(QListViewItem *)</slot>
 </connections>
 <tabstops>
     <tabstop>entryED</tabstop>
-    <tabstop>TabWidget2</tabstop>
-    <tabstop>nounsLB</tabstop>
-    <tabstop>verbsLB</tabstop>
-    <tabstop>adjectivesLB</tabstop>
-    <tabstop>adverbsLB</tabstop>
-    <tabstop>otherLB</tabstop>
     <tabstop>replaceED</tabstop>
     <tabstop>replacePB</tabstop>
     <tabstop>closePB</tabstop>
