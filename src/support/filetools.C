@@ -436,9 +436,11 @@ int DeleteAllFilesInDir(string const & path)
 
 		bool deleted = true;
 		FileInfo fi(unlinkpath);
-		if (fi.isOK() && fi.isDir())
+		if (fi.isOK() && fi.isDir()) {
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
-		deleted &= (unlink(unlinkpath) == 0);
+			deleted &= (rmdir(unlinkpath) == 0);
+		} else
+			deleted &= (unlink(unlinkpath) == 0);
 		if (!deleted)
 			return_value = -1;
 	}
