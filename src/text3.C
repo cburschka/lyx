@@ -707,63 +707,21 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_RIGHT: {
-		bool is_rtl = rtl();
-		if (!selection.mark())
-			clearSelection();
-		if (is_rtl)
-			cursorLeft(false);
-		if (cursor.pos() < cursorPar()->size()
-		    && cursorPar()->isInset(cursor.pos())
-		    && isHighlyEditableInset(cursorPar()->getInset(cursor.pos()))) {
-			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
-			cmd.message(tmpinset->editMessage());
-			tmpinset->edit(bv, !is_rtl);
-			break;
-		}
-		if (!is_rtl)
-			cursorRight(false);
+	case LFUN_RIGHT:
 		finishChange(bv);
-		break;
-	}
+		return moveRight();
 
-	case LFUN_LEFT: {
-		// This is soooo ugly. Isn't it possible to make
-		// it simpler? (Lgb)
-		bool const is_rtl = rtl();
-		if (!selection.mark())
-			clearSelection();
-		LyXCursor const cur = cursor;
-		if (!is_rtl)
-			cursorLeft(false);
-		if ((is_rtl || cur != cursor) && // only if really moved!
-		    cursor.pos() < cursorPar()->size() &&
-		    cursorPar()->isInset(cursor.pos()) &&
-		    isHighlyEditableInset(cursorPar()->getInset(cursor.pos()))) {
-			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
-			cmd.message(tmpinset->editMessage());
-			tmpinset->edit(bv, is_rtl);
-			break;
-		}
-		if (is_rtl)
-			cursorRight(false);
+	case LFUN_LEFT:
 		finishChange(bv);
-		break;
-	}
+		return moveLeft();
 
 	case LFUN_UP:
-		if (!selection.mark())
-			clearSelection();
-		cursorUp(false);
 		finishChange(bv);
-		break;
+		return moveUp();
 
 	case LFUN_DOWN:
-		if (!selection.mark())
-			clearSelection();
-		cursorDown(false);
 		finishChange(bv);
-		break;
+		return moveDown();
 
 	case LFUN_UP_PARAGRAPH:
 		if (!selection.mark())
@@ -782,15 +740,19 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_PRIOR:
 		if (!selection.mark())
 			clearSelection();
-		cursorPrevious();
 		finishChange(bv, false);
+		if (cursorRow() == firstRow())
+			return DispatchResult(false, FINISHED_UP);
+		cursorPrevious();
 		break;
 
 	case LFUN_NEXT:
 		if (!selection.mark())
 			clearSelection();
-		cursorNext();
 		finishChange(bv, false);
+		if (cursorRow() == lastRow())
+			return DispatchResult(false, FINISHED_DOWN);
+		cursorNext();
 		break;
 
 	case LFUN_HOME:
