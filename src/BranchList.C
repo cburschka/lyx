@@ -12,14 +12,23 @@
 
 #include "BranchList.h"
 
-#include <boost/assert.hpp>
-
-#include <functional>
-
-
 using std::string;
-using std::bind2nd;
-using std::binary_function;
+
+namespace {
+
+class BranchNamesEqual : public std::unary_function<Branch, bool> {
+public:
+	BranchNamesEqual(string const & name)
+		: name_(name) {}
+	bool operator()(Branch const & branch) const
+	{
+		return branch.getBranch() == name_;
+	}
+private:
+	string name_;
+};
+
+} // namespace anon
 
 
 string const & Branch::getBranch() const
@@ -61,35 +70,22 @@ void Branch::setColor(string const & c)
 }
 
 
-namespace {
-
-struct SameName {
-	SameName(string const & name) : name_(name) {}
-	bool operator()(Branch const & branch) const
-		{ return branch.getBranch() == name_; }
-private:
-	string name_;
-};
-
-}// namespace anon
-
-
 Branch * BranchList::find(std::string const & name)
 {
 	List::iterator it =
-		std::find_if(list.begin(), list.end(), SameName(name));
+		std::find_if(list.begin(), list.end(), BranchNamesEqual(name));
 	return it == list.end() ? 0 : &*it;
 }
 
-	
+
 Branch const * BranchList::find(std::string const & name) const
 {
 	List::const_iterator it =
-		std::find_if(list.begin(), list.end(), SameName(name));
+		std::find_if(list.begin(), list.end(), BranchNamesEqual(name));
 	return it == list.end() ? 0 : &*it;
 }
 
-	
+
 bool BranchList::add(string const & s)
 {
 	bool added = false;
@@ -102,15 +98,9 @@ bool BranchList::add(string const & s)
 		else
 			name = s.substr(i, j - i);
 		// Is this name already in the list?
-		List::const_iterator it = list.begin();
-		List::const_iterator end = list.end();
-		bool already = false;
-		for (; it != end; ++it) {
-			if (it->getBranch() == name) {
-				already = true;
-				break;
-			}
-		}
+		bool const already =
+			std::find_if(list.begin(), list.end(),
+				     BranchNamesEqual(name)) != list.end();
 		if (!already) {
 			added = true;
 			Branch br;
@@ -127,20 +117,9 @@ bool BranchList::add(string const & s)
 }
 
 
-namespace {
-
-struct match : public binary_function<Branch, string, bool> {
-	bool operator()(Branch const & br, string const & s) const {
-	return (br.getBranch() == s);
-	}
-};
-
-} // namespace anon.
-
-
 bool BranchList::remove(string const & s)
 {
 	List::size_type const size = list.size();
-	list.remove_if(bind2nd(match(), s));
+	list.remove_if(BranchNamesEqual(s));
 	return size != list.size();
 }
