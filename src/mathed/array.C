@@ -40,7 +40,14 @@ void MathedArray::last(int l)
 
 int MathedArray::maxsize() const
 {
-	return maxsize_;
+	return static_cast<int>(bf_.size());
+}
+
+
+void MathedArray::need_size(int needed)
+{
+	if (needed >= maxsize()) 
+		resize(needed);
 }
 
 
@@ -51,15 +58,14 @@ void MathedArray::resize(int newsize)
 	newsize += ARRAY_STEP - (newsize % ARRAY_STEP);
 	bf_.resize(newsize);
 	if (last_ >= newsize) last_ = newsize - 1;
-	maxsize_ = newsize;
 	bf_[last_] = 0;
 }
 
 
 MathedArray::MathedArray(int size) 
 {
-	maxsize_ = (size < ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE : size;
-	bf_.resize(maxsize_);
+	int newsize = (size < ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE : size;
+	bf_.resize(newsize);
 	last_ = 0;
 }
 
@@ -67,9 +73,7 @@ MathedArray::MathedArray(int size)
 void MathedArray::move(int p, int shift)
 {
 	if (p <= last_) {
-		if (last_ + shift >= maxsize_) { 
-		    resize(last_ + shift);
-		}
+		need_size(last_ + shift);
 		memmove(&bf_[p + shift], &bf_[p], last_ - p);
 		last_ += shift;
 		bf_[last_] = 0;
@@ -117,8 +121,11 @@ byte & MathedArray::operator[](int i)
 void MathedArray::insert(int pos, byte c)
 {
 	if (pos < 0) pos = last_;
-	if (pos >= maxsize_) 
-		resize(maxsize_ + ARRAY_STEP);
+
+	// I think this should be replaced by  need_size(pos).  Note that the
+	// current code looks troublesome if  pos > maxsize() + ARRAY_STEP.
+	if (pos >= maxsize()) 
+		resize(maxsize() + ARRAY_STEP);
 	bf_[pos] = c;
 	if (pos >= last_)
 		last_ = pos + 1;

@@ -194,9 +194,7 @@ void MathedIter::Insert(byte c, MathedTextCodes t)
     if (pos < array->last())
         array->move(pos, shift);
     else {
-	if (array->last() + shift >= array->maxsize()) {
-	    array->resize(array->last() + shift);
-	}
+	array->need_size(array->last() + shift);
 	array->last(array->last() + shift);
 	(*array)[array->last()] = '\0';
     }
@@ -230,9 +228,7 @@ void MathedIter::split(int shift)
       array->move(pos, shift);
       if (fg) (*array)[pos + shift - 1] = fcode;
    } else {
-      if (array->last() + shift >= array->maxsize()) {
-	  array->resize(array->last() + shift);
-      }
+			array->need_size(array->last() + shift);
       array->last(array->last() + shift);
    }
    (*array)[array->last()] = '\0';

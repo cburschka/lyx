@@ -1,3 +1,8 @@
+
+2001-02-12  André Pönitz  <poenitz@htwm.de>
+	* array.[hC]: replace private variable maxsize_ with call 
+	to bf_.size() 
+
 2001-02-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* array.h: made all variables private, removed friend, added new

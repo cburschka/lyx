@@ -91,13 +91,13 @@ public:
 	void resize(int newsize);
 	///
 	int maxsize() const;
+	/// Make sure we can access at least \a needed elements
+	void need_size(int needed);
 private:
 
 	/// Buffer
 	buffer_type bf_;
 	/// Last position inserted.
 	int last_;
-	/// Max size of the array.
-	int maxsize_;
 };
 #endif
