@@ -551,14 +551,38 @@ bool ensureBufferClean(BufferView * bv)
 	return buf.isClean();
 }
 
+
 void showPrintError(string const & name)
 {
-		string str = bformat(_("Could not print the document %1$s.\n"
-			"Check that your printer is set up correctly."),
-			MakeDisplayPath(name, 50));
-		Alert::error(_("Print document failed"), str);
+	string str = bformat(_("Could not print the document %1$s.\n"
+			       "Check that your printer is set up correctly."),
+			     MakeDisplayPath(name, 50));
+	Alert::error(_("Print document failed"), str);
 }
 
+
+void loadTextclass(string const & name)
+{
+	std::pair<bool, lyx::textclass_type> const tc_pair =
+		textclasslist.NumberOfClass(name);
+
+	if (!tc_pair.first) {
+		lyxerr << "Document class \"" << name
+		       << "\" does not exist."
+		       << std::endl;
+		return;
+	}
+
+	lyx::textclass_type const tc = tc_pair.second;
+
+	if (!textclasslist[tc].load()) {
+		string s = bformat(_("The document could not be converted\n"
+				     "into the document class %1$s."),
+				   textclasslist[tc].name());
+		Alert::error(_("Could not change class"), s);
+	}
+}
+ 
 } //namespace anon
 
 
@@ -1313,7 +1337,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			lyx::textclass_type const old_class =
 				buffer->params().textclass;
 
-			dispatch(FuncRequest(LFUN_TEXTCLASS_LOAD, argument));
+			loadTextclass(argument);
 
 			std::pair<bool, lyx::textclass_type> const tc_pair =
 				textclasslist.NumberOfClass(argument);
@@ -1339,30 +1363,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 		}
 
-		case LFUN_TEXTCLASS_LOAD: {
-			std::pair<bool, lyx::textclass_type> const tc_pair =
-				textclasslist.NumberOfClass(argument);
-
-			if (!tc_pair.first) {
-				lyxerr << "Document class \"" << argument
-				       << "\" does not exist."
-				       << std::endl;
-				break;
-			}
-
-			lyx::textclass_type const tc = tc_pair.second;
-
-			bool const success = textclasslist[tc].load();
-			if (success)
-				break;
-
-			string s = bformat(_("The document could not be converted\n"
-					     "into the document class %1$s."),
-					   textclasslist[tc].name());
-			Alert::error(_("Could not change class"), s);
-
+		case LFUN_TEXTCLASS_LOAD:
+			loadTextclass(argument);
 			break;
-		}
 
 		default: {
 			DispatchResult res = view()->cursor().dispatch(cmd);

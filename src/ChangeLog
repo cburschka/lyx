@@ -1,5 +1,13 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* lyxfunc.C (loadTextclass): new helper function, invoked by two of
+	dispatch's case blocks, LFUN_TEXTCLASS_APPLY and LFUN_TEXTCLASS_LOAD.
+
+	* lyxtextclass.C (load): if the text class couldn't be loaded, then
+	don't overwrite 'loaded_ = false' with 'loaded_ = true' !
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* lyxfunc.C (dispatch): remove the cursor-manipulation code from
 	the LFUN_ALL_INSETS_TOGGLE code.
 

@@ -845,16 +845,16 @@ bool LyXTextClass::load() const
 
 	// Read style-file
 	string const real_file = LibFileSearch("layouts", name_, "layout");
+	loaded_ = const_cast<LyXTextClass*>(this)->Read(real_file) == 0;
 
-	if (const_cast<LyXTextClass*>(this)->Read(real_file)) {
+	if (!loaded_) {
 		lyxerr << "Error reading `"
 		       << MakeDisplayPath(real_file)
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;
-		loaded_ = false;
 	}
-	loaded_ = true;
+
 	return loaded_;
 }
 
