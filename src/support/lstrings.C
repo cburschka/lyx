@@ -665,9 +665,10 @@ string const getStringFromVector(vector<string> const & vec,
 	for (vector<string>::const_iterator it = vec.begin();
 	     it != vec.end(); ++it) {
 		string item = trim(*it);
-		if (item.empty()) continue;
-
-		if (i++ > 0) str += delim;
+		if (item.empty())
+			continue;
+		if (i++ > 0)
+			str += delim;
 		str += item;
 	}
 	return str;
@@ -686,6 +687,15 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
 	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)).str());
 }
+
+
+string bformat(string const & fmt, string const & arg1, string const & arg2,
+	string const & arg3)
+{
+	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)
+		% STRCONV(arg3)).str());
+}
+
 
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
@@ -710,6 +720,19 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 	lyx::Assert(contains(fmt, "%2$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
+	return subst(str, "%%", "%");
+}
+
+
+string bformat(char const * fmt, string const & arg1, string const & arg2,
+	string const & arg3)
+{
+	lyx::Assert(contains(fmt, "%1$s"));
+	lyx::Assert(contains(fmt, "%2$s"));
+	lyx::Assert(contains(fmt, "%3$s"));
+	string str = subst(fmt, "%1$s", arg1);
+	str = subst(str, "%2$s", arg2);
+	str = subst(str, "%3$s", arg3);
 	return subst(str, "%%", "%");
 }
 

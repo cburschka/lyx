@@ -1,4 +1,8 @@
 
+2003-05-19  André Pönitz  <poenitz@gmx.net>
+
+	* lstrings.C: add missing implementation of three-arg bformat
+
 2003-05-15  André Pönitz  <poenitz@gmx.net>
 
 	* lstrings.[Ch]: use string const & instead of char const * for format
