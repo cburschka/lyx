@@ -1,3 +1,8 @@
+2000-07-05  R. Lahaye  <lahaye@postech.ac.kr>
+
+	* src/lyx_gui.C src/lyx_main.C: improve the -geometry support,
+	handle neg values, set min width to 590, add doc about -display  
+
 2000-07-05  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/lyxinset.h: changed Painter & in ascent(), descent()

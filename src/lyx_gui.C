@@ -91,7 +91,7 @@ bool	   cursor_follows_scrollbar;
 
 FL_resource res[] =
 {
-	{"geometry", "geometryClass", FL_STRING, geometry, "690x510", 40}
+	{"geometry", "geometryClass", FL_STRING, geometry, "", 40}
 };
 
 
@@ -125,7 +125,12 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	fl_initialize(argc, argv, "LyX", cmdopt, num_res);
 	fl_get_app_resources(res, num_res);
 
-        XParseGeometry(geometry, &xpos, &ypos, (unsigned int *) &width, (unsigned int *) &height);
+	static const int geometryBitmask = XParseGeometry( geometry,
+                                                           &xpos,
+                                                           &ypos,
+                                                           (unsigned int *) &width,
+                                                           (unsigned int *) &height
+                                                         );
 
 	Display * display = fl_get_display();
 	if (!display) {
@@ -135,15 +140,31 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);
 	// X Error handler install goes here
 	XSetErrorHandler(LyX_XErrHandler);
-	
-	// Make sure default screen is not larger than monitor
-	if (width == 690 && height == 510) {
+
+	// A width less than 590 pops up an awkward main window
+	if (width < 590) width = 590;
+
+	// If width is not set by geometry, check it against monitor width
+	if ( !(geometryBitmask & 4) ) {
 		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
-		if (HeightOfScreen(scr) - 24 < height)
-			height = HeightOfScreen(scr) - 24;
 		if (WidthOfScreen(scr) - 8 < width)
 			width = WidthOfScreen(scr) - 8;
 	}
+
+	// If height is not set by geometry, check it against monitor height
+	if ( !(geometryBitmask & 8) ) {
+		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
+		if (HeightOfScreen(scr) - 24 < height)
+			height = HeightOfScreen(scr) - 24;
+	}
+
+	// Recalculate xpos if it's negative
+	if (geometryBitmask & 16)
+		xpos += WidthOfScreen(DefaultScreenOfDisplay(fl_get_display())) - width;
+
+	// Recalculate ypos if it's negative
+	if (geometryBitmask & 32)
+		ypos += HeightOfScreen(DefaultScreenOfDisplay(fl_get_display())) - height;
 
 	// Initialize the LyXColorHandler
 	lyxColorHandler = new LyXColorHandler;
