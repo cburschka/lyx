@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
-"POT-Creation-Date: 2000-11-30 14:44+0100\n"
+"POT-Creation-Date: 2000-12-29 22:25+0100\n"
 "PO-Revision-Date: 2000-11-30 17:27+01:00\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -93,36 +93,36 @@ msgstr "Feil! Kan ikke skrive til fil: "
 msgid "Error! Cannot open file: "
 msgstr "Feil! Kan ikke åpne fil: "
 
-#: src/buffer.C:1499
+#: src/buffer.C:1505
 msgid "Error: Cannot write file:"
 msgstr "Feil: Kan ikke skrive fil:"
 
-#: src/buffer.C:1532
+#: src/buffer.C:1538
 msgid "Error: Cannot open file: "
 msgstr "Feil: Kan ikke åpne fil: "
 
-#: src/buffer.C:2157 src/buffer.C:2806
+#: src/buffer.C:2163 src/buffer.C:2812
 msgid "LYX_ERROR:"
 msgstr "LYX_FEIL:"
 
-#: src/buffer.C:2157 src/buffer.C:2806
+#: src/buffer.C:2163 src/buffer.C:2812
 msgid "Cannot write file"
 msgstr "Kan ikke skrive fil"
 
-#: src/buffer.C:2244 src/buffer.C:2888
+#: src/buffer.C:2250 src/buffer.C:2894
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Feil: Gal dybde for LaTeXType kommando.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3197
+#: src/buffer.C:3203
 msgid "Running chktex..."
 msgstr "Kjører chktex..."
 
-#: src/buffer.C:3210
+#: src/buffer.C:3216
 msgid "chktex did not work!"
 msgstr "chktex fungerte ikke!"
 
-#: src/buffer.C:3211
+#: src/buffer.C:3217
 msgid "Could not run with file:"
 msgstr "Kunne ikke kjøre filen:"
 
@@ -176,7 +176,7 @@ msgstr "Autolagret fil er nyere."
 msgid "Load that one instead?"
 msgstr "Les den isteden?"
 
-#: src/BufferView2.C:61 src/BufferView2.C:71 src/bufferlist.C:449
+#: src/BufferView2.C:62 src/BufferView2.C:72 src/bufferlist.C:449
 #: src/lyx_cb.C:298
 msgid "Error!"
 msgstr "Feil!"
@@ -185,7 +185,7 @@ msgstr "Feil!"
 msgid "Unable to open template"
 msgstr "Kan ikke åpne mal"
 
-#: src/bufferlist.C:476 src/lyxfunc.C:2996 src/lyxfunc.C:3159
+#: src/bufferlist.C:476 src/lyxfunc.C:3062 src/lyxfunc.C:3225
 msgid "Document is already open:"
 msgstr "Dokumentet er allerede åpent:"
 
@@ -215,11 +215,11 @@ msgstr "Kan ikke åpne valgt fil:"
 msgid "Create new document with this name?"
 msgstr "Skal det lages ett nytt dokument med dette navnet?"
 
-#: src/BufferView2.C:62
+#: src/BufferView2.C:63
 msgid "Specified file is unreadable: "
 msgstr "Den spesifiserte file er ulesbar: "
 
-#: src/BufferView2.C:72
+#: src/BufferView2.C:73
 msgid "Cannot open specified file: "
 msgstr "Kan ikke åpne valgt fil: "
 
@@ -255,15 +255,15 @@ msgstr "Avsnittsomgivelse kopiert"
 msgid "Paragraph environment type set"
 msgstr "Avsnittsomgivelse satt"
 
-#: src/BufferView2.C:577 src/LyXAction.C:169 src/MenuBackend.C:419
+#: src/BufferView2.C:577 src/LyXAction.C:169 src/MenuBackend.C:425
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/BufferView2.C:588 src/LyXAction.C:170 src/MenuBackend.C:418
+#: src/BufferView2.C:588 src/LyXAction.C:170 src/MenuBackend.C:424
 msgid "Cut"
 msgstr "Klipp"
 
-#: src/BufferView2.C:597 src/LyXAction.C:346 src/MenuBackend.C:420
+#: src/BufferView2.C:597 src/LyXAction.C:346 src/MenuBackend.C:426
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -287,43 +287,43 @@ msgstr "Feil! Ukjent språk"
 msgid "Melt"
 msgstr "Smelt"
 
-#: src/bufferview_funcs.C:142
+#: src/bufferview_funcs.C:145
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Endret omgivelsesdybde (kanskje mulig, kanskje ikke)"
 
-#: src/bufferview_funcs.C:270
+#: src/bufferview_funcs.C:267
 msgid "Font: "
 msgstr "Font: "
 
-#: src/bufferview_funcs.C:274
+#: src/bufferview_funcs.C:271
 msgid ", Depth: "
 msgstr ", Dybde: "
 
-#: src/bufferview_funcs.C:280
+#: src/bufferview_funcs.C:277
 msgid ", Spacing: "
 msgstr ", Linjeavstand: "
 
-#: src/bufferview_funcs.C:283
+#: src/bufferview_funcs.C:280
 msgid "Single"
 msgstr "Enkel"
 
-#: src/bufferview_funcs.C:286
+#: src/bufferview_funcs.C:283
 msgid "Onehalf"
 msgstr "Halvannen"
 
-#: src/bufferview_funcs.C:289
+#: src/bufferview_funcs.C:286
 msgid "Double"
 msgstr "Dobbel"
 
-#: src/bufferview_funcs.C:292
+#: src/bufferview_funcs.C:289
 msgid "Other ("
 msgstr "Annet ("
 
-#: src/BufferView_pimpl.C:251
+#: src/BufferView_pimpl.C:256
 msgid "Formatting document..."
 msgstr "Formaterer dokument..."
 
-#: src/BufferView_pimpl.C:335 src/BufferView_pimpl.C:339
+#: src/BufferView_pimpl.C:340 src/BufferView_pimpl.C:344
 msgid "No more errors"
 msgstr "Ingen flere feil"
 
@@ -387,7 +387,7 @@ msgstr "] er brukt."
 msgid "Done"
 msgstr "Ferdig"
 
-#: src/converter.C:165 src/converter.C:191
+#: src/converter.C:165 src/converter.C:192
 msgid "Can not view file"
 msgstr "Kan ikke vise fil"
 
@@ -395,87 +395,87 @@ msgstr "Kan ikke vise fil"
 msgid "No information for viewing "
 msgstr "Ingen informasjon om visning "
 
-#: src/converter.C:184 src/converter.C:613
+#: src/converter.C:185 src/converter.C:612
 msgid "Executing command:"
 msgstr "Eksekverer kommando:"
 
-#: src/converter.C:192
+#: src/converter.C:193
 msgid "Error while executing"
 msgstr "Feil under kjøring"
 
-#: src/converter.C:550 src/converter.C:640
+#: src/converter.C:549 src/converter.C:639
 msgid "Can not convert file"
 msgstr "Kan ikke konvertere fil"
 
-#: src/converter.C:551
+#: src/converter.C:550
 msgid "No information for converting from "
 msgstr "Ingen informasjon om konvertering fra "
 
-#: src/CutAndPaste.C:449 src/CutAndPaste.C:452 src/converter.C:552
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
 msgid " to "
 msgstr " til "
 
-#: src/converter.C:637
+#: src/converter.C:636
 msgid "There were errors during the Build process."
 msgstr "Det ble rapportert feil under kjøring av 'Build' prosessen."
 
-#: src/converter.C:638 src/converter.C:759 src/converter.C:829
+#: src/converter.C:637 src/converter.C:782 src/converter.C:852
 msgid "You should try to fix them."
 msgstr "Du burde forsøke å fikse dem."
 
-#: src/converter.C:663
+#: src/converter.C:662
 msgid "Error while trying to move directory:"
 msgstr "Feil under flytting av filområde:"
 
-#: src/converter.C:673
+#: src/converter.C:697
 msgid "Error while trying to move file:"
 msgstr "Feil under flytting av fil:"
 
-#: src/converter.C:674
+#: src/converter.C:698
 msgid "to "
 msgstr "til "
 
-#: src/converter.C:754 src/converter.C:824
+#: src/converter.C:777 src/converter.C:847
 msgid "One error detected"
 msgstr "En feil oppdaget"
 
-#: src/converter.C:755 src/converter.C:825
+#: src/converter.C:778 src/converter.C:848
 msgid "You should try to fix it."
 msgstr "Du burde forsøke å fikse den."
 
-#: src/converter.C:758 src/converter.C:828
+#: src/converter.C:781 src/converter.C:851
 msgid " errors detected."
 msgstr " feil oppdaget."
 
-#: src/converter.C:763
+#: src/converter.C:786
 msgid "There were errors during running of "
 msgstr "Det ble rapportert feil under kjøring av "
 
-#: src/converter.C:767 src/converter.C:834
+#: src/converter.C:790 src/converter.C:857
 msgid "The operation resulted in"
 msgstr "Denne operasjonen resulterte i"
 
-#: src/converter.C:768 src/converter.C:835
+#: src/converter.C:791 src/converter.C:858
 msgid "an empty file."
 msgstr "en tom fil."
 
-#: src/converter.C:769 src/converter.C:836
+#: src/converter.C:792 src/converter.C:859
 msgid "Resulting file is empty"
 msgstr "Den ferdige filen er tom"
 
-#: src/converter.C:787
+#: src/converter.C:810
 msgid "Running LaTeX..."
 msgstr "Kjører LaTeX..."
 
-#: src/converter.C:817
+#: src/converter.C:840
 msgid "LaTeX did not work!"
 msgstr "LaTeX fungerte ikke!"
 
-#: src/converter.C:818
+#: src/converter.C:841
 msgid "Missing log file:"
 msgstr "Mangler logg fil:"
 
-#: src/converter.C:831
+#: src/converter.C:854
 msgid "There were errors during the LaTeX run."
 msgstr "Det ble rapportert feil under kjøring av LaTeX."
 
@@ -496,13 +496,13 @@ msgid "Credits"
 msgstr "Kreditteringer"
 
 #: src/credits_form.C:19 src/form1.C:43 src/form1.C:117 src/form1.C:261
-#: src/frontends/xforms/form_citation.C:81
-#: src/frontends/xforms/form_document.C:40
-#: src/frontends/xforms/form_index.C:38
-#: src/frontends/xforms/form_paragraph.C:251
-#: src/frontends/xforms/form_print.C:46 src/frontends/xforms/form_ref.C:56
+#: src/frontends/xforms/form_citation.C:99
+#: src/frontends/xforms/form_document.C:46
+#: src/frontends/xforms/form_index.C:41
+#: src/frontends/xforms/form_paragraph.C:330
+#: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:52 src/insets/insetbib.C:60
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:60
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
@@ -516,11 +516,11 @@ msgstr "Matthias"
 msgid "All these people have contributed to the LyX project. Thanks,"
 msgstr "Alle disse menneskene har bidratt til LyX prosjektet. Takk,"
 
-#: src/CutAndPaste.C:448
+#: src/CutAndPaste.C:447
 msgid "Layout had to be changed from\n"
 msgstr "Stil måtte endres fra\n"
 
-#: src/CutAndPaste.C:451
+#: src/CutAndPaste.C:450
 msgid ""
 "\n"
 "because of class conversion from\n"
@@ -528,18 +528,18 @@ msgstr ""
 "\n"
 "grunnet klasse endring fra\n"
 
-#: src/CutAndPaste.C:477 src/insets/insettext.C:938 src/text.C:3938
-#: src/text.C:3946 src/text.C:3973 src/text2.C:2200 src/text2.C:2313
+#: src/CutAndPaste.C:476 src/insets/insettext.C:946 src/text.C:3942
+#: src/text.C:3950 src/text.C:3977 src/text2.C:2200 src/text2.C:2313
 msgid "Impossible operation"
 msgstr "Umulig operasjon"
 
-#: src/CutAndPaste.C:478
+#: src/CutAndPaste.C:477
 msgid "Can't paste float into float!"
 msgstr "Kan ikke lime inn float i float!"
 
-#: src/CutAndPaste.C:479 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1547 src/insets/insettext.C:940 src/text.C:3940
-#: src/text.C:3948 src/text.C:3975
+#: src/CutAndPaste.C:478 src/insets/insetert.C:67
+#: src/insets/insettabular.C:1571 src/insets/insettext.C:948 src/text.C:3944
+#: src/text.C:3952 src/text.C:3979
 msgid "Sorry."
 msgstr "Beklager."
 
@@ -647,12 +647,12 @@ msgstr "Dokumentet eksportert som "
 msgid " to file `"
 msgstr "til fil `"
 
-#: src/MenuBackend.C:430 src/MenuBackend.C:437 src/ext_l10n.h:1
+#: src/MenuBackend.C:436 src/MenuBackend.C:443 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 msgid "File|F"
 msgstr "Fil|F"
 
-#: src/MenuBackend.C:431 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
 msgid "Edit|E"
 msgstr "Rediger|R"
 
@@ -676,11 +676,11 @@ msgstr "Vis|V"
 msgid "Navigate|N"
 msgstr "Naviger|N"
 
-#: src/MenuBackend.C:433 src/ext_l10n.h:10
+#: src/MenuBackend.C:439 src/ext_l10n.h:10
 msgid "Documents|D"
 msgstr "Dokumenter|D"
 
-#: src/MenuBackend.C:400 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:406 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr "Ny...|N"
 
@@ -688,15 +688,15 @@ msgstr "Ny...|N"
 msgid "New from Template...|T"
 msgstr "Ny med mal|m"
 
-#: src/MenuBackend.C:401 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
 msgid "Open...|O"
 msgstr "Åpne...|p"
 
-#: src/MenuBackend.C:402 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
 msgid "Import|I"
 msgstr "Importer|I"
 
-#: src/ext_l10n.h:16 src/ext_l10n.h:30
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
 msgid "Exit|x"
 msgstr "Avslutt|A"
 
@@ -721,364 +721,370 @@ msgid "Version Control|V"
 msgstr "Versjonskontroll|V"
 
 #: src/ext_l10n.h:26
-msgid "Insert|r"
-msgstr "Sett inn|S"
-
-#: src/ext_l10n.h:27
 msgid "Export|E"
 msgstr "Eksporter|E"
 
-#: src/ext_l10n.h:28
+#: src/ext_l10n.h:27
 msgid "Print...|P"
 msgstr "Skriv...|S"
 
-#: src/ext_l10n.h:29
+#: src/ext_l10n.h:28
 msgid "Fax...|F"
 msgstr "Faks...|F"
 
-#: src/ext_l10n.h:31
+#: src/ext_l10n.h:30
 msgid "Register|R"
 msgstr "Registrer|R"
 
-#: src/ext_l10n.h:32
+#: src/ext_l10n.h:31
 msgid "Check In Changes|I"
 msgstr "Sjekk inn endringer|i"
 
-#: src/ext_l10n.h:33
+#: src/ext_l10n.h:32
 msgid "Check Out for Edit|O"
 msgstr "Sjekk ut for endring|u"
 
-#: src/ext_l10n.h:34
+#: src/ext_l10n.h:33
 msgid "Revert to Last Version|L"
 msgstr "Tilbake til siste versjon|s"
 
-#: src/ext_l10n.h:35
+#: src/ext_l10n.h:34
 msgid "Undo Last Check In|U"
 msgstr "Angre siste innsjekking|A"
 
-#: src/ext_l10n.h:36
+#: src/ext_l10n.h:35
 msgid "Show History|H"
 msgstr "Vis Historie|H"
 
-#: src/ext_l10n.h:37
-msgid "File...|F"
-msgstr "Fil...|F"
-
-#: src/ext_l10n.h:38
-msgid "LyX Document...|X"
-msgstr "LyX dokument...|X"
-
-#: src/ext_l10n.h:39
-msgid "Ascii as Lines...|L"
-msgstr "Ascii tekst som linjer...|l"
-
-#: src/ext_l10n.h:40
-msgid "Ascii as Paragraphs...|P"
-msgstr "Ascii tekst som avsnitt...|a"
-
-#: src/ext_l10n.h:41
-msgid "External Material...|E"
-msgstr "Eksternt materiale...|E"
-
-#: src/ext_l10n.h:42 src/ext_l10n.h:56
+#: src/ext_l10n.h:36 src/ext_l10n.h:51
 msgid "Preferences...|P"
 msgstr "Opsjoner|O"
 
-#: src/ext_l10n.h:43 src/ext_l10n.h:57
+#: src/ext_l10n.h:37 src/ext_l10n.h:52
 msgid "Reconfigure|R"
 msgstr "Rekonfigurer|R"
 
-#: src/ext_l10n.h:44
+#: src/ext_l10n.h:38
 msgid "Undo|U"
 msgstr "Angre|A"
 
-#: src/ext_l10n.h:45
+#: src/ext_l10n.h:39
 msgid "Redo|d"
 msgstr "Gjør om|G"
 
-#: src/ext_l10n.h:46
+#: src/ext_l10n.h:40
 msgid "Cut|C"
 msgstr "Klipp|K"
 
-#: src/ext_l10n.h:47
+#: src/ext_l10n.h:41
 msgid "Copy|o"
 msgstr "Kopier|o"
 
-#: src/ext_l10n.h:48
+#: src/ext_l10n.h:42
 msgid "Paste|a"
 msgstr "Lim inn|L"
 
-#: src/ext_l10n.h:49
+#: src/ext_l10n.h:43
 msgid "Paste External Selection|x"
 msgstr "Lim inn ekstern merking"
 
-#: src/ext_l10n.h:50
+#: src/ext_l10n.h:44
 msgid "Find & Replace...|F"
 msgstr "Finn & Erstatt...|F"
 
-#: src/ext_l10n.h:51
+#: src/ext_l10n.h:45
 msgid "Tabular|T"
 msgstr "Tabell|T"
 
-#: src/ext_l10n.h:52
+#: src/ext_l10n.h:46
 msgid "Floats & Insets|I"
 msgstr "Floats & Insets|I"
 
-#: src/ext_l10n.h:53
+#: src/ext_l10n.h:47
+#, fuzzy
+msgid "Math Panel|l"
+msgstr "Mattepanel"
+
+#: src/ext_l10n.h:48
 msgid "Spellchecker...|S"
 msgstr "Stavekontroll...|S"
 
-#: src/ext_l10n.h:54
+#: src/ext_l10n.h:49
 msgid "Check TeX|h"
 msgstr "Sjekk TeX|j"
 
-#: src/ext_l10n.h:55
+#: src/ext_l10n.h:50
 msgid "Remove All Error Boxes|E"
 msgstr "Fjern alle feilbokser|F"
 
-#: src/ext_l10n.h:58
+#: src/ext_l10n.h:53
 msgid "as Lines|L"
 msgstr "som linjer|l"
 
-#: src/ext_l10n.h:59
+#: src/ext_l10n.h:54
 msgid "as Paragraphs|P"
 msgstr "som avsnitt|a"
 
-#: src/ext_l10n.h:60
+#: src/ext_l10n.h:55
 msgid "Open/Close|O"
 msgstr "Åpne/Lukk...|L"
 
-#: src/ext_l10n.h:61
+#: src/ext_l10n.h:56
 msgid "Melt|M"
 msgstr "Løs opp|o"
 
-#: src/ext_l10n.h:62
+#: src/ext_l10n.h:57
 msgid "Open All Figures/Tables|F"
 msgstr "Åpner alle figurer/tabeller"
 
-#: src/ext_l10n.h:63
+#: src/ext_l10n.h:58
 msgid "Close All Figures/Tables|T"
 msgstr "Lukk alle figurer/tabeller"
 
-#: src/ext_l10n.h:64
+#: src/ext_l10n.h:59
 msgid "Open All Footnotes/Marginal Notes|A"
 msgstr "Åpne alle fotnoter og margnotiser|a"
 
-#: src/ext_l10n.h:65
+#: src/ext_l10n.h:60
 msgid "Close All Footnotes/Marginal Notes|C"
 msgstr "Lukk alle fotnoter og margnotiser|L"
 
-#: src/ext_l10n.h:66
+#: src/ext_l10n.h:61
 msgid "Multicolumn|M"
 msgstr "Multikolonne|M"
 
-#: src/ext_l10n.h:67
+#: src/ext_l10n.h:62
 msgid "Line Top|T"
 msgstr "Topp linje|T"
 
-#: src/ext_l10n.h:68
+#: src/ext_l10n.h:63
 msgid "Line Bottom|B"
 msgstr "Bunn linje|B"
 
-#: src/ext_l10n.h:69
+#: src/ext_l10n.h:64
 msgid "Line Left|L"
 msgstr "Venstre|V"
 
-#: src/ext_l10n.h:70
+#: src/ext_l10n.h:65
 msgid "Line Right|R"
 msgstr "Høyre|H"
 
-#: src/ext_l10n.h:71
+#: src/ext_l10n.h:66
 msgid "Align Left|e"
 msgstr "Venstrejustert|e"
 
-#: src/ext_l10n.h:72
+#: src/ext_l10n.h:67
 msgid "Align Center|C"
 msgstr "Midtjustert|M"
 
-#: src/ext_l10n.h:73
+#: src/ext_l10n.h:68
 msgid "Align Right|i"
 msgstr "Høyrejustert|y"
 
-#: src/ext_l10n.h:74
+#: src/ext_l10n.h:69
 msgid "V.Align Top|o"
 msgstr "V. justering topp|o"
 
-#: src/ext_l10n.h:75
+#: src/ext_l10n.h:70
 msgid "V.Align Center|n"
 msgstr "V. justering midt|n"
 
-#: src/ext_l10n.h:76
+#: src/ext_l10n.h:71
 msgid "V.Align Bottom|V"
 msgstr "V. justering bunn|u"
 
-#: src/ext_l10n.h:77
+#: src/ext_l10n.h:72
 msgid "Append Row|A"
 msgstr "Legg til rad|L"
 
-#: src/ext_l10n.h:78
+#: src/ext_l10n.h:73
 msgid "Append Column|u"
 msgstr "Legg til kolonne|k"
 
-#: src/ext_l10n.h:79
+#: src/ext_l10n.h:74
 msgid "Delete Row|w"
 msgstr "Slett rad|l"
 
-#: src/ext_l10n.h:80
+#: src/ext_l10n.h:75
 msgid "Delete Column|D"
 msgstr "Slett kolonne|S"
 
-#: src/ext_l10n.h:81
-msgid "Math Text|T"
-msgstr "Matte Text|T"
+#: src/ext_l10n.h:76
+msgid "Math Formula|h"
+msgstr ""
 
-#: src/ext_l10n.h:82
-msgid "Math Display|D"
-msgstr "Matte display|M"
+#: src/ext_l10n.h:77
+#, fuzzy
+msgid "Display Formula|D"
+msgstr "Vis ramme|#r"
 
-#: src/ext_l10n.h:83
-msgid "Math Panel...|P"
-msgstr "Matte panel|p"
-
-#: src/ext_l10n.h:84
+#: src/ext_l10n.h:78
 msgid "Special Character|S"
 msgstr "Spesielt tegn|S"
 
-#: src/ext_l10n.h:85
+#: src/ext_l10n.h:79
 msgid "Citation Reference...|C"
 msgstr "Siterings referanse...|i"
 
-#: src/ext_l10n.h:86
+#: src/ext_l10n.h:80
 msgid "Cross Reference...|R"
 msgstr "Kryssreferanse...|K"
 
-#: src/ext_l10n.h:87
+#: src/ext_l10n.h:81
 msgid "Label...|L"
 msgstr "Referansemerke...|R"
 
-#: src/ext_l10n.h:88
+#: src/ext_l10n.h:82
 msgid "Footnote|F"
 msgstr "Fotnote|F"
 
-#: src/ext_l10n.h:89
+#: src/ext_l10n.h:83
 msgid "Marginal Note|M"
 msgstr "Margnotis|M"
 
-#: src/ext_l10n.h:90
+#: src/ext_l10n.h:84
 msgid "Index Entry...|I"
 msgstr "Indeks element...|I"
 
-#: src/ext_l10n.h:91
-msgid "Index Entry of Last Word|W"
+#: src/ext_l10n.h:85
+#, fuzzy
+msgid "Index Entry of Preceeding Word|W"
 msgstr "Indeks element av siste ord|o"
 
-#: src/ext_l10n.h:92
+#: src/ext_l10n.h:86
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: src/ext_l10n.h:93
+#: src/ext_l10n.h:87
 msgid "Note...|N"
 msgstr "Notis...|N"
 
-#: src/ext_l10n.h:94
-msgid "Figure...|g"
-msgstr "Figur...|g"
-
-#: src/ext_l10n.h:95
-msgid "Tabular...|b"
-msgstr "Tabell...|b"
-
-#: src/ext_l10n.h:96
-msgid "Floats|a"
-msgstr "Floats|a"
-
-#: src/ext_l10n.h:97
+#: src/ext_l10n.h:88
 msgid "Lists & TOC|O"
 msgstr "Lister & TOC|O"
 
-#: src/ext_l10n.h:98
+#: src/ext_l10n.h:89
+msgid "Figure...|g"
+msgstr "Figur...|g"
+
+#: src/ext_l10n.h:90
+msgid "Tabular...|b"
+msgstr "Tabell...|b"
+
+#: src/ext_l10n.h:91
+msgid "Floats|a"
+msgstr "Floats|a"
+
+#: src/ext_l10n.h:92
+#, fuzzy
+msgid "Include File|e"
+msgstr "Inkluder"
+
+#: src/ext_l10n.h:93
+#, fuzzy
+msgid "Insert File|t"
+msgstr "Sett inn figur"
+
+#: src/ext_l10n.h:94
+#, fuzzy
+msgid "External Material...|x"
+msgstr "Eksternt materiale...|E"
+
+#: src/ext_l10n.h:95
 msgid "Superscript|S"
 msgstr "Superscript|S"
 
-#: src/ext_l10n.h:99
+#: src/ext_l10n.h:96
 msgid "Subscript|u"
 msgstr "Subscript|u"
 
-#: src/ext_l10n.h:100
+#: src/ext_l10n.h:97
 msgid "HFill|H"
 msgstr "HFILL|H"
 
-#: src/ext_l10n.h:101
+#: src/ext_l10n.h:98
 msgid "Hyphenation Point|P"
 msgstr "Orddelingspunkt|p"
 
-#: src/ext_l10n.h:102
+#: src/ext_l10n.h:99
 msgid "Protected Blank|B"
 msgstr "Protected blank|b"
 
-#: src/ext_l10n.h:103
+#: src/ext_l10n.h:100
 msgid "Linebreak|L"
 msgstr "Linjebrekk|L"
 
-#: src/ext_l10n.h:104
+#: src/ext_l10n.h:101
 msgid "Ellipsis|i"
 msgstr "Ellipsis|i"
 
-#: src/ext_l10n.h:105
+#: src/ext_l10n.h:102
 msgid "End of Sentence|E"
 msgstr "Slutt på setning|S"
 
-#: src/ext_l10n.h:106
+#: src/ext_l10n.h:103
 msgid "Ordinary Quote|Q"
 msgstr "Ordinary Quote|Q"
 
-#: src/ext_l10n.h:107
+#: src/ext_l10n.h:104
 msgid "Menu Separator|M"
 msgstr "Menyseparator|M"
 
-#: src/ext_l10n.h:108
+#: src/ext_l10n.h:105
 msgid "Figure Float|F"
 msgstr "Figur float|F"
 
-#: src/ext_l10n.h:109
+#: src/ext_l10n.h:106
 msgid "Table Float|T"
 msgstr "Tabell float|T"
 
-#: src/ext_l10n.h:110
+#: src/ext_l10n.h:107
 msgid "Wide Figure Float|W"
 msgstr "Vid figur float|V"
 
-#: src/ext_l10n.h:111
+#: src/ext_l10n.h:108
 msgid "Wide Table Float|d"
 msgstr "Vid tabell float|b"
 
-#: src/ext_l10n.h:112
+#: src/ext_l10n.h:109
 msgid "Algorithm Float|A"
 msgstr "Algoritme float|A"
 
-#: src/ext_l10n.h:113
+#: src/ext_l10n.h:110
 msgid "Table of Contents|C"
 msgstr "Innholdsfortegnelse|I"
 
-#: src/ext_l10n.h:114
+#: src/ext_l10n.h:111
 msgid "List of Figures|F"
 msgstr "Figurliste|F"
 
-#: src/ext_l10n.h:115
+#: src/ext_l10n.h:112
 msgid "List of Tables|T"
 msgstr "Tabell-liste|T"
 
-#: src/ext_l10n.h:116
+#: src/ext_l10n.h:113
 msgid "List of Algorithms|A"
 msgstr "Algoritmeliste|A"
 
-#: src/ext_l10n.h:117
+#: src/ext_l10n.h:114
 msgid "Index List|I"
 msgstr "Indeksliste|I"
 
-#: src/ext_l10n.h:118
+#: src/ext_l10n.h:115
 msgid "BibTeX Reference...|B"
 msgstr "BibTeX referanse...|B"
+
+#: src/ext_l10n.h:116
+msgid "LyX Document...|X"
+msgstr "LyX dokument...|X"
+
+#: src/ext_l10n.h:117
+msgid "Ascii as Lines...|L"
+msgstr "Ascii tekst som linjer...|l"
+
+#: src/ext_l10n.h:118
+msgid "Ascii as Paragraphs...|P"
+msgstr "Ascii tekst som avsnitt...|a"
 
 #: src/ext_l10n.h:119
 msgid "Character...|C"
@@ -1840,7 +1846,7 @@ msgstr "Labeling"
 msgid "Land"
 msgstr "Land"
 
-#: src/ext_l10n.h:309 src/frontends/xforms/form_preferences.C:744
+#: src/ext_l10n.h:309 src/frontends/xforms/form_preferences.C:920
 msgid "landscape"
 msgstr "landscape"
 
@@ -2177,7 +2183,7 @@ msgstr "Mottatt"
 msgid "Recieved/Accepted"
 msgstr "Mottatt/Akseptert"
 
-#: src/ext_l10n.h:393 src/frontends/kde/refdlg.C:61
+#: src/ext_l10n.h:393 src/frontends/kde/refdlg.C:62
 #: src/frontends/xforms/FormRef.C:36
 msgid "Reference"
 msgstr "Referanse"
@@ -2572,7 +2578,7 @@ msgstr "Uppertitleback"
 
 #. tooltips
 #: src/ext_l10n.h:491 src/frontends/gnome/FormUrl.C:117
-#: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
+#: src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
 msgid "URL"
 msgstr "URL"
 
@@ -2708,91 +2714,95 @@ msgstr "Galician"
 msgid "German"
 msgstr "Tysk"
 
-#: src/ext_l10n.h:525 src/mathed/math_forms.C:26
+#: src/ext_l10n.h:525
+msgid "German (new spelling)"
+msgstr ""
+
+#: src/ext_l10n.h:526 src/mathed/math_forms.C:26
 msgid "Greek"
 msgstr "Gresk"
 
-#: src/ext_l10n.h:526
+#: src/ext_l10n.h:527
 msgid "Hebrew"
 msgstr "Hebraisk"
 
-#: src/ext_l10n.h:527
+#: src/ext_l10n.h:528
 msgid "Hungarian"
 msgstr "Ungarsk"
 
-#: src/ext_l10n.h:528
+#: src/ext_l10n.h:529
 msgid "Irish"
 msgstr "Irsk"
 
-#: src/ext_l10n.h:529
+#: src/ext_l10n.h:530
 msgid "Italian"
 msgstr "Italiensk"
 
-#: src/ext_l10n.h:530
+#: src/ext_l10n.h:531
 msgid "Lsorbian"
 msgstr "Lsorbian"
 
-#: src/ext_l10n.h:531
+#: src/ext_l10n.h:532
 msgid "Magyar"
 msgstr "Magyar"
 
-#: src/ext_l10n.h:532
+#: src/ext_l10n.h:533
 msgid "Norsk"
 msgstr "Norsk"
 
-#: src/ext_l10n.h:533
+#: src/ext_l10n.h:534
 msgid "Polish"
 msgstr "Polsk"
 
-#: src/ext_l10n.h:534
+#: src/ext_l10n.h:535
 msgid "Portuges"
 msgstr "Portugisisk"
 
-#: src/ext_l10n.h:535
+#: src/ext_l10n.h:536
 msgid "Romanian"
 msgstr "Romansk"
 
-#: src/ext_l10n.h:536
+#: src/ext_l10n.h:537
 msgid "Russian"
 msgstr "Russisk"
 
-#: src/ext_l10n.h:537
+#: src/ext_l10n.h:538
 msgid "Scottish"
 msgstr "Skotsk"
 
-#: src/ext_l10n.h:538
+#: src/ext_l10n.h:539
 msgid "Spanish"
 msgstr "Spansk"
 
-#: src/ext_l10n.h:539
+#: src/ext_l10n.h:540
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: src/ext_l10n.h:540
+#: src/ext_l10n.h:541
 msgid "Slovene"
 msgstr "Slovensk"
 
-#: src/ext_l10n.h:541
+#: src/ext_l10n.h:542
 msgid "Swedish"
 msgstr "Svensk"
 
-#: src/ext_l10n.h:542
+#: src/ext_l10n.h:543
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: src/ext_l10n.h:543
+#: src/ext_l10n.h:544
 msgid "Ukraninian"
 msgstr "Ukrainsk"
 
-#: src/ext_l10n.h:544
+#: src/ext_l10n.h:545
 msgid "Usorbian"
 msgstr ""
 
-#: src/ext_l10n.h:545
+#: src/ext_l10n.h:546
 msgid "Welsh"
 msgstr "Walisisk"
 
-#: src/filedlg.C:200
+#: src/filedlg.C:204
 msgid "Warning! Couldn't open directory."
 msgstr "Advarsel! Kunne ikke åpne folder:"
 
@@ -2833,7 +2843,7 @@ msgid "Other...|#T"
 msgstr "Annet...|#A"
 
 #: src/form1.C:51 src/frontends/xforms/FormDocument.C:276
-#: src/frontends/xforms/FormPreferences.C:284
+#: src/frontends/xforms/FormPreferences.C:280
 msgid "Language"
 msgstr "Språk"
 
@@ -2869,40 +2879,32 @@ msgstr "EPS fil|#E"
 msgid "Full Screen Preview|#v"
 msgstr "Fullskjerm forhåndsvisning|#F"
 
-#: src/form1.C:105 src/frontends/xforms/form_preferences.C:264
-#: src/frontends/xforms/form_preferences.C:265 src/lyx.C:83
+#: src/form1.C:105 src/frontends/xforms/form_preferences.C:308 src/lyx.C:83
 msgid "Browse...|#B"
 msgstr "Se igjennom...|#j"
 
-#: src/form1.C:114 src/frontends/xforms/form_citation.C:84
-#: src/frontends/xforms/form_citation.C:85
-#: src/frontends/xforms/form_document.C:36
-#: src/frontends/xforms/form_document.C:37
-#: src/frontends/xforms/form_graphics.C:110
-#: src/frontends/xforms/form_graphics.C:111
-#: src/frontends/xforms/form_index.C:41 src/frontends/xforms/form_index.C:42
-#: src/frontends/xforms/form_paragraph.C:247
-#: src/frontends/xforms/form_paragraph.C:248
-#: src/frontends/xforms/form_preferences.C:30
+#: src/form1.C:114 src/frontends/xforms/form_citation.C:103
+#: src/frontends/xforms/form_document.C:40
+#: src/frontends/xforms/form_graphics.C:144
+#: src/frontends/xforms/form_index.C:45
+#: src/frontends/xforms/form_paragraph.C:324
 #: src/frontends/xforms/form_preferences.C:31
-#: src/frontends/xforms/form_print.C:49 src/frontends/xforms/form_print.C:50
-#: src/frontends/xforms/form_ref.C:63 src/frontends/xforms/form_ref.C:64
-#: src/frontends/xforms/form_tabular_create.C:31
+#: src/frontends/xforms/form_print.C:56 src/frontends/xforms/form_ref.C:82
 #: src/frontends/xforms/form_tabular_create.C:32
-#: src/frontends/xforms/form_url.C:55 src/frontends/xforms/form_url.C:56
-#: src/layout_forms.C:48 src/layout_forms.C:94 src/lyx.C:50
-#: src/mathed/math_forms.C:106 src/mathed/math_forms.C:156
-#: src/mathed/math_forms.C:201 src/print_form.C:31 src/sp_form.C:62
+#: src/frontends/xforms/form_url.C:68 src/layout_forms.C:48
+#: src/layout_forms.C:94 src/lyx.C:50 src/mathed/math_forms.C:106
+#: src/mathed/math_forms.C:156 src/mathed/math_forms.C:201 src/print_form.C:31
+#: src/sp_form.C:62
 msgid "Apply|#A"
 msgstr "Bruk|#B"
 
-#: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:113
-#: src/frontends/xforms/form_graphics.C:114 src/insets/insetbib.C:63
-#: src/insets/insetbib.C:64 src/insets/insetinclude.C:55
-#: src/insets/insetinclude.C:56 src/layout_forms.C:98 src/lyx.C:53
-#: src/lyx_gui_misc.C:404 src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424
-#: src/mathed/math_forms.C:100 src/mathed/math_forms.C:130
-#: src/mathed/math_forms.C:198 src/print_form.C:34 src/sp_form.C:42
+#: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
+#: src/insets/insetbib.C:63 src/insets/insetbib.C:64
+#: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
+#: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
+#: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
+#: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:34
+#: src/sp_form.C:42
 msgid "Cancel|^["
 msgstr "Avbryt|^["
 
@@ -2939,17 +2941,17 @@ msgstr "cm|#m"
 msgid "inches|#h"
 msgstr "tommer|#o"
 
-#: src/form1.C:153 src/frontends/xforms/form_graphics.C:48
+#: src/form1.C:153 src/frontends/xforms/form_graphics.C:54
 msgid "Display"
 msgstr "Vis"
 
-#: src/form1.C:157 src/frontends/xforms/form_graphics.C:40
+#: src/form1.C:157 src/frontends/xforms/form_graphics.C:46
 msgid "Height"
 msgstr "Høyde"
 
-#: src/form1.C:161 src/frontends/kde/paraextradlgdata.C:91
-#: src/frontends/xforms/form_graphics.C:38
-#: src/frontends/xforms/form_paragraph.C:170
+#: src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
+#: src/frontends/xforms/form_graphics.C:44
+#: src/frontends/xforms/form_paragraph.C:219
 msgid "Width"
 msgstr "Bredde"
 
@@ -3104,7 +3106,7 @@ msgid "Year"
 msgstr "År"
 
 #: src/frontends/gnome/FormCitation.C:549
-#: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:53
+#: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:54
 msgid "Text after"
 msgstr "Text after"
 
@@ -3233,27 +3235,27 @@ msgid " Reference: "
 msgstr "Referanse: "
 
 #: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
-#: src/frontends/kde/FormToc.C:165 src/frontends/kde/FormToc.C:166
-#: src/frontends/kde/tocdlg.C:27 src/frontends/xforms/FormToc.C:35
+#: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
+#: src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
 #: src/insets/insettoc.C:21
 msgid "Table of Contents"
 msgstr "Innholdsfortegnelse"
 
 #: src/frontends/gnome/FormToc.C:104 src/frontends/gnome/FormToc.C:173
-#: src/frontends/kde/FormToc.C:170 src/frontends/kde/FormToc.C:171
-#: src/frontends/kde/tocdlg.C:28 src/insets/insettoc.C:25
+#: src/frontends/kde/FormToc.C:172 src/frontends/kde/FormToc.C:173
+#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:25
 msgid "List of Figures"
 msgstr "Figurliste"
 
 #: src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
-#: src/frontends/kde/FormToc.C:175 src/frontends/kde/FormToc.C:176
-#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:27
+#: src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
+#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:27
 msgid "List of Tables"
 msgstr "Liste over tabeller"
 
 #: src/frontends/gnome/FormToc.C:112 src/frontends/gnome/FormToc.C:179
-#: src/frontends/kde/FormToc.C:180 src/frontends/kde/FormToc.C:181
-#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:23
+#: src/frontends/kde/FormToc.C:182 src/frontends/kde/FormToc.C:183
+#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:23
 msgid "List of Algorithms"
 msgstr "Liste over algoritmer"
 
@@ -3277,67 +3279,69 @@ msgstr "Oppdater"
 msgid "<No Name>"
 msgstr "<Uten Navn>"
 
-#: src/frontends/kde/citationdlg.C:27
+#: src/frontends/kde/citationdlg.C:28
 msgid "Selected keys"
 msgstr "Valgte nøkler"
 
-#: src/frontends/kde/citationdlg.C:34
+#: src/frontends/kde/citationdlg.C:35
 msgid "Available keys"
 msgstr "Tilgjengelige nøkler"
 
-#: src/frontends/kde/citationdlg.C:41
+#: src/frontends/kde/citationdlg.C:42
 msgid "Reference entry"
 msgstr "Referanse"
 
-#: src/frontends/kde/citationdlg.C:60
+#: src/frontends/kde/citationdlg.C:61
 msgid "&Add"
 msgstr "&Legg til"
 
-#: src/frontends/kde/citationdlg.C:65
+#: src/frontends/kde/citationdlg.C:66
 msgid "&Up"
 msgstr "&Opp"
 
-#: src/frontends/kde/citationdlg.C:70
+#: src/frontends/kde/citationdlg.C:71
 msgid "&Down"
 msgstr "&Ned"
 
-#: src/frontends/kde/citationdlg.C:75
+#: src/frontends/kde/citationdlg.C:76
 msgid "&Remove"
 msgstr "&Fjern"
 
-#: src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:80
-#: src/frontends/kde/copyrightdlgdata.C:40 src/frontends/kde/indexdlgdata.C:68
-#: src/frontends/kde/paradlg.C:52 src/frontends/kde/refdlg.C:85
-#: src/frontends/kde/urldlg.C:51
+#: src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:81
+#: src/frontends/kde/dlg/copyrightdlgdata.C:40
+#: src/frontends/kde/dlg/indexdlgdata.C:68
+#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
+#: src/frontends/kde/urldlg.C:52
 msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/kde/FormCitation.C:166 src/frontends/kde/FormRef.C:203
-#: src/frontends/kde/citationdlg.C:86 src/frontends/kde/indexdlg.C:65
-#: src/frontends/kde/indexdlgdata.C:85 src/frontends/kde/paradlg.C:55
-#: src/frontends/kde/printdlgdata.C:133 src/frontends/kde/refdlg.C:91
-#: src/frontends/kde/urldlg.C:57
+#: src/frontends/kde/citationdlg.C:87 src/frontends/kde/dlg/indexdlgdata.C:85
+#: src/frontends/kde/dlg/paradlgdata.C:99
+#: src/frontends/kde/dlg/printdlgdata.C:133
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:60 src/frontends/kde/indexdlg.C:65
+#: src/frontends/kde/refdlg.C:92 src/frontends/kde/urldlg.C:58
 msgid "&Cancel"
 msgstr "&Avbryt"
 
 #. tooltips
-#: src/frontends/kde/citationdlg.C:92
+#: src/frontends/kde/citationdlg.C:93
 msgid "Keys currently selected"
 msgstr "Keys currently selected"
 
-#: src/frontends/kde/citationdlg.C:93
+#: src/frontends/kde/citationdlg.C:94
 msgid "Reference keys available"
 msgstr "Tilgjengelige referansenøkler"
 
-#: src/frontends/kde/citationdlg.C:94
+#: src/frontends/kde/citationdlg.C:95
 msgid "Reference entry text"
 msgstr "Referansetekst"
 
-#: src/frontends/kde/citationdlg.C:95
+#: src/frontends/kde/citationdlg.C:96
 msgid "Text to place after citation"
 msgstr "Text to place after citation"
 
-#: src/frontends/kde/copyrightdlgdata.C:61
+#: src/frontends/kde/dlg/copyrightdlgdata.C:61
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich, \n"
 "1995-2000 LyX Team"
@@ -3345,7 +3349,7 @@ msgstr ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich, \n"
 "1995-2000 LyX Team"
 
-#: src/frontends/kde/copyrightdlgdata.C:78
+#: src/frontends/kde/dlg/copyrightdlgdata.C:78
 msgid ""
 "This program is free software; you can redistribute it\n"
 "and/or modify it under the terms of the GNU General\n"
@@ -3359,7 +3363,7 @@ msgstr ""
 "Foundation; either version 2 of the License, or\n"
 "(at your option) any later version."
 
-#: src/frontends/kde/copyrightdlgdata.C:95
+#: src/frontends/kde/dlg/copyrightdlgdata.C:95
 msgid ""
 "LyX is distributed in the hope that it will\n"
 "be useful, but WITHOUT ANY WARRANTY;\n"
@@ -3382,9 +3386,194 @@ msgstr ""
 "along with this program; if not, write to\n"
 "the Free Software Foundation, Inc., \n"
 "675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/frontends/kde/dlg/indexdlgdata.C:42
+msgid "Keyword:"
+msgstr "Nøkkelord:"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:39
+#: src/frontends/kde/dlg/parabelowdlgdata.C:39
+msgid "Page break"
+msgstr "Ny side"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:52
+msgid "Keep space when at top of page"
+msgstr ""
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:70
+#: src/frontends/kde/dlg/parabelowdlgdata.C:70
+msgid "Extra Space"
+msgstr "Ekstramellomrom"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:101
+#: src/frontends/kde/dlg/parabelowdlgdata.C:101
+msgid "Value"
+msgstr "Verdi"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:118
+#: src/frontends/kde/dlg/parabelowdlgdata.C:118
+msgid "Plus"
+msgstr "Pluss"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:135
+#: src/frontends/kde/dlg/parabelowdlgdata.C:135
+msgid "Minus"
+msgstr "Minus"
+
+#: src/frontends/kde/dlg/parabelowdlgdata.C:52
+msgid "Keep space when at bottom of page"
+msgstr ""
+
+#: src/frontends/kde/dlg/paradlgdata.C:65
+msgid "&Apply"
+msgstr "&Bruk"
+
+#: src/frontends/kde/dlg/paradlgdata.C:82
+msgid "&Restore"
+msgstr ""
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:43
+#: src/frontends/kde/dlg/parageneraldlgdata.C:43
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Justering"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:74 src/lyx.C:56
+msgid "Type"
+msgstr "Type"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:116
+msgid "&HFill between minipage paragraphs"
+msgstr "&HFill mellom miniside avsnitt"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:129
+msgid "&Start new minipage"
+msgstr "&Begynn ny miniside"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:142
+msgid "&Top"
+msgstr "&Topp"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:155
+msgid "&Middle"
+msgstr "&Midt"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:168
+msgid "&Bottom"
+msgstr "&Bunn"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:55
+msgid "Draw line above paragraph"
+msgstr "Line over avsnittet"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:68
+msgid "Draw line below paragraph"
+msgstr "Linje under avnsittet"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:81
+msgid "Don't indent paragraph"
+msgstr "Avsnitt uten innrykk"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:94
+msgid "Block"
+msgstr "Blokk"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:107
+msgid "Center"
+msgstr "Sentrert"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:120
+msgid "Left"
+msgstr "Venstre"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:133
+msgid "Right"
+msgstr "Høyre"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:151
+msgid "Label width"
+msgstr ""
+
+#: src/frontends/kde/dlg/printdlgdata.C:42
+msgid "Pages"
+msgstr "Sider"
+
+#: src/frontends/kde/dlg/printdlgdata.C:73
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Kopier"
+
+#: src/frontends/kde/dlg/printdlgdata.C:88
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Skriv til"
+
+#: src/frontends/kde/dlg/printdlgdata.C:116
+msgid "&Print"
+msgstr "&Skriv ut"
+
+#: src/frontends/kde/dlg/printdlgdata.C:149
+msgid "&All pages"
+msgstr "&Alle sidene"
+
+#: src/frontends/kde/dlg/printdlgdata.C:162
+msgid "&Even pages"
+msgstr "&Partallssider"
+
+#: src/frontends/kde/dlg/printdlgdata.C:192
+msgid "From"
+msgstr "Fra"
+
+#: src/frontends/kde/dlg/printdlgdata.C:208
+msgid "To"
+msgstr "Til"
+
+#: src/frontends/kde/dlg/printdlgdata.C:220
+msgid "&Odd pages"
+msgstr "&Oddetallssider"
+
+#: src/frontends/kde/dlg/printdlgdata.C:233
+msgid "&Printer"
+msgstr "&Skriver"
+
+#: src/frontends/kde/dlg/printdlgdata.C:246
+msgid "&File"
+msgstr "&Fil"
+
+#: src/frontends/kde/dlg/printdlgdata.C:272
+msgid "&Reverse order"
+msgstr "&Omvent rekkefølge"
+
+#: src/frontends/kde/dlg/printdlgdata.C:298
+msgid "Co&llate"
+msgstr ""
+
+#: src/frontends/kde/dlg/printdlgdata.C:312
+msgid "&Browse"
+msgstr "Se &igjennom..."
+
+#: src/frontends/kde/dlg/printdlgdata.C:346
+msgid "Count"
+msgstr "Antall"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:42
+#, fuzzy
+msgid "&Insert"
+msgstr "Sett inn|S"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:90
+#: src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
+msgid "Rows"
+msgstr "Rader"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:107
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Kolonner"
 
 #: src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
-#: src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:47
+#: src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
 msgid "&Close"
 msgstr "&Lukk"
 
@@ -3404,7 +3593,12 @@ msgstr ""
 msgid "LyX: Index"
 msgstr "LyX: Indeks"
 
-#: src/frontends/kde/FormParagraph.C:186
+#: src/frontends/kde/FormParagraph.C:183
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "Paragraph layout set"
+msgstr "Avsnittstil satt"
+
+#: src/frontends/kde/FormParagraph.C:189
 msgid "LyX: Paragraph Options"
 msgstr "LyX: Avsnittsvalg"
 
@@ -3434,7 +3628,7 @@ msgid "&Go back"
 msgstr "&Tilbake"
 
 #: src/frontends/kde/FormRef.C:108 src/frontends/kde/FormRef.C:119
-#: src/frontends/kde/FormRef.C:184 src/frontends/kde/refdlg.C:75
+#: src/frontends/kde/FormRef.C:184 src/frontends/kde/refdlg.C:76
 msgid "&Goto reference"
 msgstr "&Gå til kryssreferansse"
 
@@ -3442,22 +3636,27 @@ msgstr "&Gå til kryssreferansse"
 msgid "LyX: Cross Reference"
 msgstr "LyX: Kryssreferanse"
 
-#: src/frontends/kde/FormToc.C:244
+#: src/frontends/kde/FormTabularCreate.C:53
+#, fuzzy
+msgid "LyX: Insert Table"
+msgstr "Sett inn tabell"
+
+#: src/frontends/kde/FormToc.C:246
 msgid "LyX: Table of Contents"
 msgstr "LyX: Innholdsfortegnelse"
 
 #: src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
-#: src/frontends/xforms/FormBase.h:137 src/frontends/xforms/FormBase.h:152
-#: src/frontends/xforms/FormInset.h:30 src/frontends/xforms/FormInset.h:54
-#: src/layout_forms.C:52 src/log_form.C:21 src/lyxvc.C:263
-#: src/mathed/math_forms.C:177
+#: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:137
+#: src/frontends/xforms/FormBase.h:152 src/frontends/xforms/FormInset.h:30
+#: src/frontends/xforms/FormInset.h:54 src/layout_forms.C:52 src/log_form.C:21
+#: src/lyxvc.C:263 src/mathed/math_forms.C:177
 msgid "Close"
 msgstr "Lukk"
 
 #: src/LyXAction.C:157 src/frontends/kde/FormUrl.C:93
-#: src/frontends/xforms/FormBase.h:138 src/frontends/xforms/FormBase.h:153
-#: src/frontends/xforms/FormInset.h:31 src/frontends/xforms/FormInset.h:55
-#: src/lyxfunc.C:701
+#: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:138
+#: src/frontends/xforms/FormBase.h:153 src/frontends/xforms/FormInset.h:31
+#: src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -3470,495 +3669,313 @@ msgstr "LyX: Url"
 msgid "Index entry"
 msgstr "Indeks element"
 
-#: src/frontends/kde/indexdlgdata.C:42
-msgid "Keyword:"
-msgstr "Nøkkelord:"
-
-#: src/frontends/kde/paradlg.C:49
+#: src/frontends/kde/paradlg.C:34
 msgid "&General"
 msgstr "&Generelt"
 
-#: src/frontends/kde/paradlg.C:50
+#: src/frontends/kde/paradlg.C:35
 msgid "&Extra"
 msgstr "&Ekstra"
 
-#: src/frontends/kde/paradlg.C:53
-msgid "&Apply"
-msgstr "&Bruk"
-
-#: src/frontends/kde/paradlg.C:54
-msgid "&Restore"
-msgstr ""
-
 #. FIXME: should be cleverer here
-#: src/frontends/kde/paradlg.C:120 src/paragraph.C:1911
+#: src/frontends/kde/paradlg.C:95 src/paragraph.C:1913
 msgid "Senseless with this layout!"
 msgstr "Uten mening for denne stilen!"
 
-#: src/frontends/kde/paraextradlg.C:24 src/lyxfont.C:52
+#: src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:52
 msgid "Normal"
 msgstr "Normal"
 
-#: src/frontends/kde/paraextradlg.C:25
+#: src/frontends/kde/paraextradlg.C:26
 msgid "Indented paragraph"
 msgstr "Avnsitt med innrykk"
 
-#: src/frontends/kde/paraextradlg.C:26
+#: src/frontends/kde/paraextradlg.C:27
 msgid "Minipage"
 msgstr "Miniside"
 
-#: src/frontends/kde/paraextradlg.C:27
+#: src/frontends/kde/paraextradlg.C:28
 msgid "Wrap text around floats (floatflt)"
 msgstr "Brekk tekst rundt flytendeelementer (floatflt)"
 
 #. if you change this, remember to change ParaDialog::get/setUnits()
-#: src/frontends/kde/paraextradlg.C:29 src/frontends/kde/parageneraldlg.C:51
+#: src/frontends/kde/paraextradlg.C:30 src/frontends/kde/parageneraldlg.C:63
 msgid "Centimetres"
 msgstr "Centimetre"
 
-#: src/frontends/kde/paraextradlg.C:30 src/frontends/kde/parageneraldlg.C:52
+#: src/frontends/kde/paraextradlg.C:31 src/frontends/kde/parageneraldlg.C:64
 msgid "Inches"
 msgstr "Tommer"
 
-#: src/frontends/kde/paraextradlg.C:31 src/frontends/kde/parageneraldlg.C:53
+#: src/frontends/kde/paraextradlg.C:32 src/frontends/kde/parageneraldlg.C:65
 msgid "Points (1/72.27 inch)"
 msgstr "Punkter"
 
-#: src/frontends/kde/paraextradlg.C:32 src/frontends/kde/parageneraldlg.C:54
+#: src/frontends/kde/paraextradlg.C:33 src/frontends/kde/parageneraldlg.C:66
 msgid "Millimetres"
 msgstr "Millimetre"
 
-#: src/frontends/kde/paraextradlg.C:33 src/frontends/kde/parageneraldlg.C:55
+#: src/frontends/kde/paraextradlg.C:34 src/frontends/kde/parageneraldlg.C:67
 msgid "Picas"
 msgstr "Pica"
 
-#: src/frontends/kde/paraextradlg.C:34 src/frontends/kde/parageneraldlg.C:56
+#: src/frontends/kde/paraextradlg.C:35 src/frontends/kde/parageneraldlg.C:68
 msgid "ex units"
 msgstr "ex enheter"
 
-#: src/frontends/kde/paraextradlg.C:35 src/frontends/kde/parageneraldlg.C:57
+#: src/frontends/kde/paraextradlg.C:36 src/frontends/kde/parageneraldlg.C:69
 msgid "em units"
 msgstr "em enheter"
 
-#: src/frontends/kde/paraextradlg.C:36 src/frontends/kde/parageneraldlg.C:58
+#: src/frontends/kde/paraextradlg.C:37 src/frontends/kde/parageneraldlg.C:70
 msgid "Scaled points (1/65536 pt)"
 msgstr "Scalerte punkter (1/65536 pt)"
 
-#: src/frontends/kde/paraextradlg.C:37 src/frontends/kde/parageneraldlg.C:59
+#: src/frontends/kde/paraextradlg.C:38 src/frontends/kde/parageneraldlg.C:71
 msgid "Big/PS points (1/72 inch)"
 msgstr "Store punkter (1/72 inch)"
 
-#: src/frontends/kde/paraextradlg.C:38 src/frontends/kde/parageneraldlg.C:60
+#: src/frontends/kde/paraextradlg.C:39 src/frontends/kde/parageneraldlg.C:72
 msgid "Didot points"
 msgstr "Didot punkter"
 
-#: src/frontends/kde/paraextradlg.C:39 src/frontends/kde/parageneraldlg.C:61
+#: src/frontends/kde/paraextradlg.C:40 src/frontends/kde/parageneraldlg.C:73
 msgid "Cicero points"
 msgstr "Cicero punkter"
-
-#: src/frontends/kde/paraextradlg.C:40 src/frontends/kde/parageneraldlg.C:62
-msgid "Math units"
-msgstr "Matte enheter"
 
 #: src/frontends/kde/paraextradlg.C:41
 msgid "Percent of column"
 msgstr "Prosent av kolonne:"
 
-#: src/frontends/kde/paraextradlgdata.C:43
-#: src/frontends/kde/parageneraldlgdata.C:44
-#: src/frontends/xforms/form_paragraph.C:113
-#: src/frontends/xforms/form_paragraph.C:174
-msgid "Alignment"
-msgstr "Justering"
+#. FIXME: free punctuation to whoever can make the value
+#. boxes not be overly large
+#: src/frontends/kde/parageneraldlg.C:31
+#, fuzzy
+msgid "&Spacing Above"
+msgstr "Avstand over"
 
-#: src/frontends/kde/paraextradlgdata.C:74 src/lyx.C:56
-msgid "Type"
-msgstr "Type"
+#: src/frontends/kde/parageneraldlg.C:32
+#, fuzzy
+msgid "Spacing &Below"
+msgstr "Anstand under"
 
-#: src/frontends/kde/paraextradlgdata.C:116
-msgid "&HFill between minipage paragraphs"
-msgstr "&HFill mellom miniside avsnitt"
-
-#: src/frontends/kde/paraextradlgdata.C:129
-msgid "&Start new minipage"
-msgstr "&Begynn ny miniside"
-
-#: src/frontends/kde/paraextradlgdata.C:142
-msgid "&Top"
-msgstr "&Topp"
-
-#: src/frontends/kde/paraextradlgdata.C:155
-msgid "&Middle"
-msgstr "&Midt"
-
-#: src/frontends/kde/paraextradlgdata.C:168
-msgid "&Bottom"
-msgstr "&Bunn"
-
-#: src/frontends/kde/parageneraldlg.C:25 src/frontends/kde/parageneraldlg.C:32
+#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:44
 msgid "None"
 msgstr "Ingen"
 
-#: src/frontends/kde/parageneraldlg.C:26 src/frontends/kde/parageneraldlg.C:33
+#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:45
 msgid "Defskip"
 msgstr "Defskip"
 
-#: src/frontends/kde/parageneraldlg.C:27 src/frontends/kde/parageneraldlg.C:34
+#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
 msgid "Small skip"
 msgstr "Lite"
 
-#: src/frontends/kde/parageneraldlg.C:28 src/frontends/kde/parageneraldlg.C:35
+#: src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
 msgid "Medium skip"
 msgstr "Mellom"
 
-#: src/frontends/kde/parageneraldlg.C:29 src/frontends/kde/parageneraldlg.C:36
+#: src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
 msgid "Big skip"
 msgstr "Stor"
 
-#: src/frontends/kde/parageneraldlg.C:30 src/frontends/kde/parageneraldlg.C:37
+#: src/frontends/kde/parageneraldlg.C:42 src/frontends/kde/parageneraldlg.C:49
 msgid "VFill"
 msgstr "VFill"
 
-#: src/frontends/kde/parageneraldlg.C:31 src/frontends/kde/parageneraldlg.C:38
+#: src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
 msgid "Length"
 msgstr "Lengde"
 
-#: src/frontends/kde/parageneraldlgdata.C:61
-msgid "Spacing Above"
-msgstr "Avstand over"
-
-#: src/frontends/kde/parageneraldlgdata.C:72
-msgid "Draw line above paragraph"
-msgstr "Line over avsnittet"
-
-#: src/frontends/kde/parageneraldlgdata.C:85
-msgid "Draw line below paragraph"
-msgstr "Linje under avnsittet"
-
-#: src/frontends/kde/parageneraldlgdata.C:98
-#: src/frontends/kde/parageneraldlgdata.C:171
-msgid "Page break"
-msgstr "Ny side"
-
-#: src/frontends/kde/parageneraldlgdata.C:111
-msgid "Don't indent paragraph"
-msgstr "Avsnitt uten innrykk"
-
-#: src/frontends/kde/parageneraldlgdata.C:143
-#: src/frontends/kde/parageneraldlgdata.C:189
-msgid "Extra Space"
-msgstr "Ekstramellomrom"
-
-#: src/frontends/kde/parageneraldlgdata.C:160
-msgid "Spacing Below"
-msgstr "Anstand under"
-
-#: src/frontends/kde/parageneraldlgdata.C:215
-msgid "Block"
-msgstr "Blokk"
-
-#: src/frontends/kde/parageneraldlgdata.C:228
-msgid "Center"
-msgstr "Sentrert"
-
-#: src/frontends/kde/parageneraldlgdata.C:241
-msgid "Left"
-msgstr "Venstre"
-
-#: src/frontends/kde/parageneraldlgdata.C:254
-msgid "Right"
-msgstr "Høyre"
-
-#: src/frontends/kde/parageneraldlgdata.C:272
-msgid "Label width"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlgdata.C:317
-#: src/frontends/kde/parageneraldlgdata.C:437
-msgid "Value"
-msgstr "Verdi"
-
-#: src/frontends/kde/parageneraldlgdata.C:347
-#: src/frontends/kde/parageneraldlgdata.C:471
-msgid "Minus"
-msgstr "Minus"
-
-#: src/frontends/kde/parageneraldlgdata.C:392
-#: src/frontends/kde/parageneraldlgdata.C:454
-msgid "Plus"
-msgstr "Pluss"
-
-#: src/frontends/kde/printdlg.C:24
+#: src/frontends/kde/printdlg.C:25
 msgid "Print every page"
 msgstr "Skriv ut alle sidene"
 
-#: src/frontends/kde/printdlg.C:25
+#: src/frontends/kde/printdlg.C:26
 msgid "Print odd-numbered pages only"
 msgstr "Skriv ut bare oddetalls sider"
 
-#: src/frontends/kde/printdlg.C:26
+#: src/frontends/kde/printdlg.C:27
 msgid "Print even-numbered pages only"
 msgstr "Skriv ut bare partalls sider"
 
-#: src/frontends/kde/printdlg.C:27
+#: src/frontends/kde/printdlg.C:28
 msgid "Print from page number"
 msgstr "Skriv ut fra sidenummer"
 
-#: src/frontends/kde/printdlg.C:28
+#: src/frontends/kde/printdlg.C:29
 msgid "Print to page number"
 msgstr "Skriv ut til sidenummer"
 
-#: src/frontends/kde/printdlg.C:29
+#: src/frontends/kde/printdlg.C:30
 msgid "Print in reverse order (last page first)"
 msgstr "Skriv ut i omvendt rekkefølge (siste side først)"
 
-#: src/frontends/kde/printdlg.C:30
+#: src/frontends/kde/printdlg.C:31
 msgid "Number of copies to print"
 msgstr "Antall kopier som skal skrives ut"
 
-#: src/frontends/kde/printdlg.C:31
+#: src/frontends/kde/printdlg.C:32
 msgid "Collate multiple copies"
 msgstr "Kollater multiple kopier"
 
-#: src/frontends/kde/printdlg.C:32
+#: src/frontends/kde/printdlg.C:33
 msgid "Printer name"
 msgstr "Skriver navn"
 
-#: src/frontends/kde/printdlg.C:33
+#: src/frontends/kde/printdlg.C:34
 msgid "Output filename"
 msgstr "Til filnavn"
 
-#: src/frontends/kde/printdlg.C:34
+#: src/frontends/kde/printdlg.C:35
 msgid "Select output filename"
 msgstr ""
 
-#: src/frontends/kde/printdlgdata.C:42
-msgid "Pages"
-msgstr "Sider"
-
-#: src/frontends/kde/printdlgdata.C:73 src/frontends/xforms/form_print.C:105
-msgid "Copies"
-msgstr "Kopier"
-
-#: src/frontends/kde/printdlgdata.C:88 src/frontends/xforms/form_print.C:108
-msgid "Print to"
-msgstr "Skriv til"
-
-#: src/frontends/kde/printdlgdata.C:116
-msgid "&Print"
-msgstr "&Skriv ut"
-
-#: src/frontends/kde/printdlgdata.C:149
-msgid "&All pages"
-msgstr "&Alle sidene"
-
-#: src/frontends/kde/printdlgdata.C:162
-msgid "&Even pages"
-msgstr "&Partallssider"
-
-#: src/frontends/kde/printdlgdata.C:192
-msgid "From"
-msgstr "Fra"
-
-#: src/frontends/kde/printdlgdata.C:208
-msgid "To"
-msgstr "Til"
-
-#: src/frontends/kde/printdlgdata.C:220
-msgid "&Odd pages"
-msgstr "&Oddetallssider"
-
-#: src/frontends/kde/printdlgdata.C:233
-msgid "&Printer"
-msgstr "&Skriver"
-
-#: src/frontends/kde/printdlgdata.C:246
-msgid "&File"
-msgstr "&Fil"
-
-#: src/frontends/kde/printdlgdata.C:272
-msgid "&Reverse order"
-msgstr "&Omvent rekkefølge"
-
-#: src/frontends/kde/printdlgdata.C:298
-msgid "Co&llate"
-msgstr ""
-
-#: src/frontends/kde/printdlgdata.C:312
-msgid "&Browse"
-msgstr "Se &igjennom..."
-
-#: src/frontends/kde/printdlgdata.C:346
-msgid "Count"
-msgstr "Antall"
-
-#: src/frontends/kde/refdlg.C:29
+#: src/frontends/kde/refdlg.C:30
 msgid "Available References"
 msgstr "Tilgjengelige referanser"
 
-#: src/frontends/kde/refdlg.C:44 src/frontends/kde/urldlg.C:38
+#: src/frontends/kde/refdlg.C:45 src/frontends/kde/urldlg.C:39
 msgid "Name :"
 msgstr "Navn :"
 
-#: src/frontends/kde/refdlg.C:50
+#: src/frontends/kde/refdlg.C:51
 msgid "Reference :"
 msgstr "Referanse :"
 
-#: src/frontends/kde/refdlg.C:56
+#: src/frontends/kde/refdlg.C:57
 msgid "Sort"
 msgstr "Sorter"
 
-#: src/frontends/kde/refdlg.C:62
+#: src/frontends/kde/refdlg.C:63
 msgid "Page number"
 msgstr "Sidetall"
 
-#: src/frontends/kde/refdlg.C:63
+#: src/frontends/kde/refdlg.C:64
 msgid "Ref on page xxx"
 msgstr "Ref on page xxx"
 
-#: src/frontends/kde/refdlg.C:64
+#: src/frontends/kde/refdlg.C:65
 msgid "on page xxx"
 msgstr "on page xxx"
 
-#: src/frontends/kde/refdlg.C:65
+#: src/frontends/kde/refdlg.C:66
 msgid "Pretty reference"
 msgstr "Pen referanse"
 
-#: src/frontends/kde/refdlg.C:69
+#: src/frontends/kde/refdlg.C:70
 msgid "Reference Type"
 msgstr "Referansetype"
 
-#: src/frontends/kde/refdlg.C:80 src/frontends/kde/tocdlg.C:42
+#: src/frontends/kde/refdlg.C:81 src/frontends/kde/tocdlg.C:43
 msgid "&Update"
 msgstr "&Oppdater"
 
 #. tooltips
-#: src/frontends/kde/refdlg.C:97
+#: src/frontends/kde/refdlg.C:98
 msgid "Reference as it appears in output"
 msgstr "Reference as it appears in output"
 
-#: src/frontends/kde/refdlg.C:98
+#: src/frontends/kde/refdlg.C:99
 msgid "Sort references in alphabetical order ?"
 msgstr "Sort references in alphabetical order ?"
 
-#: src/frontends/kde/tocdlg.C:56
+#: src/frontends/kde/tocdlg.C:57
 msgid "Depth"
 msgstr "Dybde"
 
-#: src/frontends/kde/urldlg.C:32
+#: src/frontends/kde/urldlg.C:33
 msgid "Url :"
 msgstr "Url :"
 
-#: src/frontends/kde/urldlg.C:44
+#: src/frontends/kde/urldlg.C:45
 msgid "Generate hyperlink"
 msgstr "Generate hyperlink"
 
-#: src/frontends/kde/urldlg.C:63 src/frontends/kde/urldlg.C:64
+#: src/frontends/kde/urldlg.C:64 src/frontends/kde/urldlg.C:65
 msgid "Name associated with the URL"
 msgstr "Name associated with the URL"
 
-#: src/frontends/kde/urldlg.C:65
+#: src/frontends/kde/urldlg.C:66
 msgid "Output as a hyperlink ?"
 msgstr "Output as a hyperlink ?"
-
-#: src/frontends/xforms/form_citation.C:28
-#: src/frontends/xforms/form_citation.C:29
-msgid "Inset keys|#I"
-msgstr ""
-
-#: src/frontends/xforms/form_citation.C:34
-#: src/frontends/xforms/form_citation.C:35
-msgid "Bibliography keys|#B"
-msgstr ""
-
-#: src/frontends/xforms/form_citation.C:40
-msgid "@4->"
-msgstr "@4->"
-
-#: src/frontends/xforms/form_citation.C:41
-msgid "#&D"
-msgstr ""
-
-#: src/frontends/xforms/form_citation.C:45
-msgid "@9+"
-msgstr "@9+"
-
-#: src/frontends/xforms/form_citation.C:46
-msgid "#X"
-msgstr ""
-
-#: src/frontends/xforms/form_citation.C:50
-msgid "@8->"
-msgstr "@8->"
-
-#: src/frontends/xforms/form_citation.C:51
-msgid "#&A"
-msgstr ""
-
-#: src/frontends/xforms/form_citation.C:55
-msgid "@2->"
-msgstr "@2->"
-
-#: src/frontends/xforms/form_citation.C:56
-msgid "#&B"
-msgstr ""
-
-#: src/frontends/xforms/form_citation.C:60 src/lyxvc.C:112
-msgid "Info"
-msgstr "Info"
-
-#: src/frontends/xforms/form_citation.C:64
-#: src/frontends/xforms/form_citation.C:65
-msgid "Citation style|#s"
-msgstr "Siteringsstil|#s"
-
-#: src/frontends/xforms/form_citation.C:69
-#: src/frontends/xforms/form_citation.C:70
-msgid "Text before|#T"
-msgstr "Tekstfør|#T"
-
-#: src/frontends/xforms/form_citation.C:73
-#: src/frontends/xforms/form_citation.C:74
-msgid "Text after|#e"
-msgstr "Tekstetter|#e"
-
-#: src/frontends/xforms/form_citation.C:77
-#: src/frontends/xforms/form_citation.C:78
-#: src/frontends/xforms/form_document.C:45
-#: src/frontends/xforms/form_document.C:46
-#: src/frontends/xforms/form_index.C:33 src/frontends/xforms/form_index.C:34
-#: src/frontends/xforms/form_paragraph.C:254
-#: src/frontends/xforms/form_paragraph.C:255
-#: src/frontends/xforms/form_preferences.C:41
-#: src/frontends/xforms/form_preferences.C:42
-#: src/frontends/xforms/form_ref.C:67 src/frontends/xforms/form_ref.C:68
-#: src/frontends/xforms/form_url.C:60 src/frontends/xforms/form_url.C:61
-msgid "Restore|#R"
-msgstr "Sett tilbake|#S"
-
-#: src/frontends/xforms/form_citation.C:88
-#: src/frontends/xforms/form_citation.C:89
-#: src/frontends/xforms/form_document.C:32
-#: src/frontends/xforms/form_document.C:33
-#: src/frontends/xforms/form_index.C:46 src/frontends/xforms/form_index.C:47
-#: src/frontends/xforms/form_ref.C:59 src/frontends/xforms/form_ref.C:60
-#: src/frontends/xforms/form_tabular_create.C:35
-#: src/frontends/xforms/form_tabular_create.C:36
-#: src/frontends/xforms/form_url.C:47 src/frontends/xforms/form_url.C:48
-#: src/lyx.C:110
-msgid "Cancel|#C^["
-msgstr "Cancel|#C^["
 
 #: src/frontends/xforms/FormCitation.C:37
 msgid "Citation"
 msgstr "Sitering"
 
-#: src/frontends/xforms/form_copyright.C:40
-#: src/frontends/xforms/form_copyright.C:41
-#: src/frontends/xforms/form_error.C:30 src/frontends/xforms/form_error.C:31
-#: src/frontends/xforms/form_toc.C:41 src/frontends/xforms/form_toc.C:42
-msgid "Close|#C^[^M"
-msgstr "Lukk|#L^[^M"
+#: src/frontends/xforms/form_citation.C:29
+msgid "Inset keys|#I"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:38
+msgid "Bibliography keys|#B"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:46
+msgid "@4->"
+msgstr "@4->"
+
+#: src/frontends/xforms/form_citation.C:47
+msgid "#&D"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:51
+msgid "@9+"
+msgstr "@9+"
+
+#: src/frontends/xforms/form_citation.C:52
+msgid "#X"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:56
+msgid "@8->"
+msgstr "@8->"
+
+#: src/frontends/xforms/form_citation.C:57
+msgid "#&A"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:61
+msgid "@2->"
+msgstr "@2->"
+
+#: src/frontends/xforms/form_citation.C:62
+msgid "#&B"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:66 src/lyxvc.C:112
+msgid "Info"
+msgstr "Info"
+
+#: src/frontends/xforms/form_citation.C:71
+msgid "Citation style|#s"
+msgstr "Siteringsstil|#s"
+
+#: src/frontends/xforms/form_citation.C:79
+msgid "Text before|#T"
+msgstr "Tekstfør|#T"
+
+#: src/frontends/xforms/form_citation.C:86
+msgid "Text after|#e"
+msgstr "Tekstetter|#e"
+
+#: src/frontends/xforms/form_citation.C:93
+#: src/frontends/xforms/form_document.C:52
+#: src/frontends/xforms/form_index.C:34
+#: src/frontends/xforms/form_paragraph.C:334
+#: src/frontends/xforms/form_preferences.C:48
+#: src/frontends/xforms/form_ref.C:89 src/frontends/xforms/form_url.C:76
+msgid "Restore|#R"
+msgstr "Sett tilbake|#S"
+
+#: src/frontends/xforms/form_citation.C:110
+#: src/frontends/xforms/form_document.C:33
+#: src/frontends/xforms/form_index.C:53 src/frontends/xforms/form_ref.C:75
+#: src/frontends/xforms/form_tabular_create.C:39
+#: src/frontends/xforms/form_url.C:57 src/lyx.C:110
+msgid "Cancel|#C^["
+msgstr "Cancel|#C^["
 
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
@@ -3986,291 +4003,10 @@ msgid ""
 "Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
 
-#: src/frontends/xforms/form_document.C:30
-#: src/frontends/xforms/form_paragraph.C:241
-#: src/frontends/xforms/form_tabular.C:28
-msgid "Tabbed folder"
-msgstr "Tabbed folder"
-
-#: src/frontends/xforms/form_document.C:75
-#: src/frontends/xforms/form_document.C:76
-msgid "Special:|#S"
-msgstr "Spesiell:|#S"
-
-#: src/frontends/xforms/form_document.C:86
-msgid "Margins"
-msgstr "Tekstmarger"
-
-#: src/frontends/xforms/form_document.C:90
-msgid "Foot/Head Margins"
-msgstr "Topp og bunn marger"
-
-#: src/frontends/xforms/form_document.C:101
-msgid "Orientation"
-msgstr "Orientering"
-
-#: src/frontends/xforms/form_document.C:107
-#: src/frontends/xforms/form_document.C:108
-msgid "Portrait|#o"
-msgstr "Høydeformat|#H"
-
-#: src/frontends/xforms/form_document.C:111
-#: src/frontends/xforms/form_document.C:112
-msgid "Landscape|#L"
-msgstr "Breddeformat|#B"
-
-#: src/frontends/xforms/form_document.C:117
-#: src/frontends/xforms/form_document.C:118
-msgid "Papersize:|#P"
-msgstr "Papirstørrelse|#P"
-
-#: src/frontends/xforms/form_document.C:122
-msgid "Custom Papersize"
-msgstr "Egen papirstørrelse"
-
-#: src/frontends/xforms/form_document.C:126
-#: src/frontends/xforms/form_document.C:127
-msgid "Use Geometry Package|#U"
-msgstr "Bruk \"Geometry\" pakken|#B"
-
-#: src/frontends/xforms/form_document.C:130
-#: src/frontends/xforms/form_document.C:131
-msgid "Width:|#W"
-msgstr "Bredde:|#B"
-
-#: src/frontends/xforms/form_document.C:134
-#: src/frontends/xforms/form_document.C:135
-msgid "Height:|#H"
-msgstr "Høyde:|#H"
-
-#: src/frontends/xforms/form_document.C:138
-#: src/frontends/xforms/form_document.C:139
-msgid "Top:|#T"
-msgstr "Topp:|#T"
-
-#: src/frontends/xforms/form_document.C:142
-#: src/frontends/xforms/form_document.C:143
-msgid "Bottom:|#B"
-msgstr "Bunn:|#B"
-
-#: src/frontends/xforms/form_document.C:146
-#: src/frontends/xforms/form_document.C:147
-msgid "Left:|#e"
-msgstr "Venstre:|#e"
-
-#: src/frontends/xforms/form_document.C:150
-#: src/frontends/xforms/form_document.C:151
-msgid "Right:|#R"
-msgstr "Høyre:|#H"
-
-#: src/frontends/xforms/form_document.C:154
-#: src/frontends/xforms/form_document.C:155
-msgid "Headheight:|#i"
-msgstr "Hodehøyde:|#o"
-
-#: src/frontends/xforms/form_document.C:158
-#: src/frontends/xforms/form_document.C:159
-msgid "Headsep:|#d"
-msgstr "Hodeseparator:|#d"
-
-#: src/frontends/xforms/form_document.C:162
-#: src/frontends/xforms/form_document.C:163
-msgid "Footskip:|#F"
-msgstr "Bunnseparator:|#u"
-
-#: src/frontends/xforms/form_document.C:193
-msgid "Separation"
-msgstr "Separasjon"
-
-#: src/frontends/xforms/form_document.C:196
-msgid "Page cols"
-msgstr "Antall kolonner"
-
-#: src/frontends/xforms/form_document.C:199
-msgid "Sides"
-msgstr "Sider"
-
-#: src/frontends/xforms/form_document.C:202
-#: src/frontends/xforms/form_document.C:203
-msgid "Fonts:|#F"
-msgstr "Fonter:"
-
-#: src/frontends/xforms/form_document.C:207
-#: src/frontends/xforms/form_document.C:208
-msgid "Font Size:|#O"
-msgstr "Font størrelse:|#O"
-
-#: src/frontends/xforms/form_document.C:212
-#: src/frontends/xforms/form_document.C:213
-msgid "Class:|#C"
-msgstr "Klasse:"
-
-#: src/frontends/xforms/form_document.C:217
-#: src/frontends/xforms/form_document.C:218
-msgid "Pagestyle:|#P"
-msgstr "Arkstil:"
-
-#: src/frontends/xforms/form_document.C:222
-#: src/frontends/xforms/form_document.C:223
-msgid "Spacing|#g"
-msgstr "Mellomrom|#M"
-
-#: src/frontends/xforms/form_document.C:227
-#: src/frontends/xforms/form_document.C:228
-msgid "Extra Options:|#X"
-msgstr "Ekstra Opsjoner:|#k"
-
-#: src/frontends/xforms/form_document.C:234
-#: src/frontends/xforms/form_document.C:235
-msgid "Default Skip:|#u"
-msgstr "Standard avstand:|#u"
-
-# n
-#: src/frontends/xforms/form_document.C:241
-#: src/frontends/xforms/form_document.C:242
-msgid "One|#n"
-msgstr "En|#n"
-
-#: src/frontends/xforms/form_document.C:245
-#: src/frontends/xforms/form_document.C:246
-msgid "Two|#T"
-msgstr "To|#T"
-
-#: src/frontends/xforms/form_document.C:253
-#: src/frontends/xforms/form_document.C:254
-msgid "One|#e"
-msgstr "En|#E"
-
-#: src/frontends/xforms/form_document.C:257
-#: src/frontends/xforms/form_document.C:258
-msgid "Two|#w"
-msgstr "To|#o"
-
-#: src/frontends/xforms/form_document.C:265
-#: src/frontends/xforms/form_document.C:266
-msgid "Indent|#I"
-msgstr "Innrykk"
-
-#: src/frontends/xforms/form_document.C:269
-#: src/frontends/xforms/form_document.C:270
-msgid "Skip|#K"
-msgstr "Hopp over"
-
-#: src/frontends/xforms/form_document.C:302
-msgid "Quote Style    "
-msgstr "Sitatstil"
-
-#: src/frontends/xforms/form_document.C:303
-#: src/frontends/xforms/form_document.C:304
-msgid "Encoding:|#D"
-msgstr "Enkoding:|#D"
-
-#: src/frontends/xforms/form_document.C:308
-#: src/frontends/xforms/form_document.C:309
-msgid "Type:|#T"
-msgstr "Slag:|#l"
-
-#: src/frontends/xforms/form_document.C:314
-#: src/frontends/xforms/form_document.C:315
-msgid "Single|#S"
-msgstr "Enkel:|#E"
-
-#: src/frontends/xforms/form_document.C:318
-#: src/frontends/xforms/form_document.C:319
-msgid "Double|#D"
-msgstr "Dobbel|#D"
-
-#: src/frontends/xforms/form_document.C:324
-#: src/frontends/xforms/form_document.C:325
-msgid "Language:|#L"
-msgstr "Språk:|#S"
-
-#: src/frontends/xforms/form_document.C:352
-#: src/frontends/xforms/form_document.C:353
-msgid "Float Placement:|#L"
-msgstr "Float plassering:|#L"
-
-#: src/frontends/xforms/form_document.C:356
-msgid "Section number depth"
-msgstr "Avsnittsnummer dybde"
-
-#: src/frontends/xforms/form_document.C:360
-msgid "Table of contents depth"
-msgstr "Innholdsfortengnelsesdybde"
-
-#: src/frontends/xforms/form_document.C:364
-#: src/frontends/xforms/form_document.C:365
-msgid "PS Driver:|#S"
-msgstr "PS driver:|#S"
-
-#: src/frontends/xforms/form_document.C:369
-#: src/frontends/xforms/form_document.C:370
-msgid "Use AMS Math|#M"
-msgstr "Bruk AMS matte"
-
-#: src/frontends/xforms/form_document.C:408
-#: src/frontends/xforms/form_document.C:409
-msgid "Size|#z"
-msgstr "Størrelse|#S"
-
-#: src/frontends/xforms/form_document.C:414
-#: src/frontends/xforms/form_document.C:415
-msgid "LaTeX|#L"
-msgstr "LaTeX|#L"
-
-#: src/frontends/xforms/form_document.C:421
-#: src/frontends/xforms/form_document.C:422
-msgid "1|#1"
-msgstr "1|#1"
-
-#: src/frontends/xforms/form_document.C:426
-#: src/frontends/xforms/form_document.C:427
-msgid "2|#2"
-msgstr "2|#2"
-
-#: src/frontends/xforms/form_document.C:430
-#: src/frontends/xforms/form_document.C:431
-msgid "3|#3"
-msgstr "3|#3"
-
-#: src/frontends/xforms/form_document.C:434
-#: src/frontends/xforms/form_document.C:435
-msgid "4|#4"
-msgstr "4|#4"
-
-#: src/frontends/xforms/form_document.C:440
-msgid "Bullet Depth"
-msgstr "Bombe dybde"
-
-#: src/frontends/xforms/form_document.C:445
-#: src/frontends/xforms/form_document.C:446
-msgid "Standard|#S"
-msgstr "Standard|#t"
-
-#: src/frontends/xforms/form_document.C:451
-#: src/frontends/xforms/form_document.C:452
-msgid "Maths|#M"
-msgstr "Matte|#M"
-
-#: src/frontends/xforms/form_document.C:456
-#: src/frontends/xforms/form_document.C:457
-msgid "Ding 2|#i"
-msgstr "Ding 2|#i"
-
-#: src/frontends/xforms/form_document.C:461
-#: src/frontends/xforms/form_document.C:462
-msgid "Ding 3|#n"
-msgstr "Ding 3|#n"
-
-#: src/frontends/xforms/form_document.C:466
-#: src/frontends/xforms/form_document.C:467
-msgid "Ding 4|#g"
-msgstr "Ding 4|#g"
-
-#: src/frontends/xforms/form_document.C:471
-#: src/frontends/xforms/form_document.C:472
-msgid "Ding 1|#D"
-msgstr "Ding 1|#D"
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+msgid "Close|#C^[^M"
+msgstr "Lukk|#L^[^M"
 
 #: src/frontends/xforms/FormDocument.C:48
 msgid "Document Layout"
@@ -4312,9 +4048,9 @@ msgstr ""
 "standad | bitteliten | minst | mindre | liten | normal | stor | større | "
 "størst | enorm | gigantisk"
 
-#: src/frontends/xforms/FormDocument.C:272 src/insets/figinset.C:1954
-#: src/insets/insetexternal.C:143 src/lyxfunc.C:3027 src/lyxfunc.C:3103
-#: src/lyxfunc.C:3235
+#: src/frontends/xforms/FormDocument.C:272 src/insets/figinset.C:1960
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3093 src/lyxfunc.C:3169
+#: src/lyxfunc.C:3301
 msgid "Document"
 msgstr "Dokumentet"
 
@@ -4358,7 +4094,7 @@ msgstr " avsnitt var umulig å konvertere"
 #. problem changing class -- warn user and retain old style
 #: src/frontends/xforms/FormDocument.C:437
 #: src/frontends/xforms/FormDocument.C:444
-#: src/frontends/xforms/FormDocument.C:1100
+#: src/frontends/xforms/FormDocument.C:1103
 msgid "Conversion Errors!"
 msgstr "Konverteringsfeil!"
 
@@ -4371,7 +4107,7 @@ msgid "Errors loading new document class."
 msgstr "Feil under lesing av ny dokumentklasse."
 
 #: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1102
+#: src/frontends/xforms/FormDocument.C:1105
 msgid "Reverting to original document class."
 msgstr "Går tilbake til opprinnelig dokument klasse."
 
@@ -4379,291 +4115,353 @@ msgstr "Går tilbake til opprinnelig dokument klasse."
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Dokumentet er skrivebeskyttet. Stil endringer er ikke tillatt."
 
-#: src/frontends/xforms/FormDocument.C:1090
+#: src/frontends/xforms/FormDocument.C:1093
 msgid "Should I set some parameters to"
 msgstr "Skal jeg sette noen paramtere til"
 
-#: src/frontends/xforms/FormDocument.C:1091
+#: src/frontends/xforms/FormDocument.C:1094
 msgid "the defaults of this document class?"
 msgstr "sette standardverdiene for denne tekstklassen?"
 
-#: src/frontends/xforms/FormDocument.C:1101
+#: src/frontends/xforms/FormDocument.C:1104
 msgid "Unable to switch to new document class."
 msgstr "Kan ikke bytte til ny dokument klasse."
+
+#: src/frontends/xforms/form_document.C:30
+#: src/frontends/xforms/form_paragraph.C:314
+#: src/frontends/xforms/form_tabular.C:28
+msgid "Tabbed folder"
+msgstr "Tabbed folder"
+
+#: src/frontends/xforms/form_document.C:85
+msgid "Special:|#S"
+msgstr "Spesiell:|#S"
+
+#: src/frontends/xforms/form_document.C:98
+msgid "Margins"
+msgstr "Tekstmarger"
+
+#: src/frontends/xforms/form_document.C:102
+msgid "Foot/Head Margins"
+msgstr "Topp og bunn marger"
+
+#: src/frontends/xforms/form_document.C:113
+msgid "Orientation"
+msgstr "Orientering"
+
+#: src/frontends/xforms/form_document.C:120
+msgid "Portrait|#o"
+msgstr "Høydeformat|#H"
+
+#: src/frontends/xforms/form_document.C:127
+msgid "Landscape|#L"
+msgstr "Breddeformat|#B"
+
+#: src/frontends/xforms/form_document.C:136
+msgid "Papersize:|#P"
+msgstr "Papirstørrelse|#P"
+
+#: src/frontends/xforms/form_document.C:143
+msgid "Custom Papersize"
+msgstr "Egen papirstørrelse"
+
+#: src/frontends/xforms/form_document.C:148
+msgid "Use Geometry Package|#U"
+msgstr "Bruk \"Geometry\" pakken|#B"
+
+#: src/frontends/xforms/form_document.C:155
+msgid "Width:|#W"
+msgstr "Bredde:|#B"
+
+#: src/frontends/xforms/form_document.C:162
+msgid "Height:|#H"
+msgstr "Høyde:|#H"
+
+#: src/frontends/xforms/form_document.C:169
+msgid "Top:|#T"
+msgstr "Topp:|#T"
+
+#: src/frontends/xforms/form_document.C:176
+msgid "Bottom:|#B"
+msgstr "Bunn:|#B"
+
+#: src/frontends/xforms/form_document.C:183
+msgid "Left:|#e"
+msgstr "Venstre:|#e"
+
+#: src/frontends/xforms/form_document.C:190
+msgid "Right:|#R"
+msgstr "Høyre:|#H"
+
+#: src/frontends/xforms/form_document.C:197
+msgid "Headheight:|#i"
+msgstr "Hodehøyde:|#o"
+
+#: src/frontends/xforms/form_document.C:204
+msgid "Headsep:|#d"
+msgstr "Hodeseparator:|#d"
+
+#: src/frontends/xforms/form_document.C:211
+msgid "Footskip:|#F"
+msgstr "Bunnseparator:|#u"
+
+#: src/frontends/xforms/form_document.C:244
+msgid "Separation"
+msgstr "Separasjon"
+
+#: src/frontends/xforms/form_document.C:247
+msgid "Page cols"
+msgstr "Antall kolonner"
+
+#: src/frontends/xforms/form_document.C:250
+msgid "Sides"
+msgstr "Sider"
+
+#: src/frontends/xforms/form_document.C:254
+msgid "Fonts:|#F"
+msgstr "Fonter:"
+
+#: src/frontends/xforms/form_document.C:262
+msgid "Font Size:|#O"
+msgstr "Font størrelse:|#O"
+
+#: src/frontends/xforms/form_document.C:270
+msgid "Class:|#C"
+msgstr "Klasse:"
+
+#: src/frontends/xforms/form_document.C:278
+msgid "Pagestyle:|#P"
+msgstr "Arkstil:"
+
+#: src/frontends/xforms/form_document.C:286
+msgid "Spacing|#g"
+msgstr "Mellomrom|#M"
+
+#: src/frontends/xforms/form_document.C:294
+msgid "Extra Options:|#X"
+msgstr "Ekstra Opsjoner:|#k"
+
+#: src/frontends/xforms/form_document.C:304
+msgid "Default Skip:|#u"
+msgstr "Standard avstand:|#u"
+
+# n
+#: src/frontends/xforms/form_document.C:314
+msgid "One|#n"
+msgstr "En|#n"
+
+#: src/frontends/xforms/form_document.C:321
+msgid "Two|#T"
+msgstr "To|#T"
+
+#: src/frontends/xforms/form_document.C:332
+msgid "One|#e"
+msgstr "En|#E"
+
+#: src/frontends/xforms/form_document.C:339
+msgid "Two|#w"
+msgstr "To|#o"
+
+#: src/frontends/xforms/form_document.C:350
+msgid "Indent|#I"
+msgstr "Innrykk"
+
+#: src/frontends/xforms/form_document.C:357
+msgid "Skip|#K"
+msgstr "Hopp over"
+
+#: src/frontends/xforms/form_document.C:392
+msgid "Quote Style    "
+msgstr "Sitatstil"
+
+#: src/frontends/xforms/form_document.C:394
+msgid "Encoding:|#D"
+msgstr "Enkoding:|#D"
+
+#: src/frontends/xforms/form_document.C:402
+msgid "Type:|#T"
+msgstr "Slag:|#l"
+
+#: src/frontends/xforms/form_document.C:411
+msgid "Single|#S"
+msgstr "Enkel:|#E"
+
+#: src/frontends/xforms/form_document.C:418
+msgid "Double|#D"
+msgstr "Dobbel|#D"
+
+#: src/frontends/xforms/form_document.C:427
+msgid "Language:|#L"
+msgstr "Språk:|#S"
+
+#: src/frontends/xforms/form_document.C:458
+msgid "Float Placement:|#L"
+msgstr "Float plassering:|#L"
+
+#: src/frontends/xforms/form_document.C:464
+msgid "Section number depth"
+msgstr "Avsnittsnummer dybde"
+
+#: src/frontends/xforms/form_document.C:468
+msgid "Table of contents depth"
+msgstr "Innholdsfortengnelsesdybde"
+
+#: src/frontends/xforms/form_document.C:473
+msgid "PS Driver:|#S"
+msgstr "PS driver:|#S"
+
+#: src/frontends/xforms/form_document.C:481
+msgid "Use AMS Math|#M"
+msgstr "Bruk AMS matte"
+
+#: src/frontends/xforms/form_document.C:523
+msgid "Size|#z"
+msgstr "Størrelse|#S"
+
+#: src/frontends/xforms/form_document.C:532
+msgid "LaTeX|#L"
+msgstr "LaTeX|#L"
+
+#: src/frontends/xforms/form_document.C:542
+msgid "1|#1"
+msgstr "1|#1"
+
+#: src/frontends/xforms/form_document.C:550
+msgid "2|#2"
+msgstr "2|#2"
+
+#: src/frontends/xforms/form_document.C:557
+msgid "3|#3"
+msgstr "3|#3"
+
+#: src/frontends/xforms/form_document.C:564
+msgid "4|#4"
+msgstr "4|#4"
+
+#: src/frontends/xforms/form_document.C:572
+msgid "Bullet Depth"
+msgstr "Bombe dybde"
+
+#: src/frontends/xforms/form_document.C:578
+msgid "Standard|#S"
+msgstr "Standard|#t"
+
+#: src/frontends/xforms/form_document.C:587
+msgid "Maths|#M"
+msgstr "Matte|#M"
+
+#: src/frontends/xforms/form_document.C:595
+msgid "Ding 2|#i"
+msgstr "Ding 2|#i"
+
+#: src/frontends/xforms/form_document.C:603
+msgid "Ding 3|#n"
+msgstr "Ding 3|#n"
+
+#: src/frontends/xforms/form_document.C:611
+msgid "Ding 4|#g"
+msgstr "Ding 4|#g"
+
+#: src/frontends/xforms/form_document.C:619
+msgid "Ding 1|#D"
+msgstr "Ding 1|#D"
 
 #: src/frontends/xforms/FormError.C:26
 msgid "LaTeX Error"
 msgstr "LaTeX Feil"
 
-#: src/frontends/xforms/form_graphics.C:32
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr "Grafikk"
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
+msgid "Clipart"
+msgstr "Utklippsbilder"
+
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
 msgstr "Grafikk fil|#G"
 
-#: src/frontends/xforms/form_graphics.C:35
-#: src/frontends/xforms/form_graphics.C:36
-#: src/frontends/xforms/form_preferences.C:409
-#: src/frontends/xforms/form_preferences.C:410 src/insets/insetinclude.C:45
+#: src/frontends/xforms/form_graphics.C:39 src/insets/insetinclude.C:45
 #: src/insets/insetinclude.C:46
 msgid "Browse|#B"
 msgstr "Se igjennom|#S"
 
-#: src/frontends/xforms/form_graphics.C:52
-#: src/frontends/xforms/form_graphics.C:67
-#, c-format
+#: src/frontends/xforms/form_graphics.C:59
+#: src/frontends/xforms/form_graphics.C:76
+#, no-c-format
 msgid "% of Page"
 msgstr "% av siden"
 
-#: src/frontends/xforms/form_graphics.C:54
-#: src/frontends/xforms/form_graphics.C:73 src/lyxfont.C:409
+#: src/frontends/xforms/form_graphics.C:61
+#: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:409
 msgid "Default"
 msgstr "Standard"
 
-#: src/frontends/xforms/form_graphics.C:57
-#: src/frontends/xforms/form_graphics.C:71
+#: src/frontends/xforms/form_graphics.C:64
+#: src/frontends/xforms/form_graphics.C:80
 msgid "cm"
 msgstr "cm"
 
-#: src/frontends/xforms/form_graphics.C:59
-#: src/frontends/xforms/form_graphics.C:69
+#: src/frontends/xforms/form_graphics.C:66
+#: src/frontends/xforms/form_graphics.C:78
 msgid "Inch"
 msgstr "Tomme"
 
-#: src/frontends/xforms/form_graphics.C:61
-#, c-format
+#: src/frontends/xforms/form_graphics.C:69
+#, no-c-format
 msgid "% of Column"
 msgstr "% av kolonne"
 
-#: src/frontends/xforms/form_graphics.C:80
-#: src/frontends/xforms/form_graphics.C:81
+#: src/frontends/xforms/form_graphics.C:90
 msgid "in Monochrome|#M"
 msgstr "i svart/hvitt"
 
-#: src/frontends/xforms/form_graphics.C:83
-#: src/frontends/xforms/form_graphics.C:84
+#: src/frontends/xforms/form_graphics.C:96
 msgid "in Grayscale|#G"
 msgstr "i gråskala"
 
-#: src/frontends/xforms/form_graphics.C:85
-#: src/frontends/xforms/form_graphics.C:86
+#: src/frontends/xforms/form_graphics.C:101
 msgid "in Color|#C"
 msgstr "i farger"
 
-#: src/frontends/xforms/form_graphics.C:87
-#: src/frontends/xforms/form_graphics.C:88
+#: src/frontends/xforms/form_graphics.C:106
 msgid "Don't display|#D"
 msgstr "ikke vis"
 
-#: src/frontends/xforms/form_graphics.C:91
+#: src/frontends/xforms/form_graphics.C:112
 msgid "Rotate"
 msgstr "Roter"
 
-#: src/frontends/xforms/form_graphics.C:92
-#: src/frontends/xforms/form_graphics.C:93
+#: src/frontends/xforms/form_graphics.C:114
 msgid "Angle|#A"
 msgstr "Vinkel|#V"
 
-#: src/frontends/xforms/form_graphics.C:95
-#: src/frontends/xforms/form_graphics.C:96
+#: src/frontends/xforms/form_graphics.C:120
 msgid "Inline Figure|#I"
 msgstr ""
 
-#: src/frontends/xforms/form_graphics.C:100
-#: src/frontends/xforms/form_graphics.C:101
+#: src/frontends/xforms/form_graphics.C:128
 msgid "Subcaption|#S"
 msgstr ""
 
-#: src/frontends/xforms/form_graphics.C:104
-#: src/frontends/xforms/form_graphics.C:105 src/frontends/xforms/form_ref.C:32
-#: src/frontends/xforms/form_ref.C:33 src/frontends/xforms/form_toc.C:31
+#: src/frontends/xforms/form_graphics.C:135 src/frontends/xforms/form_ref.C:33
 #: src/frontends/xforms/form_toc.C:32
 msgid "Update|#U"
 msgstr "Oppdater|#O"
 
-#: src/frontends/xforms/form_graphics.C:108
+#: src/frontends/xforms/form_graphics.C:141
 msgid "Ok"
 msgstr "Ok"
-
-#: src/frontends/xforms/FormGraphics.C:43
-#: src/frontends/xforms/FormGraphics.C:382
-msgid "Graphics"
-msgstr "Grafikk"
-
-#: src/frontends/xforms/FormGraphics.C:377 src/insets/figinset.C:1953
-msgid "Clipart"
-msgstr "Utklippsbilder"
-
-#: src/frontends/xforms/FormGraphics.C:391
-#: src/frontends/xforms/xform_helpers.C:107 src/insets/figinset.C:1977
-#: src/insets/insetexternal.C:171
-msgid "Filename can't contain any of these characters:"
-msgstr "Filnavn kan ikke inneholde noen av disse tegnene:"
-
-#: src/frontends/xforms/FormGraphics.C:394
-#: src/frontends/xforms/xform_helpers.C:109 src/insets/figinset.C:1980
-#, no-c-format
-msgid "space, '#', '~', '$' or '%'."
-msgstr "mellomrom, '#', '~', '$' or '%'."
-
-#: src/frontends/xforms/form_index.C:29
-msgid "Keyword|#K"
-msgstr "Nøkkelord|#k"
 
 #: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
 msgid "Index"
 msgstr "Indeks"
 
-#: src/frontends/xforms/form_paragraph.C:39
-#: src/frontends/xforms/form_paragraph.C:40
-msgid "Label Width:|#d"
-msgstr "Merke bredde:|#b"
-
-#: src/frontends/xforms/form_paragraph.C:45
-msgid "Indent"
-msgstr "Innrykk"
-
-#: src/frontends/xforms/form_paragraph.C:49
-#: src/frontends/xforms/form_paragraph.C:50
-msgid "Above|#b"
-msgstr "Over|#v"
-
-#: src/frontends/xforms/form_paragraph.C:53
-#: src/frontends/xforms/form_paragraph.C:54
-msgid "Below|#E"
-msgstr "Under"
-
-#: src/frontends/xforms/form_paragraph.C:57
-#: src/frontends/xforms/form_paragraph.C:58
-msgid "Above|#o"
-msgstr "Over|#O"
-
-#: src/frontends/xforms/form_paragraph.C:61
-#: src/frontends/xforms/form_paragraph.C:62
-msgid "Below|#l"
-msgstr "Under|#U"
-
-#: src/frontends/xforms/form_paragraph.C:65
-#: src/frontends/xforms/form_paragraph.C:66
-msgid "No Indent|#I"
-msgstr "Ikke innrykk|#I"
-
-#: src/frontends/xforms/form_paragraph.C:71
-#: src/frontends/xforms/form_paragraph.C:72 src/mathed/math_forms.C:92
-msgid "Right|#R"
-msgstr "Høyre"
-
-#: src/frontends/xforms/form_paragraph.C:75
-#: src/frontends/xforms/form_paragraph.C:76
-msgid "Left|#f"
-msgstr "Venstre|#V"
-
-#: src/frontends/xforms/form_paragraph.C:79
-#: src/frontends/xforms/form_paragraph.C:80
-msgid "Block|#c"
-msgstr "Blokk|#B"
-
-#: src/frontends/xforms/form_paragraph.C:83
-#: src/frontends/xforms/form_paragraph.C:84
-#: src/frontends/xforms/form_tabular.C:158
-#: src/frontends/xforms/form_tabular.C:159
-#: src/frontends/xforms/form_tabular.C:248
-#: src/frontends/xforms/form_tabular.C:249
-msgid "Center|#n"
-msgstr "Sentrer|#n"
-
-#: src/frontends/xforms/form_paragraph.C:95
-#: src/frontends/xforms/form_paragraph.C:96
-msgid "Above:|#v"
-msgstr "Over|#e"
-
-#: src/frontends/xforms/form_paragraph.C:100
-#: src/frontends/xforms/form_paragraph.C:101
-msgid "Below:|#w"
-msgstr "Under|#r"
-
-#: src/frontends/xforms/form_paragraph.C:105
-msgid "Pagebreaks"
-msgstr "Sidebrekking"
-
-#: src/frontends/xforms/form_paragraph.C:109
-msgid "Lines"
-msgstr "Linjer"
-
-#: src/frontends/xforms/form_paragraph.C:117
-msgid "Vertical Spaces"
-msgstr "Vertikal avstand"
-
-#: src/frontends/xforms/form_paragraph.C:121
-#: src/frontends/xforms/form_paragraph.C:122
-msgid "Keep|#K"
-msgstr "Hold|#H"
-
-#: src/frontends/xforms/form_paragraph.C:125
-#: src/frontends/xforms/form_paragraph.C:126
-msgid "Keep|#p"
-msgstr "Hold|#d"
-
-#: src/frontends/xforms/form_paragraph.C:158
-msgid "Extra Options"
-msgstr "Ekstra Opsjoner"
-
-#: src/frontends/xforms/form_paragraph.C:162
-#: src/frontends/xforms/form_paragraph.C:163
-msgid "Length|#L"
-msgstr "Lengde|#L"
-
-#: src/frontends/xforms/form_paragraph.C:166
-#: src/frontends/xforms/form_paragraph.C:167
-msgid "or %|#o"
-msgstr "eller %|#e"
-
-#: src/frontends/xforms/form_paragraph.C:180
-#: src/frontends/xforms/form_paragraph.C:181
-msgid "Top|#T"
-msgstr "Topp|#T"
-
-#: src/frontends/xforms/form_paragraph.C:184
-#: src/frontends/xforms/form_paragraph.C:185
-msgid "Middle|#d"
-msgstr "Midten|#d"
-
-#: src/frontends/xforms/form_paragraph.C:188
-#: src/frontends/xforms/form_paragraph.C:189
-msgid "Bottom|#B"
-msgstr "Bunn|#B"
-
-#: src/frontends/xforms/form_paragraph.C:194
-#: src/frontends/xforms/form_paragraph.C:195
-msgid "HFill between Minipage paragraphs|#H"
-msgstr "H-fyll mellom miniside-avsnitt|#H"
-
-#: src/frontends/xforms/form_paragraph.C:198
-#: src/frontends/xforms/form_paragraph.C:199
-msgid "Start new Minipage|#S"
-msgstr "Start ny Miniside|#S"
-
-#: src/frontends/xforms/form_paragraph.C:204
-#: src/frontends/xforms/form_paragraph.C:205
-msgid "Indented Paragraph|#I"
-msgstr "Innrykket avsnitt|#I"
-
-#: src/frontends/xforms/form_paragraph.C:208
-#: src/frontends/xforms/form_paragraph.C:209
-msgid "Minipage|#M"
-msgstr "Miniside|#M"
-
-#: src/frontends/xforms/form_paragraph.C:212
-#: src/frontends/xforms/form_paragraph.C:213
-msgid "Floatflt|#F"
-msgstr "Floatflt|#F"
-
-#: src/frontends/xforms/form_paragraph.C:243
-#: src/frontends/xforms/form_paragraph.C:244
-#: src/frontends/xforms/form_preferences.C:34
-#: src/frontends/xforms/form_preferences.C:35
-#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_print.C:54
-msgid "Cancel|C#C^["
-msgstr "Avbryt|A#A^["
+#: src/frontends/xforms/form_index.C:29
+msgid "Keyword|#K"
+msgstr "Nøkkelord|#k"
 
 #: src/frontends/xforms/FormParagraph.C:33
 msgid "Paragraph Layout"
@@ -4679,10 +4477,6 @@ msgstr " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgid "General"
 msgstr "General"
 
-#: src/frontends/xforms/FormParagraph.C:148
-msgid "Paragraph layout set"
-msgstr "Avsnittstil satt"
-
 #: src/frontends/xforms/FormParagraph.C:680
 #: src/frontends/xforms/FormParagraph.C:717
 #: src/frontends/xforms/FormTabular.C:454
@@ -4695,1093 +4489,933 @@ msgstr "Advarsel: Ugyldig lengde (gyldig eksempel: 10mm)"
 msgid "Warning: Invalid percent value (0-100)"
 msgstr "Advarsel: Ugyldig prosent verdi (0-100)"
 
-#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:38
-msgid "Save"
-msgstr "Lagre"
-
-#: src/frontends/xforms/form_preferences.C:96 src/lyxfont.C:38
-msgid "Roman"
-msgstr "Roman"
-
-#: src/frontends/xforms/form_preferences.C:99
-msgid "Sans Serif"
-msgstr "Sans Serif"
-
-#: src/frontends/xforms/form_preferences.C:102 src/lyxfont.C:38
-msgid "Typewriter"
-msgstr "Skrivemaskin"
-
-#: src/frontends/xforms/form_preferences.C:105
-#: src/frontends/xforms/form_preferences.C:106
-msgid "Zoom %|#Z"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:114
-msgid "Use scalable fonts"
-msgstr "Bruk skalerbare fonter"
-
-#: src/frontends/xforms/form_preferences.C:119
-msgid "Encoding"
-msgstr "Enkoding"
-
-#: src/frontends/xforms/form_preferences.C:122
-msgid "script"
-msgstr "script"
-
-#: src/LColor.C:85 src/frontends/xforms/form_preferences.C:125
-msgid "footnote"
-msgstr "fotnote"
-
-#: src/frontends/xforms/form_preferences.C:128
-msgid "large"
-msgstr "large"
-
-#: src/frontends/xforms/form_preferences.C:131
-msgid "largest"
-msgstr "largest"
-
-#: src/frontends/xforms/form_preferences.C:134
-msgid "huge"
-msgstr "huge"
-
-#: src/frontends/xforms/form_preferences.C:137
-msgid "normal"
-msgstr "normal"
-
-#: src/frontends/xforms/form_preferences.C:140
-#: src/frontends/xforms/form_preferences.C:141
-msgid "Screen DPI|#D"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:149
-msgid "tiny"
-msgstr "tiny"
-
-#: src/frontends/xforms/form_preferences.C:152
-msgid "larger"
-msgstr "larger"
-
-#: src/frontends/xforms/form_preferences.C:155
-msgid "small"
-msgstr "small"
-
-#: src/frontends/xforms/form_preferences.C:158
-msgid "huger"
-msgstr "huger"
-
-#: src/frontends/xforms/form_preferences.C:185
-#: src/frontends/xforms/form_preferences.C:186
-msgid "Ascii line length|#A"
-msgstr "Ascii linje lengde|#A"
-
-#: src/frontends/xforms/form_preferences.C:194
-#: src/frontends/xforms/form_preferences.C:195
-msgid "TeX encoding|#T"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:198
-#: src/frontends/xforms/form_preferences.C:199
-msgid "Default paper size|#p"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:203
-#: src/frontends/xforms/form_preferences.C:204
-msgid "ascii roff|#r"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:207
-#: src/frontends/xforms/form_preferences.C:208
-msgid "checktex|#c"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:211
-msgid "Outside code interaction"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:237
-#: src/frontends/xforms/form_preferences.C:238
-msgid "Spell command|#S"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:243
-#: src/frontends/xforms/form_preferences.C:244
-msgid "Use alternative language|#a"
-msgstr "Bruk alternativt språk|#a"
-
-#: src/frontends/xforms/form_preferences.C:250
-#: src/frontends/xforms/form_preferences.C:251
-msgid "Use escape characters|#e"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:257
-#: src/frontends/xforms/form_preferences.C:258
-msgid "Use personal dictionary|#d"
-msgstr "Bruk personlig ordliste|#o"
-
-#: src/frontends/xforms/form_preferences.C:268
-#: src/frontends/xforms/form_preferences.C:269
-msgid "Accept compound words|#w"
-msgstr "Tillat sammensatte ord|s"
-
-#: src/frontends/xforms/form_preferences.C:273
-#: src/frontends/xforms/form_preferences.C:274
-msgid "Use input encoding|#i"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:301
-#: src/frontends/xforms/form_preferences.C:302
-msgid "date format|#f"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:328
-#: src/frontends/xforms/form_preferences.C:329
-msgid "Package|#P"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:332
-#: src/frontends/xforms/form_preferences.C:333
-msgid "Default language|#l"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:336
-#: src/frontends/xforms/form_preferences.C:337
-msgid ""
-"Keyboard\n"
-"map|#K"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:341
-#: src/frontends/xforms/form_preferences.C:342
-msgid "RtL support|#R"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:346
-#: src/frontends/xforms/form_preferences.C:347
-msgid "Mark foreign|#M"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:351
-#: src/frontends/xforms/form_preferences.C:352
-msgid "Auto begin|#b"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:356
-#: src/frontends/xforms/form_preferences.C:357
-msgid "Auto finish|#f"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:361
-#: src/frontends/xforms/form_preferences.C:362
-msgid "Command start|#s"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:365
-#: src/frontends/xforms/form_preferences.C:366
-msgid "Command end|#e"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:369
-#: src/frontends/xforms/form_preferences.C:370
-msgid "1st|#1"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:373
-#: src/frontends/xforms/form_preferences.C:374
-msgid "2nd|#2"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:377
-#: src/frontends/xforms/form_preferences.C:379
-msgid "Browse"
-msgstr "Se igjennom"
-
-#: src/frontends/xforms/form_preferences.C:404
-#: src/frontends/xforms/form_preferences.C:405
-msgid "Name database|#N"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:415
-#: src/frontends/xforms/form_preferences.C:416
-msgid "X11 color names|#X"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:423
-#: src/frontends/xforms/form_preferences.C:424
-msgid "LyX objects|#L"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1284
-#: src/frontends/xforms/FormPreferences.C:1286
-#: src/frontends/xforms/FormPreferences.C:1331
-#: src/frontends/xforms/FormPreferences.C:1333
-#: src/frontends/xforms/FormPreferences.C:1560
-#: src/frontends/xforms/FormPreferences.C:1561
-#: src/frontends/xforms/FormPreferences.C:1610
-#: src/frontends/xforms/FormPreferences.C:1612
-#: src/frontends/xforms/form_preferences.C:428
-#: src/frontends/xforms/form_preferences.C:429
-msgid "Modify|#M"
-msgstr "Endre|#E"
-
-#: src/frontends/xforms/form_preferences.C:432
-#: src/frontends/xforms/form_preferences.C:433
-#: src/frontends/xforms/form_ref.C:36 src/frontends/xforms/form_ref.C:37
-msgid "Sort|#S"
-msgstr "Sorter|#S"
-
-#: src/frontends/xforms/form_preferences.C:436
-#: src/frontends/xforms/form_preferences.C:437
-msgid "S|#S"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:442
-#: src/frontends/xforms/form_preferences.C:443
-msgid "V|#V"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:448
-#: src/frontends/xforms/form_preferences.C:449
-msgid "H|#H"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:452
-msgid "1"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:454
-msgid "0"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1122
-#: src/frontends/xforms/FormPreferences.C:1124
-#: src/frontends/xforms/form_preferences.C:456
-#: src/frontends/xforms/form_preferences.C:457
-msgid "Alphabet|#A"
-msgstr "Alfabet|#A"
-
-#: src/frontends/xforms/form_preferences.C:484
-#: src/frontends/xforms/form_preferences.C:485
-msgid "All converters|#A"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:489
-#: src/frontends/xforms/form_preferences.C:490
-#: src/frontends/xforms/form_preferences.C:549
-#: src/frontends/xforms/form_preferences.C:550
-msgid "Delete|#D"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1320
-#: src/frontends/xforms/FormPreferences.C:1322
-#: src/frontends/xforms/FormPreferences.C:1599
-#: src/frontends/xforms/FormPreferences.C:1601
-#: src/frontends/xforms/form_preferences.C:493
-#: src/frontends/xforms/form_preferences.C:494
-#: src/frontends/xforms/form_preferences.C:553
-#: src/frontends/xforms/form_preferences.C:554
-msgid "Add|#A"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:497
-#: src/frontends/xforms/form_preferences.C:498
-msgid "Converter|#C"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:501
-#: src/frontends/xforms/form_preferences.C:502
-msgid "From|#F"
-msgstr "Fra|#F"
-
-#: src/frontends/xforms/form_preferences.C:505
-#: src/frontends/xforms/form_preferences.C:506
-msgid "To|#T"
-msgstr "Til|#T"
-
-#: src/frontends/xforms/form_preferences.C:509
-#: src/frontends/xforms/form_preferences.C:510
-msgid "Flags|#F"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:536
-#: src/frontends/xforms/form_preferences.C:537
-msgid "All formats|#A"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:541
-#: src/frontends/xforms/form_preferences.C:542
-msgid "Format|#F"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:545
-#: src/frontends/xforms/form_preferences.C:546
-msgid "GUI name|#G"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:557
-#: src/frontends/xforms/form_preferences.C:558
-msgid "Extension|#E"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:561
-#: src/frontends/xforms/form_preferences.C:562
-msgid "Viewer|#V"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:565
-#: src/frontends/xforms/form_preferences.C:566
-msgid "Shortcut|#S"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:592
-#: src/frontends/xforms/form_preferences.C:593
-msgid "Show banner|#S"
-msgstr "Vis banner|#V"
-
-#: src/frontends/xforms/form_preferences.C:597
-#: src/frontends/xforms/form_preferences.C:598
-msgid "Auto region delete|#A"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:602
-#: src/frontends/xforms/form_preferences.C:603
-msgid "Exit confirmation|#E"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:607
-msgid "Display keyboard shortcuts"
-msgstr "Display keyboard shortcuts"
-
-#: src/frontends/xforms/form_preferences.C:611
-msgid "Autosave interval"
-msgstr "Autosave interval"
-
-#: src/frontends/xforms/form_preferences.C:619
-#: src/frontends/xforms/form_preferences.C:620
-msgid "File->New asks for name|#N"
-msgstr "File->Ny spør etter navn|#N"
-
-#: src/frontends/xforms/form_preferences.C:624
-#: src/frontends/xforms/form_preferences.C:625
-msgid "Cursor follows scrollbar|#C"
-msgstr "Markør følger scrollbar|#M"
-
-#: src/frontends/xforms/form_preferences.C:629
-msgid "Wheel mouse jump"
-msgstr "Musejulshopp"
-
-#: src/frontends/xforms/form_preferences.C:660
-msgid "Popup Font"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:663
-msgid "Menu Font"
-msgstr "Meny font"
-
-#: src/frontends/xforms/form_preferences.C:666
-msgid "Popup Encoding"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:669
-#: src/frontends/xforms/form_preferences.C:670
-msgid "Bind file|#B"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:673
-#: src/frontends/xforms/form_preferences.C:680
-#: src/frontends/xforms/form_preferences.C:794
-#: src/frontends/xforms/form_preferences.C:810
-#: src/frontends/xforms/form_preferences.C:819
-#: src/frontends/xforms/form_preferences.C:825
-#: src/frontends/xforms/form_preferences.C:837
-#: src/frontends/xforms/form_preferences.C:844
-msgid "Browse..."
-msgstr "Se igjennom..."
-
-#: src/frontends/xforms/form_preferences.C:676
-#: src/frontends/xforms/form_preferences.C:677
-msgid "User Interface file|#U"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:683
-#: src/frontends/xforms/form_preferences.C:684
-msgid "Override X-Windows dead-keys|#O"
-msgstr "Overstyr X-Windows dead-keys|#O"
-
-#: src/frontends/xforms/form_preferences.C:711
-msgid "command"
-msgstr "kommando"
-
-#: src/frontends/xforms/form_preferences.C:714
-msgid "page range"
-msgstr "page range"
-
-#: src/frontends/xforms/form_preferences.C:717
-msgid "copies"
-msgstr "kopier"
-
-#: src/frontends/xforms/form_preferences.C:720
-msgid "reverse"
-msgstr "reverse"
-
-#: src/frontends/xforms/form_preferences.C:723
-msgid "to printer"
-msgstr "til skriver"
-
-#: src/frontends/xforms/form_preferences.C:726
-msgid "file extension"
-msgstr "filekstensjon"
-
-#: src/frontends/xforms/form_preferences.C:729
-msgid "spool command"
-msgstr "spool command"
-
-#: src/frontends/xforms/form_preferences.C:732
-msgid "paper type"
-msgstr "paper type"
-
-#: src/frontends/xforms/form_preferences.C:735
-msgid "even pages"
-msgstr "even pages"
-
-#: src/frontends/xforms/form_preferences.C:738
-msgid "odd pages"
-msgstr "odd pages"
-
-#: src/frontends/xforms/form_preferences.C:741
-msgid "collated"
-msgstr "collated"
-
-#: src/frontends/xforms/form_preferences.C:747
-msgid "to file"
-msgstr "til fil"
-
-#: src/frontends/xforms/form_preferences.C:750
-msgid "extra options"
-msgstr "extra options"
-
-#: src/frontends/xforms/form_preferences.C:753
-msgid "spool printer prefix"
-msgstr "spool printer prefix"
-
-#: src/frontends/xforms/form_preferences.C:756
-msgid "paper size"
-msgstr "paper size"
-
-#: src/frontends/xforms/form_preferences.C:759
-msgid "name"
-msgstr "navn"
-
-#: src/frontends/xforms/form_preferences.C:762
-msgid "adapt output"
-msgstr "adapt output"
-
-#: src/frontends/xforms/form_preferences.C:765
-msgid "Printer Command and Flags"
-msgstr "Printerkommando og flag"
-
-#: src/frontends/xforms/form_preferences.C:790
-#: src/frontends/xforms/form_preferences.C:791
-msgid "Default path|#p"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:797
-#: src/frontends/xforms/form_preferences.C:798
-msgid "Last file count|#L"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:806
-#: src/frontends/xforms/form_preferences.C:807
-msgid "Template path|#T"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:813
-#: src/frontends/xforms/form_preferences.C:814
-msgid "Check last files|#C"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:828
-#: src/frontends/xforms/form_preferences.C:829
-msgid "Backup path|#B"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:840
-#: src/frontends/xforms/form_preferences.C:841
-msgid "LyXServer pipe|#S"
-msgstr ""
-
-#: src/frontends/xforms/form_preferences.C:850
-#: src/frontends/xforms/form_preferences.C:851
-msgid "Temp dir|#d"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:72
+#: src/frontends/xforms/form_paragraph.C:40
+msgid "Label Width:|#d"
+msgstr "Merke bredde:|#b"
+
+#: src/frontends/xforms/form_paragraph.C:48
+msgid "Indent"
+msgstr "Innrykk"
+
+#: src/frontends/xforms/form_paragraph.C:53
+msgid "Above|#b"
+msgstr "Over|#v"
+
+#: src/frontends/xforms/form_paragraph.C:60
+msgid "Below|#E"
+msgstr "Under"
+
+#: src/frontends/xforms/form_paragraph.C:67
+msgid "Above|#o"
+msgstr "Over|#O"
+
+#: src/frontends/xforms/form_paragraph.C:74
+msgid "Below|#l"
+msgstr "Under|#U"
+
+#: src/frontends/xforms/form_paragraph.C:81
+msgid "No Indent|#I"
+msgstr "Ikke innrykk|#I"
+
+#: src/frontends/xforms/form_paragraph.C:90 src/mathed/math_forms.C:92
+msgid "Right|#R"
+msgstr "Høyre"
+
+#: src/frontends/xforms/form_paragraph.C:97
+msgid "Left|#f"
+msgstr "Venstre|#V"
+
+#: src/frontends/xforms/form_paragraph.C:104
+msgid "Block|#c"
+msgstr "Blokk|#B"
+
+#: src/frontends/xforms/form_paragraph.C:111
+#: src/frontends/xforms/form_tabular.C:210
+#: src/frontends/xforms/form_tabular.C:336
+msgid "Center|#n"
+msgstr "Sentrer|#n"
+
+#: src/frontends/xforms/form_paragraph.C:126
+msgid "Above:|#v"
+msgstr "Over|#e"
+
+#: src/frontends/xforms/form_paragraph.C:134
+msgid "Below:|#w"
+msgstr "Under|#r"
+
+#: src/frontends/xforms/form_paragraph.C:141
+msgid "Pagebreaks"
+msgstr "Sidebrekking"
+
+#: src/frontends/xforms/form_paragraph.C:145
+msgid "Lines"
+msgstr "Linjer"
+
+#: src/frontends/xforms/form_paragraph.C:153
+msgid "Vertical Spaces"
+msgstr "Vertikal avstand"
+
+#: src/frontends/xforms/form_paragraph.C:158
+msgid "Keep|#K"
+msgstr "Hold|#H"
+
+#: src/frontends/xforms/form_paragraph.C:165
+msgid "Keep|#p"
+msgstr "Hold|#d"
+
+#: src/frontends/xforms/form_paragraph.C:200
+msgid "Extra Options"
+msgstr "Ekstra Opsjoner"
+
+#: src/frontends/xforms/form_paragraph.C:205
+msgid "Length|#L"
+msgstr "Lengde|#L"
+
+#: src/frontends/xforms/form_paragraph.C:213
+#, no-c-format
+msgid "or %|#o"
+msgstr "eller %|#e"
+
+#: src/frontends/xforms/form_paragraph.C:230
+msgid "Top|#T"
+msgstr "Topp|#T"
+
+#: src/frontends/xforms/form_paragraph.C:237
+msgid "Middle|#d"
+msgstr "Midten|#d"
+
+#: src/frontends/xforms/form_paragraph.C:244
+msgid "Bottom|#B"
+msgstr "Bunn|#B"
+
+#: src/frontends/xforms/form_paragraph.C:253
+msgid "HFill between Minipage paragraphs|#H"
+msgstr "H-fyll mellom miniside-avsnitt|#H"
+
+#: src/frontends/xforms/form_paragraph.C:260
+msgid "Start new Minipage|#S"
+msgstr "Start ny Miniside|#S"
+
+#: src/frontends/xforms/form_paragraph.C:269
+msgid "Indented Paragraph|#I"
+msgstr "Innrykket avsnitt|#I"
+
+#: src/frontends/xforms/form_paragraph.C:276
+msgid "Minipage|#M"
+msgstr "Miniside|#M"
+
+#: src/frontends/xforms/form_paragraph.C:283
+msgid "Floatflt|#F"
+msgstr "Floatflt|#F"
+
+#: src/frontends/xforms/form_paragraph.C:317
+#: src/frontends/xforms/form_preferences.C:38
+#: src/frontends/xforms/form_print.C:63
+msgid "Cancel|C#C^["
+msgstr "Avbryt|A#A^["
+
+#: src/frontends/xforms/FormPreferences.C:68
 msgid "Preferences"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:224
+#: src/frontends/xforms/FormPreferences.C:220
 msgid "Look & Feel"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:227
+#: src/frontends/xforms/FormPreferences.C:223
 msgid "Lang Opts"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:230
-#: src/frontends/xforms/FormPreferences.C:259
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
 msgid "Converters"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:233
+#: src/frontends/xforms/FormPreferences.C:229
 msgid "Inputs"
 msgstr "Inputs"
 
-#: src/frontends/xforms/FormPreferences.C:236
+#: src/frontends/xforms/FormPreferences.C:232
 msgid "Outputs"
 msgstr "Outputs"
 
-#: src/frontends/xforms/FormPreferences.C:242
+#: src/frontends/xforms/FormPreferences.C:238
 msgid "Screen Fonts"
 msgstr "Skjermfonter"
 
-#: src/frontends/xforms/FormPreferences.C:245
+#: src/frontends/xforms/FormPreferences.C:241
 msgid "Interface"
 msgstr "Grensesnitt"
 
-#: src/frontends/xforms/FormPreferences.C:248
+#: src/frontends/xforms/FormPreferences.C:244
 msgid "Colors"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:251
-#: src/frontends/xforms/FormPreferences.C:268
-#: src/frontends/xforms/FormPreferences.C:276 src/mathed/math_forms.C:46
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
 msgid "Misc"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:256
+#: src/frontends/xforms/FormPreferences.C:252
 msgid "Formats"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:265
+#: src/frontends/xforms/FormPreferences.C:261
 msgid "Paths"
 msgstr "Paths"
 
-#: src/frontends/xforms/FormPreferences.C:273
+#: src/frontends/xforms/FormPreferences.C:269
 msgid "Printer"
 msgstr "Skriver"
 
-#: src/frontends/xforms/FormPreferences.C:281
+#: src/frontends/xforms/FormPreferences.C:277
 msgid "Spell checker"
 msgstr "Stavekontroll"
 
-#: src/frontends/xforms/FormPreferences.C:540
-msgid ""
-"Unable to find the X11 name database, usually to be found at "
-"/usr/lib/X11/rgb.txt. Cannot modify LyX's colors until this file is input "
-"here."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:557
-msgid "The colors listed in the X11 database."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:559
+#: src/frontends/xforms/FormPreferences.C:533
 msgid "LyX objects that can be assigned a color."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:561
-msgid "The file containing the X11 color database."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:563
+#: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:566
-msgid "Sort the X11 color database alphabetically."
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:568
-msgid "Sort the X11 color database based on the currently selected color."
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:570
-msgid ""
-"Toggle between sorting alphabetically or based on the currently selected "
-"color."
+#: src/frontends/xforms/FormPreferences.C:742
+#, fuzzy
+msgid "GUI background"
+msgstr "bakgrunn"
+
+#: src/frontends/xforms/FormPreferences.C:748
+#, fuzzy
+msgid "GUI text"
+msgstr "tekst"
+
+#: src/frontends/xforms/FormPreferences.C:757
+#, fuzzy
+msgid "GUI selection"
+msgstr "merket"
+
+#: src/frontends/xforms/FormPreferences.C:763
+#, fuzzy
+msgid "GUI pointer"
+msgstr "til skriver"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:574
-msgid ""
-"Find a new color. You will only be able to modify the color of the LyX "
-"object if the X11 browser and coloured rectangle below agree. Force this by "
-"clicking on the highlighted browser name."
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:605
-msgid "X11 color database"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1127
-#: src/frontends/xforms/FormPreferences.C:1129
-msgid "Color|#C"
-msgstr "Farge:|#F"
-
-#: src/frontends/xforms/FormPreferences.C:1176
+#: src/frontends/xforms/FormPreferences.C:1004
 msgid "All the currently defined converters known to LyX."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1178
+#: src/frontends/xforms/FormPreferences.C:1006
 msgid "Convert \"from\" this format"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1180
+#: src/frontends/xforms/FormPreferences.C:1008
 msgid "Convert \"to\" this format"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1182
+#: src/frontends/xforms/FormPreferences.C:1010
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1184
+#: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1186
+#: src/frontends/xforms/FormPreferences.C:1014
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1188
-#: src/frontends/xforms/FormPreferences.C:1460
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
 msgid "Add"
 msgstr "Legg til"
 
-#: src/frontends/xforms/FormPreferences.C:1189
+#: src/frontends/xforms/FormPreferences.C:1017
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1191
+#: src/frontends/xforms/FormPreferences.C:1019
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1446
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+msgid "Modify|#M"
+msgstr "Endre|#E"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+msgid "Add|#A"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1274
 msgid "All the currently defined formats known to LyX."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1448
+#: src/frontends/xforms/FormPreferences.C:1276
 msgid "The format identifier."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1450
+#: src/frontends/xforms/FormPreferences.C:1278
 msgid "The format name as it will appear in the menus."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1452
+#: src/frontends/xforms/FormPreferences.C:1280
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1454
+#: src/frontends/xforms/FormPreferences.C:1282
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1456
+#: src/frontends/xforms/FormPreferences.C:1284
 msgid "The command used to launch the viewer application."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1458
+#: src/frontends/xforms/FormPreferences.C:1286
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1461
+#: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1463
+#: src/frontends/xforms/FormPreferences.C:1291
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1579
+#: src/frontends/xforms/FormPreferences.C:1407
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1750
+#: src/frontends/xforms/FormPreferences.C:1578
 msgid "Sys Bind"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1754
+#: src/frontends/xforms/FormPreferences.C:1582
 msgid "User Bind"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1758
+#: src/frontends/xforms/FormPreferences.C:1586
 msgid "Bind file"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1762
+#: src/frontends/xforms/FormPreferences.C:1590
 msgid "Sys UI"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1766
+#: src/frontends/xforms/FormPreferences.C:1594
 msgid "User UI"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1770
+#: src/frontends/xforms/FormPreferences.C:1598
 msgid "UI file"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1966
-#: src/frontends/xforms/FormPreferences.C:1974
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
 msgid "Key maps"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1970
-#: src/frontends/xforms/FormPreferences.C:1978
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
 msgid "Keyboard map"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2151
+#: src/frontends/xforms/FormPreferences.C:1979
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgstr " Standard | USletter | USlegal | USexecutive | A3 | A4 | A5 | B5 "
 
-#: src/frontends/xforms/FormPreferences.C:2403
+#: src/frontends/xforms/FormPreferences.C:2231
 msgid "Default path"
 msgstr "Default path"
 
-#: src/frontends/xforms/FormPreferences.C:2408
+#: src/frontends/xforms/FormPreferences.C:2236
 msgid "Template path"
 msgstr "Template path"
 
-#: src/frontends/xforms/FormPreferences.C:2413
+#: src/frontends/xforms/FormPreferences.C:2241
 msgid "Temp dir"
 msgstr "Temp dir"
 
-#: src/frontends/xforms/FormPreferences.C:2417
+#: src/frontends/xforms/FormPreferences.C:2245
 msgid "User"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2420
+#: src/frontends/xforms/FormPreferences.C:2248
 msgid "Lastfiles"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2424
+#: src/frontends/xforms/FormPreferences.C:2252
 msgid "Backup path"
 msgstr "Backup path"
 
-#: src/frontends/xforms/FormPreferences.C:2429
+#: src/frontends/xforms/FormPreferences.C:2257
 msgid "LyX Server pipes"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2873
+#: src/frontends/xforms/FormPreferences.C:2701
 msgid "Fonts must be positive!"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2896
+#: src/frontends/xforms/FormPreferences.C:2724
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:3012
+#: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
 msgstr " ingen | ispell | aspell "
 
-#: src/frontends/xforms/FormPreferences.C:3124
+#: src/frontends/xforms/FormPreferences.C:2952
 msgid "Personal dictionary"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:3180
+#: src/frontends/xforms/FormPreferences.C:3008
 msgid "WARNING!"
 msgstr ""
 
-#: src/frontends/xforms/form_print.C:36 src/frontends/xforms/form_print.C:37
-msgid "Printer|#P"
-msgstr "Skriver"
+#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
+msgid "Save"
+msgstr "Lagre"
 
-#: src/frontends/xforms/form_print.C:40 src/frontends/xforms/form_print.C:41
-#: src/lyx.C:80
-msgid "File|#F"
-msgstr "Fil"
+#: src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:38
+msgid "Roman"
+msgstr "Roman"
 
-#: src/frontends/xforms/form_print.C:59 src/frontends/xforms/form_print.C:60
-msgid "All Pages|#G"
-msgstr "Alle sidene"
+#: src/frontends/xforms/form_preferences.C:108
+msgid "Sans Serif"
+msgstr "Sans Serif"
 
-#: src/frontends/xforms/form_print.C:63 src/frontends/xforms/form_print.C:64
-msgid "Only Odd Pages|#O"
-msgstr "Bare odde sider"
+#: src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:38
+msgid "Typewriter"
+msgstr "Skrivemaskin"
 
-#: src/frontends/xforms/form_print.C:67 src/frontends/xforms/form_print.C:68
-msgid "Only Even Pages|#E"
-msgstr "Bare like sider"
-
-#: src/frontends/xforms/form_print.C:75 src/frontends/xforms/form_print.C:76
-msgid "Normal Order|#N"
-msgstr "Normal rekkefølge"
-
-#: src/frontends/xforms/form_print.C:79 src/frontends/xforms/form_print.C:80
-msgid "Reverse Order|#R"
-msgstr "Omvent rekkefølge"
-
-#: src/frontends/xforms/form_print.C:85
-msgid "Pages:"
-msgstr "Sider: "
-
-#: src/frontends/xforms/form_print.C:89
-msgid "Count:"
-msgstr "Antall:"
-
-#: src/frontends/xforms/form_print.C:93 src/frontends/xforms/form_print.C:94
-msgid "Collated|#C"
+#: src/frontends/xforms/form_preferences.C:116
+#, no-c-format
+msgid "Zoom %|#Z"
 msgstr ""
 
-#: src/frontends/xforms/form_print.C:97
-msgid "to"
-msgstr "til"
+#: src/frontends/xforms/form_preferences.C:127
+msgid "Use scalable fonts"
+msgstr "Bruk skalerbare fonter"
+
+#: src/frontends/xforms/form_preferences.C:132
+msgid "Encoding"
+msgstr "Enkoding"
+
+#: src/frontends/xforms/form_preferences.C:135
+msgid "script"
+msgstr "script"
+
+#: src/LColor.C:85 src/frontends/xforms/form_preferences.C:138
+msgid "footnote"
+msgstr "fotnote"
+
+#: src/frontends/xforms/form_preferences.C:141
+msgid "large"
+msgstr "large"
+
+#: src/frontends/xforms/form_preferences.C:144
+msgid "largest"
+msgstr "largest"
+
+#: src/frontends/xforms/form_preferences.C:147
+msgid "huge"
+msgstr "huge"
+
+#: src/frontends/xforms/form_preferences.C:150
+msgid "normal"
+msgstr "normal"
+
+#: src/frontends/xforms/form_preferences.C:154
+msgid "Screen DPI|#D"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:165
+msgid "tiny"
+msgstr "tiny"
+
+#: src/frontends/xforms/form_preferences.C:168
+msgid "larger"
+msgstr "larger"
+
+#: src/frontends/xforms/form_preferences.C:171
+msgid "small"
+msgstr "small"
+
+#: src/frontends/xforms/form_preferences.C:174
+msgid "huger"
+msgstr "huger"
+
+#: src/frontends/xforms/form_preferences.C:202
+msgid "Ascii line length|#A"
+msgstr "Ascii linje lengde|#A"
+
+#: src/frontends/xforms/form_preferences.C:214
+msgid "TeX encoding|#T"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:221
+msgid "Default paper size|#p"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:229
+msgid "ascii roff|#r"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:236
+msgid "checktex|#c"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:242
+msgid "Outside code interaction"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:269
+msgid "Spell command|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:278
+msgid "Use alternative language|#a"
+msgstr "Bruk alternativt språk|#a"
+
+#: src/frontends/xforms/form_preferences.C:288
+msgid "Use escape characters|#e"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:298
+msgid "Use personal dictionary|#d"
+msgstr "Bruk personlig ordliste|#o"
+
+#: src/frontends/xforms/form_preferences.C:315
+msgid "Accept compound words|#w"
+msgstr "Tillat sammensatte ord|s"
+
+#: src/frontends/xforms/form_preferences.C:323
+msgid "Use input encoding|#i"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:354
+msgid "date format|#f"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:384
+msgid "Package|#P"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:391
+msgid "Default language|#l"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:398
+msgid ""
+"Keyboard\n"
+"map|#K"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:406
+msgid "RtL support|#R"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:414
+msgid "Mark foreign|#M"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:422
+msgid "Auto begin|#b"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:430
+msgid "Auto finish|#f"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:438
+msgid "Command start|#s"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:445
+msgid "Command end|#e"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:452
+msgid "1st|#1"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:459
+msgid "2nd|#2"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:465
+#: src/frontends/xforms/form_preferences.C:467
+msgid "Browse"
+msgstr "Se igjennom"
+
+#: src/frontends/xforms/form_preferences.C:496
+msgid "LyX objects|#L"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:511
+msgid "S|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:520
+msgid "V|#V"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:529
+msgid "H|#H"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:536
+#, fuzzy
+msgid "R|#R"
+msgstr "Høyre"
+
+#: src/frontends/xforms/form_preferences.C:545
+#, fuzzy
+msgid "B|#B"
+msgstr "Se igjennom|#S"
+
+#: src/frontends/xforms/form_preferences.C:554
+msgid "G|#G"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:592
+msgid "All converters|#A"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:600
+#: src/frontends/xforms/form_preferences.C:687
+msgid "Delete|#D"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:614
+msgid "Converter|#C"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:621
+msgid "From|#F"
+msgstr "Fra|#F"
+
+#: src/frontends/xforms/form_preferences.C:628
+msgid "To|#T"
+msgstr "Til|#T"
+
+#: src/frontends/xforms/form_preferences.C:635
+msgid "Flags|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:665
+msgid "All formats|#A"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:673
+msgid "Format|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:680
+msgid "GUI name|#G"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:701
+msgid "Extension|#E"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:708
+msgid "Viewer|#V"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:715
+msgid "Shortcut|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:745
+msgid "Show banner|#S"
+msgstr "Vis banner|#V"
+
+#: src/frontends/xforms/form_preferences.C:753
+msgid "Auto region delete|#A"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:761
+msgid "Exit confirmation|#E"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:768
+msgid "Display keyboard shortcuts"
+msgstr "Display keyboard shortcuts"
+
+#: src/frontends/xforms/form_preferences.C:772
+msgid "Autosave interval"
+msgstr "Autosave interval"
+
+#: src/frontends/xforms/form_preferences.C:781
+msgid "File->New asks for name|#N"
+msgstr "File->Ny spør etter navn|#N"
+
+#: src/frontends/xforms/form_preferences.C:789
+msgid "Cursor follows scrollbar|#C"
+msgstr "Markør følger scrollbar|#M"
+
+#: src/frontends/xforms/form_preferences.C:796
+msgid "Wheel mouse jump"
+msgstr "Musejulshopp"
+
+#: src/frontends/xforms/form_preferences.C:827
+msgid "Popup Font"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:830
+msgid "Menu Font"
+msgstr "Meny font"
+
+#: src/frontends/xforms/form_preferences.C:833
+msgid "Popup Encoding"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:837
+msgid "Bind file|#B"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:843
+#: src/frontends/xforms/form_preferences.C:853
+#: src/frontends/xforms/form_preferences.C:973
+#: src/frontends/xforms/form_preferences.C:995
+#: src/frontends/xforms/form_preferences.C:1007
+#: src/frontends/xforms/form_preferences.C:1013
+#: src/frontends/xforms/form_preferences.C:1028
+#: src/frontends/xforms/form_preferences.C:1038
+msgid "Browse..."
+msgstr "Se igjennom..."
+
+#: src/frontends/xforms/form_preferences.C:847
+msgid "User Interface file|#U"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:857
+msgid "Override X-Windows dead-keys|#O"
+msgstr "Overstyr X-Windows dead-keys|#O"
+
+#: src/frontends/xforms/form_preferences.C:887
+msgid "command"
+msgstr "kommando"
+
+#: src/frontends/xforms/form_preferences.C:890
+msgid "page range"
+msgstr "page range"
+
+#: src/frontends/xforms/form_preferences.C:893
+msgid "copies"
+msgstr "kopier"
+
+#: src/frontends/xforms/form_preferences.C:896
+msgid "reverse"
+msgstr "reverse"
+
+#: src/frontends/xforms/form_preferences.C:899
+msgid "to printer"
+msgstr "til skriver"
+
+#: src/frontends/xforms/form_preferences.C:902
+msgid "file extension"
+msgstr "filekstensjon"
+
+#: src/frontends/xforms/form_preferences.C:905
+msgid "spool command"
+msgstr "spool command"
+
+#: src/frontends/xforms/form_preferences.C:908
+msgid "paper type"
+msgstr "paper type"
+
+#: src/frontends/xforms/form_preferences.C:911
+msgid "even pages"
+msgstr "even pages"
+
+#: src/frontends/xforms/form_preferences.C:914
+msgid "odd pages"
+msgstr "odd pages"
+
+#: src/frontends/xforms/form_preferences.C:917
+msgid "collated"
+msgstr "collated"
+
+#: src/frontends/xforms/form_preferences.C:923
+msgid "to file"
+msgstr "til fil"
+
+#: src/frontends/xforms/form_preferences.C:926
+msgid "extra options"
+msgstr "extra options"
+
+#: src/frontends/xforms/form_preferences.C:929
+msgid "spool printer prefix"
+msgstr "spool printer prefix"
+
+#: src/frontends/xforms/form_preferences.C:932
+msgid "paper size"
+msgstr "paper size"
+
+#: src/frontends/xforms/form_preferences.C:935
+msgid "name"
+msgstr "navn"
+
+#: src/frontends/xforms/form_preferences.C:938
+msgid "adapt output"
+msgstr "adapt output"
+
+#: src/frontends/xforms/form_preferences.C:941
+msgid "Printer Command and Flags"
+msgstr "Printerkommando og flag"
+
+#: src/frontends/xforms/form_preferences.C:967
+msgid "Default path|#p"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:977
+msgid "Last file count|#L"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:989
+msgid "Template path|#T"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:999
+msgid "Check last files|#C"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:1017
+msgid "Backup path|#B"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:1032
+msgid "LyXServer pipe|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:1045
+msgid "Temp dir|#d"
+msgstr ""
 
 #: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
-#: src/frontends/xforms/form_print.C:99
+#: src/frontends/xforms/form_print.C:129
 msgid "Print"
 msgstr "Skriv ut"
 
-#: src/frontends/xforms/form_print.C:102
+#: src/frontends/xforms/form_print.C:37
+msgid "Printer|#P"
+msgstr "Skriver"
+
+#: src/frontends/xforms/form_print.C:44 src/lyx.C:80
+msgid "File|#F"
+msgstr "Fil"
+
+#: src/frontends/xforms/form_print.C:72
+msgid "All Pages|#G"
+msgstr "Alle sidene"
+
+#: src/frontends/xforms/form_print.C:79
+msgid "Only Odd Pages|#O"
+msgstr "Bare odde sider"
+
+#: src/frontends/xforms/form_print.C:86
+msgid "Only Even Pages|#E"
+msgstr "Bare like sider"
+
+#: src/frontends/xforms/form_print.C:97
+msgid "Normal Order|#N"
+msgstr "Normal rekkefølge"
+
+#: src/frontends/xforms/form_print.C:104
+msgid "Reverse Order|#R"
+msgstr "Omvent rekkefølge"
+
+#: src/frontends/xforms/form_print.C:112
+msgid "Pages:"
+msgstr "Sider: "
+
+#: src/frontends/xforms/form_print.C:116
+msgid "Count:"
+msgstr "Antall:"
+
+#: src/frontends/xforms/form_print.C:121
+msgid "Collated|#C"
+msgstr ""
+
+#: src/frontends/xforms/form_print.C:127
+msgid "to"
+msgstr "til"
+
+#: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Rekkefølge"
-
-#: src/frontends/xforms/form_ref.C:41 src/frontends/xforms/form_ref.C:42
-msgid "Name:|#N"
-msgstr "Navn:|#N"
-
-#: src/frontends/xforms/form_ref.C:44
-msgid "Ref:"
-msgstr "Ref:"
-
-#: src/frontends/xforms/form_ref.C:46 src/frontends/xforms/form_ref.C:47
-msgid "Reference type|#R"
-msgstr "Referansetype|#R"
-
-#: src/frontends/xforms/form_ref.C:52 src/frontends/xforms/form_ref.C:53
-msgid "Goto reference|#G"
-msgstr "Goto reference|#G"
 
 #: src/frontends/xforms/FormRef.C:72
 msgid " Ref | Page | TextRef | TextPage | PrettyRef "
 msgstr " Ref | Page | TextRef | TextPage | PrettyRef "
 
-#: src/frontends/xforms/form_tabular.C:30
-#: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
-#: src/insets/insetinfo.C:221
-msgid "Close|#C^["
-msgstr "Lukk|#L^["
+#: src/frontends/xforms/form_ref.C:40
+msgid "Sort|#S"
+msgstr "Sorter|#S"
 
-#: src/frontends/xforms/form_tabular.C:67
-#: src/frontends/xforms/form_tabular.C:68
-msgid "Append Column|#A"
-msgstr "Legg til kolonne|#k"
+#: src/frontends/xforms/form_ref.C:48
+msgid "Name:|#N"
+msgstr "Navn:|#N"
 
-#: src/frontends/xforms/form_tabular.C:71
-#: src/frontends/xforms/form_tabular.C:72
-msgid "Delete Column|#O"
-msgstr "Slett kolonne|#S"
+#: src/frontends/xforms/form_ref.C:53
+msgid "Ref:"
+msgstr "Ref:"
 
-#: src/frontends/xforms/form_tabular.C:75
-#: src/frontends/xforms/form_tabular.C:76
-msgid "Append Row|#p"
-msgstr "Legg til rad|#r"
+#: src/frontends/xforms/form_ref.C:56
+msgid "Reference type|#R"
+msgstr "Referansetype|#R"
 
-#: src/frontends/xforms/form_tabular.C:79
-#: src/frontends/xforms/form_tabular.C:80
-msgid "Delete Row|#w"
-msgstr "Slett rad|#l"
-
-#: src/frontends/xforms/form_tabular.C:83
-#: src/frontends/xforms/form_tabular.C:84
-msgid "Set Borders|#S"
-msgstr "Set kanter|#n"
-
-#: src/frontends/xforms/form_tabular.C:87
-#: src/frontends/xforms/form_tabular.C:88
-msgid "Unset Borders|#U"
-msgstr "Slå av kanter|#v"
-
-#: src/frontends/xforms/form_tabular.C:91
-#: src/frontends/xforms/form_tabular.C:92
-msgid "Longtable|#L"
-msgstr "Lang tabell|#L"
-
-#: src/frontends/xforms/form_tabular.C:94
-#: src/frontends/xforms/form_tabular.C:95
-#: src/frontends/xforms/form_tabular.C:277
-#: src/frontends/xforms/form_tabular.C:278
-msgid "Rotate 90°|#9"
-msgstr "Roter 90°|#9"
-
-#: src/frontends/xforms/form_tabular.C:97
-msgid "Spec. Table"
-msgstr "Spesielt: Tabell"
-
-#: src/frontends/xforms/form_tabular.C:122
-#: src/frontends/xforms/form_tabular.C:123
-#: src/frontends/xforms/form_tabular.C:212
-#: src/frontends/xforms/form_tabular.C:213
-msgid "Top|#t"
-msgstr "Top|#t"
-
-#: src/frontends/xforms/form_tabular.C:127
-#: src/frontends/xforms/form_tabular.C:128
-#: src/frontends/xforms/form_tabular.C:217
-#: src/frontends/xforms/form_tabular.C:218
-msgid "Bottom|#b"
-msgstr "Bottom|#b"
-
-#: src/frontends/xforms/form_tabular.C:132
-#: src/frontends/xforms/form_tabular.C:133
-#: src/frontends/xforms/form_tabular.C:222
-#: src/frontends/xforms/form_tabular.C:223
-msgid "Left|#l"
-msgstr "Left|#l"
-
-#: src/frontends/xforms/form_tabular.C:137
-#: src/frontends/xforms/form_tabular.C:138
-#: src/frontends/xforms/form_tabular.C:227
-#: src/frontends/xforms/form_tabular.C:228
-msgid "Right|#r"
-msgstr "Right|#r"
-
-#: src/frontends/xforms/form_tabular.C:142
-#: src/frontends/xforms/form_tabular.C:143
-#: src/frontends/xforms/form_tabular.C:232
-#: src/frontends/xforms/form_tabular.C:233
-msgid "Left|#e"
-msgstr "Left|#e"
-
-#: src/frontends/xforms/form_tabular.C:146
-#: src/frontends/xforms/form_tabular.C:147
-#: src/frontends/xforms/form_tabular.C:236
-#: src/frontends/xforms/form_tabular.C:237
-msgid "Right|#i"
-msgstr "Høyre|#y"
-
-#: src/frontends/xforms/form_tabular.C:150
-#: src/frontends/xforms/form_tabular.C:151
-#: src/frontends/xforms/form_tabular.C:240
-#: src/frontends/xforms/form_tabular.C:241
-msgid "Center|#c"
-msgstr "Center|#c"
-
-#: src/frontends/xforms/form_tabular.C:154
-#: src/frontends/xforms/form_tabular.C:155
-#: src/frontends/xforms/form_tabular.C:244
-#: src/frontends/xforms/form_tabular.C:245
-msgid "Top|#p"
-msgstr "Top|#p"
-
-#: src/frontends/xforms/form_tabular.C:162
-#: src/frontends/xforms/form_tabular.C:163
-#: src/frontends/xforms/form_tabular.C:252
-#: src/frontends/xforms/form_tabular.C:253
-msgid "Bottom|#o"
-msgstr "Bottom|#o"
-
-#: src/frontends/xforms/form_tabular.C:166
-#: src/frontends/xforms/form_tabular.C:256
-msgid "Borders"
-msgstr "Kanter"
-
-#: src/frontends/xforms/form_tabular.C:169
-#: src/frontends/xforms/form_tabular.C:259
-msgid "H. Alignment"
-msgstr "H. Alignment"
-
-#: src/frontends/xforms/form_tabular.C:172
-#: src/frontends/xforms/form_tabular.C:262
-msgid "V. Alignment"
-msgstr "V. Alignment"
-
-#: src/frontends/xforms/form_tabular.C:175
-#: src/frontends/xforms/form_tabular.C:176
-#: src/frontends/xforms/form_tabular.C:265
-#: src/frontends/xforms/form_tabular.C:266
-msgid "Width|#W"
-msgstr "Bredde|#B"
-
-#: src/frontends/xforms/form_tabular.C:180
-#: src/frontends/xforms/form_tabular.C:181
-#: src/frontends/xforms/form_tabular.C:268
-#: src/frontends/xforms/form_tabular.C:269
-msgid "Alignment|#A"
-msgstr "Justering|#J"
-
-#: src/frontends/xforms/form_tabular.C:185
-msgid "Special column"
-msgstr "Spesialkolonne"
-
-#: src/frontends/xforms/form_tabular.C:271
-#: src/frontends/xforms/form_tabular.C:272
-msgid "Multicolumn|#M"
-msgstr "Multikolonne|#M"
-
-#: src/frontends/xforms/form_tabular.C:274
-#: src/frontends/xforms/form_tabular.C:275
-msgid "Use Minipage|#s"
-msgstr "Use Minipage|#s"
-
-#: src/frontends/xforms/form_tabular.C:280
-msgid "Special Cell"
-msgstr "Spesial Celle"
-
-#: src/frontends/xforms/form_tabular.C:283
-msgid "Special Multicolumn"
-msgstr "Spesial Multikolonne"
-
-#: src/frontends/xforms/form_tabular.C:309
-#: src/frontends/xforms/form_tabular.C:310
-msgid "1st Head|#1"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:312
-#: src/frontends/xforms/form_tabular.C:313
-msgid "Head|#H"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:315
-#: src/frontends/xforms/form_tabular.C:316
-msgid "Foot|#F"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:318
-#: src/frontends/xforms/form_tabular.C:319
-msgid "Last Foot|#L"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:321
-#: src/frontends/xforms/form_tabular.C:322
-msgid "New Page|#N"
-msgstr "Ny side|#N"
-
-#: src/frontends/xforms/form_tabular.C:324
-msgid "Header"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:327
-msgid "Footer"
-msgstr ""
-
-#: src/frontends/xforms/form_tabular.C:330
-msgid "Special"
-msgstr ""
+#: src/frontends/xforms/form_ref.C:65
+msgid "Goto reference|#G"
+msgstr "Goto reference|#G"
 
 #: src/frontends/xforms/FormTabular.C:26
 msgid "Tabular Layout"
@@ -5807,95 +5441,270 @@ msgstr "LongTable"
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr "Advarsel: Feil markør posisjon, oppdaterte vindu"
 
-#: src/frontends/xforms/form_tabular_create.C:39
-msgid "Columns"
-msgstr "Kolonner"
+#: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
+#: src/insets/insetinfo.C:221
+msgid "Close|#C^["
+msgstr "Lukk|#L^["
 
-#: src/frontends/xforms/form_tabular_create.C:43 src/mathed/math_forms.C:133
-msgid "Rows"
-msgstr "Rader"
+#: src/frontends/xforms/form_tabular.C:71
+msgid "Append Column|#A"
+msgstr "Legg til kolonne|#k"
+
+#: src/frontends/xforms/form_tabular.C:78
+msgid "Delete Column|#O"
+msgstr "Slett kolonne|#S"
+
+#: src/frontends/xforms/form_tabular.C:85
+msgid "Append Row|#p"
+msgstr "Legg til rad|#r"
+
+#: src/frontends/xforms/form_tabular.C:92
+msgid "Delete Row|#w"
+msgstr "Slett rad|#l"
+
+#: src/frontends/xforms/form_tabular.C:99
+msgid "Set Borders|#S"
+msgstr "Set kanter|#n"
+
+#: src/frontends/xforms/form_tabular.C:106
+msgid "Unset Borders|#U"
+msgstr "Slå av kanter|#v"
+
+#: src/frontends/xforms/form_tabular.C:113
+msgid "Longtable|#L"
+msgstr "Lang tabell|#L"
+
+#: src/frontends/xforms/form_tabular.C:119
+#: src/frontends/xforms/form_tabular.C:383
+msgid "Rotate 90°|#9"
+msgstr "Roter 90°|#9"
+
+#: src/frontends/xforms/form_tabular.C:124
+msgid "Spec. Table"
+msgstr "Spesielt: Tabell"
+
+#: src/frontends/xforms/form_tabular.C:150
+#: src/frontends/xforms/form_tabular.C:276
+msgid "Top|#t"
+msgstr "Top|#t"
+
+#: src/frontends/xforms/form_tabular.C:158
+#: src/frontends/xforms/form_tabular.C:284
+msgid "Bottom|#b"
+msgstr "Bottom|#b"
+
+#: src/frontends/xforms/form_tabular.C:166
+#: src/frontends/xforms/form_tabular.C:292
+msgid "Left|#l"
+msgstr "Left|#l"
+
+#: src/frontends/xforms/form_tabular.C:174
+#: src/frontends/xforms/form_tabular.C:300
+msgid "Right|#r"
+msgstr "Right|#r"
+
+#: src/frontends/xforms/form_tabular.C:182
+#: src/frontends/xforms/form_tabular.C:308
+msgid "Left|#e"
+msgstr "Left|#e"
+
+#: src/frontends/xforms/form_tabular.C:189
+#: src/frontends/xforms/form_tabular.C:315
+msgid "Right|#i"
+msgstr "Høyre|#y"
+
+#: src/frontends/xforms/form_tabular.C:196
+#: src/frontends/xforms/form_tabular.C:322
+msgid "Center|#c"
+msgstr "Center|#c"
+
+#: src/frontends/xforms/form_tabular.C:203
+#: src/frontends/xforms/form_tabular.C:329
+msgid "Top|#p"
+msgstr "Top|#p"
+
+#: src/frontends/xforms/form_tabular.C:217
+#: src/frontends/xforms/form_tabular.C:343
+msgid "Bottom|#o"
+msgstr "Bottom|#o"
+
+#: src/frontends/xforms/form_tabular.C:223
+#: src/frontends/xforms/form_tabular.C:349
+msgid "Borders"
+msgstr "Kanter"
+
+#: src/frontends/xforms/form_tabular.C:226
+#: src/frontends/xforms/form_tabular.C:352
+msgid "H. Alignment"
+msgstr "H. Alignment"
+
+#: src/frontends/xforms/form_tabular.C:229
+#: src/frontends/xforms/form_tabular.C:355
+msgid "V. Alignment"
+msgstr "V. Alignment"
+
+#: src/frontends/xforms/form_tabular.C:233
+#: src/frontends/xforms/form_tabular.C:359
+msgid "Width|#W"
+msgstr "Bredde|#B"
+
+#: src/frontends/xforms/form_tabular.C:241
+#: src/frontends/xforms/form_tabular.C:365
+msgid "Alignment|#A"
+msgstr "Justering|#J"
+
+#: src/frontends/xforms/form_tabular.C:248
+msgid "Special column"
+msgstr "Spesialkolonne"
+
+#: src/frontends/xforms/form_tabular.C:371
+msgid "Multicolumn|#M"
+msgstr "Multikolonne|#M"
+
+#: src/frontends/xforms/form_tabular.C:377
+msgid "Use Minipage|#s"
+msgstr "Use Minipage|#s"
+
+#: src/frontends/xforms/form_tabular.C:388
+msgid "Special Cell"
+msgstr "Spesial Celle"
+
+#: src/frontends/xforms/form_tabular.C:391
+msgid "Special Multicolumn"
+msgstr "Spesial Multikolonne"
+
+#: src/frontends/xforms/form_tabular.C:418
+msgid "1st Head|#1"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:424
+msgid "Head|#H"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:430
+msgid "Foot|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:436
+msgid "Last Foot|#L"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:442
+msgid "New Page|#N"
+msgstr "Ny side|#N"
+
+#: src/frontends/xforms/form_tabular.C:447
+msgid "Header"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:450
+msgid "Footer"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:453
+msgid "Special"
+msgstr ""
 
 #: src/frontends/xforms/FormTabularCreate.C:30
 msgid "Insert Tabular"
 msgstr "Sett inn tabell"
 
-#: src/frontends/xforms/form_toc.C:36 src/frontends/xforms/form_toc.C:37
-msgid "Type|#T"
-msgstr ""
-
 #: src/frontends/xforms/FormToc.C:71
 msgid " TOC | LOF | LOT | LOA "
 msgstr " TOC | LOF | LOT | LOA "
 
-#: src/frontends/xforms/form_url.C:28 src/frontends/xforms/form_url.C:29
-msgid "URL|#U"
-msgstr "URL|#U"
-
-#: src/frontends/xforms/form_url.C:34 src/frontends/xforms/form_url.C:35
-msgid "Name|#N"
-msgstr "Navn|#N"
-
-#: src/frontends/xforms/form_url.C:40 src/frontends/xforms/form_url.C:41
-msgid "HTML type|#H"
-msgstr "HTML type|#H"
+#: src/frontends/xforms/form_toc.C:40
+msgid "Type|#T"
+msgstr ""
 
 #: src/frontends/xforms/FormUrl.C:29
 msgid "Url"
 msgstr "Url"
 
-#: src/frontends/xforms/Menubar_pimpl.C:245
+#: src/frontends/xforms/form_url.C:29
+msgid "URL|#U"
+msgstr "URL|#U"
+
+#: src/frontends/xforms/form_url.C:38
+msgid "Name|#N"
+msgstr "Navn|#N"
+
+#: src/frontends/xforms/form_url.C:47
+msgid "HTML type|#H"
+msgstr "HTML type|#H"
+
+#: src/frontends/xforms/input_validators.C:102
+#, fuzzy
+msgid "ERROR!  Unable to print!"
+msgstr "Kan ikke lese skrive ut!"
+
+#: src/frontends/xforms/input_validators.C:103
+msgid "Check 'range of pages'!"
+msgstr ""
+
+#: src/frontends/xforms/Menubar_pimpl.C:257
 msgid "More"
 msgstr "More"
 
-#: src/frontends/xforms/Menubar_pimpl.C:285
+#: src/frontends/xforms/Menubar_pimpl.C:298
 #, no-c-format
 msgid "List of Figures%m"
 msgstr "Figurliste%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:287
+#: src/frontends/xforms/Menubar_pimpl.C:300
 #, no-c-format
 msgid "List of Tables%m"
 msgstr "Liste over tabeller%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:289
+#: src/frontends/xforms/Menubar_pimpl.C:302
 #, no-c-format
 msgid "List of Algorithms%m"
 msgstr "Liste over algoritmer%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:326
+#: src/frontends/xforms/Menubar_pimpl.C:339
 #, c-format
 msgid "No Table of Contents%i"
 msgstr "No Table of Contents%i"
 
-#: src/frontends/xforms/Menubar_pimpl.C:403
+#: src/frontends/xforms/Menubar_pimpl.C:417
 #, no-c-format
 msgid "Insert Reference%m"
 msgstr "Sett inn referanse%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:405
+#: src/frontends/xforms/Menubar_pimpl.C:419
 #, no-c-format
 msgid "Insert Page Number%m"
 msgstr "Sett inn sidetall%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:407
+#: src/frontends/xforms/Menubar_pimpl.C:421
 #, no-c-format
 msgid "Insert vref%m"
 msgstr "Sett inn vref%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:409
+#: src/frontends/xforms/Menubar_pimpl.C:423
 #, no-c-format
 msgid "Insert vpageref%m"
 msgstr "Sett inn vpageref%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:411
+#: src/frontends/xforms/Menubar_pimpl.C:425
 #, no-c-format
 msgid "Insert Pretty Ref%m"
 msgstr "Sett inn pretty ref%m"
 
-#: src/frontends/xforms/Menubar_pimpl.C:413
+#: src/frontends/xforms/Menubar_pimpl.C:427
 #, no-c-format
 msgid "Goto Reference%m"
 msgstr "Gå til kryssreferansse%m"
+
+#: src/frontends/xforms/xform_helpers.C:108 src/insets/figinset.C:1983
+#: src/insets/insetexternal.C:171
+msgid "Filename can't contain any of these characters:"
+msgstr "Filnavn kan ikke inneholde noen av disse tegnene:"
+
+#: src/frontends/xforms/xform_helpers.C:110 src/insets/figinset.C:1986
+#, no-c-format
+msgid "space, '#', '~', '$' or '%'."
+msgstr "mellomrom, '#', '~', '$' or '%'."
 
 #: src/frontends/xforms/xform_helpers.C:217
 #: src/frontends/xforms/xform_helpers.C:241
@@ -5963,48 +5772,48 @@ msgstr "Ingen informasjon om importering fra "
 msgid "imported."
 msgstr "importert."
 
-#: src/insets/figinset.C:1019
+#: src/insets/figinset.C:1025
 msgid "[render error]"
 msgstr "[rendre feil]"
 
-#: src/insets/figinset.C:1020
+#: src/insets/figinset.C:1026
 msgid "[rendering ... ]"
 msgstr "[rendrer ...]"
 
-#: src/insets/figinset.C:1023
+#: src/insets/figinset.C:1029
 msgid "[no file]"
 msgstr "[ingen fil]"
 
-#: src/insets/figinset.C:1025
+#: src/insets/figinset.C:1031
 msgid "[bad file name]"
 msgstr "[feil med filnavn]"
 
-#: src/insets/figinset.C:1027
+#: src/insets/figinset.C:1033
 msgid "[not displayed]"
 msgstr "[ikke vist]"
 
-#: src/insets/figinset.C:1029
+#: src/insets/figinset.C:1035
 msgid "[no ghostscript]"
 msgstr "[ingen ghostscript]"
 
-#: src/insets/figinset.C:1031
+#: src/insets/figinset.C:1037
 msgid "[unknown error]"
 msgstr "[ukjent feil]"
 
-#: src/insets/figinset.C:1204
+#: src/insets/figinset.C:1210
 msgid "Opened figure"
 msgstr "Åpnet figur"
 
-#: src/insets/figinset.C:1232
+#: src/insets/figinset.C:1238
 msgid "Figure"
 msgstr "Figur"
 
-#: src/insets/figinset.C:1321 src/insets/figinset.C:1384
+#: src/insets/figinset.C:1327 src/insets/figinset.C:1390
 #: src/insets/insetgraphics.C:488
 msgid "empty figure path"
 msgstr "tom figur filsti"
 
-#: src/insets/figinset.C:1960 src/insets/figinset.C:1964
+#: src/insets/figinset.C:1966 src/insets/figinset.C:1970
 msgid "EPS Figure"
 msgstr "EPS Figur"
 
@@ -6043,7 +5852,7 @@ msgstr "BibTeX"
 msgid "Opened inset"
 msgstr "Åpnet inset"
 
-#: src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1395
+#: src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1438
 msgid "Error"
 msgstr "Feil"
 
@@ -6059,7 +5868,7 @@ msgstr "ERT"
 msgid "Opened ERT Inset"
 msgstr "Åpnet ERT inset"
 
-#: src/insets/insetert.C:65 src/insets/insettabular.C:1545
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1569
 msgid "Impossible Operation!"
 msgstr "Umulig operasjon!"
 
@@ -6080,7 +5889,7 @@ msgstr "'#', '~', '$' or '%'."
 msgid "Insert external inset"
 msgstr "Insert external inset"
 
-#: src/insets/insetexternal.C:420
+#: src/insets/insetexternal.C:422
 msgid "External"
 msgstr "External"
 
@@ -6150,8 +5959,8 @@ msgid "Use include|#U"
 msgstr "Bruk include|#c"
 
 #. launches dialog
-#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:2976
-#: src/lyxfunc.C:3078 src/lyxfunc.C:3134 src/lyxfunc.C:3210
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3042
+#: src/lyxfunc.C:3144 src/lyxfunc.C:3200 src/lyxfunc.C:3276
 msgid "Documents"
 msgstr "Dokumenter"
 
@@ -6179,7 +5988,7 @@ msgstr "Ind"
 msgid "Opened note"
 msgstr "Åpnet notis"
 
-#: src/insets/insetlabel.C:49
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1070
 msgid "Enter label:"
 msgstr "Sett inn referanse merke:"
 
@@ -6215,7 +6024,7 @@ msgstr "Hoveddokument:"
 msgid "Opened Tabular Inset"
 msgstr "Åpnet tabellinset"
 
-#: src/insets/insettabular.C:1546
+#: src/insets/insettabular.C:1570
 msgid "Multicolumns can only be horizontally."
 msgstr "Multikolonner kan bare være horisontale."
 
@@ -6223,19 +6032,19 @@ msgstr "Multikolonner kan bare være horisontale."
 msgid "Opened Text Inset"
 msgstr "Åpnet text inset"
 
-#: src/insets/insettext.C:939
+#: src/insets/insettext.C:947
 msgid "Cannot include more than one paragraph!"
 msgstr "Kan ikke inkludere mer enn ett avsnitt!"
 
-#: src/insets/insettext.C:999 src/lyxfunc.C:1215
+#: src/insets/insettext.C:1007 src/lyxfunc.C:1258
 msgid "Layout "
 msgstr "Stil "
 
-#: src/insets/insettext.C:999 src/lyxfunc.C:1216
+#: src/insets/insettext.C:1007 src/lyxfunc.C:1259
 msgid " not known"
 msgstr " ukjent"
 
-#: src/insets/insettext.C:1052 src/lyxfunc.C:2055
+#: src/insets/insettext.C:1060 src/lyxfunc.C:2102
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
@@ -6255,15 +6064,15 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/intl.C:304 src/intl.C:305
+#: src/intl.C:349 src/intl.C:350
 msgid "other..."
 msgstr "Annet..."
 
-#: src/intl.C:376
+#: src/intl.C:435
 msgid "Key Mappings"
 msgstr "Tastaturoppsett"
 
-#: src/kbsequence.C:206
+#: src/kbsequence.C:214
 msgid "   options: "
 msgstr "   opsjoner: "
 
@@ -6504,7 +6313,8 @@ msgid "footnote frame"
 msgstr "fotnote ramme"
 
 #: src/LColor.C:88
-msgid "latex text"
+#, fuzzy
+msgid "latex inset"
 msgstr "latex tekst"
 
 #: src/LColor.C:89
@@ -6751,7 +6561,7 @@ msgstr "Sett inn ERT"
 msgid "Insert a new external inset"
 msgstr "Insert a new external inset"
 
-#: src/LyXAction.C:197 src/lyx_cb.C:809
+#: src/LyXAction.C:197 src/lyx_cb.C:876
 msgid "Insert Figure"
 msgstr "Sett inn figur"
 
@@ -7079,7 +6889,7 @@ msgstr "Lagring feilet. Gi nytt navn og prøv igjen?"
 msgid "(If not, document is not saved.)"
 msgstr "(Hvis ikke blir ikke dokumentet lagret)"
 
-#: src/lyx_cb.C:198 src/lyxfunc.C:2977
+#: src/lyx_cb.C:198 src/lyxfunc.C:3043
 msgid "Templates"
 msgstr "Maler"
 
@@ -7179,59 +6989,60 @@ msgstr "Feil! Den spesifiserte filen kan ikke åpnes: "
 msgid "Error! Cannot open specified file: "
 msgstr "Feil! Kan ikke åpne spesifisert fil: "
 
-#: src/lyx_cb.C:522 src/mathed/formula.C:1054
+#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1065
+#: src/mathed/formula.C:1068
 msgid "Enter new label to insert:"
 msgstr "Skriv inn referansemerke som skal settes inn:"
 
-#: src/lyx_cb.C:555
+#: src/lyx_cb.C:622
 msgid "Character Style"
 msgstr "Tegn stil"
 
-#: src/lyx_cb.C:606
+#: src/lyx_cb.C:673
 msgid "LaTeX Preamble"
 msgstr "LaTeX Preamble"
 
-#: src/lyx_cb.C:623
+#: src/lyx_cb.C:690
 msgid "Do you want to save the current settings"
 msgstr "Ønsker du å lagre de nåværende innstillingene?"
 
-#: src/lyx_cb.C:624
+#: src/lyx_cb.C:691
 msgid "for Character, Document, Paper and Quotes"
 msgstr "for Fonter, Document, Ark og Sitering"
 
-#: src/lyx_cb.C:625
+#: src/lyx_cb.C:692
 msgid "as default for new documents?"
 msgstr "som standardverdier for nye dokumenter?"
 
-#: src/lyx_cb.C:790
+#: src/lyx_cb.C:857
 msgid "LaTeX preamble set"
 msgstr "LaTeX preamble satt"
 
-#: src/lyx_cb.C:825
+#: src/lyx_cb.C:892
 msgid "Inserting figure..."
 msgstr "Setter inn figur..."
 
-#: src/lyx_cb.C:829 src/lyx_cb.C:885
+#: src/lyx_cb.C:896 src/lyx_cb.C:952
 msgid "Figure inserted"
 msgstr "Figur satt inn"
 
-#: src/lyx_cb.C:908
+#: src/lyx_cb.C:975
 msgid "Running configure..."
 msgstr "Kjører \"configure\"..."
 
-#: src/lyx_cb.C:915
+#: src/lyx_cb.C:982
 msgid "Reloading configuration..."
 msgstr "Leser konfigurasjon om igjen..."
 
-#: src/lyx_cb.C:917
+#: src/lyx_cb.C:984
 msgid "The system has been reconfigured."
 msgstr "Systemed har blitt rekonfigurert."
 
-#: src/lyx_cb.C:918
+#: src/lyx_cb.C:985
 msgid "You need to restart LyX to make use of any"
 msgstr "Du må restarte LyX for å kunne bruke de"
 
-#: src/lyx_cb.C:919
+#: src/lyx_cb.C:986
 msgid "updated document class specifications."
 msgstr "oppdaterte textklasse spesifikasjonene."
 
@@ -7381,147 +7192,147 @@ msgstr " strenger har blitt erstattet."
 msgid "Found."
 msgstr "Funnet."
 
-#: src/lyxfunc.C:248
+#: src/lyxfunc.C:257
 msgid "Unknown sequence:"
 msgstr "Ukent sekvens:"
 
-#: src/lyxfunc.C:288 src/lyxfunc.C:2918
+#: src/lyxfunc.C:328 src/lyxfunc.C:2984
 msgid "Unknown action"
 msgstr "Ukjent operasjon"
 
 #. no
-#: src/lyxfunc.C:302
+#: src/lyxfunc.C:342
 msgid "Document is read-only"
 msgstr "Dokumentet er ikke skrivbart."
 
 #. no
-#: src/lyxfunc.C:307
+#: src/lyxfunc.C:347
 msgid "Command not allowed without any document open"
 msgstr "Kommandoen er ikke lov uten åpne dokumenter"
 
-#: src/lyxfunc.C:591
+#: src/lyxfunc.C:640
 msgid "Text mode"
 msgstr "Tekst modus"
 
-#: src/lyxfunc.C:752
+#: src/lyxfunc.C:795
 msgid "Saving document"
 msgstr "Lagrer dokument"
 
-#: src/lyxfunc.C:1060 src/lyxfunc.C:2486
+#: src/lyxfunc.C:1103 src/lyxfunc.C:2539
 msgid "Missing argument"
 msgstr "Mangler argument"
 
-#: src/lyxfunc.C:1071
+#: src/lyxfunc.C:1114
 msgid "Opening help file"
 msgstr "Åpner hjelpe fil"
 
-#: src/lyxfunc.C:1080
+#: src/lyxfunc.C:1123
 msgid "LyX Version "
 msgstr "LyX Versjon "
 
-#: src/lyxfunc.C:1085
+#: src/lyxfunc.C:1128
 msgid "Library directory: "
 msgstr "Bibliotek folder: "
 
-#: src/lyxfunc.C:1087
+#: src/lyxfunc.C:1130
 msgid "User directory: "
 msgstr "Bruker folder: "
 
-#: src/lyxfunc.C:1396
+#: src/lyxfunc.C:1439
 msgid "Couldn't find this label"
 msgstr "Klarte ikke å finne dette referansemerket"
 
-#: src/lyxfunc.C:1397
+#: src/lyxfunc.C:1440
 msgid "in current document."
 msgstr "i gjeldende dokument."
 
-#: src/lyxfunc.C:1785
+#: src/lyxfunc.C:1828
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/lyxfunc.C:1790
+#: src/lyxfunc.C:1833
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/lyxfunc.C:1895
+#: src/lyxfunc.C:1938
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/lyxfunc.C:1908
+#: src/lyxfunc.C:1951
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/lyxfunc.C:2400
+#: src/lyxfunc.C:2453
 msgid "Push-toolbar needs argument > 0"
 msgstr "\"push-toolbar\" trenger argument > 0"
 
-#: src/lyxfunc.C:2417
+#: src/lyxfunc.C:2470
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Bruk: toolbar-add-to <LyX kommando> <argument>"
 
-#: src/lyxfunc.C:2434 src/mathed/formula.C:876
+#: src/lyxfunc.C:2487 src/mathed/formula.C:881
 msgid "Math greek mode on"
 msgstr "Gresk matte modus på"
 
-#: src/lyxfunc.C:2445 src/mathed/formula.C:887
+#: src/lyxfunc.C:2498 src/mathed/formula.C:892
 msgid "Math greek keyboard on"
 msgstr "Gresk matte keyboard på"
 
-#: src/lyxfunc.C:2447 src/mathed/formula.C:889
+#: src/lyxfunc.C:2500 src/mathed/formula.C:894
 msgid "Math greek keyboard off"
 msgstr "Gresk matte keyboard av"
 
-#: src/lyxfunc.C:2501 src/mathed/formula.C:485
+#: src/lyxfunc.C:2554 src/mathed/formula.C:486
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
-#: src/lyxfunc.C:2508
+#: src/lyxfunc.C:2561
 msgid "This is only allowed in math mode!"
 msgstr "Dette er bare tillatt i mattemodus!"
 
-#: src/lyxfunc.C:2692
+#: src/lyxfunc.C:2750
 msgid "Opening child document "
 msgstr "Åpner subdokument "
 
-#: src/lyxfunc.C:2724
+#: src/lyxfunc.C:2782
 msgid "Unknown kind of footnote"
 msgstr "Ukjent fotnote slag"
 
-#: src/lyxfunc.C:2843
+#: src/lyxfunc.C:2901
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:2849
+#: src/lyxfunc.C:2907
 msgid "Set-color \""
 msgstr "Set-color \""
 
-#: src/lyxfunc.C:2851
+#: src/lyxfunc.C:2909
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr "\" failed - color is undefined or may not be redefined"
 
-#: src/lyxfunc.C:2866
+#: src/lyxfunc.C:2924
 msgid "No document open"
 msgstr "Ingen dokumeter åpne"
 
-#: src/lyxfunc.C:2872
+#: src/lyxfunc.C:2930
 msgid "Document is read only"
 msgstr "Dokumentet er ikke skrivbart:"
 
-#: src/lyxfunc.C:2978
+#: src/lyxfunc.C:3044
 msgid "Enter Filename for new document"
 msgstr "Skriv inn filnavn for nytt dokument"
 
-#: src/lyxfunc.C:2979
+#: src/lyxfunc.C:3045
 msgid "newfile"
 msgstr "nyfil"
 
 #. Cancel: Do nothing
-#: src/lyxfunc.C:2983 src/lyxfunc.C:3010 src/lyxfunc.C:3087 src/lyxfunc.C:3145
-#: src/lyxfunc.C:3173 src/lyxfunc.C:3183 src/lyxfunc.C:3219
+#: src/lyxfunc.C:3049 src/lyxfunc.C:3076 src/lyxfunc.C:3153 src/lyxfunc.C:3211
+#: src/lyxfunc.C:3239 src/lyxfunc.C:3249 src/lyxfunc.C:3285
 msgid "Canceled."
 msgstr "Avbrutt."
 
-#: src/lyxfunc.C:2998 src/lyxfunc.C:3161
+#: src/lyxfunc.C:3064 src/lyxfunc.C:3227
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -7529,69 +7340,69 @@ msgstr ""
 "Ønsker du å lukke det dokumentet nå?\n"
 "('Nei' vil bare bytte til den versjonen som er åpnet)"
 
-#: src/lyxfunc.C:3018
+#: src/lyxfunc.C:3084
 msgid "File already exists:"
 msgstr "Filen finnes allerede:"
 
-#: src/lyxfunc.C:3020
+#: src/lyxfunc.C:3086
 msgid "Do you want to open the document?"
 msgstr "Ønsker du å åpne dokumentet?"
 
 #. loads document
-#: src/lyxfunc.C:3022 src/lyxfunc.C:3098
+#: src/lyxfunc.C:3088 src/lyxfunc.C:3164
 msgid "Opening document"
 msgstr "Ønsker du å åpne dokumentet?"
 
-#: src/lyxfunc.C:3029 src/lyxfunc.C:3105
+#: src/lyxfunc.C:3095 src/lyxfunc.C:3171
 msgid "opened."
 msgstr "åpnet"
 
-#: src/lyxfunc.C:3050
+#: src/lyxfunc.C:3116
 msgid "Choose template"
 msgstr "Velg mal"
 
-#: src/lyxfunc.C:3079 src/lyxfunc.C:3135 src/lyxfunc.C:3211
+#: src/lyxfunc.C:3145 src/lyxfunc.C:3201 src/lyxfunc.C:3277
 msgid "Examples"
 msgstr "Eksempler"
 
-#: src/lyxfunc.C:3081
+#: src/lyxfunc.C:3147
 msgid "Select Document to Open"
 msgstr "Vel dokument som skal åpnes"
 
-#: src/lyxfunc.C:3107
+#: src/lyxfunc.C:3173
 msgid "Could not open document"
 msgstr "Kunne ikke åpne dokumentet"
 
-#: src/lyxfunc.C:3137
+#: src/lyxfunc.C:3203
 msgid "Select "
 msgstr "Velg "
 
-#: src/lyxfunc.C:3138
+#: src/lyxfunc.C:3204
 msgid " file to import"
 msgstr " fil som skal importeres"
 
-#: src/lyxfunc.C:3180
+#: src/lyxfunc.C:3246
 msgid "A document by the name"
 msgstr "Ett annet dokument med navnet"
 
-#: src/lyxfunc.C:3182
+#: src/lyxfunc.C:3248
 msgid "already exists. Overwrite?"
 msgstr "finnes allerede. Overskrive?"
 
-#: src/lyxfunc.C:3213
+#: src/lyxfunc.C:3279
 msgid "Select Document to Insert"
 msgstr "Velg dokument som skal settes inn"
 
 #. Inserts document
-#: src/lyxfunc.C:3231
+#: src/lyxfunc.C:3297
 msgid "Inserting document"
 msgstr "Setter inn dokumentet"
 
-#: src/lyxfunc.C:3237
+#: src/lyxfunc.C:3303
 msgid "inserted."
 msgstr "satt inn."
 
-#: src/lyxfunc.C:3239
+#: src/lyxfunc.C:3305
 msgid "Could not insert document"
 msgstr "Kunne ikke sette inn dokumentet"
 
@@ -7722,64 +7533,65 @@ msgstr " men forvent problemer."
 msgid "Expect problems."
 msgstr "Forvent problemer."
 
-#: src/lyx_main.C:555
+#: src/lyx_main.C:554
 msgid "You have specified an invalid LyX directory."
 msgstr "Du har spesifisert en ugyldig LyX folder."
 
-#: src/lyx_main.C:556
+#: src/lyx_main.C:555
 msgid "You don't have a personal LyX directory."
 msgstr "Du har ikke en personlig LyX folder."
 
-#: src/lyx_main.C:558
+#: src/lyx_main.C:557
 msgid "It is needed to keep your own configuration."
 msgstr "Den trengs for å ta vare på din egen konfigurasjon."
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:558
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Skal jeg prøve å sette den opp for deg (anbefalt)?"
 
-#: src/lyx_main.C:560
+#: src/lyx_main.C:559
 msgid "Running without personal LyX directory."
 msgstr "Kjører uten personlig LyX folder."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:567
+#: src/lyx_main.C:566
 msgid "LyX: Creating directory "
 msgstr "LyX: Lager folder "
 
-#: src/lyx_main.C:568
+#: src/lyx_main.C:567
 msgid " and running configure..."
 msgstr " og kjører \"configure\"..."
 
-#: src/lyx_main.C:574
+#: src/lyx_main.C:573
 msgid "Failed. Will use "
 msgstr "Feilet. Bruker "
 
-#: src/lyx_main.C:575
+#: src/lyx_main.C:574
 msgid " instead."
 msgstr " isteden."
 
-#: src/lyx_main.C:582
+#: src/lyx_main.C:581
 msgid "Done!"
 msgstr "Ferdig!"
 
-#: src/lyx_main.C:596
+#: src/lyx_main.C:595
 msgid "LyX Warning!"
 msgstr "LyX Advarsel!"
 
-#: src/lyx_main.C:597
+#: src/lyx_main.C:596
 msgid "Error while reading "
 msgstr "Feil under lesing "
 
-#: src/lyx_main.C:598
+#: src/lyx_main.C:597
 msgid "Using built-in defaults."
 msgstr "Bruker innebygde standarer."
 
-#: src/lyx_main.C:696
+#: src/lyx_main.C:695
 msgid "Setting debug level to "
 msgstr "Setter debug nivå til "
 
-#: src/lyx_main.C:708
+#: src/lyx_main.C:707
+#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -7790,7 +7602,14 @@ msgid ""
 "\t-dbg feature[,feature]...\n"
 "                  select the features to debug.\n"
 "                  Type `lyx -dbg' to see the list of features\n"
-"Check the LyX man page for more options."
+"\t-x [--execute] command\n"
+"                  where command is a lyx command.\n"
+"\t-e [--export] fmt\n"
+"                  where fmt is the export format of choice.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  where fmt is the import format of choice\n"
+"                  and file.xxx is the file to be imported.\n"
+"Check the LyX man page for more details."
 msgstr ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -7803,384 +7622,390 @@ msgstr ""
 "                  Type `lyx -dbg' to see the list of features\n"
 "Check the LyX man page for more options."
 
-#: src/lyx_main.C:734
+#: src/lyx_main.C:740
 msgid "List of supported debug flags:"
 msgstr "Liste over debug flagg some støttes:"
 
-#: src/lyx_main.C:746
+#: src/lyx_main.C:752
 msgid "Missing directory for -sysdir switch!"
 msgstr "Mangler folder for -sysdir parameter!"
 
-#: src/lyx_main.C:757
+#: src/lyx_main.C:763
 msgid "Missing directory for -userdir switch!"
 msgstr "Mangler folder for -userdir parameter!"
 
-#: src/lyx_main.C:780
+#: src/lyx_main.C:786
 msgid "Missing command string after  -x switch!"
 msgstr "Mangler kommando streng etter -x switch!"
 
-#: src/lyx_main.C:793
+#: src/lyx_main.C:799
 msgid "Missing file type [eg latex, ps...] after "
 msgstr "Mangler fil type [eks. latex, ps...] etter "
 
-#: src/lyx_main.C:795 src/lyx_main.C:810
+#: src/lyx_main.C:801 src/lyx_main.C:816
 msgid " switch!"
 msgstr " endring!"
 
-#: src/lyx_main.C:808
+#: src/lyx_main.C:814
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Mangler fil type [eks. latex, ps...] etter "
 
-#: src/lyxrc.C:1586
+#: src/lyxrc.C:1602
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/lyxrc.C:1590
+#: src/lyxrc.C:1606
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/lyxrc.C:1594
+#: src/lyxrc.C:1610
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/lyxrc.C:1598
+#: src/lyxrc.C:1614
 msgid "The option to print only even pages."
 msgstr ""
 
-#: src/lyxrc.C:1602
+#: src/lyxrc.C:1618
 msgid "The option to print only odd pages."
 msgstr ""
 
-#: src/lyxrc.C:1606
+#: src/lyxrc.C:1622
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 
-#: src/lyxrc.C:1610
+#: src/lyxrc.C:1626
 msgid "The option for specifying the number of copies to print."
 msgstr ""
 
-#: src/lyxrc.C:1614
+#: src/lyxrc.C:1630
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/lyxrc.C:1618
+#: src/lyxrc.C:1634
 msgid "The option to reverse the order of the pages printed."
 msgstr ""
 
-#: src/lyxrc.C:1622
+#: src/lyxrc.C:1638
 msgid "The option to print out in landscape."
 msgstr ""
 
-#: src/lyxrc.C:1626
+#: src/lyxrc.C:1642
 msgid "The option to specify paper type."
 msgstr ""
 
-#: src/lyxrc.C:1630
+#: src/lyxrc.C:1646
 msgid "Option to specify the dimensions of the print paper."
 msgstr ""
 
-#: src/lyxrc.C:1634
+#: src/lyxrc.C:1650
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/lyxrc.C:1638
+#: src/lyxrc.C:1654
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/lyxrc.C:1642
+#: src/lyxrc.C:1658
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/lyxrc.C:1646
+#: src/lyxrc.C:1662
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/lyxrc.C:1650
+#: src/lyxrc.C:1666
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/lyxrc.C:1654
+#: src/lyxrc.C:1670
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/lyxrc.C:1658
+#: src/lyxrc.C:1674
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/lyxrc.C:1662
+#: src/lyxrc.C:1678
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/lyxrc.C:1666
+#: src/lyxrc.C:1683
+#, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/lyxrc.C:1670
+#: src/lyxrc.C:1687
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/lyxrc.C:1676
+#: src/lyxrc.C:1693
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/lyxrc.C:1680
+#: src/lyxrc.C:1697
 msgid "The font for menus (and groups titles in popups)."
 msgstr ""
 
-#: src/lyxrc.C:1684
+#: src/lyxrc.C:1701
 msgid "The font for popups."
 msgstr ""
 
-#: src/lyxrc.C:1688
+#: src/lyxrc.C:1705
 msgid "The encoding for the screen fonts."
 msgstr ""
 
-#: src/lyxrc.C:1692
+#: src/lyxrc.C:1709
 msgid "The encoding for the menu/popups fonts."
 msgstr ""
 
-#: src/lyxrc.C:1699
+#: src/lyxrc.C:1716
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/lyxrc.C:1703
+#: src/lyxrc.C:1720
 msgid "The default path for your documents."
 msgstr ""
 
-#: src/lyxrc.C:1707
+#: src/lyxrc.C:1724
 msgid "The path that LyX will set when offering to choose a template."
 msgstr ""
 
-#: src/lyxrc.C:1711
+#: src/lyxrc.C:1728
 msgid ""
-"LyX will place it's temporary directories in this path. They will be deleted "
+"LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/lyxrc.C:1715
+#: src/lyxrc.C:1732
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
 msgstr ""
 
-#: src/lyxrc.C:1719
+#: src/lyxrc.C:1736
 msgid "The file where the last-files information should be stored."
 msgstr ""
 
-#: src/lyxrc.C:1723
+#: src/lyxrc.C:1740
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/lyxrc.C:1727
+#: src/lyxrc.C:1744
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
 msgstr ""
 
-#: src/lyxrc.C:1732
+#: src/lyxrc.C:1749
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/lyxrc.C:1736
+#: src/lyxrc.C:1753
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/lyxrc.C:1740
+#: src/lyxrc.C:1757
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/lyxrc.C:1746
+#: src/lyxrc.C:1763
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/lyxrc.C:1760
+#: src/lyxrc.C:1777
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
 msgstr ""
 
-#: src/lyxrc.C:1764
+#: src/lyxrc.C:1781
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
 msgstr ""
 
-#: src/lyxrc.C:1768
+#: src/lyxrc.C:1785
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr ""
 
-#: src/lyxrc.C:1772
+#: src/lyxrc.C:1789
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/lyxrc.C:1779
+#: src/lyxrc.C:1796
 msgid "Specify the default paper size."
 msgstr ""
 
-#: src/lyxrc.C:1786
+#: src/lyxrc.C:1803
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/lyxrc.C:1790
+#: src/lyxrc.C:1807
 msgid "What command runs the spell checker?"
 msgstr ""
 
-#: src/lyxrc.C:1794
+#: src/lyxrc.C:1811
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
 msgstr ""
 
-#: src/lyxrc.C:1799
+#: src/lyxrc.C:1816
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/lyxrc.C:1804
+#: src/lyxrc.C:1821
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/lyxrc.C:1809
+#: src/lyxrc.C:1826
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/lyxrc.C:1813
+#: src/lyxrc.C:1830
 msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
 msgstr ""
 
-#: src/lyxrc.C:1817
+#: src/lyxrc.C:1834
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
 "-n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/lyxrc.C:1821
+#: src/lyxrc.C:1838
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/lyxrc.C:1825
+#: src/lyxrc.C:1842
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
 msgstr ""
 
-#: src/lyxrc.C:1829
+#: src/lyxrc.C:1846
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
 msgstr ""
 
-#: src/lyxrc.C:1833
+#: src/lyxrc.C:1850
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/lyxrc.C:1837
+#: src/lyxrc.C:1854
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/lyxrc.C:1841
+#: src/lyxrc.C:1858
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 
-#: src/lyxrc.C:1845
+#: src/lyxrc.C:1862
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/lyxrc.C:1849
+#: src/lyxrc.C:1866
 msgid ""
 "The latex command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/lyxrc.C:1853
+#: src/lyxrc.C:1870
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/lyxrc.C:1857
+#: src/lyxrc.C:1874
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/lyxrc.C:1861
+#: src/lyxrc.C:1878
 msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/lyxrc.C:1865
+#: src/lyxrc.C:1882
 msgid "The latex command for changing back to the language of the document."
 msgstr ""
 
-#: src/lyxrc.C:1869
+#: src/lyxrc.C:1887
+#, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/lyxrc.C:1873
+#: src/lyxrc.C:1891
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/lyxrc.C:1877
+#: src/lyxrc.C:1895
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
 msgstr ""
 
-#: src/lyxrc.C:1890
+#: src/lyxrc.C:1908
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
 msgstr ""
 
-#: src/lyxrc.C:1894
+#: src/lyxrc.C:1912
 msgid "New documents will be assigned this language."
+msgstr ""
+
+#: src/lyxrc.C:1916
+msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
 #: src/LyXSendto.C:40
@@ -8246,23 +8071,23 @@ msgstr " (Endret)"
 msgid " (read only)"
 msgstr " (skrivebeskyttet)"
 
-#: src/mathed/formula.C:904 src/mathed/formula.C:1214
+#: src/mathed/formula.C:909 src/mathed/formula.C:1234
 msgid "TeX mode"
 msgstr "TeX modus"
 
-#: src/mathed/formula.C:919
+#: src/mathed/formula.C:924
 msgid "No number"
 msgstr "Inget tall"
 
-#: src/mathed/formula.C:922
+#: src/mathed/formula.C:927
 msgid "Number"
 msgstr "Tall"
 
-#: src/mathed/formula.C:1085
+#: src/mathed/formula.C:1105
 msgid "math text mode"
 msgstr "Matte tekstmodus"
 
-#: src/mathed/formula.C:1094
+#: src/mathed/formula.C:1114
 msgid "Invalid action in math mode!"
 msgstr "Ugyldig operasjon i matte modus!"
 
@@ -8382,19 +8207,19 @@ msgstr "Ascii tekst som linjer"
 msgid "Ascii text as paragraphs"
 msgstr "Ascii tekst som avsnitt"
 
-#: src/MenuBackend.C:403
+#: src/MenuBackend.C:409
 msgid "Quit|Q"
 msgstr "Avslutt|A"
 
-#: src/MenuBackend.C:411
+#: src/MenuBackend.C:417
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:413
+#: src/MenuBackend.C:419
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:421
+#: src/MenuBackend.C:427
 msgid "Emphasize"
 msgstr "Uthevet"
 
@@ -8439,11 +8264,11 @@ msgstr "LyX|#L"
 msgid "Ascii|#s"
 msgstr "Ascii|#s"
 
-#: src/spellchecker.C:285
+#: src/spellchecker.C:279
 msgid "Spellchecker Options"
 msgstr "Opsjoner til stavekontroll"
 
-#: src/spellchecker.C:714
+#: src/spellchecker.C:708
 msgid "Spellchecker"
 msgstr "Stavekontroll"
 
@@ -8633,7 +8458,7 @@ msgstr "Vet ikke hva som skal gjøres med halve floater."
 msgid "sorry."
 msgstr "beklager."
 
-#: src/text.C:1995
+#: src/text.C:1993
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -8641,26 +8466,50 @@ msgstr ""
 "Du kan ikke sette inn et mellomrom i begynnelsen av et avsnitt. Les "
 "'Tutorial'."
 
-#: src/text.C:1997
+#: src/text.C:1995
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Det er ikke mulig å bruke to mellomrom pe denne meten. Les 'Tutorial.'"
 
-#: src/text.C:3439 src/text.C:3445
+#: src/text.C:3443 src/text.C:3449
 msgid "Page Break (top)"
 msgstr "Ny side (topp)"
 
-#: src/text.C:3639 src/text.C:3645
+#: src/text.C:3643 src/text.C:3649
 msgid "Page Break (bottom)"
 msgstr "Ny side (bunn)"
 
-#: src/text.C:3939
+#: src/text.C:3943
 msgid "You can't insert a float in a float!"
 msgstr "Du kan ikke sette inn en float i en float!"
 
-#: src/text.C:3947
+#: src/text.C:3951
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Do kan ikke sette inn et marknotat i en minipage!"
 
-#: src/text.C:3974
+#: src/text.C:3978
 msgid "Float would include float!"
 msgstr "Float would include float!"
+
+#~ msgid "Insert|r"
+#~ msgstr "Sett inn|S"
+
+#~ msgid "File...|F"
+#~ msgstr "Fil...|F"
+
+#~ msgid "Math Text|T"
+#~ msgstr "Matte Text|T"
+
+#~ msgid "Math Display|D"
+#~ msgstr "Matte display|M"
+
+#~ msgid "Math Panel...|P"
+#~ msgstr "Matte panel|p"
+
+#~ msgid "Math units"
+#~ msgstr "Matte enheter"
+
+#~ msgid "Alphabet|#A"
+#~ msgstr "Alfabet|#A"
+
+#~ msgid "Color|#C"
+#~ msgstr "Farge:|#F"
