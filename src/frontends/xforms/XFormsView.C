@@ -148,7 +148,6 @@ void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
 
 	toolbar_.reset(new Toolbar(this, dia,
 				   air, 30 + air + bw, toolbardefaults));
-	toolbar_->set(true);
 
 	int const ywork = 60 + 2 * air + bw;
 	int const workheight = height - ywork - (25 + 2 * air);

@@ -1329,24 +1329,6 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 	}
 	break;
 
-	case LFUN_ADD_TO_TOOLBAR:
-	{
-		if (lyxerr.debugging(Debug::GUI)) {
-			lyxerr << "LFUN_ADD_TO_TOOLBAR:"
-				"argument = `" << argument << '\'' << endl;
-		}
-		string tmp(argument);
-		//lyxerr <<string("Argument: ") + argument);
-		//lyxerr <<string("Tmp     : ") + tmp);
-		if (tmp.empty()) {
-			setErrorMessage(N_("Usage: toolbar-add-to <LyX command>"));
-		} else {
-			owner->getToolbar()->add(argument, false);
-			owner->getToolbar()->set();
-		}
-	}
-	break;
-
 	// --- insert characters ----------------------------------------
 
 	// ---  Mathed stuff. If we are here, there is no locked inset yet.

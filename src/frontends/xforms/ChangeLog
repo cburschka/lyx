@@ -1,5 +1,13 @@
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
+	* XFormsView.C: don't call toolbar_->set() 
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: rationalise code, remove half-working
+	  update stuff into simple add()
+ 
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
 	* lyx_gui.C: add lyx_gui::exit()
  
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>

@@ -31,20 +31,15 @@ struct Toolbar::Pimpl {
 public:
 	/// called when user selects a layout from combox
 	static void layoutSelectedCB(int, void *, Combox *);
-	///
+ 
+	/// create an empty toolbar
 	Pimpl(LyXView * o, Dialogs &, int x, int y);
-	///
+
 	~Pimpl();
 
-	/// (re)sets the toolbar
-	void set(bool doingmain = false);
-
-	/** this is to be the entry point to the toolbar
-	    frame, where you can change the toolbar realtime.
-	*/
-	void edit();
 	/// add a new button to the toolbar.
-	void add(int, bool doclean = true);
+	void add(int action);
+
 	/// update the state of the icons
 	void update();
 
@@ -59,51 +54,38 @@ public:
 	/// the non-static version of layoutSelectedCB
 	void layoutSelected();
 
-	///
+	/// an item on the toolbar
 	struct toolbarItem
 	{
-		///
-		int action;
-		///
-		FL_OBJECT * icon;
-		///
 		toolbarItem();
-		///
-		void clean();
-		///
+
 		~toolbarItem();
-		///
+ 
 		toolbarItem & operator=(toolbarItem const & ti);
+ 
+		/// deallocate icon
+		void kill_icon();
+ 
+		/// lyx action number
+		int action;
+		/// icon for this item
+		FL_OBJECT * icon;
 	};
 
-	/// typedef to simplify things
 	typedef std::vector<toolbarItem> ToolbarList;
+ 
 	/// The list containing all the buttons
-	ToolbarList toollist;
-	///
-	XFormsView * owner;
-	///
+	ToolbarList toollist_;
+	/// owning view
+	XFormsView * owner_;
+	/// tooltips manager
 	Tooltips * tooltip_;
-	///
-	Combox * combox;
-	/// Starting position
-	int sxpos;
-	///
-	int sypos;
-	///
+	/// layout combo
+	Combox * combox_;
+	/// x position of end of toolbar
 	int xpos;
-	///
+	/// y position of end of toolbar
 	int ypos;
-	///
-	bool cleaned;
-
-	/// removes all toolbar buttons from the toolbar.
-	void clean();
-
-	/// more...
-	void reset();
-
-	/// more...
-	void lightReset();
 };
-#endif
+ 
+#endif // TOOLBAR_PIMPL_H

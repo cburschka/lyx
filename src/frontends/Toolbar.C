@@ -29,14 +29,11 @@ Toolbar::Toolbar(LyXView * o, Dialogs & d,
 {
 	pimpl_ = new Pimpl(o, d, x, y);
 
-	pimpl_->reset();
-
 	// extracts the toolbar actions from tbd
 	for (ToolbarDefaults::const_iterator cit = tbd.begin();
 	     cit != tbd.end(); ++cit) {
 		pimpl_->add((*cit));
-		lyxerr[Debug::GUI] << "tool action: "
-				       << (*cit) << endl;
+		lyxerr[Debug::GUI] << "tool action: " << (*cit) << endl;
 	}
 }
 
@@ -44,12 +41,6 @@ Toolbar::Toolbar(LyXView * o, Dialogs & d,
 Toolbar::~Toolbar()
 {
 	delete pimpl_;
-}
-
-
-void Toolbar::set(bool doingmain)
-{
-	pimpl_->set(doingmain);
 }
 
 
@@ -89,17 +80,4 @@ void Toolbar::openLayoutList()
 void Toolbar::clearLayoutList()
 {
 	pimpl_->clearLayoutList();
-}
-
-
-void Toolbar::add(string const & func, bool doclean)
-{
-	int const tf = lyxaction.LookupFunc(func);
-
-	if (tf == -1) {
-		lyxerr << "Toolbar::add: no LyX command called`"
-		       << func << "'exists!" << endl;
-	} else {
-		pimpl_->add(tf, doclean);
-	}
 }

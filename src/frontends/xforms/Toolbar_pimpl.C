@@ -46,21 +46,22 @@ const int buttonwidth = 30; // the standard button width
 const int height = 30; // the height of all items in the toolbar
 
 Toolbar::Pimpl::toolbarItem::toolbarItem()
+	: action(LFUN_NOACTION), icon(0)
 {
-	action = LFUN_NOACTION;
-	icon = 0;
 }
 
 
 Toolbar::Pimpl::toolbarItem::~toolbarItem()
 {
-	// It seems that now this is taken care of
-	// in the XFormsView destructor. (Lgb)
-	// clean();
+	// Lars said here that ~XFormsView() dealt with the icons.
+	// This is not true. But enabling this causes crashes,
+	// because somehow we kill the same icon twice :(
+	// FIXME
+	//kill_icon();
 }
 
 
-void Toolbar::Pimpl::toolbarItem::clean()
+void Toolbar::Pimpl::toolbarItem::kill_icon()
 {
 	if (icon) {
 		fl_delete_object(icon);
@@ -73,16 +74,14 @@ void Toolbar::Pimpl::toolbarItem::clean()
 Toolbar::Pimpl::toolbarItem &
 Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 {
-	// Are we assigning the object onto itself?
 	if (this == &ti)
 		return *this;
 
 	// If we already have an icon, release it.
-	clean();
-
-	// do we have to check icon too?
+	// But we don't copy the icon from ti
+	kill_icon();
+ 
 	action = ti.action;
-	icon = 0; // locally we need to get the icon anew
 
 	return *this;
 }
@@ -90,53 +89,65 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 
 
 Toolbar::Pimpl::Pimpl(LyXView * o, Dialogs & d, int x, int y)
-	: owner(static_cast<XFormsView *>(o)), sxpos(x), sypos(y)
+	: owner_(static_cast<XFormsView *>(o)), xpos(x), ypos(y)
 {
-	combox = 0;
+	combox_ = 0;
 	tooltip_ = new Tooltips(d);
 }
 
 
 Toolbar::Pimpl::~Pimpl()
 {
-	clean();
+	fl_freeze_form(owner_->getForm());
+
+	// G++ vector does not have clear defined
+	//toollist.clear();
+	toollist_.erase(toollist_.begin(), toollist_.end());
+
+	delete combox_;
+
+	fl_unfreeze_form(owner_->getForm());
 	delete tooltip_;
 }
 
 
 void Toolbar::Pimpl::update()
 {
-	ToolbarList::const_iterator p = toollist.begin();
-	ToolbarList::const_iterator end = toollist.end();
+	ToolbarList::const_iterator p = toollist_.begin();
+	ToolbarList::const_iterator end = toollist_.end();
 	for (; p != end; ++p) {
-		if (p->icon) {
-			FuncStatus status = owner->getLyXFunc()->getStatus(p->action);
-			if (status.onoff(true)) {
-				// I'd like to use a different color
-				// here, but then the problem is to
-				// know how to use transparency with
-				// Xpm library. It seems pretty
-				// complicated to me (JMarc)
-				fl_set_object_color(p->icon, FL_LEFT_BCOL, FL_BLUE);
-				fl_set_object_boxtype(p->icon, FL_DOWN_BOX);
-			} else {
-				fl_set_object_color(p->icon, FL_MCOL, FL_BLUE);
-				fl_set_object_boxtype(p->icon, FL_UP_BOX);
-			}
-			if (status.disabled()) {
-				// Is there a way here to specify a
-				// mask in order to show that the
-				// button is disabled? (JMarc)
-				fl_deactivate_object(p->icon);
-			}
+		if (p->action == ToolbarDefaults::LAYOUTS && combox_) {
+			if (owner_->getLyXFunc()->getStatus(LFUN_LAYOUT).disabled())
+				combox_->deactivate();
 			else
-				fl_activate_object(p->icon);
-		} else if (p->action == ToolbarDefaults::LAYOUTS && combox) {
-			if (owner->getLyXFunc()->getStatus(LFUN_LAYOUT).disabled())
-				combox->deactivate();
-			else
-				combox->activate();
+				combox_->activate();
+			continue;
 		}
+
+		if (!p->icon)
+			continue;
+ 
+		FuncStatus const status = owner_->getLyXFunc()->getStatus(p->action);
+		if (status.onoff(true)) {
+			// I'd like to use a different color
+			// here, but then the problem is to
+			// know how to use transparency with
+			// Xpm library. It seems pretty
+			// complicated to me (JMarc)
+			fl_set_object_color(p->icon, FL_LEFT_BCOL, FL_BLUE);
+			fl_set_object_boxtype(p->icon, FL_DOWN_BOX);
+		} else {
+			fl_set_object_color(p->icon, FL_MCOL, FL_BLUE);
+			fl_set_object_boxtype(p->icon, FL_UP_BOX);
+		}
+		if (status.disabled()) {
+			// Is there a way here to specify a
+			// mask in order to show that the
+			// button is disabled? (JMarc)
+			fl_deactivate_object(p->icon);
+		}
+		else
+			fl_activate_object(p->icon);
 	}
 }
 
@@ -152,15 +163,15 @@ void Toolbar::Pimpl::layoutSelectedCB(int, void * arg, Combox *)
 
 void Toolbar::Pimpl::layoutSelected()
 {
-	string const & layoutguiname = combox->getline();
+	string const & layoutguiname = combox_->getline();
 	LyXTextClass const & tc =
-		owner->buffer()->params.getLyXTextClass();
+		owner_->buffer()->params.getLyXTextClass();
 
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
 		if (_((*cit)->name()) == layoutguiname) {
-			owner->getLyXFunc()->dispatch(LFUN_LAYOUT, (*cit)->name());
+			owner_->getLyXFunc()->dispatch(LFUN_LAYOUT, (*cit)->name());
 			return;
 		}
 	}
@@ -171,10 +182,10 @@ void Toolbar::Pimpl::layoutSelected()
 
 void Toolbar::Pimpl::setLayout(string const & layout)
 {
-	if (combox) {
+	if (combox_) {
 		LyXTextClass const & tc =
-			owner->buffer()->params.getLyXTextClass();
-		combox->select(_(tc[layout]->name()));
+			owner_->buffer()->params.getLyXTextClass();
+		combox_->select(_(tc[layout]->name()));
 	}
 }
 
@@ -182,39 +193,39 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 void Toolbar::Pimpl::updateLayoutList(bool force)
 {
 	// Update the layout display
-	if (!combox) return;
+	if (!combox_) return;
 
 	// If textclass is different, we need to update the list
-	if (combox->empty() || force) {
-		combox->clear();
+	if (combox_->empty() || force) {
+		combox_->clear();
 		LyXTextClass const & tc =
-			owner->buffer()->params.getLyXTextClass();
+			owner_->buffer()->params.getLyXTextClass();
 		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {
 			// ignore obsolete entries
 			if ((*cit)->obsoleted_by().empty())
-				combox->addline(_((*cit)->name()));
+				combox_->addline(_((*cit)->name()));
 		}
 	}
 	// we need to do this.
-	combox->redraw();
+	combox_->redraw();
 }
 
 
 void Toolbar::Pimpl::clearLayoutList()
 {
-	if (combox) {
-		combox->clear();
-		combox->redraw();
+	if (combox_) {
+		combox_->clear();
+		combox_->redraw();
 	}
 }
 
 
 void Toolbar::Pimpl::openLayoutList()
 {
-	if (combox)
-		combox->show();
+	if (combox_)
+		combox_->show();
 }
 
 
@@ -285,160 +296,63 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 } // namespace anon
 
 
-void Toolbar::Pimpl::set(bool doingmain)
+void Toolbar::Pimpl::add(int action)
 {
-	// we shouldn't set if we have not cleaned
-	if (!cleaned) return;
-
 	FL_OBJECT * obj;
 
-	if (!doingmain) {
-		fl_freeze_form(owner->getForm());
-		fl_addto_form(owner->getForm());
+	toolbarItem item;
+	item.action = action;
+ 
+	switch (action) {
+	case ToolbarDefaults::SEPARATOR:
+		xpos += sepspace;
+		break;
+	case ToolbarDefaults::NEWLINE:
+		// Not supported yet.
+		break;
+	case ToolbarDefaults::LAYOUTS:
+		xpos += standardspacing;
+		if (!combox_)
+			combox_ = new Combox(FL_COMBOX_DROPLIST);
+		combox_->add(xpos, ypos, 135, height, 400);
+		combox_->setcallback(layoutSelectedCB, this);
+		combox_->resize(FL_RESIZE_ALL);
+		combox_->gravity(NorthWestGravity, NorthWestGravity);
+		xpos += 135;
+		break;
+	default:
+		xpos += standardspacing;
+		item.icon = obj =
+			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
+					    xpos, ypos,
+					    buttonwidth,
+					    height, "");
+		fl_set_object_resize(obj, FL_RESIZE_ALL);
+		fl_set_object_gravity(obj,
+				      NorthWestGravity,
+				      NorthWestGravity);
+		fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
+				       static_cast<long>(action));
+		// Remove the blue feedback rectangle
+		fl_set_pixmapbutton_focus_outline(obj, 0);
+
+		// initialise the tooltip
+		string const tip = _(lyxaction.helpText(obj->argument));
+		tooltip_->init(obj, tip);
+
+		// The view that this object belongs to.
+		obj->u_vdata = owner_;
+
+		setPixmap(obj, action, buttonwidth, height);
+		// we must remember to update the positions
+		xpos += buttonwidth;
+		// ypos is constant
+		/* Here will come a check to see if the new
+		 * pos is within the bounds of the main frame,
+		 * and perhaps wrap the toolbar if not.
+		 */
+		break;
 	}
-
-	ToolbarList::iterator item = toollist.begin();
-	ToolbarList::iterator end = toollist.end();
-	for (; item != end; ++item) {
-		switch (item->action) {
-		case ToolbarDefaults::SEPARATOR:
-			xpos += sepspace;
-			break;
-		case ToolbarDefaults::NEWLINE:
-			// Not supported yet.
-			break;
-		case ToolbarDefaults::LAYOUTS:
-			xpos += standardspacing;
-			if (!combox)
-				combox = new Combox(FL_COMBOX_DROPLIST);
-			combox->add(xpos, ypos, 135, height, 400);
-			combox->setcallback(layoutSelectedCB, this);
-			combox->resize(FL_RESIZE_ALL);
-			combox->gravity(NorthWestGravity, NorthWestGravity);
-			xpos += 135;
-			break;
-		default:
-			xpos += standardspacing;
-			item->icon = obj =
-				fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-						    xpos, ypos,
-						    buttonwidth,
-						    height, "");
-			fl_set_object_resize(obj, FL_RESIZE_ALL);
-			fl_set_object_gravity(obj,
-					      NorthWestGravity,
-					      NorthWestGravity);
-			fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
-					       static_cast<long>(item->action));
-			// Remove the blue feedback rectangle
-			fl_set_pixmapbutton_focus_outline(obj, 0);
-
-			// initialise the tooltip
-			string const tip = _(lyxaction.helpText(obj->argument));
-			tooltip_->init(obj, tip);
-
-			// The view that this object belongs to.
-			obj->u_vdata = owner;
-
-			setPixmap(obj, item->action, buttonwidth, height);
-			// we must remember to update the positions
-			xpos += buttonwidth;
-			// ypos is constant
-			/* Here will come a check to see if the new
-			 * pos is within the bounds of the main frame,
-			 * and perhaps wrap the toolbar if not.
-			 */
-			break;
-		}
-	}
-
-	if (!doingmain) {
-		fl_end_form();
-		fl_unfreeze_form(owner->getForm());
-		// Should be safe to do this here.
-		owner->updateLayoutChoice();
-	}
-
-	// set the state of the icons
-	//update();
-
-	cleaned = false;
-}
-
-
-void Toolbar::Pimpl::add(int action, bool doclean)
-{
-	if (doclean && !cleaned) clean();
-
-	// this is what we do if we want to add to an existing
-	// toolbar.
-	if (!doclean && owner) {
-		// first "hide" the toolbar buttons. This is not a real hide
-		// actually it deletes and frees the button altogether.
-		lyxerr << "Toolbar::add: \"hide\" the toolbar buttons."
-		       << endl;
-
-		lightReset();
-
-		fl_freeze_form(owner->getForm());
-
-		ToolbarList::iterator p = toollist.begin();
-		ToolbarList::iterator end = toollist.end();
-		for (; p != end; ++p) {
-			p->clean();
-		}
-
-		if (combox) {
-			delete combox;
-			combox = 0;
-		}
-		fl_unfreeze_form(owner->getForm());
-		cleaned = true; // this is not completely true, but OK anyway
-	}
-
-	// there exist some special actions not part of
-	// kb_action: SEPARATOR, LAYOUTS
-
-	toolbarItem newItem;
-	newItem.action = action;
-	toollist.push_back(newItem);
-}
-
-
-void Toolbar::Pimpl::clean()
-{
-	//reset(); // I do not understand what this reset() is, anyway
-
-	//now delete all the objects..
-	if (owner)
-		fl_freeze_form(owner->getForm());
-
-	// G++ vector does not have clear defined
-	//toollist.clear();
-	toollist.erase(toollist.begin(), toollist.end());
-
-	lyxerr[Debug::GUI] << "Combox: " << combox << endl;
-	if (combox) {
-		delete combox;
-		combox = 0;
-	}
-
-	if (owner)
-		fl_unfreeze_form(owner->getForm());
-	lyxerr[Debug::GUI] << "toolbar cleaned" << endl;
-	cleaned = true;
-}
-
-
-void Toolbar::Pimpl::reset()
-{
-	//toollist = 0; // what is this supposed to do?
-	cleaned = false;
-	lightReset();
-}
-
-
-void Toolbar::Pimpl::lightReset() {
-	xpos = sxpos - standardspacing;
-	ypos = sypos;
+ 
+	toollist_.push_back(item);
 }

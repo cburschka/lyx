@@ -36,16 +36,6 @@ public:
 	///
 	~Toolbar();
 
-	/// (re)sets the toolbar
-	void set(bool doingmain = false);
-
-	/** this is to be the entry point to the toolbar
-	  frame, where you can change the toolbar realtime. */
-	void edit();
-	/// add a new button to the toolbar.
-	void add(int , bool doclean = true);
-	/// name of func instead of kb_action
-	void add(string const & , bool doclean = true);
 	/// update the state of the icons
 	void update();
 
