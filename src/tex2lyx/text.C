@@ -962,6 +962,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			       t.cat() == catOther ||
 			       t.cat() == catAlign ||
 			       t.cat() == catParameter) {
+			// This translates "&" to "\\&" which may be wrong...
 			context.check_layout(os);
 			os << t.character();
 		}
@@ -1147,8 +1148,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "appendix") {
-			p.skip_spaces();
 			context.add_extra_stuff("\\start_of_appendix\n");
+			// We need to start a new paragraph. Otherwise the
+			// appendix in 'bla\appendix\chapter{' would start
+			// too late.
+			context.new_paragraph(os);
+			// We need to make sure that the paragraph is
+			// generated even if it is empty. Otherwise the
+			// appendix in '\par\appendix\par\chapter{' would
+			// start too late.
+			context.check_layout(os);
+			// Both measures above may generate an additional
+			// empty paragraph, but that does not hurt, because
+			// whitespace does not matter here.
+			eat_whitespace(p, os, context, true);
 		}
 
 		// Must attempt to parse "Section*" before "Section".
