@@ -16,23 +16,27 @@
 #pragma interface
 #endif
 
-#include "paragraph.h"
+#include "support/types.h"
 
-struct Row;
+class Paragraph;
+class Row;
 
 /** All these variables should be explained. Matthias?
  */
 class LyXCursor {
 public:
+	/// position in a paragraph
+	typedef lyx::pos_type pos_type;
+	///
 	LyXCursor();
 	///
 	void par(Paragraph * p);
 	///
 	Paragraph * par() const;
 	///
-	void pos(Paragraph::size_type p);
+	void pos(pos_type p);
 	///
-	Paragraph::size_type pos() const;
+	pos_type pos() const;
 	///
 	void boundary(bool b);
 	///
@@ -57,7 +61,7 @@ private:
 	/// The paragraph the cursor is in.
 	Paragraph * par_;
 	/// The position inside the paragraph
-	Paragraph::size_type pos_;
+	pos_type pos_;
 	///
 	bool boundary_;
 	///

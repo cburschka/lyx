@@ -18,10 +18,9 @@
 
 #include "LString.h"
 
-#include <vector>
-
 #include "insets/inset.h" // Just for Inset::Code
 #include "layout.h"
+#include "support/types.h"
 
 class ParagraphParameters;
 class BufferParams;
@@ -80,13 +79,10 @@ public:
 	typedef char value_type;
 	/// The same as ParameterStruct::depth_type 
 	typedef unsigned int depth_type;
-	///
-	typedef std::vector<value_type> TextContainer;
-	///
-	/* This should be TextContainer::size_type, but we need
-	   signed values for now.
-	*/
-	typedef TextContainer::difference_type size_type;
+	/// a position in the paragraph
+	typedef lyx::pos_type pos_type;
+	/// a layout number
+	typedef lyx::layout_type layout_type;
 
 	///
 	Paragraph();
@@ -111,7 +107,7 @@ public:
 
 	string const asString(Buffer const *, bool label);
 	///
-	string const asString(Buffer const *, size_type beg, size_type end,
+	string const asString(Buffer const *, pos_type beg, pos_type end,
 			      bool label);
 	
 	///
@@ -160,14 +156,14 @@ public:
 	void resizeInsetsLyXText(BufferView *);
 
 	///
-	size_type size() const;
+	pos_type size() const;
 	///
 	void setContentsFromPar(Paragraph * par);
 	///
 	void clearContents();
 
 	///
-	LyXTextClass::LayoutList::size_type layout;
+	layout_type layout;
 
 	///
 	void setCounter(int i, int v);
@@ -182,8 +178,8 @@ public:
 	///
 	char itemdepth;
 
-        /// 
-        InsetBibKey * bibkey;  // ale970302
+	/// 
+	InsetBibKey * bibkey;  // ale970302
 
 	///
 	void next(Paragraph *);
@@ -218,30 +214,30 @@ public:
 	///
 	void setLabelWidthString(string const & s);
 	///
-	LyXTextClass::LayoutList::size_type getLayout() const;
+	layout_type getLayout() const;
 	///
 	char getAlign() const;
 	///
 	depth_type getDepth() const;
 	///
-	void setLayout(LyXTextClass::LayoutList::size_type new_layout);
+	void setLayout(layout_type new_layout);
 	///
-	void setOnlyLayout(LyXTextClass::LayoutList::size_type new_layout);
+	void setOnlyLayout(layout_type new_layout);
 	///
 	int getFirstCounter(int i) const;
 	///
-	void erase(size_type pos);
+	void erase(pos_type pos);
 	/** the flag determines wether the layout should be copied
 	 */ 
-	void breakParagraph(BufferParams const &, size_type pos, int flag);
+	void breakParagraph(BufferParams const &, pos_type pos, int flag);
 	///
-	void breakParagraphConservative(BufferParams const &, size_type pos);
+	void breakParagraphConservative(BufferParams const &, pos_type pos);
 	/** Get unistantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
 	*/
 	LyXFont const
-	getFontSettings(BufferParams const &, size_type pos) const;
+	getFontSettings(BufferParams const &, pos_type pos) const;
 	///
 	LyXFont const getFirstFontSettings() const;
 
@@ -252,62 +248,62 @@ public:
 	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
 	    LyXFont::TOGGLE.
 	*/
-	LyXFont const getFont(BufferParams const &, size_type pos) const;
+	LyXFont const getFont(BufferParams const &, pos_type pos) const;
 	LyXFont const getLayoutFont(BufferParams const &) const;
 	LyXFont const getLabelFont(BufferParams const &) const;
 	///
-	value_type getChar(size_type pos) const;
+	value_type getChar(pos_type pos) const;
 	///
-	value_type getUChar(BufferParams const &, size_type pos) const;
+	value_type getUChar(BufferParams const &, pos_type pos) const;
 	/// The position must already exist.
-	void setChar(size_type pos, value_type c);
+	void setChar(pos_type pos, value_type c);
 	///
-	void setFont(size_type pos, LyXFont const & font);
+	void setFont(pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
-	LyXFont::FONT_SIZE highestFontInRange(size_type startpos,
-	                                      size_type endpos,
+	LyXFont::FONT_SIZE highestFontInRange(pos_type startpos,
+	                                      pos_type endpos,
 										  LyXFont::FONT_SIZE const def_size) const;
 	///
-	void insertChar(size_type pos, value_type c);
+	void insertChar(pos_type pos, value_type c);
 	///
-	void insertChar(size_type pos, value_type c, LyXFont const &);
+	void insertChar(pos_type pos, value_type c, LyXFont const &);
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	void insertInset(size_type pos, Inset * inset);
+	void insertInset(pos_type pos, Inset * inset);
 	///
-	void insertInset(size_type pos, Inset * inset, LyXFont const &);
+	void insertInset(pos_type pos, Inset * inset, LyXFont const &);
 	///
 	bool insetAllowed(Inset::Code code);
 	///
-	Inset * getInset(size_type pos);
+	Inset * getInset(pos_type pos);
 	///
-	Inset const * getInset(size_type pos) const;
+	Inset const * getInset(pos_type pos) const;
 	/** important for cut and paste
 	    Temporary change from BufferParams to Buffer. Will revert when we
 	    get rid of the argument to Inset::clone(Buffer const &) */
-	void copyIntoMinibuffer(Buffer const &, size_type pos) const;
+	void copyIntoMinibuffer(Buffer const &, pos_type pos) const;
 	///
-	void cutIntoMinibuffer(BufferParams const &, size_type pos);
+	void cutIntoMinibuffer(BufferParams const &, pos_type pos);
 	///
-	bool insertFromMinibuffer(size_type pos);
+	bool insertFromMinibuffer(pos_type pos);
 
 	///
-	bool isHfill(size_type pos) const;
+	bool isHfill(pos_type pos) const;
 	///
-	bool isInset(size_type pos) const;
+	bool isInset(pos_type pos) const;
 	///
-	bool isNewline(size_type pos) const;
+	bool isNewline(pos_type pos) const;
 	///
-	bool isSeparator(size_type pos) const;
+	bool isSeparator(pos_type pos) const;
 	///
-	bool isLineSeparator(size_type pos) const;
+	bool isLineSeparator(pos_type pos) const;
 	///
-	bool isKomma(size_type pos) const;
+	bool isKomma(pos_type pos) const;
 	/// Used by the spellchecker
-	bool isLetter(size_type pos) const;
+	bool isLetter(pos_type pos) const;
 	/// 
-	bool isWord(size_type pos) const;
+	bool isWord(pos_type pos) const;
 
 	/** This one resets all layout and dtp switches but not the font
 	    of the single characters
@@ -332,13 +328,13 @@ public:
 	int stripLeadingSpaces(LyXTextClassList::size_type tclass); 
 
 #ifndef NO_PEXTRA_REALLY
-        /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
-           I have to set it on each of it's elements */
+	/* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
+	   I have to set it on each of it's elements */
 	///
-        void setPExtraType(BufferParams const &, int type,
+	void setPExtraType(BufferParams const &, int type,
 			   string const & width, string const & widthp);
 	///
-        void unsetPExtraType(BufferParams const &);
+	void unsetPExtraType(BufferParams const &);
 #endif
 	///
 	bool sgmlConvertChar(char c, string & sgml_string);
@@ -350,11 +346,11 @@ private:
 	///
 	struct InsetTable {
 		///
-		size_type pos;
+		pos_type pos;
 		///
 		Inset * inset;
 		///
-		InsetTable(size_type p, Inset * i) : pos(p), inset(i) {}
+		InsetTable(pos_type p, Inset * i) : pos(p), inset(i) {}
 	};
 
 	///
@@ -377,7 +373,7 @@ public:
 		///
 		Inset * operator*() { return it->inset; }
 		///
-		size_type getPos() const {return it->pos; }
+		pos_type getPos() const { return it->pos; }
 		///
 		bool operator==(inset_iterator const & iter) const {
 			return it == iter.it;
@@ -398,7 +394,7 @@ public:
 	///
 	inset_iterator inset_iterator_end();
 	///
-	inset_iterator InsetIterator(size_type pos);
+	inset_iterator InsetIterator(pos_type pos);
 
 private:
 	/// if anything uses this we don't want it to.
@@ -415,4 +411,9 @@ private:
 	Pimpl * pimpl_;
 };
 
+inline bool isMetaInset(Paragraph const * par, Paragraph::pos_type const pos)
+{
+	return par->getChar(pos) == Paragraph::META_INSET;
+}
+ 
 #endif

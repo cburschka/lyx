@@ -2008,7 +2008,7 @@ int InsetText::cy(BufferView * bv) const
 }
 
 
-Paragraph::size_type InsetText::cpos(BufferView * bv) const
+Paragraph::pos_type InsetText::cpos(BufferView * bv) const
 {
 	return getLyXText(bv)->cursor.pos();
 }
@@ -2449,7 +2449,7 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 			clear = true;
 		}
 		Paragraph * lpar = lt->cursor.par();
-		Paragraph::size_type pos = lt->cursor.pos();
+		Paragraph::pos_type pos = lt->cursor.pos();
 		if (pos < lpar->size() - 1)
 			++pos;
 		else {

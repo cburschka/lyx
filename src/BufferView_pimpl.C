@@ -14,6 +14,7 @@
 #include "lyxscreen.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
+#include "paragraph.h"
 #include "LyXView.h"
 #include "commandtags.h"
 #include "lyxfunc.h"
@@ -67,7 +68,7 @@
 #include "undo_funcs.h"
 #include "mathed/formulabase.h"
 
-extern LyXTextClass::size_type current_layout;
+extern lyx::layout_type current_layout;
 
 using std::vector;
 using std::find_if;
@@ -294,9 +295,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	Paragraph * selendpar = 0;
 	UpdatableInset * the_locking_inset = 0;
 	
-	Paragraph::size_type pos = 0;
-	Paragraph::size_type selstartpos = 0;
-	Paragraph::size_type selendpos = 0;
+	pos_type pos = 0;
+	pos_type selstartpos = 0;
+	pos_type selendpos = 0;
 	bool selection = false;
 	bool mark_set  = false;
 
@@ -2799,7 +2800,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_CHARATCURSOR:
 	{
-		Paragraph::size_type pos = bv_->getLyXText()->cursor.pos();
+		pos_type pos = bv_->getLyXText()->cursor.pos();
 		if (pos < bv_->getLyXText()->cursor.par()->size())
 			owner_->getLyXFunc()->setMessage(
 				tostr(bv_->getLyXText()->cursor.par()->getChar(pos)));
@@ -3244,7 +3245,7 @@ void BufferView::Pimpl::smartQuote()
 {
 	LyXText const * lt = bv_->getLyXText();
 	Paragraph const * par = lt->cursor.par();
-	Paragraph::size_type pos = lt->cursor.pos();
+	pos_type pos = lt->cursor.pos();
 	char c;
 
 	if (!pos

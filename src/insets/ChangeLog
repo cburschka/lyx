@@ -1,3 +1,9 @@
+2001-11-26  André Pönitz <poenitz@gmx.net>
+	
+	* insettext.[Ch]:
+	*	insetert.C:
+	*	insetnote.C: reduce header dependencies, introduce type for positions
+
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* various: update for Alert.h

@@ -30,6 +30,7 @@
 #include "version.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
+#include "lyxrow.h"
 #include "bufferlist.h"
 #include "BufferView.h"
 #include "ColorHandler.h"

@@ -35,13 +35,13 @@ Paragraph * LyXCursor::par() const
 }
 
 
-void LyXCursor::pos(Paragraph::size_type p)
+void LyXCursor::pos(pos_type p)
 {
 	pos_ = p;
 }
 
 
-Paragraph::size_type LyXCursor::pos() const
+LyXCursor::pos_type LyXCursor::pos() const
 {
 	return pos_;
 }

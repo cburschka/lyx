@@ -40,8 +40,7 @@ Paragraph::Pimpl::Pimpl(Paragraph * owner)
 }
 
 
-Paragraph::Pimpl::Pimpl(Paragraph::Pimpl const & p, Paragraph * owner,
-                        bool same_ids)
+Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner, bool same_ids)
 	: params(p.params), owner_(owner)
 {
 	inset_owner = p.inset_owner;
@@ -67,8 +66,7 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const * par)
 }
 
 
-Paragraph::value_type
-Paragraph::Pimpl::getChar(Paragraph::size_type pos) const
+Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
 	lyx::Assert(pos <= size());
 	// This is stronger, and I belive that this is the assertion
@@ -82,15 +80,13 @@ Paragraph::Pimpl::getChar(Paragraph::size_type pos) const
 }
 
 
-void Paragraph::Pimpl::setChar(Paragraph::size_type pos,
-                               Paragraph::value_type c)
+void Paragraph::Pimpl::setChar(pos_type pos, value_type c)
 {
 	text[pos] = c;
 }
 
 
-void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
-                                  Paragraph::value_type c,
+void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
                                   LyXFont const & font)
 {
 	lyx::Assert(pos <= size());
@@ -120,7 +116,7 @@ void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
 }
 
 
-void Paragraph::Pimpl::insertInset(Paragraph::size_type pos,
+void Paragraph::Pimpl::insertInset(pos_type pos,
 				   Inset * inset, LyXFont const & font)
 {
 	lyx::Assert(inset);
@@ -146,7 +142,7 @@ void Paragraph::Pimpl::insertInset(Paragraph::size_type pos,
 }
 
 
-void Paragraph::Pimpl::erase(Paragraph::size_type pos)
+void Paragraph::Pimpl::erase(pos_type pos)
 {
 	lyx::Assert(pos < size());
 	// if it is an inset, delete the inset entry 
@@ -208,7 +204,7 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 
 
 void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
-				       Paragraph::size_type const i,
+				       pos_type const i,
 				       int & column, LyXFont const & font,
 				       LyXLayout const & style)
 {
@@ -244,7 +240,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 }
 
 
-bool Paragraph::Pimpl::isTextAt(string const & str, Paragraph::size_type pos)
+bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos)
 {
 	for (int i=0; i < str.length(); ++i) {
 		if (pos + i >= size())
@@ -266,9 +262,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     LyXFont & basefont,
 					     bool & open_font,
 					     LyXLayout const & style,
-					     Paragraph::size_type & i,
+					     pos_type & i,
 					     int & column,
-					     Paragraph::value_type const c)
+					     value_type const c)
 {
 	if (style.pass_thru) {
 		if (c != '\0') os << c;

@@ -38,6 +38,7 @@
 #include "font.h"
 #include "debug.h"
 #include "lyxrc.h"
+#include "lyxrow.h"
 #include "FloatList.h"
 #include "language.h"
 #include "ParagraphParameters.h"
@@ -155,7 +156,7 @@ LyXFont const realizeFont(LyXFont const & font,
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
 LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
-                               Paragraph::size_type pos) const
+                               pos_type pos) const
 {
 	lyx::Assert(pos >= 0);
 	
@@ -239,7 +240,7 @@ LyXFont const LyXText::getLabelFont(Buffer const * buf, Paragraph * par) const
 
 
 void LyXText::setCharFont(BufferView * bv, Paragraph * par,
-                          Paragraph::size_type pos, LyXFont const & fnt,
+                          pos_type pos, LyXFont const & fnt,
                           bool toggleall)
 {
 	Buffer const * buf = bv->buffer();
@@ -301,7 +302,7 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 
 
 void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
-                          Paragraph::size_type pos, LyXFont const & fnt)
+                          pos_type pos, LyXFont const & fnt)
 {
 	LyXFont font(fnt);
 
@@ -353,7 +354,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 // inserts a new row behind the specified row, increments
 // the touched counters
 void LyXText::insertRow(Row * row, Paragraph * par,
-                        Paragraph::size_type pos) const
+                        pos_type pos) const
 {
 	Row * tmprow = new Row;
 	if (!row) {
@@ -481,7 +482,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 		textclasslist.Style(buf->params.textclass, par->getLayout());
 
 	LyXFont layoutfont;
-	for (Paragraph::size_type pos = 0; pos < par->size(); ++pos) {
+	for (pos_type pos = 0; pos < par->size(); ++pos) {
 		if (pos < beginningOfMainBody(buf, par))
 			layoutfont = layout.labelfont;
 		else
@@ -497,7 +498,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 Paragraph * LyXText::setLayout(BufferView * bview,
 			       LyXCursor & cur, LyXCursor & sstart_cur,
 			       LyXCursor & send_cur,
-			       LyXTextClass::size_type layout)
+			       layout_type layout)
 {
 	Paragraph * endpar = send_cur.par()->next();
 	Paragraph * undoendpar = endpar;
@@ -559,7 +560,7 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void LyXText::setLayout(BufferView * bview, LyXTextClass::size_type layout)
+void LyXText::setLayout(BufferView * bview, layout_type layout)
 {
 	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
 
@@ -1162,7 +1163,7 @@ string LyXText::getStringToIndex(BufferView * bview)
 }
 
 
-Paragraph::size_type LyXText::beginningOfMainBody(Buffer const * buf,
+LyXText::pos_type LyXText::beginningOfMainBody(Buffer const * buf,
 			     Paragraph const * par) const
 {
 	if (textclasslist.Style(buf->params.textclass,
@@ -1878,7 +1879,7 @@ void LyXText::replaceSelectionWithString(BufferView * bview,
 	}
 
 	// Get font setting before we cut
-	Paragraph::size_type pos = selection.end.pos();
+	pos_type pos = selection.end.pos();
 	LyXFont const font = selection.start.par()
 		->getFontSettings(bview->buffer()->params,
 				  selection.start.pos());
@@ -1900,7 +1901,7 @@ void LyXText::replaceSelectionWithString(BufferView * bview,
 void LyXText::insertStringAsLines(BufferView * bview, string const & str)
 {
 	Paragraph * par = cursor.par();
-	Paragraph::size_type pos = cursor.pos();
+	pos_type pos = cursor.pos();
 	Paragraph * endpar = cursor.par()->next();
 	
 	setCursorParUndo(bview);
@@ -1976,12 +1977,12 @@ bool LyXText::gotoNextInset(BufferView * bview,
 
 
 void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
-                             Paragraph::size_type pos)
+                             pos_type pos)
 {
 	LyXCursor tmpcursor;			
 
 	int y = 0;
-	Paragraph::size_type z;
+	pos_type z;
 	Row * row = getRow(par, pos, y);
 	
 	// is there a break one row above
@@ -2006,7 +2007,7 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 	}
 
 	int const tmpheight = row->height();
-	Paragraph::size_type const tmplast = rowLast(row);
+	pos_type const tmplast = rowLast(row);
 	refresh_y = y;
 	refresh_row = row;
 	
@@ -2084,7 +2085,7 @@ bool LyXText::updateInset(BufferView * bview, Inset * inset)
 
 
 void LyXText::setCursor(BufferView * bview, Paragraph * par,
-                        Paragraph::size_type pos, 
+                        pos_type pos, 
                         bool setfont, bool boundary) const
 {
 	LyXCursor old_cursor = cursor;
@@ -2094,7 +2095,7 @@ void LyXText::setCursor(BufferView * bview, Paragraph * par,
 
 
 void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
-			Paragraph::size_type pos, bool boundary) const
+			pos_type pos, bool boundary) const
 {
 	cur.par(par);
 	cur.pos(pos);
@@ -2115,8 +2116,8 @@ void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
 	float fill_label_hfill;
 	prepareToPrint(bview, row, x, fill_separator, fill_hfill,
 		       fill_label_hfill);
-	Paragraph::size_type cursor_vpos = 0;
-	Paragraph::size_type last = rowLastPrintable(row);
+	pos_type cursor_vpos = 0;
+	pos_type last = rowLastPrintable(row);
 
 	if (pos > last + 1)   // This shouldn't happen.
 		pos = last + 1;
@@ -2138,14 +2139,14 @@ void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 	
-	Paragraph::size_type main_body =
+	pos_type main_body =
 		beginningOfMainBody(bview->buffer(), row->par());
 	if ((main_body > 0) &&
 	    ((main_body-1 > last) || 
 	     !row->par()->isLineSeparator(main_body-1)))
 		main_body = 0;
 	
-	for (Paragraph::size_type vpos = row->pos();
+	for (pos_type vpos = row->pos();
 	     vpos < cursor_vpos; ++vpos) {
 		pos = vis2log(vpos);
 		if (main_body > 0 && pos == main_body - 1) {
@@ -2173,13 +2174,13 @@ void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
 	}
 	
 	cur.x(int(x));
-   	cur.x_fix(cur.x());
+	cur.x_fix(cur.x());
 	cur.row(row);
 }
 
 
 void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
-			      Paragraph::size_type pos,
+			      pos_type pos,
 			      bool setfont, bool boundary) const
 {
 	InsetText * it = static_cast<InsetText *>(par->inInset());
@@ -2213,7 +2214,7 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 
 void LyXText::setCurrentFont(BufferView * bview) const
 {
-	Paragraph::size_type pos = cursor.pos();
+	pos_type pos = cursor.pos();
 	if (cursor.boundary() && pos > 0)
 		--pos;
 
@@ -2265,9 +2266,7 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
    
 	Row * row = getRowNearY(y);
 	bool bound = false;
-	Paragraph::size_type const column = getColumnNearX(bview, row, x,
-							   bound);
-   
+	pos_type const column = getColumnNearX(bview, row, x, bound);
 	cur.par(row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);

@@ -22,11 +22,14 @@
 
 struct Paragraph::Pimpl {
 	///
+	typedef std::vector<value_type> TextContainer;
+
+	///
 	Pimpl(Paragraph * owner);
 	/// Copy constructor
 	Pimpl(Pimpl const &, Paragraph * owner, bool same_ids = false);
 	///
-	Paragraph::size_type size() const {
+	pos_type size() const {
 		return text.size();
 	}
 	///
@@ -34,20 +37,15 @@ struct Paragraph::Pimpl {
 	///
 	void setContentsFromPar(Paragraph const * par);
 	///
-	Paragraph::value_type
-	getChar(Paragraph::size_type pos) const;
+	value_type getChar(pos_type pos) const;
 	///
-	void setChar(Paragraph::size_type pos, Paragraph::value_type c);
+	void setChar(pos_type pos, value_type c);
 	///
-	void insertChar(Paragraph::size_type pos,
-			Paragraph::value_type c,
-			LyXFont const & font);
+	void insertChar(pos_type pos, value_type c, LyXFont const & font);
 	///
-	void insertInset(Paragraph::size_type pos,
-			 Inset * inset,
-			 LyXFont const & font);
+	void insertInset(pos_type pos, Inset * inset, LyXFont const & font);
 	///
-	void erase(Paragraph::size_type pos);
+	void erase(pos_type pos);
 	///
 	LyXFont const realizeFont(LyXFont const & font,
 				  BufferParams const & bparams) const;
@@ -62,8 +60,7 @@ struct Paragraph::Pimpl {
 	struct matchIT {
 		/// used by lower_bound and upper_bound
 		inline
-		int operator()(Paragraph::InsetTable const & a,
-			       Paragraph::InsetTable const & b) const {
+		int operator()(InsetTable const & a, InsetTable const & b) const {
 			return a.pos < b.pos;
 		}
 	};
@@ -80,22 +77,22 @@ struct Paragraph::Pimpl {
 	*/
 	struct FontTable  {
 		///
-		FontTable(size_type p, LyXFont const & f)
+		FontTable(pos_type p, LyXFont const & f)
 			: pos_(p)
 			{
 				font_ = container.get(f);
 			}
 		///
-		size_type pos() const { return pos_; }
+		pos_type pos() const { return pos_; }
 		///
-		void pos(size_type p) { pos_ = p; }
+		void pos(pos_type p) { pos_ = p; }
 		///
 		LyXFont const & font() const { return *font_; }
 		///
 		void font(LyXFont const & f) { font_ = container.get(f);}
 	private:
 		/// End position of paragraph this font attribute covers
-		size_type pos_;
+		pos_type pos_;
 		/** Font. Interpretation of the font values:
 		    If a value is LyXFont::INHERIT_*, it means that the font 
 		    attribute is inherited from either the layout of this
@@ -115,8 +112,7 @@ struct Paragraph::Pimpl {
 	struct matchFT {
 		/// used by lower_bound and upper_bound
 		inline
-		int operator()(Paragraph::Pimpl::FontTable const & a,
-			       Paragraph::Pimpl::FontTable const & b) const {
+		int operator()(FontTable const & a, FontTable const & b) const {
 			return a.pos() < b.pos();
 		}
 	};
@@ -130,7 +126,7 @@ struct Paragraph::Pimpl {
 				 std::ostream &, TexRow & texrow);
 	///
 	void simpleTeXBlanks(std::ostream &, TexRow & texrow,
-			     size_type const i,
+			     pos_type const i,
 			     int & column, LyXFont const & font,
 			     LyXLayout const & style);
 	///
@@ -140,7 +136,7 @@ struct Paragraph::Pimpl {
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont, bool & open_font,
 				   LyXLayout const & style,
-				   size_type & i,
+				   pos_type & i,
 				   int & column, value_type const c);
 	///
 	Paragraph * getParFromID(int id) const;
@@ -152,7 +148,7 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 private:
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(string const & str, Paragraph::size_type pos);
+	bool isTextAt(string const & str, pos_type pos);
  
 	/// Who owns us?
 	Paragraph * owner_;

@@ -67,7 +67,7 @@ InsetNote::InsetNote(Buffer const * buf, string const & contents,
 	init();
 
 	Paragraph * par = inset.paragraph();
-	Paragraph::size_type pos = 0;
+	Paragraph::pos_type pos = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, buf->params.language);
 
 	// Since XForms doesn't support RTL, we can assume that old notes

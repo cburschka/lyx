@@ -29,13 +29,13 @@ void Row::par(Paragraph * p)
 }
 
 
-void Row::pos(Paragraph::size_type p)
+void Row::pos(pos_type p)
 {
 	pos_ = p;
 }
 
 
-Paragraph::size_type Row::pos() const
+Row::pos_type Row::pos() const
 {
 	return pos_;
 }

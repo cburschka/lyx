@@ -16,11 +16,15 @@
 #pragma interface
 #endif
 
-#include "paragraph.h"
+#include "support/types.h"
+
+class Paragraph;
 
 ///
 class Row {
 public:
+	/// A position in the row
+	typedef lyx::pos_type pos_type;
 	///
 	Row();
 	///
@@ -30,9 +34,9 @@ public:
 	///
 	Paragraph * par() const;
 	///
-	void pos(Paragraph::size_type p);
+	void pos(pos_type p);
 	///
-	Paragraph::size_type pos() const;
+	pos_type pos() const;
 	///
 	void fill(int f);
 	///
@@ -65,7 +69,7 @@ private:
 	///
 	Paragraph * par_;
 	///
-	Paragraph::size_type pos_;
+	pos_type pos_;
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill_;

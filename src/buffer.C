@@ -1334,7 +1334,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 }
 
 // needed to insert the selection
-void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
+void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::pos_type & pos,
                                  LyXFont const & fn,string const & str) const
 {
 	LyXLayout const & layout = textclasslist.Style(params.textclass, 
@@ -1368,8 +1368,8 @@ void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
 				++pos;
 				space_inserted = true;
 			} else {
-				const Paragraph::size_type nb = 8 - pos % 8;
-				for (Paragraph::size_type a = 0; 
+				const Paragraph::pos_type nb = 8 - pos % 8;
+				for (Paragraph::pos_type a = 0; 
 				     a < nb ; ++a) {
 					par->insertChar(pos, ' ', font);
 					++pos;
@@ -1808,7 +1808,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		lyxerr << "Should this ever happen?" << endl;
 	}
 
-	for (Paragraph::size_type i = 0; i < par->size(); ++i) {
+	for (Paragraph::pos_type i = 0; i < par->size(); ++i) {
 		if (!i && !noparbreak) {
 			if (linelen > 0)
 				buffer << "\n\n";
@@ -2791,7 +2791,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 	stack<PAR_TAG> tag_state;
 	// parsing main loop
-	for (Paragraph::size_type i = 0; i < par->size(); ++i) {
+	for (Paragraph::pos_type i = 0; i < par->size(); ++i) {
 
 		PAR_TAG tag_close = NONE;
 		list < PAR_TAG > tag_open;
@@ -3283,7 +3283,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 	//	os << string(depth,' ');
 
 	// parsing main loop
-	for (Paragraph::size_type i = 0;
+	for (Paragraph::pos_type i = 0;
 	     i < par->size(); ++i) {
 		LyXFont font = par->getFont(params, i);
 
@@ -3694,7 +3694,7 @@ bool Buffer::isMultiLingual()
 
 
 Buffer::inset_iterator::inset_iterator(Paragraph * paragraph,
-				       Paragraph::size_type pos)
+				       Paragraph::pos_type pos)
 	: par(paragraph)
 {
 	it = par->InsetIterator(pos);

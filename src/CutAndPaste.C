@@ -88,7 +88,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		// only within one paragraph
 		if (realcut)
 			buf = new Paragraph;
-		Paragraph::size_type i = start;
+		Paragraph::pos_type i = start;
 		if (end > startpar->size())
 			end = startpar->size();
 		for (; i < end; ++i) {
@@ -155,7 +155,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 	    startpar == endpar) {
 		// only within one paragraph
 		buf = new Paragraph;
-		Paragraph::size_type i = start;
+		Paragraph::pos_type i = start;
 		if (end > startpar->size())
 			end = startpar->size();
 		for (; i < end; ++i) {
@@ -179,7 +179,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		tmppar2->next(0);
 		
 		// the buf paragraph is too big
-		Paragraph::size_type tmpi2 = start;
+		Paragraph::pos_type tmpi2 = start;
 		for (; tmpi2; --tmpi2)
 			buf->erase(0);
 		

@@ -243,7 +243,7 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 	
 	int column = 0;
-	for (size_type i = 0; i < size(); ++i) {
+	for (pos_type i = 0; i < size(); ++i) {
 		if (!i) {
 			os << "\n";
 			column = 0;
@@ -398,8 +398,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 
 
 // First few functions needed for cut and paste and paragraph breaking.
-void Paragraph::copyIntoMinibuffer(Buffer const & buffer,
-				      Paragraph::size_type pos) const
+void Paragraph::copyIntoMinibuffer(Buffer const & buffer, pos_type pos) const
 {
 	BufferParams bparams = buffer.params;
 
@@ -418,8 +417,7 @@ void Paragraph::copyIntoMinibuffer(Buffer const & buffer,
 }
 
 
-void Paragraph::cutIntoMinibuffer(BufferParams const & bparams,
-				     Paragraph::size_type pos)
+void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 {
 	minibuffer_char = getChar(pos);
 	minibuffer_font = getFontSettings(bparams, pos);
@@ -450,7 +448,7 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams,
 }
 
 
-bool Paragraph::insertFromMinibuffer(Paragraph::size_type pos)
+bool Paragraph::insertFromMinibuffer(pos_type pos)
 {
 	if (minibuffer_char == Paragraph::META_INSET) {
 		if (!insetAllowed(minibuffer_inset->lyxCode())) {
@@ -480,7 +478,7 @@ void Paragraph::clear()
 }
 
 
-void Paragraph::erase(Paragraph::size_type pos)
+void Paragraph::erase(pos_type pos)
 {
 	pimpl_->erase(pos);
 }
@@ -494,29 +492,28 @@ bool Paragraph::checkInsertChar(LyXFont & font)
 }
 
 
-void Paragraph::insertChar(Paragraph::size_type pos, Paragraph::value_type c)
+void Paragraph::insertChar(pos_type pos, Paragraph::value_type c)
 {
 	LyXFont const f(LyXFont::ALL_INHERIT);
 	insertChar(pos, c, f);
 }
 
 
-void Paragraph::insertChar(Paragraph::size_type pos, Paragraph::value_type c,
+void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
                            LyXFont const & font)
 {
 	pimpl_->insertChar(pos, c, font);
 }
 
 
-void Paragraph::insertInset(Paragraph::size_type pos, Inset * inset)
+void Paragraph::insertInset(pos_type pos, Inset * inset)
 {
 	LyXFont const f(LyXFont::ALL_INHERIT);
 	insertInset(pos, inset, f);
 }
 
 
-void Paragraph::insertInset(Paragraph::size_type pos, Inset * inset,
-                            LyXFont const & font)
+void Paragraph::insertInset(pos_type pos, Inset * inset, LyXFont const & font)
 {
 	pimpl_->insertInset(pos, inset, font);
 }
@@ -532,7 +529,7 @@ bool Paragraph::insetAllowed(Inset::Code code)
 }
 
 
-Inset * Paragraph::getInset(Paragraph::size_type pos)
+Inset * Paragraph::getInset(pos_type pos)
 {
 	lyx::Assert(pos < size());
 
@@ -557,7 +554,7 @@ Inset * Paragraph::getInset(Paragraph::size_type pos)
 }
 
 
-Inset const * Paragraph::getInset(Paragraph::size_type pos) const
+Inset const * Paragraph::getInset(pos_type pos) const
 {
 	lyx::Assert(pos < size());
 
@@ -583,7 +580,7 @@ Inset const * Paragraph::getInset(Paragraph::size_type pos) const
 
 // Gets uninstantiated font setting at position.
 LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
-                                         Paragraph::size_type pos) const
+                                         pos_type pos) const
 {
 	lyx::Assert(pos <= size());
 	
@@ -627,14 +624,14 @@ LyXFont const Paragraph::getFirstFontSettings() const
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
 LyXFont const Paragraph::getFont(BufferParams const & bparams,
-				 Paragraph::size_type pos) const
+				 pos_type pos) const
 {
 	lyx::Assert(pos >= 0);
 	
 	LyXLayout const & layout =
 		textclasslist.Style(bparams.textclass, 
 				    getLayout());
-	Paragraph::size_type main_body = 0;
+	pos_type main_body = 0;
 	if (layout.labeltype == LABEL_MANUAL)
 		main_body = beginningOfMainBody();
 
@@ -682,8 +679,7 @@ LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams) const
 
 /// Returns the height of the highest font in range
 LyXFont::FONT_SIZE
-Paragraph::highestFontInRange(Paragraph::size_type startpos,
-                              Paragraph::size_type endpos,
+Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
 			      LyXFont::FONT_SIZE const def_size) const
 {
 	if (pimpl_->fontlist.empty())
@@ -717,7 +713,7 @@ Paragraph::highestFontInRange(Paragraph::size_type startpos,
 
 Paragraph::value_type
 Paragraph::getUChar(BufferParams const & bparams,
-		       Paragraph::size_type pos) const
+		       pos_type pos) const
 {
 	value_type c = getChar(pos);
 	if (!lyxrc.rtl_support)
@@ -757,7 +753,7 @@ Paragraph::getUChar(BufferParams const & bparams,
 }
 
 
-void Paragraph::setFont(Paragraph::size_type pos,
+void Paragraph::setFont(pos_type pos,
 			   LyXFont const & font)
 {
 	lyx::Assert(pos <= size());
@@ -859,7 +855,7 @@ Paragraph const * Paragraph::previous() const
 
 
 void Paragraph::breakParagraph(BufferParams const & bparams,
-				  Paragraph::size_type pos,
+				  pos_type pos,
 				  int flag)
 {
 	// create a new paragraph
@@ -893,9 +889,9 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		
 		// copy everything behind the break-position
 		// to the new paragraph
-		size_type pos_end = pimpl_->size() - 1;
-		size_type i = pos;
-		size_type j = pos;
+		pos_type pos_end = pimpl_->size() - 1;
+		pos_type i = pos;
+		pos_type j = pos;
 		for (; i <= pos_end; ++i) {
 			cutIntoMinibuffer(bparams, i);
 			if (tmp->insertFromMinibuffer(j - pos))
@@ -956,7 +952,7 @@ bool Paragraph::hasSameLayout(Paragraph const * par) const
 
 
 void Paragraph::breakParagraphConservative(BufferParams const & bparams,
-					   Paragraph::size_type pos)
+					   pos_type pos)
 {
 	// create a new paragraph
 	Paragraph * tmp = new Paragraph(this);
@@ -967,17 +963,17 @@ void Paragraph::breakParagraphConservative(BufferParams const & bparams,
 	if (size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
-		size_type pos_end = pimpl_->size() - 1;
+		pos_type pos_end = pimpl_->size() - 1;
 
-		//size_type i = pos;
-		//size_type j = pos;
-		for (size_type i = pos, j = pos; i <= pos_end; ++i) {
+		//pos_type i = pos;
+		//pos_type j = pos;
+		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
 			cutIntoMinibuffer(bparams, i);
 			if (tmp->insertFromMinibuffer(j - pos))
 				++j;
 		}
 		
-		for (size_type k = pos_end; k >= pos; --k) {
+		for (pos_type k = pos_end; k >= pos; --k) {
 			erase(k);
 		}
 	}
@@ -997,11 +993,11 @@ void Paragraph::pasteParagraph(BufferParams const & bparams)
 	params().spaceBottom(the_next->params().spaceBottom());
 	params().pagebreakBottom(the_next->params().pagebreakBottom());
 
-	size_type pos_end = the_next->pimpl_->size() - 1;
-	size_type pos_insert = size();
+	pos_type pos_end = the_next->pimpl_->size() - 1;
+	pos_type pos_insert = size();
 
 	// ok, now copy the paragraph
-	for (size_type i = 0, j = 0; i <= pos_end; ++i) {
+	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
 		the_next->cutIntoMinibuffer(bparams, i);
 		if (insertFromMinibuffer(pos_insert + j))
 			++j;
@@ -1020,7 +1016,7 @@ int Paragraph::getEndLabel(BufferParams const & bparams) const
 	Paragraph const * par = this;
 	depth_type par_depth = getDepth();
 	while (par) {
-		LyXTextClass::LayoutList::size_type layout = par->getLayout();
+		Paragraph::layout_type layout = par->getLayout();
 		int const endlabeltype =
 			textclasslist.Style(bparams.textclass,
 					    layout).endlabeltype;
@@ -1085,15 +1081,15 @@ void Paragraph::setLabelWidthString(string const & s)
 }
 
 
-void Paragraph::setOnlyLayout(LyXTextClass::size_type new_layout)
+void Paragraph::setOnlyLayout(layout_type new_layout)
 {
 	layout = new_layout;
 }
 
 
-void Paragraph::setLayout(LyXTextClass::size_type new_layout)
+void Paragraph::setLayout(layout_type new_layout)
 {
-        layout = new_layout;
+	layout = new_layout;
 	params().labelWidthString(string());
 	params().align(LYX_ALIGN_LAYOUT);
 	params().spaceTop(VSpace(VSpace::NONE));
@@ -1114,7 +1110,7 @@ int Paragraph::beginningOfMainBody() const
 	// Unroll the first two cycles of the loop
 	// and remember the previous character to
 	// remove unnecessary GetChar() calls
-	size_type i = 0;
+	pos_type i = 0;
 	if (i < size()
 	    && getChar(i) != Paragraph::META_NEWLINE) {
 		++i;
@@ -1206,7 +1202,7 @@ int Paragraph::autoDeleteInsets()
 
 
 Paragraph::inset_iterator
-Paragraph::InsetIterator(Paragraph::size_type pos)
+Paragraph::InsetIterator(pos_type pos)
 {
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
@@ -1458,7 +1454,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	LyXFont basefont;
 
 	// Maybe we have to create a optional argument.
-	size_type main_body;
+	pos_type main_body;
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
 	else
@@ -1491,7 +1487,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 	texrow.start(this, 0);
 
-	for (size_type i = 0; i < size(); ++i) {
+	for (pos_type i = 0; i < size(); ++i) {
 		++column;
 		// First char in paragraph or after label?
 		if (i == main_body) {
@@ -1838,44 +1834,44 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 }
 
 
-bool Paragraph::isHfill(size_type pos) const
+bool Paragraph::isHfill(pos_type pos) const
 {
 	return IsHfillChar(getChar(pos));
 }
 
 
-bool Paragraph::isInset(size_type pos) const
+bool Paragraph::isInset(pos_type pos) const
 {
 	return IsInsetChar(getChar(pos));
 }
 
 
-bool Paragraph::isNewline(size_type pos) const
+bool Paragraph::isNewline(pos_type pos) const
 {
 	return pos >= 0 && IsNewlineChar(getChar(pos));
 }
 
 
-bool Paragraph::isSeparator(size_type pos) const
+bool Paragraph::isSeparator(pos_type pos) const
 {
 	return IsSeparatorChar(getChar(pos));
 }
 
 
-bool Paragraph::isLineSeparator(size_type pos) const
+bool Paragraph::isLineSeparator(pos_type pos) const
 {
 	return IsLineSeparatorChar(getChar(pos));
 }
 
 
-bool Paragraph::isKomma(size_type pos) const
+bool Paragraph::isKomma(pos_type pos) const
 {
 	return IsKommaChar(getChar(pos));
 }
 
 
 /// Used by the spellchecker
-bool Paragraph::isLetter(Paragraph::size_type pos) const
+bool Paragraph::isLetter(pos_type pos) const
 {
 	value_type const c = getChar(pos);
 	if (IsLetterChar(c))
@@ -1888,7 +1884,7 @@ bool Paragraph::isLetter(Paragraph::size_type pos) const
 }
  
  
-bool Paragraph::isWord(size_type pos ) const
+bool Paragraph::isWord(pos_type pos ) const
 {
 	return IsWordChar(getChar(pos)) ;
 }
@@ -1924,7 +1920,7 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 void Paragraph::changeLanguage(BufferParams const & bparams,
 				  Language const * from, Language const * to)
 {
-	for (size_type i = 0; i < size(); ++i) {
+	for (pos_type i = 0; i < size(); ++i) {
 		LyXFont font = getFontSettings(bparams, i);
 		if (font.language() == from) {
 			font.setLanguage(to);
@@ -1960,7 +1956,7 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 		s += params().labelString() + ' ';
 	string::size_type const len = s.size();
 
-	for (Paragraph::size_type i = 0; i < size(); ++i) {
+	for (pos_type i = 0; i < size(); ++i) {
 		value_type c = getChar(i);
 		if (IsPrintable(c))
 			s += c;
@@ -1980,16 +1976,14 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 
 
 string const Paragraph::asString(Buffer const * buffer, 
-				 Paragraph::size_type beg,
-				 Paragraph::size_type end,
-				 bool label)
+				 pos_type beg, pos_type end, bool label)
 {
 	ostringstream ost;
 
 	if (beg == 0 && label && !params().labelString().empty())
 		ost << params().labelString() << ' ';
 
-	for (Paragraph::size_type i = beg; i < end; ++i) {
+	for (pos_type i = beg; i < end; ++i) {
 		value_type const c = getUChar(buffer->params, i);
 		if (IsPrintable(c))
 			ost << c;
@@ -2054,14 +2048,13 @@ void Paragraph::setContentsFromPar(Paragraph * par)
 }
 
 
-Paragraph::size_type Paragraph::size() const
+Paragraph::pos_type Paragraph::size() const
 {
 	return pimpl_->size();
 }
 
 
-Paragraph::value_type
-Paragraph::getChar(Paragraph::size_type pos) const
+Paragraph::value_type Paragraph::getChar(pos_type pos) const
 {
 	return pimpl_->getChar(pos);
 }
@@ -2079,7 +2072,7 @@ void  Paragraph::id(int id_arg)
 }
 
 
-LyXTextClass::LayoutList::size_type Paragraph::getLayout() const
+Paragraph::layout_type Paragraph::getLayout() const
 {
 	return layout;
 }
@@ -2124,7 +2117,7 @@ void Paragraph::incCounter(int i)
 }
 
 
-void Paragraph::setChar(size_type pos, value_type c)
+void Paragraph::setChar(pos_type pos, value_type c)
 {
 	pimpl_->setChar(pos, c);
 }
