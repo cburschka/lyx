@@ -9,6 +9,9 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifndef QT_QCOLORITEM_H
+#define QT_QCOLORITEM_H
+
 #include <qlistbox.h>
 #include <qcolor.h>
 
@@ -47,3 +50,5 @@ private:
 
 	QString text_;
 };
+
+#endif

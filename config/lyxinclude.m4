@@ -195,6 +195,8 @@ case $enable_optimization in
     *) lyx_opt=${enable_optimization};;
 esac
 
+lyx_pch_comp=no
+
 # set the debug flags correctly.
 if test x$GXX = xyes; then
   dnl Useful for global version info
@@ -212,7 +214,9 @@ if test x$GXX = xyes; then
       3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
       3.2*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.4*|3.5*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
+      3.4*|3.5*)
+	    CXXFLAGS="$lyx_opt -fno-exceptions"
+	    lyx_pch_comp=yes;;
       *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then
@@ -235,7 +239,9 @@ if test x$GXX = xyes; then
 	*)    CXXFLAGS="$CXXFLAGS -Wextra -Wall";;
     esac
   fi
-fi])dnl
+fi
+AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
+])dnl
 
 
 dnl NOT USED CURRENTLY*************************************

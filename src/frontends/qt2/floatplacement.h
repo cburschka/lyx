@@ -10,6 +10,9 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifndef QT_FLOATPLACEMENT_H
+#define QT_FLOATPLACEMENT_H
+
 #include <qwidget.h>
 #include <string>
 
@@ -56,3 +59,5 @@ private:
 	QCheckBox * bottomCB;
 	QCheckBox * topCB;
 };
+
+#endif

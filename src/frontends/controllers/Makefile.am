@@ -6,8 +6,10 @@ INCLUDES = -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 noinst_LTLIBRARIES = libcontrollers.la
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
 libcontrollers_la_SOURCES= \
-	Dialog.C \
+	$(PCH_FILE) Dialog.C \
 	Dialog.h \
 	Kernel.C \
 	Kernel.h \

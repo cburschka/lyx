@@ -9,6 +9,9 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifndef QT_QFONTEXAMPLE_H
+#define QT_QFONTEXAMPLE_H
+
 #include <qwidget.h>
 #include <qfont.h>
 
@@ -29,3 +32,5 @@ private:
 	QFont font_;
 	QString text_;
 };
+
+#endif

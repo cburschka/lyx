@@ -8,8 +8,12 @@ EXTRA_DIST = \
 	insettheorem.C \
 	insettheorem.h
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
+libinsets_la_DEPENDENCIES = $(PCH_FILE)
+
 libinsets_la_SOURCES = \
-	mailinset.C \
+	$(PCH_FILE) mailinset.C \
 	mailinset.h \
 	ExternalSupport.C \
 	ExternalSupport.h \

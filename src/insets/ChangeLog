@@ -1,3 +1,9 @@
+2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: new file
+
+	* Makefile.am: support pch 
+
 2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettabular.C (draw): whitespace
@@ -17,7 +23,7 @@
 
 	* insetinclude.C (priv_dispatch): fix showing dialog on mouse
 	release
-	(metrics): the insets is not full width any more. 
+	(metrics): the insets is not full width any more.
 	(draw): adjust; fix bad test for PREVIEW_OFF
 	(add_preview): fix bad test for PREVIEW_OFF
 	(display): do not return true when using \input
@@ -36,7 +42,7 @@
 	* insetcaption.C (InsetCaption): modify call to setDrawFrame
 	* insetcollapsable.C (InsetCollapsable): ditto
 	* insetenv.C (InsetEnvironment): ditto
-	
+
 2004-08-14  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]:

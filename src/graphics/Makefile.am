@@ -4,8 +4,10 @@ noinst_LTLIBRARIES = libgraphics.la
 
 INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
 libgraphics_la_SOURCES = \
-	GraphicsCache.h \
+	$(PCH_FILE) GraphicsCache.h \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \
 	GraphicsCacheItem.C \

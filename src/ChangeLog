@@ -1,3 +1,9 @@
+2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: new file
+
+	* Makefile.am: support pch
+
 2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (readParToken): remove the static LyXFont variable and
@@ -11,15 +17,15 @@
 
 	* rowpainter.C (paintText): reduce number of calls to singleWidth
 
-	* paragraph.C (isHfill): 
+	* paragraph.C (isHfill):
 	(isNewline): ws only
 
 2004-08-14  André Pönitz  <poenitz@gmx.net>
-	
+
 	* text.C:
 	* text2.C:
 	* rowpainter.C:
-	* lyxtext.h (several functions): use a Paragraph & argument 
+	* lyxtext.h (several functions): use a Paragraph & argument
 	instead of par_type
 
 2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -34,7 +40,7 @@
 
 	* tabular.h: remove bogus comments
 
-	* tabular.C (getDescentOfRow): 
+	* tabular.C (getDescentOfRow):
 	(isPartOfMultiColumn): add assertions
 
 	* lyxlength.C (inPixels): remove #warning
@@ -42,7 +48,7 @@
 2004-08-14  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph.h: inline getChar()
-	
+
 	* BufferView.h: remove unused declarations
 
 2004-08-14  José Matos  <jamatos@lyx.org>
@@ -98,7 +104,7 @@
 	* Makefile.am: new files to accomodate an 'external' (x,y)-position
 	cache for all insets in (at least partially) visible (top-level)
 	paragraphs.
-	
+
 	* BufferView_pimpl.C: reset external coord cache before every update.
 	This means the coord cache only contains valid entries.
 

@@ -8,6 +8,15 @@ AM_INSTALL_DATA_FLAGS = $(INSTALL) -m 644 -D
 
 AM_ETAGSFLAGS = --lang=c++
 
+if LYX_BUILD_PCH
+PCH_FLAGS = -Winvalid-pch --include=pch.h
+PCH_FILE = pch.h.gch
+endif
+
+pch.h.gch:
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+        $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -x c++-header pch.h
+
 if USE_INCLUDED_BOOST
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 endif

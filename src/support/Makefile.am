@@ -14,8 +14,10 @@ endif
 
 BUILT_SOURCES = path_defines.C
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
 libsupport_la_SOURCES = \
-	FileInfo.C \
+	$(PCH_FILE) FileInfo.C \
 	FileInfo.h \
 	FileMonitor.h \
 	FileMonitor.C \

@@ -1,3 +1,9 @@
+2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: new file
+
+	* Makefile.am: support pch
+
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (editXY): constify
@@ -10,7 +16,7 @@
 2004-08-12  André Pönitz  <poenitz@gmx.net>
 
 	* math_nestinset.C: Fix #1249
-		
+
 	* math_parser.C: Fix: #928
 
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>

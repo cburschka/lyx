@@ -12,9 +12,13 @@ INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(BOOST_INCLUDES)
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
 noinst_LTLIBRARIES = libxforms.la
 
 libxforms_la_LIBADD = @XFORMS_LIBS@ forms/*.lo
+
+libxforms_la_DEPENDENCIES = $(PCH_FILE)
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \

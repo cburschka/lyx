@@ -8,6 +8,10 @@ noinst_LTLIBRARIES = libfrontends.la
 
 INCLUDES = -I$(srcdir)/..  $(BOOST_INCLUDES)
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
+libfrontends_la_DEPENDENCIES = $(PCH_FILE)
+
 libfrontends_la_SOURCES = \
 	Alert.C \
 	Alert.h \

@@ -1,8 +1,20 @@
+2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* qfontexample.h: add header guards
+
+	* qcoloritem.h: add header guards
+
+	* floatplacement.h: add header guards
+
+	* pch.h: new file
+
+	* Makefile.am: support pch
+
 2004-08-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	Fix problem with the menu merging functionality of Qt/Mac. All the
 	code below is #ifdef Q_WS_MACX.
-	
+
 	* QLPopupMenu.C (showing): append dummy entries to one menu (so that
 	Qt/Mac moves them to the LyX menu) and give them special index value.
 	(fire): if index is more than indexOffset, dispatch to the
@@ -17,7 +29,7 @@
 
 2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* QPrefsDialog.C (change_color): 
+	* QPrefsDialog.C (change_color):
 	* QDocumentDialog.C (toggleBranchColor): set the parent of the
 	color picker correctly.
 
