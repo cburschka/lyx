@@ -1,6 +1,13 @@
 2003-07-27  Angus Leeming  <leeming@lyx.org>
 
-	* path_defines.{h,C.in}, : new files. Store/set the various lyx
+	* path_defines.{h,C.in} (build_lyxdir): is now a function, not a
+	global var.
+
+	* Makefile.am: set build_lyxdir at make time.
+
+2003-07-27  Angus Leeming  <leeming@lyx.org>
+
+	* path_defines.{h,C.in}: new files. Store/set the various lyx
 	paths, lyx_dir, top_srcdir, localedir, system_lyxdir, build_lyxdir
 	user_lyxdir.
 	

@@ -88,8 +88,10 @@ path_defines.C: build_path_defines
 build_path_defines: path_defines.C.in
 	@rm -f tmp_path_defines ;\
 	ABS_SRCDIR=`cd $(top_srcdir) && pwd` ;\
+	ABS_BUILDDIR=`cd ../.. && pwd` ;\
 	sed "s,%LYX_DIR%,$(pkgdatadir), ;\
 		s,%LOCALEDIR%,$(datadir)/locale, ;\
+		s,%BUILDDIR%,$${ABS_BUILDDIR}, ;\
 		s,%TOP_SRCDIR%,$${ABS_SRCDIR}," \
 		$(srcdir)/path_defines.C.in > tmp_path_defines ;\
 	if cmp -s tmp_path_defines path_defines.C ; then \

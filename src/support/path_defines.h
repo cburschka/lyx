@@ -17,6 +17,11 @@
 namespace lyx {
 namespace support {
 
+/* The absolute path to the lyx build directory.
+ * (Make-time value.)
+ */
+string const & build_lyxdir();
+
 /** \returns true if the user lyx dir existed already and did not need
  *  to be created afresh.
  */

@@ -65,7 +65,6 @@ extern void QuitLyX();
 extern LyXServer * lyxserver;
 
 extern string system_lyxdir;
-extern string build_lyxdir;
 extern string user_lyxdir;
 
 DebugStream lyxerr;

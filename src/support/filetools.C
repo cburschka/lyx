@@ -30,7 +30,8 @@
 #include "filetools.h"
 #include "lstrings.h"
 #include "FileInfo.h"
-#include "support/path.h"        // I know it's OS/2 specific (SMiyata)
+#include "path.h"
+#include "path_defines.h"
 #include "gettext.h"
 #include "lyxlib.h"
 #include "os.h"
@@ -80,7 +81,6 @@ using std::vector;
 using std::getline;
 
 extern string system_lyxdir;
-extern string build_lyxdir;
 extern string user_lyxdir;
 
 namespace lyx {
@@ -297,8 +297,8 @@ string const LibFileSearch(string const & dir, string const & name,
 	if (!fullname.empty())
 		return fullname;
 
-	if (!build_lyxdir.empty())
-		fullname = FileSearch(AddPath(build_lyxdir, dir), name, ext);
+	if (!build_lyxdir().empty())
+		fullname = FileSearch(AddPath(build_lyxdir(), dir), name, ext);
 	if (!fullname.empty())
 		return fullname;
 

@@ -27,7 +27,6 @@
 using std::endl;
 
 
-string build_lyxdir;
 string system_lyxdir;
 string user_lyxdir;
 
@@ -35,7 +34,7 @@ string user_lyxdir;
 namespace {
 
 /* The absolute path to the system-level lyx support files.
- * (Compile-time value.)
+ * (Make-time value.)
  */
 string const & lyx_dir()
 {
@@ -45,7 +44,7 @@ string const & lyx_dir()
 
 
 /* The absolute path to the top of the lyx build tree.
- * (Compile-time value.)
+ * (Make-time value.)
  */
 string const & lyx_top_srcdir()
 {
@@ -55,7 +54,7 @@ string const & lyx_top_srcdir()
 
 
 /* The absolute path to the system-level lyx locale directory.
- * (Compile-time value.)
+ * (Make-time value.)
  */
 string const & lyx_localedir()
 {
@@ -68,6 +67,13 @@ string const & lyx_localedir()
 
 namespace lyx {
 namespace support {
+
+string const & build_lyxdir()
+{
+	static string const bl = "%BUILDDIR%";
+	return bl;
+}
+
 
 bool setLyxPaths()
 {
