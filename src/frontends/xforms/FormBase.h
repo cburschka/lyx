@@ -53,7 +53,7 @@ protected:
 	/// Build the dialog
 	virtual void build() = 0;
 	/// Hide the dialog.
-	void hide();
+	virtual void hide();
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 
