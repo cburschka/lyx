@@ -1,5 +1,15 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* buffer.C:
+	* ParagraphParameters.C: move par params input to
+	a read() method
+
+	* lyxlex_pimpl.C: make nextToken()/next() after a pushToken()
+	behave like a normal read from the stream wrt reading
+	a line vs. a \\token
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* paragraph.C:
 	* ParagraphParameters.h:
 	* ParagraphParameters.C: move output code to a

@@ -536,7 +536,6 @@ Buffer::readToken(LyXLex & lex, ParagraphList & pars,
 		} else {
 #endif
 			Paragraph * par = new Paragraph();
-			par->layout(params.getLyXTextClass().defaultLayout());
 			if (params.tracking_changes)
 				par->trackChanges();
 			pos = 0;
@@ -546,6 +545,9 @@ Buffer::readToken(LyXLex & lex, ParagraphList & pars,
 			if (!layout->obsoleted_by().empty())
 				par->layout(params.getLyXTextClass()[layout->obsoleted_by()]);
 			par->params().depth(depth);
+
+			par->params().read(lex);
+
 			// insert after
 			if (pit != pars.end())
 				++pit;
@@ -652,69 +654,6 @@ Buffer::readToken(LyXLex & lex, ParagraphList & pars,
 		}
 		else
 			--depth;
-	} else if (token == "\\noindent") {
-		pit->params().noindent(true);
-	} else if (token == "\\leftindent") {
-		lex.nextToken();
-		LyXLength value(lex.getString());
-		pit->params().leftIndent(value);
-	} else if (token == "\\fill_top") {
-		pit->params().spaceTop(VSpace(VSpace::VFILL));
-	} else if (token == "\\fill_bottom") {
-		pit->params().spaceBottom(VSpace(VSpace::VFILL));
-	} else if (token == "\\line_top") {
-		pit->params().lineTop(true);
-	} else if (token == "\\line_bottom") {
-		pit->params().lineBottom(true);
-	} else if (token == "\\pagebreak_top") {
-		pit->params().pagebreakTop(true);
-	} else if (token == "\\pagebreak_bottom") {
-		pit->params().pagebreakBottom(true);
-	} else if (token == "\\start_of_appendix") {
-		pit->params().startOfAppendix(true);
-	} else if (token == "\\paragraph_spacing") {
-		lex.next();
-		string const tmp = rtrim(lex.getString());
-		if (tmp == "single") {
-			pit->params().spacing(Spacing(Spacing::Single));
-		} else if (tmp == "onehalf") {
-			pit->params().spacing(Spacing(Spacing::Onehalf));
-		} else if (tmp == "double") {
-			pit->params().spacing(Spacing(Spacing::Double));
-		} else if (tmp == "other") {
-			lex.next();
-			pit->params().spacing(Spacing(Spacing::Other,
-					 lex.getFloat()));
-		} else {
-			lex.printError("Unknown spacing token: '$$Token'");
-		}
-	} else if (token == "\\align") {
-		int tmpret = lex.findToken(string_align);
-		if (tmpret == -1)
-			++tmpret;
-		int const tmpret2 = int(pow(2.0, tmpret));
-		pit->params().align(LyXAlignment(tmpret2));
-	} else if (token == "\\added_space_top") {
-		lex.nextToken();
-		VSpace value = VSpace(lex.getString());
-		// only add the length when value > 0 or
-		// with option keep
-		if ((value.length().len().value() != 0) ||
-		    value.keep() ||
-		    (value.kind() != VSpace::LENGTH))
-			pit->params().spaceTop(value);
-	} else if (token == "\\added_space_bottom") {
-		lex.nextToken();
-		VSpace value = VSpace(lex.getString());
-		// only add the length when value > 0 or
-		// with option keep
-		if ((value.length().len().value() != 0) ||
-		   value.keep() ||
-		    (value.kind() != VSpace::LENGTH))
-			pit->params().spaceBottom(value);
-	} else if (token == "\\labelwidthstring") {
-		lex.eatLine();
-		pit->params().labelWidthString(lex.getString());
 		// do not delete this token, it is still needed!
 	} else if (token == "\\newline") {
 		pit->insertChar(pos, Paragraph::META_NEWLINE, font, current_change);

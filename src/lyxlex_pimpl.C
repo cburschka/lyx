@@ -144,7 +144,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		// There can have been a whole line pushed so
 		// we extract the first word and leaves the rest
 		// in pushTok. (Lgb)
-		if (pushTok.find(' ') != string::npos) {
+		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
 			string tmp;
 			pushTok = split(pushTok, tmp, ' ');
 			tmp.copy(buff, string::npos);
@@ -434,7 +434,7 @@ bool LyXLex::Pimpl::nextToken()
 		// There can have been a whole line pushed so
 		// we extract the first word and leaves the rest
 		// in pushTok. (Lgb)
-		if (pushTok.find(' ') != string::npos) {
+		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
 			string tmp;
 			pushTok = split(pushTok, tmp, ' ');
 			tmp.copy(buff, string::npos);

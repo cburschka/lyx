@@ -5,6 +5,8 @@
 #include "tex-strings.h"
 #include "lyxlex.h"
 
+#include "support/lstrings.h"
+
 #include <iostream>
 
 using std::ostream;
@@ -268,6 +270,86 @@ void ParagraphParameters::leftIndent(LyXLength const & li)
 
 void ParagraphParameters::read(LyXLex & lex)
 {
+	while (lex.isOK()) {
+		lex.nextToken();
+		string const token = lex.getString();
+
+		if (token.empty())
+			continue;
+
+		if (token[0] != '\\') {
+			lex.pushToken(token);
+			break;
+		}
+
+		if (token == "\\noindent") {
+			noindent(true);
+		} else if (token == "\\leftindent") {
+			lex.nextToken();
+			LyXLength value(lex.getString());
+			leftIndent(value);
+		} else if (token == "\\fill_top") {
+			spaceTop(VSpace(VSpace::VFILL));
+		} else if (token == "\\fill_bottom") {
+			spaceBottom(VSpace(VSpace::VFILL));
+		} else if (token == "\\line_top") {
+			lineTop(true);
+		} else if (token == "\\line_bottom") {
+			lineBottom(true);
+		} else if (token == "\\pagebreak_top") {
+			pagebreakTop(true);
+		} else if (token == "\\pagebreak_bottom") {
+			pagebreakBottom(true);
+		} else if (token == "\\start_of_appendix") {
+			startOfAppendix(true);
+		} else if (token == "\\paragraph_spacing") {
+			lex.next();
+			string const tmp = rtrim(lex.getString());
+			if (tmp == "single") {
+				spacing(Spacing(Spacing::Single));
+			} else if (tmp == "onehalf") {
+				spacing(Spacing(Spacing::Onehalf));
+			} else if (tmp == "double") {
+				spacing(Spacing(Spacing::Double));
+			} else if (tmp == "other") {
+				lex.next();
+				spacing(Spacing(Spacing::Other,
+						 lex.getFloat()));
+			} else {
+				lex.printError("Unknown spacing token: '$$Token'");
+			}
+		} else if (token == "\\align") {
+			int tmpret = lex.findToken(string_align);
+			if (tmpret == -1)
+				++tmpret;
+			int const tmpret2 = int(pow(2.0, tmpret));
+			align(LyXAlignment(tmpret2));
+		} else if (token == "\\added_space_top") {
+			lex.nextToken();
+			VSpace value = VSpace(lex.getString());
+			// only add the length when value > 0 or
+			// with option keep
+			if ((value.length().len().value() != 0) ||
+			    value.keep() ||
+			    (value.kind() != VSpace::LENGTH))
+				spaceTop(value);
+		} else if (token == "\\added_space_bottom") {
+			lex.nextToken();
+			VSpace value = VSpace(lex.getString());
+			// only add the length when value > 0 or
+			// with option keep
+			if ((value.length().len().value() != 0) ||
+			   value.keep() ||
+			    (value.kind() != VSpace::LENGTH))
+				spaceBottom(value);
+		} else if (token == "\\labelwidthstring") {
+			lex.eatLine();
+			labelWidthString(lex.getString());
+		} else {
+			lex.pushToken(token);
+			break;
+		}
+	}
 }
 
 
