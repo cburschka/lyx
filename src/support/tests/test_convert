@@ -1,6 +1,6 @@
 #!/bin/bash
 
-regfile=`cat regfiles/convert`
+regfile=`cat ${srcdir}/regfiles/convert`
 output=`./convert`
 
 test "$regfile" = "$output"

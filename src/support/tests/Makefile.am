@@ -1,5 +1,7 @@
 include $(top_srcdir)/config/common.am
 
+EXTRA_DIST = test_convert test_lstrings regfiles
+
 TESTS = \
 	test_convert \
 	test_lstrings
@@ -22,5 +24,5 @@ lstrings_SOURCES = \
 
 regfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \
-		./$$all > regfiles/$$all ; \
+		./$$all > ${srcdir}/regfiles/$$all ; \
 	done

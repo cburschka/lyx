@@ -1,0 +1,6 @@
+2005-02-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (regfiles): fix for builddir != srcdir
+
+	* test_lstrings (regfile): fix for builddir != srcdir
+	* test_convert (reffile): ditto

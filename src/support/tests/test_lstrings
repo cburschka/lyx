@@ -1,6 +1,6 @@
 #!/bin/bash
 
-regfile=`cat regfiles/lstrings`
+regfile=`cat ${srcdir}/regfiles/lstrings`
 output=`./lstrings`
 
 test "$regfile" = "$output"
