@@ -258,6 +258,8 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		updateBrowser(refs_);
 		fl_unfreeze_form(form());
 
+		activate = ButtonPolicy::SMI_NOOP;
+
 	} else if (ob == dialog_->choice_format) {
 
 		int const type = fl_get_choice(dialog_->choice_format) - 1;

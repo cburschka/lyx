@@ -1,3 +1,8 @@
+2004-05-05  Angus Leeming  <leeming@lyx.org>
+
+	* QRef.C (redoRefs): Prevent widgets from emitting any signals
+	whilst we modify their state.
+
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QBrowseBox.C: add using directive

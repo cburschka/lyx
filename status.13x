@@ -28,7 +28,6 @@ What's new
 
 ** Bug fixes
 
-
 * LaTeX output:
 
 - partly fix handling of included files; external insets are still not
@@ -63,6 +62,8 @@ What's new
 - honor correctly the various locale-related environment variables when 
   looking for translated help files
 
+- prevent activation of the Ok and Apply buttons in the reference
+  dialog when simply manipulating the list of references in the dialog.
 
 * Configuration/Installation:
 

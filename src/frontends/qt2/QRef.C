@@ -151,7 +151,13 @@ void QRef::gotoRef()
 
 void QRef::redoRefs()
 {
+	// Prevent these widgets from emitting any signals whilst
+	// we modify their state.
+	dialog_->refsLB->blockSignals(true);
+	dialog_->referenceED->blockSignals(true);
+
 	dialog_->refsLB->setAutoUpdate(false);
+	dialog_->refsLB->clear();
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
@@ -174,6 +180,10 @@ void QRef::redoRefs()
 
 	dialog_->refsLB->setAutoUpdate(true);
 	dialog_->refsLB->update();
+
+	// Re-activate the emission of signals by these widgets.
+	dialog_->refsLB->blockSignals(false);
+	dialog_->referenceED->blockSignals(false);
 }
 
 
