@@ -1,3 +1,8 @@
+1999-10-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (helper): removed bogus Assert. strlen
+	does not allow '\0' chars but lyxstring and std::string does.
+
 1999-10-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in (Check for programs): Added a check for kpsewhich,

@@ -116,7 +116,6 @@ void lyxstringInvariant::helper() const
 	Assert(object->rep);
 	Assert(object->rep->s);    // s is never 0
 	Assert(object->rep->res);  // always some space allocated
-	Assert(strlen(object->c_str()) == object->size());
 	Assert(object->size() <= object->rep->res);
 	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
 	Assert(object->rep->ref < (1 << 8*sizeof(lyxstring::Srep::ref)) - 1);
