@@ -1,5 +1,10 @@
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
+	* paragraph_pimpl.h:
+	* paragraph_pimpl.C: isTextAt() doesn't need font param
+
+2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
 	* lyxlex.h:
 	* lyxlex.C: little cleanup
 

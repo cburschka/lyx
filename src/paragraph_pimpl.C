@@ -256,9 +256,11 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 }
 
 
-bool Paragraph::Pimpl::isTextAt(BufferParams const & bp, LyXFont & font,
+bool Paragraph::Pimpl::isTextAt(BufferParams const & bp,
 				string const & str, pos_type pos)
 {
+	LyXFont const & font = owner_->getFont(bp, pos);
+ 
 	for (string::size_type i = 0; i < str.length(); ++i) {
 		if (pos + static_cast<pos_type>(i) >= size())
 			return false;
@@ -486,7 +488,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			size_t pnr = 0;
  
 			for (; pnr < phrases_nr; ++pnr) {
-				if (isTextAt(bparams, font, special_phrases[pnr][0], i)) {
+				if (isTextAt(bparams, special_phrases[pnr][0], i)) {
 					os << special_phrases[pnr][1];
 					i += special_phrases[pnr][0].length() - 1;
 					column += special_phrases[pnr][1].length() - 1;
