@@ -63,6 +63,12 @@ public:
 		return data_.find(thing) != data_.end();
 	}
 
+//	T * find(int x, int y) const
+//	{
+//		T * 
+//		cache_type iter
+//	} 
+
 private:
 	friend class CoordCache;
 
@@ -74,7 +80,8 @@ private:
 		}
 	}
 
-	std::map<T const *, Point> data_;
+	typedef std::map<T const *, Point> cache_type;
+	cache_type data_;
 };
 
 

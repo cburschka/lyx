@@ -85,5 +85,5 @@ int InsetOld::scroll(bool) const
 void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
-	theCoords.insets_.add(this, x, y + pi.base.bv->top_y());
+	theCoords.insets_.add(this, x, y);
 }

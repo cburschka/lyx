@@ -1680,26 +1680,6 @@ Paragraph & LyXText::getPar(par_type par) const
 }
 
 
-// y is relative to this LyXText's top
-Row const & LyXText::getRowNearY(int y, par_type & pit) const
-{
-	BOOST_ASSERT(!paragraphs().empty());
-	BOOST_ASSERT(!paragraphs().begin()->rows.empty());
-	par_type const pend = paragraphs().size() - 1;
-	pit = 0;
-	while (int(pars_[pit].y + pars_[pit].height) < y && pit != pend)
-		++pit;
-
-	RowList::iterator rit = pars_[pit].rows.end();
-	RowList::iterator const rbegin = pars_[pit].rows.begin();
-	do {
-		--rit;
-	} while (rit != rbegin && int(pars_[pit].y + rit->y_offset()) > y);
-
-	return *rit;
-}
-
-
 Row const & LyXText::firstRow() const
 {
 	return *paragraphs().front().rows.begin();

@@ -1736,25 +1736,6 @@ void Paragraph::rejectChange(pos_type start, pos_type end)
 }
 
 
-//Paragraph::value_type Paragraph::getChar(pos_type pos) const
-//{
-//	// This is in the critical path!
-//	pos_type const siz = text_.size();
-//
-//	BOOST_ASSERT(0 <= pos);
-//	BOOST_ASSERT(pos <= siz);
-//
-//	if (pos == siz) {
-//		lyxerr << "getChar() on pos " << pos << " in par id "
-//		       << id() << " of size " << siz
-//		       << "  is a bit silly !" << endl;
-//		BOOST_ASSERT(false);
-//	}
-//
-//	return text_[pos];
-//}
-
-
 int Paragraph::id() const
 {
 	return pimpl_->id_;

@@ -1129,25 +1129,24 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		// ignore motions deeper nested than the real anchor
 		LCursor & bvcur = cur.bv().cursor();
-		if (!bvcur.anchor_.hasPart(cur))
-			break;
- 
-		CursorSlice old = cur.top();
-		setCursorFromCoordinates(cur, cmd.x, cmd.y);
+		if (bvcur.anchor_.hasPart(cur)) {
+			CursorSlice old = cur.top();
+			setCursorFromCoordinates(cur, cmd.x, cmd.y);
 
-		// This is to allow jumping over large insets
-		// FIXME: shouldn't be top-text-specific
-		if (isMainText() && cur.top() == old) {
-			if (cmd.y - bv->top_y() >= bv->workHeight())
-				cursorDown(cur);
-			else if (cmd.y - bv->top_y() < 0)
-				cursorUp(cur);
+			// This is to allow jumping over large insets
+			// FIXME: shouldn't be top-text-specific
+			if (isMainText() && cur.top() == old) {
+				if (cmd.y - bv->top_y() >= bv->workHeight())
+					cursorDown(cur);
+				else if (cmd.y - bv->top_y() < 0)
+					cursorUp(cur);
+			}
+
+			// don't set anchor_
+			bv->cursor().setCursor(cur);
+			bv->cursor().selection() = true;
+			lyxerr << "MOTION: " << bv->cursor() << endl;
 		}
-
-		// don't set anchor_
-		bv->cursor().setCursor(cur);
-		bv->cursor().selection() = true;
-		lyxerr << "MOTION: " << bv->cursor() << endl;
 		break;
 	}
 

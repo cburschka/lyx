@@ -113,6 +113,8 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
 
+	// convert to screen-absolute y coordinate
+	y -= bv()->top_y();
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
 	lyxerr << "  pit: " << pit << " end: " << end << endl;
 	for (; pit != end; ++pit) {
@@ -1159,6 +1161,27 @@ pos_type LyXText::getColumnNearX(par_type pit,
 
 	x = int(tmpx) + xo_;
 	return c - row.pos();
+}
+
+
+// y is relative to this LyXText's top
+// this is only used in the two functions below
+Row const & LyXText::getRowNearY(int y, par_type & pit) const
+{
+	BOOST_ASSERT(!paragraphs().empty());
+	BOOST_ASSERT(!paragraphs().begin()->rows.empty());
+	par_type const pend = paragraphs().size() - 1;
+	pit = 0;
+	while (int(pars_[pit].y + pars_[pit].height) < y && pit != pend)
+		++pit;
+
+	RowList::iterator rit = pars_[pit].rows.end();
+	RowList::iterator const rbegin = pars_[pit].rows.begin();
+	do {
+		--rit;
+	} while (rit != rbegin && int(pars_[pit].y + rit->y_offset()) > y);
+
+	return *rit;
 }
 
 
