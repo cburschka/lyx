@@ -427,7 +427,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		case LFUN_MOUSE_MOTION:
 			//return lfunMouseMotion(cmd);
 		case LFUN_MOUSE_RELEASE:
-			lyxerr << "Mouse single release\n";
+			//lyxerr << "Mouse single release\n";
 			return lfunMouseRelease(cmd);
 		case LFUN_MOUSE_DOUBLE:
 			//lyxerr << "Mouse double\n";
