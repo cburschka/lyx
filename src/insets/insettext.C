@@ -370,7 +370,7 @@ bool InsetText::UpdateInsetInInset(BufferView * bv, Inset * inset)
     if (the_locking_inset != inset)
         return the_locking_inset->UpdateInsetInInset(bv, inset);
     float x = inset_x;
-    inset->draw(bv->getPainter(), real_current_font, inset_y, x);
+    inset->draw(bv->painter(), real_current_font, inset_y, x);
     UpdateLocal(bv, true);
     return true;
 }
@@ -626,8 +626,8 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_HOME:
 	bv->text->FinishUndo();
 	for(; actpos > rows[actrow].pos; --actpos)
-	    cx -= SingleWidth(bv->getPainter(), par, actpos);
-	cx -= SingleWidth(bv->getPainter(), par, actpos);
+	    cx -= SingleWidth(bv->painter(), par, actpos);
+	cx -= SingleWidth(bv->painter(), par, actpos);
 	if (hasSelection()) {
 	    selection_start = selection_end = actpos;
 	    UpdateLocal(bv, false);
@@ -642,7 +642,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	if ((actrow + 2) < (int)rows.size())
 	    --checkpos;
 	for(; actpos < checkpos; ++actpos)
-	    cx += SingleWidth(bv->getPainter(), par, actpos);
+	    cx += SingleWidth(bv->painter(), par, actpos);
 	if (hasSelection()) {
 	    selection_start = selection_end = actpos;
 	    UpdateLocal(bv, false);
@@ -906,19 +906,16 @@ void InsetText::setPos(BufferView * bv, int x, int y, bool activate_inset)
     x += top_x;
 
     int swh;
-    int sw;
-    int checkpos;
-
-    sw = swh = SingleWidth(bv->getPainter(), par,actpos);
+    int sw = swh = SingleWidth(bv->painter(), par,actpos);
     if (par->GetChar(actpos)!=LyXParagraph::META_INSET)
 	swh /= 2;
-    checkpos = rows[actrow + 1].pos;
+    int checkpos = rows[actrow + 1].pos;
     if ((actrow+2) < (int)rows.size())
 	--checkpos;
     while ((actpos < checkpos) && ((cx + swh) < x)) {
 	cx += sw;
 	++actpos;
-	sw = swh = SingleWidth(bv->getPainter(), par,actpos);
+	sw = swh = SingleWidth(bv->painter(), par,actpos);
 	if (par->GetChar(actpos)!=LyXParagraph::META_INSET)
 	    swh /= 2;
     }
@@ -965,7 +962,7 @@ bool InsetText::moveLeft(BufferView * bv, bool activate_inset)
 	inset_y = cy;
 	inset_pos = actpos;
 	the_locking_inset->Edit(bv, the_locking_inset->
-				width(bv->getPainter(), GetFont(par,actpos)),
+				width(bv->painter(), GetFont(par,actpos)),
 				0, 0);
     } else {
 	resetPos(bv);
@@ -1012,7 +1009,7 @@ void InsetText::resetPos(BufferView * bv)
     setPos(bv, 0, cy, false);
     cx = top_x;
     while(actpos < old_pos) {
-	cx += SingleWidth(bv->getPainter(), par,actpos);
+	cx += SingleWidth(bv->painter(), par,actpos);
 	++actpos;
     }
 }

@@ -165,10 +165,10 @@ void InsetCollapsable::InsetUnlock(BufferView *bv)
 }
 
 
-void InsetCollapsable::UpdateLocal(BufferView *bv, bool flag)
+void InsetCollapsable::UpdateLocal(BufferView * bv, bool flag)
 {
-    maxWidth = getMaxWidth(bv->getPainter()) -
-	width_collapsed(bv->getPainter(), labelfont);
+    maxWidth = getMaxWidth(bv->painter()) -
+	width_collapsed(bv->painter(), labelfont);
     InsetText::UpdateLocal(bv, flag);
 }
 

@@ -18,11 +18,40 @@ class LyXScreen;
 struct BufferView::Pimpl {
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);
-	
+	///
+	Painter & painter();
+	///
+	void buffer(Buffer *);
+	///
+	void resize(int xpos, int ypos, int width, int height);
+	///
+	void resize();
+	///
+	void redraw();
+	///
+	void fitCursor();
+	///
+	void redoCurrentBuffer();
+	///
+	int resizeCurrentBuffer();
+	///
+	void update();
+	///
+	void update(signed char f);
+	///
+	void smallUpdate(signed char f);
+	///
+	void gotoError();
   	/// Update pixmap of screen
 	void updateScreen();
 	///
 	void workAreaExpose();
+	///
+	void updateScrollbar();
+	///
+	void scrollCB(double value);
+	///
+	void downCB(long time, int button);
 	///
 	void scrollUpOnePage();
 	///
@@ -47,6 +76,46 @@ struct BufferView::Pimpl {
 	void doubleClick(int x, int y, unsigned int button);
 	///
 	void tripleClick(int x, int y, unsigned int button);
+	///
+	void cursorToggle();
+	///
+	void cursorPrevious();
+	///
+	void cursorNext();
+	///
+	bool available() const;
+	///
+	void beforeChange();
+	///
+	void savePosition();
+	///
+	void restorePosition();
+	///
+	void setState();
+	///
+	void insetSleep();
+	///
+	void insetWakeup();
+	///
+	void insetUnlock();
+	///
+	bool focus() const;
+	///
+	void focus(bool);
+	///
+	bool active() const;
+	///
+	bool belowMouse() const;
+	///
+	void showCursor();
+	///
+	void hideCursor();
+	///
+	void toggleSelection(bool = true);
+	///
+	void toggleToggle();
+	///
+	void center();
 	///
 	BufferView * bv_;
 	///

@@ -35,8 +35,6 @@ public:
 	///
 	Painter & painter();
 	///
-	Painter & getPainter() const;
-	///
 	void buffer(Buffer * b);
 	///
 	void resize(int, int, int, int);

@@ -3348,10 +3348,8 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			// correct cursor
 			if (old_cursor.par == cursor.par &&
 			    cursor.pos > old_cursor.pos) {
-				//SetCursor(cursor.par, cursor.pos - 1);
-				cursor.pos--;
-			} //else
-			//	SetCursor(cursor.par, cursor.pos);
+				SetCursorIntern(cursor.par, cursor.pos - 1);
+			}
 			return;
 		}
 	}
@@ -3459,8 +3457,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 				}
 				
 				// correct cursor y
+#if 1
+				SetCursorIntern(cursor.par, cursor.pos);
+#else
 				SetCursor(cursor.par, cursor.pos);
-				
+#endif			
 				/* if (cursor.y > old_cursor.y)
 				   cursor.y -= old_cursor.row->height; */ 
 	 
@@ -3475,7 +3476,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			if (old_cursor.par->ClearParagraph()) {
 				RedoParagraphs(old_cursor, old_cursor.par->Next());
 				// correct cursor y
+#if 1
+				SetCursorIntern(cursor.par, cursor.pos);
+#else
 				SetCursor(cursor.par, cursor.pos);
+#endif
 				sel_cursor = cursor;
 			}
 		}

@@ -1,3 +1,14 @@
+2000-04-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/BufferView.[Ch], src/BufferView_pimpl.[Ch]: move more
+	functions from BufferView to BufferView::Pimpl to ease maintence.
+	
+	* src/text2.C (DeleteEmptyParagraphMechanism): update the cursor
+	correctly. Also use SetCursorIntern instead of SetCursor.
+
+	* src/insets/insetinfo.C (draw): draw InsetInfo notes with the
+	correct color.
+
 2000-04-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/WorkArea.C (belowMouse): manually implement below mouse.

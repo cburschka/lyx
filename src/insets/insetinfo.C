@@ -81,16 +81,18 @@ void InsetInfo::draw(Painter & pain, LyXFont const & f,
 	LyXFont font(f);
 	
 	/* Info-insets are never LaTeX, so just correct the font */
-	font.setLatex(LyXFont::OFF);
-
+	font.setLatex(LyXFont::OFF).setColor(LColor::note);
+	
 	// Draw as "Note" in a yellow box
 	x += 1;
 	pain.fillRectangle(int(x), baseline - ascent(pain, font) + 1,
 			   width(pain, font) - 2,
-			   ascent(pain, font) + descent(pain, font) - 2);
+			   ascent(pain, font) + descent(pain, font) - 2,
+			   LColor::notebg);
 	pain.rectangle(int(x), baseline - ascent(pain, font) + 1,
 		       width(pain, font) - 2,
-		       ascent(pain, font) + descent(pain, font) - 2);
+		       ascent(pain, font) + descent(pain, font) - 2,
+		       LColor::noteframe);
 	
 	pain.text(int(x + 2), baseline, _("Note"), font);
 	x +=  width(pain, font) - 1;
