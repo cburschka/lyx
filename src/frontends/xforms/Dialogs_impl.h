@@ -45,6 +45,7 @@
 #include "FormCitation.h"
 #include "forms/form_citation.h"
 
+#include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
 
@@ -191,7 +192,8 @@ CharacterDialog;
 typedef GUI<ControlCitation, FormCitation, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 CitationDialog;
 
-typedef FormDocument DocumentDialog;
+typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
+DocumentDialog;
 
 typedef GUI<ControlError, FormError, OkCancelPolicy, xformsBC>
 ErrorDialog;

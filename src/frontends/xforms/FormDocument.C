@@ -15,8 +15,10 @@
 #pragma implementation
 #endif
 
+#include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
+#include "xformsBC.h"
 
 #include "bmtable.h"
 #include "checkedwidgets.h"
@@ -24,12 +26,12 @@
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "xforms_helpers.h"
 
-#include "buffer.h"
-#include "BufferView.h"
+//#include "buffer.h"
+//#include "BufferView.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "language.h"
-#include "lyx_main.h" // for user_lyxdir
+//#include "lyx_main.h" // for user_lyxdir
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
@@ -37,10 +39,8 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
-#include "frontends/LyXView.h"
-#include "frontends/Alert.h"
-
-#include "support/filetools.h"
+#include "support/lstrings.h" // contains_functor, getStringFromVector
+#include "support/filetools.h" // LibFileSearch
 
 #include XPM_H_LOCATION
 #include FORMS_H_LOCATION
@@ -53,8 +53,10 @@ using std::bind2nd;
 using std::vector;
 
 
-FormDocument::FormDocument(LyXView & lv, Dialogs & d)
-	: FormBaseBD(lv, d, _("Document Layout"), false),
+typedef FormCB<ControlDocument, FormDB<FD_document> > base_class;
+
+FormDocument::FormDocument()
+	: base_class(_("Document Layout"), false),
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {}
@@ -70,13 +72,6 @@ void FormDocument::redraw()
 	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder);
 	if (outer_form && outer_form->visible)
 		fl_redraw_form(outer_form);
-}
-
-
-FL_FORM * FormDocument::form() const
-{
-	if (dialog_.get()) return dialog_->form;
-	return 0;
 }
 
 
@@ -287,13 +282,13 @@ void FormDocument::build()
 	options_.reset(build_document_options(this));
 
 	// disable for read-only documents
-	bc_.addReadOnly(options_->counter_secnumdepth);
-	bc_.addReadOnly(options_->counter_tocdepth);
-	bc_.addReadOnly(options_->check_use_amsmath);
-	bc_.addReadOnly(options_->check_use_natbib);
-	bc_.addReadOnly(options_->choice_citation_format);
-	bc_.addReadOnly(options_->input_float_placement);
-	bc_.addReadOnly(options_->choice_postscript_driver);
+	bc().addReadOnly(options_->counter_secnumdepth);
+	bc().addReadOnly(options_->counter_tocdepth);
+	bc().addReadOnly(options_->check_use_amsmath);
+	bc().addReadOnly(options_->check_use_natbib);
+	bc().addReadOnly(options_->choice_citation_format);
+	bc().addReadOnly(options_->input_float_placement);
+	bc().addReadOnly(options_->choice_postscript_driver);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(options_->input_float_placement);
@@ -311,16 +306,16 @@ void FormDocument::build()
 	bullets_.reset(build_document_bullet(this));
 
 	// disable for read-only documents
-	bc_.addReadOnly(bullets_->radio_bullet_depth_1);
-	bc_.addReadOnly(bullets_->radio_bullet_depth_2);
-	bc_.addReadOnly(bullets_->radio_bullet_depth_3);
-	bc_.addReadOnly(bullets_->radio_bullet_depth_4);
-	bc_.addReadOnly(bullets_->radio_bullet_panel_standard);
-	bc_.addReadOnly(bullets_->radio_bullet_panel_maths);
-	bc_.addReadOnly(bullets_->radio_bullet_panel_ding1);
-	bc_.addReadOnly(bullets_->radio_bullet_panel_ding2);
-	bc_.addReadOnly(bullets_->radio_bullet_panel_ding3);
-	bc_.addReadOnly(bullets_->radio_bullet_panel_ding4);
+	bc().addReadOnly(bullets_->radio_bullet_depth_1);
+	bc().addReadOnly(bullets_->radio_bullet_depth_2);
+	bc().addReadOnly(bullets_->radio_bullet_depth_3);
+	bc().addReadOnly(bullets_->radio_bullet_depth_4);
+	bc().addReadOnly(bullets_->radio_bullet_panel_standard);
+	bc().addReadOnly(bullets_->radio_bullet_panel_maths);
+	bc().addReadOnly(bullets_->radio_bullet_panel_ding1);
+	bc().addReadOnly(bullets_->radio_bullet_panel_ding2);
+	bc().addReadOnly(bullets_->radio_bullet_panel_ding3);
+	bc().addReadOnly(bullets_->radio_bullet_panel_ding4);
 	bc().addReadOnly(bullets_->bmtable_bullet_panel);
 	bc().addReadOnly(bullets_->choice_bullet_size);
 	bc().addReadOnly(bullets_->input_bullet_latex);
@@ -367,32 +362,13 @@ void FormDocument::build()
 
 void FormDocument::apply()
 {
-	if (!lv_.view()->available() || !dialog_.get())
-		return;
+	BufferParams & params = controller().params();
 
-	bool redo = class_apply();
-	paper_apply();
-	redo = language_apply() || redo;
-	redo = options_apply() || redo;
-	bullets_apply();
-
-	if (redo) {
-		lv_.view()->redoCurrentBuffer();
-	}
-	lv_.buffer()->markDirty();
-	lv_.message(_("Document layout set"));
-}
-
-
-void FormDocument::cancel()
-{
-	// this avoids confusion when reopening
-	BufferParams & param = lv_.buffer()->params;
-	param.temp_bullets[0] = param.user_defined_bullets[0];
-	param.temp_bullets[1] = param.user_defined_bullets[1];
-	param.temp_bullets[2] = param.user_defined_bullets[2];
-	param.temp_bullets[3] = param.user_defined_bullets[3];
-	hide();
+	class_apply(params);
+	paper_apply(params);
+	language_apply(params);
+	options_apply(params);
+	bullets_apply(params);
 }
 
 
@@ -403,7 +379,7 @@ void FormDocument::update()
 
 	checkReadOnly();
 
-	BufferParams const & params = lv_.buffer()->params;
+	BufferParams const & params = controller().params();
 
 	class_update(params);
 	paper_update(params);
@@ -413,43 +389,9 @@ void FormDocument::update()
 }
 
 
-namespace {
-// should this go elsewhere? Maybe a ControllerDocument? (JMarc)
-/** Save the buffer's parameters as user default.
-    This function saves a file \c user_lyxdir/templates/defaults.lyx
-    which parameters are those of the current buffer. This file
-    is used as a default template when creating a new
-    file. Returns \c true on success.
-*/
-bool saveParamsAsDefault(BufferParams const &params)
+ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 {
-	if (!Alert::askQuestion(_("Do you want to save the current settings"),
-				_("for the document layout as default?"),
-				_("(they will be valid for any new document)")))
-		return false;
-
-	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
-				     "defaults.lyx");
-	Buffer defaults(fname);
-	defaults.params = params;
-
-	// add an empty paragraph. Is this enough?
-	Paragraph * par = new Paragraph;
-	par->layout(params.getLyXTextClass().defaultLayout());
-	defaults.paragraphs.set(par);
-
-	return defaults.writeFile(defaults.fileName());
-}
-
-} //namespace
-
-
-bool FormDocument::input(FL_OBJECT * ob, long)
-{
-	if (ob == class_->choice_doc_class) {
-		CheckChoiceClass(ob, 0);
-
-	} else if (ob == bullets_->choice_bullet_size) {
+	if (ob == bullets_->choice_bullet_size) {
 		ChoiceBulletSize(ob, 0);
 
 	} else if (ob == bullets_->input_bullet_latex) {
@@ -504,17 +446,11 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 			   fl_get_button(options_->check_use_natbib));
 
 	} else if (ob == dialog_->button_save_defaults) {
-		BufferParams params;
-		class_apply(params);
-		paper_apply(params);
-		language_apply(params);
-		options_apply(params);
-		bullets_apply(params);
-		params.preamble = lv_.buffer()->params.preamble;
-		saveParamsAsDefault(params);
+		apply();
+		controller().saveAsDefault();
 
 	} else if (ob == dialog_->button_reset_defaults) {
-		BufferParams params = lv_.buffer()->params;
+		BufferParams & params = controller().params();
 		params.textclass = combo_doc_class->get() - 1;
 		params.useClassDefaults();
 		UpdateLayoutDocument(params);
@@ -651,7 +587,7 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		setEnabled(paper_->choice_paperpackage, enable && fl_get_button(paper_->radio_portrait));
 	}
 
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }
 
 
@@ -659,7 +595,7 @@ void FormDocument::ComboInputCB(int, void * v, Combox * combox)
 {
 	FormDocument * pre = static_cast<FormDocument*>(v);
 	if (combox == pre->combo_doc_class.get())
-		pre->CheckChoiceClass(0, 0);
+		pre->CheckChoiceClass();
 	pre->bc().valid();
 }
 
@@ -754,49 +690,6 @@ bool FormDocument::class_apply(BufferParams &params)
 }
 
 
-bool FormDocument::class_apply()
-{
-	BufferParams &params = lv_.buffer()->params;
-
-	unsigned int const old_class = params.textclass;
-
-	bool redo = class_apply(params);
-
-	if (params.textclass != old_class) {
-		// try to load new_class
-		if (textclasslist[params.textclass].load()) {
-			// successfully loaded
-			redo = true;
-			lv_.message(_("Converting document to new document class..."));
-			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
-				old_class, params.textclass,
-				&*(lv_.buffer()->paragraphs.begin()),
-				lv_.buffer()->params);
-			if (ret) {
-				string s;
-				if (ret == 1) {
-					s = _("One paragraph couldn't be converted");
-				} else {
-					s += tostr(ret);
-					s += _(" paragraphs couldn't be converted");
-				}
-				Alert::alert(_("Conversion Errors!"),s,
-					     _("into chosen document class"));
-			}
-
-		} else {
-			// problem changing class -- warn user and retain old style
-			Alert::alert(_("Conversion Errors!"),
-				     _("Errors loading new document class."),
-				     _("Reverting to original document class."));
-			combo_doc_class->select(int(old_class) + 1);
-		}
-	}
-
-	return redo;
-}
-
-
 void FormDocument::paper_apply(BufferParams & params)
 {
 	params.papersize2 = char(fl_get_choice(paper_->choice_papersize) - 1);
@@ -852,12 +745,6 @@ void FormDocument::paper_apply(BufferParams & params)
 }
 
 
-void FormDocument::paper_apply()
-{
-	paper_apply(lv_.buffer()->params);
-}
-
-
 bool FormDocument::language_apply(BufferParams & params)
 {
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
@@ -890,30 +777,14 @@ bool FormDocument::language_apply(BufferParams & params)
 		params.quotes_times = InsetQuotes::DoubleQ;
 
 	int const pos = combo_language->get();
-	Language const * old_language = params.language;
 	Language const * new_language = languages.getLanguage(lang_[pos-1]);
 	if (!new_language)
 		new_language = default_language;
-
-	if (old_language != new_language
-	    && old_language->RightToLeft() == new_language->RightToLeft()
-	    && !lv_.buffer()->isMultiLingual())
-		lv_.buffer()->changeLanguage(old_language, new_language);
-
-	if (old_language != new_language) {
-		redo = true;
-	}
 
 	params.language = new_language;
 	params.inputenc = getString(language_->choice_inputenc);
 
 	return redo;
-}
-
-
-bool FormDocument::language_apply()
-{
-	return language_apply(lv_.buffer()->params);
 }
 
 
@@ -941,16 +812,10 @@ bool FormDocument::options_apply(BufferParams & params)
 }
 
 
-bool FormDocument::options_apply()
-{
-	return options_apply(lv_.buffer()->params);
-}
-
-
 void FormDocument::bullets_apply(BufferParams & params)
 {
 	/* update the bullet settings */
-	BufferParams & buf_params = lv_.buffer()->params;
+	BufferParams & buf_params = controller().params();
 
 	// a little bit of loop unrolling
 	params.user_defined_bullets[0] = buf_params.temp_bullets[0];
@@ -959,11 +824,6 @@ void FormDocument::bullets_apply(BufferParams & params)
 	params.user_defined_bullets[3] = buf_params.temp_bullets[3];
 }
 
-
-void FormDocument::bullets_apply()
-{
-	bullets_apply(lv_.buffer()->params);
-}
 
 void FormDocument::UpdateClassParams(BufferParams const & params)
 {
@@ -1215,7 +1075,8 @@ void FormDocument::bullets_update(BufferParams const & params)
 	     (XpmVersion==4 && XpmRevision<7)))
 		return;
 
-	bool const isLinuxDoc = lv_.buffer()->isLinuxDoc();
+	bool const isLinuxDoc =
+		controller().docType() == ControlDocument::LINUXDOC;
 	setEnabled(fbullet, !isLinuxDoc);
 
 	if (isLinuxDoc) return;
@@ -1230,7 +1091,7 @@ void FormDocument::bullets_update(BufferParams const & params)
 
 void FormDocument::checkReadOnly()
 {
-	if (bc().readOnly(lv_.buffer()->isReadonly())) {
+	if (bc().readOnly(controller().bufferIsReadonly())) {
 		combo_doc_class->deactivate();
 		combo_language->deactivate();
 		postWarning(_("Document is read-only."
@@ -1245,7 +1106,7 @@ void FormDocument::checkReadOnly()
 
 void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 {
-	BufferParams & param = lv_.buffer()->params;
+	BufferParams & param = controller().params();
 
 	// convert from 1-6 range to -1-4
 	param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
@@ -1256,7 +1117,7 @@ void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 
 void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 {
-	BufferParams & param = lv_.buffer()->params;
+	BufferParams & param = controller().params();
 
 	param.temp_bullets[current_bullet_depth].
 		setText(getString(bullets_->input_bullet_latex));
@@ -1273,7 +1134,7 @@ void FormDocument::BulletDepth(FL_OBJECT * ob)
 	/*                                                            */
 	/* I'm inclined to just go with 3 and 4 at the moment and     */
 	/* maybe try to support the others later                      */
-	BufferParams & param = lv_.buffer()->params;
+	BufferParams & param = controller().params();
 
 	int data = 0;
 	if (ob == bullets_->radio_bullet_depth_1)
@@ -1358,7 +1219,7 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/)
 	/* to that extracted from the current chosen position of the BMTable  */
 	/* Don't forget to free the button's old pixmap first.                */
 
-	BufferParams & param = lv_.buffer()->params;
+	BufferParams & param = controller().params();
 	int bmtable_button = fl_get_bmtable(ob);
 
 	/* try to keep the button held down till another is pushed */
@@ -1370,38 +1231,28 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/)
 }
 
 
-void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
+void FormDocument::CheckChoiceClass()
 {
-	if (!ob)
-		ob = class_->choice_doc_class;
+	BufferParams & params = controller().params();
 
-	lv_.prohibitInput();
+	lyx::textclass_type const tc = combo_doc_class->get() - 1;
 
-	unsigned int tc = combo_doc_class->get() - 1;
-	if (textclasslist[tc].load()) {
-		// we use a copy of the bufferparams because we do not
-		// want to modify them yet.
-		BufferParams params = lv_.buffer()->params;
+	if (controller().loadTextclass(tc)) {
+		params.textclass = tc;
 
 		if (lyxrc.auto_reset_options) {
-			params.textclass = tc;
 			params.useClassDefaults();
 			UpdateLayoutDocument(params);
 		} else {
 			// update the params which are needed in any case
 			// (fontsizes, pagestyle)
-			params.textclass = tc;
 			UpdateClassParams(params);
 		}
 
 	} else {
-		// unable to load new style
-		Alert::alert(_("Conversion Errors!"),
-			     _("Unable to switch to new document class."),
-			     _("Reverting to original document class."));
-		combo_doc_class->select(int(lv_.buffer()->params.textclass) + 1);
+		int const revert = int(params.textclass);
+		combo_doc_class->select(revert + 1);
 	}
-	lv_.allowInput();
 }
 
 

@@ -43,7 +43,9 @@ public:
 	///
 	void saveAsDefault();
 	///
-	bool classApply();
+	void classApply();
+	///
+	bool loadTextclass(lyx::textclass_type tc) const;
 private:
 	/// apply settings
 	void apply();

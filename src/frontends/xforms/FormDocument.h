@@ -16,11 +16,13 @@
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 
 #include <boost/scoped_ptr.hpp>
 
 #include <vector>
+
+class ControlDocument;
 
 class Combox;
 class BufferParams;
@@ -35,30 +37,23 @@ struct FD_document_bullet;
 /** This class provides an XForms implementation of the FormDocument dialog.
     The table-layout-form here changes values for latex-tabulars
  */
-class FormDocument : public FormBaseBD {
+class FormDocument : public FormCB<ControlDocument, FormDB<FD_document> > {
 public:
-	FormDocument(LyXView &, Dialogs &);
+	FormDocument();
 	///
 	static void ComboInputCB(int, void *, Combox *);
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
-	virtual bool input( FL_OBJECT *, long);
+	virtual ButtonPolicy::SMInput input( FL_OBJECT *, long);
 	/// Update the dialog.
 	virtual void update();
 	/// Apply from dialog
 	virtual void apply();
-	/// Cancel from dialog
-	virtual void cancel();
-
-	///
-	virtual FL_FORM * form() const;
 
 	///
 	void ChoiceBulletSize(FL_OBJECT * ob, long);
@@ -73,7 +68,7 @@ private:
 	///
 	void checkReadOnly();
 	///
-	void CheckChoiceClass(FL_OBJECT * ob, long);
+	void CheckChoiceClass();
 	///
 	void UpdateLayoutDocument(BufferParams const & params);
 	///
@@ -101,20 +96,7 @@ private:
 	///
 	void bullets_apply(BufferParams &);
 
-	///
-	void paper_apply();
-	///
-	bool class_apply();
-	///
-	bool language_apply();
-	///
-	bool options_apply();
-	///
-	void bullets_apply();
-
 	/// Real GUI implementation.
-	boost::scoped_ptr<FD_document> dialog_;
-	///
 	boost::scoped_ptr<FD_document_paper>    paper_;
 	///
 	boost::scoped_ptr<FD_document_class>    class_;
@@ -138,17 +120,8 @@ private:
 	boost::scoped_ptr<Combox> combo_language;
 	///
 	boost::scoped_ptr<Combox> combo_doc_class;
-	/// The ButtonController
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 	///
 	std::vector<string> lang_;
 };
-
-
-inline
-xformsBC & FormDocument::bc()
-{
-	return bc_;
-}
 
 #endif

@@ -1,3 +1,8 @@
+2002-11-21  Angus Leeming  <leeming@lyx.org>
+
+	* ControlDocument.[Ch] (classApply): no longer returns bool.
+	(loadTextclass): new method. Wrapper for textclasslist[tc].load().
+
 2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* biblio.C (getAbbreviatedAuthor): use boost::format

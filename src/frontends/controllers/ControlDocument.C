@@ -65,7 +65,6 @@ void ControlDocument::apply()
 
 	setLanguage();
 
-	// FIXME: do we need to use return value from classApply() here? (Lgb)
 	classApply();
 
 	view().apply();
@@ -101,26 +100,15 @@ void ControlDocument::setLanguage()
 }
 
 
-bool ControlDocument::classApply()
+void ControlDocument::classApply()
 {
 	BufferParams & params = buffer()->params;
-	unsigned int const old_class = params.textclass;
-	unsigned int const new_class = bp_->textclass;
+	lyx::textclass_type const old_class = params.textclass;
+	lyx::textclass_type const new_class = bp_->textclass;
 
-	// exit if nothing changes
-	if (new_class == old_class) {
-		 return true;
-	}
-
-	// try to load new_class
-	if (!textclasslist[new_class].load()) {
-		// problem changing class
-		// -- warn user (to retain old style)
-		Alert::alert(_("Conversion Errors!"),
-			     _("Errors loading new document class."),
-			     _("Reverting to original document class."));
-		return false;
-	}
+	// exit if nothing changes or if unable to load the new class
+	if (new_class == old_class || !loadTextclass(new_class))
+		return;
 
 	// successfully loaded
 	view().apply();
@@ -141,7 +129,20 @@ bool ControlDocument::classApply()
 		Alert::alert(_("Conversion Errors!"),s,
 			     _("into chosen document class"));
 	}
-	return true;
+}
+
+
+bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
+{
+	bool const success = textclasslist[tc].load();
+	if (!success) {
+		// problem changing class
+		// -- warn user (to retain old style)
+		Alert::alert(_("Conversion Errors!"),
+			     _("Errors loading new document class."),
+			     _("Reverting to original document class."));
+	}
+	return success;
 }
 
 

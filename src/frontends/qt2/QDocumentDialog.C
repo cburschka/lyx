@@ -452,23 +452,31 @@ void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 
 void QDocumentDialog::classChanged()
 {
-	unsigned int tc = layoutModule->classCO->currentItem();
+	ControlDocument & cntrl = form_->controller();
+	BufferParams & params = cntrl.params();
 
-	BufferParams & params = form_->controller().params();
-	params.textclass = layoutModule->classCO->currentItem();
+	lyx::textclass_type const tc = layoutModule->classCO->currentItem();
 
-	if (lyxrc.auto_reset_options) {
+	if (controller().loadTextclass(tc)) {
 		params.textclass = tc;
-		params.useClassDefaults();
-		form_->update_contents();
+
+		if (lyxrc.auto_reset_options) {
+			params.useClassDefaults();
+			form_->update_contents();
+		} else {
+			updateFontsize(cntrl.textClass().opt_fontsize(),
+				       params.fontsize);
+
+			updatePagestyle(cntrl.textClass().opt_pagestyle(),
+					params.pagestyle);
+		}
 	} else {
-		// update the params which are needed in any case
-		// (fontsizes, pagestyle)
-		params.textclass = tc;
-		updateFontsize(form_->controller().textClass().opt_fontsize(),
-			params.fontsize);
-
-		updatePagestyle(form_->controller().textClass().opt_pagestyle(),
-			params.pagestyle);
+		for (int n = 0; n<layoutModule->classCO->count(); ++n) {
+			if (layoutModule->classCO->text(n) ==
+			    cntrl.textClass().description().c_str()) {
+				layoutModule->classCO->setCurrentItem(n);
+				break;
+			}
+		}
 	}
 }

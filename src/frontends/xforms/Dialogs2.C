@@ -63,7 +63,7 @@ void Dialogs::createCitation(string const & s)
 
 void Dialogs::showDocument()
 {
-	pimpl_->document.show();
+	pimpl_->document.controller().show();
 }
 
 
