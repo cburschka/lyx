@@ -240,19 +240,19 @@ void LyXText::cursorPrevious()
 {
 	int y = top_y();
 
-	if (cursorRow() == rows().begin()) {
+	RowList::iterator rit = cursorRow();
+
+	if (rit == rows().begin()) {
 		if (y > 0)
 			bv()->updateScrollbar();
 		return;
 	}
 
-	RowList::iterator cursorrow = cursorRow();
-
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	finishUndo();
 
 	int new_y;
-	if (cursorrow == bv()->text->cursorRow()) {
+	if (rit == bv()->text->cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
 		cursorUp(true);
@@ -263,24 +263,24 @@ void LyXText::cursorPrevious()
 		if (inset_owner) {
 			new_y = bv()->text->cursor.iy()
 				+ bv()->theLockingInset()->insetInInsetY() + y
-				+ cursorRow()->height()
+				+ rit->height()
 				- bv()->workHeight() + 1;
 		} else {
 			new_y = cursor.y()
-				- cursorRow()->baseline()
-				+ cursorRow()->height()
+				- rit->baseline()
+				+ rit->height()
 				- bv()->workHeight() + 1;
 		}
 	}
-	//bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
-	if (cursorRow() != rows().begin()) {
-		LyXCursor cur;
-		setCursor(cur, getPar(boost::prior(cursorRow())),
-			  boost::prior(cursorRow())->pos(), false);
-		if (cur.y() > top_y()) {
-			cursorUp(true);
-		}
-	}
+
+	LyXCursor cur;
+	ParagraphList::iterator pit = cursor.par();
+	if (rit == beginRow(pit))
+		--pit;
+	rit = previousRow(rit);
+	setCursor(cur, pit, rit->pos(), false);
+	if (cur.y() > top_y())
+		cursorUp(true);
 	bv()->updateScrollbar();
 }
 
@@ -289,13 +289,11 @@ void LyXText::cursorNext()
 {
 	int topy = top_y();
 
-	if (boost::next(cursorRow()) == rows().end()) {
-		int y = cursor.y() - cursorRow()->baseline() +
-			cursorRow()->height();
-		if (y > topy + bv()->workHeight()) {
-			//bv()->screen().draw(bv()->text, bv(), bv()->text->top_y() + bv()->workHeight());
+	RowList::iterator rit = cursorRow();
+	if (rit == lastRow()) {
+		int y = cursor.y() - rit->baseline() + cursorRow()->height();
+		if (y > topy + bv()->workHeight())
 			bv()->updateScrollbar();
-		}
 		return;
 	}
 
@@ -308,13 +306,12 @@ void LyXText::cursorNext()
 
 	getRowNearY(y);
 
-	RowList::iterator cursorrow = cursorRow();
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	// + bv->workHeight());
 	finishUndo();
 
 	int new_y;
-	if (cursorrow == bv()->text->cursorRow()) {
+	if (rit == bv()->text->cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
 		cursorDown(true);
@@ -328,21 +325,20 @@ void LyXText::cursorNext()
 		if (inset_owner) {
 			new_y = bv()->text->cursor.iy()
 				+ bv()->theLockingInset()->insetInInsetY()
-				+ y - cursorRow()->baseline();
+				+ y - rit->baseline();
 		} else {
-			new_y =  cursor.y() - cursorRow()->baseline();
+			new_y = cursor.y() - cursorRow()->baseline();
 		}
 	}
-	//bv()->screen().draw(bv()->text, bv(), new_y);
 
-	RowList::iterator next_row = boost::next(cursorRow());
-	if (next_row != rows().end()) {
-		LyXCursor cur;
-		setCursor(cur, getPar(next_row), next_row->pos(), false);
-		if (cur.y() < top_y() + bv()->workHeight()) {
-			cursorDown(true);
-		}
-	}
+	ParagraphList::iterator pit = cursor.par();
+	if (boost::next(rit) == endRow(pit))
+		++pit;
+	rit = nextRow(rit);	
+	LyXCursor cur;
+	setCursor(cur, pit, rit->pos(), false);
+	if (cur.y() < top_y() + bv()->workHeight())
+		cursorDown(true);
 	bv()->updateScrollbar();
 }
 
