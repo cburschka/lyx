@@ -15,6 +15,10 @@
    external style definition files,
    linuxdoc sgml support and more
    ftp-site ftp.lyx.org
+@bJoão Luis Meloni Assirati
+@iE-mail: assirati@nonada.if.usp.br
+   Added support for unix sockets and
+   thence the 'inverse DVI' feature.
 @bYves Bastide
 @iE-mail: stid@acm.org
    Bug fixes
@@ -45,6 +49,10 @@
 @bChristian Buescher
 @iE-mail: Christian.Buescher@uni-bielefeld.de
    user-definable keys, lyxserver and more
+@bJohnathan Burchill
+@iE-mail: jkerrb@users.sourceforge.net
+    Ported John Levon's original 'change tracking' code to later 
+    versions of LyX. Numerous bug fixes thereof.
 @bFrancesc Burrull i Mestres
 @iE-mail: fburrull@mat.upc.es
    Catalan translation.
@@ -93,6 +101,9 @@
 @bHelge Hafting
 @iE-mail: helgehaf@aitel.hist.no
    Norwegian documentation and localization
+@bBennett Helm
+@iE-mail: bennett.helm@fandm.edu
+   Maintainer of the OSX ports, taking over from Ronald Florence.
 @bClaus Hentschel
 @iE-mail: claus.hentschel@mbau.fh-hannover.de
    Win32 port of LyX 1.1.x
@@ -237,12 +248,18 @@
 @iE-mail: reese@isn.net
    provided hollywood and broadway classes
    for writing screen scripts and plays
+@bRuurd Reitsma
+@iE-mail: rareitsma@yahoo.com
+   Creator of the native port of LyX to Windows.
 @bBernd Rellermeyer
 @iE-mail: 100.41728@germanynet.de
    Support for Koma-Script family of classes
 @bMichael Ressler
 @iE-mail: mike.ressler@alum.mit.edu
    documentation maintainer, AASTeX support
+@bChristian Ridderström
+@iE-mail: christian.ridderstrom@home.se
+   The driving force behind, and maintainer of, the LyX wiki wiki.
 @bMichael Schmitt
 @iE-mail: Michael.Schmitt@teststep.org
    lots of bug reports and purify runs
@@ -261,6 +278,13 @@
 @bMiyata Shigeru
 @iE-mail: miyata@kusm.kyoto-u.ac.jp
    OS/2 port
+@bLior Silberman
+@iE-mail: lior@princeton.edu
+   Tweaks to various XForms dialogs.
+   Implemented the --userdir command line option, enabling LyX to 
+   run with multiple configurations for different users.
+   Implemented the original code to make colours for diferent inset
+   properties configurable.
 @bAndre Spiegel
 @iE-mail: spiegel@gnu.org
    vertical spaces
@@ -320,6 +344,10 @@
    The one who answers all questions on lyx-users
      mailing list and maintains www.lyx.org/help/
    Big insetgraphics and bibliography cleanups
+@bAndreas Vox
+@iE-mail: avox@arcor.de
+   Bug fixes, feedback on LyX behaviour on the Mac, and
+   improvements to DocBook export
 @bJohn P. Weiss
 @iE-mail: weissjp@colorado.edu
    Bugreports and suggestions,
