@@ -1,5 +1,9 @@
 2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
 
+	* text.C (backspace): fix the "zombie characters"
+
+2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
+
 	* lyxfunc.C (dispatch): small fix to toc navigation inside branches
 
 2003-10-27  André Pönitz  <poenitz@gmx.net>

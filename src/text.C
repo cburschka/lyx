@@ -1679,7 +1679,7 @@ void LyXText::backspace()
 		setCurrentFont();
 
 	redoParagraph();
-	setCursor(cursor.par(), cursor.pos(), false, !cursor.boundary());
+	setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
 }
 
 
