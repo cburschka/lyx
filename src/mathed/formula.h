@@ -83,8 +83,6 @@ private:
 
 	/// contents
 	MathAtom par_;
-	/// x offset for drawing displayed formula
-	mutable int offset_;
 
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<RenderPreview> const preview_;

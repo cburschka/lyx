@@ -45,6 +45,8 @@ public:
 	///
 	~InsetFloat();
 	///
+	virtual bool display() const { return true; }
+	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, LyXLex & lex);

@@ -1,3 +1,9 @@
+2003-10-20  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* formula.[Ch]: re-introduce display() for insets, fixing the
+	various bugs (stretch of line above, math inset
+	positioning, ...)
+
 2003-10-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ref_inset.C (priv_dispatch): take the code from localDispatch

@@ -1,3 +1,9 @@
+2003-10-20  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C: re-introduce display() for insets, fixing the
+	various bugs (stretch of line above, math inset 
+	positioning, ...)
+
 2003-10-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (rightMargin): remove spurious semicolon

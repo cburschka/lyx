@@ -274,6 +274,8 @@ public:
 	// is this equivalent to a space (which is BTW different from
 	// a line separator)?
 	virtual bool isSpace() const { return false; }
+	// should we have a non-filled line before this inset?
+	virtual bool display() const { return false; }
 	// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
 	// if this inset has paragraphs should they be output all as default

@@ -691,6 +691,21 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 			point = i;
 			break;
 		}
+		InsetOld * in;
+		// Break before...	
+		if (i + 1 < last) {
+			in = pit->getInset(i + 1);
+			if (in && in->display()) {
+				point = i;
+				break;
+			}
+			// ...and after.
+			in = pit->getInset(i);
+			if (in && in->display()) {
+				point = i;
+				break;
+			}
+		}
 
 		char const c = pit->getChar(i);
 		if (i > endPosOfFontSpan) {
@@ -716,7 +731,7 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 		x += thiswidth;
 		chunkwidth += thiswidth;
 
-		InsetOld * in = pit->isInset(i) ? pit->getInset(i) : 0;
+		in = pit->getInset(i);
 
 		// break before a character that will fall off
 		// the right of the row
@@ -1445,14 +1460,32 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 			align = LYX_ALIGN_LEFT;
 		}
 
+		// Display-style insets should always be on a centred row
+		// (Simplify this to inset = pit->getInset(rit->pos()) once
+		// the "bit silly" bug is fixed, MV)
+		inset = pit->isInset(rit->pos()) ? pit->getInset(rit->pos()) : 0;
+		if (inset && inset->display()) {
+			align = LYX_ALIGN_CENTER;
+		}
+		
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
 		{
 			int const ns = numberOfSeparators(*pit, *rit);
 			RowList::iterator next_row = boost::next(rit);
+			bool disp_inset = false;
+			if (next_row != pit->rows.end()) {
+				InsetOld * in = pit->getInset(next_row->pos());
+				if (in)
+					disp_inset = in->display();
+			}
+			// If we have separators, this is not the last row of a
+			// par, does not end in newline, and is not row above a
+			// display inset... then stretch it
 			if (ns
 				&& next_row != pit->rows.end()
 				&& !pit->isNewline(next_row->pos() - 1)
+				&& !disp_inset
 				) {
 					fill_separator = w / ns;
 			} else if (is_rtl) {
