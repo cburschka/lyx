@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# -*- coding: iso-8859-1 -*-
 
 # file lyxpreview2bitmap.py
 # This file is part of LyX, the document processor.
