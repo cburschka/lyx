@@ -136,6 +136,11 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 	if (!qApp->focusWidget())
 		return;
 
+	// We could have pending paints. If we don't process them
+	// before, we end up with pixel dirt when the cursor is
+	// in insets
+	qApp->processEvents();
+
 	Painter & pain(owner_.getPainter());
 	pain.start();
 	pain.line(x, y, x, y + h - 1, LColor::cursor);
