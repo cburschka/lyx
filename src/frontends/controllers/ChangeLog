@@ -3,6 +3,11 @@
 	* biblio.C (getInfo): string::c_str() never returns NULL. Don't test
 	for it.
 
+2002-03-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ControlGraphics.C:
+	* ControlInclude.C: better error messages
+	 
 2002-03-11  Herbert Voss  <voss@lyx.org>
 
 	* biblio.C (parseBibTeX): fix another minibug with an

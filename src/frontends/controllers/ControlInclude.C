@@ -89,7 +89,7 @@ bool ControlInclude::fileExists(string const & file)
     if (IsFileReadable(fileWithAbsPath))
 	return true;
     else
-	Alert::alert(_("File doesn't exists!"));
+	Alert::alert(_("Specified file doesn't exist !"));
     return false;
 }
 

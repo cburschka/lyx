@@ -81,10 +81,11 @@ void ControlGraphics::applyParamsNoInset()
 // We need these in the file browser.
 extern string system_lyxdir;
 extern string user_lyxdir;
+ 
 
 string const ControlGraphics::Browse(string const & in_name)
 {
-	string const title = N_("Graphics");
+	string const title = N_("Select graphics file");
 	// FIXME: currently we need the second '|' to prevent mis-interpretation 
 	string const pattern = "*.(ps|eps|png|jpeg|jpg|gif|gz)|";
 
@@ -99,6 +100,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	// Show the file browser dialog
 	return browseFile(&lv_, in_name, title, pattern, dir1, dir2);
 }
+ 
 
 string const ControlGraphics::readBB(string const & file)
 {
