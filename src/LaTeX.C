@@ -132,7 +132,7 @@ void TeXErrors::scanError(LyXLex &lex)
 	// msg.
 	if (contains(errstr, "l.")) {
 		// We make a const copy to make [] fast. (Asger)
-		string const es = errstr;
+		string const es(errstr);
 		for (string::size_type i = 2; i < es.length(); ++i) {
 			if (es[i-2] == 'l' && es[i-1] == '.' &&
 			    (es[i] >= '0' && es[i]<= '9')) {
@@ -198,9 +198,6 @@ void TeXErrors::printErrors()
 			       << tmperr->error_in_line
 			       << ": " << tmperr->error_desc
 			       << '\n' << tmperr->error_text << endl;
-			//%d: %s\n%s\n", tmperr->error_in_line,
-			//     tmperr->error_desc.c_str(),
-			//     tmperr->error_text.c_str());
                         tmperr = tmperr->next_error;
                 } while (tmperr);
         }
@@ -483,20 +480,18 @@ bool LaTeX::runBibTeX(string const &file)
 
 int LaTeX::scanLogFile(TeXErrors &terr)
 {
-	string token;
 	int retval = NO_ERRORS;
-	
-	LyXLex lex(0, 0);
-
 	string tmp = ChangeExtension(file, ".log", true);
 	
+	LyXLex lex(0, 0);
 	if (!lex.setFile(tmp)) {
 		// unable to open file
 		// return at once
 		retval |= NO_LOGFILE;
 		return retval;
 	}
-	
+
+	string token;
 	while (lex.IsOK()) {
 		if (lex.EatLine())
 			token = lex.GetString();

@@ -12,8 +12,8 @@
  *======================================================
  */
 
-#ifndef _LATEX_H
-#define _LATEX_H
+#ifndef LATEX_H
+#define LATEX_H
 
 #ifdef __GNUG__
 #pragma interface

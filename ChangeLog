@@ -1,3 +1,10 @@
+1999-10-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/LaTeX.C: some no-op changes moved declaration of some
+	variables around.
+
+	* src/LaTeX.h (LATEX_H): changed include guard name
+
 1999-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/reLyX/Makefile.am: install noweb2lyx.
