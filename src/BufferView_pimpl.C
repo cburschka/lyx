@@ -53,7 +53,7 @@
 #include "graphics/Previews.h"
 
 #include "support/LAssert.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/filetools.h"
 
 #include <boost/bind.hpp>

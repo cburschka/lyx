@@ -29,6 +29,8 @@
 #endif
 #endif
 
+#include "support/tostr.h"
+
 #include "frontends/Alert.h"
 
 using std::endl;

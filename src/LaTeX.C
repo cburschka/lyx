@@ -21,6 +21,7 @@
 #include "funcrequest.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/tostr.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/systemcall.h"

@@ -22,14 +22,18 @@ using std::map;
 using std::max;
 using std::sort;
 
-#include "frontends/Alert.h"
+#include "gettext.h"
+#include "forms_gettext.h"
+#include "xforms_helpers.h"
+
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
-#include "gettext.h"
+#include "support/tostr.h"
+#include "support/filetools.h"
+
+#include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
-#include "forms_gettext.h"
-#include "xforms_helpers.h"
 
 #include <boost/bind.hpp>
 
@@ -53,7 +57,6 @@ using std::sort;
 #endif
 
 
-#include "support/filetools.h"
 #include "FormFiledialog.h"
 #include "forms/form_filedialog.h"
 #include FORMS_H_LOCATION

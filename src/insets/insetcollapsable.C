@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-
 #include "insetcollapsable.h"
 #include "insettext.h"
 
@@ -32,7 +31,6 @@
 
 #include "support/LAssert.h"
 #include "support/LOstream.h"
-#include "support/lstrings.h"
 
 using std::vector;
 using std::ostream;
@@ -88,7 +86,7 @@ bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
 
 void InsetCollapsable::write(Buffer const * buf, ostream & os) const
 {
-	os << "collapsed " << tostr(collapsed_) << "\n";
+	os << "collapsed " << (collapsed_ ? "true" : "false") << "\n";
 	inset.writeParagraphData(buf, os);
 }
 

@@ -15,6 +15,7 @@
 #include "tabular_funcs.h"
 
 #include "support/LIstream.h"
+#include "support/lstrings.h"
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-#include <algorithm>
 #include "MenuBackend.h"
 #include "lyxlex.h"
 #include "LyXAction.h"
@@ -33,6 +32,9 @@
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
+
+#include <algorithm>
 
 extern BufferList bufferlist;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;

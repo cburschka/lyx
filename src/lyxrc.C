@@ -13,20 +13,22 @@
 #include <iostream>
 #include <boost/scoped_ptr.hpp>
 
-#include "debug.h"
-
 #include "lyxrc.h"
+
+#include "debug.h"
 #include "kbmap.h"
 #include "LyXAction.h"
 #include "intl.h"
-#include "support/path.h"
-#include "support/filetools.h"
-#include "support/LAssert.h"
-#include "support/userinfo.h"
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
 #include "lyxlex.h"
+
+#include "support/path.h"
+#include "support/tostr.h"
+#include "support/filetools.h"
+#include "support/LAssert.h"
+#include "support/userinfo.h"
 
 using std::ostream;
 using std::ofstream;

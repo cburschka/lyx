@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
@@ -33,6 +32,7 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
+#include "support/tostr.h"
 #include "support/lstrings.h" // contains_functor, getStringFromVector
 #include "support/filetools.h" // LibFileSearch
 #include "support/BoostFormat.h"

@@ -6,7 +6,7 @@
 #include "LString.h"
 #include "support/lyxlib.h"
 #include "support/filetools.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include "debug.h"
 #include "os.h"
 

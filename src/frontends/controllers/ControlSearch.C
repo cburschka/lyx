@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlSearch.h"
 
 #include "gettext.h"
@@ -18,7 +17,7 @@
 
 #include "frontends/LyXView.h"
 
-#include "support/lstrings.h"
+#include "support/tostr.h"
 
 
 ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)

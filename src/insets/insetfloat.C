@@ -30,6 +30,7 @@
 
 #include "support/LOstream.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"

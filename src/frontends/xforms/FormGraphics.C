@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-
 #include "xformsBC.h"
 #include "ControlGraphics.h"
 #include "FormGraphics.h"
@@ -32,7 +31,8 @@
 
 #include "frontends/Alert.h"
 
-#include "support/lstrings.h"  // for strToDbl & tostr
+#include "support/tostr.h"
+#include "support/lstrings.h"  // for strToDbl 
 #include "support/lyxlib.h"  // for float_equal
 #include "support/filetools.h"  // for MakeAbsPath etc
 

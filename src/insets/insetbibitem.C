@@ -17,6 +17,7 @@
 
 #include "frontends/font_metrics.h"
 
+#include "support/tostr.h"
 #include "support/lstrings.h"
 
 

@@ -29,7 +29,8 @@
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/FileMonitor.h"
-#include "support/lstrings.h"
+#include "support/lstrings.h" // contains
+#include "support/tostr.h"
 
 #include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"

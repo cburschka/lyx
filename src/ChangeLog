@@ -1,4 +1,17 @@
 
+2003-05-13 André Pönitz <poenitz@gmx.net>
+	
+	* BufferView_pimpl.C:
+	* buffer.C:
+	* bufferview_func.C:
+	* MenuBackend.C:
+	* lyxfunc.C:
+	* lyxrc.C:
+	* tex-accent.C:
+	* text3.C:
+	* toc.C:
+	* tabular_funcs.h: tostr() from its own header
+
 2003-05-12 André Pönitz <poenitz@gmx.net>
 
 	* BufferView.C:

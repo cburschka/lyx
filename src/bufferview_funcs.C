@@ -31,7 +31,7 @@
 #include "frontends/Alert.h"
 #include "mathed/math_cursor.h"
 
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include "Lsstream.h"
 
 #include "insets/updatableinset.h"

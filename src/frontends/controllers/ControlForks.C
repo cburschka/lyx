@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlForks.h"
 #include "ViewBase.h"
 
@@ -18,7 +17,7 @@
 #include "funcrequest.h"
 
 #include "support/forkedcontr.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include <boost/bind.hpp>
 

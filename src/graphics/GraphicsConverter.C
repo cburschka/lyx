@@ -19,7 +19,7 @@
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/forkedcallqueue.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>

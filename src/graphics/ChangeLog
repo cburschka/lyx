@@ -1,4 +1,9 @@
 
+2003-05-13 André Pönitz <poenitz@gmx.net>
+
+	* GraphicsConverter.C:
+	* PreviewLoader.C: use tostr from own header
+
 2003-05-12 André Pönitz <poenitz@gmx.net>
 
 	* PreviewLoader.C:  boost::format -> bformat 

@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-
 #include "xformsBC.h"
 #include "ControlMinipage.h"
 #include "FormMinipage.h"
 #include "forms/form_minipage.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "helper_funcs.h"
 #include "debug.h"
 #include "xforms_helpers.h"

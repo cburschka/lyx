@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlPrefs.h"
 #include "FormPreferences.h"
 #include "forms/form_preferences.h"
@@ -38,6 +37,7 @@
 
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
+#include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/LAssert.h"
 
@@ -657,8 +657,7 @@ void FormPreferences::Colors::InputHSV()
 	int const s = int(100.0 * sat);
 	int const v = int(100.0 * val);
 
-	string const label = tostr(h) + string(", ") + tostr(s) + string(", ") +
-		tostr(v);
+	string const label = tostr(h) + ", " + tostr(s) + ", " + tostr(v);
 	fl_set_object_label(dialog_->text_color_values, label.c_str());
 
 	RGBColor col = HSVColor(hue, sat, val);

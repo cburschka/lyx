@@ -12,7 +12,8 @@
 
 #include "ControlTabularCreate.h"
 #include "funcrequest.h"
-#include "support/lstrings.h"
+
+#include "support/tostr.h"
 
 
 ControlTabularCreate::ControlTabularCreate(Dialog & parent)
@@ -22,14 +23,16 @@ ControlTabularCreate::ControlTabularCreate(Dialog & parent)
 
 bool ControlTabularCreate::initialiseParams(string const &)
 {
-	params_.first = params_.second = 5;
+	params_.first  = 5;
+	params_.second = 5;
 	return true;
 }
 
 
 void ControlTabularCreate::clearParams()
 {
-	params_.first = params_.second = 0;
+	params_.first  = 0;
+	params_.second = 0;
 }
 
 

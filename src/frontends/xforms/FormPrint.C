@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "xformsBC.h"
 #include "ControlPrint.h"
 #include "FormPrint.h"
@@ -23,7 +22,7 @@
 #include "input_validators.h"
 #include "xforms_helpers.h"
 
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include FORMS_H_LOCATION
 
 

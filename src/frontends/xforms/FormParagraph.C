@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "ControlParagraph.h"
 #include "FormParagraph.h"
 #include "forms/form_paragraph.h"
@@ -29,6 +28,7 @@
 #include "layout.h" // LyXAlignment
 
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/LAssert.h"
 
 #include FORMS_H_LOCATION

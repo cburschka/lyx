@@ -29,7 +29,7 @@
 #include "frontends/Dialogs.h"
 
 #include "support/LOstream.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 
 using std::ostream;
 using std::endl;

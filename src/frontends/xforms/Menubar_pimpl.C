@@ -16,6 +16,7 @@
 #include "XFormsView.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "debug.h"

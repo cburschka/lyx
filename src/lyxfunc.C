@@ -63,6 +63,7 @@
 #include "support/FileInfo.h"
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/path.h"
 #include "support/lyxfunctional.h"
 

@@ -64,10 +64,12 @@ libsupport_la_SOURCES = \
 	sstream.h \
 	systemcall.C \
 	systemcall.h \
-	userinfo.C \
-	userinfo.h \
 	tempname.C \
 	textutils.h \
+	tostr.h \
+	tostr.C \
 	translator.h \
 	types.h \
+	userinfo.C \
+	userinfo.h \
 	unlink.C

@@ -18,8 +18,6 @@
 
 #include <vector>
 
-#include "Lsstream.h"
-
 #include "LString.h"
 
 ///
@@ -85,36 +83,6 @@ string const lowercase(string const &);
 
 ///
 string const uppercase(string const &);
-
-/// convert \a T to string
-template<typename T>
-inline
-string const tostr(T const & t)
-{
-	ostringstream ostr;
-	ostr << t;
-	return STRCONV(ostr.str());
-	// We need to use the .c_str since we sometimes are using
-	// our own string class and that is not compatible with
-	// basic_string<char>. (of course we don't want this later)
-}
-
-
-///
-template<>
-inline
-string const tostr(bool const & b)
-{
-	return (b ? "true" : "false");
-}
-
-///
-template<>
-inline
-string const tostr(string const & s)
-{
-	return s;
-}
 
 /// Does the string start with this prefix?
 bool prefixIs(string const &, char const *);

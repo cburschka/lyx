@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "xformsBC.h"
 #include "FormSpellchecker.h"
 #include "ControlSpellchecker.h"
@@ -19,7 +18,7 @@
 #include "forms_gettext.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include FORMS_H_LOCATION
 

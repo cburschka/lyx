@@ -15,16 +15,19 @@
 
 #include <config.h>
 
-#include "support/lstrings.h"
 #include "toc.h"
 #include "buffer.h"
-#include "frontends/LyXView.h"
 #include "LyXAction.h"
 #include "paragraph.h"
-#include "insets/insetfloat.h"
-#include "insets/insetwrap.h"
 #include "debug.h"
 #include "iterators.h"
+
+#include "insets/insetfloat.h"
+#include "insets/insetwrap.h"
+
+#include "support/tostr.h"
+
+#include "frontends/LyXView.h"
 
 using std::vector;
 using std::max;

@@ -31,7 +31,7 @@
 
 #include "support/LOstream.h"
 #include "support/LAssert.h"
-#include "support/lstrings.h"
+#include "support/tostr.h"
 
 
 using std::ostream;

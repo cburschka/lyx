@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlPrint.h"
 
 #include "ViewBase.h"
@@ -25,6 +24,7 @@
 
 #include "frontends/Alert.h"
 
+#include "support/tostr.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/path.h"

@@ -22,6 +22,7 @@
 
 #include "insets/insetwrap.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include FORMS_H_LOCATION
 
 typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;

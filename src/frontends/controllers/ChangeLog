@@ -1,10 +1,18 @@
 
-2003-05-12 André Pönitz <poenitz@gmx.net>
+2003-05-13 André Pönitz <poenitz@gmx.net>
 
 	* ControlDocument.C:
 	* ControlPrint.C:
 	* ControlSpellchecker.C:
 	* biblio.C: boost::format -> bformat  all over the place
+
+	* ControlForks.C:
+	* ControlGraphics.C:
+	* ControlPrint.C:
+	* ControlSearch.C:
+	* ControlSpellchecker.C:
+	* ControlTabularCreate.C: use tostr from new header
+
 
 2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "ControlGraphics.h"
 
 #include "helper_funcs.h"
@@ -29,7 +28,7 @@
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
 
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 

@@ -14,9 +14,8 @@
 #ifndef TABULAR_FUNCS_H
 #define TABULAR_FUNCS_H
 
-#include "LString.h"
 #include "tabular.h"
-#include "support/lstrings.h" // for tostr
+#include "support/tostr.h"
 
 #include <iosfwd>
 
