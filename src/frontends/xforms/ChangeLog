@@ -1,7 +1,7 @@
 2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xformsGImage.C (clip): no need to check if the width, height are > 0
-	because the BoundingBox would be empty() in this case.
+	because the BoundingBox would be empty() in this weren't the case.
 
 2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
