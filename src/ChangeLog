@@ -1,5 +1,10 @@
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* CutAndPaste.C (cutSelection): split into two versons (NEW_INSETS
+	and not)
+	(copySelection): ditto
+	(pasteSelection): ditto
+
 	* BufferView.C: whitespace change
 	* BufferView.h: inherit privately from noncopyable
 
