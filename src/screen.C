@@ -135,6 +135,11 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 			text->setCursor(bv, text->cursor.par(),
 					text->cursor.pos());
 			text->status(bv, st);
+			// we should be sure our row-pointer is still valid, so it's
+			// better to recompute it.
+			y_text = y + text->first_y;
+			row = text->getRowNearY(y_text);
+			y = y_text - text->first_y;
 			text->getVisibleRow(bv, y + y_offset,
 					    x_offset, row, y + text->first_y);
 		}
@@ -161,18 +166,7 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(owner.height()))) {
 		// ok there is something visible
-#if 0
-		LyXText::text_status st = bv->text->status();
-		do {
-			bv->text->status(bv, st);
-			text->getVisibleRow(bv, y, x_offset, row,
-					    y + text->first_y);
-		} while (!text->inset_owner &&
-			 text->status() == LyXText::CHANGED_IN_DRAW);
-		bv->text->status(bv, st);
-#else
 		text->getVisibleRow(bv, y, x_offset, row, y + text->first_y);
-#endif
 	}
 	force_clear = false;
 }

@@ -475,23 +475,25 @@ void LyXText::drawNewline(DrawRowParams & p, pos_type const pos)
 }
 
 
-void LyXText::drawInset(DrawRowParams & p, pos_type const pos)
+bool LyXText::drawInset(DrawRowParams & p, pos_type const pos)
 {
 	Inset * inset = p.row->par()->getInset(pos);
 
 	// FIXME: shouldn't happen
 	if (!inset) {
-		return;
+		return true;
 	}
 
 	LyXFont const & font = getFont(p.bv->buffer(), p.row->par(), pos);
+	// we need this here as the row pointer may be illegal
+	// at a later time (Jug20020502)
+	Row * prev = p.row->previous();
 
 	inset->update(p.bv, font, false);
 	inset->draw(p.bv, font, p.yo + p.row->baseline(), p.x, p.cleared);
 
 	if (!need_break_row && !inset_owner
 	    && p.bv->text->status() == CHANGED_IN_DRAW) {
-		Row * prev = p.row->previous();
 		if (prev && prev->par() == p.row->par()) {
 			breakAgainOneRow(p.bv, prev);
 			if (prev->next() != p.row) {
@@ -501,11 +503,15 @@ void LyXText::drawInset(DrawRowParams & p, pos_type const pos)
 			} else {
 				need_break_row = p.row;
 			}
+		} else if (!prev) {
+			need_break_row = firstrow;
 		} else {
-			need_break_row = p.row;
+			need_break_row = prev->next();
 		}
 		setCursor(p.bv, cursor.par(), cursor.pos());
+		return false;
 	}
+	return true;
 }
 
 
@@ -630,7 +636,7 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 }
 
 
-void LyXText::draw(DrawRowParams & p, pos_type & vpos)
+bool LyXText::draw(DrawRowParams & p, pos_type & vpos)
 {
 	pos_type const pos = vis2log(vpos);
 	Paragraph * par = p.row->par();
@@ -644,12 +650,13 @@ void LyXText::draw(DrawRowParams & p, pos_type & vpos)
 	if (IsNewlineChar(c)) {
 		++vpos;
 		drawNewline(p, pos);
-		return;
+		return true;
 	} else if (IsInsetChar(c)) {
-		drawInset(p, pos);
+		if (!drawInset(p, pos))
+			return false;
 		++vpos;
 		drawForeignMark(p, orig_x, orig_font);
-		return;
+		return true;
 	}
 
 	// usual characters, no insets
@@ -681,6 +688,7 @@ void LyXText::draw(DrawRowParams & p, pos_type & vpos)
 		lyxerr << "No this shouldn't happen!\n";
 #endif
 #endif
+	return true;
 }
 
 
@@ -3662,7 +3670,8 @@ void LyXText::paintRowText(DrawRowParams & p)
 				p.x += p.separator;
 			++vpos;
 		} else {
-			draw(p, vpos);
+			if (!draw(p, vpos))
+				break;
 		}
 	}
 }

@@ -648,11 +648,11 @@ private:
 	/// draw a mark for foreign language, starting from orig_x
 	void drawForeignMark(DrawRowParams & p, float const orig_x, LyXFont const & orig_font);
 	/// draw an inset
-	void drawInset(DrawRowParams & p, lyx::pos_type const pos);
+	bool drawInset(DrawRowParams & p, lyx::pos_type const pos);
 	/// draw new line marker
 	void drawNewline(DrawRowParams & p, lyx::pos_type const pos);
 	/// draw text
-	void draw(DrawRowParams & p, lyx::pos_type & vpos);
+	bool draw(DrawRowParams & p, lyx::pos_type & vpos);
 
 	/// get the next breakpoint in a given paragraph
 	lyx::pos_type nextBreakPoint(BufferView *, Row const * row, int width) const;

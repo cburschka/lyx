@@ -1,3 +1,20 @@
+2002-05-03  Juergen Vigna  <jug@sad.it>
+
+	* screen.C (drawFromTo): recalculate the rowpointer if we had a
+	change in LyXText as we can not be sure it was not freed.
+	(drawOneRow): remove unused code.
+
+	* text.C (drawInset): redo the calculation of the need_break_row as
+	it could have a row which was already freed.
+	(draw): look at the return value of drawInset and return false if
+	it also returned false.
+	(paintRowText): look at the return value of draw and return false if
+	it also returned false.
+
+	* lyxtext.h: added bool return type to drawInset() and draw() so that
+	if we have a change in the row so that the rowbreak has to be redone
+	we abort drawing as it will be called again.
+
 2002-05-02  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (moveCursorUpdate): make repaint if we had
