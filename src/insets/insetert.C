@@ -197,6 +197,13 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	InsetCollapsable::edit(bv, x, y, button);
+	if (status_ != Inlined) {
+		if (collapsed_) {
+			status(0, Collapsed);
+		} else {
+			status(0, Open);
+		}
+	}
 	set_latex_font(bv);
 }
 
@@ -212,6 +219,13 @@ Inset::EDITABLE InsetERT::editable() const
 void InsetERT::edit(BufferView * bv, bool front)
 {
 	InsetCollapsable::edit(bv, front);
+	if (status_ != Inlined) {
+		if (collapsed_) {
+			status(0, Collapsed);
+		} else {
+			status(0, Open);
+		}
+	}
 	set_latex_font(bv);
 }
 
