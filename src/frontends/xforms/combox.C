@@ -290,10 +290,9 @@ void Combox::show()
 	// Angus 4 Oct, 2002.
 	if (label->form->window) {
 		FL_FORM * lf = label->form;
-		FL_Coord w, h;
-		fl_get_wingeometry(lf->window, &(lf->x), &(lf->y), &w, &h);
+		fl_get_winorigin(lf->window, &(lf->x), &(lf->y));
 	}
-	
+
 	int const x = label->form->x + label->x;
 	int const y = label->form->y + label->y + label->h;
 

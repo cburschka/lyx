@@ -1,3 +1,9 @@
+2002-10-08  Angus Leeming  <leeming@lyx.org>
+
+	* FeedbackController.C (PrehandlerCB):
+	* combox.C (show): use fl_get_winorigin in preference to
+	fl_get_wingeometry.
+
 2002-10-14  Angus Leeming  <leeming@lyx.org>
 
 	* Tooltips.h (set) make it private:

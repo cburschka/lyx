@@ -92,10 +92,9 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		// in case the FL_ENTER event is not caught.
 
 		FL_FORM * const folder = fl_get_active_folder(ob);
-		if (folder->window) {
-			FL_Coord w, h;
-			fl_get_wingeometry(folder->window,
-					   &(folder->x), &(folder->y), &w, &h);
+		if (folder && folder->window) {
+			fl_get_winorigin(folder->window,
+					 &(folder->x), &(folder->y));
 		}
 
 	} else if (message_widget_ &&
