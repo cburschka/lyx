@@ -24,7 +24,7 @@
 
 #include "support/types.h"
 #include "changes.h"
-#include "RowList.h"
+#include "RowList_fwd.h"
 
 #include "support/std_string.h"
 

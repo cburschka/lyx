@@ -18,7 +18,7 @@
 #include "layout.h"
 #include "LColor.h"
 #include "insets/inset.h"
-#include "RowList.h"
+#include "RowList_fwd.h"
 #include "bufferview_funcs.h"
 #include "textcursor.h"
 

@@ -26,6 +26,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "latexrunparams.h"
+#include "RowList.h"
 
 #include "support/std_sstream.h"
 

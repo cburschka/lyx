@@ -20,6 +20,7 @@
 #include "language.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
+#include "RowList.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"

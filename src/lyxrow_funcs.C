@@ -15,6 +15,7 @@
 #include "lyxtext.h"
 #include "lyxlayout.h"
 #include "debug.h"
+#include "RowList.h"
 
 #include "support/LAssert.h"
 

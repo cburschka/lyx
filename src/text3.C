@@ -38,6 +38,7 @@
 #include "insets/insetnewline.h"
 #include "undo_funcs.h"
 #include "text_funcs.h"
+#include "RowList.h"
 
 #include <clocale>
 

@@ -16,7 +16,7 @@
 #include "support/std_string.h"
 #include "LColor.h"
 #include "ParagraphList.h"
-#include "RowList.h"
+#include "RowList_fwd.h"
 #include "dimension.h"
 #include "lyxtext.h"
 

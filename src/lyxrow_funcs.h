@@ -13,7 +13,7 @@
 #ifndef LYXROW_FUNCS_H
 #define LYXROW_FUNCS_H
 
-#include "RowList.h"
+#include "RowList_fwd.h"
 #include "support/types.h"
 
 class Paragraph;

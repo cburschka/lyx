@@ -27,6 +27,7 @@
 #include "rowpainter.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
+#include "RowList.h"
 
 
 using namespace lyx::support;

@@ -1,3 +1,22 @@
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* RowList_fwd.h: new file, forward-declaring Row rather than
+	#including lyxrow.h
+
+	* lyxrow_funcs.h:
+	* lyxtext.h:
+	* paragraph.h:
+	* insets/insettext.h: use it instead of RowList.h
+
+	* bufferview_funcs.C:
+	* lyxfunc.C:
+	* lyxrow_funcs.C:
+	* paragraph.C:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: #include "RowList.h".
+
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* factory.C (createInset):
