@@ -284,7 +284,6 @@ void LyXText::cursorPrevious()
 	}
 
 	LyXCursor cur;
-	rit = cursorRow();
 	ParagraphList::iterator pit = cursorPar();
 	rit = cursorRow();
 	if (isFirstRow(pit, *rit))
