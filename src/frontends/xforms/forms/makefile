@@ -19,6 +19,7 @@ SHELL = /bin/sh
 
 SRCS := form_bibitem.fd \
 	form_bibtex.fd \
+	form_character.fd \
 	form_citation.fd \
 	form_copyright.fd \
 	form_document.fd \
@@ -28,6 +29,7 @@ SRCS := form_bibitem.fd \
 	form_index.fd \
 	form_browser.fd \
 	form_paragraph.fd \
+	form_preamble.fd \
 	form_preferences.fd \
 	form_print.fd \
 	form_ref.fd \
@@ -48,14 +50,15 @@ test: clean $(OBJS)
 
 updatesrc: test
 	for fil in *.C *.h; \
-		do cmp -s $$fil ../$$fil || mv $$fil ..; \
+	do cmp -s $$fil ../$$fil || mv $$fil ..; \
 	done
+	rm -f *.[hHcC] *.bak
 
 .fd.C:
 	${SHELL} ./fdfix.sh $<
 
 clean:
-	rm -f *.[hHcC] *.bak
+	rm -f *.[hHcC] *.bak fdfixc_modified.sed
 
 distclean: clean
 	rm -f *.orig *.rej *~
