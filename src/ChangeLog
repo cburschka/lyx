@@ -1,3 +1,19 @@
+2002-03-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (breakParagraph): dont call clear do the work manually
+
+	* paragraph.[Ch] (clear): remove function 
+
+2002-03-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (Paragraph): dont call clear, the work has already
+	been done.
+
+	* lyxtextclass.C (operator): assert if n is empty
+
+	* CutAndPaste.C (cutSelection): dont call Paragraph::clear, do the
+	work manually instead.
+
 2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: protect selectionLost against text == 0

@@ -86,7 +86,6 @@ Paragraph::Paragraph()
 	enumdepth = 0;
 	itemdepth = 0;
 	bibkey = 0; // ale970302
-	clear();
 }
 
 
@@ -108,8 +107,6 @@ Paragraph::Paragraph(Paragraph * par)
 	// end
 
 	bibkey = 0; // ale970302        
-
-	clear();
 }
 
 
@@ -470,17 +467,6 @@ bool Paragraph::insertFromMinibuffer(pos_type pos)
 }
 
 // end of minibuffer
-
-
-
-void Paragraph::clear()
-{
-	params().clear();
-
-	layout_.erase();
-
-	bibkey = 0;
-}
 
 
 void Paragraph::erase(pos_type pos)
@@ -909,7 +895,11 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		tmp->params().pagebreakTop(params().pagebreakTop());
 		tmp->params().spaceTop(params().spaceTop());
 		tmp->bibkey = bibkey;
-		clear();
+
+		bibkey = 0;
+		params().clear();
+		layout(textclasslist[bparams.textclass].defaultLayoutName());
+		
 		// layout stays the same with latex-environments
 		if (flag) {
 			layout(tmp->layout());
@@ -2124,6 +2114,8 @@ string const & Paragraph::layout() const
 
 void Paragraph::layout(string const & new_layout)
 {
+	lyx::Assert(!new_layout.empty());
+	
 	layout_ = new_layout;
 }
 

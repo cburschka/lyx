@@ -309,11 +309,6 @@ public:
 	/// 
 	bool isWord(lyx::pos_type pos) const;
 
-	/** This one resets all layout and dtp switches but not the font
-	    of the single characters
-	*/ 
-	void clear();
-
 	/** paste this paragraph with the next one
 	    be carefull, this doesent make any check at all
 	*/ 

@@ -693,7 +693,7 @@ void InsetERT::getDrawFont(LyXFont & font) const
 
 int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 {
-	int w = InsetCollapsable::getMaxWidth(bv, in);
+	unsigned int w = InsetCollapsable::getMaxWidth(bv, in);
 	if (status_ != Inlined || w < 0)
 		return w;
 	LyXText * text = inset.getLyXText(bv);

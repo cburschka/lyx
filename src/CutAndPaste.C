@@ -131,9 +131,12 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		(*endpar)->previous(startpar);
 		
 		// the cut selection should begin with standard layout
-		if (realcut)
-			buf->clear(); 
-		
+		if (realcut) {
+			buf->params().clear();
+			buf->bibkey = 0;
+			buf->layout(textclasslist[current_view->buffer()->params.textclass].defaultLayoutName());
+		}
+
 		// paste the paragraphs again, if possible
 		if (doclear)
 			startpar->next()->stripLeadingSpaces(textclass);

@@ -505,6 +505,8 @@ bool LyXTextClass::hasLayout(string const & n) const
 
 LyXLayout const & LyXTextClass::operator[](string const & n) const
 {
+	lyx::Assert(!n.empty());
+	
 	if (n.empty())
 		lyxerr << "Operator[] called with empty n" << endl;
 	
@@ -530,6 +532,8 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 
 LyXLayout & LyXTextClass::operator[](string const & n)
 {
+	lyx::Assert(!n.empty());
+
 	if (n.empty())
 		lyxerr << "Operator[] called with empty n" << endl;
 
