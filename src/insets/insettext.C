@@ -274,12 +274,11 @@ void InsetText::edit(BufferView * bv, bool left)
 	lyxerr << "InsetText: edit left/right" << endl;
 	old_par = -1;
 	setViewCache(bv);
-
-	if (left)
-		text_.setCursorIntern(0, 0);
-	else
-		text_.setCursor(paragraphs().size() - 1, paragraphs().back().size());
-
+	int const par = left ? 0 : paragraphs().size() - 1;
+	int const pos = left ? 0 : paragraphs().back().size();
+	text_.setCursor(par, pos);
+	text_.clearSelection();
+	finishUndo();
 	sanitizeEmptyText(bv);
 	updateLocal(bv);
 	bv->updateParagraphDialog();
@@ -290,13 +289,10 @@ void InsetText::edit(BufferView * bv, int x, int y)
 {
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
-
-	sanitizeEmptyText(bv);
-	text_.setCursorFromCoordinates(x - text_.xo_, y + bv->top_y()
-				       - text_.yo_);
+	text_.setCursorFromCoordinates(x - text_.xo_, y + bv->top_y() - text_.yo_);
 	text_.clearSelection();
 	finishUndo();
-
+	sanitizeEmptyText(bv);
 	updateLocal(bv);
 	bv->updateParagraphDialog();
 }

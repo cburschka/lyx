@@ -179,17 +179,29 @@ private:
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
-	DispatchResult moveRight(BufferView *, bool lock);
+	DispatchResult moveRight(BufferView *);
 	///
-	DispatchResult moveLeft(BufferView *, bool lock);
+	DispatchResult moveLeft(BufferView *);
 	///
-	DispatchResult moveUp(BufferView *, bool lock);
+	DispatchResult moveUp(BufferView *);
 	///
-	DispatchResult moveDown(BufferView *, bool lock);
+	DispatchResult moveDown(BufferView *);
+
 	///
-	bool moveNextCell(BufferView *, bool lock = false);
+	DispatchResult moveRightLock(BufferView *);
 	///
-	bool movePrevCell(BufferView *, bool lock = false);
+	DispatchResult moveLeftLock(BufferView *);
+	///
+	DispatchResult moveUpLock(BufferView *);
+	///
+	DispatchResult moveDownLock(BufferView *);
+
+	///
+	bool moveNextCell(BufferView *);
+	///
+	bool movePrevCell(BufferView *);
+
+
 	///
 	int getCellXPos(int cell) const;
 	///
