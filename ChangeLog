@@ -1,5 +1,7 @@
 2001-05-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/LaTeX.C (deplog): correct the syntax of regex reg1
+
 	* src/Lsstream.h: include LString.h before the sstream headers to
 	fix problem with gcc 2.95.3 and lyxstring
 
