@@ -1984,7 +1984,7 @@ bool LyXText::gotoNextInset(BufferView * bview,
 
 
 void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
-			     Paragraph::size_type pos)
+                             Paragraph::size_type pos)
 {
 	LyXCursor tmpcursor;			
 
@@ -2027,7 +2027,8 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 	// check the special right address boxes
 	if (textclasslist.Style(bview->buffer()->params.textclass,
 				par->getLayout()).margintype
-	    == MARGIN_RIGHT_ADDRESS_BOX) {
+	    == MARGIN_RIGHT_ADDRESS_BOX)
+	{
 		tmpcursor.par(par);
 		tmpcursor.row(row);
 		tmpcursor.y(y);

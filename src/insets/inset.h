@@ -291,6 +291,10 @@ public:
 	/// we need this here because collapsed insets are only EDITABLE
 	virtual void setFont(BufferView *, LyXFont const &,
                          bool toggleall = false, bool selectall = false);
+	///
+	// needed for spellchecking text
+	///
+	virtual bool allowSpellcheck() { return false; }
 protected:
 	///
 	mutable int top_x;
@@ -470,6 +474,8 @@ public:
 	}
 	///
 	// needed for spellchecking text
+	///
+	virtual bool allowSpellcheck() { return false; }
 	///
 	virtual string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///

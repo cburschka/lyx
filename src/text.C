@@ -80,9 +80,7 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 			break;
 		}
 	}
-	
 	if (!par) {
-		lyxerr << "LyXText::workWidth: cannot find inset!" <<endl;
 		return workWidth(bview);
 	}
 	
@@ -99,19 +97,19 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 		dummyrow.pos(pos);
 		return workWidth(bview) - leftMargin(bview, &dummyrow);
 	} else {
-		Row * row = firstrow;
-		for(; row; row = row->next()) {
-			if ((row->par() == par && row->pos() >= pos)) {
-				if (!row->next())
-					break;
-				else if ((row->next()->par() == par) &&
-					 (row->next()->pos() >= pos))
-					continue;
-			}
+		int dummy_y;
+		Row * row = getRow(par, pos, dummy_y);
+		Row * frow = row;
+		while(frow->previous() && frow->par() == frow->previous()->par())
+			frow = frow->previous();
+		int maxw = 0;
+		while(frow->next() && frow->par() == frow->next()->par()) {
+			if ((frow != row) && (maxw < frow->width()))
+				maxw = frow->width();
+			frow = frow->next();
 		}
-		if (row) {
-			return workWidth(bview) - leftMargin(bview, row);
-		} 
+		if (maxw)
+			return maxw;
 	}
 	return workWidth(bview);
 }
@@ -681,8 +679,8 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		// make a corresponding row. Needed to call LeftMargin()
 		
 		// check wether it is a sufficent paragraph 
-		if (newpar
-		    && tclass[newpar->getLayout()].isEnvironment()) {
+		if (newpar && tclass[newpar->getLayout()].isEnvironment())
+		{
 			Row dummyrow;
 			dummyrow.par(newpar);
 			dummyrow.pos(newpar->size());
@@ -1011,7 +1009,8 @@ int LyXText::fill(BufferView * bview, Row * row, int paper_width) const
 	// special handling of the right address boxes
 	if (textclasslist.Style(bview->buffer()->params.textclass,
 				row->par()->getLayout()).margintype
-	    == MARGIN_RIGHT_ADDRESS_BOX) {
+	    == MARGIN_RIGHT_ADDRESS_BOX)
+	{
 		int const tmpfill = row->fill();
 		row->fill(0); // the minfill in MarginLeft()
 		w = leftMargin(bview, row);
@@ -1507,9 +1506,11 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	row_ptr->baseline(maxasc + labeladdon);
 	
 	height += row_ptr->height();
-	float x;
-	float dummy;
-	prepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
+	float x = 0;
+	if (layout.margintype != MARGIN_RIGHT_ADDRESS_BOX) {
+		float dummy;
+		prepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
+	}
 	row_ptr->width(int(maxwidth + x));
 	if (inset_owner) {
 		Row * r = firstrow;
@@ -2297,7 +2298,7 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
 string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
-                                     float & value) const
+                                                 float & value) const
 {
 	if (the_locking_inset) {
 		string str = the_locking_inset->selectNextWordToSpellcheck(bview, value);
@@ -2331,7 +2332,7 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	while ((cursor.par()->size() > cursor.pos()
 	       && (!cursor.par()->isLetter(cursor.pos()))
 	       && (!cursor.par()->isInset(cursor.pos()) ||
-	           !cursor.par()->getInset(cursor.pos())->isTextInset()))
+			   !cursor.par()->getInset(cursor.pos())->allowSpellcheck()))
 	       || (cursor.par()->size() == cursor.pos()
 		   && cursor.par()->next()))
 	{      

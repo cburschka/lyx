@@ -77,7 +77,6 @@ void MathMacroTable::builtinMacros()
 
 	built = true;
 	//lyxerr[Debug::MATHED] << "Building macros\n";
-D
 	//create("emptyset",     0, "\\not0");
 	create("notin",        0, "\\not\\in");
 	create("slash",        0, "/");

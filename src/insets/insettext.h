@@ -229,6 +229,7 @@ public:
 	///
 	void paragraph(Paragraph *);
 	///
+	bool allowSpellcheck() { return true; }
 	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);

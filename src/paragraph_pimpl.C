@@ -83,15 +83,15 @@ Paragraph::Pimpl::getChar(Paragraph::size_type pos) const
 
 
 void Paragraph::Pimpl::setChar(Paragraph::size_type pos,
-			       Paragraph::value_type c)
+                               Paragraph::value_type c)
 {
 	text[pos] = c;
 }
 
 
 void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
-				  Paragraph::value_type c,
-				  LyXFont const & font)
+                                  Paragraph::value_type c,
+                                  LyXFont const & font)
 {
 	lyx::Assert(pos <= size());
 
@@ -100,19 +100,22 @@ void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
 	for (FontList::iterator it = std::lower_bound(fontlist.begin(),
-						      fontlist.end(),
-						      search_font, matchFT());
+	                                              fontlist.end(),
+	                                              search_font, matchFT());
 	     it != fontlist.end(); ++it)
+	{
 		it->pos(it->pos() + 1);
+	}
    
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
 	for (InsetList::iterator it = std::lower_bound(owner_->insetlist.begin(),
-						       owner_->insetlist.end(),
-						       search_inset, matchIT());
+	                                               owner_->insetlist.end(),
+	                                               search_inset, matchIT());
 	     it != owner_->insetlist.end(); ++it)
+	{
 		++it->pos;
-
+	}
 	owner_->setFont(pos, font);
 }
 

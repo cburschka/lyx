@@ -97,6 +97,7 @@ public:
 	///
 	void close(BufferView *) const;
 	///
+	bool allowSpellcheck() { return false; }
 	string const selectNextWordToSpellcheck(BufferView *, float &) const;
 	///
 	bool inlined() const { return status_ == Inlined; }

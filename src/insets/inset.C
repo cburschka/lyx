@@ -324,7 +324,6 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	if ((w - ((2 * TEXT_TO_INSET_OFFSET) + 5)) >= 0)
 		w -= (2 * TEXT_TO_INSET_OFFSET) + 5;
 	if (topx_set && owner()) {
-		lyxerr << "topx_set && owner()\n";
 		w -= top_x;
 		w += owner()->x();
 	}

@@ -175,6 +175,7 @@ public:
 	///
 	void close(BufferView *) const;
 	///
+	bool allowSpellcheck() { return inset.allowSpellcheck(); }
 	string const selectNextWordToSpellcheck(BufferView *, float &) const;
 
 	void selectSelectedWord(BufferView * bv) {
