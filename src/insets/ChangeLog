@@ -1,6 +1,8 @@
 2001-07-27  Juergen Vigna  <jug@sad.it>
 
 	* inset.h: remove not used font variable in parameter.
+	removed checkInsertChar in UpdatableInset as it was equal to
+	the one in Inset and so not needed.
 
 	* insetert.C (checkInsertChar): implementation of function
 	checkInsertChar.
