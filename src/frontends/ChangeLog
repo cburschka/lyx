@@ -1,3 +1,8 @@
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* LyXView.[Ch] (updateInset): invoke BufferView::updateInset, returning
+	a pointer to the Buffer owning the inset.
+
 2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
 
 	* lyx_gui.h (set_datasocket_callback, set_serversocket_callback,

@@ -64,6 +64,7 @@ TODO
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
+#include "lyx_main.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
@@ -183,23 +184,9 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-void InsetGraphics::cache(BufferView * view) const
-{
-	BOOST_ASSERT(view);
-	view_ = view->owner()->view();
-}
-
-BufferView * InsetGraphics::view() const
-{
-	return view_.lock().get();
-}
-
-
 void InsetGraphics::statusChanged() const
 {
-	BufferView * bv = view();
-	if (bv)
-		bv->updateInset(this);
+	LyX::cref().updateInset(this);
 }
 
 
@@ -241,7 +228,6 @@ void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
-	cache(pi.base.bv);
 	graphic_->draw(pi, x, y);
 }
 

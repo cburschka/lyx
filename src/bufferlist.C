@@ -179,7 +179,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 			if (!WriteAs(buf))
 				return false;
 		} else if (buf->save()) {
-			lastfiles->newFile(buf->fileName());
+			LyX::ref().lastfiles().newFile(buf->fileName());
 		} else {
 			return false;
 		}

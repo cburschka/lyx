@@ -1,4 +1,20 @@
+2003-10-14  Angus Leeming  <leeming@lyx.org>
 
+	* lyx_main.[Ch]: make LyX a singleton class, accessible though the new
+	static member functions LyX::ref() and LyX::cref.
+	(lastfiles): new accessor functions for the new lastfiles_ member var.
+	(addLyXView, views_): add a new LyXView to the list of views_.
+	(updateInset): loop over all LyXViews to call their own updateInset
+	member function, returning a pointer to the Buffer owning the inset.
+
+	* BufferView_pimpl.C (loadLyXFile):
+	* MenuBackend.C (expandLastfiles):
+	* bufferlist.C (MenuWrite, QuitLyX):
+	lastfiles is no longer a global variable.
+	Access through LyX::ref().lastfiles(), LyX::cref().lastfiles().
+
+	* boost.C (emergencyCleanup): LyX::emergencyCleanup is no longer a
+	static function. Access through LyX::cref().emergencyCleanup().
 
 2003-10-14  André Pönitz  <poenitz@gmx.net>
 

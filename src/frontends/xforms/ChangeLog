@@ -1,3 +1,9 @@
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (start): store the LyXView in the LyX list of all LyXViews.
+	(LyX_XErrHandler): LyX::emergencyCleanup is no longer a static function.
+	Access through LyX::cref().emergencyCleanup().
+
 2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
 
 	* lyx_gui.C (set_datasocket_callback, set_serversocket_callback,

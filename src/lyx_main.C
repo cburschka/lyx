@@ -40,6 +40,7 @@
 
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
+#include "frontends/LyXView.h"
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
@@ -87,8 +88,6 @@ extern void QuitLyX();
 
 extern LyXServer * lyxserver;
 
-boost::scoped_ptr<LastFiles> lastfiles;
-
 // This is the global bufferlist object
 BufferList bufferlist;
 
@@ -105,9 +104,80 @@ void showFileError(string const & error)
 	exit(EXIT_FAILURE);
 }
 
+} // namespace anon
+
+
+boost::scoped_ptr<LyX> LyX::singleton_;
+
+void LyX::exec(int & argc, char * argv[])
+{
+	BOOST_ASSERT(!singleton_.get());
+	// We must return from this before launching the gui so that
+	// other parts of the code can access singleton_ through
+	// LyX::ref and LyX::cref.
+	singleton_.reset(new LyX);
+	// Start the real execution loop.
+	singleton_->priv_exec(argc, argv);
+}
+ 
+
+LyX & LyX::ref()
+{
+	BOOST_ASSERT(singleton_.get());
+	return *singleton_.get();
 }
 
-LyX::LyX(int & argc, char * argv[])
+
+LyX const & LyX::cref()
+{
+	BOOST_ASSERT(singleton_.get());
+	return *singleton_.get();
+}
+
+
+LyX::LyX()
+	: first_start(false)
+{}
+
+
+LastFiles & LyX::lastfiles()
+{
+	BOOST_ASSERT(lastfiles_.get());
+	return *lastfiles_.get();
+}
+
+
+LastFiles const & LyX::lastfiles() const
+{
+	BOOST_ASSERT(lastfiles_.get());
+	return *lastfiles_.get();
+}
+
+
+void LyX::addLyXView(boost::shared_ptr<LyXView> const & lyxview)
+{
+	views_.push_back(lyxview);
+}
+
+
+Buffer const * const LyX::updateInset(InsetOld const * inset) const
+{
+	if (!inset)
+		return 0;
+
+	Buffer const * buffer_ptr = 0;
+	ViewList::const_iterator it = views_.begin();
+	ViewList::const_iterator const end = views_.end();
+	for (; it != end; ++it) {
+		Buffer const * ptr = (*it)->updateInset(inset);
+		if (ptr)
+			buffer_ptr = ptr;
+	}
+	return buffer_ptr;
+}
+
+
+void LyX::priv_exec(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
@@ -226,7 +296,7 @@ static void error_handler(int err_sig)
 	signal(SIGTERM, SIG_DFL);
 	signal(SIGPIPE, SIG_DFL);
 
-	LyX::emergencyCleanup();
+	LyX::cref().emergencyCleanup();
 
 	lyxerr << "Bye." << endl;
 	if (err_sig!= SIGHUP &&
@@ -327,9 +397,9 @@ void LyX::init(bool gui)
 
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
 			    << lyxrc.lastfiles << "'..." << endl;
-	lastfiles.reset(new LastFiles(lyxrc.lastfiles,
-				      lyxrc.check_lastfiles,
-				      lyxrc.num_lastfiles));
+	lastfiles_.reset(new LastFiles(lyxrc.lastfiles,
+				       lyxrc.check_lastfiles,
+				       lyxrc.num_lastfiles));
 }
 
 
@@ -391,7 +461,7 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 }
 
 
-void LyX::emergencyCleanup()
+void LyX::emergencyCleanup() const
 {
 	// what to do about tmpfiles is non-obvious. we would
 	// like to delete any we find, but our lyxdir might

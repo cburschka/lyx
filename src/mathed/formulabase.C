@@ -14,12 +14,6 @@
 #include "formulabase.h"
 #include "formula.h"
 #include "formulamacro.h"
-#include "funcrequest.h"
-#include "BufferView.h"
-#include "bufferview_funcs.h"
-#include "lyxtext.h"
-#include "gettext.h"
-#include "debug.h"
 #include "math_support.h"
 #include "math_arrayinset.h"
 #include "math_deliminset.h"
@@ -28,16 +22,23 @@
 #include "math_hullinset.h"
 #include "math_parser.h"
 #include "math_spaceinset.h"
-#include "undo.h"
 #include "ref_inset.h"
+
+#include "BufferView.h"
+#include "bufferview_funcs.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
 #include "LColor.h"
+#include "lyxtext.h"
+#include "undo.h"
+
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
 
 #include "support/std_sstream.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
 
 using lyx::support::atoi;
 using lyx::support::split;
@@ -137,18 +138,6 @@ void InsetFormulaBase::handleFont2(BufferView * bv, string const & arg)
 	}
 }
 
-
-
-void InsetFormulaBase::cache(BufferView * view) const
-{
-	BOOST_ASSERT(view);
-	view_ = view->owner()->view();
-}
-
-BufferView * InsetFormulaBase::view() const
-{
-	return view_.lock().get();
-}
 
 
 void InsetFormulaBase::validate(LaTeXFeatures &) const

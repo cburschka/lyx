@@ -255,7 +255,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	bv_->showErrorList(_("Parse"));
 
 	if (tolastfiles)
-		lastfiles->newFile(b->fileName());
+		LyX::ref().lastfiles().newFile(b->fileName());
 
 	return true;
 }

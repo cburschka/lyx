@@ -1,3 +1,13 @@
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: move boost.C from the linked_files section
+	to the tex2lyx_SOURCES section.
+
+	* boost.C: new file. Simpler than the version in the main lyx source.
+	No reference to the emergencyCleanup stuff.
+
+	* tex2lyx.C: remove emergencyCleanup() stuff.
+
 2003-10-08  Angus Leeming  <leeming@lyx.org>
 
 	Fix doxygen warnings.

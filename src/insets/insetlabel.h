@@ -12,9 +12,7 @@
 #ifndef INSET_LABEL_H
 #define INSET_LABEL_H
 
-
 #include "insetcommand.h"
-#include <boost/weak_ptr.hpp>
 
 class InsetLabel : public InsetCommand {
 public:

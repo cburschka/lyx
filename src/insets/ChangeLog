@@ -1,5 +1,18 @@
 2003-10-14  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.[Ch] (view, cache, view_):
+	* insetgraphics.[Ch] (view, cache, view_):
+	* insetinclude.[Ch] (view, cache, view_): remove the BufferView cache.
+	(statusChanged): call LyX::cref().updateInset.
+
+	* insetinclude.C (fileChanged): use LyX::cref().updateInset rather than
+	the BufferView cache.
+
+	* insetlabel.h: remove #include <boost/weak_ptr.hpp>. Cruft from an
+	earlier clean-up.
+
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
 	* insetinclude.C (metrics, draw): only draw the preview when previews
 	are activated.
 

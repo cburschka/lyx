@@ -1,5 +1,11 @@
 2003-10-14  Angus Leeming  <leeming@lyx.org>
 
+	* insetformulabase.[Ch] (view, cache, view_): remove the BufferView cache.
+
+	* insetformula.C (statusChanged): call LyX::cref().updateInset.
+
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
 	* formula.C (metrics, draw): only draw the preview when previews
 	are activated.
 

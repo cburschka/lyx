@@ -313,7 +313,11 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 	start_xforms();
 	// just for debug
 	XSynchronize(getDisplay(), true);
-	GView view;
+
+	boost::shared_ptr<GView> view_ptr(new GView);
+	LyX::ref().addLyXView(view_ptr);
+
+	GView & view = *view_ptr.get();
 	view.show();
 	view.init();
 

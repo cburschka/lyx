@@ -22,6 +22,7 @@
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
+#include "lyx_main.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
@@ -136,7 +137,10 @@ void start(string const & batch, vector<string> const & files)
 	unsigned int width = 690;
 	unsigned int height = 510;
 
-	QtView view(width, height);
+	boost::shared_ptr<QtView> view_ptr(new QtView(width, height));
+	LyX::ref().addLyXView(view_ptr);
+
+	QtView & view = *view_ptr.get();
 	view.show();
 	view.init();
 

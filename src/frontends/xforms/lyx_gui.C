@@ -121,7 +121,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
 	}
 
 	// emergency cleanup
-	LyX::emergencyCleanup();
+	LyX::cref().emergencyCleanup();
 
 	// Get the reason for the crash.
 	char etxt[513];
@@ -284,7 +284,10 @@ void start(string const & batch, vector<string> const & files)
 	lyxerr[Debug::GUI] << "Creating view: " << width << 'x' << height
 			   << '+' << xpos << '+' << ypos << endl;
 
-	XFormsView view(width, height);
+	boost::shared_ptr<XFormsView> view_ptr(new XFormsView(width, height));
+	LyX::ref().addLyXView(view_ptr);
+
+	XFormsView & view = *view_ptr.get();
 	view.show(xpos, ypos, "LyX");
 	view.init();
 

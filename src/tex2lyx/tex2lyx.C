@@ -16,7 +16,6 @@
 #include "context.h"
 
 #include "debug.h"
-#include "lyx_main.h"
 #include "lyxtextclass.h"
 #include "support/path_defines.h"
 #include "support/os.h"
@@ -42,8 +41,6 @@ using std::vector;
 
 // Hacks to allow the thing to link in the lyxlayout stuff
 LyXErr lyxerr(std::cerr.rdbuf());
-
-void LyX::emergencyCleanup() {}
 
 void handle_comment(Parser & p)
 {

@@ -15,31 +15,46 @@
 #define LYX_MAIN_H
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
+#include <list>
 #include <string>
 
-
-class ErrorItem;
-class LyXRC;
-class LastFiles;
 class Buffer;
+class ErrorItem;
+class InsetOld;
+class LastFiles;
+class LyXView;
 class kb_keymap;
-
-
-/// last files loaded
-extern boost::scoped_ptr<LastFiles> lastfiles;
 
 
 /// initial startup
 class LyX : boost::noncopyable {
 public:
-	LyX(int & argc, char * argv[]);
+	static void exec(int & argc, char * argv[]);
+	static LyX & ref();
+	static LyX const & cref();
 
 	/// in the case of failure
-	static void emergencyCleanup();
+	void emergencyCleanup() const;
+
+	LastFiles & lastfiles();
+	LastFiles const & lastfiles() const;
+
+	void addLyXView(boost::shared_ptr<LyXView> const & lyxview);
+
+	/** redraw \c inset in all the BufferViews in which it is currently
+	 *  visible. If successful return a pointer to the owning Buffer.
+	 */
+	Buffer const * const updateInset(InsetOld const *) const;
 
 private:
+	static boost::scoped_ptr<LyX> singleton_;
+
+	LyX();
+	void priv_exec(int & argc, char * argv[]);
+
 	/// initial LyX set up
 	void init(bool);
 	/// set up the default key bindings
@@ -65,6 +80,12 @@ private:
 	bool first_start;
 	/// the parsed command line batch command if any
 	std::string batch_command;
+
+	/// last files loaded
+	boost::scoped_ptr<LastFiles> lastfiles_;
+	///
+	typedef std::list<boost::shared_ptr<LyXView> > ViewList;
+	ViewList views_;
 };
 
 #endif // LYX_MAIN_H

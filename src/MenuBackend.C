@@ -375,9 +375,11 @@ string const limit_string_length(string const & str)
 
 void expandLastfiles(Menu & tomenu, LyXView const * view)
 {
+	LastFiles const & lastfiles = LyX::cref().lastfiles();
+
 	int ii = 1;
-	LastFiles::const_iterator lfit = lastfiles->begin();
-	LastFiles::const_iterator end = lastfiles->end();
+	LastFiles::const_iterator lfit = lastfiles.begin();
+	LastFiles::const_iterator end = lastfiles.end();
 
 	for (; lfit != end && ii < 10; ++lfit, ++ii) {
 		string const label = tostr(ii) + ". "

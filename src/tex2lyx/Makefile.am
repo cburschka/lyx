@@ -16,7 +16,6 @@ bin_PROGRAMS = tex2lyx
 linked_files = \
 	FloatList.C \
 	Floating.C \
-	boost.C \
 	counters.C \
 	lyxlayout.h \
 	lyxlayout.C \
@@ -28,6 +27,7 @@ linked_files = \
 tex2lyx_SOURCES = \
 	$(linked_files) \
 	Spacing.h \
+	boost.C \
 	context.C \
 	context.h \
 	gettext.C \

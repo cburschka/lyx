@@ -90,7 +90,7 @@ bool quitting;	// flag, that we are quitting the program
 bool MenuWrite(Buffer * buffer)
 {
 	if (buffer->save()) {
-		lastfiles->newFile(buffer->fileName());
+		LyX::ref().lastfiles().newFile(buffer->fileName());
 		return true;
 	}
 
@@ -184,7 +184,7 @@ void QuitLyX()
 		if (!bufferlist.quitWriteAll())
 			return;
 
-		lastfiles->writeFile(lyxrc.lastfiles);
+		LyX::cref().lastfiles().writeFile(lyxrc.lastfiles);
 	}
 
 	// Set a flag that we do quitting from the program,

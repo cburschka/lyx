@@ -15,8 +15,6 @@
 #define INSET_FORMULABASE_H
 
 #include "insets/updatableinset.h"
-#include <boost/weak_ptr.hpp>
-
 
 class Buffer;
 class BufferView;
@@ -99,10 +97,6 @@ private:
 	dispatch_result lfunMouseMotion(FuncRequest const &);
 
 protected:
-	void cache(BufferView *) const;
-	BufferView * view() const;
-
-protected:
 
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
@@ -121,9 +115,6 @@ protected:
 	mutable int xo_;
 	///
 	mutable int yo_;
-private:
-	// Cache
-	mutable boost::weak_ptr<BufferView> view_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

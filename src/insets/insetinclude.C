@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
+#include "lyx_main.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
@@ -540,32 +541,19 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	cache(pi.base.bv);
-
 	if (!RenderPreview::activated() || !preview_->previewReady()) {
 		button_.draw(pi, x + button_.box().x1, y);
 		return;
 	}
 
-	if (!preview_->monitoring()) {
-		string const included_file =
-			includedFilename(*view()->buffer(), params_);
+	BOOST_ASSERT(pi.base.bv);
+	Buffer const * const buffer = pi.base.bv->buffer();
+	if (!preview_->monitoring() && buffer) {
+		string const included_file = includedFilename(*buffer, params_);
 		preview_->startMonitoring(included_file);
 	}
 
 	preview_->draw(pi, x + button_.box().x1, y);
-}
-
-
-void InsetInclude::cache(BufferView * view) const
-{
-	BOOST_ASSERT(view);
-	view_ = view->owner()->view();
-}
-
-BufferView * InsetInclude::view() const
-{
-	return view_.lock().get();
 }
 
 
@@ -575,22 +563,17 @@ BufferView * InsetInclude::view() const
 
 void InsetInclude::statusChanged() const
 {
-	if (view())
-		view()->updateInset(this);
+	LyX::cref().updateInset(this);
 }
 
 
 void InsetInclude::fileChanged() const
 {
-	BufferView * const bv = view();
-	if (!bv)
+	Buffer const * const buffer_ptr = LyX::cref().updateInset(this);
+	if (!buffer_ptr)
 		return;
-	bv->updateInset(this);
 
-	if (!bv->buffer())
-		return;
-	Buffer const & buffer = *bv->buffer();
-
+	Buffer const & buffer = *buffer_ptr;
 	preview_->removePreview(buffer);
 	generate_preview(*preview_.get(), *this, buffer);
 }

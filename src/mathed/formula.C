@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "latexrunparams.h"
 #include "LColor.h"
+#include "lyx_main.h"
 
 #include "frontends/Painter.h"
 
@@ -191,8 +192,6 @@ bool editing_inset(InsetFormula const * inset)
 
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
-	cache(pi.base.bv);
-
 	// The previews are drawn only when we're not editing the inset.
 	bool const use_preview = (!editing_inset(this) &&
 				  RenderPreview::activated() &&
@@ -300,8 +299,7 @@ void InsetFormula::mutate(string const & type)
 
 void InsetFormula::statusChanged() const
 {
-	if (view())
-		view()->updateInset(this);
+	LyX::cref().updateInset(this);
 }
 
 
