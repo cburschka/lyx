@@ -1,3 +1,36 @@
+2000-10-30  Rob Lahaye  <lahaye@postech.edu>
+
+	* lyx.man: fix typo.
+
+2000-10-29  Marko Vendelin <markov@ioc.ee>
+	* src/frontends/gnome/FormCitation.C
+	* src/frontends/gnome/FormCitation.h
+	* src/frontends/gnome/FormCopyright.C
+	* src/frontends/gnome/FormCopyright.h
+	* src/frontends/gnome/FormError.C
+	* src/frontends/gnome/FormError.h
+	* src/frontends/gnome/FormIndex.C
+	* src/frontends/gnome/FormIndex.h
+	* src/frontends/gnome/FormPrint.C
+	* src/frontends/gnome/FormPrint.h
+	* src/frontends/gnome/FormRef.C
+	* src/frontends/gnome/FormRef.h
+	* src/frontends/gnome/FormToc.C
+	* src/frontends/gnome/FormToc.h
+	* src/frontends/gnome/FormUrl.C
+	* src/frontends/gnome/FormUrl.h
+	* src/frontends/gnome/Menubar_pimpl.C
+	* src/frontends/gnome/mainapp.C
+	* src/frontends/gnome/mainapp.h
+	* src/frontends/gnome/pixbutton.h: replacing NULL with 0 and
+	changing update() to updateSlot() where appropriate
+
+2000-10-27  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	* src/frontends/xforms/forms/form_preferences.fd: added a Languagues
+	tab.
+
 2000-10-28  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (draw): fixed drawing bug.
@@ -94,7 +127,7 @@
 
 	* src/mathed/formula.C (mathed_string_width): Use string instead
 	of a constant size char array.
-                                      
+
 2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/ButtonPolicies.h: remove the LOstream and remove

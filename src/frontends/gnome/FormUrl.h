@@ -45,7 +45,8 @@ private:
   void showInset( InsetCommand * const );
   
   /// Update dialog before showing it
-  virtual void update(bool = false);
+  virtual void update() { }
+  virtual void updateSlot(bool = false);
   /// Apply from dialog (modify or create inset)
   virtual void apply();
   /// Explicitly free the dialog.

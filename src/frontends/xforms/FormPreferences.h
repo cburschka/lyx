@@ -33,6 +33,7 @@ struct FD_form_interface;
 struct FD_form_printer;
 struct FD_form_paths;
 struct FD_form_outer_tab;
+struct FD_form_inputs_misc;
 struct FD_form_outputs_misc;
 struct FD_form_spellchecker;
 struct FD_form_language;
@@ -52,6 +53,8 @@ private:
 	enum State {
 		///
 		COLOURS,
+		///
+		INPUTSMISC,
 		///
 		INTERFACE,
 		///
@@ -88,7 +91,13 @@ private:
 	///
 	virtual FL_FORM * form() const;
 	///
+	void applyColours();
+	///
+	void applyInputsMisc();
+	///
 	void applyInterface();
+	///
+	void applyLanguage();
 	///
 	void applyLnFmisc();
 	///
@@ -103,6 +112,8 @@ private:
 	void applySpellChecker();
 	///
 	void buildColours();
+	///
+	void buildInputsMisc();
 	///
 	void buildInterface();
 	///
@@ -120,7 +131,13 @@ private:
 	///
 	void buildSpellchecker();
 	///
+	void feedbackColours(FL_OBJECT const * const);
+	///
+	void feedbackInputsMisc(FL_OBJECT const * const);
+	///
 	void feedbackInterface(FL_OBJECT const * const);
+	///
+	void feedbackLanguage(FL_OBJECT const * const);
 	///
 	void feedbackLnFmisc(FL_OBJECT const * const);
 	///
@@ -134,13 +151,21 @@ private:
 	///
 	void feedbackSpellChecker(FL_OBJECT const * const);
 	///
+	bool inputLanguage(FL_OBJECT const * const);
+	///
 	bool inputPaths(FL_OBJECT const * const);
 	///
 	bool inputScreenFonts();
 	///
 	bool inputSpellChecker(FL_OBJECT const * const);
 	///
+	void updateColours();
+	///
+	void updateInputsMisc();
+	///
 	void updateInterface();
+	///
+	void updateLanguage();
 	///
 	void updateLnFmisc();
 	///
@@ -167,6 +192,8 @@ private:
 	FD_form_outer_tab * build_outer_tab();
 	///
 	FD_form_colours * build_colours();
+	///
+	FD_form_inputs_misc * build_inputs_misc();
 	///
 	FD_form_interface * build_interface();
 	///
@@ -196,6 +223,8 @@ private:
 	FD_form_outer_tab * usage_tab_;
 	///
 	FD_form_colours * colours_;
+	///
+	FD_form_inputs_misc * inputs_misc_;
 	///
 	FD_form_interface * interface_;
 	///

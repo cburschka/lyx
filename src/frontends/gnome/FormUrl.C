@@ -39,7 +39,7 @@ static string const CONF_ENTRY_URL("FormUrl_url");
 static string const CONF_ENTRY_NAME("FormUrl_name");
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -56,7 +56,7 @@ FormUrl::~FormUrl()
 
 void FormUrl::showInset( InsetCommand * const inset )
 {
-  if( dialog_!=NULL || inset == 0 ) return;
+  if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormUrl::hide));
@@ -68,7 +68,7 @@ void FormUrl::showInset( InsetCommand * const inset )
 
 void FormUrl::createInset( string const & arg )
 {
-  if( dialog_!=NULL ) return;
+  if( dialog_!=0 ) return;
   
   params.setFromString( arg );
   show();
@@ -143,14 +143,14 @@ void FormUrl::show()
 
       dialog_->destroy.connect(slot(this, &FormUrl::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormUrl::update));
+      u_ = d_->updateBufferDependent.connect(slot(this, &FormUrl::updateSlot));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormUrl::hide));
 
-      update();  // make sure its up-to-date
+      updateSlot();  // make sure its up-to-date
     }
 }
 
-void FormUrl::update(bool switched)
+void FormUrl::updateSlot(bool switched)
 {
   if (switched)
     {
@@ -158,7 +158,7 @@ void FormUrl::update(bool switched)
       return;
     }
   
-  if (dialog_ != NULL &&
+  if (dialog_ != 0 &&
       lv_->view()->available())
     {
       url_->get_entry()->set_text(params.getContents().c_str());
@@ -177,14 +177,14 @@ void FormUrl::update(bool switched)
 
 void FormUrl::hide()
 {
-  if (dialog_!=NULL) mainAppWin->remove_action();
+  if (dialog_!=0) mainAppWin->remove_action();
 }
 
 void FormUrl::free()
 {
-  if (dialog_!=NULL)
+  if (dialog_!=0)
     {
-      dialog_ = NULL;
+      dialog_ = 0;
       u_.disconnect();
       h_.disconnect();
       inset_ = 0;

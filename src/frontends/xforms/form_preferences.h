@@ -19,6 +19,9 @@ extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
@@ -76,6 +79,8 @@ struct FD_form_outputs_misc {
 	FL_OBJECT *counter_line_len;
 	FL_OBJECT *input_tex_encoding;
 	FL_OBJECT *choice_default_papersize;
+	FL_OBJECT *input_ascii_roff;
+	FL_OBJECT *input_checktex;
 };
 struct FD_form_spellchecker {
 	~FD_form_spellchecker();
@@ -92,10 +97,27 @@ struct FD_form_spellchecker {
 	FL_OBJECT *check_compound_words;
 	FL_OBJECT *check_input_enc;
 };
+struct FD_form_inputs_misc {
+	~FD_form_inputs_misc();
+
+	FL_FORM *form;
+	FL_OBJECT *input_date_format;
+};
 struct FD_form_language {
 	~FD_form_language();
 
 	FL_FORM *form;
+	FL_OBJECT *check_use_kbmap;
+	FL_OBJECT *choice_kbmap_1;
+	FL_OBJECT *check_rtl_support;
+	FL_OBJECT *check_mark_foreign;
+	FL_OBJECT *check_auto_end;
+	FL_OBJECT *check_auto_begin;
+	FL_OBJECT *input_package;
+	FL_OBJECT *input_command_begin;
+	FL_OBJECT *input_command_end;
+	FL_OBJECT *choice_kbmap_2;
+	FL_OBJECT *choice_default_lang;
 };
 struct FD_form_colours {
 	~FD_form_colours();

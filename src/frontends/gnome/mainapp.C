@@ -47,7 +47,7 @@ void GLyxAppWin::init()
 
   set_statusbar(status_);
 
-  accel_ = NULL;
+  accel_ = 0;
 
   // initial (dummy) menu
   vector<Gnome::UI::Info> menus, fm;
@@ -65,7 +65,7 @@ void GLyxAppWin::init()
   // temporary main widget
   Gtk::HBox * h = manage( new Gtk::HBox() );
   Gnome::Pixmap * p;
-  p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(NULL, GNOME_STOCK_PIXMAP_ABOUT) ) );
+  p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(0, GNOME_STOCK_PIXMAP_ABOUT) ) );
 
   h->children().push_back( Gtk::Box_Helpers::Element( *p ) );
   h->children().push_back( *(manage(new Gtk::Label("Waiting for LyXView port"))) );
@@ -118,7 +118,7 @@ void GLyxAppWin::add_action(Gtk::Container &action, string title, bool expand, G
   box_.show_all();
 
   accel_ = acgr;
-  if (accel_ != NULL) add_accel_group(*accel_);
+  if (accel_ != 0) add_accel_group(*accel_);
   
   view_->set_sensitive(false);
   action_mode = true;
@@ -126,10 +126,10 @@ void GLyxAppWin::add_action(Gtk::Container &action, string title, bool expand, G
 
 void GLyxAppWin::remove_action()
 {
-  if (accel_ != NULL)
+  if (accel_ != 0)
     {
       remove_accel_group(*accel_);
-      accel_ = NULL;
+      accel_ = 0;
     }
   
   while ( box_.children().size() > 2 )

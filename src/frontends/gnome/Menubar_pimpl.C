@@ -359,9 +359,9 @@ void Menubar::Pimpl::connectWidgetToAction(GnomeUIInfo * guinfo)
     {
       if ( ( guinfo->type == GnomeUIInfoType(GNOME_APP_UI_ITEM) ||
 	     guinfo->type == GnomeUIInfoType(GNOME_APP_UI_TOGGLEITEM) ) &&
-	   guinfo->moreinfo != NULL )
+	   guinfo->moreinfo != 0 )
 	{
-	  (*((void(*)(void *, void *))(guinfo->moreinfo)))(NULL, guinfo->user_data);
+	  (*((void(*)(void *, void *))(guinfo->moreinfo)))(0, guinfo->user_data);
 	  wid_act_.push_back( GtkWidgetToAction( guinfo->widget, action_ ) );
 	}
       else if ( guinfo->type == GnomeUIInfoType(GNOME_APP_UI_SUBTREE) ||

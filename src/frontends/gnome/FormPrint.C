@@ -48,7 +48,7 @@ using Liason::getPrinterParams;
 #endif
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
-  : dialog_(NULL), lv_(lv), d_(d), u_(0), h_(0)
+  : dialog_(0), lv_(lv), d_(d), u_(0), h_(0)
 {
   // let the dialog be shown
   // This is a permanent connection so we won't bother
@@ -103,12 +103,12 @@ void FormPrint::show()
       dialog_->destroy.connect(slot(this, &FormPrint::free));
 
       u_ = d_->updateBufferDependent.connect(slot(this,
-						  &FormPrint::update));
+						  &FormPrint::updateSlot));
       h_ = d_->hideBufferDependent.connect(dialog_->destroy.slot());
 
       if (!dialog_->is_visible()) dialog_->show_all();
 
-      update();  // make sure its up-to-date
+      updateSlot();  // make sure its up-to-date
     }
   else
     {
@@ -119,14 +119,14 @@ void FormPrint::show()
 
 void FormPrint::hide()
 {
-  if (dialog_!=NULL) dialog_->destroy();
+  if (dialog_!=0) dialog_->destroy();
 }
 
 void FormPrint::free()
 {
-  if (dialog_!=NULL)
+  if (dialog_!=0)
     {
-      dialog_ = NULL;
+      dialog_ = 0;
       u_.disconnect();
       h_.disconnect();
     }
@@ -170,9 +170,9 @@ void FormPrint::apply()
 
 
 // we can safely ignore the parameter because we can always update
-void FormPrint::update(bool)
+void FormPrint::updateSlot(bool)
 {
-  if (dialog_ != NULL &&
+  if (dialog_ != 0 &&
       lv_->view()->available())
     {
       PrinterParams pp(getPrinterParams(lv_->buffer()));

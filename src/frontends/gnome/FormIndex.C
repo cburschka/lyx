@@ -46,7 +46,7 @@ extern GLyxAppWin * mainAppWin;
 static string const CONF_ENTRY("FormIndex_entry");
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -63,7 +63,7 @@ FormIndex::~FormIndex()
 
 void FormIndex::showInset( InsetCommand * const inset )
 {
-  if( dialog_!=NULL || inset == 0 ) return;
+  if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormIndex::hide));
@@ -74,7 +74,7 @@ void FormIndex::showInset( InsetCommand * const inset )
 
 void FormIndex::createInset( string const & arg )
 {
-  if( dialog_!=NULL ) return;
+  if( dialog_!=0 ) return;
   
   params.setFromString( arg );
   show();
@@ -131,14 +131,14 @@ void FormIndex::show()
 
       dialog_->destroy.connect(slot(this, &FormIndex::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormIndex::update));
+      u_ = d_->updateBufferDependent.connect(slot(this, &FormIndex::updateSlot));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormIndex::hide));
 
-      update();  // make sure its up-to-date
+      updateSlot();  // make sure its up-to-date
     }
 }
 
-void FormIndex::update(bool switched)
+void FormIndex::updateSlot(bool switched)
 {
   if (switched)
     {
@@ -146,7 +146,7 @@ void FormIndex::update(bool switched)
       return;
     }
   
-  if (dialog_ != NULL &&
+  if (dialog_ != 0 &&
       lv_->view()->available())
     {
       keyword_->get_entry()->set_text(params.getContents().c_str());
@@ -160,14 +160,14 @@ void FormIndex::update(bool switched)
       
 void FormIndex::hide()
 {
-  if (dialog_!=NULL) mainAppWin->remove_action();
+  if (dialog_!=0) mainAppWin->remove_action();
 }
 
 void FormIndex::free()
 {
-  if (dialog_!=NULL)
+  if (dialog_!=0)
     {
-      dialog_ = NULL;
+      dialog_ = 0;
       u_.disconnect();
       h_.disconnect();
       inset_ = 0;

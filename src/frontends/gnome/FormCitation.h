@@ -45,7 +45,8 @@ private:
   /// Slot launching dialog to an existing inset
   void showInset( InsetCommand * const );
 
-  virtual void update(bool = false);
+  virtual void update() { }
+  virtual void updateSlot(bool = false);
   /// The following two methods do nothing in this implementation
   virtual void apply() { }
   void show() { }
@@ -104,11 +105,11 @@ private:
   /// adds item to clist_bib_
   void addItemToBibList(int i);
 
-  /// sets all widget pointers to NULL
+  /// sets all widget pointers to 0
   void cleanupWidgets();
-  /// initializes all non-NULL member widgets
+  /// initializes all non-0 member widgets
   void initWidgets();
-  /// stores configuration of all non-NULL member widgets
+  /// stores configuration of all non-0 member widgets
   void storeWidgets();
   
   /** Which LyXFunc do we use?

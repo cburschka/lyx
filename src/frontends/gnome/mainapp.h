@@ -36,7 +36,7 @@ class GLyxAppWin: public Gnome::App
 		   int noelms,
 		   Gnome::UI::Array &);
   /// add action area
-  void add_action(Gtk::Container &, string title, bool expand=false, Gtk::AccelGroup * acgr=NULL);
+  void add_action(Gtk::Container &, string title, bool expand=false, Gtk::AccelGroup * acgr=0);
   /// remove action area
   void remove_action();
   /// clears action area if Escape is pressed

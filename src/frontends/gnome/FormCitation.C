@@ -89,12 +89,12 @@ FormCitation::~FormCitation()
 
 void FormCitation::showInset( InsetCommand * const inset )
 {
-  if( dialog_!=NULL || inset == 0 ) return;
+  if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
 
-  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update));
+  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::updateSlot));
   h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
   
   params = inset->params();
@@ -106,9 +106,9 @@ void FormCitation::showInset( InsetCommand * const inset )
 
 void FormCitation::createInset( string const & arg )
 {
-  if( dialog_!=NULL ) return;
+  if( dialog_!=0 ) return;
   
-  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update)); 
+  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::updateSlot)); 
   h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
   
   params.setFromString( arg );
@@ -210,19 +210,19 @@ void parseBibTeX(string data,
 
 void FormCitation::cleanupWidgets()
 {
-  dialog_ = NULL;
-  b_ok = NULL;
-  b_cancel = NULL;
-  search_text_ = NULL;
-  info_ = NULL;
-  text_after_ = NULL;
-  button_unselect_ = NULL;
-  button_up_ = NULL;
-  button_down_ = NULL;
-  button_regexp_ = NULL;
-  clist_selected_ = NULL;
-  clist_bib_ = NULL;
-  paned_info_ = NULL;
+  dialog_ = 0;
+  b_ok = 0;
+  b_cancel = 0;
+  search_text_ = 0;
+  info_ = 0;
+  text_after_ = 0;
+  button_unselect_ = 0;
+  button_up_ = 0;
+  button_down_ = 0;
+  button_regexp_ = 0;
+  clist_selected_ = 0;
+  clist_bib_ = 0;
+  paned_info_ = 0;
 }
 
 
@@ -230,7 +230,7 @@ void FormCitation::initWidgets()
 {
   string const path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
 
-  if (search_text_ != NULL)
+  if (search_text_ != 0)
     {
       search_text_->set_history_id(CONF_SEARCH);
       search_text_->set_max_saved(10);
@@ -238,7 +238,7 @@ void FormCitation::initWidgets()
       search_text_->set_use_arrows_always(true);
     }
 
-  if (text_after_ != NULL )
+  if (text_after_ != 0 )
     {
       text_after_->set_history_id(CONF_TEXTAFTER);
       text_after_->set_max_saved(10);
@@ -247,19 +247,19 @@ void FormCitation::initWidgets()
       text_after_->get_entry()->set_text(params.getOptions());
     }
 
-  if (button_regexp_ != NULL)
+  if (button_regexp_ != 0)
     {
       string w = path + "/" + CONF_REGEXP + CONF_REGEXP_DEFAULT;
       button_regexp_->set_active( (gnome_config_get_int(w.c_str()) > 0) );
     }
 
-  if (paned_info_ != NULL)
+  if (paned_info_ != 0)
     {
       string w = path + "/" + CONF_PANE_INFO + CONF_PANE_INFO_DEFAULT;
       paned_info_->set_position( gnome_config_get_int(w.c_str()) );
     }
 
-  if (clist_bib_ != NULL)
+  if (clist_bib_ != 0)
     {
       // preferences
       clist_bib_->column(0).set_visiblity(false);
@@ -292,11 +292,11 @@ void FormCitation::initWidgets()
       if (clist_bib_->rows().size() > 0)
 	{
 	  clist_bib_->rows()[0].select();
-	  selectionToggled(0, 0, NULL, true, false);
+	  selectionToggled(0, 0, 0, true, false);
 	}
     }
 
-  if (clist_selected_ != NULL)
+  if (clist_selected_ != 0)
     {
       clist_selected_->set_selection_mode(GTK_SELECTION_BROWSE);
 
@@ -316,7 +316,7 @@ void FormCitation::initWidgets()
       if (clist_selected_->rows().size() > 0)
 	{
 	  clist_selected_->rows()[0].select();
-	  selectionToggled(0, 0, NULL, true, true);
+	  selectionToggled(0, 0, 0, true, true);
 	}
     }
 
@@ -328,23 +328,23 @@ void FormCitation::storeWidgets()
 {
   string const path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
 
-  if (search_text_ != NULL) search_text_->save_history();
+  if (search_text_ != 0) search_text_->save_history();
 
-  if (text_after_ != NULL) text_after_->save_history();
+  if (text_after_ != 0) text_after_->save_history();
 
-  if (button_regexp_ != NULL)
+  if (button_regexp_ != 0)
     {
       string w = path + "/" + CONF_REGEXP;
       gnome_config_set_int(w.c_str(), button_regexp_->get_active());
     }
 
-  if (paned_info_ != NULL) 
+  if (paned_info_ != 0) 
     {
       string w = path + "/" + CONF_PANE_INFO;
       gnome_config_set_int(w.c_str(), paned_info_->width() - info_->width());
     }
 
-  if (clist_bib_ != NULL)
+  if (clist_bib_ != 0)
     {
       string w;
       int const sz = clist_bib_->columns().size();
@@ -712,7 +712,7 @@ void FormCitation::addItemToBibList(int i)
 
 void FormCitation::updateButtons()
 {
-  if (button_unselect_ != NULL) // => button_up_ and button_down_ are != NULL
+  if (button_unselect_ != 0) // => button_up_ and button_down_ are != 0
     {
       bool sens;
 
@@ -727,7 +727,7 @@ void FormCitation::updateButtons()
 }
 
 
-void FormCitation::update(bool buffchanged)
+void FormCitation::updateSlot(bool buffchanged)
 {
   if (buffchanged) hide();
 }
@@ -788,12 +788,12 @@ void FormCitation::moveCitationDown()
 
 void FormCitation::hide()
 {
-  if (dialog_!=NULL) mainAppWin->remove_action();
+  if (dialog_!=0) mainAppWin->remove_action();
 }
 
 void FormCitation::free()
 {
-  if (dialog_!=NULL)
+  if (dialog_!=0)
     {
       // cleaning up
       cleanupWidgets();

@@ -49,7 +49,7 @@ static string const GOTO_REF_LABEL(N_("Goto reference"));
 static string const GOTO_BACK_LABEL(N_("Go back"));
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -66,7 +66,7 @@ FormRef::~FormRef()
 
 void FormRef::showInset( InsetCommand * const inset )
 {
-  if( dialog_!=NULL || inset == 0 ) return;
+  if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormRef::hide));
@@ -80,7 +80,7 @@ void FormRef::showInset( InsetCommand * const inset )
 
 void FormRef::createInset( string const & arg )
 {
-  if( dialog_!=NULL ) return;
+  if( dialog_!=0 ) return;
   
   acttype_ = INSERT;
 
@@ -122,7 +122,7 @@ void FormRef::showStageError(string const & mess)
       b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
       dialog_->destroy.connect(slot(this, &FormRef::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::update));
+      u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::updateSlot));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormRef::hide));
     }
 }
@@ -197,7 +197,7 @@ void FormRef::showStageSelect()
 
       dialog_->destroy.connect(slot(this, &FormRef::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::update));
+      u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::updateSlot));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormRef::hide));
     }
 }
@@ -324,26 +324,26 @@ void FormRef::showStageAction()
 
       dialog_->destroy.connect(slot(this, &FormRef::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::update));
+      u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::updateSlot));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormRef::hide));
     }
 }
 
-void FormRef::update(bool buffchanged)
+void FormRef::updateSlot(bool buffchanged)
 {
   if (buffchanged) hide();
 }
 
 void FormRef::hide()
 {
-  if (dialog_!=NULL) mainAppWin->remove_action();
+  if (dialog_!=0) mainAppWin->remove_action();
 }
 
 void FormRef::free()
 {
-  if (dialog_!=NULL)
+  if (dialog_!=0)
     {
-      dialog_ = NULL;
+      dialog_ = 0;
       u_.disconnect();
       h_.disconnect();
       inset_ = 0;

@@ -58,7 +58,8 @@ private:
   /// Hide the dialog.
   void hide();
   /// Update the dialog.
-  void update(bool = false);
+  void update() { }
+  void updateSlot(bool = false);
   /// Free memory
   void free();
   //@}

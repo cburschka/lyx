@@ -39,7 +39,7 @@ extern "C" {
 using SigC::bind;
 
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-  : lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL), ignore_callback_(false)
+  : lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0), ignore_callback_(false)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -56,7 +56,7 @@ FormToc::~FormToc()
 
 void FormToc::showInset( InsetCommand * const inset )
 {
-  if( dialog_!=NULL || inset == 0 ) return;
+  if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormToc::hide));
@@ -68,7 +68,7 @@ void FormToc::showInset( InsetCommand * const inset )
 
 void FormToc::createInset( string const & arg )
 {
-  if( dialog_!=NULL ) return;
+  if( dialog_!=0 ) return;
   
   params.setFromString( arg );
   show();
@@ -117,16 +117,16 @@ void FormToc::show()
       b_refresh = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_refresh") ) );
       b_close   = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_close") ) );
       
-      b_refresh->clicked.connect(bind<bool>(slot(this, &FormToc::update),false));
+      b_refresh->clicked.connect(bind<bool>(slot(this, &FormToc::updateSlot),false));
       b_close->clicked.connect(dialog_->destroy.slot());
       dialog_->destroy.connect(slot(this, &FormToc::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormToc::update));
+      u_ = d_->updateBufferDependent.connect(slot(this, &FormToc::updateSlot));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormToc::hide));
 
       if (!dialog_->is_visible()) dialog_->show_all();
 
-      update();  // make sure its up-to-date
+      updateSlot();  // make sure its up-to-date
     }
   else
     {
@@ -137,12 +137,12 @@ void FormToc::show()
 
 
 // we can safely ignore the parameter because we can always update
-void FormToc::update(bool)
+void FormToc::updateSlot(bool)
 {
   Buffer::TocType type;
   string wintitle;
 
-  if (dialog_ != NULL &&
+  if (dialog_ != 0 &&
       !lv_->view()->available())
     {
       wintitle = _( "*** No Document ***");
@@ -155,7 +155,7 @@ void FormToc::update(bool)
     }
   
   
-  if (dialog_ != NULL &&
+  if (dialog_ != 0 &&
       lv_->view()->available())
     {
 
@@ -247,20 +247,20 @@ void FormToc::changeList(Buffer::TocType type)
 	  break;
 	}
       };
-      update();
+      updateSlot();
     }
 }
 
 void FormToc::hide()
 {
-  if (dialog_!=NULL) dialog_->destroy();
+  if (dialog_!=0) dialog_->destroy();
 }
 
 void FormToc::free()
 {
-  if (dialog_!=NULL)
+  if (dialog_!=0)
     {
-      dialog_ = NULL;
+      dialog_ = 0;
       u_.disconnect();
       h_.disconnect();
       inset_ = 0;

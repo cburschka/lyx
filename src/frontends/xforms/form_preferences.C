@@ -182,12 +182,26 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
     fl_set_counter_bounds(obj, 0, 120);
     fl_set_counter_value(obj, 75);
     fl_set_counter_step(obj, 1, 1);
-  fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 216, 95, 200, 30, _("TeX encoding"));
+  fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 216, 95, 200, 30, idex(_("TeX encoding|#T")));
+    fl_set_button_shortcut(obj, scex(_("TeX encoding|#T")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, OUTPUTSMISC);
-  fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 217, 142, 199, 29, _("Default paper size"));
+  fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 219, 142, 199, 29, idex(_("Default paper size|#p")));
+    fl_set_button_shortcut(obj, scex(_("Default paper size|#p")), 1);
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, OUTPUTSMISC);
+  fdui->input_ascii_roff = obj = fl_add_input(FL_NORMAL_INPUT, 121, 209, 285, 30, idex(_("ascii roff|#r")));
+    fl_set_button_shortcut(obj, scex(_("ascii roff|#r")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, OUTPUTSMISC);
+  fdui->input_checktex = obj = fl_add_input(FL_NORMAL_INPUT, 121, 250, 285, 30, idex(_("checktex|#c")));
+    fl_set_button_shortcut(obj, scex(_("checktex|#c")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, OUTPUTSMISC);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 12, 186, 406, 120, _("Outside code interaction"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -260,6 +274,33 @@ FD_form_spellchecker * FormPreferences::build_spellchecker()
 }
 /*---------------------------------------*/
 
+FD_form_inputs_misc::~FD_form_inputs_misc()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
+
+FD_form_inputs_misc * FormPreferences::build_inputs_misc()
+{
+  FL_OBJECT *obj;
+  FD_form_inputs_misc *fdui = new FD_form_inputs_misc;
+
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
+  fdui->input_date_format = obj = fl_add_input(FL_NORMAL_INPUT, 120, 70, 285, 30, idex(_("date format|#f")));
+    fl_set_button_shortcut(obj, scex(_("date format|#f")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, INPUTSMISC);
+  fl_end_form();
+
+  fdui->form->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
 FD_form_language::~FD_form_language()
 {
   if( form->visible ) fl_hide_form( form );
@@ -275,6 +316,55 @@ FD_form_language * FormPreferences::build_language()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
+  fdui->check_use_kbmap = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 158, 113, 30, 30, idex(_("Keyboard map|#K")));
+    fl_set_button_shortcut(obj, scex(_("Keyboard map|#K")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->choice_kbmap_1 = obj = fl_add_choice(FL_NORMAL_CHOICE, 231, 96, 200, 30, idex(_("1st|#1")));
+    fl_set_button_shortcut(obj, scex(_("1st|#1")), 1);
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 154, 161, 30, 30, idex(_("RtL support|#R")));
+    fl_set_button_shortcut(obj, scex(_("RtL support|#R")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 154, 187, 30, 30, idex(_("Mark foreign|#M")));
+    fl_set_button_shortcut(obj, scex(_("Mark foreign|#M")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 362, 187, 30, 30, idex(_("Auto finish|#f")));
+    fl_set_button_shortcut(obj, scex(_("Auto finish|#f")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 362, 161, 30, 30, idex(_("Auto begin|#b")));
+    fl_set_button_shortcut(obj, scex(_("Auto begin|#b")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->input_package = obj = fl_add_input(FL_NORMAL_INPUT, 131, 18, 300, 30, idex(_("Package|#P")));
+    fl_set_button_shortcut(obj, scex(_("Package|#P")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->input_command_begin = obj = fl_add_input(FL_NORMAL_INPUT, 131, 224, 300, 30, idex(_("Command start|#s")));
+    fl_set_button_shortcut(obj, scex(_("Command start|#s")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->input_command_end = obj = fl_add_input(FL_NORMAL_INPUT, 131, 257, 300, 30, idex(_("Command end|#e")));
+    fl_set_button_shortcut(obj, scex(_("Command end|#e")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->choice_kbmap_2 = obj = fl_add_choice(FL_NORMAL_CHOICE, 231, 128, 200, 30, idex(_("2nd|#2")));
+    fl_set_button_shortcut(obj, scex(_("2nd|#2")), 1);
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
+  fdui->choice_default_lang = obj = fl_add_choice(FL_NORMAL_CHOICE, 231, 56, 200, 30, idex(_("Default language|#D")));
+    fl_set_button_shortcut(obj, scex(_("Default language|#D")), 1);
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseInputCB, LANGUAGE);
   fl_end_form();
 
   fdui->form->fdui = fdui;

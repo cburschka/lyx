@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 11
+Number of forms: 12
 Unit of measure: FL_COORD_PIXEL
 SnapGrid: 1
 
@@ -520,7 +520,7 @@ argument: SCREENFONTS
 Name: form_outputs_misc
 Width: 455
 Height: 375
-Number of Objects: 4
+Number of Objects: 7
 
 --------------------
 class: FL_BOX
@@ -572,7 +572,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: TeX encoding
+label: TeX encoding|#T
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -583,20 +583,74 @@ argument: OUTPUTSMISC
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 217 142 199 29
+box: 219 142 199 29
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Default paper size
+label: Default paper size|#p
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_default_papersize
 callback: C_FormBaseInputCB
 argument: OUTPUTSMISC
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 121 209 285 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: ascii roff|#r
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_ascii_roff
+callback: C_FormBaseInputCB
+argument: OUTPUTSMISC
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 121 250 285 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: checktex|#c
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_checktex
+callback: C_FormBaseInputCB
+argument: OUTPUTSMISC
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 12 186 406 120
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Outside code interaction
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 =============== FORM ===============
 Name: form_spellchecker
@@ -803,10 +857,10 @@ callback: C_FormBaseInputCB
 argument: SPELLCHECKER
 
 =============== FORM ===============
-Name: form_language
+Name: form_inputs_misc
 Width: 450
 Height: 360
-Number of Objects: 1
+Number of Objects: 2
 
 --------------------
 class: FL_BOX
@@ -825,6 +879,246 @@ gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
 argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 120 70 285 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: date format|#f
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_date_format
+callback: C_FormBaseInputCB
+argument: INPUTSMISC
+
+=============== FORM ===============
+Name: form_language
+Width: 450
+Height: 360
+Number of Objects: 12
+
+--------------------
+class: FL_BOX
+type: FLAT_BOX
+box: 0 0 450 360
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 158 113 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Keyboard map|#K
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_use_kbmap
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 231 96 200 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 1st|#1
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_kbmap_1
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 154 161 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: RtL support|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_rtl_support
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 154 187 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Mark foreign|#M
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_mark_foreign
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 362 187 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Auto finish|#f
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_auto_end
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 362 161 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Auto begin|#b
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_auto_begin
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 131 18 300 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Package|#P
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_package
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 131 224 300 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Command start|#s
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_command_begin
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 131 257 300 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Command end|#e
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_command_end
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 231 128 200 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 2nd|#2
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_kbmap_2
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 231 56 200 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Default language|#D
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_default_lang
+callback: C_FormBaseInputCB
+argument: LANGUAGE
 
 =============== FORM ===============
 Name: form_colours

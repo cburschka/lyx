@@ -10,10 +10,13 @@
 #pragma implementation
 #endif
 
+#include <vector>
+
 #include "FormPreferences.h"
 #include "form_preferences.h"
 #include "input_validators.h"
 #include "LyXView.h"
+#include "language.h"
 #include "lyxfunc.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
@@ -26,12 +29,17 @@
 using SigC::slot;
 #endif
 
+using std::find;
+using std::vector;
+
+extern Languages languages;
+static vector<string> languageNames;
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
-	  usage_tab_(0), colours_(0), interface_(0), language_(0),
-	  lnf_misc_(0), outputs_misc_(0), paths_(0), printer_(0),
+	  usage_tab_(0), colours_(0), inputs_misc_(0), interface_(0),
+	  language_(0), lnf_misc_(0), outputs_misc_(0), paths_(0), printer_(0),
 	  screen_fonts_(0), spellchecker_(0)
 {
 	// let the dialog be shown
@@ -49,6 +57,7 @@ FormPreferences::~FormPreferences()
 	delete outputs_tab_;
 	delete usage_tab_;
 	delete colours_;
+	delete inputs_misc_;
 	delete interface_;
 	delete language_;
 	delete lnf_misc_;
@@ -120,6 +129,7 @@ void FormPreferences::build()
 	// build actual tabfolder contents
 	// these will become nested tabfolders
 	buildColours();
+	buildInputsMisc();
 	buildInterface();
 	buildLanguage();
 	buildLnFmisc();
@@ -163,6 +173,9 @@ void FormPreferences::build()
 	fl_addto_tabfolder(inputs_tab_->tabfolder_outer,
 			   _("Paths"),
 			   paths_->form);
+	fl_addto_tabfolder(inputs_tab_->tabfolder_outer,
+			   _("Misc"),
+			   inputs_misc_->form);
 
 	// then building outputs
 	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
@@ -194,7 +207,10 @@ void FormPreferences::apply()
 	// like update the screen fonts because that flushes the textcache
 	// and other stuff which may cost us a lot on slower/high-load machines.
 
+	applyColours();
+	applyInputsMisc();
 	applyInterface();
+	applyLanguage();
 	applyLnFmisc();
 	applyOutputsMisc();
 	applyPaths();
@@ -209,7 +225,10 @@ void FormPreferences::update()
 	if (!dialog_) return;
     
 	// read lyxrc entries
+	updateColours();
+	updateInputsMisc();
 	updateInterface();
+	updateLanguage();
 	updateLnFmisc();
 	updateOutputsMisc();
 	updatePaths();
@@ -233,6 +252,11 @@ bool FormPreferences::input(FL_OBJECT * ob, long data)
 	State cb = static_cast<State>( data );
 	switch( cb ) {
 	case COLOURS:
+		feedbackColours( ob );
+		break;
+
+	case INPUTSMISC:
+		feedbackInputsMisc( ob );
 		break;
 
 	case INTERFACE:
@@ -240,6 +264,9 @@ bool FormPreferences::input(FL_OBJECT * ob, long data)
 		break;
 
 	case LANGUAGE:
+		feedbackLanguage( ob );
+		if( ! inputLanguage( ob ) )
+			activate = false;
 		break;
 
 	case LOOKNFEELMISC:
@@ -280,9 +307,59 @@ bool FormPreferences::input(FL_OBJECT * ob, long data)
 }
 
 
+void FormPreferences::applyColours()
+{
+}
+
+
 void FormPreferences::buildColours()
 {
 	colours_ = build_colours();
+}
+
+
+void FormPreferences::feedbackColours( FL_OBJECT const * const )
+{
+}
+
+
+void FormPreferences::updateColours()
+{
+}
+
+
+void FormPreferences::applyInputsMisc()
+{
+	lyxrc.date_insert_format = fl_get_input(inputs_misc_->input_date_format);
+}
+
+
+void FormPreferences::buildInputsMisc()
+{
+	inputs_misc_ = build_inputs_misc();
+
+	fl_set_input_return(inputs_misc_->input_date_format,
+			    FL_RETURN_CHANGED);
+}
+
+
+void FormPreferences::feedbackInputsMisc( FL_OBJECT const * const ob )
+{
+	string str;
+
+	if( ob == inputs_misc_->input_date_format ) {
+		str = N_("This accepts the normal strftime formats; see man strftime for full details.\nE.g.\"%A, %e. %B %Y\".");
+	}
+
+	fl_set_object_label(dialog_->text_warning, str.c_str());
+	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
+}
+
+
+void FormPreferences::updateInputsMisc()
+{
+	fl_set_input(inputs_misc_->input_date_format,
+		     lyxrc.date_insert_format.c_str());
 }
 
 
@@ -359,9 +436,173 @@ void FormPreferences::updateInterface()
 }
 
 
+void FormPreferences::applyLanguage()
+{
+	vector<string>::size_type choice =
+		fl_get_choice(language_->choice_default_lang) - 1;
+	lyxrc.default_language = languageNames[choice];
+
+	int button = fl_get_button(language_->check_use_kbmap);
+	lyxrc.use_kbmap = static_cast<bool>(button);
+
+	if( button ) {
+	    choice = fl_get_choice(language_->choice_kbmap_1) - 1;
+	    lyxrc.primary_kbmap = languageNames[choice];
+
+	    choice = fl_get_choice(language_->choice_kbmap_2) - 1;
+	    lyxrc.secondary_kbmap = languageNames[choice];
+	}
+	
+	button = fl_get_button(language_->check_rtl_support);
+	lyxrc.rtl_support = static_cast<bool>(button);
+
+	button = fl_get_button(language_->check_auto_begin);
+	lyxrc.language_auto_begin = static_cast<bool>(button);
+
+	button = fl_get_button(language_->check_auto_end);
+	lyxrc.language_auto_end = static_cast<bool>(button);
+
+	button = fl_get_button(language_->check_mark_foreign);
+	lyxrc.mark_foreign_language = static_cast<bool>(button);
+
+	lyxrc.language_package = fl_get_input(language_->input_package);
+	lyxrc.language_command_begin = fl_get_input(language_->input_command_begin);
+	lyxrc.language_command_end = fl_get_input(language_->input_command_end);
+}
+
+
 void FormPreferences::buildLanguage()
 {
 	language_ = build_language();
+
+	fl_set_input_return(language_->input_package, FL_RETURN_CHANGED);
+	fl_set_input_return(language_->input_command_begin, FL_RETURN_CHANGED);
+	fl_set_input_return(language_->input_command_end, FL_RETURN_CHANGED);
+
+	// Only do this the first time buildLanguage() is called.
+	if( languageNames.empty() ) {
+		for( Languages::const_iterator lang = languages.begin();
+		     lang != languages.end(); lang++ ) {
+			languageNames.push_back( (*lang).second.lang() );
+		}
+	}
+
+	string names = " " + languageNames.front();
+	for( vector<string>::const_iterator lang = languageNames.begin();
+	     lang != languageNames.end(); ++lang ) {
+		names += " | " + (*lang);
+	}
+	names += " ";
+	
+	fl_addto_choice(language_->choice_default_lang, names.c_str());
+	fl_addto_choice(language_->choice_kbmap_1, names.c_str());
+	fl_addto_choice(language_->choice_kbmap_2, names.c_str());
+}
+
+
+void FormPreferences::feedbackLanguage( FL_OBJECT const * const ob )
+{
+	string str;
+
+	if( ob == language_->choice_default_lang ) {
+		str = N_("New documents will be assigned this language.");
+	} else if( ob == language_->check_use_kbmap
+		   || ob == language_->choice_kbmap_1
+		   || ob == language_->choice_kbmap_2 ) {
+		str = N_("Use this to set the correct mapping file for your keyboard.\nYou'll need this if you for instance want to type German documents\non an American keyboard.");
+	} else if( ob == language_->check_rtl_support ) {
+		str = N_("Use to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
+	} else if( ob == language_->check_auto_begin ) {
+		str = N_("Use if a language switching command is needed at the beginning\nof the document.");
+	} else if( ob == language_->check_auto_end ) {
+		str = N_("Use if a language switching command is needed at the end\nof the document.");
+	} else if( ob == language_->check_mark_foreign ) {
+		str = N_("Use to control the highlighting of words with a language foreign to\nthat of the document.");
+	} else if( ob == language_->input_package ) {
+		str = N_("The latex command for loading the language package.\nE.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
+	} else if( ob == language_->input_command_begin ) {
+		str = N_("The latex command for changing from the language of the document\nto another language.\nE.g. \\selectlanguage{$$lang} where $$lang is substituted by the name\nof the second language.");
+	} else if( ob == language_->input_command_end ) {
+		str = N_("The latex command for changing back to the language of the document.");
+	}
+
+	fl_set_object_label(dialog_->text_warning, str.c_str());
+	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
+}
+
+
+bool FormPreferences::inputLanguage( FL_OBJECT const * const ob )
+{
+	bool activate = true;
+	
+	if( !ob || ob == language_->check_use_kbmap ) {
+		if( fl_get_button(language_->check_use_kbmap) ) {
+			fl_activate_object(language_->choice_kbmap_1);
+			fl_activate_object(language_->choice_kbmap_2);
+			fl_set_object_lcol(language_->choice_kbmap_1,
+					   FL_BLACK);
+			fl_set_object_lcol(language_->choice_kbmap_2,
+					   FL_BLACK);
+		} else {
+			fl_deactivate_object(language_->choice_kbmap_1);
+			fl_deactivate_object(language_->choice_kbmap_2);
+			fl_set_object_lcol(language_->choice_kbmap_1,
+					   FL_INACTIVE);
+			fl_set_object_lcol(language_->choice_kbmap_2,
+					   FL_INACTIVE);
+		}
+	}
+
+	return activate;
+}
+
+
+void FormPreferences::updateLanguage()
+{
+	fl_set_button(language_->check_use_kbmap,
+		      lyxrc.use_kbmap);
+
+	vector<string>::iterator it =
+		find( languageNames.begin(), languageNames.end(),
+		      lyxrc.default_language );
+	int choice = 0;
+	if( it != languageNames.end() )
+		choice = static_cast<int>( it - languageNames.begin() );
+
+	fl_set_choice(language_->choice_default_lang, choice+1);
+
+	it = find( languageNames.begin(), languageNames.end(),
+		   lyxrc.primary_kbmap );
+	choice = 0;
+	if( it != languageNames.end() )
+		choice = static_cast<int>( it - languageNames.begin() );
+	
+	fl_set_choice(language_->choice_kbmap_1, choice+1);
+
+	it = find( languageNames.begin(), languageNames.end(),
+		   lyxrc.secondary_kbmap );
+	choice = 0;
+	if( it != languageNames.end() )
+		choice = static_cast<int>( it - languageNames.begin() );
+
+	fl_set_choice(language_->choice_kbmap_2, choice+1);
+	
+	fl_set_button(language_->check_rtl_support, lyxrc.rtl_support);
+	fl_set_button(language_->check_auto_begin,  lyxrc.language_auto_begin);
+	fl_set_button(language_->check_auto_end,    lyxrc.language_auto_end);
+	fl_set_button(language_->check_mark_foreign,
+		      lyxrc.mark_foreign_language);
+
+	fl_set_input(language_->input_package,
+		     lyxrc.language_package.c_str());
+	fl_set_input(language_->input_command_begin,
+		     lyxrc.language_command_begin.c_str());
+	fl_set_input(language_->input_command_end,
+		     lyxrc.language_command_end.c_str());
+
+	// Activate/Deactivate the input fields dependent on the state of the
+	// buttons.
+	inputLanguage( 0 );
 }
 
 
@@ -450,6 +691,9 @@ void FormPreferences::applyOutputsMisc()
 	int choice =
 		fl_get_choice(outputs_misc_->choice_default_papersize) - 1;
 	lyxrc.default_papersize = static_cast<BufferParams::PAPER_SIZE>(choice);
+
+	lyxrc.ascii_roff_command = fl_get_input(outputs_misc_->input_ascii_roff);
+	lyxrc.chktex_command = fl_get_input(outputs_misc_->input_checktex);
 }
 
 
@@ -460,6 +704,10 @@ void FormPreferences::buildOutputsMisc()
 	fl_set_counter_return(outputs_misc_->counter_line_len,
 			      FL_RETURN_CHANGED);
 	fl_set_input_return(outputs_misc_->input_tex_encoding,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(outputs_misc_->input_ascii_roff,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(outputs_misc_->input_checktex,
 			    FL_RETURN_CHANGED);
 	fl_addto_choice(outputs_misc_->choice_default_papersize,
 			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
@@ -474,10 +722,14 @@ void FormPreferences::feedbackOutputsMisc(FL_OBJECT const * const ob )
 		str = N_("This is the maximum line length of an exported ASCII file\n(LaTeX, SGML or plain text).");
 	} else if( ob == outputs_misc_->input_tex_encoding ) {
 		str = N_("The font encoding used for the LaTeX2e fontenc package.\nT1 is highly recommended for non-English languages.");
+	} else if( ob == outputs_misc_->input_ascii_roff ) {
+		str = N_("Use to define an external program to render tables in the ASCII output.\nE.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file.\nIf \"none\" is specified, an internal routine is used.");
+	} else if( ob == outputs_misc_->input_checktex ) {
+		str = N_("Define how to run chktex.\nE.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\"\nRefer to the ChkTeX documentation.");
 	} else if( ob == outputs_misc_->choice_default_papersize ) {
 		str = N_("Specify the default paper size.");
 	} 
-	
+		
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
@@ -491,6 +743,10 @@ void FormPreferences::updateOutputsMisc()
 		     lyxrc.fontenc.c_str());
 	fl_set_choice(outputs_misc_->choice_default_papersize,
 		      lyxrc.default_papersize+1);
+	fl_set_input(outputs_misc_->input_ascii_roff,
+		     lyxrc.ascii_roff_command.c_str());
+	fl_set_input(outputs_misc_->input_checktex,
+		     lyxrc.chktex_command.c_str());
 }
 
 

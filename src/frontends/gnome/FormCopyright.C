@@ -17,7 +17,7 @@
 #include "FormCopyright.h"
 
 FormCopyright::FormCopyright(LyXView * lv, Dialogs * d)
-	: dialog_(NULL), lv_(lv), d_(d), h_(0)
+	: dialog_(0), lv_(lv), d_(d), h_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -28,25 +28,25 @@ FormCopyright::FormCopyright(LyXView * lv, Dialogs * d)
 
 FormCopyright::~FormCopyright()
 {
-	if (dialog_!=NULL) hide();
+	if (dialog_!=0) hide();
 }
 
 
 void FormCopyright::show()
 {
-	if(dialog_!=NULL) { // "About" box hasn't been closed, so just raise it
+	if(dialog_!=0) { // "About" box hasn't been closed, so just raise it
 		Gdk_Window dialog_win(dialog_->get_window());
 		dialog_win.show();
 		dialog_win.raise();
 	}
 	else { // create new "About" dialog box
-		vector<string> authors; //null. Authors are not listed in LyX copyright dialogbox.
+		vector<string> authors; //0. Authors are not listed in LyX copyright dialogbox.
 		
 		dialog_ = new Gnome::About(PACKAGE, VERSION,
 					   _("(C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team"),
 					   authors,
 					   _("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\nLyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."),
-					   NULL);
+					   0);
 		
 		// it should be disconnected before deleting dialog_ in FormCopyright::hide()
 		destroy_ = dialog_->destroy.connect(slot(this, &FormCopyright::hide));
@@ -60,13 +60,13 @@ void FormCopyright::show()
 
 void FormCopyright::hide()
 {
-	if (dialog_!=NULL) {
+	if (dialog_!=0) {
 		dialog_->hide();
 		
 		h_.disconnect();
 		destroy_.disconnect();
 		
 		delete dialog_;
-		dialog_ = NULL;
+		dialog_ = 0;
 	}
 }

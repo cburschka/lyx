@@ -29,7 +29,7 @@ namespace Gnome
     {
       Gtk::Box * b = manage( new Gtk::HBox() );
       l = manage( new Gtk::Label(label) );
-      Gnome::Pixmap * p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(NULL, pixname.c_str()) ) );
+      Gnome::Pixmap * p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(0, pixname.c_str()) ) );
 
       b->set_spacing(3);
       b->children().push_back(Gtk::Box_Helpers::Element(*p, false, false));
