@@ -48,11 +48,6 @@
  */
 class UpdatableInset : public InsetOld {
 public:
-	///
-	UpdatableInset();
-	///
-	UpdatableInset(UpdatableInset const & in);
-
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
 	virtual bool checkInsertChar(LyXFont &) { return true; }

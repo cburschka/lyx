@@ -502,7 +502,7 @@ public:
 	///
 	void init(BufferParams const &, int rows_arg, int columns_arg);
 	///
-	void set_row_column_number_info(bool oldformat = false);
+	void set_row_column_number_info();
 	/// Returns true if a complete update is necessary, otherwise false
 	bool setWidthOfMulticolCell(int cell, int new_width);
 	///
@@ -554,6 +554,10 @@ public:
 					   bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(Buffer const & buf, std::ostream & os, int row) const;
+
+private:
+	/// renumber cells after structural changes
+	void fixCellNums();
 };
 
 #endif

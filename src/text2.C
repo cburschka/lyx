@@ -72,7 +72,7 @@ LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
 	: height(0), width(0), anchor_y_(0),
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv),
-	  in_inset_(ininset), paragraphs_(paragraphs)
+	  in_inset_(ininset), paragraphs_(&paragraphs)
 {
 }
 
@@ -1341,7 +1341,9 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	cur.par(pit);
 	cur.pos(pos);
 	cur.boundary(boundary);
-	if (noRows())
+
+	// no rows, no fun...
+	if (ownerParagraphs().begin()->rows.empty())
 		return;
 
 	// get the cursor y position in text
@@ -1872,7 +1874,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 ParagraphList & LyXText::ownerParagraphs() const
 {
-	return paragraphs_;
+	return *paragraphs_;
 }
 
 

@@ -467,13 +467,12 @@ private:
 	mutable lyx::pos_type bidi_end;
 
 	///
-	const bool in_inset_;
-	///
-	ParagraphList & paragraphs_;
-
-	///
 	void charInserted();
 public:
+	///
+	bool in_inset_;
+	///
+	ParagraphList * paragraphs_;
 	//
 	// special owner functions
 	///
@@ -495,15 +494,14 @@ public:
 	void previousRow(ParagraphList::iterator & pit,
 		RowList::iterator & rit) const;
 
-	///
-	bool noRows() const;
-
 private:
 	/** Cursor related data.
 	  Later this variable has to be removed. There should be now internal
 	  cursor in a text */
 	///
 	///TextCursor cursor_;
+	/// prohibit this as long as there are back pointers...
+	LyXText(LyXText const &);
 };
 
 /// return the default height of a row in pixels, considering font zoom

@@ -64,60 +64,63 @@ using std::vector;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: UpdatableInset(), text_(0, this, true, paragraphs)
+	: UpdatableInset(),
+	  paragraphs(1),
+	  autoBreakRows_(false),
+	  drawFrame_(NEVER),
+	  frame_color_(LColor::insetframe),
+	  text_(0, this, true, paragraphs)
 {
-	paragraphs.push_back(Paragraph());
+	textwidth_ = 0; // broken
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
 		paragraphs.begin()->trackChanges();
-	init(0);
+	init();
 }
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in), text_(0, this, true, paragraphs)
+	: UpdatableInset(in),
+	  text_(in.text_.bv_owner, this, true, paragraphs)
 {
-	init(&in);
+	// this is ugly...
+	operator=(in);
 }
 
 
-InsetText & InsetText::operator=(InsetText const & it)
+void InsetText::operator=(InsetText const & in)
 {
-	init(&it);
-	return *this;
+	UpdatableInset::operator=(in);
+	paragraphs = in.paragraphs;
+	autoBreakRows_ = in.autoBreakRows_;
+	drawFrame_ = in.drawFrame_;
+	frame_color_ = in.frame_color_;
+	textwidth_ = in.textwidth_;
+	text_ = LyXText(in.text_.bv_owner, this, true, paragraphs);
+	init();
 }
 
 
-void InsetText::init(InsetText const * ins)
+void InsetText::init()
 {
-	if (ins) {
-		textwidth_ = ins->textwidth_;
-		text_.bv_owner = ins->text_.bv_owner;
-
-		paragraphs = ins->paragraphs;
-
-		ParagraphList::iterator pit = paragraphs.begin();
-		ParagraphList::iterator end = paragraphs.end();
-		for (; pit != end; ++pit)
-			pit->setInsetOwner(this);
-
-		autoBreakRows_ = ins->autoBreakRows_;
-		drawFrame_ = ins->drawFrame_;
-		setFrameColor(ins->frameColor());
-	} else {
-		textwidth_ = 0; // broken
-		drawFrame_ = NEVER;
-		setFrameColor(LColor::insetframe);
-		autoBreakRows_ = false;
-	}
-	the_locking_inset = 0;
-	for_each(paragraphs.begin(), paragraphs.end(),
-		 boost::bind(&Paragraph::setInsetOwner, _1, this));
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	for (; pit != end; ++pit)
+		pit->setInsetOwner(this);
+	text_.paragraphs_ = &paragraphs;
 	top_y = 0;
-	no_selection = true;
+
 	locked = false;
+	inset_par = paragraphs.end();
+	inset_pos = 0;
+	inset_x = 0;
+	inset_y = 0;
+	no_selection = true;
+	the_locking_inset = 0;
 	old_par = paragraphs.end();
 	in_insetAllowed = false;
+	mouse_x = 0;
+	mouse_y = 0;
 }
 
 

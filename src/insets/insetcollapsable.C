@@ -61,7 +61,6 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 #endif
 	  in_update(false), first_after_edit(false)
 {
-	inset.init(&(in.inset));
 	inset.setOwner(this);
 }
 

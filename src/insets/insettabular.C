@@ -36,6 +36,7 @@
 #include "frontends/Painter.h"
 
 #include "support/std_sstream.h"
+#include <iostream>
 
 using lyx::graphics::PreviewLoader;
 
@@ -1679,12 +1680,16 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		// append the row into the tabular
 		unlockInsetInInset(bv, the_locking_inset);
 		tabular.appendRow(bv->buffer()->params(), actcell);
+		tabular.setOwner(this);
+		//tabular.init(bv->buffer()->params(), tabular.rows(), tabular.columns());
 		updateLocal(bv);
 		break;
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
 		unlockInsetInInset(bv, the_locking_inset);
 		tabular.appendColumn(bv->buffer()->params(), actcell);
+		tabular.setOwner(this);
+		//tabular.init(bv->buffer()->params(), tabular.rows(), tabular.columns());
 		actcell = tabular.getCellNumber(row, column);
 		updateLocal(bv);
 		break;

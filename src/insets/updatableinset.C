@@ -32,16 +32,6 @@ using std::string;
 
 // some stuff for inset locking
 
-UpdatableInset::UpdatableInset()
-	: InsetOld()
-{}
-
-
-UpdatableInset::UpdatableInset(UpdatableInset const & in)
-	: InsetOld(in)
-{}
-
-
 void UpdatableInset::insetUnlock(BufferView *)
 {
 	lyxerr[Debug::INFO] << "Inset Unlock" << std::endl;

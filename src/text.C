@@ -2073,9 +2073,3 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 		rit = boost::prior(pit->rows.end());
 	}
 }
-
-
-bool LyXText::noRows() const
-{
-	return ownerParagraphs().begin()->rows.empty();
-}

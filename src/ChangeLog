@@ -1,3 +1,12 @@
+2003-10-08  André Pönitz  <poenitz@gmx.net>
+
+	* lyxtext.h: make the paragraphs_ a pointer instead a ref to make the
+	  thing assignable.
+	* text.C:
+	* text2.C: adjust
+
+	* tabular.[Ch]: fix crash after 'row-insert'
+
 2003-10-08  Angus Leeming  <leeming@lyx.org>
 
 	Fix doxygen warnings.

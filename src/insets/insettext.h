@@ -49,13 +49,13 @@ public:
 		ALWAYS
 	};
 	///
-	InsetText(BufferParams const &);
+	explicit InsetText(BufferParams const &);
 	///
-	explicit InsetText(InsetText const &);
+	InsetText(InsetText const &);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	InsetText & operator=(InsetText const & it);
+	void operator=(InsetText const & it);
 	/// empty inset to empty par, or just mark as erased
 	void clear(bool just_mark_erased);
 	///
@@ -114,8 +114,6 @@ public:
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,
 		     bool selectall = false);
-	///
-	void init(InsetText const * ins);
 	///
 	void writeParagraphData(Buffer const &, std::ostream &) const;
 	///
@@ -210,6 +208,8 @@ protected:
 	void lockInset(BufferView *, UpdatableInset *);
 
 private:
+	///
+	void init();
 	///
 	void lfunMousePress(FuncRequest const &);
 	///

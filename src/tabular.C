@@ -304,8 +304,8 @@ void l_getline(istream & is, string & str)
 
 /// Define a few methods for the inner structs
 
-LyXTabular::cellstruct::cellstruct(BufferParams const & bg)
-	: inset(bg)
+LyXTabular::cellstruct::cellstruct(BufferParams const & bp)
+	: inset(bp)
 {
 	cellno = 0;
 	width_of_cell = 0;
@@ -362,12 +362,30 @@ LyXTabular::LyXTabular(BufferParams const & bp, int rows_arg, int columns_arg)
 // activates all lines and sets all widths to 0
 void LyXTabular::init(BufferParams const & bp, int rows_arg, int columns_arg)
 {
-	rows_ = rows_arg;
+	rows_    = rows_arg;
 	columns_ = columns_arg;
-	row_info = row_vector(rows_, rowstruct());
-	column_info = column_vector(columns_, columnstruct());
+	row_info = row_vector(rows_);
+	column_info = column_vector(columns_);
 	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
+	row_info.reserve(10);
+	column_info.reserve(10);
+	cell_info.reserve(100);
+	fixCellNums();
+	for (int i = 0; i < rows_; ++i)
+		cell_info[i].back().right_line = true;
+	row_info.back().bottom_line = true;
+	row_info.front().bottom_line = true;
+	column_info.back().right_line = true;
+	is_long_tabular = false;
+	rotate = false;
+}
 
+
+void LyXTabular::fixCellNums()
+{
+	BOOST_ASSERT(rows_ == row_info.size());
+	BOOST_ASSERT(columns_ == column_info.size());
+	BOOST_ASSERT(rows_ == cell_info.size());
 	int cellno = 0;
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
@@ -376,24 +394,27 @@ void LyXTabular::init(BufferParams const & bp, int rows_arg, int columns_arg)
 		}
 		cell_info[i].back().right_line = true;
 	}
-	row_info.back().bottom_line = true;
-	row_info.front().bottom_line = true;
-	column_info.back().right_line = true;
-	rowofcell.clear();
-	columnofcell.clear();
+
 	set_row_column_number_info();
-	is_long_tabular = false;
-	rotate = false;
+	BOOST_ASSERT(rows_ == row_info.size());
+	BOOST_ASSERT(columns_ == column_info.size());
+	BOOST_ASSERT(rows_  == cell_info.size());
 }
 
 
 void LyXTabular::setOwner(InsetTabular * inset)
 {
 	for (int i = 0; i < rows_; ++i)
-		for (int j = 0; j < columns_; ++j)
+		for (int j = 0; j < columns_; ++j) {
 			cell_info[i][j].inset.setOwner(inset);
+			cell_info[i][j].inset.setDrawFrame(InsetText::LOCKED);
+		}
 }
 
+
+#warning for some strange reason, cellstruct does not seem to have copy-semantics
+
+// work around using 'swap' only...
 
 void LyXTabular::appendRow(BufferParams const & bp, int cell)
 {
@@ -406,30 +427,22 @@ void LyXTabular::appendRow(BufferParams const & bp, int cell)
 	// now set the values of the row before
 	row_info[row] = row_info[row + 1];
 
-#if 0
-	cell_vvector::iterator cit = cell_info.begin() + row;
-	cell_info.insert(cit, vector<cellstruct>(columns_, cellstruct(bp)));
-#else
+	cell_vvector old(rows_ - 1);
+	for (int i = 0; i < rows_ - 1; ++i)
+		swap(cell_info[i], old[i]);
 
-	cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
-							      cellstruct(bp)));
+	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
 
 	for (int i = 0; i <= row; ++i)
-		for (int j = 0; j < columns_; ++j)
-			c_info[i][j] = cell_info[i][j];
+		swap(cell_info[i], old[i]);
+	for (int i = row + 2; i < rows_; ++i)
+		swap(cell_info[i], old[i - 1]);
 
-	for (int i = row + 1; i < rows_; ++i)
+	if (bp.tracking_changes)
 		for (int j = 0; j < columns_; ++j)
-			c_info[i][j] = cell_info[i-1][j];
+			cell_info[row + 1][j].inset.markNew(true);
 
-	cell_info = c_info;
-	++row;
-	for (int j = 0; j < columns_; ++j) {
-		cell_info[row][j].inset.clear(false);
-		if (bp.tracking_changes)
-			cell_info[row][j].inset.markNew(true);
-	}
-#endif
+	set_row_column_number_info();
 }
 
 
@@ -442,6 +455,7 @@ void LyXTabular::deleteRow(int row)
 	row_info.erase(row_info.begin() + row);
 	cell_info.erase(cell_info.begin() + row);
 	--rows_;
+	fixCellNums();
 }
 
 
@@ -479,6 +493,7 @@ void LyXTabular::appendColumn(BufferParams const & bp, int cell)
 		if (bp.tracking_changes)
 			cell_info[i][column + 1].inset.markNew(true);
 	}
+	fixCellNums();
 }
 
 
@@ -492,10 +507,11 @@ void LyXTabular::deleteColumn(int column)
 	for (int i = 0; i < rows_; ++i)
 		cell_info[i].erase(cell_info[i].begin() + column);
 	--columns_;
+	fixCellNums();
 }
 
 
-void LyXTabular::set_row_column_number_info(bool oldformat)
+void LyXTabular::set_row_column_number_info()
 {
 	numberofcells = -1;
 	for (int row = 0; row < rows_; ++row) {
@@ -532,14 +548,6 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
 		for (int column = 0; column < columns_; ++column) {
 			if (isPartOfMultiColumn(row,column))
 				continue;
-			// now set the right line of multicolumns right for oldformat read
-			if (oldformat &&
-				cell_info[row][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
-			{
-				int cn = cells_in_multicolumn(cell_info[row][column].cellno);
-				cell_info[row][column].right_line =
-					cell_info[row][column+cn-1].right_line;
-			}
 			cell_info[row][column].inset.setAutoBreakRows(
 				!getPWidth(getCellNumber(row, column)).zero());
 		}
@@ -648,7 +656,7 @@ bool LyXTabular::leftAlreadyDrawn(int cell) const
 
 bool LyXTabular::isLastRow(int cell) const
 {
-	return (row_of_cell(cell) == rows_ - 1);
+	return row_of_cell(cell) == rows_ - 1;
 }
 
 
