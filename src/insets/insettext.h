@@ -377,8 +377,6 @@ private:
 	///
 	bool no_selection;
 	///
-	mutable float xpos;
-	///
 	UpdatableInset * the_locking_inset;
 	///
 	mutable Paragraph * old_par;

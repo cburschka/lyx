@@ -178,8 +178,6 @@ public:
 	///
 	mutable int refresh_y;
 	///
-	int refresh_height;
-	///
 	int refresh_width;
 	///
 	int refresh_x;
@@ -339,8 +337,6 @@ public:
 	///
 	void cursorLeftOneWord(BufferView *) const;
 	///
-	void cursorLeftOneWord(LyXCursor &) const;
-	///
 	void cursorRightOneWord(BufferView *) const;
 	///
 	void cursorUpParagraph(BufferView *) const;
@@ -494,6 +490,9 @@ private:
 	///
 	mutable Row * lastrow;
 
+	///
+	void cursorLeftOneWord(LyXCursor &) const;
+ 
 	///
 	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
 					 lyx::pos_type last, bool boundary) const;

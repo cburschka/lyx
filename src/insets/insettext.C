@@ -189,7 +189,6 @@ void InsetText::init(InsetText const * ins, bool same_id)
 	need_update = FULL;
 	drawTextXOffset = 0;
 	drawTextYOffset = 0;
-	xpos = 0.0;
 	locked = false;
 	old_par = 0;
 	last_drawn_width = -1;
@@ -387,7 +386,6 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		return;
 	}
 
-	xpos = x;
 	if (!owner())
 		x += static_cast<float>(scroll());
 
