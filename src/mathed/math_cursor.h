@@ -301,8 +301,6 @@ private:
 	void insert(char, MathTextCodes t);
 	/// can we enter the inset? 
 	bool openable(MathAtom const &, bool selection) const;
-	/// can the setPos routine enter that inset?
-	bool positionable(MathAtom const &, int x, int y) const;
 	/// write access to cursor cell position
 	pos_type & pos();
 	/// write access to cursor cell index

@@ -82,8 +82,6 @@ public:
 	void removeEmptyScripts();
 	/// make sure a script is accessible
 	void ensure(bool up);
-	/// only true if we are _in_ sub- or superscript, not in the convex hull
-	bool covers(int x, int y) const;
 
 	// call these methods ...2 to make compaq cxx in anal mode happy...
 	/// suppresses empty braces if necessary

@@ -65,8 +65,6 @@ public:
 	bool isActive() const { return nargs() > 0; }
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
-	/// do we cover the point (x,y)?
-	bool covers(int x, int y) const;
 
 	/// match in all cells
 	bool match(MathInset *) const;

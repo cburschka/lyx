@@ -235,22 +235,6 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 }
 
 
-bool MathCursor::positionable(MathAtom const & t, int x, int y) const
-{
-	if (selection_) {
-		// we can't move into anything new during selection
-		if (Cursor_.size() >= Anchor_.size())
-			return false;
-		if (t.nucleus() != Anchor_[Cursor_.size()].par_)
-			return false;
-	}
-
-	//lyxerr << " positionable: 1 " << t->nargs() << "\n";
-	//lyxerr << " positionable: 2 " << t->covers(x, y) << "\n";
-	return t->nargs() && t->covers(x, y);
-}
-
-
 bool MathCursor::posLeft()
 {
 	if (pos() == 0)
@@ -332,44 +316,6 @@ void MathCursor::last()
 }
 
 
-#if 0
-void MathCursor::setPos(int x, int y)
-{
-	//dump("setPos 1");
-	//lyxerr << "MathCursor::setPos x: " << x << " y: " << y << "\n";
-
-	macroModeClose();
-	lastcode_ = LM_TC_VAR;
-	first();
-
-	cursor().par_  = &formula_->par();
-
-	while (1) {
-		idx() = 0;
-		cursor().pos_ = 0;
-		//lyxerr << "found idx: " << idx() << " cursor: " << pos()  << "\n";
-		int distmin = 1 << 30; // large enough
-		for (unsigned int i = 0; i < par()->nargs(); ++i) {
-			MathXArray const & ar = par()->xcell(i);
-			int d = ar.dist(x, y);
-			if (d <= distmin) {
-				distmin = d;
-				idx()   = i;
-				pos()   = ar.x2pos(x - ar.xo());
-			}
-		}
-		//lyxerr << "found idx: " << idx() << " cursor: " << pos()  << "\n";
-		if (hasNextAtom() && positionable(nextAtom(), x, y))
-			pushLeft(nextAtom());
-		else if (hasPrevAtom() && positionable(prevAtom(), x, y))
-			pushRight(prevAtom());
-		else 
-			break;
-	}
-	//dump("setPos 2");
-}
-
-#else
 
 void MathCursor::setPos(int x, int y)
 {
@@ -405,9 +351,6 @@ void MathCursor::setPos(int x, int y)
 	//lyxerr << "x: " << x << " y: " << y << " dist: " << best_dist << "\n";
 	dump("setPos 2");
 }
-
-#endif
-
 
 
 

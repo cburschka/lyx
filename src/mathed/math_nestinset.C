@@ -153,27 +153,6 @@ void MathNestInset::validate(LaTeXFeatures & features) const
 }
 
 
-bool MathNestInset::covers(int x, int y) const
-{
-	if (!nargs())
-		return false;
-	int x0 = xcell(0).xo();
-	int y0 = xcell(0).yo() - xcell(0).ascent();
-	int x1 = xcell(0).xo() + xcell(0).width();
-	int y1 = xcell(0).yo() + xcell(0).descent();
-	for (idx_type i = 1; i < nargs(); ++i) {
-		x0 = std::min(x0, xcell(i).xo());
-		y0 = std::min(y0, xcell(i).yo() - xcell(i).ascent());
-		x1 = std::max(x1, xcell(i).xo() + xcell(i).width());
-		y1 = std::max(y1, xcell(i).yo() + xcell(i).descent());
-	}
-	//lyxerr << "xO: " << x0 << " x1: " << x1 << " "
-	//       << "yO: " << y0 << " y1: " << y1 <<  "         "
-	//       << "x: " << x << " y: " << y << '\n';
-	return x >= x0 && x <= x1 && y >= y0 && y <= y1;
-}
-
-
 bool MathNestInset::match(MathInset * p) const
 {
 	if (nargs() != p->nargs())

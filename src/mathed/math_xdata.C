@@ -143,16 +143,6 @@ int MathXArray::dist(int x, int y) const
 }
 
 
-bool MathXArray::covers(int x, int y) const
-{
-	int const x0 = xo_;
-	int const y0 = yo_ - ascent_;
-	int const x1 = xo_ + width_;
-	int const y1 = yo_ + descent_;
-	return x >= x0 && x <= x1 && y >= y0 && y <= y1;
-}
-
-
 void MathXArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
 {
 	x1 = xo_;

@@ -74,15 +74,6 @@ void MathScriptInset::ensure(bool up)
 }
 
 
-bool MathScriptInset::covers(int x, int y) const
-{
-	for (idx_type i = 0; i < 2; ++i)
-		if (has(i) && xcell(i).covers(x, y))
-			return true;
-	return false;
-}
-
-
 int MathScriptInset::dy0(MathInset const * nuc) const
 {
 	int nd = ndes(nuc);

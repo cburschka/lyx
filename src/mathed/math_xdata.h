@@ -53,8 +53,6 @@ public:
 	int height() const { return ascent_ + descent_; }
 	/// width of this cell
 	int width() const { return width_; }
-	/// do we cover point(x, y)?
-	bool covers(int x, int y) const;
 	/// bounding box of this cell
 	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
 	/// find best position to do things

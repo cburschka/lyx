@@ -195,13 +195,6 @@ void MathInset::dump() const
 }
 
 
-bool MathInset::covers(int, int) const
-{
-	lyxerr << "MathInset::covers() called directly!\n";
-	return false;
-}
-
-
 void MathInset::validate(LaTeXFeatures &) const
 {}
 

@@ -188,9 +188,6 @@ public:
 	/// delete a given row
 	virtual void delCol(col_type) {}
 
-	/// does this inset cover the pixel at (x,y)?
-	virtual bool covers(int x, int y) const;
-
 	/// identifies certain types of insets
 	virtual MathArrayInset        * asArrayInset()        { return 0; }
 	virtual MathBoxInset          * asBoxInset()          { return 0; }
