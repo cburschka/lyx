@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.2\n"
-"POT-Creation-Date: 1999-11-30 23:57+0100\n"
+"POT-Creation-Date: 1999-12-13 23:06+0100\n"
 "PO-Revision-Date: 1999-12-01 00:19+01:00\n"
 "Last-Translator: Ludek Brukner <ludek.brukner@regionet.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -14,17 +14,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. sgml2lyx failed
-#: src/buffer.C:223 src/buffer.C:233 src/buffer.C:3575 src/bufferlist.C:513
-#: src/bufferlist.C:543 src/lyx_cb.C:517 src/lyx_cb.C:850 src/lyx_cb.C:882
+#: src/buffer.C:254 src/buffer.C:264 src/buffer.C:3685 src/bufferlist.C:520
+#: src/bufferlist.C:550 src/lyx_cb.C:537 src/lyx_cb.C:904 src/lyx_cb.C:940
 #: src/lyx_sendfax_main.C:262
 msgid "Error!"
 msgstr "Chyba!"
 
-#: src/buffer.C:224
+#: src/buffer.C:255
 msgid "Specified file is unreadable: "
 msgstr ""
 
-#: src/buffer.C:234
+#: src/buffer.C:265
 #, fuzzy
 msgid "Cannot open specified file: "
 msgstr "Nemohu otevøít soubor:"
@@ -34,180 +34,183 @@ msgstr "Nemohu otevøít soubor:"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:408
+#: src/buffer.C:456
 msgid "Textclass Loading Error!"
 msgstr "Chyba pøi nahrávání textové tøídy"
 
-#: src/buffer.C:409
+#: src/buffer.C:457
 msgid "Can't load textclass "
 msgstr "Nemohu naèíst textovou tøídu"
 
-#: src/buffer.C:411
+#: src/buffer.C:459
 msgid "-- substituting default"
 msgstr "-- nahrazuji implicitní hodnotou"
 
-#: src/buffer.C:1031
+#: src/buffer.C:1079
 msgid "Warning: Ignoring Old Inset"
 msgstr "Varování: Ignoruji starý objekt"
 
-#: src/buffer.C:1112
+#: src/buffer.C:1160
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f\n"
 msgstr "Varování: potøebuji formát LyXu %.2f, ale nalezl jsem %.2f\n"
 
-#: src/buffer.C:1116
+#: src/buffer.C:1164
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f\n"
 msgstr "CHYBA: potøebuji formát LyXu %.2f, ale nalezl jsem %.2f\n"
 
-#: src/buffer.C:1134
+#: src/buffer.C:1182
 msgid "Warning!"
 msgstr "Varování!"
 
-#: src/buffer.C:1135
+#: src/buffer.C:1183
 msgid "Reading of document is not complete"
 msgstr "Dokument nebyl pøeèten úplný"
 
-#: src/buffer.C:1136
+#: src/buffer.C:1184
 msgid "Maybe the document is truncated"
 msgstr "Je mo¾né, ¾e dokument byl zkrácen"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1142 src/buffer.C:1149 src/buffer.C:1152
+#: src/buffer.C:1190 src/buffer.C:1197 src/buffer.C:1200
 msgid "ERROR!"
 msgstr "CHYBA!"
 
-#: src/buffer.C:1143
+#: src/buffer.C:1191
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Nalezen starý formát LyXu. Naètìte jej LyXem 0.10.x!"
 
-#: src/buffer.C:1149
+#: src/buffer.C:1197
 msgid "Not a LyX file!"
 msgstr "Toto není soubor ve formátu LyXu!"
 
-#: src/buffer.C:1152
+#: src/buffer.C:1200
 msgid "Unable to read file!"
 msgstr "Nemohu èíst soubor!"
 
-#: src/buffer.C:1168 src/buffer.C:1171
+#: src/buffer.C:1216 src/buffer.C:1219
 msgid "Error! Document is read-only: "
 msgstr "Chyba! Dokument je pouze ke ètení: "
 
-#: src/buffer.C:1181 src/buffer.C:1184 src/buffer.C:1192 src/buffer.C:1195
+#: src/buffer.C:1229 src/buffer.C:1232
 msgid "Error! Cannot write file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1225 src/buffer.C:1228
-msgid "Error! Could not close file properly: "
-msgstr "Chyba! Nemohu správnì uzavøít soubor: "
+#: src/buffer.C:1240 src/buffer.C:1243
+#, fuzzy
+msgid "Error! Cannot open file: "
+msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1252 src/buffer.C:1571
+#: src/buffer.C:1291
 msgid "Error: Cannot write file:"
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1359
+#: src/buffer.C:1397
 msgid "Error: Cannot open temporary file:"
 msgstr "Chyba! Nemohu pøeèíst doèasný soubor: "
 
-#: src/buffer.C:2074 src/buffer.C:2297 src/buffer.C:2992
-msgid "Error! Could not close file properly:"
-msgstr "Chyba! Nemonu strávnì uzavøít soubor:"
+#: src/buffer.C:1614
+#, fuzzy
+msgid "Error: Cannot open file: "
+msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:2144 src/buffer.C:2732 src/buffer.C:3496 src/buffer.C:3517
-#: src/paragraph.C:3575
+#: src/buffer.C:2187 src/buffer.C:2777 src/buffer.C:3604 src/buffer.C:3626
+#: src/paragraph.C:3577
 msgid "LYX_ERROR:"
 msgstr "CHYBA LYXU:"
 
-#: src/buffer.C:2144 src/buffer.C:2732
+#: src/buffer.C:2187 src/buffer.C:2777
 msgid "Cannot write file"
 msgstr "Nemohu zapsat soubor"
 
-#: src/buffer.C:2216 src/buffer.C:2814
+#: src/buffer.C:2259 src/buffer.C:2858
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Chyba: Nesprávné zanoøení pøíkazù LaTeXu.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3174
+#: src/buffer.C:3238
 msgid "Running LaTeX..."
 msgstr "Pracuje LaTeX..."
 
-#: src/buffer.C:3191
+#: src/buffer.C:3255
 msgid "LaTeX did not work!"
 msgstr "LaTeX nefunguje!"
 
-#: src/buffer.C:3192 src/buffer.C:3260 src/buffer.C:3328
+#: src/buffer.C:3256 src/buffer.C:3329 src/buffer.C:3402
 msgid "Missing log file:"
 msgstr "Chybí soubor hlá¹ení:"
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3194 src/buffer.C:3203 src/buffer.C:3262 src/buffer.C:3271
-#: src/buffer.C:3330 src/buffer.C:3338 src/combox.C:464
+#: src/buffer.C:3258 src/buffer.C:3267 src/buffer.C:3331 src/buffer.C:3340
+#: src/buffer.C:3404 src/buffer.C:3412 src/combox.C:465
 msgid "Done"
 msgstr "Hotovo"
 
 #. path to Literate file
-#: src/buffer.C:3239
+#: src/buffer.C:3308
 msgid "Running Literate..."
 msgstr "Pracuje Literate..."
 
-#: src/buffer.C:3259
+#: src/buffer.C:3328
 msgid "Literate command did not work!"
 msgstr "Pøíkaz Literate nefunguje!"
 
 #. path to Literate file
-#: src/buffer.C:3307
+#: src/buffer.C:3381
 msgid "Building Program..."
 msgstr "Vytváøím program..."
 
-#: src/buffer.C:3327
+#: src/buffer.C:3401
 msgid "Build did not work!"
 msgstr "Vytvoøení nefungovalo!"
 
 #. path to LaTeX file
-#: src/buffer.C:3374
+#: src/buffer.C:3452
 msgid "Running chktex..."
 msgstr "Pracuje chktex..."
 
-#: src/buffer.C:3390
+#: src/buffer.C:3468
 msgid "chktex did not work!"
 msgstr "chktex nefunguje!"
 
-#: src/buffer.C:3391
+#: src/buffer.C:3469
 msgid "Could not run with file:"
 msgstr "Nemohu pracovat se souborem:"
 
-#: src/buffer.C:3497 src/buffer.C:3518 src/paragraph.C:3576
+#: src/buffer.C:3605 src/buffer.C:3627 src/paragraph.C:3578
 msgid "Cannot open temporary file:"
 msgstr "Nemohu otevøít doèasný soubor:"
 
-#: src/buffer.C:3568
+#: src/buffer.C:3678
 msgid "Error! Can't open temporary file:"
 msgstr "Chyba! Nemohu otevøít doèasný soubor:"
 
-#: src/buffer.C:3576
+#: src/buffer.C:3686
 msgid "Error executing *roff command on table"
 msgstr "Chyba pøi provádìní pøíkazu *roff v tabulce"
 
-#: src/buffer.C:3772 src/lyx_cb.C:3154 src/text.C:1847
+#: src/buffer.C:3886 src/buffer.C:3938 src/lyx_cb.C:3627 src/lyx_cb.C:3705
+#: src/text.C:1847
 msgid "Impossible Operation!"
 msgstr "Nemo¾ná operace!"
 
-#: src/buffer.C:3773
+#: src/buffer.C:3887 src/buffer.C:3939
 msgid "Cannot insert table/list in table."
 msgstr "Nemohu vlo¾it tabulku/seznam do tabulky."
 
-#: src/buffer.C:3774 src/lyx_cb.C:3156 src/text.C:1849 src/text.C:3888
-#: src/text.C:3896 src/text.C:3911 src/text.C:3928 src/text2.C:2102
-#: src/text2.C:2112
+#: src/buffer.C:3888 src/buffer.C:3940 src/lyx_cb.C:3629 src/lyx_cb.C:3707
+#: src/text.C:1849 src/text.C:3888 src/text.C:3896 src/text.C:3911
+#: src/text.C:3928 src/text2.C:2102 src/text2.C:2112
 msgid "Sorry."
 msgstr "Lituji."
 
-#: src/bufferlist.C:98 src/bufferlist.C:256 src/lyxvc.C:87 src/lyxvc.C:117
+#: src/bufferlist.C:98 src/bufferlist.C:255 src/lyxvc.C:87 src/lyxvc.C:117
 #: src/lyxvc.C:143
 msgid "Changes in document:"
 msgstr "Zmìny v dokumentu:"
 
-#: src/bufferlist.C:101 src/bufferlist.C:258
+#: src/bufferlist.C:101 src/bufferlist.C:257
 msgid "Save document?"
 msgstr "Ulo¾it dokument?"
 
@@ -223,96 +226,97 @@ msgstr "Pøesto ukonèit?"
 msgid "Saving document"
 msgstr "Ukládám dokument"
 
-#: src/bufferlist.C:202
+#: src/bufferlist.C:201
 msgid "Document saved as"
 msgstr "Dokument byl ulo¾en jako"
 
-#: src/bufferlist.C:213
+#: src/bufferlist.C:212
 msgid "Could not delete auto-save file!"
 msgstr "Nemohu vymazat zálo¾ní soubor!"
 
-#: src/bufferlist.C:223
+#: src/bufferlist.C:222
 msgid "Save failed!"
 msgstr "Nepodaøilo se ulo¾it!"
 
-#: src/bufferlist.C:291
+#: src/bufferlist.C:290
 msgid "No Documents Open!%t"
 msgstr "Nejsou otevøeny ¾ádné dokumenty!%t"
 
-#: src/bufferlist.C:361
+#: src/bufferlist.C:368
 msgid "lyx: Attempting to save document "
 msgstr "lyx: Zkou¹ím ulo¾it dokument "
 
-#: src/bufferlist.C:364
+#: src/bufferlist.C:371
 msgid " as..."
 msgstr "jako..."
 
-#: src/bufferlist.C:388
+#: src/bufferlist.C:395
 msgid "  Save seems successful. Phew."
 msgstr "  Zdá se, ¾e se ulo¾il správnì. Vida."
 
-#: src/bufferlist.C:392
+#: src/bufferlist.C:399
 msgid "  Save failed! Trying..."
 msgstr "Ukládání neprobìhlo správnì! Zkou¹ím..."
 
-#: src/bufferlist.C:395
+#: src/bufferlist.C:402
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "Ukládání neprobìhlo správnì!. Oj. Dokument je ztracen."
 
-#: src/bufferlist.C:422
+#: src/bufferlist.C:429
 msgid "An emergency save of this document exists!"
 msgstr "Existuje zálo¾ní kopie tohoto dokumentu!"
 
-#: src/bufferlist.C:424
+#: src/bufferlist.C:431
 msgid "Try to load that instead?"
 msgstr "Chcete ji pou¾ít?"
 
-#: src/bufferlist.C:446
+#: src/bufferlist.C:453
 msgid "Autosave file is newer."
 msgstr "Zálo¾ní kopie je novìj¹í."
 
-#: src/bufferlist.C:448
+#: src/bufferlist.C:455
 msgid "Load that one instead?"
 msgstr "Chcete ji pou¾ít?"
 
-#: src/bufferlist.C:513
+#: src/bufferlist.C:520
 msgid "Unable to open template"
 msgstr "Nemohu otevøít ¹ablonu"
 
-#: src/bufferlist.C:544
+#: src/bufferlist.C:551
 msgid "Could not convert file"
 msgstr "Nemohu zkonvertovat soubor"
 
-#: src/bufferlist.C:557 src/lyxfunc.C:2559 src/lyxfunc.C:2698
-#: src/lyxfunc.C:2777
+#: src/bufferlist.C:564 src/lyxfunc.C:4675 src/lyxfunc.C:4814
+#: src/lyxfunc.C:4893
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otevøen:"
 
-#: src/bufferlist.C:559
+#: src/bufferlist.C:566
 msgid "Do you want to reload that document?"
 msgstr "Opravdu ho chcete otevøít znovu?"
 
-#: src/bufferlist.C:575
+#: src/bufferlist.C:582
 msgid "File `"
 msgstr "Soubor `"
 
-#: src/bufferlist.C:576
+#: src/bufferlist.C:583
 msgid "' is read-only."
 msgstr "' je pouze ke ètení."
 
-#: src/bufferlist.C:592
+#: src/bufferlist.C:599
 msgid "Cannot open specified file:"
 msgstr "Nemohu otevøít soubor:"
 
-#: src/bufferlist.C:594
+#: src/bufferlist.C:601
 msgid "Create new document with this name?"
 msgstr "Vytvoøit nový dokument s tímto jménem?"
 
-#: src/BufferView.C:274
+#: src/BufferView.C:323
 msgid "Formatting document..."
 msgstr "Formátuji dokument..."
 
-#: src/BufferView.C:347 src/BufferView.C:351
+#: src/BufferView.C:437 src/BufferView.C:441 src/BufferView.C:458
+#: src/BufferView.C:462
 msgid "No more errors"
 msgstr "®ádné dal¹í chyby"
 
@@ -322,7 +326,7 @@ msgstr "Velikost|#z"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
-#: src/insets/insetbib.C:89 src/insets/insetbib.C:117
+#: src/insets/insetbib.C:95 src/insets/insetbib.C:123
 #: src/insets/insetinclude.C:47 src/insets/insetindex.C:56
 #: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
 #: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
@@ -342,8 +346,8 @@ msgid "Apply|#A"
 msgstr "Proveï|#P"
 
 #: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:264 src/form1.C:290
-#: src/insets/insetbib.C:92 src/insets/insetbib.C:93 src/insets/insetbib.C:120
-#: src/insets/insetbib.C:121 src/insets/insetinclude.C:50
+#: src/insets/insetbib.C:98 src/insets/insetbib.C:99 src/insets/insetbib.C:126
+#: src/insets/insetbib.C:127 src/insets/insetinclude.C:50
 #: src/insets/insetinclude.C:51 src/insets/insetindex.C:60
 #: src/insets/insetindex.C:61 src/latexoptions.C:27 src/layout_forms.C:64
 #: src/layout_forms.C:285 src/layout_forms.C:391 src/layout_forms.C:419
@@ -755,62 +759,62 @@ msgstr "celá slova|#c"
 msgid "Replace All|#A#a"
 msgstr "Nahraï v¹e|#A#a"
 
-#: src/insets/figinset.C:1097
+#: src/insets/figinset.C:1085
 msgid "[render error]"
 msgstr "[chyba vykreslování]"
 
-#: src/insets/figinset.C:1098
+#: src/insets/figinset.C:1086
 msgid "[rendering ... ]"
 msgstr "[vykresluji ... ]"
 
-#: src/insets/figinset.C:1100
+#: src/insets/figinset.C:1088
 msgid "[no file]"
 msgstr "[¾ádný soubor]"
 
-#: src/insets/figinset.C:1101
+#: src/insets/figinset.C:1089
 msgid "[not displayed]"
 msgstr "[nezobrazeno]"
 
-#: src/insets/figinset.C:1102
+#: src/insets/figinset.C:1090
 msgid "[no ghostscript]"
 msgstr "[chybí ghostscript]"
 
-#: src/insets/figinset.C:1104
+#: src/insets/figinset.C:1092
 msgid "[unknown error]"
 msgstr "[neznámá chyba]"
 
-#: src/insets/figinset.C:1301
+#: src/insets/figinset.C:1289
 msgid "Figure"
 msgstr "Obrázek"
 
-#: src/insets/figinset.C:1363 src/insets/figinset.C:1501
+#: src/insets/figinset.C:1350 src/insets/figinset.C:1483
 msgid "empty figure path"
 msgstr "prázdná cesta k obrázku"
 
-#: src/insets/figinset.C:2160
+#: src/insets/figinset.C:2137
 msgid "Clipart"
 msgstr "Clipart"
 
-#: src/insets/figinset.C:2161 src/lyxfunc.C:2591 src/lyxfunc.C:2654
-#: src/lyxfunc.C:2877
+#: src/insets/figinset.C:2138 src/lyxfunc.C:4707 src/lyxfunc.C:4770
+#: src/lyxfunc.C:4993
 msgid "Document"
 msgstr "Dokument"
 
-#: src/insets/figinset.C:2167 src/insets/figinset.C:2170
+#: src/insets/figinset.C:2144 src/insets/figinset.C:2147
 msgid "EPS Figure"
 msgstr "Obrázek EPS"
 
-#: src/insets/figinset.C:2184
+#: src/insets/figinset.C:2161
 msgid "Filename can't contain any of these characters:"
 msgstr "Jméno souboru nesmí obsahovat tyto znaky:"
 
-#: src/insets/figinset.C:2185
+#: src/insets/figinset.C:2162
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "mezera, '#', '~', '$' a '%'."
 
 #. / what appears in the minibuffer when opening
-#: src/insets/figinset.h:50
+#: src/insets/figinset.h:51
 #, fuzzy
 msgid "Opened figure"
 msgstr "Otevøený objekt"
@@ -842,61 +846,61 @@ msgstr "HTML typ|#H"
 msgid "HTML type|#H"
 msgstr "HTML typ|#H"
 
-#: src/LyXAction.C:132 src/insets/form_url.C:31 src/insets/inseterror.C:165
+#: src/LyXAction.C:114 src/insets/form_url.C:31 src/insets/inseterror.C:167
 #: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:562
 #: src/layout_forms.C:790 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:251
 #: src/mathed/math_forms.C:179
 msgid "Close"
 msgstr "Zavøít"
 
-#: src/insets/insetbib.C:82
+#: src/insets/insetbib.C:88
 msgid "Key:"
 msgstr "Klíè:"
 
-#: src/insets/insetbib.C:96 src/insets/insetbib.C:97
+#: src/insets/insetbib.C:102 src/insets/insetbib.C:103
 msgid "Remark:|#R"
 msgstr "Poznámka:"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
-#: src/insets/insetbib.C:266 src/insets/insetbib.C:267
+#: src/insets/insetbib.C:120 src/insets/insetbib.C:121
+#: src/insets/insetbib.C:274 src/insets/insetbib.C:275
 msgid "Key:|#K"
 msgstr "Klíè:"
 
-#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
-#: src/insets/insetbib.C:268 src/insets/insetbib.C:269
+#: src/insets/insetbib.C:130 src/insets/insetbib.C:131
+#: src/insets/insetbib.C:276 src/insets/insetbib.C:277
 msgid "Label:|#L"
 msgstr "Znaèka:"
 
-#: src/insets/insetbib.C:171
+#: src/insets/insetbib.C:179
 msgid "Citation"
 msgstr "Citace"
 
-#: src/insets/insetbib.C:277
+#: src/insets/insetbib.C:285
 msgid "Bibliography item"
 msgstr "Polo¾ka literatury"
 
-#: src/insets/insetbib.C:292
+#: src/insets/insetbib.C:300
 msgid "BibTeX Generated References"
 msgstr "Citace generované BibTeXem"
 
-#: src/insets/insetbib.C:407
+#: src/insets/insetbib.C:415
 msgid "Database:"
 msgstr "Databáze:"
 
-#: src/insets/insetbib.C:408
+#: src/insets/insetbib.C:416
 msgid "Style:  "
 msgstr "Styl:"
 
-#: src/insets/insetbib.C:416
+#: src/insets/insetbib.C:424
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:66 src/insets/inseterror.C:85 src/lyx_cb.C:3684
+#: src/insets/inseterror.C:67 src/insets/inseterror.C:86 src/lyx_cb.C:4357
 msgid "Error"
 msgstr "Chyba"
 
-#: src/insets/inseterror.C:178
+#: src/insets/inseterror.C:180
 msgid "LaTeX Error"
 msgstr "Chyba LaTeXu"
 
@@ -938,8 +942,8 @@ msgid "Use include|#U"
 msgstr "Zru¹ okraje"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:366 src/lyxfunc.C:2539
-#: src/lyxfunc.C:2629 src/lyxfunc.C:2678 src/lyxfunc.C:2751 src/lyxfunc.C:2852
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:386 src/lyxfunc.C:4655
+#: src/lyxfunc.C:4745 src/lyxfunc.C:4794 src/lyxfunc.C:4867 src/lyxfunc.C:4968
 #: src/menus.C:177 src/menus.C:309 src/menus.C:310 src/menus.C:311
 msgid "Documents"
 msgstr "Dokumenty"
@@ -949,15 +953,15 @@ msgstr "Dokumenty"
 msgid "Select Child Document"
 msgstr "Výbìr podøízeného dokumentu"
 
-#: src/insets/insetinclude.C:256 src/insets/insetinclude.C:291
+#: src/insets/insetinclude.C:258 src/insets/insetinclude.C:293
 msgid "Include"
 msgstr "Vlo¾ení"
 
-#: src/insets/insetinclude.C:287
+#: src/insets/insetinclude.C:289
 msgid "Input"
 msgstr "Vstup"
 
-#: src/insets/insetinclude.C:289
+#: src/insets/insetinclude.C:291
 msgid "Verbatim Input"
 msgstr "Pøesný vstup"
 
@@ -977,12 +981,12 @@ msgstr "Index"
 msgid "PrintIndex"
 msgstr "Tisk rejstøíku"
 
-#: src/insets/insetinfo.C:69 src/insets/insetinfo.C:88
-#: src/insets/insetinfo.C:208
+#: src/insets/insetinfo.C:70 src/insets/insetinfo.C:89
+#: src/insets/insetinfo.C:209
 msgid "Note"
 msgstr "Komentáø"
 
-#: src/insets/insetinfo.C:194 src/insets/insetinfo.C:199 src/lyx.C:155
+#: src/insets/insetinfo.C:195 src/insets/insetinfo.C:200 src/lyx.C:155
 msgid "Close|#C^["
 msgstr "Zavøít"
 
@@ -1011,28 +1015,28 @@ msgstr "Seznam tabulek"
 msgid "Parent:"
 msgstr "Rodiè:"
 
-#: src/insets/insetref.C:62
+#: src/insets/insetref.C:57
 msgid "Page: "
 msgstr "Strana: "
 
-#: src/insets/insetref.C:64
+#: src/insets/insetref.C:59
 msgid "Ref: "
 msgstr "Odkaz: "
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:863
+#: src/insets/insettoc.h:35 src/lyxfunc.C:889 src/lyxfunc.C:2972
 msgid "Table of Contents"
 msgstr "Obsah"
 
-#: src/insets/inseturl.C:138
+#: src/insets/inseturl.C:139
 msgid "Insert Url"
 msgstr "Vlo¾ení Url"
 
-#: src/insets/inseturl.C:152
+#: src/insets/inseturl.C:153
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/inseturl.C:154
+#: src/insets/inseturl.C:155
 msgid "Url: "
 msgstr "Url: "
 
@@ -1043,19 +1047,19 @@ msgid "Opened Url"
 msgstr "Otevøená chyba"
 
 #. / what appears in the minibuffer when opening
-#: src/insets/lyxinset.h:94
+#: src/insets/lyxinset.h:95
 msgid "Opened inset"
 msgstr "Otevøený objekt"
 
-#: src/intl.C:299 src/intl.C:300
+#: src/intl.C:292 src/intl.C:293
 msgid "other..."
 msgstr "jiný..."
 
-#: src/intl.C:367
+#: src/intl.C:360
 msgid "Key Mappings"
 msgstr "Mapování klávesnice"
 
-#: src/kbmap.C:303
+#: src/kbmap.C:298
 msgid "   options: "
 msgstr "   volby: "
 
@@ -1071,20 +1075,20 @@ msgstr "Bì¾í MakeIndex."
 msgid "Running BibTeX."
 msgstr "Bì¾í BibTeX."
 
-#: src/LaTeXLog.C:43
+#: src/LaTeXLog.C:44
 #, fuzzy
 msgid "Unable to show log file!"
 msgstr "Nemohu èíst soubor!"
 
-#: src/LaTeXLog.C:46
+#: src/LaTeXLog.C:47
 msgid "NO LATEX LOG FILE!"
 msgstr "SOUBOR S HLÁ©ENÍMI LATEXU NEEXISTUJE"
 
-#: src/LaTeXLog.C:53
+#: src/LaTeXLog.C:54
 msgid "Build Program Log"
 msgstr "Vytváøím log"
 
-#: src/LaTeXLog.C:53
+#: src/LaTeXLog.C:54
 msgid "LaTeX Log"
 msgstr "Zprávy LaTeXu"
 
@@ -1096,27 +1100,27 @@ msgstr "Povolení interpunce na V©EMI znaky"
 msgid "Update|#Uu"
 msgstr "Obnov"
 
-#: src/layout.C:1088
+#: src/layout.C:1359
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr "LyX nena¹el popisy formátù!"
 
-#: src/layout.C:1089
+#: src/layout.C:1360
 msgid "Check that the file \"textclass.lst\""
 msgstr "Zkontrolujte, ¾e soubor \"textclass.lst\""
 
-#: src/layout.C:1090
+#: src/layout.C:1361
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr "je správnì nainstalován. Lituji, musím konèit :-("
 
-#: src/layout.C:1143
+#: src/layout.C:1414
 msgid "LyX wasn't able to find any layout description!"
 msgstr "LyX nena¹el popisy formátù!"
 
-#: src/layout.C:1144
+#: src/layout.C:1415
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr "Zkontrolujte, ¾e soubor \"textclass.lst\""
 
-#: src/layout.C:1145
+#: src/layout.C:1416
 msgid "Sorry, has to exit :-("
 msgstr "je správnì nainstalován. Lituji, musím konèit :-("
 
@@ -1590,428 +1594,428 @@ msgstr "Ukládám dokument"
 msgid "Building program"
 msgstr "Vytváøím program"
 
-#: src/LyXAction.C:97
+#: src/LyXAction.C:92
 #, fuzzy
 msgid "Insert appendix"
 msgstr "Vlo¾ení znaèky"
 
-#: src/LyXAction.C:99
+#: src/LyXAction.C:93
 msgid "Describe command"
 msgstr "Popis pøikazu"
 
-#: src/LyXAction.C:101
+#: src/LyXAction.C:95
 msgid "Select previous char"
 msgstr "Výbìr pøedchozího znaku"
 
-#: src/LyXAction.C:107
+#: src/LyXAction.C:98
 msgid "Insert bibtex"
 msgstr "Vlo¾ení bibtexu"
 
-#: src/LyXAction.C:118
+#: src/LyXAction.C:105
 msgid "Build program"
 msgstr "Vytváøím program"
 
-#: src/LyXAction.C:120
+#: src/LyXAction.C:106
 msgid "Autosave"
 msgstr "Automatické ulo¾ení"
 
-#: src/LyXAction.C:122
+#: src/LyXAction.C:108
 msgid "Go to beginning of document"
 msgstr "Pøechod na zaèátek dokumentu"
 
-#: src/LyXAction.C:124
+#: src/LyXAction.C:110
 msgid "Select to beginning of document"
 msgstr "Vyber do zaèátku dokumentu"
 
-#: src/LyXAction.C:130
+#: src/LyXAction.C:113
 msgid "Check TeX"
 msgstr "Kontrola TeXu"
 
-#: src/LyXAction.C:134
+#: src/LyXAction.C:116
 msgid "Go to end of document"
 msgstr "Jdi na konec dokumentu"
 
-#: src/LyXAction.C:136
+#: src/LyXAction.C:118
 msgid "Select to end of document"
 msgstr "Vyber do konce dokumentu"
 
-#: src/LyXAction.C:138
+#: src/LyXAction.C:119
 #, fuzzy
 msgid "Export to"
 msgstr "|Export%m%l"
 
-#: src/LyXAction.C:140
+#: src/LyXAction.C:120
 msgid "Fax"
 msgstr "Fax"
 
-#: src/LyXAction.C:145
+#: src/LyXAction.C:123
 msgid "Import document"
 msgstr "Vkládám dokument"
 
-#: src/LyXAction.C:149
+#: src/LyXAction.C:126
 msgid "New document"
 msgstr "Nový dokument"
 
-#: src/LyXAction.C:151
+#: src/LyXAction.C:128
 msgid "New document from template"
 msgstr "Nový dokument podle ¹ablony"
 
-#: src/LyXAction.C:153
+#: src/LyXAction.C:129
 msgid "Open"
 msgstr "Otevøít"
 
-#: src/LyXAction.C:155
+#: src/LyXAction.C:131
 msgid "Switch to previous document"
 msgstr "Pøepnutí na pøedchozí dokument"
 
-#: src/LyXAction.C:159 src/lyx_cb.C:950 src/print_form.C:72
+#: src/LyXAction.C:132 src/lyx_cb.C:1015 src/print_form.C:72
 msgid "Print"
 msgstr "Tisk"
 
-#: src/LyXAction.C:161
+#: src/LyXAction.C:134
 msgid "Revert to saved"
 msgstr "Obnovení ulo¾ené verze"
 
-#: src/LyXAction.C:163
+#: src/LyXAction.C:136
 #, fuzzy
 msgid "Toggle read-only"
 msgstr "Pøepnutí tuènì"
 
-#: src/LyXAction.C:165
+#: src/LyXAction.C:137
 msgid "Update DVI"
 msgstr "Obnovení DVI"
 
-#: src/LyXAction.C:167
+#: src/LyXAction.C:139
 msgid "Update PostScript"
 msgstr "Obnovení PostScriptu"
 
-#: src/LyXAction.C:169
+#: src/LyXAction.C:140
 msgid "View DVI"
 msgstr "Prohlí¾ení DVI"
 
-#: src/LyXAction.C:171
+#: src/LyXAction.C:142
 msgid "View PostScript"
 msgstr "Prohlí¾ení PostScriptu"
 
-#: src/LyXAction.C:173 src/lyx_sendfax_main.C:278
+#: src/LyXAction.C:143 src/lyx_sendfax_main.C:278
 msgid "Save"
 msgstr "Ulo¾it"
 
-#: src/LyXAction.C:175
+#: src/LyXAction.C:144
 msgid "Save As"
 msgstr "Ulo¾it jako"
 
-#: src/LyXAction.C:177 src/lyxfunc.C:639
+#: src/LyXAction.C:145 src/lyxfunc.C:665 src/lyxfunc.C:2748
 msgid "Cancel"
 msgstr "Zru¹it"
 
-#: src/LyXAction.C:179
+#: src/LyXAction.C:146
 msgid "Go one char back"
 msgstr "Pøechod o znak zpìt"
 
-#: src/LyXAction.C:181
+#: src/LyXAction.C:147
 msgid "Go one char forward"
 msgstr "Pøechod o znak dopøedu"
 
-#: src/LyXAction.C:183
+#: src/LyXAction.C:149
 msgid "Insert citation"
 msgstr "Vlo¾ení citace"
 
-#: src/LyXAction.C:187
+#: src/LyXAction.C:152
 msgid "Execute command"
 msgstr "Provedení pøíkazu"
 
-#: src/LyXAction.C:190 src/lyx_cb.C:2384
+#: src/LyXAction.C:154 src/lyx_cb.C:2742 src/lyx_cb.C:2749
 msgid "Copy"
 msgstr "Kopíruj"
 
-#: src/LyXAction.C:192 src/lyx_cb.C:2396
+#: src/LyXAction.C:155 src/lyx_cb.C:2769
 msgid "Cut"
 msgstr "Vystøihni"
 
-#: src/LyXAction.C:202
+#: src/LyXAction.C:161
 msgid "Decrement environment depth"
 msgstr "Sní¾ení hloubky zanoøení"
 
-#: src/LyXAction.C:204
+#: src/LyXAction.C:163
 msgid "Increment environment depth"
 msgstr "Zvy¹ení hloubky zanoøení"
 
-#: src/LyXAction.C:206
+#: src/LyXAction.C:165
 msgid "Change environment depth"
 msgstr "Zmìna hloubky zanoøení"
 
-#: src/LyXAction.C:208
+#: src/LyXAction.C:166
 msgid "Insert ... dots"
 msgstr "Vlo¾ení ... teèek"
 
-#: src/LyXAction.C:210
+#: src/LyXAction.C:167
 msgid "Go down"
 msgstr "Posun dolù"
 
-#: src/LyXAction.C:212
+#: src/LyXAction.C:169
 msgid "Select next line"
 msgstr "Výbìr následujícího øádku"
 
-#: src/LyXAction.C:214
+#: src/LyXAction.C:171
 msgid "Choose Paragraph Environment"
 msgstr "Výbìr prostøedí odstavce"
 
-#: src/LyXAction.C:216
+#: src/LyXAction.C:173
 msgid "Insert end of sentence period"
 msgstr "Vlo¾ení teèky na koci vìty"
 
-#: src/LyXAction.C:218
+#: src/LyXAction.C:174
 msgid "Go to next error"
 msgstr "Pøechod na dal¹í chybu"
 
-#: src/LyXAction.C:220
+#: src/LyXAction.C:176
 msgid "Remove all error boxes"
 msgstr "Odstranìní v¹ech chybových hlá¹ení"
 
-#: src/LyXAction.C:222 src/lyx_cb.C:2336
+#: src/LyXAction.C:177 src/lyx_cb.C:2675
 msgid "Insert Figure"
 msgstr "Vlo¾ení obrázku"
 
-#: src/LyXAction.C:232 src/lyxfr0.C:97
+#: src/LyXAction.C:182 src/lyxfr0.C:97
 msgid "Find & Replace"
 msgstr "Hledání a zámìna"
 
-#: src/LyXAction.C:234
+#: src/LyXAction.C:183
 msgid "Toggle bold"
 msgstr "Pøepnutí tuènì"
 
-#: src/LyXAction.C:236
+#: src/LyXAction.C:184
 msgid "Toggle code style"
 msgstr "Pøepnutí stylu kód"
 
-#: src/LyXAction.C:238
+#: src/LyXAction.C:185
 msgid "Default font style"
 msgstr "Implicitní typ písma"
 
-#: src/LyXAction.C:240
+#: src/LyXAction.C:186
 msgid "Toggle emphasize"
 msgstr "Pøepnutí zvýraznìní"
 
-#: src/LyXAction.C:242
+#: src/LyXAction.C:187
 msgid "Toggle user defined style"
 msgstr "Pøepnutí u¾ivatelem definovaného stylu"
 
-#: src/LyXAction.C:244
+#: src/LyXAction.C:188
 msgid "Toggle noun style"
 msgstr "Pøepnutí stylu jméno"
 
-#: src/LyXAction.C:246
+#: src/LyXAction.C:189
 msgid "Toggle roman font style"
 msgstr "Pøepnutí patkového písma"
 
-#: src/LyXAction.C:248
+#: src/LyXAction.C:190
 msgid "Toggle sans font style"
 msgstr "Pøepnutí bezpatkového písma"
 
-#: src/LyXAction.C:250
+#: src/LyXAction.C:191
 msgid "Set font size"
 msgstr "Nastavení velikosti písma"
 
-#: src/LyXAction.C:252
+#: src/LyXAction.C:192
 msgid "Show font state"
 msgstr "Informace o nastavení písma"
 
-#: src/LyXAction.C:254
+#: src/LyXAction.C:194
 msgid "Toggle font underline"
 msgstr "Pøepnutí podtr¾ení"
 
-#: src/LyXAction.C:256
+#: src/LyXAction.C:195
 msgid "Insert Footnote"
 msgstr "Vlo¾ení poznámky pod èarou"
 
-#: src/LyXAction.C:258
+#: src/LyXAction.C:196
 msgid "Select next char"
 msgstr "Vybrání následujícího znaku"
 
-#: src/LyXAction.C:260
+#: src/LyXAction.C:198
 msgid "Insert horizontal fill"
 msgstr "Vlo¾ení horizontálního výplòku"
 
-#: src/LyXAction.C:264
+#: src/LyXAction.C:201
 msgid "Insert hyphenation point"
 msgstr "Vlo¾ení místa dìlení slova"
 
-#: src/LyXAction.C:266
+#: src/LyXAction.C:203
 #, fuzzy
 msgid "Insert index item"
 msgstr "Vlo¾ení poznámky na okraji"
 
-#: src/LyXAction.C:268
+#: src/LyXAction.C:205
 #, fuzzy
 msgid "Insert last index item"
 msgstr "Vlo¾ení poznámky na okraji"
 
-#: src/LyXAction.C:270
+#: src/LyXAction.C:206
 #, fuzzy
 msgid "Insert index list"
 msgstr "Vlo¾ení bibtexu"
 
-#: src/LyXAction.C:272
+#: src/LyXAction.C:207
 msgid "Turn off keymap"
 msgstr "Vypnutí mapy klávesnice"
 
-#: src/LyXAction.C:274
+#: src/LyXAction.C:209
 msgid "Use primary keymap"
 msgstr "Pou¾ití primární klávesnice"
 
-#: src/LyXAction.C:276
+#: src/LyXAction.C:211
 msgid "Use secondary keymap"
 msgstr "Pou¾ití sekundární klávesnice"
 
-#: src/LyXAction.C:278
+#: src/LyXAction.C:212
 msgid "Toggle keymap"
 msgstr "Pøepnutí mapy klávesnice"
 
-#: src/LyXAction.C:280
+#: src/LyXAction.C:213
 msgid "Insert Label"
 msgstr "Vlo¾ení znaèky"
 
-#: src/LyXAction.C:282
+#: src/LyXAction.C:214
 #, fuzzy
 msgid "View LaTeX log"
 msgstr "Zprávy LaTeXu"
 
-#: src/LyXAction.C:288
+#: src/LyXAction.C:218
 msgid "Copy paragraph environment type"
 msgstr "Zkopírování prostøedí odstavce"
 
-#: src/LyXAction.C:297
+#: src/LyXAction.C:224
 msgid "Paste paragraph environment type"
 msgstr "Vlo¾ení prostøedí odstavce"
 
-#: src/LyXAction.C:306
+#: src/LyXAction.C:230
 msgid "Go to beginning of line"
 msgstr "Pøechod na zaèátek øádku"
 
-#: src/LyXAction.C:308
+#: src/LyXAction.C:232
 msgid "Select to beginning of line"
 msgstr "Výbìr do zaèátku øádku"
 
-#: src/LyXAction.C:312
+#: src/LyXAction.C:234
 msgid "Go to end of line"
 msgstr "Pøechod na konec øádku"
 
-#: src/LyXAction.C:314
+#: src/LyXAction.C:236
 msgid "Select to end of line"
 msgstr "Výbìr do konce øádku"
 
-#: src/LyXAction.C:316
+#: src/LyXAction.C:238
 #, fuzzy
 msgid "Insert list of algorithms"
 msgstr "Seznam algoritmù"
 
-#: src/LyXAction.C:318
+#: src/LyXAction.C:240
 #, fuzzy
 msgid "Insert list of figures"
 msgstr "Seznam obrázkù"
 
-#: src/LyXAction.C:320
+#: src/LyXAction.C:242
 #, fuzzy
 msgid "Insert list of tables"
 msgstr "Seznam tabulek"
 
-#: src/LyXAction.C:322
+#: src/LyXAction.C:243
 msgid "Exit"
 msgstr "Ukonèení"
 
-#: src/LyXAction.C:324
+#: src/LyXAction.C:245
 msgid "Insert Margin note"
 msgstr "Vlo¾ení poznámky na okraji"
 
-#: src/LyXAction.C:336
+#: src/LyXAction.C:251
 msgid "Math Greek"
 msgstr "Øecká písmena"
 
-#: src/LyXAction.C:340
+#: src/LyXAction.C:254
 #, fuzzy
 msgid "Insert math symbol"
 msgstr "Vlo¾ení znaèky"
 
-#: src/LyXAction.C:350
+#: src/LyXAction.C:259
 msgid "Math mode"
 msgstr "Matematický re¾im"
 
-#: src/LyXAction.C:360 src/lyx_cb.C:2427
+#: src/LyXAction.C:263 src/lyx_cb.C:2817
 msgid "Melt"
 msgstr "Spojeno"
 
-#: src/LyXAction.C:373
+#: src/LyXAction.C:271
 msgid "Go one paragraph down"
 msgstr "Pøesun o odstavec dolù"
 
-#: src/LyXAction.C:375
+#: src/LyXAction.C:273
 msgid "Select next paragraph"
 msgstr "Výbìr následujícího odstavce"
 
-#: src/LyXAction.C:377
+#: src/LyXAction.C:275
 msgid "Go one paragraph up"
 msgstr "Pøesun o odstavec nahoru"
 
-#: src/LyXAction.C:379
+#: src/LyXAction.C:277
 msgid "Select previous paragraph"
 msgstr "Vybìr pøedchozího odstavce"
 
-#: src/LyXAction.C:383 src/lyx_cb.C:2405
+#: src/LyXAction.C:279 src/lyx_cb.C:2779
 msgid "Paste"
 msgstr "Vlo¾it"
 
-#: src/LyXAction.C:387
+#: src/LyXAction.C:284
 msgid "Insert protected space"
 msgstr "Vlo¾ení pevné mezery"
 
-#: src/LyXAction.C:389
+#: src/LyXAction.C:285
 msgid "Insert quote"
 msgstr "Vlo¾ení uvozovky"
 
-#: src/LyXAction.C:391
+#: src/LyXAction.C:287
 msgid "Reconfigure"
 msgstr "Rekonfigurace"
 
-#: src/LyXAction.C:393 src/lyx_cb.C:2094
+#: src/LyXAction.C:288 src/lyx_cb.C:2349
 msgid "Redo"
 msgstr "Opakovat"
 
-#: src/LyXAction.C:399
+#: src/LyXAction.C:292
 msgid "Insert cross reference"
 msgstr "Vlo¾ení odkazu"
 
-#: src/LyXAction.C:442 src/lyx_cb.C:2348
+#: src/LyXAction.C:314 src/lyx_cb.C:2687
 msgid "Insert Table"
 msgstr "Vlo¾ení tabulky"
 
-#: src/LyXAction.C:444
+#: src/LyXAction.C:315
 msgid "Toggle TeX style"
 msgstr "Pøepnutí stylu TeX"
 
-#: src/LyXAction.C:446
+#: src/LyXAction.C:317
 #, fuzzy
 msgid "Insert table of contents"
 msgstr "Obsah"
 
-#: src/LyXAction.C:448
+#: src/LyXAction.C:319
 #, fuzzy
 msgid "View table of contents"
 msgstr "Obsah"
 
-#: src/LyXAction.C:450
+#: src/LyXAction.C:321
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Pøepnutí kurzoru ne/kopíruje posuvník"
 
-#: src/LyXAction.C:457 src/lyx_cb.C:2074
+#: src/LyXAction.C:325 src/lyx_cb.C:2320
 msgid "Undo"
 msgstr "Zpìt"
 
-#: src/LyXAction.C:471
+#: src/LyXAction.C:333
 msgid "Register document under version control"
 msgstr ""
 
-#: src/LyXAction.C:692
+#: src/LyXAction.C:555
 msgid "No description available!"
 msgstr "®ádný popis není k dispozici!"
 
@@ -2067,448 +2071,448 @@ msgstr "Vlo¾ èíslo strany|#S"
 msgid "Go to Reference|#G"
 msgstr "Jdi na znaèku"
 
-#: src/lyx_cb.C:345
+#: src/lyx_cb.C:361
 msgid "Save failed. Rename and try again?"
 msgstr "Soubor se nepodaøilo ulo¾it. Pøejmenovat a zkusit znovu?"
 
-#: src/lyx_cb.C:347
+#: src/lyx_cb.C:363
 msgid "(If not, document is not saved.)"
 msgstr "(Pokud ne, dokument není ulo¾en.)"
 
-#: src/lyx_cb.C:367 src/lyxfunc.C:2540
+#: src/lyx_cb.C:387 src/lyxfunc.C:4656
 msgid "Templates"
 msgstr "©ablony"
 
-#: src/lyx_cb.C:372
+#: src/lyx_cb.C:392
 msgid "Enter Filename to Save Document as"
 msgstr "Zadejte jméno pod kterým má být dokument ulo¾en"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:379 src/lyxfunc.C:2546 src/lyxfunc.C:2573 src/lyxfunc.C:2638
-#: src/lyxfunc.C:2687 src/lyxfunc.C:2712 src/lyxfunc.C:2722 src/lyxfunc.C:2767
-#: src/lyxfunc.C:2792 src/lyxfunc.C:2802 src/lyxfunc.C:2861
+#: src/lyx_cb.C:399 src/lyxfunc.C:4662 src/lyxfunc.C:4689 src/lyxfunc.C:4754
+#: src/lyxfunc.C:4803 src/lyxfunc.C:4828 src/lyxfunc.C:4838 src/lyxfunc.C:4883
+#: src/lyxfunc.C:4908 src/lyxfunc.C:4918 src/lyxfunc.C:4977
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/lyx_cb.C:390
+#: src/lyx_cb.C:410
 msgid "Same name as document already has:"
 msgstr "Stejné jméno jako dokument u¾ má:"
 
-#: src/lyx_cb.C:392
+#: src/lyx_cb.C:412
 msgid "Save anyway?"
 msgstr "Pøesto ulo¾it?"
 
-#: src/lyx_cb.C:398
+#: src/lyx_cb.C:418
 msgid "Another document with same name open!"
 msgstr "Je otevøen jiný dokument stejného jména!"
 
-#: src/lyx_cb.C:400
+#: src/lyx_cb.C:420
 msgid "Replace with current document?"
 msgstr "Nahradit aktuálním?"
 
-#: src/lyx_cb.C:408
+#: src/lyx_cb.C:428
 msgid "Document renamed to '"
 msgstr "Dokument pøejmenován na '"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:430
 msgid "', but not saved..."
 msgstr "', ale neulo¾en..."
 
-#: src/lyx_cb.C:416
+#: src/lyx_cb.C:436
 msgid "Document already exists:"
 msgstr "Dokument u¾ existuje:"
 
-#: src/lyx_cb.C:418
+#: src/lyx_cb.C:438
 msgid "Replace file?"
 msgstr "Nahradit soubor?"
 
-#: src/lyx_cb.C:449 src/lyx_cb.C:479
+#: src/lyx_cb.C:469 src/lyx_cb.C:499
 msgid "One error detected"
 msgstr "Nalezena jedna chyba"
 
-#: src/lyx_cb.C:450 src/lyx_cb.C:480
+#: src/lyx_cb.C:470 src/lyx_cb.C:500
 msgid "You should try to fix it."
 msgstr "Mìl byste se ji pokusit opravit."
 
-#: src/lyx_cb.C:453 src/lyx_cb.C:483
+#: src/lyx_cb.C:473 src/lyx_cb.C:503
 msgid " errors detected."
 msgstr " chyb nalezeno."
 
-#: src/lyx_cb.C:454 src/lyx_cb.C:484
+#: src/lyx_cb.C:474 src/lyx_cb.C:504
 msgid "You should try to fix them."
 msgstr "Mìl byste se pokusit je opravit."
 
-#: src/lyx_cb.C:456
+#: src/lyx_cb.C:476
 msgid "There were errors during the LaTeX run."
 msgstr "Bìhem zpracování LaTeXem se vyskytly chyby."
 
-#: src/lyx_cb.C:469
+#: src/lyx_cb.C:489
 msgid "Wrong type of document"
 msgstr "©patný typ dokumentu"
 
-#: src/lyx_cb.C:470
+#: src/lyx_cb.C:490
 msgid "The Build operation is not allowed in this document"
 msgstr "Operace není povolena na tomto dokumentu"
 
-#: src/lyx_cb.C:471 src/lyx_cb.C:486
+#: src/lyx_cb.C:491 src/lyx_cb.C:506
 msgid "There were errors during the Build process."
 msgstr "Bìhem zpracování LaTeXem se vyskytly chyby."
 
-#: src/lyx_cb.C:497
+#: src/lyx_cb.C:517
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex se nedá pou¾ít pro dokumenty v SGML."
 
-#: src/lyx_cb.C:506
+#: src/lyx_cb.C:526
 msgid "No warnings found."
 msgstr "Bez varování."
 
-#: src/lyx_cb.C:508
+#: src/lyx_cb.C:528
 msgid "One warning found."
 msgstr "Vyskytlo se jedno varování."
 
-#: src/lyx_cb.C:509
+#: src/lyx_cb.C:529
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Pou¾ijte 'Úpravy->Jdi na chybu', abyste je na¹el."
 
-#: src/lyx_cb.C:512
+#: src/lyx_cb.C:532
 msgid " warnings found."
 msgstr " varování."
 
-#: src/lyx_cb.C:513
+#: src/lyx_cb.C:533
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Pou¾ijte 'Úpravy->Jdi na chybu', abyste je na¹el."
 
-#: src/lyx_cb.C:515
+#: src/lyx_cb.C:535
 msgid "Chktex run successfully"
 msgstr "Chktex probìhl v poøádku."
 
-#: src/lyx_cb.C:517
+#: src/lyx_cb.C:537
 msgid "It seems chktex does not work."
 msgstr "Zdá se, ¾e chktex nefunguje."
 
-#: src/lyx_cb.C:602 src/lyx_cb.C:605
+#: src/lyx_cb.C:628 src/lyx_cb.C:631
 msgid "Executing command:"
 msgstr "Provádím pøíkaz:"
 
-#: src/lyx_cb.C:824 src/lyx_cb.C:860 src/lyx_cb.C:893 src/lyx_cb.C:920
-#: src/lyxfunc.C:2582
+#: src/lyx_cb.C:874 src/lyx_cb.C:914 src/lyx_cb.C:951 src/lyx_cb.C:982
+#: src/lyxfunc.C:4698
 msgid "File already exists:"
 msgstr "Soubor u¾ existuje:"
 
-#: src/lyx_cb.C:826 src/lyx_cb.C:862 src/lyx_cb.C:895 src/lyx_cb.C:922
+#: src/lyx_cb.C:876 src/lyx_cb.C:916 src/lyx_cb.C:953 src/lyx_cb.C:984
 msgid "Do you want to overwrite the file?"
 msgstr "Chcete pøepsat obsah souboru?"
 
-#: src/lyx_cb.C:827 src/lyx_cb.C:863 src/lyx_cb.C:896 src/lyx_cb.C:923
+#: src/lyx_cb.C:877 src/lyx_cb.C:917 src/lyx_cb.C:954 src/lyx_cb.C:985
 msgid "Canceled"
 msgstr "Zru¹eno."
 
-#: src/lyx_cb.C:832
+#: src/lyx_cb.C:882
 msgid "DocBook does not have a latex backend"
 msgstr "DocBook nemá latexový výstup"
 
-#: src/lyx_cb.C:838
+#: src/lyx_cb.C:888
 msgid "Nice LaTeX file saved as"
 msgstr "Pøehledný soubor LaTeXu byl ulo¾en jako"
 
-#: src/lyx_cb.C:850
+#: src/lyx_cb.C:904
 msgid "Document class must be linuxdoc."
 msgstr "Tøída dokumentu musí být linuxdoc."
 
-#: src/lyx_cb.C:867
+#: src/lyx_cb.C:921
 msgid "Building LinuxDoc SGML file `"
 msgstr "Vytváøím LinuxDoc SGML soubor `"
 
-#: src/lyx_cb.C:872
+#: src/lyx_cb.C:926
 msgid "LinuxDoc SGML file save as"
 msgstr "LinuxDoc SGML soubor ulo¾ jako"
 
-#: src/lyx_cb.C:883
+#: src/lyx_cb.C:941
 msgid "Document class must be docbook."
 msgstr "Tøída dokumentu musí být docbook."
 
-#: src/lyx_cb.C:900
+#: src/lyx_cb.C:958
 msgid "Building DocBook SGML file `"
 msgstr "Vytváøím DocBook SGML soubor `"
 
-#: src/lyx_cb.C:905
+#: src/lyx_cb.C:963
 msgid "DocBook SGML file save as"
 msgstr "DocBook SGML soubor ulo¾ jako"
 
-#: src/lyx_cb.C:929
+#: src/lyx_cb.C:991
 msgid "Ascii file saved as"
 msgstr "Ascii soubor ulo¾en jako"
 
-#: src/lyx_cb.C:995
+#: src/lyx_cb.C:1060
 msgid "Autosaving current document..."
 msgstr "Automatické ukládání dokumentu..."
 
-#: src/lyx_cb.C:1035
+#: src/lyx_cb.C:1100
 msgid "Autosave Failed!"
 msgstr "Automatické ulo¾ení se nepovedlo!"
 
-#: src/lyx_cb.C:1091
+#: src/lyx_cb.C:1156
 msgid "File to Insert"
 msgstr "Soubor pro vlo¾ení"
 
-#: src/lyx_cb.C:1101
+#: src/lyx_cb.C:1166
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:1108
+#: src/lyx_cb.C:1173
 #, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Chyba! Nemohu otevøít specifikovaný soubor:"
 
-#: src/lyx_cb.C:1144
+#: src/lyx_cb.C:1220
 msgid "Table Of Contents"
 msgstr "Obsah"
 
-#: src/lyx_cb.C:1160 src/mathed/formula.C:1049
+#: src/lyx_cb.C:1236 src/mathed/formula.C:1050
 msgid "Enter new label to insert:"
 msgstr "Zadej novou znaèku"
 
-#: src/lyx_cb.C:1180
+#: src/lyx_cb.C:1256
 msgid "Insert Reference"
 msgstr "Vlo¾ odkaz na znaèku"
 
-#: src/lyx_cb.C:1214
+#: src/lyx_cb.C:1291
 msgid "Inserting Footnote..."
 msgstr "Vkládám poznámku pod èarou..."
 
 #. Import file
-#: src/lyx_cb.C:1277
+#: src/lyx_cb.C:1361
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Importuji soubor ve formátu LinuxDoc SGML `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1285
+#: src/lyx_cb.C:1369
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Konvertuji LinuxDoc do formátu LaTeX..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1292
+#: src/lyx_cb.C:1376
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Konvertuji LinuxDoc do formátu dvi..."
 
-#: src/lyx_cb.C:1345
+#: src/lyx_cb.C:1429
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Konvertuji DocBook do formátu dvi..."
 
-#: src/lyx_cb.C:1461
+#: src/lyx_cb.C:1567
 msgid "Character Style"
 msgstr "Písmo"
 
-#: src/lyx_cb.C:1667
+#: src/lyx_cb.C:1897
 msgid "Paragraph Environment"
 msgstr "Nastavení odstavce"
 
-#: src/lyx_cb.C:1922
+#: src/lyx_cb.C:2152
 msgid "Document Layout"
 msgstr "Formát dokumentu"
 
-#: src/lyx_cb.C:1961
+#: src/lyx_cb.C:2191
 msgid "Quotes"
 msgstr "Uvozovky"
 
-#: src/lyx_cb.C:2008
+#: src/lyx_cb.C:2238
 msgid "LaTeX Preamble"
 msgstr "Preambule LaTeXu"
 
-#: src/lyx_cb.C:2025
+#: src/lyx_cb.C:2255
 msgid "Do you want to save the current settings"
 msgstr "Chcete ulo¾it souèasná nastavení"
 
-#: src/lyx_cb.C:2026
+#: src/lyx_cb.C:2256
 msgid "for Character, Document, Paper and Quotes"
 msgstr "písma, dokumentu, formátu stránky a uvozovek"
 
-#: src/lyx_cb.C:2027
+#: src/lyx_cb.C:2257
 msgid "as default for new documents?"
 msgstr "jako implicitní?"
 
-#: src/lyx_cb.C:2043 src/lyx_cb.C:2056
+#: src/lyx_cb.C:2275 src/lyx_cb.C:2295
 msgid "Open/Close..."
 msgstr "Otevøení/zavøení..."
 
-#: src/lyx_cb.C:2079
+#: src/lyx_cb.C:2326 src/lyx_cb.C:2332
 msgid "No further undo information"
 msgstr "Není k dispozici dal¹í informace pro funkci Zpìt"
 
-#: src/lyx_cb.C:2089
+#: src/lyx_cb.C:2344
 msgid "Redo not yet supported in math mode"
 msgstr "Vrácení funkce zpìt je¹tì není v matematickém re¾imu podporováno."
 
-#: src/lyx_cb.C:2099
+#: src/lyx_cb.C:2355 src/lyx_cb.C:2361
 msgid "No further redo information"
 msgstr "Není k dispozici dal¹í informace pro vrácení funkce Zpìt."
 
-#: src/lyx_cb.C:2288
+#: src/lyx_cb.C:2593 src/lyx_cb.C:2613
 msgid "Font: "
 msgstr "Písmo: "
 
-#: src/lyx_cb.C:2292
+#: src/lyx_cb.C:2597 src/lyx_cb.C:2617
 msgid ", Depth: "
 msgstr ", Hloubka: "
 
-#: src/lyx_cb.C:2320
+#: src/lyx_cb.C:2653
 msgid "Inserting margin note..."
 msgstr "Vkládám poznámku na okraji..."
 
-#: src/lyx_cb.C:2361
+#: src/lyx_cb.C:2702 src/lyx_cb.C:2709
 msgid "Paragraph environment type copied"
 msgstr "Parametry odstavce zkopírovány"
 
-#: src/lyx_cb.C:2370
+#: src/lyx_cb.C:2721 src/lyx_cb.C:2725
 msgid "Paragraph environment type set"
 msgstr "Parametry odstavce nastaveny"
 
-#: src/lyx_cb.C:2461
+#: src/lyx_cb.C:2867
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Hloubka zanoøení zmìnìna (v mo¾ném rozsahu)"
 
-#: src/lyx_cb.C:2698
+#: src/lyx_cb.C:3117
 msgid "Paragraph layout set"
 msgstr "Formát odstavce nastaven."
 
-#: src/lyx_cb.C:2768
+#: src/lyx_cb.C:3187
 msgid "Should I set some parameters to"
 msgstr "Mám nìkteré parametry nastavit na"
 
-#: src/lyx_cb.C:2770
+#: src/lyx_cb.C:3189
 msgid "the defaults of this document class?"
 msgstr "inplicitní hodnoty této tøídy dokumentù?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2779 src/lyx_cb.C:2898 src/lyx_cb.C:2905
+#: src/lyx_cb.C:3198 src/lyx_cb.C:3326 src/lyx_cb.C:3333
 msgid "Conversion Errors!"
 msgstr "Chyby konverze!"
 
-#: src/lyx_cb.C:2780 src/lyx_cb.C:2906
+#: src/lyx_cb.C:3199 src/lyx_cb.C:3334
 msgid "Unable to switch to new document class."
 msgstr "Neleze pøepnout do vybrané tøídy dokumentu"
 
-#: src/lyx_cb.C:2781 src/lyx_cb.C:2907
+#: src/lyx_cb.C:3200 src/lyx_cb.C:3335
 msgid "Reverting to original document class."
 msgstr "Zpìt do pùvodní tøídy dokumentu"
 
-#: src/lyx_cb.C:2881
+#: src/lyx_cb.C:3300
 msgid "Converting document to new document class..."
 msgstr "Pøevádím dokument do nové tøídy dokumentù..."
 
-#: src/lyx_cb.C:2893
+#: src/lyx_cb.C:3321
 msgid "One paragraph couldn't be converted"
 msgstr "Jeden odstavec se nepodaøilo zkonvertovat"
 
-#: src/lyx_cb.C:2896
+#: src/lyx_cb.C:3324
 msgid " paragraphs couldn't be converted"
 msgstr " odstavce se nepodaøilo zkonvertovat"
 
-#: src/lyx_cb.C:2899
+#: src/lyx_cb.C:3327
 msgid "into chosen document class"
 msgstr "do vybrané tøídy dokumentu"
 
-#: src/lyx_cb.C:2985
+#: src/lyx_cb.C:3413
 msgid "Document layout set"
 msgstr "Formát dokumentu nastaven"
 
-#: src/lyx_cb.C:3035 src/lyx_cb.C:3039
+#: src/lyx_cb.C:3465 src/lyx_cb.C:3469 src/lyx_cb.C:3499 src/lyx_cb.C:3503
 msgid "No more notes"
 msgstr "®ádné dal¹í poznámky"
 
-#: src/lyx_cb.C:3070
+#: src/lyx_cb.C:3542
 msgid "Quotes type set"
 msgstr "Typ uvozovek nastaven"
 
-#: src/lyx_cb.C:3134
+#: src/lyx_cb.C:3606
 msgid "LaTeX preamble set"
 msgstr "Preambule LaTeXu nastavena"
 
-#: src/lyx_cb.C:3155
+#: src/lyx_cb.C:3628 src/lyx_cb.C:3706
 msgid "Cannot insert table in table."
 msgstr "Není mo¾né vlo¾it tabulku do tabulky."
 
-#: src/lyx_cb.C:3160
+#: src/lyx_cb.C:3633 src/lyx_cb.C:3711
 msgid "Inserting table..."
 msgstr "Vkládám tabulku..."
 
-#: src/lyx_cb.C:3222
+#: src/lyx_cb.C:3695 src/lyx_cb.C:3773
 msgid "Table inserted"
 msgstr "Tabulka vlo¾ena"
 
-#: src/lyx_cb.C:3278 src/lyx_cb.C:3296
+#: src/lyx_cb.C:3829 src/lyx_cb.C:3847
 msgid "ERROR!  Unable to print!"
 msgstr "CHYBA! Nemohu tisknout"
 
-#: src/lyx_cb.C:3279
+#: src/lyx_cb.C:3830
 msgid "Check 'range of pages'!"
 msgstr "Zkontroluje 'rozsah stran'!"
 
-#: src/lyx_cb.C:3297
+#: src/lyx_cb.C:3848
 msgid "Check 'number of copies'!"
 msgstr "Zkontrolujte 'poèet kopií'!"
 
-#: src/lyx_cb.C:3407
+#: src/lyx_cb.C:3957
 msgid "Error:"
 msgstr "Chyba:"
 
-#: src/lyx_cb.C:3408
+#: src/lyx_cb.C:3958
 msgid "Unable to print"
 msgstr "Nemohu tisknout"
 
-#: src/lyx_cb.C:3409
+#: src/lyx_cb.C:3959
 msgid "Check that your parameters are correct"
 msgstr "Zkontrolujte, zda jsou va¹e parametry správnì"
 
-#: src/lyx_cb.C:3431
+#: src/lyx_cb.C:3981 src/lyx_cb.C:4050
 msgid "Inserting figure..."
 msgstr "Vkládám obrázek..."
 
-#: src/lyx_cb.C:3436 src/lyx_cb.C:3487
+#: src/lyx_cb.C:3986 src/lyx_cb.C:4037 src/lyx_cb.C:4055 src/lyx_cb.C:4106
 msgid "Figure inserted"
 msgstr "Obrázek vlo¾en"
 
-#: src/lyx_cb.C:3517
+#: src/lyx_cb.C:4136
 msgid "Screen options set"
 msgstr "Parametry obrazovky nastaveny"
 
-#: src/lyx_cb.C:3547
+#: src/lyx_cb.C:4166
 msgid "LaTeX Options"
 msgstr "Volby LaTeXu"
 
-#: src/lyx_cb.C:3556
+#: src/lyx_cb.C:4175
 msgid "Running configure..."
 msgstr "Bì¾í configure..."
 
-#: src/lyx_cb.C:3563
+#: src/lyx_cb.C:4182
 msgid "Reloading configuration..."
 msgstr "Nové naètení konfigurace..."
 
-#: src/lyx_cb.C:3565
+#: src/lyx_cb.C:4184
 msgid "The system has been reconfigured."
 msgstr "Systém je pøekonfigurován."
 
-#: src/lyx_cb.C:3566
+#: src/lyx_cb.C:4185
 msgid "You need to restart LyX to make use of any"
 msgstr "Musíte LyX spustit znovu, aby jste mohl pou¾ívat"
 
-#: src/lyx_cb.C:3567
+#: src/lyx_cb.C:4186
 msgid "updated document class specifications."
 msgstr "upravené tøídy dokumentù."
 
-#: src/lyx_cb.C:3685
+#: src/lyx_cb.C:4358
 msgid "Couldn't find this label"
 msgstr "Nemohu tuto znaèku"
 
-#: src/lyx_cb.C:3686
+#: src/lyx_cb.C:4359
 msgid "in current document."
 msgstr "v aktuálním dokumentu nalézt."
 
-#: src/lyx_cb.C:3718
+#: src/lyx_cb.C:4391
 msgid "*** No Document ***"
 msgstr "*** ®ádný dokument ***"
 
-#: src/lyx_cb.C:3885
+#: src/lyx_cb.C:4556
 msgid "*** No labels found in document ***"
 msgstr "*** V dokumentu nebyly nalezeny ¾ádné znaèky ***"
 
@@ -2723,175 +2727,175 @@ msgstr "Matematika"
 msgid "Inset"
 msgstr "Objekt"
 
-#: src/lyxfont.C:358
+#: src/lyxfont.C:359
 msgid "Emphasis "
 msgstr "Zvýraznìní "
 
-#: src/lyxfont.C:360
+#: src/lyxfont.C:361
 msgid "Underline "
 msgstr "Podtr¾ení "
 
-#: src/lyxfont.C:362
+#: src/lyxfont.C:363
 msgid "Noun "
 msgstr "Slovo "
 
-#: src/lyxfont.C:364
+#: src/lyxfont.C:365
 msgid "Latex "
 msgstr "LaTeX "
 
-#: src/lyxfont.C:366
+#: src/lyxfont.C:367
 msgid "Default"
 msgstr "Implicitní "
 
-#: src/lyxfr1.C:154 src/lyxfr1.C:195
+#: src/lyxfr1.C:157 src/lyxfr1.C:213
 #, fuzzy
 msgid "Sorry!"
 msgstr "Lituji."
 
-#: src/lyxfr1.C:154 src/lyxfr1.C:195
+#: src/lyxfr1.C:157 src/lyxfr1.C:213
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ""
 
-#: src/lyxfr1.C:225 src/lyxfr1.C:274
+#: src/lyxfr1.C:263 src/lyxfr1.C:328
 #, fuzzy
 msgid "String not found!"
 msgstr "Znaková sada nenalezena!"
 
-#: src/lyxfr1.C:228
+#: src/lyxfr1.C:266
 #, fuzzy
 msgid "1 string has been replaced."
 msgstr "Systém je pøekonfigurován."
 
-#: src/lyxfr1.C:231
+#: src/lyxfr1.C:269
 msgid " strings have been replaced."
 msgstr ""
 
-#: src/lyxfr1.C:270
+#: src/lyxfr1.C:324
 #, fuzzy
 msgid "Found."
 msgstr "otevøen."
 
-#: src/lyxfunc.C:280
+#: src/lyxfunc.C:295
 msgid "Unknown sequence:"
 msgstr "Neznámá sekvence:"
 
-#: src/lyxfunc.C:323 src/lyxfunc.C:2489
+#: src/lyxfunc.C:338 src/lyxfunc.C:2521 src/lyxfunc.C:4605
 msgid "Unknown action"
 msgstr "Neznámá akce"
 
 #. no
-#: src/lyxfunc.C:337
+#: src/lyxfunc.C:352
 msgid "Document is read-only"
 msgstr "Dokument je pouze ke ètení"
 
 #. no
-#: src/lyxfunc.C:342
+#: src/lyxfunc.C:357
 msgid "Command not allowed without any document open"
 msgstr "Pøíkaz není povolen pokud není otevøen dokument"
 
-#: src/lyxfunc.C:560
+#: src/lyxfunc.C:586 src/lyxfunc.C:2669
 msgid "Text mode"
 msgstr "Textový re¾im"
 
-#: src/lyxfunc.C:811
+#: src/lyxfunc.C:837 src/lyxfunc.C:2920
 msgid "Document exported as HTML to file `"
 msgstr ""
 
-#: src/lyxfunc.C:814
+#: src/lyxfunc.C:840 src/lyxfunc.C:2923
 #, fuzzy
 msgid "Unable to convert to HTML the file `"
 msgstr "Nemohu èíst soubor!"
 
-#: src/lyxfunc.C:820
+#: src/lyxfunc.C:846 src/lyxfunc.C:2929
 msgid "Unknown export type: "
 msgstr "Neznámý typ exportu: "
 
-#: src/lyxfunc.C:844
+#: src/lyxfunc.C:870 src/lyxfunc.C:2953
 msgid "Unknown import type: "
 msgstr "Neznámý typ importu: "
 
-#: src/lyxfunc.C:1173
+#: src/lyxfunc.C:1199 src/lyxfunc.C:3282
 msgid "Layout "
 msgstr "Formát "
 
-#: src/lyxfunc.C:1174
+#: src/lyxfunc.C:1200 src/lyxfunc.C:3283
 msgid " not known"
 msgstr " není znám"
 
-#: src/lyxfunc.C:1316
+#: src/lyxfunc.C:1342 src/lyxfunc.C:3425
 msgid "No cross-reference to toggle"
 msgstr "Nejsou k dispozici odkazy pro pøepnutí"
 
-#: src/lyxfunc.C:1668
+#: src/lyxfunc.C:1693 src/lyxfunc.C:3777
 msgid "Mark removed"
 msgstr "Znaèka odstranìna"
 
-#: src/lyxfunc.C:1673
+#: src/lyxfunc.C:1698 src/lyxfunc.C:3782
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1801 src/lyxfunc.C:3885
 msgid "Mark off"
 msgstr "Znaèka vypnuta"
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1811 src/lyxfunc.C:3895
 msgid "Mark on"
 msgstr "Znaèka zapnuta"
 
-#: src/lyxfunc.C:2087
+#: src/lyxfunc.C:2112 src/lyxfunc.C:4196
 msgid "Push-toolbar needs argument > 0"
 msgstr "Push-toolbar potøebuje parametr > 0"
 
-#: src/lyxfunc.C:2105
+#: src/lyxfunc.C:2130 src/lyxfunc.C:4214
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Pou¾ití: toolbar-add-to <pøíkaz LyXu>"
 
-#: src/lyxfunc.C:2129 src/mathed/formula.C:873
+#: src/lyxfunc.C:2154 src/lyxfunc.C:4238 src/mathed/formula.C:874
 msgid "Math greek mode on"
 msgstr "Je aktivován re¾im øeckých písmen"
 
-#: src/lyxfunc.C:2140 src/mathed/formula.C:884
+#: src/lyxfunc.C:2165 src/lyxfunc.C:4249 src/mathed/formula.C:885
 msgid "Math greek keyboard on"
 msgstr "Je aktivován re¾im øecké klávesnice"
 
-#: src/lyxfunc.C:2142 src/mathed/formula.C:886
+#: src/lyxfunc.C:2167 src/lyxfunc.C:4251 src/mathed/formula.C:887
 msgid "Math greek keyboard off"
 msgstr "Re¾im øecké klávesnice je deaktivován"
 
-#: src/lyxfunc.C:2177
+#: src/lyxfunc.C:2202 src/lyxfunc.C:4286
 msgid "Missing argument"
 msgstr "Chybìjící parametr"
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2193 src/mathed/formula.h:73
+#: src/lyxfunc.C:2218 src/lyxfunc.C:4302 src/mathed/formula.h:73
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/lyxfunc.C:2200
+#: src/lyxfunc.C:2225 src/lyxfunc.C:4309
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povoleno pouze v matematickém re¾imu!"
 
-#: src/lyxfunc.C:2354
+#: src/lyxfunc.C:2379 src/lyxfunc.C:4463
 msgid "Opening child document "
 msgstr "Otvírám podøízený dokument "
 
-#: src/lyxfunc.C:2386
+#: src/lyxfunc.C:2411 src/lyxfunc.C:4495
 msgid "Unknown kind of footnote"
 msgstr "Neznámý typ poznámky pod èarou"
 
-#: src/lyxfunc.C:2448
+#: src/lyxfunc.C:2480 src/lyxfunc.C:4564
 msgid "Document is read only"
 msgstr "Dokument je pouze ke ètení"
 
-#: src/lyxfunc.C:2541
+#: src/lyxfunc.C:4657
 msgid "Enter Filename for new document"
 msgstr "Zadejte jméno nového dokumentu"
 
-#: src/lyxfunc.C:2542
+#: src/lyxfunc.C:4658
 msgid "newfile"
 msgstr "novy"
 
-#: src/lyxfunc.C:2561 src/lyxfunc.C:2700 src/lyxfunc.C:2779
+#: src/lyxfunc.C:4677 src/lyxfunc.C:4816 src/lyxfunc.C:4895
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2899,105 +2903,105 @@ msgstr ""
 "Chcete teï uzavøít tento dokument?\n"
 "('Ne' pouze pøepne do otevøené verze)"
 
-#: src/lyxfunc.C:2584
+#: src/lyxfunc.C:4700
 msgid "Do you want to open the document?"
 msgstr "Chcete otevøít dokument?"
 
 #. loads document
-#: src/lyxfunc.C:2586 src/lyxfunc.C:2649
+#: src/lyxfunc.C:4702 src/lyxfunc.C:4765
 msgid "Opening document"
 msgstr "Vkládám dokument"
 
-#: src/lyxfunc.C:2593 src/lyxfunc.C:2656
+#: src/lyxfunc.C:4709 src/lyxfunc.C:4772
 msgid "opened."
 msgstr "otevøen."
 
-#: src/lyxfunc.C:2602
+#: src/lyxfunc.C:4718
 msgid "Choose template"
 msgstr "Vyberte ¹ablonu"
 
-#: src/lyxfunc.C:2630 src/lyxfunc.C:2679 src/lyxfunc.C:2752 src/lyxfunc.C:2853
+#: src/lyxfunc.C:4746 src/lyxfunc.C:4795 src/lyxfunc.C:4868 src/lyxfunc.C:4969
 msgid "Examples"
 msgstr "Pøíklady"
 
-#: src/lyxfunc.C:2632
+#: src/lyxfunc.C:4748
 msgid "Select Document to Open"
 msgstr "Vyberte dokument, který chcete naèíst"
 
-#: src/lyxfunc.C:2658
+#: src/lyxfunc.C:4774
 msgid "Could not open document"
 msgstr "Nemohu otevøít dokument"
 
-#: src/lyxfunc.C:2681
+#: src/lyxfunc.C:4797
 msgid "Select ASCII file to Import"
 msgstr "Zvolte ASCII soubor pro import"
 
-#: src/lyxfunc.C:2719 src/lyxfunc.C:2799
+#: src/lyxfunc.C:4835 src/lyxfunc.C:4915
 msgid "A document by the name"
 msgstr "Je otevøen jiný dokument stejného jména!"
 
-#: src/lyxfunc.C:2721 src/lyxfunc.C:2801
+#: src/lyxfunc.C:4837 src/lyxfunc.C:4917
 msgid "already exists. Overwrite?"
 msgstr "Pøepsat?"
 
-#: src/lyxfunc.C:2727
+#: src/lyxfunc.C:4843
 msgid "Importing ASCII file"
 msgstr "Importuji ASCII soubor"
 
-#: src/lyxfunc.C:2731
+#: src/lyxfunc.C:4847
 msgid "ASCII file "
 msgstr "soubor ASCII "
 
-#: src/lyxfunc.C:2733 src/lyxfunc.C:2824
+#: src/lyxfunc.C:4849 src/lyxfunc.C:4940
 msgid "imported."
 msgstr "vlo¾en."
 
-#: src/lyxfunc.C:2756
+#: src/lyxfunc.C:4872
 msgid "Select Noweb file to Import"
 msgstr "Zvolte soubor Noweb pro import"
 
-#: src/lyxfunc.C:2759
+#: src/lyxfunc.C:4875
 msgid "Select LaTeX file to Import"
 msgstr "Zvolte soubor LaTeX pro import"
 
-#: src/lyxfunc.C:2809
+#: src/lyxfunc.C:4925
 msgid "Importing LaTeX file"
 msgstr "Importuji LaTeX soubor"
 
-#: src/lyxfunc.C:2814
+#: src/lyxfunc.C:4930
 msgid "Importing Noweb file"
 msgstr "Importuji Noweb soubor"
 
-#: src/lyxfunc.C:2822
+#: src/lyxfunc.C:4938
 msgid "Noweb file "
 msgstr "Soubor Noweb"
 
-#: src/lyxfunc.C:2822
+#: src/lyxfunc.C:4938
 msgid "LateX file "
 msgstr "Soubor LaTeX"
 
-#: src/lyxfunc.C:2827
+#: src/lyxfunc.C:4943
 msgid "Could not import Noweb file"
 msgstr "Nemohu naèíst soubor Nowebu"
 
-#: src/lyxfunc.C:2828
+#: src/lyxfunc.C:4944
 msgid "Could not import LaTeX file"
 msgstr "Nemohu naèíst soubor LaTeXu"
 
-#: src/lyxfunc.C:2855
+#: src/lyxfunc.C:4971
 msgid "Select Document to Insert"
 msgstr "Vyberte dokument, který chcete vlo¾it"
 
 #. Inserts document
-#: src/lyxfunc.C:2873
+#: src/lyxfunc.C:4989
 msgid "Inserting document"
 msgstr "Vkládám dokument"
 
-#: src/lyxfunc.C:2879
+#: src/lyxfunc.C:4995
 msgid "inserted."
 msgstr "vlo¾en."
 
-#: src/lyxfunc.C:2881
+#: src/lyxfunc.C:4997
 msgid "Could not insert document"
 msgstr "Nemohu vlo¾it dokument"
 
@@ -3095,107 +3099,107 @@ msgstr "V¹echny zmìny se budou ignorovat"
 msgid "The document is read-only:"
 msgstr "Dokument je pouze ke ètení:"
 
-#: src/lyx_main.C:167
+#: src/lyx_main.C:177
 msgid "Warning: could not determine path of binary."
 msgstr "Varování: nemohu najít cestu k binárnímu souboru."
 
-#: src/lyx_main.C:169
+#: src/lyx_main.C:179
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Jestli¾e máte tyto problémy, zkuste startoval LyX s absolutní cestou."
 
-#: src/lyx_main.C:260
+#: src/lyx_main.C:269
 #, fuzzy
 msgid "LYX_DIR_11x environment variable no good."
 msgstr "Promìnná prostøedí LYX_DIR_10x není dobøe nastavena"
 
-#: src/lyx_main.C:262
+#: src/lyx_main.C:271
 msgid "System directory set to: "
 msgstr "Systémový adresáø nastaven na: "
 
-#: src/lyx_main.C:270
+#: src/lyx_main.C:279
 msgid "LyX Warning! Couldn't determine system directory."
 msgstr "Varování! Nemohu otevøít systémový adresáø."
 
-#: src/lyx_main.C:271
+#: src/lyx_main.C:280
 msgid "Try the '-sysdir' command line parameter or"
 msgstr "Pou¾ijte pøepínaè -sysdir nebo"
 
-#: src/lyx_main.C:272
+#: src/lyx_main.C:281
 #, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
 msgstr "nastavte promìnnou prostøedí LYX_DIR_10x na adresáø s LyXem"
 
-#: src/lyx_main.C:274
+#: src/lyx_main.C:283
 msgid "containing the file `chkconfig.ltx'."
 msgstr "obsahujícím soubor `chkconfig.ltx'."
 
-#: src/lyx_main.C:276
+#: src/lyx_main.C:285
 msgid "Using built-in default "
 msgstr "Pou¾ijí se implicitní hodnoty."
 
-#: src/lyx_main.C:277
+#: src/lyx_main.C:286
 msgid " but expect problems."
 msgstr " ale oèekávejte problémy."
 
-#: src/lyx_main.C:280
+#: src/lyx_main.C:289
 msgid "Expect problems."
 msgstr "Oèekávejte problémy."
 
 #. Nope
-#: src/lyx_main.C:379
+#: src/lyx_main.C:388
 msgid "You don't have a personal LyX directory."
 msgstr "Nemáte vytvoøen osobní adresáø LyXu."
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:389
 msgid "It is needed to keep your own configuration."
 msgstr "Potøebujete ho pro uchování va¹eho nastavení."
 
-#: src/lyx_main.C:381
+#: src/lyx_main.C:390
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Mám ho pro vás vytvoøit (doporuèeno)"
 
-#: src/lyx_main.C:382
+#: src/lyx_main.C:391
 msgid "Running without personal LyX directory."
 msgstr "Nemáte vytvoøen osobní adresáø LyXu."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:389
+#: src/lyx_main.C:398
 msgid "LyX: Creating directory "
 msgstr "LyX: Vytváøím adresáø "
 
-#: src/lyx_main.C:390
+#: src/lyx_main.C:399
 msgid " and running configure..."
 msgstr " a spou¹tím konfiguraci..."
 
-#: src/lyx_main.C:396
+#: src/lyx_main.C:405
 msgid "Failed. Will use "
 msgstr "Ukonèenou chybou. Místo toho bude pou¾it "
 
-#: src/lyx_main.C:397
+#: src/lyx_main.C:406
 msgid " instead."
 msgstr "."
 
-#: src/lyx_main.C:404
+#: src/lyx_main.C:413
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:418
+#: src/lyx_main.C:427
 msgid "LyX Warning!"
 msgstr "Varování LyXu!"
 
-#: src/lyx_main.C:419
+#: src/lyx_main.C:428
 msgid "Error while reading "
 msgstr "Chyba pøi ètení "
 
-#: src/lyx_main.C:420
+#: src/lyx_main.C:429
 msgid "Using built-in defaults."
 msgstr "Pou¾ijí se implicitní hodnoty."
 
-#: src/lyx_main.C:430
+#: src/lyx_main.C:439
 msgid "Setting debug level to "
 msgstr "Nastavují debug level na "
 
-#: src/lyx_main.C:453
+#: src/lyx_main.C:450
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -3205,8 +3209,9 @@ msgid ""
 "\t-height y       set the height of the main window\n"
 "\t-xpos x         set the x position of the main window\n"
 "\t-ypos y         set the y position of the main window\n"
-"\t-dbg n          where n is a sum of debugging options. Try -dbg 65535 "
-"-help\n"
+"\t-dbg feature[,feature]...\n"
+"                  select the features to debug.\n"
+"                  Type `lyx -dbg' to see the list of features\n"
 "\t-Reverse        swaps foreground & background colors\n"
 "\t-Mono           runs LyX in black and white mode\n"
 "\t-FastSelection  use a fast routine for drawing selections\n"
@@ -3214,13 +3219,35 @@ msgid ""
 "Check the LyX man page for more options."
 msgstr ""
 
-#: src/lyx_main.C:486
-msgid "Missing number for -dbg switch!"
-msgstr "Chybí èíslo pro pøepínaè -dbg!"
+#: src/lyx_main.C:485
+msgid "List of supported debug flags:"
+msgstr ""
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:504
 msgid "Missing directory for -sysdir switch!"
 msgstr "Chybí adresáø pro pøepínaè -switch!"
+
+#: src/lyx_main.C:530
+#, fuzzy
+msgid "Missing command string after  -x switch!"
+msgstr "Chybí èíslo pro pøepínaè -dbg!"
+
+#: src/lyx_main.C:556
+#, fuzzy
+msgid "Unknown file type '"
+msgstr "Neznámý typ exportu: "
+
+#: src/lyx_main.C:557
+msgid "' after "
+msgstr ""
+
+#: src/lyx_main.C:558 src/lyx_main.C:563
+msgid " switch!"
+msgstr ""
+
+#: src/lyx_main.C:561
+msgid "Missing file type [eg latex, ps...] after "
+msgstr ""
 
 #: src/lyx_sendfax.C:21
 msgid "Fax no.:|#F"
@@ -3356,31 +3383,31 @@ msgstr "®ádná historie RCS!"
 msgid "VC History"
 msgstr "RCS historie"
 
-#: src/LyXView.C:371 src/minibuffer.C:218
+#: src/LyXView.C:379 src/minibuffer.C:218
 msgid " (Changed)"
 msgstr "(zmìneno)"
 
-#: src/LyXView.C:373
+#: src/LyXView.C:381
 msgid " (read only)"
 msgstr "(pouze ke ètení)"
 
-#: src/mathed/formula.C:901 src/mathed/formula.C:1188
+#: src/mathed/formula.C:902 src/mathed/formula.C:1193
 msgid "TeX mode"
 msgstr "Re¾im TeXu"
 
-#: src/mathed/formula.C:916
+#: src/mathed/formula.C:917
 msgid "No number"
 msgstr "Toto není èíslo"
 
-#: src/mathed/formula.C:919
+#: src/mathed/formula.C:920
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/formula.C:1077
+#: src/mathed/formula.C:1078
 msgid "math text mode"
 msgstr "matematický re¾im textu"
 
-#: src/mathed/formula.C:1086
+#: src/mathed/formula.C:1087
 msgid "Invalid action in math mode!"
 msgstr "Tato akce je v matematickém re¾imu neplatná!"
 
@@ -3486,11 +3513,11 @@ msgstr "Mezery"
 msgid "Matrix"
 msgstr "Matice"
 
-#: src/mathed/math_panel.C:313
+#: src/mathed/math_panel.C:312
 msgid "Top | Center | Bottom"
 msgstr "Nahoøe | Uprostøed | Dole"
 
-#: src/mathed/math_panel.C:365
+#: src/mathed/math_panel.C:364
 msgid "Math Panel"
 msgstr "Matematický panel"
 
@@ -3731,7 +3758,7 @@ msgstr ""
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
 msgstr "Nový...|Nový podle ¹ablony...|Otevøít...%l|Importovat%m%l|Ukonèit%l"
 
-#: src/menus.C:818
+#: src/menus.C:818 src/menus.C:1139
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
@@ -3741,265 +3768,265 @@ msgstr ""
 "poznámek%x23|Uzavøení v¹ech poznámek%x24|Otevøení v¹ech objektù%x25|Uzavøení "
 "v¹ech objektù%x26%l|Odstranìní v¹ech chybových hlá¹ení%x27"
 
-#: src/menus.C:827
+#: src/menus.C:827 src/menus.C:1148
 msgid "EMF|Oo#o#O"
 msgstr "EMF|Oo#o#O"
 
-#: src/menus.C:828
+#: src/menus.C:828 src/menus.C:1149
 msgid "EMF|Mm#m#M"
 msgstr "EMF|Mm#m#M"
 
-#: src/menus.C:829
+#: src/menus.C:829 src/menus.C:1150
 msgid "EMF|Aa#a#A"
 msgstr "EMF|Aa#a#A"
 
-#: src/menus.C:830
+#: src/menus.C:830 src/menus.C:1151
 msgid "EMF|Cc#c#C"
 msgstr "EMF|Cc#c#C"
 
-#: src/menus.C:831
+#: src/menus.C:831 src/menus.C:1152
 msgid "EMF|Ff#f#F"
 msgstr "EMF|Ff#f#F"
 
-#: src/menus.C:832
+#: src/menus.C:832 src/menus.C:1153
 msgid "EMF|Tt#t#T"
 msgstr "EMF|Tt#t#T"
 
-#: src/menus.C:833
+#: src/menus.C:833 src/menus.C:1154
 msgid "EMF|Rr#r#R"
 msgstr "EMF|Rr#r#R"
 
-#: src/menus.C:841 src/menus.C:939
+#: src/menus.C:841 src/menus.C:939 src/menus.C:1162 src/menus.C:1260
 msgid "Table%t"
 msgstr "Tabulka%t"
 
-#: src/menus.C:849
+#: src/menus.C:849 src/menus.C:1170
 msgid "|Multicolumn%B%x44%l"
 msgstr "|Vícesloupcový%B%44%l"
 
-#: src/menus.C:851
+#: src/menus.C:851 src/menus.C:1172
 msgid "|Multicolumn%b%x44%l"
 msgstr "|Vícesloupcový%b%44%l"
 
-#: src/menus.C:852
+#: src/menus.C:852 src/menus.C:1173
 msgid "EMT|Mm#m#M"
 msgstr "EMT|Mm#m#M"
 
-#: src/menus.C:860
+#: src/menus.C:860 src/menus.C:1181
 msgid "|Line Top%B%x36"
 msgstr "|Linka nahoøe%B%x36"
 
-#: src/menus.C:862
+#: src/menus.C:862 src/menus.C:1183
 msgid "|Line Top%b%x36"
 msgstr "|Linka nahoøe%b%x36"
 
-#: src/menus.C:863
+#: src/menus.C:863 src/menus.C:1184
 msgid "EMT|Tt#t#T"
 msgstr "EMT|Tt#t#T"
 
-#: src/menus.C:871
+#: src/menus.C:871 src/menus.C:1192
 msgid "|Line Bottom%B%x37"
 msgstr "|Linka dole%B%x37"
 
-#: src/menus.C:873
+#: src/menus.C:873 src/menus.C:1194
 msgid "|Line Bottom%b%x37"
 msgstr "|Linka dole%b%x37"
 
-#: src/menus.C:874
+#: src/menus.C:874 src/menus.C:1195
 msgid "EMT|Bb#b#B"
 msgstr "EMT|Bb#b#B"
 
-#: src/menus.C:882
+#: src/menus.C:882 src/menus.C:1203
 msgid "|Line Left%B%x38"
 msgstr "|Linka vlevo%B%x38"
 
-#: src/menus.C:884
+#: src/menus.C:884 src/menus.C:1205
 msgid "|Line Left%b%x38"
 msgstr "|Linka vlevo%b%x38"
 
-#: src/menus.C:885
+#: src/menus.C:885 src/menus.C:1206
 msgid "EMT|Ll#l#L"
 msgstr "EMT|Ll#l#L"
 
-#: src/menus.C:893
+#: src/menus.C:893 src/menus.C:1214
 msgid "|Line Right%B%x39%l"
 msgstr "|Linka vpravo%B%x39%l"
 
-#: src/menus.C:895
+#: src/menus.C:895 src/menus.C:1216
 msgid "|Line Right%b%x39%l"
 msgstr "|Linka vpravo%b%x39%l"
 
-#: src/menus.C:896
+#: src/menus.C:896 src/menus.C:1217
 msgid "EMT|Rr#r#R"
 msgstr "EMT|Rr#r#R"
 
-#: src/menus.C:905
+#: src/menus.C:905 src/menus.C:1226
 msgid "|Align Left%R%x40"
 msgstr "|Zarovnání vlevo%R%x40"
 
-#: src/menus.C:907
+#: src/menus.C:907 src/menus.C:1228
 msgid "|Align Left%r%x40"
 msgstr "|Zarovnání vlevo%r%x40"
 
-#: src/menus.C:908
+#: src/menus.C:908 src/menus.C:1229
 msgid "EMT|eE#e#E"
 msgstr "EMT|eE#e#E"
 
-#: src/menus.C:911
+#: src/menus.C:911 src/menus.C:1232
 msgid "|Align Right%R%x41"
 msgstr "|Zarovnání vpravo%R%x41"
 
-#: src/menus.C:913
+#: src/menus.C:913 src/menus.C:1234
 msgid "|Align Right%r%x41"
 msgstr "|Zarovnání vpravo%r%x41"
 
-#: src/menus.C:914
+#: src/menus.C:914 src/menus.C:1235
 msgid "EMT|iI#i#I"
 msgstr "EMT|iI#i#I"
 
-#: src/menus.C:917
+#: src/menus.C:917 src/menus.C:1238
 msgid "|Align Center%R%x42%l"
 msgstr "|Zarovnání na støed%R%x42%l"
 
-#: src/menus.C:919
+#: src/menus.C:919 src/menus.C:1240
 msgid "|Align Center%r%x42%l"
 msgstr "|Zarovnání na støed%r%x42%l"
 
-#: src/menus.C:920
+#: src/menus.C:920 src/menus.C:1241
 msgid "EMT|Cc#c#C"
 msgstr "EMT|Cc#c#C"
 
-#: src/menus.C:923
+#: src/menus.C:923 src/menus.C:1244
 #, no-c-format
 msgid "|Append Row%x32"
 msgstr "|Pøidání øádku%x32"
 
-#: src/menus.C:924
+#: src/menus.C:924 src/menus.C:1245
 msgid "EMT|oO#o#O"
 msgstr "EMT|oO#o#O"
 
-#: src/menus.C:926
+#: src/menus.C:926 src/menus.C:1247
 #, no-c-format
 msgid "|Append Column%x33%l"
 msgstr "|Pøidání sloupce%x33%l"
 
-#: src/menus.C:927
+#: src/menus.C:927 src/menus.C:1248
 msgid "EMT|uU#u#U"
 msgstr "EMT|uU#u#U"
 
-#: src/menus.C:929
+#: src/menus.C:929 src/menus.C:1250
 #, no-c-format
 msgid "|Delete Row%x34"
 msgstr "|Vymazání øádku%x34"
 
-#: src/menus.C:930
+#: src/menus.C:930 src/menus.C:1251
 msgid "EMT|wW#w#W"
 msgstr "EMT|wW#w#W"
 
-#: src/menus.C:932
+#: src/menus.C:932 src/menus.C:1253
 #, no-c-format
 msgid "|Delete Column%x35%l"
 msgstr "|Vymazání sloupce%x35%l"
 
-#: src/menus.C:933
+#: src/menus.C:933 src/menus.C:1254
 msgid "EMT|nN#n#N"
 msgstr "EMT|nN#n#N"
 
-#: src/menus.C:935
+#: src/menus.C:935 src/menus.C:1256
 #, no-c-format
 msgid "|Delete Table%x43"
 msgstr "|Vymazání tabulky%x31"
 
-#: src/menus.C:936
+#: src/menus.C:936 src/menus.C:1257
 msgid "EMT|Dd#d#D"
 msgstr "EMT|Dd#d#D"
 
-#: src/menus.C:941
+#: src/menus.C:941 src/menus.C:1262
 #, no-c-format
 msgid "|Insert table%x31"
 msgstr "|Vlo¾ení tabulky%x31"
 
-#: src/menus.C:942
+#: src/menus.C:942 src/menus.C:1263
 msgid "EMT|Ii#i#I"
 msgstr "EMT|Ii#i#I"
 
-#: src/menus.C:946
+#: src/menus.C:946 src/menus.C:1267
 msgid "Version Control%t"
 msgstr "Správa verzí%t"
 
-#: src/menus.C:949
+#: src/menus.C:949 src/menus.C:1270
 #, no-c-format
 msgid "|Register%d%x51"
 msgstr "|Registrace%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:953
+#: src/menus.C:953 src/menus.C:1274
 #, no-c-format
 msgid "|Check In Changes%d%x52"
 msgstr "|Zapi¹ zmìny%d%x52"
 
-#: src/menus.C:955
+#: src/menus.C:955 src/menus.C:1276
 #, no-c-format
 msgid "|Check Out for Edit%x53"
 msgstr "|Vyjmi pro editaci%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:959
+#: src/menus.C:959 src/menus.C:1280
 #, no-c-format
 msgid "|Check In Changes%x52"
 msgstr "|Zapi¹ zmìny%x52"
 
-#: src/menus.C:961
+#: src/menus.C:961 src/menus.C:1282
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
 msgstr "|Vyjmi pro editaci%d%x53"
 
-#: src/menus.C:964
+#: src/menus.C:964 src/menus.C:1285
 #, no-c-format
 msgid "|Revert to last version%x54"
 msgstr "|Návrat k poslední verzi%x54"
 
-#: src/menus.C:966
+#: src/menus.C:966 src/menus.C:1287
 #, no-c-format
 msgid "|Undo last check in%x55"
 msgstr "|Zru¹ení posledního zápisu%x55"
 
-#: src/menus.C:968
+#: src/menus.C:968 src/menus.C:1289
 #, no-c-format
 msgid "|Show History%x56"
 msgstr "|Uka¾ historii%x56"
 
-#: src/menus.C:971
+#: src/menus.C:971 src/menus.C:1292
 #, no-c-format
 msgid "|Register%x51"
 msgstr "|Registrace%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:974
+#: src/menus.C:974 src/menus.C:1295
 msgid "EMV|Rr#r#R"
 msgstr "EMV|Rr#r#R"
 
-#: src/menus.C:975
+#: src/menus.C:975 src/menus.C:1296
 msgid "EMV|Ii#i#I"
 msgstr "EMV|Ii#i#I"
 
-#: src/menus.C:976
+#: src/menus.C:976 src/menus.C:1297
 msgid "EMV|Oo#o#O"
 msgstr "EMV|Oo#o#O"
 
-#: src/menus.C:977
+#: src/menus.C:977 src/menus.C:1298
 msgid "EMV|lL#l#l"
 msgstr "EMV|lL#l#l"
 
-#: src/menus.C:978
+#: src/menus.C:978 src/menus.C:1299
 msgid "EMV|Uu#u#U"
 msgstr "EMV|Uu#u#U"
 
-#: src/menus.C:979
+#: src/menus.C:979 src/menus.C:1300
 msgid "EMV|Hh#h#H"
 msgstr "EMV|Hh#h#H"
 
-#: src/menus.C:982
+#: src/menus.C:982 src/menus.C:1303
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4012,75 +4039,75 @@ msgstr ""
 "verzí%m%l|Zobrazení zpráv LaTeXu%l|Vlo¾ vybraný text jako øádky|Vlo¾ vybraný "
 "text jako odstavce"
 
-#: src/menus.C:1001
+#: src/menus.C:1001 src/menus.C:1322
 msgid "EM|Uu#u#U"
 msgstr "EM|Uu#u#U"
 
-#: src/menus.C:1002
+#: src/menus.C:1002 src/menus.C:1323
 msgid "EM|Rr#r#R"
 msgstr "EM|Rr#r#R"
 
-#: src/menus.C:1003
+#: src/menus.C:1003 src/menus.C:1324
 msgid "EM|Cc#c#C"
 msgstr "EM|Cc#c#C"
 
-#: src/menus.C:1004
+#: src/menus.C:1004 src/menus.C:1325
 msgid "EM|oO#o#O"
 msgstr "EM|oO#o#O"
 
-#: src/menus.C:1005
+#: src/menus.C:1005 src/menus.C:1326
 msgid "EM|Pp#p#P"
 msgstr "EM|Pp#p#P"
 
-#: src/menus.C:1006
+#: src/menus.C:1006 src/menus.C:1327
 msgid "EM|Ff#f#F"
 msgstr "EM|Ff#f#F"
 
-#: src/menus.C:1007
+#: src/menus.C:1007 src/menus.C:1328
 msgid "EM|Ee#e#E"
 msgstr "EM|Ee#e#E"
 
-#: src/menus.C:1008
+#: src/menus.C:1008 src/menus.C:1329
 msgid "EM|Nn#n#N"
 msgstr "EM|Nn#n#N"
 
-#: src/menus.C:1009
+#: src/menus.C:1009 src/menus.C:1330
 msgid "EM|Ii#i#I"
 msgstr "EM|Ii#i#I"
 
-#: src/menus.C:1010
+#: src/menus.C:1010 src/menus.C:1331
 msgid "EM|Tt#t#T"
 msgstr "EM|Tt#t#T"
 
-#: src/menus.C:1011
+#: src/menus.C:1011 src/menus.C:1332
 msgid "EM|Ss#s#S"
 msgstr "EM|Ss#s#S"
 
-#: src/menus.C:1012
+#: src/menus.C:1012 src/menus.C:1333
 msgid "EM|hH#h#H"
 msgstr "EM|hH#h#H"
 
-#: src/menus.C:1013
+#: src/menus.C:1013 src/menus.C:1334
 msgid "EM|aA#a#A"
 msgstr "EM|aA#a#A"
 
-#: src/menus.C:1014
+#: src/menus.C:1014 src/menus.C:1335
 msgid "EM|Vv#v#V"
 msgstr "EM|Vv#v#V"
 
-#: src/menus.C:1015
+#: src/menus.C:1015 src/menus.C:1336
 msgid "EM|wW#w#W"
 msgstr "EM|wW#w#W"
 
-#: src/menus.C:1016
+#: src/menus.C:1016 src/menus.C:1337
 msgid "EM|Ll#l#L"
 msgstr "EM|Ll#l#L"
 
-#: src/menus.C:1017
+#: src/menus.C:1017 src/menus.C:1338
 msgid "EM|gG#g#G"
 msgstr "EM|gG#g#G"
 
-#: src/menus.C:1142
+#: src/menus.C:1464
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
@@ -4090,71 +4117,71 @@ msgstr ""
 "ní%b|Jméno%b|Tuènì%b|TeX%b|Zmìò hloubku zanoøení|Preambule LaTeXu...%l|Ulo¾ "
 "nastavení jako implicitní"
 
-#: src/menus.C:1155
+#: src/menus.C:1477
 msgid "LM|Cc#c#C"
 msgstr "LM|Cc#c#C"
 
-#: src/menus.C:1156
+#: src/menus.C:1478
 msgid "LM|Pp#p#P"
 msgstr "LM|Pp#p#P"
 
-#: src/menus.C:1157
+#: src/menus.C:1479
 msgid "LM|Dd#d#D"
 msgstr "LM|Dd#d#D"
 
-#: src/menus.C:1158
+#: src/menus.C:1480
 msgid "LM|aA#a#A"
 msgstr "LM|aA#a#A"
 
-#: src/menus.C:1159
+#: src/menus.C:1481
 msgid "LM|eE#e#E"
 msgstr "LM|eE#e#E"
 
-#: src/menus.C:1160
+#: src/menus.C:1482
 msgid "LM|Qq#q#Q"
 msgstr "LM|Qq#q#Q"
 
-#: src/menus.C:1161
+#: src/menus.C:1483
 msgid "LM|mM#m#M"
 msgstr "LM|mM#m#M"
 
-#: src/menus.C:1162
+#: src/menus.C:1484
 msgid "LM|Nn#n#N"
 msgstr "LM|Nn#n#N"
 
-#: src/menus.C:1163
+#: src/menus.C:1485
 msgid "LM|Bb#b#B"
 msgstr "LM|Bb#b#B"
 
-#: src/menus.C:1164
+#: src/menus.C:1486
 msgid "LM|Tt#t#T"
 msgstr "LM|Tt#t#T"
 
-#: src/menus.C:1165
+#: src/menus.C:1487
 msgid "LM|vV#v#V"
 msgstr "LM|vV#v#V"
 
-#: src/menus.C:1166
+#: src/menus.C:1488
 msgid "LM|Ll#l#L"
 msgstr "LM|Ll#l#L"
 
-#: src/menus.C:1167
+#: src/menus.C:1489
 msgid "LM|Ss#s#S"
 msgstr "LM|Ss#s#S"
 
-#: src/menus.C:1232
+#: src/menus.C:1563
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "Vlo¾ ASCII soubor%t|Jako øádky%x41|Jako Odstavce%x42"
 
-#: src/menus.C:1236
+#: src/menus.C:1567
 msgid "IMA|Ll#l#L"
 msgstr "IMA|Ll#l#L"
 
-#: src/menus.C:1237
+#: src/menus.C:1568
 msgid "IMA|Pp#p#P"
 msgstr "IMA|Pp#p#P"
 
-#: src/menus.C:1240
+#: src/menus.C:1571
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4162,31 +4189,31 @@ msgstr ""
 "Seznamy a obsah%t|Obsah%x21|Seznam obrázkù%x22|Seznam tabulek%x23|Seznam "
 "algoritmù%x24|Rejstøík%x25|Citace z BibTeXu...%x26"
 
-#: src/menus.C:1248
+#: src/menus.C:1579
 msgid "IMT|Cc#c#C"
 msgstr "IMT|Cc#c#C"
 
-#: src/menus.C:1249
+#: src/menus.C:1580
 msgid "IMT|Ff#f#F"
 msgstr "IMT|Ff#f#F"
 
-#: src/menus.C:1250
+#: src/menus.C:1581
 msgid "IMT|Tt#t#T"
 msgstr "IMT|Tt#t#T"
 
-#: src/menus.C:1251
+#: src/menus.C:1582
 msgid "IMT|Aa#a#A"
 msgstr "IMT|Aa#a#A"
 
-#: src/menus.C:1252
+#: src/menus.C:1583
 msgid "IMT|Ii#i#I"
 msgstr "IMT|Ii#i#I"
 
-#: src/menus.C:1253
+#: src/menus.C:1584
 msgid "IMT|Bb#b#B"
 msgstr "IMT|Bb#b#B"
 
-#: src/menus.C:1256
+#: src/menus.C:1587
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4194,27 +4221,27 @@ msgstr ""
 "Objekty%t|Plovoucí obrázek%x71|Plovoucí tabulka%x72|©iroký plovoucí "
 "obrázek%x73|©iroká plovoucí tabulka%l%x74|Plovoucí algoritmus%x75"
 
-#: src/menus.C:1263
+#: src/menus.C:1594
 msgid "IMF|gG#g#G"
 msgstr "IMF|gG#g#G"
 
-#: src/menus.C:1264
+#: src/menus.C:1595
 msgid "IMF|Tt#t#T"
 msgstr "IMF|Tt#t#T"
 
-#: src/menus.C:1265
+#: src/menus.C:1596
 msgid "IMF|Ww#w#W"
 msgstr "IMF|Ww#w#W"
 
-#: src/menus.C:1266
+#: src/menus.C:1597
 msgid "IMF|iI#i#I"
 msgstr "IMF|iI#i#I"
 
-#: src/menus.C:1267
+#: src/menus.C:1598
 msgid "IMF|Aa#a#A"
 msgstr "IMF|Aa#a#A"
 
-#: src/menus.C:1270
+#: src/menus.C:1601
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
@@ -4224,39 +4251,39 @@ msgstr ""
 "øádku%x34|Tøi teèky (...)%x35|Teèka na konci vìty%x36|Znaèka palce "
 "(\")%x37||Oddìlovaè nabídky %x38"
 
-#: src/menus.C:1280
+#: src/menus.C:1611
 msgid "IMS|Hh#h#H"
 msgstr "IMS|Hh#h#H"
 
-#: src/menus.C:1281
+#: src/menus.C:1612
 msgid "IMS|Pp#p#P"
 msgstr "IMS|Pp#p#P"
 
-#: src/menus.C:1282
+#: src/menus.C:1613
 msgid "IMS|Bb#b#B"
 msgstr "IMS|Bb#b#B"
 
-#: src/menus.C:1283
+#: src/menus.C:1614
 msgid "IMS|Ll#l#L"
 msgstr "IMS|Ll#l#L"
 
-#: src/menus.C:1284
+#: src/menus.C:1615
 msgid "IMS|iI#i#I"
 msgstr "IMS|iI#i#I"
 
-#: src/menus.C:1285
+#: src/menus.C:1616
 msgid "IMS|Ee#e#E"
 msgstr "IMS|Ee#e#E"
 
-#: src/menus.C:1286
+#: src/menus.C:1617
 msgid "IMS|Qq#q#Q"
 msgstr "IMS|Qq#q#Q"
 
-#: src/menus.C:1287
+#: src/menus.C:1618
 msgid "IMS|Mm#m#M"
 msgstr "IMS|Mm#m#M"
 
-#: src/menus.C:1290
+#: src/menus.C:1621
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4268,149 +4295,149 @@ msgstr ""
 "a obsah%m%l|Speciální znak%m%l|Komentáø...|Znaèka...|Odkaz...|Citace "
 "Reference...|Polo¾ka rejstøíku...|Polo¾ka rejstøíku pro poslední slovo"
 
-#: src/menus.C:1311
+#: src/menus.C:1642
 msgid "IM|gG#g#G"
 msgstr "IM|gG#g#G"
 
-#: src/menus.C:1312
+#: src/menus.C:1643
 msgid "IM|bB#b#B"
 msgstr "IM|bB#b#B"
 
-#: src/menus.C:1313
+#: src/menus.C:1644
 msgid "IM|cC#c#C"
 msgstr "IM|cC#c#C"
 
-#: src/menus.C:1314
+#: src/menus.C:1645
 msgid "IM|Aa#a#A"
 msgstr "IM|Aa#a#A"
 
-#: src/menus.C:1315
+#: src/menus.C:1646
 msgid "IM|Xx#x#X"
 msgstr "IM|Xx#x#X"
 
-#: src/menus.C:1316
+#: src/menus.C:1647
 msgid "IM|Ff#f#F"
 msgstr "IM|Ff#f#F"
 
-#: src/menus.C:1317
+#: src/menus.C:1648
 msgid "IM|Mm#m#M"
 msgstr "IM|Mm#m#M"
 
-#: src/menus.C:1318
+#: src/menus.C:1649
 msgid "IM|oO#o#O"
 msgstr "IM|oO#o#O"
 
-#: src/menus.C:1319
+#: src/menus.C:1650
 msgid "IM|Tt#t#T"
 msgstr "IM|Tt#t#T"
 
-#: src/menus.C:1320
+#: src/menus.C:1651
 msgid "IM|Ss#s#S"
 msgstr "IM|Ss#s#S"
 
-#: src/menus.C:1321
+#: src/menus.C:1652
 msgid "IM|Nn#n#N"
 msgstr "IM|Nn#n#N"
 
-#: src/menus.C:1322
+#: src/menus.C:1653
 msgid "IM|Ll#l#L"
 msgstr "IM|Ll#l#L"
 
-#: src/menus.C:1323
+#: src/menus.C:1654
 msgid "IM|rR#r#R"
 msgstr "IM|rR#r#R"
 
-#: src/menus.C:1324
+#: src/menus.C:1655
 msgid "IM|iI#i#I"
 msgstr "IM|iI#i#I"
 
-#: src/menus.C:1325
+#: src/menus.C:1656
 msgid "IM|dD#d#D"
 msgstr "IM|dD#d#D"
 
-#: src/menus.C:1326
+#: src/menus.C:1657
 msgid "IM|wW#w#W"
 msgstr "IM|wW#w#W"
 
-#: src/menus.C:1328
+#: src/menus.C:1659
 msgid "|URL..."
 msgstr "|URL..."
 
-#: src/menus.C:1329
+#: src/menus.C:1660
 msgid "IM|Uu#u#U"
 msgstr "IM|Uu#u#U"
 
-#: src/menus.C:1435
+#: src/menus.C:1766
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
 msgstr ""
 "Zlomek|Odmocnina|Exponent|Index|Suma|Integrál%l|Mat. re¾im|Rovnice%l|Panel..."
 
-#: src/menus.C:1445
+#: src/menus.C:1776
 msgid "MM|Ff#f#F"
 msgstr "MM|Ff#f#F"
 
-#: src/menus.C:1446
+#: src/menus.C:1777
 msgid "MM|Ss#s#S"
 msgstr "MM|Ss#s#S"
 
-#: src/menus.C:1447
+#: src/menus.C:1778
 msgid "MM|Ee#e#E"
 msgstr "MM|Ee#e#E"
 
-#: src/menus.C:1448
+#: src/menus.C:1779
 msgid "MM|xX#x#X"
 msgstr "MM|xX#x#X"
 
-#: src/menus.C:1449
+#: src/menus.C:1780
 msgid "MM|uU#u#U"
 msgstr "MM|uU#u#U"
 
-#: src/menus.C:1450
+#: src/menus.C:1781
 msgid "MM|Ii#i#I"
 msgstr "MM|Ii#i#I"
 
-#: src/menus.C:1451
+#: src/menus.C:1782
 msgid "MM|Mm#m#M"
 msgstr "MM|Mm#m#M"
 
-#: src/menus.C:1452
+#: src/menus.C:1783
 msgid "MM|Dd#d#D"
 msgstr "MM|Dd#d#D"
 
-#: src/menus.C:1453
+#: src/menus.C:1784
 msgid "MM|Pp#p#P"
 msgstr "MM|Pp#p#P"
 
-#: src/menus.C:1519
+#: src/menus.C:1850
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 "Písma obrazovky...|Kontrola "
 "pravopisu...|KLávesnice...|LaTeX...%l|Pøekonfiguruj"
 
-#: src/menus.C:1525
+#: src/menus.C:1856
 msgid "OM|Ff#f#F"
 msgstr "OM|Ff#f#F"
 
-#: src/menus.C:1526
+#: src/menus.C:1857
 msgid "OM|Ss#s#S"
 msgstr "OM|Ss#s#S"
 
-#: src/menus.C:1527
+#: src/menus.C:1858
 msgid "OM|Kk#k#K"
 msgstr "OM|Kk#k#K"
 
-#: src/menus.C:1528
+#: src/menus.C:1859
 msgid "OM|Ll#l#L"
 msgstr "OM|Ll#l#L"
 
-#: src/menus.C:1529
+#: src/menus.C:1860
 msgid "OM|Rr#r#R"
 msgstr "OM|Rr#r#R"
 
-#: src/menus.C:1598
+#: src/menus.C:1929
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
@@ -4420,67 +4447,67 @@ msgstr ""
 "pøíruèka|Známé chyby|Konfigurace LaTeXu%l|Copyright a "
 "Záruka...|Zásluhy...|Verze..."
 
-#: src/menus.C:1610
+#: src/menus.C:1941
 msgid "HM|Ii#I#i"
 msgstr "HM|Ii#I#i"
 
-#: src/menus.C:1611
+#: src/menus.C:1942
 msgid "HM|Tt#T#t"
 msgstr "HM|Tt#T#t"
 
-#: src/menus.C:1612
+#: src/menus.C:1943
 msgid "HM|Uu#U#u"
 msgstr "HM|Uu#U#u"
 
-#: src/menus.C:1613
+#: src/menus.C:1944
 msgid "HM|xX#x#X"
 msgstr "HM|xX#x#X"
 
-#: src/menus.C:1614
+#: src/menus.C:1945
 msgid "HM|Cc#C#c"
 msgstr "HM|Cc#C#c"
 
-#: src/menus.C:1615
+#: src/menus.C:1946
 msgid "HM|Rr#R#r"
 msgstr "HM|Rr#R#r"
 
-#: src/menus.C:1616
+#: src/menus.C:1947
 msgid "HM|Kk#K#k"
 msgstr "HM|Kk#K#k"
 
-#: src/menus.C:1617
+#: src/menus.C:1948
 msgid "HM|Ll#L#l"
 msgstr "HM|Ll#L#l"
 
-#: src/menus.C:1618
+#: src/menus.C:1949
 msgid "HM|oO#o#O"
 msgstr "HM|oO#o#O"
 
-#: src/menus.C:1619
+#: src/menus.C:1950
 msgid "HM|eE#e#E"
 msgstr "HM|eE#e#E"
 
-#: src/menus.C:1620
+#: src/menus.C:1951
 msgid "HM|Vv#v#V"
 msgstr "HM|Vv#v#V"
 
-#: src/menus.C:1643
+#: src/menus.C:1974
 msgid "LyX Version "
 msgstr "LyX verze "
 
-#: src/menus.C:1644
+#: src/menus.C:1975
 msgid " of "
 msgstr " z "
 
-#: src/menus.C:1645
+#: src/menus.C:1976
 msgid "Library directory: "
 msgstr "Adresáø knihoven: "
 
-#: src/menus.C:1647
+#: src/menus.C:1978
 msgid "User directory: "
 msgstr "Adresáø u¾ivatele: "
 
-#: src/menus.C:1659
+#: src/menus.C:1990
 msgid "Opening help file"
 msgstr "Otevírám soubor s nápovìdou"
 
@@ -4509,29 +4536,29 @@ msgstr "Formát stránky"
 msgid "Paper layout set"
 msgstr "Formát stránky nastaven"
 
-#: src/PaperLayout.C:269 src/ParagraphExtra.C:297 src/TableLayout.C:300
-#: src/TableLayout.C:473
+#: src/PaperLayout.C:269 src/ParagraphExtra.C:309 src/TableLayout.C:500
+#: src/TableLayout.C:686
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Varování: Neplatná délka (platný pøíklad: 10mm)"
 
-#: src/paragraph.C:1962
+#: src/paragraph.C:1964
 msgid "Senseless with this layout!"
 msgstr "Toto je v tomto formátu nesmyslné!"
 
-#: src/ParagraphExtra.C:143
+#: src/ParagraphExtra.C:147
 #, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Dokument je pouze ke ètení. Nejsou povoleny ¾ádné zmìny formátu."
 
-#: src/ParagraphExtra.C:162
+#: src/ParagraphExtra.C:166
 msgid "ParagraphExtra Layout"
 msgstr "Dal¹í volby odstavce"
 
-#: src/ParagraphExtra.C:201
+#: src/ParagraphExtra.C:213
 msgid "ParagraphExtra layout set"
 msgstr "Speciálních vlastnosti odstavce nastaveny"
 
-#: src/ParagraphExtra.C:307
+#: src/ParagraphExtra.C:319
 msgid "Warning: Invalid percent value (0-100)"
 msgstr "Varování: Neplatná procentní hodnota (1-100)"
 
@@ -4743,48 +4770,48 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "Nahraï slovo|#N"
 
-#: src/support/filetools.C:165 src/support/filetools.C:174
-#: src/support/filetools.C:181
+#: src/support/filetools.C:178 src/support/filetools.C:187
+#: src/support/filetools.C:194
 msgid "LyX Internal Error!"
 msgstr "Vnitøní chyba LyXu!"
 
-#: src/support/filetools.C:166
+#: src/support/filetools.C:179
 msgid "Could not test if directory is writeable"
 msgstr "Nelze otestovat jestli je do adresáøe povolen zápis"
 
-#: src/support/filetools.C:175
+#: src/support/filetools.C:188
 msgid "Cannot open directory test file"
 msgstr "Nemohu otevøít testovací soubor"
 
-#: src/support/filetools.C:182
+#: src/support/filetools.C:195
 msgid "Created test file but cannot remove it?"
 msgstr "Testovací soubor byl vytvoøen, ale nelze ho zru¹it?"
 
-#: src/support/filetools.C:349
+#: src/support/filetools.C:360
 msgid "Error! Cannot open directory:"
 msgstr "Chyba! Nemohu otevøít adresáø:"
 
-#: src/support/filetools.C:361
+#: src/support/filetools.C:373
 msgid "Error! Could not remove file:"
 msgstr "Chyba! Nemohu odstranit soubor:"
 
-#: src/support/filetools.C:375
+#: src/support/filetools.C:387
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Chyba! Nemohu vytvoøit doèasný adresáø:"
 
-#: src/support/filetools.C:391
+#: src/support/filetools.C:403
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Chyba! Nemohu smazat doèasný adresáø:"
 
-#: src/support/filetools.C:446
+#: src/support/filetools.C:456
 msgid "Internal error!"
 msgstr "Vnitøní chyba!"
 
-#: src/support/filetools.C:447
+#: src/support/filetools.C:457
 msgid "Call to createDirectory with invalid name"
 msgstr "Volání 'createDirectory' s neplatným jménem"
 
-#: src/support/filetools.C:452
+#: src/support/filetools.C:462
 msgid "Error! Couldn't create directory:"
 msgstr "Chyba! Nemohu vytvoøit adresáø:"
 
@@ -4801,19 +4828,19 @@ msgstr "Chyba: Nemodu pøejít do adresáøe: "
 msgid "Error: Dir already popped: "
 msgstr "Dokument je u¾ otevøen:"
 
-#: src/TableLayout.C:232
+#: src/TableLayout.C:416
 msgid "Table Extra Form"
 msgstr "Dal¹í formuláø pro tabulku"
 
-#: src/TableLayout.C:252
+#: src/TableLayout.C:436
 msgid "Table Layout"
 msgstr "Formát tabulky"
 
-#: src/TableLayout.C:280
+#: src/TableLayout.C:460 src/TableLayout.C:479
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr "Varování: ¹patná poloha kurzoru, obnovené okno"
 
-#: src/TableLayout.C:335
+#: src/TableLayout.C:535
 msgid "Confirm: press Delete-Button again"
 msgstr "Potvrzení: stisknìte znovu klávesu Delete"
 
@@ -4872,11 +4899,11 @@ msgstr "Vícesloupcové buòky mohou být pouze horizontálnì."
 #. * we need to rebreak perhaps. If there is a protected
 #. * blank at the end of a row we have to force
 #. * a rebreak.
-#: src/text.C:2249 src/text.C:2268
+#: src/text.C:2240 src/text.C:2259
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Nemù¾ete takto napsat dvì mezery. Pøeètìte si Prùvodce."
 
-#: src/text.C:2266
+#: src/text.C:2257
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -4897,3 +4924,9 @@ msgstr "Nelze rozdìlit tabulku."
 #: src/text.C:3927
 msgid "Float would include float!"
 msgstr "Objekt by obsahoval objekt!"
+
+#~ msgid "Error! Could not close file properly: "
+#~ msgstr "Chyba! Nemohu správnì uzavøít soubor: "
+
+#~ msgid "Error! Could not close file properly:"
+#~ msgstr "Chyba! Nemonu strávnì uzavøít soubor:"
