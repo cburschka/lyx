@@ -82,7 +82,7 @@
 #include "FormSendto.h"
 #include "FormTabular.h"
 #include "GTexinfo.h"
-#include "FormShowFile.h"
+#include "GShowFile.h"
 #include "GSpellchecker.h"
 #include "GTableCreate.h"
 #include "GToc.h"
@@ -224,8 +224,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormExternal(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "file") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlShowFile(*dialog));
-		dialog->setView(new FormShowFile(*dialog));
+		dialog->setView(new GShowFile(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "findreplace") {
 		dialog->bc().view(new GBC(dialog->bc()));

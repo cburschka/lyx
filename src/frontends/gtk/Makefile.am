@@ -50,6 +50,8 @@ libgtk_la_SOURCES = \
 	GScreen.h \
 	GSearch.C \
 	GSearch.h \
+	GShowFile.C \
+	GShowFile.h \
 	GSpellchecker.C \
 	GSpellchecker.h \
 	GTableCreate.C \
@@ -124,7 +126,6 @@ xforms_objects = \
 	../xforms/FormRef.lo \
 	../xforms/FormSendto.lo \
 	../xforms/forms_gettext.lo \
-	../xforms/FormShowFile.lo \
 	../xforms/FormTabular.lo \
 	../xforms/FormText.lo \
 	../xforms/FormThesaurus.lo \
