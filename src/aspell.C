@@ -75,7 +75,7 @@ void ASpell::addSpeller(string const & lang)
 
 ASpell::Result ASpell::check(WordLangTuple const & word)
 {
-	Result res = UNKNOWN;
+	Result res = UNKNOWN_WORD;
 
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it == spellers_.end()) {
@@ -99,9 +99,9 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 		BOOST_ASSERT(sugs != 0);
 		els = aspell_word_list_elements(sugs);
 		if (aspell_word_list_empty(sugs))
-			res = UNKNOWN;
+			res = UNKNOWN_WORD;
 		else
-			res = MISSED;
+			res = SUGGESTED_WORDS;
 	}
 	return res;
 }

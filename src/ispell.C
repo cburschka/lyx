@@ -373,18 +373,18 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 
 	if (error) {
 		error_ = _("Could not communicate with the spell-checker program.");
-		return UNKNOWN;
+		return UNKNOWN_WORD;
 	}
 
 	if (err_read) {
 		error_ = buf;
-		return UNKNOWN;
+		return UNKNOWN_WORD;
 	}
 
 	// I think we have to check if ispell is still alive here because
 	// the signal-handler could have disabled blocking on the fd
 	if (!alive())
-		return UNKNOWN;
+		return UNKNOWN_WORD;
 
 	switch (*buf) {
 	case '*':
@@ -394,18 +394,18 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 		res = ROOT;
 		break;
 	case '-':
-		res = COMPOUNDWORD;
+		res = COMPOUND_WORD;
 		break;
 	case '\n':
-		res = IGNORE;
+		res = IGNORED_WORD;
 		break;
 	case '#': // Not found, no near misses and guesses
-		res = UNKNOWN;
+		res = UNKNOWN_WORD;
 		break;
 	case '?': // Not found, and no near misses, but guesses (guesses are ignored)
 	case '&': // Not found, but we have near misses
 	{
-		res = MISSED;
+		res = SUGGESTED_WORDS;
 		char * p = strpbrk(buf, ":");
 		str = new char[strlen(p) + 1];
 		e   = str;
@@ -413,11 +413,11 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 		break;
 	}
 	default: // This shouldn't happen, but you know Murphy
-		res = UNKNOWN;
+		res = UNKNOWN_WORD;
 	}
 
 	*buf = 0;
-	if (res != IGNORE) {
+	if (res != IGNORED_WORD) {
 		/* wait for ispell to finish */
 		while (*buf!= '\n')
 			fgets(buf, 255, in);

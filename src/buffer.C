@@ -79,6 +79,7 @@
 #include <iomanip>
 #include <stack>
 #include <sstream>
+#include <fstream>
 
 
 using lyx::pos_type;

@@ -26,12 +26,18 @@ public:
 
 	/// the result from checking a single word
 	enum Result  {
-		OK = 1, //< word is correct
-		ROOT, //< root of given word was found
-		COMPOUNDWORD, //< word found through compound formation
-		UNKNOWN, //< word not found
-		MISSED, //< not found, with suggestions
-		IGNORE //< number of other ignored "word"
+		/// word is correct
+		OK = 1,
+		/// root of given word was found
+		ROOT,
+		/// word found through compound formation
+		COMPOUND_WORD,
+		/// word not found
+		UNKNOWN_WORD,
+		/// not found, with suggestions
+		SUGGESTED_WORDS,
+		/// number of other ignored "word"
+		IGNORED_WORD
 	};
 
 	virtual ~SpellBase() {}
@@ -48,7 +54,7 @@ public:
 	/// accept the given word temporarily
 	virtual void accept(WordLangTuple const &) = 0;
 
-	/// return the next near miss after a MISSED result
+	/// return the next near miss after a SUGGESTED_WORDS result
 	virtual std::string const nextMiss() = 0;
 
 	/// give an error message on messy exit

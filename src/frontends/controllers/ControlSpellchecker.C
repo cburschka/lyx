@@ -195,7 +195,7 @@ void ControlSpellchecker::check()
 
 	BufferParams & bufferparams = kernel().buffer().params();
 
-	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
+	while (res == SpellBase::OK || res == SpellBase::IGNORED_WORD) {
 		word_ = nextWord(cur, start, bufferparams);
 
 		// end of document
@@ -237,7 +237,7 @@ void ControlSpellchecker::check()
 	kernel().bufferview()->update();
 
 	// set suggestions
-	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
+	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
 		lyxerr[Debug::GUI] << "Found a word needing checking." << endl;
 		dialog().view().partialUpdate(SPELL_FOUND_WORD);
 	}

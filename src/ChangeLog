@@ -1,4 +1,17 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* SpellBase.h: rename some of the elements of the Result enum.
+
+	* aspell_local.h:
+	* ispell.h:
+	* pspell.h:
+	* aspell.C (check):
+	* ispell.C (check):
+	* pspell.C (check): ditto
+
 2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* buffer.C: add #include <fstream>.
 
 	* lyx_main.C (init): Compile fix.
 

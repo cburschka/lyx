@@ -83,7 +83,7 @@ void PSpell::addManager(string const & lang)
 
 enum PSpell::Result PSpell::check(WordLangTuple const & word)
 {
-	Result res = UNKNOWN;
+	Result res = UNKNOWN_WORD;
 
 	Managers::iterator it = managers_.find(word.lang_code());
 	if (it == managers_.end()) {
@@ -107,9 +107,9 @@ enum PSpell::Result PSpell::check(WordLangTuple const & word)
 		BOOST_ASSERT(sugs != 0);
 		els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs))
-			res = UNKNOWN;
+			res = UNKNOWN_WORD;
 		else
-			res = MISSED;
+			res = SUGGESTED_WORDS;
 	}
 	return res;
 }

@@ -49,7 +49,7 @@ public:
 	/// accept the given word temporarily
 	virtual void accept(WordLangTuple const &);
 
-	/// return the next near miss after a MISSED result
+	/// return the next near miss after a SUGGESTED_WORDS result
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
