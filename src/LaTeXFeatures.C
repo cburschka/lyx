@@ -194,7 +194,6 @@ char const * simplefeatures[] = {
 	"dvipost",
 	"fancybox",
 	"calc",
-	"jurabib"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -307,6 +306,11 @@ string const LaTeXFeatures::getPackages() const
 			packages << "authoryear";
 		}
 		packages << "]{natbib}\n";
+	}
+	
+	// jurabib -- we need version 0.6 at least.
+	if (isRequired("jurabib")) {
+		packages << "\\RequirePackage{jurabib}[2004/01/25]\n";
 	}
 
 	// bibtopic -- the dot provides the aux file naming which
