@@ -1,8 +1,10 @@
 
 2001-09-04  André Pönitz  <poenitz@gmx.net>
 
+	* math_defs.h:
 	* math_parser.C:
-	  math_matrixinset.C: some support for [x][x]alignat environments
+	* math_matrixinset.C: some support for the AMS 'alignat', 'xalignat',
+	    'xxalignt', 'gather' and 'multiline' environments
 
 	* math_cursor.C: fix handling of | and \|
 	

@@ -616,6 +616,18 @@ MathMatrixInset * Parser::parse_normal()
 		return p;
 	}
 
+	if (name == "multline" || name == "multline*") {
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_MULTLINE);
+		parse_lines(p, !stared(name), true);
+		return p;
+	}
+
+	if (name == "gather" || name == "gather*") {
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_GATHER);
+		parse_lines(p, !stared(name), true);
+		return p;
+	}
+
 	lyxerr[Debug::MATHED] << "1: unknown math environment: " << name << "\n";
 	return 0;
 }

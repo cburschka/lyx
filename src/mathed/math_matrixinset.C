@@ -236,7 +236,7 @@ std::vector<string> const MathMatrixInset::getLabelList() const
 
 bool MathMatrixInset::numberedType() const
 {
-	if (getType() == LM_OT_SIMPLE)
+	if (getType() == LM_OT_SIMPLE || getType() == LM_OT_XXALIGNAT)
 		return false;
 	for (int row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
@@ -299,6 +299,14 @@ void MathMatrixInset::header_write(std::ostream & os) const
 			os << "\\begin{xxalignat}" << "{" << ncols()/2 << "}\n";
 			break;
 
+		case LM_OT_MULTLINE:
+			os << "\\begin{multline}\n";
+			break;
+
+		case LM_OT_GATHER:
+			os << "\\begin{gather}\n";
+			break;
+
 		default:
 			os << "\\begin{unknown" << star(n) << "}";
 	}
@@ -339,6 +347,14 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 
 		case LM_OT_XXALIGNAT:
 			os << "\\end{xxalignat}\n";
+			break;
+
+		case LM_OT_MULTLINE:
+			os << "\\end{multline}\n";
+			break;
+
+		case LM_OT_GATHER:
+			os << "\\end{gather}\n";
 			break;
 
 		default:
@@ -445,6 +461,8 @@ namespace {
 			return LM_OT_XXALIGNAT;
 		if (s == "multline")
 			return LM_OT_MULTLINE;
+		if (s == "gather")
+			return LM_OT_GATHER;
 		return LM_OT_SIMPLE;
 	}	
 }
@@ -610,6 +628,28 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 					break;
 			}
 			break;
+
+		case LM_OT_MULTLINE:
+			switch (newtype) {
+				case LM_OT_GATHER:
+					setType(LM_OT_GATHER);
+					break;
+				default:
+					lyxerr << "mutation from '" << getType()
+						<< "' to '" << newtype << "' not implemented\n";
+					break;
+			}
+
+		case LM_OT_GATHER:
+			switch (newtype) {
+				case LM_OT_MULTLINE:
+					setType(LM_OT_MULTLINE);
+					break;
+				default:
+					lyxerr << "mutation from '" << getType()
+						<< "' to '" << newtype << "' not implemented\n";
+					break;
+			}
 
 		default:
 			lyxerr << "mutation from '" << getType()

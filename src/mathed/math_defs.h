@@ -123,6 +123,8 @@ enum MathInsetTypes  {
 	LM_OT_XXALIGNAT,
 	///
 	LM_OT_MULTLINE,
+	///
+	LM_OT_GATHER,
 	/// An array
 	LM_OT_MATRIX,
 
