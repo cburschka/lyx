@@ -1,3 +1,8 @@
+2002-11-20  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (resetPos): temporary fix for endless loop in
+	this function on a redraw.
+
 2002-10-14  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (localDispatch): remove double setUndo in Cut/Delete/

@@ -65,6 +65,9 @@ What's new
 - fix lockup when changing the layout of several paragraphs at the
   same time (and the layout of the first paragraph is already correct)
 
+- fix possible endless repainting when a tabular is larger than the
+  workarea 
+
 - fix bug with graphics files which name contain a '.'
 
 - fix bug in the xforms image loader, where images would be cropped by
@@ -79,7 +82,7 @@ What's new
   eqnarray environment
 
 - fix bug where \limits statements (as obtained in math with M-m l)
-  would not be read back from the lyx file.
+  would not be read back from the lyx file
 
 - do not output labels in latex when numbering is off
 
