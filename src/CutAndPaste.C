@@ -157,7 +157,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 
 
 bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
-				int start, int end, char tc)
+                                int start, int end, char tc)
 {
 	if (!startpar || (start > startpar->size()))
 		return false;
@@ -169,6 +169,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 	if (!endpar || startpar == endpar) {
 		// only within one paragraph
 		buf = new Paragraph;
+		buf->layout(startpar->layout());
 		pos_type i = start;
 		if (end > startpar->size())
 			end = startpar->size();
