@@ -1,3 +1,7 @@
+2002-03-05  Herbert Voss  <voss@lyx.org>
+
+	biblio.C: (getInfo) simplify if using paragraph layout "bibliography".
+
 2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* biblio.C (getInfo): return the info field correctly if the key

@@ -242,7 +242,11 @@ string const getInfo(InfoMap const & map, string const & key)
 	lyx::Assert(!map.empty());
 
        	InfoMap::const_iterator it = map.find(key);
-	if (it == map.end()) return string();
+	if (it == map.end())
+		return string();
+	// is the entry a BibTeX one or one from lyx-layout "bibliography"?
+	if (!contains(it->second,'='))
+		return it->second.c_str();
 
 	// Search for all possible "required" keys
 	string author = parseBibTeX(it->second, "author");
@@ -287,7 +291,9 @@ string const getInfo(InfoMap const & map, string const & key)
 
 	char const * const tmp = result.str().c_str();
 	string result_str = tmp ? strip(tmp) : string();
-	if (result_str.empty()) // not a BibTeX record
+
+	if (result_str.empty())
+		// This should never happen (or at least be very unusual!)
 		result_str = it->second;
 
 	return result_str;
