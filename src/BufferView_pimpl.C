@@ -479,7 +479,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state s
 
 	// The test for not selection possible is needed, that only motion
 	// events are used, where the bottom press event was on
-	//  the drawing area too 
+	//  the drawing area too
 	if (!selection_possible)
 		return;
 
@@ -554,7 +554,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		// We are in inset locking mode
 
 		// Check whether the inset was hit. If not reset mode,
-		// otherwise give the event to the inset 
+		// otherwise give the event to the inset
 		if (inset_hit == bv_->theLockingInset()) {
 			FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, xpos, ypos, button);
 			bv_->theLockingInset()->localDispatch(cmd);
@@ -643,7 +643,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, mouse_button::state bu
 		} else {
 			text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
 		}
-		// This will fit the cursor on the screen if necessary 
+		// This will fit the cursor on the screen if necessary
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		workarea().haveSelection(bv_->getLyXText()->selection.set());
 	}
@@ -672,7 +672,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, mouse_button::state bu
 		if (text->bv_owner) {
 			screen().toggleSelection(text, bv_, false);
 		}
-		// This will fit the cursor on the screen if necessary 
+		// This will fit the cursor on the screen if necessary
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		workarea().haveSelection(bv_->getLyXText()->selection.set());
 	}
@@ -1367,7 +1367,6 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
  */
 
 
-inline
 void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 {
 	LyXText * lt = bv_->getLyXText();
@@ -1419,7 +1418,7 @@ Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 	Buffer::inset_iterator end = b->inset_iterator_end();
 
 	bool cursor_par_seen = false;
-	
+
 	for (; beg != end; ++beg) {
 		if (beg.getPar() == cursor.par()) {
 			cursor_par_seen = true;
@@ -1432,7 +1431,7 @@ Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 				break;
 			}
 		}
-		
+
 	}
 	if (beg != end) {
 		// Now find the first inset that matches code.

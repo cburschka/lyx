@@ -14,57 +14,6 @@
 
 namespace lyx {
 
-template<class R, class C, class A>
-class class_fun_t {
-public:
-	class_fun_t(C & ct, R(C::*p)(A))
-		: c(ct), cmf(p) {}
-	R operator()(A & a) const {
-		return (c.*cmf)(a);
-	}
-private:
-	C & c;
-	R(C::*cmf)(A);
-};
-
-
-template<class C, class A>
-class void_class_fun_t {
-public:
-	void_class_fun_t(C & ct, void(C::*p)(A))
-		: c(ct), cmf(p) {}
-	void operator()(A & a) const {
-		(c.*cmf)(a);
-	}
-private:
-	C & c;
-	void(C::*cmf)(A);
-};
-
-
-/// Use to call a class method with a container element.
-/** Most easily used as a functor to std::algoritms.
-    Small example:
-    \verbatim
-    A a; // class that have a int print(string const &) method
-    vector<string> vs;
-    for_each(vs.begin(), vs.end(), class_fun(int, vs, &A::print);
-    \endverbatim
-**/
-template <class R, class C, class A> class_fun_t<R, C, A>
-class_fun(C & c, R(C::*f)(A))
-{
-	return class_fun_t<R, C, A>(c, f);
-}
-
-
-template <class C, class A> void_class_fun_t<C, A>
-void_class_fun(C & c, void(C::*f)(A))
-{
-	return void_class_fun_t<C, A>(c, f);
-}
-
-
 template <class Cont, class Type, class MemRet>
 class back_insert_fun_iterator {
 protected:

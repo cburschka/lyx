@@ -41,6 +41,8 @@
 #include "support/lyxfunctional.h"
 #include "support/LAssert.h"
 
+#include <boost/bind.hpp>
+
 #include <cassert>
 #include <algorithm>
 #include <functional>
@@ -289,7 +291,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 void BufferList::emergencyWriteAll()
 {
 	for_each(bstore.begin(), bstore.end(),
-		 lyx::void_class_fun(*this, &BufferList::emergencyWrite));
+		 boost::bind(&BufferList::emergencyWrite, this, _1));
 }
 
 

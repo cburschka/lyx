@@ -1,5 +1,9 @@
 2002-08-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* bufferlist.C (emergencyWriteAll): use boost bind
+
+	* BufferView_pimpl.C (moveCursorUpdate): remove inline
+
 	* text.C: include paragraph_funcs.h
 	(breakParagraph): breakParagraph is now in global scope
 
