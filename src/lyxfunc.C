@@ -239,7 +239,6 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		return;
 	}
 
-	// This code snippet makes lyx ignore modifier keys.
 	if (keysym->isModifier()) {
 		return;
 	}
@@ -257,12 +256,6 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
 	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
 	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
-#if 0
-		if (lyxerr.debugging(Debug::KEY)) {
-			lyxerr << "meta_fake_bit is ["
-			       << meta_fake_bit << "]" << endl;
-		}
-#endif
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym, (state | meta_fake_bit));
 		if (lyxerr.debugging(Debug::KEY)) {
@@ -320,9 +313,9 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		dispatch(LFUN_SELFINSERT, argument);
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
-	}
-	else
+	} else {
 		verboseDispatch(action, false);
+	}
 }
 
 
