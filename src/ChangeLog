@@ -1,5 +1,16 @@
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
+	* Makefile.am:
+	* buffer.h: 
+	* undostack.h:
+	* undostack.C:
+	* undo_funcs.h:
+	* undo_funcs.C: some cleanups. Use shared_ptr
+	  and a template for the undo stacks.
+  	
+ 
+2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
+
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C:
 	* kbmap.h:
