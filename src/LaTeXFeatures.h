@@ -50,6 +50,8 @@ public:
 	string const getPackages() const;
 	/// The macros definitions needed by the document
 	string const getMacros() const;
+	///
+	string const getBabelOptions() const;
 	/// The definitions needed by the document's textclass
 	string const getTClassPreamble() const;
 	/// The sgml definitions needed by the document (dobook/linuxdoc)

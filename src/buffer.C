@@ -2446,8 +2446,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 				+ params.preamble + '\n';
 		}
 
-		preamble += "\\makeatother\n";
-
 		// Itemize bullet settings need to be last in case the user
 		// defines their own bullets that use a package included
 		// in the user-defined preamble -- ARRae
@@ -2489,8 +2487,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 
-		ofs << preamble;
-
 		// We try to load babel late, in case it interferes
 		// with other packages.
 		if (use_babel) {
@@ -2500,9 +2496,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 				tmp = string("\\usepackage[") +
 					language_options.str().c_str() +
 					"]{babel}";
-			ofs << tmp << "\n";
-			texrow.newline();
+			preamble += tmp + "\n";
+			preamble += features.getBabelOptions();
 		}
+
+		preamble += "\\makeatother\n";
+
+		ofs << preamble;
 
 		// make the body.
 		ofs << "\\begin{document}\n";

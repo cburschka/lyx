@@ -311,14 +311,22 @@ string const LaTeXFeatures::getMacros() const
 	// floats
 	getFloatDefinitions(macros);
 
+	return macros.str().c_str();
+}
+
+
+string const LaTeXFeatures::getBabelOptions() const
+{
+	ostringstream tmp;
+
 	for (LanguageList::const_iterator cit = UsedLanguages.begin();
 	     cit != UsedLanguages.end(); ++cit)
 		if (!(*cit)->latex_options().empty())
-			macros << (*cit)->latex_options() << '\n';
+			tmp << (*cit)->latex_options() << '\n';
 	if (!params.language->latex_options().empty())
-		macros << params.language->latex_options() << '\n';
+		tmp << params.language->latex_options() << '\n';
 
-	return macros.str().c_str();
+	return tmp.str().c_str();
 }
 
 
