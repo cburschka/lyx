@@ -1,3 +1,8 @@
+2003-08-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx2lyx/lyxconvert_216.py (convert): Change the language of the
+	document only if is 'default'.
+
 2003-07-23  Rod Pinna  <rpinna@civil.uwa.edu.au>
 
 	* layouts/elsart.layout: change MaxCounter to Section, rather than
