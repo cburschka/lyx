@@ -43,8 +43,6 @@ public:
 	///
 	void reset(MathInset * p);
 	///
-	bool hasNucleus() const;
-	///
 	MathInset * nucleus() const;
 	///
 	MathInset * operator->() const;

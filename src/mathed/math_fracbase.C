@@ -25,6 +25,38 @@ bool MathFracbaseInset::idxLeft(MathInset::idx_type &,
 }
 
 
+bool MathFracbaseInset::idxFirstUp(idx_type & idx, pos_type & pos) const
+{
+	idx = 0;
+	pos = 0;
+	return true;
+}
+
+
+bool MathFracbaseInset::idxFirstDown(idx_type & idx, pos_type & pos) const
+{
+	idx = 1;
+	pos = 0;
+	return true;
+}
+
+
+bool MathFracbaseInset::idxLastUp(idx_type & idx, pos_type & pos) const
+{
+	idx = 0;
+	pos = cell(0).size();
+	return true;
+}
+
+
+bool MathFracbaseInset::idxLastDown(idx_type & idx, pos_type & pos) const
+{
+	idx = 1;
+	pos = cell(1).size();
+	return true;
+}
+
+
 bool MathFracbaseInset::idxUp(MathInset::idx_type & idx,
 			      MathInset::pos_type & pos) const
 {

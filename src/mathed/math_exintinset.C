@@ -6,7 +6,7 @@
 
 
 MathExIntInset::MathExIntInset(string const & name)
-	: MathNestInset(2), symbol_(name)
+	: MathNestInset(2), symbol_(name), scripts_(new MathScriptInset)
 {}
 
 
@@ -36,7 +36,8 @@ void MathExIntInset::symbol(string const & symbol)
 
 bool MathExIntInset::hasScripts() const
 {
-	return scripts_.hasNucleus();
+	// take empty upper bound as "no scripts"
+	return !scripts_->asScriptInset()->up().data_.empty();
 }
 
 
@@ -45,7 +46,7 @@ void MathExIntInset::normalize(NormalStream & os) const
 {
 	os << '[' << symbol_.c_str() << ' ' << cell(0) << ' ' << cell(1);
 	if (hasScripts())
-		os << scripts_.nucleus();
+		os << ' ' << scripts_.nucleus();
 	os << ']';
 }
 

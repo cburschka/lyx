@@ -42,10 +42,10 @@ MathAtom::MathAtom(MathAtom const & p)
 
 void MathAtom::operator=(MathAtom const & p)
 {
-	if (this != &p) {
-		done();
-		copy(p);
-	}
+	if (this == &p)
+		return;
+	done();
+	copy(p);
 }
 
 
@@ -81,12 +81,6 @@ void MathAtom::copy(MathAtom const & p)
 MathInset * MathAtom::nucleus() const
 {
 	lyx::Assert(nucleus_);
-	return nucleus_;
-}
-
-
-bool MathAtom::hasNucleus() const
-{
 	return nucleus_;
 }
 

@@ -271,13 +271,24 @@ void extractFunctions(MathArray & ar)
 		return;
 
 	lyxerr << "\nFunctions from: " << ar << "\n";
-	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
+	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
-		// is this a function name?
+		// is this a well known function name?
 		MathFuncInset * func = (*it)->asFuncInset();
-		if (!func)
+		string name;
+		if (func) 
+			name = func->name();
+		else {
+			// is this a user defined function?
+			// guess so, if this is a "string" and it is followed by
+			// a DelimInset
+			//name = extractString((*it)->nucleus());
+			//if (name.size() && it + 1
+			//if ((*it
+			// FIXME
 			continue;
+		}	
 
 		// do we have an exponent?
 		// simply skippping the postion does the right thing:
@@ -293,7 +304,7 @@ void extractFunctions(MathArray & ar)
 		}
 	
 		// create a proper inset as replacement
-		MathExFuncInset * p = new MathExFuncInset(func->name());
+		MathExFuncInset * p = new MathExFuncInset(name);
 
 		// jt points to the "argument". Get hold of this.
 		MathArray::iterator st = extractArgument(p->cell(0), jt, ar.end());
@@ -339,7 +350,7 @@ void extractIntegrals(MathArray & ar)
 		return;
 
 	lyxerr << "\nIntegrals from: " << ar << "\n";
-	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
+	for (MathArray::size_type i = 0; i + 1< ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a integral name?
@@ -409,7 +420,7 @@ void extractSums(MathArray & ar)
 		return;
 
 	lyxerr << "\nSums from: " << ar << "\n";
-	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
+	for (MathArray::size_type i = 0; i + 1< ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
@@ -439,7 +450,6 @@ void extractSums(MathArray & ar)
 				} else {
 					// use everything as summation index, don't use scripts.
 					p->cell(1) = ar;
-					p->scripts().reset(0);
 				}
 			}
 		}
@@ -483,7 +493,7 @@ bool diffFracTest(MathInset * p)
 void extractDiff(MathArray & ar)
 {
 	lyxerr << "\nDiffs from: " << ar << "\n";
-	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
+	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a "differential fraction"?
@@ -499,15 +509,39 @@ void extractDiff(MathArray & ar)
 		// create a proper diff inset
 		MathDiffInset * p = new MathDiffInset;
 
-		// collect function
+		// collect function, let jt point behind last used item
 		MathArray::iterator jt = it + 1; 
-		if (f->cell(0).size() > 1)
-			p->cell(0) = MathArray(f->cell(0).begin() + 1, f->cell(0).end());
-		else 
-			jt = extractArgument(p->cell(0), jt, ar.end());
-		
+		int n = 1; 
+		MathArray & numer = f->cell(0);
+		if (numer.size() > 1 && numer.at(1)->asScriptInset()) {
+			// this is something like  d^n f(x) / d... or  d^n / d...
+			n = 1; // FIXME
+			if (numer.size() > 2) 
+				p->cell(0) = MathArray(numer.begin() + 2, numer.end());
+			else
+				jt = extractArgument(p->cell(0), jt, ar.end());
+		} else {
+			// simply d f(x) / d... or  d/d...
+			if (numer.size() > 1) 
+				p->cell(0) = MathArray(numer.begin() + 1, numer.end());
+			else
+				jt = extractArgument(p->cell(0), jt, ar.end());
+		}
+
 		// collect denominator
-		
+		MathArray & denom = f->cell(1);
+		for (MathArray::iterator dt = denom.begin(); dt + 1 != denom.end(); ) {
+			if (!diffItemTest((*dt).nucleus())) {
+				lyxerr << "extractDiff: should not happen 2\n";
+				return;
+			}
+			MathArray diff;
+			dt = extractArgument(diff, dt + 1, denom.end());
+			p->addDer(diff);
+			// safeguard
+			if (dt == denom.end()) 
+				break;
+		}
 
 		// cleanup
 		ar.erase(it + 1, jt);

@@ -591,25 +591,22 @@ bool MathCursor::up(bool sel)
 	selHandle(sel);
 
 	if (!selection_) {
-		// check whether we could move into a superscript 
-		if (hasPrevAtom()) {
-			MathAtom & p = prevAtom();
-			if (p->asScriptInset() && p->asScriptInset()->hasUp()) {
-				pushRight(p);
-				idx() = 1;
-				pos() = size();
-				return true;
-			}
+		MathInset::idx_type i = 0;
+		MathInset::pos_type p = 0;
+
+		// check whether we could move into the inset
+		if (hasPrevAtom() && prevAtom()->idxLastUp(i, p)) {
+			pushRight(prevAtom());
+			idx() = i;
+			pos() = p;
+			return true;
 		}
 
-		if (hasNextAtom()) {
-			MathAtom & n = nextAtom();
-			if (n->asScriptInset() && n->asScriptInset()->hasUp()) {
-				pushLeft(n);
-				idx() = 1;
-				pos() = 0;
-				return true;
-			}
+		if (hasNextAtom() && nextAtom()->idxFirstUp(i, p)) {
+			pushLeft(nextAtom());
+			idx() = i;
+			pos() = p;
+			return true;
 		}
 	}
 
@@ -624,25 +621,22 @@ bool MathCursor::down(bool sel)
 	selHandle(sel);
 
 	if (!selection_) {
-		// check whether we could move into a subscript 
-		if (hasPrevAtom()) {
-			MathAtom & p = prevAtom();
-			if (p->asScriptInset() && p->asScriptInset()->hasDown()) {
-				pushRight(p);
-				idx() = 0;
-				pos() = size();
-				return true;
-			}
+		MathInset::idx_type i = 0;
+		MathInset::pos_type p = 0;
+
+		// check whether we could move into the inset
+		if (hasPrevAtom() && prevAtom()->idxLastDown(i, p)) {
+			pushRight(prevAtom());
+			idx() = i;
+			pos() = p;
+			return true;
 		}
 
-		if (hasNextAtom()) {
-			MathAtom & n = nextAtom();
-			if (n->asScriptInset() && n->asScriptInset()->hasDown()) {
-				pushLeft(n);
-				idx() = 0;
-				pos() = 0;
-				return true;
-			}
+		if (hasNextAtom() && nextAtom()->idxFirstDown(i, p)) {
+			pushLeft(nextAtom());
+			idx() = i;
+			pos() = p;
+			return true;
 		}
 	}
 
@@ -1211,6 +1205,8 @@ bool MathCursor::goDown()
 			popRight();		
 		return true;
 	}
+
+	// does the inset know
 
 	// if not, apply brute force.
 	int x0;

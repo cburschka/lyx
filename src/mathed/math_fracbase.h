@@ -13,13 +13,21 @@ public:
 	///
 	MathFracbaseInset();
 	///
-	bool idxUp(MathInset::idx_type &, MathInset::pos_type &) const;
+	bool idxUp(idx_type &, pos_type &) const;
 	///
-	bool idxDown(MathInset::idx_type &, MathInset::pos_type &) const;
+	bool idxDown(idx_type &, pos_type &) const;
 	///
-	bool idxLeft(MathInset::idx_type &, MathInset::pos_type &) const;
+	bool idxLeft(idx_type &, pos_type &) const;
 	///
-	bool idxRight(MathInset::idx_type &, MathInset::pos_type &) const;
+	bool idxRight(idx_type &, pos_type &) const;
+	///
+	bool idxFirstUp(idx_type &, pos_type &) const;
+	///
+	bool idxFirstDown(idx_type &, pos_type &) const;
+	///
+	bool idxLastUp(idx_type &, pos_type &) const;
+	///
+	bool idxLastDown(idx_type &, pos_type &) const;
 };
 
 #endif

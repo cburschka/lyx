@@ -61,6 +61,7 @@ namespace {
 		lyxerr << "calling: " << full << "\n";
 		Systemcalls dummy(Systemcalls::System, full, 0);
 		string out = GetFileContents(outfile);
+		lyx::unlink(outfile);
 		lyxerr << "result: '" << out << "'\n";
 		return out;
 	}
