@@ -16,7 +16,7 @@
 
 #include "FormTabular.h"
 #include "form_tabular.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "Dialogs.h"
 #include "buffer.h"
 #include "xforms_helpers.h"

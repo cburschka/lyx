@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "minibuffer.h"
 #include "debug.h"
 #include "intl.h"

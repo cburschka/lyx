@@ -18,7 +18,7 @@
 #include "ButtonControllerBase.h"
 #include "ControlAboutlyx.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "Lsstream.h"
 #include "BufferView.h"
 #include "gettext.h"

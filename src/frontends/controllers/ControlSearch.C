@@ -22,7 +22,7 @@
 #include "ControlSearch.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "lyxfind.h"
 #include "debug.h"

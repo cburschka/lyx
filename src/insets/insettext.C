@@ -21,7 +21,7 @@
 #include "lyxfont.h"
 #include "commandtags.h"
 #include "buffer.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "lyxtextclasslist.h"
 #include "LaTeXFeatures.h"

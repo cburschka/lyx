@@ -15,7 +15,7 @@
 #endif
 
 #include "bufferview_funcs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "paragraph.h"
 #include "lyxfont.h"
@@ -206,7 +206,7 @@ string const currentState(BufferView * bv)
 }
 
 
-/* -------> Does the actual toggle job of the XxxCB() calls above.
+/* Does the actual toggle job of the calls above.
  * Also shows the current font state.
  */
 void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)

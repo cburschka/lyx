@@ -18,7 +18,7 @@
 
 #include "importer.h"
 #include "converter.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 
 #include "bufferlist.h"

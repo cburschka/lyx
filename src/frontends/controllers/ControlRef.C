@@ -22,11 +22,12 @@
 #include "ButtonControllerBase.h"
 #include "ControlRef.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
+#include "debug.h"
 
 using SigC::slot;
 using std::vector;

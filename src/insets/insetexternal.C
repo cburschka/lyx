@@ -18,7 +18,7 @@
 #include "ExternalTemplate.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyx_main.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"

@@ -23,7 +23,7 @@
 #include "ControlPrint.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "PrinterParams.h"
 #include "Liason.h"
 #include "helper_funcs.h"

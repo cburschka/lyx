@@ -19,7 +19,7 @@
 #include "language.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxtext.h"
 #include "debug.h"
 #include "lyxtextclasslist.h"

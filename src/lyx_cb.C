@@ -17,7 +17,7 @@
 #include "bufferview_funcs.h"
 #include "debug.h"
 #include "lastfiles.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"

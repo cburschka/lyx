@@ -36,7 +36,7 @@
 #include "bufferview_funcs.h"
 #include "minibuffer.h"
 #include "vspace.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "FloatList.h"
 #include "converter.h"
 #include "exporter.h"

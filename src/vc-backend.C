@@ -8,7 +8,7 @@
 #include "debug.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 
 #include "support/FileInfo.h"

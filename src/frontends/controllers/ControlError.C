@@ -22,7 +22,7 @@
 #include "ControlError.h"
 #include "ControlInset.tmpl"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "insets/inseterror.h"
 

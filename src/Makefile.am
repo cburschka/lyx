@@ -76,8 +76,6 @@ lyx_SOURCES = \
 	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \
-	LyXView.C \
-	LyXView.h \
 	MenuBackend.C \
 	MenuBackend.h \
 	ParagraphParameters.C \
@@ -95,8 +93,6 @@ lyx_SOURCES = \
 	ToolbarDefaults.h \
 	WorkArea.C \
 	WorkArea.h \
-	XFormsView.C \
-	XFormsView.h \
 	box.h \
 	box.C \
 	broken_headers.h \
@@ -218,8 +214,6 @@ lyx_SOURCES = \
 	undo.h \
 	undo_funcs.C \
 	undo_funcs.h \
-	undostack.C \
-	undostack.h \
 	vc-backend.C \
 	vc-backend.h \
 	version.C \

@@ -33,7 +33,7 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "support/lstrings.h"

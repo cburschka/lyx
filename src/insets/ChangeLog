@@ -1,5 +1,25 @@
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
+	* insetbib.C:
+	* insetcite.C:
+	* inseterror.C:
+	* insetert.C:
+	* insetexternal.C:
+	* insetfloat.C:
+	* insetfloatlist.C:
+	* insetgraphics.C:
+	* insetinclude.C:
+	* insetindex.C:
+	* insetminipage.C:
+	* insetparent.C:
+	* insetref.C:
+	* insettabular.C:
+	* insettext.C:
+	* insettoc.C:
+	* inseturl.C: LyXView moved into frontends/
+ 
+2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
+
 	* inset.C:
 	* insetbutton.C:
 	* insetcaption.C:

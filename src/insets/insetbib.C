@@ -12,7 +12,7 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "font.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"

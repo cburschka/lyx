@@ -18,7 +18,7 @@
 #include "form_paragraph.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"

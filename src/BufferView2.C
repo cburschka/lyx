@@ -14,7 +14,7 @@
 #include "buffer.h"
 #include "lyxcursor.h"
 #include "lyxtext.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "bufferlist.h"
 #include "lyxscreen.h"
 #include "LaTeX.h"

@@ -17,7 +17,7 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"

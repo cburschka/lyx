@@ -17,7 +17,7 @@
 
 #include "lyx_main.h"
 #include "lyx_gui.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "buffer.h"

@@ -23,7 +23,7 @@
 
 #include <sigc++/signal_system.h>
 
-#include "LyXView.h" // This is only needed while we have the xforms part!
+#include "frontends/LyXView.h" // This is only needed while we have the xforms part!
 #include "bufferview_funcs.h"
 // FileDialog::Private
 

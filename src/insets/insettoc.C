@@ -7,7 +7,7 @@
 #include "gettext.h"
 #include "insettoc.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "debug.h"
 #include "buffer.h"

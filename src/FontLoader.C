@@ -21,7 +21,7 @@
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/GUIRunTime.h"
 
 using std::endl;

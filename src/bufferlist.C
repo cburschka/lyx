@@ -28,7 +28,7 @@
 #include "bufferview_funcs.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "vc-backend.h"
 #include "TextCache.h"
 #include "lyxtextclasslist.h"

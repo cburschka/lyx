@@ -22,7 +22,7 @@
 #include "ControlIndex.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 
 using SigC::slot;
 

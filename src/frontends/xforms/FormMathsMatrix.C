@@ -20,7 +20,7 @@
 #include "FormMathsMatrix.h"
 #include "form_maths_matrix.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "Lsstream.h"
 #include "lyxfunc.h"
 #include "support/LAssert.h"

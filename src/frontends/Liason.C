@@ -18,7 +18,7 @@
 #include "lyxrc.h"
 #include "PrinterParams.h"
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "exporter.h"

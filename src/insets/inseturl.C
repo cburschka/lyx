@@ -7,7 +7,7 @@
 #include "inseturl.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "debug.h"
 #include "frontends/Dialogs.h"
 #include "support/lstrings.h"

@@ -15,7 +15,7 @@
 #include "xformsBC.h"
 #include "ControlIndex.h"
 #include "FormIndex.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "form_index.h"
 
 typedef FormCB<ControlIndex, FormDB<FD_form_index> > base_class;

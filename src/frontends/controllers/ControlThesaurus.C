@@ -17,7 +17,7 @@
 #include "ControlThesaurus.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfind.h"
 #include "buffer.h"
 #include "debug.h"

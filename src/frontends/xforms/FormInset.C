@@ -15,7 +15,7 @@
 #endif
 
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "FormInset.h"
 #include "xformsBC.h"
 

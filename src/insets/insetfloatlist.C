@@ -8,7 +8,7 @@
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
 #include "frontends/Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "gettext.h"

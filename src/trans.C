@@ -4,7 +4,7 @@
 #pragma implementation
 #endif
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "trans.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"

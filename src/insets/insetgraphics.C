@@ -81,7 +81,7 @@ TODO Before initial production release:
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsImage.h"
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxtext.h"
 #include "buffer.h"
 #include "BufferView.h"

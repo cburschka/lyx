@@ -25,7 +25,7 @@
 #include "ControlInset.tmpl"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "ViewBase.h"
 #include "buffer.h"
 #include "frontends/Alert.h"

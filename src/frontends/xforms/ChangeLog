@@ -1,5 +1,26 @@
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
+	* DropDown.h:
+	* FileDialog.C:
+	* FormBaseDeprecated.C:
+	* FormDocument.C:
+	* FormIndex.C:
+	* FormInset.C:
+	* FormMathsBitmap.C:
+	* FormMathsDelim.C:
+	* FormMathsMatrix.C:
+	* FormMathsPanel.C:
+	* FormParagraph.C:
+	* FormPreferences.C:
+	* FormPrint.C:
+	* FormTabular.C:
+	* Makefile.am:
+	* XFormsView.h:
+	* XFormsView.C: LyXView is now in frontends/,
+	XFormsView moved to here
+	 
+2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Makefile.am:
 	* XPainter.h:
 	* XPainter.C: move Painter here

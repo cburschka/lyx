@@ -1,16 +1,44 @@
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
-	* src/Makefile.am:
-	* src/PainterBase.C:
-	* src/PainterBase.h:
-	* src/Painter.C:
-	* src/Painter.h:
-	* src/WorkArea.C:
-	* src/WorkArea.h:
-	* src/screen.C:
-	* src/tabular.C:
-	* src/text.C:
-	* src/text2.C: move Painter to frontends/
+	* BufferView2.C:
+	* BufferView_pimpl.C:
+	* FontLoader.C:
+	* LyXView.h:
+	* LyXView.C:
+	* Makefile.am:
+	* WorkArea.C:
+	* XFormsView.h:
+	* XFormsView.C:
+	* buffer.C:
+	* bufferlist.C:
+	* bufferview_funcs.C:
+	* converter.C: 
+	* importer.C: 
+	* lyx_cb.C:
+	* lyx_gui.C:
+	* lyx_main.C:
+	* lyx_find.C:
+	* lyxfunc.C:
+	* lyxvc.C:
+	* minibuffer.C:
+	* text.C:
+	* text2.C:
+	* trans.C:
+	* vc-backend.C: move LyX/XFormsView into frontends/
+ 
+2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* PainterBase.C:
+	* PainterBase.h:
+	* Painter.C:
+	* Painter.h:
+	* WorkArea.C:
+	* WorkArea.h:
+	* screen.C:
+	* tabular.C:
+	* text.C:
+	* text2.C: move Painter to frontends/
  
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

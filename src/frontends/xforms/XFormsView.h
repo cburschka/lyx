@@ -18,7 +18,7 @@
 
 #include FORMS_H_LOCATION
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 
 /**
   This class is the form containing the view of the buffer. The actual buffer

@@ -31,7 +31,7 @@
 #include "version.h"
 #include "LaTeX.h"
 #include "Chktex.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "lyxtext.h"
@@ -735,7 +735,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		LyXLex nylex(0, 0);
 		nylex.setStream(istr);
 		inset->read(this, nylex);
-
 		par->insertInset(pos, inset, font);
 		++pos;
 		insertErtContents(par, pos);
@@ -1768,7 +1767,6 @@ bool Buffer::save() const
 		*/
 
 		// Should probably have some more error checking here.
-		// Should be cleaned up in 0.13, at least a bit.
 		// Doing it this way, also makes the inodes stay the same.
 		// This is still not a very good solution, in particular we
 		// might loose the owner of the backup.
@@ -3610,7 +3608,6 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 }
 
 
-// This should be enabled when the Chktex class is implemented. (Asger)
 // chktex should be run with these flags disabled: 3, 22, 25, 30, 38(?)
 // Other flags: -wall -v0 -x
 int Buffer::runChktex()

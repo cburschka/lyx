@@ -23,7 +23,7 @@
 #include "ButtonControllerBase.h"
 #include "ControlBibitem.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 

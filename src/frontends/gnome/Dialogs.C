@@ -17,7 +17,7 @@
 #include "gettext.h"
 
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "gnomeBC.h"
 #include "Tooltips.h"
 #include "GUI.h"

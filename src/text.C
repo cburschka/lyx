@@ -19,7 +19,7 @@
 #include "buffer.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "tracer.h"
 #include "font.h"

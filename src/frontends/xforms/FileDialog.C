@@ -17,7 +17,7 @@
 // temp. hack until Allow/prohibitInput is not
 // needed any more in src/ - for now it's simplest
 // to leave it there
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "bufferview_funcs.h"
 #include "gettext.h"
 #include "commandtags.h"

@@ -23,7 +23,7 @@
 #include "Alert.h"
 #include "BufferView.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "gettext.h"
 #include "helper_funcs.h"

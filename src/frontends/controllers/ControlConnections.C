@@ -20,7 +20,7 @@
 #include "ViewBase.h"
 #include "ControlConnections.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 
 using SigC::slot;

@@ -14,7 +14,7 @@
 #pragma interface
 #endif
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include <sigc++/signal_system.h>
 #include "LString.h"
 #include FORMS_H_LOCATION

@@ -20,7 +20,7 @@
 #include "lyx_main.h"
 #include "debug.h"
 #include "version.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "lyxserver.h"
@@ -90,7 +90,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 	lyxerr << etxt << " id: " << xeev->resourceid << endl;
 	// By doing an abort we get a nice backtrace. (hopefully)
 	lyx::abort();
-	return 0; // Solaris CC wants us to return something
+	return 0;
 }
 
 }

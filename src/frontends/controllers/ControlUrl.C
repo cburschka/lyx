@@ -21,7 +21,7 @@
 #include "ButtonControllerBase.h"
 #include "ControlUrl.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 
 using SigC::slot;

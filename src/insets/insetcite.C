@@ -17,7 +17,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "debug.h"
 #include "gettext.h"
 

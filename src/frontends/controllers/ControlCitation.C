@@ -23,7 +23,7 @@
 #include "ControlCitation.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 
 // need to #include this in _one_ of the ControlCommand-derived classses in
 // order to instantiate

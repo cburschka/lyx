@@ -17,7 +17,7 @@
 #include "ViewBase.h"
 
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 
 #include "frontends/Dialogs.h"

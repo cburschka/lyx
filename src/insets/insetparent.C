@@ -20,7 +20,7 @@
 #include "insetparent.h"
 #include "support/filetools.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "support/LOstream.h"
 #include "commandtags.h"
 #include "buffer.h"

@@ -20,7 +20,7 @@
 #include "ControlFloat.h"
 #include "ControlInset.tmpl"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "insets/insetfloat.h"

@@ -20,7 +20,7 @@
 #include "buffer.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "bufferview_funcs.h" // ToggleAndShow
 #include "gettext.h"
 #include "language.h"

@@ -1,3 +1,36 @@
+2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ControlAboutlyx.C:
+	* ControlBibitem.C:
+	* ControlBibtex.C:
+	* ControlCharacter.C:
+	* ControlCitation.C:
+	* ControlCommand.C:
+	* ControlConnections.C:
+	* ControlERT.C:
+	* ControlError.C:
+	* ControlExternal.C:
+	* ControlFloat.C:
+	* ControlForks.C:
+	* ControlGraphics.C:
+	* ControlInclude.C:
+	* ControlIndex.C:
+	* ControlLog.C:
+	* ControlMinipage.C:
+	* ControlPreamble.C:
+	* ControlPrint.C:
+	* ControlRef.C:
+	* ControlSearch.C:
+	* ControlSendto.C:
+	* ControlShowFile.C:
+	* ControlSpellchecker.C:
+	* ControlTabularCreate.C:
+	* ControlTexinfo.C:
+	* ControlThesaurus.C:
+	* ControlToc.C:
+	* ControlUrl.C:
+	* ControlVCLog.C: LyXView moved into frontends
+ 
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ControlExternal.C: add scoped_ptr.hpp

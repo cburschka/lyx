@@ -6,7 +6,7 @@
 
 #include "lyxtext.h"
 #include "lyxfind.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 #include "support/textutils.h"
 #include "support/lstrings.h"

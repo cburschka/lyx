@@ -30,7 +30,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "gettext.h"
 #include "lyxrc.h"
 

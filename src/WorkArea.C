@@ -16,7 +16,7 @@
 
 #include "WorkArea.h"
 #include "debug.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxrc.h" // lyxrc.show_banner
 #include "version.h" // lyx_version
 
@@ -574,12 +574,10 @@ int WorkArea::event_cb(XEvent * xev)
 		case SelectionRequest:
 			lyxerr[Debug::GUI] << "X requested selection." << endl;
 			selectionRequested.emit();
-//			ret = 1;
 			break;
 		case SelectionClear:
 			lyxerr[Debug::GUI] << "Lost selection." << endl;
 			selectionLost.emit();
-//			ret = 1;
 			break;
 	}
 	return ret;

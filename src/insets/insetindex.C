@@ -6,7 +6,7 @@
 
 #include "insetindex.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"

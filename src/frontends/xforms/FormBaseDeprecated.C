@@ -18,7 +18,7 @@
 #include "xforms_resize.h"
 #include "GUIRunTime.h"
 #include "Tooltips.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxrc.h"
 #include "support/LAssert.h"
 
@@ -98,7 +98,7 @@ void FormBaseDeprecated::show()
 	}
 
 	fl_freeze_form(form());
-	update();  // make sure its up-to-date
+	update();
 	fl_unfreeze_form(form());
 
 	if (form()->visible) {

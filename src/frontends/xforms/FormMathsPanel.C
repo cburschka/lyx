@@ -16,7 +16,7 @@
 #endif
 
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "FormMathsPanel.h"
 #include "form_maths_panel.h"
 #include "MathsSymbols.h"

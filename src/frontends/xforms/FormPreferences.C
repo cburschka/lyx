@@ -20,7 +20,7 @@
 #include "buffer.h"
 #include "converter.h"
 #include "debug.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "language.h"
 #include "frnt_lang.h"
 #include "lyxfunc.h"

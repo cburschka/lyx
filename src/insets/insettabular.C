@@ -25,7 +25,7 @@
 #include "frontends/Painter.h"
 #include "font.h"
 #include "lyxtext.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "insets/insettext.h"
 #include "debug.h"
 #include "gettext.h"

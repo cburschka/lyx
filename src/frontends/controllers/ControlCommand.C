@@ -23,7 +23,7 @@
 #include "ControlInset.tmpl"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
 

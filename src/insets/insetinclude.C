@@ -10,7 +10,7 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "lyxtextclasslist.h"

@@ -21,7 +21,7 @@
 #include "FormMathsBitmap.h"
 
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
 #include "xforms_helpers.h"

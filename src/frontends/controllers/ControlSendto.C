@@ -17,7 +17,7 @@
 #include "ButtonControllerBase.h"
 #include "ControlSendto.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "converter.h"

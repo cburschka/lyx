@@ -10,7 +10,7 @@
 #include "lyxtext.h"
 #include "lyxrow.h"
 #include "paragraph.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "commandtags.h"
 #include "lyxfunc.h"
 #include "debug.h"

@@ -26,7 +26,7 @@
 #include "debug.h"
 #include "Floating.h"
 #include "buffer.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
 using std::ostream;

@@ -31,4 +31,6 @@ libfrontends_la_SOURCES = \
 	Timeout.C \
 	Timeout.h \
 	Toolbar.C \
-	Toolbar.h
+	Toolbar.h \
+	LyXView.C \
+	LyXView.h

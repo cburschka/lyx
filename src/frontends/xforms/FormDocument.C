@@ -27,7 +27,7 @@
 #include "bmtable.h"
 #include "language.h"
 #include "frnt_lang.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "BufferView.h"

@@ -22,7 +22,7 @@
 #include "ControlToc.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h" // tostr
 #include "gettext.h"

@@ -10,7 +10,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 
 #include "frontends/Alert.h"

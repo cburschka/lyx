@@ -21,7 +21,7 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "ControlLog.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "BufferView.h"

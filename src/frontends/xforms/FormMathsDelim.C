@@ -18,7 +18,7 @@
 #include "FormMathsDelim.h"
 #include "form_maths_delim.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
 #include "support/lstrings.h"

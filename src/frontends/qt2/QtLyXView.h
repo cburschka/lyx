@@ -10,4 +10,4 @@
  */
 
 #undef emit
-#include "LyXView.h"
+#include "frontends/LyXView.h"

@@ -18,7 +18,7 @@
 #include "FormPrint.h"
 #include "form_print.h"
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 
 #include "PrinterParams.h"
 

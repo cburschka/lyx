@@ -17,7 +17,7 @@
 #include "ButtonControllerBase.h"
 #include "ControlShowFile.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "support/filetools.h" // FileSearch

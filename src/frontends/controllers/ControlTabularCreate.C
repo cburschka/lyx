@@ -21,7 +21,7 @@
 #include "ControlTabularCreate.h"
 #include "BufferView.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"
 

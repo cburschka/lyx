@@ -19,7 +19,7 @@
 #include "lyxfont.h"
 #include "gettext.h"
 #include "inseterror.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "frontends/Dialogs.h"
 

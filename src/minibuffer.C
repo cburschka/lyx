@@ -20,14 +20,14 @@
 
 // FIXME: temporary
 #include "frontends/xforms/DropDown.h"
+#include "frontends/xforms/XFormsView.h"
 
 #include "minibuffer.h"
 
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "LyXView.h"
-#include "XFormsView.h"
+#include "frontends/LyXView.h"
 #include "gettext.h"
 #include "LyXAction.h"
 #include "BufferView.h"

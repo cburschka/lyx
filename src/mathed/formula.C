@@ -35,7 +35,7 @@
 #include "support/LAssert.h"
 #include "support/systemcall.h"
 #include "support/filetools.h" // LibFileSearch
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "lyxrc.h"
 #include "math_hullinset.h"

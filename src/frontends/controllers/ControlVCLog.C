@@ -25,7 +25,7 @@
 #include "ControlVCLog.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "support/lyxlib.h"

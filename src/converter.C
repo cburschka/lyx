@@ -21,7 +21,7 @@
 #include "buffer.h"
 #include "bufferview_funcs.h"
 #include "LaTeX.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "lyx_cb.h" // ShowMessage()
 #include "gettext.h"
 #include "BufferView.h"
