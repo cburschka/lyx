@@ -1505,7 +1505,6 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	if (cursor.pos() < cursor.par()->size()
 	     && cursor.par()->isLineSeparator(cursor.pos()))
 	   cursor.par()->erase(cursor.pos());
-	// cursor.pos(cursor.pos() + 1);
 
 	// break the paragraph
 	if (keep_layout)

@@ -83,10 +83,6 @@ public:
 	bool fitCursor();
 	/// perform pending painting updates
 	void update();
-	// update for a particular lyxtext
-	void update(LyXText *, UpdateCodes uc);
-	/// update for the top-level lyxtext
-	void update(UpdateCodes uc);
 	/// update for a particular inset
 	void updateInset(InsetOld * inset);
 	/// reset the scrollbar to reflect current view position

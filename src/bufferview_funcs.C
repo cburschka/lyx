@@ -239,11 +239,10 @@ bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_o
 	if (test_only)
 		return text->changeDepth(type, true);
 
-	bv->update(BufferView::SELECT);
 	bool const changed = text->changeDepth(type, false);
 	if (text->inset_owner)
 		bv->updateInset((InsetOld *)text->inset_owner);
-	bv->update(BufferView::SELECT);
+	bv->update();
 	return changed;
 }
 
@@ -398,9 +397,8 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	if (!text)
 		return;
 
-	bv->update(text, BufferView::SELECT);
 	text->toggleFree(font, toggleall);
-	bv->update(text, BufferView::SELECT);
+	bv->update();
 
 	if (font.language() != ignore_language ||
 	    font.number() != LyXFont::IGNORE) {

@@ -644,42 +644,6 @@ void BufferView::Pimpl::update()
 }
 
 
-void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
-{
-	if (!text->selection.set() && (f & SELECT)) {
-		text->selection.cursor = text->cursor;
-	}
-
-	text->partialRebreak();
-
-	if (text->inset_owner) {
-		text->inset_owner->setUpdateStatus(InsetText::NONE);
-		updateInset(text->inset_owner);
-	} else {
-		update();
-	}
-}
-
-
-void BufferView::Pimpl::update(BufferView::UpdateCodes f)
-{
-	LyXText * text = bv_->text;
-
-	if (!text->selection.set() && (f & SELECT)) {
-		text->selection.cursor = text->cursor;
-	}
-
-	text->partialRebreak();
-
-	if (text->inset_owner) {
-		text->inset_owner->setUpdateStatus(InsetText::NONE);
-		updateInset(text->inset_owner);
-	} else {
-		update();
-	}
-}
-
-
 // Callback for cursor timer
 void BufferView::Pimpl::cursorToggle()
 {
@@ -764,7 +728,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	bv_->text->setCursor(par.pit(),
 			     min(par->size(), saved_positions[i].par_pos));
 
-	update(BufferView::SELECT);
+	update();
 	if (i > 0)
 		owner_->message(bformat(_("Moved to bookmark %1$s"), tostr(i)));
 }
@@ -822,9 +786,8 @@ void BufferView::Pimpl::center()
 	int const half_height = workarea().workHeight() / 2;
 	int new_y = 0;
 
-	if (t->cursor.y() > half_height) {
+	if (t->cursor.y() > half_height)
 		new_y = t->cursor.y() - half_height;
-	}
 
 	// FIXME: look at this comment again ...
 
@@ -839,7 +802,7 @@ void BufferView::Pimpl::center()
 	// pretty obfuscated way of updating t->top_y()
 	screen().draw(t, bv_, new_y);
 
-	update(BufferView::SELECT);
+	update();
 }
 
 
@@ -971,7 +934,7 @@ void BufferView::Pimpl::trackChanges()
 		// we cannot allow undos beyond the freeze point
 		buf->undostack.clear();
 	} else {
-		update(BufferView::SELECT);
+		update();
 		bv_->text->setCursor(buf->paragraphs.begin(), 0);
 #warning changes FIXME
 		//moveCursorUpdate(false);
@@ -1177,7 +1140,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			owner_->getLyXFunc().handleKeyFunc(ev.action);
 			owner_->getIntl().getTransManager()
 				.TranslateAndInsert(ev.argument[0], bv_->getLyXText());
-			update(bv_->getLyXText(), BufferView::SELECT);
+			update();
 		}
 		break;
 
@@ -1217,9 +1180,9 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			if (name == "bibitem") {
 				// We need to do a redraw because the maximum
 				// InsetBibitem width could have changed
+				bv_->fitCursor();
 #warning check whether the update() is needed at all
 				bv_->update();
-				bv_->fitCursor();
 			}
 		} else {
 			delete inset;
@@ -1305,40 +1268,38 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		update(BufferView::SELECT);
 		bv_->text->setCursor(bv_->buffer()->paragraphs.begin(), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
-		while (lyx::find::findNextChange(bv_)) {
+		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->acceptChange();
-		}
-		update(BufferView::SELECT);
+
+		update();
 		break;
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		update(BufferView::SELECT);
 		bv_->text->setCursor(bv_->buffer()->paragraphs.begin(), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
-		while (lyx::find::findNextChange(bv_)) {
+		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->rejectChange();
-		}
-		update(BufferView::SELECT);
+
+		update();
 		break;
 	}
 
 	case LFUN_ACCEPT_CHANGE: {
 		bv_->getLyXText()->acceptChange();
-		update(BufferView::SELECT);
+		update();
 		break;
 	}
 
 	case LFUN_REJECT_CHANGE: {
 		bv_->getLyXText()->rejectChange();
-		update(BufferView::SELECT);
+		update();
 		break;
 	}
 
@@ -1370,20 +1331,15 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 
 	beforeChange(bv_->text);
 	if (!lout.empty()) {
-		update(BufferView::SELECT);
 		bv_->text->breakParagraph(bv_->buffer()->paragraphs);
-		update(BufferView::SELECT);
 
 		if (!bv_->text->cursor.par()->empty()) {
 			bv_->text->cursorLeft(bv_);
-
 			bv_->text->breakParagraph(bv_->buffer()->paragraphs);
-			update(BufferView::SELECT);
 		}
 
 		string lres = lout;
-		LyXTextClass const & tclass =
-			buffer_->params.getLyXTextClass();
+		LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 		bool hasLayout = tclass.hasLayout(lres);
 		string lay = tclass.defaultLayoutName();
 
@@ -1404,11 +1360,10 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 				   LYX_ALIGN_LAYOUT,
 				   string(),
 				   0);
-		update(BufferView::SELECT);
 	}
 
 	bv_->text->insertInset(inset);
-	update(BufferView::SELECT);
+	update();
 
 	unFreezeUndo();
 	return true;
@@ -1444,9 +1399,9 @@ void BufferView::Pimpl::updateInset(InsetOld * inset)
 	while (tl_inset->owner())
 		tl_inset = tl_inset->owner();
 	if (tl_inset == inset) {
-		update(BufferView::UPDATE);
+		update();
 		if (bv_->text->updateInset(inset)) {
-			update(BufferView::SELECT);
+			update();
 			return;
 		}
 	} else if (static_cast<UpdatableInset *>(tl_inset)

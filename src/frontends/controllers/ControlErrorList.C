@@ -81,5 +81,5 @@ void ControlErrorList::goTo(int item)
 	bv->text->setSelectionRange(range);
 	bv->toggleSelection(false);
 	bv->fitCursor();
-	bv->update(bv->text, BufferView::SELECT);
+	bv->update();
 }

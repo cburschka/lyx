@@ -196,18 +196,6 @@ bool BufferView::isSavedPosition(unsigned int i)
 }
 
 
-void BufferView::update(LyXText * text, UpdateCodes f)
-{
-	pimpl_->update(text, f);
-}
-
-
-void BufferView::update(UpdateCodes f)
-{
-	pimpl_->update(f);
-}
-
-
 void BufferView::switchKeyMap()
 {
 	pimpl_->switchKeyMap();
@@ -379,12 +367,11 @@ void BufferView::gotoLabel(string const & label)
 	     it != buffer()->inset_iterator_end(); ++it) {
 		vector<string> labels;
 		it->getLabelList(labels);
-		if (find(labels.begin(),labels.end(),label)
-		     != labels.end()) {
+		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			beforeChange(text);
 			text->setCursor(it.getPar(), it.getPos());
 			text->selection.cursor = text->cursor;
-			update(text, BufferView::SELECT);
+			update();
 			return;
 		}
 	}
@@ -398,11 +385,9 @@ void BufferView::undo()
 
 	owner()->message(_("Undo"));
 	beforeChange(text);
-	update(text, BufferView::SELECT);
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
-	else
-		update(text, BufferView::SELECT);
+	update();
 	switchKeyMap();
 }
 
@@ -414,11 +399,9 @@ void BufferView::redo()
 
 	owner()->message(_("Redo"));
 	beforeChange(text);
-	update(text, BufferView::SELECT);
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
-	else
-		update(text, BufferView::SELECT);
+	update();
 	switchKeyMap();
 }
 
@@ -445,7 +428,7 @@ void BufferView::selectLastWord()
 	text->selection.cursor = cur;
 	text->selectSelectedWord();
 	toggleSelection(false);
-	update(text, BufferView::SELECT);
+	update();
 }
 
 
@@ -456,7 +439,7 @@ void BufferView::endOfSpellCheck()
 	beforeChange(text);
 	text->selectSelectedWord();
 	text->clearSelection();
-	update(text, BufferView::SELECT);
+	update();
 }
 
 
@@ -466,11 +449,9 @@ void BufferView::replaceWord(string const & replacestring)
 		return;
 
 	LyXText * tt = getLyXText();
-	update(tt, BufferView::SELECT);
 
 	// clear the selection (if there is any)
 	toggleSelection(false);
-	update(tt, BufferView::SELECT);
 
 	// clear the selection (if there is any)
 	toggleSelection(false);
@@ -479,16 +460,14 @@ void BufferView::replaceWord(string const & replacestring)
 	tt->setSelectionRange(replacestring.length());
 
 	// Go back so that replacement string is also spellchecked
-	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
+	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) 
 		tt->cursorLeft(this);
-	}
-	update(tt, BufferView::SELECT);
 
 	// FIXME: should be done through LFUN
 	buffer()->markDirty();
 	fitCursor();
+	update();
 }
-// End of spellchecker stuff
 
 
 bool BufferView::lockInset(UpdatableInset * inset)
@@ -620,7 +599,6 @@ bool BufferView::ChangeInsets(InsetOld::Code code,
 			if (it.size() == 1) {
 				text->setCursorIntern(it.pit(), 0);
 				text->redoParagraph(text->cursor.par());
-				text->partialRebreak();
 			}
 		}
 	}

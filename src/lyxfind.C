@@ -198,11 +198,9 @@ int replace(BufferView * bv,
 		if (!bv->theLockingInset() ||
 			((text != bv->text) &&
 			 (text->inset_owner == text->inset_owner->getLockingInset()))) {
-			bv->update(text, BufferView::SELECT);
 			bv->toggleSelection(false);
 			text->replaceSelectionWithString(replacestr);
 			text->setSelectionRange(replacestr.length());
-			bv->update(text, BufferView::SELECT);
 			++replace_count;
 		}
 		if (!once)
@@ -212,6 +210,7 @@ int replace(BufferView * bv,
 	// FIXME: should be called via an LFUN
 	bv->buffer()->markDirty();
 	bv->fitCursor();
+	bv->update();
 
 	return replace_count;
 }
@@ -223,8 +222,6 @@ bool find(BufferView * bv,
 {
 	if (!bv->available() || searchstr.empty())
 		return false;
-
-	bv->update(bv->getLyXText(), BufferView::SELECT);
 
 	if (bv->theLockingInset()) {
 		bool found = forward ?
@@ -263,17 +260,14 @@ bool find(BufferView * bv,
 	// inset did it already.
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT);
 		text->setSelectionRange(searchstr.length());
 		bv->toggleSelection(false);
-		bv->update(text, BufferView::SELECT);
 	} else if (result == SR_NOT_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT);
 		found = false;
 	}
-
 	bv->fitCursor();
+	bv->update();
 
 	return found;
 }
@@ -369,8 +363,6 @@ bool findNextChange(BufferView * bv)
 	if (!bv->available())
 		return false;
 
-	bv->update(bv->getLyXText(), BufferView::SELECT);
-
 	pos_type length;
 
 	if (bv->theLockingInset()) {
@@ -405,17 +397,15 @@ bool findNextChange(BufferView * bv)
 	// inset did it already.
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT);
 		text->setSelectionRange(length);
 		bv->toggleSelection(false);
-		bv->update(text, BufferView::SELECT);
 	} else if (result == SR_NOT_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT);
 		found = false;
 	}
 
 	bv->fitCursor();
+	bv->update();
 
 	return found;
 }

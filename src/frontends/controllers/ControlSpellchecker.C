@@ -61,6 +61,7 @@ void ControlSpellchecker::clearParams()
 	endSession();
 }
 
+
 namespace {
 
 SpellBase * getSpeller(BufferParams const & bp)
@@ -85,6 +86,7 @@ SpellBase * getSpeller(BufferParams const & bp)
 }
 
 }
+
 
 void ControlSpellchecker::startSession()
 {
@@ -148,9 +150,9 @@ void ControlSpellchecker::check()
 	// clear any old selection
 	LyXText * text = bufferview()->getLyXText();
 	bufferview()->toggleSelection(true);
-	bufferview()->update(text, BufferView::SELECT);
+	bufferview()->update();
 
-	while ((res == SpellBase::OK || res == SpellBase::IGNORE)) {
+	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
 		word_ = bufferview()->nextWord(newval_);
 
 		// end of document

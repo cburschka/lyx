@@ -115,12 +115,9 @@ LyXFunc::LyXFunc(LyXView * o)
 void LyXFunc::moveCursorUpdate()
 {
 	LyXText * lt = view()->text;
-	if (lt->selection.mark()) {
+	if (lt->selection.mark())
 		lt->setSelection();
-		if (!lt->isInInset())
-			view()->update();
-	}
-	view()->update(lt, BufferView::SELECT);
+	view()->update();
 	view()->switchKeyMap();
 }
 
@@ -139,7 +136,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
-	view()->update(view()->getLyXText(), BufferView::SELECT);
+	view()->update();
 	view()->getLyXText()->selection.cursor = view()->getLyXText()->cursor;
 }
 
@@ -918,7 +915,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 					moveCursorUpdate();
 				} else {
-					view()->update(view()->text, BufferView::SELECT);
+					view()->update();
 				}
 				owner->clearMessage();
 				goto exit_with_message;
@@ -1026,7 +1023,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_PREFIX:
 		if (view()->available() && !view()->theLockingInset())
-			view()->update(view()->text, BufferView::SELECT);
+			view()->update();
 		owner->message(keyseq.printOptions());
 		break;
 

@@ -421,6 +421,7 @@ void ParagraphParameters::write(ostream & os) const
 }
 
 
+
 void setParagraphParams(BufferView & bv, string const & data)
 {
 	istringstream is(STRCONV(data));
@@ -442,9 +443,7 @@ void setParagraphParams(BufferView & bv, string const & data)
 			   params.labelWidthString(),
 			   params.noindent());
 
-	// Actually apply these settings
-	bv.update(text, BufferView::SELECT);
-
+	bv.update();
 	bv.owner()->message(_("Paragraph layout set"));
 }
 

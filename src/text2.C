@@ -281,8 +281,7 @@ void LyXText::insertParagraph(ParagraphList::iterator pit,
 			      RowList::iterator rit)
 {
 	// insert a new row, starting at position 0
-	Row newrow(pit, 0);
-	rit = rowlist_.insert(rit, newrow);
+	rit = rowlist_.insert(rit, Row(pit, 0));
 
 	// and now append the whole paragraph before the new row
 	appendParagraph(rit);
@@ -646,8 +645,6 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	//newrow.dump("newrow: ");
 
 	// and now append the whole paragraph before the new row
-	// was: appendParagraph(rit);
-
 	pos_type const last = rit->par()->size();
 	bool done = false;
 
@@ -717,12 +714,16 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 			ii->inset->metrics(m, dim);
 		}
 
+#if 1
 		// insert a new row, starting at position 0
 		Row newrow(pit, 0);
 		RowList::iterator rit = rowlist_.insert(rowlist_.end(), newrow);
 
 		// and now append the whole paragraph before the new row
 		appendParagraph(rit);
+#else
+		redoParagraph(pit);
+#endif
 	}
 
 	// compute height

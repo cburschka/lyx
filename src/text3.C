@@ -203,7 +203,6 @@ void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 			bool same_content)
 {
 	bv()->beforeChange(this);
-	update();
 
 	string contents;
 	if (same_content && cursor.pos() < cursor.par()->size()
@@ -351,7 +350,7 @@ void LyXText::cursorNext()
 
 void LyXText::update()
 {
-	bv()->update(this, BufferView::SELECT);
+	bv()->update();
 }
 
 namespace {
@@ -435,7 +434,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_DELETE_WORD_FORWARD:
 		bv->beforeChange(this);
-		update();
 		deleteWordForward();
 		update();
 		finishChange(bv);
@@ -443,7 +441,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_DELETE_WORD_BACKWARD:
 		bv->beforeChange(this);
-		update();
 		deleteWordBackward();
 		update();
 		finishChange(bv);
@@ -451,7 +448,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_DELETE_LINE_FORWARD:
 		bv->beforeChange(this);
-		update();
 		deleteLineForward();
 		update();
 		finishChange(bv);
@@ -460,22 +456,22 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_WORDRIGHT:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		update();
 		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
 			cursorLeftOneWord();
 		else
 			cursorRightOneWord();
 		finishChange(bv);
+		update();
 		break;
 
 	case LFUN_WORDLEFT:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		update();
 		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
 			cursorRightOneWord();
 		else
 			cursorLeftOneWord();
+		update();
 		finishChange(bv);
 		break;
 
@@ -642,7 +638,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_UP:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		bv->update(this, BufferView::UPDATE);
+		bv->update();
 		cursorUp(false);
 		finishChange(bv);
 		break;
@@ -650,7 +646,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_DOWN:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		bv->update(this, BufferView::UPDATE);
+		bv->update();
 		cursorDown(false);
 		finishChange(bv);
 		break;
@@ -658,7 +654,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_UP_PARAGRAPH:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		bv->update(this, BufferView::UPDATE);
+		bv->update();
 		cursorUpParagraph();
 		finishChange(bv);
 		break;
@@ -666,7 +662,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_DOWN_PARAGRAPH:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		bv->update(this, BufferView::UPDATE);
+		bv->update();
 		cursorDownParagraph();
 		finishChange(bv, false);
 		break;
@@ -674,7 +670,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_PRIOR:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		bv->update(this, BufferView::UPDATE);
+		bv->update();
 		cursorPrevious();
 		finishChange(bv, false);
 		break;
@@ -682,7 +678,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_NEXT:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		bv->update(this, BufferView::UPDATE);
+		bv->update();
 		cursorNext();
 		finishChange(bv, false);
 		break;
@@ -726,7 +722,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 		} else {
-			update();
 			cutSelection(true, false);
 			update();
 		}
@@ -756,7 +751,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 						 cur.par()->params().align(),
 						 cur.par()->params().labelWidthString(), 0);
 					cursorLeft(bv);
-					update();
 				} else {
 					cursorLeft(bv);
 					Delete();
@@ -767,7 +761,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				selection.cursor = cursor;
 			}
 		} else {
-			update();
 			cutSelection(true, false);
 		}
 		update();
@@ -784,7 +777,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				// just comment out the line below...
 			}
 		} else {
-			update();
 			cutSelection(true, false);
 			update();
 		}
@@ -1318,9 +1310,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				bv->text->cursorUp(false);
 		}
 
-		// Maybe an empty line was deleted
-		if (!bv->text->selection.set())
-			bv->update(BufferView::UPDATE);
 		bv->text->setSelection();
 		bv->update();
 		bv->fitCursor();
@@ -1381,7 +1370,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// Clear the selection
 		bv->screen().toggleSelection(bv->text, bv);
 		bv->text->clearSelection();
-		bv->text->partialRebreak();
 		bv->update();
 		bv->updateScrollbar();
 
@@ -1526,10 +1514,8 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// true (on).
 
 		if (lyxrc.auto_region_delete) {
-			if (selection.set()) {
+			if (selection.set())
 				cutSelection(false, false);
-				update();
-			}
 			bv->haveSelection(false);
 		}
 
