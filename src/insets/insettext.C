@@ -402,8 +402,7 @@ void InsetText::drawFrame(Painter & pain, int x) const
 
 void InsetText::update(BufferView * bv, bool reinit)
 {
-	if (bv)
-		text_.bv_owner = const_cast<BufferView *>(bv);
+	setViewCache(bv);
 
 	if (in_update) {
 		if (reinit && owner()) {
@@ -870,8 +869,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
-	if (bv)
-		text_.bv_owner = bv;
+	setViewCache(bv);
 
 	if (cmd.action == LFUN_INSET_EDIT) {
 		UpdatableInset::localDispatch(cmd);
@@ -1578,7 +1576,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 Inset::RESULT
 InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
-	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
+	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
 		return moveLeftIntern(bv, false, activate_inset, selecting);
 	else
 		return moveRightIntern(bv, true, activate_inset, selecting);
@@ -1588,7 +1586,7 @@ InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 Inset::RESULT
 InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 {
-	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
+	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
 		return moveRightIntern(bv, true, activate_inset, selecting);
 	else
 		return moveLeftIntern(bv, false, activate_inset, selecting);
@@ -1599,18 +1597,15 @@ Inset::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool front,
 			   bool activate_inset, bool selecting)
 {
-	LyXText * text = getLyXText(bv);
-
 	ParagraphList::iterator c_par = cpar();
 
-	if (boost::next(c_par) == paragraphs.end() &&
-	    (cpos() >= c_par->size()))
+	if (boost::next(c_par) == paragraphs.end() && cpos() >= c_par->size())
 		return FINISHED_RIGHT;
 	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
-	text->cursorRight(bv);
+	text_.cursorRight(bv);
 	if (!selecting)
-		text->clearSelection();
+		text_.clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 
@@ -1619,13 +1614,11 @@ Inset::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
-	LyXText * text = getLyXText(bv);
-
-	if (cpar() == paragraphs.begin() && (cpos() <= 0))
+	if (cpar() == paragraphs.begin() && cpos() <= 0)
 		return FINISHED;
-	text->cursorLeft(bv);
+	text_.cursorLeft(bv);
 	if (!selecting)
-		text->clearSelection();
+		text_.clearSelection();
 	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
 	return DISPATCHED_NOUPDATE;
@@ -1634,20 +1627,20 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 
 Inset::RESULT InsetText::moveUp(BufferView * bv)
 {
-	if (crow() == getLyXText(bv)->rows().begin())
+	if (crow() == text_.rows().begin())
 		return FINISHED_UP;
-	getLyXText(bv)->cursorUp(bv);
-	getLyXText(bv)->clearSelection();
+	text_.cursorUp(bv);
+	text_.clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 
 
 Inset::RESULT InsetText::moveDown(BufferView * bv)
 {
-	if (boost::next(crow()) == getLyXText(bv)->rows().end())
+	if (boost::next(crow()) == text_.rows().end())
 		return FINISHED_DOWN;
-	getLyXText(bv)->cursorDown(bv);
-	getLyXText(bv)->clearSelection();
+	text_.cursorDown(bv);
+	text_.clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 
@@ -2015,7 +2008,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		return;
 
 	Assert(bv);
-	text_.bv_owner = bv;
+	setViewCache(bv);
 
 	// one endless line, resize normally not necessary
 	if (!force && getMaxWidth(bv, this) < 0)
