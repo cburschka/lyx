@@ -1,7 +1,7 @@
 #
 # Hebrew keyboard definition for LyX
 #
-# (C)2000 by Dekel Tsur, dekel@math.tau.ac.il
+# (C)2000 by Dekel Tsur, dekelts@tau.ac.il
 #
 \kmap ` ;
 \kmap q /
@@ -67,3 +67,22 @@
 \kmap B ð
 \kmap N î
 \kmap M ö
+
+# Hebrew points (nikud)
+\kmap E È	# Shift+Qof = Qamats
+\kmap R Ì 	# Shift+Resh = Shuruq (= Dagesh)
+\kmap U É	# Shift+Vav = Holam
+\kmap P Ç	# Shift+Pe = Patah
+
+\kmap A À	# Shift+Shin = Sheva
+\kmap S Ì 	# Shift+Delat = Dagesh (= Shuruq)
+\kmap G Ò	# 	Shin dot
+\kmap H Ñ	# 	Sin dot
+\kmap J Ä	# Shift+Het = Hiriq
+
+\kmap X Æ	# Shift+Samekh = Segol
+\kmap C Ë 	# Shift+Bet = Qubuts
+\kmap V Á	#	Hataf segol
+\kmap B Â	#	Hataf patah
+\kmap N Ã	#	Hataf qamats
+\kmap M Å	# Shift+Tsadi = Tsere
