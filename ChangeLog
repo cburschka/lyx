@@ -1,17 +1,12 @@
 2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in:
-	* config/lyxinclude.m4:
 	* INSTALL: minor changes, become --with-version-suffix
 
 2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in:
-	* config/lyxinclude.m4:
 	* INSTALL: --with-lyx-version
-
-	* config/kde.m4: remove cruft that was breaking
-	  installs
 
 	* Makefile.am: fix uninstall
 

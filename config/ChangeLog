@@ -1,3 +1,14 @@
+2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxinclude.m4: minor changes, --with-lyx-version becomes
+	--with-version-suffix 
+
+2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxinclude.m4: --with-lyx-version
+
+	* kde.m4: remove cruft that was breaking installs
+	  
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): add clause for gcc 3.0
