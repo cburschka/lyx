@@ -87,6 +87,13 @@ echo "Configuring LyX for your system..."
 cd $RPM_INSTALL_PREFIX/share/lyx
 ./configure --srcdir
 
+# Fix reLyX perl program if the prefix is non-standard
+if [ "$RPM_INSTALL_PREFIX" != "/usr" ]
+then
+    perl -pi -e "s!/usr/share/lyx!$RPM_INSTALL_PREFIX/share/lyx!" \
+        ${RPM_INSTALL_PREFIX}/bin/reLyX
+fi
+
 %post -n tetex-lyx
 # Fix the TeX file hash
 #
