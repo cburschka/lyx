@@ -1,3 +1,11 @@
+2004-06-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* paragraph.C (isWord): return true on insets that report
+	isLetter().
+
+	* text.C (getWord): use Paragraph::isWord to decide what is in a
+	word and what is not; fix bug 1609.
+
 2004-06-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* tex-strings.C: add "none" to string_paperpackages[], fixes

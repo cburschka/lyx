@@ -1842,46 +1842,36 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 	switch (loc) {
 	case lyx::WHOLE_WORD_STRICT:
 		if (from.pos() == 0 || from.pos() == from_par.size()
-		    || from_par.isSeparator(from.pos())
-		    || from_par.isKomma(from.pos())
-		    || from_par.isNewline(from.pos())
-		    || from_par.isSeparator(from.pos() - 1)
-		    || from_par.isKomma(from.pos() - 1)
-		    || from_par.isNewline(from.pos() - 1)) {
+		    || !from_par.isWord(from.pos())
+		    || !from_par.isWord(from.pos() - 1)) {
 			to = from;
 			return;
 		}
 		// no break here, we go to the next
 
 	case lyx::WHOLE_WORD:
-		// Move cursor to the beginning, when not already there.
-		if (from.pos() && !from_par.isSeparator(from.pos() - 1)
-		    && !(from_par.isKomma(from.pos() - 1)
-			 || from_par.isNewline(from.pos() - 1)))
-			cursorLeftOneWord(bv()->cursor());
-		break;
+		// If we are already at the beginning of a word, do nothing
+		if (!from.pos() || !from_par.isWord(from.pos() - 1))
+			break;
+		// no break here, we go to the next
+
 	case lyx::PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
-		cursorLeftOneWord(bv()->cursor());
+		while (from.pos() && from_par.isWord(from.pos() - 1))
+			--from.pos();
 		break;
 	case lyx::NEXT_WORD:
 		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet"
 		       << endl;
 		break;
 	case lyx::PARTIAL_WORD:
+		// no need to move the 'from' cursor
 		break;
 	}
 	to = from;
 	Paragraph & to_par = pars_[to.par()];
-	while (to.pos() < to_par.size()
-	       && !to_par.isSeparator(to.pos())
-	       && !to_par.isKomma(to.pos())
-	       && !to_par.isNewline(to.pos())
-	       && !to_par.isHfill(to.pos())
-	       && !to_par.isInset(to.pos()))
-	{
+	while (to.pos() < to_par.size() && to_par.isWord(to.pos()))
 		++to.pos();
-	}
 }
 
 

@@ -1524,7 +1524,9 @@ bool Paragraph::isLetter(pos_type pos) const
 
 bool Paragraph::isWord(pos_type pos) const
 {
-	unsigned char const c = getChar(pos);
+	if (isInset(pos))
+		return getInset(pos)->isLetter();
+	value_type const c = getChar(pos);
 	return !(IsSeparatorChar(c)
 		  || IsKommaChar(c)
 		  || IsInsetChar(c));
