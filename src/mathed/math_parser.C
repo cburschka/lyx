@@ -687,7 +687,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			++cellcol;
 			//lyxerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
 			if (cellcol == grid.ncols()) {
-				lyxerr << "adding column " << cellcol << "\n";
+				//lyxerr << "adding column " << cellcol << "\n";
 				grid.addCol(cellcol - 1);
 			}
 			cell = &grid.cell(grid.index(cellrow, cellcol));
@@ -870,7 +870,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			for (int i = 0; i < cols; ++i) {
 				++cellcol;
 				if (cellcol == grid.ncols()) {
-					lyxerr << "adding column " << cellcol << "\n";
+					//lyxerr << "adding column " << cellcol << "\n";
 					grid.addCol(cellcol - 1);
 				}
 				cell = &grid.cell(grid.index(cellrow, cellcol));

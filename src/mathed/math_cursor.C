@@ -817,8 +817,8 @@ void MathCursor::normalize()
 			MathScriptInset * p = array()[i].nucleus()->asScriptInset();
 			if (p) {
 				p->removeEmptyScripts();
-				//if (p->empty())
-				//	array().erase(i);
+				if (!p->hasUp() && !p->hasDown() && p->nuc().size() == 1)
+					array()[i] = p->nuc()[0];
 			}
 		}
 	}

@@ -11,6 +11,14 @@
 using std::ostream;
 using std::strlen;
 
+namespace {
+
+	bool isAlpha(char c) 
+	{
+		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+	}
+
+}
 
 WriteStream::WriteStream(ostream & os, bool fragile, bool latex)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
@@ -68,7 +76,7 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 WriteStream & operator<<(WriteStream & ws, char c)
 {
 	if (ws.pendingSpace()) {
-		if (isalpha(c))
+		if (isAlpha(c))
 			ws.os() << ' ';
 		ws.pendingSpace(false);
 	}

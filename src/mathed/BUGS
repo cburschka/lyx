@@ -32,15 +32,7 @@ General hints for bug reports:
 
   - plain ASCII text please, not much more than 70 chars per column 
 
-----------------------------------------------------------------------
-
-- \matrm{xy} gets written as \mathrm{x}\mathrm{y}
-
 Dekel:
-
-- LyX crashes when you define a recursive macro
-
-pp - It is possible to put two or more consecutive spaces in math text mode
 
 - InsetFormula::validate is broken
 
@@ -105,13 +97,6 @@ From: Álvaro Tejero Cantero <alvaro@antalia.com>
  
 - Some math symbols aren't very well supported (to my knowledge). I'm 
   thinking of [] options.
-
-Herbert Voss:
-
-- it's not possible to enter superscript when the
-  ^-char works as a dead key. with the second ^-
-  or the space the cursor jumps outside the mathbox.
-
 
 Jules Bean:
 
