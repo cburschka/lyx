@@ -2465,30 +2465,31 @@ LyXText::text_status LyXText::status() const
 }
 
 
-void LyXText::status(BufferView * bview, LyXText::text_status st) const
+void LyXText::status(BufferView * bview, LyXText::text_status new_status) const
 {
+	// We should not lose information from previous status
+	// sets, or we'll forget to repaint the other bits
+	// covered by the NEED_MORE_REFRESH
+	if (new_status == NEED_VERY_LITTLE_REFRESH
+	    && status_ == NEED_MORE_REFRESH)
+		return;
+
+	status_ = new_status;
+
+	if (new_status == UNCHANGED)
+		return;
+
+	if (!inset_owner)
+	       return;
+
 	LyXText * t = bview->text;
 
-	// We should only go up with refreshing code so this means that if
-	// we have a MORE refresh we should never set it to LITTLE if we still
-	// didn't handle it (and then it will be UNCHANGED. Now as long as
-	// we stay inside one LyXText this may work but we need to tell the
-	// outermost LyXText that it should REALLY draw us if there is some
-	// change in a Inset::LyXText. So you see that when we are inside a
-	// inset's LyXText we give the LITTLE to the outermost LyXText to
-	// tell'em that it should redraw the actual row (where the inset
-	// resides! Capito?!
-
-	if (status_ != NEED_MORE_REFRESH || st != NEED_VERY_LITTLE_REFRESH) {
-		status_ = st;
-		if (inset_owner && st != UNCHANGED) {
-			t->status(bview, NEED_VERY_LITTLE_REFRESH);
-			if (!t->refresh_row) {
-				t->refresh_row = t->cursor.row();
-				t->refresh_y = t->cursor.y() -
-					t->cursor.row()->baseline();
-			}
-		}
+	// We are an inset's lyxtext. Tell the top-level lyxtext
+	// it needs to update the row we're in.
+	t->status(bview, NEED_VERY_LITTLE_REFRESH);
+	if (!t->refresh_row) {
+		t->refresh_row = t->cursor.row();
+		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();
 	}
 }
 
