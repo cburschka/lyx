@@ -16,6 +16,8 @@ public:
 	int descent() const { return descent_; }
 	/// read width
 	int width() const { return width_; }
+	/// 
+	void dimensions(int & w, int & a, int & d) const;
 	///
 	void metricsT(TextMetricsInfo const &) const;
 	///

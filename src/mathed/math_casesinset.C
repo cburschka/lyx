@@ -61,3 +61,9 @@ void MathCasesInset::maplize(MapleStream & os) const
 	MathGridInset::maplize(os);
 	os << ")";
 }
+
+
+void MathCasesInset::infoize(std::ostream & os) const
+{
+	os << "Cases ";
+}

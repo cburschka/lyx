@@ -68,6 +68,14 @@ MathInset::size_type MathInset::nargs() const
 }
 
 
+void MathInset::dimensions(int & w, int & a, int & d) const
+{
+	w = width();
+	a = ascent();
+	d = descent();
+}
+
+
 MathXArray dummyCell;
 
 MathXArray & MathInset::xcell(idx_type)

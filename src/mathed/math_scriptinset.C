@@ -127,35 +127,32 @@ int MathScriptInset::dxx(MathInset const * nuc) const
 }
 
 
-int MathScriptInset::ascent2(MathInset const * nuc) const
+void MathScriptInset::dimensions2
+	(MathInset const * nuc, int & w, int & a, int & d) const
 {
-	return dy1(nuc) + (hasUp() ? up().ascent() : 0);
-}
-
-
-int MathScriptInset::descent2(MathInset const * nuc) const
-{
-	return dy0(nuc) + (hasDown() ? down().descent() : 0);
+	a = dy1(nuc) + (hasUp() ? up().ascent() : 0);
+	d = dy0(nuc) + (hasDown() ? down().descent() : 0);
+	w = width2(nuc);
 }
 
 
 int MathScriptInset::width2(MathInset const * nuc) const
 {
-	int wid = 0;
+	int w = 0;
 	if (hasLimits(nuc)) {
-		wid = nwid(nuc);
+		w = nwid(nuc);
 		if (hasUp())
-			wid = max(wid, up().width());
+			w = max(w, up().width());
 		if (hasDown())
-			wid = max(wid, down().width());
+			w = max(w, down().width());
 	} else {
 		if (hasUp())
-			wid = max(wid, up().width());
+			w = max(w, up().width());
 		if (hasDown())
-			wid = max(wid, down().width());
-		wid += nwid(nuc);
+			w = max(w, down().width());
+		w += nwid(nuc);
 	}
-	return wid;
+	return w;
 }
 
 
@@ -189,9 +186,7 @@ void MathScriptInset::metrics(MathInset const * nuc, MathMetricsInfo & mi) const
 		nuc->metrics(mi);
 	MathNestInset::metrics(mi);
 	MathScriptChanger dummy(mi.base);
-	ascent_  = ascent2(nuc);
-	descent_ = descent2(nuc);
-	width_   = width2(nuc);
+	dimensions2(nuc, width_, ascent_, descent_);
 }
 
 

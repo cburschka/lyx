@@ -47,31 +47,23 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 	}
 
 	width_   = 0;
-
-	int a = 0;
-	int d = 0;
+	ascent_  = 0;
+	descent_ = 0;
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		int w = 0;
+		int ww, aa, dd;
 		if (q) {
 			q->metrics(p, mi);
-			a = max(a, q->ascent2(p));
-			d = max(d, q->descent2(p));
-			w = q->width2(p);
+			q->dimensions2(p, ww, aa, dd);
 			++it;
 		} else {
 			p->metrics(mi);
-			a = max(a, p->ascent());
-			d = max(d, p->descent());
-			w = p->width();
 		}
-		width_ += w;
+		ascent_  = max(ascent_, aa);
+		descent_ = max(descent_, dd);
+		width_   += ww;
 	}
-
-	ascent_  = a;
-	descent_ = d;
-	//width_   = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " "
 	//	<< descent_ << " " << width_ << "'\n";
@@ -147,18 +139,17 @@ void MathXArray::metricsT(TextMetricsInfo const & mi) const
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		int ww, aa, dd;
 		if (q) {
 			q->metricsT(p, mi);
-			ascent_  = max(ascent_,  q->ascent2(p));
-			descent_ = max(descent_, q->descent2(p));
-			width_  += q->width2(p);
+			q->dimensions(ww, aa, dd);
 			++it;
 		} else {
 			p->metricsT(mi);
-			ascent_  = max(ascent_,  p->ascent());
-			descent_ = max(descent_, p->descent());
-			width_  += p->width();
 		}
+		ascent_  = max(ascent_,  aa);
+		descent_ = max(descent_, dd);
+		width_  += ww;
 	}
 }
 

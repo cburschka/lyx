@@ -128,6 +128,8 @@ public:
 	virtual int descent() const { return 1; }
 	/// total width
 	virtual int width() const { return 2; }
+	/// all in one batch
+	virtual void dimensions(int & w, int & a, int & d) const;
 	/// total height (== ascent + descent)
 	virtual int height() const;
 

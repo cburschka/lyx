@@ -41,11 +41,9 @@ public:
 	void metricsT(MathInset const * nuc, TextMetricsInfo const & st) const;
 	///
 	void drawT(MathInset const * nuc, TextPainter &, int x, int y) const;
-	///
-	int ascent2(MathInset const * nuc) const;
-	///
-	int descent2(MathInset const * nuc) const;
-	///
+	/// helper
+	void dimensions2(MathInset const * nuc, int & w, int & a, int & d) const;
+	/// only the width
 	int width2(MathInset const * nuc) const;
 
 	///

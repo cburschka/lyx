@@ -21,6 +21,8 @@ public:
 	void draw(MathPainterInfo & pain, int x, int y) const;
 
 	///
+	void infoize(std::ostream & os) const;
+	///
 	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
