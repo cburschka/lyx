@@ -306,6 +306,10 @@ notify us.
 	are needed for compilation). A 'make symlinks' in linux kernel
 	sources fixes that. 
 
+  o if you are using RedHat Linux 7.x, you must make sure you have the
+    latest updated gcc and related packages installed (at least -85),
+    or LyX will not compile or will be mis-compiled.
+
   o if you get an error message when compiling LyX that looks like this :
 
     ../../src/minibuffer.h:17: using directive `Object' introduced
@@ -313,17 +317,6 @@ notify us.
 
     then you need to upgrade the version of the xforms library you have
     installed.
-
-  o If you are using RedHat 7.0 and the option --with-frontend=kde, you
-    will need to configure LyX as follows :
-
-	export QTDIR=/usr/lib/qt-1.45
-	export CC="egcs -L/usr/lib"
-	export CXX="egcs++ -L/usr/lib"
-	./configure --with-frontend=kde 
-
-    If you your version of gcc-c++ is > 2.96-69, you may not need to do
-    this.
 
   o If you have GNU gettext installed on your system (e.g. on linux),
     you may get tons of warnings like:
@@ -334,6 +327,13 @@ notify us.
     These are in harmless warnings caused by a bug in libintl.h, but
     will be solved if you use --with-included-gettext when configuring
     LyX.
+
+  o On Solaris, compiling with Sun CC 6.0 or less will fail in the sigc++
+    directory.  Sun's compiler can't handle some of the constructs in this
+    library.  If possible find and install a libsigc++ package and then
+    configure using the --without-included-libsigc option.
+
+    The alternative is to compile LyX using GNU gcc.
 
   o It is possible to compile lyx with Tru64 Unix cxx compiler
     version 6.2, provided one uses
@@ -406,11 +406,4 @@ Warning: Linking some objects which contain exception information sections
 
     You can safely ignore it. 
 
-
-  o On Solaris, compiling with Sun CC 6.0 or less will fail in the sigc++
-    directory.  Sun's compiler can't handle some of the constructs in this
-    library.  If possible find and install a libsigc++ package and then
-    configure using the --without-included-libsigc option.
-
-    The alternative is to compile LyX using GNU gcc.
 

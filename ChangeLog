@@ -1,3 +1,12 @@
+2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/paragraph.C (TeXFootnote): fix spacing in LaTeX output of
+	footnotes 
+
+2001-06-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* INSTALL: change RedHat stuff to insist on updating gcc
+ 
 2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/layouts/extletter.layout: 

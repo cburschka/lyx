@@ -3532,13 +3532,13 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 	switch (footnotekind) {
 	case LyXParagraph::FOOTNOTE:
 		if (style.intitle) {
-			os << "\\thanks{\n";
+			os << "%\n\\thanks{";
 			footer_in_body = false;
 			moving_arg = true;
 		} else {
 			if (foot_count == -1) {
 				// we're at depth 0 so we can use:
-				os << "\\footnote{%\n";
+				os << "%\n\\footnote{";
 				footer_in_body = false;
 			} else {
 				os << "\\footnotemark{}%\n";
@@ -3555,7 +3555,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 		}
 		break;
 	case LyXParagraph::MARGIN:
-		os << "\\marginpar{\n";
+		os << "%\n\\marginpar{";
 		break;
 	case LyXParagraph::FIG:
 		if (pextra_type == PEXTRA_FLOATFLT
@@ -3692,7 +3692,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 		if (footer_in_body) {
 			// This helps tell which of the multiple
 			// footnotetexts an error was in.
-			foot << "}%\n";
+			foot << "%\n}";
 			foot_texrow.newline();
 		} else {
 			os << '}';
