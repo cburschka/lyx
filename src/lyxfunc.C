@@ -585,6 +585,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INSET_OPTARG:
 		code = Inset::OPTARG_CODE;
 		break;
+	case LFUN_ENVIRONMENT_INSERT:
+		code = Inset::MINIPAGE_CODE;
+		break;
 	case LFUN_INDEX_INSERT:
 		code = Inset::INDEX_CODE;
 		break;

@@ -1,8 +1,10 @@
 
 2003-03-13 André Pönitz <poenitz@gmx.net>
 
+	* lyxfunc.C:
+	* text3.C:
 	* factory.C: make it aware of InsetEnv 
-
+	
 2003-03-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (setCursor): never ask for one past last

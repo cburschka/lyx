@@ -1605,6 +1605,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_WIDE_FLOAT:
 	case LFUN_INSET_WRAP:
 	case LFUN_TABULAR_INSERT:
+	case LFUN_ENVIRONMENT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(this, cmd, true, true);
