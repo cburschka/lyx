@@ -244,7 +244,7 @@ bool InsetFloat::insertInsetAllowed(Inset::Code code) const
 {
 	if (code == Inset::FLOAT_CODE)
 		return false;
-	if (inset.getLockingInset() != this)
+	if (inset.getLockingInset() != const_cast<InsetFloat *>(this))
 		return inset.insertInsetAllowed(code);
 	if ((code == Inset::FOOT_CODE) || (code == Inset::MARGIN_CODE))
 		return false;

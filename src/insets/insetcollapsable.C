@@ -428,7 +428,7 @@ void InsetCollapsable::toggleInsetCursor(BufferView * bv)
 UpdatableInset * InsetCollapsable::getLockingInset() const
 {
 	UpdatableInset * in = inset.getLockingInset();
-	if (&inset == in)
+	if (const_cast<InsetText *>(&inset) == in)
 		return const_cast<InsetCollapsable *>(this);
 	return in;
 }
