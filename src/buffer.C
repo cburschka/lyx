@@ -14,24 +14,6 @@
 
 #include <config.h>
 
-#include <fstream>
-#include <iomanip>
-#include <map>
-#include <stack>
-#include <list>
-
-#include <cstdlib>
-#include <cmath>
-#include <unistd.h>
-#include <sys/types.h>
-#include <utime.h>
-
-#include <algorithm>
-
-#ifdef HAVE_LOCALE
-#include <locale>
-#endif
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -106,6 +88,25 @@
 #include "BufferView.h"
 #include "ParagraphParameters.h"
 #include "iterators.h"
+
+#include <fstream>
+#include <iomanip>
+#include <map>
+#include <stack>
+#include <list>
+
+#include <cstdlib>
+#include <cmath>
+#include <unistd.h>
+#include <sys/types.h>
+#include <utime.h>
+
+#include <algorithm>
+
+#ifdef HAVE_LOCALE
+#include <locale>
+#endif
+
 
 using std::ostream;
 using std::ofstream;
@@ -188,7 +189,7 @@ Buffer::~Buffer()
 
 string const Buffer::getLatexName(bool no_path) const
 {
-	string name = ChangeExtension(MakeLatexName(filename), ".tex");
+	string const name = ChangeExtension(MakeLatexName(filename), ".tex");
 	if (no_path)
 		return OnlyFilename(name);
 	else
@@ -245,7 +246,8 @@ void Buffer::setReadonly(bool flag)
 // Should work on a list
 void Buffer::updateTitles() const
 {
-	if (users) users->owner()->updateWindowTitle();
+	if (users)
+		users->owner()->updateWindowTitle();
 }
 
 
@@ -253,7 +255,8 @@ void Buffer::updateTitles() const
 // Should work on a list
 void Buffer::resetAutosaveTimers() const
 {
-	if (users) users->owner()->resetAutosaveTimer();
+	if (users)
+		users->owner()->resetAutosaveTimer();
 }
 
 
@@ -388,12 +391,14 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 #ifndef NO_COMPABILITY
 void Buffer::insertErtContents(Paragraph * par, int & pos,
-			       LyXFont const & font, bool set_inactive) 
+			LyXFont const & f, bool set_inactive) 
 {
 	if (!ert_comp.contents.empty()) {
-		lyxerr[Debug::INSETS] << "ERT contents:\n"
-		       << ert_comp.contents << endl;
+		lyxerr[Debug::INSETS] << "ERT contents:\n'"
+				      << ert_comp.contents << "'" << endl;
 		Inset * inset = new InsetERT(ert_comp.contents, true);
+		LyXFont font;
+		font.setLanguage(f.language());
 		par->insertInset(pos++, inset, font);
 		ert_comp.contents.erase();
 	}

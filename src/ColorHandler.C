@@ -108,12 +108,13 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		// the color closest to the one we want.
 		Visual * vi = DefaultVisual(display, DefaultScreen(display));
 
-		XColor * cmap = new XColor[vi->map_entries];
+		//XColor * cmap = new XColor[vi->map_entries];
+		boost::scoped_array<XColor> cmap(new XColor[vi->map_entries]);
 
 		for (int i = 0; i < vi->map_entries; ++i) {
 			cmap[i].pixel = i;
 		}
-		XQueryColors(display, colormap, cmap, vi->map_entries);
+		XQueryColors(display, colormap, cmap.get(), vi->map_entries);
 
 		// Walk through the cmap and look for close colors.
 		int closest_pixel = 0;
@@ -153,7 +154,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		       << _("Pixel [") << closest_pixel << _("] is used.") 
 		       << endl;
 		val.foreground = cmap[closest_pixel].pixel;
-		delete[] cmap;
+		//delete[] cmap;
 	}
 
 	val.function = GXcopy;
@@ -228,10 +229,11 @@ void LyXColorHandler::updateColor (LColor::color c)
 	for (int ls = 0; ls < 3; ++ls)
 		for (int lw = 0; lw < 2; ++lw) {
 			int const index = lw + (ls << 1) + (c << 6);
-			if (lineGCcache.find(index) != lineGCcache.end()) {
-				gc = lineGCcache[index];
-				XFreeGC(display,gc);
-				lineGCcache.erase(index);
+			LineGCCache::iterator it = lineGCcache.find(index);
+			if (it != lineGCcache.end()) {
+				gc = it->second;
+				XFreeGC(display, gc);
+				lineGCcache.erase(it);
 				getGCLinepars(PainterBase::line_style(ls),
 					      PainterBase::line_width(lw), c);
 			}

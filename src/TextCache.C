@@ -16,12 +16,12 @@
 #pragma implementation
 #endif
 
-#include <algorithm>
-
 #include "TextCache.h"
 #include "buffer.h"
 #include "bufferlist.h"
 #include "debug.h"
+
+#include <algorithm>
 
 using std::ostream;
 using std::for_each;
