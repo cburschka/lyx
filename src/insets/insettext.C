@@ -1266,9 +1266,11 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			 * typed in now. Depends on lyxrc settings
 			 * "auto_region_delete", which defaults to
 			 * true (on). */
-
+#if 0
+			// This should not be needed here and is also WRONG!
 			setUndo(bv, Undo::INSERT,
 				lt->cursor.par(), lt->cursor.par()->next());
+#endif
 			bv->switchKeyMap();
 			if (lyxrc.auto_region_delete) {
 				if (lt->selection.set()) {
@@ -1359,8 +1361,6 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		updwhat = CURSOR;
 		break;
 	case LFUN_BACKSPACE: {
-		setUndo(bv, Undo::DELETE,
-			lt->cursor.par(), lt->cursor.par()->next());
 		if (lt->selection.set())
 			lt->cutSelection(bv, true, false);
 		else
@@ -1371,8 +1371,6 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_DELETE: {
-		setUndo(bv, Undo::DELETE,
-			lt->cursor.par(), lt->cursor.par()->next());
 		if (lt->selection.set()) {
 			lt->cutSelection(bv, true, false);
 		} else {
@@ -1384,8 +1382,6 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_CUT: {
-		setUndo(bv, Undo::DELETE,
-			lt->cursor.par(), lt->cursor.par()->next());
 		lt->cutSelection(bv);
 		updwhat = CURSOR_PAR;
 		updflag = true;
@@ -1425,8 +1421,11 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 				break;
 			}
 		}
+#if 0
+		// This should not be needed here and is also WRONG!
 		setUndo(bv, Undo::INSERT,
 			lt->cursor.par(), lt->cursor.par()->next());
+#endif
 		lt->pasteSelection(bv);
 		// bug 393
 		lt->clearSelection();
@@ -1459,8 +1458,11 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			result = DISPATCHED;
 			break;
 		}
+#if 0
+		// This should not be needed here and is also WRONG!
 		setUndo(bv, Undo::INSERT,
 			lt->cursor.par(), lt->cursor.par()->next());
+#endif
 		lt->insertChar(bv, Paragraph::META_NEWLINE);
 		updwhat = CURSOR | CURSOR_PAR;
 		updflag = true;

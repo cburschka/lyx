@@ -1,3 +1,11 @@
+2002-10-14  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): alter the order in which the
+	new undopar is added to the LyXText, as we have to set first
+	the right prev/next and then add it as otherwise the rebuild of
+	LyXText is not correct. Also reset the cursor to the right paragraph,
+	with this IMO we could remove the hack in "redoParagraphs()".
+
 2002-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* Bufferview_pimpl.C (dispatch): call InsetCitation::setLoadingBuffer

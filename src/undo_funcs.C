@@ -154,15 +154,26 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		}
 	}
 
+	// The order here is VERY IMPORTANT. We have to set the right
+	// next/prev pointer in the paragraphs so that a rebuild of
+	// the LyXText works!!!
+
+	// thread the end of the undo onto the par in front if any
+	if (lastundopar) {
+		lastundopar->next(behind);
+		if (behind)
+			behind->previous(lastundopar);
+	}
+
 	// put the new stuff in the list if there is one
 	if (undopar) {
+		undopar->previous(before);
 		if (before)
 			before->next(undopar);
 		else
 			bv->text->ownerParagraph(firstUndoParagraph(bv, undo.number_of_inset_id)->id(),
 						 undopar);
 
-		undopar->previous(before);
 	} else {
 		// We enter here on DELETE undo operations where we have to
 		// substitue the second paragraph with the first if the removed
@@ -174,21 +185,20 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		}
 	}
 
-	// thread the end of the undo onto the par in front if any
-	if (lastundopar) {
-		lastundopar->next(behind);
-		if (behind)
-			behind->previous(lastundopar);
-	}
-
 
 	// Set the cursor for redoing
-	if (before) {
+	if (before) { // if we have a par before the undopar
 		Inset * it = before->inInset();
 		if (it)
 			it->getLyXText(bv)->setCursorIntern(bv, before, 0);
 		else
 			bv->text->setCursorIntern(bv, before, 0);
+	} else { // otherwise this is the first one and we start here
+		Inset * it = undopar->inInset();
+		if (it)
+			it->getLyXText(bv)->setCursorIntern(bv, undopar, 0);
+		else
+			bv->text->setCursorIntern(bv, undopar, 0);
 	}
 
 	Paragraph * endpar = 0;
