@@ -92,17 +92,28 @@ string const uniqueID()
 
 InsetInclude::InsetInclude(Params const & p)
 	: params_(p), include_label(uniqueID()),
-	  preview_(new PreviewImpl(*this))
+	  preview_(new PreviewImpl(*this)),
+	  set_label_(false)
 {}
 
 
 InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
 	: include_label(uniqueID()),
-	  preview_(new PreviewImpl(*this))
+	  preview_(new PreviewImpl(*this)),
+	  set_label_(false)
 {
 	params_.cparams = p;
 	params_.masterFilename_ = b.fileName();
 }
+
+
+InsetInclude::InsetInclude(InsetInclude const & other)
+	: Inset(other),
+	  params_(other.params_),
+	  include_label(other.include_label),
+	  preview_(new PreviewImpl(*this)),
+	  set_label_(other.set_label_)
+{}
 
 
 InsetInclude::~InsetInclude()
@@ -137,7 +148,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return InsetButton::localDispatch(cmd);
+		return Inset::localDispatch(cmd);
 	}
 }
 
@@ -511,7 +522,12 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = preview_->pimage()->descent();
 		dim.wid = preview_->pimage()->width();
 	} else {
-		InsetButton::metrics(mi, dim);
+		if (!set_label_) {
+			set_label_ = true;
+			button_.update(getScreenLabel(mi.base.bv->buffer()),
+				       editable() != NOT_EDITABLE);
+		}
+		button_.metrics(mi, dim);
 	}
 	dim_ = dim;
 }
@@ -521,7 +537,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	cache(pi.base.bv);
 	if (!preview_->previewReady()) {
-		InsetButton::draw(pi, x, y);
+		button_.draw(pi, x, y);
 		return;
 	}
 
@@ -530,6 +546,12 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 
 	pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
 			    *(preview_->pimage()->image()));
+}
+
+
+BufferView * InsetInclude::view() const
+{
+	return button_.view();
 }
 
 

@@ -21,7 +21,7 @@
 
 
 class Dialogs;
-class GraphicInset;
+class GraphicRenderer;
 class LaTeXFeatures;
 
 ///
@@ -104,7 +104,7 @@ private:
 	string const graphic_label;
 
 	/// The thing that actually draws the image on LyX's screen.
-	boost::scoped_ptr<GraphicInset> const graphic_;
+	boost::scoped_ptr<GraphicRenderer> const graphic_;
 };
 
 

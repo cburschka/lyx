@@ -15,15 +15,21 @@
 #ifndef COMMAND_INSET_H
 #define COMMAND_INSET_H
 
-#include "button_inset.h"
+#include "math_nestinset.h"
+#include "insets/renderers.h"
+
 
 /// Inset for things like \name[options]{contents}
-class CommandInset : public ButtonInset {
+class CommandInset : public MathNestInset {
 public:
 	///
 	explicit CommandInset(string const & name);
 	///
 	MathInset * clone() const;
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
@@ -31,11 +37,16 @@ public:
 	///
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
-	string screenLabel() const;
-	/// generate something that will be understodd by the Dialogs.
+	virtual string const screenLabel() const;
+	/// generate something that will be understood by the Dialogs.
 	string const createDialogStr(string const & name) const;
-public:
+
+	string const & commandname() const { return name_; }
+
+private:
 	string name_;
+	mutable bool set_label_;
+	mutable ButtonRenderer button_;
 };
 
 #endif

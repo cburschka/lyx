@@ -132,7 +132,6 @@ src/frontends/xforms/xformsBC.h
 src/frontends/xforms/xforms_helpers.C
 src/gettext.h
 src/importer.C
-src/insets/graphicinset.C
 src/insets/inset.C
 src/insets/insetbibtex.C
 src/insets/insetcaption.C
@@ -158,6 +157,7 @@ src/insets/insettheorem.C
 src/insets/insettoc.C
 src/insets/inseturl.C
 src/insets/insetwrap.C
+src/insets/renderers.C
 src/ispell.C
 src/kbsequence.C
 src/lengthcommon.C

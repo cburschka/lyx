@@ -14,8 +14,9 @@
 
 #include "insetcommand.h"
 #include "dimension.h"
-
+#include "renderers.h"
 #include <boost/scoped_ptr.hpp>
+
 
 class Buffer;
 struct LaTeXFeatures;
@@ -23,7 +24,7 @@ struct LaTeXFeatures;
 // Created by AAS 970521
 
 /// for including tex/lyx files
-class InsetInclude: public InsetButton, boost::noncopyable {
+class InsetInclude: public Inset {
 public:
 	/// the type of inclusion
 	enum Flags {
@@ -52,8 +53,8 @@ public:
 
 	///
 	InsetInclude(Params const &);
-	///
 	InsetInclude(InsetCommandParams const &, Buffer const &);
+	InsetInclude(InsetInclude const &);
 
 	~InsetInclude();
 
@@ -64,6 +65,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	virtual BufferView * view() const;
 
 	/// get the parameters
 	Params const & params(void) const;
@@ -131,6 +134,8 @@ private:
 
 	/// cache
 	mutable Dimension dim_;
+	mutable bool set_label_;
+	mutable ButtonRenderer button_;
 };
 
 

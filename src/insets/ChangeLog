@@ -1,5 +1,30 @@
 2003-06-11  Angus Leeming  <leeming@lyx.org>
 
+	* Makefile.am: remove graphicinset.[Ch], insetbutton.[Ch].
+	Add renderers.[Ch].
+
+	* insetbutton.[Ch]: removed.
+	* graphicinset.[Ch]: renamed as renderers.[Ch].
+
+	* renderers.[Ch]: new files. Rename GraphicsInset as GraphicsRenderer.
+	Create a new class ButtonRenderer using the InsetButton::metrics() and
+	draw() functions.
+	Derive both from a common RenderedInset base class.
+
+	* insetcommand.[Ch]:
+	* insetinclude.[Ch]: derive from Inset, not InsetButton.
+	Give it a ButtonRenderer member variable. Use it.
+	Give the classes working copy c-tors.
+	No longer derive from boost::noncopyable.
+
+	* insetexternal.[Ch]: enable the inset to choose dynamically whether to
+	display its contents as a button or as a graphic.
+
+	* insetgraphic.[Ch]: changes due to the change in name GraphicInset ->
+	GraphicRenderer.
+
+2003-06-11  Angus Leeming  <leeming@lyx.org>
+
 	* insetcite.C (localDispatch): reformat.
 
 	* insetref.C (localDispatch): enable dialog to be lauched.

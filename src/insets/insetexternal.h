@@ -20,7 +20,7 @@
 #include <boost/signals/trackable.hpp>
 
 
-class GraphicInset;
+class RenderInset;
 
 ///
 class InsetExternal : public Inset, public boost::signals::trackable {
@@ -116,7 +116,7 @@ private:
 	Params params_;
 
 	/// The thing that actually draws the image on LyX's screen.
-	boost::scoped_ptr<GraphicInset> const renderer_;
+	boost::scoped_ptr<RenderInset> renderer_;
 };
 
 

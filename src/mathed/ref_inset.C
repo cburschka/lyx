@@ -70,11 +70,11 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 }
 
 
-string RefInset::screenLabel() const
+string const RefInset::screenLabel() const
 {
 	string str;
 	for (int i = 0; !types[i].latex_name.empty(); ++i)
-		if (name_ == types[i].latex_name) {
+		if (commandname() == types[i].latex_name) {
 			str = _(types[i].short_gui_name);
 			break;
 		}
@@ -90,9 +90,9 @@ string RefInset::screenLabel() const
 
 void RefInset::validate(LaTeXFeatures & features) const
 {
-	if (name_ == "vref" || name_ == "vpageref")
+	if (commandname() == "vref" || commandname() == "vpageref")
 		features.require("varioref");
-	else if (name_ == "prettyref")
+	else if (commandname() == "prettyref")
 		features.require("prettyref");
 }
 

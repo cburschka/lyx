@@ -14,10 +14,10 @@
 #define INSET_LATEXCOMMAND_H
 
 
-#include "insetbutton.h"
+#include "inset.h"
 #include "insetcommandparams.h"
+#include "renderers.h"
 #include "mailinset.h"
-#include <boost/utility.hpp>
 
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
@@ -27,13 +27,15 @@
  */
 
 ///
-class InsetCommand : public InsetButton, boost::noncopyable {
+class InsetCommand : public Inset {
 public:
 	///
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///
-	InsetCommand(InsetCommand const &);
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(Buffer const *, std::ostream & os) const
 		{ p_.write(os); }
@@ -55,29 +57,37 @@ public:
 	Inset::Code lyxCode() const { return Inset::NO_CODE; }
 
 	///
+	InsetCommandParams const & params() const { return p_; }
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
+	///
+	string const & getContents() const { return p_.getContents(); }
+	///
+	void setContents(string const & c) { p_.setContents(c); }
+	///
+	string const & getOptions() const { return p_.getOptions(); }
+
+protected:
+	///
 	string const getCommand() const { return p_.getCommand(); }
 	///
 	string const & getCmdName() const { return p_.getCmdName(); }
-	///
-	string const & getOptions() const { return p_.getOptions(); }
-	///
-	string const & getContents() const { return p_.getContents(); }
 	///
 	void setCmdName(string const & n) { p_.setCmdName(n); }
 	///
 	void setOptions(string const & o) { p_.setOptions(o); }
 	///
-	void setContents(string const & c) { p_.setContents(c); }
-	///
-	InsetCommandParams const & params() const { return p_; }
-	///
 	void setParams(InsetCommandParams const &);
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
+	virtual BufferView * view() const;
+	/// This should provide the text for the button
+	virtual string const getScreenLabel(Buffer const *) const = 0;
 
 private:
 	///
 	InsetCommandParams p_;
+	mutable bool set_label_;
+	mutable ButtonRenderer button_;
 };
 
 

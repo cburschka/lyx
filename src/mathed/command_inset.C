@@ -6,7 +6,9 @@
 
 
 CommandInset::CommandInset(string const & name)
-	: name_(name)
+	: MathNestInset(2),
+	  name_(name),
+	  set_label_(false)
 {
 	lock_ = true;
 }
@@ -18,12 +20,27 @@ MathInset * CommandInset::clone() const
 }
 
 
+void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	if (!set_label_) {
+		set_label_ = true;
+		button_.update(screenLabel(), true);
+	}
+	button_.metrics(mi, dim);
+}
+
+
+void CommandInset::draw(PainterInfo & pi, int x, int y) const
+{
+	button_.draw(pi, x, y);
+}
+
 dispatch_result
 CommandInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 		default:
-			return ButtonInset::dispatch(cmd, idx, pos);
+			return MathNestInset::dispatch(cmd, idx, pos);
 	}
 	return UNDISPATCHED;
 }
@@ -38,9 +55,9 @@ void CommandInset::write(WriteStream & os) const
 }
 
 
-string CommandInset::screenLabel() const
+string const CommandInset::screenLabel() const
 {
-	return name_;
+       return name_;
 }
 
 
@@ -53,5 +70,3 @@ string const CommandInset::createDialogStr(string const & name) const
 	wsdata << "\n\\end_inset\n\n";
 	return STRCONV(data.str());
 }
-
-

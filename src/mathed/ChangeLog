@@ -1,3 +1,13 @@
+2003-06-11  Angus Leeming  <leeming@lyx.org>
+
+	* button_inset.[Ch]: removed.
+	* Makefile.am: remove button_inset.[Ch].
+
+	* command_inset.[Ch]: no longer derived from ButtonInset.
+	Instead has a ButtonRenderer member variable.
+
+	* ref_inset.[Ch]: associated changes.
+	
 2003-06-03  John Levon  <levon@movementarian.org>
 
 	* formula.[Ch]:

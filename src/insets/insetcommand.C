@@ -16,6 +16,7 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "lyxlex.h"
+#include "metricsinfo.h"
 
 #include "frontends/Painter.h"
 
@@ -27,13 +28,31 @@ using std::ostream;
 
 
 InsetCommand::InsetCommand(InsetCommandParams const & p)
-	: p_(p.getCmdName(), p.getContents(), p.getOptions())
+	: p_(p.getCmdName(), p.getContents(), p.getOptions()),
+	  set_label_(false)
 {}
 
 
-InsetCommand::InsetCommand(InsetCommand const & ic)
-	: p_(ic.p_)
+BufferView * InsetCommand::view() const
 {
+	return button_.view();
+}
+
+
+void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	if (!set_label_) {
+		set_label_ = true;
+		button_.update(getScreenLabel(mi.base.bv->buffer()),
+			       editable() != NOT_EDITABLE);
+	}
+	button_.metrics(mi, dim);
+}
+
+
+void InsetCommand::draw(PainterInfo & pi, int x, int y) const
+{
+	button_.draw(pi, x, y);
 }
 
 
@@ -42,6 +61,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 	p_.setCmdName(p.getCmdName());
 	p_.setContents(p.getContents());
 	p_.setOptions(p.getOptions());
+	set_label_ = false;
 }
 
 

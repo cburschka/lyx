@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "insetexternal.h"
-#include "insets/graphicinset.h"
+#include "insets/renderers.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -82,19 +82,20 @@ InsetExternal::Params::~Params()
 
 
 InsetExternal::InsetExternal()
-	: renderer_(new GraphicInset)
-{
-	renderer_->connect(boost::bind(&InsetExternal::statusChanged, this));
-}
+	: renderer_(new ButtonRenderer)
+{}
 
 
 InsetExternal::InsetExternal(InsetExternal const & other)
 	: Inset(other),
 	  boost::signals::trackable(),
 	  params_(other.params_),
-	  renderer_(new GraphicInset(*other.renderer_))
+	  renderer_(other.renderer_->clone())
 {
-	renderer_->connect(boost::bind(&InsetExternal::statusChanged, this));
+	GraphicRenderer * ptr = dynamic_cast<GraphicRenderer *>(renderer_.get());
+	if (ptr) {
+		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
+	}
 }
 
 
@@ -231,16 +232,34 @@ void InsetExternal::setParams(Params const & p, string const & filepath)
 	params_.display = p.display;
 	params_.lyxscale = p.lyxscale;
 
-	// A temporary set of params; whether the thing can be displayed
-	// within LyX depends on the availability of this template.
-	Params tmp = params_;
-	if (!getTemplatePtr(params_))
-		tmp.display = grfx::NoDisplay;
-	
-	// Update the display using the new parameters.
-	if (params_.filename.empty() || !filepath.empty())
-		renderer_->update(get_grfx_params(tmp, filepath));	
-	renderer_->setNoDisplayMessage(getScreenLabel(params_));
+	// We display the inset as a button by default.
+	bool display_button = (!getTemplatePtr(params_) ||
+			       params_.filename.empty() ||
+			       filepath.empty() ||
+			       params_.display == grfx::NoDisplay);
+
+	if (display_button) {
+		ButtonRenderer * button_ptr =
+			dynamic_cast<ButtonRenderer *>(renderer_.get());
+		if (!button_ptr) {
+			button_ptr = new ButtonRenderer;
+			renderer_.reset(button_ptr);
+		}
+
+		button_ptr->update(getScreenLabel(params_), true);
+
+	} else {
+		GraphicRenderer * graphic_ptr =
+			dynamic_cast<GraphicRenderer *>(renderer_.get());
+		if (!graphic_ptr) {
+			graphic_ptr = new GraphicRenderer;
+			graphic_ptr->connect(
+				boost::bind(&InsetExternal::statusChanged, this));
+			renderer_.reset(graphic_ptr);
+		}
+
+		graphic_ptr->update(get_grfx_params(params_, filepath));
+	}
 }
 
 

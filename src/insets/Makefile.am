@@ -17,8 +17,8 @@ libinsets_la_SOURCES = \
 	mailinset.h \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
-	graphicinset.C \
-	graphicinset.h \
+	renderers.C \
+	renderers.h \
 	inset.C \
 	inset.h \
 	insetbase.h \
@@ -27,8 +27,6 @@ libinsets_la_SOURCES = \
 	insetbibitem.h \
 	insetbibtex.C \
 	insetbibtex.h \
-	insetbutton.C \
-	insetbutton.h \
 	insetcaption.C \
 	insetcaption.h \
 	insetcite.C \

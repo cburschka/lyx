@@ -20,7 +20,7 @@ public:
 	///
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
-	string screenLabel() const;
+	string const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

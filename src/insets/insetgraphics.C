@@ -54,7 +54,7 @@ TODO
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
-#include "insets/graphicinset.h"
+#include "insets/renderers.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -134,7 +134,7 @@ string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
 
 InsetGraphics::InsetGraphics()
 	: graphic_label(uniqueID()),
-	  graphic_(new GraphicInset)
+	  graphic_(new GraphicRenderer)
 {
 	graphic_->connect(boost::bind(&InsetGraphics::statusChanged, this));
 }
@@ -144,7 +144,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: Inset(ig),
 	  boost::signals::trackable(),
 	  graphic_label(uniqueID()),
-	  graphic_(new GraphicInset(*ig.graphic_))
+	  graphic_(new GraphicRenderer(*ig.graphic_))
 {
 	graphic_->connect(boost::bind(&InsetGraphics::statusChanged, this));
 	setParams(ig.params());
@@ -552,7 +552,7 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 
 
 // For explanation on inserting graphics into DocBook checkout:
-// http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
+// http://en.tldp.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
 int InsetGraphics::docbook(Buffer const *, ostream & os,
 			   bool /*mixcont*/) const
