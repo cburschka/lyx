@@ -1,3 +1,7 @@
+2002-02-01  André Pönitz <poenitz@gmx.net>
+
+	* math_undersetinset.[Ch]: implement direct support for \underset
+
 2002-01-28  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* math_support.C: removed the arrays latex_mathstyle[] and
@@ -73,7 +77,6 @@
 	* formulabase.[Ch]: implement simple search
 
 	* math_sizeinset.[Ch]: support for \displaystyle etc
-
 
 2001-12-18  Dekel Tsur  <dekelts@tau.ac.il>
 

@@ -21,6 +21,7 @@
 #include "math_sqrtinset.h"
 #include "math_stackrelinset.h"
 #include "math_symbolinset.h"
+#include "math_undersetinset.h"
 #include "math_unknowninset.h"
 
 
@@ -41,6 +42,8 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathSymbolInset(l));
 	case LM_TK_STACK:
 		return MathAtom(new MathStackrelInset);
+	case LM_TK_UNDERSET:
+		return MathAtom(new MathUndersetInset);
 	case LM_TK_KERN: 
 		return MathAtom(new MathKernInset);
 	case LM_TK_BINOM:

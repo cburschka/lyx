@@ -138,6 +138,7 @@ key_type wordlist_array[] =
 	{"underbar",  LM_TK_DECORATION, 0},
 	{"underbrace",  LM_TK_DECORATION, 0},
 	{"underline",  LM_TK_DECORATION, 0},
+	{"underset",  LM_TK_UNDERSET, 0},
 	{"vdots",  LM_TK_DOTS, 0},
 	{"vec",  LM_TK_DECORATION, 0},
 	{"widehat",  LM_TK_DECORATION, 0},
