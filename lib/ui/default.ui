@@ -394,11 +394,11 @@ End
 # Setup your favorite Toolbar here:
 # Only three commands are allowed inside the begin_toolbar and end_toolbar
 # directives: 
-#   Icon "<action> [<parameter>]" adds an icon to the toolbar performing
+#   Item "<action> [<parameter>]" adds an icon to the toolbar performing
 #          "<action> <parameter>"
 #      Examples:
-#      Icon "font-size small"
-#      Icon set-emph
+#      Item "font-size small"
+#      Item set-emph
 #
 #   Layouts adds the layouts combo-box to the toolbar
 #
@@ -413,26 +413,26 @@ End
 
 Toolbar
     Layouts
-    Icon "file-open"
-    Icon "buffer-write"
-    Icon "buffer-print"
+    Item "Open document" "file-open"
+    Item "Save document" "buffer-write"
+    Item "Print document" "buffer-print"
     Separator
-    Icon "cut"
-    Icon "copy"
-    Icon "paste"
+    Item "Cut selection" "cut"
+    Item "Copy selection" "copy"
+    Item "Paste" "paste"
     Separator
-    Icon "font-emph"
-    Icon "font-noun"
-    Icon "font-free-apply"
+    Item "Toggle emphasis style" "font-emph"
+    Item "Toggle noun style" "font-noun"
+    Item "Toggle free style" "font-free-apply"
     Separator
-    Icon "ert-insert"
-    Icon "math-mode"
-    #Icon "math-panel"
+    Item "Insert TeX" "ert-insert"
+    Item "Insert math" "math-mode"
+    #Item "math-panel"
     Separator
-    Icon "footnote-insert"
-    Icon "marginalnote-insert"
-    Icon "depth-increment"
+    Item "Insert footnote" "footnote-insert"
+    Item "Insert margin note" "marginalnote-insert"
+    Item "Increase depth" "depth-increment"
     Separator
-    Icon "dialog-show-new-inset graphics"
-    Icon "tabular-insert"
+    Item "Insert graphics" "dialog-show-new-inset graphics"
+    Item "Insert table" "tabular-insert"
 End

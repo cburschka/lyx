@@ -26,8 +26,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include "ControlMath.h"
-
 #include <boost/tuple/tuple.hpp>
 
 #include "QtView.h"
@@ -39,44 +37,6 @@
 #include <qsizepolicy.h>
 
 using std::endl;
-
-namespace {
-
-QPixmap getIconPixmap(int action)
-{
-	FuncRequest f = lyxaction.retrieveActionArg(action);
-
-	string fullname;
-
-	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
-		fullname = find_xpm(f.argument.substr(1));
-	} else {
-		string const name = lyxaction.getActionName(f.action);
-		string xpm_name(name);
-
-		if (!f.argument.empty())
-			xpm_name = subst(name + ' ' + f.argument, ' ','_');
-
-		fullname = LibFileSearch("images", xpm_name, "xpm");
-	}
-
-
-	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Full icon name is `"
-				   << fullname << '\'' << endl;
-		return QPixmap(toqstr(fullname));
-	}
-
-	lyxerr << "Unable to find icon `" << fullname << '\'' << endl;
-	fullname = LibFileSearch("images", "unknown", "xpm");
-	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Using default `unknown' icon"
-				   << endl;
-	}
-	return QPixmap(toqstr(fullname));
-}
-
-} // namespace anon
 
 
 class QLComboBox : public QComboBox {
@@ -233,7 +193,7 @@ void Toolbar::Pimpl::openLayoutList()
 }
 
 
-void Toolbar::Pimpl::add(int action)
+void Toolbar::Pimpl::add(int action, string const & tooltip)
 {
 	if (!toolbars_.size()) {
 		toolbars_.push_back(new QToolBar(owner_));
@@ -258,9 +218,9 @@ void Toolbar::Pimpl::add(int action)
 		break;
 	}
 	default: {
+		QPixmap p = QPixmap(toolbarbackend.getIcon(action).c_str());
 		QToolButton * tb =
-			new QToolButton(getIconPixmap(action),
-			qt_(lyxaction.helpText(action)), "",
+			new QToolButton(p, toqstr(tooltip), "",
 			proxy_.get(), SLOT(button_selected()), toolbars_.back());
 
 		map_[tb] = action;

@@ -38,7 +38,7 @@ public:
 	~Pimpl();
 
 	/// add a new button to the toolbar.
-	void add(int action);
+	void add(int action, string const & tooltip);
 
 	/// update the state of the icons
 	void update();

@@ -27,8 +27,7 @@ Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarBackend const & backend)
 	// extracts the toolbar actions from  the backend
 	for (ToolbarBackend::const_iterator cit = backend.begin();
 	     cit != backend.end(); ++cit) {
-		pimpl_->add((*cit));
-		lyxerr[Debug::GUI] << "tool action: " << (*cit) << endl;
+		pimpl_->add(cit->first, cit->second);
 	}
 }
 

@@ -1,3 +1,9 @@
+2003-04-08  John Levon  <levon@movementarian.org>
+
+	* ToolbarBackend.h:
+	* ToolbarBackend.C: add getIcon(), handle tooltip,
+	and change from "Icon" to "Item".
+
 2003-04-08  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView.C (lockInset): another bad getchar crunched

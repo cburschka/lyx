@@ -15,7 +15,12 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "gettext.h"
+
 #include "support/lstrings.h"
+#include "support/filetools.h"
+
+#include "frontends/controllers/ControlMath.h"
 
 using std::endl;
 
@@ -35,7 +40,7 @@ enum _tooltags {
 
 struct keyword_item toolTags[TO_LAST - 1] = {
 	{ "end", TO_ENDTOOLBAR },
-	{ "icon", TO_ADD },
+	{ "item", TO_ADD },
 	{ "layouts", TO_LAYOUTS },
 	{ "newline", TO_NEWLINE },
 	{ "separator", TO_SEPARATOR }
@@ -49,9 +54,9 @@ ToolbarBackend::ToolbarBackend()
 }
 
 
-void ToolbarBackend::add(int action)
+void ToolbarBackend::add(int action, string const & tooltip)
 {
-	items.push_back(action);
+	items.push_back(make_pair(action, tooltip));
 }
 
 
@@ -74,11 +79,13 @@ void ToolbarBackend::read(LyXLex & lex)
 		switch (lex.lex()) {
 		case TO_ADD:
 			if (lex.next(true)) {
+				string const tooltip = _(lex.getString());
+				lex.next(true);
 				string const func = lex.getString();
 				lyxerr[Debug::PARSER]
 					<< "ToolbarBackend::read TO_ADD func: `"
 					<< func << '\'' << endl;
-				add(func);
+				add(func, tooltip);
 			}
 			break;
 
@@ -107,7 +114,7 @@ void ToolbarBackend::read(LyXLex & lex)
 }
 
 
-void ToolbarBackend::add(string const & func)
+void ToolbarBackend::add(string const & func, string const & tooltip)
 {
 	int const tf = lyxaction.LookupFunc(func);
 
@@ -115,6 +122,34 @@ void ToolbarBackend::add(string const & func)
 		lyxerr << "ToolbarBackend::add: no LyX command called `"
 		       << func << "' exists!" << endl;
 	} else {
-		add(tf);
+		add(tf, tooltip);
 	}
+}
+
+
+string const ToolbarBackend::getIcon(int action)
+{
+	string fullname;
+	FuncRequest f = lyxaction.retrieveActionArg(action);
+
+	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
+		fullname = find_xpm(f.argument.substr(1));
+	} else {
+		string const name = lyxaction.getActionName(f.action);
+		string xpm_name(name);
+
+		if (!f.argument.empty())
+			xpm_name = subst(name + ' ' + f.argument, ' ', '_');
+
+		fullname = LibFileSearch("images", xpm_name, "xpm");
+	}
+
+
+	if (!fullname.empty()) {
+		lyxerr[Debug::GUI] << "Full icon name is `"
+				   << fullname << '\'' << endl;
+		return fullname;
+	}
+
+	return LibFileSearch("images", "unknown", "xpm");
 }

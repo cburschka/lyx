@@ -301,7 +301,7 @@ void setPixmap(FL_OBJECT * obj, int action)
 } // namespace anon
 
 
-void Toolbar::Pimpl::add(int action)
+void Toolbar::Pimpl::add(int action, string const & tooltip)
 {
 	toolbarItem item;
 	item.action = action;
@@ -348,9 +348,7 @@ void Toolbar::Pimpl::add(int action)
 		// Remove the blue feedback rectangle
 		fl_set_pixmapbutton_focus_outline(obj, 0);
 
-		// initialise the tooltip
-		string const tip = _(lyxaction.helpText(obj->argument));
-		tooltip_->init(obj, tip);
+		tooltip_->init(obj, tooltip);
 
 		// The view that this object belongs to.
 		obj->u_vdata = owner_;
