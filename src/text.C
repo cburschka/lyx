@@ -45,83 +45,105 @@ static const int LYX_PAPER_MARGIN = 20;
 // ale070405
 extern int bibitemMaxWidth(Painter &, LyXFont const &);
 
-static int iso885968x[] = {
-	0xbc,	// 0xa8 = fathatan
-	0xbd,	// 0xa9 = dammatan
-	0xbe,	// 0xaa = kasratan
-	0xdb,	// 0xab = fatha
-	0xdc,	// 0xac = damma
-	0xdd,	// 0xad = kasra
-	0xde,	// 0xae = shadda
-	0xdf,	// 0xaf = sukun
+unsigned char const arabic_start = 0xc1;
 
-	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, // 0xb0-0xbf
+unsigned char arabic_table[63][2] = {
+	{0xc1, 0xc1}, // 0xc1 = hamza
+	{0xc2, 0xc2}, // 0xc2 = ligature madda on alef
+	{0xc3, 0xc3}, // 0xc3 = ligature hamza on alef
+	{0xc4, 0xc4}, // 0xc4 = ligature hamza on waw
+	{0xc5, 0xc5}, // 0xc5 = ligature hamza under alef
+	{0xc6, 0xc0}, // 0xc6 = ligature hamza on ya
+	{0xc7, 0xc7}, // 0xc7 = alef
+	{0xc8, 0xeb}, // 0xc8 = baa
+	{0xc9, 0xc9}, // 0xc9 = taa marbuta
+	{0xca, 0xec}, // 0xca = taa
+	{0xcb, 0xed}, // 0xcb = thaa
+	{0xcc, 0xee}, // 0xcc = jeem
+	{0xcd, 0xef}, // 0xcd = haa
+	{0xce, 0xf0}, // 0xce = khaa
+	{0xcf, 0xcf}, // 0xcf = dal
 
-	0,	// 0xc0	
-	0xc1,	// 0xc1 = hamza
-	0xc2,	// 0xc2 = ligature madda
-	0xc3,	// 0xc3 = ligature hamza on alef
-	0xc4,	// 0xc4 = ligature hamza on waw
-	0xc5,	// 0xc5 = ligature hamza under alef
-	0xc0,	// 0xc6 = ligature hamza on ya 
-	0xc7,	// 0xc7 = alef
-	0xeb,	// 0xc8 = baa 
-	0xc9,	// 0xc9 = taa marbuta
-	0xec,	// 0xca = taa
-	0xed,	// 0xcb = thaa
-	0xee,	// 0xcc = jeem
-	0xef,	// 0xcd = haa
-	0xf0,	// 0xce = khaa
-	0xcf,	// 0xcf = dal
+	{0xd0, 0xd0}, // 0xd0 = thal
+	{0xd1, 0xd1}, // 0xd1 = ra
+	{0xd2, 0xd2}, // 0xd2 = zain
+	{0xd3, 0xf1}, // 0xd3 = seen
+	{0xd4, 0xf2}, // 0xd4 = sheen
+	{0xd5, 0xf3}, // 0xd5 = sad
+	{0xd6, 0xf4}, // 0xd6 = dad
+	{0xd7, 0xd7}, // 0xd7 = tah
+	{0xd8, 0xd8}, // 0xd8 = zah
+	{0xd9, 0xf5}, // 0xd9 = ain
+	{0xda, 0xf6}, // 0xda = ghain
+	{0,0}, // 0xdb
+	{0,0}, // 0xdc
+	{0,0}, // 0xdd
+	{0,0}, // 0xde
+	{0,0}, // 0xdf
 
-	0xd0,	// 0xd0 = thal
-	0xd1,	// 0xd1 = ra
-	0xd2,	// 0xd2 = zain
-	0xf1,	// 0xd3 = seen
-	0xf2,	// 0xd4 = sheen
-	0xf3,	// 0xd5 = sad
-	0xf4,	// 0xd6 = dad
-	0xd7,	// 0xd7 = tah
-	0xd8,	// 0xd8 = zah
-	0xf5,	// 0xd9 = ain
-	0xf6,	// 0xda = ghain
-	0,0,0,0,0, // 0xdb- 0xdf
+	{0,0},	// 0xe0
+	{0xe1, 0xf7},	// 0xe1 = fa
+	{0xe2, 0xf8},	// 0xe2 = qaf
+	{0xe3, 0xf9},	// 0xe3 = kaf
+	{0xe4, 0xfa},	// 0xe4 = lam
+	{0xe5, 0xfb},	// 0xe5 = meem
+	{0xe6, 0xfc},	// 0xe6 = noon
+	{0xe7, 0xfd},	// 0xe7 = ha
+	{0xe8, 0xe8},	// 0xe8 = waw
+	{0xe9, 0xe9},	// 0xe9 = alef maksura
+	{0xea, 0xfe},	// 0xea = ya
+	{0xa8, 0xa8},	// 0xeb = fathatan
+	{0xa9, 0xa9},	// 0xec = dammatan
+	{0xaa, 0xaa},	// 0xed = kasratan
+	{0xab, 0xab},	// 0xee = fatha
+	{0xac, 0xac},	// 0xef = damma
 
-	0,	// 0xe0
-	0xf7,	// 0xe1 = fa
-	0xf8,	// 0xe2 = qaf
-	0xf9,	// 0xe3 = kaf
-	0xfa,	// 0xe4 = lam
-	0xfb,	// 0xe5 = meem
-	0xfc,	// 0xe6 = noon
-	0xfd,	// 0xe7 = ha
-	0xe8,	// 0xe8 = waw
-	0xe9,	// 0xe9 = alef maksura
-	0xfe	// 0xea = ya
+	{0xad, 0xad},	// 0xf0 = kasra
+	{0xae, 0xae},	// 0xf1 = shadda
+	{0xaf, 0xaf},	// 0xf2 = sukun
+	{0,0}, // 0xf3
+	{0,0}, // 0xf4
+	{0,0}, // 0xf5
+	{0,0}, // 0xf6
+	{0,0}, // 0xf7
+	{0,0}, // 0xf8
+	{0,0}, // 0xf9
+	{0,0}, // 0xfa
+	{0,0}, // 0xfb
+	{0,0}, // 0xfc
+	{0,0}, // 0xfd
+	{0,0}, // 0xfe
+	{0,0} // 0xff
 };
-
 
 inline
 bool is_arabic(unsigned char c)
 {
-	return 0xa8 <= c && c <= 0xea && iso885968x[c-0xa8];
+	return c >= arabic_start && arabic_table[c-arabic_start][0];
 }
 
 
 inline
 bool is_nikud(unsigned char c)
 {
-        return 192 <= c && c <= 210;
+        return 192 <= c && c <= 210 &&
+		c != 0xce && c != 0xd0;
+}
+
+
+inline
+bool IsComposeChar_arabic(unsigned char c)
+{
+	return c >= 0xeb && c <= 0xf2;
 }
 
 
 unsigned char LyXText::TransformChar(unsigned char c, Letter_Form form) const
 {
-	if (is_arabic(c) && 
-	    (form == FORM_INITIAL || form == FORM_MEDIAL) )
-		return iso885968x[c-0xa8];
-	else
+	if (!is_arabic(c))
 		return c;
+	else
+		return arabic_table[c-arabic_start][form >> 1];
 }
 
 
@@ -134,14 +156,22 @@ unsigned char LyXText::TransformChar(unsigned char c, LyXParagraph * par,
 		else
 			return c;
 
-	bool not_first = (pos > 0 && is_arabic(par->GetChar(pos-1)));
-	if (pos < par->Last()-1 && is_arabic(par->GetChar(pos+1)))
-		if (not_first)
+
+	unsigned char prev_char = pos > 0 ? par->GetChar(pos-1) : ' ';
+	unsigned char next_char = ' ';
+	for (LyXParagraph::size_type i = pos+1; i < par->Last(); ++i)
+		if (!IsComposeChar_arabic(par->GetChar(i))) {
+			next_char = par->GetChar(i);
+			break;
+		}
+
+	if (is_arabic(next_char))
+		if (is_arabic(prev_char))
 			return TransformChar(c,FORM_MEDIAL);
 		else
 			return TransformChar(c,FORM_INITIAL);
 	else
-		if (not_first)
+		if (is_arabic(prev_char))
 			return TransformChar(c,FORM_FINAL);
 		else
 			return TransformChar(c,FORM_ISOLATED);
@@ -190,7 +220,10 @@ int LyXText::SingleWidth(LyXParagraph * par,
 		if (font.language()->RightToLeft) {
 			if (font.language()->lang == "arabic" &&
 			    lyxrc.font_norm == "iso8859-6.8x")
-				c = TransformChar(c, par, pos);
+				if (IsComposeChar_arabic(c))
+					return 0;
+				else
+					c = TransformChar(c, par, pos);
 			else if (font.language()->lang == "hebrew" &&
 				 is_nikud(c))
 				return 0;
@@ -611,18 +644,40 @@ void LyXText::draw(Row const * row,
 		}
 	} else if (font.language()->lang == "arabic" &&
 		   lyxrc.font_norm == "iso8859-6.8x") {
-		textstring = TransformChar(c, row->par, pos);
-		while (vpos <= last &&
-		       (pos = vis2log(vpos)) >= 0
-		       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
-		       && font2 == GetFont(row->par, pos)) {
+		if (IsComposeChar_arabic(c)) {
 			c = TransformChar(c, row->par, pos);
-			textstring += c;
-			++vpos;
+			textstring = c;
+			int width = lyxfont::width(c, font2);
+			int dx = 0;
+			for (LyXParagraph::size_type i = pos-1; i >= 0; --i) {
+				c = row->par->GetChar(i);
+				if (!IsComposeChar_arabic(c)) {
+					if (static_cast<unsigned char>(c) > ' ') {
+						int width2 = SingleWidth(row->par, i, c);
+						dx = (width2 - width) / 2;
+					}
+					break;
+				}
+			}
+			// Draw nikud
+			pain.text(int(x) + dx, offset + row->baseline, 
+				  textstring, font);
+		} else {
+			textstring = TransformChar(c, row->par, pos);
+			while (vpos <= last &&
+			       (pos = vis2log(vpos)) >= 0
+			       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
+			       && !IsComposeChar_arabic(c)
+			       && font2 == GetFont(row->par, pos)) {
+				c = TransformChar(c, row->par, pos);
+				textstring += c;
+				++vpos;
+			}
+			// Draw text and set the new x position
+			pain.text(int(x), offset + row->baseline,
+				  textstring, font);
+			x += lyxfont::width(textstring, font);
 		}
-		// Draw text and set the new x position
-		pain.text(int(x), offset + row->baseline, textstring, font);
-		x += lyxfont::width(textstring, font);
 	} else {
 		while (vpos <= last &&
 		       (pos = vis2log(vpos)) >= 0
@@ -636,12 +691,7 @@ void LyXText::draw(Row const * row,
 		x += lyxfont::width(textstring, font);
 	}
 	
-	// what about underbars?
-	if (font.underbar() == LyXFont::ON && font.latex() != LyXFont::ON) {
-		pain.line(int(tmpx), offset + row->baseline + 2,
-			  int(x), offset + row->baseline + 2);
-		
-	} else if (lyxrc.mark_foreign_language &&
+	if (lyxrc.mark_foreign_language &&
 	    font.language() != buffer->params.language_info) {
 		int y = offset + row->height - 1;
 		pain.line(int(tmpx), y, int(x), y,

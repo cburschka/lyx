@@ -45,9 +45,9 @@ public:
 
 	enum Letter_Form {
 		FORM_ISOLATED,
+		FORM_FINAL,
 		FORM_INITIAL,
-		FORM_MEDIAL,
-		FORM_FINAL
+		FORM_MEDIAL
 	};
 
 	/// Constructor
