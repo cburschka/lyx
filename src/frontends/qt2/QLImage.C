@@ -60,7 +60,7 @@ Image::FormatList QLImage::loadableFormats()
 	QStrListIterator it(qt_formats);
 
 	for (; it.current(); ++it) {
-	   lyxerr[Debug::GRAPHICS] << it.current() << endl;
+		lyxerr[Debug::GRAPHICS] << it.current() << endl;
 
 		string ext = lowercase(it.current());
 
@@ -74,17 +74,19 @@ Image::FormatList QLImage::loadableFormats()
 			fmts.push_back(fit->name());
 	}
 
-	lyxerr[Debug::GRAPHICS]
-		<< "\nOf these, LyX recognises the following formats:\n";
+	if (lyxerr.debugging()) {
+		lyxerr[Debug::GRAPHICS]
+			<< "\nOf these, LyX recognises the following formats:\n";
 
-	FormatList::const_iterator fbegin = fmts.begin();
-	FormatList::const_iterator fend   = fmts.end();
-	for (FormatList::const_iterator fit = fbegin; fit != fend; ++fit) {
-		if (fit != fbegin)
-			lyxerr[Debug::GRAPHICS] << ", ";
-		lyxerr[Debug::GRAPHICS] << *fit;
+		FormatList::const_iterator fbegin = fmts.begin();
+		FormatList::const_iterator fend   = fmts.end();
+		for (FormatList::const_iterator fit = fbegin; fit != fend; ++fit) {
+			if (fit != fbegin)
+				lyxerr[Debug::GRAPHICS] << ", ";
+			lyxerr[Debug::GRAPHICS] << *fit;
+		}
+		lyxerr[Debug::GRAPHICS] << '\n' << endl;
 	}
-	lyxerr[Debug::GRAPHICS] << '\n' << endl;
 
 	return fmts;
 }
@@ -141,22 +143,15 @@ void QLImage::load(string const & filename)
 		finishedLoading(false);
 		return;
 	}
-	lyxerr[Debug::GRAPHICS] << "just Loaded." << endl;
 	xformed_pixmap_ = pixmap_;
-	lyxerr[Debug::GRAPHICS] << "pixmap isNull " << pixmap_.isNull()
-		<< " xformed_pixmap_ isNull " << xformed_pixmap_.isNull() << endl;
 	finishedLoading(true);
 }
 
 
 bool QLImage::setPixmap(Params const & params)
 {
-	lyxerr[Debug::GRAPHICS] << "pixmap isNull " << pixmap_.isNull()
-		<< " xformed_pixmap_ isNull " << xformed_pixmap_.isNull() << endl;
 	if (pixmap_.isNull() || params.display == NoDisplay)
 		return false;
-
-	lyxerr[Debug::GRAPHICS] << "setPixmap()" << endl;
 
 	// FIXME: it's a fake kind of grayscale !
 
@@ -232,8 +227,6 @@ void QLImage::rotate(Params const & params)
 	// The angle passed to flimage_rotate is the angle in one-tenth of a
 	// degree units.
 
-	lyxerr[Debug::GRAPHICS] << "rotating image by " << params.angle << " degrees" << endl;
-
 	QWMatrix m;
 	m.rotate(-params.angle);
 	xformed_pixmap_ = xformed_pixmap_.xForm(m);
@@ -252,10 +245,6 @@ void QLImage::scale(Params const & params)
 	if (width == getWidth() && height == getHeight())
 		return;
 
-	lyxerr[Debug::GRAPHICS] << "resizing image to " << width << '('
-				<< (double(width)/getWidth()) << "),"
-				<< height << '('
-				<< (double(height)/getHeight()) << ')' << endl;
 	QWMatrix m;
 	m.scale(double(width) / getWidth(), double(height) / getHeight());
 	xformed_pixmap_ = xformed_pixmap_.xForm(m);

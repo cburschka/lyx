@@ -111,9 +111,8 @@ void QLyXKeySym::set(QKeyEvent * ev)
 		return;
 	}
 	text_ = ev->text();
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging())
 		lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
-	}
 }
 
 
@@ -121,18 +120,16 @@ void QLyXKeySym::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
 	text_ = toqstr(symbolname);
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging())
 		lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
-	}
 }
 
 
 bool QLyXKeySym::isOK() const
 {
 	bool const ok(!(text_.isEmpty() && key_ == Qt::Key_unknown));
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging())
 		lyxerr[Debug::KEY] << "isOK is " << ok << endl;
-	}
 	return ok;
 }
 
@@ -140,9 +137,8 @@ bool QLyXKeySym::isOK() const
 bool QLyXKeySym::isModifier() const
 {
 	bool const mod(q_is_modifier(key_));
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging())
 		lyxerr[Debug::KEY] << "isMod is " << mod << endl;
-	}
 	return mod;
 }
 

@@ -47,13 +47,7 @@ string const getLabel(MenuItem const & mi)
 		if (!binding.empty()) {
 			label += '\t' + binding;
 		}
-
-		lyxerr[Debug::GUI] << "Label: " << mi.label()
-				   << " Shortcut: " << mi.shortcut()
-				   << " Accel: " << binding << endl;
-	} else
-		lyxerr[Debug::GUI] << "Label: " << mi.label()
-				   << " Shortcut: " << mi.shortcut() << endl;
+	}
 
 	return label;
 }
