@@ -37,7 +37,6 @@ class Row;
 class Spacing;
 class UpdatableInset;
 class VSpace;
-class WordLangTuple;
 
 
 /**
@@ -204,14 +203,6 @@ public:
 	/// reject selected change
 	void rejectChange();
 
-	/** 'selects" the next word, where the cursor is not in
-	 and returns this word as string. THe cursor will be moved
-	 to the beginning of this word.
-	 With SelectSelectedWord can this be highlighted really
-	 */
-	WordLangTuple const selectNextWordToSpellcheck(float & value);
-	///
-	void selectSelectedWord();
 	/// re-computes the cached coordinates in the cursor
 	void redoCursor();
 	///

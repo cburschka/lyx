@@ -130,13 +130,6 @@ public:
 	void open(BufferView *);
 	///
 	void close(BufferView *) const;
-	///
-	bool allowSpellcheck() const;
-	///
-	WordLangTuple const
-	selectNextWordToSpellcheck(BufferView *, float &) const;
-	///
-	void selectSelectedWord(BufferView *);
 
 	void markErased();
 
@@ -256,20 +249,6 @@ inline
 bool InsetCollapsable::isOpen() const
 {
 	return !collapsed_;
-}
-
-
-inline
-bool InsetCollapsable::allowSpellcheck() const
-{
-	return inset.allowSpellcheck();
-}
-
-
-inline
-void InsetCollapsable::selectSelectedWord(BufferView * bv)
-{
-	inset.selectSelectedWord(bv);
 }
 
 

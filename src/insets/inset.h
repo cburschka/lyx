@@ -31,7 +31,6 @@ class LyXText;
 class Painter;
 class Paragraph;
 class UpdatableInset;
-class WordLangTuple;
 
 namespace lyx {
 namespace graphics {
@@ -257,10 +256,6 @@ public:
 	/// we need this here because collapsed insets are only EDITABLE
 	virtual void setFont(BufferView *, LyXFont const &,
 			 bool toggleall = false, bool selectall = false);
-	///
-	// needed for spellchecking text
-	///
-	virtual bool allowSpellcheck() const { return false; }
 
 	// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }

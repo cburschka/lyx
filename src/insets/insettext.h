@@ -157,13 +157,6 @@ public:
 	LyXText * getText(int) const;
 	///
 	LyXCursor const & cursor(BufferView *) const;
-	///
-	bool allowSpellcheck() const { return true; }
-	///
-	WordLangTuple const
-	selectNextWordToSpellcheck(BufferView *, float & value) const;
-	///
-	void selectSelectedWord(BufferView *);
 
 	/// mark as erased for change tracking
 	void markErased() { clear(true); };

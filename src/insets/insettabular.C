@@ -30,7 +30,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "undo.h"
-#include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
 #include "frontends/font_metrics.h"
@@ -2416,60 +2415,6 @@ LyXCursor const & InsetTabular::cursor(BufferView * bv) const
 	if (the_locking_inset)
 		return the_locking_inset->cursor(bv);
 	return InsetOld::cursor(bv);
-}
-
-
-WordLangTuple const
-InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
-{
-	if (the_locking_inset) {
-		WordLangTuple word =
-			the_locking_inset->selectNextWordToSpellcheck(bv, value);
-		if (!word.word().empty())
-			return word;
-		if (tabular.isLastCell(actcell)) {
-			bv->unlockInset(const_cast<InsetTabular *>(this));
-			return WordLangTuple();
-		}
-		++actcell;
-	}
-	// otherwise we have to lock the next inset and ask for it's selecttion
-	tabular.getCellInset(actcell)
-		.dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
-	WordLangTuple word = selectNextWordInt(bv, value);
-	if (!word.word().empty())
-		resetPos(bv);
-	return word;
-}
-
-
-WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
-{
-	// when entering this function the inset should be ALWAYS locked!
-	BOOST_ASSERT(the_locking_inset);
-
-	WordLangTuple word =
-		the_locking_inset->selectNextWordToSpellcheck(bv, value);
-	if (!word.word().empty())
-		return word;
-
-	if (tabular.isLastCell(actcell)) {
-		bv->unlockInset(const_cast<InsetTabular *>(this));
-		return WordLangTuple();
-	}
-
-	// otherwise we have to lock the next inset and ask for it's selecttion
-	++actcell;
-	tabular.getCellInset(actcell)
-		.dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
-	return selectNextWordInt(bv, value);
-}
-
-
-void InsetTabular::selectSelectedWord(BufferView * bv)
-{
-	if (the_locking_inset)
-		the_locking_inset->selectSelectedWord(bv);
 }
 
 

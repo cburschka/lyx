@@ -87,15 +87,6 @@ public:
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 	///
-	// needed for spellchecking text
-	///
-	virtual bool allowSpellcheck() const { return false; }
-	///
-	virtual WordLangTuple const
-	selectNextWordToSpellcheck(BufferView *, float & value) const;
-	///
-	virtual void selectSelectedWord(BufferView *) {}
-	///
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
 
 	/// find the next change in the inset

@@ -20,7 +20,6 @@
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "lyxtext.h"
-#include "WordLangTuple.h"
 
 #include "support/lstrings.h"
 
@@ -136,16 +135,6 @@ LyXCursor const & InsetOld::cursor(BufferView * bv) const
 	if (owner())
 		return owner()->getLyXText(bv, false)->cursor;
 	return bv->text->cursor;
-}
-
-
-WordLangTuple const
-UpdatableInset::selectNextWordToSpellcheck(BufferView *bv, float & value) const
-{
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<UpdatableInset *>(this));
-	value = 0;
-	return WordLangTuple();
 }
 
 

@@ -24,7 +24,6 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
-#include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -641,14 +640,6 @@ void InsetERT::close(BufferView * bv) const
 		return;
 
 	status(bv, Collapsed);
-}
-
-
-WordLangTuple const
-InsetERT::selectNextWordToSpellcheck(BufferView * bv, float &) const
-{
-	bv->unlockInset(const_cast<InsetERT *>(this));
-	return WordLangTuple();
 }
 
 

@@ -35,7 +35,6 @@
 #include "sgml.h"
 #include "texrow.h"
 #include "undo.h"
-#include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
 #include "frontends/font_metrics.h"
@@ -1453,39 +1452,6 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 	if (the_locking_inset)
 		return the_locking_inset->cursor(bv);
 	return getLyXText(bv)->cursor;
-}
-
-
-WordLangTuple const
-InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
-{
-	WordLangTuple word;
-	if (the_locking_inset) {
-		word = the_locking_inset->selectNextWordToSpellcheck(bv, value);
-		if (!word.word().empty()) {
-			value += cy();
-			return word;
-		}
-		// we have to go on checking so move cursor to the next char
-		text_.cursor.pos(text_.cursor.pos() + 1);
-	}
-	word = text_.selectNextWordToSpellcheck(value);
-	if (word.word().empty())
-		bv->unlockInset(const_cast<InsetText *>(this));
-	else
-		value = cy();
-	return word;
-}
-
-
-void InsetText::selectSelectedWord(BufferView * bv)
-{
-	if (the_locking_inset) {
-		the_locking_inset->selectSelectedWord(bv);
-		return;
-	}
-	getLyXText(bv)->selectSelectedWord();
-	updateLocal(bv, false);
 }
 
 

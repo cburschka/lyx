@@ -92,11 +92,6 @@ public:
 	///
 	void close(BufferView *) const;
 	///
-	bool allowSpellcheck() const { return false; }
-
-	WordLangTuple const
-	selectNextWordToSpellcheck(BufferView *, float &) const;
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

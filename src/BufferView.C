@@ -362,42 +362,6 @@ void BufferView::redo()
 }
 
 
-// these functions are for the spellchecker
-WordLangTuple const BufferView::nextWord(float & value)
-{
-	if (!available()) {
-		value = 1;
-		return WordLangTuple();
-	}
-
-	return text->selectNextWordToSpellcheck(value);
-}
-
-
-void BufferView::selectLastWord()
-{
-	if (!available())
-		return;
-
-	LyXCursor cur = text->selection.cursor;
-	beforeChange(text);
-	text->selection.cursor = cur;
-	text->selectSelectedWord();
-	update();
-}
-
-
-void BufferView::endOfSpellCheck()
-{
-	if (!available()) return;
-
-	beforeChange(text);
-	text->selectSelectedWord();
-	text->clearSelection();
-	update();
-}
-
-
 void BufferView::replaceWord(string const & replacestring)
 {
 	if (!available())

@@ -23,7 +23,6 @@
 #include "funcrequest.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
-#include "WordLangTuple.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -561,17 +560,6 @@ bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
 	else if (!found)
 		first_after_edit = false;
 	return found;
-}
-
-
-WordLangTuple const
-InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv, float & value) const
-{
-	WordLangTuple word = inset.selectNextWordToSpellcheck(bv, value);
-	if (first_after_edit && word.word().empty())
-		close(bv);
-	first_after_edit = false;
-	return word;
 }
 
 

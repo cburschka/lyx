@@ -165,14 +165,8 @@ public:
 	LyXText * getText(int) const;
 	///
 	LyXCursor const & cursor(BufferView *) const;
-	///
-	bool allowSpellcheck() const { return true; }
-	///
-	WordLangTuple const
-	selectNextWordToSpellcheck(BufferView *, float & value) const;
-	///
-	void selectSelectedWord(BufferView *);
 
+	///
 	void markErased();
 
 	/// find next change
@@ -284,8 +278,6 @@ private:
 	///
 	void getSelection(int & scol, int & ecol,
 			  int & srow, int & erow) const;
-	///
-	WordLangTuple selectNextWordInt(BufferView *, float & value) const;
 	///
 	bool insertAsciiString(BufferView *, std::string const & buf, bool usePaste);
 

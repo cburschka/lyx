@@ -33,7 +33,6 @@ class LyXView;
 class Painter;
 class TeXErrors;
 class UpdatableInset;
-class WordLangTuple;
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -135,14 +134,8 @@ public:
 	/// return the parent language of the given inset
 	Language const * getParentLanguage(InsetOld * inset) const;
 
-	/// Select the "current" word
-	void selectLastWord();
 	/// replace the currently selected word
 	void replaceWord(std::string const & replacestring);
-	/// Update after spellcheck finishes
-	void endOfSpellCheck();
-	/// return the next word
-	WordLangTuple const nextWord(float & value);
 
 	/// move cursor to the named label
 	void gotoLabel(std::string const & label);
