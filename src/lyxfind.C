@@ -176,9 +176,12 @@ bool LyXFind(BufferView * bv,
 		bv->getLyXText()->setSelectionOverString(bv, searchstr);
 		bv->toggleSelection(false);
 		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
-	} else if (result == SR_NOT_FOUND)
+	} else if (result == SR_NOT_FOUND) {
+		bv->toggleSelection();
+		bv->getLyXText()->clearSelection();
+		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
 		found = false;
-
+	}
 	if (bv->focus())
 		bv->showCursor();
 

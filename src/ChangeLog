@@ -1,5 +1,7 @@
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
+	* lyxfind.C (LyXFind): clear the former selection if not found!
+
 	* text2.C (insertInset): freeze Undo after setUndo so that it is not
 	again called in insertChar().
 
