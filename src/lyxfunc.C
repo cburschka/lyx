@@ -168,12 +168,12 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 int LyXFunc::processKeyEvent(XEvent * ev)
 {
 	char s_r[10];
-	s_r[9] = '\0';
 	string argument;
 	XKeyEvent * keyevent = &ev->xkey;
 	KeySym keysym_return;
 
 	int num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
+	s_r[num_bytes] = '\0';
 
 	if (lyxerr.debugging(Debug::KEY)) {
 		char * tmp = XKeysymToString(keysym_return);

@@ -1,3 +1,9 @@
+2000-01-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (processKeyEvent): fix a the buffer returned by
+	LyXLookupString to be zero-terminated. Really fixes problems seen
+	by purify, I think.
+
 2000-01-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyxfunc.C (processKeyEvent): "fix" so that we never try to
