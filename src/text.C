@@ -1301,11 +1301,6 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    LyXFont tmpfont;
    Inset * tmpinset = 0;
 
-   /* this must not happen before the currentrow for clear reasons.
-      so the trick is just to set the current row onto this row */
-   int unused_y;
-   GetRow(row_ptr->par(), row_ptr->pos(), unused_y);
-
    /* ok , let us initialize the maxasc and maxdesc value. 
     * This depends in LaTeX of the font of the last character
     * in the paragraph. The hack below is necessary because

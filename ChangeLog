@@ -1,3 +1,8 @@
+2001-11-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text2.C (RemoveRow): 
+	* src/text.C (SetHeightOfRow): remove bogus call to GetRow.
+
 2001-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/examples/it_splash.lyx: update from Claudio Coco
