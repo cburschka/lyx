@@ -2,6 +2,10 @@
 #include <cstdio>
 #include <cstdarg>
 
+#ifndef HAVE_VSNPRINTF
+#include "support/snprintf.h"
+#endif
+
 #include "LString.h"
 
 /* This output manipulator gives the option to use Old style format

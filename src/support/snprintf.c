@@ -240,6 +240,10 @@
  *   implementation, there may be other incompatibilities.
  */
 
+/* added by Lgb, the LyX Project */
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 
 /* ============================================= */

@@ -3834,7 +3834,7 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 		++vc;
 	}
 	
-	if (vc > row->pos() && (tmpx + last_tmpx) / 2 > x) {
+	if ((tmpx + last_tmpx) / 2 > x) {
 		tmpx = last_tmpx;
 		left_side = true;
 	}
@@ -3843,22 +3843,20 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 		vc = last + 1;
 
 	boundary = false;
-#if 0 // currently unused
-	bool lastrow = (!row->next() || row->next()->par() != row->par());
+	bool lastrow = lyxrc.rtl_support // This is not needed, but gives
+		                         // some speedup if rtl_support=false
+		&& (!row->next() || row->next()->par() != row->par());
 	bool rtl = (lastrow)
 		? row->par()->isRightToLeftPar(bview->buffer()->params)
-		: false;
-#endif
-	
+		: false; // If lastrow is false, we don't need to compute
+	                 // the value of rtl.
+
 	if (row->pos() > last)  // Row is empty?
 		c = row->pos();
-#warning This is wrong, please have a look Dekel (Jug)
-#if 0
 	else if (lastrow &&
-		 ( (rtl && vc == row->pos()&& x < tmpx - 5) ||
-		   (!rtl && vc == last + 1 && x > tmpx + 5) ))
+		 ( ( rtl &&  left_side && vc == row->pos() && x < tmpx - 5) ||
+		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5) ))
 		c = last + 1;
-#endif
 	else if (vc == row->pos()) {
 		c = vis2log(vc);
 		if (bidi_level(c) % 2 == 1)

@@ -1,3 +1,15 @@
+2000-10-13  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/combox.[Ch]:
+	* src/frontends/xforms/FormDocument.C:
+	* src/frontends/xforms/Menubar_pimpl.C: small changes so that they
+	compile without "conversion to integral type of smaller size"
+	warnings.
+	
+2000-10-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/text.C (GetColumnNearX): Fixed disabled code.
+                           
 2000-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in (CPPFLAGS): add snprintf and vsnprintf to

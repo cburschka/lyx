@@ -142,7 +142,7 @@ bool Combox::select_text(string const & t)
 }
 
 
-void Combox::select(int i)
+void Combox::select(size_t i)
 {
 	if (!browser || !button) return;
 	if (i > 0 && i <= fl_get_browser_maxline(browser)) sel = i; 

@@ -432,7 +432,7 @@ bool FormDocument::class_apply()
 #endif
 		}
 	}
-	char tmpsep = params.paragraph_separation;
+	BufferParams::PARSEP tmpsep = params.paragraph_separation;
 	if (fl_get_button(class_->radio_doc_indent))
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
 	else
@@ -505,8 +505,10 @@ void FormDocument::paper_apply()
 {
     BufferParams & params = lv_->buffer()->params;
     
-    params.papersize2 = fl_get_choice(paper_->choice_papersize2)-1;
-    params.paperpackage = fl_get_choice(paper_->choice_paperpackage)-1;
+    params.papersize2 =
+	    static_cast<char>(fl_get_choice(paper_->choice_papersize2)-1);
+    params.paperpackage =
+	    static_cast<char>(fl_get_choice(paper_->choice_paperpackage)-1);
     params.use_geometry = fl_get_button(paper_->push_use_geometry);
     if (fl_get_button(paper_->radio_landscape))
 	params.orientation = BufferParams::ORIENTATION_LANDSCAPE;
@@ -827,7 +829,7 @@ void FormDocument::checkMarginValues()
 bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 {
     string str;
-    char val;
+    int val;
     bool ok = true;
     char const * input;
     

@@ -56,7 +56,8 @@ inline
 int string_width(string const & str) 
 {
 	return fl_get_string_widthTAB(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
-				      str.c_str(), str.length());
+				      str.c_str(),
+				      static_cast<int>(str.length()));
 }
 
 
@@ -195,7 +196,8 @@ int get_new_submenu(vector<int> & smn, Window win)
 {
 	static size_type max_number_of_menus = 32;
 	if (smn.size() >= max_number_of_menus)
-		max_number_of_menus = fl_setpup_maxpup(2*smn.size());
+		max_number_of_menus =
+		    fl_setpup_maxpup(static_cast<int>(2*smn.size()));
 	int menu = fl_newpup(win);
 	smn.push_back(menu);
 	return menu;
