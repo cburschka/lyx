@@ -1,11 +1,14 @@
 /** Header file generated with fdesign **/
 
-#ifndef FD_KeyMap_h_
-#define FD_KeyMap_h_
+#ifndef FD_Figure_h_
+#define FD_Figure_h_
 
 /** Callbacks, globals and object handlers **/
-
 extern "C" void GraphicsCB(FL_OBJECT *, long);
+
+extern "C" void FigureOKCB(FL_OBJECT *, long);
+extern "C" void FigureApplyCB(FL_OBJECT *, long);
+extern "C" void FigureCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
@@ -48,5 +51,16 @@ typedef struct {
 } FD_Figure;
 
 extern FD_Figure * create_form_Figure(void);
+typedef struct {
+	FL_FORM *form_figure;
+	void *vdata;
+	char *cdata;
+	long  ldata;
+	FL_OBJECT *group_radio_fugre;
+	FL_OBJECT *radio_postscript;
+	FL_OBJECT *radio_inline;
+} FD_form_figure;
 
-#endif /* FD_KeyMap_h_ */
+extern FD_form_figure * create_form_form_figure(void);
+
+#endif /* FD_Figure_h_ */

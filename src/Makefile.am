@@ -110,10 +110,12 @@ lyx_SOURCES = \
 	exporter.h \
 	ext_l10n.h \
 	figure.h \
+	figure_form.C \
+	figure_form.h \
+	figureForm.C \
+	figureForm.h \
 	font.C \
 	font.h \
-	form1.C \
-	form1.h \
 	gettext.C \
 	gettext.h \
 	importer.C \
@@ -130,8 +132,6 @@ lyx_SOURCES = \
 	lastfiles.h \
 	layout.C \
 	layout.h \
-	lyx.C \
-	lyx.h \
 	lyx_cb.C \
 	lyx_cb.h \
 	lyx_gui.C \

@@ -7,7 +7,7 @@
 #ifndef FIGINSET_H
 #define FIGINSET_H
 
-#include "form1.h"
+#include "figure_form.h"
 #include "LString.h"
 #include "buffer.h"
 #include "LaTeXFeatures.h"

@@ -35,8 +35,6 @@ void MenuInsertLabel(BufferView * bv, string const & arg);
 ///
 void MenuLayoutSave(BufferView * bv);
 ///
-void Figure();
-///
 void Reconfigure(BufferView * bv);
 #endif
 

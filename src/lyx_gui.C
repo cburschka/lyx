@@ -19,8 +19,7 @@
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
 #include "support/filetools.h"
-#include "lyx.h"
-#include "form1.h"
+#include "figure_form.h"
 #include "print_form.h"
 #include "tex-strings.h"
 #include "lyx_main.h"

@@ -45,7 +45,6 @@
 #include <cmath>
 
 #include "figinset.h"
-#include "lyx.h"
 #include "lyx_main.h"
 #include "buffer.h"
 #include "frontends/FileDialog.h"
