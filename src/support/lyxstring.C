@@ -70,7 +70,7 @@ struct lyxstring::Srep {
 	Srep * get_own_copy()
 		{
 			if (ref == 1) return this;
-			ref--;
+			--ref;
 			return new Srep(sz, s);
 		}
 	
@@ -749,7 +749,7 @@ lyxstring & lyxstring::append(size_type n, value_type c)
 	value_type * tmp = new value_type[n];
 	memset(tmp, c, n);
 	rep = rep->get_own_copy();
-	rep->assign(n, tmp);
+	rep->append(n, tmp);
 	delete[] tmp;
 	return *this;
 }

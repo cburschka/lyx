@@ -296,8 +296,6 @@ void LyXFileDlg::Reread()
 			// factor for what is considered "the future", to
 			// allow for NFS server/client clock disagreement.
 			// Show the year instead of the time of day.
-#warning fix!
-			
 			Time.erase(10, 9);
 			Time.erase(15, string::npos);
 		} else {

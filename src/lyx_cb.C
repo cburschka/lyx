@@ -4058,8 +4058,7 @@ void UpdateInsetUpdateList()
 void addNewlineAndDepth(string &file, int const depth)
 {
        file += '\n';
-       for (int j=0;j< depth;j++)
-               file += ' ';
+       file.append(' ', depth);
 }
 
 

@@ -23,9 +23,6 @@
 #endif
 
 #include <algorithm>
-#ifdef WITH_WARNINGS
-#warning Is it safe to use 'using' unconditionnally? 
-#endif
 using std::max;
 
 #include "lyx_main.h"

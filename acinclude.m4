@@ -315,7 +315,7 @@ dnl   has a working stl string container, the check is really stupid
 dnl   and could need some improvement.
 AC_DEFUN(LYX_CXX_STL_STRING,[
     AC_REQUIRE([LYX_PROG_CXX])
-    AC_MSG_CHECKING(Use the included std::string)
+    AC_MSG_CHECKING(whether the included std::string should be used)
     AC_ARG_WITH(included-string,[
 	--with-included-string  use LyX string class instead of STL string
     ],[

@@ -1,5 +1,10 @@
 1999-10-23  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/lyx_cb.C (addNewlineAndDepth): changed to use string::append.
+
+	* src/support/lyxstring.C (append): fixed something that must be a
+	bug, rep->assign was used instead of rep->append.
+
 	* src/support/Makefile.am (libsupport_a_SOURCES): added LIstream.h
 	and LOstream.h
 
