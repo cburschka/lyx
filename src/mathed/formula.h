@@ -62,7 +62,7 @@ public:
 	///
 	bool insetAllowed(Inset::Code code) const;
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	///
 	MathAtom const & par() const { return par_; }
 	///

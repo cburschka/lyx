@@ -64,8 +64,6 @@ public:
 	//virtual void status(FuncRequest const &);
 
 	///
-	virtual std::vector<string> const getLabelList() const;
-	///
 	virtual MathAtom const & par() const = 0;
 	///
 	virtual MathAtom & par() = 0;

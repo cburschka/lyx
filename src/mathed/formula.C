@@ -245,11 +245,9 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-vector<string> const InsetFormula::getLabelList() const
+void InsetFormula::getLabelList(std::vector<string> & res) const
 {
-	vector<string> res;
 	par()->getLabelList(res);
-	return res;
 }
 
 

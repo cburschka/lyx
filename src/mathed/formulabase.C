@@ -211,12 +211,6 @@ void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 }
 
 
-vector<string> const InsetFormulaBase::getLabelList() const
-{
-  return vector<string>();
-}
-
-
 dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 {
 	if (!mathcursor)
