@@ -89,7 +89,9 @@ void MathArrayInset::write(WriteStream & os) const
 
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\end{" << name_ << "}\n";
+	os << "\\end{" << name_ << "}";
+	// adding a \n here is bad if the array is the last item
+	// in an \eqnarray...
 }
 
 
