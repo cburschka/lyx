@@ -1,3 +1,8 @@
+2005-03-23  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (build_package): Solaris sed does not like
+	spaces bewteen the ;-delimited commands.
+
 2005-02-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (CLEANFILES): clean generated files

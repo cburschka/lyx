@@ -83,13 +83,14 @@ libsupport_la_SOURCES = \
 
 package.C: build_package
 
+# Solaris sed does not like spaces bewteen the ;-delimited commands
 build_package: package.C.in
 	@rm -f tmp_package ;\
 	ABS_SRCDIR=`cd $(top_srcdir) && pwd` ;\
 	ABS_BUILDDIR=`cd ../.. && pwd` ;\
-	sed "s,%LYX_DIR%,$(pkgdatadir), ;\
-		s,%LOCALEDIR%,$(datadir)/locale, ;\
-		s,%TOP_SRCDIR%,$${ABS_SRCDIR}," \
+	sed "s,%LYX_DIR%,$(pkgdatadir),;\
+s,%LOCALEDIR%,$(datadir)/locale,;\
+s,%TOP_SRCDIR%,$${ABS_SRCDIR}," \
 		$(srcdir)/package.C.in > tmp_package ;\
 	if cmp -s tmp_package package.C ; then \
 		rm -f tmp_package ;\
