@@ -79,6 +79,9 @@ public:
 	 */
 	void repaint();
 
+	/// reload the contained buffer
+	void reload();
+
 	/// fit the user cursor within the visible view
 	bool fitCursor();
 	/// perform pending painting updates

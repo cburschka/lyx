@@ -102,6 +102,14 @@ void BufferView::buffer(Buffer * b)
 }
 
 
+void BufferView::reload()
+{
+	string const fn = buffer()->fileName();
+	if (bufferlist.close(buffer()))
+		buffer(bufferlist.loadLyXFile(fn));
+}
+
+
 void BufferView::resize()
 {
 	if (pimpl_->buffer_) {

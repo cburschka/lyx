@@ -1023,7 +1023,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_MENURELOAD:
-		reloadBuffer();
+		view()->reload();
 		break;
 
 	case LFUN_UPDATE:
@@ -1873,14 +1873,6 @@ void LyXFunc::doImport(string const & argument)
 	}
 
 	Importer::Import(owner, filename, format);
-}
-
-
-void LyXFunc::reloadBuffer()
-{
-	string const fn = owner->buffer()->fileName();
-	if (bufferlist.close(owner->buffer()))
-		view()->buffer(bufferlist.loadLyXFile(fn));
 }
 
 

@@ -19,6 +19,10 @@
 using std::endl;
 using std::pair;
 
+/* WARNING: Several of the vcs-> methods end up
+ * deleting this object via BufferView::reload() !
+ */
+
 LyXVC::LyXVC()
 {
 	vcs = 0;
@@ -173,7 +177,6 @@ void LyXVC::checkOut()
 	}
 
 	vcs->checkOut();
-
 }
 
 

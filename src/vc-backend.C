@@ -45,6 +45,15 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 }
 
 
+void VCS::reload()
+{
+	owner_->getUser()->reload();
+	/* Watch out ! We have deleted ourselves here
+	 * via the ->reload() !
+	 */
+}
+
+
 RCS::RCS(string const & m)
 {
 	master_ = m;
@@ -161,7 +170,6 @@ void RCS::registrer(string const & msg)
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += '"';
 	doVCCommand(cmd, owner_->filePath());
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -170,7 +178,7 @@ void RCS::checkIn(string const & msg)
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
+	reload();
 }
 
 
@@ -180,7 +188,7 @@ void RCS::checkOut()
 	doVCCommand("co -q -l \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
+	reload();
 }
 
 
@@ -191,7 +199,7 @@ void RCS::revert()
 		    owner_->filePath());
 	// We ignore changes and just reload!
 	owner_->markClean();
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
+	reload();
 }
 
 
@@ -300,7 +308,7 @@ void CVS::registrer(string const & msg)
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
+	reload();
 }
 
 
@@ -309,7 +317,7 @@ void CVS::checkIn(string const & msg)
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
+	reload();
 }
 
 
@@ -329,7 +337,7 @@ void CVS::revert()
 	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + '"',
 		    owner_->filePath());
 	owner_->markClean();
-	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
+	reload();
 }
 
 

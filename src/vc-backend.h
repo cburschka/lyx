@@ -59,6 +59,9 @@ protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
 
+	/// reload the document
+	void reload();
+
 	/**
 	 * doVCCommand - call out to the version control utility
 	 * @param cmd the command to execute
