@@ -41,9 +41,9 @@ void FormTabularCreate::build()
 	bc().setCancel(dialog_->button_close);
 
 	// set up the tooltips
-	string str = _("Number of columns in the tabular");
+	string str = _("Number of columns in the tabular.");
 	tooltips().init(dialog_->slider_columns, str);
-	str = _("Number of rows in the tabular");
+	str = _("Number of rows in the tabular.");
 	tooltips().init(dialog_->slider_rows, str);
 }
 
