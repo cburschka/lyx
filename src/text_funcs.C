@@ -19,38 +19,40 @@
 #include "lyxcursor.h"
 #include "undo_funcs.h"
 
+#include <boost/next_prior.hpp>
+
 using lyx::pos_type;
 
 void transposeChars(LyXText & text, LyXCursor const & cursor)
 {
-	Paragraph * tmppar = &*cursor.par();
+	ParagraphList::iterator tmppit = cursor.par();
 
-	setUndo(text.bv(), Undo::FINISH, tmppar, tmppar->next());
+	setUndo(text.bv(), Undo::FINISH, &*tmppit, &*boost::next(tmppit));
 
 	pos_type tmppos = cursor.pos();
 
 	// First decide if it is possible to transpose at all
 
-	if (tmppos == 0 || tmppos == tmppar->size())
+	if (tmppos == 0 || tmppos == tmppit->size())
 		return;
 
-	if (isDeletedText(*tmppar, tmppos - 1)
-		|| isDeletedText(*tmppar, tmppos))
+	if (isDeletedText(*tmppit, tmppos - 1)
+		|| isDeletedText(*tmppit, tmppos))
 		return;
 
-	unsigned char c1 = tmppar->getChar(tmppos);
-	unsigned char c2 = tmppar->getChar(tmppos - 1);
+	unsigned char c1 = tmppit->getChar(tmppos);
+	unsigned char c2 = tmppit->getChar(tmppos - 1);
 
 	// We should have an implementation that handles insets
 	// as well, but that will have to come later. (Lgb)
 	if (c1 == Paragraph::META_INSET || c2 == Paragraph::META_INSET)
 		return;
 
-	bool const erased = tmppar->erase(tmppos - 1, tmppos + 1);
+	bool const erased = tmppit->erase(tmppos - 1, tmppos + 1);
 	pos_type const ipos(erased ? tmppos - 1 : tmppos + 1);
 
-	tmppar->insertChar(ipos, c1);
-	tmppar->insertChar(ipos + 1, c2);
+	tmppit->insertChar(ipos, c1);
+	tmppit->insertChar(ipos + 1, c2);
 
-	text.checkParagraph(tmppar, tmppos);
+	text.checkParagraph(tmppit, tmppos);
 }

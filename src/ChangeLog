@@ -1,5 +1,9 @@
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text_funcs.C (transposeChars): use ParagraphList::iterator here.
+
+2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* ParagraphList.C: prepare for NO_NEXT
 
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
