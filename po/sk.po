@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.3.0\n"
-"POT-Creation-Date: 2003-01-30 03:45+0100\n"
+"POT-Creation-Date: 2003-02-06 22:09+0100\n"
 "PO-Revision-Date: 2003-02-02 14:36+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -63,11 +63,11 @@ msgstr "Kµúè:|#K"
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -1933,11 +1933,11 @@ msgstr "©tandardný|#d"
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 msgid "Form1"
 msgstr "Form1"
@@ -2156,8 +2156,8 @@ msgstr "&Vý¹ka:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 msgid "&Width:"
 msgstr "©ír&ka:"
 
@@ -2173,6 +2173,59 @@ msgstr "Na &vý¹ku"
 msgid "&Landscape"
 msgstr "Na ¹í&rku"
 
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
+#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
+#: src/frontends/xforms/FormAboutlyx.C:70
+msgid "Version"
+msgstr "Verzia"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
+msgid "Version goes here"
+msgstr "Sem ide verzia"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
+#: src/frontends/xforms/FormAboutlyx.C:72
+msgid "Credits"
+msgstr "Kredity"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
+#: ../lib/layouts/apa.layout:192
+msgid "Copyright"
+msgstr "Autorské práva"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+msgid "&Close"
+msgstr "&Zavrie»"
+
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
 msgstr "LyX: Vlo¾i» text"
@@ -2187,45 +2240,268 @@ msgstr ""
 msgid "&Cancel"
 msgstr "&Zru¹i»"
 
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
+#: src/insets/insetindex.C:70
+msgid "Index"
+msgstr "Index"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+msgid "&Key"
+msgstr "&Kµúè"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+msgid "The citation key"
+msgstr "Kµúè citácie"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+msgid "&Label"
+msgstr "&Oznaèovanie"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+msgid "The label as it appears in the document"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+msgid "&OK"
+msgstr "&OK"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "Bibtex"
+msgstr "BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+msgid "Databa&ses"
+msgstr "Databá&zy"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+msgid "Available BibTeX databases"
+msgstr "Dostupné BibTeX databázy"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr "&Prida»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+msgid "Add a BibTeX file manually"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+msgid "Bro&wse..."
+msgstr "&Prechádza»..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
+msgid "Browse for a BibTeX database file"
+msgstr "Hµada» súbor s BibTeX databázou"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+msgid "&Delete"
+msgstr "&Zmaza»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+msgid "St&yle"
+msgstr "©&týl"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+msgid "The BibTeX style"
+msgstr "BibTeX ¹týlu"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+msgid "&Browse..."
+msgstr "&Prechádza»..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+msgid "Choose a style file"
+msgstr "Vybra» súbor so ¹týlom"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "&Aktualizova»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+msgid "Update style list"
+msgstr "Upravi» zoznam ¹týlu"
+
+#. /
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:942
+msgid "Cancel"
+msgstr "Zru¹i»"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+msgid "Add bibliography to &TOC"
+msgstr "Prida» literatúru do o&bsahu"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+msgid "Add bibliography to the table of contents"
+msgstr "Prida» literatúru do obsahu"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+msgid "Character"
+msgstr "Znak"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+msgid "&Family:"
+msgstr "&Rodina:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr "Rodina písma"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+msgid "&Series:"
+msgstr "&Série:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+msgid "Font series"
+msgstr ""
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Jazyk"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+msgid "Font shape"
+msgstr "Tvar písma"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+msgid "Font color"
+msgstr "Farba písma"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+msgid "S&hape:"
+msgstr "&Tvar:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+msgid "&Color:"
+msgstr "&Farby:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+msgid "&Toggle all"
+msgstr "V¹e&tko prepnú»"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+msgid "toggle font on all of the above"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+msgid "Never Toggled"
+msgstr "Nikdy zapnuté"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+msgid "Si&ze:"
+msgstr "&Veµkos»:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+msgid "Font size"
+msgstr "Veµkos» písma"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+msgid "Always Toggled"
+msgstr "V¾dy zapnuté"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+msgid "&Misc:"
+msgstr "&Rôzne:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+msgid "Auto apply"
+msgstr "Auto pou¾i»"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+msgid "&Apply"
+msgstr "&Pou¾i»"
+
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
 msgid "Citation"
 msgstr "Citácia"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 msgid "&Restore"
 msgstr "O&bnovi»"
-
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-msgid "&Apply"
-msgstr "&Pou¾i»"
-
-#. /
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
-msgid "Cancel"
-msgstr "Zru¹i»"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -2374,33 +2650,124 @@ msgstr "&Vlo¾i»"
 msgid "Insert the delimiters"
 msgstr "Vlo¾i» oddelovaè"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-msgid "&Close"
-msgstr "&Zavrie»"
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr "nadpis tu"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+msgid "Use Class Defaults"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+msgid "Reset default params of the current class"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+msgid "Save as Document Defaults"
+msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+msgid "ERT inset display"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+msgid "Display"
+msgstr "Zobrazenie"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+msgid "&Collapsed"
+msgstr "&Zbalené"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+msgid "&Open"
+msgstr "&Otvori»"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+msgid "Show ERT contents"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "LaTeX chyba"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+msgid "LaTeX error messages"
+msgstr "Správy o LaTeX chybách"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
+msgid "External Material"
+msgstr "Externý materiál"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+msgid "&File:"
+msgstr "&Súbor"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
+msgid "Filename"
+msgstr "Názov súboru"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
+msgid "&View Result"
+msgstr "Zobrazi» &výsledok"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
+msgid "View the file"
+msgstr "Zobrazi» súbor"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
+msgid "&Update Result"
+msgstr "&Aktualizova» výsledok"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
+msgid "Update the material"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
+msgid "Available templates"
+msgstr "Dostupné ¹ablóny"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
+msgid "&Template:"
+msgstr "©a&blóna:"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
+msgid "Parameters"
+msgstr "Parametre"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
+msgid "&Parameters:"
+msgstr "&Parametre:"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
+msgid "&Edit file"
+msgstr "&Upravi» súbor"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
+msgid "Edit the file externally"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 msgid "Use &default placement"
@@ -2470,29 +2837,266 @@ msgstr "Rozpätie &ståpcov"
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-msgid "&OK"
-msgstr "&OK"
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+msgid "&Graphics"
+msgstr "&Grafika"
 
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
-#: src/insets/insetindex.C:70
-msgid "Index"
-msgstr "Index"
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
+msgid "File name of image"
+msgstr "Názov súbora s obrázkom"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
+msgid "Select an image file"
+msgstr "Vybra» súbor s obrázkom"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
+msgid "LyX Display"
+msgstr "LyX zobrazenie"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
+msgid "&Show in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+msgid "Display image in LyX"
+msgstr "Zobrazi» obrázok v LyXe"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
+msgid "Display:"
+msgstr "Displej:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
+msgid "Screen display"
+msgstr "Obrazovka"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "©tandardný"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+msgid "Monochrome"
+msgstr "Monochromaticky"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+msgid "Grayscale"
+msgstr "Odtiene ¹edej"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+msgid "Color"
+msgstr "Farba"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
+msgid "Scale:"
+msgstr "Mierka:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
+msgid "Percentage to scale by in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
+msgid "Height of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
+msgid "Units of height value"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
+msgid "&Height"
+msgstr "&Vý¹ka"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
+msgid "Width of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
+msgid "&Width"
+msgstr "©í&rka"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
+msgid "&Maintain aspect ratio"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
+msgid "Maintain aspect ratio with largest dimension"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
+msgid "A&ngle:"
+msgstr "Uho&l:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
+msgid "Angle to rotate image by"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
+msgid "&Origin:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
+msgid "The origin of the rotation"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
+msgid "&Clipping"
+msgstr "&Orezanie"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
+msgid "Clip to &bounding box"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
+msgid "Clip to bounding box values"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
+msgid "&Get from file"
+msgstr "&Získa» zo súbora"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
+msgid "Get bounding box from the (EPS) file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
+msgid "Right &top:"
+msgstr "Vp&ravo hore:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
+msgid "y"
+msgstr "y"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
+msgid "x"
+msgstr "x"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
+msgid "&Left bottom:"
+msgstr "V&µavo dole:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
+msgid "E&xtra options"
+msgstr "E&xtra nastavenia"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
+msgid "Su&bfigure"
+msgstr "Podo&brázok"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
+msgid "Is this just one part of a figure float ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
+msgid "Don't un&zip on export"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr "Nedekomprimova» obrázok pred exportom do LaTeXu"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
+msgid "LaTeX &options:"
+msgstr "LaTeX nas&tavenia:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
+msgid "Additional LaTeX options"
+msgstr "Dodatoèné LaTeX nastavenia"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
+msgid "&Draft mode"
+msgstr "Re¾im kon&ceptu"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
+msgid "Draft mode"
+msgstr "Re¾im konceptu"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
+msgid "Ca&ption:"
+msgstr "Po&pisok:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
+msgid "The caption for the sub-figure"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Zavrie»"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
+msgid "Include File"
+msgstr "Vlo¾i» súbor"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
+msgid "File name to include"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+msgid "Select a file"
+msgstr "Vybra» súbor"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
+msgid "&Include Type:"
+msgstr "&Zahrnutie typu:"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
+#: src/insets/insetinclude.C:225
+msgid "Input"
+msgstr "Vstup"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
+#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
+msgid "Include"
+msgstr "Zahrnutie"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
+#: ../lib/layouts/linuxdoc.layout:251 ../lib/layouts/manpage.layout:128
+msgid "Verbatim"
+msgstr "Doslovne (Verbatim)"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
+msgid "&Load"
+msgstr "&Naèíta»"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
+msgid "Load the file"
+msgstr "Naèíta» súbor"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
+msgid "&Mark spaces in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
+msgid "Underline spaces in generated output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
+msgid "&Show preview"
+msgstr "&Zobrazi» náhµad"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
+msgid "Show LaTeX preview"
+msgstr "Zobrazi» LaTeX náhµad"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
 msgid "&Keyword"
@@ -2503,6 +3107,15 @@ msgstr "&Kµúèové slovo"
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
 msgstr "Polo¾ka indexu"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
+msgid "Log"
+msgstr "Záznam"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
+msgid "Update the display"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
 msgid "LyX: Math Panel"
@@ -2618,31 +3231,81 @@ msgstr ""
 msgid "Open this panel as a separate window"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
-msgid "Minipage settings"
-msgstr "Nastavenie minipage"
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+msgid "&Rows:"
+msgstr "&Riadky:"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+msgid "Number of rows"
+msgstr "Poèet riadkov"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+msgid "&Columns:"
+msgstr "&Ståpce:"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+msgid "Number of columns"
+msgstr "Poèet ståpcov"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 msgid "Top"
 msgstr "Hore"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
-msgid "Middle"
-msgstr "Stred"
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+msgid "Center"
+msgstr "Na stred"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 msgid "Bottom"
 msgstr "Dole"
 
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
 msgid "Vertical alignment"
 msgstr "Vertikálne zarovnanie"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+msgid "&Vertical:"
+msgstr "&Vertikálne:"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+msgid "&Horizontal:"
+msgstr "&Horizontálne:"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
+msgid "Minipage settings"
+msgstr "Nastavenie minipage"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
+msgid "Middle"
+msgstr "Stred"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
 msgid "A&lignment:"
@@ -2663,15 +3326,169 @@ msgstr "Veµkos» ©írky"
 msgid "&Units:"
 msgstr "&Jednotky:"
 
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
-msgstr "Nastavenia"
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
+msgid "&General"
+msgstr "&V¹eobecné"
 
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-msgid "&Save"
-msgstr "&Ulo¾i»"
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
+msgid "Justified"
+msgstr "Do bloku"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "Vµavo"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "Vpravo"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
+msgid "Single"
+msgstr "Jednoduché"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
+msgid "1.5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
+#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocumentDialog.C:342
+msgid "Custom"
+msgstr "Vlastné"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
+msgid "L&ine spacing:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+msgid "Alig&nment:"
+msgstr "Zarov&nanie:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
+msgid "No &indent"
+msgstr "Bez odsaden&ia"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
+msgid "&Spacing"
+msgstr "&Rozostupy"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
+msgid "Above paragraph"
+msgstr "Nad odsekom"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
+msgid "S&pacing:"
+msgstr "Ria&dkovanie:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
+msgid "&Keep space:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+msgid "&Unit:"
+msgstr "&Jednotka:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
+msgid "&Value:"
+msgstr "&Hodnota:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
+msgid "None"
+msgstr "¾iadne"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
+msgid "DefSkip"
+msgstr "©tandardná"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
+#: src/frontends/qt2/QDocument.C:131
+msgid "SmallSkip"
+msgstr "Malá"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
+#: src/frontends/qt2/QDocument.C:132
+msgid "MedSkip"
+msgstr "Stredná"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
+#: src/frontends/qt2/QDocument.C:133
+msgid "BigSkip"
+msgstr "Veµká"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
+msgid "VFill"
+msgstr "Výplnok"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
+msgid "Below paragraph"
+msgstr "Pod odsekom"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
+msgid "&Lines && Pagebreaks"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
+msgid "Label width"
+msgstr "©írka oznaèenia"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
+msgid "Lon&gest label"
+msgstr "Dl&h¹ie oznaèenie"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
+msgid "L&ines"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
+msgid "A&bove"
+msgstr "&Nad"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
+msgid "B&elow"
+msgstr "Po&d"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
+msgid "&Page Breaks"
+msgstr "&Zalomenia strán"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
+msgid "Abo&ve"
+msgstr "&Nad"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
+msgid "Belo&w"
+msgstr "Po&d"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
+msgid "LaTeX pre-amble"
+msgstr "Preambula LaTeXu"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
+msgid "The LaTeX pre-amble"
+msgstr "Preambula LaTeXu"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
+msgid "&Edit..."
+msgstr "&Upravi»..."
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -2762,21 +3579,6 @@ msgstr ""
 msgid "Display insets"
 msgstr "Zobrazi» prílohy"
 
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-msgid "Monochrome"
-msgstr "Monochromaticky"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-msgid "Grayscale"
-msgstr "Odtiene ¹edej"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-msgid "Color"
-msgstr "Farba"
-
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 msgid "Do not display"
 msgstr "Nezobrazova»"
@@ -2821,12 +3623,6 @@ msgstr "Príp&ona:"
 #: src/frontends/qt2/QPrefsDialog.C:137
 msgid "Keyboard"
 msgstr "Klávesnica"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-msgid "Bro&wse..."
-msgstr "&Prechádza»..."
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
 msgid "S&econd:"
@@ -2893,15 +3689,6 @@ msgstr "Oznaèi» &cudzie jazyky"
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
 msgid "LaTeX settings"
 msgstr "LaTeX nastavenia"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "©tandardný"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
 msgid "US Letter"
@@ -3201,928 +3988,15 @@ msgstr "min."
 msgid "&Maximum last files:"
 msgstr "&Maximum posledných súborov:"
 
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-msgid "Search and replace"
-msgstr "Hµada» a nahradi»"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-msgid "&Find:"
-msgstr "&Nájs»:"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-msgid "Replace &with:"
-msgstr "Nahradi» &s:"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-msgid "Case &sensitive"
-msgstr "&Rozli¹ova» veµkos» písmen"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr "Hµada» ïale&j"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-msgid "&Replace"
-msgstr "&Nahradi»"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-msgid "Replace &All"
-msgstr "Nahradi» &v¹etko"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-msgid "File:"
-msgstr "Súbor:"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-msgid "Insert table"
-msgstr "Vlo¾i» tabuµku"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-msgid "&Rows:"
-msgstr "&Riadky:"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-msgid "Number of rows"
-msgstr "Poèet riadkov"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-msgid "&Columns:"
-msgstr "&Ståpce:"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-msgid "Number of columns"
-msgstr "Poèet ståpcov"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Zavrie»"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr "Synonymický slovník"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-msgid "&Keyword:"
-msgstr "&Kµúèové slovo:"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-msgid "Entry"
-msgstr "Záznam"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-msgid "Select a related word"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-msgid "&Selection:"
-msgstr "&Výber:"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-msgid "The selected entry"
-msgstr "Zvolený záznam"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-msgid "Insert URL"
-msgstr "Vlo¾i» URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&URL"
-msgstr "&URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&Name"
-msgstr "&Názov"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr "Názov asociovaný s URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-msgid "&Generate hyperlink"
-msgstr "&Generova» hyperlinky"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr "Výstup ako hyperlink ?"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-msgid "Wrap Options"
-msgstr "Nastavenia wrap"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-msgid "Default (outer)"
-msgstr "©tandard (vonkaj¹í)"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "Vµavo"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "Vpravo"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-msgid "Outer"
-msgstr "Vonkaj¹í"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-msgid "&Placement:"
-msgstr "&Umiestnenie:"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
-msgstr "&Kµúè"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-msgid "The citation key"
-msgstr "Kµúè citácie"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-msgid "&Label"
-msgstr "&Oznaèovanie"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
-msgid "The label as it appears in the document"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
-#: src/frontends/xforms/FormAboutlyx.C:70
-msgid "Version"
-msgstr "Verzia"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
-msgid "Version goes here"
-msgstr "Sem ide verzia"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
-#: src/frontends/xforms/FormAboutlyx.C:72
-msgid "Credits"
-msgstr "Kredity"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
-#: ../lib/layouts/apa.layout:192
-msgid "Copyright"
-msgstr "Autorské práva"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr "BibTeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-msgid "Databa&ses"
-msgstr "Databá&zy"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-msgid "BibTeX database to use"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-msgid "Available BibTeX databases"
-msgstr "Dostupné BibTeX databázy"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-msgid "&Add"
-msgstr "&Prida»"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-msgid "Add a BibTeX database file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-msgid "Add a BibTeX file manually"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-msgid "Browse for a BibTeX database file"
-msgstr "Hµada» súbor s BibTeX databázou"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-msgid "&Delete"
-msgstr "&Zmaza»"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-msgid "St&yle"
-msgstr "©&týl"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-msgid "The BibTeX style"
-msgstr "BibTeX ¹týlu"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-msgid "&Browse..."
-msgstr "&Prechádza»..."
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-msgid "Choose a style file"
-msgstr "Vybra» súbor so ¹týlom"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-msgid "&Update"
-msgstr "&Aktualizova»"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-msgid "Update style list"
-msgstr "Upravi» zoznam ¹týlu"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-msgid "Add bibliography to &TOC"
-msgstr "Prida» literatúru do o&bsahu"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-msgid "Add bibliography to the table of contents"
-msgstr "Prida» literatúru do obsahu"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:39
-msgid "Character"
-msgstr "Znak"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-msgid "&Family:"
-msgstr "&Rodina:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-msgid "Font family"
-msgstr "Rodina písma"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-msgid "&Series:"
-msgstr "&Série:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-msgid "Font series"
-msgstr ""
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Jazyk"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-msgid "Font shape"
-msgstr "Tvar písma"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-msgid "Font color"
-msgstr "Farba písma"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-msgid "S&hape:"
-msgstr "&Tvar:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-msgid "&Color:"
-msgstr "&Farby:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-msgid "&Toggle all"
-msgstr "V¹e&tko prepnú»"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-msgid "toggle font on all of the above"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-msgid "Never Toggled"
-msgstr "Nikdy zapnuté"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-msgid "Si&ze:"
-msgstr "&Veµkos»:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-msgid "Font size"
-msgstr "Veµkos» písma"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-msgid "Always Toggled"
-msgstr "V¾dy zapnuté"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-msgid "&Misc:"
-msgstr "&Rôzne:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-msgid "Auto apply"
-msgstr "Auto pou¾i»"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
-msgid "title here"
-msgstr "nadpis tu"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
-msgid "Use Class Defaults"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
-msgid "Reset default params of the current class"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
-msgid "Save as Document Defaults"
-msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "LaTeX chyba"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-msgid "LaTeX error messages"
-msgstr "Správy o LaTeX chybách"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-msgid "ERT inset display"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-msgid "Display"
-msgstr "Zobrazenie"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-msgid "&Collapsed"
-msgstr "&Zbalené"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
-msgstr "&Otvori»"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-msgid "Show ERT contents"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
-msgid "External Material"
-msgstr "Externý materiál"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-msgid "&File:"
-msgstr "&Súbor"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
-msgid "Filename"
-msgstr "Názov súboru"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
-msgid "&View Result"
-msgstr "Zobrazi» &výsledok"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
-msgid "View the file"
-msgstr "Zobrazi» súbor"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
-msgid "&Update Result"
-msgstr "&Aktualizova» výsledok"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
-msgid "Update the material"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
-msgid "Available templates"
-msgstr "Dostupné ¹ablóny"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
-msgid "&Template:"
-msgstr "©a&blóna:"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
-msgid "Parameters"
-msgstr "Parametre"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
-msgid "&Parameters:"
-msgstr "&Parametre:"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
-msgid "&Edit file"
-msgstr "&Upravi» súbor"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
-msgid "Edit the file externally"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
-msgid "&Graphics"
-msgstr "&Grafika"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
-msgid "File name of image"
-msgstr "Názov súbora s obrázkom"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
-msgid "Select an image file"
-msgstr "Vybra» súbor s obrázkom"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
-msgid "LyX Display"
-msgstr "LyX zobrazenie"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
-msgid "&Show in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-msgid "Display image in LyX"
-msgstr "Zobrazi» obrázok v LyXe"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
-msgid "Display:"
-msgstr "Displej:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
-msgid "Screen display"
-msgstr "Obrazovka"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-msgid "Scale:"
-msgstr "Mierka:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
-msgid "Percentage to scale by in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
-msgid "Height of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
-msgid "Units of height value"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
-msgid "&Height"
-msgstr "&Vý¹ka"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
-msgid "Width of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
-msgid "&Width"
-msgstr "©í&rka"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
-msgid "&Maintain aspect ratio"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
-msgid "Maintain aspect ratio with largest dimension"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
-msgid "A&ngle:"
-msgstr "Uho&l:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
-msgid "Angle to rotate image by"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
-msgid "The origin of the rotation"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
-msgid "&Clipping"
-msgstr "&Orezanie"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
-msgid "Clip to &bounding box"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
-msgid "Clip to bounding box values"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
-msgid "&Get from file"
-msgstr "&Získa» zo súbora"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
-msgid "Get bounding box from the (EPS) file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
-msgid "Right &top:"
-msgstr "Vp&ravo hore:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
-msgid "y"
-msgstr "y"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
-msgid "x"
-msgstr "x"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
-msgid "&Left bottom:"
-msgstr "V&µavo dole:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
-msgid "E&xtra options"
-msgstr "E&xtra nastavenia"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
-msgid "Su&bfigure"
-msgstr "Podo&brázok"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
-msgid "Is this just one part of a figure float ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
-msgid "Don't un&zip on export"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Nedekomprimova» obrázok pred exportom do LaTeXu"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
-msgid "LaTeX &options:"
-msgstr "LaTeX nas&tavenia:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
-msgid "Additional LaTeX options"
-msgstr "Dodatoèné LaTeX nastavenia"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
-msgid "&Draft mode"
-msgstr "Re¾im kon&ceptu"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
-msgid "Draft mode"
-msgstr "Re¾im konceptu"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-msgid "Ca&ption:"
-msgstr "Po&pisok:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
-msgid "The caption for the sub-figure"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
-msgid "Include File"
-msgstr "Vlo¾i» súbor"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
-msgid "File name to include"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-msgid "Select a file"
-msgstr "Vybra» súbor"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
-msgid "&Include Type:"
-msgstr "&Zahrnutie typu:"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
-#: src/insets/insetinclude.C:225
-msgid "Input"
-msgstr "Vstup"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
-#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
-msgid "Include"
-msgstr "Zahrnutie"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
-msgid "Verbatim"
-msgstr "Doslovne (Verbatim)"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-msgid "&Load"
-msgstr "&Naèíta»"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
-msgid "Load the file"
-msgstr "Naèíta» súbor"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
-msgid "&Mark spaces in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
-msgid "Underline spaces in generated output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-msgid "&Show preview"
-msgstr "&Zobrazi» náhµad"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
-msgid "Show LaTeX preview"
-msgstr "Zobrazi» LaTeX náhµad"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
-msgid "Log"
-msgstr "Záznam"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
-msgid "Update the display"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-msgid "Center"
-msgstr "Na stred"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
-msgid "&Vertical:"
-msgstr "&Vertikálne:"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
-msgid "&Horizontal:"
-msgstr "&Horizontálne:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
-msgid "&General"
-msgstr "&V¹eobecné"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
-msgid "Justified"
-msgstr "Do bloku"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
-#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
-msgid "Single"
-msgstr "Jednoduché"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
-msgid "1.5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
-#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
-#: src/frontends/qt2/QDocumentDialog.C:342
-msgid "Custom"
-msgstr "Vlastné"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
-msgid "L&ine spacing:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
-msgid "Alig&nment:"
-msgstr "Zarov&nanie:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-msgid "No &indent"
-msgstr "Bez odsaden&ia"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
-msgid "&Spacing"
-msgstr "&Rozostupy"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
-msgid "Above paragraph"
-msgstr "Nad odsekom"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
-msgid "S&pacing:"
-msgstr "Ria&dkovanie:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
-msgid "&Keep space:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
-msgid "&Unit:"
-msgstr "&Jednotka:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
-msgid "&Value:"
-msgstr "&Hodnota:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
-msgid "None"
-msgstr "¾iadne"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
-msgid "DefSkip"
-msgstr "©tandardná"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
-#: src/frontends/qt2/QDocument.C:131
-msgid "SmallSkip"
-msgstr "Malá"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
-#: src/frontends/qt2/QDocument.C:132
-msgid "MedSkip"
-msgstr "Stredná"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
-#: src/frontends/qt2/QDocument.C:133
-msgid "BigSkip"
-msgstr "Veµká"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
-msgid "VFill"
-msgstr "Výplnok"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
-msgid "Below paragraph"
-msgstr "Pod odsekom"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
-msgid "&Lines && Pagebreaks"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-msgid "Label width"
-msgstr "©írka oznaèenia"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-msgid "Lon&gest label"
-msgstr "Dl&h¹ie oznaèenie"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
-msgid "L&ines"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
-msgid "A&bove"
-msgstr "&Nad"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
-msgid "B&elow"
-msgstr "Po&d"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
-msgid "&Page Breaks"
-msgstr "&Zalomenia strán"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
-msgid "Abo&ve"
-msgstr "&Nad"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
-msgid "Belo&w"
-msgstr "Po&d"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
-msgid "LaTeX pre-amble"
-msgstr "Preambula LaTeXu"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-msgid "The LaTeX pre-amble"
-msgstr "Preambula LaTeXu"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr "&Upravi»..."
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+msgid "&Save"
+msgstr "&Ulo¾i»"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
 #: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
@@ -4284,6 +4158,44 @@ msgstr "Dostupné referencie"
 msgid "&Document:"
 msgstr "&Dokument:"
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+msgid "Search and replace"
+msgstr "Hµada» a nahradi»"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+msgid "&Find:"
+msgstr "&Nájs»:"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+msgid "Replace &with:"
+msgstr "Nahradi» &s:"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+msgid "Case &sensitive"
+msgstr "&Rozli¹ova» veµkos» písmen"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr "Hµada» ïale&j"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+msgid "&Replace"
+msgstr "&Nahradi»"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+msgid "Replace &All"
+msgstr "Nahradi» &v¹etko"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
 msgid "Custom Export"
 msgstr "Vlastný export"
@@ -4303,6 +4215,10 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
 msgstr "Dostupné exportné konvertory"
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+msgid "File:"
+msgstr "Súbor:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
@@ -4361,6 +4277,11 @@ msgstr "&©tart..."
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
 msgid "Start spellcheck"
 msgstr "Zaèa» kontrolu"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+msgid "Insert table"
+msgstr "Vlo¾i» tabuµku"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
 msgid "Table Settings"
@@ -4627,14 +4548,46 @@ msgid "&View"
 msgstr "&Zobrazi»"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"Zobrazi» obsah oznaèeného súbora. Je to mo¾né, ak súbory sú zobrazené "
-"s cestou"
+"Zobrazi» obsah oznaèeného súbora. Je to mo¾né, ak súbory sú zobrazené s "
+"cestou"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
 msgid "Close this dialog"
 msgstr "Zatvorí tento dialóg"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr "Synonymický slovník"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+msgid "&Keyword:"
+msgstr "&Kµúèové slovo:"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+msgid "Entry"
+msgstr "Záznam"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+msgid "Select a related word"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+msgid "&Selection:"
+msgstr "&Výber:"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+msgid "The selected entry"
+msgstr "Zvolený záznam"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
 msgid "Table Of Contents"
@@ -4648,9 +4601,57 @@ msgstr "&Typ"
 msgid "Contents list"
 msgstr ""
 
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+msgid "Insert URL"
+msgstr "Vlo¾i» URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+msgid "&URL"
+msgstr "&URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+msgid "&Name"
+msgstr "&Názov"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr "Názov asociovaný s URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+msgid "&Generate hyperlink"
+msgstr "&Generova» hyperlinky"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr "Výstup ako hyperlink ?"
+
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
 msgid "Version control log"
 msgstr "Protokol kontroly verzií"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+msgid "Wrap Options"
+msgstr "Nastavenia wrap"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+msgid "Default (outer)"
+msgstr "©tandard (vonkaj¹í)"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+msgid "Outer"
+msgstr "Vonkaj¹í"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+msgid "&Placement:"
+msgstr "&Umiestnenie:"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -4660,9 +4661,9 @@ msgstr "Protokol kontroly verzií"
 #: ../lib/layouts/cv.layout:14 ../lib/layouts/db_stdclass.inc:28
 #: ../lib/layouts/dtk.layout:30 ../lib/layouts/egs.layout:17
 #: ../lib/layouts/foils.layout:28 ../lib/layouts/hollywood.layout:350
-#: ../lib/layouts/kluwer.layout:34 ../lib/layouts/linuxdoc.layout:15
+#: ../lib/layouts/kluwer.layout:34 ../lib/layouts/linuxdoc.layout:17
 #: ../lib/layouts/llncs.layout:23 ../lib/layouts/ltugboat.layout:30
-#: ../lib/layouts/manpage.layout:15 ../lib/layouts/paper.layout:15
+#: ../lib/layouts/manpage.layout:17 ../lib/layouts/paper.layout:15
 #: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:24
 #: ../lib/layouts/scrclass.inc:11 ../lib/layouts/scrlettr.layout:7
 #: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
@@ -4800,33 +4801,33 @@ msgstr ""
 #: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
 #: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
 #: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:68
-#: ../lib/layouts/aastex.layout:141 ../lib/layouts/amsart.layout:40
-#: ../lib/layouts/amsbook.layout:41 ../lib/layouts/cv.layout:26
-#: ../lib/layouts/db_stdsections.inc:25 ../lib/layouts/egs.layout:29
-#: ../lib/layouts/kluwer.layout:51 ../lib/layouts/latex8.layout:39
-#: ../lib/layouts/linuxdoc.layout:66 ../lib/layouts/llncs.layout:44
-#: ../lib/layouts/ltugboat.layout:46 ../lib/layouts/manpage.layout:39
-#: ../lib/layouts/paper.layout:46 ../lib/layouts/revtex.layout:42
-#: ../lib/layouts/revtex4.layout:45 ../lib/layouts/scrclass.inc:68
-#: ../lib/layouts/siamltex.layout:38 ../lib/layouts/spie.layout:23
-#: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
-#: ../lib/layouts/aguplus.inc:23
+#: ../lib/layouts/aastex.layout:141 ../lib/layouts/aguplus.inc:23
+#: ../lib/layouts/amsart.layout:40 ../lib/layouts/amsbook.layout:41
+#: ../lib/layouts/cv.layout:26 ../lib/layouts/db_stdsections.inc:25
+#: ../lib/layouts/egs.layout:29 ../lib/layouts/kluwer.layout:51
+#: ../lib/layouts/latex8.layout:39 ../lib/layouts/linuxdoc.layout:68
+#: ../lib/layouts/llncs.layout:44 ../lib/layouts/ltugboat.layout:46
+#: ../lib/layouts/manpage.layout:41 ../lib/layouts/paper.layout:46
+#: ../lib/layouts/revtex.layout:42 ../lib/layouts/revtex4.layout:45
+#: ../lib/layouts/scrclass.inc:68 ../lib/layouts/siamltex.layout:38
+#: ../lib/layouts/spie.layout:23 ../lib/layouts/stdsections.inc:63
+#: ../lib/layouts/svjour.inc:41
 msgid "Section"
 msgstr "Oddiel"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
 #: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:70
-#: ../lib/layouts/aastex.layout:154 ../lib/layouts/amsart.layout:53
-#: ../lib/layouts/amsbook.layout:54 ../lib/layouts/cv.layout:49
-#: ../lib/layouts/db_stdsections.inc:32 ../lib/layouts/egs.layout:55
-#: ../lib/layouts/kluwer.layout:60 ../lib/layouts/latex8.layout:46
-#: ../lib/layouts/linuxdoc.layout:92 ../lib/layouts/llncs.layout:57
-#: ../lib/layouts/ltugboat.layout:70 ../lib/layouts/paper.layout:54
-#: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
-#: ../lib/layouts/scrclass.inc:75 ../lib/layouts/siamltex.layout:56
-#: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
-#: ../lib/layouts/aguplus.inc:35
+#: ../lib/layouts/aastex.layout:154 ../lib/layouts/aguplus.inc:35
+#: ../lib/layouts/amsart.layout:53 ../lib/layouts/amsbook.layout:54
+#: ../lib/layouts/cv.layout:49 ../lib/layouts/db_stdsections.inc:32
+#: ../lib/layouts/egs.layout:55 ../lib/layouts/kluwer.layout:60
+#: ../lib/layouts/latex8.layout:46 ../lib/layouts/linuxdoc.layout:94
+#: ../lib/layouts/llncs.layout:57 ../lib/layouts/ltugboat.layout:70
+#: ../lib/layouts/paper.layout:54 ../lib/layouts/revtex.layout:55
+#: ../lib/layouts/revtex4.layout:58 ../lib/layouts/scrclass.inc:75
+#: ../lib/layouts/siamltex.layout:56 ../lib/layouts/stdsections.inc:88
+#: ../lib/layouts/svjour.inc:51
 msgid "Subsection"
 msgstr "Pododdiel"
 
@@ -4835,7 +4836,7 @@ msgstr "Pododdiel"
 #: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
 #: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
 #: ../lib/layouts/amsbook.layout:63 ../lib/layouts/db_stdsections.inc:39
-#: ../lib/layouts/kluwer.layout:69 ../lib/layouts/linuxdoc.layout:119
+#: ../lib/layouts/kluwer.layout:69 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
 #: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
 #: ../lib/layouts/revtex4.layout:67 ../lib/layouts/scrclass.inc:82
@@ -4844,15 +4845,15 @@ msgstr "Pododdiel"
 msgid "Subsubsection"
 msgstr "Podpododdiel"
 
-#: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
-#: ../lib/layouts/siamltex.layout:78 ../lib/layouts/spie.layout:33
-#: ../lib/layouts/stdstarsections.inc:29 ../lib/layouts/aguplus.inc:29
+#: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/aguplus.inc:29
+#: ../lib/layouts/egs.layout:686 ../lib/layouts/siamltex.layout:78
+#: ../lib/layouts/spie.layout:33 ../lib/layouts/stdstarsections.inc:29
 msgid "Section*"
 msgstr "Oddiel*"
 
-#: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
-#: ../lib/layouts/siamltex.layout:84 ../lib/layouts/stdstarsections.inc:38
-#: ../lib/layouts/aguplus.inc:41
+#: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/aguplus.inc:41
+#: ../lib/layouts/egs.layout:709 ../lib/layouts/siamltex.layout:84
+#: ../lib/layouts/stdstarsections.inc:38
 msgid "Subsection*"
 msgstr "Pododdiel*"
 
@@ -4864,7 +4865,7 @@ msgstr "Podpododdiel*"
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
 #: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
 #: ../lib/layouts/foils.layout:160 ../lib/layouts/heb-article.layout:20
-#: ../lib/layouts/linuxdoc.layout:344 ../lib/layouts/paper.layout:132
+#: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/scrclass.inc:222 ../lib/layouts/siamltex.layout:134
 #: ../lib/layouts/spie.layout:74 src/buffer.C:1504
 msgid "Abstract"
@@ -4880,15 +4881,15 @@ msgstr "Kµúèové slová"
 
 #: ../lib/layouts/IEEEtran.layout:406 ../lib/layouts/aa.layout:78
 #: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
-#: ../lib/layouts/aapaper.layout:195 ../lib/layouts/amsdefs.inc:338
-#: ../lib/layouts/book.layout:19 ../lib/layouts/cl2emult.layout:105
-#: ../lib/layouts/cv.layout:154 ../lib/layouts/egs.layout:643
-#: ../lib/layouts/foils.layout:224 ../lib/layouts/latex8.layout:121
-#: ../lib/layouts/llncs.layout:289 ../lib/layouts/report.layout:12
-#: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
-#: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
-#: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:72
+#: ../lib/layouts/aapaper.layout:195 ../lib/layouts/aguplus.inc:157
+#: ../lib/layouts/amsdefs.inc:338 ../lib/layouts/book.layout:19
+#: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/cv.layout:154
+#: ../lib/layouts/egs.layout:643 ../lib/layouts/foils.layout:224
+#: ../lib/layouts/latex8.layout:121 ../lib/layouts/llncs.layout:289
+#: ../lib/layouts/report.layout:12 ../lib/layouts/scrbook.layout:13
+#: ../lib/layouts/scrclass.inc:229 ../lib/layouts/scrreprt.layout:10
+#: ../lib/layouts/siamltex.layout:171 ../lib/layouts/stdstruct.inc:43
+#: ../lib/layouts/svjour.inc:353 src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -4924,15 +4925,15 @@ msgstr "Oznaèenie_oboch"
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
 #: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:262
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/db_stdlists.inc:11
-#: ../lib/layouts/egs.layout:200 ../lib/layouts/linuxdoc.layout:209
-#: ../lib/layouts/manpage.layout:84 ../lib/layouts/stdlists.inc:9
+#: ../lib/layouts/egs.layout:200 ../lib/layouts/linuxdoc.layout:211
+#: ../lib/layouts/manpage.layout:86 ../lib/layouts/stdlists.inc:9
 msgid "Itemize"
 msgstr "Zoznam-odrá¾ky"
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
 #: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:280
 #: ../lib/layouts/db_stdlists.inc:17 ../lib/layouts/egs.layout:182
-#: ../lib/layouts/linuxdoc.layout:193 ../lib/layouts/manpage.layout:67
+#: ../lib/layouts/linuxdoc.layout:195 ../lib/layouts/manpage.layout:69
 #: ../lib/layouts/stdlists.inc:27
 msgid "Enumerate"
 msgstr "Zoznam-èísla"
@@ -4940,7 +4941,7 @@ msgstr "Zoznam-èísla"
 #: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
 #: ../lib/layouts/aastex.layout:80 ../lib/layouts/db_stdlists.inc:23
 #: ../lib/layouts/egs.layout:218 ../lib/layouts/hollywood.layout:131
-#: ../lib/layouts/linuxdoc.layout:226 ../lib/layouts/manpage.layout:102
+#: ../lib/layouts/linuxdoc.layout:228 ../lib/layouts/manpage.layout:104
 #: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:23
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/stdlists.inc:45
 msgid "Description"
@@ -4963,7 +4964,7 @@ msgstr "Zoznam"
 #: ../lib/layouts/docbook-section.layout:12 ../lib/layouts/egs.layout:286
 #: ../lib/layouts/entcs.layout:13 ../lib/layouts/foils.layout:138
 #: ../lib/layouts/hollywood.layout:336 ../lib/layouts/kluwer.layout:101
-#: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:38
+#: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
 #: ../lib/layouts/llncs.layout:106 ../lib/layouts/ltugboat.layout:151
 #: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
 #: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrclass.inc:150
@@ -4988,7 +4989,7 @@ msgstr "Podnadpis"
 #: ../lib/layouts/db_stdtitle.inc:18 ../lib/layouts/egs.layout:336
 #: ../lib/layouts/entcs.layout:22 ../lib/layouts/foils.layout:146
 #: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:157
-#: ../lib/layouts/linuxdoc.layout:294 ../lib/layouts/llncs.layout:192
+#: ../lib/layouts/linuxdoc.layout:296 ../lib/layouts/llncs.layout:192
 #: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
 #: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
 #: ../lib/layouts/scrclass.inc:158 ../lib/layouts/siamltex.layout:119
@@ -5023,7 +5024,7 @@ msgstr "Po¹ta"
 #: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/db_stdtitle.inc:57
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:140
-#: ../lib/layouts/linuxdoc.layout:319 ../lib/layouts/revtex.layout:123
+#: ../lib/layouts/linuxdoc.layout:321 ../lib/layouts/revtex.layout:123
 #: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrclass.inc:165
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/siamltex.layout:129
 #: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
@@ -5061,14 +5062,14 @@ msgstr "E-mail"
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aastex.layout:74 ../lib/layouts/db_stdsections.inc:46
-#: ../lib/layouts/egs.layout:76 ../lib/layouts/kluwer.layout:78
-#: ../lib/layouts/linuxdoc.layout:144 ../lib/layouts/llncs.layout:75
-#: ../lib/layouts/ltugboat.layout:117 ../lib/layouts/paper.layout:70
-#: ../lib/layouts/revtex.layout:73 ../lib/layouts/revtex4.layout:76
-#: ../lib/layouts/scrclass.inc:89 ../lib/layouts/siamltex.layout:68
-#: ../lib/layouts/stdsections.inc:138 ../lib/layouts/svjour.inc:70
-#: ../lib/layouts/aguplus.inc:48
+#: ../lib/layouts/aastex.layout:74 ../lib/layouts/aguplus.inc:48
+#: ../lib/layouts/db_stdsections.inc:46 ../lib/layouts/egs.layout:76
+#: ../lib/layouts/kluwer.layout:78 ../lib/layouts/linuxdoc.layout:146
+#: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
+#: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
+#: ../lib/layouts/revtex4.layout:76 ../lib/layouts/scrclass.inc:89
+#: ../lib/layouts/siamltex.layout:68 ../lib/layouts/stdsections.inc:138
+#: ../lib/layouts/svjour.inc:70
 msgid "Paragraph"
 msgstr "Odstavec"
 
@@ -5121,7 +5122,62 @@ msgstr ""
 msgid "FigCaption"
 msgstr "Popis_obrázka"
 
-#: ../lib/layouts/amsbook.layout:101
+#: ../lib/layouts/aguplus.inc:53 ../lib/layouts/siamltex.layout:96
+#: ../lib/layouts/stdstarsections.inc:56
+msgid "Paragraph*"
+msgstr "Odstavec*"
+
+#: ../lib/layouts/aguplus.inc:67 ../lib/layouts/cv.layout:104
+#: ../lib/layouts/foils.layout:200
+msgid "Left_Header"
+msgstr "¥avá_Hlavièka"
+
+#: ../lib/layouts/aguplus.inc:93 ../lib/layouts/cv.layout:123
+#: ../lib/layouts/foils.layout:208
+msgid "Right_Header"
+msgstr "Pravá_Hlavièka"
+
+#: ../lib/layouts/aguplus.inc:100 ../lib/layouts/egs.layout:468
+msgid "Received"
+msgstr "Prijaté"
+
+#: ../lib/layouts/aguplus.inc:107
+msgid "Revised"
+msgstr "Revidované"
+
+#: ../lib/layouts/aguplus.inc:114 ../lib/layouts/egs.layout:494
+msgid "Accepted"
+msgstr "Prípustný"
+
+#: ../lib/layouts/aguplus.inc:121
+msgid "CCC"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:134
+msgid "PaperId"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:141
+msgid "AuthorAddr"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:148
+msgid "SlugComment"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:171
+msgid "Plate"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:181
+msgid "Planotable"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:192
+msgid "Table_Caption"
+msgstr "Tabuµka_popis"
+
+#: ../lib/layouts/amsbook.layout:103
 msgid "Chapter_Exercises"
 msgstr ""
 
@@ -5404,18 +5460,8 @@ msgstr "Pododdiel"
 msgid "Topic"
 msgstr "Námet"
 
-#: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
-#: ../lib/layouts/aguplus.inc:67
-msgid "Left_Header"
-msgstr "¥avá_Hlavièka"
-
-#: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
-#: ../lib/layouts/aguplus.inc:93
-msgid "Right_Header"
-msgstr "Pravá_Hlavièka"
-
-#: ../lib/layouts/db_lyxmacros.inc:11 ../lib/layouts/linuxdoc.layout:276
-#: ../lib/layouts/manpage.layout:153
+#: ../lib/layouts/db_lyxmacros.inc:11 ../lib/layouts/linuxdoc.layout:278
+#: ../lib/layouts/manpage.layout:155
 msgid "Code"
 msgstr "Kód"
 
@@ -5429,8 +5475,8 @@ msgstr "Komentár"
 msgid "LyX-Code"
 msgstr "LyX-Code"
 
-#: ../lib/layouts/db_stdlayouts.inc:11 ../lib/layouts/linuxdoc.layout:370
-#: ../lib/layouts/manpage.layout:171
+#: ../lib/layouts/db_stdlayouts.inc:11 ../lib/layouts/linuxdoc.layout:372
+#: ../lib/layouts/manpage.layout:173
 msgid "SGML"
 msgstr "SGML"
 
@@ -5449,7 +5495,7 @@ msgid "Chapter"
 msgstr "Kapitola"
 
 #: ../lib/layouts/db_stdsections.inc:53 ../lib/layouts/egs.layout:103
-#: ../lib/layouts/kluwer.layout:87 ../lib/layouts/linuxdoc.layout:168
+#: ../lib/layouts/kluwer.layout:87 ../lib/layouts/linuxdoc.layout:170
 #: ../lib/layouts/llncs.layout:85 ../lib/layouts/paper.layout:78
 #: ../lib/layouts/scrclass.inc:96 ../lib/layouts/stdsections.inc:163
 #: ../lib/layouts/svjour.inc:80
@@ -5533,8 +5579,8 @@ msgstr ""
 msgid "Datum"
 msgstr "Dátum"
 
-#: ../lib/layouts/egs.layout:149 ../lib/layouts/linuxdoc.layout:26
-#: ../lib/layouts/manpage.layout:27 ../lib/layouts/stdlayouts.inc:49
+#: ../lib/layouts/egs.layout:149 ../lib/layouts/linuxdoc.layout:28
+#: ../lib/layouts/manpage.layout:29 ../lib/layouts/stdlayouts.inc:49
 msgid "Quote"
 msgstr "Citovanie"
 
@@ -5557,14 +5603,6 @@ msgstr ""
 #: ../lib/layouts/egs.layout:442
 msgid "FirstAuthor"
 msgstr "Prvá_Autor"
-
-#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:100
-msgid "Received"
-msgstr "Prijaté"
-
-#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:114
-msgid "Accepted"
-msgstr "Prípustný"
 
 #: ../lib/layouts/egs.layout:522
 msgid "Offsets"
@@ -6039,11 +6077,6 @@ msgstr ""
 msgid "ProgressContents"
 msgstr ""
 
-#: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
-#: ../lib/layouts/aguplus.inc:53
-msgid "Paragraph*"
-msgstr "Odstavec*"
-
 #: ../lib/layouts/siamltex.layout:165
 msgid "AMS"
 msgstr "AMS"
@@ -6095,38 +6128,6 @@ msgstr "Separáty"
 #: ../lib/layouts/svjour.inc:295
 msgid " Keywords"
 msgstr " Kµúèové slová"
-
-#: ../lib/layouts/aguplus.inc:107
-msgid "Revised"
-msgstr "Revidované"
-
-#: ../lib/layouts/aguplus.inc:121
-msgid "CCC"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:134
-msgid "PaperId"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:141
-msgid "AuthorAddr"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:148
-msgid "SlugComment"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:171
-msgid "Plate"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:181
-msgid "Planotable"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:192
-msgid "Table_Caption"
-msgstr "Tabuµka_popis"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -7179,21 +7180,21 @@ msgstr "Zvoµte LyX dokument na vlo¾enie"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1642 src/lyxfunc.C:1681 src/lyxfunc.C:1786
+#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1683 src/lyxfunc.C:1788
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
 msgid "Examples|#E#e"
 msgstr "Príklady|#P#p"
 
-#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1649
-#: src/lyxfunc.C:1688
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1650
+#: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX dokumenty (*.lyx)"
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1697 src/lyxfunc.C:1717
-#: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
 msgid "Canceled."
 msgstr "Zru¹ené."
 
@@ -7206,8 +7207,8 @@ msgstr "Vkladám dokument %1$s..."
 msgid "Inserting document "
 msgstr "Vkladám dokument "
 
-#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:986
-#: src/lyxfunc.C:1149 src/lyxfunc.C:1730
+#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:987
+#: src/lyxfunc.C:1150 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7216,7 +7217,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vlo¾ený."
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1742
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokument "
 
@@ -8237,7 +8238,7 @@ msgstr "Chcete rad¹ej túto pou¾i»?"
 msgid "Unable to open template"
 msgstr "Nie je mo¾né otvori» ¹ablónu"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1818
+#: src/bufferlist.C:518 src/lyxfunc.C:1819
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otvorený:"
 
@@ -8595,12 +8596,12 @@ msgid ""
 "Ave, Cambridge, MA 02139, USA."
 msgstr ""
 "LyX je ¹írený v nádeji, ¾e bude u¾itoèný, ale BEZ AKEJKO¥VEK ZÁRUKY; dokonca "
-"bez akejkoµvek OBCHODNEJ ZÁRUKY alebo VHODNOSTI K DANÉMU POU®ÍVANIU.\n "
-"Podrobnosti si pozrite v GNU General Public Licence.\n"
+"bez akejkoµvek OBCHODNEJ ZÁRUKY alebo VHODNOSTI K DANÉMU POU®ÍVANIU.\n"
+" Podrobnosti si pozrite v GNU General Public Licence.\n"
 "Kópiu tejto licencie by ste mali dosta» spolu s týmto programom; pokiaµ nie, "
 "tak napí¹te na The Free Software Foundation, Inc., 675 Mass Ave, Cambridge, "
-"MA 02139, USA. Slovenský preklad nájdete na http://www.linux.sk. "
-" Èeský preklad je na http://www.freesoft.cz."
+"MA 02139, USA. Slovenský preklad nájdete na http://www.linux.sk.  Èeský "
+"preklad je na http://www.freesoft.cz."
 
 #: src/frontends/controllers/ControlAboutlyx.C:83
 msgid "LyX Version "
@@ -9557,31 +9558,31 @@ msgstr "Konvertor"
 msgid "File formats"
 msgstr "Formáty"
 
-#: src/frontends/qt2/QPrefsDialog.C:444 src/frontends/qt2/QPrefsDialog.C:447
+#: src/frontends/qt2/QPrefsDialog.C:450 src/frontends/qt2/QPrefsDialog.C:453
 #, fuzzy
 msgid "New"
 msgstr "Nový"
 
-#: src/frontends/qt2/QPrefsDialog.C:548
+#: src/frontends/qt2/QPrefsDialog.C:554
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/frontends/qt2/QPrefsDialog.C:556
+#: src/frontends/qt2/QPrefsDialog.C:562
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/frontends/qt2/QPrefsDialog.C:564
+#: src/frontends/qt2/QPrefsDialog.C:570
 msgid "Select a backups directory"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:572
+#: src/frontends/qt2/QPrefsDialog.C:578
 #, fuzzy
 msgid "Select a document directory"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/frontends/qt2/QPrefsDialog.C:580
+#: src/frontends/qt2/QPrefsDialog.C:586
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
@@ -9781,12 +9782,12 @@ msgstr "*"
 msgid "License"
 msgstr "Licencia"
 
-#: src/frontends/xforms/FormBase.C:341
+#: src/frontends/xforms/FormBase.C:347
 #, fuzzy, c-format
 msgid "WARNING! %1$s"
 msgstr "VAROVANIE!"
 
-#: src/frontends/xforms/FormBase.C:348
+#: src/frontends/xforms/FormBase.C:354
 #, fuzzy
 msgid "WARNING!"
 msgstr "VAROVANIE!"
@@ -9922,11 +9923,13 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:202
-msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgid ""
+"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:205
-msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgid ""
+"Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:208
@@ -10090,7 +10093,8 @@ msgid "Add all processes to the list of processes to kill."
 msgstr ""
 
 #: src/frontends/xforms/FormForks.C:70
-msgid "Add the currently selected child process to the list of processes to kill."
+msgid ""
+"Add the currently selected child process to the list of processes to kill."
 msgstr ""
 
 #: src/frontends/xforms/FormForks.C:73
@@ -10414,7 +10418,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objekty, ktorým mô¾u by» priradené farby."
 
 #: src/frontends/xforms/FormPreferences.C:516
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifikovanie farby LyX objektov. Poznámka: musíte stlaèi» \"Pou¾i»\" , aby "
 "do¹lo k zmene."
@@ -10514,7 +10519,8 @@ msgstr "Názov formátu, tak ako sa objaví v ponuke."
 
 #: src/frontends/xforms/FormPreferences.C:1244
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr "Klávesové skratky. Pou¾ite písmená v názve GUI. Citlivé na veµkos» písmen."
+msgstr ""
+"Klávesové skratky. Pou¾ite písmená v názve GUI. Citlivé na veµkos» písmen."
 
 #: src/frontends/xforms/FormPreferences.C:1248
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -10550,7 +10556,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1377
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr "Nemô¾em odstráni» Formát pou¾ívaný Konvertorom. Odstráòte najprv konvertor."
+msgstr ""
+"Nemô¾em odstráni» Formát pou¾ívaný Konvertorom. Odstráòte najprv konvertor."
 
 #: src/frontends/xforms/FormPreferences.C:1860
 msgid "Monochrome|Grayscale|Color|Do not display"
@@ -10755,7 +10762,8 @@ msgstr ""
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid "Export the buffer to this format before running the command below on it."
+msgid ""
+"Export the buffer to this format before running the command below on it."
 msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:52
@@ -11470,7 +11478,7 @@ msgstr "(Ak ne, tak dokument nie je ulo¾ený.)"
 msgid "Choose a filename to save document as"
 msgstr "Vlo¾te názov súboru, pod ktorým sa má dokument ulo¾i»"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1644
+#: src/lyx_cb.C:112 src/lyxfunc.C:1645
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "©ablóna|#¹"
@@ -11939,137 +11947,137 @@ msgstr "Dokument je iba na èítanie"
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
 
-#: src/lyxfunc.C:701
+#: src/lyxfunc.C:702
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:705
+#: src/lyxfunc.C:706
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:981
+#: src/lyxfunc.C:982
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument"
 
-#: src/lyxfunc.C:984
+#: src/lyxfunc.C:985
 #, fuzzy
 msgid "Saving document "
 msgstr "Ukladám dokument"
 
-#: src/lyxfunc.C:990
+#: src/lyxfunc.C:991
 #, fuzzy
 msgid " done."
 msgstr "Prejs» dole"
 
-#: src/lyxfunc.C:1132 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/lyxfunc.C:1145
+#: src/lyxfunc.C:1146
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s Pomocníkom"
 
-#: src/lyxfunc.C:1148
+#: src/lyxfunc.C:1149
 #, fuzzy
 msgid "Opening help file "
 msgstr "Otváram súbor s Pomocníkom"
 
-#: src/lyxfunc.C:1354
+#: src/lyxfunc.C:1355
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povolené len v matematickom re¾ime!"
 
-#: src/lyxfunc.C:1396
+#: src/lyxfunc.C:1397
 msgid "Opening child document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1470
+#: src/lyxfunc.C:1471
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1485
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1489
+#: src/lyxfunc.C:1490
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1491
 #, fuzzy
 msgid " failed - color is undefined or may not be redefined"
 msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1640
+#: src/lyxfunc.C:1641
 #, fuzzy
 msgid "Select template file"
 msgstr "Zvoµte názov výstupu"
 
-#: src/lyxfunc.C:1679
+#: src/lyxfunc.C:1680
 #, fuzzy
 msgid "Select document to open"
 msgstr "Zvoµte dokument pre otvorenie"
 
-#: src/lyxfunc.C:1715
+#: src/lyxfunc.C:1716
 #, fuzzy
 msgid "No such file"
 msgstr "Súbor nenájdený"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1717
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Vytvori» nový dokument s týmto názvom?"
 
-#: src/lyxfunc.C:1728
+#: src/lyxfunc.C:1729
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Otváram dokument"
 
-#: src/lyxfunc.C:1730
+#: src/lyxfunc.C:1731
 #, fuzzy
 msgid "Opening document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1740
+#: src/lyxfunc.C:1741
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "®iadny dokument nie je otvorený!"
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1743
 #, fuzzy
 msgid " opened."
 msgstr "Prejs» dole"
 
-#: src/lyxfunc.C:1746
+#: src/lyxfunc.C:1747
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Dokument sa nedá otvori»"
 
-#: src/lyxfunc.C:1749
+#: src/lyxfunc.C:1750
 #, fuzzy
 msgid "Could not open document "
 msgstr "Dokument sa nedá otvori»"
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1777
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/lyxfunc.C:1780
+#: src/lyxfunc.C:1781
 #, fuzzy
 msgid "Select "
 msgstr "Zvoµte "
 
-#: src/lyxfunc.C:1781
+#: src/lyxfunc.C:1782
 #, fuzzy
 msgid " file to import"
 msgstr "súbor na importovanie"
 
-#: src/lyxfunc.C:1820
+#: src/lyxfunc.C:1821
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12077,15 +12085,15 @@ msgstr ""
 "Chcete teraz zavrie» tento dokument?\n"
 "('Nie' iba prepne do otvorenej verzie)"
 
-#: src/lyxfunc.C:1840
+#: src/lyxfunc.C:1841
 msgid "A document by the name"
 msgstr "Dokument s menom"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1842
 msgid "already exists. Overwrite?"
 msgstr "u¾ existuje. Prepísa»?"
 
-#: src/lyxfunc.C:1913
+#: src/lyxfunc.C:1914
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
@@ -12149,7 +12157,8 @@ msgstr "©pecifikácia veµkosti papiera, na ktorý sa bude tlaèi»."
 
 #: src/lyxrc.C:1880
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr "Nastavenie, ktoré bude odoslané programu na tlaè pre konkrétnu tlaèiareò."
+msgstr ""
+"Nastavenie, ktoré bude odoslané programu na tlaè pre konkrétnu tlaèiareò."
 
 #: src/lyxrc.C:1884
 msgid ""
@@ -12213,7 +12222,8 @@ msgstr "Veµkos» písma pou¾ívaného pre zmenu veµkosti písma obrazovky."
 
 #: src/lyxrc.C:1923
 msgid "The screen fonts used to display the text while editing."
-msgstr "Písmo obrazovky, ktoré sa pou¾ije na zobrazovanie textu pri upravovaní."
+msgstr ""
+"Písmo obrazovky, ktoré sa pou¾ije na zobrazovanie textu pri upravovaní."
 
 #: src/lyxrc.C:1927
 msgid "The bold font in the dialogs."
@@ -12232,7 +12242,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Kódovanie pre písmo ponuky a popup dialógy"
 
 #: src/lyxrc.C:1946
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Èasový interval pri automatickom ukladaní (v sekundách). 0 znamená bez "
 "automatického ukladania."
@@ -12383,10 +12394,12 @@ msgstr ""
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
-msgstr "Nastavenie alternatívneho jazyka. Implicitne sa pou¾ije jazyk dokumentu."
+msgstr ""
+"Nastavenie alternatívneho jazyka. Implicitne sa pou¾ije jazyk dokumentu."
 
 #: src/lyxrc.C:2041
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "©pecifikovanie alternatívneho súboru osobného slovníka. Napr. \"."
 "ispell_english\"."
@@ -12441,7 +12454,8 @@ msgstr ""
 "uklada» zálo¾né súbory do toho istého prieèinku ako originálny súbor."
 
 #: src/lyxrc.C:2078
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Zvoµte pre zapnutie podpory písania zprava doµava (napr. pre Hebrejèinu, "
 "Arabèinu)."
@@ -12484,7 +12498,8 @@ msgid ""
 msgstr "Zvoµte, ak príkaz pre zmenu jazyku je potrebný na zaèiatku dokumentu."
 
 #: src/lyxrc.C:2102
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "Zvoµte, ak príkaz pre zmenu jazyku je potrebný na konci dokumentu."
 
 #: src/lyxrc.C:2106
@@ -12525,7 +12540,8 @@ msgstr "Voµba, èi si neprajete transparent pri ¹tarte."
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
-msgstr "Faktor pohybu kolieska (pre my¹ s kolieskami alebo piatimi tlaèítkami)."
+msgstr ""
+"Faktor pohybu kolieska (pre my¹ s kolieskami alebo piatimi tlaèítkami)."
 
 #: src/lyxrc.C:2140
 msgid "New documents will be assigned this language."
@@ -12697,12 +12713,14 @@ msgstr "Získajte star¹iu verziu LyXu (< 1.1.x) pre konverziu!"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "Nemô¾ete vlo¾i» na zaèiatok odstavca medzeru.Preèítajte si prosím Príruèku."
+msgstr ""
+"Nemô¾ete vlo¾i» na zaèiatok odstavca medzeru.Preèítajte si prosím Príruèku."
 
 #: src/text.C:1926
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si prosím Príruèku."
+msgstr ""
+"Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si prosím Príruèku."
 
 #: src/text.C:3284
 msgid " (vertical fill)"
@@ -12736,24 +12754,24 @@ msgstr ""
 "Nebola definovaná zmena písma.Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na "
 "definovanie zmeny písma."
 
-#: src/text2.C:1051
+#: src/text2.C:1050
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nie je èo robi»."
 
-#: src/text2.C:1055
+#: src/text2.C:1052
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Nemô¾em zahrnú»viac ako jeden odstavec!"
 
-#: src/text2.C:1330
+#: src/text2.C:1326
 #, c-format
 msgid "%1$s #:"
 msgstr ""
 
 #. par->SetLayout(0);
 #. s = layout->labelstring;
-#: src/text2.C:1343
+#: src/text2.C:1339
 msgid "Senseless: "
 msgstr ""
 
@@ -13054,4 +13072,3 @@ msgstr "Funkcia Lyxu 'vrstva' (layout) potrebuje argument."
 #, fuzzy
 #~ msgid "Canceled"
 #~ msgstr "Zru¹ené."
-

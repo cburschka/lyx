@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.0\n"
-"POT-Creation-Date: 2003-02-05 09:44+0100\n"
+"POT-Creation-Date: 2003-02-06 22:09+0100\n"
 "PO-Revision-Date: 2003-02-05 10:33+0100\n"
 "Last-Translator: Alfredo Braunstein <abraunst@ictp.trieste.it>\n"
 "Language-Team: es <es@li.org>\n"
@@ -2015,6 +2015,43 @@ msgstr "enorme"
 msgid "Huge"
 msgstr "Enorme"
 
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:22
+#: ../src/frontends/qt2/ui/NumberingModuleBase.ui:22
+msgid "Form2"
+msgstr "Form2"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
+msgid "Document &class:"
+msgstr "&Clase del documento:"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
+msgid "Op&tions:"
+msgstr "Opciones:"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
+msgid "Page &style:"
+msgstr "&Estilo de página:"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
+msgid "&Indent"
+msgstr "&Indentar"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
+msgid "S&kip"
+msgstr "Sal&tar"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
+msgid "Float &placement:"
+msgstr "Posición de flotantes:"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
+msgid "&Font && size:"
+msgstr "Tipografía y tamaño:"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
+msgid "&Line spacing:"
+msgstr "Espaciado:"
+
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:64
 msgid "&Single"
 msgstr "Sencillo"
@@ -2067,11 +2104,6 @@ msgstr "&Separación encabezado:"
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:233
 msgid "Head &height:"
 msgstr "Altura &cabecera:"
-
-#: ../src/frontends/qt2/ui/NumberingModuleBase.ui:22
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:22
-msgid "Form2"
-msgstr "Form2"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:45
 msgid "Numbering Depth"
@@ -4620,38 +4652,6 @@ msgstr "Externo"
 msgid "&Placement:"
 msgstr "&Ubicación:"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
-msgid "Document &class:"
-msgstr "&Clase del documento:"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
-msgid "Op&tions:"
-msgstr "Opciones:"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
-msgid "Page &style:"
-msgstr "&Estilo de página:"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
-msgid "&Indent"
-msgstr "&Indentar"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
-msgid "S&kip"
-msgstr "Sal&tar"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
-msgid "Float &placement:"
-msgstr "Posición de flotantes:"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
-msgid "&Font && size:"
-msgstr "Tipografía y tamaño:"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
-msgid "&Line spacing:"
-msgstr "Espaciado:"
-
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
 #: ../lib/layouts/amsart.layout:23 ../lib/layouts/amsbook.layout:23
@@ -6464,10 +6464,6 @@ msgstr "Tabla|T"
 msgid "Math|M"
 msgstr "Fórmulas|#F"
 
-#: ../lib/ui/default.ui:77
-msgid "Read Only"
-msgstr "Sólo lectura"
-
 #: ../lib/ui/default.ui:78
 msgid "Spellchecker...|S"
 msgstr "Corrector ortográfico...|C"
@@ -6580,34 +6576,6 @@ msgstr "Copiar columna|u"
 msgid "Swap Columns"
 msgstr "Intercambiar columnas"
 
-#: ../lib/ui/default.ui:121
-msgid "Make eqnarray|e"
-msgstr "Convertir en eqnarray|e"
-
-#: ../lib/ui/default.ui:122
-msgid "Make multline|m"
-msgstr "Convertir en multline|m"
-
-#: ../lib/ui/default.ui:123
-msgid "Make align 1 column|1"
-msgstr "Convertir en align 1 column|1"
-
-#: ../lib/ui/default.ui:124
-msgid "Make align 2 columns|2"
-msgstr "Convertir en align 2 columns|2"
-
-#: ../lib/ui/default.ui:125
-msgid "Make align 3 columns|3"
-msgstr "Convertir en align 3 columns|3"
-
-#: ../lib/ui/default.ui:126
-msgid "Make alignat 2 columns|2"
-msgstr "Convertir en alignat 2 columns|2"
-
-#: ../lib/ui/default.ui:127
-msgid "Make alignat 3 columns|3"
-msgstr "Convertir en alignat 3 columns|3"
-
 #: ../lib/ui/default.ui:129
 msgid "Toggle Numbering|N"
 msgstr "Alternar numeración"
@@ -6615,10 +6583,6 @@ msgstr "Alternar numeración"
 #: ../lib/ui/default.ui:130
 msgid "Toggle Numbering of Line|u"
 msgstr "Alternar Numeración de Líneas|u"
-
-#: ../lib/ui/default.ui:131
-msgid "Toggle limits|l"
-msgstr "Alternar límites|l"
 
 #: ../lib/ui/default.ui:132
 msgid "Change Limits Type|L"
@@ -6715,14 +6679,6 @@ msgstr "Entorno alignat"
 #: ../lib/ui/default.ui:174
 msgid "Flalign Environment|f"
 msgstr "Entorno flalign|f"
-
-#: ../lib/ui/default.ui:175
-msgid "XAlignAt Environment"
-msgstr "Entorno xalignat"
-
-#: ../lib/ui/default.ui:176
-msgid "XXAlignAt Environment"
-msgstr "Entorno xxalignat"
 
 #: ../lib/ui/default.ui:177
 msgid "Gather Environment"
@@ -6896,14 +6852,6 @@ msgstr "Entorno AMS alignat"
 msgid "AMS flalign Environment|f"
 msgstr "Entorno AMS flalign"
 
-#: ../lib/ui/default.ui:240
-msgid "AMS xalignat Environment|x"
-msgstr "Entorno AMS xalignat|x"
-
-#: ../lib/ui/default.ui:241
-msgid "AMS xxalignat Environment"
-msgstr "Entorno AMS xxalignat"
-
 #: ../lib/ui/default.ui:242
 msgid "AMS gather Environment"
 msgstr "Entorno AMS gather"
@@ -7048,10 +6996,6 @@ msgstr "Pronombre|N"
 msgid "Bold Style|B"
 msgstr "Negrita|B"
 
-#: ../lib/ui/default.ui:307
-msgid "TeX Style|X"
-msgstr "TeX|X"
-
 #: ../lib/ui/default.ui:309
 msgid "Decrease Environment Depth|v"
 msgstr "Decrementar profundidad de entorno|e"
@@ -7151,10 +7095,6 @@ msgstr "Características extendidas|E"
 #: ../lib/ui/default.ui:374
 msgid "Customization|C"
 msgstr "Personalización|C"
-
-#: ../lib/ui/default.ui:375
-msgid "Reference Manual|R"
-msgstr "Manual de referencia|R"
 
 #: ../lib/ui/default.ui:376
 msgid "FAQ|F"
@@ -8163,7 +8103,8 @@ msgstr "¡ERROR!"
 
 #: src/buffer.C:1192
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Fue detectado un formato de LyX viejo. ¡Usar LyX 0.10.x para leer esto!"
+msgstr ""
+"Fue detectado un formato de LyX viejo. ¡Usar LyX 0.10.x para leer esto!"
 
 #: src/buffer.C:1200
 msgid "Can't find conversion script."
@@ -9602,7 +9543,9 @@ msgstr " desconocido para "
 msgid ""
 "\n"
 "     Using black instead, sorry!"
-msgstr "\n     Se reemplazará con negro. ¡Lo siento!"
+msgstr ""
+"\n"
+"     Se reemplazará con negro. ¡Lo siento!"
 
 #: src/frontends/xforms/ColorHandler.C:109
 #, c-format
@@ -9738,7 +9681,9 @@ msgstr "Seleccionar archivo de estilo BibTeX de la lista."
 msgid ""
 "Updates your TeX system for a new bibstyle list. Only the styles which are "
 "in directories where TeX finds them are listed!"
-msgstr "Actualizar la lista de estilos BibTeX del systema TeX. ¡Sólo los estilos que están en directorios donde TeX pueda encontrarlos serán listados!"
+msgstr ""
+"Actualizar la lista de estilos BibTeX del systema TeX. ¡Sólo los estilos que "
+"están en directorios donde TeX pueda encontrarlos serán listados!"
 
 #: src/frontends/xforms/FormBibtex.C:106
 msgid "Select Database"
@@ -10033,7 +9978,9 @@ msgstr "Cambiar el ancho de la imagen al valor especificado."
 #: src/frontends/xforms/FormGraphics.C:150
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr "Seleccionar la unidad de anchura; Escala% para cambiar la escala de toda la imagen."
+msgstr ""
+"Seleccionar la unidad de anchura; Escala% para cambiar la escala de toda la "
+"imagen."
 
 #: src/frontends/xforms/FormGraphics.C:152
 msgid "Set the image height to the inserted value."
@@ -11433,7 +11380,7 @@ msgid "updated document class specifications."
 msgstr "especificación de clase de documento actualizada."
 
 #: src/lyx_main.C:105
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Opción de la línea de comandos errónea '%1$s'. Terminando."
 
@@ -12167,7 +12114,9 @@ msgstr "Especificar el tamaño de papel por defecto."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr "¿Considerar palabras pegadas, como \"autocorrección\" en vez de \"auto corrección\" como palabras correctas?"
+msgstr ""
+"¿Considerar palabras pegadas, como \"autocorrección\" en vez de \"auto "
+"corrección\" como palabras correctas?"
 
 #: src/lyxrc.C:2027
 msgid "What command runs the spell checker?"
@@ -12594,6 +12543,51 @@ msgstr "Marca posicionada"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "La función de LyX 'layout' necesita un argumento."
+
+#~ msgid "Read Only"
+#~ msgstr "Sólo lectura"
+
+#~ msgid "Make eqnarray|e"
+#~ msgstr "Convertir en eqnarray|e"
+
+#~ msgid "Make multline|m"
+#~ msgstr "Convertir en multline|m"
+
+#~ msgid "Make align 1 column|1"
+#~ msgstr "Convertir en align 1 column|1"
+
+#~ msgid "Make align 2 columns|2"
+#~ msgstr "Convertir en align 2 columns|2"
+
+#~ msgid "Make align 3 columns|3"
+#~ msgstr "Convertir en align 3 columns|3"
+
+#~ msgid "Make alignat 2 columns|2"
+#~ msgstr "Convertir en alignat 2 columns|2"
+
+#~ msgid "Make alignat 3 columns|3"
+#~ msgstr "Convertir en alignat 3 columns|3"
+
+#~ msgid "Toggle limits|l"
+#~ msgstr "Alternar límites|l"
+
+#~ msgid "XAlignAt Environment"
+#~ msgstr "Entorno xalignat"
+
+#~ msgid "XXAlignAt Environment"
+#~ msgstr "Entorno xxalignat"
+
+#~ msgid "AMS xalignat Environment|x"
+#~ msgstr "Entorno AMS xalignat|x"
+
+#~ msgid "AMS xxalignat Environment"
+#~ msgstr "Entorno AMS xxalignat"
+
+#~ msgid "TeX Style|X"
+#~ msgstr "TeX|X"
+
+#~ msgid "Reference Manual|R"
+#~ msgstr "Manual de referencia|R"
 
 #~ msgid "Entry:"
 #~ msgstr "Ítem:"

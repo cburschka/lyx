@@ -61,7 +61,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
-"POT-Creation-Date: 2003-01-30 03:45+0100\n"
+"POT-Creation-Date: 2003-02-06 22:09+0100\n"
 "PO-Revision-Date: 2003-01-27 21:20+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -118,11 +118,11 @@ msgstr "Avain:|#A"
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -1990,11 +1990,11 @@ msgstr "Oletus|#O"
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 msgid "Form1"
 msgstr "Form1"
@@ -2213,8 +2213,8 @@ msgstr "&Korkeus:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
 msgid "&Width:"
 msgstr "&Leveys:"
 
@@ -2230,6 +2230,59 @@ msgstr "&Pysty"
 msgid "&Landscape"
 msgstr "&Vaaka"
 
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
+#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
+msgid "About LyX"
+msgstr "LyXistä"
+
+#. stack tabs
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
+#: src/frontends/xforms/FormAboutlyx.C:70
+msgid "Version"
+msgstr "Versio"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
+msgid "Version goes here"
+msgstr "Versio tähän"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
+#: src/frontends/xforms/FormAboutlyx.C:72
+msgid "Credits"
+msgstr "Kiitokset"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
+#: ../lib/layouts/apa.layout:192
+msgid "Copyright"
+msgstr "Copyright"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+msgid "&Close"
+msgstr "&Sulje"
+
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
 msgstr "LyX: Syötä tekstiä"
@@ -2244,45 +2297,268 @@ msgstr "&Testi"
 msgid "&Cancel"
 msgstr "&Peru"
 
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
+#: src/insets/insetindex.C:70
+msgid "Index"
+msgstr "Hakemisto"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+msgid "&Key"
+msgstr "&Avain"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+msgid "The citation key"
+msgstr "Lainauksen avainsana"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+msgid "&Label"
+msgstr "&Nimike"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+msgid "The label as it appears in the document"
+msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+msgid "&OK"
+msgstr "&OK"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "Bibtex"
+msgstr "Bibtex"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+msgid "Databa&ses"
+msgstr "&Tietokannat"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
+msgstr "Käytettävä BiBTeX-tietokanta"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+msgid "Available BibTeX databases"
+msgstr "BiBTeX-tietokannat saatavilla"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr "&Lisää"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
+msgstr "Lisää BiBTeX-tietokantatiedosto"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+msgid "Add a BibTeX file manually"
+msgstr "Lisää BiBTeX-tietokantatiedosto käsin"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+msgid "Bro&wse..."
+msgstr "Se&laa..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
+msgid "Browse for a BibTeX database file"
+msgstr "Selaa BiBTeX-tietokantatiedostoja"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+msgid "&Delete"
+msgstr "&Poista"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr "Poista valittu tietokanta"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+msgid "St&yle"
+msgstr "T&yyli"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+msgid "The BibTeX style"
+msgstr "BibTeX-tyyli"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+msgid "&Browse..."
+msgstr "&Selaa..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+msgid "Choose a style file"
+msgstr "Valitse tyylitiedosto"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "Päi&vitä"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+msgid "Update style list"
+msgstr "Päivitä tyyliluettelo"
+
+#. /
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:942
+msgid "Cancel"
+msgstr "Peru"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+msgid "Add bibliography to &TOC"
+msgstr "Lisää &lähdeluettelo sisällysluetteloon"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+msgid "Add bibliography to the table of contents"
+msgstr "Lisää lähdeluettelo sisällysluetteloon"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+msgid "Character"
+msgstr "Merkki"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+msgid "&Family:"
+msgstr "&Perhe:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr "Kirjasinperhe"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+msgid "&Series:"
+msgstr "&Sarja:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+msgid "Font series"
+msgstr "Kirjasinsarja:"
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Kieli"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+msgid "Font shape"
+msgstr "Kirjasinmuoto"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+msgid "Font color"
+msgstr "Kirjasimen väri"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+msgid "S&hape:"
+msgstr "&Muoto:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+msgid "&Color:"
+msgstr "&Väri:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+msgid "&Toggle all"
+msgstr "Kaikki &pois/päälle"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+msgid "toggle font on all of the above"
+msgstr "Vaihda kaikki ylläolevat pois tai päälle"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+msgid "Never Toggled"
+msgstr "Koko alueeseen vaikuttavat"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+msgid "Si&ze:"
+msgstr "K&oko:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+msgid "Font size"
+msgstr "Kirjasinkoko"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+msgid "Always Toggled"
+msgstr "Alueen asetuksia muuttavat"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr "Muut kirjasinasetukset"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+msgid "&Misc:"
+msgstr "S&ekal.:"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+msgid "Auto apply"
+msgstr "Toteuta itsestään"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr "Ota kukin muutos käyttöön automaattisesti"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+msgid "&Apply"
+msgstr "&Toteuta"
+
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
 msgid "Citation"
 msgstr "Lähdeviite"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 msgid "&Restore"
 msgstr "Pala&uta"
-
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-msgid "&Apply"
-msgstr "&Toteuta"
-
-#. /
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
-msgid "Cancel"
-msgstr "Peru"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -2431,33 +2707,124 @@ msgstr "&Lisää"
 msgid "Insert the delimiters"
 msgstr "Lisää erottimet"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-msgid "&Close"
-msgstr "&Sulje"
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr "otsikko tähän"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+msgid "Use Class Defaults"
+msgstr "Käytä luokan oletuksia"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+msgid "Reset default params of the current class"
+msgstr "Palauta nykyisen luokan oletusasetukset"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+msgid "Save as Document Defaults"
+msgstr "Tallenna asiakirjan oletukseksi"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr "Tallenna asetukset LyXin oletusarvoiseen malliasiakirjaan"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+msgid "ERT inset display"
+msgstr "ERT-osion näyttäminen"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+msgid "Display"
+msgstr "Näyttö"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr "Tekstin &seassa"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr "Näytä ERT-osioiden sisältö tekstin seassa"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+msgid "&Collapsed"
+msgstr "&Kiinni"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr "Näytä vain ERT-osion painike"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+msgid "&Open"
+msgstr "&Auki"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+msgid "Show ERT contents"
+msgstr "Näytä ERT-osion sisältö"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "LaTeX-virhe"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+msgid "LaTeX error messages"
+msgstr "LaTeX-virheviestit"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
+msgid "External Material"
+msgstr "Ulkoinen aineisto"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+msgid "&File:"
+msgstr "Tie&dosto:"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
+msgid "Filename"
+msgstr "Tiedostonimi"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
+msgid "&View Result"
+msgstr "&Näytä tulos"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
+msgid "View the file"
+msgstr "Katsele tiedostoa"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
+msgid "&Update Result"
+msgstr "&Päivitä tulos"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
+msgid "Update the material"
+msgstr "Päivitä materiaali"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
+msgid "Available templates"
+msgstr "Mahdolliset mallit"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
+msgid "&Template:"
+msgstr "Mallip&ohja"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
+msgid "Parameters"
+msgstr "Parametrit"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
+msgid "&Parameters:"
+msgstr "P&arametrit:"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
+msgid "&Edit file"
+msgstr "&Muokkaa tiedostoa"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
+msgid "Edit the file externally"
+msgstr "Muokkaa tiedostoa ulkoisesti"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 msgid "Use &default placement"
@@ -2527,29 +2894,266 @@ msgstr "&Levity palstoille"
 msgid "Span columns in multi-column documents"
 msgstr "Levity palstojen yli monipalstaisessa asiakirjassa"
 
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-msgid "&OK"
-msgstr "&OK"
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+msgid "&Graphics"
+msgstr "&Kuva"
 
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
-#: src/insets/insetindex.C:70
-msgid "Index"
-msgstr "Hakemisto"
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
+msgid "File name of image"
+msgstr "Kuvan tiedostonimi"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
+msgid "Select an image file"
+msgstr "Valitse kuvatiedosto"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
+msgid "LyX Display"
+msgstr "LyX-näyttö"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
+msgid "&Show in LyX"
+msgstr "&Näytä LyXissä"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+msgid "Display image in LyX"
+msgstr "Näytä värillisenä LyXissä"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
+msgid "Display:"
+msgstr "Näyttö:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
+msgid "Screen display"
+msgstr "Näkymä ruudulla"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "Oletus"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+msgid "Monochrome"
+msgstr "Mustavalkoinen"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+msgid "Grayscale"
+msgstr "Harmaasävyinen"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+msgid "Color"
+msgstr "Väri"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
+msgid "Scale:"
+msgstr "Skaalaus:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
+msgid "Percentage to scale by in LyX"
+msgstr "Skaalaus LyXissä"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
+msgid "Height of image in output"
+msgstr "Kuvan korkeus tulosteessa"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
+msgid "Units of height value"
+msgstr "Korkeusarvon yksiköt"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
+msgid "&Height"
+msgstr "&Korkeus"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
+msgid "Width of image in output"
+msgstr "Kuvan leveys tulosteessa"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
+msgid "&Width"
+msgstr "&Leveys"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
+msgid "&Maintain aspect ratio"
+msgstr "Säilytä &sivusuhde"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
+msgid "Maintain aspect ratio with largest dimension"
+msgstr "Säilytä sivusuhde ja mahdollisimman suuri koko"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
+msgid "A&ngle:"
+msgstr "Ku&lma:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
+msgid "Angle to rotate image by"
+msgstr "Kuvan kiertymiskulma"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
+msgid "&Origin:"
+msgstr "K&eskus:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
+msgid "The origin of the rotation"
+msgstr "Piste, jonka ympäri kuva kiertyy"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
+msgid "&Clipping"
+msgstr "&Rajaus"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
+msgid "Clip to &bounding box"
+msgstr "&Rajaa rajauslaatikkoon"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
+msgid "Clip to bounding box values"
+msgstr "Rajaa rajauslaatikkoon"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
+msgid "&Get from file"
+msgstr "&Lue tiedostosta"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
+msgid "Get bounding box from the (EPS) file"
+msgstr "Lue rajauslaatikko (EPS-)tiedostosta"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
+msgid "Right &top:"
+msgstr "Ylä&oikea:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
+msgid "y"
+msgstr "y"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
+msgid "x"
+msgstr "x"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
+msgid "&Left bottom:"
+msgstr "Ala&vasen:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
+msgid "E&xtra options"
+msgstr "Lis&äasetukset"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
+msgid "Su&bfigure"
+msgstr "&Alikuva"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
+msgid "Is this just one part of a figure float ?"
+msgstr "Onko tämä vain osa irrallisesta kuvasta?"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
+msgid "Don't un&zip on export"
+msgstr "&Älä pura pakettia viedessä"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr "Älä pura kuvaa ennen LaTeXiin vientiä"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
+msgid "LaTeX &options:"
+msgstr "LaTeX-&valinnat:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
+msgid "Additional LaTeX options"
+msgstr "LaTeX-lisäasetukset"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
+msgid "&Draft mode"
+msgstr "&Luonnostila"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
+msgid "Draft mode"
+msgstr "Luonnostila"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
+msgid "Ca&ption:"
+msgstr "&Kuvateksti:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
+msgid "The caption for the sub-figure"
+msgstr "Alikuvan kuvateksti"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Sulje"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
+msgid "Include File"
+msgstr "Sisällytä tiedosto"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
+msgid "File name to include"
+msgstr "Valitse sisällytettävä tiedosto"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+msgid "Select a file"
+msgstr "Valitse tiedosto"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
+msgid "&Include Type:"
+msgstr "&Sisällytystyyppi:"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
+#: src/insets/insetinclude.C:225
+msgid "Input"
+msgstr "Syötä"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
+#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
+msgid "Include"
+msgstr "Sisällytä"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
+#: ../lib/layouts/linuxdoc.layout:251 ../lib/layouts/manpage.layout:128
+msgid "Verbatim"
+msgstr "Sinänsä"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
+msgid "&Load"
+msgstr "&Lataa"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
+msgid "Load the file"
+msgstr "Lataa tiedosto"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
+msgid "&Mark spaces in output"
+msgstr "&Merkitse välit tulosteessa"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
+msgid "Underline spaces in generated output"
+msgstr "Alleviivaa välilyönnit tulosteessa"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
+msgid "&Show preview"
+msgstr "&Näytä esikatselukuva"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
+msgid "Show LaTeX preview"
+msgstr "Näytä LaTeX-esikatselu"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
 msgid "&Keyword"
@@ -2560,6 +3164,15 @@ msgstr "&Avainsana"
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
 msgstr "Hakemistoviite"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
+msgid "Log"
+msgstr "Loki"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
+msgid "Update the display"
+msgstr "Päivitä näyttö"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
 msgid "LyX: Math Panel"
@@ -2675,31 +3288,81 @@ msgstr "&Irrota paneeli"
 msgid "Open this panel as a separate window"
 msgstr "Avaa tämä paneeli erilliseen ikkunaan"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
-msgid "Minipage settings"
-msgstr "Pienoissivuasetukset"
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+msgid "&Rows:"
+msgstr "&Rivejä:"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+msgid "Number of rows"
+msgstr "Rivien määrä"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+msgid "&Columns:"
+msgstr "&Sarakkeita:"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+msgid "Number of columns"
+msgstr "Sarakkeiden määrä"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+msgid "Resize this to the correct table dimensions"
+msgstr "Muuta tämän koko oikeita taulukon mittoja vastaavaksi"
+
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 msgid "Top"
 msgstr "Yläreuna"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
-msgid "Middle"
-msgstr "Keski"
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+msgid "Center"
+msgstr "Keskellä"
 
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 msgid "Bottom"
 msgstr "Alareuna"
 
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
 msgid "Vertical alignment"
 msgstr "Pystykohdistus"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+msgid "&Vertical:"
+msgstr "&Pysty:"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr "Sarakkeiden vaakatasaukset (t,c,b)"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+msgid "&Horizontal:"
+msgstr "&Vaaka:"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
+msgid "Minipage settings"
+msgstr "Pienoissivuasetukset"
+
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
+msgid "Middle"
+msgstr "Keski"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
 msgid "A&lignment:"
@@ -2720,15 +3383,169 @@ msgstr "Leveysarvo"
 msgid "&Units:"
 msgstr "&Yksiköt:"
 
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
-msgstr "Asetukset"
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
+msgid "&General"
+msgstr "&Yleinen"
 
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-msgid "&Save"
-msgstr "Ta&llenna"
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
+msgid "Justified"
+msgstr "Tasattu"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "Vasen"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "Oikea"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
+msgid "Single"
+msgstr "Yksink."
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
+msgid "1.5"
+msgstr "1.5"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
+#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocumentDialog.C:342
+msgid "Custom"
+msgstr "Muu"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
+msgid "L&ine spacing:"
+msgstr "Rivi&välit:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+msgid "Alig&nment:"
+msgstr "T&asaus:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
+msgid "No &indent"
+msgstr "Ei &sisennystä"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
+msgid "&Spacing"
+msgstr "R&iviväli"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
+msgid "Above paragraph"
+msgstr "Ennen kappaletta"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
+msgid "S&pacing:"
+msgstr "&Väli:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
+msgid "&Keep space:"
+msgstr "&Säilytä väli:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+msgid "&Unit:"
+msgstr "&Yksikkö:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
+msgid "&Value:"
+msgstr "&Arvo:"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
+msgid "None"
+msgstr "Ei mikään"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
+msgid "DefSkip"
+msgstr "Oletusväli"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
+#: src/frontends/qt2/QDocument.C:131
+msgid "SmallSkip"
+msgstr "Pieni väli"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
+#: src/frontends/qt2/QDocument.C:132
+msgid "MedSkip"
+msgstr "Keskisuuri väli"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
+#: src/frontends/qt2/QDocument.C:133
+msgid "BigSkip"
+msgstr "Suuri väli"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
+msgid "VFill"
+msgstr "Pystytäyttö"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
+msgid "Below paragraph"
+msgstr "Kappaleen jälkeen"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
+msgid "&Lines && Pagebreaks"
+msgstr "V&iivat ja sivunvaihdot"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
+msgid "Label width"
+msgstr "Nimikeleveys"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
+msgid "Lon&gest label"
+msgstr "&Pisin nimike"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
+msgid "L&ines"
+msgstr "&Viivat"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
+msgid "A&bove"
+msgstr "&Yllä"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
+msgid "B&elow"
+msgstr "&Alla"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
+msgid "&Page Breaks"
+msgstr "&Sivunvaihdot"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
+msgid "Abo&ve"
+msgstr "Yll&ä"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
+msgid "Belo&w"
+msgstr "A&lla"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
+msgid "LaTeX pre-amble"
+msgstr "LaTeX-aloitusosa"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
+msgid "The LaTeX pre-amble"
+msgstr "LaTeX-aloitusosa"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
+msgid "&Edit..."
+msgstr "&Muokkaa..."
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
+msgid "Edit the pre-amble in an external editor"
+msgstr "Muokkaa aloitusosaa toisella editorilla"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -2819,21 +3636,6 @@ msgstr "Päiväysmuoto (strftime)"
 msgid "Display insets"
 msgstr "Näytä osiot"
 
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-msgid "Monochrome"
-msgstr "Mustavalkoinen"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-msgid "Grayscale"
-msgstr "Harmaasävyinen"
-
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-msgid "Color"
-msgstr "Väri"
-
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 msgid "Do not display"
 msgstr "Älä näytä"
@@ -2878,12 +3680,6 @@ msgstr "Päät&e:"
 #: src/frontends/qt2/QPrefsDialog.C:137
 msgid "Keyboard"
 msgstr "Näppäimistö"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-msgid "Bro&wse..."
-msgstr "Se&laa..."
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
 msgid "S&econd:"
@@ -2950,15 +3746,6 @@ msgstr "Merkitse &vieraat kielet"
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
 msgid "LaTeX settings"
 msgstr "LaTeX-asetukset"
-
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "Oletus"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
 msgid "US Letter"
@@ -3258,928 +4045,15 @@ msgstr "minuutti"
 msgid "&Maximum last files:"
 msgstr "Vii&meisimpiä enintään:"
 
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-msgid "Search and replace"
-msgstr "Etsi ja korvaa"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-msgid "&Find:"
-msgstr "&Etsi:"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-msgid "Replace &with:"
-msgstr "K&orvaava teksti:"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-msgid "Case &sensitive"
-msgstr "Sa&ma kirjainkoko"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr "Löydä &vain kokonaiset sanat"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr "Etsi &seuraava"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-msgid "&Replace"
-msgstr "Ko&rvaa"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-msgid "Replace &All"
-msgstr "Korvaa k&aikki"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr "Etsi e&dellinen"
-
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-msgid "File:"
-msgstr "Tiedosto:"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-msgid "Insert table"
-msgstr "Lisää taulukko"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-msgid "&Rows:"
-msgstr "&Rivejä:"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-msgid "Number of rows"
-msgstr "Rivien määrä"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-msgid "&Columns:"
-msgstr "&Sarakkeita:"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-msgid "Number of columns"
-msgstr "Sarakkeiden määrä"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-msgid "Resize this to the correct table dimensions"
-msgstr "Muuta tämän koko oikeita taulukon mittoja vastaavaksi"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Sulje"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr "Synonyymit"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-msgid "&Keyword:"
-msgstr "&Avainsana:"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-msgid "Entry"
-msgstr "Kohta"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-msgid "Select a related word"
-msgstr "Valitse kytkeytyvä sana"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-msgid "&Selection:"
-msgstr "&Valinta:"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-msgid "The selected entry"
-msgstr "Valittu kohta"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr "Korvaa kohta valinnalla"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-msgid "Insert URL"
-msgstr "Lisää URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&URL"
-msgstr "&URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&Name"
-msgstr "&Nimi"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr "URL:ään liittyvä nimi"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-msgid "&Generate hyperlink"
-msgstr "&Luo hyperlinkki"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr "Tuota hyperlinkki?"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-msgid "Wrap Options"
-msgstr "Kellumisasetukset"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-msgid "Default (outer)"
-msgstr "Oletus (ulko)"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "Vasen"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "Oikea"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-msgid "Outer"
-msgstr "Ulko"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-msgid "&Placement:"
-msgstr "Si&joittelu:"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
-msgstr "&Avain"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-msgid "The citation key"
-msgstr "Lainauksen avainsana"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-msgid "&Label"
-msgstr "&Nimike"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
-msgid "The label as it appears in the document"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
-msgid "About LyX"
-msgstr "LyXistä"
-
-#. stack tabs
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
-#: src/frontends/xforms/FormAboutlyx.C:70
-msgid "Version"
-msgstr "Versio"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
-msgid "Version goes here"
-msgstr "Versio tähän"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
-#: src/frontends/xforms/FormAboutlyx.C:72
-msgid "Credits"
-msgstr "Kiitokset"
-
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
-#: ../lib/layouts/apa.layout:192
-msgid "Copyright"
-msgstr "Copyright"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr "Bibtex"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-msgid "Databa&ses"
-msgstr "&Tietokannat"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-msgid "BibTeX database to use"
-msgstr "Käytettävä BiBTeX-tietokanta"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-msgid "Available BibTeX databases"
-msgstr "BiBTeX-tietokannat saatavilla"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-msgid "&Add"
-msgstr "&Lisää"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-msgid "Add a BibTeX database file"
-msgstr "Lisää BiBTeX-tietokantatiedosto"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-msgid "Add a BibTeX file manually"
-msgstr "Lisää BiBTeX-tietokantatiedosto käsin"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-msgid "Browse for a BibTeX database file"
-msgstr "Selaa BiBTeX-tietokantatiedostoja"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-msgid "&Delete"
-msgstr "&Poista"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr "Poista valittu tietokanta"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-msgid "St&yle"
-msgstr "T&yyli"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-msgid "The BibTeX style"
-msgstr "BibTeX-tyyli"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-msgid "&Browse..."
-msgstr "&Selaa..."
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-msgid "Choose a style file"
-msgstr "Valitse tyylitiedosto"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-msgid "&Update"
-msgstr "Päi&vitä"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-msgid "Update style list"
-msgstr "Päivitä tyyliluettelo"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-msgid "Add bibliography to &TOC"
-msgstr "Lisää &lähdeluettelo sisällysluetteloon"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-msgid "Add bibliography to the table of contents"
-msgstr "Lisää lähdeluettelo sisällysluetteloon"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:39
-msgid "Character"
-msgstr "Merkki"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-msgid "&Family:"
-msgstr "&Perhe:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-msgid "Font family"
-msgstr "Kirjasinperhe"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-msgid "&Series:"
-msgstr "&Sarja:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-msgid "Font series"
-msgstr "Kirjasinsarja:"
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Kieli"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-msgid "Font shape"
-msgstr "Kirjasinmuoto"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-msgid "Font color"
-msgstr "Kirjasimen väri"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-msgid "S&hape:"
-msgstr "&Muoto:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-msgid "&Color:"
-msgstr "&Väri:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-msgid "&Toggle all"
-msgstr "Kaikki &pois/päälle"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-msgid "toggle font on all of the above"
-msgstr "Vaihda kaikki ylläolevat pois tai päälle"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-msgid "Never Toggled"
-msgstr "Koko alueeseen vaikuttavat"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-msgid "Si&ze:"
-msgstr "K&oko:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-msgid "Font size"
-msgstr "Kirjasinkoko"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-msgid "Always Toggled"
-msgstr "Alueen asetuksia muuttavat"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr "Muut kirjasinasetukset"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-msgid "&Misc:"
-msgstr "S&ekal.:"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-msgid "Auto apply"
-msgstr "Toteuta itsestään"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr "Ota kukin muutos käyttöön automaattisesti"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
-msgid "title here"
-msgstr "otsikko tähän"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
-msgid "Use Class Defaults"
-msgstr "Käytä luokan oletuksia"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
-msgid "Reset default params of the current class"
-msgstr "Palauta nykyisen luokan oletusasetukset"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
-msgid "Save as Document Defaults"
-msgstr "Tallenna asiakirjan oletukseksi"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
-msgid "Save settings as LyX's default template"
-msgstr "Tallenna asetukset LyXin oletusarvoiseen malliasiakirjaan"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "LaTeX-virhe"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-msgid "LaTeX error messages"
-msgstr "LaTeX-virheviestit"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-msgid "ERT inset display"
-msgstr "ERT-osion näyttäminen"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-msgid "Display"
-msgstr "Näyttö"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr "Tekstin &seassa"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr "Näytä ERT-osioiden sisältö tekstin seassa"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-msgid "&Collapsed"
-msgstr "&Kiinni"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr "Näytä vain ERT-osion painike"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
-msgstr "&Auki"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-msgid "Show ERT contents"
-msgstr "Näytä ERT-osion sisältö"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
-msgid "External Material"
-msgstr "Ulkoinen aineisto"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-msgid "&File:"
-msgstr "Tie&dosto:"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
-msgid "Filename"
-msgstr "Tiedostonimi"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
-msgid "&View Result"
-msgstr "&Näytä tulos"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
-msgid "View the file"
-msgstr "Katsele tiedostoa"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
-msgid "&Update Result"
-msgstr "&Päivitä tulos"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
-msgid "Update the material"
-msgstr "Päivitä materiaali"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
-msgid "Available templates"
-msgstr "Mahdolliset mallit"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
-msgid "&Template:"
-msgstr "Mallip&ohja"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
-msgid "Parameters"
-msgstr "Parametrit"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
-msgid "&Parameters:"
-msgstr "P&arametrit:"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
-msgid "&Edit file"
-msgstr "&Muokkaa tiedostoa"
-
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
-msgid "Edit the file externally"
-msgstr "Muokkaa tiedostoa ulkoisesti"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
-msgid "&Graphics"
-msgstr "&Kuva"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
-msgid "File name of image"
-msgstr "Kuvan tiedostonimi"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
-msgid "Select an image file"
-msgstr "Valitse kuvatiedosto"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
-msgid "LyX Display"
-msgstr "LyX-näyttö"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
-msgid "&Show in LyX"
-msgstr "&Näytä LyXissä"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-msgid "Display image in LyX"
-msgstr "Näytä värillisenä LyXissä"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
-msgid "Display:"
-msgstr "Näyttö:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
-msgid "Screen display"
-msgstr "Näkymä ruudulla"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-msgid "Scale:"
-msgstr "Skaalaus:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
-msgid "Percentage to scale by in LyX"
-msgstr "Skaalaus LyXissä"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
-msgid "Height of image in output"
-msgstr "Kuvan korkeus tulosteessa"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
-msgid "Units of height value"
-msgstr "Korkeusarvon yksiköt"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
-msgid "&Height"
-msgstr "&Korkeus"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
-msgid "Width of image in output"
-msgstr "Kuvan leveys tulosteessa"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
-msgid "&Width"
-msgstr "&Leveys"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
-msgid "&Maintain aspect ratio"
-msgstr "Säilytä &sivusuhde"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
-msgid "Maintain aspect ratio with largest dimension"
-msgstr "Säilytä sivusuhde ja mahdollisimman suuri koko"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
-msgid "A&ngle:"
-msgstr "Ku&lma:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
-msgid "Angle to rotate image by"
-msgstr "Kuvan kiertymiskulma"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
-msgstr "K&eskus:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
-msgid "The origin of the rotation"
-msgstr "Piste, jonka ympäri kuva kiertyy"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
-msgid "&Clipping"
-msgstr "&Rajaus"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
-msgid "Clip to &bounding box"
-msgstr "&Rajaa rajauslaatikkoon"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
-msgid "Clip to bounding box values"
-msgstr "Rajaa rajauslaatikkoon"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
-msgid "&Get from file"
-msgstr "&Lue tiedostosta"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
-msgid "Get bounding box from the (EPS) file"
-msgstr "Lue rajauslaatikko (EPS-)tiedostosta"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
-msgid "Right &top:"
-msgstr "Ylä&oikea:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
-msgid "y"
-msgstr "y"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
-msgid "x"
-msgstr "x"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
-msgid "&Left bottom:"
-msgstr "Ala&vasen:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
-msgid "E&xtra options"
-msgstr "Lis&äasetukset"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
-msgid "Su&bfigure"
-msgstr "&Alikuva"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
-msgid "Is this just one part of a figure float ?"
-msgstr "Onko tämä vain osa irrallisesta kuvasta?"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
-msgid "Don't un&zip on export"
-msgstr "&Älä pura pakettia viedessä"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Älä pura kuvaa ennen LaTeXiin vientiä"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
-msgid "LaTeX &options:"
-msgstr "LaTeX-&valinnat:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
-msgid "Additional LaTeX options"
-msgstr "LaTeX-lisäasetukset"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
-msgid "&Draft mode"
-msgstr "&Luonnostila"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
-msgid "Draft mode"
-msgstr "Luonnostila"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-msgid "Ca&ption:"
-msgstr "&Kuvateksti:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
-msgid "The caption for the sub-figure"
-msgstr "Alikuvan kuvateksti"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
-msgid "Include File"
-msgstr "Sisällytä tiedosto"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
-msgid "File name to include"
-msgstr "Valitse sisällytettävä tiedosto"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-msgid "Select a file"
-msgstr "Valitse tiedosto"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
-msgid "&Include Type:"
-msgstr "&Sisällytystyyppi:"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
-#: src/insets/insetinclude.C:225
-msgid "Input"
-msgstr "Syötä"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
-#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
-msgid "Include"
-msgstr "Sisällytä"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
-msgid "Verbatim"
-msgstr "Sinänsä"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-msgid "&Load"
-msgstr "&Lataa"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
-msgid "Load the file"
-msgstr "Lataa tiedosto"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
-msgid "&Mark spaces in output"
-msgstr "&Merkitse välit tulosteessa"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
-msgid "Underline spaces in generated output"
-msgstr "Alleviivaa välilyönnit tulosteessa"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-msgid "&Show preview"
-msgstr "&Näytä esikatselukuva"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
-msgid "Show LaTeX preview"
-msgstr "Näytä LaTeX-esikatselu"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
-msgid "Log"
-msgstr "Loki"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
-msgid "Update the display"
-msgstr "Päivitä näyttö"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-msgid "Center"
-msgstr "Keskellä"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
-msgid "&Vertical:"
-msgstr "&Pysty:"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr "Sarakkeiden vaakatasaukset (t,c,b)"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
-msgid "&Horizontal:"
-msgstr "&Vaaka:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
-msgid "&General"
-msgstr "&Yleinen"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
-msgid "Justified"
-msgstr "Tasattu"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
-#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
-msgid "Single"
-msgstr "Yksink."
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
-msgid "1.5"
-msgstr "1.5"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
-#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
-#: src/frontends/qt2/QDocumentDialog.C:342
-msgid "Custom"
-msgstr "Muu"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
-msgid "L&ine spacing:"
-msgstr "Rivi&välit:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
-msgid "Alig&nment:"
-msgstr "T&asaus:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-msgid "No &indent"
-msgstr "Ei &sisennystä"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
-msgid "&Spacing"
-msgstr "R&iviväli"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
-msgid "Above paragraph"
-msgstr "Ennen kappaletta"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
-msgid "S&pacing:"
-msgstr "&Väli:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
-msgid "&Keep space:"
-msgstr "&Säilytä väli:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
-msgid "&Unit:"
-msgstr "&Yksikkö:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
-msgid "&Value:"
-msgstr "&Arvo:"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
-msgid "None"
-msgstr "Ei mikään"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
-msgid "DefSkip"
-msgstr "Oletusväli"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
-#: src/frontends/qt2/QDocument.C:131
-msgid "SmallSkip"
-msgstr "Pieni väli"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
-#: src/frontends/qt2/QDocument.C:132
-msgid "MedSkip"
-msgstr "Keskisuuri väli"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
-#: src/frontends/qt2/QDocument.C:133
-msgid "BigSkip"
-msgstr "Suuri väli"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
-msgid "VFill"
-msgstr "Pystytäyttö"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
-msgid "Below paragraph"
-msgstr "Kappaleen jälkeen"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
-msgid "&Lines && Pagebreaks"
-msgstr "V&iivat ja sivunvaihdot"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-msgid "Label width"
-msgstr "Nimikeleveys"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-msgid "Lon&gest label"
-msgstr "&Pisin nimike"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
-msgid "L&ines"
-msgstr "&Viivat"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
-msgid "A&bove"
-msgstr "&Yllä"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
-msgid "B&elow"
-msgstr "&Alla"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
-msgid "&Page Breaks"
-msgstr "&Sivunvaihdot"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
-msgid "Abo&ve"
-msgstr "Yll&ä"
-
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
-msgid "Belo&w"
-msgstr "A&lla"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
-msgid "LaTeX pre-amble"
-msgstr "LaTeX-aloitusosa"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-msgid "The LaTeX pre-amble"
-msgstr "LaTeX-aloitusosa"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr "&Muokkaa..."
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-msgid "Edit the pre-amble in an external editor"
-msgstr "Muokkaa aloitusosaa toisella editorilla"
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+msgid "&Save"
+msgstr "Ta&llenna"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
 #: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
@@ -4341,6 +4215,44 @@ msgstr "Mahdolliset viitteet"
 msgid "&Document:"
 msgstr "&Asiakirja:"
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+msgid "Search and replace"
+msgstr "Etsi ja korvaa"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+msgid "&Find:"
+msgstr "&Etsi:"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+msgid "Replace &with:"
+msgstr "K&orvaava teksti:"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+msgid "Case &sensitive"
+msgstr "Sa&ma kirjainkoko"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr "Löydä &vain kokonaiset sanat"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr "Etsi &seuraava"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+msgid "&Replace"
+msgstr "Ko&rvaa"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+msgid "Replace &All"
+msgstr "Korvaa k&aikki"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr "Etsi e&dellinen"
+
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
 msgid "Custom Export"
 msgstr "Muu vienti"
@@ -4361,6 +4273,10 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
 msgstr "Mahdolliset vientimuuntimet"
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+msgid "File:"
+msgstr "Tiedosto:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
@@ -4419,6 +4335,11 @@ msgstr "&Aloita..."
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
 msgid "Start spellcheck"
 msgstr "Käynnistä oikoluku"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+msgid "Insert table"
+msgstr "Lisää taulukko"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
 msgid "Table Settings"
@@ -4695,6 +4616,37 @@ msgstr ""
 msgid "Close this dialog"
 msgstr "Sulje tämä ikkuna"
 
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr "Synonyymit"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+msgid "&Keyword:"
+msgstr "&Avainsana:"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+msgid "Entry"
+msgstr "Kohta"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+msgid "Select a related word"
+msgstr "Valitse kytkeytyvä sana"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+msgid "&Selection:"
+msgstr "&Valinta:"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+msgid "The selected entry"
+msgstr "Valittu kohta"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr "Korvaa kohta valinnalla"
+
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
 msgid "Table Of Contents"
 msgstr "Sisällysluettelo"
@@ -4707,9 +4659,57 @@ msgstr "&Tyyppi"
 msgid "Contents list"
 msgstr "Sisällysluettelo"
 
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+msgid "Insert URL"
+msgstr "Lisää URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+msgid "&URL"
+msgstr "&URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+msgid "&Name"
+msgstr "&Nimi"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr "URL:ään liittyvä nimi"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+msgid "&Generate hyperlink"
+msgstr "&Luo hyperlinkki"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr "Tuota hyperlinkki?"
+
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
 msgid "Version control log"
 msgstr "Versiohallintaloki"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+msgid "Wrap Options"
+msgstr "Kellumisasetukset"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+msgid "Default (outer)"
+msgstr "Oletus (ulko)"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+msgid "Outer"
+msgstr "Ulko"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+msgid "&Placement:"
+msgstr "Si&joittelu:"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -4719,9 +4719,9 @@ msgstr "Versiohallintaloki"
 #: ../lib/layouts/cv.layout:14 ../lib/layouts/db_stdclass.inc:28
 #: ../lib/layouts/dtk.layout:30 ../lib/layouts/egs.layout:17
 #: ../lib/layouts/foils.layout:28 ../lib/layouts/hollywood.layout:350
-#: ../lib/layouts/kluwer.layout:34 ../lib/layouts/linuxdoc.layout:15
+#: ../lib/layouts/kluwer.layout:34 ../lib/layouts/linuxdoc.layout:17
 #: ../lib/layouts/llncs.layout:23 ../lib/layouts/ltugboat.layout:30
-#: ../lib/layouts/manpage.layout:15 ../lib/layouts/paper.layout:15
+#: ../lib/layouts/manpage.layout:17 ../lib/layouts/paper.layout:15
 #: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:24
 #: ../lib/layouts/scrclass.inc:11 ../lib/layouts/scrlettr.layout:7
 #: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
@@ -4859,33 +4859,33 @@ msgstr "Tapaus"
 #: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
 #: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
 #: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:68
-#: ../lib/layouts/aastex.layout:141 ../lib/layouts/amsart.layout:40
-#: ../lib/layouts/amsbook.layout:41 ../lib/layouts/cv.layout:26
-#: ../lib/layouts/db_stdsections.inc:25 ../lib/layouts/egs.layout:29
-#: ../lib/layouts/kluwer.layout:51 ../lib/layouts/latex8.layout:39
-#: ../lib/layouts/linuxdoc.layout:66 ../lib/layouts/llncs.layout:44
-#: ../lib/layouts/ltugboat.layout:46 ../lib/layouts/manpage.layout:39
-#: ../lib/layouts/paper.layout:46 ../lib/layouts/revtex.layout:42
-#: ../lib/layouts/revtex4.layout:45 ../lib/layouts/scrclass.inc:68
-#: ../lib/layouts/siamltex.layout:38 ../lib/layouts/spie.layout:23
-#: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
-#: ../lib/layouts/aguplus.inc:23
+#: ../lib/layouts/aastex.layout:141 ../lib/layouts/aguplus.inc:23
+#: ../lib/layouts/amsart.layout:40 ../lib/layouts/amsbook.layout:41
+#: ../lib/layouts/cv.layout:26 ../lib/layouts/db_stdsections.inc:25
+#: ../lib/layouts/egs.layout:29 ../lib/layouts/kluwer.layout:51
+#: ../lib/layouts/latex8.layout:39 ../lib/layouts/linuxdoc.layout:68
+#: ../lib/layouts/llncs.layout:44 ../lib/layouts/ltugboat.layout:46
+#: ../lib/layouts/manpage.layout:41 ../lib/layouts/paper.layout:46
+#: ../lib/layouts/revtex.layout:42 ../lib/layouts/revtex4.layout:45
+#: ../lib/layouts/scrclass.inc:68 ../lib/layouts/siamltex.layout:38
+#: ../lib/layouts/spie.layout:23 ../lib/layouts/stdsections.inc:63
+#: ../lib/layouts/svjour.inc:41
 msgid "Section"
 msgstr "Kappale"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
 #: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:70
-#: ../lib/layouts/aastex.layout:154 ../lib/layouts/amsart.layout:53
-#: ../lib/layouts/amsbook.layout:54 ../lib/layouts/cv.layout:49
-#: ../lib/layouts/db_stdsections.inc:32 ../lib/layouts/egs.layout:55
-#: ../lib/layouts/kluwer.layout:60 ../lib/layouts/latex8.layout:46
-#: ../lib/layouts/linuxdoc.layout:92 ../lib/layouts/llncs.layout:57
-#: ../lib/layouts/ltugboat.layout:70 ../lib/layouts/paper.layout:54
-#: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
-#: ../lib/layouts/scrclass.inc:75 ../lib/layouts/siamltex.layout:56
-#: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
-#: ../lib/layouts/aguplus.inc:35
+#: ../lib/layouts/aastex.layout:154 ../lib/layouts/aguplus.inc:35
+#: ../lib/layouts/amsart.layout:53 ../lib/layouts/amsbook.layout:54
+#: ../lib/layouts/cv.layout:49 ../lib/layouts/db_stdsections.inc:32
+#: ../lib/layouts/egs.layout:55 ../lib/layouts/kluwer.layout:60
+#: ../lib/layouts/latex8.layout:46 ../lib/layouts/linuxdoc.layout:94
+#: ../lib/layouts/llncs.layout:57 ../lib/layouts/ltugboat.layout:70
+#: ../lib/layouts/paper.layout:54 ../lib/layouts/revtex.layout:55
+#: ../lib/layouts/revtex4.layout:58 ../lib/layouts/scrclass.inc:75
+#: ../lib/layouts/siamltex.layout:56 ../lib/layouts/stdsections.inc:88
+#: ../lib/layouts/svjour.inc:51
 msgid "Subsection"
 msgstr "Alikappale"
 
@@ -4894,7 +4894,7 @@ msgstr "Alikappale"
 #: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
 #: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
 #: ../lib/layouts/amsbook.layout:63 ../lib/layouts/db_stdsections.inc:39
-#: ../lib/layouts/kluwer.layout:69 ../lib/layouts/linuxdoc.layout:119
+#: ../lib/layouts/kluwer.layout:69 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
 #: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
 #: ../lib/layouts/revtex4.layout:67 ../lib/layouts/scrclass.inc:82
@@ -4903,15 +4903,15 @@ msgstr "Alikappale"
 msgid "Subsubsection"
 msgstr "Alialikappale"
 
-#: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
-#: ../lib/layouts/siamltex.layout:78 ../lib/layouts/spie.layout:33
-#: ../lib/layouts/stdstarsections.inc:29 ../lib/layouts/aguplus.inc:29
+#: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/aguplus.inc:29
+#: ../lib/layouts/egs.layout:686 ../lib/layouts/siamltex.layout:78
+#: ../lib/layouts/spie.layout:33 ../lib/layouts/stdstarsections.inc:29
 msgid "Section*"
 msgstr "Kappale*"
 
-#: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
-#: ../lib/layouts/siamltex.layout:84 ../lib/layouts/stdstarsections.inc:38
-#: ../lib/layouts/aguplus.inc:41
+#: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/aguplus.inc:41
+#: ../lib/layouts/egs.layout:709 ../lib/layouts/siamltex.layout:84
+#: ../lib/layouts/stdstarsections.inc:38
 msgid "Subsection*"
 msgstr "Alikappale*"
 
@@ -4923,7 +4923,7 @@ msgstr "Alialikappale*"
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
 #: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
 #: ../lib/layouts/foils.layout:160 ../lib/layouts/heb-article.layout:20
-#: ../lib/layouts/linuxdoc.layout:344 ../lib/layouts/paper.layout:132
+#: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/scrclass.inc:222 ../lib/layouts/siamltex.layout:134
 #: ../lib/layouts/spie.layout:74 src/buffer.C:1504
 msgid "Abstract"
@@ -4939,15 +4939,15 @@ msgstr "Avainsanat"
 
 #: ../lib/layouts/IEEEtran.layout:406 ../lib/layouts/aa.layout:78
 #: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
-#: ../lib/layouts/aapaper.layout:195 ../lib/layouts/amsdefs.inc:338
-#: ../lib/layouts/book.layout:19 ../lib/layouts/cl2emult.layout:105
-#: ../lib/layouts/cv.layout:154 ../lib/layouts/egs.layout:643
-#: ../lib/layouts/foils.layout:224 ../lib/layouts/latex8.layout:121
-#: ../lib/layouts/llncs.layout:289 ../lib/layouts/report.layout:12
-#: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
-#: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
-#: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:72
+#: ../lib/layouts/aapaper.layout:195 ../lib/layouts/aguplus.inc:157
+#: ../lib/layouts/amsdefs.inc:338 ../lib/layouts/book.layout:19
+#: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/cv.layout:154
+#: ../lib/layouts/egs.layout:643 ../lib/layouts/foils.layout:224
+#: ../lib/layouts/latex8.layout:121 ../lib/layouts/llncs.layout:289
+#: ../lib/layouts/report.layout:12 ../lib/layouts/scrbook.layout:13
+#: ../lib/layouts/scrclass.inc:229 ../lib/layouts/scrreprt.layout:10
+#: ../lib/layouts/siamltex.layout:171 ../lib/layouts/stdstruct.inc:43
+#: ../lib/layouts/svjour.inc:353 src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Viitteet"
 
@@ -4983,15 +4983,15 @@ msgstr "Merkitse molemmat"
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
 #: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:262
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/db_stdlists.inc:11
-#: ../lib/layouts/egs.layout:200 ../lib/layouts/linuxdoc.layout:209
-#: ../lib/layouts/manpage.layout:84 ../lib/layouts/stdlists.inc:9
+#: ../lib/layouts/egs.layout:200 ../lib/layouts/linuxdoc.layout:211
+#: ../lib/layouts/manpage.layout:86 ../lib/layouts/stdlists.inc:9
 msgid "Itemize"
 msgstr "Luettelo"
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
 #: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:280
 #: ../lib/layouts/db_stdlists.inc:17 ../lib/layouts/egs.layout:182
-#: ../lib/layouts/linuxdoc.layout:193 ../lib/layouts/manpage.layout:67
+#: ../lib/layouts/linuxdoc.layout:195 ../lib/layouts/manpage.layout:69
 #: ../lib/layouts/stdlists.inc:27
 msgid "Enumerate"
 msgstr "Numeroitu luettelo"
@@ -4999,7 +4999,7 @@ msgstr "Numeroitu luettelo"
 #: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
 #: ../lib/layouts/aastex.layout:80 ../lib/layouts/db_stdlists.inc:23
 #: ../lib/layouts/egs.layout:218 ../lib/layouts/hollywood.layout:131
-#: ../lib/layouts/linuxdoc.layout:226 ../lib/layouts/manpage.layout:102
+#: ../lib/layouts/linuxdoc.layout:228 ../lib/layouts/manpage.layout:104
 #: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:23
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/stdlists.inc:45
 msgid "Description"
@@ -5022,7 +5022,7 @@ msgstr "Lista"
 #: ../lib/layouts/docbook-section.layout:12 ../lib/layouts/egs.layout:286
 #: ../lib/layouts/entcs.layout:13 ../lib/layouts/foils.layout:138
 #: ../lib/layouts/hollywood.layout:336 ../lib/layouts/kluwer.layout:101
-#: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:38
+#: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
 #: ../lib/layouts/llncs.layout:106 ../lib/layouts/ltugboat.layout:151
 #: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
 #: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrclass.inc:150
@@ -5047,7 +5047,7 @@ msgstr "Alaotsikko"
 #: ../lib/layouts/db_stdtitle.inc:18 ../lib/layouts/egs.layout:336
 #: ../lib/layouts/entcs.layout:22 ../lib/layouts/foils.layout:146
 #: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:157
-#: ../lib/layouts/linuxdoc.layout:294 ../lib/layouts/llncs.layout:192
+#: ../lib/layouts/linuxdoc.layout:296 ../lib/layouts/llncs.layout:192
 #: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
 #: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
 #: ../lib/layouts/scrclass.inc:158 ../lib/layouts/siamltex.layout:119
@@ -5082,7 +5082,7 @@ msgstr "Posti"
 #: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/db_stdtitle.inc:57
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:140
-#: ../lib/layouts/linuxdoc.layout:319 ../lib/layouts/revtex.layout:123
+#: ../lib/layouts/linuxdoc.layout:321 ../lib/layouts/revtex.layout:123
 #: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrclass.inc:165
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/siamltex.layout:129
 #: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
@@ -5120,14 +5120,14 @@ msgstr "Sähköposti"
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aastex.layout:74 ../lib/layouts/db_stdsections.inc:46
-#: ../lib/layouts/egs.layout:76 ../lib/layouts/kluwer.layout:78
-#: ../lib/layouts/linuxdoc.layout:144 ../lib/layouts/llncs.layout:75
-#: ../lib/layouts/ltugboat.layout:117 ../lib/layouts/paper.layout:70
-#: ../lib/layouts/revtex.layout:73 ../lib/layouts/revtex4.layout:76
-#: ../lib/layouts/scrclass.inc:89 ../lib/layouts/siamltex.layout:68
-#: ../lib/layouts/stdsections.inc:138 ../lib/layouts/svjour.inc:70
-#: ../lib/layouts/aguplus.inc:48
+#: ../lib/layouts/aastex.layout:74 ../lib/layouts/aguplus.inc:48
+#: ../lib/layouts/db_stdsections.inc:46 ../lib/layouts/egs.layout:76
+#: ../lib/layouts/kluwer.layout:78 ../lib/layouts/linuxdoc.layout:146
+#: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
+#: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
+#: ../lib/layouts/revtex4.layout:76 ../lib/layouts/scrclass.inc:89
+#: ../lib/layouts/siamltex.layout:68 ../lib/layouts/stdsections.inc:138
+#: ../lib/layouts/svjour.inc:70
 msgid "Paragraph"
 msgstr "Osakappale"
 
@@ -5180,7 +5180,62 @@ msgstr "Huomautus toimittajalle"
 msgid "FigCaption"
 msgstr "Kuvateksti"
 
-#: ../lib/layouts/amsbook.layout:101
+#: ../lib/layouts/aguplus.inc:53 ../lib/layouts/siamltex.layout:96
+#: ../lib/layouts/stdstarsections.inc:56
+msgid "Paragraph*"
+msgstr "Osakappale*"
+
+#: ../lib/layouts/aguplus.inc:67 ../lib/layouts/cv.layout:104
+#: ../lib/layouts/foils.layout:200
+msgid "Left_Header"
+msgstr "Vasen yläotsikko"
+
+#: ../lib/layouts/aguplus.inc:93 ../lib/layouts/cv.layout:123
+#: ../lib/layouts/foils.layout:208
+msgid "Right_Header"
+msgstr "Oikea yläotsikko"
+
+#: ../lib/layouts/aguplus.inc:100 ../lib/layouts/egs.layout:468
+msgid "Received"
+msgstr "Vastaanotettu"
+
+#: ../lib/layouts/aguplus.inc:107
+msgid "Revised"
+msgstr "Tarkastettu"
+
+#: ../lib/layouts/aguplus.inc:114 ../lib/layouts/egs.layout:494
+msgid "Accepted"
+msgstr "Hyväksytty"
+
+#: ../lib/layouts/aguplus.inc:121
+msgid "CCC"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:134
+msgid "PaperId"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:141
+msgid "AuthorAddr"
+msgstr "Tekijän osoite"
+
+#: ../lib/layouts/aguplus.inc:148
+msgid "SlugComment"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:171
+msgid "Plate"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:181
+msgid "Planotable"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:192
+msgid "Table_Caption"
+msgstr "Taulukon_teksti"
+
+#: ../lib/layouts/amsbook.layout:103
 msgid "Chapter_Exercises"
 msgstr "Harjoitusluku"
 
@@ -5463,18 +5518,8 @@ msgstr "Alikappale"
 msgid "Topic"
 msgstr "Aihe"
 
-#: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
-#: ../lib/layouts/aguplus.inc:67
-msgid "Left_Header"
-msgstr "Vasen yläotsikko"
-
-#: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
-#: ../lib/layouts/aguplus.inc:93
-msgid "Right_Header"
-msgstr "Oikea yläotsikko"
-
-#: ../lib/layouts/db_lyxmacros.inc:11 ../lib/layouts/linuxdoc.layout:276
-#: ../lib/layouts/manpage.layout:153
+#: ../lib/layouts/db_lyxmacros.inc:11 ../lib/layouts/linuxdoc.layout:278
+#: ../lib/layouts/manpage.layout:155
 msgid "Code"
 msgstr "Koodi"
 
@@ -5488,8 +5533,8 @@ msgstr "Huomautus"
 msgid "LyX-Code"
 msgstr "LyX-koodi"
 
-#: ../lib/layouts/db_stdlayouts.inc:11 ../lib/layouts/linuxdoc.layout:370
-#: ../lib/layouts/manpage.layout:171
+#: ../lib/layouts/db_stdlayouts.inc:11 ../lib/layouts/linuxdoc.layout:372
+#: ../lib/layouts/manpage.layout:173
 msgid "SGML"
 msgstr "SGML"
 
@@ -5508,7 +5553,7 @@ msgid "Chapter"
 msgstr "Luku"
 
 #: ../lib/layouts/db_stdsections.inc:53 ../lib/layouts/egs.layout:103
-#: ../lib/layouts/kluwer.layout:87 ../lib/layouts/linuxdoc.layout:168
+#: ../lib/layouts/kluwer.layout:87 ../lib/layouts/linuxdoc.layout:170
 #: ../lib/layouts/llncs.layout:85 ../lib/layouts/paper.layout:78
 #: ../lib/layouts/scrclass.inc:96 ../lib/layouts/stdsections.inc:163
 #: ../lib/layouts/svjour.inc:80
@@ -5592,8 +5637,8 @@ msgstr "Kaupunki"
 msgid "Datum"
 msgstr "Päiväys"
 
-#: ../lib/layouts/egs.layout:149 ../lib/layouts/linuxdoc.layout:26
-#: ../lib/layouts/manpage.layout:27 ../lib/layouts/stdlayouts.inc:49
+#: ../lib/layouts/egs.layout:149 ../lib/layouts/linuxdoc.layout:28
+#: ../lib/layouts/manpage.layout:29 ../lib/layouts/stdlayouts.inc:49
 msgid "Quote"
 msgstr "Lainaus"
 
@@ -5616,14 +5661,6 @@ msgstr "msnumero"
 #: ../lib/layouts/egs.layout:442
 msgid "FirstAuthor"
 msgstr "Ensimm. tekijä"
-
-#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:100
-msgid "Received"
-msgstr "Vastaanotettu"
-
-#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:114
-msgid "Accepted"
-msgstr "Hyväksytty"
 
 # Now this wasn't very obvious.
 #: ../lib/layouts/egs.layout:522
@@ -6099,11 +6136,6 @@ msgstr "Kalvon sisältö*"
 msgid "ProgressContents"
 msgstr "Esityksen etenemisluettelo"
 
-#: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
-#: ../lib/layouts/aguplus.inc:53
-msgid "Paragraph*"
-msgstr "Osakappale*"
-
 #: ../lib/layouts/siamltex.layout:165
 msgid "AMS"
 msgstr "AMS"
@@ -6155,38 +6187,6 @@ msgstr "Eripainokset"
 #: ../lib/layouts/svjour.inc:295
 msgid " Keywords"
 msgstr " Avainsanat"
-
-#: ../lib/layouts/aguplus.inc:107
-msgid "Revised"
-msgstr "Tarkastettu"
-
-#: ../lib/layouts/aguplus.inc:121
-msgid "CCC"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:134
-msgid "PaperId"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:141
-msgid "AuthorAddr"
-msgstr "Tekijän osoite"
-
-#: ../lib/layouts/aguplus.inc:148
-msgid "SlugComment"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:171
-msgid "Plate"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:181
-msgid "Planotable"
-msgstr ""
-
-#: ../lib/layouts/aguplus.inc:192
-msgid "Table_Caption"
-msgstr "Taulukon_teksti"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -7239,21 +7239,21 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1642 src/lyxfunc.C:1681 src/lyxfunc.C:1786
+#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1683 src/lyxfunc.C:1788
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1649
-#: src/lyxfunc.C:1688
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1650
+#: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1697 src/lyxfunc.C:1717
-#: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
 msgid "Canceled."
 msgstr "Peruttu."
 
@@ -7266,8 +7266,8 @@ msgstr "Lisätään asiakirja %1$s..."
 msgid "Inserting document "
 msgstr "Lisätään asiakirja "
 
-#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:986
-#: src/lyxfunc.C:1149 src/lyxfunc.C:1730
+#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:987
+#: src/lyxfunc.C:1150 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7276,7 +7276,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1742
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Asiakirja "
 
@@ -8285,7 +8285,7 @@ msgstr "Lataatko sen mieluummin?"
 msgid "Unable to open template"
 msgstr "Mallitiedostoa ei voi avata"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1818
+#: src/bufferlist.C:518 src/lyxfunc.C:1819
 msgid "Document is already open:"
 msgstr "Asiakirja on jo avoinna:"
 
@@ -9476,27 +9476,27 @@ msgstr "Muuntimet"
 msgid "File formats"
 msgstr "Tiedostomuodot"
 
-#: src/frontends/qt2/QPrefsDialog.C:444 src/frontends/qt2/QPrefsDialog.C:447
+#: src/frontends/qt2/QPrefsDialog.C:450 src/frontends/qt2/QPrefsDialog.C:453
 msgid "New"
 msgstr "Uusi"
 
-#: src/frontends/qt2/QPrefsDialog.C:548
+#: src/frontends/qt2/QPrefsDialog.C:554
 msgid "Select a document templates directory"
 msgstr "Valitse asiakirjamallien hakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:556
+#: src/frontends/qt2/QPrefsDialog.C:562
 msgid "Select a temporary directory"
 msgstr "Valitse väliaikaishakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:564
+#: src/frontends/qt2/QPrefsDialog.C:570
 msgid "Select a backups directory"
 msgstr "Valitse varmuuskopiohakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:572
+#: src/frontends/qt2/QPrefsDialog.C:578
 msgid "Select a document directory"
 msgstr "Valitse asiakirjahakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:580
+#: src/frontends/qt2/QPrefsDialog.C:586
 msgid "Give a filename for the LyX server pipe"
 msgstr "Anna tiedostonimi LyX-palvelinputkelle"
 
@@ -9685,12 +9685,12 @@ msgstr "*"
 msgid "License"
 msgstr "Lisenssi"
 
-#: src/frontends/xforms/FormBase.C:341
+#: src/frontends/xforms/FormBase.C:347
 #, c-format
 msgid "WARNING! %1$s"
 msgstr "Varoitus! %1$s"
 
-#: src/frontends/xforms/FormBase.C:348
+#: src/frontends/xforms/FormBase.C:354
 msgid "WARNING!"
 msgstr "Varoitus!"
 
@@ -11301,7 +11301,7 @@ msgstr "(muuten asiakirjaa ei tallenneta.)"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1644
+#: src/lyx_cb.C:112 src/lyxfunc.C:1645
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
@@ -11743,127 +11743,127 @@ msgstr "Asiakirja on kirjoitussuojattu"
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/lyxfunc.C:701
+#: src/lyxfunc.C:702
 #, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Tuntematon funktio (%1$s)"
 
-#: src/lyxfunc.C:705
+#: src/lyxfunc.C:706
 msgid "Unknown function ("
 msgstr "Tuntematon funktio ("
 
-#: src/lyxfunc.C:981
+#: src/lyxfunc.C:982
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/lyxfunc.C:984
+#: src/lyxfunc.C:985
 msgid "Saving document "
 msgstr "Asiakirja tallentuu: "
 
-#: src/lyxfunc.C:990
+#: src/lyxfunc.C:991
 msgid " done."
 msgstr " valmis."
 
-#: src/lyxfunc.C:1132 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:1145
+#: src/lyxfunc.C:1146
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ohjetiedosto %1$s avautuu..."
 
-#: src/lyxfunc.C:1148
+#: src/lyxfunc.C:1149
 msgid "Opening help file "
 msgstr "Ohjetiedosto avautuu: "
 
-#: src/lyxfunc.C:1354
+#: src/lyxfunc.C:1355
 msgid "This is only allowed in math mode!"
 msgstr "Tämä on mahdollista vain matematiikkatilassa!"
 
-#: src/lyxfunc.C:1396
+#: src/lyxfunc.C:1397
 msgid "Opening child document "
 msgstr "Aliasiakirja avautuu: "
 
-#: src/lyxfunc.C:1470
+#: src/lyxfunc.C:1471
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1485
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Värin \"%1$s\" asetus epäonnistui: väri on määrittelemätön, tai sitä ei voi "
 "määritellä uudelleen."
 
-#: src/lyxfunc.C:1489
+#: src/lyxfunc.C:1490
 msgid "Set-color "
 msgstr "Set-color \""
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1491
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 "\" epäonnistui: väri on määrittelemätön, tai sitä ei voi määritellä "
 "uudelleen."
 
-#: src/lyxfunc.C:1640
+#: src/lyxfunc.C:1641
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1679
+#: src/lyxfunc.C:1680
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1715
+#: src/lyxfunc.C:1716
 msgid "No such file"
 msgstr "Ei tiedostoa"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1717
 msgid "Start a new document with this filename ?"
 msgstr "Luodaanko uusi asiakirja tällä nimellä?"
 
-#: src/lyxfunc.C:1728
+#: src/lyxfunc.C:1729
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/lyxfunc.C:1730
+#: src/lyxfunc.C:1731
 msgid "Opening document "
 msgstr "Asiakirja avautuu: "
 
-#: src/lyxfunc.C:1740
+#: src/lyxfunc.C:1741
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1743
 msgid " opened."
 msgstr " avautui."
 
-#: src/lyxfunc.C:1746
+#: src/lyxfunc.C:1747
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyxfunc.C:1749
+#: src/lyxfunc.C:1750
 msgid "Could not open document "
 msgstr "Asiakirjan avaaminen epäonnistui: "
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1777
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/lyxfunc.C:1780
+#: src/lyxfunc.C:1781
 msgid "Select "
 msgstr "Valitse "
 
-#: src/lyxfunc.C:1781
+#: src/lyxfunc.C:1782
 msgid " file to import"
 msgstr " tuotava tiedosto"
 
-#: src/lyxfunc.C:1820
+#: src/lyxfunc.C:1821
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -11871,15 +11871,15 @@ msgstr ""
 "Haluatko sulkea asiakirjan nyt?\n"
 "('Ei': siirry avoinna olevaan versioon)"
 
-#: src/lyxfunc.C:1840
+#: src/lyxfunc.C:1841
 msgid "A document by the name"
 msgstr "Asiakirja, jonka nimi on"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1842
 msgid "already exists. Overwrite?"
 msgstr "on jo olemassa. Haluatko korvata sen?"
 
-#: src/lyxfunc.C:1913
+#: src/lyxfunc.C:1914
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
@@ -12537,22 +12537,22 @@ msgstr ""
 "Kirjasinlajin muutosta ei määritetty. Määritä kirjasinlajin muutos Muotoilu-"
 "valikon Merkki-alivalikon avulla."
 
-#: src/text2.C:1051
+#: src/text2.C:1050
 msgid "Nothing to index!"
 msgstr "Ei mitään hakemistossa!"
 
-#: src/text2.C:1055
+#: src/text2.C:1052
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
 
-#: src/text2.C:1330
+#: src/text2.C:1326
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
 
 #. par->SetLayout(0);
 #. s = layout->labelstring;
-#: src/text2.C:1343
+#: src/text2.C:1339
 msgid "Senseless: "
 msgstr "Järjetöntä: "
 
