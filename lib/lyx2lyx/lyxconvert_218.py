@@ -195,7 +195,7 @@ def is_empty(lines):
     return filter(is_nonempty_line, lines) == []
 
 move_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun|end_deeper)")
-ert_rexp = re.compile(r"\\begin_inset|.*\\SpecialChar")
+ert_rexp = re.compile(r"\\begin_inset|\\hfill|.*\\SpecialChar")
 spchar_rexp = re.compile(r"(.*)(\\SpecialChar.*)")
 ert_begin = ["\\begin_inset ERT",
 	     "status Collapsed",
@@ -233,11 +233,15 @@ def remove_oldert(lines):
 	k = i+1
 	while 1:
 	    k2 = find_re(lines, ert_rexp, k, j)
-	    inset = specialchar = 0
+	    inset = hfill = specialchar = 0
 	    if k2 == -1:
 		k2 = j
 	    elif check_token(lines[k2], "\\begin_inset"):
 		inset = 1
+            elif check_token(lines[k2], "\\hfill"):
+                hfill = 1
+                del lines[k2]
+                j = j-1
 	    else:
 		specialchar = 1
 		mo = spchar_rexp.match(lines[k2])
@@ -276,6 +280,9 @@ def remove_oldert(lines):
 		if not is_nonempty_line(lines[k]):
 		    k = k+1
 		    new.append("")
+            elif hfill:
+                new = new+["\hfill", ""]
+                k = k2
 	    elif specialchar:
 		if new == []:
 		    # This is not necessary, but we want the output to be
