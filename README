@@ -69,6 +69,9 @@ What do I need to run LyX?
 	A decent LaTeX2e installation (e.g. teTeX or NTeX) not older
 	   than 1995/12/01
 	Optionally ghostscript and ghostview (or compatible)
+		- note that ghostscript versions 6.22 through 6.50 
+		  won't render inline figures in LyX. This is due to
+		  a ghostscript bug.
 	Perl5.002 or later to import LaTeX files into LyX
 
 What's new?
@@ -187,8 +190,6 @@ How do I submit a bug report?
 	If possible, read the "Known Bugs" document found under the
 	Help menu.  You'll find detailed info on submitting bug reports
 	there.
-
-	You should also check the BUGS file in this directory.
 
 	If you can't do that, send details to the LyX Developers mailing
 	list.  Don't forget to mention which version you are having
