@@ -28,18 +28,27 @@ FD_form_toc * FormToc::build_toc()
   fdui->browser_toc = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 10, 400, 280, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 300, 100, 30, idex(_("Update|#U")));
-    fl_set_button_shortcut(obj, scex(_("Update|#U")), 1);
+  {
+    char const * const dummy = N_("Update|#U");
+    fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 300, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_toc_type = obj = fl_add_choice(FL_NORMAL_CHOICE, 60, 300, 130, 30, idex(_("Type|#T")));
-    fl_set_button_shortcut(obj, scex(_("Type|#T")), 1);
+  {
+    char const * const dummy = N_("Type|#T");
+    fdui->choice_toc_type = obj = fl_add_choice(FL_NORMAL_CHOICE, 60, 300, 130, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 310, 300, 100, 30, idex(_("Close|#C^[^M")));
-    fl_set_button_shortcut(obj, scex(_("Close|#C^[^M")), 1);
+  {
+    char const * const dummy = N_("Close|#C^[^M");
+    fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 310, 300, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);

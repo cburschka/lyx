@@ -33,12 +33,18 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
 
   fdui->group_radio_printto = fl_bgn_group();
-  fdui->radio_printer = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 225, 80, 30, idex(_("Printer|#P")));
-    fl_set_button_shortcut(obj, scex(_("Printer|#P")), 1);
+  {
+    char const * const dummy = N_("Printer|#P");
+    fdui->radio_printer = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 225, 80, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_file = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 265, 80, 30, idex(_("File|#F")));
-    fl_set_button_shortcut(obj, scex(_("File|#F")), 1);
+  {
+    char const * const dummy = N_("File|#F");
+    fdui->radio_file = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 265, 80, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
@@ -46,38 +52,59 @@ FD_form_print * FormPrint::build_print()
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 315, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 315, 100, 30, idex(_("Apply|#A")));
-    fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
+  {
+    char const * const dummy = N_("Apply|#A");
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 315, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 315, 100, 30, idex(_("Cancel|C#C^[")));
-    fl_set_button_shortcut(obj, scex(_("Cancel|C#C^[")), 1);
+  {
+    char const * const dummy = N_("Cancel|C#C^[");
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 315, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
 
   fdui->group_radio_pages = fl_bgn_group();
-  fdui->radio_all_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 30, 160, 30, idex(_("All Pages|#G")));
-    fl_set_button_shortcut(obj, scex(_("All Pages|#G")), 1);
+  {
+    char const * const dummy = N_("All Pages|#G");
+    fdui->radio_all_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 30, 160, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_odd_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 60, 160, 30, idex(_("Only Odd Pages|#O")));
-    fl_set_button_shortcut(obj, scex(_("Only Odd Pages|#O")), 1);
+  {
+    char const * const dummy = N_("Only Odd Pages|#O");
+    fdui->radio_odd_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 60, 160, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_even_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 90, 160, 30, idex(_("Only Even Pages|#E")));
-    fl_set_button_shortcut(obj, scex(_("Only Even Pages|#E")), 1);
+  {
+    char const * const dummy = N_("Only Even Pages|#E");
+    fdui->radio_even_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 90, 160, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
 
 
   fdui->group_radio_order = fl_bgn_group();
-  fdui->radio_order_normal = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 180, 30, 150, 30, idex(_("Normal Order|#N")));
-    fl_set_button_shortcut(obj, scex(_("Normal Order|#N")), 1);
+  {
+    char const * const dummy = N_("Normal Order|#N");
+    fdui->radio_order_normal = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 180, 30, 150, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_order_reverse = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 180, 60, 150, 30, idex(_("Reverse Order|#R")));
-    fl_set_button_shortcut(obj, scex(_("Reverse Order|#R")), 1);
+  {
+    char const * const dummy = N_("Reverse Order|#R");
+    fdui->radio_order_reverse = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 180, 60, 150, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
@@ -90,8 +117,11 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_collated = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 115, 140, 30, idex(_("Collated|#C")));
-    fl_set_button_shortcut(obj, scex(_("Collated|#C")), 1);
+  {
+    char const * const dummy = N_("Collated|#C");
+    fdui->radio_collated = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 115, 140, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->input_to_page = obj = fl_add_input(FL_INT_INPUT, 110, 160, 50, 30, _("to"));

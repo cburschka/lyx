@@ -29,11 +29,17 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 20, 310, 138, 30, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 279, 250, 201, 50, "");
-  fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 150, 20, 210, 30, idex(_("Graphics File|#F")));
-    fl_set_button_shortcut(obj, scex(_("Graphics File|#F")), 1);
+  {
+    char const * const dummy = N_("Graphics File|#F");
+    fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 150, 20, 210, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
-  fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 370, 20, 90, 30, idex(_("Browse|#B")));
-    fl_set_button_shortcut(obj, scex(_("Browse|#B")), 1);
+  {
+    char const * const dummy = N_("Browse|#B");
+    fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 370, 20, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseInputCB, BROWSE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 70, 240, 160, _("Width"));
     fl_set_object_lalign(obj, FL_ALIGN_CENTER);
@@ -80,41 +86,71 @@ FD_form_graphics * FormGraphics::build_graphics()
 
 
   fdui->radio_button_group_display = fl_bgn_group();
-  fdui->radio_display_monochrome = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 80, 98, 30, idex(_("in Monochrome|#M")));
-    fl_set_button_shortcut(obj, scex(_("in Monochrome|#M")), 1);
+  {
+    char const * const dummy = N_("in Monochrome|#M");
+    fdui->radio_display_monochrome = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 80, 98, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_button(obj, 1);
-  fdui->radio_display_grayscale = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 110, 98, 30, idex(_("in Grayscale|#G")));
-    fl_set_button_shortcut(obj, scex(_("in Grayscale|#G")), 1);
-  fdui->radio_display_color = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 140, 98, 30, idex(_("in Color|#C")));
-    fl_set_button_shortcut(obj, scex(_("in Color|#C")), 1);
-  fdui->radio_no_display = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 170, 98, 30, idex(_("Don't display|#D")));
-    fl_set_button_shortcut(obj, scex(_("Don't display|#D")), 1);
+  {
+    char const * const dummy = N_("in Grayscale|#G");
+    fdui->radio_display_grayscale = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 110, 98, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+  {
+    char const * const dummy = N_("in Color|#C");
+    fdui->radio_display_color = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 140, 98, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+  {
+    char const * const dummy = N_("Don't display|#D");
+    fdui->radio_no_display = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 170, 98, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
   fl_end_group();
 
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 250, 236, 50, _("Rotate"));
-  fdui->input_rotate_angle = obj = fl_add_input(FL_INT_INPUT, 91, 260, 94, 30, idex(_("Angle|#A")));
-    fl_set_button_shortcut(obj, scex(_("Angle|#A")), 1);
+  {
+    char const * const dummy = N_("Angle|#A");
+    fdui->input_rotate_angle = obj = fl_add_input(FL_INT_INPUT, 91, 260, 94, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
-  fdui->check_inline = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 279, 260, 201, 30, idex(_("Inline Figure|#I")));
-    fl_set_button_shortcut(obj, scex(_("Inline Figure|#I")), 1);
+  {
+    char const * const dummy = N_("Inline Figure|#I");
+    fdui->check_inline = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 279, 260, 201, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fdui->input_subcaption = obj = fl_add_input(FL_NORMAL_INPUT, 158, 310, 322, 30, "");
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
-  fdui->check_subcaption = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 120, 310, 30, 30, idex(_("Subcaption|#S")));
-    fl_set_button_shortcut(obj, scex(_("Subcaption|#S")), 1);
+  {
+    char const * const dummy = N_("Subcaption|#S");
+    fdui->check_subcaption = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 120, 310, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
-  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 20, 350, 90, 30, idex(_("Update|#U")));
-    fl_set_button_shortcut(obj, scex(_("Update|#U")), 1);
+  {
+    char const * const dummy = N_("Update|#U");
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 20, 350, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 190, 350, 90, 30, _("Ok"));
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 290, 350, 90, 30, idex(_("Apply|#A")));
-    fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
+  {
+    char const * const dummy = N_("Apply|#A");
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 290, 350, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 390, 350, 90, 30, idex(_("Cancel|^[")));
-    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+  {
+    char const * const dummy = N_("Cancel|^[");
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 390, 350, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fl_end_form();
 

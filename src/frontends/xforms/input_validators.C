@@ -6,6 +6,7 @@
 
 #include "config.h"
 #include FORMS_H_LOCATION
+#include "support/lstrings.h"
 #include "input_validators.h"
 
 #if defined(__cplusplus)
@@ -22,6 +23,22 @@ int fl_unsigned_int_filter(FL_OBJECT * ob,
 	    || strchr("0123456789", c)) {
 		/* since we only accept numerals then it must be valid */
 		return FL_VALID;
+	}
+	return FL_INVALID|FL_RINGBELL;
+}
+
+
+int fl_unsigned_float_filter(FL_OBJECT * ob,
+			     char const * not_used,
+			     char const * unused,
+			     int c)
+{
+	if (c == 0 /* final test before handing contents to app */
+	    || strchr("0123456789.", c)) {
+		if ( isStrDbl(fl_get_input(ob)) )
+			return FL_VALID;
+		else
+			return FL_INVALID|FL_RINGBELL;
 	}
 	return FL_INVALID|FL_RINGBELL;
 }

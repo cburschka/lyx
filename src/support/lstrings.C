@@ -282,19 +282,21 @@ bool suffixIs(string const & a, char const * suf)
 	Assert(suf);
 	
 	size_t const suflen = strlen(suf);
-	if (suflen > a.length())
+	string::size_type const alen = a.length();
+	
+	if (suflen > alen)
 		return false;
 	else {
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
 		// Delete this code when the compilers get a bit better.
-		string tmp(a, a.length() - suflen);
+		string tmp(a, alen - suflen);
 		return ::strncmp(tmp.c_str(), suf, suflen) == 0;
 #else
 		// This is the code that we really want to use
 		// but until gcc ships with a basic_string that
 		// implements std::string correctly we have to
 		// use the code above.
-		return a.compare(a.length() - suflen, suflen, suf) == 0;
+		return a.compare(alen - suflen, suflen, suf) == 0;
 #endif
 	}
 }

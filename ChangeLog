@@ -1,3 +1,26 @@
+2000-12-06  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormPreferences.C (ScreenFonts::build): changed
+	filter for screen fonts input filter from int to float
+
+	* src/frontends/xforms/input_validators.c: removed.
+	* src/frontends/xforms/input_validators.C: new file. Can now call C++
+	functions from within the filter functions.
+
+	* src/frontends/xforms/input_validators.[Ch]
+	(fl_unsigned_float_filter): new filter function.
+
+	* src/frontends/xforms/forms/fdfixc.sed: I defy gettext to get confused
+	now! And if you think I'm going to do this in ./forms/fdfix.sh with
+	its "sed -e" declarations, then think again!
+                          
+2000-12-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.C (asciiParagraph): small NEW_INSETS fix from Levon
+
+	* src/WorkArea.C (work_area_handler): don't handle button requests
+	if xbutton.button == 0
+
 2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/layouts/lyxmacros.inc: do not use \verbatim@font in lyxcode.

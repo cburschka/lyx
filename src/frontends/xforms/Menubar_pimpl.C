@@ -58,7 +58,7 @@ extern "C"
 void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
 
 // This is used a few times below.
-inline
+static inline
 int string_width(string const & str) 
 {
 	return fl_get_string_widthTAB(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
@@ -189,7 +189,8 @@ void Menubar::Pimpl::openByName(string const & name)
 }
 
 
-string limit_string_length(string const & str)
+static inline
+string const limit_string_length(string const & str)
 {
 	string::size_type const max_item_length = 45;
 
@@ -200,6 +201,7 @@ string limit_string_length(string const & str)
 }
 
 
+static
 int get_new_submenu(vector<int> & smn, Window win)
 {
 	static size_type max_number_of_menus = 32;
@@ -211,9 +213,10 @@ int get_new_submenu(vector<int> & smn, Window win)
 	return menu;
 }
 
+
 size_type const max_number_of_items = 25;
 
-inline
+static inline
 string const fixlabel(string const & str)
 {
 #if FL_REVISION < 89
@@ -223,6 +226,7 @@ string const fixlabel(string const & str)
 #endif
 }
 
+
 void add_toc2(int menu, string const & extra_label,
 	      vector<int> & smn, Window win,
 	      vector<Buffer::TocItem> const & toc_list,
@@ -230,7 +234,7 @@ void add_toc2(int menu, string const & extra_label,
 {
 	if (to - from <= max_number_of_items) {
 		for (size_type i = from; i < to; ++i) {
-			int action = lyxaction.
+			int const action = lyxaction.
 				getPseudoAction(LFUN_GOTO_PARAGRAPH,
 						tostr(toc_list[i].par->id()));
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
@@ -262,7 +266,7 @@ void add_toc2(int menu, string const & extra_label,
 			       toc_list[new_pos].depth > depth)
 				++new_pos;
 
-			int action = lyxaction.
+			int const action = lyxaction.
 				getPseudoAction(LFUN_GOTO_PARAGRAPH,
 						tostr(toc_list[pos].par->id()));
 			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
@@ -285,6 +289,7 @@ void add_toc2(int menu, string const & extra_label,
 		}
 	}
 }
+
 
 void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			     vector<int> & smn, Window win)
@@ -313,7 +318,7 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 					fl_addtopup(menu2, ". . .%d");
 					break;
 				}
-				int action = lyxaction.
+				int const action = lyxaction.
 					getPseudoAction(LFUN_GOTO_PARAGRAPH,
 							tostr(toc_list[j][i].par->id()));
 				string label = fixlabel(toc_list[j][i].str);
@@ -350,7 +355,7 @@ void add_references2(int menu, vector<int> & smn, Window win,
 
 	if (label_list.size() <= max_number_of_items)
 		for (size_type i = 0; i < label_list.size(); ++i) {
-			int action = (type == "goto")
+			int const action = (type == "goto")
 				? lyxaction.getPseudoAction(LFUN_REF_GOTO, 
 							    label_list[i])
 				: lyxaction.getPseudoAction(LFUN_REF_INSERT,
@@ -385,7 +390,7 @@ void add_references2(int menu, vector<int> & smn, Window win,
 
 			int menu2 = get_new_submenu(smn, win);
 			for (size_type k = i;  k < j; ++k) {
-				int action = (type == "goto")
+				int const action = (type == "goto")
 					? lyxaction.getPseudoAction(LFUN_REF_GOTO, 
 								    label_list[k])
 					: lyxaction.getPseudoAction(LFUN_REF_INSERT,
@@ -533,7 +538,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 			// Get the keys bound to this action, but keep only the
 			// first one later
-			string accel = toplevel_keymap->findbinding(item.action());
+			string const accel = toplevel_keymap->findbinding(item.action());
 			// Build the menu label from all the info
 			string label = item.label();
 
@@ -624,6 +629,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 	}
 	return menu;
 }
+
 
 extern "C"
 void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button)

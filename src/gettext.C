@@ -17,7 +17,7 @@ string const _(string const & str)
 	char * tmp = new char[s + 1];
 	str.copy(tmp, s);
 	tmp[s] = '\0';
-	string ret(_(tmp));
+	string ret(gettext(tmp));
 	delete [] tmp;
 	return ret;
 }

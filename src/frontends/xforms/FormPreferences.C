@@ -632,9 +632,9 @@ void FormPreferences::Colors::InputHSV()
 	double const sat = fl_get_slider_value(dialog_->slider_saturation);
 	double const val = fl_get_slider_value(dialog_->slider_value);
 
-	int const h = hue;
-	int const s = 100 * sat;
-	int const v = 100 * val;
+	int const h = int(hue);
+	int const s = int(100.0 * sat);
+	int const v = int(100.0 * val);
 	
 	string const label = tostr(h) + string(", ") + tostr(s) + string(", ") +
 		tostr(v);
@@ -686,9 +686,9 @@ void FormPreferences::Colors::InputHSV()
 
 void FormPreferences::Colors::InputRGB()
 {
-	int const red   = fl_get_slider_value(dialog_->slider_red);
-	int const green = fl_get_slider_value(dialog_->slider_green);
-	int const blue  = fl_get_slider_value(dialog_->slider_blue);
+	int const red   = int(fl_get_slider_value(dialog_->slider_red));
+	int const green = int(fl_get_slider_value(dialog_->slider_green));
+	int const blue  = int(fl_get_slider_value(dialog_->slider_blue));
 
 	string const label = tostr(red) + string(", ") + tostr(green) +
 		string(", ") + tostr(blue);
@@ -2612,16 +2612,16 @@ void FormPreferences::ScreenFonts::build()
 	fl_set_input_return(dialog_->input_huge,            FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_huger,           FL_RETURN_CHANGED);
 
-	fl_set_input_filter(dialog_->input_tiny,     fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_script,   fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_footnote, fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_small,    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_normal,   fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_large,    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_larger,   fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_largest,  fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_huge,     fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_huger,    fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_tiny,     fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_script,   fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_footnote, fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_small,    fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_normal,   fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_large,    fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_larger,   fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_largest,  fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_huge,     fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_huger,    fl_unsigned_float_filter);
 
 	// set up the feedback mechanism
 	setPreHandler(dialog_->input_roman);

@@ -79,7 +79,7 @@ libxforms_la_SOURCES = \
 	form_url.C \
 	form_url.h \
 	input_validators.h \
-	input_validators.c \
+	input_validators.C \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \

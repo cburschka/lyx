@@ -409,7 +409,7 @@ AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
     ])
     if test x$lyx_cv_std_string_good = xyes ; then
 	AC_DEFINE(STD_STRING_IS_GOOD, 1,
-	    [Define is the systems std::string is really good.])
+	    [Define if the systems std::string is really good.])
     fi
 ])
 

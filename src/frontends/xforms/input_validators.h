@@ -26,6 +26,8 @@ extern "C"
 
     /** Only allow whole numbers no '+' or '-' signs or exponents. */
 int fl_unsigned_int_filter(FL_OBJECT *, char const *, char const *, int);
+    /** Only allow whole numbers no '+' or '-' signs or exponents. */
+int fl_unsigned_float_filter(FL_OBJECT *, char const *, char const *, int);
 
     /** Only allow lowercase letters. */
 int fl_lowercase_filter(FL_OBJECT *, char const *, char const *, int);

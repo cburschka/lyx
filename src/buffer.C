@@ -1282,7 +1282,9 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 	LyXFont font2;
 	Inset const * inset;
 	char c;
+#ifndef NEW_INSETS
 	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
+#endif
 	char depth = 0;
 	int ltype = 0;
 	int ltype_depth = 0;
@@ -1384,7 +1386,11 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
       
 	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
-		if (!i && !footnoteflag && !noparbreak){
+		if (!i &&
+#ifndef NEW_INSETS
+		    !footnoteflag &&
+#endif
+		    !noparbreak) {
 			if (linelen > 0)
 				buffer << "\n\n";
 			for (char j = 0; j < depth; ++j)

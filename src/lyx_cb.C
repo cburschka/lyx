@@ -491,7 +491,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	// We use this until the compilers get better...
 	vector<char> tmp;
 	copy(ii, end, back_inserter(tmp));
-	string tmpstr(tmp.begin(), tmp.end());
+	string const tmpstr(tmp.begin(), tmp.end());
 #else
 	// This is what we want to use and what we will use once the
 	// compilers get good enough. 
