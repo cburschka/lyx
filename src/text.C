@@ -471,7 +471,7 @@ void LyXText::computeBidiTables(Buffer const * buf,
 
 
 // This method requires a previous call to ComputeBidiTables()
-bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
+bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
 			 pos_type pos) const
 {
 	if (!lyxrc.rtl_support || pos == 0)
@@ -486,12 +486,12 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
 	bool const rtl = bidi_level(pos - 1) % 2;
 	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
-		: par->isRightToLeftPar(buf->params);
+		: par.isRightToLeftPar(buf->params);
 	return rtl != rtl2;
 }
 
 
-bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
+bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
 			 pos_type pos, LyXFont const & font) const
 {
 	if (!lyxrc.rtl_support)
@@ -500,7 +500,7 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
 	bool const rtl = font.isVisibleRightToLeft();
 	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
-		: par->isRightToLeftPar(buf->params);
+		: par.isRightToLeftPar(buf->params);
 	return rtl != rtl2;
 }
 
@@ -531,7 +531,7 @@ int LyXText::leftMargin(Row const & row) const
 	if (!row.par()->getDepth()) {
 		if (row.par()->layout() == tclass.defaultLayout()) {
 			// find the previous same level paragraph
-			if (row.par()->previous()) {
+			if (row.par() != ownerParagraphs().begin()) {
 				Paragraph * newpar = row.par()
 					->depthHook(row.par()->getDepth());
 				if (newpar &&
@@ -659,7 +659,7 @@ int LyXText::leftMargin(Row const & row) const
 		x += len.inPixels(tw);
 	}
 
-	LyXAlignment align; // wrong type
+	LyXAlignment align;
 
 	if (row.par()->params().align() == LYX_ALIGN_LAYOUT)
 		align = layout->align;
@@ -737,14 +737,14 @@ int LyXText::labelEnd(Row const & row) const
 namespace {
 
 // this needs special handling - only newlines count as a break point
-pos_type addressBreakPoint(pos_type i, Paragraph * par)
+pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
-	for (; i < par->size(); ++i) {
-		if (par->isNewline(i))
+	for (; i < par.size(); ++i) {
+		if (par.isNewline(i))
 			return i;
 	}
 
-	return par->size();
+	return par.size();
 }
 
 };
@@ -766,7 +766,7 @@ LyXText::rowBreakPoint(Row const & row) const
 	LyXLayout_ptr const & layout = pit->layout();
 
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX)
-		return addressBreakPoint(row.pos(), &*pit);
+		return addressBreakPoint(row.pos(), *pit);
 
 	pos_type const pos = row.pos();
 	pos_type const body_pos = pit->beginningOfBody();
@@ -1099,12 +1099,12 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		{
 			if (layout->isParagraph()
 				&& firstpit->getDepth() == 0
-				&& firstpit->previous())
+				&& firstpit != ownerParagraphs().begin())
 			{
 				maxasc += bv()->buffer()->params.getDefSkip().inPixels(*bv());
-			} else if (firstpit->previous() &&
-				   firstpit->previous()->layout()->isParagraph() &&
-				   firstpit->previous()->getDepth() == 0)
+			} else if (firstpit != ownerParagraphs().begin() &&
+				   boost::prior(firstpit)->layout()->isParagraph() &&
+				   boost::prior(firstpit)->getDepth() == 0)
 			{
 				// is it right to use defskip here too? (AS)
 				maxasc += bv()->buffer()->params.getDefSkip().inPixels(*bv());
@@ -1112,7 +1112,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		}
 
 		// the top margin
-		if (!rit->par()->previous() && !isInInset())
+		if (rit->par() == ownerParagraphs().begin() && !isInInset())
 			maxasc += PAPER_MARGIN;
 
 		// add the vertical spaces, that the user added
@@ -1207,13 +1207,13 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 			if (prev)  {
 				maxasc += int(prev->layout()->parsep * defaultRowHeight());
 			} else {
-				if (firstpit->previous() &&
-					firstpit->previous()->getDepth() == 0 &&
-					firstpit->previous()->layout() !=
+				if (firstpit != ownerParagraphs().begin() &&
+				    boost::prior(firstpit)->getDepth() == 0 &&
+				    boost::prior(firstpit)->layout() !=
 					firstpit->layout())
 				{
 					// avoid parsep
-				} else if (firstpit->previous()) {
+				} else if (firstpit != ownerParagraphs().begin()) {
 					maxasc += int(layout->parsep * defaultRowHeight());
 				}
 			}
@@ -1532,7 +1532,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
 	if (cursor.pos() || isempty)
-		setCursor(cursor.par()->next(), 0);
+		setCursor(boost::next(cursor.par()), 0);
 	else
 		setCursor(cursor.par(), 0);
 
@@ -1547,7 +1547,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 void LyXText::redoParagraph()
 {
 	clearSelection();
-	redoParagraphs(cursor, cursor.par()->next());
+	redoParagraphs(cursor, boost::next(cursor.par()));
 	setCursorIntern(cursor.par(), cursor.pos());
 }
 
@@ -1757,7 +1757,7 @@ void LyXText::insertChar(char c)
 
 		setCursor(cursor.par(), cursor.pos() + 1, false,
 			  cursor.boundary());
-		if (isBoundary(bv()->buffer(), &*cursor.par(), cursor.pos())
+		if (isBoundary(bv()->buffer(), *cursor.par(), cursor.pos())
 		    != cursor.boundary())
 			setCursor(cursor.par(), cursor.pos(), false,
 			  !cursor.boundary());
@@ -2007,8 +2007,8 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur)
 		|| cur.par()->isHfill(cur.pos() - 1))) {
 		cur.pos(cur.pos() - 1);
 	} else if (!cur.pos()) {
-		if (cur.par()->previous()) {
-			cur.par(cur.par()->previous());
+		if (cur.par() != ownerParagraphs().begin()) {
+			cur.par(boost::prior(cur.par()));
 			cur.pos(cur.par()->size());
 		}
 	} else {		// Here, cur != 0
@@ -2111,7 +2111,7 @@ void LyXText::acceptChange()
 		startc.par()->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
 		clearSelection();
-		redoParagraphs(startc, startc.par()->next());
+		redoParagraphs(startc, boost::next(startc.par()));
 		setCursorIntern(startc.par(), 0);
 	}
 #warning handle multi par selection
@@ -2166,7 +2166,7 @@ LyXText::selectNextWordToSpellcheck(float & value)
 	// If this is not the very first word, skip rest of
 	// current word because we are probably in the middle
 	// of a word if there is text here.
-	if (cursor.pos() || cursor.par()->previous()) {
+	if (cursor.pos() || cursor.par() != ownerParagraphs().begin()) {
 		while (cursor.pos() < cursor.par()->size()
 		       && cursor.par()->isLetter(cursor.pos()))
 			cursor.pos(cursor.pos() + 1);
@@ -2390,8 +2390,9 @@ void LyXText::Delete()
 
 	LyXCursor old_cursor = cursor;
 	int const old_cur_par_id = old_cursor.par()->id();
-	int const old_cur_par_prev_id = old_cursor.par()->previous() ?
-		old_cursor.par()->previous()->id() : -1;
+	int const old_cur_par_prev_id =
+		(old_cursor.par() != ownerParagraphs().begin() ?
+		 boost::prior(old_cursor.par())->id() : -1);
 
 	// just move to the right
 	cursorRight(bv());
@@ -2402,7 +2403,7 @@ void LyXText::Delete()
 	// and that can very well delete the par or par->previous in
 	// old_cursor. Will a solution where we compare paragraph id's
 	//work better?
-	if ((cursor.par()->previous() ? cursor.par()->previous()->id() : -1)
+	if ((cursor.par() != ownerParagraphs().begin() ? boost::prior(cursor.par())->id() : -1)
 	    == old_cur_par_prev_id
 	    && cursor.par()->id() != old_cur_par_id) {
 		// delete-empty-paragraph-mechanism has done it
@@ -2448,15 +2449,15 @@ void LyXText::backspace()
 			// left and let the DeleteEmptyParagraphMechanism handle the actual deletion
 			// of the paragraph.
 
-			if (cursor.par()->previous()) {
-				Paragraph * tmppar = cursor.par()->previous();
-				if (cursor.par()->layout() == tmppar->layout()
-				    && cursor.par()->getAlign() == tmppar->getAlign()) {
+			if (cursor.par() != ownerParagraphs().begin()) {
+				ParagraphList::iterator tmppit = boost::prior(cursor.par());
+				if (cursor.par()->layout() == tmppit->layout()
+				    && cursor.par()->getAlign() == tmppit->getAlign()) {
 					// Inherit bottom DTD from the paragraph below.
 					// (the one we are deleting)
-					tmppar->params().lineBottom(cursor.par()->params().lineBottom());
-					tmppar->params().spaceBottom(cursor.par()->params().spaceBottom());
-					tmppar->params().pagebreakBottom(cursor.par()->params().pagebreakBottom());
+					tmppit->params().lineBottom(cursor.par()->params().lineBottom());
+					tmppit->params().spaceBottom(cursor.par()->params().spaceBottom());
+					tmppit->params().pagebreakBottom(cursor.par()->params().pagebreakBottom());
 				}
 
 				cursorLeft(bv());
@@ -2471,9 +2472,10 @@ void LyXText::backspace()
 			}
 		}
 
-		if (cursor.par()->previous()) {
+		if (cursor.par() != ownerParagraphs().begin()) {
 			setUndo(bv(), Undo::DELETE,
-				cursor.par()->previous(), cursor.par()->next());
+				&*boost::prior(cursor.par()),
+				&*boost::next(cursor.par()));
 		}
 
 		ParagraphList::iterator tmppit = cursor.par();
@@ -2715,7 +2717,7 @@ void LyXText::backspace()
 	// current_font = rawtmpfont;
 	// real_current_font = realtmpfont;
 
-	if (isBoundary(bv()->buffer(), &*cursor.par(), cursor.pos())
+	if (isBoundary(bv()->buffer(), *cursor.par(), cursor.pos())
 	    != cursor.boundary())
 		setCursor(cursor.par(), cursor.pos(), false,
 			  !cursor.boundary());

@@ -889,17 +889,18 @@ void LyXText::cursorEnd()
 
 void LyXText::cursorTop()
 {
-	while (cursor.par()->previous())
-		cursor.par(cursor.par()->previous());
-	setCursor(cursor.par(), 0);
+	setCursor(ownerParagraphs().begin(), 0);
 }
 
 
 void LyXText::cursorBottom()
 {
-	while (cursor.par()->next())
-		cursor.par(cursor.par()->next());
-	setCursor(cursor.par(), cursor.par()->size());
+#warning FIXME
+	// This is how it should be:
+	// ParagraphList::iterator lastpit = boost::prior(ownerParagraphs().end());
+	ParagraphList::iterator lastpit = &ownerParagraphs().back();
+	int pos = lastpit->size();
+	setCursor(lastpit, pos);
 }
 
 
@@ -987,21 +988,22 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 	}
 
 	// make sure that the depth behind the selection are restored, too
-	Paragraph * endpar = selection.end.par()->next();
-	Paragraph * undoendpar = endpar;
+	ParagraphList::iterator endpit = boost::next(selection.end.par());
+	ParagraphList::iterator undoendpit = endpit;
 
-	if (endpar && endpar->getDepth()) {
-		while (endpar && endpar->getDepth()) {
-			endpar = endpar->next();
-			undoendpar = endpar;
+	if (endpit != ownerParagraphs().end() && endpit->getDepth()) {
+		while (endpit != ownerParagraphs().end() &&
+		       endpit->getDepth()) {
+			++endpit;
+			undoendpit = endpit;
 		}
 	}
-	else if (endpar) {
+	else if (endpit != ownerParagraphs().end()) {
 		// because of parindents etc.
-		endpar = endpar->next();
+		++endpit;
 	}
 
-	setUndo(bv(), Undo::EDIT, &*selection.start.par(), undoendpar);
+	setUndo(bv(), Undo::EDIT, &*selection.start.par(), &*undoendpit);
 
 
 	ParagraphList::iterator tmppit = selection.end.par();
@@ -1032,7 +1034,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 		tmppit = boost::prior(cursor.par());
 	}
 
-	redoParagraphs(selection.start, endpar);
+	redoParagraphs(selection.start, endpit);
 
 	clearSelection();
 	setCursor(selection.start.par(), selection.start.pos());
@@ -1858,7 +1860,7 @@ void LyXText::setCurrentFont()
 	real_current_font = getFont(bv()->buffer(), cursor.par(), pos);
 
 	if (cursor.pos() == cursor.par()->size() &&
-	    isBoundary(bv()->buffer(), &*cursor.par(), cursor.pos()) &&
+	    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos()) &&
 	    !cursor.boundary()) {
 		Language const * lang =
 			cursor.par()->getParLanguage(bv()->buffer()->params);
@@ -1964,7 +1966,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		bool const rtl = (bidi_level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isBoundary(bv()->buffer(), &*rit->par(), c);
+			boundary = isBoundary(bv()->buffer(), *rit->par(), c);
 		}
 	}
 
@@ -2052,11 +2054,11 @@ void LyXText::cursorLeft(bool internal)
 		bool boundary = cursor.boundary();
 		setCursor(cursor.par(), cursor.pos() - 1, true, false);
 		if (!internal && !boundary &&
-		    isBoundary(bv()->buffer(), &*cursor.par(), cursor.pos() + 1))
+		    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos() + 1))
 			setCursor(cursor.par(), cursor.pos() + 1, true, true);
-	} else if (cursor.par()->previous()) { // steps into the above paragraph.
-		Paragraph * par = cursor.par()->previous();
-		setCursor(par, par->size());
+	} else if (cursor.par() != ownerParagraphs().begin()) { // steps into the above paragraph.
+		ParagraphList::iterator pit = boost::prior(cursor.par());
+		setCursor(pit, pit->size());
 	}
 }
 
@@ -2072,7 +2074,7 @@ void LyXText::cursorRight(bool internal)
 	else if (!at_end) {
 		setCursor(cursor.par(), cursor.pos() + 1, true, false);
 		if (!internal &&
-		    isBoundary(bv()->buffer(), &*cursor.par(), cursor.pos()))
+		    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos()))
 			setCursor(cursor.par(), cursor.pos(), true, true);
 	} else if (cursor.par()->next())
 		setCursor(cursor.par()->next(), 0);
@@ -2132,8 +2134,8 @@ void LyXText::cursorUpParagraph()
 	if (cursor.pos() > 0) {
 		setCursor(cursor.par(), 0);
 	}
-	else if (cursor.par()->previous()) {
-		setCursor(cursor.par()->previous(), 0);
+	else if (cursor.par() != ownerParagraphs().begin()) {
+		setCursor(boost::prior(cursor.par()), 0);
 	}
 }
 
@@ -2242,7 +2244,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	}
 
 	// don't delete anything if this is the ONLY paragraph!
-	if (!old_cursor.par()->next() && !old_cursor.par()->previous())
+	if (ownerParagraphs().size() == 1)
 		return false;
 
 	// Do not delete empty paragraphs with keepempty set.
@@ -2257,9 +2259,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	// we can't possibly have deleted a paragraph before this point
 	bool deleted = false;
 
-	if ((old_cursor.par()->empty()
-	     || (old_cursor.par()->size() == 1
-		 && old_cursor.par()->isLineSeparator(0)))) {
+	if (old_cursor.par()->empty() ||
+	    (old_cursor.par()->size() == 1 &&
+	     old_cursor.par()->isLineSeparator(0))) {
 		// ok, we will delete anything
 		LyXCursor tmpcursor;
 
@@ -2272,12 +2274,10 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			Paragraph * endpar = old_cursor.par()->next();
-#warning FIXME This if clause looks very redundant. (Lgb)
-			if (endpar && endpar->getDepth()) {
-				while (endpar && endpar->getDepth()) {
-					endpar = endpar->next();
-				}
+			while (endpar && endpar->getDepth()) {
+				endpar = endpar->next();
 			}
+
 			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), endpar);
 			cursor = tmpcursor;
 
@@ -2307,11 +2307,10 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			Paragraph * endpar = old_cursor.par()->next();
-			if (endpar && endpar->getDepth()) {
-				while (endpar && endpar->getDepth()) {
-					endpar = endpar->next();
-				}
+			while (endpar && endpar->getDepth()) {
+				endpar = endpar->next();
 			}
+
 			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), endpar);
 			cursor = tmpcursor;
 

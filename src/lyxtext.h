@@ -353,10 +353,10 @@ public:
 	void setCurrentFont();
 
 	///
-	bool isBoundary(Buffer const *, Paragraph * par,
+	bool isBoundary(Buffer const *, Paragraph const & par,
 			lyx::pos_type pos) const;
 	///
-	bool isBoundary(Buffer const *, Paragraph * par,
+	bool isBoundary(Buffer const *, Paragraph const & par,
 			 lyx::pos_type pos,
 			 LyXFont const & font) const;
 

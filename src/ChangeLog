@@ -1,3 +1,32 @@
+2003-04-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (cursorTop): simplify implementation
+	(cursorBottom): ditto
+	(setParagraph): use ParagraphList::iterator
+	(setCurrentFont): adjust
+	(getColumnNearX): adjust
+	(cursorRight): adjust
+	(cursorLeft): remove usage of Paragraph::previous
+	(cursorUpParagraph): ditto
+	(deleteEmptyParagraphMechanism): slight cleanup
+
+	* text.C (isBoundary): take a Paragraph const & instead of a
+	pointer as arg.
+	(addressBreakPoint): ditto
+	(leftMargin): remove usage of Paragraph::previous.
+	(setHeightOfRow): ditto
+	(cursorLeftOneWord): ditto
+	(selectNextWordToSpellcheck): ditto
+	(Delete): ditto
+	(backspace): ditto
+	(breakParagraph): remove one usage of Paragraph::next
+	(redoParagraph): ditto
+	(acceptChange): ditto
+	(insertChar): adjust
+	(rowBreakPoint): adjust
+
+	* bufferview_funcs.C (toggleAndShow): adjust
+
 2003-04-11  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyxrow.[Ch]: add a cached y position to a Row and Row::y()
