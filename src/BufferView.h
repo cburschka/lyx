@@ -144,7 +144,7 @@ public:
 	WordLangTuple const nextWord(float & value);
 
 	/// move cursor to the named label
-	bool gotoLabel(string const & label);
+	void gotoLabel(string const & label);
 
 	/// copy the environment type from current paragraph
 	void copyEnvironment();

@@ -1982,9 +1982,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::MULTICOLUMN:
 	{
 		if (sel_row_start != sel_row_end) {
-			Alert::alert(_("Impossible operation!"),
-				   _("Multicolumns can only be horizontally."),
-				   _("Sorry."));
+#ifdef WITH_WARNINGS
+#warning Need I say it ? This is horrible.
+#endif
+			Alert::error(_("Error setting multicolumn"),
+				   _("You cannot set multicolumn vertically."));
 			return;
 		}
 		// just multicol for one Single Cell

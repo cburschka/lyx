@@ -42,10 +42,13 @@ int LyXReplace(BufferView * bv,
 	// CutSelection cannot cut a single space, so we have to stop
 	// in order to avoid endless loop :-(
 	if (searchstr.length() == 0
-		|| (searchstr.length() == 1 && searchstr[0] == ' '))
-	{
-		Alert::alert(_("Sorry!"), _("You cannot replace a single space, "
-					  "nor an empty character."));
+		|| (searchstr.length() == 1 && searchstr[0] == ' ')) {
+#ifdef WITH_WARNINGS
+#warning BLECH. If we have an LFUN for replace, we can fix this bogosity
+#endif
+		Alert::error(_("Cannot replace"),
+			_("You cannot replace a single space or "
+			  "an empty character."));
 		return 0;
 	}
 

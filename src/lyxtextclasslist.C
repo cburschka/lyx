@@ -71,7 +71,7 @@ public:
 
 
 // Reads LyX textclass definitions according to textclass config file
-bool LyXTextClassList::Read ()
+bool LyXTextClassList::Read()
 {
 	LyXLex lex(0, 0);
 	string real_file = LibFileSearch("", "textclass.lst");
@@ -82,10 +82,6 @@ bool LyXTextClassList::Read ()
 		lyxerr << "LyXTextClassList::Read: unable to find "
 			"textclass file  `" << MakeDisplayPath(real_file, 1000)
 		       << "'. Exiting." << endl;
-
-		Alert::alert(_("LyX wasn't able to find its layout descriptions!"),
-			   _("Check that the file \"textclass.lst\""),
-			   _("is installed correctly. Sorry, has to exit :-("));
 		return false;
 		// This causes LyX to end... Not a desirable behaviour. Lgb
 		// What do you propose? That the user gets a file dialog
@@ -142,9 +138,6 @@ bool LyXTextClassList::Read ()
 	if (classlist_.empty()) {
 		lyxerr << "LyXTextClassList::Read: no textclasses found!"
 		       << endl;
-		Alert::alert(_("LyX wasn't able to find any layout description!"),
-			   _("Check the contents of the file \"textclass.lst\""),
-			   _("Sorry, has to exit :-("));
 		return false;
 	}
 	// Ok everything loaded ok, now sort the list.

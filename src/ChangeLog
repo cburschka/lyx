@@ -1,6 +1,16 @@
 2003-03-29  John Levon  <levon@movementarian.org>
 
 	* BufferView.C:
+	* BufferView.h:
+	* BufferView_pimpl.C: Alert fixes
+
+	* Makefile.am:
+	* tabular.C:
+	* tabular-old.C: remove unused table compat reading
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* BufferView.C:
 	* buffer.C:
 	* lyx_cb.h:
 	* lyx_cb.C: more Alert cleanups

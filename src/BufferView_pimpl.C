@@ -1049,8 +1049,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		restorePosition(strToUnsignedInt(ev.argument));
 		break;
 
-	case LFUN_REF_GOTO:
-	{
+	case LFUN_REF_GOTO: {
 		string label = ev.argument;
 		if (label.empty()) {
 			InsetRef * inset =
@@ -1061,13 +1060,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			}
 		}
 
-		if (!label.empty()) {
-			//bv_->savePosition(0);
-			if (!bv_->gotoLabel(label))
-				Alert::alert(_("Error"),
-					   _("Couldn't find this label"),
-					   _("in current document."));
-		}
+		if (!label.empty())
+			bv_->gotoLabel(label);
 	}
 	break;
 

@@ -201,7 +201,6 @@ lyx_SOURCES = \
 	sgml.h \
 	tabular.C \
 	tabular.h \
-	tabular-old.C \
 	tabular_funcs.C \
 	tabular_funcs.h \
 	tex-accent.C \

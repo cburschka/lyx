@@ -1102,17 +1102,15 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 	l_getline(is, line);
 	if (!prefixIs(line, "<lyxtabular ")
 		&& !prefixIs(line, "<LyXTabular ")) {
-		OldFormatRead(buf->params, lex, line);
+		lyx::Assert(false);
 		return;
 	}
 
 	int version;
 	if (!getTokenValue(line, "version", version))
 		return;
-	if (version == 1)
-		ReadOld(buf, is, lex, line);
-	else if (version >= 2)
-		ReadNew(buf, is, lex, line, version);
+	lyx::Assert(version >= 2);
+	read(buf, is, lex, line, version);
 }
 
 void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
@@ -1192,8 +1190,8 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 	}
 }
 
-void LyXTabular::ReadNew(Buffer const * buf, istream & is,
-			 LyXLex & lex, string const & l, int const version)
+void LyXTabular::read(Buffer const * buf, istream & is,
+                      LyXLex & lex, string const & l, int const version)
 {
 	string line(l);
 	int rows_arg;
@@ -1311,209 +1309,6 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 		l_getline(is, line);
 	}
 	set_row_column_number_info();
-}
-
-
-void LyXTabular::OldFormatRead(BufferParams const & bp,
-			       LyXLex & lex, string const & fl)
-{
-	int version;
-	int i;
-	int j;
-	int rows_arg = 0;
-	int columns_arg = 0;
-	int is_long_tabular_arg = false;
-	int rotate_arg = false;
-	int a = -1;
-	int b = -1;
-	int c = -1;
-	int d = -1;
-	int e = 0;
-	int f = 0;
-	int g = 0;
-
-	istream & is = lex.getStream();
-	string s(fl);
-	if (s.length() > 8)
-		version = lyx::atoi(s.substr(8, string::npos));
-	else
-		version = 1;
-
-	vector<int> cont_row_info;
-
-	if (version < 5) {
-		lyxerr << "Tabular format < 5 is not supported anymore\n"
-			"Get an older version of LyX (< 1.1.x) for conversion!"
-			   << endl;
-		Alert::alert(_("Warning:"),
-				   _("Tabular format < 5 is not supported anymore\n"),
-				   _("Get an older version of LyX (< 1.1.x) for conversion!"));
-		if (version > 2) {
-			is >> rows_arg >> columns_arg >> is_long_tabular_arg
-			   >> rotate_arg >> a >> b >> c >> d;
-		} else
-			is >> rows_arg >> columns_arg;
-		Init(bp, rows_arg, columns_arg);
-		cont_row_info = vector<int>(rows_arg);
-		SetLongTabular(is_long_tabular_arg);
-		SetRotateTabular(rotate_arg);
-		string tmp;
-		for (i = 0; i < rows_; ++i) {
-			getline(is, tmp);
-			cont_row_info[i] = false;
-		}
-		for (i = 0; i < columns_; ++i) {
-			getline(is, tmp);
-		}
-		for (i = 0; i < rows_; ++i) {
-			for (j = 0; j < columns_; ++j) {
-				getline(is, tmp);
-			}
-		}
-	} else {
-		is >> rows_arg >> columns_arg >> is_long_tabular_arg
-		   >> rotate_arg >> a >> b >> c >> d;
-		Init(bp, rows_arg, columns_arg);
-		cont_row_info = vector<int>(rows_arg);
-		SetLongTabular(is_long_tabular_arg);
-		SetRotateTabular(rotate_arg);
-		setHeaderFooterRows(a+1, b+1 , c+1, d+1);
-		for (i = 0; i < rows_; ++i) {
-			a = b = c = d = e = f = g = 0;
-			is >> a >> b >> c >> d;
-			row_info[i].top_line = a;
-			row_info[i].bottom_line = b;
-			cont_row_info[i] = c;
-			row_info[i].newpage = d;
-		}
-		for (i = 0; i < columns_; ++i) {
-			string s1;
-			string s2;
-			is >> a >> b >> c;
-#if 1
-			char ch; // skip '"'
-			is >> ch;
-#else
-			// ignore is buggy but we will use it later (Lgb)
-			is.ignore(); // skip '"'
-#endif
-			getline(is, s1, '"');
-#if 1
-			is >> ch; // skip '"'
-#else
-			// ignore is buggy but we will use it later (Lgb)
-			is.ignore(); // skip '"'
-#endif
-			getline(is, s2, '"');
-			column_info[i].alignment = static_cast<LyXAlignment>(a);
-			column_info[i].left_line = b;
-			column_info[i].right_line = c;
-			column_info[i].p_width = LyXLength(s1);
-			column_info[i].align_special = s2;
-		}
-		for (i = 0; i < rows_; ++i) {
-			for (j = 0; j < columns_; ++j) {
-				string s1;
-				string s2;
-				is >> a >> b >> c >> d >> e >> f >> g;
-#if 1
-				char ch;
-				is >> ch; // skip '"'
-#else
-				// ignore is buggy but we will use it later (Lgb)
-				is.ignore(); // skip '"'
-#endif
-				getline(is, s1, '"');
-#if 1
-				is >> ch; // skip '"'
-#else
-				// ignore is buggy but we will use it later (Lgb)
-				is.ignore(); // skip '"'
-#endif
-				getline(is, s2, '"');
-				cell_info[i][j].multicolumn = static_cast<char>(a);
-				cell_info[i][j].alignment = static_cast<LyXAlignment>(b);
-				cell_info[i][j].top_line = static_cast<char>(c);
-				cell_info[i][j].bottom_line = static_cast<char>(d);
-				cell_info[i][j].left_line = column_info[j].left_line;
-				cell_info[i][j].right_line = column_info[j].right_line;
-				cell_info[i][j].rotate = static_cast<bool>(f);
-				cell_info[i][j].usebox = static_cast<BoxType>(g);
-				cell_info[i][j].align_special = s1;
-				cell_info[i][j].p_width = LyXLength(s2);
-			}
-		}
-	}
-	set_row_column_number_info(true);
-
-	string tmptok;
-	Paragraph::depth_type depth = 0;
-
-	ParagraphList parlist;
-	ParagraphList::iterator pit = parlist.begin();
-       
-	while (lex.isOK()) {
-		lex.nextToken();
-		string const token = lex.getString();
-		if (token.empty())
-			continue;
-		if (token == "\\layout"
-			|| token == "\\end_float" // this should not exist anymore
-			|| token == "\\end_inset" // as it is substituted by this
-			|| token == "\\end_deeper")
-		{
-			lex.pushToken(token);
-			break;
-		}
-
-		if (token == "\\the_end") {
-			lex.pushToken(token);
-			break;
-		}
-
-		owner_->bufferOwner()->readParagraph(lex, token, parlist, pit, depth);
-	}
-
-	Paragraph * par = &(*parlist.begin());
-
-	// now we have the par we should fill the insets with this!
-	int cell = 0;
-	InsetText * inset = GetCellInset(cell);
-	int row;
-
-	for (int i = 0; i < par->size(); ++i) {
-		if (par->isNewline(i)) {
-			++cell;
-			if (cell > numberofcells) {
-				lyxerr << "Some error in reading old table format occured!" <<
-					endl << "Terminating when reading cell[" << cell << "]!" <<
-					endl;
-				delete par;
-				return;
-			}
-			row = row_of_cell(cell);
-			if (cont_row_info[row]) {
-				DeleteRow(row);
-				cont_row_info.erase(cont_row_info.begin() + row); //&cont_row_info[row]);
-				while (!IsFirstCellInRow(--cell));
-			} else {
-				inset = GetCellInset(cell);
-				continue;
-			}
-			inset = GetCellInset(cell);
-			row = row_of_cell(cell);
-			if (!cell_info[row_of_cell(cell)][column_of_cell(cell)].usebox)
-			{
-				// insert a space instead
-				par->erase(i);
-				par->insertChar(i, ' ');
-			}
-		}
-		par->copyIntoMinibuffer(*owner_->bufferOwner(), i);
-		inset->paragraph()->insertFromMinibuffer(inset->paragraph()->size());
-	}
-	delete par;
-	Reinit();
 }
 
 

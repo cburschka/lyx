@@ -105,9 +105,9 @@ void LyXVC::registrer()
 
 	// there must be a file to save
 	if (!IsFileReadable(filename)) {
-		Alert::alert(_("File not saved"),
-			_("You must save the file"),
-			_("before it can be registered."));
+		Alert::error(_("Document not saved"),
+			_("You must save the document "
+			  "before it can be registered."));
 		return;
 	}
 
@@ -145,8 +145,6 @@ void LyXVC::registrer()
 	if (!tmp.first || tmp.second.empty()) {
 		// should we insist on checking tmp.second.empty()?
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
-		Alert::alert(_("Info"),
-			   _("This document has NOT been registered."));
 		return;
 	}
 

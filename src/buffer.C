@@ -292,7 +292,7 @@ int Buffer::readHeader(LyXLex & lex)
 			if (unknown[0] != '\\') {
 				unknownClass(unknown);
 			} else {
-			++unknown_tokens;
+				++unknown_tokens;
 			}
 		}
 	}
@@ -812,9 +812,6 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 	/* noindent ? */
 
 	/* what about the alignment */
-//	} else {
-//		lyxerr << "Should this ever happen?" << endl;
-//	}
 
 	// linelen <= 0 is special and means we don't have paragraph breaks
 

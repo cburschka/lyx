@@ -290,8 +290,6 @@ public:
 	///
 	void Read(Buffer const *, LyXLex &);
 	///
-	void OldFormatRead(BufferParams const &, LyXLex &, string const &);
-	///
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
 	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
@@ -483,11 +481,9 @@ private:
 	typedef std::vector<columnstruct> column_vector;
 
 	///
-	void ReadNew(Buffer const * buf, std::istream & is,
-				 LyXLex & lex, string const & l, int const version);
+	void read(Buffer const * buf, std::istream & is,
+	          LyXLex & lex, string const & l, int const version);
 	///
-	void ReadOld(Buffer const * buf, std::istream & is,
-				 LyXLex & lex, string const & l);
 	///
 	int rows_;
 	///
