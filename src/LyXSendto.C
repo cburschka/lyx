@@ -36,7 +36,7 @@ void MenuSendto()
         fl_raise_form(fd_form_sendto->form_sendto);
     } else {  
         fl_show_form(fd_form_sendto->form_sendto,
-                     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+		     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
                      _("Send Document to Command"));
 	if (ow < 0) {
 		ow = fd_form_sendto->form_sendto->w;

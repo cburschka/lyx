@@ -34,7 +34,7 @@ private:
 	virtual void disconnect();
 
 	/// Slot launching dialog to an existing inset
-	void showInset( InsetError * );
+	void showInset(InsetError *);
 	/// Update dialog before showing it
 	virtual void update();
 	/// Build the dialog

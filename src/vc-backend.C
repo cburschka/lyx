@@ -12,6 +12,7 @@
 #include "support/LRegex.h"
 #include "support/LSubstring.h"
 #include "support/path.h"
+#include "support/filetools.h"
 #include "buffer.h"
 #include "LyXView.h"
 #include "lyxfunc.h"

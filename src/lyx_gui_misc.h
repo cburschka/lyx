@@ -26,8 +26,6 @@ class MiniBuffer;
 
 /// Prevents LyX from being killed when the close box is pressed in a popup.
 extern "C" int CancelCloseBoxCB(FL_FORM *, void *);
-/// Prevents LyX from being killed when the close box is pressed in a popup.
-extern "C" int IgnoreCloseBoxCB(FL_FORM *, void *);
 
 /// Prevents LyX from crashing when no buffers available
 void CloseAllBufferRelatedDialogs();

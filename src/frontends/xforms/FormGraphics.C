@@ -56,7 +56,13 @@ FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
 
 FormGraphics::~FormGraphics()
 {
-	free();
+	// Remove all associations for the radio buttons
+	widthButtons.reset();
+	heightButtons.reset();
+	displayButtons.reset();
+	
+	// Free the form.
+	delete dialog_;
 }
 
 
@@ -169,20 +175,6 @@ void FormGraphics::showDialog(InsetGraphics * inset)
 
 	ih_ = inset_->hide.connect(slot(this, &FormGraphics::hide));
 	show();
-}
-
-
-void FormGraphics::free()
-{
-	// Remove all associations for the radio buttons
-	widthButtons.reset();
-	heightButtons.reset();
-	displayButtons.reset();
-
-	
-	// Free the form.
-	delete dialog_;
-	dialog_ = 0;
 }
 
 

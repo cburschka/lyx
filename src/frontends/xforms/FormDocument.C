@@ -108,15 +108,15 @@ void FormDocument::build()
 		      "| A4 small Margins (only portrait) "
 		      "| A4 very small Margins (only portrait) "
 		      "| A4 very wide margins (only portrait) "));
-    fl_set_input_return(paper_->input_custom_width, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_custom_height, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_top_margin, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_bottom_margin, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_left_margin, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_right_margin, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_head_height, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_head_sep, FL_RETURN_ALWAYS);
-    fl_set_input_return(paper_->input_foot_skip, FL_RETURN_ALWAYS);
+    fl_set_input_return(paper_->input_custom_width, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_custom_height, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_top_margin, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_bottom_margin, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_left_margin, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_right_margin, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_head_height, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_head_sep, FL_RETURN_CHANGED);
+    fl_set_input_return(paper_->input_foot_skip, FL_RETURN_CHANGED);
 
     bc_.addReadOnly (paper_->choice_paperpackage);
     bc_.addReadOnly (paper_->greoup_radio_orientation);
@@ -170,8 +170,9 @@ void FormDocument::build()
 		    "default|empty|plain|headings|fancy");
     fl_addto_choice(class_->choice_doc_skip,
 		    _(" Smallskip | Medskip | Bigskip | Length "));
-    fl_set_input_return(class_->input_doc_skip, FL_RETURN_ALWAYS);
-    fl_set_input_return(class_->input_doc_spacing, FL_RETURN_ALWAYS);
+    fl_set_input_return(class_->input_doc_extra, FL_RETURN_CHANGED);
+    fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
+    fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
 
     bc_.addReadOnly (class_->radio_doc_indent);
     bc_.addReadOnly (class_->radio_doc_skip);
@@ -223,6 +224,7 @@ void FormDocument::build()
 
     // the document options form
     options_ = build_doc_options();
+    fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
     fl_set_counter_bounds(options_->slider_secnumdepth,-2,5);
     fl_set_counter_bounds(options_->slider_tocdepth,-1,5);
     fl_set_counter_step(options_->slider_secnumdepth,1,1);

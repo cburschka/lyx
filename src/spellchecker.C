@@ -280,7 +280,7 @@ void SpellCheckerOptions()
 		fl_raise_form(fd_form_spell_options->form_spell_options);
 	} else {
 		fl_show_form(fd_form_spell_options->form_spell_options,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Spellchecker Options"));
 	}
 }
@@ -709,7 +709,7 @@ void ShowSpellChecker(BufferView * bv)
 		fl_raise_form(fd_form_spell_check->form_spell_check);
 	} else {
 		fl_show_form(fd_form_spell_check->form_spell_check,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Spellchecker"));
 	}
 	fl_deactivate_object(fd_form_spell_check->slider); 

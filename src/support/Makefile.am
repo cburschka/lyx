@@ -64,6 +64,7 @@ libsupport_la_SOURCES = \
 	syscontr.C \
 	syscontr.h \
 	syssingleton.C \
+	tempname.C \
 	translator.h \
 	textutils.h \
 	unlink.C

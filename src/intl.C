@@ -357,6 +357,7 @@ void Intl::MenuKeymap()
 {
 	if (fd_form_keymap->KeyMap->visible) {
 		fl_raise_form(fd_form_keymap->KeyMap);
-	} else fl_show_form(fd_form_keymap->KeyMap, FL_PLACE_MOUSE,
-			    FL_FULLBORDER, _("Key Mappings"));
+	} else fl_show_form(fd_form_keymap->KeyMap,
+			    FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+			    _("Key Mappings"));
 }

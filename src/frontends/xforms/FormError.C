@@ -19,11 +19,14 @@
 #include "FormError.h"
 #include "form_error.h"
 #include "insets/inseterror.h"
+#include "support/LAssert.h"
 
-FormError::FormError( LyXView * lv, Dialogs * d )
-	: FormInset( lv, d, _("LaTeX Error") ),
+
+FormError::FormError(LyXView * lv, Dialogs * d)
+	: FormInset( lv, d, _("LaTeX Error")),
 	  dialog_(0), inset_(0)
 {
+	Assert(lv && d);
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
@@ -39,7 +42,7 @@ FormError::~FormError()
 
 FL_FORM * FormError::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_) return dialog_->form;
 	return 0;
 }
 
@@ -52,9 +55,9 @@ void FormError::disconnect()
 }
 
 
-void FormError::showInset( InsetError * inset )
+void FormError::showInset(InsetError * inset)
 {
-	if (inset == 0) return;
+	if (inset == 0) return; // Is this _really_ allowed? (Lgb)
 
 	// If connected to another inset, disconnect from it.
 	if (inset_)

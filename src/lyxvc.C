@@ -14,6 +14,7 @@
 #include "buffer.h"
 #include "gettext.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
 
@@ -279,7 +280,7 @@ void LyXVC::viewLog(string const & fil)
 		fl_raise_form(browser->LaTeXLog);
 	} else {
 		fl_show_form(browser->LaTeXLog,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("VC History"));
 		if (ow < 0) {
 			ow = browser->LaTeXLog->w;
@@ -292,7 +293,7 @@ void LyXVC::viewLog(string const & fil)
 
 void LyXVC::showLog()
 {
-	string tmpf = tmpnam(0);
+	string tmpf = lyx::tempName();
 	vcs->getLog(tmpf);
 	viewLog(tmpf);
 	lyx::unlink(tmpf);

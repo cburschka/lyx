@@ -33,7 +33,7 @@ int fl_lowercase_filter(FL_OBJECT * ob,
 			int c)
 {
 	if (c == 0 /* final test before handing contents to app */
-	    || strchr("abcdefghijklmnopqrstuvwxyz", c)) {
+	    || strchr("abcdefghijklmnopqrstuvwxyz0123456789", c)) {
 		/* since we only accept numerals then it must be valid */
 		return FL_VALID;
 	}

@@ -1,3 +1,134 @@
+2000-11-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (DirList): implement using system functions
+
+	* src/support/tempname.C: new file
+
+	* src/support/Makefile.am (libsupport_la_SOURCES): add tempname.C
+
+	* src/insets/insetexternal.C (InsetExternal): use lyx::tempName
+
+	* src/graphics/GraphicsCacheItem_pimpl.C (renderXPM): use
+	lyx::tempName 
+
+	* src/frontends/xforms/ButtonController.C: new file
+
+	* src/os2_defines.h: remove getcwd define
+
+	* src/lyxvc.C: include support/lyxlib.h
+	(showLog): use lyx::tempName
+
+	* src/lyx_cb.C: comment out includes that we don't need
+	(AutoSave): use lyx::tempName
+
+	* src/filedlg.C: include support/lyxlib.h
+	(Reread): use lyx::getcwd
+
+	* src/converter.C: include support/filetools.h
+	(add_options): change to static inline, make tail const
+	(Add): make old_viewer const
+	(GetAllFormats): make it a const method, use const_iterator
+	(enable): make static inline
+	(SplitFormat): make using_format const
+
+	* src/LaTeX.C (run): use lyx::getcwd
+
+	* configure.in: check for mkstemp as well 
+
+2000-11-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/converter.[Ch] (GetAllCommands): new method.
+
+	* src/support/filetools.[Ch] (DirList): new method.
+
+	* src/frontends/xforms/FormPreferences.C: started (just!) adding
+	functionality to the converters tab.
+	The formats tab is now nearly complete.
+	The kbmap choices in Languages tab now display the contents of
+	system_lyxdir/kbd/*.kmap in readable form.
+
+	* src/frontends/xforms/FormPreferences.h: made struct RGB private.
+	Moved some variables into the class.
+
+	* src/frontends/xforms/forms/form_preferences.fd: Revert colour of
+	inactive tab folder to FL_COL1. Haven't yet worked out how to change
+	colour of active folder to lighter grey instead. Any takers?
+	(form_colours): added an "Apply" button.
+	(form_converters): added a "Flags" input field.
+	(form_formats): added a "Shortcut" input field. Note that we can't use
+	names such as "input_shortcut" as this buggers up the sed script stuff.
+
+	* src/frontends/xforms/FormPreferences.C
+                                     
+2000-11-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/LaTeXLog.C:
+	* src/LyXSendto.C:
+	* src/credits.C:
+	* src/filedlg.C:
+	* src/intl.C:
+	* src/lyx_cb.C:
+	* src/lyx_sendfax_main.C:
+	* src/lyxfr0.C:
+	* src/lyxvc.C:
+	* src/spellchecker.C:
+	* src/insets/figinset.C:
+	* src/insets/insetbib.C:
+	* src/insets/insetexternal.C:
+	* src/insets/insetinclude.C:
+	* src/insets/insetinfo.C:
+	* src/mathed/math_panel.C:
+	use FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT in fl_show_form(), so
+	all "daughter" dialogs now have identical "feel".
+                                
+2000-11-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/lyx_gui_misc.[Ch] (IgnoreCloseBoxCB): removed as it's no longer
+	used (and was only used in one place prior to this patch. Incorrectly!)
+
+	* src/frontends/xforms/FormDocument.C: changed some instances of
+	FL_RETURN_ALWAYS to FL_RETURN_CHANGED as I think that this makes more
+	sense. Also added fl_set_input_return() for class_->input_doc_extra and
+	for options_->input_float_placement. This fixes a bug reported by
+	Rob Lahaye.
+
+	* src/frontends/xforms/FormGraphics.[Ch] (free): removed. Placed
+	functionality into d-tor.
+
+	* src/frontends/xforms/input_validators.c (fl_lowercase_filter): allow
+	input of numerals also.
+
+	* src/insets/insetinclude.C (Edit): use CancelCloseBoxCB in
+	fl_set_form_atclose(). Can now close dialog from window manager,
+	fixing a bug reported by Rob Lahaye.
+
+2000-11-06  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/forms/form_preferences.fd: Inactive tab folders
+	are no longer dark. Haven't yet worked out how to lighten the colour of
+	the active tabfolder. Any ideas anybody?
+	Adjusted Colours tab a little.
+	Added Shortcut field to converters tab. Note that we can't create an
+	fdesign label like "input_shortcut" as this buggers up the sed-script
+	stuff.
+
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	(feedback): fixed crash due to to ob=0.
+	(LanguagesXXX): the kbmap choices now contain the files
+	sytem_lyxdir/kbd/*.kmap. I think that these choices should eventually
+	be replaced by an input with a file browse button, but since the browse
+	buttons don'y yet work, this'll do for the moment.
+	(FormatsXXX): think that this is now nearly fully functional.
+	Some points/questions though:
+	1. Does "Apply" remove formats if no longer present?
+	2. I think that the browser should list the GUI names rather than the
+	   format names.
+	3. Must ensure that we can't delete Formats used by an existing
+	   Converter.
+
+	* src/support/filetools.[Ch] (DirList): new function. Not at all sure
+	if this is the best way to do this.
+                                                       
 2000-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/reLyX/acinclude.m4 (RELYX_CHECK_ERRORS): remove useless message.

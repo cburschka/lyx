@@ -24,6 +24,7 @@ using std::sort;
 
 #include "lyx_gui_misc.h" // CancelCloseCB
 #include "support/FileInfo.h"
+#include "support/lyxlib.h"
 #include "gettext.h"
 
 #ifdef HAVE_ERRNO_H
@@ -190,7 +191,7 @@ void LyXFileDlg::Reread()
 	if (!pDirectory) {
 		WriteFSAlert(_("Warning! Couldn't open directory."), 
 			     pszDirectory);
-		pszDirectory = GetCWD();
+		pszDirectory = lyx::getcwd(); //GetCWD();
 		pDirectory = ::opendir(pszDirectory.c_str());
 	}
 
@@ -700,8 +701,9 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 	fl_set_button(pFileDlgForm->Ready, 0);
 	fl_set_focus_object(pFileDlgForm->FileDlg, pFileDlgForm->Filename);
 	fl_deactivate_all_forms();
-	fl_show_form(pFileDlgForm->FileDlg, FL_PLACE_MOUSE | FL_FREE_SIZE,
-		     FL_FULLBORDER, title.c_str());
+	fl_show_form(pFileDlgForm->FileDlg, 
+		     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		     title.c_str());
 
 	isOk = RunDialog();
 	

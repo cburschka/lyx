@@ -17,10 +17,10 @@
 #include FORMS_H_LOCATION
 #include "lyx.h"
 #include "layout_forms.h"
-#include "form1.h"
+//#include "form1.h"
 #include "lyx_main.h"
 #include "lyx_cb.h"
-#include "insets/insetref.h"
+//#include "insets/insetref.h"
 #include "insets/insetlabel.h"
 #include "insets/figinset.h"
 #include "lyxfunc.h"
@@ -30,18 +30,19 @@
 #include "filedlg.h"
 #include "lyx_gui_misc.h"
 #include "LyXView.h"
-#include "BufferView.h"
+//#include "BufferView.h"
 #include "lastfiles.h"
 #include "bufferview_funcs.h"
 #include "support/FileInfo.h"
 #include "support/syscall.h"
 #include "support/filetools.h"
 #include "support/path.h"
-#include "lyxserver.h"
+//#include "support/lyxlib.h"
+//#include "lyxserver.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include "CutAndPaste.h"
-#include "exporter.h"
+//#include "CutAndPaste.h"
+//#include "exporter.h"
 
 using std::ifstream;
 using std::copy;
@@ -74,7 +75,7 @@ extern bool send_fax(string const & fname, string const & sendcmd);
 
 extern void MenuSendto();
 
-extern LyXServer * lyxserver;
+//extern LyXServer * lyxserver;
 
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
@@ -398,8 +399,6 @@ void AutoSave(BufferView * bv)
 	
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
-	string tmp_ret = tmpnam(0);
-	
 	pid_t pid = fork(); // If you want to debug the autosave
 	// you should set pid to -1, and comment out the
 	// fork.
@@ -408,6 +407,8 @@ void AutoSave(BufferView * bv)
 		// to fork. But we will do the save
 		// anyway.
 		bool failed = false;
+		
+		string tmp_ret = lyx::tempName();
 		if (!tmp_ret.empty()) {
 			bv->buffer()->writeFile(tmp_ret, 1);
 			// assume successful write of tmp_ret
@@ -573,7 +574,7 @@ void MenuLayoutCharacter()
 		fl_raise_form(fd_form_character->form_character);
 	} else {
 		fl_show_form(fd_form_character->form_character,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Character Style"));
 		if (ow < 0) {
 			ow = fd_form_character->form_character->w;
@@ -625,7 +626,7 @@ void MenuLayoutPreamble()
 		} else {
 			fl_show_form(fd_form_preamble->form_preamble,
 				     FL_PLACE_MOUSE | FL_FREE_SIZE,
-				     FL_FULLBORDER,
+				     FL_TRANSIENT,
 				     _("LaTeX Preamble"));
 			if (ow < 0) {
 				ow = fd_form_preamble->form_preamble->w;
@@ -821,7 +822,7 @@ void Figure()
 		fl_raise_form(fd_form_figure->form_figure);
 	} else {
 		fl_show_form(fd_form_figure->form_figure,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Insert Figure"));
 	}
 }

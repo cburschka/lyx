@@ -20,6 +20,7 @@
 #include "lyxrc.h"
 #include "support/syscall.h"
 #include "support/path.h"
+#include "support/filetools.h"
 #include "buffer.h"
 #include "bufferview_funcs.h"
 #include "LaTeX.h"
@@ -41,11 +42,11 @@ using std::find_if;
 vector<Command> Converter::commands;
 string Converter::latex_command;
 
-inline
+static inline
 string const add_options(string const & command, string const & options)
 {
 	string head;
-	string tail = split(command, head, ' ');
+	string const tail = split(command, head, ' ');
 	return head + ' ' + options + ' ' + tail;
 }
 
@@ -76,7 +77,7 @@ void Formats::Add(string const & name, string const & extension,
 		return;
 	}
 
-	string old_viewer = formats[name].viewer;
+	string const old_viewer = formats[name].viewer;
 	formats[name] = Format(name, extension, prettyname, shortcut,
 			       old_viewer);
 }
@@ -137,6 +138,8 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 }
 
 
+// This method should return a reference, and throw an exception
+// if the format named name cannot be found (Lgb)
 Format * Formats::GetFormat(string const & name)
 {
 	FormatList::iterator it = formats.find(name);
@@ -168,18 +171,20 @@ string const Formats::Extension(string const & name)
 
 
 vector<Format> 
-const Formats::GetAllFormats()
+const Formats::GetAllFormats() const
 {
 	vector<Format> result;
-	for (FormatList::iterator it = formats.begin(); 
-	     it != formats.end(); ++it)
-		result.push_back(it->second);
+	for (FormatList::const_iterator cit = formats.begin(); 
+	     cit != formats.end(); ++cit)
+		result.push_back(cit->second);
 	return result;
 }
 
 
 //////////////////////////////////////////////////////////////////////////////
 
+// Instead of storing an object we could just store an const reference.
+// _but_ that is not guaranteed to work in all cases. (Lgb)
 class compare_Command {
 public:
 	compare_Command(Command const & c) : com(c) {}
@@ -262,7 +267,7 @@ void Converter::Add(string const & from, string const & to,
 }
 
 
-inline
+static inline
 bool enable(vector<Command>::iterator it, string const & from)
 {
 	return find(it->disable.begin(), it->disable.end(), from)
@@ -575,7 +580,7 @@ bool Converter::Convert(Buffer const * buffer,
 
 string const Converter::SplitFormat(string const & str, string & format)
 {
-	string using_format = split(str, format, ':');
+	string const using_format = split(str, format, ':');
 	if (format.empty())
 		format = "dvi";
 	return using_format;
@@ -777,6 +782,16 @@ string const Converter::dvips_options(Buffer const * buffer)
 void Converter::init()
 {
 }
+
+vector<Command> const Converter::GetAllCommands()
+{
+	vector<Command> result;
+	for (vector<Command>::iterator it = commands.begin(); 
+	     it != commands.end(); ++it)
+		result.push_back(*it);
+	return result;
+}
+
 
 /// The global instance
 Formats formats;

@@ -90,7 +90,7 @@ void SearchForm::StartSearch(LyXFindReplace * lfr)
 		fl_raise_form(search_form->form_search);
 	} else {
 		fl_show_form(search_form->form_search,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Find & Replace"));	// RVDK_PATCH_5
 		if (ow < 0) {
 			ow = search_form->form_search->w;

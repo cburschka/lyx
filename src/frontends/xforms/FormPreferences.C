@@ -38,20 +38,21 @@ using SigC::slot;
 #endif
 
 using std::find;
+using std::find_if;
 using std::getline;
 using std::istream;
 using std::pair;
+using std::sort;
 using std::vector;
-using std::find_if;
 
 extern string fmt(char const * fmtstr ...);
+extern string system_lyxdir;
 extern Languages languages;
 
-typedef pair<string, FormPreferences::RGB> X11Colour;
-
-static vector<X11Colour> colourDB;
 static string const colourFile("/usr/lib/X11/rgb.txt");
-
+vector<FormPreferences::X11Colour> FormPreferences::colourDB;
+pair<vector<string>, vector<string> > FormPreferences::dirlist;
+    
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0),
@@ -261,13 +262,7 @@ void FormPreferences::apply()
 
 void FormPreferences::feedback( FL_OBJECT * ob )
 {
-	// Angus, do you really want to allow ob to be 0?
-	// You set this in feedbackPost.  Why?
-	if (!ob) return;  // stop a segfault below.
-	// an alternative to the above is to check feedbackObj in
-	// FeedbackCB and not call this function at all.  But that's a 
-	// matter of deciding who should be checking the parameters for this
-	// function.
+	if( !ob ) return;
 
 	string str;
 
@@ -307,6 +302,8 @@ void FormPreferences::feedback( FL_OBJECT * ob )
 
 bool FormPreferences::input(FL_OBJECT * ob, long)
 {
+	Assert(ob);
+	
 	// whatever checks you need to ensure the user hasn't entered
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
@@ -357,8 +354,7 @@ void FormPreferences::buildColours()
 {
 	colours_ = build_colours();
 
-	FL_OBJECT *obj;
-	obj = colours_->valslider_red;
+	FL_OBJECT * obj = colours_->valslider_red;
 	fl_set_slider_bounds(obj, 0, 255);
 	fl_set_slider_precision(obj, 0);
 	fl_set_slider_return(obj, FL_RETURN_END_CHANGED);
@@ -389,14 +385,17 @@ void FormPreferences::buildColours()
 }
 
 
-string const FormPreferences::feedbackColours( FL_OBJECT const * const ) const
+string const
+FormPreferences::feedbackColours(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
 	return string();
 }
 
 
 bool FormPreferences::inputColours( FL_OBJECT const * const ob )
 {
+	Assert(ob);
 	bool activate = true;
 	
 	if (ob == colours_->browser_x11) {
@@ -458,7 +457,7 @@ bool FormPreferences::ColoursLoadBrowser(string const & filename)
 			// remove redundant entries on the fly
 			bool add = cols.empty();
 			if (!add) {
-				vector<RGB>::const_iterator it =
+				vector<RGB>::const_iterator it = 
 					find( cols.begin(), cols.end(), col );
 				add = (it == cols.end());
 			}
@@ -533,14 +532,14 @@ int FormPreferences::ColoursSearchEntry(RGB const & col) const
 }
 
 
-void FormPreferences::ColoursUpdateBrowser( int i )
+void FormPreferences::ColoursUpdateBrowser(int i)
 {
 	fl_freeze_form(colours_->form);
 
 	RGB col = colourDB[i].second;
     
-	fl_mapcolor(FL_FREE_COL4+i, col.r, col.g, col.b);
-	fl_mapcolor(FL_FREE_COL4,   col.r, col.g, col.b);
+	fl_mapcolor(FL_FREE_COL4 + i, col.r, col.g, col.b);
+	fl_mapcolor(FL_FREE_COL4, col.r, col.g, col.b);
 	fl_set_slider_value(colours_->valslider_red,   col.r);
 	fl_set_slider_value(colours_->valslider_green, col.g);
 	fl_set_slider_value(colours_->valslider_blue,  col.b);
@@ -562,11 +561,11 @@ void FormPreferences::ColoursUpdateRGB()
 	fl_mapcolor(FL_FREE_COL4, col.r, col.g, col.b);
 	fl_redraw_object(colours_->button_colour);
 
-	int i = ColoursSearchEntry( col );
+	int const i = ColoursSearchEntry( col );
 	// change topline only if necessary
 	// int top = fl_get_browser_topline(colours_->browser_x11);
 	// if (i < top || i > (top+15))
-	fl_set_browser_topline(colours_->browser_x11, i-5);
+	fl_set_browser_topline(colours_->browser_x11, i - 5);
 	fl_select_browser_line(colours_->browser_x11, i + 1);
 
 	fl_unfreeze_form(colours_->form);
@@ -584,19 +583,47 @@ void FormPreferences::applyConverters() const
 void FormPreferences::buildConverters()
 {
 	converters_ = build_converters();
-
+	
+	fl_set_input_return(converters_->input_converter, FL_RETURN_CHANGED);
+	fl_set_input_return(converters_->input_flags, FL_RETURN_CHANGED);
+	
+	updateConverters();     
 }
 
 
 string const
-FormPreferences::feedbackConverters( FL_OBJECT const * const ) const
+FormPreferences::feedbackConverters( FL_OBJECT const * const ob) const
 {
+	Assert(ob);
 	return string();
 }
 
 
 void FormPreferences::updateConverters()
-{}
+{
+	vector<Command> commands = Converter::GetAllCommands();
+	
+	vector<string> names;
+	for(vector<Command>::const_iterator cit = commands.begin();
+	     cit != commands.end(); ++cit) {
+		string from = cit->from->prettyname;
+		string to   = cit->to->prettyname;
+		string name = from + " -> " + to;
+		names.push_back(name);
+	}
+	sort(names.begin(), names.end());
+	
+	fl_clear_browser(converters_->browser_converters);
+	for (vector<string>::const_iterator cit = names.begin();
+	     cit != names.end(); ++cit)
+		fl_addto_browser(converters_->browser_converters,
+				 cit->c_str());
+	fl_deactivate_object(converters_->button_add);
+	fl_set_object_lcol(converters_->button_add, FL_INACTIVE);
+	
+	fl_deactivate_object(converters_->button_delete);
+	fl_set_object_lcol(converters_->button_delete, FL_INACTIVE);
+}
 
 
 void FormPreferences::applyFormats() const
@@ -625,20 +652,23 @@ void FormPreferences::buildFormats()
 
 	fl_set_input_return(formats_->input_format, FL_RETURN_CHANGED);
 	fl_set_input_return(formats_->input_viewer, FL_RETURN_CHANGED);
+	fl_set_input_return(formats_->input_shrtcut, FL_RETURN_CHANGED);
 	fl_set_input_return(formats_->input_gui_name, FL_RETURN_CHANGED);
 	fl_set_input_return(formats_->input_extension, FL_RETURN_CHANGED);
 
 	fl_set_input_filter(formats_->input_format, fl_lowercase_filter);
 
-	formats_vec = formats.GetAllFormats();
-	for (vector<Format>::const_iterator it = formats_vec.begin();
-	     it != formats_vec.end(); ++it)
-		fl_addto_browser(formats_->browser_formats, it->name.c_str());
+	updateFormats();
 }
 
 
-string const FormPreferences::feedbackFormats( FL_OBJECT const * const ) const
+string const
+FormPreferences::feedbackFormats(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return;
+
 	string str;
 
 	return str;
@@ -647,44 +677,260 @@ string const FormPreferences::feedbackFormats( FL_OBJECT const * const ) const
 
 bool FormPreferences::inputFormats(FL_OBJECT const * const ob)
 {
+	Assert(ob);
+	
+	//if( !ob ) return false;
+
 	if (ob == formats_->browser_formats) {
-		int i = fl_get_browser(formats_->browser_formats);
-		if (i > 0) {
-			Format const & f = formats_vec[i-1];
-			fl_set_input(formats_->input_format, f.name.c_str());
-			fl_set_input(formats_->input_gui_name, f.prettyname.c_str());
-			fl_set_input(formats_->input_extension, f.extension.c_str());
-			fl_set_input(formats_->input_viewer, f.viewer.c_str());
-		}
+		FormatsInputBrowser();
+
+	} else if (ob == formats_->input_format) {
+		FormatsInputInput();
+
 	} else if (ob == formats_->button_add) {
-		string name = fl_get_input(formats_->input_format);
-		string prettyname = fl_get_input(formats_->input_gui_name);
-		string extension = fl_get_input(formats_->input_extension);
-		string viewer =  fl_get_input(formats_->input_viewer);
-		string shortcut;
-		if (prettyname.empty())
-			return false;
-		Format format(name, extension, prettyname, shortcut, viewer);
-		vector<Format>::iterator it = find_if(formats_vec.begin(),
-						      formats_vec.end(),
-						      compare_memfun(&Format::getname, name));
-		if (it == formats_vec.end()) {
-			formats_vec.push_back(format);
-			fl_add_browser_line(formats_->browser_formats, 
-					    name.c_str());
-		} else {
-			//if (*it == format)
-			//	return false;
-			*it = format;
-		}
-		return true;
+		FormatsInputAdd();
+
+	} else if (ob == formats_->button_delete) {
+		FormatsInputDelete();
 	}
 	return true;
 }
 
 
 void FormPreferences::updateFormats()
-{}
+{
+	formats_vec = formats.GetAllFormats();
+
+	vector<string> names;
+	for (vector<Format>::const_iterator it = formats_vec.begin();
+	     it != formats_vec.end(); ++it)
+		names.push_back( it->name.c_str() );
+	sort(names.begin(), names.end());
+
+	fl_clear_browser(formats_->browser_formats);
+	for (vector<string>::const_iterator it = names.begin();
+	     it != names.end(); ++it)
+		fl_addto_browser(formats_->browser_formats, it->c_str());
+
+	fl_deactivate_object(formats_->button_add);
+	fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
+
+	fl_deactivate_object(formats_->button_delete);
+	fl_set_object_lcol(formats_->button_delete, FL_INACTIVE);
+}
+
+
+bool FormPreferences::FormatsInputAdd()
+{
+	string name = fl_get_input(formats_->input_format);
+	string prettyname = fl_get_input(formats_->input_gui_name);
+	string extension = fl_get_input(formats_->input_extension);
+	string viewer =  fl_get_input(formats_->input_viewer);
+	string shortcut =  fl_get_input(formats_->input_shrtcut);
+	if (prettyname.empty())
+		return false;
+
+	Format format(name, extension, prettyname, shortcut, viewer);
+	vector<Format>::iterator it =
+		find_if(formats_vec.begin(), formats_vec.end(),
+			compare_memfun(&Format::getname, name));
+
+	if (it == formats_vec.end()) {
+		fl_freeze_form(formats_->form);
+
+		formats_vec.push_back(format);
+
+		vector<string> names;
+		for (vector<Format>::const_iterator it = formats_vec.begin();
+		     it != formats_vec.end(); ++it)
+			names.push_back( it->name.c_str() );
+
+		sort( names.begin(), names.end() );
+
+		fl_clear_browser( formats_->browser_formats );
+		for (vector<string>::const_iterator it = names.begin();
+		     it != names.end(); ++it)
+			fl_addto_browser(formats_->browser_formats, 
+					 it->c_str()); 
+
+		fl_set_input(formats_->input_format, "");
+		fl_set_input(formats_->input_gui_name, "");
+		fl_set_input(formats_->input_shrtcut, "");
+		fl_set_input(formats_->input_extension, "");
+		fl_set_input(formats_->input_viewer, "");
+
+		fl_set_object_label( formats_->button_add,
+				     idex(_("Add|#A")) );
+		fl_set_button_shortcut( formats_->button_add,
+					scex(_("Add|#A")), 1);
+
+		fl_deactivate_object(formats_->button_add);
+		fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
+
+		fl_deactivate_object(formats_->button_delete);
+		fl_set_object_lcol(formats_->button_delete, FL_INACTIVE);
+			
+		fl_unfreeze_form(formats_->form);
+
+	} else {
+		//if (*it == format)
+		//	return false;
+		*it = format;
+	}
+	return true;
+}
+
+
+bool FormPreferences::FormatsInputDelete()
+{
+	string name = fl_get_input(formats_->input_format);
+	vector<Format>::iterator it =
+		find_if(formats_vec.begin(), formats_vec.end(),
+			compare_memfun(&Format::getname, name));
+
+	fl_freeze_form(formats_->form);
+
+	if (it == formats_vec.end()) {
+		fl_deactivate_object(formats_->button_delete);
+		fl_set_object_lcol(formats_->button_delete, FL_INACTIVE);
+
+	} else {
+		int sel = 0;
+		for( int i = 0;
+		     i < fl_get_browser_maxline(formats_->browser_formats); 
+		     ++i ) {
+			string str = fl_get_browser_line( formats_->browser_formats, i+1 );
+			if( str == name ) {
+				sel = i+1;
+				break;
+			}
+		}
+		
+		if( sel != 0 ) {
+			fl_delete_browser_line(formats_->browser_formats, sel );
+
+			fl_set_input(formats_->input_format, "");
+			fl_set_input(formats_->input_gui_name, "");
+			fl_set_input(formats_->input_shrtcut, "");
+			fl_set_input(formats_->input_extension, "");
+			fl_set_input(formats_->input_viewer, "");
+
+			fl_set_object_label( formats_->button_add,
+					     idex(_("Add|#A")) );
+			fl_set_button_shortcut( formats_->button_add,
+						scex(_("Add|#A")), 1);
+
+			fl_deactivate_object(formats_->button_add);
+			fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
+
+			fl_deactivate_object(formats_->button_delete);
+			fl_set_object_lcol(formats_->button_delete,
+					   FL_INACTIVE);
+		}
+	}
+	
+	fl_unfreeze_form(formats_->form);
+
+	return true;
+}
+
+
+bool FormPreferences::FormatsInputBrowser() 
+{
+	int const i = fl_get_browser(formats_->browser_formats);
+	if( i <= 0 ) return true;
+
+	string name = fl_get_browser_line(formats_->browser_formats, i);
+	vector<Format>::iterator it =
+		find_if(formats_vec.begin(), formats_vec.end(),
+			compare_memfun(&Format::getname, name));
+
+	if (it != formats_vec.end()) {
+		fl_freeze_form(formats_->form);
+
+		fl_set_input(formats_->input_format, it->name.c_str());
+		fl_set_input(formats_->input_gui_name, it->prettyname.c_str());
+		fl_set_input(formats_->input_shrtcut, it->shortcut.c_str());
+		fl_set_input(formats_->input_extension, it->extension.c_str());
+		fl_set_input(formats_->input_viewer, it->viewer.c_str());
+
+		fl_set_object_label( formats_->button_add,
+				     idex(_("Modify|#M")) );
+		fl_set_button_shortcut( formats_->button_add, 
+					scex(_("Modify|#M")), 1);
+
+		fl_activate_object(formats_->button_add);
+		fl_set_object_lcol(formats_->button_add, FL_BLACK);
+
+		fl_activate_object(formats_->button_delete);
+		fl_set_object_lcol(formats_->button_delete, FL_BLACK);
+				
+		fl_unfreeze_form(formats_->form);
+	}
+	return true;
+}
+
+
+bool FormPreferences::FormatsInputInput()
+{
+	string const name = fl_get_input(formats_->input_format);
+	vector<Format>::iterator it =
+		find_if(formats_vec.begin(), formats_vec.end(),
+			compare_memfun(&Format::getname, name));
+
+	fl_freeze_form(formats_->form);
+
+	if (it == formats_vec.end()) {
+		fl_set_object_label( formats_->button_add,
+				     idex(_("Add|#A")) );
+		fl_set_button_shortcut( formats_->button_add,
+					scex(_("Add|#A")), 1);
+
+		if( name.empty() ) {
+			fl_deactivate_object(formats_->button_add);
+			fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
+		} else {
+			fl_activate_object(formats_->button_add);
+			fl_set_object_lcol(formats_->button_add, FL_BLACK);
+		}
+
+		fl_deselect_browser(formats_->browser_formats);
+
+		fl_deactivate_object(formats_->button_delete);
+		fl_set_object_lcol(formats_->button_delete, FL_INACTIVE);
+
+	} else {
+		fl_set_object_label( formats_->button_add,
+				     idex(_("Modify|#M")) );
+		fl_set_button_shortcut( formats_->button_add,
+					scex(_("Modify|#M")), 1);
+
+		int sel = 0;
+		for( int i = 0;
+		     i < fl_get_browser_maxline(formats_->browser_formats);
+		     ++i ) {
+			string str = fl_get_browser_line( formats_->browser_formats, i+1 );
+			if( str == name ) {
+				sel = i+1;
+				break;
+			}
+		}
+
+		int top = sel - 6;
+		if( top < 1 ) top = 0;
+		fl_set_browser_topline(formats_->browser_formats, top);
+		fl_select_browser_line(formats_->browser_formats, sel);
+		
+		fl_activate_object(formats_->button_add);
+		fl_set_object_lcol(formats_->button_add, FL_BLACK);
+
+		fl_activate_object(formats_->button_delete);
+		fl_set_object_lcol(formats_->button_delete, FL_BLACK);
+	}
+
+	fl_unfreeze_form(formats_->form);
+	return true;
+}
 
 
 void FormPreferences::applyInputsMisc() const
@@ -713,6 +959,10 @@ void FormPreferences::buildInputsMisc()
 string const
 FormPreferences::feedbackInputsMisc(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == inputs_misc_->input_date_format )
@@ -779,6 +1029,10 @@ void FormPreferences::buildInterface()
 string const
 FormPreferences::feedbackInterface( FL_OBJECT const * const ob ) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == interface_->input_popup_font )
@@ -815,16 +1069,28 @@ void FormPreferences::updateInterface()
 }
 
 
-void FormPreferences::applyLanguage() const
+void FormPreferences::applyLanguage()
 {
 	lyxrc.default_language = combo_default_lang->getline();
 
 	int button = fl_get_button(language_->check_use_kbmap);
+	string name_1 = combo_kbmap_1->getline();
+	string name_2 = combo_kbmap_2->getline();
+	if( button )
+		button = ( !name_1.empty() && !name_2.empty() );
 	lyxrc.use_kbmap = static_cast<bool>(button);
 
 	if (button) {
-	    lyxrc.primary_kbmap = combo_kbmap_1->getline();
-	    lyxrc.secondary_kbmap = combo_kbmap_2->getline();
+		vector<string>::iterator it =
+			find( dirlist.second.begin(), dirlist.second.end(),
+			      name_1 );
+		vector<string>::size_type sel = it - dirlist.second.begin();
+		lyxrc.primary_kbmap = dirlist.first[sel];
+
+		it = find( dirlist.second.begin(), dirlist.second.end(),
+			   name_2 );
+		sel = it - dirlist.second.begin();
+		lyxrc.secondary_kbmap = dirlist.first[sel];
 	}
 	
 	button = fl_get_button(language_->check_rtl_support);
@@ -842,6 +1108,9 @@ void FormPreferences::applyLanguage() const
 	lyxrc.language_package = fl_get_input(language_->input_package);
 	lyxrc.language_command_begin = fl_get_input(language_->input_command_begin);
 	lyxrc.language_command_end = fl_get_input(language_->input_command_end);
+
+	// Ensure that all is self-consistent.
+	updateLanguage();
 }
 
 
@@ -863,17 +1132,28 @@ void FormPreferences::buildLanguage()
 	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_default_lang->shortcut("#L",1);
 	combo_default_lang->setcallback(ComboLanguageCB, this);
-	LanguagesAdd( *combo_default_lang );
-	
+
+	for (Languages::const_iterator cit = languages.begin();
+	    cit != languages.end(); cit++) {
+		combo_default_lang->addto((*cit).second.lang());
+	}
+
 	// ditto kbmap_1
+	string dir = AddPath(system_lyxdir, "kbd");
+	vector<string> dirlist = DirList(dir , "kmap");
+
 	obj = language_->choice_kbmap_1;
 	fl_deactivate_object(language_->choice_kbmap_1);
 	combo_kbmap_1 = new Combox(FL_COMBOX_DROPLIST);
 	combo_kbmap_1->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_kbmap_1->shortcut("#1",1);
 	combo_kbmap_1->setcallback(ComboLanguageCB, this);
-	LanguagesAdd( *combo_kbmap_1 );
-	
+
+	for (vector<string>::const_iterator cit = dirlist.begin();
+	    cit != dirlist.end(); cit++) {
+		combo_kbmap_1->addto(*cit);
+	}
+
 	// ditto kbmap_2
 	obj = language_->choice_kbmap_2;
 	fl_deactivate_object(language_->choice_kbmap_2);
@@ -881,7 +1161,11 @@ void FormPreferences::buildLanguage()
 	combo_kbmap_2->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_kbmap_2->shortcut("#2",1);
 	combo_kbmap_2->setcallback(ComboLanguageCB, this);
-	LanguagesAdd( *combo_kbmap_2 );
+
+	for (vector<string>::const_iterator cit = dirlist.begin();
+	    cit != dirlist.end(); cit++) {
+		combo_kbmap_2->addto(*cit);
+	}
 
 	fl_end_form();
 	fl_unfreeze_form(language_->form);
@@ -906,12 +1190,20 @@ void FormPreferences::buildLanguage()
 	setPostHandler( language_->input_command_end );
 
 	fl_end_form();
+
+	// Activate/Deactivate the input fields dependent on the state of the
+	// buttons.
+	inputLanguage( 0 );
 }
 
 
 string const
 FormPreferences::feedbackLanguage(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (reinterpret_cast<Combox const *>(ob) == combo_default_lang )
@@ -967,11 +1259,21 @@ void FormPreferences::updateLanguage()
 	combo_default_lang->select_text( lyxrc.default_language );
 
 	if (lyxrc.use_kbmap) {
-		combo_kbmap_1->select_text( lyxrc.primary_kbmap );
-		combo_kbmap_2->select_text( lyxrc.secondary_kbmap );
+		string fullpath = lyxrc.primary_kbmap;
+		vector<string>::iterator it =
+			find( dirlist.first.begin(), dirlist.first.end(),
+			      fullpath );
+		vector<string>::size_type sel = it - dirlist.first.begin();
+		combo_kbmap_1->select_text( dirlist.second[sel] );
+
+		fullpath = lyxrc.secondary_kbmap;
+		it = find( dirlist.first.begin(), dirlist.first.end(),
+			   fullpath );
+		sel = it - dirlist.first.begin();
+		combo_kbmap_2->select_text( dirlist.second[sel] );
 	} else {
-		combo_kbmap_1->select_text( lyxrc.default_language );
-		combo_kbmap_2->select_text( lyxrc.default_language );
+		combo_kbmap_1->select_text( "" );
+		combo_kbmap_2->select_text( "" );
 	}
 	
 	fl_set_button(language_->check_rtl_support, lyxrc.rtl_support);
@@ -993,15 +1295,6 @@ void FormPreferences::updateLanguage()
 }
 
 
-void FormPreferences::LanguagesAdd( Combox & combo ) const
-{
-	for (Languages::const_iterator cit = languages.begin();
-	    cit != languages.end(); cit++) {
-		combo.addto((*cit).second.lang());
-	}
-}
-
-
 void FormPreferences::applyLnFmisc() const
 {
 	lyxrc.show_banner = fl_get_button(lnf_misc_->check_banner);
@@ -1009,7 +1302,7 @@ void FormPreferences::applyLnFmisc() const
 						 check_auto_region_delete);
 	lyxrc.exit_confirmation = fl_get_button(lnf_misc_->check_exit_confirm);
 	lyxrc.display_shortcuts =
-		fl_get_button(lnf_misc_->check_display_shortcuts);
+		fl_get_button(lnf_misc_->check_display_shrtcuts);
 	lyxrc.new_ask_filename = fl_get_button(lnf_misc_->check_ask_new_file);
 	lyxrc.cursor_follows_scrollbar =
 		fl_get_button(lnf_misc_->check_cursor_follows_scrollbar);
@@ -1035,7 +1328,7 @@ void FormPreferences::buildLnFmisc()
 	setPostHandler( lnf_misc_->check_banner );
 	setPostHandler( lnf_misc_->check_auto_region_delete );
 	setPostHandler( lnf_misc_->check_exit_confirm );
-	setPostHandler( lnf_misc_->check_display_shortcuts );
+	setPostHandler( lnf_misc_->check_display_shrtcuts );
 	setPostHandler( lnf_misc_->counter_autosave );
 	setPostHandler( lnf_misc_->check_ask_new_file );
 	setPostHandler( lnf_misc_->check_cursor_follows_scrollbar );
@@ -1047,6 +1340,10 @@ void FormPreferences::buildLnFmisc()
 
 string const FormPreferences::feedbackLnFmisc(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == lnf_misc_->check_banner )
@@ -1055,7 +1352,7 @@ string const FormPreferences::feedbackLnFmisc(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription( LyXRC::RC_AUTOREGIONDELETE );
 	else if (ob == lnf_misc_->check_exit_confirm )
 		str = lyxrc.getDescription( LyXRC::RC_EXIT_CONFIRMATION );
-	else if (ob == lnf_misc_->check_display_shortcuts )
+	else if (ob == lnf_misc_->check_display_shrtcuts )
 		str = lyxrc.getDescription( LyXRC::RC_DISPLAY_SHORTCUTS );
 	else if (ob == lnf_misc_->check_ask_new_file )
 		str = lyxrc.getDescription( LyXRC::RC_NEW_ASK_FILENAME );
@@ -1078,7 +1375,7 @@ void FormPreferences::updateLnFmisc()
 		      lyxrc.auto_region_delete);
 	fl_set_button(lnf_misc_->check_exit_confirm,
 		      lyxrc.exit_confirmation);
-	fl_set_button(lnf_misc_->check_display_shortcuts,
+	fl_set_button(lnf_misc_->check_display_shrtcuts,
 		      lyxrc.display_shortcuts);
 	fl_set_button(lnf_misc_->check_ask_new_file,
 		      lyxrc.new_ask_filename);
@@ -1137,6 +1434,10 @@ void FormPreferences::buildOutputsMisc()
 string const
 FormPreferences::feedbackOutputsMisc(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == outputs_misc_->counter_line_len )
@@ -1256,6 +1557,10 @@ void FormPreferences::buildPaths()
 
 string const FormPreferences::feedbackPaths( FL_OBJECT const * const ob ) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == paths_->input_default_path )
@@ -1285,6 +1590,10 @@ string const FormPreferences::feedbackPaths( FL_OBJECT const * const ob ) const
 
 bool FormPreferences::inputPaths( FL_OBJECT const * const ob )
 {
+	// what kind of coding is this? Do you plan for a ob == NULL?
+	// When is that allowed? (Lgb)
+	//Assert(ob);
+	
 	bool activate = true;
 	
 	if (!ob || ob == paths_->check_use_temp_dir) {
@@ -1439,8 +1748,13 @@ void FormPreferences::applyPrinter() const
 }
 
 
-string const FormPreferences::feedbackPrinter(FL_OBJECT const * const ob) const
+string const
+FormPreferences::feedbackPrinter(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == printer_->input_command )
@@ -1761,6 +2075,10 @@ void FormPreferences::buildScreenFonts()
 string const
 FormPreferences::feedbackScreenFonts(FL_OBJECT const * const ob ) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == screen_fonts_->input_roman )
@@ -1992,6 +2310,10 @@ void FormPreferences::buildSpellchecker()
 string const
 FormPreferences::feedbackSpellChecker(FL_OBJECT const * const ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return string();
+
 	string str;
 
 	if (ob == spellchecker_->choice_spell_command )
@@ -2019,6 +2341,8 @@ FormPreferences::feedbackSpellChecker(FL_OBJECT const * const ob) const
 
 bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 {
+	// ditto ob! (Lgb)
+	
 	// Allow/dissallow input
 
 	// If spell checker == "none", disable all input.
@@ -2093,7 +2417,7 @@ void FormPreferences::updateSpellChecker()
 		choice = 3;
 	fl_set_choice(spellchecker_->choice_spell_command, choice);
 	
-	string str = string();
+	string str;
 	if (lyxrc.isp_use_alt_lang ) str = lyxrc.isp_alt_lang;
 
 	fl_set_button(spellchecker_->check_alt_lang,
@@ -2125,7 +2449,7 @@ void FormPreferences::updateSpellChecker()
 }
 
 
-bool FormPreferences::WriteableDir( string const & name ) const
+bool FormPreferences::WriteableDir(string const & name) const
 {
 	bool success = true;
 	string str;
@@ -2155,7 +2479,7 @@ bool FormPreferences::WriteableDir( string const & name ) const
 }
 
 
-bool FormPreferences::ReadableDir( string const & name ) const
+bool FormPreferences::ReadableDir(string const & name) const
 {
 	bool success = true;
 	string str;
@@ -2207,8 +2531,8 @@ bool FormPreferences::WriteableFile(string const & name,
 		str = N_("WARNING! The absolute path is required.");
 	}
 
-	// This is not a nice way to use FileInfo (Lgb)
 #if 0
+	// This is not a nice way to use FileInfo (Lgb)
 	FileInfo d;
 	
 	{
@@ -2258,10 +2582,11 @@ bool FormPreferences::WriteableFile(string const & name,
 
 void FormPreferences::ComboLanguageCB(int, void * v, Combox * combox)
 {
-    FormPreferences * pre = static_cast<FormPreferences*>(v);
-    // This is safe, as nothing is done to the pointer, other than
-    // to use its address in a block-if statement.
-    pre->bc_.valid( pre->input( reinterpret_cast<FL_OBJECT *>(combox), 0 ));
+	Assert(v && combox);
+	FormPreferences * pre = static_cast<FormPreferences*>(v);
+	// This is safe, as nothing is done to the pointer, other than
+	// to use its address in a block-if statement.
+	pre->bc_.valid(pre->input(reinterpret_cast<FL_OBJECT *>(combox), 0));
 }
 
 
@@ -2271,8 +2596,14 @@ C_GENERICCB(FormPreferences, FeedbackCB)
 	
 void FormPreferences::FeedbackCB(FL_OBJECT * ob, long)
 {
+	Assert(ob);
+	
+	//if( !ob ) return;
+
 	FormPreferences * pre =
 		static_cast<FormPreferences*>(ob->form->u_vdata);
+	Assert(pre);
+	
 	pre->feedback( pre->feedbackObj );
 }
 
@@ -2284,6 +2615,7 @@ int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
 	// can occur when form is being deleted. This seems an easier fix than
 	// a call "fl_set_object_posthandler(ob, 0)" for each and every object
 	// in the destructor.
+	if (!ob ) return 0;
 	if (!ob->form ) return 0;
 
 	FormPreferences * pre =
@@ -2296,8 +2628,12 @@ int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
 // post_handler for feedback messages
 void FormPreferences::feedbackPost(FL_OBJECT * ob, int event)
 {
+	Assert(ob);
+	
+	//if( !ob ) return;
+	
 	// We do not test for empty help here, since this can never happen
-	if (event == FL_ENTER){
+	if (event == FL_ENTER) {
 		// Used as a placeholder for ob, so that we don't have to
 		// a horrible reinterpret_cast to long and pass it as an
 		// argument in fl_set_object_callback.
@@ -2306,8 +2642,7 @@ void FormPreferences::feedbackPost(FL_OBJECT * ob, int event)
 				       C_FormPreferencesFeedbackCB,
 				       0);
 		fl_set_timer(dialog_->timer_feedback, 0.5);
-	}
-	else if (event != FL_MOTION){
+	} else if (event != FL_MOTION) {
 		fl_set_timer(dialog_->timer_feedback, 0);
 		feedbackObj = 0;
 		fl_set_object_label(dialog_->text_warning, "");
@@ -2317,5 +2652,9 @@ void FormPreferences::feedbackPost(FL_OBJECT * ob, int event)
 
 void FormPreferences::setPostHandler(FL_OBJECT * ob) const
 {
+	Assert(ob);
+	
+	//if( !ob ) return;
+
 	fl_set_object_posthandler(ob, C_FormPreferencesFeedbackPost);
 }

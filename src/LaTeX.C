@@ -119,7 +119,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	bool rerun = false; // rerun requested
 	
 	// The class LaTeX does not know the temp path.
-	bufferlist.updateIncludedTeXfiles(GetCWD());
+	bufferlist.updateIncludedTeXfiles(lyx::getcwd()); //GetCWD());
 	
 	// Never write the depfile if an error was encountered.
 	

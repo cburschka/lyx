@@ -189,7 +189,7 @@ public:
 	///
 	OkCancelPolicy();
 	///
-	virtual ~OkCancelPolicy() {}
+	//virtual ~OkCancelPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -231,7 +231,7 @@ public:
 	///
 	OkCancelReadOnlyPolicy();
 	///
-	virtual ~OkCancelReadOnlyPolicy() {}
+	//virtual ~OkCancelReadOnlyPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -275,7 +275,7 @@ public:
 	///
 	NoRepeatedApplyReadOnlyPolicy();
 	///
-	virtual ~NoRepeatedApplyReadOnlyPolicy() {}
+	//virtual ~NoRepeatedApplyReadOnlyPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -316,7 +316,7 @@ public:
 	///
 	OkApplyCancelReadOnlyPolicy();
 	///
-	virtual ~OkApplyCancelReadOnlyPolicy() {}
+	//virtual ~OkApplyCancelReadOnlyPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -351,7 +351,7 @@ public:
 	///
 	OkApplyCancelPolicy();
 	///
-	virtual ~OkApplyCancelPolicy() {}
+	//virtual ~OkApplyCancelPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -383,7 +383,7 @@ public:
 	///
 	NoRepeatedApplyPolicy();
 	///
-	virtual ~NoRepeatedApplyPolicy() {}
+	//virtual ~NoRepeatedApplyPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -416,7 +416,7 @@ public:
 	///
 	PreferencesPolicy();
 	///
-	virtual ~PreferencesPolicy() {}
+	//virtual ~PreferencesPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -446,7 +446,7 @@ private:
  */
 class IgnorantPolicy : public ButtonPolicy {
 public:
-	virtual ~IgnorantPolicy() {}
+	//virtual ~IgnorantPolicy() {}
 	
 	/// Trigger a transition with this input.
 	virtual void input(SMInput) {}

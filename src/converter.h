@@ -122,7 +122,7 @@ public:
 	///
 	string const Extension(string const & name);
 	///
-	std::vector<Format> const GetAllFormats();
+	std::vector<Format> const GetAllFormats() const;
 private:
 	///
 	FormatList formats;
@@ -169,6 +169,9 @@ public:
 	///
 	static
 	void init();
+	///
+	static
+	std::vector<Command> const GetAllCommands();
 private:
 	///
 	static

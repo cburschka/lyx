@@ -3,7 +3,7 @@
 #define PATH_H
 
 #include "LString.h"
-#include "filetools.h"
+//#include "filetools.h"
 #include "lyxlib.h"
 #include <boost/utility.hpp>
 
@@ -20,7 +20,7 @@ public:
 		: popped_(false)
 	{
 		if (!path.empty()) { 
-			pushedDir_ = GetCWD();
+			pushedDir_ = lyx::getcwd(); // GetCWD();
 			if (pushedDir_.empty() || lyx::chdir(path)) {
 				// should throw an exception
 				// throw DirChangeError();

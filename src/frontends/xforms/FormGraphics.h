@@ -86,8 +86,6 @@ private:
 
 	/// Save the active inset and show the dialog.
 	void showDialog(InsetGraphics *);
-	/// Explicitly free the dialog.
-	void free();
 	/// Verify that the input is correct. If not disable ok/apply buttons.
 	bool checkInput();
 	/// Open the file browse dialog to select an image file.

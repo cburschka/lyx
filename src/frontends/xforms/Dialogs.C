@@ -49,13 +49,23 @@ Dialogs::Dialogs(LyXView * lv)
 	hideAll.connect(hideBufferDependent.slot());
 }
 
+
 Dialogs::~Dialogs()
 {
+#if 0
+	// I belive that this is unsafe...
 	for (vector<DialogBase *>::iterator iter = dialogs_.begin();
 	     iter != dialogs_.end();
 	     ++iter) {
 		delete *iter;
 	}
+#else
+	// I think this is better...
+	while (!dialogs_.empty()) {
+		delete dialogs_.back();
+		dialogs_.erase(dialogs_.end() - 1);
+	}
+#endif
 }
 
 

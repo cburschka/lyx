@@ -107,7 +107,7 @@ GraphicsCacheItem_pimpl::renderXPM(string const & filename)
 	temp = ChangeExtension(filename, string());
 	
 	// Add some stuff to have it a unique temp file.
-	xpmfile = TmpFileName(string(), temp);
+	xpmfile = lyx::tempName(string(), temp); //TmpFileName(string(), temp);
 	xpmfile = ChangeExtension(xpmfile, ".xpm");	
 	
 	command += xpmfile;

@@ -47,7 +47,7 @@ bool send_fax(string const & fname, string const & sendcmd)
         return false;
     path = OnlyPath(fname);
     if (path.empty() || path == "./")
-        filename = GetCWD() + "/" + fname;
+	filename = lyx::getcwd() /*GetCWD()*/ + "/" + fname;
     else
         filename = fname;
 
@@ -83,7 +83,8 @@ bool send_fax(string const & fname, string const & sendcmd)
 
     /* show the first form */
     fl_show_form(fd_xsendfax->xsendfax,
-		 FL_PLACE_MOUSE, FL_FULLBORDER, title.c_str());
+		 FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		 title.c_str());
 /*
     while(true) {
         obj = fl_do_forms();
@@ -114,7 +115,7 @@ bool button_send(string const & fname, string const & sendcmd)
 
     if (phone.empty())
         return false;
-    string logfile = TmpFileName(OnlyPath(fname), "FAX");
+    string logfile = lyx::tempName(OnlyPath(fname), "FAX"); //TmpFileName(OnlyPath(fname), "FAX");
     string cmd = sendcmd + " >";
     cmd += logfile + " 2>";
     cmd += logfile;
@@ -285,7 +286,7 @@ void show_logfile(string const & logfile, bool show_if_empty)
         fl_raise_form(fd_logfile->logfile);
     } else {
         fl_show_form(fd_logfile->logfile,
-                     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+		     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
                      _("Message-Window"));
     }
 }
@@ -322,6 +323,7 @@ void FaxOpenPhonebookCB(FL_OBJECT *, long)
 
     if (!n)
         fl_addto_browser(fd_phonebook->browser, _("@L@b@cEmpty Phonebook"));
-    fl_show_form(fd_phonebook->phonebook, FL_PLACE_MOUSE, FL_FULLBORDER,
+    fl_show_form(fd_phonebook->phonebook,
+		 FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
                  _("Phonebook"));
 }

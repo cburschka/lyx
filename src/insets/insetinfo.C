@@ -226,7 +226,8 @@ void InsetInfo::Edit(BufferView *bv, int, int, unsigned int)
 	if (form->visible) {
 		fl_raise_form(form);
 	} else {
-		fl_show_form(form, FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER, 
+		fl_show_form(form,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Note"));
 		if (ow < 0) {
 			ow = form->w;

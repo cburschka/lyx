@@ -136,6 +136,7 @@ struct FD_form_colours {
 	FL_OBJECT *valslider_green;
 	FL_OBJECT *valslider_blue;
 	FL_OBJECT *browser_lyx_objs;
+	FL_OBJECT *button_modify;
 };
 struct FD_form_converters {
 	~FD_form_converters();
@@ -147,6 +148,7 @@ struct FD_form_converters {
 	FL_OBJECT *input_converter;
 	FL_OBJECT *choice_from;
 	FL_OBJECT *choice_to;
+	FL_OBJECT *input_flags;
 };
 struct FD_form_formats {
 	~FD_form_formats();
@@ -159,6 +161,7 @@ struct FD_form_formats {
 	FL_OBJECT *button_add;
 	FL_OBJECT *input_extension;
 	FL_OBJECT *input_viewer;
+	FL_OBJECT *input_shrtcut;
 };
 struct FD_form_lnf_misc {
 	~FD_form_lnf_misc();
@@ -167,7 +170,7 @@ struct FD_form_lnf_misc {
 	FL_OBJECT *check_banner;
 	FL_OBJECT *check_auto_region_delete;
 	FL_OBJECT *check_exit_confirm;
-	FL_OBJECT *check_display_shortcuts;
+	FL_OBJECT *check_display_shrtcuts;
 	FL_OBJECT *counter_autosave;
 	FL_OBJECT *check_ask_new_file;
 	FL_OBJECT *check_cursor_follows_scrollbar;

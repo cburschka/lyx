@@ -36,7 +36,7 @@ using std::endl;
 InsetExternal::InsetExternal() 
 	: form_external(0)
 {
-	tempname = TmpFileName();
+	tempname = lyx::tempName(); //TmpFileName();
 }
 
 
@@ -291,8 +291,8 @@ void InsetExternal::Edit(BufferView * bv,
 		fl_raise_form(form_external->form_external);
 	} else {
 		fl_show_form(form_external->form_external,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_FULLBORDER, _("Insert external inset"));
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+			     _("Insert external inset"));
 		if (ow < 0) {
 			ow = form_external->form_external->w;
 			oh = form_external->form_external->h;

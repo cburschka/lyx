@@ -1289,7 +1289,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 		return;
 	}
 
-	string const fname1 = TmpFileName();
+	string const fname1 = lyx::tempName(); //TmpFileName();
 	LyXParagraph * par = paragraph;
 	while (par) {
 		int noparbreak = 0;

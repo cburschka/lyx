@@ -199,8 +199,8 @@ void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 	if (bibitem_form->bibitem_form->visible) {
 		fl_raise_form(bibitem_form->bibitem_form);
 	} else {
-		fl_show_form(bibitem_form->bibitem_form, FL_PLACE_MOUSE,
-			     FL_FULLBORDER,
+		fl_show_form(bibitem_form->bibitem_form,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Bibliography item"));
 	}   
 }
@@ -329,7 +329,7 @@ void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
 		fl_raise_form(bibitem_form->bibitem_form);
 	} else {
 		fl_show_form(bibitem_form->bibitem_form,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("BibTeX"));
 	}   
 }

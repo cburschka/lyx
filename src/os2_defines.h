@@ -24,7 +24,6 @@
 #define S_ISBLK(x) false
 #define readlink(s, t, l) (strcpy(t, s), strlen(t))
 /*#define mkfifo(p, m) (0) *//* LyXserver is temporary disabled. */
-#define getcwd _getcwd2
 #define chdir _chdir2
 #define strcasecmp stricmp
 #if defined (__cplusplus)

@@ -1213,8 +1213,9 @@ void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 	if (form->Figure->visible) {
 		fl_raise_form(form->Figure);
 	} else {
-		fl_show_form(form->Figure, FL_PLACE_MOUSE | FL_PLACE_SIZE,
-			     FL_FULLBORDER, _("Figure"));
+		fl_show_form(form->Figure,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+			     _("Figure"));
 	}
 }
 

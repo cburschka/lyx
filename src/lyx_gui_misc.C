@@ -66,13 +66,6 @@ extern "C" int CancelCloseBoxCB(FL_FORM *, void *)
 }
 
 
-// Prevents LyX from being killed when the close box is pressed in a popup.
-extern "C" int IgnoreCloseBoxCB(FL_FORM *, void *)
-{
-	return FL_IGNORE;
-}
-
-
 // Prevents LyX from crashing when no buffers available
 // This is also one of the functions that we _really_ dont want
 // we should try to finds way to help us with that.

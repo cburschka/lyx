@@ -58,6 +58,7 @@ public:
 	///
 	void feedbackPost(FL_OBJECT *, int);
 
+private:
 	/// helper struct for Colours
 	struct RGB {
 		int r;
@@ -66,8 +67,13 @@ public:
 		RGB() : r(0), g(0), b(0) {}
 		RGB(int red, int green, int blue) : r(red), g(green), b(blue) {}
 	};
+	///
+	friend bool operator==(RGB const &, RGB const &);
+	///
+	friend bool operator!=(RGB const &, RGB const &);
+	///
+	typedef std::pair<string, RGB> X11Colour;
 
-private:
 	/// Update the dialog.
 	virtual void update();
 	///
@@ -99,7 +105,7 @@ private:
 	///
 	void applyInterface() const;
 	///
-	void applyLanguage() const;
+	void applyLanguage(); // not const because calls updateLanguage!
 	///
 	void applyLnFmisc() const;
 	///
@@ -217,8 +223,6 @@ private:
 	 */
 	
 	///
-	void LanguagesAdd( Combox & ) const;
-	///
 	bool ColoursLoadBrowser( string const & );
 	///
 	int  ColoursSearchEntry(RGB const & ) const;
@@ -226,6 +230,14 @@ private:
 	void ColoursUpdateBrowser( int );
 	///
 	void ColoursUpdateRGB();
+	///
+	bool FormatsInputAdd();
+	///
+	bool FormatsInputBrowser();
+	///
+	bool FormatsInputDelete();
+	///
+	bool FormatsInputInput();
 
 	///
 	bool WriteableDir( string const & ) const;
@@ -308,13 +320,20 @@ private:
 	Combox * combo_kbmap_1;
 	///
 	Combox * combo_kbmap_2;
-	///
+	/// 
 	FL_OBJECT * feedbackObj;
-	///
+
+	/// A vector of Formats, to be manipulated in the Format browser.
 	std::vector<Format> formats_vec;
-
+	/// A vector of RGB colours and associated name.
+	static std::vector<X11Colour> colourDB;
+	/** A collection of kmap files.
+	    First entry is the file name, full path.
+	    Second entry is the shorthand, as appears in the fl_choice.
+	    Eg, system_lyxdir/kbd/american2.kmap, american2
+	*/
+	static std::pair<std::vector<string>, std::vector<string> > dirlist;
 };
-
 
 inline
 bool operator==(FormPreferences::RGB const & c1,

@@ -19,8 +19,10 @@
 #include "ExternalTemplate.h"
 
 #include "lyxlex.h"
+#include "debug.h"
 #include "support/path.h"
 #include "support/LAssert.h"
+#include "support/filetools.h"
 
 using std::endl;
 using std::ostream;

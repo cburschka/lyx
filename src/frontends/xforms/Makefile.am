@@ -12,6 +12,7 @@ LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
 # Alphabetical order please.  It makes it easier to figure out what's missing. 
 libxforms_la_SOURCES = \
+	ButtonController.C \
 	ButtonController.h \
 	Dialogs.C \
 	GUIRunTime.C \

@@ -27,7 +27,7 @@ namespace lyx {
 struct lyx {
 #endif	
 	///
-	OPT_STATIC char * getcwd(char * buffer, size_t size);
+	OPT_STATIC string const getcwd();
         ///
         OPT_STATIC int chdir(string const & name);
         /// Returns false if it fails
@@ -54,6 +54,9 @@ struct lyx {
         OPT_STATIC int rmdir(string const & file);
         ///
         OPT_STATIC int atoi(string const & nstr);
+	///
+	OPT_STATIC string const tempName(string const & dir = string(),
+					 string const & mask = string());
 #ifdef CXX_WORKING_NAMESPACES
 }
 #else

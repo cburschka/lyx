@@ -21,6 +21,18 @@
 #include "FormBase.h"
 #include "LyXView.h"
 #include "xform_macros.h"
+#include "support/LAssert.h"
+
+// The current scheme muddles debugging.
+// Can we please use some other means to create these functions?
+// I really don't like to use the preprossessor for this.
+// My suggestion: First of all move these functions into their own
+// file (that can be included here if wanted, and use m4 to expand
+// that file. So create a m4 function to do the expansion, a file
+// that contains the calls to to this function and a script to run
+// it and create the C++ file with the expanded functions. (Lgb)
+// Possible startoff point:
+// define([C_RETURNCB],[extern "C" int C_$1$2(FL_FORM * ob, void * d) { return $1::$2(ob, d); }])
 
 C_RETURNCB (FormBase, WMHideCB)
 C_GENERICCB(FormBase, ApplyCB)
@@ -34,7 +46,9 @@ FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
 		   ButtonPolicy * bp, char const * close, char const * cancel)
 	: lv_(lv), bc_(bp, cancel, close), d_(d), h_(0), title(t), bp_(bp),
 	  minw_(0), minh_(0)
-{}
+{
+	Assert(lv && d && bp);
+}
 
 
 FormBase::~FormBase()
@@ -88,9 +102,11 @@ void FormBase::hide()
 
 int FormBase::WMHideCB(FL_FORM * form, void *)
 {
+	Assert(form);
 	// Ensure that the signals (u and h) are disconnected even if the
 	// window manager is used to close the dialog.
 	FormBase * pre = static_cast<FormBase*>(form->u_vdata);
+	Assert(pre);
 	pre->hide();
 	pre->bc_.hide();
 	return FL_CANCEL;
@@ -99,7 +115,9 @@ int FormBase::WMHideCB(FL_FORM * form, void *)
 
 void FormBase::ApplyCB(FL_OBJECT * ob, long)
 {
+	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
+	Assert(pre);
 	pre->apply();
 	pre->bc_.apply();
 }
@@ -107,7 +125,9 @@ void FormBase::ApplyCB(FL_OBJECT * ob, long)
 
 void FormBase::OKCB(FL_OBJECT * ob, long)
 {
+	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
+	Assert(pre);
 	pre->ok();
 	pre->bc_.ok();
 }
@@ -115,7 +135,9 @@ void FormBase::OKCB(FL_OBJECT * ob, long)
 
 void FormBase::CancelCB(FL_OBJECT * ob, long)
 {
+	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
+	Assert(pre);
 	pre->cancel();
 	pre->bc_.cancel();
 }
@@ -123,14 +145,18 @@ void FormBase::CancelCB(FL_OBJECT * ob, long)
 
 void FormBase::InputCB(FL_OBJECT * ob, long data )
 {
+	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
-	pre->bc_.valid( pre->input( ob, data ) );
+	Assert(ob);
+	pre->bc_.valid(pre->input(ob, data));
 }
 
 
 void FormBase::RestoreCB(FL_OBJECT * ob, long)
 {
+	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
+	Assert(ob);
 	pre->restore();
 	pre->bc_.undoAll();
 }
@@ -140,7 +166,9 @@ FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
 		       ButtonPolicy * bp,
 		       char const * close, char const * cancel)
 	: FormBase( lv, d, t, bp, close, cancel )
-{}
+{
+	Assert(lv && d && bp);
+}
 
 
 void FormBaseBI::connect()
@@ -161,7 +189,9 @@ FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 		       char const * close, char const * cancel)
 	: FormBase( lv, d, t, bp, close, cancel ),
 	  u_(0)
-{}
+{
+	Assert(lv && d && bp);
+}
 
 
 void FormBaseBD::connect()

@@ -28,7 +28,8 @@ class LyXView;
 #endif
 
 /** This class is an XForms GUI base class.
-    It is meant to be used solely as the parent class to FormBaseBI and FormBaseBD
+    It is meant to be used solely as the parent class to FormBaseBI
+    and FormBaseBD.
     @author Angus Leeming
  */
 class FormBase : public DialogBase, public noncopyable {

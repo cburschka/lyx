@@ -252,7 +252,7 @@ void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 
 	if (!form) {
                 form = create_form_include();
-		fl_set_form_atclose(form->include, IgnoreCloseBoxCB, 0);
+		fl_set_form_atclose(form->include, CancelCloseBoxCB, 0);
 	}
         form->include->u_vdata = this;
     
@@ -272,7 +272,8 @@ void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
         if (form->include->visible) {
 		fl_raise_form(form->include);
 	} else {
-		fl_show_form(form->include, FL_PLACE_MOUSE, FL_FULLBORDER,
+		fl_show_form(form->include,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
 			     _("Include"));
 	}
 }

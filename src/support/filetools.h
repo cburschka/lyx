@@ -15,6 +15,8 @@
 #include <fcntl.h>
 #include <cerrno>
 
+#include <vector>
+
 #include "debug.h"
 #include "LString.h"
 #include "support/lstrings.h"
@@ -52,6 +54,10 @@ string const FileOpenSearch (string const & path, string const & name,
   */
 string const FileSearch(string const & path, string const & name, 
 		  string const & ext = string());
+
+/// Returns a vector of all files in directory dir having extension ext.
+std::vector<string> const DirList(string const & dir,
+				  string const & ext = string());
 
 /** Is directory read only?
   returns 
@@ -115,6 +121,7 @@ string const MakeLatexName(string const & file);
 /// Put the name in quotes suitable for the current shell
 string const QuoteName(string const & file);
 
+#if 0
 /** Returns an unique name to be used as a temporary file. If given,
   'mask' should the prefix to the temporary file, the rest of the
   temporary filename will be made from the pid and three letters.
@@ -122,6 +129,7 @@ string const QuoteName(string const & file);
 string const
 TmpFileName(string const & dir = string(), 
 	    string const & mask = "lyx_tmp");
+#endif
 
 /// Is a filename/path absolute?
 bool AbsolutePath(string const & path);
@@ -145,16 +153,17 @@ string const GetExtension(string const & name);
 /// Create absolute path. If impossible, don't do anything
 string const ExpandPath(string const & path);
 
+#if 0
 /// gets current working directory
 string const GetCWD();
-
+#endif
 
 /** Convert relative path into absolute path based on a basepath.
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
 string const MakeAbsPath(string const & RelPath = string(), 
-		   string const & BasePath = string());
+			 string const & BasePath = string());
 
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.

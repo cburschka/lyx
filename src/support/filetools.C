@@ -32,6 +32,7 @@
 #include "lyx_gui_misc.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
+#include "support/syscall.h"
 #include "gettext.h"
 #include "lyxlib.h"
 
@@ -57,6 +58,7 @@ using std::make_pair;
 using std::pair;
 using std::endl;
 using std::ifstream;
+using std::vector;
 
 #if 0
 using std::getenv;
@@ -112,6 +114,7 @@ string const QuoteName(string const & name)
 }
 
 
+#if 0
 // Returns an unique name to be used as a temporary file. 
 string const TmpFileName(string const & dir, string const & mask)
 {// With all these temporary variables, it should be safe enough :-) (JMarc)
@@ -141,6 +144,7 @@ string const TmpFileName(string const & dir, string const & mask)
 	lyxerr << "Not able to find a uniq tmpfile name." << endl;
 	return string();
 }
+#endif
 
 
 // Is a file readable ?
@@ -174,7 +178,7 @@ int IsFileWriteable (string const & path)
 //	 -1: error- couldn't find out
 int IsDirWriteable (string const & path)
 {
-        string const tmpfl(TmpFileName(path));
+        string const tmpfl(lyx::tempName(path)); //TmpFileName(path));
 
 	if (tmpfl.empty()) {
 		WriteFSAlert(_("LyX Internal Error!"), 
@@ -224,6 +228,71 @@ string const FileOpenSearch (string const & path, string const & name,
 	}
 #endif
 	return real_file;
+}
+
+
+/// Returns a vector of all files in directory dir having extension ext.
+vector<string> const DirList( string const & dir, string const & ext)
+{
+	// What what what????
+	// where you tinking when you implemented this?
+#if 0
+	string lsCommand = "ls " + dir;
+	if (!ext.empty()) {
+		string::size_type sz = lsCommand.size();
+		if (lsCommand[sz - 1] != '/')
+			lsCommand += '/';
+		lsCommand += '*';
+		if (ext[0] != '.')
+			lsCommand += '.';
+		lsCommand += ext;
+	}
+	string tmpfile = system_tempdir + "/dirlist";
+	lsCommand += " > " + tmpfile;
+
+	Systemcalls(Systemcalls::System, lsCommand);
+
+	string contents = GetFileContents(tmpfile);
+	string rmCommand = "rm " + tmpfile;
+	Systemcalls(Systemcalls::System, rmCommand);
+
+	string tmp = strip(contents);
+	vector<string> dirlist;
+
+	while (!tmp.empty()) {
+		string file;
+		tmp = frontStrip(split(tmp, file, '\n'));
+		dirlist.push_back( file );
+	}
+	return dirlist;
+#else
+	// This is a non-error checking C/system implementation
+	// of the above.
+	string extension(ext);
+	if (extension[0] != '.') extension.insert(0u, 1u, '.');
+	vector<string> dirlist;
+	DIR * dirp = ::opendir(dir.c_str());
+	dirent * dire;
+	while ((dire = ::readdir(dirp))) {
+		string fil = dire->d_name;
+		if (prefixIs(fil, extension)) {
+			dirlist.push_back(fil);
+		}
+	}
+	::closedir(dirp);
+	return dirlist;
+	/* A C++ implementaion will look like this:
+	   if (ext[0] != '.') ext.insert(0u, 1u, '.');
+	   directory_iterator dit("dir");
+	   while (dit != directory_iterator()) {
+	           string fil = (*dit).filename;
+		   if (prefixIs(fil, ext)) {
+		           dirlist.push_back(fil);
+		   }
+		   ++dit;
+	   }
+	*/
+#endif
 }
 
 
@@ -417,9 +486,18 @@ int DeleteAllFilesInDir (string const & path)
 static
 string const CreateTmpDir(string const & tempdir, string const & mask)
 {
-	string const tmpfl(TmpFileName(tempdir, mask));
+#warning Possibly buggy (Lgb)
+	lyxerr << "CreateTmpDir: tempdir=`" << tempdir << "'" << endl;
+	lyxerr << "CreateTmpDir:    mask=`" << mask << "'" << endl;
 	
-	if ((tmpfl.empty()) || lyx::mkdir(tmpfl, 0777)) {
+	string const tmpfl(lyx::tempName(tempdir, mask));
+	// lyx::tempName actually creates a file to make sure that it
+	// stays unique. So we have to delete it before we can create
+	// a dir with the same name. Note also that we are not thread
+	// safe because of the gap between unlink and mkdir. (Lgb)
+	lyx::unlink(tmpfl.c_str());
+	
+	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0777)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
 		return string();
@@ -446,7 +524,7 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 
 string const CreateBufferTmpDir(string const & pathfor)
 {
-	return CreateTmpDir(pathfor, "lyx_bufrtmp");
+	return CreateTmpDir(pathfor, "lyx_tmpbuf");
 }
 
 
@@ -463,7 +541,7 @@ string const CreateLyXTmpDir(string const & deflt)
 #ifdef __EMX__
                         Path p(user_lyxdir);
 #endif
-			string const t(CreateTmpDir(deflt, "lyx_tmp"));
+			string const t(CreateTmpDir(deflt, "lyx_tmpdir"));
                         return t;
 		} else
                         return deflt;
@@ -471,7 +549,7 @@ string const CreateLyXTmpDir(string const & deflt)
 #ifdef __EMX__
 		Path p(user_lyxdir);
 #endif
-		string const t(CreateTmpDir("/tmp", "lyx_tmp"));
+		string const t(CreateTmpDir("/tmp", "lyx_tmpdir"));
 		return t;
 	}
 }
@@ -502,6 +580,7 @@ bool createDirectory(string const & path, int permission)
 }
 
 
+#if 0
 // Returns current working directory
 string const GetCWD ()
 {
@@ -522,6 +601,7 @@ string const GetCWD ()
 	delete[] tbuf;
 	return result;
 }
+#endif
 
 
 // Strip filename from path name
@@ -565,7 +645,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		delete[] with_drive;
 #endif
 	} else
-		TempBase = GetCWD();
+		TempBase = lyx::getcwd(); //GetCWD();
 #ifdef __EMX__
 	if (AbsolutePath(TempRel))
 		return TempBase.substr(0, 2) + TempRel;
@@ -674,7 +754,7 @@ string const ExpandPath(string const & path)
 	RTemp = split(RTemp, Temp, '/');
 
 	if (Temp == ".") {
-		return GetCWD() + '/' + RTemp;
+		return lyx::getcwd() /*GetCWD()*/ + '/' + RTemp;
 	} else if (Temp == "~") {
 		return GetEnvPath("HOME") + '/' + RTemp;
 	} else if (Temp == "..") {

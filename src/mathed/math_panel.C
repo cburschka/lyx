@@ -111,19 +111,27 @@ void button_cb(FL_OBJECT * ob, long data)
        lyxfunc->Dispatch(LFUN_INSERT_MATH, "sqrt");
       break;
     case MM_DELIM:
-      fl_show_form(fd_delim->delim, FL_PLACE_MOUSE, FL_FULLBORDER, _("Delimiter"));
+      fl_show_form(fd_delim->delim,
+		   FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		   _("Delimiter"));
        fl_set_form_atclose(fd_delim->delim, CancelCloseBoxCB, 0);
       break;
     case MM_DECO:
-      fl_show_form(fd_deco->deco, FL_PLACE_MOUSE, FL_FULLBORDER, _("Decoration"));
+      fl_show_form(fd_deco->deco,
+		   FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		   _("Decoration"));
        fl_set_form_atclose(fd_deco->deco, CancelCloseBoxCB, 0);
       break;
     case MM_SPACE:
-      fl_show_form(fd_space->space, FL_PLACE_MOUSE, FL_FULLBORDER, _("Spacing"));
+      fl_show_form(fd_space->space,
+		   FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		   _("Spacing"));
        fl_set_form_atclose(fd_space->space, CancelCloseBoxCB, 0);
       break;
     case MM_MATRIX:
-      fl_show_form(fd_matrix->matrix, FL_PLACE_MOUSE, FL_FULLBORDER, _("Matrix"));
+      fl_show_form(fd_matrix->matrix,
+		   FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		   _("Matrix"));
        fl_set_form_atclose(fd_matrix->matrix, CancelCloseBoxCB, 0);
       break;
     case MM_EQU:
@@ -364,7 +372,8 @@ void show_symbols_form(LyXFunc * lf)
     if (fd_panel->panel->visible) {
 	fl_raise_form(fd_panel->panel);
     } else {
-      fl_show_form(fd_panel->panel, FL_PLACE_MOUSE,
-		   FL_FULLBORDER, _("Math Panel"));
+      fl_show_form(fd_panel->panel,
+		   FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+		   _("Math Panel"));
     }
 }
