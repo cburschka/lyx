@@ -136,9 +136,9 @@ void FormDocument::build()
 	}
 #else
 	vector<string>::iterator ret =
-		remove_if(units_vec.begin(),
-			  units_vec.end(),
-			  bind2nd(contains_functor(), "%"));
+		std::remove_if(units_vec.begin(),
+			       units_vec.end(),
+			       bind2nd(contains_functor(), "%"));
 	units_vec.erase(ret, units_vec.end());
 #endif
 	string units = getStringFromVector(units_vec, "|");
