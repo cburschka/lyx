@@ -2246,17 +2246,22 @@ int LyXTabular::latex(Buffer const * buf,
 			if (column_info[i].left_line)
 				os << '|';
 			if (!column_info[i].p_width.zero()) {
-			  switch (column_info[i].alignment) {
-			  case LYX_ALIGN_LEFT:
-			    os << ">{\\raggedright}";
-			    break;
-			  case LYX_ALIGN_RIGHT:
-			    os << ">{\\raggedleft}";
-			    break;
-			  case LYX_ALIGN_CENTER:
-			    os << ">{\\centering}";
-			    break;
-			  }
+				switch (column_info[i].alignment) {
+				case LYX_ALIGN_LEFT:
+					os << ">{\\raggedright}";
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << ">{\\raggedleft}";
+					break;
+				case LYX_ALIGN_CENTER:
+					os << ">{\\centering}";
+					break;
+				case LYX_ALIGN_NONE:
+				case LYX_ALIGN_BLOCK:
+				case LYX_ALIGN_LAYOUT:
+				case LYX_ALIGN_SPECIAL:
+					break;
+				}
 
 				switch (column_info[i].valignment) {
 				case LYX_VALIGN_TOP:

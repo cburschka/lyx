@@ -188,6 +188,24 @@
 \bind "S-C-Home"               "buffer-begin-select"
 \bind "S-C-End"                "buffer-end-select"
 
+#
+# Edit group
+#
+
+\bind "M-Delete"		"word-delete-backward"
+\bind "C-Delete"		"word-delete-forward"
+\bind "M-d"                     "word-delete-forward"
+\bind "C-BackSpace"		"word-delete-backward"
+\bind "M-Return"		"break-paragraph-keep-layout"
+\bind "C-Return"		"break-line"
+\bind "C-S-L"			"ligature-break-insert"
+\bind "C-space"			"protected-space-insert"
+\bind "C-period"		"end-of-sentence-period-insert"
+\bind "M-period"		"dots-insert"
+\bind "M-w"			"copy"
+\bind "M-S-W"			"layout-copy"
+\bind "Escape"			"meta-prefix"
+
 # Numeric keypad (if Shift+KP_XXX does not switch the NumLock state)
 \bind "S-KP_Right"              "forward-select"
 \bind "S-KP_Left"               "backward-select"
@@ -209,24 +227,6 @@
 \bind "S-KP_Insert"             "paste"
 \bind "S-KP_Delete"             "cut"
 
-
-#
-# Edit group
-#
-
-\bind "M-Delete"		"word-delete-backward"
-\bind "C-Delete"		"word-delete-forward"
-\bind "M-d"                     "word-delete-forward"
-\bind "C-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph-keep-layout"
-\bind "C-Return"		"break-line"
-\bind "C-S-L"			"ligature-break-insert"
-\bind "C-space"			"protected-space-insert"
-\bind "C-period"		"end-of-sentence-period-insert"
-\bind "M-period"		"dots-insert"
-\bind "M-w"			"copy"
-\bind "M-S-W"			"layout-copy"
-\bind "Escape"			"meta-prefix"
 
 ## Trying to incorporate the best of AucTeX and HM--HTML modes
 ##

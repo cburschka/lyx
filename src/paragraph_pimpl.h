@@ -121,7 +121,8 @@ struct Paragraph::Pimpl {
 	///
 	void simpleTeXBlanks(std::ostream &, TexRow & texrow,
 			     lyx::pos_type const i,
-			     int & column, LyXFont const & font,
+			     unsigned int & column,
+			     LyXFont const & font,
 			     LyXLayout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const *, BufferParams const &,
@@ -131,7 +132,7 @@ struct Paragraph::Pimpl {
 				   LyXFont & basefont, bool & open_font,
 				   LyXLayout const & style,
 				   lyx::pos_type & i,
-				   int & column, value_type const c);
+				   unsigned int & column, value_type const c);
 
 	///
 	void validate(LaTeXFeatures & features,

@@ -1342,7 +1342,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	else
 		main_body = beginningOfMainBody();
 
-	int column = 0;
+	unsigned int column = 0;
 
 	if (main_body > 0) {
 		os << '[';

@@ -486,7 +486,6 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	toc::TocList toc_list = toc::getTocList(buf);
 	toc::TocList::const_iterator cit = toc_list.begin();
 	toc::TocList::const_iterator end = toc_list.end();

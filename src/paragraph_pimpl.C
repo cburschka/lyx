@@ -211,7 +211,8 @@ void Paragraph::Pimpl::erase(pos_type pos)
 
 void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 				       pos_type const i,
-				       int & column, LyXFont const & font,
+				       unsigned int & column,
+				       LyXFont const & font,
 				       LyXLayout const & style)
 {
 	if (style.pass_thru) return;
@@ -280,7 +281,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     bool & open_font,
 					     LyXLayout const & style,
 					     pos_type & i,
-					     int & column,
+					     unsigned int & column,
 					     value_type const c)
 {
 	if (style.pass_thru) {
