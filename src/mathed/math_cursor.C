@@ -691,7 +691,7 @@ void MathCursor::selPaste()
 	selClearOrDel();
 	theSelection.paste(*this);
 	//theSelection.grab(*this);
-	//selClear();
+	selClear();
 }
 
 

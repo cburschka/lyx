@@ -427,6 +427,8 @@ void BufferView::paste()
 
 	// paste
 	text->pasteSelection(this);
+	// bug 393
+	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 // why fake a selection only I think it should be a real one and not only
 // a painted one (Jug 20020318).

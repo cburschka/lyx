@@ -1379,6 +1379,9 @@ InsetText::localDispatch(BufferView * bv,
 		} else {
 			lt->insertStringAsLines(bv, clip);
 		}
+		// bug 393
+		lt->clearSelection();
+ 
 		updwhat = CURSOR_PAR;
 		updflag = true;
 		break;
@@ -1396,6 +1399,8 @@ InsetText::localDispatch(BufferView * bv,
 		setUndo(bv, Undo::INSERT,
 			lt->cursor.par(), lt->cursor.par()->next());
 		lt->pasteSelection(bv);
+		// bug 393
+		lt->clearSelection();
 		updwhat = CURSOR_PAR;
 		updflag = true;
 	}

@@ -1530,6 +1530,7 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 	} else {
 		bv_->getLyXText()->insertStringAsLines(bv_, clip);
 	}
+	bv_->getLyXText()->clearSelection();
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
