@@ -1,3 +1,7 @@
+2003-11-28  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* Makefile.in.in: always create pot files with LC_ALL="C"
+
 2003-11-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.in.in (*l10n.pot): fix the file names when building

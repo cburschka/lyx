@@ -54,9 +54,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.3.0\n"
-"POT-Creation-Date: 2003-11-24 15:57+0100\n"
-"PO-Revision-Date: 2003-09-13 15:00+0100\n"
+"Project-Id-Version: LyX 1.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-28 23:38+0100\n"
+"PO-Revision-Date: 2003-11-24 24:00+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -789,7 +790,7 @@ msgstr "Einheiten|#E"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:560
 msgid "Clip to bounding box|#C"
-msgstr "Auf Box zuschneiden|#z"
+msgstr "Auf Begrenzungsbox zuschneiden|#z"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
 msgid "Get from file|#G"
@@ -1739,7 +1740,6 @@ msgstr "Lange Tabelle|#L"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
-#, fuzzy
 msgid "Rotate 90 deg|#9"
 msgstr "90° drehen|#9"
 
@@ -2681,7 +2681,7 @@ msgstr "Klassen-Standards verwenden"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:278
 msgid "Reset default params of the current class"
-msgstr ""
+msgstr "Setzen Sie die Standardparameter der aktuellen Klasse zurück"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:296
 msgid "Save as Document Defaults"
@@ -2977,7 +2977,7 @@ msgstr "&Ausschnitt"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
 msgid "Clip to &bounding box"
-msgstr "Auf Box &zuschneiden"
+msgstr "Auf Begrenzungsbox &zuschneiden"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
 msgid "Clip to bounding box values"
@@ -3019,7 +3019,7 @@ msgstr "Te&ilabbildung"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
-msgstr ""
+msgstr "Ist dies nur ein Teil eines Abbildungs-Gleitobjekts?"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
 msgid "Don't un&zip on export"
@@ -3166,9 +3166,8 @@ msgid "Set math font"
 msgstr "Mathe-Schrift festlegen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
 msgid "Insert fraction"
-msgstr "Bruch einfügen (\frac)"
+msgstr "Bruch einfügen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display mode"
@@ -3907,7 +3906,7 @@ msgstr "&Seitenbereich:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
 msgid "Specify the command option names for your printer command"
-msgstr ""
+msgstr "Geben Sie die Befehlsoptions-Namen für ihren Druckbefehl an"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:231
@@ -4257,6 +4256,8 @@ msgstr "&Export-Formate:"
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
 msgstr ""
+"Verarbeiten Sie die konvertierte Datei mit diesem Befehl ($$Fname = "
+"Dateiname)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4412,7 +4413,6 @@ msgid "Vertical alignment for fixed width columns"
 msgstr "Vertikale Ausrichtung für Spalten mit fester Breite"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
 msgid "Rotate 90 deg"
 msgstr "90° drehen"
 
@@ -4421,7 +4421,6 @@ msgid "&Rotate Table"
 msgstr "Tabelle &drehen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-#, fuzzy
 msgid "Rotate the table by 90 deg"
 msgstr "Dreht die Tabelle um 90°"
 
@@ -4430,9 +4429,8 @@ msgid "Rotate &Cell"
 msgstr "&Zelle drehen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-#, fuzzy
 msgid "Rotate this cell by 90 deg"
-msgstr "Dreht diese Zelle um 90Â°"
+msgstr "Dreht diese Zelle um 90°"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
 msgid "Custom column format (LaTeX)"
@@ -5275,23 +5273,23 @@ msgstr "Teil*"
 
 #: ../lib/layouts/broadway.layout:26 ../lib/layouts/hollywood.layout:40
 msgid "Dialogue"
-msgstr ""
+msgstr "Dialog"
 
 #: ../lib/layouts/broadway.layout:40 ../lib/layouts/hollywood.layout:214
 msgid "Narrative"
-msgstr ""
+msgstr "Erzählung"
 
 #: ../lib/layouts/broadway.layout:59
 msgid "ACT"
-msgstr ""
+msgstr "AKT"
 
 #: ../lib/layouts/broadway.layout:74
 msgid "SCENE"
-msgstr ""
+msgstr "SZENE"
 
 #: ../lib/layouts/broadway.layout:88
 msgid "SCENE*"
-msgstr ""
+msgstr "SZENE*"
 
 #: ../lib/layouts/broadway.layout:102
 msgid "AT_RISE:"
@@ -5869,24 +5867,20 @@ msgid "Solution"
 msgstr "Lösung"
 
 #: ../lib/layouts/memoir.layout:31
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Kapitel"
+msgstr ""
 
 #: ../lib/layouts/memoir.layout:52
-#, fuzzy
 msgid "Epigraph"
-msgstr "Biographie"
+msgstr ""
 
 #: ../lib/layouts/memoir.layout:64
-#, fuzzy
 msgid "Poemtitle"
-msgstr "Folie (Hochformat)"
+msgstr "Gedichttitel"
 
 #: ../lib/layouts/memoir.layout:82
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "Folie (Hochformat)"
+msgstr "Gedichttitel*"
 
 #: ../lib/layouts/paper.layout:143
 msgid "SubTitle"
@@ -8213,18 +8207,17 @@ msgid "Can't load textclass "
 msgstr "Kann Textklasse nicht laden: "
 
 #: src/buffer.C:656
-#, fuzzy, c-format
+#, c-format
 msgid "The document uses a missing TeX class \"%1$s\"."
-msgstr "Das Dokument verwendet die unbekannte Textklasse \"%1$s\"."
+msgstr "Das Dokument verwendet die fehlende TeX-Klasse \"%1$s\"."
 
 #: src/buffer.C:657 src/buffer.C:663
 msgid "LyX will not be able to produce output."
-msgstr ""
+msgstr "LyX wird keine Ausgabe erzeugen können."
 
 #: src/buffer.C:661
-#, fuzzy
 msgid "The document uses a missing TeX class "
-msgstr "Das Dokument verwendet die unbekannte Textklasse "
+msgstr "Das Dokument verwendet die fehlende TeX-Klasse "
 
 #: src/buffer.C:968
 #, c-format
@@ -8245,6 +8238,8 @@ msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
 msgstr ""
+"Die Datei wurde mit einer neueren Version von LyX erzeugt. Dies wird "
+"wahrscheinlich Probleme verursachen."
 
 #. "\\lyxformat" not found
 #: src/buffer.C:1204 src/buffer.C:1212 src/buffer.C:1226 src/buffer.C:1258
@@ -8265,6 +8260,7 @@ msgstr ""
 #: src/buffer.C:1227
 msgid "An error occured while running the conversion script."
 msgstr ""
+"Während der Ausführung des Konvertierungsskripts ist ein Fehler aufgetreten."
 
 #: src/buffer.C:1253
 msgid "Reading of document is not complete"
@@ -8339,7 +8335,7 @@ msgstr "LyX: Versuche, das Dokument %1$s zu speichern..."
 
 #: src/bufferlist.C:318
 msgid "LyX: Attempting to save document "
-msgstr ""
+msgstr "LyX: Versuche, das Dokument zu speichern: "
 
 #: src/bufferlist.C:329 src/bufferlist.C:342 src/bufferlist.C:356
 msgid "  Save seems successful. Phew."
@@ -9230,14 +9226,12 @@ msgid ",,text''"
 msgstr ",,Text''"
 
 #: src/frontends/qt2/QDocument.C:92
-#, fuzzy
 msgid "<<text>>"
-msgstr "Text"
+msgstr "«Text»"
 
 #: src/frontends/qt2/QDocument.C:93
-#, fuzzy
 msgid ">>text<<"
-msgstr "Text"
+msgstr "»Text«"
 
 #: src/frontends/qt2/QDocument.C:105
 msgid "US letter"
@@ -9955,7 +9949,6 @@ msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr " Keine | Schmale Ränder | Sehr schmale Ränder | Sehr breite Ränder "
 
 #: src/frontends/xforms/FormDocument.C:293
-#, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr " ``Text'' | ''Text'' | ,,Text`` | ,,Text'' | «Text» | »Text« "
 
@@ -11675,7 +11668,7 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 "Aufruf: lyx [ Befehlszeilenoptionen ] [ name.lyx ... ]\n"
-"Kommandozeilenoptionen (groß/klein beachten):\n"
+"Befehlszeilenoptionen (groß/klein beachten):\n"
 "\t-help              LyX Benutzung zusammenfassen\n"
 "\t-userdir dir       Setze das Benutzerverzeichnis auf dir\n"
 "\t-sysdir dir        Setze das Systemverzeichnis auf dir\n"
@@ -12696,24 +12689,3 @@ msgstr "Marke gesetzt"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
-
-#~ msgid "­ Û"
-#~ msgstr "­ Û"
-
-#~ msgid "± ´"
-#~ msgstr "± ´"
-
-#~ msgid "£ @"
-#~ msgstr "£ @"
-
-#~ msgid "S  ò"
-#~ msgstr "S  ò"
-
-#~ msgid "!(£ @)"
-#~ msgstr "!(£ @)"
-
-#~ msgid "«text»"
-#~ msgstr "«Text»"
-
-#~ msgid "»text«"
-#~ msgstr "»Text«"
