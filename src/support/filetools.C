@@ -1043,22 +1043,26 @@ string const getExtFromContents(string const & filename) {
 
 
 /// check for zipped file
-bool zippedFile(string const & name) {
+bool zippedFile(string const & name)
+{
 	string const type = getExtFromContents(name);
-	if (contains("gzip zip compress",type) && !type.empty())
-	    return true;
+	if (contains("gzip zip compress", type) && !type.empty())
+		return true;
 	return false;
 }
 
+
 string const unzipFile(string const & zipped_file)
 {
-    string const file = ChangeExtension(zipped_file, string());
-    string  const tempfile = lyx::tempName(string(), file);
-    // Run gunzip
-    string const command = "gunzip -c "+zipped_file+" > "+tempfile;
-    Systemcalls one(Systemcalls::Wait, command);
-    // test that command was executed successfully
-    return tempfile;
+	string const file = ChangeExtension(zipped_file, string());
+	string  const tempfile = lyx::tempName(string(), file);
+	// Run gunzip
+	string const command = "gunzip -c " + zipped_file + " > " + tempfile;
+	Systemcalls one;
+	one.startscript(Systemcalls::Wait, command);
+	// test that command was executed successfully (anon)
+	// yes, please do. (Lgb)
+	return tempfile;
 }
 
 

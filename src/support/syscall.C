@@ -25,10 +25,13 @@
 #include "syscall.h"
 #include "os.h"
 
+
+#if 0
 Systemcalls::Systemcalls(Starttype how, string const & what)
 {
 	startscript(how, what);
 }
+#endif
 
 
 // Reuse of instance

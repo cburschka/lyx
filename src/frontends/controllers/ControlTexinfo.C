@@ -32,11 +32,13 @@
 
 extern string user_lyxdir; // home of *Files.lst
 
+
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
 {
 	d_.showTexinfo.connect(SigC::slot(this, &ControlTexinfo::show));
 }
+
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
@@ -44,7 +46,8 @@ void ControlTexinfo::rescanStyles() const
 {
 	// Run rescan in user lyx directory
 	Path p(user_lyxdir);
-	Systemcalls one(Systemcalls::Wait,
+	Systemcalls one;
+	one.startscript(Systemcalls::Wait,
 			LibFileSearch("scripts", "TeXFiles.sh"));
 	p.pop();
 }
@@ -56,7 +59,9 @@ void ControlTexinfo::runTexhash() const
 	Path p(user_lyxdir);
 
 	//path to texhash through system
-	Systemcalls one(Systemcalls::Wait, "texhash"); 
+	Systemcalls one;
+	one.startscript(Systemcalls::Wait, "texhash");
+	
 	p.pop();
 //	Alert::alert(_("texhash run!"), 
 //		   _("rebuilding of the TeX-tree could only be successfull"),

@@ -38,13 +38,15 @@ public:
 	
 	///
 	Systemcalls() {}
-	
+
+#if 0
 	/** Generate instance and start child process.
 	 *  The string "what" contains a commandline with arguments separated 
 	 *  by spaces.
 	 */
 	Systemcalls(Starttype how, string const & what);
-
+#endif
+	
 	/** Start child process.
 	 *  This is for reuse of the Systemcalls instance.
 	 */

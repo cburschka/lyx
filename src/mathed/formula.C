@@ -60,7 +60,8 @@ namespace {
 		string outfile = lyx::tempName(string(), "mathextern");
 		string full =  "echo '" + data + "' | (" + cmd + ") > " + outfile;
 		lyxerr << "calling: " << full << "\n";
-		Systemcalls dummy(Systemcalls::Wait, full);
+		Systemcalls dummy;
+		dummy.startscript(Systemcalls::Wait, full);
 		string out = GetFileContents(outfile);
 		lyx::unlink(outfile);
 		lyxerr << "result: '" << out << "'\n";
