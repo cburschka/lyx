@@ -1,3 +1,9 @@
+2002-10-31  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* insetgraphicsParams.C (Write): use lyx::float_equal.
+	Write height data correctly.
+	(Read): zero scale when reading height data.
+
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* insetfloat.C (addToTOC): recursively traverse all

@@ -18,7 +18,6 @@ TODO
     * Add a way to roll the image file into the file format.
     * When loading, if the image is not found in the expected place, try
       to find it in the clipart, or in the same directory with the image.
-    * Keep a tab on the image file, if it changes, update the lyx view.
     * The image choosing dialog could show thumbnails of the image formats
       it knows of, thus selection based on the image instead of based on
       filename.

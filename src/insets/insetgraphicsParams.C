@@ -142,16 +142,16 @@ void InsetGraphicsParams::Write(ostream & os) const
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != grfx::DefaultDisplay)
 		os << "\tdisplay " << grfx::displayTranslator.find(display) << '\n';
-	if (scale) {
+	if (!lyx::float_equal(scale, 0.0, 0.05)) {
 		if (!lyx::float_equal(scale, 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
 	} else {
 		if (!width.zero())
 			os << "\twidth " << width.asString() << '\n';
+		if (!height.zero())
+			os << "\theight " << height.asString() << '\n';
 	}
 
-	if (!height.zero())
-		os << "\theight " << height.asString() << '\n';
 	if (keepAspectRatio)
 		os << "\tkeepAspectRatio\n";
 	if (draft)			// draft mode
@@ -199,6 +199,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "height") {
 		lex.next();
 		height = LyXLength(lex.getString());
+		scale = 0.0;
 	} else if (token == "keepAspectRatio") {
 		keepAspectRatio = true;
 	} else if (token == "draft") {
@@ -206,9 +207,12 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "noUnzip") {
 		noUnzip = true;
 	} else if (token == "BoundingBox") {
-		for (int i=0; i<4 ;i++) {
+		bb.erase();
+		for (int i = 0; i < 4; ++i) {
+			if (i != 0)
+				bb += " ";
 			lex.next();
-			bb += (lex.getString()+" ");
+			bb += lex.getString();
 		}
 	} else if (token == "clip") {
 		clip = true;
