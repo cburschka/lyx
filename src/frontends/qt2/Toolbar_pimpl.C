@@ -133,6 +133,8 @@ void Toolbar::Pimpl::button_selected(QToolButton * button)
 
 void Toolbar::Pimpl::changed_layout(string const & sel)
 {
+	owner_->centralWidget()->setFocus();
+ 
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
 	
