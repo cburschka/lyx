@@ -67,7 +67,7 @@ updatesrc: d e
 	$(FDESIGN) -convert $<
 
 .c.C:
-	./fdfix.sh $< $@
+	${SHELL} ./fdfix.sh $< $@
 	rm $<
 
 clean:
