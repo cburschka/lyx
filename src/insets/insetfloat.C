@@ -166,6 +166,7 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 void InsetFloat::Validate(LaTeXFeatures & features) const
 {
 	features.usedFloats.insert(floatType_);
+	InsetCollapsable::Validate(features);
 }
 
 

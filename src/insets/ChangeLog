@@ -1,3 +1,7 @@
+2001-06-22  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetfloat.C (Validate): Add a call to InsetCollapsable::Validate
+
 2001-06-14  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (draw): removed warinings.
