@@ -49,6 +49,9 @@ void catInit()
 	theCatcode[13]   = catIgnore;
 	theCatcode['~']  = catActive;
 	theCatcode['%']  = catComment;
+
+	// This is wrong!
+	theCatcode['@']  = catLetter;
 }
 
 }
@@ -149,8 +152,15 @@ Token const & Parser::getToken()
 
 void Parser::skipSpaces()
 {
-	while (nextToken().cat() == catSpace || nextToken().cat() == catNewline)
-		getToken();
+	while (1) {
+		if (nextToken().cat() == catSpace || nextToken().cat() == catNewline)
+			getToken();
+		else if (nextToken().cat() == catComment) 
+			while (nextToken().cat() != catNewline)
+				getToken();
+		else
+			break;
+	}
 }
 
 
@@ -312,6 +322,7 @@ string Parser::verbatimItem()
 {
 	if (!good())
 		error("stream bad");
+	skipSpaces();
 	if (nextToken().cat() == catBegin) {
 		Token t = getToken(); // skip brace
 		string res;

@@ -989,6 +989,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "begin") {
 			string const name = getArg('{', '}');
+			skipSpaces();
 
 			if (name == "array" || name == "subarray") {
 				string const valign = parse_verbatim_option() + 'c';
@@ -1001,7 +1002,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				string const valign = parse_verbatim_option() + 'c';
 				string const halign = parse_verbatim_item();
 				cell->push_back(MathAtom(new MathTabularInset(name, valign[0], halign)));
-				parse2(cell->back(), FLAG_END, mode, false);
+				parse2(cell->back(), FLAG_END, MathInset::TEXT_MODE, false);
 			}
 
 			else if (name == "split" || name == "cases" ||

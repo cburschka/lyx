@@ -10,6 +10,7 @@
 #include <cctype>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <stack>
 #include <string>
 #include <vector>
@@ -28,6 +29,7 @@ using std::ios;
 using std::ifstream;
 using std::istream;
 using std::istringstream;
+using std::map;
 using std::ostream;
 using std::ostringstream;
 using std::stack;
@@ -37,7 +39,7 @@ using std::vector;
 
 namespace {
 
-void parse(Parser & p, ostream & os, unsigned flags, mode_type mode);
+void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode);
 
 char const OPEN = '<';
 char const CLOSE = '>';
@@ -135,7 +137,7 @@ string cap(string s)
 }
 
 
-string const trim(string const & a, char const * p = " ")
+string const trim(string const & a, char const * p = " \t\n\r")
 {
 	// lyx::Assert(p);
 
@@ -153,12 +155,28 @@ string const trim(string const & a, char const * p = " ")
 }
 
 
-void split(string const & s, vector<string> & result, char delim)
+void split(string const & s, vector<string> & result, char delim = ',')
 {
 	istringstream is(s);	
 	string t;
 	while (getline(is, t, delim))
 		result.push_back(t);
+}
+
+
+// splits "x=z, y=b" into a map
+map<string, string> split_map(string const & s)
+{
+	map<string, string> res;
+	vector<string> v;
+	split(s, v);
+	for (size_t i = 0; i < v.size(); ++i) {
+		size_t const pos   = v[i].find('=');
+		string const index = v[i].substr(0, pos);
+		string const value = v[i].substr(pos + 1, string::npos);	
+		res[trim(index)] = trim(value);
+	}
+	return res;
 }
 
 
@@ -415,7 +433,7 @@ void end_preamble(ostream & os)
 }
 
 
-void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
+void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 {
 	while (p.good()) {
 		Token const & t = p.getToken();
@@ -533,39 +551,39 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		}
 
 		else if (t.cat() == catBegin) {
-			if (mode == MATH_MODE)
-				os << '{';
-			else
+			if (mode == TEXT_MODE)
 				handle_tex(os, "{");
+			else
+				os << '{';
 		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			if (mode == MATH_MODE)
-				os << '}';
-			else
+			if (mode == TEXT_MODE)
 				handle_tex(os, "}");
+			else
+				os << '}';
 		}
 
 		else if (t.cat() == catAlign) {
-			if (mode == MATH_MODE)
-				os << t.character();
-			else
+			if (mode == TEXT_MODE)
 				os << TAB;
+			else
+				os << t.character();
 		}
 
 		else if (t.cs() == "tabularnewline") {
-			if (mode == MATH_MODE)
-				os << t.asInput();
-			else
+			if (mode == TEXT_MODE)
 				os << LINE;
+			else
+				os << t.asInput();
 		}
 
 		else if (t.cs() == "\\" && mode == MATH_MODE)
 			os << t.asInput();
 
-		else if (t.cs() == "\\" && curr_env() == "tabular")
+		else if (t.cs() == "\\" && mode == TEXT_MODE && curr_env() == "tabular")
 			os << LINE;
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
@@ -612,6 +630,11 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			string const body = p.verbatimItem();
 			// only non-lyxspecific stuff
 			if (name != "\\noun " && name != "\\tabularnewline ") {
+				ostringstream ss;
+				ss << '\\' << t.cs() << '{' << name << '}'
+					<< opts << '{' << body << "}\n";
+				handle_tex(os, ss.str());
+/*
 				ostream & out = in_preamble ? h_preamble : os;
 				if (!in_preamble)
 					begin_inset(os, "FormulaMacro\n");
@@ -619,6 +642,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				    << opts << "{" << body << "}\n";
 				if (!in_preamble)
 					end_inset(os);
+*/
 			}
 		}
 
@@ -658,6 +682,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			active_environments.push(name);
 			if (name == "document") {
 				end_preamble(os);
+				os << "\n\n\\layout Standard\n\n";
 				parse(p, os, FLAG_END, mode);
 			} else if (name == "abstract") {
 				handle_par(os);
@@ -669,15 +694,18 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				os << "\\end{" << name << "}";
 				end_inset(os);	
 			} else if (name == "tabular") {
-				if (mode == TEXT_MODE)
+				if (mode == TEXT_MODE) 
 					handle_tabular(p, os, mode);
 				else {
 					os << "\\begin{" << name << "}";
 					parse(p, os, FLAG_END, MATHTEXT_MODE);
 					os << "\\end{" << name << "}";
 				}
-			} else if (name == "table") {
-				begin_inset(os, "Float table\n");	
+			} else if (name == "table" || name == "figure") {
+				string opts = p.getOpt();
+				begin_inset(os, "Float " + name + "\n");
+				if (opts.size())
+					os << "placement " << opts << '\n';
 				os << "wide false\n"
 				   << "collapsed false\n"
 				   << "\n"
@@ -688,7 +716,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				p.verbatimItem(); // swallow next arg
 				parse(p, os, FLAG_END, mode);
 				os << "\n\\layout Standard\n\n";
-			} else if (mode == MATH_MODE) {
+			} else if (mode == MATH_MODE || mode == MATHTEXT_MODE) {
 				os << "\\begin{" << name << "}";
 				parse(p, os, FLAG_END, mode);
 				os << "\\end{" << name << "}";
@@ -823,6 +851,19 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			}
 			os << "\n\n\\layout " << cap(name) << "\n\n";
 			parse(p, os, FLAG_ITEM, mode);
+			os << "\n\n\\layout Standard\n\n";
+		}
+
+		else if (t.cs() == "includegraphics") {
+			map<string, string> opts = split_map(p.getArg('[', ']'));
+			string name = p.verbatimItem();
+			begin_inset(os, "Graphics ");
+			os << "\n\tfilename " << name << '\n';
+			if (opts.find("width") != opts.end())
+				os << "\twidth " << opts["width"] << '\n';
+			if (opts.find("height") != opts.end())
+				os << "\theight " << opts["height"] << '\n';
+			end_inset(os);
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
@@ -883,6 +924,20 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "&" && mode == TEXT_MODE)
 			os << '&';
 
+		else if (t.cs() == "\"") {
+			string const name = p.verbatimItem();
+			     if (name == "a") os << 'ä';
+			else if (name == "o") os << 'ö';
+			else if (name == "u") os << 'ü';
+			else if (name == "A") os << 'Ä';
+			else if (name == "O") os << 'Ö';
+			else if (name == "U") os << 'Ü';
+			else handle_ert(os, "\"{" + name + "}");
+		}
+
+		else if (t.cs() == "ss") 
+			os << "ß";
+
 		else if (t.cs() == "input")
 			handle_tex(os, "\\input{" + p.verbatimItem() + "}\n");
 
@@ -898,8 +953,11 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		}
 
 		else {
-			if (mode == MATH_MODE)
+			//cerr << "#: " << t << " mode: " << mode << endl;
+			if (mode == MATH_MODE || mode == MATHTEXT_MODE) {
 				os << t.asInput();
+				//cerr << "#: writing: '" << t.asInput() << "'\n";
+			}
 			else if (in_preamble)
 				h_preamble << t.asInput();
 			else {
