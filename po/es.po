@@ -1,5 +1,5 @@
-# translation of es-1.7.4.21.po to Español
-# translation of es.po to Español
+# translation of es.po to 
+# translation of es.po to
 # Mensajes en español para LyX.
 # Copyright (C) 1997-1999 LyX Team.
 #
@@ -14,23 +14,22 @@
 # David Suárez de lis <fafefito@usc.es>, 1999, 2000.
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
 # Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
-# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003.
 # Alejandro Aguilar Sierra <asierra@servidor.unam.mx>, 1997.
 # David Suárez de lis <fafefito@usc.es>, 1999, 2000.
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
 # Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
-# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004.
+# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: es-1.7.4.21\n"
+"Project-Id-Version: es\n"
 "POT-Creation-Date: 2005-03-07 12:50+0100\n"
-"PO-Revision-Date: 2004-09-28 15:41+0200\n"
-"Last-Translator: Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>\n"
-"Language-Team: Español\n"
+"PO-Revision-Date: 2005-03-07 13:57+0100\n"
+"Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
+"Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.9.1\n"
 "\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -148,7 +147,7 @@ msgstr "Examinar...|#x"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:152
 msgid "Add bibliography to TOC|#T"
-msgstr "Añadir bibliografía al IG|#T"
+msgstr "Añadir bibliografía al IG|#G"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
 msgid "Styles:|#y"
@@ -214,7 +213,7 @@ msgstr "Familia:|#F"
 
 #: ../src/frontends/xforms/forms/form_character.fd:80
 msgid "Series:|#S"
-msgstr "Series:|#S"
+msgstr "Serie:|#S"
 
 #: ../src/frontends/xforms/forms/form_character.fd:98
 msgid "Shape:|#H"
@@ -520,7 +519,7 @@ msgstr "Estilo de referencias:|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
 msgid "Bullet depth"
-msgstr "Profundidad de bullet"
+msgstr "Profundidad de ítem"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1595
 msgid "LaTeX:|#L"
@@ -878,11 +877,11 @@ msgstr "Grueso|#G"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:134
 msgid "2Quadratin|#2"
-msgstr "2Quadratin|#2"
+msgstr "2Cuadratín|#2"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:188
 msgid "Quadratin|#Q"
-msgstr "Quadratin|#Q"
+msgstr "Cuadratín|#Q"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:206
 msgid "Thin|#I"
@@ -1032,7 +1031,7 @@ msgstr "Typewriter:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
-msgstr "Reescalar fuentes de mapa de bits|#b"
+msgstr "Reescalar fuentes mapa de bits|#b"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
 msgid "Zoom %:|#Z"
@@ -1272,7 +1271,7 @@ msgstr "Examinar...|#x"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1661
 msgid "RtL support|#R"
-msgstr "Idioma dch.-izq.|#r"
+msgstr "Soporte RtL|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1679
 msgid "Auto begin|#b"
@@ -1280,11 +1279,11 @@ msgstr "Auto-iniciar|#i"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1697
 msgid "Use babel|#U"
-msgstr "Usar babel|#i"
+msgstr "Usar babel|#b"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1715
 msgid "Mark foreign|#M"
-msgstr "Marcar extránjeros|#x"
+msgstr "Marcar extranjeros|#x"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1733
 msgid "Auto finish|#f"
@@ -1405,9 +1404,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "Tubería LyXServer:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Tipo:|#T"
+msgstr "Prefijo PATH:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1499,7 +1497,7 @@ msgstr "Codificación TeX:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3022
 msgid "Default paper size:|#p"
-msgstr "Tamaño de papel predeterminado:|#P"
+msgstr "Tamaño predeterminado del papel:|#p"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
 msgid "Outside Code Interaction"
@@ -1515,7 +1513,7 @@ msgstr "CheckTeX:|#c"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3094
 msgid "DVI paper option:|#D"
-msgstr "Opcion papel DVI:|#D"
+msgstr "Opción papel DVI:|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3112
 msgid "Autoreset Class Options on change|#u"
@@ -1523,7 +1521,7 @@ msgstr "Reiniciar opciones de clase al cambiar|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "Usar rutas Cygwin|#s"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -1616,7 +1614,7 @@ msgstr "Palabra completa|#n"
 
 #: ../src/frontends/xforms/forms/form_search.fd:170
 msgid "Replace all|#a"
-msgstr "Reemplazar todos|#R"
+msgstr "Reemplazar todo|#R"
 
 #: ../src/frontends/xforms/forms/form_search.fd:188
 msgid "Search backwards|#S"
@@ -1641,7 +1639,7 @@ msgstr "Desconocido:"
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:98
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:195
 msgid "Replacement:"
-msgstr "Reemplazo:"
+msgstr "Reemplazar con:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:116
 msgid "Suggestions:|#g"
@@ -1657,7 +1655,7 @@ msgstr "Ignorar|#I"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:170
 msgid "Ignore All|#g"
-msgstr "Ignorar Siempre|#I"
+msgstr "Ignorar siempre|#I"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
@@ -2103,7 +2101,7 @@ msgstr "&Sección:"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:79
 msgid "&Table of contents:"
-msgstr "&Indice general:"
+msgstr "Índ&ice general:"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:41
 #: src/frontends/qt2/QDocumentDialog.C:69
@@ -2371,7 +2369,7 @@ msgstr "Familia de Fuentes"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
 msgid "&Series:"
-msgstr "&Series:"
+msgstr "&Serie:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
@@ -2460,7 +2458,7 @@ msgstr "Aplicar cada cambio automáticamente"
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
 msgid "&Apply"
-msgstr "&Aplicar"
+msgstr "A&plicar"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:44 src/frontends/xforms/FormCitation.C:93
@@ -2635,7 +2633,7 @@ msgstr "título aquí"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:274
 msgid "Use Class Defaults"
-msgstr "Usar Predeterminados de Clase"
+msgstr "Usar predeterminados de clase"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:278
 msgid "Reset default params of the current class"
@@ -3012,7 +3010,7 @@ msgstr "Descri&pción:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
-msgstr "Descripcion de la subfigura"
+msgstr "Descripción de la subfigura"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
@@ -3082,7 +3080,7 @@ msgstr "Mostrar vista preliminar LaTeX"
 #: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
 #: src/insets/insetindex.C:66
 msgid "Index"
-msgstr "Indice"
+msgstr "Índice"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
 msgid "&Keyword"
@@ -3161,7 +3159,7 @@ msgstr "&Funciones"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
 msgid "Select a function or operator to insert"
-msgstr "Selecione la función u operador a insertar"
+msgstr "Seleccionar una función u operador para insertar"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
 msgid "Symbols"
@@ -3563,11 +3561,11 @@ msgstr "&Modificar"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "Rutas Cygwin"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&Usar rutas estilo-Cygwin"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3577,6 +3575,10 @@ msgid ""
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
 msgstr ""
+"Seleccionar si LyX debería usar rutas estilo Cygwin en vez de rutas estilo "
+"Windows. Útil si está usando teTeX Cygwin en vez del paquete nativo MikTeX "
+"para Windows. Sin embargo, note que necesitará escribir envoltorios de los "
+"scripts del shell para todos sus convertidores."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3743,7 +3745,7 @@ msgstr "Codificación Te&X:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:148
 msgid "Default paper si&ze:"
-msgstr "Tamaño de papel pre&determinado:"
+msgstr "Tamaño pre&determinado del papel:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
 msgid "&Reset class options when document class changes"
@@ -3763,16 +3765,16 @@ msgstr "Comando Chec&kTeX:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
 msgid "DVI viewer paper size options:"
-msgstr "Opciones de tamaño de papel del visor DVI:"
+msgstr "Opciones de tamaño del papel del visor DVI:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
-"Indicador opcional de tamaño de papel (-paper) para algunos visores DVI"
+"Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
-msgstr "Indicadores y opciones de inicio de ChechTeX"
+msgstr "Indicadores y opciones de inicio de CheckTeX"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:85
 msgid "&Backup directory:"
@@ -3796,7 +3798,7 @@ msgstr "Tubería LyX&Server:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "&Prefijo PATH:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -4214,7 +4216,7 @@ msgstr "&Reemplazar"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
 msgid "Replace &All"
-msgstr "Reemplazar &todos"
+msgstr "Reemplazar &todo"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
 msgid "Search &backwards"
@@ -4272,7 +4274,7 @@ msgstr "Ignorar esta palabra"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
 msgid "I&gnore All"
-msgstr "I&gnorar Siempre"
+msgstr "I&gnorar siempre"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 msgid "Accept word for this session"
@@ -4292,7 +4294,7 @@ msgstr "Palabra actual"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 msgid "Unknown word:"
-msgstr "Palabre desconocida:"
+msgstr "Palabra desconocida:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
@@ -4612,7 +4614,7 @@ msgstr "Reemplazar el ítem con la selección"
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
 msgid "Table Of Contents"
-msgstr "Indice General"
+msgstr "Índice General"
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
 msgid "Contents list"
@@ -5888,7 +5890,7 @@ msgstr "Más"
 
 #: ../lib/layouts/hollywood.layout:83
 msgid "FADE_IN:"
-msgstr "APARICION_GRADUAL:"
+msgstr "APARICIÓN_GRADUAL:"
 
 #: ../lib/layouts/hollywood.layout:102
 msgid "INT."
@@ -5916,7 +5918,7 @@ msgstr "INTERCORTE"
 
 #: ../lib/layouts/hollywood.layout:271
 msgid "FADE_OUT"
-msgstr "DESAPARICION_GRADUAL"
+msgstr "DESAPARICIÓN_GRADUAL"
 
 #: ../lib/layouts/hollywood.layout:286
 msgid "General"
@@ -5928,7 +5930,7 @@ msgstr "Escena"
 
 #: ../lib/layouts/hollywood.layout:353
 msgid "FADE_OUT:"
-msgstr "DESAPARICION_GRADUAL:"
+msgstr "DESAPARICIÓN_GRADUAL:"
 
 #: ../lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
@@ -6913,7 +6915,7 @@ msgstr "Octave"
 
 #: ../lib/ui/default.ui:159
 msgid "Maxima"
-msgstr "Maxima"
+msgstr "Máxima"
 
 #: ../lib/ui/default.ui:160
 msgid "Mathematica"
@@ -7226,7 +7228,7 @@ msgstr "Figura Floatflt"
 
 #: ../lib/ui/default.ui:283
 msgid "Table of Contents|C"
-msgstr "Indice General|G"
+msgstr "Índice General|G"
 
 #: ../lib/ui/default.ui:285
 msgid "Index List|I"
@@ -7307,7 +7309,7 @@ msgstr "Registro de LaTeX|L"
 
 #: ../lib/ui/default.ui:325
 msgid "Table of Contents|T"
-msgstr "Indice General|I"
+msgstr "Índice General|I"
 
 #: ../lib/ui/default.ui:326
 msgid "TeX Information|X"
@@ -7379,7 +7381,7 @@ msgstr "Preguntas Frecuentes|F"
 
 #: ../lib/ui/default.ui:376
 msgid "Table of Contents|a"
-msgstr "Indice General|G"
+msgstr "Índice General|G"
 
 #: ../lib/ui/default.ui:377
 msgid "LaTeX Configuration|L"
@@ -8328,7 +8330,7 @@ msgstr "El documento usa una clase textual desconocida \"%1$s\"."
 
 #: src/buffer.C:624 src/buffer.C:630 src/buffer.C:644 src/buffer.C:649
 msgid "-- substituting default."
-msgstr "-- substituyendola con la clase por defecto."
+msgstr "-- substituyéndola con la clase por defecto."
 
 #: src/buffer.C:628
 msgid "The document uses an unknown textclass "
@@ -8391,11 +8393,11 @@ msgstr ""
 
 #: src/buffer.C:1228
 msgid "Can't find conversion script."
-msgstr "No se puede encontrar el macro de conversión."
+msgstr "No se puede encontrar el script de conversión."
 
 #: src/buffer.C:1242
 msgid "An error occured while running the conversion script."
-msgstr "Ocurrió un error al ejecutar el macro de conversión."
+msgstr "Ocurrió un error al ejecutar el script de conversión."
 
 #: src/buffer.C:1268
 msgid "Reading of document is not complete"
@@ -8665,7 +8667,7 @@ msgstr "Falta archivo de reporte:"
 
 #: src/converter.C:931
 msgid "There were errors during the LaTeX run."
-msgstr "Hubo errores durante la ejección de LaTeX."
+msgstr "Hubo errores durante la ejecución de LaTeX."
 
 #: src/debug.C:34
 msgid "No debugging message"
@@ -8814,7 +8816,7 @@ msgstr "Por favor instalar correctamente para apreciar la gran\n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:50
 msgid "amount of work other people have done for the LyX project."
-msgstr "cantidad de trabajo que otra gente ha hecho por el projecto LyX."
+msgstr "cantidad de trabajo que otra gente ha hecho por el proyecto LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.C:57
 msgid ""
@@ -8832,7 +8834,7 @@ msgid ""
 "any later version."
 msgstr ""
 "Este programa es software libre; puede redistribuirlo y/o modificarlo bajo "
-"los términos de la Licencia Pública General GNU como está publicado por la "
+"los términos de la Licencia Pública General GNU como está publicada por la "
 "Fundación del Software Libre; bien por la versión 2 de la Licencia, o (a su "
 "elección) por cualquier versión posterior."
 
@@ -8847,8 +8849,8 @@ msgid ""
 "Ave, Cambridge, MA 02139, USA."
 msgstr ""
 "LyX es distribuido con la esperanza de que sea útil, pero SIN NINGUNA "
-"GARANTIA; incluso sin la garantía implícita de MERCANTIBILIDAD o ADECUACIÓN "
-"A UN PROPÓSITO PARTICULAR.\n"
+"GARANTÍA; incluso sin la garantía implícita de MERCANTILISMO o ADECUACIÓN A "
+"UN PROPÓSITO PARTICULAR.\n"
 "Vea la Licencia Pública General GNU para más detalles.\n"
 "Debería haber recibido una copia de la Licencia Pública General GNU con este "
 "programa; si no, escriba a Free Software Foundation, Inc., 675 Mass Ave, "
@@ -9080,7 +9082,7 @@ msgstr ""
 #: src/frontends/controllers/ControlSpellchecker.C:105
 #: src/frontends/controllers/ControlSpellchecker.C:198
 msgid "The spell-checker has failed"
-msgstr "Falla del corrector ortográfico"
+msgstr "El corrector ortográfico ha fallado"
 
 #: src/frontends/controllers/ControlSpellchecker.C:192
 msgid ""
@@ -9311,7 +9313,7 @@ msgstr "Seleccionar una base datos BibTeX para añadir"
 
 #: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
 msgid "Character Layout"
-msgstr "Estilo de caracter"
+msgstr "Estilo de carácter"
 
 #: src/frontends/qt2/QCommandBuffer.C:70
 msgid "Previous command"
@@ -9438,7 +9440,7 @@ msgstr "Estilo del documento"
 
 #: src/frontends/qt2/QDocumentDialog.C:259
 msgid "Papersize and Orientation"
-msgstr "Tamaño de papel y Orientación"
+msgstr "Tamaño del papel y Orientación"
 
 #: src/frontends/qt2/QDocumentDialog.C:265
 msgid "Language Settings and Quote Style"
@@ -9532,11 +9534,11 @@ msgstr "Espacio grueso\t\\;"
 
 #: src/frontends/qt2/QMathDialog.C:120
 msgid "Quadratin space\t\\quad"
-msgstr "Espacio Quadratin\t\\quad"
+msgstr "Espacio cuadratín\t\\quad"
 
 #: src/frontends/qt2/QMathDialog.C:121
 msgid "Double quadratin space\t\\qquad"
-msgstr "Espacio quadratin doble\t\\qquad"
+msgstr "Espacio cuadratín doble\t\\qquad"
 
 #: src/frontends/qt2/QMathDialog.C:122
 msgid "Negative space\t\\!"
@@ -9612,7 +9614,7 @@ msgstr "Fraktur\t\\mathfrak"
 
 #: src/frontends/qt2/QMathDialog.C:155
 msgid "Calligraphic\t\\mathcal"
-msgstr "Calligraphic\t\\mathcal"
+msgstr "Caligráfica\t\\mathcal"
 
 #: src/frontends/qt2/QMathDialog.C:156
 msgid "Normal text mode\t\\textrm"
@@ -9743,7 +9745,7 @@ msgstr "Información LaTeX"
 #: src/frontends/qt2/QToc.C:38 src/frontends/xforms/FormToc.C:32
 #: src/insets/insettoc.C:29
 msgid "Table of Contents"
-msgstr "Indice General"
+msgstr "Índice General"
 
 #: src/frontends/qt2/QVCLog.C:31 src/frontends/xforms/FormVCLog.C:23
 msgid "Version Control Log"
@@ -9928,7 +9930,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:79
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr "Seleccionar si la bibliografía debería aparecer en el Indice General"
+msgstr "Seleccionar si la bibliografía debería aparecer en el Índice General"
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Choose a BibTeX style from the list."
@@ -9965,9 +9967,8 @@ msgid "Add citation of the selected bibliography entry."
 msgstr "Información sobre la entrada seleccionada"
 
 #: src/frontends/xforms/FormCitation.C:165
-#, fuzzy
 msgid "Delete citation of the selected bibliography entry."
-msgstr "Información sobre la entrada seleccionada"
+msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -9982,8 +9983,8 @@ msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
-"Entradas que serán citadas. Seleccionelas con los botones de flechas de "
-"laventana derecha del navegador."
+"Entradas que serán citadas. Seleccionelas con los botones de flechas de la "
+"ventana derecha del navegador."
 
 #: src/frontends/xforms/FormCitation.C:181
 #, fuzzy
@@ -9992,7 +9993,7 @@ msgid ""
 "Bibliography\"). Move the ones you want to cite with the arrow buttons into "
 "the left browser window."
 msgstr ""
-"Todas las entradas en la base de datos que ha cargado (via \"Insertar-"
+"Todas las entradas en la base de datos que ha cargado (vía \"Insertar-"
 ">Listas &IG-> Referencia BibTex\"). Mueva aquellas que quiere citar con los "
 "botones de flechas de la ventana izquierda del navegador."
 
@@ -10051,8 +10052,8 @@ msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
 msgstr ""
-"Activar si quiere distinguir mayús./minús. en la búsqueda: \"bibtex\" "
-"encuentra \"bibtex\" pero no \"BibTeX\"."
+"Activar si quiere distinguir mayúsculas en la búsqueda: \"bibtex\" encuentra "
+"\"bibtex\" pero no \"BibTeX\"."
 
 #: src/frontends/xforms/FormCitation.C:216
 msgid "Activate if you want to enter Regular Expressions."
@@ -10115,7 +10116,7 @@ msgid ""
 "The `bullet' tab of the document dialog has been disabled"
 msgstr ""
 "Su versión de libXpm es anterior a la 4.7.\n"
-"La pestaña 'marcas de ítems' del diálogo documento fué desactivada"
+"La pestaña 'marcas de ítem' del diálogo documento fue desactivada"
 
 #: src/frontends/xforms/FormDocument.C:1114
 msgid "Document is read-only. No changes to layout permitted."
@@ -10196,7 +10197,7 @@ msgstr "Examinar directorios."
 
 #: src/frontends/xforms/FormGraphics.C:144
 msgid "Scale the image to inserted percentage value."
-msgstr "Cambiar la escala de la imagen al porcentage especificado."
+msgstr "Cambiar la escala de la imagen al porcentaje especificado."
 
 #: src/frontends/xforms/FormGraphics.C:146
 msgid "Select display mode for this image."
@@ -10521,15 +10522,14 @@ msgid "Convert \"to\" this format"
 msgstr "Convertir \"a\" este formato"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as the path to LyX's support directory."
 msgstr ""
-"El comando de conversión. $$i es el archivo de entrada, $$b el archivo sinsu "
-"extensión, y $$o es el archivo de salida. $$s puede ser usado como ruta a la "
-"propia colección de LyX de macros de conversión."
+"El comando de conversión. $$i es el nombre del archivo de entrada, $$b el "
+"nombre del archivo sin su extensión, y $$o es el nombre del archivo de "
+"salida. $$s puede ser usado como la ruta al directorio de apoyo de LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1001
 msgid ""
@@ -10583,7 +10583,7 @@ msgstr "El nombre del formato tal como aparecerá en los menús."
 #: src/frontends/xforms/FormPreferences.C:1267
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
-"Acelerador del teclado. Usar una letra en el nombre. Distingue mayús./minús."
+"Acelerador del teclado. Usar una letra en el nombre. Distingue mayúsculas."
 
 #: src/frontends/xforms/FormPreferences.C:1271
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -10793,7 +10793,7 @@ msgstr "Reemplazar todo por la cadena de reemplazo."
 
 #: src/frontends/xforms/FormSearch.C:52
 msgid "Do case sensitive search."
-msgstr "Realizar búsqueda con mayús./minús."
+msgstr "Realizar búsqueda distinguiendo mayúsculas."
 
 #: src/frontends/xforms/FormSearch.C:54
 msgid "Search only matching words."
@@ -10903,11 +10903,11 @@ msgstr "Mostrar ruta completa o solo nombre de archivo."
 #, fuzzy
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
 msgstr ""
-"Ejecutar el macro \"TexFiles.sh\" para construir nuevas listas de archivos."
+"Ejecutar el script \"TexFiles.sh\" para construir nuevas listas de archivos."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
-msgstr "Doble clic para ver el contenido del archivo."
+msgstr "Doble click para ver el contenido del archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:64
 msgid ""
@@ -10915,7 +10915,7 @@ msgid ""
 "install a new TeX class or style. You need write permissions for the TeX-"
 "dirs, often /var/lib/texmf and others."
 msgstr ""
-"Ejecuta el macro \"texhash\" que construye un nuevo árbol de LaTeX. "
+"Ejecuta el script \"texhash\" que construye un nuevo árbol de LaTeX. "
 "Necesario si instala una nueva clase o estilo TeX. Necesita permisos de "
 "escritura para los directorios de TeX, generalmente /var/lib/texmf y otros."
 
@@ -11221,7 +11221,7 @@ msgstr "Entrada Literal*"
 
 #: src/insets/insetindex.C:29
 msgid "Idx"
-msgstr "Indice"
+msgstr "Índice"
 
 #: src/insets/insetlabel.C:43 src/mathed/math_hullinset.C:815
 msgid "Enter label:"
@@ -11354,7 +11354,7 @@ msgstr "Lista de contenidos desconocida"
 
 #: src/insets/inseturl.C:45
 msgid "Url: "
-msgstr "Url: "
+msgstr "URL: "
 
 #: src/insets/inseturl.C:47
 msgid "HtmlUrl: "
@@ -11381,8 +11381,8 @@ msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
-"No pude crear un proceso ispell.\n"
-"Los lenguages necesarios pueden no estar instalados."
+"No se pudo crear un proceso ispell.\n"
+"Puede que no tenga instalados los idiomas adecuados."
 
 #. select returned error
 #: src/ispell.C:259
@@ -11634,45 +11634,46 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"No se pudo crear un directorio temporal en\n"
+"%1$s. Asegúrese que\n"
+"esa ruta existe y se puede escribir e inténtelo de nuevo."
 
 #: src/lyx_main.C:387
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "¡Error! No se pudo crear directorio temporal:"
+msgstr "No se pudo crear un directorio temporal en\n"
 
 #: src/lyx_main.C:389
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+". Asegúrese que esa\n"
+"ruta existe y se puede escribir e inténtelo otra vez."
 
 #: src/lyx_main.C:393
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "¡Error! No se pudo crear directorio temporal:"
+msgstr "No se pudo crear directorio temporal"
 
 #: src/lyx_main.C:539
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "Ha especificado un directorio de LyX no válido."
+msgstr "Ha especificado un directorio LyX de usuario no existente."
 
 #: src/lyx_main.C:540
 msgid "It is needed to keep your own configuration."
 msgstr "Se necesita para mantener configuración personal."
 
 #: src/lyx_main.C:541
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "¿Intentar configurarlo automáticamente (recomendado)?"
+msgstr "¿Intentar configurarlo por usted? Si \"No\", se terminará."
 
 #: src/lyx_main.C:542
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Sin directorio LyX de usuario. Saliendo."
 
 #: src/lyx_main.C:547
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: Creando directorio "
+msgstr "LyX: Creando directorio %1$s"
 
 #: src/lyx_main.C:551
 msgid "LyX: Creating directory "
@@ -11680,9 +11681,8 @@ msgstr "LyX: Creando directorio "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:558
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "Llamada a createDirectory con un nombre no válido"
+msgstr "Error al crear directorio. Saliendo."
 
 #: src/lyx_main.C:577 src/lyx_main.C:581
 msgid "LyX Warning!"
@@ -11738,7 +11738,7 @@ msgstr ""
 "Uso: lyx [ opciones ] [ nombre.lyx ... ]\n"
 "Opciones (distingue entre mayúsculas y minúsculas):\n"
 "\t-help          resumen del uso de LyX\n"
-"\t-userdir dir   intentar poner directiorio del usuario a dir\n"
+"\t-userdir dir   intentar poner directorio del usuario a dir\n"
 "\t-sysdir dir    intentar poner directorio del sistema a dir\n"
 "\t-geometry WxH+X+Y poner geometría de la ventana principal\n"
 "\t-dbg característica[,característica]...\n"
@@ -12294,11 +12294,12 @@ msgstr "Seleccionar para comprobar si los archivos recientes todavía existen."
 #: src/lyxrc.C:2033
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Especificar el comando de papel del visor DVI (dejar vacío o usar \"-paper\")"
+"Especificar el comando del papel del visor DVI (dejar vacío o usar \"-paper"
+"\")"
 
 #: src/lyxrc.C:2037
 msgid "Specify the default paper size."
-msgstr "Especificar el tamaño de papel predeterminado."
+msgstr "Especificar el tamaño predeterminado del papel."
 
 #: src/lyxrc.C:2044
 msgid ""
@@ -12514,6 +12515,8 @@ msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
+"Especifique aquellos directorios que deberían ser añadidos a la variable de "
+"entorno PATH. Use el formato nativo del OS."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12648,10 +12651,12 @@ msgstr "¡No se pudo eliminar archivo de auto-guardado!"
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
+"No se pudo determinar la ruta al binario LyX desde la línea de comandos %1%"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
+"No se pudo determinar la ruta al binario LyX desde la línea de comandos "
 
 #: src/support/package.C:505
 #, c-format
@@ -12661,18 +12666,24 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"No se pudo determinar el directorio del sistema habiendo buscado en\n"
+"\t%1%\n"
+"Intente con el parámetro '-sysdir' de la línea de comandos o modifique la "
+"variable de entorno LYX_DIR_13x al directorio del sistema de LyX que "
+"contiene el archivo `chkconfig.ltx'."
 
 #: src/support/package.C:515
 msgid "Unable to determine the system directory having searched\n"
-msgstr ""
+msgstr "No se pudo determinar el directorio del sistema habiendo buscado en\n"
 
 #: src/support/package.C:518
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
-"cambiar la variable de entorno LYX_DIR_13x al directorio de sistema de LyX "
+"Intente con el parámetro '-sysdir' de la línea de comandos o modifique la "
+"variable de entorno LYX_DIR_13x al directorio del sistema de LyX que "
+"contiene el archivo `chkconfig.ltx'."
 
 #: src/support/package.C:601
 #, c-format
@@ -12680,25 +12691,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Opción %1% no válida.\n"
+"El directorio %2% no contiene %3%."
 
 #: src/support/package.C:606 src/support/package.C:641
 #: src/support/package.C:669
-#, fuzzy
 msgid "Invalid "
-msgstr "¡Longitud inválida!"
+msgstr "No válido "
 
 #: src/support/package.C:607
 msgid " switch.\n"
-msgstr ""
+msgstr " opción.\n"
 
 #: src/support/package.C:608 src/support/package.C:643
-#, fuzzy
 msgid "Directory "
-msgstr "Directorio:|#D"
+msgstr "Directorio "
 
 #: src/support/package.C:609 src/support/package.C:644
 msgid " does not contain "
-msgstr ""
+msgstr " no contiene "
 
 #: src/support/package.C:636
 #, c-format
@@ -12706,11 +12717,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Variable de entorno %1% no válida.\n"
+"El directorio %2% no contiene %3%."
 
 #: src/support/package.C:642 src/support/package.C:670
-#, fuzzy
 msgid " environment variable.\n"
-msgstr "Variable de entorno LYX_DIR_13x errónea."
+msgstr " variable de entorno.\n"
 
 #: src/support/package.C:664
 #, c-format
@@ -12718,11 +12730,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"Variable de entorno %1% no válida.\n"
+"%2% no es un directorio."
 
 #: src/support/package.C:671
-#, fuzzy
 msgid " is not a directory."
-msgstr "Se requiere un archivo, no un directorio."
+msgstr " no es un directorio."
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -12816,7 +12829,7 @@ msgstr "Marca puesta"
 
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
-msgstr "La función de LyX 'layout' necesita un argumento."
+msgstr "La función 'layout' de LyX necesita un argumento."
 
 #~ msgid "Forked child processes:|#F"
 #~ msgstr "Procesos hijos ahorquillados:|#H"
@@ -12888,7 +12901,7 @@ msgstr "La función de LyX 'layout' necesita un argumento."
 #~ msgstr "Matar procesos ahorquillados con este PID"
 
 #~ msgid "Bibliography Item"
-#~ msgstr "Item de Bibliografía"
+#~ msgstr "Ítem de Bibliografía"
 
 #~ msgid "BibTeX"
 #~ msgstr "BibTeX"
@@ -12903,7 +12916,7 @@ msgstr "La función de LyX 'layout' necesita un argumento."
 #~ msgstr "Mostrar archivo"
 
 #~ msgid "Table of contents"
-#~ msgstr "Indice general"
+#~ msgstr "Índice general"
 
 #~ msgid "VCLog"
 #~ msgstr "VCLog"
@@ -12945,52 +12958,4 @@ msgstr "La función de LyX 'layout' necesita un argumento."
 #~ msgstr "Preámbulo LaTeX"
 
 #~ msgid "Url"
-#~ msgstr "Url"
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Aviso: no se pudo determinar ruta del ejecutable."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr "Si tiene problemas, intente iniciar LyX con una ruta absoluta."
-
-#~ msgid "System directory set to: "
-#~ msgstr "Directorio de sistema puesto a: "
-
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr "¡Aviso LyX! No se pudo determinar el directorio de sistema. "
-
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "Intentar el parámetro de la línea de comandos '-sysdir' o "
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr "que contiene el archivo 'chkconfig.ltx'."
-
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr "Usando valor por defecto %1$s pero espere problemas."
-
-#~ msgid "Using built-in default "
-#~ msgstr "Usando valor predeterminado "
-
-#~ msgid " but expect problems."
-#~ msgstr " pero espere problemas."
-
-#~ msgid "Expect problems."
-#~ msgstr "Espere problemas."
-
-#~ msgid "Running without personal LyX directory."
-#~ msgstr "Ejecutando sin directorio personal de LyX."
-
-#~ msgid "LyX: Creating directory %1$s and running configure..."
-#~ msgstr "LyX: Creando directorio %1$s y ejecutando configurar..."
-
-#~ msgid " and running configure..."
-#~ msgstr " y ejecutando configurar..."
-
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Falló. Se usará %1$s en su lugar."
-
-#~ msgid "Failed. Will use "
-#~ msgstr "Falló. Se usará "
-
-#~ msgid " instead."
-#~ msgstr " en su lugar."
+#~ msgstr "URL"
