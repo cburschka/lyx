@@ -523,8 +523,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		}
 
 		bool close = false;
-		int const len = os.tellp();
-		//ostream::pos_type const len = os.tellp();
+		ostream::pos_type const len = os.tellp();
+
 		if ((inset->lyxCode() == InsetOld::GRAPHICS_CODE
 		     || inset->lyxCode() == InsetOld::MATH_CODE
 		     || inset->lyxCode() == InsetOld::URL_CODE)
@@ -562,7 +562,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			texrow.start(owner_->id(), i + 1);
 			column = 0;
 		} else {
-			column += int(os.tellp()) - len;
+			column += os.tellp() - len;
 		}
 	}
 	break;

@@ -8,11 +8,11 @@
  * provided that the above copyright notice appear in all copies and
  * that both that copyright notice and this permission notice appear
  * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.  
+ * about the suitability of this software for any purpose.
  * It is provided "as is" without express or implied warranty.
  *
  */
- 
+
  /*
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE:        c_regex_traits.cpp
@@ -161,9 +161,9 @@ parser_buf<charT, traits>::seekpos(pos_type sp, ::std::ios_base::openmode which)
       return pos_type(off_type(-1));
    std::ptrdiff_t size = this->egptr() - this->eback();
    charT* g = this->eback();
-   if(sp <= size)
+   if(off_type(sp) <= size)
    {
-      this->setg(g, g + ::std::streamsize(sp), g + size);
+      this->setg(g, g + off_type(sp), g + size);
    }
    return pos_type(off_type(-1));
 }
@@ -218,7 +218,7 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
 #else
       BOOST_REGEX_NOEH_ASSERT(cat >= 0);
 #endif
-   } 
+   }
 #endif
    std::memset(syntax_map, cpp_regex_traits<char>::syntax_char, 256);
    unsigned i;
@@ -691,7 +691,7 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
 
    if((int)cat >= 0)
       msgs.close(cat);
-#endif      
+#endif
 }
 
 } // namespace re_detail
@@ -876,5 +876,3 @@ std::size_t BOOST_REGEX_CALL cpp_regex_traits<wchar_t>::strwiden(wchar_t *s1, st
 } // namespace boost
 
 #endif
-
-

@@ -1,3 +1,8 @@
+2003-10-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* libs/regex/src/cpp_regex_traits.cpp (seekpos): use correct
+	types. same patch sent to boost list and accepted there.
+
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
 	* boost/any.hpp: change the throw to boost::throw_exception.

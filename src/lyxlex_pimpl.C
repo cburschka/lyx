@@ -138,7 +138,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (gz__.is_open() || is.tellg() > 0)
+		if (gz__.is_open() || istream::off_type(is.tellg()) > -1)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
 		gz__.open(filename.c_str(), ios::in);
@@ -152,7 +152,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (fb__.is_open() || is.tellg() > 0)
+		if (fb__.is_open() || istream::off_type(is.tellg()) > 0)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
 		fb__.open(filename.c_str(), ios::in);
@@ -166,7 +166,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 
 void LyXLex::Pimpl::setStream(istream & i)
 {
-	if (fb__.is_open() || is.tellg() > 0)
+	if (fb__.is_open() || istream::off_type(is.tellg()) > 0)
 		lyxerr[Debug::LYXLEX]  << "Error in LyXLex::setStream: "
 			"file or stream already set." << endl;
 	is.rdbuf(i.rdbuf());

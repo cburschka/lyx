@@ -1,3 +1,8 @@
+2003-10-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxlex_pimpl.C (setFile,setStream): be sure to use correct types
+	when woring with stream::pos_type
+	* paragraph_pimpl.C (simpleTeXSpecialChars): ditto
 
 2003-10-22  André Pönitz  <poenitz@gmx.net>
 
@@ -24,7 +29,7 @@
 
 2003-10-22  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* text.C: fixed an "oops" in the "is a bit silly" 
+	* text.C: fixed an "oops" in the "is a bit silly"
 	bug fix
 
 2003-10-21  André Pönitz  <poenitz@gmx.net>
@@ -52,7 +57,7 @@
 2003-10-20  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C: re-introduce display() for insets, fixing the
-	various bugs (stretch of line above, math inset 
+	various bugs (stretch of line above, math inset
 	positioning, ...)
 
 2003-10-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
