@@ -57,6 +57,13 @@ Toolbar::Pimpl::toolbarItem::~toolbarItem()
 }
 
 
+/// Display toolbar, not implemented. But moved out of line so that
+/// linking will work properly.
+void Toolbar::Pimpl::displayToolbar(ToolbarBackend::Toolbar const & tb,
+				    bool show)
+{}
+
+
 void Toolbar::Pimpl::toolbarItem::kill_icon()
 {
 	if (icon) {

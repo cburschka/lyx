@@ -3,8 +3,6 @@ include $(srcdir)/../Makefile.dialogs
 
 DISTCLEANFILES += *.C
 
-noinst_LTLIBRARIES = libqt2moc.la
-
 INCLUDES = -I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/src/frontends/controllers \
@@ -14,9 +12,11 @@ INCLUDES = -I$(top_srcdir)/src/ \
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
 
-nodist_libqt2moc_la_SOURCES = $(MOCFILES:.C=_moc.C)
+noinst_LTLIBRARIES = libqt2moc.la
 
-libqt2moc.la: $(libqt2moc_la_OBJECTS) $(libqt2moc_la_DEPENDENCIES)
+nodist_libqt2moc_la_SOURCES = $(MOCFILES:.C=_moc.C)
+# The trick.
+libqt2moc_la_LINK = touch libqt2moc.la
 
 %_moc.C: $(srcdir)/../%.h
 	$(MOC) -o $@ $<

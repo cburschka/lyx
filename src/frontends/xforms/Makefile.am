@@ -1,13 +1,15 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LTLIBRARIES = libxforms.la
+SUBDIRS = forms
 
 INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(BOOST_INCLUDES)
 
-SUBDIRS = forms
+noinst_LTLIBRARIES = libxforms.la
+
+libxforms_la_LIBADD = @XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@ forms/*.lo
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \
@@ -162,5 +164,3 @@ libxforms_la_SOURCES = \
 	XPainter.h \
 	XWorkArea.h \
 	XWorkArea.C
-
-libxforms.la: $(libxforms_la_OBJECTS) $(libxforms_la_DEPENDENCIES)

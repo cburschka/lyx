@@ -1,11 +1,13 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh README $(SRCS)
+MAINTAINERCLEANFILES += *.C *.h *.c
 
-noinst_LTLIBRARIES = libfdesign.la
+EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh README $(SRCS)
 
 # For (forms_fwd.h, forms_gettext.h) and LString.h, respectively.
 INCLUDES = -I$(srcdir)/..  -I$(top_srcdir)/src
+
+noinst_LTLIBRARIES = libfdesign.la
 
 SRCS =  form_aboutlyx.fd \
 	form_bibitem.fd \
@@ -46,9 +48,11 @@ SRCS =  form_aboutlyx.fd \
 	form_url.fd \
 	form_wrap.fd
 
-MAINTAINERCLEANFILES += *.C *.h *.c
-
-libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
+nodist_libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
+# This is a trick so that the actual .la file never gets build,
+# so we do not need to use diskspace and time for it.
+# It is only getting linked into libxforms.la any way.
+libfdesign_la_LINK = touch libfdesign.la
 
 # These are used to generate the .[Ch] files from the .fd ones.
 SHELL = /bin/sh
@@ -57,8 +61,6 @@ SUFFIXES = .fd
 
 # Make the .Ch files dependent on the fdfix files.
 $(libfdesign_la_SOURCES): $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed
-
-libfdesign.la: $(libfdesign_la_OBJECTS) $(libfdesign_la_DEPENDENCIES)
 
 %.C: %.fd
 	$(SHELL) $(SCRIPT) $<

@@ -5,15 +5,16 @@ SUBDIRS = ui moc
 
 EXTRA_DIST = Makefile.dialogs
 
-noinst_LTLIBRARIES = libqt2.la
-
 INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/images \
 	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
+noinst_LTLIBRARIES = libqt2.la
 
+libqt2_la_LDFLAGS = $(QT_LDFLAGS)
+libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
+AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
 
 libqt2_la_SOURCES = \
 	QDialogView.C \
@@ -76,5 +77,3 @@ libqt2_la_SOURCES = \
 	qscreen.h qscreen.C \
 	qt_helpers.h qt_helpers.C \
 	$(MOCFILES)
-
-libqt2.la: $(libqt2_la_OBJECTS) $(libqt2_la_DEPENDENCIES)

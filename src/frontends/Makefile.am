@@ -8,11 +8,6 @@ noinst_LTLIBRARIES = libfrontends.la
 
 INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
-libfrontends_la_LDFLAGS = $(FRONTEND_LDFLAGS) $(FRONTEND_LIBS)
-libfrontends_la_LIBADD = $(FRONTEND_GUILIB) controllers/*.lo
-
-libfrontends_la_DEPENDENCIES = $(libfrontends_la_LIBADD)
-
 libfrontends_la_SOURCES = \
 	Alert.C \
 	Alert.h \

@@ -159,9 +159,8 @@ case "$lyx_use_frontend" in
 	FRONTEND="xforms"
         RPM_FRONTEND="xforms"
         RPM_FRONTEND_DEPS='libforms >= 1.0'
-	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
+	FRONTEND_GUILIB="frontends/xforms/libxforms.la"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
-	FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
 	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
     libforms version:             ${XFORMS_VERSION}\n"
 	;;
@@ -184,10 +183,8 @@ dnl	;;
     RPM_FRONTEND="qt"
     RPM_FRONTEND_DEPS='qt >= 2.2.1'
     FRONTEND="qt2"
-    FRONTEND_GUILIB="qt2/*.lo qt2/ui/*.lo qt2/moc/*.lo qt2/ui/moc/*.lo"
-    FRONTEND_LDFLAGS="\$(QT_LDFLAGS)"
+    FRONTEND_GUILIB="frontends/qt2/libqt2.la"
     FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT_INCLUDES)"
-    FRONTEND_LIBS="\$(QT_LIB)"
     FRONTEND_INFO="    Qt version:                   ${QT_VERSION}\n"
     ;;
   *)

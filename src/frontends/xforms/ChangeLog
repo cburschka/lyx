@@ -1,3 +1,13 @@
+2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am: better lib building
+
+	* forms/.cvsignore: add libfdesign.la
+
+	* Toolbar_pimpl.C (displayToolbar): move out-of-line
+
+	* Makefile.am: better lib building
+
 2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* FormDocument.C: Handle document classes with missing TeX class
@@ -73,7 +83,7 @@
 
 	combox.c (fl_addto_combox): squash bug in initial selection
 	of the first line of the browser.
-	
+
 2003-04-03  Angus Leeming  <leeming@lyx.org>
 
 	* freebrowser.[ch] (fl_get_freebrowser_browser): removed spurious
@@ -145,7 +155,7 @@
 	* FormPreferences.[Ch]:
 	* Toolbar_pimpl.[Ch]:
 	* xforms_helpers.C: whitespace and formatting changes.
-	
+
 2003-04-02  Angus Leeming  <leeming@lyx.org>
 
 	* XFormsView.C (create_form_form_main): no longer pass this to the
@@ -279,7 +289,7 @@
 
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
-	* forms/fdfix.sh: 
+	* forms/fdfix.sh:
 	* forms/fdfixh.sed: fix #944 by making the temporary filenames unique
 	and so enable reentrant builds on SMP machines.
 
@@ -440,7 +450,7 @@
 2003-03-04  Angus Leeming  <leeming@lyx.org>
 
 	* FormText.[Ch]: the label of the input widget is passed to the
-	FormText c-tor and used in the build method. 
+	FormText c-tor and used in the build method.
 
 	* Dialogs3.C: pass an extra arg to the FormText c-tor.
 
@@ -581,7 +591,7 @@
 
 2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* FormDocument.C: Reset paperpackage to NONE when 
+	* FormDocument.C: Reset paperpackage to NONE when
 	papersize != A4 (bug 844)
 
 2003-02-11  Angus Leeming  <leeming@lyx.org>
@@ -603,7 +613,7 @@
 	* FormPreferences.C: use fl_getmcolor and getRGBColor.
 	* lyx_gui.C: use getRGBColor.
 	* xformsImage.C: use getRGBColor.
-	
+
 2003-02-11  Angus Leeming  <leeming@lyx.org>
 
 	* bmtable.c: whitespace and indentation consistent with the other
@@ -627,7 +637,7 @@
 	* FormPreferences.h:
 	* FormPreferences.C:
 	* forms/form_preferences.fd: add Identity prefs
-	
+
 2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* FormDocument.C:

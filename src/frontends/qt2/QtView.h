@@ -13,6 +13,8 @@
 #ifndef QTVIEW_H
 #define QTVIEW_H
 
+// Must be here because of moc.
+#include <config.h>
 
 #include "frontends/LyXView.h"
 

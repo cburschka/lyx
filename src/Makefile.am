@@ -6,10 +6,20 @@ MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
 SUBDIRS = mathed insets graphics support frontends tex2lyx
 
+EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
+	Sectioning.h \
+	Sectioning.C \
+	Variables.C \
+	Variables.h \
+	tracer.C \
+	tracer.h
+
 bin_PROGRAMS = lyx
 
 LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
 	frontends/libfrontends.la \
+	$(FRONTEND_GUILIB) \
+	frontends/controllers/libcontrollers.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
 
@@ -24,14 +34,6 @@ lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
 	$(AIKSAURUS_LIBS) @LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
-
-EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
-	Sectioning.h \
-	Sectioning.C \
-	Variables.C \
-	Variables.h \
-	tracer.C \
-	tracer.h
 
 INCLUDES = $(BOOST_INCLUDES)
 

@@ -1,3 +1,16 @@
+2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/moc/Makefile.am: better lib building 
+
+	* ui/Makefile.am: better lib building
+
+	* moc/Makefile.am: better lib building
+
+	* QtView.h: have to include config.h so that all code see the
+	defines therein.
+
+	* Makefile.am: better lib building
+
 2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* QDocument.C:
@@ -154,7 +167,7 @@
 	* QCitationDialog.C:
 	* QCitationDialogBase.ui: some UI fixes, remove
 	text before, add accelerators
-	
+
 2003-04-03  John Levon  <levon@movementarian.org>
 
 	* QRefDialog.h:
@@ -312,7 +325,7 @@
 2003-03-26  Edwin Leuven  <e.leuven@uva.nl>
 
 	* bulletstring.[Ch]: unused; remove
-	
+
 2003-03-26  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C:
@@ -403,7 +416,7 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
 	* QSearch.C: don't disable checkboxes on RO doc (bug 937)
- 
+
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs3.C (build): the "tabularcreate" dialog is always valid.
@@ -571,7 +584,7 @@
 
 2003-02-28  Alfredo Braunstein <abraunst@libero.it>
 
-	* QLImage.C 
+	* QLImage.C
 	* QSendto.C
 	* QSendtoDialog.C: removed #include "converter.h", and...
 	* QPrefs.h: added #include "format.h"
@@ -676,17 +689,17 @@
 	* QBibtexDialog.C: Fix browsing mechanism of *.sty files (bug 773).
 
 	* ui/QBibtexDialogBase.ui: Remove unused Update button (bug 773).
- 	Replace addBib LineEdit with ComboBox.
+	Replace addBib LineEdit with ComboBox.
 
-	* QBibtex.C: Insert available .bib-files into addBibCB. 
-	
+	* QBibtex.C: Insert available .bib-files into addBibCB.
+
 2003-02-13  John Levon  <levon@movementarian.org>
 
 	* ui/QSpellcheckerDialogBase.ui: A&dd not &Add, bug 884
 
 2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* QDocument.C: Allow qt users actually to use another 
+	* QDocument.C: Allow qt users actually to use another
 	papersize than default (set params.paperpackage).
 
 2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
@@ -723,7 +736,7 @@
 
 2003-02-07  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* QTabular.C (closeGUI): do not change if nothing has to 
+	* QTabular.C (closeGUI): do not change if nothing has to
 	be changed (bug 849).
 
 2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
@@ -766,8 +779,8 @@
 
 	* QDocument.C: rename "Xxxskip" to "XxxSkip"
 	* QGraphicsDialog.C:
-	* QLog.C: Make output messages identical to other messages 
-	* ui/*.ui: In strings, remove space in front of colon 
+	* QLog.C: Make output messages identical to other messages
+	* ui/*.ui: In strings, remove space in front of colon
         ("... :" => "...:") for harmonization with xforms labels
 
 2003-01-16  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
@@ -794,8 +807,8 @@
 
 	* qgridview.cpp: rename to...
 	* qgridview.C: ...this
-	
-	* Makefile.am: distcheck ready 
+
+	* Makefile.am: distcheck ready
 
 	* Makefile.dialogs: simplify
 

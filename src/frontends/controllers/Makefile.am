@@ -1,11 +1,10 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LTLIBRARIES = libcontrollers.la
-
-INCLUDES = -I$(top_srcdir)/src \
-	$(BOOST_INCLUDES)
-
 EXTRA_DIST = BCView.tmpl ControlDialog.tmpl
+
+INCLUDES = -I$(top_srcdir)/src $(BOOST_INCLUDES)
+
+noinst_LTLIBRARIES = libcontrollers.la
 
 libcontrollers_la_SOURCES= \
 	Dialog.C \
@@ -106,5 +105,3 @@ libcontrollers_la_SOURCES= \
 	ViewBase.C \
 	helper_funcs.C \
 	helper_funcs.h
-
-libcontrollers.la: $(libcontrollers_la_OBJECTS) $(libcontrollers_la_DEPENDENCIES)
