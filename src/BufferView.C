@@ -27,6 +27,7 @@
 #include "lyxtext.h"
 #include "undo_funcs.h"
 #include "changes.h"
+#include "paragraph_funcs.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -966,8 +967,9 @@ Encoding const * BufferView::getEncoding() const
 	if (!t)
 		return 0;
 
-	LyXCursor const & c= t->cursor;
-	LyXFont const font = c.par()->getFont(buffer()->params, c.pos());
+	LyXCursor const & c = t->cursor;
+	LyXFont const font = c.par()->getFont(buffer()->params, c.pos(),
+					      outerFont(c.par()));
 	return font.language()->encoding();
 }
 

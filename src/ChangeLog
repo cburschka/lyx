@@ -1,3 +1,24 @@
+2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (getFont): adjust
+	(getLayoutFont): adjust
+	(getLabelFont): adjust
+
+	* paragraph_funcs.C (TeXOnePar): adjust
+	(outerFont): new func...
+	(realizeFont): ...moved out from here, changed this to facilitate
+	transition
+
+	* paragraph.C (getFont): take outerfont as arg, adjust
+	(simpleTeXOnePar): add outerfont arg, adjust
+
+	* buffer.C (simpleLinuxDocOnePar): adjust
+	(simpleDocBookOnePar): adjust
+
+	* CutAndPaste.C (pasteSelection): adjust
+
+	* BufferView.C (getEncoding): adjust
+
 2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (setCharFont): adjust

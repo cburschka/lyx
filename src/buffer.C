@@ -1433,7 +1433,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		PAR_TAG tag_close = NONE;
 		list < PAR_TAG > tag_open;
 
-		LyXFont const font = par->getFont(params, i);
+		LyXFont const font = par->getFont(params, i, outerFont(par));
 
 		if (font_old.family() != font.family()) {
 			switch (family_type) {
@@ -1922,7 +1922,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 
 	// parsing main loop
 	for (pos_type i = 0; i < par->size(); ++i) {
-		LyXFont font = par->getFont(params, i);
+		LyXFont font = par->getFont(params, i, outerFont(par));
 
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {

@@ -434,8 +434,8 @@ LyXFont const Paragraph::getFirstFontSettings() const
 // The difference is that this one is used for generating the LaTeX file,
 // and thus cosmetic "improvements" are disallowed: This has to deliver
 // the true picture of the buffer. (Asger)
-LyXFont const Paragraph::getFont(BufferParams const & bparams,
-				 pos_type pos) const
+LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
+				 LyXFont const & outerfont) const
 {
 	lyx::Assert(pos >= 0);
 
@@ -451,8 +451,9 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 
 	LyXFont tmpfont = getFontSettings(bparams, pos);
 	tmpfont.realize(layoutfont);
+	tmpfont.realize(outerfont);
 
-	return pimpl_->realizeFont(tmpfont, bparams);
+	return realizeFont(tmpfont, bparams, 0, false);
 }
 
 
@@ -919,6 +920,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 // This one spits out the text of the paragraph
 bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				BufferParams const & bparams,
+				LyXFont const & outerfont,
 				ostream & os, TexRow & texrow,
 				bool moving_arg)
 {
@@ -1013,7 +1015,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		value_type c = getChar(i);
 
 		// Fully instantiated font
-		LyXFont font = getFont(bparams, i);
+		LyXFont font = getFont(bparams, i, outerfont);
 
 		LyXFont const last_font = running_font;
 
@@ -1021,7 +1023,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		// outside font change, i.e. we write "\textXX{text} "
 		// rather than "\textXX{text }". (Asger)
 		if (open_font && c == ' ' && i <= size() - 2) {
-			LyXFont const & next_font = getFont(bparams, i + 1);
+			LyXFont const & next_font = getFont(bparams, i + 1, outerfont);
 			if (next_font != running_font
 			    && next_font != font) {
 				font = next_font;
@@ -1083,7 +1085,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			running_font
 				.latexWriteEndChanges(os, basefont,
 						      next_->getFont(bparams,
-						      0));
+						      0, outerfont));
 		} else {
 			running_font.latexWriteEndChanges(os, basefont,
 							  basefont);
@@ -1198,7 +1200,7 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 
 
 void Paragraph::changeLanguage(BufferParams const & bparams,
-				  Language const * from, Language const * to)
+			       Language const * from, Language const * to)
 {
 	for (pos_type i = 0; i < size(); ++i) {
 		LyXFont font = getFontSettings(bparams, i);

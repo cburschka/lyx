@@ -282,7 +282,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 					tmpbuf->erase(i--);
 				}
 			} else {
-				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params,i);
+				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(tmpbuf));
 				LyXFont f2 = f1;
 				if (!(*par)->checkInsertChar(f1)) {
 					tmpbuf->erase(i--);

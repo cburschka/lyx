@@ -261,10 +261,17 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 	// How do we get the local language here??
 	lyx::pos_type curr_pos = parOwner()->getPositionOfInset(this);
 	lyx::Assert(curr_pos != -1);
+
+#warning FIXME. We _must_ find another way to get the language. (Lgb)
+#if 0
+	// This cannot be used. (Lgb)
 	string const curr_lang =
 		parOwner()->getFont(buf->params,
 				    curr_pos).language()->babel();
-
+#else
+	// And this is not the way... (Lgb)
+	string const curr_lang = buf->params.language->lang();
+#endif
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
 

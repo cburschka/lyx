@@ -471,7 +471,7 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (pit->params().lineTop()) {
-			os << "\\lyxline{\\" << pit->getFont(bparams, 0).latexSize() << '}'
+			os << "\\lyxline{\\" << pit->getFont(bparams, 0, outerFont(pit)).latexSize() << '}'
 			   << "\\vspace{-1\\parskip}";
 			further_blank_line = true;
 		}
@@ -550,7 +550,8 @@ TeXOnePar(Buffer const * buf,
 		break;
 	}
 
-	bool need_par = pit->simpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
+	bool need_par = pit->simpleTeXOnePar(buf, bparams, outerFont(pit),
+					     os, texrow, moving_arg);
 
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
@@ -563,7 +564,7 @@ TeXOnePar(Buffer const * buf,
 	// or for a command.
 	LyXFont const font =
 		(pit->empty()
-		 ? pit->getLayoutFont(bparams) : pit->getFont(bparams, pit->size() - 1));
+		 ? pit->getLayoutFont(bparams) : pit->getFont(bparams, pit->size() - 1, outerFont(pit)));
 
 	bool is_command = style->isCommand();
 
@@ -1025,24 +1026,36 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 }
 
 
-LyXFont const realizeFont(LyXFont const & font,
-			  Buffer const * buf,
-			  ParagraphList & /*plist*/,
-			  ParagraphList::iterator pit)
+LyXFont const outerFont(ParagraphList::iterator pit)
 {
-	LyXTextClass const & tclass = buf->params.getLyXTextClass();
-	LyXFont tmpfont(font);
 	Paragraph::depth_type par_depth = pit->getDepth();
-
-	Paragraph * par = &*pit;
+	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
+	Paragraph * par = &*pit;
 	while (par && par_depth && !tmpfont.resolved()) {
 		par = outerHook(par);
 		if (par) {
 			tmpfont.realize(par->layout()->font);
 			par_depth = par->getDepth();
 		}
+	}
+
+	return tmpfont;
+}
+
+
+LyXFont const realizeFont(LyXFont const & font,
+			  BufferParams const & params,
+			  ParagraphList::iterator pit,
+			  bool outerhook)
+{
+	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXFont tmpfont(font);
+
+	if (outerhook) {
+		LyXFont of = outerFont(pit);
+		tmpfont.realize(of);
 	}
 
 	tmpfont.realize(tclass.defaultfont());

@@ -104,7 +104,8 @@ public:
 
 	///
 	bool simpleTeXOnePar(Buffer const *, BufferParams const &,
-			     std::ostream &, TexRow & texrow, bool moving_arg);
+			     LyXFont const & outerfont, std::ostream &,
+			     TexRow & texrow, bool moving_arg);
 
 	///
 	bool hasSameLayout(Paragraph const * par) const;
@@ -239,7 +240,8 @@ public:
 	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or
 	    LyXFont::TOGGLE.
 	*/
-	LyXFont const getFont(BufferParams const &, lyx::pos_type pos) const;
+	LyXFont const getFont(BufferParams const &, lyx::pos_type pos,
+			      LyXFont const & outerfont) const;
 	LyXFont const getLayoutFont(BufferParams const &) const;
 	LyXFont const getLabelFont(BufferParams const &) const;
 	///

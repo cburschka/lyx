@@ -67,8 +67,10 @@ void latexParagraphs(Buffer const * buf,
 int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 
 LyXFont const realizeFont(LyXFont const & font,
-			  Buffer const * buf,
-			  ParagraphList & /*plist*/,
-			  ParagraphList::iterator pit);
+			  BufferParams const & params,
+			  ParagraphList::iterator pit,
+			  bool outerhook = true);
+
+LyXFont const outerFont(ParagraphList::iterator pit);
 
 #endif // PARAGRAPH_FUNCS_H
