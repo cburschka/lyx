@@ -1,0 +1,48 @@
+#include <config.h>
+
+#include "math_parser.h"
+#include "math_bigopinset.h"
+#include "math_decorationinset.h"
+#include "math_dotsinset.h"
+#include "math_funcinset.h"
+#include "math_funcliminset.h"
+#include "math_fracinset.h"
+#include "math_macro.h"
+#include "math_macrotable.h"
+#include "math_noglyphinset.h"
+#include "math_rootinset.h"
+#include "math_spaceinset.h"
+#include "math_sqrtinset.h"
+#include "math_symbolinset.h"
+#include "math_stackrelinset.h"
+
+
+MathInset * createMathInset(latexkeys const * l)
+{
+	switch (l->token) {
+		case LM_TK_NOGLYPH:
+		case LM_TK_NOGLYPHB:
+			return new MathNoglyphInset(l);
+		case LM_TK_BIGSYM:
+			return new MathBigopInset(l);
+		case LM_TK_FUNCLIM:
+			return new MathFuncLimInset(l);
+		case LM_TK_SYM: 
+			return new MathSymbolInset(l);
+		case LM_TK_STACK:
+			return new MathStackrelInset;
+		case LM_TK_FRAC:
+			return new MathFracInset;
+		case LM_TK_SQRT:
+			return new MathSqrtInset;
+		case LM_TK_ROOT:
+			return new MathRootInset;
+		case LM_TK_DECORATION:
+			return new MathDecorationInset(l);
+		case LM_TK_SPACE:
+			return new MathSpaceInset(l->id);
+		case LM_TK_DOTS:
+			return new MathDotsInset(l);
+	}
+	return new MathFuncInset(l->name);
+}
