@@ -33,7 +33,6 @@ using std::auto_ptr;
 void InsetBranch::init()
 {
 	setInsetName("Branch");
-	setButtonLabel();
 }
 
 
