@@ -123,6 +123,10 @@ public:
 	///
 	bool insertInset(BufferView *, Inset *);
 	///
+	bool insertInsetAllowed(Inset *) const {
+		return the_locking_inset != 0;
+	}
+	///
 	bool isTextInset() const { return true; }
 	///
 	bool display() const { return tabular->IsLongTabular(); }

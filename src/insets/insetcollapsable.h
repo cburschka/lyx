@@ -64,6 +64,10 @@ public:
 	///
 	bool insertInset(BufferView *, Inset * inset);
 	///
+	bool insertInsetAllowed(Inset * in) const {
+		return inset.insertInsetAllowed(in);
+	}
+	///
 	bool isTextInset() const { return true; }
 	///
 	bool doClearArea() const;

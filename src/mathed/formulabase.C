@@ -1070,13 +1070,14 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 			InsetFormula * f;
 //		if (sel.empty()) {
 				f = new InsetFormula;
-				openNewInset(bv, f);
-				// don't do that also for LFUN_MATH_MODE unless you want end up with
-				// always changing to mathrm when opening an inlined inset
-				// -- I really hate "LyXfunc overloading"...
-				if (display)
-					f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
-				f->localDispatch(bv, LFUN_INSERT_MATH, arg);
+				if (openNewInset(bv, f)) {
+					// don't do that also for LFUN_MATH_MODE unless you want end up with
+					// always changing to mathrm when opening an inlined inset
+					// -- I really hate "LyXfunc overloading"...
+					if (display)
+						f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
+					f->localDispatch(bv, LFUN_INSERT_MATH, arg);
+				}
 //		} else {
 //			f = new InsetFormula(sel);
 //			bv->getLyXText()->cutSelection(bv);

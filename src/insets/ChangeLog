@@ -1,3 +1,10 @@
+2001-07-09  Juergen Vigna  <jug@sad.it>
+
+	* insetert.h: a normal InsetText can insert insets, but we won't.
+
+	* inset.h: return default "false" on insertInsetAllowed and implement
+	this function where a returnvalue != "false" is needed.
+
 2001-07-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetert.C (InsetERT): new contructor

@@ -1,3 +1,8 @@
+2001-07-09  Juergen Vigna  <jug@sad.it>
+
+	* formulabase.C (mathDispatchCreation): don't do anything with the
+	inset if it cannot be inserted!
+
 2001-07-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (mathDispatchInsertMath): remove bogus return

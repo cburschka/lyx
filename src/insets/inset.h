@@ -367,7 +367,7 @@ public:
 	///
 	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///
-	virtual bool insertInsetAllowed(Inset *) const { return true; }
+	virtual bool insertInsetAllowed(Inset *) const { return false; }
 	///
 	virtual UpdatableInset * getLockingInset() { return this; }
 	///

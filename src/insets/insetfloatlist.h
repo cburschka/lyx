@@ -28,7 +28,7 @@ public:
 	InsetFloatList(string const & type) 
 		: float_type(type) {}
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const {
+	Inset * clone(Buffer const &, bool = false) const {
 		return new InsetFloatList(*this);
 	}
     	///
