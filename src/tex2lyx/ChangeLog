@@ -1,3 +1,9 @@
+2004-10-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C (end_preamble): change file format from 236 to 237
+	* preamble.C (h_use_geometry, h_use_bibtopic, h_tracking_changes):
+	change from "0" to "false"
+
 2004-08-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* preamble.C (end_preamble): change file format from 235 to 236

@@ -70,10 +70,10 @@ string h_paperfontsize           = "default";
 string h_spacing                 = "single";
 string h_papersize               = "default";
 string h_paperpackage            = "none";
-string h_use_geometry            = "0";
+string h_use_geometry            = "false";
 string h_use_amsmath             = "0";
 string h_cite_engine             = "basic";
-string h_use_bibtopic            = "0";
+string h_use_bibtopic            = "false";
 string h_paperorientation        = "portrait";
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
@@ -84,7 +84,7 @@ string h_quotes_times            = "2";
 string h_papercolumns            = "1";
 string h_papersides              = string();
 string h_paperpagestyle          = "default";
-string h_tracking_changes        = "0";
+string h_tracking_changes        = "false";
 
 
 void handle_opt(vector<string> & opts, char const * const * what, string & target)
@@ -225,7 +225,7 @@ void handle_package(string const & name, string const & opts)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2\n"
-	   << "\\lyxformat 236\n"
+	   << "\\lyxformat 237\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n"
