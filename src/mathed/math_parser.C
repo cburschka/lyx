@@ -1078,6 +1078,9 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			array.push_back(createMathInset("\\"));
 		}
 
+		else if (t.cs() == "lyxlock")
+			;
+
 		else if (t.cs() == "limits")
 			limits = 1;
 
