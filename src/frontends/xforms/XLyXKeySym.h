@@ -19,10 +19,7 @@
 #include "frontends/LyXKeySym.h"
 
 /**
- * This is a base class for representing a keypress.
- * Each frontend has to implement this to provide
- * the functionality that LyX needs in regards to
- * key presses.
+ * This is the XForms (X11) version of LyXKeySym.
  */
 class XLyXKeySym : public LyXKeySym {
 public:
@@ -56,5 +53,4 @@ private:
 	unsigned int keysym;
 };
 
-#endif
-
+#endif // XLYXKEYSYM_H

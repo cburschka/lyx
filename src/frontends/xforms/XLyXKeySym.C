@@ -25,11 +25,13 @@ XLyXKeySym::XLyXKeySym()
 	: LyXKeySym(), keysym(NoSymbol)
 {
 }
+ 
 
 void XLyXKeySym::initFromKeySym(KeySym ks)
 {
 	keysym = ks;
 }
+ 
 
 void XLyXKeySym::init(string const & symbolname)
 {
@@ -41,10 +43,12 @@ void XLyXKeySym::init(string const & symbolname)
 	}
 }
 
+
 bool XLyXKeySym::isOK() const
 {
 	return keysym != NoSymbol;
 }
+
 
 bool XLyXKeySym::isModifier() const
 {
@@ -55,15 +59,15 @@ bool XLyXKeySym::isModifier() const
 	    || keysym == XK_Mode_switch || keysym == 0x0);
 }
 
-string
-XLyXKeySym::getSymbolName() const
+
+string XLyXKeySym::getSymbolName() const
 {
 	char * name = XKeysymToString(keysym);
 	return name ? name : string();
 }
 
-char
-XLyXKeySym::getISOEncoded() const
+ 
+char XLyXKeySym::getISOEncoded() const
 {
 	if (keysym == NoSymbol) {
 		return 0;
@@ -96,6 +100,7 @@ XLyXKeySym::getISOEncoded() const
 	return c;
 }
 
+ 
 bool XLyXKeySym::operator==(LyXKeySym const & k) const
 {
 	// This is dangerous! Ideally, we should use dynamic_cast instead,
