@@ -1,6 +1,7 @@
 2001-02-22  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (getLyXText): honor the recursive parameter.
+	(SetUpdateStatus): set need_update to CURSOR_PAR if LyXText needs it.
 
 	* inset.C (getLyXText): added bool recursive parameter.
 

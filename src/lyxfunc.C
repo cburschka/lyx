@@ -2828,21 +2828,20 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_SELFINSERT:
 	{
-		LyXFont const old_font(TEXT()->real_current_font);
+		LyXFont const old_font(TEXT(false)->real_current_font);
 		for (string::size_type i = 0; i < argument.length(); ++i) {
-			TEXT()->InsertChar(owner->view(), argument[i]);
+			TEXT(false)->InsertChar(owner->view(), argument[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
-			owner->view()->update(TEXT(),
+			owner->view()->update(TEXT(false),
 					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
-		TEXT()->sel_cursor = 
-			TEXT()->cursor;
-		moveCursorUpdate(true, false);
+		TEXT(false)->sel_cursor = TEXT(false)->cursor;
+		moveCursorUpdate(false, false);
 
 		// real_current_font.number can change so we need to 
 		// update the minibuffer
-		if (old_font != TEXT()->real_current_font)
+		if (old_font != TEXT(false)->real_current_font)
 			owner->showState();
 	}
 	break;

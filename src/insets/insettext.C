@@ -451,6 +451,9 @@ void InsetText::SetUpdateStatus(BufferView * bv, int what)
     need_update |= what;
     if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
 	need_update |= FULL;
+    else if (TEXT(bv)->status == LyXText::NEED_VERY_LITTLE_REFRESH)
+	need_update |= CURSOR_PAR;
+
     // this to not draw a selection when we redraw all of it!
     if ((need_update & (INIT|FULL)) && (need_update & CURSOR))
 	TEXT(bv)->ClearSelection(bv);

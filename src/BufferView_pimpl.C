@@ -1035,7 +1035,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	text->FullRebreak(bv_);
 
 	if (text->inset_owner) {
-//	    text->inset_owner->SetUpdateStatus(bv_, InsetText::CURSOR_PAR);
+	    text->inset_owner->SetUpdateStatus(bv_, InsetText::NONE);
 	    bv_->updateInset(text->inset_owner, true);
 	} else
 	    update();
