@@ -1,8 +1,14 @@
-2004-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2004-04-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* floatplacement.[Ch]: check whether we are in the float or
+	document dialog (in the latter, the span and sideways checkboxes
+	are not used). Fixes a crash.
+
+2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* floatplacement.[Ch]: another adjustment of placement enabling.
 
-2004-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* floatplacement.[Ch]: correct fix for enabling of placement 
 	values (bug 1016)

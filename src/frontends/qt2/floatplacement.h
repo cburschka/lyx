@@ -34,7 +34,6 @@ public:
 	std::string const get() const;
 
 public slots:
-	void defClicked();
 	void tbhpClicked();
 	void heredefinitelyClicked();
 	void spanClicked();

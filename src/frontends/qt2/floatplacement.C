@@ -61,7 +61,6 @@ FloatPlacement::FloatPlacement(QWidget * parent, char * name)
 	toplayout->addLayout(layout);
 
 	connect(defaultsCB, SIGNAL(toggled(bool)), options, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), this, SLOT(defClicked()));
 
 	connect(heredefinitelyCB, SIGNAL(clicked()), this, SLOT(heredefinitelyClicked()));
 	connect(topCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
@@ -207,20 +206,10 @@ string const FloatPlacement::get() const
 }
 
 
-void FloatPlacement::defClicked()
-{
-	checkAllowed();
-}
-
-
 void FloatPlacement::tbhpClicked()
 {
 	heredefinitelyCB->setChecked(false);
-	bool allow(topCB->isChecked());
-	allow |= bottomCB->isChecked();
-	allow |= pageCB->isChecked();
-	allow |= herepossiblyCB->isChecked();
-	ignoreCB->setEnabled(allow);
+	checkAllowed();
 }
 
 
@@ -263,15 +252,25 @@ void FloatPlacement::checkAllowed()
 	ignore |= bottomCB->isChecked();
 	ignore |= pageCB->isChecked();
 	ignore |= herepossiblyCB->isChecked();
-	bool const span(spanCB->isChecked());
-	bool const sideways(sidewaysCB->isChecked());
 
-	defaultsCB->setEnabled(!sideways);
-	topCB->setEnabled(!sideways && !defaults);
-	bottomCB->setEnabled(!sideways && !defaults && !span);
-	pageCB->setEnabled(!sideways && !defaults);
-	ignoreCB->setEnabled(!sideways && !defaults && ignore);
-	herepossiblyCB->setEnabled(!sideways && !defaults && !span);
-	heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
-	spanCB->setEnabled(!sideways);
+	// float or document dialog?
+	if (spanCB != 0) {
+		bool const span(spanCB->isChecked());
+		bool const sideways(sidewaysCB->isChecked());
+		defaultsCB->setEnabled(!sideways);
+		topCB->setEnabled(!sideways && !defaults);
+		bottomCB->setEnabled(!sideways && !defaults && !span);
+		pageCB->setEnabled(!sideways && !defaults);
+		ignoreCB->setEnabled(!sideways && !defaults && ignore);
+		herepossiblyCB->setEnabled(!sideways && !defaults && !span);
+		heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
+		spanCB->setEnabled(!sideways);
+	} else {
+		topCB->setEnabled(!defaults);
+		bottomCB->setEnabled(!defaults);
+		pageCB->setEnabled(!defaults);
+		ignoreCB->setEnabled(!defaults && ignore);
+		herepossiblyCB->setEnabled(!defaults);
+		heredefinitelyCB->setEnabled(!defaults);
+	}
 }
