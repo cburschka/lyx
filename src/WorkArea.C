@@ -71,10 +71,7 @@ extern "C" {
 	static
 	int C_WorkAreaEventCB(FL_FORM * form, void * xev) {
 		WorkArea * wa = static_cast<WorkArea*>(form->u_vdata);
-		int ret = wa->event_cb(static_cast<XEvent*>(xev));
-		lyxerr << "Pending: " << XPending(fl_get_display()) << endl;
-
-		return ret;
+		return wa->event_cb(static_cast<XEvent*>(xev));
 	}
 }
 
