@@ -12,7 +12,7 @@
 # It contains the instructions that sed requires to manipulate
 # the .h files produced by fdesign into a form usable by LyX
 
-# Remove trailing whitespace.
+# Pretty formatting; remove trailing whitespace.
 s/[ 	]*$//
 
 
@@ -29,13 +29,12 @@ s/[ 	]*$//
 
 
 # Immediately after line "#define FD_xxx_h_" that starts off the header file,
-# forward declare FL_FORM and FL_OBJECT and append the contents of file
-# "extern.tmp". This latter is a sorted, unique list of any function
-# declarations.
+# #include "fdesign_base.h" and append the contents of file "extern.tmp".
+# This latter is a sorted, unique list of any function declarations.
 /#define FD/{
 a\
 \
-#include "forms_fwd.h"\
+#include "fdesign_base.h"\
 
 r extern.tmp
 }
@@ -53,61 +52,54 @@ s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
 # Manipulate the structs:
 #
 # Rewrite                       as
-# typedef struct {              struct FD_xxx {
-# 	FL_FORM *form_xxx;              ~FD_xxx();
-# 	void *vdata;                    FL_FORM   * form;
-# 	char *cdata;                    FL_OBJECT * some_obj;
-# 	long  ldata;                    ...
-#       FL_OBJECT *some_obj;    };
+# typedef struct {              struct FD_xxx : public FD_base {
+# 	FL_FORM *form_xxx;              FL_OBJECT * some_obj;
+# 	void *vdata;                    ...
+# 	char *cdata;            };      
+# 	long  ldata;
+#       FL_OBJECT *some_obj;
 #       ...
 # } FD_xxx;
 #
 # This is detailed more closely below 
 
-# Delete lines containing:
-/typedef struct/d
-/vdata/d
-/cdata/d
-/ldata/d
+# We retain only those lines in the struct that start "	FL_OBJECT *",
+# placing them in the hold space until the end of the struct is reached
+# and we can ascertain the struct's name.
 
-# Place all lines containing FL_FORM and FL_OBJECT in the hold space, deleting
-# them from the pattern space.
+# All other lines are deleted:
+/^typedef struct/d
+/^	FL_FORM/d
+/[vcl]data/d
 
-# For all lines starting with FL_FORM...
-/^	FL_FORM/{
-
-# 1. Rewrite "FL_FORM *form_xxx;" as "FL_FORM   * form;
-s/FL_FORM[ ]*\*form.*/FL_FORM   * form;/
-
-# 2. We know that FL_FORM comes before any FL_OBJECT, so can initialise
-# the hold space with it. Delete from the pattern space.
-h
-d
-}
 
 # For all lines starting with FL_OBJECT...
 /^	FL_OBJECT/{
 
 # 1. Perform a little pretty formatting.
-s/FL_OBJECT \*\(.*\)/FL_OBJECT * \1/
+s/\(FL_OBJECT \*\)/\1 /
 
 # 2. Append to the hold space and delete from the pattern space.
-H
-d
+H; d
 }
+
 
 # The struct is ended by "} FD_xxx;", so now's the time to paste back the
 # contents of the hold space.
 /} FD_/{
-# 1. Insert an empty line.
-i\
 
-# 2. Rewrite "} FD_xxx;" as   "struct FD_xxx {" and append a d-tor.
-s/} \(.*\);/struct \1 {\
-	~\1();/
+# 1. Rewrite "} FD_xxx;" as   "\nstruct FD_xxx : public FD_base {".
+s/} \(.*\);/\
+struct \1 : public FD_base {/
 
-# 3. Paste the contents of the hold space beneath it.
-G
+# 2. The hold space contains the FL_OBJECT lines, preceded by a new line.
+#    To get rid of this new line, we exchange the contents of the hold and
+#    pattern spaces, remove the new line and then exchange back.
+x; s/^\n//; x
+
+# 3. Paste the contents of the hold space beneath the "struct FD_xxx" line.
+#    and empty the hold space
+G; h; s/.*//; x
 
 # 4. Close the struct and append an empty line.
 a\

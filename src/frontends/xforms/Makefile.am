@@ -27,6 +27,8 @@ libxforms_la_SOURCES = \
 	checkedwidgets.h \
 	combox.C \
 	combox.h \
+	fdesign_base.C \
+	fdesign_base.h \
 	input_validators.C \
 	input_validators.h \
 	lyx_gui.C \

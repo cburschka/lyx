@@ -19,7 +19,6 @@ SRCS =  form_aboutlyx.fd \
 	form_external.fd \
 	form_filedialog.fd \
 	form_float.fd \
-	form_wrap.fd \
 	form_forks.fd \
 	form_graphics.fd \
 	form_include.fd \
@@ -44,7 +43,8 @@ SRCS =  form_aboutlyx.fd \
 	form_texinfo.fd \
 	form_thesaurus.fd \
 	form_toc.fd \
-	form_url.fd
+	form_url.fd \
+	form_wrap.fd
 
 libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
 

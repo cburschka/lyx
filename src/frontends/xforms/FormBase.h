@@ -158,8 +158,7 @@ FormDB<Dialog>::FormDB(string const & t, bool allowResize)
 template <class Dialog>
 FL_FORM * FormDB<Dialog>::form() const
 {
-	if (dialog_.get()) return dialog_->form;
-	return 0;
+	return dialog_.get() ? dialog_->form : 0;
 }
 
 

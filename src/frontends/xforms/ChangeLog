@@ -1,3 +1,21 @@
+2002-11-26  Angus Leeming  <leeming@lyx.org>
+
+	* FormBase.h (FormDB::form): Implement in 1 line not 2.
+
+	* fdesign_base.[Ch]: new files. All fdesign-generated structures will
+	derive from FD_base, to minimise code duplication.
+
+	* Makefile.am: add new files.
+
+	* forms/Makefile.am (SRCS): move form_wrap.fd to the end of the list.
+
+	* forms/fdfix.sh: add "c_str" to namespace anon in the generated .C
+	files if required.
+
+	* forms/fdfix[ch].sed: the structs now derive from FD_base, so they
+	don't need d-tors to clean up the form.
+	Beautify the sed to produce beautiful looking C++ code.
+
 2002-11-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* FileDialog.C (save): actually return the result from

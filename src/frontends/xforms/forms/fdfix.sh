@@ -121,6 +121,17 @@ FDFIXC=${DIRNAME}/fdfixc.sed
 
 OUTPUT_FILE=${COUT}; INTRO_MESSAGE
 
+# This "c_str" is potentially used many times in many functions
+# so add it to the top of the generated file.
+grep -E 'fl_add.*".*[|].*"' ${CIN} > /dev/null &&
+	cat - >> ${COUT} <<EOF
+namespace {
+char const * c_str;
+} // namespace anon
+
+
+EOF
+
 echo "#include <config.h>" >> ${COUT}
 echo "#include \"forms_gettext.h\"" >> ${COUT}
 echo "#include \"gettext.h\"" >> ${COUT}
