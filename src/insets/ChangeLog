@@ -1,3 +1,11 @@
+2003-04-10  John Levon  <levon@movementarian.org>
+
+	* insettabular.C (tabularFeature): make sure
+	to update the dialog when we change something
+	(bug 1036).
+
+	(getStatus): don't disable some lfuns (bug 939)
+
 2003-04-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C (saveLyXTextState): adjust

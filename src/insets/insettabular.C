@@ -2006,7 +2006,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 				tabular->SetMultiColumn(bv->buffer(), actcell, 1);
 				updateLocal(bv, CELL);
 			}
-			return;
+			break;
 		}
 		// we have a selection so this means we just add all this
 		// cells to form a multicolumn cell
@@ -2111,6 +2111,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::LAST_ACTION:
 		break;
 	}
+
+	InsetTabularMailer mailer(*this);
+	mailer.updateDialog(bv);
 }
 
 
@@ -2291,8 +2294,6 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 	case LyXTabular::SET_MPWIDTH:
 	case LyXTabular::SET_SPECIAL_COLUMN:
 	case LyXTabular::SET_SPECIAL_MULTI:
-		return status.disabled(true);
-
 	case LyXTabular::APPEND_ROW:
 	case LyXTabular::APPEND_COLUMN:
 	case LyXTabular::DELETE_ROW:
