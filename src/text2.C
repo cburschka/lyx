@@ -2674,7 +2674,8 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 			
 			// set the cursor again. Otherwise
 			// dangling pointers are possible
-			SetCursor(bview, cursor.par(), cursor.pos());
+			SetCursor(bview, cursor.par(), cursor.pos(),
+				  false, cursor.boundary());
 			sel_cursor = cursor;
 			return;
 		}
@@ -2709,20 +2710,25 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
    
 	if (selection) {
 		tmpcursor = cursor;
-		SetCursorIntern(bview, sel_cursor.par(), sel_cursor.pos());
+		SetCursorIntern(bview, sel_cursor.par(), sel_cursor.pos(),
+				false, sel_cursor.boundary());
 		sel_cursor = cursor; 
 		SetCursorIntern(bview, sel_start_cursor.par(),
-				sel_start_cursor.pos());
+				sel_start_cursor.pos(),
+				false, sel_start_cursor.boundary());
 		sel_start_cursor = cursor; 
 		SetCursorIntern(bview, sel_end_cursor.par(),
-				sel_end_cursor.pos());
+				sel_end_cursor.pos(),
+				false, sel_end_cursor.boundary());
 		sel_end_cursor = cursor; 
 		SetCursorIntern(bview, last_sel_cursor.par(),
-				last_sel_cursor.pos());
+				last_sel_cursor.pos(),
+				false, last_sel_cursor.boundary());
 		last_sel_cursor = cursor; 
 		cursor = tmpcursor;
 	}
-	SetCursorIntern(bview, cursor.par(), cursor.pos());
+	SetCursorIntern(bview, cursor.par(), cursor.pos(),
+			false, cursor.boundary());
 }
 
 

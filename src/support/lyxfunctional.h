@@ -3,9 +3,16 @@
 #ifndef LYX_FUNCTIONAL_H
 #define LYX_FUNCTIONAL_H
 
+/** \file lyxfunctional.h
+    \brief Convenient function objects for use with LyX
+    This is currently a small collection of small function objects for use
+    together with std::algorithms.
+**/
+
 #include <iterator>
 
 //namespace lyx {
+
 
 template<class R, class C, class A>
 class class_fun_t {
@@ -34,7 +41,16 @@ private:
 	void(C::*cmf)(A);
 };
 
-       
+
+/// Use to call a class method with a container element.
+/** Most easily used as a functor to std::algoritms.
+    Small example:
+    \verbatim
+    A a; // class that have a int print(string const &) method
+    vector<string> vs;
+    for_each(vs.begin(), vs.end(), class_fun(int, vs, &A::print);
+    \endverbatim
+**/
 template <class R, class C, class A> class_fun_t<R, C, A>
 class_fun(C & c, R(C::*f)(A))
 {

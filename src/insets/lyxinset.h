@@ -223,7 +223,7 @@ public:
 	// because we could have fake text insets and have to call this
 	// inside them without cast!!!
 	///
-	virtual LyXText * getLyXText(BufferView *) const;
+	virtual LyXText * getLyXText(BufferView const *) const;
 	///
 	virtual void deleteLyXText(BufferView *, bool = true) const {}
 	///

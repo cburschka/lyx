@@ -164,7 +164,7 @@ public:
     ///
     void SetFrameColor(BufferView *, LColor::color);
     ///
-    LyXText * getLyXText(BufferView *) const;
+    LyXText * getLyXText(BufferView const *) const;
     ///
     void deleteLyXText(BufferView *, bool recursive=true) const;
     ///
@@ -229,6 +229,8 @@ private:
     ///
     LyXParagraph * cpar(BufferView *) const;
     ///
+    bool cboundary(BufferView *) const;
+    ///
     Row * crow(BufferView *) const;
 
     /// This instead of a macro
@@ -255,6 +257,8 @@ private:
     LyXParagraph * inset_par;
     ///
     LyXParagraph::size_type inset_pos;
+    ///
+    bool inset_boundary;
     ///
     mutable int inset_x;
     ///

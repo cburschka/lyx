@@ -73,6 +73,12 @@ void kb_keymap::printKey(kb_key const & key, string & buf)
 // This binds a key to an action
 int kb_keymap::bind(string const & seq, int action)
 {
+	if (lyxerr.debugging(Debug::KBMAP)) {
+		lyxerr << "BIND: Sequence `"
+		       << seq << "' Action `"
+		       << action << "'" << endl;
+	}
+	
 	kb_sequence k;
 
 	int const res = k.parse(seq);

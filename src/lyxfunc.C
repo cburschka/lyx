@@ -156,11 +156,12 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	
 	if (lyxerr.debugging(Debug::KEY)) {
 		char * tmp = XKeysymToString(keysym);
-		string stm = (tmp ? tmp : "");
+		string const stm = (tmp ? tmp : "");
 		lyxerr << "KeySym is "
 		       << stm
 		       << "["
-		       << keysym << "]"
+		       << keysym << "] State is ["
+		       << state << "]"
 		       << endl;
 	}
 	// Do nothing if we have nothing (JMarc)
@@ -204,17 +205,25 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	int action = cancel_meta_seq.addkey(keysym, state
 					    &(ShiftMask|ControlMask
 					      |Mod1Mask)); 
-
+	if (lyxerr.debugging(Debug::KEY)) {
+		lyxerr << "action first set to [" << action << "]" << endl;
+	}
+	
 	// When not cancel or meta-fake, do the normal lookup. 
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
 	// Mostly, meta_fake_bit = 0. RVDK_PATCH_5.
 	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
-
+		if (lyxerr.debugging(Debug::KEY)) {
+			lyxerr << "meta_fake_bit is [" << meta_fake_bit << "]" << endl;
+		}
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym,
 				       (state | meta_fake_bit)
 				       &(ShiftMask|ControlMask
-					 |Mod1Mask));      
+					 |Mod1Mask));
+		if (lyxerr.debugging(Debug::KEY)) {
+			lyxerr << "action now set to [" << action << "]" << endl;
+		}
 	}
 	// Dont remove this unless you know what you are doing.
 	meta_fake_bit = 0;
@@ -249,7 +258,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			return 0;
 		}
 	
-		char isochar = keyseq.getiso();
+		char const isochar = keyseq.getiso();
 		if (!(state & ControlMask) &&
 		    !(state & Mod1Mask) &&
 		    (isochar && keysym < 0xF000)) {
@@ -418,13 +427,8 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 
 	if (buf) {
 		func_status box = LyXFunc::ToggleOff;
-		LyXFont font;
-		if (owner->view()->theLockingInset() &&
-		    owner->view()->theLockingInset()->getLyXText(owner->view()))
-		    font = owner->view()->theLockingInset()->
-			getLyXText(owner->view())->real_current_font;
-		else
-		    font = owner->view()->text->real_current_font;
+		LyXFont const & font =
+			owner->view()->getLyXText()->real_current_font;
 		switch (action) {
 		case LFUN_EMPH:
 			if (font.emph() == LyXFont::ON)
@@ -472,7 +476,6 @@ string const LyXFunc::Dispatch(int ac,
 	
 	string argument;
 	kb_action action;
-	LyXText * text = 0;
         
         // we have not done anything wrong yet.
         errorstat = false;
@@ -495,6 +498,9 @@ string const LyXFunc::Dispatch(int ac,
 	
 	if (owner->view()->available())
 		owner->view()->hideCursor();
+
+	// We have to do this heare because of te goto below. (Lgb)
+	LyXText * text = owner->view()->getLyXText();
 
 	// We cannot use this function here
 	if (getStatus(ac) & Disabled)
@@ -526,7 +532,8 @@ string const LyXFunc::Dispatch(int ac,
 				}
 			}
 
-			string shortcuts = toplevel_keymap->findbinding(pseudoaction);
+			string const shortcuts =
+				toplevel_keymap->findbinding(pseudoaction);
 
 			if (!shortcuts.empty()) {
 				comname += ": " + shortcuts;
@@ -632,13 +639,7 @@ string const LyXFunc::Dispatch(int ac,
 				}
 			}
 		}
-		if (owner->view()->theLockingInset())
-			text = owner->view()->theLockingInset()->
-				getLyXText(owner->view());
 	}
-
-	if (!text)
-	    text = owner->view()->text;
 
 	switch (action) {
 		// --- Misc -------------------------------------------

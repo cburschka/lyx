@@ -166,7 +166,7 @@ public:
     ///
     Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
     ///
-    LyXText * getLyXText(BufferView *) const;
+    LyXText * getLyXText(BufferView const *) const;
     ///
     void resizeLyXText(BufferView *) const;
     ///

@@ -741,9 +741,20 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		     theLockingInset()->GetLockingInset()))
 			text->SetCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
+		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
+		LyXText * txt = getLyXText();
+		if (theLockingInset()->GetLockingInset()->LyxCode() ==
+		    Inset::TEXT_CODE &&
+		    (txt->real_current_font.language() !=
+		     buffer()->params.language
+		     || txt->real_current_font.isVisibleRightToLeft()
+		     != buffer()->params.language->RightToLeft()))
+			shape = (txt->real_current_font.isVisibleRightToLeft())
+				? LyXScreen::REVERSED_L_SHAPE
+				: LyXScreen::L_SHAPE;
 		y += cursor.y() + theLockingInset()->InsetInInsetY();
 		pimpl_->screen_->ShowManualCursor(text, x, y, asc, desc,
-						  LyXScreen::BAR_SHAPE);
+						  shape);
 	}
 }
 
@@ -910,7 +921,10 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 
 UpdatableInset * BufferView::theLockingInset() const
 {
-    return text->the_locking_inset;
+	// If NULL is not allowed we should put an Assert here. (Lgb)
+	if (text)
+		return text->the_locking_inset;
+	return 0;
 }
 
 
@@ -918,3 +932,15 @@ void BufferView::theLockingInset(UpdatableInset * inset)
 {
     text->the_locking_inset = inset;
 }
+
+
+LyXText * BufferView::getLyXText() const
+{
+	if (theLockingInset()) {
+		LyXText * txt = theLockingInset()->getLyXText(this);
+		if (txt)
+			return txt;
+	}
+	return text;
+}
+

@@ -420,7 +420,10 @@ string const InsetExternal::getScreenLabel() const
 		return _("External");
 	} else {
 		ExternalTemplate const & et = getTemplate(templatename);
-		return doSubstitution(0, et.guiName);
+		if (et.guiName.empty())
+			return "ext: ???";
+		else
+			return doSubstitution(0, et.guiName);
 	}
 }
 
@@ -550,7 +553,9 @@ int InsetExternal::getTemplateNumber(string const & name) const
 		++i;
 	}
 	// This should never happen
-	Assert(false);
+	///  This can happen if someone sends you a lyx file that uses
+	///  external templates that are defined only on his machine
+	//Assert(false);
 	return 0;
 }
 

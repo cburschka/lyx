@@ -480,6 +480,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     locked = true;
     the_locking_inset = 0;
     inset_pos = inset_x = inset_y = 0;
+    inset_boundary = false;
     inset_par = 0;
     old_par = 0;
     if (!checkAndActivateInset(bv, x, y, button))
@@ -523,6 +524,7 @@ bool InsetText::LockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	inset_y = cy(bv) + drawTextYOffset;
 	inset_pos = cpos(bv);
 	inset_par = cpar(bv);
+	inset_boundary = cboundary(bv);
 	TEXT(bv)->UpdateInset(bv, the_locking_inset);
 	return true;
     } else if (the_locking_inset && (the_locking_inset == inset)) {
@@ -618,6 +620,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_y = cy(bv) + drawTextYOffset;
 	    inset_pos = cpos(bv);
 	    inset_par = cpar(bv);
+	    inset_boundary = cboundary(bv);
 	    the_locking_inset = uinset;
 	    uinset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    uinset->Edit(bv, x - inset_x, y - inset_y, 0);
@@ -749,7 +752,7 @@ InsetText::LocalDispatch(BufferView * bv,
     HideInsetCursor(bv);
     switch (action) {
 	// Normal chars
-    case -1:
+    case LFUN_UNKNOWN_ACTION:
 	if (bv->buffer()->isReadonly()) {
 	    LyXBell();
 //	    setErrorMessage(N_("Document is read only"));
@@ -788,6 +791,7 @@ InsetText::LocalDispatch(BufferView * bv,
 		font.setLanguage(text->cursor.par()->getParLanguage(bv->buffer()->params));
 		SetFont(bv, font, false);
 	    }
+	    bv->setState();
 	    if (lyxrc.auto_region_delete) {
 		if (TEXT(bv)->selection){
 		    TEXT(bv)->CutSelection(bv, false);
@@ -1480,6 +1484,11 @@ LyXParagraph * InsetText::cpar(BufferView * bv) const
     return TEXT(bv)->cursor.par();
 }
 
+bool InsetText::cboundary(BufferView * bv) const
+{
+    return TEXT(bv)->cursor.boundary();
+}
+
 
 Row * InsetText::crow(BufferView * bv) const
 {
@@ -1487,15 +1496,18 @@ Row * InsetText::crow(BufferView * bv) const
 }
 
 
-LyXText * InsetText::getLyXText(BufferView * bv) const
+LyXText * InsetText::getLyXText(BufferView const * lbv) const
 {
+    // Super UGLY! (Lgb)
+    BufferView * bv = const_cast<BufferView *>(lbv);
+	
     if ((cache.find(bv) != cache.end()) && cache[bv])
 	return cache[bv];
     LyXText * lt = new LyXText(const_cast<InsetText *>(this));
     lt->init(bv);
     cache[bv] = lt;
     if (the_locking_inset) {
-	lt->SetCursor(bv, inset_par, inset_pos);
+       lt->SetCursor(bv, inset_par, inset_pos, true, inset_boundary);
     }
     return lt;
 }
@@ -1530,6 +1542,9 @@ void InsetText::resizeLyXText(BufferView * bv) const
     LyXParagraph::size_type pos = 0;
     LyXParagraph::size_type selstartpos = 0;
     LyXParagraph::size_type selendpos = 0;
+    bool boundary = false;
+    bool selstartboundary = false;
+    bool selendboundary = false;
     int selection = 0;
     int mark_set = 0;
 
@@ -1538,10 +1553,13 @@ void InsetText::resizeLyXText(BufferView * bv) const
     if (locked) {
 	lpar = TEXT(bv)->cursor.par();
 	pos = TEXT(bv)->cursor.pos();
+	boundary = TEXT(bv)->cursor.boundary();
 	selstartpar = TEXT(bv)->sel_start_cursor.par();
 	selstartpos = TEXT(bv)->sel_start_cursor.pos();
+	selstartboundary = TEXT(bv)->sel_start_cursor.boundary();
 	selendpar = TEXT(bv)->sel_end_cursor.par();
 	selendpos = TEXT(bv)->sel_end_cursor.pos();
+	selendboundary = TEXT(bv)->sel_end_cursor.boundary();
 	selection = TEXT(bv)->selection;
 	mark_set = TEXT(bv)->mark_set;
     }
@@ -1553,13 +1571,14 @@ void InsetText::resizeLyXText(BufferView * bv) const
 	 * Mechanism when setting the cursor */
 	TEXT(bv)->mark_set = mark_set;
 	if (selection) {
-	    TEXT(bv)->SetCursor(bv, selstartpar, selstartpos);
+	    TEXT(bv)->SetCursor(bv, selstartpar, selstartpos,true, 
+				selstartboundary);
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
-	    TEXT(bv)->SetCursor(bv, selendpar, selendpos);
+	    TEXT(bv)->SetCursor(bv, selendpar, selendpos, true, selendboundary);
 	    TEXT(bv)->SetSelection();
 	    TEXT(bv)->SetCursor(bv, lpar, pos);
 	} else {
-	    TEXT(bv)->SetCursor(bv, lpar, pos);
+	    TEXT(bv)->SetCursor(bv, lpar, pos, true, boundary);
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	    TEXT(bv)->selection = false;
 	}

@@ -1,3 +1,14 @@
+2000-12-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/kbsequence.C (addkey): also clear sequence and modifiers if
+	length == 0
+
+	* src/BufferView2.C (theLockingInset): return 0 if text is 0
+
+2000-12-17  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* Many files: Fix RTL support for insettext.
+
 2000-12-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* README: add mention of broken ghostscript versions, remove
@@ -9,6 +20,9 @@
 	length, should use it in the size comparison.
 
 2000-12-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetexternal.C (getScreenLabel): Return a default
+	value if the template label is empty.
 
 	* src/lyxlookup.C: do not condition on FL_REVISION.
 

@@ -253,13 +253,7 @@ string const CurrentState(BufferView * bv)
 	if (bv->available()) { 
 		// I think we should only show changes from the default
 		// font. (Asger)
-		LyXText *text = 0;
-
-		if (bv->theLockingInset())
-		    text = bv->theLockingInset()->getLyXText(bv);
-		if (!text)
-		    text = bv->text;
-
+		LyXText * text = bv->getLyXText();
 		Buffer * buffer = bv->buffer();
 		LyXFont font = text->real_current_font;
 		LyXFont const & defaultfont =
@@ -320,7 +314,7 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 		if (font.language() != ignore_language ||
 		    font.latex() != LyXFont::IGNORE ||
 		    font.number() != LyXFont::IGNORE) {
-			LyXText * text = bv->text;
+			LyXText * text = bv->getLyXText();
 			LyXCursor & cursor = text->cursor;
 			text->ComputeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 

@@ -100,6 +100,8 @@ public:
 	*/
 	LyXText * text;
 	///
+	LyXText * getLyXText() const;
+	///
 	int workWidth() const;
 	///
 	UpdatableInset * theLockingInset() const;

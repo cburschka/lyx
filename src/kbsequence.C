@@ -61,7 +61,11 @@ void printKeysym(unsigned int key, unsigned int mod, string & buf);
 int kb_sequence::addkey(unsigned int key,
 			unsigned int mod, unsigned int nmod /*= 0*/)
 {
-	if (length < 0) {
+	//lyxerr << "kb_sequence::addkey: length is [" << length << "]\n"
+	//       << "kb_sequence::addkey::key == [" << key << "]\n"
+	//       << "kb_sequence::addkey::mod == [" << mod << "]" << endl;
+	
+	if (length <= 0) {
 		length = 0;
 		sequence.clear();
 		modifiers.clear();
@@ -162,13 +166,14 @@ int kb_sequence::parse(string const & s)
     Called by : [user]
     Purpose   : print the currently defined sequence into a string
     Parameters: buf           - string where the result goes
-                maxlen        - length of string (including '\0')
                 when_defined  - only  print when sequence is real: length > 0.
     Returns   : 0, if ok, -1 if string too long
 \* ---F------------------------------------------------------------------- */
 
 int kb_sequence::print(string & buf, bool when_defined) const
 {
+	//lyxerr << "kb_sequence::print: length is [" << length << "]" << endl;
+	
 	KeySym key;
 	unsigned int mod;
 	int l = length;
@@ -177,6 +182,9 @@ int kb_sequence::print(string & buf, bool when_defined) const
 	for (int i = 0; i < l; ++i) {
 		key = sequence[i];
 		mod = modifiers[i] & 0xffff;
+		//lyxerr << "kb_sequence::sequence[" << i << "] == [" << key << "]\n"
+		//       << "kb_sequence::modifiers[" << i << "] == [" << mod << "]"
+		//       << endl;
 
 		printKeysym(key, mod, buf);  // RVDK_PATCH_5
 

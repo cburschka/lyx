@@ -1237,8 +1237,9 @@ void BufferView::Pimpl::setState()
 	if (!lyxrc.rtl_support)
 		return;
 
-	if (bv_->text->real_current_font.isRightToLeft() &&
-	    bv_->text->real_current_font.latex() != LyXFont::ON) {
+	LyXText * text = bv_->getLyXText();
+	if (text->real_current_font.isRightToLeft() &&
+	    text->real_current_font.latex() != LyXFont::ON) {
 		if (owner_->getIntl()->primarykeymap)
 			owner_->getIntl()->KeyMapSec();
 	} else {

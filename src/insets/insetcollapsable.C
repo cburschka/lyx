@@ -435,7 +435,7 @@ bool InsetCollapsable::doClearArea() const
 }
 
 
-LyXText * InsetCollapsable::getLyXText(BufferView * bv) const
+LyXText * InsetCollapsable::getLyXText(BufferView const * bv) const
 {
     return inset->getLyXText(bv);
 }

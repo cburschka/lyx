@@ -346,8 +346,8 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * tmp = XKeysymToString(key);
 			char const * tmp2 = XKeysymToString(keysym);
-			string stm = (tmp ? tmp : "");
-			string stm2 = (tmp2 ? tmp2 : "");
+			string const stm = (tmp ? tmp : "");
+			string const stm2 = (tmp2 ? tmp2 : "");
 			
 			lyxerr << "WorkArea: Key is `" << stm << "' ["
 			       << key << "]" << endl;
@@ -387,7 +387,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		}
 		
 #endif	
-		unsigned int ret_state = xke->state;
+		unsigned int const ret_state = xke->state;
 
 		// If you have a better way to handle "wild-output" of
 		// characters after the key has been released than the one
@@ -399,7 +399,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				   << xke->time - last_time_pressed
 				   << endl;
 		if (xke->time - last_time_pressed < 35 // should perhaps be tunable
-		    && xke->state == last_state_pressed
+		    && ret_state == last_state_pressed
 		    && xke->keycode == last_key_pressed) {
 			lyxerr[Debug::KEY]
 				<< "Workarea: Purging X events." << endl;
@@ -417,7 +417,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		}
 		last_time_pressed = xke->time;
 		last_key_pressed = xke->keycode;
-		last_state_pressed = xke->state;
+		last_state_pressed = ret_state;
 		
 		area->workAreaKeyPress(ret_key, ret_state);
 	}
