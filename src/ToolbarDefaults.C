@@ -90,7 +90,7 @@ void ToolbarDefaults::init()
         add(LFUN_MATH_MODE);
 	add(SEPARATOR);
 
-	add(LFUN_FIGURE);
+	add(LFUN_INSET_GRAPHICS);
 	add(LFUN_DIALOG_TABULAR_INSERT);
 }
 

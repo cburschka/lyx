@@ -16,7 +16,6 @@
 
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
-#include "figure_form.h"
 #include "print_form.h"
 #include "tex-strings.h"
 #include "lyx_main.h"
@@ -48,7 +47,6 @@
 using std::endl;
 
 FD_form_sendto * fd_form_sendto;
-FD_form_figure * fd_form_figure;
 
 extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
@@ -292,12 +290,6 @@ void LyXGUI::create_forms()
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();
 	fl_set_form_atclose(fd_form_sendto->form_sendto, CancelCloseBoxCB, 0);
-
-	// the figure form
-	fd_form_figure = create_form_form_figure();
-	fl_set_form_atclose(fd_form_figure->form_figure,
-			    CancelCloseBoxCB, 0);
-	fl_set_button(fd_form_figure->radio_postscript, 1);
 
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.

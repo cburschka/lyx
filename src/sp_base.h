@@ -44,8 +44,6 @@ class SpellBase
 
    virtual char const * nextMiss() = 0;
      
-   virtual void sigchldhandler(pid_t pid, int *) = 0;
-
 };
 
 #endif

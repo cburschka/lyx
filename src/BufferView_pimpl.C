@@ -96,7 +96,6 @@ bool selection_possible = false;
 extern BufferList bufferlist;
 extern char ascii_type;
 
-extern void sigchldchecker(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
@@ -822,7 +821,6 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 	// Did we hit an editable inset?
 	if (inset_hit) {
-		// Inset like error, notes and figures
 		selection_possible = false;
 
 		// if we reach this point with a selection, it
@@ -1119,27 +1117,20 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 // Callback for cursor timer
 void BufferView::Pimpl::cursorToggle()
 {
-	// Quite a nice place for asyncron Inset updating, isn't it?
-	// Actually no! This is run even if no buffer exist... so (Lgb)
 	if (!buffer_) {
 		cursor_timeout.restart();
 		return;
 	}
  
-	int status = 1;
-	int const pid = waitpid(static_cast<pid_t>(0), &status, WNOHANG);
-	if (pid == -1) // error find out what is wrong
-		; // ignore it for now.
-	else if (pid > 0)
-		sigchldchecker(pid, &status);
-
-	updatelist.update(bv_);
-	
 	if (!screen_.get()) {
 		cursor_timeout.restart();
 		return;
 	}
 
+	/* FIXME */
+	extern void reapSpellchecker(void);
+	reapSpellchecker();
+	 
 	if (!bv_->theLockingInset()) {
 		screen_->cursorToggle(bv_);
 	} else {

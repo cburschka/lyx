@@ -59,9 +59,6 @@ LyXView::LyXView()
 	autosave_timeout = new Timeout(5000);
 
 	dialogs_ = new Dialogs(this);
-	// temporary until all dialogs moved into Dialogs.
-	dialogs_->updateBufferDependent
-		.connect(SigC::slot(&updateAllVisibleBufferRelatedDialogs));
 	dialogs_->hideBufferDependent
 		.connect(SigC::slot(&CloseAllBufferRelatedDialogs));
 	Dialogs::redrawGUI.connect(SigC::slot(this, &LyXView::redraw));

@@ -56,65 +56,6 @@ extern BufferList bufferlist;
 bool quitting;	// flag, that we are quitting the program
 extern bool finished; // all cleanup done just let it run through now.
 
-/* 
-   This is the inset locking stuff needed for mathed --------------------
-
-   an inset can simple call LockInset in it's edit call and *ONLY* in it's
-   edit call.
-   Inset::Edit() can only be called by the main lyx module.
-
-   Then the inset may modify the menu's and/or iconbars. 
-
-   Unlocking is either done by LyX or the inset itself with a UnlockInset-call
-
-   During the lock, all button and keyboard events will be modified
-   and send to the inset through the following inset-features. Note that
-   Inset::insetUnlock will be called from inside UnlockInset. It is meant
-   to contain the code for restoring the menus and things like this.
-
-   
-   virtual void insetButtonPress(int x, int y, int button);
-   virtual void insetButtonRelease(int x, int y, int button);
-   virtual void insetKeyPress(XKeyEvent *ev);
-   virtual void insetMotionNotify(int x, int y, int state);
-   virtual void insetUnlock();
-
-   If a inset wishes any redraw and/or update it just has to call
-   UpdateInset(this).
-   It's is completly irrelevant, where the inset is. UpdateInset will
-   find it in any paragraph in any buffer. 
-   Of course the_locking_inset and the insets in the current paragraph/buffer
-   are checked first, so no performance problem should occur.
-   
-   Hope that's ok for the beginning, Alejandro,
-   sorry that I needed so much time,
-
-                  Matthias
-   */
-
-//void UpdateInset(BufferView * bv, Inset * inset, bool mark_dirty = true);
-
-/* these functions return 1 if an error occured, 
-   otherwise 0 */
-// Now they work only for updatable insets. [Alejandro 080596]
-//int LockInset(UpdatableInset * inset);
-void ToggleLockedInsetCursor(int x, int y, int asc, int desc);
-//void FitLockedInsetCursor(long x, long y, int asc, int desc);
-//int UnlockInset(UpdatableInset * inset);
-//void LockedInsetStoreUndo(Undo::undo_kind kind);
-
-/* this is for asyncron updating. UpdateInsetUpdateList will be called
-   automatically from LyX. Just insert the Inset into the Updatelist */
-//void UpdateInsetUpdateList();
-//void PutInsetIntoInsetUpdateList(Inset * inset);
-
-//InsetUpdateStruct * InsetUpdateList = 0;
-
-
-/*
-  -----------------------------------------------------------------------
- */
-
 
 void ShowMessage(Buffer const * buf,
 		 string const & msg1,

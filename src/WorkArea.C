@@ -616,7 +616,7 @@ string const WorkArea::getClipboard() const
 			fl_XNextEvent(&ev);
 			lyxerr << "Received unhandled X11 event" << endl; 
 			lyxerr << "Type: 0x" << hex << ev.xany.type <<
-				"Target: 0x" << hex << ev.xany.window << endl;
+				" Target: 0x" << hex << ev.xany.window << endl;
 		}
 	}
 	return clipboard_selection;

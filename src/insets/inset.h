@@ -382,7 +382,7 @@ bool Inset::checkInsertChar(LyXFont &)
  * to contain the code for restoring the menus and things like this.
  * 
  * If a inset wishes any redraw and/or update it just has to call
- * UpdateInset(this).
+ * updateInset(this).
  * 
  * It's is completly irrelevant, where the inset is. UpdateInset will
  * find it in any paragraph in any buffer. 
@@ -436,7 +436,7 @@ public:
 	///
 	virtual EDITABLE editable() const;
 	
-	/// may call ToggleLockedInsetCursor
+	///
 	virtual void toggleInsetCursor(BufferView *);
 	///
 	virtual void showInsetCursor(BufferView *, bool show = true);

@@ -17,6 +17,8 @@
 #pragma implementation
 #endif
 
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -57,9 +59,6 @@ namespace {
 	/// pid for the `ispell' process. 
 	pid_t isp_pid = -1; 
 }
-
-/// can be found in src/insets/figinset.C
-extern void sigchldchecker(pid_t pid, int * status);
 
 ///
 // ------------------- start special pspell code/class --------------------
@@ -188,11 +187,6 @@ char const * PSpell::error()
 	return error_;
 }
 
-
-void PSpell::sigchldhandler(pid_t pid, int * status)
-{
-	sigchldchecker(pid, status);
-}
 
 #endif
 
@@ -425,6 +419,19 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 }
 
 
+/* FIXME: this is a minimalist solution until the above
+ * code is able to work with forkedcall.h. We only need
+ * to reap the zombies here.
+ */
+void reapSpellchecker(void)
+{
+	if (isp_pid == -1) 
+		return;
+
+	waitpid(isp_pid, 0, WNOHANG);
+}
+
+ 
 bool ISpell::alive()
 {
 	return isp_pid != -1;
@@ -528,20 +535,6 @@ void ISpell::store(string const & mis, string const & cor)
 		::fputs(cor.c_str(), out);
 		::fputc('\n', out);
 	}
-}
-
-
-void ISpell::sigchldhandler(pid_t pid, int * status)
-{
-	if (isp_pid > 0) {
-		if (pid == isp_pid) {
-			isp_pid = -1;
-			// set the file descriptor to nonblocking so we can
-			// continue 
-			fcntl(isp_fd, F_SETFL, O_NONBLOCK);
-		}
-	}
-	sigchldchecker(pid, status);
 }
 
 

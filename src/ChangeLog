@@ -24,6 +24,34 @@
 
 2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
+	* BufferView.C:
+	* BufferView.h:
+	* BufferView_pimpl.C:
+	* BufferView_pimpl.h:
+	* LaTeXFeatures.C:
+	* LyXAction.C:
+	* LyXView.C:
+	* Makefile.am:
+	* UpdateList.h:
+	* UpdateList.C:
+	* buffer.C:
+	* figure.h:
+	* figureForm.C:
+	* figureForm.h:
+	* figure_form.C:
+	* figure_form.h:
+	* lyx_cb.C:
+	* lyx_gui.C:
+	* lyx_gui_misc.C:
+	* lyxfunc.C:
+	* sp_base.h:
+	* sp_ispell.h:
+	* sp_pspell.h:
+	* sp_spell.C: remove fig inset, and the crap house of
+	  cards that follows it
+ 
+2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Makefile.am:
 	* lyxserver.C:
 	* os2_defines.h:

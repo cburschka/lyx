@@ -31,7 +31,4 @@ void RedrawAllBufferRelatedDialogs();
 /// Prevents LyX from crashing when no buffers available
 void CloseAllBufferRelatedDialogs();
 
-/// Ensures info in visible popups are always correct.
-void updateAllVisibleBufferRelatedDialogs(bool switched = false);
-
 #endif

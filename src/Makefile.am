@@ -85,8 +85,6 @@ lyx_SOURCES = \
 	Thesaurus.h \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
-	UpdateInset.C \
-	UpdateInset.h \
 	WorkArea.C \
 	WorkArea.h \
 	XFormsView.C \
@@ -115,10 +113,6 @@ lyx_SOURCES = \
 	exporter.C \
 	exporter.h \
 	figure.h \
-	figure_form.C \
-	figure_form.h \
-	figureForm.C \
-	figureForm.h \
 	font.C \
 	font.h \
 	gettext.C \

@@ -66,7 +66,6 @@
 #include "insets/insettoc.h"
 #include "insets/insetparent.h"
 #include "insets/insetspecialchar.h"
-#include "insets/figinset.h"
 #include "insets/insettext.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"

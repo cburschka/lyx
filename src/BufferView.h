@@ -201,8 +201,6 @@ public:
 	void setState();
 
 	///
-	void pushIntoUpdateList(Inset * i);
-	///
 	bool ChangeInsets(Inset::Code code, string const & from, 
 			  string const & to);
 	///

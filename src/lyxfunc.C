@@ -48,7 +48,6 @@
 #include "lyxfind.h"
 #include "undo_funcs.h"
 #include "ParagraphParameters.h"
-#include "figureForm.h"
 
 #include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
@@ -578,7 +577,6 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_INSET_ERT:
 		code = Inset::ERT_CODE;		
 		break;
-	case LFUN_FIGURE:
 	case LFUN_INSET_GRAPHICS:
 		code = Inset::GRAPHICS_CODE;
 		break;
@@ -1163,10 +1161,6 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		owner->getDialogs()->showTabularCreate();
 		break;
 		
-	case LFUN_FIGURE:
-		Figure();
-		break;
-
 	case LFUN_AUTOSAVE:
 		AutoSave(owner->view());
 		break;

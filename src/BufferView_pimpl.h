@@ -6,7 +6,6 @@
 #include <boost/smart_ptr.hpp>
 
 #include "BufferView.h"
-#include "UpdateInset.h"
 #include "commandtags.h"
 #include "frontends/Timeout.h"
 #include "WorkArea.h"
@@ -180,8 +179,6 @@ private:
 	Timeout cursor_timeout;
 	///
 	WorkArea workarea_;
-	///
-	UpdateInset updatelist;
 	///
 	void pasteClipboard(bool asPara);
 	///

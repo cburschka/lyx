@@ -18,8 +18,6 @@ EXTRA_DIST = \
 libinsets_la_SOURCES = \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
-	figinset.C \
-	figinset.h \
 	inset.C \
 	inset.h \
 	insetbib.C \

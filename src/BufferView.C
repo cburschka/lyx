@@ -53,12 +53,6 @@ LyXView * BufferView::owner() const
 }
 
 
-void BufferView::pushIntoUpdateList(Inset * i)
-{
-	pimpl_->updatelist.push(i);
-}
-
-
 Painter & BufferView::painter() 
 {
 	return pimpl_->painter();

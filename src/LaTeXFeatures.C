@@ -48,12 +48,7 @@ void LaTeXFeatures::require(string const & name)
 	if (isRequired(name))
 		return;
 	
-	// INSET_GRAPHICS: remove this when InsetFig is thrown.
-	if (name == "graphics") {
-		features.push_back("graphicx");
-		features.push_back("graphics");
-	} else
-		features.push_back(name);
+	features.push_back(name);
 }
 
 
@@ -207,17 +202,6 @@ string const LaTeXFeatures::getPackages() const
 			packages << "\\usepackage[" 
 				 << params.graphicsDriver
 				 << "]{graphicx}\n";
-	}
-
-	// INSET_GRAPHICS: remove this when InsetFig is thrown.
-	// graphics.sty
-	if (isRequired("graphics") && params.graphicsDriver != "none") {
-		if (params.graphicsDriver == "default")
-			packages << "\\usepackage{graphics}\n";
-		else
-			packages << "\\usepackage[" 
-				 << params.graphicsDriver
-				 << "]{graphics}\n";
 	}
 
 	//if (algorithm) {

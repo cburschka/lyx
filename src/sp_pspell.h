@@ -41,8 +41,6 @@ class PSpell : public SpellBase
     /// store replacement
     void store(string const & mis, string const & cor);
      
-    void sigchldhandler(pid_t pid, int *status);
-
     char const * nextMiss();
 
     char const * error();
