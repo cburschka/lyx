@@ -89,7 +89,12 @@ libcontrollers_o_SOURCES=\
 	helper_funcs.h
 
 libcontrollers.o: $(libcontrollers_o_OBJECTS) $(libcontrollers_o_DEPENDENCIES)
-	rm -f ../libcontrollers.objects
+	rm -f ../libcontrollers.objects.new
 	for fil in $(libcontrollers_o_OBJECTS) ; do \
-		echo controllers/$$fil >> ../libcontrollers.objects ; \
+		echo controllers/$$fil >> ../libcontrollers.objects.new ; \
 	done
+	if [ -f ../libcontrollers.objects ] ; then \
+		cmp -s ../libcontrollers.objects ../libcontrollers.objects.new || mv ../libcontrollers.objects.new ../libcontrollers.objects ; \
+	else \
+		mv ../libcontrollers.objects.new ../libcontrollers.objects ; \
+	fi

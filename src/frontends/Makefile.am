@@ -16,6 +16,8 @@ libfrontends_o_LIBADD= `cat libxforms.objects` \
 	support/libfrontendsupport.o
 
 libfrontends_o_DEPENDENCIES = \
+	libxforms.objects \
+	libcontrollers.objects \
 	support/libfrontendsupport.o
 
 libfrontends_o_SOURCES=\
