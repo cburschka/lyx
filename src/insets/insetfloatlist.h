@@ -42,15 +42,15 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	void Write(Buffer const *, ostream &) const;
+	void Write(Buffer const *, std::ostream &) const;
 	///
 	void Read(Buffer const *, LyXLex &);
 	///
-	int Latex(Buffer const *, ostream &, bool, bool) const;
+	int Latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
-	int Linuxdoc(Buffer const *, ostream &) const { return 0; }
+	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int DocBook(Buffer const *, ostream &) const { return 0; }
+	int DocBook(Buffer const *, std::ostream &) const { return 0; }
 	///
 	int Ascii(Buffer const *, std::ostream &, int linelen) const;
 private:

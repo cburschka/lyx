@@ -10,6 +10,7 @@
 #include "gettext.h"
 #include "debug.h"
 
+using std::endl;
 
 string const InsetFloatList::getScreenLabel() const 
 {
