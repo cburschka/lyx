@@ -94,7 +94,7 @@ void QExternal::update_contents()
 
 string const QExternal::helpText() const
 {
-	ExternalTemplate templ =
+	lyx::external::Template templ =
 		controller().getTemplate(dialog_->externalCO->currentItem());
 	return templ.helpText;
 }

@@ -41,6 +41,7 @@
 #include <boost/bind.hpp>
 
 namespace support = lyx::support;
+namespace external = lyx::external;
 
 using std::endl;
 
@@ -72,16 +73,18 @@ string const doSubstitution(InsetExternal::Params const & params,
 void editExternal(InsetExternal::Params const & params, Buffer const & buffer);
 
 
-ExternalTemplate const * getTemplatePtr(string const & name)
+external::Template const * getTemplatePtr(string const & name)
 {
-	ExternalTemplateManager const & etm = ExternalTemplateManager::get();
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
 	return etm.getTemplateByName(name);
 }
 
 
-ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
+external::Template const * getTemplatePtr(InsetExternal::Params const & params)
 {
-	ExternalTemplateManager const & etm = ExternalTemplateManager::get();
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
 	return etm.getTemplateByName(params.templatename());
 }
 
@@ -348,7 +351,7 @@ lyx::graphics::Params get_grfx_params(InsetExternal::Params const & eparams)
 string const getScreenLabel(InsetExternal::Params const & params,
 			    Buffer const & buffer)
 {
-	ExternalTemplate const * const ptr = getTemplatePtr(params);
+	external::Template const * const ptr = getTemplatePtr(params);
 	if (!ptr)
 		return support::bformat(_("External template %1$s is not installed"),
 					params.templatename());
@@ -417,12 +420,12 @@ int InsetExternal::write(string const & format,
 			 Buffer const & buf, ostream & os,
 			 bool external_in_tmpdir) const
 {
-	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+	external::Template const * const et_ptr = getTemplatePtr(params_);
 	if (!et_ptr)
 		return 0;
-	ExternalTemplate const & et = *et_ptr;
+	external::Template const & et = *et_ptr;
 
-	ExternalTemplate::Formats::const_iterator cit =
+	external::Template::Formats::const_iterator cit =
 		et.formats.find(format);
 	if (cit == et.formats.end()) {
 		lyxerr[Debug::EXTERNAL]
@@ -452,12 +455,12 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
 	if (runparams.flavor == LatexRunParams::PDFLATEX) {
-		ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+		external::Template const * const et_ptr = getTemplatePtr(params_);
 		if (!et_ptr)
 			return 0;
-		ExternalTemplate const & et = *et_ptr;
+		external::Template const & et = *et_ptr;
 
-		ExternalTemplate::Formats::const_iterator cit =
+		external::Template::Formats::const_iterator cit =
 			et.formats.find("PDFLaTeX");
 		if (cit != et.formats.end())
 			return write("PDFLaTeX", buf, os, external_in_tmpdir);
@@ -487,19 +490,19 @@ int InsetExternal::docbook(Buffer const & buf, ostream & os, bool) const
 
 void InsetExternal::validate(LaTeXFeatures & features) const
 {
-	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+	external::Template const * const et_ptr = getTemplatePtr(params_);
 	if (!et_ptr)
 		return;
-	ExternalTemplate const & et = *et_ptr;
+	external::Template const & et = *et_ptr;
 
-	ExternalTemplate::Formats::const_iterator cit = et.formats.find("LaTeX");
+	external::Template::Formats::const_iterator cit = et.formats.find("LaTeX");
 	if (cit == et.formats.end())
 		return;
 
 	if (!cit->second.requirement.empty())
 		features.require(cit->second.requirement);
 
-	ExternalTemplateManager & etm = ExternalTemplateManager::get();
+	external::TemplateManager & etm = external::TemplateManager::get();
 
 	vector<string>::const_iterator it  = cit->second.preambleNames.begin();
 	vector<string>::const_iterator end = cit->second.preambleNames.end();
@@ -515,20 +518,20 @@ void InsetExternal::updateExternal(string const & format,
 				   Buffer const & buf,
 				   bool external_in_tmpdir) const
 {
-	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+	external::Template const * const et_ptr = getTemplatePtr(params_);
 	if (!et_ptr)
 		return;
-	ExternalTemplate const & et = *et_ptr;
+	external::Template const & et = *et_ptr;
 
 	if (!et.automaticProduction)
 		return;
 
-	ExternalTemplate::Formats::const_iterator cit =
+	external::Template::Formats::const_iterator cit =
 		et.formats.find(format);
 	if (cit == et.formats.end())
 		return;
 
-	ExternalTemplate::FormatTemplate const & outputFormat = cit->second;
+	external::Template::Format const & outputFormat = cit->second;
 	if (outputFormat.updateResult.empty())
 		return;
 
@@ -636,10 +639,10 @@ string const doSubstitution(InsetExternal::Params const & params,
 
 void editExternal(InsetExternal::Params const & params, Buffer const & buffer)
 {
-	ExternalTemplate const * const et_ptr = getTemplatePtr(params);
+	external::Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
 		return;
-	ExternalTemplate const & et = *et_ptr;
+	external::Template const & et = *et_ptr;
 
 	if (et.editCommand.empty())
 		return;

@@ -20,7 +20,11 @@
 #include <boost/scoped_ptr.hpp>
 
 
-class ExternalTemplate;
+namespace lyx {
+namespace external {
+class Template;
+} // namespace external
+} // namespace lyx
 
 
 class ControlExternal : public Dialog::Controller {
@@ -48,7 +52,7 @@ public:
 	///
 	int getTemplateNumber(string const &) const;
 	///
-	ExternalTemplate getTemplate(int) const;
+	lyx::external::Template getTemplate(int) const;
 	///
 	string const Browse(string const &) const;
 private:

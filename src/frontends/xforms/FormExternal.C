@@ -180,7 +180,7 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 void FormExternal::updateComboChange()
 {
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
-	ExternalTemplate templ = controller().getTemplate(choice);
+	lyx::external::Template templ = controller().getTemplate(choice);
 
 	// Update the help text
 	string const txt = formatted(templ.helpText,

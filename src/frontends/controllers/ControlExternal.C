@@ -20,6 +20,8 @@
 
 #include "insets/ExternalTemplate.h"
 
+namespace external = lyx::external;
+
 using std::vector;
 
 
@@ -79,9 +81,9 @@ vector<string> const ControlExternal::getTemplates() const
 {
 	vector<string> result;
 
-	ExternalTemplateManager::Templates::const_iterator i1, i2;
-	i1 = ExternalTemplateManager::get().getTemplates().begin();
-	i2 = ExternalTemplateManager::get().getTemplates().end();
+	external::TemplateManager::Templates::const_iterator i1, i2;
+	i1 = external::TemplateManager::get().getTemplates().begin();
+	i2 = external::TemplateManager::get().getTemplates().end();
 
 	for (; i1 != i2; ++i1) {
 		result.push_back(i1->second.lyxName);
@@ -92,9 +94,9 @@ vector<string> const ControlExternal::getTemplates() const
 
 int ControlExternal::getTemplateNumber(string const & name) const
 {
-	ExternalTemplateManager::Templates::const_iterator i1, i2;
-	i1 = ExternalTemplateManager::get().getTemplates().begin();
-	i2 = ExternalTemplateManager::get().getTemplates().end();
+	external::TemplateManager::Templates::const_iterator i1, i2;
+	i1 = external::TemplateManager::get().getTemplates().begin();
+	i2 = external::TemplateManager::get().getTemplates().end();
 	for (int i = 0; i1 != i2; ++i1, ++i) {
 		if (i1->second.lyxName == name)
 			return i;
@@ -106,10 +108,10 @@ int ControlExternal::getTemplateNumber(string const & name) const
 }
 
 
-ExternalTemplate ControlExternal::getTemplate(int i) const
+external::Template ControlExternal::getTemplate(int i) const
 {
-	ExternalTemplateManager::Templates::const_iterator i1
-		= ExternalTemplateManager::get().getTemplates().begin();
+	external::TemplateManager::Templates::const_iterator i1
+		= external::TemplateManager::get().getTemplates().begin();
 
 	std::advance(i1, i);
 
@@ -119,9 +121,10 @@ ExternalTemplate ControlExternal::getTemplate(int i) const
 
 namespace {
 
-ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
+external::Template const * getTemplatePtr(InsetExternal::Params const & params)
 {
-	ExternalTemplateManager const & etm = ExternalTemplateManager::get();
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
 	return etm.getTemplateByName(params.templatename());
 }
 
@@ -136,7 +139,7 @@ string const ControlExternal::Browse(string const & input) const
 
 	/// Determine the template file extension
 	string pattern = "*";
-	ExternalTemplate const * const et_ptr = getTemplatePtr(params());
+	external::Template const * const et_ptr = getTemplatePtr(params());
 	if (et_ptr)
 		pattern = et_ptr->fileRegExp;
 

@@ -33,18 +33,20 @@ using std::ostream;
 using std::vector;
 
 
-// We have to have dummy default commands for security reasons!
+namespace lyx {
+namespace external {
 
-ExternalTemplate::ExternalTemplate()
+// We have to have dummy default commands for security reasons!
+Template::Template()
 	: inputFormat("*")
 {}
 
 
-ExternalTemplate::FormatTemplate::FormatTemplate()
+Template::Format::Format()
 {}
 
 
-ExternalTemplateManager::ExternalTemplateManager()
+TemplateManager::TemplateManager()
 {
 	readTemplates(support::user_lyxdir());
 	if (lyxerr.debugging(Debug::EXTERNAL)) {
@@ -57,7 +59,7 @@ ExternalTemplateManager::ExternalTemplateManager()
 
 class dumpPreambleDef {
 public:
-	typedef ExternalTemplateManager::PreambleDefs::value_type value_type;
+	typedef TemplateManager::PreambleDefs::value_type value_type;
 
 	dumpPreambleDef(ostream & o) : ost(o) {}
 
@@ -74,12 +76,12 @@ private:
 
 class dumpTemplate {
 public:
-	typedef ExternalTemplateManager::Templates::value_type value_type;
+	typedef TemplateManager::Templates::value_type value_type;
 
 	dumpTemplate(ostream & o) : ost(o) {}
 
 	void operator()(value_type const & vt) {
-		ExternalTemplate const & et = vt.second;
+		Template const & et = vt.second;
 
 		ost << "Template " << et.lyxName << '\n'
 		    << "\tGuiName " << et.guiName << '\n'
@@ -101,12 +103,12 @@ private:
 
 class dumpFormat {
 public:
-	typedef ExternalTemplate::Formats::value_type value_type;
+	typedef Template::Formats::value_type value_type;
 
 	dumpFormat(ostream & o) : ost(o) {}
 
 	void operator()(value_type const & vt) const{
-		ExternalTemplate::FormatTemplate const & ft = vt.second;
+		Template::Format const & ft = vt.second;
 		ost << "\tFormat " << vt.first << '\n'
 		    << "\t\tProduct " << ft.product << '\n'
 		    << "\t\tUpdateFormat " << ft.updateFormat << '\n'
@@ -126,47 +128,47 @@ private:
 };
 
 
-void ExternalTemplate::dumpFormats(ostream & os) const
+void Template::dumpFormats(ostream & os) const
 {
 	for_each(formats.begin(), formats.end(), dumpFormat(os));
 }
 
 
-void ExternalTemplateManager::dumpPreambleDefs(ostream & os) const
+void TemplateManager::dumpPreambleDefs(ostream & os) const
 {
 	for_each(preambledefs.begin(), preambledefs.end(), dumpPreambleDef(os));
 }
 
 
-void ExternalTemplateManager::dumpTemplates(ostream & os) const
+void TemplateManager::dumpTemplates(ostream & os) const
 {
 	for_each(templates.begin(), templates.end(), dumpTemplate(os));
 }
 
 
-ExternalTemplateManager & ExternalTemplateManager::get()
+TemplateManager & TemplateManager::get()
 {
-	static ExternalTemplateManager externalTemplateManager;
+	static TemplateManager externalTemplateManager;
 	return externalTemplateManager;
 }
 
 
-ExternalTemplateManager::Templates &
-ExternalTemplateManager::getTemplates()
+TemplateManager::Templates &
+TemplateManager::getTemplates()
 {
 	return templates;
 }
 
 
-ExternalTemplateManager::Templates const &
-ExternalTemplateManager::getTemplates() const
+TemplateManager::Templates const &
+TemplateManager::getTemplates() const
 {
 	return templates;
 }
 
 
-ExternalTemplate const *
-ExternalTemplateManager::getTemplateByName(string const & name) const
+Template const *
+TemplateManager::getTemplateByName(string const & name) const
 {
 	Templates::const_iterator it = templates.find(name);
 	return (it == templates.end()) ? 0 : &it->second;
@@ -174,7 +176,7 @@ ExternalTemplateManager::getTemplateByName(string const & name) const
 
 
 string const
-ExternalTemplateManager::getPreambleDefByName(string const & name) const
+TemplateManager::getPreambleDefByName(string const & name) const
 {
 	string const trimmed_name = support::trim(name);
 	if (trimmed_name.empty())
@@ -188,7 +190,7 @@ ExternalTemplateManager::getPreambleDefByName(string const & name) const
 }
 
 
-void ExternalTemplateManager::readTemplates(string const & path)
+void TemplateManager::readTemplates(string const & path)
 {
 	support::Path p(path);
 
@@ -210,7 +212,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 
 	string filename = support::LibFileSearch("", "external_templates");
 	if (filename.empty() || !lex.setFile(filename)) {
-		lex.printError("ExternalTemplateManager::readTemplates: "
+		lex.printError("external::TemplateManager::readTemplates: "
 			       "No template file");
 		return;
 	}
@@ -230,7 +232,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 		case TM_TEMPLATE: {
 			lex.next();
 			string const name = lex.getString();
-			ExternalTemplate & tmp = templates[name];
+			Template & tmp = templates[name];
 			tmp.lyxName = name;
 			tmp.readTemplate(lex);
 		}
@@ -248,7 +250,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 }
 
 
-void ExternalTemplate::readTemplate(LyXLex & lex)
+void Template::readTemplate(LyXLex & lex)
 {
 	enum TemplateOptionTags {
 		TO_GUINAME = 1,
@@ -314,7 +316,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 			return;
 
 		default:
-			lex.printError("ExternalTemplate::readTemplate: "
+			lex.printError("external::Template::readTemplate: "
 				       "Wrong tag: $$Token");
 			BOOST_ASSERT(false);
 			break;
@@ -323,7 +325,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 }
 
 
-void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
+void Template::Format::readFormat(LyXLex & lex)
 {
 	enum FormatTags {
 		FO_PRODUCT = 1,
@@ -377,3 +379,6 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 		}
 	}
 }
+
+} // namespace external
+} // namespace lyx
