@@ -1,3 +1,8 @@
+2001-03-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* qt2.m4: qt2 port compiles with qt 2.2.1. Changed test to
+	(QT_VERSION < 221).
+
 2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxinclude.m4: minor changes, --with-lyx-version becomes

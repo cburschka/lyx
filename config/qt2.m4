@@ -315,7 +315,7 @@ AC_TRY_COMPILE([
 #include <qglobal.h>
 ],
 [
-#if (QT_VERSION < 223)
+#if (QT_VERSION < 221)
 break_me_(\\\);
 #endif
 ],
