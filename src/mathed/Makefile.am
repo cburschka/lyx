@@ -5,7 +5,7 @@ LIBS=
 LDFLAGS=
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ 
-CXXLINK = $(LD) -r -o $(noinst_PROGRAMS)
+CXXLINK = $(LD) $(LDFLAGS) -r -o $(noinst_PROGRAMS)
 
 mathed_o_SOURCES = array.h \
 	formula.C \

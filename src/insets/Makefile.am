@@ -5,7 +5,7 @@ LIBS=
 LDFLAGS=
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../ 
-CXXLINK = $(LD) -r -o $(noinst_PROGRAMS)
+CXXLINK = $(LD) $(LDFLAGS)-r -o $(noinst_PROGRAMS)
 
 insets_o_SOURCES = \
 	figinset.C \

@@ -1,5 +1,13 @@
 1999-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/{mathed,insets}/Makefile.am (CXXLINK): add $(LDFLAGS) to the
+	link line, so that Irix users (for example) can set it explicitely to
+	"-n32".
+	
+	* src/Makefile.am (lyx_LDADD): use LYX_LIB as a variable, so that
+	it can be overidden at make time (static or dynamic link, for
+	example).
+	
 	* src/vc-backend.C, src/LaTeXFeatures.h, 
 	  src/support/LRegex.C, src/support/LRegex.h: add a few "using" 
 	statements to bring templates to global namespace.

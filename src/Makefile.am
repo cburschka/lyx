@@ -4,7 +4,7 @@ DISTCLEANFILES = libintl.h config.h
 MAINTAINERCLEANFILES = Makefile.in config.h.in
 bin_PROGRAMS = lyx
 lyx_LDADD = mathed/mathed.o insets/insets.o support/libsupport.a \
-	@INTLLIBS@ @LYX_LIBS@
+	@INTLLIBS@ $(LYX_LIBS)
 lyx_DEPENDENCIES = mathed insets support/libsupport.a
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --c++
