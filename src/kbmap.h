@@ -17,13 +17,8 @@
 
 #include "LString.h"
 
-#define NO_HASH 1
-
 #define KB_PREALLOC  16
-#ifndef NO_HASH
-#define KB_HASHSIZE 128   // yes, yes - I know. 128 is not exactly prime :-)
-// ... but we are dealing with ASCII chars mostly.
-#endif
+
 class kb_keymap;
 class kb_sequence;
 
@@ -75,18 +70,8 @@ private:
 	int size;
 	
 	/// Holds the defined keys
-	/** Both kinds of tables ends with NoSymbol */
-#ifndef NO_HASH
-	union
-	{
-#endif
-		/// Table for linear array
-		kb_key * table;
-#ifndef NO_HASH	
-		/// Hash table holding key lists
-		kb_key ** htable;
-	};
-#endif
+	/// Table for linear array, table ends with NoSymbol.
+	kb_key * table;
 };
 
 

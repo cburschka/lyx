@@ -193,6 +193,7 @@ void CloseLyXLookup()
 		lyxerr[Debug::KEY] << "CloseLyXLookup: destroying input context"
 			       << endl;
 		XDestroyIC(xic);
+		xic = 0;
 		XCloseIM(xim);
 	}
 }

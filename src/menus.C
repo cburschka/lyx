@@ -1558,7 +1558,16 @@ void Menus::ShowBufferMenu(FL_OBJECT * ob, long)
 	fl_redraw_object(ob);
    
 	int BufferMenu = fl_newpup(FL_ObjWin(ob));
-	bufferlist.makePup(BufferMenu);
+	vector<string> namevec = bufferlist.getFileNames();
+	if (namevec.size() != 0) {
+		for (vector<string>::const_iterator cit = namevec.begin();
+		     cit != namevec.end(); ++cit) {
+			string relbuf = MakeDisplayPath((*cit), 30);
+			fl_addtopup(BufferMenu, relbuf.c_str());
+		}
+	} else {
+		fl_addtopup(BufferMenu, _("No Documents Open!%t"));
+	}
    
 	fl_setpup_position(
 		men->_view->getForm()->x + ob->x,

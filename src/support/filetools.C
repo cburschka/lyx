@@ -188,7 +188,7 @@ int IsDirWriteable (string const & path)
 // If path entry begins with $$User/, use user_lyxdir
 // Example: "$$User/doc;$$LyX/doc"
 string FileOpenSearch (string const & path, string const & name, 
-			string const & ext)
+		       string const & ext)
 {
 	string real_file, path_element;
 	bool notfound = true;
@@ -202,13 +202,13 @@ string FileOpenSearch (string const & path, string const & name,
 		path_element = subst(path_element, "$$User", user_lyxdir);
 		
 		real_file = FileSearch(path_element, name, ext);
-
+		
 		if (real_file.empty()) {
-		  do {
-		    tmppath = split(tmppath, path_element, ';');
-		  } while(!tmppath.empty() && path_element.empty());
+			do {
+				tmppath = split(tmppath, path_element, ';');
+			} while(!tmppath.empty() && path_element.empty());
 		} else {
-		  notfound = false;
+			notfound = false;
 		}
 	}
 #ifdef __EMX__
@@ -258,13 +258,13 @@ string LibFileSearch(string const & dir, string const & name,
 				     name, ext); 
 	if (!fullname.empty())
 		return fullname;
-
+	
 	if (!build_lyxdir.empty()) 
 		fullname = FileSearch(AddPath(build_lyxdir, dir), 
 				      name, ext);
 	if (!fullname.empty())
 		return fullname;
-
+	
 	return FileSearch(AddPath(system_lyxdir, dir), name, ext);
 }
 
@@ -273,12 +273,12 @@ string i18nLibFileSearch(string const & dir, string const & name,
 			 string const & ext)
 {
 	string lang = token(string(GetEnv("LANG")), '_', 0);
-
+	
 	if (lang.empty() || lang == "C")
 		return LibFileSearch(dir, name, ext);
 	else {
 		string tmp = LibFileSearch(dir, lang + '_' + name,
-					    ext);
+					   ext);
 		if (!tmp.empty())
 			return tmp;
 		else
@@ -322,17 +322,19 @@ bool PutEnv(string const & envstr)
 	// does not make a copy of the string. It is also not very wise to
 	// put a string on the free store. If we have to leak we should do it
 	// like this:
-	/*
 	char * leaker = new char[envstr.length() + 1];
 	envstr.copy(leaker, envstr.length());
 	leaker[envstr.length()] = '\0';
-	int retval = putenv(const_cast<PUTENV_TYPE_ARG>(leaker));
-	*/
+	int retval = lyx::putenv(leaker);
 
 	// If putenv does not make a copy of the char const * this
 	// is very dangerous. OTOH if it does take a copy this is the
 	// best solution.
-	int retval = putenv(const_cast<PUTENV_TYPE_ARG>(envstr.c_str()));
+	// The  only implementation of putenv that I have seen does not
+	// allocate memory. _And_ after testing the putenv in glibc it
+	// seems that we need to make a copy of the string contents.
+	// I will enable the above.
+	//int retval = lyx::putenv(envstr.c_str());
 #else
 #ifdef HAVE_SETENV 
         string varname;
@@ -353,6 +355,24 @@ bool PutEnvPath(string const & envstr)
 static
 int DeleteAllFilesInDir (string const & path)
 {
+	// I have decided that we will be using parts from the boost
+	// library. Check out http://www.boost.org/
+	// For directory access we will then use the directory_iterator.
+	// Then the code will be something like:
+	// directory_iterator dit(path.c_str());
+	// if (<some way to detect failure>) {
+	//         WriteFSAlert(_("Error! Cannot open directory:"), path);
+	//         return -1;
+	// }
+	// for (; dit != <someend>; ++dit) {
+	//         if ((*dit) == 2." || (*dit) == "..")
+	//                 continue;
+	//         string unlinkpath = AddName(path, temp);
+	//         if (remove(unlinkpath.c_str()))
+	//                 WriteFSAlert(_("Error! Could not remove file:"),
+	//                              unlinkpath);
+	// }
+	// return 0;
 	DIR * dir = opendir(path.c_str());
 	if (!dir) {
 		WriteFSAlert (_("Error! Cannot open directory:"), path);
@@ -381,7 +401,7 @@ string CreateTmpDir (string const & tempdir, string const & mask)
 {
 	string tmpfl = TmpFileName(tempdir, mask);
 	
-	if ((tmpfl.empty()) || mkdir (tmpfl.c_str(), 0777)) {
+	if ((tmpfl.empty()) || lyx::mkdir (tmpfl.c_str(), 0777)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
 		return string();
@@ -421,7 +441,7 @@ int DestroyBufferTmpDir (string const & tmpdir)
 string CreateLyXTmpDir (string const & deflt)
 {
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
-		if (mkdir(deflt.c_str(), 0777)) {
+		if (lyx::mkdir(deflt.c_str(), 0777)) {
 #ifdef __EMX__
                         Path p(user_lyxdir);
 #endif
@@ -456,7 +476,7 @@ bool createDirectory(string const & path, int permission)
 		return false;
 	}
 
-	if (mkdir(temp.c_str(), permission)) {
+	if (lyx::mkdir(temp.c_str(), permission)) {
 		WriteFSAlert (_("Error! Couldn't create directory:"), temp);
 		return false;
 	}

@@ -1,3 +1,41 @@
+2000-01-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/Makefile.am (libsupport_la_SOURCES): added mkdir.C
+	and putenv.C
+
+	* src/mathed/formulamacro.C: delete #include "bufferlist.h" never used
+
+	* src/mathed/formula.C: delete #include "bufferlist.h" never used
+
+	* src/insets/figinset.C (InitFigures): use new instead of malloc
+	to allocate memory for figures and bitmaps.
+	(DoneFigures): use delete[] instead of free to deallocate memory
+	for figures and bitmaps.
+	(runqueue): use new to allocate 
+	(getfigdata): use new/delete[] instead of malloc/free
+	(RegisterFigure): ditto
+
+	* some files: moved some declarations closer to first use, small
+	whitespace changes use preincrement instead of postincrement where
+	it does not make a difference.
+	
+	* src/kbmap.[Ch]: delete code according to define NO_HASH, it is a
+	step on the way to use stl::containers for key maps. 
+
+	* src/bufferlist.h: add a typedef for const_iterator and const
+	versions of begin and end.
+
+	* src/bufferlist.[Ch]: change name of member variable _state to
+	state_. (avoid reserved names)
+	(makePup): removed
+	(getFileNames): returns the filenames of the buffers in a vector.
+
+	* configure.in (ALL_LINGUAS): added ro
+
+	* src/support/putenv.C: new file
+
+	* src/support/mkdir.C: new file
+
 2000-01-20  Allan Rae <rae@lyx.org>
 
 	* lib/layouts/IEEEtran.layout: Added several theorem environments
@@ -7,6 +45,16 @@
 
 	* lib/doc/LaTeXConfig.lyx.in:  Use URL insets for ftp sites 
 	(except for those in footnotes of course)
+
+2000-01-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxlookup.C (CloseLyXLookup): set xic=0; after destruction. 
+
+	* src/mathed/math_utils.C (MathedLookupBOP): rewrite to use
+	std::sort and std::lower_bound instead of qsort and handwritten
+	binarysearch.
+	(struct compara): struct that holds the functors used by std::sort
+	and std::lower_bound in MathedLookupBOP.
 
 2000-01-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

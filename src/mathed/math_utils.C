@@ -11,14 +11,21 @@
 
 #include <config.h>
 
-#include <cstdlib>
+#include <algorithm>
 
 #include "math_defs.h"
 #include "symbol_def.h"
 
+using std::sort;
+using std::lower_bound;
 
 // This table includes all binary operators and relations
-struct binary_op_pair { short id, isrel; } binary_op_table[] = {
+struct binary_op_pair {
+	short id;
+	short isrel;
+};
+
+binary_op_pair binary_op_table[] = {
       { LM_leq, LMB_RELATION }, { LM_geq, LMB_RELATION }, 
       { LM_equiv, LMB_RELATION }, { LM_models, LMB_RELATION }, 
       { LM_prec, LMB_RELATION }, { LM_succ, LMB_RELATION }, 
@@ -55,34 +62,35 @@ struct binary_op_pair { short id, isrel; } binary_op_table[] = {
       { LM_ddagger, LMB_OPERATOR }
 };
 
-extern "C" int compara(const void *a, const void *b)
-{
-    int i = ((binary_op_pair const *)a)->id, j = ((binary_op_pair const*)b)->id;
-    return i - j;
-}
+
+struct compara {
+	// used by sort
+	int operator()(binary_op_pair const & a,
+		       binary_op_pair const & b) const {
+		return a.id < b.id;
+	}
+	// used by lower_bound
+	int operator()(binary_op_pair const & a, short int id) const {
+		return a.id < id;
+	}
+};
+
 
 int MathedLookupBOP(short id)
 {
-    static int bopCount = sizeof(binary_op_table) / sizeof(binary_op_pair);
-    static bool issorted = false;
-
-    if (!issorted) { 
-	qsort(binary_op_table, bopCount, sizeof(binary_op_pair), compara);
-	issorted = true;
-    }
-    
-   int result= 0, m, k, l= 0, r = bopCount;
-  
-   while (l < r) {
-      m = (l+r)/2;
-      k = binary_op_table[m].id - id;
-      if (k == 0) {
-	 result = binary_op_table[m].isrel;
-	 break;
-      } else
-      	if (k<0) l = m+1; else r = m;
-   }
-
-   return result;
+	static int bopCount = sizeof(binary_op_table) / sizeof(binary_op_pair);
+	static bool issorted = false;
+	
+	if (!issorted) {
+		sort(binary_op_table, binary_op_table + bopCount, compara());
+		issorted = true;
+	}
+	
+	int result = 0;
+	binary_op_pair * res = lower_bound(binary_op_table,
+					   binary_op_table + bopCount,
+					   id, compara());
+	if (res != (binary_op_table + bopCount))
+		result = res->isrel;
+	return result;
 }
-

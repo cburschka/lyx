@@ -1,0 +1,3886 @@
+# Mesaje în românã pentru KLyX.
+# Claudiu Costin <claudiuc@calderon.pcnet.ro>, 1999.
+
+msgid ""
+msgstr ""
+"Project-Id-Version: klyx-0.10.0\n"
+"POT-Creation-Date: 1999-12-05 23:26+0200\n"
+"PO-Revision-Date: 1999-07-04 23:59+0600\n"
+"Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
+"Language-Team: Romanian Team <ro-kde@egroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/AskForTextDialog.C:33
+msgid "Please enter text"
+msgstr "Vã rog sã introduceþi textul"
+
+#: src/BufferView.C:360
+msgid "Formatting document..."
+msgstr "Formatez documentul..."
+
+#: src/BufferView.C:427 src/BufferView.C:431
+msgid "No more errors"
+msgstr "Nu mai existã erori"
+
+#: src/BulletShapeDialog.C:41
+msgid "Change bullet for depth"
+msgstr "Bullet pentru adîncimea"
+
+#: src/BulletShapeDialog.C:46
+msgid "1"
+msgstr "1"
+
+#: src/BulletShapeDialog.C:51
+msgid "2"
+msgstr "2"
+
+#: src/BulletShapeDialog.C:55
+msgid "3"
+msgstr "3"
+
+#: src/BulletShapeDialog.C:59
+msgid "4"
+msgstr "4"
+
+#: src/BulletShapeDialog.C:64
+msgid "Group"
+msgstr "Grup"
+
+#: src/BulletShapeDialog.C:112
+msgid "Size:"
+msgstr "Mãrime:"
+
+#: src/BulletShapeDialog.C:132
+msgid "LaTeX:"
+msgstr "LaTeX:"
+
+#: src/BulletShapeDialog.C:155
+msgid "Bullet Shapes"
+msgstr "Forme bullet"
+
+#: src/CharacterStyleDialog.C:193 src/LyXView.C:439
+msgid "Family"
+msgstr "Familia"
+
+#: src/CharacterStyleDialog.C:199 src/CharacterStyleDialog.C:218
+#: src/CharacterStyleDialog.C:235 src/CharacterStyleDialog.C:256
+#: src/CharacterStyleDialog.C:293 src/CharacterStyleDialog.C:314
+#: src/ParagraphDialog.C:157 src/ParagraphDialog.C:162
+msgid "Keep"
+msgstr "Pãstreazã"
+
+#: src/CharacterStyleDialog.C:203
+msgid "SansSerif"
+msgstr "SansSerif"
+
+#: src/CharacterStyleDialog.C:205
+msgid "Typewriter"
+msgstr "Typewriter"
+
+#: src/CharacterStyleDialog.C:207 src/CharacterStyleDialog.C:224
+#: src/CharacterStyleDialog.C:245 src/CharacterStyleDialog.C:282
+#: src/CharacterStyleDialog.C:303 src/CharacterStyleDialog.C:334
+msgid "Reset"
+msgstr "Reseteazã"
+
+#: src/CharacterStyleDialog.C:212 src/LyXView.C:465
+msgid "Series"
+msgstr "Seria"
+
+#: src/CharacterStyleDialog.C:220
+msgid "Medium"
+msgstr "Mediu"
+
+#: src/CharacterStyleDialog.C:222
+msgid "Bold"
+msgstr "Bold"
+
+#: src/CharacterStyleDialog.C:229 src/LyXView.C:490
+msgid "Shape"
+msgstr "Forma"
+
+#: src/CharacterStyleDialog.C:237
+msgid "Upright"
+msgstr "Upright"
+
+#: src/CharacterStyleDialog.C:241
+msgid "Slanted"
+msgstr "Slanted"
+
+#: src/CharacterStyleDialog.C:243
+msgid "Small Caps"
+msgstr "Small Caps"
+
+#: src/CharacterStyleDialog.C:250 src/LyXView.C:518
+msgid "Size"
+msgstr "Mãrime"
+
+#: src/CharacterStyleDialog.C:258
+msgid "Tiny"
+msgstr "Tiny"
+
+#: src/CharacterStyleDialog.C:260
+msgid "Smallest"
+msgstr "Smallest"
+
+#: src/CharacterStyleDialog.C:262
+msgid "Smaller"
+msgstr "Smaller"
+
+#: src/CharacterStyleDialog.C:264
+msgid "Small"
+msgstr "Small"
+
+#: src/CharacterStyleDialog.C:266 src/LyXView.C:405
+msgid "Normal"
+msgstr "Normal"
+
+#: src/CharacterStyleDialog.C:268
+msgid "Large"
+msgstr "Large"
+
+#: src/CharacterStyleDialog.C:270
+msgid "Larger"
+msgstr "Larger"
+
+#: src/CharacterStyleDialog.C:272
+msgid "Largest"
+msgstr "Largest"
+
+#: src/CharacterStyleDialog.C:274
+msgid "Huge"
+msgstr "Huge"
+
+#: src/CharacterStyleDialog.C:276
+msgid "Huger"
+msgstr "Huger"
+
+#: src/CharacterStyleDialog.C:278
+msgid "Increase"
+msgstr "Creºte"
+
+#: src/CharacterStyleDialog.C:280
+msgid "Decrease"
+msgstr "Descreºte"
+
+#: src/CharacterStyleDialog.C:287 src/LyXView.C:559
+msgid "Misc"
+msgstr "Diverse"
+
+#: src/CharacterStyleDialog.C:295
+msgid "Emph"
+msgstr "Evidenþiat"
+
+#: src/CharacterStyleDialog.C:297
+msgid "Underbar"
+msgstr "Subliniat"
+
+#: src/CharacterStyleDialog.C:299
+msgid "Noun"
+msgstr "Noun"
+
+#: src/CharacterStyleDialog.C:301 src/ExportCustomDialog.C:46
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/CharacterStyleDialog.C:308 src/LyXView.C:589
+msgid "Color"
+msgstr "Culoare"
+
+#: src/CharacterStyleDialog.C:316
+msgid "None"
+msgstr "Nimic"
+
+#: src/CharacterStyleDialog.C:318
+msgid "Black"
+msgstr "Negru"
+
+#: src/CharacterStyleDialog.C:320
+msgid "White"
+msgstr "Alb"
+
+#: src/CharacterStyleDialog.C:322
+msgid "Red"
+msgstr "Roºu"
+
+#: src/CharacterStyleDialog.C:324
+msgid "Green"
+msgstr "Verde"
+
+#: src/CharacterStyleDialog.C:326
+msgid "Blue"
+msgstr "Albastru"
+
+#: src/CharacterStyleDialog.C:328
+msgid "Cyan"
+msgstr "Cian"
+
+#: src/CharacterStyleDialog.C:330
+msgid "Magenta"
+msgstr "Violet"
+
+#: src/CharacterStyleDialog.C:332
+msgid "Yellow"
+msgstr "Galben"
+
+#: src/CharacterStyleDialog.C:357
+msgid "Character Style"
+msgstr "Stil caractere"
+
+#: src/Chktex.C:90
+msgid "ChkTeX warning id #"
+msgstr "Avertizare ChkTeX numãrul #"
+
+#: src/CreditsDialog.C:27
+msgid "All these people have contributed to the KLyX project. Thanks,"
+msgstr "Toate aceste persoane au contribuit la proiectul KLyX. Mulþumiri,"
+
+#: src/CreditsDialog.C:31
+msgid "Matthias"
+msgstr "Matthias"
+
+#: src/CreditsDialog.C:47
+msgid "Credits"
+msgstr "Credite"
+
+#: src/CreditsDialog.C:84
+msgid ""
+"ERROR: KLyX wasn't able to read CREDITS file\n"
+"\n"
+"Please install correctly to estimate the great\n"
+"amount of work other people have done for the KLyX project."
+msgstr ""
+"EROARE: Nu pot citi fiºierul CREDITS\n"
+"\n"
+"Vã rog sã instalaþi corect programul pentru a estima munca\n"
+"deosebitã pe care ºi alþi oameni au depus-o la proiectul Klyx."
+
+#: src/DocumentLayoutDialog.C:57
+msgid "Class:"
+msgstr "Clasa:"
+
+#: src/DocumentLayoutDialog.C:71
+msgid "Pagestyle:"
+msgstr "Stil de paginã:"
+
+#: src/DocumentLayoutDialog.C:88
+msgid "Fonts:"
+msgstr "Fonturi:"
+
+#: src/DocumentLayoutDialog.C:108
+msgid "Font Size:"
+msgstr "Mãrimea fontului:"
+
+#: src/DocumentLayoutDialog.C:126
+msgid "Language:"
+msgstr "Limbaj:"
+
+#: src/DocumentLayoutDialog.C:177
+msgid "PS Driver:"
+msgstr "Driver PS:"
+
+#: src/DocumentLayoutDialog.C:199
+msgid "Encoding:"
+msgstr "Codificarea:"
+
+#: src/DocumentLayoutDialog.C:216
+msgid "Default Skip:"
+msgstr "Salt implicit:"
+
+#: src/DocumentLayoutDialog.C:243
+msgid "Spacing:"
+msgstr "Spaþiere:"
+
+#: src/DocumentLayoutDialog.C:274
+msgid "Sides"
+msgstr "Feþe"
+
+#: src/DocumentLayoutDialog.C:278 src/DocumentLayoutDialog.C:294
+msgid "One"
+msgstr "Una"
+
+#: src/DocumentLayoutDialog.C:284 src/DocumentLayoutDialog.C:300
+msgid "Two"
+msgstr "Douã"
+
+#: src/DocumentLayoutDialog.C:290 src/MathMatrixDialog.C:41
+msgid "Columns"
+msgstr "Coloane"
+
+#: src/DocumentLayoutDialog.C:307
+msgid "Separation"
+msgstr "Separaþia"
+
+#: src/DocumentLayoutDialog.C:311
+msgid "&Indent"
+msgstr "&Indentare"
+
+#: src/DocumentLayoutDialog.C:317
+msgid "S&kip"
+msgstr "&Salt"
+
+#: src/DocumentLayoutDialog.C:326
+msgid "&Bullet Shapes..."
+msgstr "&Forme bullet..."
+
+#: src/DocumentLayoutDialog.C:334
+msgid "Use A&MS Math"
+msgstr "Stil &matematic AMS"
+
+#: src/DocumentLayoutDialog.C:343
+msgid "Float placement"
+msgstr "Poziþionare flotante"
+
+#: src/DocumentLayoutDialog.C:355
+msgid "Extra options"
+msgstr "Extra opþiuni"
+
+#: src/DocumentLayoutDialog.C:371
+msgid "Section number depth"
+msgstr "Adîncimea numerelor secþionale"
+
+#: src/DocumentLayoutDialog.C:390
+msgid "Table of contents depth"
+msgstr "Adîncimea cuprinsului"
+
+#: src/DocumentLayoutDialog.C:437
+msgid "Document layout"
+msgstr "Structura documentului"
+
+#: src/DocumentLayoutDialog.C:459
+msgid "Should I set some parameters to"
+msgstr "Ar trebui sã setez niºte parametrii la"
+
+#: src/DocumentLayoutDialog.C:461
+msgid "the defaults of this document class?"
+msgstr "setãrile implicite pentru aceastã clasã de document?"
+
+#: src/EditFigureDialog.C:78
+msgid "EPS Fi&gure:"
+msgstr "Figurã EPS:"
+
+#: src/EditFigureDialog.C:88
+msgid "&Browse..."
+msgstr "&Rãsfoieºte..."
+
+#: src/EditFigureDialog.C:95 src/ParagraphExtraDialog.C:56
+msgid "Width"
+msgstr "Lãþime"
+
+#: src/EditFigureDialog.C:101
+msgid "Defa&ult"
+msgstr "Implicit"
+
+#: src/EditFigureDialog.C:106
+msgid "&cm"
+msgstr "&cm"
+
+#: src/EditFigureDialog.C:111
+msgid "inc&hes"
+msgstr "&inci"
+
+#: src/EditFigureDialog.C:116
+msgid "% of &Page"
+msgstr "% din &paginã"
+
+#: src/EditFigureDialog.C:122
+msgid "% &of Column"
+msgstr "% din c&oloanã"
+
+#: src/EditFigureDialog.C:138
+msgid "Height"
+msgstr "Înãlþime"
+
+#: src/EditFigureDialog.C:144
+msgid "Defaul&t"
+msgstr "Implici&t"
+
+#: src/EditFigureDialog.C:149
+msgid "c&m"
+msgstr "c&m"
+
+#: src/EditFigureDialog.C:154
+msgid "inche&s"
+msgstr "i&nci"
+
+#: src/EditFigureDialog.C:159
+msgid "% of Pag&e"
+msgstr "% din paginã"
+
+#: src/EditFigureDialog.C:175
+msgid "Rotation"
+msgstr "Rotaþia"
+
+#: src/EditFigureDialog.C:184
+msgid "Ang&le"
+msgstr "Unghi"
+
+#: src/EditFigureDialog.C:195
+msgid "Display"
+msgstr "Afiºare"
+
+#: src/EditFigureDialog.C:201
+msgid "Di&splay as monochrome"
+msgstr "Afiºeazã monocrom"
+
+#: src/EditFigureDialog.C:207
+msgid "D&isplay as grayscale"
+msgstr "Afiºeazã în nuanþe de gri"
+
+#: src/EditFigureDialog.C:212
+msgid "&Display in color"
+msgstr "Afiºeazã în culori"
+
+#: src/EditFigureDialog.C:217
+msgid "Do not displa&y this figure"
+msgstr "Nu afiºeazã aceastã figurã"
+
+#: src/EditFigureDialog.C:230
+msgid "Display &Frame"
+msgstr "Afiºeazã cadru"
+
+#: src/EditFigureDialog.C:235
+msgid "Do T&ranslations"
+msgstr "Face t&ranslaþie"
+
+#: src/EditFigureDialog.C:245
+msgid "Subfigure"
+msgstr "Subfigurã"
+
+#: src/EditFigureDialog.C:254
+msgid "Cap&tion"
+msgstr "Ti&tlu"
+
+#: src/EditFigureDialog.C:277 src/ParagraphDialog.C:245
+msgid "&Apply"
+msgstr "&Aplicã"
+
+#: src/EditFigureDialog.C:291
+msgid "Full Screen Pre&view"
+msgstr "Previzualizeazã"
+
+#: src/EditFigureDialog.C:301
+msgid "Edit Figure"
+msgstr "Editare figurã"
+
+#: src/EditFigureDialog.C:372
+msgid "Error during rendering "
+msgstr "Eroare la randarea figurii"
+
+#: src/EditFigureDialog.C:412
+msgid "All Postscript Files\n"
+msgstr "Toate fiºierele Postscript\n"
+
+#: src/EditFigureDialog.C:414
+msgid "Encapsulated Postscript Files\n"
+msgstr "Fiºiere PostScript încapsulate\n"
+
+#: src/EditFigureDialog.C:416
+msgid "Standard Postscript Files\n"
+msgstr "Fiºiere Postscript standard\n"
+
+#: src/EditFigureDialog.C:418
+msgid "Uncompressed Postscript Files\n"
+msgstr "Fiºiere Postscript necomprimate\n"
+
+#: src/EditFigureDialog.C:420
+msgid "Compressed Postscript Files\n"
+msgstr "Fiºiere Postscript comprimate\n"
+
+#: src/EditFigureDialog.C:422
+msgid "All Files"
+msgstr "Toate fiºierele"
+
+#: src/EditFigureDialog.C:434
+#, c-format
+msgid ""
+"Filename can't contain any of these characters:\n"
+"space, '#', '~', '$' or '%'."
+msgstr ""
+"Numele de fiºier nu poate conþine urmãtoarele caractere:\n"
+"spaþiu, '#', '~', '$' sau '%'."
+
+#: src/ExportCustomDialog.C:37
+msgid "Filetype"
+msgstr "Tip de fiºier"
+
+#: src/ExportCustomDialog.C:41
+msgid "LyX"
+msgstr "LyX"
+
+#: src/ExportCustomDialog.C:50
+msgid "DVI"
+msgstr "DVI"
+
+#: src/ExportCustomDialog.C:54
+msgid "PostScript"
+msgstr "PostScript"
+
+#: src/ExportCustomDialog.C:58
+msgid "ASCII"
+msgstr "ASCII"
+
+#: src/ExportCustomDialog.C:62
+msgid "Command:"
+msgstr "Comandã:"
+
+#: src/ExportCustomDialog.C:80
+msgid "Export custom type"
+msgstr "Exportã tip personalizat"
+
+#: src/FindReplaceDialog.C:35
+msgid "&Find"
+msgstr "Ca&utã"
+
+#: src/FindReplaceDialog.C:48
+msgid "Replace &with"
+msgstr "Î&nlocuieºte cu"
+
+#: src/FindReplaceDialog.C:78
+msgid "&Replace"
+msgstr "În&locuieºte"
+
+#: src/FindReplaceDialog.C:85
+msgid "Replace &All"
+msgstr "Înlocuieºte &toate"
+
+#: src/FindReplaceDialog.C:98
+msgid "Ca&se sensitive"
+msgstr "Senzitiv la &majuscule"
+
+#: src/FindReplaceDialog.C:106
+msgid "&Match word"
+msgstr "Numai cu&vinte"
+
+#: src/FindReplaceDialog.C:126
+msgid "Find and Replace"
+msgstr "Cautã ºi înlocuieºte"
+
+#: src/FontLoader.C:257
+msgid "Loading font into X-Server..."
+msgstr "Încarc fontul în server-ul X..."
+
+#: src/InsertBibitemDialog.C:26
+msgid "BibTeX"
+msgstr "BibTeX"
+
+#: src/InsertBibitemDialog.C:29 src/insetbib.C:133
+msgid "Key:"
+msgstr "Tasta:"
+
+#: src/InsertBibitemDialog.C:38 src/insetbib.C:134
+msgid "Label:"
+msgstr "Eticheta:"
+
+#: src/InsertCitationReferenceDialog.C:34
+msgid "Insert Citation"
+msgstr "Inserare citat"
+
+#: src/InsertCitationReferenceDialog.C:37
+msgid "&Database:"
+msgstr "Baza de &date:"
+
+#: src/InsertCitationReferenceDialog.C:48
+msgid "&Key:"
+msgstr "Cuvînt &cheie:"
+
+#: src/InsertCitationReferenceDialog.C:58
+msgid "&Remark:"
+msgstr "&Observaþie:"
+
+#: src/InsertCitationReferenceDialog.C:192
+msgid "Internal keys"
+msgstr "Cuvinte cheie interne"
+
+#: src/InsertCrossReferenceDialog.C:40
+msgid "Insert &Page Number"
+msgstr "Insereazã numãr de &paginã"
+
+#: src/InsertCrossReferenceDialog.C:48
+msgid "&Insert Reference"
+msgstr "&Insereazã referinþã"
+
+#: src/InsertCrossReferenceDialog.C:57
+msgid "&Go to Reference"
+msgstr "&Du-te la referinþa"
+
+#: src/InsertCrossReferenceDialog.C:90
+msgid "Insert Cross Reference"
+msgstr "Insereazã referinþã încruciºatã"
+
+#: src/InsertCrossReferenceDialog.C:214
+msgid "*** No labels found in document ***"
+msgstr "*** Nu au fost gãsite etichete în document ***"
+
+#: src/InsertErrorDialog.C:29
+msgid "LaTeX Error"
+msgstr "Eroare de LaTeX"
+
+#: src/InsertFigureDialog.C:25
+msgid "Type"
+msgstr "Tip"
+
+#: src/InsertFigureDialog.C:31
+msgid "&Encapsulated Postscript (*.eps, *.ps)"
+msgstr "Postscript în&capsulat (*.&eps, *.ps)"
+
+#: src/InsertFigureDialog.C:37
+msgid "&Inlined EPS (*.eps, *.ps)"
+msgstr "EPS în l&inie (*.eps, *.ps)"
+
+#: src/InsertFigureDialog.C:67 src/LyXView.C:211
+msgid "Insert figure"
+msgstr "Insereazã figurã"
+
+#: src/InsertIncludeDialog.C:57
+msgid "Filename: "
+msgstr "Nume fiºier:"
+
+#: src/InsertIncludeDialog.C:71
+msgid "&Browse"
+msgstr "&Rãsfoieºte"
+
+#: src/InsertIncludeDialog.C:83
+msgid "&Use include"
+msgstr "&Utilizeazã includere"
+
+#: src/InsertIncludeDialog.C:89
+msgid "Use &input"
+msgstr "Utilizeazã &intrare"
+
+#: src/InsertIncludeDialog.C:94
+msgid "&Verbatim"
+msgstr "&Textual"
+
+#: src/InsertIncludeDialog.C:104
+msgid "&Don't typeset"
+msgstr "&Nu tipografiazã"
+
+#: src/InsertIncludeDialog.C:110
+msgid "Vi&sible space"
+msgstr "&Spaþii vizibile"
+
+#: src/InsertIncludeDialog.C:117
+msgid "&Load"
+msgstr "În&carcã"
+
+#: src/InsertIncludeDialog.C:146
+msgid "Insert Include File"
+msgstr "Inserare fiºier inclus"
+
+#: src/InsertIncludeDialog.C:183
+msgid "*.tex|TeX Documents (*.tex)"
+msgstr "*.tex|Documente Tex(*.tex)"
+
+#: src/InsertIncludeDialog.C:185 src/lyx_cb.C:964
+msgid "*|All Files"
+msgstr "*|Toate fiºierele"
+
+#: src/InsertIncludeDialog.C:187 src/lyxfunc.C:2338 src/lyxfunc.C:2361
+#: src/lyxfunc.C:2411
+msgid "*.lyx|LyX Documents (*.lyx)"
+msgstr "*.lyx|Documente LyX (*.lyx)"
+
+#: src/InsertIncludeDialog.C:192
+msgid "Select Child Document"
+msgstr "Selecteazã document fiu"
+
+#: src/InsertIndexEntryDialog.C:27
+msgid "Enter index entry:"
+msgstr "Introduceþi indexul:"
+
+#: src/InsertIndexEntryDialog.C:49
+msgid "Insert Index Entry"
+msgstr "Inseraþi indexul de intrare"
+
+#: src/InsertInfoDialog.C:28 src/insetinfo.C:66 src/insetinfo.C:85
+msgid "Note"
+msgstr "Notã"
+
+#: src/InsertLabelDialog.C:20 src/LyXAction.C:659
+msgid "Insert Label"
+msgstr "Inseraþi eticheta"
+
+#: src/InsertLabelDialog.C:23
+msgid "Enter new label to insert:"
+msgstr "Introduceþi o nouã etichetã de inserat:"
+
+#: src/InsertTableDialog.C:34
+msgid "Rows:"
+msgstr "Linii:"
+
+#: src/InsertTableDialog.C:55
+msgid "Columns:"
+msgstr "Coloane:"
+
+#: src/InsertTableDialog.C:99 src/LyXView.C:207
+msgid "Insert table"
+msgstr "Insereazã tabel"
+
+#: src/KLyXMenu.C:149
+msgid "&Layout"
+msgstr "Forma&t"
+
+#: src/KLyXMenu.C:192
+msgid "&Documents"
+msgstr "&Documente"
+
+#: src/KLyXMenu.C:200
+msgid ""
+", and the KLyX team\n"
+"\n"
+"based on LyX-0.10 - 0.12\n"
+msgstr ", ºi echipa KLyx"
+"\n"
+"bazat pe LyX-0.10 - 0.12\n"
+
+#: src/KLyXMenu.C:204
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under\n"
+"the terms of the GNU General Public License as published by the Free "
+"Software\n"
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"KLyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY;\n"
+"without even the implied warranty of MERCHANTABILITY or FITNESS FOR A\n"
+"PARTICULAR PURPOSE. See the GNU General Public License for more details.\n"
+"You should have received a copy of the GNU General Public License along with "
+"this\n"
+"program; if not, write to the"
+msgstr ""
+"Acest program este software liber; îl puteþi redistribui ºi/sau modifica\n"
+"sub termenii Licenþei Publice Generale GNU publicatã de Free Software\n"
+"Foundation, versiunea 2, sau (la alegerea dumneavoastrã) orice\n"
+"versiune mai nouã.\n"
+"\n"
+"KLyX este distribuit în ideea cã vã este util, dar FÃRÃ NICI O GARANÞIE;\n"
+"nici chiar garanþia ce implicã aspecte COMERCIALE sau POTRIVIREA CU\n"
+"UN SCOP PARTICULAR. Citiþi Licenþa Publicã Generalã GNU pentru mai\n"
+"multe detalii. Trebuie deja sã fi primit o copie a acestei licenþe\n"
+"odatã cu acest program. Dacã nu, scrieþi la:"
+
+#: src/KLyXMenu.C:231
+msgid "&Credits"
+msgstr "C&redite"
+
+#: src/KLyXMenu.C:233
+msgid "&Introduction"
+msgstr "&Introducere"
+
+#: src/KLyXMenu.C:234
+msgid "&Tutorial"
+msgstr "&Tutorial"
+
+#: src/KLyXMenu.C:235
+msgid "&How Do I"
+msgstr "Cum sã &fac"
+
+#: src/KLyXMenu.C:236
+msgid "&User's Guide"
+msgstr "&Ghidul utilizatorului"
+
+#: src/KLyXMenu.C:237
+msgid "&Advanced Editing"
+msgstr "Editare &avansatã"
+
+#: src/KLyXMenu.C:238
+msgid "Cu&stomization"
+msgstr "&Personalizare"
+
+#: src/KLyXMenu.C:239
+msgid "&Reference Manual"
+msgstr "&Manualul de referinþã"
+
+#: src/KLyXMenu.C:240
+msgid "&Known Bugs"
+msgstr "&Erori cunoscute"
+
+#: src/KLyXMenu.C:241
+msgid "&LaTeX Configuration"
+msgstr "Configuraþia &LaTeX"
+
+#: src/KLyXMenu.C:523
+msgid "&Multicolumn"
+msgstr "&Multicoloane"
+
+#: src/KLyXMenu.C:532
+msgid "Line &Top"
+msgstr "Linie &sus"
+
+#: src/KLyXMenu.C:539
+msgid "Line &Bottom"
+msgstr "Linie &jos"
+
+#: src/KLyXMenu.C:546
+msgid "Line &Left"
+msgstr "Linie s&tînga"
+
+#: src/KLyXMenu.C:553
+msgid "Line &Right"
+msgstr "Linie &dreapta"
+
+#: src/KLyXMenu.C:565
+msgid "Align L&eft"
+msgstr "Aliniere stîn&ga"
+
+#: src/KLyXMenu.C:569
+msgid "Align R&ight"
+msgstr "Aliniere d&reapta"
+
+#: src/KLyXMenu.C:573
+msgid "Align &Center"
+msgstr "Aliniere &centratã"
+
+#: src/KLyXMenu.C:579
+msgid "Append R&ow"
+msgstr "Adaugã &linie"
+
+#: src/KLyXMenu.C:581
+msgid "Append Col&umn"
+msgstr "Adaugã c&oloanã"
+
+#: src/KLyXMenu.C:584
+msgid "Delete Ro&w"
+msgstr "ªterge l&inie"
+
+#: src/KLyXMenu.C:586
+msgid "Delete Colum&n"
+msgstr "ªterge colo&anã"
+
+#: src/KLyXMenu.C:589
+msgid "&Delete Table"
+msgstr "ªterge ta&bel"
+
+#: src/KLyXMenu.C:593
+msgid "&Insert table"
+msgstr "&Insereazã tabel"
+
+#: src/KLyXMenu.C:612
+msgid "C&opy"
+msgstr "&Copiazã"
+
+#: src/KLyXMenu.C:619
+msgid "&Find & Replace..."
+msgstr "Înloc&uieºte..."
+
+#: src/KLyXMenu.C:620
+msgid "&Go to Error"
+msgstr "Salt la &eroare"
+
+#: src/KLyXMenu.C:621
+msgid "&Go to Note"
+msgstr "Salt la &notã"
+
+#: src/KLyXMenu.C:635
+msgid "&New..."
+msgstr "&Nou..."
+
+#: src/KLyXMenu.C:636
+msgid "New from &template..."
+msgstr "Nou bazat pe &model..."
+
+#: src/KLyXMenu.C:645
+msgid "Save &as..."
+msgstr "S&alveazã ca..."
+
+#: src/KLyXMenu.C:646
+msgid "&Revert to saved"
+msgstr "&Revine la cel salvat"
+
+#: src/KLyXMenu.C:648
+msgid "Pre&view"
+msgstr "Pre&vizualizeazã"
+
+#: src/KLyXMenu.C:650
+msgid "&Fax..."
+msgstr "&Fax..."
+
+#: src/KLyXMenu.C:653
+msgid "View &DVI"
+msgstr "Vizualizeazã &DVI"
+
+#: src/KLyXMenu.C:654
+msgid "View &PostScript"
+msgstr "Vizualizeazã &PostScript"
+
+#: src/KLyXMenu.C:655
+msgid "&Update DVI"
+msgstr "Actualizeazã D&VI"
+
+#: src/KLyXMenu.C:656
+msgid "Update P&ostscript"
+msgstr "Actualizeazã P&ostScript"
+
+#: src/KLyXMenu.C:685
+msgid "as &LaTeX..."
+msgstr "ca LaTe&X..."
+
+#: src/KLyXMenu.C:686 src/KLyXMenu.C:692
+msgid "as &DVI..."
+msgstr "ca &DVI..."
+
+#: src/KLyXMenu.C:687 src/KLyXMenu.C:693
+msgid "as &PostScript..."
+msgstr "ca &PostScript..."
+
+#: src/KLyXMenu.C:688 src/KLyXMenu.C:694
+msgid "as Ascii &Text..."
+msgstr "ca &text ASCII..."
+
+#: src/KLyXMenu.C:689
+msgid "Custo&m..."
+msgstr "P&ersonalizat..."
+
+#: src/KLyXMenu.C:691
+msgid "as &LinuxDoc..."
+msgstr "ca &LinuxDoc..."
+
+#: src/KLyXMenu.C:697
+msgid "&Export"
+msgstr "E&xportã"
+
+#: src/KLyXMenu.C:704
+msgid "&Delete Window"
+msgstr "ª&terge fereastra"
+
+#: src/KLyXMenu.C:705
+msgid "&Split horizontal"
+msgstr "Împarte pe &orizontalã"
+
+#: src/KLyXMenu.C:706
+msgid "Split &vertical"
+msgstr "Împarte pe &verticalã"
+
+#: src/KLyXMenu.C:712
+msgid "&Un-Split"
+msgstr "&Eliminã împãrþirea"
+
+#: src/KLyXMenu.C:716
+msgid "&Window"
+msgstr "F&ereastra"
+
+#: src/KLyXMenu.C:744
+msgid "&Open/Close"
+msgstr "&Deschide/închide..."
+
+#: src/KLyXMenu.C:745
+msgid "&Melt"
+msgstr "Di&zolvã"
+
+#: src/KLyXMenu.C:746
+msgid "Open &All Footnotes/Margin Notes"
+msgstr "Deschide toate &subsolurile/notele marginale"
+
+#: src/KLyXMenu.C:747
+msgid "&Close All Footnotes/Margin Notes"
+msgstr "Închide toate s&ubsolurile/notele marginale"
+
+#: src/KLyXMenu.C:748
+msgid "O&pen All Figures/Tables"
+msgstr "Deschide toate &figurile/tabelele"
+
+#: src/KLyXMenu.C:749
+msgid "C&lose All Figures/Tables"
+msgstr "Închide toate f&igurile/tabelele"
+
+#: src/KLyXMenu.C:751
+msgid "&Remove All Error Boxes"
+msgstr "&Eliminã toate mesajele de eroare"
+
+#: src/KLyXMenu.C:752
+msgid "Flo&ats and Insets"
+msgstr "Flot&ante ºi inset-uri"
+
+#: src/KLyXMenu.C:757
+msgid "Ta&ble"
+msgstr "Ta&bel"
+
+#: src/KLyXMenu.C:760
+msgid "&Spellchecker..."
+msgstr "&Ortografia..."
+
+#: src/KLyXMenu.C:761
+msgid "C&heck TeX"
+msgstr "Verificã Te&X"
+
+#: src/KLyXMenu.C:762
+msgid "&Document Structure..."
+msgstr "Structura docu&mentului..."
+
+#: src/KLyXMenu.C:768 src/KLyXMenu.C:783
+msgid "&Register"
+msgstr "În&registreazã"
+
+#: src/KLyXMenu.C:769
+msgid "Check&In Changes"
+msgstr "Verificã &modificãrile"
+
+#: src/KLyXMenu.C:770
+msgid "Check &Out for Edit"
+msgstr "Verificã pentru &editare"
+
+#: src/KLyXMenu.C:778
+msgid "Revert to &last version"
+msgstr "Revine la &ultima versiune"
+
+#: src/KLyXMenu.C:779
+msgid "&Undo last check in"
+msgstr "&Des-face ultima verificare"
+
+#: src/KLyXMenu.C:780
+msgid "Show &History"
+msgstr "Afiºeazã &istoricul"
+
+#: src/KLyXMenu.C:784
+msgid "&Version Control"
+msgstr "Controlul &versiunii"
+
+#: src/KLyXMenu.C:788
+msgid "Vie&w LaTeX log file"
+msgstr "Vizualizeazã fiºierul &jurnal LaTeX"
+
+#: src/KLyXMenu.C:790
+msgid "Paste Primary Selection as Lines"
+msgstr "Lipeºte selecþia primarã ca linii"
+
+#: src/KLyXMenu.C:792
+msgid "Paste Primary Selection as Paragraph"
+msgstr "Lipeºte selecþia primarã ca paragrafe"
+
+#: src/KLyXMenu.C:824
+msgid "&Character..."
+msgstr "&Caractere..."
+
+#: src/KLyXMenu.C:825
+msgid "&Paragraph..."
+msgstr "&Paragraf..."
+
+#: src/KLyXMenu.C:826
+msgid "&Document..."
+msgstr "&Document..."
+
+#: src/KLyXMenu.C:827
+msgid "P&aper..."
+msgstr "&Foaie..."
+
+#: src/KLyXMenu.C:828
+msgid "&Quotes..."
+msgstr "&Ghilimele..."
+
+#: src/KLyXMenu.C:831
+msgid "E&mphasize Style"
+msgstr "Stil &evidenþiat"
+
+#: src/KLyXMenu.C:832
+msgid "&Noun Style"
+msgstr "Stil &noun"
+
+#: src/KLyXMenu.C:833
+msgid "&Bold Style"
+msgstr "Stil &bold"
+
+#: src/KLyXMenu.C:834
+msgid "&TeX Style"
+msgstr "Stil Te&X"
+
+#: src/KLyXMenu.C:836
+msgid "Start of Appendi&x"
+msgstr "Începutul &apendixului"
+
+#: src/KLyXMenu.C:837
+msgid "Change En&vironment Depth"
+msgstr "Schimbã ni&velul cadrului"
+
+#: src/KLyXMenu.C:838
+msgid "&LaTeX Preamble..."
+msgstr "Preambul &LaTeX..."
+
+#: src/KLyXMenu.C:839
+msgid "&Save layout as default"
+msgstr "&Salveazã formatul ca implicit"
+
+#: src/KLyXMenu.C:873
+msgid "Fi&gure..."
+msgstr "&Figurã..."
+
+#: src/KLyXMenu.C:874
+msgid "Ta&ble..."
+msgstr "Ta&bel..."
+
+#: src/KLyXMenu.C:876
+msgid "In&clude File..."
+msgstr "&Include fiºier..."
+
+#: src/KLyXMenu.C:881
+msgid "As &Lines"
+msgstr "ca &Linii..."
+
+#: src/KLyXMenu.C:883
+msgid "As &Paragraphs"
+msgstr "ca &Paragrafe..."
+
+#: src/KLyXMenu.C:885
+msgid "Insert &ASCII File"
+msgstr "Insereazã fiºier &ASCII"
+
+#: src/KLyXMenu.C:889
+msgid "Insert Ly&X File..."
+msgstr "Insereazã fiºier Ly&X..."
+
+#: src/KLyXMenu.C:892
+msgid "&Footnote"
+msgstr "&Subsol"
+
+#: src/KLyXMenu.C:893
+msgid "&Margin Note"
+msgstr "&Notã marginalã"
+
+#: src/KLyXMenu.C:898
+msgid "&Figure Float"
+msgstr "&Figurã flotantã"
+
+#: src/KLyXMenu.C:900
+msgid "&Table Float"
+msgstr "Ta&bel flotant"
+
+#: src/KLyXMenu.C:902
+msgid "&Wide Figure Float"
+msgstr "F&igurã flotantã largã"
+
+#: src/KLyXMenu.C:904
+msgid "W&ide Table Float"
+msgstr "Tab&el flotant larg"
+
+#: src/KLyXMenu.C:906
+msgid "&Algorithm Float"
+msgstr "&Algoritm flotant"
+
+#: src/KLyXMenu.C:908
+msgid "Fl&oats"
+msgstr "Fl&otante"
+
+#: src/KLyXMenu.C:913
+msgid "Table of &Contents"
+msgstr "&Cuprins"
+
+#: src/KLyXMenu.C:915
+msgid "List of &Figures"
+msgstr "Listã de &figuri"
+
+#: src/KLyXMenu.C:917
+msgid "List of &Tables"
+msgstr "Listã de &tabele"
+
+#: src/KLyXMenu.C:919
+msgid "&Index List"
+msgstr "Listã de &indecºi"
+
+#: src/KLyXMenu.C:921
+msgid "&BibTeX Reference..."
+msgstr "Referinþe &BibTeX..."
+
+#: src/KLyXMenu.C:923
+msgid "List of &Algorithms"
+msgstr "Listã de &algoritmi"
+
+#: src/KLyXMenu.C:925
+msgid "Lists & TOC"
+msgstr "&Liste ºi cuprins"
+
+#: src/KLyXMenu.C:931
+msgid "&HFill"
+msgstr "&HFill"
+
+#: src/KLyXMenu.C:933
+msgid "Hyphenation &Point"
+msgstr "Punct de &despãrþire"
+
+#: src/KLyXMenu.C:935
+msgid "Protected &Blank"
+msgstr "&Spaþiu protejat"
+
+#: src/KLyXMenu.C:937
+msgid "&Linebreak"
+msgstr "&Rupere de linie"
+
+#: src/KLyXMenu.C:939
+msgid "Ell&ipsis"
+msgstr "&Elipsã"
+
+#: src/KLyXMenu.C:941
+msgid "&End of sentence period"
+msgstr "&Punct"
+
+#: src/KLyXMenu.C:943
+msgid "Ordinary &Quote (\")"
+msgstr "&Ghilimea obiºnuitã (\")"
+
+#: src/KLyXMenu.C:945
+msgid "&Special Character"
+msgstr "Caracter &special"
+
+#: src/KLyXMenu.C:950
+msgid "&Note"
+msgstr "&Notã"
+
+#: src/KLyXMenu.C:951
+msgid "&Label..."
+msgstr "&Etichetã..."
+
+#: src/KLyXMenu.C:953
+msgid "Cross-&Reference..."
+msgstr "Referinþã în&cruciºatã..."
+
+#: src/KLyXMenu.C:955
+msgid "C&itation Reference..."
+msgstr "Referinþã ci&tare..."
+
+#: src/KLyXMenu.C:957
+msgid "In&dex Entry..."
+msgstr "Înregistrare inde&x..."
+
+#: src/KLyXMenu.C:962
+msgid "&URL"
+msgstr "&URL"
+
+#: src/KLyXMenu.C:963
+msgid "&HTML URL"
+msgstr "URL &HTML"
+
+#: src/KLyXMenu.C:1019
+msgid "Screen &Options..."
+msgstr "Opþiuni &afiºare..."
+
+#: src/KLyXMenu.C:1021
+msgid "&Spellchecker Options..."
+msgstr "Opþiuni &ortografie..."
+
+#: src/KLyXMenu.C:1023
+msgid "&Keyboard..."
+msgstr "Opþiuni &tastaturã..."
+
+#: src/KLyXMenu.C:1025
+msgid "&LaTeX..."
+msgstr "Opþiuni &LaTeX..."
+
+#: src/KLyXMenu.C:1028
+msgid "&Reconfigure"
+msgstr "&Reconfigureazã"
+
+#: src/KLyXMenu.C:1156
+msgid "Opening help file"
+msgstr "Deschid fiºierul de ajutor"
+
+#: src/KLyXToolBar.C:657 src/KLyXToolBar.C:670
+msgid "Wrong Alignment."
+msgstr "Aliniere incorectã."
+
+#: src/KLyXToolBar.C:658 src/KLyXToolBar.C:671
+msgid ""
+"Non multicolumn cells with fixed width can only\n"
+"be left aligned in LaTeX."
+msgstr "Celulele non-multicoloanã cu lãþime fixã\n"
+"nu pot fi aliniate decît la stînga în LaTeX"
+
+#: src/KLyXToolBar.C:659 src/KLyXToolBar.C:672 src/text2.C:1788
+#: src/text2.C:1798 src/text2.C:2004 src/text2.C:2014
+msgid "sorry."
+msgstr "îmi pare rãu."
+
+#: src/KLyXToolBar.C:697 src/LyXView.C:392
+msgid "Width of Column"
+msgstr "Lãþimea coloanei"
+
+#: src/KLyXToolBar.C:698
+msgid "Width of Column:"
+msgstr "Lãþimea coloanei:"
+
+#: src/KLyXToolBar.C:706
+msgid "You entered an invalid Length:"
+msgstr "Aþi introdus o lungime greºitã:"
+
+#: src/KLyXToolBar.C:708
+msgid "A valid example is \"25mm\""
+msgstr "Un exemplu corect este \"25mm\""
+
+#: src/KLyXToolBar.C:774
+msgid ""
+"No font change defined. You may want to set some properties in the combo "
+"boxes..."
+msgstr "Nu a fost definitã o schimbare de font. Ar trebui sã setaþi ceva "
+"proprietãþi în cãsuþele combobox..."
+
+#: src/KeyboardOptionsDialog.C:29
+msgid "Language"
+msgstr "Limbaj"
+
+#: src/KeyboardOptionsDialog.C:33
+msgid "Primary"
+msgstr "Primarã"
+
+#: src/KeyboardOptionsDialog.C:42 src/KeyboardOptionsDialog.C:58
+msgid "Other"
+msgstr "Altul"
+
+#: src/KeyboardOptionsDialog.C:49
+msgid "Secondary"
+msgstr "Secundarã"
+
+#: src/KeyboardOptionsDialog.C:66
+msgid ""
+"Error:\n"
+"\n"
+"Keymap\n"
+"not found"
+msgstr ""
+"Eroare:\n"
+"\n"
+"Maparea de tastaturã\n"
+"nu a fost gãsitã"
+
+#: src/KeyboardOptionsDialog.C:78
+msgid "Mapping"
+msgstr "Mapare"
+
+#: src/KeyboardOptionsDialog.C:82
+msgid "&No key mapping"
+msgstr "&Fãrã mapare de tastaturã"
+
+#: src/KeyboardOptionsDialog.C:89
+msgid "P&rimary key map"
+msgstr "Mapare de tastaturã p&rimarã"
+
+#: src/KeyboardOptionsDialog.C:96
+msgid "S&econdary key map"
+msgstr "Mapare de tastaturã s&ecundarã"
+
+#: src/KeyboardOptionsDialog.C:104
+msgid "Character Set"
+msgstr "Setul de caractere"
+
+#: src/KeyboardOptionsDialog.C:111
+msgid "Set"
+msgstr "Seteazã"
+
+#: src/KeyboardOptionsDialog.C:117
+msgid "Swap &Y and Z"
+msgstr "Permutã &Y ºi Z"
+
+#: src/KeyboardOptionsDialog.C:131
+
+msgid "Keyboard Options"
+msgstr "Opþiuni tastaturã"
+
+#: src/LaTeX.C:289 src/LaTeX.C:303 src/LaTeX.C:404
+msgid "Run #"
+msgstr "Execþia nr. "
+
+#: src/LaTeX.C:291 src/LaTeX.C:307 src/LaTeX.C:363 src/LaTeX.C:405
+msgid "LaTeX run number "
+msgstr "Numãrul de execuþie LaTeX"
+
+#: src/LaTeX.C:329 src/LaTeX.C:386
+msgid "Running MakeIndex."
+msgstr "Execut MakeIndex."
+
+#: src/LaTeX.C:340
+msgid "Running BibTeX."
+msgstr "Execut BiTeX..."
+
+#: src/LaTeXOptionsDialog.C:27
+msgid "LaTeX Options"
+msgstr "Opþiuni LaTeX"
+
+#: src/LaTeXOptionsDialog.C:29
+msgid "Allo&w accents on ALL characters"
+msgstr "&Permite accente pe TOATE caracterele"
+
+#: src/LaTeXPreambleDialog.C:35
+msgid "LaTeX Preamble"
+msgstr "Preambul LaTeX"
+
+#: src/LaTeXPreambleDialog.C:65
+msgid "LaTeX preamble set"
+msgstr "Set preambul LaTeX"
+
+#: src/LyXAction.C:594
+msgid "Describe command"
+msgstr "Descrie comandã"
+
+#: src/LyXAction.C:595
+msgid "Select previous char"
+msgstr "Selecteazã caracterul precedent"
+
+#: src/LyXAction.C:596
+msgid "Exchange cursor and selection mark"
+msgstr "Schimbã cursorul ºi marcherul de selecþie"
+
+#: src/LyXAction.C:597
+msgid "Insert bibtex"
+msgstr "Insereazã bibtex"
+
+#: src/LyXAction.C:598
+msgid "Autosave"
+msgstr "Autosalveazã"
+
+#: src/LyXAction.C:599
+msgid "Go to beginning of document"
+msgstr "Salt la începutul documentului"
+
+#: src/LyXAction.C:600
+msgid "Select to beginning of document"
+msgstr "Selecteazã de la începutul documentului"
+
+#: src/LyXAction.C:602
+msgid "Go to end of document"
+msgstr "Salt la sfîrºitul documentului"
+
+#: src/LyXAction.C:603
+msgid "Select to end of document"
+msgstr "Selecteazã pînã la sfîrºitul documentului"
+
+#: src/LyXAction.C:604
+msgid "Fax"
+msgstr "Fax"
+
+#: src/LyXAction.C:605
+msgid "New document"
+msgstr "Document nou"
+
+#: src/LyXAction.C:606
+msgid "New document from template"
+msgstr "Document nou bazat pe model"
+
+#: src/LyXAction.C:608
+msgid "Switch to previous document"
+msgstr "Comutã la documentul precedent"
+
+#: src/LyXAction.C:610
+msgid "Revert to saved"
+msgstr "Revine la documentul salvat anterior"
+
+#: src/LyXAction.C:611
+msgid "Update DVI"
+msgstr "Actualizeazã DVI"
+
+#: src/LyXAction.C:612
+msgid "Update PostScript"
+msgstr "Actualizeazã PostScript"
+
+#: src/LyXAction.C:613
+msgid "View DVI"
+msgstr "Vizualizeazã DVI"
+
+#: src/LyXAction.C:614
+msgid "View PostScript"
+msgstr "Vizualizeazã PostScript"
+
+#: src/LyXAction.C:615
+msgid "View Custom Format"
+msgstr "Vizualizeazã format personalizat"
+
+#: src/LyXAction.C:616
+msgid "View Custom Format Update"
+msgstr "Actualizeazã formatul personalizat"
+
+#: src/LyXAction.C:617
+msgid "Check TeX"
+msgstr "Verificã TeX"
+
+#: src/LyXAction.C:621
+msgid "Go one char back"
+msgstr "Un caracter înapoi"
+
+#: src/LyXAction.C:622
+msgid "Go one char forward"
+msgstr "Un caracter înainte"
+
+#: src/LyXAction.C:623
+msgid "Insert citation"
+msgstr "Insereazã citare"
+
+#: src/LyXAction.C:624
+msgid "Execute command"
+msgstr "Executã comandã"
+
+#: src/LyXAction.C:627
+msgid "Decrement environment depth"
+msgstr "Reduce adîncimea cadrului"
+
+#: src/LyXAction.C:628
+msgid "Increment environment depth"
+msgstr "Creºte adîncimea cadrului"
+
+#: src/LyXAction.C:629 src/LyXView.C:194
+msgid "Change environment depth"
+msgstr "Schimbã adîncimea cadrului"
+
+#: src/LyXAction.C:630
+msgid "Change itemize bullet settings"
+msgstr "Schimbã setãrile bullet-ului pentru itemi"
+
+#: src/LyXAction.C:631
+msgid "Go down"
+msgstr "Mai jos"
+
+#: src/LyXAction.C:632
+msgid "Select next line"
+msgstr "Selecteazã urmãtoarea linie"
+
+#: src/LyXAction.C:633
+msgid "Choose Paragraph Environment"
+msgstr "Alege cadrul paragraf"
+
+#: src/LyXAction.C:634
+msgid "Go to next error"
+msgstr "Salt la urmãtoarea eroare"
+
+#: src/LyXAction.C:635
+msgid "Insert Figure"
+msgstr "Insereazã figurã"
+
+#: src/LyXAction.C:636
+msgid "Find & Replace"
+msgstr "Înlocuieºte"
+
+#: src/LyXAction.C:637
+msgid "Toggle bold"
+msgstr "Comutã bold"
+
+#: src/LyXAction.C:638
+msgid "Toggle code style"
+msgstr "Comutã stilul cod"
+
+#: src/LyXAction.C:639
+msgid "Default font style"
+msgstr "Stilul de font implicit"
+
+#: src/LyXAction.C:640 src/LyXView.C:173
+msgid "Toggle emphasize"
+msgstr "Comutã evidenþierea"
+
+#: src/LyXAction.C:641 src/LyXView.C:181 src/LyXView.C:623
+msgid "Toggle user defined style"
+msgstr "Comutã stilul definit de utilizator"
+
+#: src/LyXAction.C:642
+msgid "Toggle user defined style in toolbar"
+msgstr "Comutã stilul definit de utilizator în bara de unelte"
+
+#: src/LyXAction.C:643 src/LyXView.C:177
+msgid "Toggle noun style"
+msgstr "Comutã stilul noun"
+
+#: src/LyXAction.C:644
+msgid "Toggle roman font style"
+msgstr "Comutã stilul font roman"
+
+#: src/LyXAction.C:645
+msgid "Toggle sans font style"
+msgstr "Comutã stilul font sans"
+
+#: src/LyXAction.C:646
+msgid "Set font size"
+msgstr "Seteazã mãrimea fontului"
+
+#: src/LyXAction.C:647
+msgid "Show font state"
+msgstr "Afiºeazã starea fontului"
+
+#: src/LyXAction.C:648
+msgid "Toggle font underline"
+msgstr "Comutã sublinierea fontului"
+
+#: src/LyXAction.C:649
+msgid "Insert Footnote"
+msgstr "Insereazã notã de subsol"
+
+#: src/LyXAction.C:650
+msgid "Select next char"
+msgstr "Selecteazã urmãtorul caracter "
+
+#: src/LyXAction.C:651
+msgid "Insert horizontal fill"
+msgstr "Insereazã umplere orizontalã"
+
+#: src/LyXAction.C:652
+msgid "Insert hyphenation point"
+msgstr "Insereazã punct de despãrþire"
+
+#: src/LyXAction.C:653
+msgid "Insert ... dots"
+msgstr "Insereazã elipsã "
+
+#: src/LyXAction.C:654
+msgid "Insert end of sentence period"
+msgstr "Insereazã punct"
+
+#: src/LyXAction.C:655
+msgid "Turn off keymap"
+msgstr "Dezactiveazã maparea de tastaturã"
+
+#: src/LyXAction.C:656
+msgid "Use primary keymap"
+msgstr "Utilizeazã maparea de tastaturã primarã"
+
+#: src/LyXAction.C:657
+msgid "Use secondary keymap"
+msgstr "Utilizeazã maparea de tastaturã secundarã"
+
+#: src/LyXAction.C:658
+msgid "Toggle keymap"
+msgstr "Comutã maparea de tastaturã"
+
+#: src/LyXAction.C:660
+msgid "Copy paragraph environment type"
+msgstr "Copiazã tipul de cadru al paragrafului"
+
+#: src/LyXAction.C:661
+msgid "Paste paragraph environment type"
+msgstr "Lipeºte tipul de cadrul al paragrafului"
+
+#: src/LyXAction.C:662
+msgid "Specify paper size and margins"
+msgstr "Specificã dimensiunea foii ºi marginile"
+
+#: src/LyXAction.C:663
+msgid "Go to beginning of line"
+msgstr "Salt la începutul liniei"
+
+#: src/LyXAction.C:664
+msgid "Select to beginning of line"
+msgstr "Selecteazã pînã la începutul liniei"
+
+#: src/LyXAction.C:665
+msgid "Go to end of line"
+msgstr "Salt la sfîrºitul liniei"
+
+#: src/LyXAction.C:666
+msgid "Select to end of line"
+msgstr "Selecteazã pînã la sfîrºitul liniei"
+
+#: src/LyXAction.C:667
+msgid "Exit"
+msgstr "Ieºire"
+
+#: src/LyXAction.C:668
+msgid "Insert Margin note"
+msgstr "Insereazã notã marginalã"
+
+#: src/LyXAction.C:669
+msgid "Math Greek"
+msgstr "Simboluri matematice greceºti"
+
+#: src/LyXAction.C:670 src/LyXView.C:202
+msgid "Math mode"
+msgstr "Mod matematic"
+
+#: src/LyXAction.C:671
+msgid "Go one paragraph down"
+msgstr "Salt un paragraf mai jos"
+
+#: src/LyXAction.C:672
+msgid "Select next paragraph"
+msgstr "Selecteazã urmãtorul paragraf"
+
+#: src/LyXAction.C:673
+msgid "Go one paragraph up"
+msgstr "Salt un paragraf mai sus"
+
+#: src/LyXAction.C:674
+msgid "Select previous paragraph"
+msgstr "Selecteazã paragraful precedent"
+
+#: src/LyXAction.C:676
+msgid "Insert protected space"
+msgstr "Insereazã un spaþiu protejat"
+
+#: src/LyXAction.C:677
+msgid "Insert quote"
+msgstr "Insereazã ghilimele"
+
+#: src/LyXAction.C:678
+msgid "Reconfigure"
+msgstr "Reconfigureazã"
+
+#: src/LyXAction.C:680
+msgid "Insert cross reference"
+msgstr "Insereazã referinþã încruciºatã"
+
+#: src/LyXAction.C:681
+msgid "Insert Table"
+msgstr "Insereazã tabel"
+
+#: src/LyXAction.C:682 src/LyXView.C:198
+msgid "Toggle TeX style"
+msgstr "Comutã stilul TeX"
+
+#: src/LyXAction.C:684
+msgid "Remove all error boxes"
+msgstr "Eliminã toate mesajele de eroare"
+
+#: src/LyXAction.C:685
+msgid "Open a new view window"
+msgstr "Deschide o nouã fereastrã"
+
+#: src/LyXAction.C:686
+msgid "Delete the current view"
+msgstr "ªterge ecranul curent"
+
+#: src/LyXAction.C:687
+msgid "Split horizontally the current view"
+msgstr "Împarte orizontal ecranul curent"
+
+#: src/LyXAction.C:688
+msgid "Split vertically the current view"
+msgstr "Împarte vertical ecranul curent"
+
+#: src/LyXAction.C:689
+msgid "Unsplit the current view"
+msgstr "Eliminã împãrþirea ecranului curent"
+
+#: src/LyXAction.C:690
+msgid "Close the current view"
+msgstr "Închide ecranul curent"
+
+#: src/LyXAction.C:691
+msgid "Change view"
+msgstr "Schimbã ecranul"
+
+#: src/LyXAction.C:727
+msgid "No description available!"
+msgstr "Nu existã o descriere disponibilã!"
+
+#: src/LyXView.C:126
+msgid "Choose paragraph environment"
+msgstr "Alege cadrul paragrafului"
+
+#: src/LyXView.C:131
+msgid "New"
+msgstr "Nou"
+
+#: src/LyXView.C:135
+msgid "New From Template"
+msgstr "Nou din model"
+
+#: src/LyXView.C:147
+msgid "Preview"
+msgstr "Vizualizeazã"
+
+#: src/LyXView.C:151
+msgid "Update Preview"
+msgstr "Actualizeazã vizualizarea"
+
+#: src/LyXView.C:186
+msgid "Insert footnote"
+msgstr "Insereazã notã de subsol"
+
+#: src/LyXView.C:190
+msgid "Insert margin note"
+msgstr "Insereazã notã marginalã"
+
+#: src/LyXView.C:219
+msgid "Square root"
+msgstr "Radical"
+
+#: src/LyXView.C:223
+msgid "Fraction"
+msgstr "Fracþie"
+
+#: src/LyXView.C:228
+msgid "Sum"
+msgstr "Sumã"
+
+#: src/LyXView.C:232
+msgid "Integral"
+msgstr "Integralã"
+
+#: src/LyXView.C:236
+msgid "Exponent"
+msgstr "Exponent"
+
+#: src/LyXView.C:240
+msgid "Index"
+msgstr "Indice"
+
+#: src/LyXView.C:245 src/MathDelimiterDialog.C:266
+msgid "Delimiter"
+msgstr "Delimitator"
+
+#: src/LyXView.C:249
+msgid "Decoration"
+msgstr "Decoraþie"
+
+#: src/LyXView.C:253 src/MathSpacingDialog.C:70
+msgid "Spacing"
+msgstr "Spaþiere"
+
+#: src/LyXView.C:257 src/MathMatrixDialog.C:91
+msgid "Matrix"
+msgstr "Matrice"
+
+#: src/LyXView.C:261
+msgid "Equation"
+msgstr "Ecuaþie"
+
+#: src/LyXView.C:266
+msgid "Greek characters"
+msgstr "Caractere greceºti"
+
+#: src/LyXView.C:270
+msgid "Binary operators"
+msgstr "Operatori binari"
+
+#: src/LyXView.C:274
+msgid "Binary relations"
+msgstr "Relaþii binare"
+
+#: src/LyXView.C:278
+msgid "Arrows"
+msgstr "Sãgeþi"
+
+#: src/LyXView.C:282
+msgid "Variably-sized symbols"
+msgstr "Simboluri de mãrime variabilã"
+
+#: src/LyXView.C:286
+msgid "Functions"
+msgstr "Funcþii"
+
+#: src/LyXView.C:299
+msgid "Table style"
+msgstr "Stil tabel "
+
+#: src/LyXView.C:302
+msgid "Portrait"
+msgstr "Portret"
+
+#: src/LyXView.C:303
+msgid "Landscape"
+msgstr "Peisaj"
+
+#: src/LyXView.C:304
+msgid "Long"
+msgstr "Lung"
+
+#: src/LyXView.C:310
+msgid "Left Border"
+msgstr "Chenar stînga"
+
+#: src/LyXView.C:316
+msgid "Right Border"
+msgstr "Chenar dreapta"
+
+#: src/LyXView.C:322
+msgid "Top Border"
+msgstr "Chenar sus"
+
+#: src/LyXView.C:328
+msgid "Bottom Border"
+msgstr "Chenar jos"
+
+#: src/LyXView.C:336
+msgid "Add Row"
+msgstr "Adaugã linie"
+
+#: src/LyXView.C:341
+msgid "Delete Row"
+msgstr "ªterge linie"
+
+#: src/LyXView.C:346
+msgid "Add Column"
+msgstr "Adaugã coloanã"
+
+#: src/LyXView.C:351
+msgid "Delete Column"
+msgstr "ªterge coloanã"
+
+#: src/LyXView.C:358
+
+msgid "Align Left"
+msgstr "Aliniazã stînga"
+
+#: src/LyXView.C:364
+msgid "Align Center"
+msgstr "Aliniazã central"
+
+#: src/LyXView.C:370
+msgid "Align Right"
+msgstr "Aliniazã dreapta"
+
+#: src/LyXView.C:380
+msgid "Multicolumn"
+msgstr "Multicoloanã"
+
+#: src/LyXView.C:386
+msgid "Rotate Cell"
+msgstr "Roteºte celula"
+
+#: src/LyXView.C:400
+msgid "Special flags for long tables"
+msgstr "Fanioane speciale pentru tabele lungi"
+
+#: src/LyXView.C:406
+msgid "First head"
+msgstr "Primul antet"
+
+#: src/LyXView.C:407
+msgid "Head"
+msgstr "Antet"
+
+#: src/LyXView.C:408
+msgid "Foot"
+msgstr "Subsol"
+
+#: src/LyXView.C:409
+msgid "Last foot"
+msgstr "Ultimul subsol"
+
+#: src/LyXView.C:410
+msgid "New page"
+msgstr "Paginã nouã"
+
+#: src/LyXView.C:417
+msgid "Delete Table"
+msgstr "ªterge tabelul"
+
+#: src/LyXView.C:446
+msgid "Family::Keep"
+msgstr "Familia::Pãstreazã"
+
+#: src/LyXView.C:448
+msgid "Family::Roman"
+msgstr "Familia::Roman"
+
+#: src/LyXView.C:450
+msgid "Family::SansSerif"
+msgstr "Familia::SansSerif"
+
+#: src/LyXView.C:452
+msgid "Family::Typewriter"
+msgstr "Familia::Typewriter"
+
+#: src/LyXView.C:454
+msgid "Family::Reset"
+msgstr "Familia::Reseteazã"
+
+#: src/LyXView.C:471
+msgid "Series::Keep"
+msgstr "Seria::Pãstreazã"
+
+#: src/LyXView.C:473
+msgid "Series::Medium"
+msgstr "Seria::Mediu"
+
+#: src/LyXView.C:475
+msgid "Series::Bold"
+msgstr "Seria::Bold"
+
+#: src/LyXView.C:477
+msgid "Series::Reset"
+msgstr "Seria::Reseteazã"
+
+#: src/LyXView.C:498
+msgid "Shape::Keep"
+msgstr "Forma::Pãstreazã"
+
+#: src/LyXView.C:500
+msgid "Shape::Upright"
+msgstr "Forma::Upright"
+
+#: src/LyXView.C:502
+msgid "Shape::Italic"
+msgstr "Forma::Italic"
+
+#: src/LyXView.C:504
+msgid "Shape::Slanted"
+msgstr "Forma::Slanted"
+
+#: src/LyXView.C:506
+msgid "Shape::SmallCaps"
+msgstr "Forma::SmallCaps"
+
+#: src/LyXView.C:508
+msgid "Shape::Reset"
+msgstr "Forma::Reseteazã"
+
+#: src/LyXView.C:525
+msgid "Size::Keep"
+msgstr "Mãrimea::Pãstreazã"
+
+#: src/LyXView.C:527
+msgid "Size::Tiny"
+msgstr "Mãrimea::Tiny"
+
+#: src/LyXView.C:529
+msgid "Size::Smallest"
+msgstr "Mãrimea::Smallest"
+
+#: src/LyXView.C:531
+msgid "Size::Smaller"
+msgstr "Mãrimea::Smaller"
+
+#: src/LyXView.C:533
+msgid "Size::Small"
+msgstr "Mãrimea::Small"
+
+#: src/LyXView.C:535
+msgid "Size::Normal"
+msgstr "Mãrimea::Normal"
+
+#: src/LyXView.C:537
+msgid "Size::Large"
+msgstr "Mãrimea::Large"
+
+#: src/LyXView.C:539
+msgid "Size::Larger"
+msgstr "Mãrimea::Larger"
+
+#: src/LyXView.C:541
+msgid "Size::Largest"
+msgstr "Mãrimea::Largest"
+
+#: src/LyXView.C:543
+msgid "Size::Huge"
+msgstr "Mãrimea::Huge"
+
+#: src/LyXView.C:545
+msgid "Size::Huger"
+msgstr "Mãrimea::Huger"
+
+#: src/LyXView.C:547
+msgid "Size::Increase"
+msgstr "Mãrimea::Creºte"
+
+#: src/LyXView.C:549
+msgid "Size::Decrease"
+msgstr "Mãrimea::Descreºte"
+
+#: src/LyXView.C:551
+msgid "Size::Reset"
+msgstr "Mãrimea::Reseteazã"
+
+#: src/LyXView.C:572
+msgid "Misc::Keep"
+msgstr "Altele::Pãstreazã"
+
+#: src/LyXView.C:574
+msgid "Misc::Emph"
+msgstr "Altele::Evidenþiat"
+
+#: src/LyXView.C:576
+msgid "Misc::Underbar"
+msgstr "Altele::Subliniat"
+
+#: src/LyXView.C:578
+msgid "Misc::Noun"
+msgstr "Altele::Noun"
+
+#: src/LyXView.C:580
+msgid "Misc::LaTeX"
+msgstr "Altele::LaTeX"
+
+#: src/LyXView.C:582
+msgid "Misc::Reset"
+msgstr "Altele::Reseteazã"
+
+#: src/LyXView.C:596
+msgid "Color::Keep"
+msgstr "Culoare::Pãstreazã"
+
+#: src/LyXView.C:598
+msgid "Color::None"
+msgstr "Culoare::Lipsã"
+
+#: src/LyXView.C:600
+msgid "Color::Black"
+msgstr "Culoare::Negru"
+
+#: src/LyXView.C:602
+msgid "Color::White"
+msgstr "Culoare::Alb"
+
+#: src/LyXView.C:604
+
+msgid "Color::Red"
+msgstr "Culoare::Roºu"
+
+#: src/LyXView.C:606
+msgid "Color::Green"
+msgstr "Culoare::Verde"
+
+#: src/LyXView.C:608
+msgid "Color::Blue"
+msgstr "Culoare::Albastru"
+
+#: src/LyXView.C:610
+
+msgid "Color::Cyan"
+msgstr "Culoare::Cian"
+
+#: src/LyXView.C:612
+msgid "Color::Magenta"
+msgstr "Culoare::Violet"
+
+#: src/LyXView.C:614
+msgid "Color::Yellow"
+msgstr "Culoare::Galben"
+
+#: src/LyXView.C:616
+msgid "Color::Reset"
+msgstr "Culoare::Reseteazã"
+
+#: src/LyXView.C:1095 src/minibuffer.C:171
+msgid " (Changed)"
+msgstr "(Modificat)"
+
+#: src/LyXView.C:1097
+msgid " (read only)"
+msgstr "(Numai citire)"
+
+#: src/LyXView.C:1122 src/lyxfunc.C:2321 src/lyxfunc.C:2379
+msgid "Opening document"
+msgstr "Deschid documentul"
+
+#: src/LyXView.C:1127 src/lyxfunc.C:2326 src/lyxfunc.C:2384 src/lyxfunc.C:2431
+msgid "Document"
+msgstr "Document"
+
+#: src/LyXView.C:1129 src/lyxfunc.C:2328 src/lyxfunc.C:2386
+msgid "opened."
+msgstr "deschis."
+
+#: src/LyXView.C:1131 src/lyxfunc.C:2388
+msgid "Could not open document"
+msgstr "Nu pot deschide documentul"
+
+#: src/MathDelimiterDialog.C:38
+msgid "Left"
+msgstr "Stînga"
+
+#: src/MathDelimiterDialog.C:46
+msgid "Right"
+msgstr "Dreapta"
+
+#: src/MathMatrixDialog.C:29
+msgid "Rows"
+msgstr "Linii"
+
+#: src/MathMatrixDialog.C:56 src/ParagraphDialog.C:40
+#: src/ParagraphExtraDialog.C:74
+msgid "Alignment"
+msgstr "Alinierea"
+
+#: src/MathMatrixDialog.C:60
+msgid "Horizontal"
+msgstr "Orizontal"
+
+#: src/MathMatrixDialog.C:70
+msgid "Vertical"
+msgstr "Vertical"
+
+#: src/MathMatrixDialog.C:76 src/ParagraphExtraDialog.C:77
+msgid "Top"
+msgstr "Sus"
+
+#: src/MathMatrixDialog.C:77
+msgid "Center"
+msgstr "Centru"
+
+#: src/MathMatrixDialog.C:78 src/ParagraphExtraDialog.C:85
+msgid "Bottom"
+msgstr "Jos"
+
+#: src/MathSpacingDialog.C:31
+msgid "&Thin"
+msgstr "&Subþire"
+
+#: src/MathSpacingDialog.C:35
+msgid "&Medium"
+msgstr "&Mediu"
+
+#: src/MathSpacingDialog.C:39
+msgid "&Thick"
+msgstr "&Gros"
+
+#: src/MathSpacingDialog.C:43
+msgid "&Negative"
+msgstr "&Negativ"
+
+#: src/MathSpacingDialog.C:47
+msgid "&Square inch"
+msgstr "&Inci pãtrat"
+
+#: src/MathSpacingDialog.C:51
+msgid "T&wo square inches"
+msgstr "&Doi inci pãtraþi"
+
+#: src/PaperFormatDialog.C:56
+msgid "&Papersize:"
+msgstr "&Mãrimea foaie:"
+
+#: src/PaperFormatDialog.C:77
+msgid "&Special:"
+msgstr "S&pecialã:"
+
+#: src/PaperFormatDialog.C:86
+msgid "&Use Geometry Package"
+msgstr "&Utilizeazã pachetul Geometry"
+
+#: src/PaperFormatDialog.C:92
+msgid "Orientation"
+msgstr "Orientare"
+
+#: src/PaperFormatDialog.C:96
+msgid "P&ortrait"
+msgstr "P&ortret"
+
+#: src/PaperFormatDialog.C:102
+msgid "&Landscape"
+msgstr "P&eisaj"
+
+#: src/PaperFormatDialog.C:109
+msgid "Margins"
+msgstr "Margini"
+
+#: src/PaperFormatDialog.C:119
+msgid "&Top:"
+msgstr "&Sus:"
+
+#: src/PaperFormatDialog.C:130
+msgid "&Bottom:"
+msgstr "&Jos:"
+
+#: src/PaperFormatDialog.C:144
+msgid "&Left:"
+msgstr "S&tînga:"
+
+#: src/PaperFormatDialog.C:155
+msgid "&Right:"
+msgstr "&Dreapta"
+
+#: src/PaperFormatDialog.C:164
+msgid "Custom Papersize"
+msgstr "Mãrime foaie personalizatã"
+
+#: src/PaperFormatDialog.C:174
+msgid "&Width:"
+msgstr "&Lãþimea:"
+
+#: src/PaperFormatDialog.C:189
+msgid "&Height:"
+msgstr "Lun&gimea:"
+
+#: src/PaperFormatDialog.C:200
+msgid "Foot/Head Margins"
+msgstr "Margini antet/subsol"
+
+#: src/PaperFormatDialog.C:209
+msgid "&Headheight:"
+msgstr "Înãlþime &antet:"
+
+#: src/PaperFormatDialog.C:224
+msgid "&Headsep:"
+msgstr "Sepa&rare antet:"
+
+#: src/PaperFormatDialog.C:235
+msgid "&Footskip:"
+msgstr "Separare su&bsol:"
+
+#: src/PaperFormatDialog.C:249 src/PaperFormatDialog.C:422
+#: src/PaperFormatDialog.C:433 src/PaperFormatDialog.C:444
+#: src/PaperFormatDialog.C:455 src/PaperFormatDialog.C:466
+#: src/PaperFormatDialog.C:477 src/PaperFormatDialog.C:488
+#: src/PaperFormatDialog.C:499 src/PaperFormatDialog.C:510
+#: src/ParagraphExtraDialog.C:365
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Atenþie: Lungime eronatã (exemplu valid: 10mm)"
+
+#: src/PaperFormatDialog.C:277
+msgid "Configure PaperFormat"
+msgstr "Configurare format foaie"
+
+#: src/PaperFormatDialog.C:305
+msgid "Paper layout set"
+msgstr "Setare format de paginã"
+
+#: src/PaperLayout.C:60
+msgid "Document is read-only.  No changes to layout permitted."
+msgstr "Documentul poate fi citit numai. Nu sînt permise schimbãri de format."
+
+#: src/ParagraphDialog.C:45
+msgid "&Right"
+msgstr "&Dreapta"
+
+#: src/ParagraphDialog.C:50
+msgid "&Left"
+msgstr "S&tînga"
+
+#: src/ParagraphDialog.C:55
+msgid "&Block"
+msgstr "&Bloc"
+
+#: src/ParagraphDialog.C:61
+msgid "&Center"
+msgstr "&Centrat"
+
+#: src/ParagraphDialog.C:67
+msgid "Lines"
+msgstr "Linii"
+
+#: src/ParagraphDialog.C:72
+msgid "Ab&ove"
+msgstr "D&easupra"
+
+#: src/ParagraphDialog.C:77
+msgid "B&elow"
+msgstr "Dedes&ubt"
+
+#: src/ParagraphDialog.C:83
+msgid "Pagebreaks"
+msgstr "Ruperi de paginã"
+
+#: src/ParagraphDialog.C:87
+msgid "Abo&ve"
+msgstr "Dea&supra"
+
+#: src/ParagraphDialog.C:92
+msgid "Belo&w"
+msgstr "D&edesu&bt"
+
+#: src/ParagraphDialog.C:101
+msgid "Vertical Spaces"
+msgstr "Spaþiere verticalã"
+
+#: src/ParagraphDialog.C:111
+msgid "Above:"
+msgstr "Deasupra:"
+
+#: src/ParagraphDialog.C:117
+msgid "Below:"
+msgstr "Dedesubt:"
+
+#: src/ParagraphDialog.C:171
+msgid "Indent"
+msgstr "Indentare"
+
+#: src/ParagraphDialog.C:174
+msgid "&No indent"
+msgstr "&Fãrã indentare"
+
+#: src/ParagraphDialog.C:183
+msgid "Line spacing"
+msgstr "Spaþierea de linii"
+
+#: src/ParagraphDialog.C:218
+msgid "&Label Width:"
+msgstr "&Lungimea etichetei:"
+
+#: src/ParagraphDialog.C:228
+msgid "E&xtra Options"
+msgstr "O&pþiuni suplimentare"
+
+#: src/ParagraphDialog.C:261
+msgid "Paragraph Environment"
+msgstr "Cadrul paragraf"
+
+#: src/ParagraphExtraDialog.C:34
+msgid "Extra Options"
+msgstr "Opþiuni suplimentare"
+
+#: src/ParagraphExtraDialog.C:37
+msgid "&Indented Paragraph"
+msgstr "&Indentare paragraf"
+
+#: src/ParagraphExtraDialog.C:43
+msgid "&Minipage"
+msgstr "&Minipaginã"
+
+#: src/ParagraphExtraDialog.C:49
+msgid "&Floatflt"
+msgstr "&Floatflt"
+
+#: src/ParagraphExtraDialog.C:59
+msgid "Length"
+msgstr "Lungime"
+
+#: src/ParagraphExtraDialog.C:66
+#, c-format
+msgid "or %"
+msgstr "sau %"
+
+#: src/ParagraphExtraDialog.C:81
+msgid "Middle"
+msgstr "Mijloc"
+
+#: src/ParagraphExtraDialog.C:90
+msgid "HFill between Minipage paragraphs"
+msgstr "HFill între paragrafe minipaginã"
+
+#: src/ParagraphExtraDialog.C:93
+msgid "Start new Minipage"
+msgstr "Face minipaginã nouã"
+
+#: src/ParagraphExtraDialog.C:106
+msgid "ParagraphExtra Layout"
+msgstr "Formatare paragraf suplimentare"
+
+#: src/ParagraphExtraDialog.C:297
+msgid "Read-only buffer"
+msgstr "Buffer numai în citire"
+
+#: src/ParagraphExtraDialog.C:298
+msgid "Buffer is read-only.  No changes to layout permitted."
+msgstr ""
+"Buffer-ul este numai citibil. Nu sînt permise schimbãri ale formatului"
+
+#: src/ParagraphExtraDialog.C:340
+msgid "ParagraphExtra layout set"
+msgstr "Setarea formatului paragrafului suplimentar"
+
+#: src/ParagraphExtraDialog.C:364
+msgid "Invalid Length"
+msgstr "Lungime eronatã"
+
+#: src/ParagraphExtraDialog.C:373
+msgid "Invalid Value"
+msgstr "Valoare eronatã"
+
+#: src/ParagraphExtraDialog.C:374
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Atenþie: Valoare procentualã eronatã (0-100)"
+
+#: src/QuotesDialog.C:29
+msgid "Type: "
+msgstr "Tip"
+
+#: src/QuotesDialog.C:45
+msgid "&Single"
+msgstr "&Simple"
+
+#: src/QuotesDialog.C:50
+msgid "&Double"
+msgstr "&Duble"
+
+#: src/QuotesDialog.C:64
+msgid "Configure Quotes"
+msgstr "Configurare ghilimele"
+
+#: src/QuotesDialog.C:73
+msgid "Quotes type set"
+msgstr "Setare tip ghilimele"
+
+#: src/ScreenFontsDialog.C:21
+msgid "Roman Font"
+msgstr "Font roman"
+
+#: src/ScreenFontsDialog.C:29
+msgid "Sans Serif Font"
+msgstr "Font sans-serif"
+
+#: src/ScreenFontsDialog.C:38
+msgid "Typewriter Font"
+msgstr "Font typewriter"
+
+#: src/ScreenFontsDialog.C:47
+msgid "Font Norm:"
+msgstr "Codare font:"
+
+#: src/ScreenFontsDialog.C:55
+msgid "Font Zoom"
+msgstr "Mãrime font:"
+
+#: src/ScreenOptionsTabDialog.C:18
+msgid "&Toolbars"
+msgstr "Bare de &unelte"
+
+#: src/ScreenOptionsTabDialog.C:22
+msgid "Defaults"
+msgstr "Implicite"
+
+#: src/ScreenToolbarsDialog.C:24
+msgid "General"
+msgstr "General"
+
+#: src/ScreenToolbarsDialog.C:30 src/ScreenToolbarsDialog.C:40
+#: src/ScreenToolbarsDialog.C:50 src/ScreenToolbarsDialog.C:60
+msgid "Always visible"
+msgstr "Întotdeauna vizibil"
+
+#: src/ScreenToolbarsDialog.C:31 src/ScreenToolbarsDialog.C:41
+#: src/ScreenToolbarsDialog.C:51 src/ScreenToolbarsDialog.C:61
+msgid "Never visible"
+msgstr "Niciodatã vizibil"
+
+#: src/ScreenToolbarsDialog.C:34
+msgid "Math"
+msgstr "Matematic"
+
+#: src/ScreenToolbarsDialog.C:42 src/ScreenToolbarsDialog.C:52
+msgid "Automatic"
+msgstr "Automat"
+
+#: src/ScreenToolbarsDialog.C:44
+msgid "Tables"
+msgstr "Tabele"
+
+#: src/ScreenToolbarsDialog.C:54
+msgid "Character"
+msgstr "Caractere"
+
+#: src/SendFaxDialog.C:42
+msgid "Destination"
+msgstr "Destinaþia"
+
+#: src/SendFaxDialog.C:46
+msgid "Fax no."
+msgstr "Nr. de fax"
+
+#: src/SendFaxDialog.C:53
+msgid "Dest. name"
+msgstr "Nume dest."
+
+#: src/SendFaxDialog.C:60
+msgid "Company"
+msgstr "Firma"
+
+#: src/SendFaxDialog.C:67
+msgid "Phone Book"
+msgstr "Cartea de telefon"
+
+#: src/SendFaxDialog.C:71
+msgid "S&elect from"
+msgstr "S&electeazã"
+
+#: src/SendFaxDialog.C:77
+msgid "&Add to"
+msgstr "&Adaugã la"
+
+#: src/SendFaxDialog.C:83
+msgid "&Delete from"
+msgstr "ª&terge"
+
+#: src/SendFaxDialog.C:94
+msgid "Comment"
+msgstr "Comentariu"
+
+#: src/SendFaxDialog.C:112
+msgid "Send a fax"
+msgstr "Trimite un fax"
+
+#: src/SendFaxDialog.C:185 src/SendFaxDialog.C:217
+msgid "* Save *"
+msgstr "* Salvare *"
+
+#: src/SendFaxDialog.C:229 src/buffer.C:225 src/buffer.C:235 src/buffer.C:3102
+#: src/bufferlist.C:586 src/bufferlist.C:614 src/lyx_cb.C:481 src/lyx_cb.C:781
+msgid "Error!"
+msgstr "Eroare!"
+
+#: src/SendFaxDialog.C:229
+msgid "Cannot open phone book: "
+msgstr "Nu pot dechide cartea de telefon: "
+
+#: src/SendFaxDialog.C:258
+msgid "Select"
+msgstr "Selecteazã"
+
+#: src/SendFaxDialog.C:271
+msgid "Phonebook"
+msgstr "Cartea de telefon"
+
+#: src/SendFaxDialog.C:337
+msgid "Message View"
+msgstr "Vizualizare mesaje"
+
+#: src/SpellCheckDialog.C:24
+msgid "Unknown:"
+msgstr "Necunoscut:"
+
+#: src/SpellCheckDialog.C:32
+msgid "Replace:"
+msgstr "Înlocuieºte:"
+
+#: src/SpellCheckDialog.C:39
+msgid "Alternatives:"
+msgstr "Altenative:"
+
+#: src/SpellCheckDialog.C:54
+msgid "&Start spellchecking"
+msgstr "&Verificã"
+
+#: src/SpellCheckDialog.C:59
+msgid "&Insert in personal dictionary"
+msgstr "Adaugã la &dicþionarul personal"
+
+#: src/SpellCheckDialog.C:64
+msgid "&Accept word in this session"
+msgstr "&Acceptã cuvîntul în aceastã sesiune"
+
+#: src/SpellCheckDialog.C:69
+msgid "I&gnore word"
+msgstr "&Ignorã cuvîntul"
+
+#: src/SpellCheckDialog.C:74
+msgid "R&eplace word"
+msgstr "Î&nlocuieºte"
+
+#: src/SpellCheckDialog.C:79
+msgid "Stop spellchecking"
+msgstr "Opreºte verificarea"
+
+#: src/SpellCheckDialog.C:84
+msgid "Spellchecker &Options"
+msgstr "&Opþiuni..."
+
+#: src/SpellCheckDialog.C:89
+msgid "Close spellchecker"
+msgstr "Închide"
+
+#: src/SpellCheckDialog.C:94
+msgid "Spellchecker"
+msgstr "Ortografia"
+
+#: src/SpellcheckerOptionsDialog.C:21
+msgid "Dictionary"
+msgstr "Dicþionar"
+
+#: src/SpellcheckerOptionsDialog.C:24
+msgid "Use language of &document"
+msgstr "Utilizeazã limbajul &documentului"
+
+#: src/SpellcheckerOptionsDialog.C:28
+msgid "&Use alternate language"
+msgstr "Utilizeazã un limbaj &alternativ"
+
+#: src/SpellcheckerOptionsDialog.C:41
+msgid "&Treat run-together words as legal"
+msgstr "&Trateazã cuvintele compuse ca normale"
+
+#: src/SpellcheckerOptionsDialog.C:44
+msgid "&Input Encoding xswitch to ispell"
+msgstr "&Introduce codarea xwitch la ispell"
+
+#: src/SpellcheckerOptionsDialog.C:47
+msgid "Use alternate &personal dictionary:"
+msgstr "&Utilizeazã un dicþionar personal alternativ:"
+
+#: src/SpellcheckerOptionsDialog.C:55
+msgid "&Extra special chars allowed in words"
+msgstr "&Caracterele speciale extra sînt permise în cuvinte:"
+
+#: src/TableOfContentsDialog.C:99
+msgid "Depth"
+msgstr "Adîncime"
+
+#: src/TableOfContentsDialog.C:115
+msgid "&Goto"
+msgstr "&Salt"
+
+#: src/TableOfContentsDialog.C:142
+msgid "Document Structure"
+msgstr "Structura documentului"
+
+#: src/TableOfContentsDialog.C:180
+msgid "*** No Document ***"
+msgstr "*** Nu existã document ***"
+
+#: src/TableOfContentsDialog.C:348
+msgid ""
+"Couldn't find this label\n"
+"in current document."
+msgstr "Nu gãsesc aceastã etichetã\n"
+"în documentul curent."
+
+#: src/TableOfContentsDialog.C:363 src/TableOfContentsDialog.C:371
+msgid "(*** No entry ***)"
+msgstr "*** Nu existã intrãri ***"
+
+#: src/VCLogDialog.C:35
+msgid "VC Log"
+msgstr "Jurnalul VC"
+
+#: src/VCLogDialog.C:78
+msgid "No RCS History!"
+msgstr "Nu existã istoric RCS!"
+
+#: src/ViewLogfileDialog.C:35
+msgid "View Logfile"
+msgstr "Vizualizeazã fiºierul jurnal"
+
+#: src/ViewLogfileDialog.C:76
+msgid "NO LATEX LOGFILE"
+msgstr "Nu existã fiºier jurnal LaTeX!"
+
+#: src/buffer.C:226 src/buffer.C:236 src/bufferlist.C:655
+msgid "Cannot open specified file:"
+msgstr "Nu pot deschide fiºierul specificat:"
+
+#: src/buffer.C:327
+msgid "Textclass Loading Error!"
+msgstr "Eroare de încãrcare a textclass!"
+
+#: src/buffer.C:328
+msgid "Can't load textclass "
+msgstr "Nu pot încãrca textclass "
+
+#: src/buffer.C:330
+msgid "-- substituting default"
+msgstr "-- substitui implicit"
+
+#: src/buffer.C:1044
+#, c-format
+msgid "Warning: need lyxformat %.2f but found %.2f\n"
+msgstr "Atenþie: este nevoie de formatul lyx %.2f, dar am gãsit %.2f\n"
+
+#: src/buffer.C:1048
+#, c-format
+msgid "ERROR: need lyxformat %.2f but found %.2f\n"
+msgstr "EROARE: este nevoie de formatul lyx %.2f, dar am gãsit %.2f\n"
+
+#: src/buffer.C:1054
+msgid "Warning!"
+msgstr "Atenþie!"
+
+#: src/buffer.C:1055
+msgid "Reading of document is not complete"
+msgstr "Citirea documentului nu este completã"
+
+#: src/buffer.C:1056
+msgid "Maybe the document is truncated"
+msgstr "Este posibil ca documentul sã fie trunchiat"
+
+#: src/buffer.C:1062 src/buffer.C:1069 src/buffer.C:1072
+msgid "ERROR!"
+msgstr "Eroare!"
+
+#: src/buffer.C:1063
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Formatul de fiºier LyX este vechi. Utilizaþi LyX 0.10.x pentru a-l citi!"
+
+#: src/buffer.C:1069
+msgid "Not a LyX file!"
+msgstr "Nu este un fiºier LyX!"
+
+#: src/buffer.C:1072
+msgid "Unable to read file!"
+msgstr "Nu pot citi fiºierul!"
+
+#: src/buffer.C:1088 src/buffer.C:1090
+msgid "Error! Document is read-only: "
+msgstr "Eroare! Documentul poate fi numai citit: "
+
+#: src/buffer.C:1099 src/buffer.C:1101 src/buffer.C:1108 src/buffer.C:1110
+msgid "Error! Cannot write file: "
+msgstr "Eroare! Nu pot scrie fiºierul: "
+
+#: src/buffer.C:1142 src/buffer.C:1145
+msgid "Error! Could not close file properly: "
+msgstr "Eroare! Nu pot închide corect fiºierul: "
+
+#: src/buffer.C:1190 src/buffer.C:1507
+msgid "Error: Cannot write file:"
+msgstr "Eroare: Nu pot scrie fiºierul: "
+
+#: src/buffer.C:1295
+msgid "Error: Cannot open temporary file:"
+msgstr "Eroare: Nu pot deschide fiºierul temporar:"
+
+#: src/buffer.C:1957 src/buffer.C:2314
+msgid "Error! Could not close file properly:"
+msgstr "Eroare! Nu pot închide corect fiºierul:"
+
+#: src/buffer.C:2046
+#, c-format
+msgid "Style %s not allowed before first Section.\n"
+msgstr "Stilul %s nu este permis înaintea primei secþiuni.\n"
+
+#: src/buffer.C:2159
+#, c-format
+msgid "Style %s not allowed after first Section.\n"
+msgstr "Stilul %s nu este permis dupã prima secþiune.\n"
+
+#: src/buffer.C:2275 src/buffer.C:3024 src/buffer.C:3045 src/paragraph.C:2790
+msgid "LYX_ERROR:"
+msgstr "EROARE_LYX:"
+
+#: src/buffer.C:2275
+msgid "Cannot write file"
+msgstr "Nu pot scrie fiºierul"
+
+#: src/buffer.C:2398
+msgid "Error : table of contents not allowed in body.\n"
+msgstr "Eroare: cuprinsul nu este permis în corpul textului.\n"
+
+#: src/buffer.C:2405
+msgid "Error : unhandled inset.\n"
+msgstr "Eroare: Inset nemanevrabil.\n"
+
+#: src/buffer.C:2418
+msgid "Error : incomplete macro.\n"
+msgstr "Eroare: macrou incomplet.\n"
+
+#: src/buffer.C:2473
+msgid "Running LaTeX..."
+msgstr "Rulez LaTeX..."
+
+#: src/buffer.C:2490
+msgid "LaTeX did not work!"
+msgstr "LaTeX nu funcþioneazã!"
+
+#: src/buffer.C:2491
+msgid "Missing log file:"
+msgstr "Lipseºte fiºierul jurnal:"
+
+#: src/buffer.C:2496 src/buffer.C:2502
+msgid "Done"
+msgstr "Gata"
+
+#: src/buffer.C:2539
+msgid "Running chktex..."
+msgstr "Rulez chktex..."
+
+#: src/buffer.C:2555
+msgid "chktex did not work!"
+msgstr "chktex nu funcþioneazã!"
+
+#: src/buffer.C:2556
+msgid "Could not run with file:"
+msgstr "Nu pot rula cu fiºierul:"
+
+#: src/buffer.C:3025 src/buffer.C:3046 src/paragraph.C:2790
+msgid "Cannot open temporary file:"
+msgstr "Nu pot deschide fiºierul temporar:"
+
+#: src/buffer.C:3095
+msgid "Error! Can't open temporary file:"
+msgstr "Eroare! Nu pot deschide fiºierul temporar:"
+
+#: src/buffer.C:3103
+msgid "Error executing *roff command on table"
+msgstr "Eroare la execuþia comenzii *roff pentru tabel"
+
+#: src/buffer.C:3286 src/lyx_cb.C:2550 src/text.C:1882
+msgid "Impossible Operation!"
+msgstr "Operaþie imposibilã!"
+
+#: src/buffer.C:3287
+msgid "Cannot insert table/list in table."
+msgstr "Nu pot insera tabel/listã într-un tabel."
+
+#: src/buffer.C:3288 src/lyx_cb.C:2552 src/text.C:1884 src/text.C:4024
+#: src/text.C:4032 src/text.C:4047 src/text.C:4064 src/text2.C:2107
+#: src/text2.C:2117
+msgid "Sorry."
+msgstr " "
+
+#: src/bufferlist.C:157 src/bufferlist.C:325
+msgid "Changes in document:"
+msgstr "Modificãri în document:"
+
+#: src/bufferlist.C:159 src/bufferlist.C:327
+msgid "Save document?"
+msgstr "Salvez documentul?"
+
+#: src/bufferlist.C:175
+msgid "Some documents were not saved:"
+msgstr "Cîteva documente nu au fost salvate:"
+
+#: src/bufferlist.C:176
+msgid "Exit anyway?"
+msgstr "Închid în aceste condiþii?"
+
+#: src/bufferlist.C:187
+msgid "Saving document"
+msgstr "Salvez documentul"
+
+#: src/bufferlist.C:260
+msgid "Document saved as"
+msgstr "Document salvat ca"
+
+#: src/bufferlist.C:271
+msgid "Could not delete auto-save file!"
+msgstr "Nu pot ºterge fiºierul de auto-salvare!"
+
+#: src/bufferlist.C:281
+msgid "Save failed!"
+msgstr "Salvarea a eºuat!"
+
+#: src/bufferlist.C:436
+msgid "lyx: Attempting to save document "
+msgstr "lyx: Încerc sã salvez documentul"
+
+#: src/bufferlist.C:439
+msgid " as..."
+msgstr "ca..."
+
+#: src/bufferlist.C:463
+msgid "  Save seems succesful. Phew."
+msgstr " Salvarea pare sã se fi terminat."
+
+#: src/bufferlist.C:466
+msgid "  Save failed! Trying..."
+msgstr " Salvarea a eºuat! Încerc..."
+
+#: src/bufferlist.C:468
+msgid "  Save failed! Bummer. Document is lost."
+msgstr " Salvarea a eºuat! Documentul este pierdut."
+
+#: src/bufferlist.C:497
+msgid "An emergency save of this document exists!"
+msgstr "Existã o salvare de urgenþã a acestui document!"
+
+#: src/bufferlist.C:499
+msgid "Try to load that instead?"
+msgstr "Încerc sã încarc acest fiºier?"
+
+#: src/bufferlist.C:518
+msgid "Autosave file is newer."
+msgstr "Autosalvarea este mai nouã."
+
+#: src/bufferlist.C:520
+msgid "Load that one instead?"
+msgstr "Îl încarc pe acesta?"
+
+#: src/bufferlist.C:586
+msgid "Unable to open template"
+msgstr "Nu pot deschide fiºierul model"
+
+#: src/bufferlist.C:615
+msgid "Could not convert file"
+msgstr "Nu pot converti fiºierul"
+
+#: src/bufferlist.C:622 src/lyxfunc.C:2293
+msgid "Document is already open:"
+msgstr "Documentul este deja deschis:"
+
+#: src/bufferlist.C:624
+msgid "Do you want to reload that document?"
+msgstr "Doriþi sã reîncarc documentul?"
+
+#: src/bufferlist.C:638
+msgid "File `"
+msgstr "Fiºierul `"
+
+#: src/bufferlist.C:639
+msgid "' is read-only."
+msgstr "' se poate citi numai."
+
+#: src/bufferlist.C:657
+msgid "Create new document with this name?"
+msgstr "Creez un document nou cu acest nume?"
+
+#: src/figinset.C:1090
+msgid "[render error]"
+msgstr "[eroare de randare]"
+
+#: src/figinset.C:1091
+msgid "[rendering ... ]"
+msgstr "[randez ... ]"
+
+#: src/figinset.C:1093
+msgid "[no file]"
+msgstr "[nu existã fiºier]"
+
+#: src/figinset.C:1094
+msgid "[not displayed]"
+msgstr "[nu este afiºat]"
+
+#: src/figinset.C:1095
+msgid "[no ghostscript]"
+msgstr "[nu existã ghostscript]"
+
+#: src/figinset.C:1097
+msgid "[unknown error]"
+msgstr "[eroare necunoscutã]"
+
+#: src/figinset.C:1334 src/figinset.C:1467
+msgid "empty figure path"
+msgstr "cale goalã cãtre figurã"
+
+#: src/filetools.C:163 src/filetools.C:172 src/filetools.C:180
+msgid "LyX Internal Error!"
+msgstr "Eroare internã de LyX!"
+
+#: src/filetools.C:164
+msgid "Could not test if directory is writeable"
+msgstr "Nu pot testa dacã este permisã scrierea în director"
+
+#: src/filetools.C:173
+msgid "Cannot open directory test file"
+msgstr "Nu pot deschide fiºierul de test pentru director"
+
+#: src/filetools.C:181
+msgid "Created test file but cannot remove it?"
+msgstr "Am creat fiºierul de test dar nu pot sã îl ºterg!"
+
+#: src/filetools.C:276
+msgid "Error! Cannot open directory:"
+msgstr "Eroare! Nu pot deschide directorul:"
+
+#: src/filetools.C:288
+msgid "Error! Could not remove file:"
+msgstr "Eroare! Nu pot ºterge fiºierul:"
+
+#: src/filetools.C:302
+msgid "Error! Couldn't create temporary directory:"
+msgstr "Eroare! Nu pot crea directorul temporar:"
+
+#: src/filetools.C:315
+msgid "Error! Couldn't delete temporary directory:"
+msgstr "Eroare! Nu pot ºterge directorul temporar:"
+
+#: src/filetools.C:394
+msgid "Internal error!"
+msgstr "Eroare internã!"
+
+#: src/filetools.C:395
+msgid "Call to createDirectory with invalid name"
+msgstr "Apel de creare director cu nume eronat"
+
+#: src/filetools.C:403
+msgid "Error! Couldn't create directory:"
+msgstr "Eroare! Nu pot crea directorul:"
+
+#: src/filetools.C:858 src/lyx_cb.C:329 src/lyxfunc.C:2286
+msgid "---unnamed---"
+msgstr "-- fãrã nume --"
+
+#: src/formula.C:831
+msgid "Math greek mode on"
+msgstr "Modul cu caractere matematice greceºti este activat"
+
+#: src/formula.C:842
+msgid "Math greek keyboard on"
+msgstr "Tastatura în modul matematic grecesc este activatã"
+
+#: src/formula.C:844
+msgid "Math greek keyboard off"
+msgstr "Tastatura în modul matematic grecesc este dezactivatã"
+
+#: src/formula.C:859 src/formula.C:1145
+msgid "TeX mode"
+msgstr "Modul TeX"
+
+#: src/formula.C:874
+msgid "No number"
+msgstr "Fãrã numãr"
+
+#: src/formula.C:877
+msgid "Number"
+msgstr "Numãr"
+
+#: src/formula.C:1040
+msgid "math text mode"
+msgstr "Modul text matematic"
+
+#: src/formula.C:1049
+msgid "Invalid action in math mode!"
+msgstr "Acþiune eronatã în modul matematic!"
+
+#: src/formulamacro.C:131 src/formulamacro.C:155
+msgid "Macro: "
+msgstr "Macrou: "
+
+#: src/insetbib.C:156
+msgid "BibTeX Generated References"
+msgstr "Referinþe generate de BibTeX"
+
+#: src/insetbib.C:189
+msgid "Database:"
+msgstr "Baza de date:"
+
+#: src/insetbib.C:190
+msgid "Style:"
+msgstr "Stil:  "
+
+#: src/insetinclude.C:96
+msgid "Input"
+msgstr "Intrare"
+
+#: src/insetinclude.C:98
+msgid "Verbatim Input"
+msgstr "Intrare textualã"
+
+#: src/insetinclude.C:100
+msgid "Include"
+msgstr "Includere"
+
+#: src/insetindex.C:47
+msgid "Index: "
+msgstr "Index: "
+
+#: src/insetindex.C:77
+msgid "PrintIndex"
+msgstr "Index tipãrit"
+
+#: src/insetref.C:62
+msgid "Page: "
+msgstr "Pagina: "
+
+#: src/insetref.C:64
+msgid "Ref: "
+msgstr "Ref: "
+
+#: src/intl.C:229 src/intl.C:230
+msgid "Other..."
+msgstr "Alta..."
+
+#: src/kbmap.C:303
+msgid "   options: "
+msgstr "   opþiuni: "
+
+#: src/layout.C:1288
+msgid "LyX wasn't able to find it's layout descriptions!"
+msgstr "Nu pot gãsi descrierile de formate!"
+
+#: src/layout.C:1289
+msgid "Check that the file \"textclass.lst\""
+msgstr "Verificaþi dacã fiºierul \"textclass.lst\""
+
+#: src/layout.C:1290
+msgid "is installed correctly. Sorry, has to exit :-("
+msgstr "este instalat corect. Renunþ."
+
+#: src/lyx_cb.C:337
+msgid "Save failed. Rename and try again?"
+msgstr "Salvarea a eºuat. Redenumesc ºi încerc din nou?"
+
+#: src/lyx_cb.C:339
+msgid "(If not, document is not saved.)"
+msgstr "(Dacã nu, documentul nu va fi salvat.)"
+
+#: src/lyx_cb.C:361
+
+msgid ""
+"*.lyx|Klyx Documents (*.lyx)\n"
+"*|All Files"
+msgstr ""
+"*.lyx|Documente Klyx (*.lyx)\n"
+"*|Toate fiºierele"
+
+#: src/lyx_cb.C:364
+msgid "Enter Filename to Save Document as"
+msgstr "Introduceþi numele de fiºier pentru a salva documentul ca"
+
+#: src/lyx_cb.C:367 src/lyxfunc.C:2276 src/lyxfunc.C:2368 src/lyxfunc.C:2415
+msgid "Canceled."
+msgstr "Anulat."
+
+#: src/lyx_cb.C:378
+msgid "Same name as document already has:"
+msgstr "Existã deja un nume ca cel al documentului curent:"
+
+#: src/lyx_cb.C:380
+msgid "Save anyway?"
+msgstr "Salvez în aceste condiþii?"
+
+#: src/lyx_cb.C:386
+msgid "Another document with same name open!"
+msgstr "Existã alt document deschis cu acelaºi nume!"
+
+#: src/lyx_cb.C:388
+msgid "Replace with current document?"
+msgstr "Îl înlocuiesc cu documentul curent?"
+
+#: src/lyx_cb.C:396
+msgid "Document renamed to '"
+msgstr "Document redenumit ca '"
+
+#: src/lyx_cb.C:398
+msgid "', but not saved..."
+msgstr "', dar nu a fost salvat..."
+
+#: src/lyx_cb.C:404
+msgid "Document already exists:"
+msgstr "Documentul existã deja:"
+
+#: src/lyx_cb.C:406
+msgid "Replace file?"
+msgstr "Înlocuiesc fiºierul?"
+
+#: src/lyx_cb.C:443
+msgid "One error detected"
+msgstr "Am detectat o eroare"
+
+#: src/lyx_cb.C:444
+msgid "You should try to fix it."
+msgstr "Ar trebui sã încercaþi sã o rezolvaþi."
+
+#: src/lyx_cb.C:447
+msgid " errors detected."
+msgstr " erori detectate."
+
+#: src/lyx_cb.C:448
+msgid "You should try to fix them."
+msgstr "Ar trebui sã încercaþi sã le rezolvaþi."
+
+#: src/lyx_cb.C:450
+msgid "There where errors during the LaTeX run."
+msgstr "Au apãrut erori în timpul rulãrii LaTeX-ului."
+
+#: src/lyx_cb.C:461
+msgid "Chktex is no fun for LinuxDoc."
+msgstr "Chktex nu este recomandabil pentru LinuxDoc."
+
+#: src/lyx_cb.C:470
+msgid "No warnings found."
+msgstr "Nu am gãsit avertizãri."
+
+#: src/lyx_cb.C:472
+msgid "One warning found."
+msgstr "Am gãsit o avertizare."
+
+#: src/lyx_cb.C:473
+msgid "Use 'Edit->Go to Error' to find it."
+msgstr "Utilizaþi 'Editare->Salt la eroare' pentru a o gãsi"
+
+#: src/lyx_cb.C:476
+msgid " warnings found."
+msgstr " avertizãri gãsite."
+
+#: src/lyx_cb.C:477
+msgid "Use 'Edit->Go to Error' to find them."
+msgstr "Utilizaþi 'Editare->Salt la eroare' pentru a le gãsi"
+
+#: src/lyx_cb.C:479
+msgid "Chktex run successfully"
+msgstr "Chktex a fost executat cu succes"
+
+#: src/lyx_cb.C:481
+msgid "It seems chktex does not work."
+msgstr "Se pare cã Chktex nu funcþioneazã."
+
+#: src/lyx_cb.C:537 src/lyx_cb.C:540
+msgid "Executing command:"
+msgstr "Execut comanda:"
+
+#: src/lyx_cb.C:754
+msgid ""
+"*.tex|LaTex Files (*.tex)\n"
+"*|All Files"
+msgstr ""
+"*.tex|Fiºiere LaTex (*.tex)\n"
+"*|Toate fiºierele"
+
+#: src/lyx_cb.C:757
+msgid "Export LaTeX File"
+msgstr "Exportare fiºier LaTeX"
+
+#: src/lyx_cb.C:769
+msgid "Nice LaTeX file saved as"
+msgstr "Fiºierul LaTeX a fost salvat ca"
+
+#: src/lyx_cb.C:781
+msgid "Document class must be linuxdoc."
+msgstr "Clasa de document trebuie sã fie LinuxDoc."
+
+#: src/lyx_cb.C:791
+msgid "*.sgml|LinuxDoc SGML file (*.sgml)"
+msgstr "*.sgml|Fiºier SGML LinuxDoc (*.sgml)"
+
+#: src/lyx_cb.C:799
+msgid "Building LinuxDoc SGML file `"
+msgstr "Construiesc fiºierul SGML LinuxDoc"
+
+#: src/lyx_cb.C:803
+msgid "LinuxDoc SGML file"
+msgstr "Fiºier SGML LinuxDoc"
+
+#: src/lyx_cb.C:804
+msgid "built"
+msgstr "construit"
+
+#: src/lyx_cb.C:816
+msgid "*.txt|Text Files"
+msgstr "*.txt|Fiºiere text"
+
+#: src/lyx_cb.C:817
+msgid "Export Text File"
+msgstr "Exportare fiºier text"
+
+#: src/lyx_cb.C:827
+msgid "Ascii file saved as"
+msgstr "Fiºier ASCII salvat ca"
+
+#: src/lyx_cb.C:878
+msgid "Autosaving current document..."
+msgstr "Autosalvez documentul curent..."
+
+#: src/lyx_cb.C:918
+msgid "Autosave Failed!"
+msgstr "Autosalvarea a eºuat!"
+
+#: src/lyx_cb.C:965
+msgid "File to Insert"
+msgstr "Fiºier de inserat"
+
+#: src/lyx_cb.C:973
+msgid "Error! Cannot open specified file:"
+msgstr "Eroare! Nu pot deschide fiºierul specificat:"
+
+#: src/lyx_cb.C:1017
+msgid "sec: "
+msgstr "sec: "
+
+#: src/lyx_cb.C:1019
+msgid "fig: "
+msgstr "fig: "
+
+#: src/lyx_cb.C:1022
+msgid "tab: "
+msgstr "tab: "
+
+#: src/lyx_cb.C:1059
+msgid "Inserting Footnote..."
+msgstr "Inserez notã de subsol..."
+
+#: src/lyx_cb.C:1117
+msgid "Importing LinuxDoc SGML file `"
+msgstr "Import fiºierul SGML LinuxDoc `"
+
+#: src/lyx_cb.C:1125
+msgid "Converting LinuxDoc SGML to TeX file..."
+msgstr "Convertesc fiºierul SGML LinuxDoc la fiºier TeX ..."
+
+#: src/lyx_cb.C:1132
+msgid "Converting LinuxDoc SGML to dvi file..."
+msgstr "Convertesc fiºierul SGML LinuxDoc la fiºier DVI ..."
+
+#: src/lyx_cb.C:1577 src/lyx_gui_misc.C:209
+msgid "Any changes will be ignored"
+msgstr "Toate modificãrile vor fi ignorate"
+
+#: src/lyx_cb.C:1578 src/lyx_gui_misc.C:210
+msgid "The document is read-only:"
+msgstr "Documentul poate fi citit numai:"
+
+#: src/lyx_cb.C:1631
+msgid ""
+"Do you want to save the current settings\n"
+"for Character, Document, Paper and Quotes\n"
+"as default for new documents?"
+msgstr ""
+"Doriþi sã salvez setãrile curente\n"
+"pentru caractere, document, foaie ºi ghilimele\n"
+"ca implicite pentru documentele noi?"
+
+#: src/lyx_cb.C:1685 src/lyx_cb.C:1696
+msgid "Open/Close..."
+msgstr "Deschide/Închide..."
+
+#: src/lyx_cb.C:1717
+msgid "No further undo information"
+msgstr "Nu existã informaþii pentru a des-face"
+
+#: src/lyx_cb.C:1727
+msgid "Redo not yet supported in math mode"
+msgstr "Operaþia de re-facere nu este suportatã încã în modul matematic"
+
+#: src/lyx_cb.C:1736
+msgid "No further redo information"
+msgstr "Nu exitã informaþii pentru re-facere"
+
+#: src/lyx_cb.C:1914
+msgid "Font: "
+msgstr "Fontul: "
+
+#: src/lyx_cb.C:1918
+msgid ", Depth: "
+msgstr ", Adîncimea: "
+
+#: src/lyx_cb.C:1945
+msgid "Inserting margin note..."
+msgstr "Inserez notã marginalã..."
+
+#: src/lyx_cb.C:1978
+msgid "Paragraph environment type copied"
+msgstr "Am copiat cadru de tip paragraf"
+
+#: src/lyx_cb.C:1987
+msgid "Paragraph environment type set"
+msgstr "Am setat cadrul de tip paragraf"
+
+#: src/lyx_cb.C:2039
+msgid "Melt"
+msgstr "Dizolvat"
+
+#: src/lyx_cb.C:2062
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr "Adîncime cadru modificatã (într-un domeniu posibil sau poate nu...)"
+
+#: src/lyx_cb.C:2080
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Nu a fost definitã o schimbare de font. Utilizaþi Caractere din\n"
+"meniul Format pentru a defini schimbarea de font."
+
+#: src/lyx_cb.C:2280
+msgid "Paragraph layout set"
+msgstr "Am setat formatul de paragraf"
+
+#: src/lyx_cb.C:2383
+msgid "Converting document to new document class..."
+msgstr "Convertesc documentul la o nouã clasã de document..."
+
+#: src/lyx_cb.C:2395
+msgid "One paragraph couldn't be converted"
+msgstr "Nu am putut converti un paragraf"
+
+#: src/lyx_cb.C:2398
+msgid " paragraphs couldn't be converted"
+msgstr "paragrafe nu am putut sã le convertesc"
+
+#: src/lyx_cb.C:2400
+msgid "Conversion Errors!"
+msgstr "Erori de conversie!"
+
+#: src/lyx_cb.C:2401
+msgid "into chosen document class"
+msgstr "în clasa de document aleasã"
+
+#: src/lyx_cb.C:2474
+msgid "Document layout set"
+msgstr "Am setat formatul de document"
+
+#: src/lyx_cb.C:2514 src/lyx_cb.C:2518
+msgid "No more notes"
+msgstr "Nu existã note"
+
+#: src/lyx_cb.C:2551
+msgid "Cannot insert table in table."
+msgstr "Nu pot insera un tabel în alt tabel."
+
+#: src/lyx_cb.C:2556
+msgid "Inserting table..."
+msgstr "Inserez tabel..."
+
+#: src/lyx_cb.C:2615
+msgid "Table inserted"
+msgstr "Tabelul a fost inserat"
+
+#: src/lyx_cb.C:2747
+msgid "Inserting figure..."
+msgstr "Inserez figurã..."
+
+#: src/lyx_cb.C:2753 src/lyx_cb.C:2804
+msgid "Figure inserted"
+msgstr "Figura a fost inseratã"
+
+#: src/lyx_cb.C:2837
+msgid "Screen options set"
+msgstr "Am actualizat setãrile de afiºare"
+
+#: src/lyx_cb.C:2869
+msgid "Running configure..."
+msgstr "Execut configurarea..."
+
+#: src/lyx_cb.C:2876
+msgid "Reloading configuration..."
+msgstr "Reîncarc configurarea..."
+
+#: src/lyx_cb.C:2878
+msgid "The system has been reconfigured."
+msgstr "Am reconfigurat sistemul."
+
+#: src/lyx_cb.C:2879
+msgid "You need to restart LyX to make use of any"
+msgstr "Trebuie sã restartaþi KLyX pentru a putea utiliza"
+
+#: src/lyx_cb.C:2880
+msgid "updated document class specifications."
+msgstr "specificaþiile actualizate ale claselor de documente"
+
+#: src/lyx_gui_misc.C:147
+msgid "Alert"
+msgstr "Avertizare"
+
+#: src/lyx_gui_misc.C:165
+msgid "Question"
+msgstr "Întrebare"
+
+#: src/lyx_main.C:346
+msgid ""
+"You don't have a personal LyX directory.\n"
+"It is needed to keep your own configuration.\n"
+"Should I try to set it up for you (recommended)?"
+msgstr ""
+"Nu aveþi un director personal pentru LyX.\n"
+"Este nevoie de el pentru a þine setãrile dumneavoastrã.\n"
+"Încerc sã-l setez pentru dumneavoastrã (recomandat)?"
+
+#: src/lyx_main.C:357
+#, c-format
+msgid "LyX: Creating directory %s and running configure..."
+msgstr "LyX: Creez directorul %s ºi rulez configurarea..."
+
+#: src/lyx_main.C:364
+#, c-format
+msgid "Failed. Will use %s instead."
+msgstr "A eºuat. Voi utiliza %s în loc."
+
+#: src/lyx_main.C:373
+
+msgid "LyX: Done!"
+msgstr "Lyx: Gata!"
+
+#: src/lyx_main.C:386
+msgid "LyX Warning!"
+msgstr "Avertizare LyX"
+
+#: src/lyx_main.C:387
+msgid "Error while reading "
+msgstr "Eroare la citirea "
+
+#: src/lyx_main.C:388
+msgid "Using built-in defaults."
+msgstr "Utilizez valorile implicite interne"
+
+#: src/lyx_sendfax_main.C:44
+msgid "Fax File: "
+msgstr "Fiºier Fax: "
+
+#: src/lyxfr1.C:205 src/lyxfr1.C:256
+msgid "String not found!"
+msgstr "Nu am gãsit ºirul!"
+
+#: src/lyxfr1.C:208
+msgid "1 string has been replaced."
+msgstr "Am înlocuit un ºir."
+
+#: src/lyxfr1.C:212
+msgid " strings have been replaced."
+msgstr " ºiruri le-am înlocuit."
+
+#: src/lyxfr1.C:252
+msgid "Found."
+msgstr "Am gãsit."
+
+#: src/lyxfunc.C:310
+msgid "Unknown sequence:"
+msgstr "Secvenþã necunoscutã:"
+
+#: src/lyxfunc.C:418 src/lyxfunc.C:2224
+msgid "Unknown action"
+msgstr "Acþiune necunoscutã"
+
+#: src/lyxfunc.C:422
+msgid "Command not allowed without any document open"
+msgstr "Comandã nepermisã fãrã un document deschis"
+
+#: src/lyxfunc.C:482
+msgid "Document is read-only"
+msgstr "Documentul poate fi citit numai"
+
+#: src/lyxfunc.C:673 src/lyxfunc.C:684
+msgid "Unknown preview type: "
+msgstr "Tip de previzualizare necunoscut: "
+
+#: src/lyxfunc.C:745
+msgid "Unknown export type: "
+msgstr "Tip de exportare necunoscut: "
+
+#: src/lyxfunc.C:1066
+msgid "Layout "
+msgstr "Format "
+
+#: src/lyxfunc.C:1067
+msgid " not known"
+msgstr " necunoscut"
+
+#: src/lyxfunc.C:1190
+msgid "No cross-reference to toggle"
+msgstr "Nu existã referinþe încruciºate de comutat"
+
+#: src/lyxfunc.C:1982
+msgid "This is only allowed in math mode!"
+msgstr "Acest lucru este permis numai în modul matematic!"
+
+#: src/lyxfunc.C:2134
+msgid "Unknown kind of footnote"
+msgstr "Tip de subsol necunoscut"
+
+#: src/lyxfunc.C:2183
+msgid "Document is read only"
+msgstr "Documentul este poate fi citit numai"
+
+#: src/lyxfunc.C:2273
+msgid ""
+"*.lyx|LyX Documents (*.lyx)\n"
+"*|All Files"
+msgstr ""
+"*.lyx|Documente LyX (*.lyx)\n"
+"*|Toate fiºierele"
+
+#: src/lyxfunc.C:2274
+msgid "newfile"
+msgstr "fiºier_nou"
+
+#: src/lyxfunc.C:2295
+msgid ""
+"Do you want to close that document now?\n"
+"('No' will just switch to the open version)"
+msgstr ""
+"Doriþi sã închid acest document acum?\n"
+"(Alegînd 'Nu' veþi trece la versiunea deschisã)"
+
+#: src/lyxfunc.C:2317
+msgid "File already exists:"
+msgstr "Fiºierul existã deja:"
+
+#: src/lyxfunc.C:2319
+msgid "Do you want to open the document?"
+msgstr "Doriþi sã deschid documentul?"
+
+#: src/lyxfunc.C:2427
+msgid "Inserting document"
+msgstr "Inserez documentul"
+
+#: src/lyxfunc.C:2433
+msgid "inserted."
+msgstr "inserat."
+
+#: src/lyxfunc.C:2435
+msgid "Could not insert document"
+msgstr "Nu pot insera documentul"
+
+#: src/lyxvc.C:160
+msgid "LyX VC: Initial description"
+msgstr "LyX VC: Descriere iniþialã"
+
+#: src/lyxvc.C:174
+msgid "LyX VC: Log Message"
+msgstr "LyX VC: Mesaj jurnal"
+
+#: src/lyxvc.C:197
+msgid ""
+"When reverting you will lose all changes made to the document since the last "
+"check-in."
+msgstr ""
+"Cînd reveniþi înapoi veþi pierde toate modificãrile\n"
+"fãcute documentului de la ultima verificare."
+
+#: src/lyxvc.C:199
+msgid "Do you still want to do it?"
+msgstr "Doriþi sã o faceþi?"
+
+#: src/lyxvc.C:270
+msgid "Sorry, can't do this while pictures are being rendered."
+msgstr "Îmi pare rãu, nu puteþi face acest lucru cînd\n"
+"imaginile se randeazã."
+
+#: src/lyxvc.C:272
+msgid "Please wait a few seconds for this to finish and try again."
+msgstr "Aºteptaþi vã rog cîteva secunde sã se termine\n"
+"ºi apoi încercaþi din nou."
+
+#: src/lyxvc.C:274
+msgid "(or kill runaway gs processes by hand and try again.)"
+msgstr "(sau opriþi manual procesele 'gs' ce ruleazã ºi încercaþi din nou)"
+
+#: src/lyxvc.C:280
+msgid "Can't do this while the spellchecker is running."
+msgstr "Nu pot sã fac acest lucru cînd verificatorul ortografic lucreazã."
+
+#: src/lyxvc.C:282
+msgid "Stop the spellchecker first."
+msgstr "Opriþi verificatorul ortografic mai întîi."
+
+#: src/minibuffer.C:43
+msgid "Welcome to LyX!"
+msgstr "Bine aþi venit în LyX!"
+
+#: src/minibuffer.C:56
+msgid "Executing:"
+msgstr "Execut:"
+
+#: src/minibuffer.C:173
+msgid "* No document open *"
+msgstr "* Nici un document deschis *"
+
+#: src/paragraph.C:1603
+msgid "Senseless with this layout!"
+msgstr "Fãrã sens pentru acest format!"
+
+#: src/pathstack.C:53 src/pathstack.C:81
+msgid "Error: Could not change to directory: "
+msgstr "Eroare: Nu pot schimba directorul: "
+
+#: src/pathstack.C:72
+msgid "LyX Internal Error:"
+msgstr "Eroare internã LyX:"
+
+#: src/pathstack.C:72
+msgid "Path Stack underflow."
+msgstr "Stiva de cale depãºitã"
+
+#: src/spellchecker.C:449
+msgid "ispell problem"
+msgstr "Eroare ispell"
+
+#: src/spellchecker.C:450
+msgid ""
+"The ispell-process has died for some reason. *One* possible reason\n"
+"could be that you do not have a dictionary file\n"
+"for the language of this document installed.\n"
+"Check /usr/lib/ispell or set another\n"
+"dictionary in the Spellchecker Options menu."
+msgstr ""
+"Procesul ispell a murit dintr-un anumit motiv. Un motiv posibil\n"
+"poate fi acela cã nu aveþi un fiºier dicþionar\n"
+"instalat pentru limbajul documentului curent.\n"
+"Verificaþi /usr/lib/ispell sau setaþi alt\n"
+"dicþionar în meniul 'Opþiuni ortografie'."
+
+#: src/spellchecker.C:560
+msgid " words checked."
+msgstr " cuvinte verificate."
+
+#: src/spellchecker.C:562
+msgid " word checked."
+msgstr " cuvînt verificat."
+
+#: src/spellchecker.C:565
+#, c-format
+msgid ""
+"Spellchecking completed!\n"
+"\n"
+"%s"
+msgstr ""
+"Verificare ortograficã completã!\n"
+"\n"
+"%s"
+
+#: src/spellchecker.C:567
+msgid "Ispell process"
+msgstr "Procesul ispell"
+
+#: src/spellchecker.C:572
+msgid ""
+"The ispell-process has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Procesul ispell a murit dintr-un anumit motiv.\n"
+"Poate chiar a fost omorît."
+
+#: src/text.C:1883
+msgid "Multicolumns can only be horizontally."
+msgstr "Multicoloanele pot fi numai orizontale"
+
+#: src/text.C:4022 src/text.C:4030 src/text.C:4047 src/text.C:4062
+#: src/text2.C:1788 src/text2.C:1798 src/text2.C:2004 src/text2.C:2014
+#: src/text2.C:2106 src/text2.C:2115
+msgid "Impossible operation"
+msgstr "Operaþie imposibilã"
+
+#: src/text.C:4023
+msgid "You can't insert a float in a float!"
+msgstr "Nu puteþi insera un flotant în alt flotant!"
+
+#: src/text.C:4031
+msgid "You can't insert a marginpar in a minipage!"
+msgstr "Nu puteþi insera un paragraf marginal într-o minipaginã!"
+
+#: src/text.C:4047
+msgid "Cannot cut table."
+msgstr "Nu pot tãia tabelul."
+
+#: src/text.C:4063
+msgid "Float would include float!"
+msgstr "Flotantul va include flotant!"
+
+#: src/text2.C:335
+msgid "Opened float"
+msgstr "Flotant deschis"
+
+#: src/text2.C:338
+msgid "Closed float"
+msgstr "Flotant închis"
+
+#: src/text2.C:377
+msgid "Nothing to do"
+msgstr "Nimic de fãcut"
+
+#: src/text2.C:1100
+msgid "Font style changed"
+msgstr "Am schimbat stilul de font."
+
+#: src/text2.C:1788 src/text2.C:2004
+msgid "Don't know what to do with half floats."
+msgstr "Nu ºtiu ce sã fac cu jumãtãþi de flotante."
+
+#: src/text2.C:1798 src/text2.C:2014
+msgid "Don't know what to do with half tables."
+msgstr "Nu ºtiu ce sã fac cu jumãtãþi de tabele."
+
+#: src/text2.C:2107
+msgid "Can't paste float into float!"
+msgstr "Nu pot pune un flotant în alt flotant!"
+
+#: src/text2.C:2116
+msgid "Table cell cannot include more than one paragraph!"
+msgstr "Celula de tabel nu poate include mai mult de un paragraf!"
+
+#: src/figinset.h:49
+msgid "Opened figure"
+msgstr "Figurã deschisã"
+
+#: src/formula.h:69
+msgid "Math editor mode"
+msgstr "Mod de editare matematic"
+
+#: src/formulamacro.h:59
+msgid "Math macro editor mode"
+msgstr "Mod de editare macro-uri matematice"
+
+#: src/inseterror.h:52
+msgid "Opened error"
+msgstr "Eroare deschisã"
+
+#: src/insetinfo.h:50
+msgid "Opened note"
+msgstr "Notã deschisã"
+
+#: src/insetlabel.h:32
+msgid "&Jump back"
+msgstr "&Salt înapoi"
+
+#: src/insetloa.h:34
+msgid "List of Algorithms"
+msgstr "Lista de algoritmi"
+
+#: src/insetlof.h:33
+msgid "List of Figures"
+msgstr "Lista de figuri"
+
+#: src/insetlot.h:33
+msgid "List of Tables"
+msgstr "Lista de tabele"
+
+#: src/insetparent.h:40
+msgid "Parent:"
+msgstr "Pãrinte:"
+
+#: src/insetref.h:46
+msgid "&Jump to label"
+msgstr "&Salt la etichetã"
+
+#: src/insettoc.h:33
+msgid "Table of Contents"
+msgstr "Cuprins"
+
+#: src/lyxinset.h:109
+msgid "Opened inset"
+msgstr "Inset deschis"
+
+#: src/lyxlib.h:48
+msgid "unknown"
+msgstr "necunoscut"
+

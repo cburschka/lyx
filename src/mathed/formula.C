@@ -27,7 +27,6 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "lyx_main.h"
-#include "bufferlist.h"
 #include "lyx_cb.h"
 #include "minibuffer.h"
 #include "BufferView.h"
@@ -42,13 +41,6 @@
 #include "LyXView.h"
 
 extern void UpdateInset(Inset * inset, bool mark_dirty = true);
-//extern void LockedInsetStoreUndo(Undo::undo_kind);
-//extern void ShowLockedInsetCursor(long, long, int, int);
-//extern void HideLockedInsetCursor(long, long, int, int);
-//extern void FitLockedInsetCursor(long, long, int, int);
-//extern int LockInset(UpdatableInset *);
-//extern int UnlockInset(UpdatableInset *);
-
 
 extern GC canvasGC, mathGC, mathLineGC, latexGC, cursorGC, mathFrameGC;
 extern char * mathed_label;
@@ -57,7 +49,6 @@ extern int mono_video;
 extern int fast_selection;
 
 extern BufferView * current_view;
-extern BufferList bufferlist;
 extern char const * latex_special_chars;
 
 short greek_kb_flag = 0;

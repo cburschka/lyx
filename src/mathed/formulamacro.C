@@ -26,7 +26,6 @@
 #include "math_parser.h"
 #include "math_macro.h"
 #include "lyx_main.h"
-#include "bufferlist.h"
 #include "lyx_cb.h"
 #include "BufferView.h"
 #include "lyxscreen.h"

@@ -35,6 +35,10 @@ namespace lyx {
 	int kill(long int pid, int sig);
 	///
 	void abort();
+	///
+	int mkdir(char const * pathname, unsigned int mode);
+	///
+	int putenv(char const * str);
 }
 #else
 struct lyx {
@@ -52,6 +56,10 @@ struct lyx {
 	static int kill(long int pid, int sig);
 	///
 	static void abort();
+	///
+	static int mkdir(char const * pathname, unsigned int mode);
+	///
+	static int putenv(char const * str);
 };
 #endif // CXX_WORKING_NAMESPACES
 #endif

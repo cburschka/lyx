@@ -70,7 +70,7 @@ Buffer * BufferStorage::newBuffer(string const & s,
 	Buffer * tmpbuf = new Buffer(s, lyxrc, ronly);
 	tmpbuf->params.useClassDefaults();
 	lyxerr.debug() << "Assigning to buffer "
-		       << container.size() + 1 << endl;
+		       << container.size() << endl;
 	container.push_back(tmpbuf);
 	return tmpbuf;
 }
@@ -81,9 +81,8 @@ Buffer * BufferStorage::newBuffer(string const & s,
 //
 
 BufferList::BufferList()
-{
-	_state = BufferList::OK;
-}
+	: state_(BufferList::OK)
+{}
 
 
 bool BufferList::empty()
@@ -234,11 +233,11 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 
 void BufferList::closeAll()
 {
-	_state = BufferList::CLOSING;
+	state_ = BufferList::CLOSING;
 	while (!bstore.empty()) {
 		close(bstore.front());
 	}
-	_state = BufferList::OK;
+	state_ = BufferList::OK;
 }
 
 
@@ -280,19 +279,14 @@ bool BufferList::close(Buffer * buf)
 }
 
 
-void BufferList::makePup(int pup)
-	/* This should be changed to return a char const *const
-	   in the same way as for lastfiles.[hC]
-	   */
+vector<string> BufferList::getFileNames() const
 {
-	int ant = 0;
-	for(BufferStorage::iterator it = bstore.begin();
-	    it != bstore.end(); ++it) {
-		string relbuf = MakeDisplayPath((*it)->fileName(), 30);
-		fl_addtopup(pup, relbuf.c_str());
-		++ant;
+	vector<string> nvec;
+	for(BufferStorage::const_iterator cit = bstore.begin();
+	    cit != bstore.end(); ++cit) {
+		nvec.push_back((*cit)->fileName());
 	}
-	if (ant == 0) fl_addtopup(pup, _("No Documents Open!%t"));
+	return nvec;
 }
 
 

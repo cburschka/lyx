@@ -334,8 +334,9 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 void LyXParagraph::validate(LaTeXFeatures & features)
 {
 	// this will be useful later
-	LyXLayout const & layout = textclasslist.Style(current_view->buffer()->params.textclass, 
-						       GetLayout());
+	LyXLayout const & layout =
+		textclasslist.Style(current_view->buffer()->params.textclass, 
+				    GetLayout());
 	
 	// check the params.
 	if (line_top || line_bottom)
@@ -447,6 +448,7 @@ void LyXParagraph::CopyIntoMinibuffer(LyXParagraph::size_type pos) const
 		}
 	}
 }
+
 
 void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
 {
@@ -1000,7 +1002,9 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 		}
 	}
 
-	tmpfont.realize(textclasslist.TextClass(current_view->buffer()->params.textclass).defaultfont());
+	tmpfont.realize(textclasslist
+			.TextClass(current_view->buffer()->params.textclass)
+			.defaultfont());
 	return tmpfont;
 }
 
@@ -2104,7 +2108,7 @@ int LyXParagraph::BeginningOfMainBody() const
 	if (i == 0 && i == size() &&
 	    !(footnoteflag == LyXParagraph::NO_FOOTNOTE
 	      && next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE))
-		i++;			       /* the cursor should not jump  
+		++i;			       /* the cursor should not jump  
 						* to the main body if there
 						* is nothing in! */
 	return i;
@@ -2485,7 +2489,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 	texrow.start(this, 0);
 
 	for (size_type i = 0; i < size(); ++i) {
-		column++;
+		++column;
 		// First char in paragraph or after label?
 		if (i == main_body && !IsDummy()) {
 			if (main_body > 0) {
@@ -2496,11 +2500,11 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 				basefont = getFont(-1); // Now use the layout font
 				running_font = basefont;
 				file += ']';
-				column++;
+				++column;
 			}
 			if (style.isCommand()) {
 				file += '{';
-				column++;
+				++column;
 			} else if (align != LYX_ALIGN_LAYOUT) {
 				file += "{\\par";
 				column += 4;
@@ -2542,7 +2546,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 		if (open_font && c == ' ' && i <= size() - 2 
 		    && !getFont(i+1).equalExceptLatex(running_font) 
 		    && !getFont(i+1).equalExceptLatex(font)) {
-			font = getFont(i+1);
+			font = getFont(i + 1);
 		}
 		// We end font definition before blanks
 		if (!font.equalExceptLatex(running_font) && open_font) {
@@ -2589,7 +2593,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 				file += "\\\\\n";
 			}
 			texrow.newline();
-			texrow.start(this, i+1);
+			texrow.start(this, i + 1);
 			column = 0;
 		} else {
 			SimpleTeXSpecialChars(file, texrow,
@@ -2618,28 +2622,21 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...     " << this << endl;
-	char c;
-	int tmp;
    
 	bool return_value = false;
-	int current_cell_number = -1;
 
 	LyXLayout const & style = 
-		textclasslist.Style(current_view->buffer()->params.textclass, GetLayout());
-	LyXFont basefont = getFont(-1); // Get layout font
-	// Which font is currently active?
-	LyXFont running_font = basefont;
-	// Do we have an open font change?
-	bool open_font = false;
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    GetLayout());
  
 	int column = 0;
 	if (!IsDummy()) { // it is dummy if it is in a float!!!
 		if (style.isCommand()) {
 			file += '{';
-			column++;
+			++column;
 		} else if (align != LYX_ALIGN_LAYOUT) {
 			file += '{';
-			column++;
+			++column;
 			return_value = true;
 		}
 		if (noindent) {
@@ -2665,15 +2662,21 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 			break;
 		}
 	}
-	current_cell_number = -1;
-	tmp = table->TexEndOfCell(file, current_cell_number);
+
+	LyXFont basefont = getFont(-1); // Get layout font
+	// Which font is currently active?
+	LyXFont running_font = basefont;
+	// Do we have an open font change?
+	bool open_font = false;
+	int current_cell_number = -1;
+	int tmp = table->TexEndOfCell(file, current_cell_number);
 	for (; tmp > 0 ; --tmp)
 		texrow.newline();
 	
 	texrow.start(this, 0);
 
 	for (size_type i = 0; i < size(); ++i) {
-		c = GetChar(i);
+		char c = GetChar(i);
 		if (table->IsContRow(current_cell_number+1)) {
 			if (c == LyXParagraph::META_NEWLINE)
 				current_cell_number++;
@@ -2786,11 +2789,10 @@ bool LyXParagraph::TeXContTableRows(string & file,
 	char c;
    
 	bool return_value = false;
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
-						      GetLayout());
-	LyXFont basefont;
-
-	basefont = getFont(-1); // Get layout font
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    GetLayout());
+	LyXFont basefont = getFont(-1); // Get layout font
 	// Which font is currently active?
 	LyXFont running_font = basefont;
 	// Do we have an open font change?
@@ -2961,8 +2963,9 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 	string emph = "emphasis";
 	bool emph_flag = false;
 	
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
-						      GetLayout());
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    GetLayout());
 	
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
@@ -3064,7 +3067,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c != '\0')
 				file += c;
-			char_line_count++;
+			++char_line_count;
 		} else {
 			string sgml_string;
 			if (linuxDocConvertChar(c, sgml_string) 
@@ -3096,7 +3099,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 		file += "</emphasis>";
 	}
 	
-	current_cell_number++;
+	++current_cell_number;
 	tmp = table->DocBookEndOfCell(file, current_cell_number, depth);
 	// Resets description flag correctly.
 	switch(desc_on){
@@ -3123,32 +3126,32 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 	
 	lyxerr[Debug::LATEX] << "DocBookContTableRows... " << this << endl;
 
-	int cell;
-	LyXFont font1, font2;
+	LyXFont font2;
 	char c;
 	Inset * inset;
-	size_type main_body;
-	size_type lastpos;
 	string emph= "emphasis";
 	bool emph_flag= false;
 	int char_line_count= 0;
 	
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
-						      GetLayout());
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    GetLayout());
 	
+	size_type main_body;
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
 	else
 		main_body = BeginningOfMainBody();
 	
 	// Gets paragraph main font.
+	LyXFont font1;
 	if (main_body > 0)
 		font1 = style.labelfont;
 	else
 		font1 = style.font;
 	
-	lastpos = i;
-	cell = table->CellHasContRow(current_cell_number);
+	size_type lastpos = i;
+	int cell = table->CellHasContRow(current_cell_number);
 	++current_cell_number;
 	while(cell >= 0) {
 		// first find the right position
@@ -3195,11 +3198,13 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 				//
 				// This code needs some explanation:
 				// Two insets are treated specially
-				//   label if it is the first element in a command paragraph
+				//   label if it is the first element in a
+				//   command paragraph
 				//       desc_on == 3
-				//   graphics inside tables or figure floats can't go on
-				//   title (the equivalente in latex for this case is caption
-				//   and title should come first
+				//   graphics inside tables or figure floats
+				//   can't go on title (the equivalente in
+				//   latex for this case is caption and title
+				//   should come first
 				//       desc_on == 4
 				//
 				if(desc_on != 3 || i != 0) {
@@ -3215,14 +3220,14 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 				// "TeX"-Mode on == > SGML-Mode on.
 				if (c!= '\0')
 					file += c;
-				char_line_count++;
+				++char_line_count;
 			} else {
 				string sgml_string;
 				if (linuxDocConvertChar(c, sgml_string) 
 				    && !style.free_spacing) {
-				// in freespacing mode, spaces are
-				// non-breaking characters
-				// char is ' '
+					// in freespacing mode, spaces are
+					// non-breaking characters
+					// char is ' '
 					if (desc_on == 1) {
 						char_line_count++;
 						file += '\n';
@@ -3653,7 +3658,8 @@ LyXParagraph * LyXParagraph::TeXDeeper(string & file, TexRow & texrow,
 
 
 LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
-					    string & foot, TexRow & foot_texrow,
+					    string & foot,
+					    TexRow & foot_texrow,
 					    int & foot_count)
 {
 	bool eindent_open = false;
@@ -3667,8 +3673,9 @@ LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
 	if (IsDummy())
 		lyxerr << "ERROR (LyXParagraph::TeXEnvironment)" << endl;
 
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
-						      layout);
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    layout);
        
 	if (pextra_type == PEXTRA_INDENT) {
 		if (!pextra_width.empty()) {

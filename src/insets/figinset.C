@@ -221,7 +221,6 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				}
 				{
 				// query current colormap
-				//cmap = (XColor *) malloc(gs_allcolors*sizeof(XColor));
 					XColor * cmap = new XColor[gs_allcolors];
 					for (i = 0; i < gs_allcolors; ++i) cmap[i].pixel = i;
 					XQueryColors(tmpdisp, color_map, cmap, gs_allcolors);
@@ -368,10 +367,14 @@ void AllocGrays(int num)
 void InitFigures()
 {
 	bmparrsize = figarrsize = figallocchunk;
-	figures = static_cast<Figref**>
-		(malloc(sizeof(Figref*) * figallocchunk));
-	bitmaps = static_cast<figdata**>
-		(malloc(sizeof(figdata*) * figallocchunk));
+	typedef Figref * Figref_p;
+	figures = new Figref_p[figallocchunk];
+	//figures = static_cast<Figref**>
+	//	(malloc(sizeof(Figref*) * figallocchunk));
+	typedef figdata * figdata_p;
+	bitmaps = new figdata_p[figallocchunk];
+	//bitmaps = static_cast<figdata**>
+	//(malloc(sizeof(figdata*) * figallocchunk));
 
 	unsigned int k;
 	for (unsigned int i = 0; i < 256; ++i) {
@@ -418,8 +421,10 @@ void InitFigures()
 
 void DoneFigures()
 {
-	free(figures);
-	free(bitmaps);
+	//free(figures);
+	//free(bitmaps);
+	delete[] figures;
+	delete[] bitmaps;
 	figarrsize = 0;
 	bmparrsize = 0;
 
@@ -667,8 +672,10 @@ static void runqueue()
 
 			// set up environment
 			while (environ[ne]) ++ne;
-			env = static_cast<char **>
-				(malloc(sizeof(char*) * (ne + 2)));
+			typedef char * char_p;
+			env = new char_p[ne + 2];
+			//env = static_cast<char **>
+			//	(malloc(sizeof(char*) * (ne + 2)));
 			env[0] = tbuf2;
 			memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
@@ -769,11 +776,14 @@ static figdata * getfigdata(int wid, int hgh, string const & fname,
 	if (bmpinsref > bmparrsize) {
 		// allocate more space
 		bmparrsize += figallocchunk;
-		figdata ** tmp = static_cast<figdata**>
-			(malloc(sizeof(figdata*) * bmparrsize));
+		typedef figdata * figdata_p;
+		figdata ** tmp = new figdata_p[bmparrsize];
+		//figdata ** tmp = static_cast<figdata**>
+		//	(malloc(sizeof(figdata*) * bmparrsize));
 		memcpy(tmp, bitmaps,
 		       sizeof(figdata*) * (bmparrsize - figallocchunk));
-		free(bitmaps);
+		delete[] bitmaps;
+		//free(bitmaps);
 		bitmaps = tmp;
 	}
 	figdata * p = new figdata;
@@ -938,7 +948,7 @@ static void getbitmaps()
 }
 
 
-static void RegisterFigure(InsetFig *fi)
+static void RegisterFigure(InsetFig * fi)
 {
 	if (figinsref == 0) InitFigures();
 	fi->form = 0;
@@ -946,11 +956,14 @@ static void RegisterFigure(InsetFig *fi)
 	if (figinsref > figarrsize) {
 		// allocate more space
 		figarrsize += figallocchunk;
-		Figref ** tmp = static_cast<Figref**>
-			(malloc(sizeof(Figref*)*figarrsize));
+		typedef Figref * Figref_p;
+		Figref ** tmp = new Figref_p[figarrsize];
+		//Figref ** tmp = static_cast<Figref**>
+		//	(malloc(sizeof(Figref*)*figarrsize));
 		memcpy(tmp, figures,
 		       sizeof(Figref*)*(figarrsize-figallocchunk));
-		free(figures);
+		delete[] figures;
+		//free(figures);
 		figures = tmp;
 	}
 	Figref * tmpfig = new Figref;
@@ -992,7 +1005,7 @@ static void UnregisterFigure(InsetFig * fi)
 #warning Reactivate this free_form calls
 #else
 		fl_free_form(tmpfig->inset->form->Figure);
-		free(tmpfig->inset->form);
+		free(tmpfig->inset->form); // Why free?
 		tmpfig->inset->form = 0;
 #endif
 	}
@@ -1926,7 +1939,7 @@ void InsetFig::CallbackFig(long arg)
 #warning Reactivate this free_form calls
 #else
 				fl_free_form(form->Figure);
-				free(form);
+				free(form); // Why free?
 				form = 0;
 #endif
 			}
@@ -1944,7 +1957,7 @@ void InsetFig::CallbackFig(long arg)
 #warning Jug, is this still a problem?
 #else
 		fl_free_form(form->Figure);
-		free(form);
+		free(form); // Why free?
 		form = 0;
 #endif
 		break;

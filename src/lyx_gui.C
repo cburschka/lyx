@@ -207,7 +207,6 @@ LyXGUI::~LyXGUI()
 	}
 
 	CloseLyXLookup();
-
 }
 
 

@@ -36,7 +36,9 @@ libsupport_la_SOURCES = \
 	lstrings.h \
 	lyxlib.h \
 	$(LYXSTRING) lyxsum.C \
+	mkdir.C \
 	path.h \
+	putenv.C \
 	$(REGEX) syscall.C \
 	syscall.h \
 	syscontr.C \

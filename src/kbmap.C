@@ -345,9 +345,6 @@ int kb_keymap::bind(char const * seq, int action)
 
 int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 {
-#ifndef NO_HASH
-	unsigned int hashval;
-#endif
 	unsigned int ksym, msk1, msk0;
 	kb_key * tab;
 
@@ -361,18 +358,7 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 		return -1;
 	}
 
-#ifndef NO_HASH
-	if(size < 0) {               // --- if hash table ---
-		hashval = ((key & 0xff) ^ ((key >> 8) & 0xff)) % KB_HASHSIZE;
-		tab = htable[hashval];
-		if(!tab) {
-			seq->curmap = seq->stdmap;
-			seq->delseq();
-			return -1;
-		}
-	} else                       // --- else: linear list ---
-#endif
-		tab = table;
+	tab = table;
 
 	// --- now search the list of keys ---
 
@@ -418,16 +404,7 @@ void kb_keymap::print(string & buf) const
 	if (!table) return;
    
 	// Process each of its slots recursively and return.
-#ifndef NO_HASH
-	if ( size < 0 ) {   // Hash table
-		for ( int ix = 0; ix < KB_HASHSIZE; ++ix ) {
-			if ( htable[ix] ) {
-				printKeyTab(htable[ix], buf);
-			}
-		}
-	} else // Normal table
-#endif
-		printKeyTab(table, buf);
+	printKeyTab(table, buf);
 }
 
 
@@ -456,19 +433,6 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 		tab   =  table;
 		ptab  = &table;
 		size  = KB_PREALLOC;
-#ifndef NO_HASH
-	} else if(size < 0) {
-		// Hash table.
-		int hashval = code & 0xffff;
-		hashval = ((hashval & 0xff) ^ ((hashval >> 8) & 0xff)) % KB_HASHSIZE;
-		tab  = htable[hashval];
-		ptab = htable+hashval;
-		if(!tab) {
-			tab = new kb_key[KB_PREALLOC];
-			tab[0].code = NoSymbol;
-			*ptab = tab;
-		}
-#endif
 	} else {
 		tab  =  table;
 		ptab = &table;
@@ -527,52 +491,6 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 	tab[tsize].mod  = modmsk;
 	kb_key * newone = &tab[tsize];
 	
-	// --- convert list to hash table if necessary ----------------------
-
-#ifndef NO_HASH
-	if(size >= 0 && tsize >= 32) {
-		kb_key * oldtab = tab;
-		kb_key ** nht = new kb_key*[KB_HASHSIZE];
-		for(int i = 0; i < KB_HASHSIZE; ++i)
-			nht[i] = 0;
-		htable = nht;
-		size   = -KB_HASHSIZE;
-		
-		// --- copy old keys to new hash table ---
-		int hashval;
-		for(kb_key * tu = oldtab; tu->code != NoSymbol; ++tu) {
-			// copy values from oldtab to htable
-			hashval = (tu->code & 0xffff);
-			hashval = ((hashval & 0xff) ^ ((hashval>>8) & 0xff)) % KB_HASHSIZE;
-			tab  = htable[hashval];
-			
-			if(!tab){
-				htable[hashval] = tab = new kb_key[KB_PREALLOC];
-				tab->code = NoSymbol;
-			}
-			int ts = 1;
-			for(kb_key * tt = tab; tt->code != NoSymbol; ++tt)
-				++ts;
-			if(ts % KB_PREALLOC == 0){
-				// extend table
-				kb_key * nt = new kb_key[ts+KB_PREALLOC];
-				memcpy(nt, tab, ts * sizeof(kb_key));
-				htable[hashval] = nt;
-				delete[] tab;
-				tab = nt;
-			}
-			tab[ts--].code = NoSymbol;
-			tab[ts].code   = tu->code;
-			tab[ts].mod    = tu->mod;
-			tab[ts].action = tu->action;
-			tab[ts].table  = tu->table;
-			
-			if(tu == newone)
-				newone = &tab[ts];
-		}
-		delete[] oldtab;
-	}
-#endif
 	// --- define rest of sequence --------------------------------------
 
 	if(idx+1 == seq->length) {
@@ -598,27 +516,10 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 kb_keymap::~kb_keymap()
 {
 	if(!table) return;
-#ifndef NO_HASH
-	if(size < 0) {
-		for(int i = 0; i < KB_HASHSIZE; ++i) {
-			if(htable[i]) {
-				for(kb_key * t = htable[i];
-				    t->code != NoSymbol; ++t)
-					if(t->table)
-						delete t->table;
-				delete htable[i];
-			}
-		}
-		delete htable;
-	} else {
-#endif
-		for(kb_key * t = table; t->code != NoSymbol; ++t)
-			if(t->table)
-				delete t->table;
-		delete table;
-#ifndef NO_HASH
-	}
-#endif
+	for(kb_key * t = table; t->code != NoSymbol; ++t)
+		if(t->table)
+			delete t->table;
+	delete table;
 }
 
 
@@ -636,44 +537,19 @@ string kb_keymap::findbinding(int act) const
 	string res;
 	if (!table) return res;
 
-#ifndef NO_HASH
-	if (size < 0) {
-		for(int i = 0; i < KB_HASHSIZE; ++i) {
-			if(htable[i]) {
-				for(kb_key * t = htable[i];
-				    t->code != NoSymbol; ++t) {
-					if(t->table) {
-						string suffix = t->table->findbinding(act);
-						suffix = strip(suffix, ' ');
-						suffix = strip(suffix, ']');
-						suffix = frontStrip(suffix, '[');
-						if (!suffix.empty()) {
-							res += "[" + keyname(*t) + " " + suffix + "] ";
-						}
-					} else if (t->action == act) {
-						res += "[" + keyname(*t) + "] ";
-					}
-				}
+	for(kb_key * t = table; t->code != NoSymbol; ++t) {
+		if(t->table) {
+			string suffix = t->table->findbinding(act);
+			suffix = strip(suffix, ' ');
+			suffix = strip(suffix, ']');
+			suffix = frontStrip(suffix, '[');
+			if (!suffix.empty()) {
+				res += "[" + keyname(*t) + " " + suffix + "] ";
 			}
+		} else if (t->action == act) {
+			res += "[" + keyname(*t) + "] ";
 		}
-	} else {
-#endif
-		for(kb_key * t = table; t->code != NoSymbol; ++t) {
-			if(t->table) {
-				string suffix = t->table->findbinding(act);
-				suffix = strip(suffix, ' ');
-				suffix = strip(suffix, ']');
-				suffix = frontStrip(suffix, '[');
-				if (!suffix.empty()) {
-					res += "[" + keyname(*t) + " " + suffix + "] ";
-				}
-			} else if (t->action == act) {
-				res += "[" + keyname(*t) + "] ";
-			}
-		}
-#ifndef NO_HASH
 	}
-#endif
 	return res;
 }
 

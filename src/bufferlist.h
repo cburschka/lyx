@@ -36,6 +36,8 @@ public:
 	///
 	typedef Container::iterator iterator;
 	///
+	typedef Container::const_iterator const_iterator;
+	///
 	bool empty() const { return container.empty(); }
 	///
 	void release(Buffer * buf);
@@ -45,6 +47,10 @@ public:
 	Container::iterator begin() { return container.begin(); }
 	///
 	Container::iterator end() { return container.end(); }
+	///
+	Container::const_iterator begin() const { return container.begin(); }
+	///
+	Container::const_iterator end() const { return container.end(); }
 	///
 	Buffer * front() { return container.front(); }
 	///
@@ -76,7 +82,7 @@ public:
 	};
 
 	/// returns the state of the bufferlist
-	list_state getState() { return _state; }
+	list_state getState() { return state_; }
 	
 	/** loads a LyX file or...
 	    If the optional argument tolastfiles is false (default is
@@ -106,11 +112,9 @@ public:
 
 	/// Make a new file (buffer) using a template
 	Buffer * newFile(string const &, string);
-
-	/** This one must be moved to some other place.
-	 */
-	void makePup(int);
-
+	/// returns a vector with all the buffers filenames
+	vector<string> getFileNames() const;
+	
 	///
 	void updateInset(Inset *, bool = true);
 
@@ -144,7 +148,7 @@ private:
 	BufferStorage bstore;
 	
 	///
-	list_state _state;
+	list_state state_;
 };
 
 #endif
