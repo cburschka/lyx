@@ -42,10 +42,13 @@ What's new
 - fix a crash in the math editor when selecting up/down close to
   subscript insets
 
+- enable the file dialog to open files with non-latin filenames [Qt only]
+
+- allow to use some paper sizes (A3, B3, B4, and custom) without
+  custom margins [Qt problem only]. 
+
 - add debug output if unable to open an ofstream to output the graphics
   conversion script.
-
-- enable the file dialog to open files with non-latin filenames [Qt only]
 
 - fix installation problem when the program makepsres does not exist
 
@@ -58,4 +61,4 @@ What's new
 
 - compilation fixes for MacOSX
 
-
+- fix problems with non-GNU make program
