@@ -27,7 +27,6 @@
 #endif
 
 #include "menus.h"
-#include "lyx_cb.h"
 #include "version.h"
 #include "lyxfont.h"
 #include "lyx_main.h"

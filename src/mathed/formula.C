@@ -27,7 +27,6 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "lyx_main.h"
-#include "lyx_cb.h"
 #include "minibuffer.h"
 #include "BufferView.h"
 #include "lyxtext.h"
@@ -38,8 +37,6 @@
 #include "support/LOstream.h"
 #include "LyXView.h"
 #include "Painter.h"
-
-extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
 extern char * mathed_label;
 
@@ -460,7 +457,7 @@ void InsetFormula::Edit(BufferView * bv, int x, int y)
    mathcursor = new MathedCursor(par);
    bv->lockInset(this);
    par->Metrics();
-   UpdateInset(bv, this, false);
+   bv->updateInset(this, false);
    x += par->xo; 
    y += par->yo; 
    mathcursor->SetPos(x, y);
@@ -479,7 +476,7 @@ void InsetFormula::InsetUnlock(BufferView * bv)
      delete mathcursor;
    }
    mathcursor = 0;
-   UpdateInset(bv, this, false);
+   bv->updateInset(this, false);
 }
 
 
@@ -558,7 +555,7 @@ void InsetFormula::ToggleInsetSelection(BufferView * bv)
 //    x -= par->xo; 
 //    y -= par->yo;
 
-    UpdateInset(bv, this, false);
+    bv->updateInset(this, false);
       
 }
 
@@ -637,7 +634,7 @@ void InsetFormula::UpdateLocal(BufferView * bv)
 {
    par->Metrics();  // To inform lyx kernel the exact size 
                   // (there were problems with arrays).
-   UpdateInset(bv, this);
+   bv->updateInset(this, true);
 }
 
 
@@ -652,7 +649,7 @@ void InsetFormula::InsetButtonRelease(BufferView * bv,
     if (sel_flag) {
 	sel_flag = false; 
 	sel_x = sel_y = 0;
-	UpdateInset(bv, this, false); 
+	bv->updateInset(this, false); 
     }
 }
 
@@ -664,7 +661,7 @@ void InsetFormula::InsetButtonPress(BufferView * bv,
     sel_x = x;  sel_y = y; 
     if (mathcursor->Selection()) {
 	mathcursor->SelClear();
-	UpdateInset(bv, this, false); 
+	bv->updateInset(this, false); 
     }
 }
 
@@ -688,7 +685,7 @@ void InsetFormula::InsetMotionNotify(BufferView * bv,
 	  ShowInsetCursor(bv);
 	  mathcursor->GetPos(x, y);
 	  if (sel_x!= x || sel_y!= y)
-	    UpdateInset(bv, this, false); 
+	    bv->updateInset(this, false); 
 	  sel_x = x;  sel_y = y;
       }
 }
@@ -788,7 +785,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
 	 break;
        
        if (!mathcursor->InMacroMode() && mathcursor->pullArg()) {       
-	   UpdateInset(bv, this);
+	   bv->updateInset(this, true);
 	   break;
        }
       
@@ -796,7 +793,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
 	    //current_view->lockedInsetStoreUndo(Undo::INSERT);
 	    bv->lockedInsetStoreUndo(Undo::DELETE);
       mathcursor->Delete();       
-      UpdateInset(bv, this);
+      bv->updateInset(this, true);
       break;    
 //    case LFUN_GETXY:
 //      sprintf(dispatch_buffer, "%d %d",);

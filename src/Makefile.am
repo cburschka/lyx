@@ -55,6 +55,8 @@ lyx_SOURCES = \
 	TableLayout.C \
 	TextCache.C \
 	TextCache.h \
+	UpdateInset.C \
+	UpdateInset.h \
 	WorkArea.C \
 	WorkArea.h \
 	bibforms.h \

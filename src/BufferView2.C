@@ -748,3 +748,37 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 		      text->cursor.par->
 		      ParFromPos(text->cursor.pos)->next);
 }
+
+
+void BufferView::updateInset(Inset * inset, bool mark_dirty)
+{
+	if (!inset)
+		return;
+
+	// first check for locking insets
+	if (the_locking_inset == inset) {
+		if (text->UpdateInset(inset)){
+			update();
+			if (mark_dirty){
+				if (buffer()->isLyxClean())
+					owner()->getMiniBuffer()->setTimer(4);
+				buffer()->markDirty();
+			}
+			updateScrollbar();
+			return;
+		}
+	}
+  
+	// then check the current buffer
+	if (available()) {
+		hideCursor();
+		update(-3);
+		if (text->UpdateInset(inset)){
+			if (mark_dirty)
+				update(1);
+			else 
+				update(3);
+			return;
+		}
+	}
+}

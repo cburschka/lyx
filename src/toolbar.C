@@ -27,7 +27,6 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "combox.h"
-#include "lyx_cb.h"
 #include "LyXView.h"
 #include "LyXAction.h"
 #include "support/lstrings.h"

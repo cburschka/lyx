@@ -487,7 +487,7 @@ private:
 	mutable Row * firstrow;
 	///
 	mutable Row * lastrow;
-
+	
 	/** Copybuffer for copy environment type
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters
@@ -566,6 +566,7 @@ private:
 
 	///
 	LyXParagraph::size_type BeginningOfMainBody(LyXParagraph * par) const;
+	
 	/** Returns the left beginning of the text.
 	  This information cannot be taken from the layouts-objekt, because
 	  in LaTeX the beginning of the text fits in some cases

@@ -14,8 +14,6 @@
 #include "LaTeXFeatures.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 
-extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
-
 
 InsetUrl::InsetUrl(string const & cmd)
 	: fd_form_url(0)
@@ -94,7 +92,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 			inset->flag = InsetUrl::URL;
 		else
 			inset->flag = InsetUrl::HTML_URL;
-		UpdateInset(bv, inset);
+		bv->updateInset(inset, true);
 	}
 	
 	if (inset->fd_form_url) {

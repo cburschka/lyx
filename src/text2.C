@@ -25,7 +25,6 @@
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"
-#include "lyx_cb.h"
 #include "undo.h"
 #include "minibuffer.h"
 #include "buffer.h"
@@ -58,11 +57,12 @@ LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 	current_font = GetFont(par, 0);
    
 	height = 0;
-   
+
 	while (par) {
 		InsertParagraph(par, lastrow);
 		par = par->Next();
 	}
+
 	// set cursor at the very top position
 	selection = true;	    /* these setting is necessary 
 				       because of the delete-empty-
@@ -244,8 +244,7 @@ void LyXText::InsertRow(Row * row, LyXParagraph * par,
 		tmprow->previous = 0;
 		tmprow->next = firstrow;
 		firstrow = tmprow;
-	}
-	else {
+	} else {
 		tmprow->previous = row;
 		tmprow->next = row->next;
 		row->next = tmprow;
@@ -260,7 +259,7 @@ void LyXText::InsertRow(Row * row, LyXParagraph * par,
    
 	tmprow->par = par;
 	tmprow->pos = pos;
-   
+
 	if (row == lastrow)
 		lastrow = tmprow;
 	++number_of_rows; // one more row
@@ -285,8 +284,7 @@ void LyXText::RemoveRow(Row * row) const
 		row->next->previous = row->previous;
 	if (!row->previous) {
 		firstrow = row->next;
-	}
-	else  {
+	} else  {
 		row->previous->next = row->next;
 	}
 	if (row == lastrow)
@@ -313,7 +311,7 @@ void LyXText::RemoveParagraph(Row * row) const
 	}
 }
    
-  
+
 // insert the specified paragraph behind the specified row
 void LyXText::InsertParagraph(LyXParagraph * par, Row * row) const
 {
@@ -326,8 +324,7 @@ void LyXText::InsertParagraph(LyXParagraph * par, Row * row) const
 	if (!row) {
 		firstrow->height = 0;
 		AppendParagraph(firstrow);
-	}
-	else {
+	} else {
 		row->next->height = 0;
 		AppendParagraph(row->next);
 	}

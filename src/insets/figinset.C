@@ -69,9 +69,7 @@ extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
 
 extern char ** environ; // is this only redundtant on linux systems? Lgb.
-extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
-// better for asyncron updating:
-void PutInsetIntoInsetUpdateList(Inset * inset);
+
 extern void ProhibitInput();
 extern void AllowInput();
 
@@ -405,11 +403,6 @@ void InitFigures()
 	fl_add_canvas_handler(figinset_canvas, ClientMessage,
 			      GhostscriptMsg, current_view->owner()->getMainForm());
 
-#if 0
-	// now we have to init color_map
-	if (!color_map) color_map = DefaultColormap(fl_display,
-						    DefaultScreen(fl_display));
-#endif
 	// allocate color cube on pseudo-color display
 	// first get visual
 	gs_color = false;
@@ -451,15 +444,6 @@ void DoneFigures()
 
 	fl_remove_canvas_handler(figinset_canvas, ClientMessage,
 				 GhostscriptMsg);
-
-#if 0
-	if (gs_color) {
-		lyxerr.debug() << "Freeing up the colors..." << endl;
-		XFreeColors(fl_display, color_map, gs_pixels,
-			    gs_num_pixels, 0);
-		/******????????????????? what's planes in this case ??????***/
-	}
-#endif
 }
 
 
@@ -805,13 +789,15 @@ static figdata * getfigdata(int wid, int hgh, string const & fname,
 }
 
 
-static void getbitmap(figdata * p)
+static
+void getbitmap(figdata * p)
 {
 	p->gspid = -1;
 }
 
 
-static void makeupdatelist(figdata * p)
+static
+void makeupdatelist(figdata * p)
 {
 	for (int i = 0; i < figinsref; ++i)
 		if (figures[i]->data == p) {
@@ -821,7 +807,9 @@ static void makeupdatelist(figdata * p)
 				       << endl;
 			}
 			// add inset figures[i]->inset into to_update list
-			PutInsetIntoInsetUpdateList(figures[i]->inset);
+			current_view->pushIntoUpdateList(figures[i]->inset);
+			
+			//PutInsetIntoInsetUpdateList(figures[i]->inset);
 		}
 }
 
@@ -1891,7 +1879,7 @@ void InsetFig::CallbackFig(long arg)
 				lyxerr << "Update: ["
 				       << wid << 'x' << hgh << ']' << endl;
 			}
-			UpdateInset(current_view, this);
+			current_view->updateInset(this, true);
 			if (arg == 8) {
 				fl_set_focus_object(form->Figure, form->OkBtn);
 				fl_hide_form(form->Figure);

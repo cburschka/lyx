@@ -34,7 +34,6 @@
 #include "lyxrc.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"
-#include "lyx_cb.h"
 #include "lyxlookup.h"
 #include "bufferlist.h"
 

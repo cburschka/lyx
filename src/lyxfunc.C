@@ -120,8 +120,6 @@ extern int getISOCodeFromLaTeX(char *);
 
 extern void ShowLatexLog();
 
-extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
-
 /* === globals =========================================================== */
 
 bool LyXFunc::show_sc = true;
@@ -660,22 +658,6 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_CENTER: // this is center and redraw.
 		owner->view()->center();
-#if 0
-		owner->view()->beforeChange();
-		if (owner->view()->text->cursor.y >
-		    owner->view()->getWorkArea()->height() / 2)
-			{
-			owner->view()->getScreen()->
-				Draw(owner->view()->text->cursor.y -
-				     owner->view()->getWorkArea()->height() / 2
-					);
-		} else { // <= 
-			owner->view()->getScreen()->
-				Draw(0);
-		}
-		owner->view()->update(0);
-		owner->view()->redraw();
-#endif
 		break;
 		
 	case LFUN_APPENDIX:
@@ -1249,7 +1231,7 @@ string LyXFunc::Dispatch(int ac,
 				inset->setFlag(InsetRef::PAGE_REF);
 			else
 				inset->setFlag(InsetRef::REF);
-			UpdateInset(owner->view(), inset);
+			owner->view()->updateInset(inset, true);
 		} else {
 			setErrorMessage(N_("No cross-reference to toggle"));
 		}

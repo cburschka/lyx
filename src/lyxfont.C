@@ -99,40 +99,43 @@ string const LaTeXSizeNames[14] =
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
-#ifdef NEW_BITS
-LyXFont::FontBits LyXFont::sane = { ROMAN_FAMILY,
-		  MEDIUM_SERIES,
-		  UP_SHAPE,
-		  SIZE_NORMAL,
-		  LColor::none,
-		  OFF,
-		  OFF,
-		  OFF,
-		  OFF,
-		  LTR_DIR };
 
-LyXFont::FontBits LyXFont::inherit = { INHERIT_FAMILY, 
-		      INHERIT_SERIES, 
-		      INHERIT_SHAPE, 
-		      INHERIT_SIZE,
-		      LColor::inherit,
-		      INHERIT,
-		      INHERIT,
-		      INHERIT,
-		      INHERIT,
-		      INHERIT_DIR };
+LyXFont::FontBits LyXFont::sane = {
+	ROMAN_FAMILY,
+	MEDIUM_SERIES,
+	UP_SHAPE,
+	SIZE_NORMAL,
+	LColor::none,
+	OFF,
+	OFF,
+	OFF,
+	OFF,
+	LTR_DIR };
 
-LyXFont::FontBits LyXFont::ignore = { IGNORE_FAMILY,
-		     IGNORE_SERIES,
-		     IGNORE_SHAPE,
-		     IGNORE_SIZE,
-		     LColor::ignore,
-		     IGNORE,
-		     IGNORE,
-		     IGNORE,
-		     IGNORE,
-		     IGNORE_DIR };
-#endif
+LyXFont::FontBits LyXFont::inherit = {
+	INHERIT_FAMILY,
+	INHERIT_SERIES,
+	INHERIT_SHAPE,
+	INHERIT_SIZE,
+	LColor::inherit,
+	INHERIT,
+	INHERIT,
+	INHERIT,
+	INHERIT,
+	INHERIT_DIR };
+
+LyXFont::FontBits LyXFont::ignore = {
+	IGNORE_FAMILY,
+	IGNORE_SERIES,
+	IGNORE_SHAPE,
+	IGNORE_SIZE,
+	LColor::ignore,
+	IGNORE,
+	IGNORE,
+	IGNORE,
+	IGNORE,
+	IGNORE_DIR };
+
 
 /// Decreases font size by one
 LyXFont & LyXFont::decSize() 
@@ -312,8 +315,6 @@ void LyXFont::reduce(LyXFont const & tmplt)
 
 
 /// Realize font from a template
-// This one is not pretty, but it's extremely fast (Asger)
-#ifdef NEW_BITS
 LyXFont & LyXFont::realize(LyXFont const & tmplt)
 {
 	if (bits == inherit) {
@@ -354,68 +355,6 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 
 	return *this;
 }
-#else
-LyXFont & LyXFont::realize(LyXFont const & tmplt)
-{
-	if (bits == inherit) {
-		bits = tmplt.bits;
-		return *this;
-	}
-
-	if ((bits & (Fam_Mask<<Fam_Pos)) == (ui32(INHERIT_FAMILY)<<Fam_Pos))
-		{
-			bits &= ~(Fam_Mask << Fam_Pos);
-			bits |= (tmplt.bits & Fam_Mask << Fam_Pos);
-		}
-	if ((bits & (Ser_Mask<<Ser_Pos)) == (ui32(INHERIT_SERIES)<<Ser_Pos))
-		{
-			bits &= ~(Ser_Mask << Ser_Pos);
-			bits |= (tmplt.bits & Ser_Mask << Ser_Pos);
-		}
-	if ((bits & (Sha_Mask << Sha_Pos)) == ui32(INHERIT_SHAPE) << Sha_Pos)
-		{
-			bits &= ~(Sha_Mask << Sha_Pos);
-			bits |= (tmplt.bits & Sha_Mask << Sha_Pos);
-		}
-	if ((bits & (Siz_Mask << Siz_Pos)) == ui32(INHERIT_SIZE) << Siz_Pos)
-		{
-			bits &= ~(Siz_Mask << Siz_Pos);
-			bits |= (tmplt.bits & Siz_Mask << Siz_Pos);
-		}
-	if ((bits & (Misc_Mask << Emp_Pos)) == ui32(INHERIT) << Emp_Pos)
-		{
-			bits &= ~(Misc_Mask << Emp_Pos);
-			bits |= (tmplt.bits & Misc_Mask << Emp_Pos);
-		}
-	if ((bits & (Misc_Mask << Und_Pos)) == ui32(INHERIT) << Und_Pos)
-		{
-			bits &= ~(Misc_Mask << Und_Pos);
-			bits |= (tmplt.bits & Misc_Mask << Und_Pos);
-		}
-	if ((bits & (Misc_Mask << Nou_Pos)) == ui32(INHERIT) << Nou_Pos)
-		{
-			bits &= ~(Misc_Mask << Nou_Pos);
-			bits |= (tmplt.bits & Misc_Mask << Nou_Pos);
-		}
-	if ((bits & (Misc_Mask << Lat_Pos)) == ui32(INHERIT) << Lat_Pos)
-		{
-			bits &= ~(Misc_Mask << Lat_Pos);
-			bits |= (tmplt.bits & Misc_Mask << Lat_Pos);
-		}
-	if ((bits & (Col_Mask << Col_Pos)) == ui32(LColor::inherit) << Col_Pos)
-		{
-			bits &= ~(Col_Mask << Col_Pos);
-			bits |= (tmplt.bits & Col_Mask << Col_Pos);
-		}
-	if ((bits & (Dir_Mask << Dir_Pos)) == ui32(INHERIT_DIR) << Dir_Pos)
-		{
-			bits &= ~(Dir_Mask << Dir_Pos);
-			bits |= (tmplt.bits & Dir_Mask << Dir_Pos);
-		}
-
-	return *this;
-}
-#endif
 
 
 /// Is font resolved?

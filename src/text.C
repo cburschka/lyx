@@ -4395,32 +4395,44 @@ Row * LyXText::GetRow(LyXParagraph * par,
 		      LyXParagraph::size_type pos, long & y) const
 {
 	Row * tmprow;
-	
+
 	if (currentrow) {
-		if (par == currentrow->par || par == currentrow->par->Previous()) {
+		if (par == currentrow->par
+		    || par == currentrow->par->Previous()) {
 			// do not dereference par, it may have been deleted
-			// already! (Matthias) 
-			while (currentrow->previous && currentrow->previous->par != par) {
+			// already! (Matthias)
+
+			// Walk backwards as long as the previous
+			// rows par is not par
+			while (currentrow->previous
+			       && currentrow->previous->par != par) {
 				currentrow = currentrow->previous;
 				currentrow_y -= currentrow->height;
 			}
-			while (currentrow->previous && currentrow->previous->par == par) {
+			// Walk backwards as long as the previous
+			// rows par _is_ par
+			while (currentrow->previous
+			       && currentrow->previous->par == par) {
 				currentrow = currentrow->previous;
 				currentrow_y -= currentrow->height;
 			}
 		}
+
 		tmprow = currentrow;
 		y = currentrow_y;
 		// find the first row of the specified paragraph
-		while (tmprow->next && (tmprow->par != par)) {
+		while (tmprow->next
+		       && tmprow->par != par) {
 			y += tmprow->height;
 			tmprow = tmprow->next;
 		}
 		
 		if (tmprow->par == par){
 			// now find the wanted row
-			while (tmprow->pos < pos && tmprow->next && tmprow->next->par == par && 
-			       tmprow->next->pos <= pos) {
+			while (tmprow->pos < pos
+			       && tmprow->next
+			       && tmprow->next->par == par
+			       && tmprow->next->pos <= pos) {
 				y += tmprow->height;
 				tmprow = tmprow->next;
 			}
@@ -4429,17 +4441,20 @@ Row * LyXText::GetRow(LyXParagraph * par,
 			return tmprow;
 		}
 	}
+
 	tmprow = firstrow;
 	y = 0;
 	// find the first row of the specified paragraph
-	while (tmprow->next && (tmprow->par != par)) {
+	while (tmprow->next && tmprow->par != par) {
 		y += tmprow->height;
 		tmprow = tmprow->next;
 	}
 	
 	// now find the wanted row
-	while (tmprow->pos < pos && tmprow->next && tmprow->next->par == par && 
-	       tmprow->next->pos <= pos) {
+	while (tmprow->pos < pos
+	       && tmprow->next
+	       && tmprow->next->par == par
+	       && tmprow->next->pos <= pos) {
 		y += tmprow->height;
 		tmprow = tmprow->next;
 	}

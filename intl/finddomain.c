@@ -63,6 +63,7 @@ void free ();
 
 /* @@ end of prolog @@ */
 /* List of already loaded domains.  */
+
 static struct loaded_l10nfile *_nl_loaded_domains;
 
 

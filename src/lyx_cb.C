@@ -144,7 +144,8 @@ bool toggleall = true;
                   Matthias
    */
 
-void UpdateInset(BufferView * bv, Inset * inset, bool mark_dirty = true);
+//void UpdateInset(BufferView * bv, Inset * inset, bool mark_dirty = true);
+
 /* these functions return 1 if an error occured, 
    otherwise 0 */
 // Now they work only for updatable insets. [Alejandro 080596]
@@ -156,10 +157,10 @@ void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
 
 /* this is for asyncron updating. UpdateInsetUpdateList will be called
    automatically from LyX. Just insert the Inset into the Updatelist */
-void UpdateInsetUpdateList();
-void PutInsetIntoInsetUpdateList(Inset * inset);
+//void UpdateInsetUpdateList();
+//void PutInsetIntoInsetUpdateList(Inset * inset);
 
-InsetUpdateStruct * InsetUpdateList = 0;
+//InsetUpdateStruct * InsetUpdateList = 0;
 
 
 /*
@@ -242,11 +243,11 @@ void AllowInput()
 	if (fd_form_character->form_character->visible)
 		XUndefineCursor(fl_display,
 				fd_form_character->form_character->window);
-#if 0
+
 	// What to do about this? (Lgb)
-	if (current_view->getWorkArea()->belowmouse)
+	if (current_view->belowMouse())
 		SetXtermCursor(current_view->owner()->getForm()->window);
-#endif
+
 	XFlush(fl_display);
 	fl_activate_all_forms();
 }
@@ -3537,74 +3538,6 @@ extern "C" void RefHideCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_ref->form_ref);
 }
-
-
-// candidate for move to BufferView
-void UpdateInset(BufferView * bv, Inset * inset, bool mark_dirty)
-{
-	if (!inset)
-		return;
-
-	/* very first check for locking insets*/
-	if (bv->the_locking_inset == inset) {
-		if (bv->text->UpdateInset(inset)){
-			bv->update();
-			if (mark_dirty){
-				if (bv->buffer()->isLyxClean())
-					bv->owner()->getMiniBuffer()->setTimer(4);
-				bv->buffer()->markDirty();
-			}
-			bv->updateScrollbar();
-			return;
-		}
-	}
-  
-	/* first check the current buffer */
-	if (bv->available()) {
-		bv->hideCursor();
-		bv->update(-3);
-		if (bv->text->UpdateInset(inset)){
-			if (mark_dirty)
-				bv->update(1);
-			else 
-				bv->update(3);
-			return;
-		}
-	}
-  
-	// check all buffers
-	bufferlist.updateInset(inset, mark_dirty);
-
-}
-
-
-void PutInsetIntoInsetUpdateList(Inset * inset)
-{
-	Assert(inset);
-	InsetUpdateStruct * tmp = new InsetUpdateStruct();
-	tmp->inset = inset;
-	tmp->next = InsetUpdateList;
-	InsetUpdateList = tmp;
-}
-
-
-void UpdateInsetUpdateList()
-{
-	InsetUpdateStruct * tmp = InsetUpdateList;
-	while (tmp) {
-		UpdateInset(current_view, tmp->inset, false); // "false" because no document change
-		tmp = tmp->next;
-	}
-  
-	// delete the update list
-	while (InsetUpdateList) {
-		tmp = InsetUpdateList;
-		InsetUpdateList = InsetUpdateList->next;
-		delete tmp;
-	}
-	InsetUpdateList = 0;
-}
-
 
 #ifdef WITH_WARNINGS
 #warning UGLY!!

@@ -37,8 +37,6 @@
 
 class LyXLex;
 
-#define NEW_BITS 1
-
 ///
 class LyXFont {
 public:
@@ -372,7 +370,6 @@ public:
 	bool equalExceptLatex(LyXFont const &) const;
 
 private:
-#ifdef NEW_BITS
 	///
 	struct FontBits {
 		bool operator==(FontBits const & fb1) const {
@@ -402,89 +399,9 @@ private:
 		FONT_MISC_STATE latex;
 		FONT_DIRECTION direction;
 	};
-#else
-	/// This have to be at least 32 bits, but 64 or more does not hurt
-	typedef unsigned int ui32;
-#endif
 
-	/** Representation: bit table
-	    Layout of bit table:
-	        11 1111 111 122 222 222 2233
-	    Bit 012 34 567 8901 2345 678 901 234 567 8901
-	        FFF SS SSS SSSS CCCC EEE UUU NNN LLL
-	        aaa ee hhh iiii oooo mmm nnn ooo aaa
-	        mmm rr aaa zzzz llll ppp ddd uuu ttt
-
-	    Bit 76543210 76543210 76543210 76543210
-                                                --- Fam_Pos
-					      --    Ser_Pos
-					   ---      Sha_Pos
-	 			      ----          Siz_Pos
-				  ----              Col_Pos
-			      ---                   Emp_Pos
-			   ---                      Und_Pos
-		       - --                         Nou_Pos
-		    ---                             Lat_Pos
-		----                                Dir_Pos
-		
-	    Some might think this is a dirty representation, but it gives
-	    us at least 25% speed-up, so why not? (Asger)
-
-	    First of all it is a maintence nightmare...and now that we need
-	    to enlarge the Color bits with 2 (from 4 to 6), we have a problem
-	    since a 32 bit entity is not large enough... (Lgb)
-	*/
-
-#ifdef NEW_BITS
 	FontBits bits;
-#else
-	ui32 bits;
 	
-	///
-	enum FONT_POSITION {
-		///
-		Fam_Pos =  0,
-		///
-		Ser_Pos =  3,
-		///
-		Sha_Pos =  5,
-		///
-		Siz_Pos =  8,
-		///
-		Col_Pos = 12,
-		///
-		Emp_Pos = 16,
-		///
-		Und_Pos = 19,
-		///
-		Nou_Pos = 22,
-		///
-		Lat_Pos = 25,
-		///
-		Dir_Pos = 28
-	};
-
-	///
-	enum FONT_MASK {
-		///
-		Fam_Mask = 0x07,
-		///
-		Ser_Mask = 0x03,
-		///
-		Sha_Mask = 0x07,
-		///
-		Siz_Mask = 0x0f,
-		///
-		Col_Mask = 0x0f,
-		///
-		Dir_Mask = 0x07,
-		///
-		Misc_Mask = 0x07
-	};
-#endif
-
-	
-#ifdef NEW_BITS
 	/// Sane font
 	static FontBits sane;
 	
@@ -494,43 +411,6 @@ private:
 	/// All ignore font
 	static FontBits ignore;
 
-#else
-	/// Sane font
-	enum {	sane = ui32(ROMAN_FAMILY) << Fam_Pos
-		| ui32(MEDIUM_SERIES) << Ser_Pos
-		| ui32(UP_SHAPE) << Sha_Pos
-		| ui32(SIZE_NORMAL) << Siz_Pos
-		| ui32(LColor::none) << Col_Pos
-		| ui32(OFF) << Emp_Pos
-		| ui32(OFF) << Und_Pos
-		| ui32(OFF) << Nou_Pos
-		| ui32(OFF) << Lat_Pos
-		| ui32(LTR_DIR) << Dir_Pos};
-	
-	/// All inherit font
-	enum{ inherit = ui32(INHERIT_FAMILY) << Fam_Pos
-		      | ui32(INHERIT_SERIES) << Ser_Pos
-		      | ui32(INHERIT_SHAPE) << Sha_Pos
-		      | ui32(INHERIT_SIZE) << Siz_Pos
-		      | ui32(LColor::inherit) << Col_Pos
-		      | ui32(INHERIT) << Emp_Pos
-		      | ui32(INHERIT) << Und_Pos
-		      | ui32(INHERIT) << Nou_Pos
-		      | ui32(INHERIT) << Lat_Pos
-		      | ui32(INHERIT_DIR) << Dir_Pos};
- 
-	/// All ignore font
-	enum{ ignore = ui32(IGNORE_FAMILY) << Fam_Pos
-		      | ui32(IGNORE_SERIES) << Ser_Pos
-		      | ui32(IGNORE_SHAPE) << Sha_Pos
-		      | ui32(IGNORE_SIZE) << Siz_Pos
-		      | ui32(LColor::ignore) << Col_Pos
-		      | ui32(IGNORE) << Emp_Pos
-		      | ui32(IGNORE) << Und_Pos
-		      | ui32(IGNORE) << Nou_Pos
-		      | ui32(IGNORE) << Lat_Pos
-		      | ui32(IGNORE_DIR) << Dir_Pos};
-#endif
 	/// Updates a misc setting according to request
 	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
 					 LyXFont::FONT_MISC_STATE org);
@@ -580,11 +460,6 @@ inline LyXFont & LyXFont::operator=(LyXFont const & x)
 	return *this;
 }
 
-
-#ifdef NEW_BITS
-// You don't have to understand the stuff below :-)
-// It works, and it's bloody fast. (Asger)
-// And impossible to work with. (Lgb)
 
 inline
 LyXFont::FONT_FAMILY LyXFont::family() const 
@@ -732,147 +607,5 @@ LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
 	bits.direction = d;
 	return *this;
 }
-#else
-// You don't have to understand the stuff below :-)
-// It works, and it's bloody fast. (Asger)
-// And impossible to work with. (Lgb)
-
-inline LyXFont::FONT_FAMILY LyXFont::family() const 
-{
-	return LyXFont::FONT_FAMILY((bits >> Fam_Pos) & Fam_Mask);
-}
-
-
-inline LyXFont::FONT_SERIES LyXFont::series() const
-{
-	return LyXFont::FONT_SERIES((bits >> Ser_Pos) & Ser_Mask);
-}
-
-
-inline LyXFont::FONT_SHAPE LyXFont::shape() const
-{
-	return LyXFont::FONT_SHAPE((bits >> Sha_Pos) & Sha_Mask);
-}
-
-
-inline LyXFont::FONT_SIZE LyXFont::size() const
-{
-	return LyXFont::FONT_SIZE((bits >> Siz_Pos) & Siz_Mask);
-}
-
-
-inline LyXFont::FONT_MISC_STATE LyXFont::emph() const
-{
-	return LyXFont::FONT_MISC_STATE((bits >> Emp_Pos) & Misc_Mask);
-}
-
-
-inline LyXFont::FONT_MISC_STATE LyXFont::underbar() const
-{
-	return LyXFont::FONT_MISC_STATE((bits >> Und_Pos) & Misc_Mask);
-}
-
-
-inline LyXFont::FONT_MISC_STATE LyXFont::noun() const
-{
-	return LyXFont::FONT_MISC_STATE((bits >> Nou_Pos) & Misc_Mask);
-}
-
-
-inline LyXFont::FONT_MISC_STATE LyXFont::latex() const 
-{
-	return LyXFont::FONT_MISC_STATE((bits >> Lat_Pos) & Misc_Mask);
-}
-
-
-inline LColor::color LyXFont::color() const 
-{
-	return LColor::color((bits >> Col_Pos) & Col_Mask);
-}
-
-
-inline LyXFont::FONT_DIRECTION LyXFont::direction() const 
-{
-	return LyXFont::FONT_DIRECTION((bits >> Dir_Pos) & Dir_Mask);
-}
-
-inline LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
-{
-	bits &= ~(Fam_Mask << Fam_Pos);
-	bits |= ui32(f) << Fam_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setSeries(LyXFont::FONT_SERIES s)
-{
-	bits &= ~(Ser_Mask << Ser_Pos);
-	bits |= ui32(s) << Ser_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setShape(LyXFont::FONT_SHAPE s)
-{
-	bits &= ~(Sha_Mask << Sha_Pos);
-	bits |= ui32(s) << Sha_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setSize(LyXFont::FONT_SIZE s)
-{
-	bits &= ~(Siz_Mask << Siz_Pos);
-	bits |= ui32(s) << Siz_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
-{
-	bits &= ~(Misc_Mask << Emp_Pos);
-	bits |= ui32(e) << Emp_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
-{
-	bits &= ~(Misc_Mask << Und_Pos);
-	bits |= ui32(u) << Und_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
-{
-	bits &= ~(Misc_Mask << Nou_Pos);
-	bits |= ui32(n) << Nou_Pos;
-	return *this;
-}
-
-inline LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
-{
-	bits &= ~(Misc_Mask << Lat_Pos);
-	bits |= ui32(l) << Lat_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setColor(LColor::color c)
-{
-	bits &= ~(Col_Mask << Col_Pos);
-	bits |= ui32(c) << Col_Pos;
-	return *this;
-}
-
-
-inline LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
-{
-	bits &= ~(Dir_Mask << Dir_Pos);
-	bits |= ui32(d) << Dir_Pos;
-	return *this;
-}
-#endif
 
 #endif

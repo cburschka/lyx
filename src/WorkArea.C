@@ -394,11 +394,17 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;
-		lyxerr.debug() << "Workarea event: DBLCLICK" << endl;;
+		lyxerr.debug() << "Workarea event: DBLCLICK" << endl;
+		area->owner->doubleClick(ev->xbutton.x - ob->x,
+					 ev->xbutton.y - ob->y,
+					 ev->xbutton.button);
 		break;
 	case FL_TRPLCLICK:
 		if (!ev) break;
 		lyxerr.debug() << "Workarea event: TRPLCLICK" << endl;
+		area->owner->trippleClick(ev->xbutton.x - ob->x,
+					 ev->xbutton.y - ob->y,
+					 ev->xbutton.button);
 		break;
 	case FL_OTHER:
 		if (!ev) break;

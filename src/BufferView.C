@@ -61,8 +61,6 @@ extern bool input_prohibited;
 extern bool selection_possible;
 extern char ascii_type;
 extern void MenuPasteSelection(char at);
-extern InsetUpdateStruct * InsetUpdateList;
-extern void UpdateInsetUpdateList();
 extern void FreeUpdateTimer();
 
 BufferView::BufferView(LyXView * o, int xpos, int ypos,
@@ -774,6 +772,41 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 }
 
 
+void BufferView::doubleClick(int /*x*/, int /*y*/, unsigned int button) 
+{
+	// select a word
+	if (buffer_ && !the_locking_inset) {
+		if (screen && button == 1) {
+			screen->HideCursor();
+			screen->ToggleSelection();
+			text->SelectWord();
+			screen->ToggleSelection(false);
+			/* This will fit the cursor on the screen
+			 * if necessary */
+			update(0);
+		}
+	}            
+}
+
+
+void BufferView::trippleClick(int /*x*/, int /*y*/, unsigned int button)
+{
+	// select a line
+	if (buffer_ && screen && button == 1) {
+		screen->HideCursor();
+		screen->ToggleSelection();
+		text->CursorHome();
+		text->sel_cursor = text->cursor;
+		text->CursorEnd();
+		text->SetSelection();
+		screen->ToggleSelection(false);
+		/* This will fit the cursor on the screen
+		 * if necessary */
+		update(0);
+	}
+}
+
+
 void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 {
 	if (buffer_ == 0 || screen == 0) return;
@@ -1097,9 +1130,9 @@ void BufferView::cursorToggleCB(FL_OBJECT * ob, long)
 		else if (pid > 0)
 			sigchldhandler(pid, &status);
 	}
-	if (InsetUpdateList) 
-		UpdateInsetUpdateList();
 
+	view->updatelist.update(view);
+	
 	if (view && !view->screen){
 		goto set_timer_and_return;
 	}
@@ -1426,6 +1459,12 @@ void BufferView::focus(bool f)
 bool BufferView::active() const
 {
 	return workarea->active();
+}
+
+
+bool BufferView::belowMouse() const 
+{
+	return workarea->belowMouse();
 }
 
 

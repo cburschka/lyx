@@ -1,3 +1,21 @@
+2000-02-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_cb.C src/UpdateInset.[Ch]: move the updateinsetlist into
+	BufferView and reimplement the list as a queue put inside its own
+	class.
+
+	* src/bufferlist.[Ch] (updateInset): remove func, not needed.
+
+	* several files: use the new interface to the "updateinsetlist"
+	
+	* src/WorkArea.C (work_area_handler): call BufferView::doubleClick
+	on doubleclick.
+	(work_area_handler): call BufferView::trippleClick on trippleclick.
+
+	* src/BufferView.C (doubleClick): new function, selects word on
+	doubleclick. 
+	(trippleClick): new function, selects line on trippleclick.
+
 2000-02-22  Allan Rae  <rae@lyx.org>
 
 	* lib/bind/xemacs.bind: buffer-previous not supported

@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Word Processor
  *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2000 The LyX Team. 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team. 
  *
  *           This file is Copyright 1996-2000
  *           Lars Gullik Bjønnes
@@ -158,21 +158,12 @@ bool BufferList::close(Buffer * buf)
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
 		case 1: // Yes
-#if 0
-			if (write(buf, lyxrc->make_backup)) {
-				lastfiles->newFile(buf->fileName());
-			} else {
-				AllowInput();
-				return false;
-			}
-#else
 			if (buf->save(lyxrc->make_backup)) {
 				lastfiles->newFile(buf->fileName());
 			} else {
 				AllowInput();
 				return false;
 			}
-#endif
                         break;
 		case 3: // Cancel
                         AllowInput();
@@ -208,20 +199,6 @@ Buffer * BufferList::getBuffer(int choice)
 {
 	if (choice >= bstore.size()) return 0;
 	return bstore[choice];
-}
-
-
-void BufferList::updateInset(Inset * inset, bool mark_dirty)
-{
-	for (BufferStorage::iterator it = bstore.begin();
-	     it != bstore.end(); ++it) {
-		if ((*it)->getUser()
-		    && (*it)->getUser()->text->UpdateInset(inset)) {
-			if (mark_dirty)
-				(*it)->markDirty();
-			break;
-		}
-	}
 }
 
 

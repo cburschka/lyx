@@ -60,6 +60,8 @@ public:
 	///
 	bool active() const { return work_area->active; }
 	///
+	bool belowMouse() const { return work_area->belowmouse; }
+	///
 	bool visible() const { return work_area->form->visible; }
 	///
 	void greyOut() const;

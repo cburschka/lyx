@@ -63,12 +63,5 @@ extern string CurrentState();
 ///
 extern void AllowInput();
 
-///
-struct InsetUpdateStruct {
-	///
-	Inset * inset;
-	///
-	InsetUpdateStruct * next;
-};
 #endif
 

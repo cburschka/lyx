@@ -44,6 +44,7 @@ void MenuSendto()
     }
 }
 
+
 void SendtoApplyCB(FL_OBJECT *, long)
 {
     if (!current_view->available())
@@ -103,12 +104,14 @@ void SendtoApplyCB(FL_OBJECT *, long)
     Systemcalls one(Systemcalls::System, command);    
 }
 
+
 void SendtoCancelCB(FL_OBJECT *, long)
 {
     fl_hide_form(fd_form_sendto->form_sendto);
 }
 
-void SendtoOKCB(FL_OBJECT *ob, long data)
+
+void SendtoOKCB(FL_OBJECT * ob, long data)
 {
     SendtoCancelCB(ob, data);
     SendtoApplyCB(ob, data);

@@ -20,6 +20,7 @@
 #include "BackStack.h"
 #include "LaTeX.h"
 #include "undo.h"
+#include "UpdateInset.h"
 
 class LyXView;
 class Buffer;
@@ -210,6 +211,8 @@ public:
 	void focus(bool);
 	///
 	bool active() const;
+	///
+	bool belowMouse() const;
 	/// A callback for the up arrow in the scrollbar.
 	void upCB(long time, int button);
 	/// A callback for the slider in the scrollbar.
@@ -233,6 +236,10 @@ private:
 	///
 	void workAreaSelectionNotify(Window win, XEvent * event);
 	///
+	void doubleClick(int x, int y, unsigned int button);
+	///
+	void trippleClick(int x, int y, unsigned int button);
+	///
 	LyXView * owner_;
 	///
 	Buffer * buffer_;
@@ -254,6 +261,15 @@ private:
 	int last_click_x, last_click_y;
 	///
 	WorkArea * workarea;
+	///
+	UpdateInset updatelist;
+public:
+	///
+	void updateInset(Inset *, bool);
+	///
+	void pushIntoUpdateList(Inset * i) {
+		updatelist.push(i);
+	}
 };
 
 #endif

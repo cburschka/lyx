@@ -16,7 +16,6 @@
 #include "lyx_gui_misc.h" // WarnReadonly
  
 extern BufferView * current_view;
-extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
 FD_index_form * index_form = 0;
 
@@ -31,7 +30,7 @@ extern "C" void index_cb(FL_OBJECT *, long data)
 			if(tmp != inset->getContents())	{
 				inset->setContents(tmp);
 				fl_hide_form(index_form->index_form);
-				UpdateInset(current_view, inset);
+				current_view->updateInset(inset, true);
 				break;
 			}
 		} // fall through to Cancel on RO

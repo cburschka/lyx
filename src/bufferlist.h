@@ -95,11 +95,6 @@ public:
 	///
 	bool empty() const;
 
-	/// Saves buffer. Returns false if unsuccesful.
-#if 0
-	bool write(Buffer *, bool makeBackup);
-#endif
-
 	///
         bool QwriteAll();
 
@@ -116,9 +111,6 @@ public:
 	Buffer * newFile(string const &, string);
 	/// returns a vector with all the buffers filenames
 	vector<string> getFileNames() const;
-	
-	///
-	void updateInset(Inset *, bool = true);
 
 	///
 	int unlockInset(UpdatableInset *);
