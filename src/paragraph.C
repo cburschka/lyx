@@ -411,6 +411,21 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 	return retfont;
 }
 
+lyx::pos_type 
+Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const 
+{
+	Assert(pos <= size());
+
+	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	for (; cit != end; ++cit) {
+		if (cit->pos() >= pos)
+			return cit->pos();
+	}
+	// This should not happen, but if so, we take no chances.
+	return pos;
+}
+
 
 // Gets uninstantiated font setting at position 0
 LyXFont const Paragraph::getFirstFontSettings() const

@@ -1,3 +1,8 @@
+2003-07-27  Asger Alstrup  <alstrup@local>
+
+	* text.C (fill): Optimise algorithm to exploit that we can reuse
+	the LyXFont for many characters.
+
 2003-07-26  Asger Alstrup  <alstrup@local>
 
 	* text2.C (metrics): change a brain-dead algorithm to a smarter one.

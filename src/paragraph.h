@@ -222,6 +222,13 @@ public:
 				    LyXFont const & outerfont) const;
 	LyXFont const getLabelFont(BufferParams const &,
 				   LyXFont const & outerfont) const;
+	/**
+	 * The font returned by the above functions is the same in a
+	 * span of characters. This method will return the last position
+	 * in the paragraph for which that font is the same.
+	 * This can be used to avoid unnecessary calls to getFont.
+	 */
+	lyx::pos_type getEndPosOfFontSpan(lyx::pos_type pos) const;
 	///
 	value_type getChar(lyx::pos_type pos) const;
 	///

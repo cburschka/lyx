@@ -934,7 +934,10 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 	pos_type const body_pos = pit->beginningOfBody();
 	pos_type i = row->pos();
 
-	if (! pit->empty()) {
+	if (! pit->empty() && i <= last) {
+		// We re-use the font resolution for the entire span when possible
+		LyXFont font = getFont(bv()->buffer(), pit, i);
+		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 		while (i <= last) {
 			if (body_pos > 0 && i == body_pos) {
 				w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), pit));
@@ -944,7 +947,30 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 				if (w < left_margin)
 					w = left_margin;
 			}
-			w += singleWidth(pit, i);
+			{ // Manual inlined an optimised version of the common case of "w += singleWidth(pit, i);"
+				char const c = pit->getChar(i);
+
+				if (IsPrintable(c)) {
+					if (i > endPosOfFontSpan) {
+						// We need to get the next font
+						font = getFont(bv()->buffer(), pit, i);
+						endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
+					}
+					if (! font.language()->RightToLeft()) {
+						w += font_metrics::width(c, font);
+					} else {
+						// Fall-back to the normal case
+						w += singleWidth(pit, i, c);
+						// And flush font cache
+						endPosOfFontSpan = 0;
+					}
+				} else {
+					// Fall-back to the normal case
+					w += singleWidth(pit, i, c);
+					// And flush font cache
+					endPosOfFontSpan = 0;
+				}
+			}
 			++i;
 		}
 	}
@@ -1096,7 +1122,10 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 #endif
 				}
 			} else {
-				maxwidth += singleWidth(pit, pos);
+				// Manual inlined optimised version of common case of "maxwidth += singleWidth(pit, pos);"
+				char const c = pit->getChar(pos);
+				maxwidth += singleWidth(pit, pos, c);
+				
 			}
 		}
 	}
