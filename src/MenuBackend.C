@@ -23,6 +23,7 @@
 #include "gettext.h"
 #include "lastfiles.h"
 #include "bufferlist.h"
+#include "converter.h"
 #include "exporter.h"
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
@@ -35,6 +36,7 @@ using std::endl;
 using std::vector;
 using std::pair;
 using std::find_if;
+using std::sort;
 
 // This is the global menu definition
 MenuBackend menubackend;
@@ -190,6 +192,11 @@ Menu & Menu::read(LyXLex & lex)
 	return *this;
 }
 
+struct compare_formatpair {
+	bool operator()(FormatPair const & a, FormatPair const & b) {
+		return a.format->prettyname < b.format->prettyname; 
+	}
+};
 
 void Menu::expand(Menu & tomenu, Buffer * buf) const
 {
@@ -237,7 +244,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats: {
-			vector<pair<string,string> > names;
+			vector<FormatPair> names;
 			kb_action action;
 			if ((*cit).kind() == MenuItem::ViewFormats) {
 				names = Exporter::GetViewableFormats(buf);
@@ -249,13 +256,23 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				names = Exporter::GetExportableFormats(buf);
 				action = LFUN_EXPORT;
 			}
+			sort(names.begin(), names.end(), compare_formatpair());
 
-			for (vector<pair<string,string> >::const_iterator fit = names.begin();
+			for (vector<FormatPair>::const_iterator fit = names.begin();
 			     fit != names.end() ; ++fit) {
-				int action2 =
-					lyxaction.getPseudoAction(action,
-								  (*fit).first);
-				string label = (*fit).second;
+				string fmt = (*fit).format->name;
+				string label = (*fit).format->prettyname;
+				if ((*fit).from &&
+				    ( (fit != names.begin() &&
+				       (*fit).format == (*(fit-1)).format) ||
+				      (fit+1 != names.end() &&
+				       (*fit).format == (*(fit+1)).format) )) {
+					fmt += ":" + (*fit).from->name;
+					string head;
+					split((*fit).command, head, ' ');
+					label += _(" (using ") + head + ")";
+				}
+				int action2 = lyxaction.getPseudoAction(action, fmt);
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action2));
 			}

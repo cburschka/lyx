@@ -2956,10 +2956,19 @@ void LyXText::Backspace(BufferView * bview)
 			status = LyXText::NEED_MORE_REFRESH;
 			
 			BreakAgainOneRow(bview, row);
+			// will the cursor be in another row now?
+			if (row->next() && row->next()->par() == row->par() &&
+			    RowLast(row) <= cursor.pos()) {
+				row = row->next();
+				BreakAgainOneRow(bview, row);
+			}
+
 			SetCursor(bview, cursor.par(), cursor.pos(), false, cursor.boundary());
-			// cursor MUST be in row now
-			
-			need_break_row = row->next();
+
+			if (row->next() && row->next()->par() == row->par())
+				need_break_row = row->next();
+			else
+				need_break_row = 0;
 		} else  {
 			// set the dimensions of the row
 			row->fill(Fill(bview, row, workWidth(bview)));

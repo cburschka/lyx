@@ -2895,6 +2895,8 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
 		moveCursorUpdate(false);
+		owner->showState(); // current_font.number can change
+		                    // so we need to update the minibuffer
 	}
 	break;
 
@@ -3030,6 +3032,8 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->text->sel_cursor = 
 				owner->view()->text->cursor;
 			moveCursorUpdate(false);
+			owner->showState(); // current_font.number can change
+			                    // so we need to update the minibuffer
 			return string();
 		} else {
 			// why is an "Unknown action" with empty

@@ -57,7 +57,7 @@ struct Command {
 class Format {
 public:
 	///
-	Format() : in_degree(0) {}
+	Format() {}
 	///
 	Format(string const & n);
 	///
@@ -66,8 +66,19 @@ public:
 	string prettyname;
 	///
 	string viewer;
+};
+
+class FormatPair {
+public:
 	///
-	int in_degree;
+	Format * format;
+	///
+	Format * from;
+	///
+	string command;
+	///
+	FormatPair(Format * f1, Format * f2, string c)
+		: format(f1), from(f2), command(c) {}
 };
 
 ///
@@ -102,10 +113,15 @@ public:
 	void Add(string const & from, string const & to,
 		 string const & command, string const & flags);
 	///
+	
+	///
 	static
-	std::vector<std::pair<string, string> > const
+	std::vector<FormatPair> const
 	GetReachable(string const & from,
 		     bool only_viewable = false);
+	///
+	static
+	bool IsReachable(string const & from, string const & target_format);
 	///
 	static
 	bool Convert(Buffer const * buffer, string const & from_file,
@@ -120,6 +136,9 @@ public:
 	///
 	static
 	string const dvips_options(Buffer const * buffer);
+	///
+	static
+	void init();
 private:
 	///
 	static

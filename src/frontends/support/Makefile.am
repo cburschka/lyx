@@ -8,6 +8,8 @@ INCLUDES = -I${srcdir}/../../ $(SIGC_CFLAGS)
 
 libfrontendsupport_la_SOURCES = \
 	LyXImage.h \
-	LyXImage.C \
+	LyXImage.C
+
+libfrontendsupport_la_EXTRA_DIST = \
 	LyXImage_X.h \
 	LyXImage_X.C

@@ -15,14 +15,13 @@
 #endif
 
 #include "exporter.h"
-#include "converter.h"
 #include "buffer.h"
 #include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
 #include "lyxrc.h"
+#include "converter.h"
 
 using std::vector;
-using std::pair;
 
 bool Exporter::Export(Buffer * buffer, string const & format0,
 		      bool put_in_tempdir, string * view_file)
@@ -84,37 +83,31 @@ bool Exporter::Preview(Buffer * buffer, string const & format0)
 
 bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 {
-	// This is not efficient (Dekel)
-	vector<pair<string, string> > const v = GetExportableFormats(buffer);
-	for (vector<pair<string, string> >::const_iterator it = v.begin();
-	     it != v.end(); ++it) {
-		string format2;
-                split((*it).first, format2, ':');
-		if (format == format2)
-			return true;
-	}
-	return false;
+	return format == "txt" ||
+		Converter::IsReachable(BufferExtension(buffer), format);
 }
 
 
-vector<pair<string, string> > const
+vector<FormatPair> const
 Exporter::GetExportableFormats(Buffer const * buffer)
 {
-	vector<pair<string, string> > result = 
+	vector<FormatPair> result = 
 		Converter::GetReachable(BufferExtension(buffer), false);
-	result.push_back(pair<string,string>("txt", "Ascii"));
+	Format * format = Formats::GetFormat("txt");
+	if (format)
+		result.push_back(FormatPair(format , 0, ""));
 	return result;
 }
 
 
-vector<pair<string, string> > const
+vector<FormatPair> const
 Exporter::GetViewableFormats(Buffer const * buffer)
 {
-	vector<pair<string, string> > result = 
+	vector<FormatPair> result = 
 		Converter::GetReachable(BufferExtension(buffer), true);
 	Format * format = Formats::GetFormat("txt");
 	if (format && !format->viewer.empty())
-		result.push_back(pair<string,string>("txt", "Ascii"));
+		result.push_back(FormatPair(format , 0, ""));
 	return result;
 }
 

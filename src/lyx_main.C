@@ -39,6 +39,7 @@
 #include "ToolbarDefaults.h"
 #include "lyxlex.h"
 #include "encoding.h"
+#include "converter.h"
 
 using std::endl;
 
@@ -403,6 +404,9 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// of the old lyxrc file.
 	if (!ReadRcFile("preferences"))
 	    ReadRcFile("lyxrc");
+
+	/// Init Converter
+	Converter::init();
 
 	// Read encodings
 	ReadEncodingsFile("encodings");

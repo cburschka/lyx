@@ -15,7 +15,6 @@
 #endif
 
 #include <queue>
-#include <algorithm> // sort()
 
 #include "converter.h"
 #include "lyxrc.h"
@@ -33,7 +32,6 @@ using std::map;
 using std::vector;
 using std::queue;
 using std::pair;
-using std::sort;
 using std::endl;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -53,7 +51,7 @@ string const add_options(string const & command, string const & options)
 //////////////////////////////////////////////////////////////////////////////
 
 Format::Format(string const & n)
-	: name(n), in_degree(0)
+	: name(n)
 {
 	struct Item {
 		char const * name;
@@ -209,23 +207,19 @@ void Converter::Add(string const & from, string const & to,
 	commands.push_back(Com);
 	Formats::Add(from);
 	Formats::Add(to);
-	++Formats::GetFormat(to)->in_degree;
 }
 
 
-vector< pair<string,string> > const
+vector<FormatPair> const
 Converter::GetReachable(string const & from, bool only_viewable)
 {
-	vector< pair<string,string> > result;
+	vector<FormatPair> result;
 	Format * format = Formats::GetFormat(from);
 	if (!format)
 		return result;
 
-	int sort_start = 0;
-	if (!only_viewable || !format->viewer.empty()) {
-		result.push_back(pair<string,string>(from, format->prettyname));
-		sort_start = 1;
-	}
+	if (!only_viewable || !format->viewer.empty())
+		result.push_back(FormatPair(format, 0, ""));
 
 	queue< vector<Command>::iterator > Q;
 	for (vector<Command>::iterator it = commands.begin();
@@ -238,18 +232,12 @@ Converter::GetReachable(string const & from, bool only_viewable)
 
 	while (!Q.empty()) {
 		vector<Command>::iterator it = Q.front();
-		format = Formats::GetFormat((*it).to);
-		string name = format->name;
-		string prettyname = format->prettyname;
-		if (format->in_degree > 1) {
-			name += ":" + (*it).from;
-			string tmp;
-			split((*it).command, tmp, ' ');
-			prettyname  += _(" (using ") + tmp + ")";	
-		}
-		if (!only_viewable || !format->viewer.empty())
-			result.push_back(pair<string,string>(name, prettyname));
 		Q.pop();
+		format = Formats::GetFormat((*it).to);
+		if (!only_viewable || !format->viewer.empty())
+			result.push_back(FormatPair(format,
+						    Formats::GetFormat((*it).from),
+						    (*it).command));
 		for (vector<Command>::iterator it2 = commands.begin();
 		     it2 != commands.end(); ++it2)
 			if (!(*it2).visited && (*it).to == (*it2).from) {
@@ -258,8 +246,40 @@ Converter::GetReachable(string const & from, bool only_viewable)
 			}
 	}
 
-	sort(result.begin() + sort_start, result.end());
 	return result;
+}
+
+bool Converter::IsReachable(string const & from, string const & target_format)
+{
+	Format * format = Formats::GetFormat(from);
+	if (!format)
+		return false;
+	else if (format->name == target_format)
+		return true;
+
+	queue< vector<Command>::iterator > Q;
+	for (vector<Command>::iterator it = commands.begin();
+	     it != commands.end(); ++it)
+		if ((*it).from == from) {
+			Q.push(it);
+			(*it).visited = true;
+		} else
+			(*it).visited = false;
+
+	while (!Q.empty()) {
+		vector<Command>::iterator it = Q.front();
+		Q.pop();
+		format = Formats::GetFormat((*it).to);
+		if (format->name == target_format)
+			return true;
+		for (vector<Command>::iterator it2 = commands.begin();
+		     it2 != commands.end(); ++it2)
+			if (!(*it2).visited && (*it).to == (*it2).from) {
+				Q.push(it2);
+				(*it2).visited = true;
+			}
+	}
+	return false;
 }
 
 
@@ -471,6 +491,12 @@ bool Converter::scanLog(Buffer const * buffer, string const & command,
 			bv->redraw();
 			bv->fitCursor(bv->text);
 		}
+	if (result & LaTeX::NO_OUTPUT) {
+		string const s = _("The operation resulted in");
+		string const t = _("an empty file.");
+		WriteAlert(_("Resulting file is empty"), s, t);
+		return false;
+	}
 		AllowInput(bv);
 	}
 	if ((result & LaTeX::ERRORS)) {
@@ -529,6 +555,10 @@ bool Converter::runLaTeX(Buffer const * buffer, string const & command)
 			bv->redraw();
 			bv->fitCursor(bv->text);
 		}
+	} else if (result & LaTeX::NO_OUTPUT) {
+		string const s = _("The operation resulted in");
+		string const t = _("an empty file.");
+		WriteAlert(_("Resulting file is empty"), s, t);
 	}
 
 	// check return value from latex.run().
@@ -554,7 +584,12 @@ bool Converter::runLaTeX(Buffer const * buffer, string const & command)
 	if (bv)
 		AllowInput(bv);
  
-        return (result & (LaTeX::NO_LOGFILE | LaTeX::ERRORS)) == 0;
+	int const ERROR_MASK = 
+			LaTeX::NO_LOGFILE |
+			LaTeX::ERRORS |
+			LaTeX::NO_OUTPUT;
+	
+	return (result & ERROR_MASK) == 0;
 
 }
 
@@ -612,4 +647,9 @@ string const Converter::dvips_options(Buffer const * buffer)
 	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 		result += ' ' + lyxrc.print_landscape_flag;
 	return result;
+}
+
+void Converter::init()
+{
+	Formats::Add("txt");	
 }

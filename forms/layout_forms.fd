@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_character
 Width: 300
 Height: 415
-Number of Objects: 16
+Number of Objects: 14
 
 --------------------
 class: FL_BOX
@@ -27,42 +27,6 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 10 325 280 45
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 10 265 280 45
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
 name: 
 callback: 
 argument: 
@@ -248,42 +212,6 @@ callback:
 argument: 
 
 --------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 20 255 210 20
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_BOLD_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: These are never toggled
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 20 315 215 20
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_BOLD_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: These are always toggled
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
-name: 
-callback: 
-argument: 
-
---------------------
 class: FL_CHOICE
 type: DROPLIST_CHOICE
 box: 95 175 190 30
@@ -298,6 +226,42 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_language
+callback: 
+argument: 
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 10 265 280 45
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_BOLD_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: These are never toggled
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_NorthEast
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 10 325 280 45
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_BOLD_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: These are always toggled
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_NorthEast
+name: 
 callback: 
 argument: 
 
