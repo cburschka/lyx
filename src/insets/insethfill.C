@@ -12,8 +12,6 @@
 
 
 #include "insethfill.h"
-#include "BufferView.h"
-
 #include "support/LOstream.h"
 
 using std::ostream;
@@ -38,7 +36,7 @@ int InsetHFill::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-void InsetHFill::write(Buffer const * buf, ostream & os) const
+void InsetHFill::write(Buffer const *, ostream & os) const
 {
 	os << "\n\\hfill \n";
 }
