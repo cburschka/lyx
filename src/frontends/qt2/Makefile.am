@@ -72,6 +72,7 @@ libqt2_la_SOURCES = \
 	lyx_gui.C \
 	lcolorcache.h lcolorcache.C \
 	panelstack.h panelstack.C \
+	socket_callback.C socket_callback.h \
 	qcoloritem.h qcoloritem.C \
 	qfontexample.h qfontexample.C \
 	qfont_loader.h qfont_loader.C \

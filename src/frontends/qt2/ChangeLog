@@ -1,3 +1,9 @@
+2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
+
+	* socket_callback.[Ch] ({set,remove}_{server,data}socket_callback()): 
+	new files with a class to connect sockets.
+
+	* Makefile.am: add the above
 
 2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
 
