@@ -97,7 +97,7 @@ string const findTargetFormat(string const & from)
 	typedef ImageLoader::FormatList FormatList;
 	FormatList formats = ImageLoaderXPM().loadableFormats();
 	lyx::Assert(formats.size() > 0); // There must be a format to load from.
-	
+
 	FormatList::const_iterator iter = formats.begin();
 	FormatList::const_iterator end  = formats.end();
 
@@ -105,6 +105,7 @@ string const findTargetFormat(string const & from)
 		if (converters.IsReachable(from, *iter))
 			break;
 	}
+	
 	if (iter == end) {
 		// We do not know how to convert the image to something loadable.
 		lyxerr << "ERROR: Do not know how to convert image." << std::endl;
@@ -143,10 +144,11 @@ GraphicsCacheItem::convertImage(string const & filename)
 	// Remove the temp file, we only want the name...
 	lyx::unlink(tempfile);
 
-	converters.Convert(0, filename, tempfile, from, to);
-
+	bool result = converters.Convert(0, filename, tempfile, from, to);
+	tempfile.append(".xpm");
+		
 	// For now we are synchronous
-	imageConverted(true);
+	imageConverted(result);
 
 	// Cleanup after the conversion.
 	lyx::unlink(tempfile);
