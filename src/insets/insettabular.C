@@ -138,6 +138,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	// for now make it always display as display() inset
 	// just for test!!!
 	the_locking_inset = 0;
+	old_locking_inset = 0;
 	locked = false;
 	oldcell = -1;
 	actrow = actcell = 0;
@@ -145,6 +146,8 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	need_update = INIT;
 	in_update = false;
 	in_reset_pos = false;
+	inset_x = 0;
+	inset_y = 0;
 }
 
 
@@ -154,6 +157,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 {
 	tabular.reset(new LyXTabular(this, *(tab.tabular), same_id));
 	the_locking_inset = 0;
+	old_locking_inset = 0;
 	locked = false;
 	oldcell = -1;
 	actrow = actcell = 0;
@@ -161,6 +165,8 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 	need_update = INIT;
 	in_update = false;
 	in_reset_pos = false;
+	inset_x = 0;
+	inset_y = 0;
 }
 
 

@@ -1,3 +1,18 @@
+2002-01-13  Allan Rae  <rae@lyx.org>
+
+	* BufferView2.C (removeAutoInsets): ensure we have a valid cursor if
+	the old cursor is now invalid due to deleteEmptyParagraphMechanism.
+	There is still a way to segfault this although you may have to do this
+	multiple times: Have an InsetERT with an unknown command in it. 
+	View->DVI, move cursor between Error box and InsetERT and hit <Enter>,
+	<down-arrow>, <Enter> again, View->DVI, BANG!
+
+	* text2.C (setCursor): 
+	(deleteEmptyParagraphMechanism): 
+	* lyxtext.h (setCursor): 
+	(deleteEmptyParagraphMechanism): return true if the paragraph was deleted.
+	Making use of the return value may help fix other bugs.
+
 2002-01-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* LyXAction.[Ch]: move isPseudoAction to the C file, since nobody

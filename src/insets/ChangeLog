@@ -1,3 +1,8 @@
+2002-01-13  Allan Rae  <rae@lyx.org>
+
+	* insettabular.C (InsetTabular): Both constructors now initialise
+	all class variables.
+
 2002-01-11  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insetButtonPress): set the_locking_inset to 0.

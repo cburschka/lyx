@@ -306,8 +306,8 @@ public:
 	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	void selectSelectedWord(BufferView *);
-	///
-	void setCursor(BufferView *, Paragraph * par,
+	/// returns true if par was empty and was removed
+	bool setCursor(BufferView *, Paragraph * par,
 		       lyx::pos_type pos,
 		       bool setfont = true,
 		       bool boundary = false) const;
@@ -612,8 +612,8 @@ private:
 				  LyXCursor & cur,
 				  LyXCursor const & where) const;
 	
-	/// delete double space or empty paragraphs around old_cursor 
-	void deleteEmptyParagraphMechanism(BufferView *,
+	/// delete double space (false) or empty paragraphs (true) around old_cursor 
+	bool deleteEmptyParagraphMechanism(BufferView *,
 					   LyXCursor const & old_cursor) const;
 
 public:

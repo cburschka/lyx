@@ -110,18 +110,45 @@ bool BufferView::removeAutoInsets()
 {
 	LyXCursor tmpcursor = text->cursor;
 	Paragraph * cur_par = tmpcursor.par();
+	Paragraph * cur_par_prev = cur_par ? cur_par->previous() : 0;
+	Paragraph * cur_par_next = cur_par ? cur_par->next() : 0;
 	pos_type cur_pos = tmpcursor.pos();
-	
+
 	bool found = false;
+
+	// Trap the deletion of the paragraph the cursor is in.
+	// It should be almost impossible for the new cursor par to be
+	// deleted later on in this function.
+	// This is the way to segfault this now. Although you may have to do this
+	// multiple times: Have an InsetERT with an unknown command in it.
+	// View->DVI, move cursor between Error box and InsetERT and hit <Enter>,
+	// <down-arrow>, <Enter> again, View->DVI, BANG!
+	//
+	while ((cur_par_prev || cur_par_next)
+	       && text->setCursor(this,
+				  cur_par_prev ? cur_par_prev : cur_par_next,
+				  0)) {
+		// we just removed cur_par so have to fix the "cursor"
+		if (cur_par_prev) {
+			cur_par = cur_par_prev;
+			cur_pos = cur_par->size();
+		} else {
+			cur_par = cur_par_next;
+			cur_pos = 0;
+		}
+		cur_par_prev = cur_par->previous();
+		cur_par_next = cur_par->next();
+	}
 
 	ParIterator it = buffer()->par_iterator_begin();
 	ParIterator end = buffer()->par_iterator_end();
 	for (; it != end; ++it) {
 		Paragraph * par = *it;
+		Paragraph * par_prev = par ? par->previous() : 0;
 		bool removed = false;
 
-		text->setCursor(this, par, 0);
-		
+		bool dead = text->setCursor(this, par, 0);
+
 		Paragraph::inset_iterator pit = par->inset_iterator_begin();
 		Paragraph::inset_iterator pend = par->inset_iterator_end();
 		while (pit != pend) {
@@ -141,6 +168,40 @@ bool BufferView::removeAutoInsets()
 		if (removed) {
 			found = true;
 			text->redoParagraph(this);
+		}
+		if (dead) {
+			// Error box paragraphs appear to have a bad next_ pointer
+			// especially when that's all that's in the paragraph..
+			// Then if you are in an empty paragraph after an error box
+			// which is in its own paragraph this will fail because
+			// cur_prev_par was the one just deleted (I think).
+			// That's the main reason why this clause makes almost no difference.
+			// Feel free to delete this whole clause as my brain is asleep now.
+			while ((cur_par_prev || cur_par_next)
+			       && text->setCursor(this,
+						  cur_par_prev ? cur_par_prev : cur_par_next,
+						  0)) {
+				// we just removed cur_par so have to fix the "cursor"
+				if (cur_par_prev == par) {
+					// attempting to solve the "prev par was deleted
+					// because it had only an error inset in it" problem
+					if (par_prev) {
+						cur_par = par_prev;
+						cur_pos = cur_par->size();
+					} else {
+						cur_par = cur_par_next;
+						cur_pos = 0;
+					}
+				} else if (cur_par_prev) {
+					cur_par = cur_par_prev;
+					cur_pos = cur_par->size();
+				} else {
+					cur_par = cur_par_next;
+					cur_pos = 0;
+				}
+				cur_par_prev = cur_par->previous();
+				cur_par_next = cur_par->next();
+			}
 		}
 	}
 

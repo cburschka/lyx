@@ -2090,13 +2090,13 @@ bool LyXText::updateInset(BufferView * bview, Inset * inset)
 }
 
 
-void LyXText::setCursor(BufferView * bview, Paragraph * par,
+bool LyXText::setCursor(BufferView * bview, Paragraph * par,
                         pos_type pos, 
                         bool setfont, bool boundary) const
 {
 	LyXCursor old_cursor = cursor;
 	setCursorIntern(bview, par, pos, setfont, boundary);
-	deleteEmptyParagraphMechanism(bview, old_cursor);
+	return deleteEmptyParagraphMechanism(bview, old_cursor);
 }
 
 
@@ -2373,21 +2373,19 @@ void LyXText::fixCursorAfterDelete(BufferView * bview,
 }
 
 
-void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
+bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 					    LyXCursor const & old_cursor) const
 {
 	// Would be wrong to delete anything if we have a selection.
-	if (selection.set()) return;
+	if (selection.set()) return false;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (textclasslist.Style(bview->buffer()->params.textclass,
 				old_cursor.par()->getLayout()).free_spacing
 	    || old_cursor.par()->isFreeSpacing())
 	{
-		return;
+		return false;
 	}
-
-	bool deleted = false;
 	
 	/* Ok I'll put some comments here about what is missing.
 	   I have fixed BackSpace (and thus Delete) to not delete
@@ -2442,23 +2440,27 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			fixCursorAfterDelete(bview, toggle_cursor, old_cursor);
 			fixCursorAfterDelete(bview, toggle_end_cursor,
 					     old_cursor);
-			return;
+			return false;
 		}
 	}
 
 	// don't delete anything if this is the ONLY paragraph!
 	if (!old_cursor.par()->next() && !old_cursor.par()->previous())
-		return;
+		return false;
 	
 	// Do not delete empty paragraphs with keepempty set.
 	if ((textclasslist.Style(bview->buffer()->params.textclass,
 				 old_cursor.par()->getLayout())).keepempty)
-		return;
+		return false;
 
 	// only do our magic if we changed paragraph
 	if (old_cursor.par() == cursor.par()) 
-		return;
+		return false;
 	
+	// record if we have deleted a paragraph
+	// we can't possibly have deleted a paragraph before this point
+	bool deleted = false;
+
 	if ((old_cursor.par()->size() == 0
 	     || (old_cursor.par()->size() == 1
 		 && old_cursor.par()->isLineSeparator(0)))) {
@@ -2488,7 +2490,7 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			if (ownerParagraph() == old_cursor.par()) {
 				ownerParagraph(ownerParagraph()->next());
 			}
-				// delete old par
+			// delete old par
 			delete old_cursor.par();
 					
 			/* Breakagain the next par. Needed because of
@@ -2538,7 +2540,7 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 		setCursorIntern(bview, cursor.par(), cursor.pos());
 
 		if (selection.cursor.par()  == old_cursor.par()
-		    && selection.cursor.pos() == selection.cursor.pos()) {
+		    && selection.cursor.pos() == old_cursor.pos()) {
 			// correct selection
 			selection.cursor = cursor;
 		}
@@ -2552,6 +2554,7 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			selection.cursor = cursor;
 		}
 	}
+	return deleted;
 }
 
 
