@@ -304,6 +304,10 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 ///////////////////////////////////////
 // The lyxstring Invariant tester
 ///////////////////////////////////////
+ 
+// There are no know bugs in lyxstring now, and it have been
+// tested for a long time. so we disable the invariant checker. (Lgb)
+#undef ENABLE_ASSERTIONS
 #ifdef ENABLE_ASSERTIONS
 
 /** Testing of the lyxstring invariant

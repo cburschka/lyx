@@ -1792,25 +1792,24 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 	
 	cached_bview = bv;
 	Cache::iterator it = cache.find(bv);
-	
-	if (it != cache.end() && (lt || !it->second.remove)) {
-		lyx::Assert(it->second.text.get());
-			
-		cached_text = it->second.text;
-		if (recursive && the_locking_inset) {
-			return the_locking_inset->getLyXText(bv);
-		}
-		return cached_text.get();
-	} else if (it != cache.end() && it->second.remove) {
-		if (locked) {
-			saveLyXTextState(it->second.text.get());
-		} else {
-			sstate.lpar = 0;
-		}
-		cache.erase(bv);
-//		raise(SIGSTOP);
-	}
 
+	if (it != cache.end()) {
+		if (lt || !it->second.remove) {
+			lyx::Assert(it->second.text.get());
+			cached_text = it->second.text;
+			if (recursive && the_locking_inset) {
+				return the_locking_inset->getLyXText(bv);
+			}
+			return cached_text.get();
+		} else if (it->second.remove) {
+			if (locked) {
+				saveLyXTextState(it->second.text.get());
+			} else {
+				sstate.lpar = 0;
+			}
+		}
+	}
+	
 	cached_text.reset(new LyXText(const_cast<InsetText *>(this)));
 	cached_text->init(bv);
 	restoreLyXTextState(bv, cached_text.get());

@@ -261,7 +261,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	int lwidth = width(bv, font);
 
 	// Make sure x is updated upon exit from this routine
-	int old_x = x;
+	int old_x = int(x);
 	x += lwidth;
 
 	// This will draw the graphics. If the graphics has not been loaded yet,

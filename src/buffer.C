@@ -589,7 +589,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 
 		if (!inset) {
+#ifndef NO_PEXTRA_REALLY
 			--call_depth;
+#endif
 			return false; // no end read yet
 		}
 		
@@ -1146,7 +1148,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		insertErtContents(par, pos, font);
 #endif
 		the_end_read = true;
+#ifndef NO_PEXTRA_REALLY
 		minipar = parBeforeMinipage = 0;
+#endif
 	} else {
 #ifdef NO_LATEX
 		if (ert_comp.active) {
@@ -1318,8 +1322,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	}
 	}
 	// End of pextra_minipage compability
-#endif
 	--call_depth;
+#endif
 	return the_end_read;
 }
 

@@ -3,6 +3,10 @@
 #ifndef PARAGRAPHPARAMETERS_H
 #define PARAGRAPHPARAMETERS_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "ShareContainer.h"
 #include "LString.h"
 #include "layout.h"

@@ -1,6 +1,11 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#pragma implementation "ParameterStruct.h"
+#endif
+
 #include "ParagraphParameters.h"
 #include "ParameterStruct.h"
 
@@ -10,9 +15,10 @@ ShareContainer<ParameterStruct> ParagraphParameters::container;
 ParagraphParameters::ParagraphParameters()
 {
 	ParameterStruct tmp;
+#if 0
 	tmp.appendix = false;
 	tmp.align = LYX_ALIGN_BLOCK;
-
+#endif
 	set_from_struct(tmp);
 }
 
@@ -57,8 +63,8 @@ bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 		param->line_top == pp.param->line_top &&
 		param->pagebreak_top == pp.param->pagebreak_top &&
 		param->added_space_top == pp.param->added_space_top &&
-#ifndef NO_PEXTRA_REALLY
 		param->spacing == pp.param->spacing &&
+#ifndef NO_PEXTRA_REALLY
 		param->pextra_type == pp.param->pextra_type &&
                 param->pextra_width == pp.param->pextra_width && 
                 param->pextra_widthp == pp.param->pextra_widthp &&

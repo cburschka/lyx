@@ -33,7 +33,7 @@ void InsetRef::edit(BufferView * bv, int, int, unsigned int button)
 }
 
 
-void InsetRef::edit(BufferView * bv, bool)
+void InsetRef::edit(BufferView *, bool)
 {
 }
 

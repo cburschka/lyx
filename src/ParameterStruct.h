@@ -7,8 +7,14 @@
 #include "Spacing.h"
 #include "layout.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 ///
 struct ParameterStruct {
+	///
+	ParameterStruct();
 	///
 	typedef unsigned int depth_type;
 	///
@@ -54,6 +60,19 @@ struct ParameterStruct {
         bool pextra_start_minipage;
 #endif
 };
+
+
+inline
+ParameterStruct::ParameterStruct()
+	: noindent(false), line_top(false), line_bottom(false),
+	  pagebreak_top(false), pagebreak_bottom(false),
+	  align(LYX_ALIGN_BLOCK), depth(0), start_of_appendix(false),
+	  appendix(false)
+#ifndef NO_PEXTRA_REALLY
+	, pextra_type(0), pextra_alignment(0), pextra_hfill(false),
+	pextra_start_minipage(false)
+#endif
+{}
 
 
 inline
