@@ -51,6 +51,7 @@
 #include "insets/insettabular.h"
 #include "insets/insettoc.h"
 #include "insets/inseturl.h"
+#include "insets/insetvspace.h"
 #include "insets/insetwrap.h"
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
@@ -174,7 +175,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 	case LFUN_TABULAR_INSERT:
 		if (!cmd.argument.empty()) {
 			std::istringstream ss(cmd.argument);
-			int r, c;
+			int r = 0, c = 0;
 			ss >> r >> c;
 			if (r <= 0) r = 2;
 			if (c <= 0) c = 2;
@@ -184,7 +185,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		return 0;
 
 	case LFUN_INSET_CAPTION: 
-	if (bv->innerInset()) {
+	if (!bv->innerInset()) {
 		auto_ptr<InsetCaption> inset(new InsetCaption(params));
 		inset->setOwner(bv->innerInset());
 		inset->setAutoBreakRows(true);
@@ -192,6 +193,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		inset->setFrameColor(LColor::captionframe);
 		return inset.release();
 	}
+	return 0;
 
 	case LFUN_INDEX_PRINT:
 		return new InsetPrintIndex(InsetCommandParams("printindex"));
@@ -280,6 +282,11 @@ InsetOld * createInset(FuncRequest const & cmd)
 			InsetCommandParams icp;
 			InsetCommandMailer::string2params(cmd.argument, icp);
 			return new InsetUrl(icp);
+
+		} else if (name == "vspace") {
+			VSpace vspace;
+			InsetVSpaceMailer::string2params(cmd.argument, vspace);
+			return new InsetVSpace(vspace);
 		}
 	}
 
@@ -423,6 +430,8 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetTabular(buf));
 		} else if (tmptok == "Text") {
 			inset.reset(new InsetText(buf.params()));
+		} else if (tmptok == "VSpace") {
+			inset.reset(new InsetVSpace);
 		} else if (tmptok == "Foot") {
 			inset.reset(new InsetFoot(buf.params()));
 		} else if (tmptok == "Marginal") {

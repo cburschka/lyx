@@ -132,9 +132,6 @@ void breakParagraph(BufferParams const & bparams,
 		tmp->params().align(par->params().align());
 		tmp->setLabelWidthString(par->params().labelWidthString());
 
-		tmp->params().spaceBottom(par->params().spaceBottom());
-		par->params().spaceBottom(VSpace(VSpace::NONE));
-
 		tmp->params().depth(par->params().depth());
 		tmp->params().noindent(par->params().noindent());
 
@@ -167,7 +164,6 @@ void breakParagraph(BufferParams const & bparams,
 	if (pos)
 		return;
 
-	tmp->params().spaceTop(par->params().spaceTop());
 	par->params().clear();
 
 	par->layout(bparams.getLyXTextClass().defaultLayout());
@@ -222,9 +218,6 @@ void mergeParagraph(BufferParams const & bparams,
 		    ParagraphList::iterator par)
 {
 	ParagraphList::iterator the_next = boost::next(par);
-
-	// first the DTP-stuff
-	par->params().spaceBottom(the_next->params().spaceBottom());
 
 	pos_type pos_end = the_next->size() - 1;
 	pos_type pos_insert = par->size();

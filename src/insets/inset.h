@@ -136,7 +136,9 @@ public:
 		///
 		BOX_CODE,
 		///
-		CHARSTYLE_CODE
+		CHARSTYLE_CODE,
+		///
+		VSPACE_CODE
 	};
 
 	///

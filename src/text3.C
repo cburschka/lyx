@@ -415,7 +415,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 }
 
 
-void doInsertInset(LyXText * lt, FuncRequest const & cmd,
+void doInsertInset(LyXText const & lt, FuncRequest const & cmd,
 		   bool edit, bool pastesel)
 {
 	InsetOld * inset = createInset(cmd);
@@ -423,7 +423,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 
 	if (inset) {
 		bool gotsel = false;
-		if (lt->selection.set()) {
+		if (lt.selection.set()) {
 			bv->owner()->dispatch(FuncRequest(LFUN_CUT));
 			gotsel = true;
 		}
@@ -739,21 +739,9 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.set()) {
 			if (cursor.pos() == cursorPar()->size()) {
 				cursorRight(bv);
-				ParagraphParameters & params = cursorPar()->params();
-				if (cursor.pos() == 0
-				    && !(params.spaceTop() == VSpace (VSpace::NONE))) {
-					setParagraph(
-						 VSpace(VSpace::NONE),
-						 params.spaceBottom(),
-						 params.spacing(),
-						 params.align(),
-						 params.labelWidthString(), 0);
-					cursorLeft(bv);
-				} else {
-					cursorLeft(bv);
-					Delete();
-					selection.cursor = cursor;
-				}
+				cursorLeft(bv);
+				Delete();
+				selection.cursor = cursor;
 			} else {
 				Delete();
 				selection.cursor = cursor;
@@ -784,19 +772,9 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_BACKSPACE_SKIP:
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!selection.set()) {
-			ParagraphParameters & params = cursorPar()->params();
-			if (cursor.pos() == 0 && !(params.spaceTop() == VSpace(VSpace::NONE))) {
-				setParagraph(
-					 VSpace(VSpace::NONE),
-				   params.spaceBottom(),
-					 params.spacing(),
-					 params.align(),
-					 params.labelWidthString(), 0);
-			} else {
-				LyXCursor cur = cursor;
-				backspace();
-				selection.cursor = cur;
-			}
+			LyXCursor cur = cursor;
+			backspace();
+			selection.cursor = cur;
 		} else {
 			cutSelection(true, false);
 		}
@@ -829,15 +807,11 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		replaceSelection(bv->getLyXText());
 		if (cur.pos() == 0) {
 			ParagraphParameters & params = getPar(cur)->params();
-			if (params.spaceTop() == VSpace(VSpace::NONE)) {
-				setParagraph(
-					 VSpace(VSpace::DEFSKIP), params.spaceBottom(),
-					 params.spacing(),
-					 params.align(),
-					 params.labelWidthString(), 1);
-			}
-		}
-		else {
+			setParagraph(
+					params.spacing(),
+					params.align(),
+					params.labelWidthString(), 1);
+		} else {
 			breakParagraph(bv->buffer()->paragraphs(), 0);
 		}
 		bv->update();
@@ -924,7 +898,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (cursorPar()->layout()->free_spacing)
 			insertChar(' ');
 		else
-			doInsertInset(this, cmd, false, false);
+			doInsertInset(*this, cmd, false, false);
 		moveCursor(bv, false);
 		break;
 
@@ -1418,12 +1392,12 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_ENVIRONMENT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
-		doInsertInset(this, cmd, true, true);
+		doInsertInset(*this, cmd, true, true);
 		break;
 
 	case LFUN_INDEX_INSERT:
 		// Just open the inset
-		doInsertInset(this, cmd, true, false);
+		doInsertInset(*this, cmd, true, false);
 		break;
 
 	case LFUN_INDEX_PRINT:
@@ -1432,7 +1406,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSERT_LINE:
 	case LFUN_INSERT_PAGEBREAK:
 		// do nothing fancy
-		doInsertInset(this, cmd, false, false);
+		doInsertInset(*this, cmd, false, false);
 		break;
 
 	case LFUN_DEPTH_MIN:

@@ -104,6 +104,8 @@ libcontrollers_la_SOURCES= \
 	ControlToc.h \
 	ControlVCLog.C \
 	ControlVCLog.h \
+	ControlVSpace.C \
+	ControlVSpace.h \
 	ControlWrap.C \
 	ControlWrap.h \
 	GUI.h \

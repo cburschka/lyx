@@ -54,6 +54,7 @@
 #include "insets/insetcommand.h"
 #include "insets/insetexternal.h"
 #include "insets/insettabular.h"
+#include "insets/insetvspace.h"
 
 #include "mathed/math_cursor.h"
 
@@ -590,6 +591,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			code = InsetOld::TOC_CODE;
 		else if (ev.argument == "url")
 			code = InsetOld::URL_CODE;
+		else if (ev.argument == "vspace")
+			code = InsetOld::VSPACE_CODE;
 		else if (ev.argument == "wrap")
 			code = InsetOld::WRAP_CODE;
 		break;
@@ -1235,6 +1238,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			} else if (name == "citation") {
 				InsetCommandParams p("cite");
 				data = InsetCommandMailer::params2string(name, p);
+			} else if (name == "vspace") {
+				VSpace space;
+				data = InsetVSpaceMailer::params2string(space);
 			}
 			owner->getDialogs().show(name, data, 0);
 			break;

@@ -50,6 +50,7 @@ SRCS =  form_aboutlyx.fd \
 	form_thesaurus.fd \
 	form_toc.fd \
 	form_url.fd \
+	form_vspace.fd \
 	form_wrap.fd
 
 nodist_libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)

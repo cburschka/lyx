@@ -310,12 +310,6 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 	do {
 		pit->applyLayout(lyxlayout);
 		makeFontEntriesLayoutSpecific(bufparams, *pit);
-		pit->params().spaceTop(lyxlayout->fill_top ?
-					 VSpace(VSpace::VFILL)
-					 : VSpace(VSpace::NONE));
-		pit->params().spaceBottom(lyxlayout->fill_bottom ?
-					    VSpace(VSpace::VFILL)
-					    : VSpace(VSpace::NONE));
 		if (lyxlayout->margintype == MARGIN_MANUAL)
 			pit->setLabelWidthString(lyxlayout->labelstring());
 		cur.par(std::distance(ownerParagraphs().begin(), pit));
@@ -611,8 +605,7 @@ string LyXText::getStringToIndex()
 // they do not duplicate themself and you cannot play dirty tricks with
 // them!
 
-void LyXText::setParagraph(VSpace const & space_top,
-			   VSpace const & space_bottom,
+void LyXText::setParagraph(
 			   Spacing const & spacing,
 			   LyXAlignment align,
 			   string const & labelwidthstring,
@@ -643,8 +636,6 @@ void LyXText::setParagraph(VSpace const & space_top,
 
 		ParagraphList::iterator const pit = cursorPar();
 		ParagraphParameters & params = pit->params();
-		params.spaceTop(space_top);
-		params.spaceBottom(space_bottom);
 		params.spacing(spacing);
 
 		// does the layout allow the new alignment?

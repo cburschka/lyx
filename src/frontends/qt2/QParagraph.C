@@ -65,102 +65,17 @@ void QParagraph::build_dialog()
 			  bind2nd(contains_functor(), "%"));
 	units_.erase(del, units_.end());
 
-	for (vector<string>::const_iterator it = units_.begin();
-		it != units_.end(); ++it) {
-		dialog_->unitAbove->insertItem(toqstr(*it));
-		dialog_->unitBelow->insertItem(toqstr(*it));
-	}
-
 	// Manage the ok, apply, restore and cancel/close buttons
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
 	bcview().setRestore(dialog_->restorePB);
-	bcview().addReadOnly(dialog_->paragraphTab);
 }
-
-
-namespace {
-
-VSpace setVSpaceFromWidgets(int spacing,
-			    string value,
-			    string unit,
-			    bool keep)
-{
-	VSpace space;
-
-	switch (spacing) {
-	case 0:
-		space = VSpace(VSpace::NONE);
-		break;
-	case 1:
-		space = VSpace(VSpace::DEFSKIP);
-		break;
-	case 2:
-		space = VSpace(VSpace::SMALLSKIP);
-		break;
-	case 3:
-		space = VSpace(VSpace::MEDSKIP);
-		break;
-	case 4:
-		space = VSpace(VSpace::BIGSKIP);
-		break;
-	case 5:
-		space = VSpace(VSpace::VFILL);
-		break;
-	case 6:
-		string s;
-		string const length = trim(value);
-		if (isValidGlueLength(length)) {
-			s = length;
-		} else if (!length.empty()){
-			string u = trim(unit);
-			u = subst(u, "%%", "%");
-			s = length + u;
-		}
-		space = VSpace(LyXGlueLength(s));
-		break;
-	}
-
-	space.setKeep(keep);
-
-	return space;
-}
-
-} // namespace anon
 
 
 void QParagraph::apply()
 {
 	ParagraphParameters & params = controller().params();
-
-	// SPACING ABOVE
-	// If a vspace kind is "Length" but there's no text in
-	// the input field, reset the kind to "None".
-	if (dialog_->spacingAbove->currentItem() == 6
-	    && dialog_->valueAbove->text().isEmpty())
-		dialog_->spacingAbove->setCurrentItem(0);
-
-	VSpace const space_top =
-		setVSpaceFromWidgets(dialog_->spacingAbove->currentItem(),
-				     fromqstr(dialog_->valueAbove->text()),
-				     fromqstr(dialog_->unitAbove->currentText()),
-				     dialog_->keepAbove->isChecked());
-
-	params.spaceTop(space_top);
-
-	// SPACING BELOW
-	if (dialog_->spacingBelow->currentItem() == 6
-	    && dialog_->valueBelow->text().isEmpty())
-		dialog_->spacingBelow->setCurrentItem(0);
-
-	VSpace const space_bottom =
-	setVSpaceFromWidgets(dialog_->spacingBelow->currentItem(),
-			     fromqstr(dialog_->valueBelow->text()),
-			     fromqstr(dialog_->unitBelow->currentText()),
-			     dialog_->keepBelow->isChecked());
-
-	params.spaceBottom(space_bottom);
 
 	// alignment
 	LyXAlignment align;
@@ -211,80 +126,7 @@ void QParagraph::apply()
 	params.labelWidthString(fromqstr(dialog_->labelWidth->text()));
 	// indendation
 	params.noindent(!dialog_->indentCB->isChecked());
-
 }
-
-
-namespace {
-
-void setWidgetsFromVSpace(VSpace const & space,
-			  QComboBox * spacing,
-			  QLineEdit * value,
-			  QComboBox * unit,
-			  QCheckBox * keep, vector<string> units_)
-{
-	value->setText("");
-	value->setEnabled(false);
-	unit->setEnabled(false);
-
-	int item = 0;
-	switch (space.kind()) {
-	case VSpace::NONE:
-		item = 0;
-		break;
-	case VSpace::DEFSKIP:
-		item = 1;
-		break;
-	case VSpace::SMALLSKIP:
-		item = 2;
-		break;
-	case VSpace::MEDSKIP:
-		item = 3;
-		break;
-	case VSpace::BIGSKIP:
-		item = 4;
-		break;
-	case VSpace::VFILL:
-		item = 5;
-		break;
-	case VSpace::LENGTH:
-		item = 6;
-		value->setEnabled(true);
-		unit->setEnabled(true);
-		string length = space.length().asString();
-		string const default_unit =
-			(lyxrc.default_papersize > 3) ? "cm" : "in";
-		string supplied_unit = default_unit;
-		LyXLength len(length);
-		if ((isValidLength(length)
-		     || isStrDbl(length)) && !len.zero()) {
-			length = tostr(len.value());
-			supplied_unit = subst(stringFromUnit(len.unit()),
-					      "%", "%%");
-		}
-
-		int unit_item = 0;
-		int i = 0;
-		for (vector<string>::const_iterator it = units_.begin();
-		     it != units_.end(); ++it) {
-			if (*it == default_unit) {
-				unit_item = i;
-			}
-			if (*it == supplied_unit) {
-				unit_item = i;
-				break;
-			}
-			i += 1;
-		}
-		value->setText(toqstr(length));
-		unit->setCurrentItem(unit_item);
-		break;
-	}
-	spacing->setCurrentItem(item);
-	keep->setChecked(space.keep());
-}
-
-} // namespace anon
 
 
 void QParagraph::update_contents()
@@ -354,18 +196,4 @@ void QParagraph::update_contents()
 		dialog_->linespacingValue->setText("");
 		dialog_->linespacingValue->setEnabled(false);
 	}
-
-	// vspace top
-	setWidgetsFromVSpace(params.spaceTop(),
-			     dialog_->spacingAbove,
-			     dialog_->valueAbove,
-			     dialog_->unitAbove,
-			     dialog_->keepAbove,units_);
-
-	// vspace bottom
-	setWidgetsFromVSpace(params.spaceBottom(),
-			     dialog_->spacingBelow,
-			     dialog_->valueBelow,
-			     dialog_->unitBelow,
-			     dialog_->keepBelow,units_);
 }

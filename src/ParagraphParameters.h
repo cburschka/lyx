@@ -28,7 +28,6 @@ class LyXLex;
 class Paragraph;
 class ParameterStruct;
 class Spacing;
-class VSpace;
 
 ///
 class ParagraphParameters {
@@ -39,14 +38,6 @@ public:
 	void clear();
 	///
 	bool sameLayout(ParagraphParameters const &) const;
-	///
-	VSpace const & spaceTop() const;
-	///
-	void spaceTop(VSpace const &);
-	///
-	VSpace const & spaceBottom() const;
-	///
-	void spaceBottom(VSpace const &);
 	///
 	Spacing const & spacing() const;
 	///

@@ -244,11 +244,6 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		if (pit->params().spaceTop().kind() != VSpace::NONE) {
-			os << pit->params().spaceTop().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
-
 		if (further_blank_line) {
 			os << '\n';
 			texrow.newline();
@@ -388,11 +383,6 @@ TeXOnePar(Buffer const & buf,
 
 	if (in == 0 || !in->forceDefaultParagraphs(in)) {
 		further_blank_line = false;
-
-		if (pit->params().spaceBottom().kind() != VSpace::NONE) {
-			os << pit->params().spaceBottom().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
 
 		if (further_blank_line) {
 			os << '\n';

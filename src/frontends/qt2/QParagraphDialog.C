@@ -64,23 +64,6 @@ void QParagraphDialog::change_adaptor()
 }
 
 
-void QParagraphDialog::enableAbove(int)
-{
-	bool const enable = spacingAbove->currentItem()==6;
-	valueAbove->setEnabled(enable);
-	unitAbove->setEnabled(enable);
-
-}
-
-
-void QParagraphDialog::enableBelow(int)
-{
-	bool const enable = spacingBelow->currentItem()==6;
-	valueBelow->setEnabled(enable);
-	unitBelow->setEnabled(enable);
-}
-
-
 void QParagraphDialog::enableLinespacingValue(int)
 {
 	bool const enable = linespacing->currentItem()==4;

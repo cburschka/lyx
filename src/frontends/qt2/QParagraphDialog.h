@@ -28,8 +28,6 @@ private:
 	QParagraph * form_;
 protected slots:
 	void change_adaptor();
-	void enableAbove(int);
-	void enableBelow(int);
 	void enableLinespacingValue(int);
 };
 

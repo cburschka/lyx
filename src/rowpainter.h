@@ -15,10 +15,6 @@
 
 class LyXText;
 class BufferView;
-class VSpace;
-
-/// return the pixel height of a space marker before/after a par
-int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp);
 
 /// paint the rows of the main text, return last drawn y value
 int paintText(BufferView const & bv);

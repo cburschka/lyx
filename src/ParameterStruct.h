@@ -15,7 +15,6 @@
 #include "layout.h"
 #include "lyxlength.h"
 #include "Spacing.h"
-#include "vspace.h"
 
 #include "support/types.h"
 
@@ -26,10 +25,6 @@ struct ParameterStruct {
 	typedef lyx::depth_type depth_type;
 	///
 	ParameterStruct();
-	///
-	VSpace added_space_top;
-	///
-	VSpace added_space_bottom;
 	///
 	Spacing spacing;
 	///
@@ -63,9 +58,8 @@ inline
 bool operator==(ParameterStruct const & ps1,
 		ParameterStruct const & ps2)
 {
-	return ps1.added_space_top == ps2.added_space_top
-		&& ps1.added_space_bottom == ps2.added_space_bottom
-		&& ps1.spacing == ps2.spacing
+	return
+		   ps1.spacing == ps2.spacing
 		&& ps1.noindent == ps2.noindent
 		&& ps1.align == ps2.align
 		&& ps1.depth == ps2.depth

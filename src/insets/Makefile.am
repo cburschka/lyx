@@ -108,6 +108,8 @@ libinsets_la_SOURCES = \
 	insettoc.h \
 	inseturl.C \
 	inseturl.h \
+	insetvspace.C \
+	insetvspace.h \
 	insetwrap.h \
 	insetwrap.C \
 	updatableinset.C \

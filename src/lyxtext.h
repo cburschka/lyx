@@ -267,8 +267,6 @@ public:
 	 settings are given to the new one.
 	 */
 	void setParagraph(
-			  VSpace const & space_top,
-			  VSpace const & space_bottom,
 			  Spacing const & spacing,
 			  LyXAlignment align,
 			  std::string const & labelwidthstring,

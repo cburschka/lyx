@@ -1286,13 +1286,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 		bool hasLayout = tclass.hasLayout(lres);
 
 		bv_->text()->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
-
-		bv_->text()->setParagraph(
-				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
-				   Spacing(),
-				   LYX_ALIGN_LAYOUT,
-				   string(),
-				   0);
+		bv_->text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
 	}
 	bv_->cursor().innerText()->insertInset(inset);
 	unFreezeUndo();

@@ -45,6 +45,7 @@
 #include "support/tostr.h"
 
 #include <boost/tuple/tuple.hpp>
+#include <boost/bind.hpp>
 
 #include <list>
 #include <stack>
@@ -646,8 +647,6 @@ void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
 	layout(new_layout);
 	params().labelWidthString(string());
 	params().align(LYX_ALIGN_LAYOUT);
-	params().spaceTop(VSpace(VSpace::NONE));
-	params().spaceBottom(VSpace(VSpace::NONE));
 	params().spacing(Spacing(Spacing::Default));
 }
 
@@ -1276,6 +1275,7 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 		}
 
 		char c = getChar(i);
+
 
 		if (c == Paragraph::META_INSET) {
 			InsetOld const * inset = getInset(i);

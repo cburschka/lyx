@@ -71,7 +71,6 @@ private:
 	void paintArabicComposeChar(lyx::pos_type & vpos);
 	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
-	int paintLengthMarker(string const & prefix, VSpace const & vsp, int start);
 	void paintText();
 	void paintFromPos(lyx::pos_type & vpos);
 	void paintInset(lyx::pos_type const pos);
@@ -561,73 +560,6 @@ void RowPainter::paintDepthBar()
 }
 
 
-int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp,
-	int start)
-{
-	if (vsp.kind() == VSpace::NONE)
-		return 0;
-
-	int const arrow_size = 4;
-	int const size = getLengthMarkerHeight(bv_, vsp);
-	int const end = start + size;
-
-	// the label to display (if any)
-	string str;
-	// y-values for top arrow
-	int ty1, ty2;
-	// y-values for bottom arrow
-	int by1, by2;
-
-	str = prefix + " (" + vsp.asLyXCommand() + ")";
-
-	if (vsp.kind() == VSpace::VFILL) {
-		ty1 = ty2 = start;
-		by1 = by2 = end;
-	} else {
-		// adding or removing space
-		bool const added = vsp.kind() != VSpace::LENGTH ||
-				   vsp.length().len().value() > 0.0;
-		ty1 = added ? (start + arrow_size) : start;
-		ty2 = added ? start : (start + arrow_size);
-		by1 = added ? (end - arrow_size) : end;
-		by2 = added ? end : (end - arrow_size);
-	}
-
-	int const leftx = int(xo_) + leftMargin();
-	int const midx = leftx + arrow_size;
-	int const rightx = midx + arrow_size;
-
-	// first the string
-	int w = 0;
-	int a = 0;
-	int d = 0;
-
-	LyXFont font;
-	font.setColor(LColor::added_space);
-	font.decSize();
-	font.decSize();
-	font_metrics::rectText(str, font, w, a, d);
-
-	pain_.rectText(leftx + 2 * arrow_size + 5,
-		       start + (end - start) / 2 + d,
-		       str, font,
-		       LColor::none, LColor::none);
-
-	// top arrow
-	pain_.line(leftx, ty1, midx, ty2, LColor::added_space);
-	pain_.line(midx, ty2, rightx, ty1, LColor::added_space);
-
-	// bottom arrow
-	pain_.line(leftx, by1, midx, by2, LColor::added_space);
-	pain_.line(midx, by2, rightx, by1, LColor::added_space);
-
-	// joining line
-	pain_.line(midx, ty2, midx, by2, LColor::added_space);
-
-	return size;
-}
-
-
 int RowPainter::paintAppendixStart(int y)
 {
 	LyXFont pb_font;
@@ -661,10 +593,6 @@ void RowPainter::paintFirst()
 	// start of appendix?
 	if (parparams.startOfAppendix())
 		y_top += paintAppendixStart(yo_ + y_top + 2 * defaultRowHeight());
-
-	// draw the additional space if needed:
-	y_top += paintLengthMarker(_("Space above"), parparams.spaceTop(),
-			yo_ + y_top);
 
 	Buffer const & buffer = *bv_.buffer();
 
@@ -782,15 +710,7 @@ void RowPainter::paintFirst()
 
 void RowPainter::paintLast()
 {
-	ParagraphParameters const & parparams = pit_->params();
-	int y_bottom = row_.height() - 1;
 	int const ww = bv_.workWidth();
-
-	// draw the additional space if needed:
-	int const height = getLengthMarkerHeight(bv_, parparams.spaceBottom());
-	y_bottom -= paintLengthMarker(_("Space below"), parparams.spaceBottom(),
-			     yo_ + y_bottom - height);
-
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 	int const endlabel = getEndLabel(pit_, text_.ownerParagraphs());
 
@@ -971,23 +891,4 @@ int paintText(BufferView const & bv)
 void paintTextInset(BufferView const & bv, LyXText const & text, int xo, int yo)
 {
 	paintPars(bv, text, text.ownerParagraphs().begin(), xo, yo, 0);
-}
-
-
-int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
-{
-	if (vsp.kind() == VSpace::NONE)
-		return 0;
-
-	int const arrow_size = 4;
-	int const space_size = vsp.inPixels(bv);
-
-	LyXFont font;
-	font.decSize();
-	int const min_size = max(3 * arrow_size, font_metrics::maxHeight(font));
-
-	if (vsp.length().len().value() < 0.0)
-		return min_size;
-	else
-		return max(min_size, space_size);
 }

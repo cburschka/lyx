@@ -1,4 +1,22 @@
 
+2003-11-28  André Pönitz  <poenitz@gmx.net>
+
+	* ParagraphParameters.[Ch]:
+	* ParameterStruct.h: remove space above/below from Paragraph to
+	 InsetVSpace
+
+	* BufferView_pimpl.C:
+	* factory.C:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* output_latex.C:
+	* paragraph.C:
+	* paragraph_funcs.C:
+	* rowpainter.[Ch]:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
 2003-11-28  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* factory.C: Syntax change for CharStyles

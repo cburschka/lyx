@@ -657,9 +657,6 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 				maxasc += bufparams.getDefSkip().inPixels(*bv());
 		}
 
-		// add user added vertical space
-		maxasc += getLengthMarkerHeight(*bv(), pit->params().spaceTop());
-
 		if (pit->params().startOfAppendix())
 			maxasc += int(3 * dh);
 
@@ -684,7 +681,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 				+ (layout->topsep + layout->labelbottomsep) * dh);
 		}
 
-		// And now the layout spaces, for example before and after
+		// Add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment.
 
@@ -715,10 +712,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 
 	// is it a bottom line?
 	if (row.endpos() >= pit->size()) {
-		// add the vertical spaces, that the user added
-		maxdesc += getLengthMarkerHeight(*bv(), pit->params().spaceBottom());
-
-		// and now the layout spaces, for example before and after
+		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
 		ParagraphList::iterator nextpit = boost::next(pit);
@@ -1319,16 +1313,7 @@ void LyXText::backspace()
 			// handle the actual deletion of the paragraph.
 
 			if (cursor.par()) {
-				ParagraphList::iterator tmppit = getPar(cursor.par() - 1);
-				if (cursorPar()->layout() == tmppit->layout()
-				    && cursorPar()->getAlign() == tmppit->getAlign()) {
-					// Inherit bottom DTD from the paragraph below.
-					// (the one we are deleting)
-					tmppit->params().spaceBottom(cursorPar()->params().spaceBottom());
-				}
-
 				cursorLeft(bv());
-
 				// the layout things can change the height of a row !
 				redoParagraph();
 				return;

@@ -52,8 +52,6 @@ ParagraphParameters::ParagraphParameters()
 void ParagraphParameters::clear()
 {
 	ParameterStruct tmp(*param);
-	tmp.added_space_top = VSpace(VSpace::NONE);
-	tmp.added_space_bottom = VSpace(VSpace::NONE);
 	tmp.spacing.set(Spacing::Default);
 	tmp.align = LYX_ALIGN_LAYOUT;
 	tmp.depth = 0;
@@ -74,8 +72,6 @@ ParagraphParameters::depth_type ParagraphParameters::depth() const
 bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 {
 	return param->align == pp.param->align &&
-		param->added_space_bottom == pp.param->added_space_bottom &&
-		param->added_space_top == pp.param->added_space_top &&
 		param->spacing == pp.param->spacing &&
 		param->noindent == pp.param->noindent &&
 		param->depth == pp.param->depth;
@@ -86,34 +82,6 @@ void ParagraphParameters::set_from_struct(ParameterStruct const & ps)
 {
 	// get new param from container with tmp as template
 	param = container.get(ps);
-}
-
-
-VSpace const & ParagraphParameters::spaceTop() const
-{
-	return param->added_space_top;
-}
-
-
-void ParagraphParameters::spaceTop(VSpace const & vs)
-{
-	ParameterStruct tmp(*param);
-	tmp.added_space_top = vs;
-	set_from_struct(tmp);
-}
-
-
-VSpace const & ParagraphParameters::spaceBottom() const
-{
-	return param->added_space_bottom;
-}
-
-
-void ParagraphParameters::spaceBottom(VSpace const & vs)
-{
-	ParameterStruct tmp(*param);
-	tmp.added_space_bottom = vs;
-	set_from_struct(tmp);
 }
 
 
@@ -257,10 +225,6 @@ void ParagraphParameters::read(LyXLex & lex)
 			lex.nextToken();
 			LyXLength value(lex.getString());
 			leftIndent(value);
-		} else if (token == "\\fill_top") {
-			spaceTop(VSpace(VSpace::VFILL));
-		} else if (token == "\\fill_bottom") {
-			spaceBottom(VSpace(VSpace::VFILL));
 		} else if (token == "\\start_of_appendix") {
 			startOfAppendix(true);
 		} else if (token == "\\paragraph_spacing") {
@@ -284,24 +248,6 @@ void ParagraphParameters::read(LyXLex & lex)
 			if (tmpret == -1)
 				++tmpret;
 			align(LyXAlignment(1 << tmpret));
-		} else if (token == "\\added_space_top") {
-			lex.nextToken();
-			VSpace value = VSpace(lex.getString());
-			// only add the length when value > 0 or
-			// with option keep
-			if ((value.length().len().value() != 0) ||
-			    value.keep() ||
-			    (value.kind() != VSpace::LENGTH))
-				spaceTop(value);
-		} else if (token == "\\added_space_bottom") {
-			lex.nextToken();
-			VSpace value = VSpace(lex.getString());
-			// only add the length when value > 0 or
-			// with option keep
-			if ((value.length().len().value() != 0) ||
-			   value.keep() ||
-			    (value.kind() != VSpace::LENGTH))
-				spaceBottom(value);
 		} else if (token == "\\labelwidthstring") {
 			lex.eatLine();
 			labelWidthString(lex.getString());
@@ -315,14 +261,6 @@ void ParagraphParameters::read(LyXLex & lex)
 
 void ParagraphParameters::write(ostream & os) const
 {
-	// Maybe some vertical spaces.
-	if (spaceTop().kind() != VSpace::NONE)
-		os << "\\added_space_top "
-		   << spaceTop().asLyXCommand() << ' ';
-	if (spaceBottom().kind() != VSpace::NONE)
-		os << "\\added_space_bottom "
-		   << spaceBottom().asLyXCommand() << ' ';
-
 	// Maybe the paragraph has special spacing
 	spacing().writeFile(os, true);
 
@@ -358,7 +296,6 @@ void ParagraphParameters::write(ostream & os) const
 }
 
 
-
 void setParagraphParams(BufferView & bv, string const & data)
 {
 	istringstream is(data);
@@ -370,8 +307,6 @@ void setParagraphParams(BufferView & bv, string const & data)
 
 	LyXText * text = bv.getLyXText();
 	text->setParagraph(
-			   params.spaceTop(),
-			   params.spaceBottom(),
 			   params.spacing(),
 			   params.align(),
 			   params.labelWidthString(),

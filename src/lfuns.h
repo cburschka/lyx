@@ -332,7 +332,7 @@ enum kb_action {
 	LFUN_FINISHED_UP,
 	LFUN_FINISHED_DOWN,
 	LFUN_INSERT_CHARSTYLE,
-
+	// 255
 	LFUN_LASTACTION                  // end of the table
 };
 
