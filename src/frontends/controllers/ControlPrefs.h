@@ -39,9 +39,6 @@ public:
 
 	LyXRC const & rc() const { return rc_; }
  
-	/// make OK do the save
-	virtual void OKButton();
- 
 	/// various file pickers
 	string const browsebind(string const & file);
 	string const browseUI(string const & file);

@@ -135,24 +135,6 @@ void FormPreferences::redraw()
 }
 
 
-#if 0
-void FormPreferences::ok()
-{
-	FormBaseDeprecated::ok();
-
-// FIXME !!
-	if (colors_.modifiedXformsPrefs) {
-		string const filename =
-			AddName(user_lyxdir, "preferences.xform");
-		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
-	}
-
-	lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
-}
-#endif
-
-
-
 void FormPreferences::hide()
 {
 	// We need to hide the active tabfolder otherwise we get a
@@ -302,6 +284,13 @@ void FormPreferences::apply()
 	printer_.apply(rc);
 	screen_fonts_.apply(rc);
 	spelloptions_.apply(rc);
+
+	// The "Save" button has been pressed.
+	if (controller().isClosing() && colors_.modifiedXformsPrefs) {
+		string const filename =
+			AddName(user_lyxdir, "preferences.xform");
+		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
+	}
 }
 
 

@@ -48,13 +48,11 @@ void ControlPrefs::apply()
 {
 	view().apply();
 	lyxrc = rc_;
-}
 
-
-void ControlPrefs::OKButton()
-{
-	ControlDialogBI::OKButton();
-	lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
+	// The Save button has been pressed
+	if (isClosing()) {
+		lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
+	}
 }
 
 

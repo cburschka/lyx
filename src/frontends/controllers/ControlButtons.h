@@ -49,8 +49,8 @@ public:
 	 */
 	///
 	void ApplyButton();
-	/// virtual for ControlPrefs
-	virtual void OKButton();
+	///
+	void OKButton();
 	///
 	void CancelButton();
 	///
@@ -66,13 +66,13 @@ public:
 	void setView(ViewBase &);
 	///
 	void setButtonController(ButtonControllerBase &);
-protected:
-	///
-	ViewBase & view();
-
 	/** When Applying it's useful to know whether the dialog is about
 	    to close or not (no point refreshing the display for example). */
 	bool isClosing() const { return is_closing_; }
+
+protected:
+	///
+	ViewBase & view();
 
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply() = 0;

@@ -1,5 +1,10 @@
 2002-11-29  Angus Leeming  <leeming@lyx.org>
 
+	* FormPreferences.C (apply): if controller().isClosing() (ie, if the
+	"save" button has been pressed), then save any modified gui colors.
+
+2002-11-29  Angus Leeming  <leeming@lyx.org>
+
 	* forms_gettext.[Ch] (scex, idex): re-written to receive and return
 	string not char *. The old idex function was new-ing memory and nothing
 	that used it was ensuring that this memory didn't leak. Now safe.

@@ -1,3 +1,15 @@
+2002-11-29  Angus Leeming  <leeming@lyx.org>
+
+	* ControlButtons.h (isClosing): make it public, so that the view can
+	see it too.
+	(OKButton): no longer virtual. ControlPrefs should use isClosing() from
+	within apply.
+
+	* ControlPrefs.[Ch] (OKButton): removed.
+
+	* ControlPrefs.C (apply): dispatch a LFUN_SAVEPREFERENCES if the
+	dialog isClosing(). (Ie, if the "save" button has been pressed.)
+
 2002-11-28  John Levon  <levon@movementarian.org>
  
         * ControlSpellchecker.C: fix Lars' broken cleanup
