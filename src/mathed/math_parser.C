@@ -913,7 +913,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 
 			else if (name == "math") {
 				cell->push_back(MathAtom(new MathHullInset("simple")));
-				parse_into2(cell->back(), FLAG_SIMPLE, true, true);
+				parse_into2(cell->back(), FLAG_END, true, true);
 			}
 
 			else if (name == "equation" || name == "equation*"
