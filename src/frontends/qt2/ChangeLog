@@ -2,9 +2,19 @@
 
 	* Dialogs.C:
 	* Dialogs2.C:
-	* Dialogs_impl.h: remove aboutlyx dialog.
+	* Dialogs_impl.h: remove merge changes dialog.
 
-	* Dialogs3.C: add aboutlyx dialog.
+	* Dialogs3.C: add merge changes dialog.
+
+	* QChanges.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove about lyx dialog.
+
+	* Dialogs3.C: add about lyx dialog.
 
 	* QAbout.[Ch]: changes to use the new Dialog-based scheme.
 
