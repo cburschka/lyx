@@ -1,3 +1,8 @@
+2005-02-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_text): Only reset font changes if not at the
+	beginning of a new layout
+
 2005-01-31  Angus Leeming  <leeming@lyx.org>
 
 	* tex2lyx.C (main): enable tex2lyx to find the top level

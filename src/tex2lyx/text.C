@@ -995,37 +995,48 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				; // ignore it in {}`` or -{}-
 			else if (s == "[" || s == "]" || s == "*")
 				os << s;
-			else if (is_known(next.cs(), known_sizes))
+			else if (is_known(next.cs(), known_sizes)) {
 				// s will change the size, so we must reset
 				// it here
-				os << s << "\n\\size " << context.font.size
-				   << "\n";
-			else if (is_known(next.cs(), known_font_families))
+				os << s;
+				if (!context.atParagraphStart())
+					os << "\\n\\size "
+					   << context.font.size << "\n";
+			} else if (is_known(next.cs(), known_font_families)) {
 				// s will change the font family, so we must
 				// reset it here
-				os << s << "\n\\family "
-				   << context.font.family << "\n";
-			else if (is_known(next.cs(), known_font_series))
+				os << s;
+				if (!context.atParagraphStart())
+					os << "\n\\family "
+					   << context.font.family << "\n";
+			} else if (is_known(next.cs(), known_font_series)) {
 				// s will change the font series, so we must
 				// reset it here
-				os << s << "\n\\series "
-				   << context.font.series << "\n";
-			else if (is_known(next.cs(), known_font_shapes))
+				os << s;
+				if (!context.atParagraphStart())
+					os << "\n\\series "
+					   << context.font.series << "\n";
+			} else if (is_known(next.cs(), known_font_shapes)) {
 				// s will change the font shape, so we must
 				// reset it here
-				os << s << "\n\\shape "
-				   << context.font.shape << "\n";
-			else if (is_known(next.cs(), known_old_font_families) ||
-			         is_known(next.cs(), known_old_font_series) ||
-			         is_known(next.cs(), known_old_font_shapes))
+				os << s;
+				if (!context.atParagraphStart())
+					os << "\n\\shape "
+					   << context.font.shape << "\n";
+			} else if (is_known(next.cs(), known_old_font_families) ||
+			           is_known(next.cs(), known_old_font_series) ||
+			           is_known(next.cs(), known_old_font_shapes)) {
 				// s will change the font family, series
 				// and shape, so we must reset it here
-				os << s
-				   <<  "\n\\family " << context.font.family
-				   << "\n\\series " << context.font.series
-				   << "\n\\shape "  << context.font.shape
-				   << "\n";
-			else {
+				os << s;
+				if (!context.atParagraphStart())
+					os <<  "\n\\family "
+					   << context.font.family
+					   << "\n\\series "
+					   << context.font.series
+					   << "\n\\shape "
+					   << context.font.shape << "\n";
+			} else {
 				handle_ert(os, "{", context, false);
 				// s will end the current layout and begin a
 				// new one if necessary
