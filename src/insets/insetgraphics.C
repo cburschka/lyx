@@ -703,11 +703,15 @@ int InsetGraphics::docbook(Buffer const &, ostream & os,
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and
 	// easier to use.
-	runparams.exportdata->addExternalFile("docbook",
-	                                      params().filename.absFilename());
-	runparams.exportdata->addExternalFile("docbook-xml",
-	                                      params().filename.absFilename());
-	os << "<graphic fileref=\"&" << graphic_label << ";\">";
+	if (runparams.flavor == OutputParams::XML) {
+		runparams.exportdata->addExternalFile("docbook-xml",
+						      params().filename.absFilename());
+		os << "<graphic fileref=\"&" << graphic_label << ";\"/>";
+	} else {
+		runparams.exportdata->addExternalFile("docbook",
+						      params().filename.absFilename());
+		os << "<graphic fileref=\"&" << graphic_label << ";\">";
+	}
 	return 0;
 }
 

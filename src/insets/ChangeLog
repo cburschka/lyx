@@ -1,3 +1,7 @@
+2004-08-13  José Matos  <jamatos@lyx.org>
+
+	* insetgraphics.C (docbook): close empty tags in XML. Fix bug 1147.
+
 2004-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetfoot.C (latex): use OutputParams::intitle instead of

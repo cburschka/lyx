@@ -2250,7 +2250,10 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 			os << "center";
 			break;
 		}
-		os << "\">\n";
+		os << '"';
+		if (runparams.flavor == OutputParams::XML)
+			os << '/';
+		os << ">\n";
 		++ret;
 	}
 
