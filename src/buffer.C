@@ -418,8 +418,10 @@ Inset * Buffer::isErtInset(Paragraph * par, int pos) const
 
 void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive)
 {
-	string str = frontStrip(strip(ert_comp.contents, ' '), ' ');
-	if (!str.empty()) {
+	if (ert_comp.contents.find_first_not_of(' ') != string::npos) {
+		// we only skip completely empty ERT (only spaces) otherwise
+		// we have to insert it as is.
+		string str(ert_comp.contents);
 		lyxerr[Debug::INSETS] << "ERT contents:\n'"
 			<< str << "'" << endl;
 		// check if we have already an ert inset a position earlier
