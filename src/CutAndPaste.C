@@ -58,8 +58,18 @@ CutAndPaste::availableSelections(Buffer const & buffer)
 	CutStack::const_iterator end = cuts.end();
 	for (; cit != end; ++cit) {
 		ParagraphList const & pars = cit->first;
-		string asciiPar(pars.front().asString(&buffer, false), 0, 25);
-		selList.push_back(asciiPar);
+		string asciiSel;
+		ParagraphList::const_iterator pit = pars.begin();
+		ParagraphList::const_iterator pend = pars.end();
+		for (; pit != pend; ++pit) {
+			asciiSel += pit->asString(&buffer, false);
+			if (asciiSel.size() > 25) {
+				asciiSel.replace(22, string::npos, "...");
+				break;
+			}
+		}
+
+		selList.push_back(asciiSel);
 	}
 
 	return selList;

@@ -1,3 +1,7 @@
+2003-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* CutAndPaste.C (availableSelections): potentially check all
+	paragraphs in a cut to fill the shown strings.
 
 2003-06-18  André Pönitz  <poenitz@gmx.net>
 
