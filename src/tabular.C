@@ -2007,7 +2007,8 @@ int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
 		ret += TeXCellPreamble(os, cell);
 		InsetText & inset = getCellInset(cell);
 
-		bool rtl = inset.text_.isRTL(inset.paragraphs().front())
+		Paragraph const & par = inset.paragraphs().front();
+		bool rtl = par.isRightToLeftPar(buf.params())
 			&& !inset.paragraphs().begin()->empty()
 			&& getPWidth(cell).zero();
 

@@ -1,4 +1,8 @@
 
+2004-03-21  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* tabular.C (TeXRow): crash fix (from Kayvan and André)
+
 2004-03-19  André Pönitz  <poenitz@gmx.net>
 
         * cursor.[Ch] (reset): take main text inset as argument
