@@ -71,11 +71,6 @@ using std::for_each;
 using lyx::pos_type;
 using lyx::textclass_type;
 
-extern unsigned char getCurrentTextClass(Buffer *);
-extern bool math_insert_greek(BufferView *, char);
-extern int greek_kb_flag;
-
-
 // These functions should probably go into bufferview_funcs somehow (Jug)
 
 void InsetText::saveLyXTextState(LyXText * t) const

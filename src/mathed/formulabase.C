@@ -1021,7 +1021,6 @@ void mathDispatch(FuncRequest const & cmd)
 			}
 			break;
 
-		case LFUN_GREEK:
 		case LFUN_INSERT_MATH:
 		case LFUN_INSERT_MATRIX:
 		case LFUN_MATH_DELIM: {

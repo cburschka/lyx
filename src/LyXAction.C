@@ -269,8 +269,6 @@ void LyXAction::init()
 		{ LFUN_SETMARK, "mark-toggle", "", ReadOnly },
 		{ LFUN_MATH_DELIM, "math-delim", "", Noop },
 		{ LFUN_MATH_DISPLAY, "math-display", "", Noop },
-		{ LFUN_GREEK, "math-greek", N_("Math Greek"), Noop },
-		{ LFUN_GREEK_TOGGLE, "math-greek-toggle", "", Noop },
 		{ LFUN_INSERT_MATH, "math-insert",
 		  N_("Insert math symbol"), Noop },
 		{ LFUN_SUBSCRIPT, "math-subscript", N_("Add subscript"), Noop },

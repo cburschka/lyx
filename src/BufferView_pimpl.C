@@ -1108,7 +1108,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
 	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
 	case LFUN_MATH_MODE:             // Open or create an inlined math inset
-	case LFUN_GREEK:                 // Insert a single greek letter
 		mathDispatch(ev);
 		break;
 
