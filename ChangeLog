@@ -1,3 +1,22 @@
+2001-01-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (getTocList): make the method const, so that
+	InsetTOC::Ascii compiles.
+
+	* src/insets/insettoc.C (Ascii): return 0
+
+2001-01-11  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/insets/insettoc.C (Ascii): New method.
+
+	* src/lyx_main.C (init) Set first_start to false when running
+	without a GUI.
+
+2000-12-19  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/paragraph.C (TeXOnePar,SimpleTeXOnePar) Fix problem with
+	aligned paragraphs.
+
 2001-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/buffer.C (writeFile): add missing ' ' after lyxformat.

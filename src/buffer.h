@@ -303,7 +303,7 @@ public:
 		TOC_LOA
 	};
 	///
-	std::vector<std::vector<TocItem> > const getTocList();
+	std::vector<std::vector<TocItem> > const getTocList() const;
 	///
 	std::vector<string> const getLabelList();
 

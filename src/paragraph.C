@@ -2373,25 +2373,21 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	// This is necessary because LaTeX (and LyX on the screen)
 	// calculates the space between the baselines according
 	// to this font. (Matthias)
+	//
+	// Is this really needed ? (Dekel)
+	// We do not need to use to change the font for the last paragraph
+	// or for a command.
 	LyXFont font = getFont(bparams, Last() - 1);
-	if (need_par && next) {
-		if (style.resfont.size() != font.size()) {
-			os << '\\'
-			   << font.latexSize()
-			   << ' ';
-		}
+	bool is_command = textclasslist.Style(bparams.textclass,
+					      GetLayout()).isCommand();
+	if (style.resfont.size() != font.size() && next && !is_command) {
+		if (!need_par)
+			os << "{";
+		os << "\\" << font.latexSize() << " \\par}";
+	} else if (need_par) {
 		os << "\\par}";
-	} else if (textclasslist.Style(bparams.textclass,
-				       GetLayout()).isCommand()) {
-		if (style.resfont.size() != font.size()) {
-			os << '\\'
-			   << font.latexSize()
-			   << ' ';
-		}
-		os << '}';
-	} else if ((style.resfont.size() != font.size()) && next){
-		os << "{\\" << font.latexSize() << " \\par}";
-	}
+	} else if (is_command)
+		os << "}";
 
 	if (language->babel() != doc_language->babel() &&
 	    (!par
@@ -2548,9 +2544,11 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			if (style.isCommand()) {
 				os << '{';
 				++column;
-			} else if (align != LYX_ALIGN_LAYOUT) {
-				os << "{\\par";
-				column += 4;
+			} else if (align != LYX_ALIGN_LAYOUT && next) {
+				// We do not need \par here (Dekel)
+				// os << "{\\par";
+				os << "{";
+				++column;
 				return_value = true;
 			}
 

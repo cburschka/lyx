@@ -368,6 +368,8 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// running in batch mode.
 	if (gui)
 		queryUserLyXDir(explicit_userdir);
+	else
+		first_start = false;
 
 	//
 	// Shine up lyxrc defaults

@@ -3417,7 +3417,7 @@ vector<string> const Buffer::getLabelList()
 }
 
 
-vector<vector<Buffer::TocItem> > const Buffer::getTocList()
+vector<vector<Buffer::TocItem> > const Buffer::getTocList() const
 {
 	int figs = 0;
 	int tables = 0;

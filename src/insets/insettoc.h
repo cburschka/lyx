@@ -37,6 +37,8 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
+	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	///
 	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
