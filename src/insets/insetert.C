@@ -106,8 +106,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 
 InsetERT::~InsetERT()
 {
-	InsetERTMailer mailer(*this);
-	mailer.hideDialog();
+	InsetERTMailer(*this).hideDialog();
 }
 
 
@@ -608,8 +607,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 
 bool InsetERT::showInsetDialog(BufferView * bv) const
 {
-	InsetERTMailer mailer(const_cast<InsetERT &>(*this));
-	mailer.showDialog(bv);
+	InsetERTMailer(const_cast<InsetERT &>(*this)).showDialog(bv);
 	return true;
 }
 

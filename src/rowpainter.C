@@ -54,12 +54,84 @@ BufferView * perv(BufferView const & bv)
 	return const_cast<BufferView *>(&bv);
 }
 
-} // namespace anon
+/**
+ * A class used for painting an individual row of text.
+ */
+class RowPainter {
+public:
+	/// initialise painter
+	RowPainter(BufferView const & bv, LyXText const & text,
+		RowList::iterator rit, int y_offset, int x_offset, int y);
 
+	/// do the painting
+	void paint();
+private:
+	// paint various parts
+	void paintBackground();
+	void paintSelection();
+	void paintAppendix();
+	void paintDepthBar();
+	void paintChangeBar();
+	void paintFirst();
+	void paintLast();
+	void paintForeignMark(float const orig_x, LyXFont const & orig_font);
+	void paintHebrewComposeChar(lyx::pos_type & vpos);
+	void paintArabicComposeChar(lyx::pos_type & vpos);
+	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
+	int paintPageBreak(string const & label, int y);
+	int paintAppendixStart(int y);
+	int paintLengthMarker(string const & prefix, VSpace const & vsp, int start);
+	void paintText();
+	void paintFromPos(lyx::pos_type & vpos);
+	void paintInset(lyx::pos_type const pos);
 
-RowPainter::RowPainter(BufferView const & bv,
-		       LyXText const & text, RowList::iterator rit)
-	: bv_(bv), pain_(bv_.painter()), text_(text), row_(rit), pit_(rit->par())
+	/// return left margin
+	int leftMargin() const;
+
+	/// return the font at the given pos
+	LyXFont const getFont(lyx::pos_type pos) const;
+
+	/// return the label font for this row
+	LyXFont const getLabelFont() const;
+
+	char const transformChar(char c, lyx::pos_type pos) const;
+
+	/// return pixel width for the given pos
+	int singleWidth(lyx::pos_type pos) const;
+	int singleWidth(lyx::pos_type pos, char c) const;
+
+	/// bufferview to paint on
+	BufferView const & bv_;
+
+	/// Painter to use
+	Painter & pain_;
+
+	/// LyXText for the row
+	LyXText const & text_;
+
+	/// The row to paint
+	RowList::iterator row_;
+
+	/// Row's paragraph
+	mutable ParagraphList::iterator  pit_;
+
+	// Looks ugly - is
+	int xo_;
+	int yo_;
+	float x_;
+	int y_;
+	int width_;
+	float separator_;
+	float hfill_;
+	float label_hfill_;
+};
+
+RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
+     RowList::iterator rit,
+     int y_offset, int x_offset, int y)
+	: bv_(bv), pain_(bv_.painter()), text_(text), row_(rit),
+	  pit_(rit->par()), 
+		xo_(x_offset), yo_(y_offset), y_(y)
 {}
 
 
@@ -480,27 +552,6 @@ void RowPainter::paintDepthBar()
 }
 
 
-int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
-{
-	if (vsp.kind() == VSpace::NONE)
-		return 0;
-
-	int const arrow_size = 4;
-	int const space_size = int(vsp.inPixels(bv));
-
-	LyXFont font;
-	font.decSize();
-	int const min_size = max(3 * arrow_size,
-		font_metrics::maxAscent(font)
-		+ font_metrics::maxDescent(font));
-
-	if (vsp.length().len().value() < 0.0)
-		return min_size;
-	else
-		return max(min_size, space_size);
-}
-
-
 int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int start)
 {
 	if (vsp.kind() == VSpace::NONE)
@@ -828,12 +879,7 @@ void RowPainter::paintLast()
 	}
 	case END_LABEL_STATIC:
 	{
-#if 0
-		LyXFont font(LyXFont::ALL_SANE);
-		font = getLabelFont();
-#else
 		LyXFont font = getLabelFont();
-#endif
 		string const & str = pit_->layout()->endlabelstring();
 		int const x = is_rtl ?
 			int(x_) - font_metrics::width(str, font)
@@ -961,11 +1007,8 @@ void RowPainter::paintText()
 }
 
 
-void RowPainter::paint(int y_offset, int x_offset, int y)
+void RowPainter::paint()
 {
-	xo_ = x_offset;
-	yo_ = y_offset;
-	y_ = y;
 	width_ = text_.isInInset()
 		? text_.inset_owner->textWidth(perv(bv_), true) : bv_.workWidth();
 
@@ -1007,4 +1050,36 @@ void RowPainter::paint(int y_offset, int x_offset, int y)
 
 	// paint text
 	paintText();
+}
+
+
+} // namespace anon
+
+
+int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
+{
+	if (vsp.kind() == VSpace::NONE)
+		return 0;
+
+	int const arrow_size = 4;
+	int const space_size = int(vsp.inPixels(bv));
+
+	LyXFont font;
+	font.decSize();
+	int const min_size = max(3 * arrow_size,
+		font_metrics::maxAscent(font)
+		+ font_metrics::maxDescent(font));
+
+	if (vsp.length().len().value() < 0.0)
+		return min_size;
+	else
+		return max(min_size, space_size);
+}
+
+
+void paintRows(BufferView const & bv, LyXText const & text,
+	RowList::iterator rit, int y_offset, int x_offset, int y)
+{
+	RowPainter painter(bv, text, rit, y_offset, x_offset, y);
+	painter.paint();
 }

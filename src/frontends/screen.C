@@ -478,8 +478,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 
 	RowList::iterator const rend = text->rows().end();
 	while (rit != rend && y < y2) {
-		RowPainter rp(*bv, *text, rit);
-		rp.paint(y + yo, xo, y + topy);
+		paintRows(*bv, *text, rit, y + yo, xo, y + topy);
 		y += rit->height();
 		++rit;
 	}
@@ -507,6 +506,5 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv,
 
 	hideCursor();
 
-	RowPainter rp(*bv, *text, row);
-	rp.paint(y, xo, y + text->top_y());
+	paintRows(*bv, *text, row, y, xo, y + text->top_y());
 }

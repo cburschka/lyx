@@ -1,9 +1,13 @@
 
 2003-07-14  André Pönitz  <poenitz@gmx.net>
 
-	* insets/insetcollapsable.C:
-	* insets/insetert.C:
-	* insets/insettext.[Ch] (cy, ciy, setUpdateStatus):
+	* insettext.C (draw): use slimmed down rowpainter interface
+
+2003-07-14  André Pönitz  <poenitz@gmx.net>
+
+	* insetcollapsable.C:
+	* insetert.C:
+	* insettext.[Ch] (cy, ciy, setUpdateStatus):
 	remove unused BufferView * argument
 
 2003-07-14  André Pönitz  <poenitz@gmx.net>

@@ -368,9 +368,9 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	bv->hideCursor();
 
-	while ((rowit != end) && (yf < ph)) {
-		RowPainter rp(*bv, text_, rowit);
-		rp.paint(y + y_offset + first, int(x), y + text_.top_y());
+	while (rowit != end && yf < ph) {
+		paintRows(*bv, text_, rowit,
+			y + y_offset + first, int(x), y + text_.top_y());
 		y += rowit->height();
 		yf += rowit->height();
 		++rowit;
