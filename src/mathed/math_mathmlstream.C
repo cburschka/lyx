@@ -1,4 +1,5 @@
 
+#include "support/LOstream.h"
 #include "math_inset.h"
 #include "math_mathmlstream.h"
 
