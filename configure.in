@@ -356,6 +356,9 @@ AC_SUBST(VERSION_INFO)
 AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
 AC_OUTPUT([Makefile \
        boost/Makefile \
+       boost/libs/Makefile \
+       boost/libs/regex/Makefile \
+       boost/libs/regex/src/Makefile \
        config/Makefile \
        development/lyx.spec \
        lib/Makefile \
