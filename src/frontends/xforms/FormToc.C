@@ -12,20 +12,23 @@
  */
 
 #include <config.h>
-#include <vector>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "FormToc.h"
 #include "xformsBC.h"
 #include "ControlToc.h"
-#include "FormToc.h"
 #include "form_toc.h"
 #include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
 #include "debug.h"
 #include "gettext.h"
+
+#include <vector>
+
+using std::endl;
 
 
 typedef FormCB<ControlToc, FormDB<FD_form_toc> > base_class;
