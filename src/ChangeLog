@@ -1,3 +1,27 @@
+2002-08-09  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* sgml.h:
+	* sgml.C:
+	* buffer.C:
+	* paragraph.h:
+	* paragraph.C: move sgml char escaping out of paragraph
+ 
+	* paragraph.h:
+	* paragraph.C: remove id setter
+ 
+	* buffer.C:
+	* paragraph.C: 
+	* paragraph_pimpl.C: remove dead tex_code_break_column
+ 
+	* bufferview_funcs.C: small cleanup
+ 
+	* lyxfunc.C: remove dead proto 
+
+	* lyxtext.h: make some stuff private. Remove some dead stuff.
+
+	* lyxgluelength.C: make as[LyX]String() readable
+ 
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* LyXAction.h:

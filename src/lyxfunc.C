@@ -114,8 +114,6 @@ extern bool selection_possible;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
-extern void show_symbols_form(LyXFunc *);
-
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
 

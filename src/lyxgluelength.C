@@ -41,52 +41,48 @@ string const LyXGlueLength::asString() const
 {
 	ostringstream buffer;
 
-	if (!plus_.zero())
-		if (!minus_.zero())
-			if (len_.unit() == plus_.unit() && len_.unit() == minus_.unit())
-				if (plus_.value() == minus_.value())
-					buffer << len_.value() << "+-"
-					       << plus_.value() << unit_name[len_.unit()];
-				else
-					buffer << len_.value()
-					       << '+' << plus_.value()
-					       << '-' << minus_.value()
-					       << unit_name[len_.unit()];
-			else
-				if (plus_.unit() == minus_.unit()
-				    && plus_.value() == minus_.value())
-					buffer << len_.value() << unit_name[len_.unit()]
-					       << "+-" << plus_.value()
-					       << unit_name[plus_.unit()];
+	buffer << len_.value();
 
-				else
-					buffer << len_.value() << unit_name[len_.unit()]
-					       << '+' << plus_.value()
-					       << unit_name[plus_.unit()]
-					       << '-' << minus_.value()
-					       << unit_name[minus_.unit()];
-		else
-			if (len_.unit() == plus_.unit())
-				buffer << len_.value() << '+' << plus_.value()
-				       << unit_name[len_.unit()];
-			else
-				buffer << len_.value() << unit_name[len_.unit()]
-				       << '+' << plus_.value()
-				       << unit_name[plus_.unit()];
+	if (plus_.zero() && minus_.zero()) {
+		buffer << unit_name[len_.unit()];
+		return buffer.str().c_str();
+	}
+ 
+	// just len and plus
+	if (minus_.zero()) {
+		if (len_.unit() != plus_.unit())
+			buffer << unit_name[len_.unit()];
+		buffer << "+" << plus_.value();
+		buffer << unit_name[plus_.unit()];
+		return buffer.str().c_str();
+	}
+ 
+	// just len and minus
+	if (plus_.zero()) {
+		if (len_.unit() != minus_.unit())
+			buffer << unit_name[len_.unit()];
+		buffer << "-" << minus_.value();
+		buffer << unit_name[minus_.unit()];
+		return buffer.str().c_str();
+	}
 
-	else
-		if (!minus_.zero())
-			if (len_.unit() == minus_.unit())
-				buffer << len_.value() << '-' << minus_.value()
-				       << unit_name[len_.unit()];
+	// ok, len, plus AND minus
+ 
+	// len+-
+	if (minus_ == plus_) {
+		if (len_.unit() != minus_.unit())
+			buffer << unit_name[len_.unit()];
+		buffer << "+-" << minus_.value();
+		buffer << unit_name[minus_.unit()];
+		return buffer.str().c_str();
+	}
+ 
+	// this is so rare a case, why bother minimising units ?
 
-			else
-				buffer << len_.value() << unit_name[len_.unit()]
-				       << '-' << minus_.value()
-				       << unit_name[minus_.unit()];
-		else
-			buffer << len_.value() << unit_name[len_.unit()];
-
+	buffer << unit_name[len_.unit()];
+	buffer << "+" << plus_.value() << unit_name[plus_.unit()];
+	buffer << "-" << minus_.value() << unit_name[minus_.unit()];
+ 
 	return buffer.str().c_str();
 }
 
@@ -95,25 +91,12 @@ string const LyXGlueLength::asLatexString() const
 {
 	ostringstream buffer;
 
+	buffer << len_.value() << unit_name[len_.unit()];
+ 
 	if (!plus_.zero())
-		if (!minus_.zero())
-			buffer << len_.value() << unit_name[len_.unit()]
-			       << " plus "
-			       << plus_.value() << unit_name[plus_.unit()]
-			       << " minus "
-			       << minus_.value() << unit_name[minus_.unit()];
-		else
-			buffer << len_.value() << unit_name[len_.unit()]
-			       << " plus "
-			       << plus_.value() << unit_name[plus_.unit()];
-	else
-		if (!minus_.zero())
-			buffer << len_.value() << unit_name[len_.unit()]
-			       << " minus "
-			       << minus_.value() << unit_name[minus_.unit()];
-		else
-			buffer << len_.value() << unit_name[len_.unit()];
-
+		buffer << " plus " << plus_.value() << unit_name[plus_.unit()];
+	if (!minus_.zero())
+		buffer << " minus " << minus_.value() << unit_name[minus_.unit()];
 	return buffer.str().c_str();
 }
 

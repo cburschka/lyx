@@ -122,9 +122,6 @@ public:
 	///
 	void setLayout(BufferView *, string const & layout);
 
-	/// used in setlayout
-	void makeFontEntriesLayoutSpecific(Buffer const *, Paragraph * par);
-
 	/** increment depth over selection and make a total rebreak of those
 	  paragraphs
 	  */
@@ -165,11 +162,6 @@ public:
 	    has changed.
 	    */
 	void redoHeightOfParagraph(BufferView *, LyXCursor const & cursor);
-
-	/** forces the redrawing of a paragraph. Needed when manipulating a
-	    right address box
-	    */
-	void redoDrawingOfParagraph(BufferView *, LyXCursor const & cursor);
 
 	/** insert a character, moves all the following breaks in the
 	  same Paragraph one to the right and make a little rebreak
@@ -321,9 +313,6 @@ public:
 			     bool setfont = true,
 			     bool boundary = false) const;
 	///
-	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
-					 lyx::pos_type last, bool boundary) const;
-	///
 	void setCurrentFont(BufferView *) const;
 
 	///
@@ -392,11 +381,6 @@ public:
 	/// Change the case of the word at cursor position.
 	void changeCase(BufferView *, TextCase action);
 	///
-	void changeRegionCase(BufferView * bview,
-				       LyXCursor const & from,
-				       LyXCursor const & to,
-				       LyXText::TextCase action);
-	///
 	void transposeChars(BufferView &);
 
 	/** returns a printed row in a pixmap. The y value is needed to
@@ -464,12 +448,6 @@ public:
 	///
 	void checkParagraph(BufferView *, Paragraph * par, lyx::pos_type pos);
 	///
-	int numberOfCell(Paragraph * par, lyx::pos_type pos) const;
-	///
-	void removeTableRow(LyXCursor & cursor) const;
-	///
-	bool isEmptyTableCell() const;
-	///
 	void toggleAppendix(BufferView *);
 	///
 	int workWidth(BufferView *) const;
@@ -515,6 +493,22 @@ private:
 
 	///
 	mutable Row * lastrow;
+
+	///
+	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
+					 lyx::pos_type last, bool boundary) const;
+	///
+	void changeRegionCase(BufferView * bview,
+				       LyXCursor const & from,
+				       LyXCursor const & to,
+				       LyXText::TextCase action);
+	/// used in setlayout
+	void makeFontEntriesLayoutSpecific(Buffer const *, Paragraph * par);
+
+	/** forces the redrawing of a paragraph. Needed when manipulating a
+	    right address box
+	    */
+	void redoDrawingOfParagraph(BufferView *, LyXCursor const & cursor);
 
 	/** Copybuffer for copy environment type.
 	  Asger has learned that this should be a buffer-property instead

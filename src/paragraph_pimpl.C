@@ -31,9 +31,6 @@ using std::ostream;
 using std::upper_bound;
 using std::lower_bound;
 
-extern int tex_code_break_column;
-
-
 // Initialize static member.
 ShareContainer<LyXFont> Paragraph::Pimpl::FontTable::container;
 // Initialization of the counter for the paragraph id's,
@@ -249,7 +246,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 				       LyXLayout const & style)
 {
 	if (style.pass_thru) return;
-	if (column > tex_code_break_column
+	if (column > lyxrc.ascii_linelen
 	    && i
 	    && getChar(i - 1) != ' '
 	    && (i < size() - 1)
@@ -263,13 +260,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 		     || getChar(i - 1) == '?'
 		     || getChar(i - 1) == ':'
 		     || getChar(i - 1) == '!'))) {
-		if (tex_code_break_column == 0) {
-			// in batchmode we need LaTeX to still
-			// see it as a space not as an extra '\n'
-			os << " %\n";
-		} else {
-			os << '\n';
-		}
+		os << '\n';
 		texrow.newline();
 		texrow.start(owner_, i + 1);
 		column = 0;

@@ -32,8 +32,6 @@
 
 using std::endl;
 
-extern LyXRC lyxrc;
-
 namespace Liason {
 
 PrinterParams getPrinterParams(Buffer * buffer)

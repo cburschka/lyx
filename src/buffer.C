@@ -44,6 +44,7 @@
 #include "ParagraphParameters.h"
 #include "iterators.h"
 #include "lyxtextclasslist.h"
+#include "sgml.h"
 
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
@@ -106,6 +107,7 @@
 #include <sys/types.h>
 #include <utime.h>
 
+#include <boost/tuple/tuple.hpp>
 
 #ifdef HAVE_LOCALE
 #include <locale>
@@ -137,16 +139,11 @@ using lyx::textclass_type;
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 
-extern LyXAction lyxaction;
-
 namespace {
 
 const int LYX_FORMAT = 220;
 
 } // namespace anon
-
-extern int tex_code_break_column;
-
 
 Buffer::Buffer(string const & file, bool ronly)
 	: paragraph(0), niceFile(true), lyx_clean(true), bak_clean(true),
@@ -2165,8 +2162,6 @@ void Buffer::makeLaTeXFile(ostream & os,
 {
 	niceFile = nice; // this will be used by Insetincludes.
 
-	tex_code_break_column = lyxrc.ascii_linelen;
-
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
 	LaTeXFeatures features(params);
@@ -2191,9 +2186,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// usual is \batchmode and has a
 	// special input@path to allow the including of figures
 	// with either \input or \includegraphics (what figinsets do).
-	// batchmode is not set if there is a tex_code_break_column.
-	// In this case somebody is interested in the generated LaTeX,
-	// so this is OK. input@path is set when the actual parameter
+	// input@path is set when the actual parameter
 	// original_path is set. This is done for usual tex-file, but not
 	// for nice-latex-file. (Matthias 250696)
 	if (!only_body) {
@@ -2630,12 +2623,6 @@ void Buffer::makeLaTeXFile(ostream & os,
 
 	// Just to be sure. (Asger)
 	texrow.newline();
-
-	// tex_code_break_column's value is used to decide
-	// if we are in batchmode or not (within mathed_write()
-	// in math_write.C) so we must set it to a non-zero
-	// value when we leave otherwise we save incorrect .lyx files.
-	tex_code_break_column = lyxrc.ascii_linelen;
 
 	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
 	lyxerr[Debug::INFO] << "Row count was " << texrow.rows()-1 << "." << endl;
@@ -3161,10 +3148,10 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 				os << c;
 			++char_line_count;
 		} else {
-			string sgml_string;
-			if (par->sgmlConvertChar(c, sgml_string)
-			    && !style->free_spacing && !par->isFreeSpacing())
-			{
+			bool ws;
+			string str;
+			boost::tie(ws, str) = sgml::escapeChar(c);
+			if (ws && !style->free_spacing && !par->isFreeSpacing()) {
 				// in freespacing mode, spaces are
 				// non-breaking characters
 				if (desc_on) {// if char is ' ' then...
@@ -3178,8 +3165,8 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 					os << c;
 				}
 			} else {
-				os << sgml_string;
-				char_line_count += sgml_string.length();
+				os << str;
+				char_line_count += str.length();
 			}
 		}
 		font_old = font;
@@ -3551,13 +3538,14 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			}
 		} else {
 			char c = par->getChar(i);
-			string sgml_string;
-			par->sgmlConvertChar(c, sgml_string);
+			bool ws;
+			string str;
+			boost::tie(ws, str) = sgml::escapeChar(c);
 
 			if (style->pass_thru) {
 				os << c;
 			} else if (style->free_spacing || par->isFreeSpacing() || c != ' ') {
-					os << sgml_string;
+					os << str;
 			} else if (desc_on ==1) {
 				++char_line_count;
 				os << "\n</term><listitem><para>";

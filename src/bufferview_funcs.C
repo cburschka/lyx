@@ -210,29 +210,32 @@ string const currentState(BufferView * bv)
  */
 void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
-	if (bv->available()) {
-		if (bv->theLockingInset()) {
-			bv->theLockingInset()->setFont(bv, font, toggleall);
-			return;
-		}
-		LyXText * text = bv->getLyXText();
-		if (!text)
-			return;
+	if (!bv->available())
+		return;
+ 
+	if (bv->theLockingInset()) {
+		bv->theLockingInset()->setFont(bv, font, toggleall);
+		return;
+	}
+ 
+	LyXText * text = bv->getLyXText();
+	// FIXME: can this happen ?? 
+	if (!text)
+		return;
 
-		bv->hideCursor();
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->toggleFree(bv, font, toggleall);
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	bv->hideCursor();
+	bv->update(text, BufferView::SELECT | BufferView::FITCUR);
+	text->toggleFree(bv, font, toggleall);
+	bv->update(text, BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 
-		if (font.language() != ignore_language ||
-		    font.number() != LyXFont::IGNORE) {
-			LyXCursor & cursor = text->cursor;
-			text->computeBidiTables(bv->buffer(), cursor.row());
-			if (cursor.boundary() !=
-			    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
-					     text->real_current_font))
-				text->setCursor(bv, cursor.par(), cursor.pos(),
-						false, !cursor.boundary());
-		}
+	if (font.language() != ignore_language ||
+	    font.number() != LyXFont::IGNORE) {
+		LyXCursor & cursor = text->cursor;
+		text->computeBidiTables(bv->buffer(), cursor.row());
+		if (cursor.boundary() !=
+		    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
+				     text->real_current_font))
+			text->setCursor(bv, cursor.par(), cursor.pos(),
+					false, !cursor.boundary());
 	}
 }

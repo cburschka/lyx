@@ -54,7 +54,6 @@ using std::reverse;
 
 using lyx::pos_type;
 
-int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can Paragraph find its buffer to get
 // parameters? (JMarc)
 
@@ -1188,7 +1187,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			texrow.newline();
 		}
 
-		if (tex_code_break_column && style->isCommand()) {
+		if (style->isCommand()) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -1703,70 +1702,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 }
 
 
-bool Paragraph::sgmlConvertChar(char c, string & sgml_string)
-{
-	bool retval = false;
-	switch (c) {
-	case Paragraph::META_HFILL:
-		sgml_string.erase();
-		break;
-	case Paragraph::META_NEWLINE:
-		sgml_string = '\n';
-		break;
-	case '&':
-		sgml_string = "&amp;";
-		break;
-	case '<':
-		sgml_string = "&lt;";
-		break;
-	case '>':
-		sgml_string = "&gt;";
-		break;
-	case '$':
-		sgml_string = "&dollar;";
-		break;
-	case '#':
-		sgml_string = "&num;";
-		break;
-	case '%':
-		sgml_string = "&percnt;";
-		break;
-	case '[':
-		sgml_string = "&lsqb;";
-		break;
-	case ']':
-		sgml_string = "&rsqb;";
-		break;
-	case '{':
-		sgml_string = "&lcub;";
-		break;
-	case '}':
-		sgml_string = "&rcub;";
-		break;
-	case '~':
-		sgml_string = "&tilde;";
-		break;
-	case '"':
-		sgml_string = "&quot;";
-		break;
-	case '\\':
-		sgml_string = "&bsol;";
-		break;
-	case ' ':
-		retval = true;
-		sgml_string = ' ';
-		break;
-	case '\0': // Ignore :-)
-		sgml_string.erase();
-		break;
-	default:
-		sgml_string = c;
-		break;
-	}
-	return retval;
-}
-
-
 Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 					    BufferParams const & bparams,
 					    ostream & os, TexRow & texrow)
@@ -2107,12 +2042,6 @@ Paragraph::value_type Paragraph::getChar(pos_type pos) const
 int Paragraph::id() const
 {
 	return pimpl_->id_;
-}
-
-
-void  Paragraph::id(int id_arg)
-{
-	pimpl_->id_ = id_arg;
 }
 
 

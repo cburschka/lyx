@@ -113,10 +113,8 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 
-	///
+	/// return the unique ID of this paragraph
 	int id() const;
-	///
-	void id(int id_arg);
 	///
 	void read();
 
@@ -326,8 +324,6 @@ public:
 	///
 	void unsetPExtraType(BufferParams const &);
 #endif
-	///
-	bool sgmlConvertChar(char c, string & sgml_string);
 	///
 	bool isFreeSpacing() const;
 
