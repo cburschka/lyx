@@ -61,7 +61,11 @@ libgtk_la_SOURCES = \
 	GTableCreate.h \
 	GTableCreate.C \
 	GMathPanel.h \
-	GMathPanel.C
+	GMathPanel.C \
+	GXpmBtnTbl.h \
+	GXpmBtnTbl.C \
+	GMathDelim.h \
+	GMathDelim.C
 
 #	GPrint.h
 #	GPrint.C

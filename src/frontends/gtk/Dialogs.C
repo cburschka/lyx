@@ -42,6 +42,7 @@
 
 #include "GAboutlyx.h"
 #include "GText.h"
+#include "GMathDelim.h"
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormBranch.h"
@@ -57,7 +58,6 @@
 #include "FormLog.h"
 #include "GMathPanel.h"
 #include "FormMathsBitmap.h"
-#include "FormMathsDelim.h"
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
@@ -392,8 +392,9 @@ Dialog * Dialogs::build(string const & name)
 		dialog->bc().bp(new IgnorantPolicy);
 
 	} else if (name == "mathdelimiter") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlMath(*dialog));
-		dialog->setView(new FormMathsDelim(*dialog));
+		dialog->setView(new GMathDelim(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "mathmatrix") {
 		dialog->setController(new ControlMath(*dialog));

@@ -68,6 +68,33 @@ GBC & GViewBase::bcview()
 	return static_cast<GBC &>(dialog().bc().view());
 }
 
+void GViewBase::setCancel(Gtk::Button * cancel)
+{
+	bcview().setCancel(cancel);
+	cancel->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onCancel));
+}
+
+void GViewBase::setApply(Gtk::Button * apply)
+{
+	bcview().setApply(apply);
+	apply->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onApply));
+}
+
+void GViewBase::setOK(Gtk::Button * ok)
+{
+	bcview().setOK(ok);
+	ok->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onOK));
+}
+
+void GViewBase::setRestore(Gtk::Button * restore)
+{
+	bcview().setRestore(restore);
+	restore->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onRestore));
+}
 
 void GViewBase::onApply()
 {

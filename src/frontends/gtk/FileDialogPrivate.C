@@ -61,7 +61,7 @@ void FileDialog::Private::onButton2Clicked()
 
 
 FileDialog::Result const FileDialog::Private::open(string const & path,
-						   string const & /*mask*/,
+						   lyx::support::FileFilterList const & /*filters*/,
 						   string const & /*suggested*/)
 {
 	fileSelection_.set_filename(path);
@@ -92,8 +92,8 @@ FileDialog::Result const FileDialog::Private::opendir(string const & path,
 
 
 FileDialog::Result const FileDialog::Private::save(string const & path,
-						   string const & mask,
+						   lyx::support::FileFilterList const & filters,
 						   string const & suggested)
 {
-	return open(path, mask, suggested);
+	return open(path, filters, suggested);
 }

@@ -24,6 +24,10 @@ class GViewBase : public Dialog::View, public SigC::Object
 public:
 	GViewBase(Dialog &, std::string const &, bool allowResize);
 	virtual ~GViewBase();
+	void setCancel(Gtk::Button * cancel);
+	void setApply(Gtk::Button * apply);
+	void setOK(Gtk::Button * ok);
+	void setRestore(Gtk::Button * restore);
 protected:
 	// Build the dialog
 	virtual void build();

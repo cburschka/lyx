@@ -14,6 +14,7 @@
 
 #include "GViewBase.h"
 #include "support/lstrings.h"
+#include "GXpmBtnTbl.h"
 
 class ControlMath;
 
@@ -26,6 +27,8 @@ private:
 	virtual void update() {}
 	virtual void doBuild();
 	void onShowDialog(char const * dialogName);
+	void onTableUpClicked(int row, int col);
+	void onTableDownClicked(int row, int col);
 	void onSuperClicked();
 	void onSubClicked();
 	void onEquationClicked();
@@ -36,6 +39,8 @@ private:
 	Gtk::TreeModel::ColumnRecord listCols_;
 	Glib::RefPtr<Gtk::ListStore> listStore_;
 	Glib::RefPtr<Gtk::TreeSelection> listSel_;
+	GXpmBtnTbl tableUp_;
+	GXpmBtnTbl tableDown_;
 };
 
 #endif

@@ -42,22 +42,14 @@ void GUrl::doBuild()
 	xml_->get_widget("Ok", ok);
 	xml_->get_widget("Apply", apply);
 	xml_->get_widget("Cancel", cancel);
-	bcview().setOK(ok);
-	bcview().setCancel(cancel);
-	bcview().setApply(apply);
-	bcview().setRestore(restore);
+	setOK(ok);
+	setCancel(cancel);
+	setApply(apply);
+	setRestore(restore);
 	bcview().addReadOnly(name_);
 	bcview().addReadOnly(url_);
 	bcview().addReadOnly(htmlType_);
 
-	ok->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onOK));
-	apply->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onApply));
-	cancel->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onCancel));
-	restore->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onRestore));
 	url_->signal_changed().connect(
 		SigC::slot(*this, &GUrl::onEntryChanged));
 	name_->signal_changed().connect(

@@ -22,13 +22,13 @@ public:
 		kb_action action,
 		FileDialog::Button b1, FileDialog::Button b2);
 	FileDialog::Result const open(std::string const & path,
-				      std::string const & mask,
+				      lyx::support::FileFilterList const & filters,
 				      std::string const & suggested);
 	FileDialog::Result const opendir(std::string const & path,
 					 std::string const & suggested);
 
 	FileDialog::Result const save(std::string const & path,
-				      std::string const & mask,
+				      lyx::support::FileFilterList const & filters,
 				      std::string const & suggested);
 
 private:

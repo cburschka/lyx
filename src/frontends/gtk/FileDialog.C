@@ -32,10 +32,10 @@ FileDialog::~FileDialog()
 
 
 FileDialog::Result const FileDialog::open(string const & path,
-					  string const & mask,
+					  lyx::support::FileFilterList const & filters,
 					  string const & suggested)
 {
-	return private_->open(path, mask, suggested);
+	return private_->open(path, filters, suggested);
 }
 
 
@@ -47,8 +47,8 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 
 
 FileDialog::Result const FileDialog::save(string const & path,
-					  string const & mask,
+					  lyx::support::FileFilterList const & filters,
 					  string const & suggested)
 {
-	return private_->save(path, mask, suggested);
+	return private_->save(path, filters, suggested);
 }

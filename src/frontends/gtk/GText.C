@@ -57,19 +57,11 @@ void GText::doBuild()
 	xml_->get_widget("Apply", apply);
 	xml_->get_widget("OK", ok);
 	label->set_text(Glib::locale_to_utf8(id_sc::id(label_)));
-	bcview().setOK(ok);
-	bcview().setApply(apply);
-	bcview().setCancel(cancel);
-	bcview().setRestore(restore);
+	setOK(ok);
+	setApply(apply);
+	setCancel(cancel);
+	setRestore(restore);
 	bcview().addReadOnly(entry_);
-	ok->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onOK));
-	apply->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onApply));
-	cancel->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onCancel));
-	restore->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onRestore));
 	entry_->signal_changed().connect(
 		SigC::slot(*this, &GText::onEntryChanged));
 }

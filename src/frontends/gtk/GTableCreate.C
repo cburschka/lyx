@@ -38,15 +38,9 @@ void GTableCreate::doBuild()
 	xml_->get_widget("Cancel", cancel);
 	xml_->get_widget("Rows", rows_);
 	xml_->get_widget("Columns", columns_);
-	bcview().setOK(ok);
-	bcview().setCancel(cancel);
-	bcview().setApply(apply);
-	ok->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onOK));
-	apply->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onApply));
-	cancel->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onCancel));
+	setOK(ok);
+	setCancel(cancel);
+	setApply(apply);
 }
 
 void GTableCreate::apply()

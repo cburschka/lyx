@@ -160,7 +160,10 @@ void GAboutlyx::doBuild()
 	version->set_text(Glib::locale_to_utf8(vs.str()));
 	std::ostringstream crs;
 	controller().getCredits(crs);
-	credits->set_markup(translateMarkup(Glib::locale_to_utf8(crs.str())));
+	credits->set_markup(
+		translateMarkup(Glib::convert(crs.str(),
+					      "UTF-8",
+					      "ISO8859-1")));
 	std::ostringstream ls;
 	ls << controller().getCopyright() << "\n\n"
 	   << controller().getLicense() << "\n\n"
@@ -168,5 +171,6 @@ void GAboutlyx::doBuild()
 	license->set_text(Glib::locale_to_utf8(ls.str()));
 	Gtk::Button * btn;
 	xml_->get_widget("close_button", btn);
-	btn->signal_clicked().connect(SigC::slot(*this, &GViewBase::onCancel));
+	setCancel(btn);
+	//btn->signal_clicked().connect(SigC::slot(*this, &GViewBase::onCancel));
 }
