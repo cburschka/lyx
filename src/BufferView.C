@@ -214,12 +214,6 @@ int BufferView::workWidth() const
 }
 
 
-void BufferView::toggleSelection(bool b)
-{
-	pimpl_->toggleSelection(b);
-}
-
-
 void BufferView::center()
 {
 	pimpl_->center();
@@ -419,7 +413,6 @@ void BufferView::selectLastWord()
 	beforeChange(text);
 	text->selection.cursor = cur;
 	text->selectSelectedWord();
-	toggleSelection(false);
 	update();
 }
 
@@ -442,13 +435,7 @@ void BufferView::replaceWord(string const & replacestring)
 
 	LyXText * tt = getLyXText();
 
-	// clear the selection (if there is any)
-	toggleSelection(false);
-
-	// clear the selection (if there is any)
-	toggleSelection(false);
 	tt->replaceSelectionWithString(replacestring);
-
 	tt->setSelectionRange(replacestring.length());
 
 	// Go back so that replacement string is also spellchecked

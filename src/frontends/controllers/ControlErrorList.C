@@ -75,11 +75,9 @@ void ControlErrorList::goTo(int item)
 	// Now make the selection.
 	BufferView * const bv = kernel().bufferview();
 	bv->insetUnlock();
-	bv->toggleSelection();
 	bv->text->clearSelection();
 	bv->text->setCursor(pit.pit(), err.pos_start);
 	bv->text->setSelectionRange(range);
-	bv->toggleSelection(false);
 	bv->fitCursor();
 	bv->update();
 }

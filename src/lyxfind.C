@@ -198,7 +198,6 @@ int replace(BufferView * bv,
 		if (!bv->theLockingInset() ||
 			((text != bv->text) &&
 			 (text->inset_owner == text->inset_owner->getLockingInset()))) {
-			bv->toggleSelection(false);
 			text->replaceSelectionWithString(replacestr);
 			text->setSelectionRange(replacestr.length());
 			++replace_count;
@@ -247,7 +246,6 @@ bool find(BufferView * bv,
 		text->cursor = forward ?
 			text->selection.end : text->selection.start;
 
-	bv->toggleSelection();
 	text->clearSelection();
 
 	SearchResult result = forward ?
@@ -261,7 +259,6 @@ bool find(BufferView * bv,
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		text->setSelectionRange(searchstr.length());
-		bv->toggleSelection(false);
 	} else if (result == SR_NOT_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		found = false;
@@ -281,7 +278,6 @@ SearchResult find(BufferView * bv, LyXText * text,
 		text->cursor = forward ?
 			text->selection.end : text->selection.start;
 
-	bv->toggleSelection();
 	text->clearSelection();
 
 	SearchResult result = forward ?
@@ -351,7 +347,6 @@ SearchResult findNextChange(BufferView * bv, LyXText * text, pos_type & length)
 	if (text->selection.set())
 		text->cursor = text->selection.end;
 
-	bv->toggleSelection();
 	text->clearSelection();
 
 	return nextChange(bv, text, length);
@@ -385,7 +380,6 @@ bool findNextChange(BufferView * bv)
 	if (text->selection.set())
 		text->cursor = text->selection.end;
 
-	bv->toggleSelection();
 	text->clearSelection();
 
 	SearchResult result = nextChange(bv, text, length);
@@ -398,7 +392,6 @@ bool findNextChange(BufferView * bv)
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		text->setSelectionRange(length);
-		bv->toggleSelection(false);
 	} else if (result == SR_NOT_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		found = false;

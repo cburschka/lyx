@@ -39,7 +39,10 @@ class Dimension;
 
 
 /**
-  This class holds the mapping between buffer paragraphs and screen rows.
+  This class used to hold the mapping between buffer paragraphs and
+	screen rows. Nowadays, the Paragraphs take care of their rows
+  themselves and this contains just most of the code for manipulating 
+  them and interaction with the Cursor. 
   */
 
 // The inheritance from TextCursor should go. It's just there to ease

@@ -92,10 +92,6 @@ public:
 	/// toggle the cursor's visibility
 	void toggleCursor(BufferView & bv);
 
-	/// FIXME
-	virtual void toggleSelection(LyXText *, BufferView *, bool = true,
-			     int y_offset = 0, int x_offset = 0);
-
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;

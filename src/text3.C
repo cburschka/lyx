@@ -1172,14 +1172,10 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!isInInset() && bv->theLockingInset())
 			break;
 		if (cmd.button() == mouse_button::button1) {
-			if (!isInInset())
-				bv->screen().toggleSelection(this, bv);
 			cursorHome();
 			selection.cursor = cursor;
 			cursorEnd();
 			setSelection();
-			if (!isInInset())
-				bv->screen().toggleSelection(this, bv, false);
 			bv->update();
 			bv->haveSelection(selection.set());
 		}
@@ -1191,13 +1187,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!isInInset() && bv->theLockingInset())
 			break;
 		if (cmd.button() == mouse_button::button1) {
-			if (!isInInset()) {
-				bv->screen().toggleSelection(this, bv);
-				selectWord(lyx::WHOLE_WORD_STRICT);
-				bv->screen().toggleSelection(this, bv, false);
-			} else {
-				selectWord(lyx::WHOLE_WORD_STRICT);
-			}
+			selectWord(lyx::WHOLE_WORD_STRICT);
 			bv->update();
 			bv->haveSelection(selection.set());
 		}
@@ -1314,7 +1304,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			selection_possible = true;
 
 		// Clear the selection
-		bv->screen().toggleSelection(bv->text, bv);
 		bv->text->clearSelection();
 		bv->update();
 		bv->updateScrollbar();

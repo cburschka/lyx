@@ -577,7 +577,6 @@ void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
 		screen().hideCursor();
-		toggleSelection();
 		bv_->getLyXText()->clearSelection();
 		bv_->text->xsel_cache.set(false);
 	}
@@ -662,19 +661,18 @@ Change const BufferView::Pimpl::getCurrentChange()
 	if (!bv_->buffer()->params.tracking_changes)
 		return Change(Change::UNCHANGED);
 
-	LyXText * t(bv_->getLyXText());
+	LyXText * text = bv_->getLyXText();
 
-	if (!t->selection.set())
+	if (!text->selection.set())
 		return Change(Change::UNCHANGED);
 
-	LyXCursor const & cur(t->selection.start);
+	LyXCursor const & cur = text->selection.start;
 	return cur.par()->lookupChangeFull(cur.pos());
 }
 
 
 void BufferView::Pimpl::beforeChange(LyXText * text)
 {
-	toggleSelection();
 	text->clearSelection();
 }
 
@@ -760,12 +758,6 @@ void BufferView::Pimpl::insetUnlock()
 		bv_->theLockingInset(0);
 		finishUndo();
 	}
-}
-
-
-void BufferView::Pimpl::toggleSelection(bool b)
-{
-	screen().toggleSelection(bv_->text, bv_, b);
 }
 
 

@@ -12,6 +12,12 @@
 	* text_funcs.C: split LyXText::rowlist_ into individual
 	Paragraph::rows_ chunks
 
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]:
+	* lyxfind.C:
+	* lyxtext.h:
+	* text3.C: remove toggleSelection()
+
 2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* bufferlist.C: beautify two alerts (shorter text of buttons)

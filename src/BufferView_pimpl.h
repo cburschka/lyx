@@ -89,8 +89,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void insetUnlock();
 	///
-	void toggleSelection(bool = true);
-	///
 	void center();
 	///
 	bool insertInset(InsetOld * inset, string const & lout = string());
