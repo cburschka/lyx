@@ -121,7 +121,8 @@ ShapeChanger::~ShapeChanger()
 StyleChanger::StyleChanger(MetricsBase & mb, Styles style)
 	:	Changer<MetricsBase>(mb)
 {
-	static const int diff[4][4]  = { { 0, 0, -3, -5 },
+	static const int diff[4][4] =
+         { { 0, 0, -3, -5 },
 					 { 0, 0, -3, -5 },
 					 { 3, 3,  0, -2 },
 					 { 5, 5,  2,  0 } };

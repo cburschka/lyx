@@ -327,6 +327,7 @@ MathAtom createMathInset(string const & s)
 	//	return MathAtom(new MathMacro(s,
 	//		MacroTable::localMacros().get(s).numargs()));
 
+	lyxerr << "creating unknown inset '" << s << "'" << endl;
 	return MathAtom(new MathUnknownInset(s));
 }
 

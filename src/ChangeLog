@@ -1,4 +1,8 @@
 
+2004-08-13  André Pönitz  <poenitz@gmx.net>
+
+	* cursor.C: macroModeClose: use plainInsert instead of niceInsert.
+   
 2004-08-12  André Pönitz  <poenitz@gmx.net>
 
 	* text3.C: take out the 'cursor right' form insertInset and only

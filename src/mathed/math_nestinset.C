@@ -442,8 +442,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
-		if (cur.inMacroMode())
-			cur.macroModeClose();
+		cur.macroModeClose();
 		else if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 			cur.pushLeft(*cur.nextAtom().nucleus());
 			cur.inset().idxFirst(cur);
@@ -459,9 +458,8 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selHandle(cmd.action == LFUN_LEFTSEL);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
-		if (cur.inMacroMode())
-			cur.macroModeClose();
-		else if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
+		cur.macroModeClose();
+		if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
 			cur.posLeft();
 			cur.push(*cur.nextAtom().nucleus());
 			cur.inset().idxLast(cur);

@@ -711,13 +711,17 @@ void LCursor::macroModeClose()
 		return;
 
 	string const name = s.substr(1);
+	lyxerr << "creating macro of name '" << name << "'" << endl;
 
 	// prevent entering of recursive macros
+	// FIXME: this is only a weak attempt... only prevents immediate
+	// recursion
 	InsetBase const * macro = innerInsetOfType(InsetBase::MATHMACRO_CODE);
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	niceInsert(createMathInset(name));
+	//niceInsert(createMathInset(name));
+	plainInsert(createMathInset(name));
 }
 
 
