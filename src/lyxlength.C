@@ -21,9 +21,6 @@
 #include <cstdlib>
 #include <iomanip>
 
-using std::abs;
-using std::setprecision;
-
 LyXLength::LyXLength()
 	: val_(0), unit_(LyXLength::UNIT_NONE)
 {}
@@ -60,25 +57,25 @@ string const LyXLength::asLatexString() const
 	ostringstream buffer;
 	switch (unit_) {
 	case PTW:
-		buffer << setprecision(2) << val_/100.0 << "\\textwidth";
+		buffer << val_ / 100.0 << "\\textwidth";
 		break;
 	case PCW:
-		buffer << setprecision(2) << val_/100.0 << "\\columnwidth";
+		buffer << val_ / 100.0 << "\\columnwidth";
 		break;
 	case PPW:
-		buffer << setprecision(2) << val_/100.0 << "\\paperwidth";
+		buffer << val_ / 100.0 << "\\paperwidth";
 		break;
 	case PLW:
-		buffer << setprecision(2) << val_/100.0 << "\\linewidth";
+		buffer << val_ / 100.0 << "\\linewidth";
 		break;
 	case PPH:
-		buffer << setprecision(2) << val_/100.0 << "\\paperheight";
+		buffer << val_ / 100.0 << "\\paperheight";
 		break;
 	case PTH:
-		buffer << setprecision(2) << val_/100.0 << "\\textheight";
+		buffer << val_ / 100.0 << "\\textheight";
 		break;
 	default:
-		buffer << setprecision(2) << val_ << unit_name[unit_];
+		buffer << val_ << unit_name[unit_];
 	  break;
 	}
 	return STRCONV(buffer.str());
@@ -140,10 +137,6 @@ int LyXLength::inPixels(int text_width, int em_width_base) const
 	// Pixel values are scaled so that the ratio
 	// between lengths and font sizes on the screen
 	// is the same as on paper.
-
-#ifdef WITH_WARNINGS
-#warning if you don't care than either call this function differently or let it return negative values and call abs() explicitly when needed (Andre')
-#endif
 
 	double result = 0.0;
 

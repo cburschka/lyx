@@ -1,3 +1,8 @@
+2004-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxlength.C (asLatexString): get rid of setprecision
+	(inPixels): remove bogus warning
+
 2004-12-19  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (init): on a Windows build, remove the ".exe"
