@@ -14,7 +14,8 @@ AM_CPPFLAGS = \
 	-DQT_CLEAN_NAMESPACE \
 	-DQT_GENUINE_STR \
 	$(PCH_FLAGS) \
-	-I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
+	-I$(top_srcdir)/src/ \
+	-I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/images \
 	$(QT_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers

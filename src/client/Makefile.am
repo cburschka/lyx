@@ -8,12 +8,7 @@ bin_PROGRAMS = lyxclient
 
 AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/../ $(BOOST_INCLUDES)
 
-if USE_INCLUDED_BOOST
-BOOST_LIBS = $(top_builddir)/boost/libs/filesystem/src/libboostfilesystem.la \
-	$(top_builddir)/boost/libs/regex/src/libboostregex.la
-else
-BOOST_LIBS = -lboost_regex -lboost_filesystem
-endif
+BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM)
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \

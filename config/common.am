@@ -31,6 +31,14 @@ SUFFIXES = .gch
 
 if USE_INCLUDED_BOOST
 BOOST_INCLUDES = -I$(top_srcdir)/boost
+BOOST_FILESYSTEM = $(top_builddir)/boost/libs/filesystem/src/libboost_filesystem.la
+BOOST_REGEX = $(top_builddir)/boost/libs/regex/src/libboost_regex.la
+BOOST_SIGNALS = $(top_builddir)/boost/libs/signals/src/libboost_signals.la
+else
+BOOST_INCLUDES =
+BOOST_FILESYSTEM = -lboost_filesystem
+BOOST_REGEX = -lboost_regex
+BOOST_SIGNALS = -lboost_signals
 endif
 
 LIBS =

@@ -1,3 +1,7 @@
+2004-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Makefile.am (tex2lyx_LDADD): use boost variables
+
 2004-11-27  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* table.C (handle_colalign): handle comments

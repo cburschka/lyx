@@ -47,8 +47,8 @@ tex2lyx_SOURCES = \
 	text.C
 
 tex2lyx_LDADD = \
-	../support/libsupport.la \
-	../../boost/libs/regex/src/libboostregex.la -lz
+	$(top_builddir)/src/support/libsupport.la \
+	$(BOOST_REGEX) -lz
 
 $(BUILT_SOURCES) :
 	@rm -f $@ ; \

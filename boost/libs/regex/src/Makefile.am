@@ -1,13 +1,13 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LTLIBRARIES = libboostregex.la
+noinst_LTLIBRARIES = libboost_regex.la
 
 AM_CPPFLAGS = \
 	$(PCH_FLAGS) \
 	-DBOOST_USER_CONFIG="<config.h>" \
 	$(BOOST_INCLUDES)
 
-libboostregex_la_SOURCES = \
+libboost_regex_la_SOURCES = \
 	cpp_regex_traits.cpp \
 	c_regex_traits_common.cpp \
 	c_regex_traits.cpp \

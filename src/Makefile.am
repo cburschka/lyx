@@ -20,12 +20,7 @@ LYX_POST_LIBS = frontends/controllers/libcontrollers.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
 
-if USE_INCLUDED_BOOST
-BOOST_LIBS = $(top_builddir)/boost/libs/regex/src/libboostregex.la \
-	$(top_builddir)/boost/libs/signals/src/libboostsignals.la
-else
-BOOST_LIBS = -lboost_regex -lboost_signals
-endif
+BOOST_LIBS = $(BOOST_REGEX) $(BOOST_SIGNALS)
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@
 

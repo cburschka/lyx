@@ -1,13 +1,13 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LTLIBRARIES = libboostfilesystem.la
+noinst_LTLIBRARIES = libboost_filesystem.la
 
 AM_CPPFLAGS = \
 	$(PCH_FLAGS) \
 	-DBOOST_USER_CONFIG="<config.h>" \
 	$(BOOST_INCLUDES)
 
-libboostfilesystem_la_SOURCES = \
+libboost_filesystem_la_SOURCES = \
 	convenience.cpp \
 	exception.cpp \
 	Makefile.am \

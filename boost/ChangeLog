@@ -1,3 +1,15 @@
+2004-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* libs/signals/src/.cvsignore: libboostsignals -> libboost_signals
+	* libs/signals/src/Makefile.am: ditto
+
+	* libs/regex/src/.cvsignore: libboostregex -> libboost_regex
+	* libs/regex/src/Makefile.am: ditto
+
+	* libs/filesystem/src/.cvsignore: libboostfilesystem ->
+	libboost_filesystem
+	* libs/filesystem/src/Makefile.am: ditto
+
 2004-12-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* boost/config/compiler/gcc.hpp: all to compile with gcc 4.0
