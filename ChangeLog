@@ -1,5 +1,16 @@
 1999-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/mathed/math_iter.C (my_memcpy): new function. Since the
+	built-in memcpy() is broken on egcs and gcc 2.95 for alpha
+	architecture, we provide our own. It is used unconditionnally, but
+	I do not think this is a performance problem. Thanks to Angus
+	Leeming <a.leeming@ic.ac.uk> for the code (and again to Michal
+	Jaegermann <michal@ellpspace.math.ualberta.ca> for finding it the
+	first time).
+	(GetInset): use my_memcpy.
+	(Insert): ditto
+	(Copy): ditto
+
 	* lib/chkconfig.ltx: some cleanup of the latex code. I am not sure
 	it is easier to understand, but it uses less TeX-only constructs now.
 

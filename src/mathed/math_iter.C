@@ -34,6 +34,16 @@ extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_string_width(short type, int style, byte const* s, int ls);
 extern int mathed_char_height(short, int, byte, int&, int&);
 
+// the builtin memcpy() is broken in egcs and gcc 2.95.x on alpha
+// stations. We provide a hand-made version instead. 
+inline void my_memcpy( void* ps_in, const void* pt_in, unsigned int n )
+{
+    char* ps = static_cast<char*>(ps_in);
+    char* pt = static_cast<char*>(const_cast<void*>(pt_in));
+    for( int i = 0; i < n; i++)
+	*ps++ = *pt++; 
+}
+
 
 void MathedIter::Reset()
 {
@@ -76,7 +86,7 @@ MathedInset* MathedIter::GetInset()
 {
    if (IsInset()) {
       MathedInset* p;
-      memcpy(&p, &array->bf[pos+1], sizeof(p));
+      my_memcpy(&p, &array->bf[pos+1], sizeof(p));
       return p;
    } else {
 	   lyxerr << "Math Error: This is not an inset["
@@ -267,21 +277,10 @@ void MathedIter::Insert(MathedInset* p, int type)
     if (!MathIsInset(type))
       type = LM_TC_INSET;
     split(shift);
-//      array->bf[pos] = type;
-//      memcpy(&array->bf[pos+1], &p, sizeof(p));
-//      pos += SizeInset;
-//      array->bf[pos-1] = type;
-    {
-	unsigned char *pt = &array->bf[pos];
-	unsigned char *ps = reinterpret_cast<unsigned char*>(&p);
-	size_t i;
-	*pt++ = type;
-	for(i = 0; i < sizeof(p); i++) {
-	    *pt++ = *ps++;
-	}
-	*pt = type;
-    }
+    array->bf[pos] = type;
+    my_memcpy(&array->bf[pos+1], &p, sizeof(p));
     pos += SizeInset;
+    array->bf[pos-1] = type;
     array->bf[array->last] = '\0';
     fcode = -1;
 }
@@ -357,7 +356,7 @@ LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
        int dx = pos2 - pos1;
        a = new LyxArrayBase(dx+LyxArrayBase::ARRAY_MIN_SIZE);
 //       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
-       memcpy(&a->bf[(fc) ? 1: 0], &array->bf[pos1], dx);
+       my_memcpy(&a->bf[(fc) ? 1: 0], &array->bf[pos1], dx);
        if (fc) {
 	   a->bf[0] = fc;
 	   dx++;
@@ -371,7 +370,7 @@ LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
       if (IsInset()) {
 	 MathedInset* inset = GetInset();
 	 inset = inset->Clone();
-	 memcpy(&array->bf[pos+1], &inset, sizeof(inset));
+	 my_memcpy(&array->bf[pos+1], &inset, sizeof(inset));
       }
       Next();
    }
