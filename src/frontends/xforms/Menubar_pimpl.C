@@ -191,7 +191,17 @@ string limit_string_length(string const & str)
 		return str;
 }
 
-size_type const max_number_of_menus = 32;
+
+int get_new_submenu(vector<int> & smn, Window win)
+{
+	static size_type max_number_of_menus = 32;
+	if (smn.size() >= max_number_of_menus)
+		max_number_of_menus = fl_setpup_maxpup(2*smn.size());
+	int menu = fl_newpup(win);
+	smn.push_back(menu);
+	return menu;
+}
+
 size_type const max_number_of_items = 25;
 
 void add_toc2(int menu, string const & extra_label,
@@ -218,7 +228,14 @@ void add_toc2(int menu, string const & extra_label,
 		while (pos < to) {
 			++count;
 			if (count > max_number_of_items) {
-				fl_addtopup(menu, ". . .%d");
+				int menu2 = get_new_submenu(smn, win);
+				add_toc2(menu2, extra_label, smn, win,
+					 toc_list, pos, to, depth);
+				string label = _("More");
+				label += "...%m";
+				if (depth == 0)
+					label += extra_label;
+				fl_addtopup(menu, label.c_str(), menu2);
 				break;
 			}
 			size_type new_pos = pos+1;
@@ -238,16 +255,12 @@ void add_toc2(int menu, string const & extra_label,
 			if (new_pos == pos + 1) {
 				label += "%x" + tostr(action);
 				fl_addtopup(menu, label.c_str());
-			} else if (smn.size() < max_number_of_menus) {
-				int menu2 = fl_newpup(win);
-				smn.push_back(menu2);
+			} else {
+				int menu2 = get_new_submenu(smn, win);
 				add_toc2(menu2, extra_label, smn, win,
 					 toc_list, pos, new_pos, depth+1);
 				label += "%m";
 				fl_addtopup(menu, label.c_str(), menu2);
-			} else {
-				label += "%d";
-				fl_addtopup(menu, label.c_str());
 			}
 			pos = new_pos;
 		}
@@ -275,8 +288,7 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 
 	for (int j = 1; j <= 3; ++j)
 		if (!toc_list[j].empty()) {
-			int menu2 = fl_newpup(win);
-			smn.push_back(menu2);
+			int menu2 = get_new_submenu(smn, win);
 			for (size_type i = 0; i < toc_list[j].size(); ++i) {
 				if (i > max_number_of_items) {
 					fl_addtopup(menu2, ". . .%d");
@@ -352,28 +364,22 @@ void add_references2(int menu, vector<int> & smn, Window win,
 				? label_list[j-1].substr(0, max_item_length2-1) + "$"
 				: label += label_list[j-1];
 
-			if (smn.size() < max_number_of_menus) {
-				int menu2 = fl_newpup(win);
-				smn.push_back(menu2);
-				for (size_type k = i;  k < j; ++k) {
-					int action = (type == "goto")
-						? lyxaction.getPseudoAction(LFUN_REF_GOTO, 
-									    label_list[k])
-						: lyxaction.getPseudoAction(LFUN_REF_INSERT,
-									    type + "|++||++|"
-									    + label_list[k]);
-					string label2 = label_list[k];
-					if (label2.size() > max_item_length)
-						label2 = label2.substr(0, max_item_length-1) + "$";
-					label2 += "%x" + tostr(action);
-					fl_addtopup(menu2, label2.c_str());
-				}
-				label += "%m";
-				fl_addtopup(menu, label.c_str(), menu2);
-			} else {
-				label += "%d";
-				fl_addtopup(menu, label.c_str());
+			int menu2 = get_new_submenu(smn, win);
+			for (size_type k = i;  k < j; ++k) {
+				int action = (type == "goto")
+					? lyxaction.getPseudoAction(LFUN_REF_GOTO, 
+								    label_list[k])
+					: lyxaction.getPseudoAction(LFUN_REF_INSERT,
+								    type + "|++||++|"
+								    + label_list[k]);
+				string label2 = label_list[k];
+				if (label2.size() > max_item_length)
+					label2 = label2.substr(0, max_item_length-1) + "$";
+				label2 += "%x" + tostr(action);
+				fl_addtopup(menu2, label2.c_str());
 			}
+			label += "%m";
+			fl_addtopup(menu, label.c_str(), menu2);
 		}
 	}
 }
@@ -430,16 +436,10 @@ void Menubar::Pimpl::add_references(int menu, string const & extra_label,
 			string label = _(MenuNames[i]);
 			if (i == max_nonempty)
 				label += extra_label;
-			if (smn.size() < max_number_of_menus) {
-				int menu2 = fl_newpup(win);
-				smn.push_back(menu2);
-				add_references2(menu2, smn, win, label_list,
-						MenuTypes[i]);
-				fl_addtopup(menu, label.c_str(), menu2);
-			} else {
-				label += "%d";
-				fl_addtopup(menu, label.c_str());	
-			}
+			int menu2 = get_new_submenu(smn, win);
+			add_references2(menu2, smn, win, label_list,
+					MenuTypes[i]);
+			fl_addtopup(menu, label.c_str(), menu2);
 		}
 	}
 }
@@ -457,12 +457,11 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 	Menu md = Menu();
 	menubackend_->getMenu(menu_name).expand(md, owner_->buffer());
 
-	int menu = fl_newpup(win);
+	int menu = get_new_submenu(smn, win);
 	fl_setpup_softedge(menu, true);
 	fl_setpup_bw(menu, -1);
 	lyxerr[Debug::GUI] << "Adding menu " << menu 
 			   << " in deletion list" << endl;
-	smn.push_back(menu);
 
 	// Compute the size of the largest label (because xforms is
 	// not able to support shortcuts correctly...)

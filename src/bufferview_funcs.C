@@ -82,6 +82,12 @@ void Margin(BufferView * bv)
 }
 #endif
 
+void Number(BufferView * bv)
+{
+	LyXFont font(LyXFont::ALL_IGNORE);
+	font.setNumber(LyXFont::TOGGLE);
+	ToggleAndShow(bv, font);
+}
 
 void Lang(BufferView * bv, string const & l)
 {
@@ -312,7 +318,8 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (font.language() != ignore_language ||
-		    font.latex() != LyXFont::IGNORE) {
+		    font.latex() != LyXFont::IGNORE ||
+		    font.number() != LyXFont::IGNORE) {
 			LyXText * text = bv->text;
 			LyXCursor & cursor = text->cursor;
 			text->ComputeBidiTables(bv->buffer(), cursor.row());

@@ -1279,7 +1279,8 @@ void LyXText::ToggleFree(BufferView * bview,
 	// If there is a change in the language the implicit word selection 
 	// is disabled.
 	LyXCursor resetCursor = cursor;
-	bool implicitSelection = (font.language() == ignore_language)
+	bool implicitSelection = (font.language() == ignore_language
+				  && font.number() == LyXFont::IGNORE)
 		? SelectWordWhenUnderCursor(bview) : false;
 
 	// Set font

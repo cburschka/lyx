@@ -949,7 +949,7 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
     /* maybe try to support the others later                      */
     BufferParams & param = lv_->buffer()->params;
 
-    int data;
+    int data = 0;
     if( cb == BULLETDEPTH1 )
 	    data = 0;
     else if ( cb == BULLETDEPTH2 )
@@ -978,7 +978,7 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
     /* Here we have to change the background pixmap to that selected */
     /* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
     
-    int data;
+    int data = 0;
     if( cb == BULLETPANEL1 )
 	    data = 0;
     else if ( cb == BULLETPANEL2 )

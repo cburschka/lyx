@@ -33,6 +33,7 @@
 #include "font.h"
 #include "encoding.h"
 #include "lyxscreen.h"
+#include "bufferview_funcs.h"
 
 using std::max;
 using std::min;
@@ -262,13 +263,22 @@ void LyXText::ComputeBidiTables(Buffer const * buf, Row * row) const
 			 !row->par()->IsNewline(lpos + 1))
 			? lpos + 1 : lpos;
 		LyXFont font = row->par()->GetFontSettings(buf->params, pos);
+		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
+		    font.number() == LyXFont::ON &&
+		    row->par()->GetFontSettings(buf->params, lpos-1).number()
+		    == LyXFont::ON) {
+			font = row->par()->GetFontSettings(buf->params, lpos);
+			is_space = false;
+		}
+
+
 		bool new_rtl = font.isVisibleRightToLeft();
 		bool new_rtl0 = font.isRightToLeft();
 		int new_level;
 
 		if (lpos == main_body - 1
 		    && row->pos() < main_body - 1
-		    && row->par()->IsLineSeparator(lpos)) {
+		    && is_space) {
 			new_level = (rtl_par) ? 1 : 0;
 			new_rtl = new_rtl0 = rtl_par;
 		} else if (new_rtl0)
@@ -1887,6 +1897,51 @@ void LyXText::InsertChar(BufferView * bview, char c)
 	bool freeSpacing = 
 		textclasslist.Style(bview->buffer()->params.textclass,
 			       cursor.row()->par()->GetLayout()).free_spacing;
+
+
+	if (lyxrc.auto_number) {
+		if (current_font.number() == LyXFont::ON) {
+			if (!isdigit(c) && !strchr("+-/*", c) &&
+			    !(strchr(".",c) &&
+			      cursor.pos() >= 1 &&
+			      cursor.pos() < cursor.par()->size() &&
+			      GetFont(bview->buffer(),
+				      cursor.par(),
+				      cursor.pos()).number() == LyXFont::ON &&
+			      GetFont(bview->buffer(),
+				      cursor.par(),
+				      cursor.pos()-1).number() == LyXFont::ON)
+			    )
+				Number(bview); // Set current_font.number to OFF
+		} else if (isdigit(c) &&
+			   real_current_font.isVisibleRightToLeft()) {
+			Number(bview); // Set current_font.number to ON
+
+			if (cursor.pos() > 0) {
+				char c = cursor.par()->GetChar(cursor.pos() - 1);
+				if (strchr("+-",c) &&
+				    (cursor.pos() == 1 ||
+				     cursor.par()->IsSeparator(cursor.pos() - 2) ||
+				     cursor.par()->IsNewline(cursor.pos() - 2) )
+				    ) {
+					SetCharFont(bview->buffer(),
+						    cursor.par(),
+						    cursor.pos() - 1,
+						    current_font);
+				} else if (strchr(".", c) &&
+					   cursor.pos() >= 2 &&
+					   GetFont(bview->buffer(),
+						   cursor.par(),
+						   cursor.pos()-2).number() == LyXFont::ON) {
+					SetCharFont(bview->buffer(),
+						    cursor.par(),
+						    cursor.pos() - 1,
+						    current_font);
+				}
+			}
+		}
+	}
+
 
 	/* First check, if there will be two blanks together or a blank at 
 	  the beginning of a paragraph. 

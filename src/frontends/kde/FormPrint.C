@@ -99,11 +99,9 @@ void FormPrint::print()
 		dialog_->getWhichPages(), from, to, dialog_->getReverse(), 
 		dialog_->getSort(), strToInt(dialog_->getCount())));
 
-	if (retval!=0) {
+	if (!retval) {
 		// FIXME: should have a utility class for this
-		string message(_("The error :\n\n"));
-		message += strerror(retval);
-		message += _("\n\noccurred while printing.\n");
+		string message(_("An error occured while printing.\n\n"));
 		message += _("Check the parameters are correct.\n");
 		KMsgBox msg(0, _("LyX: Print Error"), message.c_str(), KMsgBox::EXCLAMATION, _("&OK"));
 		msg.raise();

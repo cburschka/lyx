@@ -1,3 +1,37 @@
+2000-10-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/bind/cua.bind: fix a bit.
+	* lib/bind/emacs.bind: ditto.
+
+	* lib/bind/menus.bind: remove real menu entries from there.
+
+	* src/spellchecker.C: make sure we only include strings.h when
+	_AIX is defined.	
+
+2000-10-05  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/frontends/xforms/Menubar_pimpl.C (get_new_submenu): New
+	function. It enlarges the maximum number of pup when needed.
+	(add_toc2): Open a new menu if maximum number of items per menu has 
+	reached.
+	
+2000-10-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/kde/FormPrint.C: fix error reporting
+
+	* src/frontends/xforms/FormDocument.C: fix compiler
+	warnings
+
+	* lib/.cvsignore: add Literate.nw
+
+2000-10-05  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C
+	* bufferview_funcs.[Ch]
+	* lyxfont.[Ch]
+	* text.C
+	* text2.C: Add support for numbers in RTL text.
+
 2000-10-06  Allan Rae  <rae@lyx.org>
 
 	* po/Makefile.in.in (POTFILES.in, POTFILES): Fixed

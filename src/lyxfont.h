@@ -208,6 +208,9 @@ public:
 	FONT_MISC_STATE latex() const;
 
 	///
+	FONT_MISC_STATE number() const;
+
+	///
 	LColor::color color() const;
 
  	///
@@ -235,6 +238,8 @@ public:
 	LyXFont & setNoun(LyXFont::FONT_MISC_STATE n);
 	///
 	LyXFont & setLatex(LyXFont::FONT_MISC_STATE l);
+	///
+	LyXFont & setNumber(LyXFont::FONT_MISC_STATE n);
 	///
 	LyXFont & setColor(LColor::color c);
  	///
@@ -357,6 +362,8 @@ private:
 	FontBits bits;
 	///
 	Language const * lang;
+	///
+	FONT_MISC_STATE number_;
 	
 	/// Sane font
 	static FontBits sane;
@@ -379,7 +386,8 @@ std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
 inline
 bool operator==(LyXFont const & font1, LyXFont const & font2) {
 	return font1.bits == font2.bits &&
-		font1.lang == font2.lang;
+		font1.lang == font2.lang &&
+		font1.number_ == font2.number_;
 }
 
 ///
@@ -394,6 +402,7 @@ LyXFont::LyXFont()
 {
 	bits = sane;
 	lang = default_language;
+	number_ = OFF;
 }
 
 
@@ -402,6 +411,7 @@ LyXFont::LyXFont(LyXFont const & x)
 {
 	bits = x.bits;
 	lang = x.lang;
+	number_ = x.number_;
 }
 
 
@@ -410,6 +420,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT1)
 {
 	bits = inherit;
 	lang = default_language;
+	number_ = OFF;
 }
 
 
@@ -418,6 +429,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT2)
 {
 	bits = ignore;
 	lang = ignore_language;
+	number_ = IGNORE;
 }
 
 
@@ -426,6 +438,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3)
 {
 	bits = sane;
 	lang = default_language;
+	number_ = OFF;
 }
 
 
@@ -434,6 +447,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
 {
 	bits = inherit;
 	lang = l;
+	number_ = OFF;
 }
 
 
@@ -442,6 +456,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT2, Language const * l)
 {
 	bits = ignore;
 	lang = l;
+	number_ = IGNORE;
 }
 
 
@@ -450,6 +465,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
 {
 	bits = sane;
 	lang = l;
+	number_ = OFF;
 }
 
 
@@ -458,6 +474,7 @@ LyXFont & LyXFont::operator=(LyXFont const & x)
 {
 	bits = x.bits;
 	lang = x.lang;
+	number_ = x.number_;
 	return *this;
 }
 
@@ -533,6 +550,13 @@ Language const * LyXFont::language() const
 
 
 inline
+LyXFont::FONT_MISC_STATE LyXFont::number() const 
+{
+	return number_;
+}
+
+
+inline
 bool LyXFont::isRightToLeft() const 
 {
 	return lang->RightToLeft();
@@ -542,7 +566,7 @@ bool LyXFont::isRightToLeft() const
 inline
 bool LyXFont::isVisibleRightToLeft() const 
 {
-	return (lang->RightToLeft() && latex() != ON);
+	return (lang->RightToLeft() && latex() != ON && number() != ON);
 }
 
 
@@ -621,6 +645,14 @@ inline
 LyXFont & LyXFont::setLanguage(Language const * l)
 {
 	lang = l;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setNumber(LyXFont::FONT_MISC_STATE n)
+{
+	number_ = n;
 	return *this;
 }
 

@@ -3,91 +3,11 @@
 #
 #                  LyX, the High Level Word Processor
 # 
-#                 Copyright (C) 1995-1997 The LyX Team
+#                 Copyright (C) 1995-2000 The LyX Team
 #
 # ==================================================================
 
-# Key bindings for menus, both invisible and visible.
-
-#
-# Visible Menu access menu
-#
-
-\bind "F10 f"			"menu-open File"
-\bind "F10 e"			"menu-open Edit"
-\bind "F10 l"			"menu-open Layout"
-\bind "F10 i"			"menu-open Insert"
-\bind "F10 m"			"menu-open Math"
-\bind "F10 o"			"menu-open Options"
-\bind "F10 d"			"menu-open Documents"
-\bind "F10 h"			"menu-open Help"
-
-
-#
-# File menu
-#
-
-\bind "M-f n"			"buffer-new"
-\bind "M-f t"			"buffer-new-template"
-\bind "M-f o"			"buffer-open"
-\bind "M-f c"			"buffer-close"
-\bind "M-f s"			"buffer-write"
-\bind "M-f a"			"buffer-write-as"
-\bind "M-f r"			"buffer-reload"
-\bind "M-f d"			"buffer-view dvi"
-\bind "M-f w"			"buffer-view ps"
-\bind "M-f v"			"buffer-update dvi"
-\bind "M-f u"			"buffer-update ps"
-\bind "M-f p"			"buffer-print" 
-\bind "M-f f"			"buffer-fax"
-\bind "M-f i l"                 "buffer-import latex"
-\bind "M-f i a"                 "buffer-import ascii"
-\bind "M-f i p"                 "buffer-import asciiparagraph"
-\bind "M-f i n"                 "buffer-import noweb"
-\bind "M-f e l"                 "buffer-export latex"
-\bind "M-f e p"                 "buffer-export postscript"
-\bind "M-f e d"                 "buffer-export linuxdoc"
-\bind "M-f e t"                 "buffer-export ascii"
-\bind "M-f e h"			"buffer-export html"
-\bind "M-f e m"                 "buffer-export custom"
-\bind "M-f x"			"lyx-quit"
-\bind "M-f space"		"menu-open File" 
-#bind "M-f l"			"file-last"		# Not yet implemented.
-
-#
-# Edit menu
-#
-
-#bind "M-e b"			"table"			# Not yet implemented!
-\bind "M-e c"			"cut"
-\bind "M-e e"			"error-next"
-\bind "M-e f"			"find-replace"
-\bind "M-e k"			"line-delete-forward"
-\bind "M-e m"			"mark-on"
-\bind "M-e S-M"			"mark-off"
-\bind "M-e n"			"note-next"
-\bind "M-e o"			"copy"
-\bind "M-e p"			"paste"
-\bind "M-e r"			"redo"
-\bind "M-e s"			"spellchecker"
-\bind "M-e h"			"buffer-chktex"
-\bind "M-e t"			"toc-view"
-\bind "M-e u"			"undo"
-\bind "M-e w"			"latex-view-log"
-\bind "M-e space"		"menu-open Edit" 
-
-#
-# TOC menu
-#
-
-\bind "M-t"			"menu-open TOC" 
-
-#
-# Refs menu
-#
-
-\bind "M-r"			"menu-open Refs" 
-
+# Key bindings for so-called "invisible" menus
 
 #
 # Layout menu
@@ -110,99 +30,15 @@
 # Insert menu
 #
 
-\bind "M-i g"			"figure-insert"
-\bind "M-i b"			"dialog-tabular-insert"
-\bind "M-i c"			"buffer-child-insert"
-\bind "M-i a l"			"file-insert-ascii line"         
-\bind "M-i a p"			"file-insert-ascii paragraph"
-\bind "M-i x"			"file-insert"
-\bind "M-i f"			"footnote-insert"
-\bind "M-i m"			"marginpar-insert"
-
-# PREVIOUS PATCH
-\bind "M-i o g"			"buffer-float-insert figure" 
-\bind "M-i o t"			"buffer-float-insert table"
-\bind "M-i o w"			"buffer-float-insert wide-fig"
-\bind "M-i o d"			"buffer-float-insert wide-tab"
-\bind "M-i o a"			"buffer-float-insert algorithm"
-
-\bind "M-i t c"			"toc-insert"
-\bind "M-i t f"			"lof-insert"
-\bind "M-i t t"			"lot-insert"
-\bind "M-i t i"			"index-print"
-\bind "M-i t b"			"bibtex-insert"
-\bind "M-i t a"			"loa-insert"
-
-\bind "M-i minus"		"hyphenation-point-insert"
-\bind "M-i p"			"dots-insert"
-\bind "M-i e"			"end-of-sentence-period-insert"
-\bind "M-i q"			"quote-insert"
-\bind "M-i apostrophe"		"quote-insert"
-\bind "M-i S-quotedbl"		"quote-insert"
-\bind "M-i s h"			"hfill-insert"
-# NOT IN MENU. (HIDDEN TO LEARNER)
-\bind "M-i s minus"		"hyphenation-point-insert"
-\bind "M-i s b"			"protected-space-insert"
-\bind "M-i s l"			"break-line"
-\bind "M-i s i"			"dots-insert"
-\bind "M-i s e"			"end-of-sentence-period-insert"
-\bind "M-i s q"			"quote-insert"
-\bind "M-i s m"			"menu-separator-insert"
-\bind "M-i n"			"note-insert"
-\bind "M-i l"			"label-insert"
-\bind "M-i r"			"reference-insert"
-\bind "M-i i"			"citation-insert"
-\bind "M-i d"			"index-insert"
-\bind "M-i w"			"index-insert-last"
-\bind "M-i u"			"url-insert"
-\bind "M-i space"		"menu-open Insert"  
-
-
-
-#
-# Math menu
-#
-
-\bind "M-m space"		"menu-open Math" 
-
-#
-# Options menu
-#
-
-#bind "M-o f"			"screen-font-options"	# Not yet implemented!
-#bind "M-o s"			"spellcheck-options"	# Not yet implemented!
-#bind "M-o k"			"keyboard-options"	# Not yet implemented!
-#bind "M-o l"			"latex-options"		# Not yet implemented!
-\bind "M-o space"		"menu-open Options"  
-
-
-#
-# Documents menu
-#
-# These are now defined in cua or emacs bind files so their "standard"
-# bindings are available. (eg M-d "word-delete-forward" in emacs) ARRae
-#\bind "M-d p"			"buffer-previous"
-#\bind "M-d space"		"menu-open Documents"
-
-
-#
-# Help menu
-#
-
-#bind "M-h i"			"help-introduction"	# Not yet implemented!
-#bind "M-h t"			"help-tutorial"		# Not yet implemented!
-#bind "M-h u"			"help-user-guide"	# Not yet implemented!
-#bind "M-h r"			"help-reference-guide"	# Not yet implemented!
-#bind "M-h h"			"help-how-do-i-"	# Not yet implemented!
-#bind "M-h c"			"help-customization"	# Not yet implemented!
-#bind "M-h s"			"help-special-tools"	# Not yet implemented!
-#bind "M-h k"			"help-known-bugs"	# Not yet implemented!
-#bind "M-h a"			"help-latex-config"	# Not yet implemented!
-#bind "M-h o"			"help-copyright"	# Not yet implemented!
-#bind "M-h e"			"help-credits"		# Not yet implemented!
-#bind "M-h v"			"help-version"		# Not yet implemented!
-\bind "M-h space"		"menu-open Help" 
-
+# These ones are not supported anymore.
+#\bind "M-i minus"		"hyphenation-point-insert"
+#\bind "M-i p"			"dots-insert"
+#\bind "M-i e"			"end-of-sentence-period-insert"
+#\bind "M-i q"			"quote-insert"
+#\bind "M-i apostrophe"		"quote-insert"
+#\bind "M-i S-quotedbl"		"quote-insert"
+#\bind "M-i s h"			"hfill-insert"
+#\bind "M-i s minus"		"hyphenation-point-insert"
 
 #
 # Font size menu

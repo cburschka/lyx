@@ -41,6 +41,8 @@ extern void Figure();
 extern void Table();
 ///
 extern void Lang(BufferView *, string const &);
+///
+extern void Number(BufferView *);
 #ifndef NEW_INSETS
 ///
 extern void Melt(BufferView *);
