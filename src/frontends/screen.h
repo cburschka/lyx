@@ -108,9 +108,6 @@ protected:
 	virtual void removeCursor() = 0;
 
 private:
-	/// y1 and y2 are coordinates of the screen
-	void drawFromTo(LyXText *, BufferView *);
-
 	/// grey out (no buffer)
 	void greyOut();
 

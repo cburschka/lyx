@@ -220,7 +220,7 @@ void LyXScreen::toggleCursor(BufferView & bv)
 }
 
 
-bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
+bool LyXScreen::fitManualCursor(BufferView * /*bv*/, LyXText * text,
 	int /*x*/, int y, int asc, int desc)
 {
 	int const vheight = workarea().workHeight();
@@ -237,7 +237,6 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 		return false;
 
 	text->top_y(newtop);
-	//draw();
 	return true;
 }
 
@@ -251,13 +250,7 @@ unsigned int LyXScreen::topCursorVisible(LyXText * text)
 
 	RowList::iterator row = text->cursorRow();
 
-#warning SUPER HACK DISABLED (Lgb)
-#if 0
-	// Is this a hack? Yes, probably... (Lgb)
-	if (!row)
-		return max(newtop, 0);
-#endif
-	if (cursor.y() - row->baseline() + row->height() - top_y >= vheight) {
+	if (int(cursor.y() - row->baseline() + row->height() - top_y) >= vheight) {
 		if (row->height() < vheight
 		    && row->height() > vheight / 4) {
 			newtop = cursor.y()
@@ -278,9 +271,7 @@ unsigned int LyXScreen::topCursorVisible(LyXText * text)
 		}
 	}
 
-	newtop = max(newtop, 0);
-
-	return newtop;
+	return max(newtop, 0);
 }
 
 
@@ -290,8 +281,6 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 	int const newtop = topCursorVisible(text);
 	bool const result = (newtop != text->top_y());
 	text->top_y(newtop);
-	//if (result)
-	//	draw();
 	return result;
 }
 
@@ -308,7 +297,18 @@ void LyXScreen::redraw(BufferView & bv)
 	workarea().getPainter().start();
 
 	bv.text->updateRowPositions();
-	drawFromTo(bv.text, &bv);
+	hideCursor();
+
+	int const y = paintText(bv, *bv.text);
+
+	// maybe we have to clear the screen at the bottom
+	int const y2 = workarea().workHeight();
+	if (y < y2 && !bv.text->isInInset()) {
+		workarea().getPainter().fillRectangle(0, y,
+			workarea().workWidth(), y2 - y,
+			LColor::bottomarea);
+	}
+
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
 	workarea().getPainter().end();
@@ -346,25 +346,4 @@ void LyXScreen::greyOut()
 	}
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 	workarea().getPainter().end();
-}
-
-
-void LyXScreen::drawFromTo(LyXText * text, BufferView * bv)
-{
-	hideCursor();
-	int const topy = text->top_y();
-	int y_text = topy;
-	ParagraphList::iterator pit;
-	RowList::iterator rit = text->getRowNearY(y_text, pit);
-	int y = y_text - topy;
-
-	y = paintRows(*bv, *text, pit, rit, 0, y, y, 0);
-
-	// maybe we have to clear the screen at the bottom
-	int const y2 = workarea().workHeight();
-	if (y < y2 && !text->isInInset()) {
-		workarea().getPainter().fillRectangle(0, y,
-			workarea().workWidth(), y2 - y,
-			LColor::bottomarea);
-	}
 }

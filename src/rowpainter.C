@@ -1041,30 +1041,6 @@ void RowPainter::paint()
 }
 
 
-} // namespace anon
-
-
-int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
-{
-	if (vsp.kind() == VSpace::NONE)
-		return 0;
-
-	int const arrow_size = 4;
-	int const space_size = vsp.inPixels(bv);
-
-	LyXFont font;
-	font.decSize();
-	int const min_size = max(3 * arrow_size,
-		font_metrics::maxAscent(font)
-		+ font_metrics::maxDescent(font));
-
-	if (vsp.length().len().value() < 0.0)
-		return min_size;
-	else
-		return max(min_size, space_size);
-}
-
-
 int paintRows(BufferView const & bv, LyXText const & text,
 	ParagraphList::iterator pit, RowList::iterator rit,
 	int xo, int y, int yf, int yo)
@@ -1098,4 +1074,62 @@ int paintRows(BufferView const & bv, LyXText const & text,
 
 	return y;
 }
+
+
+} // namespace anon
+
+
+int paintText(BufferView & bv, LyXText & text)
+{
+	int const topy = text.top_y();
+	int y_text = topy;
+	ParagraphList::iterator pit;
+	RowList::iterator rit = text.getRowNearY(y_text, pit);
+	int y = y_text - topy;
+	return paintRows(bv, text, pit, rit, 0, y, y, 0);
+}
+
+
+void paintTextInset(BufferView & bv, LyXText & text, int x, int baseline)
+{
+	RowList::iterator rit = text.firstRow();
+	RowList::iterator end = text.endRow();
+	ParagraphList::iterator pit = text.ownerParagraphs().begin();
+
+	int y_offset = baseline - rit->ascent_of_text();
+	int y = y_offset;
+	while (rit != end && y + rit->height() <= 0) {
+		y += rit->height();
+		text.nextRow(pit, rit);
+	}
+	if (y_offset < 0) {
+		text.top_y(-y_offset);
+		paintRows(bv, text, pit, rit, x, 0, y, y);
+	} else {
+		text.top_y(y - y_offset);
+		paintRows(bv, text, pit, rit, x, 0, y_offset, y_offset);
+	}
+}
+
+
+int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
+{
+	if (vsp.kind() == VSpace::NONE)
+		return 0;
+
+	int const arrow_size = 4;
+	int const space_size = vsp.inPixels(bv);
+
+	LyXFont font;
+	font.decSize();
+	int const min_size = max(3 * arrow_size,
+		font_metrics::maxAscent(font)
+		+ font_metrics::maxDescent(font));
+
+	if (vsp.length().len().value() < 0.0)
+		return min_size;
+	else
+		return max(min_size, space_size);
+}
+
 

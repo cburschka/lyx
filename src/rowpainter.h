@@ -15,19 +15,17 @@
 
 #include <config.h>
 
-#include "RowList.h"
-
 class LyXText;
 class BufferView;
 class VSpace;
 
-/// paint the rows
-// return last used y
-int paintRows(BufferView const & bv, LyXText const & text,
-	ParagraphList::iterator pit,
-	RowList::iterator rit, int xo, int y, int yf, int yo);
-
 /// return the pixel height of a space marker before/after a par
 int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp);
+
+/// paint the rows of the main text, return last drawn y value
+int paintText(BufferView & bv, LyXText & text);
+
+/// paint the rows of a text inset
+void paintTextInset(BufferView & bv, LyXText & text, int x, int y);
 
 #endif // ROWPAINTER_H

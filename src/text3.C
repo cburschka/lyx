@@ -1454,7 +1454,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		}
 
 		bv->beforeChange(this);
-		LyXFont const old_font(real_current_font);
+		LyXFont const old_font = real_current_font;
 
 		string::const_iterator cit = cmd.argument.begin();
 		string::const_iterator end = cmd.argument.end();
@@ -1469,6 +1469,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// update the minibuffer
 		if (old_font != real_current_font)
 			bv->owner()->view_state_changed();
+		bv->updateScrollbar();
 		break;
 	}
 

@@ -251,7 +251,7 @@ int InsetText::textWidth() const
 }
 
 
-void InsetText::draw(PainterInfo & pi, int x, int baseline) const
+void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
 	// update our idea of where we are. Clearly, we should
 	// not have to know this information.
@@ -264,11 +264,11 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	// repaint the background if needed
 	if (backgroundColor() != LColor::background)
-		clearInset(bv, start_x + TEXT_TO_INSET_OFFSET, baseline);
+		clearInset(bv, start_x + TEXT_TO_INSET_OFFSET, y);
 
 	// no draw is necessary !!!
 	if (drawFrame_ == LOCKED && !locked && paragraphs.begin()->empty()) {
-		top_baseline = baseline;
+		top_baseline = y;
 		return;
 	}
 
@@ -277,8 +277,8 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	if (!owner())
 		x += scroll();
 
-	top_baseline = baseline;
-	top_y = baseline - dim_.asc;
+	top_baseline = y;
+	top_y = y - dim_.asc;
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
 		inset_x = cix() - x + drawTextXOffset;
@@ -287,33 +287,10 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	x += TEXT_TO_INSET_OFFSET;
 
-	RowList::iterator rit = text_.firstRow();
-	RowList::iterator end = text_.endRow();
-	ParagraphList::iterator pit = paragraphs.begin();
-
-	int y_offset = baseline - rit->ascent_of_text();
-	int first = 0;
-	int y = y_offset;
-	while (rit != end && y + rit->height() <= 0) {
-		y += rit->height();
-		first += rit->height();
-		text_.nextRow(pit, rit);
-	}
-	if (y_offset < 0) {
-		text_.top_y(-y_offset);
-		first = y;
-		y_offset = 0;
-	} else {
-		text_.top_y(first);
-		first = 0;
-	}
-
-	int yo = y_offset + first;
-
-	paintRows(*bv, text_, pit, rit, x, 0, yo, yo);
+	paintTextInset(*bv, text_, x, y);
 
 	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked))
-		drawFrame(pain, int(start_x));
+		drawFrame(pain, start_x);
 }
 
 
@@ -1629,7 +1606,7 @@ int InsetText::scroll(bool recursive) const
 
 void InsetText::clearSelection(BufferView * bv)
 {
-	getLyXText(bv)->clearSelection();
+	text_.clearSelection();
 }
 
 
@@ -1776,12 +1753,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 			return true;
 	}
 	if (!locked) {
-		ParagraphList::iterator pit = paragraphs.begin();
-		ParagraphList::iterator pend = paragraphs.end();
-
-		while (boost::next(pit) != pend)
-			++pit;
-
+		ParagraphList::iterator pit = boost::prior(paragraphs.end());
 		text_.setCursor(pit, pit->size());
 	}
 	lyx::find::SearchResult result =
