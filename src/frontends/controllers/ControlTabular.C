@@ -44,15 +44,10 @@ void ControlTabular::showInset(InsetTabular * inset)
 
 void ControlTabular::updateInset(InsetTabular * inset)
 {
+	if (!view().isVisible())
+		return;
 	lyx::Assert(inset);
-
 	connectInset(inset);
-
-	if (!dialog_built_) {
-		view().build();
-		dialog_built_ = true;
-	}
-
 	update();
 }
 

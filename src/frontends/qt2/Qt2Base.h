@@ -44,6 +44,8 @@ protected:
 	virtual void show();
 	/// update the dialog's contents
 	virtual void update_contents() = 0;
+	///
+	virtual bool isVisible() const;
 
 	/// the dialog has changed contents
 	virtual void changed();
@@ -72,7 +74,7 @@ protected slots:
 	// Close button clicked
 	void slotClose();
 private:
-	/// Pointer to the actual instantiation of xform's form
+	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog * form() const = 0;
 
 private:

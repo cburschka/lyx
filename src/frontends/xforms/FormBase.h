@@ -66,6 +66,8 @@ protected:
 	virtual void hide();
 	/// Create the dialog if necessary, update it and display it.
 	virtual void show();
+	///
+	virtual bool isVisible() const;
 
 	/** Prepare the way to:
 	 *  1. display feedback as the mouse moves over ob. This feedback will

@@ -1,3 +1,10 @@
+2003-01-31  Angus Leeming  <leeming@lyx.org>
+
+	* ViewBase.h: add an isVisible() pure virtual method.
+
+	* ControlTabular.C (updateInset): don't build the dialog here.
+	Instead, do nothing if the dialog is invisible.
+
 2003-01-15  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* ControlSpellchecker.[Ch]: Remove XForms RTL hacks.

@@ -65,6 +65,12 @@ FormBase::~FormBase()
 }
 
 
+bool FormBase::isVisible() const
+{
+	return form() && form()->visible;
+}
+
+
 Tooltips & FormBase::tooltips()
 {
 	return *tooltips_;

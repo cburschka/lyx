@@ -38,6 +38,12 @@ Qt2BC & Qt2Base::bc()
 }
 
 
+bool Qt2Base::isVisible() const
+{
+	return form() && form()->isVisible();
+}
+
+
 void Qt2Base::show()
 {
 	if (!form()) {

@@ -38,6 +38,8 @@ public:
 	virtual void show() = 0;
 	/// Update dialog before/whilst showing it.
 	virtual void update() = 0;
+	///
+	virtual bool isVisible() const = 0;
 
 	/** Defaults to nothing. Can be used by the controller, however, to
 	 *  indicate to the view that something has changed and that the
