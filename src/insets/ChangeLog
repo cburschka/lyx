@@ -1,3 +1,9 @@
+2002-01-08  Juergen Vigna  <jug@sad.it>
+
+	* inset.h: added isChar() function and implemented this for
+	insetspecialchar insetquotes and insetlatexaccent.
+	added forceDefaultParagraphs() and implemented it for insettabular.
+
 2002-01-07  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (getLyXText): Fixed this function. An insert into the

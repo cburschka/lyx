@@ -222,6 +222,10 @@ public:
 	bool searchBackward(BufferView *, string const &,
 	                    bool const & = true, bool const & = false);
 
+	// this should return true if we have a "normal" cell, otherwise true.
+	// "normal" means without width set!
+	bool forceDefaultParagraphs(Inset const * in) const;
+	
 	//
 	// Public structures and variables
 	///

@@ -2778,3 +2778,37 @@ bool InsetTabular::insetAllowed(Inset::Code code) const
 		return the_locking_inset->insetAllowed(code);
 	return false;
 }
+
+
+bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
+{
+	int const n = tabular->GetNumberOfCells();
+	static int last = 0;
+
+	// maybe some speedup
+	if ((last < n) && tabular->GetCellInset(last) == in) {
+		if (tabular->GetPWidth(last+1).zero())
+			return true;
+		return false;
+	}
+	if ((++last < n) && tabular->GetCellInset(last) == in) {
+		if (tabular->GetPWidth(last).zero())
+			return true;
+		return false;
+	}
+
+	for(int i=0; i < n; ++i) {
+		if (tabular->GetCellInset(i) == in) {
+			last = i;
+			if (tabular->GetPWidth(i).zero())
+				return true;
+			return false;
+		}
+	}
+	last = 0;
+	// well we didn't obviously find it so maybe our owner knows more
+	if (owner())
+		return owner()->forceDefaultParagraphs(in);
+	// if we're here there is really something strange going on!!!
+	return false;
+}

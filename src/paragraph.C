@@ -1221,51 +1221,59 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 
 
 Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
-				       BufferParams const & bparams,
-				       ostream & os, TexRow & texrow,
-				       bool moving_arg)
+                                 BufferParams const & bparams,
+                                 ostream & os, TexRow & texrow,
+                                 bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
-	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass,
-				    layout);
-
+	Inset const * in = inInset();
 	bool further_blank_line = false;
-
-	if (params().startOfAppendix()) {
-		os << "\\appendix\n";
-		texrow.newline();
-	}
-
-	if (!params().spacing().isDefault()
-	    && (!previous() || !previous()->hasSameLayout(this))) {
-		os << params().spacing().writeEnvirBegin() << "\n";
-		texrow.newline();
-	}
+	LyXLayout style;
 	
-	if (tex_code_break_column && style.isCommand()){
-		os << '\n';
-		texrow.newline();
-	}
+	// well we have to check if we are in an inset with unlimited
+	// lenght (all in one row) if that is true then we don't allow
+	// any special options in the paragraph and also we don't allow
+	// any environment other then "Standard" to be valid!
+	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+		style = textclasslist.Style(bparams.textclass, layout);
 
-	if (params().pagebreakTop()) {
-		os << "\\newpage";
-		further_blank_line = true;
-	}
-	if (params().spaceTop().kind() != VSpace::NONE) {
-		os << params().spaceTop().asLatexCommand(bparams);
-		further_blank_line = true;
-	}
+		if (params().startOfAppendix()) {
+			os << "\\appendix\n";
+			texrow.newline();
+		}
 
-	if (params().lineTop()) {
-		os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
-		   << "\\vspace{-1\\parskip}";
-		further_blank_line = true;
-	}
+		if (!params().spacing().isDefault()
+			&& (!previous() || !previous()->hasSameLayout(this))) {
+			os << params().spacing().writeEnvirBegin() << "\n";
+			texrow.newline();
+		}
+	
+		if (tex_code_break_column && style.isCommand()){
+			os << '\n';
+			texrow.newline();
+		}
 
-	if (further_blank_line){
-		os << '\n';
-		texrow.newline();
+		if (params().pagebreakTop()) {
+			os << "\\newpage";
+			further_blank_line = true;
+		}
+		if (params().spaceTop().kind() != VSpace::NONE) {
+			os << params().spaceTop().asLatexCommand(bparams);
+			further_blank_line = true;
+		}
+
+		if (params().lineTop()) {
+			os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
+			   << "\\vspace{-1\\parskip}";
+			further_blank_line = true;
+		}
+
+		if (further_blank_line){
+			os << '\n';
+			texrow.newline();
+		}
+	} else {
+		style = textclasslist.Style(bparams.textclass, 0);
 	}
 
 	Language const * language = getParLanguage(bparams);
@@ -1275,22 +1283,24 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 	if (language->babel() != previous_language->babel()
 	    // check if we already put language command in TeXEnvironment()
-	    && !(textclasslist.Style(bparams.textclass, layout).isEnvironment()
-		 && (!previous() || previous()->layout != layout ||
-		     previous()->params().depth() != params().depth()))) {
-
+	    && !(style.isEnvironment()
+	         && (!previous() || previous()->layout != layout ||
+		         previous()->params().depth() != params().depth())))
+	{
 		if (!lyxrc.language_command_end.empty() &&
-		    previous_language->babel() != doc_language->babel()) {
+		    previous_language->babel() != doc_language->babel())
+		{
 			os << subst(lyxrc.language_command_end, "$$lang",
-				    previous_language->babel())
+			            previous_language->babel())
 			   << endl;
 			texrow.newline();
 		}
 
 		if (lyxrc.language_command_end.empty() ||
-		    language->babel() != doc_language->babel()) {
+		    language->babel() != doc_language->babel())
+		{
 			os << subst(lyxrc.language_command_begin, "$$lang",
-				    language->babel())
+			            language->babel())
 			   << endl;
 			texrow.newline();
 		}
@@ -1336,11 +1346,10 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	// or for a command.
 	LyXFont const font =
 		(size() == 0
-		 ? getLayoutFont(bparams)
-		 : getFont(bparams, size() - 1));
+		 ? getLayoutFont(bparams) : getFont(bparams, size() - 1));
 
-	bool is_command = textclasslist.Style(bparams.textclass,
-					      getLayout()).isCommand();
+	bool is_command = style.isCommand();
+	
 	if (style.resfont.size() != font.size() && next_ && !is_command) {
 		if (!need_par)
 			os << "{";
@@ -1374,31 +1383,33 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		}
 	}
 	
-	further_blank_line = false;
-	if (params().lineBottom()) {
-		os << "\\lyxline{\\" << font.latexSize() << '}';
-		further_blank_line = true;
-	}
+	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+		further_blank_line = false;
+		if (params().lineBottom()) {
+			os << "\\lyxline{\\" << font.latexSize() << '}';
+			further_blank_line = true;
+		}
 
-	if (params().spaceBottom().kind() != VSpace::NONE) {
-		os << params().spaceBottom().asLatexCommand(bparams);
-		further_blank_line = true;
-	}
+		if (params().spaceBottom().kind() != VSpace::NONE) {
+			os << params().spaceBottom().asLatexCommand(bparams);
+			further_blank_line = true;
+		}
 
-	if (params().pagebreakBottom()) {
-		os << "\\newpage";
-		further_blank_line = true;
-	}
+		if (params().pagebreakBottom()) {
+			os << "\\newpage";
+			further_blank_line = true;
+		}
 
-	if (further_blank_line){
-		os << '\n';
-		texrow.newline();
-	}
+		if (further_blank_line){
+			os << '\n';
+			texrow.newline();
+		}
 
-	if (!params().spacing().isDefault()
-	    && (!next_ || !next_->hasSameLayout(this))) {
-		os << params().spacing().writeEnvirEnd() << "\n";
-		texrow.newline();
+		if (!params().spacing().isDefault()
+			&& (!next_ || !next_->hasSameLayout(this))) {
+			os << params().spacing().writeEnvirEnd() << "\n";
+			texrow.newline();
+		}
 	}
 	
 	// we don't need it for the last paragraph!!!
@@ -1432,17 +1443,29 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 // This one spits out the text of the paragraph
 bool Paragraph::simpleTeXOnePar(Buffer const * buf,
-				   BufferParams const & bparams,
-				   ostream & os, TexRow & texrow,
-				   bool moving_arg)
+                                BufferParams const & bparams,
+                                ostream & os, TexRow & texrow,
+                                bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
 
 	bool return_value = false;
 
-	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass,
-				    getLayout());
+	LyXLayout style;
+	
+	// well we have to check if we are in an inset with unlimited
+	// lenght (all in one row) if that is true then we don't allow
+	// any special options in the paragraph and also we don't allow
+	// any environment other then "Standard" to be valid!
+	bool asdefault =
+		(inInset() && inInset()->forceDefaultParagraphs(inInset()));
+
+	if (asdefault) {
+		style = textclasslist.Style(bparams.textclass, 0);
+	} else {
+		style = textclasslist.Style(bparams.textclass, layout);
+	}
+	
 	LyXFont basefont;
 
 	// Maybe we have to create a optional argument.
@@ -1497,39 +1520,42 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				++column;
 			}
 
-			if (params().noindent()) {
-				os << "\\noindent ";
-				column += 10;
+			if (!asdefault) {
+				if (params().noindent()) {
+					os << "\\noindent ";
+					column += 10;
+				}
+			
+				switch (params().align()) {
+				case LYX_ALIGN_NONE:
+				case LYX_ALIGN_BLOCK:
+				case LYX_ALIGN_LAYOUT:
+				case LYX_ALIGN_SPECIAL:
+					break;
+				case LYX_ALIGN_LEFT:
+					if (getParLanguage(bparams)->babel() != "hebrew") {
+						os << "\\begin{flushleft}";
+						column += 17;
+					} else {
+						os << "\\begin{flushright}";
+						column += 18;
+					}
+					break;
+				case LYX_ALIGN_RIGHT:
+					if (getParLanguage(bparams)->babel() != "hebrew") {
+						os << "\\begin{flushright}";
+						column += 18;
+					} else {
+						os << "\\begin{flushleft}";
+						column += 17;
+					}
+					break;
+				case LYX_ALIGN_CENTER:
+					os << "\\begin{center}";
+					column += 14;
+					break;
+				}
 			}
-			switch (params().align()) {
-			case LYX_ALIGN_NONE:
-			case LYX_ALIGN_BLOCK:
-			case LYX_ALIGN_LAYOUT:
-			case LYX_ALIGN_SPECIAL:
-				break;
-			case LYX_ALIGN_LEFT:
-				if (getParLanguage(bparams)->babel() != "hebrew") {
-					os << "\\begin{flushleft}";
-					column += 17;
-				} else {
-					os << "\\begin{flushright}";
-					column += 18;
-				}
-				break;
-			case LYX_ALIGN_RIGHT:
-				if (getParLanguage(bparams)->babel() != "hebrew") {
-					os << "\\begin{flushright}";
-					column += 18;
-				} else {
-					os << "\\begin{flushleft}";
-					column += 17;
-				}
-				break;
-			case LYX_ALIGN_CENTER:
-				os << "\\begin{center}";
-				column += 14;
-				break;
-			}	 
 		}
 
 		value_type c = getChar(i);
@@ -1636,35 +1662,37 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		return_value = false;
 	}
 
-	switch (params().align()) {
-	case LYX_ALIGN_NONE:
-	case LYX_ALIGN_BLOCK:
-	case LYX_ALIGN_LAYOUT:
-	case LYX_ALIGN_SPECIAL:
-		break;
-	case LYX_ALIGN_LEFT:
-		if (getParLanguage(bparams)->babel() != "hebrew") {
-			os << "\\end{flushleft}";
-			column+= 15;
-		} else {
-			os << "\\end{flushright}";
-			column+= 16;
+	if (!asdefault) {
+		switch (params().align()) {
+		case LYX_ALIGN_NONE:
+		case LYX_ALIGN_BLOCK:
+		case LYX_ALIGN_LAYOUT:
+		case LYX_ALIGN_SPECIAL:
+			break;
+		case LYX_ALIGN_LEFT:
+			if (getParLanguage(bparams)->babel() != "hebrew") {
+				os << "\\end{flushleft}";
+				column+= 15;
+			} else {
+				os << "\\end{flushright}";
+				column+= 16;
+			}
+			break;
+		case LYX_ALIGN_RIGHT:
+			if (getParLanguage(bparams)->babel() != "hebrew") {
+				os << "\\end{flushright}";
+				column+= 16;
+			} else {
+				os << "\\end{flushleft}";
+				column+= 15;
+			}
+			break;
+		case LYX_ALIGN_CENTER:
+			os << "\\end{center}";
+			column+= 12;
+			break;
 		}
-		break;
-	case LYX_ALIGN_RIGHT:
-		if (getParLanguage(bparams)->babel() != "hebrew") {
-			os << "\\end{flushright}";
-			column+= 16;
-		} else {
-			os << "\\end{flushleft}";
-			column+= 15;
-		}
-		break;
-	case LYX_ALIGN_CENTER:
-		os << "\\end{center}";
-		column+= 12;
-		break;
-	}	 
+	}
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
 	return return_value;

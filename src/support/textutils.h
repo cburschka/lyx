@@ -49,6 +49,13 @@ bool IsLineSeparatorChar(char c) {
 
 ///
 inline
+bool IsLineSeparatorChar(char c, Inset * in) {
+	return ((c == ' ') || (in && in->isSpace()));
+}
+
+
+///
+inline
 bool IsKommaChar(char c) {
 	return (c == ',' 
 		|| c == '('

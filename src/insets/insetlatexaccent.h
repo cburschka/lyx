@@ -72,6 +72,9 @@ public:
 	Inset::Code lyxCode()const;
 	///
 	inline bool canDisplay();
+	// should this inset be handled like a normal charater
+	bool isChar() const { return true; }
+	
 	/// all the accent types
 	enum ACCENT_TYPES{
 		///

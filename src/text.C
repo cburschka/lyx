@@ -955,26 +955,25 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 		while (doitonetime || ((x < width) && (i < last))) {
 			doitonetime = false;
 			char const c = par->getChar(i);
+			Inset * in = 0;
+			if (c == Paragraph::META_INSET)
+				in = par->getInset(i);
 			if (IsNewlineChar(c)) {
 				last_separator = i;
 				x = width; // this means break
-			} else if (c == Paragraph::META_INSET &&
-			           par->getInset(i)) {
-				
+			} else if (in && !in->isChar()) {
 				// check wether a Display() inset is
 				// valid here. if not, change it to
 				// non-display
-				if (par->getInset(i)->display() &&
+				if (in->display() &&
 				    (layout.isCommand() ||
 				     (layout.labeltype == LABEL_MANUAL
 				      && i < beginningOfMainBody(bview->buffer(), par))))
 				{
 					// display istn't allowd
-					par->getInset(i)->display(false);
+					in->display(false);
 					x += singleWidth(bview, par, i, c);
-				} else if (par->getInset(i)->display() ||
-				           par->getInset(i)->needFullRow())
-				{
+				} else if (in->display() || in->needFullRow()) {
 					// So break the line here
 					if (i == pos) {
 						if (pos < last-1) {
@@ -1000,7 +999,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 						last_separator = i - 1;
 				}
 			} else  {
-				if (IsLineSeparatorChar(c))
+				if (IsLineSeparatorChar(c, in))
 					last_separator = i;
 				x += singleWidth(bview, par, i, c);
 			}

@@ -82,6 +82,9 @@ public:
 	};
 	///
 	void validate(LaTeXFeatures &) const;
+	
+	// should this inset be handled like a normal charater
+	bool isChar() const;
 	/// is this equivalent to a letter?
 	bool isLetter() const;
 	/// is this equivalent to a space?

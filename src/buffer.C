@@ -2524,33 +2524,41 @@ void Buffer::makeLaTeXFile(string const & fname,
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
 //
 void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
-			     Paragraph * endpar, TexRow & texrow) const
+                             Paragraph * endpar, TexRow & texrow) const
 {
 	bool was_title = false;
 	bool already_title = false;
 
 	// if only_body
 	while (par != endpar) {
-		LyXLayout const & layout =
-			textclasslist.Style(params.textclass,
-					    par->layout);
+		Inset * in = par->inInset();
+		// well we have to check if we are in an inset with unlimited
+		// lenght (all in one row) if that is true then we don't allow
+		// any special options in the paragraph and also we don't allow
+		// any environment other then "Standard" to be valid!
+		if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+			LyXLayout const & layout =
+				textclasslist.Style(params.textclass, par->layout);
 	    
 	        if (layout.intitle) {
-			if (already_title) {
-				lyxerr <<"Error in latexParagraphs: You"
-					" should not mix title layouts"
-					" with normal ones." << endl;
-			} else
-				was_title = true;
+				if (already_title) {
+					lyxerr <<"Error in latexParagraphs: You"
+						" should not mix title layouts"
+						" with normal ones." << endl;
+				} else
+					was_title = true;
 	        } else if (was_title && !already_title) {
-			ofs << "\\maketitle\n";
-			texrow.newline();
-			already_title = true;
-			was_title = false;		    
-		}
-		
-		if (layout.isEnvironment()) {
-			par = par->TeXEnvironment(this, params, ofs, texrow);
+				ofs << "\\maketitle\n";
+				texrow.newline();
+				already_title = true;
+				was_title = false;		    
+			}
+			
+			if (layout.isEnvironment()) {
+				par = par->TeXEnvironment(this, params, ofs, texrow);
+			} else {
+				par = par->TeXOnePar(this, params, ofs, texrow, false);
+			}
 		} else {
 			par = par->TeXOnePar(this, params, ofs, texrow, false);
 		}

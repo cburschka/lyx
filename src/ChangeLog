@@ -1,3 +1,13 @@
+2002-01-08  Juergen Vigna  <jug@sad.it>
+
+	* text.C (nextBreakPoint): use function Inset::isChar().
+
+	* paragraph.C (TeXOnePar): use function
+	Inset::forceDefaultParagraphs.
+
+	* buffer.C (latexParagraphs): use function
+	Inset::forceDefaultParagraphs.
+
 2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyx_gui.C (init): set the style of the menu popups to

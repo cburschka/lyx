@@ -305,10 +305,15 @@ public:
 	///
 	virtual bool allowSpellcheck() { return false; }
 
+	// should this inset be handled like a normal charater
+	virtual bool isChar() const { return false; }
 	// is this equivalent to a letter?
 	virtual bool isLetter() const { return false; }
 	// is this equivalent to a space?
 	virtual bool isSpace() const { return false; }
+	// if this inset has paragraphs should they be outputed all as default
+	// paragraps with "Standard" layout?
+	virtual bool forceDefaultParagraphs(Inset const *) const;
 
 protected:
 	///

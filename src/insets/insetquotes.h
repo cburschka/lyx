@@ -103,6 +103,9 @@ public:
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	Inset::Code lyxCode() const;
+	// should this inset be handled like a normal charater
+	bool isChar() const { return true; }
+	
 private:
 	///
 	quote_language language_;

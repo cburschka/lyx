@@ -145,6 +145,15 @@ void Inset::id(int id_arg)
 void Inset::setFont(BufferView *, LyXFont const &, bool, bool )
 {}
 
+
+bool Inset::forceDefaultParagraphs(Inset const * in) const
+{
+	if (owner())
+		return owner()->forceDefaultParagraphs(in);
+	return false;
+}
+
+
 // some stuff for inset locking
 
 UpdatableInset::UpdatableInset()

@@ -324,6 +324,12 @@ void InsetSpecialChar::validate(LaTeXFeatures & features) const
 }
 
 
+bool InsetSpecialChar::isChar() const
+{
+	return true;
+}
+
+
 bool InsetSpecialChar::isLetter() const
 {
 	return kind_ == HYPHENATION || kind_ == LIGATURE_BREAK;
