@@ -4,8 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
- * \author JoÃ£o Luis M. Assirati
- * \author Lars Gullik BjÃ¸nnes
+ * \author João Luis M. Assirati
+ * \author Lars Gullik Bjønnes
  *
  * Full author contact details are available in file CREDITS.
  */
