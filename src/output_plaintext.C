@@ -144,7 +144,7 @@ void asciiParagraph(Buffer const & buf,
 
 		//--
 		// we should probably change to the paragraph language in the
-		// gettext here (if possible) so that strings are outputted in
+		// gettext here (if possible) so that strings are output in
 		// the correct language! (20012712 Jug)
 		//--
 		switch (ltype) {
@@ -152,6 +152,7 @@ void asciiParagraph(Buffer const & buf,
 		case 4: // (Sub)Paragraph
 		case 5: // Description
 			break;
+
 		case 6: // Abstract
 			if (runparams.linelen > 0) {
 				os << _("Abstract") << "\n\n";
@@ -162,6 +163,7 @@ void asciiParagraph(Buffer const & buf,
 				currlinelen += abst.length();
 			}
 			break;
+
 		case 7: // Bibliography
 			if (!ref_printed) {
 				if (runparams.linelen > 0) {
@@ -172,17 +174,16 @@ void asciiParagraph(Buffer const & buf,
 					os << refs;
 					currlinelen += refs.length();
 				}
-
 				ref_printed = true;
 			}
 			break;
-		default:
-		{
-			string const parlab = par.params().labelString();
-			os << parlab << ' ';
-			currlinelen += parlab.length() + 1;
+
+		default: {
+			string const label = par.params().labelString();
+			os << label << ' ';
+			currlinelen += label.length() + 1;
+			break;
 		}
-		break;
 
 		}
 	}
@@ -202,59 +203,52 @@ void asciiParagraph(Buffer const & buf,
 	for (pos_type i = 0; i < par.size(); ++i) {
 		char c = par.getUChar(buf.params(), i);
 		switch (c) {
-		case Paragraph::META_INSET:
-		{
+		case Paragraph::META_INSET: {
 			InsetOld const * inset = par.getInset(i);
-			if (inset) {
-				if (runparams.linelen > 0) {
-					os << word;
-					currlinelen += word.length();
-					word.erase();
-				}
-				if (inset->plaintext(buf, os, runparams)) {
-					// to be sure it breaks paragraph
-					currlinelen += runparams.linelen;
-				}
+			if (runparams.linelen > 0) {
+				os << word;
+				currlinelen += word.length();
+				word.erase();
 			}
+			if (inset->plaintext(buf, os, runparams)) {
+				// to be sure it breaks paragraph
+				currlinelen += runparams.linelen;
+			}
+			break;
 		}
-		break;
+
+		case ' ':
+			if (runparams.linelen > 0 &&
+			    currlinelen + word.length() > runparams.linelen - 10) {
+				os << "\n";
+				pair<int, string> p = addDepth(depth, ltype_depth);
+				os << p.second;
+				currlinelen = p.first;
+			}
+
+			os << word << ' ';
+			currlinelen += word.length() + 1;
+			word.erase();
+			break;
+
+
+		case '\0':
+			lyxerr[Debug::INFO] <<
+				"writeAsciiFile: NULL char in structure." << endl;
+			break;
 
 		default:
-			if (c == ' ') {
-				if (runparams.linelen > 0 &&
-				    currlinelen + word.length() > runparams.linelen - 10) {
-					os << "\n";
-					pair<int, string> p = addDepth(depth, ltype_depth);
-					os << p.second;
-					currlinelen = p.first;
-				}
-
-				os << word << ' ';
-				currlinelen += word.length() + 1;
-				word.erase();
-
-			} else {
-				if (c != '\0') {
-					word += c;
-				} else {
-					lyxerr[Debug::INFO] <<
-						"writeAsciiFile: NULL char in structure." << endl;
-				}
-				if ((runparams.linelen > 0) &&
-					(currlinelen + word.length()) > runparams.linelen)
-				{
-					os << "\n";
-
-					pair<int, string> p =
-						addDepth(depth, ltype_depth);
-					os << p.second;
-					currlinelen = p.first;
-				}
+			word += c;
+			if (runparams.linelen > 0 &&
+				currlinelen + word.length() > runparams.linelen)
+			{
+				os << "\n";
+				pair<int, string> p = addDepth(depth, ltype_depth);
+				os << p.second;
+				currlinelen = p.first;
 			}
 			break;
 		}
 	}
 	os << word;
 }
-
-

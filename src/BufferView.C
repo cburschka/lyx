@@ -60,13 +60,13 @@ BufferView::BufferView(LyXView * owner, int xpos, int ypos,
 	: pimpl_(new Pimpl(this, owner, xpos, ypos, width, height)),
 	  x_target_(0)
 {
-	text = 0;
+	text_ = 0;
 }
 
 
 BufferView::~BufferView()
 {
-	delete text;
+	delete text_;
 	delete pimpl_;
 }
 
@@ -256,10 +256,10 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	string const fname = MakeAbsPath(filen);
 
-	text->clearSelection();
-	text->breakParagraph(buffer()->paragraphs());
+	text_->clearSelection();
+	text_->breakParagraph(buffer()->paragraphs());
 
-	bool res = buffer()->readFile(fname, text->cursorPar());
+	bool res = buffer()->readFile(fname, text_->cursorPar());
 	resize();
 	return res;
 }
@@ -290,9 +290,9 @@ void BufferView::setCursorFromRow(int row)
 	buffer()->texrow().getIdFromRow(row, tmpid, tmppos);
 
 	if (tmpid == -1)
-		text->setCursor(0, 0);
+		text_->setCursor(0, 0);
 	else
-		text->setCursor(buffer()->getParFromID(tmpid).pit(), tmppos);
+		text_->setCursor(buffer()->getParFromID(tmpid).pit(), tmppos);
 }
 
 
@@ -309,11 +309,11 @@ void BufferView::gotoLabel(string const & label)
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
-			text->clearSelection();
-			text->setCursor(
-				std::distance(text->ownerParagraphs().begin(), it.getPar()),
+			text_->clearSelection();
+			text_->setCursor(
+				std::distance(text_->ownerParagraphs().begin(), it.getPar()),
 				it.getPos());
-			text->selection.cursor = text->cursor;
+			text_->selection.cursor = text_->cursor;
 			update();
 			return;
 		}
@@ -327,7 +327,7 @@ void BufferView::undo()
 		return;
 
 	owner()->message(_("Undo"));
-	text->clearSelection();
+	text_->clearSelection();
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
 	update();
@@ -341,7 +341,7 @@ void BufferView::redo()
 		return;
 
 	owner()->message(_("Redo"));
-	text->clearSelection();
+	text_->clearSelection();
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
 	update();
@@ -354,14 +354,14 @@ void BufferView::replaceWord(string const & replacestring)
 	if (!available())
 		return;
 
-	LyXText * text = getLyXText();
+	LyXText * t = getLyXText();
 
-	text->replaceSelectionWithString(replacestring);
-	text->setSelectionRange(replacestring.length());
+	t->replaceSelectionWithString(replacestring);
+	t->setSelectionRange(replacestring.length());
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		text->cursorLeft(this);
+		t->cursorLeft(this);
 
 	// FIXME: should be done through LFUN
 	buffer()->markDirty();
@@ -410,13 +410,13 @@ Language const * BufferView::getParentLanguage(InsetOld * inset) const
 
 Encoding const * BufferView::getEncoding() const
 {
-	LyXText * text = getLyXText();
-	if (!text)
+	LyXText * t = getLyXText();
+	if (!t)
 		return 0;
-	return text->cursorPar()->getFont(
+	return t->cursorPar()->getFont(
 		buffer()->params(),
-		text->cursor.pos(),
-		outerFont(text->cursorPar(), text->ownerParagraphs())
+		t->cursor.pos(),
+		outerFont(t->cursorPar(), t->ownerParagraphs())
 	).language()->encoding();
 }
 

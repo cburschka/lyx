@@ -104,11 +104,6 @@ public:
 	/// return the current change at the cursor
 	Change const getCurrentChange();
 
-	/**
-	 * This holds the mapping between buffer paragraphs and screen rows.
-	 * This should be private...but not yet. (Lgb)
-	 */
-	LyXText * text;
 	/// return the lyxtext we are using
 	LyXText * getLyXText() const;
 
@@ -193,12 +188,21 @@ public:
 	LCursor const & cursor() const;
 	///
 	UpdatableInset * innerInset() const;
+	///
+	LyXText * text() const { return text_; }
+	///
+	void setText(LyXText * t) { text_ = t; }
 
 private:
+	///
 	struct Pimpl;
+	///
 	friend struct BufferView::Pimpl;
-
+	///
 	Pimpl * pimpl_;
+
+	/// This holds the mapping between buffer paragraphs and screen rows.
+	LyXText * text_;
 
 	/**
 	 * The target x position of the cursor. This is used for when

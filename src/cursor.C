@@ -101,8 +101,8 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				break;
 		}
 	}
-	lyxerr << "trying to dispatch to main text " << bv_->text << endl;
-	DispatchResult res = bv_->text->dispatch(cmd);
+	lyxerr << "trying to dispatch to main text " << bv_->text() << endl;
+	DispatchResult res = bv_->text()->dispatch(cmd);
 	lyxerr << "   result: " << res.val() << endl;
 
 	if (!res.dispatched()) {
@@ -160,7 +160,7 @@ LyXText * LCursor::innerText() const
 			if (data_[i].text())
 				return data_[i].text();
 	}
-	return bv_->text;
+	return bv_->text();
 }
 
 
@@ -187,8 +187,8 @@ void LCursor::getDim(int & asc, int & desc) const
 void LCursor::getPos(int & x, int & y) const
 {
 	if (data_.empty()) {
-		x = bv_->text->cursor.x();
-		y = bv_->text->cursor.y();
+		x = bv_->text()->cursor.x();
+		y = bv_->text()->cursor.y();
 //		y -= bv_->top_y();
 	} else {
 		// Would be nice to clean this up to make some understandable sense...
@@ -201,7 +201,6 @@ void LCursor::getPos(int & x, int & y) const
 		// inset.top_baseline, so getCursor() returns an old value.
 		// Ugly as you like.
 		//inset->getCursorPos(bv_, x, y);
-		//y = inset->insetInInsetY() + bv_->text->cursor.y();
 		inset->getCursorPos(x, y);
 		x += inset->x();
 		y += cached_y_;

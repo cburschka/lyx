@@ -388,14 +388,6 @@ void InsetTabular::updateLocal(BufferView * bv) const
 }
 
 
-int InsetTabular::insetInInsetY() const
-{
-	if (the_locking_inset)
-		return cursory_ + the_locking_inset->insetInInsetY();
-	return 0;
-}
-
-
 bool InsetTabular::insertInset(BufferView * bv, InsetOld * inset)
 {
 	return the_locking_inset && the_locking_inset->insertInset(bv, inset);

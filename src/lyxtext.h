@@ -128,6 +128,8 @@ public:
 	void fullRebreak();
 	/// compute text metrics
 	void metrics(MetricsInfo & mi, Dimension & dim);
+	/// draw text (only used for insets)
+	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
 	DispatchResult dispatch(FuncRequest const & cmd);
@@ -418,8 +420,8 @@ public:
 	ParagraphList * paragraphs_;
 
 	/// absolute document pixel coordinates of this LyXText
-	int xo_;
-	int yo_;
+	mutable int xo_;
+	mutable int yo_;
 
 
 private:

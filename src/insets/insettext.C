@@ -78,7 +78,6 @@ InsetText::InsetText(BufferParams const & bp)
 	  frame_color_(LColor::insetframe),
 	  text_(0, this, true, paragraphs)
 {
-	textwidth_ = 0; // broken
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
 		paragraphs.begin()->trackChanges();
@@ -102,7 +101,6 @@ void InsetText::operator=(InsetText const & in)
 	autoBreakRows_ = in.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
-	textwidth_ = in.textwidth_;
 	text_ = LyXText(in.text_.bv_owner, this, true, paragraphs);
 	init();
 }
@@ -218,7 +216,6 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
-	textwidth_ = mi.base.textwidth;
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	setViewCache(mi.base.bv);
 	text_.metrics(mi, dim);
@@ -236,24 +233,21 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	xo_ = x;
 	yo_ = y;
 
-	BufferView * bv = pi.base.bv;
 	Painter & pain = pi.pain;
 
 	// repaint the background if needed
+	x += TEXT_TO_INSET_OFFSET;
 	if (backgroundColor() != LColor::background)
-		clearInset(bv, xo_ + TEXT_TO_INSET_OFFSET, y);
+		clearInset(pain, x, y);
 
+	BufferView * bv = pi.base.bv;
 	bv->hideCursor();
 
 	if (!owner())
 		x += scroll();
-
-	x += TEXT_TO_INSET_OFFSET;
 	y += bv->top_y() - text_.firstRow()->ascent_of_text();
 
-	text_.xo_ = x;
-	text_.yo_ = y;
-	paintTextInset(*bv, text_, x, y);
+	text_.draw(pi, x, y);
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
 		drawFrame(pain, xo_);
@@ -271,7 +265,7 @@ void InsetText::drawFrame(Painter & pain, int x) const
 }
 
 
-void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
+void InsetText::updateLocal(BufferView * bv)
 {
 	if (!bv)
 		return;
@@ -286,7 +280,7 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
 	if (old_par != text_.cursor.par()) {
-		bv->owner()->setLayout(cpar()->layout()->name());
+		bv->owner()->setLayout(text_.cursorPar()->layout()->name());
 		old_par = text_.cursor.par();
 	}
 }
@@ -326,7 +320,7 @@ void InsetText::edit(BufferView * bv, bool left)
 		text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
 
 	sanitizeEmptyText(bv);
-	updateLocal(bv, false);
+	updateLocal(bv);
 	bv->updateParagraphDialog();
 }
 
@@ -341,7 +335,7 @@ void InsetText::edit(BufferView * bv, int x, int y)
 	text_.clearSelection();
 	finishUndo();
 
-	updateLocal(bv, false);
+	updateLocal(bv);
 	bv->updateParagraphDialog();
 }
 
@@ -437,17 +431,12 @@ void InsetText::getCursorPos(int & x, int & y) const
 }
 
 
-int InsetText::insetInInsetY() const
-{
-	return 0;
-}
-
-
 bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
 {
 	inset->setOwner(this);
 	text_.insertInset(inset);
-	updateLocal(bv, true);
+	updateLocal(bv);
+#warning should we mark the buffer dirty?
 	return true;
 }
 
@@ -540,24 +529,6 @@ void InsetText::setFrameColor(LColor_color col)
 }
 
 
-pos_type InsetText::cpos() const
-{
-	return text_.cursor.pos();
-}
-
-
-ParagraphList::iterator InsetText::cpar() const
-{
-	return text_.cursorPar();
-}
-
-
-RowList::iterator InsetText::crow() const
-{
-	return cpar()->getRow(cpos());
-}
-
-
 void InsetText::setViewCache(BufferView const * bv) const
 {
 	if (bv && bv != text_.bv_owner) {
@@ -585,15 +556,8 @@ int InsetText::scroll(bool /*recursive*/) const
 }
 
 
-void InsetText::clearSelection(BufferView *)
+void InsetText::clearInset(Painter & pain, int x, int y) const
 {
-	text_.clearSelection();
-}
-
-
-void InsetText::clearInset(BufferView * bv, int x, int y) const
-{
-	Painter & pain = bv->painter();
 	int w = dim_.wid;
 	int h = dim_.asc + dim_.des;
 	int ty = y - dim_.asc;

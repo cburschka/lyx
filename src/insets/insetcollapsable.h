@@ -61,8 +61,6 @@ public:
 	///
 	bool isTextInset() const { return true; }
 	///
-	int insetInInsetY() const;
-	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///

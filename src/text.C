@@ -1641,6 +1641,15 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 }
 
 
+// only used for inset right now. should also be used for main text
+void LyXText::draw(PainterInfo & pi, int x, int y) const
+{
+	xo_ = x;
+	yo_ = y;
+	paintTextInset(*bv(), *this, x, y);
+}
+
+
 bool LyXText::isLastRow(ParagraphList::iterator pit, Row const & row) const
 {
 	return row.endpos() >= pit->size()

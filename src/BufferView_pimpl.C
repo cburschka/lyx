@@ -287,8 +287,8 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			    << b << ')' << endl;
 	if (buffer_) {
 		disconnectBuffer();
-		delete bv_->text;
-		bv_->text = 0;
+		delete bv_->text();
+		bv_->setText(0);
 	}
 
 	// set current buffer
@@ -309,7 +309,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		connectBuffer(*buffer_);
 
 		// If we don't have a text object for this, we make one
-		if (bv_->text == 0)
+		if (bv_->text() == 0)
 			resizeCurrentBuffer();
 
 		// FIXME: needed when ?
@@ -333,7 +333,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 	// Don't forget to update the Layout
 	if (buffer_)
-		owner_->setLayout(bv_->text->cursorPar()->layout()->name());
+		owner_->setLayout(bv_->text()->cursorPar()->layout()->name());
 
 	if (lyx::graphics::Previews::activated() && buffer_)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
@@ -354,7 +354,7 @@ bool BufferView::Pimpl::fitCursor()
 void BufferView::Pimpl::redoCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "BufferView::redoCurrentBuffer" << endl;
-	if (buffer_ && bv_->text) {
+	if (buffer_ && bv_->text()) {
 		resizeCurrentBuffer();
 		updateScrollbar();
 		owner_->updateLayoutChoice();
@@ -380,37 +380,37 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	owner_->message(_("Formatting document..."));
 
-	if (bv_->text) {
-		par = bv_->text->cursor.par();
-		pos = bv_->text->cursor.pos();
-		selstartpar = bv_->text->selection.start.par();
-		selstartpos = bv_->text->selection.start.pos();
-		selendpar = bv_->text->selection.end.par();
-		selendpos = bv_->text->selection.end.pos();
-		selection = bv_->text->selection.set();
-		mark_set = bv_->text->selection.mark();
-		bv_->text->fullRebreak();
+	if (bv_->text()) {
+		par = bv_->text()->cursor.par();
+		pos = bv_->text()->cursor.pos();
+		selstartpar = bv_->text()->selection.start.par();
+		selstartpos = bv_->text()->selection.start.pos();
+		selendpar = bv_->text()->selection.end.par();
+		selendpos = bv_->text()->selection.end.pos();
+		selection = bv_->text()->selection.set();
+		mark_set = bv_->text()->selection.mark();
+		bv_->text()->fullRebreak();
 		update();
 	} else {
-		bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
-		bv_->text->init(bv_);
+		bv_->setText(new LyXText(bv_, 0, false, bv_->buffer()->paragraphs()));
+		bv_->text()->init(bv_);
 	}
 
 	if (par != -1) {
-		bv_->text->selection.set(true);
+		bv_->text()->selection.set(true);
 		// At this point just to avoid the Delete-Empty-Paragraph-
 		// Mechanism when setting the cursor.
-		bv_->text->selection.mark(mark_set);
+		bv_->text()->selection.mark(mark_set);
 		if (selection) {
-			bv_->text->setCursor(selstartpar, selstartpos);
-			bv_->text->selection.cursor = bv_->text->cursor;
-			bv_->text->setCursor(selendpar, selendpos);
-			bv_->text->setSelection();
-			bv_->text->setCursor(par, pos);
+			bv_->text()->setCursor(selstartpar, selstartpos);
+			bv_->text()->selection.cursor = bv_->text()->cursor;
+			bv_->text()->setCursor(selendpar, selendpos);
+			bv_->text()->setSelection();
+			bv_->text()->setCursor(par, pos);
 		} else {
-			bv_->text->setCursor(par, pos);
-			bv_->text->selection.cursor = bv_->text->cursor;
-			bv_->text->selection.set(false);
+			bv_->text()->setCursor(par, pos);
+			bv_->text()->selection.cursor = bv_->text()->cursor;
+			bv_->text()->selection.set(false);
 		}
 	}
 
@@ -428,13 +428,13 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 void BufferView::Pimpl::updateScrollbar()
 {
-	if (!bv_->text) {
+	if (!bv_->text()) {
 		lyxerr[Debug::GUI] << "no text in updateScrollbar" << endl;
 		workarea().setScrollbarParams(0, 0, 0);
 		return;
 	}
 
-	LyXText const & t = *bv_->text;
+	LyXText const & t = *bv_->text();
 
 	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", top_y() "
 		<< top_y() << ", default height " << defaultRowHeight() << endl;
@@ -462,7 +462,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const first = top_y() + height;
 	int const last = top_y() + workarea().workHeight() - height;
 
-	LyXText * text = bv_->text;
+	LyXText * text = bv_->text();
 	if (text->cursor.y() < first)
 		text->setCursorFromCoordinates(0, first);
 	else if (text->cursor.y() > last)
@@ -477,7 +477,7 @@ void BufferView::Pimpl::scroll(int lines)
 	if (!buffer_)
 		return;
 
-	LyXText const * t = bv_->text;
+	LyXText const * t = bv_->text();
 	int const line_height = defaultRowHeight();
 
 	// The new absolute coordinate
@@ -523,15 +523,15 @@ void BufferView::Pimpl::selectionRequested()
 	LyXText * text = bv_->getLyXText();
 
 	if (text->selection.set() &&
-		(!bv_->text->xsel_cache.set() ||
-		 text->selection.start != bv_->text->xsel_cache.start ||
-		 text->selection.end != bv_->text->xsel_cache.end))
+		(!bv_->text()->xsel_cache.set() ||
+		 text->selection.start != bv_->text()->xsel_cache.start ||
+		 text->selection.end != bv_->text()->xsel_cache.end))
 	{
-		bv_->text->xsel_cache = text->selection;
+		bv_->text()->xsel_cache = text->selection;
 		sel = text->selectionAsString(*bv_->buffer(), false);
 	} else if (!text->selection.set()) {
 		sel = string();
-		bv_->text->xsel_cache.set(false);
+		bv_->text()->xsel_cache.set(false);
 	}
 	if (!sel.empty()) {
 		workarea().putClipboard(sel);
@@ -544,7 +544,7 @@ void BufferView::Pimpl::selectionLost()
 	if (available()) {
 		screen().hideCursor();
 		bv_->getLyXText()->clearSelection();
-		bv_->text->xsel_cache.set(false);
+		bv_->text()->xsel_cache.set(false);
 	}
 }
 
@@ -590,7 +590,7 @@ void BufferView::Pimpl::update()
 		getParsInRange(buffer_->paragraphs(),
 			       top_y(), top_y() + workarea().workHeight(),
 			       beg, end);
-		bv_->text->redoParagraphs(beg, end);
+		bv_->text()->redoParagraphs(beg, end);
 		bv_->getLyXText()->redoCursor();
 		updateScrollbar();
 	}
@@ -613,7 +613,7 @@ void BufferView::Pimpl::cursorToggle()
 
 bool BufferView::Pimpl::available() const
 {
-	return buffer_ && bv_->text;
+	return buffer_ && bv_->text();
 }
 
 
@@ -637,8 +637,8 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 	if (i >= saved_positions_num)
 		return;
 	saved_positions[i] = Position(buffer_->fileName(),
-				      bv_->text->cursorPar()->id(),
-				      bv_->text->cursor.pos());
+				      bv_->text()->cursorPar()->id(),
+				      bv_->text()->cursor.pos());
 	if (i > 0)
 		owner_->message(bformat(_("Saved bookmark %1$s"), tostr(i)));
 }
@@ -651,7 +651,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	string const fname = saved_positions[i].filename;
 
-	bv_->text->clearSelection();
+	bv_->text()->clearSelection();
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
@@ -669,7 +669,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text->setCursor(par.pit(),
+	bv_->text()->setCursor(par.pit(),
 			     min(par->size(), saved_positions[i].par_pos));
 
 	if (i > 0)
@@ -701,7 +701,7 @@ void BufferView::Pimpl::switchKeyMap()
 
 void BufferView::Pimpl::center()
 {
-	LyXText * text = bv_->text;
+	LyXText * text = bv_->text();
 
 	text->clearSelection();
 	int const half_height = workarea().workHeight() / 2;
@@ -843,7 +843,7 @@ void BufferView::Pimpl::trackChanges()
 		buf->undostack().clear();
 	} else {
 		update();
-		bv_->text->setCursor(0, 0);
+		bv_->text()->setCursor(0, 0);
 #warning changes FIXME
 		bool found = lyx::find::findNextChange(bv_);
 		if (found) {
@@ -867,7 +867,7 @@ namespace {
 
 	InsetOld * insetFromCoords(BufferView * bv, int x, int y)
 	{
-		LyXText * text = bv->text;
+		LyXText * text = bv->text();
 		InsetOld * inset = 0;
 		theTempCursor = LCursor(bv);
 		while (true) {
@@ -1208,7 +1208,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		bv_->text->setCursor(0, 0);
+		bv_->text()->setCursor(0, 0);
 #warning FIXME changes
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->acceptChange();
@@ -1217,7 +1217,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		bv_->text->setCursor(0, 0);
+		bv_->text()->setCursor(0, 0);
 #warning FIXME changes
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->rejectChange();
@@ -1262,25 +1262,25 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 #endif
 
 	// not quite sure if we want this...
-	bv_->text->recUndo(bv_->text->cursor.par());
+	bv_->text()->recUndo(bv_->text()->cursor.par());
 	freezeUndo();
 
-	bv_->text->clearSelection();
+	bv_->text()->clearSelection();
 	if (!lout.empty()) {
-		bv_->text->breakParagraph(bv_->buffer()->paragraphs());
+		bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
 
-		if (!bv_->text->cursorPar()->empty()) {
-			bv_->text->cursorLeft(bv_);
-			bv_->text->breakParagraph(bv_->buffer()->paragraphs());
+		if (!bv_->text()->cursorPar()->empty()) {
+			bv_->text()->cursorLeft(bv_);
+			bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
 		}
 
 		string lres = lout;
 		LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
 		bool hasLayout = tclass.hasLayout(lres);
 
-		bv_->text->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
+		bv_->text()->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
 
-		bv_->text->setParagraph(
+		bv_->text()->setParagraph(
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
 				   Spacing(),
 				   LYX_ALIGN_LAYOUT,
@@ -1297,7 +1297,7 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 				     string const & from, string const & to)
 {
 	bool need_update = false;
-	LyXCursor cursor = bv_->text->cursor;
+	LyXCursor cursor = bv_->text()->cursor;
 	LyXCursor tmpcursor = cursor;
 	cursor.par(tmpcursor.par());
 	cursor.pos(tmpcursor.pos());
@@ -1324,12 +1324,12 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor correctly when it.size()>1 ??
 			if (it.size() == 1) {
-				bv_->text->setCursorIntern(bv_->text->parOffset(it.pit()), 0);
-				bv_->text->redoParagraph(bv_->text->cursorPar());
+				bv_->text()->setCursorIntern(bv_->text()->parOffset(it.pit()), 0);
+				bv_->text()->redoParagraph(bv_->text()->cursorPar());
 			}
 		}
 	}
-	bv_->text->setCursorIntern(cursor.par(), cursor.pos());
+	bv_->text()->setCursorIntern(cursor.par(), cursor.pos());
 	return need_update;
 }
 

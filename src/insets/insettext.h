@@ -59,11 +59,11 @@ public:
 	/// empty inset to empty par, or just mark as erased
 	void clear(bool just_mark_erased);
 	///
-	void read(Buffer const &, LyXLex &);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -88,8 +88,6 @@ public:
 	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
 	/// FIXME, document
 	void getCursorPos(int & x, int & y) const;
-	///
-	int insetInInsetY() const;
 	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
@@ -129,8 +127,6 @@ public:
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	void clearSelection(BufferView * bv);
-	///
 	ParagraphList * getParagraphs(int) const;
 	///
 	LyXText * getText(int) const;
@@ -165,14 +161,12 @@ public:
 	int numParagraphs() const { return 1; }
 	///
 	mutable ParagraphList paragraphs;
-protected:
+private:
 	///
 	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 	///
-	void updateLocal(BufferView *, bool mark_dirty);
-
-private:
+	void updateLocal(BufferView *);
 	///
 	void init();
 	// If the inset is empty set the language of the current font to the
@@ -183,15 +177,9 @@ private:
 	///
 	void removeNewlines();
 	///
-	lyx::pos_type cpos() const;
-	///
-	ParagraphList::iterator cpar() const;
-	///
-	RowList::iterator crow() const;
-	///
 	void drawFrame(Painter &, int x) const;
 	///
-	void clearInset(BufferView *, int start_x, int baseline) const;
+	void clearInset(Painter &, int x, int y) const;
 	///
 	void collapseParagraphs(BufferView *);
 
@@ -205,8 +193,6 @@ private:
 	 */
 	int frame_color_;
 	///
-	bool no_selection;
-	///
 	mutable lyx::paroffset_type old_par;
 
 	/** to remember old painted frame dimensions to clear it on
@@ -216,7 +202,5 @@ private:
 public:
 	///
 	mutable LyXText text_;
-	///
-	mutable int textwidth_;
 };
 #endif

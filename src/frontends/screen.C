@@ -242,7 +242,7 @@ bool LyXScreen::fitCursor(BufferView * bv)
 
 void LyXScreen::redraw(BufferView & bv)
 {
-	greyed_out_ = !bv.text;
+	greyed_out_ = !bv.text();
 
 	if (greyed_out_) {
 		greyOut();
@@ -257,7 +257,7 @@ void LyXScreen::redraw(BufferView & bv)
 
 	// maybe we have to clear the screen at the bottom
 	int const y2 = workarea().workHeight();
-	if (y < y2 && !bv.text->isInInset()) {
+	if (y < y2 && !bv.text()->isInInset()) {
 		workarea().getPainter().fillRectangle(0, y,
 			workarea().workWidth(), y2 - y,
 			LColor::bottomarea);

@@ -506,8 +506,8 @@ void LyXText::clearSelection()
 	TextCursor::clearSelection();
 
 	// reset this in the bv()!
-	if (bv() && bv()->text)
-		bv()->text->xsel_cache.set(false);
+	if (bv() && bv()->text())
+		bv()->text()->xsel_cache.set(false);
 }
 
 

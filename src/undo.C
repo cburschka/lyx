@@ -188,7 +188,7 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	text->updateCounters();
 
 	// rebreak the entire lyxtext
-	bv->text->fullRebreak();
+	bv->text()->fullRebreak();
 
 	pit.lockPath(bv);
 	
@@ -292,5 +292,5 @@ void recordUndo(Undo::undo_kind kind, LyXText const * text, paroffset_type par)
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind)
 {
-	recordUndo(kind, bv->text, bv->text->cursor.par());
+	recordUndo(kind, bv->text(), bv->text()->cursor.par());
 }

@@ -80,8 +80,6 @@ public:
 	///
 	void updateLocal(BufferView *) const;
 	///
-	int insetInInsetY() const;
-	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
 	bool insetAllowed(InsetOld::Code code) const;

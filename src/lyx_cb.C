@@ -353,8 +353,8 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		return;
 
 	// clear the selection
-	if (bv->text == bv->getLyXText())
-		bv->text->clearSelection();
+	if (bv->text() == bv->getLyXText())
+		bv->text()->clearSelection();
 	if (asParagraph)
 		bv->getLyXText()->insertStringAsParagraphs(tmpstr);
 	else

@@ -159,8 +159,7 @@ int replaceAll(BufferView * bv,
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
 	
-	recordUndo(Undo::ATOMIC, bv->text, 0,
-		   buf.paragraphs().size() - 1);
+	recordUndo(Undo::ATOMIC, bv->text(), 0, buf.paragraphs().size() - 1);
 	
 	PosIterator cur = buf.pos_iterator_begin();
 	PosIterator const end = buf.pos_iterator_end();
@@ -181,7 +180,7 @@ int replaceAll(BufferView * bv,
 	}
 
 	PosIterator beg = buf.pos_iterator_begin();
-	bv->text->init(bv);
+	bv->text()->init(bv);
 	put_selection_at(bv, beg, 0, false);
 	if (num)
 		buf.markDirty();
@@ -201,8 +200,7 @@ bool stringSelected(BufferView * bv,
 	string const & str1 = searchstr;
 	string const str2 = text->selectionAsString(*bv->buffer(),
 						    false);
-	if ((cs && str1 != str2)
-	    || lowercase(str1) != lowercase(str2)) {
+	if ((cs && str1 != str2) || lowercase(str1) != lowercase(str2)) {
 		find(bv, searchstr, cs, mw, fw);
 		return false;
 	}

@@ -35,8 +35,6 @@ public:
 	virtual void getCursorDim(int &, int &) const;
 	///
 	virtual bool insertInset(BufferView *, InsetOld *) { return false; }
-	///
-	virtual int insetInInsetY() const { return 0; }
 	// We need this method to not clobber the real method in Inset
 	int scroll(bool recursive = true) const
 		{ return InsetOld::scroll(recursive); }

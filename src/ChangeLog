@@ -1,4 +1,21 @@
 
+2003-11-28  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch]: make LyXText * text a private member
+
+	* BufferView_pimpl.C:
+	* cursor.C:
+	* iterators.C:
+	* lyx_cb.C:
+	* lyxfind.C:
+	* lyxtext.h:
+	* rowpainter.[Ch]:
+	* text.C:
+	* text2.C:
+	* undo.C: adjust
+
+	* output_plaintext.C: cleanup
+
 2003-11-27  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* buffer.C: 

@@ -318,12 +318,6 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 }
 
 
-int InsetCollapsable::insetInInsetY() const
-{
-	return inset.y() - yo_ + inset.insetInInsetY();
-}
-
-
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
 	inset.validate(features);

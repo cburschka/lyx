@@ -129,7 +129,7 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
 	x_ += xo_;
 
 	// background has already been cleared.
-	if (&text_ == bv_.text)
+	if (&text_ == bv_.text())
 		paintBackground();
 
 	// paint the selection background
@@ -960,15 +960,15 @@ int paintPars(BufferView const & bv, LyXText const & text,
 } // namespace anon
 
 
-int paintText(BufferView & bv)
+int paintText(BufferView const & bv)
 {
 	ParagraphList::iterator pit;
-	bv.text->getRowNearY(bv.top_y(), pit);
-	return paintPars(bv, *bv.text, pit, 0, 0, pit->y);
+	bv.text()->getRowNearY(bv.top_y(), pit);
+	return paintPars(bv, *bv.text(), pit, 0, 0, pit->y);
 }
 
 
-void paintTextInset(BufferView & bv, LyXText & text, int xo, int yo)
+void paintTextInset(BufferView const & bv, LyXText const & text, int xo, int yo)
 {
 	paintPars(bv, text, text.ownerParagraphs().begin(), xo, yo, 0);
 }
