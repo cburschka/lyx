@@ -26,6 +26,7 @@
 #include "ControlInclude.h"
 #include "ControlMinipage.h"
 #include "ControlRef.h"
+#include "ControlTabular.h"
 #include "ControlToc.h"
 #include "ControlWrap.h"
 
@@ -51,6 +52,8 @@
 #include "forms/form_minipage.h"
 #include "FormRef.h"
 #include "forms/form_ref.h"
+#include "FormTabular.h"
+#include "forms/form_tabular.h"
 #include "FormText.h"
 #include "forms/form_text.h"
 #include "FormToc.h"
@@ -82,7 +85,8 @@ namespace {
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
 				     "graphics", "include", "index", "label",
-				     "minipage", "ref", "toc", "url", "wrap" };
+				     "minipage", "ref", "tabular", "toc",
+				     "url", "wrap" };
 
 
 char const * const * const end_dialognames =
@@ -168,6 +172,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new FormRef(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "tabular") {
+		dialog->setController(new ControlTabular(*dialog));
+		dialog->setView(new FormTabular(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));

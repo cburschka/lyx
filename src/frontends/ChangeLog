@@ -1,3 +1,8 @@
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.h: remove showTabular, updateTabular.
+	* guiapi.[Ch]: remove gui_updateTabular, gui_updateTabular.
+
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: remove showGraphics.

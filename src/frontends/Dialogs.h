@@ -23,9 +23,7 @@ class Dialog;
 class InsetBase;
 class LyXView;
 
-class InsetInfo;
 class Paragraph;
-class InsetTabular;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
@@ -108,10 +106,6 @@ public:
 	/// bring up the spellchecker
 	void showSpellchecker();
 	///
-	void showTabular(InsetTabular *);
-	///
-	void updateTabular(InsetTabular *);
-	///
 	void showTabularCreate();
 	/// show the TexInfo
 	void showTexinfo();
@@ -134,7 +128,7 @@ public:
 	 */
 	void update(string const & name, string const & data);
 	///
-	void Dialogs::hide(string const & name);
+	void hide(string const & name);
 	///
 	void disconnect(string const & name);
 	///

@@ -13,10 +13,8 @@
 #ifndef FORMTABULAR_H
 #define FORMTABULAR_H
 
+#include "FormDialogView.h"
 #include <boost/scoped_ptr.hpp>
-
-
-#include "FormBase.h"
 
 class InsetTabular;
 class ControlTabular;
@@ -29,10 +27,11 @@ struct FD_tabular_longtable;
 /** This class provides an XForms implementation of the FormTabular Dialog.
     The tabular dialog allows users to set/save their tabular.
  */
-class FormTabular : public FormCB<ControlTabular, FormDB<FD_tabular> > {
+class FormTabular
+	: public FormController<ControlTabular, FormView<FD_tabular> > {
 public:
 
-	FormTabular();
+	FormTabular(Dialog &);
 
 private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,

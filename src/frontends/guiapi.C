@@ -117,18 +117,6 @@ void gui_ShowSpellchecker(Dialogs & d)
 }
 
 
-void gui_ShowTabular(InsetTabular * it, Dialogs & d)
-{
-	d.showTabular(it);
-}
-
-
-void gui_UpdateTabular(InsetTabular * it, Dialogs & d)
-{
-	d.updateTabular(it);
-}
-
-
 void gui_ShowTabularCreate(Dialogs & d)
 {
 	d.showTabularCreate();

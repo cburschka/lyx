@@ -9,143 +9,63 @@
  * Full author contact details are available in file CREDITS
  */
 
+#include <config.h>
+
 #include "ControlTabular.h"
-
-#include "ButtonControllerBase.h"
-#include "ViewBase.h"
-#include "support/LAssert.h"
-
-#include "frontends/LyXView.h"
-#include "BufferView.h"
-#include "buffer.h"
+#include "funcrequest.h"
 #include "lyxrc.h"
 #include "insets/insettabular.h"
+#include "support/LAssert.h"
 
-#include <boost/bind.hpp>
 
-ControlTabular::ControlTabular(LyXView & lv, Dialogs & d)
-	: ControlConnectBD(lv, d),
-	  inset_(0), dialog_built_(false)
+ControlTabular::ControlTabular(Dialog & parent)
+	: Dialog::Controller(parent), active_cell_(-1)
 {}
 
 
-void ControlTabular::showInset(InsetTabular * inset)
+void ControlTabular::initialiseParams(string const & data)
 {
-	lyx::Assert(inset);
-
-	connectInset(inset);
-	show(inset);
-
-	// The widgets may not be valid, so refresh the button controller
-	// FIXME: needed ?
-	bc().refresh();
-}
-
-
-void ControlTabular::updateInset(InsetTabular * inset)
-{
-	if (!view().isVisible())
+	Buffer * buffer = kernel().buffer();
+	if (!buffer)
 		return;
-	lyx::Assert(inset);
-	connectInset(inset);
-	update();
+
+	InsetTabular tmp(*buffer);
+	int cell = InsetTabularMailer::string2params(data, tmp);
+	if (cell != -1) {
+		params_.reset(new LyXTabular(*tmp.tabular.get()));
+		active_cell_ = cell;
+	}
 }
 
 
-void ControlTabular::show(InsetTabular * inset)
+void ControlTabular::clearParams()
 {
-	inset_ = inset;
-
-	if (emergency_exit_) {
-		hide();
-		return;
-	}
-
-	if (!dialog_built_) {
-		view().build();
-		dialog_built_ = true;
-	}
-
-	bc().readOnly(bufferIsReadonly());
-	view().show();
+	params_.reset();
+	active_cell_ = -1;
 }
 
 
-void ControlTabular::update()
+int ControlTabular::getActiveCell() const
 {
-	if (emergency_exit_) {
-		hide();
-		return;
-	}
-
-	bc().readOnly(bufferIsReadonly());
-	view().update();
-
-	// The widgets may not be valid, so refresh the button controller
-	// FIXME: needed ?
-	bc().refresh();
-}
-
-
-void ControlTabular::hide()
-{
-	emergency_exit_ = false;
-	inset_ = 0;
-
-	ih_.disconnect();
-	disconnect();
-	view().hide();
-}
-
-
-void ControlTabular::updateSlot(bool switched)
-{
-	if (switched)
-		hide();
-	else
-		update();
-}
-
-
-void ControlTabular::connectInset(InsetTabular * inset)
-{
-	// If connected to another inset, disconnect from it.
-	if (inset_) {
-		ih_.disconnect();
-		inset_ = 0;
-	}
-
-	if (inset) {
-		inset_ = inset;
-		ih_ = inset->hideDialog.connect(
-			boost::bind(&ControlTabular::hide, this));
-	}
-	connect();
+	return active_cell_;
 }
 
 
 LyXTabular const & ControlTabular::tabular() const
 {
-	lyx::Assert(inset_);
-	return *inset_->tabular.get();
+	lyx::Assert(params_.get());
+	return *params_.get();
 }
 
 
 void ControlTabular::set(LyXTabular::Feature f, string const & arg)
 {
-	lyx::Assert(inset_);
-	inset_->tabularFeatures(lv_.view().get(), f, arg);
+	string const data = featureAsString(f) + ' ' + arg;
+	kernel().dispatch(FuncRequest(LFUN_TABULAR_FEATURE, data));
 }
 
 
 bool ControlTabular::useMetricUnits() const
 {
 	return lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
-}
-
-
-int ControlTabular::getActiveCell() const
-{
-	lyx::Assert(inset_);
-	return inset_->getActCell();
 }

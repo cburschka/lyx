@@ -1,5 +1,15 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove tabular dialog.
+
+	* Dialogs3.C: add tabular dialog.
+
+	* QTabular.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* QDialogView.h: make controller methods of QController public to
 	enable the QXyzDialog classes to access the controller if need be.
 	* Qt2Base.h: ditto for the controller methods of Qt2CB.

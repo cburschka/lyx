@@ -39,7 +39,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  sendto(lv, d),
 	  spellchecker(lv, d),
 	  tabularcreate(lv, d),
-	  tabular(lv, d),
 	  texinfo(lv, d),
 
 #ifdef HAVE_LIBAIKSAURUS

@@ -1,5 +1,9 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	* ControlTabular.[Ch]: rewrite to use the Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* ControlTabular.[Ch]: minimise the interface in preparation for
 	a move to the Dialog-based scheme.
 	(inset): removed; the views require only getActiveCell().

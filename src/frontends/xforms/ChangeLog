@@ -1,5 +1,16 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove tabular dialog.
+
+	* Dialogs3.C: add tabular dialog.
+
+	* FormTabular.[Ch]:
+	* forms/form_tabular.fd: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* FormTabular.C: changes due to the changed ControlTabular
 	interface.
 

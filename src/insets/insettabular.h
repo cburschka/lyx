@@ -53,8 +53,7 @@
 #include "FuncStatus.h"
 
 #include <boost/scoped_ptr.hpp>
-
-#include <boost/signals/signal0.hpp>
+#include <boost/weak_ptr.hpp>
 
 class LyXLex;
 class Painter;
@@ -234,13 +233,14 @@ public:
 	// Public structures and variables
 	///
 	boost::scoped_ptr<LyXTabular> tabular;
-	///
-	boost::signal0<void> hideDialog;
 
 	/// are some cells selected ?
 	bool hasSelection() const {
 		return has_selection;
 	}
+
+	///
+	virtual BufferView * view() const;
 private:
 	///
 	void lfunMousePress(FuncRequest const &);
@@ -367,4 +367,32 @@ private:
 	///
 	mutable int in_reset_pos;
 };
+
+
+#include "mailinset.h"
+
+
+class InsetTabularMailer : public MailInset {
+public:
+	///
+	InsetTabularMailer(InsetTabular & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	/// Returns the active cell if successful, else -1.
+	static int string2params(string const &, InsetTabular &);
+	///
+	static string const params2string(InsetTabular const &);
+private:
+	///
+	static string const name_;
+	///
+	InsetTabular & inset_;
+};
+
+string const featureAsString(LyXTabular::Feature feature);
+
 #endif

@@ -119,7 +119,27 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::LAST_ACTION, "" }
 };
 
+struct FindFeature {
+	FindFeature(LyXTabular::Feature feature) : feature_(feature) {}
+	bool operator()(TabularFeature & tf)
+	{
+		return tf.action == feature_;
+	}
+private:
+	LyXTabular::Feature feature_;
+};
+
 } // namespace anon
+
+
+string const featureAsString(LyXTabular::Feature feature)
+{
+	TabularFeature * it  = tabularFeature;
+	TabularFeature * end = it +
+		sizeof(tabularFeature) / sizeof(TabularFeature);
+	it = std::find_if(it, end, FindFeature(feature));
+	return (it == end) ? string() : it->feature;
+}
 
 
 bool InsetTabular::hasPasteBuffer() const
@@ -174,13 +194,20 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 
 InsetTabular::~InsetTabular()
 {
-	hideDialog();
+	InsetTabularMailer mailer(*this);
+	mailer.hideDialog();
 }
 
 
 Inset * InsetTabular::clone(Buffer const & buf, bool same_id) const
 {
 	return new InsetTabular(*this, buf, same_id);
+}
+
+
+BufferView * InsetTabular::view() const
+{
+	return buffer->getUser();
 }
 
 
@@ -708,7 +735,8 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if (the_locking_inset->unlockInsetInInset(bv, inset, lr)) {
 		if (inset->lyxCode() == TABULAR_CODE &&
 		    !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) {
-			bv->owner()->getDialogs().updateTabular(this);
+			InsetTabularMailer mailer(*this);
+			mailer.updateDialog();
 			oldcell = actcell;
 		}
 		return true;
@@ -855,7 +883,8 @@ bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 		ret = the_locking_inset->localDispatch(cmd1);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret) {
-		cmd.view()->owner()->getDialogs().showTabular(this);
+		InsetTabularMailer mailer(*this);
+		mailer.showDialog();
 		return true;
 	}
 	return ret;
@@ -1139,9 +1168,16 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDBUF:
 	case LFUN_ENDBUFSEL:
 		break;
-	case LFUN_LAYOUT_TABULAR:
-		bv->owner()->getDialogs().showTabular(this);
+	case LFUN_LAYOUT_TABULAR: {
+		InsetTabularMailer mailer(*this);
+		mailer.showDialog();
 		break;
+	}
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetTabularMailer mailer(*this);
+		mailer.updateDialog();
+		break;
+	}
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(bv, arg))
 			result = UNDISPATCHED;
@@ -1630,7 +1666,8 @@ void InsetTabular::resetPos(BufferView * bv) const
 	     !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) &&
 	    actcell != oldcell) {
 		InsetTabular * inset = const_cast<InsetTabular *>(this);
-		bv->owner()->getDialogs().updateTabular(inset);
+		InsetTabularMailer mailer(*inset);
+		mailer.updateDialog();
 		oldcell = actcell;
 	}
 	in_reset_pos = 0;
@@ -2314,9 +2351,11 @@ LyXText * InsetTabular::getLyXText(BufferView const * bv,
 
 bool InsetTabular::showInsetDialog(BufferView * bv) const
 {
-	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv))
-		bv->owner()->getDialogs().
-			showTabular(const_cast<InsetTabular *>(this));
+	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv)) {
+		InsetTabular * tmp = const_cast<InsetTabular *>(this);
+		InsetTabularMailer mailer(*tmp);
+		mailer.showDialog();
+	}
 	return true;
 }
 
@@ -2331,8 +2370,9 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 			return;
 		}
 	}
-	bv->owner()->getDialogs().showTabular(
-		const_cast<InsetTabular *>(this));
+	InsetTabular * tmp = const_cast<InsetTabular *>(this);
+	InsetTabularMailer mailer(*tmp);
+	mailer.showDialog();
 }
 
 
@@ -2997,4 +3037,77 @@ void InsetTabular::addPreview(grfx::PreviewLoader & loader) const
 			tabular->GetCellInset(i,j)->addPreview(loader);
 		}
 	}
+}
+
+
+string const InsetTabularMailer:: name_("tabular");
+
+InsetTabularMailer::InsetTabularMailer(InsetTabular & inset)
+	: inset_(inset)
+{}
+
+
+string const InsetTabularMailer::inset2string() const
+{
+	return params2string(inset_);
+}
+
+
+int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
+{
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != name_)
+			return -1;
+	}
+
+	int cell = -1;
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "active_cell")
+			return -1;
+		lex.next();
+		cell = lex.getInteger();
+	}
+
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "Tabular")
+			return -1;
+	}
+
+	BufferView * const bv = inset.view();
+	Buffer const * const buffer = bv ? bv->buffer() : 0;
+	if (buffer)
+		inset.read(buffer, lex);
+
+	// We can't set the active cell, but we can tell the frontend
+	// what it is.
+	return cell;
+}
+
+
+string const
+InsetTabularMailer::params2string(InsetTabular const & inset)
+{
+	BufferView * const bv = inset.view();
+	Buffer const * const buffer = bv ? bv->buffer() : 0;
+	if (!buffer)
+		return string();
+
+	ostringstream data;
+	data << name_ << " active_cell " << inset.getActCell() << '\n';
+	inset.write(buffer, data);
+	data << "\\end_inset\n";
+
+	return data.str();
 }

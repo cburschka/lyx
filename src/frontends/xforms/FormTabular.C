@@ -34,10 +34,10 @@ using std::vector;
 using std::bind2nd;
 
 
-typedef FormCB<ControlTabular, FormDB<FD_tabular> > base_class;
+typedef FormController<ControlTabular, FormView<FD_tabular> > base_class;
 
-FormTabular::FormTabular()
-	: base_class(_("Edit table settings")),
+FormTabular::FormTabular(Dialog & parent)
+	: base_class(parent, _("Edit table settings")),
 	closing_(false), actCell_(-1)
 {
 }
@@ -507,7 +507,7 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 			input(cell_options_->input_special_multialign, 0);
 
 		closing_ = false;
-		controller().OKButton();
+		dialog().OKButton();
 		return ButtonPolicy::SMI_VALID;
 	}
 

@@ -29,10 +29,10 @@
 #include "lengthcombo.h"
 #include "qsetborder.h"
 
-typedef Qt2CB<ControlTabular, Qt2DB<QTabularDialog> > base_class;
+typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
 
-QTabular::QTabular()
-	: base_class(qt_("LyX: Table Settings"))
+QTabular::QTabular(Dialog & parent)
+	: base_class(parent, qt_("LyX: Table Settings"))
 {
 }
 

@@ -28,7 +28,6 @@
 #include "ControlShowFile.h"
 #include "ControlSpellchecker.h"
 #include "ControlTabularCreate.h"
-#include "ControlTabular.h"
 #include "ControlTexinfo.h"
 #include "ControlVCLog.h"
 
@@ -63,8 +62,6 @@
 #include "QSpellcheckerDialog.h"
 #include "QTabularCreate.h"
 #include "QTabularCreateDialog.h"
-#include "QTabular.h"
-#include "QTabularDialog.h"
 #include "QTexinfo.h"
 #include "QTexinfoDialog.h"
 
@@ -120,9 +117,6 @@ SpellcheckerDialog;
 typedef GUI<ControlTabularCreate, QTabularCreate, OkApplyCancelReadOnlyPolicy, Qt2BC>
 TabularCreateDialog;
 
-typedef GUI<ControlTabular, QTabular, OkApplyCancelReadOnlyPolicy, Qt2BC>
-TabularDialog;
-
 typedef GUI<ControlTexinfo, QTexinfo, OkCancelPolicy, Qt2BC>
 TexinfoDialog;
 
@@ -151,7 +145,6 @@ struct Dialogs::Impl {
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 	TabularCreateDialog tabularcreate;
-	TabularDialog       tabular;
 	TexinfoDialog       texinfo;
 
 #ifdef HAVE_LIBAIKSAURUS

@@ -16,19 +16,20 @@
 #define QTABULAR_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlTabular;
 class QTabularDialog;
 
 
 class QTabular :
-	public Qt2CB<ControlTabular, Qt2DB<QTabularDialog> >
+	public QController<ControlTabular, QView<QTabularDialog> >
 {
 public:
 	friend class QTabularDialog;
 
-	QTabular();
+	QTabular(Dialog &);
 
 protected:
 	virtual bool isValid();

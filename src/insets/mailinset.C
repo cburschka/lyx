@@ -45,5 +45,7 @@ void MailInset::hideDialog() const
 	if (!bv)
 		return;
 
-	bv->owner()->getDialogs().hide(name());
+	InsetBase * cmp = bv->owner()->getDialogs().getOpenInset(name());
+	if (cmp == &inset())
+		bv->owner()->getDialogs().hide(name());
 }

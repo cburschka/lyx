@@ -16,7 +16,6 @@
 
 #include "debug.h"
 #include "QtLyXView.h"
-#include "Dialogs.h"
 #include "QDialogView.h"
 #include "Qt2BC.h"
 #include "support/LAssert.h"

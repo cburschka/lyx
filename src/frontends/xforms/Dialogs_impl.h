@@ -79,10 +79,6 @@
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
-#include "ControlTabular.h"
-#include "FormTabular.h"
-#include "forms/form_tabular.h"
-
 #include "ControlTabularCreate.h"
 #include "FormTabularCreate.h"
 #include "forms/form_tabular_create.h"
@@ -145,9 +141,6 @@ SendtoDialog;
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
 
-typedef GUI<ControlTabular, FormTabular, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-TabularDialog;
-
 typedef GUI<ControlTabularCreate, FormTabularCreate, OkApplyCancelReadOnlyPolicy, xformsBC>
 TabularCreateDialog;
 
@@ -180,7 +173,6 @@ struct Dialogs::Impl {
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
-	TabularDialog       tabular;
 	TabularCreateDialog tabularcreate;
 	TexinfoDialog       texinfo;
 

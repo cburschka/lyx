@@ -16,62 +16,37 @@
 #ifndef CONTROLTABULAR_H
 #define CONTROLTABULAR_H
 
-#include "ControlConnections.h"
-#include "LString.h"
+#include "Dialog.h"
 #include "tabular.h"
 
-#include <boost/signals/connection.hpp>
 
-class InsetTabular;
-
-class ControlTabular : public ControlConnectBD {
+class ControlTabular : public Dialog::Controller {
 public:
 
-	ControlTabular(LyXView &, Dialogs &);
+	ControlTabular(Dialog &);
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// We use set() instead.
+	virtual void dispatchParams() {};
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	///
 	int getActiveCell() const;
-
 	/// get the contained tabular
 	LyXTabular const & tabular() const;
-
 	/// return true if units should default to metric
 	bool useMetricUnits() const;
-
 	/// set a parameter
 	void set(LyXTabular::Feature, string const & arg = string());
 
-	/// slot launching dialog to an existing inset.
-	void showInset(InsetTabular *);
-
-	/// update inset
-	void updateInset(InsetTabular *);
-
 private:
-
-	/// we can't do this ...
-	virtual void apply() {};
-	/// disconnect signals and hide View.
-	virtual void hide();
-	/// update the dialog.
-	virtual void update();
-
-	/** Instantiation of ControlConnectBD private virtual method.
-	    Slot connected to update signal. */
-	virtual void updateSlot(bool);
-
-	/// show the dialog.
-	void show(InsetTabular *);
-	/// connect signals
-	void connectInset(InsetTabular *);
-
-	/// pointer to the inset passed through connectInset
-	InsetTabular * inset_;
-	/// inset::hide connection.
-	boost::signals::connection ih_;
-
-	/// is the dialog built ?
-	bool dialog_built_;
+	///
+	int active_cell_;
+	///
+	boost::scoped_ptr<LyXTabular> params_;
 };
 
 #endif // CONTROLTABULAR_H
