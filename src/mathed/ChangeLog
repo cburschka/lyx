@@ -1,9 +1,14 @@
+2002-07-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* math_support.C (mathed_draw_deco): fix rounding bug for rotated
+	decorations
+
 2002-07-17  Angus Leeming  <leeming@lyx.org>
 
 	* math_parboxinset.C: add using std::vector directive.
 
-	* formula.C (PreviewImpl's generate): bind to the PreviewLoader through
-	a method rather than to the signal directly.
+	* formula.C (PreviewImpl's generate): bind to the PreviewLoader
+	through a method rather than to the signal directly.
 
 2002-07-16  Angus Leeming  <leeming@lyx.org>
 
@@ -12,7 +17,8 @@
 
 2002-07-12  Angus Leeming  <leeming@lyx.org>
 
-	* formula.C: use the new smart loading capabilities of the image loader.
+	* formula.C: use the new smart loading capabilities of the image
+	loader. 
 
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -35,8 +41,8 @@
 
 	* formula.[Ch] (generatePreview): instantiate new virtual method.
 	Strip out the preliminary preview code and replace with code that
-	makes full use of the graphics/Preview* files. Hide all the shenanigans
-	behind a PreviewImpl firewall.
+	makes full use of the graphics/Preview* files. Hide all the
+	shenanigans behind a PreviewImpl firewall.
 
 	* math_nestinset.C (notifyCursorLeaves): update the preview using the
 	new graphics/Preview* code.
@@ -251,14 +257,15 @@
 
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* formula.C Changes due to the renaming of support/syscall.[Ch]
-	as support/systemcall.[Ch] and of class Systemcalls as class SystemCall.
+	* formula.C Changes due to the renaming of support/syscall.[Ch] as
+	support/systemcall.[Ch] and of class Systemcalls as class
+	SystemCall.
 
 2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* formula.C: change Systemcalls::System to Systemcalls::Wait and
-	No change of functionality, just reflects the stripped down Systemcalls
-	class.
+	No change of functionality, just reflects the stripped down
+	Systemcalls class.
 
 2002-02-08  André Pönitz <poenitz@gmx.net>
 

@@ -439,8 +439,8 @@ void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
 				mt.transform(xx, yy);
 			mt.transform(x2, y2);
 			pi.pain.line(
-				x + int(xx + 0.5), y + int(yy + 0.5),
-				x + int(x2 + 0.5), y + int(y2 + 0.5),
+				int(x + xx + 0.5), int(y + yy + 0.5),
+				int(x + x2 + 0.5), int(y + y2 + 0.5),
 				LColor::math);
 		}	else {
 			int xp[32];
@@ -454,8 +454,8 @@ void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
 					sqmt.transform(xx, yy);
 				else
 					mt.transform(xx, yy);
-				xp[j] = x + int(xx + 0.5);
-				yp[j] = y + int(yy + 0.5);
+				xp[j] = int(x + xx + 0.5);
+				yp[j] = int(y + yy + 0.5);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 			}
 			pi.pain.lines(xp, yp, n, LColor::math);
