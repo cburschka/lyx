@@ -11,16 +11,17 @@ AM_INSTALL_DATA_FLAGS = $(INSTALL) -m 644 -D
 AM_ETAGSFLAGS = --lang=c++
 
 if LYX_BUILD_PCH
-PCH_FLAGS = -Winvalid-pch --include=./pch.h
+PCH_SOURCE = $(srcdir)/pch.h
+PCH_FLAGS = -Winvalid-pch --include=$(PCH_SOURCE)
 PCH_FILE = ./pch.h.gch
-PCH_SOURCE = ./pch.h
 sinclude ./pch.h.gch.dep
 
 *.C *.cpp: $(PCH_FILE)
 
-pch.h.gch: $(PCH_SOURCE)
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) \
-        $(AM_CPPFLAGS) $(CPPFLAGS) $(CXXFLAGS) \
+$(PCH_FILE): $(PCH_SOURCE)
+	TMPCMD=` echo $(CXXCOMPILE) | sed -e s,\",\',` ; \
+	PATTERN=`echo $(PCH_FLAGS) | sed -e 's,\/,\\\/,'` ; \
+	$${TMPCMD/$$PATTERN} \
 	-x c++-header $(PCH_SOURCE) -MT $@ -MD -MP -MF "./$@.Tdep" \
 	&& mv "./$@.Tdep" "./$@.dep" || rm "./$@.Tdep"
 

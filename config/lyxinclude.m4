@@ -213,7 +213,7 @@ if test x$GXX = xyes; then
       3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
       3.2*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.4*|3.5*)
+      3.4*|4.0*)
 	    CXXFLAGS="$lyx_opt -fno-exceptions"
 	    lyx_pch_comp=yes;;
       *)       CXXFLAGS="$lyx_opt";;
@@ -234,12 +234,12 @@ if test x$GXX = xyes; then
   fi
   if test x$enable_warnings = xyes ; then
     case $gxx_version in
-	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall";;
-	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
-	3.1*) CXXFLAGS="$CXXFLAGS -W -Wall";;
-	3.2*) CXXFLAGS="$CXXFLAGS -W -Wall";;
-	3.3*) CXXFLAGS="$CXXFLAGS -W -Wall";;
-	*)    CXXFLAGS="$CXXFLAGS -Wextra -Wall";;
+	2.95.*) CPPFLAGS="$CPPFLAGS -W -Wall";;
+	2.96*)  CPPFLAGS="$CPPFLAGS -W -Wall";;
+	3.1*) CPPFLAGS="$CPPFLAGS -W -Wall";;
+	3.2*) CPPFLAGS="$CPPFLAGS -W -Wall";;
+	3.3*) CPPFLAGS="$CPPFLAGS -W -Wall";;
+	*)    CPPFLAGS="$CPPFLAGS -Wextra -Wall";;
     esac
   fi
 fi

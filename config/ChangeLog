@@ -1,3 +1,12 @@
+2004-12-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* common.am ($(PCH_FILE)): do a subst and sed dance to get rid of
+	the PCH_FLAGS from the command line when generating the
+	precompiled header.
+
+	* lyxinclude.m4 (lyx_pch_comp): use CPPFLAGS instead of CXXFLAGS
+	for warning flags. 3.5 -> 4.0 for next gcc version
+
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4: next version of gcc will be 4.0 not 3.5
@@ -5,7 +14,7 @@
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (enable_debug): Add support for stdlibc++ concept
-	checks on gcc >3.4. 
+	checks on gcc >3.4.
 
 2004-10-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
