@@ -3850,7 +3850,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 
 	bool moving_arg = false;
 	bool need_closing = false;
-	bool is_rtl = isRightToLeftPar();
+	bool is_rtl = lyxrc.rtl_support && getParLanguage()->RightToLeft;
 
 	if (is_rtl != parent_is_rtl) {
 		if (is_rtl)

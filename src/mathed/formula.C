@@ -48,6 +48,7 @@ using std::istream;
 using std::pair;
 using std::endl;
 using std::vector;
+using std::max;
 
 extern char * mathed_label;
 
@@ -231,10 +232,8 @@ int mathed_string_height(short type, int size, byte const * s,
    LyXFont font = WhichFont(type, size);
    asc = des = 0;
    for (int i = 0; i < ls; ++i) {
-      if (lyxfont::descent(s[i], font) > des)
-	des = lyxfont::descent(s[i], font);
-      if (lyxfont::ascent(s[i], font) > asc)
-	asc = lyxfont::ascent(s[i], font);
+      des = max(des, lyxfont::descent(s[i], font));
+      asc = max(asc, lyxfont::ascent(s[i], font));
    }
    return asc + des;
 }
@@ -1213,13 +1212,19 @@ MathFuncInset::draw(Painter & pain, int x, int y)
 void MathFuncInset::Metrics() 
 {
 	ln = (name) ? strlen(name): 0;
-	LyXFont  font = WhichFont(LM_TC_TEXTRM, size);
+	LyXFont font = WhichFont(LM_TC_TEXTRM, size);
 	font.setLatex(LyXFont::ON);
-	width = lyxfont::width(name, ln, font)
-		+ lyxfont::width('I', font) / 2;
-	mathed_string_height(LM_TC_TEXTRM, size,
-			     reinterpret_cast<unsigned char const *>(name),
-			     strlen(name), ascent, descent);
+	if (ln == 0) {
+ 		width = df_width;
+ 		descent = df_des;
+ 		ascent = df_asc;
+ 	} else {
+		width = lyxfont::width(name, ln, font)
+			+ lyxfont::width('I', font) / 2;
+		mathed_string_height(LM_TC_TEXTRM, size,
+				     reinterpret_cast<unsigned char const *>(name),
+				     strlen(name), ascent, descent);
+	}
 }
 
 

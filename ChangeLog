@@ -1,3 +1,25 @@
+2000-09-29  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/paragraph.C (TeXFootnote): Fixed bug with LTR table floats.
+	
+2000-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/layouts/siamltex.layout: new textclass for SIAM journals,
+	from Kornelia Pietsch <pietsch@mathematik.tu-chemnitz.de>
+
+	* src/support/lyxstring.C (lyxstring): 	When a number of
+	characters has been given, we should not assume that the string is
+	0-terminated. 
+
+	* src/vspace.C (nextToken): use isStrDbl() to check for proper
+	double values.
+
+2000-09-23  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/formula.C (MathFuncInset::Metrics): Use default 
+	width/descent/ascent values if name is empty.
+	(mathed_string_height): Use std::max.
+
 2000-09-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/doc/LaTeXConfig.lyx.in: updated.
