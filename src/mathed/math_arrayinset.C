@@ -7,6 +7,8 @@
 #include "support/LOstream.h"
 #include "Lsstream.h"
 
+using std::vector;
+
 
 MathArrayInset::MathArrayInset(int m, int n)
 	: MathGridInset(m, n)
