@@ -1,3 +1,54 @@
+2002-03-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C: first -> first_y
+
+	* text.C (getRowNearY): add some attemts at a possible
+	optimization, not working.
+
+	* tabular.[Ch]: add BufferParams to several function so that newly
+	created paragraph can be initialized to he default layotu for the
+	buffers textclass.
+
+	* tabular-old.C (ReadOld): add buf->params to call of Init
+
+	* screen.C: rename text->first to text->first_y
+
+	* paragraph.C (breakParagraph): always set layout in the broken
+	paragraph
+
+	* lyxtextclass.C (Read): remove lowercase
+	(hasLayout): ditto
+	(operator): ditto
+	(delete_layout): ditto
+
+	* lyxtext.h: rename first -> first_y
+
+	* lyxlayout.C (Read): remove lowercase
+	(name): ditto
+	(setName): ditto
+	(obsoleted_by): ditto
+
+	* bufferlist.C (newFile): set layout on first paragrpah of new buffers.
+
+	* buffer.C (insertErtContents): add params are to InsetERT
+	(parseSingleLyXformat2Token): add code to check if a paragraphs
+	layout really exist.
+	(parseSingleLyXformat2Token): add params to several inset
+	constructors
+	(asciiParagraph): remove lowercase, do the layout comparisons with
+	no_case
+
+	* BufferView_pimpl.C (cursorNext): first -> first_y
+	(resizeCurrentBuffer): first -> first_y
+	(updateScrollbar): first -> first_y
+	(scrollCB): first -> first_y
+	(workAreaMotionNotify): first -> first_y
+	(workAreaButtonPress): first -> first_y
+	(checkInsetHit): first -> first_y
+	(cursorPrevious): first -> first_y
+	(cursorNext): first -> first_y
+	(Dispatch): add buffer_->params to severl inset contructors
+
 2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxlayout.C (Read): remove some debug info that I forgot.

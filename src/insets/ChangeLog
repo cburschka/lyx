@@ -1,3 +1,20 @@
+2002-03-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C (InsetText): initalize newly created par with
+	default layout. add bufferparams parameter
+	first -> first_y
+
+	* insetcaption.[Ch] (InsetCaption): add BufferParams parameter
+	* insetcollapsable.[Ch] (InsetCollapsable): ditto
+	* insetert.[Ch] (InsetERT): ditto
+	* insetfloat.[Ch] (InsetFloat): ditto
+	* insetfoot.[Ch] (InsetFoot): ditto
+	* insetfootlike.[Ch] (InsetFootLike): ditto
+	* insetmarginal.[Ch] (InsetMarginal): ditto
+	* insetminipage.[Ch] (InsetMinipage): ditto
+	* insetnote.[Ch] (InsetNote): ditto
+	* insettabular.[Ch] (InsetTabular): ditto + adjust for tabular changes
+
 2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insettext.C: layout as string
