@@ -2,7 +2,7 @@
  * \file QDocument.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
- * 
+ *
  * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
@@ -73,7 +73,7 @@ void QDocument::build_dialog()
 		dialog_->langModule->languageCO->insertItem(
 			lit->first.c_str());
 	}
-	
+
 	dialog_->langModule->quoteStyleCO->insertItem(_("``text''"));
 	dialog_->langModule->quoteStyleCO->insertItem(_("''text''"));
 	dialog_->langModule->quoteStyleCO->insertItem(_(",,text``"));
@@ -87,7 +87,7 @@ void QDocument::build_dialog()
 			     "koi8-r","koi8-u","cp866","cp1251",
 			     "iso88595","pt154",0};
 	dialog_->packagesModule->encodingCO->insertStrList(items);
-	
+
 	dialog_->packagesModule->lspacingCO->insertItem(
 		_("Single"),Spacing::Single);
 	dialog_->packagesModule->lspacingCO->insertItem(
@@ -120,12 +120,12 @@ void QDocument::build_dialog()
 		QString font = tex_fonts[n];
 		dialog_->layoutModule->fontsCO->insertItem(font);
 	}
-	
+
 	dialog_->layoutModule->fontsizeCO->insertItem(_("default"));
 	dialog_->layoutModule->fontsizeCO->insertItem(_("10"));
 	dialog_->layoutModule->fontsizeCO->insertItem(_("11"));
 	dialog_->layoutModule->fontsizeCO->insertItem(_("12"));
-	
+
 	dialog_->layoutModule->skipCO->insertItem(_("Smallskip"));
 	dialog_->layoutModule->skipCO->insertItem(_("Medskip"));
 	dialog_->layoutModule->skipCO->insertItem(_("Bigskip"));
@@ -143,7 +143,7 @@ void QDocument::build_dialog()
 	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
 	QString s = bmtablefile.c_str();
    qWarning("%d",s);
-   
+
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);
@@ -157,7 +157,7 @@ void QDocument::apply()
 	/* preamble */
 	controller().params().preamble =
 		dialog_->preambleModule->preambleMLE->text().latin1();
-	
+
 	/* biblio */
 	controller().params().use_natbib =
 		dialog_->biblioModule->natbibCB->isChecked();
@@ -170,7 +170,7 @@ void QDocument::apply()
 	else
 		controller().params().quotes_times = InsetQuotes::DoubleQ;
 
-	
+
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
 	switch (dialog_->langModule->quoteStyleCO->currentItem()) {
 	case 0:
@@ -221,13 +221,13 @@ void QDocument::apply()
 				   );
 		break;
 	}
-	
+
 	controller().params().graphicsDriver =
 		dialog_->packagesModule->psdriverCO->currentText().latin1();
-	
+
 	controller().params().use_amsmath =
 		dialog_->packagesModule->amsCB->isChecked();
-	
+
 	controller().params().inputenc =
 		dialog_->packagesModule->encodingCO->currentText().latin1();
 
@@ -236,16 +236,16 @@ void QDocument::apply()
 		dialog_->layoutModule->classCO->currentItem();
 
 	//bool succes = controller().classApply();
-	
+
 	controller().params().fonts =
 		dialog_->layoutModule->fontsCO->currentText().latin1();
-	
+
 	controller().params().fontsize =
 		dialog_->layoutModule->fontsizeCO->currentText().latin1();
-	
+
 	controller().params().pagestyle =
 		dialog_->layoutModule->pagestyleCO->currentText().latin1();
-	
+
 	if (dialog_->layoutModule->indentRB->isChecked())
 		controller().params().paragraph_separation = BufferParams::PARSEP_INDENT;
 	else
@@ -280,14 +280,14 @@ void QDocument::apply()
 
 	controller().params().options =
 		dialog_->layoutModule->optionsLE->text().latin1();
-	
+
 	controller().params().float_placement =
 		dialog_->layoutModule->floatPlacementLE->text().latin1();
 
 	/* paper */
 	controller().params().papersize2 =
 		dialog_->paperModule->papersizeCO->currentItem();
-	
+
 	controller().params().paperwidth =
 		LyXLength(dialog_->paperModule->paperwidthLE->text().toDouble(),
 			  dialog_->paperModule->paperwidthUnitCO->currentLengthItem()
@@ -302,12 +302,12 @@ void QDocument::apply()
 		controller().params().columns = 2;
 	else
 		controller().params().columns = 1;
-	
+
 	if (dialog_->paperModule->facingPagesCB->isChecked())
 		controller().params().sides = LyXTextClass::TwoSides;
 	else
 		controller().params().sides = LyXTextClass::OneSide;
-	
+
 	if (dialog_->paperModule->landscapeRB->isChecked())
 		controller().params().orientation = BufferParams::ORIENTATION_LANDSCAPE;
 	else
@@ -322,12 +322,12 @@ void QDocument::apply()
 		margin = margin - 1;
 	}
 	controller().params().paperpackage = char(margin);
-	
+
 	controller().params().leftmargin =
 		LyXLength(dialog_->marginsModule->innerLE->text().toDouble(),
 			  dialog_->marginsModule->innerUnit->currentLengthItem()
 			  ).asString();
-	
+
 	controller().params().topmargin =
 		LyXLength(dialog_->marginsModule->topLE->text().toDouble(),
 			  dialog_->marginsModule->topUnit->currentLengthItem()
@@ -397,13 +397,13 @@ void QDocument::update_contents()
 		controller().params().use_natbib);
 	dialog_->biblioModule->citeStyleCO->setCurrentItem(
 		controller().params().use_numerical_citations ? 1 : 0);
-	
+
 	/* language & quotes */
 	dialog_->langModule->singleQuoteRB->setChecked(
 		controller().params().quotes_times == InsetQuotes::SingleQ);
 	dialog_->langModule->doubleQuoteRB->setChecked(
 		controller().params().quotes_times == InsetQuotes::DoubleQ);
-	
+
 	int const pos = int(findPos(lang_,
 				    controller().params().language->lang()));
 	dialog_->langModule->languageCO->setCurrentItem(pos);
@@ -430,8 +430,8 @@ void QDocument::update_contents()
 		}
 		++pos2;
 	}
-	
-	
+
+
 	QString text = controller().params().graphicsDriver.c_str();
 	int nitem = dialog_->packagesModule->psdriverCO->count();
 	for (int n=0; n<nitem ; ++n) {
@@ -440,8 +440,8 @@ void QDocument::update_contents()
 			dialog_->packagesModule->psdriverCO->setCurrentItem(n);
 		}
 	}
-	
-	
+
+
 	dialog_->packagesModule->amsCB->setChecked(
 		controller().params().use_amsmath);
 
@@ -465,11 +465,11 @@ void QDocument::update_contents()
 
 	dialog_->updateFontsize(controller().textClass().opt_fontsize(),
 				controller().params().fontsize);
-	
+
 	dialog_->updatePagestyle(controller().textClass().opt_pagestyle(),
 				 controller().params().pagestyle);
-	
-	
+
+
 	for (int n=0; tex_fonts[n][0]; ++n) {
 		if (tex_fonts[n]==controller().params().fonts) {
 			dialog_->layoutModule->fontsCO->setCurrentItem(n);
@@ -483,7 +483,7 @@ void QDocument::update_contents()
 	} else {
 		dialog_->layoutModule->skipRB->setChecked(true);
 	}
-	
+
 	int skip = 0;
 	switch (controller().params().getDefSkip().kind()) {
 	case VSpace::SMALLSKIP:
@@ -516,7 +516,7 @@ void QDocument::update_contents()
 	} else {
 		dialog_->layoutModule->optionsLE->setText("");
 	}
-	
+
 	/* paper */
 	int const psize = controller().params().papersize2;
 	dialog_->paperModule->papersizeCO->setCurrentItem(psize);
@@ -530,22 +530,22 @@ void QDocument::update_contents()
 
 	dialog_->paperModule->facingPagesCB->setChecked(
 		controller().params().sides == LyXTextClass::TwoSides);
-	
+
 	dialog_->paperModule->twoColumnCB->setChecked(
 		controller().params().columns == 2);
-	
+
 	dialog_->paperModule->paperwidthUnitCO->setCurrentItem(
 		LyXLength(controller().params().paperwidth).unit());
-	
+
 	dialog_->paperModule->paperwidthLE->setText(
 		tostr(LyXLength(controller().params().paperwidth).value()).c_str());
-	
+
 	dialog_->paperModule->paperheightUnitCO->setCurrentItem(
 		LyXLength(controller().params().paperheight).unit());
 
 	dialog_->paperModule->paperheightLE->setText(
 		tostr(LyXLength(controller().params().paperheight).value()).c_str());
-		
+
 	/* margins */
 	int item = controller().params().paperpackage;
 	if (controller().params().use_geometry) {
@@ -560,43 +560,36 @@ void QDocument::update_contents()
 		LyXLength(controller().params().topmargin).unit());
 	dialog_->marginsModule->topLE->setText(
 		tostr(LyXLength(controller().params().topmargin).value()).c_str());
-	
+
 	dialog_->marginsModule->bottomUnit->setCurrentItem(
 		LyXLength(controller().params().bottommargin).unit());
 	dialog_->marginsModule->bottomLE->setText(
 		tostr(LyXLength(controller().params().bottommargin).value()).c_str());
-	
+
 	dialog_->marginsModule->innerUnit->setCurrentItem(
 		LyXLength(controller().params().leftmargin).unit());
 	dialog_->marginsModule->innerLE->setText(
 		tostr(LyXLength(controller().params().leftmargin).value()).c_str());
-	
+
 	dialog_->marginsModule->outerUnit->setCurrentItem(
 		LyXLength(controller().params().rightmargin).unit());
 	dialog_->marginsModule->outerLE->setText(
 		tostr(LyXLength(controller().params().rightmargin).value()).c_str());
-	
+
 	dialog_->marginsModule->headheightUnit->setCurrentItem(
 		LyXLength(controller().params().headheight).unit());
 	dialog_->marginsModule->headheightLE->setText(
 		tostr(LyXLength(controller().params().headheight).value()).c_str());
-	
+
 	dialog_->marginsModule->headsepUnit->setCurrentItem(
 		LyXLength(controller().params().headsep).unit());
 	dialog_->marginsModule->headsepLE->setText(
 		tostr(LyXLength(controller().params().headsep).value()).c_str());
-	
+
 	dialog_->marginsModule->footskipUnit->setCurrentItem(
 		LyXLength(controller().params().footskip).unit());
 	dialog_->marginsModule->footskipLE->setText(
 		tostr(LyXLength(controller().params().footskip).value()).c_str());
-	
-	
+
+
 }
-
-
-
-
-
-
-

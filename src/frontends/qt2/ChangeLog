@@ -1,3 +1,7 @@
+2002-10-15  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QBrowseBox.C (QBrowseBox): transpose const char
+
 2002-10-15  Angus Leeming  <leeming@lyx.org>
 
 	* QBrowseBox.C (c-tor): default values should go only in the .h file.
@@ -20,7 +24,7 @@
 	* qfont_loader.C (available): Implemented.
 
 2002-10-09  Edwin Leuven <leuven@fee.uva.nl>
-	
+
 	* QDocument.C: Brand new document dialog
 	* QDocument.h:
 	* QDocumentDialog.C:
@@ -51,7 +55,7 @@
 	* ui/QGraphicsDialog.ui:
 	* ui/QPrintDialog.ui:
 	* ui/QRefDialog.ui:
-	
+
 2002-09-28  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* ui/QWrapDialog.ui:
@@ -61,7 +65,7 @@
 	* Dialogs.C:
 	* Dialogs2.C:
 	* Dialogs_impl.h: Implement Wrap figure dialog
- 
+
 2002-09-25  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs2.C:
@@ -76,8 +80,8 @@
 2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ui/moc/Makefile.am (INCLUDES):
-	* ui/Makefile.am (INCLUDES): 
-	* moc/Makefile.am (INCLUDES): 
+	* ui/Makefile.am (INCLUDES):
+	* moc/Makefile.am (INCLUDES):
 	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
 
 2002-09-24  John Levon  <levon@movementarian.org>

@@ -2,7 +2,7 @@
  * \file QBrowseBox.C
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.C,v 1.2 2002/10/15 17:45:12 leeming Exp $
+ * $Id: QBrowseBox.C,v 1.3 2002/10/15 18:29:01 larsbj Exp $
  *
  * \author Kalle Dalheimer ?
  *
@@ -26,7 +26,7 @@
 
 
 QBrowseBox::QBrowseBox(int rows, int cols, QWidget * parent,
-		       const char * name, WFlags fl)
+		       char const * name, WFlags fl)
     : QGridView()
 {
     setNumRows( rows );
@@ -34,8 +34,8 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget * parent,
     setCellWidth( width()/cols );
     setCellHeight( height()/rows );
 
-    _texts = new QString[rows*cols];
-    _pixmaps = new QPixmap[rows*cols];
+    _texts = new QString[rows * cols];
+    _pixmaps = new QPixmap[rows * cols];
 
     _activecell.setX( 0 );
     _activecell.setY( 0 );
@@ -67,13 +67,13 @@ int QBrowseBox::coordsToIndex( int row, int col )
     return row + col*numCols();
 }
 
-  
+
 void QBrowseBox::insertItem( const QString& text, int row, int col )
 {
     _texts[ coordsToIndex( row, col ) ] = text;
 }
 
-  
+
 void QBrowseBox::insertItem( QPixmap pixmap, int row, int col )
 {
     _pixmaps[ coordsToIndex( row, col ) ] = pixmap;
@@ -83,9 +83,9 @@ void QBrowseBox::insertItem( QPixmap pixmap)
 {
    int w = (pixmap.width()/numCols());
     int h = (pixmap.height()/numRows());
-    
+
    for( int row = 0; row < numRows(); row++ )
-    for( int col = 0; col < numCols(); col++ ) 
+    for( int col = 0; col < numCols(); col++ )
 	     {
 	    QPixmap small(w,h);
 	    bitBlt(&small,0,0,&pixmap,col*w,row*h,w,h,Qt::CopyROP,false);
@@ -95,14 +95,14 @@ void QBrowseBox::insertItem( QPixmap pixmap)
     resize(pixmap.width() + (numCols()+1)*frameWidth(),
 	   pixmap.height() +(numRows()+1)*frameWidth());
 }
-  
+
 void QBrowseBox::removeItem( int row, int col )
 {
     _texts[ coordsToIndex( row, col ) ] = "";
     _pixmaps[ coordsToIndex( row, col ) ].resize( 0, 0 );
 }
 
-  
+
 void QBrowseBox::clear()
 {
 	for( int row = 0; row < numRows(); row++ )
@@ -110,7 +110,7 @@ void QBrowseBox::clear()
 	    removeItem( row, col );
 }
 
-  
+
 QString QBrowseBox::text( int row, int col )
 {
     if( col<0 || col >= numCols() || row<0 || row >= numRows() )
@@ -118,7 +118,7 @@ QString QBrowseBox::text( int row, int col )
     return _texts[ coordsToIndex( row, col ) ];
 }
 
-  
+
 QPixmap QBrowseBox::pixmap( int row, int col )
 {
     static QPixmap empty;
@@ -149,7 +149,7 @@ void QBrowseBox::keyPressEvent( QKeyEvent* e )
 	default:
 		e->ignore();
 	}
-	
+
 }
 
 void QBrowseBox::mouseReleaseEvent( QMouseEvent* e )
@@ -168,7 +168,7 @@ void QBrowseBox::paintCell( class QPainter * painter, int row, int col )
 {
     painter->setClipRect(cellGeometry(row,col));//, QPainter::CoordPainter);
     bool ispixmap = false;
-    
+
     if( ! _pixmaps[coordsToIndex(row,col)].isNull() ) {
 	painter->drawPixmap(0,0,_pixmaps[coordsToIndex(row,col)]);
 	ispixmap = true;
@@ -212,7 +212,7 @@ void QBrowseBox::mouseMoveEvent( QMouseEvent* e )
 
   int cellx;
   int celly;
-   
+
   if( x < 0 || y < 0 || x > width() || y > height() ) {
      // outside the box
      cellx = -1;
@@ -233,17 +233,17 @@ void QBrowseBox::mouseMoveEvent( QMouseEvent* e )
 	    // remove old highlighting
 	   updateCell( oldactivecellx, oldactivecelly );
 	    // set new highlighting
-	   updateCell( _activecell.x(), _activecell.y() ); 
+	   updateCell( _activecell.x(), _activecell.y() );
 	 }
 }
 
 void QBrowseBox::moveLeft( )
 {
    int const y = _activecell.y();
-   
+
    if (y>0)
        _activecell.setY(y-1);
-   
+
    updateCell(_activecell.x(), y);
    updateCell(_activecell.x(), _activecell.y());
 }
@@ -251,10 +251,10 @@ void QBrowseBox::moveLeft( )
 void QBrowseBox::moveRight( )
 {
    int const y = _activecell.y();
-   
+
    if (y<numCols()-1)
        _activecell.setY(y+1);
-   
+
    updateCell(_activecell.x(), y);
    updateCell(_activecell.x(),_activecell.y());
 }
@@ -262,10 +262,10 @@ void QBrowseBox::moveRight( )
 void QBrowseBox::moveUp( )
 {
    int const x = _activecell.x();
-   
+
    if (x>0)
        _activecell.setX(x-1);
-   
+
    updateCell(x, _activecell.y());
    updateCell(_activecell.x(),_activecell.y());
 }
@@ -273,10 +273,10 @@ void QBrowseBox::moveUp( )
 void QBrowseBox::moveDown( )
 {
    int const x = _activecell.x();
-   
+
    if (x<numRows()-1)
        _activecell.setX(x+1);
-   
+
    updateCell(x, _activecell.y());
    updateCell(_activecell.x(),_activecell.y());
 }
