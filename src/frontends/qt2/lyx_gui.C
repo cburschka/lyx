@@ -21,6 +21,7 @@
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
+#include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
@@ -145,7 +146,7 @@ void start(string const & batch, vector<string> const & files)
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {
-		view.getLyXFunc().dispatch(batch);
+		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
 	qApp->exec();

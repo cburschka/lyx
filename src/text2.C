@@ -1894,7 +1894,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 		deleted = true;
 
-		bool selection_position_was_oldcursor_position = 
+		bool selection_position_was_oldcursor_position =
 			selection.cursor.par() == old_cursor.par()
 			&& selection.cursor.pos() == old_cursor.pos();
 

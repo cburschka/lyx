@@ -21,9 +21,11 @@
 #include "bufferlist.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "LColor.h"
 #include "lyx_main.h"
+#include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
@@ -295,7 +297,7 @@ void start(string const & batch, vector<string> const & files)
 
 	// handle the batch commands the user asked for
 	if (!batch.empty())
-		view.getLyXFunc().dispatch(batch);
+		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 
 	// enter the event loop
 	while (!finished) {

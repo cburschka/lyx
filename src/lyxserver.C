@@ -41,6 +41,8 @@
 
 #include "lyxserver.h"
 #include "debug.h"
+#include "funcrequest.h"
+#include "LyXAction.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -481,7 +483,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// support currently. (Lgb)
 
 
-			serv->func->dispatch(cmd + ' ' + arg);
+			serv->func->dispatch(FuncRequest(lyxaction.lookupFunc(cmd), arg));
 			string const rval = serv->func->getMessage();
 
 			//modified june 1999 stefano@zool.su.se:

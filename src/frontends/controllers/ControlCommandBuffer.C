@@ -16,6 +16,7 @@
 #include "bufferview_funcs.h"
 #include "lyxfunc.h"
 #include "LyXAction.h"
+#include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
@@ -124,5 +125,5 @@ void ControlCommandBuffer::dispatch(string const & str)
 
 	history_.push_back(str);
 	history_pos_ = history_.end();
-	lv_.getLyXFunc().dispatch(str, true);
+	lv_.getLyXFunc().dispatch(lyxaction.lookupFunc(str), true);
 }

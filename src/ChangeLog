@@ -1,3 +1,11 @@
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxserver.C (callback): adjust
+
+	* lyxfunc.C (getStatus): add a missing brace in commented code
+	(ensureBufferClean): reindent
+	(dispatch): delete version taking a string
+
 2003-10-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* LaTeX.C (deplog): move found file handlig from here...

@@ -1,3 +1,7 @@
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (start): adjust for distpatch change
+
 2003-10-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qfont_loader.C: add #include (needed for LyX/Mac)
@@ -21,11 +25,11 @@
 
 2003-10-06  Michael Schmitt  <michael.schmitt@teststep.org>
 
-	* QDelimiterDialog.h: 
-	* QMathDialog.h: 
-	* QSearchDialog.h: 
-	* floatplacement.h: 
-	* iconpalette.h: 
+	* QDelimiterDialog.h:
+	* QMathDialog.h:
+	* QSearchDialog.h:
+	* floatplacement.h:
+	* iconpalette.h:
 	* panelstack.h: add #include <string>.
 
 2003-10-01  Vitaly Lipatov  <lav@vl3143.spb.edu>

@@ -399,7 +399,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			for (; it != end; ++it) {
 				if (it->inset == inset) {
 					lyxerr << "InsetText::lockInsetInInset: 1 a" << endl;
-					text_.setCursorIntern(	
+					text_.setCursorIntern(
 						std::distance(paragraphs.begin(), pit), it->pos);
 					lyxerr << "InsetText::lockInsetInInset: 1 b" << endl;
 					lyxerr << "bv: " << bv << " inset: " << inset << endl;
@@ -615,7 +615,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		if (cmd.argument.size()) {
 			if (cmd.argument == "left")
 				text_.setCursorIntern(0, 0);
-			else 
+			else
 				text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
 		} else {
 			int tmp_y = (cmd.y < 0) ? 0 : cmd.y;

@@ -45,9 +45,6 @@ public:
 	/// LyX dispatcher, executes lyx actions.
 	void dispatch(FuncRequest const &, bool verbose = false);
 
-	/// Dispatch via a string argument
-	void dispatch(std::string const & s, bool verbose = false);
-
 	/// return the status bar state string
 	std::string const view_status_message();
 

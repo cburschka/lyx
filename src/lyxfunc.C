@@ -400,7 +400,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				break;
 			}
 			flag.setOnOff(ev.argument[0] == align);
-		} else
+		} else {
 			disable = true;
 
 			char align = mathcursor->halign();
@@ -817,39 +817,27 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 }
 
 
-void LyXFunc::dispatch(string const & s, bool verbose)
-{
-	FuncRequest func = lyxaction.lookupFunc(s);
-
-	if (func.action == LFUN_UNKNOWN_ACTION) {
-		owner->message(bformat(_("Unknown function (%1$s)"), s));
-		return;
-	}
-
-	dispatch(func, verbose);
-}
-
-
 namespace {
-	bool ensureBufferClean(BufferView * bv) {
 
-		Buffer & buf = *bv->buffer();
-		if (buf.isClean())
-			return true;
+bool ensureBufferClean(BufferView * bv)
+{
+	Buffer & buf = *bv->buffer();
+	if (buf.isClean())
+		return true;
 
-		string const file = MakeDisplayPath(buf.fileName(), 30);
-		string text = bformat(_("The document %1$s has unsaved "
-					"changes.\n\nDo you want to save "
-					"the document?"), file);
-		int const ret = Alert::prompt(_("Save changed document?"),
-					      text, 0, 1, _("&Save"),
-					      _("&Cancel"));
+	string const file = MakeDisplayPath(buf.fileName(), 30);
+	string text = bformat(_("The document %1$s has unsaved "
+				"changes.\n\nDo you want to save "
+				"the document?"), file);
+	int const ret = Alert::prompt(_("Save changed document?"),
+				      text, 0, 1, _("&Save"),
+				      _("&Cancel"));
 
-		if (ret == 0)
-			bv->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
+	if (ret == 0)
+		bv->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
 
-		return buf.isClean();
-	}
+	return buf.isClean();
+}
 
 } //namespace anon
 
@@ -953,7 +941,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				// FINISHED means that the cursor should be
 				// one position after the inset.
 			}
-		
+
 			if (result == FINISHED_RIGHT) {
 				view()->text->cursorRight(view());
 				moveCursorUpdate();
@@ -980,7 +968,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				owner->clearMessage();
 				goto exit_with_message;
 			}
-		
+
 			if (result == FINISHED_DOWN) {
 				RowList::iterator const irow = view()->text->cursorIRow();
 				if (irow != view()->text->lastRow()) {
@@ -1568,7 +1556,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		while (!argument.empty()) {
 			string first;
 			argument = split(argument, first, ';');
-			dispatch(first);
+			dispatch(lyxaction.lookupFunc(first));
 		}
 	}
 	break;
