@@ -20,6 +20,8 @@
 
 #include "insets/insetquotes.h"
 
+#include "frontends/controllers/biblio.h"
+
 #include "support/copied_ptr.h"
 #include "support/types.h"
 
@@ -179,11 +181,7 @@ public:
 	};
 	AMS use_amsmath;
 	///
-	bool use_natbib;
-	///
-	bool use_numerical_citations;
-	///
-	bool use_jurabib;
+	biblio::CiteEngine cite_engine;
 	///
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?

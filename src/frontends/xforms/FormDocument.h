@@ -14,7 +14,6 @@
 
 #include "FormDialogView.h"
 #include "BranchList.h"
-#include "RadioButtonGroup.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -133,9 +132,6 @@ private:
 	std::vector<std::string> lang_;
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
-
-	/// citation style buttons
-	RadioButtonGroup citestyle_;
 };
 
 #endif

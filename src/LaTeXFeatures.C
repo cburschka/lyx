@@ -299,7 +299,7 @@ string const LaTeXFeatures::getPackages() const
 	// natbib.sty
 	if (isRequired("natbib") && ! tclass.provides(LyXTextClass::natbib)) {
 		packages << "\\usepackage[";
-		if (params_.use_numerical_citations) {
+		if (params_.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL) {
 			packages << "numbers";
 		} else {
 			packages << "authoryear";

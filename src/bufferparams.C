@@ -113,9 +113,7 @@ BufferParams::BufferParams()
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
 	use_amsmath = AMS_AUTO;
-	use_natbib = false;
-	use_numerical_citations = false;
-	use_jurabib = false;
+	cite_engine = biblio::ENGINE_BASIC;
 	use_bibtopic = false;
 	tracking_changes = false;
 	secnumdepth = 3;
@@ -317,15 +315,18 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex.nextToken();
 		use_amsmath = static_cast<AMS>(
 			lex.getInteger());
-	} else if (token == "\\use_natbib") {
+	} else if (token == "\\cite_engine") {
 		lex.nextToken();
-		use_natbib = lex.getInteger();
-	} else if (token == "\\use_numerical_citations") {
-		lex.nextToken();
-		use_numerical_citations = lex.getInteger();
-	} else if (token == "\\use_jurabib") {
-		lex.nextToken();
-		use_jurabib = lex.getInteger();
+		string const engine = lex.getString();
+
+		cite_engine = biblio::ENGINE_BASIC;
+		if (engine == "natbib_numerical")
+			cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
+		else if (engine == "natbib_authoryear")
+			cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
+		else if (engine == "jurabib")
+			cite_engine = biblio::ENGINE_JURABIB;
+		
 	} else if (token == "\\use_bibtopic") {
 		lex.nextToken();
 		use_bibtopic = lex.getInteger();
@@ -540,14 +541,27 @@ void BufferParams::writeFile(ostream & os) const
 
 	spacing().writeFile(os);
 
+	string cite_engine_str = "basic";
+	switch (cite_engine) {
+	case biblio::ENGINE_BASIC:
+		break;
+	case biblio::ENGINE_NATBIB_NUMERICAL:
+		cite_engine_str = "natbib_numerical";
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		cite_engine_str = "natbib_authoryear";
+		break;
+	case biblio::ENGINE_JURABIB:
+		cite_engine_str = "jurabib";
+		break;
+	}
+	
 	os << "\\papersize " << string_papersize[papersize2]
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
 	   << "\n\\use_geometry " << use_geometry
 	   << "\n\\use_amsmath " << use_amsmath
-	   << "\n\\use_natbib " << use_natbib
-	   << "\n\\use_numerical_citations " << use_numerical_citations
-	   << "\n\\use_jurabib " << use_jurabib
-	    << "\n\\use_bibtopic " << use_bibtopic
+	   << "\n\\cite_engine " << cite_engine_str
+	   << "\n\\use_bibtopic " << use_bibtopic
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
 

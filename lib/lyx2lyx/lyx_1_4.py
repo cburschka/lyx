@@ -1260,6 +1260,69 @@ def revert_names(lines, opt):
 
 
 ##
+#    \use_natbib 1                       \cite_engine <style>
+#    \use_numerical_citations 0     ->   where <style> is one of
+#    \use_jurabib 0                      "basic", "natbib_authoryear",
+#                                        "natbib_numerical" or "jurabib"
+def convert_cite_engine(header, opt):
+    a = find_token(header, "\\use_natbib", 0)
+    if a == -1:
+        opt.warning("Malformed lyx file: Missing '\\use_natbib'")
+        return
+
+    b = find_token(header, "\\use_numerical_citations", 0)
+    if b == -1 or b != a+1:
+        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'")
+        return
+
+    c = find_token(header, "\\use_jurabib", 0)
+    if c == -1 or c != b+1:
+        opt.warning("Malformed lyx file: Missing '\\use_jurabib'")
+        return
+
+    use_natbib = int(split(header[a])[1])
+    use_numerical_citations = int(split(header[b])[1])
+    use_jurabib = int(split(header[c])[1])
+
+    cite_engine = "basic"
+    if use_natbib:
+        if use_numerical_citations:
+            cite_engine = "natbib_numerical"
+        else:
+             cite_engine = "natbib_authoryear"
+    elif use_jurabib:
+        cite_engine = "jurabib"
+
+    del header[a:c+1]
+    header.insert(a, "\\cite_engine " + cite_engine)
+
+
+def revert_cite_engine(header, opt):
+    i = find_token(header, "\\cite_engine", 0)
+    if i == -1:
+        opt.warning("Malformed lyx file: Missing '\\cite_engine'")
+        return
+
+    cite_engine = split(header[i])[1]
+
+    use_natbib = '0'
+    use_numerical = '0'
+    use_jurabib = '0'
+    if cite_engine == "natbib_numerical":
+        use_natbib = '1'
+        use_numerical = '1'
+    elif cite_engine == "natbib_authoryear":
+        use_natbib = '1'
+    elif cite_engine == "jurabib":
+        use_jurabib = '1'
+
+    del header[i]
+    header.insert(i, "\\use_jurabib " + use_jurabib)
+    header.insert(i, "\\use_numerical_citations " + use_numerical)
+    header.insert(i, "\\use_natbib " + use_natbib)
+
+
+##
 # Convertion hub
 #
 
@@ -1328,8 +1391,18 @@ def convert(header, body, opt):
         convert_graphics(body, opt)
         convert_names(body, opt)
 	opt.format = 233
+    if opt.end == opt.format: return
+
+    if opt.format < 234:
+        convert_cite_engine(header, opt)
+	opt.format = 234
 
 def revert(header, body, opt):
+    if opt.format > 233:
+        revert_cite_engine(header, opt)
+	opt.format = 233
+    if opt.end == opt.format: return
+
     if opt.format > 232:
         revert_names(body, opt)
 	opt.format = 232

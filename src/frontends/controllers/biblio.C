@@ -564,20 +564,7 @@ string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
 
 CiteEngine getEngine(Buffer const & buffer)
 {
-	CiteEngine engine = ENGINE_BASIC;
-
-	if (buffer.params().use_natbib) {
-		if (buffer.params().use_numerical_citations) {
-			engine = ENGINE_NATBIB_NUMERICAL;
-		} else {
-			engine = ENGINE_NATBIB_AUTHORYEAR;
-		}
-	}
-
-	if (buffer.params().use_jurabib)
-		engine = ENGINE_JURABIB;
-
-	return engine;
+	return buffer.params().cite_engine;
 }
 
 

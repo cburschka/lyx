@@ -191,12 +191,19 @@ void QDocument::apply()
 		fromqstr(dialog_->preambleModule->preambleMLE->text());
 
 	// biblio
-	params.use_natbib =
-		dialog_->biblioModule->citeNatbibRB->isChecked();
-	params.use_numerical_citations  =
-		dialog_->biblioModule->citeStyleCO->currentItem();
-	params.use_jurabib =
-		dialog_->biblioModule->citeJurabibRB->isChecked();
+	params.cite_engine = biblio::ENGINE_BASIC;
+
+	if (dialog_->biblioModule->citeNatbibRB->isChecked()) {
+		bool const use_numerical_citations =
+			dialog_->biblioModule->citeStyleCO->currentItem();
+		if (use_numerical_citations)
+			params.cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
+		else
+			params.cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
+
+	} else if (dialog_->biblioModule->citeJurabibRB->isChecked())
+		params.cite_engine = biblio::ENGINE_JURABIB;
+	
 	params.use_bibtopic =
 		dialog_->biblioModule->bibtopicCB->isChecked();
 
@@ -446,13 +453,18 @@ void QDocument::update_contents()
 
 	// biblio
 	dialog_->biblioModule->citeDefaultRB->setChecked(
-		!params.use_natbib && !params.use_jurabib);
+		params.cite_engine == biblio::ENGINE_BASIC);
+
 	dialog_->biblioModule->citeNatbibRB->setChecked(
-		params.use_natbib);
+		params.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL ||
+		params.cite_engine == biblio::ENGINE_NATBIB_AUTHORYEAR);
+
 	dialog_->biblioModule->citeStyleCO->setCurrentItem(
-		params.use_numerical_citations ? 1 : 0);
+		params.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL);
+
 	dialog_->biblioModule->citeJurabibRB->setChecked(
-		params.use_jurabib);
+		params.cite_engine == biblio::ENGINE_JURABIB);
+
 	dialog_->biblioModule->bibtopicCB->setChecked(
 		params.use_bibtopic);
 

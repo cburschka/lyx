@@ -308,26 +308,19 @@ void FormDocument::build()
 	bcview().addReadOnly(options_->counter_secnumdepth);
 	bcview().addReadOnly(options_->counter_tocdepth);
 	bcview().addReadOnly(options_->choice_ams_math);
-	bcview().addReadOnly(options_->radio_use_defcite);
-	bcview().addReadOnly(options_->radio_use_jurabib);
-	bcview().addReadOnly(options_->radio_use_natbib);
+	bcview().addReadOnly(options_->choice_cite_engine);
 	bcview().addReadOnly(options_->check_bibtopic);
-	bcview().addReadOnly(options_->choice_citation_format);
 	bcview().addReadOnly(options_->input_float_placement);
 	bcview().addReadOnly(options_->choice_postscript_driver);
 
-	// add cite style radio buttons
-	citestyle_.init(options_->radio_use_defcite,   DEFCITE);
-	citestyle_.init(options_->radio_use_natbib,  NATBIB);
-	citestyle_.init(options_->radio_use_jurabib,  JURABIB);
+	string const cite_choices =
+		_(" Basic | Natbib author-year | Natbib numerical | Jurabib ");
+	fl_addto_choice(options_->choice_cite_engine, cite_choices.c_str());
 
 	// set up the tooltips for optionss form
-	string str = _("Use LaTeX's default citation style");
-	tooltips().init(options_->radio_use_defcite, str);
-	str = _("Use the natbib styles for natural sciences and arts");
-	tooltips().init(options_->radio_use_natbib, str);
-	str = _("Use the jurabib styles for law and humanities");
-	tooltips().init(options_->radio_use_jurabib, str);
+	string str = _("Natbib is used often for natural sciences and arts\n"
+		"Jurabib is more common in law and humanities");
+	tooltips().init(options_->choice_cite_engine, str);
 	str = _("Select this if you want to split your bibliography into sections");
 	tooltips().init(options_->check_bibtopic, str);
 
@@ -343,8 +336,6 @@ void FormDocument::build()
 		fl_addto_choice(options_->choice_postscript_driver,
 				tex_graphics[n]);
 	}
-	fl_addto_choice(options_->choice_citation_format,
-			_(" Author-year | Numerical ").c_str());
 
 	// the document bullets form
 	bullets_.reset(build_document_bullet(this));
@@ -534,12 +525,6 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		if (getString(class_->input_skip).empty())
 			fl_set_choice_text(class_->choice_skip_units,
 					   default_unit.c_str());
-
-	} else if (ob == options_->radio_use_jurabib ||
-		   ob == options_->radio_use_defcite ||
-		   ob == options_->radio_use_natbib) {
-		setEnabled(options_->choice_citation_format,
-			   fl_get_button(options_->radio_use_natbib));
 
 	} else if (ob == branch_->browser_all_branches ||
 			ob == branch_->browser_selection ||
@@ -1028,10 +1013,23 @@ bool FormDocument::options_apply(BufferParams & params)
 	params.graphicsDriver = getString(options_->choice_postscript_driver);
 	params.use_amsmath = static_cast<BufferParams::AMS>(
 		fl_get_choice(options_->choice_ams_math) - 1);
-	params.use_natbib  = fl_get_button(options_->radio_use_natbib);
-	params.use_numerical_citations  =
-		fl_get_choice(options_->choice_citation_format) - 1;
-	params.use_jurabib  = fl_get_button(options_->radio_use_jurabib);
+
+	int const cite_choice = fl_get_choice(options_->choice_cite_engine);
+	switch (cite_choice) {
+	case 1:
+		params.cite_engine = biblio::ENGINE_BASIC;
+		break;
+	case 2:
+		params.cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
+		break;
+	case 3:
+		params.cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
+		break;
+	case 4:
+		params.cite_engine = biblio::ENGINE_JURABIB;
+		break;
+	}
+	
 	params.use_bibtopic  = fl_get_button(options_->check_bibtopic);
 
 	int tmpchar = int(fl_get_counter_value(options_->counter_secnumdepth));
@@ -1198,11 +1196,24 @@ void FormDocument::options_update(BufferParams const & params)
 	fl_set_choice_text(options_->choice_postscript_driver,
 			   params.graphicsDriver.c_str());
 	fl_set_choice(options_->choice_ams_math, params.use_amsmath + 1);
-	fl_set_button(options_->radio_use_natbib,  params.use_natbib);
-	fl_set_choice(options_->choice_citation_format,
-		      int(params.use_numerical_citations)+1);
-	setEnabled(options_->choice_citation_format, params.use_natbib);
-	fl_set_button(options_->radio_use_jurabib,  params.use_jurabib);
+
+	int cite_choice = 1;
+	switch (params.cite_engine) {
+	case biblio::ENGINE_BASIC:
+		cite_choice = 1;
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		cite_choice = 2;
+		break;
+	case biblio::ENGINE_NATBIB_NUMERICAL:
+		cite_choice = 3;
+		break;
+	case biblio::ENGINE_JURABIB:
+		cite_choice = 4;
+		break;
+	}
+	fl_set_choice(options_->choice_cite_engine, cite_choice);
+
 	fl_set_button(options_->check_bibtopic,  params.use_bibtopic);
 	fl_set_counter_value(options_->counter_secnumdepth, params.secnumdepth);
 	fl_set_counter_value(options_->counter_tocdepth, params.tocdepth);

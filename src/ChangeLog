@@ -1,3 +1,11 @@
+2004-05-12  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C: up LYX_FORMAT to 234.
+	* bufferparams.[Ch]: replace the three bools, use_natbib, use_jurabib,
+	use_numerical_citations with a single biblio::CiteEngine cite_engine
+	variable.
+	* LaTeXFeatures.C (getPackages): use BufferParams::cite_engine.
+
 2004-05-13  José Matos  <jamatos@lyx.org>
 
 	* converter.h:

@@ -40,7 +40,7 @@ namespace {
 string const getNatbibLabel(Buffer const & buffer,
 			    string const & citeType, string const & keyList,
 			    string const & before, string const & after,
-			    bool numerical, bool jura)
+			    biblio::CiteEngine engine)
 {
 	// Only start the process off after the buffer is loaded from file.
 	if (!buffer.fully_loaded())
@@ -136,7 +136,7 @@ string const getNatbibLabel(Buffer const & buffer,
 
 		// authors1/<before>;  ... ;
 		//  authors_last, <after>
-		if (cite_type == "cite" && jura) {
+		if (cite_type == "cite" && engine == biblio::ENGINE_JURABIB) {
 			if (it == keys.begin())
 				label += author + before_str + sep_str;
 			else
@@ -145,18 +145,27 @@ string const getNatbibLabel(Buffer const & buffer,
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
 		} else if (cite_type == "citet") {
-			string const tmp = numerical ? '#' + *it : year;
-			if (!jura)
-				label += author + op_str + before_str + tmp +
-				cp + sep_str;
-			else
-				label += before_str + author + op_str + tmp +
-				cp + sep_str;
+			switch (engine) {
+			case biblio::ENGINE_NATBIB_AUTHORYEAR:
+				label += author + op_str + before_str +
+					year + cp + sep_str;
+				break;
+			case biblio::ENGINE_NATBIB_NUMERICAL:
+				label += author + op_str + before_str +
+					'#' + *it + cp + sep_str;
+				break;
+			case biblio::ENGINE_JURABIB:
+				label += before_str + author + op_str +
+					year + cp + sep_str;
+				break;
+			case biblio::ENGINE_BASIC:
+				break;
+			}
 
 		// author, year; author, year; ...
 		} else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
-			if (numerical) {
+			if (engine == biblio::ENGINE_NATBIB_NUMERICAL) {
 				label += *it + sep_str;
 			} else {
 				label += author + ", " + year + sep_str;
@@ -165,11 +174,22 @@ string const getNatbibLabel(Buffer const & buffer,
 		// (authors1 <before> year;
 		//  authors_last <before> year, <after>)
 		} else if (cite_type == "citealt") {
-			string const tmp = numerical ? '#' + *it : year;
-			if (!jura)
-				label += author + ' ' + before_str + tmp + sep_str;
-			else
-				label += before_str + author + ' ' + tmp + sep_str;
+			switch (engine) {
+			case biblio::ENGINE_NATBIB_AUTHORYEAR:
+				label += author + ' ' + before_str +
+					year + sep_str;
+				break;
+			case biblio::ENGINE_NATBIB_NUMERICAL:
+				label += author + ' ' + before_str +
+					'#' + *it + sep_str;
+				break;
+			case biblio::ENGINE_JURABIB:
+				label += before_str + author + ' ' +
+					year + sep_str;
+				break;
+			case biblio::ENGINE_BASIC:
+				break;
+			}
 
 		// author; author; ...
 		} else if (cite_type == "citeauthor") {
@@ -188,9 +208,10 @@ string const getNatbibLabel(Buffer const & buffer,
 			// insert "after" before last ')'
 			label.insert(label.size() - 1, after_str);
 		} else {
-			bool const add = !(numerical &&
-					   (cite_type == "citeauthor" ||
-					    cite_type == "citeyear"));
+			bool const add =
+				!(engine == biblio::ENGINE_NATBIB_NUMERICAL &&
+				  (cite_type == "citeauthor" ||
+				   cite_type == "citeyear"));
 			if (add)
 				label += after_str;
 		}
@@ -245,23 +266,22 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 	string const after  = getOptions();
 
 	string label;
-	if (buffer.params().use_natbib || buffer.params().use_jurabib) {
+	biblio::CiteEngine const engine = buffer.params().cite_engine;
+	if (engine != biblio::ENGINE_BASIC) {
 		string cmd = getCmdName();
-		if (buffer.params().use_natbib && cmd == "cite") {
+		if (cmd == "cite") {
 			// We may be "upgrading" from an older LyX version.
 			// If, however, we use "cite" because the necessary
 			// author/year info is not present in the biblio
 			// database, then getNatbibLabel will exit gracefully
 			// and we'll call getBasicLabel.
-			if (buffer.params().use_numerical_citations)
+			if (engine == biblio::ENGINE_NATBIB_NUMERICAL)
 				cmd = "citep";
-			else
+			else if (engine == biblio::ENGINE_NATBIB_AUTHORYEAR)
 				cmd = "citet";
 		}
 		label = getNatbibLabel(buffer, cmd, getContents(),
-				       before, after,
-				       buffer.params().use_numerical_citations,
-				       buffer.params().use_jurabib);
+				       before, after, engine);
 	}
 
 	// Fallback to fail-safe
@@ -320,10 +340,19 @@ int InsetCitation::plaintext(Buffer const & buffer, ostream & os, int) const
 int InsetCitation::latex(Buffer const & buffer, ostream & os,
 			 OutputParams const &) const
 {
+	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
+	
 	os << "\\";
-	if (buffer.params().use_natbib)
+	switch (cite_engine) {
+	case biblio::ENGINE_BASIC:
+		os << "cite";
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+	case biblio::ENGINE_NATBIB_NUMERICAL:
 		os << getCmdName();
-	else if (buffer.params().use_jurabib) {
+		break;
+	case biblio::ENGINE_JURABIB: 
+	{
 		// jurabib does not (yet) support "force upper case"
 		// and "full author name". Fallback.
 		string cmd = getCmdName();
@@ -333,13 +362,13 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 		if (cmd[n] == '*')
 			cmd = cmd.substr(0,n);
 		os << cmd;
-	} else
-		os << "cite";
-
+		break;
+	}
+	}
+	
 	string const before = getSecOptions();
 	string const after  = getOptions();
-	if (!before.empty()
-		&& (buffer.params().use_natbib || buffer.params().use_jurabib))
+	if (!before.empty() && cite_engine != biblio::ENGINE_BASIC)
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';
@@ -364,8 +393,15 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 
 void InsetCitation::validate(LaTeXFeatures & features) const
 {
-	if (features.bufferParams().use_natbib)
+	switch (features.bufferParams().cite_engine) {
+	case biblio::ENGINE_BASIC:
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+	case biblio::ENGINE_NATBIB_NUMERICAL:
 		features.require("natbib");
-	else if (features.bufferParams().use_jurabib)
+		break;
+	case biblio::ENGINE_JURABIB:
 		features.require("jurabib");
+		break;
+	}
 }
