@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = controllers $(FRONTENDS_SUBDIRS)
 
-DIST_SUBDIRS = controllers xforms qt2 gnome gtk
+DIST_SUBDIRS = controllers xforms qt2 gtk
 
 noinst_LTLIBRARIES = libfrontends.la
 

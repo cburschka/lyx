@@ -161,7 +161,7 @@ esac
 
 dnl if the gtk frontend has been specified, then xforms is needed too
 if echo $FRONTENDS | grep gtk | grep -v xforms ; then
-  FRONTENDS="$FRONTENDS xforms"
+  FRONTENDS="xforms $FRONTENDS"
 fi
 
 dnl The code below is not in a macro, because this would cause big

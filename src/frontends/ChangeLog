@@ -1,6 +1,10 @@
+2005-03-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (DIST_SUBDIRS): remove gnome
+
 2005-02-21  Andreas Vox  <vox@isp.uni-luebeck.de>
 
-	* Dialogs.[hC] (show): prevent show() from getting called 
+	* Dialogs.[hC] (show): prevent show() from getting called
 	recursively.
 
 2005-02-11  John Levon  <levon@movementarian.org>
