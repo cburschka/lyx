@@ -55,8 +55,12 @@ public:
 		LEX_TOKEN = -4
 	};
 
-	/// file is open and end of file is not reached
+	/// straem is open and end of straem is not reached
 	bool isOK() const;
+	/// stream is ok
+	operator void *() const;
+	/// stream is not ok
+	bool operator!() const;
 	/// return true if able to open file, else false
 	bool setFile(std::string const & filename);
 	///
@@ -110,8 +114,7 @@ public:
 	///
 	int findToken(char const * str[]);
 
-	/** Pushes a token list on a stack and replaces it with a new one.
-	 */
+	/// Pushes a token list on a stack and replaces it with a new one.
 	void pushTable(keyword_item *, int);
 
 	/** Pops a token list into void and replaces it with the one now
@@ -125,10 +128,22 @@ public:
 	*/
 	void printError(std::string const & message) const;
 
-	/**
-	   Prints the current token table on the supplied ostream.
-	*/
+	/// Prints the current token table on the supplied ostream.
 	void printTable(std::ostream &);
+
+	/// extract string
+	LyXLex & operator>>(std::string &);
+	/// extract float
+	LyXLex & operator>>(float &);
+	/// extract double
+	LyXLex & operator>>(double &);
+	/// extract integer
+	LyXLex & operator>>(int &);
+	/// extract unsigned integer
+	LyXLex & operator>>(unsigned int &);
+	/// extract bool
+	LyXLex & operator>>(bool &);
+
 private:
 	struct Pimpl;
 	///

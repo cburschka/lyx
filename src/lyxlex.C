@@ -254,3 +254,67 @@ int LyXLex::findToken(char const * str[])
 
 	return i;
 }
+
+
+LyXLex::operator void *() const
+{
+	return isOK() ? const_cast<LyXLex *>(this) : 0;
+}
+
+
+bool LyXLex::operator!() const
+{
+	return !isOK();
+}
+
+
+LyXLex & LyXLex::operator>>(std::string & s)
+{
+	if (isOK()) {
+		next();
+		s = getString();
+	}
+	return *this;
+}
+
+
+LyXLex & LyXLex::operator>>(float & s)
+{
+	if (isOK()) {
+		next();
+		s = getFloat();
+	}
+	return *this;
+}
+
+
+LyXLex & LyXLex::operator>>(int & s)
+{
+	if (isOK()) {
+		next();
+		s = getInteger();
+	}
+	return *this;
+}
+
+
+LyXLex & LyXLex::operator>>(unsigned int & s)
+{
+	if (isOK()) {
+		next();
+		s = getInteger();
+	}
+	return *this;
+}
+
+
+LyXLex & LyXLex::operator>>(bool & s)
+{
+	if (isOK()) {
+		next();
+		s = getBool();
+	}
+	return *this;
+}
+
+

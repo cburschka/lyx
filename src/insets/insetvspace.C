@@ -246,18 +246,10 @@ void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
-
-	if (lex.isOK()) {
-		lex.next();
-		string const name = lex.getString();
-	}
-
-	// This is part of the inset proper that is usually swallowed
-	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		vspace = VSpace(lex.getString());
-	}
+	string name, vsp;
+	lex >> name >> vsp; 
+	if (lex)
+		vspace = VSpace(vsp);
 }
 
 
