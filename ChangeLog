@@ -1,5 +1,8 @@
 2000-09-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/mathed/math_cursor.C (MacroModeClose): don't call SetName
+	with strnew in arg, use correct emptystring when calling SetName.
+
 	* several files: remove all commented code with relation to
 	HAVE_SSTREAM beeing false. We now only support stringstream and
 	not strstream. 
