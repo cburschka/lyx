@@ -79,8 +79,6 @@ using std::getline;
 extern string system_lyxdir;
 extern string build_lyxdir;
 extern string user_lyxdir;
-extern string system_tempdir;
-extern string system_packageList;
 
 
 bool IsLyXFilename(string const & filename)
