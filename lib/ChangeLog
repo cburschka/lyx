@@ -1,3 +1,8 @@
+2003-10-22  José Matos  <jamatos@lyx.org>
+
+	* lyxconvert_223.py (convert_minipage): Assures that paramaters order
+	is the same that lyx outputs. Give default values to new parameters.
+
 2003-10-21  José Matos  <jamatos@lyx.org>
 
 	* lyxconvert_223.py (convert_minipage): convert minipage to insetbox.

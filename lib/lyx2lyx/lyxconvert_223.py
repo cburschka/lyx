@@ -119,7 +119,10 @@ def convert_comment(lines):
 
 
 def convert_minipage(lines):
-    pos = ["t","c","","b"]
+    """ Convert minipages to the box inset.
+    We try to use the same order of arguments as lyx does.
+    """
+    pos = ["t","c","b"]
     inner_pos = ["c","t","b","s"]
 
     i = 0
@@ -129,18 +132,51 @@ def convert_minipage(lines):
             return
 
         lines[i] = "\\begin_inset Frameless"
-
         i = i + 1
 
         # convert old to new position using the pos list
         if lines[i][:8] == "position":
-            lines[i] = "position " + pos[int(lines[i][9])]
-            i = i + 1
+            lines[i] = 'position "%s"' % pos[int(lines[i][9])]
+        else:
+            lines.insert(i, 'position "%s"' % pos[0])
+        i = i + 1
 
-        # do the same for the inner_position
+        lines.insert(i, 'hor_pos "c"')
+        i = i + 1
+        lines.insert(i, 'has_inner_box 1')
+        i = i + 1
+
+        # convert the inner_position
         if lines[i][:14] == "inner_position":
-            lines[i] = "inner_pos " +  inner_pos[int(lines[i][15])]
-            i = i + 1
+            lines[i] = 'inner_pos "%s"' %  inner_pos[int(lines[i][15])]
+        else:
+            lines.insert('inner_pos "%s"' % inner_pos[0])
+        i = i + 1
+
+        # We need this since the new file format has a height and width
+        # in a different order.
+        if lines[i][:6] == "height":
+            height = lines[i][6:]
+            del lines[i]
+        else:
+            height = ' "0"'
+
+        if lines[i][:5] == "width":
+            width = lines[i][5:]
+            del lines[i]
+        else:
+            width = ' "0"'
+
+        lines.insert(i, 'use_parbox 0')
+        i = i + 1
+        lines.insert(i, 'width' + width)
+        i = i + 1
+        lines.insert(i, 'special "none"')
+        i = i + 1
+        lines.insert(i, 'height' + height)
+        i = i + 1
+        lines.insert(i, 'height_special "totalheight"')
+        i = i + 1
         
 def convert(header, body):
     convert_external(body)
