@@ -386,25 +386,17 @@ public:
 		InsetList::iterator it;
 	};
 
-	///
-	inset_iterator inset_iterator_begin() {
-		return inset_iterator(paragraphs.begin(), paragraphs.end());
-	}
+	/// return an iterator to all *top-level* insets in the buffer
+	inset_iterator inset_iterator_begin();
 
-	///
-	inset_iterator inset_iterator_end() {
-		return inset_iterator();
-	}
+	/// return the end of all *top-level* insets in the buffer
+	inset_iterator inset_iterator_end();
 
-	///
-	inset_iterator inset_const_iterator_begin() const {
-		return inset_iterator(const_cast<ParagraphList&>(paragraphs).begin(), const_cast<ParagraphList&>(paragraphs).end());
-	}
+	/// return a const iterator to all *top-level* insets in the buffer
+	inset_iterator inset_const_iterator_begin() const;
 
-	///
-	inset_iterator inset_const_iterator_end() const {
-		return inset_iterator();
-	}
+	/// return the const end of all *top-level* insets in the buffer
+	inset_iterator inset_const_iterator_end() const;
 
 	///
 	ParIterator par_iterator_begin();

@@ -2394,6 +2394,32 @@ Buffer::inset_iterator::inset_iterator(base_type p, base_type e)
 }
 
 
+Buffer::inset_iterator Buffer::inset_iterator_begin()
+{
+	return inset_iterator(paragraphs.begin(), paragraphs.end());
+}
+
+
+Buffer::inset_iterator Buffer::inset_iterator_end()
+{
+	return inset_iterator(paragraphs.end(), paragraphs.end());
+}
+
+
+Buffer::inset_iterator Buffer::inset_const_iterator_begin() const
+{
+	return inset_iterator(const_cast<ParagraphList&>(paragraphs).begin(),
+	                      const_cast<ParagraphList&>(paragraphs).end());
+}
+
+
+Buffer::inset_iterator Buffer::inset_const_iterator_end() const
+{
+	return inset_iterator(const_cast<ParagraphList&>(paragraphs).end(),
+	                      const_cast<ParagraphList&>(paragraphs).end());
+}
+
+
 Buffer::inset_iterator & Buffer::inset_iterator::operator++()
 {
 	if (pit != pend) {
