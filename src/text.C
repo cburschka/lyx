@@ -3273,20 +3273,17 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 
 	str = prefix + " (" + vsp.asLyXCommand() + ")";
 
-	switch (vsp.kind()) {
-	case VSpace::LENGTH: {
+	if (vsp.kind() == VSpace::VFILL ) {
+		ty1 = ty2 = start;
+		by1 = by2 = end;
+	} else {
 		// adding or removing space
-		bool const added = !(vsp.length().len().value() < 0.0);
+		bool const added = vsp.kind() != VSpace::LENGTH ||
+		                   vsp.length().len().value() > 0.0;
 		ty1 = added ? (start + arrow_size) : start;
 		ty2 = added ? start : (start + arrow_size);
 		by1 = added ? (end - arrow_size) : end;
 		by2 = added ? end : (end - arrow_size);
-		break;
-	}
-	default:
-		ty1 = ty2 = start;
-		by1 = by2 = end;
-		break;
 	}
 
 	int const leftx = p.xo + leftMargin(p.bv, p.row);
@@ -3299,15 +3296,12 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 	int d = 0;
 
 	LyXFont font;
-	font.setColor(LColor::added_space).decSize();
+	font.setColor(LColor::added_space).decSize().decSize();
 	font_metrics::rectText(str, font, w, a, d);
 
 	p.pain->rectText(leftx + 2 * arrow_size + 5,
 			 start + ((end - start) / 2) + d,
 			 str, font);
-
-	if (vsp.kind() != VSpace::LENGTH && vsp.kind() != VSpace::VFILL )
-		return size;
 
 	// top arrow
 	p.pain->line(leftx, ty1, midx, ty2, LColor::added_space);

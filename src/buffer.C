@@ -2075,12 +2075,6 @@ void Buffer::makeLaTeXFile(ostream & os,
 		if (!bullets_def.empty())
 		  preamble += bullets_def + "}\n\n";
 
-		int const nlines =
-			int(lyx::count(preamble.begin(), preamble.end(), '\n'));
-		for (int j = 0; j != nlines; ++j) {
-			texrow.newline();
-		}
-
 		// We try to load babel late, in case it interferes
 		// with other packages.
 		if (use_babel) {
@@ -2095,6 +2089,12 @@ void Buffer::makeLaTeXFile(ostream & os,
 		}
 
 		preamble += "\\makeatother\n";
+
+		int const nlines =
+			int(lyx::count(preamble.begin(), preamble.end(), '\n'));
+		for (int j = 0; j != nlines; ++j) {
+			texrow.newline();
+		}
 
 		os << preamble;
 

@@ -41,6 +41,10 @@ What's new
 
 - fix bug where "lyx -e" would refuse to work [Qt only]
 
+- fix display of right quote inset
+
+- fix off-by-one error in placement of error insets
+
 - fix bug where opening the tabular dialog would mark the document as 
   changed [bug #849, Qt only]
 
@@ -54,6 +58,8 @@ What's new
 
 - in the dialogs, replace LaTeX font size names by LyX names for
   consistency reasons and to resolve a translation conflict
+
+- fix detection of fax programs
 
 - enable the debug level to be set in lyx2lyx
 

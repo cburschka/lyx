@@ -156,15 +156,6 @@ string const InsetQuotes::dispString(Language const * loclang) const
 		disp += disp;
 
 	if (lyxrc.font_norm_type == LyXRC::ISO_8859_1
-	    || lyxrc.font_norm_type == LyXRC::ISO_8859_3
-	    || lyxrc.font_norm_type == LyXRC::ISO_8859_4
-	    || lyxrc.font_norm_type == LyXRC::ISO_8859_9) {
-		if (disp == "'")
-			disp = "´";
-		else if (disp == "''")
-			disp = "´´";
-	}
-	if (lyxrc.font_norm_type == LyXRC::ISO_8859_1
 	    || lyxrc.font_norm_type == LyXRC::ISO_8859_9
 	    || lyxrc.font_norm_type == LyXRC::ISO_8859_15) {
 		if (disp == "<<")
