@@ -13,7 +13,7 @@
 #endif
 
 #include <qpushbutton.h>
-#include <qradiobutton.h>
+#include <qcombobox.h>
 #include <qlineedit.h>
 #include "lengthcombo.h"
  
@@ -26,6 +26,7 @@
 #include "QtLyXView.h"
 #include "ControlMinipage.h"
 
+#include "debug.h"
 typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
 
 QMinipage::QMinipage(ControlMinipage & c)
@@ -45,9 +46,7 @@ void QMinipage::build_dialog()
 
 	bc().addReadOnly(dialog_->widthED);
 	bc().addReadOnly(dialog_->unitsLC);
-	bc().addReadOnly(dialog_->topRB); 
-	bc().addReadOnly(dialog_->bottomRB); 
-	bc().addReadOnly(dialog_->middleRB); 
+	bc().addReadOnly(dialog_->valignCO); 
 }
 
 
@@ -62,12 +61,17 @@ void QMinipage::apply()
  
 	controller().params().width = len.asString();
 
-	if (dialog_->topRB->isChecked())
+	switch (dialog_->valignCO->currentItem()) {
+	case 0:
 		controller().params().pos = InsetMinipage::top;
-	else if (dialog_->middleRB->isChecked())
+		break;
+	case 1:
 		controller().params().pos = InsetMinipage::center;
-	else
+		break;
+	case 2:
 		controller().params().pos = InsetMinipage::bottom;
+		break;
+	}
 }
 
  
@@ -86,16 +90,16 @@ void QMinipage::update_contents()
 	LyXLength len(controller().params().width.c_str());
 	dialog_->widthED->setText(numtostr(len.value()).c_str());
 	dialog_->unitsLC->setCurrentItem(len.unit());
+	lyxerr << "width " << numtostr(len.value()).c_str() << " units " << len.unit() << std::endl;
  
-	QRadioButton * button = dialog_->topRB;
- 
+	int item = 0;
 	switch (controller().params().pos) {
 		case InsetMinipage::center:
-			button = dialog_->middleRB; 
+			item = 1;
 			break;
 		case InsetMinipage::bottom:
-			button = dialog_->bottomRB;
+			item = 2;
 			break;
 	}
-	button->setChecked(true);
+	dialog_->valignCO->setCurrentItem(item); 
 }

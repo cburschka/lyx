@@ -14,13 +14,19 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>296</width>
-            <height>184</height>
+            <width>369</width>
+            <height>104</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Minipage settings</string>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
     </property>
     <grid>
         <property stdset="1">
@@ -31,180 +37,13 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="0"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>restorePB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Restore</string>
-            </property>
-            <property stdset="1">
-                <name>default</name>
-                <bool>true</bool>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string></string>
-            </property>
-        </widget>
-        <widget row="1"  column="1" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>unitsLC</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>3</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>minimumSize</name>
-                <size>
-                    <width>40</width>
-                    <height>22</height>
-                </size>
-            </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
-                <enum>StrongFocus</enum>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Units of width value</string>
-            </property>
-        </widget>
-        <widget row="0"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>widthED</cstring>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Width value</string>
-            </property>
-        </widget>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>widthLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>frameShape</name>
-                <enum>MShape</enum>
-            </property>
-            <property stdset="1">
-                <name>frameShadow</name>
-                <enum>MShadow</enum>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Width:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>widthED</cstring>
-            </property>
-        </widget>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
-            <class>QButtonGroup</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>alignmentBG</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>7</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>frameShape</name>
-                <enum>Box</enum>
-            </property>
-            <property stdset="1">
-                <name>frameShadow</name>
-                <enum>Sunken</enum>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>&amp;Vertical alignment</string>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Alignment of minipage</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>topRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Top</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>middleRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Middle</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bottomRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Bottom</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
-        <widget row="1"  column="2"  rowspan="2"  colspan="1" >
+        <widget row="1"  column="0" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout1</cstring>
+                <cstring>Layout17</cstring>
             </property>
-            <grid>
+            <hbox>
                 <property stdset="1">
                     <name>margin</name>
                     <number>0</number>
@@ -213,44 +52,33 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget row="2"  column="0" >
+                <widget>
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>okPB</cstring>
+                        <cstring>restorePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;OK</string>
+                        <string>&amp;Restore</string>
                     </property>
                     <property stdset="1">
                         <name>default</name>
-                        <bool>true</bool>
+                        <bool>false</bool>
                     </property>
                     <property>
                         <name>toolTip</name>
                         <string></string>
                     </property>
                 </widget>
-                <widget row="3"  column="0" >
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>closePB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Close</string>
-                    </property>
-                </widget>
-                <spacer row="0"  column="0" >
+                <spacer>
                     <property>
                         <name>name</name>
-                        <cstring>Spacer145</cstring>
+                        <cstring>Spacer1</cstring>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
-                        <enum>Vertical</enum>
+                        <enum>Horizontal</enum>
                     </property>
                     <property stdset="1">
                         <name>sizeType</name>
@@ -264,7 +92,26 @@
                         </size>
                     </property>
                 </spacer>
-                <widget row="1"  column="0" >
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>okPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;OK</string>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>false</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string></string>
+                    </property>
+                </widget>
+                <widget>
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
@@ -276,29 +123,175 @@
                     </property>
                     <property stdset="1">
                         <name>default</name>
-                        <bool>true</bool>
+                        <bool>false</bool>
                     </property>
                     <property>
                         <name>toolTip</name>
                         <string></string>
                     </property>
                 </widget>
-            </grid>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>closePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Close</string>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </hbox>
         </widget>
-        <widget row="1"  column="0" >
-            <class>QLabel</class>
+        <widget row="0"  column="0" >
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>unitsLA</cstring>
+                <cstring>Layout3</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Units:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>unitsLC</cstring>
-            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="0"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>unitsLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Units:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>unitsLC</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>widthLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShape</name>
+                        <enum>MShape</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>frameShadow</name>
+                        <enum>MShadow</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Width:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>widthED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1"  rowspan="1"  colspan="2" >
+                    <class>LengthCombo</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>unitsLC</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>minimumSize</name>
+                        <size>
+                            <width>40</width>
+                            <height>22</height>
+                        </size>
+                    </property>
+                    <property stdset="1">
+                        <name>focusPolicy</name>
+                        <enum>StrongFocus</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Units of width value</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="3" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>valignLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>A&amp;lignment:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>valignCO</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>widthED</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Width value</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="3" >
+                    <class>QComboBox</class>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>Top</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>Middle</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>Bottom</string>
+                        </property>
+                    </item>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>valignCO</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Vertical alignment</string>
+                    </property>
+                </widget>
+            </grid>
         </widget>
     </grid>
 </widget>
@@ -333,24 +326,6 @@
         <slot>updateClicked()</slot>
     </connection>
     <connection>
-        <sender>topRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>QMinipageDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>middleRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>QMinipageDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>bottomRB</sender>
-        <signal>clicked()</signal>
-        <receiver>QMinipageDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
         <sender>widthED</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QMinipageDialogBase</receiver>
@@ -362,18 +337,22 @@
         <receiver>QMinipageDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
+    <connection>
+        <sender>valignCO</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QMinipageDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
     <slot access="public">change_adaptor()</slot>
     <slot access="public">updateClicked()</slot>
 </connections>
 <tabstops>
     <tabstop>widthED</tabstop>
     <tabstop>unitsLC</tabstop>
-    <tabstop>topRB</tabstop>
-    <tabstop>middleRB</tabstop>
-    <tabstop>bottomRB</tabstop>
+    <tabstop>valignCO</tabstop>
     <tabstop>restorePB</tabstop>
-    <tabstop>okPB</tabstop>
     <tabstop>applyPB</tabstop>
+    <tabstop>okPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
 </UI>
