@@ -247,6 +247,9 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		   ob == dialog_->check_sort ||
 		   ob == dialog_->choice_document) {
 
+		// No change to data
+		activate = ButtonPolicy::SMI_NOOP;
+
 		if (ob == dialog_->button_update ||
 		    ob == dialog_->choice_document) {
 			string const name =
