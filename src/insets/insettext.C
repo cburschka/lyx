@@ -2498,9 +2498,7 @@ string const InsetText::selectNextWordToSpellcheck(BufferView * bv, float & valu
 				lt = 0;
 			return str;
 		}
-#warning Dekel please have a look on this one RTL? (Jug)
-#warning DEKEL!
-		// we have to go on checking so move cusor to the right
+		// we have to go on checking so move cusor to the next char
 		lt->cursor.pos(lt->cursor.pos() + 1);
 	}
 	str = lt->selectNextWordToSpellcheck(bv, value);
