@@ -175,6 +175,7 @@ cat <<EOF
 	'hu' => 'Hungarian',
 	'it' => 'Italian',
 	'nl' => 'Dutch',
+	'nn' => 'Nynorsk',
 	'no' => 'Norwegian',
 	'pl' => 'Polish',
 	'pt' => 'Portuguese',
