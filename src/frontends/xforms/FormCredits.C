@@ -18,8 +18,9 @@
 #include "FormCredits.h"
 #include "form_credits.h"
 #include "xforms_helpers.h"
+#include "Lsstream.h"
 
-using std::vector;
+using std::getline;
 
 typedef FormCB<ControlCredits, FormDB<FD_form_credits> > base_class;
 
@@ -36,11 +37,7 @@ void FormCredits::build()
 	bc().setCancel(dialog_->button_cancel);
 	bc().refresh();
 
-	vector<string> data = controller().getCredits();
-
-	/* read the credits into the browser */ 
-	for (vector<string>::const_iterator it = data.begin();
-	     it < data.end(); ++it) {
-		fl_add_browser_line(dialog_->browser_credits, it->c_str());
-	}
+	std::stringstream ss;
+	fl_add_browser_line(dialog_->browser_credits, 
+			    controller().getCredits(ss).str().c_str());
 }

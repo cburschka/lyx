@@ -9,6 +9,7 @@
 
 #include <config.h>
 #include <fstream>
+#include "Lsstream.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -32,19 +33,12 @@ ControlCredits::ControlCredits(LyXView & lv, Dialogs & d)
 }
 
 
-std::vector<string> const ControlCredits::getCredits() const
+std::stringstream & ControlCredits::getCredits(std::stringstream & ss) const
 {
-	std::vector<string> data;
-
 	string const name = FileSearch(system_lyxdir, "CREDITS");
 
 	bool found(!name.empty());
 
-#warning what are you really doing here... (Lgb)
-	// why not just send a stringstream to the calling func?
-	// then the reader would look like:
-	// stringstream ss;
-	// ss << in.rdbuf();
 	if (found) {
 		std::ifstream in(name.c_str());
 		found = (in.get());
@@ -52,20 +46,16 @@ std::vector<string> const ControlCredits::getCredits() const
 		if (found) {
 			in.seekg(0, std::ios::beg); // rewind to the beginning
 
-			for(;;) {
-				string line;
-				getline(in, line);
-				if (!in.good()) break;
-				data.push_back(line);
-			}
+			ss << in.rdbuf();
+			found = (ss.good());
 		}
 	}
 
 	if (!found) {
-		data.push_back(_("ERROR: LyX wasn't able to read CREDITS file"));
-		data.push_back(_("Please install correctly to estimate the great"));
-		data.push_back(_("amount of work other people have done for the LyX project."));
+		ss << _("ERROR: LyX wasn't able to read CREDITS file\n")
+		   << _("Please install correctly to estimate the great\n")
+		   << _("amount of work other people have done for the LyX project.");
 	}
 
-	return data;
+	return ss;
 }

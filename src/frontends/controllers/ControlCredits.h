@@ -10,8 +10,6 @@
 #ifndef CONTROLCREDITS_H
 #define CONTROLCREDITS_H
 
-#include <vector>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -26,7 +24,7 @@ public:
 	ControlCredits(LyXView &, Dialogs &);
 
 	///
-	std::vector<string> const getCredits() const;
+	std::stringstream & getCredits(std::stringstream &) const;
 
 private:
 	/// not needed.
