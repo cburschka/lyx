@@ -135,8 +135,10 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 		}
 	}
 #if 0
+#ifdef WITH_WARNINGS
 #warning this should be really short lived only for compatibility to
 #warning files written 07/08/2001 so this has to go before 1.2.0! (Jug)
+#endif
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();

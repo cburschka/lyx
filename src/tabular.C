@@ -153,8 +153,9 @@ LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
 LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 {
 #if 0
+#ifdef WITH_WARNINGS
 #warning This while method should look like this: (Lgb)
-
+#endif
 		LyXTabular tmp(lt);
 		tmp.swap(*this);
 #else
