@@ -1,3 +1,9 @@
+2005-02-28  André Pönitz  <poenitz@lyx.org>
+
+	* math_nestinset.C (lfunMouseRelease, lfunMouseMotion, lfunMousePress):
+	remove ancient hack and get mouse actions inside nested mathed insets
+	working again.
+
 2005-02-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parinset.[Ch] (doClone): Implement, avoids triggering the

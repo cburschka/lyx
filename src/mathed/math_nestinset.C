@@ -63,18 +63,6 @@ using std::string;
 using std::istringstream;
 
 
-
-namespace {
-
-// local global
-int first_x;
-int first_y;
-
-} // namespace anon
-
-
-
-
 MathNestInset::MathNestInset(idx_type nargs)
 	: cells_(nargs), lock_(false)
 {}
@@ -956,11 +944,9 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y) const
 
 void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
+	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	if (cmd.button() == mouse_button::button1) {
-		first_x = cmd.x;
-		first_y = cmd.y;
-		lyxerr << "lfunMousePress: setting cursor to: " << cur << endl;
+		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
 		cur.resetAnchor();
 		cur.bv().cursor() = cur;
 	}
@@ -976,22 +962,22 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 	// only select with button 1
 	if (cmd.button() == mouse_button::button1) {
 		LCursor & bvcur = cur.bv().cursor();
-		if (abs(cmd.x - first_x) + abs(cmd.y - first_y) > 4
-		    && bvcur.anchor_.hasPart(cur)) {
-			first_x = cmd.x;
-			first_y = cmd.y;
-
+		if (bvcur.anchor_.hasPart(cur)) {
+			//lyxerr << "## lfunMouseMotion: cursor: " << cur << endl;
 			bvcur.setCursor(cur);
 			bvcur.selection() = true;
-		} else
+			//lyxerr << "MOTION " << bvcur << endl;
+		}
+		else {
 			cur.undispatched();
+		}
 	}
 }
 
 
 void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
+	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
 		//cur.bv().stuffClipboard(cur.grabSelection());
