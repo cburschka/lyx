@@ -656,7 +656,6 @@ void BufferView::Pimpl::update()
 	if (bv_->getLyXText()) {
 		// check needed to survive LyX startup
 		bv_->getLyXText()->redoCursor();
-		fitCursor();
 	}
 	screen().redraw(*bv_);
 }
@@ -795,10 +794,7 @@ void BufferView::Pimpl::center()
 
 	beforeChange(text);
 	int const half_height = workarea().workHeight() / 2;
-	int new_y = 0;
-
-	if (text->cursor.y() > half_height)
-		new_y = text->cursor.y() - half_height;
+	int new_y = std::max(0, text->cursor.y() - half_height);
 
 	// FIXME: look at this comment again ...
 

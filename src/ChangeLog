@@ -1,3 +1,7 @@
+2003-09-02  Alfredo Braunstein  <abraunst@libero.it>
+
+	* BufferView_pimpl.C (update): remove bogus fitCursor() call
+
 2003-09-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* buffer.C (readFile): new function, take a filename and a
