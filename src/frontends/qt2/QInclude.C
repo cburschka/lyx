@@ -49,20 +49,10 @@ void QInclude::build_dialog()
 
 void QInclude::update_contents()
 {
-	if (controller().params().noload) {
-		dialog_->filenameED->setText("");
-		dialog_->typesetCB->setChecked(false);
-		dialog_->visiblespaceCB->setChecked(false);
-		dialog_->visiblespaceCB->setEnabled(false);
-		//dialog_->typeCO->setEnabled(true);
-		return;
-	}
-
 	dialog_->filenameED->setText(controller().params().cparams.getContents().c_str());
 
 	string const cmdname = controller().params().cparams.getCmdName();
 
-	// FIXME: ??
 	dialog_->typesetCB->setChecked(controller().params().noload);
 
 	dialog_->visiblespaceCB->setChecked(false);
