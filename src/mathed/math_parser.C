@@ -403,6 +403,9 @@ void Parser::tokenize(istream & is)
 			break;
 		}
 	}
+	// Remove the space after \end_inset
+	if (is.get(c) && c != ' ')
+		is.unget();
 
 	// tokenize buffer
 	tokenize(s);
