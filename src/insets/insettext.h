@@ -187,8 +187,6 @@ public:
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	void selectAll(BufferView * bv);
-	///
 	void clearSelection(BufferView * bv);
 	///
 	Inset * getInsetFromID(int id) const;

@@ -1731,12 +1731,15 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 	}
 
 
-	if (text_.selection.set()) {
+	if (text_.selection.set())
 		setUndo(bv, Undo::EDIT, text_.cursor.par());
-	}
 
-	if (selectall)
-		selectAll(bv);
+	if (selectall) {
+		text_.cursorTop();
+		text_.selection.cursor = text_.cursor;
+		text_.cursorBottom();
+		text_.setSelection();
+	}
 
 	text_.toggleFree(font, toggleall);
 
@@ -2103,15 +2106,6 @@ int InsetText::scroll(bool recursive) const
 		sx += the_locking_inset->scroll(recursive);
 
 	return sx;
-}
-
-
-void InsetText::selectAll(BufferView * bv)
-{
-	getLyXText(bv)->cursorTop();
-	getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
-	getLyXText(bv)->cursorBottom();
-	getLyXText(bv)->setSelection();
 }
 
 
