@@ -15,8 +15,7 @@
 #define FORMCOMMAND_H
 
 #include "FormBaseDeprecated.h"
-
-#include "insets/insetcommand.h"
+#include "insets/insetcommandparams.h"
 
 #include <boost/signals/connection.hpp>
 
@@ -24,6 +23,7 @@
 #pragma interface
 #endif
 
+class InsetCommand;
 
 /** This class is an XForms GUI base class to insets
  */

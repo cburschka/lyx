@@ -495,14 +495,21 @@ extern "C" {
 	}
 
 
+#ifdef HAVE_LIBAIKSAURUS
+
 	void gui_ShowThesaurus(string const & s, LyXView & lv, Dialogs & d)
 	{
-#ifdef HAVE_LIBAIKSAURUS
 		static GUI<ControlThesaurus, FormThesaurus,
 			OkApplyCancelReadOnlyPolicy, xformsBC> ct(lv, d);
 		ct.showEntry(s);
-#endif
 	}
+
+#else
+
+	void gui_ShowThesaurus(string const &, LyXView &, Dialogs &)
+	{}
+
+#endif
 
 
 	void gui_ShowTOC(InsetCommand * ic, LyXView & lv, Dialogs & d)

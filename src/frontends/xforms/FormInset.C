@@ -18,6 +18,7 @@
 #include "frontends/LyXView.h"
 #include "FormInset.h"
 #include "xformsBC.h"
+#include "insets/insetcommand.h"
 
 #include <boost/bind.hpp>
 
