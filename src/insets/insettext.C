@@ -109,8 +109,6 @@ void InsetText::init(InsetText const * ins)
 		 boost::bind(&Paragraph::setInsetOwner, _1, this));
 	top_y = 0;
 	no_selection = true;
-	drawTextXOffset = 0;
-	drawTextYOffset = 0;
 	locked = false;
 	old_par = paragraphs.end();
 	in_insetAllowed = false;
@@ -257,8 +255,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	top_y = y - dim_.asc;
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
-		inset_x = cx() - x + drawTextXOffset;
-		inset_y = cy() + drawTextYOffset;
+		inset_x = cx() - x;
+		inset_y = cy();
 	}
 
 	x += TEXT_TO_INSET_OFFSET;
@@ -362,8 +360,8 @@ void InsetText::lockInset(BufferView * bv)
 void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
-	inset_x = cx() - top_x + drawTextXOffset;
-	inset_y = cy() + drawTextYOffset;
+	inset_x = cx() - top_x;
+	inset_y = cy();
 	inset_pos = cpos();
 	inset_par = cpar();
 	inset_boundary = cboundary();
@@ -381,10 +379,12 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		ParagraphList::iterator pend = paragraphs.end();
 
 		int const id = inset->id();
+lyxerr << "inset:" << inset << " " << id << endl;
 		for (; pit != pend; ++pit) {
 			InsetList::iterator it = pit->insetlist.begin();
 			InsetList::iterator const end = pit->insetlist.end();
 			for (; it != end; ++it) {
+lyxerr << "it->inset:" << it->inset << endl;
 				if (it->inset == inset) {
 					lyxerr << "InsetText::lockInsetInInset: 1 a" << endl;
 					text_.setCursorIntern(pit, it->pos);
@@ -398,6 +398,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 					lyxerr << "InsetText::lockInsetInInset: 2" << endl;
 					text_.setCursorIntern(pit, it->pos);
 					it->inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+lyxerr << "recurse" << endl;
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
@@ -414,8 +415,8 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	if (the_locking_inset && the_locking_inset == inset) {
 		if (cpar() == inset_par && cpos() == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
-			inset_x = cx() - top_x + drawTextXOffset;
-			inset_y = cy() + drawTextYOffset;
+			inset_x = cx() - top_x;
+			inset_y = cy();
 		} else {
 			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
 		}
@@ -464,7 +465,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 	if (!locked)
 		lockInset(bv);
 
-	int tmp_x = cmd.x - drawTextXOffset;
+	int tmp_x = cmd.x;
 	int tmp_y = cmd.y + dim_.asc - bv->top_y();
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 
@@ -502,8 +503,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		}
 		int old_top_y = bv->top_y();
 
-		text_.setCursorFromCoordinates(cmd.x - drawTextXOffset,
-					     cmd.y + dim_.asc);
+		text_.setCursorFromCoordinates(cmd.x, cmd.y + dim_.asc);
 		// set the selection cursor!
 		text_.selection.cursor = text_.cursor;
 		text_.cursor.x_fix(text_.cursor.x());
@@ -543,7 +543,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	if (the_locking_inset)
 		return the_locking_inset->localDispatch(cmd1);
 
-	int tmp_x = cmd.x - drawTextXOffset;
+	int tmp_x = cmd.x;
 	int tmp_y = cmd.y + dim_.asc - bv->top_y();
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 	bool ret = false;
@@ -557,8 +557,8 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 		if (isHighlyEditableInset(inset))
 			ret = inset->localDispatch(cmd1);
 		else {
-			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy() + drawTextYOffset;
+			inset_x = cx(bv) - top_x;
+			inset_y = cy();
 			cmd1.x = cmd.x - inset_x;
 			cmd1.y = cmd.x - inset_y;
 			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
@@ -589,8 +589,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 
 	BufferView * bv = cmd.view();
 	LyXCursor cur = text_.cursor;
-	text_.setCursorFromCoordinates
-		(cmd.x - drawTextXOffset, cmd.y + dim_.asc);
+	text_.setCursorFromCoordinates (cmd.x, cmd.y + dim_.asc);
 	text_.cursor.x_fix(text_.cursor.x());
 	if (cur == text_.cursor)
 		return;
@@ -637,8 +636,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			// cycle hopefully (Jug 20020509)
 			// FIXME: GUII I've changed this to none: probably WRONG
 			if (!checkAndActivateInset(bv, cmd.x, tmp_y, mouse_button::none)) {
-				text_.setCursorFromCoordinates(cmd.x - drawTextXOffset,
-									cmd.y + dim_.asc);
+				text_.setCursorFromCoordinates(cmd.x, cmd.y + dim_.asc);
 				text_.cursor.x(text_.cursor.x());
 				text_.cursor.x_fix(text_.cursor.x());
 			}
@@ -1391,7 +1389,6 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 				      mouse_button::state button)
 {
-	x -= drawTextXOffset;
 	int dummyx = x;
 	int dummyy = y + dim_.asc;
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(dummyx, dummyy);
@@ -1409,8 +1406,8 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		x = dim_.wid;
 	if (y < 0)
 		y = dim_.des;
-	inset_x = cx() - top_x + drawTextXOffset;
-	inset_y = cy() + drawTextYOffset;
+	inset_x = cx() - top_x;
+	inset_y = cy();
 	FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
 	inset->localDispatch(cmd);
 	if (!the_locking_inset)
@@ -1582,7 +1579,7 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 	}
 	if (ty + h > pain.paperHeight())
 		h = pain.paperHeight();
-	if (top_x + drawTextXOffset + w > pain.paperWidth())
+	if (top_x + w > pain.paperWidth())
 		w = pain.paperWidth();
 	pain.fillRectangle(start_x + 1, ty + 1, w - 3, h - 1, backgroundColor());
 }

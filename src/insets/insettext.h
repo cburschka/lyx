@@ -209,10 +209,6 @@ protected:
 	/// lock an inset inside this one
 	void lockInset(BufferView *, UpdatableInset *);
 	///
-	mutable int drawTextXOffset;
-	///
-	mutable int drawTextYOffset;
-	///
 	bool autoBreakRows;
 	///
 	DrawFrame drawFrame_;
