@@ -937,7 +937,7 @@ LColor::color LyXText::backgroundColor() const
 		return LColor::background;
 }
 
-void LyXText::setHeightOfRow(Row * row) const
+void LyXText::setHeightOfRow(Row * row)
 {
 	// get the maximum ascent and the maximum descent
 	int asc = 0;
@@ -1255,7 +1255,7 @@ void LyXText::setHeightOfRow(Row * row) const
 
 // Appends the implicit specified paragraph before the specified row,
 // start at the implicit given position
-void LyXText::appendParagraph(Row * row) const
+void LyXText::appendParagraph(Row * row)
 {
 	pos_type const last = row->par()->size();
 	bool done = false;
@@ -1307,7 +1307,7 @@ void LyXText::markChangeInDraw(Row * row, Row * prev)
 }
 
 
-void LyXText::breakAgain(Row * row) const
+void LyXText::breakAgain(Row * row)
 {
 	bool not_ready = true;
 
@@ -1501,7 +1501,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 
 
 // Just a macro to make some thing easier.
-void LyXText::redoParagraph() const
+void LyXText::redoParagraph()
 {
 	clearSelection();
 	redoParagraphs(cursor, cursor.par()->next());
@@ -1895,7 +1895,7 @@ void LyXText::prepareToPrint(Row * row, float & x,
 // realize, that you left an empty paragraph, they will delete it.
 // They also delete the corresponding row
 
-void LyXText::cursorRightOneWord() const
+void LyXText::cursorRightOneWord()
 {
 	// treat floats, HFills and Insets as words
 	LyXCursor tmpcursor = cursor;
@@ -1927,7 +1927,7 @@ void LyXText::cursorRightOneWord() const
 }
 
 
-void LyXText::cursorTab() const
+void LyXText::cursorTab()
 {
 	LyXCursor tmpcursor = cursor;
 	while (tmpcursor.pos() < tmpcursor.par()->size()
@@ -1947,7 +1947,7 @@ void LyXText::cursorTab() const
 
 // Skip initial whitespace at end of word and move cursor to *start*
 // of prior word, not to end of next prior word.
-void LyXText::cursorLeftOneWord()  const
+void LyXText::cursorLeftOneWord()
 {
 	LyXCursor tmpcursor = cursor;
 	cursorLeftOneWord(tmpcursor);
@@ -1955,7 +1955,7 @@ void LyXText::cursorLeftOneWord()  const
 }
 
 
-void LyXText::cursorLeftOneWord(LyXCursor & cur) const
+void LyXText::cursorLeftOneWord(LyXCursor & cur)
 {
 	// treat HFills, floats and Insets as words
 	cur = cursor;
@@ -1987,7 +1987,7 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur) const
 // Select current word. This depends on behaviour of
 // CursorLeftOneWord(), so it is patched as well.
 void LyXText::getWord(LyXCursor & from, LyXCursor & to,
-		      word_location const loc) const
+		      word_location const loc)
 {
 	// first put the cursor where we wana start to select the word
 	from = cursor;
@@ -2107,7 +2107,7 @@ void LyXText::rejectChange()
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
 WordLangTuple const
-LyXText::selectNextWordToSpellcheck(float & value) const
+LyXText::selectNextWordToSpellcheck(float & value)
 {
 	if (the_locking_inset) {
 		WordLangTuple word = the_locking_inset->selectNextWordToSpellcheck(bv(), value);

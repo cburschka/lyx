@@ -93,7 +93,7 @@ namespace {
 	// check if the given co-ordinates are inside an inset at the
 	// given cursor, if one exists. If so, the inset is returned,
 	// and the co-ordinates are made relative. Otherwise, 0 is returned.
-	Inset * checkInset(BufferView * bv, LyXText const & text,
+	Inset * checkInset(BufferView * bv, LyXText & text,
 		LyXCursor const & cur, int & x, int & y)
 	{
 		lyx::pos_type const pos = cur.pos();
@@ -142,7 +142,7 @@ namespace {
 } // anon namespace
 
 
-Inset * LyXText::checkInsetHit(int & x, int & y) const
+Inset * LyXText::checkInsetHit(int & x, int & y)
 {
 	int y_tmp = y + top_y();
 
@@ -170,7 +170,7 @@ Inset * LyXText::checkInsetHit(int & x, int & y) const
 
 
 bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
-			    string const & contents) const
+			    string const & contents)
 {
 	LyXCursor res = cursor;
 	Inset * inset;

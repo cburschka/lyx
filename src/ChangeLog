@@ -1,3 +1,10 @@
+2003-03-18  Alfredo Braunstein  <abraunst@libero.it>
+ 
+ 	* lyxtext.h: remove almost all mutable keywords
+ 	* text.C:
+ 	* text2.C:
+ 	* text3.C: remove const keywords accordingly
+
 2003-03-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph_funcs.C (TeXDeeper): reduce number of args, move into

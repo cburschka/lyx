@@ -76,22 +76,20 @@ public:
 
 	void init(BufferView *, bool reinit = false);
 	///
-	mutable int height;
+	int height;
 	///
-	mutable unsigned int width;
+	unsigned int width;
 	/// the current font settings
-	mutable LyXFont current_font;
+	LyXFont current_font;
 	/// the current font
-	mutable LyXFont real_current_font;
+	LyXFont real_current_font;
 private:
 	/** the first visible row on screen
-	 *  declared mutable because removeRow is const
 	 */
-	mutable Row * top_row_;
+	Row * top_row_;
 	/** the pixel offset with respect to this row of top_y
-	 *  declared mutable because removeRow is const
 	 */
-	mutable int top_row_offset_;
+	int top_row_offset_;
 public:
 	/// get the y coord. of the top of the screen (relative to doc start)
 	int top_y() const;
@@ -158,9 +156,9 @@ public:
 	  This function is needed after SetLayout and SetFont etc.
 	  */
 	void redoParagraphs(LyXCursor const & cursor,
-			    Paragraph const * end_par) const;
+			    Paragraph const * end_par);
 	///
-	void redoParagraph() const;
+	void redoParagraph();
 
 	///
 	void toggleFree(LyXFont const &, bool toggleall = false);
@@ -185,7 +183,7 @@ public:
 	void fullRebreak();
 
 	///
-	mutable Row * need_break_row;
+	Row * need_break_row;
 
 	/// clear any pending paints
 	void clearPaint();
@@ -232,7 +230,7 @@ private:
 	 * This must be set if the pending update is NEED_LITTLE_REFRESH.
 	 * It doesn't make any difference for NEED_MORE_REFRESH.
 	 */
-	mutable Row * refresh_row;
+	Row * refresh_row;
 
 	/// refresh status
 	text_status status_;
@@ -261,7 +259,7 @@ public:
 	    IMO it's stupid to have to allocate a dummy y all the time I need
 	    the first row
 	*/
-	Row * firstRow() { return firstrow; }
+	Row * firstRow() const { return firstrow; }
 
 	/** The cursor.
 	  Later this variable has to be removed. There should be now internal
@@ -272,7 +270,7 @@ public:
 	  Since the LyXText now has been moved from Buffer to BufferView
 	  it should not be absolutely needed to move the cursor...
 	  */
-	mutable LyXCursor cursor; // actual cursor position
+	LyXCursor cursor; // actual cursor position
 
 	/** The structure that keeps track of the selections set. */
 	struct Selection {
@@ -300,27 +298,27 @@ public:
 		bool mark_; // former mark_set
 
 	};
-	mutable Selection selection;
+	Selection selection;
 	// this is used to handle XSelection events in the right manner
-	mutable Selection xsel_cache;
+	Selection xsel_cache;
 
 	/// needed for the toggling (cursor position on last selection made)
-	mutable LyXCursor last_sel_cursor;
+	LyXCursor last_sel_cursor;
 	/// needed for toggling the selection in screen.C
-	mutable LyXCursor toggle_cursor;
+	LyXCursor toggle_cursor;
 	/// needed for toggling the selection in screen.C
-	mutable LyXCursor toggle_end_cursor;
+	LyXCursor toggle_end_cursor;
 
 	/// need the selection cursor:
 	void setSelection();
 	///
-	void clearSelection() const;
+	void clearSelection();
 	///
 	string const selectionAsString(Buffer const *, bool label) const;
 
 	/// select the word we need depending on word_location
 	void getWord(LyXCursor & from, LyXCursor & to,
-		     word_location const) const;
+		     word_location const);
 	/// just selects the word the cursor is in
 	void selectWord(word_location const);
 	/// returns the inset at cursor (if it exists), 0 otherwise
@@ -337,25 +335,25 @@ public:
 	 to the beginning of this word.
 	 With SelectSelectedWord can this be highlighted really
 	 */
-	WordLangTuple const selectNextWordToSpellcheck(float & value) const;
+	WordLangTuple const selectNextWordToSpellcheck(float & value);
 	///
 	void selectSelectedWord();
 	/// returns true if par was empty and was removed
 	bool setCursor(Paragraph * par,
 		       lyx::pos_type pos,
 		       bool setfont = true,
-		       bool boundary = false) const;
+		       bool boundary = false);
 	///
 	void setCursor(LyXCursor &, Paragraph * par,
 		       lyx::pos_type pos,
-		       bool boundary = false) const;
+		       bool boundary = false);
 	///
 	void setCursorIntern(Paragraph * par,
 			     lyx::pos_type pos,
 			     bool setfont = true,
-			     bool boundary = false) const;
+			     bool boundary = false);
 	///
-	void setCurrentFont() const;
+	void setCurrentFont();
 
 	///
 	bool isBoundary(Buffer const *, Paragraph * par,
@@ -366,40 +364,40 @@ public:
 			 LyXFont const & font) const;
 
 	///
-	void setCursorFromCoordinates(int x, int y) const;
+	void setCursorFromCoordinates(int x, int y);
 	///
 	void setCursorFromCoordinates(LyXCursor &,
-				      int x, int y) const;
+				      int x, int y);
 	///
-	void cursorUp(bool selecting = false) const;
+	void cursorUp(bool selecting = false);
 	///
-	void cursorDown(bool selecting = false) const;
+	void cursorDown(bool selecting = false);
 	///
-	void cursorLeft(bool internal = true) const;
+	void cursorLeft(bool internal = true);
 	///
-	void cursorRight(bool internal = true) const;
+	void cursorRight(bool internal = true);
 	///
-	void cursorLeftOneWord() const;
+	void cursorLeftOneWord();
 	///
-	void cursorRightOneWord() const;
+	void cursorRightOneWord();
 	///
-	void cursorUpParagraph() const;
+	void cursorUpParagraph();
 	///
-	void cursorDownParagraph() const;
+	void cursorDownParagraph();
 	///
-	void cursorHome() const;
+	void cursorHome();
 	///
-	void cursorEnd() const;
+	void cursorEnd();
 	///
 	void cursorPrevious();
 	///
 	void cursorNext();
 	///
-	void cursorTab() const;
+	void cursorTab();
 	///
-	void cursorTop() const;
+	void cursorTop();
 	///
-	void cursorBottom() const;
+	void cursorBottom();
 	///
 	void Delete();
 	///
@@ -468,7 +466,7 @@ public:
 
 	/// Find next inset of some specified type.
 	bool gotoNextInset(std::vector<Inset::Code> const & codes,
-			   string const & contents = string()) const;
+			   string const & contents = string());
 	///
 	void gotoInset(std::vector<Inset::Code> const & codes,
 		       bool same_content);
@@ -522,12 +520,12 @@ public:
 	}
 private:
 	///
-	mutable Row * firstrow;
+	Row * firstrow;
 	///
-	mutable Row * lastrow;
+	Row * lastrow;
 
 	///
-	void cursorLeftOneWord(LyXCursor &) const;
+	void cursorLeftOneWord(LyXCursor &);
 
 	///
 	float getCursorX(Row *, lyx::pos_type pos,
@@ -548,44 +546,44 @@ private:
 
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
-	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos) const;
+	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos);
 	/// removes the row and reset the touched counters
-	void removeRow(Row * row) const;
+	void removeRow(Row * row);
 
 	/// remove all following rows of the paragraph of the specified row.
-	void removeParagraph(Row * row) const;
+	void removeParagraph(Row * row);
 
 	/// insert the specified paragraph behind the specified row
-	void insertParagraph(Paragraph * par, Row * row) const;
+	void insertParagraph(Paragraph * par, Row * row);
 
 	/** appends  the implizit specified paragraph behind the specified row,
 	 * start at the implizit given position */
-	void appendParagraph(Row * row) const;
+	void appendParagraph(Row * row);
 
 	///
-	void breakAgain(Row * row) const;
+	void breakAgain(Row * row);
 	/// Calculate and set the height of the row
-	void setHeightOfRow(Row * row_ptr) const;
+	void setHeightOfRow(Row * row_ptr);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	void fixCursorAfterDelete(LyXCursor & cur,
-				  LyXCursor const & where) const;
+				  LyXCursor const & where);
 
 	/// delete double space (false) or empty paragraphs (true) around old_cursor
-	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const;
+	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor);
 
 public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
-	void updateCounters() const;
+	void updateCounters();
 	///
 	void update(bool changed = true);
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
 	 * If hit, the coordinates are changed relative to the inset.
 	 */
-	Inset * checkInsetHit(int & x, int & y) const;
+	Inset * checkInsetHit(int & x, int & y);
 
 	///
 	int singleWidth(Paragraph * par,
@@ -623,7 +621,7 @@ public:
 
 private:
 	///
-	void setCounter(Buffer const *, Paragraph * par) const;
+	void setCounter(Buffer const *, Paragraph * par);
 	///
 	void deleteWordForward();
 	///

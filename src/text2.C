@@ -279,7 +279,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 // inserts a new row before the specified row, increments
 // the touched counters
 void LyXText::insertRow(Row * row, Paragraph * par,
-			pos_type pos) const
+			pos_type pos)
 {
 	Row * tmprow = new Row;
 	if (!row) {
@@ -308,7 +308,7 @@ void LyXText::insertRow(Row * row, Paragraph * par,
 
 
 // removes the row and reset the touched counters
-void LyXText::removeRow(Row * row) const
+void LyXText::removeRow(Row * row)
 {
 	Row * row_prev = row->previous();
 	if (row->next())
@@ -348,7 +348,7 @@ void LyXText::removeRow(Row * row) const
 
 
 // remove all following rows of the paragraph of the specified row.
-void LyXText::removeParagraph(Row * row) const
+void LyXText::removeParagraph(Row * row)
 {
 	Paragraph * tmppar = row->par();
 	row = row->next();
@@ -364,7 +364,7 @@ void LyXText::removeParagraph(Row * row) const
 
 // insert the specified paragraph behind the specified row
 void LyXText::insertParagraph(Paragraph * par,
-			      Row * row) const
+			      Row * row)
 {
 	// insert a new row, starting at position 0
 	insertRow(row, par, 0);
@@ -746,7 +746,7 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 // and the specified par
 // This function is needed after SetLayout and SetFont etc.
 void LyXText::redoParagraphs(LyXCursor const & cur,
-			     Paragraph const * endpar) const
+			     Paragraph const * endpar)
 {
 	Row * tmprow2;
 	Paragraph * tmppar = 0;
@@ -940,7 +940,7 @@ string const LyXText::selectionAsString(Buffer const * buffer,
 }
 
 
-void LyXText::clearSelection() const
+void LyXText::clearSelection()
 {
 	selection.set(false);
 	selection.mark(false);
@@ -951,13 +951,13 @@ void LyXText::clearSelection() const
 }
 
 
-void LyXText::cursorHome() const
+void LyXText::cursorHome()
 {
 	setCursor(cursor.par(), cursor.row()->pos());
 }
 
 
-void LyXText::cursorEnd() const
+void LyXText::cursorEnd()
 {
 	if (!cursor.row()->next()
 	    || cursor.row()->next()->par() != cursor.row()->par()) {
@@ -975,7 +975,7 @@ void LyXText::cursorEnd() const
 }
 
 
-void LyXText::cursorTop() const
+void LyXText::cursorTop()
 {
 	while (cursor.par()->previous())
 		cursor.par(cursor.par()->previous());
@@ -983,7 +983,7 @@ void LyXText::cursorTop() const
 }
 
 
-void LyXText::cursorBottom() const
+void LyXText::cursorBottom()
 {
 	while (cursor.par()->next())
 		cursor.par(cursor.par()->next());
@@ -1134,7 +1134,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 
 
 // set the counter of a paragraph. This includes the labels
-void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
+void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 {
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = par->layout();
@@ -1331,7 +1331,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 
 // Updates all counters. Paragraphs with changed label string will be rebroken
-void LyXText::updateCounters() const
+void LyXText::updateCounters()
 {
 	Row * row = firstrow;
 	Paragraph * par = row->par();
@@ -1723,7 +1723,7 @@ bool LyXText::updateInset(Inset * inset)
 
 bool LyXText::setCursor(Paragraph * par,
 			pos_type pos,
-			bool setfont, bool boundary) const
+			bool setfont, bool boundary)
 {
 	LyXCursor old_cursor = cursor;
 	setCursorIntern(par, pos, setfont, boundary);
@@ -1732,7 +1732,7 @@ bool LyXText::setCursor(Paragraph * par,
 
 
 void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
-			pos_type pos, bool boundary) const
+			pos_type pos, bool boundary)
 {
 	lyx::Assert(par);
 
@@ -1859,7 +1859,7 @@ float LyXText::getCursorX(Row * row,
 
 
 void LyXText::setCursorIntern(Paragraph * par,
-			      pos_type pos, bool setfont, bool boundary) const
+			      pos_type pos, bool setfont, bool boundary)
 {
 	InsetText * it = static_cast<InsetText *>(par->inInset());
 	if (it) {
@@ -1893,7 +1893,7 @@ void LyXText::setCursorIntern(Paragraph * par,
 }
 
 
-void LyXText::setCurrentFont() const
+void LyXText::setCurrentFont()
 {
 	pos_type pos = cursor.pos();
 	if (cursor.boundary() && pos > 0)
@@ -2042,7 +2042,7 @@ LyXText::getColumnNearX(Row * row, int & x,
 }
 
 
-void LyXText::setCursorFromCoordinates(int x, int y) const
+void LyXText::setCursorFromCoordinates(int x, int y)
 {
 	LyXCursor old_cursor = cursor;
 
@@ -2077,7 +2077,7 @@ namespace {
 
 
 void LyXText::setCursorFromCoordinates(LyXCursor & cur,
-				       int x, int y) const
+				       int x, int y)
 {
 	// Get the row first.
 
@@ -2105,7 +2105,7 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur,
 }
 
 
-void LyXText::cursorLeft(bool internal) const
+void LyXText::cursorLeft(bool internal)
 {
 	if (cursor.pos() > 0) {
 		bool boundary = cursor.boundary();
@@ -2120,7 +2120,7 @@ void LyXText::cursorLeft(bool internal) const
 }
 
 
-void LyXText::cursorRight(bool internal) const
+void LyXText::cursorRight(bool internal)
 {
 	if (!internal && cursor.boundary() &&
 	    !cursor.par()->isNewline(cursor.pos()))
@@ -2135,7 +2135,7 @@ void LyXText::cursorRight(bool internal) const
 }
 
 
-void LyXText::cursorUp(bool selecting) const
+void LyXText::cursorUp(bool selecting)
 {
 #if 1
 	int x = cursor.x_fix();
@@ -2158,7 +2158,7 @@ void LyXText::cursorUp(bool selecting) const
 }
 
 
-void LyXText::cursorDown(bool selecting) const
+void LyXText::cursorDown(bool selecting)
 {
 #if 1
 	int x = cursor.x_fix();
@@ -2183,7 +2183,7 @@ void LyXText::cursorDown(bool selecting) const
 }
 
 
-void LyXText::cursorUpParagraph() const
+void LyXText::cursorUpParagraph()
 {
 	if (cursor.pos() > 0) {
 		setCursor(cursor.par(), 0);
@@ -2194,7 +2194,7 @@ void LyXText::cursorUpParagraph() const
 }
 
 
-void LyXText::cursorDownParagraph() const
+void LyXText::cursorDownParagraph()
 {
 	if (cursor.par()->next()) {
 		setCursor(cursor.par()->next(), 0);
@@ -2206,7 +2206,7 @@ void LyXText::cursorDownParagraph() const
 // fix the cursor `cur' after a characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
 void LyXText::fixCursorAfterDelete(LyXCursor & cur,
-				   LyXCursor const & where) const
+				   LyXCursor const & where)
 {
 	// if cursor is not in the paragraph where the delete occured,
 	// do nothing
@@ -2228,7 +2228,7 @@ void LyXText::fixCursorAfterDelete(LyXCursor & cur,
 }
 
 
-bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
+bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 {
 	// Would be wrong to delete anything if we have a selection.
 	if (selection.set())
