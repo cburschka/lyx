@@ -31,7 +31,11 @@ MathInset * MathFontInset::clone() const
 
 MathInset::mode_type MathFontInset::currentMode() const
 {
-	return key_->extra == "mathmode" ? MATH_MODE : TEXT_MODE;
+	if (key_->extra == "mathmode")
+		return MATH_MODE;
+	if (key_->extra == "textmode")
+		return TEXT_MODE;
+	return UNDECIDED_MODE;
 }
 
 

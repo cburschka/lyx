@@ -60,7 +60,7 @@ MathScriptInset * MathScriptInset::asScriptInset()
 bool MathScriptInset::idxFirst(idx_type & idx, pos_type & pos) const
 {
 	idx = 2;
-	pos = nuc().size();
+	pos = 0;
 	return true;
 }
 
@@ -202,7 +202,7 @@ void MathScriptInset::metrics(MathMetricsInfo & mi) const
 	}
 	dim_.a = dy1() + (hasUp() ? up().ascent() : 0);
 	dim_.d = dy0() + (hasDown() ? down().descent() : 0);
-	metricsMarkers();
+	metricsMarkers2();
 }
 
 
@@ -217,7 +217,7 @@ void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
 		up().draw(pi, x + dx1(), y - dy1());
 	if (hasDown())
 		down().draw(pi, x + dx0(), y + dy0());
-	drawMarkers(pi, x, y);
+	drawMarkers2(pi, x, y);
 }
 
 
@@ -460,6 +460,7 @@ void MathScriptInset::octavize(OctaveStream & os) const
 
 void MathScriptInset::infoize(std::ostream & os) const
 {
+	os << "Scripts";
 	if (limits_)
-		os << (limits_ == 1 ? "Displayed limits" : "Inlined limits");
+		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
 }

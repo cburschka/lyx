@@ -189,8 +189,6 @@ bool MathCursor::inNucleus() const
 
 bool MathCursor::posLeft()
 {
-	if (inNucleus())
-		return false;
 	if (pos() == 0)
 		return false;
 	--pos();
@@ -454,6 +452,7 @@ void MathCursor::backspace()
 		return;
 	}
 
+/*
 	if (prevAtom()->asScriptInset()) {
 		// simply enter nucleus
 		left();
@@ -465,6 +464,7 @@ void MathCursor::backspace()
 		if (pos() == 1) {
 		}
 	}
+*/
 
 	--pos();
 	plainErase();
@@ -493,6 +493,7 @@ void MathCursor::erase()
 		return;
 	}
 
+/*
 	// if we are standing in front of a script inset, grab item before us and
 	// move it into nucleus
 	// and remove first thing.
@@ -513,6 +514,7 @@ void MathCursor::erase()
 		}
 		return;
 	}
+*/
 
 	plainErase();
 }
