@@ -388,10 +388,10 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::getCursorPos(CursorSlice const & cur, int & x, int & y) const
+void InsetText::getCursorPos(LCursor const & cur, int & x, int & y) const
 {
-	x = text_.cursorX(cur);
-	y = text_.cursorY(cur);
+	x = text_.cursorX(cur.top());
+	y = text_.cursorY(cur.top());
 }
 
 

@@ -22,9 +22,9 @@ public:
 	///
 	MathTextInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	/// get cursor position
-	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
+	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 	/// this stores metrics information in cache_
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics

@@ -106,7 +106,7 @@ public:
 	/// do we cover screen position x/y?
 	virtual bool covers(int x, int y) const;
 	/// get the screen positions of the cursor (see note in cursor.C)
-	virtual void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
+	virtual void getCursorPos(LCursor const & cur, int & x, int & y) const;
 
 	/// is this an inset that can be moved into?
 	virtual bool isActive() const { return nargs() > 0; }

@@ -86,13 +86,12 @@ MathArray const & MathNestInset::cell(idx_type i) const
 }
 
 
-void MathNestInset::getCursorPos(CursorSlice const & cur,
-	int & x, int & y) const
+void MathNestInset::getCursorPos(LCursor const & cur, int & x, int & y) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	MathArray const & ar = cur.cell();
 	x = ar.xo() + ar.pos2x(cur.pos());
-	y = ar.yo();
+	y = ar.yo() + cur.bv().top_y();
 	// move cursor visually into empty cells ("blue rectangles");
 	if (cur.cell().empty())
 		x += 2;

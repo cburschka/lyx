@@ -17,6 +17,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "bufferparams.h"
+#include "cursor.h"
 #include "debug.h"
 #include "metricsinfo.h"
 #include "output_latex.h"
@@ -101,8 +102,8 @@ LyXText * MathMBoxInset::getText(int) const
 }
 
 
-void MathMBoxInset::getCursorPos(CursorSlice const & cur, int & x, int & y) const
+void MathMBoxInset::getCursorPos(LCursor const & cur, int & x, int & y) const
 {
-	x = text_.cursorX(cur);
-	y = text_.cursorY(cur);
+	x = text_.cursorX(cur.top());
+	y = text_.cursorY(cur.top());
 }

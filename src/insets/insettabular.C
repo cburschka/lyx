@@ -948,7 +948,7 @@ InsetText & InsetTabular::cell(int idx)
 }
 
 
-void InsetTabular::getCursorPos(CursorSlice const & cur, int & x, int & y) const
+void InsetTabular::getCursorPos(LCursor const & cur, int & x, int & y) const
 {
 	cell(cur.idx()).getCursorPos(cur, x, y);
 }

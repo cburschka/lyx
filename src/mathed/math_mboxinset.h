@@ -44,7 +44,7 @@ public:
 	///
 	LyXText * getText(int) const;
 	///
-	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
+	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 protected:
 	///
 	mutable LyXText text_;

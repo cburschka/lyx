@@ -90,7 +90,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
 	/// FIXME, document
-	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
+	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 	///
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,

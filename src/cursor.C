@@ -270,7 +270,7 @@ void LCursor::getPos(int & x, int & y) const
 	x = 0;
 	y = 0;
 	if (!empty())
-		inset().getCursorPos(back(), x, y);
+		inset().getCursorPos(*this, x, y);
 }
 
 
@@ -1085,7 +1085,8 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 		// avoid invalid nesting when selecting
 		if (!selection() || positionable(it, anchor_)) {
 			int xo = 0, yo = 0;
-			CursorSlice & cur = it.back();
+			LCursor cur = *this;
+			cur.setCursor(it, false);
 			cur.inset().getCursorPos(cur, xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
@@ -1118,7 +1119,8 @@ void LCursor::bruteFind2(int x, int y)
 	et.back().pos() = et.back().asMathInset()->cell(et.back().idx()).size();
 	for (int i = 0; ; ++i) {
 		int xo, yo;
-		CursorSlice & cur = it.back();
+		LCursor cur = *this;
+		cur.setCursor(it, false);
 		cur.inset().getCursorPos(cur, xo, yo);
 		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 		// '<=' in order to take the last possible position

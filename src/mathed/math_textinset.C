@@ -13,7 +13,7 @@
 #include "math_textinset.h"
 #include "math_data.h"
 
-#include "cursor_slice.h"
+#include "cursor.h"
 #include "debug.h"
 #include "metricsinfo.h"
 
@@ -42,9 +42,9 @@ MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 }
 
 
-void MathTextInset::getCursorPos(CursorSlice const & cur, int & x, int & y) const
+void MathTextInset::getCursorPos(LCursor const & cur, int & x, int & y) const
 {
-	CursorSlice c = cur;
+	LCursor c = cur;
 	c.idx() = pos2row(cur.pos());
 	c.pos() -= cache_.cellinfo_[c.idx()].begin_;
 	cache_.getCursorPos(c, x, y);
