@@ -172,10 +172,12 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 
 	clear(false);
 
+#warning John, look here. Doesnt make much sense.
 	if (buf.params().tracking_changes)
 		paragraphs.begin()->trackChanges();
 
 	// delete the initial paragraph
+	Paragraph oldpar = *paragraphs.begin();
 	paragraphs.clear();
 	ParagraphList::iterator pit = paragraphs.begin();
 
@@ -206,6 +208,11 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 		lex.printError("Missing \\end_inset at this point. "
 					   "Read: `$$Token'");
 	}
+
+	// sanity check
+	// ensure we have at least one par.
+	if (paragraphs.empty())
+		paragraphs.push_back(oldpar);
 }
 
 

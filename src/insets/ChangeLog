@@ -1,3 +1,8 @@
+2003-10-02  André Pönitz  <poenitz@gmx.net>
+
+	* insettext.C (read): make sure there is at least one par
+	  in the text after reading.
+
 2003-10-01  José Matos  <jamatos@lyx.org>
 
 	* insetbranch.C (linuxdoc, docbook): minor fix.
@@ -307,9 +312,9 @@
 
 2003-08-28  Angus Leeming  <leeming@lyx.org>
 
-        * insetgraphics.C (prepareFile): prepend "convertDefault.sh" with
-        "sh ", enabling the conversion to be carried out even if the script
-        is not executable.
+	* insetgraphics.C (prepareFile): prepend "convertDefault.sh" with
+	"sh ", enabling the conversion to be carried out even if the script
+	is not executable.
 
 2003-08-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
