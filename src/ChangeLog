@@ -1,3 +1,16 @@
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix toggling of collapsable insets with the mouse (bug 1558)
+	
+	* lyxfunc.C (dispatch): adapt to LCursor changes
+
+	* BufferView_pimpl.C (workAreaDispatch): adapt to LCursor changes;
+	make sure that dispatch is not invoked twice
+
+	* cursor.C (needsUpdate): new method
+	(dispatch): return void
+	(result): new method, to access the DispatchResult of the cursor.
+
 2004-08-13  José Matos  <jamatos@lyx.org>
 
 	* tabular.C (docbook): close empty tags in XML. Fix bug 1147.
@@ -12,7 +25,8 @@
 2004-08-12  André Pönitz  <poenitz@gmx.net>
 
 	* text3.C: take out the 'cursor right' form insertInset and only
-   do it in those places when it is really needed. Fixes crash on C-m...
+	do it in those places when it is really needed. Fixes crash on
+	C-m...
 
 2004-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

@@ -84,11 +84,11 @@ void LCursor::setCursor(DocIterator const & cur, bool sel)
 }
 
 
-DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
+void LCursor::dispatch(FuncRequest const & cmd0)
 {
 	lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	if (empty())
-		return DispatchResult();
+		return;
 
 	FuncRequest cmd = cmd0;
 	LCursor safe = *this;
@@ -115,6 +115,11 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		operator=(safe);
 		disp_.dispatched(false);
 	}
+}
+
+
+DispatchResult LCursor::result() const
+{
 	return disp_;
 }
 
@@ -1123,7 +1128,15 @@ void LCursor::dispatched()
 }
 
 
+void LCursor::needsUpdate()
+{
+	disp_.update(true);
+}
+
+
 void LCursor::noUpdate()
 {
 	disp_.update(false);
 }
+
+

@@ -245,11 +245,6 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 	cur.push(*this);
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status_ == Collapsed) {
-		setStatus(Open);
-		// We are not calling editXY() because the row cache of the
-		// inset might be invalid. 'Entering from the left' should be
-		// ok, though.
-		InsetText::edit(cur, true);
 		return this;
 	}
 	return InsetText::editXY(cur, x, y);
@@ -258,14 +253,17 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 
 void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
-	//	<< "  button y: " << button_dim.y2 << endl;
+// 	lyxerr << "InsetCollapsable::priv_dispatch (begin): cmd: " << cmd
+// 	       << "  button y: " << button_dim.y2 
+// 	       << "  coll/inline/open: " << status_ << endl;
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 		if (status_ == Inlined)
 			InsetText::priv_dispatch(cur, cmd);
 		else if (status_ == Open && !hitButton(cmd))
 			InsetText::priv_dispatch(cur, cmd);
+		else 
+		    cur.noUpdate();
 		break;
 
 	case LFUN_MOUSE_MOTION:
@@ -287,15 +285,15 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 			setStatus(Open);
 			edit(cur, true);
+			cur.bv().cursor() = cur;
 			break;
 
 		case Open: {
-			FuncRequest cmd1 = cmd;
-			if (hitButton(cmd1)) {
+			if (hitButton(cmd)) {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 				setStatus(Collapsed);
-				cur.undispatched();
-				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+				leaveInset(cur, *this);
+				cur.bv().cursor() = cur;
 			} else {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
 				InsetText::priv_dispatch(cur, cmd);

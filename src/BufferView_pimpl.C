@@ -883,18 +883,17 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// via the temp cursor. If the inset wishes to change the real
 	// cursor it has to do so explicitly by using
 	//  cur.bv().cursor() = cur;  (or similar)'
-	DispatchResult res;
 	if (inset)
 		inset->dispatch(cur, cmd);
 
 	// Now dispatch to the temporary cursor. If the real cursor should
 	// be modified, the inset's dispatch has to do so explicitly.
-	if (!res.dispatched())
-		res = cur.dispatch(cmd);
+	if (!cur.result().dispatched())
+		cur.dispatch(cmd);
 
-	if (res.dispatched()) {
+	if (cur.result().dispatched()) {
 		// Redraw if requested or necessary.
-		if (fitCursor() || res.update())
+		if (fitCursor() || cur.result().update())
 			update();
 	}
 

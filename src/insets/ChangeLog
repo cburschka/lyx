@@ -1,3 +1,14 @@
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetcollapsable.C (priv_dispatch): on a mouse press event, do
+	not ask for an update if we did nothing; on a mouse release, make
+	sure that the cursor is  moved to the right position; on a mouse
+	release, exit from the inset instead of invoking a
+	LFUN_FINISHED_RIGHT. 
+
+	* insetbase.C (dispatch): before invoking dispatch, set cursor
+	result to dispatch=update=true.
+
 2004-08-13  José Matos  <jamatos@lyx.org>
 
 	* insetgraphics.C (docbook): close empty tags in XML. Fix bug 1147.

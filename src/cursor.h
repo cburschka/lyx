@@ -38,7 +38,9 @@ public:
 	explicit LCursor(BufferView & bv);
 
 	/// dispatch from innermost inset upwards
-	DispatchResult dispatch(FuncRequest const & cmd);
+	void dispatch(FuncRequest const & cmd);
+	/// get the resut of the last dispatch
+	DispatchResult result() const;
 	/// are we willing to handle this event?
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 
@@ -145,6 +147,8 @@ public:
 	void undispatched();
 	/// the event was already dispatched
 	void dispatched();
+	/// call update() when done
+	void needsUpdate();
 	/// don't call update() when done
 	void noUpdate();
 

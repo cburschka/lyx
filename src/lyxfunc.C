@@ -1422,9 +1422,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		default: {
 			update = false;
-			DispatchResult res = view()->cursor().dispatch(cmd);
-			if (res.dispatched())
-				update |= res.update();
+			view()->cursor().dispatch(cmd);
+			if (view()->cursor().result().dispatched())
+				update |= view()->cursor().result().update();
 			else
 				update |= view()->dispatch(cmd);
 

@@ -113,6 +113,8 @@ InsetBase::Code InsetBase::translate(std::string const & name)
 
 void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
 {
+	cur.needsUpdate();
+	cur.dispatched();
 	priv_dispatch(cur, cmd);
 }
 
