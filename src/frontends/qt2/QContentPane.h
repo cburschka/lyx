@@ -52,7 +52,7 @@ public:
 	QPixmap * pixmap() const { return pixmap_.get(); }
 	/// track scrollbar signals?
 	void trackScrollbar(bool track_on);
-	
+
 protected:
 	/// repaint part of the widget
 	void paintEvent(QPaintEvent * e);

@@ -76,7 +76,7 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 
 QContentPane::QContentPane(QWorkArea * parent)
 	: QWidget(parent, "content_pane", WRepaintNoErase),
-	  wa_(parent), track_scrollbar_(true)
+	  track_scrollbar_(true), wa_(parent)
 {
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
