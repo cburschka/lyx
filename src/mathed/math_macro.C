@@ -202,6 +202,22 @@ void MathMacro::maplize(MapleStream & os) const
 }
 
 
+void MathMacro::mathmlize(MathMLStream & os) const
+{
+	expanded_ = tmplate_->xcell(0);
+	expanded_.data_.substitute(*this);
+	::mathmlize(expanded_.data_, os);
+}
+
+
+void MathMacro::octavize(OctaveStream & os) const
+{
+	expanded_ = tmplate_->xcell(0);
+	expanded_.data_.substitute(*this);
+	::octavize(expanded_.data_, os);
+}
+
+
 void MathMacro::normalize(NormalStream & os) const
 {
 	os << "[macro " << name() << " ";

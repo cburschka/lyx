@@ -69,6 +69,10 @@ public:
 	///
 	void maplize(MapleStream &) const;
 	///
+	void mathmlize(MathMLStream &) const;
+	///
+	void octavize(OctaveStream &) const;
+	///
 	void write(WriteStream & os) const;
 
 private:
