@@ -46,7 +46,7 @@ void linuxdocParagraphs(Buffer const & buf,
 	for (; pit != pend; ++pit) {
 		LyXLayout_ptr const & style = pit->layout();
 		// treat <toc> as a special case for compatibility with old code
-		if (pit->isInset(0)) {
+		if (!pit->empty() && pit->isInset(0)) {
 			InsetBase const * inset = pit->getInset(0);
 			if (inset->lyxCode() == InsetOld::TOC_CODE) {
 				string const temp = "toc";

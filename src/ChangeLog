@@ -1,3 +1,8 @@
+2004-06-01  Angus Leeming  <leeming@lyx.org>
+
+	* output_linuxdoc.C (linuxdocParagraphs): Check that the paragraph
+	contains data before calling isInset(0). (Bug 1513.)
+
 2004-06-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* exporter.C (checkOverwrite): new method
