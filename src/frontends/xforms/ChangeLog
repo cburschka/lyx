@@ -1,3 +1,8 @@
+2004-12-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormMathsBitmap.C: Do not split strings with blank into two
+	separate dispatches (bug 1214)
+
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.C: remove redundant "using lyx::support::GetEnvPath;"
