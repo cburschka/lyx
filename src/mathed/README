@@ -1,0 +1,37 @@
+
+Inset 'Xyz' is implemented by 'MathXyzInset' in 'math_xyzinset.[hC]'
+
+
+Inset hierarchy:
+                                   
+                                   MathInset   
+                                (abstract base)
+
+                         /            |             \
+
+              Dim                  Char                   MacroArg
+         (thing that need       (for things formerly 
+          the width_/ascent_     known as characters) 
+          /descent_ cache)
+        
+          /             \
+
+       Nest              Dots  Func  Space  Symbol
+  (for thing with      
+   nested content)     
+
+        |         \
+
+      Grid        Decoration   Delim   Frac  Macro  Root  Script  Sqrt
+
+      /   \
+
+ Array     "Matrix"
+         (base for eqnarray/align/...)
+
+
+
+There are only two "real LyXInsets" in here:
+
+Formula       - containing a pointer to a  MathMatrixInset (a misnomer...)
+FormulaMacro  - containing a pointer to a  MathMacroTemplate
