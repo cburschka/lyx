@@ -35,6 +35,7 @@ DispatchResult InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 DispatchResult InsetBase::priv_dispatch(LCursor &, FuncRequest const &)
 {
+	lyxerr << "InsetBase::priv_dispatch" << std::endl;
 	return DispatchResult(false);
 }
 
@@ -45,10 +46,10 @@ void InsetBase::edit(LCursor &, bool)
 }
 
 
-void InsetBase::edit(LCursor & cur, int, int)
+InsetBase * InsetBase::editXY(LCursor & cur, int, int)
 {
 	lyxerr << "InsetBase: edit xy" << std::endl;
-	edit(cur, true);
+	return this;
 }
 
 

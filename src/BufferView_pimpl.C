@@ -474,13 +474,14 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const first = top_y() + height;
 	int const last = top_y() + workarea().workHeight() - height;
 
+	bv_->cursor().reset();
 	LyXText * text = bv_->text();
 	CursorSlice & cur = bv_->cursor().cursor_.front();
 	int y = text->cursorY(cur);
 	if (y < first)
-		text->setCursorFromCoordinates(cur, 0, first);
+		text->setCursorFromCoordinates(bv_->cursor(), 0, first);
 	else if (y > last)
-		text->setCursorFromCoordinates(cur, 0, last);
+		text->setCursorFromCoordinates(bv_->cursor(), 0, last);
 
 	owner_->updateLayoutChoice();
 }
@@ -922,18 +923,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		// surrounding LyXText will handle this event.
 
 		// built temporary path to inset
-		LyXText * text = bv_->text();
-		InsetBase * const inset_hit = text->checkInsetHit(cmd.x, cmd.y);
-		if (inset_hit) 
-			inset_hit->edit(cur, cmd.x, cmd.y);
-		else
-			text->setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
+		InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
+		lyxerr << "hit inset at tip: " << inset << endl;
 		lyxerr << "created temp cursor: " << cur << endl;
 
 		// Try to dispatch to an non-editable inset near this position
 		DispatchResult res;
-		InsetBase * inset = cur.nextInset();
-		lyxerr << "next inset: " << inset << endl;
 		if (inset)
 			res = inset->dispatch(cur, cmd);
 
@@ -1027,7 +1022,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_INSERT_LABEL: {
 		// Try and generate a valid label
 		string const contents = cmd.argument.empty() ?
-			getPossibleLabel(*bv_) : cmd.argument;
+			cur.getPossibleLabel() : cmd.argument;
 		InsetCommandParams icp("label", contents);
 		string data = InsetCommandMailer::params2string("label", icp);
 		owner_->getDialogs().show("label", data, 0);

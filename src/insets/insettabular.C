@@ -461,19 +461,18 @@ void InsetTabular::edit(LCursor & cur, bool left)
 }
 
 
-void InsetTabular::edit(LCursor & cur, int x, int y)
+InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 {
 	lyxerr << "InsetTabular::edit: " << this << " first cell "
 		<< &tabular.cell_info[0][0].inset << endl;
-
-	finishUndo();
-	setPos(cur, x, y);
 	clearSelection();
-	finishUndo();
-	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 	cur.push(this);
+	setPos(cur, x, y);
+	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 	//if (x > xx)
 	//	activateCellInset(bv, cell, x - xx, y - cursory_);
+#warning wrong!
+	return this;
 }
 
 
@@ -977,7 +976,7 @@ void InsetTabular::setPos(LCursor & cur, int x, int y) const
 	//lyxerr << "# InsetTabular::setPos()  cursor: " << cur << endl;
 	int const cell = getCell(x + xo_, y + yo_);
 	InsetText const & inset = tabular.getCellInset(cell);
-	inset.text_.setCursorFromCoordinates(cur.current(), x, y);
+	inset.text_.setCursorFromCoordinates(cur, x, y);
 	cursory_ = 0;
 	int actcell = 0;
 	int actrow = 0;
@@ -1023,7 +1022,7 @@ int InsetTabular::getCellXPos(int cell) const
 
 void InsetTabular::resetPos(LCursor & cur) const
 {
-#if 0
+#if 1
 #ifdef WITH_WARNINGS
 #warning This should be fixed in the right manner (20011128 Jug)
 #endif
@@ -1033,7 +1032,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 
 	BufferView & bv = cur.bv();
 	int cell = 0;
-	int actcell = cur.cell();
+	int actcell = cur.idx();
 	int actcol = tabular.column_of_cell(actcell);
 	int actrow = 0;
 	cursory_ = 0;
@@ -1054,24 +1053,24 @@ void InsetTabular::resetPos(LCursor & cur) const
 	cursorx_ = new_x;
 //    cursor.x(getCellXPos(actcell) + offset);
 	if (actcol < tabular.columns() - 1 && scroll(false) &&
-		tabular.getWidthOfTabular() < bv->workWidth()-20)
+		tabular.getWidthOfTabular() < bv.workWidth()-20)
 	{
 		scroll(bv, 0.0F);
 		updateLocal(cur);
 	} else if (cursorx_ - offset > 20 &&
 		   cursorx_ - offset + tabular.getWidthOfColumn(actcell)
 		   > bv.workWidth() - 20) {
-		scroll(&bv, - tabular.getWidthOfColumn(actcell) - 20);
+		scroll(bv, - tabular.getWidthOfColumn(actcell) - 20);
 		updateLocal(cur);
 	} else if (cursorx_ - offset < 20) {
-		scroll(&bv, 20 - cursorx_ + offset);
+		scroll(bv, 20 - cursorx_ + offset);
 		updateLocal(cur);
 	} else if (scroll() && xo_ > 20 &&
-		   xo_ + tabular.getWidthOfTabular() > bv->workWidth() - 20) {
-		scroll(&bv, old_x - cursorx_);
+		   xo_ + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
+		scroll(bv, old_x - cursorx_);
 		updateLocal(cur);
 	}
-	InsetTabularMailer(*this).updateDialog(bv);
+	InsetTabularMailer(*this).updateDialog(&bv);
 	in_reset_pos = 0;
 #endif
 }
@@ -1595,16 +1594,16 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 
 void InsetTabular::activateCellInset(LCursor & cur, int cell, int x, int y)
 {
-	tabular.getCellInset(cell).edit(cur, x, y);
 	cur.idx() = cell;
+	tabular.getCellInset(cell).editXY(cur, x, y);
 	updateLocal(cur);
 }
 
 
 void InsetTabular::activateCellInset(LCursor & cur, int cell, bool behind)
 {
-	tabular.getCellInset(cell).edit(cur, behind);
 	cur.idx() = cell;
+	tabular.getCellInset(cell).edit(cur, behind);
 	updateLocal(cur);
 }
 

@@ -73,7 +73,7 @@ public:
 	/// cursor enters
 	virtual void edit(LCursor & cur, bool left);
 	/// cursor enters
-	virtual void edit(LCursor & cur, int x, int y);
+	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;

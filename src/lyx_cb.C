@@ -432,49 +432,6 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 }
 
 
-string const getPossibleLabel(BufferView const & bv)
-{
-	ParagraphList::iterator pit = bv.getLyXText()->cursorPar();
-	ParagraphList & plist = bv.getLyXText()->paragraphs();
-
-	LyXLayout_ptr layout = pit->layout();
-
-	if (layout->latextype == LATEX_PARAGRAPH && pit != plist.begin()) {
-		ParagraphList::iterator pit2 = boost::prior(pit);
-
-		LyXLayout_ptr const & layout2 = pit2->layout();
-
-		if (layout2->latextype != LATEX_PARAGRAPH) {
-			pit = pit2;
-			layout = layout2;
-		}
-	}
-
-	string text = layout->latexname().substr(0, 3);
-	if (layout->latexname() == "theorem")
-		text = "thm"; // Create a correct prefix for prettyref
-
-	text += ':';
-	if (layout->latextype == LATEX_PARAGRAPH ||
-	    lyxrc.label_init_length < 0)
-		text.erase();
-
-	string par_text = pit->asString(*bv.buffer(), false);
-	for (int i = 0; i < lyxrc.label_init_length; ++i) {
-		if (par_text.empty())
-			break;
-		string head;
-		par_text = split(par_text, head, ' ');
-		// Is it legal to use spaces in labels ?
-		if (i > 0)
-			text += '-';
-		text += head;
-	}
-
-	return text;
-}
-
-
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
 void Reconfigure(BufferView * bv)

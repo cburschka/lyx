@@ -147,9 +147,9 @@ public:
 	/// set the owning buffer
 	void buffer(Buffer * buf);
 	/// lock cell with given index
-	void edit(LCursor & cur, bool);
+	void edit(LCursor & cur, bool left);
 	///
-	void edit(LCursor & cur, int, int);
+	InsetBase * editXY(LCursor & cur, int x, int y);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
 
@@ -160,9 +160,7 @@ public:
 
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
 	void lfunMousePress(LCursor & cur, FuncRequest const & cmd);

@@ -142,11 +142,12 @@ public:
 
 	///
 	InsetExternalParams const & params() const;
+	///
 	void setParams(InsetExternalParams const &, Buffer const &);
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///
-	void edit(LCursor & cur, bool);
+	void edit(LCursor & cur, bool left);
 
 protected:
 	///

@@ -187,9 +187,9 @@ public:
 	///
 	void recUndo(par_type first) const;
 	///
-	void setCursorFromCoordinates(CursorSlice &, int x, int y);
+	void setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
-	void edit(LCursor & cur, int x, int y);
+	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
 	void cursorUp(LCursor & cur, bool selecting = false);
 	///
@@ -339,7 +339,9 @@ public:
 	bool isFirstRow(ParagraphList::iterator pit, Row const & row) const;
 
 	///
-	double spacing(Paragraph const &) const;
+	double spacing(Paragraph const & par) const;
+	/// make a suggestion for a label
+	std::string getPossibleLabel(LCursor & cur) const;
 
 	///
 	DispatchResult moveRight(LCursor & cur);
@@ -431,7 +433,9 @@ private:
 	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
 
 	/// delete double space (false) or empty paragraphs (true) around old_cursor
-	bool deleteEmptyParagraphMechanism(CursorSlice const & old_cursor);
+	bool deleteEmptyParagraphMechanism(
+		CursorSlice & cur,
+		CursorSlice const & old_cursor);
 
 	///
 	void setCounter(Buffer const &, ParagraphList::iterator pit);

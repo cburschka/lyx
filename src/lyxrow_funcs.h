@@ -18,12 +18,6 @@
 class Paragraph;
 class Row;
 
-int numberOfSeparators(Paragraph const & par, Row const & row);
-
-int numberOfHfills(Paragraph const & par, Row const & row);
-
-int numberOfLabelHfills(Paragraph const & par, Row const & row);
-
 bool hfillExpansion(Paragraph const & par, Row const & row,
 	lyx::pos_type pos);
 

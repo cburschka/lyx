@@ -993,7 +993,6 @@ void MathHullInset::insetUnlock(BufferView & bv)
 	if (bv.cursor().inMathed()) {
 		if (bv.cursor().inMacroMode())
 			bv.cursor().macroModeClose();
-		bv.cursor().releaseMathCursor();
 	}
 	if (bv.buffer())
 		generatePreview(*bv.buffer());

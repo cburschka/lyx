@@ -120,7 +120,7 @@ public:
 	///
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
 public:
-	/// pointer to an inset
+	/// pointer to 'owning' inset
 	InsetBase * inset_;
 	/// cell index of a position in this inset
 	idx_type idx_;

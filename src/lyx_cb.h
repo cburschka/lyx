@@ -35,7 +35,5 @@ void InsertAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
 std::string getContentsOfAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
-std::string const getPossibleLabel(BufferView const & bv);
-///
 void Reconfigure(BufferView * bv);
 #endif

@@ -744,7 +744,6 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		revealCodes(cur);
 		cur.bv().stuffClipboard(cur.grabSelection());
 	} else {
-		cur.releaseMathCursor();
 		if (remove_inset)
 			cur.bv().owner()->dispatch(FuncRequest(LFUN_DELETE));
 	}
@@ -767,7 +766,7 @@ void MathNestInset::edit(LCursor & cur, bool left)
 }
 
 
-void MathNestInset::edit(LCursor & cur, int x, int y)
+InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 {
 	int idx_min = 0;
 	int dist_min = 1000000;
@@ -787,8 +786,9 @@ void MathNestInset::edit(LCursor & cur, int x, int y)
 		// hit inside cell
 		for (pos_type i = 0, n = ar.size(); i < n; ++i)
 			if (ar[i]->covers(x, y))
-				ar[i].nucleus()->edit(cur, x, y);
+				return ar[i].nucleus()->editXY(cur, x, y);
 	}
+	return this;
 }
 
 

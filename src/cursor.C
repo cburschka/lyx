@@ -1810,13 +1810,6 @@ void LCursor::handleFont(string const & font)
 }
 
 
-void LCursor::releaseMathCursor()
-{
-	if (inMathed())
-		formula()->insetUnlock(bv());
-}
-
-
 bool LCursor::inMathed() const
 {
 	return formula();
@@ -1936,4 +1929,10 @@ void LCursor::replaceWord(string const & replacestring)
 void LCursor::update()
 {
 	bv().update();
+}
+
+
+string LCursor::getPossibleLabel()
+{
+	return inMathed() ? "eq:" : text()->getPossibleLabel(*this);
 }

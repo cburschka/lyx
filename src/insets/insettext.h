@@ -148,7 +148,7 @@ public:
 	///
 	void edit(LCursor & cur, bool left);
 	///
-	void edit(LCursor & cur, int x, int y);
+	InsetBase * editXY(LCursor & cur, int x, int y);
 
 	///
 	int numParagraphs() const { return 1; }

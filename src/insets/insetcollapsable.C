@@ -299,7 +299,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 }
 
 
-void InsetCollapsable::edit(LCursor & cur, int x, int y)
+InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
 	cur.push(this);
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
@@ -309,14 +309,14 @@ void InsetCollapsable::edit(LCursor & cur, int x, int y)
 #warning look here
 //we are not calling edit(x,y) because there are no coordinates in the
 //inset yet. I personally think it's ok. (ab)
-	} else {
-//		if (y <= yo() + inset.ascent() + button_dim.y2)
-//			y = yo();
-//		else
-//			y += inset.ascent() - height_collapsed();
-		
-		inset.edit(cur, x, y);
+		return this;
 	}
+
+//if (y <= yo() + inset.ascent() + button_dim.y2)
+//	y = yo();
+//else
+//	y += inset.ascent() - height_collapsed();
+	return inset.editXY(cur, x, y);
 }
 
 

@@ -426,7 +426,6 @@ public:
 	/// split font inset etc
 	void handleFont(std::string const & font);
 
-	void releaseMathCursor();
 	/// are we in mathed?
 	bool inMathed() const;
 	/// are we in texted?
@@ -436,6 +435,8 @@ public:
 	void message(std::string const & msg) const;
 	/// display an error message
 	void errorMessage(std::string const & msg) const;
+	///
+	std::string getPossibleLabel();
 
 private:
 	/// moves cursor index one cell to the left

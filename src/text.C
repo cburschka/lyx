@@ -60,11 +60,13 @@ using lyx::word_location;
 using lyx::support::bformat;
 using lyx::support::contains;
 using lyx::support::lowercase;
+using lyx::support::split;
 using lyx::support::uppercase;
 
 using std::advance;
 using std::distance;
 using std::max;
+using std::min;
 using std::endl;
 using std::string;
 
@@ -79,6 +81,19 @@ extern int const RIGHT_MARGIN = 10;
 
 namespace {
 
+int numberOfSeparators(Paragraph const & par, Row const & row)
+{
+	pos_type const first = max(row.pos(), par.beginOfBody());
+	pos_type const last = row.endpos() - 1;
+	int n = 0;
+	for (pos_type p = first; p < last; ++p) {
+		if (par.isSeparator(p))
+			++n;
+	}
+	return n;
+}
+
+
 unsigned int maxParagraphWidth(ParagraphList const & plist)
 {
 	unsigned int width = 0;
@@ -87,6 +102,49 @@ unsigned int maxParagraphWidth(ParagraphList const & plist)
 		for (; pit != end; ++pit)
 			width = std::max(width, pit->width);
 	return width;
+}
+
+
+int numberOfLabelHfills(Paragraph const & par, Row const & row)
+{
+	pos_type last = row.endpos() - 1;
+	pos_type first = row.pos();
+
+	// hfill *DO* count at the beginning of paragraphs!
+	if (first) {
+		while (first < last && par.isHfill(first))
+			++first;
+	}
+
+	last = min(last, par.beginOfBody());
+	int n = 0;
+	for (pos_type p = first; p < last; ++p) {
+		if (par.isHfill(p))
+			++n;
+	}
+	return n;
+}
+
+
+int numberOfHfills(Paragraph const & par, Row const & row)
+{
+	pos_type const last = row.endpos() - 1;
+	pos_type first = row.pos();
+
+	// hfill *DO* count at the beginning of paragraphs!
+	if (first) {
+		while (first < last && par.isHfill(first))
+			++first;
+	}
+
+	first = max(first, par.beginOfBody());
+
+	int n = 0;
+	for (pos_type p = first; p < last; ++p) {
+		if (par.isHfill(p))
+			++n;
+	}
+	return n;
 }
 
 } // namespace anon
@@ -1954,4 +2012,47 @@ string LyXText::currentState(LCursor & cur)
 		os << -1;
 #endif
 	return os.str();
+}
+
+
+string LyXText::getPossibleLabel(LCursor & cur) const
+{
+	ParagraphList & plist = paragraphs();
+	ParagraphList::iterator pit = getPar(cur.par());
+
+	LyXLayout_ptr layout = pit->layout();
+
+	if (layout->latextype == LATEX_PARAGRAPH && pit != plist.begin()) {
+		ParagraphList::iterator pit2 = boost::prior(pit);
+
+		LyXLayout_ptr const & layout2 = pit2->layout();
+
+		if (layout2->latextype != LATEX_PARAGRAPH) {
+			pit = pit2;
+			layout = layout2;
+		}
+	}
+
+	string text = layout->latexname().substr(0, 3);
+	if (layout->latexname() == "theorem")
+		text = "thm"; // Create a correct prefix for prettyref
+
+	text += ':';
+	if (layout->latextype == LATEX_PARAGRAPH ||
+	    lyxrc.label_init_length < 0)
+		text.erase();
+
+	string par_text = pit->asString(*cur.bv().buffer(), false);
+	for (int i = 0; i < lyxrc.label_init_length; ++i) {
+		if (par_text.empty())
+			break;
+		string head;
+		par_text = split(par_text, head, ' ');
+		// Is it legal to use spaces in labels ?
+		if (i > 0)
+			text += '-';
+		text += head;
+	}
+
+	return text;
 }

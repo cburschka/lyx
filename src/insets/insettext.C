@@ -298,11 +298,11 @@ void InsetText::edit(LCursor & cur, bool left)
 }
 
 
-void InsetText::edit(LCursor & cur, int x, int y)
+InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 {
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
-	text_.edit(cur, x, y);
+	return text_.editXY(cur, x, y);
 	//sanitizeEmptyText(cur.bv());
 	//updateLocal(cur);
 	//dispatch(cur, FuncRequest(LFUN_PARAGRAPH_UPDATE));

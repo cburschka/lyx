@@ -293,7 +293,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 
 	int x = cur.x_target();
 	int y = bv()->top_y();
-	setCursorFromCoordinates(cur.current(), x, y);
+	setCursorFromCoordinates(cur, x, y);
 
 	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
@@ -313,7 +313,7 @@ void LyXText::cursorNext(LCursor & cur)
 
 	int x = cur.x_target();
 	int y = bv()->top_y() + bv()->workHeight();
-	setCursorFromCoordinates(cur.current(), x, y);
+	setCursorFromCoordinates(cur, x, y);
 
 	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
@@ -910,7 +910,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			lyxerr << "SETXY: Could not parse coordinates in '"
 			       << cmd.argument << std::endl;
 		else
-			setCursorFromCoordinates(cur.current(), x, y);
+			setCursorFromCoordinates(cur, x, y);
 		break;
 	}
 
@@ -1092,7 +1092,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			break;
 		}
 		CursorSlice old = cur.current();
-		setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
+		setCursorFromCoordinates(cur, cmd.x, cmd.y);
 
 		// This is to allow jumping over large insets
 		// FIXME: shouldn't be top-text-specific
@@ -1147,8 +1147,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// Clear the selection
 		cur.clearSelection();
 
-		setCursorFromCoordinates(cur.current(), cmd.x - xo_,
-					 cmd.y - yo_);
+		setCursorFromCoordinates(cur, cmd.x - xo_, cmd.y - yo_);
 		cur.resetAnchor();
 		finishUndo();
 		cur.x_target() = cursorX(cur.current());
