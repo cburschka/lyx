@@ -8,7 +8,7 @@
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author John Levon
- * \author André Pöntiz
+ * \author André Pönitz
  * \author Allan Rae
  * \author Dekel Tsur
  *
