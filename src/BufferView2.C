@@ -391,57 +391,7 @@ void BufferView::pasteEnvironment()
 }
 
 
-void BufferView::copy()
-{
-	if (available()) {
-		getLyXText()->copySelection(this);
-		owner()->message(_("Copy"));
-	}
-}
-
-
-void BufferView::cut(bool realcut)
-{
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->cutSelection(this, true, realcut);
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		owner()->message(_("Cut"));
-	}
-}
-
-
-void BufferView::paste()
-{
-	if (!available())
-		return;
-
-	owner()->message(_("Paste"));
-
-	hideCursor();
-	// clear the selection
-	toggleSelection();
-	text->clearSelection();
-	update(text, BufferView::SELECT|BufferView::FITCUR);
-
-	// paste
-	text->pasteSelection(this);
-	// bug 393
-	text->clearSelection();
-	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-// why fake a selection only I think it should be a real one and not only
-// a painted one (Jug 20020318).
-#if 0
-	// clear the selection
-	toggleSelection();
-	text->clearSelection();
-	update(text, BufferView::SELECT|BufferView::FITCUR);
-#endif
-}
-
-
-/* these functions are for the spellchecker */
+// these functions are for the spellchecker
 WordLangTuple const BufferView::nextWord(float & value)
 {
 	if (!available()) {

@@ -130,12 +130,6 @@ public:
 	///
 	bool gotoLabel(string const & label);
 	///
-	void paste();
-	///
-	void cut(bool realcut = true);
-	///
-	void copy();
-	///
 	void pasteEnvironment();
 	///
 	void copyEnvironment();

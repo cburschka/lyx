@@ -485,7 +485,9 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// just comment out the line below...
 			bv->showCursor();
 		} else {
-			bv->cut(false);
+			update(bv, false);
+			cutSelection(bv, true);
+			update(bv);
 		}
 		bv->moveCursorUpdate(false);
 		bv->owner()->view_state_changed();
@@ -518,15 +520,16 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 					cursorLeft(bv);
 					Delete(bv);
 					selection.cursor = cursor;
-					update(bv);
 				}
 			} else {
 				Delete(bv);
 				selection.cursor = cursor;
-				update(bv);
 			}
-		} else
-			bv->cut(false);
+		} else {
+			update(bv, false);
+			cutSelection(bv, true);
+		}
+		update(bv);
 		break;
 
 
@@ -540,8 +543,11 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				// just comment out the line below...
 				bv->showCursor();
 			}
-		} else
-			bv->cut(false);
+		} else {
+			update(bv, false);
+			cutSelection(bv, true);
+			update(bv);
+		}
 		bv->owner()->view_state_changed();
 		bv->switchKeyMap();
 		break;
@@ -562,14 +568,15 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 					 cur.par()->params().spacing(),
 					 cur.par()->params().align(),
 					 cur.par()->params().labelWidthString(), 0);
-				update(bv);
 			} else {
 				backspace(bv);
 				selection.cursor = cur;
-				update(bv);
 			}
-		} else
-			bv->cut(false);
+		} else {
+			update(bv, false);
+			cutSelection(bv, true);
+		}
+		update(bv);
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
@@ -767,6 +774,33 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (inset_owner)
 			bv->updateInset(inset_owner, true);
 		update(bv);
+		break;
+
+	case LFUN_PASTE:
+		cmd.message(_("Paste"));
+		bv->hideCursor();
+		// clear the selection
+		bv->toggleSelection();
+		clearSelection();
+		update(bv, false);
+		pasteSelection(bv);
+		clearSelection(); // bug 393
+		update(bv, false);
+		update(bv);
+		bv->switchKeyMap();
+		break;
+
+	case LFUN_CUT:
+		bv->hideCursor();
+		update(bv, false);
+		cutSelection(bv, true);
+		update(bv);
+		cmd.message(_("Cut"));
+		break;
+
+	case LFUN_COPY:
+		copySelection(bv);
+		cmd.message(_("Copy"));
 		break;
 
 	case LFUN_BEGINNINGBUFSEL:

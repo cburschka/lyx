@@ -1442,19 +1442,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 	}
 
-	case LFUN_PASTE:
-		bv_->paste();
-		switchKeyMap();
-		break;
-
-	case LFUN_CUT:
-		bv_->cut();
-		break;
-
-	case LFUN_COPY:
-		bv_->copy();
-		break;
-
 	case LFUN_LAYOUT_COPY:
 		bv_->copyEnvironment();
 		break;

@@ -395,20 +395,9 @@ void MathCursor::insert(MathArray const & ar)
 	macroModeClose();
 	if (selection_)
 		eraseSelection();
-
 	array().insert(pos(), ar);
 	pos() += ar.size();
 }
-
-/*
-void MathCursor::paste(MathArray const & ar)
-{
-	Anchor_ = Cursor_;
-	selection_ = true;
-	array().insert(pos(), ar);
-	pos() += ar.size();
-}
-*/
 
 
 void MathCursor::paste(MathGridInset const & data)
