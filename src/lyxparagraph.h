@@ -223,6 +223,7 @@ private:
 
 public:
 	///
+	inline
 	size_type size() const;
 	///
 	void fitToSize();
@@ -329,6 +330,7 @@ public:
 	///
 	void SetLabelWidthString(string const & s);
 	///
+	inline
 	LyXTextClass::LayoutList::size_type GetLayout() const;
 	///
 	char GetAlign() const;
