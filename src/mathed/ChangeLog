@@ -1,5 +1,10 @@
+2005-04-04  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_splitinset.[Ch]: add draw method calling setPosCache,
+	to make split-type insets clickable.
 
 2005-04-04  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* math_amsarrayinset.C:
 	* math_casesinset.C:
 	* math_gridinset.C:

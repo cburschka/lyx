@@ -55,6 +55,13 @@ char MathSplitInset::defaultColAlign(col_type col)
 }
 
 
+void MathSplitInset::draw(PainterInfo & pi, int x, int y) const
+{
+	MathGridInset::draw(pi, x, y);
+	setPosCache(pi, x, y);
+}
+
+
 bool MathSplitInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {

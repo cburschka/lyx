@@ -21,6 +21,9 @@ public:
 	explicit MathSplitInset(std::string const & name);
 
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+
+	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 
