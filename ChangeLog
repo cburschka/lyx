@@ -1,3 +1,15 @@
+2000-11-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/lyx_rc.C: more detail for the printer program config
+	dialog.
+
+	* src/LColor.C: ert->latex text. LColor needs a big revamp
+	but will have to wait till after 1.1.6
+
+	* src/buffer.C: bring up a dialog if we load a document
+	with an un-installed text class, rather than just complain
+	on the console.
+                        
 2000-11-29  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/combox.[Ch] )(add, Show): workaround xforms bug when Show()ing

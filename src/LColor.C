@@ -85,7 +85,7 @@ LColor::LColor()
 	{ footnote, N_("footnote"), "footnote", "DarkRed", "footnote" },
 	{ footnotebg, N_("footnote background"), "footnotebg", "grey60", "footnotebg" },
 	{ footnoteframe, N_("footnote frame"), "footnoteframe", "IndianRed", "footnoteframe" },
-	{ ert, N_("ert"), "ert", "DarkRed", "ert" },
+	{ ert, N_("latex text"), "ert", "DarkRed", "ert" },
 	{ inset, N_("inset"), "inset", "black", "inset" },
 	{ insetbg, N_("inset background"), "insetbg", "grey60", "insetbg" },
 	{ insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },

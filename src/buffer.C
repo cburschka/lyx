@@ -485,7 +485,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		if (pp.first) {
 			params.textclass = pp.second;
 		} else {
-		  lex.printError("Unknown textclass `$$Token'");
+			WriteAlert(string(_("Textclass error")), 
+				string(_("The document uses an unknown textclass \"")) + 
+				lex.GetString() + string("\"."),
+				string(_("LyX will not be able to produce output correctly.")));
 			params.textclass = 0;
 		}
 		if (!textclasslist.Load(params.textclass)) {

@@ -1595,15 +1595,39 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_PRINTEVENPAGEFLAG:
+		str = N_("The option to print only even pages.");
+		break;
+
 	case RC_PRINTODDPAGEFLAG:
+		str = N_("The option to print only odd pages.");
+		break;
+
 	case RC_PRINTPAGERANGEFLAG:
+		str = N_("The option for specifying a comma-separated list of pages to print.");
+		break;
+
 	case RC_PRINTCOPIESFLAG:
+		str = N_("The option for specifying the number of copies to print.");
+		break;
+
 	case RC_PRINTCOLLCOPIESFLAG:
+		str = N_("The option for specifying whether the copies should be collated.");
+		break;
+
 	case RC_PRINTREVERSEFLAG:
+		str = N_("The option to reverse the order of the pages printed.");
+		break;
+
 	case RC_PRINTLANDSCAPEFLAG:
+		str = N_("The option to print out in landscape.");
+		break;
+
         case RC_PRINTPAPERFLAG:
+		str = N_("The option to specify paper type.");
+		break;
+
 	case RC_PRINTPAPERDIMENSIONFLAG:
-		str = N_("Look at the man page for your favorite print program to learn which options to use.");
+		str = N_("Option to specify the dimensions of the print paper.");
 		break;
 		
 	case RC_PRINTTOPRINTER:
