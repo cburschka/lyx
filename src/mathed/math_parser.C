@@ -320,7 +320,7 @@ Token const & Parser::getToken()
 
 void Parser::skipSpaces()
 {
-	while (nextToken().cat() == catSpace)
+	while (nextToken().cat() == catSpace || nextToken().cat() == catNewline)
 		getToken();
 }
 

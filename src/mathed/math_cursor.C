@@ -415,7 +415,7 @@ void MathCursor::paste(MathGridInset const & data)
 		// single cell/part of cell
 		paste(data.cell(0));
 	} else {
-		// mulitple cells
+		// multiple cells
 		idx_type idx; // index of upper left cell
 		MathGridInset * p = enclosingGrid(idx);
 		col_type const numcols = min(data.ncols(), p->ncols() - p->col(idx));
