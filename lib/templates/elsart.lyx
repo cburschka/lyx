@@ -1,0 +1,142 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass elsart
+\begin_preamble
+\usepackage{natbib}
+\usepackage{amssymb}
+\end_preamble
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Insert your Title Here
+\layout Author
+
+Author's name
+\layout Author Address
+
+Author's address
+\layout Author Email
+
+email@address
+\layout Author URL
+
+http://www.home.page
+\layout Abstract
+
+Text of abstract.
+\layout Keywords
+
+keyword1 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+sep
+\end_inset 
+
+ keyword2 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+sep
+\end_inset 
+
+ keyword3
+\layout Keywords
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+PACS
+\end_inset 
+
+ code1 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+sep
+\end_inset 
+
+ code2 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+sep
+\end_inset 
+
+ code3
+\layout Section
+
+First section
+\layout Standard
+
+See style options in the 
+\family sans 
+Document\SpecialChar ~
+Layout
+\family default 
+ popup (accessed from the 
+\family sans 
+Layout
+\family default 
+ menu).
+ See the elsart manual for style options, special macros, and the like
+\begin_inset LatexCommand \cite{mycitation}
+
+\end_inset 
+
+.
+\layout Bibliography
+\bibitem {mycitation}
+
+Author, 
+\begin_inset Quotes eld
+\end_inset 
+
+Title
+\begin_inset Quotes erd
+\end_inset 
+
+, Journal 
+\series bold 
+Volume
+\series default 
+, page--numbers (year).
+\the_end

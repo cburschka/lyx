@@ -1729,11 +1729,9 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 // Used for building the table of contents
 string const Paragraph::asString(Buffer const * buffer, bool label) const
 {
-	BufferParams const & bparams = buffer->params;
 	string s;
 	if (label && !params().labelString().empty())
 		s += params().labelString() + ' ';
-	string::size_type const len = s.size();
 
 	for (pos_type i = 0; i < size(); ++i) {
 		value_type c = getChar(i);

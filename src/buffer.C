@@ -2158,6 +2158,7 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 {
 	bool was_title = false;
 	bool already_title = false;
+	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	// if only_body
 	while (par != endpar) {
@@ -2174,10 +2175,24 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 					lyxerr <<"Error in latexParagraphs: You"
 						" should not mix title layouts"
 						" with normal ones." << endl;
-				} else
+				} else if (!was_title) {
 					was_title = true;
+					if (tclass.titletype() == TITLE_ENVIRONMENT) {
+						ofs << "\\begin{"
+						    << tclass.titlename()
+						    << "}\n";
+						texrow.newline();
+					}
+				}
 			} else if (was_title && !already_title) {
-				ofs << "\\maketitle\n";
+				if (tclass.titletype() == TITLE_ENVIRONMENT) {
+					ofs << "\\end{" << tclass.titlename()
+					    << "}\n";
+				}
+				else {
+					ofs << "\\" << tclass.titlename()
+					    << "\n";
+				}
 				texrow.newline();
 				already_title = true;
 				was_title = false;
@@ -2196,7 +2211,14 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 	}
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
-		ofs << "\\maketitle\n";
+		if (tclass.titletype() == TITLE_ENVIRONMENT) {
+			ofs << "\\end{" << tclass.titlename()
+			    << "}\n";
+		}
+		else {
+			ofs << "\\" << tclass.titlename()
+			    << "\n";
+				}
 		texrow.newline();
 	}
 }

@@ -51,6 +51,8 @@ public:
 	///
 	void readOutputType(LyXLex &);
 	///
+	void readTitleType(LyXLex &);
+	///
 	void readMaxCounter(LyXLex &);
 	///
 	void readClassOptions(LyXLex &);
@@ -139,6 +141,12 @@ public:
 	string const & rightmargin() const;
 	///
 	int maxcounter() const;
+
+	/// The type of command used to produce a title
+	LYX_TITLE_LATEX_TYPES titletype() const;
+	/// The name of the title command
+	string const & titlename() const;
+
 	///
 	int size() const;
 private:
@@ -189,6 +197,11 @@ private:
 	string rightmargin_;
 	/// highest header level used in this layout.
 	int maxcounter_; // add approp. signedness
+
+	/// The type of command used to produce a title
+	LYX_TITLE_LATEX_TYPES titletype_;
+	/// The name of the title command
+	string titlename_;
 
 	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;
