@@ -150,7 +150,7 @@ public:
 	    proof environment */
 	int getEndLabel(BufferParams const &) const;
 	///
-	Inset * InInset() const;
+	Inset * inInset() const;
 	///
 	void setInsetOwner(Inset * i);
 	///

@@ -1,6 +1,25 @@
+2001-07-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* BufferView_pimpl.C (Dispatch): handle LFUN_OPENSTUFF.
+
+	* text2.C (openStuff): reintroduce this method (which had been
+	nuked in NEW_INSETS frenzy).
+
+	* lyxfunc.C (Dispatch): when an action has not been handled, use
+	its name in the error message, not its number.
+
+	* paragraph.C (inInset): change method name to begin with lowercase.
+
+	* undo_funcs.C:
+	* text2.C: updates because of this.
+
+2001-07-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ToolbarDefaults.C (add): add spaces in error message
+
 2001-07-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* buffer.C (readLyXformat2): initailize the ert comp. variables.
+	* buffer.C (readLyXformat2): initialize the ert comp. variables.
 	(readLyXformat2): rename return_par to first_par, use lyxlex's
 	pushToken and remove the manual push handling.
 	(parseSingleLyXformat2Token): add another ert comp. variable:

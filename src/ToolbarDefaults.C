@@ -155,8 +155,8 @@ void ToolbarDefaults::add(string const & func)
 	int const tf = lyxaction.LookupFunc(func);
 
 	if (tf == -1) {
-		lyxerr << "Toolbar::add: no LyX command called`"
-		       << func << "'exists!" << endl; 
+		lyxerr << "Toolbar::add: no LyX command called `"
+		       << func << "' exists!" << endl; 
 	} else {
 		add(tf);
 	}

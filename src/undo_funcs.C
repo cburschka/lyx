@@ -159,7 +159,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			endpar = behind;
     
 		tmppar = bv->buffer()->getParFromID(undo->number_of_cursor_par);
-		UpdatableInset* it = static_cast<UpdatableInset*>(tmppar3->InInset());
+		UpdatableInset* it = static_cast<UpdatableInset*>(tmppar3->inInset());
 		if (it) {
 			it->getLyXText(bv)->redoParagraphs(bv, it->getLyXText(bv)->cursor,
 			                                   endpar);
@@ -239,8 +239,8 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 		before_number = first->previous()->id();
 	if (behind)
 		behind_number = behind->id();
-	if (first->InInset())
-		inset_id = first->InInset()->id();
+	if (first->inInset())
+		inset_id = first->inInset()->id();
 
 	// Undo::EDIT  and Undo::FINISH are
 	// always finished. (no overlapping there)

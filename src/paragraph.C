@@ -861,7 +861,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 	// create a new paragraph
 	Paragraph * tmp = new Paragraph(this);
 	// remember to set the inset_owner
-	tmp->setInsetOwner(InInset());
+	tmp->setInsetOwner(inInset());
 	
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
@@ -2018,7 +2018,7 @@ bool Paragraph::isFirstInSequence() const
 }
 
 
-Inset * Paragraph::InInset() const
+Inset * Paragraph::inInset() const
 {
 	return pimpl_->inset_owner;
 }

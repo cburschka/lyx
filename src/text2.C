@@ -360,6 +360,22 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 	}
 }
 
+void LyXText::openStuff(BufferView * bview)
+{
+     	if (cursor.pos() == 0 && cursor.par()->bibkey){
+		cursor.par()->bibkey->edit(bview, 0, 0, 0);
+	} else if (cursor.pos() < cursor.par()->size() 
+		   && cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
+		Inset * inset = cursor.par()->getInset(cursor.pos());
+		if (!inset->editable())
+			return;
+		bview->owner()->message(inset->editMessage());
+		if (inset->editable() != Inset::HIGHLY_EDITABLE)
+			setCursorParUndo(bview);
+		inset->edit(bview, 0, 0, 0);
+	}
+}
+
 
 /* used in setlayout */
 // Asger is not sure we want to do this...
@@ -1455,11 +1471,11 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		
 		// the caption hack:
 		if (layout.labeltype == LABEL_SENSITIVE) {
-			bool isOK (par->InInset() && par->InInset()->owner() &&
-				   (par->InInset()->owner()->lyxCode() == Inset::FLOAT_CODE));
+			bool isOK (par->inInset() && par->inInset()->owner() &&
+				   (par->inInset()->owner()->lyxCode() == Inset::FLOAT_CODE));
 			
 			if (isOK) {
-				InsetFloat * tmp = static_cast<InsetFloat*>(par->InInset()->owner());
+				InsetFloat * tmp = static_cast<InsetFloat*>(par->inInset()->owner());
 				Floating const & fl
 					= floatList.getType(tmp->type());
 				// We should get the correct number here too.
@@ -2079,7 +2095,7 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 			      Paragraph::size_type pos,
 			      bool setfont, bool boundary) const
 {
-	InsetText * it = static_cast<InsetText *>(par->InInset());
+	InsetText * it = static_cast<InsetText *>(par->inInset());
 	if (it && (it != inset_owner)) {
 		it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
 						       boundary);
@@ -2446,8 +2462,8 @@ Paragraph * LyXText::ownerParagraph(Paragraph * p) const
 Paragraph * LyXText::ownerParagraph(int id, Paragraph * p) const
 {
 	Paragraph * op = bv_owner->buffer()->getParFromID(id);
-	if (op && op->InInset()) {
-		static_cast<InsetText *>(op->InInset())->paragraph(p);
+	if (op && op->inInset()) {
+		static_cast<InsetText *>(op->inInset())->paragraph(p);
 	} else {
 		if (inset_owner) {
 			inset_owner->paragraph(p);

@@ -1,3 +1,10 @@
+2001-07-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* insetcollapsable.C (edit): always open collapsed insets (even if
+	they are not autocollapsable)
+
+	* insetcommand.C (operator=): simplify.
+
 2001-07-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetert.C (latex): handle META_NEWLINE

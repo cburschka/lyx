@@ -229,13 +229,13 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 {
 	UpdatableInset::edit(bv, xp, yp, button);
 
-	if (collapsed && autocollapse) {
+	if (collapsed) {
 		collapsed = false;
 		if (!bv->lockInset(this))
 			return;
 		bv->updateInset(this, false);
 		inset.edit(bv, 0, 0, button);
-	} else if (!collapsed) {
+	} else {
 		if (!bv->lockInset(this))
 			return;
 		inset.edit(bv, xp, yp + (top_baseline - inset.y()), button);

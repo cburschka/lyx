@@ -1555,7 +1555,8 @@ string const LyXFunc::Dispatch(int ac,
 		// Then if it was none of the above
 		if (!owner->view()->Dispatch(action, argument))
 			lyxerr << "A truly unknown func ["
-			       << action << "]!" << endl;
+			       << lyxaction.getActionName(action) << "]!"
+			       << endl;
 		break;
 	} // end of switch
 

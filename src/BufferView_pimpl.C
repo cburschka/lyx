@@ -2634,6 +2634,18 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 	
+	case LFUN_OPENSTUFF:
+	{
+		LyXText * lt = bv_->getLyXText();
+		hideCursor();
+		beforeChange(lt);
+		update(lt, BufferView::SELECT|BufferView::FITCUR);
+		lt->openStuff(bv_);
+		update(lt, BufferView::SELECT|BufferView::FITCUR);
+		setState();
+	}	
+		break;
+
 	case LFUN_QUOTE:
 		bv_->insertCorrectQuote();
 		break;

@@ -376,6 +376,8 @@ public:
 	void getVisibleRow(BufferView *, int y_offset, int x_offset,
 			   Row * row_ptr, int y, bool cleared=false);
 
+	/// 
+	void openStuff(BufferView *);
 	///
 	void cutSelection(BufferView *, bool = true);
 	///

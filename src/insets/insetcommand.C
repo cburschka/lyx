@@ -66,8 +66,8 @@ void InsetCommandParams::setFromString( string const & b )
 
 bool InsetCommandParams::operator==(InsetCommandParams const & o) const
 {
-	if (cmdname == o.cmdname && contents == o.contents && options == o.options) return true;
-	return false;
+	return cmdname == o.cmdname && contents == o.contents
+		&& options == o.options;
 }
 
 
