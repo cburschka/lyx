@@ -8,11 +8,11 @@
 	instead of Paragraph*
 	(singleWidth): ditto
 	Adjust several functions.
-	
+
 	* rowpainter.C: adjust several functions
 	* rowpainter.h:store a ParagraphList::iterator and not a
 	Paragraph&.
-	
+
 
 2003-04-09  John Levon  <levon@movementarian.org>
 
