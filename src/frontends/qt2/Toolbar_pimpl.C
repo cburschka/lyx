@@ -264,6 +264,8 @@ void Toolbar::Pimpl::add(QToolBar * tb, int action, string const & tooltip)
 		tb->setHorizontalStretchable(true);
 		break;
 	default: {
+		if (owner_->getLyXFunc().getStatus(action).unknown())
+			break;
 		QPixmap p = QPixmap(toolbarbackend.getIcon(action).c_str());
 		QToolButton * button =
 			new QToolButton(p, toqstr(tooltip), "",

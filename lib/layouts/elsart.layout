@@ -16,6 +16,7 @@
 # modified 2002-04-02   Herbert Voss <voss@perce.de>
 #       for use of BeginTitle/EndTitle
 # modified 2003-03-11 JMarc for use of TitleLatexType/TitleLatexName
+# modified 2003-04-10 Rod Pinna - added proof env. sent to me by Stacy Prowell
 
 # General textclass parameters
 Columns         1
@@ -237,6 +238,7 @@ End
 
 # The environments defined are :
 # - Theorem
+# - Proof
 # - Corollary
 # - Lemma
 # - Proposition
@@ -285,6 +287,38 @@ Style Theorem
 	EndFont
 
 End  
+
+# Proof style declaration - from email by Stacy Prowell (sprowell@cs.utk.edu)
+Style Proof
+	Margin                First_Dynamic
+	LatexType             Environment
+	# elsart defines the unusual environment pf for proofs.
+	LatexName             pf
+	NextNoIndent          1
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	#  make the label all caps, like it is in the output.
+	LabelString           "PROOF."
+
+	# standard font definition
+	Font
+	  Shape               Up
+	  Size                Normal
+	EndFont
+
+	# label font definition
+	LabelFont
+	  Series              Bold
+	EndFont
+End
 
 # Lemma-numbered style declaration
 Style Lemma
