@@ -2,12 +2,12 @@
 static char *note-insert[] = {
 /* columns rows colors chars-per-pixel */
 "22 22 7 1",
-"  c black",
+"  c #000000",
 ". c #7f7f00",
-"X c gray50",
-"o c yellow",
+"X c #7f7f7f",
+"o c #ffff00",
 "O c #bfbfbf",
-"+ c white",
+"+ c #ffffff",
 "@ c None",
 /* pixels */
 "@@@@@@@@@@@@@@@@@@@@@@",

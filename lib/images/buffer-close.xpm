@@ -2,7 +2,7 @@
 static char *buffer-close[] = {
 /* columns rows colors chars-per-pixel */
 "22 22 23 1",
-"  c black",
+"  c #000000",
 ". c #0a0a0a",
 "X c #131313",
 "o c #1b1b1b",
@@ -23,7 +23,7 @@ static char *buffer-close[] = {
 "< c #939393",
 "1 c #999999",
 "2 c #a1a1a1",
-"3 c white",
+"3 c #ffffff",
 "4 c None",
 /* pixels */
 "4444444444444444444444",
