@@ -22,14 +22,6 @@ using std::abs;
 namespace lyx {
 namespace graphics {
 
-string const BoundingBox::asString() const
-{
-	std::ostringstream os;
-	os << xl << ' ' << yb << ' ' << xr << ' ' << yt;
-	return os.str();
-}
-
-
 Params::Params()
 	: display(ColorDisplay),
 	  scale(100),
@@ -50,6 +42,13 @@ bool operator==(Params const & a, Params const & b)
 bool operator!=(Params const & a, Params const & b)
 {
 	return !(a == b);
+}
+
+
+std::ostream & operator<<(std::ostream & os, BoundingBox const & bb)
+{
+	os << bb.xl << ' ' << bb.yb << ' ' << bb.xr << ' ' << bb.yt;
+	return os;
 }
 
 

@@ -16,6 +16,7 @@
 
 #include "GraphicsTypes.h"
 #include "support/std_string.h"
+#include <iosfwd>
 
 
 namespace lyx {
@@ -33,9 +34,6 @@ struct BoundingBox {
 	/// 0 0 0 0 is empty!
 	bool empty() const;
 
-	/// The bounding box as "xl yb xr yr"
-	string const asString() const;
-
 	unsigned int xl;
 	unsigned int yb;
 	unsigned int xr;
@@ -44,6 +42,9 @@ struct BoundingBox {
 
 bool operator==(BoundingBox const &, BoundingBox const &);
 bool operator!=(BoundingBox const &, BoundingBox const &);
+
+std::ostream & operator<<(std::ostream &, BoundingBox const &);
+
 
 struct Params
 {
