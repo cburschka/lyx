@@ -65,8 +65,7 @@ private:
 	 */
 	virtual void setWindowTitle(string const & t, string const & it);
 
-	/// idle timer
-	QTimer idle_timer_;
+	QTimer statusbar_timer_;
 
 	/// command buffer
 	QCommandBuffer * commandbuffer_;

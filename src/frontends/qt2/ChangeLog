@@ -1,3 +1,10 @@
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* QtView.h:
+	* QtView.C: rename idle_timer_. Make it single-shot.
+	  Do not over-write an explicit message with the
+	  default message.
+
 2003-04-05  John Levon  <levon@movementarian.org>
 
 	* QCommandBuffer.C:

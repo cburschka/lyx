@@ -45,7 +45,7 @@ using namespace bv_funcs;
 
 namespace {
 
-int const idle_timer_value = 3000;
+int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
@@ -71,9 +71,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	statusBar()->setSizeGripEnabled(false);
 
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
-	connect(&idle_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
-
-	idle_timer_.start(idle_timer_value);
+	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
 	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
 
@@ -106,8 +104,8 @@ void QtView::setWindowTitle(string const & t, string const & it)
 void QtView::message(string const & str)
 {
 	statusBar()->message(toqstr(str));
-	idle_timer_.stop();
-	idle_timer_.start(idle_timer_value);
+	statusbar_timer_.stop();
+	statusbar_timer_.start(statusbar_timer_value);
 }
 
 
@@ -120,11 +118,16 @@ void QtView::focus_command_widget()
 void QtView::update_view_state_qt()
 {
 	statusBar()->message(toqstr(currentState(view().get())));
+	statusbar_timer_.stop();
 }
 
 
 void QtView::update_view_state()
 {
+	// let the user see the explicit message
+	if (statusbar_timer_.isActive())
+       		return;
+
 	statusBar()->message(toqstr(currentState(view().get())));
 }
 
