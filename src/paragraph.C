@@ -2421,7 +2421,11 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 			break;
 	default:
 		// we don't need it for the last paragraph!!!
+		// or for tables in floats
+		//   -- effectively creates a \par where there isn't one which
+		//      breaks a \subfigure or \subtable.
 		if (next) {
+//		    && footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 			os << '\n';
 			texrow.newline();
 		}

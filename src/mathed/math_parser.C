@@ -803,7 +803,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 		 panic = true;
 	     }
 	     
-	     mathed_env = yylval.i;
+	     mathed_env = static_cast<MathedInsetTypes>(yylval.i);
 	     if (mathed_env != LM_OT_MIN) {
 		 size = LM_ST_DISPLAY;
 		 if (is_multiline(mathed_env)) {

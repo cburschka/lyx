@@ -1,3 +1,14 @@
+2001-02-04  Allan Rae  <rae@lyx.org>
+
+	* paragraph.C (TeXOnePar): Partial fix for the '\n' generation in
+	floats problem. I've left it commented out because it's not quite
+	correct.  It should also test that the current object is a table or
+	figure inset.  But I haven't gotten around to figuring out how to do
+	that.  I *think* it'll be something like: "table" == inset.type()
+
+	* LaTeX.h (operator==): Aux_Info should have a friend that returns a
+	bool.
+
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (scanAuxFile): A rewrite of this method. It now returns

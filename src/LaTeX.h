@@ -75,13 +75,21 @@ public:
 	///
 	std::set<string> styles;
 	///
-	operator==(Aux_Info const & o) const {
-		return aux_file == o.aux_file &&
-			citations == o.citations &&
-			databases == o.databases &&
-			styles == o.styles;
-	}
+	friend
+	bool operator==(Aux_Info const & a, Aux_Info const & o);
 };
+
+
+///
+inline
+bool operator==(Aux_Info const & a, Aux_Info const & o)
+{
+	return a.aux_file == o.aux_file &&
+		a.citations == o.citations &&
+		a.databases == o.databases &&
+		a.styles == o.styles;
+}
+
 
 ///
 class LaTeX : public noncopyable {
