@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>326</width>
+            <width>322</width>
             <height>338</height>
         </rect>
     </property>
@@ -376,11 +376,13 @@
     <slot access="public">styleChanged(const QString &amp;)</slot>
 </connections>
 <tabstops>
+    <tabstop>addBibCB</tabstop>
+    <tabstop>addBibPB</tabstop>
     <tabstop>databaseLB</tabstop>
     <tabstop>databasePB</tabstop>
     <tabstop>deletePB</tabstop>
-    <tabstop>stylePB</tabstop>
     <tabstop>styleCB</tabstop>
+    <tabstop>stylePB</tabstop>
     <tabstop>bibtocCB</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>closePB</tabstop>
