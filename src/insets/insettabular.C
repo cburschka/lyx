@@ -1556,11 +1556,13 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 	break;
     case LyXTabular::APPEND_COLUMN:
 	// append the column into the tabular
+	UnlockInsetInInset(bv, the_locking_inset);
 	tabular->AppendColumn(actcell);
 	actcell = tabular->GetCellNumber(row, column);
 	UpdateLocal(bv, INIT, true);
 	break;
     case LyXTabular::DELETE_ROW:
+	UnlockInsetInInset(bv, the_locking_inset);
 	tabular->DeleteRow(tabular->row_of_cell(actcell));
 	if ((row+1) > tabular->rows())
 	    --row;
@@ -1569,6 +1571,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 	UpdateLocal(bv, INIT, true);
 	break;
     case LyXTabular::DELETE_COLUMN:
+	UnlockInsetInInset(bv, the_locking_inset);
 	tabular->DeleteColumn(tabular->column_of_cell(actcell));
 	if ((column+1) > tabular->columns())
 	    --column;

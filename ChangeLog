@@ -2,6 +2,7 @@
 
 	* src/insets/insettabular.C (resetPos): an extra scroll, but we
 	really should redo all this scrolling code!
+	(TabularFeatures): unlock the_locking_inset before add/del rows/colums.
 
 	* src/text.C (GetVisibleRow): check that y/h values are good otherwise
 	change them.
