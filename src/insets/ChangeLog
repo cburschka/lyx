@@ -1,5 +1,8 @@
 2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* insetmarginal.C (latex): 
+	* insetfoot.C (latex): fix spacing of notes in LaTeX
+
 	* insettext.C (localDispatch): use .c_str() on istringstream
 	constructor argument.
 

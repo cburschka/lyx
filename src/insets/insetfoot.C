@@ -51,10 +51,10 @@ string const InsetFoot::editMessage() const
 int InsetFoot::latex(Buffer const * buf,
 		     std::ostream & os, bool fragile, bool fp) const
 {
-	os << "\\footnote{%\n";
+	os << "%\n\\footnote{";
 	
 	int const i = inset.latex(buf, os, fragile, fp);
-	os << "}\n";
+	os << "%\n}";
 	
 	return i + 2;
 }

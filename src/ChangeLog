@@ -1,5 +1,7 @@
 2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lyxrc.C (read): change debugging channel for RC_BIND to lyxrc.
+
 	* lyxfunc.C (Dispatch): 
 	* Spacing.C (set): 
 	* BufferView_pimpl.C (Dispatch): use .c_str() on istringstream
