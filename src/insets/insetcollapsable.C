@@ -276,12 +276,12 @@ void InsetCollapsable::edit(BufferView * bv, bool front)
 		inset.setUpdateStatus(bv, InsetText::FULL);
 		bv->updateInset(this, false);
 		inset.edit(bv, front);
+		first_after_edit = true;
 	} else {
 		if (!bv->lockInset(this))
 			return;
 		inset.edit(bv, front);
 	}
-	first_after_edit = true;
 }
 
 

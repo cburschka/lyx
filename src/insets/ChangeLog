@@ -1,3 +1,10 @@
+2002-05-09  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.C (edit): first_after_edit should only be
+	set to true if we enter this inset and it was collapsed so we
+	open it up. This is needed to reclose it after a search/replace
+	or spellcheck function opened it and was negative.
+
 2002-05-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetfloat.C (latex): Return correct value.
