@@ -20,8 +20,6 @@
 
 #include "insets/insetquotes.h"
 
-#include "frontends/controllers/biblio.h"
-
 #include "support/copied_ptr.h"
 #include "support/types.h"
 
@@ -37,6 +35,25 @@ class Spacing;
 class TexRow;
 class VSpace;
 struct Language;
+
+
+namespace biblio {
+
+enum CiteEngine {
+	ENGINE_BASIC,
+	ENGINE_NATBIB_AUTHORYEAR,
+	ENGINE_NATBIB_NUMERICAL,
+	ENGINE_JURABIB
+};
+
+class CiteEngine_enum {
+        CiteEngine val_;
+public:
+	CiteEngine_enum(CiteEngine val) : val_(val) {}
+        operator CiteEngine() const{ return val_; }
+};
+
+} // namespace biblio
 
 
 /** Buffer parameters.

@@ -21,14 +21,9 @@ class Buffer;
 /** Functions of use to citation and bibtex GUI controllers and views */
 namespace biblio {
 
-enum CiteEngine {
-	ENGINE_BASIC,
-	ENGINE_NATBIB_AUTHORYEAR,
-	ENGINE_NATBIB_NUMERICAL,
-	ENGINE_JURABIB
-};
+class CiteEngine_enum;
 
-CiteEngine getEngine(Buffer const &);
+CiteEngine_enum getEngine(Buffer const &);
 
 
 enum CiteStyle {
@@ -98,10 +93,15 @@ searchKeys(InfoMap const & map,
 	   Direction,
 	   bool caseSensitive=false);
 
-/// Type returned by getCitationStyle, below
+
 struct CitationStyle {
 	///
-	CitationStyle() : style(CITE), full(false), forceUCase(false) {}
+	CitationStyle(CiteStyle s = CITE, bool f = false, bool force = false)
+		: style(s), full(f), forceUCase(force) {}
+	/// \param latex_str a LaTeX command, "cite", "Citep*", etc
+	CitationStyle(std::string const & latex_str);
+	///
+	std::string const asLatexStr() const;
 	///
 	CiteStyle style;
 	///
@@ -110,20 +110,9 @@ struct CitationStyle {
 	bool forceUCase;
 };
 
-/// Given the LaTeX command, return the appropriate CitationStyle
-CitationStyle const getCitationStyle(std::string const & command);
-
-/** Returns the LaTeX citation command
-
-User supplies :
-The CiteStyle enum,
-a flag forcing the full author list,
-a flag forcing upper case, e.g. "della Casa" becomes "Della Case"
-*/
-std::string const getCiteCommand(CiteStyle, bool full, bool forceUCase);
 
 /// Returns a vector of available Citation styles.
-std::vector<CiteStyle> const getCiteStyles(CiteEngine);
+std::vector<CiteStyle> const getCiteStyles(CiteEngine_enum const &);
 
 /**
    "Translates" the available Citation Styles into strings for this key.

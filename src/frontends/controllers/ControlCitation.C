@@ -13,6 +13,7 @@
 #include "ControlCitation.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 
 
 using std::string;
@@ -73,7 +74,7 @@ biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 }
 
 
-biblio::CiteEngine ControlCitation::getEngine() const
+biblio::CiteEngine_enum ControlCitation::getEngine() const
 {
 	return biblio::getEngine(kernel().buffer());
 }

@@ -20,6 +20,8 @@
 #include "funcrequest.h"
 #include "LaTeXFeatures.h"
 
+#include "frontends/controllers/biblio.h"
+
 #include "support/lstrings.h"
 
 using lyx::support::ascii_lowercase;

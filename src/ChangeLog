@@ -1,3 +1,10 @@
+2004-05-14  Angus Leeming  <leeming@lyx.org>
+
+	* bufferparams.h: move biblio::CiteEngine enum here to minimize
+	dependencies on src/frontends/controllers/biblio.h. Define a
+	CiteEngine_enum wrapper class to enable the enum to be forward
+	declared.
+
 2004-05-12  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C: up LYX_FORMAT to 234.

@@ -15,7 +15,8 @@
 
 
 #include "insetcommand.h"
-#include "frontends/controllers/biblio.h"
+#include "bufferparams.h"
+
 
 /** Used to insert citations
  */

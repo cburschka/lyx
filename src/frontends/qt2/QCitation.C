@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "bufferparams.h"
 #include "debug.h"
 #include "ui/QCitationFindDialogBase.h"
 #include "QCitationDialog.h"
@@ -55,7 +56,8 @@ void QCitation::apply()
 	bool const force = dialog_->forceuppercaseCB->isChecked();
 
 	string const command =
-		biblio::getCiteCommand(styles[choice], full, force);
+		biblio::CitationStyle(styles[choice], full, force)
+		.asLatexStr();
 
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
@@ -158,7 +160,7 @@ void QCitation::updateStyle()
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles =
 		ControlCitation::getCiteStyles();
-	biblio::CitationStyle cs = biblio::getCitationStyle(command);
+	biblio::CitationStyle const cs(command);
 
 	vector<biblio::CiteStyle>::const_iterator cit =
 		find(styles.begin(), styles.end(), cs.style);

@@ -14,7 +14,7 @@
 
 
 #include "ControlCommand.h"
-#include "biblio.h" // biblio::InfoMap
+#include "biblio.h"
 
 /** A controller for Citation dialogs.
  */
@@ -37,7 +37,7 @@ public:
 	biblio::InfoMap const & bibkeysInfo() const;
 
 	///
-	biblio::CiteEngine getEngine() const;
+	biblio::CiteEngine_enum getEngine() const;
 
 	/// Possible citations based on this key
 	std::vector<std::string> const getCiteStrings(std::string const & key) const;

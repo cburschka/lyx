@@ -19,6 +19,8 @@
 #include "xforms_helpers.h"
 #include "xformsBC.h"
 
+#include "bufferparams.h"
+
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
@@ -69,7 +71,7 @@ void updateStyle(FD_citation * dialog, string command)
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles =
 		ControlCitation::getCiteStyles();
-	biblio::CitationStyle cs = biblio::getCitationStyle(command);
+	biblio::CitationStyle const cs(command);
 
 	vector<biblio::CiteStyle>::const_iterator cit =
 		find(styles.begin(), styles.end(), cs.style);
@@ -109,7 +111,10 @@ void FormCitation::apply()
 		bool const force =
 			fl_get_button(dialog_->check_force_uppercase);
 
-		command = biblio::getCiteCommand(styles[choice], full, force);
+		command =
+			biblio::CitationStyle(styles[choice], full, force)
+			.asLatexStr();
+
 	}
 
 	controller().params().setCmdName(command);

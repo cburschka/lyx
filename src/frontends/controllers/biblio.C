@@ -513,21 +513,21 @@ unsigned int const nCiteStylesUCase =
 } // namespace anon
 
 
-CitationStyle const getCitationStyle(string const & command)
+CitationStyle::CitationStyle(string const & command)
+	: style(CITE), full(false), forceUCase(false)
 {
-	if (command.empty()) return CitationStyle();
+	if (command.empty())
+		return;
 
-	CitationStyle cs;
 	string cmd = command;
-
 	if (cmd[0] == 'C') {
-		cs.forceUCase = true;
+		forceUCase = true;
 		cmd[0] = 'c';
 	}
 
-	size_t n = cmd.size() - 1;
-	if (cmd[n] == '*') {
-		cs.full = true;
+	string::size_type const n = cmd.size() - 1;
+	if (cmd != "cite" && cmd[n] == '*') {
+		full = true;
 		cmd = cmd.substr(0,n);
 	}
 
@@ -536,25 +536,23 @@ CitationStyle const getCitationStyle(string const & command)
 
 	if (ptr != last) {
 		size_t idx = ptr - citeCommands;
-		cs.style = citeStyles[idx];
+		style = citeStyles[idx];
 	}
-
-	return cs;
 }
 
 
-string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
+string const CitationStyle::asLatexStr() const
 {
-	string cite = citeCommands[command];
+	string cite = citeCommands[style];
 	if (full) {
 		CiteStyle const * last = citeStylesFull + nCiteStylesFull;
-		if (std::find(citeStylesFull, last, command) != last)
+		if (std::find(citeStylesFull, last, style) != last)
 			cite += '*';
 	}
 
 	if (forceUCase) {
 		CiteStyle const * last = citeStylesUCase + nCiteStylesUCase;
-		if (std::find(citeStylesUCase, last, command) != last)
+		if (std::find(citeStylesUCase, last, style) != last)
 			cite[0] = 'C';
 	}
 
@@ -562,13 +560,13 @@ string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
 }
 
 
-CiteEngine getEngine(Buffer const & buffer)
+CiteEngine_enum getEngine(Buffer const & buffer)
 {
 	return buffer.params().cite_engine;
 }
 
 
-vector<CiteStyle> const getCiteStyles(CiteEngine engine)
+vector<CiteStyle> const getCiteStyles(CiteEngine_enum const & engine)
 {
 	unsigned int nStyles = 0;
 	unsigned int start = 0;
