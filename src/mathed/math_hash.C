@@ -215,7 +215,7 @@ void ReadSymbols(string const & filename)
 latexkeys const * in_word_set(string const & str)
 {
 	if (!initialized) {
-		lyxerr[Debug::MATHED] << "Reading symbols file" << endl;
+		lyxerr[Debug::MATHED] << "Reading symbols file\n";
 		string const file = LibFileSearch(string(), "symbols");
 		if (file.empty())
 			lyxerr << "Could not find symbols file" << endl;
