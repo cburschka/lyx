@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "bufferparams.h"
+#include "coordcache.h"
 #include "cursor.h"
 #include "debug.h"
 #include "language.h"
@@ -221,6 +222,7 @@ void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 	workarea().getPainter().end();
+	theCoords.doneUpdating();
 	showCursor(bv);
 }
 
