@@ -12,6 +12,7 @@
 #include "support/lstrings.h"
 #include "BufferView.h"
 #include "buffer.h"
+#include "debug.h"
 #include "gettext.h"
 
 using lyx::pos_type;
@@ -223,6 +224,8 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 {
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
+	Paragraph * prev_par = par;
+	pos_type prev_pos;
 	UpdatableInset * inset;
 
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
@@ -237,41 +240,27 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 				return SR_FOUND_NOUPDATE;
 			text = bv->getLyXText();
 		}
-		if (pos < par->size() - 1)
-			++pos;
-		else {
-			pos = 0;
+ 
+		++pos;
+ 
+		if (pos >= par->size()) {
+			prev_par = par;
+			// consider 0-sized empty pars
+			prev_pos = std::min(pos, par->size());
 			par = par->next();
+			pos = 0;
 		}
 	}
+ 
 	if (par) {
 		text->setCursor(bv, par, pos);
 		return SR_FOUND;
-#if 0
-	} else if (text->inset_owner) {
-		// test if we're inside an inset if yes unlock the inset
-		// and recall us with the outside LyXText!
-		bv->unlockInset((UpdatableInset *)text->inset_owner);
-		if (!bv->theLockingInset()) {
-			text = bv->getLyXText();
-			par = text->cursor.par();
-			pos = text->cursor.pos();
-			if (pos < par->size() - 1)
-				++pos;
-			else {
-				pos = 0;
-				par = par->next();
-			}
-			if (!par)
-				return SR_NOT_FOUND;
-			text->setCursor(bv, par, pos);
-			return SearchForward(bv, text, str, cs, mw);
-		} else {
-			return SR_NOT_FOUND;
-		}
-#endif
-	} else
+	} else {
+		// make sure we end up at the end of the text,
+		// not the start point of the last search
+		text->setCursor(bv, prev_par, prev_pos);
 		return SR_NOT_FOUND;
+	}
 }
 
 
@@ -284,11 +273,15 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 {
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
+	Paragraph * prev_par = par;
+	pos_type prev_pos = pos;
 
 	do {
 		if (pos > 0)
 			--pos;
 		else {
+			prev_pos = pos;
+			prev_par = par;
 			// We skip empty paragraphs (Asger)
 			do {
 				par = par->previous();
@@ -313,17 +306,10 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 	if (par) {
 		text->setCursor(bv, par, pos);
 		return SR_FOUND;
+	} else {
+		// go to the last part of the unsuccessful search
+		text->setCursor(bv, prev_par, prev_pos);
+		return SR_NOT_FOUND;
 	}
-#if 0
-	else if (text->inset_owner) {
-		// test if we're inside an inset if yes unlock the inset
-		// and recall us with the outside LyXText!
-		bv->unlockInset((UpdatableInset *)text->inset_owner);
-		if (!bv->theLockingInset()) {
-			return SearchBackward(bv, bv->getLyXText(), str, cs, mw);
-		}
-	}
-#endif
-	return SR_NOT_FOUND;
 }
 

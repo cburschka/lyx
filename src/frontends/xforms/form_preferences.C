@@ -149,10 +149,10 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_tiny = obj = fl_add_input(FL_FLOAT_INPUT, 370, 20, 70, 30, _("tiny"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_script = obj = fl_add_input(FL_FLOAT_INPUT, 370, 50, 70, 30, _("script"));
+  fdui->input_script = obj = fl_add_input(FL_FLOAT_INPUT, 370, 50, 70, 30, _("smallest"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_footnote = obj = fl_add_input(FL_FLOAT_INPUT, 370, 80, 70, 30, _("footnote"));
+  fdui->input_footnote = obj = fl_add_input(FL_FLOAT_INPUT, 370, 80, 70, 30, _("smaller"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->input_small = obj = fl_add_input(FL_FLOAT_INPUT, 370, 110, 70, 30, _("small"));
