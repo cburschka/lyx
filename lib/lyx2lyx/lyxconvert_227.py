@@ -33,8 +33,12 @@ def convert_collapsable(lines):
         if i == -1:
             break
 
-        # We are interested in the next line
-        i = i + 1
+        if lines[i][:16] == "\\begin_inset Box":
+            # Skip box parameters
+            i = i + 10
+        else:
+            # We are interested in the next line
+            i = i + 1
         if (lines[i] == "collapsed false"):
             lines[i] = "status open"
         elif (lines[i] == "collapsed true"):
