@@ -695,7 +695,10 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	if (!checkAndActivateInset(bv, x, tmp_y, button)) {
+	// we put here -1 and not button as now the button in the
+	// edit call should not be needed we will fix this in 1.3.x
+	// cycle hopefully (Jug 20020509)
+	if (!checkAndActivateInset(bv, x, tmp_y, -1)) {
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
 					    y + insetAscent);
 		lt->cursor.x_fix(lt->cursor.x());
@@ -2067,7 +2070,12 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	int dummyx = x;
 	int dummyy = y + insetAscent;
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), dummyx, dummyy);
-
+	// we only do the edit() call if the inset was hit by the mouse
+	// or if it is a highly editable inset. So we should call this
+	// function from our own edit with button < 0.
+	if (button < 0 && !isHighlyEditableInset(inset))
+		return false;
+	
 	if (inset) {
 		if (x < 0)
 			x = insetWidth;

@@ -1,3 +1,11 @@
+2002-05-14  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (edit): tell checkAndActivateInset() that we don't
+	have a button press.
+	(checkAndActivateInset): if button < 0 we don't have a button press
+	on the inset and os we won't call edit on it if it's not a Highly
+	editable inset (then we have to enter it).
+
 2002-05-13  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.C (insetButtonRelease): returned wrong return
