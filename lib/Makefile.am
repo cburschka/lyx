@@ -52,12 +52,16 @@ libinstalldirs:
 
 install-xfonts:
 	test -f xfonts/fonts.dir || exit 0 ; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/xfonts ; \
 	files=`sed -e 's/^[0-9]*$$//' -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; \
 	for i in $${files} ; do \
 	  ln -sf `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
 	done ; \
 	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir ; \
 	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale
+
+uninstall-xfonts:
+	rm -rf $(DESTDIR)$(pkgdatadir)/xfonts
 
 install-data-local: libinstalldirs install-xfonts
 	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
@@ -71,15 +75,15 @@ install-exec-local: libinstalldirs
 	   $(INSTALL_SCRIPT) $(srcdir)/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
-uninstall-local:
+uninstall-local: uninstall-xfonts
 	@$(NORMAL_UNINSTALL)
 	files=`cd $(srcdir) ; echo $(LIBINSTFILES) $(LYXSCRIPTS)` ; \
 	for i in $${files} ; do \
-	   rm -f $(pkgdatadir)/$$i ; \
+	   rm -f $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done ; \
 	dirs=`cd $(srcdir) ; echo $(LYXLIBDIRS)` ; \
 	for i in $${dirs} ; do \
-	   rm -rf $(pkgdatadir)/$$i ; \
+	   rm -rf $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
 dist-hook:
