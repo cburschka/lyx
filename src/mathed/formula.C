@@ -503,7 +503,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 bool needEqnArray(string const & extra)
 {
-	return false;
 	return extra == "dsolve";
 }
 

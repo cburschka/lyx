@@ -26,8 +26,6 @@
 #include "LString.h"
 #include "math_defs.h"
 
-class MathHullInset;
-class MathMacroTemplate;
 class MathAtom;
 class MathArray;
 class LyXLex;
@@ -36,7 +34,7 @@ class LyXLex;
 enum MathTokenEnum
 {
 	///
-	LM_TK_SYM = 256,
+	LM_TK_SYM,
 	///
 	LM_TK_BOX,
 	///
@@ -118,36 +116,41 @@ enum MathTokenEnum
 
 ///
 struct latexkeys {
-	///
+	/// name of the macro or primitive
 	string name;
-	///
-	short token;
-	///
+	/// one of the categories above
+	MathTokenEnum token;
+	/// an id within a category if needed (only for spaces?)
 	unsigned int id;
-	///
-	unsigned char latex_font_id;
-	///
+	/// which font to use (optional)
+	unsigned int latex_font_id;
+	/// operator/...
 	string type;
-	///
+	/// how is this called as XML entity?
 	string xmlname;
 };
 
 
-///
+/// check whether this is a well-known (La)TeX macro or primitive
 latexkeys const * in_word_set(string const & str);
 
-///
-void ReadSymbols(string const & file);
-
+/// parse formula from a string
 bool mathed_parse_normal(MathAtom &, string const &);
+/// ... a stream
 bool mathed_parse_normal(MathAtom &, std::istream &);
+/// ... the LyX lexxer
 bool mathed_parse_normal(MathAtom &, LyXLex &);
 
+/// parse a macro definition from a string, enter it into the macro table
 string mathed_parse_macro(string const &);
+/// ... a stream
 string mathed_parse_macro(std::istream &);
+/// ... the LyX lexxer
 string mathed_parse_macro(LyXLex &);
 
-void mathed_parse_cell(MathArray & ar, string const & str);
-void mathed_parse_cell(MathArray & ar, std::istream & is);
+/// parse a single cell from a string
+void mathed_parse_cell(MathArray & ar, string const &);
+/// ... a stream
+void mathed_parse_cell(MathArray & ar, std::istream &);
 
 #endif

@@ -78,15 +78,17 @@ class MathPosFinder;
 class MathInset {
 public: 
 	/// short of anything else reasonable
-	typedef MathArray::size_type     size_type;
+	typedef MathArray::size_type        size_type;
+	/// type for cursor positions differences within a cell
+	typedef MathArray::difference_type  difference_type;
 	/// type for cursor positions within a cell
-	typedef MathArray::size_type     pos_type;
+	typedef MathArray::size_type        pos_type;
 	/// type for cell indices
-	typedef size_type                idx_type;
+	typedef size_type                   idx_type;
 	/// type for row numbers
-	typedef size_type                row_type;
+	typedef size_type                   row_type;
 	/// type for column numbers
-	typedef size_type                col_type;
+	typedef size_type                   col_type;
 
 	/// our members behave nicely...
 	MathInset() {}

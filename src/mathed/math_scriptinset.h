@@ -34,11 +34,11 @@ public:
 	///
 	void draw(MathInset const * nuc, Painter &, int x, int y) const;
 	///
-	int ascent(MathInset const * nuc) const;
+	int ascent2(MathInset const * nuc) const;
 	///
-	int descent(MathInset const * nuc) const;
+	int descent2(MathInset const * nuc) const;
 	///
-	int width(MathInset const * nuc) const;
+	int width2(MathInset const * nuc) const;
 
 	///
 	bool idxLeft(idx_type &, pos_type &) const;

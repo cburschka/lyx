@@ -619,7 +619,7 @@ void MathCursor::macroModeClose()
 
 int MathCursor::macroNamePos() const
 {
-	for (int i = pos() - 1; i >= 0; --i) { 
+	for (MathInset::difference_type i = pos() - 1; i >= 0; --i) { 
 		MathAtom & p = array().at(i);
 		if (p->code() == LM_TC_TEX && p->getChar() == '\\')
 			return i;
@@ -631,7 +631,8 @@ int MathCursor::macroNamePos() const
 string MathCursor::macroName() const
 {
 	string s;
-	for (int i = macroNamePos(); i >= 0 && i < int(pos()); ++i) 
+	MathInset::difference_type i = macroNamePos(); 
+	for ( ; i >= 0 && i < int(pos()); ++i) 
 		s += array().at(i)->getChar();
 	return s;
 }

@@ -36,9 +36,9 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
 		if (q) {
 			q->metrics(p, mi);
-			ascent_  = std::max(ascent_,  q->ascent(p));
-			descent_ = std::max(descent_, q->descent(p));
-			width_  += q->width(p);	
+			ascent_  = std::max(ascent_,  q->ascent2(p));
+			descent_ = std::max(descent_, q->descent2(p));
+			width_  += q->width2(p);	
 			++it;
 		} else {
 			p->metrics(mi);
@@ -67,7 +67,7 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
 		if (q) {
 			q->draw(p, pain, x, y);
-			x += q->width(p);
+			x += q->width2(p);
 			++it;
 		} else {
 			p->draw(pain, x, y);
@@ -87,7 +87,7 @@ int MathXArray::pos2x(size_type targetpos) const
 		if (q) {
 			++it;
 			if (it < target)
-				x += q->width(p);
+				x += q->width2(p);
 			else  // "half" position
 				x += q->dxx(p) + q->nwid(p);
 		} else
@@ -111,7 +111,7 @@ MathArray::size_type MathXArray::x2pos(int targetx) const
 		if (it + 1 != end())
 			q = asScript(it);
 		if (q) {
-			wid = q->width(p);
+			wid = q->width2(p);
 			++it;
 		} else
 			wid = p->width();

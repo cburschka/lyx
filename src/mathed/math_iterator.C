@@ -138,10 +138,10 @@ void MathIterator::operator++()
 }
 
 
-void MathIterator::jump(int i)
+void MathIterator::jump(MathInset::difference_type i)
 {
 	position().pos_ += i;
-	lyx::Assert(position().pos_ >= 0);
+	//lyx::Assert(position().pos_ >= 0);
 	lyx::Assert(position().pos_ <= cell().size());
 }
 

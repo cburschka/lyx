@@ -21,7 +21,7 @@ public:
 	/// move on one step
 	void operator++();
 	/// move on several steps
-	void jump(int n);
+	void jump(MathInset::difference_type);
 	/// read access to top most item
 	MathCursorPos const & position() const;
 	/// write access to top most item

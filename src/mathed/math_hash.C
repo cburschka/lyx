@@ -11,6 +11,7 @@
 
 namespace {
 
+// global
 std::map<string, latexkeys> theWordList;
 
 
@@ -18,10 +19,11 @@ struct key_type {
 	///
 	char const * name;
 	///
-	short token;
+	MathTokenEnum token;
 	///
 	unsigned int id;
 };
+
 
 key_type wordlist_array[] = 
 {

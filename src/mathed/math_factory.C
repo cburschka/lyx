@@ -30,7 +30,7 @@ MathAtom createMathInset(latexkeys const * l)
 	case LM_TK_FUNCLIM:
 		return MathAtom(new MathFuncLimInset(l->name));
 	case LM_TK_SPECIAL:
-		return MathAtom(new MathSpecialCharInset(l->id));
+		return MathAtom(new MathSpecialCharInset(static_cast<char>(l->id)));
 	case LM_TK_SYM:
 	case LM_TK_CMR:
 	case LM_TK_CMSY:

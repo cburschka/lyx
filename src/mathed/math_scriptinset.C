@@ -106,37 +106,37 @@ int MathScriptInset::dy1(MathInset const * nuc) const
 int MathScriptInset::dx0(MathInset const * nuc) const
 {
 	lyx::Assert(hasDown());
-	return hasLimits(nuc) ? (width(nuc) - down().width()) / 2 : nwid(nuc);
+	return hasLimits(nuc) ? (width2(nuc) - down().width()) / 2 : nwid(nuc);
 }
 
 
 int MathScriptInset::dx1(MathInset const * nuc) const
 {
 	lyx::Assert(hasUp());
-	return hasLimits(nuc) ? (width(nuc) - up().width()) / 2 : nwid(nuc);
+	return hasLimits(nuc) ? (width2(nuc) - up().width()) / 2 : nwid(nuc);
 }
 
 
 int MathScriptInset::dxx(MathInset const * nuc) const
 {
 	//lyx::Assert(nuc());
-	return hasLimits(nuc)  ?  (width(nuc) - nwid(nuc)) / 2  :  0;
+	return hasLimits(nuc)  ?  (width2(nuc) - nwid(nuc)) / 2  :  0;
 }
 
 
-int MathScriptInset::ascent(MathInset const * nuc) const
+int MathScriptInset::ascent2(MathInset const * nuc) const
 {
 	return dy1(nuc) + (hasUp() ? up().ascent() : 0);
 }
 
 
-int MathScriptInset::descent(MathInset const * nuc) const
+int MathScriptInset::descent2(MathInset const * nuc) const
 {
 	return dy0(nuc) + (hasDown() ? down().descent() : 0);
 }
 
 
-int MathScriptInset::width(MathInset const * nuc) const
+int MathScriptInset::width2(MathInset const * nuc) const
 {
 	int wid = 0;
 	if (hasLimits(nuc)) {
@@ -190,10 +190,9 @@ void MathScriptInset::metrics(MathInset const * nuc,
 	MathNestInset::metrics(mi);
 	if (nuc)
 		nuc->metrics(mi);
-
-	ascent_  = ascent(nuc);
-	descent_ = descent(nuc);
-	width_   = width(nuc);
+	ascent_  = ascent2(nuc);
+	descent_ = descent2(nuc);
+	width_   = width2(nuc);
 }
 
 

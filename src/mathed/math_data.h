@@ -51,6 +51,8 @@ public:
 	///
 	typedef buffer_type::size_type       size_type;
 	///
+	typedef buffer_type::difference_type difference_type;
+	///
 	typedef buffer_type::size_type       idx_type;
 	///
 	typedef buffer_type::size_type       pos_type;
