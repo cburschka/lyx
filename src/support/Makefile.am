@@ -75,10 +75,3 @@ libsupport_la_SOURCES = \
 	types.h \
 	unlink.C \
 	utility.h
-
-if USE_LD_R
-libsupport.la: libsupport.o
-
-libsupport.o: $(libsupport_la_OBJECTS) $(libsupport_la_DEPENDENCIES)
-	$(CXXLINK) $(libsupport_la_OBJECTS)
-endif

@@ -8,17 +8,10 @@ SUBDIRS = mathed insets graphics support frontends
 
 bin_PROGRAMS = lyx
 
-if USE_LD_R
-LYX_CONV_LIBS = mathed/libmathed.o insets/libinsets.o \
-	frontends/libfrontends.o \
-	graphics/libgraphics.o \
-	support/libsupport.o
-else
 LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
 	frontends/libfrontends.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
-endif
 
 #lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(INCLUDED_SIGC)
 

@@ -1000,17 +1000,3 @@ AM_PROG_LIBTOOL dnl for libraries
 CC=$ac_save_cc
 CFLAGS="$ac_save_cflags"
 ])
-
-
-dnl bla bla 
-AC_DEFUN(LYX_CHECK_LDR,
-[
-AC_MSG_CHECKING(whether partial linking can be used)
-if test x$ac_cv_cygwin = xno -a x$lt_cv_prog_gnu_ld = xyes ; then
-    AM_CONDITIONAL(USE_LD_R, true)
-    AC_MSG_RESULT(yes)
-else
-    AM_CONDITIONAL(USE_LD_R, false)
-AC_MSG_RESULT(no)
-fi
-])

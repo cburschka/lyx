@@ -1,3 +1,7 @@
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (LYX_CONV_LIBS): remove ld -r stuff.
+
 2002-03-21  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (SetMultiColumn): collapse also the contents of the
@@ -28,10 +32,10 @@
 
 2002-03-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* ToolbarDefaults.C (init): 
-	* LyXAction.C (init): 
-	* commandtags.h: 
-	* BufferView_pimpl.C (Dispatch): 
+	* ToolbarDefaults.C (init):
+	* LyXAction.C (init):
+	* commandtags.h:
+	* BufferView_pimpl.C (Dispatch):
 	* lyxfunc.C (dispatch): remove LFUN_DEPTH
 
 2002-03-19  Allan Rae  <rae@lyx.org>
@@ -42,7 +46,7 @@
 	a dozen places before calling export or cleanup in a dozen functions
 	that export calls.
 
-	* converter.C (runLaTeX): 
+	* converter.C (runLaTeX):
 	(scanLog): Better handling of removeAutoInsets and screen updates.
 
 	* lyxfunc.C (dispatch): small whitespace changes
@@ -137,7 +141,7 @@
 	(pixmap): remove function.
 
 	* Painter.h: remove private display variable.
-	
+
 	* PainterBase.[Ch]: remove dummy[123] cruft, ws changes
 
 2002-03-13  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -215,8 +219,8 @@
 2002-03-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (Buffer): initialize niceFile to true
-	(makeLaTeXFile): 
-	(makeLinuxDocFile): 
+	(makeLaTeXFile):
+	(makeLinuxDocFile):
 	(makeDocBookFile): make sure niceFile is true on exit
 
 2002-03-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -281,7 +285,7 @@
 
 	* paragraph.C (breakParagraph): dont call clear do the work manually
 
-	* paragraph.[Ch] (clear): remove function 
+	* paragraph.[Ch] (clear): remove function
 
 2002-03-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -296,7 +300,7 @@
 2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: protect selectionLost against text == 0
- 
+
 2002-03-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text.C (breakParagraph): fix a setting layout to '0' problem.
@@ -422,9 +426,9 @@
 
 	* BufferView_pimpl.C: change current_layout to string, remove
 	lyx::layout_type.
-	(Dispatch): 
-	(smartQuote): 
-	(insertInset): 
+	(Dispatch):
+	(smartQuote):
+	(insertInset):
 	(workAreaButtonRelease): layout as string
 
 	* BufferView2.C (unlockInset): adjust
@@ -434,7 +438,7 @@
 2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: use FRONTEND_*
- 
+
 2002-03-01  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (SetWidthOfMulticolCell): changed to something better
@@ -544,7 +548,7 @@
 	* sp_pspell.h:
 	* sp_spell.C: remove fig inset, and the crap house of
 	  cards that follows it
- 
+
 2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -644,7 +648,7 @@
 
 	* commandtags.h: add LFUN_FORKS_SHOW and LFUN_FORKS_KILL to the enum.
 	* LyXAction.C (init): add LFUN_FORKS_SHOW and LFUN_FORKS_KILL to items[]
-	
+
 2002-02-18  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (simpleDocBookOnePar): if paragraph style is CDATA escapes
@@ -657,13 +661,13 @@
 	* use std construcs some places where approp.
 	* use some exisint stuff from lyxfunctional where approp.
 	* Make file changes to use partial linking (lets test this now...)
-	
+
 2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Chktex.C:
 	* buffer.C:
 	remove #include "support/syscontr.h" as it's redundant. Always has been.
-	
+
 	* Chktex.C:
 	* LaTeX.C:
 	* LyXSendto.C:
@@ -703,7 +707,7 @@
 2002-02-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxlength.C (asLatexString): change PW to output as percent of
-	\textwidth. 
+	\textwidth.
 
 	* lengthcommon.C: change '%' to 't%'
 
@@ -723,13 +727,13 @@
 
 2002-02-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* lyxfunc.C (getStatus): fix status message for disabled commands. 
+	* lyxfunc.C (getStatus): fix status message for disabled commands.
 
 2002-02-01  John Levon  <moz@compsoc.man.ac.uk>
 
-	* BufferView_pimpl.C: fix crash on close buffer 
+	* BufferView_pimpl.C: fix crash on close buffer
 	during selection (#227)
- 
+
 2002-01-27  Herbert Voss  <voss@lyx.org>
 
 	* buffer.C: link old Figure to new graphic inset
@@ -759,7 +763,7 @@
 	* lyx_gui.C (init): give the toolbar tooltips a normal font.
 
 	* lyxfunc.C (getStatus): handle LFUN_LAYOUT like
-	LFUN_LAYOUT_PARAGRAPHS. 
+	LFUN_LAYOUT_PARAGRAPHS.
 
 	* tabular.C (GetCellFromInset): new method. Finds an inset in a
 	tabular. It is possible to provide a possible cell, which will
@@ -773,7 +777,7 @@
 
 	* tabular.C (Validate): remove broken optimization (fixes bug #201)
 
-	* paragraph.C (startTeXParParams): 
+	* paragraph.C (startTeXParParams):
 	(endTeXParParams): new methods. The LaTeX code to
 	start/end paragraph formatting
 	(simpleTeXOnePar): call startTeXParParams also when paragraph is
@@ -796,8 +800,8 @@
 
 	* text2.C (removeRow): add comment.  Should other refresh_?? vars be
 	updated also?
-	
-	* text.C (drawInset): Turned out I didn't know enough about how 
+
+	* text.C (drawInset): Turned out I didn't know enough about how
 	rebreaking worked.  This fixes most of the redraw problems.  I see
 	an occasional cursor trail when a line is broken now and the cursor
 	placement can seem out by a few pixels also after a rebreak.
@@ -839,9 +843,9 @@
 
 2001-12-12  Ben Stanley  <bds02@uow.edu.au>
 
-	* DepTable.h 
+	* DepTable.h
 	* DepTable.C: Implement mtime checking to reduce time spent doing
-	CRCs. 
+	CRCs.
 
 2002-01-16  Juergen Vigna  <jug@sad.it>
 
@@ -874,20 +878,20 @@
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyx_cb.C (MenuWrite): buffer->fileName is guaranteed to be
-	absolute 
+	absolute
 
 	* vc-backend.C (most methods):
-	* exporter.C (Export): 
-	* converter.C (convert): 
-	(runLaTeX): 
-	* LyXSendto.C (SendtoApplyCB): 
-	* lyxfunc.C (dispatch): 
-	(menuNew): 
-	(open): 
-	(doImport): 
-	* lyx_cb.C (AutoSave): 
-	(InsertAsciiFile): 
-	* BufferView_pimpl.C (MenuInsertLyXFile): 
+	* exporter.C (Export):
+	* converter.C (convert):
+	(runLaTeX):
+	* LyXSendto.C (SendtoApplyCB):
+	* lyxfunc.C (dispatch):
+	(menuNew):
+	(open):
+	(doImport):
+	* lyx_cb.C (AutoSave):
+	(InsertAsciiFile):
+	* BufferView_pimpl.C (MenuInsertLyXFile):
 	* buffer.C (runChktex): use Buffer::filePath().
 
 	* buffer.h: rename filename to filename_; rename filepath to
@@ -895,7 +899,7 @@
 	(filePath): new method
 
 	* buffer.C (writeFile): use fileName()
-	(getLatexName): 
+	(getLatexName):
 
 	* lyx_main.C (init): fix starting  of LyX when the binary is a
 	link from so,ewhere else.
@@ -955,7 +959,7 @@
 	* lyxrc.C (setDefaults): do not initialize document_path to $HOME.
 
 	* lyxrc.C: use string::erase() instead of initializing to "".
-	
+
 
 2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -967,9 +971,9 @@
 
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* BufferView_pimpl.C (MenuInsertLyXFile): 
-	* lyxfunc.C (menuNew): 
-	(open): 
+	* BufferView_pimpl.C (MenuInsertLyXFile):
+	* lyxfunc.C (menuNew):
+	(open):
 	(doImport): add shortcuts to directory buttons
 
 	* BufferView_pimpl.C (workAreaButtonRelease): remove dead code (to
@@ -1014,19 +1018,19 @@
 	* BufferView2.C (removeAutoInsets): ensure we have a valid cursor if
 	the old cursor is now invalid due to deleteEmptyParagraphMechanism.
 	There is still a way to segfault this although you may have to do this
-	multiple times: Have an InsetERT with an unknown command in it. 
+	multiple times: Have an InsetERT with an unknown command in it.
 	View->DVI, move cursor between Error box and InsetERT and hit <Enter>,
 	<down-arrow>, <Enter> again, View->DVI, BANG!
 
-	* text2.C (setCursor): 
-	(deleteEmptyParagraphMechanism): 
-	* lyxtext.h (setCursor): 
+	* text2.C (setCursor):
+	(deleteEmptyParagraphMechanism):
+	* lyxtext.h (setCursor):
 	(deleteEmptyParagraphMechanism): return true if the paragraph was deleted.
 	Making use of the return value may help fix other bugs.
 
 2002-01-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* lyxfunc.C (dispatch): update toolbar/menubar after dispatching. 
+	* lyxfunc.C (dispatch): update toolbar/menubar after dispatching.
 
 	* LyXView.C (updateMenubar): call MenuBar::update here
 	(updateToolbar): but not here
@@ -1042,7 +1046,7 @@
 	* LyXAction.C (retrieveActionArg): make it work also when action
 	is not a pseudo-action.
 	(getActionName): simplify a bit
-	(helpText): 
+	(helpText):
 
 2002-01-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
@@ -1089,7 +1093,7 @@
 	* lyxrc.[Ch]: change names and descriptions of popup font variables to
 	reflect their actual use. Provide compatibility code for older lyxrc
 	files.
-	
+
 	* lyx_gui.C (init): revoke change of 2002-01-07 of popup font style to
 	FL_NORMAL_STYLE.
 	change names of popup font variables in line with the changes to lyxrc.C
@@ -1104,13 +1108,13 @@
 
 2002-01-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* LaTeXFeatures.C (getMacros): 
+	* LaTeXFeatures.C (getMacros):
 	* buffer.C (validate): rename feature "amsstyle" to "amsmath"
-	
+
 	* buffer.C (makeLaTeXFile): remove test for "amsstyle" from here.
 
 	* LaTeXFeatures.C (useFloat): require "float" here instead of in
-	getPackages. 
+	getPackages.
 	(getPackages): rename feature "floats" to "float". Use an array to
 	iterate over 'simple' features (i.e. just a \usepackage). Add
 	handling of "amsmath" (renamed from "amsstyle").
@@ -1129,7 +1133,7 @@
 
 	* FuncStatus.[Ch]: new files. This is a rewrite as a proper class
 	of the func_satus stuff. Edited and massaged in various ways by
-	JMarc.  
+	JMarc.
 
 	* lyxfunc.C (getStatus): use FuncStatus
 
@@ -1172,11 +1176,11 @@
 	  the screen (bug #162)
 
 	* BufferView_pimpl.C: add some insetHit debug
- 
+
 2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
 
 	* vc-backend.C: add FIXME
- 
+
 2002-01-03  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): enable code for showing math font status
@@ -1212,7 +1216,7 @@
 	* form_maths_panel.C:
 	* form_maths_panel.h:
 	* form_maths_panel.fd: implemented sub- and super- buttons in math
-	panel. 
+	panel.
 
 	* lyx_main.C: Revised hardwired bindings to allow original _ and ^
 	(or ^ space) to be used as in TeX (req'd by André).
@@ -1243,9 +1247,9 @@
 
 	* text2.C (setCursor): add a couple of asserts.
 
-	* paragraph.h (inset_iterator): add -> operator 
+	* paragraph.h (inset_iterator): add -> operator
 
-	* paragraph.[Ch] (autoDeleteInsets): remove member function 
+	* paragraph.[Ch] (autoDeleteInsets): remove member function
 
 	* BufferView2.C (removeAutoInsets): rewrite to handle the old
 	cursor pos correctly and handle inset deletion by itself.
@@ -1254,9 +1258,9 @@
 	* lyxtextclass.C: add <algorithm>
 
 	* Makefile.am: added the new files to sources, removed layout.C
-	
+
 	* layout.C: removed file
-	
+
 	* layout.h: remove LYX_DUMMY_LAYOUT
 
 	* lyxtextclasslist.C (NumberOfLayout): do not special case dummy
@@ -1264,11 +1268,11 @@
 
 	* lyxlayout.[Ch]:
 	* lyxtextclass.[Ch]:
-	* lyxtextclasslist.[Ch]: new files 
+	* lyxtextclasslist.[Ch]: new files
 
 	* include order changes to a lot of files, also changes because of
 	the six new files.
-	
+
 2001-12-27  Juergen Vigna  <jug@sad.it>
 
 	* buffer.C (asciiParagraph): more fixes.
@@ -1300,7 +1304,7 @@
 
 	* lyxfunc.C (getStatus): use func_status::toggle to simplify the
 	code. Support all font-changing funcs (even those which are not in
-	menu currently). Support for reporting font settings in 
+	menu currently). Support for reporting font settings in
 	mathed (disabled until Andre provides a function on mathed's side).
 
 	* func_status.h (toggle): small helper function to set toggle
@@ -1330,19 +1334,19 @@
 
 	* Thesaurus.C: always include <config.h> in sources.
 
-	* Painter.h: 
-	* lyxlookup.h: 
+	* Painter.h:
+	* lyxlookup.h:
 	* box.h: do not include <config.h> in header files
 
 	* text.C (paintLastRow): remove unused variable
 
-	* text.C (transformChar): 
-	(insertChar): 
+	* text.C (transformChar):
+	(insertChar):
 	* tabular-old.C (getTokenValue): use IsDigit instead of isdigit.
 
-	* Painter.C (text): 
+	* Painter.C (text):
 	* font.C (width): rewrite to use uppercase() instead of
-	islower/toupper. 
+	islower/toupper.
 
 	* lyxfind.C (IsStringInText): use uppercase instead of toupper.
 
@@ -1394,7 +1398,7 @@
 
 2001-12-15  John Levon  <moz@compsoc.man.ac.uk>
 
-	* BufferView.h: 
+	* BufferView.h:
 	* BufferView.C:
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C: cleanup and fix of checkInsetHit().
@@ -1408,7 +1412,7 @@
 	* minibuffer.C: don't add empty lines to the history
 
 	* minibuffer.C: add a space on dropdown completion
- 
+
 2001-12-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* text.C: fix line above/below drawing in insets
@@ -1419,7 +1423,7 @@
 
 2001-12-15  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* CutAndPaste.C (SwitchLayoutsBetweenClasses): Use buffer language 
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): Use buffer language
 	when inserting error insets.
 
 2001-12-13  Juergen Vigna  <jug@sad.it>
@@ -1468,8 +1472,8 @@
 	documents with lots of insets. If Inset::parOwner is not set, fall
 	back on the brute force method
 
-	* paragraph_pimpl.C (insertInset): 
-	* paragraph.C (Paragraph): 
+	* paragraph_pimpl.C (insertInset):
+	* paragraph.C (Paragraph):
 	(cutIntoMinibuffer): set parOwner of insets when
 	inserting/removing them
 
@@ -1497,8 +1501,8 @@
 	documents with lots of insets. If Inset::parOwner is not set, fall
 	back on the brute force method
 
-	* paragraph_pimpl.C (insertInset): 
-	* paragraph.C (Paragraph): 
+	* paragraph_pimpl.C (insertInset):
+	* paragraph.C (Paragraph):
 	(cutIntoMinibuffer): set parOwner of insets when
 	inserting/removing them
 
@@ -1506,8 +1510,8 @@
 
 2001-12-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* tabular-old.C (getTokenValue): 
-	* tabular.C (getTokenValue): 
+	* tabular-old.C (getTokenValue):
+	* tabular.C (getTokenValue):
 	(write_attribute): new versions for LyXLength
 	(everywhere): adjust the use of widths
 
@@ -1527,7 +1531,7 @@
 	paragraph' one.
 
 	* text.C (workWidth): small optimization
-	(getLengthMarkerHeight): use minimal size for negative lengths. 
+	(getLengthMarkerHeight): use minimal size for negative lengths.
 
 2001-12-11  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -1543,16 +1547,16 @@
 2001-12-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* text2.C: keep selection on a setFont()
- 
+
 2001-12-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_cb.C: another bv->text misuse, from insert label
- 
+
 2001-12-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* kbsequence.h:
 	* kbsequence.C: re-instate nmodifier mask
- 
+
 2001-12-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyx_main.h: make lyxGUI private.
@@ -1560,14 +1564,14 @@
 2001-12-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfind.C: place the cursor correctly on failed search
- 
+
 2001-12-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* text.C (getLengthMarkerHeight): for small heights, the arrows
 	are not always on top/bottom of the text
 	(drawLengthMarker): smaller arrows; take the left margin in
 	account; draw also vfills.
-	(paintFirstRow): 
+	(paintFirstRow):
 	(paintLastRow): remove special code for vfill and standard spaces,
 	since everything is handled in drawLengthMarker now.
 
@@ -1622,7 +1626,7 @@
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: fix insertAscii for insets
- 
+
 2001-12-05  Juergen Vigna  <jug@sad.it>
 
 	* CutAndPaste.C (pasteSelection): remove not allowed insets/chars and
@@ -1637,7 +1641,7 @@
 	* lyxlength.C: remove out-commented code.
 
 	* BufferView_pimpl:
-	* CutAndPaste.C: 
+	* CutAndPaste.C:
 	* DepTable.C:
 	* buffer.C:
 	* chset.C:
@@ -1651,11 +1655,11 @@
 	* text.C:
 	* trans_mgr.C:
 	* vc-backend.C: change "while(" to "while ("
-	
+
 	* lyxlength.[Ch]: add zero function to check if length is zero or
 	not
 	* lyxgluelength.C: use it
-	
+
 2001-12-05  Allan Rae  <rae@lyx.org>
 
 	* lyxlength.C: Attempted a fix for the abs(int) header selection.
@@ -1684,7 +1688,7 @@
 2001-12-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: fix show options on timeout
- 
+
 2001-12-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* screen.C (topCursorVisible): scroll half a page when the cursor
@@ -1693,10 +1697,10 @@
 2001-12-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* minibuffer.C: deactivate on loss of focus
- 
+
 2001-12-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* vspace.[Ch] (operator!=): add operator. 
+	* vspace.[Ch] (operator!=): add operator.
 
 2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -1706,7 +1710,7 @@
 2001-11-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: allow to click on RHS of full row insets
- 
+
 2001-11-30  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (LyXTabular): add a same_id to set the same id's in the
@@ -1736,7 +1740,7 @@
 	* buffer.C (makeDocBookFile): add a comment to point a hack.
 	(simpleDocBookOnePar): changed a PAR::META_INSET to isInset().
 	Fixed a double write of labels.
-	
+
 2001-11-29 Ben Stanley <bds02@uow.edu.au>
 
 	* LaTeX.C:
@@ -1794,7 +1798,7 @@
 
 2001-11-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* BufferView2.C (copy): 
+	* BufferView2.C (copy):
 	(copyEnvironment): do not clear the selection when doing a copy.
 
 	* text.C (paintFirstRow): compilation fix
@@ -1811,12 +1815,12 @@
 
 2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
 
-	* text.C: 
+	* text.C:
 	* LColor.h:
 	* LColor.C: change vfillline->added_space
- 
+
 	* text.C: add markers and text for added space
- 
+
 	* vspace.C: fix comment
 
 2001-11-28  André Pönitz <poenitz@gmx.net>
@@ -1824,14 +1828,14 @@
 	* paragraph.C: whitespace changes
 	* all the other files from the change on 2001/11/26:
 	change *::pos_type into lyx::pos_type
-	
+
 2001-11-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (parseSingleLyXformat2Token): Set the language to the
 	language of the document when inserting error insets.
 
 2001-11-26  André Pönitz <poenitz@gmx.net>
-	
+
 	* BufferView_pimpl.[Ch]:
 	*	CutAndPaste.C:
 	* buffer.[Ch]:
@@ -1847,8 +1851,8 @@
 
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 
-	* <various>: change to use Alert.h 
-	 
+	* <various>: change to use Alert.h
+
 2001-11-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (parseSingleLyXformat2Token): Insert an error inset
@@ -1861,19 +1865,19 @@
 	* BufferView_pimpl.C:
 	* buffer.C:
 	* paragraph.h:
-	* text.C: 
+	* text.C:
 	* text2.C: use par->isInset()
-	 
+
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* paragraph_pimpl.h:
-	* paragraph_pimpl.C: cleanup 
-	 
+	* paragraph_pimpl.C: cleanup
+
 2001-11-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* text2.C (removeRow): 
+	* text2.C (removeRow):
 	* text.C (setHeightOfRow): remove useless (and costly) call to
-	getRow. 
+	getRow.
 
 2001-11-20  Allan Rae  <rae@lyx.org>
 
@@ -1895,11 +1899,11 @@
 
 	* lyxserver.C (emergencyCleanup): do not try to close pipes if
 	server is not running.
-	(openConnection): 
+	(openConnection):
 	(closeConnection): add debug info when server is disabled.
 
 	* ColorHandler.C (getGCForeground): send debug message to GUI
-	channel. 
+	channel.
 
 	* lyxrc.C: do not include lyxserver.h and tex-strings.h.
 
@@ -1928,37 +1932,37 @@
 	that protected spaces are considered as spaces.
 
 	* paragraph.C (isLetter): cleanup the code for ispell extras; use
-	Inset::isLetter. 
+	Inset::isLetter.
 
 2001-11-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxserver.h:
 	* lyxserver.C: fix it. and small cleanup.
- 
+
 2001-11-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: use inline helpers
- 
-	* LaTeXFeatures.h: 
+
+	* LaTeXFeatures.h:
 	* LaTeXFeatures.C: fix typos
 
 	* Spacing.h:
-	* Spacing.C: move spacing_string into class 
+	* Spacing.C: move spacing_string into class
 
 	* ToolbarDefaults.C: move stuff into namespace anon
- 
+
 	* layout.h: update enum
 
 	* lyxfunc.C: use better debug
 
 	* minibuffer.h: fix typo
- 
+
 	* debug.h:
 	* debug.C:
 	* WorkArea.C: add and use Debug::WORKAREA
 
 	* lyxtext.h:
-	* text.C: 
+	* text.C:
 	* text2.C: code re-organisation, inline helpers
 
 2001-11-09  Michael A. Koziarski <michael@koziarski.org>
@@ -1975,13 +1979,13 @@
 2001-11-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* minibuffer.h:
-	* minibuffer.C: fix crash, improve drop-down completion 
- 
+	* minibuffer.C: fix crash, improve drop-down completion
+
 2001-11-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxserver.h:
 	* lyxserver.C: invalidate fd's when doing endPipe()
- 
+
 2001-11-08  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (sgmlLineBreak): renamed from linux_doc_line_break.
@@ -2004,25 +2008,25 @@
 
 2001-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* buffer.C (saveParamsAsDefaults): 
+	* buffer.C (saveParamsAsDefaults):
 	* lyx_cb.C (MenuLayoutSave): remove
 
-	* LyXAction.C (init): 
-	* commandtags.h: 
+	* LyXAction.C (init):
+	* commandtags.h:
 	* lyxfunc.C (dispatch): remove LFUN_LAYOUT_SAVE_DEFAULT.
 
 2001-11-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* buffer.C (setPaperStuff): removed from here...
 
-	* bufferparams.C (setPaperStuff): ... and moved there.	
+	* bufferparams.C (setPaperStuff): ... and moved there.
 
 2001-11-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* minibuffer.h:
 	* minibuffer.C:
 	* XFormsView.C: add support for drop-down completion
- 
+
 2001-11-03  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* paragraph.C (TeXOnePar): Correct placement of \selectlanguage
@@ -2031,12 +2035,12 @@
 2001-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* gettext.C (locale_init): set LC_NUMERIC to "C" even if nls is
-	disabled. 
+	disabled.
 
 2001-10-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_main.C: change ref to known bugs
- 
+
 2001-10-30  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* LaTeXFeatures.C (getPackages): Use lyxskak.sty now instead
@@ -2079,7 +2083,7 @@
 
 	* tabular.C (DocBook): removed / terminator to be more SGML friendly,
 	if we need to output XML that should be done with a filter.
-	
+
 2001-10-22  Juergen Vigna  <jug@sad.it>
 
 	* sp_pspell.h (class PSpell): add alive function needed in the
@@ -2118,16 +2122,16 @@
 
 	* lyxtext.h: change type of refresh_pos to Paragraph::size_type;
 	change return type of getColumnNearX.
-	
+
 
 	* text.C (changeRegionCase): use uppercase/lowercase instead of
-	toupper/tolower. 
-	(leftMargin): 
+	toupper/tolower.
+	(leftMargin):
 	(rightMargin): simplify code by factoring out the uses of
 	textclasslist.
-	(labelFill): 
-	(numberOfHfills): 
-	(setHeightOfRow): 
+	(labelFill):
+	(numberOfHfills):
+	(setHeightOfRow):
 	(appendParagraph): use Paragraph::size_type
 
 2001-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -2230,24 +2234,24 @@
 
 2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyxrc.C (read): 
-	* vspace.C (inPixels): 
-	(lyx_advance): 
-	* kbmap.C (bind): 
-	* buffer.C (insertStringAsLines): 
+	* lyxrc.C (read):
+	* vspace.C (inPixels):
+	(lyx_advance):
+	* kbmap.C (bind):
+	* buffer.C (insertStringAsLines):
 	(asciiParagraph): fix types to be large enough
 
 	* lyxlex_pimpl.h: change member status from short to int
 
 	* layout.h: fix type of endlabeltype
 
-	* kbmap.C (bind): 
+	* kbmap.C (bind):
 	* kbsequence.C (parse): change return type to string::size_type
 
 	* LaTeX.C (updateBibtexDependencies): comment out unneeded
 	variable
 
-	* Bullet.C (bulletSize): 
+	* Bullet.C (bulletSize):
 	(bulletEntry): do not use short ints as parameters
 
 	* BufferView2.C (insertLyXFile): change a char to an int.
@@ -2259,7 +2263,7 @@
 	* buffer.C (asciiParagraph): Treat '\\' as other chars.
 
 	* paragraph.C (asString): Do not ignore newline/hfill chars when
- 	copying to the clipboard.
+	copying to the clipboard.
 
 2001-09-29  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -2291,7 +2295,7 @@
 	(deleteEmptyParagraphMechanism): call the method above on _all_
 	cursors held by the LyXText when a double space has been
 	detected/deleted.
- 
+
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C (buffer): call WorkArea::show to pop-up the
@@ -2376,16 +2380,16 @@
 
 2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* text2.C (copySelection): 
-	(cutSelection): 
-	* lyxfind.C (LyXReplace): 
+	* text2.C (copySelection):
+	(cutSelection):
+	* lyxfind.C (LyXReplace):
 	* BufferView_pimpl.C (Dispatch): pass the correct flag to
-	LyXText::selectionAsString. 
+	LyXText::selectionAsString.
 
 	* paragraph.C (asString): add "label" argument to the second form
 
 	* text2.C (selectionAsString): add "label" argument and pass it to
-	Paragraph::asString. 
+	Paragraph::asString.
 
 2001-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -2459,7 +2463,7 @@
 
 	* BufferView_pimpl.C: allow to create index inset even if
 	  string is empty
- 
+
 2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* buffer.C (getLists): replace boost::tie code with an explicit pair
@@ -2472,13 +2476,13 @@
 
 	* lyxrc.C: add help for view_dvi_paper_option, default to safe
 	  case.
- 
+
 2001-09-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* iterators.[Ch]: New files. Provide paragraph iterators.
 
 	* buffer.C (changeLanguage): Use paragraph iterators.
-	(isMultiLingual): ditto 
+	(isMultiLingual): ditto
 
 	* BufferView2.C (ChangeInsets): Use paragraph iterators.
 
@@ -2511,12 +2515,12 @@
 2001-08-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Spacing.h (Spacing): Set space to Default on in the default
- 	constructor.
+	constructor.
 
 2001-08-19  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* vc-backend.h (RCS::versionString): add RCS to version 
-	(CVS::versionString): add CVS to version 
+	* vc-backend.h (RCS::versionString): add RCS to version
+	(CVS::versionString): add CVS to version
 
 	* vc-backend.C (scanMaster): do not add CVS to version.
 	(scanMaster): do not add RCS to version
@@ -2540,11 +2544,11 @@
 
 2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
 
-	* BufferView_pimpl.C: 
+	* BufferView_pimpl.C:
 	* figureForm.C:
 	* lyxtext.h:
 	* text2.C: setParagraph takes linespacing now
- 
+
 2001-08-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyxAction.C: add internal LFUN_CITATION_INSERT
@@ -2552,11 +2556,11 @@
 	* LyXView.C: actually apply fix
 
 	* bufferlist.C: fix open non-existent file
- 
+
 	* lyxfind.C: fix indentation
- 
+
 	* lyxfunc.C: remove unneeded assert, fix typo
- 
+
 2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* MenuBackend.C: use "Floatname List"
@@ -2718,14 +2722,14 @@
 	* bufferlist.C (loadLyXFile): add .lyx to file name if necessary
 
 2001-08-01  John Levon  <moz@compsoc.man.ac.uk>
- 
-	* lyxfunc.c: fail gracefully if file doesn't exist 
- 
+
+	* lyxfunc.c: fail gracefully if file doesn't exist
+
 	* LyXSendto.C:
 	* buffer.C:
 	* lyxfunc.C:
-	* BufferView_pimpl.C: IsDirWriteable() proto changed 
- 
+	* BufferView_pimpl.C: IsDirWriteable() proto changed
+
 	* LyXView.C: fix updateWindowTitle() to store the last title
 
 2001-07-31  Juergen Vigna  <jug@sad.it>
@@ -2840,7 +2844,7 @@
 	* lyxfind.h:
 	* lyxfind.C: add "once" parameter, for thesaurus, to not
 	  move to the next match
-  
+
 2001-07-26  Juergen Vigna  <jug@sad.it>
 
 	* lyxfont.C (realize): honor ignore_language too!
@@ -2890,7 +2894,7 @@
 	* font.C (buttonText): make similar to rectText
 
 	* buffer.C (readInset): comment out parsing of insetlist and
-	insttheorem 
+	insttheorem
 
 	* PainterBase.C (rectText): small correction
 
@@ -2934,7 +2938,7 @@
 
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* ToolbarDefaults.C (read): 
+	* ToolbarDefaults.C (read):
 	* MenuBackend.C (read): allow escaping in all strings
 
 	* BufferView_pimpl.C (insertAndEditInset): new method.
@@ -2962,7 +2966,7 @@
 	boundary.
 	(selectNextWord): use kind() to guess type of insetspecialchar,
 	not latex().
-	
+
 	* buffer.C (insertStringAsLines): new method, extracted from LyXText.
 	(insertErtContents): create ert insets as collapsed.
 	(readInset): better compatibility code for Info inset.
@@ -2995,8 +2999,8 @@
 
 2001-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* LyXAction.C (init): 
-	* commandtags.h: 
+	* LyXAction.C (init):
+	* commandtags.h:
 	* BufferView_pimpl.C (Dispatch): change HYPHENATION_BREAK to
 	LIGATURE_BREAK, since the name is so stupid.
 
@@ -3023,7 +3027,7 @@
 	hyphenationPoint(), which are therefore removed.
 	(Dispatch): handle LFUN_HYPHENATION_BREAK.
 
-	* LyXAction.C (init): 
+	* LyXAction.C (init):
 	* commandtags.h: add LFUN_HYPHENATION_BREAK.
 
 	* paragraph.C (getWord): removed.
@@ -3060,14 +3064,14 @@
 	* lyxfunc.C (getStatus): add support for all the inset insertion
 	commands.
 
-	* text2.C (insertInset): 
-	* paragraph.C (insetAllowed): 
+	* text2.C (insertInset):
+	* paragraph.C (insetAllowed):
 	* BufferView_pimpl.C (insertInset): update to take in account the
 	renaming of insertInsetAllowed
 
 	* lyxfunc.C (getStatus): add support for LFUN_INSET_TOGGLE.
 
-	* text2.C (getInset): new method. returns inset at cursor position. 
+	* text2.C (getInset): new method. returns inset at cursor position.
 
 	* BufferView_pimpl.C (Dispatch): changes because of this.
 
@@ -3177,7 +3181,7 @@
 
 	* layout.h: Added bool pass_thru to layout class for being able to
 	implement pass through of a paragraph for Literate Programming.
-	
+
 	* layout.C: add LT_PASS_THRU to LayoutTags enum.
 	* layout.C (LyXLayout): set pass_thru to flase in constructor.
 	* layout.C (Read): add "passthru" to list of layout tags and add
@@ -3188,7 +3192,7 @@
 	* trans_decl.h: remove allowed from KmodInfo
 
 	* trans.[Ch] (AddDeakkey): change prototype to not have allowd.
-	remove allowed code 
+	remove allowed code
 	(Load): adjust
 
 	* paragraph_pimpl.C (erase): use boost::prior
@@ -3295,7 +3299,7 @@
 
 	* a lot of files: changed the access to LyXText::status and the
 	call of undo-functions.
-	
+
 	* undo.[Ch]: added a inset_id to the undo informations.
 
 	* undo_funcs.[Ch]: added and moved here all undo functions.
@@ -3336,7 +3340,7 @@
 
 2001-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* screen.[Ch]: change method names to begin with lowercase 
+	* screen.[Ch]: change method names to begin with lowercase
 
 	* BufferView_pimpl.C (updateScrollbar): simplify further and
 	hopefully make it a bit faster.
@@ -3346,8 +3350,8 @@
 	* ColorHandler.C (LyXColorHandler): use GUIRunTime instead of
 	calling directly xforms functions.
 
-	* Painter.C (Painter): 
-	* lyx_cb.C (MenuWrite): 
+	* Painter.C (Painter):
+	* lyx_cb.C (MenuWrite):
 	* FontInfo.C (query): use GUIRunTime::x11Display() instead of
 	fl_display.
 
@@ -3369,7 +3373,7 @@
 2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* modifications to some other files because of this.
-	
+
 	* Makefile.am (lyx_SOURCES): add XFormsView
 
 	* XFormsView.[Ch]: new files
@@ -3384,18 +3388,18 @@
 
 	* lyxfunc.C: no need to include figure_form.h here.
 
-	* FontLoader.h: 
-	* lyxfunc.h: 
-	* lyxscreen.h: 
-	* text2.C: 
+	* FontLoader.h:
+	* lyxfunc.h:
+	* lyxscreen.h:
+	* text2.C:
 	* lyxvc.C: no need to include forms.h here.
 
 2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxrc.C (read): change debugging channel for RC_BIND to lyxrc.
 
-	* lyxfunc.C (Dispatch): 
-	* Spacing.C (set): 
+	* lyxfunc.C (Dispatch):
+	* Spacing.C (set):
 	* BufferView_pimpl.C (Dispatch): use .c_str() on istringstream
 	constructor argument.
 
@@ -3417,7 +3421,7 @@
 2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* paragraph_pimpl.C: add std:: qualifier to lower_bound and
-	upper_bound. 
+	upper_bound.
 
 	* bufferlist.C: include assert.h for emergencyWrite().
 
@@ -3425,7 +3429,7 @@
 
 	* lyx_main.C: if we can't even find a readable LYX_DIR directory,
 	  give up at last (bug #425202) !
- 
+
 2001-06-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui_misc.C:
@@ -3434,7 +3438,7 @@
 	* spellchecker.h:
 	* spellchecker.C: strip spellchecker options and bring up
 	  preferences tab instead
-	 
+
 2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* BufferView_pimpl.C (Dispatch): add .c_str() to the argument of
@@ -3480,10 +3484,10 @@
 	* lyxfunc.C (getStatus): support LFUN_MATH_MUTATE
 
 	* many files: send debug output to Debug::INFO instead of
-	Debug::ANY. 
+	Debug::ANY.
 
-	* converter.C (View): 
-	(Convert): 
+	* converter.C (View):
+	(Convert):
 	(Move): send debug output to Debug::FILES instead of console.
 
 2001-06-26  The LyX Project  <lyx@rose.home.sad.it>
@@ -3500,7 +3504,7 @@
 
 	* buffer.C (sgmlOpenTag):
 	(sgmlCloseTag):
-	(SimpleDocBookOnePar): 	disable the depth spaces, for the moment.
+	(SimpleDocBookOnePar):	disable the depth spaces, for the moment.
 
 2001-06-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -3528,11 +3532,11 @@
 
 	* lyxfunc.C (MenuNew): remove extra check for .lyx file
 
-	* lyxfunc.C (Open): 
+	* lyxfunc.C (Open):
 	* bufferlist.C (newFile): do not restrict to files ending with
 	.lyx
 
-	* BufferView_pimpl.C (MenuInsertLyXFile): 
+	* BufferView_pimpl.C (MenuInsertLyXFile):
 
 2001-06-24  The LyX Project  <jug@sad.it>
 
@@ -3563,8 +3567,8 @@
 	* paragraph.[Ch] (outerHook): new method. mostly equivalent to
 	depthHook(getDepth()-1).
 
-	* paragraph.h: 
-	* ParagraphParameters.h: 
+	* paragraph.h:
+	* ParagraphParameters.h:
 	* ParameterStruct.h: change type of depth to unsigned int ==
 	depth_type. Many adaptations to other files before of that.
 
@@ -3591,7 +3595,7 @@
 
 	* Clean-up of header file includes all over
 	* paragraph.h: Move some of the stuff into paragraph_pimpl.h
-	
+
 2001-06-23  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.h: renamed from lyxparagraph.h
@@ -3600,7 +3604,7 @@
 
 	* Buffer.h: Removed Buffer::resize
 	* BufferList.h: Removed BufferList::resize
-	* LyXView.h: Added LyXView::resize. This way, we will only reflow 
+	* LyXView.h: Added LyXView::resize. This way, we will only reflow
 	the document lazily when we change the width, or the font settings.
 
 2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
@@ -3615,12 +3619,12 @@
 
 	* lyxscreen.h:
 	* screen.C: fix "theoretical" GC leak
- 
+
 2001-06-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LaTeX.C (scanAuxFile):
 	(deplog): remove trailing \r when reading stream (useful under
-	win32)  
+	win32)
 
 2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -3635,7 +3639,7 @@
 
 	* Makefile.am:
 	* tex-defs.h: remove old unused file
-	 
+
 2001-06-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: fix typo, remove minibuffer message
@@ -3689,7 +3693,7 @@
 
 2001-06-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* gettext.C: include LString.h even when --disable-nls is on. 
+	* gettext.C: include LString.h even when --disable-nls is on.
 
 2001-06-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -3701,7 +3705,7 @@
 
 2001-06-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* gettext.h: include LString.h even when --disable-nls is on. 
+	* gettext.h: include LString.h even when --disable-nls is on.
 
 2001-06-07  Juergen Vigna  <jug@sad.it>
 
@@ -3712,7 +3716,7 @@
 
 2001-06-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* gettext.h (gettext_init): 
+	* gettext.h (gettext_init):
 	(locale_init): use a real definition instead of a macro
 
 2001-06-02  John Levon  <moz@compsoc.man.ac.uk>
@@ -3745,9 +3749,9 @@
 
 2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyxfont.C: 
+	* lyxfont.C:
 	* tabular.C:
-	* tabular-old.C: 
+	* tabular-old.C:
 	* FontInfo.C: bring C functions into global namespace when
 	necessary
 
@@ -3759,7 +3763,7 @@
 	(one for each char read by EatLine!).
 
 	* lyx_main.C (init): constify lyxdir. Lowercase the name of some
-	variables. 
+	variables.
 
 2001-06-01  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -3782,7 +3786,7 @@
 
 	* text2.C: adjust
 	* text.C: adjust
-	
+
 
 	* tabular.C (getTokenValue): add std::
 
@@ -3885,13 +3889,13 @@
 
 	* BufferView_pimpl.C (Dispatch::LFUN_QUOTE): change it to to the insertcorrectQuote.
 	(Dispatch::LFUN_SELFINSERT): fix to handle math greek,
-	auto_region_delete and deadkeys. 
+	auto_region_delete and deadkeys.
 
 2001-05-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LColor.h:
 	* LColor.C: remove some dead entries, tidy a little
- 
+
 2001-05-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxfunc.C (processKeySym): comment the Escape handling, remove
@@ -3923,7 +3927,7 @@
 	* lyx_gui.C:
 	* lyx_main:
 	* lyx_main.C: Added os:: class.
-	
+
 	* os2_defines.h: update
 
 2001-05-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -4016,7 +4020,7 @@
 	(expand::LastFiles): move initalizaton of iterators out of loop,
 	avoid reevaluation.
 	(expand::Documents): introduce typdedef vector<string> Strings,
-	and use it. 
+	and use it.
 	(expand::ExportFormats): introduce typedef vector<Format const *>
 	Formats, and use it.
 	(expand): implement FloatListInsert and FloatInsert.
@@ -4026,13 +4030,13 @@
 	LFUN_LOTVIEW. Add entry for LFUN_FLOAT_LIST
 
 	* BufferView_pimpl.C (Dispatch::LFUN_TOC_INSERT): remvoe the float
-	handling. 
+	handling.
 	(Dispatch::LFUN_FLOAT_LIST): implement
 
 2001-04-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
- 
- 	* LaTeX.C (run): Fix problem with --export code.
- 
+
+	* LaTeX.C (run): Fix problem with --export code.
+
 2001-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView.[Ch] (workarea): removed.
@@ -4165,7 +4169,7 @@
 	* lyxvc.C: adjust
 	* text2.C: adjust
 	+ more files in subdirs
-	
+
 	* lyxparagraph.h (size): move up int file
 	(GetLayout): ditto
 
@@ -4198,15 +4202,15 @@
 
 2001-04-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyxfunc.C (Dispatch): 
-	* minibuffer.C: 
+	* lyxfunc.C (Dispatch):
+	* minibuffer.C:
 	* minibuffer.h: add a few std:: qualifiers
 
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* minibuffer.[Ch]: reimplement so that commands is initiated and
 	run from lyxfunc, simplified som handling, and made the completion
-	and history code for complete. wip. 
+	and history code for complete. wip.
 
 	* lyxfunc.C (processKeySym): call message
 	(miniDispatch): new temporary method
@@ -4220,7 +4224,7 @@
 
 	* lyx_gui_misc.C (WriteAlert): use LFUN_MESSAGE
 
-	* lyx_gui_misc.[Ch] (WriteStatus): remove method 
+	* lyx_gui_misc.[Ch] (WriteStatus): remove method
 
 	* lyx_cb.[Ch] (ShowMessage): remove delay arg, use LFUN_MESSAGE
 	(AutoSave): use LFUN_MESSAGE
@@ -4312,14 +4316,14 @@
 
 2001-04-16  Allan Rae  <rae@lyx.org>
 
-	* tabular-old.C (l_getline): 
-	* spellchecker.C (sc_check_word): 
+	* tabular-old.C (l_getline):
+	* spellchecker.C (sc_check_word):
 	* lyxfunc.C (Dispatch): #warning triggers an error on Sun CC 6.0 as
-	an unrecognised preprocessor directive.  So ensure they're wrapped. 
+	an unrecognised preprocessor directive.  So ensure they're wrapped.
 
 2001-04-14  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/exporter.C (Export): Give an error message when path to file 
+	* src/exporter.C (Export): Give an error message when path to file
 	contains spaces.
 
 2001-04-12  Dekel Tsur  <dekelts@tau.ac.il>
@@ -4328,8 +4332,8 @@
 
 2001-04-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyx_main.h: 
-	* lyx_main.C (ReadLanguagesFile): fix weird typo in method name 
+	* lyx_main.h:
+	* lyx_main.C (ReadLanguagesFile): fix weird typo in method name
 
 2001-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -4356,26 +4360,26 @@
 
 2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* exporter.C: 
-	* paragraph.C: 
-	* screen.C: 
-	* tabular.C: 
+	* exporter.C:
+	* paragraph.C:
+	* screen.C:
+	* tabular.C:
 	* CutAndPaste.C: include gettext.h
 
 	* lyxfont.h: remove old hack with ON and OFF.
 
-	* lyxparagraph.h: 
+	* lyxparagraph.h:
 	* lyxfont.h: do not include language.h...
 
-	* BufferView2.C: 
-	* LaTeXFeatures.C: 
-	* Painter.C: 
-	* bufferview_funcs.C: 
-	* font.C: 
-	* lyxfont.C: 
-	* text.C: 
-	* text2.C: 
-	* trans_mgr.C: 
+	* BufferView2.C:
+	* LaTeXFeatures.C:
+	* Painter.C:
+	* bufferview_funcs.C:
+	* font.C:
+	* lyxfont.C:
+	* text.C:
+	* text2.C:
+	* trans_mgr.C:
 	* paragraph.C: ... but do it here instead
 
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -4400,7 +4404,7 @@
 
 	* MenuBackend.C (class compare_format): put into anon namespace
 	(expand): constify label, names, action, action2
-	(expand): 
+	(expand):
 
 	* text.C (SingleWidth): constify font
 	(IsBoundary): constify rtl2
@@ -4424,7 +4428,7 @@
 	constructors
 	(shape): move to lyxfont.h as inline
 	(emph): move to lyxfont.h as inline
-	
+
 
 2001-04-04  Juergen Vigna  <jug@sad.it>
 
@@ -4432,7 +4436,7 @@
 
 2001-04-03  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* BufferView.h: 
+	* BufferView.h:
 	* BufferView_pimpl.h: remove xforms cruft. Both classes are
 	independent of xforms.
 
@@ -4527,7 +4531,7 @@
 	fixed bug related to <emphasis> in the first paragraph char.
 	(sgmlOpenTag): exclude empty tags.
 	(sgmlCloseTag): ditto.
-	
+
 	* buffer.h (pop_tag): removed.
 	(push_tag): removed.
 
@@ -4539,7 +4543,7 @@
 
 	* buffer.C (parseSingleLyXformat2Token): Try to give a bit better
 	response on compability reading of minipages. One probliem is that
-	the old usage of minipages was «flertydig» 
+	the old usage of minipages was «flertydig»
 
 	* several files here and in subdirs: don't use static at file
 	scope use anon namespaces instead.
@@ -4589,7 +4593,7 @@
 
 	* ParagraphParameters.C (clear): NO_PEXTRA_REALLY
 	* ParameterStruct.h: ditto
-	* ParagraphParameters.h: ditto 
+	* ParagraphParameters.h: ditto
 	* lyxparagraph.h: ditto
 
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
@@ -4636,7 +4640,7 @@
 2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyxfunc.C (Dispatch): removed redundant break statement.
-	
+
 2001-03-14  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (l_getline): pay attention on \r\n (from Windows-files)
@@ -4732,7 +4736,7 @@
 	* LaTeXFeatures.C: ditto
 	* buffer.C: ditto
 	* lyxlex_pimpl.C: ditto
-	
+
 	* paragraph.C (Last): remove when NEW_INSETS is defined.
 
 	* other file: changes because of the above.
@@ -4747,7 +4751,7 @@
 
 2001-03-08  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* BufferView.h: 
+	* BufferView.h:
 	* lyxparagraph.h: Add '#include "LString.h"' to fix compilation
 	problem.
 
@@ -4765,8 +4769,8 @@
 
 2001-03-07  Edwin Leuven  <leuven@fee.uva.nl>
 
-        * Moved credits to frontends:
-        * credits.[Ch]: removed
+	* Moved credits to frontends:
+	* credits.[Ch]: removed
 	* credits_form.[Ch]: removed
 	* lyx_gui_misc.C: remove credits stuff
 	* Makefile.am:
@@ -4823,7 +4827,7 @@
 
 	* lyxfont.h: remove copy constructor and copy assignment. (the
 	default ones is ok), move number inside FontBits. move inlines to
-	lyxfont.C 
+	lyxfont.C
 
 	* lyxfont.C: add number to initializaton of statics, move several
 	inlines here. constify several local vars. some whitespace
@@ -4847,11 +4851,11 @@
 	* bufferview_funcs.C: Likewise.
 	* text.C: Likewise.
 	* text2.C: Likewise.
-	
+
 2001-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfind.C (LyXReplace): do not redefine default argument in
-	implementation. 
+	implementation.
 	(IsStringInText): ditto
 	(SearchForward): ditto
 	(SearchBackward): ditto
@@ -4863,7 +4867,7 @@
 2001-03-05  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* lyxfind.[Ch]: find stuff moved out of text2.C/lyxtext.h
-	
+
 2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_main.C: add ISO_Left_Tab as bind synonym for Tab
@@ -4897,10 +4901,10 @@
 	* BufferView_pimpl.C: add using std::find_if
 
 2001-02-27  José Matos  <jamatos@fep.up.pt>
-	
+
 	* LaTeXFeatures.C (getIncludedFiles): call to BasePath replaced
 	by OnlyPath.
-	
+
 2001-02-11  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (makeDocBookFile): command styles now have a parameter as
@@ -4914,7 +4918,7 @@
 	* lyx_gui_misc.C: out character
 	* bufferview_funcs.C: : out character,
 	added toggleall as parameter in ToggleAndShow
-                   
+
 2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxfunc.C (getStatus): Fix the LFUN_EXPORT case.
@@ -4931,11 +4935,11 @@
 2001-02-23  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxrc.C: Add language_command_local, language_use_babel and
- 	language_global_options.
+	language_global_options.
 
 	* lyxfont.C (latexWriteStartChanges): Use language_command_local.
 
-	* buffer.C (makeLaTeXFile): Use language_use_babel and 
+	* buffer.C (makeLaTeXFile): Use language_use_babel and
 	language_global_options.
 
 2001-02-23  Juergen Vigna  <jug@sad.it>
@@ -4972,13 +4976,13 @@
 
 2001-02-20  Edwin Leuven <leuven@fee.uva.nl>
 
-        * src/layout_forms.C: out preamble
-        * src/layout_forms.h: out preamble
-        * src/lyx_cb.C: out preamble
-        * src/lyx_cb.h: out preamble
-        * src/lyx_gui.C: out preamble
-        * src/lyx_gui_misc.C: out preamble
-        * src/lyxfunc.C: connect with guii preamble
+	* src/layout_forms.C: out preamble
+	* src/layout_forms.h: out preamble
+	* src/lyx_cb.C: out preamble
+	* src/lyx_cb.h: out preamble
+	* src/lyx_gui.C: out preamble
+	* src/lyx_gui_misc.C: out preamble
+	* src/lyxfunc.C: connect with guii preamble
 
 2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -5026,16 +5030,16 @@
 
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* screen.C: 
+	* screen.C:
 	* lyxrc.[Ch]:
-	* lyxfunc.C: 
-	* lyxfont.[Ch]: 
-	* lyx_cb.C: 
-	* intl.[Ch]: 
-	* commandtags.h: 
-	* buffer.C: 
-	* WorkArea.[Ch]: 
-	* LyXAction.C: 
+	* lyxfunc.C:
+	* lyxfont.[Ch]:
+	* lyx_cb.C:
+	* intl.[Ch]:
+	* commandtags.h:
+	* buffer.C:
+	* WorkArea.[Ch]:
+	* LyXAction.C:
 	* BufferView_pimpl.C:
 	* BufferView.[Ch]: remove cruft
 
@@ -5090,7 +5094,7 @@
 	  add LFUN_CHILD_CREATE
 
 	* counters.h: fix tiny typo
-	
+
 	* lyx_cb.C:
 	* lyx.h:
 	* lyx_gui.C:
@@ -5123,7 +5127,7 @@
 
 2001-02-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* MenuBackend.C: 
+	* MenuBackend.C:
 	* MenuBackend.h: remove support for reference menuitem type.
 
 2001-02-07  John Levon  <moz@compsoc.man.ac.uk>
@@ -5135,14 +5139,14 @@
 	* Timeout.C:
 	* Timeout.h:
 	* minibuffer.h: move Timeout GUI-I
-                          
+
 2001-02-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxrc.C (read): Update converters data-structures.
 
 2001-02-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* LaTeX.h (operator!=): add operator != for Aux_Info 
+	* LaTeX.h (operator!=): add operator != for Aux_Info
 
 2001-02-06  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -5184,7 +5188,7 @@
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (scanAuxFile): A rewrite of this method. It now returns
-	all the citation/databases/styles in the auxilary file. 
+	all the citation/databases/styles in the auxilary file.
 	(run): Rerun latex if there was a babel language error.
 
 2001-02-01  Dekel Tsur  <dekelts@tau.ac.il>
@@ -5206,7 +5210,7 @@
 2001-01-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* BufferView_pimpl.h: change type of Position::par_pos to
-	LyXParagraph::size_type. 
+	LyXParagraph::size_type.
 
 2001-01-29  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -5219,10 +5223,10 @@
 	A silly restriction on the name of LatexCommand types where removed.
 	Added support for CDATA sections, allows to chars unescaped, used
 	among others in code, to avoid escape < and >.
-	
+
 2001-01-27  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* BufferView_pimpl.C (savePosition, restorePosition): Use a vector of 
+	* BufferView_pimpl.C (savePosition, restorePosition): Use a vector of
 	saved positions instrad of a stack. Furthermore, a position is
 	stored using paragraph id/paragraph position.
 
@@ -5279,7 +5283,7 @@
 2001-01-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* texrow.C (increasePos): turn two error messages into debug
-	messages. 
+	messages.
 
 2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -5308,11 +5312,11 @@
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text.C (IsBoundary): Remove the error message
-	
+
 	* WorkArea.C (work_area_handler): Decrease keyboard purge threshold.
 
 	* lyxrc.C (setDefaults): Correct initialization value for
- 	font_norm_type.
+	font_norm_type.
 
 2001-01-15  Dekel Tsur  <dekelts@tau.ac.il>
 

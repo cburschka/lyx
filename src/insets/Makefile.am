@@ -83,10 +83,3 @@ libinsets_la_SOURCES = \
 #	insetsection.C \
 #	insettheorem.C \
 #	insettheorem.h \
-
-if USE_LD_R
-libinsets.la: libinsets.o
-
-libinsets.o: $(libinsets_la_OBJECTS) $(libinsets_la_DEPENDENCIES)
-	$(CXXLINK) $(libinsets_la_OBJECTS)
-endif

@@ -138,10 +138,3 @@ libmathed_la_SOURCES = \
 	math_xyarrowinset.h \
 	math_xymatrixinset.C \
 	math_xymatrixinset.h
-
-if USE_LD_R
-libmathed.la: libmathed.o
-
-libmathed.o: $(libmathed_la_OBJECTS) $(libmathed_la_DEPENDENCIES)
-	$(CXXLINK) $(libmathed_la_OBJECTS)
-endif
