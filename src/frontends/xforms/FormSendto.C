@@ -1,0 +1,131 @@
+/*
+ * \file FormSendto.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "FormSendto.h"
+#include "form_sendto.h"
+#include "ControlSendto.h"
+#include "xformsBC.h"
+#include "xforms_helpers.h"
+#include "converter.h"
+#include "gettext.h"
+
+using std::vector;
+
+typedef FormCB<ControlSendto, FormDB<FD_form_sendto> > base_class;
+
+FormSendto::FormSendto(ControlSendto & c)
+	: base_class(c, _("Send document to command"))
+{}
+
+
+void FormSendto::build()
+{
+	dialog_.reset(build_sendto());
+
+	fl_set_input_return(dialog_->input_command, FL_RETURN_CHANGED);
+
+	// The help choice
+	fillTooltipChoice(dialog_->choice_help);
+
+	// Set up the tooltip mechanism
+	setTooltipHandler(dialog_->browser_formats);
+	setTooltipHandler(dialog_->input_command);
+
+        // Manage the ok, apply, restore and cancel/close buttons
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+}
+
+
+void FormSendto::update()
+{
+	all_formats_ = controller().allFormats();
+
+	// Check whether the current contents of the browser will be
+	// changed by loading the contents of formats
+	vector<string> keys;
+	keys.resize(all_formats_.size());
+
+	vector<string>::iterator result = keys.begin();
+	vector<Format const *>::const_iterator it  = all_formats_.begin();
+	vector<Format const *>::const_iterator end = all_formats_.end();
+	for (; it != end; ++it, ++result) {
+		*result = (*it)->prettyname();
+	}
+	
+	vector<string> const browser_keys =
+		getVectorFromBrowser(dialog_->browser_formats);
+
+	if (browser_keys == keys)
+		return;
+
+	// Reload the browser
+	fl_clear_browser(dialog_->browser_formats);
+
+	for (vector<string>::const_iterator it = keys.begin();
+	     it < keys.end(); ++it) {
+		fl_add_browser_line(dialog_->browser_formats, it->c_str());
+	}
+
+	fl_set_input(dialog_->input_command, controller().getCommand().c_str());
+}
+
+
+ButtonPolicy::SMInput FormSendto::input(FL_OBJECT * ob, long)
+{
+	if (ob == dialog_->choice_help) {
+		setTooltipLevel(dialog_->choice_help);
+		return ButtonPolicy::SMI_NOOP;
+	}
+
+	int const line = fl_get_browser(dialog_->browser_formats);
+	if (line < 1 || line > fl_get_browser_maxline(dialog_->browser_formats))
+		return ButtonPolicy::SMI_INVALID;
+
+	string cmd = getStringFromInput(dialog_->input_command);
+	cmd = strip(frontStrip(cmd));
+	if (cmd.empty())
+		return ButtonPolicy::SMI_INVALID;
+
+	return ButtonPolicy::SMI_VALID;
+}
+
+
+void FormSendto::apply()
+{
+	int const line = fl_get_browser(dialog_->browser_formats);
+	if (line < 1 || line > fl_get_browser_maxline(dialog_->browser_formats))
+		return;
+
+	string const cmd = getStringFromInput(dialog_->input_command);
+
+	controller().setFormat(all_formats_[line-1]);
+	controller().setCommand(cmd);
+}
+
+
+string const FormSendto::getVerboseTooltip(FL_OBJECT const * ob) const
+{
+	string str;
+
+	if (ob == dialog_->browser_formats) {
+		str = N_("Export the buffer to this format before running the command below on it.");
+		
+	} else if (ob == dialog_->input_command) {
+		str = N_("Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file.");
+	}
+	
+	return str;
+}

@@ -23,7 +23,6 @@
 #include "buffer.h"
 #include "exporter.h"
 #include "converter.h"
-#include "lyx_gui_misc.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"

@@ -69,6 +69,8 @@ libcontrollers_la_SOURCES= \
 	ControlRef.h \
 	ControlSearch.C \
 	ControlSearch.h \
+	ControlSendto.C \
+	ControlSendto.h \
 	ControlShowFile.C \
 	ControlShowFile.h \
 	ControlSpellchecker.C \

@@ -133,6 +133,8 @@ src/frontends/xforms/form_ref.C
 src/frontends/xforms/FormRef.C
 src/frontends/xforms/form_search.C
 src/frontends/xforms/FormSearch.C
+src/frontends/xforms/form_sendto.C
+src/frontends/xforms/FormSendto.C
 src/frontends/xforms/form_spellchecker.C
 src/frontends/xforms/FormSpellchecker.C
 src/frontends/xforms/form_tabular.C
@@ -201,7 +203,6 @@ src/mathed/math_cursor.C
 src/MenuBackend.C
 src/minibuffer.C
 src/paragraph.C
-src/print_form.C
 src/support/filetools.C
 src/support/getUserName.C
 src/support/path.C

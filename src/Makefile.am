@@ -62,7 +62,6 @@ lyx_SOURCES = \
 	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \
-	LyXSendto.C \
 	LyXView.C \
 	LyXView.h \
 	Makefile.in \
@@ -137,8 +136,6 @@ lyx_SOURCES = \
 	lyx_cb.h \
 	lyx_gui.C \
 	lyx_gui.h \
-	lyx_gui_misc.C \
-	lyx_gui_misc.h \
 	lyx_main.C \
 	lyx_main.h \
 	lyx_sty.C \
@@ -184,8 +181,6 @@ lyx_SOURCES = \
 	paragraph.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
-	print_form.C \
-	print_form.h \
 	screen.C \
 	sp_base.h \
 	sp_spell.C \
@@ -226,7 +221,7 @@ lyx_SOURCES = \
 	vspace.h
 
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h lyx_gui.h \
-	lyx_gui_misc.h lyxrc.h support/path.h support/filetools.h \
+	lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
 	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h 
 	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \

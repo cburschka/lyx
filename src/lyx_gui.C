@@ -16,7 +16,6 @@
 
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
-#include "print_form.h"
 #include "tex-strings.h"
 #include "lyx_main.h"
 #include "debug.h"
@@ -27,7 +26,6 @@
 #include "lyxserver.h"
 #include "lyxrc.h"
 #include "gettext.h"
-#include "lyx_gui_misc.h"
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
 #endif
@@ -45,8 +43,6 @@
 #include <fcntl.h>
 
 using std::endl;
-
-FD_form_sendto * fd_form_sendto;
 
 extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
@@ -245,23 +241,8 @@ void LyXGUI::init()
 	fl_set_tooltip_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
 #endif
 
-        // all lyxrc settings has to be done here as lyxrc has not yet
-        // been read when the GUI is created (Jug)
-
-	// the sendto form
-        if (!lyxrc.custom_export_command.empty())
-                fl_set_input(fd_form_sendto->input_cmd,
-                             lyxrc.custom_export_command.c_str());
-	if (lyxrc.custom_export_format == "lyx")
-		fl_set_button(fd_form_sendto->radio_ftype_lyx, 1);
-	else if (lyxrc.custom_export_format == "tex")
-		fl_set_button(fd_form_sendto->radio_ftype_latex, 1);
-	else if (lyxrc.custom_export_format == "dvi")
-		fl_set_button(fd_form_sendto->radio_ftype_dvi, 1);
-	else if (lyxrc.custom_export_format == "ps")
-		fl_set_button(fd_form_sendto->radio_ftype_ps, 1);
-        else if (lyxrc.custom_export_format == "ascii")
-                fl_set_button(fd_form_sendto->radio_ftype_ascii, 1);
+	// all lyxrc settings has to be done here as lyxrc has not yet
+	// been read when the GUI is created (Jug)
 
 	// Update parameters.
 	lyxViews->redraw();
@@ -286,10 +267,6 @@ void LyXGUI::create_forms()
 	//
 	// Create forms
 	//
-
-	// the sendto form
-	fd_form_sendto = create_form_form_sendto();
-	fl_set_form_atclose(fd_form_sendto->form_sendto, CancelCloseBoxCB, 0);
 
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.

@@ -23,7 +23,6 @@
 #include "lyxtext.h"
 #include "buffer.h"
 #include "MenuBackend.h"
-#include "lyx_gui_misc.h"	// [update,Close,Redraw]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
 #include "gettext.h"
 #include "lyxfunc.h"
@@ -59,10 +58,12 @@ LyXView::LyXView()
 	autosave_timeout = new Timeout(5000);
 
 	dialogs_ = new Dialogs(this);
+#if 0
 	dialogs_->hideBufferDependent
 		.connect(SigC::slot(&CloseAllBufferRelatedDialogs));
 	Dialogs::redrawGUI.connect(SigC::slot(this, &LyXView::redraw));
 	Dialogs::redrawGUI.connect(SigC::slot(&RedrawAllBufferRelatedDialogs));
+#endif
 }
 
 

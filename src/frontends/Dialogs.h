@@ -151,6 +151,8 @@ public:
 	SigC::Signal1<void, string const &> createRef;
 	///
 	SigC::Signal0<void> showSearch;
+	///
+	SigC::Signal0<void> showSendto;
 	/// bring up the spellchecker
 	SigC::Signal0<void> showSpellchecker;
 	/// bring up the spellchecker tab in preferences

@@ -1118,7 +1118,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	case LFUN_EXPORT:
 		if (argument == "custom")
-			MenuSendto();
+			owner->getDialogs()->showSendto();//MenuSendto();
 		else
 			Exporter::Export(owner->buffer(), argument, false);
 		break;

@@ -33,6 +33,7 @@
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
+#include "ControlSendto.h"
 #include "ControlShowFile.h"
 #include "ControlSpellchecker.h"
 #include "ControlTabularCreate.h"
@@ -291,6 +292,19 @@ public:
 	GUISearch(LyXView & lv, Dialogs & d)
 		: GUI<ControlSearch, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
 };
+
+
+/** Specialization for Sendto dialog
+ */
+template <class GUIview, class GUIbc>
+class GUISendto :
+	public GUI<ControlSendto, GUIview, OkApplyCancelPolicy, GUIbc> {
+public:
+	///
+	GUISendto(LyXView & lv, Dialogs & d)
+		: GUI<ControlSendto, GUIview, OkApplyCancelPolicy, GUIbc>(lv, d) {}
+};
+
 
 /** Specialization for ShowFile dialog
  */
