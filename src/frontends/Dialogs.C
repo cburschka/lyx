@@ -75,7 +75,7 @@ Dialogs::Dialogs(LyXView & lyxview)
 }
 
 
-Dialog * Dialogs::find(string const & name)
+Dialog * Dialogs::find_or_build(string const & name)
 {
 	if (!isValidName(name))
 		return 0;
@@ -83,18 +83,17 @@ Dialog * Dialogs::find(string const & name)
 	std::map<string, DialogPtr>::iterator it =
 		dialogs_.find(name);
 
-	if (it == dialogs_.end()) {
-		dialogs_[name] = DialogPtr(build(name));
-		return dialogs_[name].get();
-	}
+	if (it != dialogs_.end())
+		return it->second.get();
 
-	return it->second.get();
+	dialogs_[name] = DialogPtr(build(name));
+	return dialogs_[name].get();
 }
 
 
 void Dialogs::show(string const & name, string const & data)
 {
-	Dialog * dialog = find(name);
+	Dialog * dialog = find_or_build(name);
 	if (!dialog)
 		return;
 
@@ -105,7 +104,7 @@ void Dialogs::show(string const & name, string const & data)
 
 void Dialogs::show(string const & name, string const & data, InsetBase * inset)
 {
-	Dialog * dialog = find(name);
+	Dialog * dialog = find_or_build(name);
 	if (!dialog)
 		return;
 
@@ -127,10 +126,12 @@ bool Dialogs::visible(string const & name) const
 
 void Dialogs::update(string const & name, string const & data)
 {
-	Dialog * dialog = find(name);
-	if (!dialog)
+	std::map<string, DialogPtr>::const_iterator it =
+		dialogs_.find(name);
+	if (it == dialogs_.end())
 		return;
 
+	Dialog * const dialog = it->second.get();
 	if (dialog->isVisible())
 		dialog->update(data);
 }
@@ -138,13 +139,15 @@ void Dialogs::update(string const & name, string const & data)
 
 void Dialogs::hideSlot(string const & name, InsetBase * inset)
 {
-	Dialog * dialog = find(name);
-	if (!dialog)
+	std::map<string, DialogPtr>::const_iterator it =
+		dialogs_.find(name);
+	if (it == dialogs_.end())
 		return;
 
 	if (inset && inset != getOpenInset(name))
 		return;
 
+	Dialog * const dialog = it->second.get();
 	if (dialog->isVisible())
 		dialog->hide();
 	open_insets_[name] = 0;

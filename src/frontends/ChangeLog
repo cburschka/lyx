@@ -1,3 +1,10 @@
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.[Ch] (find): renamed as find_or_build.
+	(update, hideSlot): don't call find_or_build to find the requested dialog.
+	Instead, search dialogs_, the list of already constructed dialogs. If it
+	ain't found, do nothing.
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* screen.C: add #include "LColor.h".

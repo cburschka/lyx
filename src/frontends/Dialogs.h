@@ -132,7 +132,7 @@ private:
 	///
 	bool isValidName(string const & name) const;
 	///
-	Dialog * find(string const & name);
+	Dialog * find_or_build(string const & name);
 	///
 	Dialog * build(string const & name);
 
