@@ -50,7 +50,7 @@ struct compare_tags {
 
 
 LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
-	: is(&fb__), table(tab), no_items(num),
+	: is(&fb_), table(tab), no_items(num),
 	  status(0), lineno(0), commentChar('#')
 {
 	verifyTable();
@@ -138,35 +138,35 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (gz__.is_open() || istream::off_type(is.tellg()) > -1)
+		if (gz_.is_open() || istream::off_type(is.tellg()) > -1)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
-		gz__.open(filename.c_str(), ios::in);
-		is.rdbuf(&gz__);
+		gz_.open(filename.c_str(), ios::in);
+		is.rdbuf(&gz_);
 		name = filename;
 		lineno = 0;
-		return gz__.is_open() && is.good();
+		return gz_.is_open() && is.good();
 	} else {
 		lyxerr[Debug::LYXLEX] << "lyxlex: UNcompressed" << endl;
 
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (fb__.is_open() || istream::off_type(is.tellg()) > 0)
+		if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
-		fb__.open(filename.c_str(), ios::in);
-		is.rdbuf(&fb__);
+		fb_.open(filename.c_str(), ios::in);
+		is.rdbuf(&fb_);
 		name = filename;
 		lineno = 0;
-		return fb__.is_open() && is.good();
+		return fb_.is_open() && is.good();
 	}
 }
 
 
 void LyXLex::Pimpl::setStream(istream & i)
 {
-	if (fb__.is_open() || istream::off_type(is.tellg()) > 0)
+	if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
 		lyxerr[Debug::LYXLEX]  << "Error in LyXLex::setStream: "
 			"file or stream already set." << endl;
 	is.rdbuf(i.rdbuf());

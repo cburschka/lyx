@@ -3,6 +3,8 @@
 
 	* lyxlex.[Ch]: make interface more similar to std::stream
 
+	* lyxlex_pimpl.[Ch]: don't use '__' in identifiers
+
 2003-12-01  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxtextclass.[Ch]: add latexparam to CharStyle inset

@@ -53,10 +53,10 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	bool nextToken();
 	///
 	void pushToken(std::string const &);
-	/// fb__ is only used to open files, the stream is accessed through is.
-	std::filebuf fb__;
-	/// gz__ is only used to open files, the stream is accessed through is.
-	gz::gzstreambuf gz__;
+	/// fb_ is only used to open files, the stream is accessed through is.
+	std::filebuf fb_;
+	/// gz_ is only used to open files, the stream is accessed through is.
+	gz::gzstreambuf gz_;
 
 	/// the stream that we use.
 	std::istream is;
