@@ -64,7 +64,7 @@ void QExternal::update_contents()
 	dialog_->fileED->setText(toqstr(params.filename));
 
 	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templ.lyxName));
-	dialog_->externalTV->setText(toqstr(params.templ.helpText));
+	dialog_->externalTV->setText(toqstr(helpText()));
 
 	int item = 0;
 	switch (params.display) {

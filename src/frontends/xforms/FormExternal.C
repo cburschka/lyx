@@ -152,11 +152,6 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 	if (ob == dialog_->choice_template) {
 
 		// set to the chosen template
-		int const choice = fl_get_choice(dialog_->choice_template) - 1;
-		InsetExternal::Params params = controller().params();
-		params.templ = controller().getTemplate(choice);
-		controller().setParams(params);
-
 		updateComboChange();
 
 	} else if (ob == dialog_->button_browse) {
@@ -175,9 +170,11 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 
 void FormExternal::updateComboChange()
 {
+	int const choice = fl_get_choice(dialog_->choice_template) - 1;
+	ExternalTemplate templ = controller().getTemplate(choice);
+
 	// Update the help text
 	fl_clear_browser(dialog_->browser_helptext);
-	fl_addto_browser(dialog_->browser_helptext,
-			 controller().params().templ.helpText.c_str());
+	fl_addto_browser(dialog_->browser_helptext, templ.helpText.c_str());
 	fl_set_browser_topline(dialog_->browser_helptext, 0);
 }
