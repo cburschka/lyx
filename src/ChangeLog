@@ -1,5 +1,10 @@
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* CutAndPaste.C (pasteSelection): remove the last next and
+	previous from this file.
+
+2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* CutAndPaste.C (pasteSelection): more clean up, user proper
 	ParagraphList functions for pasteing.
 

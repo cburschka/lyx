@@ -42,7 +42,7 @@ extern BufferView * current_view;
 // of selections cut/copied. So IMHO later we should have a
 // list/vector/deque that we could store
 // struct selection_item {
-//       Paragraph * buf;
+//       ParagraphList copy_pars;
 //       LyXTextClassList::size_type textclass;
 // };
 // in and some method of choosing beween them (based on the first few chars
@@ -202,11 +202,12 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	lyx::Assert (pos <= pit->size());
 
-	// Make a copy of the simple cut_buffer.
+	// Make a copy of the CaP paragraphs.
 	ParagraphList simple_cut_clone = paragraphs;
 
-	// Now remove all out of the buffer which is NOT allowed in the
+	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
+
 	ParagraphList::iterator tmpbuf = simple_cut_clone.begin();
 	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
 
@@ -225,6 +226,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		// at level 0.
 		if ((int(tmpbuf->params().depth()) + depth_delta) < 0)
 			depth_delta = 0;
+
 		// Set the right depth so that we are not too deep or shallow.
 		tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
 		if (tmpbuf->params().depth() > max_depth)
@@ -232,7 +234,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 		// Only set this from the 2nd on as the 2nd depends
 		// for maxDepth still on pit.
-		if (tmpbuf->previous() != pit)
+		if (tmpbuf != simple_cut_clone.begin())
 			max_depth = tmpbuf->getMaxDepthAfter();
 
 		// Set the inset owner of this paragraph.
@@ -262,7 +264,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	// Open the paragraph for inserting the buf
 	// if necessary.
-	if (pit->size() > pos || !pit->next()) {
+	if (pit->size() > pos || boost::next(pit) == pars.end()) {
 		breakParagraphConservative(current_view->buffer()->params,
 					   pars, pit, pos);
 		paste_the_end = true;
@@ -284,11 +286,13 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		last_paste = pit;
 
 	mergeParagraph(current_view->buffer()->params, pars, pit);
+
 	// Store the new cursor position.
 	pit = last_paste;
 	pos = last_paste->size();
 
 	// Maybe some pasting.
+#warning CHECK! Are we comparing last_paste to the wrong list here? (Lgb)
 	if (boost::next(last_paste) != simple_cut_clone.end() &&
 	    paste_the_end) {
 		if (boost::next(last_paste)->hasSameLayout(*last_paste)) {
@@ -321,8 +325,10 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 					     Paragraph * par,
 					     BufferParams const & /*bparams*/)
 {
+	lyx::Assert(par);
+
 	int ret = 0;
-	if (!par || c1 == c2)
+	if (c1 == c2)
 		return ret;
 
 	LyXTextClass const & tclass1 = textclasslist[c1];
