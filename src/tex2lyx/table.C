@@ -23,43 +23,9 @@ using std::ostringstream;
 using std::string;
 using std::vector;
 
+#include "mathed/math_gridinfo.h"
 
 namespace {
-
-struct ColInfo
-{
-	ColInfo() : rightline(0), leftline(false) {}
-	string align;      // column alignment
-	string width;      // column width
-	int    rightline;  // a line on the right?
-	bool   leftline;
-};
-
-
-struct RowInfo
-{
-	RowInfo() : topline(false), bottomline(false) {} 
-	bool topline;     // horizontal line above
-	int  bottomline;  // horizontal line below
-};
-
-
-struct CellInfo
-{
-	CellInfo()
-		: multi(0), leftline(false), rightline(false),
-	   topline(false), bottomline(false)
-	{}
-
-	string content;    // cell content
-	int multi;         // multicolumn flag
-	string align;      // cell alignment
-	bool leftline;     // do we have a line on the left?
-	bool rightline;	   // do we have a line on the right?
-	bool topline;	     // do we have a line above?
-	bool bottomline;   // do we have a line below?
-};
-
 
 int string2int(string const & s, int deflt = 0)
 {
@@ -73,7 +39,7 @@ int string2int(string const & s, int deflt = 0)
 string read_hlines(Parser & p)
 {
 	ostringstream os;
-	p.skipSpaces();
+	p.skip_spaces();
 	while (p.good()) {
 		if (p.next_token().cs() == "hline") {
 			p.get_token();
@@ -83,7 +49,7 @@ string read_hlines(Parser & p)
 			os << "\\cline{" << p.verbatim_item() << "}";
 		} else
 			break;
-		p.skipSpaces();
+		p.skip_spaces();
 	};
 	//cerr << "read_hlines(), read: '" << os.str() << "'\n";
 	//cerr << "read_hlines(), next token: " << p.next_token() << "\n";
@@ -111,24 +77,13 @@ char const TAB   = '\001';
 char const LINE  = '\002';
 char const HLINE = '\004';
 
-string get_align(char c)
-{
-	switch (c) {
-		case 'c': return "center";
-		case 'l': return "left";
-		case 'r': return "right";
-		case 'b': return "block";
-	}
-	return "center";
-}
-
 
 void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 {
 	if (p.get_token().cat() != catBegin)
 		cerr << "wrong syntax for table column alignment. '{' expected\n";
 
-	string nextalign = "block";
+	char nextalign = 'b';
 	bool leftline = false;
 	for (Token t=p.get_token(); p.good() && t.cat() != catEnd; t = p.get_token()){
 #ifdef FILEDEBUG
@@ -140,7 +95,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 			case 'l':
 			case 'r': {
 				ColInfo ci;
-				ci.align = get_align(t.character());
+				ci.align = t.character();
 				if (colinfo.size() && colinfo.back().rightline > 1) {
 					ci.leftline = true;
 					--colinfo.back().rightline;
@@ -152,7 +107,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 				colinfo.push_back(ColInfo());
 				colinfo.back().align = nextalign;
 				colinfo.back().width = p.verbatim_item();
-				nextalign = "block";
+				nextalign = 'b';
 				break;
 			case '|':
 				if (colinfo.empty())
@@ -163,9 +118,9 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 			case '>': {
 				string s = p.verbatim_item();
 				if (s == "\\raggedleft ")
-					nextalign = "left";
+					nextalign = 'l';
 				else if (s == "\\raggedright ")
-					nextalign = "right";
+					nextalign = 'r';
 				else
 					cerr << "unknown '>' column '" << s << "'\n";
 				break;
@@ -242,7 +197,6 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 		}
 
 		else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
-		//else if (t.cs() == "tabularnewline") {
 			// stuff before the line break
 			// and look ahead for stuff after the line break
 			os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
@@ -414,7 +368,7 @@ void handle_tabular(Parser & p, ostream & os)
 				cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
 			//cerr << "cell content: '" << cells[cell] << "'\n";
 			Parser p(cells[cell]);
-			p.skipSpaces();	
+			p.skip_spaces();	
 			//cells[cell] << "'\n";
 			if (p.next_token().cs() == "multicolumn") {
 				// how many cells?
@@ -434,7 +388,7 @@ void handle_tabular(Parser & p, ostream & os)
 				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
 					++col;
 					cellinfo[row][col].multi = 2;
-					cellinfo[row][col].align = "center";
+					cellinfo[row][col].align = 'c';
 				}
 
 				// more than one line on the right?
@@ -505,7 +459,7 @@ void handle_tabular(Parser & p, ostream & os)
 			//	cerr << " topline=\"true\"";
 			//if (cell.bottomline)
 			//	cerr << " bottomline=\"true\"";
-			os << " alignment=\"" << cell.align << "\""
+			os << " alignment=\"" << verbose_align(cell.align) << "\""
 				 << " valignment=\"top\""
 				 << " usebox=\"none\""
 				 << ">"

@@ -40,7 +40,7 @@ void handle_comment(Parser & p)
 		s += t.asString();
 	}
 	//cerr << "comment: " << s << "\n";
-	p.skipSpaces();
+	p.skip_spaces();
 }
 
 

@@ -166,7 +166,7 @@ Token const & Parser::get_token()
 }
 
 
-void Parser::skipSpaces()
+void Parser::skip_spaces()
 {
 	while (1) {
 		if (next_token().cat() == catSpace || next_token().cat() == catNewline)
@@ -202,7 +202,7 @@ char Parser::getChar()
 
 string Parser::getArg(char left, char right)
 {
-	skipSpaces();
+	skip_spaces();
 
 	string result;
 	char c = getChar();
@@ -341,7 +341,7 @@ string Parser::verbatim_item()
 {
 	if (!good())
 		error("stream bad");
-	skipSpaces();
+	skip_spaces();
 	if (next_token().cat() == catBegin) {
 		Token t = get_token(); // skip brace
 		string res;

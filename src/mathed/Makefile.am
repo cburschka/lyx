@@ -75,6 +75,7 @@ libmathed_la_SOURCES = \
 	math_fracinset.h \
 	math_fracbase.C \
 	math_fracbase.h \
+	math_gridinfo.h \
 	math_gridinset.C \
 	math_gridinset.h \
 	math_hullinset.C \

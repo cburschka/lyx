@@ -332,7 +332,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 		}
 
 		else if (t.cs() == "item") {
-			p.skipSpaces();
+			p.skip_spaces();
 			string s; 
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
@@ -350,7 +350,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 		}
 
 		else if (t.cs() == "par") {
-			p.skipSpaces();
+			p.skip_spaces();
 			if (p.next_token().cs() != "\\begin")
 				handle_par(os);
 			//cerr << "next token: '" << p.next_token().cs() << "'\n";

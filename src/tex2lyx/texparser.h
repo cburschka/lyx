@@ -128,7 +128,7 @@ public:
 	///
 	Token const & get_token();
 	/// skips spaces if any
-	void skipSpaces();
+	void skip_spaces();
 	///
 	void lex(string const & s);
 	///

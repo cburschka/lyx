@@ -137,6 +137,9 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		}
 
 		else if (t.cs() == "[") {
+			// special handling of a few common SW user quirks
+			p.skip_spaces();
+			//if (p.next_token().cs() == 
 			os << "\\[";
 			parse_math(p, os, FLAG_EQUATION, MATH_MODE);
 			os << "\\]";
