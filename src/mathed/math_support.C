@@ -538,6 +538,7 @@ fontinfo fontinfos[] = {
 	{"mathrm", LyXFont::ROMAN_FAMILY, inh_series, inh_shape, LColor::math},
 	{"mathsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::math},
 	{"mathbb", LyXFont::MSB_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathtt", LyXFont::TYPEWRITER_FAMILY, inh_series, inh_shape, LColor::math},
 	{"cmex",   LyXFont::CMEX_FAMILY, inh_series, inh_shape, LColor::none},
 	{"cmm",    LyXFont::CMM_FAMILY, inh_series, inh_shape, LColor::none},
 	{"cmr",    LyXFont::CMR_FAMILY, inh_series, inh_shape, LColor::none},
