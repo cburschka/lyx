@@ -133,8 +133,8 @@ will convert it to:
 \layout Standard
 
 
-\begin_inset Formula \[
-\frac{abc}{xyz}\]
+\begin_inset Formula \begin{equation}
+\frac{abc}{xyz}\end{equation}
 
 \end_inset 
 
@@ -179,164 +179,19 @@ all
 
 In order to display these extra symbols, however, the extra fonts that LyX
  requires must be made available to it.
- That can be done by creating a directory containing symbolic links to the
- fonts that LyX requires using the following script
+ After installing LyX, type
 \layout LyX-Code
 
-#!/bin/sh
-\layout LyX-Code
-
-\layout LyX-Code
-
-LYXDIR=`pwd`
-\layout LyX-Code
-
-LYX_XFONTS=$LYXDIR/xfonts
-\layout LyX-Code
-
-\layout LyX-Code
-
-if [ ! -d $LYX_XFONTS ]; then
-\layout LyX-Code
-
-    mkdir $LYX_XFONTS || exit
-\layout LyX-Code
-
-fi
-\layout LyX-Code
-
-\layout LyX-Code
-
-rm -f $LYX_XFONTS/fonts.dir $LYX_XFONTS/fonts.scale
-\layout LyX-Code
-
-\layout LyX-Code
-
-for file in `sed -e 's/^
-\backslash 
-(.*
-\backslash 
-.pf[ab]
-\backslash 
-) .*$/
-\backslash 
-1/' < fonts-xlfd`; do
-\layout LyX-Code
-
-    filepath=`kpsewhich $file`
-\layout LyX-Code
-
-    if [ $? -eq 0 ]; then
-\layout LyX-Code
-
-        if [ ! -e $LYX_XFONTS/$file ]; then
-\layout LyX-Code
-
-            ln -s $filepath $LYX_XFONTS/$file
-\layout LyX-Code
-
-        fi
-\layout LyX-Code
-
-        echo `grep -e $file fonts-xlfd` >> $LYX_XFONTS/fonts.scale
-\layout LyX-Code
-
-        echo "$file found."
-\layout LyX-Code
-
-    fi
-\layout LyX-Code
-
-done
-\layout LyX-Code
-
-\layout LyX-Code
-
-awk "/
-\backslash 
-.pf/ { nlines++ }
-\backslash 
-
-\layout LyX-Code
-
-END { print nlines }" < $LYX_XFONTS/fonts.scale > $LYX_XFONTS/fonts.dir
-\layout LyX-Code
-
-\layout LyX-Code
-
-cat $LYX_XFONTS/fonts.scale >> $LYX_XFONTS/fonts.dir
-\layout LyX-Code
-
-cp $LYX_XFONTS/fonts.dir $LYX_XFONTS/fonts.scale
+xset +fp LYXDIR/xfonts
 \layout Standard
 
-where the file 
-\family typewriter 
-fonts-xlfd
-\family default 
- contains
-\layout LyX-Code
-
-cmr10.pfb -bluesky-cmr-medium-r-normal--0-0-0-0-m-0-adobe-fontspecific
-\layout LyX-Code
-
-cmmi10.pfb -bluesky-cmmi-medium-i-normal--0-0-0-0-m-0-adobe-fontspecific
-  cmsy10.pfb -bluesky-cmsy-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-cmex10.pfb -bluesky-cmex-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eufr10.pfb -bluesky-eufrak--medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eufb10.pfb -bluesky-eufrak-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eusr10.pfb -bluesky-eus-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eusb10.pfb -bluesky-eus-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-msam10.pfb -bluesky-msam-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-msbm10.pfb -bluesky-msbm-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-marvosym.pfb -marvo-marvosym-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-wasy10.pfb -hoekwater-wasy-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-wasyb10.pfb -hoekwater-wasy-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-logo10.pfb -hoekwater-logo-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-logobf10.pfb -hoekwater-logo-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-plcrm.pfa -adobe-lcrm-medium-i-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-plcry.pfa -adobe-lcry-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-plcrv.pfa -adobe-lcrv-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
+at the console (where LYXDIR is the directory that contains the LyX files),
+ start LyX, load up this document and enjoy!
 \layout Standard
 
-Thereafter, you must tell X where to find this directory and the fonts therein.
- Type
-\layout LyX-Code
-
-xset +fp LYX_XFONTS; xset fp rehash
-\layout Standard
-
-at the console, start LyX, load up this document and enjoy!
+For making the fonts available permanently, you need to edit one of the
+ following files (depending on your setup): /etc/X11/XF86Config-4, /etc/X11/XF86
+Config, or /etc/X11/fs/config.
 \layout Section
 
 Some example math tables
@@ -384,7 +239,7 @@ arabic{table}}
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -683,7 +538,7 @@ Math mode accents
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -1760,7 +1615,7 @@ Greek letters
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -2675,7 +2530,7 @@ Binary operation symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -3682,7 +3537,7 @@ Relation symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -4453,7 +4308,7 @@ Arrow symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -5342,7 +5197,7 @@ Miscellaneous symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -5733,7 +5588,7 @@ Variable-sized symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -6158,7 +6013,7 @@ Log-like symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -6279,7 +6134,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\{$
+\begin_inset Formula $\{ $
 \end_inset 
 
 
@@ -6303,7 +6158,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\}$
+\begin_inset Formula $\} $
 \end_inset 
 
 
@@ -6657,7 +6512,7 @@ Delimiters
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -6876,7 +6731,7 @@ Large delimiters
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -7205,7 +7060,7 @@ LaTeX math constructs
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -7362,7 +7217,7 @@ AMS Greek and Hebrew
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -7493,7 +7348,7 @@ AMS delimiters
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -8328,7 +8183,7 @@ AMS arrows
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -8507,7 +8362,7 @@ AMS negated arrows
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -10166,7 +10021,7 @@ AMS binary relations
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -11455,7 +11310,7 @@ AMS negated binary relations
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -12068,7 +11923,7 @@ AMS binary operators
 \begin_inset Float table
 placement H
 wide false
-collapsed true
+collapsed false
 
 \layout Standard
 
