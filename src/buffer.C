@@ -1135,7 +1135,6 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetParent(inscmd, *this);
 		}
 	} else {
-		bool alreadyread = false;
 		if (tmptok == "Quotes") {
 			inset = new InsetQuotes;
 		} else if (tmptok == "External") {
@@ -1144,16 +1143,8 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFormulaMacro;
 		} else if (tmptok == "Formula") {
 			inset = new InsetFormula;
-		} else if (tmptok == "Figure") { // Backward compatibility
-//			inset = new InsetFig(100, 100, *this);
-			inset = new InsetGraphics;
 		} else if (tmptok == "Graphics") {
 			inset = new InsetGraphics;
-		} else if (tmptok == "Info") {// backwards compatibility
-			inset = new InsetNote(this,
-					      lex.getLongString("\\end_inset"),
-					      true);
-			alreadyread = true;
 		} else if (tmptok == "Note") {
 			inset = new InsetNote(params);
 		} else if (tmptok == "Include") {
@@ -1193,7 +1184,8 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFloatList;
 		}
 
-		if (inset && !alreadyread) inset->read(this, lex);
+		if (inset)
+			inset->read(this, lex);
 	}
 
 	if (inset) {

@@ -1,6 +1,13 @@
 2003-03-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* buffer.C (readInset): remove compability code for old Figure and
+	InsetInfo insets
+
+2003-03-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* buffer.C: ws changes
+	(readInset):
+
 	* BufferView_pimpl.C: ditto
 	* author.C: ditto
 	* buffer.h: ditto

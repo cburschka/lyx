@@ -1,3 +1,7 @@
+2003-03-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetnote.[Ch] (InsetNote): remove unused constructor
+
 2003-02-28  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insetgraphics.C: added include "format.h"
@@ -45,7 +49,7 @@
 2003-02-26  Alfredo Braunstein <abraunst@libero.it>
 
 	* insetgraphics.C (draw)
-	* insetinclude.C (draw): Eliminate also the other argument (owner 
+	* insetinclude.C (draw): Eliminate also the other argument (owner
 	inset inset) in the call to PreviewImage::image
 
 2003-02-25  Alfredo Braunstein <abraunst@libero.it>
@@ -92,7 +96,7 @@
 	* Makefile.am: add new files.
 
 2003-02-21  Angus Leeming  <leeming@lyx.org>
-	
+
 	* updatableinset.h (setView, view): remove.
 	* inset.h (view, cache): to be replaced by these.
 
@@ -110,7 +114,7 @@
 	child document is under version control.
 
 2003-02-17 André Pönitz <poenitz@gmx.net>
-	
+
 	* insetbib.[Ch]: Adjust access to bibkeys
 
 2003-02-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -164,7 +168,7 @@
 
 2003-01-12  Michael Schmitt <michael.schmitt@teststep.org>
 
-        * insetgraphics.C (draw, width): Fix spacing around graphics inset
+	* insetgraphics.C (draw, width): Fix spacing around graphics inset
 
 2002-12-17  Juergen Vigna  <jug@lyx.org>
 
@@ -185,8 +189,8 @@
 
 2002-12-17  Alfredo Braunstein <abraunst@libero.it>
 
- 	* insettext.C (lfunMouseRelease): hackish solution to the "double
- 	menu open" bug
+	* insettext.C (lfunMouseRelease): hackish solution to the "double
+	menu open" bug
 
 2002-12-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

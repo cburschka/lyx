@@ -59,26 +59,6 @@ Inset * InsetNote::clone(Buffer const &, bool same_id) const
 }
 
 
-// This constructor is used for reading old InsetInfo
-InsetNote::InsetNote(Buffer const * buf, string const & contents,
-		     bool collapsed)
-	: InsetCollapsable(buf->params, collapsed)
-{
-	init();
-
-	Paragraph * par = inset.paragraph();
-	LyXFont font(LyXFont::ALL_INHERIT, buf->params.language);
-
-	// Since XForms doesn't support RTL, we can assume that old notes
-	// in RTL documents are written in English.
-	if (font.language()->RightToLeft())
-		font.setLanguage(default_language);
-
-	lyx::pos_type pos = 0;
-	buf->insertStringAsLines(par, pos, font, rtrim(contents, "\n"));
-}
-
-
 string const InsetNote::editMessage() const
 {
 	return _("Opened Note Inset");
