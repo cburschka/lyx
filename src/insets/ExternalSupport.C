@@ -73,17 +73,51 @@ void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 
 namespace {
 
+/** Substitute meta-variables in the string \p s.
+    \p filename has to be the filename as read from the .lyx file (this
+    can be an absolute path or a path relative to the parent document).
+    Otherwise, the $$AbsOrRelPath* variables would not work.
+    If we are using a temporary directory, \p filename is the mangled name.
+*/
 string const doSubstitution(InsetExternalParams const & params,
 			    Buffer const & buffer, string const & s,
 			    string const & filename)
 {
 	string result;
-	string const basename = support::ChangeExtension(filename, string());
+	string const basename = support::ChangeExtension(
+			support::OnlyFilename(filename), string());
+	string const absname = support::MakeAbsPath(filename, buffer.filePath());
 	string const filepath = support::OnlyPath(filename);
+	string const abspath = support::OnlyPath(absname);
+	Buffer const * m_buffer = buffer.getMasterBuffer();
+	string relToMasterPath = support::OnlyPath(
+			support::MakeRelPath(absname, m_buffer->filePath()));
+	if (relToMasterPath == "./")
+		relToMasterPath.clear();
+	string relToParentPath = support::OnlyPath(
+			support::MakeRelPath(absname, buffer.filePath()));
+	if (relToParentPath == "./")
+		relToParentPath.clear();
 
 	result = support::subst(s, "$$FName", filename);
 	result = support::subst(result, "$$Basename", basename);
+	result = support::subst(result, "$$Extension",
+			'.' + support::GetExtension(filename));
 	result = support::subst(result, "$$FPath", filepath);
+	result = support::subst(result, "$$AbsPath", abspath);
+	result = support::subst(result, "$$RelPathMaster", relToMasterPath);
+	result = support::subst(result, "$$RelPathParent", relToParentPath);
+	if (support::AbsolutePath(filename)) {
+		result = support::subst(result, "$$AbsOrRelPathMaster",
+		                        abspath);
+		result = support::subst(result, "$$AbsOrRelPathParent",
+		                        abspath);
+	} else {
+		result = support::subst(result, "$$AbsOrRelPathMaster",
+		                        relToMasterPath);
+		result = support::subst(result, "$$AbsOrRelPathParent",
+		                        relToParentPath);
+	}
 	result = support::subst(result, "$$Tempname", params.tempname());
 	result = support::subst(result, "$$Sysdir", support::system_lyxdir());
 
@@ -96,7 +130,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		string contents;
 
 		string const filepath = support::IsFileReadable(file) ?
-			buffer.filePath() : buffer.getMasterBuffer()->temppath();
+			buffer.filePath() : m_buffer->temppath();
 		support::Path p(filepath);
 
 		if (support::IsFileReadable(file))
@@ -139,16 +173,17 @@ void updateExternal(InsetExternalParams const & params,
 	if (from_format.empty())
 		return; // NOT_NEEDED
 
-	string from_file = params.filename.absFilename();
+	string abs_from_file = params.filename.absFilename();
 
 	if (from_format == "*") {
-		if (from_file.empty())
+		if (abs_from_file.empty())
 			return; // NOT_NEEDED
 
 		// Try and ascertain the file format from its contents.
-		from_format = support::getExtFromContents(from_file);
+		from_format = support::getExtFromContents(abs_from_file);
 		if (from_format.empty())
 			return; // FAILURE
+
 	}
 
 	string const to_format = outputFormat.updateFormat;
@@ -163,24 +198,32 @@ void updateExternal(InsetExternalParams const & params,
 		return; // FAILURE
 	}
 
+	string from_file = params.filename.outputFilename(buffer.filePath());
+
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
 	Buffer const * m_buffer = buffer.getMasterBuffer();
 
-	if (external_in_tmpdir && !from_file.empty()) {
+	if (external_in_tmpdir && !abs_from_file.empty()) {
 		// We are running stuff through LaTeX
 		string const temp_file =
 			support::MakeAbsPath(params.filename.mangledFilename(),
 					     m_buffer->temppath());
-		unsigned long const from_checksum = support::sum(from_file);
+		unsigned long const from_checksum = support::sum(abs_from_file);
 		unsigned long const temp_checksum = support::sum(temp_file);
 
 		if (from_checksum != temp_checksum) {
-			if (!support::copy(from_file, temp_file))
+			if (!support::copy(abs_from_file, temp_file)) {
+				lyxerr[Debug::EXTERNAL]
+					<< "external::updateExternal. "
+					<< "Unable to copy "
+					<< abs_from_file << " to " << temp_file << endl;
 				return; // FAILURE
+			}
 		}
 
 		from_file = temp_file;
+		abs_from_file = temp_file;
 	}
 
 	string const to_file = doSubstitution(params, buffer,
@@ -194,13 +237,13 @@ void updateExternal(InsetExternalParams const & params,
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if from_file is newer than to_file
-	if (support::compare_timestamps(from_file, abs_to_file) < 0)
+	if (support::compare_timestamps(abs_from_file, abs_to_file) < 0)
 		return; // SUCCESS
 
 	string const to_file_base =
 		support::ChangeExtension(to_file, string());
 	/* bool const success = */
-		converters.convert(&buffer, from_file, to_file_base,
+		converters.convert(&buffer, abs_from_file, to_file_base,
 				   from_format, to_format);
 	// return success
 }

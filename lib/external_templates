@@ -35,14 +35,14 @@ PreambleDefEnd
 
 
 Template RasterImage
-	GuiName "Bitmap: $$Basename"
+	GuiName "Bitmap: $$AbsOrRelPathParent$$Basename"
 	HelpText
 		A bitmap file.
 		This template uses Gimp for editing.
 	HelpTextEnd
 	InputFormat "*"
 	FileFilter "*.{gif,png,jpg,bmp,pbm,ppm,tga,tif,xpm,xbm}"
-	EditCommand "gimp $$FName"
+	EditCommand "gimp $$Absname"
 	AutomaticProduction true
 	Transform Rotate
 	Transform Resize
@@ -54,9 +54,9 @@ Template RasterImage
 		TransformOption Clip   ClipLatexOption
 		TransformOption Extra  ExtraOption
 		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
-		Product "\\includegraphics$$Arg{$$Basename}"
+		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
 		UpdateFormat eps
-		UpdateResult "$$Basename.eps"
+		UpdateResult "$$AbsPath$$Basename.eps"
 		Requirement "graphicx"
 	FormatEnd
 	Format PDFLaTeX
@@ -65,20 +65,20 @@ Template RasterImage
 		TransformOption Clip   ClipLatexOption
 		TransformOption Extra  ExtraOption
 		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
-		Product "\\includegraphics$$Arg{$$Basename}"
+		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
 		UpdateFormat png
-		UpdateResult "$$Basename.png"
+		UpdateResult "$$AbsPath$$Basename.png"
 		Requirement "graphicx"
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$Basename.asc\")"
+		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
 		UpdateFormat asciiimage
-		UpdateResult "$$Basename.asc"
+		UpdateResult "$$AbsPath$$Basename.asc"
 	FormatEnd
 	Format DocBook
-		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
+		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
 		UpdateFormat eps
-		UpdateResult "$$Basename.eps"
+		UpdateResult "$$AbsPath$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
 		Product "[Bitmap: $$FName]"
@@ -87,23 +87,23 @@ TemplateEnd
 
 
 Template XFig
-	GuiName "XFig: $$Basename"
+	GuiName "XFig: $$AbsOrRelPathParent$$Basename"
 	HelpText
 		An XFig figure.
 		This template uses XFig for editing.
 	HelpTextEnd
 	InputFormat fig
 	FileFilter "*.fig"
-	EditCommand "xfig $$FName"
+	EditCommand "xfig $$Absname"
 	AutomaticProduction true
 	Transform Rotate
 	Transform Resize
 	Format LaTeX
 		TransformCommand Rotate RotationLatexCommand
 		TransformCommand Resize ResizeLatexCommand
-		Product "$$RotateFront$$ResizeFront\\input{$$Basename.pstex_t}$$ResizeBack$$RotateBack"
+		Product "$$RotateFront$$ResizeFront\\input{$$AbsOrRelPathMaster$$Basename.pstex_t}$$ResizeBack$$RotateBack"
 		UpdateFormat pstex
-		UpdateResult "$$Basename.pstex_t"
+		UpdateResult "$$AbsPath$$Basename.pstex_t"
 		Requirement "graphicx"
 		Preamble WarnNotFound
 		Preamble InputOrWarn
@@ -111,22 +111,22 @@ Template XFig
 	Format PDFLaTeX
 		TransformCommand Rotate RotationLatexCommand
 		TransformCommand Resize ResizeLatexCommand
-		Product "$$RotateFront$$ResizeFront\\input{$$Basename.pdftex_t}$$ResizeBack$$RotateBack"
+		Product "$$RotateFront$$ResizeFront\\input{$$AbsOrRelPathMaster$$Basename.pdftex_t}$$ResizeBack$$RotateBack"
 		UpdateFormat pdftex
-		UpdateResult "$$Basename.pdftex_t"
+		UpdateResult "$$AbsPath$$Basename.pdftex_t"
 		Requirement "graphicx"
 		Preamble WarnNotFound
 		Preamble InputOrWarn
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$Basename.asc\")"
+		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
 		UpdateFormat asciixfig
-		UpdateResult "$$Basename.asc"
+		UpdateResult "$$AbsPath$$Basename.asc"
 	FormatEnd
 	Format DocBook
-		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
+		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
 		UpdateFormat eps
-		UpdateResult "$$Basename.eps"
+		UpdateResult "$$AbsPath$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
 		Product "[XFig: $$FName]"
@@ -135,7 +135,7 @@ TemplateEnd
 
 
 Template ChessDiagram
-	GuiName "Chess: $$Basename"
+	GuiName "Chess: $$AbsOrRelPathParent$$Basename"
 	HelpText
 		A chess position diagram.
 		This template will use XBoard to edit the position.
@@ -157,19 +157,19 @@ Template ChessDiagram
 	HelpTextEnd
 	InputFormat fen
 	FileFilter "*.fen"
-	EditCommand "xboard -lpf $$FName -mode EditPosition"
+	EditCommand "xboard -lpf $$Absname -mode EditPosition"
 	AutomaticProduction true
 	Format LaTeX
-		Product "\\loadgame{$$FPath$$Basename}\\showboard"
+		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$Basename.asc\")"
+		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
 		UpdateFormat asciichess
-		UpdateResult "$$Basename.asc"
+		UpdateResult "$$AbsPath$$Basename.asc"
 	FormatEnd
 	Format DocBook
-		Product "[Chess: $$Basename]"
+		Product "[Chess: $$AbsOrRelPathMaster$$Basename]"
 	FormatEnd
 	Format LinuxDoc
 		Product "[Chess: $$FName]"
