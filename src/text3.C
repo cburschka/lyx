@@ -439,7 +439,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// we can set the refreshing parameters now
 		updateCounters();
 		redoHeightOfParagraph();
-		postPaint(0);
+		postPaint();
 		setCursor(cursor.par(), cursor.pos());
 		update();
 		break;
@@ -655,7 +655,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.mark())
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
-		cursorUp(bv);
+		cursorUp(false);
 		finishChange(bv);
 		break;
 
@@ -663,7 +663,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.mark())
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
-		cursorDown(bv);
+		cursorDown(false);
 		finishChange(bv);
 		break;
 

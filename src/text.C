@@ -125,7 +125,7 @@ void LyXText::top_y(int newy)
 	anchor_row_offset_ = newy - y;
 	lyxerr[Debug::GUI] << "changing reference to row: " << &*anchor_row_
 	       << " offset: " << anchor_row_offset_ << endl;
-	postPaint(0);
+	postPaint();
 }
 
 
@@ -1518,20 +1518,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 		cursorLeft(bv());
 	}
 
-	int y = cursor.y() - cursorRow()->baseline();
-
-	// Do not forget the special right address boxes
-	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		RowList::iterator r = cursorRow();
-		RowList::iterator beg = rows().begin();
-
-		while (r != beg && boost::prior(r)->par() == r->par()) {
-			--r;
-			y -= r->height();
-		}
-	}
-
-	postPaint(y);
+	postPaint();
 
 	removeParagraph(cursorRow());
 
@@ -1690,9 +1677,8 @@ void LyXText::insertChar(char c)
 
 	// get the cursor row fist
 	RowList::iterator row = cursorRow();
-	int y = cursor.y() - row->baseline();
 	if (c != Paragraph::META_INSET) {
-		// Here case LyXText::InsertInset  already insertet the character
+		// Here case LyXText::InsertInset  already inserted the character
 		cursor.par()->insertChar(cursor.pos(), c);
 	}
 	setCharFont(bv()->buffer(), cursor.par(), cursor.pos(), rawtmpfont);
@@ -1728,9 +1714,7 @@ void LyXText::insertChar(char c)
 
 			setHeightOfRow(boost::prior(row));
 
-			y -= boost::prior(row)->height();
-
-			postPaint(y);
+			postPaint();
 
 			breakAgainOneRow(row);
 
@@ -1765,7 +1749,7 @@ void LyXText::insertChar(char c)
 	}
 
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
-		postPaint(y);
+		postPaint();
 		breakAgainOneRow(row);
 
 		RowList::iterator next_row = boost::next(row);
@@ -1803,12 +1787,7 @@ void LyXText::insertChar(char c)
 		int const tmpheight = row->height();
 
 		setHeightOfRow(row);
-
-		if (tmpheight == row->height()) {
-			postRowPaint(row, y);
-		} else {
-			postPaint(y);
-		}
+		postPaint();
 
 		current_font = rawtmpfont;
 		real_current_font = realtmpfont;
@@ -1820,12 +1799,6 @@ void LyXText::insertChar(char c)
 	if (cursor.pos() && cursor.pos() == cursor.par()->size()
 	    && rawparfont != rawtmpfont) {
 		redoHeightOfParagraph();
-	} else {
-		// now the special right address boxes
-		if (cursor.par()->layout()->margintype
-		    == MARGIN_RIGHT_ADDRESS_BOX) {
-			redoDrawingOfParagraph(cursor);
-		}
 	}
 
 	charInserted();
@@ -2300,7 +2273,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 	}
 
 	if (getRow(to) != getRow(from))
-		postPaint(from.y() - getRow(from)->baseline());
+		postPaint();
 }
 
 
@@ -2384,9 +2357,8 @@ void LyXText::backspace()
 				// the layout things can change the height of a row !
 				int const tmpheight = cursorRow()->height();
 				setHeightOfRow(cursorRow());
-				if (cursorRow()->height() != tmpheight) {
-					postPaint(cursor.y() - cursorRow()->baseline());
-				}
+				if (cursorRow()->height() != tmpheight)
+					postPaint();
 				return;
 			}
 		}
@@ -2440,7 +2412,7 @@ void LyXText::backspace()
 				if (cursor.pos())
 					cursor.pos(cursor.pos() - 1);
 
-			postPaint(cursor.y() - cursorRow()->baseline());
+			postPaint();
 
 			// remove the lost paragraph
 			// This one is not safe, since the paragraph that the tmprow and the
@@ -2571,8 +2543,7 @@ void LyXText::backspace()
 				y -= tmprow->height();
 				tmprow->fill(fill(tmprow, workWidth()));
 				setHeightOfRow(tmprow);
-
-				postPaint(y);
+				postPaint();
 
 				setCursor(cursor.par(), cursor.pos(),
 					  false, cursor.boundary());
@@ -2600,7 +2571,7 @@ void LyXText::backspace()
 			if (lastPos(*this, row) == row->par()->size() - 1)
 				removeRow(boost::next(row));
 
-			postPaint(y);
+			postPaint();
 
 			breakAgainOneRow(row);
 			// will the cursor be in another row now?
@@ -2623,11 +2594,7 @@ void LyXText::backspace()
 			row->fill(fill(row, workWidth()));
 			int const tmpheight = row->height();
 			setHeightOfRow(row);
-			if (tmpheight == row->height()) {
-				postRowPaint(row, y);
-			} else {
-				postPaint(y);
-			}
+			postPaint();
 			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
 		}
 	}
@@ -2648,12 +2615,6 @@ void LyXText::backspace()
 	if (rawparfont !=
 	    cursor.par()->getFontSettings(bv()->buffer()->params, lastpos - 1)) {
 		redoHeightOfParagraph();
-	} else {
-		// now the special right address boxes
-		if (cursor.par()->layout()->margintype
-		    == MARGIN_RIGHT_ADDRESS_BOX) {
-			redoDrawingOfParagraph(cursor);
-		}
 	}
 }
 

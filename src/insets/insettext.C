@@ -490,7 +490,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 	bv->fitCursor();
 
 	if (flag) {
-		text_.postPaint(0);
+		text_.postPaint();
 		bv->updateInset(const_cast<InsetText *>(this));
 	}
 

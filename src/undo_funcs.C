@@ -38,7 +38,7 @@ void finishNoUndo(BufferView * bv)
 	freezeUndo();
 	bv->unlockInset(bv->theLockingInset());
 	finishUndo();
-	bv->text->postPaint(0);
+	bv->text->postPaint();
 	unFreezeUndo();
 }
 
@@ -153,7 +153,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 
 	finishUndo();
-	bv->text->postPaint(0);
+	bv->text->postPaint();
 
 	lyxerr << "finished  textHandleUndo...\n";
 	return true;

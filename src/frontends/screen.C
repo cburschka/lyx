@@ -314,7 +314,7 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 		int const vwidth = workarea().workWidth();
 		int const vheight = workarea().workHeight();
 		text->updateRowPositions();
-		int const y = max(int(text->refresh_y - text->top_y()), 0);
+		int const y = 0;
 		drawFromTo(text, &bv, y, vheight, yo, xo);
 		expose(0, y, vwidth, vheight - y);
 	}

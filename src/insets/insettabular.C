@@ -443,9 +443,6 @@ void InsetTabular::update(BufferView * bv, bool reinit)
 			resetPos(bv);
 		}
 		break;
-	case SELECTION:
-		need_update = FULL;
-		break;
 	default:
 		break;
 	}
@@ -630,7 +627,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 	if (hasSelection()) {
 		clearSelection();
-		updateLocal(cmd.view(), SELECTION);
+		updateLocal(cmd.view(), FULL);
 	}
 
 	int const ocell = actcell;
@@ -729,10 +726,10 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 	setPos(bv, cmd.x, cmd.y);
 	if (!hasSelection()) {
 		setSelection(actcell, actcell);
-		updateLocal(bv, SELECTION);
+		updateLocal(bv, FULL);
 	} else if (old_cell != actcell) {
 		setSelection(sel_cell_start, actcell);
-		updateLocal(bv, SELECTION);
+		updateLocal(bv, FULL);
 	}
 }
 
@@ -821,7 +818,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 				movePrevCell(bv, old_locking_inset != 0);
 			clearSelection();
 			if (hs)
-				updateLocal(bv, SELECTION);
+				updateLocal(bv, FULL);
 			if (!the_locking_inset) {
 				return DISPATCHED_NOUPDATE;
 			}
@@ -880,14 +877,14 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			end = actcell;
 		}
 		setSelection(start, end);
-		updateLocal(bv, SELECTION);
+		updateLocal(bv, FULL);
 		break;
 	}
 	case LFUN_RIGHT:
 		result = moveRight(bv);
 		clearSelection();
 		if (hs)
-			updateLocal(bv, SELECTION);
+			updateLocal(bv, FULL);
 		break;
 	case LFUN_LEFTSEL: {
 		int const start = hasSelection() ? sel_cell_start : actcell;
@@ -904,14 +901,14 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			end = actcell;
 		}
 		setSelection(start, end);
-		updateLocal(bv, SELECTION);
+		updateLocal(bv, FULL);
 		break;
 	}
 	case LFUN_LEFT:
 		result = moveLeft(bv);
 		clearSelection();
 		if (hs)
-			updateLocal(bv, SELECTION);
+			updateLocal(bv, FULL);
 		break;
 	case LFUN_DOWNSEL: {
 		int const start = hasSelection() ? sel_cell_start : actcell;
@@ -928,14 +925,14 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		} else {
 			setSelection(start, start);
 		}
-		updateLocal(bv, SELECTION);
+		updateLocal(bv, FULL);
 	}
 	break;
 	case LFUN_DOWN:
 		result = moveDown(bv, old_locking_inset != 0);
 		clearSelection();
 		if (hs) {
-			updateLocal(bv, SELECTION);
+			updateLocal(bv, FULL);
 		}
 		break;
 	case LFUN_UPSEL: {
@@ -953,20 +950,20 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		} else {
 			setSelection(start, start);
 		}
-		updateLocal(bv, SELECTION);
+		updateLocal(bv, FULL);
 	}
 	break;
 	case LFUN_UP:
 		result = moveUp(bv, old_locking_inset != 0);
 		clearSelection();
 		if (hs)
-			updateLocal(bv, SELECTION);
+			updateLocal(bv, FULL);
 		break;
 	case LFUN_NEXT: {
 		UpdateCodes code = CURSOR;
 		if (hs) {
 			clearSelection();
-			code = SELECTION;
+			code = FULL;
 		}
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
@@ -987,7 +984,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		UpdateCodes code = CURSOR;
 		if (hs) {
 			clearSelection();
-			code = SELECTION;
+			code = FULL;
 		}
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
@@ -1193,7 +1190,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 				clearSelection();
 				// so the below CELL is not set because this is higher
 				// priority and we get a full redraw
-				need_update = SELECTION;
+				need_update = FULL;
 			}
 			nodraw(false);
 			updateLocal(bv, CELL);

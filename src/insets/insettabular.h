@@ -66,7 +66,6 @@ public:
 		NONE = 0,
 		CURSOR = 1,
 		CELL = 2,
-		SELECTION = 3,
 		FULL = 4,
 		INIT = 5
 	};

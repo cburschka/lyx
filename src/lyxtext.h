@@ -170,11 +170,8 @@ public:
 	/// clear any pending paints
 	void clearPaint();
 
-	/// Mark position y as the starting point for a repaint
-	void postPaint(int start_y);
-
-	/// Mark the given row at position y as needing a repaint.
-	void postRowPaint(RowList::iterator rit, int start_y);
+	/// submit repaint request
+	void postPaint();
 
 	///
 	Inset::RESULT dispatch(FuncRequest const & cmd);
@@ -192,14 +189,6 @@ public:
 	bool needRefresh() const;
 
 private:
-	/**
-	 * The pixel y position from which to repaint the screen.
-	 * The position is absolute along the height of outermost
-	 * lyxtext (I think). If need_refresh_ is true
-	 * repaints use this as a starting point (if it's within
-	 * the viewable portion of the lyxtext).
-	 */
-	int refresh_y;
 	// do we need a refresh?
 	bool need_refresh_;
 
