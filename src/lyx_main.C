@@ -413,10 +413,6 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	if (!ReadRcFile("preferences"))
 	    ReadRcFile("lyxrc");
 
-	/// Init Converter
-	converters.Update(formats);
-	converters.BuildGraph();
-
 	// Read encodings
 	ReadEncodingsFile("encodings");
 	// Read languages
