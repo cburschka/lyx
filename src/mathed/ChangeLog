@@ -1,4 +1,15 @@
 
+2001-08-10  André Pönitz  <poenitz@gmx.net>
+
+	*	math_scopeinset.[Ch]: new inset for {} blocks
+
+	*	math_accentinset.[Ch]: removed unneeded files
+
+	* math_grid.[Ch]:
+	  math_matrix.[Ch]: start support for "interrow spacing"
+
+	* all over the place: rework of parser stuff
+
 2001-08-08  André Pönitz  <poenitz@gmx.net>
 
 	*	math_fracbase.[Ch]:
