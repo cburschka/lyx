@@ -24,6 +24,7 @@
 
 #ifdef Q_WS_MACX
 #include "kbmap.h"
+#include "LyXAction.h"
 #include "QLyXKeySym.h"
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 #endif
@@ -113,7 +114,7 @@ void QLPopupMenu::populate(Menu * menu)
 			setItemEnabled(res.first, m->status().enabled());
 			res.second->populate(m->submenu());
 		} else { // we have a MenuItem::Command
-			FuncStatus const status = m->status();
+			FuncStatus status = m->status();
 
 			Funcs::iterator fit =
 				funcs_.insert(funcs_.end(), m->func());
@@ -121,6 +122,26 @@ void QLPopupMenu::populate(Menu * menu)
 
 			QString label = toqstr(getLabel(*m));
 #ifdef Q_WS_MACX
+			/* In LyX/Mac, when a dialog is open, the
+			 menus of the application can still be
+			 accessed without giving focus to the main
+			 window. In this case, we want to disable the
+			 menu entries that are buffer-related.
+			*/
+			/* This test is actually not adequate,
+			   for example "dialog-show document" is not
+			   correctly disabled. What should be done
+			   (but is maybe hackish) define a version of
+			   LyXFunc::getStatus that takes a Buffer* as
+			   argument, so that we can call it with buf=0
+			   (JMarc)
+			*/
+			if (status.enabled()
+			    && qApp->activeWindow() != qApp->mainWidget()
+			    && !lyxaction.funcHasFlag(m->func().action, 
+						      LyXAction::NoBuffer))
+				status.enabled(false);
+
 			/* There are two constraints on Qt/Mac: (1)
 			   the bindings require a unicode string to be
 			   represented meaningfully and std::string

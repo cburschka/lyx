@@ -1,3 +1,11 @@
+2004-10-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLPopupMenu.C (populate): move the code below to here, so that
+	it only has an effect on the menu entries
+
+	* lyx_gui.C (getStatus): remove special Qt/Mac code, which broke
+	most dialogs (bug 1693)
+
 2004-10-05  Angus Leeming  <leeming@lyx.org>
 
 	* QPrefs.C, QPRefsDialog.C, ui/QPrefLatexModule.ui: add code to
