@@ -8,7 +8,7 @@
  * \author Angus Leeming <leeming@lyx.org>
  *
  * The graphics cache is a container of grfx::CacheItems.
- * Each grfx::CacheItem, definedhere represents a separate image file.
+ * Each grfx::CacheItem, defined here represents a separate image file.
  *
  * The routines here can be used to load the graphics file into memory at
  * which point (status() == grfx::Loaded).
@@ -59,7 +59,7 @@ public:
 	/// It's in the cache. Now start the loading process.
 	void startLoading() const;
 
-	/** Get the image associated with filename_.
+	/** Get the image associated with filename().
 	 *  If the image is not yet loaded, returns 0.
 	 *  This routine returns a pointer to const; if you want to modify it,
 	 *  create a copy and modify that.

@@ -8,10 +8,8 @@
  *
  *  The controller of a conversion process from file AA of format A to
  *  file BB of format B.
- *  Once finished, the signal finishdConversion is emitted to inform the
- *  instigator where to find file BB.
- *  If the conversion is unsuccessful, then finishedConversion will pass
- *  an empty string.
+ *  Once finished, a signal is emitted to inform any listeners (connected
+ *  through the connect() method).
  */
 
 #ifndef GRAPHICSCONVERTER_H
@@ -34,7 +32,7 @@ public:
 	static bool isReachable(string const & from_format_name,
 				string const & to_format_name);
 
-	/** One Converter per conversion ensures that finishedConversion
+	/** One Converter per conversion ensures that the (hidden) signal
 	 *  is always connected to the expected slot.
 	 */
 	Converter(string const & from_file,   string const & to_file_base,
@@ -48,7 +46,7 @@ public:
 
 	/** Connect and you'll be informed when the conversion process has
 	 *  finished.
-	 *  If the conversion is succesful, then the slot is passed \c true.
+	 *  If the conversion is succesful, then the listener is passed \c true.
 	 */
 	typedef boost::signal1<void, bool>::slot_type slot_type;
 	///
