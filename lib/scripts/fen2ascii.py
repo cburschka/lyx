@@ -1,12 +1,15 @@
 #! /usr/bin/env python
-#
-# Copyright (C) 2001 The LyX Team.
-#
-# This file is distributed under the GPL license.
-#
+
+# file fen2ascii.py
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Kayvan A. Sylvan
+
+# Full author contact details are available in file CREDITS.
+
 # This script will convert a chess position in the FEN
 # format to an ascii representation of the position.
-#
 
 import sys,string,os
 
