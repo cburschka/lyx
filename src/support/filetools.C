@@ -1173,7 +1173,7 @@ bool LyXReadLink(string const & file, string & link, bool resolve)
 
 cmd_ret const RunCommand(string const & cmd)
 {
-	// FIXME: replace all calls to RunCommand with ForkedCall 
+	// FIXME: replace all calls to RunCommand with ForkedCall
 	// (if the output is not needed) or the code in ispell.C
 	// (if the output is needed).
 	
