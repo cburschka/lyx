@@ -966,16 +966,24 @@ string const GetExtension(string const & name)
 
 // the different filetypes and what they contain in one of the first lines
 // (dots are any characters). 		(Herbert 20020131)
+// AGR	Grace...
+// BMP	BM...
 // EPS	%!PS-Adobe-3.0 EPSF...
-// TGIF	%TGIF...
+// FITS ...BITPIX...
 // GIF	GIF...
-// GRACE Grace ...
 // JPG	JFIF
 // PDF	%PDF-...
 // PNG	.PNG...
+// PBM	P1... or P4 	(B/W)
+// PGM	P2... or P5	(Grayscale)
+// PPM	P3... or P6 	(color)
 // PS	%!PS-Adobe-2.0 or 1.0,  no "EPSF"!
+// SGI	\001\332...	(decimal 474)
+// TGIF	%TGIF...
+// TIFF	II... or MM...
 // XBM	... static char ...
 // XPM	/* XPM */
+// XWD	\000\000\000\151	(0x00006900)
 //
 // GZIP	\037\213\010\010...	http://www.ietf.org/rfc/rfc1952.txt
 // ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
@@ -996,33 +1004,63 @@ string const getExtFromContents(string const & filename) {
 	int const max_count = 50; 	// Maximum strings to read
 	int count = 0; 			// Counter of attempts.
 	string str;
-	bool zipChecked = false;
+	bool firstLine = true;
 	for (; count < max_count; ++count) {
 		if (ifs.eof()) {
-			lyxerr[Debug::GRAPHICS] << "filetools(getExtFromContents)"
-				" End of file reached and it wasn't found to be a known Type!" << endl;
+			lyxerr[Debug::GRAPHICS] << "filetools(getExtFromContents)\n"
+				"\tEnd of file reached and it wasn't found a known Type!" << endl;
 			break;
 		}
 		ifs >> str;
-		if (!zipChecked) {
+		if (firstLine) {
 		    // at first we check for a zipped file, because this information
 		    // is saved in the first bytes of the file!
+		    // also some graphic formats which save the information
+		    // in the first line, too.
 		    if (str.substr(0,4) == gzipStamp)
 			return "gzip";
-		    else if (str.substr(0,2) == zipStamp)
+		    string const stamp = str.substr(0,2);
+		    if (stamp == zipStamp)
 			return "zip";
-		    else if (str.substr(0,2) == compressStamp)
+		    else if (stamp == compressStamp)
 			return "compress";
-		    zipChecked = true;
+		    // the graphics part
+		    else if (stamp == "BM")
+			return "bmp";
+		    else if (str.at(0) == 'P') {	// PBM family
+			switch (str.at(1)) {
+			    case '1':
+			    case '4':
+				return "pbm";
+			    break;
+			    case '2':
+			    case '5':
+				return "pgm";
+			    break;
+			    case '3':
+			    case '6':
+				return "ppm";
+			    break;
+			    default: ;			// do nothing
+			}
+		    } 
+		    if (stamp == "\001\332")
+			return "sgi";
+		    else if ((stamp == "II") || (stamp == "MM"))
+			return "tiff";
+		    else if (str.substr(0,3) == "GIF")
+			return "gif";
+		    else if ((str.at(3) == 'i') && (str.at(0) == '\000') &&
+			     (str.at(1) == '\000') && (str.at(2) == '\000'))
+			return "xwd";
+		    firstLine = false;
 		}
 		if (contains(str,"EPSF")) // dummy, if we have wrong file
 		    return "eps";	  // description like "%!PS-Adobe-2.0EPSF"
 		else if (contains(str,"TGIF"))
 		    return "tgif";
-		else if (contains(str,"GIF"))
-		    return "gif";
 		else if (contains(str,"Grace"))
-		    return "grace";
+		    return "agr";
 		else if (contains(str,"JFIF"))
 		    return "jpg";
 		else if (contains(str,"%PDF"))
@@ -1039,6 +1077,8 @@ string const getExtFromContents(string const & filename) {
 		    return "xbm";
 		else if (contains(str,"XPM"))
 		    return "xpm";
+		else if (contains(str,"BITPIX"))
+		    return "fits";
 	}
 	lyxerr[Debug::GRAPHICS] << "filetools(getExtFromContents)\n"
 		"\tCouldn't find a known Type!" 

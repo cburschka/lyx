@@ -21,6 +21,10 @@
 	* os2_errortable.h:
 	* nt_defines.h: moved from src/
  
+2002-02-23  Herbert Voss  <voss@perce.de>
+
+	* filetools.C: added more graphic formats
+
 2002-02-18  Herbert Voss  <voss@perce.de>
 
 	* filetools.C: (getExtFromContents) return the fileextension
