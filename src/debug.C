@@ -16,6 +16,7 @@
 
 #include <iomanip>
 
+using std::ostream;
 using std::setw;
 using std::endl;
 

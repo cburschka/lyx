@@ -12,8 +12,6 @@
 
 #include "debug.h"
 
-using std::ostream;
-
 /** These are all the lyxfunctions (as enums).
  */
 enum kb_action {
@@ -250,5 +248,5 @@ enum kb_action {
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
-ostream & operator<<(ostream &, kb_action);
+std::ostream & operator<<(std::ostream &, kb_action);
 #endif

@@ -30,6 +30,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+using std::ostream;
 using std::endl;
 
 ostream & operator<<(ostream & o, MathedTextCodes mtc)
@@ -217,7 +218,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int baseline)
 	MathParInset::draw(pain, x, baseline);
     } else {
 #ifdef HAVE_SSTREAM
-	    ostringstream ost;
+	    std::ostringstream ost;
 	    ost << '#' << number;
 	    drawStr(pain, LM_TC_TEX, size, x, baseline, 
 		    reinterpret_cast<byte const *>(ost.str().c_str()), 2);
@@ -238,7 +239,7 @@ void MathMacroArgument::Metrics()
 	MathParInset::Metrics();
     } else {
 #ifdef HAVE_SSTREAM
-	    ostringstream ost;
+	    std::ostringstream ost;
 	    ost << '#' << number;
 	    width = mathed_string_width(LM_TC_TEX, size, 
 					reinterpret_cast<byte const *>(ost.str().c_str()), 2);

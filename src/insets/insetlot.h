@@ -32,7 +32,7 @@ public:
         ///
         Inset * Clone() const { return new InsetLOT(owner); }
     	///
-	string getScreenLabel() const { return _("List of Tables"); }
+	string getScreenLabel() const;
         
         ///
 	EDITABLE Editable() const {

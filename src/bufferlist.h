@@ -21,8 +21,6 @@
 #include "buffer.h"
 #include "debug.h"
 
-using std::vector;
-
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
   of structure the buffers are stored in. Should be no concern for
@@ -34,7 +32,7 @@ using std::vector;
 class BufferStorage {
 public:
 	///
-	typedef vector<Buffer *> Container;
+	typedef std::vector<Buffer *> Container;
 	///
 	typedef Container::iterator iterator;
 	///
@@ -112,7 +110,7 @@ public:
 	/// Make a new file (buffer) using a template
 	Buffer * newFile(string const &, string);
 	/// returns a vector with all the buffers filenames
-	vector<string> getFileNames() const;
+	std::vector<string> getFileNames() const;
 
 	///
 	int unlockInset(UpdatableInset *);

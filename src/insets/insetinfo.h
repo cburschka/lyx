@@ -20,8 +20,6 @@
 #include FORMS_H_LOCATION
 #include "LString.h"
 
-using std::ostream;
-
 /** Info. Handles the note insets.
   
   This class handles the note insets. The edit operation bringes up
@@ -47,17 +45,17 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	/// what appears in the minibuffer when opening
-	const char * EditMessage() const {return _("Opened note");}
+	char const * EditMessage() const;
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///

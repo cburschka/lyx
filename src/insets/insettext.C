@@ -13,9 +13,6 @@
 
 #include <fstream>
 #include <algorithm>
-using std::ifstream;
-using std::min;
-using std::max;
 
 #include <cstdlib>
 
@@ -54,6 +51,12 @@ using std::max;
 #include "support/LAssert.h"
 #include "lyxtext.h"
 #include "lyxcursor.h"
+#include "font.h"
+
+using std::ostream;
+using std::ifstream;
+using std::min;
+using std::max;
 
 extern unsigned char getCurrentTextClass(Buffer *);
 
@@ -164,7 +167,7 @@ int InsetText::ascent(Painter & pain, LyXFont const & font) const
     }
     if (maxAscent)
 	return maxAscent;
-    return font.maxAscent();
+    return lyxfont::maxAscent(font);
 }
 
 
@@ -176,7 +179,7 @@ int InsetText::descent(Painter & pain, LyXFont const & font) const
     }
     if (maxDescent)
 	return maxDescent;
-    return font.maxDescent();
+    return lyxfont::maxDescent(font);
 }
 
 
@@ -243,7 +246,7 @@ void InsetText::drawRowSelection(Painter & pain, int startpos, int endpos,
 	    Inset const * tmpinset = par->GetInset(p);
 	    x += tmpinset->width(pain, font);
 	} else {
-	    x += pain.width(ch,font);
+	    x += lyxfont::width(ch, font);
 	}
     }
     if (p == s_start)
@@ -271,8 +274,8 @@ void InsetText::drawRowText(Painter & pain, int startpos, int endpos,
 	    // skip for now
 	} else if (par->IsNewline(p)) {
 		// Draw end-of-line marker
-		int wid = font.width('n');
-		int asc = font.maxAscent();
+		int wid = lyxfont::width('n', font);
+		int asc = lyxfont::maxAscent(font);
 		int y = baseline;
 		int xp[3], yp[3];
 		
@@ -304,7 +307,7 @@ void InsetText::drawRowText(Painter & pain, int startpos, int endpos,
 		tmpinset->draw(pain, font, baseline, x);
 	} else {
 	    pain.text(int(x), baseline, ch, font);
-	    x += pain.width(ch,font);
+	    x += lyxfont::width(ch, font);
 	}
     }
 }
@@ -705,7 +708,7 @@ int InsetText::SingleWidth(Painter & pain, LyXParagraph * par, int pos) const
     char c = par->GetChar(pos);
 
     if (IsPrintable(c)) {
-        return font.width(c);
+        return lyxfont::width(c, font);
     } else if (c == LyXParagraph::META_INSET) {
         Inset const * tmpinset = par->GetInset(pos);
         if (tmpinset)
@@ -716,7 +719,7 @@ int InsetText::SingleWidth(Painter & pain, LyXParagraph * par, int pos) const
         c = ' ';
     else if (IsNewlineChar(c))
         c = 'n';
-    return font.width(c);
+    return lyxfont::width(c, font);
 }
 
 
@@ -735,8 +738,8 @@ void InsetText::SingleHeight(Painter & pain, LyXParagraph * par,int pos,
 	    desc = tmpinset->descent(pain, font);
         }
     } else {
-        asc = font.maxAscent();
-        desc = font.maxDescent();
+        asc = lyxfont::maxAscent(font);
+        desc = lyxfont::maxDescent(font);
     }
     return;
 }
@@ -851,8 +854,8 @@ void InsetText::ToggleInsetCursor(BufferView * bv)
 
     LyXFont font = GetFont(par, actpos);
 
-    int asc = font.maxAscent();
-    int desc = font.maxDescent();
+    int asc = lyxfont::maxAscent(font);
+    int desc = lyxfont::maxDescent(font);
   
     if (cursor_visible)
         bv->hideLockedInsetCursor();
@@ -867,8 +870,8 @@ void InsetText::ShowInsetCursor(BufferView * bv)
     if (!cursor_visible) {
 	LyXFont font = GetFont(par, actpos);
 	
-	int asc = font.maxAscent();
-	int desc = font.maxDescent();
+	int asc = lyxfont::maxAscent(font);
+	int desc = lyxfont::maxDescent(font);
 	bv->fitLockedInsetCursor(cx, cy, asc, desc);
 	bv->showLockedInsetCursor(cx, cy, asc, desc);
 	cursor_visible = true;

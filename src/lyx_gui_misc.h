@@ -18,8 +18,6 @@
 #include "LString.h"
 #include <utility>  /* needed for pair<> definition */
 
-using std::pair;
-
 /// Prevents LyX from being killed when the close box is pressed in a popup.
 extern "C" int CancelCloseBoxCB(FL_FORM *, void *);
 /// Prevents LyX from being killed when the close box is pressed in a popup.
@@ -57,8 +55,8 @@ int AskConfirmation(string const & s1, string const & s2 = string(),
 		    string const & s3 = string());
 
 /// returns a bool: false=cancelled, true=okay. string contains returned text
-pair<bool, string> askForText(string const & msg,
-			      string const & dflt = string());
+std::pair<bool, string> askForText(string const & msg,
+				   string const & dflt = string());
 
 /// Informs the user that changes in the coming form will be ignored
 void WarnReadonly(string const & file);

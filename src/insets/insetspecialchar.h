@@ -18,8 +18,6 @@
 #include "lyxinset.h"
 #include "LString.h"
 
-using std::ostream;
-
 struct LaTeXFeatures;
 
 ///  Used to insert special chars
@@ -57,15 +55,15 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	/// Will not be used when lyxf3
 	void Read(LyXLex & lex);
 	/// 
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	Inset * Clone() const;
 	///  

@@ -19,8 +19,6 @@
 #include "LString.h"
 #include "lyxlex.h"
 
-using std::ostream;
-
 /** Insertion of accents
   
   Proper handling of accented characters.
@@ -51,15 +49,15 @@ public:
 	bool DisplayISO8859_9(Painter &, LyXFont const & font,
 			      int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	bool Deletable() const;
 	///
@@ -116,7 +114,7 @@ public:
  		LSLASH
 	};
 private:
-	friend ostream & operator<<(ostream &, ACCENT_TYPES);
+	friend std::ostream & operator<<(std::ostream &, ACCENT_TYPES);
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///

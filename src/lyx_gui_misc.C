@@ -32,6 +32,7 @@
 #include "insets/insetindex.h"
 #include "LyXView.h"
 
+using std::pair;
 using std::make_pair;
 
 extern BufferView * current_view;

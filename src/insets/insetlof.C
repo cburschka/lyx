@@ -1,16 +1,13 @@
-//#include <config.h>
+#include <config.h>
 
-//#ifdef __GNUG__
-//#pragma implementation
-//#endif
-
-
-//#include "insettof.h"
-
-// InsetLOF::InsetLOF():
-//                InsetCommand("listoffigures")
-// {
-
-// }
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 
+#include "insetlof.h"
+
+string InsetLOF::getScreenLabel() const 
+{
+	return _("List of Figures");
+}

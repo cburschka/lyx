@@ -18,8 +18,6 @@
 
 #include "insetcommand.h"
 
-using std::ostream;
-
 class Buffer;
 
 /** Used to insert citations  
@@ -74,7 +72,7 @@ public:
 	///
         Inset * Clone() const { return new InsetBibKey(this); }
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
-        void Write(ostream &) const;
+        void Write(std::ostream &) const;
 	///
 	virtual string getScreenLabel() const;
         ///
@@ -132,7 +130,7 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
-	int Latex(ostream &, signed char, bool) const;
+	int Latex(std::ostream &, signed char, bool) const;
 	///
 	string getKeys(char delim);
 	///

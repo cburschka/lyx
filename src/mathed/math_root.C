@@ -22,7 +22,10 @@
 #include "math_iter.h"
 #include "math_root.h"
 
-MathRootInset::MathRootInset(short st): MathSqrtInset(st)
+using std::ostream;
+
+MathRootInset::MathRootInset(short st)
+	: MathSqrtInset(st)
 {
     idx = 1;
     uroot = new MathParInset(LM_ST_TEXT); 

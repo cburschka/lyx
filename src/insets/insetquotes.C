@@ -23,7 +23,9 @@
 #include "LaTeXFeatures.h"
 #include "support/lstrings.h"
 #include "Painter.h"
+#include "font.h"
 
+using std::ostream;
 using std::endl;
 
 // Quotes. Used for the various quotes. German, English, French,
@@ -163,13 +165,13 @@ string InsetQuotes::DispString() const
 
 int InsetQuotes::ascent(Painter &, LyXFont const & font) const
 {
-	return font.maxAscent();
+	return lyxfont::maxAscent(font);
 }
 
 
 int InsetQuotes::descent(Painter &, LyXFont const & font) const
 {
-	return font.maxDescent();
+	return lyxfont::maxDescent(font);
 }
 
 
@@ -180,11 +182,11 @@ int InsetQuotes::width(Painter &, LyXFont const & font) const
 
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
-			w += font.width('i');
+			w += lyxfont::width('i', font);
 		else if (i == 0 || text[i] != text[i-1])
-			w += font.width(text[i]);
+			w += lyxfont::width(text[i], font);
 		else
-			w += font.width(',');
+			w += lyxfont::width(',', font);
 	}
 
 	return w;

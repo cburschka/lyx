@@ -22,9 +22,6 @@
 #pragma interface
 #endif
 
-using std::map;
-using std::pair;
-
 ///
 class DepTable {
 public:
@@ -54,8 +51,8 @@ public:
 	void remove_files_with_extension(string const &);
 private:
 	///
-	typedef map<string,
-		pair<unsigned long, unsigned long> > DepList;
+	typedef std::map<string,
+		std::pair<unsigned long, unsigned long> > DepList;
 	///
 	DepList deplist;
 };

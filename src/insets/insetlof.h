@@ -12,14 +12,14 @@
 #ifndef INSET_LOF_H
 #define INSET_LOF_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetcommand.h"
 #include "gettext.h"
 
 // Created by Lgb 970527
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 /** Used to insert table of contents
  */
@@ -32,7 +32,7 @@ public:
         ///
         Inset * Clone() const { return new InsetLOF(owner); }
     	///
-	string getScreenLabel() const { return _("List of Figures"); }
+	string getScreenLabel() const;
         
         ///
 	EDITABLE Editable() const {

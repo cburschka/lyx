@@ -33,6 +33,16 @@ extern string keyseqOptions(int l= 190);
 extern string keyseqStr(int l= 190);
 extern LyXAction lyxaction;
 
+MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
+		       FL_Coord h, FL_Coord w)
+	: owner(o)
+{
+	text = _("Welcome to LyX!");
+	shows_no_match = true;
+	history_idx = history_cnt = 0;
+	add(FL_NORMAL_INPUT, x, y, h, w);
+}
+
 void MiniBuffer::TimerCB(FL_OBJECT * ob, long)
 {
 	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);

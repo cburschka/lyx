@@ -21,8 +21,6 @@
 #include FORMS_H_LOCATION
 #include "Painter.h"
 
-using std::pair;
-
 class BufferView;
 
 class WorkArea {
@@ -79,8 +77,8 @@ public:
 		return fl_get_slider_value(scrollbar);
 	}
 	///
-	pair<double, double> getScrollbarBounds() const {
-		pair<double, double> p;
+	std::pair<double, double> getScrollbarBounds() const {
+		std::pair<double, double> p;
 		fl_get_slider_bounds(scrollbar, &p.first, &p.second);
 		return p;
 	}

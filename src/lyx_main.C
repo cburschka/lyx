@@ -502,7 +502,6 @@ bool LyX::easyParse(int * argc, char * argv[])
 				Debug::showTags(lyxerr);
 				exit(0);
 			}
-			
 		} 
 		// Check for "-sysdir"
 		else if (arg == "-sysdir") {
@@ -523,10 +522,11 @@ bool LyX::easyParse(int * argc, char * argv[])
 			commandLineHelp();
 			exit(0);
 		} 
-		// Check for "-nw": No window
-		else if (arg == "-nw") {
-			gui = false;
-		}
+		// Check for "-nw": No XWindows as for emacs this should
+		// give a LyX that could be used in a terminal window.
+		//else if (arg == "-nw") {
+		//	gui = false;
+		//}
 
 		// Check for "-x": Execute commands
 		else if (arg == "-x" || arg == "--execute") {
@@ -571,8 +571,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 					lyxerr << _("Unknown file type '")
 					       << type << _("' after ")
 					       << arg << _(" switch!") << endl;
-			}
-			else
+			} else
 				lyxerr << _("Missing file type [eg latex, "
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;

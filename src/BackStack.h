@@ -15,8 +15,6 @@
 
 #include "LString.h"
 
-using std::stack;
-
 // Created by Alejandro Aguilar Sierra, 970806
 
 /**  Utility to get back from a reference or from a child document.
@@ -55,7 +53,7 @@ public:
 	}
 private:
 	///
-	stack<BackStackItem> stakk;
+	std::stack<BackStackItem> stakk;
 };
 
 #endif

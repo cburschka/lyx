@@ -25,8 +25,6 @@
 #include "PainterBase.h"
 #include "LColor.h"
 
-using std::map;
-
 class LyXFont;
 class WorkArea;
 
@@ -131,8 +129,7 @@ protected:
 	/// Caching of ordinary color GCs
 	GC colorGCcache[LColor::ignore + 1];
 	/// Caching of GCs used for lines
-	//typedef map<int, GC, less<int> > LineGCCache;
-	typedef map<int, GC> LineGCCache;
+	typedef std::map<int, GC> LineGCCache;
 	///
 	LineGCCache lineGCcache;
 };

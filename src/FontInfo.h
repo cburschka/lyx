@@ -80,14 +80,7 @@ private:
 	int scaleindex;
 
 	/// Initialize empty record
-	void init() {
-		sizes = 0;
-		strings = 0;
-		matches = 0;
-		queried = false;
-		scalable = false;
-		scaleindex = -1;
-	}
+	void init();
 
 	/// Release allocated stuff
 	void release();

@@ -15,9 +15,6 @@
 
 #include <vector>
 
-using std::vector;
-using std::pair;
-
 ///
 class LRegex {
 public:
@@ -28,10 +25,10 @@ public:
 	~LRegex();
 
 	///
-	typedef pair<string::size_type, string::size_type> MatchPair;
+	typedef std::pair<string::size_type, string::size_type> MatchPair;
 
 	///
-	typedef vector<MatchPair> SubMatches;
+	typedef std::vector<MatchPair> SubMatches;
 
 	/// Returns all the matches in a vector
 	SubMatches const & exec(string const & str) const;

@@ -41,6 +41,7 @@ libsupport_la_SOURCES = \
 	lyxmanip.h \
 	$(LYXSTRING) lyxsum.C \
 	mkdir.C \
+	path.C \
 	path.h \
 	putenv.C \
 	$(REGEX) syscall.C \

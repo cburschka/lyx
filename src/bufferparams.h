@@ -25,8 +25,6 @@
 #include "layout.h"
 #include "support/block.h"
 
-using std::ostream;
-
 /**
   This class contains all the parameters for this a buffer uses. Some
   work needs to be done on this class to make it nice. Now everything
@@ -113,7 +111,7 @@ public:
 	//@}
 
 	///
-	void writeFile(ostream &) const;
+	void writeFile(std::ostream &) const;
 
 	///
 	void useClassDefaults();

@@ -18,8 +18,6 @@
 
 #include <list>
 
-using std::list;
-
 class LyXParagraph;
 
 // Controls correspondance between paragraphs and the generated LaTeX file
@@ -67,7 +65,7 @@ private:
 	///
 	unsigned int count;
 	///
-	typedef list<RowItem> RowList;
+	typedef std::list<RowItem> RowList;
 	///
 	RowList rowlist;
 	/// Last paragraph

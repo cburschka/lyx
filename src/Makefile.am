@@ -90,6 +90,8 @@ lyx_SOURCES = \
 	figure.h \
 	filedlg.C \
 	filedlg.h \
+	font.C \
+	font.h \
 	form1.C \
 	form1.h \
 	gettext.h \

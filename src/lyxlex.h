@@ -16,10 +16,6 @@
 
 #include "LString.h"
 
-using std::ostream;
-using std::istream;
-using std::filebuf;
-
 ///
 struct keyword_item {
 	///
@@ -56,9 +52,9 @@ public:
 	/// return true if able to open file, else false
 	bool setFile(string const & filename);
 	///
-	void setStream(istream & i);
+	void setStream(std::istream & i);
 	///
-	istream & getStream() { return is; }
+	std::istream & getStream() { return is; }
 	/// Danger! Don't use it unless you know what you are doing.
 	void setLineNo(int l) { lineno = l; }
 	/// returns a lex code
@@ -116,7 +112,7 @@ public:
 	/**
 	  Prints the current token table on the supplied ostream.
 	  */
-	void printTable(ostream &);
+	void printTable(std::ostream &);
 protected:
 	///
 	enum {
@@ -140,9 +136,9 @@ protected:
 	};
 
 	/// fb__ is only used to open files, the stream is accessed through is
-	filebuf fb__;
+	std::filebuf fb__;
 	/// the stream that we use.
-	istream is;
+	std::istream is;
 	/// 
 	string name;
 	///

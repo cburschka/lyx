@@ -73,4 +73,7 @@ private:
 			     LyXFont::FONT_SHAPE shape, 
 			     LyXFont::FONT_SIZE size);
 };
+
+extern FontLoader fontloader;
+
 #endif

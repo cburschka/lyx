@@ -7,16 +7,13 @@
 
 #include "LString.h"
 
-using std::vector;
-
 class LyXLex;
-
 
 ///
 class ToolbarDefaults {
 public:
 	///
-	typedef vector<int> Defaults;
+	typedef std::vector<int> Defaults;
 	///
 	typedef Defaults::iterator iterator;
 	///

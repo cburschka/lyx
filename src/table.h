@@ -20,9 +20,6 @@
 #include "lyxlex.h"
 #include "LString.h"
 
-using std::ostream;
-using std::istream;
-
 /* The features the text class offers for tables */ 
 
 ///
@@ -163,19 +160,19 @@ public:
 	void Init(int columns_arg, int rows_arg);
 
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
-	void Read(istream &);
+	void Read(std::istream &);
 
 	// cell <0 will tex the preamble
 	// returns the number of printed newlines
 	///
-	int TexEndOfCell(ostream &, int cell);
+	int TexEndOfCell(std::ostream &, int cell);
 	///
-	int DocBookEndOfCell(ostream &, int cell, int & depth);
+	int DocBookEndOfCell(std::ostream &, int cell, int & depth);
 #if 0
 	///
-	int RoffEndOfCell(ostream &, int cell);
+	int RoffEndOfCell(std::ostream &, int cell);
 #endif
 	///
 	char const * getDocBookAlign(int cell, bool isColumn = false);

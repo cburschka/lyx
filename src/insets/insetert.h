@@ -20,8 +20,6 @@
 
 #include "insetcollapsable.h"
 
-using std::ostream;
-
 class Painter;
 
 /** A colapsable text inset
@@ -38,9 +36,9 @@ public:
     ///
     Inset * Clone() const;
     ///
-    void Write(ostream &) const;
+    void Write(std::ostream &) const;
     ///
-    const char * EditMessage() const { return _("Opened ERT Inset");}
+    char const * EditMessage() const;
     ///
     bool InsertInset(BufferView *, Inset *);
     ///

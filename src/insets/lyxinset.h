@@ -16,17 +16,18 @@
 #pragma interface
 #endif
 
+#include <X11/Xlib.h>
+
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
-
-using std::ostream;
 
 class Painter;
 class Buffer;
 class BufferView;
 
 struct LaTeXFeatures;
+
 
 
 /// Insets
@@ -114,7 +115,7 @@ public:
 	///
 	virtual LyXFont ConvertFont(LyXFont font);
 	/// what appears in the minibuffer when opening
-	virtual const char * EditMessage() const {return _("Opened inset");}
+	virtual const char * EditMessage() const;
 	///
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -124,7 +125,7 @@ public:
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(ostream &) const = 0;
+	virtual void Write(std::ostream &) const = 0;
 	///
 	virtual void Read(LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
@@ -133,13 +134,13 @@ public:
 	 If the freee_spc (freespacing) variable is set, then this inset
 	 is in a free-spacing paragraph.
 	 */
-	virtual int Latex(ostream &, signed char fragile,
+	virtual int Latex(std::ostream &, signed char fragile,
 			  bool free_spc) const = 0;
 
 	///
-	virtual int Linuxdoc(ostream &) const = 0;
+	virtual int Linuxdoc(std::ostream &) const = 0;
 	///
-	virtual int DocBook(ostream &) const = 0;
+	virtual int DocBook(std::ostream &) const = 0;
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures & features) const;
 	///

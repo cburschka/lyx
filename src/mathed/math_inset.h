@@ -30,8 +30,6 @@
 #include "symbol_def.h"
 #include "LString.h"
 
-using std::ostream;
-
 /**
  Functions or LaTeX names for objects that I don't know how to draw.
  */
@@ -47,7 +45,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 	///
@@ -76,7 +74,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 	///
@@ -106,7 +104,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 protected:
@@ -125,7 +123,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	inline void Metrics();
 	///
@@ -148,7 +146,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 	///
@@ -175,7 +173,7 @@ public:
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 	///
@@ -198,7 +196,7 @@ public:
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 	
@@ -244,7 +242,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 protected:
@@ -265,7 +263,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(ostream &);
+	void Write(std::ostream &);
 	///
 	void Metrics();
 	///
@@ -298,7 +296,7 @@ bool MathFuncInset::GetLimits() const
 
 
 inline
-void MathFuncInset::Write(ostream & os)
+void MathFuncInset::Write(std::ostream & os)
 {
 	os << "\\" << name << ' ';
 }

@@ -14,8 +14,6 @@
 #include "insets/lyxinset.h"
 /* the rest is figure stuff */
 
-using std::ostream;
-
 struct Figref;
 
 ///
@@ -35,20 +33,21 @@ public:
 	void draw(Painter &, LyXFont const & font,
 		  int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile, bool free_space) const;
+	int Latex(std::ostream &, signed char fragile, bool free_space) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 
 	/// what appears in the minibuffer when opening
-	const char * EditMessage() const { return _("Opened figure"); }
+	char const * EditMessage() const;
+	
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///

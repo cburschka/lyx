@@ -11,6 +11,7 @@ using std::istringstream;
 #include "Spacing.h"
 
 using std::ios;
+using std::ostream;
 
 /// how can I put this inside of Spacing (class)
 static

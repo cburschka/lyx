@@ -14,6 +14,7 @@
 #include "LaTeXFeatures.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 
+using std::ostream;
 
 InsetUrl::InsetUrl(string const & cmd)
 	: fd_form_url(0)
@@ -106,6 +107,12 @@ void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
 {
 	InsetUrl::CloseUrlCB(ob, data);
+}
+
+
+char const * InsetUrl::EditMessage() const 
+{
+	return _("Opened Url");
 }
 
 

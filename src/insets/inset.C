@@ -71,6 +71,11 @@ LyXFont Inset::ConvertFont(LyXFont font)
 }
 
 
+char const * Inset::EditMessage() const 
+{
+	return _("Opened inset");
+}
+
  /* some stuff for inset locking */
 
 void UpdatableInset::InsetButtonPress(BufferView *, int x, int y, int button)

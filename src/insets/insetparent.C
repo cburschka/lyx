@@ -24,6 +24,7 @@
 #include "lyxfunc.h"
 #include "commandtags.h"
 
+using std::ostream;
 
 InsetParent::InsetParent(string const & fn, Buffer * owner)
 	: InsetCommand("lyxparent")
@@ -32,6 +33,12 @@ InsetParent::InsetParent(string const & fn, Buffer * owner)
 		setContents(MakeAbsPath(fn, OnlyPath(owner->fileName())));
 	else
 		setContents(fn);
+}
+
+
+string InsetParent::getScreenLabel() const 
+{
+	return string(_("Parent:")) + getContents();
 }
 
 

@@ -17,6 +17,7 @@
 using std::string;
 #else
 #include "support/lyxstring.h"
+// using lyx::string;
 typedef lyxstring string;
 #endif
 #endif

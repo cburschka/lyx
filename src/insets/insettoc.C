@@ -12,6 +12,15 @@
 #include "LyXView.h"
 #include "BufferView.h"
 
+using std::ostream;
+
+
+string InsetTOC::getScreenLabel() const 
+{
+	return _("Table of Contents");
+}
+
+
 void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);

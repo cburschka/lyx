@@ -16,6 +16,8 @@
 #include "commandtags.h"
 #include "gettext.h"
 
+using std::ostream;
+
 extern BufferView * current_view;
 
 

@@ -8,8 +8,6 @@
 #include "LString.h"
 #include "support/lstrings.h"
 
-using std::ostream;
-
 /** Ideally this should have been a namespace, but since we try to be
     compilable on older C++ compilators too, we use a struct instead.
     This is all the different debug levels that we have.
@@ -71,10 +69,10 @@ struct Debug {
 	/** Display the tags and descriptions of the current debug level 
 	    of ds 
 	*/
-	static void showLevel(ostream & o, type level);
+	static void showLevel(std::ostream & o, type level);
 
 	/** show all the possible tags that can be used for debugging */
-	static void showTags(ostream & o);
+	static void showTags(std::ostream & o);
 
 };
 
@@ -91,7 +89,7 @@ void operator|= (Debug::type & d1, Debug::type d2)
 
 
 ///
-ostream & operator<<(ostream & o, Debug::type t);
+std::ostream & operator<<(std::ostream & o, Debug::type t);
 
 extern DebugStream lyxerr;
 

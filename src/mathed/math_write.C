@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+using std::ostream;
 using std::endl;
 
 extern char const * latex_mathenv[];

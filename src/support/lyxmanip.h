@@ -4,8 +4,6 @@
 
 #include "support/LOstream.h"
 
-using std::ostream;
-
 ///
 struct NewLineAndDepth_ {
 	int depth_;
@@ -22,7 +20,7 @@ NewLineAndDepth_ newlineAndDepth(int n)
 
 ///
 inline
-ostream & operator<<(ostream & os, NewLineAndDepth_ const & nlad_)
+std::ostream & operator<<(std::ostream & os, NewLineAndDepth_ const & nlad_)
 {
 	os << string(nlad_.depth_, ' ');
 	return os;

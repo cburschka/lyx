@@ -24,7 +24,9 @@
 #include "buffer.h"
 #include "support/lstrings.h"
 #include "Painter.h"
+#include "font.h"
 
+using std::ostream;
 using std::endl;
 
 /* Info, used for the Info boxes */
@@ -57,19 +59,19 @@ InsetInfo::~InsetInfo()
 
 int InsetInfo::ascent(Painter &, LyXFont const & font) const
 {
-	return font.maxAscent() + 1;
+	return lyxfont::maxAscent(font) + 1;
 }
 
 
 int InsetInfo::descent(Painter &, LyXFont const & font) const
 {
-	return font.maxDescent() + 1;
+	return lyxfont::maxDescent(font) + 1;
 }
 
 
 int InsetInfo::width(Painter &, LyXFont const & font) const
 {
-	return 6 + font.textWidth(_("Note"), strlen(_("Note")));
+	return 6 + lyxfont::width(_("Note"), font);
 }
 
 
@@ -174,6 +176,12 @@ void InsetInfo::CloseInfoCB(FL_OBJECT * ob, long)
 extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data) 
 {
   	InsetInfo::CloseInfoCB(ob, data);
+}
+
+
+char const * InsetInfo::EditMessage() const 
+{
+	return _("Opened note");
 }
 
 

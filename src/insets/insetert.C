@@ -20,6 +20,7 @@
 #include "buffer.h"
 //#include "lyx_gui_misc.h"
 
+using std::ostream;
 
 InsetERT::InsetERT(Buffer * bf)
 	: InsetCollapsable(bf)
@@ -49,6 +50,13 @@ void InsetERT::Write(ostream & os) const
     os << "ERT\n";
     WriteParagraphData(os);
 }
+
+
+char const * InsetERT::EditMessage() const 
+{
+	return _("Opened ERT Inset");
+}
+
 
 bool InsetERT::InsertInset(BufferView *, Inset *)
 {

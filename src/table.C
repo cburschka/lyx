@@ -19,11 +19,14 @@
 #endif
 
 #include "table.h"
+#include "debug.h"
 #include "vspace.h"
 #include "layout.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
 
+using std::ostream;
+using std::istream;
 using std::max;
 using std::endl;
 

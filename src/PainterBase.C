@@ -16,7 +16,7 @@
 #include "PainterBase.h"
 #include "lyxfont.h"
 #include "WorkArea.h"
-
+#include "font.h"
 
 int PainterBase::dummy1 = 0;
 int PainterBase::dummy2 = 0;
@@ -31,24 +31,6 @@ int PainterBase::paperMargin() const
 int PainterBase::paperWidth() const
 {
 	return owner.workWidth();
-}
-
-
-int PainterBase::width(string const & s, LyXFont const & f) const
-{
-	return f.stringWidth(s);
-}
-
-
-int PainterBase::width(char const * s, int l, LyXFont const & f) const
-{
-	return f.textWidth(s, l);
-}
-
-
-int PainterBase::width(char c, LyXFont const & f) const
-{
-	return f.width(c);
 }
 
 
@@ -110,9 +92,9 @@ PainterBase & PainterBase::rectText(int x, int baseline,
 				    int & width, int & ascent, int & descent)
 {
 	static int const d = 2;
-	width = this->width(str, font) + d * 2 + 2;
-	ascent = font.maxAscent() + d;
-	descent = font.maxDescent() + d;
+	width = lyxfont::width(str, font) + d * 2 + 2;
+	ascent = lyxfont::maxAscent(font) + d;
+	descent = lyxfont::maxDescent(font) + d;
 
 	if (!draw) return *this;
 
@@ -129,9 +111,9 @@ PainterBase & PainterBase::buttonText(int x, int baseline,
 				      LyXFont const & font, bool draw,
 				      int & width, int & ascent, int & descent)
 {
-	width = this->width(str, font) + 8;
-	ascent = font.maxAscent() + 3;
-	descent = font.maxDescent() + 3;
+	width = lyxfont::width(str, font) + 8;
+	ascent = lyxfont::maxAscent(font) + 3;
+	descent = lyxfont::maxDescent(font) + 3;
 
 	if (!draw) return *this;
 

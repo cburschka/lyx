@@ -16,6 +16,8 @@
 
 #include "insetlabel.h"
 
+using std::ostream;
+
 /* Label. Used to insert a label automatically */
 
 

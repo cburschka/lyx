@@ -18,6 +18,9 @@
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "Painter.h"
+#include "font.h"
+
+using std::ostream;
 
 /* Error, used for the LaTeX-Error Messages */
 
@@ -48,7 +51,7 @@ int InsetError::ascent(Painter &, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return efont.maxAscent() + 1;
+	return lyxfont::maxAscent(efont) + 1;
 }
 
 
@@ -56,7 +59,7 @@ int InsetError::descent(Painter &, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return efont.maxDescent() + 1;
+	return lyxfont::maxDescent(efont) + 1;
 }
 
 
@@ -64,7 +67,7 @@ int InsetError::width(Painter &, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return 6 + efont.textWidth(_("Error"), strlen(_("Error")));
+	return 6 + lyxfont::width(_("Error"), efont);
 }
 
 
@@ -147,6 +150,12 @@ void InsetError::CloseErrorCB(FL_OBJECT * ob, long)
 extern "C" void C_InsetError_CloseErrorCB(FL_OBJECT * ob, long data)
 {
         InsetError::CloseErrorCB(ob , data);
+}
+
+
+char const * InsetError::EditMessage() const 
+{
+	return _("Opened error");
 }
 
 

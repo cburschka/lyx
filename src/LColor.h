@@ -19,8 +19,6 @@
 
 #include "LString.h"
 
-using std::map;
-
 /**
   This is a stateless class. 
 
@@ -196,8 +194,7 @@ private:
 		  string const & lyx);
 
 	///
-	//typedef map<LColor::color, information, less<LColor::color> > InfoTab;
-	typedef map<LColor::color, information> InfoTab;
+	typedef std::map<LColor::color, information> InfoTab;
 
 	InfoTab infotab;
 };

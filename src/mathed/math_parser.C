@@ -30,6 +30,7 @@
 #include "math_root.h"
 #include "debug.h"
 
+using std::istream;
 using std::endl;
 
 enum {

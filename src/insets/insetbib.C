@@ -21,6 +21,7 @@ using std::ifstream;
 #include "lyxtext.h"
 #include "support/filetools.h"
 
+using std::ostream;
 using std::endl;
 
 extern BufferView * current_view;

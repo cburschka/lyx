@@ -19,8 +19,6 @@
 #include "insetcommand.h"
 #include "gettext.h"
 
-using std::ostream;
-
 class Buffer;
 
 /** Used to insert table of contents
@@ -34,7 +32,7 @@ public:
         ///
         Inset * Clone() const { return new InsetTOC(owner); }
     	///
-	string getScreenLabel() const { return _("Table of Contents"); }
+	string getScreenLabel() const;
 	/// On edit, we open the TOC pop-up
 	void Edit(BufferView * bv, int, int, unsigned int);
         ///
@@ -46,9 +44,9 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 private:
 	///
 	Buffer * owner;

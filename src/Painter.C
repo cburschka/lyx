@@ -14,11 +14,11 @@
 #pragma implementation
 #endif
 
-#include <cmath>
-
 #ifdef USE_STL_MEMORY
 #include <memory>
 #endif
+
+#include <cmath>
 
 #include FORMS_H_LOCATION
 #include "Painter.h"
@@ -28,8 +28,10 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "WorkArea.h"
+#include "font.h"
 
 using std::endl;
+using std::max;
 
 Painter::Painter(WorkArea & wa)
 	: PainterBase(wa)
@@ -100,9 +102,9 @@ PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 
 
 PainterBase & Painter::lines(int const * xp, int const * yp, int np,
-			LColor::color col,
-			enum line_style ls,
-			enum line_width lw)
+			     LColor::color col,
+			     enum line_style ls,
+			     enum line_width lw)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
@@ -116,7 +118,7 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 #else
 	auto_ptr<XPoint> points(new Xpoint[np]);
 #endif
-	for (int i=0; i<np; ++i) {
+	for (int i = 0; i < np; ++i) {
 		points[i].x = xp[i];
 		points[i].y = yp[i];
 	}
@@ -132,9 +134,9 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 
 
 PainterBase & Painter::rectangle(int x, int y, int w, int h,
-			LColor::color col,
-			enum line_style ls,
-			enum line_width lw)
+				 LColor::color col,
+				 enum line_style ls,
+				 enum line_width lw)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
@@ -179,7 +181,7 @@ PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 #else
 	auto_ptr<XPoint> points(new XPoint[np]);
 #endif
-	for (int i=0; i<np; ++i) {
+	for (int i=0; i < np; ++i) {
 		points[i].x = xp[i];
 		points[i].y = yp[i];
 	}
@@ -285,11 +287,34 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 				"workarea::workhandler\n";
 		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
-	
 	GC gc = getGCForeground(f.realColor());
-	XSetFont(display, gc, f.getFontID());
-	XDrawString(display, drawable(), gc, x, y, s, ls);
-	underline(f, x, y, this->width(s, ls, f));
+	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+		lyxfont::XSetFont(display, gc, f);
+		XDrawString(display, drawable(), gc, x, y, s, ls);
+	} else {
+		LyXFont smallfont(f);
+		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+		char c;
+		int tmpx = x;
+		for(int i = 0; i < ls; ++i) {
+			c = s[i];
+			if (islower(static_cast<unsigned char>(c))) {
+				c = toupper(c);
+				lyxfont::XSetFont(display, gc, smallfont);
+				XDrawString(display, drawable(),
+					    gc, tmpx, y, &c, 1);
+				tmpx += lyxfont::XTextWidth(smallfont, &c, 1);
+				//tmpx += lyxfont::width(c, f);
+			} else {
+				lyxfont::XSetFont(display, gc, f);
+				XDrawString(display, drawable(),
+					    gc, tmpx, y, &c, 1);
+				tmpx += lyxfont::XTextWidth(f, &c, 1);
+				//tmpx += lyxfont::width(c, f);
+			}
+		}
+	}
+	underline(f, x, y, lyxfont::width(s, ls, f));
 	return *this;
 }
 
@@ -298,10 +323,8 @@ void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
 	// What about underbars?
 	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON) {
-		int below = f.maxDescent() / 2;
-		if (below < 2) below = 2;
-		int height = (f.maxDescent() / 4) - 1;
-		if (height < 0) height = 0;
+		int below = max(lyxfont::maxDescent(f) / 2, 2);
+		int height = max((lyxfont::maxDescent(f) / 4) - 1, 0);
 		fillRectangle(x, y + below, width, below + height, f.color());
 	}
 }

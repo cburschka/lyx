@@ -5,20 +5,18 @@
 #include "debug.h"
 #include "LString.h"
 
-using std::endl;
-
 class DebugTracer {
 public:
 	DebugTracer(string const & s) : str(s) {
 		lyxerr << string(depth, ' ') << "Trace begin : "
-		       << str << endl;
+		       << str << std::endl;
 		++depth;
 		
 	}
 	~DebugTracer() {
 		--depth;
 		lyxerr << string(depth, ' ') << "Trace end : "
-		       << str << endl;
+		       << str << std::endl;
 	}
 private:
 	string str;

@@ -18,8 +18,6 @@
 #include "insetcommand.h"
 #include "buffer.h"
 
-using std::ostream;
-
 struct LaTeXFeatures;
 
 /** The reference inset  
@@ -63,11 +61,11 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 private:
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;

@@ -25,10 +25,8 @@
 #include "FontLoader.h"
 #include "support/lstrings.h"
 
+using std::ostream;
 using std::endl;
-
-// The global fontloader
-FontLoader fontloader;
 
 //
 // Names for the GUI
@@ -54,10 +52,6 @@ char const * GUISizeNames[14] =
   N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"), 
   N_("Inherit"), N_("Ignore") };
  
-//char const * lGUISizeNames[15] = 
-//{ N_("tiny"), N_("smallest"), N_("smaller"), N_("small"), N_("normal"), N_("large"),
-//  N_("larger"), N_("largest"), N_("huge"), N_("huger"), N_("increase"), N_("decrease"),
-//  N_("inherit"), N_("ignore"), string() };
 static
 char const * GUIMiscNames[5] = 
 { N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
@@ -141,6 +135,26 @@ LyXFont::FontBits LyXFont::ignore = {
 	IGNORE,
 	IGNORE,
 	IGNORE };
+
+
+bool LyXFont::FontBits::operator==(LyXFont::FontBits const & fb1) const
+{
+			return fb1.family == family &&
+				fb1.series == series &&
+				fb1.shape == shape &&
+				fb1.size == size &&
+				fb1.color == color &&
+				fb1.emph == emph &&
+				fb1.underbar == underbar &&
+				fb1.noun == noun &&
+				fb1.latex == latex;
+}
+
+
+bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
+{
+	return !(fb1 == *this);
+}
 
 
 /// Decreases font size by one
@@ -370,7 +384,7 @@ bool LyXFont::resolved() const
 string LyXFont::stateText() const
 {
 #ifdef HAVE_SSTREAM
-	ostringstream ost;
+	std::ostringstream ost;
 #else
 	char str[1024];
 	ostrstream ost(str, 1024);
@@ -476,11 +490,12 @@ LyXFont & LyXFont::setLyXSize(string const & siz)
 	return *this;
 }
 
+
 // Set size according to lyx format string
 LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
 	string s = lowercase(siz);
-	int i= 0;
+	int i = 0;
 	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") ++i;
 	if (s == LyXMiscNames[i])
 		return FONT_MISC_STATE(i);
@@ -488,6 +503,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 	       << s << '\'' << endl;
 	return OFF;
 }
+
 
 /// Sets color after LyX text format
 LyXFont & LyXFont::setLyXColor(string const & col)
@@ -838,168 +854,6 @@ LyXFont::FONT_SHAPE LyXFont::realShape() const
 	if (noun() == ON)
 		s = SMALLCAPS_SHAPE;
 	return s;
-}
-
-
-XFontStruct * LyXFont::getXFontstruct() const
-{
-	return fontloader.load(family(), series(), realShape(), size());
-}
-
-
-int LyXFont::maxAscent() const
-{
-	return getXFontstruct()->ascent;
-}
-
-
-int LyXFont::maxDescent() const
-{
-	return getXFontstruct()->descent;
-}
-
-
-int LyXFont::ascent(char c) const
-{
-	XFontStruct * finfo = getXFontstruct();
-	unsigned int uc = static_cast<unsigned char>(c);
-	if (finfo->per_char
-	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
-		return finfo->per_char[uc - finfo->min_char_or_byte2].ascent;
-	else
-		return finfo->ascent;
-}
-
-
-int LyXFont::descent(char c) const
-{
-	XFontStruct * finfo = getXFontstruct();
-	unsigned int uc = static_cast<unsigned char>(c);
-	if (finfo->per_char
-	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
-		return finfo->per_char[uc - finfo->min_char_or_byte2].descent;
-	else
-		return finfo->descent;
-}
-
-
-int LyXFont::lbearing(char c) const
-{
-	XFontStruct * finfo = getXFontstruct();
-	unsigned int uc = static_cast<unsigned char>(c);
-	if (finfo->per_char
-	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
-		return finfo->per_char[uc - finfo->min_char_or_byte2].lbearing;
-	else
-		return 0;
-}
-
-
-int LyXFont::rbearing(char c) const
-{
-	XFontStruct * finfo = getXFontstruct();
-	unsigned int uc = static_cast<unsigned char>(c);
-	if (finfo->per_char
-	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
-		return finfo->per_char[uc - finfo->min_char_or_byte2].rbearing;
-	else
-		return width(c);
-}
-
-
-// Specialized after profiling. (Asger)
-int LyXFont::width(char c) const
-{
-	if (realShape() != LyXFont::SMALLCAPS_SHAPE){
-		return lyxrc.use_gui ? XTextWidth(getXFontstruct(), &c, 1) : 1;
-	} else {
-		return textWidth(&c, 1);
-	}
-}
-
-
-int LyXFont::textWidth(char const * s, int n) const
-{
-	if (!lyxrc.use_gui)
-		return n;
-
-	if (realShape() != LyXFont::SMALLCAPS_SHAPE){
-		return XTextWidth(getXFontstruct(), s, n);
-	} else {
-		// emulate smallcaps since X doesn't support this
-		unsigned int result = 0;
-		char c;
-		LyXFont smallfont = *this;
-		smallfont.decSize();
-		smallfont.decSize();
-		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (int i = 0; i < n; ++i) {
-			c = s[i];
-			// when islower is a macro, the cast is needed (JMarc)
-			if (islower(static_cast<unsigned char>(c))){
-				c = toupper(c);
-				result += XTextWidth(smallfont.getXFontstruct(), &c, 1);
-			} else {
-				result += XTextWidth(getXFontstruct(), &c, 1);
-			}
-		}
-		return result;
-	}
-}
-
-
-int LyXFont::stringWidth(string const & s) const
-{
-	if (s.empty()) return 0;
-	return textWidth(s.c_str(), s.length());
-}
-
-
-int LyXFont::signedStringWidth(string const & s) const
-{
-	if (s.empty()) return 0;
-	if (s.c_str()[0] == '-')
-		return -textWidth(s.c_str()+1, s.length()-1);
-	else
-		return textWidth(s.c_str(), s.length());
-}
-
-
-int LyXFont::drawText(char const * s, int n, Pixmap, 
-		      int, int x) const
-{
-	if (realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		return XTextWidth(getXFontstruct(), s, n);
-	} else {
-		// emulate smallcaps since X doesn't support this
-		char c;
-		int sx = x;
-		LyXFont smallfont = *this;
-		smallfont.decSize();
-		smallfont.decSize();
-		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (int i = 0; i < n; ++i) {
-			c = s[i];
-			if (islower(static_cast<unsigned char>(c))){
-				c = toupper(c);
-				x += XTextWidth(smallfont.getXFontstruct(),
-						&c, 1);
-			} else {
-				x += XTextWidth(getXFontstruct(), &c, 1);
-			}
-		}
-		return x - sx;
-	}
-}
-
-
-int LyXFont::drawString(string const & s, Pixmap pm, int baseline, int x) const
-{
-	return drawText(s.c_str(), s.length(), pm, baseline, x);
 }
 
 

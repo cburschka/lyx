@@ -24,9 +24,6 @@
 #include "math_defs.h"
 #include "debug.h"
 
-using std::ostream;
-using std::endl;
-
 ///
 typedef MathParInset * MathParInsetP;
 ///
@@ -52,7 +49,7 @@ public:
 	///
     MathedInset * Clone();
 	///
-    void Write(ostream &);
+    void Write(std::ostream &);
 	///
     bool setArgumentIdx(int);
 	///
@@ -110,7 +107,7 @@ public:
     ///
     MathMacroArgument(int);
     ///
-	~MathMacroArgument() { lyxerr << "help, destroyme!" << endl; }
+	~MathMacroArgument() { lyxerr << "help, destroyme!" << std::endl; }
     ///
     MathedInset * Clone() { return this; }
 	///
@@ -118,7 +115,7 @@ public:
 	///
     void draw(Painter &, int x, int baseline);
 	///
-    void Write(ostream &);
+    void Write(std::ostream &);
     ///
     void setNumber(int n) { number = n; }
     /// Is expanded or not
@@ -145,7 +142,7 @@ public:
 	///
     void Metrics();
 	///
-    void WriteDef(ostream &);
+    void WriteDef(std::ostream &);
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
     ///

@@ -194,7 +194,7 @@ dnl Check the version of g++
   fi
   if test x$with_warnings = xyes ; then
     case $gxx_version in
-	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion";;
+	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion -Winline";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion";;
 	*)      CXXFLAGS="$CXXFLAGS -ansi -W -Wall -Wno-return-type";;
     esac

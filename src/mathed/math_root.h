@@ -24,8 +24,6 @@
 #include "symbol_def.h"
 #include "LString.h"
 
-using std::ostream;
-
 ///
 class MathRootInset: public MathSqrtInset {
  public:
@@ -40,7 +38,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     void draw(Painter &, int x, int baseline);
     ///
-    void Write(ostream &);
+    void Write(std::ostream &);
     ///
     void Metrics();
     ///
@@ -50,7 +48,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     void SetData(LyxArrayBase *);
     ///
-    void GetXY(int& x, int& y) const;
+    void GetXY(int & x, int & y) const;
     ///
     LyxArrayBase * GetData();
     ///

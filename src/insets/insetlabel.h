@@ -19,8 +19,6 @@
 #include "insetcommand.h"
 #include "LString.h"
 
-using std::ostream;
-
 ///
 class InsetLabel : public InsetCommand {
 public:
@@ -41,11 +39,11 @@ public:
 	///
 	EDITABLE Editable() const { return NOT_EDITABLE; }
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 private:
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;

@@ -31,9 +31,6 @@
 
 #include "array.h"
 
-using std::ostream;
-using std::istream;
-
 class Painter;
 
 ///
@@ -145,7 +142,7 @@ enum MathedTextCodes  {
 	LM_TC_MAX
 };
 
-ostream & operator<<(ostream &, MathedTextCodes mtc);
+std::ostream & operator<<(std::ostream &, MathedTextCodes mtc);
 
 ///
 #define LM_TC_NORMAL LM_TC_VAR
@@ -233,7 +230,7 @@ class MathedInset  {
     virtual void draw(Painter &, int x, int baseline) = 0;	
 
     /// Write LaTeX and Lyx code
-    virtual void Write(ostream &) = 0;
+    virtual void Write(std::ostream &) = 0;
 
     /// Reproduces itself
     virtual MathedInset * Clone() = 0;
@@ -330,7 +327,7 @@ class MathParInset: public MathedInset  {
     virtual void draw(Painter &, int x, int baseline);
 
     /// Write LaTeX code
-    virtual void Write(ostream &);
+    virtual void Write(std::ostream &);
 
     ///
     virtual void Metrics();
@@ -486,7 +483,7 @@ class MathMatrixInset: public MathParInset {
     ///
     void draw(Painter &, int, int);
     ///
-    void Write(ostream &);
+    void Write(std::ostream &);
     ///
     void Metrics();
     ///
@@ -533,11 +530,11 @@ class MathMatrixInset: public MathParInset {
 LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 			    MathParInset ** mt);
 ///
-void mathed_write(MathParInset *, ostream &, int *, char fragile,
+void mathed_write(MathParInset *, std::ostream &, int *, char fragile,
 		  char const * label = 0);
 
 ///
-void mathed_parser_file(istream &, int);
+void mathed_parser_file(std::istream &, int);
 ///
 int mathed_parser_lineno();
 ///

@@ -19,8 +19,6 @@
 #include "buffer.h"
 #include "form_url.h"
 
-using std::ostream;
-
 struct LaTeXFeatures;
 
 /** The url inset  
@@ -60,7 +58,7 @@ public:
 		return IS_EDITABLE;
 	}
 	///
-	const char * EditMessage() const {return _("Opened Url");}
+	char const * EditMessage() const;
         ///
 	bool display() const { return false; }
 	///
@@ -72,11 +70,11 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	static void CloseUrlCB(FL_OBJECT *, long data);
 private:

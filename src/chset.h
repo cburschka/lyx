@@ -11,9 +11,6 @@
 
 #include "LString.h"
 
-using std::map;
-using std::pair;
-
 ///
 class CharacterSet {
 public:
@@ -22,12 +19,12 @@ public:
 	///
 	string const & getName() const;
 	///
-	pair<bool, int> encodeString(string &) const;
+	std::pair<bool, int> encodeString(string &) const;
 private:
 	///
 	string name_;
 	///
-	typedef map<string, unsigned char> Cdef;
+	typedef std::map<string, unsigned char> Cdef;
 	///
 	Cdef map_;
 };

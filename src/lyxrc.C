@@ -31,6 +31,7 @@
 #include "support/filetools.h"
 #include "lyxtext.h"
 
+using std::ostream;
 using std::ofstream;
 using std::cout;
 using std::ios;

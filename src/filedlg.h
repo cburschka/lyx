@@ -22,8 +22,6 @@
 #include FORMS_H_LOCATION
 #include "form1.h"
 
-using std::vector;
-
 /// LyXDirEntry internal structure definition
 class LyXDirEntry
 {
@@ -81,7 +79,7 @@ private:
 	///
 	string pszInfoLine;
 	///
-	typedef vector<LyXDirEntry> DirEntries;
+	typedef std::vector<LyXDirEntry> DirEntries;
 	///
 	DirEntries direntries;
 	///

@@ -42,15 +42,6 @@
 #include <algorithm>
 #include <vector>
 
-using std::ofstream;
-using std::ifstream;
-using std::queue;
-using std::list;
-using std::vector;
-using std::find;
-using std::flush;
-using std::endl;
-
 #include "figinset.h"
 #include "lyx.h"
 #include "lyx_main.h"
@@ -66,6 +57,18 @@ using std::endl;
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "Painter.h"
+#include "font.h"
+
+using std::ostream;
+using std::istream;
+using std::ofstream;
+using std::ifstream;
+using std::queue;
+using std::list;
+using std::vector;
+using std::find;
+using std::flush;
+using std::endl;
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -1029,7 +1032,7 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 		string justname = OnlyFilename (fname);
-		pain.text(int(x + 8), baseline - font.maxAscent() - 4,
+		pain.text(int(x + 8), baseline - lyxfont::maxAscent(font) - 4,
 			  justname, font);
 		
 		font.setSize(LyXFont::SIZE_TINY);
@@ -1185,6 +1188,12 @@ Inset::EDITABLE InsetFig::Editable() const
 bool InsetFig::Deletable() const
 {
 	return false;
+}
+
+
+char const * InsetFig::EditMessage() const 
+{
+	return _("Opened figure");
 }
 
 

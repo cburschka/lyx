@@ -18,6 +18,7 @@
 #include "LyXView.h"
 
 using std::endl;
+using std::pair;
 
 LyXVC::LyXVC()
 {

@@ -18,8 +18,6 @@
 
 #include "lyxinset.h"
 
-using std::ostream;
-
 class BufferParams;
 
 struct LaTeXFeatures;
@@ -83,15 +81,15 @@ public:
 	///
 	LyXFont ConvertFont(LyXFont font);
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	void Validate(LaTeXFeatures &) const;
 	///

@@ -17,7 +17,9 @@
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
+#include "font.h"
 
+using std::ostream;
 using std::max;
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
@@ -27,13 +29,13 @@ InsetSpecialChar::InsetSpecialChar(Kind k)
 
 int InsetSpecialChar::ascent(Painter &, LyXFont const & font) const
 {
-	return font.maxAscent();
+	return lyxfont::maxAscent(font);
 }
 
 
 int InsetSpecialChar::descent(Painter &, LyXFont const & font) const
 {
-	return font.maxDescent();
+	return lyxfont::maxDescent(font);
 }
 
 
@@ -42,22 +44,22 @@ int InsetSpecialChar::width(Painter &, LyXFont const & font) const
 	switch (kind) {
 	case HYPHENATION:
 	{
-		int w = font.textWidth("-", 1);
+		int w = lyxfont::width('-', font);
 		if (w > 5) 
 			w -= 2; // to make it look shorter
 		return w;
 	}
 	case END_OF_SENTENCE:
 	{
-		return font.textWidth(".", 1);
+		return lyxfont::width('.', font);
 	}
 	case LDOTS:
 	{
-		return font.textWidth(". . .", 5);
+		return lyxfont::width(". . .", font);
 	}
 	case MENU_SEPARATOR:
 	{
-		return font.textWidth(" x ", 3);
+		return lyxfont::width(" x ", font);
 	}
 #if 0
 	case NEWLINE:
@@ -66,7 +68,7 @@ int InsetSpecialChar::width(Painter &, LyXFont const & font) const
 #endif
 	case PROTECTED_SEPARATOR:
 	{
-		return font.textWidth("x", 1);
+		return lyxfont::width('x', font);
 	}
 	
 	}
@@ -103,9 +105,9 @@ void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
 	case MENU_SEPARATOR:
 	{
 		// A triangle the width and height of an 'x'
-		int w = font.textWidth("x", 1);
-		int ox = font.textWidth(" ", 1) + int(x);
-		int h = font.ascent('x');
+		int w = lyxfont::width('x', font);
+		int ox = lyxfont::width(' ', font) + int(x);
+		int h = lyxfont::ascent('x', font);
 		int xp[4], yp[4];
 		
 		xp[0] = ox;	yp[0] = baseline;
@@ -125,7 +127,7 @@ void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
 	case PROTECTED_SEPARATOR:
 	{
 		float w = width(pain, font);
-		int h = font.ascent('x');
+		int h = lyxfont::ascent('x', font);
 		int xp[4], yp[4];
 		
 		xp[0] = int(x);

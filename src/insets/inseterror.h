@@ -21,8 +21,6 @@
 #include "LString.h"
 #include "gettext.h"
 
-using std::ostream;
-
 /** Used for error messages from LaTeX runs.
   
   The edit-operation opens a 
@@ -45,19 +43,19 @@ public:
 	///
 	void draw(Painter &, LyXFont const & font, int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening
-	const char * EditMessage() const {return _("Opened error");}
+	char const * EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///

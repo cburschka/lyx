@@ -22,8 +22,6 @@
 #include "lyxparagraph.h"
 #include "layout.h"
 
-using std::vector;
-
 class Buffer;
 class BufferParams;
 class Row;
@@ -606,10 +604,10 @@ private:
 			    LyXParagraph::size_type pos) const;
 
 	///
-	mutable vector<LyXParagraph::size_type> log2vis_list;
+	mutable std::vector<LyXParagraph::size_type> log2vis_list;
 
 	///
-	mutable vector<LyXParagraph::size_type> vis2log_list;
+	mutable std::vector<LyXParagraph::size_type> vis2log_list;
 
 	///
 	mutable LyXParagraph::size_type bidi_start;

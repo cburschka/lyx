@@ -20,6 +20,7 @@
 #include <fstream>
 #endif
 
+using std::ostream;
 using std::streambuf;
 using std::streamsize;
 using std::filebuf;

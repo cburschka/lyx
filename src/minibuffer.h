@@ -16,14 +16,8 @@ class LyXView;
 class MiniBuffer {
 public:
 	///
-	MiniBuffer(LyXView *o, FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w)
-		: owner(o)
-	{
-		text = _("Welcome to LyX!");
-		shows_no_match = true;
-	        history_idx = history_cnt = 0;
-	        add(FL_NORMAL_INPUT, x, y, h, w);
-	}
+	MiniBuffer(LyXView *o, FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
+
 	///
 	bool shows_no_match;
 	///

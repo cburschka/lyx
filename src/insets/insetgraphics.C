@@ -22,6 +22,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 
+using std::ostream;
 using std::endl;
 
 extern string system_lyxdir;
@@ -204,7 +205,7 @@ int InsetGraphics::Latex(ostream & os,
 	string command("\\insetgraphics");
 	
 #ifdef HAVE_SSTREAM
-	ostringstream options;
+	std::ostringstream options;
 #else
 	ostrstream options;
 #endif

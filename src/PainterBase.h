@@ -20,7 +20,6 @@
 
 class WorkArea;
 class LyXFont;
-//class LyXScreen;
 
 /** A painter class to encapsulate all graphics parameters and operations
    
@@ -162,16 +161,6 @@ public:
 	/// Draw a char at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y, char c, LyXFont const & f)=0;
 	
-	/// Get the width of text
-	int width(string const & s, LyXFont const & f) const;
-
-	/** Get the width of text
-	    This is just for fast width */
-	int width(char const * s, int l, LyXFont const & f) const;
-
-	/// Get the width of text
-	int width(char c, LyXFont const & f) const;
-
 	/** Draws a string and encloses it inside a rectangle. Returns
 	    the size of the rectangle. If draw is false, we only calculate
 	    the size. */

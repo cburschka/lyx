@@ -29,7 +29,10 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "Painter.h"
+#include "font.h"
 
+using std::ostream;
+using std::istream;
 
 InsetFormulaMacro::InsetFormulaMacro()
        : InsetFormula(true)
@@ -112,7 +115,7 @@ int InsetFormulaMacro::ascent(Painter & pain, LyXFont const & f) const
 	tmacro->update();
 	return InsetFormula::ascent(pain, f);
     }
-    return f.maxAscent()+3;
+    return lyxfont::maxAscent(f) + 3;
 }
 
 
@@ -122,7 +125,7 @@ int InsetFormulaMacro::descent(Painter & pain, LyXFont const & f) const
 	tmacro->update();
 	return InsetFormula::descent(pain, f);
     }
-    return f.maxDescent()+1;
+    return lyxfont::maxDescent(f) + 1;
 }
 
 
@@ -134,7 +137,7 @@ int InsetFormulaMacro::width(Painter & pain, LyXFont const & f) const
     }
     string ilabel(_("Macro: "));
     ilabel += name;
-    return 6 + f.stringWidth(ilabel);
+    return 6 + lyxfont::width(ilabel, f);
 }
 
 
@@ -163,6 +166,12 @@ void InsetFormulaMacro::draw(Painter & pain, LyXFont const & f,
 		pain.text(int(x + 2), baseline, s, font);
 		x +=  width(pain, font) - 1;
 	}
+}
+
+
+char const * InsetFormulaMacro::EditMessage() const 
+{
+	return _("Math macro editor mode");
 }
 
 

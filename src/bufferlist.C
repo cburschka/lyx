@@ -38,6 +38,7 @@
 
 extern BufferView * current_view; // called too many times in this file...
 
+using std::vector;
 using std::find;
 using std::endl;
 

@@ -42,7 +42,7 @@
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
-#include "insets/insetnumber.h"
+//#include "insets/insetnumber.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
@@ -70,6 +70,7 @@
 #include "WorkArea.h"
 #include "lyxfr1.h"
 
+using std::pair;
 using std::endl;
 
 extern bool cursor_follows_scrollbar;
@@ -1960,6 +1961,7 @@ string LyXFunc::Dispatch(int ac,
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
 	break;
+#if 0
 	case LFUN_INSET_NUMBER:
 	{
 		InsetNumber * new_inset = new InsetNumber(owner->buffer());
@@ -1967,6 +1969,7 @@ string LyXFunc::Dispatch(int ac,
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
 	break;
+#endif
 	case LFUN_INSET_ERT:
 	{
 		InsetERT * new_inset = new InsetERT(owner->buffer());
@@ -2563,7 +2566,8 @@ string LyXFunc::Dispatch(int ac,
 			}
 			
 			owner->view()->beforeChange();
-			
+
+#if 0
 			if (isdigit(argument[0]) &&
 			    (lyxrc.number_inset == "true" ||
 			     (lyxrc.number_inset == "rtl" &&
@@ -2575,7 +2579,8 @@ string LyXFunc::Dispatch(int ac,
 							argument);
 				return string();
 			}
-
+#endif
+			
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {

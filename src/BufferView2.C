@@ -26,6 +26,7 @@
 
 extern BufferList bufferlist;
 
+using std::pair;
 using std::endl;
 using std::ifstream;
 

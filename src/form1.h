@@ -3,6 +3,8 @@
 #ifndef FD_KeyMap_h_
 #define FD_KeyMap_h_
 
+#include FORMS_H_LOCATION
+
 /** Callbacks, globals and object handlers **/
 
 extern "C" void GraphicsCB(FL_OBJECT *, long);

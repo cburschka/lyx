@@ -147,7 +147,7 @@ void delim_cb(FL_OBJECT *, long data)
     case MM_OK:
       {
 #ifdef HAVE_SSTREAM
-	      ostringstream ost;
+	      std::ostringstream ost;
 	      ost << delim_code[left] << ' ' << delim_code[right];
 	      lyxfunc->Dispatch(LFUN_MATH_DELIM, ost.str().c_str());
 #else
@@ -206,7 +206,7 @@ void matrix_cb(FL_OBJECT *, long data)
 	 int ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
 	 if (data == MM_OK) fl_hide_form(fd_matrix->matrix);
 #ifdef HAVE_SSTREAM
-	 ostringstream ost;
+	 std::ostringstream ost;
 	 ost << nx << ' ' << ny << ' ' << c << sh;
 	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());
 #else

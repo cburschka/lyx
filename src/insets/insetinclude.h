@@ -19,8 +19,6 @@
 #include "buffer.h"
 #include "support/filetools.h"
 
-using std::ostream;
-
 struct LaTeXFeatures;
 
 // Created by AAS 970521
@@ -56,24 +54,20 @@ public:
 		return IS_EDITABLE;
 	}
         /// With lyx3 we won't overload these 3 methods
-        void Write(ostream &) const;
+        void Write(std::ostream &) const;
         ///
 	void Read(LyXLex &);
 	/// 
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
 	void Validate(LaTeXFeatures &) const;
 	
         /// Input inserts anything inside a paragraph, Display can give some visual feedback 
-	bool display() const { return !(isInput()); }
+	bool display() const;
 	///
 	string getScreenLabel() const;
 	///
-	void setContents(string const & c) {
-		InsetCommand::setContents(c);
-		filename = MakeAbsPath(contents, 
-				       OnlyPath(getMasterFilename())); 
-	}
+	void setContents(string const & c);
         ///
         void setFilename(string const & n) { setContents(n); }
         ///

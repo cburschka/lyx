@@ -19,8 +19,6 @@
 #include "lyxinset.h"
 #include "LString.h"
 
-using std::ostream;
-
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
  *
@@ -43,17 +41,18 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	/// Parse the command.
 	void scanCommand(string const & cmd);
 	/// Will not be used when lyxf3
 	void Read(LyXLex & lex);
 	/// 
-	virtual int Latex(ostream &, signed char fragile, bool free_spc) const;
+	virtual int Latex(std::ostream &,
+			  signed char fragile, bool free_spc) const;
 	///
-	virtual int Linuxdoc(ostream &) const;
+	virtual int Linuxdoc(std::ostream &) const;
 	///
-	virtual int DocBook(ostream &) const;
+	virtual int DocBook(std::ostream &) const;
 	///
 	Inset * Clone() const;
 	///  

@@ -3,6 +3,8 @@
 #ifndef FORM_GRAPHICS_H
 #define FORM_GRAPHICS_H
 
+#include FORMS_H_LOCATION
+
 /** Callbacks, globals and object handlers **/
 
 extern "C" void GraphicsCB(FL_OBJECT *, long);

@@ -30,6 +30,11 @@ using std::endl;
 
 extern BufferView * current_view;
 
+
+// The global fontloader
+FontLoader fontloader;
+
+
 // Initialize font loader
 FontLoader::FontLoader()
 {

@@ -34,7 +34,7 @@ public:
         ///
         Inset * Clone() const { return new InsetLOA(owner); }
     	///
-	string getScreenLabel() const { return _("List of Algorithms"); }
+	string getScreenLabel() const;
 
         ///
 	EDITABLE Editable() const {

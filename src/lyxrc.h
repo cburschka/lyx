@@ -21,9 +21,6 @@
 #include "ToolbarDefaults.h"
 #include "bufferparams.h"
 
-using std::ostream;
-using std::map;
-
 /// This contains the runtime configuration of LyX
 class LyXRC {
 public:
@@ -37,7 +34,7 @@ public:
 	///
         void print() const;
 	///
-	void output(ostream & os) const;
+	void output(std::ostream & os) const;
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;
 	///
@@ -240,7 +237,7 @@ public:
 	///
 	string docbook_to_pdf_command;
 	///
-	typedef map<string, int> Bindings;
+	typedef std::map<string, int> Bindings;
 	///
 	Bindings bindings;
 private:

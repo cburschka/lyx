@@ -6,6 +6,8 @@
 #ifndef INTL_H
 #define INTL_H
 
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG__
 #pragma interface
 #endif

@@ -23,8 +23,6 @@
 #include "DepTable.h"
 #include <vector>
 
-using std::vector;
-
 class MiniBuffer;
 
 ///
@@ -48,7 +46,7 @@ private:
 	};
 public:
 	///
-	typedef vector<Error> Errors;
+	typedef std::vector<Error> Errors;
 	///
 	Errors::const_iterator begin() const { return errors.begin(); }
 	///

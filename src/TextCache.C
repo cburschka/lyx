@@ -22,6 +22,7 @@
 #include "buffer.h"
 #include "bufferlist.h"
 
+using std::ostream;
 using std::for_each;
 using std::remove_if;
 using std::find_if;

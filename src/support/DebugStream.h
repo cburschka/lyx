@@ -14,8 +14,6 @@
 
 #include <iostream>
 
-using std::ostream;
-
 #ifdef TEST_DEBUGSTREAM
 #include <string>
 struct Debug {
@@ -84,7 +82,7 @@ struct Debug {
     debug[Debug::type(Debug::INFO | Debug::CRIT)] << "...info/crit...\n";
 
 */
-class DebugStream : public ostream {
+class DebugStream : public std::ostream {
 public:
 	/// Constructor, sets the debug level to t.
 	explicit DebugStream(Debug::type t = Debug::NONE);
@@ -130,7 +128,7 @@ public:
 	    current debug level otherwise the real debug stream
 	    is used.
 	*/
-	ostream & debug(Debug::type t = Debug::ANY) {
+	std::ostream & debug(Debug::type t = Debug::ANY) {
 		if (dt & t) return *this;
 		return nullstream;
 	}
@@ -139,14 +137,14 @@ public:
 	/** This is an operator to give a more convenient use:
 	    dbgstream[Debug::INFO] << "Info!\n";
 	*/
-	ostream & operator[](Debug::type t) {
+	std::ostream & operator[](Debug::type t) {
 		return debug(t);
 	}
 private:
 	/// The current debug level
 	Debug::type dt;
 	/// The no-op stream.
-	ostream nullstream;
+	std::ostream nullstream;
 	struct debugstream_internal;
 	debugstream_internal * internal;
 };

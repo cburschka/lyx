@@ -23,9 +23,6 @@
 #include "LString.h"
 //#include "buffer.h"
 
-using std::ostream;
-using std::vector;
-
 class Painter;
 class BufferView;
 class Buffer;
@@ -50,7 +47,7 @@ public:
     ///
     void Read(LyXLex &);
     ///
-    void Write(ostream &) const;
+    void Write(std::ostream &) const;
     ///
     int ascent(Painter &, LyXFont const &) const;
     ///
@@ -80,11 +77,11 @@ public:
     ///
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
-    int Latex(ostream &, signed char, bool free_spc) const;
+    int Latex(std::ostream &, signed char, bool free_spc) const;
     ///
-    int Linuxdoc(ostream &) const { return 0; }
+    int Linuxdoc(std::ostream &) const { return 0; }
     ///
-    int DocBook(ostream &) const { return 0; }
+    int DocBook(std::ostream &) const { return 0; }
     ///
     void Validate(LaTeXFeatures & features) const;
     ///
@@ -110,7 +107,7 @@ protected:
     ///
     void UpdateLocal(BufferView *, bool);
     ///
-    void WriteParagraphData(ostream &) const;
+    void WriteParagraphData(std::ostream &) const;
     ///
     void resetPos(BufferView *);
     ///
@@ -219,7 +216,7 @@ private:
 	int baseline;
     };
     ///
-    typedef vector<row_struct> RowList;
+    typedef std::vector<row_struct> RowList;
     ///
     mutable RowList rows;
     InsetText & operator = (InsetText const & it) {

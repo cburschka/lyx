@@ -19,7 +19,9 @@
 #include "lyxrc.h"
 #include "support/lstrings.h"
 #include "Painter.h"
+#include "font.h"
 
+using std::ostream;
 using std::endl;
 
 /* LatexAccent. Proper handling of accented characters */
@@ -261,13 +263,13 @@ int InsetLatexAccent::ascent(Painter &, LyXFont const & font) const
 	int max;
 	if (candisp) {
 		if (ic == ' ')
-			max = font.ascent('a');
+			max = lyxfont::ascent('a', font);
 		else
-			max = font.ascent(ic);
+			max = lyxfont::ascent(ic, font);
 		if (plusasc) 
-			max += (font.maxAscent() + 3) / 3;
+			max += (lyxfont::maxAscent(font) + 3) / 3;
 	} else
-		max = font.maxAscent() + 4;
+		max = lyxfont::maxAscent(font) + 4;
 	return max;
 }
 
@@ -277,13 +279,13 @@ int InsetLatexAccent::descent(Painter &, LyXFont const & font) const
 	int max;
 	if (candisp) {
 		if (ic == ' ') 
-			max = font.descent('a');
+			max = lyxfont::descent('a', font);
                 else
-                	max = font.descent(ic);
+                	max = lyxfont::descent(ic, font);
                 if (plusdesc)
                 	max += 3;
 	} else
-		max = font.maxDescent() + 4;
+		max = lyxfont::maxDescent(font) + 4;
 	return max;
 }
 
@@ -291,21 +293,21 @@ int InsetLatexAccent::descent(Painter &, LyXFont const & font) const
 int InsetLatexAccent::width(Painter &, LyXFont const & font) const
 {
 	if (candisp)
-		return font.textWidth(&ic, 1);
+		return lyxfont::width(ic, font);
         else
-                return font.stringWidth(contents) + 4;
+                return lyxfont::width(contents, font) + 4;
 }
 
 
 int InsetLatexAccent::Lbearing(LyXFont const & font) const
 {
-	return font.lbearing(ic);
+	return lyxfont::lbearing(ic, font);
 }
 
 
 int InsetLatexAccent::Rbearing(LyXFont const & font) const
 {
-	return font.rbearing(ic);
+	return lyxfont::rbearing(ic, font);
 }
 
 
@@ -373,7 +375,7 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		int y;
 		if (plusasc) {
 			// mark at the top
-			hg = font.maxDescent();
+			hg = lyxfont::maxDescent(font);
 			y = baseline - asc;
 
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
@@ -391,15 +393,15 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		pain.text(int(x), baseline, ic, font);
 
 		if (remdot) {
-			int tmpvar = baseline - font.ascent('i');
+			int tmpvar = baseline - lyxfont::ascent('i', font);
 			float tmpx = 0;
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
 				tmpx += (8.0 * hg) / 10.0; // italic
 			lyxerr[Debug::KEY] << "Removing dot." << endl;
 			// remove the dot first
 			pain.fillRectangle(int(x + tmpx), tmpvar, wid,
-					   font.ascent('i') -
-					   font.ascent('x') - 1,
+					   lyxfont::ascent('i', font) -
+					   lyxfont::ascent('x', font) - 1,
 					   LColor::background);
 			// the five lines below is a simple hack to
 			// make the display of accent 'i' and 'j'
@@ -419,8 +421,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			pain.line(int(x2), int(y + hg),
 				  int(x2 + hg35), y + hg35);
 #else
-			pain.text(x2 - (font.rbearing(0xB4) - font.lbearing(0xB4)) / 2,
-				  baseline - font.ascent(ic) - font.descent(0xB4) - (font.ascent(0xB4) + font.descent(0xB4)) / 2,
+			pain.text(x2 - (lyxfont::rbearing(0xB4, font) - lyxfont::lbearing(0xB4, font)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB4, font) - (lyxfont::ascent(0xB4, font) + lyxfont::descent(0xB4, font)) / 2,
 				  char(0xB4), font);
 #endif
 			break;
@@ -431,8 +433,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			pain.line(int(x2), int(y + hg),
 				  int(x2 - hg35), y + hg35);
 #else
-			pain.text(x2 - (font.rbearing(0x60) - font.lbearing(0x60)) / 2,
-				  baseline - font.ascent(ic) - font.descent(0x60) - (font.ascent(0x60) + font.descent(0x60)) / 2.0,
+			pain.text(x2 - (lyxfont::rbearing(0x60, font) - lyxfont::lbearing(0x60, font)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x60, font) - (lyxfont::ascent(0x60, font) + lyxfont::descent(0x60, font)) / 2.0,
 				  char(0x60), font);
 #endif
 			break;
@@ -445,8 +447,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 				  int(x2 + wid * 0.4),
 				  int(y + hg));
 #else
-			pain.text(x2 - (font.rbearing(0xAF) - font.lbearing(0xAF)) / 2,
-				  baseline - font.ascent(ic) - font.descent(0xAF) - (font.ascent(0xAF) + font.descent(0xAF)),
+			pain.text(x2 - (lyxfont::rbearing(0xAF, font) - lyxfont::lbearing(0xAF, font)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xAF, font) - (lyxfont::ascent(0xAF, font) + lyxfont::descent(0xAF, font)),
 				  char(0xAF), font);
 #endif
 			break;
@@ -472,8 +474,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			
 			pain.lines(xp, yp, 4);
 #else
-			pain.text(x2 - (font.rbearing('~') - font.lbearing('~')) / 2,
-				  baseline - font.ascent(ic) - font.descent('~') - (font.ascent('~') + font.descent('~')) / 2,
+			pain.text(x2 - (lyxfont::rbearing('~', font) - lyxfont::lbearing('~', font)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('~', font) - (lyxfont::ascent('~', font) + lyxfont::descent('~', font)) / 2,
 				  '~', font);
 #endif
 			break;
@@ -486,7 +488,7 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 				  int(x2 + wid * 0.4),
 				  y + hg / 2.0);
 #else
-			pain.text(x2 - (font.rbearing(0x5F) - font.lbearing(0x5F)) / 2, baseline,
+			pain.text(x2 - (lyxfont::rbearing(0x5F, font) - lyxfont::lbearing(0x5F, font)) / 2, baseline,
 				  char(0x5F), font);
 #endif
 			break;
@@ -510,7 +512,7 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 
 			pain.lines(xp, yp, 4);
 #else
-			pain.text(x2 - (font.rbearing(0xB8) - font.lbearing(0xB8)) / 2, baseline,
+			pain.text(x2 - (lyxfont::rbearing(0xB8, font) - lyxfont::lbearing(0xB8, font)) / 2, baseline,
 				  char(0xB8), font);
 			
 #endif
@@ -522,8 +524,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			pain.arc(int(x2), y + hg35,
 				     3, 3, 0, 360 * 64);
 #else
-			pain.text(x2 - (font.rbearing('.') - font.lbearing('.')) / 2.0,
-				  baseline + 3.0 / 2.0 * (font.ascent('.') + font.descent('.')),
+			pain.text(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0,
+				  baseline + 3.0 / 2.0 * (lyxfont::ascent('.', font) + lyxfont::descent('.', font)),
 				  '.', font);
 #endif
 			break;
@@ -537,8 +539,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 				     (hg + 3.0)/5.0,
 				     0, 360 * 64);
 #else
-			pain.text(x2 - (font.rbearing('.') - font.lbearing('.')) / 2.0,
-				  baseline - font.ascent(ic) - font.descent('.') - (font.ascent('.') + font.descent('.')) / 2,
+			pain.text(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('.', font) - (lyxfont::ascent('.', font) + lyxfont::descent('.', font)) / 2,
 				  '.', font);
 #endif
 			break;
@@ -553,8 +555,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 #else
 			LyXFont tmpf(font);
 			tmpf.decSize().decSize();
-			pain.text(x2 - (tmpf.rbearing(0xB0) - tmpf.lbearing(0xB0)) / 2.0,
-				  baseline - font.ascent(ic) - tmpf.descent(0xB0) - (tmpf.ascent(0xB0) + tmpf.descent(0xB0)) / 3.0,
+			pain.text(x2 - (lyxfont::rbearing(0xB0, tmpf) - lyxfont::lbearing(0xB0, tmpf)) / 2.0,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB0, tmpf) - (lyxfont::ascent(0xB0, tmpf) + lyxfont::descent(0xB0, tmpf)) / 3.0,
 				  char(0xB0), tmpf);
 #endif
 			break;
@@ -619,11 +621,11 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 
 			pain.segments(xs1, ys1, xs2, ys2, 2);
 #else
-			pain.text(x2 - (font.rbearing('´') - font.lbearing('´')),
-				  baseline - font.ascent(ic) - font.descent('´') - (font.ascent('´') + font.descent('´')) / 2,
+			pain.text(x2 - (lyxfont::rbearing('´', font) - lyxfont::lbearing('´', font)),
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('´', font) - (lyxfont::ascent('´', font) + lyxfont::descent('´', font)) / 2,
 				  '´', font);
 			pain.text(x2,
-				  baseline - font.ascent(ic) - font.descent('´') - (font.ascent('´') + font.descent('´')) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('´', font) - (lyxfont::ascent('´', font) + lyxfont::descent('´', font)) / 2,
 				  '´', font);
 #endif
 			break;
@@ -650,8 +652,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 					    rad, rad, 0, 360*64);
 			}
 #else
-			pain.text(x2 - (font.rbearing('¨') - font.lbearing('¨')) / 2,
-				  baseline - font.ascent(ic) - font.descent('¨') - ( font.ascent('¨') + font.descent('¨')) / 2,
+			pain.text(x2 - (lyxfont::rbearing('¨', font) - lyxfont::lbearing('¨', font)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('¨', font) - ( lyxfont::ascent('¨', font) + lyxfont::descent('¨', font)) / 2,
 				  '¨', font);
 #endif
 			break;
@@ -668,8 +670,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 #else
 			LyXFont tmpf(font);
 			tmpf.decSize().decSize().decSize();
-			pain.text(x2 - (tmpf.rbearing(0x5E) - tmpf.lbearing(0x5E)) / 2,
-				  baseline - font.ascent(ic) - tmpf.descent(0x5E) - (tmpf.ascent(0x5E) + tmpf.descent(0x5E)) / 3.0,
+			pain.text(x2 - (lyxfont::rbearing(0x5E, tmpf) - lyxfont::lbearing(0x5E, tmpf)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x5E, tmpf) - (lyxfont::ascent(0x5E, tmpf) + lyxfont::descent(0x5E, tmpf)) / 3.0,
 				  char(0x5E), tmpf);
 #endif
 			break;

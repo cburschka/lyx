@@ -20,8 +20,6 @@
 
 #include "LString.h"
 
-using std::deque;
-
 /** The latest documents loaded
     This class takes care of the last .lyx files used by the LyX user. It
     both reads and writes this information to a file. The number of files
@@ -31,7 +29,7 @@ class LastFiles
 {
 public:
 	///
-	typedef deque<string> Files;
+	typedef std::deque<string> Files;
 
 	/**@name Constructors and Deconstructors */
 	//@{

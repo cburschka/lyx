@@ -10,8 +10,6 @@
 #include <queue>
 #include "support/LAssert.h"
 
-using std::queue;
-
 class Inset;
 class BufferView;
 
@@ -27,7 +25,7 @@ public:
 	void update(BufferView *);
 private:
 	///
-	typedef queue<Inset*> InsetQueue;
+	typedef std::queue<Inset*> InsetQueue;
 	///
 	InsetQueue insetqueue;
 };

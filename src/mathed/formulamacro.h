@@ -23,8 +23,6 @@
 
 #include "formula.h"
 
-using std::ostream;
-
 class MathMacroTemplate;
 
 
@@ -48,18 +46,18 @@ public:
 	///
 	void Read(LyXLex & lex);
         ///
-	void Write(ostream & os) const;
+	void Write(std::ostream & os) const;
 	///
-	int Latex(ostream & os, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream & os, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	Inset * Clone() const;
 
 	/// what appears in the minibuffer when opening
-	const char * EditMessage() const {return _("Math macro editor mode");}
+	char const * EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///

@@ -34,6 +34,7 @@
 #include "texrow.h"
 #include "support/lyxmanip.h"
 
+using std::ostream;
 using std::endl;
 using std::fstream;
 using std::ios;
@@ -1663,7 +1664,7 @@ char LyXParagraph::GetAlign() const
 }
 
 
-string LyXParagraph::GetLabestring() const
+string LyXParagraph::GetLabelstring() const
 {
 	return FirstPhysicalPar()->labelstring;
 }
@@ -1895,7 +1896,7 @@ Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 {
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     InsetTable(pos,0));
+					     InsetTable(pos, 0));
 	if (it != insetlist.end()) {
 		pos = (*it).pos;
 		return (*it).inset;
@@ -2773,7 +2774,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(ostream & os, string & extra,
 		} else if (c == LyXParagraph::META_INSET) {
 			inset = GetInset(i);
 #ifdef HAVE_SSTREAM
-			ostringstream ost;
+			std::ostringstream ost;
 			inset->DocBook(ost);
 			string tmp_out = ost.str().c_str();
 #else
@@ -2939,7 +2940,7 @@ void LyXParagraph::DocBookContTableRows(ostream & os, string & extra,
 			if (c == LyXParagraph::META_INSET) {
 				inset = GetInset(i);
 #ifdef HAVE_SSTREAM
-				ostringstream ost;
+				std::ostringstream ost;
 				inset->DocBook(ost);
 				string tmp_out = ost.str().c_str();
 #else
@@ -3915,7 +3916,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		// NOTE: Currently don't support footnotes within footnotes
 		//       even though that is possible using the \footnotemark
 #ifdef HAVE_SSTREAM
-		ostringstream dummy;
+		std::ostringstream dummy;
 #else
 		ostrstream dummy;
 #endif
@@ -4012,6 +4013,13 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 
 	lyxerr[Debug::LATEX] << "TeXFootnote...done " << par->next << endl;
 	return par;
+}
+
+
+bool LyXParagraph::IsDummy() const
+{
+	return (footnoteflag == LyXParagraph::NO_FOOTNOTE && previous
+		&& previous->footnoteflag != LyXParagraph::NO_FOOTNOTE);
 }
 
 

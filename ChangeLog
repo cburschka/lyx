@@ -1,3 +1,36 @@
+2000-04-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/font.[Ch]: new files. Contains the metric functions for
+	fonts, takes a LyXFont as parameter. Better separation of concepts.
+	
+	* src/lyxfont.[Ch]: move the metric functions to font.[Ch] several
+	changes because of this.
+
+	* src/PainterBase.[Ch] (width): remove, use the ones in font.C instead
+
+	* src/*: compile with -Winline and move functions that don't
+	inline out of line.
+	
+	* src/lyx_cb.C (stringOnlyContains): use string::find_first_not_of
+	instead of strspn.
+
+2000-04-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/paragraph.C (GetLabelstring): renamed from GetLabestring.
+	(various files changed because of this)
+
+	* src/Painter.C (text): fixed the drawing of smallcaps.
+
+	* src/lyxfont.[Ch] (drawText): removed unused member func.
+	(drawString): ditto
+
+	* src/*.C: added needed "using" statements and "std::" qualifiers. 
+
+2000-03-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/*.h: removed all use of "using" from header files use
+	qualifier std:: instead. 
+
 2000-04-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (Backspace): some additional cleanups (we already

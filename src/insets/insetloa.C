@@ -14,17 +14,19 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "insetloa.h"
-#pragma implementation "insetlof.h"
-#pragma implementation "insetlot.h"
+#pragma implementation
 #endif
 
 #include "insetloa.h"
-#include "insetlof.h"
-#include "insetlot.h"
 #include "LaTeXFeatures.h"
 
 void InsetLOA::Validate(LaTeXFeatures & features) const 
 {
 	features.algorithm = true;
+}
+
+
+string InsetLOA::getScreenLabel() const 
+{
+	return _("List of Algorithms");
 }

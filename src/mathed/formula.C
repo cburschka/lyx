@@ -41,7 +41,10 @@ using std::istringstream;
 #include "support/LOstream.h"
 #include "LyXView.h"
 #include "Painter.h"
+#include "font.h"
 
+using std::ostream;
+using std::istream;
 using std::pair;
 using std::endl;
 
@@ -177,9 +180,9 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
     Math_Fonts[7].setFamily(LyXFont::SANS_FAMILY);
     
     LyXFont f = WhichFont(LM_TC_VAR, LM_ST_TEXT);
-    MathedInset::df_asc = f.maxAscent(); 
-    MathedInset::df_des = f.maxDescent();
-    MathedInset::df_width = f.width('I');    
+    MathedInset::df_asc = lyxfont::maxAscent(f); 
+    MathedInset::df_des = lyxfont::maxDescent(f);
+    MathedInset::df_width = lyxfont::width('I', f);    
 }
 
 
@@ -209,14 +212,14 @@ int mathed_string_width(short type, int size, byte const * s, int ls)
 	ls *= 3;
 	s = &sx[0];
     }
-    return f.textWidth(reinterpret_cast<char const *>(s), ls);
+    return lyxfont::width(reinterpret_cast<char const *>(s), ls, f);
 }
 
 
 int mathed_char_width(short type, int size, byte c)
 {
-    int t = (MathIsBinary(type)) ? mathed_string_width(type, size, &c, 1):
-           WhichFont(type, size).width(c);
+    int t = (MathIsBinary(type)) ? mathed_string_width(type, size, &c, 1) :
+           lyxfont::width(c, WhichFont(type, size));
     return t;
 }
 
@@ -227,10 +230,10 @@ int mathed_string_height(short type, int size, byte const * s,
    LyXFont font = WhichFont(type, size);
    asc = des = 0;
    for (int i = 0; i < ls; ++i) {
-      if (font.descent(s[i]) > des)
-	des = font.descent(s[i]);
-      if (font.ascent(s[i]) > asc)
-	asc = font.ascent(s[i]);
+      if (lyxfont::descent(s[i], font) > des)
+	des = lyxfont::descent(s[i], font);
+      if (lyxfont::ascent(s[i], font) > asc)
+	asc = lyxfont::ascent(s[i], font);
    }
    return asc + des;
 }
@@ -240,8 +243,8 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 {
    LyXFont font = WhichFont(type, size);
    asc = des = 0;
-   des = font.descent(c);
-   asc = font.ascent(c);
+   des = lyxfont::descent(c, font);
+   asc = lyxfont::ascent(c, font);
    return asc + des;
 }
 
@@ -449,6 +452,12 @@ void InsetFormula::draw(Painter & pain, LyXFont const & f,
 }
 
 
+char const * InsetFormula::EditMessage() const 
+{
+	return _("Math editor mode");
+}
+
+
 void InsetFormula::Edit(BufferView * bv, int x, int y, unsigned int)
 {
     mathcursor = new MathedCursor(par);
@@ -503,8 +512,8 @@ void InsetFormula::ToggleInsetCursor(BufferView * bv)
 //  x -= par->xo; 
   y -= par->yo; 
     LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-  int asc = font.maxAscent();
-  int desc = font.maxDescent();
+  int asc = lyxfont::maxAscent(font);
+  int desc = lyxfont::maxDescent(font);
   
   if (cursor_visible)
     bv->hideLockedInsetCursor();
@@ -523,8 +532,8 @@ void InsetFormula::ShowInsetCursor(BufferView * bv)
       //  x -= par->xo; 
       y -= par->yo;
 	LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-	int asc = font.maxAscent();
-	int desc = font.maxDescent();
+	int asc = lyxfont::maxAscent(font);
+	int desc = lyxfont::maxDescent(font);
       bv->fitLockedInsetCursor(x, y, asc, desc);
     }
     ToggleInsetCursor(bv);
@@ -1206,7 +1215,7 @@ MathFuncInset::draw(Painter & pain, int x, int y)
 	if (name && name[0] > ' ') {
 		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
 		font.setLatex(LyXFont::ON);
-	        x += (font.textWidth("I", 1) + 3) / 4;
+	        x += (lyxfont::width('I', font) + 3) / 4;
 		pain.text(x, y, name, font);
 	}
 }
@@ -1217,7 +1226,8 @@ void MathFuncInset::Metrics()
 	ln = (name) ? strlen(name): 0;
 	LyXFont  font = WhichFont(LM_TC_TEXTRM, size);
 	font.setLatex(LyXFont::ON);
-	width = font.textWidth(name, ln) + font.textWidth("I", 1)/2;
+	width = lyxfont::width(name, ln, font)
+		+ lyxfont::width('I', font) / 2;
 	mathed_string_height(LM_TC_TEXTRM, size,
 			     reinterpret_cast<unsigned char const *>(name),
 			     strlen(name), ascent, descent);

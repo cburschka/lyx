@@ -35,8 +35,6 @@
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 
-using std::ostream;
-
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
@@ -338,42 +336,42 @@ public:
 	TexRow texrow;
 private:
         ///
-        void linuxDocHandleFootnote(ostream & os,
+        void linuxDocHandleFootnote(std::ostream & os,
 				    LyXParagraph * & par, int const depth);
         ///
-	void DocBookHandleCaption(ostream & os, string & inner_tag,
+	void DocBookHandleCaption(std::ostream & os, string & inner_tag,
 				  int const depth, int desc_on,
 				  LyXParagraph * & par);
         ///
-	void DocBookHandleFootnote(ostream & os,
+	void DocBookHandleFootnote(std::ostream & os,
 				   LyXParagraph * & par, int const depth);
 	///
-        void sgmlOpenTag(ostream & os, int depth,
+        void sgmlOpenTag(std::ostream & os, int depth,
 			 string const & latexname) const;
         ///
-        void sgmlCloseTag(ostream & os, int depth,
+        void sgmlCloseTag(std::ostream & os, int depth,
 			  string const & latexname) const;
 	///
 	void LinuxDocError(LyXParagraph * par, int pos, char const * message);
         ///
-	void SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
+	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par,
 				  int desc_on, int const depth);
         ///
-	void SimpleDocBookOnePar(ostream &, string & extra,
+	void SimpleDocBookOnePar(std::ostream &, string & extra,
 				 LyXParagraph * par, int & desc_on,
 				 int const depth);
 
 	/// LinuxDoc.
-	void push_tag(ostream & os, char const * tag,
+	void push_tag(std::ostream & os, char const * tag,
 		      int & pos, char stack[5][3]);
 	
 	/// LinuxDoc.
-	void pop_tag(ostream & os, char const * tag,
+	void pop_tag(std::ostream & os, char const * tag,
 		     int & pos, char stack[5][3]);
 
 #if 0
 	///
-	void RoffAsciiTable(ostream &, LyXParagraph * par);
+	void RoffAsciiTable(std::ostream &, LyXParagraph * par);
 #endif
 	
 	/// is save needed

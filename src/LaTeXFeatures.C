@@ -130,7 +130,7 @@ string LaTeXFeatures::getPackages(BufferParams const & params)
 		//char value[30];
 		//sprintf(value, "%.2f", params.spacing.getValue());
 #ifdef HAVE_SSTREAM
-		ostringstream value;
+		std::ostringstream value;
 #else
 		char val[30];
 		ostrstream value(val, 30);

@@ -32,10 +32,12 @@
 #include "lyxrow.h"
 #include "Painter.h"
 #include "tracer.h"
+#include "font.h"
 
 using std::max;
 using std::min;
 using std::endl;
+using std::pair;
 
 static const int LYX_PAPER_MARGIN = 20;
 
@@ -175,7 +177,7 @@ int LyXText::SingleWidth(LyXParagraph * par,
 	if (IsPrintable(c)) {
 		if (lyxrc.rtl_support && lyxrc.font_norm == "iso8859-6.8x")
 			c = TransformChar(c, par, pos);
-		return font.width(c);
+		return lyxfont::width(c, font);
 
 	} else if (IsHfillChar(c)) {
 		return 3;	/* Because of the representation
@@ -213,7 +215,7 @@ int LyXText::SingleWidth(LyXParagraph * par,
 		}
 		font.decSize();
 		font.decSize();
-		return font.stringWidth(fs);
+		return lyxfont::width(fs, font);
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset= par->GetInset(pos);
 		if (tmpinset)
@@ -226,7 +228,7 @@ int LyXText::SingleWidth(LyXParagraph * par,
 		c = ' ';
 	else if (IsNewlineChar(c))
 		c = 'n';
-	return font.width(c);
+	return lyxfont::width(c, font);
 }
 
 
@@ -371,8 +373,8 @@ void LyXText::draw(Row const * row,
 		++vpos;
 		// Draw end-of-line marker
 		LyXFont font = GetFont(row->par, pos);
-		int wid = font.width('n');
-		int asc = font.maxAscent();
+		int wid = lyxfont::width('n', font);
+		int asc = lyxfont::maxAscent(font);
 		int y = offset + row->baseline;
 		int xp[3], yp[3];
 		
@@ -441,7 +443,7 @@ void LyXText::draw(Row const * row,
 			fs = "margin";
 			// Draw a sign at the left margin!
 			owner_->painter()
-				.text((LYX_PAPER_MARGIN - font.width('!'))/2,
+				.text((LYX_PAPER_MARGIN - lyxfont::width('!', font))/2,
 				      offset + row->baseline, "!", 1, font);
 			break;
 		case LyXParagraph::META_FIG:
@@ -467,8 +469,8 @@ void LyXText::draw(Row const * row,
 		font.decSize();
 	  
 		// calculate the position of the footnotemark
-		int y = (row->baseline - font2.maxAscent() 
-			 + font.maxAscent());
+		int y = (row->baseline - lyxfont::maxAscent(font2) 
+			 + lyxfont::maxAscent(font));
 	  
 		font.setColor(LColor::footnote);
 
@@ -477,7 +479,7 @@ void LyXText::draw(Row const * row,
 		// draw it and set new x position
 		
 		pain.text(int(x), offset + y, fs, font);
-		x += pain.width(fs, font);
+		x += lyxfont::width(fs, font);
 		pain.line(int(tmpx), offset + row->baseline,
 			  int(x), offset + row->baseline,
 			  LColor::footnote);
@@ -529,7 +531,7 @@ void LyXText::draw(Row const * row,
 
 	// Draw text and set the new x position
 	pain.text(int(x), offset + row->baseline, textstring, font);
-	x += pain.width(textstring, font);
+	x += lyxfont::width(textstring, font);
 	
 	// what about underbars?
 	if (font.underbar() == LyXFont::ON && font.latex() != LyXFont::ON) {
@@ -562,16 +564,18 @@ int LyXText::LeftMargin(Row const * row) const
 	
 	int x = LYX_PAPER_MARGIN;
 	
-	x += textclasslist.TextClass(parameters->textclass)
-		.defaultfont()
-		.signedStringWidth(textclasslist
-				   .TextClass(parameters->textclass)
-				   .leftmargin());
+	x += lyxfont::signedWidth(textclasslist
+				  .TextClass(parameters->textclass)
+				  .leftmargin(),
+				  textclasslist
+				  .TextClass(parameters->textclass)
+				  .defaultfont());
 	
 	if (row->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)  {
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setSize(LyXFont::SIZE_SMALL);
-		x += font.textWidth("Mwide-figM", 10) + LYX_PAPER_MARGIN/2;
+		x += lyxfont::width("Mwide-figM", font)
+			+ LYX_PAPER_MARGIN/2;
 	}
 	
 	// this is the way, LyX handles the LaTeX-Environments.
@@ -629,41 +633,39 @@ int LyXText::LeftMargin(Row const * row) const
 	switch (layout.margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout.leftmargin.empty()) {
-			x += textclasslist
-				.TextClass(parameters->textclass)
-				.defaultfont()
-				.signedStringWidth(layout.leftmargin);
+			x += lyxfont::signedWidth(layout.leftmargin,
+						  textclasslist
+						  .TextClass(parameters->
+							     textclass)
+						  .defaultfont());
 		}
-		if (!row->par->GetLabestring().empty()) {
-			x += labelfont.signedStringWidth(layout.labelindent);
-			x += labelfont.stringWidth(row->par->GetLabestring());
-			x += labelfont.stringWidth(layout.labelsep);
+		if (!row->par->GetLabelstring().empty()) {
+			x += lyxfont::signedWidth(layout.labelindent,
+						  labelfont);
+			x += lyxfont::width(row->par->GetLabelstring(), labelfont);
+			x += lyxfont::width(layout.labelsep, labelfont);
 		}
 		break;
 	case MARGIN_MANUAL:
-		x += labelfont.signedStringWidth(layout.labelindent);
+		x += lyxfont::signedWidth(layout.labelindent, labelfont);
 		if (row->pos >= BeginningOfMainBody(row->par)) {
 			if (!row->par->GetLabelWidthString().empty()) {
-				x += labelfont
-					.stringWidth(row->par
-						     ->GetLabelWidthString());
-				x += labelfont.stringWidth(layout.labelsep);
+				x += lyxfont::width(row->par->GetLabelWidthString(),
+					       labelfont);
+				x += lyxfont::width(layout.labelsep, labelfont);
 			}
 		}
 		break;
 	case MARGIN_STATIC:
-		x += textclasslist.TextClass(parameters->textclass)
-			.defaultfont().signedStringWidth(layout.leftmargin) * 4
+		x += lyxfont::signedWidth(layout.leftmargin, textclasslist.TextClass(parameters->textclass).defaultfont()) * 4
 			/ (row->par->GetDepth() + 4);
 		break;
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout.labeltype == LABEL_MANUAL) {
 			if (row->pos >= BeginningOfMainBody(row->par)) {
-				x += labelfont
-					.signedStringWidth(layout.leftmargin);
+				x += lyxfont::signedWidth(layout.leftmargin, labelfont);
 			} else {
-				x += labelfont
-					.signedStringWidth(layout.labelindent);
+				x += lyxfont::signedWidth(layout.labelindent, labelfont);
 			}
 		} else if (row->pos
 			   // Special case to fix problems with
@@ -671,14 +673,15 @@ int LyXText::LeftMargin(Row const * row) const
 			   || (layout.labeltype == LABEL_STATIC
 			       && layout.latextype == LATEX_ENVIRONMENT
 			       && ! row->par->IsFirstInSequence())) {
-			x += labelfont.signedStringWidth(layout.leftmargin);
+			x += lyxfont::signedWidth(layout.leftmargin, labelfont);
 		} else if (layout.labeltype != LABEL_TOP_ENVIRONMENT
 			   && layout.labeltype != LABEL_BIBLIO
 			   && layout.labeltype !=
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
-			x += labelfont.signedStringWidth(layout.labelindent);
-			x += labelfont.stringWidth(layout.labelsep);
-			x += labelfont.stringWidth(row->par->GetLabestring());
+			x += lyxfont::signedWidth(layout.labelindent,
+						  labelfont);
+			x += lyxfont::width(layout.labelsep, labelfont);
+			x += lyxfont::width(row->par->GetLabelstring(), labelfont);
 		} 
 		break;
 		
@@ -700,8 +703,10 @@ int LyXText::LeftMargin(Row const * row) const
 				minfill = tmprow->fill;
 		}
 		
-		x += textclasslist.TextClass(parameters->textclass)
-			.defaultfont().signedStringWidth(layout.leftmargin);
+		x += lyxfont::signedWidth(layout.leftmargin,
+					  textclasslist
+					  .TextClass(parameters->textclass)
+					  .defaultfont());
 		x += minfill;
 	}
 	break;
@@ -718,7 +723,7 @@ int LyXText::LeftMargin(Row const * row) const
 			x += xx;
 		} else { // should not happen
 			LyXFont font(LyXFont::ALL_SANE);
-			x += font.stringWidth("XXXXXX");
+			x += lyxfont::width("XXXXXX", font);
 		}
 	}
 	
@@ -742,8 +747,11 @@ int LyXText::LeftMargin(Row const * row) const
 		    && (row->par->layout ||
 			parameters->paragraph_separation ==
 			BufferParams::PARSEP_INDENT))
-			x += textclasslist.TextClass(parameters->textclass)
-				.defaultfont().signedStringWidth(parindent);
+			x += lyxfont::signedWidth(parindent,
+						  textclasslist
+						  .TextClass(parameters
+							     ->textclass)
+						  .defaultfont());
 		else if (layout.labeltype == LABEL_BIBLIO) {
 		       	// ale970405 Right width for bibitems
 			x += bibitemMaxWidth(owner_->painter(),
@@ -764,12 +772,12 @@ int LyXText::RightMargin(Row const * row) const
 				    row->par->GetLayout());
 	
 	int x = LYX_PAPER_MARGIN
-		+ textclasslist
-		.TextClass(parameters->textclass)
-		.defaultfont()
-		.signedStringWidth(textclasslist
-				   .TextClass(parameters->textclass)
-				   .rightmargin());
+		+ lyxfont::signedWidth(textclasslist
+				       .TextClass(parameters->textclass)
+				       .rightmargin(),
+				       textclasslist
+				       .TextClass(parameters->textclass)
+				       .defaultfont());
 	
 	if (row->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)  {
 		x += LYX_PAPER_MARGIN / 2;
@@ -811,9 +819,7 @@ int LyXText::RightMargin(Row const * row) const
 	}
 	
 	//lyxerr << "rightmargin: " << layout->rightmargin << endl;
-	x += textclasslist.TextClass(parameters->textclass)
-		.defaultfont()
-		.signedStringWidth(layout.rightmargin) * 4
+	x += lyxfont::signedWidth(layout.rightmargin, textclasslist.TextClass(parameters->textclass).defaultfont()) * 4
 	      / (row->par->GetDepth() + 4);
 	return x;
 }
@@ -974,7 +980,8 @@ LyXText::NextBreakPoint(Row const * row, int width) const
 			}
 			++i;
 			if (i == main_body) {
-				x += GetFont(par, -2).stringWidth(layout.labelsep);
+				x += lyxfont::width(layout.labelsep,
+						    GetFont(par, -2));
 				if (par->IsLineSeparator(i - 1))
 					x-= SingleWidth(par, i - 1);
 				int left_margin = LabelEnd(row);
@@ -1059,8 +1066,7 @@ int LyXText::Fill(Row const * row, int paper_width) const
 
 	while (i <= last) {
 		if (main_body > 0 && i == main_body) {
-			w += GetFont(row->par, -2).
-				stringWidth(layout.labelsep);
+			w += lyxfont::width(layout.labelsep, GetFont(row->par, -2));
 			if (row->par->IsLineSeparator(i - 1))
 				w -= SingleWidth(row->par, i - 1);
 			int left_margin = LabelEnd(row);
@@ -1071,7 +1077,7 @@ int LyXText::Fill(Row const * row, int paper_width) const
 		++i;
 	}
 	if (main_body > 0 && main_body > last) {
-		w += GetFont(row->par, -2).stringWidth(layout.labelsep);
+		w += lyxfont::width(layout.labelsep, GetFont(row->par, -2));
 		if (last >= 0 && row->par->IsLineSeparator(last))
 			w -= SingleWidth(row->par, last);
 		int left_margin = LabelEnd(row);
@@ -1111,12 +1117,10 @@ int LyXText::LabelFill(Row const * row) const
 	
 	int fill = 0;
 	if (!row->par->labelwidthstring.empty()) {
-		fill = GetFont(row->par, -2)
-			.stringWidth(row->par->labelwidthstring) - w;
+		fill = max(lyxfont::width(row->par->labelwidthstring,
+					  GetFont(row->par, -2)) - w,
+			   0);
 	}
-	
-	if (fill < 0)
-		fill = 0;
 	
 	return fill;
 }
@@ -1258,10 +1262,10 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
 
    LyXFont labelfont = GetFont(par, -2);
 
-   int maxasc = int(font.maxAscent() *
+   int maxasc = int(lyxfont::maxAscent(font) *
 		   layout.spacing.getValue() *
 		   parameters->spacing.getValue());
-   int maxdesc = int(font.maxDescent() *
+   int maxdesc = int(lyxfont::maxDescent(font) *
 		    layout.spacing.getValue() *
 		    parameters->spacing.getValue());
 
@@ -1293,8 +1297,8 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    if (maxsize > font.size()) {
 	font.setSize(maxsize);
 
-	asc = font.maxAscent();
-	desc = font.maxDescent();
+	asc = lyxfont::maxAscent(font);
+	desc = lyxfont::maxDescent(font);
 	if (asc > maxasc) 
 		maxasc = asc;
 	if (desc > maxdesc)
@@ -1344,7 +1348,7 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
       /* do not forget the DTP-lines! 
        * there height depends on the font of the nearest character */
       if (firstpar->line_top)
-      	 maxasc += 2 * GetFont(firstpar, 0).ascent('x');
+      	 maxasc += 2 * lyxfont::ascent('x', GetFont(firstpar, 0));
       
       /* and now the pagebreaks */ 
       if (firstpar->pagebreak_top)
@@ -1354,10 +1358,10 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
        * layout is printed in an extra row */ 
       if (layout.labeltype == LABEL_COUNTER_CHAPTER
 	  && parameters->secnumdepth>= 0) {
-	      labeladdon = int(labelfont.maxDescent() *
+	      labeladdon = int(lyxfont::maxDescent(labelfont) *
 				  layout.spacing.getValue() *
 				  parameters->spacing.getValue())
-		      + int(labelfont.maxAscent() *
+		      + int(lyxfont::maxAscent(labelfont) *
 			       layout.spacing.getValue() *
 			       parameters->spacing.getValue());
       }
@@ -1367,12 +1371,12 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
 	   || layout.labeltype == LABEL_BIBLIO
 	   || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
 	  && row_ptr->par->IsFirstInSequence()
-	  && !row_ptr->par->GetLabestring().empty()) {
+	  && !row_ptr->par->GetLabelstring().empty()) {
 	 labeladdon = int(
-		 (labelfont.maxAscent() *
+		 (lyxfont::maxAscent(labelfont) *
 		  layout.spacing.getValue() *
 		  parameters->spacing.getValue())
-		 +(labelfont.maxDescent() *
+		 +(lyxfont::maxDescent(labelfont) *
 		   layout.spacing.getValue() *
 		   parameters->spacing.getValue())
 		 + layout.topsep * DefaultHeight()
@@ -1441,7 +1445,7 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
 	  /* do not forget the DTP-lines! 
 	   * there height depends on the font of the nearest character */
 	  if (firstpar->line_bottom)
-	    maxdesc += 2 * (GetFont(par, par->Last()-1).ascent('x'));
+	    maxdesc += 2 * lyxfont::ascent('x', GetFont(par, par->Last() - 1));
 	  
 	  /* and now the pagebreaks */
 	  if (firstpar->pagebreak_bottom)
@@ -1676,7 +1680,7 @@ void LyXText::BreakParagraph(char keep_layout)
    /* table stuff -- end */
 
    // well this is the caption hack since one caption is really enough
-   if (layout.labeltype == LABEL_SENSITIVE){
+   if (layout.labeltype == LABEL_SENSITIVE) {
      if (!cursor.pos)
 	     cursor.par->SetLayout(0); // set to standard-layout
      else
@@ -2775,7 +2779,7 @@ void LyXText::PrepareToPrint(Row * row, float & x,
 		if (row->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
 			LyXFont font(LyXFont::ALL_SANE);
 			font.setSize(LyXFont::SIZE_SMALL);
-			x += font.textWidth("Mwide-figM", 10);
+			x += lyxfont::width("Mwide-figM", font);
 		}
 	}
 	else
@@ -2866,7 +2870,8 @@ void LyXText::PrepareToPrint(Row * row, float & x,
 			    !row->par->IsLineSeparator(main_body-1))) {
 			LyXLayout const & layout = textclasslist.Style(parameters->textclass,
 								       row->par->GetLayout());
-			x += GetFont(row->par, -2).stringWidth(layout.labelsep);
+			x += lyxfont::width(layout.labelsep,
+					    GetFont(row->par, -2));
 			if (main_body-1 <= last)
 				x += fill_label_hfill;
 		}
@@ -3080,7 +3085,7 @@ char * LyXText::SelectNextWord(float & value)
 	sel_cursor = cursor;
 
 #ifdef HAVE_SSTREAM
-	ostringstream latex;
+	std::ostringstream latex;
 #else
 	ostrstream latex;
 #endif
@@ -3128,7 +3133,7 @@ void LyXText::SelectSelectedWord()
 	sel_cursor = cursor;
 
 #ifdef HAVE_SSTREAM
-	ostringstream latex;
+	std::ostringstream latex;
 #else
 	ostrstream latex;
 #endif
@@ -3315,8 +3320,6 @@ void LyXText::Delete()
 
 void LyXText::Backspace()
 {
-	DebugTracer trc1("LyXText::Backspace");
-	
 	/* table stuff -- begin */
 	if (cursor.par->table) {
 		BackspaceInTable();
@@ -3332,8 +3335,6 @@ void LyXText::Backspace()
 	LyXFont rawparfont = cursor.par->GetFontSettings(lastpos - 1);
 
 	if (cursor.pos == 0) {
-		DebugTracer trc("LyXText::Backspace cursor.pos == 0");
-		
 		// The cursor is at the beginning of a paragraph, so the the backspace
 		// will collapse two paragraphs into one.
 		
@@ -3446,8 +3447,6 @@ void LyXText::Backspace()
 			SetCursor(cursor.par, cursor.pos);
 		}
 	} else {
-		DebugTracer trc("LyXText::Backspace normal backspace");
-		
 		/* this is the code for a normal backspace, not pasting
 		 * any paragraphs */ 
 		SetUndo(Undo::DELETE, 
@@ -3636,8 +3635,6 @@ void LyXText::Backspace()
 			SetCursor(cursor.par, cursor.pos, false);
 		}
 	}
-	DebugTracer trc2("LyXText::Backspace wrap up");
-	
 	// restore the current font
 	// That is what a user expects!
 	current_font = rawtmpfont; 
@@ -3777,8 +3774,9 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 					float old_tmpx = tmpx;
 					if (main_body > 0 && pos == main_body-1) {
 						tmpx += fill_label_hfill +
-							GetFont(row_ptr->par, -2).stringWidth(
-											      textclasslist.Style(parameters->textclass, row_ptr->par->GetLayout()).labelsep);
+							lyxfont::width(textclasslist.Style(parameters->textclass,
+											   row_ptr->par->GetLayout()).labelsep,
+								       GetFont(row_ptr->par, -2));
 						if (row_ptr->par->IsLineSeparator(main_body-1))
 							tmpx -= SingleWidth(row_ptr->par, main_body-1);
 					}
@@ -3833,8 +3831,8 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 	if (row_ptr->par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
 		/* draw a marker at the left margin! */ 
 		LyXFont font = GetFont(row_ptr->par, 0);
-		int asc = font.maxAscent();
-		int x = (LYX_PAPER_MARGIN - font.width('|')) / 2;
+		int asc = lyxfont::maxAscent(font);
+		int x = (LYX_PAPER_MARGIN - lyxfont::width('|', font)) / 2;
 		int y1 = (offset + row_ptr->baseline);
 		int y2 = (offset + row_ptr->baseline) - asc;
 		pain.line(x, y1, x, y2, LColor::minipageline);
@@ -3845,7 +3843,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		font.setColor(LColor::footnote);
 		
 		int box_x = LYX_PAPER_MARGIN;
-		box_x += font.textWidth(" wide-tab ", 10);
+		box_x += lyxfont::width(" wide-tab ", font);
 		if (row_ptr->previous && 
 		    row_ptr->previous->par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
 			string fs;
@@ -3876,8 +3874,8 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			pain.fillRectangle(LYX_PAPER_MARGIN,
 					   offset + 1,
 					   box_x - LYX_PAPER_MARGIN,
-					   int(font.maxAscent()
-					       + font.maxDescent()),
+					   int(lyxfont::maxAscent(font)
+					       + lyxfont::maxDescent(font)),
 					   LColor::footnotebg);
 			
 			pain.line(LYX_PAPER_MARGIN, offset,
@@ -3885,21 +3883,21 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				  LColor::footnoteframe);
 			
 			pain.text(LYX_PAPER_MARGIN,
-				  offset + int(font.maxAscent()) + 1,
+				  offset + int(lyxfont::maxAscent(font)) + 1,
 				  fs, font);
 			
 			pain.line(LYX_PAPER_MARGIN, offset,
 				  LYX_PAPER_MARGIN,
-				  offset + int(font.maxAscent()
-					       + font.maxDescent()),
+				  offset + int(lyxfont::maxAscent(font)
+					       + lyxfont::maxDescent(font)),
 				  LColor::footnoteframe);
 			
 			pain.line(LYX_PAPER_MARGIN,
-				  offset + int(font.maxAscent()
-					       + font.maxDescent()) + 1,
+				  offset + int(lyxfont::maxAscent(font)
+					       + lyxfont::maxDescent(font)) + 1,
 				  box_x,
-				  offset + int(font.maxAscent()
-					       + font.maxDescent()) + 1,
+				  offset + int(lyxfont::maxAscent(font)
+					       + lyxfont::maxDescent(font)) + 1,
 				  LColor::footnoteframe);
 			
 		}
@@ -3921,7 +3919,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 		
 		int box_x = LYX_PAPER_MARGIN;
-		box_x += font.textWidth(" wide-tab ", 10);
+		box_x += lyxfont::width(" wide-tab ", font);
 		
 		pain.line(box_x, offset,
 			  paperwidth - LYX_PAPER_MARGIN,
@@ -4020,7 +4018,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		}
 		
 		if (row_ptr->par->line_top) {      /* draw a top line  */
-			y_top +=  GetFont(row_ptr->par, 0).ascent('x');
+			y_top +=  lyxfont::ascent('x', GetFont(row_ptr->par, 0));
 			
 			pain.line(0, offset + y_top,
 				  paperwidth, offset + y_top,
@@ -4028,7 +4026,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				  Painter::line_solid,
 				  Painter::line_thick);
 			
-			y_top +=  GetFont(row_ptr->par, 0).ascent('x');
+			y_top +=  lyxfont::ascent('x', GetFont(row_ptr->par, 0));
 		}
 		
 		/* should we print a label? */ 
@@ -4037,34 +4035,34 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			|| layout.latextype != LATEX_ENVIRONMENT
 			|| row_ptr->par->IsFirstInSequence())) {
 			font = GetFont(row_ptr->par, -2);
-			if (!row_ptr->par->GetLabestring().empty()) {
+			if (!row_ptr->par->GetLabelstring().empty()) {
 				tmpx = x;
-				string tmpstring = row_ptr->par->GetLabestring();
+				string tmpstring = row_ptr->par->GetLabelstring();
 				
 				if (layout.labeltype == LABEL_COUNTER_CHAPTER) {
 					if (parameters->secnumdepth >= 0){
 						/* this is special code for the chapter layout. This is printed in
 						 * an extra row and has a pagebreak at the top. */
-						maxdesc = int(font.maxDescent() * layout.spacing.getValue() * parameters->spacing.getValue())
+						maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * parameters->spacing.getValue())
 							+ int(layout.parsep) * DefaultHeight();
 						if (direction == LYX_DIR_RIGHT_TO_LEFT)
 							tmpx = paperwidth - LeftMargin(row_ptr) - 
-								font.stringWidth(tmpstring);
+								lyxfont::width(tmpstring, font);
 						pain.text(int(tmpx),
 							  offset + row_ptr->baseline - row_ptr->ascent_of_text - maxdesc,
 							  tmpstring, font);
 					}
 				} else {
 					if (direction == LYX_DIR_LEFT_TO_RIGHT)
-						tmpx = x - font.stringWidth(layout.labelsep)
-							- font.stringWidth(tmpstring);
+						tmpx = x - lyxfont::width(layout.labelsep, font)
+							- lyxfont::width(tmpstring, font);
 					else {
 						tmpx = paperwidth - LeftMargin(row_ptr)
-							+ font.stringWidth(layout.labelsep);
+							+ lyxfont::width(layout.labelsep, font);
 						if (row_ptr->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)  {
 							LyXFont font(LyXFont::ALL_SANE);
 							font.setSize(LyXFont::SIZE_SMALL);
-							tmpx += font.textWidth("Mwide-figM", 10);
+							tmpx += lyxfont::width("Mwide-fixM", font);
 						}
 					}
 					/* draw it! */
@@ -4079,10 +4077,10 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			   layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 			if (row_ptr->par->IsFirstInSequence()) {
 				font = GetFont(row_ptr->par, -2);
-				if (!row_ptr->par->GetLabestring().empty()) {
-					string tmpstring = row_ptr->par->GetLabestring();
+				if (!row_ptr->par->GetLabelstring().empty()) {
+					string tmpstring = row_ptr->par->GetLabelstring();
 					
-					maxdesc = int(font.maxDescent() * layout.spacing.getValue() * parameters->spacing.getValue()
+					maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * parameters->spacing.getValue()
 						      + (layout.labelbottomsep * DefaultHeight()));
 					
 					tmpx = x;
@@ -4090,10 +4088,10 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 						tmpx = ( ((direction == LYX_DIR_LEFT_TO_RIGHT)
 							  ? x : LeftMargin(row_ptr) )
 							 + paperwidth - RightMargin(row_ptr) ) / 2; 
-						tmpx -= (font.stringWidth(tmpstring)/2);
+						tmpx -= lyxfont::width(tmpstring, font) / 2;
 					} else if (direction == LYX_DIR_RIGHT_TO_LEFT)
 						tmpx = paperwidth - LeftMargin(row_ptr) - 
-							font.stringWidth(tmpstring);
+							lyxfont::width(tmpstring, font);
 					pain.text(int(tmpx),
 						  offset + row_ptr->baseline
 						  - row_ptr->ascent_of_text
@@ -4105,12 +4103,12 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		if (layout.labeltype == LABEL_BIBLIO && row_ptr->par->bibkey) {
 			font = GetFont(row_ptr->par, -1);
 			if (direction == LYX_DIR_LEFT_TO_RIGHT)
-				tmpx = x - font.stringWidth(layout.labelsep)
+				tmpx = x - lyxfont::width(layout.labelsep, font)
 					- row_ptr->par->bibkey->width(owner_->painter(), font);
 			else
 				tmpx = paperwidth - LeftMargin(row_ptr)
-					+ font.stringWidth(layout.labelsep);
-			row_ptr->par->bibkey->draw(owner_->painter(),
+					+ lyxfont::width(layout.labelsep, font);
+			row_ptr->par->bibkey->draw(pain,
 						   font,
 						   offset + row_ptr->baseline, 
 						   tmpx);
@@ -4182,12 +4180,12 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		
 		if (firstpar->line_bottom) {
 			/* draw a bottom line */
-			y_bottom -= GetFont(par, par->Last() - 1).ascent('x');
+			y_bottom -= lyxfont::ascent('x', GetFont(par, par->Last() - 1));
 			pain.line(0, offset + y_bottom,
 				  paperwidth, offset + y_bottom,
 				  LColor::topline, Painter::line_solid,
 				  Painter::line_thick);
-			y_bottom -= GetFont(par, par->Last() - 1).ascent('x');
+			y_bottom -= lyxfont::ascent('x', GetFont(par, par->Last() - 1));
 		}
 
 		// draw an endlabel
@@ -4195,7 +4193,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		if (endlabel == END_LABEL_BOX ||
 		    endlabel == END_LABEL_FILLED_BOX) {
 			LyXFont font = GetFont(row_ptr->par, last);
-			int size = int(0.75*font.maxAscent());
+			int size = int(0.75 * lyxfont::maxAscent(font));
 			int y = (offset + row_ptr->baseline) - size;
 			int x = (direction == LYX_DIR_LEFT_TO_RIGHT)
 				? paperwidth - LYX_PAPER_MARGIN - size
@@ -4206,7 +4204,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				else {
 					LyXFont font(LyXFont::ALL_SANE);
 					font.setSize(LyXFont::SIZE_SMALL);
-					x += font.textWidth("Mwide-figM", 10);
+					x += lyxfont::width("Mwide-figM", font);
 				}
 			if (row_ptr->fill <= size)
 				x += (size - row_ptr->fill + 1) * direction;
@@ -4398,7 +4396,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			pos = vis2log(vpos);
 			if (main_body > 0 && pos == main_body-1) {
 				x += fill_label_hfill
-					+ GetFont(row_ptr->par, -2).stringWidth(layout.labelsep)
+					+ lyxfont::width(layout.labelsep, GetFont(row_ptr->par, -2))
 					- SingleWidth(row_ptr->par, main_body-1);
 			}
 			
@@ -4494,7 +4492,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 int LyXText::DefaultHeight() const
 {
 	LyXFont font(LyXFont::ALL_SANE);
-	return int(font.maxAscent() + font.maxDescent() * 1.5);
+	return int(lyxfont::maxAscent(font) + lyxfont::maxDescent(font) * 1.5);
 }
 
    
@@ -4557,7 +4555,8 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 			last_tmpx = tmpx;
 			if (main_body > 0 && c == main_body-1) {
 				tmpx += fill_label_hfill +
-					GetFont(row->par, -2).stringWidth(layout.labelsep);
+					lyxfont::width(layout.labelsep,
+					       GetFont(row->par, -2));
 				if (row->par->IsLineSeparator(main_body-1))
 					tmpx -= SingleWidth(row->par, main_body-1);
 			}

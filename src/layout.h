@@ -22,10 +22,6 @@
 
 #include <vector>
 
-using std::ostream;
-using std::vector;
-using std::pair;
-
 /// Reads the style files
 extern void LyXSetStyle();
 
@@ -357,7 +353,7 @@ private:
 class LyXTextClass {
 public:
 	///
-	typedef vector<LyXLayout> LayoutList;
+	typedef std::vector<LyXLayout> LayoutList;
 	///
 	typedef LayoutList::const_iterator const_iterator;
 	///
@@ -513,7 +509,7 @@ void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 
 ///
 inline
-ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
+std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p)
 {
 	switch (p) {
 	case LyXTextClass::OneSide:
@@ -531,7 +527,7 @@ ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
 class LyXTextClassList {
 public:
 	///
-	typedef vector<LyXTextClass> ClassList;
+	typedef std::vector<LyXTextClass> ClassList;
 	///
 	typedef ClassList::const_iterator const_iterator;
 	///
@@ -546,7 +542,7 @@ public:
 				LyXTextClass::size_type layout) const;
 
 	/// Gets layout number from textclass number and layout name
-	pair<bool, LyXTextClass::size_type>
+	std::pair<bool, LyXTextClass::size_type>
 	NumberOfLayout(size_type textclass,
 		       string const & name) const;
 
@@ -558,7 +554,7 @@ public:
 	/** Gets textclass number from name.
 	    Returns -1 if textclass name does not exist
 	*/
-	pair<bool, size_type>
+	std::pair<bool, size_type>
 	NumberOfClass(string const & textclass) const;
 
 	///

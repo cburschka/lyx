@@ -2,13 +2,15 @@
 #ifndef PATH_H
 #define PATH_H
 
-#include <unistd.h>
 #include "LString.h"
-#include "gettext.h"
 #include "support/filetools.h"
-#include "lyx_gui_misc.h"
 #include "lyxlib.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+///
 class Path {
 public:
 	///
@@ -18,8 +20,12 @@ public:
 		if (!path.empty()) { 
 			pushedDir_ = GetCWD();
 			if (pushedDir_.empty() || lyx::chdir(path.c_str())) {
-				WriteFSAlert(_("Error: Could not change to directory: "), 
-					     path);
+				// should throw an exception
+				// throw DirChangeError();
+				// The use of WriteFSAlert makes this
+				// impossible to inline.
+				//WriteFSAlert(_("Error: Could not change to directory: "), 
+				//	     path);
 			}
 		} else {
 			popped_ = true;
@@ -31,21 +37,7 @@ public:
 		if (!popped_) pop();
 	}
 	///
-	int pop()
-	{
-		if (popped_) {
-			WriteFSAlert(_("Error: Dir already popped: "),
-				     pushedDir_);
-			return 0;
-		}
-		if (lyx::chdir(pushedDir_.c_str())) {
-			WriteFSAlert(
-				_("Error: Could not change to directory: "), 
-				pushedDir_);
-		}
-		popped_ = true;
-		return 0;
-	}
+	int pop();
 private:
 	///
 	bool popped_;

@@ -25,12 +25,6 @@
 
 #include <fstream>
 #include <iomanip>
-using std::ofstream;
-using std::ifstream;
-using std::fstream;
-using std::ios;
-using std::setw;
-
 
 #include <cstdlib>
 #include <unistd.h>
@@ -74,7 +68,7 @@ using std::setw;
 #include "insets/insetspecialchar.h"
 #include "insets/figinset.h"
 #include "insets/insettext.h"
-#include "insets/insetnumber.h"
+//#include "insets/insetnumber.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
@@ -93,7 +87,14 @@ using std::setw;
 #include "gettext.h"
 #include "language.h"
 
+using std::ostream;
+using std::ofstream;
+using std::ifstream;
+using std::fstream;
+using std::ios;
+using std::setw;
 using std::endl;
+using std::pair;
 
 // Uncomment this line to enable a workaround for the weird behaviour
 // of the cursor between a displayed inset and last character
@@ -813,6 +814,7 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
 			++pos;
+#if 0
 		} else if (tmptok == "Number") {
 			inset = new InsetNumber(this);
 			inset->Read(lex);
@@ -820,6 +822,7 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
 			++pos;
+#endif
 		} else if (tmptok == "Foot") {
 			inset = new InsetFoot(this);
 			inset->Read(lex);
@@ -857,7 +860,7 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
 					inset = new InsetRef(inscmd, this);
 				}
-#warning Verify that this else clause is still needed. (Lgb)
+#warning Check if this else clause is still needed. (Lgb)
 #if 0
 				// This condition comes from a
 				// temporary solution to the latexdel
@@ -1389,7 +1392,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 					if ((inset = par->GetInset(i))) {
 #if 1
 #ifdef HAVE_SSTREAM
-						ostringstream ost;
+						std::ostringstream ost;
 						inset->Latex(ost, -1, free_spc);
 						h += ost.str().length();
 #else
@@ -2038,7 +2041,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	bool was_title = false;
 	bool already_title = false;
 #ifdef HAVE_SSTREAM
-	ostringstream ftnote;
+	std::ostringstream ftnote;
 #else
 	char * tmpholder = 0;
 #endif
@@ -2495,7 +2498,7 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 		    .NumberOfLayout(params.textclass,
 				    "Caption").second) {
 #ifdef HAVE_SSTREAM
-			ostringstream ost;
+			std::ostringstream ost;
 #else
 			ostrstream ost;
 #endif
@@ -3127,7 +3130,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 		if (c == LyXParagraph::META_INSET) {
 			Inset * inset = par->GetInset(i);
 #ifdef HAVE_SSTREAM
-			ostringstream ost;
+			std::ostringstream ost;
 			inset->DocBook(ost);
 			string tmp_out = ost.str().c_str();
 #else

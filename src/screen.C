@@ -22,6 +22,7 @@
 #include "Painter.h"
 #include "WorkArea.h"
 #include "bufferparams.h"
+#include "font.h"
 
 using std::max;
 using std::min;
@@ -195,8 +196,8 @@ void LyXScreen::ShowCursor()
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
 		ShowManualCursor(text->cursor.x, text->cursor.y,
-				 text->real_current_font.maxAscent(),
-				 text->real_current_font.maxDescent(),
+				 lyxfont::maxAscent(text->real_current_font),
+				 lyxfont::maxDescent(text->real_current_font),
 				 shape);
 	}
 }

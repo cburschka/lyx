@@ -13,6 +13,8 @@
 #include <cmath>	// fabs()
 #include <cstdlib>	// atoi()
 
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG__
 #pragma implementation "FontInfo.h"
 #endif
@@ -141,6 +143,17 @@ void FontInfo::query()
 		XFreeFontNames(list);
 	}
 	queried = true;
+}
+
+
+void FontInfo::init()
+{
+	sizes = 0;
+	strings = 0;
+	matches = 0;
+	queried = false;
+	scalable = false;
+	scaleindex = -1;
 }
 
 

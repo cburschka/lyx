@@ -20,8 +20,6 @@
 
 #include "insetcollapsable.h"
 
-using std::ostream;
-
 class Painter;
 
 /** The footnote inset
@@ -38,9 +36,9 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
     ///
-    int Latex(ostream &, signed char, bool fp) const;
+    int Latex(std::ostream &, signed char, bool fp) const;
     ///
-    void Write(ostream &) const;
+    void Write(std::ostream &) const;
     ///
     void Read(LyXLex &);
     ///

@@ -106,8 +106,8 @@ private:
 			IsBitmap = false;
 		}
 		///
-		~toolbarItem(){
-			if (icon){
+		~toolbarItem() {
+			if (icon) {
 				fl_delete_object(icon);
 				fl_free_object(icon);
 			}
@@ -147,16 +147,16 @@ private:
 
 	/** more...
 	 */
-	void reset(){
-		toollist = 0;
-		cleaned = false;
-		
-		lightReset();
-	}
+	void reset();// {
+//		toollist = 0;
+//		cleaned = false;
+//		
+//		lightReset();
+//	}
 
 	/** more...
 	 */
-	void lightReset(){
+	void lightReset() {
 		standardspacing = 2; // the usual space between items
 		sepspace = 6; // extra space
 		xpos = sxpos - standardspacing;

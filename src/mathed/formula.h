@@ -25,8 +25,6 @@
 
 #include "insets/lyxinset.h"
 
-using std::ostream;
-
 class MathParInset;
 class MathedCursor;
 
@@ -48,15 +46,15 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
@@ -71,7 +69,7 @@ public:
 	}
 
 	/// what appears in the minibuffer when opening
-	const char * EditMessage() const {return _("Math editor mode");}
+	char const * EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///

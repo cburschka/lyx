@@ -27,10 +27,6 @@
 #include "direction.h"
 #include "language.h"
 
-using std::ostream;
-using std::list;
-using std::vector;
-
 class BufferParams;
 class LyXBuffer;
 class TexRow;
@@ -117,7 +113,7 @@ public:
 	///
 	typedef char value_type;
 	///
-	typedef vector<value_type> TextContainer;
+	typedef std::vector<value_type> TextContainer;
 	///
 	typedef int size_type;
 
@@ -139,7 +135,7 @@ public:
 	LyXDirection getLetterDirection(size_type pos) const;
 	
 	///
-	void writeFile(ostream &, BufferParams const &, char, char) const;
+	void writeFile(std::ostream &, BufferParams const &, char, char) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	
@@ -156,15 +152,15 @@ public:
 	void read();
 
 	///
-	LyXParagraph * TeXOnePar(ostream &, TexRow & texrow,
-				 ostream & foot, TexRow & foot_texrow,
+	LyXParagraph * TeXOnePar(std::ostream &, TexRow & texrow,
+				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	bool SimpleTeXOnePar(ostream &, TexRow & texrow);
+	bool SimpleTeXOnePar(std::ostream &, TexRow & texrow);
 
 	///
-	LyXParagraph * TeXEnvironment(ostream &, TexRow & texrow,
-				      ostream & foot, TexRow & foot_texrow,
+	LyXParagraph * TeXEnvironment(std::ostream &, TexRow & texrow,
+				      std::ostream & foot, TexRow & foot_texrow,
 				      int & foot_count);
 	///
 	LyXParagraph * Clone() const;
@@ -340,7 +336,7 @@ public:
 	///
 	int BeginningOfMainBody() const;
 	///
-	string GetLabestring() const;
+	string GetLabelstring() const;
 	
 	/// the next two functions are for the manual labels
 	string GetLabelWidthString() const;
@@ -484,10 +480,7 @@ public:
 	  one (or more) paragraphs with the footnote, and finally
 	  the a paragraph with the text after the footnote. Only the
 	  first paragraph keeps information  about layoutparameters, */
-	bool IsDummy() const {
-		return (footnoteflag == LyXParagraph::NO_FOOTNOTE && previous
-			&& previous->footnoteflag != LyXParagraph::NO_FOOTNOTE);
-	}
+	bool IsDummy() const;
 
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
            I have to set it on each of it's elements */
@@ -497,16 +490,16 @@ public:
         void UnsetPExtraType();
 #if 0
 	///
-	bool RoffContTableRows(ostream &, size_type i, int actcell);
+	bool RoffContTableRows(std::ostream &, size_type i, int actcell);
 #endif
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
 	///
-	void DocBookContTableRows(ostream &, string & extra,
+	void DocBookContTableRows(std::ostream &, string & extra,
 				  int & desc_on, size_type i,
 				  int current_cell_number, int & column);
 	///
-	void SimpleDocBookOneTablePar(ostream &, string & extra,
+	void SimpleDocBookOneTablePar(std::ostream &, string & extra,
 				      int & desc_on, int depth);
 private:
 	/** A font entry covers a range of positions. Notice that the
@@ -541,35 +534,35 @@ private:
 		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
 	};
 	///
-	typedef list<FontTable> FontList;
+	typedef std::list<FontTable> FontList;
 	///
 	FontList fontlist;
 	///
-	typedef vector<InsetTable> InsetList;
+	typedef std::vector<InsetTable> InsetList;
 	///
 	InsetList insetlist;
 	///
-	LyXParagraph * TeXDeeper(ostream &, TexRow & texrow,
-				 ostream & foot, TexRow & foot_texrow,
+	LyXParagraph * TeXDeeper(std::ostream &, TexRow & texrow,
+				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	LyXParagraph * TeXFootnote(ostream &, TexRow & texrow,
-				   ostream & foot, TexRow & foot_texrow,
+	LyXParagraph * TeXFootnote(std::ostream &, TexRow & texrow,
+				   std::ostream & foot, TexRow & foot_texrow,
 				   int & foot_count,
 				   LyXDirection par_direction);
 	///
-	bool SimpleTeXOneTablePar(ostream &, TexRow & texrow);
+	bool SimpleTeXOneTablePar(std::ostream &, TexRow & texrow);
 	///
-	bool TeXContTableRows(ostream &, size_type i,
+	bool TeXContTableRows(std::ostream &, size_type i,
 			      int current_cell_number,
                               int & column, TexRow & texrow);
 	///
-	void SimpleTeXBlanks(ostream &, TexRow & texrow,
+	void SimpleTeXBlanks(std::ostream &, TexRow & texrow,
 			     size_type const i,
 			     int & column, LyXFont const & font,
 			     LyXLayout const & style);
 	///
-	void SimpleTeXSpecialChars(ostream &, TexRow & texrow,
+	void SimpleTeXSpecialChars(std::ostream &, TexRow & texrow,
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont, bool & open_font,
 				   LyXLayout const & style,

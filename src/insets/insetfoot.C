@@ -20,6 +20,7 @@
 #include "lyxscreen.h"
 #include "Painter.h"
 
+using std::ostream;
 
 InsetFoot::InsetFoot(Buffer * bf)
 		: InsetCollapsable(bf)

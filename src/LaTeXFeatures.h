@@ -22,9 +22,6 @@
 
 #include "LString.h"
 
-using std::vector;
-using std::set;
-
 class BufferParams; 
 class LyXTextClass;
 struct Language;
@@ -125,7 +122,7 @@ struct LaTeXFeatures {
 	
 	//@Man: Layouts
 	//@{
-	vector<bool> layout;
+	std::vector<bool> layout;
 	//@}
 	
 	//@Man: Special features
@@ -136,7 +133,7 @@ struct LaTeXFeatures {
 	///
 	bool NeedLyXMinipageIndent;
 	///
-	typedef set<Language const *> LanguageList;
+	typedef std::set<Language const *> LanguageList;
 	///
 	LanguageList UsedLanguages;
 	//@}

@@ -88,25 +88,28 @@ public:
 	}
 private:
 	///
-	void add(uid_t ID) const {
-		string pszNewName;
-		struct passwd * pEntry;
-		
-		// gets user name
-		if ((pEntry = getpwuid(ID)))
-			pszNewName = pEntry->pw_name;
-		else {
-			pszNewName = tostr(ID);
-		}
-		
-		// adds new node
-		users[ID] = pszNewName;
-	}
+	void add(uid_t ID) const;
 	///
 	typedef map<uid_t, string> Users;
 	///
 	mutable Users users;
 };
+
+void UserCache::add(uid_t ID) const 
+{
+	string pszNewName;
+	struct passwd * pEntry;
+	
+	// gets user name
+	if ((pEntry = getpwuid(ID)))
+		pszNewName = pEntry->pw_name;
+	else {
+		pszNewName = tostr(ID);
+	}
+	
+	// adds new node
+	users[ID] = pszNewName;
+}	
 
 
 /// Group cache class definition
@@ -123,24 +126,27 @@ public:
 	}
 private:
 	///
-	void add(gid_t ID) const {
-		string pszNewName;
-		struct group * pEntry;
-		
-		// gets user name
-		if ((pEntry = getgrgid(ID))) pszNewName = pEntry->gr_name;
-		else {
-			pszNewName = tostr(ID);
-		}
-		// adds new node
-		groups[ID] = pszNewName;
-	}
+	void add(gid_t ID) const;
 	///
 	typedef map<gid_t, string> Groups;
 	///
 	mutable Groups groups;
 };
 
+void GroupCache::add(gid_t ID) const 
+{
+	string pszNewName;
+	struct group * pEntry;
+	
+	// gets user name
+	if ((pEntry = getgrgid(ID))) pszNewName = pEntry->gr_name;
+	else {
+		pszNewName = tostr(ID);
+	}
+	// adds new node
+	groups[ID] = pszNewName;
+}
+	
 // static instances
 static UserCache lyxUserCache;
 static GroupCache lyxGroupCache;

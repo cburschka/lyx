@@ -35,12 +35,14 @@
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxrow.h"
-#include "tracer.h"
+#include "Painter.h"
+#include "font.h"
 
 #define FIX_DOUBLE_SPACE 1
 
 using std::copy;
 using std::endl;
+using std::pair;
 
 LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 {
@@ -1528,7 +1530,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			}
 
 #ifdef HAVE_SSTREAM
-			ostringstream s;
+			std::ostringstream s;
 #else
 			ostrstream s;
 #endif
@@ -1676,7 +1678,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			int number = par->getCounter(i + par->enumdepth);
 
 #ifdef HAVE_SSTREAM
-			ostringstream s;
+			std::ostringstream s;
 #else
 			ostrstream s;
 #endif
@@ -3101,12 +3103,14 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			pos = vis2log(vpos);
 			if (main_body > 0 && pos == main_body-1) {
 				x += fill_label_hfill +
-					GetFont(row->par, -2).stringWidth(
-						    textclasslist.Style(parameters->textclass, row->par->GetLayout()).labelsep);
+					lyxfont::width(textclasslist
+						       .Style(parameters->textclass,
+							      row->par->GetLayout())
+						       .labelsep,
+						       GetFont(row->par, -2));
 				if (row->par->IsLineSeparator(main_body-1))
 					x -= SingleWidth(row->par, main_body-1);
 			}
-      
 			if (HfillExpansion(row, pos)) {
 				x += SingleWidth(row->par, pos);
 				if (pos >= main_body)
@@ -3190,7 +3194,7 @@ void LyXText::CursorLeft() const
         if (cursor.par->table) {
                 int cell = NumberOfCell(cursor.par, cursor.pos);
                 if (cursor.par->table->IsContRow(cell) &&
-                    cursor.par->table->CellHasContRow(cursor.par->table->GetCellAbove(cell))<0) {
+                    cursor.par->table->CellHasContRow(cursor.par->table->GetCellAbove(cell)) < 0) {
                         CursorUp();
                 }
         }
@@ -3297,8 +3301,6 @@ void LyXText::CursorDownParagraph() const
 
 void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 {
-	DebugTracer trc1("1");
-	
 	// Would be wrong to delete anything if we have a selection.
 	if (selection) return;
 
@@ -3335,28 +3337,19 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 
 	// If the pos around the old_cursor were spaces, delete one of them.
 	if (old_cursor.par != cursor.par || old_cursor.pos != cursor.pos) { // Only if the cursor has really moved
-		DebugTracer trc2("2");
 		
 		if (old_cursor.pos > 0
 		    && old_cursor.pos < old_cursor.par->Last()
 		    && old_cursor.par->IsLineSeparator(old_cursor.pos)
 		    && old_cursor.par->IsLineSeparator(old_cursor.pos - 1)) {
-			DebugTracer trc3("3");
-			
-			lyxerr << "Old cursor pos: " << old_cursor.pos << endl;
 			old_cursor.par->Erase(old_cursor.pos - 1);
 			status = LyXText::NEED_MORE_REFRESH;
 			// correct cursor
 			if (old_cursor.par == cursor.par &&
 			    cursor.pos > old_cursor.pos) {
-				DebugTracer trc4("4");
-				
-	
 				//SetCursor(cursor.par, cursor.pos - 1);
 				cursor.pos--;
-			}
-			
-			//else
+			} //else
 			//	SetCursor(cursor.par, cursor.pos);
 			return;
 		}
@@ -3371,16 +3364,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	LyXCursor tmpcursor;
 
 	if (old_cursor.par != cursor.par) {
-		DebugTracer trc5("5");
-		
 		if ( (old_cursor.par->Last() == 0
 		      || (old_cursor.par->Last() == 1
 			  && old_cursor.par->IsLineSeparator(0)))
 		     && old_cursor.par->FirstPhysicalPar()
 		     == old_cursor.par->LastPhysicalPar()) {
-			DebugTracer trc6("6");
-			
-			
 			// ok, we will delete anything
 			
 			// make sure that you do not delete any environments
@@ -3395,22 +3383,16 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 				    || (old_cursor.row->next
 					&& old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
 				    )) {
-				DebugTracer trc7("7");
-				
 				status = LyXText::NEED_MORE_REFRESH;
 				deleted = true;
 				
 				if (old_cursor.row->previous) {
-					DebugTracer trc8("8");
-					
 					refresh_row = old_cursor.row->previous;
 					refresh_y = old_cursor.y - old_cursor.row->baseline - refresh_row->height;
 					tmpcursor = cursor;
 					cursor = old_cursor; // that undo can restore the right cursor position
 					LyXParagraph * endpar = old_cursor.par->next;
 					if (endpar && endpar->GetDepth()) {
-						DebugTracer trc9("9");
-						
 						while (endpar && endpar->GetDepth()) {
 							endpar = endpar->LastPhysicalPar()->Next();
 						}
@@ -3423,9 +3405,6 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 					// delete old row
 					RemoveRow(old_cursor.row);
 					if (params->paragraph == old_cursor.par) {
-						DebugTracer trc10("10");
-						
-
 						params->paragraph = params->paragraph->next;
 					}
 					// delete old par
@@ -3437,15 +3416,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 					 * next row can change its height,
 					 * if there is another layout before */
 					if (refresh_row->next) {
-						DebugTracer trc11("11");
-						
 						BreakAgain(refresh_row->next);
 						UpdateCounters(refresh_row);
 					}
 					SetHeightOfRow(refresh_row);
 				} else {
-					DebugTracer trc12("12");
-					
 					refresh_row = old_cursor.row->next;
 					refresh_y = old_cursor.y - old_cursor.row->baseline;
 					
@@ -3453,8 +3428,6 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 					cursor = old_cursor; // that undo can restore the right cursor position
 					LyXParagraph *endpar = old_cursor.par->next;
 					if (endpar && endpar->GetDepth()) {
-						DebugTracer trc13("13");
-						
 						while (endpar && endpar->GetDepth()) {
 							endpar = endpar->LastPhysicalPar()->Next();
 						}
@@ -3468,8 +3441,6 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 					RemoveRow(old_cursor.row);
 					// delete old par
 					if (params->paragraph == old_cursor.par) {
-						DebugTracer trc14("14");
-						
 						params->paragraph = params->paragraph->next;
 					}
 					delete old_cursor.par;
@@ -3481,8 +3452,6 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 					   if there is another layout before
 					*/ 
 					if (refresh_row) {
-						DebugTracer trc15("15");
-						
 						BreakAgain(refresh_row);
 						UpdateCounters(refresh_row->previous);
 					}
@@ -3496,19 +3465,13 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	 
 				if (sel_cursor.par  == old_cursor.par
 				    && sel_cursor.pos == sel_cursor.pos) {
-					DebugTracer trc16("16");
-					
 					// correct selection
 					sel_cursor = cursor;
 				}
 			}
 		}
 		if (!deleted) {
-			DebugTracer trc17("17");
-			
-			if (old_cursor.par->ClearParagraph()){
-				DebugTracer trc18("18");
-				
+			if (old_cursor.par->ClearParagraph()) {
 				RedoParagraphs(old_cursor, old_cursor.par->Next());
 				// correct cursor y
 				SetCursor(cursor.par, cursor.pos);

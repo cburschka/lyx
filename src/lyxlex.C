@@ -19,6 +19,8 @@
 #include "support/lyxalgo.h"
 
 using std::ios;
+using std::ostream;
+using std::istream;
 using std::lower_bound;
 using std::sort;
 using std::endl;

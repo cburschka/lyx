@@ -533,3 +533,21 @@ void Toolbar::add(string const & func, bool doclean)
 		add(tf, doclean);
 	}
 }
+
+
+void Toolbar::reset() 
+{
+	toollist = 0;
+	cleaned = false;
+	lightReset();
+}
+
+//  void Toolbar::lightReset()
+//  {
+//  	standardspacing = 2; // the usual space between items
+//  	sepspace = 6; // extra space
+//  	xpos = sxpos - standardspacing;
+//  	ypos = sypos;
+//  	buttonwidth = 30; // the standard button width
+//  	height = 30; // the height of all items in the toolbar
+//  }

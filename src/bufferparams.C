@@ -25,6 +25,7 @@
 #include "lyxrc.h"
 #include "language.h"
 
+using std::ostream;
 using std::endl;
 
 BufferParams::BufferParams()

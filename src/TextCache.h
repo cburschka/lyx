@@ -23,9 +23,6 @@
 #include "LString.h"
 #include "lyxtext.h"
 
-using std::ostream;
-using std::vector;
-
 class Buffer;
 
 // This is only the very first implemetation and use of the TextCache,
@@ -115,7 +112,7 @@ class Buffer;
 class TextCache {
 public:
 	///
-	typedef vector<LyXText*> Cache;
+	typedef std::vector<LyXText*> Cache;
 	///
 	typedef LyXText * value_type;
 
@@ -124,9 +121,9 @@ public:
 	LyXText * findFit(Buffer * b, unsigned short p);
 	/** Lists all the LyXText's currently in the cache.
 	    Uses msg as header for the list. */
-	void show(ostream & o, string const & msg);
+	void show(std::ostream & o, string const & msg);
 	/// Gives info on a single LyXText (buffer and width)
-	static void show(ostream & o, LyXText *);
+	static void show(std::ostream & o, LyXText *);
 	/** Adds a LyXText to the cache iff its buffer is
 	    present in bufferlist. */
 	void add(LyXText *);

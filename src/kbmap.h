@@ -17,8 +17,6 @@
 
 #include "LString.h"
 
-using std::list;
-
 class kb_sequence;
 
 /// Defines key maps and actions for key sequences
@@ -71,7 +69,7 @@ private:
 		return table.empty();
 	}
 	///
-	typedef list<kb_key> Table;
+	typedef std::list<kb_key> Table;
 	///
 	Table table;
 };

@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "Painter.h"
 
+using std::ostream;
 using std::endl;
 
 

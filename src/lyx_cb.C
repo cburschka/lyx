@@ -61,6 +61,7 @@ using std::endl;
 using std::cout;
 using std::ios;
 using std::istream_iterator;
+using std::pair;
 
 extern Combox * combo_language;
 extern BufferList bufferlist;
@@ -88,7 +89,6 @@ extern bool send_fax(string const & fname, string const & sendcmd);
 extern void MenuSendto();
 
 extern LyXServer * lyxserver;
-extern FontLoader fontloader;
 
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
@@ -1898,7 +1898,7 @@ bool UpdateLayoutDocument(BufferParams * params)
 		//char sval[20];
 		//sprintf(sval, "%g", params->spacing.getValue()); 
 #ifdef HAVE_SSTREAM
-		ostringstream sval;
+		std::ostringstream sval;
 		sval << params->spacing.getValue(); // setw?
 		fl_set_input(fd_form_document->input_spacing,
 			     sval.str().c_str());
@@ -3032,9 +3032,13 @@ extern "C" void PrintCancelCB(FL_OBJECT *, long)
 static
 bool stringOnlyContains (string const & LStr, char const * cset)
 {
-	char const * cstr = LStr.c_str() ;
+#if 0
+	char const * cstr = LStr.c_str();
 
-	return strspn(cstr, cset) == strlen(cstr) ;
+	return strspn(cstr, cset) == strlen(cstr);
+#else
+	return LStr.find_first_not_of(cset) == string::npos;
+#endif
 }
 
 

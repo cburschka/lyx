@@ -299,7 +299,7 @@ bool LyXLength::operator== (LyXLength const & other) const
 string LyXLength::asString() const
 {
 #ifdef HAVE_SSTREAM
-	ostringstream buffer;
+	std::ostringstream buffer;
 	buffer << val << unit_name[uni]; // setw?
 	return buffer.str().c_str();
 #else
@@ -345,7 +345,7 @@ bool LyXGlueLength::operator== (LyXGlueLength const & other) const
 string LyXGlueLength::asString() const
 {
 #ifdef HAVE_SSTREAM
-	ostringstream buffer;
+	std::ostringstream buffer;
 #else
 	char tbuf[20];
 	ostrstream buffer(tbuf, 20);
@@ -407,7 +407,7 @@ string LyXGlueLength::asString() const
 string LyXGlueLength::asLatexString() const
 {
 #ifdef HAVE_SSTREAM
-	ostringstream buffer;
+	std::ostringstream buffer;
 #else
 	char tbuf[40];
 	ostrstream buffer(tbuf, 40);
@@ -555,10 +555,10 @@ int VSpace::inPixels(BufferView * bv) const
 		// This is how the skips are normally defined by
 		// LateX.  But there should be some way to change
 		// this per document.
-	case SMALLSKIP: return height/4;
-	case MEDSKIP:   return height/2;
+	case SMALLSKIP: return height / 4;
+	case MEDSKIP:   return height / 2;
 	case BIGSKIP:   return height;
-	case VFILL:     return 3*height;
+	case VFILL:     return 3 * height;
 		// leave space for the vfill symbol
 	case LENGTH:
 		// Pixel values are scaled so that the ratio

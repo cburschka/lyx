@@ -20,8 +20,6 @@
 
 #include <list>
 
-using std::list;
-
 ///
 class Undo {
 public:
@@ -62,7 +60,7 @@ public:
 class UndoStack{
 private:
 	///
-	typedef list<Undo*> Stakk;
+	typedef std::list<Undo*> Stakk;
 	///
 	Stakk stakk;
 	/// the maximum number of undo steps stored.

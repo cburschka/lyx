@@ -23,6 +23,7 @@
 #include "layout.h"
 #include "lyxfunc.h"
 
+using std::ostream;
 using std::endl;
 
 extern BufferView * current_view;
@@ -283,6 +284,12 @@ void InsetInclude::Read(LyXLex & lex)
 }
 
 
+bool InsetInclude::display() const 
+{
+	return !isInput();
+}
+
+
 string InsetInclude::getScreenLabel() const
 {
 	string temp;
@@ -300,6 +307,14 @@ string InsetInclude::getScreenLabel() const
 		temp+= contents;
 	}
 	return temp;
+}
+
+
+void InsetInclude::setContents(string const & c)
+{
+	InsetCommand::setContents(c);
+	filename = MakeAbsPath(contents, 
+			       OnlyPath(getMasterFilename())); 
 }
 
 

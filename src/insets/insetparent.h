@@ -18,8 +18,6 @@
 #include "insetcommand.h"
 #include "gettext.h"
 
-using std::ostream;
-
 class Buffer;
 
 /** Reference to the parent document.
@@ -34,13 +32,11 @@ public:
 	///
         InsetParent(string const & fn, Buffer * owner = 0);
 	/// 
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
         ///
         Inset * Clone() const { return new InsetParent(getContents()); }
     	///
-	string getScreenLabel() const {
-		return string(_("Parent:")) + getContents();
-	}
+	string getScreenLabel() const;
         ///
 	void Edit(BufferView *, int, int, unsigned int);
         ///

@@ -47,7 +47,9 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "WorkArea.h"
+#include "font.h"
 
+using std::pair;
 using std::for_each;
 using std::find_if;
 using std::endl;
@@ -935,7 +937,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
 		int box_x = 20; // LYX_PAPER_MARGIN;
-		box_x += font.textWidth(" wide-tab ", 10);
+		box_x += lyxfont::width(" wide-tab ", font);
 
 		int screen_first = screen->first;
 
@@ -944,7 +946,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 		    text->cursor.row->baseline
 		    && y + screen_first < text->cursor.y -
 		    text->cursor.row->baseline
-		    + font.maxAscent() * 1.2 + font.maxDescent() * 1.2) {
+		    + lyxfont::maxAscent(font) * 1.2 + lyxfont::maxDescent(font) * 1.2) {
 			toggleFloat();
 			selection_possible = false;
 			return;

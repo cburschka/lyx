@@ -24,6 +24,7 @@
 #include "gettext.h"
 #include "support/LAssert.h"
 
+using std::pair;
 using std::make_pair;
 using std::sort;
 using std::endl;

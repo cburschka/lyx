@@ -18,9 +18,7 @@
 
 #include <iosfwd>
 
-#include FORMS_H_LOCATION
 #include "LString.h"
-#include "debug.h"
 #include "language.h"
 #include "LColor.h"
 
@@ -36,8 +34,6 @@
 #ifdef OFF
 #undef OFF
 #endif
-
-using std::ostream;
 
 class LyXLex;
 
@@ -292,79 +288,38 @@ public:
 	LyXFont & lyxRead(LyXLex &);
  
 	/// Writes the changes from this font to orgfont in .lyx format in file
-	void lyxWriteChanges(LyXFont const & orgfont, ostream &) const;
+	void lyxWriteChanges(LyXFont const & orgfont, std::ostream &) const;
 
 	/** Writes the head of the LaTeX needed to change to this font.
 	    Writes to string, the head of the LaTeX needed to change
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(ostream &, LyXFont const & base,
+	int latexWriteStartChanges(std::ostream &, LyXFont const & base,
 				   LyXFont const & prev) const;
 
 	/** Writes tha tail of the LaTeX needed to chagne to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(ostream &, LyXFont const & base,
+	int latexWriteEndChanges(std::ostream &, LyXFont const & base,
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state
 	string stateText() const;
 
 	///
-	int maxAscent() const; 
-
-	///
-	int maxDescent() const;
-
-	///
-	int ascent(char c) const;
-
-	///
-	int descent(char c) const;
-
-	///
-	int width(char c) const;
-
-	///
-	int lbearing(char c) const;
-
-	///
-	int rbearing(char c) const;
-	
-	///
-	int textWidth(char const *s, int n) const;
-
-	///
-	int stringWidth(string const & s) const;
-
-	///
-	int signedStringWidth(string const & s) const;
-
-	/// Draws text and returns width of text
-	int drawText(char const *, int n, Pixmap, int baseline, int x) const;
-
-	///
-	int drawString(string const &, Pixmap pm, int baseline, int x) const;
-
-	///
 	LColor::color realColor() const;
 
 	///
-	XID getFontID() const {
-		return getXFontstruct()->fid;
-	}
-	
-	///
-	friend inline
+	friend
 	bool operator==(LyXFont const & font1, LyXFont const & font2) {
 		return font1.bits == font2.bits &&
 			font1.lang == font2.lang;
 	}
 
 	///
-	friend inline
+	friend 
 	bool operator!=(LyXFont const & font1, LyXFont const & font2) {
 		return font1.bits != font2.bits ||
 			font1.lang != font2.lang;
@@ -373,36 +328,37 @@ public:
 	/// compares two fonts, ignoring the setting of the Latex part.
 	bool equalExceptLatex(LyXFont const &) const;
 
+	/// Converts logical attributes to concrete shape attribute
+	LyXFont::FONT_SHAPE realShape() const;
 private:
 	///
 	struct FontBits {
-		bool operator==(FontBits const & fb1) const {
-			return fb1.family == family &&
-				fb1.series == series &&
-				fb1.shape == shape &&
-				fb1.size == size &&
-				fb1.color == color &&
-				fb1.emph == emph &&
-				fb1.underbar == underbar &&
-				fb1.noun == noun &&
-				fb1.latex == latex;
-		}
-		bool operator!=(FontBits const & fb1) const {
-			return !(fb1 == *this);
-		}
-		
+		///
+		bool operator==(FontBits const & fb1) const;
+		///
+		bool operator!=(FontBits const & fb1) const;
+		///
 		FONT_FAMILY family;
+		///
 		FONT_SERIES series;
+		///
 		FONT_SHAPE shape;
+		///
 		FONT_SIZE size;
+		///
 		LColor::color color;
+		///
 		FONT_MISC_STATE emph;
+		///
 		FONT_MISC_STATE underbar;
+		///
 		FONT_MISC_STATE noun;
+		///
 		FONT_MISC_STATE latex;
 	};
-
+	///
 	FontBits bits;
+	///
 	Language const * lang;
 	
 	/// Sane font
@@ -417,15 +373,11 @@ private:
 	/// Updates a misc setting according to request
 	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
 					 LyXFont::FONT_MISC_STATE org);
-
-	/// Converts logical attributes to concrete shape attribute
-	LyXFont::FONT_SHAPE realShape() const;
-
-	///
-	XFontStruct * getXFontstruct() const;
 };
 
-ostream & operator<<(ostream &, LyXFont::FONT_MISC_STATE);
+
+std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
+
 
 inline
 LyXFont::LyXFont()

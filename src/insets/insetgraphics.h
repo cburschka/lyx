@@ -21,8 +21,6 @@
 #include "vspace.h"
 #include "insets/BoundingBox.h"
 
-using std::ostream;
-
 struct FD_Graphics;
 
 ///
@@ -44,18 +42,18 @@ public:
 	///
 	EDITABLE Editable() const;
 	///
-	void Write(ostream &) const;
+	void Write(std::ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	int Latex(ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
 	///
-	int Linuxdoc(ostream &) const;
+	int Linuxdoc(std::ostream &) const;
 	///
-	int DocBook(ostream &) const;
+	int DocBook(std::ostream &) const;
 
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
