@@ -1,3 +1,8 @@
+2001-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (rfind): also test the first char in the
+	string and be sure that t >= 0.
+
 2001-01-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/tabular.C (ReadNew): new method

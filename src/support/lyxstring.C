@@ -1028,7 +1028,7 @@ lyxstring::size_type lyxstring::rfind(value_type c, size_type i) const
 	TestlyxstringInvariant(this);
 
 	size_type ii = min(rep->sz - 1, i);
-        for (size_type t = ii; t != 0; --t) {
+        for (size_type t = ii; t >= 0; --t) {
 	        if (rep->s[t] == c) return t;
 	}
         return npos;
