@@ -27,7 +27,7 @@
 using std::abs;
 
 LyXLength::LyXLength()
-	: val_(0), unit_(LyXLength::PT)
+	: val_(0), unit_(LyXLength::UNIT_NONE)
 {}
 
 
@@ -120,6 +120,12 @@ void LyXLength::unit(LyXLength::UNIT u)
 bool LyXLength::zero() const
 {
 	return val_ == 0.0;
+}
+
+
+bool LyXLength::empty() const
+{
+	return unit_ == LyXLength::UNIT_NONE;
 }
 
 

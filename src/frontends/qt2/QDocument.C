@@ -25,12 +25,14 @@
 #include "helper_funcs.h" // getSecond()
 #include "insets/insetquotes.h"
 #include "frnt_lang.h"
+#include "lyxrc.h" // defaultUnit
 #include "tex-strings.h" // tex_graphics
 #include "support/lstrings.h" // tostr()
 #include "support/filetools.h" // LibFileSearch()
 #include "lyxtextclasslist.h"
 #include "vspace.h"
 #include "bufferparams.h"
+#include "qt_helpers.h"
 
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
@@ -300,15 +302,11 @@ void QDocument::apply()
 	params.papersize2 =
 		dialog_->paperModule->papersizeCO->currentItem();
 
-	params.paperwidth =
-		LyXLength(dialog_->paperModule->paperwidthLE->text().toDouble(),
-			  dialog_->paperModule->paperwidthUnitCO->currentLengthItem()
-			).asString();
+	params.paperwidth = widgetsToLength(dialog_->paperModule->paperwidthLE,
+		dialog_->paperModule->paperwidthUnitCO);
 
-	params.paperheight =
-		LyXLength(dialog_->paperModule->paperheightLE->text().toDouble(),
-			  dialog_->paperModule->paperheightUnitCO->currentLengthItem()
-			).asString();
+	params.paperheight = widgetsToLength(dialog_->paperModule->paperheightLE,
+		dialog_->paperModule->paperheightUnitCO);
 
 	if (dialog_->paperModule->twoColumnCB->isChecked())
 		params.columns = 2;
@@ -337,40 +335,19 @@ void QDocument::apply()
 
 	MarginsModuleBase const * m(dialog_->marginsModule);
 
-	params.leftmargin =
-		LyXLength(m->innerLE->text().toDouble(),
-			  m->innerUnit->currentLengthItem()
-			  ).asString();
+	params.leftmargin = widgetsToLength(m->innerLE, m->innerUnit);
 
-	params.topmargin =
-		LyXLength(m->topLE->text().toDouble(),
-			  m->topUnit->currentLengthItem()
-			  ).asString();
+	params.topmargin = widgetsToLength(m->topLE, m->topUnit);
 
-	params.rightmargin =
-		LyXLength(m->outerLE->text().toDouble(),
-			  m->outerUnit->currentLengthItem()
-			  ).asString();
+	params.rightmargin = widgetsToLength(m->outerLE, m->outerUnit);
 
-	params.bottommargin =
-		LyXLength(m->bottomLE->text().toDouble(),
-			  m->bottomUnit->currentLengthItem()
-			  ).asString();
+	params.bottommargin = widgetsToLength(m->bottomLE, m->bottomUnit);
 
-	params.headheight =
-		LyXLength(m->headheightLE->text().toDouble(),
-			  m->headheightUnit->currentLengthItem()
-			  ).asString();
+	params.headheight = widgetsToLength(m->headheightLE, m->headheightUnit);
 
-	params.headsep =
-		LyXLength(m->headsepLE->text().toDouble(),
-			  m->headsepUnit->currentLengthItem()
-			  ).asString();
+	params.headsep = widgetsToLength(m->headsepLE, m->headsepUnit);
 
-	params.footskip =
-		LyXLength(m->footskipLE->text().toDouble(),
-			  m->footskipUnit->currentLengthItem()
-			  ).asString();
+	params.footskip = widgetsToLength(m->footskipLE, m->footskipUnit);
 }
 
 
@@ -399,6 +376,26 @@ void QDocument::update_contents()
 		return;
 
 	BufferParams const & params = controller().params();
+
+	// set the default unit
+	// FIXME: move to controller
+	LyXLength::UNIT defaultUnit = LyXLength::CM;
+	switch (lyxrc.default_papersize) {
+		case BufferParams::PAPER_DEFAULT: break;
+
+		case BufferParams::PAPER_USLETTER:
+		case BufferParams::PAPER_LEGALPAPER:
+		case BufferParams::PAPER_EXECUTIVEPAPER:
+			defaultUnit = LyXLength::IN;
+			break;
+
+		case BufferParams::PAPER_A3PAPER:
+		case BufferParams::PAPER_A4PAPER:
+		case BufferParams::PAPER_A5PAPER:
+		case BufferParams::PAPER_B5PAPER:
+			defaultUnit = LyXLength::CM;
+			break;
+	}
 
 	// preamble
 	QString preamble = params.preamble.c_str();
@@ -565,17 +562,12 @@ void QDocument::update_contents()
 	dialog_->paperModule->twoColumnCB->setChecked(
 		params.columns == 2);
 
-	dialog_->paperModule->paperwidthUnitCO->setCurrentItem(
-		LyXLength(params.paperwidth).unit());
 
-	dialog_->paperModule->paperwidthLE->setText(
-		tostr(LyXLength(params.paperwidth).value()).c_str());
+	lengthToWidgets(dialog_->paperModule->paperwidthLE,
+		dialog_->paperModule->paperwidthUnitCO, params.paperwidth, defaultUnit);
 
-	dialog_->paperModule->paperheightUnitCO->setCurrentItem(
-		LyXLength(params.paperheight).unit());
-
-	dialog_->paperModule->paperheightLE->setText(
-		tostr(LyXLength(params.paperheight).value()).c_str());
+	lengthToWidgets(dialog_->paperModule->paperheightLE,
+		dialog_->paperModule->paperheightUnitCO, params.paperheight, defaultUnit);
 
 	// margins
 
@@ -590,26 +582,26 @@ void QDocument::update_contents()
 	m->marginCO->setCurrentItem(item);
 	dialog_->setCustomMargins(item);
 
-	m->topUnit->setCurrentItem(LyXLength(params.topmargin).unit());
-	m->topLE->setText(tostr(LyXLength(params.topmargin).value()).c_str());
+	lengthToWidgets(m->topLE, m->topUnit,
+		params.topmargin, defaultUnit);
 
-	m->bottomUnit->setCurrentItem(LyXLength(params.bottommargin).unit());
-	m->bottomLE->setText(tostr(LyXLength(params.bottommargin).value()).c_str());
+	lengthToWidgets(m->bottomLE, m->bottomUnit,
+		params.bottommargin, defaultUnit);
 
-	m->innerUnit->setCurrentItem(LyXLength(params.leftmargin).unit());
-	m->innerLE->setText(tostr(LyXLength(params.leftmargin).value()).c_str());
+	lengthToWidgets(m->innerLE, m->innerUnit,
+		params.leftmargin, defaultUnit);
 
-	m->outerUnit->setCurrentItem(LyXLength(params.rightmargin).unit());
-	m->outerLE->setText(tostr(LyXLength(params.rightmargin).value()).c_str());
+	lengthToWidgets(m->outerLE, m->outerUnit,
+		params.rightmargin, defaultUnit);
 
-	m->headheightUnit->setCurrentItem(LyXLength(params.headheight).unit());
-	m->headheightLE->setText(tostr(LyXLength(params.headheight).value()).c_str());
+	lengthToWidgets(m->headheightLE, m->headheightUnit,
+		params.headheight, defaultUnit);
 
-	m->headsepUnit->setCurrentItem(LyXLength(params.headsep).unit());
-	m->headsepLE->setText(tostr(LyXLength(params.headsep).value()).c_str());
+	lengthToWidgets(m->headsepLE, m->headsepUnit,
+		params.headsep, defaultUnit);
 
-	m->footskipUnit->setCurrentItem(LyXLength(params.footskip).unit());
-	m->footskipLE->setText(tostr(LyXLength(params.footskip).value()).c_str());
+	lengthToWidgets(m->footskipLE, m->footskipUnit,
+		params.footskip, defaultUnit);
 }
 
 

@@ -24,6 +24,8 @@
 
 class ControlDocument;
 class QDocumentDialog;
+class LengthCombo;
+class  QLineEdit;
 
 class QDocument
 	: public Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> >

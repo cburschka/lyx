@@ -14,9 +14,14 @@
 #pragma implementation
 #endif
 
+#include "support/lstrings.h"
+ 
 #include "qt_helpers.h"
 
+#include "lengthcombo.h"
+ 
 #include <qglobal.h>
+#include <qlineedit.h>
 
 using std::pair;
 using std::make_pair;
@@ -48,4 +53,34 @@ pair<string,string> parseFontName(string const & name)
 	return make_pair(name.substr(idx + 1),
 			 name.substr(0, idx));
 #endif
+}
+
+ 
+string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
+{
+	QString length = input->text();
+	if (length.isEmpty())
+		return string();
+
+	// don't return unit-from-choice if the input(field) contains a unit
+	if (isValidGlueLength(length.latin1()))
+		return length.latin1();
+
+	LyXLength::UNIT unit = combo->currentLengthItem();
+
+	return LyXLength(length.toDouble(), unit).asString();
+}
+
+
+void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
+	string const & len, LyXLength::UNIT defaultUnit)
+{
+	if (len.empty()) {
+		// no length (UNIT_NONE)
+		combo->setCurrentItem(defaultUnit);
+		input->setText("");
+	} else {
+		combo->setCurrentItem(LyXLength(len).unit());
+		input->setText(tostr(LyXLength(len).value()).c_str());
+	}
 }
