@@ -41,7 +41,7 @@ void FormToc::build()
 		" " + getStringFromVector(controller().getTypes(), " | ") + " ";
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
-        // Manage the cancel/close button
+	// Manage the cancel/close button
 	bc().setCancel(dialog_->button_close);
 }
 
@@ -67,7 +67,7 @@ ButtonPolicy::SMInput FormToc::input(FL_OBJECT * ob, long)
 	if (ob != dialog_->choice_toc_type) {
 		updateType();
 	}
- 
+
 	updateContents();
 
 	return ButtonPolicy::SMI_VALID;
@@ -83,7 +83,7 @@ void FormToc::updateType()
 
 	// And select the correct one
 	string const type = toc::getType(controller().params().getCmdName());
-	
+
 	fl_set_choice(dialog_->choice_toc_type, 1);
 	for (int i = 1;
 	     i <= fl_get_choice_maxitems(dialog_->choice_toc_type); ++i) {
@@ -101,14 +101,14 @@ void FormToc::updateType()
 void FormToc::updateContents()
 {
 	char const * tmp = fl_get_choice_text(dialog_->choice_toc_type);
- 
+
 	if (!tmp) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,
 				    _("*** No Lists ***"));
 		return;
 	}
- 
+
 	string const type = frontStrip(strip(tmp));
 
 	Buffer::SingleList const contents = controller().getContents(type);
@@ -118,12 +118,12 @@ void FormToc::updateContents()
 		fl_add_browser_line(dialog_->browser_toc,
 				    _("*** No Lists ***"));
 	}
-	
+
 	// Check if all elements are the same.
 	if (toclist_ == contents) {
 		return;
 	}
-	
+
 	// List has changed. Update browser
 	toclist_ = contents;
 
@@ -135,12 +135,12 @@ void FormToc::updateContents()
 
 	Buffer::SingleList::const_iterator cit = toclist_.begin();
 	Buffer::SingleList::const_iterator end = toclist_.end();
-	
+
 	for (; cit != end; ++cit) {
 		string const line = string(4 * cit->depth, ' ') + cit->str;
 		fl_add_browser_line(dialog_->browser_toc, line.c_str());
 	}
-	
+
 	fl_set_browser_topline(dialog_->browser_toc, topline);
 	fl_select_browser_line(dialog_->browser_toc, line);
 }

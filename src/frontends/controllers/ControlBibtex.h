@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -31,11 +31,11 @@ public:
 	ControlBibtex(LyXView &, Dialogs &);
 	/// Browse for a file
 	string const Browse(string const &, string const &, string const &);
- 
+
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
-	/// 
+	///
 	virtual void applyParamsNoInset();
 };
 

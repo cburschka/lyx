@@ -8,9 +8,9 @@
 
 #ifndef QFLOATDIALOG_H
 #define QFLOATDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QFloatDialogBase.h"
 
 class QFloat;
@@ -32,6 +32,3 @@ private:
 };
 
 #endif // QFLOATDIALOG_H
-
-
-

@@ -197,4 +197,3 @@ FD_form_citation * FormCitation::build_citation()
   return fdui;
 }
 /*---------------------------------------*/
-

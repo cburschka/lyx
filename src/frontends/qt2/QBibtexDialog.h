@@ -8,9 +8,9 @@
 
 #ifndef QBIBTEXDIALOG_H
 #define QBIBTEXDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QBibtexDialogBase.h"
 
 class QBibtex;
@@ -27,9 +27,9 @@ protected slots:
 	virtual void addPressed();
 	virtual void deletePressed();
 	virtual void styleChanged(const QString &);
-	virtual void databaseChanged(); 
+	virtual void databaseChanged();
 
- 
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

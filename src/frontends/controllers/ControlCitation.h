@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -45,7 +45,7 @@ public:
 private:
 	/// create the InfoMap of keys and data
 	virtual void setDaughterParams();
-	/// 
+	///
 	virtual void clearDaughterParams();
 
 	/** disconnect from the inset when the Apply button is pressed.

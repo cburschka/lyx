@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -75,7 +75,7 @@ private:
   void moveFromActionToSearch();
   /// moves from Action to Edit "stage"
   void moveFromActionToEdit();
-  
+
   /// sort biblist
   void sortBibList(gint);
   /// update state of the buttons
@@ -110,7 +110,7 @@ private:
   void initWidgets();
   /// stores configuration of all non-0 member widgets
   void storeWidgets();
-  
+
   /** Which LyXFunc do we use?
       We could modify Dialogs to have a visible LyXFunc* instead and
       save a couple of bytes per dialog.
@@ -147,12 +147,12 @@ private:
   Gnome::PixButton * button_up_;
   Gnome::PixButton * button_down_;
   Gtk::CheckButton * button_regexp_;
-  
+
   Gtk::CList * clist_selected_;
   Gtk::CList * clist_bib_;
-  
+
   Gtk::Paned * paned_info_;
-  
+
   std::vector<string> bibkeys;
   ///
   std::vector<string> bibkeysInfo;

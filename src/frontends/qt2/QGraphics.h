@@ -15,14 +15,14 @@
 #endif
 
 #include "Qt2Base.h"
-#include "insets/insetgraphics.h" 
+#include "insets/insetgraphics.h"
 
 class ControlGraphics;
 class QGraphicsDialog;
 
 ///
 class QGraphics
-	: public Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > 
+	: public Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> >
 {
 public:
 	///
@@ -32,7 +32,7 @@ public:
 
 protected:
 	virtual bool isValid();
- 
+
 private:
 	/// Apply changes
 	virtual void apply();
@@ -42,15 +42,9 @@ private:
 	virtual void build_dialog();
 
 	/// browse for a file
-	void browse(); 
+	void browse();
 	/// get bounding box from file
-	void get(); 
+	void get();
 };
 
 #endif // QGRAPHICS_H
-
-
-
-
-
-

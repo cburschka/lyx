@@ -44,7 +44,7 @@ void FormThesaurus::build()
 
 	setPrehandler(dialog_->input_entry);
 	setPrehandler(dialog_->input_replace);
- 
+
 	// Manage the ok, apply and cancel/close buttons
 	bc().setCancel(dialog_->button_close);
 	bc().addReadOnly(dialog_->input_replace);
@@ -68,7 +68,7 @@ void FormThesaurus::update()
 void FormThesaurus::updateMeanings(string const & str)
 {
 	fl_clear_browser(dialog_->browser_meanings);
- 
+
 	fl_set_input(dialog_->input_entry, str.c_str());
 
 	fl_set_browser_topline(dialog_->browser_meanings, 1);
@@ -82,7 +82,7 @@ void FormThesaurus::updateMeanings(string const & str)
 	for (; cit != end; ++cit) {
 		fl_add_browser_line(dialog_->browser_meanings,
 				    cit->first.c_str());
-		
+
 		vector<string> const & tmpvec = cit->second;
 		vector<string>::const_iterator cit2 = tmpvec.begin();
 		vector<string>::const_iterator end2 = tmpvec.end();
@@ -93,7 +93,7 @@ void FormThesaurus::updateMeanings(string const & str)
 					    ent.c_str());
 		}
 	}
- 
+
 	fl_unfreeze_form(form());
 	fl_redraw_form(form());
 }
@@ -126,12 +126,12 @@ void FormThesaurus::setReplace(string const & templ, string const & nstr)
 	} else if (templ.size() > 0 && isupper(templ[0])) {
 		bool rest_lower = true;
 		string::const_iterator cit2 = beg + 1;
-		
+
 		for (; cit2 != end; ++cit2) {
 			if (isupper(*cit2))
 				rest_lower = false;
 		}
-		
+
 		if (rest_lower) {
 			str = lowercase(nstr);
 			str[0] = uppercase(nstr[0]);
@@ -146,7 +146,7 @@ ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 {
 	if (obj == dialog_->input_entry) {
 		string s = strip(frontStrip(fl_get_input(dialog_->input_entry)));
-		 
+
 		updateMeanings(s);
 
 		if (s.empty()) {

@@ -31,16 +31,16 @@ void Timeout::Pimpl::reset()
 
 bool Timeout::Pimpl::running() const
 {
-        return running_;
+	return running_;
 }
- 
+
 void Timeout::Pimpl::start()
 {
 	if (conn_.connected()) {
 		lyxerr << "Timeout::start: already running!" << std::endl;
 		stop();
 	}
-	
+
 	conn_ = Gnome::Main::timeout.connect(
 			 SigC::slot(this, &Timeout::Pimpl::timeoutEvent),
 			 owner_->timeout_ms

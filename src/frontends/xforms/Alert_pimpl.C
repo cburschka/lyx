@@ -13,13 +13,13 @@
 #endif
 
 #include "Alert.h"
-#include "Alert_pimpl.h" 
+#include "Alert_pimpl.h"
 #include "xforms_helpers.h"
 #include "gettext.h"
 
 #include <algorithm>
 #include FORMS_H_LOCATION
- 
+
 using std::pair;
 using std::make_pair;
 
@@ -43,10 +43,10 @@ int askConfirmation_pimpl(string const & s1, string const & s2, string const & s
 	fl_set_choices_shortcut(scex(_("Yes|Yy#y")),
 				scex(_("No|Nn#n")),
 				scex(_("Cancel|^[")));
-        return fl_show_choice(s1.c_str(), s2.c_str(), s3.c_str(), 
+	return fl_show_choice(s1.c_str(), s2.c_str(), s3.c_str(),
 			      3, idex(_("Yes|Yy#y")),
 			      idex(_("No|Nn#n")),
-                              idex(_("Cancel|^[")), 3);
+			      idex(_("Cancel|^[")), 3);
 }
 
 

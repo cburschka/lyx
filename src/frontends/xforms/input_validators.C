@@ -107,7 +107,7 @@ void fl_print_range_filter(FL_OBJECT * ob,
 		   That might be acceptable if there was a "to_page"
 		   entry however if you start making a page range in the "from"
 		   field you can do it all in the "from" field.  That is, a
-		   range in the "from" field immmediately blanks the "to" 
+		   range in the "from" field immmediately blanks the "to"
 		   field. */
 	}
 	return FL_INVALID|FL_RINGBELL;
@@ -139,7 +139,7 @@ void fl_print_range_filter(FL_OBJECT * ob,
 		}
 	}
 }
-#endif 
+#endif
 
 #if defined(__cplusplus)
 }

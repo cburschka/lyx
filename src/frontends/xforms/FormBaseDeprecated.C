@@ -84,7 +84,7 @@ void FormBaseDeprecated::show()
 		build();
 
 		bc().refresh();
- 
+
 		// work around dumb xforms sizing bug
 		minw_ = form()->w;
 		minh_ = form()->h;
@@ -98,15 +98,15 @@ void FormBaseDeprecated::show()
 
 	if (form()->visible) {
 		fl_raise_form(form());
- 		/* This XMapWindow() will hopefully ensure that
- 		 * iconified dialogs are de-iconified. Mad props
- 		 * out to those crazy Xlib guys for forgetting a
- 		 * XDeiconifyWindow(). At least WindowMaker, when
- 		 * being notified of the redirected MapRequest will
- 		 * specifically de-iconify. From source, fvwm2 seems
- 		 * to do the same.
- 		 */
- 		XMapWindow(fl_get_display(), form()->window);
+		/* This XMapWindow() will hopefully ensure that
+		 * iconified dialogs are de-iconified. Mad props
+		 * out to those crazy Xlib guys for forgetting a
+		 * XDeiconifyWindow(). At least WindowMaker, when
+		 * being notified of the redirected MapRequest will
+		 * specifically de-iconify. From source, fvwm2 seems
+		 * to do the same.
+		 */
+		XMapWindow(fl_get_display(), form()->window);
 	} else {
 		connect();
 

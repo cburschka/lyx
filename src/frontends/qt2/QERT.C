@@ -18,7 +18,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
- 
+
 QERT::QERT(ControlERT & c)
 	: base_class(c, _("LaTeX ERT"))
 {
@@ -33,7 +33,7 @@ void QERT::build_dialog()
 	bc().setCancel(dialog_->closePB);
 }
 
- 
+
 void QERT::apply()
 {
 	if (dialog_->openRB->isChecked())
@@ -44,16 +44,16 @@ void QERT::apply()
 		controller().params().status = InsetERT::Collapsed;
 }
 
- 
+
 void QERT::update_contents()
 {
 	QRadioButton * rb;
- 
+
 	switch (controller().params().status) {
 		case InsetERT::Open: rb = dialog_->openRB; break;
 		case InsetERT::Inlined: rb = dialog_->inlineRB; break;
 		case InsetERT::Collapsed: rb = dialog_->collapsedRB; break;
-	} 
-		 
+	}
+
 	rb->setChecked(true);
 }

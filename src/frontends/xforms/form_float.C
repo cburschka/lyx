@@ -95,4 +95,3 @@ FD_form_float * FormFloat::build_float()
   return fdui;
 }
 /*---------------------------------------*/
-

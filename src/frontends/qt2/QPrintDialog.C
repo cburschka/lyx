@@ -40,11 +40,11 @@ void QPrintDialog::change_adaptor()
 {
 	form_->changed();
 }
- 
- 
+
+
 void QPrintDialog::browseClicked()
 {
-	QString file = QFileDialog::getOpenFileName(QString::null, 
+	QString file = QFileDialog::getOpenFileName(QString::null,
 		_("PostScript files (*.ps)"), this, 0, _("Select a file to print to"));
 	if (!file.isNull()) {
 		fileED->setText(file);
@@ -52,7 +52,7 @@ void QPrintDialog::browseClicked()
 	}
 }
 
- 
+
 void QPrintDialog::fileChanged()
 {
 	if (!fileED->text().isEmpty())
@@ -60,28 +60,28 @@ void QPrintDialog::fileChanged()
 	form_->changed();
 }
 
- 
+
 void QPrintDialog::copiesChanged(int i)
 {
 	collateCB->setEnabled(i != 1);
 	form_->changed();
 }
 
- 
+
 void QPrintDialog::printerChanged()
 {
 	printerRB->setChecked(true);
 	form_->changed();
 }
 
- 
+
 void QPrintDialog::pagerangeChanged()
 {
 	int from = strToUnsignedInt(fromED->text().latin1());
 	int to = strToUnsignedInt(toED->text().latin1());
- 
+
 	if (!toED->text().isEmpty() && from > to)
 		fromED->setText(toED->text());
- 
+
 	form_->changed();
 }

@@ -27,10 +27,10 @@
 #include "delim.xbm"
 #include "delim0.xpm"
 
-static int const delim_rversion[] = { 
+static int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
 	13,13,14,15,16,17,19,19,20,21,22,23 };
- 
+
 static char const * delim_values[] = {
 	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
 	"[", "]", "lfloor", "rfloor", "updownarrow", "Updownarrow",
@@ -40,7 +40,7 @@ static char const * delim_values[] = {
 
 using std::endl;
 
-FormMathsDelim::FormMathsDelim(LyXView * lv, Dialogs * d, 
+FormMathsDelim::FormMathsDelim(LyXView * lv, Dialogs * d,
 			       FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Delimiters"), false)
 {}
@@ -49,7 +49,7 @@ FormMathsDelim::FormMathsDelim(LyXView * lv, Dialogs * d,
 FL_FORM * FormMathsDelim::form() const
 {
 	if (dialog_.get())
- 		return dialog_->form;
+		return dialog_->form;
 	return 0;
 }
 
@@ -57,13 +57,13 @@ FL_FORM * FormMathsDelim::form() const
 void FormMathsDelim::build()
 {
 	dialog_.reset(build_maths_delim());
-	
+
 	fl_set_button(dialog_->radio_left, 1);
 	fl_set_pixmap_data(dialog_->button_pix, const_cast<char**>(delim0));
 	dialog_->radio_left->u_ldata = 0;
 	dialog_->radio_right->u_ldata = 1;
 	dialog_->radio_both->u_ldata = 2;
- 
+
 	fl_set_bmtable_data(dialog_->bmtable, 6, 4,
 			    delim_width, delim_height, delim_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable, 23);
@@ -101,7 +101,7 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 	int const button = fl_get_bmtable_numb(dialog_->bmtable);
 	bool const both = (button == FL_MIDDLE_MOUSE ||
 			   fl_get_button(dialog_->radio_both) != 0);
-	
+
 	if (i >= 0) {
 		if (side || (button == FL_RIGHT_MOUSE))
 			right = i;
@@ -111,14 +111,14 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 				right = delim_rversion[i];
 		}
 	}
- 
+
 	Pixmap p1, p2;
- 
+
 	p1 = fl_get_pixmap_pixmap(dialog_->button_pix, &p1, &p2);
 	fl_draw_bmtable_item(dialog_->bmtable, left, p1, 0, 0);
 	fl_draw_bmtable_item(dialog_->bmtable, right, p1, 16, 0);
 	fl_redraw_object(dialog_->button_pix);
-	
+
 	dialog_->radio_left->u_ldata  = left;
 	dialog_->radio_right->u_ldata = right;
 

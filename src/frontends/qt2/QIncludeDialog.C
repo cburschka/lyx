@@ -13,13 +13,13 @@
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
-#include "LString.h" 
- 
+#include "LString.h"
+
 #include "QIncludeDialog.h"
-#include "ControlInclude.h" 
+#include "ControlInclude.h"
 #include "Dialogs.h"
 #include "QInclude.h"
-#include "debug.h" 
+#include "debug.h"
 
 QIncludeDialog::QIncludeDialog(QInclude * form)
 	: QIncludeDialogBase(0, 0, false, 0),
@@ -31,13 +31,13 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QIncludeDialog::change_adaptor()
 {
 	form_->changed();
 }
 
- 
+
 void QIncludeDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -53,19 +53,19 @@ void QIncludeDialog::typeChanged(int v)
 			visiblespaceCB->setEnabled(false);
 			visiblespaceCB->setChecked(false);
 			break;
-		default: 
+		default:
 			visiblespaceCB->setEnabled(true);
 			break;
-	} 
+	}
 }
 
- 
+
 void QIncludeDialog::loadClicked()
 {
 	form_->load();
 }
 
- 
+
 void QIncludeDialog::browseClicked()
 {
 	form_->browse();

@@ -8,7 +8,7 @@
 
 #ifndef QBIBITEMDIALOG_H
 #define QBIBITEMDIALOG_H
- 
+
 #include "ui/QBibitemDialogBase.h"
 
 class QBibitem;
@@ -22,7 +22,7 @@ public:
 protected slots:
 	virtual void change_adaptor();
 
- 
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

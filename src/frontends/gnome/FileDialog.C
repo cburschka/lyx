@@ -1,12 +1,12 @@
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * ================================================= 
+ * =================================================
  *
- * \author Baruch Even 
+ * \author Baruch Even
  **/
 
 #ifdef __GNUG__
@@ -40,7 +40,7 @@ public:
 	void button_clicked(bool canceled);
 	void ok_clicked()     { button_clicked(false); }
 	void cancel_clicked() { button_clicked(true); }
-	
+
 private:
 	Gtk::FileSelection sel_;
 	bool modal_;
@@ -48,11 +48,11 @@ private:
 };
 
 FileDialog::Private::Private(string const & title)
-	: sel_(title), modal_(false) 
+	: sel_(title), modal_(false)
 {
-	sel_.get_ok_button()->clicked.connect(slot(this, 
+	sel_.get_ok_button()->clicked.connect(slot(this,
 			&FileDialog::Private::ok_clicked));
-	sel_.get_cancel_button()->clicked.connect(slot(this, 
+	sel_.get_cancel_button()->clicked.connect(slot(this,
 			&FileDialog::Private::cancel_clicked));
 }
 
@@ -63,7 +63,7 @@ string const FileDialog::Private::exec()
 	sel_.show();
 	Gnome::Main::run();
 	// Find if its canceled or oked and return as needed.
-	
+
 	if (canceled_)
 		return string();
 	else
@@ -79,7 +79,7 @@ void FileDialog::Private::button_clicked(bool canceled)
 
 // FileDialog
 
-FileDialog::FileDialog(LyXView * lv, string const & title, kb_action a, 
+FileDialog::FileDialog(LyXView * lv, string const & title, kb_action a,
 		Button /*b1*/, Button /*b2*/)
 	: private_(new Private(title))
 	, lv_(lv), title_(title), success_(a)
@@ -94,8 +94,8 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const 
-FileDialog::Select(string const & path, string const & mask, 
+FileDialog::Result const
+FileDialog::Select(string const & path, string const & mask,
 		string const & suggested)
 {
 	// For some reason we need to ignore the asynchronous method...
@@ -108,14 +108,14 @@ FileDialog::Select(string const & path, string const & mask,
 	}
 #endif
 	lyxerr << "Synchronous file dialog." << std::endl;
-	
+
 	lyxerr << "Path: " << path << "\nMask: " << mask << "\nSuggested: " << suggested << std::endl;
-	
+
 	string filter = mask;
 	rsplit(mask, filter, '|');
 	private_->set_complete(mask);
 	private_->set_filename(path+suggested);
-	
+
 	lv_->prohibitInput();
 	string const filename = private_->exec();
 	lv_->allowInput();

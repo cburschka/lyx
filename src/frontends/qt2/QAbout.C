@@ -13,12 +13,12 @@
 #include "debug.h"
 #include "gettext.h"
 #include "QAboutDialog.h"
- 
+
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qtextview.h>
 #include "QtLyXView.h"
- 
+
 #include "ButtonControllerBase.h"
 #include "Qt2BC.h"
 #include "ControlAboutlyx.h"
@@ -28,7 +28,7 @@ using std::getline;
 
 typedef Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> > base_class;
 
-QAbout::QAbout(ControlAboutlyx & c) 
+QAbout::QAbout(ControlAboutlyx & c)
 	: base_class(c, _("About LyX"))
 {
 }
@@ -46,16 +46,16 @@ void QAbout::build_dialog()
 	dialog_->copyright->append("\n");
 	dialog_->copyright->append(controller().getDisclaimer().c_str());
 
-	dialog_->versionLA->setText(controller().getVersion().c_str()); 
- 
+	dialog_->versionLA->setText(controller().getVersion().c_str());
+
 	stringstream in;
 	controller().getCredits(in);
 
 	istringstream ss(in.str().c_str());
- 
+
 	string s;
 	string out;
- 
+
 	while (getline(ss, s)) {
 		if (prefixIs(s, "@b"))
 			out += "<b>" + s.substr(2) + "</b>";
@@ -65,9 +65,9 @@ void QAbout::build_dialog()
 			out += s;
 		out += "<br>";
 	}
- 
+
 	dialog_->creditsTV->setText(out.c_str());
- 
+
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->closePB);
 	bc().refresh();

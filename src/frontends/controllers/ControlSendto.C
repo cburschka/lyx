@@ -106,7 +106,7 @@ void ControlSendto::apply()
 {
 	if (!lv_.view()->available())
 		return;
-   
+
 	view().apply();
 
 	if (command_.empty() || !format_)
@@ -126,7 +126,7 @@ void ControlSendto::apply()
 
 	} else {
 		Exporter::Export(lv_.buffer(), format_->name(), true, filename);
-  	}
+	}
 
 	// Substitute $$FName for filename
 	string command = command_;
@@ -138,4 +138,3 @@ void ControlSendto::apply()
 	Systemcall call;
 	call.startscript(Systemcall::DontWait, command);
 }
-

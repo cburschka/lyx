@@ -30,7 +30,7 @@ FormMathsSpace::FormMathsSpace(LyXView * lv, Dialogs * d,
 FL_FORM * FormMathsSpace::form() const
 {
 	if (dialog_.get())
- 		return dialog_->form;
+		return dialog_->form;
 	return 0;
 }
 
@@ -61,7 +61,7 @@ void FormMathsSpace::apply()
 bool FormMathsSpace::input(FL_OBJECT *, long data)
 {
 	space_ = -1;
- 
+
 	if (data >= 0 && data < 6) {
 		space_ = short(data);
 		apply();

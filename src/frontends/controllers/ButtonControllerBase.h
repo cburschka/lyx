@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -78,7 +78,7 @@ protected:
 	///
 	string cancel_label_;
 	///
-	string close_label_;	
+	string close_label_;
 };
 
 #endif // BUTTONCONTROLLERBASE_H

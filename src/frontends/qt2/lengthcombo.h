@@ -10,10 +10,10 @@
 #define LENGTHCOMBO_H
 
 #include <config.h>
- 
-#include <qcombobox.h> 
- 
-#include "vspace.h" 
+
+#include <qcombobox.h>
+
+#include "vspace.h"
 
 /**
  * A combo box for selecting LyXLength::UNIT types.
@@ -25,10 +25,10 @@ public:
 
 	/// set the current item
 	virtual void setCurrentItem(LyXLength::UNIT unit);
- 
+
 	/// get the current item
 	LyXLength::UNIT currentLengthItem() const;
- 
+
 protected slots:
 	virtual void has_activated(int index);
 

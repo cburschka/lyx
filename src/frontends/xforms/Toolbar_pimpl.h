@@ -37,7 +37,7 @@ public:
 	Pimpl(LyXView * o, int x, int y);
 	///
 	~Pimpl();
-	
+
 	/// (re)sets the toolbar
 	void set(bool doingmain = false);
 
@@ -46,13 +46,13 @@ public:
 	*/
 	void edit();
 	/// add a new button to the toolbar.
-    	void add(int, bool doclean = true);
+	void add(int, bool doclean = true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar
-        void activate();
+	void activate();
 	/// deactivates the toolbar
-        void deactivate();
+	void deactivate();
 	/// update the state of the icons
 	void update();
 
@@ -65,7 +65,7 @@ public:
 	/// Erase the layout list
 	void clearLayoutList();
 	/// the non-static version of layoutSelectedCB
-	void layoutSelected(); 
+	void layoutSelected();
 
 	///
 	struct toolbarItem

@@ -9,7 +9,7 @@
 #ifndef EMPTYTABLE_H
 #define EMPTYTABLE_H
 
-#include <qpainter.h> 
+#include <qpainter.h>
 #include "qttableview.h"
 
 /**
@@ -20,17 +20,17 @@ class EmptyTable : public QtTableView {
 	Q_OBJECT
 public:
 	EmptyTable(QWidget * parent = 0, const char * name = 0);
-	
+
 	~EmptyTable() {};
 
 	virtual QSize sizeHint() const;
- 
+
 public slots:
-	/// set the number of columns in the table and emit colsChanged() signal 
+	/// set the number of columns in the table and emit colsChanged() signal
 	void setNumberColumns(int nr_cols);
-	/// set the number of rows in the table and emit rowsChanged() signal 
+	/// set the number of rows in the table and emit rowsChanged() signal
 	void setNumberRows(int nr_rows);
- 
+
 signals:
 	/// the number of columns changed
 	void colsChanged(int);
@@ -41,9 +41,9 @@ protected:
 	/// fill in a cell
 	virtual void paintCell(class QPainter *, int, int);
 	virtual void mouseMoveEvent(QMouseEvent *);
-	
+
 private:
-	/// number of current columns 
+	/// number of current columns
 	unsigned int cols;
 	/// number of current rows
 	unsigned int rows;

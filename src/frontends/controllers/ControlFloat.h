@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2001 The LyX Team.
  *
  *======================================================
@@ -38,14 +38,14 @@ struct FloatParams {
 
 
 inline
-bool operator==(FloatParams const & p1, FloatParams const & p2) 
+bool operator==(FloatParams const & p1, FloatParams const & p2)
 {
 	return p1.placement == p2.placement && p1.allow_here_definitely == p2.allow_here_definitely;
 }
 
 
 inline
-bool operator!=(FloatParams const & p1, FloatParams const & p2) 
+bool operator!=(FloatParams const & p1, FloatParams const & p2)
 {
 	return !(p1 == p2);
 }
@@ -60,7 +60,7 @@ public:
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
-	/// 
+	///
 	virtual void applyParamsNoInset();
 	/// get the parameters from the string passed to createInset.
 	virtual FloatParams const getParams(string const &)

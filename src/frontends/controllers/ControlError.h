@@ -2,7 +2,7 @@
 /*
  * \file ControlError.h
  * This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -35,7 +35,7 @@ public:
 private:
 	/// not needed.
 	virtual void applyParamsToInset() {}
-	/// 
+	///
 	virtual void applyParamsNoInset() {}
 	/// get the parameters from the string passed to createInset.
 	virtual string const getParams(string const &) { return string(); }

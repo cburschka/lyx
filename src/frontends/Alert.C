@@ -11,12 +11,12 @@
 #include "Alert.h"
 
 #include "debug.h"
-#include "lyxrc.h" 
- 
+#include "lyxrc.h"
+
 #include "Alert_pimpl.h"
 
 #include <cerrno>
- 
+
 using std::endl;
 using std::pair;
 using std::make_pair;
@@ -28,7 +28,7 @@ void Alert::alert(string const & s1, string const & s2, string const & s3)
 		lyxerr << "------------------------------" << endl
 		       << s1 << endl << s2 << endl << s3 << endl
 		       << "------------------------------" << endl;
-	} else { 
+	} else {
 		alert_pimpl(s1, s2, s3);
 	}
 }

@@ -41,7 +41,7 @@ void FormTabularCreate::build()
 	fl_set_slider_precision(dialog_->slider_rows, 0);
 	fl_set_slider_precision(dialog_->slider_columns, 0);
 
-        // Manage the ok, apply and cancel/close buttons
+	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);

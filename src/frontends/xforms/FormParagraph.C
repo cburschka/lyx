@@ -120,7 +120,7 @@ void FormParagraph::build()
 			  "| Medskip | Bigskip | VFill | Length "));
 	fl_addto_choice(dialog_->choice_space_below,
 			_(" None | Defskip | Smallskip "
-			  "| Medskip | Bigskip | VFill | Length ")); 
+			  "| Medskip | Bigskip | VFill | Length "));
 
 	fl_addto_choice(dialog_->choice_linespacing,
 			_(" Default | Single | OneHalf | Double | Other "));
@@ -179,7 +179,7 @@ void FormParagraph::build()
 	bc_.addReadOnly(dialog_->input_space_below);
 	bc_.addReadOnly(dialog_->check_space_below);
 	bc_.addReadOnly(dialog_->choice_linespacing);
-	bc_.addReadOnly(dialog_->input_linespacing); 
+	bc_.addReadOnly(dialog_->input_linespacing);
 	bc_.addReadOnly(dialog_->check_noindent);
 	bc_.addReadOnly(dialog_->input_labelwidth);
 }
@@ -251,7 +251,7 @@ void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 		fl_set_choice(choice_type, 1);
 }
 
-} // namespace anon 
+} // namespace anon
 
 
 void FormParagraph::apply()
@@ -290,7 +290,7 @@ void FormParagraph::apply()
 		align = LYX_ALIGN_RIGHT;
 	else if (fl_get_button(dialog_->radio_align_center))
 		align = LYX_ALIGN_CENTER;
-	else 
+	else
 		align = LYX_ALIGN_BLOCK;
 
 	string const labelwidthstring =
@@ -327,7 +327,7 @@ void FormParagraph::apply()
 			   align, labelwidthstring, noindent);
 
 	// Actually apply these settings
-	lv_->view()->update(text, 
+	lv_->view()->update(text,
 			    BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 	lv_->buffer()->markDirty();
 	setMinibuffer(lv_, _("Paragraph layout set"));
@@ -391,7 +391,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 	fl_set_button(check_keep, space.keep());
 }
 
-} // namespace anon 
+} // namespace anon
 
 
 void FormParagraph::update()
@@ -485,13 +485,13 @@ void FormParagraph::update()
 			     dialog_->input_space_above,
 			     dialog_->choice_value_space_above,
 			     dialog_->check_space_above);
-			     
+
 	setWidgetsFromVSpace(par_->params().spaceBottom(),
 			     dialog_->choice_space_below,
 			     dialog_->input_space_below,
 			     dialog_->choice_value_space_below,
 			     dialog_->check_space_below);
-		     
+
 	fl_set_button(dialog_->check_noindent,
 		      par_->params().noindent());
 }
@@ -528,7 +528,7 @@ void synchronizeSpaceWidgets(FL_OBJECT * choice_type,
 		}
 	}
 }
- 
+
 bool validSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 {
 	// Paranoia check!
@@ -546,7 +546,7 @@ bool validSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 
 } // namespace anon
 
- 
+
 bool FormParagraph::input(FL_OBJECT * ob, long)
 {
 	clearMessage();

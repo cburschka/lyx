@@ -8,9 +8,9 @@
 
 #ifndef QERRORDIALOG_H
 #define QERRORDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QErrorDialogBase.h"
 
 class QError;

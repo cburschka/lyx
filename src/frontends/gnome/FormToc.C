@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -56,10 +56,10 @@ FormToc::~FormToc()
 void FormToc::showInset( InsetCommand * const inset )
 {
   if ( dialog_!=0 || inset == 0 ) return;
-  
+
   inset_ = inset;
   ih_ = inset_->hideDialog.connect(SigC::slot(this, &FormToc::hide));
-  
+
   params = inset->params();
   show();
 }
@@ -68,7 +68,7 @@ void FormToc::showInset( InsetCommand * const inset )
 void FormToc::createInset( string const & arg )
 {
   if( dialog_!=0 ) return;
-  
+
   params.setFromString( arg );
   show();
 }
@@ -95,7 +95,7 @@ void FormToc::show()
       Gtk::MenuItem * e;
 
       choice_->get_menu()->items().clear();
-      
+
       e = manage( new Gtk::MenuItem(_("Table of Contents")) );
       e->activate.connect(SigC::bind<Buffer::TocType>(SigC::slot(this, &FormToc::changeList), Buffer::TOC_TOC));
       choice_->get_menu()->append( *e );
@@ -115,7 +115,7 @@ void FormToc::show()
       // wrap buttons and connect slots
       b_refresh = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_refresh") ) );
       b_close   = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_close") ) );
-      
+
       b_refresh->clicked.connect(SigC::bind<bool>(SigC::slot(this, &FormToc::updateSlot),false));
       b_close->clicked.connect(dialog_->destroy.slot());
       dialog_->destroy.connect(SigC::slot(this, &FormToc::free));
@@ -152,14 +152,14 @@ void FormToc::updateSlot(bool)
       list_->items().push_back( *l );
       return;
     }
-  
-  
+
+
   if (dialog_ != 0 &&
       lv_->view()->available())
     {
 
       int selection = 0;
-      
+
       if( params.getCmdName() == "tableofcontents" )
 	{
 	  type = Buffer::TOC_TOC;
@@ -188,7 +188,7 @@ void FormToc::updateSlot(bool)
       ignore_callback_ = true;
       choice_->set_history(selection);
       ignore_callback_ = false;
-      
+
       list_->items().clear();
 
       dialog_->set_title(wintitle);
@@ -212,7 +212,7 @@ void FormToc::updateSlot(bool)
 
 void FormToc::apply(Buffer::TocItem tg)
 {
-#if 0  
+#if 0
   // Doesn't compile anymore...
   if (!lv_->view()->available()) return;
 
@@ -264,4 +264,3 @@ void FormToc::free()
       ih_.disconnect();
     }
 }
- 

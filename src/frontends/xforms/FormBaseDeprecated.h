@@ -124,7 +124,7 @@ protected: // methods
 	/// Redraw connection.
 	SigC::Connection r_;
 	/// dialog title, displayed by WM.
-  	string title_;
+	string title_;
 
 private:
 	/// The dialog's minimum allowable dimensions.

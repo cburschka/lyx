@@ -10,21 +10,21 @@
 #define QURL_H
 
 #include "Qt2Base.h"
- 
+
 class ControlUrl;
 class QURLDialog;
 
 class QURL :
-	public Qt2CB<ControlUrl, Qt2DB<QURLDialog> > 
+	public Qt2CB<ControlUrl, Qt2DB<QURLDialog> >
 {
-	friend class QURLDialog; 
-public: 
+	friend class QURLDialog;
+public:
 	QURL(ControlUrl & c);
 
 protected:
 	virtual bool isValid();
- 
-private: 
+
+private:
 	/// apply dialog
 	virtual void apply();
 	/// build dialog

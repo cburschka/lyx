@@ -14,8 +14,8 @@
 
 #include <qapplication.h>
 #include <qpainter.h>
- 
-#include "QtLyXView.h" 
+
+#include "QtLyXView.h"
 #include "XFormsView.h"
 #include "GUIRunTime.h"
 #include "debug.h"
@@ -47,7 +47,7 @@ extern bool finished;
 int GUIRunTime::initApplication(int & argc, char * argv[])
 {
 	int const xforms_include_version = FL_INCLUDE_VERSION;
- 
+
 	// Check the XForms version in the forms.h header against
 	// the one in the libforms. If they don't match quit the
 	// execution of LyX. Better with a clean fast exit than
@@ -69,8 +69,8 @@ int GUIRunTime::initApplication(int & argc, char * argv[])
 	return 0;
 }
 
- 
-void GUIRunTime::processEvents() 
+
+void GUIRunTime::processEvents()
 {
 	qApp->processEvents();
 }
@@ -97,14 +97,14 @@ LyXView * GUIRunTime::createMainView(int w, int h)
 	return new XFormsView(w, h);
 }
 
- 
+
 // Called by the graphics cache to connect the appropriate frontend
 // image loading routines to the LyX kernel.
 void GUIRunTime::initialiseGraphics()
 {
 	using namespace grfx;
 	using SigC::slot;
-    
+
 #if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
 	// connect the image loader based on the xforms library
 	GImage::newImage.connect(slot(&xformsGImage::newImage));
@@ -126,25 +126,25 @@ Display * GUIRunTime::x11Display()
 
 int GUIRunTime::x11Screen()
 {
-	//return p.device()->x11Screen(); 
+	//return p.device()->x11Screen();
 	return fl_screen;
 }
 
 
 Colormap GUIRunTime::x11Colormap()
 {
-	//return p.device()->x11Colormap(); 
+	//return p.device()->x11Colormap();
 	return fl_state[fl_get_vclass()].colormap;
 }
 
- 
-int GUIRunTime::x11VisualDepth() 
+
+int GUIRunTime::x11VisualDepth()
 {
 	//return p.device()->x11Depth();
 	return fl_get_visual_depth();
 }
 
- 
+
 float GUIRunTime::getScreenDPI()
 {
 	Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
@@ -152,8 +152,8 @@ float GUIRunTime::getScreenDPI()
 		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2;
 }
 
- 
-void GUIRunTime::setDefaults() 
+
+void GUIRunTime::setDefaults()
 {
 	FL_IOPT cntl;
 	cntl.buttonFontSize = FL_NORMAL_SIZE;

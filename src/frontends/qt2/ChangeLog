@@ -1,3 +1,7 @@
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* most files: ws cleanup
+
 2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* docygen fixes.
@@ -30,20 +34,20 @@
 	* ui/moc/Makefile.am: fix compile
 
 	* xforms/: compile the necessary files via symlinks
- 
+
 	* QPreambleDialog.C: new systemcall interface
 
 	* Timeout_pimpl.h:
 	* Timeout_pimpl.C: add running()
 
-	* Dialogs.C: add init graphics, and doc/par xforms forms 
- 
+	* Dialogs.C: add init graphics, and doc/par xforms forms
+
 2002-02-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QToc.C: fix crash
- 
+
 2002-02-06  Edwin Leuven  <leuven@fee.uva.nl>
- 
+
 	* QGraphics.C: compilation fix
 	* QTexinfoDialog.C:
 	* QTexinfoDialog.h:
@@ -99,7 +103,7 @@
 	* Makefile.am:
 	* Makefile.dialogs: don't compile QPar/Doc
 	  for now, as they cause problems
- 
+
 2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -109,7 +113,7 @@
 	* QTocDialog.h:
 	* QTocDialog.C:
 	* ui/QTocDialog.ui: resuscitate TOC dialog
- 
+
 2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QCitation.h:
@@ -132,15 +136,15 @@
 
 2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
 
-	* Makefile.am: 
+	* Makefile.am:
 	* FileDialog_private.h: fix compile
 
 	* QThesaurus.h:
 	* QThesaurus.C:
 	* QThesaurusDialog.h:
 	* QThesaurusDialog.C:
-	* ui/QThesaurusDialog.ui: new thesaurus code 
- 
+	* ui/QThesaurusDialog.ui: new thesaurus code
+
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* QMinipage.C (apply, update_contents): MinipageParams::width renamed
@@ -149,12 +153,12 @@
 2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QParagraph.C: add needed include
- 
+
 2001-12-08  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* Dialogs.C: bring back unconverted dialogs
- 
+
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QParagraph.C:
@@ -162,14 +166,14 @@
 	* QParagraphDialog.C: use new vspace API
 
 	* QTocDialog.C: silence warnings
- 
+
 2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* qttableview.C: change "while(" to "while (" 
+	* qttableview.C: change "while(" to "while ("
 
 2001-12-05  Allan Rae  <rae@lyx.org>
 
-	* QParagraph.C (apply): 
+	* QParagraph.C (apply):
 	(update): Use the right LyXText -- extending John's fix
 
 2001-12-01  Maks Orlovich  <mo002j@mail.rochester.edu>
@@ -202,17 +206,17 @@
 	* ui/moc/Makefile.am: remove unportable # at beginning of
 	declaration.
 
-	* ui/Makefile.am: 
+	* ui/Makefile.am:
 	* Makefile.am: remove extra DISTCLEANFILES declaration
 
 2001-10-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
-	* ui/QDocumentDialog.ui: 
+	* ui/QDocumentDialog.ui:
 	* QDocument.C (build_dialog): support latin4
 
 2001-10-05  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
-	* ui/QDocumentDialog.ui: 
+	* ui/QDocumentDialog.ui:
 	* QDocument.C (build_dialog): support latin3
 
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -229,7 +233,7 @@
 	* QRef.C: fix compile
 
 	* README: update
- 
+
 2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (libqt2_la_LIBADD): rename from OBJADD, depend on
@@ -238,9 +242,9 @@
 2001-09-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/QMinipageDialog.ui: fix layout, remove old slot
- 
+
 	* QRefDialog.C: fix warning
- 
+
 2001-09-02  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ui/QSpellcheckerDialog.ui: reworded layout
@@ -257,7 +261,7 @@
 	* QSpellchecker.[Ch]:
 	* QSpellcheckerDialog.[Ch]:
 	* ui/QSpellcheckerDialog.ui: add spellchecker dialog
- 
+
 2001-08-31  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ui/QMinipageDialog.ui: layout tweak again (but it's getting better)
@@ -282,21 +286,21 @@
 	* emptytable.C:
 	* ui/QTabularCreateDialog.ui: fix layout
 	  when table size is changed
- 
+
 2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
 	* QSearch.[Ch]:
 	* QSearchDialog.[Ch]:
 	* ui/QSearchDialog.ui: add search back
- 
+
 2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
 	* QPrint.[Ch]:
 	* QPrintDialog.[Ch]:
 	* ui/QPrintDialog.ui: add print dialog back
- 
+
 2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -340,7 +344,7 @@
 	* QIndexDialog.C: add QWhatsThis in C source
 
 	* README: document this restriction
-	 
+
 2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QMinipage.[Ch]:
@@ -360,7 +364,7 @@
 	* QVCLog.[Ch]:
 	* QVCLogDialog.[Ch]:
 	* ui/QVCLogDialog.ui:
-	* Dialogs.C: 
+	* Dialogs.C:
 	* Makefile.am:
 	* Makefile.dialogs: add log and vclog dialogs
 
@@ -374,7 +378,7 @@
 	* ui/Makefile.am:
 	* ui/QTabularCreateDialog.ui: bring back
 	tabcreate
- 
+
 2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/QCharacterDialog.ui:
@@ -386,7 +390,7 @@
 	* Makefile.am:
 	* Makefile.dialogs:
 	* Dialogs.C: add graphics dialog
- 
+
 2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QThesaurus.C: clear selection on update
@@ -397,13 +401,13 @@
 	* Makefile.am:
 	* Makefile.dialogs:
 	* Dialogs.C: add Include dialog
- 
+
 	* README: add note about crashes
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QThesaurusDialog.C: whoops, forgot to clear before update
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QBibtex.C:
@@ -413,36 +417,36 @@
 	  delete button
 
 	* QExternalDialog.C: fix file dialog thing
- 
-	* QThesaurus.h:	
-	* QThesaurus.C: 
+
+	* QThesaurus.h:
+	* QThesaurus.C:
 	* QThesaurusDialog.h:
-	* QThesaurusDialog.C: 
+	* QThesaurusDialog.C:
 	* ui/QThesaurusDialog.ui: fix compile, get working
- 
+
 	* moc/Makefile.am: fix builddir != srcdir
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C: fix argc handling
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
-	* ui/*.ui: 
+	* ui/*.ui:
 	* ui/Makefile.am: add some sed magic to replace tr() with _()
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: remove accidentally committed xforms file
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
-	* Makefile.dialogs: 
+	* Makefile.dialogs:
 	* QThesaurus.[Ch]:
 	* QThesaurusDialog.[Ch]:
 	* ui/QThesaurusDialog.ui: add thesaurus dialog
- 
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
@@ -451,7 +455,7 @@
 	* QExternal.[Ch]:
 	* QExternalDialog.[Ch]:
 	* ui/QExternalDialog.ui: add external dialog
- 
+
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
@@ -459,12 +463,12 @@
 	* QERT.[Ch]:
 	* QERTDialog.[Ch]:
 	* ui/QERTDialog.ui: add ERT dialog
- 
+
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
 	* Makefile.am:
-	* Makefile.dialogs: 
+	* Makefile.dialogs:
 	* QError.[Ch]:
 	* QErrorDialog.[Ch]:
 	* ui/QErrorDialog.ui: add LaTeX error dialog
@@ -476,7 +480,7 @@
 	* QCharacterDialog.[Ch]:
 	* ui/QcharacterDialog.ui: make work again,
 	  add auto-apply feature
- 
+
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
@@ -485,7 +489,7 @@
 	* QBibitem.[Ch]:
 	* QBibitemDialog.[Ch]:
 	* ui/QBibitemDialog.ui: add Bibitem dialog
- 
+
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
@@ -495,36 +499,36 @@
 	* ui/QBibtexDialog.ui: added BibTeX dialog.
 
 	* README: update
- 
+
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Qt2BC.C: whoops, reversed sense of setReadOnly()
- 
+
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
-	* Dialogs.C: 
+	* Dialogs.C:
 	* QRef.[Ch]:
 	* ui/QRefDialog.ui: add Ref dialog back
 
 	* QAbout.[Ch]:
-	* QCitation.[Ch]: 
-	* QDocument.[Ch]: 
-	* QIndex.[Ch]: 
+	* QCitation.[Ch]:
+	* QDocument.[Ch]:
+	* QIndex.[Ch]:
 	* QURL.[Ch]:
-	* Qt2Base.h: protect build() with updating_ too 
+	* Qt2Base.h: protect build() with updating_ too
 
 	* QCitationDialog.C: use Qt2Base::readOnly
 
 	* README: update
-	 
+
 2001-08-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: add URL
- 
+
 	* QAbout.h:
 	* QCitation.h:
-	* QDocument.h: 
-	* QIndex.C: 
+	* QDocument.h:
+	* QIndex.C:
 	* Qt2Base.h:
 	* Qt2Base.C: add an updating_ variable to prevent
 	  bc() breakage.
@@ -534,21 +538,21 @@
 	* QURLDialog.h:
 	* QURLDialog.C:
 	* ui/QURLDialog.ui: make alive again
-	 
-	* Qt2BC.C: make lineedits ReadOnly not disabled 
- 
+
+	* Qt2BC.C: make lineedits ReadOnly not disabled
+
 	* README: update
- 
+
 	* ui/QCitationDialog.ui: small cleanups
 
 	* ui/QIndexDialog.ui: add a what's this
- 
+
 2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: include the right files
 
 	* QCitation.C: closePB not cancelPB
- 
+
 	* QCitationDialog.C:
 	* QCitationDialog.h:
 	* ui/QCitationDialog.ui: small fixes
@@ -556,15 +560,15 @@
 	* QIndex.h:
 	* QIndex.C:
 	* QIndexDialog.C:
-	* QIndexDialog.h: 
+	* QIndexDialog.h:
 	* ui/QIndexDialog.ui: more fixes
-	 
+
 	* Qt2Base.h:
-	* Qt2Base.C: add reset() to workaround problem. 
+	* Qt2Base.C: add reset() to workaround problem.
 
 	* README: update
 
-	* Makefile.am: 
+	* Makefile.am:
 	* Timeout_pimpl.h:
 	* Timeout_pimpl.C: add the timer
 
@@ -574,9 +578,9 @@
 	* Makefile.am:
 	* Qt2BC.h:
 	* Qt2BC.C:
- 	* QAbout.C:
+	* QAbout.C:
 	* QCitation.C:
- 	* QDocument.h:
+	* QDocument.h:
 	* Qt2Base.C:
 	* Qt2Base.h: rename qt2BC -> Qt2BC, set focus for widget enable
 
@@ -587,32 +591,32 @@
 	* Qt2Base.h:
 	* Qt2Base.C: add a virtual isValid(), and predicate what changed()
 	  tells the BC on the return value
- 
+
 	* README: update
- 
+
 2001-08-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: add QIndex
 
 	* ui/Makefile.am:
 	* Makefile.am: fix build
- 
+
 	* ui/QAboutDialog.ui:
 	* QAbout.C: finish dialog
 
 	* ui/QCitationDialog.ui:
 	* QCitationDialog.C: BC fixes
- 
-	* ui/QIndexDialog.ui: 
+
+	* ui/QIndexDialog.ui:
 	* QIndex.h:
-	* QIndex.C: 
+	* QIndex.C:
 	* QIndexDialog.h:
 	* QIndexDialog.C: got index dialog working
 
 2001-08-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* all files: enormous naming re-jig and tidy
- 
+
 2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	Consistent use of Lsstream.h:
@@ -633,7 +637,7 @@
 	* FormCitationDialogImpl.C: added using directive.
 
 	* qt2BC.[Ch]: qt2BC now derives from GuiBC<QButton, QWidget>.
-	No idea why this wasn't done ages ago! 
+	No idea why this wasn't done ages ago!
 
 2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -664,7 +668,7 @@
 	* <various>: fix random space pepper to use
 	  hard tabs. Also add <config.h> where necessitated
 	  by using LString.h
- 
+
 2001-05-22  Adrien Rebollo <rebollo@iaf.cnrs-gif.fr>
 
 	* FormDocument.C (build): add iso8859-15 support.
@@ -700,7 +704,7 @@
 	* Qt2Base.h:
 	* Qt2Base.C: s/ControlButton/ControlButtons/
 
-	
+
 2001-04-02  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
 
 	* Makefile.am: Simplified Makefile.am
@@ -721,7 +725,7 @@
 	* Makefile.am: added missing xform dialogs
 	* FormParagraph.C: only extra setting if wanted
 	* FormParagraph.h: add namespace to connection
-	
+
 2001-03-16  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
 
 	* FormParagraph.C (apply): Only call SetParagraphExtraOpt() when
@@ -743,7 +747,7 @@
 	* Makefile.am: updated
 	* FormSplash.[Ch]: added
 	* FormSplashImpl.[Ch]: added
-	
+
 2001-03-09  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* Makefile.am: updated
@@ -770,7 +774,7 @@
 	* chardlg.ui
 	* chardlg.[Ch]
 	* chardlgimpl.[Ch]
-	
+
 2001-02-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: fix bview->update()

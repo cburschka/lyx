@@ -20,7 +20,7 @@ class Dialogs;
 class LyXView;
 
 
-class ControlDialogBD : public ControlDialog<ControlConnectBD> 
+class ControlDialogBD : public ControlDialog<ControlConnectBD>
 {
 public:
 	///

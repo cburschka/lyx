@@ -31,9 +31,9 @@ RGBColor::RGBColor(HSVColor const & hsv)
 	double h = hsv.h;
 	double const s = hsv.s;
 	double const v = hsv.v;
-	
+
 	double rd, gd, bd;
-	
+
 	if (h == nohue || s == 0.0) {
 		rd = gd = bd = v;
 	} else {

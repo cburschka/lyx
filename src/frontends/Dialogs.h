@@ -77,10 +77,10 @@ public:
 	//@{
 	/// Hide all visible dialogs
 	SigC::Signal0<void> hideAll;
-	
+
 	/// Hide any dialogs that require a buffer for them to operate
 	SigC::Signal0<void> hideBufferDependent;
-	
+
 	/** Update visible, buffer-dependent dialogs
 	    If the bool is true then a buffer change has occurred
 	    else its still the same buffer.
@@ -112,7 +112,7 @@ public:
 	///
 	SigC::Signal1<void, InsetError *> showError;
 	/// show the external inset dialog
-	SigC::Signal1<void, InsetExternal *> showExternal; 
+	SigC::Signal1<void, InsetExternal *> showExternal;
 	/// show the contents of a file.
 	SigC::Signal1<void, string const &> showFile;
 	/// show all forked child processes
@@ -129,8 +129,8 @@ public:
 	SigC::Signal1<void, InsetInfo *> showInfo;
 	/// show the LaTeX log or build file
 	SigC::Signal0<void> showLogFile;
- 	/// display the top-level maths panel
- 	SigC::Signal0<void> showMathPanel;
+	/// display the top-level maths panel
+	SigC::Signal0<void> showMathPanel;
 	///
 	SigC::Signal1<void, InsetMinipage *> showMinipage;
 	///
@@ -172,7 +172,7 @@ public:
 	/// show the TexInfo
 	SigC::Signal0<void> showTexinfo;
 	/// show the thesaurus dialog
-	SigC::Signal1<void, string const &> showThesaurus; 
+	SigC::Signal1<void, string const &> showThesaurus;
 	///
 	SigC::Signal1<void, InsetCommand *> showTOC;
 	///

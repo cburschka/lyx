@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -62,7 +62,7 @@ public:
 	ControlConnectBase(LyXView &, Dialogs &);
 	/// The View may need to know if the buffer is read-only.
 	bool isReadonly() const;
-	/// 
+	///
 	DocTypes docType() const;
 
 protected:
@@ -99,8 +99,8 @@ protected:
 class ControlConnectBI : public ControlConnectBase
 {
 public:
-        ///
-        ControlConnectBI(LyXView &, Dialogs &);
+	///
+	ControlConnectBI(LyXView &, Dialogs &);
 
 protected:
 	///

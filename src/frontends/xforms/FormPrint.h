@@ -29,7 +29,7 @@ struct FD_form_print;
  */
 class FormPrint : public FormCB<ControlPrint, FormDB<FD_form_print> > {
 public:
-	/// 
+	///
 	FormPrint(ControlPrint &);
 
 private:

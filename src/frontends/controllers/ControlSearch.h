@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -28,7 +28,7 @@ class ControlSearch : public ControlDialogBD {
 public:
 	///
 	ControlSearch(LyXView &, Dialogs &);
-   
+
 	/// Searches occurence of string
 	void find(string const & search,
 		  bool casesensitive, bool matchword, bool forward) const;

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -17,7 +17,7 @@
  * The class is likely to be changed as other Inset controllers are created
  * and it becomes clear just what functionality can be moved back into
  * ControlInset.
- * 
+ *
  */
 
 #ifndef CONTROLCOMMAND_H
@@ -31,7 +31,7 @@
 #include "insets/insetcommand.h"
 #include "commandtags.h" // kb_action
 
-/** The Inset dialog controller. Connects/disconnects signals, launches 
+/** The Inset dialog controller. Connects/disconnects signals, launches
     GUI-dependent View and returns the output from this View to the kernel.
  */
 class ControlCommand : public ControlInset<InsetCommand, InsetCommandParams>
@@ -43,7 +43,7 @@ public:
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
-	/// 
+	///
 	virtual void applyParamsNoInset();
 	/// get the parameters from the string passed to createInset.
 	virtual InsetCommandParams const getParams(string const &);

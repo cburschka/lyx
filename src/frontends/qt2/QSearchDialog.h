@@ -10,7 +10,7 @@
 #define QSEARCHDIALOG_H
 
 #include <config.h>
- 
+
 #include "ui/QSearchDialogBase.h"
 #include "QSearch.h"
 
@@ -22,20 +22,20 @@ class QSearchDialog : public QSearchDialogBase
 
 public:
 	QSearchDialog(QSearch * form);
-	
+
 protected slots:
 	void findChanged();
 	void findClicked();
 	void replaceClicked();
 	void replaceallClicked();
- 
+
 protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
 	// add a string to the combo if needed
 	void remember(string const & find, QComboBox & combo);
- 
+
 	QSearch * form_;
 
 };

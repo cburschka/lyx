@@ -49,19 +49,19 @@ int const mbheight= 22;
 // where to place the menubar?
 int const yloc = (mheight - mbheight)/2; //air + bw;
 int const mbadd = 20; // menu button add (to width)
-// Some space between buttons on the menubar 
+// Some space between buttons on the menubar
 int const air = 2;
 char const * menu_tabstop = "aa";
 char const * default_tabstop = "aaaaaaaa";
 // We do not want to mix position values in a menu (like the index of
 // a submenu) with the action numbers which convey actual information.
 // Therefore we offset all the action values by an arbitrary large
-// constant. 
+// constant.
 int const action_offset = 1000;
 
 // This is used a few times below.
 inline
-int string_width(string const & str) 
+int string_width(string const & str)
 {
 	return fl_get_string_widthTAB(MENU_LABEL_STYLE, MENU_LABEL_SIZE,
 				      str.c_str(),
@@ -79,11 +79,11 @@ extern "C" {
 	{
 		Menubar::Pimpl::MenuCallback(ob, button);
 	}
-	
+
 }
 
 
-Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
+Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 	: owner_(view), menubackend_(&mb), current_group_(0)
 {
 	for (MenuBackend::const_iterator menu = menubackend_->begin();
@@ -105,14 +105,14 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 
 void Menubar::Pimpl::makeMenubar(Menu const & menu)
 {
-	FL_FORM * form = static_cast<XFormsView *>(owner_)->getForm(); 
+	FL_FORM * form = static_cast<XFormsView *>(owner_)->getForm();
 	int moffset = 0;
 
 	// Create menu frame if there is non yet.
 	FL_OBJECT * frame = fl_add_frame(FL_UP_FRAME, 0, 0,
 					 form->w, mheight, "");
 	fl_set_object_resize(frame, FL_RESIZE_ALL);
-	fl_set_object_gravity(frame, NorthWestGravity, 
+	fl_set_object_gravity(frame, NorthWestGravity,
 			      NorthEastGravity);
 
 	Menu::const_iterator i = menu.begin();
@@ -131,14 +131,14 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 		obj = fl_add_button(FL_MENU_BUTTON,
 				    air + moffset, yloc,
 				    width + mbadd,
-				    mbheight, 
+				    mbheight,
 				    label.c_str());
 		fl_set_object_boxtype(obj, FL_FLAT_BOX);
 		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_lsize(obj, MENU_LABEL_SIZE);
 		fl_set_object_lstyle(obj, MENU_LABEL_STYLE);
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
-		fl_set_object_gravity(obj, NorthWestGravity, 
+		fl_set_object_gravity(obj, NorthWestGravity,
 				      NorthWestGravity);
 		moffset += obj->w + air;
 		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
@@ -153,9 +153,9 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 }
 
 
-void Menubar::Pimpl::set(string const & menu_name) 
+void Menubar::Pimpl::set(string const & menu_name)
 {
-	lyxerr[Debug::GUI] << "Entering Menubar::Pimpl::set " 
+	lyxerr[Debug::GUI] << "Entering Menubar::Pimpl::set "
 			   << "for menu `" << menu_name << "'" << endl;
 
 	if (menu_name != current_menu_name_) {
@@ -172,7 +172,7 @@ void Menubar::Pimpl::set(string const & menu_name)
 					   << current_group_ << endl;
 			fl_hide_object(current_group_);
 		}
-		
+
 		lyxerr[Debug::GUI] << "  showing group "
 				   << mbit->second << endl;
 		fl_show_object(mbit->second);
@@ -183,7 +183,7 @@ void Menubar::Pimpl::set(string const & menu_name)
 	} else
 		lyxerr [Debug::GUI] << "Menubar::Pimpl::set: Nothing to do."
 				    << endl;
-} 
+}
 
 
 void Menubar::Pimpl::openByName(string const & name)
@@ -367,8 +367,8 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 		string const m = floatList[cit->first]->second.name() + "%m";
 		fl_addtopup(menu, m.c_str(), menu_first_sub);
 	}
-	
-	
+
+
 	// Handle normal TOC
 	cit = toc_list.find("TOC");
 	if (cit == end) {
@@ -382,12 +382,12 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 }
 
 
-int Menubar::Pimpl::create_submenu(Window win, LyXView * view, 
-				   string const & menu_name, 
-				   vector<int> & smn) 
+int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
+				   string const & menu_name,
+				   vector<int> & smn)
 {
-	if (!menubackend_->hasMenu(menu_name)) { 
-		lyxerr << "ERROR:create_submenu: Unknown menu `" 
+	if (!menubackend_->hasMenu(menu_name)) {
+		lyxerr << "ERROR:create_submenu: Unknown menu `"
 		       << menu_name << "'" << endl;
 		return -1;
 	}
@@ -397,7 +397,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 	int const menu = get_new_submenu(smn, win);
 	fl_setpup_softedge(menu, true);
 	fl_setpup_bw(menu, -1);
-	lyxerr[Debug::GUI] << "Adding menu " << menu 
+	lyxerr[Debug::GUI] << "Adding menu " << menu
 			   << " in deletion list" << endl;
 
 	// Compute the size of the largest label (because xforms is
@@ -416,8 +416,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			}
 		}
 	}
-	lyxerr[Debug::GUI] << "max_width=" << max_width 
-			   << ", widest_label=`" << widest_label 
+	lyxerr[Debug::GUI] << "max_width=" << max_width
+			   << ", widest_label=`" << widest_label
 			   << "'" << endl;
 
 	// Compute where to put separators
@@ -438,14 +438,14 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 		switch (item.kind()) {
 		case MenuItem::Command: {
-			FuncStatus const flag = 
-				view->getLyXFunc()->getStatus(item.action()); 
+			FuncStatus const flag =
+				view->getLyXFunc()->getStatus(item.action());
 			// handle optional entries.
-			if (item.optional() 
+			if (item.optional()
 			    && (flag.disabled())) {
-				lyxerr[Debug::GUI] 
-					<< "Skipping optional item " 
-					<< item.label() << endl; 
+				lyxerr[Debug::GUI]
+					<< "Skipping optional item "
+					<< item.label() << endl;
 				break;
 			}
 
@@ -458,14 +458,14 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			if (!accel.empty()) {
 				// Try to be clever and add  just enough
 				// tabs to align shortcuts.
-				do 
+				do
 					label += '\t';
 				while (string_width(label) < max_width + 5);
 				label += accel.substr(1,accel.find(']') - 1);
 			}
 			label += "%x" + tostr(item.action() + action_offset)
 				+ extra_label;
-			
+
 			// Modify the entry using the function status
 			string pupmode;
 			if (flag.onoff(true))
@@ -482,21 +482,21 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(menu, label.c_str(), 
+				fl_addtopup(menu, label.c_str(),
 					    shortcut.c_str());
 			} else
 				fl_addtopup(menu, label.c_str());
-			
-			lyxerr[Debug::GUI] << "Command: \""  
+
+			lyxerr[Debug::GUI] << "Command: \""
 					   << lyxaction.getActionName(item.action())
 					   << "\", binding \"" << accel
-					   << "\", shortcut \"" << shortcut 
+					   << "\", shortcut \"" << shortcut
 					   << "\"" << endl;
 			break;
 		}
 
 		case MenuItem::Submenu: {
-			int submenu = create_submenu(win, view, 
+			int submenu = create_submenu(win, view,
 						     item.submenu(), smn);
 			if (submenu == -1)
 				return -1;
@@ -523,8 +523,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			add_toc(menu, extra_label, smn, win);
 			break;
 
-		case MenuItem::Documents: 
-		case MenuItem::Lastfiles: 
+		case MenuItem::Documents:
+		case MenuItem::Lastfiles:
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats:
@@ -544,10 +544,10 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 {
 	ItemInfo * iteminfo = static_cast<ItemInfo *>(ob->u_vdata);
-//  	lyxerr << "MenuCallback: ItemInfo address=" << iteminfo
-//  	       << "Val=(pimpl_=" << iteminfo->pimpl_
-//  	       << ", item_=" << iteminfo->item_
-//  	       << ", obj_=" << iteminfo->obj_ << ")" <<endl;
+//	lyxerr << "MenuCallback: ItemInfo address=" << iteminfo
+//	       << "Val=(pimpl_=" << iteminfo->pimpl_
+//	       << ", item_=" << iteminfo->item_
+//	       << ", obj_=" << iteminfo->obj_ << ")" <<endl;
 
 	LyXView * view = iteminfo->pimpl_->owner_;
 	MenuItem const * item = iteminfo->item_.get();
@@ -561,19 +561,19 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 
 	// Paranoia check
 	lyx::Assert(item->kind() == MenuItem::Submenu);
-	
+
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);
 	vector<int> submenus;
 	int menu = iteminfo->pimpl_->
-		create_submenu(FL_ObjWin(ob), view, 
+		create_submenu(FL_ObjWin(ob), view,
 			       item->submenu(), submenus);
 	if (menu != -1) {
 		// place popup
 		fl_setpup_position(static_cast<XFormsView *>(view)->getForm()->x + ob->x,
-				   static_cast<XFormsView *>(view)->getForm()->y + ob->y + ob->h + 10);   
+				   static_cast<XFormsView *>(view)->getForm()->y + ob->y + ob->h + 10);
 		int choice = fl_dopup(menu);
-		
+
 		if (button == 1) {
 				// set the pseudo menu-button back
 			fl_set_object_boxtype(ob, FL_FLAT_BOX);
@@ -592,7 +592,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	} else {
 		lyxerr << "Error in MenuCallback" << endl;
 	}
-	
+
 	for_each(submenus.begin(), submenus.end(), fl_freepup);
 	// restore tabstop length
 	fl_set_tabstop(default_tabstop);

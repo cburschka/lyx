@@ -32,7 +32,7 @@ void FormIndex::build()
 	fl_set_input_return(dialog_->input_key, FL_RETURN_CHANGED);
 	setPrehandler(dialog_->input_key);
 
-        // Manage the ok, apply, restore and cancel/close buttons
+	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -23,7 +23,7 @@
 
 /** A controller for the Url Dialog.
  */
-class ControlUrl : public ControlCommand 
+class ControlUrl : public ControlCommand
 {
 public:
 	///

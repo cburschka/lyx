@@ -9,9 +9,9 @@
 #include <config.h>
 #include <vector>
 
-#include "LString.h" 
- 
-#include "ControlTexinfo.h" 
+#include "LString.h"
+
+#include "ControlTexinfo.h"
 #include "QTexinfoDialog.h"
 #include "Dialogs.h"
 #include "QTexinfo.h"
@@ -28,13 +28,13 @@ QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QTexinfoDialog::change_adaptor()
 {
 	form_->changed();
 }
 
- 
+
 void QTexinfoDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -74,5 +74,5 @@ void QTexinfoDialog::update()
 	default:
 		break;
 	}
-	
+
 }

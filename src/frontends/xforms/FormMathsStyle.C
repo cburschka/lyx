@@ -46,7 +46,7 @@ FormMathsStyle::FormMathsStyle(LyXView * lv, Dialogs * d,
 FL_FORM * FormMathsStyle::form() const
 {
 	if (dialog_.get())
- 		return dialog_->form;
+		return dialog_->form;
 	return 0;
 }
 
@@ -81,9 +81,9 @@ void FormMathsStyle::build()
 
 void FormMathsStyle::apply()
 {
-	if ((style_ >= 0) && (style_ < 4)) 
+	if ((style_ >= 0) && (style_ < 4))
 		parent_.insertSymbol(latex_mathstyle[style_]);
-	else if ((style_ >= 4) && (style_ < 14)) 
+	else if ((style_ >= 4) && (style_ < 14))
 		parent_.dispatchFunc(latex_mathfontcmds[style_ - 4]);
 }
 
@@ -92,7 +92,7 @@ bool FormMathsStyle::input(FL_OBJECT * ob, long data)
 {
 	style_ = fl_get_bmtable(ob);
 	if (style_ < 0) return false;
-	//if (ob == dialog_->bmtable_style1) style_ += 0; 
+	//if (ob == dialog_->bmtable_style1) style_ += 0;
 	if (ob == dialog_->bmtable_style2) style_ += 1;
 	if (ob == dialog_->bmtable_font1)  style_ += 4;
 	if (ob == dialog_->bmtable_font2)  style_ += 9;

@@ -80,7 +80,7 @@ void FormFloat::update()
 	bool here_definitely = false;
 
 	string placement(controller().params().placement);
-	
+
 	if (contains(placement, "H")) {
 		here_definitely = true;
 	} else {

@@ -26,7 +26,7 @@
 #include <qcheckbox.h>
 
 typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
- 
+
 QFloat::QFloat(ControlFloat & c)
 	: base_class(c, _("LaTeX Information"))
 {
@@ -43,7 +43,7 @@ void QFloat::build_dialog()
 	bc().setRestore(dialog_->restorePB);
 }
 
- 
+
 void QFloat::update_contents()
 {
 	bool top = false;
@@ -81,7 +81,7 @@ void QFloat::update_contents()
 void QFloat::apply()
 {
 	string placement;
-	
+
 	if (dialog_->forcehere->isChecked()) {
 		placement += "H";
 	} else {

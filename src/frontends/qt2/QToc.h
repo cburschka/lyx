@@ -5,7 +5,7 @@
  * Read the file COPYING
  *
  * \author John Levon
- * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se> 
+ * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
  */
 
 #ifndef QTOC_H
@@ -18,18 +18,18 @@
 #include "Qt2Base.h"
 
 #include "ControlToc.h"
- 
+
 class ControlToc;
 class QTocDialog;
 
-class QToc : 
-	public Qt2CB<ControlToc, Qt2DB<QTocDialog> > 
+class QToc :
+	public Qt2CB<ControlToc, Qt2DB<QTocDialog> >
 {
 public:
 	QToc(ControlToc &);
 
 	friend class QTocDialog;
- 
+
 private:
 	/// update the listview
 	void updateToc(int newdepth);
@@ -39,13 +39,13 @@ private:
 
 	/// select an entry
 	void select(string const & text);
- 
+
 	/// set the depth
 	void set_depth(int depth);
- 
+
 	virtual void apply() {};
- 
-	/// update dialog 
+
+	/// update dialog
 	virtual void update_contents();
 
 	/// build dialog

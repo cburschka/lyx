@@ -25,18 +25,18 @@ class FormSpellchecker : public FormCB<ControlSpellchecker, FormDB<FD_form_spell
 public:
 	///
 	FormSpellchecker(ControlSpellchecker &);
-   
+
 private:
 	/// not needed.
 	void apply() {}
 	/// Build the dialog
 	void build();
-	/// 
+	///
 	void update();
 
 	/// enable/disable widgets when start/stop
 	void stop(bool);
-	
+
 	/// update progress bar, set suggestions, exit message
 	void partialUpdate(int);
 
@@ -45,7 +45,7 @@ private:
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-   
+
 	/// Fdesign generated method
 	FD_form_spellchecker  * build_spellchecker();
 };

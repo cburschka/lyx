@@ -29,7 +29,7 @@
 class LyXView;
 
 /** The LyX GUI independent menubar class
-  The GUI interface is implemented in the corresponding Menubar_pimpl class. 
+  The GUI interface is implemented in the corresponding Menubar_pimpl class.
   */
 struct Menubar::Pimpl {
 public:
@@ -51,25 +51,25 @@ public:
 			    std::vector<int> & smn, Window win);
 	///
 	int create_submenu(Window win, LyXView * view,
-                           string const & menuname,
-                           std::vector<int> & smn);
+			   string const & menuname,
+			   std::vector<int> & smn);
 
-        /// update the state of the menuitems
-        void update() {}
+	/// update the state of the menuitems
+	void update() {}
 private:
 	//
 	void makeMenubar(Menu const &menu);
 
-	/// 
+	///
 	LyXView * owner_;
 	///
 	MenuBackend const * menubackend_;
 	///
 	struct ItemInfo {
 		///
-		ItemInfo(Menubar::Pimpl * p, MenuItem const * i, 
+		ItemInfo(Menubar::Pimpl * p, MenuItem const * i,
 			 FL_OBJECT * o)
-		
+
 			: pimpl_(p), obj_(o) { item_.reset(i); }
 		///
 		Menubar::Pimpl * pimpl_;

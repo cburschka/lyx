@@ -39,7 +39,7 @@ void FormRef::build()
 {
 	dialog_.reset(build_ref());
 
- 	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
+	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
 		fl_addto_choice(dialog_->choice_type,
 				_(InsetRef::types[i].gui_name.c_str()));
 
@@ -70,7 +70,7 @@ void FormRef::update()
 		     controller().params().getContents().c_str());
 	fl_set_input(dialog_->input_name,
 		     controller().params().getOptions().c_str());
-	fl_set_choice(dialog_->choice_type, 
+	fl_set_choice(dialog_->choice_type,
 		      InsetRef::getType(controller().params().getCmdName()) + 1);
 
 	at_ref_ = false;
@@ -97,7 +97,7 @@ void FormRef::update()
 	vector<string> const buffers = controller().getBufferList();
 	vector<string> const choice_buffers =
 		getVectorFromChoice(dialog_->choice_buffer);
-	
+
 	// If different from the current contents of the choice, then update it
 	if (buffers != choice_buffers) {
 		// create a string of entries " entry1 | entry2 | entry3 "
@@ -137,7 +137,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 	if (keys.empty()) {
 		fl_add_browser_line(dialog_->browser_refs,
 				    _("*** No labels found in document ***"));
-	
+
 		setEnabled(dialog_->browser_refs, false);
 		setEnabled(dialog_->check_sort,   false);
 
@@ -187,7 +187,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		at_ref_ = !at_ref_;
 		if (at_ref_) {
 			controller().gotoRef(fl_get_input(dialog_->input_ref));
-	  		fl_set_object_label(dialog_->button_go, _("Go back"));
+			fl_set_object_label(dialog_->button_go, _("Go back"));
 		} else {
 			controller().gotoBookmark();
 			fl_set_object_label(dialog_->button_go,
@@ -214,7 +214,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		setEnabled(dialog_->button_go, true);
 		fl_set_object_lcol(dialog_->input_ref, FL_BLACK);
 
-	} else if (ob == dialog_->button_update || 
+	} else if (ob == dialog_->button_update ||
 		   ob == dialog_->check_sort ||
 		   ob == dialog_->choice_buffer) {
 

@@ -3,7 +3,7 @@
  * Abstract base class of all dialogs.
  * Author: Allan Rae <rae@lyx.org>
  * This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *

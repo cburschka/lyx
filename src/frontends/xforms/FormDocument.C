@@ -34,10 +34,10 @@
 #include "Liason.h"
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
-#include "xforms_helpers.h" 
+#include "xforms_helpers.h"
 #include "debug.h"
 #include "input_validators.h" // fl_unsigned_float_filter
-#include "helper_funcs.h" 
+#include "helper_funcs.h"
 #include "lyx_main.h" // for user_lyxdir
 
 #include "insets/insetquotes.h"
@@ -214,7 +214,7 @@ void FormDocument::build()
 	setPrehandler(class_->input_doc_extra);
 	setPrehandler(class_->input_doc_skip);
 	setPrehandler(class_->input_doc_spacing);
-	
+
 	// Set input filters on doc spacing to make it accept only
 	// unsigned numbers.
 	fl_set_input_filter(class_->input_doc_spacing, fl_unsigned_float_filter);
@@ -399,15 +399,15 @@ bool saveParamsAsDefault(BufferParams const &params)
 				_("for the document layout as default?"),
 				_("(they will be valid for any new document)")))
 		return false;
-	
+
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
 				     "defaults.lyx");
 	Buffer defaults = Buffer(fname);
 	defaults.params = params;
-	
+
 	// add an empty paragraph. Is this enough?
 	defaults.paragraph = new Paragraph;
-		
+
 	return defaults.writeFile(defaults.fileName(), false);
 }
 
@@ -677,7 +677,7 @@ bool FormDocument::class_apply(BufferParams &params)
 	params.pagestyle = fl_get_choice_text(class_->choice_doc_pagestyle);
 
 	params.textclass = combo_doc_class->get() - 1;
-	
+
 	BufferParams::PARSEP tmpsep = params.paragraph_separation;
 	if (fl_get_button(class_->radio_doc_indent))
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
@@ -685,7 +685,7 @@ bool FormDocument::class_apply(BufferParams &params)
 		params.paragraph_separation = BufferParams::PARSEP_SKIP;
 	if (tmpsep != params.paragraph_separation)
 		redo = true;
-	
+
 	VSpace tmpdefskip = params.getDefSkip();
 	switch (fl_get_choice (class_->choice_doc_skip)) {
 	case 1:
@@ -694,7 +694,7 @@ bool FormDocument::class_apply(BufferParams &params)
 	case 2:
 		params.setDefSkip(VSpace(VSpace::MEDSKIP));
 		break;
-    	case 3:
+	case 3:
 		params.setDefSkip(VSpace(VSpace::BIGSKIP));
 		break;
 	case 4:
@@ -713,7 +713,7 @@ bool FormDocument::class_apply(BufferParams &params)
 	}
 	if (!(tmpdefskip == params.getDefSkip()))
 		redo = true;
-	
+
 	if (fl_get_button(class_->radio_doc_columns_two))
 		params.columns = 2;
 	else
@@ -722,7 +722,7 @@ bool FormDocument::class_apply(BufferParams &params)
 		params.sides = LyXTextClass::TwoSides;
 	else
 		params.sides = LyXTextClass::OneSide;
-	
+
 	Spacing tmpSpacing = params.spacing;
 	switch (fl_get_choice(class_->choice_doc_spacing)) {
 	case 1:
@@ -739,15 +739,15 @@ bool FormDocument::class_apply(BufferParams &params)
 		break;
 	case 4:
 		lyxerr[Debug::INFO] << "Spacing: OTHER\n";
-		params.spacing.set(Spacing::Other, 
+		params.spacing.set(Spacing::Other,
 				   fl_get_input(class_->input_doc_spacing));
 		break;
 	}
 	if (tmpSpacing != params.spacing)
 		redo = true;
-	
+
 	params.options = fl_get_input(class_->input_doc_extra);
-	
+
 	return redo;
 }
 
@@ -781,7 +781,7 @@ bool FormDocument::class_apply()
 				Alert::alert(_("Conversion Errors!"),s,
 					     _("into chosen document class"));
 			}
-			
+
 		} else {
 			// problem changing class -- warn user and retain old style
 			Alert::alert(_("Conversion Errors!"),
@@ -790,7 +790,7 @@ bool FormDocument::class_apply()
 			combo_doc_class->select(int(old_class) + 1);
 		}
 	}
-	
+
 	return redo;
 }
 
@@ -882,13 +882,13 @@ bool FormDocument::language_apply(BufferParams & params)
 		break;
 	}
 	params.quotes_language = lga;
-	if (fl_get_button(language_->radio_single))   
+	if (fl_get_button(language_->radio_single))
 		params.quotes_times = InsetQuotes::SingleQ;
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
 	Language const * old_language = params.language;
-	Language const * new_language = 
+	Language const * new_language =
 		languages.getLanguage(combo_language->getline());
 	if (!new_language)
 		new_language = default_language;
@@ -930,7 +930,7 @@ bool FormDocument::options_apply(BufferParams & params)
 	if (params.secnumdepth != tmpchar)
 		redo = true;
 	params.secnumdepth = tmpchar;
-   
+
 	params.tocdepth = int(fl_get_counter_value(options_->counter_tocdepth));
 
 	params.float_placement =
@@ -998,13 +998,13 @@ void FormDocument::class_update(BufferParams const & params)
 	setEnabled(class_->input_doc_skip, input_length);
 
 	switch (params.getDefSkip().kind()) {
-	case VSpace::SMALLSKIP: 
+	case VSpace::SMALLSKIP:
 		fl_set_choice (class_->choice_doc_skip, 1);
 		break;
-	case VSpace::MEDSKIP: 
+	case VSpace::MEDSKIP:
 		fl_set_choice (class_->choice_doc_skip, 2);
 		break;
-	case VSpace::BIGSKIP: 
+	case VSpace::BIGSKIP:
 		fl_set_choice (class_->choice_doc_skip, 3);
 		break;
 	case VSpace::LENGTH:
@@ -1038,7 +1038,7 @@ void FormDocument::class_update(BufferParams const & params)
 		fl_set_button(class_->radio_doc_columns_two, 1);
 	else
 		fl_set_button(class_->radio_doc_columns_one, 1);
- 
+
 	fl_set_input(class_->input_doc_spacing, "");
 	setEnabled(class_->input_doc_spacing, false);
 
@@ -1060,7 +1060,7 @@ void FormDocument::class_update(BufferParams const & params)
 	{
 		fl_set_choice(class_->choice_doc_spacing, 4);
 		char sval[20];
-		sprintf(sval,"%g",params.spacing.getValue()); 
+		sprintf(sval,"%g",params.spacing.getValue());
 		fl_set_input(class_->input_doc_spacing, sval);
 		setEnabled(class_->input_doc_spacing, true);
 		break;
@@ -1282,7 +1282,7 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 		if (!ok) {
 			postWarning(_("Invalid Length (valid example: 10mm)"));
 			return false;
-        	} else {
+		} else {
 			clearMessage();
 			return true;
 		}
@@ -1309,7 +1309,7 @@ void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 {
 	BufferParams & param = lv_->buffer()->params;
 
-	// convert from 1-6 range to -1-4 
+	// convert from 1-6 range to -1-4
 	param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
 	fl_set_input(bullets_->input_bullet_latex,
 		     param.temp_bullets[current_bullet_depth].getText().c_str());
@@ -1365,7 +1365,7 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
 {
 	/* Here we have to change the background pixmap to that selected */
 	/* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
-    
+
 	int data = 0;
 	if (cb == BULLETPANEL1)
 		data = 0;
@@ -1428,10 +1428,10 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/)
 	/* handle the user input by setting the current bullet depth's pixmap */
 	/* to that extracted from the current chosen position of the BMTable  */
 	/* Don't forget to free the button's old pixmap first.                */
-	
+
 	BufferParams & param = lv_->buffer()->params;
 	int bmtable_button = fl_get_bmtable(ob);
-	
+
 	/* try to keep the button held down till another is pushed */
 	/*  fl_set_bmtable(ob, 1, bmtable_button); */
 	param.temp_bullets[current_bullet_depth].setFont(current_bullet_panel);

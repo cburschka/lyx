@@ -46,7 +46,7 @@
 #include "FormVCLog.h"
 
 #include "FormDocument.h"
-#include "FormExternal.h" 
+#include "FormExternal.h"
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormIndex.h"
@@ -74,7 +74,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
 	add(new GUIERT<FormERT, gnomeBC>(*lv, *this));
 
-/*	
+/*
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
 	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
@@ -84,13 +84,13 @@ Dialogs::Dialogs(LyXView * lv)
 
 	// For now we use the gnome non MVC dialogs
 	add(new FormCitation(lv, this));
-	
+
 	add(new FormDocument(lv, this));
 	add(new FormExternal(lv, this));
 	add(new FormGraphics(lv, this));
 	add(new FormInclude(lv, this));
 	add(new FormIndex(lv, this));
- 	add(new FormMathsPanel(lv, this));
+	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreamble(lv, this));
 	add(new FormPreferences(lv, this));
@@ -126,9 +126,9 @@ A.  To avoid a segfault.
     the newly created Dialogs instance using `this'.
 
 (*) -- I'm using signals exclusively to guarantee that the gui code
-       remains hidden from the rest of the system.  In fact the only 
+       remains hidden from the rest of the system.  In fact the only
        header related to dialogs that anything in the non-gui-specific
-       code gets to see is Dialogs.h!  Even Dialogs.h doesn't know what a 
+       code gets to see is Dialogs.h!  Even Dialogs.h doesn't know what a
        FormCopyright class looks like or that its even going to be used!
 
        No other gui dialog headers are seen outside of the gui-specific
@@ -144,31 +144,31 @@ A.  To avoid a segfault.
        by adding a specific show or update signal.  For example, spellchecker
        needs to set the next suspect word and its options/replacements so we
        need a:
-                 Signal0<void> updateSpellChecker;
+		 Signal0<void> updateSpellChecker;
 
        Since we would have to have a
-                 Signal0<void> showSpellChecker;
+		 Signal0<void> showSpellChecker;
 
        in order to just see the spellchecker and let the user push the [Start]
        button then the updateSpellChecker signal will make the SpellChecker
        dialog get the new word and replacements list from LyX.  If you really,
        really wanted to you could define a signal that would pass the new
        word and replacements:
-                 Signal2<void, string, vector<string> > updateSpellChecker;
+		 Signal2<void, string, vector<string> > updateSpellChecker;
 
        (or something similar) but, why bother when the spellchecker can get
        it anyway with a LyXFunc call or two.  Besides if someone extends
-       what a dialog does then they also have to change code in the rest of 
-       LyX to pass more parameters or get the extra info via a function 
+       what a dialog does then they also have to change code in the rest of
+       LyX to pass more parameters or get the extra info via a function
        call anyway.  Thus reducing the independence of the two code bases.
 
-       We don't need a separate update signal for each dialog because most of 
+       We don't need a separate update signal for each dialog because most of
        them will be changed only when the buffer is changed (either by closing
        the current open buffer or switching to another buffer in the current
        LyXView -- different BufferView same LyXView or same BufferView same
        LyXView).
 
-       So we minimise signals but maximise independence and programming 
+       So we minimise signals but maximise independence and programming
        simplicity, understandability and maintainability.  It's also
        extremely easy to add support for Qt or gtk-- because they use
        signals already. Guis that use callbacks, like xforms, must have their

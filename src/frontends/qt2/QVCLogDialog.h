@@ -8,9 +8,9 @@
 
 #ifndef QVCLOGDIALOG_H
 #define QVCLOGDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QVCLogDialogBase.h"
 
 class QVCLog;

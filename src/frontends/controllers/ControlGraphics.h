@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -18,7 +18,7 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif 
+#endif
 
 #include "ControlInset.h"
 
@@ -45,7 +45,7 @@ public:
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
-	/// 
+	///
 	virtual void applyParamsNoInset();
 	/// get the parameters from the string passed to createInset.
 	virtual InsetGraphicsParams const getParams(string const &);
@@ -54,4 +54,3 @@ private:
 };
 
 #endif // CONTROLGRAPHICS_H
-

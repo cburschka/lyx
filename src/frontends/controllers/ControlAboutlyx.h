@@ -28,7 +28,7 @@ public:
 
 	///
 	stringstream & getCredits(stringstream &) const;
-	
+
 	///
 	string const getCopyright() const;
 
@@ -40,7 +40,7 @@ public:
 
 	///
 	string const getVersion() const;
-	
+
 
 private:
 	/// not needed.
@@ -48,4 +48,3 @@ private:
 };
 
 #endif // CONTROLABOUTLYX_H
-

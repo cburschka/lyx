@@ -8,27 +8,27 @@
  */
 
 /* A combination of two objects (a button and a browser) is encapsulated to
- * get a combobox-like object. All XForms functions are hidden.         
- * 
- */ 
+ * get a combobox-like object. All XForms functions are hidden.
+ *
+ */
 
 /* Change log:
- *  
- *  2/06/1996,   Alejandro Aguilar Sierra 
+ *
+ *  2/06/1996,   Alejandro Aguilar Sierra
  *    Created and tested.
- *  
- *  4/06/1996,   Alejandro Aguilar Sierra 
+ *
+ *  4/06/1996,   Alejandro Aguilar Sierra
  *    Added droplist mode (a button with a black down arrow at right)
  *    and support for middle and right buttons, as XForms choice object.
  *
  *  6/06/1996,   Lars Gullik Bjønnes
  *    Added a combox with an input object. and a pre and a post handle.
- * 
- *  22/07/96,    Alejandro Aguilar Sierra 
+ *
+ *  22/07/96,    Alejandro Aguilar Sierra
  *    Assigned to the browser its own popup window. No more need of
  *    external pre and post handlers to simulate the wanted behaviour.
- * 
- */ 
+ *
+ */
 
 #include <config.h>
 
@@ -46,19 +46,19 @@ using std::endl;
 // These are C wrappers around static members of Combox, used as
 // callbacks for xforms.
 extern "C" {
-	
+
 	static
 	void C_Combox_input_cb(FL_OBJECT * ob, long data)
 	{
 		Combox::input_cb(ob, data);
 	}
-	
+
 	static
-	void C_Combox_combo_cb(FL_OBJECT * ob, long data) 
+	void C_Combox_combo_cb(FL_OBJECT * ob, long data)
 	{
 		Combox::combo_cb(ob, data);
 	}
-	
+
 	static
 	int C_Combox_peek_event(FL_FORM * form, void *xev)
 	{
@@ -90,7 +90,7 @@ Combox::~Combox()
 
 void Combox::clear()
 {
-	if (browser) fl_clear_browser(browser);   
+	if (browser) fl_clear_browser(browser);
 	sel = 0;
 	if (type == FL_COMBOX_INPUT)
 		fl_set_input(label, "");
@@ -105,15 +105,15 @@ void Combox::remove()
 	lyxerr[Debug::GUI] << "Button: " << button << endl;
 	if (button) {
 		fl_delete_object(button);
-		fl_free_object(button); 
+		fl_free_object(button);
 	}
-	
+
 	lyxerr[Debug::GUI] << "Label: " << label << endl;
 	if (label && label != button) {
 		fl_delete_object(label);
-		fl_free_object(label); 
+		fl_free_object(label);
 	}
-	
+
 	lyxerr[Debug::GUI] << "Form: " << form << endl;
 	lyxerr[Debug::GUI] << "Browser: " << browser << endl;
 	if (form && browser) {
@@ -121,8 +121,8 @@ void Combox::remove()
 	   fl_free_object(browser);
 	   fl_free_form(form);
 	}
-	button = 0; 
-	browser = 0; 
+	button = 0;
+	browser = 0;
 	label = 0;
 	form = 0;
 	sel = 0;
@@ -134,14 +134,14 @@ void Combox::addline(string const & text)
 {
 	if (!browser) return;
 	fl_add_browser_line(browser, text.c_str());
-	
+
 	// By default the first item is selected
 	if (!sel) {
 		sel = 1;
 		if (type == FL_COMBOX_INPUT)
 			fl_set_input(label, text.c_str());
 		else
-			fl_set_object_label(label, text.c_str()); 
+			fl_set_object_label(label, text.c_str());
 	}
 	is_empty = false;
 }
@@ -151,7 +151,7 @@ bool Combox::select(string const & t)
 {
 	if (!browser || t.empty()) return false;
 	int const maxline = fl_get_browser_maxline(browser);
-	
+
 	for (int i = 1; i <= maxline; ++i) {
 		if (t == fl_get_browser_line(browser, i)) {
 			select(i);
@@ -165,14 +165,14 @@ bool Combox::select(string const & t)
 void Combox::select(int i)
 {
 	if (!browser || !button) return;
-	if (i > 0 && i <= fl_get_browser_maxline(browser)) sel = i; 
+	if (i > 0 && i <= fl_get_browser_maxline(browser)) sel = i;
 	fl_deactivate_object(button);
-	
+
 	if (type == FL_COMBOX_INPUT)
 		fl_set_input(label, fl_get_browser_line(browser, sel));
 	else
-		fl_set_object_label(label, fl_get_browser_line(browser, sel)); 
-	fl_activate_object(button); 
+		fl_set_object_label(label, fl_get_browser_line(browser, sel));
+	fl_activate_object(button);
 }
 
 
@@ -184,7 +184,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax,
 	tabfolder2 = tabfolder2_;
 
 	FL_OBJECT * obj;
-	
+
 	switch (type) {
 	case FL_COMBOX_DROPLIST:
 	{
@@ -193,7 +193,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax,
 		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_dblbuffer(obj, 1);
 		fl_set_object_callback(obj, C_Combox_combo_cb, 0);
-	        label = obj = fl_add_button(FL_NORMAL_TEXT, x, y, w-22, hmin, "");
+		label = obj = fl_add_button(FL_NORMAL_TEXT, x, y, w-22, hmin, "");
 		fl_set_object_boxtype(obj, FL_DOWN_BOX);
 		fl_set_object_color(obj, FL_MCOL, FL_BLACK);
 		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
@@ -249,7 +249,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax,
 	fl_end_form();
 	browser->u_vdata = this;
 	form->u_vdata = browser;
-	fl_register_raw_callback(form, 
+	fl_register_raw_callback(form,
 				 ButtonPressMask|KeyPressMask,
 				 C_Combox_peek_event);
 
@@ -271,16 +271,16 @@ void Combox::redraw()
 	if (button) fl_redraw_object(button);
 	if (label) fl_redraw_object(label);
 }
- 
+
 void Combox::show()
 {
 	if (_pre) _pre();
-	
+
 	int tmp;
 	XGetInputFocus(fl_get_display(), &save_window, &tmp); //BUG-Fix Dietmar
 	XFlush(fl_get_display());
 	if (button && type != FL_COMBOX_NORMAL) {
-		fl_set_object_label(button, "@2<-");	      
+		fl_set_object_label(button, "@2<-");
 		fl_redraw_object(button);
 	}
 
@@ -308,7 +308,7 @@ void Combox::show()
 			x += tabfolder1->form->x;
 			y += tabfolder1->form->y;
 		}
-		
+
 	} else {
 		x += label->form->x;
 		y += label->form->y;
@@ -316,7 +316,7 @@ void Combox::show()
 
 	fl_set_form_position(form, x, y);
 	fl_show_form(form, FL_PLACE_POSITION, FL_NOBORDER, "");
-        if (sel > 0) {
+	if (sel > 0) {
 		fl_set_browser_topline(browser, sel);
 		fl_select_browser_line(browser, sel);
 	}
@@ -328,34 +328,34 @@ void Combox::show()
 }
 
 void Combox::hide(int who)
-{  
+{
 	if (!who && browser && label) {
 		sel = fl_get_browser(browser);
-		
+
 		if (type == FL_COMBOX_INPUT)
 			fl_set_input(label, fl_get_browser_line(browser, sel));
 		else
 			fl_set_object_label(label,
-					    fl_get_browser_line(browser, sel));		
+					    fl_get_browser_line(browser, sel));
 //	        if (callback) callback(sel, cb_arg);
 	}
-        XUngrabPointer(fl_get_display(), 0);
+	XUngrabPointer(fl_get_display(), 0);
 	XFlush(fl_get_display());
-        if (form) {
+	if (form) {
 		fl_hide_form(form);
 		XSetInputFocus(fl_get_display(), save_window,
 			       RevertToParent, CurrentTime); // BUG-FIX-Dietmar
 		XFlush(fl_get_display());
-        }
+	}
 	if (button) {
-	        if (type != FL_COMBOX_NORMAL) {
+		if (type != FL_COMBOX_NORMAL) {
 			fl_set_object_label(button, "@2->");
 			fl_redraw_object(button);
 		}
-	} 
+	}
 	if (!who && browser && label && callback)
 	    callback(sel, cb_arg, this);
-        if (_post) _post();
+	if (_post) _post();
 }
 
 
@@ -405,20 +405,20 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 	switch (data) {
 	case 0:
-	{  
+	{
 		int const i = combo->get();
 		switch (fl_get_button_numb(ob)) {
-		case 2: 
+		case 2:
 		{
-			combo->select(i - 1); 
+			combo->select(i - 1);
 			if (combo->callback)
 				combo->callback(combo->sel,
 						combo->cb_arg, combo);
 			break;
 		}
-		case 3: 
+		case 3:
 		{
-			combo->select(i + 1);  
+			combo->select(i + 1);
 			if (combo->callback)
 				combo->callback(combo->sel,
 						combo->cb_arg, combo);
@@ -439,22 +439,22 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 {
 	FL_OBJECT * ob = static_cast<FL_OBJECT *>(form->u_vdata);
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
-	
-	// below mouse does not work like we need it 
+
+	// below mouse does not work like we need it
 	if (static_cast<XEvent *>(xev)->type == ButtonPress && (
 		static_cast<XEvent *>(xev)->xbutton.x - ob->x < 0 ||
 		static_cast<XEvent *>(xev)->xbutton.x - ob->x > ob->w ||
 		static_cast<XEvent *>(xev)->xbutton.y - ob->y < 0 ||
 		static_cast<XEvent *>(xev)->xbutton.y - ob->y > ob->h)) {
-		combo->hide(1); 
+		combo->hide(1);
 		return 1;
 	}
-		
+
 	if (static_cast<XEvent*>(xev)->type != KeyPress) return 0;
-	
+
 	char s_r[10]; s_r[9] = '\0';
 	KeySym keysym_return;
-	XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10, 
+	XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10,
 			      &keysym_return, 0);
 	XFlush(fl_get_display());
 	switch (keysym_return) {
@@ -463,7 +463,7 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 		    fl_get_browser_maxline(combo->browser))
 			fl_select_browser_line(combo->browser,
 					       fl_get_browser(combo->browser)+1);
-		if (fl_get_browser(combo->browser)>= 
+		if (fl_get_browser(combo->browser)>=
 		    fl_get_browser_topline(combo->browser) +
 		    fl_get_browser_screenlines(combo->browser))
 			fl_set_browser_topline(combo->browser,
@@ -473,12 +473,12 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 		    fl_get_browser_topline(combo->browser))
 			fl_set_browser_topline(combo->browser,
 					       fl_get_browser(combo->browser));
-		return 1; 
+		return 1;
 	case XK_Up:
 		if (fl_get_browser(combo->browser) > 1)
 			fl_select_browser_line(combo->browser,
 					       fl_get_browser(combo->browser)-1);
-		if (fl_get_browser(combo->browser)>= 
+		if (fl_get_browser(combo->browser)>=
 		    fl_get_browser_topline(combo->browser) +
 		    fl_get_browser_screenlines(combo->browser))
 			fl_set_browser_topline(combo->browser,
@@ -496,7 +496,7 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 		combo->hide(1);
 		return 1;
 	}
-	return 0;  
+	return 0;
 }
 
 
@@ -512,17 +512,17 @@ typedef struct {
 Combox combo(FL_COMBOX_INPUT);
 
 FD_test *fd_test;
-   
+
 FD_test *create_form_test(void)
 {
    FL_OBJECT *obj;
    FD_test *fdui = (FD_test *) fl_calloc(1, sizeof(*fdui));
-   
+
    fdui->test = fl_bgn_form(FL_NO_BOX, 320, 190);
    obj = fl_add_box(FL_UP_BOX, 0, 0, 320, 190, "");
    obj = fl_add_box(FL_DOWN_BOX, 10, 50, 300, 110, "");
    obj = fl_add_button(FL_NORMAL_BUTTON, 250, 10, 50, 30, _("Done"));
-   combo.add(10, 15, 120, 25, 135); 
+   combo.add(10, 15, 120, 25, 135);
    fl_end_form();
 
   return fdui;
@@ -536,8 +536,8 @@ void combo_cb(int i)
 int main(int argc, char *argv[])
 {
 	//int n1;
-   
-   // Same defaults as in lyx 
+
+   // Same defaults as in lyx
    FL_IOPT cntl;
    cntl.buttonFontSize = FL_NORMAL_SIZE;
    cntl.browserFontSize = FL_NORMAL_SIZE;
@@ -545,14 +545,14 @@ int main(int argc, char *argv[])
    cntl.choiceFontSize = FL_NORMAL_SIZE;
    cntl.inputFontSize = FL_NORMAL_SIZE;
    cntl.borderWidth = -2;
-   fl_set_defaults(FL_PDButtonFontSize, &cntl);  
-   fl_set_defaults(FL_PDBrowserFontSize, &cntl);  
-   fl_set_defaults(FL_PDLabelFontSize, &cntl);  
-   fl_set_defaults(FL_PDChoiceFontSize, &cntl);  
-   fl_set_defaults(FL_PDInputFontSize, &cntl);  
+   fl_set_defaults(FL_PDButtonFontSize, &cntl);
+   fl_set_defaults(FL_PDBrowserFontSize, &cntl);
+   fl_set_defaults(FL_PDLabelFontSize, &cntl);
+   fl_set_defaults(FL_PDChoiceFontSize, &cntl);
+   fl_set_defaults(FL_PDInputFontSize, &cntl);
    fl_set_defaults(FL_PDBorderWidth, &cntl);
    fl_initialize(&argc, argv, 0, 0, 0);
-   
+
    fd_test = create_form_test();
 
    /* fill-in form initialization code */
@@ -569,7 +569,7 @@ int main(int argc, char *argv[])
    combo.addline("Verbatim");
    combo.setcallback(combo_cb);
 //   combo.select(4);
-   
+
    /* show the first form */
    fl_show_form(fd_test->test, FL_PLACE_CENTER, FL_FULLBORDER, "test");
    fl_do_forms();

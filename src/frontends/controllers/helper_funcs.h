@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -32,7 +32,7 @@ std::vector<string> const
 getVectorFromString(string const & str, string const & delim=",");
 
 class LyXView;
- 
+
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
     title: the title of the dialog.
@@ -41,7 +41,7 @@ class LyXView;
 */
 string const browseFile(LyXView *lv, string const & filename,
 			string const & title,
-			string const & pattern, 
+			string const & pattern,
 			std::pair<string,string> const & dir1 = std::make_pair(string(), string()),
 			std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
 
@@ -55,7 +55,7 @@ string const browseFile(LyXView *lv, string const & filename,
 string const browseRelFile(LyXView *lv, string const & filename,
 			   string const & refpath,
 			   string const & title,
-			   string const & pattern, 
+			   string const & pattern,
 			   std::pair<string,string> const & dir1 = std::make_pair(string(), string()),
 			   std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
 
@@ -81,7 +81,7 @@ struct seconder {
 	typedef typename Pair::second_type second_type;
 	second_type const & operator()(Pair const & p) { return p.second; }
 };
- 
+
 }
 
 ///

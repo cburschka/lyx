@@ -79,7 +79,7 @@
 #include "xforms/FormPreferences.h"
 #include "xforms/FormShowFile.h"
 #include "xforms/FormTabular.h"
- 
+
 #include "GUI.h"
 
 Dialogs::Dialogs(LyXView * lv)
@@ -99,10 +99,10 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 	add(new GUILog<QLog, Qt2BC>(*lv, *this));
 	add(new GUIMinipage<QMinipage, Qt2BC>(*lv, *this));
-	add(new GUIPreamble<QPreamble, Qt2BC>(*lv, *this)); 
+	add(new GUIPreamble<QPreamble, Qt2BC>(*lv, *this));
 	add(new GUIPrint<QPrint, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
-	add(new GUISearch<QSearch, Qt2BC>(*lv, *this)); 
+	add(new GUISearch<QSearch, Qt2BC>(*lv, *this));
 	add(new GUIShowFile<QShowFile, Qt2BC>(*lv, *this));
 	add(new GUISpellchecker<QSpellchecker, Qt2BC>(*lv, *this));
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
@@ -114,11 +114,11 @@ Dialogs::Dialogs(LyXView * lv)
 
 	// dialogs not yet MVCd
 	add(new FormDocument(lv, this));
- 	add(new FormMathsPanel(lv, this));
+	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
- 
+
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());

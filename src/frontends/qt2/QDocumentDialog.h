@@ -8,7 +8,7 @@
 
 #ifndef QDOCUMENTDIALOG_H
 #define QDOCUMENTDIALOG_H
- 
+
 #include "ui/QDocumentDialogBase.h"
 
 class QDocument;
@@ -21,7 +21,7 @@ public:
 	~QDocumentDialog();
 
 public slots:
-#if 0 
+#if 0
 	void slotApply();
 	void slotBulletLaTeX(const QString&);
 	void slotAMSMath(bool);
@@ -73,7 +73,7 @@ public slots:
 	void slotTOCDepth(int);
 	void slotUseGeometryPackage(bool);
 	void slotWidth(const QString&);
-#endif 
+#endif
 
 protected:
 	void closeEvent(QCloseEvent *);

@@ -18,7 +18,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > base_class;
- 
+
 QIndex::QIndex(ControlIndex & c)
 	: base_class(c, _("Index"))
 {
@@ -34,13 +34,13 @@ void QIndex::build_dialog()
 	bc().addReadOnly(dialog_->keywordED);
 }
 
- 
+
 void QIndex::update_contents()
 {
 	dialog_->keywordED->setText(controller().params().getContents().c_str());
 }
 
- 
+
 void QIndex::apply()
 {
 	controller().params().setContents(dialog_->keywordED->text().latin1());

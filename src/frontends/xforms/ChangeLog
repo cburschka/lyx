@@ -1,3 +1,7 @@
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* several files: ws cleanup
+
 2002-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lots: whitespace changes.
@@ -36,7 +40,7 @@
 	only if the dialog is visible.
 	(getTooltip): renamed get.
 	(toggleTooltips): renamed set and made public,
-	
+
 	* FormBase.C (show):
 	* FormBaseDeprecated.C (show): move tooltip-inards into Tooltip.
 
@@ -57,7 +61,7 @@
 2002-03-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C: add spaces to error messages
- 
+
 2002-03-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.C (show):
@@ -81,7 +85,7 @@
 	2. Rename all button_cancel as button_close.
 	3. Ensure that all objects follow the naming scheme outlined in
 	   forms/README
-	   
+
 	class             | prefix
 	------------------+-------
 	FL_BROWSER        | browser
@@ -151,7 +155,7 @@
 2002-03-10  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormToc.C: make goto not reset the dialog
- 
+
 2002-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FeedbackController.[Ch]: new files, providing a standard interface to
@@ -355,7 +359,7 @@
 2002-02-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormMinipage.C: return SMI_VALID on other form changes
- 
+
 2002-02-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* FormParagraph.C (update): [VSpace:] Delete the special method
@@ -365,7 +369,7 @@
 	and updateWidgetsFromLength.
 
 2002-02-10  Rob Lahaye  <lahaye@users.sourceforge.net>
- 
+
 	* forms/form_external.fd:
 	* form_external.C: change color2 of a few buttons into the
 	proper grey color.
@@ -383,7 +387,7 @@
 	* FormGraphics.C:
 	* form_graphics.[Ch]: simplify the bounding box folder
 	of the Graphic GUI
-	
+
 2002-02-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (create_submenu): work around an xforms bug (?)
@@ -417,7 +421,7 @@
 	* FormCitation.[Ch]:
 	* FormTexinfo.[Ch]:
 	* Makefile.am: altered appropriately.
-	
+
 2002-02-06  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* forms/form_texinfo.fd:
@@ -450,7 +454,7 @@
 
 2002-02-05  Herbert Voss  <voss@lyx.org>
 
-	* forms/form_graphics.fd: Noew the same view of the 
+	* forms/form_graphics.fd: Noew the same view of the
 	buttons as in preferences (LyXView). Make some things clear
 	with better names.
 	* FormGraphic.C: cosmetic changes to the layout. Delete
@@ -462,7 +466,7 @@
 	* forms/form.citation.fd,form.bibtex.fd: add text_info
 	* FormTexinfo.[Ch]: Delete Help mechanism, add tooltips and help messages.
 	* FormCitation.[Ch],FormBibtex.[Ch]: add tooltips and help messages (actually
-	no tooltips in Bibtex). 
+	no tooltips in Bibtex).
 
 2002-02-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -499,7 +503,7 @@
 
 2002-02-03  Herbert Voss  <voss@lyx.org>
 
-	* xforms_helpers.C: fix bug with unit "%" in 
+	* xforms_helpers.C: fix bug with unit "%" in
 	updateWidgetsFromLengthString(...)
 
 2002-02-02  Herbert Voss  <voss@lyx.org>
@@ -573,8 +577,8 @@
 
 2002-01-27  Herbert Voss  <voss@lyx.org>
 
-	* FormGraphic.[Ch]: 
-	* form_graphic.[Ch]: 
+	* FormGraphic.[Ch]:
+	* form_graphic.[Ch]:
 	* forms/form_graphic.fd: rewritten to support graphicx with
 	all options and to be sure that the old figinsets are correct
 	converted.
@@ -621,7 +625,7 @@
 	* Toolbar_pimpl.C (update): disable layout combox when LFUN_LAYOUT
 	is disabled
 
-	* combox.C (activate): 
+	* combox.C (activate):
 	(deactivate): change color of labels to reflect the state of the
 	combox
 
@@ -653,7 +657,7 @@
 2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormDocument.C: enable line spacing input properly
- 
+
 2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* forms/form_preferences.fd:
@@ -661,12 +665,12 @@
 	* form_preferences.C:
 	* FormPreferences.h:
 	* FormPreferences.C: use better variable name
- 
+
 2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* forms/form_preferences.fd: change "Use Scalable Fonts"
 	  to "Rescale bitmap fonts"
- 
+
 2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMathsPanel.C:
@@ -701,32 +705,32 @@
 
 	* xformsBC.C: #include ButtonController.tmpl, containing the
 	instatiation of the button controller.
-	
+
 2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormThesaurus.C: fix a crash
 
 2002-1-15  Martin Vermeer <martin.vermeer@hut.fi>
 
-        * FormMathsDelim.C:
-        * form_maths_delim_C:
-        * form_maths_delim.h:
-        * form_maths_delin.fd:
-        Put three radio buttons on the delimiters pop-up. It works as follows:
-        
-                                left mouse     middle mouse        right mouse
-        ----------------------------------------------------------------------
-        Left radio button   |       (               ()                   )
-        Middle radio button |       ()              ()                   )
-        Right radio button  |        )               )                   )
-        ----------------------------------------------------------------------
+	* FormMathsDelim.C:
+	* form_maths_delim_C:
+	* form_maths_delim.h:
+	* form_maths_delin.fd:
+	Put three radio buttons on the delimiters pop-up. It works as follows:
 
-	Where 
+				left mouse     middle mouse        right mouse
+	----------------------------------------------------------------------
+	Left radio button   |       (               ()                   )
+	Middle radio button |       ()              ()                   )
+	Right radio button  |        )               )                   )
+	----------------------------------------------------------------------
+
+	Where
 
 	(       left-side delimiter selected
 	)       right-side delimiter selected
 	()      "symmnetric pair" selected, of which the clicked delimiter is
-		the left one. 
+		the left one.
 		So, if the middle radio button is activated ("()\nBoth")
 		and you click on "[" with the default (left) mouse button, you
 		get the delimiter pair "[]".
@@ -791,7 +795,7 @@
 2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormSpellchecker.C: disable resizing due to xforms bug
- 
+
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* FormFiledialog.C (Reread): skip broken symlinks
@@ -806,10 +810,10 @@
 	* MathsSymbols.C (get_pixmap_from_symbol): add a default statement
 	in the switch.
 
-	* FormPreferences.C (Interface::input): 
-	(Language::input): 
+	* FormPreferences.C (Interface::input):
+	(Language::input):
 	(Paths::input): add shortcuts to file dialogs directory buttons
-	
+
 	* FormPreference.h (browse): add default empty parameters for
 	buttons descriptions.
 
@@ -823,14 +827,14 @@
 	* form_thesaurus.h:
 	* form_thesaurus.C:
 	* forms/form_thesaurus.fd: update to Aiksaurus 0.14
- 
+
 2002-01-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Toolbar_pimpl.C (setPixmap): simplify a bit
 
 2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* Toolbar_pimpl.C (ToolbarCB): 
+	* Toolbar_pimpl.C (ToolbarCB):
 	* Menubar_pimpl.C (MenuCallback): use verboseDispatch instead of
 	dispatch.
 
@@ -838,7 +842,7 @@
 
 	* FormTabular.C (FormTabular): Fix Purify UMR.
 
-	* FormPreferences.C (build): "Conversion" is a better name. 
+	* FormPreferences.C (build): "Conversion" is a better name.
 
 2002-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
@@ -869,7 +873,7 @@
 2002-01-09  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* forms/form_maths_style.fd:
-	* FormMathsStyle.[Ch]: New files, Implementing a mathed pop-up for math 
+	* FormMathsStyle.[Ch]: New files, Implementing a mathed pop-up for math
 	size "styles" and font types.
 	* FormMathsPanel.[Ch]:
 	* MathsSymbols.C:
@@ -877,7 +881,7 @@
 
 2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* Menubar_pimpl.C (create_submenu): 
+	* Menubar_pimpl.C (create_submenu):
 	* Toolbar_pimpl.C (update): use FuncStatus.
 
 2002-01-08  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -915,13 +919,13 @@
 
 	* form_*:
 	* forms/form_*: change radio buttons to round3dbutton
- 
+
 2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormFiledialog.C: add FIXME
- 
+
 	* xforms_helpers.C: fix use of FileInfo
- 
+
 2002-01-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormTabular.h:
@@ -930,7 +934,7 @@
 	* form_tabular.C:
 	* forms/form_tabular.fd: ugly fix to get around
 	  some of the UI problems (bug #110).
- 
+
 2002-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormDocument.C: Recognize the default paper settings too
@@ -950,9 +954,9 @@
 
 	* DropDown.C: always include <config.h> in sources.
 
-	* xforms_helpers.h: 
-	* FormFiledialog.h: 
-	* Timeout_pimpl.h: 
+	* xforms_helpers.h:
+	* FormFiledialog.h:
+	* Timeout_pimpl.h:
 	* DropDown.h: do not include <config.h> in headers
 
 2001-12-20  Juergen Vigna  <jug@sad.it>
@@ -972,7 +976,7 @@
 
 	* FormToc.C: fix crash when no entries, and
 	  update types properly
- 
+
 2001-12-11  Ben Stanley <bds02@uow.edu.au>
 
 	* Menubar_pimpl.C: Fixed a crashing bug when document has more
@@ -1011,13 +1015,13 @@
 
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
-       * FormParagraph.C (getCurrentParagraph): 
+       * FormParagraph.C (getCurrentParagraph):
 	(apply):  get the right LyXText !
- 
+
 2001-11-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: disallow page breaks in insets
- 
+
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: allow signed space above/below, actually
@@ -1026,7 +1030,7 @@
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormToc.C: fixes to make floatlists work
- 
+
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -1037,7 +1041,7 @@
 	* forms/fdfix.sh: move idex etc. to here
 
 	* GUIRunTime.C: move getScreenDPI() to here
- 
+
 2001-11-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
        * forms/form_ref.fd, form_preferences.fd, form_citation.fd,
@@ -1057,7 +1061,7 @@
 
 	* FormFiledialog.C: don't reset path if new dir
 	  doesn't exist.
- 
+
 2001-11-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
        * forms/form_document.fd: Renamed "Save as Class Defaults"
@@ -1070,16 +1074,16 @@
 2001-11-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* DropDown.C: fix crash, improve behaviour a bit
- 
+
 2001-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* FormDocument.C (class_apply): 
-	(paper_apply): 
-	(language_apply): 
-	(options_apply): 
+	* FormDocument.C (class_apply):
+	(paper_apply):
+	(language_apply):
+	(options_apply):
 	(bullets_apply): add a version of these methods taking a
 	BufferParams& parameters. The original versions are now wrappers
-	around these. 
+	around these.
 	(saveParamsAsDefault): new function, moved from old
 	LFUN_LAYOUT_SAVE_DEFAULT code.
 
@@ -1088,11 +1092,11 @@
 	* Makefile.am:
 	* DropDown.h:
 	* DropDown.C: drop-down completion
- 
+
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* forms/form_graphics.fd: change clashing shortcut
- 
+
 2001-10-24  Juergen Vigna  <jug@sad.it>
 
 	* FormTabular.C: changed calls for footer/headers of longtabulars.
@@ -1116,8 +1120,8 @@
 2001-10-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
        * forms/form_document.fd:
-         Class: add a value choice for Default Skip.
-         Some rearrangements (minor tweaks).
+	 Class: add a value choice for Default Skip.
+	 Some rearrangements (minor tweaks).
        * FormDocument.C: Handle that choice, minor tweaks.
        * forms/form_paragraph.fd: Add value choices
        * FormParagraph.C: Handle that choices.
@@ -1139,7 +1143,7 @@
 	* FormTexinfo.[Ch]: some changes to the code
 
 2001-10-10  André Pönitz  <poenitz@htwm.de>
-	
+
 	* FormsMathMatrix.C: add missing space between v- and h-alignment
 	parameters
 
@@ -1370,10 +1374,10 @@
 	* FormPreferences.[Ch] (connect, disconnect): removed (redundant).
 
 	* FormMaths*.C (c-tor): prohibit resizing of the dialog.
-	
+
 2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* Toolbar_pimpl.C (setLayout): 
+	* Toolbar_pimpl.C (setLayout):
 	(layoutSelected): make them work even when gettext has been
 	translating the interface.
 
@@ -1425,7 +1429,7 @@
 2001-09-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: fix default line spacing case
- 
+
 2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: disable space inputs when != Length
@@ -1436,15 +1440,15 @@
 	* form_preferences.h:
 	* form_preferences.C:
 	* forms/form_preferences.fd: add view_dvi_paper_option
- 
+
 2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormMathsPanel.h: sub dialogs must be Ignorant.
- 
+
 2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: fix to not allow 0 linespacing
- 
+
 2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCitation.C (c-tor): prevent re-sizing of the dialog.
@@ -1487,14 +1491,14 @@
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C: initApplication() should take a int & argc
- 
+
 2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCitation.h:
 	* FormCitation.C: tidy code a little
- 
+
 	* GUIRunTime.C: more informative error
- 
+
 2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/form_preferences.fd: order the items "logically" so that
@@ -1551,19 +1555,19 @@
 
 	* combox.h: fix source doc
 
-	* form_math_matrix.C: 
+	* form_math_matrix.C:
 	* forms/form_math_matrix.fd: new layout
- 
+
 2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* form_paragraph.h:
 	* form_paragraph.C:
 	* forms/form_paragraph.fd:
 	* FormParagraph.C: support per-para linespacing
- 
+
 	* forms/form_float.fd:
 	* form_float.C: fix shortcut typo
- 
+
 2001-08-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/form_character.fd: small adjustment to the position of John's
@@ -1608,7 +1612,7 @@
 	* form_maths_panel.C:
 	* form_maths_panel.h:
 	* forms/form_maths_panel.fd: re-add dots bitmaps
-	 
+
 	* FormRef.C: "Goto" -> "Go to"
 
 2001-07-29  John Levon  <moz@compsoc.man.ac.uk>
@@ -1673,11 +1677,11 @@
 	* FormGraphics.C:
 	* forms/form_graphics.fd: Removed inline option, all InsetGraphics figures
 	are inlined.
-	
+
 2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormInclude.C: add load file facility back
- 
+
 2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCharacter.C: disable resizing as it doesn't work
@@ -1755,15 +1759,15 @@
 
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* GUIRunTime.C (x11Display): 
-	(x11Screen): 
-	(x11Colormap): 
+	* GUIRunTime.C (x11Display):
+	(x11Screen):
+	(x11Colormap):
 	(x11VisualDepth): new methods
 
 2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormDocument.C (class_apply): call CutAndPaste::'s staitc method
-	directly. 
+	directly.
 
 	* Toolbar_pimpl.h: make owner be a XFormsView, small changes
 	because of this.
@@ -1785,14 +1789,14 @@
 
 	* FormPrint.C (input): modify to select radio_file
 	  when the user uses the filename input
- 
+
 2001-06-26  The LyX Project  <lyx@violet.home.sad.it>
 
 	* combox.C (remove): send debug output to Debug::GUI.
 
 2001-06-26  The LyX Project  <lyx@rose.home.sad.it>
 
-	* Menubar_pimpl.C (create_submenu): 
+	* Menubar_pimpl.C (create_submenu):
 	* Toolbar_pimpl.C (update): update to use func_status
 
 2001-06-25  The LyX Project  <lyx@tulip.home.sad.it>
@@ -1847,9 +1851,9 @@
 
 2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* MathsSymbols.C: 
+	* MathsSymbols.C:
 	* FormMathsMatrix.C: bring C functions into global namespace if
-	necessary. 
+	necessary.
 
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -1893,9 +1897,9 @@
 
 2001-04-16  Allan Rae  <rae@lyx.org>
 
-	* xforms_helpers.C (formatted): 
+	* xforms_helpers.C (formatted):
 	* Menubar_pimpl.C (add_toc): #warning triggers an error on Sun CC 6.0
-	as an unrecognised preprocessor directive.  So ensure they're wrapped. 
+	as an unrecognised preprocessor directive.  So ensure they're wrapped.
 
 2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -1947,7 +1951,7 @@
 	Squashed bug when creating a new inset, the keys field contained
 	one (empty) key. No more; thanks, Dekel.
 
-	* FormExternal.C: 
+	* FormExternal.C:
 	* forms/form_external.fd: added Apply button.
 
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -2095,7 +2099,7 @@
 2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBaseDeprecated.[Ch]: rename title as title_.
-	
+
 	* FormBaseDeprecated.C: restore John's trick to give the dialog a border
 	with limited functionality. It got lost in the MVC merge.
 
@@ -2126,7 +2130,7 @@
 	* FormTabularCreate.C (build):
 	* FormToc.C (build):
 	* FormUrl.C (build): removed initialisation of minw_, minh_.
-	
+
 	* The Maths Panel stuff no longer causes a crash on exit from LyX.
 
 	* FormMaths.[Ch]:
@@ -2163,10 +2167,10 @@
 
 	* Dialogs.C (Dialogs): create minipage options dialog.
 
-	* forms/form_minipage.fd: 
-	* form_minipage.C: 
-	* form_minipage.h: 
-	* FormMinipage.C: 
+	* forms/form_minipage.fd:
+	* form_minipage.C:
+	* form_minipage.h:
+	* FormMinipage.C:
 	* FormMinipage.h: new files for the minipage options dialog.
 
 2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -2184,7 +2188,7 @@
 2001-03-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* FormMaths.C (C_FormMathsDelimCB): add usual .c_str() for lyxstring
-	compatibility. 
+	compatibility.
 
 2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -2261,13 +2265,13 @@
 
 	* Makefile.am: added FormCredits.[Ch] and form_credits.[Ch]
 	* forms/makefile: added form_credits.fd
-	
+
 	* Dialogs.C: added FormCredits and removed ShowCredits.
-	
+
 	* FormCredits.[Ch]:
 	* forms/form_credits.fd:
 	* forms/form_search.fd: ported to the MVC way.
-	
+
 2001-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xforms_helpers.h (formatted): now has default arguments for size and
@@ -2275,7 +2279,7 @@
 
 	* FormCitation.[Ch]: moved code out of this class and into
 	ControlCitation and associated helper funcs.
-	
+
 2001-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.[Ch]: (InputCB): use ButtonController::input() rather than
@@ -2384,7 +2388,7 @@
 	* forms/form_splash.fd:
 	* FormSplash.h:
 	* FormSplash.C: make independent of FormBase, tidy
-	
+
 	* Menubar_pimpl.C: destroy splash on interaction
 
 2001-03-12  John Levon  <moz@compsoc.man.ac.uk>
@@ -2411,7 +2415,7 @@
 
 2001-03-07  Edwin Leuven  <leuven@fee.uva.nl>
 
-        * added credits:
+	* added credits:
 	* Dialogs.C:
 	* Makefile.am:
 	* FormCredits.[Ch]:
@@ -2423,7 +2427,7 @@
 	* Menubar_pimpl.h: make Pipl::ItemInfo::item_ a boost::shared_ptr,
 	make ButtonList contain boost::shared_ptr<ItemInfo>
 
-	* Menubar_pimpl.C (~Pimpl): remove destructor 
+	* Menubar_pimpl.C (~Pimpl): remove destructor
 
 2001-03-06  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -2517,9 +2521,9 @@
 	* form_character.C: added
 	* form_character.h: added
 	* forms/form_character.fd: added
-               
+
 2001-02-23  Dekel Tsur  <dekelts@tau.ac.il>
- 
+
 	* FormPreferences.C: Handle lyxrc.language_use_babel and
 	lyxrc.language_global_options.
 
@@ -2536,7 +2540,7 @@
 
 2001-02-21  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* FormDocument.C (checkMarginValues): Activate "use geometry" button 
+	* FormDocument.C (checkMarginValues): Activate "use geometry" button
 	if using custom paper size/margin.
 
 2001-02-21  Allan Rae  <rae@lyx.org>
@@ -2545,13 +2549,13 @@
 
 2001-02-20  Edwin Leuven <leuven@fee.uva.nl>
 
-        * src/frontends/xforms/Dialogs.C: added preamble
-        * src/frontends/xforms/FormPreamble.C: added
-        * src/frontends/xforms/FormPreamble.h: added
-        * src/frontends/xforms/Makefile.am: added
-        * src/frontends/xforms/form_preamble.C: added
-        * src/frontends/xforms/form_preamble.h: added
-        * src/frontends/xforms/form_preamble.fd: added
+	* src/frontends/xforms/Dialogs.C: added preamble
+	* src/frontends/xforms/FormPreamble.C: added
+	* src/frontends/xforms/FormPreamble.h: added
+	* src/frontends/xforms/Makefile.am: added
+	* src/frontends/xforms/form_preamble.C: added
+	* src/frontends/xforms/form_preamble.h: added
+	* src/frontends/xforms/form_preamble.fd: added
 
 2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -2715,7 +2719,7 @@
 2001-01-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* FormPreferences.C (GetFrom): fix crash when there is no format
-	defined. 
+	defined.
 	(GetTo): ditto.
 
 2001-01-23  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -2726,10 +2730,10 @@
 2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C (update): Do not update dialog_->{ref,name,type}
- 	if inset_ == 0.
+	if inset_ == 0.
 	Deactivate the type button when buffer is LinuxDoc/Docbook
 	(build): Uncomment calls to addReadOnly().
-	(updateBrowser) Do not disable the update button when there are no 
+	(updateBrowser) Do not disable the update button when there are no
 	keys.
 	(build, getType, getName): Use InsetRef::types.
 
@@ -2742,4 +2746,3 @@
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C (input): Fix the behavior of goto reference button.
-

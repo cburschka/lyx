@@ -16,14 +16,14 @@ class ControlError;
 class QErrorDialog;
 
 class QError :
-	public Qt2CB<ControlError, Qt2DB<QErrorDialog> > 
+	public Qt2CB<ControlError, Qt2DB<QErrorDialog> >
 {
 	friend class QErrorDialog;
- 
-public: 
+
+public:
 	QError(ControlError &);
 
-private: 
+private:
 	/// Apply changes
 	virtual void apply() {};
 	/// update

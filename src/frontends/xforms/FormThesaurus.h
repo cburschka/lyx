@@ -30,7 +30,7 @@ class FormThesaurus : public FormCB<ControlThesaurus, FormDB<FD_form_thesaurus> 
 public:
 	///
 	FormThesaurus(ControlThesaurus &);
- 
+
 private:
 	/// not needed.
 	virtual void apply() {}
@@ -50,7 +50,7 @@ private:
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
- 
+
 	/// for double click handling
 	int clickline_;
 

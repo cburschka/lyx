@@ -21,7 +21,7 @@ class QPreambleDialog;
 
 ///
 class QPreamble
-	: public Qt2CB<ControlPreamble, Qt2DB<QPreambleDialog> > 
+	: public Qt2CB<ControlPreamble, Qt2DB<QPreambleDialog> >
 {
 public:
 	///

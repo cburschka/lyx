@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -84,7 +84,7 @@ Buffer::SingleList const ControlToc::getContents(string const & type) const
 }
 
 
-namespace toc 
+namespace toc
 {
 
 string const getType(string const & cmdName)
@@ -97,5 +97,5 @@ string const getType(string const & cmdName)
 
 	return type;
 }
- 
-} // namespace toc 
+
+} // namespace toc

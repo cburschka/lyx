@@ -13,7 +13,7 @@
 
 #include "QParagraphDialog.h"
 #include "QParagraph.h"
-#include "support/lstrings.h" 
+#include "support/lstrings.h"
 #include "debug.h"
 
 #include <qlineedit.h>
@@ -28,7 +28,7 @@ using std::endl;
 
 QParagraphDialog::QParagraphDialog(QParagraph * form, QWidget * parent,
 				   char const * name, bool modal, WFlags fl)
-	: QParagraphDialogBase(parent, name, modal, fl), 
+	: QParagraphDialogBase(parent, name, modal, fl),
 	  form_(form)
 {
 	setCaption(name);
@@ -95,7 +95,7 @@ void QParagraphDialog::setSpace(VSpace::vspace_kind kindabove,
 				bool keepabove, bool keepbelow)
 {
 	int item = 0;
-	
+
 	switch (kindabove) {
 		case VSpace::NONE: item = 0; break;
 		case VSpace::DEFSKIP: item = 1; break;
@@ -106,7 +106,7 @@ void QParagraphDialog::setSpace(VSpace::vspace_kind kindabove,
 		case VSpace::LENGTH: item = 6; break;
 	}
 	spacingAbove->setCurrentItem(item);
-	
+
 	switch (kindbelow) {
 		case VSpace::NONE: item = 0; break;
 		case VSpace::DEFSKIP: item = 1; break;
@@ -117,20 +117,20 @@ void QParagraphDialog::setSpace(VSpace::vspace_kind kindabove,
 		case VSpace::LENGTH: item = 6; break;
 	}
 	spacingBelow->setCurrentItem(item);
-	
+
 	spacingAboveValue->setEnabled(kindabove == VSpace::LENGTH);
 	spacingAbovePlus->setEnabled(kindabove == VSpace::LENGTH);
 	spacingAboveMinus->setEnabled(kindabove == VSpace::LENGTH);
 	spacingBelowValue->setEnabled(kindbelow == VSpace::LENGTH);
 	spacingBelowPlus->setEnabled(kindbelow == VSpace::LENGTH);
 	spacingBelowMinus->setEnabled(kindbelow == VSpace::LENGTH);
-	
+
 	spacingAboveKeep->setChecked(keepabove);
 	spacingBelowKeep->setChecked(keepbelow);
 }
 
 
-void QParagraphDialog::setAboveLength(float val, float plus, float minus, 
+void QParagraphDialog::setAboveLength(float val, float plus, float minus,
 				      LyXLength::UNIT vunit,
 				      LyXLength::UNIT punit,
 				      LyXLength::UNIT munit)
@@ -144,7 +144,7 @@ void QParagraphDialog::setAboveLength(float val, float plus, float minus,
 		spacingAbovePlus->setText(tostr(plus).c_str());
 		spacingAboveMinus->setText(tostr(minus).c_str());
 	}
-	
+
 	spacingAboveValueUnit->setCurrentItem(getItem(vunit));
 	spacingAbovePlusUnit->setCurrentItem(getItem(punit));
 	spacingAboveMinusUnit->setCurrentItem(getItem(munit));
@@ -152,7 +152,7 @@ void QParagraphDialog::setAboveLength(float val, float plus, float minus,
 }
 
 
-void QParagraphDialog::setBelowLength(float val, float plus, float minus, 
+void QParagraphDialog::setBelowLength(float val, float plus, float minus,
 				      LyXLength::UNIT vunit,
 				      LyXLength::UNIT punit,
 				      LyXLength::UNIT munit)
@@ -166,7 +166,7 @@ void QParagraphDialog::setBelowLength(float val, float plus, float minus,
 		spacingBelowPlus->setText(tostr(plus).c_str());
 		spacingBelowMinus->setText(tostr(minus).c_str());
 	}
-	
+
 	spacingBelowValueUnit->setCurrentItem(getItem(vunit));
 	spacingBelowPlusUnit->setCurrentItem(getItem(punit));
 	spacingBelowMinusUnit->setCurrentItem(getItem(munit));
@@ -174,7 +174,7 @@ void QParagraphDialog::setBelowLength(float val, float plus, float minus,
 
 
 void QParagraphDialog::setExtra(float widthval, LyXLength::UNIT units,
-				string const & percent, int align, 
+				string const & percent, int align,
 				bool hfill, bool startminipage,
 				Paragraph::PEXTRA_TYPE type)
 {
@@ -191,38 +191,38 @@ void QParagraphDialog::setExtra(float widthval, LyXLength::UNIT units,
 		}
 	} else
 		extraWidth->setText("");
-	
+
 	switch (type) {
-		case Paragraph::PEXTRA_NONE: 
-			extraType->setCurrentItem(0); 
+		case Paragraph::PEXTRA_NONE:
+			extraType->setCurrentItem(0);
 			break;
-		case Paragraph::PEXTRA_MINIPAGE: 
-			extraType->setCurrentItem(1); 
-			enable_extraOptions(1); 
-			enable_minipageOptions(1); 
+		case Paragraph::PEXTRA_MINIPAGE:
+			extraType->setCurrentItem(1);
+			enable_extraOptions(1);
+			enable_minipageOptions(1);
 			break;
-		case Paragraph::PEXTRA_FLOATFLT: 
-			extraType->setCurrentItem(2); 
-			enable_extraOptions(2); 
+		case Paragraph::PEXTRA_FLOATFLT:
+			extraType->setCurrentItem(2);
+			enable_extraOptions(2);
 			break;
-		case Paragraph::PEXTRA_INDENT: 
-			extraType->setCurrentItem(3); 
-			enable_extraOptions(3); 
+		case Paragraph::PEXTRA_INDENT:
+			extraType->setCurrentItem(3);
+			enable_extraOptions(3);
 			break;
 	}
-	
+
 	switch (align) {
-		case Paragraph::MINIPAGE_ALIGN_TOP: 
-			minipageValign->setCurrentItem(0); 
+		case Paragraph::MINIPAGE_ALIGN_TOP:
+			minipageValign->setCurrentItem(0);
 			break;
-		case Paragraph::MINIPAGE_ALIGN_MIDDLE:	
-			minipageValign->setCurrentItem(1); 
+		case Paragraph::MINIPAGE_ALIGN_MIDDLE:
+			minipageValign->setCurrentItem(1);
 			break;
-		case Paragraph::MINIPAGE_ALIGN_BOTTOM:	
-			minipageValign->setCurrentItem(2); 
+		case Paragraph::MINIPAGE_ALIGN_BOTTOM:
+			minipageValign->setCurrentItem(2);
 			break;
 	}
-	
+
 	minipageHfill->setChecked(hfill);
 	minipageStart->setChecked(startminipage);
 }
@@ -241,7 +241,7 @@ LyXGlueLength QParagraphDialog::getAboveLength() const
 	return len;
 }
 
- 
+
 LyXGlueLength QParagraphDialog::getBelowLength() const
 {
 	LyXGlueLength len(
@@ -259,8 +259,8 @@ LyXGlueLength QParagraphDialog::getBelowLength() const
 LyXLength QParagraphDialog::getExtraWidth() const
 {
 	if (extraUnit->currentItem() != 11) {
-		LyXLength len( 
-			 (extraWidth->text()).toDouble(), 
+		LyXLength len(
+			 (extraWidth->text()).toDouble(),
 			 getLyXLength(extraUnit->currentItem())
 			 );
 		return len;
@@ -270,7 +270,7 @@ LyXLength QParagraphDialog::getExtraWidth() const
 	}
 }
 
- 
+
 string QParagraphDialog::getExtraWidthPercent() const
 {
 	double val = (extraWidth->text()).toDouble();
@@ -282,13 +282,13 @@ string QParagraphDialog::getExtraWidthPercent() const
 }
 
 
-char const * QParagraphDialog::getLabelWidth() const 
+char const * QParagraphDialog::getLabelWidth() const
 {
-	return labelWidth->text(); 
+	return labelWidth->text();
 }
 
 
-LyXAlignment QParagraphDialog::getAlign() const 
+LyXAlignment QParagraphDialog::getAlign() const
 {
 	switch (alignment->currentItem()) {
 		case 0: return LYX_ALIGN_BLOCK;
@@ -298,63 +298,63 @@ LyXAlignment QParagraphDialog::getAlign() const
 		default: return LYX_ALIGN_CENTER;
 	}
 }
-	
-	
-bool QParagraphDialog::getAboveKeep() const 
-{ 
-	return spacingAboveKeep->isChecked(); 
-}
 
-	
-bool QParagraphDialog::getBelowKeep() const 
-{ 
-	return spacingBelowKeep->isChecked(); 
-}
 
-	
-bool QParagraphDialog::getLineAbove() const 
-{ 
-	return lineAbove->isChecked(); 
-}
-
-	
-bool QParagraphDialog::getLineBelow() const 
-{ 
-	return lineBelow->isChecked(); 
-}
-
-	
-bool QParagraphDialog::getPagebreakAbove() const 
-{ 
-	return pagebreakAbove->isChecked(); 
-}
-
-	
-bool QParagraphDialog::getPagebreakBelow() const 
+bool QParagraphDialog::getAboveKeep() const
 {
-	return pagebreakBelow->isChecked(); 
+	return spacingAboveKeep->isChecked();
 }
 
-	
-bool QParagraphDialog::getNoIndent() const 
+
+bool QParagraphDialog::getBelowKeep() const
 {
-	return noIndent->isChecked(); 
+	return spacingBelowKeep->isChecked();
 }
 
-	
-VSpace::vspace_kind QParagraphDialog::getSpaceAboveKind() const 
+
+bool QParagraphDialog::getLineAbove() const
+{
+	return lineAbove->isChecked();
+}
+
+
+bool QParagraphDialog::getLineBelow() const
+{
+	return lineBelow->isChecked();
+}
+
+
+bool QParagraphDialog::getPagebreakAbove() const
+{
+	return pagebreakAbove->isChecked();
+}
+
+
+bool QParagraphDialog::getPagebreakBelow() const
+{
+	return pagebreakBelow->isChecked();
+}
+
+
+bool QParagraphDialog::getNoIndent() const
+{
+	return noIndent->isChecked();
+}
+
+
+VSpace::vspace_kind QParagraphDialog::getSpaceAboveKind() const
 {
 	return getSpaceKind(spacingAbove->currentItem());
 }
 
-	
-VSpace::vspace_kind QParagraphDialog::getSpaceBelowKind() const 
+
+VSpace::vspace_kind QParagraphDialog::getSpaceBelowKind() const
 {
 	return getSpaceKind(spacingBelow->currentItem());
 }
 
 
-Paragraph::PEXTRA_TYPE QParagraphDialog::getExtraType() const 
+Paragraph::PEXTRA_TYPE QParagraphDialog::getExtraType() const
 {
 	switch (extraType->currentItem()) {
 		case 0: return Paragraph::PEXTRA_NONE;
@@ -365,8 +365,8 @@ Paragraph::PEXTRA_TYPE QParagraphDialog::getExtraType() const
 	return Paragraph::PEXTRA_NONE;
 }
 
-	
-Paragraph::MINIPAGE_ALIGNMENT QParagraphDialog::getExtraAlign() const 
+
+Paragraph::MINIPAGE_ALIGNMENT QParagraphDialog::getExtraAlign() const
 {
 	switch (minipageValign->currentItem()) {
 		case 0: return Paragraph::MINIPAGE_ALIGN_TOP;
@@ -376,20 +376,20 @@ Paragraph::MINIPAGE_ALIGNMENT QParagraphDialog::getExtraAlign() const
 	}
 }
 
-	
-bool QParagraphDialog::getHfillBetween() const 
+
+bool QParagraphDialog::getHfillBetween() const
 {
 	return minipageHfill->isChecked();
 }
 
 
-bool QParagraphDialog::getStartNewMinipage() const 
+bool QParagraphDialog::getStartNewMinipage() const
 {
 	return minipageStart->isChecked();
 }
 
 
-VSpace::vspace_kind QParagraphDialog::getSpaceKind(int val) const 
+VSpace::vspace_kind QParagraphDialog::getSpaceKind(int val) const
 {
 	switch (val) {
 		case 0: return VSpace::NONE;
@@ -407,7 +407,7 @@ VSpace::vspace_kind QParagraphDialog::getSpaceKind(int val) const
 }
 
 
-LyXLength::UNIT QParagraphDialog::getLyXLength(int val) const 
+LyXLength::UNIT QParagraphDialog::getLyXLength(int val) const
 {
 	switch (val) {
 		case 0: return LyXLength::CM;
@@ -428,8 +428,8 @@ LyXLength::UNIT QParagraphDialog::getLyXLength(int val) const
 	return LyXLength::UNIT_NONE;
 }
 
-	
-int QParagraphDialog::getItem(LyXLength::UNIT unit) const 
+
+int QParagraphDialog::getItem(LyXLength::UNIT unit) const
 {
 	int item = 0;
 	switch (unit) {
@@ -517,7 +517,7 @@ void QParagraphDialog::apply_adaptor()
 }
 
 
-void QParagraphDialog::cancel_adaptor()  
+void QParagraphDialog::cancel_adaptor()
 {
 	form_->close();
 	hide();

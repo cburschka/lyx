@@ -3,7 +3,7 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk 
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  * \author John Levon, moz@compsoc.man.ac.uk
  */
 
@@ -36,7 +36,7 @@ void FormBibitem::build()
 	setPrehandler(dialog_->input_key);
 	setPrehandler(dialog_->input_label);
 
-        // Manage the ok, apply, restore and cancel/close buttons
+	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_close);
 
@@ -47,7 +47,7 @@ void FormBibitem::build()
 
 ButtonPolicy::SMInput FormBibitem::input(FL_OBJECT *, long)
 {
-	// minimal validation 
+	// minimal validation
 	if (!compare(fl_get_input(dialog_->input_key), ""))
 		return ButtonPolicy::SMI_NOOP;
 

@@ -72,7 +72,7 @@ Converters local_converters;
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
-	  formats_(*this), interface_(*this), language_(*this), 
+	  formats_(*this), interface_(*this), language_(*this),
 	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
 	  printer_(*this), screen_fonts_(*this), spelloptions_(*this)
 {
@@ -140,7 +140,7 @@ void FormPreferences::ok()
 			AddName(user_lyxdir, "preferences.xform");
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
-	
+
 	lv_->getLyXFunc()->dispatch(LFUN_SAVEPREFERENCES);
 }
 
@@ -170,7 +170,7 @@ void FormPreferences::build()
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);
-	
+
 	// build the tab folders
 	converters_tab_.reset(build_inner_tab());
 	look_n_feel_tab_.reset(build_inner_tab());
@@ -327,7 +327,7 @@ string const FormPreferences::getFeedback(FL_OBJECT * ob)
 bool FormPreferences::input(FL_OBJECT * ob, long)
 {
 	lyx::Assert(ob);
-	
+
 	// whatever checks you need to ensure the user hasn't entered
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
@@ -357,7 +357,7 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 void FormPreferences::update()
 {
 	if (!dialog_.get()) return;
-    
+
 	// read lyxrc entries
 	colors_.update();
 	formats_.update();   // Must be before converters_.update()
@@ -405,7 +405,7 @@ void FormPreferences::Colors::apply()
 
 	if (modifiedXformsPrefs) {
 		for (vector<XformsColor>::const_iterator cit =
-			     xformsColorDB.begin(); 
+			     xformsColorDB.begin();
 		     cit != xformsColorDB.end(); ++cit) {
 			fl_mapcolor(cit->colorID, cit->r, cit->g, cit->b);
 
@@ -439,7 +439,7 @@ void FormPreferences::Colors::apply()
 
 		// Create a valid X11 name of the form "#rrggbb"
 		string const hexname = X11hexname(cit->color());
-		
+
 		if (lcolor.getX11Name(lc) != hexname) {
 			lyxerr[Debug::GUI]
 				<< "FormPreferences::Colors::apply: "
@@ -475,15 +475,15 @@ void FormPreferences::Colors::build()
 	fl_set_slider_bounds(dialog_->slider_value, 0.0, 1.0);
 	fl_set_slider_step(dialog_->slider_value, 0.01);
 	fl_set_slider_return(dialog_->slider_value, FL_RETURN_CHANGED);
-	
+
 	fl_set_slider_bounds(dialog_->slider_red, 0.0, 255.0);
 	fl_set_slider_step(dialog_->slider_red, 1.0);
 	fl_set_slider_return(dialog_->slider_red, FL_RETURN_CHANGED);
-	
+
 	fl_set_slider_bounds(dialog_->slider_green, 0.0, 255.0);
 	fl_set_slider_step(dialog_->slider_green, 1.0);
 	fl_set_slider_return(dialog_->slider_green, FL_RETURN_CHANGED);
-	
+
 	fl_set_slider_bounds(dialog_->slider_blue, 0.0, 255.0);
 	fl_set_slider_step(dialog_->slider_blue, 1.0);
 	fl_set_slider_return(dialog_->slider_blue, FL_RETURN_CHANGED);
@@ -534,7 +534,7 @@ void FormPreferences::Colors::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->browser_lyx_objs) {
 		InputBrowserLyX();
-		
+
 	} else if (ob == dialog_->dial_hue ||
 		   ob == dialog_->slider_saturation ||
 		   ob == dialog_->slider_value) {
@@ -597,10 +597,10 @@ void FormPreferences::Colors::InputBrowserLyX() const
 
 	// Display either RGB or HSV but not both!
 	SwitchColorSpace();
-	
+
 	// Deactivate the modify button to begin with...
 	setEnabled(dialog_->button_modify, false);
-	
+
 	fl_unfreeze_form(dialog_->form);
 }
 
@@ -614,13 +614,13 @@ void FormPreferences::Colors::InputHSV()
 	int const h = int(hue);
 	int const s = int(100.0 * sat);
 	int const v = int(100.0 * val);
-	
+
 	string const label = tostr(h) + string(", ") + tostr(s) + string(", ") +
 		tostr(v);
 	fl_set_object_label(dialog_->text_color_values, label.c_str());
 
 	RGBColor col = HSVColor(hue, sat, val);
-	
+
 	fl_freeze_form(dialog_->form);
 
 	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
@@ -637,10 +637,10 @@ void FormPreferences::Colors::InputHSV()
 
 	fl_unfreeze_form(dialog_->form);
 	if (selLyX < 1) return;
-	
+
 	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
 	bool modify = false;
-	
+
 	// Is the choice an Xforms color...
 	if (selLyX - 1 < xformsColorDB.size()) {
 		vector<XformsColor>::size_type const i = selLyX - 1;
@@ -666,7 +666,7 @@ void FormPreferences::Colors::InputRGB()
 	string const label = tostr(red) + string(", ") + tostr(green) +
 		string(", ") + tostr(blue);
 	fl_set_object_label(dialog_->text_color_values, label.c_str());
-		
+
 	fl_freeze_form(dialog_->form);
 
 	RGBColor col = RGBColor(red, green, blue);
@@ -679,9 +679,9 @@ void FormPreferences::Colors::InputRGB()
 
 	fl_unfreeze_form(dialog_->form);
 	if (selLyX < 1) return;
-	
+
 	bool modify = false;
-	
+
 	// Is the choice an Xforms color...
 	if (selLyX - 1 < xformsColorDB.size()) {
 		vector<XformsColor>::size_type const i = selLyX - 1;
@@ -839,7 +839,7 @@ void FormPreferences::Colors::Modify()
 	}
 
 	fl_freeze_form(dialog_->form);
-	setEnabled(dialog_->button_modify, false);	
+	setEnabled(dialog_->button_modify, false);
 	fl_unfreeze_form(dialog_->form);
 }
 
@@ -863,7 +863,7 @@ void FormPreferences::Colors::SwitchColorSpace() const
 
 		HSVColor hsv = HSVColor(col);
 		hsv.h = max(hsv.h, 0.0);
-	
+
 		fl_set_dial_value(dialog_->dial_hue, hsv.h);
 		fl_set_slider_value(dialog_->slider_saturation, hsv.s);
 		fl_set_slider_value(dialog_->slider_value, hsv.v);
@@ -882,7 +882,7 @@ void FormPreferences::Colors::SwitchColorSpace() const
 		string const label = tostr(h) + string(", ") + tostr(s) +
 			string(", ") + tostr(v);
 		fl_set_object_label(dialog_->text_color_values, label.c_str());
-		
+
 	} else {
 		fl_show_object(dialog_->slider_red);
 		fl_show_object(dialog_->slider_blue);
@@ -903,7 +903,7 @@ void FormPreferences::Colors::SwitchColorSpace() const
 			string(", ") + tostr(b);
 		fl_set_object_label(dialog_->text_color_values, label.c_str());
 	}
-	
+
 	fl_unfreeze_form(dialog_->form);
 }
 
@@ -1051,7 +1051,7 @@ bool FormPreferences::Converters::Add()
 }
 
 
-bool FormPreferences::Converters::Browser() 
+bool FormPreferences::Converters::Browser()
 {
 	int const i = fl_get_browser(dialog_->browser_all);
 	if (i <= 0) return false;
@@ -1075,7 +1075,7 @@ bool FormPreferences::Converters::Browser()
 
 	setEnabled(dialog_->button_add,    false);
 	setEnabled(dialog_->button_delete, true);
-				
+
 	fl_unfreeze_form(dialog_->form);
 	return false;
 }
@@ -1097,12 +1097,12 @@ bool FormPreferences::Converters::Input()
 	string const from = GetFrom();
 	string const to = GetTo();
 	int const sel = local_converters.getNumber(from, to);
-	
+
 	fl_freeze_form(dialog_->form);
 
 	if (sel < 0) {
 		fl_set_object_label(dialog_->button_add, idex(_("Add|#A")));
-		fl_set_button_shortcut(dialog_->button_add, 
+		fl_set_button_shortcut(dialog_->button_add,
 				       scex(_("Add|#A")), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
@@ -1112,7 +1112,7 @@ bool FormPreferences::Converters::Input()
 		fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
 		fl_set_button_shortcut(dialog_->button_add,
 				       scex(_("Modify|#M")), 1);
-		
+
 		int top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
 		fl_select_browser_line(dialog_->browser_all, sel+1);
@@ -1324,7 +1324,7 @@ bool FormPreferences::Formats::Add()
 }
 
 
-bool FormPreferences::Formats::Browser() 
+bool FormPreferences::Formats::Browser()
 {
 	int const i = fl_get_browser(dialog_->browser_all);
 	if (i <= 0) return false;
@@ -1344,7 +1344,7 @@ bool FormPreferences::Formats::Browser()
 
 	setEnabled(dialog_->button_add,    false);
 	setEnabled(dialog_->button_delete, true);
-				
+
 	fl_unfreeze_form(dialog_->form);
 	return false;
 }
@@ -1534,7 +1534,7 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 
 		parent_.browse(dialog_->input_bind_file,
 			       N_("Bind file"), "*.bind", dir1, dir2);
-		
+
 	} else if (ob == dialog_->button_ui_file_browse) {
 		string dir  = AddName(system_lyxdir, "ui");
 		string name = N_("Sys UI|#S#s");
@@ -1547,7 +1547,7 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 		parent_.browse(dialog_->input_ui_file,
 			       N_("UI file"), "*.ui", dir1, dir2);
 	}
-	
+
 	return true;
 }
 
@@ -1595,7 +1595,7 @@ void FormPreferences::Language::apply()
 		lyxrc.primary_kbmap = name_1;
 		lyxrc.secondary_kbmap = name_2;
 	}
-	
+
 	button = fl_get_button(dialog_->check_rtl_support);
 	lyxrc.rtl_support = static_cast<bool>(button);
 
@@ -1660,7 +1660,7 @@ void FormPreferences::Language::build()
 	// to use its address in a block-if statement.
 	// No it's not! Leads to crash.
 	// setPrehandler(
-	// 		reinterpret_cast<FL_OBJECT *>(combo_default_lang),
+	//		reinterpret_cast<FL_OBJECT *>(combo_default_lang),
 	//		C_FormPreferencesFeedbackCB);
 
 	setPrehandler(dialog_->input_kbmap1);
@@ -1767,7 +1767,7 @@ void FormPreferences::Language::update()
 		fl_set_input(dialog_->input_kbmap1, "");
 		fl_set_input(dialog_->input_kbmap2, "");
 	}
-	
+
 	fl_set_button(dialog_->check_rtl_support, lyxrc.rtl_support);
 	fl_set_button(dialog_->check_mark_foreign,
 		      lyxrc.mark_foreign_language);
@@ -1908,7 +1908,7 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 void FormPreferences::LnFmisc::update()
 {
 	fl_set_button(dialog_->check_banner, lyxrc.show_banner);
-	fl_set_button(dialog_->check_auto_region_delete, 
+	fl_set_button(dialog_->check_auto_region_delete,
 		      lyxrc.auto_region_delete);
 	fl_set_button(dialog_->check_exit_confirm, lyxrc.exit_confirmation);
 	fl_set_button(dialog_->check_display_shrtcuts, lyxrc.display_shortcuts);
@@ -2023,7 +2023,7 @@ void FormPreferences::OutputsMisc::update()
 	fl_set_input(dialog_->input_checktex,
 		     lyxrc.chktex_command.c_str());
 	fl_set_input(dialog_->input_paperoption,
-                     lyxrc.view_dvi_paper_option.c_str());
+		     lyxrc.view_dvi_paper_option.c_str());
 	fl_set_button(dialog_->check_autoreset_classopt,
 		      lyxrc.auto_reset_options);
 
@@ -2056,7 +2056,7 @@ void FormPreferences::Paths::apply()
 	button = fl_get_button(dialog_->check_last_files);
 	str = fl_get_input(dialog_->input_lastfiles);
 	if (!button) str.erase();
-	
+
 	lyxrc.check_lastfiles = button;
 	lyxrc.lastfiles = str;
 	lyxrc.num_lastfiles = static_cast<unsigned int>
@@ -2136,7 +2136,7 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 {
 	bool activate = true;
-	
+
 	// !ob if function is called from Paths::update() to de/activate
 	// objects,
 	// otherwise the function is called by an xforms CB via input().
@@ -2238,7 +2238,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 		parent_.browse(dialog_->input_serverpipe,
 			       N_("LyX Server pipes"), string());
 	}
-	
+
 	return activate;
 }
 
@@ -2268,7 +2268,7 @@ void FormPreferences::Paths::update()
 	if (lyxrc.check_lastfiles) str = lyxrc.lastfiles;
 
 	fl_set_button(dialog_->check_last_files,
-		      lyxrc.check_lastfiles);		
+		      lyxrc.check_lastfiles);
 	fl_set_input(dialog_->input_lastfiles, str.c_str());
 	fl_set_counter_value(dialog_->counter_lastfiles,
 			     lyxrc.num_lastfiles);
@@ -2509,7 +2509,7 @@ void FormPreferences::ScreenFonts::apply() const
 		changed = true;
 		lyxrc.dpi = ivalue;
 	}
-	
+
 	double dvalue = strToDbl(fl_get_input(dialog_->input_tiny));
 	if (lyxrc.font_sizes[LyXFont::SIZE_TINY] != dvalue) {
 		changed = true;
@@ -2633,7 +2633,7 @@ void FormPreferences::ScreenFonts::build()
 	setPrehandler(dialog_->input_huger);
 }
 
-	
+
 string const
 FormPreferences::ScreenFonts::feedback(FL_OBJECT const * const ob) const
 {
@@ -2651,7 +2651,7 @@ FormPreferences::ScreenFonts::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_ENCODING);
 	else if (ob == dialog_->counter_zoom)
 		str = lyxrc.getDescription(LyXRC::RC_SCREEN_ZOOM);
-	else if (ob == dialog_->counter_dpi) 
+	else if (ob == dialog_->counter_dpi)
 		str = lyxrc.getDescription(LyXRC::RC_SCREEN_DPI);
 	else if (ob == dialog_->input_tiny
 		 || ob == dialog_->input_script
@@ -2716,7 +2716,7 @@ bool FormPreferences::ScreenFonts::input()
 
 	if (!activate)
 		parent_.postWarning(str);
-	
+
 	return activate;
 }
 
@@ -2775,7 +2775,7 @@ void FormPreferences::SpellOptions::apply()
 
 	string choice = fl_get_choice_text(dialog_->choice_spell_command);
 	choice = strip(frontStrip(choice));
-	
+
 	lyxrc.isp_command = choice;
 
 #if 0
@@ -2806,7 +2806,7 @@ void FormPreferences::SpellOptions::apply()
 		choice = fl_get_input(dialog_->input_escape_chars);
 		if (button && choice.empty()) button = 0;
 		if (!button) choice.erase();
-	
+
 		lyxrc.isp_use_esc_chars = static_cast<bool>(button);
 		lyxrc.isp_esc_chars = choice;
 
@@ -2933,7 +2933,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 		parent_.browse(dialog_->input_personal_dict,
 			       N_("Personal dictionary"), "*.ispell");
 	}
-	
+
 	return true; // All input is valid!
 }
 
@@ -2955,14 +2955,14 @@ void FormPreferences::SpellOptions::update()
 		choice = 2;
 #endif
 	fl_set_choice(dialog_->choice_spell_command, choice);
-	
+
 	string str;
 	if (lyxrc.isp_use_alt_lang) str = lyxrc.isp_alt_lang;
 
 	fl_set_button(dialog_->check_alt_lang,
 		      lyxrc.isp_use_alt_lang);
 	fl_set_input(dialog_->input_alt_lang, str.c_str());
-	
+
 	str.erase();
 	if (lyxrc.isp_use_esc_chars) str = lyxrc.isp_esc_chars;
 
@@ -2990,7 +2990,7 @@ void FormPreferences::SpellOptions::update()
 
 void FormPreferences::browse(FL_OBJECT * inpt,
 			     string const & title,
-			     string const & pattern, 
+			     string const & pattern,
 			     pair<string,string> const & dir1,
 			     pair<string,string> const & dir2)
 {

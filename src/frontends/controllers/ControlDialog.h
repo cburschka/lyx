@@ -7,8 +7,8 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
  * ControlDialog is to be used as a parent class for dialogs that are not
- * views onto parameters of insets. (An ugly description I know, but I hope 
- * the meaning is clear! Can anyone do any better?) Examples would be the 
+ * views onto parameters of insets. (An ugly description I know, but I hope
+ * the meaning is clear! Can anyone do any better?) Examples would be the
  * Document and Paragraph dialogs.
  */
 

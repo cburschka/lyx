@@ -21,7 +21,7 @@ class QTabularCreateDialog;
 
 ///
 class QTabularCreate
-	: public Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > 
+	: public Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> >
 {
 public:
 	///

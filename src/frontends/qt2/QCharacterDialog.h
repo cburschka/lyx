@@ -20,13 +20,13 @@
 #include <qcombobox.h>
 
 class LyXFont;
- 
+
 class QCharacterDialog : public QCharacterDialogBase
 { Q_OBJECT
 
 public:
 	QCharacterDialog(QCharacter * form);
-	
+
 protected:
 	void closeEvent(QCloseEvent * e);
 

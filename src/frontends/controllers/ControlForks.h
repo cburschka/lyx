@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/** 
+/**
  * \file ControlForks.h
  * Copyright 2001 The LyX Team
  * Read COPYING

@@ -21,10 +21,10 @@ class ControlAboutlyx;
 class QAbout
 	: public Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> >
 {
-public: 
+public:
 	QAbout(ControlAboutlyx &);
 
-private: 
+private:
 	/// not needed
 	virtual void apply() {}
 	/// not needed

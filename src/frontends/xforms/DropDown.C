@@ -23,23 +23,23 @@ using std::vector;
 
 
 namespace {
-	
+
 extern "C" void C_CompletedCB(FL_OBJECT * ob, long)
 {
 	DropDown * d = static_cast<DropDown*>(ob->u_vdata);
 	d->completed();
 }
 
- 
+
 extern "C" int C_PeekCB(FL_FORM * form, void *xev)
 {
 	DropDown * d = static_cast<DropDown*>(form->u_vdata);
 	return d->peek(static_cast<XEvent*>(xev));
 }
- 
+
 } // namespace anon
 
- 
+
 DropDown::DropDown(LyXView * lv, FL_OBJECT * ob)
 	: lv_(lv)
 {
@@ -47,20 +47,20 @@ DropDown::DropDown(LyXView * lv, FL_OBJECT * ob)
 	fl_add_box(FL_UP_BOX, 0, 0, ob->w, 100, "");
 	browser_ = fl_add_browser(FL_SELECT_BROWSER, 0, 0, ob->w, 100, "");
 	form_->u_vdata = this;
-        browser_->u_vdata = this;
+	browser_->u_vdata = this;
 	fl_set_object_callback(browser_, C_CompletedCB, 0);
 	fl_register_raw_callback(form_, KeyPressMask|ButtonPressMask, C_PeekCB);
 	fl_end_form();
 }
 
- 
+
 DropDown::~DropDown()
 {
-	if (form_->visible) 
+	if (form_->visible)
 		fl_hide_form(form_);
 	fl_free_form(form_);
 }
- 
+
 
 void DropDown::select(vector<string> const & choices, int x, int y, int w)
 {
@@ -108,7 +108,7 @@ void DropDown::line_down()
 	if (fl_get_browser(browser_) < fl_get_browser_topline(browser_))
 		fl_set_browser_topline(browser_, fl_get_browser(browser_));
 }
- 
+
 
 int DropDown::peek(XEvent * xev)
 {
@@ -116,7 +116,7 @@ int DropDown::peek(XEvent * xev)
 	unsigned int keymask;
 
 	fl_get_mouse(&x, &y, &keymask);
- 
+
 	if (xev->type == ButtonPress) {
 		if (!(x >= form_->x && x <= (form_->x + form_->w) &&
 		      y >= form_->y && y << (form_->y + form_->h))) {
@@ -136,7 +136,7 @@ int DropDown::peek(XEvent * xev)
 			line_up();
 			return 1;
 		case XK_Return:
-			completed(); 
+			completed();
 			return 1;
 		case XK_Escape:
 			fl_deselect_browser(browser_);
@@ -146,7 +146,7 @@ int DropDown::peek(XEvent * xev)
 			// FIXME: if someone has a got a way to
 			// convince the event to fall back to the
 			// minibuffer, I'm glad to hear it.
-			// fl_XPutBackEvent() doesn't work. 
+			// fl_XPutBackEvent() doesn't work.
 
 			// This is a bit less elegant perhaps, but works
 			// well enough. Angus 11 Jan 2002
@@ -156,7 +156,7 @@ int DropDown::peek(XEvent * xev)
 			}
 		}
 	}
-	return 0; 
+	return 0;
 }
 
 

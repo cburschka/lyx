@@ -18,7 +18,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
- 
+
 QError::QError(ControlError & c)
 	: base_class(c, _("LaTeX Error"))
 {
@@ -32,7 +32,7 @@ void QError::build_dialog()
 	bc().setCancel(dialog_->closePB);
 }
 
- 
+
 void QError::update_contents()
 {
 	dialog_->errorTV->setText(controller().params().c_str());

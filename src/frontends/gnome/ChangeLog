@@ -1,14 +1,18 @@
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* most files: ws cleanup
+
 2002-03-16  Michael A. Koziarski  <michael@koziarski.com>
 
-	* Makefile.am: Cleanup and linking fix.  
+	* Makefile.am: Cleanup and linking fix.
 	* README: Added procedure for adding a new dialog.
 	* Dialogs.C (tooltipsEnable): new method.
 
 2002-03-14  Michael A. Koziarski  <michael@koziarski.org>
 
 	* Timeout_pimpl.C
-	* Timeout_pimpl.h: implemented running to fix compilation, linking 
-	fix still to come 
+	* Timeout_pimpl.h: implemented running to fix compilation, linking
+	fix still to come
 
 2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -29,7 +33,7 @@
 
 2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* Makefile.am: get rid of LYX_LIBS 
+	* Makefile.am: get rid of LYX_LIBS
 
 2002-02-10  Michael A. Koziarski  <michael@koziarski.com>
 
@@ -54,7 +58,7 @@
 2002-01-12  Michael A. Koziarski  <michael@koziarski.com>
 
 	* various:  Cleaned out the old stuff, standardised the new
-	stuff. 
+	stuff.
 	* GnomeBase.C
 	* GnomeBase.h: Changed the constructor to take one argument.  The
 	dialog name.  The path and name of the glade files can be
@@ -67,7 +71,7 @@
 	* FormTabularCreate.C
 	* FormTabularCreate.h: updated them to use the new system.
 	Removed Local inline *Clicked functions as they're now in the base
-	class. 
+	class.
 	* README: new, brief outline of what I'm doing here.
 	* accessors.py: Described in README, generates the accessor
 	functions from the glade file.
@@ -83,7 +87,7 @@
 
 2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* Menubar_pimpl.C (composeUIInfo): 
+	* Menubar_pimpl.C (composeUIInfo):
 	(update): use FuncStatus
 
 2002-01-03  Michael Koziarski  <michael@koziarski.com>
@@ -115,7 +119,7 @@
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C: initApplication() should take a int & argc, add debug
- 
+
 2001-07-19  Baruch Even  <baruch@lyx.org>
 
 	* Menubar_pimpl.C: Renamed LyXFunc::Dispatch to LyXFunc::dispatch.
@@ -129,7 +133,7 @@
 	* Makefile.am:
 	* Dialogs.C: Removed Citation and Copyright dialogs from build. Left them
 	in repository until they get redone as About Dialog.
-	
+
 	* FileDialog.C:
 	* Menubar_pimpl.C:
 	* Menubar_pimpl.h:
@@ -188,10 +192,10 @@
 
 2001-04-16  Allan Rae  <rae@lyx.org>
 
-	* gnomeBC.C (setButtonLabel): 
-	* Menubar_pimpl.C (updateAllLists): 
+	* gnomeBC.C (setButtonLabel):
+	* Menubar_pimpl.C (updateAllLists):
 	* GnomeBase.C (loadXML): #warning triggers an error on Sun CC 6.0 as
-	an unrecognised preprocessor directive.  So ensure they're wrapped. 
+	an unrecognised preprocessor directive.  So ensure they're wrapped.
 
 2001-04-03  Baruch Even  <baruch@lyx.org>
 
@@ -205,7 +209,7 @@
 	* GnomeBase.C:
 	* GnomeBase.h: s/ControlButton/ControlButtons/
 	s/UndoAll/Restore/
-	
+
 2001-04-02  Michael Koziarski  <michael@koziarski.org>
 
 	* FormCopyright.[Ch]: Reimplemented as an MVC dialog.
@@ -268,7 +272,7 @@
 
 2001-03-26  Baruch Even  <baruch@lyx.org>
 
-	* Various files: Fixes to get the gnome frontend to compile again. 
+	* Various files: Fixes to get the gnome frontend to compile again.
 	Removed most xforms dialogs in order to reduce compilation breaks caused
 	by the moves to MVC in the xforms frontend.
 

@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
- 
+
 #include "QDocumentDialog.h"
 #include "Dialogs.h"
 #include "QDocument.h"
@@ -23,7 +23,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form, QWidget * parent, const char 
 	: QDocumentDialogBase(parent, name, modal, fl),
 		form_(form)
 {
-#if 0 
+#if 0
 	// Copy the pointers to the bullet buttons into an array so that
 	// they can all be manipulated together.
 	bulletbuttons[0] = bullet00PB;
@@ -62,16 +62,16 @@ QDocumentDialog::QDocumentDialog(QDocument * form, QWidget * parent, const char 
 	bulletbuttons[33] = bullet53PB;
 	bulletbuttons[34] = bullet54PB;
 	bulletbuttons[35] = bullet55PB;
-#endif 
+#endif
 }
 
- 
+
 QDocumentDialog::~QDocumentDialog()
 {
 }
 
 
-#if 0 
+#if 0
 void QDocumentDialog::slotApply()
 {
 	form->apply();
@@ -85,7 +85,7 @@ void QDocumentDialog::slotAMSMath(bool)
 	form->checkDocumentInput( amsMathCB );
 }
 
- 
+
 void QDocumentDialog::slotBulletDepth1()
 {
 	form->bulletDepth( 0 );
@@ -97,7 +97,7 @@ void QDocumentDialog::slotBulletDepth2()
 	form->bulletDepth( 1 );
 }
 
- 
+
 void QDocumentDialog::slotBulletDepth3()
 {
 	form->bulletDepth( 2 );
@@ -373,7 +373,7 @@ void QDocumentDialog::slotQuoteStyle(int)
 	form->checkDocumentInput( quoteStyleTypeCO );
 }
 
- 
+
 void QDocumentDialog::slotQuoteType(int)
 {
 	// Intentionally left blank
@@ -437,12 +437,12 @@ void QDocumentDialog::slotUseGeometryPackage(bool)
 	form->checkDocumentInput( CheckBox1 );
 }
 
- 
+
 void QDocumentDialog::slotWidth(const QString&)
 {
 	form->checkDocumentInput( customWidthED );
 }
-#endif 
+#endif
 
 
 void QDocumentDialog::closeEvent( QCloseEvent* e )

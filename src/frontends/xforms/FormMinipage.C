@@ -96,7 +96,7 @@ ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 
 	ButtonPolicy::SMInput action = ButtonPolicy::SMI_NOOP;
 
-	if (ob == dialog_->radio_top || 
+	if (ob == dialog_->radio_top ||
 	    ob == dialog_->radio_middle ||
 	    ob == dialog_->radio_bottom ||
 	    ob == dialog_->choice_width_units)

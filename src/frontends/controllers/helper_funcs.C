@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -77,7 +77,7 @@ vector<string> const getVectorFromString(string const & str,
 
 string const browseFile(LyXView * lv, string const & filename,
 			string const & title,
-			string const & pattern, 
+			string const & pattern,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {
@@ -88,18 +88,18 @@ string const browseFile(LyXView * lv, string const & filename,
 	FileDialog fileDlg(lv, title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 
 	FileDialog::Result result;
- 
+
 	while (1) {
 		result = fileDlg.Select(lastPath, pattern, OnlyFilename(filename));
 
-		if (result.second.empty()) 
+		if (result.second.empty())
 			return result.second;
 
 		lastPath = OnlyPath(result.second);
 
 		if (result.second.find_first_of("#~$% ") == string::npos)
-			break; 
- 
+			break;
+
 		Alert::alert(_("Filename can't contain any "
 			"of these characters:"),
 			_("space, '#', '~', '$' or '%'."));
@@ -112,12 +112,12 @@ string const browseFile(LyXView * lv, string const & filename,
 string const browseRelFile(LyXView * lv, string const & filename,
 			string const & refpath,
 			string const & title,
-			string const & pattern, 
+			string const & pattern,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {
 	string const fname = MakeAbsPath(filename, refpath);
-	
+
 	string const outname = browseFile(lv, fname, title, pattern,
 					  dir1, dir2);
 	string const reloutname = MakeRelPath(outname, refpath);

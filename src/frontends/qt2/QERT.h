@@ -16,14 +16,14 @@ class ControlERT;
 class QERTDialog;
 
 class QERT :
-	public Qt2CB<ControlERT, Qt2DB<QERTDialog> > 
+	public Qt2CB<ControlERT, Qt2DB<QERTDialog> >
 {
 	friend class QERTDialog;
- 
-public: 
+
+public:
 	QERT(ControlERT &);
 
-private: 
+private:
 	/// Apply changes
 	virtual void apply();
 	/// update

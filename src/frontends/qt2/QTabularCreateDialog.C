@@ -12,7 +12,7 @@
 
 #include "QTabularCreateDialog.h"
 #include "QTabularCreate.h"
- 
+
 #include "support/lstrings.h"
 
 #include <qpushbutton.h>
@@ -33,13 +33,13 @@ QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 		form_, SLOT(slotClose()));
 }
 
- 
+
 void QTabularCreateDialog::columnsChanged(int)
 {
 	form_->changed();
 }
 
- 
+
 void QTabularCreateDialog::rowsChanged(int)
 {
 	form_->changed();

@@ -80,4 +80,3 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
   return fdui;
 }
 /*---------------------------------------*/
-

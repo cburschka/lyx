@@ -1,10 +1,10 @@
 // -*- C++ -*-
-/** 
+/**
  * \file FormMathsDelim.h
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
- * 
- * \author Alejandro Aguilar Sierra 
+ *
+ * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
@@ -22,7 +22,7 @@
 
 struct FD_form_maths_delim;
 
-/** 
+/**
  * This class provides an XForms implementation of the maths delim.
  */
 class FormMathsDelim : public FormMathsSub {
@@ -43,7 +43,7 @@ private:
 
 	// build the form
 	FD_form_maths_delim * build_maths_delim();
-	
+
 	// Real GUI implementation
 	boost::scoped_ptr<FD_form_maths_delim> dialog_;
 };

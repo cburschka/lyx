@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2001 The LyX Team.
  *
  *======================================================
@@ -49,7 +49,7 @@ void ControlPrint::apply()
 {
 	if (!lv_.view()->available())
 		return;
-   
+
 	view().apply();
 
 	if (!printBuffer(lv_.buffer(), params())) {

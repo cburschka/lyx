@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -61,10 +61,10 @@ FormIndex::~FormIndex()
 void FormIndex::showInset( InsetCommand * const inset )
 {
   if( dialog_!=0 || inset == 0 ) return;
-  
+
   inset_ = inset;
   ih_ = inset_->hideDialog.connect(slot(this, &FormIndex::hide));
-  
+
   params = inset->params();
   show();
 }
@@ -72,7 +72,7 @@ void FormIndex::showInset( InsetCommand * const inset )
 void FormIndex::createInset( string const & arg )
 {
   if( dialog_!=0 ) return;
-  
+
   params.setFromString( arg );
   show();
 }
@@ -82,17 +82,17 @@ void FormIndex::show()
   if (!dialog_)
     {
       using namespace Gtk::Box_Helpers;
-      
+
       Gtk::Label * label = manage( new Gtk::Label(_("Keyword")) );
       Gtk::Box * mbox = manage( new Gtk::HBox() );
       Gtk::ButtonBox * bbox = manage( new Gtk::HButtonBox() );
       Gtk::Separator * sep = manage( new Gtk::VSeparator() );
 
       keyword_ = manage( new Gnome::Entry() );
-      
+
       b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
       b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
-      
+
       // set up spacing
       mbox->set_spacing(2);
       bbox->set_spacing(4);
@@ -101,7 +101,7 @@ void FormIndex::show()
       keyword_->set_max_saved(10);
       keyword_->load_history();
       keyword_->set_use_arrows_always(true);
-      
+
       // packing
       bbox->children().push_back(Element(*b_ok, false, false));
       bbox->children().push_back(Element(*b_cancel, false, false));
@@ -142,19 +142,19 @@ void FormIndex::updateSlot(bool switched)
       hide();
       return;
     }
-  
+
   if (dialog_ != 0 &&
       lv_->view()->available())
     {
       keyword_->get_entry()->set_text(params.getContents().c_str());
-      
+
       bool sens = (!(lv_->buffer()->isReadonly()));
-      
+
       keyword_->set_sensitive(sens);
       b_ok->set_sensitive(sens);
     }
 }
-      
+
 void FormIndex::hide()
 {
   if (dialog_!=0) mainAppWin->remove_action();
@@ -199,4 +199,3 @@ void FormIndex::apply()
   // hide the dialog
   hide();
 }
-

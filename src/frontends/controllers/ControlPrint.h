@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2001 The LyX Team.
  *
  *======================================================
@@ -27,7 +27,7 @@ class PrinterParams;
  */
 class ControlPrint : public ControlDialogBD {
 public:
-	/// 
+	///
 	ControlPrint(LyXView &, Dialogs &);
 
 	/// Browse for a file
@@ -42,7 +42,7 @@ private:
 	virtual void setParams();
 	/// clean-up on hide.
 	virtual void clearParams();
-    
+
 	///
 	PrinterParams * params_;
 };

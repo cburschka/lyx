@@ -33,7 +33,7 @@ private:
 	virtual void setParams();
 	/// clean-up on hide.
 	virtual void clearParams();
-    
+
 	///
 	string * params_;
 };

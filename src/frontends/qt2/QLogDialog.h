@@ -8,9 +8,9 @@
 
 #ifndef QLOGDIALOG_H
 #define QLOGDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QLogDialogBase.h"
 
 class QLog;

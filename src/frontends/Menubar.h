@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
@@ -24,7 +24,7 @@ class LyXView;
 class MenuBackend;
 
 /** The LyX GUI independent menubar class
-  The GUI interface is implemented in the corresponding Menubar_pimpl class. 
+  The GUI interface is implemented in the corresponding Menubar_pimpl class.
   */
 class Menubar {
 public:

@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -75,7 +75,7 @@ ControlConnectBase::DocTypes ControlConnectBase::docType() const
 
 
 ControlConnectBI::ControlConnectBI(LyXView & lv, Dialogs & d)
-        : ControlConnectBase(lv, d)
+	: ControlConnectBase(lv, d)
 {}
 
 

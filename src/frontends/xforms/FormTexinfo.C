@@ -22,7 +22,7 @@
 #include "debug.h"
 #include "xforms_helpers.h"
 #include "support/LAssert.h"
-    
+
 
 typedef FormCB<ControlTexinfo, FormDB<FD_form_texinfo> > base_class;
 FormTexinfo::FormTexinfo(ControlTexinfo & c)
@@ -69,10 +69,10 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 		updateStyles(ControlTexinfo::cls);
 
 	} else if (ob == dialog_->radio_sty) {
-		updateStyles(ControlTexinfo::sty); 
+		updateStyles(ControlTexinfo::sty);
 
 	} else if (ob == dialog_->radio_bst) {
-		updateStyles(ControlTexinfo::bst); 
+		updateStyles(ControlTexinfo::bst);
 
 	} else if (ob == dialog_->button_rescan) {
 		// build new *Files.lst
@@ -106,11 +106,11 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 
 void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
-	fl_clear_browser(dialog_->browser); 
+	fl_clear_browser(dialog_->browser);
 
 	bool const withFullPath = fl_get_button(dialog_->check_fullpath);
 
-	string const str = 
+	string const str =
 		controller().getContents(whichStyle, withFullPath);
 	fl_add_browser_line(dialog_->browser, str.c_str());
 

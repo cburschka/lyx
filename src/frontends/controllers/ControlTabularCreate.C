@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -49,10 +49,10 @@ void ControlTabularCreate::apply()
 {
 	if (!lv_.view()->available())
 		return;
-   
+
 	view().apply();
 
-	string const val(tostr(params().first) + " " + tostr(params().second)); 
- 
+	string const val(tostr(params().first) + " " + tostr(params().second));
+
 	lv_.getLyXFunc()->dispatch(LFUN_INSET_TABULAR, val);
 }

@@ -60,7 +60,7 @@ stringstream & ControlVCLog::getVCLogFile(stringstream & ss) const
 		ss << in.rdbuf();
 		found = ss.good();
 	}
-	
+
 	if (!found)
 		ss << _("No version control log file found.") << endl;
 

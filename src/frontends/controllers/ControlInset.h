@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -72,7 +72,7 @@ private:
 	virtual bool disconnectOnApply() { return false; }
 
 
-	
+
 	/// Instantiation of ControlButtons virtual methods.
 
 	/// Get changed parameters and Dispatch them to the kernel.
@@ -92,7 +92,7 @@ private:
 	void connectInset(Inset * = 0);
 
 	/// pointer to the inset passed through connectInset
-	Inset * inset_;	
+	Inset * inset_;
 	/// inset::hide connection.
 	SigC::Connection ih_;
 	/** A local copy of the inset's params.
@@ -102,7 +102,7 @@ private:
 
 	/// is the dialog built ?
 	bool dialog_built_;
- 
+
 };
 
 

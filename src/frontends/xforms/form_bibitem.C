@@ -56,4 +56,3 @@ FD_form_bibitem * FormBibitem::build_bibitem()
   return fdui;
 }
 /*---------------------------------------*/
-

@@ -44,7 +44,7 @@ void FormForks::build() {
 	fl_clear_browser(dialog_->browser_children);
 	fl_clear_browser(dialog_->browser_kill);
 
-        // Manage the ok, apply, restore and cancel/close buttons
+	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
@@ -176,7 +176,7 @@ ButtonPolicy::SMInput FormForks::input(FL_OBJECT * ob, long)
 
 	if (ob == dialog_->browser_children) {
 		activate = input_browser_children();
-		
+
 	} else if (ob == dialog_->browser_kill) {
 		activate = input_browser_kill();
 
@@ -212,7 +212,7 @@ ButtonPolicy::SMInput FormForks::input_browser_children()
 	string pid_str;
 	split(selection, pid_str, '\t');
 
-	vector<string> const kill_vec = 
+	vector<string> const kill_vec =
 		getVectorFromBrowser(dialog_->browser_kill);
 
 	vector<string>::const_iterator it =
@@ -250,7 +250,7 @@ public:
 private:
 	string pid_;
 };
- 
+
 } // namespace anon
 
 
@@ -282,7 +282,7 @@ ButtonPolicy::SMInput FormForks::input_browser_kill()
 		fl_select_browser_line(dialog_->browser_children, n+1);
 		fl_set_browser_topline(dialog_->browser_children, n+1);
 	}
-		
+
 	setEnabled(dialog_->button_remove, true);
 	setEnabled(dialog_->button_add,    false);
 
@@ -306,7 +306,7 @@ vector<string> const getPIDvector(FL_OBJECT * ob)
 
 	return vec;
 }
- 
+
 } // namespace anon
 
 
@@ -330,7 +330,7 @@ ButtonPolicy::SMInput FormForks::input_button_all()
 
 	// to resolve a warning about comparison between signed and unsigned.
 	int const pid_vec_size = int(pid_vec.size());
-	
+
 	if (fl_get_browser_maxline(dialog_->browser_kill) != pid_vec_size) {
 		activate = ButtonPolicy::SMI_VALID;
 
@@ -370,7 +370,7 @@ ButtonPolicy::SMInput FormForks::input_button_add()
 	string pid_str;
 	split(selection, pid_str, '\t');
 
-	vector<string> const kill_vec = 
+	vector<string> const kill_vec =
 		getVectorFromBrowser(dialog_->browser_kill);
 
 	vector<string>::const_iterator it =

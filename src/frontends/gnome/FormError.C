@@ -1,10 +1,10 @@
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * ================================================= 
+ * =================================================
  *
  * \author Baruch Even
  */
@@ -44,12 +44,12 @@ void FormError::update()
 	textarea()->insert(controller().params());
 }
 
-Gtk::Button * FormError::button_close() const 
+Gtk::Button * FormError::button_close() const
 {
-        return getWidget<Gtk::Button>("r_button_close");
+	return getWidget<Gtk::Button>("r_button_close");
 }
 
-Gtk::Text * FormError::textarea() const 
+Gtk::Text * FormError::textarea() const
 {
-        return getWidget<Gtk::Text>("r_textarea");
+	return getWidget<Gtk::Text>("r_textarea");
 }

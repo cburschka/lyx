@@ -41,7 +41,7 @@ using SigC::slot;
 
 typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
 
-#if 0 
+#if 0
 QDocument::QDocument(ControlDocument & c)
 	: base_class(c, _("Document Settings"))
 {
@@ -51,7 +51,7 @@ QDocument::QDocument(ControlDocument & c)
 QDocument::QDocument(LyXView *, Dialogs *)
 {
 }
-#endif 
+#endif
 
 
 void QDocument::build_dialog()
@@ -59,7 +59,7 @@ void QDocument::build_dialog()
 	// the tabbed folder
 	//dialog_.reset(new QDocumentDialog());
 
-#if 0 
+#if 0
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);
@@ -211,7 +211,7 @@ void QDocument::build_dialog()
 	bc().addReadOnly (dialog->bulletPanelBG);
 	bc().addReadOnly (dialog->bulletSizeCO);
 	bc().addReadOnly (dialog->bulletLatexED);
-#endif 
+#endif
 }
 
 
@@ -220,7 +220,7 @@ void QDocument::apply()
 	//if (!lv_->view()->available() || !dialog_.get())
 	//	return;
 
-#if 0 
+#if 0
 	bool redo = class_apply();
 	paper_apply();
 	redo = language_apply() || redo;
@@ -232,13 +232,13 @@ void QDocument::apply()
 	}
 	lv_->buffer()->markDirty();
 	setMinibuffer(lv_, _("Document layout set"));
-#endif 
+#endif
 }
 
 
 void QDocument::cancel()
 {
-#if 0 
+#if 0
 	// this avoids confusion when reopening
 	BufferParams & param = lv_->buffer()->params;
 	param.temp_bullets[0] = param.user_defined_bullets[0];
@@ -246,7 +246,7 @@ void QDocument::cancel()
 	param.temp_bullets[2] = param.user_defined_bullets[2];
 	param.temp_bullets[3] = param.user_defined_bullets[3];
 	hide();
-#endif 
+#endif
 }
 
 
@@ -255,7 +255,7 @@ void QDocument::update_contents()
 	if (!dialog_.get())
 		return;
 
-#if 0 
+#if 0
 	checkReadOnly();
 
 	BufferParams const & params = lv_->buffer()->params;
@@ -265,7 +265,7 @@ void QDocument::update_contents()
 	language_update(params);
 	options_update(params);
 	bullets_update(params);
-#endif 
+#endif
 }
 
 
@@ -342,9 +342,9 @@ bool QDocument::class_apply()
 	params.fonts = dialog_->docFontsCO->currentText();
 	params.fontsize = dialog_->docFontSizeCO->currentText();
 	params.pagestyle = dialog->docPagestyleCO->currentText();
-	
+
 	unsigned int const new_class = dialog_->docClassCO->currentItem();
-	
+
 	if (params.textclass != new_class) {
 		// try to load new_class
 		if (textclasslist.Load(new_class)) {
@@ -514,7 +514,7 @@ bool QDocument::language_apply()
 		&& old_language->RightToLeft() == new_language->RightToLeft()
 		&& !lv_->buffer()->isMultiLingual())
 		lv_->buffer()->ChangeLanguage(old_language, new_language);
- 
+
 	if (old_language != new_language)
 		redo = true;
 
@@ -866,14 +866,14 @@ void QDocument::InputBulletLaTeX(FL_OBJECT *, long)
 void QDocument::BulletDepth(FL_OBJECT * ob, State cb)
 {
 	/* Should I do the following:
-	 *  1. change to the panel that the current bullet belongs in 
+	 *  1. change to the panel that the current bullet belongs in
 	 *  2. show that bullet as selected
 	 *  3. change the size setting to the size of the bullet in Q.
 	 *  4. display the latex equivalent in the latex box
 	 *
 	 * I'm inclined to just go with 3 and 4 at the moment and
 	 * maybe try to support the others later
-	 */ 
+	 */
 	BufferParams & param = lv_->buffer()->params;
 
 	int data = 0;
@@ -1023,4 +1023,4 @@ void QDocument::UpdateLayoutDocument(BufferParams const & params)
 	options_update(params);
 	bullets_update(params);
 }
-#endif // 0 
+#endif // 0

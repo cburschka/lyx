@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qttableview.C,v 1.2 2001/12/05 08:04:18 larsbj Exp $
+** $Id: qttableview.C,v 1.3 2002/03/21 21:19:37 larsbj Exp $
 **
 ** Implementation of QtTableView class
 **
@@ -25,7 +25,7 @@
 #endif
 #ifndef Q_ASSERT
 #define Q_ASSERT ASSERT
-#endif 
+#endif
 
 enum ScrollBarDirtyFlags {
     verGeometry	  = 0x01,
@@ -1084,8 +1084,8 @@ void QtTableView::coverCornerSquare( bool enable )
 	Q_CHECK_PTR( cornerSquare );
 	cornerSquare->setGeometry( maxViewX() + frameWidth() + 1,
 				   maxViewY() + frameWidth() + 1,
-                                   VSBEXT,
-                                 HSBEXT);
+				   VSBEXT,
+				 HSBEXT);
     }
     if ( autoUpdate() && cornerSquare ) {
 	if ( enable )
@@ -1289,7 +1289,7 @@ void QtTableView::paintEvent( QPaintEvent *e )
 
     if ( !contentsRect().contains( updateR, TRUE  ) ) {// update frame ?
 	drawFrame( &paint );
-	if ( updateR.left() < frameWidth() ) 		//###
+	if ( updateR.left() < frameWidth() )		//###
 	    updateR.setLeft( frameWidth() );
 	if ( updateR.top() < frameWidth() )
 	    updateR.setTop( frameWidth() );
@@ -1451,7 +1451,7 @@ QScrollBar *QtTableView::verticalScrollBar() const
 #ifndef QT_NO_CURSOR
 	sb->setCursor( arrowCursor );
 #endif
-        sb->resize( sb->sizeHint() ); // height is irrelevant
+	sb->resize( sb->sizeHint() ); // height is irrelevant
 	Q_CHECK_PTR(sb);
 	sb->setTracking( FALSE );
 	sb->setFocusPolicy( NoFocus );
@@ -1848,8 +1848,8 @@ int QtTableView::minViewY() const
 int QtTableView::maxViewX() const
 {
     return width() - 1 - frameWidth()
-        - (tFlags & Tbl_vScrollBar ? VSBEXT
-           : 0);
+	- (tFlags & Tbl_vScrollBar ? VSBEXT
+	   : 0);
 }
 
 
@@ -1864,8 +1864,8 @@ int QtTableView::maxViewX() const
 int QtTableView::maxViewY() const
 {
     return height() - 1 - frameWidth()
-        - (tFlags & Tbl_hScrollBar ? HSBEXT
-           : 0);
+	- (tFlags & Tbl_hScrollBar ? HSBEXT
+	   : 0);
 }
 
 
@@ -1998,8 +1998,8 @@ void QtTableView::updateScrollBars( uint f )
     if ( testTableFlags(Tbl_hScrollBar) && (sbDirty & horMask) != 0 ) {
 	if ( sbDirty & horGeometry )
 	    hScrollBar->setGeometry( 0,height() - HSBEXT,
-                                     viewWidth() + frameWidth()*2,
-                                   HSBEXT);
+				     viewWidth() + frameWidth()*2,
+				   HSBEXT);
 
 	if ( sbDirty & horSteps ) {
 	    if ( cellW )
@@ -2022,8 +2022,8 @@ void QtTableView::updateScrollBars( uint f )
     if ( testTableFlags(Tbl_vScrollBar) && (sbDirty & verMask) != 0 ) {
 	if ( sbDirty & verGeometry )
 	    vScrollBar->setGeometry( width() - VSBEXT, 0,
-                                     VSBEXT,
-                                     viewHeight() + frameWidth()*2 );
+				     VSBEXT,
+				     viewHeight() + frameWidth()*2 );
 
 	if ( sbDirty & verSteps ) {
 	    if ( cellH )
@@ -2055,16 +2055,16 @@ void QtTableView::updateScrollBars( uint f )
 void QtTableView::updateFrameSize()
 {
     int rw = width()  - ( testTableFlags(Tbl_vScrollBar) ?
-                          VSBEXT : 0 );
+			  VSBEXT : 0 );
     int rh = height() - ( testTableFlags(Tbl_hScrollBar) ?
-                          HSBEXT : 0 );
+			  HSBEXT : 0 );
     if ( rw < 0 )
 	rw = 0;
     if ( rh < 0 )
 	rh = 0;
 
     if ( autoUpdate() ) {
-        int fh = frameRect().height();
+	int fh = frameRect().height();
 	int fw = frameRect().width();
 	setFrameRect( QRect(0,0,rw,rh) );
 

@@ -8,7 +8,7 @@
 
 #ifndef QTOCDIALOG_H
 #define QTOCDIALOG_H
- 
+
 #include "ui/QTocDialogBase.h"
 
 class QToc;

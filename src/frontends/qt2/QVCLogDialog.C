@@ -16,7 +16,7 @@
 #include "QVCLog.h"
 
 #include "QtLyXView.h"
-#include "ControlVCLog.h" 
+#include "ControlVCLog.h"
 
 QVCLogDialog::QVCLogDialog(QVCLog * form)
 	: QVCLogDialogBase(0, 0, false, 0),
@@ -26,7 +26,7 @@ QVCLogDialog::QVCLogDialog(QVCLog * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QVCLogDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

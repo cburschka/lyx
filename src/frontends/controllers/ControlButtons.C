@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -60,5 +60,5 @@ void ControlButtons::RestoreButton()
 
 bool ControlButtons::IconifyWithMain() const
 {
-        return lyxrc.dialogs_iconify_with_main;
+	return lyxrc.dialogs_iconify_with_main;
 }

@@ -21,7 +21,7 @@ class QSearchDialog;
 
 ///
 class QSearch
-	: public Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > 
+	: public Qt2CB<ControlSearch, Qt2DB<QSearchDialog> >
 {
 public:
 	///

@@ -14,7 +14,7 @@
 #include <qgroupbox.h>
 
 QCharacterDialog::QCharacterDialog(QCharacter * form)
-	: QCharacterDialogBase(0, 0, false, 0), 
+	: QCharacterDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),
@@ -24,12 +24,12 @@ QCharacterDialog::QCharacterDialog(QCharacter * form)
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
 }
- 
+
 
 void QCharacterDialog::change_adaptor()
 {
 	form_->changed();
- 
+
 	if (!autoapplyCB->isChecked())
 		return;
 
@@ -44,10 +44,10 @@ void QCharacterDialog::change_adaptor()
 	shapeCO->setCurrentItem(0);
 	miscCO->setCurrentItem(0);
 	langCO->setCurrentItem(0);
-	colorCO->setCurrentItem(0); 
+	colorCO->setCurrentItem(0);
 }
 
- 
+
 void QCharacterDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

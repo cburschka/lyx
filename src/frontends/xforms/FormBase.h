@@ -64,7 +64,7 @@ protected:
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
-	/// Filter the inputs on callback from xforms 
+	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
@@ -79,7 +79,7 @@ private:
 	/// Can the dialog be resized after it has been created?
 	bool allow_resize_;
 	/// dialog title, displayed by WM.
-  	string title_;
+	string title_;
 	///
 	Tooltips * tooltips_;
 };

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2001 The LyX Team.
  *
  *======================================================
@@ -56,7 +56,7 @@ public:
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
-	/// 
+	///
 	virtual void applyParamsNoInset();
 	/// get the parameters from the string passed to createInset.
 	virtual MinipageParams const getParams(string const &)

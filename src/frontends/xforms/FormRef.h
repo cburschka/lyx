@@ -44,7 +44,7 @@ private:
 
 	///
 	bool at_ref_;
-	/// 
+	///
 	std::vector<string> refs_;
 };
 

@@ -29,11 +29,11 @@ public:
 	///
 	GuiBC(string const & cancel, string const & close);
 
-	/// 
+	///
 	void setOK(Button * obj) { okay_ = obj; }
-	/// 
+	///
 	void setApply(Button * obj) { apply_ = obj; }
-	/// 
+	///
 	void setCancel(Button * obj) { cancel_ = obj; }
 	///
 	void setRestore(Button * obj) { restore_ = obj; }
@@ -59,7 +59,7 @@ private:
 	Button * apply_;
 	Button * cancel_;
 	Button * restore_;
-	
+
 	typedef std::list<Widget *> Widgets;
 	Widgets read_only_;
 };

@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -38,4 +38,3 @@ string const ControlError::getParams(InsetError const & inset)
 {
 	return inset.getContents();
 }
-

@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * ================================================= 
+ * =================================================
  *
  * \author Baruch Even
  **/
@@ -32,7 +32,7 @@ class Dialog;
  */
 class GnomeBase : public ViewBC<gnomeBC>, public SigC::Object {
 public:
-	/// 
+	///
 	GnomeBase(ControlButtons & c,  string const & name);
 	///
 	virtual ~GnomeBase();
@@ -40,7 +40,7 @@ public:
 protected:
 	/// Get the widget named 'name' from the xml representation.
 	template <class T>
-	T* getWidget(char const * name) const; 
+	T* getWidget(char const * name) const;
 
 	/// Get the dialog we use.
 	Gnome::Dialog * dialog();
@@ -93,7 +93,7 @@ T* GnomeBase::getWidget(char const * name) const
 
 /**
  * This class is used to provide a simple automatic casting of the controller.
- * We chose not to make GnomeBase a template since it has some size and we 
+ * We chose not to make GnomeBase a template since it has some size and we
  * have no reason to duplicate it by making it a template.
  *
  * Basically the FormCB<Controller> template instantiates GnomeBase and passes

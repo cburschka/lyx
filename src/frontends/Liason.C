@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -45,10 +45,10 @@ PrinterParams getPrinterParams(Buffer * buffer)
 }
 
 
-bool printBuffer(Buffer * buffer, PrinterParams const & pp) 
+bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 {
 	string command(lyxrc.print_command + ' ');
-	
+
 	if (pp.target == PrinterParams::PRINTER
 	    && lyxrc.print_adapt_output  // dvips wants a printer name
 	    && !pp.printer_name.empty()) {// printer name given
@@ -65,7 +65,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 	case PrinterParams::ODD:
 		command += lyxrc.print_oddpage_flag + ' ';
 		break;
-    
+
 	default:
 		// only option left is print all of them
 		break;

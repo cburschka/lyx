@@ -15,7 +15,7 @@
 #include "QBibtex.h"
 #include "Qt2BC.h"
 #include "gettext.h"
-#include "debug.h" 
+#include "debug.h"
 
 #include <qlineedit.h>
 #include <qcombobox.h>
@@ -44,7 +44,7 @@ void QBibtex::build_dialog()
 	bc().addReadOnly(dialog_->stylePB);
 	bc().addReadOnly(dialog_->bibtocCB);
 	bc().addReadOnly(dialog_->databasePB);
-	bc().addReadOnly(dialog_->deletePB); 
+	bc().addReadOnly(dialog_->deletePB);
 }
 
 
@@ -62,7 +62,7 @@ void QBibtex::update_contents()
 			dialog_->databaseLB->inSort(bib.c_str());
 	}
 
-        string bibtotoc = "bibtotoc";
+	string bibtotoc = "bibtotoc";
 	string bibstyle(controller().params().getOptions().c_str());
 
 	// bibtotoc exists?
@@ -80,7 +80,7 @@ void QBibtex::update_contents()
 	dialog_->deletePB->setEnabled(false);
 	dialog_->styleED->setEnabled(false);
 	dialog_->stylePB->setEnabled(false);
- 
+
 	if (bibstyle == "plain" || bibstyle.empty())
 		dialog_->styleCO->setCurrentItem(0);
 	else if (bibstyle == "unsrt")
@@ -115,7 +115,7 @@ void QBibtex::apply()
 		bibstyle = dialog_->styleED->text().latin1();
 
 	bool const bibtotoc(dialog_->bibtocCB->isChecked());
-	
+
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
 		controller().params().setOptions("bibtotoc," + bibstyle);

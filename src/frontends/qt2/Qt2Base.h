@@ -14,8 +14,8 @@
 #ifndef QT2BASE_H
 #define QT2BASE_H
 
-#include <config.h> 
- 
+#include <config.h>
+
 #include <qfont.h>
 #include <qdialog.h>
 #include <qobject.h>
@@ -54,24 +54,24 @@ protected:
 	/// Create the dialog if necessary, update it and display it.
 	virtual void show();
 	/// update the dialog's contents
-	virtual void update_contents() = 0; 
+	virtual void update_contents() = 0;
 
 	/// the dialog has changed contents
-	virtual void changed(); 
+	virtual void changed();
 
-	/// is the dialog currently valid ? 
+	/// is the dialog currently valid ?
 	virtual bool isValid();
 
 	/// are we updating ?
-	bool updating_; 
- 
+	bool updating_;
+
 protected slots:
 	// dialog closed from WM
 	void slotWMHide();
 
 	// Restore button clicked
 	void slotRestore();
- 
+
 	// OK button clicked
 	void slotOK();
 
@@ -87,7 +87,7 @@ private:
 
 private:
 	/// dialog title, displayed by WM.
-  	QString title_;
+	QString title_;
 };
 
 
@@ -96,16 +96,16 @@ class Qt2DB: public Qt2Base
 {
 protected:
 	Qt2DB(ControlButtons &, QString const &);
- 
-	/// update the dialog 
+
+	/// update the dialog
 	virtual void update();
- 
+
 	/// Build the dialog
 	virtual void build();
- 
+
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog * form() const;
- 
+
 	/// Real GUI implementation.
 	boost::scoped_ptr<Dialog> dialog_;
 
@@ -129,25 +129,25 @@ template <class Dialog>
 void Qt2DB<Dialog>::update()
 {
 	form()->setUpdatesEnabled(false);
- 
+
 	// protect the BC from unwarranted state transitions
- 
+
 	qApp->processEvents();
 	updating_ = true;
 	update_contents();
 	qApp->processEvents();
 	updating_ = false;
- 
+
 	form()->setUpdatesEnabled(true);
 	form()->update();
 }
 
- 
+
 template <class Dialog>
 void Qt2DB<Dialog>::build()
 {
 	// protect the BC from unwarranted state transitions
- 
+
 	qApp->processEvents();
 	updating_ = true;
 	build_dialog();
@@ -155,7 +155,7 @@ void Qt2DB<Dialog>::build()
 	updating_ = false;
 }
 
- 
+
 template <class Controller, class Base>
 class Qt2CB: public Base
 {

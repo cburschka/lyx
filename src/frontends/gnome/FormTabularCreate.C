@@ -1,10 +1,10 @@
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * ================================================= 
+ * =================================================
  *
  * \author Michael Koziarski <michael@koziarski.org>
  */
@@ -39,13 +39,13 @@ FormTabularCreate::~FormTabularCreate()
 void FormTabularCreate::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, 
-	                                 &FormTabularCreate::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, 
-	                                 &FormTabularCreate::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, 
-                                     &FormTabularCreate::ApplyClicked));
-	
+	ok_btn()->clicked.connect(SigC::slot(this,
+					 &FormTabularCreate::OKClicked));
+	cancel_btn()->clicked.connect(SigC::slot(this,
+					 &FormTabularCreate::CancelClicked));
+	apply_btn()->clicked.connect(SigC::slot(this,
+				     &FormTabularCreate::ApplyClicked));
+
 	// Manage the buttons state
 	bc().setOK(ok_btn());
 	bc().setCancel(cancel_btn());
@@ -71,29 +71,28 @@ void FormTabularCreate::update()
 
 bool FormTabularCreate::validate() const
 {
-	return ( rows()->get_value_as_int() > 0 ) && 
+	return ( rows()->get_value_as_int() > 0 ) &&
 	       ( cols()->get_value_as_int() > 0 );
 }
 
 
-Gtk::Button * FormTabularCreate::ok_btn() const 
+Gtk::Button * FormTabularCreate::ok_btn() const
 {
-        return getWidget<Gtk::Button>("r_ok_btn");
+	return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * FormTabularCreate::apply_btn() const 
+Gtk::Button * FormTabularCreate::apply_btn() const
 {
-        return getWidget<Gtk::Button>("r_apply_btn");
+	return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * FormTabularCreate::cancel_btn() const 
+Gtk::Button * FormTabularCreate::cancel_btn() const
 {
-        return getWidget<Gtk::Button>("r_cancel_btn");
+	return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::SpinButton * FormTabularCreate::rows() const 
+Gtk::SpinButton * FormTabularCreate::rows() const
 {
-        return getWidget<Gtk::SpinButton>("r_rows");
+	return getWidget<Gtk::SpinButton>("r_rows");
 }
-Gtk::SpinButton * FormTabularCreate::cols() const 
+Gtk::SpinButton * FormTabularCreate::cols() const
 {
-        return getWidget<Gtk::SpinButton>("r_cols");
+	return getWidget<Gtk::SpinButton>("r_cols");
 }
-

@@ -8,9 +8,9 @@
 
 #ifndef QINCLUDEDIALOG_H
 #define QINCLUDEDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QIncludeDialogBase.h"
 
 class QInclude;
@@ -22,7 +22,7 @@ public:
 	QIncludeDialog(QInclude * form);
 
 	void updateLists();
- 
+
 protected slots:
 	virtual void change_adaptor();
 	virtual void loadClicked();

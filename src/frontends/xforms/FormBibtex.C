@@ -48,7 +48,7 @@ void FormBibtex::build()
 	setPrehandler(dialog_->input_database);
 	setPrehandler(dialog_->input_style);
 
-        // Manage the ok, apply, restore and cancel/close buttons
+	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_close);
 
@@ -76,9 +76,9 @@ void FormBibtex::build()
 ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->button_database_browse) {
-		// When browsing, take the first file only 
+		// When browsing, take the first file only
 		string const in_name = fl_get_input(dialog_->input_database);
-		string out_name = 
+		string out_name =
 			controller().Browse("",
 					    "Select Database",
 					    "*.bib| BibTeX Databases (*.bib)");
@@ -87,25 +87,25 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 			if (!in_name.empty())
 				out_name = in_name + ", " + out_name;
 
-			fl_freeze_form(form()); 
+			fl_freeze_form(form());
 			fl_set_input(dialog_->input_database, out_name.c_str());
-			fl_unfreeze_form(form()); 
+			fl_unfreeze_form(form());
 		}
 	}
 
 	if (ob == dialog_->button_style_browse) {
 		string const in_name = fl_get_input(dialog_->input_style);
-		string out_name = 
+		string out_name =
 			controller().Browse(in_name,
 					    "Select BibTeX-Style",
 					    "*.bst| BibTeX Styles (*.bst)");
 		if (!out_name.empty()) {
-			fl_freeze_form(form()); 
+			fl_freeze_form(form());
 			fl_set_input(dialog_->input_style, out_name.c_str());
-			fl_unfreeze_form(form()); 
+			fl_unfreeze_form(form());
 		}
 	}
-  
+
 	if (!compare(fl_get_input(dialog_->input_database),"")) {
 		return ButtonPolicy::SMI_NOOP;
 	}
@@ -118,7 +118,7 @@ void FormBibtex::update()
 {
 	fl_set_input(dialog_->input_database,
 		     controller().params().getContents().c_str());
-        string bibtotoc = "bibtotoc";
+	string bibtotoc = "bibtotoc";
 	string bibstyle (controller().params().getOptions().c_str());
 	if (prefixIs(bibstyle,bibtotoc)) { // bibtotoc exists?
 		fl_set_button(dialog_->check_bibtotoc,1);
@@ -159,7 +159,7 @@ string const unique_and_no_extensions(string const & str_in)
 	eliminate_duplicates(dbase);
 	return subst(getStringFromVector(dbase),",",", ");
 }
- 
+
 } // namespace anon
 
 
@@ -172,7 +172,7 @@ void FormBibtex::apply()
 		controller().params().setOptions("");
 		return;
 	}
-	
+
 	controller().params().setContents(unique_and_no_extensions(db));
 
 	// empty is valid!
@@ -183,7 +183,7 @@ void FormBibtex::apply()
 	}
 
 	bool const bibtotoc = fl_get_button(dialog_->check_bibtotoc);
-	
+
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
 		controller().params().setOptions("bibtotoc,"+bibstyle);

@@ -1,10 +1,10 @@
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * ================================================= 
+ * =================================================
  *
  * \author Michael Koziarski <michael@koziarski.org>
  */
@@ -39,7 +39,7 @@ void FormCredits::build()
 
 	// Do not update the dialog when we insert the text
 	text()->freeze();
-	
+
 	// Get the credits into the string stream
 	stringstream ss;
 	string credits = controller().getCredits(ss).str();
@@ -64,7 +64,7 @@ void FormCredits::build()
 		string const r("R-");
 		index = italic.find(r);
 		italic.replace(index, r.size()-1, "i");
-		
+
 		//lyxerr << "Bold: " << bold << "\nItalic: " << italic << std::endl;
 		c_bold.set_font(Gdk_Font(bold));
 		c_italic.set_font(Gdk_Font(italic));
@@ -75,9 +75,9 @@ void FormCredits::build()
 		std::string::size_type end = credits.find('\n');
 		string const line = credits.substr(0, ++end);
 		credits = credits.substr(end);
-		
+
 //		lyxerr << "Line got: '" << line << "'\nend = " << end << std::endl;
-		
+
 		string const prefix = line.substr(0, 2);
 		if (prefix == bold) {
 			text()->insert(c_bold, line.substr(2));
@@ -87,7 +87,7 @@ void FormCredits::build()
 			text()->insert(line);
 		}
 	}
-	
+
 	// Allow the text area to be drawn.
 	text()->thaw();
 }

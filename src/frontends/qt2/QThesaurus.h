@@ -21,7 +21,7 @@ class QThesaurusDialog;
 
 ///
 class QThesaurus
-	: public Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > 
+	: public Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> >
 {
 public:
 	///
@@ -37,7 +37,7 @@ private:
 	virtual void build_dialog();
 
 	/// replace the word
-	void replace(); 
+	void replace();
 };
 
 #endif // QTHESAURUS_H

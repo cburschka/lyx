@@ -16,24 +16,24 @@ class ControlExternal;
 class QExternalDialog;
 
 class QExternal :
-	public Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > 
+	public Qt2CB<ControlExternal, Qt2DB<QExternalDialog> >
 {
 	friend class QExternalDialog;
- 
-public: 
+
+public:
 	QExternal(ControlExternal &);
 
 protected:
 	virtual bool isValid();
- 
-private: 
+
+private:
 	/// Apply changes
 	virtual void apply();
 	/// update
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
- 
+
 	/// get the right helptext
 	string const & helpText();
 };

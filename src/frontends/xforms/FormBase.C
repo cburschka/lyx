@@ -212,11 +212,11 @@ static int C_PrehandlerCB(FL_OBJECT * ob, int event,
 	if (!ob->form) return 0;
 
 	FormBase * ptr = static_cast<FormBase *>(ob->form->u_vdata);
-  
+
 	if (ptr)
 		ptr->PrehandlerCB(ob, event, key);
 
 	return 0;
 }
- 
+
 } // extern "C"

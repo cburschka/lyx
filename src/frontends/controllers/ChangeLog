@@ -1,3 +1,7 @@
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* most files: ws cleanup
+
 2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* biblio.C (getInfo): string::c_str() never returns NULL. Don't test
@@ -7,7 +11,7 @@
 
 	* ControlGraphics.C:
 	* ControlInclude.C: better error messages
-	 
+
 2002-03-11  Herbert Voss  <voss@lyx.org>
 
 	* biblio.C (parseBibTeX): fix another minibug with an
@@ -20,7 +24,7 @@
 
 2002-03-09  Herbert Voss  <voss@lyx.org>
 
-	* ControlGraphics.[Ch]: adding checkFilename() for testing 
+	* ControlGraphics.[Ch]: adding checkFilename() for testing
 	of non-existing files
 
 2002-03-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -35,7 +39,7 @@
 2002-03-05  Herbert Voss  <voss@lyx.org>
 
 	* biblio.C (getInfo): simplify if using paragraph layout
-	"bibliography". 
+	"bibliography".
 
 2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -80,7 +84,7 @@
 
 	* ControlGraphics.C: remove #include "support/syscall.h" as it's not
 	used.
-	* ControlTexinfo.C: 
+	* ControlTexinfo.C:
 	change Systemcalls::System to Systemcalls::Wait and
 	No change of functionality, just reflects the stripped down Systemcalls
 	class.
@@ -105,7 +109,7 @@
 
 	* ControlSpellchecker.C: clear any selection left
 	(bug #211)
- 
+
 2002-02-01  Herbert Voss  <voss@lyx.org>
 
 	* ControlGraphics.[C] (readBB): search only, if it is a
@@ -153,7 +157,7 @@
 
 	* biblio.C (getInfo): fix bug when no author is given
 
-	* biblio.C (parseBibTeX): change the parsing, so that 
+	* biblio.C (parseBibTeX): change the parsing, so that
 	'#'-characters in a bibtex entry are no more a problem.
 
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -233,7 +237,7 @@
 	Rename ControlDialogs.h as ControlDialog.h.
 	Add ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl to
 	EXTRA_DIST.
-	
+
 2002-01-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlInset.h (apply): fix bug unearthed by Michael Koziarski.
@@ -259,15 +263,15 @@
 
 	* helper_funcs.h (browseFile): add default empty button descriptions.
 
-	* ControlGraphics.C (Browse): 
-	* ControlBibtex.C (Browse): 
+	* ControlGraphics.C (Browse):
+	* ControlBibtex.C (Browse):
 	* ControlInclude.C (Browse): add shortcuts to directory buttons
 
 2002-01-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlThesaurus.h:
 	* ControlThesaurus.C: update to Aiksaurus 0.14
- 
+
 2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlSpellchecker.C (clearParams): show the closing message
@@ -286,11 +290,11 @@
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlToc.C: changes for floatlist
- 
+
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlVCLog.C: use _()
- 
+
 2001-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ControlSpellchecker.C: include <sys/types.h> since FreeBSD needs
@@ -316,7 +320,7 @@
 
 	* ControlTexinfo.C: new path for the shellscript TeXFiles.sh
 	and some more stuff from FormTexinfo.C
-	
+
 	* ControlShowFile.C: hiding the update-button
 
 2001-10-09  Herbert Voss  <voss@perce.de>
@@ -428,16 +432,16 @@
 	* ControlDialogs.h: remove bc() hack, now fixed in
 	  Qt2 frontend. use member dialog_built_ instead of shared
 	  static.
- 
-	* ButtonController.h: 
+
+	* ButtonController.h:
 	* ButtonPolicies.C: more debug info
- 
+
 	* ButtonControllerBase.C: call refresh() when setting readOnly !
- 
+
 	* GUI.h: External form has apply, use the right policy
 
 	* character.C: fix two off-by-one errors when latex font was removed
- 
+
 2001-08-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlInset.h (apply): tentative fix for the press Apply multiple
@@ -447,11 +451,11 @@
 
 	* ControlCharacter.C: fix typo
 
-	* ViewBase.h: 
+	* ViewBase.h:
 	* ControlDialogs.C:
 	* ControlInsets.C: make sure dialog is built before it is shown, so
 	  it works properly the very first time it is shown
- 
+
 2001-08-20  Herbert Voss  <voss@perce.de>
 
 	* ControlBibtex.[Ch]: enhanced bibtex-data gui to browse for databases
@@ -472,7 +476,7 @@
 
 2001-08-09  Allan Rae  <rae@lyx.org>
 
-	* Makefile.am (SUBDIRS, dist-hook): remove bogus entries. 
+	* Makefile.am (SUBDIRS, dist-hook): remove bogus entries.
 
 2001-08-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -532,7 +536,7 @@
 
 	* ControlInclude.h:
 	* ControlInclude.C: implement ability to load file
- 
+
 2001-07-18  Juergen Vigna  <jug@sad.it>
 
 	* ControlSearch.C (replace): changes to lyxfind.h function calls.
@@ -568,7 +572,7 @@
 2001-07-17  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ControlSpellchecker.[Ch]: remove member quit() and some cleaning
-	
+
 2001-07-16  Juergen Vigna  <jug@sad.it>
 
 	* ControlSpellchecker.C (show): use the lyxrc.use_pspell flag (if
@@ -590,7 +594,7 @@
 
 2001-07-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* ControlSpellchecker.C (getSuggestion): 
+	* ControlSpellchecker.C (getSuggestion):
 	(getWord): add std:: qualifier
 
 2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
@@ -598,7 +602,7 @@
 	* ControlSpellchecker.[Ch]: added
 	* ViewBase.h: added partialUpdate(int) member
 	* GUI.h: added spell stuff
-	
+
 2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ControlExternal.C: (*it). -> it->
@@ -698,11 +702,11 @@
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ButtonControllerBase.h: C++ mode, inherit privately from
-	noncopyable 
+	noncopyable
 	* ButtonPolicies.h: ditto
 
 	* ButtonController.h: C++ mode, swap init order of restore_ and
-	cancel_ 
+	cancel_
 
 2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -724,16 +728,16 @@
 
 2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* ControlToc.C: 
-	* ControlSearch.C: 
-	* ControlPrint.C: 
-	* ControlPreamble.C: 
-	* ControlInclude.C: 
-	* ControlGraphics.C: 
-	* ControlExternal.C: 
+	* ControlToc.C:
+	* ControlSearch.C:
+	* ControlPrint.C:
+	* ControlPreamble.C:
+	* ControlInclude.C:
+	* ControlGraphics.C:
+	* ControlExternal.C:
 	* ControlCopyright.C: include gettext.h
 
-	* ControlCharacter.C: 
+	* ControlCharacter.C:
 	* character.C: include gettext.h and language.h
 
 2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
@@ -779,7 +783,7 @@
 
 	* ViewBase.h:
 	* ControlConnections.h: associated change in #include and class names.
-	
+
 	* ControlExternal.[Ch]: new files; a controller for the External
 	Material popup.
 
@@ -931,7 +935,7 @@
 2001-03-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ControlCredits.C (getCredits): remove std:: qualifier for
-	getline(). 
+	getline().
 
 2001-03-23  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
@@ -1052,9 +1056,9 @@
 
 	* ControlCommand.h (c-tor): give  kb_action a default value of
 	LFUN_NOACTION.
-	
+
 	* ControlCommand.C (apply): do nothing if kb_action is LFUN_NOACTION.
-	
+
 	* ControlCitation.[Ch]: moved search functions out of class.
 	(bibkeysInfo): new method. Returns const reference to private data.
 	(searchKeys): added case-sensitive switch. Used only by simpleSearch
@@ -1115,7 +1119,7 @@
 	* ControlCitation.h: the templatised class GUICitation instantiates
 	the methods view() and bc(). It also stores the instances of the
 	View and ButtonController.
-	
+
 2001-02-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ButtonControllerBase.[Ch]: renamed as ButtonController.[Ch]. Class

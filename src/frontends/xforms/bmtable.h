@@ -7,12 +7,12 @@
  * \author Alejandro Aguilar Sierra
  */
 
-/* A bitmap table uses a single bitmap to simulate a 2d array 
+/* A bitmap table uses a single bitmap to simulate a 2d array
  * of bitmap buttons. It can be used to build bitmap menus.
  */
 
 #ifndef BMTABLE_H
-#define BMTABLE_H 
+#define BMTABLE_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -43,10 +43,10 @@ extern "C"
 
 
 /**/
-FL_OBJECT *fl_create_bmtable(int, FL_Coord, FL_Coord, 
+FL_OBJECT *fl_create_bmtable(int, FL_Coord, FL_Coord,
 			     FL_Coord, FL_Coord, char const *);
 /**/
-FL_OBJECT *fl_add_bmtable(int, FL_Coord, FL_Coord, 
+FL_OBJECT *fl_add_bmtable(int, FL_Coord, FL_Coord,
 			  FL_Coord, FL_Coord, char const *);
 
 /** Same as fl_get_button_numb() */
@@ -69,21 +69,21 @@ void fl_set_bmtable_adjust(FL_OBJECT *, int ox, int oy, int dx, int dy);
 /** The number of items is by default nc x nr, but you can change it */
 void fl_set_bmtable_maxitems(FL_OBJECT *, int);
 /**/
-int fl_get_bmtable_maxitems(FL_OBJECT *); 
+int fl_get_bmtable_maxitems(FL_OBJECT *);
 
 /** Returns the index of the selected item or -1 if none was selected */
 int fl_get_bmtable(FL_OBJECT *);
 
 /** Replace an item's sub_bitmap at id position */
-void fl_replace_bmtable_item(FL_OBJECT *ob, int id, int  cw, int ch, char *data); 
+void fl_replace_bmtable_item(FL_OBJECT *ob, int id, int  cw, int ch, char *data);
 
-/** Get the sub_bitmap from id position. You must alloc memory for the data. */ 
+/** Get the sub_bitmap from id position. You must alloc memory for the data. */
 void fl_get_bmtable_item(FL_OBJECT *ob, int id, int *cw, int *ch, char *data);
 
 /** Returns a pixmap from the table, if available. */
 Pixmap fl_get_bmtable_pixmap(FL_OBJECT *);
 
-/** Draws a single item on a drawable */ 
+/** Draws a single item on a drawable */
 void fl_draw_bmtable_item(FL_OBJECT *ob, int i, Drawable d, int xx, int yy);
 
 /** Free the current bitmap in preparation for installing a new one */
@@ -97,4 +97,3 @@ void fl_free_bmtable_pixmap(FL_OBJECT *ob);
 #endif
 
 #endif  /* BMTABLE_H */
-

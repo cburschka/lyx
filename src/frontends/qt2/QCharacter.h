@@ -13,31 +13,31 @@
 
 #include <config.h>
 #include <vector>
- 
-#include "LString.h" 
+
+#include "LString.h"
 #include "Qt2Base.h"
-#include "controllers/character.h" 
- 
+#include "controllers/character.h"
+
 
 class ControlCharacter;
 class QCharacterDialog;
 
 class QCharacter :
-	public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > 
+	public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> >
 {
 	friend class QCharacterDialog;
- 
-public: 
+
+public:
 	QCharacter(ControlCharacter &);
 
-private: 
+private:
 	/// Apply changes
 	virtual void apply();
 	/// update
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
- 
+
 	std::vector<character::FamilyPair> family;
 	std::vector<character::SeriesPair> series;
 	std::vector<character::ShapePair>  shape;

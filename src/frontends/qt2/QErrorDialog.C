@@ -21,7 +21,7 @@ QErrorDialog::QErrorDialog(QError * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QErrorDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

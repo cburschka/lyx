@@ -9,9 +9,9 @@
 
 #ifndef QREFDIALOG_H
 #define QREFDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QRefDialogBase.h"
 
 class QRef;

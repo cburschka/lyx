@@ -17,17 +17,17 @@ class ControlIndex;
 class QIndexDialog;
 
 class QIndex :
-	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > 
+	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> >
 {
 	friend class QIndexDialog;
- 
-public: 
+
+public:
 	QIndex(ControlIndex &);
 
 protected:
 	virtual bool isValid();
- 
-private: 
+
+private:
 	/// Apply changes
 	virtual void apply();
 	/// update

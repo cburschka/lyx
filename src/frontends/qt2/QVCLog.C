@@ -15,12 +15,12 @@
 
 #include <qtextview.h>
 #include <qpushbutton.h>
- 
+
 #include "QVCLogDialog.h"
 #include "QVCLog.h"
 #include "Qt2BC.h"
 #include "gettext.h"
- 
+
 #include "QtLyXView.h"
 #include "ControlVCLog.h"
 
@@ -42,11 +42,11 @@ void QVCLog::build_dialog()
 
 void QVCLog::update_contents()
 {
-	dialog_->setCaption(string(_("Version control log for ") + controller().getBufferFileName()).c_str()); 
+	dialog_->setCaption(string(_("Version control log for ") + controller().getBufferFileName()).c_str());
 
 	dialog_->vclogTV->setText("");
 
 	stringstream ss;
- 
+
 	dialog_->vclogTV->setText(controller().getVCLogFile(ss).str().c_str());
 }

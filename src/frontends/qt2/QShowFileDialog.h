@@ -8,9 +8,9 @@
 
 #ifndef QSHOWFILEDIALOG_H
 #define QSHOWFILEDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QShowFileDialogBase.h"
 
 class QShowFile;

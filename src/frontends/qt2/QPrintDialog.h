@@ -11,9 +11,9 @@
 #define QPRINTDIALOG_H
 
 #include <config.h>
- 
+
 #include "ui/QPrintDialogBase.h"
-#include "lyxrc.h" 
+#include "lyxrc.h"
 #include "PrinterParams.h"
 
 class QPrint;
@@ -23,7 +23,7 @@ class QPrintDialog : public QPrintDialogBase
 
 public:
 	QPrintDialog(QPrint * f);
-	
+
 protected slots:
 	virtual void change_adaptor();
 	virtual void browseClicked();

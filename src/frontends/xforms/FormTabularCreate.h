@@ -26,7 +26,7 @@ struct FD_form_tabular_create;
 class FormTabularCreate :
 	public FormCB<ControlTabularCreate, FormDB<FD_form_tabular_create> > {
 public:
-	/// 
+	///
 	FormTabularCreate(ControlTabularCreate &);
 
 private:

@@ -21,7 +21,7 @@ class QMinipageDialog;
 
 ///
 class QMinipage
-	: public Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > 
+	: public Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> >
 {
 public:
 	///

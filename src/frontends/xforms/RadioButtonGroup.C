@@ -8,11 +8,11 @@
  * \author Baruch Even, baruch.even@writeme.com
  */
 
-#include <config.h> 
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
-#endif 
+#endif
 
 #include "RadioButtonGroup.h"
 
@@ -77,7 +77,7 @@ void RadioButtonGroup::setButton(int value)
 		find_if(map.begin(), map.end(),
 			lyx::equal_2nd_in_pair<ButtonValuePair>(value));
 #endif
-	
+
 	// If we found nothing, report it and return
 	if (it == map.end()) {
 		lyxerr << "BUG: Requested value in RadioButtonGroup doesn't exists"
@@ -116,4 +116,3 @@ int RadioButtonGroup::getButton()
 	// Else return 0.
 	return 0;
 }
-

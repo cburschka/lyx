@@ -82,13 +82,13 @@ long const SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
 long const ONE_HOUR_SEC = 60L * 60L;
 
 extern "C" {
-	
+
 	static
 	int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev)
 	{
 		return FileDialog::Private::CancelCB(fl, xev);
 	}
-	
+
 	static
 	void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data)
 	{
@@ -133,17 +133,17 @@ void UserCache::add(uid_t ID) const
 {
 	string pszNewName;
 	struct passwd * pEntry;
-	
+
 	// gets user name
 	if ((pEntry = getpwuid(ID)))
 		pszNewName = pEntry->pw_name;
 	else {
 		pszNewName = tostr(ID);
 	}
-	
+
 	// adds new node
 	users[ID] = pszNewName;
-}	
+}
 
 
 /// Group cache class definition
@@ -176,7 +176,7 @@ void GroupCache::add(gid_t ID) const
 {
 	string pszNewName;
 	struct group * pEntry;
-	
+
 	// gets user name
 	if ((pEntry = getgrgid(ID))) pszNewName = pEntry->gr_name;
 	else {
@@ -248,7 +248,7 @@ void FileDialog::Private::Reread()
 		File = split(File, Temp, '/');
 	}
 	while (!File.empty() || !Temp.empty()) {
-		string dline = "@b"+line + Temp + '/';		
+		string dline = "@b"+line + Temp + '/';
 		fl_add_browser_line(pFileDlgForm->List, dline.c_str());
 		File = split(File, Temp, '/');
 		line += ' ';
@@ -265,7 +265,7 @@ void FileDialog::Private::Reread()
 		// If the pattern doesn't start with a dot, skip hidden files
 		if (!pszMask.empty() && pszMask[0] != '.' &&
 		    pDirEntry->d_name[0] == '.')
-                        continue;
+			continue;
 
 		// Gets filename
 		string fname = pDirEntry->d_name;
@@ -282,15 +282,15 @@ void FileDialog::Private::Reread()
 		// can this really happen?
 		if (!fileInfo.isOK())
 			continue;
-		
+
 		fileInfo.modeString(szMode);
 		unsigned int nlink = fileInfo.getNumberOfLinks();
-		string user = 	lyxUserCache.find(fileInfo.getUid());
+		string user =	lyxUserCache.find(fileInfo.getUid());
 		string group = lyxGroupCache.find(fileInfo.getGid());
 
 		time_t modtime = fileInfo.getModificationTime();
 		string Time = ctime(&modtime);
-		
+
 		if (curTime > modtime + SIX_MONTH_SEC
 		    || curTime < modtime + ONE_HOUR_SEC) {
 			// The file is fairly old or in the future. POSIX says
@@ -368,7 +368,7 @@ void FileDialog::Private::Reread()
 
 	// Sort the names
 	sort(direntries.begin(), direntries.end(), comp_direntry());
-	
+
 	// Add them to directory box
 	for (DirEntries::const_iterator cit = direntries.begin();
 	     cit != direntries.end(); ++cit) {
@@ -384,14 +384,14 @@ void FileDialog::Private::Reread()
 // SetDirectory: sets dialog current directory
 void FileDialog::Private::SetDirectory(string const & Path)
 {
-	
+
 	string tmp;
 
-	if (Path.empty()) 
+	if (Path.empty())
 		tmp = lyx::getcwd();
 	else
 		tmp = MakeAbsPath(ExpandPath(Path), pszDirectory);
- 
+
 	// must check the directory exists
 	DIR * pDirectory = ::opendir(tmp.c_str());
 	if (!pDirectory) {
@@ -448,7 +448,7 @@ FileDialog::Private::Private()
 		// Make sure pressing the close box doesn't crash LyX. (RvdK)
 		fl_set_form_atclose(pFileDlgForm->form,
 				    C_LyXFileDlg_CancelCB, 0);
-	   	// Register doubleclick callback
+		// Register doubleclick callback
 		fl_set_browser_dblclick_callback(pFileDlgForm->List,
 						 C_LyXFileDlg_DoubleClickCB,
 						 0);
@@ -483,7 +483,7 @@ void FileDialog::Private::SetButton(int iIndex, string const & pszName,
 	if (iIndex == 0) {
 		pObject = pFileDlgForm->User1;
 		pTemp = &pszUserPath1;
-	} else if (iIndex == 1) {			
+	} else if (iIndex == 1) {
 		pObject = pFileDlgForm->User2;
 		pTemp = &pszUserPath2;
 	} else return;
@@ -510,7 +510,7 @@ string const FileDialog::Private::GetDirectory() const
 }
 
 namespace {
-	bool x_sync_kludge(bool ret) 
+	bool x_sync_kludge(bool ret)
 	{
 		XSync(fl_get_display(), false);
 		return ret;
@@ -523,11 +523,11 @@ bool FileDialog::Private::RunDialog()
 	force_cancel = false;
 	force_ok = false;
 
-        // event loop
-        while (true) {
-                FL_OBJECT * pObject = fl_do_forms();
+	// event loop
+	while (true) {
+		FL_OBJECT * pObject = fl_do_forms();
 
-                if (pObject == pFileDlgForm->Ready) {
+		if (pObject == pFileDlgForm->Ready) {
 			if (HandleOK())
 				return x_sync_kludge(true);
 
@@ -560,7 +560,7 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long lArgument)
 
 	case 2: // list
 		pCurrentDlg->HandleListHit();
-		break;	
+		break;
 
 	case 10: // rescan
 		pCurrentDlg->SetDirectory(fl_get_input(pFileDlgForm->DirBox));
@@ -683,7 +683,7 @@ bool FileDialog::Private::HandleOK()
 		Reread();
 		return false;
 	}
-	
+
 	// Handle return from list
 	int const select = fl_get_browser(pFileDlgForm->List);
 	if (select > iDepth) {
@@ -709,7 +709,7 @@ int FileDialog::Private::CancelCB(FL_FORM *, void *)
 {
 	// Simulate a click on the cancel button
 	pCurrentDlg->Force(true);
-  	return FL_IGNORE;
+	return FL_IGNORE;
 }
 
 
@@ -761,7 +761,7 @@ string const FileDialog::Private::Select(string const & title,
 			}
 		}
 	}
-	
+
 	if (sel != 0) fl_select_browser_line(pFileDlgForm->List, sel);
 	int const top = max(sel - 5, 1);
 	fl_set_browser_topline(pFileDlgForm->List, top);
@@ -782,7 +782,7 @@ string const FileDialog::Private::Select(string const & title,
 		     title.c_str());
 
 	isOk = RunDialog();
-	
+
 	fl_hide_form(pFileDlgForm->form);
 	fl_activate_all_forms();
 	pCurrentDlg = 0;

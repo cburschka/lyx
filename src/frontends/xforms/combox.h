@@ -12,14 +12,14 @@
  * get a combobox-like object. All XForms functions are hidden.
  *
  * Change log:
- *  
- *  2/06/1996,   Alejandro Aguilar Sierra 
+ *
+ *  2/06/1996,   Alejandro Aguilar Sierra
  *    Created and tested.
- *  
- *  4/06/1996,   Alejandro Aguilar Sierra 
+ *
+ *  4/06/1996,   Alejandro Aguilar Sierra
  *    Added droplist mode (a button with a black down arrow at right)
  *    and support for middle and right buttons, as XForms choice object.
- */ 
+ */
 
 #ifndef COMBOX_H
 #define COMBOX_H
@@ -68,44 +68,44 @@ public:
 	*/
 	void add(int x, int y, int w, int hmin, int hmax,
 		 FL_OBJECT * tabfolder1_ = 0, FL_OBJECT * tabfolder2_ = 0);
-	
+
 	/// Add lines. Same as for fl_browser object
 	void addline(string const &);
 	/// Add lines. Same as for fl_browser object
 	void addto(string const &);
-	
+
 	/// Returns the selected item
 	int get() const;
-   
+
 	/// Returns a pointer to the selected line of text
 	string const getline() const;
-   
+
 	///  Select an arbitrary item
 	void select(int);
 	///
-        bool select(string const &);
-   
+	bool select(string const &);
+
 	///  Clear all the list
 	void clear();
 
 	/// Is the combox cleared (empty)
 	bool empty() const { return is_empty; }
-	
-	/// Remove the objects from the form they are in. 
+
+	/// Remove the objects from the form they are in.
 	void remove();
 
-	/** 
+	/**
 	 * Assign a callback to this object. The callback should be a void
-	 * function with a int, a void pointer, and a Combox pointer as 
+	 * function with a int, a void pointer, and a Combox pointer as
 	 * parameters.
 	*/
 	void setcallback(FL_COMBO_CB, void *);
-   
-        ///  Pre handler
+
+	///  Pre handler
 	void setpre(FL_COMBO_PRE_POST);
 	/// Post handler
 	void setpost(FL_COMBO_PRE_POST);
-	
+
 	///  XForms attributes
 	void resize(unsigned);
 	///
@@ -115,7 +115,7 @@ public:
 	///
 	void deactivate();
 	///
-        void shortcut(string const &, int);
+	void shortcut(string const &, int);
 	///
 	void redraw();
 	///
@@ -125,9 +125,9 @@ public:
 	///
 	static void input_cb(FL_OBJECT *, long);
 	///
-        static int  peek_event(FL_FORM *, void *);
+	static int  peek_event(FL_FORM *, void *);
  protected:
-        /// At least Hide should not be public
+	/// At least Hide should not be public
 	void hide(int who = 0);
 	///
 	FL_OBJECT * browser;
@@ -135,7 +135,7 @@ public:
 	///
 	combox_type type;
 	///
-        int bw;
+	int bw;
 	///
 	int bh;
 	///
@@ -155,7 +155,7 @@ public:
 	///
 	FL_OBJECT * label;
 	///
-        FL_FORM* form;
+	FL_FORM* form;
 	///
 	FL_OBJECT * tabfolder1;
 	///
@@ -164,7 +164,7 @@ public:
 
 
 
-//-----------------  Inline methods  --------------------------- 
+//-----------------  Inline methods  ---------------------------
 
 inline
 void Combox::addto(string const & text)
@@ -180,7 +180,7 @@ inline
 void Combox::resize(unsigned r)
 {
    fl_set_object_resize(button, r);
-   if (label!= button) fl_set_object_resize(label, r); 
+   if (label!= button) fl_set_object_resize(label, r);
 }
 
 
@@ -188,7 +188,7 @@ inline
 void Combox::gravity(unsigned g1, unsigned g2)
 {
    fl_set_object_gravity(button, g1, g2);
-   if (label!= button) fl_set_object_gravity(label, g1, g2); 
+   if (label!= button) fl_set_object_gravity(label, g1, g2);
 }
 
 
@@ -232,7 +232,7 @@ int Combox::get() const
 inline
 string const Combox::getline() const
 {
-    if (type == FL_COMBOX_INPUT) 
+    if (type == FL_COMBOX_INPUT)
       return fl_get_input(label);
     else
       return (browser && sel > 0) ?

@@ -35,14 +35,14 @@ void FormAboutlyx::build()
 
 	// create version tab
 	version_.reset(build_tab_version());
-	fl_set_object_label(version_->text_version, 
+	fl_set_object_label(version_->text_version,
 			    controller().getVersion().c_str());
-	fl_set_object_label(version_->text_copyright, 
+	fl_set_object_label(version_->text_copyright,
 			    controller().getCopyright().c_str());
 
 	// create license and warranty tab
 	license_.reset(build_tab_license());
-	
+
 	string str = formatted(controller().getLicense(),
 			       license_->text_license->w-10);
 	fl_set_object_label(license_->text_license, str.c_str());
@@ -54,7 +54,7 @@ void FormAboutlyx::build()
 	// create credits
 	credits_.reset(build_tab_credits());
 	stringstream ss;
-	fl_add_browser_line(credits_->browser_credits, 
+	fl_add_browser_line(credits_->browser_credits,
 			    controller().getCredits(ss).str().c_str());
 
 	// stack tabs

@@ -11,7 +11,7 @@
 #include "ui/QAboutDialogBase.h"
 
 class QAboutDialog : public QAboutDialogBase
-{ 
+{
 Q_OBJECT
 public:
 	QAboutDialog(QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 2000-2001 The LyX Team.
@@ -24,7 +24,7 @@ class LyXView;
 */
 class GUIRunTime {
 public:
-	/// initialise the toolkit 
+	/// initialise the toolkit
 	static
 	int initApplication(int & argc, char * argv[]);
 	/// process pending events
@@ -59,6 +59,6 @@ public:
 	int x11VisualDepth();
 	/// the server's DPI estimate
 	static
-	float getScreenDPI(); 
+	float getScreenDPI();
 };
 #endif

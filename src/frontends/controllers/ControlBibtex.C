@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -61,8 +61,8 @@ void ControlBibtex::applyParamsNoInset()
 {}
 
 
-string const ControlBibtex::Browse(string const & in_name, 
-                                   string const & title,
+string const ControlBibtex::Browse(string const & in_name,
+				   string const & title,
 				   string const & pattern)
 {
 	pair<string, string> dir1(N_("Documents|#o#O"), string(lyxrc.document_path));

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
@@ -18,7 +18,7 @@
 #include <glade/glade-xml.h>
 #include <glib.h>
 
-// Glade Helper Function.  
+// Glade Helper Function.
 
 
 /** This function will get a widget from the glade XML representation and
@@ -26,7 +26,7 @@
  */
 template<class T>
 T* getWidgetPtr(GladeXML* xml, char const * name)
-{   
+{
 	T* result = static_cast<T*>(Gtk::wrap_auto((GtkObject*)glade_xml_get_widget(xml, name)));
 	if (result == NULL)
 	{

@@ -15,7 +15,7 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif 
+#endif
 
 #include "FormBase.h"
 #include "RadioButtonGroup.h"

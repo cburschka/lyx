@@ -57,14 +57,14 @@ public:
 		   kb_action a = LFUN_SELECT_FILE_SYNC,
 		   Button b1 = Button(string(), string()),
 		   Button b2 = Button(string(), string()));
-			
+
 
 	~FileDialog();
 
 	/**
 	 * Choose a file for selection, starting in directory \param
 	 * path, with the file selection \param mask. The \param mask
-	 * string is of the form : 
+	 * string is of the form :
 	 *
 	 * <regular expression to match> | <description>
 	 *

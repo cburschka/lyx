@@ -92,6 +92,6 @@ string const ControlAboutlyx::getVersion() const
 	   << "\n"
 	   << _("User directory: ")
 	   << MakeDisplayPath(user_lyxdir);
-	
+
 	return ss.str().c_str();
 }

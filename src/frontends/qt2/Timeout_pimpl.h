@@ -20,10 +20,10 @@
 
 #include <sigc++/signal_system.h>
 
-#include <qobject.h> 
+#include <qobject.h>
 // stupid Qt
 #undef emit
- 
+
 /**
  * This class executes the callback when the timeout expires
  * using Qt mechanisms
@@ -39,7 +39,7 @@ public:
 	/// reset
 	void reset();
 	/// is the timer running ?
-	bool running() const; 
+	bool running() const;
 
 protected:
 	/// slot

@@ -17,7 +17,7 @@
 #include "QInclude.h"
 #include "Qt2BC.h"
 #include "gettext.h"
-#include "debug.h" 
+#include "debug.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -78,7 +78,7 @@ void QInclude::update_contents()
 		dialog_->visiblespaceCB->setChecked(cmdname == "verbatiminput*");
 		dialog_->visiblespaceCB->setEnabled(true);
 	}
-	
+
 	if (cmdname.empty())
 		dialog_->includeRB->setChecked(true);
 }
@@ -117,7 +117,7 @@ void QInclude::browse()
 
 	string const & name = controller().Browse(dialog_->filenameED->text().latin1(), type);
 	if (!name.empty())
-		dialog_->filenameED->setText(name.c_str()); 
+		dialog_->filenameED->setText(name.c_str());
 }
 
 

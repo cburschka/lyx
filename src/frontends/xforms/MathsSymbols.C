@@ -9,19 +9,19 @@
 
 #include <config.h>
 #include <algorithm>
- 
+
 #include XPM_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "support/LAssert.h" 
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "debug.h"
 #include "MathsSymbols.h"
 #include "FormMathsPanel.h"
- 
+
 using std::max;
 using std::endl;
 using std::ostream;
@@ -135,12 +135,12 @@ char const * latex_misc[] = {
 	"Re", "Im", "aleph", "wp", "hbar",
 	"angle", "top", "bot", "Vert", "neg",
 	"flat", "natural", "sharp", "surd", "triangle",
-	"diamondsuit", "heartsuit", "clubsuit", "spadesuit", 
-	"textrm Å", "textrm Ø", "mathcircumflex", "_", 
+	"diamondsuit", "heartsuit", "clubsuit", "spadesuit",
+	"textrm Å", "textrm Ø", "mathcircumflex", "_",
 	"mathrm T",
-	"mathbb N", "mathbb Z", "mathbb Q", 
+	"mathbb N", "mathbb Z", "mathbb Q",
 	"mathbb R", "mathbb C", "mathbb H",
-	"mathcal F", "mathcal L", 
+	"mathcal F", "mathcal L",
 	"mathcal H", "mathcal O", ""
 };
 
@@ -182,7 +182,7 @@ char const * latex_ams_arrows[] = {
 	"rightleftarrows", "rightrightarrows", "rightleftarrows",
 	"twoheadrightarrow", "rightarrowtail", "looparrowright",
 	"rightleftharpoons", "curvearrowright", "circlearrowright",
-	"Rsh", "downdownarrows", "upharpoonright", 
+	"Rsh", "downdownarrows", "upharpoonright",
 	"downharpoonright", "rightsquigarrow",
 	"nleftarrow", "nrightarrow", "nLeftarrow",
 	"nRightarrow", "nleftrightarrow", "nLeftrightarrow"
@@ -212,7 +212,7 @@ char const * latex_ams_nrel[] = {
 	"lvertneqq", "lnsim", "lnapprox", "gnapprox", "nsucc", "nsucceq",
 	"nprec", "npreceq", "precnsim","succnsim", "succnapprox", "ncong",
 	"precnapprox", "nsim", "nshortmid", "nshortparallel", "nparallel", "nvDash",
-	
+
 	"nmid", "nvdash", "nvDash","nVDash", "ntriangleright", "ntrianglerighteq",
 	"ntriangleleft", "ntrianglelefteq", "nsubseteq", "nsupseteq", "nsupseteqq", "supsetneq",
 	"subsetneq", "varsubsetneq", "subsetneqq", "varsupsetneq", "supsetneqq", "varsupsetneqq",
@@ -251,7 +251,7 @@ static char const ** mathed_get_pixmap_from_icon(int d)
 	default: return 0;
 	}
 }
- 
+
 static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 {
 	char const ** data = 0;
@@ -408,11 +408,11 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 	return data;
 }
 
- 
+
 char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 {
 	lyx::Assert(arg);
-	
+
 	char const ** data = 0;
 	latexkeys const * l = in_word_set(arg);
 	if (!l)

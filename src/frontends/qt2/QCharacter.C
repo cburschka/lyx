@@ -24,9 +24,9 @@
 
 using namespace character;
 using std::vector;
- 
+
 typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
- 
+
 QCharacter::QCharacter(ControlCharacter & c)
 	: base_class(c, _("Character"))
 {
@@ -73,7 +73,7 @@ void QCharacter::build_dialog()
 		cit != language.end(); ++cit) {
 		dialog_->langCO->insertItem(cit->c_str(), -1);
 	}
- 
+
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);
 	bc().setCancel(dialog_->closePB);
@@ -90,21 +90,21 @@ void QCharacter::build_dialog()
 
 
 namespace {
- 
+
 template<class A, class B>
 int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
 {
 	vector<std::pair<A,B> >::const_iterator cit = vec.begin();
 	for (; cit != vec.end(); ++cit) {
 		if (cit->second == val)
-			return int(cit - vec.begin()); 
+			return int(cit - vec.begin());
 	}
 	return 0;
 }
- 
+
 } // namespace anon
- 
- 
+
+
 void QCharacter::update_contents()
 {
 	dialog_->familyCO->setCurrentItem(findPos2nd(family, controller().getFamily()));
@@ -115,9 +115,9 @@ void QCharacter::update_contents()
 	dialog_->colorCO->setCurrentItem(findPos2nd(color, controller().getColor()));
 
 	dialog_->toggleallCB->setChecked(controller().getToggleAll());
- 
+
 	string const thelanguage(controller().getLanguage());
-	int i = 0; 
+	int i = 0;
 	for (vector<string>::const_iterator cit = language.begin();
 		cit != language.end(); ++i, ++cit) {
 		if (*cit == thelanguage) {
@@ -127,7 +127,7 @@ void QCharacter::update_contents()
 	}
 }
 
- 
+
 void QCharacter::apply()
 {
 	controller().setFamily(family[dialog_->familyCO->currentItem()].second);
@@ -136,8 +136,8 @@ void QCharacter::apply()
 	controller().setSize(size[dialog_->sizeCO->currentItem()].second);
 	controller().setBar(bar[dialog_->miscCO->currentItem()].second);
 	controller().setColor(color[dialog_->colorCO->currentItem()].second);
- 
+
 	controller().setLanguage(dialog_->langCO->currentText().latin1());
-   
+
 	controller().setToggleAll(dialog_->toggleallCB->isChecked());
 }

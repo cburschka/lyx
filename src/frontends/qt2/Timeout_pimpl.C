@@ -27,7 +27,7 @@ void Timeout::Pimpl::timerEvent(QTimerEvent *)
 {
 	owner_->emit();
 }
- 
+
 
 void Timeout::Pimpl::reset()
 {
@@ -41,14 +41,14 @@ bool Timeout::Pimpl::running() const
 	return timeout_id != -1;
 }
 
- 
+
 void Timeout::Pimpl::start()
 {
 	if (running())
 		lyxerr << "Timeout::start: already running!" << endl;
 	timeout_id = startTimer(owner_->timeout_ms);
 }
-	
+
 
 void Timeout::Pimpl::stop()
 {

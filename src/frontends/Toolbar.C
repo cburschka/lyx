@@ -1,6 +1,6 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
@@ -87,7 +87,7 @@ void Toolbar::updateLayoutList(bool force)
 	pimpl_->updateLayoutList(force);
 }
 
-		
+
 void Toolbar::openLayoutList()
 {
 	pimpl_->openLayoutList();
@@ -112,7 +112,7 @@ void Toolbar::add(string const & func, bool doclean)
 
 	if (tf == -1) {
 		lyxerr << "Toolbar::add: no LyX command called`"
-		       << func << "'exists!" << endl; 
+		       << func << "'exists!" << endl;
 	} else {
 		pimpl_->add(tf, doclean);
 	}

@@ -10,12 +10,12 @@
 #include <config.h>
 
 #include <qpushbutton.h>
-#include <qlineedit.h> 
+#include <qlineedit.h>
 #include <qcombobox.h>
-#include <qlistbox.h> 
- 
+#include <qlistbox.h>
+
 #include "QRefDialog.h"
-#include "ControlRef.h" 
+#include "ControlRef.h"
 #include "Dialogs.h"
 #include "QRef.h"
 #include "debug.h"
@@ -48,8 +48,8 @@ void QRefDialog::refHighlighted(const QString & sel)
 	if (form_->readOnly())
 		return;
 
-	referenceED->setText(sel); 
-	if (form_->at_ref_)	
+	referenceED->setText(sel);
+	if (form_->at_ref_)
 		form_->gotoRef();
 	gotoPB->setEnabled(true);
 	if (form_->typeAllowed())
@@ -58,7 +58,7 @@ void QRefDialog::refHighlighted(const QString & sel)
 		nameED->setEnabled(true);
 }
 
- 
+
 void QRefDialog::refSelected(const QString &)
 {
 	form_->gotoRef();

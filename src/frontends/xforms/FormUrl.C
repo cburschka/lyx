@@ -35,7 +35,7 @@ void FormUrl::build()
 	setPrehandler(dialog_->input_name);
 	setPrehandler(dialog_->input_url);
 
-        // Manage the ok, apply, restore and cancel/close buttons
+	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);

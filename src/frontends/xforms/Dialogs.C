@@ -69,8 +69,8 @@
 #include "FormShowFile.h"
 #include "FormSpellchecker.h"
 #include "FormTabularCreate.h"
-#include "FormTexinfo.h" 
-#include "FormThesaurus.h" 
+#include "FormTexinfo.h"
+#include "FormThesaurus.h"
 #include "FormToc.h"
 #include "FormUrl.h"
 #include "FormVCLog.h"
@@ -124,11 +124,11 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
 	add(new FormDocument(lv, this));
- 	add(new FormMathsPanel(lv, this));
+	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
-	
+
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());

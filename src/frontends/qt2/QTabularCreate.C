@@ -17,7 +17,7 @@
 #include "QTabularCreate.h"
 #include "Qt2BC.h"
 #include "gettext.h"
-#include "debug.h" 
+#include "debug.h"
 
 #include <qspinbox.h>
 #include <qpushbutton.h>

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -40,7 +40,7 @@ public:
 
 	/// ignore all occurances of word
 	void ignoreAll();
-	
+
 	/// stop checking
 	void stop();
 
@@ -49,7 +49,7 @@ public:
 
 	/// spell options
 	void options();
-	
+
 	/// get suggestion
 	string getSuggestion();
 
@@ -58,16 +58,16 @@ public:
 
 	/// returns progress value
 	int getProgress() {
-		return oldval_; 
+		return oldval_;
 	}
 
 	/// returns exit message
 	string getMessage() {
 		return message_;
 	}
-	
+
 private:
-	
+
 	/// set the params before show or update
 	void setParams();
 	/// clean-up on hide.
@@ -101,7 +101,7 @@ private:
 
 	/// The actual spellchecker object
 	SpellBase * speller_;
-	
+
 };
 
 #endif // CONTROLSPELLCHECKER_H

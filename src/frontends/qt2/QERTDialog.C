@@ -22,7 +22,7 @@ QERTDialog::QERTDialog(QERT * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QERTDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

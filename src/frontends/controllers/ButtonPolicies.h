@@ -98,7 +98,7 @@ public:
 		///
 		BOGUS = 55
 	};
-	
+
 	/// The various button types.
 	enum Button {
 		///
@@ -115,7 +115,7 @@ public:
 	///
 	static const Button ALL_BUTTONS =
 		Button(OKAY | APPLY | CANCEL | RESTORE);
-  
+
 	/** State machine inputs.
 	    All the policies so far have both CANCEL and HIDE always going to
 	    INITIAL. This won't necessarily be true for all [future] policies
@@ -131,7 +131,7 @@ public:
 		SMI_INVALID,
 		/// an apply-and-hide action has happened
 		SMI_OKAY,
-		/// an apply action has happened 
+		/// an apply action has happened
 		SMI_APPLY,
 		/// a cancel action has happened
 		SMI_CANCEL,
@@ -143,7 +143,7 @@ public:
 		SMI_READ_ONLY,
 		/// the dialog contents can be modified
 		SMI_READ_WRITE,
-		/// the state of the dialog contents has not changed 
+		/// the state of the dialog contents has not changed
 		SMI_NOOP,
 		/// for internal use
 		SMI_TOTAL
@@ -195,7 +195,7 @@ public:
 	OkCancelPolicy();
 	///
 	//virtual ~OkCancelPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/** Activation status of a button.
@@ -238,7 +238,7 @@ public:
 	OkCancelReadOnlyPolicy();
 	///
 	//virtual ~OkCancelReadOnlyPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
@@ -284,7 +284,7 @@ public:
 	NoRepeatedApplyReadOnlyPolicy();
 	///
 	//virtual ~NoRepeatedApplyReadOnlyPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
@@ -327,7 +327,7 @@ public:
 	OkApplyCancelReadOnlyPolicy();
 	///
 	//virtual ~OkApplyCancelReadOnlyPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
@@ -363,7 +363,7 @@ public:
 	OkApplyCancelPolicy();
 	///
 	//virtual ~OkApplyCancelPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
@@ -396,7 +396,7 @@ public:
 	NoRepeatedApplyPolicy();
 	///
 	//virtual ~NoRepeatedApplyPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
@@ -430,7 +430,7 @@ public:
 	PreferencesPolicy();
 	///
 	//virtual ~PreferencesPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
@@ -460,7 +460,7 @@ private:
 class IgnorantPolicy : public ButtonPolicy {
 public:
 	//virtual ~IgnorantPolicy() {}
-	
+
 	/// Trigger a transition with this input.
 	virtual void input(SMInput) {}
 	/// Activation status of a button.

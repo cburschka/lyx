@@ -7,7 +7,7 @@
  */
 
 #include "debug.h"
- 
+
 // GUI-specific implementations
 void alert_pimpl(string const & s1, string const & s2, string const & s3);
 bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3);

@@ -9,16 +9,16 @@
 #include <config.h>
 #include <vector>
 
-#include "LString.h" 
- 
-#include "ControlThesaurus.h" 
+#include "LString.h"
+
+#include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
 #include "Dialogs.h"
 #include "QThesaurus.h"
 
 #include <qpushbutton.h>
 #include <qlistview.h>
-#include <qlineedit.h> 
+#include <qlineedit.h>
 
 QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
 	: QThesaurusDialogBase(0, 0, false, 0),
@@ -28,13 +28,13 @@ QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QThesaurusDialog::change_adaptor()
 {
 	form_->changed();
 }
 
- 
+
 void QThesaurusDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -47,25 +47,25 @@ void QThesaurusDialog::entryChanged()
 	updateLists();
 }
 
- 
+
 void QThesaurusDialog::replaceClicked()
 {
 	form_->replace();
 }
 
- 
+
 void QThesaurusDialog::selectionChanged(QListViewItem * item)
 {
 	if (form_->readOnly())
 		return;
- 
+
 	string const entry(item->text(0).latin1());
 	replaceED->setText(entry.c_str());
 	replacePB->setEnabled(true);
 	form_->changed();
 }
 
- 
+
 void QThesaurusDialog::selectionClicked(QListViewItem * item)
 {
 	entryED->setText(item->text(0));
@@ -73,17 +73,17 @@ void QThesaurusDialog::selectionClicked(QListViewItem * item)
 	updateLists();
 }
 
- 
+
 void QThesaurusDialog::updateLists()
 {
 	meaningsLV->clear();
- 
+
 	std::vector<string> matches;
 
 	meaningsLV->setUpdatesEnabled(false);
- 
+
 	Thesaurus::Meanings meanings = form_->controller().getMeanings(entryED->text().latin1());
- 
+
 	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
 		cit != meanings.end(); ++cit) {
 		QListViewItem * i = new QListViewItem(meaningsLV);
@@ -96,7 +96,7 @@ void QThesaurusDialog::updateLists()
 				i2->setOpen(true);
 			}
 	}
- 
+
 	meaningsLV->setUpdatesEnabled(true);
 	meaningsLV->update();
 }

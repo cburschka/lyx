@@ -22,7 +22,7 @@ class QPrintDialog;
 
 ///
 class QPrint
-	: public Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > 
+	: public Qt2CB<ControlPrint, Qt2DB<QPrintDialog> >
 {
 public:
 	///

@@ -13,12 +13,12 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qfiledialog.h>
- 
+
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
 #include "Dialogs.h"
-#include "ControlBibtex.h" 
-#include "gettext.h" 
+#include "ControlBibtex.h"
+#include "gettext.h"
 #include "debug.h"
 
 #include "support/filetools.h"
@@ -33,7 +33,7 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QBibtexDialog::change_adaptor()
 {
 	form_->changed();
@@ -42,7 +42,7 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	QString file = QFileDialog::getOpenFileName(QString::null, 
+	QString file = QFileDialog::getOpenFileName(QString::null,
 		_("BibTeX style files (*.bst)"), this, 0, _("Select a BibTeX style"));
 	if (!file.isNull()) {
 		styleED->setText(ChangeExtension(OnlyFilename(file.latin1()), "").c_str());
@@ -50,11 +50,11 @@ void QBibtexDialog::browsePressed()
 	}
 }
 
- 
+
 void QBibtexDialog::addPressed()
 {
-	QString file = QFileDialog::getOpenFileName(QString::null, 
-		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add")); 
+	QString file = QFileDialog::getOpenFileName(QString::null,
+		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add"));
 	if (!file.isNull()) {
 		// FIXME: check duplicates
 		databaseLB->insertItem(ChangeExtension(file.latin1(), "").c_str());
@@ -62,18 +62,18 @@ void QBibtexDialog::addPressed()
 	}
 }
 
- 
+
 void QBibtexDialog::deletePressed()
 {
 	databaseLB->removeItem(databaseLB->currentItem());
 }
 
- 
+
 void QBibtexDialog::styleChanged(const QString & sel)
 {
 	if (form_->readOnly())
 		return;
- 
+
 	if (string(_("Other ...")) == sel.latin1()) {
 		styleED->setEnabled(true);
 		stylePB->setEnabled(true);
@@ -84,13 +84,13 @@ void QBibtexDialog::styleChanged(const QString & sel)
 	}
 }
 
- 
+
 void QBibtexDialog::databaseChanged()
 {
 	deletePB->setEnabled(!form_->readOnly() && databaseLB->currentItem() != -1);
 }
 
- 
+
 void QBibtexDialog::closeEvent(QCloseEvent *e)
 {
 	form_->slotWMHide();

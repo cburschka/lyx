@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -37,7 +37,7 @@ private:
   void createInset( string const & );
   /// Slot launching dialog to an existing inset
   void showInset( InsetCommand * const );
-  
+
   /// Update dialog before showing it
   virtual void update() { }
   virtual void updateSlot(bool = false);
@@ -49,7 +49,7 @@ private:
   void show();
   /// Hide the dialog.
   void hide();
-  
+
   /** Which LyXFunc do we use?
       We could modify Dialogs to have a visible LyXFunc* instead and
       save a couple of bytes per dialog.

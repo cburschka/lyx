@@ -23,7 +23,7 @@
 #include <qlistbox.h>
 
 typedef Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > base_class;
- 
+
 QThesaurus::QThesaurus(ControlThesaurus & c)
 	: base_class(c, _("Thesaurus"))
 {
@@ -40,15 +40,15 @@ void QThesaurus::build_dialog()
 	bc().addReadOnly(dialog_->replacePB);
 }
 
- 
+
 void QThesaurus::update_contents()
 {
 	dialog_->entryED->setText(controller().text().c_str());
 	dialog_->replaceED->setText("");
-	dialog_->updateLists(); 
+	dialog_->updateLists();
 }
 
- 
+
 void QThesaurus::replace()
 {
 	controller().replace(dialog_->replaceED->text().latin1());

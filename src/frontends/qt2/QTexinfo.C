@@ -28,7 +28,7 @@
 using std::vector;
 
 typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
- 
+
 QTexinfo::QTexinfo(ControlTexinfo & c)
 	: base_class(c, _("LaTeX Information")), warningPosted(false), activeStyle(ControlTexinfo::cls)
 
@@ -49,21 +49,21 @@ void QTexinfo::build_dialog()
 void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	bool const withFullPath = dialog_->path->isChecked();
-	
+
 	string const str =  controller().getContents(whichStyle, withFullPath);
 	std::vector<string> flist = getVectorFromString(str,"\n");
-	
+
 	dialog_->fileList->clear();
-	
+
 	for (vector<string>::const_iterator fitem = flist.begin();
 		fitem != flist.end(); ++fitem) {
 		dialog_->fileList->insertItem((*fitem).c_str());
 	}
-	
+
 	activeStyle = whichStyle;
 }
 
- 
+
 void QTexinfo::updateStyles()
 {
 	updateStyles(activeStyle);

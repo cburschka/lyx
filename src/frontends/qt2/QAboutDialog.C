@@ -13,7 +13,7 @@ QAboutDialog::QAboutDialog(QWidget * parent,  const char * name, bool modal, WFl
 {
 }
 
- 
+
 QAboutDialog::~QAboutDialog()
 {
 }

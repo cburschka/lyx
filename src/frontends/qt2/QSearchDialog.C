@@ -22,10 +22,10 @@ QSearchDialog::QSearchDialog(QSearch * form)
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),
-		form_, SLOT(slotClose())); 
+		form_, SLOT(slotClose()));
 }
 
- 
+
 void QSearchDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -43,10 +43,10 @@ void QSearchDialog::findChanged()
 		findPB->setEnabled(true);
 		replacePB->setEnabled(!form_->readOnly());
 		replaceallPB->setEnabled(!form_->readOnly());
-	} 
+	}
 }
 
- 
+
 void QSearchDialog::findClicked()
 {
 	string const find(findCO->currentText().latin1());
@@ -64,9 +64,9 @@ void QSearchDialog::replaceClicked()
 	form_->replace(find, replace,
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
-		false); 
+		false);
 }
- 
+
 
 void QSearchDialog::replaceallClicked()
 {

@@ -12,7 +12,7 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
- 
+
 #include "ControlUrl.h"
 #include "Qt2BC.h"
 #include "QURL.h"
@@ -20,7 +20,7 @@
 #include "gettext.h"
 
 typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
- 
+
 QURL::QURL(ControlUrl & c)
 	: base_class(c, _("URL"))
 {
@@ -38,7 +38,7 @@ void QURL::build_dialog()
 	bc().addReadOnly(dialog_->hyperlinkCB);
 }
 
- 
+
 void QURL::update_contents()
 {
 	dialog_->urlED->setText(controller().params().getContents().c_str());
@@ -46,7 +46,7 @@ void QURL::update_contents()
 	dialog_->hyperlinkCB->setChecked(controller().params().getCmdName() != "url");
 }
 
- 
+
 void QURL::apply()
 {
 	controller().params().setContents(dialog_->urlED->text().latin1());
@@ -64,5 +64,5 @@ bool QURL::isValid()
 	string const u(dialog_->urlED->text().latin1());
 	string const n(dialog_->nameED->text().latin1());
 
-	return !u.empty() && !n.empty(); 
-} 
+	return !u.empty() && !n.empty();
+}

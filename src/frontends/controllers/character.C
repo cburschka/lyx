@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -59,7 +59,7 @@ vector<SeriesPair> const getSeriesData()
 	series[2] = pr;
 	pr.first = _("Reset");     pr.second = LyXFont::INHERIT_SERIES;
 	series[3] = pr;
-	
+
 	return series;
 }
 
@@ -81,7 +81,7 @@ vector<ShapePair> const getShapeData()
 	shape[4] = pr;
 	pr.first = _("Reset");      pr.second = LyXFont::INHERIT_SHAPE;
 	shape[5] = pr;
-	
+
 	return shape;
 }
 
@@ -119,7 +119,7 @@ vector<SizePair> const getSizeData()
 	size[12] = pr;
 	pr.first = _("Reset");     pr.second = LyXFont::INHERIT_SIZE;
 	size[13] = pr;
-	
+
 	return size;
 }
 
@@ -139,7 +139,7 @@ vector<BarPair> const getBarData()
 	bar[3] = pr;
 	pr.first = _("Reset");      pr.second = INHERIT;
 	bar[4] = pr;
-	
+
 	return bar;
 }
 
@@ -171,7 +171,7 @@ vector<ColorPair> const getColorData()
 	color[9] = pr;
 	pr.first = _("Reset");     pr.second = LColor::inherit;
 	color[10] = pr;
-	
+
 	return color;
 }
 
@@ -184,12 +184,12 @@ vector<string> const getLanguageData()
 	langs[1] = _("Reset");
 
 	vector<string>::size_type i = 1;
-	for (Languages::const_iterator cit = languages.begin(); 
+	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
 		langs[++i] = cit->second.lang();
 	}
 
 	return langs;
 }
- 
+
 } // namespace character

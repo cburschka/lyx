@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
- 
+
 #include "ControlSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
@@ -15,14 +15,14 @@
 #include "gettext.h"
 
 #include <qprogressbar.h>
-#include <qmessagebox.h> 
+#include <qmessagebox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qlistbox.h>
 #include <qcombobox.h>
 
 typedef Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > base_class;
- 
+
 QSpellchecker::QSpellchecker(ControlSpellchecker & c)
 	: base_class(c, _("Spellchecker"))
 {
@@ -37,15 +37,15 @@ void QSpellchecker::build_dialog()
 	dialog_->wordED->setReadOnly(true);
 }
 
- 
+
 void QSpellchecker::update_contents()
 {
 	dialog_->wordED->setText("");
 	dialog_->replaceCO->clear();
 	dialog_->suggestionsLB->clear();
 }
- 
- 
+
+
 void QSpellchecker::accept()
 {
 	controller().ignoreAll();
@@ -54,7 +54,7 @@ void QSpellchecker::accept()
 
 void QSpellchecker::add()
 {
-	controller().insert(); 
+	controller().insert();
 }
 
 
@@ -78,7 +78,7 @@ void QSpellchecker::options()
 
 void QSpellchecker::spellcheck()
 {
-	controller().check(); 
+	controller().check();
 	dialog_->spellcheckPB->setEnabled(false);
 }
 
@@ -87,10 +87,10 @@ void QSpellchecker::stop()
 {
 	controller().stop();
 	dialog_->spellcheckPB->setEnabled(true);
-	hide(); 
+	hide();
 }
 
- 
+
 void QSpellchecker::partialUpdate(int id)
 {
 	switch (id) {
@@ -101,7 +101,7 @@ void QSpellchecker::partialUpdate(int id)
 	{
 		dialog_->wordED->setText(controller().getWord().c_str());
 		dialog_->suggestionsLB->clear();
- 
+
 		string w;
 		while (!(w = controller().getSuggestion()).empty()) {
 			dialog_->suggestionsLB->insertItem(w.c_str());

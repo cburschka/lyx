@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -69,12 +69,12 @@ FormRef::~FormRef()
 void FormRef::showInset( InsetCommand * const inset )
 {
   if( dialog_!=0 || inset == 0 ) return;
-  
+
   inset_ = inset;
   ih_ = inset_->hideDialog.connect(slot(this, &FormRef::hide));
 
   acttype_ = EDIT;
-  
+
   params = inset->params();
   showStageAction();
 }
@@ -83,7 +83,7 @@ void FormRef::showInset( InsetCommand * const inset )
 void FormRef::createInset( string const & arg )
 {
   if( dialog_!=0 ) return;
-  
+
   acttype_ = INSERT;
 
   params.setFromString( arg );
@@ -128,7 +128,7 @@ void FormRef::showStageError(string const & mess)
       h_ = d_->hideBufferDependent.connect(slot(this, &FormRef::hide));
     }
 }
-      
+
 
 void FormRef::showStageSelect()
 {
@@ -156,7 +156,7 @@ void FormRef::showStageSelect()
 	  list_->rows().push_back(r);
 	}
       list_->rows()[0].select(); // there is always at least one item. otherwise we go to stateError
-      
+
       b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
       b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
 
@@ -177,11 +177,11 @@ void FormRef::showStageSelect()
       bbox->children().push_back(Element(*b_cancel, false, false));
 
       alig->add( *bbox );
-      
+
       mbox->children().push_back(Element(*sw, true, true));
       mbox->children().push_back(Element(*manage(new Gtk::VSeparator()), false, false));
       mbox->children().push_back(Element(*alig, false, false));
-      
+
       // packing dialog to main window
       dialog_ = mbox;
       mainAppWin->add_action(*dialog_, _(" Reference: Select reference "), true);
@@ -225,14 +225,14 @@ void FormRef::showStageAction()
 
       b_goto = manage(new Gnome::PixButton(GOTO_REF_LABEL, GNOME_STOCK_PIXMAP_JUMP_TO));
       gototype_ = GOREF;
-      
+
       name_ = manage( new Gnome::Entry() );
 
       choice_ = manage( new Gtk::OptionMenu() );
-      
+
       b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
       b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
-      
+
       // set up spacing
       table->set_row_spacings(4);
       table->set_col_spacings(4);
@@ -252,7 +252,7 @@ void FormRef::showStageAction()
       // fill choice
       Gtk::Menu * menu = manage( new Gtk::Menu() );
       Gtk::MenuItem * e;
-      
+
       e = manage( new Gtk::MenuItem(_("Ref")) );
       e->activate.connect(bind<Type>(slot(this, &FormRef::changeType), REF));
       e->show();
@@ -281,7 +281,7 @@ void FormRef::showStageAction()
       choice_-> set_menu ( *menu );
 
       switch ( getType() ) {
-      case REF: 	{ choice_-> set_history(0); break; }
+      case REF:	{ choice_-> set_history(0); break; }
       case PAGEREF:	{ choice_-> set_history(1); break; }
       case VREF:	{ choice_-> set_history(2); break; }
       case VPAGEREF:	{ choice_-> set_history(3); break; }
@@ -289,16 +289,16 @@ void FormRef::showStageAction()
       }
 
       changeType( getType() );
-      
+
       // filling widgets with data
       name_->get_entry()->set_text(params.getOptions());
-      
+
 
       // pack widgets
       bbox->children().push_back(Element(*b_goto, false, false));
       bbox->children().push_back(Element(*b_ok, false, false));
       bbox->children().push_back(Element(*b_cancel, false, false));
-      
+
       table->attach( *manage( new Gtk::Label(_("Type:")) ), 0, 1, 0, 1, 0, 0 );
       table->attach( *manage( new Gtk::Label(_("Name:")) ), 0, 1, 1, 2, 0, 0 );
       table->attach( *choice_, 1, 2, 0, 1 );
@@ -379,10 +379,10 @@ void FormRef::apply()
 {
   if ( lv_->buffer()->isReadonly() )
     return;
-  
+
   params.setCmdName(getName(reftype_));
   params.setOptions(name_->get_entry()->get_text());
-  
+
   if (inset_ != 0)
     {
       // Only update if contents have changed
@@ -401,7 +401,7 @@ void FormRef::apply()
 
   // save configuration
   name_->save_history();
-  
+
   // hide the dialog
   hide();
 }
@@ -414,22 +414,22 @@ void FormRef::changeType(Type t)
 FormRef::Type FormRef::getType() const
 {
   Type type;
-  
+
   if( params.getCmdName() == "ref" )
     type = REF;
-  
+
   else if( params.getCmdName() == "pageref" )
     type = PAGEREF;
-  
+
   else if( params.getCmdName() == "vref" )
     type = VREF;
-  
+
   else if( params.getCmdName() == "vpageref" )
     type = VPAGEREF;
-  
+
   else
     type = PRETTYREF;
-  
+
   return type;
 }
 
@@ -437,7 +437,7 @@ FormRef::Type FormRef::getType() const
 string FormRef::getName( Type type ) const
 {
   string name;
-  
+
   switch( type ) {
   case REF:
     name = "ref";
@@ -455,6 +455,6 @@ string FormRef::getName( Type type ) const
     name = "prettyref";
     break;
   }
-  
+
   return name;
 }

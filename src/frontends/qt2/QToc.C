@@ -18,41 +18,41 @@
 #include <qlistview.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
- 
+
 #include "QTocDialog.h"
 #include "QToc.h"
-#include "Qt2BC.h" 
+#include "Qt2BC.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 #include "debug.h"
 
 #include "QtLyXView.h"
- 
+
 using std::endl;
 using std::pair;
 using std::stack;
 using std::vector;
- 
+
 typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;
- 
+
 QToc::QToc(ControlToc & c)
 	: base_class(c, _("Table of contents"))
 {}
- 
- 
+
+
 void QToc::build_dialog()
 {
 	dialog_.reset(new QTocDialog(this));
 
-        // Manage the cancel/close button
+	// Manage the cancel/close button
 	bc().setCancel(dialog_->closePB);
 }
 
 
 void QToc::updateType()
-{ 
+{
 	dialog_->typeCO->clear();
- 
+
 	vector<string> const & choice = controller().getTypes();
 	string const & type = toc::getType(controller().params().getCmdName());
 
@@ -64,30 +64,30 @@ void QToc::updateType()
 			dialog_->setCaption(type.c_str());
 		}
 	}
-} 
- 
- 
+}
+
+
 void QToc::update_contents()
 {
 	updateType();
 	updateToc(depth_);
 }
 
- 
+
 void QToc::updateToc(int newdepth)
 {
 	char const * str = dialog_->typeCO->currentText().latin1();
 	string type (str ? str : "");
- 
+
 	Buffer::SingleList const & contents = controller().getContents(type);
- 
+
 	// Check if all elements are the same.
 	if (newdepth == depth_ && toclist == contents) {
 		return;
 	}
 
 	dialog_->tocLV->clear();
- 
+
 	depth_ = newdepth;
 
 	toclist = contents;
@@ -138,7 +138,7 @@ void QToc::updateToc(int newdepth)
 			else
 				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
 		}
- 
+
 		lyxerr[Debug::GUI] << "Table of contents" << endl << "Added item " << iter->str.c_str()
 			<< " at depth " << iter->depth << ", previous sibling \"" << (last ? last->text(0).latin1() : "0")
 			<< "\", parent \"" << (parent ? parent->text(0).latin1() : "0") << "\"" << endl;
@@ -156,14 +156,14 @@ void QToc::updateToc(int newdepth)
 void QToc::select(string const & text)
 {
 	Buffer::SingleList::const_iterator iter = toclist.begin();
- 
+
 	for (; iter != toclist.end(); ++iter) {
 		if (iter->str == text)
 			break;
 	}
-	
+
 	if (iter == toclist.end()) {
-		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : " 
+		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : "
 			<< text << endl;
 		return;
 	}

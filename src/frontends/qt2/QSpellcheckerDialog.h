@@ -8,9 +8,9 @@
 
 #ifndef QSPELLCHECKERDIALOG_H
 #define QSPELLCHECKERDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QSpellcheckerDialogBase.h"
 
 #include "QSpellchecker.h"
@@ -25,7 +25,7 @@ protected slots:
 	virtual void stop() {
 		form_->stop();
 	}
- 
+
 	virtual void acceptClicked() {
 		form_->accept();
 	}
@@ -45,8 +45,8 @@ protected slots:
 		form_->options();
 	}
 	virtual void suggestionChanged(const QString &);
-	virtual void replaceChanged(const QString &); 
- 
+	virtual void replaceChanged(const QString &);
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

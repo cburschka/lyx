@@ -7,9 +7,9 @@
  */
 
 #include <config.h>
- 
+
 #include <qpushbutton.h>
- 
+
 #include "QURLDialog.h"
 #include "Dialogs.h"
 #include "QURL.h"
@@ -24,12 +24,12 @@ QURLDialog::QURLDialog(QURL * form)
 		form_, SLOT(slotClose()));
 }
 
- 
+
 QURLDialog::~QURLDialog()
 {
 }
 
- 
+
 void QURLDialog::changed_adaptor()
 {
 	form_->changed();

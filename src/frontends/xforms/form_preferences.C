@@ -1166,4 +1166,3 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
   return fdui;
 }
 /*---------------------------------------*/
-

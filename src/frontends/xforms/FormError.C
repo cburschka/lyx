@@ -29,7 +29,7 @@ void FormError::build()
 {
 	dialog_.reset(build_error());
 
-        // Manage the cancel/close button
+	// Manage the cancel/close button
 	bc().setCancel(dialog_->button_close);
 }
 

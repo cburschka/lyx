@@ -13,30 +13,30 @@
 
 #include "Qt2Base.h"
 
- 
-class ControlSpellchecker; 
+
+class ControlSpellchecker;
 class QSpellcheckerDialog;
 
 class QSpellchecker :
-	public Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > 
+	public Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> >
 {
 	friend class QSpellcheckerDialog;
- 
-public: 
+
+public:
 	QSpellchecker(ControlSpellchecker &);
 
-	/// update from controller 
+	/// update from controller
 	void partialUpdate(int id);
- 
+
 private:
-	void stop(); 
+	void stop();
 	void accept();
 	void add();
 	void ignore();
 	void replace();
 	void options();
 	void spellcheck();
- 
+
 	/// Apply changes
 	virtual void apply() {};
 	/// update

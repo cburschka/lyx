@@ -21,7 +21,7 @@ class QIncludeDialog;
 
 ///
 class QInclude
-	: public Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > 
+	: public Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> >
 {
 public:
 	///
@@ -31,7 +31,7 @@ public:
 
 protected:
 	virtual bool isValid();
- 
+
 private:
 	/// Apply changes
 	virtual void apply();
@@ -41,10 +41,10 @@ private:
 	virtual void build_dialog();
 
 	/// load the file
-	void load(); 
+	void load();
 
 	/// browse for a file
-	void browse(); 
+	void browse();
 };
 
 #endif // QINCLUDE_H

@@ -26,14 +26,14 @@ QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 		this, SLOT(stop()));
 }
 
- 
+
 void QSpellcheckerDialog:: suggestionChanged(const QString & str)
 {
 	if (replaceCO->count() != 0)
 		replaceCO->changeItem(str, 0);
 	else
 		replaceCO->insertItem(str);
- 
+
 	replaceCO->setCurrentItem(0);
 }
 
@@ -52,8 +52,8 @@ void QSpellcheckerDialog:: replaceChanged(const QString & str)
 	if (i != suggestionsLB->count())
 		suggestionsLB->setCurrentItem(i);
 }
- 
- 
+
+
 void QSpellcheckerDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

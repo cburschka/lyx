@@ -27,7 +27,7 @@ class ControlThesaurus : public ControlDialogBD {
 public:
 	///
 	ControlThesaurus(LyXView &, Dialogs &);
- 
+
 	/// replace the particular string
 	void replace(string const & newstr);
 
@@ -36,7 +36,7 @@ public:
 
 	/// get meanings
 	Thesaurus::Meanings const & getMeanings(string const & str);
- 
+
 	/// the text
 	string const & text() {
 		return oldstr_;

@@ -36,7 +36,7 @@ static char v_align_c[] = "tcb";
 
 
 extern "C" {
-	
+
 	static
 	int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
 					 char const * cur, int c)
@@ -47,7 +47,7 @@ extern "C" {
 		lyx::Assert(pre);
 		return pre->AlignFilter(cur, c);
 	}
-	
+
 }
 
 
@@ -60,7 +60,7 @@ FormMathsMatrix::FormMathsMatrix(LyXView * lv, Dialogs * d,
 FL_FORM * FormMathsMatrix::form() const
 {
 	if (dialog_.get())
- 		return dialog_->form;
+		return dialog_->form;
 	return 0;
 }
 
@@ -94,10 +94,10 @@ void FormMathsMatrix::apply()
 	char const * sh = fl_get_input(dialog_->input_halign);
 	int const nx = int(fl_get_slider_value(dialog_->slider_columns) + 0.5);
 	int const ny = int(fl_get_slider_value(dialog_->slider_rows) + 0.5);
- 
+
 	ostringstream ost;
 	ost << nx << ' ' << ny << ' ' << c << ' ' << sh;
- 
+
 	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());
 }
 
@@ -109,7 +109,7 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 	int const nx = int(fl_get_slider_value(dialog_->slider_columns)+0.5);
 	for (int i = 0; i < nx; ++i)
 		h_align_str[i] = 'c';
- 
+
 	h_align_str[nx] = '\0';
 
 	fl_set_input(dialog_->input_halign, h_align_str);
@@ -121,7 +121,7 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
 	size_t len = strlen(cur);
-	
+
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
 		int(len) +
 		int(lyx::count(cur, cur + len, '|'));
@@ -130,6 +130,6 @@ int FormMathsMatrix::AlignFilter(char const * cur, int c)
 
 	if (c == 'c' || c == 'l' || c == 'r' || c == '|')
 		return FL_VALID;
- 
+
 	return FL_INVALID;
 }

@@ -4,7 +4,7 @@
 // #if 0
 // // -*- C++ -*-
 // /* This file is part of
-//  * ====================================================== 
+//  * ======================================================
 //  *
 //  *           LyX, The Document Processor
 //  *
@@ -42,9 +42,9 @@
 //   void createInset( string const & );
 //   /// Slot launching dialog to an existing inset
 //   void showInset( InsetCommand * const );
-  
+
 //   /// Update dialog before showing it
-//   virtual void update() { } 
+//   virtual void update() { }
 //   virtual void updateSlot(bool = false);
 //   /// Explicitly free the dialog.
 //   void free();
@@ -56,7 +56,7 @@
 //   void apply(Buffer::TocItem);
 //   /// change type of the list
 //   void changeList(Buffer::TocType);
-  
+
 //   /** Which LyXFunc do we use?
 //       We could modify Dialogs to have a visible LyXFunc* instead and
 //       save a couple of bytes per dialog.

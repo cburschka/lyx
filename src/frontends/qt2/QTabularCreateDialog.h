@@ -9,7 +9,7 @@
 
 #ifndef QTABULARCREATEDIALOG_H
 #define QTABULARCREATEDIALOG_H
- 
+
 #include "ui/QTabularCreateDialogBase.h"
 
 class QTabularCreate;
@@ -23,7 +23,7 @@ public:
 protected slots:
 	virtual void columnsChanged(int);
 	virtual void rowsChanged(int);
-   
+
 private:
 	QTabularCreate * form_;
 };

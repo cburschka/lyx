@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -69,9 +69,9 @@ private:
   void createInset( string const & );
   /// Slot launching dialog to an existing inset
   void showInset( InsetCommand * const );
-  
+
   /// Update dialog before showing it (not used in this implementation)
-  virtual void update() { } 
+  virtual void update() { }
   virtual void updateSlot(bool = false);
   /// Apply from dialog (modify or create inset)
   virtual void apply();
@@ -89,7 +89,7 @@ private:
   void hide();
   /// Go to reference or return back
   void gotoRef();
-  
+
   /// moves from Search to Select "stage"
   void moveFromSelectToAction();
 
@@ -119,7 +119,7 @@ private:
   SigC::Connection h_;
   /// inset::hide connection.
   SigC::Connection ih_;
-  /// 
+  ///
   std::vector<string> refs;
   ///
   Type reftype_;
@@ -127,7 +127,7 @@ private:
   Goto gototype_;
   ///
   ActionType acttype_;
-  
+
   /// Real GUI implementation.
   Gtk::Container * dialog_;
   Gtk::CList * list_;

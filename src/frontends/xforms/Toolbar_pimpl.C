@@ -25,13 +25,13 @@
 #include "buffer.h"
 #include "lyxtextclasslist.h"
 #include "LyXAction.h"
-#include "MathsSymbols.h" 
+#include "MathsSymbols.h"
 #include "gettext.h"
 #include "Tooltips.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
-#include "support/lstrings.h" 
+#include "support/lstrings.h"
 
 using std::endl;
 
@@ -66,7 +66,7 @@ void Toolbar::Pimpl::toolbarItem::clean()
 }
 
 
-Toolbar::Pimpl::toolbarItem & 
+Toolbar::Pimpl::toolbarItem &
 Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 {
 	// Are we assigning the object onto itself?
@@ -75,11 +75,11 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 
 	// If we already have an icon, release it.
 	clean();
-    
+
 	// do we have to check icon too?
 	action = ti.action;
 	icon = 0; // locally we need to get the icon anew
-	
+
 	return *this;
 }
 
@@ -175,7 +175,7 @@ void Toolbar::Pimpl::layoutSelected()
 	string const & layoutguiname = combox->getline();
 	LyXTextClass const & tc =
 		textclasslist[owner->buffer()->params.textclass];
-	
+
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
@@ -187,7 +187,7 @@ void Toolbar::Pimpl::layoutSelected()
 	lyxerr << "ERROR (Toolbar::Pimpl::layoutSelected): layout not found!"
 	       << endl;
 }
- 
+
 
 void Toolbar::Pimpl::setLayout(string const & layout)
 {
@@ -243,19 +243,19 @@ namespace {
 void ToolbarCB(FL_OBJECT * ob, long ac)
 {
 	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
-	
+
 	owner->getLyXFunc()->verboseDispatch(int(ac), true);
 }
 
 
 extern "C" {
-	
+
 	static
 	void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 	{
 		ToolbarCB(ob, data);
 	}
-	
+
 }
 
 
@@ -268,13 +268,13 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 	string const name = lyxaction.getActionName(act);
 	if (!arg.empty())
 		xpm_name = subst(name + ' ' + arg, ' ','_');
-	else 
+	else
 		xpm_name = name;
 
 	string fullname = LibFileSearch("images", xpm_name, "xpm");
 
 	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Full icon name is `" 
+		lyxerr[Debug::GUI] << "Full icon name is `"
 				   << fullname << "'" << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 		return;
@@ -292,11 +292,11 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 			return;
 		}
 	}
-	
+
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Using default `unknown' icon" 
+		lyxerr[Debug::GUI] << "Using default `unknown' icon"
 				   << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 	}
@@ -309,9 +309,9 @@ void Toolbar::Pimpl::set(bool doingmain)
 {
 	// we shouldn't set if we have not cleaned
 	if (!cleaned) return;
-	
+
 	FL_OBJECT * obj;
-	
+
 	if (!doingmain) {
 		fl_freeze_form(owner->getForm());
 		fl_addto_form(owner->getForm());
@@ -339,7 +339,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 			break;
 		default:
 			xpos += standardspacing;
-			item->icon = obj = 
+			item->icon = obj =
 				fl_add_pixmapbutton(FL_NORMAL_BUTTON,
 						    xpos, ypos,
 						    buttonwidth,
@@ -356,7 +356,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 			// initialise the tooltip
 			string const tip = _(lyxaction.helpText(obj->argument));
 			tooltip_->init(obj, tip);
-			
+
 			// The view that this object belongs to.
 			obj->u_vdata = owner;
 
@@ -395,11 +395,11 @@ void Toolbar::Pimpl::add(int action, bool doclean)
 	if (!doclean && owner) {
 		// first "hide" the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
-		lyxerr << "Toolbar::add: \"hide\" the toolbar buttons." 
+		lyxerr << "Toolbar::add: \"hide\" the toolbar buttons."
 		       << endl;
 
 		lightReset();
-		
+
 		fl_freeze_form(owner->getForm());
 
 		ToolbarList::iterator p = toollist.begin();
@@ -415,7 +415,7 @@ void Toolbar::Pimpl::add(int action, bool doclean)
 		fl_unfreeze_form(owner->getForm());
 		cleaned = true; // this is not completely true, but OK anyway
 	}
-	
+
 	// there exist some special actions not part of
 	// kb_action: SEPARATOR, LAYOUTS
 
@@ -454,7 +454,7 @@ void Toolbar::Pimpl::push(int nth)
 {
 	lyxerr[Debug::GUI] << "Toolbar::push: trying to trigger no `"
 			   << nth << '\'' << endl;
-	
+
 	if (nth <= 0 || nth >= int(toollist.size())) {
 		// item nth not found...
 		return;
@@ -464,7 +464,7 @@ void Toolbar::Pimpl::push(int nth)
 }
 
 
-void Toolbar::Pimpl::reset() 
+void Toolbar::Pimpl::reset()
 {
 	//toollist = 0; // what is this supposed to do?
 	cleaned = false;

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -25,7 +25,7 @@
 #include "insets/insetexternal.h"
 
 /** A controller for External dialogs.
- */ 
+ */
 class ControlExternal
 	: public ControlInset<InsetExternal, InsetExternal::Params>
 {
@@ -49,7 +49,7 @@ public:
 	string const Browse(string const &) const;
 
 private:
-	/// 
+	///
 	virtual void applyParamsToInset();
 	/// not needed.
 	virtual void applyParamsNoInset() {}

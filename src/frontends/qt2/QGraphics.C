@@ -28,7 +28,7 @@
 #include "QGraphics.h"
 #include "Qt2BC.h"
 #include "gettext.h"
-#include "debug.h" 
+#include "debug.h"
 
 #include "QtLyXView.h"
 #include "ControlGraphics.h"
@@ -38,7 +38,7 @@
 #include "support/filetools.h"  // for MakeAbsPath etc
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h" // for lyxrc.display_graphics
- 
+
 
 typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
 
@@ -56,7 +56,7 @@ void QGraphics::build_dialog()
 	bc().setApply(dialog_->applyPB);
 	bc().setCancel(dialog_->closePB);
 	bc().setRestore(dialog_->restorePB);
-	
+
 	bc().addReadOnly(dialog_->rotateGB);
 	bc().addReadOnly(dialog_->latexoptionsGB);
 	bc().addReadOnly(dialog_->bbGB);
@@ -72,12 +72,12 @@ void QGraphics::build_dialog()
 void QGraphics::update_contents()
 {
 	InsetGraphicsParams & igp = controller().params();
-	
+
 	string unit = "cm";
 	if (lyxrc.default_papersize < 3)
 	    unit = "in";
 	string const defaultUnit = string(unit);
-	
+
 	// Update dialog with details from inset
 	dialog_->filename->setText(igp.filename.c_str());
 
@@ -85,7 +85,7 @@ void QGraphics::update_contents()
 	// path, because the controller knows nothing about the doc-dir
 	controller().bbChanged = false;
 	if (igp.bb.empty()) {
-		string const fileWithAbsPath = MakeAbsPath(igp.filename, OnlyPath(igp.filename)); 	
+		string const fileWithAbsPath = MakeAbsPath(igp.filename, OnlyPath(igp.filename));
 		string bb = controller().readBB(fileWithAbsPath);
 		if (!bb.empty()) {
 			// get the values from the file
@@ -103,11 +103,11 @@ void QGraphics::update_contents()
 		dialog_->rtX->setText(token(igp.bb,' ',2).c_str());
 		dialog_->rtY->setText(token(igp.bb,' ',3).c_str());
 	}
-	
+
 	// Update the draft and clip mode
 	dialog_->draft->setChecked(igp.draft);
 	dialog_->clip->setChecked(igp.clip);
-	
+
 	// Update the subcaption check button and input field
 	dialog_->subfigure->setChecked(igp.subcaption);
 	dialog_->subcaption->setText(igp.subcaptionText.c_str());
@@ -130,10 +130,10 @@ void QGraphics::update_contents()
 		    break;
 	    }
 	}
-	
+
 	dialog_->widthUnit->setCurrentItem(igp.width.unit());
 	dialog_->heightUnit->setCurrentItem(igp.height.unit());
-	
+
 	switch (igp.size_type) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
 		    dialog_->defaultRB->setChecked(TRUE);
@@ -152,14 +152,14 @@ void QGraphics::update_contents()
 
 	// aspect ratio
 	dialog_->aspectratio->setChecked(igp.keepAspectRatio);
-	
+
 	// now the lyx-internally viewsize
 	dialog_->displaywidthUnit->setCurrentItem(igp.lyxwidth.unit());
 	dialog_->displayheightUnit->setCurrentItem(igp.lyxheight.unit());
-	
+
 	// Update the rotate angle
 	dialog_->angle->setText(tostr(igp.rotateAngle).c_str());
-	
+
 	if (igp.rotateOrigin.empty()) {
 		dialog_->origin->setCurrentItem(0);
 	} else {
@@ -176,18 +176,18 @@ void QGraphics::apply()
 {
 	// Create the parameters structure and fill the data from the dialog.
 	InsetGraphicsParams & igp = controller().params();
-	
+
 	igp.filename = dialog_->filename->text();
-	
+
 	if (!controller().bbChanged)	// different to the original one?
-		igp.bb = string();	// don't write anything	    
+		igp.bb = string();	// don't write anything
 	else {
 		string bb;
 		string lbX(dialog_->lbX->text());
 		string lbY(dialog_->lbY->text());
 		string rtX(dialog_->rtX->text());
 		string rtY(dialog_->rtY->text());
-		
+
 		if (lbX.empty())
 			bb = "0 ";
 		else
@@ -207,13 +207,13 @@ void QGraphics::apply()
 
 		igp.bb = bb;
 	}
-	
+
 	igp.draft = dialog_->draft->isChecked();
-	
+
 	igp.clip = dialog_->clip->isChecked();
-	
+
 	igp.subcaption = dialog_->subfigure->isChecked();
-	
+
 	igp.subcaptionText = dialog_->subcaption->text();
 
 	switch(dialog_->show->currentItem()) {
@@ -223,7 +223,7 @@ void QGraphics::apply()
 		case 3: igp.display = InsetGraphicsParams::NONE; break;
 		default:;
 	}
-	
+
 	if (dialog_->defaultRB->isChecked())
 	    igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (dialog_->customRB->isChecked())
@@ -248,7 +248,7 @@ void QGraphics::apply()
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 
 	igp.rotateAngle = strToDbl(string(dialog_->angle->text()));
-	
+
 	while (igp.rotateAngle < 0.0 || igp.rotateAngle > 360.0) {
 		if (igp.rotateAngle < 0.0) {
 			igp.rotateAngle += 360.0;
@@ -256,14 +256,14 @@ void QGraphics::apply()
 			igp.rotateAngle -= 360.0;
 		}
 	}
-	
+
 	if ((dialog_->origin->currentItem()) > 0)
 		igp.rotateOrigin = dialog_->origin->currentText();
 	else
 	    igp.rotateOrigin = string();
-	
+
 	igp.special = dialog_->latexoptions->text();
-	
+
 }
 
 
@@ -271,16 +271,16 @@ void QGraphics::browse()
 {
 	string const & name = controller().Browse(dialog_->filename->text().latin1());
 	if (!name.empty())
-		dialog_->filename->setText(name.c_str()); 
+		dialog_->filename->setText(name.c_str());
 }
 
 void QGraphics::get()
 {
     string const filename(dialog_->filename->text());
     if (!filename.empty()) {
-	string const fileWithAbsPath = MakeAbsPath(filename, OnlyPath(filename)); 	
+	string const fileWithAbsPath = MakeAbsPath(filename, OnlyPath(filename));
 	string bb = controller().readBB(fileWithAbsPath);
-	if (!bb.empty()) {		
+	if (!bb.empty()) {
 		dialog_->lbX->setText(token(bb,' ',0).c_str());
 		dialog_->lbY->setText(token(bb,' ',1).c_str());
 		dialog_->rtX->setText(token(bb,' ',2).c_str());
@@ -295,5 +295,3 @@ bool QGraphics::isValid()
 {
 	return !string(dialog_->filename->text().latin1()).empty();
 }
-
-

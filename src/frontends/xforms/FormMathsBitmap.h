@@ -22,7 +22,7 @@
 #include "LString.h"
 #include "FormMathsPanel.h"
 
-/** 
+/**
  * This class provides an XForms implementation of a maths bitmap form.
  */
 class FormMathsBitmap : public FormMathsSub {
@@ -34,7 +34,7 @@ public:
 	typedef lyx::shared_c_ptr<FL_OBJECT> bm_ptr;
 	///
 	typedef lyx::shared_c_ptr<FL_FORM> fl_ptr;
-	
+
 	///
 	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
 			string const &, std::vector<string> const &);

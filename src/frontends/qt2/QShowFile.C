@@ -18,7 +18,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> > base_class;
- 
+
 QShowFile::QShowFile(ControlShowFile & c)
 	: base_class(c, _("ShowFile"))
 {
@@ -32,7 +32,7 @@ void QShowFile::build_dialog()
 	bc().setCancel(dialog_->closePB);
 }
 
- 
+
 void QShowFile::update_contents()
 {
 	dialog_->setName(controller().getFileName().c_str());
@@ -44,5 +44,3 @@ void QShowFile::update_contents()
 
 	dialog_->text->setText(contents.c_str());
 }
-
-

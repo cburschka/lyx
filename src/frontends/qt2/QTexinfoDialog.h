@@ -8,9 +8,9 @@
 
 #ifndef QTEXINFODIALOG_H
 #define QTEXINFODIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QTexinfoDialogBase.h"
 
 class QTexinfo;

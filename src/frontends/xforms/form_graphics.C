@@ -523,4 +523,3 @@ FD_form_lyxview * FormGraphics::build_lyxview()
   return fdui;
 }
 /*---------------------------------------*/
-

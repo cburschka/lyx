@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *       
+ *
  *          Copyright 2000 The LyX Team.
  *
  * ====================================================== */
@@ -38,7 +38,7 @@ namespace Gnome
       add(*b);
 
       accelkey_ = l->parse_uline(label);
-      
+
       l->show();
       p->show();
       b->show();
@@ -55,4 +55,3 @@ namespace Gnome
 }
 
 #endif
-

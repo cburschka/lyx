@@ -11,11 +11,11 @@
 #define FILEDIALOG_PRIVATE_H
 
 #include <config.h>
- 
+
 #include <qfiledialog.h>
 
 #include "LString.h"
-#include "lyxfunc.h" 
+#include "lyxfunc.h"
 
 #include "frontends/FileDialog.h"
 

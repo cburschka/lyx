@@ -42,13 +42,13 @@ QIndexDialog::QIndexDialog(QIndex * form)
 "documentation.\n"));
 }
 
- 
+
 void QIndexDialog::change_adaptor()
 {
 	form_->changed();
 }
 
- 
+
 void QIndexDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

@@ -61,14 +61,14 @@ QCitationDialog::~QCitationDialog()
 void QCitationDialog::slotBibSelected(int sel)
 {
 	slotBibHighlighted(sel);
- 
-	if (form_->readOnly()) 
+
+	if (form_->readOnly())
 		return;
- 
+
 	slotAddClicked();
 }
 
- 
+
 void QCitationDialog::slotBibHighlighted(int sel)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
@@ -264,22 +264,22 @@ void QCitationDialog::doFind(biblio::Direction dir)
 		start -= 1;
 
 	bool const caseSensitive = searchCaseCB->isChecked();
-	
+
 	vector<string>::const_iterator cit =
 		biblio::searchKeys(theMap, form_->bibkeys, str,
 			start, type, dir, caseSensitive);
 
-	// FIXME: should work ... 
+	// FIXME: should work ...
 	if (cit == form_->bibkeys.end()) {
 		// not found. let's loop round
 		if (dir == biblio::FORWARD)
 			start = form_->bibkeys.begin();
 		else
 			start = form_->bibkeys.end();
-		
+
 		cit = biblio::searchKeys(theMap, form_->bibkeys, str,
 			start, type, dir, caseSensitive);
- 
+
 		if (cit == form_->bibkeys.end())
 			return;
 	}

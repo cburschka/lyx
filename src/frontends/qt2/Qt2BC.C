@@ -35,14 +35,14 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
 {
 	// yuck, rtti, but the user comes first
 	if (obj->inherits("QLineEdit")) {
-		QLineEdit * le(static_cast<QLineEdit*>(obj)); 
+		QLineEdit * le(static_cast<QLineEdit*>(obj));
 		le->setReadOnly(!enabled);
 	} else {
 		obj->setEnabled(enabled);
 	}
- 
+
 	QWidget::FocusPolicy const p =
-		(enabled) ? QWidget::StrongFocus : QWidget::NoFocus; 
+		(enabled) ? QWidget::StrongFocus : QWidget::NoFocus;
 	obj->setFocusPolicy(p);
 }
 

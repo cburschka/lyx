@@ -345,7 +345,7 @@ public:
 template <class GUIview, class GUIbc>
 class GUITabularCreate :
 	public GUI<ControlTabularCreate, GUIview,
-                   OkApplyCancelReadOnlyPolicy, GUIbc> {
+		   OkApplyCancelReadOnlyPolicy, GUIbc> {
 public:
 	///
 	GUITabularCreate(LyXView & lv, Dialogs & d)
@@ -370,7 +370,7 @@ public:
 template <class GUIview, class GUIbc>
 class GUIThesaurus :
 	public GUI<ControlThesaurus, GUIview,
-                   OkApplyCancelReadOnlyPolicy, GUIbc> {
+		   OkApplyCancelReadOnlyPolicy, GUIbc> {
 public:
 	///
 	GUIThesaurus(LyXView & lv, Dialogs & d)
@@ -378,7 +378,7 @@ public:
 		      OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
- 
+
 /** Specialization for Url dialog
  */
 template <class GUIview, class GUIbc>

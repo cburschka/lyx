@@ -26,13 +26,13 @@ public:
 	///
 	FormPreamble(ControlPreamble &);
 private:
-	/// Apply from dialog 
+	/// Apply from dialog
 	virtual void apply();
 	/// Build the dialog
 	virtual void build();
 	/// Update the dialog
 	virtual void update();
-   
+
 	/// Fdesign generated method
 	FD_form_preamble * build_preamble();
 };

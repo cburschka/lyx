@@ -43,7 +43,7 @@ public:
 
 	/// Get the image width
 	unsigned int getWidth() const;
-	
+
 	/// Get the image height
 	unsigned int getHeight() const;
 
@@ -62,10 +62,10 @@ public:
 
 	/// Clip the image using params.
 	void clip(GParams const & params);
-	
+
 	/// Rotate the image using params.
 	void rotate(GParams const & params);
-	
+
 	/// Scale the image using params.
 	void scale(GParams const & params);
 
@@ -95,7 +95,7 @@ private:
 		///
 		PIXMAP_SUCCESS
 	};
-	
+
 	PixmapStatus pixmap_status_;
 
 	/// Emit this signal when the loading process is finished.

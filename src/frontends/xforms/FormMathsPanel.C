@@ -77,7 +77,7 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	style_.reset( new FormMathsStyle( lv, d, *this));
 
 	typedef vector<string> StringVec;
-	
+
 	StringVec latex(nr_latex_arrow);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_arrow[i];
@@ -159,7 +159,7 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 FL_FORM * FormMathsPanel::form() const
 {
 	if (dialog_.get())
- 		return dialog_->form;
+		return dialog_->form;
 	return 0;
 }
 
@@ -173,11 +173,11 @@ void FormMathsPanel::setActive(FormMathsSub * a) const
 void FormMathsPanel::build()
 {
 	dialog_.reset(build_maths_panel());
-	
+
 	for (int i = 0; i < nr_function_names; ++i)
 		fl_add_browser_line(dialog_->browser_funcs,
 				    function_names[i]);
-	
+
 	fl_set_pixmap_data(dialog_->button_sqrt,
 			   const_cast<char**>(sqrt_xpm));
 	fl_set_pixmap_data(dialog_->button_frac,
@@ -203,7 +203,7 @@ void FormMathsPanel::build()
 	arrow_->addBitmap(7,  2, 4, larrow_width, larrow_height, larrow_bits,
 			  false);
 	arrow_->addBitmap(4,  2, 2, darrow_width,  darrow_height, darrow_bits);
-	
+
 	boperator_->addBitmap(31, 4, 8, bop_width, bop_height, bop_bits);
 
 	brelats_->addBitmap(35, 4, 9, brel_width, brel_height, brel_bits);
@@ -215,21 +215,21 @@ void FormMathsPanel::build()
 	misc_->addBitmap(5, 5, 1, misc4_width, misc4_height, misc4_bits);
 	misc_->addBitmap(6, 3, 2, misc2_width, misc2_height, misc2_bits, false);
 	misc_->addBitmap(4, 2, 2, misc3_width, misc3_height, misc3_bits);
- 
+
 	dots_->addBitmap(4, 4, 1, dots_width, dots_height, dots_bits);
 
 	varsize_->addBitmap(14, 3, 5, varsz_width, varsz_height, varsz_bits);
 
 	ams_misc_->addBitmap(9, 5, 2, ams1_width, ams1_height, ams1_bits);
 	ams_misc_->addBitmap(26, 3, 9, ams7_width, ams7_height, ams7_bits);
-	
+
 	ams_arrows_->addBitmap(32, 3, 11, ams2_width, ams2_height, ams2_bits);
 	ams_arrows_->addBitmap(6, 3, 2, ams3_width, ams3_height, ams3_bits);
 
 	ams_rel_->addBitmap(66, 6, 11, ams_rel_width, ams_rel_height, ams_rel_bits);
 
 	ams_nrel_->addBitmap(51, 6, 9, ams_nrel_width, ams_nrel_height, ams_nrel_bits);
-	
+
 	ams_ops_->addBitmap(23, 3, 8, ams_ops_width, ams_ops_height, ams_ops_bits);
 
 	bc().setCancel(dialog_->button_close);
@@ -275,7 +275,7 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 			active_->hide();
 		dots_->show();
 		break;
- 
+
 	case MM_VARSIZE:
 		if (active_ && active_ != varsize_.get())
 			active_->hide();
@@ -287,7 +287,7 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 			active_->hide();
 		ams_misc_->show();
 		break;
-	
+
 	case MM_AMS_ARROWS:
 		if (active_ && active_ != ams_arrows_.get())
 			active_->hide();
@@ -382,9 +382,9 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 
 void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
 {
-	if (bs) 
+	if (bs)
 		lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, '\\' + sym);
-	else 
+	else
 		lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, sym);
 }
 

@@ -15,7 +15,7 @@
 #include "QBibitem.h"
 #include "Qt2BC.h"
 #include "gettext.h"
-#include "debug.h" 
+#include "debug.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -48,8 +48,8 @@ void QBibitem::update_contents()
 
 void QBibitem::apply()
 {
-	controller().params().setContents(dialog_->keyED->text().latin1()); 
-	controller().params().setOptions(dialog_->labelED->text().latin1()); 
+	controller().params().setContents(dialog_->keyED->text().latin1());
+	controller().params().setOptions(dialog_->labelED->text().latin1());
 }
 
 

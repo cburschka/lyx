@@ -12,7 +12,7 @@
 #define QPARAGRAPHDIALOG_H
 
 #include <config.h>
- 
+
 #include "ui/QParagraphDialogBase.h"
 #include "vspace.h"
 #include "paragraph.h"
@@ -24,13 +24,13 @@ class QParagraph;
 
 class QParagraphDialog : public QParagraphDialogBase
 { Q_OBJECT
-	  
+
 public:
 	QParagraphDialog(QParagraph * form, QWidget * parent = 0,
 			 char const * name = 0, bool modal = FALSE,
 			 WFlags fl = 0);
 	~QParagraphDialog();
-	
+
 	void setReadOnly(bool);
 	void setLabelWidth(char const *);
 	void setAlign(int);
@@ -46,7 +46,7 @@ public:
 	LyXGlueLength getBelowLength() const;
 	LyXLength getExtraWidth() const;
 	string getExtraWidthPercent() const;
-	// FIXME: return a std::string ! 
+	// FIXME: return a std::string !
 	char const * getLabelWidth() const;
 	LyXAlignment getAlign() const;
 	bool getAboveKeep() const;

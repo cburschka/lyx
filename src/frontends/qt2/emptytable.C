@@ -29,7 +29,7 @@ QSize EmptyTable::sizeHint() const
 	return QSize(cellsize * numCols(), cellsize * numRows());
 }
 
- 
+
 void EmptyTable::paintCell(QPainter *p, int row, int col)
 {
 	int const x2 = cellWidth(col) - 1;
@@ -73,9 +73,9 @@ void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 	int const x = ev->pos().x();
 	int const y = ev->pos().y();
 
-	if (x > 0) 
+	if (x > 0)
 		setNumberColumns(x / cellsize + leftCell());
 
-	if (y > 0) 
+	if (y > 0)
 		setNumberRows(y / cellsize + topCell());
 }

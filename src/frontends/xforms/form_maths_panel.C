@@ -123,4 +123,3 @@ FD_form_maths_panel * FormMathsPanel::build_maths_panel()
   return fdui;
 }
 /*---------------------------------------*/
-

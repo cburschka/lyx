@@ -8,9 +8,9 @@
 
 #ifndef QTHESAURUSDIALOG_H
 #define QTHESAURUSDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QThesaurusDialogBase.h"
 
 class QThesaurus;
@@ -23,7 +23,7 @@ public:
 	QThesaurusDialog(QThesaurus * form);
 
 	void updateLists();
- 
+
 protected slots:
 	virtual void change_adaptor();
 	virtual void entryChanged();

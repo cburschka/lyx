@@ -8,10 +8,10 @@
 
 #include <config.h>
 #include "gettext.h"
- 
+
 #include "lengthcombo.h"
- 
-#include <qwhatsthis.h> 
+
+#include <qwhatsthis.h>
 
 LengthCombo::LengthCombo(QWidget * parent, char * name)
 	: QComboBox(parent, name)
@@ -40,7 +40,7 @@ LengthCombo::LengthCombo(QWidget * parent, char * name)
 
 
 LyXLength::UNIT LengthCombo::currentLengthItem() const
-{ 
+{
 	LyXLength::UNIT unit;
 	int i = currentItem();
 	switch (i) {
@@ -63,15 +63,15 @@ LyXLength::UNIT LengthCombo::currentLengthItem() const
 		// FIXME: LyXLength::PE ?
 	};
 	return unit;
-} 
- 
+}
+
 
 void LengthCombo::has_activated(int)
 {
 	emit selectionChanged(currentLengthItem());
 }
 
- 
+
 void LengthCombo::setCurrentItem(LyXLength::UNIT unit)
 {
 	int i;

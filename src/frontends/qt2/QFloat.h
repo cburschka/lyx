@@ -21,7 +21,7 @@ class QFloatDialog;
 
 ///
 class QFloat
-	: public Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > 
+	: public Qt2CB<ControlFloat, Qt2DB<QFloatDialog> >
 {
 public:
 	///
@@ -31,14 +31,10 @@ public:
 private:
 	/// Apply changes
 	virtual void apply();
-	/// update 
+	/// update
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
 };
 
 #endif // QFLOAT_H
-
-
-
-

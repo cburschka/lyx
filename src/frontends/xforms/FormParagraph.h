@@ -51,7 +51,7 @@ private:
 	Paragraph const * getCurrentParagraph() const;
 	///
 	virtual FL_FORM * form() const;
-	
+
 	/// Fdesign generated method
 	FD_form_paragraph * build_paragraph();
 

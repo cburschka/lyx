@@ -126,4 +126,3 @@ FD_form_tab_license * FormAboutlyx::build_tab_license()
   return fdui;
 }
 /*---------------------------------------*/
-

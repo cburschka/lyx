@@ -38,7 +38,7 @@ void nextState(ButtonPolicy::State & state,
 	lyxerr[Debug::GUI] << "Transition from state "
 		<< state << " to state " << tmp << " after input "
 		<< in << std::endl;
- 
+
 	if (ButtonPolicy::BOGUS != tmp) {
 		state = tmp;
 	} else {
@@ -112,7 +112,7 @@ void PreferencesPolicy::input(SMInput input)
 	//lyxerr << "PreferencesPolicy::input" << endl;
 	// CANCEL and HIDE always take us to INITIAL for all cases.
 	// Note that I didn't put that special case in the helper function
-	// because it doesn't belong there.  Some other 
+	// because it doesn't belong there.  Some other
 	// This is probably optimising for the wrong case since it occurs as the
 	// dialog will be hidden.  It would have saved a little memory in the
 	// state machine if I could have gotten map working. ARRae 20000813
@@ -172,7 +172,7 @@ OkCancelPolicy::OkCancelPolicy()
 void OkCancelPolicy::input(SMInput input)
 {
 	//lyxerr << "OkCancelPolicy::input" << endl;
-	
+
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {
@@ -246,7 +246,7 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 void OkCancelReadOnlyPolicy::input(SMInput input)
 {
 	//lyxerr << "OkCancelReadOnlyPolicy::input" << endl;
-	
+
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {
@@ -324,7 +324,7 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 void NoRepeatedApplyReadOnlyPolicy::input(SMInput input)
 {
 	//lyxerr << "NoReapeatedApplyReadOnlyPolicy::input" << endl;
-	
+
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {
@@ -416,7 +416,7 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 void OkApplyCancelReadOnlyPolicy::input(SMInput input)
 {
 	//lyxerr << "OkApplyCancelReadOnlyPolicy::input" << endl;
-	
+
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {
@@ -482,7 +482,7 @@ OkApplyCancelPolicy::OkApplyCancelPolicy()
 void OkApplyCancelPolicy::input(SMInput input)
 {
 	//lyxerr << "OkApplyCancelPolicy::input" << endl;
-	
+
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {
@@ -540,7 +540,7 @@ NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 void NoRepeatedApplyPolicy::input(SMInput input)
 {
 	//lyxerr << "NoRepeatedApplyPolicy::input" << endl;
-	
+
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {

@@ -22,7 +22,7 @@ class QTexinfoDialog;
 
 ///
 class QTexinfo
-	: public Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > 
+	: public Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> >
 {
 public:
 	///

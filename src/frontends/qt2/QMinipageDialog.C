@@ -12,13 +12,13 @@
 #include <qpushbutton.h>
 #include <qtextview.h>
 #include "lengthcombo.h"
- 
+
 #include "QMinipageDialog.h"
 #include "Dialogs.h"
 #include "QMinipage.h"
 
 #include "QtLyXView.h"
-#include "ControlMinipage.h" 
+#include "ControlMinipage.h"
 
 QMinipageDialog::QMinipageDialog(QMinipage * form)
 	: QMinipageDialogBase(0, 0, false, 0),
@@ -34,7 +34,7 @@ QMinipageDialog::QMinipageDialog(QMinipage * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QMinipageDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

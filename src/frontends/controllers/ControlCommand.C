@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -59,4 +59,3 @@ void ControlCommand::applyParamsNoInset()
 	if (action_ == LFUN_NOACTION) return;
 	lv_.getLyXFunc()->dispatch(action_, params().getAsString());
 }
-

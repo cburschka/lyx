@@ -540,4 +540,3 @@ FD_form_longtable_options * FormTabular::build_longtable_options()
   return fdui;
 }
 /*---------------------------------------*/
-

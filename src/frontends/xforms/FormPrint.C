@@ -231,9 +231,9 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 			fl_set_button(dialog_->radio_printer, 0);
 		}
 	}
-		
+
 	// if we type into file, select that as a target
-	if (ob == dialog_->input_file && fl_get_button(dialog_->radio_printer) 
+	if (ob == dialog_->input_file && fl_get_button(dialog_->radio_printer)
 	    && strlen(fl_get_input(dialog_->input_file))) {
 		fl_set_button(dialog_->radio_file, 1);
 		fl_set_button(dialog_->radio_printer, 0);
@@ -241,6 +241,6 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 		fl_set_button(dialog_->radio_file, 0);
 		fl_set_button(dialog_->radio_printer, 1);
 	}
- 
+
 	return activate;
 }

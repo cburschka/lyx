@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
-#include <fstream> 
+#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -15,12 +15,12 @@
 
 #include <qtextview.h>
 #include <qpushbutton.h>
- 
+
 #include "QLogDialog.h"
 #include "QLog.h"
 #include "Qt2BC.h"
 #include "gettext.h"
- 
+
 #include "QtLyXView.h"
 #include "ControlLog.h"
 
@@ -68,6 +68,6 @@ void QLog::update_contents()
 
 	while (getline(ifstr, line))
 		text += line + "\n";
- 
+
 	dialog_->logTV->setText(text.c_str());
 }

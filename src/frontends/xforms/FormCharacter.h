@@ -1,9 +1,9 @@
 // -*- C++ -*-
-/** 
+/**
  * \file FormCharacter.h
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
- * 
+ *
  * \author Edwin Leuven, leuven@fee.uva.nl
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
@@ -26,7 +26,7 @@
 class Combox;
 struct FD_form_character;
 
-/** 
+/**
  * This class provides an XForms implementation of the Character Dialog.
  * The character dialog allows users to change the character settings
  * in their documents.
@@ -40,10 +40,10 @@ private:
 
 	/// Apply from dialog
 	virtual void apply();
-   
+
 	/// Build the dialog
 	virtual void build();
-   
+
 	/// Update the dialog.
 	virtual void update();
 
@@ -56,7 +56,7 @@ private:
 
 	/// Fdesign generated method
 	FD_form_character * build_character();
-	
+
 	///
 	boost::scoped_ptr<Combox> combo_language2_;
 	///

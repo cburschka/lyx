@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -40,7 +40,7 @@ public:
 	Buffer::SingleList const getContents(string const & type) const;
 };
 
-namespace toc 
+namespace toc
 {
     /** Given the cmdName of the TOC param, returns the type used
 	by ControlToc::getContents() */

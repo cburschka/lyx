@@ -1,4 +1,4 @@
-/** 
+/**
  * \file ControlForks.C
  * Copyright 2001 The LyX Team
  * Read COPYING
@@ -93,4 +93,3 @@ void ControlForks::clearParams()
 	pids_.clear();
 	childrenChanged_.disconnect();
 }
-

@@ -81,7 +81,7 @@ void FormInclude::update()
 		fl_set_button(dialog_->check_visiblespace, 0);
 		setEnabled(dialog_->check_visiblespace, false);
 	}
- 
+
 	if (cmdname.empty())
 		fl_set_button(dialog_->radio_useinclude, 1);
 }
@@ -124,10 +124,10 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 			type = ControlInclude::INCLUDE;
 
 		string const in_name  = fl_get_input(dialog_->input_filename);
-		fl_freeze_form(form()); 
+		fl_freeze_form(form());
 		string const out_name = controller().Browse(in_name, type);
 		fl_set_input(dialog_->input_filename, out_name.c_str());
-		fl_unfreeze_form(form()); 
+		fl_unfreeze_form(form());
 
 	} else if (ob == dialog_->button_load) {
 		string const in_name = fl_get_input(dialog_->input_filename);
@@ -151,6 +151,6 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		if (strip(in_name).empty())
 			action = ButtonPolicy::SMI_INVALID;
 	}
-	
+
 	return action;
 }

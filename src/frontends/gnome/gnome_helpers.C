@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *       
+ *
  *          Copyright 2000 The LyX Team.
  *
  * ====================================================== */
@@ -52,7 +52,7 @@ get_font_name (const GdkFont * font)
 #endif
 		status = XGetFontProperty (font_structs[0], font_atom, &atom);
 	} else {
-		status = XGetFontProperty ( 
+		status = XGetFontProperty (
 				static_cast<XFontStruct*>(GDK_FONT_XFONT (font))
 				, font_atom, &atom);
 	}

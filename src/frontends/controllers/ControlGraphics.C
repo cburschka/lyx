@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -12,12 +12,12 @@
  * \author Herbert Voss <voss@perce.de>
  */
 
-#include <config.h> 
+#include <config.h>
 #include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
-#endif 
+#endif
 
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
@@ -81,41 +81,41 @@ void ControlGraphics::applyParamsNoInset()
 // We need these in the file browser.
 extern string system_lyxdir;
 extern string user_lyxdir;
- 
+
 
 string const ControlGraphics::Browse(string const & in_name)
 {
 	string const title = N_("Select graphics file");
-	// FIXME: currently we need the second '|' to prevent mis-interpretation 
+	// FIXME: currently we need the second '|' to prevent mis-interpretation
 	string const pattern = "*.(ps|eps|png|jpeg|jpg|gif|gz)|";
 
-  	// Does user clipart directory exist?
-  	string clipdir = AddName (user_lyxdir, "clipart");
- 	FileInfo fileInfo(clipdir);
-  	if (!(fileInfo.isOK() && fileInfo.isDir()))
-  		// No - bail out to system clipart directory
-  		clipdir = AddName (system_lyxdir, "clipart");
+	// Does user clipart directory exist?
+	string clipdir = AddName (user_lyxdir, "clipart");
+	FileInfo fileInfo(clipdir);
+	if (!(fileInfo.isOK() && fileInfo.isDir()))
+		// No - bail out to system clipart directory
+		clipdir = AddName (system_lyxdir, "clipart");
 	pair<string, string> dir1(N_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(N_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseFile(&lv_, in_name, title, pattern, dir1, dir2);
 }
- 
+
 
 string const ControlGraphics::readBB(string const & file)
 {
 // in a file it's an entry like %%BoundingBox:23 45 321 345
 // the first number can following without a space, so we have
-// to check a bit more. 
+// to check a bit more.
 // on the other hand some plot programs write the bb at the
 // end of the file. Than we have in the header a
-// 	%%BoundingBox: (atend)
+//	%%BoundingBox: (atend)
 // In this case we must check until the end.
 	string file_ = file;
 	if (zippedFile(file_))
 	    file_ = unzipFile(file_);
 	std::ifstream is(file_.c_str());
-	if (!contains(getExtFromContents(file_),"ps"))	// bb exists? 
+	if (!contains(getExtFromContents(file_),"ps"))	// bb exists?
 	    return string();
 	while (is) {
 		string s;
@@ -124,7 +124,7 @@ string const ControlGraphics::readBB(string const & file)
 			string a, b, c, d;
 			is >> a >> b >> c >> d;
 			if (is && !contains(a,"atend")) { // bb at the end?
-				if (s != "%%BoundingBox:") 
+				if (s != "%%BoundingBox:")
 				    return (s.substr(14)+" "+a+" "+b+" "+c+" ");
 				else
 				    return (a+" "+b+" "+c+" "+d+" ");

@@ -9,11 +9,11 @@
 #include <config.h>
 
 #include "support/lstrings.h"
- 
+
 #include "QRefDialog.h"
 #include "ControlRef.h"
 #include "QRef.h"
-#include "Qt2BC.h" 
+#include "Qt2BC.h"
 #include "gettext.h"
 #include "insets/insetref.h"
 
@@ -27,7 +27,7 @@
 using std::endl;
 
 typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
- 
+
 QRef::QRef(ControlRef & c)
 	: base_class(c, _("Cross Reference")),
 	sort_(false), at_ref_(false)
@@ -39,8 +39,8 @@ void QRef::build_dialog()
 {
 	dialog_.reset(new QRefDialog(this));
 
-	bc().setOK(dialog_->okPB); 
-	bc().setCancel(dialog_->closePB); 
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
 	bc().addReadOnly(dialog_->refsLB);
 	bc().addReadOnly(dialog_->sortCB);
 	bc().addReadOnly(dialog_->nameED);
@@ -48,7 +48,7 @@ void QRef::build_dialog()
 	bc().addReadOnly(dialog_->typeCO);
 }
 
- 
+
 void QRef::update_contents()
 {
 	dialog_->referenceED->setText(controller().params().getContents().c_str());
@@ -82,14 +82,14 @@ bool QRef::nameAllowed()
 		controller().docType() != ControlRef::LITERATE;
 }
 
- 
+
 bool QRef::typeAllowed()
 {
 	return controller().docType() == ControlRef::LINUXDOC ||
 	    controller().docType() == ControlRef::DOCBOOK;
 }
 
- 
+
 void QRef::setGoBack()
 {
 	dialog_->gotoPB->setText(_("&Go back"));
@@ -97,7 +97,7 @@ void QRef::setGoBack()
 	QToolTip::add(dialog_->gotoPB, _("Go back"));
 }
 
- 
+
 void QRef::setGotoRef()
 {
 	dialog_->gotoPB->setText(_("&Goto"));
@@ -105,7 +105,7 @@ void QRef::setGotoRef()
 	QToolTip::add(dialog_->gotoPB, _("Go to reference"));
 }
 
- 
+
 void QRef::gotoRef()
 {
 	string ref(dialog_->referenceED->text());
@@ -122,7 +122,7 @@ void QRef::gotoRef()
 	at_ref_ = !at_ref_;
 }
 
- 
+
 void QRef::redoRefs()
 {
 	dialog_->refsLB->setAutoUpdate(false);
@@ -159,6 +159,6 @@ void QRef::updateRefs()
 	dialog_->refsLB->clear();
 	refs_ = controller().getLabelList(string());
 	dialog_->sortCB->setEnabled(!refs_.empty());
-	dialog_->refsLB->setEnabled(!refs_.empty()); 
+	dialog_->refsLB->setEnabled(!refs_.empty());
 	redoRefs();
 }

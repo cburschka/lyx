@@ -8,7 +8,7 @@
 
 #ifndef QURLDIALOG_H
 #define QURLDIALOG_H
- 
+
 #include "ui/QURLDialogBase.h"
 
 class QURL;

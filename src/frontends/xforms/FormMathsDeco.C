@@ -24,17 +24,17 @@
 
 
 static char const * decoration_names[] = {
-	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
+	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow",
 	"overline", "underbrace", "underline", "underleftarrow", "underrightarrow",
 	"underleftrightarrow", "overleftrightarrow",
 	"hat", "acute", "bar", "dot",
-	"check", "grave", "vec", "ddot", 
+	"check", "grave", "vec", "ddot",
 	"breve", "tilde"
 };
 
 
 static int const nr_decoration_names = sizeof(decoration_names) / sizeof(char const *);
- 
+
 FormMathsDeco::FormMathsDeco(LyXView * lv, Dialogs * d,
 			     FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Decorations & Accents"), false)
@@ -44,7 +44,7 @@ FormMathsDeco::FormMathsDeco(LyXView * lv, Dialogs * d,
 FL_FORM * FormMathsDeco::form() const
 {
 	if (dialog_.get())
- 		return dialog_->form;
+		return dialog_->form;
 	return 0;
 }
 
@@ -80,7 +80,7 @@ bool FormMathsDeco::input(FL_OBJECT * ob, long)
 	if (deco_ < 0)
 		return false;
 	//if (ob == dialog_->bmtable_deco1)
-	//	deco_ += 0; 
+	//	deco_ += 0;
 	if (ob == dialog_->bmtable_deco2)
 		deco_ += 10;
 	apply();

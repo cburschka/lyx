@@ -41,10 +41,10 @@ public:
 	string const Browse(string const &, Type);
 
 	/// load a file
-	void load(string const & file); 
+	void load(string const & file);
 
 	/// test if file exist
-	bool fileExists(string const & file); 
+	bool fileExists(string const & file);
 
 private:
 	/// Dispatch the changed parameters to the kernel.

@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -53,7 +53,7 @@ InsetExternal::Params const ControlExternal::getParams(string const &)
 	return InsetExternal::Params();
 }
 
-InsetExternal::Params const 
+InsetExternal::Params const
 ControlExternal::getParams(InsetExternal const & inset)
 {
 	return inset.params();

@@ -74,4 +74,3 @@ FD_form_bibtex * FormBibtex::build_bibtex()
   return fdui;
 }
 /*---------------------------------------*/
-

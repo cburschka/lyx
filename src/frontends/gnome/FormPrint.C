@@ -1,7 +1,7 @@
 /* FormPrint.C
  * FormPrint Interface Class Implementation
  * This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -140,10 +140,10 @@ void FormPrint::apply()
       from = print_from_->get_text();
       to = print_to_->get_value_as_int();
     }
-  
+
   PrinterParams::Target t(PrinterParams::PRINTER);
   if (printto_file_->get_active()) t = PrinterParams::FILE;
-  
+
   // we really should use the return value here I think.
   if (!printBuffer(lv_->buffer(),
 		   PrinterParams(t,
@@ -183,17 +183,17 @@ void FormPrint::updateSlot(bool)
 	case PrinterParams::ODD:
 	  print_odd_->set_active(true);
 	  break;
-	  
+
 	case PrinterParams::EVEN:
 	  print_even_->set_active(true);
 	  break;
-	  
+
 	case PrinterParams::ALL:
 	default:
 	  print_all_->set_active(true);
 	  break;
 	}
-      
+
       // hmmm... maybe a bit weird but maybe not
       // we might just be remembering the last
       // time this was printed.

@@ -15,10 +15,10 @@
 #endif
 
 #include FORMS_H_LOCATION
- 
+
 #include "Color.h"
 #include "LString.h"
- 
+
 #include <vector>
 
 class LyXLength;
@@ -27,7 +27,7 @@ class LyXLength;
 string const choice_Length_All =
     "cm|mm|in|t%%|c%%|p%%|l%%|ex|em|pt|sp|bp|dd|pc|cc|mu";
 string const choice_Length_WithUnit =
-    "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu"; 	// all with a Unit
+    "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu";	// all with a Unit
 
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_shortcut_extract(char const * sc);

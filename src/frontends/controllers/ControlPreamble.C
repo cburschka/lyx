@@ -36,7 +36,7 @@ void ControlPreamble::apply()
 {
 	if (!lv_.view()->available())
 		return;
-   
+
 	view().apply();
 
 	lv_.buffer()->params.preamble = params();

@@ -13,13 +13,13 @@
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
-#include "LString.h" 
- 
+#include "LString.h"
+
 #include "QGraphicsDialog.h"
-#include "ControlGraphics.h" 
+#include "ControlGraphics.h"
 #include "Dialogs.h"
 #include "QGraphics.h"
-#include "debug.h" 
+#include "debug.h"
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	: QGraphicsDialogBase(0, 0, false, 0),
@@ -35,13 +35,13 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotRestore()));
 }
 
- 
+
 void QGraphicsDialog::change_adaptor()
 {
 	form_->changed();
 }
 
- 
+
 void QGraphicsDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -58,4 +58,3 @@ void QGraphicsDialog::get_clicked()
 {
 	form_->get();
 }
-

@@ -8,11 +8,11 @@
 
 #include <qpushbutton.h>
 #include <qlineedit.h>
- 
+
 #include "QBibitemDialog.h"
 #include "QBibitem.h"
 #include "Dialogs.h"
-#include "ControlBibitem.h" 
+#include "ControlBibitem.h"
 
 QBibitemDialog::QBibitemDialog(QBibitem * form)
 	: QBibitemDialogBase(0, 0, false, 0),
@@ -24,7 +24,7 @@ QBibitemDialog::QBibitemDialog(QBibitem * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QBibitemDialog::change_adaptor()
 {
 	form_->changed();

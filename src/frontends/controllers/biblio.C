@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -34,15 +34,15 @@ using std::min;
 using std::vector;
 using std::sort;
 
-namespace biblio 
+namespace biblio
 {
 
 namespace {
 
 using namespace biblio;
-    
+
 char const * const citeCommands[] = {
-	"cite", "citet", "citep", "citealt", "citealp", "citeauthor", 
+	"cite", "citet", "citep", "citealt", "citealp", "citeauthor",
 	"citeyear", "citeyearpar" };
 
 unsigned int const nCiteCommands =
@@ -66,7 +66,7 @@ CiteStyle const citeStylesUCase[] = {
 
 unsigned int const nCiteStylesUCase =
 	sizeof(citeStylesUCase) / sizeof(CiteStyle);
- 
+
 
 // The functions doing the dirty work for the search.
 vector<string>::const_iterator
@@ -107,14 +107,14 @@ simpleSearch(InfoMap const & theMap,
 				break;
 			}
 		}
-		
+
 		if (found) return it;
 	}
 
 	return keys.end();
 }
 
- 
+
 vector<string>::const_iterator
 regexSearch(InfoMap const & theMap,
 	    vector<string> const & keys,
@@ -158,7 +158,7 @@ string const familyName(string const & name)
 	idx = fname.rfind(".");
 	if (idx != string::npos)
 		fname = frontStrip(fname.substr(idx+1));
-	
+
 	return fname;
 }
 
@@ -167,7 +167,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 {
 	lyx::Assert(!map.empty());
 
-       	InfoMap::const_iterator it = map.find(key);
+	InfoMap::const_iterator it = map.find(key);
 
 	string author;
 	if (it != map.end()) {
@@ -204,7 +204,7 @@ string const getYear(InfoMap const & map, string const & key)
 {
 	lyx::Assert(!map.empty());
 
-       	InfoMap::const_iterator it = map.find(key);
+	InfoMap::const_iterator it = map.find(key);
 
 	string year;
 
@@ -213,16 +213,16 @@ string const getYear(InfoMap const & map, string const & key)
 
 	if (year.empty())
 		year = "50BC";
-	
+
 	return year;
 }
 
-} // namespace anon 
+} // namespace anon
 
 
 
 // A functor for use with std::sort, leading to case insensitive sorting
-struct compareNoCase: public std::binary_function<string, string, bool> 
+struct compareNoCase: public std::binary_function<string, string, bool>
 {
 	bool operator()(string const & s1, string const & s2) const {
 		return compare_no_case(s1, s2) < 0;
@@ -246,7 +246,7 @@ string const getInfo(InfoMap const & map, string const & key)
 {
 	lyx::Assert(!map.empty());
 
-       	InfoMap::const_iterator it = map.find(key);
+	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
 		return string();
 	// is the entry a BibTeX one or one from lyx-layout "bibliography"?
@@ -301,7 +301,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	// This should never happen (or at least be very unusual!)
 	return it->second;
 }
- 
+
 
 vector<string>::const_iterator
 searchKeys(InfoMap const & theMap,
@@ -315,7 +315,7 @@ searchKeys(InfoMap const & theMap,
 	// Preliminary checks
 	if (start < keys.begin() || start >= keys.end())
 		return keys.end();
-	
+
 	string search_expr = frontStrip(strip(expr));
 	if (search_expr.empty())
 		return keys.end();
@@ -358,10 +358,10 @@ string const parseBibTeX(string data, string const & findkey)
 		return string();
 
 	// now get only the important line of the bibtex entry.
-	// all entries are devided by ',' except the last one.	
+	// all entries are devided by ',' except the last one.
 	data += ',';  // now we have same behaviour for all entries
 		      // because the last one is "blah ... }"
-	Entries = 0;			
+	Entries = 0;
 	dummy = token(data, ',', Entries);
 	while (!contains(lowercase(dummy), findkey) && !dummy.empty())
 		dummy = token(data, ',', ++Entries);
@@ -376,7 +376,7 @@ string const parseBibTeX(string data, string const & findkey)
 		keyvalue += (',' + dummy);
 		dummy = token(data, ',', ++Entries);
 	}
-	data = keyvalue;		// now we have the important line    	
+	data = keyvalue;		// now we have the important line
 	data = strip(data, ' ');		// all spaces
 	if (!contains(data, '{'))	// no opening '{'
 		data = strip(data, '}');// maybe there is a main closing '}'
@@ -407,18 +407,18 @@ string const parseBibTeX(string data, string const & findkey)
 			} else {
 				// no {} and no "", pure data but with a
 				// possible ',' at the end
-				return strip(data,',');	
+				return strip(data,',');
 			}
 			string tmp = data.substr(keypos);
 			while (tmp.find('{') != string::npos &&
 			       tmp.find('}') != string::npos &&
 			       tmp.find('{') < tmp.find('}') &&
 			       tmp.find('{') < tmp.find(enclosing)) {
-				
+
 				keypos += tmp.find('{') + 1;
 				tmp = data.substr(keypos);
 				keypos += tmp.find('}') + 1;
- 				tmp = data.substr(keypos);
+				tmp = data.substr(keypos);
 			}
 			if (tmp.find(enclosing) == string::npos)
 				return data;
@@ -434,7 +434,7 @@ string const parseBibTeX(string data, string const & findkey)
 CitationStyle const getCitationStyle(string const & command)
 {
 	if (command.empty()) return CitationStyle();
-    
+
 	CitationStyle cs;
 	string cmd = command;
 
@@ -479,7 +479,7 @@ string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
 	return cite;
 }
 
-	
+
 vector<CiteStyle> const getCiteStyles(bool usingNatbib)
 {
 	unsigned int nStyles = 1;
@@ -510,12 +510,12 @@ getNumericalStrings(string const & key,
 		vec[0] = _("No database");
 		return vec;
 	}
-	
+
 	vector<string> vec(styles.size());
 
 	string const author = getAbbreviatedAuthor(map, key);
 	string const year   = getYear(map, key);
-	
+
 	for (vector<string>::size_type i = 0; i != vec.size(); ++i) {
 		string str;
 
@@ -524,27 +524,27 @@ getNumericalStrings(string const & key,
 		case CITEP:
 			str = "[#ID]";
 			break;
-			
+
 		case CITET:
 			str = author + " [#ID]";
 			break;
-			
+
 		case CITEALT:
 			str = author + " #ID";
 			break;
-			
+
 		case CITEALP:
 			str = "#ID";
 			break;
-			
+
 		case CITEAUTHOR:
 			str = author;
 			break;
-			
+
 		case CITEYEAR:
 			str = year;
 			break;
-			
+
 		case CITEYEARPAR:
 			str = "(" + year + ")";
 			break;
@@ -552,7 +552,7 @@ getNumericalStrings(string const & key,
 
 		vec[i] = str;
 	}
-	
+
 	return vec;
 }
 
@@ -566,12 +566,12 @@ getAuthorYearStrings(string const & key,
 		vec[0] = _("No database");
 		return vec;
 	}
-	
+
 	vector<string> vec(styles.size());
 
 	string const author = getAbbreviatedAuthor(map, key);
 	string const year   = getYear(map, key);
-	
+
 	for (vector<string>::size_type i = 0; i != vec.size(); ++i) {
 		string str;
 
@@ -579,28 +579,28 @@ getAuthorYearStrings(string const & key,
 		case CITET:
 			str = author + " (" + year + ")";
 			break;
-			
+
 		case CITE:
 		case CITEP:
 			str = "(" + author + ", " + year + ")";
 			break;
-			
+
 		case CITEALT:
 			str = author + " " + year ;
 			break;
-			
+
 		case CITEALP:
 			str = author + ", " + year ;
 			break;
-			
+
 		case CITEAUTHOR:
 			str = author;
 			break;
-			
+
 		case CITEYEAR:
 			str = year;
 			break;
-			
+
 		case CITEYEARPAR:
 			str = "(" + year + ")";
 			break;
@@ -608,8 +608,8 @@ getAuthorYearStrings(string const & key,
 
 		vec[i] = str;
 	}
-	
+
 	return vec;
 }
 
-} // namespace biblio 
+} // namespace biblio

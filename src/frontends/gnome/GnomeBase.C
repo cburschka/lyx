@@ -1,6 +1,6 @@
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995 Matthias Ettrich.
  *          Copyright 1995-2000 The LyX Team.
@@ -20,20 +20,20 @@
 
 #include <gnome--/dialog.h>
 
-GnomeBase::GnomeBase(ControlButtons & c, 
+GnomeBase::GnomeBase(ControlButtons & c,
 		 string const & name)
 	: ViewBC<gnomeBC>(c)
 	, file_(name + ".glade"), widget_name_(name), xml_(0)
 	, dialog_(0)
 {}
-	
+
 GnomeBase::~GnomeBase()
 {
 	if (xml_)
 		gtk_object_unref(GTK_OBJECT(xml_));
 }
 
-	
+
 void GnomeBase::loadXML() const
 {
 #ifdef WITH_WARNINGS
@@ -46,9 +46,9 @@ void GnomeBase::loadXML() const
 		lyxerr << "Cannot find glade file. Aborting." << std::endl;
 		lyx::Assert(true);
 	}
-	
+
 	lyxerr[Debug::GUI] << "Glade file to open is " << file << '\n';
-	
+
 	xml_ = glade_xml_new(file.c_str(), widget_name_.c_str());
 }
 
@@ -76,36 +76,36 @@ bool GnomeBase::validate()
 	return true;
 }
 
-void GnomeBase::OKClicked() 
-{ 
+void GnomeBase::OKClicked()
+{
 	lyxerr[Debug::GUI] << "OKClicked()\n";
-	OKButton(); 
+	OKButton();
 }
 
-void GnomeBase::CancelClicked() 
-{ 
-	CancelButton(); 
+void GnomeBase::CancelClicked()
+{
+	CancelButton();
 }
 
-void GnomeBase::ApplyClicked() 
-{ 
-	ApplyButton(); 
+void GnomeBase::ApplyClicked()
+{
+	ApplyButton();
 }
 
-void GnomeBase::RestoreClicked() 
-{ 
-	RestoreButton(); 
+void GnomeBase::RestoreClicked()
+{
+	RestoreButton();
 }
 
-void GnomeBase::InputChanged() 
-{ 
-	bc().valid(validate()); 
+void GnomeBase::InputChanged()
+{
+	bc().valid(validate());
 }
 
 Gnome::Dialog * GnomeBase::dialog()
 {
-	if (!dialog_) 
+	if (!dialog_)
 		dialog_ = getWidget<Gnome::Dialog>(widget_name_.c_str());
-		
+
 	return dialog_;
 }

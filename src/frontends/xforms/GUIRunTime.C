@@ -76,7 +76,7 @@ int GUIRunTime::initApplication(int &, char * [])
 }
 
 
-void GUIRunTime::processEvents() 
+void GUIRunTime::processEvents()
 {
 	if (fl_do_forms() == FL_EVENT) {
 		XEvent ev;
@@ -137,7 +137,7 @@ void GUIRunTime::initialiseGraphics()
 {
 	using namespace grfx;
 	using SigC::slot;
-    
+
 #if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
 	// connect the image loader based on the xforms library
 	GImage::newImage.connect(slot(&xformsGImage::newImage));

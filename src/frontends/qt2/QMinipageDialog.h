@@ -8,9 +8,9 @@
 
 #ifndef QMINIPAGEDIALOG_H
 #define QMINIPAGEDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QMinipageDialogBase.h"
 
 class QMinipage;

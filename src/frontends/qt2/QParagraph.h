@@ -19,7 +19,7 @@ class LyXView;
 class QParagraphDialog;
 
 class QParagraph : public DialogBase {
-public: 
+public:
 	QParagraph(LyXView *, Dialogs *);
 	~QParagraph();
 
@@ -29,8 +29,8 @@ public:
 	void update(bool switched = false);
 	/// Close the connections
 	void close();
- 
-private: 
+
+private:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
@@ -41,15 +41,15 @@ private:
 
 	/// the LyXView we belong to
 	LyXView * lv_;
- 
+
 	/// Used so we can get at the signals we have to connect to.
 	Dialogs * d_;
-	
+
 	/// Hide connection.
 	SigC::Connection h_;
-	
+
 	/// readonly file or not
-	bool readonly; 
+	bool readonly;
 };
 
 #endif // QPARAGRAPH_H

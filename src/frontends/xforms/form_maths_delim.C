@@ -80,4 +80,3 @@ FD_form_maths_delim * FormMathsDelim::build_maths_delim()
   return fdui;
 }
 /*---------------------------------------*/
-

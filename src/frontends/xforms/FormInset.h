@@ -61,7 +61,7 @@ protected:
 	/// pointer to the inset passed through showInset
 	InsetCommand * inset_;
 	/// the nitty-griity. What is modified and passed back
-  	InsetCommandParams params;
+	InsetCommandParams params;
 };
 
 #endif

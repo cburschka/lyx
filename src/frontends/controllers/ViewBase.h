@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -19,9 +19,9 @@
 
 class ViewBase {
 public:
-	/// 
+	///
 	ViewBase(ControlButtons & c) : controller_(c) {}
-	/// 
+	///
 	virtual ~ViewBase() {}
 
 	/// Apply changes to LyX data from dialog.
@@ -40,20 +40,20 @@ public:
 	/** These shortcuts allow (e.g. xform's) global callback functions
 	    access to the buttons without making the whole controller_ public.
 	*/
-        ///
-        void ApplyButton() { controller_.ApplyButton(); }
-        ///
-        void OKButton() { controller_.OKButton(); }
-        ///
-        void CancelButton() { controller_.CancelButton(); }
-        ///
-        void RestoreButton() { controller_.RestoreButton(); }
-	
+	///
+	void ApplyButton() { controller_.ApplyButton(); }
+	///
+	void OKButton() { controller_.OKButton(); }
+	///
+	void CancelButton() { controller_.CancelButton(); }
+	///
+	void RestoreButton() { controller_.RestoreButton(); }
+
 	/** Defaults to nothing. Can be used by the Controller, however, to
 	    indicate to the View that something has changed and that the
 	    dialog therefore needs updating. */
 	virtual void partialUpdate(int) {}
-   
+
 protected:
 	/// The view is, after all, controlled!
 	ControlButtons & controller_;

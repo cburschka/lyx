@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -89,7 +89,7 @@ protected:
 private:
 	///
 	bool is_closing_;
-	
+
 };
 
 #endif // CONTROLBUTTONS_H

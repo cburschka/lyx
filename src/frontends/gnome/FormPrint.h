@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *       
+ *
  *          Copyright 2000 The LyX Team.
  *
  * ====================================================== */
@@ -43,7 +43,7 @@ public:
   ///
   ~FormPrint();
   //@}
-  
+
 
 private:
   /**@name Slot Methods */
@@ -58,18 +58,18 @@ private:
   /// Free memory
   void free();
   //@}
-  
+
   /**@name Dialog internal methods */
   //@{
   /// Apply from dialog
   void apply();
   //@}
-  
+
   /**@name Private Data */
   //@{
   /// Real GUI implementation.
   Gtk::Widget * dialog_;
-  
+
   Gtk::RadioButton * print_all_;
   Gtk::RadioButton * print_odd_;
   Gtk::RadioButton * print_even_;
@@ -78,7 +78,7 @@ private:
 
   Gtk::SpinButton  * print_from_;
   Gtk::SpinButton  * print_to_;
-  
+
   Gtk::RadioButton * order_normal_;
   Gtk::RadioButton * order_reverse_;
 
@@ -90,7 +90,7 @@ private:
 
   Gnome::Entry * printto_printcommand_;
   Gnome::FileEntry * printto_fileentry_;
-  
+
   /// Which LyXView do we belong to?
   LyXView * lv_;
   Dialogs * d_;

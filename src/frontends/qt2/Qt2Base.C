@@ -17,10 +17,10 @@
 #endif
 
 #include <qdialog.h>
-#include <qapplication.h> 
+#include <qapplication.h>
 
-#include "debug.h" 
-#include "QtLyXView.h" 
+#include "debug.h"
+#include "QtLyXView.h"
 #include "Dialogs.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
@@ -62,14 +62,14 @@ bool Qt2Base::isValid()
 	return true;
 }
 
- 
+
 void Qt2Base::changed()
 {
 	if (updating_)
 		return;
- 
+
 	if (isValid())
-		bc().valid(); 
+		bc().valid();
 	else
 		bc().invalid();
 }

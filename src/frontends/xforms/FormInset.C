@@ -65,7 +65,7 @@ void FormCommand::disconnect()
 	FormInset::disconnect();
 }
 
-       
+
 void FormCommand::showInset(InsetCommand * inset)
 {
 	if (inset == 0) return;  // maybe we should Assert this?

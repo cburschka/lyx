@@ -1,10 +1,10 @@
 // -*- C++ -*-
-/** 
+/**
  * \file FormMathsPanel.h
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
- * 
- * \author Alejandro Aguilar Sierra 
+ *
+ * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
@@ -30,7 +30,7 @@ class FormMathsStyle;
 class FormMathsSub;
 struct FD_form_maths_panel;
 
-/// values used by the xforms callbacks 
+/// values used by the xforms callbacks
 enum MathsCallbackValues {
 	MM_GREEK,
 	MM_ARROW,
@@ -57,8 +57,8 @@ enum MathsCallbackValues {
 	MM_AMS_OPS,
 	MM_FUNC
 };
- 
-/** 
+
+/**
  * This class provides an XForms implementation of the maths panel.
  */
 class FormMathsPanel : public FormBaseBD {
@@ -67,25 +67,25 @@ public:
 	FormMathsPanel(LyXView *, Dialogs *);
 	///
 	void setActive(FormMathsSub *) const;
-	/// dispatch a symbol insert 
+	/// dispatch a symbol insert
 	void insertSymbol(string const & sym, bool bs = true) const;
 	/// dispatch an LFUN:
 	void dispatchFunc(kb_action action) const;
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();
-	
+
 	/// Build the dialog
 	virtual void build();
 	/// input handler
 	virtual bool input(FL_OBJECT *, long);
-   
+
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
 	// build the panels
 	FD_form_maths_panel * build_maths_panel();
-	
+
 	/// send LFUN_MATH_DISPLAY
 	void mathDisplay() const;
 

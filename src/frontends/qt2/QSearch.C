@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
-#include <fstream> 
+#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -16,12 +16,12 @@
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
- 
+
 #include "QSearchDialog.h"
 #include "QSearch.h"
 #include "Qt2BC.h"
 #include "gettext.h"
- 
+
 #include "QtLyXView.h"
 #include "ControlSearch.h"
 
@@ -38,24 +38,24 @@ void QSearch::build_dialog()
 	dialog_.reset(new QSearchDialog(this));
 
 	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->replaceCO); 
-	bc().addReadOnly(dialog_->replacePB); 
-	bc().addReadOnly(dialog_->replaceallPB); 
+	bc().addReadOnly(dialog_->replaceCO);
+	bc().addReadOnly(dialog_->replacePB);
+	bc().addReadOnly(dialog_->replaceallPB);
 	bc().addReadOnly(dialog_->caseCB);
 	bc().addReadOnly(dialog_->wordsCB);
 	bc().addReadOnly(dialog_->backwardsCB);
 
-	dialog_->replacePB->setEnabled(false); 
-	dialog_->replaceallPB->setEnabled(false); 
+	dialog_->replacePB->setEnabled(false);
+	dialog_->replaceallPB->setEnabled(false);
 }
 
- 
+
 void QSearch::find(string const & str, bool casesens, bool words, bool backwards)
 {
 	controller().find(str, casesens, words, !backwards);
 }
 
- 
+
 void QSearch::replace(string const & findstr, string const & replacestr,
 	bool casesens, bool words, bool all)
 {

@@ -11,13 +11,13 @@
 #endif
 
 #include <config.h>
-#include <gettext.h> 
+#include <gettext.h>
 #include <utility>
- 
+
 #include "commandtags.h"
 #include "LString.h"
 #include "frontends/FileDialog.h"
-#include "FileDialog_private.h" 
+#include "FileDialog_private.h"
 #include "debug.h"
 
 using std::make_pair;
@@ -41,13 +41,13 @@ FileDialog::Result const FileDialog::Select(string const & path, string const & 
 	string filter = mask;
 	if (mask.empty())
 		filter = _("*|All files");
- 
+
 	LyXFileDialog * dlg = new LyXFileDialog(lv_, success_, path, filter, title_);
 	lyxerr[Debug::GUI] << "Select with path \"" << path << "\", mask \"" << filter << "\", suggested \"" << suggested << endl;
 
 	if (!suggested.empty())
 		dlg->setSelection(suggested.c_str());
- 
+
 	if (success_ == LFUN_SELECT_FILE_SYNC) {
 		FileDialog::Result result;
 		lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
@@ -57,7 +57,7 @@ FileDialog::Result const FileDialog::Select(string const & path, string const & 
 		if (res == QDialog::Accepted)
 			result.second = string(dlg->selectedFile().data());
 		delete dlg;
- 		return result;
+		return result;
 	}
 	dlg->show();
 	return make_pair(FileDialog::Later, string());

@@ -8,9 +8,9 @@
 
 #ifndef QEXTERNALDIALOG_H
 #define QEXTERNALDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QExternalDialogBase.h"
 
 class QExternal;
@@ -28,7 +28,7 @@ protected slots:
 	virtual void updateClicked();
 	virtual void browseClicked();
 	virtual void templateChanged();
- 
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

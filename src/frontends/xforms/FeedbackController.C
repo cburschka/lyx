@@ -47,7 +47,7 @@ void FeedbackController::MessageCB(FL_OBJECT * ob, int event)
 	lyx::Assert(ob);
 
 	switch (event) {
-	case FL_ENTER: 
+	case FL_ENTER:
 	{
 		string const feedback = getFeedback(ob);
 		if (feedback.empty() && warning_posted_)
@@ -56,7 +56,7 @@ void FeedbackController::MessageCB(FL_OBJECT * ob, int event)
 		warning_posted_ = false;
 		postMessage(getFeedback(ob));
 		break;
-	} 
+	}
 
 	case FL_LEAVE:
 		if (!warning_posted_)

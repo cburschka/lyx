@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -22,7 +22,7 @@
 #endif
 
 /** Functions of use to citation and bibtex GUI controllers and views */
-namespace biblio 
+namespace biblio
 {
 	///
 	enum CiteStyle {
@@ -118,7 +118,7 @@ namespace biblio
 
 	   [XX] is used in place of the actual reference
 	   Eg, the vector will contain: [XX], Jones et al. [XX], ...
-	   
+
 	   User supplies :
 	   the key,
 	   the InfoMap of bibkeys info,
@@ -132,10 +132,10 @@ namespace biblio
 	/**
 	   "Translates" the available Citation Styles into strings for this key.
 	   The returned string is displayed by the GUI.
-	   
+
 	   Eg, the vector will contain:
 	   Jones et al. (1990), (Jones et al. 1990), Jones et al. 1990, ...
-	   
+
 	   User supplies :
 	   the key,
 	   the InfoMap of bibkeys info,
@@ -145,6 +145,6 @@ namespace biblio
 		getAuthorYearStrings(string const & key,
 				     InfoMap const & map,
 				     std::vector<CiteStyle> const & styles);
-} // namespace biblio 
+} // namespace biblio
 
 #endif // BIBLIOHELPERS_H

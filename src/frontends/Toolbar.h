@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
@@ -24,7 +24,7 @@ class LyXView;
 class ToolbarDefaults;
 
 /** The LyX GUI independent toolbar class
-  The GUI interface is implemented in the corresponding Toolbar_pimpl class. 
+  The GUI interface is implemented in the corresponding Toolbar_pimpl class.
   */
 class Toolbar {
 public:
@@ -33,7 +33,7 @@ public:
 
 	///
 	~Toolbar();
-	
+
 	/// (re)sets the toolbar
 	void set(bool doingmain = false);
 
@@ -41,15 +41,15 @@ public:
 	  frame, where you can change the toolbar realtime. */
 	void edit();
 	/// add a new button to the toolbar.
-    	void add(int , bool doclean = true);
+	void add(int , bool doclean = true);
 	/// name of func instead of kb_action
 	void add(string const & , bool doclean = true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar
-        void activate();
+	void activate();
 	/// deactivates the toolbar
-        void deactivate();
+	void deactivate();
 	/// update the state of the icons
 	void update();
 

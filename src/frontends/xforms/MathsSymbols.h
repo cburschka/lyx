@@ -47,5 +47,5 @@ extern int const nr_latex_ams_ops;
 
 
 char const ** get_pixmap_from_symbol(char const *, int, int);
- 
+
 #endif /* MATHS_SYMBOLS_H */

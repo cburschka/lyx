@@ -11,7 +11,7 @@
 #include <config.h>
 #include <algorithm>
 #include <iomanip>
- 
+
 #include XPM_H_LOCATION
 
 #ifdef __GNUG__
@@ -36,7 +36,7 @@ using std::max;
 extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
 
-FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,   
+FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,
 				 FormMathsPanel const & p, string const & t,
 				 vector<string> const & l)
 	: FormMathsSub(lv, d, p, t, false),
@@ -85,7 +85,7 @@ void FormMathsBitmap::build()
 
 		y_ = max(y_, obj->y + obj->h);
 	}
- 
+
 	char const * const label = N_("Close|^[");
 	x_ = (form_->w - 90) / 2;
 	y_ += 10;
@@ -106,7 +106,7 @@ void FormMathsBitmap::addBitmap(int nt, int nx, int ny, int bw, int bh,
 				unsigned char const * data, bool vert)
 {
 	// Add a bitmap to a button panel: one bitmap per panel.
-	// nt is the number of buttons and nx, ny the nr. of buttons 
+	// nt is the number of buttons and nx, ny the nr. of buttons
 	// in x and y direction.
 	// bw, bh and data are the bitmap dimensions width, height and
 	// bit pattern; these come directly from an .xbm file included
@@ -114,7 +114,7 @@ void FormMathsBitmap::addBitmap(int nt, int nx, int ny, int bw, int bh,
 	// vert indicates whether the next button panel within this
 	// window will be below (true, default) or next to this one.
 	//
-	// The scaling of the bitmap on top of the buttons will be 
+	// The scaling of the bitmap on top of the buttons will be
 	// correct if the nx, ny values are given correctly.
 	int wx = bw + ww_ / 2;
 	int wy = bh + ww_ / 2;
@@ -171,7 +171,7 @@ bool FormMathsBitmap::input(FL_OBJECT * ob, long)
 {
 	int const i = GetIndex(ob);
 
-	if (i < 0) 
+	if (i < 0)
 		return false;
 
 	latex_chosen_ = latex_[i];

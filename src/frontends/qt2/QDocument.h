@@ -7,7 +7,7 @@
  * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
  */
 
- 
+
 #ifndef QDOCUMENT_H
 #define QDOCUMENT_H
 
@@ -16,7 +16,7 @@
 
 #include "Qt2Base.h"
 #include "Qt2BC.h"
-#include "QtLyXView.h" 
+#include "QtLyXView.h"
 
 #ifdef __GNUG_
 #pragma interface
@@ -32,7 +32,7 @@ class QDocument
 	//FIXME !!!!! : public Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> >
 {
 public:
-	// FIXME!!!!!!! 
+	// FIXME!!!!!!!
 	QDocument(LyXView *, Dialogs *);
 private:
 	///
@@ -72,8 +72,8 @@ private:
 	virtual Qt2BC & bc();
 	/// Build the dialog
 	virtual void build_dialog();
-// 	/// Filter the inputs
-// 	virtual bool input( FL_OBJECT *, long );
+//	/// Filter the inputs
+//	virtual bool input( FL_OBJECT *, long );
 	/// Update the dialog.
 	virtual void update_contents();
 	/// Apply from dialog
@@ -81,8 +81,8 @@ private:
 	/// Cancel from dialog
 	virtual void cancel();
 
-// 	///
-// 	virtual QDialog* form() const;
+//	///
+//	virtual QDialog* form() const;
 
 #if 0
 	///
@@ -151,12 +151,12 @@ private:
 	int current_bullet_panel;
 	///
 	int current_bullet_depth;
-// 	///
-// 	FL_OBJECT * fbullet;
-// 	///
-// 	boost::scoped_ptr<Combox> combo_language;
-// 	///
-// 	boost::scoped_ptr<Combox> combo_doc_class;
+//	///
+//	FL_OBJECT * fbullet;
+//	///
+//	boost::scoped_ptr<Combox> combo_language;
+//	///
+//	boost::scoped_ptr<Combox> combo_doc_class;
 	/// The ButtonController
 	ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC> bc_;
 };

@@ -16,13 +16,13 @@
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include "lengthcombo.h"
- 
+
 #include "QMinipageDialog.h"
 #include "QMinipage.h"
 #include "Qt2BC.h"
 #include "gettext.h"
 #include "support/lstrings.h"
- 
+
 #include "QtLyXView.h"
 #include "ControlMinipage.h"
 
@@ -46,7 +46,7 @@ void QMinipage::build_dialog()
 
 	bc().addReadOnly(dialog_->widthED);
 	bc().addReadOnly(dialog_->unitsLC);
-	bc().addReadOnly(dialog_->valignCO); 
+	bc().addReadOnly(dialog_->valignCO);
 }
 
 
@@ -72,7 +72,7 @@ void QMinipage::apply()
 	}
 }
 
- 
+
 namespace {
 	string const numtostr(double val) {
 		string a(tostr(val));
@@ -81,15 +81,15 @@ namespace {
 		return a;
 	}
 } // namespace anon
- 
- 
+
+
 void QMinipage::update_contents()
 {
 	LyXLength len(controller().params().pageWidth);
 	dialog_->widthED->setText(numtostr(len.value()).c_str());
 	dialog_->unitsLC->setCurrentItem(len.unit());
 	lyxerr << "width " << numtostr(len.value()).c_str() << " units " << len.unit() << std::endl;
- 
+
 	int item = 0;
 	switch (controller().params().pos) {
 		case InsetMinipage::center:
@@ -99,5 +99,5 @@ void QMinipage::update_contents()
 			item = 2;
 			break;
 	}
-	dialog_->valignCO->setCurrentItem(item); 
+	dialog_->valignCO->setCurrentItem(item);
 }

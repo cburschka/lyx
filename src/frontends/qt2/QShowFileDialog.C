@@ -21,7 +21,7 @@ QShowFileDialog::QShowFileDialog(QShowFile * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QShowFileDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

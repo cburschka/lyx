@@ -18,17 +18,17 @@
 #include <qradiobutton.h>
 #include <qspinbox.h>
 #include <qpushbutton.h>
- 
+
 #include "QPrintDialog.h"
 #include "QPrint.h"
 #include "Qt2BC.h"
 #include "gettext.h"
- 
+
 #include "QtLyXView.h"
 #include "ControlPrint.h"
 
 #include "support/lstrings.h"
- 
+
 typedef Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > base_class;
 
 QPrint::QPrint(ControlPrint & c)
@@ -41,7 +41,7 @@ void QPrint::build_dialog()
 {
 	dialog_.reset(new QPrintDialog(this));
 
-	bc().setOK(dialog_->printPB); 
+	bc().setOK(dialog_->printPB);
 	bc().setCancel(dialog_->closePB);
 }
 
@@ -52,11 +52,11 @@ void QPrint::update_contents()
 
 	dialog_->printerED->setText(pp.printer_name.c_str());
 	dialog_->fileED->setText(pp.file_name.c_str());
- 
+
 	dialog_->printerRB->setChecked(true);
 	if (pp.target == PrinterParams::FILE)
 		dialog_->fileRB->setChecked(true);
- 
+
 	dialog_->reverseCB->setChecked(pp.reverse_order);
 
 	QRadioButton * button;
@@ -66,7 +66,7 @@ void QPrint::update_contents()
 		case PrinterParams::EVEN: button = dialog_->evenRB; break;
 	}
 	button->setChecked(true);
- 
+
 	// hmmm... maybe a bit weird but maybe not
 	// we might just be remembering the last
 	// time this was printed.
@@ -74,7 +74,7 @@ void QPrint::update_contents()
 		dialog_->fromED->setText(pp.from_page.c_str());
 
 		dialog_->toED->setText("");
-		if (pp.to_page) 
+		if (pp.to_page)
 			dialog_->toED->setText(tostr(pp.to_page).c_str());
 	} else {
 		dialog_->fromED->setText("");
@@ -116,6 +116,6 @@ void QPrint::apply()
 		dialog_->reverseCB->isChecked(),
 		!dialog_->collateCB->isChecked(),
 		strToInt(dialog_->copiesSB->text().latin1()));
- 
+
 	controller().params() = pp;
 }

@@ -19,7 +19,7 @@
 FormBrowser::FormBrowser(ControlButtons & c, string const & t, bool allowResize)
 	: FormDB<FD_form_browser>(c, t, allowResize)
 {}
-	
+
 
 void FormBrowser::build()
 {

@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -33,7 +33,7 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "BufferView.h"
-#include "LyXView.h" 
+#include "LyXView.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "support/lstrings.h"
@@ -72,18 +72,18 @@ void ControlSpellchecker::setParams()
 		if (lyxrc.use_pspell) {
 			tmp = (lyxrc.isp_use_alt_lang) ?
 				lyxrc.isp_alt_lang : lv_.buffer()->params.language->code();
-			
+
 			speller_ = new PSpell(lv_.view()->buffer()->params, tmp);
 		} else {
 #endif
 			tmp = (lyxrc.isp_use_alt_lang) ?
 				lyxrc.isp_alt_lang : lv_.buffer()->params.language->lang();
-			
+
 			speller_ = new ISpell(lv_.view()->buffer()->params, tmp);
 #ifdef USE_PSPELL
 		}
 #endif
-	
+
 		if (lyxrc.isp_use_alt_lang) {
 			Language const * lang = languages.getLanguage(tmp);
 			if (lang)
@@ -91,7 +91,7 @@ void ControlSpellchecker::setParams()
 		} else {
 			rtl_ = lv_.buffer()->params.language->RightToLeft();
 		}
-		
+
 		if (speller_->error() != 0) {
 #if 0
 			message_ = speller_->error();
@@ -109,21 +109,21 @@ void ControlSpellchecker::check()
 {
 	result_ = SpellBase::ISP_OK;
 	stop_ = false;
-	
+
 	// clear any old selection
 	LyXText * text = lv_.view()->getLyXText();
 	lv_.view()->toggleSelection(true);
 	lv_.view()->update(text, BufferView::SELECT);
- 
+
 	while ((result_==SpellBase::ISP_OK || result_==SpellBase::ISP_IGNORE) &&
 	       !stop_) {
 		word_ = lv_.view()->nextWord(newval_);
-		
+
 		if (word_.empty()) {
 			clearParams();
 			break;
 		}
-		
+
 		++count_;
 
 		// Update slider if and only if value has changed
@@ -133,12 +133,12 @@ void ControlSpellchecker::check()
 			// set progress bar
 			view().partialUpdate(0);
 		}
-		
+
 		if (!speller_->alive()) clearParams();
-		
+
 		result_ = speller_->check(word_);
 	}
-	
+
 	if (!stop_ && !word_.empty())
 		lv_.view()->selectLastWord();
 
@@ -176,12 +176,12 @@ string ControlSpellchecker::getSuggestion()
 	// segfaults when nextMiss is 0
 	string tmp;
 	char const * w = speller_->nextMiss();
-	
+
 	if (w!=0) {
 		tmp = w;
 		if (rtl_) std::reverse(tmp.begin(), tmp.end());
 	}
-	
+
 	return tmp;
 }
 
@@ -211,7 +211,7 @@ void ControlSpellchecker::stop()
 void ControlSpellchecker::clearParams()
 {
 	if (!speller_) return;
-	
+
 	if (speller_->alive()) {
 		speller_->close();
 		message_ = tostr(count_);
@@ -234,9 +234,9 @@ void ControlSpellchecker::clearParams()
 		// make sure that the dialog is not launched
 		emergency_exit_ = true;
 	}
-	
+
 	delete speller_;
-	
+
 	lv_.view()->endOfSpellCheck();
 
 	// show closing message if any words were checked.

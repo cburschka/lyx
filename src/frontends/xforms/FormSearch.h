@@ -25,7 +25,7 @@ class FormSearch : public FormCB<ControlSearch, FormDB<FD_form_search> > {
 public:
 	///
 	FormSearch(ControlSearch &);
-   
+
 private:
 	/// not needed.
 	virtual void apply() {}
@@ -36,7 +36,7 @@ private:
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-   
+
 	/// Fdesign generated method
 	FD_form_search  * build_search();
 };

@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -66,7 +66,7 @@ void ControlRef::gotoBookmark() const
 
 vector<string> const ControlRef::getBufferList() const
 {
-	
+
 	vector<string> buffers = bufferlist.getFileNames();
 	for (vector<string>::iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {

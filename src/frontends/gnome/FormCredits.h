@@ -1,12 +1,12 @@
 // -*- C++ -*-
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995 Matthias Ettrich.
  *          Copyright 1995-2000 The LyX Team.
  *
- * ================================================= 
+ * =================================================
  *
  * \author Michael Koziarski <michael@koziarski.org>
  * */
@@ -38,9 +38,9 @@ public:
 
 	void apply() {};
 	void update() {};
-	
+
 private:
-	
+
 	/// Build the dialog
 	void build();
 
@@ -48,7 +48,7 @@ private:
 
 	/// The ok button
 	Gtk::Button * ok();
-	
+
 	Gtk::Text * text();
 };
 

@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -64,6 +64,6 @@ FloatParams::FloatParams()
 
 
 FloatParams::FloatParams(InsetFloat const & inset)
-	: placement(inset.placement()), 
+	: placement(inset.placement()),
 	  allow_here_definitely(!inset.wide())
 {}

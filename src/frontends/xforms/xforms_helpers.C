@@ -16,7 +16,7 @@
 #ifdef __GNUG_
 #pragma implementation
 #endif
- 
+
 #include "xforms_helpers.h"
 #include "lyxlex.h"
 #include "gettext.h"
@@ -53,7 +53,7 @@ char const * flyx_ident_extract(char const * sc)
 	while (se[0]!= 0 && se[0] != '|') ++se;
 
 	if (se[0] == 0) return sc;
-	
+
 	char * sb = new char[se - sc + 1];
 	int index = 0;
 	register char const * sd = sc;
@@ -78,7 +78,7 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 	}
 }
 
-	
+
 // Given an fl_choice, create a vector of its entries
 vector<string> const getVectorFromChoice(FL_OBJECT * ob)
 {
@@ -109,7 +109,7 @@ string const getStringFromInput(FL_OBJECT * ob)
 // Given an fl_browser, return the contents of line
 string const getStringFromBrowser(FL_OBJECT * ob, int line)
 {
-	if (!ob || ob->objclass != FL_BROWSER || 
+	if (!ob || ob->objclass != FL_BROWSER ||
 	    line < 1 || line > fl_get_browser_maxline(ob))
 		return string();
 
@@ -172,7 +172,7 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 
 	return length + unit;
 }
-	
+
 
 #if 0
 // old code which can be deleted if the new one, now enabled,
@@ -254,7 +254,7 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 			}
 		}
 	}
-	
+
 	fl_set_input(input,   len.c_str());
 	fl_set_choice(choice, unitpos);
 }
@@ -289,7 +289,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 		ostringstream buffer;
 		buffer << len.value();
 		fl_set_input(input, buffer.str().c_str());
-		fl_set_choice_text(choice, 
+		fl_set_choice_text(choice,
 		    subst(stringFromUnit(len.unit()),"%","%%").c_str());
 	}
 }
@@ -316,7 +316,7 @@ string formatted(string const & sin, int w, int size, int style)
 				word.erase();
 			}
 			if ((*sit) == '\n') word += '\n';
-			
+
 		} else {
 			word += (*sit);
 		}
@@ -400,7 +400,7 @@ string formatted(string const & sin, int w, int size, int style)
 				line += ' ';
 			line += word;
 		}
-		
+
 		if (nxtpos == string::npos) {
 			if (!line.empty())
 				sout += line;
@@ -410,7 +410,7 @@ string formatted(string const & sin, int w, int size, int style)
 		curpos = nxtpos+1;
 	}
 #endif
-	
+
 	return sout;
 }
 
@@ -436,7 +436,7 @@ keyword_item xformTags[] = {
 	{ "\\gui_inactive",     FL_INACTIVE },
 	{ "\\gui_pointer",      FL_FREE_COL16 },
 	{ "\\gui_push_button",  FL_YELLOW },
-	{ "\\gui_selected",     FL_MCOL },	
+	{ "\\gui_selected",     FL_MCOL },
 	{ "\\gui_text",         FL_BLACK }
 };
 
@@ -458,7 +458,7 @@ bool XformsColor::read(string const & filename)
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
-			continue; 
+			continue;
 		case LyXLex::LEX_FEOF:
 			continue;
 		default: break;
@@ -602,7 +602,7 @@ bool RWInfo::WriteableFile(string const & name)
 		error_message = N_("Directory does not exist.");
 		return false;
 	}
-	
+
 	if (!d.writable()) {
 		error_message = N_("Cannot write to this directory.");
 		return false;
@@ -618,7 +618,7 @@ bool RWInfo::WriteableFile(string const & name)
 		error_message = N_("Cannot write to this file.");
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -648,7 +648,7 @@ bool RWInfo::ReadableFile(string const & name)
 		error_message = N_("Directory does not exist.");
 		return false;
 	}
-	
+
 	if (!d.readable()) {
 		error_message = N_("Cannot read from this directory.");
 		return false;
@@ -664,7 +664,7 @@ bool RWInfo::ReadableFile(string const & name)
 		error_message = N_("File does not exist.");
 		return false;
 	}
-	
+
 	if (!f.readable()) {
 		error_message = N_("Cannot read from this file.");
 		return false;

@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
-#include <fstream> 
+#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -15,12 +15,12 @@
 
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
- 
+
 #include "QPreambleDialog.h"
 #include "QPreamble.h"
 #include "Qt2BC.h"
 #include "gettext.h"
- 
+
 #include "QtLyXView.h"
 #include "ControlPreamble.h"
 

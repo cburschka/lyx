@@ -34,7 +34,7 @@ using std::vector;
 namespace {
 
 // shamelessly stolen from Menubar_pimpl.C
-int string_width(string const & str) 
+int string_width(string const & str)
 {
 	return fl_get_string_widthTAB(FL_NORMAL_STYLE, FL_NORMAL_SIZE,
 				      str.c_str(),
@@ -156,7 +156,7 @@ void FormCitation::build()
 	setPrehandler(dialog_->input_before);
 	setPrehandler(dialog_->input_after);
 
-        // Manage the ok, apply, restore and cancel/close buttons
+	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
@@ -256,7 +256,7 @@ void FormCitation::findBiblio(biblio::Direction const dir)
 	fl_select_browser_line(dialog_->browser_bib, found);
 	input(dialog_->browser_bib, 0);
 }
- 
+
 
 ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 {
@@ -451,7 +451,7 @@ void FormCitation::update()
 	setEnabled(dialog_->check_full_author_list, natbib);
 	setEnabled(dialog_->check_force_uppercase, natbib);
 	setEnabled(dialog_->choice_style, natbib);
-	
+
 	// No keys have been selected yet, so...
 	fl_clear_browser(dialog_->browser_info);
 	setBibButtons(OFF);

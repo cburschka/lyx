@@ -1,5 +1,7 @@
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* most files: ws cleanup
+
 	* Makefile.am: remove ld -r stuff
 
 2002-03-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -61,17 +63,17 @@
 
 2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* Timeout.h: 
+	* Timeout.h:
 	* FileDialog.h: do not include <config.h> in header files.
 
 2001-12-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Alert.h: remove spurious semi-colon at the end of the namespace
-	scope. 
+	scope.
 
 2001-11-22  John Levon  <moz@compsoc.man.ac.uk>
 
-	* Makefile.am: 
+	* Makefile.am:
 	* Alert.h:
 	* Alert.C:
 	* Alert_pimpl.h: alerts etc.
@@ -88,12 +90,12 @@
 
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
-	* GUIRunTime.h: initApplication() should take a & to argc 
- 
+	* GUIRunTime.h: initApplication() should take a & to argc
+
 2001-08-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Liason.C: IsDirWriteable changed
- 
+
 2001-07-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Liason.C: #include LAssert.h
@@ -101,20 +103,20 @@
 2001-07-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.h: add showThesaurus
- 
+
 2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
-	
+
 	* Dialogs.h: add showAboutlyx and remove showCredits and Copyright
 
 2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* Dialogs.h: added showSpellchecker
-	
+
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* GUIRunTime.h: (x11Display): 
-	(x11Screen): 
-	(x11Colormap): 
+	* GUIRunTime.h: (x11Display):
+	(x11Screen):
+	(x11Colormap):
 	(x11VisualDepth): new methods
 
 2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -128,7 +130,7 @@
 2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: remove kde frontend
- 
+
 2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Dialogs.h: removed unused signal showCharacter.
@@ -201,7 +203,7 @@
 
 	* DialogBase.h: commented out abstract method show().
 
-	* Dialogs.h: The dialogs are now stored as a 
+	* Dialogs.h: The dialogs are now stored as a
 	std::vector<boost::shared_ptr<DialogBase> >.
 	Removed using directives.
 	(d-tor) removed.

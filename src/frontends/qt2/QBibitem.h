@@ -16,17 +16,17 @@ class ControlBibitem;
 class QBibitemDialog;
 
 class QBibitem :
-	public Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> > 
+	public Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> >
 {
 	friend class QBibitemDialog;
- 
-public: 
+
+public:
 	QBibitem(ControlBibitem &);
 
 protected:
 	virtual bool isValid();
- 
-private: 
+
+private:
 	/// Apply changes
 	virtual void apply();
 	/// update

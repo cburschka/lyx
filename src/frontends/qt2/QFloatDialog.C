@@ -10,9 +10,9 @@
 
 #include <qpushbutton.h>
 
-#include "LString.h" 
- 
-#include "ControlFloat.h" 
+#include "LString.h"
+
+#include "ControlFloat.h"
 #include "QFloatDialog.h"
 #include "Dialogs.h"
 #include "QFloat.h"
@@ -31,16 +31,15 @@ QFloatDialog::QFloatDialog(QFloat * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QFloatDialog::change_adaptor()
 {
 	form_->changed();
 }
 
- 
+
 void QFloatDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
 }
-

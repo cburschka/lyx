@@ -57,4 +57,3 @@ FD_form_tabular_create * FormTabularCreate::build_tabular_create()
   return fdui;
 }
 /*---------------------------------------*/
-

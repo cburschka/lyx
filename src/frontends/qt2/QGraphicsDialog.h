@@ -8,9 +8,9 @@
 
 #ifndef QGRAPHICSDIALOG_H
 #define QGRAPHICSDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QGraphicsDialogBase.h"
 
 class QGraphics;

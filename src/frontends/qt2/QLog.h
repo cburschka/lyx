@@ -21,7 +21,7 @@ class QLogDialog;
 
 ///
 class QLog
-	: public Qt2CB<ControlLog, Qt2DB<QLogDialog> > 
+	: public Qt2CB<ControlLog, Qt2DB<QLogDialog> >
 {
 public:
 	///

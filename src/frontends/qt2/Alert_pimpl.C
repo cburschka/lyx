@@ -12,17 +12,17 @@
 #include <qlabel.h>
 #include <qlineedit.h>
 #include "ui/QAskForTextDialog.h"
- 
+
 #include FORMS_H_LOCATION
- 
+
 #include <algorithm>
- 
+
 #include <gettext.h>
- 
+
 #include "Alert.h"
-#include "Alert_pimpl.h" 
+#include "Alert_pimpl.h"
 #include "xforms_helpers.h"
- 
+
 using std::pair;
 using std::make_pair;
 
@@ -50,15 +50,15 @@ pair<bool, string> const askForText_pimpl(string const & msg, string const & dfl
 {
 	string title = _("LyX: ");
 	title += msg;
- 
-	QAskForTextDialog d(0, msg.c_str(), true); 
+
+	QAskForTextDialog d(0, msg.c_str(), true);
 	// less than ideal !
 	d.askLA->setText((string("&") + msg).c_str());
 	d.askLE->setText(dflt.c_str());
 	int ret = d.exec();
 
 	d.hide();
- 
+
 	if (ret)
 		return make_pair<bool, string>(true, d.askLE->text().latin1());
 	else

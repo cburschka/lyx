@@ -8,9 +8,9 @@
 
 #ifndef QINDEXDIALOG_H
 #define QINDEXDIALOG_H
- 
+
 #include <config.h>
- 
+
 #include "ui/QIndexDialogBase.h"
 
 class QIndex;
@@ -23,7 +23,7 @@ public:
 
 protected slots:
 	virtual void change_adaptor();
- 
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

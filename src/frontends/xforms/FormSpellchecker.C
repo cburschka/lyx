@@ -28,7 +28,7 @@ FormSpellchecker::FormSpellchecker(ControlSpellchecker & c)
 void FormSpellchecker::build()
 {
 	dialog_.reset(build_spellchecker());
-	
+
 	fl_set_slider_bounds(dialog_->slider, 0.0, 100.0);
 	fl_set_slider_step(dialog_->slider, 1.0);
 
@@ -133,10 +133,10 @@ void FormSpellchecker::partialUpdate(int id)
 		fl_show_messages(controller().getMessage().c_str());
 		hide();
 	}
-	
+
 }
 
-		
+
 void FormSpellchecker::showMessage(const char * msg)
 {
 	fl_show_message(msg, "", "");

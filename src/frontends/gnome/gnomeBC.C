@@ -21,7 +21,7 @@ void gnomeBC::setWidgetEnabled(Gtk::Widget * obj, bool enabled)
 }
 
 
-void gnomeBC::setButtonEnabled(Gtk::Button * btn, bool enabled) 
+void gnomeBC::setButtonEnabled(Gtk::Button * btn, bool enabled)
 {
 	if (btn)
 		btn->set_sensitive(enabled);

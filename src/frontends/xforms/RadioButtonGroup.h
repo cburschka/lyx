@@ -19,7 +19,7 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif 
+#endif
 
 
 /** This class simplifies the work with a group of radio buttons,
@@ -52,4 +52,4 @@ private:
 	ButtonValueMap map;
 };
 
-#endif 
+#endif

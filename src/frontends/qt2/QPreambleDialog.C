@@ -20,10 +20,10 @@
 #include "support/lyxlib.h"
 #include "support/forkedcall.h"
 #include "support/filetools.h"
-#include "gettext.h" 
- 
+#include "gettext.h"
+
 #include "QtLyXView.h"
-#include "ControlPreamble.h" 
+#include "ControlPreamble.h"
 
 using std::getline;
 
@@ -39,7 +39,7 @@ QPreambleDialog::QPreambleDialog(QPreamble * form)
 		form, SLOT(slotClose()));
 }
 
- 
+
 void QPreambleDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -52,7 +52,7 @@ void QPreambleDialog::change_adaptor()
 	form_->changed();
 }
 
- 
+
 void QPreambleDialog::editClicked()
 {
 	// find an editor
@@ -60,11 +60,11 @@ void QPreambleDialog::editClicked()
 	if (editor.empty()) {
 		static string lastentry = "";
 		editor = QInputDialog::getText(
-			_("Enter editor program"), _("Editor"), QLineEdit::Normal, 
+			_("Enter editor program"), _("Editor"), QLineEdit::Normal,
 			lastentry.c_str()).latin1();
 		if (editor.empty())
 			return;
-		lastentry = editor; 
+		lastentry = editor;
 	}
 
 	string const text(preambleLE->text().latin1());
@@ -80,7 +80,7 @@ void QPreambleDialog::editClicked()
 	file.close();
 
 	editor += " " + filename;
- 
+
 	Forkedcall call;
 
 	// FIXME: make async
@@ -98,9 +98,9 @@ void QPreambleDialog::editClicked()
 
 	string newtext;
 	string line;
- 
+
 	while (getline(in, line)) {
-		newtext += line + "\n"; 
+		newtext += line + "\n";
 	}
 
 	in.close();

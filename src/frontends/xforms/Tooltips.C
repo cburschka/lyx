@@ -95,7 +95,7 @@ namespace {
 int TooltipHandler(FL_OBJECT *ob, int event);
 
 void TooltipTimerCB(FL_OBJECT * timer, long data);
- 
+
 }
 
 extern "C" {
@@ -113,7 +113,7 @@ static void C_TooltipTimerCB(FL_OBJECT * ob, long data)
 }
 
 }
- 
+
 
 Tooltips::Tooltips()
 	: tooltip_timer_(0)
@@ -174,7 +174,7 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 }
 
 
-string const Tooltips::get(FL_OBJECT * ob) const 
+string const Tooltips::get(FL_OBJECT * ob) const
 {
 	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
 	if (it == tooltipsMap.end())

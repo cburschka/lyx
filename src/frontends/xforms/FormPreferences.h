@@ -73,14 +73,14 @@ private:
 	virtual void build();
 	/// Pointer to the actual instantiation of the xforms form.
 	virtual FL_FORM * form() const;
-  	/// control which feedback message is output
- 	string const getFeedback(FL_OBJECT *);
+	/// control which feedback message is output
+	string const getFeedback(FL_OBJECT *);
 	///
 	void browse(FL_OBJECT * input,
-		    string const & title, string const & pattern, 
-		    std::pair<string,string> const & dir1= std::make_pair(string(),string()), 
+		    string const & title, string const & pattern,
+		    std::pair<string,string> const & dir1= std::make_pair(string(),string()),
 		    std::pair<string,string> const & dir2 = std::make_pair(string(),string()));
-	
+
 	/// Fdesign generated methods
 	FD_form_preferences * build_preferences();
 	///
@@ -148,7 +148,7 @@ private:
 		void input(FL_OBJECT const * const);
 		///
 		void update() { LoadBrowserLyX(); }
-		
+
 		/// Flag whether Xforms colors have changed since last file save
 		bool modifiedXformsPrefs;
 
@@ -289,7 +289,7 @@ private:
 	};
 	///
 	friend class InputsMisc;
-	
+
 	///
 	class Interface {
 	public:
@@ -347,7 +347,7 @@ private:
 	};
 	///
 	friend class Language;
-	
+
 	///
 	class LnFmisc {
 	public:
@@ -506,7 +506,7 @@ private:
 
 	/** The tab folders.
 	 */
-	
+
 	///
 	Colors colors_;
 	///

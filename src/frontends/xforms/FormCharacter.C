@@ -96,7 +96,7 @@ void FormCharacter::build()
 	fl_end_form();
 
 	// build up the combox entries
-	for (vector<string>::const_iterator cit = language.begin(); 
+	for (vector<string>::const_iterator cit = language.begin();
 	     cit != language.end(); ++cit) {
 		combo_language2_->addto(*cit);
 	}
@@ -118,16 +118,16 @@ void FormCharacter::apply()
 
 	pos = fl_get_choice(dialog_->choice_series);
 	controller().setSeries(series_[pos-1]);
-   
+
 	pos = fl_get_choice(dialog_->choice_shape);
 	controller().setShape(shape_[pos-1]);
 
 	pos = fl_get_choice(dialog_->choice_size);
 	controller().setSize(size_[pos-1]);
-   
+
 	pos = fl_get_choice(dialog_->choice_bar);
 	controller().setBar(bar_[pos-1]);
-   
+
 	pos = fl_get_choice(dialog_->choice_color);
 	controller().setColor(color_[pos-1]);
 
@@ -156,7 +156,7 @@ void FormCharacter::update()
 {
 	int pos = int(findPos(family_, controller().getFamily()));
 	fl_set_choice(dialog_->choice_family, pos+1);
-	
+
 	pos = int(findPos(series_, controller().getSeries()));
 	fl_set_choice(dialog_->choice_series, pos+1);
 
@@ -185,7 +185,7 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 	int pos = fl_get_choice(dialog_->choice_family);
 	if (family_[pos-1] != LyXFont::IGNORE_FAMILY)
 		activate = ButtonPolicy::SMI_VALID;
-	
+
 	pos = fl_get_choice(dialog_->choice_series);
 	if (series_[pos-1] != LyXFont::IGNORE_SERIES)
 		activate = ButtonPolicy::SMI_VALID;

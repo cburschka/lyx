@@ -21,19 +21,19 @@ QTocDialog::QTocDialog(QToc * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 }
- 
+
 
 QTocDialog::~QTocDialog()
 {
 }
- 
+
 
 void QTocDialog::activate_adaptor(int)
 {
 	form_->updateToc(form_->depth_);
 }
- 
- 
+
+
 void QTocDialog::depth_adaptor(int depth)
 {
 	form_->set_depth(depth);
@@ -51,7 +51,7 @@ void QTocDialog::update_adaptor()
 	form_->update();
 }
 
- 
+
 void QTocDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

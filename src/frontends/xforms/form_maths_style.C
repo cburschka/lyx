@@ -53,4 +53,3 @@ FD_form_maths_style * FormMathsStyle::build_maths_style()
   return fdui;
 }
 /*---------------------------------------*/
-

@@ -11,7 +11,7 @@
 
 #include <config.h>
 #include "support/lstrings.h"
- 
+
 #include "ui/QCitationDialogBase.h"
 #include "QCitation.h"
 #include "controllers/biblio.h"
@@ -37,10 +37,10 @@ protected slots:
 	virtual void changed_adaptor() {
 		form_->changed();
 	}
- 
+
 private:
 	void doFind(biblio::Direction dir);
-    
+
 private:
 	QCitation * form_;
 };

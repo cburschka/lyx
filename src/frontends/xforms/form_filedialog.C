@@ -105,4 +105,3 @@ FD_form_filedialog * FileDialog::Private::build_filedialog()
   return fdui;
 }
 /*---------------------------------------*/
-
