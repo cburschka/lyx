@@ -50,7 +50,7 @@ private:
 	Dialogs * d_;
 	
 	/// Hide connection.
-	Connection h_;
+   SigC::Connection h_;
 	
 	/// readonly file or not
 	bool readonly; 

@@ -30,34 +30,52 @@ LYXDATADIRS = dlg
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
 libqt2_la_OBJADD = \
-	../xforms/ButtonController.lo \
+	../controllers/ButtonController.lo \
+	../xforms/combox.lo \
 	../xforms/Color.lo \
 	../xforms/FormBase.lo \
 	../xforms/FormBaseDeprecated.lo	\
+	../xforms/FormBibitem.lo \
+	../xforms/FormBibtex.lo \
+	../xforms/FormBrowser.lo \
 	../xforms/FormCopyright.lo	\
 	../xforms/FormCredits.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormError.lo \
+	../xforms/FormExternal.lo \
 	../xforms/FormGraphics.lo \
+	../xforms/FormInclude.lo \
 	../xforms/FormIndex.lo \
 	../xforms/FormInset.lo \
+	../xforms/FormLog.lo \
+	../xforms/FormMinipage.lo \
+	../xforms/FormMaths.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormRef.lo \
 	../xforms/FormTabular.lo \
 	../xforms/FormToc.lo \
 	../xforms/FormUrl.lo \
+	../xforms/FormVCLog.lo \
+	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \
-	../xforms/Toolbar_pimpl.lo \
 	../xforms/Timeout_pimpl.lo \
-	../xforms/form_citation.lo \
+	../xforms/Toolbar_pimpl.lo \
+	../xforms/bmtable.lo \
+	../xforms/form_bibitem.lo \
+	../xforms/form_bibtex.lo \
+	../xforms/form_browser.lo \
 	../xforms/form_credits.lo \
-	../xforms/form_copyright.lo \
 	../xforms/form_document.lo \
 	../xforms/form_error.lo \
+	../xforms/form_external.lo \
 	../xforms/form_index.lo \
 	../xforms/form_graphics.lo \
+	../xforms/form_include.lo \
+	../xforms/form_index.lo \
+	../xforms/form_maths.lo \
+	../xforms/form_minipage.lo \
 	../xforms/form_preamble.lo \
 	../xforms/form_preferences.lo \
 	../xforms/form_ref.lo \
@@ -65,8 +83,8 @@ libqt2_la_OBJADD = \
 	../xforms/form_toc.lo \
 	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
-	../xforms/xforms_helpers.lo	\
-	../xforms/xformsBC.lo
+	../xforms/xformsBC.lo \
+	../xforms/xforms_helpers.lo
 
 LIBS=
 LDFLAGS= $(libqt2_la_OBJADD)

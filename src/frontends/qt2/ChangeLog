@@ -1,3 +1,10 @@
+2001-03-19  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* qt2 compiles again:
+	* Makefile.am: added missing xform dialogs
+	* FormParagraph.C: only extra setting if wanted
+	* FormParagraph.h: add namespace to connection
+	
 2001-03-16  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
 
 	* FormParagraph.C (apply): Only call SetParagraphExtraOpt() when

@@ -148,6 +148,7 @@ void FormParagraph::apply()
 		spaceabove, spacebelow, dialog_->getAlign(),
 		dialog_->getLabelWidth(), dialog_->getNoIndent());
 
+#ifndef NO_PEXTRA
 	// extra stuff
 
 	string width("");
@@ -167,7 +168,7 @@ void FormParagraph::apply()
 		dialog_->getExtraAlign(),
 		dialog_->getHfillBetween(),
 		dialog_->getStartNewMinipage());
-
+#endif
 	lv_->view()->update(lv_->view()->text,
 			    BufferView::SELECT |
 			    BufferView::FITCUR |
