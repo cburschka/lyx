@@ -8,6 +8,8 @@ Menuset
     Menubar "main"
 	Submenu "File|F" "file"
 	Submenu "Edit|E" "edit"
+	Submenu "Toc|T" "toc"
+	Submenu "Refs|R" "refs"
 	Submenu "Layout|L" "layout"
 	Submenu "Insert|I" "insert"
 	Submenu "Math|M" "math"
@@ -151,6 +153,16 @@ Menuset
 	 OptItem "Revert to last version|l" "vc-revert"
 	 OptItem "Undo last check in|U" "vc-undo-last"
 	 OptItem "Show History|H" "vc-history"
+    End
+
+    Menu toc
+	Toc
+    End
+
+    Menu refs
+	References
+	Separator
+	Item "Go Back|B" "reference-back"
     End
 
     Menu "layout"

@@ -25,6 +25,8 @@
 #include "LyXView.h"
 #include "form_toc.h"
 #include "lyxtext.h"
+#include "lyxfunc.h"
+#include "support/lstrings.h"
 
 FormToc::FormToc(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Table of Contents")), dialog_(0)
@@ -146,10 +148,7 @@ void FormToc::apply()
 
 	unsigned int choice = fl_get_browser( dialog_->browser );
 	if (0 < choice && choice - 1 < toclist.size()) {
-		lv_->view()->beforeChange();
-		lv_->view()->text->SetCursor( lv_->view(), toclist[choice-1].par, 0 );
-		lv_->view()->text->sel_cursor = 
-			lv_->view()->text->cursor;
-		lv_->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		string tmp = tostr(toclist[choice-1].par->id());
+		lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tmp.c_str());
 	}
 }

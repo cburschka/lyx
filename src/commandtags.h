@@ -282,9 +282,9 @@ enum kb_action {
 	LFUN_SCROLL_INSET,              // Jug 20000801
 	LFUN_UPDATE,                    // Dekel 20000805
 	LFUN_INDEX_INSERT,              // Angus 20000803
-	LFUN_REF_CREATE,                // Angus 20000807
 	LFUN_SCREEN_FONT_UPDATE,	// ARRae 20000813
 	LFUN_DIALOG_TABULAR_INSERT,     // Jug 20000825 (old table-insert)
+	LFUN_GOTO_PARAGRAPH,             // Dekel 20000826
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

@@ -26,7 +26,6 @@
 class LyXView;
 class MenuBackend;
 class MenuItem;
-class StrPool;
 
 #include "debug.h"
 
@@ -50,26 +49,28 @@ public:
 	/** Add to "menu" the list of last opened files
 	    (add "extra_label" to the last entry)
 	*/
-	void add_lastfiles(int menu, string const & extra_label,
-			   std::vector<int> & smn, StrPool & strpool);
+	void add_lastfiles(int menu, string const & extra_label);
 	/** Add to "menu" the list of opened documents
 	    (add "extra_label" to the last entry)
 	*/
-	void add_documents(int menu, string const & extra_label,
-			   std::vector<int> & smn, StrPool & strpool);
+	void add_documents(int menu, string const & extra_label);
 	/// Add to "menu" the list of exportable/viewable formats
 	/// (add "extra_label" to the last entry)
 	void add_formats(int menu, string const & extra_label,
-			 std::vector<int> & smn, StrPool & strpool,
 			 kb_action action, bool viewable);
 	///
-	int create_submenu(Window win, LyXView * view, 
-			   string const & menuname, 
-			   std::vector<int> & smn, StrPool & strpool);
+	void add_toc(int menu, string const & extra_label,
+		     std::vector<int> & smn, Window win);
+	///
+	void add_references(int menu, string const & extra_label,
+			    std::vector<int> & smn, Window win);
+	///
+	int create_submenu(Window win, LyXView * view,
+                           string const & menuname,
+                           std::vector<int> & smn);
 
         /// update the state of the menuitems
         void update() {}
-
 private:
 	///
 	FL_OBJECT * frame_;

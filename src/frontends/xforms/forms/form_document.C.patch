@@ -1,11 +1,14 @@
 --- form_document.C.orig	Mon Aug 14 13:17:32 2000
 +++ form_document.C	Mon Aug 14 13:22:59 2000
-@@ -9,6 +9,8 @@
+@@ -9,6 +9,11 @@
  #include <stdlib.h>
  #include "form_document.h"
  #include "FormDocument.h"
 +#include "bmtable.h"
 +#include "support/filetools.h"
++#include "xform_macros.h"
++
++C_GENERICCB(FormDocument, BulletBMTableCB)
  
  FD_form_tabbed_document::~FD_form_tabbed_document()
  {
@@ -20,7 +23,7 @@
 -    fl_set_pixmapbutton_file(obj, _("/nfs/sinco/source/lyx/lyx-devel/lib/images/psnfss2.xpm"));
 +  fl_set_border_width(-3);
 +  fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 90, 105, 265, 180, "");
-+  fl_set_object_callback(obj, BulletBMTableCB, 0);
++  fl_set_object_callback(obj, C_FormDocumentBulletBMTableCB, 0);
 +  fl_set_object_lcol(obj, FL_BLUE);
 +  fl_set_object_boxtype(obj, FL_UP_BOX);
 +  fl_set_bmtable_pixmap_file(obj, 6, 6,

@@ -1,8 +1,43 @@
+2000-08-31  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/converter.C: added some using directives
+
+	* src/frontends/ButtonPolicies.C: changes to overcome
+	"need lvalue" error with DEC c++
+
+	* src/frontends/xforms/FormDocument.C (c-tor): use C callback
+	to WMHideCB for DEC c++
+
+	* src/frontends/xforms/Menubar_pimpl.C: added using directive
+
+	* src/frontends/xforms/forms/form_document.C.patch: use C callback
+	to BulletBMTableCB for DEC c++
+
 2000-08-31  Allan Rae  <rae@lyx.org>
 
 	* src/lyx_gui.C (create_forms): build combo_language2 which is part of
 	character dialog separately from old document dialogs combo_language.
 	Stops a segfault.
+
+2000-08-30  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/commandtags.h: Added LFUN_GOTO_PARAGRAPH.
+ 	Removed LFUN_REF_CREATE.
+
+	* src/MenuBackend.C: Added new tags: toc and references
+
+	* src/frontends/xforms/Menubar_pimpl.C: Removed the use of StrPool
+	(add_lastfiles, add_documents, add_formats): Removed the unused smn
+ 	parameter.
+	(add_toc, add_references): New methods.
+	(create_submenu): Handle correctly the case when there is a
+	seperator after optional menu items.
+
+	* src/lyxfunc.C (getStatus): Handle LFUN_REF_BACK.
+	(dispatch): Combined the code for LFUN_REF_CREATE and LFUN_REF_INSERT.
+	(dispatch): New code for LFUN_GOTO_PARAGRAPH.
+
+	* src/frontends/xforms/FormToc.C (apply): Use Dispatch.
 
 2000-08-30  Dekel Tsur  <dekel@math.tau.ac.il>
 

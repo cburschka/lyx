@@ -38,6 +38,8 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case Separator:
 	case Documents:
 	case Lastfiles:
+	case Toc:
+	case References:
 	case ViewFormats:
 	case UpdateFormats:
 	case ExportFormats:
@@ -76,8 +78,10 @@ Menu & Menu::read(LyXLex & lex)
 		md_exportformats,
 		md_lastfiles,
 		md_optitem,
-		md_submenu,
+		md_references,
 		md_separator,
+		md_submenu,
+		md_toc,
 		md_updateformats,
 		md_viewformats,
 		md_last
@@ -90,8 +94,10 @@ Menu & Menu::read(LyXLex & lex)
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem }, 
+		{ "references", md_references },
 		{ "separator", md_separator },
 		{ "submenu", md_submenu },
+		{ "toc", md_toc },
 		{ "updateformats", md_updateformats },
 		{ "viewformats", md_viewformats }
 	};
@@ -120,24 +126,39 @@ Menu & Menu::read(LyXLex & lex)
 			optional = false;
 			break;
 		}
+
 		case md_separator:
 			add(MenuItem(MenuItem::Separator));
 			break;
+
 		case md_lastfiles:
 			add(MenuItem(MenuItem::Lastfiles));
 			break;
+
 		case md_documents:
 			add(MenuItem(MenuItem::Documents));
 			break;
+
+		case md_toc:
+			add(MenuItem(MenuItem::Toc));
+			break;
+
+		case md_references:
+			add(MenuItem(MenuItem::References));
+			break;
+
 		case md_viewformats:
 			add(MenuItem(MenuItem::ViewFormats));
 			break;
+
 		case md_updateformats:
 			add(MenuItem(MenuItem::UpdateFormats));
 			break;
+
 		case md_exportformats:
 			add(MenuItem(MenuItem::ExportFormats));
 			break;
+
 		case md_submenu: {
 			lex.next();
 			char * tmp = strdup(lex.GetString().c_str());
@@ -148,9 +169,11 @@ Menu & Menu::read(LyXLex & lex)
 			add(MenuItem(MenuItem::Submenu, mlabel, mname));
 			break;
 		}
+
 		case md_endmenu:
 			quit = true;
 			break;
+
 		default:
 			lex.printError("menubar::read: "
 				       "Unknown menu tag: `$$Token'");

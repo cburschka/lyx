@@ -17,7 +17,6 @@
 #include <cctype>
 #include "support/lstrings.h"
 #include "support/filetools.h"
-#include "support/StrPool.h"
 #include "support/LAssert.h"
 #include "debug.h"
 #include "LyXAction.h"
@@ -30,7 +29,11 @@
 #include "Menubar_pimpl.h"
 #include "exporter.h"
 
+using std::pair;
 using std::endl;
+using std::vector;
+
+typedef vector<int>::size_type size_type;
 
 extern kb_keymap * toplevel_keymap;
 extern LyXAction lyxaction;
@@ -219,9 +222,7 @@ void Menubar::Pimpl::openByName(string const & name)
 }
 
 
-void Menubar::Pimpl::add_lastfiles(int menu, string const & extra_label,
-				   std::vector<int> & /*smn*/, 
-				   StrPool & strpool) 
+void Menubar::Pimpl::add_lastfiles(int menu, string const & extra_label) 
 {
 	int ii = 1;
 	for (LastFiles::const_iterator cit = lastfiles->begin();
@@ -238,23 +239,21 @@ void Menubar::Pimpl::add_lastfiles(int menu, string const & extra_label,
 		lyxerr[Debug::GUI] << "shortcut is " << shortcut <<
 			endl;
 
-		fl_addtopup(menu, strpool.add(label), strpool.add(shortcut));
+		fl_addtopup(menu, label.c_str(), shortcut.c_str());
 	}
 
 }
 
-void Menubar::Pimpl::add_documents(int menu, string const & extra_label,
-				   std::vector<int> & /*smn*/, 
-				   StrPool & strpool) 
+void Menubar::Pimpl::add_documents(int menu, string const & extra_label)
 {
-	std::vector<string> names = bufferlist.getFileNames();
+	vector<string> names = bufferlist.getFileNames();
 
 	if (names.empty()) {
 		fl_addtopup(menu,_("No Documents Open!%i"));
 		return;
 	}
 
-	for (std::vector<string>::const_iterator cit = names.begin();
+	for (vector<string>::const_iterator cit = names.begin();
 	     cit != names.end() ; ++cit) {
 		int action =
 			lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *cit);
@@ -263,23 +262,285 @@ void Menubar::Pimpl::add_documents(int menu, string const & extra_label,
 		if ((cit + 1) == names.end())
 			label += extra_label;
 				
-		fl_addtopup(menu, strpool.add(label));
+		fl_addtopup(menu, label.c_str());
 	}
 
 }
 
 
+string limit_string_length(string const & str)
+{
+	string::size_type const max_item_length = 45;
+
+	if (str.size() > max_item_length)
+		return str.substr(0, max_item_length-3) + "...";
+	else
+		return str;
+}
+
+size_type const max_number_of_menus = 32;
+size_type const max_number_of_items = 25;
+
+void add_toc2(int menu, string const & extra_label,
+	      vector<int> & smn, Window win,
+	      vector<Buffer::TocItem> const & toc_list,
+	      size_type from, size_type to, int depth)
+{
+	if (to - from <= max_number_of_items) {
+		for (size_type i = from; i < to; ++i) {
+			int action = lyxaction.
+				getPseudoAction(LFUN_GOTO_PARAGRAPH,
+						tostr(toc_list[i].par->id()));
+			string label(4 * max(0, toc_list[i].depth - depth),' ');
+			label += toc_list[i].str;
+			label = limit_string_length(label);
+			label += "%x" + tostr(action);
+			if (i == to - 1 && depth == 0)
+				label += extra_label;
+			fl_addtopup(menu, label.c_str());
+		}
+	} else {
+		size_type pos = from;
+		size_type count = 0;
+		while (pos < to) {
+			++count;
+			if (count > max_number_of_items) {
+				fl_addtopup(menu, ". . .%d");
+				break;
+			}
+			size_type new_pos = pos+1;
+			while (new_pos < to &&
+			       toc_list[new_pos].depth > depth)
+				++new_pos;
+
+			int action = lyxaction.
+				getPseudoAction(LFUN_GOTO_PARAGRAPH,
+						tostr(toc_list[pos].par->id()));
+			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
+			label += toc_list[pos].str;
+			label = limit_string_length(label);
+			if (new_pos == to && depth == 0)
+				label += extra_label;
+
+			if (new_pos == pos + 1) {
+				label += "%x" + tostr(action);
+				fl_addtopup(menu, label.c_str());
+			} else if (smn.size() < max_number_of_menus) {
+				int menu2 = fl_newpup(win);
+				smn.push_back(menu2);
+				add_toc2(menu2, extra_label, smn, win,
+					 toc_list, pos, new_pos, depth+1);
+				label += "%m";
+				fl_addtopup(menu, label.c_str(), menu2);
+			} else {
+				label += "%d";
+				fl_addtopup(menu, label.c_str());
+			}
+			pos = new_pos;
+		}
+	}
+}
+
+void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
+			     vector<int> & smn, Window win)
+{
+	//xgettext:no-c-format
+	static char const * MenuNames[3] = { N_("List of Figures%m"),
+	//xgettext:no-c-format
+					     N_("List of Tables%m"),
+	//xgettext:no-c-format
+					     N_("List of Algorithms%m") };
+
+	vector<vector<Buffer::TocItem> > toc_list =
+		owner_->buffer()->getTocList();
+
+	// Handle LOF/LOT/LOA
+	int max_nonempty = 0;
+	for (int i = 1; i <= 3; ++i)
+		if (!toc_list[i].empty())
+			max_nonempty = i;
+
+	for (int j = 1; j <= 3; ++j)
+		if (!toc_list[j].empty()) {
+			int menu2 = fl_newpup(win);
+			smn.push_back(menu2);
+			for (size_type i = 0; i < toc_list[j].size(); ++i) {
+				if (i > max_number_of_items) {
+					fl_addtopup(menu2, ". . .%d");
+					break;
+				}
+				int action = lyxaction.
+					getPseudoAction(LFUN_GOTO_PARAGRAPH,
+							tostr(toc_list[j][i].par->id()));
+				string label =
+					limit_string_length(toc_list[j][i].str);
+				label += "%x" + tostr(action);
+				fl_addtopup(menu2, label.c_str());
+			}
+			if (j == max_nonempty) {
+				string label = _(MenuNames[j-1]);
+				label += "%l";
+				fl_addtopup(menu, label.c_str(), menu2);
+			} else
+				fl_addtopup(menu, _(MenuNames[j-1]), menu2);
+		}
+
+	// Handle normal TOC
+	if (max_nonempty == 0 && toc_list[0].empty()) {
+		fl_addtopup(menu,_("No Table of Contents%i"));
+		return;
+	}
+
+	add_toc2(menu, extra_label, smn, win,
+		 toc_list[0], 0, toc_list[0].size(), 0);
+
+}
+
+void add_references2(int menu, vector<int> & smn, Window win,
+		     vector<string> const & label_list, string const & type)
+{
+	size_type const max_number_of_items = 25;
+	size_type const max_number_of_items2 = 20;
+	string::size_type const max_item_length = 40;
+	string::size_type const max_item_length2 = 20;
+
+	if (label_list.size() <= max_number_of_items)
+		for (size_type i = 0; i < label_list.size(); ++i) {
+			int action = (type == "goto")
+				? lyxaction.getPseudoAction(LFUN_REF_GOTO, 
+							    label_list[i])
+				: lyxaction.getPseudoAction(LFUN_REF_INSERT,
+							    type + "|++||++|"
+							    + label_list[i]);
+			string label = label_list[i];
+			if (label.size() > max_item_length)
+				label = label.substr(0, max_item_length-1) + "$";
+			label += "%x" + tostr(action);
+			fl_addtopup(menu, label.c_str());
+		}
+	else {
+		size_type count = 0;
+		for (size_type i = 0; i < label_list.size();
+		     i += max_number_of_items2) {
+			++count;
+			if (count > max_number_of_items) {
+				fl_addtopup(menu, ". . .%d");
+				break;
+			}
+			size_type j = min(label_list.size(),
+					  i+max_number_of_items2);
+
+			string label;
+			label += (label_list[i].size() > max_item_length2)
+				? label_list[i].substr(0, max_item_length2-1) + "$"
+				: label_list[i];
+			label += "..";
+			label += (label_list[j-1].size() > max_item_length2)
+				? label_list[j-1].substr(0, max_item_length2-1) + "$"
+				: label += label_list[j-1];
+
+			if (smn.size() < max_number_of_menus) {
+				int menu2 = fl_newpup(win);
+				smn.push_back(menu2);
+				for (size_type k = i;  k < j; ++k) {
+					int action = (type == "goto")
+						? lyxaction.getPseudoAction(LFUN_REF_GOTO, 
+									    label_list[k])
+						: lyxaction.getPseudoAction(LFUN_REF_INSERT,
+									    type + "|++||++|"
+									    + label_list[k]);
+					string label2 = label_list[k];
+					if (label2.size() > max_item_length)
+						label2 = label2.substr(0, max_item_length-1) + "$";
+					label2 += "%x" + tostr(action);
+					fl_addtopup(menu2, label2.c_str());
+				}
+				label += "%m";
+				fl_addtopup(menu, label.c_str(), menu2);
+			} else {
+				label += "%d";
+				fl_addtopup(menu, label.c_str());
+			}
+		}
+	}
+}
+
+
+void Menubar::Pimpl::add_references(int menu, string const & extra_label,
+				    vector<int> & smn, Window win)
+{
+	//xgettext:no-c-format
+	static char const * MenuNames[6] = { N_("Insert Reference%m"),
+	//xgettext:no-c-format
+					     N_("Insert Page Number%m"),
+	//xgettext:no-c-format
+					     N_("Insert vref%m"),
+	//xgettext:no-c-format
+					     N_("Insert vpageref%m"),
+	//xgettext:no-c-format
+					     N_("Insert Pretty Ref%m"),
+	//xgettext:no-c-format
+					     N_("Goto Reference%m") };
+
+	int const EMPTY = 1;
+	int const SGML = 2;
+	int const READONLY = 4;
+
+	static int MenuFlags[6] = {
+		EMPTY | READONLY,
+		EMPTY | READONLY,
+		EMPTY | READONLY | SGML,
+		EMPTY | READONLY | SGML,
+		EMPTY | READONLY | SGML,
+		EMPTY };
+
+	static string const MenuTypes[6] = {
+		"ref", "pageref", "vref", "vpageref", "prettyref", "goto" };
+
+	vector<string> label_list = owner_->buffer()->getLabelList();
+
+	int flag = 0;
+	if (label_list.empty())
+		flag += EMPTY;
+	if (owner_->buffer()->isSGML())
+		flag += SGML;
+	if (owner_->buffer()->isReadonly())
+		flag += READONLY;
+
+	int max_nonempty = -1;
+	for (int i = 0; i < 6; ++i)
+		if ((MenuFlags[i] & flag) == 0)
+			max_nonempty = i;
+
+	for (int i = 0; i < 6; ++i) {
+		if ((MenuFlags[i] & flag) == 0) {
+			string label = _(MenuNames[i]);
+			if (i == max_nonempty)
+				label += extra_label;
+			if (smn.size() < max_number_of_menus) {
+				int menu2 = fl_newpup(win);
+				smn.push_back(menu2);
+				add_references2(menu2, smn, win, label_list,
+						MenuTypes[i]);
+				fl_addtopup(menu, label.c_str(), menu2);
+			} else {
+				label += "%d";
+				fl_addtopup(menu, label.c_str());	
+			}
+		}
+	}
+}
+
+
 void Menubar::Pimpl::add_formats(int menu, string const & extra_label,
-				 std::vector<int> & /*smn*/, 
-				 StrPool & strpool,
 				 kb_action action, bool viewable)
 {
-	std::vector<pair<string,string> > names = 
+	vector<pair<string,string> > names = 
 		viewable
 		? Exporter::GetViewableFormats(owner_->buffer())
 		: Exporter::GetExportableFormats(owner_->buffer());
 
-	for (std::vector<pair<string,string> >::const_iterator cit = names.begin();
+	for (vector<pair<string,string> >::const_iterator cit = names.begin();
 	     cit != names.end() ; ++cit) {
 		int action2 =
 			lyxaction.getPseudoAction(action, (*cit).first);
@@ -288,14 +549,14 @@ void Menubar::Pimpl::add_formats(int menu, string const & extra_label,
 		if ((cit + 1) == names.end())
 			label += extra_label;
 				
-		fl_addtopup(menu, strpool.add(label));
+		fl_addtopup(menu, label.c_str());
 	}
 }
 
 
 int Menubar::Pimpl::create_submenu(Window win, LyXView * view, 
 				   string const & menu_name, 
-				   std::vector<int> & smn, StrPool & strpool) 
+				   vector<int> & smn) 
 {
 	if (!menubackend_->hasMenu(menu_name)){ 
 		lyxerr << "ERROR:create_submenu: Unknown menu `" 
@@ -317,7 +578,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 	string widest_label;
 	Menu::const_iterator end = md.end();
 	for (Menu::const_iterator i = md.begin(); i != end; ++i) {
-		MenuItem item = (*i);
+		MenuItem const & item = (*i);
 		if (item.kind() == MenuItem::Command) {
 			string label = item.label() + '\t';
 			int width = string_width(label);
@@ -331,13 +592,21 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			   << ", widest_label=`" << widest_label 
 			   << "'" << endl;
 
-	for (Menu::const_iterator i = md.begin(); i != end; ++i) {
-		MenuItem item = (*i);
-		// Is there a separator after this item?
-		string extra_label;
-		if ((i+1) != end  
-		    && (i+1)->kind() == MenuItem::Separator)
-			extra_label = "%l";
+	// Compute where to put separators
+	vector<string> extra_labels(md.size());
+	vector<string>::iterator it = extra_labels.begin();
+	vector<string>::iterator last = it;
+	for (Menu::const_iterator i = md.begin(); i != end; ++i, ++it)
+		if (i->kind() == MenuItem::Separator)
+			*last = "%l";
+		else if (!i->optional() ||
+			 !(view->getLyXFunc()->getStatus(i->action()) & LyXFunc::Disabled))
+			last = it;
+
+	it = extra_labels.begin();
+	for (Menu::const_iterator i = md.begin(); i != end; ++i, ++it) {
+		MenuItem const & item = (*i);
+		string & extra_label = *it;
 
 		switch(item.kind()) {
 		case MenuItem::Command: {
@@ -384,10 +653,10 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(menu, strpool.add(label), 
-					    strpool.add(shortcut));
+				fl_addtopup(menu, label.c_str(), 
+					    shortcut.c_str());
 			} else
-				fl_addtopup(menu, strpool.add(label));
+				fl_addtopup(menu, label.c_str());
 			
 			lyxerr[Debug::GUI] << "Command: \""  
 					   << lyxaction.getActionName(item.action())
@@ -401,8 +670,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 		case MenuItem::Submenu: {
 			int submenu = create_submenu(win, view, 
-						     item.submenu(),
-						     smn, strpool);
+						     item.submenu(), smn);
 			if (submenu == -1)
 				return -1;
 			string label = item.label();
@@ -410,11 +678,11 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			string shortcut = item.shortcut();
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
-				fl_addtopup(menu, strpool.add(label + "%h"),
-					    submenu, strpool.add(shortcut));
+				fl_addtopup(menu, (label + "%h").c_str(),
+					    submenu, shortcut.c_str());
 			}
 			else {
-				fl_addtopup(menu, strpool.add(label), submenu);
+				fl_addtopup(menu, label.c_str(), submenu);
 			}
 			break;
 		}
@@ -425,26 +693,31 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			break;
 
 		case MenuItem::Documents: 
-			add_documents(menu, extra_label, smn, strpool);
+			add_documents(menu, extra_label);
 			break;
 
 		case MenuItem::Lastfiles: 
-			add_lastfiles(menu, extra_label, smn, strpool);
+			add_lastfiles(menu, extra_label);
+			break;
+
+		case MenuItem::Toc:
+			add_toc(menu, extra_label, smn, win);
+			break;
+
+		case MenuItem::References:
+			add_references(menu, extra_label, smn, win);
 			break;
 
 		case MenuItem::ViewFormats:
-			add_formats(menu, extra_label, smn, strpool,
-				    LFUN_PREVIEW, true);
+			add_formats(menu, extra_label, LFUN_PREVIEW, true);
 			break;
 
 		case MenuItem::UpdateFormats:
-			add_formats(menu, extra_label, smn, strpool,
-				    LFUN_UPDATE, true);
+			add_formats(menu, extra_label, LFUN_UPDATE, true);
 			break;  
 
 		case MenuItem::ExportFormats:
-			add_formats(menu, extra_label, smn, strpool,
-				    LFUN_EXPORT, false);
+			add_formats(menu, extra_label, LFUN_EXPORT, false);
 			break;
 
 		}
@@ -482,12 +755,10 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);
-	std::vector<int> submenus;
-	StrPool strpool;
+	vector<int> submenus;
 	int menu = iteminfo->pimpl_->
 		create_submenu(FL_ObjWin(ob), view, 
-			       item->submenu(), 
-			       submenus, strpool);
+			       item->submenu(), submenus);
 	if (menu != -1) {
 		// place popup
 		fl_setpup_position(view->getForm()->x + ob->x,

@@ -224,7 +224,7 @@ void FormDocument::build()
     fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
     fl_set_form_atclose(dialog_->form,
-			FormDocument::WMHideCB, 0);
+			C_FormDocumentWMHideCB, 0);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Document"),
 		       class_->form);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Paper"),

@@ -612,6 +612,9 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_VC_HISTORY:
 		disable = !buf->lyxvc.inUse();
 		break;
+	case LFUN_REF_BACK:
+		disable = owner->view()->NoSavedPositions();
+		break;
 	default:
 		break;
         }
@@ -1584,26 +1587,22 @@ string LyXFunc::Dispatch(int ac,
 		MenuInsertLabel(argument.c_str());
 		break;
 		
-	case LFUN_REF_CREATE:
-	{
-		InsetCommandParams p( "ref" );
-		owner->getDialogs()->createRef( p.getAsString() );
-	}
-	break;
-		
 	case LFUN_REF_INSERT:
-	{
-		InsetCommandParams p;
-		p.setFromString( argument );
+		if (argument.empty()) {
+			InsetCommandParams p("ref");
+		owner->getDialogs()->createRef(p.getAsString());
+		} else {
+			InsetCommandParams p;
+			p.setFromString(argument);
 
-		InsetRef * inset = new InsetRef( p );
-		if (!owner->view()->insertInset(inset))
-			delete inset;
-		else
-			owner->view()->updateInset( inset, true );
-	}
-	break;
-		    
+			InsetRef * inset = new InsetRef(p);
+			if (!owner->view()->insertInset(inset))
+				delete inset;
+			else
+				owner->view()->updateInset(inset, true);
+		}
+		break;
+
 	case LFUN_REF_BACK:
 	{
 		owner->view()->restorePosition();
@@ -2527,6 +2526,28 @@ string LyXFunc::Dispatch(int ac,
 
 		// Set the cursor  
 		owner->view()->setCursorFromRow(row);
+
+		// Recenter screen
+		owner->view()->center();
+	}
+	break;
+
+	case LFUN_GOTO_PARAGRAPH:
+	{
+#ifdef HAVE_SSTREAM
+                istringstream istr(argument);
+#else
+                istrstream istr(argument.c_str());
+#endif
+
+		int id;
+		istr >> id;
+		LyXParagraph * par = owner->view()->text->GetParFromID(id);
+
+		// Set the cursor
+		owner->view()->text->SetCursor(owner->view(), par, 0);
+		owner->view()->setState();
+		owner->showState();
 
 		// Recenter screen
 		owner->view()->center();

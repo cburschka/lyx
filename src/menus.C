@@ -1905,7 +1905,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 
 		case 12: tmpfunc->Dispatch(LFUN_INSERT_NOTE); break;
 		case 13: tmpfunc->Dispatch(LFUN_INSERT_LABEL); break;
-		case 14: tmpfunc->Dispatch(LFUN_REF_CREATE); break;
+		case 14: tmpfunc->Dispatch(LFUN_REF_INSERT); break;
 		case 15: tmpfunc->Dispatch(LFUN_CITATION_CREATE); break;
 		case 16: tmpfunc->Dispatch(LFUN_INDEX_CREATE); break;
 		case 17: tmpfunc->Dispatch(LFUN_INDEX_INSERT_LAST); break;

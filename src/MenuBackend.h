@@ -41,6 +41,10 @@ public:
 		/** This is the list of opened Documents,
 		    typically for the Documents menu. */
 		Documents,
+		///
+		Toc,
+		///
+		References,
 		/** This is a list of viewable formats
 		    typically for the Documents menu. */
 		ViewFormats,
@@ -102,6 +106,8 @@ public:
 	string const & name() const { return name_; }
 	///
 	bool empty() const { return items_.empty(); }
+	///
+	ItemList::size_type size() const { return items_.size(); }
         ///
         const_iterator begin() const {
                 return items_.begin();

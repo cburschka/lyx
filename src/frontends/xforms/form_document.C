@@ -11,6 +11,9 @@
 #include "FormDocument.h"
 #include "bmtable.h"
 #include "support/filetools.h"
+#include "xform_macros.h"
+
+C_GENERICCB(FormDocument, BulletBMTableCB)
 
 FD_form_tabbed_document::~FD_form_tabbed_document()
 {
@@ -396,7 +399,7 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   fl_set_border_width(-3);
   fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 90, 105, 265, 180, "");
-  fl_set_object_callback(obj, BulletBMTableCB, 0);
+  fl_set_object_callback(obj, C_FormDocumentBulletBMTableCB, 0);
   fl_set_object_lcol(obj, FL_BLUE);
   fl_set_object_boxtype(obj, FL_UP_BOX);
   fl_set_bmtable_pixmap_file(obj, 6, 6,
