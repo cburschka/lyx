@@ -38,9 +38,12 @@ What's new
 
 - Fix LaTeX output of percentage length values <10% [bug 1523].
 
-- Fix output of footnotes on the titlepage, which did not work with
-  the memoir class [bug 1677]. 
+- Fix output of mathbb and mathcal symbols via the math panel
+  (xforms only) [bug 1214].
 
+- Fix output of footnotes on the titlepage, which did not work with
+  the memoir class [bug 1677].
+  
 - Fix the LaTeX output of Short Titles (aka optional inset) that did
   not get \protect added when needed [bug 1739].
 

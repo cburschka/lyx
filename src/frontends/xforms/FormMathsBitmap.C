@@ -176,13 +176,7 @@ int FormMathsBitmap::GetIndex(FL_OBJECT * ob_in)
 
 void FormMathsBitmap::apply()
 {
-	string::size_type const i = latex_chosen_.find(' ');
-	if (i != string::npos) {
-		controller().dispatchFunc(LFUN_MATH_MODE);
-		controller().insertSymbol(latex_chosen_.substr(0,i));
-		controller().insertSymbol(latex_chosen_.substr(i + 1), false);
-	} else
-		controller().insertSymbol(latex_chosen_);
+	controller().insertSymbol(latex_chosen_);
 }
 
 
