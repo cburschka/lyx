@@ -1,9 +1,12 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_kerninset.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_support.h"
 
 
@@ -46,12 +49,12 @@ void MathKernInset::metrics(MathMetricsInfo const &) const
 
 void MathKernInset::write(WriteStream & os) const
 {
-	os << "\\kern" << wid_.asLatexString().c_str() << " ";
+	os << "\\kern" << wid_.asLatexString() << " ";
 }
 
 
 void MathKernInset::normalize(NormalStream & os) const
 {
-	os << "[kern " << wid_.asLatexString().c_str() << "]";
+	os << "[kern " << wid_.asLatexString() << "]";
 }
 

@@ -75,9 +75,9 @@ void FormMinipage::apply()
 
 void FormMinipage::update()
 {
-    LyXLength len(controller().params().width.c_str());
-    fl_set_input(dialog_->input_width,tostr(len.value()).c_str());
-    fl_set_choice(dialog_->choice_width_units, len.unit()+1);
+    LyXLength len(controller().params().width);
+    fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
+    fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
 
     switch (controller().params().pos) {
     case InsetMinipage::top:

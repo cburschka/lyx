@@ -1,10 +1,11 @@
 #include <config.h>
-#include <algorithm>
 
 #include "math_mathmlstream.h"
 #include "math_inset.h"
 #include "math_extern.h"
 #include "debug.h"
+
+#include <algorithm>
 
 
 MathMLStream::MathMLStream(std::ostream & os)

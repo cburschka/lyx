@@ -83,7 +83,7 @@ int GUIRunTime::initApplication(int &, char * argv[])
 
 void GUIRunTime::processEvents() 
 {
-	while(Gnome::Main::instance()->events_pending())
+	while (Gnome::Main::instance()->events_pending())
 		Gnome::Main::instance()->iteration(FALSE);
 }
 

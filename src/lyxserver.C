@@ -288,14 +288,14 @@ void LyXComm::callback(int fd, void *v)
 	errno = 0;
 	int status;
 	// the single = is intended here.
-	while((status = read(fd, charbuf, CMDBUFLEN-1)))
+	while ((status = read(fd, charbuf, CMDBUFLEN-1)))
 	{// break and return in loop
 		if (status > 0) // got something
 		{
 			charbuf[status]= '\0'; // turn it into a c string
 			lsbuf += strip(charbuf, '\r');
 			// commit any commands read
-			while(lsbuf.find('\n') != string::npos) // while still
+			while (lsbuf.find('\n') != string::npos) // while still
 							// commands
 							// left 
 			{
@@ -406,7 +406,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	//  Format: LYXCMD:<client>:<func>:<argstring>\n
 	//
 	bool server_only = false;
-	while(*p) {
+	while (*p) {
 		// --- 1. check 'header' ---
 
 	        if (compare(p, "LYXSRV:", 7) == 0) {
@@ -419,20 +419,20 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		
 		// --- 2. for the moment ignore the client name ---
 		string client;
-		while(*p && *p != ':')
+		while (*p && *p != ':')
 			client += char(*p++);
 		if (*p == ':') ++p;
 		if (!*p) return;
 		
 		// --- 3. get function name ---
 		string cmd;
-		while(*p && *p != ':')
+		while (*p && *p != ':')
 			cmd += char(*p++);
 		
 		// --- 4. parse the argument ---
 		string arg;
 		if (!server_only && *p == ':' && *(++p)) {
-			while(*p && *p != '\n')
+			while (*p && *p != '\n')
 				arg += char(*p++);
 			if (*p) ++p;
 		}

@@ -1,3 +1,5 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -7,7 +9,7 @@
 #include "Painter.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-
+#include "math_streamstr.h"
 
 
 extern LyXFont WhichFont(short type, int size);
@@ -58,29 +60,29 @@ bool MathFuncInset::match(MathInset * p) const
 
 void MathFuncInset::maplize(MapleStream & os) const
 {
-	os << ' ' << name_.c_str();
+	os << ' ' << name_;
 }
 
 
 void MathFuncInset::mathmlize(MathMLStream & os) const
 {
-	os << MTag("mi") << name_.c_str() << ETag("mi");
+	os << MTag("mi") << name_ << ETag("mi");
 }
 
 
 void MathFuncInset::octavize(OctaveStream & os) const
 {
-	os << ' ' << name_.c_str();
+	os << ' ' << name_;
 }
 
 
 void MathFuncInset::normalize(NormalStream & os) const
 {
-	os << "[func " << name_.c_str() << ']';
+	os << "[func " << name_ << ']';
 }
 
 
 void MathFuncInset::write(WriteStream & os) const
 {
-	os << "\\" << name_.c_str() << ' ';
+	os << "\\" << name_ << ' ';
 }

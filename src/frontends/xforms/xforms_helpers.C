@@ -29,7 +29,7 @@ char const * flyx_shortcut_extract(char const * sc)
 {
 	// Find '|' in the sc and return the string after that.
 	register char const * sd = sc;
-	while(sd[0]!= 0 && sd[0] != '|') ++sd;
+	while (sd[0]!= 0 && sd[0] != '|') ++sd;
 
 	if (sd[0] == '|') {
 		++sd;
@@ -44,7 +44,7 @@ char const * flyx_shortcut_extract(char const * sc)
 char const * flyx_ident_extract(char const * sc)
 {
 	register char const * se = sc;
-	while(se[0]!= 0 && se[0] != '|') ++se;
+	while (se[0]!= 0 && se[0] != '|') ++se;
 
 	if (se[0] == 0) return sc;
 	

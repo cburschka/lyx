@@ -189,7 +189,7 @@ void DepTable::read(string const & f)
 	unsigned long two = 0;
 	unsigned long mtime = 0;
 	
-	while(ifs >> nome >> one >> two >> mtime) {
+	while (ifs >> nome >> one >> two >> mtime) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Read dep: "
 			       << nome << " "

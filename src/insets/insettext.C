@@ -76,7 +76,7 @@ void InsetText::saveLyXTextState(LyXText * t) const
 {
 	// check if my paragraphs are still valid
 	Paragraph * p = par;
-	while(p) {
+	while (p) {
 		if (p == t->cursor.par())
 			break;
 		p = p->next();
@@ -169,7 +169,7 @@ void InsetText::init(InsetText const * ins, bool same_id)
 			id_ = ins->id_;
 	} else {
 		Paragraph * p = par;
-		while(p) {
+		while (p) {
 			p->setInsetOwner(this);
 			p = p->next();
 		}
@@ -278,7 +278,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 	if (!return_par)
 		return_par = par;
 	par = return_par;
-	while(return_par) {
+	while (return_par) {
 		return_par->setInsetOwner(this);
 		return_par = return_par->next();
 	}
@@ -720,7 +720,7 @@ void InsetText::edit(BufferView * bv, bool front)
 		lt->setCursor(bv, par, 0);
 	else {
 		Paragraph * p = par;
-		while(p->next())
+		while (p->next())
 			p = p->next();
 //		int const pos = (p->size() ? p->size()-1 : p->size());
 		lt->setCursor(bv, p, p->size());
@@ -2402,7 +2402,7 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 
 	Paragraph * lp = par;
 
-	while(lp) {
+	while (lp) {
 		for (Paragraph::inset_iterator it = lp->inset_iterator_begin(),
 			 en = lp->inset_iterator_end();
 			 it != en; ++it)

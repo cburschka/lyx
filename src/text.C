@@ -100,10 +100,10 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 		int dummy_y;
 		Row * row = getRow(par, pos, dummy_y);
 		Row * frow = row;
-		while(frow->previous() && frow->par() == frow->previous()->par())
+		while (frow->previous() && frow->par() == frow->previous()->par())
 			frow = frow->previous();
 		unsigned int maxw = 0;
-		while(frow->next() && frow->par() == frow->next()->par()) {
+		while (frow->next() && frow->par() == frow->next()->par()) {
 			if ((frow != row) && (maxw < frow->width()))
 				maxw = frow->width();
 			frow = frow->next();
@@ -1127,7 +1127,7 @@ int LyXText::numberOfHfills(Buffer const * buf, Row const * row) const
 	pos_type first = row->pos();
 	if (first) { /* hfill *DO* count at the beginning 
 		      * of paragraphs! */
-		while(first <= last && row->par()->isHfill(first))
+		while (first <= last && row->par()->isHfill(first))
 			++first;
 	}
 
@@ -1150,7 +1150,7 @@ int LyXText::numberOfLabelHfills(Buffer const * buf, Row const * row) const
 	pos_type first = row->pos();
 	if (first) { /* hfill *DO* count at the beginning 
 		      * of paragraphs! */
-		while(first < last && row->par()->isHfill(first))
+		while (first < last && row->par()->isHfill(first))
 			++first;
 	}
 
@@ -1526,7 +1526,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	if (inset_owner) {
 		Row * r = firstrow;
 		width = max(0,workWidth(bview));
-		while(r) {
+		while (r) {
 			if (r->width() > width)
 				width = r->width();
 			r = r->next();

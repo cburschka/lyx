@@ -41,7 +41,7 @@ bool getTokenValue(string const & str, char const * token, string & ret)
 	ret += ch;
 	ch = ' ';
     }
-    while((pos < str.length() - 1) && (str[++pos] != ch))
+    while ((pos < str.length() - 1) && (str[++pos] != ch))
 	ret += str[pos];
 
     return true;
@@ -64,7 +64,7 @@ bool getTokenValue(string const & str, char const * token, int & num)
 	ret += ch;
     }
     ++pos;
-    while((pos < str.length() - 1) && isdigit(str[pos]))
+    while ((pos < str.length() - 1) && isdigit(str[pos]))
 	ret += str[pos++];
 
     num = strToInt(ret);
@@ -117,7 +117,7 @@ bool getTokenValue(string const & str, char const * token, bool & flag)
 	ret += ch;
     }
     ++pos;
-    while((pos < str.length() - 1) && isdigit(str[pos]))
+    while ((pos < str.length() - 1) && isdigit(str[pos]))
 	ret += str[pos++];
 
     flag = strToInt(ret);
@@ -132,7 +132,7 @@ void l_getline(istream & is, string & str)
 //#warning old l_getline
 #endif
     getline(is, str);
-    while(str.empty())
+    while (str.empty())
 	getline(is, str);
 }
 

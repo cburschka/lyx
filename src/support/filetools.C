@@ -184,7 +184,7 @@ string const FileOpenSearch (string const & path, string const & name,
 		if (real_file.empty()) {
 			do {
 				tmppath = split(tmppath, path_element, ';');
-			} while(!tmppath.empty() && path_element.empty());
+			} while (!tmppath.empty() && path_element.empty());
 		} else {
 			notfound = false;
 		}
@@ -593,7 +593,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		TempBase = AddPath(lyx::getcwd(), BasePath);
 	
 	// Handle /./ at the end of the path
-	while(suffixIs(TempBase, "/./"))
+	while (suffixIs(TempBase, "/./"))
 		TempBase.erase(TempBase.length() - 2);
 
 	// processes relative path

@@ -996,7 +996,7 @@ lyxstring::size_type lyxstring::rfind(lyxstring const & a, size_type i) const
 			}
 			if (equal) return t;
 		}
-	} while(t-- > 0);
+	} while (t-- > 0);
 	return npos;
 }
 
@@ -1766,7 +1766,7 @@ istream & getline(istream & is, lyxstring & s,
 	// very bad solution
 	char tmp = 0;
 	s.erase();
-	while(is) {
+	while (is) {
 		is.get(tmp);
 		if (tmp != delim) {
 			s += tmp;

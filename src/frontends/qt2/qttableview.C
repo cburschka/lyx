@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qttableview.C,v 1.1 2001/12/01 02:24:27 levon Exp $
+** $Id: qttableview.C,v 1.2 2001/12/05 08:04:18 larsbj Exp $
 **
 ** Implementation of QtTableView class
 **
@@ -1306,7 +1306,8 @@ void QtTableView::paintEvent( QPaintEvent *e )
 
     int firstRow = findRow( updateR.y() );
     int firstCol = findCol( updateR.x() );
-    int	 xStart, yStart;
+    int	xStart;
+    int yStart;
     if ( !colXPos( firstCol, &xStart ) || !rowYPos( firstRow, &yStart ) ) {
 	paint.eraseRect( updateR ); // erase area outside cells but in view
 	return;
@@ -1316,7 +1317,7 @@ void QtTableView::paintEvent( QPaintEvent *e )
     int	  row	= firstRow;
     int	  col;
     int	  yPos	= yStart;
-    int	  xPos = maxX+1; // in case the while() is empty
+    int	  xPos = maxX + 1; // in case the while() is empty
     int	  nextX;
     int	  nextY;
     QRect winR = viewRect();
@@ -2102,7 +2103,7 @@ int QtTableView::maxXOffset()
 		int pos = tw;
 		int nextCol = nCols - 1;
 		int nextCellWidth = cellWidth( nextCol );
-		while( nextCol > 0 && pos > goal + nextCellWidth ) {
+		while ( nextCol > 0 && pos > goal + nextCellWidth ) {
 		    pos -= nextCellWidth;
 		    nextCellWidth = cellWidth( --nextCol );
 		}
@@ -2148,7 +2149,7 @@ int QtTableView::maxYOffset()
 		int pos = th;
 		int nextRow = nRows - 1;
 		int nextCellHeight = cellHeight( nextRow );
-		while( nextRow > 0 && pos > goal + nextCellHeight ) {
+		while ( nextRow > 0 && pos > goal + nextCellHeight ) {
 		    pos -= nextCellHeight;
 		    nextCellHeight = cellHeight( --nextRow );
 		}

@@ -2890,7 +2890,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		}
 
 		list < PAR_TAG > temp;
-		while(!tag_state.empty() && tag_close ) {
+		while (!tag_state.empty() && tag_close ) {
 			PAR_TAG k =  tag_state.top();
 			tag_state.pop();
 			os << "</" << tag_name(k) << ">";

@@ -29,39 +29,6 @@
 
 namespace {
 
-#if 0
-/*  length units
- */
-
-int const num_units = LyXLength::UNIT_NONE;
-
-// I am not sure if "mu" should be possible to select (Lgb)
-char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
-				      "mm", "pc", "cc", "cm",
-				      "in", "ex", "em", "mu",
-				      "%",  "c%", "p%", "l%" };
-
-
-/*  The following static items form a simple scanner for
- *  length strings, used by isValid[Glue]Length.  See comments there.
- */
-double           number[4] = { 0, 0, 0, 0 };
-LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
-			      LyXLength::UNIT_NONE,
-			      LyXLength::UNIT_NONE,
-			      LyXLength::UNIT_NONE };
-int number_index;
-int unit_index;
-
-LyXLength::UNIT unitFromString(string const & data)
-{
-	int i = 0;
-	while (i < num_units && data != unit_name[i])
-		++i;
-	return static_cast<LyXLength::UNIT>(i);
-}
-
-#endif
 double           number[4] = { 0, 0, 0, 0 };
 LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 			      LyXLength::UNIT_NONE,

@@ -511,7 +511,7 @@ string const subst(string const & a,
 	string lstr(a);
 	string::size_type i = 0;
 	string::size_type olen = strlen(oldstr);
-	while((i = lstr.find(oldstr, i)) != string::npos) {
+	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont
 		// use the same i over and over again.
@@ -526,7 +526,7 @@ string const subst(string const & a,
 	string lstr(a);
 	string::size_type i = 0;
 	string::size_type const olen = oldstr.length();
-	while((i = lstr.find(oldstr, i)) != string::npos) {
+	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont
 		// use the same i over and over again.

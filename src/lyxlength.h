@@ -68,7 +68,7 @@ public:
 
 	/// "data" must be a decimal number, followed by a unit
 	explicit LyXLength(string const & data);
-	
+
 	///
 	double value() const;
 	///
@@ -77,10 +77,8 @@ public:
 	void value(double);
 	///
 	void unit(LyXLength::UNIT unit);
-
-	/// real length in SP
-	//void lenght();
-
+	///
+	bool zero() const;
 	/// conversion
 	string const asString() const;
 	///

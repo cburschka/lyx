@@ -1,3 +1,5 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -5,6 +7,7 @@
 #include "math_sizeinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
@@ -37,11 +40,11 @@ void MathSizeInset::metrics(MathMetricsInfo const & mi) const
 
 void MathSizeInset::write(WriteStream & os) const
 {
-	os << "{\\" << key_->name.c_str() << ' ' << cell(0) << '}';
+	os << "{\\" << key_->name << ' ' << cell(0) << '}';
 }
 
 
 void MathSizeInset::normalize(NormalStream & os) const
 {
-	os << "[" << key_->name.c_str() << ' ' << cell(0) << ']';
+	os << "[" << key_->name << ' ' << cell(0) << ']';
 }

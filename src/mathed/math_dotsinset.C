@@ -1,9 +1,12 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_dotsinset.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_support.h"
 
 
@@ -44,11 +47,11 @@ void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 
 void MathDotsInset::write(WriteStream & os) const
 {
-	os << '\\' << name_.c_str() << ' ';
+	os << '\\' << name_ << ' ';
 }
 
 
 void MathDotsInset::normalize(NormalStream & os) const
 {
-	os << "[" << name_.c_str() << "] ";
+	os << "[" << name_ << "] ";
 }

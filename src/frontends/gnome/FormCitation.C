@@ -307,7 +307,7 @@ void FormCitation::initWidgets()
       vector<string> r;
       string tmp, keys( params.getContents() );
       keys = frontStrip( split(keys, tmp, ',') );
-      while( !tmp.empty() )
+      while ( !tmp.empty() )
 	{
 	  r.clear();
 	  r.push_back(tmp);

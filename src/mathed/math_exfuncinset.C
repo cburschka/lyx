@@ -1,7 +1,9 @@
+#include <config.h>
+
 #include "math_exfuncinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-
+#include "math_streamstr.h"
 
 using std::ostream;
 
@@ -32,13 +34,13 @@ void MathExFuncInset::draw(Painter & pain, int x, int y) const
 
 void MathExFuncInset::normalize(NormalStream & os) const
 {
-	os << '[' << name_.c_str() << ' ' << cell(0) << ']';
+	os << '[' << name_ << ' ' << cell(0) << ']';
 }
 
 
 void MathExFuncInset::maplize(MapleStream & os) const
 {
-	os << name_.c_str() << '(' << cell(0) << ')';
+	os << name_ << '(' << cell(0) << ')';
 }
 
 
@@ -50,13 +52,13 @@ void MathExFuncInset::mathmlize(MathMLStream & os) const
 
 void MathExFuncInset::octavize(OctaveStream & os) const
 {
-	os << name_.c_str() << '(' << cell(0) << ')';
+	os << name_ << '(' << cell(0) << ')';
 }
 
 
 void MathExFuncInset::write(WriteStream & os) const
 {
-	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
+	os << '\\' << name_ << '{' << cell(0) << '}';
 }
 
 

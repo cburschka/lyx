@@ -1,3 +1,5 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -6,6 +8,7 @@
 #include "math_support.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 
 
 MathDecorationInset::MathDecorationInset(string const & name)
@@ -95,11 +98,11 @@ void MathDecorationInset::write(WriteStream & os) const
 {
 	if (os.fragile() && protect())
 		os << "\\protect";
-	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
+	os << '\\' << name_ << '{' << cell(0) << '}';
 }
 
 
 void MathDecorationInset::normalize(NormalStream & os) const
 {
-	os << "[deco " << name_.c_str() << ' ' <<  cell(0) << ']';
+	os << "[deco " << name_ << ' ' <<  cell(0) << ']';
 }

@@ -239,7 +239,7 @@ void CVS::scanMaster()
 	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << "'" << endl;
 	string line;
 	LRegex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
-	while(getline(ifs, line)) {
+	while (getline(ifs, line)) {
 		lyxerr[Debug::LYXVC] << "\t  line: " << line << endl;
 		if (contains(line, tmpf)) {
 			// Ok extract the fields.

@@ -141,7 +141,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		}
 		// this paragraph's are of noone's owner!
 		Paragraph * p = buf;
-		while(p) {
+		while (p) {
 			p->setInsetOwner(0);
 			p = p->next();
 		}
@@ -198,7 +198,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		}
 		// this paragraph's are of noone's owner!
 		tmppar = buf;
-		while(tmppar) {
+		while (tmppar) {
 			tmppar->setInsetOwner(0);
 			tmppar = tmppar->next();
 		}
@@ -329,7 +329,7 @@ int CutAndPaste::nrOfParagraphs()
 	
 	int n = 1;
 	Paragraph * tmppar = buf;
-	while(tmppar->next()) {
+	while (tmppar->next()) {
 		++n;
 		tmppar = tmppar->next();
 	}

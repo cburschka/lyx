@@ -1,16 +1,19 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <cctype>
-
 #include "math_stringinset.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "LColor.h"
 #include "Painter.h"
 #include "math_support.h"
 #include "math_parser.h"
 #include "debug.h"
+
+#include <cctype>
 
 
 MathStringInset::MathStringInset()
@@ -61,14 +64,14 @@ void MathStringInset::draw(Painter & pain, int x, int y) const
 
 void MathStringInset::normalize(NormalStream & os) const
 {
-	os << "[string " << str_.c_str() << ' ' << "mathalpha" << "]";
+	os << "[string " << str_ << ' ' << "mathalpha" << "]";
 }
 
 
 void MathStringInset::maplize(MapleStream & os) const
 {
 	if (code_ != LM_TC_VAR || str_.size() <= 1) {
-		os << ' ' << str_.c_str() << ' ';
+		os << ' ' << str_ << ' ';
 		return;
 	}	
 
@@ -82,7 +85,7 @@ void MathStringInset::maplize(MapleStream & os) const
 void MathStringInset::octavize(OctaveStream & os) const
 {
 	if (code_ != LM_TC_VAR || str_.size() <= 1) {
-		os << ' ' << str_.c_str() << ' ';
+		os << ' ' << str_ << ' ';
 		return;
 	}	
 
@@ -96,20 +99,20 @@ void MathStringInset::octavize(OctaveStream & os) const
 void MathStringInset::mathmlize(MathMLStream & os) const
 {
 	if (code_ == LM_TC_VAR)
-		os << "<mi> " << str_.c_str() << " </mi>";
+		os << "<mi> " << str_ << " </mi>";
 	else if (code_ == LM_TC_CONST)
-		os << "<mn> " << str_.c_str() << " </mn>";
+		os << "<mn> " << str_ << " </mn>";
 	else if (code_ == LM_TC_RM || code_ == LM_TC_TEXTRM)
-		os << "<mtext> " << str_.c_str() <<  " </mtext>";
+		os << "<mtext> " << str_ <<  " </mtext>";
 	else
-		os << str_.c_str();
+		os << str_;
 }
 
 
 void MathStringInset::write(WriteStream & os) const
 {
 	if (math_font_name(code_)) 
-		os << '\\' << math_font_name(code_) << '{' << str_.c_str() << '}';
+		os << '\\' << math_font_name(code_) << '{' << str_ << '}';
 	else 
-		os << str_.c_str();
+		os << str_;
 }

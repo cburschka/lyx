@@ -1,3 +1,25 @@
+2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView_pimpl:
+	* CutAndPaste.C: 
+	* DepTable.C:
+	* buffer.C:
+	* chset.C:
+	* lastfiles.C:
+	* lyxlex.C:
+	* lyxlex_pimpl.C:
+	* lyxserver.C:
+	* screen.C:
+	* tabular-old.C:
+	* tabular.C:
+	* text.C:
+	* trans_mgr.C:
+	* vc-backend.C: change "while(" to "while ("
+	
+	* lyxlength.[Ch]: add zero function to check if length is zero or
+	not
+	* lyxgluelength.C: use it
+	
 2001-12-05  Allan Rae  <rae@lyx.org>
 
 	* lyxlength.C: Attempted a fix for the abs(int) header selection.

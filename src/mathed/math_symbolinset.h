@@ -16,6 +16,8 @@ public:
 	///
 	explicit MathSymbolInset(char const *);
 	///
+	explicit MathSymbolInset(string const &);
+	///
 	MathInset * clone() const;
 	///
 	void metrics(MathMetricsInfo const & st) const;

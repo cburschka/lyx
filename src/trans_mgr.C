@@ -88,7 +88,7 @@ string const TransDeadkeyState::normalkey(char c, string const & trans)
 	
 	// Check if it is an exception
 	KmodException l = deadkey_info_.exception_list;
-	while(l != 0) {
+	while (l != 0) {
 		if (l->c == c) {
 			res = l->data;
 			break;
@@ -118,7 +118,7 @@ string const TransDeadkeyState::normalkey(char c)
 	
 	// Check if it is an exception
 	KmodException l = deadkey_info_.exception_list;
-	while(l != 0) {
+	while (l != 0) {
 		if (l->c == c) {
 			res = l->data;
 			break;
@@ -359,7 +359,7 @@ void  TransManager::TranslateAndInsert(char c, LyXText * text)
 	// Process with tokens
 	string temp;
 	
-	while(res.length() > 0) {
+	while (res.length() > 0) {
 		res = split(res, temp, TransState::TOKEN_SEP);
 		insert(temp, text);
 	}

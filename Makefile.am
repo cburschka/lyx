@@ -59,7 +59,7 @@ doxydoc: sourcedoc/Doxyfile
 
 sourcedoc/Doxyfile: sourcedoc/Doxyfile.in config.status
 	cd $(top_builddir) \
-	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+	&& CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*

@@ -15,9 +15,11 @@
 #endif
 
 #include "lyxgluelength.h"
+#include "lengthcommon.h"
 
 #include "Lsstream.h"
 
+#if 0
 namespace {
 // this is now here and in lyxlenght.h
 
@@ -30,7 +32,7 @@ char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
 				      "%",  "c%", "p%", "l%" };
 
 }
-
+#endif
 
 LyXGlueLength::LyXGlueLength(LyXLength const & len)
 	: len_(len)
@@ -53,8 +55,8 @@ string const LyXGlueLength::asString() const
 {
 	ostringstream buffer;
 
-	if (plus_.value() != 0.0)
-		if (minus_.value() != 0.0)
+	if (!plus_.zero())
+		if (!minus_.zero())
 			if (len_.unit() == plus_.unit() && len_.unit() == minus_.unit())
 				if (plus_.value() == minus_.value())
 					buffer << len_.value() << "+-"
@@ -87,7 +89,7 @@ string const LyXGlueLength::asString() const
 				       << unit_name[plus_.unit()];
 	
 	else
-		if (minus_.value() != 0.0)
+		if (!minus_.zero())
 			if (len_.unit() == minus_.unit())
 				buffer << len_.value() << '-' << minus_.value()
 				       << unit_name[len_.unit()];
@@ -107,8 +109,8 @@ string const LyXGlueLength::asLatexString() const
 {
 	ostringstream buffer;
 
-	if (plus_.value() != 0.0)
-		if (minus_.value() != 0.0)
+	if (!plus_.zero())
+		if (!minus_.zero())
 			buffer << len_.value() << unit_name[len_.unit()]
 			       << " plus "
 			       << plus_.value() << unit_name[plus_.unit()]
@@ -119,7 +121,7 @@ string const LyXGlueLength::asLatexString() const
 			       << " plus "
 			       << plus_.value() << unit_name[plus_.unit()];
 	else
-		if (minus_.value() != 0.0)
+		if (!minus_.zero())
 			buffer << len_.value() << unit_name[len_.unit()]
 			       << " minus "
 			       << minus_.value() << unit_name[minus_.unit()];

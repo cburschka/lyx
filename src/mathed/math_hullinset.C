@@ -1,8 +1,8 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <vector>
 
 #include "math_hullinset.h"
 #include "math_support.h"
@@ -10,7 +10,11 @@
 #include "Painter.h"
 #include "LaTeXFeatures.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 
+#include <vector>
+
+using std::endl;
 
 namespace {
 
@@ -608,7 +612,8 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 
 				default:
 					lyxerr << "mutation from '" << getType()
-						<< "' to '" << newtype << "' not implemented\n";
+						<< "' to '" << newtype << "' not implemented"
+					       << endl;
 					break;
 			}
 			break;
@@ -620,7 +625,8 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 					break;
 				default:
 					lyxerr << "mutation from '" << getType()
-						<< "' to '" << newtype << "' not implemented\n";
+						<< "' to '" << newtype << "' not implemented"
+					       << endl;
 					break;
 			}
 
@@ -631,42 +637,45 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 					break;
 				default:
 					lyxerr << "mutation from '" << getType()
-						<< "' to '" << newtype << "' not implemented\n";
+						<< "' to '" << newtype << "' not implemented"
+					       << endl;
 					break;
 			}
 
 		default:
 			lyxerr << "mutation from '" << getType()
-				<< "' to '" << newtype << "' not implemented\n";
+			       << "' to '" << newtype << "' not implemented"
+			       << endl;
+			break;
 	}
 }
 
 
 void MathHullInset::write(WriteStream & os) const
 {
-  header_write(os);
-
+	header_write(os);
+	
 	bool n = numberedType();
-
+	
 	for (row_type row = 0; row < nrows(); ++row) {
 		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << eocString(col).c_str();
+			os << cell(index(row, col)) << eocString(col);
 		if (n) {
 			if (!label_[row].empty())
-				os << "\\label{" << label_[row].c_str() << "}";
+				os << "\\label{" << label_[row] << "}";
 			if (nonum_[row])
 				os << "\\nonumber ";
 		}
-		os << eolString(row).c_str();
+		os << eolString(row);
 	}
-
-  footer_write(os);
+	
+	footer_write(os);
 }
 
 
 void MathHullInset::normalize(NormalStream & os) const
 {
-	os << "[formula " << normalName(getType()).c_str() << " ";
+	os << "[formula " << normalName(getType()) << " ";
 	MathGridInset::normalize(os);
 	os << "] ";
 }

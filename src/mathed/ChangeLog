@@ -1,3 +1,32 @@
+2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_arrayinset.C:
+	* math_boxinset.C:
+	* math_decorationinset.C:
+	* math_deliminset.C:
+	* math_dotsinset.C:
+	* math_exfuncinset.C:
+	* math_exintinset.C:
+	* math_funcinset.C:
+	* math_funcliminset.C:
+	* math_hullinset.C:
+	* math_kerninset.C:
+	* math_limopinset.C:
+	* math_sizeinset.C:
+	* math_stringinset.C:
+	* math_symbolinset.C:
+	* math_unknowninset.C: include math_streamstr.h and remove
+	unneeded c_str()
+	
+	* math_symbolinset.[Ch]: add constructor taking string
+	
+	* math_mathmlstream.C: move includes around
+
+	* math_streamstr.[Ch]: add operator<<(Stream, string) for
+	NormalStream, MapleStream, MathMLStream and OctaveStream
+	
+	* math_gridinset.C: user LyXLength::zero
+	
 2001-11-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* formula.C:

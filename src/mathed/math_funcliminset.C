@@ -1,5 +1,8 @@
+#include <config.h>
+
 #include "math_funcliminset.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_support.h"
 
 
@@ -22,13 +25,13 @@ bool MathFuncLimInset::isScriptable() const
 
 void MathFuncLimInset::write(WriteStream & os) const
 {
-	os << '\\' << name_.c_str() << ' ';
+	os << '\\' << name_ << ' ';
 }
 
 
 void MathFuncLimInset::normalize(NormalStream & os) const
 {
-	os << "[funclim " << name_.c_str() << ']';
+	os << "[funclim " << name_ << ']';
 }
 
 

@@ -1,5 +1,8 @@
+#include <config.h>
+
 #include "math_symbolinset.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_support.h"
 #include "math_parser.h"
 #include "debug.h"
@@ -12,6 +15,11 @@ MathSymbolInset::MathSymbolInset(const latexkeys * l)
 
 MathSymbolInset::MathSymbolInset(const char * name)
 	: sym_(in_word_set(name)), h_(0)
+{}
+
+
+MathSymbolInset::MathSymbolInset(string const & name)
+	: sym_(in_word_set(name.c_str())), h_(0)
 {}
 
 
@@ -114,7 +122,7 @@ bool MathSymbolInset::takesLimits() const
 
 void MathSymbolInset::normalize(NormalStream & os) const
 {
-	os << "[symbol " << name().c_str() << "]";
+	os << "[symbol " << name() << "]";
 }
 
 
@@ -123,7 +131,7 @@ void MathSymbolInset::maplize(MapleStream & os) const
 	if (name() == "cdot")
 		os << '*';
 	else
-		os << name().c_str();
+		os << name();
 }
 
 
@@ -147,9 +155,9 @@ void MathSymbolInset::mathmlize(MathMLStream & os) const
 	char const * type = MathMLtype(sym_->type);
 	os << '<' << type << "> ";
 	if (sym_->xmlname == "x") // unknown so far
-		os << name().c_str();
+		os << name();
 	else
-		os << sym_->xmlname.c_str();
+		os << sym_->xmlname;
 	os << " </" << type << '>';
 }
 
@@ -159,13 +167,13 @@ void MathSymbolInset::octavize(OctaveStream & os) const
 	if (name() == "cdot")
 		os << '*';
 	else
-		os << name().c_str();
+		os << name();
 }
 
 
 void MathSymbolInset::write(WriteStream & os) const
 {
-	os << '\\' << name().c_str() << ' ';
+	os << '\\' << name() << ' ';
 }
 
 

@@ -401,7 +401,7 @@ bool LyXLex::Pimpl::eatLine()
 	int i = 0;
 	unsigned char c = '\0';
 	char cc = 0;
-	while(is && c != '\n' && i != (LEX_MAX_BUFF - 1)) {
+	while (is && c != '\n' && i != (LEX_MAX_BUFF - 1)) {
 		is.get(cc);
 		c = cc;
 		//lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"

@@ -44,7 +44,7 @@ bool CharacterSet::loadFile(string const & fname)
 	// was a bit neat. Anyway it is wrong to use the lyxlex parse
 	// without the use of a keyword table.     
 	LRegex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
-	while(getline(ifs, line)) {
+	while (getline(ifs, line)) {
 		if (reg.exact_match(line)) {
 			LRegex::SubMatches const & sub = reg.exec(line);
 			int const n = lyx::atoi(line.substr(sub[1].first,

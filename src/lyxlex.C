@@ -172,7 +172,7 @@ string const LyXLex::getLongString(string const & endtoken)
 			string tmpstr = getString();
 			if (firstline) {
 				unsigned int i = 0;
-				while(i < tmpstr.length()
+				while (i < tmpstr.length()
 				      && tmpstr[i] == ' ') {
 					++i;
 					prefix += ' ';

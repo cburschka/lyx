@@ -1243,7 +1243,7 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 		ret += ch;
 		ch = ' ';
 	}
-	while((pos < str.length() - 1) && (str[++pos] != ch))
+	while ((pos < str.length() - 1) && (str[++pos] != ch))
 		ret += str[pos];
 
 	return true;
@@ -1623,7 +1623,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			if (cont_row_info[row]) {
 				DeleteRow(row);
 				cont_row_info.erase(cont_row_info.begin() + row); //&cont_row_info[row]);
-				while(!IsFirstCellInRow(--cell));
+				while (!IsFirstCellInRow(--cell));
 			} else {
 				inset = GetCellInset(cell);
 				continue;
@@ -2456,7 +2456,7 @@ int LyXTabular::AsciiTopHLine(ostream & os, int row,
 		}
 		int column = column_of_cell(i);
 		int len = clen[column];
-		while(IsPartOfMultiColumn(row, ++column))
+		while (IsPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
 		print_n_chars(os, ch, len);
 		if (TopLine(i)) {
@@ -2503,7 +2503,7 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 		}
 		int column = column_of_cell(i);
 		int len = clen[column];
-		while(IsPartOfMultiColumn(row, ++column))
+		while (IsPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
 		print_n_chars(os, ch, len);
 		if (BottomLine(i)) {
@@ -2521,8 +2521,8 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 
 
 int LyXTabular::AsciiPrintCell(Buffer const * buf, ostream & os,
-							   int cell, int row, int column,
-							   vector<unsigned int> const & clen) const
+			       int cell, int row, int column,
+			       vector<unsigned int> const & clen) const
 {
 	ostringstream sstr;
 	int ret = GetCellInset(cell)->ascii(buf, sstr, 0);
@@ -2534,7 +2534,7 @@ int LyXTabular::AsciiPrintCell(Buffer const * buf, ostream & os,
 
 	unsigned int len1 = sstr.str().length();
 	unsigned int len2 = clen[column];
-	while(IsPartOfMultiColumn(row, ++column))
+	while (IsPartOfMultiColumn(row, ++column))
 		len2 += clen[column] + 4;
 	len2 -= len1;
 

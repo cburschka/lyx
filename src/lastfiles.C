@@ -55,7 +55,7 @@ void LastFiles::readFile(string const & filename)
 	string tmp;
 	FileInfo fileInfo;
 
-	while(getline(ifs, tmp) && files.size() < num_files) {
+	while (getline(ifs, tmp) && files.size() < num_files) {
 		if (dostat) {
 			if (!(fileInfo.newFile(tmp).exist() &&
 			      fileInfo.isRegular()))

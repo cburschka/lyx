@@ -193,7 +193,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
 	// have a comma-separated list of bibliographies
-	while(!adb.empty()) {
+	while (!adb.empty()) {
 		if (!buffer->niceFile &&
 		    IsFileReadable(MakeAbsPath(adb, buffer->filepath)+".bib")) 
                          adb = os::external_path(MakeAbsPath(adb, buffer->filepath));
@@ -217,7 +217,7 @@ vector<string> const InsetBibtex::getFiles(Buffer const &) const
 	string tmp;
 	string bibfiles = getContents();
 	bibfiles = split(bibfiles, tmp, ',');
-	while(!tmp.empty()) {
+	while (!tmp.empty()) {
 		string file = findtexfile(ChangeExtension(tmp, "bib"), "bib");
 		lyxerr[Debug::LATEX] << "Bibfile: " << file << endl;
 

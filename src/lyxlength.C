@@ -15,15 +15,13 @@
 #endif
 
 #include "lyxlength.h"
+#include "lengthcommon.h"
 
 #include "Lsstream.h"
 
-#if defined(__GNUG__) && __GNUC__ == 2 && __GNUC_MINOR__ >= 95
 #include <cstdlib>
-#else
-#include <cmath>
-#endif
 
+#if 0
 namespace {
 // this is now here and in lyxgluelength.C
 
@@ -45,6 +43,7 @@ LyXLength::UNIT unitFromString(string const & data)
 }
 
 }
+#endif
 
 
 LyXLength::LyXLength()
@@ -123,6 +122,12 @@ void LyXLength::value(double v)
 void LyXLength::unit(LyXLength::UNIT u)
 {
 	unit_ = u;
+}
+
+
+bool LyXLength::zero() const 
+{
+	return val_ == 0.0;
 }
 
 

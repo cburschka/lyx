@@ -8,6 +8,7 @@
 #include "math_parser.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_extern.h"
 
 
@@ -44,15 +45,15 @@ string MathDelimInset::latexName(string const & name)
 
 void MathDelimInset::write(WriteStream & os) const
 {
-	os << "\\left" << latexName(left_).c_str() << cell(0)
-	   << "\\right" << latexName(right_).c_str();
+	os << "\\left" << latexName(left_) << cell(0)
+	   << "\\right" << latexName(right_);
 }
 
 
 void MathDelimInset::normalize(NormalStream & os) const
 {
-	os << "[delim " << latexName(left_).c_str() << ' '
-		<< latexName(right_).c_str() << ' ' << cell(0) << ']';
+	os << "[delim " << latexName(left_) << ' '
+	   << latexName(right_) << ' ' << cell(0) << ']';
 }
 
 
@@ -121,14 +122,14 @@ void MathDelimInset::maplize(MapleStream & os) const
 			os << "abs(" << cell(0) << ")";
 	}
 	else
-		os << left_.c_str() << cell(0) << right_.c_str();
+		os << left_ << cell(0) << right_;
 }
 
 
 void MathDelimInset::mathmlize(MathMLStream & os) const
 {
-	os << "<fenced open=\"" << left_.c_str() << "\" close=\""
-		<< right_.c_str() << "\">" << cell(0) << "</fenced>";
+	os << "<fenced open=\"" << left_ << "\" close=\""
+		<< right_ << "\">" << cell(0) << "</fenced>";
 }
 
 
@@ -137,5 +138,5 @@ void MathDelimInset::octavize(OctaveStream & os) const
 	if (isAbs())
 		os << "det(" << cell(0) << ")";
 	else
-		os << left_.c_str() << cell(0) << right_.c_str();
+		os << left_ << cell(0) << right_;
 }

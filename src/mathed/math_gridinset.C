@@ -380,7 +380,7 @@ string MathGridInset::eolString(row_type row) const
 {
 	string eol;
 
-	if (rowinfo_[row].crskip_.value() != 0)
+	if (!rowinfo_[row].crskip_.zero())
 		eol += "[" + rowinfo_[row].crskip_.asLatexString() + "]";
 
 	// make sure an upcoming '[' does not break anything

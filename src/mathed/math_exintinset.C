@@ -1,8 +1,13 @@
+#include <config.h>
+
 #include "math_exintinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_symbolinset.h"
 #include "debug.h"
+
+using std::endl;
 
 
 MathExIntInset::MathExIntInset(string const & name)
@@ -37,26 +42,26 @@ bool MathExIntInset::hasScripts() const
 
 void MathExIntInset::normalize(NormalStream & os) const
 {
-	os << '[' << symbol_.c_str() << ' ' << cell(0) << ' ' << cell(1) << ' ' 
+	os << '[' << symbol_ << ' ' << cell(0) << ' ' << cell(1) << ' ' 
 	   << cell(2) << ' ' << cell(3) << ']';
 }
 
 
 void MathExIntInset::metrics(MathMetricsInfo const &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
 void MathExIntInset::draw(Painter &, int, int) const
 {  
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
 void MathExIntInset::maplize(MapleStream & os) const
 {
-	os << symbol_.c_str() << '(';
+	os << symbol_ << '(';
 	if (cell(0).size())
 		os << cell(0);
 	else 
@@ -70,7 +75,7 @@ void MathExIntInset::maplize(MapleStream & os) const
 
 void MathExIntInset::mathmlize(MathMLStream & os) const
 {
-	MathSymbolInset * sym = new MathSymbolInset(symbol_.c_str());
+	MathSymbolInset * sym = new MathSymbolInset(symbol_);
 	//if (hasScripts())
 	//	mathmlize(sym, os);
 	//else 
@@ -84,6 +89,6 @@ void MathExIntInset::mathmlize(MathMLStream & os) const
 
 void MathExIntInset::write(WriteStream &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 

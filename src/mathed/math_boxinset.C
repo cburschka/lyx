@@ -1,3 +1,5 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -10,7 +12,7 @@
 #include "math_cursor.h"
 #include "insets/insettext.h"
 #include "math_mathmlstream.h"
-
+#include "math_streamstr.h"
 
 MathBoxInset::MathBoxInset(string const & name)
 	: MathDimInset(), name_(name), text_(new InsetText), buffer_(0)
@@ -47,7 +49,7 @@ UpdatableInset * MathBoxInset::asHyperActiveInset() const
 
 void MathBoxInset::write(WriteStream & os) const
 {
-	os << "\\" << name_.c_str() << "{" << cell(0) << "}";
+	os << "\\" << name_ << "{" << cell(0) << "}";
 }
 
 

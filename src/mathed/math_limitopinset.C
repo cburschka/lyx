@@ -45,10 +45,10 @@ void MathLimitOpInset::draw(Painter &, int, int) const
 
 void MathLimitOpInset::maplize(MapleStream &) const
 {
-	//os << name_.c_str() << '(' << cell(0) << ')';
+	//os << name_ << '(' << cell(0) << ')';
 }
 
 void MathLimitOpInset::mathmlize(MathMLStream &) const
 {
-	//os << name_.c_str() << '(' << cell(0) << ')';
+	//os << name_ << '(' << cell(0) << ')';
 }

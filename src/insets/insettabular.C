@@ -1056,7 +1056,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			string::size_type len = clip.length();
 			string::size_type p = 0;
 
-			while(p < len &&
+			while (p < len &&
 			      ((p = clip.find_first_of("\t\n", p)) != string::npos)) {
 				switch(clip[p]) {
 				case '\t':
@@ -1078,7 +1078,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			int cell = 0;
 			int cells = paste_tabular->GetNumberOfCells();
 			p = cols = 0;
-			while((cell < cells) && (p < len) &&
+			while ((cell < cells) && (p < len) &&
 			      (p = clip.find_first_of("\t\n", p)) != string::npos) {
 				if (p >= len)
 					break;
@@ -1090,7 +1090,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 					break;
 				case '\n':
 					paste_tabular->GetCellInset(cell)->setText(clip.substr(op, p-op));
-					while(cols++ < maxCols)
+					while (cols++ < maxCols)
 						++cell;
 					cols = 0;
 					break;
@@ -1331,7 +1331,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 	int ly = tabular->GetDescentOfRow(actrow);
 
 	// first search the right row
-	while((ly < y) && ((actrow+1) < tabular->rows())) {
+	while ((ly < y) && ((actrow+1) < tabular->rows())) {
 		cursor_.y(cursor_.y() + tabular->GetDescentOfRow(actrow) +
 				 tabular->GetAscentOfRow(actrow + 1) +
 				 tabular->GetAdditionalHeight(actrow + 1));
@@ -2369,7 +2369,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 	paste_tabular = new LyXTabular(this, *tabular); // rows, columns);
 	for (int i = 0; i < sel_row_start; ++i)
 		paste_tabular->DeleteRow(0);
-	while(paste_tabular->rows() > rows)
+	while (paste_tabular->rows() > rows)
 		paste_tabular->DeleteRow(rows);
 	paste_tabular->SetTopLine(0, true, true);
 	paste_tabular->SetBottomLine(paste_tabular->GetFirstCellInRow(rows-1),

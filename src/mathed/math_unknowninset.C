@@ -1,3 +1,5 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -7,7 +9,7 @@
 #include "Painter.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-
+#include "math_streamstr.h"
 
 
 extern LyXFont WhichFont(short type, int size);
@@ -38,13 +40,13 @@ void MathUnknownInset::setName(string const & n)
 
 void MathUnknownInset::write(WriteStream & os) const
 {
-	os << "\\" << name_.c_str() << ' ';
+	os << "\\" << name_ << ' ';
 }
 
 
 void MathUnknownInset::normalize(NormalStream & os) const
 {
-	os << "[func " << name_.c_str() << ']';
+	os << "[func " << name_ << ']';
 }
 
 
@@ -63,17 +65,17 @@ void MathUnknownInset::draw(Painter & pain, int x, int y) const
 
 void MathUnknownInset::maplize(MapleStream & os) const
 {
-	os << name_.c_str();
+	os << name_;
 }
 
 
 void MathUnknownInset::mathmlize(MathMLStream & os) const
 {
-	os << MTag("mi") << name_.c_str() << ETag("mi");
+	os << MTag("mi") << name_ << ETag("mi");
 }
 
 
 void MathUnknownInset::octavize(OctaveStream & os) const
 {
-	os << name_.c_str();
+	os << name_;
 }

@@ -510,7 +510,7 @@ bool FileDialog::Private::RunDialog()
 	force_ok = false;
 	
         // event loop
-        while(true) {
+        while (true) {
                 FL_OBJECT * pObject = fl_do_forms();
 
                 if (pObject == pFileDlgForm->Ready) {

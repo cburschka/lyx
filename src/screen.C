@@ -129,7 +129,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 		text->getVisibleRow(bv, y + y_offset,
 		                    x_offset, row, y + text->first);
 		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
-		while(internal && text->status() == LyXText::CHANGED_IN_DRAW) {
+		while (internal && text->status() == LyXText::CHANGED_IN_DRAW) {
 			if (text->fullRebreak(bv)) {
 				st = LyXText::NEED_MORE_REFRESH;
 				text->setCursor(bv, text->cursor.par(), text->cursor.pos());

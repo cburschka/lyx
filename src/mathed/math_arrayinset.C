@@ -1,13 +1,16 @@
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <iterator>
-
 #include "math_arrayinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "Lsstream.h"
+
+#include <iterator>
 
 using std::vector;
 using std::istringstream;
@@ -77,7 +80,7 @@ void MathArrayInset::write(WriteStream & os) const
 
 	if (v_align_ == 't' || v_align_ == 'b') 
 		os << '[' << char(v_align_) << ']';
-	os << '{' << halign().c_str() << "}\n";
+	os << '{' << halign() << "}\n";
 
 	MathGridInset::write(os);
 
