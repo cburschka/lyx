@@ -1,72 +1,62 @@
+// -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * =================================================
  * 
- *           LyX, The Document Processor
- *       
- *          Copyright 2000 The LyX Team.
+ *          LyX, The Document Processor
+ *          Copyright 1995-2000 The LyX Team.
  *
- * ====================================================== */
-
-/* FormCopyright.C
- * FormCopyright Interface Class Implementation
+ * ================================================= 
+ *
+ * \author Michael Koziarski <michael@koziarski.org>
  */
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include <config.h>
-#include "gettext.h"
-#include "Dialogs.h"
+
+#include "debug.h"
+
+#include "gnomeBC.h"
 #include "FormCopyright.h"
+#include "gnome_helpers.h"
 
-FormCopyright::FormCopyright(LyXView * lv, Dialogs * d)
-	: dialog_(0), lv_(lv), d_(d), h_(0)
+#include <gtk--/button.h>
+#include <gtk--/label.h>
+
+
+FormCopyright::FormCopyright(ControlCopyright & c)
+	: FormCB<ControlCopyright>(c, "diahelpcopyright.glade", "DiaHelpCopyright")
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showCopyright.connect(slot(this, &FormCopyright::show));
 }
 
 
-FormCopyright::~FormCopyright()
+void FormCopyright::build()
 {
-	if (dialog_!=0) hide();
+	ok()->clicked.connect(SigC::slot(this, &FormCopyright::CancelClicked));
+	copyright()->set(controller().getCopyright());
+	license()->set(controller().getLicence());
+	disclaimer()->set(controller().getDisclaimer());
 }
 
 
-void FormCopyright::show()
+Gtk::Button * FormCopyright::ok()
 {
-	if(dialog_!=0) { // "About" box hasn't been closed, so just raise it
-		Gdk_Window dialog_win(dialog_->get_window());
-		dialog_win.show();
-		dialog_win.raise();
-	}
-	else { // create new "About" dialog box
-		vector<string> authors; //0. Authors are not listed in LyX copyright dialogbox.
-		
-		dialog_ = new Gnome::About(PACKAGE, VERSION,
-					   _("(C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team"),
-					   authors,
-					   _("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\nLyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."),
-					   0);
-		
-		// it should be disconnected before deleting dialog_ in FormCopyright::hide()
-		destroy_ = dialog_->destroy.connect(slot(this, &FormCopyright::hide));
-		
-		dialog_->show();
-		
-		h_ = d_->hideAll.connect(slot(this, &FormCopyright::hide));
-	}
+	return getWidget<Gtk::Button>("copyright_button_ok");
 }
 
-
-void FormCopyright::hide()
+Gtk::Label * FormCopyright::disclaimer()
 {
-	if (dialog_!=0) {
-		dialog_->hide();
-		
-		h_.disconnect();
-		destroy_.disconnect();
-		
-		delete dialog_;
-		dialog_ = 0;
-	}
+	return getWidget<Gtk::Label>("copyright_disclaimer");
+}
+
+Gtk::Label * FormCopyright::copyright()
+{
+	return getWidget<Gtk::Label>("copyright_copyright");
+}
+
+Gtk::Label * FormCopyright::license()
+{
+	return getWidget<Gtk::Label>("copyright_license");
 }

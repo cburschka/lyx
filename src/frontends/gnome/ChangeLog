@@ -1,3 +1,13 @@
+2001-04-02  Michael Koziarski  <michael@koziarski.org>
+
+	* FormCopyright.[Ch]: Reimplemented as an MVC dialog.
+
+	* gnome_helpers.C: Some castings to avoid compilation break.
+
+2001-04-01  Baruch Even  <baruch@lyx.org>
+
+	* GUIRuntime.C (initApplication):  Changed strings to non-static.
+
 2001-03-30  Baruch Even  <baruch@lyx.org>
 
 	* FormCredits.C: Added the formatting of the credits text.

@@ -82,10 +82,12 @@ libgnome_la_SOURCES = \
 	pixbutton.h \
 	GnomeBase.C \
 	GnomeBase.h \
+	FormCopyright.C \
+	FormCopyright.h \
 	FormCredits.C \
 	FormCredits.h \
 	FormUrl.C \
-	FormUrl.h 
+	FormUrl.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \
