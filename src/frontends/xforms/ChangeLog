@@ -1,3 +1,10 @@
+2002-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FileDialog.C (FileDialog): fix () bug when using new
+	* xformsGImage.C (newImage): ditto
+	* Toolbar_pimpl.C (Pimpl): ditto
+	* xfont_loader.C (getFontinfo): ditto
+
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* switch from SigC signals to boost::signals.

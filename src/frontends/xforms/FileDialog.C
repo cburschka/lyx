@@ -33,7 +33,7 @@ using std::endl;
 FileDialog::FileDialog(LyXView *lv, string const &t, kb_action s, Button b1, Button b2)
 	: private_(0), lv_(lv), title_(t), success_(s)
 {
-	private_ = new FileDialog::Private();
+	private_ = new FileDialog::Private;
 
 	private_->SetButton(0, b1.first, b1.second);
 	private_->SetButton(1, b2.first, b2.second);

@@ -158,7 +158,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	string norm = lyxrc.font_norm;
 	string fontname;
 
-	FontInfo * fi = new FontInfo();
+	FontInfo * fi = new FontInfo;
 	fontinfo[family][series][shape] = fi;
 
 	for (int cfam = 0; cfam < 2; ++cfam) {

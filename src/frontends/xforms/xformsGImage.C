@@ -40,7 +40,7 @@ ImagePtr xformsGImage::newImage()
 	init_graphics();
 
 	ImagePtr ptr;
-	ptr.reset(new xformsGImage());
+	ptr.reset(new xformsGImage);
 	return ptr;
 }
 
