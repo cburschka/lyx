@@ -1,3 +1,8 @@
+2002-10-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* qfont_loader.C (font_info): correct calculation of font size
+	(point size) for qt.
+
 2002-10-15  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* QBrowseBox.C (QBrowseBox): transpose const char

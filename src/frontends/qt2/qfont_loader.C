@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -25,9 +25,9 @@
 #if QT_VERSION < 0x030000
 #include "support/lstrings.h"
 #endif
- 
+
 using std::endl;
- 
+
 qfont_loader::qfont_loader()
 {
 }
@@ -43,7 +43,7 @@ void qfont_loader::update()
 	int i1,i2,i3,i4;
 
 	// fuck this !
- 
+
 	for (i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
 		for (i2 = 0; i1 < 2; ++i2) {
 			for (i3 = 0; i1 < 4; ++i3) {
@@ -55,11 +55,11 @@ void qfont_loader::update()
 	}
 }
 
- 
+
 QFont const & qfont_loader::get(LyXFont const & f)
 {
 	QFont const & ret(getfontinfo(f)->font);
- 
+
 	if (lyxerr.debugging(Debug::FONT)) {
 		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
 			<< "' matched by\n" << ret.rawName().latin1() << endl;
@@ -67,7 +67,7 @@ QFont const & qfont_loader::get(LyXFont const & f)
 	return ret;
 }
 
- 
+
 qfont_loader::font_info::font_info(LyXFont const & f)
 	: metrics(font)
 {
@@ -106,12 +106,12 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 			font.setFamily("courier");
 			break;
 	}
- 
-	font.setPointSize(int((lyxrc.font_sizes[f.size()] * lyxrc.dpi * 
-		(lyxrc.zoom / 100.0)) / 72.27 + 0.5));
- 
+
+	font.setPointSizeFloat(lyxrc.font_sizes[f.size()]
+			       * lyxrc.zoom / 100.0);
+
 	// FIXME: lyxrc, check for failure etc.
- 
+
 	switch (f.series()) {
 		case LyXFont::MEDIUM_SERIES:
 			font.setWeight(QFont::Normal);
@@ -120,7 +120,7 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 			font.setWeight(QFont::Bold);
 			break;
 	}
- 
+
 	switch (f.realShape()) {
 		case LyXFont::ITALIC_SHAPE:
 		case LyXFont::SLANTED_SHAPE:
@@ -148,7 +148,7 @@ qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
 	}
 }
 
- 
+
 bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
