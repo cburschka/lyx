@@ -380,35 +380,29 @@ void BufferView::Pimpl::updateScrollbar()
 		return;
 	}
 
-	static unsigned long text_height;
-	static unsigned long work_height;
+	unsigned long const text_height = bv_->text->height;
 
-	unsigned long const tmp_text_height = bv_->text->height;
-	long const tmp_scrollbar_value = bv_->text->first;
-	
-	// check if anything has changed.
-	if (text_height == tmp_text_height
-	    && work_height == workarea_.height()
-	    && current_scrollbar_value == tmp_scrollbar_value)
-		return; // no
-
-	// update values
-	text_height = tmp_text_height;
-	work_height = workarea_.height();
-	current_scrollbar_value = tmp_scrollbar_value;
-
-	long const height_diff = text_height - work_height;
-
-	if (height_diff <= 0) {
-		workarea_.setScrollbar(0, 1.0);
-		return;
-	}
-	
-	workarea_.setScrollbarBounds(0, height_diff);
 	double const lineh = bv_->text->defaultHeight();
-	workarea_.setScrollbarIncrements(lineh);
-	double const slider_size = 1.0 / (double(height_diff) + work_height);
-	workarea_.setScrollbar(current_scrollbar_value, slider_size);
+	double const slider_size = 1.0 / double(text_height);
+
+	static long old_text_height;
+	static double old_lineh;
+	static double old_slider_size;
+
+	if (text_height != old_text_height) {
+		workarea_.setScrollbarBounds(0, text_height - workarea_.height());
+		old_text_height = text_height;
+	}
+	if (lineh != old_lineh) {
+		workarea_.setScrollbarIncrements(lineh);
+		old_lineh = lineh;
+	}
+	if (current_scrollbar_value != bv_->text->first
+	    || slider_size != old_slider_size) {
+		current_scrollbar_value = bv_->text->first;
+		workarea_.setScrollbar(current_scrollbar_value, slider_size);
+		old_slider_size = slider_size;
+	}
 }
 
 

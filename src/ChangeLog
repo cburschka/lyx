@@ -1,3 +1,8 @@
+2001-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView_pimpl.C (updateScrollbar): simplify further and
+	hopefully make it a bit faster.
+
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ColorHandler.C (LyXColorHandler): use GUIRunTime instead of
