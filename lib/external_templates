@@ -12,29 +12,32 @@ Template RasterImage
 		When you export to Ascii, you can provide a
 		number describing how many columns the picture
 		should expand to.
-		This template uses Gimp for editing, and 
-		ImageMagick to do conversions. It requires 
-		Python for exporting to Ascii and DocBook, 
-		and gifscii for exporting to Ascii.
+		This template uses Gimp for editing.
 	HelpTextEnd
+	InputFormat "*"
 	FileFilter "*.(gif|png|jpg|bmp|pbm|ppm|tga|tif|xpm|xbm)"
-	ViewCommand "display $$Basename.eps"
 	EditCommand "gimp $$FName"
 	AutomaticProduction true
 	Format LaTeX
-		Product "\\includegraphics{$$Basename.eps}"
-		UpdateCommand "convert $$Parameters $$FName $$Basename.eps"
+		Product "\\includegraphics{$$Basename}"
+		UpdateFormat eps
 		UpdateResult "$$Basename.eps"
 		Requirement "graphicx"
 	FormatEnd
+	Format PDFLaTeX
+		Product "\\includegraphics{$$Basename}"
+		UpdateFormat png
+		UpdateResult "$$Basename.png"
+		Requirement "graphicx"	
+	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
-		UpdateCommand "python $$Sysdir/scripts/pic2ascii.py $$FName $$Parameters"
+		UpdateFormat asciiimage
 		UpdateResult "$$Basename.asc"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
-		UpdateCommand "python $$Sysdir/scripts/pic2png_eps.py $$FName $$Parameters"
+		UpdateFormat eps
 		UpdateResult "$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
@@ -56,36 +59,32 @@ Template XFig
 		For DocBook export, you can provide
 		optional parameters for the ImageMagick
 		convert script.
-		This template uses XFig for editing, and 
-		fig2dev and ImageMagick to do conversions. 
-		It requires Python for exporting to Ascii
-		and DocBook, and gifscii for exporting to 
-		Ascii.
+		This template uses XFig for editing.
 	HelpTextEnd
+	InputFormat fig
 	FileFilter "*.fig"
-	ViewCommand "xfig $$FName"
 	EditCommand "xfig $$FName"
 	AutomaticProduction true
 	Format LaTeX
 		Product "\\input{$$Basename.pstex_t}"
-		UpdateCommand "python $$Sysdir/scripts/fig2pstex.py $$FName $$Parameters"
+		UpdateFormat pstex
 		UpdateResult "$$Basename.pstex_t"
 		Requirement "graphicx"
 	FormatEnd
 	Format PDFLaTeX
-		Product "\\begin{picture}(0,0)\\includegraphics{$$Basename}\\end{picture}"
-		UpdateCommand "python $$Sysdir/scripts/fig2png.py $$FName $$Parameters"
-		UpdateResult "$$Basename.png"
+		Product "\\input{$$Basename.pdftex_t}"
+		UpdateFormat pdftex
+		UpdateResult "$$Basename.pdftex_t"
 		Requirement "graphicx"	
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
-		UpdateCommand "python $$Sysdir/scripts/pic2ascii.py $$FName $$Parameters"
+		UpdateFormat asciixfig
 		UpdateResult "$$Basename.asc"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
-		UpdateCommand "python $$Sysdir/scripts/pic2png_eps.py $$FName $$Parameters"
+		UpdateFormat eps
 		UpdateResult "$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
@@ -97,9 +96,8 @@ Template ChessDiagram
 	GuiName "[Chess: $$Basename]"
 	HelpText
 		A chess position diagram.
-		This template will use XBoard to view
-		and edit the position. Use the
-		'File->Save Position' in XBoard to save 
+		This template will use XBoard to edit the position.
+		Use the 'File->Save Position' in XBoard to save 
 		the position that you want to display.
 		Make sure to give it a '.fen' extension
 		and remember to type in a relative path
@@ -115,8 +113,8 @@ Template ChessDiagram
 		that TeX will find it, and you will need
 		to install the skak package from CTAN.
 	HelpTextEnd
+	InputFormat fen
 	FileFilter "*.fen"
-	ViewCommand "xboard -lpf $$FName"
 	EditCommand "xboard -lpf $$FName -mode EditPosition"
 	AutomaticProduction true
 	Format LaTeX
@@ -125,7 +123,7 @@ Template ChessDiagram
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
-		UpdateCommand "python $$Sysdir/scripts/fen2ascii.py $$FName $$Basename.asc"
+		UpdateFormat asciichess
 		UpdateResult "$$Basename.asc"
 	FormatEnd
 	Format DocBook
@@ -151,24 +149,28 @@ Template Date
 		Use +%T to get the time as "23:23:00"
 		Read 'info date' for more information.
 	HelpTextEnd
+	InputFormat date
 	FileFilter "*"
-	ViewCommand "xterm -e less $$Tempname"
 	AutomaticProduction true
 	Format LaTeX
 		Product "$$Contents(\"$$Tempname\")"
-		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+		UpdateFormat dateout
+		UpdateResult "$$Tempname"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Tempname\")"
-		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+		UpdateFormat dateout
+		UpdateResult "$$Tempname"
 	FormatEnd
 	Format DocBook
 		Product "$$Contents(\"$$Tempname\")"
-		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+		UpdateFormat dateout
+		UpdateResult "$$Tempname"
 	FormatEnd
 	Format LinuxDoc
 		Product "$$Contents(\"$$Tempname\")"
-		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+		UpdateFormat dateout
+		UpdateResult "$$Tempname"
 	FormatEnd
 TemplateEnd
 

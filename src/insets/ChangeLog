@@ -1,4 +1,3 @@
-
 2003-06-04  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]: change owner_ from Inset * to UpdatableInset *
@@ -6,6 +5,22 @@
 2003-06-04  John Levon  <levon@movementarian.org>
 
 	* insettabular.C: back out tall table speed up. It was broken
+
+2003-06-03  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalTemplate.[Ch]: add inputFormat and UpdateFormat variables.
+	Remove ViewCommand and UpdateCommand.
+
+	* graphicinset.C (update): bug fix. Set the params before calling the
+	loader.
+	* graphicinset.[Ch] (view): new method. A bit of a fudge to set the
+	BufferView cache to enable the InsetExternal::editCommand to be invoked
+	from the frontends. Would not be needed if this were dispatched properly.
+	(old_ascent_): variable removed.
+
+	* insetexternal.[Ch]: large clean-up to use the converter mechanism to
+	do any necessary conversions of external material. Also use the
+	new GraphicsInset to display the inset within LyX.
 
 2003-06-03  Angus Leeming  <leeming@lyx.org>
 

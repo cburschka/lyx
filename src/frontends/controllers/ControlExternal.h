@@ -34,17 +34,12 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	///
-	InsetExternal::Params const & params() const
-		{ return inset_->params(); }
+	InsetExternal::Params const & params() const;
 	///
 	void setParams(InsetExternal::Params const &);
 
 	///
 	void editExternal();
-	///
-	void viewExternal();
-	///
-	void updateExternal();
 	///
 	std::vector<string> const getTemplates() const;
 	///
@@ -55,7 +50,7 @@ public:
 	string const Browse(string const &) const;
 private:
 	///
-	boost::scoped_ptr<InsetExternal> inset_;
+	boost::scoped_ptr<InsetExternal::Params> params_;
 };
 
 #endif // CONTROLEXTERNAL_H

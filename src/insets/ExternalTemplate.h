@@ -28,10 +28,12 @@ struct ExternalTemplate {
 	string guiName;
 	/// A short help text
 	string helpText;
+	/** The format of the input file. Can be "*", in which case we try and
+	    ascertain the format from the contents of the file.
+	*/
+	string inputFormat;
 	/// A file extension regular expression for the file browser
 	string fileRegExp;
-	/// What command should be executed to view the file?
-	string viewCommand;
 	/// What command should be executed to edit the file?
 	string editCommand;
 	/// Should we do automatic production of the output?
@@ -40,10 +42,10 @@ struct ExternalTemplate {
 	struct FormatTemplate {
 		/// The text that should be inserted into the exported file
 		string product;
-		/// The shell command to produce a resulting file
-		string updateCommand;
 		/// The filename of the resulting file
 		string updateResult;
+		/// The format of this file.
+		string updateFormat;
 		/// What features does this external inset require?
 		string requirement;
 		/// What should be inserted into the preamble
@@ -64,7 +66,6 @@ struct ExternalTemplate {
 
 	/// We have to have default commands for safety reasons!
 	ExternalTemplate();
-
 };
 
 

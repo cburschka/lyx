@@ -31,6 +31,7 @@ extern string user_lyxdir;
 // We have to have dummy default commands for security reasons!
 
 ExternalTemplate::ExternalTemplate()
+	: inputFormat("*")
 {}
 
 
@@ -59,8 +60,8 @@ public:
 		    << "\tHelpText\n"
 		    << et.helpText
 		    << "\tHelpTextEnd\n"
+		    << "\tInputFormat " << et.inputFormat << "\n"
 		    << "\tFileFilter " << et.fileRegExp << "\n"
-		    << "\tViewCommand " << et.viewCommand << "\n"
 		    << "\tEditCommand " << et.editCommand << "\n"
 		    << "\tAutomaticProduction " << et.automaticProduction << "\n";
 		et.dumpFormats(ost);
@@ -80,7 +81,7 @@ public:
 		ExternalTemplate::FormatTemplate const & ft = vt.second;
 		ost << "\tFormat " << vt.first << "\n"
 		    << "\t\tProduct " << ft.product << "\n"
-		    << "\t\tUpdateCommand " << ft.updateCommand << "\n"
+		    << "\t\tUpdateFormat " << ft.updateFormat << "\n"
 		    << "\t\tUpdateResult " << ft.updateResult << "\n"
 		    << "\t\tRequirement " << ft.requirement << "\n"
 		    << "\t\tPreamble\n"
@@ -184,8 +185,8 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 	enum TemplateOptionTags {
 		TO_GUINAME = 1,
 		TO_HELPTEXT,
+		TO_INPUTFORMAT,
 		TO_FILTER,
-		TO_VIEWCMD,
 		TO_EDITCMD,
 		TO_AUTOMATIC,
 		TO_FORMAT,
@@ -199,8 +200,8 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 		{ "format", TO_FORMAT },
 		{ "guiname", TO_GUINAME },
 		{ "helptext", TO_HELPTEXT },
-		{ "templateend", TO_END },
-		{ "viewcommand", TO_VIEWCMD }
+		{ "inputformat", TO_INPUTFORMAT },
+		{ "templateend", TO_END }
 	};
 
 	pushpophelper pph(lex, templateoptiontags, TO_END);
@@ -216,14 +217,14 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 			helpText = lex.getLongString("HelpTextEnd");
 			break;
 
+		case TO_INPUTFORMAT:
+			lex.next(true);
+			inputFormat = lex.getString();
+			break;
+
 		case TO_FILTER:
 			lex.next(true);
 			fileRegExp = lex.getString();
-			break;
-
-		case TO_VIEWCMD:
-			lex.next(true);
-			viewCommand = lex.getString();
 			break;
 
 		case TO_EDITCMD:
@@ -258,7 +259,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 {
 	enum FormatTags {
 		FO_PRODUCT = 1,
-		FO_UPDATECMD,
+		FO_UPDATEFORMAT,
 		FO_UPDATERESULT,
 		FO_REQUIREMENT,
 		FO_PREAMBLE,
@@ -270,7 +271,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 		{ "preamble", FO_PREAMBLE },
 		{ "product", FO_PRODUCT },
 		{ "requirement", FO_REQUIREMENT },
-		{ "updatecommand", FO_UPDATECMD },
+		{ "updateformat", FO_UPDATEFORMAT },
 		{ "updateresult", FO_UPDATERESULT }
 	};
 
@@ -283,9 +284,9 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 			product = lex.getString();
 			break;
 
-		case FO_UPDATECMD:
+		case FO_UPDATEFORMAT:
 			lex.next(true);
-			updateCommand = lex.getString();
+			updateFormat = lex.getString();
 			break;
 
 		case FO_UPDATERESULT:

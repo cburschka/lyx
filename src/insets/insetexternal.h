@@ -12,32 +12,53 @@
 #ifndef INSET_EXTERNAL_H
 #define INSET_EXTERNAL_H
 
-#include "insetbutton.h"
+#include "inset.h"
 #include "ExternalTemplate.h"
+#include "graphics/GraphicsTypes.h"
 #include "LString.h"
 
+#include <boost/scoped_ptr.hpp>
+#include <boost/signals/trackable.hpp>
+
+
+class GraphicInset;
+
 ///
-class InsetExternal : public InsetButton {
+class InsetExternal : public Inset, public boost::signals::trackable {
 public:
 	/// hold parameters settable from the GUI
 	struct Params {
-		Params(string const & f = string(),
-					string const & p = string(),
-					ExternalTemplate const & t = ExternalTemplate())
-			: filename(f), parameters(p), templ(t) {}
+// 		Params(string const & f = string(),
+// 		       string const & p = string(),
+// 		       ExternalTemplate const & t = ExternalTemplate())
+		Params() : display(grfx::NoDisplay), lyxscale(100) {}
 		/// the filename
 		string filename;
 		/// the parameters of the current choice
 		string parameters;
 		/// the current template used
 		ExternalTemplate templ;
+		/// how the inset is displayed by LyX
+		grfx::DisplayType display;
+		/// The scale of the displayed graphic (If shown).
+		unsigned int lyxscale;
 	};
 
 	InsetExternal();
 	///
+	InsetExternal(InsetExternal const &);
+	///
 	virtual ~InsetExternal();
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
+	/** Would not be needed if editExternal were dispatched properly from
+	 *  the frontends rather than being invoked directly.
+	 */
+	virtual void cache(BufferView *) const;
+	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
@@ -76,46 +97,50 @@ public:
 
 	// The following public members are used from the frontends code
 
-	/// set the parameters from a Params structure
-	virtual void setFromParams(Params const &);
+	/// Set the inset parameters.
+	virtual void setParams(Params const &, string const & filepath);
 
 	///
 	void updateExternal() const;
 
-	/// update the file represented by the template
-	void updateExternal(string const &, Buffer const *) const;
+	/** update the file represented by the template.
+	    If \param external_in_tmpdir == true, then the generated file is
+	    place in the buffer's temporary directory.
+	*/
+	void updateExternal(string const &, Buffer const *,
+			    bool external_in_tmpdir) const;
 
 	/// edit file of this template
 	void editExternal() const;
 
-	/// view file of this template
-	void viewExternal() const;
-
 	/// return a copy of our current params
 	Params const & params() const;
 
-	///
-	void setView(BufferView * bv) { view_ = bv; }
-
 private:
-	/// Write the output for a specific file format
-	int write(string const & format, Buffer const *,
-		  std::ostream &) const;
+	/** This method is connected to the graphics loader, so we are
+	 *  informed when the image has been loaded.
+	 */
+	void statusChanged();
 
-	/// Execute this command in the directory of this document
-	void executeCommand(string const & s, Buffer const * buf) const;
+	/** Write the output for a specific file format
+	    and generate any external data files.
+	    If \param external_in_tmpdir == true, then the generated file is
+	    place in the buffer's temporary directory.
+	*/
+	int write(string const & format, Buffer const *, std::ostream &,
+		  bool external_in_tmpdir = false) const;
 
 	/// Substitute meta-variables in this string
 	string const doSubstitution(Buffer const *, string const & s) const;
-
-	/// our owning view
-	BufferView * view_;
 
 	/// the current params
 	Params params_;
 
 	/// A temp filename
-	string tempname_;
+	mutable string tempname_;
+
+	/// The thing that actually draws the image on LyX's screen.
+	boost::scoped_ptr<GraphicInset> const graphic_;
 };
 
 

@@ -154,7 +154,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "external") {
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new FormExternal(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "file") {
 		dialog->setController(new ControlShowFile(*dialog));
 		dialog->setView(new FormShowFile(*dialog));

@@ -1,3 +1,8 @@
+2003-06-03  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.[Ch]: remove viewExternal and updateExternal.
+	Change the internal store from an InsetExternal to its Param struct.
+
 2003-06-03  John Levon  <levon@movementarian.org>
 
 	* ControlGraphics.C: make file path relative for the GUI,

@@ -9,6 +9,18 @@
 
 2003-06-03  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C (build): change the External dialog button policy to
+	NoRepeatedApplyReadOnlyPolicy.
+
+	* FormExternal.C:
+	* forms/form_external.fd:
+	add widgets to set the way the External dialog is
+	displayed within LyX.
+	Remove the buttons to trigger the View command and the Update command
+	(duplicates Apply).
+
+2003-06-03  Angus Leeming  <leeming@lyx.org>
+
 	* FormGraphics.C (build): a few comments.
 
 2003-05-25  Alfredo Braunstein  <abraunst@libero.it>

@@ -20,6 +20,7 @@
 #include <qcombobox.h>
 #include <qtextview.h>
 #include <qlineedit.h>
+#include <qvalidator.h>
 
 #include "QExternalDialog.h"
 #include "QExternal.h"
@@ -35,6 +36,10 @@ QExternalDialog::QExternalDialog(QExternal * form)
 		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+
+	QIntValidator * validator = new QIntValidator(displayscale);
+	validator->setBottom(1);
+	displayscale->setValidator(validator);
 }
 
 
@@ -65,20 +70,6 @@ void QExternalDialog::editClicked()
 }
 
 
-void QExternalDialog::viewClicked()
-{
-	form_->changed();
-	form_->controller().viewExternal();
-}
-
-
-void QExternalDialog::updateClicked()
-{
-	form_->changed();
-	form_->controller().updateExternal();
-}
-
-
 void QExternalDialog::browseClicked()
 {
 	QString file =
@@ -96,7 +87,5 @@ void QExternalDialog::browseClicked()
 void QExternalDialog::templateChanged()
 {
 	externalTV->setText(toqstr(form_->helpText()));
-
-	updatePB->setEnabled(!form_->controller().params().templ.automaticProduction);
 	form_->changed();
 }

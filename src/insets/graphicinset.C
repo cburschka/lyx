@@ -27,7 +27,7 @@
 
 
 GraphicInset::GraphicInset()
-	: old_ascent_(0), checksum_(0)
+	: checksum_(0)
 {}
 
 
@@ -35,18 +35,18 @@ GraphicInset::GraphicInset(GraphicInset const & other)
 	: loader_(other.loader_),
 	  params_(other.params_),
 	  nodisplay_message_(other.nodisplay_message_),
-	  old_ascent_(0),
 	  checksum_(0)
 {}
 
 
 void GraphicInset::update(grfx::Params const & params)
 {
+	params_ = params;
+
 	if (!params.filename.empty()) {
 		lyx::Assert(AbsolutePath(params.filename));
-		loader_.reset(params_.filename, params_);
+		loader_.reset(params.filename, params);
 	}
-	params_ = params;
 }
 
 
@@ -63,6 +63,13 @@ bool GraphicInset::hasFileChanged() const
 	if (file_has_changed)
 		checksum_ = new_checksum;
 	return file_has_changed;
+}
+
+
+void GraphicInset::view(BufferView * bv) const
+{
+	if (bv)
+		view_ = bv->owner()->view();
 }
 
 
@@ -130,9 +137,7 @@ void GraphicInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	DisplayType type = displayType();
 
-	old_ascent_ = (type == IMAGE) ? loader_.image()->getHeight() : 50;
-
-	dim.asc = old_ascent_;
+	dim.asc = (type == IMAGE) ? loader_.image()->getHeight() : 50;
 	dim.des = 0;
 
 	switch (type) {
@@ -185,14 +190,14 @@ void GraphicInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void GraphicInset::draw(PainterInfo & pi, int x, int y) const
 {
-	BufferView * bv = pi.base.bv;
-	view_ = bv->owner()->view();
+	// Cache the BufferView.
+	view(pi.base.bv);
 
 #if 0
 	// MakeAbsPath returns filename_ unchanged if it is absolute
 	// already.
 	string const file_with_path =
-		MakeAbsPath(params_.filename, bv->buffer()->filePath());
+		MakeAbsPath(params_.filename, view_->buffer()->filePath());
 
 	// A 'paste' operation creates a new inset with the correct filepath,
 	// but then the 'old' inset stored in the 'copy' operation is actually
@@ -209,14 +214,6 @@ void GraphicInset::draw(PainterInfo & pi, int x, int y) const
 		update(params_);
 	}
 #endif
-
-	// we may have changed while someone other was drawing us so better
-	// to not draw anything as we surely call to redraw ourself soon.
-	// This is not a nice thing to do and should be fixed properly somehow.
-	// But I still don't know the best way to go. So let's do this like this
-	// for now (Jug 20020311)
-	if (dim_.asc != old_ascent_)
-		return;
 
 	if (params_.display != grfx::NoDisplay &&
 	    loader_.status() == grfx::WaitingToLoad)

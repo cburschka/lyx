@@ -13,9 +13,12 @@
 
 #include "ControlExternal.h"
 #include "qt_helpers.h"
+#include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
+#include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qtextview.h>
 
@@ -63,6 +66,23 @@ void QExternal::update_contents()
 
 	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templ.lyxName));
 	dialog_->externalTV->setText(toqstr(params.templ.helpText));
+
+	int item = 0;
+	switch (params.display) {
+		case grfx::DefaultDisplay: item = 0; break;
+		case grfx::MonochromeDisplay: item = 1; break;
+		case grfx::GrayscaleDisplay: item = 2; break;
+		case grfx::ColorDisplay: item = 3; break;
+		case grfx::NoDisplay: item = 0; break;
+	}
+	dialog_->showCB->setCurrentItem(item);
+	dialog_->showCB->setEnabled(params.display != grfx::NoDisplay &&
+				    !readOnly());
+	dialog_->displayCB->setChecked(params.display != grfx::NoDisplay);
+	dialog_->displayscale->setEnabled(params.display != grfx::NoDisplay &&
+					  !readOnly());
+	dialog_->displayscale->setText(toqstr(tostr(params.lyxscale)));
+
 	isValid();
 }
 
@@ -83,6 +103,19 @@ void QExternal::apply()
 	params.parameters = fromqstr(dialog_->paramsED->text());
 
 	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
+
+	switch (dialog_->showCB->currentItem()) {
+		case 0: params.display = grfx::DefaultDisplay; break;
+		case 1: params.display = grfx::MonochromeDisplay; break;
+		case 2: params.display = grfx::GrayscaleDisplay; break;
+		case 3: params.display = grfx::ColorDisplay; break;
+		default:;
+	}
+
+	if (!dialog_->displayCB->isChecked())
+		params.display = grfx::NoDisplay;
+
+	params.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 
 	controller().setParams(params);
 }

@@ -52,6 +52,8 @@ public:
 
 	/// Is the stored checksum different to that of the graphics loader?
 	bool hasFileChanged() const;
+	/// Set the cached store.
+	void view(BufferView *) const;
 	/// An accessor function to the cached store.
 	BufferView * view() const;
 
@@ -60,6 +62,9 @@ public:
 	 */
 	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection connect(slot_type const &) const;
+
+	/// The message to display instead of the graphic itself.
+	string const statusMessage() const;
 
 private:
 	enum DisplayType {
@@ -71,16 +76,12 @@ private:
 	/// Is the image ready to draw, or should we display a message instead?
 	DisplayType displayType() const;
 	
-	/// The message to display instead of the graphic itself.
-	string const statusMessage() const;
-
 	/// The stored data.
 	grfx::Loader loader_;
 	grfx::Params params_;
 	string nodisplay_message_;
 
 	/// These are all cached variables.
-	mutable int old_ascent_;
 	mutable unsigned long checksum_;
 	mutable boost::weak_ptr<BufferView> view_;
 	mutable Dimension dim_;

@@ -9,14 +9,14 @@ SnapGrid: 5
 
 =============== FORM ===============
 Name: form_external
-Width: 320
-Height: 355
-Number of Objects: 12
+Width: 395
+Height: 375
+Number of Objects: 14
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 320 355
+box: 0 0 395 375
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -32,48 +32,12 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 110 5 160 25
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_RIGHT_BCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Template:|#t
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthWest FL_NorthEast
-name: choice_template
-callback: C_FormDialogView_InputCB
-argument: 0
-
---------------------
-class: FL_BROWSER
-type: NORMAL_BROWSER
-box: 5 35 310 125
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_TOP
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthWest FL_SouthEast
-name: browser_helptext
-callback: 
-argument: 
-
---------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 5 220 310 25
+box: 90 195 195 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_TOP_LEFT
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -88,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 215 245 100 25
+box: 290 195 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -99,17 +63,17 @@ label: Browse...|#B
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
-name: button_filenamebrowse
+name: button_browse
 callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 5 290 310 25
+box: 90 230 195 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_TOP_LEFT
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -124,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 165 100 25
+box: 290 230 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -140,45 +104,117 @@ callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 110 165 100 25
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 5 270 385 55
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: View result|#V
+label: LyX View
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 155 285 25 25
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: %
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: button_view
+gravity: FL_East FL_East
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 85 285 70 25
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Scale:|#S
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_West FL_East
+name: input_lyxscale
 callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 215 165 100 25
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 265 285 115 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Update result|#U
+label: Display:|#D
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: button_update
+gravity: FL_East FL_East
+name: choice_display
 callback: C_FormDialogView_InputCB
 argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 140 5 160 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_RIGHT_BCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Template:|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_NorthEast
+name: choice_template
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_BROWSER
+type: NORMAL_BROWSER
+box: 10 35 380 140
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_SouthEast
+name: browser_helptext
+callback: 
+argument: 
 
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 35 325 90 25
+box: 110 340 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -196,7 +232,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 130 325 90 25
+box: 205 340 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -214,7 +250,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 225 325 90 25
+box: 300 340 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

@@ -26,8 +26,6 @@ public:
 protected slots:
 	virtual void change_adaptor();
 	virtual void editClicked();
-	virtual void viewClicked();
-	virtual void updateClicked();
 	virtual void browseClicked();
 	virtual void templateChanged();
 protected:

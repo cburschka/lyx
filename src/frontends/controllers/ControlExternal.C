@@ -18,6 +18,8 @@
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "lyxrc.h"
+
+#include "support/LAssert.h"
 #include <vector>
 
 using std::vector;
@@ -30,18 +32,15 @@ ControlExternal::ControlExternal(Dialog & parent)
 
 bool ControlExternal::initialiseParams(string const & data)
 {
-	inset_.reset(new InsetExternal);
-	InsetExternal::Params params;
-	InsetExternalMailer::string2params(data, params);
-	inset_->setFromParams(params);
-	inset_->setView(kernel().bufferview());
+	params_.reset(new InsetExternal::Params);
+	InsetExternalMailer::string2params(data, *params_);
 	return true;
 }
 
 
 void ControlExternal::clearParams()
 {
-	inset_.reset();
+	params_.reset();
 }
 
 
@@ -54,28 +53,27 @@ void ControlExternal::dispatchParams()
 
 void ControlExternal::setParams(InsetExternal::Params const & p)
 {
-	inset_->setFromParams(p);
+	lyx::Assert(params_.get());
+	*params_ = p;
+}
+
+
+InsetExternal::Params const & ControlExternal::params() const
+{
+	lyx::Assert(params_.get());
+	return *params_;
 }
 
 
 void ControlExternal::editExternal()
 {
+	lyx::Assert(params_.get());
+
 	dialog().view().apply();
-	inset_->editExternal();
-}
-
-
-void ControlExternal::viewExternal()
-{
-	dialog().view().apply();
-	inset_->viewExternal();
-}
-
-
-void ControlExternal::updateExternal()
-{
-	dialog().view().apply();
-	inset_->updateExternal();
+	InsetExternal inset;
+	inset.setParams(*params_, kernel().buffer()->filePath());
+	inset.cache(kernel().bufferview());
+	inset.editExternal();
 }
 
 
