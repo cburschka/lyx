@@ -353,9 +353,6 @@ void create_ispell_pipe(string const & lang)
 	// Actually I used it to tell if it's truly Ispell or if it's
 	// aspell -- (kevinatk@home.com)
 	char buf[2048];
-#ifdef WITH_WARNINGS
-#warning verify that this works.
-#endif
 	fd_set infds;
 	struct timeval tv;
 	int retval = 0;
@@ -387,9 +384,7 @@ void create_ispell_pipe(string const & lang)
 	} else if (retval == 0) {
 		// timeout. Give nice message to user.
 		lyxerr << "Ispell read timed out, what now?" << endl;
-#ifdef WITH_WARNINGS
-#warning Is this the correct thing to do?
-#endif
+		// This probably works but could need some thought
 		isp_pid = -1;
 		close(pipeout[0]); close(pipeout[1]);
 		close(pipein[0]); close(pipein[1]);

@@ -51,8 +51,6 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 	obj->addHistory(obj->cur_cmd);
 	
 	// Split command into function and argument
-	// This is done wrong Asger. Instead of <function argument>
-	// it ends up as <argument function> Queer solution:
 	string arg = obj->cur_cmd;
 	string function;
 	if (contains(arg, " ")) {
@@ -64,30 +62,12 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 	}
 	lyxerr.debug() << "Function: " << function
 		       << "\nArg     : " << arg << endl;
-	// Check if the name is valid (ale)
-	// No, let the dispatch functions handle that.
-	//int action = lyxaction.LookupFunc(function.c_str());
-	//lyxerr.debug(string("minibuffer action: ") + action);
-	//if (action>=0) {
-	    // Dispatch only returns requested data for a few commands (ale)
+
+	// Dispatch only returns requested data for a few commands (ale)
 	string res=obj->owner->getLyXFunc()->Dispatch(function.c_str(),
 						       arg.c_str());
 	lyxerr.debug() << "Minibuffer Res: " << res << endl;
-/*	if (!res.empty())
-		if(obj->owner->getLyXFunc()->errorStat())
-			obj->Set(_("Error:"), _(res.c_str()), string(), 4);
-		else
-			obj->Set(_("Result:"), _(res.c_str()), string(), 4);
-	else
-		obj->Init();
-*/
-	//} else {
-#ifdef WITH_WARNINGS
-#warning Look at this.
-#endif
-	//obj->Set(_("Cannot find function"), function, "!");
 	obj->shows_no_match = false;
-	//}
 
 	return ;
 }

@@ -1,5 +1,16 @@
 1999-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/spellchecker.C (create_ispell_pipe): removed old #warning,
+	the code has shown itself to work
+	(create_ispell_pipe): removed another warning, added a comment
+	instead. 
+
+	* src/minibuffer.C (ExecutingCB): removed code that has been
+	commented out a long time
+
+	* src/lyxfunc.C (processKeyEvent): removed some very old commented
+	out code + a warning.
+
 	* src/support/lyxstring.h: comment out the three private
 	operators, when compiling with string ansi conforming compilers
 	they make problems.

@@ -303,12 +303,6 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 	Dispatch(action, argument.c_str());
 	show_sc = tmp_sc;
 	
-	// Need this for deadkeys (alkis)
-	//keyseq.length=0;
-	// ...but that breaks the minibuffer's display of "M-"...
-#ifdef WITH_WARNINGS
-#warning How does the deadkeys react to this?
-#endif
 	return 0;
 } 
 
