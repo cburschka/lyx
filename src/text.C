@@ -87,16 +87,24 @@ void LyXText::updateRowPositions()
 
 int LyXText::top_y() const
 {
-	if (isInInset() || anchor_row_ == rowlist_.end() )
+	if (anchor_row_ == rowlist_.end() )
 		return 0;
+
 	return anchor_row_->y() + anchor_row_offset_;
 }
 
 
 void LyXText::top_y(int newy)
 {
-	if (rows().empty() || isInInset())
+	if (rows().empty())
 		return;
+
+	if (isInInset()) {
+		anchor_row_ = rows().begin();
+		anchor_row_offset_ = newy;
+		return;
+	}
+
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
 	int y = newy;
