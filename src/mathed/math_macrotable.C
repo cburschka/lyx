@@ -53,16 +53,6 @@ void MathMacroTable::create(string const & name, int na)
 }
 
 
-void MathMacroTable::create(string const & name, int na, string const & text)
-{
-	MathAtom t(new MathMacroTemplate(name, na));
-	mathed_parse_cell(t->cell(0), name);
-	mathed_parse_cell(t->cell(1), text);
-	macro_table[name] = t;
-}
-
-
-
 void MathMacroTable::create
 	(string const & name, int na, MathArray const & ar1, MathArray const & ar2)
 {
@@ -72,6 +62,12 @@ void MathMacroTable::create
 	macro_table[name] = t;
 }
 
+
+void MathMacroTable::define(string const & def)
+{
+	string name;
+	mathed_parse_macro(name, def);
+}
 
 
 bool MathMacroTable::has(string const & name)
@@ -90,71 +86,71 @@ void MathMacroTable::builtinMacros()
 
 	built = true;
 	//lyxerr[Debug::MATHED] << "Building macros\n";
-	//create("emptyset",     0, "\\not0");
-	create("notin",        0, "\\not\\in");
-	create("slash",        0, "/");
+	//define("\\def\\emptyset{\\not0}");
+	define("\\def\\notin{\\not\\in}");
+	define("\\def\\slash{/}");
 
 	// fontmath.ltx
 
-	create("lnot",         0, "\\neg");
-	create("land",         0, "\\wedge");
-	create("lor",          0, "\\vee");
-	create("ne",           0, "\\neq");
-	create("le",           0, "\\leq");
-	create("ge",           0, "\\geq");
-	create("owns",         0, "\\ni");
-	create("gets",         0, "\\leftarrow");
-	create("to",           0, "\\rightarrow");
-	create("|",            0, "\\Vert");
+	define("\\def\\lnot{\\neg}");
+	define("\\def\\land{\\wedge}");
+	define("\\def\\lor{\\vee}");
+	define("\\def\\ne{\\neq}");
+	define("\\def\\le{\\leq}");
+	define("\\def\\ge{\\geq}");
+	define("\\def\\owns{\\ni}");
+	define("\\def\\gets{\\leftarrow}");
+	define("\\def\\to{\\rightarrow}");
+	define("\\def\\|{\\Vert}");
 
-	create("longleftrightarrow", 0, "\\leftarrow\\kern-8mu\\rightarrow");
-	create("Longleftrightarrow", 0, "\\Leftarrow\\kern-8mu\\Rightarrow");
-	create("doteq", 0, "\\stackrel{\\cdot}{=}");
+	define("\\def\\longleftrightarrow{\\leftarrow\\kern-8mu\\rightarrow}");
+	define("\\def\\Longleftrightarrow{\\Leftarrow\\kern-8mu\\Rightarrow}");
+	define("\\def\\doteq{\\stackrel{\\cdot}{\\=}}");
 
 	if (math_font_available(LM_TC_CMSY)) {
-		create("longrightarrow", 0, "\\lyxbar\\kern-6mu\\rightarrow");
-		create("longleftarrow",  0, "\\leftarrow\\kern-6mu\\lyxbar");
-		create("mapsto",  0, "\\mapstochar\\kern-4mu\\rightarrow");
-		create("longmapsto",  0, "\\mapstochar\\kern-3mu\\lyxbar\\kern-6mu\\rightarrow");
+		define("\\def\\longrightarrow{\\lyxbar\\kern-6mu\\rightarrow}");
+		define("\\def\\longleftarrow{\\leftarrow\\kern-6mu\\lyxbar}");
+		define("\\def\\mapsto{\\mapstochar\\kern-4mu\\rightarrow}");
+		define("\\def\\longmapsto{\\mapstochar\\kern-3mu\\lyxbar\\kern-6mu\\rightarrow}");
 	}
 
 	if (math_font_available(LM_TC_CMR) && math_font_available(LM_TC_CMSY)) {
-		create("Longrightarrow", 0, "\\lyxeq\\kern-5mu\\Rightarrow");
-		create("Longleftarrow",  0, "\\Leftarrow\\kern-5mu\\lyxeq");
-		create("models",         0, "\\vert\\kern-3mu\\lyxeq");
+		define("\\def\\Longrightarrow{\\lyxeq\\kern-5mu\\Rightarrow}");
+		define("\\def\\Longleftarrow{\\Leftarrow\\kern-5mu\\lyxeq}");
+		define("\\def\\models{\\vert\\kern-3mu\\lyxeq}");
 	}
 
 	if (math_font_available(LM_TC_CMM)) {
-		create("hookrightarrow", 0, "\\lhook\\kern-8mu\\rightarrow");
-		create("hookleftarrow",  0, "\\leftarrow\\kern-8mu\\rhook");
-		create("bowtie",         0, "\\triangleright\\kern-2mu\\triangleleft");
+		define("\\def\\hookrightarrow{\\lhook\\kern-8mu\\rightarrow}");
+		define("\\def\\hookleftarrow{\\leftarrow\\kern-8mu\\rhook}");
+		define("\\def\\bowtie{\\triangleright\\kern-2mu\\triangleleft}");
 	}
 
 	if (math_font_available(LM_TC_MSA)) {
 		//amsfonts.sty
 
-		create("dashrightarrow", 0, "\\lyxdabar\\lyxdabar\\lyxright");
-		create("dashleftarrow", 0, "\\lyxleft\\lyxdabar\\lyxdabar");
-		create("dasharrow",    0, "\\dashrightarrow");
-		create("Box",          0, "\\square");
-		create("Diamond",      0, "\\lozenge");
-		create("leadsto",      0, "\\rightsquigarrow");
+		define("\\def\\dashrightarrow{\\lyxdabar\\lyxdabar\\lyxright}");
+		define("\\def\\dashleftarrow{\\lyxleft\\lyxdabar\\lyxdabar}");
+		define("\\def\\dasharrow{\\dashrightarrow}");
+		define("\\def\\Box{\\square}");
+		define("\\def\\Diamond{\\lozenge}");
+		define("\\def\\leadsto{\\rightsquigarrow}");
 
 		// amssymb.sty
 
-		create("restriction",  0, "\\upharpoonright");
-		create("Doteq",        0, "\\doteqdot");
-		create("doublecup",    0, "\\Cup");
-		create("doublecap",    0, "\\Cap");
-		create("llless",       0, "\\lll");
-		create("gggtr",        0, "\\ggg");
+		define("\\def\\restriction{\\upharpoonright}");
+		define("\\def\\Doteq{\\doteqdot}");
+		define("\\def\\doublecup{\\Cup}");
+		define("\\def\\doublecap{\\Cap}");
+		define("\\def\\llless{\\lll}");
+		define("\\def\\gggtr{\\ggg}");
 	}
 
 	if (math_font_available(LM_TC_MSB)) {
-		create("Join",         0, "\\ltimes\\kern-12mu\\rtimes");
+		define("\\def\\Join{\\ltimes\\kern-12mu\\rtimes}");
 	}
 
-	//create("lint",       4, "\\int_#1^#2#3 d#4");
-	//create("silentmult", 0, "\\cdot");
-	//create("binom",        2, "\\left(\\frac#1#2\\right)");
+	//define("\def\lint",       4, "\\int_#1^#2#3 d#4}");
+	//define("\\def\\silentmult{\\cdot}");
+	//define("\def\binom",        2, "\\left(\\frac#1#2\\right)}");
 }

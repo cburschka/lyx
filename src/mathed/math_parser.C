@@ -752,7 +752,7 @@ bool Parser::parse_macro(string & name)
 			return false;
 		}
 			
-		lyxerr << "read \\def parameter list '" << pars << "'\n";
+		//lyxerr << "read \\def parameter list '" << pars << "'\n";
 		if (!pars.empty()) {
 			lyxerr << "can't handle non-empty parameter lists\n";
 			dump();
@@ -1028,6 +1028,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
+			dump();
 			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
 			//lyxerr << "found '}' unexpectedly\n";
 			lyx::Assert(0);

@@ -29,7 +29,7 @@ public:
 	static void dump();
 private:
 	/// create internal macros (like \longrightarrow...)
-	static void create(string const &, int, string const &);
+	static void define(string const & definition);
 
 	///
 	typedef std::map<string, MathAtom> table_type;
