@@ -1911,9 +1911,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 		current_view->buffer()->params.getDocumentDirection();
 	if (direction != global_direction) {
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			file += "{\\unsethebrew\n";
+			file += "\\unsethebrew\n";
 		else
-			file += "{\\sethebrew\n";
+			file += "\\sethebrew\n";
 		texrow.newline();
 	}
 	
@@ -1943,7 +1943,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 	while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	       && par->footnoteflag != footnoteflag) {
 		par = par->TeXFootnote(file, texrow,
-				       foot, foot_texrow, foot_count);
+				       foot, foot_texrow, foot_count,
+				       direction);
 	    	par->SimpleTeXOnePar(file, texrow);
 	    	par = par->next;
 	}
@@ -1974,7 +1975,10 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 	}
 
 	if (direction != global_direction)
-		file += "\\par}";
+		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+			file += "\\sethebrew";
+		else
+			file += "\\unsethebrew";
 	
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
@@ -3559,7 +3563,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
 
 LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 					 string & foot, TexRow & foot_texrow,
-					 int & foot_count)
+					 int & foot_count,
+					 LyXDirection par_direction)
 {
 	lyxerr[Debug::LATEX] << "TeXFootnote...  " << this << endl;
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
@@ -3679,6 +3684,16 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 	}
 	texrow.newline();
    
+ 
+ 	LyXDirection direction = getParDirection();
+ 	if (direction != par_direction) {
+ 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+ 			file += "\\unsethebrew\n";
+ 		else
+ 			file += "\\sethebrew\n";
+ 		texrow.newline();
+ 	}
+
 	if (footnotekind != LyXParagraph::FOOTNOTE
 	    || !footer_in_body) {
 		// Process text for all floats except footnotes in body

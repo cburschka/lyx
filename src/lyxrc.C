@@ -329,7 +329,7 @@ LyXRC::LyXRC()
 	rtl_support = false;
 	defaultKeyBindings();
 	///
-	date_insert_format = "%A, %e. %B %Y";
+	date_insert_format = "%A, %e %B %Y";
 }
 
 

@@ -2253,24 +2253,24 @@ void Buffer::push_tag(ostream & os, char const * tag,
 		os << "<" << stack[i] << ">";
 }
 
-
-// pop a tag from a style stack
 void Buffer::pop_tag(ostream & os, char const * tag,
-		     int & pos, char stack[5][3])
+                     int & pos, char stack[5][3])
 {
-	// pop all tags till specified one
-	for (int j = pos; (j >= 0) && (strcmp(stack[j], tag)); --j)
-		os << "</" << stack[j] << ">";
+        int j;
 
-	// closes the tag
-	os << "</" << tag << ">";
+        // pop all tags till specified one
+        for (j = pos; (j >= 0) && (strcmp(stack[j], tag)); --j)
+                os << "</" << stack[j] << ">";
 
-	// push all tags, but the specified one
-	for (int i = 0; i <= pos; ++i) {
-		os << "<" << stack[i] << ">";
-		strcpy(stack[i - 1], stack[i]);
-	}
-	--pos;
+        // closes the tag
+        os << "</" << tag << ">";
+
+        // push all tags, but the specified one
+        for (j = j + 1; j <= pos; ++j) {
+                os << "<" << stack[j] << ">";
+                strcpy(stack[j-1], stack[j]);
+        }
+        --pos;
 }
 
 

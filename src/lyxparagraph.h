@@ -519,7 +519,8 @@ private:
 	///
 	LyXParagraph * TeXFootnote(string & file, TexRow & texrow,
 				   string & foot, TexRow & foot_texrow,
-				   int & foot_count);
+				   int & foot_count,
+				   LyXDirection par_direction);
 	///
 	bool SimpleTeXOnePar(string & file, TexRow & texrow);
 	///

@@ -440,7 +440,7 @@ void LyXGUI::create_forms()
 
 	fl_addto_choice(fd_form_document->choice_inputenc,
 			"default|latin1|latin2|latin5"
-			"|koi8-r|koi8-u|cp866|cp1251");
+			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
 
         for (n = 0; tex_graphics[n][0]; ++n) {
 	    fl_addto_choice(fd_form_document->choice_postscript_driver,

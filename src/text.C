@@ -651,7 +651,7 @@ int LyXText::LeftMargin(Row const * row) const
 			parameters->paragraph_separation ==
 			BufferParams::PARSEP_INDENT))
 			x += textclasslist.TextClass(parameters->textclass)
-				.defaultfont().stringWidth(parindent);
+				.defaultfont().signedStringWidth(parindent);
 		else 
 			if (layout.labeltype == LABEL_BIBLIO) {
 				// ale970405 Right width for bibitems

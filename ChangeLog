@@ -1,7 +1,29 @@
+2000-02-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (pop_tag): revert to the previous implementation
+	(use a global variable for both loops).
+
+	* lib/kbd/iso8859-1.cdef: fix definition for \"{e}.
+
+	* src/lyxrc.C (LyXRC): change slightly default date format.
+
+	* src/paragraph.C (TeXOnePar): Generate a correct latex file when
+	there is an English text with a footnote that starts with a Hebrew
+	paragraph, or vice versa.
+	(TeXFootnote): ditto.
+
+	* src/text.C (LeftMargin): allow for negative values for
+	parindent. Thanks to Philip Lehman <lehman@gmx.net> for testing
+	this out.
+
+	* src/lyx_gui.C (create_forms): add iso88595 as a possible choice
+	for input encoding (cyrillic)
+
 2000-02-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_gui.C (create_forms): make combo box taller (from Dekel
 	Tsur). 
+
 	* src/toolbar.C (set): ditto
 	* src/insets/insetbib.C (create_form_citation_form): ditto
 
