@@ -22,7 +22,7 @@
 
 #include <cstdlib>
 #ifdef HAVE_UNISTD_H
-#include <unistd.h>
+# include <unistd.h>
 #endif
 
 #if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)

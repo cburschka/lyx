@@ -15,7 +15,9 @@
 #include <boost/scoped_array.hpp>
 
 #include <cerrno>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 using boost::scoped_array;
 

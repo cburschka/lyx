@@ -8,7 +8,9 @@
 #include <boost/utility.hpp>
 
 #include <sys/time.h>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 #include <limits>
 #include <map>

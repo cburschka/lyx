@@ -17,7 +17,7 @@
 
 #include <pwd.h>
 #ifdef HAVE_UNISTD_H
-#include <unistd.h>
+# include <unistd.h>
 #endif
 #include <sys/types.h>
 

@@ -23,7 +23,9 @@ inline int readlink(const char *, char *, size_t) {return -1;}
 #define readlink(s, t, l) (-1)
 #endif
 #include <process.h>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 #include <X11/Xlocale.h>
 /* #include <malloc.h> */
 #define lstat stat

@@ -1,3 +1,9 @@
+2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* FileInfo.h, chdir.C, forkedcall.C, forkedcontr.C, getcwd.C,
+	mkdir.C, os_defines.h, pch.h, rmdir.C, unlink.C:
+	use the HAVE_UNISTD_H preprocessor guard.
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.[Ch] (LibScriptSearch): modify the code that replaces

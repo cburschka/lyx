@@ -16,7 +16,9 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 #include <ctime>
 #include <string>

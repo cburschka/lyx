@@ -41,7 +41,7 @@
 
 #include <sys/time.h>
 #ifdef HAVE_UNISTD_H
-#include <unistd.h>
+# include <unistd.h>
 #endif
 
 using lyx::support::MakeDisplayPath;

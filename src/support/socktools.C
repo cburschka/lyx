@@ -19,7 +19,7 @@
 #include <sys/un.h>
 #include <fcntl.h>
 #ifdef HAVE_UNISTD_H
-#include <unistd.h>
+# include <unistd.h>
 #endif
 
 #include <cerrno>

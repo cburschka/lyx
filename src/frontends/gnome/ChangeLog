@@ -1,3 +1,7 @@
+2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* support.c: use the HAVE_UNISTD_H preprocessor guard.
+
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C: use support/package.h to provide the paths to the

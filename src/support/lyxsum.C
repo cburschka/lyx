@@ -43,7 +43,7 @@ template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 #include <sys/stat.h>
 #include <fcntl.h>
 #ifdef HAVE_UNISTD_H
-#include <unistd.h>
+# include <unistd.h>
 #endif
 #include <sys/mman.h>
 

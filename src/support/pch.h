@@ -21,7 +21,9 @@
 #include <sys/un.h>
 #include <sys/wait.h>
 #include <time.h>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 #include <algorithm>
 #include <cctype>

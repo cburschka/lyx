@@ -12,7 +12,9 @@
 
 #include "support/lyxlib.h"
 
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 int lyx::support::chdir(std::string const & name)
 {

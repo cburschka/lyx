@@ -15,7 +15,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 {

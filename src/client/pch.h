@@ -8,7 +8,9 @@
 #include <boost/scoped_ptr.hpp>
 
 #include <fcntl.h>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 #include <sys/select.h>
 #include <sys/socket.h>

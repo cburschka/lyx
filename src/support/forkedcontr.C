@@ -23,7 +23,9 @@
 
 #include <cerrno>
 #include <cstdlib>
-#include <unistd.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 #include <sys/wait.h>
 
 using boost::bind;
