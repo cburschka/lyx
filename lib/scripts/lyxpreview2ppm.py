@@ -9,32 +9,17 @@
 # Full author contact details are available in file CREDITS
 
 # with much advice from members of the preview-latex project:
-# David Kastrup, dak@gnu.org and
-# Jan-Åke Larsson, jalar@mai.liu.se.
-
+#   David Kastrup, dak@gnu.org and
+#   Jan-Åke Larsson, jalar@mai.liu.se.
 # and with much help testing the code under Windows from
-# Paul A. Rubin, rubin@msu.edu.
+#   Paul A. Rubin, rubin@msu.edu.
 
 # This script takes a LaTeX file and generates a collection of
 # ppm image files, one per previewed snippet.
-
-# Pre-requisites:
-# * A latex executable;
-# * preview.sty;
-# * dvips;
-# * gs;
-# * pnmcrop (optional).
-
-# preview.sty is part of the preview-latex project
-# http://preview-latex.sourceforge.net/
-
-# preview.sty can alternatively be obtained from
-# CTAN/support/preview-latex/
-
 # Example usage:
-# lyxpreview2bitmap.py 0lyxpreview.tex 128 ppm
+# lyxpreview2ppm.py 0lyxpreview.tex 128 ppm
 
-# This script takes three arguments:
+# The script takes three arguments:
 # TEXFILE:       the name of the .tex file to be converted.
 # SCALEFACTOR:   a scale factor, used to ascertain the resolution of the
 #                generated image which is then passed to gs.
@@ -47,6 +32,18 @@
 #   like BASE[0-9]+.ppm
 # * a file BASE.metrics, containing info needed by LyX to position
 #   the images correctly on the screen.
+
+# The script uses several external programs and files:
+# * A latex executable;
+# * preview.sty;
+# * dvips;
+# * gs;
+# * pnmcrop (optional).
+
+# preview.sty is part of the preview-latex project
+#   http://preview-latex.sourceforge.net/
+# Alternatively, it can be obtained from
+#   CTAN/support/preview-latex/
 
 import glob, os, re, string, sys
 import pipes, tempfile
@@ -65,17 +62,21 @@ if os.name == "nt":
         import winerror
     except:
         sys.stderr.write("Consider installing the PyWin extension modules "\
-                         "if you're irritated by the gs window being shown\n")
+                         "if you're irritated by windows appearing briefly.\n")
         use_win32_modules = 0
 
 
-# Pre-compiled regular expressions.
+# Pre-compiled regular expression.
 latex_file_re = re.compile("\.tex$")
 
 
 def usage(prog_name):
     return "Usage: %s <latex file> <dpi> ppm\n"\
            % prog_name
+
+
+def warning(message):
+    sys.stderr.write(message + '\n')
 
 
 def error(message):
@@ -151,7 +152,7 @@ def run_command_win32(cmd):
     if error:
         return -2, ""
 
-    # Everything okay - called process has closed the pipe.
+    # Everything is okay --- the called process has closed the pipe.
     # For safety, check that the process ended, then pick up its exit code.
     win32event.WaitForSingleObject(process, win32event.INFINITE)
     if win32process.GetExitCodeProcess(process):
@@ -173,11 +174,18 @@ def extract_metrics_info(log_file, metrics_file):
     log_re = re.compile("Preview: [ST]")
 
     success = 0
-    for line in open(log_file, 'r').readlines():
-        match = log_re.match(line)
-        if match != None:
-            success = 1
-            metrics.write("%s\n" % line)
+    try:
+        for line in open(log_file, 'r').readlines():
+            match = log_re.match(line)
+            if match != None:
+                success = 1
+                metrics.write("%s\n" % line)
+
+    except:
+        # Unable to open the file, but do nothing here because
+        # the calling function will act on the value of 'success'.
+        warning('Warning in extract_metrics_info! Unable to open "%s"' % log_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
 
     return success
 
@@ -193,32 +201,39 @@ def extract_resolution(log_file, dpi):
 
     # Default values
     magnification = 1000.0
-    fontsize = 0.0
+    fontsize = 10.0
 
-    for line in open(log_file, 'r').readlines():
-        if found_fontsize and found_magnification:
-            break
+    try:
+        for line in open(log_file, 'r').readlines():
+            if found_fontsize and found_magnification:
+                break
 
-        if not found_fontsize:
-            match = fontsize_re.match(line)
-            if match != None:
-                match = extract_decimal_re.search(line)
-                if match == None:
-                    error("Unable to parse: %s" % line)
-                fontsize = string.atof(match.group(1))
-                found_fontsize = 1
-                continue
+            if not found_fontsize:
+                match = fontsize_re.match(line)
+                if match != None:
+                    match = extract_decimal_re.search(line)
+                    if match == None:
+                        error("Unable to parse: %s" % line)
+                    fontsize = string.atof(match.group(1))
+                    found_fontsize = 1
+                    continue
 
-        if not found_magnification:
-            match = magnification_re.match(line)
-            if match != None:
-                match = extract_integer_re.search(line)
-                if match == None:
-                    error("Unable to parse: %s" % line)
-                magnification = string.atof(match.group(1))
-                found_magnification = 1
-                continue
+            if not found_magnification:
+                match = magnification_re.match(line)
+                if match != None:
+                    match = extract_integer_re.search(line)
+                    if match == None:
+                        error("Unable to parse: %s" % line)
+                    magnification = string.atof(match.group(1))
+                    found_magnification = 1
+                    continue
 
+    except:
+        warning('Warning in extract_resolution! Unable to open "%s"' % log_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+
+    # This is safe because both fontsize and magnification have
+    # non-zero default values.
     return dpi * (10.0 / fontsize) * (1000.0 / magnification)
 
 
@@ -292,8 +307,8 @@ def mkstemp():
 
 def crop_files(pnmcrop, basename):
     t = pipes.Template()
-    t.append("%s -left" % pnmcrop, '--')
-    t.append("%s -right" % pnmcrop, '--')
+    t.append('%s -left' % pnmcrop, '--')
+    t.append('%s -right' % pnmcrop, '--')
 
     for file in glob.glob("%s*.ppm" % basename):
         tmp = mkstemp()
@@ -315,7 +330,7 @@ def main(argv):
     dpi = string.atoi(argv[2])
     output_format = argv[3]
     if output_format != "ppm":
-        error("This script can generate ppm format images only.")
+        error("This script will generate ppm format images only.")
 
     # External programs used by the script.
     path = string.split(os.getenv("PATH"), os.pathsep)
@@ -325,7 +340,7 @@ def main(argv):
     pnmcrop = find_exe(["pnmcrop"], path)
 
     # Compile the latex file.
-    latex_call = "%s %s" % (latex, latex_file)
+    latex_call = '%s %s' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
@@ -336,7 +351,7 @@ def main(argv):
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
 
-    dvips_call = "%s -o %s %s" % (dvips, ps_file, dvi_file)
+    dvips_call = '%s -o %s %s' % (dvips, ps_file, dvi_file)
 
     dvips_status, dvips_stdout = run_command(dvips_call)
     if dvips_status != None:
@@ -353,10 +368,10 @@ def main(argv):
         alpha = 2
 
     # Generate the bitmap images
-    gs_call = "%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw " \
-              "-sOutputFile=%s%%d.ppm " \
-              "-dGraphicsAlphaBit=%d -dTextAlphaBits=%d " \
-              "-r%f %s" \
+    gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
+              '-sOutputFile=%s%%d.ppm ' \
+              '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+              '-r%f %s' \
               % (gs, latex_file_re.sub("", latex_file), \
                  alpha, alpha, resolution, ps_file)
 

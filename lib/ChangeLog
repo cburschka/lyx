@@ -1,3 +1,10 @@
+2004-07-14  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2ppm.py: improve the commentary, both in
+	comments in the file and in diagnostics output on error.
+	Use try-except blocks to catch exceptions raised by a failure
+	to open a file.
+
 2004-06-09  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2bitmap.sh: removed.
