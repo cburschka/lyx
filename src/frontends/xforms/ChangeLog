@@ -1,5 +1,12 @@
 2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormCitation.C (c-tor): prevent re-sizing of the dialog.
+
+	* FormParagraph.C (input): set fl_get_choice check for the linespacing
+	to 5 not 4. xforms arrays start at 1.
+
+2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormParagraph.[Ch]:
 	* forms/form_paragraph.fd: clean up of dialog and of controlling
 	code.

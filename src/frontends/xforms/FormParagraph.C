@@ -117,7 +117,7 @@ void FormParagraph::build()
     fl_set_input_return(dialog_->input_space_above, FL_RETURN_CHANGED);
     fl_set_input_return(dialog_->input_space_below, FL_RETURN_CHANGED);
     fl_set_input_return(dialog_->input_labelwidth, FL_RETURN_CHANGED);
-
+    fl_set_input_return(dialog_->input_linespacing, FL_RETURN_CHANGED);
     fl_set_input_filter(dialog_->input_linespacing, fl_unsigned_float_filter);
 
     // Manage the ok, apply, restore and cancel/close buttons
@@ -440,8 +440,6 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     // First check the buttons which are exclusive and you have to
     // check only the actuall de/activated button.
     //
-    // general form first
-    //
     // "Synchronize" the choices and input fields, making it
     // impossible to commit senseless data.
 
@@ -451,16 +449,13 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     if (fl_get_choice (dialog_->choice_space_below) != 7)
         fl_set_input (dialog_->input_space_below, "");
 
-    if (fl_get_choice (dialog_->choice_linespacing) == 4)
+    if (fl_get_choice (dialog_->choice_linespacing) == 5)
         setEnabled (dialog_->input_linespacing, true);
     else {
         setEnabled (dialog_->input_linespacing, false);
         fl_set_input (dialog_->input_linespacing, "");
     }
- 
-    //
-    // first the general form
-    //
+
     string input = fl_get_input (dialog_->input_space_above);
     bool invalid = false;
 	
@@ -486,4 +481,3 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 
     return ret;
 }
-
