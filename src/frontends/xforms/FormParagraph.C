@@ -348,6 +348,10 @@ void FormParagraph::update()
     setEnabled(dialog_->radio_align_left,   bool(alignpos & LYX_ALIGN_LEFT));
     setEnabled(dialog_->radio_align_right,  bool(alignpos & LYX_ALIGN_RIGHT));
     
+    // no inset-text-owned paragraph may have pagebreaks
+    setEnabled(dialog_->check_pagebreaks_top, !par_->inInset());
+    setEnabled(dialog_->check_pagebreaks_bottom, !par_->inInset());
+
     fl_set_button(dialog_->check_lines_top,
 		  par_->params().lineTop());
     fl_set_button(dialog_->check_lines_bottom,

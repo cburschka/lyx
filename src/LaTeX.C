@@ -76,8 +76,12 @@ LaTeX::LaTeX(string const & latex, string const & f, string const & p)
 {
 	num_errors = 0;
 	depfile = file + ".dep";
-	if (prefixIs(cmd, "pdf")) // Do we use pdflatex ?
+	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
 		depfile += "-pdf";
+		output_file = ChangeExtension(file,".pdf");
+	} else {
+		output_file = ChangeExtension(file,".dvi");
+	}
 }
 
 
@@ -154,12 +158,19 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		head.read(depfile);
 		// Update the checksums
 		head.update();
-		if (!head.sumchange()) {
+		// Can't just check if anything has changed because it might have aborted
+		// on error last time... in which cas we need to re-run latex
+		// and collect the error messages (even if they are the same).
+		if (!FileInfo(output_file).exist()) {
+			lyxerr[Debug::DEPEND]
+				<< "re-running LaTeX because output file doesn't exist." << endl;
+		} else if (!head.sumchange()) {
 			lyxerr[Debug::DEPEND] << "return no_change" << endl;
 			return NO_CHANGE;
+		} else {
+			lyxerr[Debug::DEPEND]
+				<< "Dependency file has changed" << endl;
 		}
-		lyxerr[Debug::DEPEND]
-			<< "Dependency file has changed" << endl;
 
 		if (head.extchanged(".bib") || head.extchanged(".bst"))
 			run_bibtex = true;
