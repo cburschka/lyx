@@ -1,3 +1,20 @@
+2002-10-04  Angus Leeming  <leeming@lyx.org>
+
+	* form_graphics.fd: un-cripple dialog by reverting yesterday's change.
+
+	* FeedbackController.C (PrehandlerCB): reduce the necessary calcs to the
+	bare minimum.
+
+	* combox.[Ch]: the optional tabfolder args passed to the c-tor are
+	no longer necessary and are scrapped.
+	(show): use the same, minimal fix as in PrehandlerCB to ensure that
+	the form's x,y coords are up to date. In truth, this fix should be
+	redundant, but not all "enter" events are caught by the prehandler.
+
+	* FormDocument.C (build):
+	* FormPreferences.C (xyz::build): no longer pass the tabfolder to the
+	combox c-tor.
+
 2002-10-03  Angus Leeming  <leeming@lyx.org>
 
 	* FeedbackController.C (PrehandlerCB): re-compute the folder->x,

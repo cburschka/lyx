@@ -88,10 +88,10 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		// It updates the form->x, form->y coords of the active
 		// tabfolder when the mouse enters.
 		FL_FORM * const form = fl_get_active_folder(ob);
-		Window win = fl_prepare_form_window(form, 0, 0, "Folder");
-		if (win) {
+		if (form->window) {
 			FL_Coord w, h;
-			fl_get_wingeometry(win, &(form->x), &(form->y), &w, &h);
+			fl_get_wingeometry(form->window,
+					   &(form->x), &(form->y), &w, &h);
 		}
 
 	} else if (message_widget_ &&

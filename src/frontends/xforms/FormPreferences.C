@@ -1648,9 +1648,7 @@ void FormPreferences::Language::build()
 	FL_OBJECT * obj = dialog_->choice_default_lang;
 	fl_deactivate_object(dialog_->choice_default_lang);
 	combo_default_lang.reset(new Combox(FL_COMBOX_DROPLIST));
-	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400,
-				parent_.lang_opts_tab_->tabfolder_inner,
-				parent_.dialog_->tabfolder_prefs);
+	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_default_lang->shortcut("#L",1);
 	combo_default_lang->setcallback(ComboCB, &parent_);
 

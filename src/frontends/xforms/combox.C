@@ -71,7 +71,7 @@ extern "C" {
 
 
 Combox::Combox(combox_type t)
-	: type(t), tabfolder1(0), tabfolder2(0)
+	: type(t)
 {
    browser = button = 0;
    callback = 0;
@@ -179,13 +179,8 @@ void Combox::select(int i)
 }
 
 
-void Combox::add(int x, int y, int w, int hmin, int hmax,
-		 FL_OBJECT * tabfolder1_, FL_OBJECT * tabfolder2_)
+void Combox::add(int x, int y, int w, int hmin, int hmax)
 {
-	// Store these for later use in working round an xforms bug in show()
-	tabfolder1 = tabfolder1_;
-	tabfolder2 = tabfolder2_;
-
 	FL_OBJECT * obj;
 
 	switch (type) {
@@ -287,35 +282,20 @@ void Combox::show()
 		fl_redraw_object(button);
 	}
 
-	int x = label->x;
-	int y = label->y + label->h;
-	if (tabfolder1) {
-		// This is a bug work around suggested by Steve Lamont on the
-		// xforms mailing list. It correctly positions the browser form
-		// after the main window has been moved.
-		// The bug only occurs in tabbed folders.
-		int folder_x, folder_y, folder_w, folder_h;
-		fl_get_folder_area( tabfolder1,
-				    &folder_x, &folder_y,
-				    &folder_w, &folder_h);
-		x += folder_x;
-		y += folder_y;
-
-		if (tabfolder2) {
-			fl_get_folder_area( tabfolder2,
-					    &folder_x, &folder_y,
-					    &folder_w, &folder_h);
-			x += tabfolder2->form->x + folder_x;
-			y += tabfolder2->form->y + folder_y;
-		} else {
-			x += tabfolder1->form->x;
-			y += tabfolder1->form->y;
-		}
-
-	} else {
-		x += label->form->x;
-		y += label->form->y;
+	// This fix ensures that, even if label lies on a tabfolder,
+	// the x,y coords of the underlying form are up to date.
+	// It should be rendered redundant by a similar fix in the
+	// tabfolder prehandler, but apparently "enter" events are not always
+	// caught...
+	// Angus 4 Oct, 2002.
+	if (label->form->window) {
+		FL_FORM * lf = label->form;
+		FL_Coord w, h;
+		fl_get_wingeometry(lf->window, &(lf->x), &(lf->y), &w, &h);
 	}
+	
+	int const x = label->form->x + label->x;
+	int const y = label->form->y + label->y + label->h;
 
 	fl_set_form_position(form, x, y);
 	fl_show_form(form, FL_PLACE_POSITION, FL_NOBORDER, "");

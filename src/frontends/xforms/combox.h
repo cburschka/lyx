@@ -61,15 +61,9 @@ public:
 	~Combox();
 
 	/** To add this object to a form. Note that there are two heights
-	    for normal (button) and expanded (browser) mode each.
-	    The optional tabfolder arguments are needed to overcome an
-	    xforms bug when repositioning a combox in a tab folder.
-	    tabfolder1_ is the folder holding the combox.
-	    If using nested tabfolders, tabfolder2_ is the "base" folder
-	    holding tabfolder1_.
-	*/
-	void add(int x, int y, int w, int hmin, int hmax,
-		 FL_OBJECT * tabfolder1_ = 0, FL_OBJECT * tabfolder2_ = 0);
+	 *  for normal (button) and expanded (browser) mode each.
+	 */
+	void add(int x, int y, int w, int hmin, int hmax);
 
 	/// Add lines. Same as for fl_browser object
 	void addline(string const &);
@@ -158,10 +152,6 @@ public:
 	FL_OBJECT * label;
 	///
 	FL_FORM* form;
-	///
-	FL_OBJECT * tabfolder1;
-	///
-	FL_OBJECT * tabfolder2;
 };
 
 
