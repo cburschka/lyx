@@ -1,3 +1,8 @@
+2002-05-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView_pimpl.C (Dispatch): work around missing argument for
+	'layout'
+
 2002-05-08  Juergen Vigna  <jug@sad.it>
 
 	* text.C (leftMargin): handle paragraph leftindent.
@@ -23,12 +28,12 @@
 2002-05-05  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* paragraph.C (isRightToLeftPar): Return false for a paragraph
- 	inside insetERT.
+	inside insetERT.
 
 	* text.C (computeBidiTables): No bidi in insetERT.
 
 	* BufferView_pimpl.C (setState): Fix keymap handling inside insetERT
- 	in RTL documents.
+	in RTL documents.
 
 2002-05-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

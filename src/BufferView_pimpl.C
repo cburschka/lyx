@@ -1808,6 +1808,17 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
 				    << argument << endl;
 
+		// This is not the good solution to the empty argument
+		// problem, but it will hopefully suffice for 1.2.0.
+		// The correct solution would be to augument the
+		// function list/array with information about what
+		// functions needs arguments and their type.
+		if (argument.empty()) {
+			owner_->getLyXFunc()->setErrorMessage(
+				_("LyX function 'layout' needs an argument."));
+			break;
+		}
+
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */
 		bool hasLayout = tclass.hasLayout(argument);
