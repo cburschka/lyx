@@ -56,8 +56,8 @@ void QBranch::update_contents()
 
 	const_iterator const begin = branchlist.begin();
 	const_iterator const end = branchlist.end();
-	int id = 1;
-	int count = 1;
+	int id = 0;
+	int count = 0;
 	for (const_iterator it = begin; it != end; ++it, ++count) {
 		string const & branch = it->getBranch();
 		dialog_->branchCO->insertItem(toqstr(branch));

@@ -420,6 +420,13 @@ void QDocumentDialog::updateNumbering()
 
 void QDocumentDialog::updateBranchView()
 {
+	// store the selected branch
+	QListViewItem * selItem =
+		branchesModule->branchesLV->selectedItem();
+	QString sel_branch;
+	if (selItem != 0)
+		sel_branch = selItem->text(0);
+
 	branchesModule->branchesLV->clear();
 
 	BranchList::const_iterator it = form_->branchlist_.begin();
@@ -438,6 +445,9 @@ void QDocumentDialog::updateBranchView()
 			coloritem.fill(itemcolor);
 			newItem->setPixmap(2, coloritem);
 		}
+		// restore selected branch
+		if (bname == sel_branch)
+			branchesModule->branchesLV->setSelected(newItem, true);
 	}
 	form_->changed();
 }

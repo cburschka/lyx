@@ -1,3 +1,9 @@
+2004-03-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QDocumentDialog.C (branches): Don't deselect branch
+	after button press.
+	* QBranch.C: fix off-by-one-error. 
+
 2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* QPrefs.C, QPrefsDialog.C, ui/QPrefPathsModule.ui: remove
