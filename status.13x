@@ -107,4 +107,7 @@ What's new
 - squash a potential bug in the PreviewLoader before it bites.
 
 - don't cause a warning message to complain about starting an already running
-  timer. Don't start it ;-)
+  timer. Just don't start it ;-)
+
+- prevent incorrect warning message about failing to find a graphics file to 
+  load when all is actually fine and dandy.

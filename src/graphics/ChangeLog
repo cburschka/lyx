@@ -1,3 +1,8 @@
+2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
+
+	* GraphicsCacheItem.C (imageConverted): move warning inside the
+	!success block.
+
 2003-02-25  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C: Use equality not less than with std::find.

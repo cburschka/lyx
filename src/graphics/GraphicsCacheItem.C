@@ -256,9 +256,10 @@ void CacheItem::Impl::imageConverted(bool success)
 	cc_.disconnect();
 
 	success = !file_to_load_.empty() && IsFileReadable(file_to_load_);
-	lyxerr[Debug::GRAPHICS] << "Unable to find converted file!" << endl;
 
 	if (!success) {
+		lyxerr[Debug::GRAPHICS] << "Unable to find converted file!"
+					<< endl;
 		setStatus(ErrorConverting);
 
 		if (zipped_)
