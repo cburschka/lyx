@@ -1,3 +1,10 @@
+2002-10-23  Angus Leeming  <leeming@lyx.org>
+
+	* tools/mkdoclinks.sh: new file. Run in <source>/lib/doc to
+	generate symbolic links from that dir to  whereever the LyX
+	documentation is to be found. This enables a non-installed LyX
+	to find these docs.
+
 2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
 	* FORMAT: explain changes with new graphics dialog
 
