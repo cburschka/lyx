@@ -35,6 +35,7 @@
 #include "support/filetools.h"
 #include "support/package.h"
 #include "support/path.h"
+#include "support/os.h"
 
 #include "BoostFormat.h"
 #include <boost/function.hpp>
@@ -153,7 +154,7 @@ LyX::LyX(int & argc, char * argv[])
 	vector<string> files;
 
 	for (int argi = argc - 1; argi >= 1; --argi) {
-		files.push_back(argv[argi]);
+		files.push_back(os::internal_path(argv[argi]));
 	}
 
 	if (first_start) {
