@@ -252,10 +252,12 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
-	//lyx::Assert(pos <= siz);
 	// This is stronger, and I belive that this is the assertion
 	// that we should really use. (Lgb)
-	lyx::Assert(pos < size());
+	//lyx::Assert(pos < size());
+
+#warning I believe pos() == size() is valid if the cursor is at the last position of the par. (Andre)
+	lyx::Assert(pos <= size());
 
 #if 0
 	// This is in the critical path for loading!
