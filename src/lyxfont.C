@@ -575,7 +575,8 @@ LyXFont & LyXFont::setLyXFamily(string const & fam)
 	string const s = ascii_lowercase(fam);
 
 	int i = 0;
-	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") ++i;
+	while (LyXFamilyNames[i] != s &&
+	       LyXFamilyNames[i] != string("error")) ++i;
 	if (s == LyXFamilyNames[i]) {
 		setFamily(LyXFont::FONT_FAMILY(i));
 	} else
@@ -591,7 +592,8 @@ LyXFont & LyXFont::setLyXSeries(string const & ser)
 	string const s = ascii_lowercase(ser);
 
 	int i = 0;
-	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") ++i;
+	while (LyXSeriesNames[i] != s &&
+	       LyXSeriesNames[i] != string("error")) ++i;
 	if (s == LyXSeriesNames[i]) {
 		setSeries(LyXFont::FONT_SERIES(i));
 	} else
@@ -607,7 +609,8 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 	string const s = ascii_lowercase(sha);
 
 	int i = 0;
-	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") ++i;
+	while (LyXShapeNames[i] != s &&
+	       LyXShapeNames[i] != string("error")) ++i;
 	if (s == LyXShapeNames[i]) {
 		setShape(LyXFont::FONT_SHAPE(i));
 	} else
@@ -622,7 +625,8 @@ LyXFont & LyXFont::setLyXSize(string const & siz)
 {
 	string const s = ascii_lowercase(siz);
 	int i = 0;
-	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") ++i;
+	while (LyXSizeNames[i] != s &&
+	       LyXSizeNames[i] != string("error")) ++i;
 	if (s == LyXSizeNames[i]) {
 		setSize(LyXFont::FONT_SIZE(i));
 	} else
@@ -637,7 +641,8 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
 	string const s = ascii_lowercase(siz);
 	int i = 0;
-	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") ++i;
+	while (LyXMiscNames[i] != s &&
+	       LyXMiscNames[i] != string("error")) ++i;
 	if (s == LyXMiscNames[i])
 		return FONT_MISC_STATE(i);
 	lyxerr << "LyXFont::setLyXMisc: Unknown misc flag `"

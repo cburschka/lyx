@@ -1,3 +1,16 @@
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* FormPreferences.C, forms/form_preferences.fd: add an interface
+	to modify LyXRC::path_prefix.
+
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* FormPreferences.C: code to get/set the value
+	of the Cygwin check box. Compiled only under Cygwin.
+
+	* forms/form_preferences.fd: add a Cygwin paths check box to the
+	Outputs->Misc tab.
+
 2005-01-19  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.C: use the HAVE_UNISTD_H guard.

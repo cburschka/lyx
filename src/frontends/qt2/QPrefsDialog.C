@@ -22,6 +22,9 @@
 #include "ui/QPrefLatexModule.h"
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#include "ui/QPrefCygwinPathModule.h"
+#endif
 #include "ui/QPrefDisplayModule.h"
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
@@ -85,6 +88,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	latexModule = new QPrefLatexModule(prefsWS);
 	screenfontsModule = new QPrefScreenFontsModule(prefsWS);
 	colorsModule = new QPrefColorsModule(prefsWS);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	cygwinpathModule = new QPrefCygwinPathModule(this);
+#endif
 	displayModule = new QPrefDisplayModule(prefsWS);
 	pathsModule = new QPrefPathsModule(prefsWS);
 	spellcheckerModule = new QPrefSpellcheckerModule(prefsWS);
@@ -108,6 +114,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsWS->addWidget(languageModule, 11);
 	prefsWS->addWidget(printerModule, 12);
 	prefsWS->addWidget(uiModule, 13);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	prefsWS->addWidget(cygwinpathModule, 14);
+#endif
 
 	QListViewItem * i;
 
@@ -141,6 +150,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = dateModule;
 	i = new QListViewItem(out, i, qt_("LaTeX"));
 	pane_map_[i] = latexModule;
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	i = new QListViewItem(out, i, qt_("Paths"));
+	pane_map_[i] = cygwinpathModule;
+#endif
 	i = new QListViewItem(out, i, qt_("Printer"));
 	pane_map_[i] = printerModule;
 
@@ -251,6 +264,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	connect(cygwinpathModule->pathCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+#endif
 	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
@@ -264,6 +280,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(pathsModule->tempDirCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(pathsModule->tempDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(pathsModule->lyxserverDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->pathPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(spellcheckerModule->spellCommandCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(spellcheckerModule->altLanguageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(spellcheckerModule->escapeCharactersED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));

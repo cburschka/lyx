@@ -384,7 +384,7 @@ vector<string> const getEnvPath(string const & name)
 	Tokenizer::const_iterator it = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
 
-	std::vector<string> vars;
+	vector<string> vars;
 	for (; it != end; ++it)
 		vars.push_back(os::internal_path(*it));
 
@@ -404,6 +404,34 @@ void setEnvPath(string const & name, vector<string> const & env)
 		ss << os::external_path(*it);
 	}
 	PutEnv(name + "=" + ss.str());
+}
+
+
+void prependEnvPath(string const & name, string const & prefix)
+{
+	vector<string> env_var = getEnvPath(name);
+
+	typedef boost::char_separator<char> Separator;
+	typedef boost::tokenizer<Separator> Tokenizer;
+
+	Separator const separator(string(1, os::path_separator()).c_str());
+
+	// Prepend each new element to the list, removing identical elements
+	// that occur later in the list.
+	Tokenizer const tokens(prefix, separator);
+	vector<string> reversed_tokens(tokens.begin(), tokens.end());
+
+	typedef vector<string>::const_reverse_iterator token_iterator;
+	token_iterator it = reversed_tokens.rbegin();
+	token_iterator const end = reversed_tokens.rend();
+	for (; it != end; ++it) {
+		vector<string>::iterator remove_it =
+			std::remove(env_var.begin(), env_var.end(), *it);
+		env_var.erase(remove_it, env_var.end());
+		env_var.insert(env_var.begin(), *it);
+	}
+
+	setEnvPath(name, env_var);
 }
 
 
@@ -578,12 +606,20 @@ int DestroyBufferTmpDir(string const & tmpdir)
 
 string const CreateLyXTmpDir(string const & deflt)
 {
-	if ((!deflt.empty()) && (deflt  != "/tmp")) {
+	if (!deflt.empty() && deflt != "/tmp") {
 		if (lyx::mkdir(deflt, 0777)) {
 #ifdef __EMX__
-		Path p(lyx::package().user_support());
+			Path p(lyx::package().user_support());
 #endif
-			return CreateTmpDir(deflt, "lyx_tmpdir");
+			if (IsDirWriteable(deflt)) {
+				// deflt could not be created because it
+				// did exist already, so let's create our own
+				// dir inside deflt.
+				return CreateTmpDir(deflt, "lyx_tmpdir");
+			} else {
+				// some other error occured.
+				return CreateTmpDir("/tmp", "lyx_tmpdir");
+			}
 		} else
 			return deflt;
 	} else {

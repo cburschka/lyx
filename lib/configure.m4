@@ -172,11 +172,27 @@ if test ! -r ${srcdir}/chkconfig.ltx ; then
 fi
 
 #### Adjust PATH for Win32 (Cygwin)
+use_cygwin_path_fix=''
 case `uname -s` in
    CYGWIN*)
-     echo "configure: cygwin detected; path correction"
-     srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
-     echo "srcdir=${srcdir}" ;;
+     tmpfname="/tmp/x$$.ltx";
+     echo "\\documentstyle{article}" > $tmpfname
+     echo "\\begin{document}\\end{document}" >> $tmpfname
+     inpname=`cygpath -w $tmpfname | tr '\\\\' /`
+     echo "\\input{$inpname}" > wrap_temp$$.ltx
+     check_err=`latex wrap_temp$$.ltx 2>&1 < /dev/null | grep Error`
+     rm -f wrap_temp$$.* /tmp/x$$.*
+     if [ x"$check_err" = "x" ]
+     then
+       echo "configure: cygwin detected; path correction"
+       srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
+       echo "srcdir=${srcdir}"
+       use_cygwin_path_fix='true'
+     else
+       echo "configure: cygwin detected; path correction is not needed"
+       use_cygwin_path_fix='false'
+     fi
+     ;;
 esac
 
 #### Create the build directories if necessary
@@ -542,6 +558,11 @@ cat >$outfile <<EOF
 $rc_entries
 \\font_encoding "$chk_fontenc"
 EOF
+
+if [ "x$use_cygwin_path_fix" != "x" ]
+then
+  echo "\\cygwin_path_fix_needed $use_cygwin_path_fix" >> $outfile
+fi
 
 ### the graphic converter part with the predefined ones
 #### Search for tne nonstandard converting progs

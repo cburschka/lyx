@@ -49,6 +49,13 @@ public:
 	 *  PATH environment variable.
 	 */
 	static char path_separator();
+  
+	/** If @c use_cygwin_paths is true, LyX will output cygwin style paths
+	 *  rather than native Win32 ones. Obviously, this option is used only
+	 *  under Cygwin.
+	 */
+	static void cygwin_path_fix(bool use_cygwin_paths);
+
 private:
 	static string const nulldev_;
 	static os::shell_type shell_;

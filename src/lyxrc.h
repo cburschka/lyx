@@ -123,6 +123,8 @@ enum LyXRCTags {
 #ifdef USE_PSPELL
 	RC_USE_PSPELL,
 #endif
+ 	RC_CYGWIN_PATH_FIX,
+	RC_PATH_PREFIX,
 	RC_LAST
 };
 
@@ -353,6 +355,12 @@ enum LyXRCTags {
 	bool preview_hashed_labels;
 	///
 	float preview_scale_factor;
+	///
+	bool cygwin_path_fix;
+	/** Prepend paths to the PATH environment variable.
+	 *  The string is input, stored and output in native format.
+	 */
+	std::string path_prefix;
 
 private:
 	/// Is a bind file already (or currently) read?

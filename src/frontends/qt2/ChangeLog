@@ -1,3 +1,21 @@
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C, QPrefsDialog.C, ui/QPrefPathsModule.ui: add an interface
+	to modify LyXRC::path_prefix.
+
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.dialogs: add QPrefCygwinPathModule.ui.
+
+	* ui/QPrefCygwinPathModule.ui: new file. Defines a pane containing
+	only a check box "Use Cygwin paths".
+
+	* QPrefs.C (apply, update_contents): code to get/set the value
+	of the Cygwin check box. Compiled only under Cygwin.
+
+	* QPrefsDialog.[Ch]: code to add the Cygwin paths module to the
+	dialog.
+
 2005-01-14  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (start): remove unused variables xpos and ypos.

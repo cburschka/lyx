@@ -85,8 +85,8 @@ void MathSpaceInset::incSpace()
 void MathSpaceInset::validate(LaTeXFeatures & features) const
 {
 	if (space_ >= 0 && space_< nSpace) {
-		if ((latex_mathspace[space_] == "negmedspace")
-		 || (latex_mathspace[space_] == "negthickspace"))
+		if ((latex_mathspace[space_] == string("negmedspace"))
+		 || (latex_mathspace[space_] == string("negthickspace")))
 			features.require("amsmath");
 	}
 }

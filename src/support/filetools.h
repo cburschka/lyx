@@ -119,6 +119,15 @@ std::vector<string> const getEnvPath(string const & name);
  */
 void setEnvPath(string const & name, std::vector<string> const & env);
 
+/** Prepend a list of paths to that returned by the environment variable.
+ *  Identical paths occurring later in the list are removed.
+ *  @param name the name of the environment variable.
+ *  @prefix the list of paths in OS-native syntax.
+ *  Eg "/foo/bar:/usr/bin:/usr/local/bin" on *nix,
+ *     "C:\foo\bar;C:\windows" on Windows.
+ */
+void prependEnvPath(string const & name, string const & prefix);
+
 ///
 bool PutEnv(string const & envstr);
 

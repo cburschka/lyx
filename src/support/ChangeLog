@@ -1,3 +1,24 @@
+2005-01-16  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (CreateLyXTmpDir): backport the 1.4.x code.
+
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.[Ch] (prependEnvPath): prepend a list of paths to
+	that returned by the environment variable. Identical paths occurring
+	later in the list are removed.
+
+2005-01-02  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* os_win32.C (external_path): Check the new cygwin_path_fix_ bool
+	before translating external paths to Win32 paths.
+
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* os.h, os_os2.C, os_unix.C, os_win32.C (cygwin_path_fix): new
+	function flagging whether LyX should output native Win32 paths
+	or cygwin paths. Obviously operative only under Cygwin.
+
 2005-01-21  Angus Leeming   <leeming@lyx.org>
 
 	* os_cygwin.C, os_win32.C: strip the Cygwin-specific stuff out of

@@ -1221,7 +1221,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 						     "Use LyX 0.10.x to read this!"));
 					return false;
 				} else if (!filename.empty()) {
-					string command =
+					string command = "python " +
 						LibFileSearch("lyx2lyx", "lyx2lyx");
 					if (command.empty()) {
 						Alert::alert(_("ERROR!"),

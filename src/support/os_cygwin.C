@@ -45,12 +45,19 @@ string::size_type os::common_path(string const &p1, string const &p2)
 }
 
 
+namespace {
+
+bool cygwin_path_fix_ = false;
+
+} // namespace anon
+
+
 string os::external_path(string const & p)
 {
 	string dos_path;
 
 	// Translate from cygwin path syntax to dos path syntax
-	if (is_absolute_path(p)) {
+	if (cygwin_path_fix_ && is_absolute_path(p)) {
 		char dp[PATH_MAX+1];
 		cygwin_conv_to_full_win32_path(p.c_str(), dp);
 		dos_path = !dp ? string() : dp;
@@ -113,4 +120,10 @@ char const * os::popen_read_mode()
 char os::path_separator()
 {
 	return ':';
+}
+
+
+void cygwin_path_fix(bool use_cygwin_paths)
+{
+	cygwin_path_fix_ = use_cygwin_paths;
 }

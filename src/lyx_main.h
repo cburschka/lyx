@@ -42,8 +42,13 @@ private:
 	void defaultKeyBindings(kb_keymap * kbmap);
 	/// set up the default dead key bindings if requested
 	void deadKeyBindings(kb_keymap * kbmap);
-	/// check, set up and configure the user dir if necessary
-	void queryUserLyXDir(bool explicit_userdir);
+	/** Check for the existence of the user's support directory and,
+	 *  if not present, create it. Exits the program if the directory
+	 *  cannot be created.
+	 *  \returns true if the user-side configuration script
+	 *  (lib/configure) should be re-run in this directory.
+	 */
+	bool queryUserLyXDir(bool explicit_userdir);
 	/// return true if the given prefs file was successfully read
 	bool readRcFile(string const & name);
 	/// read the given ui (menu/toolbar) file

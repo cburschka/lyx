@@ -2168,7 +2168,7 @@ argument: 0
 Name: form_preferences_paths
 Width: 450
 Height: 350
-Number of Objects: 17
+Number of Objects: 18
 
 --------------------
 class: FL_BOX
@@ -2480,6 +2480,24 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_serverpipe_browse
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 170 285 170 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: PATH prefix:|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_path_prefix
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -2913,7 +2931,7 @@ argument:
 Name: form_preferences_outputs_misc
 Width: 455
 Height: 375
-Number of Objects: 10
+Number of Objects: 11
 
 --------------------
 class: FL_BOX
@@ -2936,7 +2954,7 @@ argument:
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 10 10 435 165
+box: 10 10 435 200
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -3012,7 +3030,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 10 190 435 135
+box: 10 220 435 135
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -3030,7 +3048,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 205 285 30
+box: 145 235 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -3048,7 +3066,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 245 285 30
+box: 145 275 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -3066,7 +3084,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 285 285 30
+box: 145 315 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -3084,18 +3102,36 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 20 140 30 30
+box: 400 140 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Autoreset Class Options on change|#u
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_autoreset_classopt
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 400 170 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Use Cygwin Paths|#s
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_cygwin_path
 callback: C_FormBaseInputCB
 argument: 0
 

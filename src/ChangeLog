@@ -1,3 +1,47 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* lyxfont.C (setLyXFamily, setLyXSeries, setLyXShape, setLyXSize) 
+	(setLyXMisc): (char string literal) != (char string literal) is
+	performing a comparison on the addresses. Convert one operand
+	explicitly to string to guarantee expected behaviour.
+	From MSVC warning.
+
+2005-01-17  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C (readFile): prepend the name of the "lyx2lyx" script
+	with "python ". Workaround for a brain-dead Windows.
+
+2005-01-16  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init): backport the 1.4.x code that causes LyX to exit
+	if the LyX temp directory (/tmp/lyx_tmpdirXXX) could not be created.
+
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init): rewrite code to prepend the CWD to the PATH
+	for MacOSX and Windows to use prependEnvPath.
+	Strip out the hard-coded block to add elements to the PATH for
+	MacOSX and replace it with a call to prependEnvPath using the
+	contents of LyXRC::path_prefix.
+	(queryUserLyXDir): strip out the code to run reconfigure, instead
+	returning a boolean indicating the necessity to do so.
+	(reconfigureUserLyXDir): contains the code to reconfigure the
+	user support directory. Is now called after the various LyXRC data
+	files have been read.
+
+	* lyxrc.[Ch]: add path_prefix var and code to read/write it.
+
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.C (read): use LyXRC::cygwin_path_fix to set the value of
+	os::cygwin_path_fix.
+	(write): output LyXRC::cygwin_path_fix as necessary.
+
+2005-01-02  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* lyxrc.h:
+	* lyxrc.C (read): Added RC_CYGWIN_PATH_FIX, cygwin_path_fix.
+
 2005-01-19  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (error_handler, init): protect SIGHUP with

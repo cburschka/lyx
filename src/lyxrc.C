@@ -21,8 +21,9 @@
 #include "kbmap.h"
 #include "LyXAction.h"
 #include "intl.h"
-#include "support/path.h"
 #include "support/filetools.h"
+#include "support/os.h"
+#include "support/path.h"
 #include "converter.h"
 #include "gettext.h"
 #include "lyxlex.h"
@@ -59,6 +60,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
+	{ "\\cygwin_path_fix_needed", LyXRC::RC_CYGWIN_PATH_FIX },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
@@ -85,6 +87,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
+	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\popup_bold_font", LyXRC::RC_POPUP_BOLD_FONT },
 	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
@@ -246,8 +249,7 @@ void LyXRC::setDefaults() {
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	default_language = "english";
 	show_banner = true;
-
-	//
+	cygwin_path_fix = false;
 	date_insert_format = "%A, %e %B %Y";
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
@@ -378,6 +380,13 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 
+		case RC_CYGWIN_PATH_FIX:
+			if (lexrc.next()) {
+				cygwin_path_fix = lexrc.getBool();
+				os::cygwin_path_fix(cygwin_path_fix);
+ 			}
+ 			break;
+ 
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
 				string const kmap(lexrc.getString());
@@ -1090,6 +1099,11 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 
+		case RC_PATH_PREFIX:
+			if (lexrc.next())
+				path_prefix = lexrc.getString();
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1158,6 +1172,12 @@ void LyXRC::output(ostream & os) const
 		   << "#\n\n";
 
 		// bind files are not done here.
+
+	case RC_PATH_PREFIX:
+		if (path_prefix != system_lyxrc.path_prefix) {
+			os << "\\path_prefix \"" << path_prefix << "\"\n";
+		}
+
 	case RC_UIFILE:
 		if (ui_file != system_lyxrc.ui_file) {
 			os << "\\ui_file \"" << ui_file << "\"\n";
@@ -1233,6 +1253,11 @@ void LyXRC::output(ostream & os) const
 		if (use_kbmap != system_lyxrc.use_kbmap) {
 			os << "\\kbmap " << tostr(use_kbmap) << '\n';
 		}
+	case RC_CYGWIN_PATH_FIX:
+		if (cygwin_path_fix != system_lyxrc.cygwin_path_fix) {
+			os << "\\cygwin_path_fix_needed "
+			   << tostr(cygwin_path_fix) << '\n';
+  		}
 	case RC_KBMAP_PRIMARY:
 		if (primary_kbmap != system_lyxrc.primary_kbmap) {
 			os << "\\kbmap_primary \"" << primary_kbmap << "\"\n";
@@ -2150,6 +2175,12 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_PREVIEW_SCALE_FACTOR:
 		str = _("Scale the preview size to suit.");
+		break;
+
+	case RC_PATH_PREFIX:
+		str = _("Specify those directories which should be"
+			 "prepended to the PATH environment variable. "
+			 "Use the OS native format.");
 		break;
 
 	default:

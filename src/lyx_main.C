@@ -76,6 +76,20 @@ namespace {
 string cl_system_support;
 string cl_user_support;
 
+
+void reconfigureUserLyXDir()
+{
+	string const configure_script =
+		AddName(lyx::package().system_support(), "configure");
+	string const configure_command =
+		"sh " + QuoteName(configure_script);
+
+	lyxerr << _("LyX: reconfiguring user directory") << endl;
+	Path p(lyx::package().user_support());
+	::system(configure_command.c_str());
+	lyxerr << "LyX: " << _("Done!") << endl;
+}
+
 } // namespace anon
 
 
@@ -279,26 +293,15 @@ void LyX::init(bool gui)
 #if !defined (USE_POSIX_PACKAGING)
 	// Add the directory containing the LyX executable to the path
 	// so that LyX can find things like reLyX.
-	if (package.build_support().empty()) {
-		vector<string> path = getEnvPath("PATH");
-		path.insert(path.begin(), package.binary_dir());
-		setEnvPath("PATH", path);
-	}
-#endif
-#if defined (USE_MACOSX_PACKAGING)
-	// This hard-coded nastiness should be moved into a LyXRC variable.
-	vector<string> path = getEnvPath("PATH");
-	path.insert(path.begin(), "/usr/local/teTeX/bin/powerpc-apple-darwin-current");
-	path.insert(path.begin(), "/usr/local/bin");
-	path.insert(path.begin(), "/sw/bin");
-	lyxerr[Debug::INIT]  << "Running from LyX/Mac bundle. "
-		"Setting PATH to: " << GetEnv("PATH") << endl;
+	if (package.build_support().empty())
+		prependEnvPath("PATH", package.binary_dir());
 #endif
 
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.
+	bool reconfigure = false;
 	if (gui) {
-		queryUserLyXDir(package.explicit_user_support());
+		reconfigure = queryUserLyXDir(package.explicit_user_support());
 	} else {
 		first_start = false;
 	}
@@ -358,9 +361,43 @@ void LyX::init(bool gui)
 		lyxrc.print();
 	}
 
-	package.document_dir() = lyxrc.document_path;
+	prependEnvPath("PATH", lyxrc.path_prefix);
+
+	// Having reset the PATH we're now in a position to run configure
+	// if necessary.
+	if (reconfigure)
+		reconfigureUserLyXDir();
+
+	FileInfo fi(lyxrc.document_path);
+	if (fi.isOK() && fi.isDir())
+		package.document_dir() = lyxrc.document_path;
 
 	package.temp_dir() = CreateLyXTmpDir(lyxrc.tempdir_path);
+	if (package.temp_dir().empty()) {
+#if USE_BOOST_FORMAT
+		boost::format const fmt =
+			boost::format(_("Could not create a temporary directory in\n"
+					"%1$s. Make sure that this\n"
+					"path exists and is writable and try again."))
+			% lyxrc.tempdir_path;
+		string const message = fmt.str();
+#else
+		string const message =
+			_("Could not create a temporary directory in\n") +
+			lyxrc.tempdir_path +
+			_(". Make sure that this\n"
+			  "path exists and is writable and try again.");
+#endif
+
+		Alert::alert(_("Could not create temporary directory"), message);
+		// createLyXTmpDir() tries sufficiently hard to create a
+		// usable temp dir, so the probability to come here is
+		// close to zero. We therefore don't try to overcome this
+		// problem with e.g. asking the user for a new path and
+		// trying again but simply exit.
+		exit(EXIT_FAILURE);
+	}
+
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << package.temp_dir() << '\''
 		       << endl;
@@ -471,29 +508,25 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 }
 
 
-void LyX::queryUserLyXDir(bool explicit_userdir)
+bool LyX::queryUserLyXDir(bool explicit_userdir)
 {
+	bool reconfigure = false;
 	lyx::Package const & package = lyx::package();
-	string const configure_script =
-		AddName(package.system_support(), "configure");
-	string const configure_command = "sh " + QuoteName(configure_script);
 
 	// Does user directory exist?
 	string const & user_support = package.user_support();
 	FileInfo fileInfo(user_support);
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
+		string const configure_script =
+			AddName(package.system_support(), "configure");
 		FileInfo script(configure_script);
 		FileInfo defaults(AddName(user_support, "lyxrc.defaults"));
 		if (defaults.isOK() && script.isOK()
 		    && defaults.getModificationTime() < script.getModificationTime()) {
-			lyxerr << _("LyX: reconfiguring user directory")
-			       << endl;
-			Path p(user_support);
-			::system(configure_command.c_str());
-			lyxerr << "LyX: " << _("Done!") << endl;
+			reconfigure = true;
 		}
-		return;
+		return reconfigure;
 	}
 
 	first_start = !explicit_userdir;
@@ -510,15 +543,14 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	}
 
 #if USE_BOOST_FORMAT
-	lyxerr << boost::format(_("LyX: Creating directory %1$s"
-				  " and running configure..."))
-		% package.user_support()
+	lyxerr << boost::format(_("LyX: Creating directory %1$s"))
+				% package.user_support()
 	       << endl;
 #else
 	lyxerr << _("LyX: Creating directory ") << package.user_support()
-	       << _(" and running configure...")
 	       << endl;
 #endif
+	reconfigure = true;
 
 	if (!createDirectory(package.user_support(), 0755)) {
 		// Failed, so let's exit.
@@ -527,10 +559,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 		exit(1);
 	}
 
-	// Run configure in user lyx directory
-	Path p(package.user_support());
-	::system(configure_command.c_str());
-	lyxerr << "LyX: " << _("Done!") << endl;
+	return reconfigure;
 }
 
 

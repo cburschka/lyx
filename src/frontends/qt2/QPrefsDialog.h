@@ -27,6 +27,7 @@ class QPrefKeyboardModule;
 class QPrefLatexModule;
 class QPrefScreenFontsModule;
 class QPrefColorsModule;
+class QPrefCygwinPathModule;
 class QPrefDisplayModule;
 class QPrefPathsModule;
 class QPrefSpellcheckerModule;
@@ -97,6 +98,9 @@ private:
 	QPrefLatexModule * latexModule;
 	QPrefScreenFontsModule * screenfontsModule;
 	QPrefColorsModule * colorsModule;
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	QPrefCygwinPathModule * cygwinpathModule;	
+#endif	
 	QPrefDisplayModule * displayModule;
 	QPrefPathsModule * pathsModule;
 	QPrefSpellcheckerModule * spellcheckerModule;

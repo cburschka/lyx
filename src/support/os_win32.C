@@ -179,3 +179,7 @@ char os::path_separator()
 {
 	return ';';
 }
+
+
+void cygwin_path_fix(bool)
+{}

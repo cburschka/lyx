@@ -22,6 +22,9 @@
 #include "ui/QPrefLatexModule.h"
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#include "ui/QPrefCygwinPathModule.h"	
+#endif
 #include "ui/QPrefDisplayModule.h"
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
@@ -136,6 +139,10 @@ void QPrefs::apply()
 
 	rc.date_insert_format = fromqstr(datemod->DateED->text());
 
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
+	rc.cygwin_path_fix = cygwinmod->pathCB->isChecked();
+#endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
@@ -178,6 +185,7 @@ void QPrefs::apply()
 	rc.backupdir_path = fromqstr(pathsmod->backupDirED->text());
 	rc.use_tempdir = pathsmod->tempDirCB->isChecked();
 	rc.tempdir_path = fromqstr(pathsmod->tempDirED->text());
+	rc.path_prefix = fromqstr(pathsmod->pathPrefixED->text());
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = fromqstr(pathsmod->lyxserverDirED->text());
 
@@ -395,6 +403,10 @@ void QPrefs::update_contents()
 
 	datemod->DateED->setText(toqstr(rc.date_insert_format));
 
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
+	cygwinmod->pathCB->setChecked(rc.cygwin_path_fix);
+#endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
@@ -428,9 +440,9 @@ void QPrefs::update_contents()
 	pathsmod->backupDirED->setText(toqstr(rc.backupdir_path));
 	pathsmod->tempDirCB->setChecked(rc.use_tempdir);
 	pathsmod->tempDirED->setText(toqstr(rc.tempdir_path));
+	pathsmod->pathPrefixED->setText(toqstr(rc.path_prefix));
 	// FIXME: should be a checkbox only
 	pathsmod->lyxserverDirED->setText(toqstr(rc.lyxpipes));
-
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 

@@ -1953,6 +1953,10 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 	rc.chktex_command = fl_get_input(dialog_->input_checktex);
 	rc.view_dvi_paper_option = fl_get_input(dialog_->input_paperoption);
 	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
+
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	rc.cygwin_path_fix = fl_get_button(dialog_->check_cygwin_path);
+#endif
 }
 
 
@@ -1968,6 +1972,11 @@ void FormPreferences::OutputsMisc::build()
 	fl_set_input_return(dialog_->input_checktex,     FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_paperoption,  FL_RETURN_CHANGED);
 
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#else
+	setEnabled(dialog_->check_cygwin_path, false);
+#endif
+
 	fl_addto_choice(dialog_->choice_default_papersize,
 			_(" default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "));
 
@@ -1979,6 +1988,9 @@ void FormPreferences::OutputsMisc::build()
 	setPrehandler(dialog_->input_checktex);
 	setPrehandler(dialog_->input_paperoption);
 	setPrehandler(dialog_->check_autoreset_classopt);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	setPrehandler(dialog_->check_cygwin_path);
+#endif
 }
 
 
@@ -1999,6 +2011,14 @@ FormPreferences::OutputsMisc::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_VIEWDVI_PAPEROPTION);
 	if (ob == dialog_->check_autoreset_classopt)
 		return LyXRC::getDescription(LyXRC::RC_AUTORESET_OPTIONS);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	if (ob == dialog_->check_cygwin_path)
+		return _("Select if LyX should output Cygwin-style paths "
+			 "rather than Windows-style paths. Useful if you're "
+			 "using the Cygwin teTeX rather than a native Windows "
+			 "MikTeX. Note, however, that you'll need to write "
+			 "shell script wrappers for all your converters.");
+#endif
 	return string();
 }
 
@@ -2019,7 +2039,9 @@ void FormPreferences::OutputsMisc::update(LyXRC const & rc)
 		     rc.view_dvi_paper_option.c_str());
 	fl_set_button(dialog_->check_autoreset_classopt,
 		      rc.auto_reset_options);
-
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	fl_set_button(dialog_->check_cygwin_path, rc.cygwin_path_fix);
+#endif
 }
 
 
@@ -2046,6 +2068,7 @@ void FormPreferences::Paths::apply(LyXRC & rc)
 
 	rc.use_tempdir = button;
 	rc.tempdir_path = str;
+	rc.path_prefix  = getString(dialog_->input_path_prefix);
 
 	button = fl_get_button(dialog_->check_last_files);
 	str = fl_get_input(dialog_->input_lastfiles);
@@ -2078,6 +2101,7 @@ void FormPreferences::Paths::build()
 	fl_set_input_return(dialog_->input_default_path, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_template_path, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_temp_dir, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_path_prefix, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_lastfiles, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_backup_path, FL_RETURN_CHANGED);
 	fl_set_counter_return(dialog_->counter_lastfiles, FL_RETURN_CHANGED);
@@ -2087,6 +2111,7 @@ void FormPreferences::Paths::build()
 	setPrehandler(dialog_->input_default_path);
 	setPrehandler(dialog_->counter_lastfiles);
 	setPrehandler(dialog_->input_template_path);
+	setPrehandler(dialog_->input_path_prefix);
 	setPrehandler(dialog_->check_last_files);
 	setPrehandler(dialog_->input_lastfiles);
 	setPrehandler(dialog_->check_make_backups);
@@ -2120,6 +2145,8 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_BACKUPDIR_PATH);
 	if (ob == dialog_->input_serverpipe)
 		return LyXRC::getDescription(LyXRC::RC_SERVERPIPE);
+	if (ob == dialog_->input_path_prefix)
+		return LyXRC::getDescription(LyXRC::RC_PATH_PREFIX);
 	return string();
 }
 
@@ -2266,6 +2293,7 @@ void FormPreferences::Paths::update(LyXRC const & rc)
 	fl_set_button(dialog_->check_use_temp_dir,
 		      rc.use_tempdir);
 	fl_set_input(dialog_->input_temp_dir, str.c_str());
+	fl_set_input(dialog_->input_path_prefix, rc.path_prefix.c_str());
 
 	str.erase();
 	if (rc.check_lastfiles)
