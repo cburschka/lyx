@@ -25,10 +25,10 @@ class InsetUrl : public InsetCommand {
 public:
 	///
 	explicit
-	InsetUrl(InsetCommandParams const &);
+	InsetUrl(InsetCommandParams const &, bool same_id = false);
         ///
-	virtual Inset * clone(Buffer const &) const {
-		return new InsetUrl(params());
+	virtual Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetUrl(params(), same_id);
 	}
 	///
 	Inset::Code lyxCode() const { return Inset::URL_CODE; }

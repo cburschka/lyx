@@ -32,12 +32,14 @@ InsetMarginal::InsetMarginal()
 }
 
 
-Inset * InsetMarginal::clone(Buffer const &) const
+Inset * InsetMarginal::clone(Buffer const &, bool same_id) const
 {
 	InsetMarginal * result = new InsetMarginal;
-	result->inset.init(&inset);
+	result->inset.init(&inset, same_id);
 	
 	result->collapsed = collapsed;
+	if (same_id)
+		result->id_ = id_;
 	return result;
 }
 

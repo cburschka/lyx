@@ -171,12 +171,14 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetFloat::clone(Buffer const &) const
+Inset * InsetFloat::clone(Buffer const &, bool same_id) const
 {
 	InsetFloat * result = new InsetFloat(floatType_);
-	result->inset.init(&inset);
+	result->inset.init(&inset, same_id);
 
 	result->collapsed = collapsed;
+	if (same_id)
+		result->id_ = id_;
 	return result;
 }
 

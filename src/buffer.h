@@ -427,6 +427,16 @@ public:
 	inset_iterator inset_iterator_end() {
 		return inset_iterator();
 	}
+	///
+	inset_iterator inset_const_iterator_begin() const {
+		return inset_iterator(paragraph);
+	}
+	///
+	inset_iterator inset_const_iterator_end() const {
+		return inset_iterator();
+	}
+	///
+	Inset * getInsetFromID(int id_arg) const;
 };
 
 

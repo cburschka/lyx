@@ -23,10 +23,11 @@
 class InsetTOC : public InsetCommand {
 public:
 	///
-	InsetTOC(InsetCommandParams const & p) : InsetCommand(p) {}
+	InsetTOC(InsetCommandParams const & p, bool same_id = false)
+			: InsetCommand(p, same_id) {}
 	///
-        virtual Inset * clone(Buffer const &) const {
-		return new InsetTOC(params());
+	virtual Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetTOC(params(), same_id);
 	}
     	///
 	string const getScreenLabel() const;

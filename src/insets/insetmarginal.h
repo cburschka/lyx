@@ -26,7 +26,7 @@ public:
 	///
 	InsetMarginal();
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	Inset::Code lyxCode() const { return Inset::MARGIN_CODE; }
 	///

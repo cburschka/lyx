@@ -62,6 +62,7 @@ class LyXLex;
 class Painter;
 class BufferView;
 class Buffer;
+class Paragraph;
 
 class InsetTabular : public UpdatableInset {
 public:
@@ -77,11 +78,11 @@ public:
 	///
 	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
 	///
-	InsetTabular(InsetTabular const &, Buffer const &);
+	InsetTabular(InsetTabular const &, Buffer const &, bool same_id = false);
 	///
 	~InsetTabular();
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	void read(Buffer const *, LyXLex &);
 	///
@@ -196,6 +197,14 @@ public:
 	void scroll(BufferView *bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
+	///
+	Paragraph * getParFromID(int id) const;
+	///
+	Inset * getInsetFromID(int id) const;
+	///
+	Paragraph * firstParagraph() const;
+	///
+	LyXCursor const & cursor(BufferView *) const;
 
 	//
 	// Public structures and variables
@@ -281,7 +290,7 @@ private:
 	///
 	Buffer const * buffer;
 	///
-	mutable LyXCursor cursor;
+	mutable LyXCursor cursor_;
 	///
 	mutable unsigned int inset_x;
 	///

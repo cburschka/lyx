@@ -57,12 +57,14 @@ void InsetList::write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetList::clone(Buffer const &) const
+Inset * InsetList::clone(Buffer const &, bool same_id) const
 {
 	InsetList * result = new InsetList;
-	result->inset.init(&inset);
+	result->inset.init(&inset, same_id);
 	
 	result->collapsed = collapsed;
+	if (same_id)
+		result->id_ = id_;
 	return result;
 }
 

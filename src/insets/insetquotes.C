@@ -326,7 +326,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetQuotes::clone(Buffer const &) const
+Inset * InsetQuotes::clone(Buffer const &, bool) const
 {
   return new InsetQuotes(language, side, times);
 }

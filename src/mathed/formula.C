@@ -76,7 +76,7 @@ InsetFormula::InsetFormula(string const & s)
 }
 
 
-Inset * InsetFormula::clone(Buffer const &) const
+Inset * InsetFormula::clone(Buffer const &, bool) const
 {
 	return new InsetFormula(*this);
 }

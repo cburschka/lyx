@@ -21,10 +21,10 @@
 class InsetLabel : public InsetCommand {
 public:
 	///
-	InsetLabel(InsetCommandParams const &);
+	InsetLabel(InsetCommandParams const &, bool same_id = false);
 	///
-	virtual Inset * clone(Buffer const &) const {
-		return new InsetLabel(params());
+	virtual Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetLabel(params(), same_id);
 	}
 	///
 	string const getScreenLabel() const { return getContents(); }

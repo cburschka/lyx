@@ -174,16 +174,18 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-Inset * InsetMinipage::clone(Buffer const &) const
+Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
 {
 	InsetMinipage * result = new InsetMinipage;
-	result->inset.init(&inset);
+	result->inset.init(&inset, same_id);
 	
 	result->collapsed = collapsed;
 	result->pos_ = pos_;
 	result->inner_pos_ = inner_pos_;
 	result->height_ = height_;
 	result->width_ = width_;
+	if (same_id)
+		result->id_ = id_;
 	return result;
 }
 

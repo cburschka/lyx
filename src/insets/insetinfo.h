@@ -68,7 +68,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	virtual Inset * clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	static void closeInfoCB(FL_OBJECT *, long data);
 private:

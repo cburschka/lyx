@@ -243,7 +243,7 @@ void InsetInfo::edit(BufferView *bv, int, int, unsigned int)
 }
 
 
-Inset * InsetInfo::clone(Buffer const &) const
+Inset * InsetInfo::clone(Buffer const &, bool) const
 {
 	return new InsetInfo(contents);
 }

@@ -22,10 +22,10 @@
 class InsetCitation : public InsetCommand {
 public:
 	///
-	InsetCitation(InsetCommandParams const &);
+	InsetCitation(InsetCommandParams const &, bool same_id = false);
 	///
-	Inset * clone(Buffer const &) const {
-		return new InsetCitation(params());
+	Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetCitation(params(), same_id);
 	}
 	///
 	string const getScreenLabel() const;

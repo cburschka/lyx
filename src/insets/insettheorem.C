@@ -54,8 +54,9 @@ void InsetTheorem::write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetTheorem::clone(Buffer const &) const
+Inset * InsetTheorem::clone(Buffer const &, bool) const
 {
+#warning Is this inset used? If YES this is WRONG!!! (Jug)
 	InsetTheorem * result = new InsetTheorem;
 	
 	result->collapsed = collapsed;

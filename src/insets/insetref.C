@@ -18,7 +18,7 @@
 
 using std::ostream;
 
-InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
+InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
 	: InsetCommand(p), isLatex(buf.isLatex())
 {}
 

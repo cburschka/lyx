@@ -46,12 +46,14 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetERT::clone(Buffer const &) const
+Inset * InsetERT::clone(Buffer const &, bool same_id) const
 {
 	InsetERT * result = new InsetERT;
-	result->inset.init(&inset);
+	result->inset.init(&inset, same_id);
 	
 	result->collapsed = collapsed;
+	if (same_id)
+		result->id_ = id_;
 	return result;
 }
 
@@ -92,9 +94,9 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {
-	Paragraph::size_type siz = inset.par->size();
+	Paragraph::size_type siz = inset.paragraph()->size();
 	for (Paragraph::size_type i = 0; i != siz; ++i) {
-		os << inset.par->getChar(i);
+		os << inset.paragraph()->getChar(i);
 	}
 	return 1;
 }

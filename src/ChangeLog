@@ -1,3 +1,33 @@
+2001-07-06  Juergen Vigna  <jug@sad.it>
+
+	* a lot of files: changed the access to LyXText::status and the
+	call of undo-functions.
+	
+	* undo.[Ch]: added a inset_id to the undo informations.
+
+	* undo_funcs.[Ch]: added and moved here all undo functions.
+
+	* lyxtext.h: give the status enum a weight, made status_ a private
+	variable and made accessor functions for it, removed the whole bunch
+	of undo-functions as they are now in their own file, make some
+	functions publically available. Added function ownerParagraph with
+	int parameter.
+
+	* paragraph.[Ch]: added "bool same_ids" to the constructor,
+	made InInset() a const function, added getParFromID() function.
+
+	* buffer.[Ch]: added const version for inset_iterator functions,
+	added getInsetFromID() function.
+
+	* BufferView2.C, BufferView_pimpl.C, text.C, text2.C, lyxfunc.C:
+	changed undo functions for new version.
+
+2001-07-05  Juergen Vigna  <jug@sad.it>
+
+	* paragraph_pimpl.C (Pimpl): set id_ also here (this is because some
+	unknow mechanism does not call the proper consturctor but only this
+	one also if I request the other!?
+
 2001-07-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* BufferView_pimpl.C (resizeCurrentBuffer): init the new LyXText

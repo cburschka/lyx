@@ -24,7 +24,7 @@ struct Paragraph::Pimpl {
 	///
 	Pimpl(Paragraph * owner);
 	/// Copy constructor
-	Pimpl(Pimpl const &, Paragraph * owner);
+	Pimpl(Pimpl const &, Paragraph * owner, bool same_ids = false);
 	///
 	Paragraph::size_type size() const {
 		return text.size();
@@ -139,6 +139,8 @@ struct Paragraph::Pimpl {
 				   LyXLayout const & style,
 				   size_type & i,
 				   int & column, value_type const c);
+	///
+	Paragraph * getParFromID(int id) const;
 	///
 	unsigned int id_;
 	///

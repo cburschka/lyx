@@ -205,6 +205,8 @@ lyx_SOURCES = \
 	trans_mgr.h \
 	undo.C \
 	undo.h \
+	undo_funcs.C \
+	undo_funcs.h \
 	undostack.C \
 	undostack.h \
 	vc-backend.C \

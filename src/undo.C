@@ -18,12 +18,13 @@
 #include "paragraph.h"
 
 
-Undo::Undo(undo_kind kind_arg,
+Undo::Undo(undo_kind kind_arg, int id_inset_arg,
 	   int number_before_arg, int number_behind_arg,
 	   int cursor_par_arg, int cursor_pos_arg,
 	   Paragraph * par_arg)
 {
 	kind = kind_arg;
+	number_of_inset_id = id_inset_arg;
 	number_of_before_par = number_before_arg;
 	number_of_behind_par = number_behind_arg;
 	number_of_cursor_par = cursor_par_arg;

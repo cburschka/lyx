@@ -42,6 +42,7 @@
 #include "math_deliminset.h"
 #include "support/lyxlib.h"
 #include "mathed/support.h"
+#include "undo_funcs.h"
 
 using std::endl;
 using std::ostream;
@@ -82,7 +83,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 	LyXText * lt = bv->getLyXText();
 	
 	bv->beforeChange(lt);
-	lt->finishUndo();
+	finishUndo();
 	if (!bv->insertInset(new_inset)) {
 		delete new_inset;
 		return false;

@@ -272,7 +272,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			imageLoaded = true;
 
 			// Tell BufferView we need to be updated!
-			bv->text->status = LyXText::CHANGED_IN_DRAW;
+			bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
 			return;
 		}
 
@@ -621,10 +621,11 @@ InsetGraphicsParams InsetGraphics::getParams() const
 }
 
 
-Inset * InsetGraphics::clone(Buffer const &) const
+Inset * InsetGraphics::clone(Buffer const &, bool) const
 {
 #ifdef WITH_WARNINGS
 #warning use the copy constructor instead. (Lgb)
+#warning and then please honor the same_id flag (Jug)
 #endif
 	InsetGraphics * newInset = new InsetGraphics;
 

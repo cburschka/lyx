@@ -1556,7 +1556,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			}
 		}
 		par->copyIntoMinibuffer(*owner_->bufferOwner(), i);
-		inset->par->insertFromMinibuffer(inset->par->size());
+		inset->paragraph()->insertFromMinibuffer(inset->paragraph()->size());
 	}
 	delete par;
 	Reinit();
@@ -2163,8 +2163,8 @@ int LyXTabular::Latex(Buffer const * buf,
 			ret += TeXCellPreamble(os, cell);
 			InsetText * inset = GetCellInset(cell);
 
-			bool rtl = inset->par->isRightToLeftPar(buf->params) &&
-					inset->par->size() > 0 && GetPWidth(cell).empty();
+			bool rtl = inset->paragraph()->isRightToLeftPar(buf->params) &&
+					inset->paragraph()->size() > 0 && GetPWidth(cell).empty();
 
 			if (rtl)
 				os << "\\R{";
@@ -2570,7 +2570,7 @@ std::vector<string> const LyXTabular::getLabelList() const
 			
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {
-	Paragraph * par = GetCellInset(cell)->par;
+	Paragraph * par = GetCellInset(cell)->paragraph();
 
 	for (; par; par = par->next()) {
 		for (int i = 0; i < par->size(); ++i) {

@@ -30,6 +30,7 @@
 #include "support/lyxfunctional.h" //equal_1st_in_pair
 #include "language.h"
 #include "gettext.h"
+#include "undo_funcs.h"
 
 extern BufferList bufferlist;
 
@@ -227,7 +228,7 @@ void BufferView::menuUndo()
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		if (!text->textUndo(this))
+		if (!textUndo(this))
 			owner()->message(_("No forther undo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -248,7 +249,7 @@ void BufferView::menuRedo()
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		if (!text->textRedo(this))
+		if (!textRedo(this))
 			owner()->message(_("No further redo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -469,11 +470,11 @@ int BufferView::unlockInset(UpdatableInset * inset)
 	if (inset && theLockingInset() == inset) {
 		inset->insetUnlock(this);
 		theLockingInset(0);
-		text->finishUndo();
+		finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&
 		   theLockingInset()->unlockInsetInInset(this, inset)) {
-		text->finishUndo();
+		finishUndo();
 		return 0;
 	}
 	return bufferlist.unlockInset(inset);
@@ -486,9 +487,9 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
-	text->setUndo(buffer(), kind,
-		      text->cursor.par()->previous(), 
-		      text->cursor.par()->next());
+	setUndo(this, kind,
+	        text->cursor.par(),
+	        text->cursor.par()->next());
 }
 
 

@@ -27,10 +27,10 @@ class Buffer;
 class InsetParent : public InsetCommand {
 public:
 	///
-	InsetParent(InsetCommandParams const &, Buffer const &);
+	InsetParent(InsetCommandParams const &, Buffer const &, bool same_id = false);
 	///
-	virtual Inset * clone(Buffer const & buffer) const {
-		return new InsetParent(params(), buffer);
+	virtual Inset * clone(Buffer const & buffer, bool same_id = false) const {
+		return new InsetParent(params(), buffer, same_id);
 	}
     	///
 	string const getScreenLabel() const;

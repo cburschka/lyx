@@ -192,7 +192,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 		// we don't need anymore to clear here we just have to tell
 		// the underlying LyXText that it should do the RowClear!
 		inset.setUpdateStatus(bv, InsetText::FULL);
-		bv->text->status = LyXText::CHANGED_IN_DRAW;
+		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
 		return;
 #else
 		int w =  owner() ? width(bv, f) : pain.paperWidth();
@@ -496,4 +496,26 @@ int InsetCollapsable::scroll(bool recursive) const
 		sx += inset.scroll(recursive);
 
 	return sx;
+}
+
+Paragraph * InsetCollapsable::getParFromID(int id) const
+{
+	return inset.getParFromID(id);
+}
+
+Paragraph * InsetCollapsable::firstParagraph() const
+{
+	return inset.firstParagraph();
+}
+
+LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
+{
+	return inset.cursor(bv);
+}
+
+Inset * InsetCollapsable::getInsetFromID(int id_arg) const
+{
+	if (id_arg == id())
+		return const_cast<InsetCollapsable *>(this);
+	return inset.getInsetFromID(id_arg);
 }

@@ -1,3 +1,13 @@
+2001-07-06  Juergen Vigna  <jug@sad.it>
+
+	* a lot of files: added implementation of the below new functions
+	and the change to clone(). Also the call of the new undo-functions
+	where needed.
+	
+	* inset.h: added an inset_id, added functions getParFromID,
+	getInsetFromID, firstParagraph, cursor and id functions, added
+	bool same_ids to clone function.
+
 2001-07-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insettext.[hC]: make cached_text a shared_ptr, make Cache be a map
@@ -66,6 +76,11 @@
 	* inseturl.C: fix method names in these to begin
 	  with small char too, so they inherit
  
+2001-06-28  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (setFont): fixed font settings using toggleFree()
+	instead of setFont().
+
 2001-06-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Change a lot of method names to begin with a small char.

@@ -59,6 +59,7 @@
 #include "insets/insetspecialchar.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
+#include "undo_funcs.h"
 #include "mathed/formulabase.h"
 
 extern LyXTextClass::size_type current_layout;
@@ -629,7 +630,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	
 	if (!inset_hit) // otherwise it was already set in checkInsetHit(...)
 		bv_->text->setCursorFromCoordinates(bv_, xpos, ypos + screen_first);
-	bv_->text->finishUndo();
+	finishUndo();
 	bv_->text->selection.cursor = bv_->text->cursor;
 	bv_->text->cursor.x_fix(bv_->text->cursor.x());
 	
@@ -774,7 +775,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// ...or maybe the SetCursorParUndo()
 		// below isn't necessary at all anylonger?
 		if (inset_hit->lyxCode() == Inset::REF_CODE) {
-			bv_->text->setCursorParUndo(buffer_);
+			setCursorParUndo(bv_);
 		}
 
 		owner_->message(inset_hit->editMessage());
@@ -1062,7 +1063,7 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 		y += bv_->text->first;
 	Row * cursorrow = text->cursor.row();
 	text->setCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y);
-	bv_->text->finishUndo();
+	finishUndo();
 	// This is to allow jumping over large insets
 	if ((cursorrow == text->cursor.row()))
 		text->cursorUp(bv_);
@@ -1090,7 +1091,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
     
 	Row * cursorrow = text->cursor.row();
 	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea_->height());
-	bv_->text->finishUndo();
+	finishUndo();
 	// This is to allow jumping over large insets
 	if ((cursorrow == bv_->text->cursor.row()))
 		text->cursorDown(bv_);
@@ -1219,7 +1220,7 @@ void BufferView::Pimpl::insetUnlock()
 		if (!inset_slept)
 			bv_->theLockingInset()->insetUnlock(bv_);
 		bv_->theLockingInset(0);
-		bv_->text->finishUndo();
+		finishUndo();
 		inset_slept = false;
 	}
 }
@@ -1819,7 +1820,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		}
 		if (!is_rtl)
 			lt->cursorRight(bv_, false);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1861,7 +1862,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if  (is_rtl)
 			lt->cursorRight(bv_, false);
 
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1875,7 +1876,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
 		lt->cursorUp(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1889,7 +1890,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
 		lt->cursorDown(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1903,7 +1904,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
 		lt->cursorUpParagraph(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1917,7 +1918,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
 		lt->cursorDownParagraph(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1931,7 +1932,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
 		cursorPrevious(lt);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1945,7 +1946,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
 		cursorNext(lt);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1959,7 +1960,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorHome(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1974,7 +1975,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorEnd(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -1990,7 +1991,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorTab(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -2007,7 +2008,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeftOneWord(bv_);
 		else
 			lt->cursorRightOneWord(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -2024,7 +2025,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRightOneWord(bv_);
 		else
 			lt->cursorLeftOneWord(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -2039,7 +2040,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorTop(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -2054,7 +2055,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorBottom(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(false);
 		owner_->showState();
 	}
@@ -2071,7 +2072,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeft(bv_);
 		else
 			lt->cursorRight(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2087,7 +2088,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRight(bv_);
 		else
 			lt->cursorLeft(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2100,7 +2101,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorUp(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2113,7 +2114,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorDown(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2126,7 +2127,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorUpParagraph(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2139,7 +2140,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorDownParagraph(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2151,7 +2152,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		cursorPrevious(lt);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2163,7 +2164,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		cursorNext(lt);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2175,7 +2176,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorHome(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2187,7 +2188,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorEnd(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2202,7 +2203,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeftOneWord(bv_);
 		else
 			lt->cursorRightOneWord(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2217,7 +2218,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRightOneWord(bv_);
 		else
 			lt->cursorLeftOneWord(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2231,7 +2232,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			break;
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorTop(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -2246,7 +2247,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorBottom(bv_);
-		lt->finishUndo();
+		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
 	}
@@ -3308,7 +3309,7 @@ bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
 	LyXText * lt = bv_->getLyXText();
 	
 	beforeChange(lt);
-	lt->finishUndo();
+	finishUndo();
 	if (!insertInset(new_inset)) {
 		delete new_inset;
 		return false;
@@ -3333,8 +3334,8 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	}
 
 	// not quite sure if we want this...
-	bv_->text->setCursorParUndo(buffer_);
-	bv_->text->freezeUndo();
+	setCursorParUndo(bv_);
+	freezeUndo();
 	
 	beforeChange(bv_->text);
 	if (!lout.empty()) {
@@ -3378,7 +3379,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	bv_->text->insertInset(bv_, inset);
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
-	bv_->text->unFreezeUndo();
+	unFreezeUndo();
 	return true;
 }
 

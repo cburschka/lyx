@@ -26,7 +26,7 @@ using std::ostream;
 
 /* Error, used for the LaTeX-Error Messages */
 
-InsetError::InsetError(string const & str)
+InsetError::InsetError(string const & str, bool)
 	: contents(str)
 {}
 

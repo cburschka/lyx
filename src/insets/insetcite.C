@@ -19,7 +19,7 @@
 #include "frontends/Dialogs.h"
 #include "support/lstrings.h"
 
-InsetCitation::InsetCitation(InsetCommandParams const & p)
+InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
 

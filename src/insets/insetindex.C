@@ -11,7 +11,7 @@
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 
-InsetIndex::InsetIndex(InsetCommandParams const & p)
+InsetIndex::InsetIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
 
@@ -28,7 +28,7 @@ void InsetIndex::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
+InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
 

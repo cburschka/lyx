@@ -94,7 +94,7 @@ public:
 	explicit
 	Paragraph(Paragraph * par);
 	///
-	Paragraph(Paragraph const &);
+	Paragraph(Paragraph const &, bool same_ids = false);
 	/// the destructor removes the new paragraph from the list
 	~Paragraph();
 
@@ -150,7 +150,7 @@ public:
 	    proof environment */
 	int getEndLabel(BufferParams const &) const;
 	///
-	Inset * InInset();
+	Inset * InInset() const;
 	///
 	void setInsetOwner(Inset * i);
 	///
@@ -320,6 +320,9 @@ public:
 
 	/// returns -1 if inset not found
 	int getPositionOfInset(Inset * inset) const;
+
+	/// some good comment here John?
+	Paragraph * getParFromID(int id) const;
 
 	///
 	int stripLeadingSpaces(LyXTextClassList::size_type tclass); 

@@ -29,7 +29,7 @@
 using std::ostream;
 
 
-InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf)
+InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 	: InsetCommand(p)
 {
 	string const fn = p.getContents();

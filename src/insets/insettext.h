@@ -21,6 +21,8 @@
 
 #include "inset.h"
 #include "LString.h"
+#include "LColor.h"
+#include "paragraph.h"
 #include "lyxcursor.h"
 #include <boost/smart_ptr.hpp>
 
@@ -28,10 +30,9 @@ class Painter;
 class BufferView;
 class Buffer;
 class LyXCursor;
-class Paragraph;
-class LColor;
 class LyXText;
 class LyXScreen;
+class Row;
 
 /**
  A text inset is like a TeX box to write full text
@@ -74,11 +75,11 @@ public:
 	InsetText();
 	///
 	explicit
-	InsetText(InsetText const &);
+	InsetText(InsetText const &, bool same_id = false);
 	///
 	~InsetText();
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	InsetText & operator=(InsetText const & it);
 	///
@@ -161,7 +162,7 @@ public:
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
-	void init(InsetText const * ins = 0);
+	void init(InsetText const * ins = 0, bool same_id = false);
 	///
 	void writeParagraphData(Buffer const *, std::ostream &) const;
 	///
@@ -201,8 +202,18 @@ public:
 	void selectAll(BufferView *bv);
 	///
 	void clearSelection(BufferView *bv);
-
-	Paragraph * par;
+	///
+	Paragraph * getParFromID(int id) const;
+	///
+	Inset * getInsetFromID(int id) const;
+	///
+	Paragraph * firstParagraph() const;
+	///
+	LyXCursor const & cursor(BufferView *) const;
+	///
+	Paragraph * paragraph() const;
+	///
+	void paragraph(Paragraph *);
 	///
 	mutable int need_update;
 
@@ -283,6 +294,8 @@ private:
 	void clearInset(Painter &, int baseline, bool & cleared) const;
 	
 	/* Private structures and variables */
+	///
+	Paragraph * par;
 	///
 	mutable bool locked;
 	///

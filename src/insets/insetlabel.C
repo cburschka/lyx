@@ -31,7 +31,7 @@ using std::pair;
 /* Label. Used to insert a label automatically */
 
 
-InsetLabel::InsetLabel(InsetCommandParams const & p)
+InsetLabel::InsetLabel(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
 

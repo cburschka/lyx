@@ -24,6 +24,8 @@
 
 class Painter;
 class LyXText;
+class Paragraph;
+class LyXCursor;
 
 /** A colapsable text inset
   
@@ -139,6 +141,14 @@ public:
 	void scroll(BufferView *bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
+	///
+	Paragraph * getParFromID(int id) const;
+	///
+	Inset * getInsetFromID(int id) const;
+	///
+	Paragraph * firstParagraph() const;
+	///
+	LyXCursor const & cursor(BufferView *) const;
 
 protected:
 	///

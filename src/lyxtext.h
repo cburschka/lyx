@@ -17,7 +17,6 @@
 #endif
 
 #include "lyxfont.h"
-#include "undo.h"
 #include "lyxcursor.h"
 #include "paragraph.h"
 #include "layout.h"
@@ -38,13 +37,13 @@ public:
 	///
 	enum text_status {
 		///
-		UNCHANGED,
+		UNCHANGED = 0,
 		///
-		NEED_MORE_REFRESH,
+		CHANGED_IN_DRAW = 1,
 		///
-		NEED_VERY_LITTLE_REFRESH,
+		NEED_VERY_LITTLE_REFRESH = 2,
 		///
-		CHANGED_IN_DRAW
+		NEED_MORE_REFRESH = 3
 	};
 	///
 	enum word_location {
@@ -182,12 +181,18 @@ public:
 	mutable Row * refresh_row;
 	///
 	int refresh_pos;
-	
+
+	/// give and set the LyXText status
+	text_status status() const;
+	void status(BufferView *, text_status) const;
+
+private:	
 	/** wether the screen needs a refresh,
 	   starting with refresh_y
 	   */
-	mutable text_status status;
+	mutable text_status status_;
 	
+public:
 	/** returns a pointer to the row near the specified y-coordinate
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
@@ -362,7 +367,7 @@ public:
 				       LyXCursor const & to,
 				       LyXText::TextCase action);
 	///
-	void transposeChars(BufferView const &);
+	void transposeChars(BufferView &);
 	
 	/** returns a printed row in a pixmap. The y value is needed to
 	  decide, wether it is selected text or not. This is a strange
@@ -438,39 +443,8 @@ public:
 	int numberOfCell(Paragraph * par,
 			 Paragraph::size_type pos) const;
 	///
-	Paragraph * getParFromID(int id);
+	Paragraph * getParFromID(int id) const;
 
-	// undo functions
-	/// returns false if no undo possible
-	bool textUndo(BufferView *);
-	/// returns false if no redo possible
-	bool textRedo(BufferView *);
-	/// used by TextUndo/TextRedo
-	bool textHandleUndo(BufferView *, Undo * undo);
-	/// makes sure the next operation will be stored
-	void finishUndo();
-	/// this is dangerous and for internal use only
-	void freezeUndo();
-	/// this is dangerous and for internal use only
-	void unFreezeUndo();
-	/// the flag used by FinishUndo();
-	mutable bool undo_finished;
-	/// a flag
-	bool undo_frozen;
-	///
-	void setUndo(Buffer *, Undo::undo_kind kind,
-		     Paragraph const * before,
-		     Paragraph const * end) const;
-	///
-	void setRedo(Buffer *, Undo::undo_kind kind,
-		     Paragraph const * before,
-		     Paragraph const * end);
-	///
-	Undo * createUndo(Buffer *, Undo::undo_kind kind,
-			  Paragraph const * before,
-			  Paragraph const * end) const;
-	/// for external use in lyx_cb.C
-	void setCursorParUndo(Buffer *);
 	///
 	void removeTableRow(LyXCursor & cursor) const;
 	///
@@ -562,9 +536,11 @@ private:
 	void deleteEmptyParagraphMechanism(BufferView *,
 					   LyXCursor const & old_cursor) const;
 
+public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */ 
 	void updateCounters(BufferView *, Row * row) const;
+private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;
    
@@ -660,12 +636,15 @@ private:
 
 	///
 	void charInserted();
+public:
 	//
 	// special owner functions
 	///
 	Paragraph * ownerParagraph() const;
 	//
 	Paragraph * ownerParagraph(Paragraph *) const;
+	// set it searching first for the right owner using the paragraph id
+	Paragraph * ownerParagraph(int id, Paragraph *) const;
 };
 
 

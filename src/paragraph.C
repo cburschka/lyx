@@ -107,10 +107,11 @@ Paragraph::Paragraph(Paragraph * par)
 }
 
 
-Paragraph::Paragraph(Paragraph const & lp)
-	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
+Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
+	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
 {
-	for (int i = 0; i < 10; ++i) setCounter(i , 0);
+	for (int i = 0; i < 10; ++i)
+		setCounter(i , 0);
 	enumdepth = 0;
 	itemdepth = 0;
 	next_ = 0;
@@ -132,8 +133,9 @@ Paragraph::Paragraph(Paragraph const & lp)
 
 	insetlist = lp.insetlist;
 	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		it->inset = it->inset->clone(*current_view->buffer());
+	     it != insetlist.end(); ++it)
+	{
+		it->inset = it->inset->clone(*current_view->buffer(), same_ids);
 	}
 }
 
@@ -2016,7 +2018,7 @@ bool Paragraph::isFirstInSequence() const
 }
 
 
-Inset * Paragraph::InInset()
+Inset * Paragraph::InInset() const
 {
 	return pimpl_->inset_owner;
 }
@@ -2081,3 +2083,7 @@ ParagraphParameters const & Paragraph::params() const
 	return pimpl_->params;
 }
 
+Paragraph * Paragraph::getParFromID(int id) const
+{
+	return pimpl_->getParFromID(id);
+}

@@ -222,7 +222,7 @@ int InsetSpecialChar::docBook(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetSpecialChar::clone(Buffer const &) const
+Inset * InsetSpecialChar::clone(Buffer const &, bool) const
 {
 	return new InsetSpecialChar(kind);
 }

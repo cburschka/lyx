@@ -1114,7 +1114,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			    lyxerr << "WP:" << mini->width() << endl;
 			    mini->width(tostr(par->params().pextraWidthp())+"%");
 			}
-			mini->inset.par = par;
+			mini->inset.paragraph(par);
 			// Insert the minipage last in the
 			// previous paragraph.
 			if (par->params().pextraHfill()) {
@@ -1184,7 +1184,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		    lyxerr << "WP:" << mini->width() << endl;
 		    mini->width(tostr(par->params().pextraWidthp())+"%");
 		}
-		mini->inset.par = minipar;
+		mini->inset.paragraph(minipar);
 			
 		// Insert the minipage last in the
 		// previous paragraph.
@@ -3438,7 +3438,7 @@ Buffer::Lists const Buffer::getLists() const
 					// Now find the caption in the float...
 					// We now tranverse the paragraphs of
 					// the inset...
-					Paragraph * tmp = il->inset.par;
+					Paragraph * tmp = il->inset.paragraph();
 					while (tmp) {
 						if (tmp->layout == cap) {
 							SingleList & item = l[type];
@@ -3622,4 +3622,19 @@ void Buffer::inset_iterator::setParagraph()
 	}
 	//it = 0;
 	// We maintain an invariant that whenever par = 0 then it = 0
+}
+
+
+Inset * Buffer::getInsetFromID(int id_arg) const
+{
+	for (inset_iterator it = inset_const_iterator_begin();
+		 it != inset_const_iterator_end(); ++it)
+	{
+		if ((*it)->id() == id_arg)
+			return *it;
+		Inset * in = (*it)->getInsetFromID(id_arg);
+		if (in)
+			return in;
+	}
+	return 0;
 }

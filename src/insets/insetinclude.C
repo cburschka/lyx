@@ -112,7 +112,7 @@ void InsetInclude::set(Params const & p)
 }
 
 
-Inset * InsetInclude::clone(Buffer const & buffer) const
+Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 {
 	Params p(params_);
 	p.masterFilename_ = buffer.fileName();

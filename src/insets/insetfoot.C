@@ -32,12 +32,14 @@ InsetFoot::InsetFoot()
 }
 
 
-Inset * InsetFoot::clone(Buffer const &) const
+Inset * InsetFoot::clone(Buffer const &, bool same_id) const
 {
 	InsetFoot * result = new InsetFoot;
-	result->inset.init(&inset);
+	result->inset.init(&inset, same_id);
 
 	result->collapsed = collapsed;
+	if (same_id)
+		result->id_ = id_;
 	return result;
 }
 

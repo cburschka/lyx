@@ -124,13 +124,13 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
-		LyXText::text_status st = bv->text->status;
+		LyXText::text_status st = bv->text->status();
 		do {
-			bv->text->status = st;
+			bv->text->status(bv, st);
 			text->getVisibleRow(bv, y + y_offset,
 					    x_offset, row, y + text->first);
-		} while (bv->text->status == LyXText::CHANGED_IN_DRAW);
-		bv->text->status = st;
+		} while (bv->text->status() == LyXText::CHANGED_IN_DRAW);
+		bv->text->status(bv, st);
 		y += row->height();
 		row = row->next();
 	}
@@ -154,13 +154,13 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(owner.height()))) {
 		// ok there is something visible
-		LyXText::text_status st = bv->text->status;
+		LyXText::text_status st = bv->text->status();
 		do {
-			bv->text->status = st;
+			bv->text->status(bv, st);
 			text->getVisibleRow(bv, y, x_offset, row,
 					    y + text->first);
-		} while (bv->text->status == LyXText::CHANGED_IN_DRAW);
-		bv->text->status = st;
+		} while (bv->text->status() == LyXText::CHANGED_IN_DRAW);
+		bv->text->status(bv, st);
 	}
 	force_clear = false;
 }
@@ -420,13 +420,13 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 void LyXScreen::update(LyXText * text, BufferView * bv,
 		       int y_offset, int x_offset)
 {
-	switch (text->status) {
+	switch (text->status()) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
 		int const y = max(int(text->refresh_y - text->first), 0);
 		drawFromTo(text, bv, y, owner.height(), y_offset, x_offset);
 		text->refresh_y = 0;
-		text->status = LyXText::UNCHANGED;
+		text->status(bv, LyXText::UNCHANGED);
 		expose(0, y, owner.workWidth(), owner.height() - y);
 	}
 	break;
@@ -435,7 +435,7 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 		// ok I will update the current cursor row
 		drawOneRow(text, bv, text->refresh_row, text->refresh_y,
 			   y_offset, x_offset);
-		text->status = LyXText::UNCHANGED;
+		text->status(bv, LyXText::UNCHANGED);
 		expose(0, text->refresh_y - text->first + y_offset,
 		       owner.workWidth(), text->refresh_row->height());
 	}

@@ -35,6 +35,7 @@
 #include "BufferView.h"
 #include "language.h"
 #include "ParagraphParameters.h"
+#include "undo_funcs.h"
 
 using std::max;
 using std::min;
@@ -436,9 +437,9 @@ void LyXText::draw(BufferView * bview, Row const * row,
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 			               cleared);
 #ifdef SEEMS_TO_BE_NOT_NEEDED
-			if (status == CHANGED_IN_DRAW) {
+			if (status_ == CHANGED_IN_DRAW) {
 				UpdateInset(bview, tmpinset);
-				status = CHANGED_IN_DRAW;
+				status(bview, CHANGED_IN_DRAW);
 			}
 #endif
 		}
@@ -1597,9 +1598,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
        && layout.labeltype!= LABEL_SENSITIVE)
 	   return;
    
-   setUndo(bview->buffer(), Undo::INSERT,
-	   cursor.par()->previous(), 
-	   cursor.par()->next()); 
+   setUndo(bview, Undo::INSERT,cursor.par(),cursor.par()->next()); 
 
    // Always break behind a space
    //
@@ -1636,7 +1635,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 	   cursorLeft(bview);
    } 
    
-   status = LyXText::NEED_MORE_REFRESH;
+   status(bview, LyXText::NEED_MORE_REFRESH);
    refresh_row = cursor.row();
    refresh_y = cursor.y() - cursor.row()->baseline();
    
@@ -1690,9 +1689,8 @@ void LyXText::redoParagraph(BufferView * bview) const
  * same Paragraph one to the right and make a rebreak */
 void LyXText::insertChar(BufferView * bview, char c)
 {
-	setUndo(bview->buffer(), Undo::INSERT,
-		cursor.par()->previous(),
-		cursor.par()->next());
+	setUndo(bview, Undo::INSERT,
+		cursor.par(), cursor.par()->next());
 
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
@@ -1855,7 +1853,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 			y -= row->previous()->height();
 			refresh_y = y;
 			refresh_row = row->previous();
-			status = LyXText::NEED_MORE_REFRESH;
+			status(bview, LyXText::NEED_MORE_REFRESH);
 	     
 			breakAgainOneRow(bview, row);
 
@@ -1890,7 +1888,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 		refresh_row = row; 
 		refresh_x = cursor.x();
 		refresh_pos = cursor.pos();
-		status = LyXText::NEED_MORE_REFRESH;
+		status(bview, LyXText::NEED_MORE_REFRESH);
 		breakAgainOneRow(bview, row); 
 		// will the cursor be in another row now?
 		if (rowLast(row) <= cursor.pos() + 1 && row->next()) {
@@ -1921,9 +1919,9 @@ void LyXText::insertChar(BufferView * bview, char c)
 		int const tmpheight = row->height();
 		setHeightOfRow(bview, row);
 		if (tmpheight == row->height())
-			status = LyXText::NEED_VERY_LITTLE_REFRESH;
+			status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
 		else
-			status = LyXText::NEED_MORE_REFRESH;
+			status(bview, LyXText::NEED_MORE_REFRESH);
             
 		current_font = rawtmpfont;
 		real_current_font = realtmpfont;
@@ -2414,8 +2412,8 @@ void LyXText::changeRegionCase(BufferView * bview,
 {
 	lyx::Assert(from <= to);
 	
-	setUndo(bview->buffer(), Undo::FINISH,
-		from.par()->previous(), to.par()->next());
+	setUndo(bview, Undo::FINISH,
+		from.par(), to.par()->next());
 
 	Paragraph::size_type pos = from.pos();
 	Paragraph * par = from.par();
@@ -2448,17 +2446,17 @@ void LyXText::changeRegionCase(BufferView * bview,
 	if (to.row() != from.row()) {
 		refresh_y = from.y() - from.row()->baseline();
 		refresh_row = from.row();
-		status = LyXText::NEED_MORE_REFRESH;
+		status(bview, LyXText::NEED_MORE_REFRESH);
 	}
 }
 
 
-void LyXText::transposeChars(BufferView const & bview)
+void LyXText::transposeChars(BufferView & bview)
 {
 	Paragraph * tmppar = cursor.par();
 
-	setUndo(bview.buffer(), Undo::FINISH,
-		tmppar->previous(), tmppar->next()); 
+	setUndo(&bview, Undo::FINISH,
+		tmppar, tmppar->next()); 
 
 	Paragraph::size_type tmppos = cursor.pos();
 
@@ -2511,9 +2509,8 @@ void LyXText::Delete(BufferView * bview)
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {
 		LyXCursor tmpcursor = cursor;
 		cursor = old_cursor; // to make sure undo gets the right cursor position
-		setUndo(bview->buffer(), Undo::DELETE,
-			cursor.par()->previous(), 
-			cursor.par()->next()); 
+		setUndo(bview, Undo::DELETE,
+			cursor.par(), cursor.par()->next()); 
 		cursor = tmpcursor;
 		backspace(bview);
 	}
@@ -2561,15 +2558,15 @@ void LyXText::backspace(BufferView * bview)
 				if (cursor.row()->height() != tmpheight) {
 					refresh_y = cursor.y() - cursor.row()->baseline();
 					refresh_row = cursor.row();
-					status = LyXText::NEED_MORE_REFRESH;
+					status(bview, LyXText::NEED_MORE_REFRESH);
 				}
 				return;
 			}
 		}
 
 		if (cursor.par()->previous()) {
-			setUndo(bview->buffer(), Undo::DELETE,
-				cursor.par()->previous()->previous(),
+			setUndo(bview, Undo::DELETE,
+				cursor.par()->previous(),
 				cursor.par()->next());
 		}
 		
@@ -2615,7 +2612,7 @@ void LyXText::backspace(BufferView * bview)
 				if (cursor.pos())
 					cursor.pos(cursor.pos() - 1);
 			
-			status = LyXText::NEED_MORE_REFRESH;
+			status(bview, LyXText::NEED_MORE_REFRESH);
 			refresh_row = cursor.row();
 			refresh_y = cursor.y() - cursor.row()->baseline();
 			
@@ -2637,9 +2634,8 @@ void LyXText::backspace(BufferView * bview)
 	} else {
 		/* this is the code for a normal backspace, not pasting
 		 * any paragraphs */ 
-		setUndo(bview->buffer(), Undo::DELETE,
-			cursor.par()->previous(),
-			cursor.par()->next()); 
+		setUndo(bview, Undo::DELETE,
+			cursor.par(), cursor.par()->next()); 
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
@@ -2755,7 +2751,7 @@ void LyXText::backspace(BufferView * bview)
 				
 				refresh_y = y;
 				refresh_row = tmprow;
-				status = LyXText::NEED_MORE_REFRESH;
+				status(bview, LyXText::NEED_MORE_REFRESH);
 				setCursor(bview, cursor.par(), cursor.pos(),
 					  false, cursor.boundary());
 				//current_font = rawtmpfont;
@@ -2783,7 +2779,7 @@ void LyXText::backspace(BufferView * bview)
 			
 			refresh_y = y;
 			refresh_row = row;
-			status = LyXText::NEED_MORE_REFRESH;
+			status(bview, LyXText::NEED_MORE_REFRESH);
 			
 			breakAgainOneRow(bview, row);
 			// will the cursor be in another row now?
@@ -2805,9 +2801,9 @@ void LyXText::backspace(BufferView * bview)
 			int const tmpheight = row->height();
 			setHeightOfRow(bview, row);
 			if (tmpheight == row->height())
-				status = LyXText::NEED_VERY_LITTLE_REFRESH;
+				status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
 			else
-				status = LyXText::NEED_MORE_REFRESH;
+				status(bview, LyXText::NEED_MORE_REFRESH);
 			refresh_y = y;
 			refresh_row = row;
 			setCursor(bview, cursor.par(), cursor.pos(), false, cursor.boundary());

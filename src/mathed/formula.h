@@ -60,7 +60,7 @@ public:
 	int docBook(std::ostream &) const;
 
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

@@ -78,7 +78,7 @@ class InsetCommand : public InsetButton, boost::noncopyable {
 public:
 	///
 	explicit
-	InsetCommand(InsetCommandParams const &);
+	InsetCommand(InsetCommandParams const &, bool same_id = false);
 	///
 	virtual ~InsetCommand() { hideDialog(); }
 	///

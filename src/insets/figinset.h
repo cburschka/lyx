@@ -59,7 +59,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	void callbackFig(long arg);
 	///

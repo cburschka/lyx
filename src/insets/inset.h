@@ -26,6 +26,8 @@ class Buffer;
 class Painter;
 class LyXText;
 class LyXLex;
+class Paragraph;
+class LyXCursor;
 
 struct LaTeXFeatures;
 
@@ -124,7 +126,7 @@ public:
 	};
 	
 	///
-	Inset() : top_x(0), top_baseline(0), scx(0), owner_(0) {}
+	Inset() : top_x(0), top_baseline(0), scx(0), id_(inset_id++), owner_(0) {}
 	/// Virtual base destructor
 	virtual ~Inset() {}
 	///
@@ -191,7 +193,7 @@ public:
 	}
 
 	///
-	virtual Inset * clone(Buffer const &) const = 0;
+	virtual Inset * clone(Buffer const &, bool same_ids = false) const = 0;
 	
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
@@ -234,6 +236,27 @@ public:
 			return scx;
 		return 0;
 	}
+	/// try to get a paragraph pointer from it's id if we have a
+	/// paragraph to give back!
+	virtual Paragraph * getParFromID(int /* id */) const {
+		return 0;
+	}
+	/// try to get a inset pointer from it's id if we have
+	/// an inset to give back!
+	virtual Inset * getInsetFromID(int /* id */) const {
+		return 0;
+	}
+	/// if this insets owns paragraphs (f.ex. InsetText) then it
+	/// should return it's very first one!
+	virtual Paragraph * firstParagraph() const {
+		return 0;
+	}
+	/// return the cursor if we own one otherwise giv'em just the
+	/// BufferView cursor to work with.
+	virtual LyXCursor const & cursor(BufferView * bview) const;
+	/// id functions
+	int id() const;
+	void id(int id_arg);
 
 protected:
 	///
@@ -242,6 +265,11 @@ protected:
 	mutable int top_baseline;
 	///
 	mutable int scx;
+	///
+	unsigned int id_;
+	///
+	static unsigned int inset_id;
+
 private:
 	///
 	Inset * owner_;

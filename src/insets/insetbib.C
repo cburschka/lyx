@@ -46,7 +46,7 @@ InsetBibKey::~InsetBibKey()
 }
 
 
-Inset * InsetBibKey::clone(Buffer const &) const
+Inset * InsetBibKey::clone(Buffer const &, bool) const
 {
 	InsetBibKey * b = new InsetBibKey(params());
 	b->setCounter(counter);
@@ -113,7 +113,7 @@ void InsetBibKey::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-InsetBibtex::InsetBibtex(InsetCommandParams const & p)
+InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
 

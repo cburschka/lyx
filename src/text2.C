@@ -25,7 +25,7 @@
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"
-#include "undo.h"
+#include "undo_funcs.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "lyx_gui_misc.h"
@@ -51,20 +51,17 @@ using std::pair;
 LyXText::LyXText(BufferView * bv)
 	: number_of_rows(0), height(0), width(0), first(0),
 	  bv_owner(bv), inset_owner(0), the_locking_inset(0),
-	  need_break_row(0), refresh_y(0), status(LyXText::UNCHANGED),
-	  undo_finished(true), undo_frozen(false), firstrow(0), lastrow(0),
-	  copylayouttype(0)
+	  need_break_row(0), refresh_y(0), status_(LyXText::UNCHANGED),
+	  firstrow(0), lastrow(0), copylayouttype(0)
 {}
 
 
 LyXText::LyXText(InsetText * inset)
 	:  number_of_rows(0),  height(0), width(0), first(0),
 	   bv_owner(0), inset_owner(inset), the_locking_inset(0),
-	   need_break_row(0), refresh_y(0), status(LyXText::UNCHANGED),
-	   undo_finished(true), undo_frozen(false), firstrow(0), lastrow(0),
-	   copylayouttype(0)
+	   need_break_row(0), refresh_y(0), status_(LyXText::UNCHANGED),
+	   firstrow(0), lastrow(0), copylayouttype(0)
 {}
-
 
 void LyXText::init(BufferView * bview)
 {
@@ -402,9 +399,8 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 		endpar = endpar->next(); // because of parindents etc.
 	}
 	
-	setUndo(bview->buffer(), Undo::EDIT,
-		sstart_cur.par()->previous(),
-		undoendpar);
+	setUndo(bview, Undo::EDIT,
+		sstart_cur.par(), undoendpar);
 	
 	/* ok we have a selection. This is always between sstart_cur
 	 * and sel_end cursor */ 
@@ -504,9 +500,8 @@ void  LyXText::incDepth(BufferView * bview)
 		endpar = endpar->next(); // because of parindents etc.
 	}
 	
-	setUndo(bview->buffer(), Undo::EDIT,
-		selection.start.par()->previous(),
-		undoendpar);
+	setUndo(bview, Undo::EDIT,
+		selection.start.par(), undoendpar);
 
 	LyXCursor tmpcursor = cursor; // store the current cursor
 
@@ -584,9 +579,8 @@ void  LyXText::decDepth(BufferView * bview)
 		endpar = endpar->next(); // because of parindents etc.
 	}
    
-	setUndo(bview->buffer(), Undo::EDIT,
-		selection.start.par()->previous(),
-		undoendpar);
+	setUndo(bview, Undo::EDIT,
+		selection.start.par(), undoendpar);
 
 	LyXCursor tmpcursor = cursor; // store the current cursor
 
@@ -647,8 +641,8 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	// ok we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
    
-	setUndo(bview->buffer(), Undo::EDIT,
-		selection.start.par()->previous(),
+	setUndo(bview, Undo::EDIT,
+		selection.start.par(),
 		selection.end.par()->next()); 
 	freezeUndo();
 	cursor = selection.start;
@@ -712,7 +706,7 @@ void LyXText::redoHeightOfParagraph(BufferView * bview, LyXCursor const & cur)
 #endif
 	
 	// we can set the refreshing parameters now
-	status = LyXText::NEED_MORE_REFRESH;
+	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = y;
 	refresh_row = tmprow;
 	setCursor(bview, cur.par(), cur.pos(), false, cursor.boundary());
@@ -746,11 +740,11 @@ void LyXText::redoDrawingOfParagraph(BufferView * bview, LyXCursor const & cur)
 	}
 #endif
 	// we can set the refreshing parameters now
-	if (status == LyXText::UNCHANGED || y < refresh_y) {
+	if (status_ == LyXText::UNCHANGED || y < refresh_y) {
 		refresh_y = y;
 		refresh_row = tmprow;
 	}
-	status = LyXText::NEED_MORE_REFRESH;
+	status(bview, LyXText::NEED_MORE_REFRESH);
 	setCursor(bview, cur.par(), cur.pos());
 }
 
@@ -804,7 +798,7 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 #endif
 	
 	// we can set the refreshing parameters now
-	status = LyXText::NEED_MORE_REFRESH;
+	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = y;
 	refresh_row = tmprow->previous();	 /* the real refresh row will
 					    be deleted, so I store
@@ -839,7 +833,7 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 				tmprow = tmprow->next();
 			tmppar = tmppar->next();
 		}
-	} while (tmppar != endpar);
+	} while (tmppar && tmppar != endpar);
    
 	// this is because of layout changes
 	if (refresh_row) {
@@ -1096,15 +1090,13 @@ void LyXText::setParagraph(BufferView * bview,
 		endpar = endpar->next(); // because of parindents etc.
 	}
    
-	setUndo(bview->buffer(), Undo::EDIT,
-		selection.start.par()->previous(),
-		undoendpar);
+	setUndo(bview, Undo::EDIT, selection.start.par(), undoendpar);
 
 	
 	Paragraph * tmppar = selection.end.par();
 	while (tmppar != selection.start.par()->previous()) {
 		setCursor(bview, tmppar, 0);
-		status = LyXText::NEED_MORE_REFRESH;
+		status(bview, LyXText::NEED_MORE_REFRESH);
 		refresh_row = cursor.row();
 		refresh_y = cursor.y() - cursor.row()->baseline();
 			cursor.par()->params().lineTop(line_top);
@@ -1568,9 +1560,8 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 {
 	if (!cursor.par()->insertInsetAllowed(inset))
 		return;
-	setUndo(bview->buffer(), Undo::INSERT,
-		cursor.par()->previous(),
-		cursor.par()->next());
+	setUndo(bview, Undo::INSERT,
+		cursor.par(), cursor.par()->next());
 	cursor.par()->insertInset(cursor.pos(), inset);
 	insertChar(bview, Paragraph::META_INSET);  /* just to rebreak and refresh correctly.
 				      * The character will not be inserted a
@@ -1632,9 +1623,8 @@ void LyXText::cutSelection(BufferView * bview, bool doclear)
 		endpar = endpar->next(); // because of parindents etc.
 	}
     
-	setUndo(bview->buffer(), Undo::DELETE,
-		selection.start.par()->previous(),
-		undoendpar);
+	setUndo(bview, Undo::DELETE,
+		selection.start.par(), undoendpar);
     
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
@@ -1705,8 +1695,8 @@ void LyXText::copySelection(BufferView * bview)
 		selection.start.pos(selection.start.pos() + 1); 
 
 	CutAndPaste::copySelection(selection.start.par(), selection.end.par(),
-			  selection.start.pos(), selection.end.pos(),
-			  bview->buffer()->params.textclass);
+	                           selection.start.pos(), selection.end.pos(),
+	                           bview->buffer()->params.textclass);
 }
 
 
@@ -1716,9 +1706,8 @@ void LyXText::pasteSelection(BufferView * bview)
 	if (!CutAndPaste::checkPastePossible(cursor.par()))
 		return;
 
-	setUndo(bview->buffer(), Undo::INSERT,
-		cursor.par()->previous(),
-		cursor.par()->next()); 
+	setUndo(bview, Undo::INSERT,
+		cursor.par(), cursor.par()->next()); 
 
 	Paragraph * endpar;
 	Paragraph * actpar = cursor.par();
@@ -1763,7 +1752,7 @@ void LyXText::setSelectionOverString(BufferView * bview, string const & str)
 void LyXText::replaceSelectionWithString(BufferView * bview,
 					 string const & str)
 {
-	setCursorParUndo(bview->buffer());
+	setCursorParUndo(bview);
 	freezeUndo();
 
 	if (!selection.set()) { // create a dummy selection
@@ -1797,7 +1786,7 @@ void LyXText::insertStringAsLines(BufferView * bview, string const & str)
 	Paragraph::size_type pos = cursor.pos();
 	Paragraph * endpar = cursor.par()->next();
 	
-	setCursorParUndo(bview->buffer());
+	setCursorParUndo(bview);
 	
 	bool isEnvironment =
 		textclasslist.Style(bview->buffer()->params.textclass, 
@@ -1941,7 +1930,7 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 			y -= row->previous()->height();
 			refresh_y = y;
 			refresh_row = row->previous();
-			status = LyXText::NEED_MORE_REFRESH;
+			status(bview, LyXText::NEED_MORE_REFRESH);
 			
 			breakAgain(bview, row->previous());
 			
@@ -1961,9 +1950,9 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 	
 	breakAgain(bview, row);
 	if (row->height() == tmpheight && rowLast(row) == tmplast)
-		status = LyXText::NEED_VERY_LITTLE_REFRESH;
+		status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
 	else
-		status = LyXText::NEED_MORE_REFRESH; 
+		status(bview, LyXText::NEED_MORE_REFRESH); 
 	
 	// check the special right address boxes
 	if (textclasslist.Style(bview->buffer()->params.textclass,
@@ -2130,9 +2119,15 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 			      Paragraph::size_type pos,
 			      bool setfont, bool boundary) const
 {
-	setCursor(bview, cursor, par, pos, boundary);
-	if (setfont)
-		setCurrentFont(bview);
+	InsetText * it = static_cast<InsetText *>(par->InInset());
+	if (it && (it != inset_owner)) {
+		it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
+											   boundary);
+	} else {
+		setCursor(bview, cursor, par, pos, boundary);
+		if (setfont)
+			setCurrentFont(bview);
+	}
 }
 
 
@@ -2350,7 +2345,7 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			// ok, we will delete anything
 			
 			// make sure that you do not delete any environments
-				status = LyXText::NEED_MORE_REFRESH;
+				status(bview, LyXText::NEED_MORE_REFRESH);
 				deleted = true;
 				
 				if (old_cursor.row()->previous()) {
@@ -2364,8 +2359,8 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 							endpar = endpar->next();
 						}
 					}
-					setUndo(bview->buffer(), Undo::DELETE,
-						old_cursor.par()->previous(),
+					setUndo(bview, Undo::DELETE,
+						old_cursor.par(),
 						endpar);
 					cursor = tmpcursor;
 
@@ -2399,8 +2394,8 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 							endpar = endpar->next();
 						}
 					}
-					setUndo(bview->buffer(), Undo::DELETE,
-						old_cursor.par()->previous(),
+					setUndo(bview, Undo::DELETE,
+						old_cursor.par(),
 						endpar);
 					cursor = tmpcursor;
 
@@ -2447,296 +2442,19 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 }
 
 
-Paragraph * LyXText::getParFromID(int id)
+Paragraph * LyXText::getParFromID(int id) const
 {
-	Paragraph * result = firstParagraph();
-	while (result && result->id() != id)
-		result = result->next();
-	return result;
-}
-
-
-// undo functions
-bool LyXText::textUndo(BufferView * bview)
-{
-	if (inset_owner)
-		return false;
-	// returns false if no undo possible
-	Undo * undo = bview->buffer()->undostack.pop();
-	if (undo) {
-		finishUndo();
-		if (!undo_frozen)
-			bview->buffer()->redostack
-				.push(createUndo(bview->buffer(), undo->kind, 
-						 getParFromID(undo->number_of_before_par),
-						 getParFromID(undo->number_of_behind_par)));
-	}
-	return textHandleUndo(bview, undo);
-}
-
-
-bool LyXText::textRedo(BufferView * bview)
-{
-	if (inset_owner)
-		return false;
-	// returns false if no redo possible
-	Undo * undo = bview->buffer()->redostack.pop();
-	if (undo) {
-		finishUndo();
-		if (!undo_frozen)
-			bview->buffer()->undostack
-				.push(createUndo(bview->buffer(), undo->kind, 
-						 getParFromID(undo->number_of_before_par),
-						 getParFromID(undo->number_of_behind_par)));
-	}
-	return textHandleUndo(bview, undo);
-}
-
-
-bool LyXText::textHandleUndo(BufferView * bview, Undo * undo)
-{
-	if (inset_owner)
-		return false;
-	// returns false if no undo possible
-	bool result = false;
-	if (undo) {
-		Paragraph * before =
-			getParFromID(undo->number_of_before_par); 
-		Paragraph * behind =
-			getParFromID(undo->number_of_behind_par); 
-		Paragraph * tmppar;
-		Paragraph * tmppar2;
-		Paragraph * endpar;
-		Paragraph * tmppar5;
-    
-		// if there's no before take the beginning
-		// of the document for redoing
-		if (!before)
-			setCursorIntern(bview, firstParagraph(), 0);
-
-		// replace the paragraphs with the undo informations
-
-		Paragraph * tmppar3 = undo->par;
-		undo->par = 0; // otherwise the undo destructor would delete the paragraph
-		Paragraph * tmppar4 = tmppar3;
-
-		if (tmppar4) {
-			while (tmppar4->next())
-				tmppar4 = tmppar4->next();
-		} // get last undo par
-    
-		// now remove the old text if there is any
-		if (before != behind || (!behind && !before)) {
-			if (before)
-				tmppar5 = before->next();
-			else
-				tmppar5 = ownerParagraph();
-			tmppar2 = tmppar3;
-			while (tmppar5 && tmppar5 != behind) {
-				tmppar = tmppar5;
-				tmppar5 = tmppar5->next();
-				// a memory optimization for edit: Only layout information
-				// is stored in the undo. So restore the text informations.
-				if (undo->kind == Undo::EDIT) {
-					tmppar2->setContentsFromPar(tmppar);
-					tmppar->clearContents();
-					tmppar2 = tmppar2->next();
-				}
-			}
-		}
-    
-		// put the new stuff in the list if there is one
-		if (tmppar3){
-			if (before)
-				before->next(tmppar3);
-			else
-				ownerParagraph(tmppar3);
-			tmppar3->previous(before);
-		} else {
-			if (!before)
-				ownerParagraph(behind);
-		}
-		if (tmppar4) {
-			tmppar4->next(behind);
-			if (behind)
-				behind->previous(tmppar4);
-		}
-    
-    
-		// Set the cursor for redoing
-		if (before) {
-			setCursorIntern(bview, before, 0);
-		}
-
-		// calculate the endpar for redoing the paragraphs.
-		if (behind) {
-				endpar = behind->next();
-		} else
-			endpar = behind;
-    
-		tmppar = getParFromID(undo->number_of_cursor_par);
-		redoParagraphs(bview, cursor, endpar); 
-		if (tmppar){
-			setCursorIntern(bview, tmppar, undo->cursor_pos);
-			updateCounters(bview, cursor.row());
-		}
-		result = true;
-		delete undo;
-	}
-	finishUndo();
-	return result;
-}
-
-
-void LyXText::finishUndo()
-{
-	if (inset_owner)
-		return;
-	// makes sure the next operation will be stored
-	undo_finished = true;
-}
-
-
-void LyXText::freezeUndo()
-{
-	if (inset_owner)
-		return;
-	// this is dangerous and for internal use only
-	undo_frozen = true;
-}
-
-
-void LyXText::unFreezeUndo()
-{
-	if (inset_owner)
-		return;
-	// this is dangerous and for internal use only
-	undo_frozen = false;
-}
-
-
-void LyXText::setUndo(Buffer * buf, Undo::undo_kind kind,
-		      Paragraph const * before,
-		      Paragraph const * behind) const
-{
-	if (inset_owner)
-		return;
-	if (!undo_frozen)
-		buf->undostack.push(createUndo(buf, kind, before, behind));
-	buf->redostack.clear();
-}
-
-
-void LyXText::setRedo(Buffer * buf, Undo::undo_kind kind,
-		      Paragraph const * before, Paragraph const * behind)
-{
-	if (inset_owner)
-		return;
-	buf->redostack.push(createUndo(buf, kind, before, behind));
-}
-
-
-Undo * LyXText::createUndo(Buffer * buf, Undo::undo_kind kind,
-			   Paragraph const * before,
-			   Paragraph const * behind) const
-{
-	if (inset_owner)
+	if (id < 0)
 		return 0;
-
-	int before_number = -1;
-	int behind_number = -1;
-	if (before)
-		before_number = before->id();
-	if (behind)
-		behind_number = behind->id();
-	// Undo::EDIT  and Undo::FINISH are
-	// always finished. (no overlapping there)
-	// overlapping only with insert and delete inside one paragraph: 
-	// Nobody wants all removed  character
-	// appear one by one when undoing. 
-	// EDIT is special since only layout information, not the
-	// contents of a paragaph are stored.
-	if (!undo_finished && (kind != Undo::EDIT) && (kind != Undo::FINISH)){
-		// check wether storing is needed
-		if (!buf->undostack.empty() && 
-		    buf->undostack.top()->kind == kind &&
-		    buf->undostack.top()->number_of_before_par ==  before_number &&
-		    buf->undostack.top()->number_of_behind_par ==  behind_number ){
-			// no undo needed
-			return 0;
-		}
+	Paragraph * result = firstParagraph();
+	Paragraph * ires = 0;
+	while (result && result->id() != id) {
+		if ((ires = result->getParFromID(id)))
+			return ires;
+		result = result->next();
 	}
-	// create a new Undo
-	Paragraph * undopar;
-
-	Paragraph * start = 0;
-	Paragraph * end = 0;
-
-	if (before)
-		start = const_cast<Paragraph*>(before->next());
-	else
-		start = firstParagraph();
-	if (behind)
-		end = const_cast<Paragraph*>(behind->previous());
-	else {
-		end = firstParagraph();
-		while (end->next())
-			end = end->next();
-	}
-	if (start && end && (start != end->next()) &&
-	    ((before != behind) || (!before && !behind))) {
-		Paragraph * tmppar = start;
-		Paragraph * tmppar2 = new Paragraph(*tmppar);
-		tmppar2->id(tmppar->id());
-		
-		// a memory optimization: Just store the layout information
-		// when only edit
-		if (kind == Undo::EDIT){
-			//tmppar2->text.clear();
-			tmppar2->clearContents();
-		}
-
-		undopar = tmppar2;
-  
-		while (tmppar != end && tmppar->next()) {
-			tmppar = tmppar->next();
-			tmppar2->next(new Paragraph(*tmppar));
-			tmppar2->next()->id(tmppar->id());
-			// a memory optimization: Just store the layout
-			// information when only edit
-			if (kind == Undo::EDIT){
-				//tmppar2->next->text.clear();
-				tmppar2->clearContents();
-			}
-			tmppar2->next()->previous(tmppar2);
-			tmppar2 = tmppar2->next();
-		}
-		tmppar2->next(0);
-	} else
-		undopar = 0; // nothing to replace (undo of delete maybe)
-
-	int cursor_par = cursor.par()->id();
-	int cursor_pos =  cursor.pos();
-	
-	Undo * undo = new Undo(kind, 
-			       before_number, behind_number,  
-			       cursor_par, cursor_pos, 
-			       undopar);
-  
-	undo_finished = false;
-	return undo;
+	return result;
 }
-
-
-void LyXText::setCursorParUndo(Buffer * buf)
-{
-	if (inset_owner)
-		return;
-	setUndo(buf, Undo::FINISH,
-		cursor.par()->previous(),
-		cursor.par()->next()); 
-}
-
 
 void LyXText::toggleAppendix(BufferView * bview)
 {
@@ -2751,7 +2469,7 @@ void LyXText::toggleAppendix(BufferView * bview)
 	par->params().startOfAppendix(start);
 
 	// we can set the refreshing parameters now
-	status = LyXText::NEED_MORE_REFRESH;
+	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = 0;
 	refresh_row = 0; // not needed for full update
 	updateCounters(bview, 0);
@@ -2762,7 +2480,7 @@ void LyXText::toggleAppendix(BufferView * bview)
 Paragraph * LyXText::ownerParagraph() const
 {
 	if (inset_owner)
-		return inset_owner->par;
+		return inset_owner->paragraph();
 
 	return bv_owner->buffer()->paragraph;
 }
@@ -2771,8 +2489,40 @@ Paragraph * LyXText::ownerParagraph() const
 Paragraph * LyXText::ownerParagraph(Paragraph * p) const
 {
 	if (inset_owner)
-		inset_owner->par = p;
+		inset_owner->paragraph(p);
 	else
 		bv_owner->buffer()->paragraph = p;
 	return 0;
+}
+
+Paragraph * LyXText::ownerParagraph(int id, Paragraph * p) const
+{
+	Paragraph * op = getParFromID(id);
+	if (op && op->InInset()) {
+		static_cast<InsetText *>(op->InInset())->paragraph(p);
+	} else {
+		if (inset_owner)
+			inset_owner->paragraph(p);
+		else
+			bv_owner->buffer()->paragraph = p;
+	}
+	return 0;
+}
+
+
+LyXText::text_status LyXText::status() const
+{
+	return status_;
+}
+
+
+void LyXText::status(BufferView * bview, LyXText::text_status st) const
+{
+	if ((status_ != NEED_MORE_REFRESH) ||
+		(status_ == NEED_MORE_REFRESH) && (st != NEED_VERY_LITTLE_REFRESH))
+	{
+		status_ = st;
+		if (inset_owner && st != UNCHANGED)
+			bview->text->status(bview, NEED_VERY_LITTLE_REFRESH);
+	}
 }

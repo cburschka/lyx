@@ -53,7 +53,7 @@ InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 }
 
 
-Inset * InsetFormulaMacro::clone(Buffer const &) const
+Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 {
 	return new InsetFormulaMacro(*this);
 }

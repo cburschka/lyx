@@ -667,7 +667,7 @@ bool InsetLatexAccent::directWrite() const
 }
 
 
-Inset * InsetLatexAccent::clone(Buffer const &) const
+Inset * InsetLatexAccent::clone(Buffer const &, bool) const
 {
 	return new InsetLatexAccent(contents);
 }

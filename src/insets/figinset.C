@@ -1241,7 +1241,7 @@ void InsetFig::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-Inset * InsetFig::clone(Buffer const & buffer) const
+Inset * InsetFig::clone(Buffer const & buffer, bool) const
 {
 	InsetFig * tmp = new InsetFig(100, 100, buffer);
 

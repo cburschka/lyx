@@ -22,6 +22,7 @@
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "LyXView.h"
+#include "undo_funcs.h"
 #include "gettext.h"
 
 extern FD_form_figure * fd_form_figure;
@@ -63,8 +64,8 @@ void FigureApplyCB(FL_OBJECT *, long)
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->beforeChange(current_view->text);
       
-	current_view->text->setCursorParUndo(current_view->buffer()); 
-	current_view->text->freezeUndo();
+	setCursorParUndo(current_view); 
+	freezeUndo();
 
 	current_view->text->breakParagraph(current_view);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -96,7 +97,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	new_inset->edit(current_view, 0, 0, 0);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->owner()->message(_("Figure inserted"));
-	current_view->text->unFreezeUndo();
+	unFreezeUndo();
 	current_view->setState();
 }
 

@@ -41,11 +41,13 @@ public:
 	///
 	int number_of_cursor_par;
 	///
+	int number_of_inset_id; // valid if >= 0, if < 0 then not in inset
+	///
 	int cursor_pos; // valid if >= 0
 	///
 	Paragraph * par;
 	///
-	Undo(undo_kind kind_arg,
+	Undo(undo_kind kind_arg, int id_inset_arg,
 	     int number_before_arg, int number_behind_arg,
 	     int cursor_par_arg, int cursor_pos_arg,
 	     Paragraph * par_arg);

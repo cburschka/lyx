@@ -23,10 +23,15 @@
 #include "support/lstrings.h"
 #include "gettext.h"
 #include "lyxfont.h"
+#include "lyxcursor.h"
+#include "lyxtext.h"
 
 using std::endl;
 
 // Insets default methods
+
+// Initialization of the counter for the inset id's,
+unsigned int Inset::inset_id = 0;
 
 bool Inset::deletable() const
 {
@@ -80,6 +85,16 @@ LyXText * Inset::getLyXText(BufferView const * bv, bool const) const
 		return bv->text;
 }
 
+
+int Inset::id() const
+{
+	return id_;
+}
+
+void Inset::id(int id_arg)
+{
+	id_ = id_arg;
+}
 
 // some stuff for inset locking
 
@@ -237,4 +252,9 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 		return static_cast<UpdatableInset*>
 			(owner())->getMaxWidth(bv, this);
 	return bv->workWidth();
+}
+
+LyXCursor const & Inset::cursor(BufferView * bv) const
+{
+	return bv->text->cursor;
 }

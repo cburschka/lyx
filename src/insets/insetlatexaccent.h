@@ -67,7 +67,7 @@ public:
 	///
 	bool directWrite() const;
 	///
-	virtual Inset * clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	Inset::Code lyxCode()const;
 	///

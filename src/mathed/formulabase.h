@@ -80,7 +80,7 @@ public:
 	///
 	virtual void validate(LaTeXFeatures &) const;
 	///
-	virtual Inset * clone(Buffer const &) const = 0;
+	virtual Inset * clone(Buffer const &, bool same_id = false) const = 0;
 	///
 	virtual Inset::Code lyxCode() const;
 	///

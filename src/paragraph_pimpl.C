@@ -39,12 +39,17 @@ Paragraph::Pimpl::Pimpl(Paragraph * owner)
 }
 
 
-Paragraph::Pimpl::Pimpl(Paragraph::Pimpl const & p, Paragraph * owner)
+Paragraph::Pimpl::Pimpl(Paragraph::Pimpl const & p, Paragraph * owner,
+                        bool same_ids)
 	: params(p.params), owner_(owner)
 {
 	inset_owner = p.inset_owner;
 	text = p.text;
 	fontlist = p.fontlist;
+	if (same_ids)
+		id_ = p.id_;
+	else
+		id_ = paragraph_id++;
 }
 
 
@@ -538,4 +543,17 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 	return par;
 }
 
+
+Paragraph * Paragraph::Pimpl::getParFromID(int id) const
+{
+	InsetList::const_iterator lend = owner_->insetlist.end();
+	Paragraph * result;
+	for (InsetList::const_iterator cit = owner_->insetlist.begin();
+	     cit != lend; ++cit)
+	{
+		if ((result = cit->inset->getParFromID(id)))
+			return result;
+	}
+	return 0;
+}
 

@@ -25,10 +25,10 @@ struct LaTeXFeatures;
 class InsetIndex : public InsetCommand {
 public:
 	///
-	InsetIndex(InsetCommandParams const &);
+	InsetIndex(InsetCommandParams const &, bool same_id = false);
 	///
-	virtual Inset * clone(Buffer const &) const {
-		return new InsetIndex(params());
+	virtual Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetIndex(params(), same_id);
 	}
 	///
 	string const getScreenLabel() const;
@@ -42,10 +42,10 @@ public:
 class InsetPrintIndex : public InsetCommand {
 public:
 	///
-	InsetPrintIndex(InsetCommandParams const &);
+	InsetPrintIndex(InsetCommandParams const &, bool same_id = false);
 	///
-	virtual Inset * clone(Buffer const &) const {
-		return new InsetPrintIndex(params());
+	virtual Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetPrintIndex(params(), same_id);
 	}
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;

@@ -15,7 +15,7 @@
 using std::ostream;
 
 
-InsetUrl::InsetUrl(InsetCommandParams const & p)
+InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
 		: InsetCommand(p)
 {}
 

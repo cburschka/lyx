@@ -33,11 +33,11 @@ public:
 	///
 	~InsetBibKey();
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
-        void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
 	void read(Buffer const *, LyXLex & lex);
 	///
@@ -79,12 +79,12 @@ private:
 class InsetBibtex : public InsetCommand {
 public:
 	///
-	InsetBibtex(InsetCommandParams const &);
+	InsetBibtex(InsetCommandParams const &, bool same_id = false);
 	///
 	~InsetBibtex();
 	///
-	Inset * clone(Buffer const &) const {
-		return new InsetBibtex(params());
+	Inset * clone(Buffer const &, bool same_id = false) const {
+		return new InsetBibtex(params(), same_id);
 	}
 	///
 	string const getScreenLabel() const;

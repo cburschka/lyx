@@ -90,6 +90,7 @@
 #include "FontLoader.h"
 #include "TextCache.h"
 #include "lyxfind.h"
+#include "undo_funcs.h"
 
 using std::pair;
 using std::make_pair; 
@@ -706,14 +707,21 @@ string const LyXFunc::Dispatch(int ac,
 				argument = keyseq.getiso();
 			}
 			// Undo/Redo is a bit tricky for insets.
-		        if (action == LFUN_UNDO) {
+			if (action == LFUN_UNDO) {
+#ifdef RETHINK_THIS_FOR_NOW_WE_LEAVE_ALL_UNLOCKED
 				int slx;
 				int sly;
 				UpdatableInset * inset = 
-					owner->view()->theLockingInset();
+					owner->view()->theLockingInset()->getLockingInset();
+				int inset_id = inset->id();
 				inset->getCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
+#else
+				owner->view()->unlockInset(owner->view()->theLockingInset());
+#endif
 				owner->view()->menuUndo();
+#ifdef RETHINK_THIS_FOR_NOW_WE_LEAVE_ALL_UNLOCKED
+#if 0
 				if (TEXT()->cursor.par()->
 				    isInset(TEXT()->cursor.pos())) {
 					inset = static_cast<UpdatableInset*>(
@@ -723,8 +731,12 @@ string const LyXFunc::Dispatch(int ac,
 				} else {
 					inset = 0;
 				}
+#else
+				inset = static_cast<UpdatableInset *>(owner->view()->buffer()->getInsetFromID(inset_id));
+#endif
 				if (inset)
 					inset->edit(owner->view(),slx,sly,0);
+#endif
 				return string();
 			} else if (action == LFUN_REDO) {
 				int slx;
@@ -843,7 +855,7 @@ string const LyXFunc::Dispatch(int ac,
 			// Move cursor so that successive C-s 's will not stand in place. 
 			if (action == LFUN_WORDFINDFORWARD ) 
 				TEXT()->cursorRightOneWord(owner->view());
-			TEXT()->finishUndo();
+			finishUndo();
 			moveCursorUpdate(true, false);
 
 			// ??? Needed ???
