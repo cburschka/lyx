@@ -1,3 +1,8 @@
+2004-05-14  Angus Leeming  <leeming@lyx.org>
+
+	* insetcite.C (getNatbibLabel, generateLabel, latex): use the
+	new biblio::asValidLatexString function.
+
 2004-05-12  Angus Leeming  <leeming@lyx.org>
 
 	* insetcite.C: use BufferParams::cite_engine rather than the three

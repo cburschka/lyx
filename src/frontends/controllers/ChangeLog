@@ -1,5 +1,11 @@
 2004-05-14  Angus Leeming  <leeming@lyx.org>
 
+	* biblio.[Ch] (asValidLatexCommand): new function which examines
+	the input string to return a latex citation command that is
+	valid for the current citation engine.
+
+2004-05-14  Angus Leeming  <leeming@lyx.org>
+
 	* ControlCitation.[Ch]: small changes to use the CiteEngine_enum
 	wrapper class.
 

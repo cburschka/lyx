@@ -49,6 +49,14 @@ enum Direction {
 	BACKWARD
 };
 
+
+/** Each citation engine recognizes only a subset of all possible
+ *  citation commands. Given a latex command \c input, this function
+ *  returns an appropriate command, valid for \c engine.
+ */
+std::string const asValidLatexCommand(std::string const & input,
+				      CiteEngine_enum const & engine);
+
 /// First entry is the bibliography key, second the data
 typedef std::map<std::string, std::string> InfoMap;
 

@@ -80,12 +80,11 @@ string const getNatbibLabel(Buffer const & buffer,
 	// CITE:	author/<before field>
 
 	// We don't currently use the full or forceUCase fields.
-	// bool const forceUCase = citeType[0] == 'C';
-	bool const full = citeType[citeType.size() - 1] == '*';
-
-	string const cite_type = full ?
-		ascii_lowercase(citeType.substr(0, citeType.size() - 1)) :
-		ascii_lowercase(citeType);
+	string cite_type = biblio::asValidLatexCommand(citeType, engine);
+	if (cite_type[0] == 'C')
+		cite_type = string(1, 'c') + cite_type.substr(1);
+	if (cite_type[cite_type.size() - 1] == '*')
+		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
 	string before_str;
 	if (!before.empty()) {
@@ -270,19 +269,7 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 	string label;
 	biblio::CiteEngine const engine = buffer.params().cite_engine;
 	if (engine != biblio::ENGINE_BASIC) {
-		string cmd = getCmdName();
-		if (cmd == "cite") {
-			// We may be "upgrading" from an older LyX version.
-			// If, however, we use "cite" because the necessary
-			// author/year info is not present in the biblio
-			// database, then getNatbibLabel will exit gracefully
-			// and we'll call getBasicLabel.
-			if (engine == biblio::ENGINE_NATBIB_NUMERICAL)
-				cmd = "citep";
-			else if (engine == biblio::ENGINE_NATBIB_AUTHORYEAR)
-				cmd = "citet";
-		}
-		label = getNatbibLabel(buffer, cmd, getContents(),
+		label = getNatbibLabel(buffer, getCmdName(), getContents(),
 				       before, after, engine);
 	}
 
@@ -343,30 +330,10 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 			 OutputParams const &) const
 {
 	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
+	string const cite_str =
+		biblio::asValidLatexCommand(getCmdName(), cite_engine);
 	
-	os << "\\";
-	switch (cite_engine) {
-	case biblio::ENGINE_BASIC:
-		os << "cite";
-		break;
-	case biblio::ENGINE_NATBIB_AUTHORYEAR:
-	case biblio::ENGINE_NATBIB_NUMERICAL:
-		os << getCmdName();
-		break;
-	case biblio::ENGINE_JURABIB: 
-	{
-		// jurabib does not (yet) support "force upper case"
-		// and "full author name". Fallback.
-		string cmd = getCmdName();
-		if (cmd[0] == 'C')
-			cmd[0] = 'c';
-		size_t n = cmd.size() - 1;
-		if (cmd[n] == '*')
-			cmd = cmd.substr(0,n);
-		os << cmd;
-		break;
-	}
-	}
+	os << "\\" << cite_str;
 	
 	string const before = getSecOptions();
 	string const after  = getOptions();

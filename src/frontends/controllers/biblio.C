@@ -30,6 +30,7 @@ using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
 using lyx::support::getVectorFromString;
 using lyx::support::ltrim;
+using lyx::support::prefixIs;
 using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::subst;
@@ -42,6 +43,113 @@ using std::vector;
 
 
 namespace biblio {
+
+namespace {
+
+vector<string> const init_possible_cite_commands()
+{
+	char const * const pos[] = {
+		"cite",
+		"citet", "citep", "citealt", "citealp",
+		"citeauthor", "citeyear", "citeyearpar",
+		"citet*", "citep*", "citealt*", "citealp*", "citeauthor*",
+		"Citet",  "Citep",  "Citealt",  "Citealp",  "Citeauthor",
+		"Citet*", "Citep*", "Citealt*", "Citealp*", "Citeauthor*",
+		"fullcite",
+		"footcite", "footcitet", "footcitep", "footcitealt",
+		"footcitealp", "footciteauthor", "footciteyear",
+		"footciteyearpar",
+		"citefield",
+		"citetitle",
+		"cite*"
+	};
+	size_t const size_pos = sizeof(pos) / sizeof(pos[0]);
+
+	return vector<string>(pos, pos + size_pos);
+}
+
+
+vector<string> const & possible_cite_commands()
+{
+	static vector<string> const pos = init_possible_cite_commands();
+	return pos;
+}
+
+
+bool is_possible_cite_command(string const & input)
+{
+	vector<string> const & possibles = possible_cite_commands();
+	vector<string>::const_iterator const end = possibles.end();
+	return std::find(possibles.begin(), end, input) != end;
+}
+
+
+string const default_cite_command(CiteEngine engine)
+{
+	string str;
+	switch (engine) {
+	case ENGINE_BASIC:
+		str = "cite";
+		break;
+	case ENGINE_NATBIB_AUTHORYEAR:
+		str = "citet";
+		break;
+	case ENGINE_NATBIB_NUMERICAL:
+		str = "citep";
+		break;
+	case ENGINE_JURABIB:
+		str = "cite";
+		break;
+	}
+	return str;
+}
+
+} // namespace anon
+
+
+string const asValidLatexCommand(string const & input,
+				 CiteEngine_enum const & engine)
+{
+	string const default_str = default_cite_command(engine);
+	if (!is_possible_cite_command(input))
+		return default_str;
+
+	string output;
+	switch (engine) {
+	case ENGINE_BASIC:
+		output = default_str;
+		break;
+
+	case ENGINE_NATBIB_AUTHORYEAR:
+	case ENGINE_NATBIB_NUMERICAL:
+		if (input == "cite" || input == "citefield" ||
+		    input == "citetitle" || input == "cite*")
+			output = default_str;
+		else if (prefixIs(input, "foot"))
+			output = input.substr(4);
+		else
+			output = input;
+		break;
+
+	case ENGINE_JURABIB: {
+		// Jurabib does not support the 'uppercase' natbib style.
+		if (input[0] == 'C')
+			output = string(1, 'c') + input.substr(1);
+		else
+			output = input;
+
+		// Jurabib does not support the 'full' natbib style.
+                string::size_type const n = output.size() - 1;
+                if (output != "cite*" && output[n] == '*')
+                        output = output.substr(0, n);
+
+		break;
+	}
+	}
+
+	return output;
+}
+
 
 string const familyName(string const & name)
 {
