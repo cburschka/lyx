@@ -1,3 +1,11 @@
+2004-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxrc.example: remove \ps_command
+
+	* configure.m4: check for acrobat, acrord32 and gsview32 as PDF
+	viewers (useful for windows); do not pass -swap option when
+	gsview32 is used as ps viewer. Remove support for \ps_command
+
 2004-03-17  Angus Leeming  <leeming@lyx.org>
 
 	* ui/classic.ui:

@@ -118,13 +118,6 @@
 # executive, a3, a4, a5, or b5 as the default papersize.
 #\default_papersize "a4"
 
-# Define which program to use to use as postscript interpreter for included
-# images.
-# You can not include any options. The default is "gs" if it can be found.
-# If you have a slow computer, you should consider turning off the WYSIWYG
-# display of includes images, by using this command:
-#\ps_command ""
-
 # Define which program to use to run "chktex".
 # You should include options that turn different warnings on and off.
 # Default is "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38"

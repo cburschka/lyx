@@ -87,7 +87,6 @@ enum LyXRCTags {
 	RC_CHECKLASTFILES,
 	RC_VIEWDVI_PAPEROPTION,
 	RC_DEFAULT_PAPERSIZE,
-	RC_PS_COMMAND,
 	RC_ACCEPT_COMPOUND,
 	RC_SPELL_COMMAND,
 	RC_USE_INP_ENC,
@@ -191,8 +190,6 @@ enum LyXRCTags {
 	std::string custom_export_command;
 	///
 	std::string custom_export_format;
-	/// postscript interpreter (in general "gs", if it is installed)
-	std::string ps_command;
 	/// option for telling the dvi viewer about the paper size
 	std::string view_dvi_paper_option;
 	/// default paper size for local xdvi/dvips/ghostview/whatever

@@ -123,7 +123,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\print_to_file", LyXRC::RC_PRINTTOFILE },
 	{ "\\print_to_printer", LyXRC::RC_PRINTTOPRINTER },
 	{ "\\printer", LyXRC::RC_PRINTER },
-	{ "\\ps_command", LyXRC::RC_PS_COMMAND },
 	{ "\\rtl", LyXRC::RC_RTL_SUPPORT },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
 	{ "\\screen_font_encoding", LyXRC::RC_SCREEN_FONT_ENCODING },
@@ -198,7 +197,6 @@ void LyXRC::setDefaults() {
 	print_paper_dimension_flag = "-T";
 	document_path.erase();
 	tempdir_path = "/tmp";
-	ps_command = "gs";
 	view_dvi_paper_option.erase();
 	default_papersize = PAPER_USLETTER;
 	custom_export_format = "ps";
@@ -549,12 +547,6 @@ int LyXRC::read(string const & filename)
 				view_dvi_paper_option = lexrc.getString();
 			} else {
 				view_dvi_paper_option.erase();
-			}
-			break;
-
-		case RC_PS_COMMAND:
-			if (lexrc.next()) {
-				ps_command = lexrc.getString();
 			}
 			break;
 
@@ -1164,11 +1156,6 @@ void LyXRC::output(ostream & os) const
 			case PAPER_DEFAULT: break;
 			}
 			os << "\"\n";
-		}
-	case RC_PS_COMMAND:
-		if (ps_command != system_lyxrc.ps_command) {
-			os << "# Program used for interpreting postscript.\n"
-			   << "\\ps_command \"" << ps_command << "\"\n";
 		}
 	case RC_CHKTEX_COMMAND:
 		if (chktex_command != system_lyxrc.chktex_command) {
@@ -1954,9 +1941,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DEFAULT_PAPERSIZE:
 		str = _("Specify the default paper size.");
-		break;
-
-	case RC_PS_COMMAND:
 		break;
 
 	case RC_ACCEPT_COMPOUND:

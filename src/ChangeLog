@@ -1,3 +1,8 @@
+2004-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxrc.C (setDefaults, getDescription, output, read): 
+	* lyxrc.h: remove ps_command
+
 2004-03-22  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (error_handler, init): remove handler for SIGPIPE.
@@ -12,12 +17,12 @@
 
 2004-03-19  André Pönitz  <poenitz@gmx.net>
 
-        * cursor.[Ch] (reset): take main text inset as argument
+	* cursor.[Ch] (reset): take main text inset as argument
 
-        * BufferView: adjust
-        * BufferView_pimpl.C: adjust
+	* BufferView: adjust
+	* BufferView_pimpl.C: adjust
 
-        * paragraph.[Ch]: fix completely broken operator=()
+	* paragraph.[Ch]: fix completely broken operator=()
 
 2004-03-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
