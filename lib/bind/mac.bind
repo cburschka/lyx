@@ -41,8 +41,8 @@
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
 \bind "C-S-T"			"buffer-update pdf"
 \bind "C-q"			"lyx-quit"
-\bind "C-grave" 		"buffer-next"
-\bind "C-asciitilde" 		"buffer-previous"
+\bind "M-Tab"			"buffer-next"
+\bind "M-S-BackTab"		"buffer-previous"
 
 \bind "C-b"			"font-bold"
 \bind "C-e"			"font-emph"

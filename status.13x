@@ -21,8 +21,9 @@ What's new
 
 - Implement new functions buffer-next and buffer-previous that allow
   to cycle through open buffers; they are respectively bound to
-  Ctrl-PageDown and Control-PageUp (except with mac-bindings, where
-  they have the usual definition).
+  Ctrl-PageDown and Control-PageUp (except with mac bindings, where
+  <cmd>-tab and <cmd>-backtab are used).
+
 
 ** Bug fixes
 
