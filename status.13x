@@ -57,6 +57,9 @@ What's new
 
 - fix bug where preview snippets would most of the time be processed twice
 
+- prevent a crash when generating previews if the user is not using a
+  tmp directory.
+
 - squash a potential bug in the PreviewLoader before it bites.
 
 - don't cause a warning message to complain about starting an already running
@@ -64,6 +67,9 @@ What's new
 
 - prevent incorrect warning message about failing to find a graphics file to 
   load when all is actually fine and dandy.
+
+- fix a bug where ERT {} in math formulas would have a wrong descent
+  on screen
 
 - The printer parameter preferences for "spool command" and "file
   extension" were accidentally made the same [Qt only]
@@ -104,6 +110,8 @@ What's new
 
 - revert is now disabled for an unchanged or unsaved document [bug #783]
 
+- fix a lyx2lyx bug that rejected csv2lyx files as badly formed
+
 - enable the debug level to be set in lyx2lyx
 
 - fix detection of fax programs
@@ -122,4 +130,3 @@ What's new
 
 - improve the lyx.spec file used to produce rpms
 
-- fix a lyx2lyx bug that rejected csv2lyx files as bad formed
