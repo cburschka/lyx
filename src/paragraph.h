@@ -154,6 +154,14 @@ public:
 	///
 	Paragraph const * next() const;
 
+	///
+	void previous(Paragraph *);
+	///
+	Paragraph * previous();
+	///
+	Paragraph const * previous() const;
+#endif
+
 	/// initialise tracking for this par
 	void trackChanges(Change::Type = Change::UNCHANGED);
 
@@ -184,13 +192,6 @@ public:
 	/// mark whole par as erased
 	void markErased();
 
-	///
-	void previous(Paragraph *);
-	///
-	Paragraph * previous();
-	///
-	Paragraph const * previous() const;
-#endif
 	/// for the environments
 	Paragraph * depthHook(depth_type depth);
 	/// for the environments
