@@ -1,3 +1,8 @@
+2003-04-01  John Levon  <levon@movementarian.org>
+
+	* insetgraphicsParams.C (Read): fix reading of subcaptions that
+	contain "quotes"
+
 2003-03-19  John Levon  <levon@movementarian.org>
 
 	* insetfloat.C:

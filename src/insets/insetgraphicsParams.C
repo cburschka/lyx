@@ -225,8 +225,10 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "subcaption") {
 		subcaption = true;
 	} else if (token == "subcaptionText") {
-		lex.next();
-		subcaptionText = lex.getString();
+		lex.eatLine();
+		string sub = lex.getString();
+		// strip surrounding " "
+		subcaptionText = sub.substr(1, sub.length() - 2);
 	} else if (token == "special") {
 		lex.eatLine();
 		special = lex.getString();

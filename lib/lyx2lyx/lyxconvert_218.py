@@ -403,9 +403,13 @@ def remove_figinset(lines):
 	else:
 	    display = "color"
 
-	subcaptionText = get_value(lines, "subcaption", i+1, j)
-	if subcaptionText != "":
-	    subcaptionText = '"'+subcaptionText+'"'
+	subcaptionText = ""
+	subcaptionLine = find_token(lines, "subcaption", i+1, j)
+	if subcaptionLine != -1:
+            subcaptionText = lines[subcaptionLine][11:]
+	    if subcaptionText != "":
+	        subcaptionText = '"'+subcaptionText+'"'
+
 	k = find_token(lines, "subfigure", i+1,j)
 	if k == -1:
 	    subcaption = 0

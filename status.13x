@@ -57,6 +57,11 @@ What's new
 
 - the Home/End keys no longer mark the document as "(changed)"
 
+- fix reading of subcaptions (in graphics inset) that contain explicit
+  double quote characters [bug #656]
+
+- fix reading of subcaptions in files from LyX 1.1.6 or older
+
 - fix support for \framebox macro in mathed: the argument is handled
   as text, and a second optional argument is now supported
 
