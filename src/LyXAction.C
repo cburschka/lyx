@@ -327,7 +327,7 @@ void LyXAction::init()
 		{ LFUN_EXTERNAL_EDIT, "external-edit", Noop },
 		{ LFUN_GRAPHICS_EDIT, "graphics-edit", Noop },
 		{ LFUN_REPEAT, "repeat", NoBuffer },
-		{ LFUN_WORD_FIND, "word-find", Noop },
+		{ LFUN_WORD_FIND, "word-find", ReadOnly },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", Noop },
 		{ LFUN_LANGUAGE_BUFFER, "buffer-language", Noop },

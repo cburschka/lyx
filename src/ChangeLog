@@ -1,5 +1,10 @@
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* LyXAction.C (init): mark LFUN_WORD_FIND as working in read-only
+	documents (bug 1629)
+
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	Fix toggling of collapsable insets with the mouse (bug 1558)
 	
 	* lyxfunc.C (dispatch): adapt to LCursor changes
