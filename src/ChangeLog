@@ -1,5 +1,8 @@
 2002-09-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* LaTeXFeatures.C (useLayout): let tclass and lyt be a const
+	references, ws changes.
+
 	* text2.C (init): update counters after init
 	(insertParagraph): no need to set counter on idividual paragraphs.
 	(setCounter): access the counters object in the textclass object

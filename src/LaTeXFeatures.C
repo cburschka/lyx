@@ -61,8 +61,8 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 		       << layoutname << endl;
 		return;
 	}
-	
-	LyXTextClass tclass = params.getLyXTextClass();
+
+	LyXTextClass const & tclass = params.getLyXTextClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
 		list<string>::const_iterator cit = usedLayouts.begin();
@@ -71,8 +71,8 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 			if (layoutname == *cit)
 				return;
 		}
-		
-		LyXLayout_ptr lyt = tclass[layoutname];
+
+		LyXLayout_ptr const & lyt = tclass[layoutname];
 		if (!lyt->depends_on().empty()) {
 			++level;
 			useLayout(lyt->depends_on());
@@ -82,9 +82,9 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 	} else {
 		lyxerr << "LaTeXFeatures::useLayout: layout `"
 		       << layoutname << "' does not exist in this class"
-		       << endl; 
+		       << endl;
 	}
-	
+
 	--level;
 }
 
@@ -194,7 +194,7 @@ string const LaTeXFeatures::getPackages() const
 	for (int i = 0; i < nb_simplefeatures; ++i) {
 		if (isRequired(simplefeatures[i]))
 			packages << "\\usepackage{"
-			         << simplefeatures[i] << "}\n";
+				 << simplefeatures[i] << "}\n";
 	}
 
 	//
@@ -430,7 +430,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 {
 	FloatList const & floats = params.getLyXTextClass().floats();
-	
+
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.
 	// \floatstyle{ruled}
