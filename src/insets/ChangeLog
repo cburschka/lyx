@@ -1,3 +1,9 @@
+2001-11-22  Allan Rae  <rae@lyx.org>
+
+	* insetcollapsable.h: 
+	* inset.h: Changes to checkInsertChar() behaviour.
+	Now return value indicates whether chars can be inserted.
+
 2001-11-11  Michael A. Koziarski <michael@koziarski.org>
 
 	* various:  updated to use the new LaTeXFeatures

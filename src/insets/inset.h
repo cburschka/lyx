@@ -335,7 +335,7 @@ bool Inset::insetAllowed(Inset * in) const
 inline
 bool Inset::checkInsertChar(LyXFont &)
 {
-	return true;
+	return false;
 }
 
 //  Updatable Insets. These insets can be locked and receive
@@ -405,6 +405,9 @@ public:
 	///
 	UpdatableInset(UpdatableInset const & in, bool same_id = false);
 
+	/// check if the font of the char we want inserting is correct
+	/// and modify it if it is not.
+	virtual bool checkInsertChar(LyXFont &);
 	///
 	virtual EDITABLE editable() const;
 	
@@ -519,6 +522,12 @@ private:
 	///
 	mutable bool block_drawing_;
 };
+
+inline
+bool UpdatableInset::checkInsertChar(LyXFont &)
+{
+	return true;
+}
 
 /**
  * returns true if pointer argument is valid

@@ -189,9 +189,6 @@ public:
 	                   bool const & cs = true, bool const & mw = false);
 	bool searchBackward(BufferView * bv, string const & str,
 	                    bool const & cs = true, bool const & mw = false);
-	/// check if the font of the char we want inserting is correct
-	/// and modify it if it is not.
-	virtual bool checkInsertChar(LyXFont &) { return false; }
 
 protected:
 	///
