@@ -761,7 +761,6 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		string const clip = bv->getClipboard();
 		if (clip.empty())
 			break;
-#if 0
 		if (clip.find('\t') != string::npos) {
 			int cols = 1;
 			int rows = 1;
@@ -787,27 +786,28 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			maxCols = max(cols, maxCols);
 
 			paste_tabular.reset(
-				new LyXTabular(bv->buffer()->params(),
-					       this, rows, maxCols)
-				);
+				new LyXTabular(bv->buffer()->params(), rows, maxCols));
 
 			string::size_type op = 0;
 			int cell = 0;
 			int cells = paste_tabular->getNumberOfCells();
 			p = 0;
 			cols = 0;
+			LyXFont font;
 			while (cell < cells && p < len &&
 			      (p = clip.find_first_of("\t\n", p)) != string::npos) {
 				if (p >= len)
 					break;
 				switch (clip[p]) {
 				case '\t':
-					paste_tabular->getCellInset(cell)->setText(clip.substr(op, p-op));
+					paste_tabular->getCellInset(cell).
+						setText(clip.substr(op, p-op), font);
 					++cols;
 					++cell;
 					break;
 				case '\n':
-					paste_tabular->getCellInset(cell)->setText(clip.substr(op, p-op));
+					paste_tabular->getCellInset(cell).
+						setText(clip.substr(op, p-op), font);
 					while (cols++ < maxCols)
 						++cell;
 					cols = 0;
@@ -818,11 +818,9 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			}
 			// check for the last cell if there is no trailing '\n'
 			if (cell < cells && op < len)
-				paste_tabular->getCellInset(cell)->setText(clip.substr(op, len-op));
-		} else
-#else
-		if (!insertAsciiString(bv, clip, true))
-#endif
+				paste_tabular->getCellInset(cell).
+					setText(clip.substr(op, len-op), font);
+		} else if (!insertAsciiString(bv, clip, true))
 		{
 			// so that the clipboard is used and it goes on
 			// to default

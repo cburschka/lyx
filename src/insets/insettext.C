@@ -519,31 +519,6 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 		result.update(true);
 		break;
 
-	case LFUN_PASTE:
-		if (!autoBreakRows_) {
-			if (CutAndPaste::nrOfParagraphs() > 1) {
-#ifdef WITH_WARNINGS
-#warning FIXME horrendously bad UI
-#endif
-				Alert::error(_("Paste failed"),
-					_("Cannot include more than one paragraph."));
-			}
-		} else {
-			replaceSelection(bv->getLyXText());
-			size_t sel_index = 0;
-			string const & arg = cmd.argument;
-			if (isStrUnsignedInt(arg)) {
-#warning FIXME Check if the arg is in the domain of available selections.
-				sel_index = strToUnsignedInt(arg);
-			}
-			text_.pasteSelection(sel_index);
-			// bug 393
-			text_.clearSelection();
-#warning should be also set dispatched here?
-			result.update(true);
-		}
-		break;
-
 	case LFUN_BREAKPARAGRAPH:
 		if (!autoBreakRows_) {
 			result.dispatched(true);
