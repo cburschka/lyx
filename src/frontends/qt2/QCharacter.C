@@ -33,7 +33,7 @@ typedef QController<ControlCharacter, QView<QCharacterDialog> > base_class;
 
 
 QCharacter::QCharacter(Dialog & parent)
-	: base_class(parent, qt_("LyX: Change Character Settings"))
+	: base_class(parent, qt_("LyX: Change Text Style"))
 {
 }
 

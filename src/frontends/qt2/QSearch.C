@@ -28,7 +28,7 @@ typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
 
 
 QSearch::QSearch()
-	: base_class(qt_("LyX: Search Document"))
+	: base_class(qt_("LyX: Find and Replace"))
 {
 }
 

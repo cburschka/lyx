@@ -29,7 +29,7 @@ typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 
 
 QExternal::QExternal(Dialog & parent)
-	: base_class(parent, qt_("LyX: Insert External Material"))
+	: base_class(parent, qt_("LyX: External Material"))
 {
 }
 

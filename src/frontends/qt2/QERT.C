@@ -25,7 +25,7 @@ typedef QController<ControlERT, QView<QERTDialog> > base_class;
 
 
 QERT::QERT(Dialog & parent)
-	: base_class(parent, qt_("LyX: LaTeX Code Settings"))
+	: base_class(parent, qt_("LyX: TeX Code Settings"))
 {
 }
 

@@ -173,13 +173,13 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
-					   qt_("LyX: Insert Index Entry"),
+					   qt_("LyX: Index Entry"),
 					   qt_("&Keyword")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
-					   qt_("LyX: Insert Label"),
+					   qt_("LyX: Label"),
 					   qt_("&Label")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {

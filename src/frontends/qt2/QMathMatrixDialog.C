@@ -34,7 +34,7 @@ QMathMatrixDialog::QMathMatrixDialog(QMath * form)
 	: QMathMatrixDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	setCaption(qt_("LyX: Insert matrix"));
+	setCaption(qt_("LyX: Insert Matrix"));
 
 	table->setMinimumSize(100,100);
 	rowsSB->setValue(2);

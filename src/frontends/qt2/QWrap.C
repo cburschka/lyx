@@ -32,7 +32,7 @@ typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
 
 
 QWrap::QWrap(Dialog & parent)
-	: base_class(parent, qt_("LyX: Text-wrapping Settings"))
+	: base_class(parent, qt_("LyX: Text Wrap Settings"))
 {
 }
 

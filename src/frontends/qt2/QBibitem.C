@@ -28,7 +28,7 @@ typedef QController<ControlCommand, QView<QBibitemDialog> > base_class;
 
 
 QBibitem::QBibitem(Dialog & parent)
-	: base_class(parent, qt_("LyX: Insert Bibliography Item"))
+	: base_class(parent, qt_("LyX: Bibliography Item Settings"))
 {
 }
 

@@ -39,7 +39,7 @@ typedef QController<ControlRef, QView<QRefDialog> > base_class;
 
 
 QRef::QRef(Dialog & parent)
-	: base_class(parent, qt_("LyX: Insert Cross-reference")),
+	: base_class(parent, qt_("LyX: Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }
