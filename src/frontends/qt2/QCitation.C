@@ -48,9 +48,19 @@ QCitation::QCitation(ControlCitation & c)
 
 void QCitation::apply()
 {
-	controller().params().setCmdName("cite");
+	vector<biblio::CiteStyle> const & styles =
+		ControlCitation::getCiteStyles();
+ 
+	int const choice = dialog_->citationStyleCO->currentItem();
+	bool const full  = dialog_->fulllistCB->isChecked();
+	bool const force = dialog_->forceuppercaseCB->isChecked();
+ 
+        string const command =
+                biblio::getCiteCommand(styles[choice], full, force);
+ 
+	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
-	
+ 
 	string const after  = dialog_->textAfterED->text().latin1();
 	controller().params().setOptions(after);
 }
@@ -83,18 +93,68 @@ void QCitation::build_dialog()
 	bc().addReadOnly(dialog_->upPB);
 	bc().addReadOnly(dialog_->downPB);
 	bc().addReadOnly(dialog_->citationStyleCO);
+	bc().addReadOnly(dialog_->forceuppercaseCB);
+	bc().addReadOnly(dialog_->fulllistCB);
 	// add when enabled ! 
 	//bc().addReadOnly(dialog_->textBeforeED);
 	bc().addReadOnly(dialog_->textAfterED);
 }
 
 
+void QCitation::fillStyles()
+{
+	// style
+	string key;
+
+	if (!citekeys.empty())
+		key = citekeys[0];
+ 
+	dialog_->citationStyleCO->clear();
+	vector<string> const & sty = controller().getCiteStrings(key);
+ 
+	for (vector<string>::const_iterator it = sty.begin();
+		it != sty.end(); ++it) {
+		dialog_->citationStyleCO->insertItem(it->c_str());
+	}
+}
+ 
+
+void QCitation::updateStyle()
+{
+	string const & command = controller().params().getCmdName();
+ 
+	// Find the style of the citekeys
+	vector<biblio::CiteStyle> const & styles =
+		ControlCitation::getCiteStyles();
+        biblio::CitationStyle cs = biblio::getCitationStyle(command);
+ 
+	vector<biblio::CiteStyle>::const_iterator cit =
+		find(styles.begin(), styles.end(), cs.style);
+ 
+	dialog_->citationStyleCO->setCurrentItem(0);
+	dialog_->fulllistCB->setChecked(false); 
+	dialog_->forceuppercaseCB->setChecked(false); 
+ 
+	if (cit != styles.end()) {
+		int const i = int(cit - styles.begin());
+		dialog_->citationStyleCO->setCurrentItem(i);
+		dialog_->fulllistCB->setChecked(cs.full);
+		dialog_->forceuppercaseCB->setChecked(cs.forceUCase);
+	} 
+
+	bool const natbib = controller().usingNatbib();
+	dialog_->citationStyleCO->setEnabled(natbib); 
+	dialog_->fulllistCB->setEnabled(natbib); 
+	dialog_->forceuppercaseCB->setEnabled(natbib); 
+}
+ 
+
 void QCitation::update_contents()
 {
 	// Make the list of all available bibliography keys
 	bibkeys = biblio::getKeys(controller().bibkeysInfo());
 	updateBrowser(dialog_->bibLB, bibkeys);
-	
+
 	// Ditto for the keys cited in this inset
 	citekeys = getVectorFromString(controller().params().getContents());
 	updateBrowser(dialog_->citeLB, citekeys);
@@ -105,8 +165,12 @@ void QCitation::update_contents()
 	setCiteButtons(OFF);
 
 	dialog_->textAfterED->setText(controller().params().getOptions().c_str());
-}
 
+	fillStyles();
+ 
+	updateStyle();
+}
+ 
 
 void QCitation::updateBrowser(QListBox* browser,
 				  vector<string> const & keys) const

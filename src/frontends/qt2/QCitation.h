@@ -48,6 +48,12 @@ private:
 	/// Update dialog before/whilst showing it.
 	virtual void update_contents();
 
+	/// fill the styles combo
+	void fillStyles();
+ 
+	/// set the styles combo
+	void updateStyle();
+ 
 	void updateBrowser(QListBox *, std::vector<string> const &) const;
 	///
 	void setBibButtons(State) const;

@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>427</width>
-            <height>585</height>
+            <width>522</width>
+            <height>365</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,462 +34,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout24</cstring>
-            </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>0</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget row="1"  column="1" >
-                    <class>QLayoutWidget</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>Layout1</cstring>
-                    </property>
-                    <vbox>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>0</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>addPB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string></string>
-                            </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image0</pixmap>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Add the selected citation</string>
-                            </property>
-                        </widget>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>delPB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string></string>
-                            </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image1</pixmap>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Remove the selected citation</string>
-                            </property>
-                        </widget>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>upPB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string></string>
-                            </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image2</pixmap>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Move the selected citation up</string>
-                            </property>
-                        </widget>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>downPB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string></string>
-                            </property>
-                            <property stdset="1">
-                                <name>sizePolicy</name>
-                                <sizepolicy>
-                                    <hsizetype>0</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                </sizepolicy>
-                            </property>
-                            <property stdset="1">
-                                <name>pixmap</name>
-                                <pixmap>image3</pixmap>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Move the selected citation down</string>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-                <widget row="0"  column="2" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bibliographyKeysLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Bibliography keys</string>
-                    </property>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>insetKeysLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Inset keys</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="2" >
-                    <class>QListBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>New Item</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bibLB</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Available citation keys</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QListBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>New Item</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>citeLB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>selectionMode</name>
-                        <enum>Single</enum>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Citations currently selected</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <spacer>
-            <property>
-                <name>name</name>
-                <cstring>Spacer2</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget>
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>infoLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Info</string>
-            </property>
-        </widget>
-        <widget>
-            <class>QMultiLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>infoML</cstring>
-            </property>
-            <property stdset="1">
-                <name>wordWrap</name>
-                <enum>WidgetWidth</enum>
-            </property>
-            <property stdset="1">
-                <name>readOnly</name>
-                <bool>true</bool>
-            </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
-                <enum>NoFocus</enum>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Citation entry</string>
-            </property>
-        </widget>
-        <spacer>
-            <property>
-                <name>name</name>
-                <cstring>Spacer3</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget>
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>GroupBox4</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Search</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>searchED</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Search the available citations</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QLayoutWidget</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>Layout37</cstring>
-                    </property>
-                    <hbox>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>0</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget>
-                            <class>QCheckBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>searchTypeCB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Regular E&amp;xpression</string>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Interpret search entry as a regular expression</string>
-                            </property>
-                        </widget>
-                        <spacer>
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer2_2</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>previousPB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>&amp;Previous</string>
-                            </property>
-                        </widget>
-                    </hbox>
-                </widget>
-                <widget>
-                    <class>QLayoutWidget</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>Layout38</cstring>
-                    </property>
-                    <hbox>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>0</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget>
-                            <class>QCheckBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>searchCaseCB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>&amp;Case sensitive</string>
-                            </property>
-                            <property>
-                                <name>toolTip</name>
-                                <string>Make the search case-sensitive</string>
-                            </property>
-                        </widget>
-                        <spacer>
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer3_2</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>nextPB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>&amp;Next</string>
-                            </property>
-                        </widget>
-                    </hbox>
-                </widget>
-            </vbox>
-        </widget>
-        <spacer>
-            <property>
-                <name>name</name>
-                <cstring>Spacer1</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget>
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>Layout25</cstring>
+                <cstring>Layout17</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -501,31 +46,498 @@
                     <number>6</number>
                 </property>
                 <widget>
-                    <class>QLabel</class>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>citationStyleLA</cstring>
+                        <cstring>Layout24</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Citation style</string>
-                    </property>
+                    <grid>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget row="1"  column="1" >
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout1</cstring>
+                            </property>
+                            <vbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>addPB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image0</pixmap>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Add the selected citation</string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>delPB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image1</pixmap>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Remove the selected citation</string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>upPB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image2</pixmap>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Move the selected citation up</string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>downPB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>pixmap</name>
+                                        <pixmap>image3</pixmap>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Move the selected citation down</string>
+                                    </property>
+                                </widget>
+                            </vbox>
+                        </widget>
+                        <widget row="0"  column="2" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>bibliographyKeysLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Bibliography keys</string>
+                            </property>
+                        </widget>
+                        <widget row="0"  column="0" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>insetKeysLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Inset keys</string>
+                            </property>
+                        </widget>
+                        <widget row="1"  column="2" >
+                            <class>QListBox</class>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>New Item</string>
+                                </property>
+                            </item>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>bibLB</cstring>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Available citation keys</string>
+                            </property>
+                        </widget>
+                        <widget row="1"  column="0" >
+                            <class>QListBox</class>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>New Item</string>
+                                </property>
+                            </item>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>citeLB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>selectionMode</name>
+                                <enum>Single</enum>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Citations currently selected</string>
+                            </property>
+                        </widget>
+                    </grid>
                 </widget>
                 <widget>
-                    <class>QComboBox</class>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>citationStyleCO</cstring>
+                        <cstring>Layout16</cstring>
                     </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout13</cstring>
+                            </property>
+                            <vbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>infoLA</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Info</string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QMultiLineEdit</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>infoML</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>focusPolicy</name>
+                                        <enum>NoFocus</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>wordWrap</name>
+                                        <enum>WidgetWidth</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>readOnly</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Citation entry</string>
+                                    </property>
+                                </widget>
+                            </vbox>
+                        </widget>
+                        <widget>
+                            <class>QGroupBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>GroupBox4</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>title</name>
+                                <string>Search</string>
+                            </property>
+                            <vbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>11</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLineEdit</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>searchED</cstring>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Search the available citations</string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QLayoutWidget</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>Layout37</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QCheckBox</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>searchTypeCB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>Regular E&amp;xpression</string>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Interpret search entry as a regular expression</string>
+                                            </property>
+                                        </widget>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer2_2</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>20</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>previousPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>&amp;Previous</string>
+                                            </property>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                                <widget>
+                                    <class>QLayoutWidget</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>Layout38</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QCheckBox</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>searchCaseCB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>&amp;Case sensitive</string>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Make the search case-sensitive</string>
+                                            </property>
+                                        </widget>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer3_2</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>20</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>nextPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>&amp;Next</string>
+                                            </property>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                            </vbox>
+                        </widget>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout18</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout19</cstring>
                     </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>citationStyleLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Citation style</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QComboBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>citationStyleCO</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                </sizepolicy>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Natbib citation style to use</string>
+                            </property>
+                        </widget>
+                    </vbox>
                 </widget>
                 <spacer>
                     <property>
                         <name>name</name>
-                        <cstring>Spacer8</cstring>
+                        <cstring>Spacer16</cstring>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
@@ -543,13 +555,60 @@
                         </size>
                     </property>
                 </spacer>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout17</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>fulllistCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Full author list</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>List all authors</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>forceuppercaseCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Force &amp;upper case</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Force upper case in citation</string>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
             </hbox>
         </widget>
         <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout9</cstring>
+                <cstring>Layout14</cstring>
             </property>
             <grid>
                 <property stdset="1">
@@ -560,15 +619,22 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>textBeforeLA</cstring>
+                        <cstring>textAfterED</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>Text before</string>
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Text to place after citation</string>
                     </property>
                 </widget>
                 <widget row="1"  column="0" >
@@ -588,20 +654,27 @@
                         <name>name</name>
                         <cstring>textBeforeED</cstring>
                     </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
                     <property>
                         <name>toolTip</name>
                         <string>Text to place before citation</string>
                     </property>
                 </widget>
-                <widget row="1"  column="1" >
-                    <class>QLineEdit</class>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>textAfterED</cstring>
+                        <cstring>textBeforeLA</cstring>
                     </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Text to place after citation</string>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Text before</string>
                     </property>
                 </widget>
             </grid>
@@ -664,12 +737,12 @@
                         <string>OK</string>
                     </property>
                     <property stdset="1">
-                        <name>default</name>
-                        <bool>false</bool>
-                    </property>
-                    <property stdset="1">
                         <name>autoDefault</name>
                         <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>false</bool>
                     </property>
                 </widget>
                 <widget>
@@ -766,12 +839,6 @@
         <slot>changed_adaptor()</slot>
     </connection>
     <connection>
-        <sender>citationStyleCO</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
-    </connection>
-    <connection>
         <sender>citeLB</sender>
         <signal>highlighted(int)</signal>
         <receiver>QCitationDialogBase</receiver>
@@ -794,6 +861,24 @@
         <signal>selected(int)</signal>
         <receiver>QCitationDialogBase</receiver>
         <slot>slotBibSelected(int)</slot>
+    </connection>
+    <connection>
+        <sender>fulllistCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>forceuppercaseCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>citationStyleCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
     </connection>
     <slot access="public">changed_adaptor()</slot>
     <slot access="public">slotBibSelected(int)</slot>
