@@ -76,12 +76,9 @@ void FormExternal::update()
 	fl_set_input(dialog_->input_filename, params.filename.c_str());
 	fl_set_input(dialog_->input_parameters, params.parameters.c_str());
 
-	int const ID = controller().getTemplateNumber(params.templ.lyxName);
-	if (ID >= 0) {
-		setEnabled(dialog_->choice_template, true);
-		fl_set_choice(dialog_->choice_template, ID+1);
-	} else
-		setEnabled(dialog_->choice_template, false);
+	int ID = controller().getTemplateNumber(params.templ.lyxName);
+	if (ID < 0) ID = 0;
+	fl_set_choice(dialog_->choice_template, ID+1);
 
 	updateComboChange();
 }
