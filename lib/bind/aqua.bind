@@ -1,0 +1,147 @@
+# This file is part of LyX
+#
+# This is the Aqua bind file, which replaces key bindings that
+# are grabbed by the Qt/MacOSX library.  
+# NB.  These bindings use Option-Shift
+#
+# DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost. 
+# Instead, customize a copy of this file placed in 
+# ~/.lyx/bind/aqua.bind
+#
+
+\bind "M-~S-i c"		"citation-insert"
+\bind "M-~S-i f"		"footnote-insert"
+\bind "M-~S-i u"		"url-insert"
+\bind "M-~S-i m"		"marginalnote-insert"
+\bind "M-~S-i x" 		"external-insert"
+\bind "M-~S-i r" 		"reference-insert"
+\bind "M-~S-i n" 		"note-insert"
+\bind "M-~S-i l" 		"label-insert"
+\bind "M-~S-i i 		"index-insert"
+
+\bind "M-~S-i s s"		"command-sequence math-mode ; math-superscript ; font-free; "
+\bind "M-~S-i s u"		"command-sequence math-mode ; math-subscript ; font-free; "
+\bind "M-~S-i s h"		"hfill-insert"
+\bind "M-~S-i s p"		"hyphenation-point-insert"
+\bind "M-~S-i s k"		"ligature-break-insert"
+\bind "M-~S-i s b"		"protected-space-insert"
+\bind "M-~S-i s l"		"break-line"
+\bind "M-~S-i s i"		"dots-insert"
+\bind "M-~S-i s e"		"end-of-sentence-period-insert"
+\bind "M-~S-i s q"		"self-insert \""
+\bind "M-~S-i s m"		"menu-separator-insert"
+
+\bind "M-~S-i h i"		"math-mode"
+\bind "M-~S-i h d"		"math-display"
+\bind "M-~S-i h e"		"command-sequence math-mode; math-mutate eqnarray;"
+\bind "M-~S-i h a"		"command-sequence math-mode; math-mutate align;"
+\bind "M-~S-i h t"		"command-sequence math-mode; math-mutate alignat;"
+\bind "M-~S-i h f"		"command-sequence math-mode; math-mutate flalign;"
+\bind "M-~S-i h y"		"math-matrix 2 2"
+\bind "M-~S-i h c"		"math-insert \cases"
+\bind "M-~S-i h l"		"math-panel"
+
+\bind "M-~S-i o c"		"toc-insert"
+\bind "M-~S-i o i"		"index-print"
+\bind "M-~S-i o b"		"bibtex-insert"
+
+\bind "M-~S-i e x" 		"file-insert"
+\bind "M-~S-i e l" 		"file-insert-ascii"
+\bind "M-~S-i e p" 		"file-insert-ascii-para"
+
+\bind "M-~S-f p"		"buffer-print"
+\bind "M-~S-f n"		"buffer-new"
+\bind "M-~S-f t"		"buffer-new-template"
+\bind "M-~S-f o"		"file-open"
+\bind "M-~S-f c"		"buffer-close"
+\bind "M-~S-f s"		"buffer-write"
+\bind "M-~S-f a"		"buffer-write-as"
+\bind "M-~S-f r"		"buffer-reload"
+\bind "M-~S-f x"		"lyx-quit"
+
+\bind "M-~S-l c"		"layout-character"
+\bind "M-~S-l p"		"layout-paragraph"
+\bind "M-~S-l d"		"layout-document"
+\bind "M-~S-l e"		"font-emph"
+\bind "M-~S-l n"		"font-noun"
+\bind "M-~S-l b"		"font-bold"
+
+\bind "M-~S-e u"		"undo"
+\bind "M-~S-e d"		"redo"
+\bind "M-~S-e c"		"cut"
+\bind "M-~S-e a"		"paste"
+\bind "M-~S-e f"		"find-replace"
+\bind "M-~S-e s"		"spellchecker"
+\bind "M-~S-e h"		"buffer-chktex"
+\bind "M-~S-e e"		"error-remove-all"
+\bind "M-~S-e l"		"inset-toggle"
+\bind "M-~S-e p"		"dialog-preferences"
+\bind "M-~S-e r"		"reconfigure"
+
+\bind "M-~S-e x l"		"primary-selection-paste"
+\bind "M-~S-e x p"		"primary-selection-paste paragraph"
+
+\bind "M-~S-e t m"		"tabular-feature multicolumn"
+\bind "M-~S-e t t"		"tabular-feature toggle-line-top"
+\bind "M-~S-e t b"		"tabular-feature toggle-line-bottom"
+\bind "M-~S-e t l"		"tabular-feature toggle-line-left"
+\bind "M-~S-e t r"		"tabular-feature toggle-line-right"
+\bind "M-~S-e t e"		"tabular-feature align-left"
+\bind "M-~S-e t c"		"tabular-feature align-center"
+\bind "M-~S-e t i"		"tabular-feature align-right"
+\bind "M-~S-e t o"		"tabular-feature valign-top"
+\bind "M-~S-e t n"		"tabular-feature valign-center"
+\bind "M-~S-e t v"		"tabular-feature valign-bottom"
+\bind "M-~S-e t a"		"tabular-feature append-row"
+\bind "M-~S-e t w"		"tabular-feature delete-row"
+\bind "M-~S-e t u"		"tabular-feature append-column"
+\bind "M-~S-e t d"		"tabular-feature delete-column"
+
+\bind "M-~S-e m n"		"math-number"
+\bind "M-~S-e m u"		"math-nonumber"
+\bind "M-~S-e m r"		"tabular-feature append-row"
+\bind "M-~S-e m d"		"tabular-feature delete-row"
+\bind "M-~S-e m c"		"tabular-feature append-column"
+\bind "M-~S-e m e"		"tabular-feature delete-column"
+
+\bind "M-~S-e m l t"		"math-limits empty"
+\bind "M-~S-e m l d"		"math-limits limits"
+\bind "M-~S-e m l i"		"math-limits nolimits"
+
+\bind "M-~S-e m f i" 	       	"math-mutate simple"
+\bind "M-~S-e m f d"		"math-mutate equation"
+\bind "M-~S-e m f q"		"math-mutate eqnarray"
+\bind "M-~S-e m f a"		"math-mutate align"
+\bind "M-~S-e m f f"		"math-mutate flalign"
+
+\bind "M-~S-e m a l"		"tabular-feature align-left"
+\bind "M-~S-e m a c"		"tabular-feature align-center"
+\bind "M-~S-e m a r"		"tabular-feature align-right"
+\bind "M-~S-e m a t"		"tabular-feature valign-top"
+\bind "M-~S-e m a e"		"tabular-feature valign-center"
+\bind "M-~S-e m a b" 		"tabular-feature valign-bottom"
+
+\bind "M-~S-v l"		"latex-view-log"
+\bind "M-~S-v t"		"toc-view"
+\bind "M-~S-v c"		"show-forks"
+\bind "M-~S-v x"		"help-Texinfo"
+
+\bind "M-~S-n e"		"error-next"
+\bind "M-~S-n n"		"note-next"
+\bind "M-~S-n r"		"reference-goto"
+\bind "M-~S-n b s"		"bookmark-save 1"
+\bind "M-~S-n b 1"		"bookmark-goto 1"
+\bind "M-~S-n b 2"		"bookmark-goto 2"
+\bind "M-~S-n b 3"		"bookmark-goto 3"
+
+\bind "M-~S-h o"		"toggle-tooltips"
+\bind "M-~S-h i"		"help-open Intro"
+\bind "M-~S-h t"		"help-open Tutorial"
+\bind "M-~S-h u"		"help-open UserGuide"
+\bind "M-~S-h e"		"help-open Extended"
+\bind "M-~S-h c"		"help-open Customization"
+\bind "M-~S-h f"		"help-open FAQ"
+\bind "M-~S-h a"		"help-open TOC"
+\bind "M-~S-h l"		"help-open LaTeXConfig"
+\bind "M-~S-h x"		"help-aboutlyx"
