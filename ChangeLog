@@ -1,7 +1,12 @@
+2002-04-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (DISTCLEANFILES): don't use -r
+	(distclean-local): new target
+
 2002-04-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* UPGRADING: mention floatflt gotcha
- 
+
 2002-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* configure.in (VERSION): use the proper postfix
