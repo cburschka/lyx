@@ -1,3 +1,9 @@
+2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* POTFILES.in:
+	* Makefile.in.in: use a plain sort instead of "sort -f
+	-n". Hopefully everybody will get the same ordering now.
+
 2003-02-10  Adrien Rebollo <adrien.rebollo@gmx.fr>
 
 	* fr.po: update

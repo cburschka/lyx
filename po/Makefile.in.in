@@ -201,7 +201,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	&& ( cd $(top_srcdir); \
 	     grep -l "_(\".*\")" `find src -name \*.[hHC] -print` |\
 	     sed -e '/xforms.forms/d' | \
-	     sort -f -n | uniq ) > $@-t \
+	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
 
