@@ -2,6 +2,11 @@
 
 	* src/buffer.C (Dispatch): remove an extraneous break statement.
 
+	* src/support/filetools.C (QuoteName): change to do simple
+	'quoting'. More work is necessary. Also changed to do nothing
+	under emx (needs fix too).
+	(Putenv): Cast the argument of putenv() with PUTENV_TYPE_ARG.
+
 	* acinclude.m4 (STL_STRING_FWD_H_LOCATION): add the comment for
 	config.h.in to the AC_DEFINE_UNQUOTED() call.
 	(LYX_FUNC_PUTENV_ARGTYPE): new macro. Checks whether putenv()
@@ -10,10 +15,6 @@
 
 	* acconfig.h: remove placeholder for STL_STRING_FWD_H_LOCATION;
 	remove definition of BZERO.
-
-	* src/support/filetools.C (QuoteName): change to do simple
-	'quoting'. More work is necessary. Also changed to do nothing
-	under emx (needs fix too).
 
 1999-12-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
