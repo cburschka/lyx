@@ -79,7 +79,7 @@ public:
 	/// This returns the list of labels on the child buffer
 	std::vector<string> const getLabelList() const;
 	/// This returns the list of bibkeys on the child buffer
-	void fillWithBibKeys(vector<pair<string,string> > & keys) const;
+	void fillWithBibKeys(std::vector<std::pair<string,string> > & keys) const;
 	///
 	void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
