@@ -16,10 +16,8 @@
 #include "QSpellchecker.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include <qprogressbar.h>
-#include <qmessagebox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qlistbox.h>

@@ -14,14 +14,11 @@
 #include "QFloatDialog.h"
 #include "QFloat.h"
 #include "Qt2BC.h"
-#include "qt_helpers.h"
 #include "floatplacement.h"
 
 #include "insets/insetfloat.h"
-#include "support/lstrings.h"
 
 #include <qpushbutton.h>
-#include <qcheckbox.h>
 
 typedef QController<ControlFloat, QView<QFloatDialog> > base_class;
 

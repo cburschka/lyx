@@ -11,11 +11,9 @@
 #include <config.h>
 
 
-#include "support/lstrings.h"
 
 #include "ControlCommand.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>

@@ -11,7 +11,6 @@
 #include <config.h>
 
 
-#include "LyXView.h"
 #include "qt_helpers.h"
 #include "ControlLog.h"
 #include "Lsstream.h"

@@ -11,15 +11,11 @@
 
 #include <config.h>
 
-#include "lfuns.h"
-#include "LString.h"
 #include "frontends/FileDialog.h"
 #include "FileDialog_private.h"
 #include "debug.h"
 #include "qt_helpers.h"
 #include "gettext.h"
-
-#include <qapplication.h>
 
 #include <utility>
 

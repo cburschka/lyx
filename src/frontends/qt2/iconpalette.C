@@ -18,7 +18,6 @@
 
 #include <qlayout.h>
 #include <qpushbutton.h>
-#include <qpixmap.h>
 #include <qtooltip.h>
 
 using std::endl;

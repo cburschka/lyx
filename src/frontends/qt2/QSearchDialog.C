@@ -14,14 +14,12 @@
 #include "ControlSearch.h"
 #include "QSearchDialog.h"
 #include "QSearch.h"
-#include "debug.h"
 #include "qt_helpers.h"
 
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
-#include <qlabel.h>
 
 namespace {
 

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlNote.h"
-#include "qt_helpers.h"
 #include "insets/insetnote.h"
 
 #include <qradiobutton.h>

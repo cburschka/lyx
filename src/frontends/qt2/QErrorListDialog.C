@@ -13,10 +13,8 @@
 
 #include "QErrorList.h"
 #include "QErrorListDialog.h"
-#include "qt_helpers.h"
 
 #include <qlistbox.h>
-#include <qtextbrowser.h>
 #include <qpushbutton.h>
 
 

@@ -14,20 +14,16 @@
 #include "support/filetools.h"
 #include "controllers/ControlCommandBuffer.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include "QtView.h"
 #include "QCommandBuffer.h"
 #include "QCommandEdit.h"
 
-#include <qcombobox.h>
 #include <qlistbox.h>
-#include <qpixmap.h>
 #include <qlayout.h>
 #include <qtooltip.h>
 #include <qpushbutton.h>
 
-#include "LString.h"
 
 using namespace lyx::support;
 

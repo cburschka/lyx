@@ -16,11 +16,9 @@
 
 #include "lengthcombo.h"
 
-#include <qglobal.h>
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
-#include <algorithm>
 
 using std::pair;
 using std::make_pair;

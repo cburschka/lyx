@@ -16,12 +16,9 @@
 
 #include "ControlBibtex.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include "support/filetools.h" // ChangeExtension
-#include "support/lstrings.h" // getVectorFromString
 
-#include <qlineedit.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
 #include <qlistbox.h>

@@ -10,6 +10,9 @@
 
 #include <config.h>
 
+#include "Alert_pimpl.h"
+#include "Alert.h"
+
 #include <qmessagebox.h>
 #include <qlabel.h>
 #include <qlineedit.h>
@@ -18,12 +21,6 @@
 #include "gettext.h"
 
 #include <algorithm>
-
-#include "Alert.h"
-#include "Alert_pimpl.h"
-
-#include "support/BoostFormat.h"
-#include "gettext.h"
 
 using std::pair;
 using std::make_pair;

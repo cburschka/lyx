@@ -11,16 +11,13 @@
 #include <config.h>
 
 
-#include "LyXView.h"
 #include "ControlSearch.h"
-#include "qt_helpers.h"
 
 #include "QSearch.h"
 #include "QSearchDialog.h"
 #include "Qt2BC.h"
 
 #include <qpushbutton.h>
-#include <qcheckbox.h>
 #include <qcombobox.h>
 
 

@@ -11,11 +11,7 @@
 #include <config.h>
 
 
-#include "ControlInclude.h"
-#include "debug.h"
-#include "LString.h"
 
-#include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
@@ -23,7 +19,6 @@
 #include "QIncludeDialog.h"
 #include "QInclude.h"
 
-#include <vector>
 
 
 QIncludeDialog::QIncludeDialog(QInclude * form)

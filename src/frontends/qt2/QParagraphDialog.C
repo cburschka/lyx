@@ -23,7 +23,6 @@
 
 #include "qt_helpers.h"
 
-#include "helper_funcs.h"
 
 using std::vector;
 

@@ -13,10 +13,8 @@
 
 
 #include "lengthcombo.h"
-#include <qwhatsthis.h>
 
 #include "lengthcommon.h"
-#include "qt_helpers.h"
 
 
 LengthCombo::LengthCombo(QWidget * parent, char * name)

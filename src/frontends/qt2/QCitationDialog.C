@@ -11,24 +11,19 @@
 #include <config.h>
 
 
-#include <algorithm>
 
 #include "qt_helpers.h"
 #include "controllers/ControlCitation.h"
-#include "debug.h"
 
 #include <qcheckbox.h>
-#include <qcombobox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
-#include <qlabel.h>
 
 #include "ui/QCitationFindDialogBase.h"
 #include "QCitationDialog.h"
 #include "QCitation.h"
-#include "support/lstrings.h"
 
 using std::vector;
 using std::find;

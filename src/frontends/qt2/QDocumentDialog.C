@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-#include "buffer.h" //*here* because of braindead qt headers's #define signals
 
 #include "qt_helpers.h"
 
@@ -20,33 +19,18 @@
 
 #include "QDocumentDialog.h"
 
-#include "ui/TextLayoutModuleBase.h"
-#include "ui/MathsModuleBase.h"
-#include "ui/LaTeXModuleBase.h"
-#include "ui/PageLayoutModuleBase.h"
-#include "ui/LanguageModuleBase.h"
-#include "ui/BulletsModuleBase.h"
-#include "BulletsModule.h"
-#include "ui/BiblioModuleBase.h"
-#include "ui/NumberingModuleBase.h"
-#include "ui/MarginsModuleBase.h"
-#include "ui/PreambleModuleBase.h"
 #include "panelstack.h"
 #include "floatplacement.h"
 
-#include "Spacing.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"
 
 
-#include <qwidgetstack.h>
-#include <qlistbox.h>
 #include <qlabel.h>
 #include <qmultilineedit.h>
 #include <qlineedit.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
-#include <qcombobox.h>
 #include <qradiobutton.h>
 #include <qcheckbox.h>
 #include <qslider.h>

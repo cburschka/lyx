@@ -13,7 +13,6 @@
 
 #include "ControlInclude.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include "QIncludeDialog.h"
 #include "QInclude.h"

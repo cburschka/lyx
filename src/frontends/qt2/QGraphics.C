@@ -12,13 +12,10 @@
 
 #include <config.h>
 
-#include "QtLyXView.h"
 #include "ControlGraphics.h"
 #include "controllers/helper_funcs.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "support/FileInfo.h"
-#include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "insets/insetgraphicsParams.h"
 //#include "bufferparams.h"
@@ -26,16 +23,11 @@
 #include "lengthcombo.h"
 #include "qt_helpers.h"
 #include "lengthcommon.h"
-#include "lyxlength.h"
-#include "debug.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
-#include <qradiobutton.h>
-#include <qcombobox.h>
 #include <qgroupbox.h>
-#include <qbuttongroup.h>
 #include <qlabel.h>
 
 #include "QGraphicsDialog.h"

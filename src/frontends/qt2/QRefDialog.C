@@ -12,8 +12,6 @@
 #include <config.h>
 
 
-#include "ControlRef.h"
-#include "debug.h"
 
 #include "QRef.h"
 #include "QRefDialog.h"

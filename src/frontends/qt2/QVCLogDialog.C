@@ -11,16 +11,12 @@
 #include <config.h>
 
 
-#include <vector>
 
-#include "LyXView.h"
-#include "ControlVCLog.h"
 
 #include "QVCLog.h"
 #include "QVCLogDialog.h"
 
 #include <qpushbutton.h>
-#include <qtextview.h>
 
 
 QVCLogDialog::QVCLogDialog(QVCLog * form)

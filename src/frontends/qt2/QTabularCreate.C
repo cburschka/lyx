@@ -15,8 +15,6 @@
 #include "QTabularCreateDialog.h"
 #include "QTabularCreate.h"
 #include "Qt2BC.h"
-#include "qt_helpers.h"
-#include "debug.h"
 
 #include <qspinbox.h>
 #include <qpushbutton.h>

@@ -33,22 +33,16 @@
 #include "ui/QPrefUIModule.h"
 #include "ui/QPrefIdentityModule.h"
 
-#include "support/lstrings.h"
-#include "lyxrc.h"
-#include "debug.h"
 #include "gettext.h"
 
 #include "panelstack.h"
 #include <qpushbutton.h>
-#include <qlistbox.h>
 #include <qspinbox.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qfontdatabase.h>
-#include <qstringlist.h>
 #include <qcolordialog.h>
-#include <qcolor.h>
 #include "qcoloritem.h"
 #include "qfontexample.h"
 

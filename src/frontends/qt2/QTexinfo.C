@@ -11,15 +11,12 @@
 #include <config.h>
 
 
-#include "ControlTexinfo.h"
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "helper_funcs.h"
 
 #include "support/filetools.h"
-#include "support/lstrings.h"
 
 #include <qlistbox.h>
 #include <qpushbutton.h>

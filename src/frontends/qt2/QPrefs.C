@@ -26,8 +26,6 @@
 #include "ui/QPrefDisplayModule.h"
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
-#include "ui/QPrefConvertersModule.h"
-#include "ui/QPrefFileformatsModule.h"
 #include "ui/QPrefLanguageModule.h"
 #include "ui/QPrefPrinterModule.h"
 #include "ui/QPrefUIModule.h"
@@ -35,13 +33,11 @@
 #include "lyx_gui.h"
 #include "QPrefs.h"
 #include "Qt2BC.h"
-#include "lyxrc.h"
 #include "lyxfont.h"
 #include "frnt_lang.h"
 #include "helper_funcs.h"
 #include "qt_helpers.h"
 #include "lcolorcache.h"
-#include "debug.h"
 
 #include <boost/tuple/tuple.hpp>
 
@@ -50,9 +46,7 @@
 #include <qlineedit.h>
 #include <qspinbox.h>
 #include <qcombobox.h>
-#include <qlistbox.h>
 #include <qlabel.h>
-#include <qfontinfo.h>
 #include "qcoloritem.h"
 
 using namespace lyx::support;

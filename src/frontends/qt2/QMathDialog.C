@@ -11,9 +11,7 @@
 #include <config.h>
 
 
-#include "support/filetools.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include "ControlMath.h"
 
@@ -22,16 +20,11 @@
 
 #include "iconpalette.h"
 
-#include <qapplication.h>
 #include <qwidgetstack.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
 #include <qlistbox.h>
-#include <qpixmap.h>
-#include <qscrollview.h>
-#include <qlayout.h>
 #include <qpopupmenu.h>
-#include <qcursor.h>
 
 using std::min;
 using std::max;

@@ -10,11 +10,7 @@
 
 #include <config.h>
 
-#include "LyXView.h"
-#include "errorlist.h"
 #include "qt_helpers.h"
-#include "support/lstrings.h"
-#include "debug.h"
 
 #include "ControlErrorList.h"
 #include "QErrorList.h"

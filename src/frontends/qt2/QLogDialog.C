@@ -11,16 +11,12 @@
 #include <config.h>
 
 
-#include "LyXView.h"
-#include "ControlLog.h"
 
 #include <qpushbutton.h>
-#include <qtextview.h>
 
 #include "QLogDialog.h"
 #include "QLog.h"
 
-#include <vector>
 
 
 QLogDialog::QLogDialog(QLog * form)

@@ -13,17 +13,13 @@
 
 #include <stack>
 
-#include "LyXView.h"
 #include "qt_helpers.h"
-#include "support/lstrings.h"
-#include "debug.h"
 
 #include "ControlToc.h"
 #include "QToc.h"
 #include "QTocDialog.h"
 #include "Qt2BC.h"
 
-#include <qslider.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>

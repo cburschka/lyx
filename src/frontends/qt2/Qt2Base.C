@@ -10,17 +10,12 @@
 
 #include <config.h>
 
-#include <qdialog.h>
-#include <qapplication.h>
 
-#include "debug.h"
 #include "qt_helpers.h"
-#include "QtLyXView.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
 #include "ButtonController.h"
 #include "ControlButtons.h"
-#include "support/LAssert.h"
 
 
 Qt2Base::Qt2Base(string const & t)

@@ -25,8 +25,6 @@
 #include <qpushbutton.h>
 #include <qtooltip.h>
 
-#include "helper_funcs.h" // getStringFromVector
-#include "support/lstrings.h" // frontStrip, strip
 #include "qt_helpers.h"
 
 using std::find;

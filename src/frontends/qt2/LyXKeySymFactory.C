@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "frontends/LyXKeySymFactory.h"
 
 #include "QLyXKeySym.h"

@@ -11,9 +11,7 @@
 #include <config.h>
 
 
-#include "support/filetools.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include "ControlMath.h"
 #include "QMath.h"
@@ -23,7 +21,6 @@
 
 #include <qlabel.h>
 #include <qpixmap.h>
-#include <qpushbutton.h>
 #include <qcheckbox.h>
 
 namespace {

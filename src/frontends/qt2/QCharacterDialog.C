@@ -13,10 +13,7 @@
 
 #include "QCharacterDialog.h"
 
-#include <qcombobox.h>
-#include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qgroupbox.h>
 
 
 QCharacterDialog::QCharacterDialog(QCharacter * form)

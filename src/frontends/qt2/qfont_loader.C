@@ -15,18 +15,10 @@
 #include "qfont_loader.h"
 #include "qt_helpers.h"
 #include "debug.h"
-#include "lyxrc.h"
-#include "BufferView.h"
-#include "qt_helpers.h"
 
-#include <qglobal.h>
-#include <qfontmetrics.h>
-#include <qfontdatabase.h>
-#include <qstringlist.h>
 #include "support/lstrings.h"
 #include "frontends/lyx_gui.h"
 
-#include <algorithm>
 #include <boost/tuple/tuple.hpp>
 
 #ifdef Q_WS_X11

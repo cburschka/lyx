@@ -11,16 +11,8 @@
 #include <config.h>
 
 
-#include <vector>
-#include "ControlSendto.h"
-#include "qt_helpers.h"
-#include "debug.h"
 
-#include "LString.h"
 
-#include <qcombobox.h>
-#include <qlabel.h>
-#include <qlistbox.h>
 #include <qpushbutton.h>
 
 #include "QSendtoDialog.h"

@@ -12,15 +12,10 @@
 #include <config.h>
 
 #include "frontends/lyx_gui.h"
-#include "support/lstrings.h"
 #include "font_metrics.h"
 #include "qfont_loader.h"
-#include "debug.h"
-#include "encoding.h"
 #include "language.h"
 
-#include <qfontmetrics.h>
-#include <qfont.h>
 
 namespace {
 

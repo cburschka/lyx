@@ -12,10 +12,8 @@
 #include <config.h>
 
 
-#include "LyXView.h"
 #include "PrinterParams.h"
 #include "ControlPrint.h"
-#include "support/lstrings.h"
 #include "qt_helpers.h"
 
 #include "QPrint.h"

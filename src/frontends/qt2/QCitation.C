@@ -23,13 +23,10 @@
 #include <qpushbutton.h>
 #include <qlabel.h>
 
-#include "QtLyXView.h"
 #include "Qt2BC.h"
 #include "ControlCitation.h"
-#include "debug.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"
-#include "helper_funcs.h"
 
 using namespace lyx::support;
 

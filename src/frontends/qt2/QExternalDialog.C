@@ -14,10 +14,8 @@
 #include "qt_helpers.h"
 #include "ControlExternal.h"
 
-#include <qwidget.h>
 #include <qpushbutton.h>
 #include <qfiledialog.h>
-#include <qcombobox.h>
 #include <qtextview.h>
 #include <qlineedit.h>
 #include <qvalidator.h>

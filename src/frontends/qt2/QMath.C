@@ -12,7 +12,6 @@
 
 
 #include "gettext.h"
-#include "ControlMath.h"
 #include "QMathDialog.h"
 #include "QMathMatrixDialog.h"
 #include "QDelimiterDialog.h"

@@ -12,9 +12,7 @@
 #include <config.h>
 
 
-#include "qt_helpers.h"
 
-#include "support/lstrings.h"
 
 #include "QTabularCreate.h"
 #include "QTabularCreateDialog.h"

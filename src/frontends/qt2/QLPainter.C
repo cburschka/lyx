@@ -12,27 +12,17 @@
 
 
 #include "font_metrics.h"
-#include "support/lstrings.h"
-#include "lyxrc.h"
 #include "debug.h"
-#include "LyXView.h"
-#include "encoding.h"
 #include "language.h"
 
 #include "QWorkArea.h"
 #include "qfont_loader.h"
-#include "QLPainter.h"
 #include "QLImage.h"
-#include "qt_helpers.h"
 #include "lcolorcache.h"
 
-#include <boost/scoped_array.hpp>
 
 #include <qpainter.h>
-#include <qbrush.h>
-#include <qcolor.h>
 
-#include <iostream>
 
 using std::endl;
 

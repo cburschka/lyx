@@ -12,8 +12,6 @@
 
 #include "qcoloritem.h"
 
-#include <qfont.h>
-#include <qfontmetrics.h>
 #include <qpainter.h>
 
 QColorItem::QColorItem(QColor c, QString const & t)

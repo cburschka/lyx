@@ -11,7 +11,6 @@
 #include <config.h>
 
 
-#include "LString.h"
 
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
@@ -22,7 +21,6 @@
 #include <qlistview.h>
 #include <qlineedit.h>
 
-#include <vector>
 
 
 QThesaurusDialog::QThesaurusDialog(QThesaurus * form)

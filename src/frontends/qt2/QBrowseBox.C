@@ -10,19 +10,14 @@
 
 #include <config.h>
 
-#include <qstring.h>
 #include <qpixmap.h>
-#include <qkeycode.h>
 #include <qpainter.h>
 #include <qapplication.h>
 #include <qdrawutil.h>
 #include <qstyle.h>
-#include <qimage.h>
 
 #include "QBrowseBox.h"
 
-#include <cstdio>
-#include <cmath>
 
 
 QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char * name, WFlags f)

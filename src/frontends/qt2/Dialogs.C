@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "Dialogs.h"
-#include "Dialog.h"
 
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
@@ -33,7 +32,6 @@
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
-#include "ControlTexinfo.h"
 #include "ControlToc.h"
 #include "ControlVCLog.h"
 #include "ControlWrap.h"

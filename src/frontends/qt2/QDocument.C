@@ -15,38 +15,27 @@
 #include "ControlDocument.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
-#include "Qt2BC.h"
 
 
 #include "language.h"
 #include "helper_funcs.h" // getSecond()
-#include "insets/insetquotes.h"
 #include "frnt_lang.h"
 #include "lyxrc.h" // defaultUnit
 #include "tex-strings.h" // tex_graphics
 #include "support/tostr.h"
 #include "support/lstrings.h"
-#include "support/filetools.h" // LibFileSearch()
-#include "support/BoostFormat.h"
 #include "lyxtextclasslist.h"
-#include "vspace.h"
-#include "bufferparams.h"
-#include "qt_helpers.h"
 #include "floatplacement.h"
 
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
 #include <qradiobutton.h>
-#include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qslider.h>
 #include <qlineedit.h>
-#include <qstringlist.h>
 #include "lengthcombo.h"
 
-#include "QBrowseBox.h"
 
-#include <vector>
 
 using std::vector;
 using lyx::support::bformat;

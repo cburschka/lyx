@@ -15,21 +15,15 @@
 #include "ControlGraphics.h"
 #include "debug.h"
 #include "qt_helpers.h"
-#include "LString.h"
 
-#include <qwidget.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qfiledialog.h>
-#include <qcombobox.h>
 
 #include "lengthcombo.h"
 
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
 
-#include <vector>
 
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)

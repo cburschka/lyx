@@ -12,31 +12,21 @@
 #include <config.h>
 
 
-#include "support/lyxlib.h"
-#include "support/os.h"
-#include "support/filetools.h"
 #include "support/lstrings.h"
-#include "debug.h"
 #include "qt_helpers.h"
 
 #include "lyx_gui.h"
-#include "lyx_main.h"
-#include "lyxrc.h"
-#include "lyxfont.h"
 #include "funcrequest.h"
 #include "graphics/LoaderQueue.h"
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
-#include "buffer_funcs.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
 #include "BufferView.h"
 
 // Dear Lord, deliver us from Evil,
 // aka the Qt headers
-#include <boost/shared_ptr.hpp>
-#include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
 #include <boost/bind.hpp>
 
@@ -47,13 +37,8 @@
 #include "lcolorcache.h"
 
 #include <qapplication.h>
-#include <qwidget.h>
 #include <qpaintdevicemetrics.h>
-#include <qfont.h>
-#include <qfontinfo.h>
 
-#include <fcntl.h>
-#include <cstdlib>
 
 using namespace lyx::support;
 

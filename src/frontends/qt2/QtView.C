@@ -12,17 +12,12 @@
 #include <config.h>
 
 
-#include "debug.h"
-#include "intl.h"
 #include "lyx_cb.h"
 #include "support/filetools.h"
 #include "MenuBackend.h"
-#include "ToolbarBackend.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
 
@@ -31,12 +26,8 @@
 #include "QLMenubar.h"
 #include "qfont_loader.h"
 #include "QCommandBuffer.h"
-#include "qt_helpers.h"
 
 #include <qapplication.h>
-#include <qcursor.h>
-#include <qpixmap.h>
-#include <qmenubar.h>
 #include <qstatusbar.h>
 
 using namespace lyx::support;

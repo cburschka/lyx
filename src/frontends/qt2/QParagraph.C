@@ -17,14 +17,10 @@
 #include "ParagraphParameters.h"
 #include "lyxrc.h" // to set the deafult length values
 #include "qt_helpers.h"
-#include "layout.h" // LyXAlignment
 #include "helper_funcs.h"
-#include "lyxgluelength.h"
-#include "vspace.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "support/LAssert.h"
 
 #include <qcombobox.h>
 #include <qlineedit.h>
@@ -33,7 +29,6 @@
 #include <qtabwidget.h>
 #include <qbuttongroup.h>
 
-#include <functional>
 
 using namespace lyx::support;
 

@@ -11,12 +11,9 @@
 #include <config.h>
 
 
-#include "LString.h"
 
-#include "ControlTexinfo.h"
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
-#include "qt_helpers.h"
 
 #include <qlistbox.h>
 #include <qpushbutton.h>

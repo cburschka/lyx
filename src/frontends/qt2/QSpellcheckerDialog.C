@@ -13,10 +13,8 @@
 
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
-#include "qt_helpers.h"
 
 #include <qpushbutton.h>
-#include <qlineedit.h>
 #include <qlistbox.h>
 #include <qcombobox.h>
 

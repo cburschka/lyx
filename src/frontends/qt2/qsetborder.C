@@ -12,8 +12,6 @@
 #include <config.h>
 
 #include <qpainter.h>
-#include <qpixmap.h>
-#include <qimage.h>
 #include "qsetborder.h"
 
 

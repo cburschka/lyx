@@ -13,8 +13,6 @@
 
 #include "support/lstrings.h"
 #include "MenuBackend.h"
-#include "lyxfunc.h"
-#include "debug.h"
 
 #include "QtView.h"
 
@@ -22,7 +20,6 @@
 #include "QLPopupMenu.h"
 #include "qt_helpers.h"
 
-#include <boost/scoped_ptr.hpp>
 
 using namespace lyx::support;
 

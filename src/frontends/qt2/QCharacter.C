@@ -14,17 +14,12 @@
 
 #include "ControlCharacter.h"
 #include "QCharacterDialog.h"
-#include "QCharacter.h"
 #include "Qt2BC.h"
 
 #include "qt_helpers.h"
-#include "support/lstrings.h"
 
-#include <qcombobox.h>
-#include <qcheckbox.h>
 #include <qpushbutton.h>
 
-#include <vector>
 
 using namespace frnt;
 using std::vector;

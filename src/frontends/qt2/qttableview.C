@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qttableview.C,v 1.4 2002/11/04 00:15:54 larsbj Exp $
+** $Id: qttableview.C,v 1.5 2003/09/05 14:56:51 leeming Exp $
 **
 ** Implementation of QtTableView class
 **
@@ -18,8 +18,6 @@
 #ifndef QT_NO_QTTABLEVIEW
 #include "qscrollbar.h"
 #include "qpainter.h"
-#include "qdrawutil.h"
-#include <limits.h>
 
 /* Added by J. Levon for compilation with Qt 2.3.1 */
 #ifndef Q_CHECK_PTR

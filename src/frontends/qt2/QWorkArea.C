@@ -13,13 +13,11 @@
 
 #include "QWorkArea.h"
 #include "debug.h"
-#include "lfuns.h"
 #include "qt_helpers.h"
 #include "lcolorcache.h"
 #include "funcrequest.h"
 
 #include <qapplication.h>
-#include <qevent.h>
 #include <qdragobject.h>
 #include <qpainter.h>
 #include <qmainwindow.h>
@@ -30,7 +28,6 @@
 #include <X11/Xlib.h>
 #endif
 
-#include <cctype>
 
 using std::endl;
 

@@ -11,16 +11,12 @@
 #include <config.h>
 
 
-#include "ControlWrap.h"
 
 #include "QWrap.h"
 #include "QWrapDialog.h"
 
 #include <qpushbutton.h>
-#include <qtextview.h>
-#include "lengthcombo.h"
 
-#include <vector>
 
 
 QWrapDialog::QWrapDialog(QWrap * form)

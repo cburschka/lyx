@@ -12,7 +12,6 @@
 
 
 #include "ControlERT.h"
-#include "qt_helpers.h"
 
 #include <qradiobutton.h>
 #include <qpushbutton.h>

@@ -13,9 +13,7 @@
 
 #include "support/lstrings.h"
 #include "Lsstream.h"
-#include "debug.h"
 #include "qt_helpers.h"
-#include "LyXView.h"
 #include "ButtonController.h"
 #include "ControlAboutlyx.h"
 

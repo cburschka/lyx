@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include <qpushbutton.h>
-#include <qlineedit.h>
 
 #include "QBibitemDialog.h"
 #include "QBibitem.h"

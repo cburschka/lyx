@@ -11,18 +11,14 @@
 #include <config.h>
 
 
-#include "debug.h"
 
 #include "QWorkArea.h"
 #include "QLyXKeySym.h"
 #include "funcrequest.h"
-#include "qt_helpers.h"
 
-#include <qevent.h>
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qapplication.h>
-#include <qcursor.h>
 
 using std::endl;
 

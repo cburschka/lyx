@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "Qt2BC.h"
-#include "debug.h"
 #include "qt_helpers.h"
 
 #include <qbutton.h>

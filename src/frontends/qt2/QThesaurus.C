@@ -19,7 +19,6 @@
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
-#include <qlistbox.h>
 
 typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
 

@@ -11,16 +11,9 @@
 #include <config.h>
 
 
-#include <algorithm>
-#include <iostream>
 
-#include "LColor.h"
 #include "QWorkArea.h"
 #include "qscreen.h"
-#include "lyxtext.h"
-#include "Painter.h"
-#include "BufferView.h"
-#include "insets/insettext.h"
 #include "debug.h"
 
 #include <qapplication.h>

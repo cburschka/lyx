@@ -11,14 +11,11 @@
 #include <config.h>
 
 
-#include "LString.h"
 
-#include "ControlFloat.h"
 
 #include "floatplacement.h"
 
 #include <qpushbutton.h>
-#include <qcheckbox.h>
 
 #include "QFloatDialog.h"
 #include "QFloat.h"

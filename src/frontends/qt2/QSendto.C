@@ -17,11 +17,9 @@
 #include "QSendto.h"
 
 #include <qcombobox.h>
-#include <qlabel.h>
 #include <qlistbox.h>
 #include <qpushbutton.h>
 
-#include "debug.h"
 #include "qt_helpers.h"
 #include "format.h"
 

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "frontends/LyXScreenFactory.h"
 
 #include "QWorkArea.h"

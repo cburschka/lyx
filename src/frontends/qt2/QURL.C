@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlCommand.h"
-#include "debug.h"
 #include "qt_helpers.h"
 
 #include "QURL.h"

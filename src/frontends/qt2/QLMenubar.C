@@ -11,15 +11,6 @@
 #include <config.h>
 
 #include "MenuBackend.h"
-#include "LyXAction.h"
-#include "kbmap.h"
-#include "buffer.h"
-#include "lyxfunc.h"
-#include "FloatList.h"
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-#include "qt_helpers.h"
-#include "debug.h"
 
 #include "QtView.h"
 #include "QLMenubar.h"
@@ -28,7 +19,6 @@
 #include <qmenubar.h>
 #include <qcursor.h>
 
-#include <algorithm>
 
 using std::endl;
 using std::vector;

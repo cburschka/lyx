@@ -11,26 +11,20 @@
 #include <config.h>
 
 
-#include "ControlBibtex.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include "support/filetools.h"
-#include "support/lyxalgo.h" // eliminate_duplicates
 
-#include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
-#include <qcheckbox.h>
 #include <qfiledialog.h>
 
 #include "ui/QBibtexAddDialogBase.h"
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
 
-#include <vector>
 
 using namespace lyx::support;
 

@@ -17,11 +17,7 @@
 
 #include "QTabular.h"
 #include "QTabularDialog.h"
-#include "tabular.h"
-#include "lengthcombo.h"
-#include "qsetborder.h"
 #include "qt_helpers.h"
-#include "debug.h"
 
 #include <qcheckbox.h>
 #include <qpushbutton.h>

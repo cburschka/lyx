@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-#include "ControlChanges.h"
 
 #include <qpushbutton.h>
 

@@ -17,15 +17,11 @@
 #include "ButtonController.h"
 
 #include "ControlDocument.h"
-#include "ControlForks.h"
-#include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlSearch.h"
 #include "ControlSendto.h"
 #include "ControlSpellchecker.h"
 
-#include "QCharacter.h"
-#include "QCharacterDialog.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 //#include "QForks.h"
@@ -44,7 +40,6 @@
 #include "QSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 
-#include "Qt2BC.h"
 
 
 

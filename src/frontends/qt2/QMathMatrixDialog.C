@@ -12,7 +12,6 @@
 
 #include "qt_helpers.h"
 
-#include "support/lstrings.h"
 #include "Lsstream.h"
 #include "ControlMath.h"
 
@@ -20,7 +19,6 @@
 #include "QMathMatrixDialog.h"
 
 #include <qcombobox.h>
-#include <qlabel.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qspinbox.h>

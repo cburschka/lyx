@@ -11,16 +11,12 @@
 #include <config.h>
 
 
-#include "ControlMinipage.h"
 
 #include "QMinipage.h"
 #include "QMinipageDialog.h"
 
 #include <qpushbutton.h>
-#include <qtextview.h>
-#include "lengthcombo.h"
 
-#include <vector>
 
 
 QMinipageDialog::QMinipageDialog(QMinipage * form)

@@ -29,7 +29,6 @@
 #include "QExternal.h"
 #include "Qt2BC.h"
 
-#include <vector>
 
 using namespace lyx::support;
 

@@ -20,7 +20,6 @@
 #include <qevent.h>
 #include <qtextcodec.h>
 
-#include <map>
 
 using std::endl;
 using std::map;

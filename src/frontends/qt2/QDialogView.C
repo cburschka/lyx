@@ -11,16 +11,11 @@
 #include <config.h>
 
 
-#include <qdialog.h>
-#include <qapplication.h>
 
-#include "debug.h"
 #include "qt_helpers.h"
-#include "QtLyXView.h"
 #include "QDialogView.h"
 #include "Qt2BC.h"
 #include "ButtonController.h"
-#include "support/LAssert.h"
 
 
 QDialogView::QDialogView(Dialog & parent, string const & t)

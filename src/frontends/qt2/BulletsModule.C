@@ -14,16 +14,12 @@
 
 #include "support/filetools.h"
 #include "support/LAssert.h"
-#include "debug.h"
 
-#include "Bullet.h"
-#include "ui/BulletsModuleBase.h"
 #include "QBrowseBox.h"
 #include "BulletsModule.h"
 
 #include <qinputdialog.h>
 #include <qpopupmenu.h>
-#include <qpixmap.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
 

@@ -14,7 +14,6 @@
 #include "QShowFile.h"
 #include "QShowFileDialog.h"
 
-#include <qwidget.h>
 #include <qpushbutton.h>
 
 

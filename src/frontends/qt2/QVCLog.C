@@ -14,7 +14,6 @@
 #include "Lsstream.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"
-#include "LyXView.h"
 #include "ControlVCLog.h"
 
 #include "QVCLog.h"
@@ -24,7 +23,6 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
-#include "support/BoostFormat.h"
 
 using namespace lyx::support;
 

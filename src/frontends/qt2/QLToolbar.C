@@ -18,24 +18,14 @@
 #include "lyxfunc.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
-#include "BufferView.h"
 #include "buffer.h"
-#include "LyXAction.h"
-#include "qt_helpers.h"
 
-#include "support/LAssert.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 
-#include <boost/tuple/tuple.hpp>
 
 #include "QtView.h"
 #include "QLToolbar.h"
 
-#include <qtoolbar.h>
 #include <qcombobox.h>
-#include <qtooltip.h>
-#include <qsizepolicy.h>
 
 using std::endl;
 

@@ -11,17 +11,12 @@
 #include <config.h>
 
 
-#include "QtLyXView.h"
-#include "debug.h"
-#include "funcrequest.h"
-#include "lyxfunc.h"
 #include "FileDialog_private.h"
 #include "qt_helpers.h"
 
 #include "support/lstrings.h"
 
 #include <qapplication.h>
-#include <qfiledialog.h>
 #include <qtoolbutton.h>
 
 using namespace lyx::support;

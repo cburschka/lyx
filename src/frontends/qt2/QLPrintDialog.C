@@ -13,19 +13,15 @@
 
 
 #include "qt_helpers.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 
 #include "QPrint.h"
 #include "QLPrintDialog.h"
 
 #include <qfiledialog.h>
 #include <qcheckbox.h>
-#include <qlabel.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qradiobutton.h>
-#include <qspinbox.h>
 
 
 QLPrintDialog::QLPrintDialog(QPrint * f)
