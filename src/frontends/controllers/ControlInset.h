@@ -46,7 +46,7 @@ protected:
 	Inset * inset() const;
 
 private:
-	/** These 6 methods are all that the individual daughter classes
+	/** These 7 methods are all that the individual daughter classes
 	    should need to instantiate. */
 
 	/// if the inset exists then do this...
@@ -67,6 +67,10 @@ private:
 	/// clean-up any daughter class-particular data on hide().
 	virtual void clearDaughterParams() {}
 
+	/** Some dialogs may find it beneficial to disconnect from the inset
+	 when the Apply button is pressed. E.g., doing this with the citation
+	 dialog allows multiple citiations to be inserted easily. */
+	virtual bool disconnectOnApply() { return false; }
 
 
 	
@@ -195,7 +199,7 @@ void ControlInset<Inset, Params>::apply()
 	else
 		applyParamsNoInset();
 
-	if (!isClosing()) {
+	if (disconnectOnApply() && !isClosing()) {
 		*params_ = getParams(string());
 		inset_ = 0;
 		ih_.disconnect();

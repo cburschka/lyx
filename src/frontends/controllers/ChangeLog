@@ -1,3 +1,18 @@
+2001-09-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlInset.h (disconnectOnApply): new method. Defines the behaviour
+	of the dialog when the Apply button is pressed. Defaults to false,
+	but can be overridden in the daughter classes.
+
+	* ControlCitation.h (disconnectOnApply): new method. Set to true.
+	Perhaps make this user-modifiable?
+
+2001-09-11  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlDialogs.h (show): connect() the dialog on show. All of a sudden
+	we have dialogs that update their contents when the buffer changes.
+	Rather embarassing, really!
+
 2001-09-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlSearch (replace): change semantics of replace to NOT move on

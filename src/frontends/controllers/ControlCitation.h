@@ -48,6 +48,10 @@ private:
 	/// 
 	virtual void clearDaughterParams();
 
+	/** disconnect from the inset when the Apply button is pressed.
+	 Allows easy insertion of multiple citations. */
+	virtual bool disconnectOnApply() { return true; }
+
 	/// The info associated with each key
 	biblio::InfoMap bibkeysInfo_;
 

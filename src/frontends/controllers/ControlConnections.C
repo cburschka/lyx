@@ -105,4 +105,3 @@ void ControlConnectBD::disconnect()
 	u_.disconnect();
 	ControlConnectBase::disconnect();
 }
-

@@ -47,6 +47,7 @@ protected:
 	/// set the params before show or update
 	virtual void setParams() {}
 
+private:
 	/// is the dialog built ?
 	bool dialog_built_;
 };
@@ -65,6 +66,8 @@ void ControlDialog<Base>::show()
 {
 	if (isBufferDependent() && !lv_.view()->available())
 		return;
+
+	connect();
 
 	setParams();
 
