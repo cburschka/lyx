@@ -42,9 +42,9 @@ void MathFuncInset::metrics(MathStyles st) const
 {
 	size_ = st;
 	if (name_.empty()) 
-		mathed_char_dim(LM_TC_TEXTRM, size_, 'I', ascent_, descent_, width_);
+		mathed_char_dim(LM_TC_TEX, size_, 'I', ascent_, descent_, width_);
 	else 
-		mathed_string_dim(LM_TC_TEXTRM, size_, name_, ascent_, descent_, width_);
+		mathed_string_dim(LM_TC_TEX, size_, name_, ascent_, descent_, width_);
 }
 
 
@@ -53,7 +53,7 @@ void MathFuncInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 	if (name_.empty()) 
-		drawChar(pain, LM_TC_TEXTRM, size_, x, y, ' ');
+		drawChar(pain, LM_TC_TEX, size_, x, y, ' ');
 	else
-		drawStr(pain, LM_TC_TEXTRM, size_, x, y, name_);
+		drawStr(pain, LM_TC_TEX, size_, x, y, name_);
 }

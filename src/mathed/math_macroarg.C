@@ -59,6 +59,12 @@ void MathMacroArgument::write(std::ostream & os, bool /*fragile*/) const
 }
 
 
+void MathMacroArgument::metrics(MathStyles st) const
+{
+	size_ = st;
+}
+
+
 void MathMacroArgument::writeNormal(std::ostream & os) const
 {
 	os << "[macroarg " << number_ << "] ";
