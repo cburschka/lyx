@@ -1887,15 +1887,25 @@ void LyXFunc::open(string const & fname)
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
 	string const fullpath = FileSearch(string(), filename, "lyx");
-	if (fullpath.empty()) {
-		Alert::alert(_("Error"), _("Could not find file"), filename);
-		return;
+	if (!fullpath.empty()) {
+		filename = fullpath;
 	}
 
-	filename = fullpath;
-
-	// loads document
 	string const disp_fn(MakeDisplayPath(filename));
+
+	// if the file doesn't exist, let the user create one
+	FileInfo const f(filename, true);
+	if (!f.exist()) {
+		if (!Alert::askQuestion(_("No such file"), disp_fn, 
+			_("Start a new document with this filename ?"))) {
+			owner->message(_("Canceled"));
+			return;
+		}
+		// the user specifically chose this name. Believe them.
+		Buffer * buffer =  bufferlist.newFile(filename, "", true);
+		owner->view()->buffer(buffer);
+		return;
+	}
 
 	ostringstream str;
 	str << _("Opening document") << ' ' << disp_fn << "...";
