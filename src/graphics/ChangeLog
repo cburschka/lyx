@@ -1,8 +1,3 @@
-2002-05-01  Herbert Voss  <voss@lyx.org>
-
-	* GraphicsParams.C (GParams c-tor): use LyXLength::inBP rather than
-	LyXLength::inPixels + scaling factor.
-
 2002-04-28  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsImageXPM.C: understand convert's use of "opaque"

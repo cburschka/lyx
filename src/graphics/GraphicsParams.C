@@ -103,9 +103,15 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 
 	} else if (iparams.lyxsize_type == InsetGraphicsParams::WH) {
 		if (!iparams.lyxwidth.zero())
-			width  = iparams.lyxwidth.inBP();
+			width  = iparams.lyxwidth.inPixels(1, 1);
 		if (!iparams.lyxheight.zero())
-			height = iparams.lyxheight.inBP();
+			height = iparams.lyxheight.inPixels(1, 1);
+
+		// inPixels returns a value scaled by lyxrc.zoom.
+		// We want, therefore, to undo this.
+		double const scaling_factor = 100.0 / double(lyxrc.zoom);
+		width  = uint(scaling_factor * width);
+		height = uint(scaling_factor * height);
 	}
 }
 
