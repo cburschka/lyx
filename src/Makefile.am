@@ -57,6 +57,8 @@ INCLUDES = $(BOOST_INCLUDES)
 BUILT_SOURCES = version.C
 
 lyx_SOURCES = \
+	Bidi.C \
+	Bidi.h \
 	BufferView.C \
 	BufferView.h \
 	BufferView_pimpl.C \

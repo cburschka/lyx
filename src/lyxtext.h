@@ -15,6 +15,7 @@
 #define LYXTEXT_H
 
 #include "bufferview_funcs.h"
+#include "Bidi.h"
 #include "layout.h"
 #include "lyxfont.h"
 #include "ParagraphList_fwd.h"
@@ -238,13 +239,6 @@ public:
 	void setCurrentFont();
 
 	///
-	bool isBoundary(Buffer const &, Paragraph const & par,
-			lyx::pos_type pos) const;
-	///
-	bool isBoundary(Buffer const &, Paragraph const & par,
-			 lyx::pos_type pos, LyXFont const & font) const;
-
-	///
 	void recUndo(lyx::paroffset_type first, lyx::paroffset_type last) const;
 	///
 	void recUndo(lyx::paroffset_type first) const;
@@ -352,17 +346,6 @@ public:
 	///
 	int workWidth() const;
 
-	///
-	void computeBidiTables(Paragraph const & par,
-		Buffer const &, Row & row) const;
-	/// Maps positions in the visual string to positions in logical string.
-	lyx::pos_type log2vis(lyx::pos_type pos) const;
-	/// Maps positions in the logical string to positions in visual string.
-	lyx::pos_type vis2log(lyx::pos_type pos) const;
-	///
-	lyx::pos_type bidi_level(lyx::pos_type pos) const;
-	///
-	bool bidi_InRange(lyx::pos_type pos) const;
 private:
 	///
 	float getCursorX(ParagraphList::iterator pit,
@@ -400,8 +383,6 @@ public:
 	/// return the color of the canvas
 	LColor_color backgroundColor() const;
 
-	///
-	mutable bool bidi_same_direction;
 
 	unsigned char transformChar(unsigned char c, Paragraph const & par,
 				    lyx::pos_type pos) const;
@@ -446,21 +427,13 @@ private:
 
 	/// FIXME
 	int labelEnd(ParagraphList::iterator pit, Row const & row) const;
-
-	///
-	mutable std::vector<lyx::pos_type> log2vis_list;
-	///
-	mutable std::vector<lyx::pos_type> vis2log_list;
-	///
-	mutable std::vector<lyx::pos_type> bidi_levels;
-	///
-	mutable lyx::pos_type bidi_start;
-	///
-	mutable lyx::pos_type bidi_end;
-
+	
 	///
 	void charInserted();
+
 public:
+	///
+	mutable Bidi bidi;
 	///
 	bool in_inset_;
 	///

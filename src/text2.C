@@ -1347,12 +1347,12 @@ float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 			? row_pos : last + 1;
 	else if (pos > row_pos && (pos > last || boundary))
 		// Place cursor after char at (logical) position pos - 1
-		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
-			? log2vis(pos - 1) + 1 : log2vis(pos - 1);
+		cursor_vpos = (bidi.level(pos - 1) % 2 == 0)
+			? bidi.log2vis(pos - 1) + 1 : bidi.log2vis(pos - 1);
 	else
 		// Place cursor before char at (logical) position pos
-		cursor_vpos = (bidi_level(pos) % 2 == 0)
-			? log2vis(pos) : log2vis(pos) + 1;
+		cursor_vpos = (bidi.level(pos) % 2 == 0)
+			? bidi.log2vis(pos) : bidi.log2vis(pos) + 1;
 
 	pos_type body_pos = pit->beginningOfBody();
 	if (body_pos > 0 &&
@@ -1360,7 +1360,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 		body_pos = 0;
 
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
-		pos_type pos = vis2log(vpos);
+		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			x += fill_label_hfill +
 				font_metrics::width(
@@ -1409,8 +1409,8 @@ void LyXText::setCurrentFont()
 		else // potentional bug... BUG (Lgb)
 			if (pit->isSeparator(pos)) {
 				if (pos > cursorRow()->pos() &&
-				    bidi_level(pos) % 2 ==
-				    bidi_level(pos - 1) % 2)
+				    bidi.level(pos) % 2 ==
+				    bidi.level(pos - 1) % 2)
 					--pos;
 				else if (pos + 1 < pit->size())
 					++pos;
@@ -1422,7 +1422,7 @@ void LyXText::setCurrentFont()
 	real_current_font = getFont(pit, pos);
 
 	if (cursor.pos() == pit->size() &&
-	    isBoundary(*bv()->buffer(), *pit, cursor.pos()) &&
+	    bidi.isBoundary(*bv()->buffer(), *pit, cursor.pos()) &&
 	    !cursor.boundary()) {
 		Language const * lang =
 			pit->getParLanguage(bufparams);
@@ -1466,7 +1466,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	}
 
 	while (vc <= last && tmpx <= x) {
-		c = vis2log(vc);
+		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += fill_label_hfill +
@@ -1514,20 +1514,20 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		  (!rtl && !left_side && vc == last + 1  && x > tmpx + 5)))
 		c = last + 1;
 	else if (vc == row.pos()) {
-		c = vis2log(vc);
-		if (bidi_level(c) % 2 == 1)
+		c = bidi.vis2log(vc);
+		if (bidi.level(c) % 2 == 1)
 			++c;
 	} else {
-		c = vis2log(vc - 1);
-		bool const rtl = (bidi_level(c) % 2 == 1);
+		c = bidi.vis2log(vc - 1);
+		bool const rtl = (bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isBoundary(*bv()->buffer(), *pit, c);
+			boundary = bidi.isBoundary(*bv()->buffer(), *pit, c);
 		}
 	}
 
 	if (row.pos() <= last && c > last && pit->isNewline(last)) {
-		if (bidi_level(last) % 2 == 0)
+		if (bidi.level(last) % 2 == 0)
 			tmpx -= singleWidth(pit, last);
 		else
 			tmpx += singleWidth(pit, last);
@@ -1573,7 +1573,7 @@ void LyXText::cursorLeft(bool internal)
 		bool boundary = cursor.boundary();
 		setCursor(cursor.par(), cursor.pos() - 1, true, false);
 		if (!internal && !boundary &&
-		    isBoundary(*bv()->buffer(), *cursorPar(), cursor.pos() + 1))
+		    bidi.isBoundary(*bv()->buffer(), *cursorPar(), cursor.pos() + 1))
 			setCursor(cursor.par(), cursor.pos() + 1, true, true);
 	} else if (cursor.par() != 0) {
 		// steps into the paragraph above
@@ -1592,8 +1592,8 @@ void LyXText::cursorRight(bool internal)
 		setCursor(cursor.par(), cursor.pos(), true, false);
 	else if (!at_end) {
 		setCursor(cursor.par(), cursor.pos() + 1, true, false);
-		if (!internal &&
-		    isBoundary(*bv()->buffer(), *cursorPar(), cursor.pos()))
+		if (!internal && bidi.isBoundary(*bv()->buffer(), *cursorPar(),
+						 cursor.pos()))
 			setCursor(cursor.par(), cursor.pos(), true, true);
 	} else if (cursor.par() + 1 != int(ownerParagraphs().size()))
 		setCursor(cursor.par() + 1, 0);

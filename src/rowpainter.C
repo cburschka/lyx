@@ -192,7 +192,7 @@ void RowPainter::paintInset(pos_type const pos)
 
 void RowPainter::paintHebrewComposeChar(pos_type & vpos)
 {
-	pos_type pos = text_.vis2log(vpos);
+	pos_type pos = text_.bidi.vis2log(vpos);
 
 	string str;
 
@@ -226,7 +226,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos)
 
 void RowPainter::paintArabicComposeChar(pos_type & vpos)
 {
-	pos_type pos = text_.vis2log(vpos);
+	pos_type pos = text_.bidi.vis2log(vpos);
 	string str;
 
 	// first char
@@ -256,7 +256,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
-	pos_type pos = text_.vis2log(vpos);
+	pos_type pos = text_.bidi.vis2log(vpos);
 	pos_type const last = lastPos(*pit_, row_);
 	LyXFont orig_font = getFont(pos);
 
@@ -274,7 +274,7 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 	++vpos;
 
 	// collect as much similar chars as we can
-	while (vpos <= last && (pos = text_.vis2log(vpos)) >= 0) {
+	while (vpos <= last && (pos = text_.bidi.vis2log(vpos)) >= 0) {
 		char c = pit_->getChar(pos);
 
 		if (!IsPrintableNonspace(c))
@@ -331,7 +331,7 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & orig_font)
 
 void RowPainter::paintFromPos(pos_type & vpos)
 {
-	pos_type const pos = text_.vis2log(vpos);
+	pos_type const pos = text_.bidi.vis2log(vpos);
 
 	LyXFont const & orig_font = getFont(pos);
 
@@ -393,7 +393,7 @@ void RowPainter::paintSelection()
 	RowList::iterator startrow = text_.getRow(text_.selection.start);
 	RowList::iterator endrow = text_.getRow(text_.selection.end);
 
-	if (text_.bidi_same_direction) {
+	if (text_.bidi.same_direction()) {
 		int x;
 		int y = yo_;
 		int w;
@@ -439,7 +439,7 @@ void RowPainter::paintSelection()
 	double tmpx = x_;
 
 	for (pos_type vpos = row_.pos(); vpos <= last; ++vpos)  {
-		pos_type pos = text_.vis2log(vpos);
+		pos_type pos = text_.bidi.vis2log(vpos);
 		double const old_tmpx = tmpx;
 		if (body_pos > 0 && pos == body_pos - 1) {
 			LyXLayout_ptr const & layout = pit_->layout();
@@ -921,7 +921,7 @@ void RowPainter::paintText()
 	while (vpos <= last) {
 		if (x_ > bv_.workWidth())
 			break;
-		pos_type pos = text_.vis2log(vpos);
+		pos_type pos = text_.bidi.vis2log(vpos);
 
 		if (pos >= pit_->size()) {
 			++vpos;

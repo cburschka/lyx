@@ -86,7 +86,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 	// hack, and highly dubious
 	lyx::pos_type pos = ownerPar(*pi.base.bv->buffer(), this)
 		.getPositionOfInset(this);
-	bool const ltr_pos = (pi.base.bv->text->bidi_level(pos) % 2 == 0);
+	bool const ltr_pos = (pi.base.bv->text->bidi.level(pos) % 2 == 0);
 
 	int xp[3];
 	int yp[3];
