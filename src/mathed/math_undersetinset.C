@@ -94,5 +94,6 @@ void MathUndersetInset::normalize(NormalStream & os) const
 void MathUndersetInset::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
+	MathNestInset::validate(features);
 }
 
