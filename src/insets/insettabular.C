@@ -620,9 +620,11 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 	}
 	if (need_update < what) // only set this if it has greater update
 		need_update = what;
+#if 0 // maybe this should not be done!
 	if ((what == INIT) && hasSelection()) {
 		clearSelection();
 	}
+#endif
 	// Dirty Cast! (Lgb)
 	if (need_update != NONE) {
 		bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);

@@ -2,6 +2,8 @@
 
 	* insettabular.C (draw): clear the parts around a cellinset ALWAYS
 	and also above (was missing).
+	(updateLocal): don't remove the cell selection if we have one this
+	should be done where we really want to remove it.
 
 2002-02-20  José Matos  <jamatos@fep.up.pt>
 
