@@ -46,9 +46,9 @@ void MathArrayInset::write(MathWriteInfo & os) const
 
 void MathArrayInset::metrics(MathMetricsInfo const & st) const
 {
-	size_ = st;
-	if (size_.style == LM_ST_DISPLAY)
-		size_.style = LM_ST_TEXT;
-	MathGridInset::metrics(size_);
+	MathMetricsInfo mi = st;
+	if (mi.style == LM_ST_DISPLAY)
+		mi.style = LM_ST_TEXT;
+	MathGridInset::metrics(mi);
 }
 

@@ -45,10 +45,9 @@ void MathLefteqnInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathLefteqnInset::metrics(MathMetricsInfo const & st) const
+void MathLefteqnInset::metrics(MathMetricsInfo const & mi) const
 {
-	MathNestInset::metrics(st);
-	size_    = st;
+	MathNestInset::metrics(mi);
 	ascent_  = xcell(0).ascent() + 2;
 	descent_ = xcell(0).descent() + 2;
 	width_   = 4;

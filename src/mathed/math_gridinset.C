@@ -3,6 +3,7 @@
 #endif
 
 #include "math_gridinset.h"
+#include "lyxfont.h"
 #include "support/LOstream.h"
 #include "debug.h"
 
@@ -132,11 +133,10 @@ LyXLength MathGridInset::vskip(row_type row) const
 }
 
 
-void MathGridInset::metrics(MathMetricsInfo const & st) const
+void MathGridInset::metrics(MathMetricsInfo const & mi) const
 {
 	// let the cells adjust themselves
-	MathNestInset::metrics(st);
-	size_ = st;
+	MathNestInset::metrics(mi);
 
 	// adjust vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {

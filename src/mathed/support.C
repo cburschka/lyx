@@ -192,15 +192,8 @@ LyXFont const & whichFontBase(MathTextCodes type)
 LyXFont whichFont(MathTextCodes type, MathMetricsInfo const & size)
 {
 	LyXFont f = whichFontBase(type);
-	if (size.font) {
-#ifdef WITH_WARNINGS 
-#warning Want to fix formula sizes in headings? Look here!
-#endif
-		// unfortunatly, size.font is sometimes nonzero and size.font->size()
-		// is huge...
-		//lyxerr << "setting font size to " << size.font->size() << "\n";
-		//f.setSize(size.font->size());
-	}
+	// use actual size
+	f.setSize(size.font.size());
 
 	switch (size.style) {
 	case LM_ST_DISPLAY:

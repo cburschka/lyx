@@ -44,5 +44,7 @@ private:
 	mutable int dh_;
 	/// vertical offset cache of deco
 	mutable int dy_;
+	///
+	mutable MathMetricsInfo size_;
 };
 #endif

@@ -26,11 +26,11 @@ void MathSizeInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathSizeInset::metrics(MathMetricsInfo const & st) const
+void MathSizeInset::metrics(MathMetricsInfo const & mi) const
 {
-	size_ = st;
-	size_.style = MathStyles(key_->id);
-	xcell(0).metrics(size_);
+	MathMetricsInfo m = mi;
+	m.style = MathStyles(key_->id);
+	xcell(0).metrics(m);
 	ascent_   = xcell(0).ascent_;
 	descent_  = xcell(0).descent_;
 	width_    = xcell(0).width_;

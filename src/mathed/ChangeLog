@@ -1,6 +1,17 @@
 
 2001-10-17  André Pönitz  <poenitz@gmx.net>
 
+	* math_*inset.[Ch]: remove MathStyles cache from insets that
+	  don't need it
+
+	* support.C: 
+	  formulabase.C: fix math font sizes in headings etc
+
+	* math_inset.[Ch]:
+	  formula.C: remove unused static member int MathInset::workwidth
+
+2001-10-17  André Pönitz  <poenitz@gmx.net>
+
 	* math_inset.h:
 	* *.[Ch]: make output more stream-like
 

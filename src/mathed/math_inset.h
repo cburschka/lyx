@@ -257,13 +257,6 @@ public:
 	///
 	virtual void handleFont(MathTextCodes) {}
 
-	///
-	static int workwidth;
-
-protected:
-	/// the used font size
-	mutable MathMetricsInfo size_;
-
 private:
 	/// the following are used for positioning the cursor with the mouse
 	/// cached cursor start position in pixels from the document left

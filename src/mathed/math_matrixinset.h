@@ -101,6 +101,8 @@ private:
 	std::vector<int> nonum_;
 	///
 	std::vector<string> label_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 
 #endif

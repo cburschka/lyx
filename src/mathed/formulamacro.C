@@ -140,7 +140,7 @@ int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
 
 int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 {
-	metrics(bv, &f);
+	metrics(bv, f);
 	return 10 + lyxfont::width(prefix(), f) + par()->width();
 }
 

@@ -37,5 +37,7 @@ public:
 private:
 	/// the character
 	char char_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 #endif

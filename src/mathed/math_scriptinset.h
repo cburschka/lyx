@@ -100,6 +100,8 @@ private:
 	bool script_[2]; 
 	///
 	int limits_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 
 #endif

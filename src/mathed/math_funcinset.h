@@ -34,5 +34,7 @@ public:
 private:
 	///
 	string name_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 #endif

@@ -56,10 +56,9 @@ void MathMacroTemplate::write(MathWriteInfo & os) const
 }
 
 
-void MathMacroTemplate::metrics(MathMetricsInfo const & st) const
+void MathMacroTemplate::metrics(MathMetricsInfo const & mi) const
 {
-	xcell(0).metrics(st);
-	size_    = st;
+	xcell(0).metrics(mi);
 	width_   = xcell(0).width() + 4;
 	ascent_  = xcell(0).ascent() + 2;
 	descent_ = xcell(0).descent() + 2;

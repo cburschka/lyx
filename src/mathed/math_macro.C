@@ -69,32 +69,32 @@ bool MathMacro::editing() const
 }
 
 
-void MathMacro::metrics(MathMetricsInfo const & st) const
+void MathMacro::metrics(MathMetricsInfo const & mi) const
 {
+	mi_ = mi;
+
 	if (defining()) {
-		size_ = st;
-		mathed_string_dim(LM_TC_TEX, size_, name(), ascent_, descent_, width_);
+		mathed_string_dim(LM_TC_TEX, mi_, name(), ascent_, descent_, width_);
 		return;
 	}
 
 	if (editing()) {
 		expanded_ = tmplate_->xcell(0);
-		expanded_.metrics(st);
-		size_    = st;
+		expanded_.metrics(mi_);
 		width_   = expanded_.width()   + 4;
 		ascent_  = expanded_.ascent()  + 2;
 		descent_ = expanded_.descent() + 2;
 
-		width_ +=  mathed_string_width(LM_TC_TEXTRM, size_, name()) + 10;
+		width_ +=  mathed_string_width(LM_TC_TEXTRM, mi_, name()) + 10;
 
 		int lasc;
 		int ldes;
 		int lwid;
-		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
+		mathed_string_dim(LM_TC_TEXTRM, mi_, "#1: ", lasc, ldes, lwid);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
-			c.metrics(st);
+			c.metrics(mi_);
 			width_    = std::max(width_, c.width() + lwid);
 			descent_ += std::max(c.ascent(),  lasc) + 5;
 			descent_ += std::max(c.descent(), ldes) + 5;
@@ -104,8 +104,7 @@ void MathMacro::metrics(MathMetricsInfo const & st) const
 
 	expanded_ = tmplate_->xcell(0);
 	expanded_.data_.substitute(*this);
-	expanded_.metrics(st);
-	size_    = st;
+	expanded_.metrics(mi_);
 	width_   = expanded_.width()   + 6;
 	ascent_  = expanded_.ascent()  + 3;
 	descent_ = expanded_.descent() + 3;
@@ -117,25 +116,25 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 
-	metrics(size_);
+	metrics(mi_);
 
 	if (defining()) {
-		drawStr(pain, LM_TC_TEX, size_, x, y, name());
+		drawStr(pain, LM_TC_TEX, mi_, x, y, name());
 		return;
 	}
 
 	if (editing()) {
 		int h = y - ascent() + 2 + expanded_.ascent();
-		drawStr(pain, LM_TC_TEXTRM, size_, x + 3, h, name());
+		drawStr(pain, LM_TC_TEXTRM, mi_, x + 3, h, name());
 
-		int const w = mathed_string_width(LM_TC_TEXTRM, size_, name());
+		int const w = mathed_string_width(LM_TC_TEXTRM, mi_, name());
 		expanded_.draw(pain, x + w + 12, h);
 		h += expanded_.descent();
 
 		int lasc;
 		int ldes;
 		int lwid;
-		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
+		mathed_string_dim(LM_TC_TEXTRM, mi_, "#1: ", lasc, ldes, lwid);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
@@ -143,7 +142,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 			c.draw(pain, x + lwid, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
-			drawStr(pain, LM_TC_TEX, size_, x + 3, h, str);
+			drawStr(pain, LM_TC_TEX, mi_, x + 3, h, str);
 			h += std::max(c.descent(), ldes) + 5;
 		}
 		return;

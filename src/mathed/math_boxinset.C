@@ -54,11 +54,11 @@ void MathBoxInset::writeNormal(std::ostream & os) const
 
 void MathBoxInset::metrics(MathMetricsInfo const & st) const
 {
-	size_ = st;
-	if (text_ && st.view && st.font) {
-		ascent_  = text_->ascent(st.view, *st.font)  + 2;
-		descent_ = text_->descent(st.view, *st.font) + 2;
-		width_   = text_->width(st.view, *st.font)   + 4;
+	mi_ = st;
+	if (text_ && mi_.view) {
+		ascent_  = text_->ascent(mi_.view, mi_.font)  + 2;
+		descent_ = text_->descent(mi_.view, mi_.font) + 2;
+		width_   = text_->width(mi_.view, mi_.font)   + 4;
 	} else {
 		ascent_  = 10;
 		descent_ = 0;
@@ -71,8 +71,8 @@ void MathBoxInset::draw(Painter & pain, int x, int y) const
 {
 	float fx = x + 2;
 
-	if (text_ && size_.view && size_.font)
-		text_->draw(size_.view, *(size_.font), y, fx, false);
+	if (text_ && mi_.view)
+		text_->draw(mi_.view, mi_.font, y, fx, false);
 	if (mathcursor && mathcursor->isInside(this))
 		pain.rectangle(x, y - ascent(), xcell(0).width(), height(),
 			LColor::mathframe);

@@ -95,7 +95,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 MathArrayInset * matrixpar(MathInset::idx_type & idx)
 {
 	idx = 0;
-	return (mathcursor ? mathcursor->enclosingArray(idx) : 0); 
+	return mathcursor ? mathcursor->enclosingArray(idx) : 0; 
 }
 
 
@@ -104,7 +104,7 @@ MathArrayInset * matrixpar(MathInset::idx_type & idx)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: view_(0), font_(0)
+	: view_(0), font_()
 {
 	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
@@ -117,14 +117,11 @@ void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
 
 
-void InsetFormulaBase::metrics(BufferView * bv, LyXFont const * f) const 
+void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f) const 
 {
 	if (bv)
 		view_ = bv;
-	if (f)
-		font_ = f;
-	if (f)
-		lyxerr << "fontsize: " << f->size() << "\n";
+	font_ = f;
 	MathMetricsInfo mi(view_, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 	par()->metrics(mi);
 }

@@ -19,12 +19,12 @@ MathInset * MathFracInset::clone() const
 }
 
 
-void MathFracInset::metrics(MathMetricsInfo const & st) const
+void MathFracInset::metrics(MathMetricsInfo const & mi) const
 {
-	size_    = st;
-	smallerStyleFrac(size_);
-	xcell(0).metrics(size_);
-	xcell(1).metrics(size_);
+	MathMetricsInfo m = mi;
+	smallerStyleFrac(m);
+	xcell(0).metrics(m);
+	xcell(1).metrics(m);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
 	ascent_  = xcell(0).height() + 4 + 5;
 	descent_ = xcell(1).height() + 4 - 5; 

@@ -33,7 +33,7 @@ public:
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo const &) const;
 	/// identifies BoxInsets
 	MathBoxInset * asBoxInset() { return this; }
 
@@ -41,6 +41,8 @@ private:
 	/// unimplemented
 	void operator=(MathBoxInset const &);
 
+	///
+	mutable MathMetricsInfo mi_;
 	///
 	string name_;
 	///

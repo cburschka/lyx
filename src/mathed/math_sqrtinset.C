@@ -19,10 +19,9 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::metrics(MathMetricsInfo const & st) const
+void MathSqrtInset::metrics(MathMetricsInfo const & mi) const
 {
-	xcell(0).metrics(st);
-	size_    = st;
+	xcell(0).metrics(mi);
 	ascent_  = xcell(0).ascent()  + 4;
 	descent_ = xcell(0).descent() + 2;
 	width_   = xcell(0).width()   + 12;

@@ -20,25 +20,25 @@ MathInset * MathSpecialCharInset::clone() const
 
 int MathSpecialCharInset::ascent() const
 {
-	return mathed_char_ascent(LM_TC_CONST, size_, char_);
+	return mathed_char_ascent(LM_TC_CONST, mi_, char_);
 }
 
 
 int MathSpecialCharInset::descent() const
 {
-	return mathed_char_descent(LM_TC_CONST, size_, char_);
+	return mathed_char_descent(LM_TC_CONST, mi_, char_);
 }
 
 
 int MathSpecialCharInset::width() const
 {
-	return mathed_char_width(LM_TC_CONST, size_, char_);
+	return mathed_char_width(LM_TC_CONST, mi_, char_);
 }
 
 
-void MathSpecialCharInset::metrics(MathMetricsInfo const & st) const
+void MathSpecialCharInset::metrics(MathMetricsInfo const & mi) const
 {
-	size_ = st;
+	mi_ = mi;
 }
 
 
@@ -46,7 +46,7 @@ void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);
-	drawChar(pain, LM_TC_CONST, size_, x, y, char_);
+	drawChar(pain, LM_TC_CONST, mi_, x, y, char_);
 }
 
 

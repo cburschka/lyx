@@ -29,5 +29,7 @@ public:
 private:
 	///
 	latexkeys const * sym_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 #endif

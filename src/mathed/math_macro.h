@@ -82,6 +82,8 @@ private:
 	MathAtom & tmplate_;
 	///
 	mutable MathXArray expanded_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 
 

@@ -32,10 +32,9 @@ void MathDotsInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathDotsInset::metrics(MathMetricsInfo const & st) const
+void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 {
-	size_ = st;
-	mathed_char_dim(LM_TC_VAR, size_, 'M', ascent_, descent_, width_);
+	mathed_char_dim(LM_TC_VAR, mi, 'M', ascent_, descent_, width_);
 	switch (name_[0]) {
 		case 'l': dh_ = 0; break;
 		case 'c': dh_ = ascent_ / 2; break;

@@ -24,9 +24,6 @@
 #include "debug.h"
 
 
-int MathInset::workwidth;
-
-
 MathInset::MathInset()
 	: xo_(0), yo_(0)
 {}
@@ -246,10 +243,9 @@ std::vector<MathInset::idx_type>
 }
 
 
-void MathInset::metrics(MathMetricsInfo const & st) const
+void MathInset::metrics(MathMetricsInfo const &) const
 {
 	lyxerr << "MathInset::metrics() called directly!\n";
-	size_ = st;
 }
 
 

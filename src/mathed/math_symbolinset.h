@@ -40,5 +40,7 @@ private:
 	latexkeys const * sym_;
 	///
 	mutable int h_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 #endif

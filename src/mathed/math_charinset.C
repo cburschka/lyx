@@ -60,25 +60,25 @@ MathInset * MathCharInset::clone() const
 
 int MathCharInset::ascent() const
 {
-	return mathed_char_ascent(code_, size_, char_);
+	return mathed_char_ascent(code_, mi_, char_);
 }
 
 
 int MathCharInset::descent() const
 {
-	return mathed_char_descent(code_, size_, char_);
+	return mathed_char_descent(code_, mi_, char_);
 }
 
 
 int MathCharInset::width() const
 {
-	return mathed_char_width(code_, size_, char_);
+	return mathed_char_width(code_, mi_, char_);
 }
 
 
-void MathCharInset::metrics(MathMetricsInfo const & st) const
+void MathCharInset::metrics(MathMetricsInfo const & mi) const
 {
-	size_ = st;
+	mi_ = mi;
 }
 
 
@@ -87,7 +87,7 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
-	drawChar(pain, code_, size_, x, y, char_);
+	drawChar(pain, code_, mi_, x, y, char_);
 }
 
 

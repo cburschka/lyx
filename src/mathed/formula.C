@@ -49,6 +49,22 @@ using std::endl;
 using std::vector;
 
 
+namespace {
+
+	void stripFromLastEqualSign(MathArray & ar)
+	{
+		// find position of last '=' in the array
+		MathArray::size_type pos = ar.size();
+		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+			if ((*it)->getChar() == '=')
+				pos = it - ar.begin();
+
+		// delete everything behind this position
+		ar.erase(pos, ar.size());
+	}
+
+}
+
 
 InsetFormula::InsetFormula()
 	: par_(MathAtom(new MathMatrixInset))
@@ -132,10 +148,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	int x = int(xx) - 1;
 	y -= 2;
 
-	MathInset::workwidth = bv->workWidth();
 	Painter & pain = bv->painter();
 
-	metrics(bv, &font);
+	metrics(bv, font);
 	int w = par_->width();
 	int h = par_->height();
 	int a = par_->ascent();
@@ -242,7 +257,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_MATH_EXTERN:
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			handleExtern(arg, bv);
+			handleExtern(arg);
+			// re-compute inset dimension
+			metrics(bv);
 			updateLocal(bv, true);
 			break;
 
@@ -299,25 +316,32 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 }
 
 
-void InsetFormula::handleExtern(const string & arg, BufferView * bv)
+void InsetFormula::handleExtern(const string & arg)
 {
 	// where are we?
+	if (!mathcursor)
+		return; 
+
 	MathArray & ar = mathcursor->cursor().cell();
 
-	// find position of last '=' in the array for handleExtern
-	MathArray::size_type pos = ar.size();
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		if ((*it)->getChar() == '=')
-			pos = it - ar.begin();
+	// parse args
+	string lang;
+	string extra;
+	istringstream iss(arg.c_str());
+	iss >> lang >> extra;
+	if (extra.empty())
+		extra = "noextra";	
 
-	// delete everything behind this position
-	ar.erase(pos, ar.size());
+	// strip last '=' and everything behind
+	stripFromLastEqualSign(ar);
 
 	// create normalized expression
 	//string outfile = lyx::tempName("maple.out");
-	string outfile = "/tmp/lyx2" + arg + ".out";
+	string outfile = "/tmp/lyx2" + lang + ".out";
 	ostringstream os;
+	os << "[" << extra << ' ';
 	ar.writeNormal(os); 
+	os << "]";
 	string code = os.str().c_str();
 
 	// run external sript
@@ -332,9 +356,6 @@ void InsetFormula::handleExtern(const string & arg, BufferView * bv)
 	ifstream is(outfile.c_str());
 	mathed_parse_cell(ar, is);
 	mathcursor->end();
-
-	// re-compute inset dimension
-	metrics(bv);
 }
 
 
@@ -390,7 +411,7 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 
 int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
-	metrics(bv, &font);
+	metrics(bv, font);
 	return par_->width();
 }
 

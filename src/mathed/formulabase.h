@@ -21,6 +21,7 @@
 
 #include <iosfwd>
 #include "insets/inset.h"
+#include "lyxfont.h"
 
 // only for getType():
 #include "math_defs.h"
@@ -89,7 +90,7 @@ public:
 	///
 	virtual MathAtom & par() = 0;
 	///
-	virtual void metrics(BufferView * bv = 0, LyXFont const * font = 0) const;
+	virtual void metrics(BufferView * bv = 0, LyXFont const & font = LyXFont()) const;
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 private:
@@ -98,7 +99,7 @@ private:
 	///
 	mutable BufferView * view_;	
 	///
-	mutable LyXFont const * font_;
+	mutable LyXFont font_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

@@ -71,7 +71,7 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	void handleExtern(string const & arg, BufferView * bv);
+	void handleExtern(string const & arg);
 	///
 	bool display() const;
 	///

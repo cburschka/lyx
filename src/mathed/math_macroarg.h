@@ -37,6 +37,8 @@ private:
 	char str_[3];
 	///
 	bool expanded_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 
 #endif

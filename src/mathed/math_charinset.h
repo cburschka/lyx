@@ -58,5 +58,7 @@ private:
 	char char_;
 	/// the font to be used on screen
 	MathTextCodes code_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 #endif

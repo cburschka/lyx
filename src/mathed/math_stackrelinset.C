@@ -17,12 +17,12 @@ MathInset * MathStackrelInset::clone() const
 }
 
 
-void MathStackrelInset::metrics(MathMetricsInfo const & st) const
+void MathStackrelInset::metrics(MathMetricsInfo const & mi) const
 {
-	size_    = st;
-	smallerStyleFrac(size_);
-	xcell(0).metrics(size_);
-	xcell(1).metrics(st);
+	MathMetricsInfo m = mi;
+	smallerStyleFrac(m);
+	xcell(0).metrics(m);
+	xcell(1).metrics(mi);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
 	ascent_  = xcell(1).ascent() + xcell(0).height() + 4;
 	descent_ = xcell(1).descent();

@@ -19,6 +19,7 @@
 #include "support/LOstream.h"
 #include "Painter.h"
 
+
 MathRootInset::MathRootInset()
 	: MathNestInset(2)
 {}
@@ -30,10 +31,9 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::metrics(MathMetricsInfo const & st) const
+void MathRootInset::metrics(MathMetricsInfo const & mi) const
 {
-	MathNestInset::metrics(st);
-	size_    = st;
+	MathNestInset::metrics(mi);
 	ascent_  = std::max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
 	descent_ = std::max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
 	width_   = xcell(0).width() + xcell(1).width() + 10;

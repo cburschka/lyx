@@ -1,8 +1,9 @@
 #ifndef MATH_METRICSINFO
 #define MATH_METRICSINFO
 
+#include "lyxfont.h"
+
 class BufferView;
-class LyXFont;
 
 
 /// Standard Math Sizes (Math mode styles)
@@ -21,17 +22,17 @@ enum MathStyles {
 struct MathMetricsInfo {
 	///
 	MathMetricsInfo()
-		: view(0), font(0), style(LM_ST_TEXT)
+		: view(0), font(), style(LM_ST_TEXT)
 	{}
 	///
-	MathMetricsInfo(BufferView * v, LyXFont const * f, MathStyles s)
+	MathMetricsInfo(BufferView * v, LyXFont const & f, MathStyles s)
 		: view(v), font(f), style(s)
 	{}
 
 	///
 	BufferView * view;
 	///
-	LyXFont const * font;
+	LyXFont font;
 	///
 	MathStyles style;
 };

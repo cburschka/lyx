@@ -21,6 +21,32 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
+void MathSpaceInset::write(MathWriteInfo & os) const
+{
+	if (space_ >= 0 && space_ < 6)
+		os << '\\' << latex_mathspace[space_] << ' ';
+}
+
+
+void MathSpaceInset::writeNormal(std::ostream & os) const
+{
+	os << "[space " << space_ << "] ";
+}
+
+
+void MathSpaceInset::metrics(MathMetricsInfo const & mi) const
+{
+	width_ = space_ ? space_ * 2 : 2;
+	if (space_ > 3)
+		width_ *= 2;
+	if (space_ == 5)
+		width_ *= 2;
+	width_  += 4;
+	ascent_  = 4;
+	descent_ = 0;
+}
+
+
 void MathSpaceInset::draw(Painter & pain, int x, int y) const
 { 
 	
@@ -37,33 +63,6 @@ void MathSpaceInset::draw(Painter & pain, int x, int y) const
 	xp[3] = x + width_ - 2;  yp[3] = y - 3;
 	
 	pain.lines(xp, yp, 4, space_ ? LColor::latex : LColor::math);
-}
-
-
-void MathSpaceInset::write(MathWriteInfo & os) const
-{
-	if (space_ >= 0 && space_ < 6)
-		os << '\\' << latex_mathspace[space_] << ' ';
-}
-
-
-void MathSpaceInset::writeNormal(std::ostream & os) const
-{
-	os << "[space " << space_ << "] ";
-}
-
-
-void MathSpaceInset::metrics(MathMetricsInfo const & st) const
-{
-	size_  = st;
-	width_ = space_ ? space_ * 2 : 2;
-	if (space_ > 3)
-		width_ *= 2;
-	if (space_ == 5)
-		width_ *= 2;
-	width_  += 4;
-	ascent_  = 4;
-	descent_ = 0;
 }
 
 
