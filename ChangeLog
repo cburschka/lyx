@@ -1,3 +1,12 @@
+2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/xforms/FormTabularCreate.C: add missing #pragma
+	implementation 
+
+	* src/frontends/xforms/FormError.C (disconnect): use erase() to
+	make the message_ empty.
+	(FormError): don't initialize message_ in initializer list.
+
 2000-10-24  Angus Leeming <a.leeming@ic.ac.uk>
 	
 	* src/frontends/xforms/FormInset.[Ch]: Aieeeeee! Ok, I'm an idiot. 

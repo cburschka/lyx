@@ -14,13 +14,16 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "FormTabularCreate.h"
 #include "form_tabular_create.h"
 #include "BufferView.h"
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "insets/insettabular.h"
-
 
 FormTabularCreate::FormTabularCreate(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Insert Tabular")),

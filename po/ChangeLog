@@ -1,5 +1,12 @@
 2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* Makefile.in.in (ext_l10n.h): fix a bug in the generation that
+	could lead to _("") + some simplification 
+
+	* all po files updated again
+
+2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* all po files updated to latest lyx.pot
 
 	* no.po: slightly updated.

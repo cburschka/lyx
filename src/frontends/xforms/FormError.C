@@ -22,7 +22,7 @@
 
 FormError::FormError( LyXView * lv, Dialogs * d )
 	: FormInset( lv, d, _("LaTeX Error") ),
-	  dialog_(0), inset_(0), message_("")
+	  dialog_(0), inset_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -47,7 +47,7 @@ FL_FORM * FormError::form() const
 void FormError::disconnect()
 {
 	inset_ = 0;
-	message_.empty();
+	message_.erase();
 	FormInset::disconnect();
 }
 
