@@ -10,6 +10,7 @@
 #include "math_support.h"
 #include "math_parser.h"
 #include "textpainter.h"
+#include "support/LOstream.h"
 #include "frontends/Painter.h"
 
 

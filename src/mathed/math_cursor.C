@@ -1460,7 +1460,7 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == '\\') {
-		lyxerr << "starting with macro\n";
+		//lyxerr << "starting with macro\n";
 		insert(MathAtom(new MathUnknownInset("\\", false)));
 		return true;
 	}

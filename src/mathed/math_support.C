@@ -526,7 +526,8 @@ LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE;
 // mathnormal should be the first, otherwise the fallback fuerther down
 // does not work
 fontinfo fontinfos[] = {
-	{"mathnormal", inh_family, LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::math},
+	{"mathnormal",
+		inh_family, LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::math},
 	{"mathbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::math},
 	{"mathcal",LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
 	{"mathfrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
@@ -630,7 +631,6 @@ void augmentFont(LyXFont & font, string const & name)
 	static bool initialized = false;
 	if (!initialized) {
 		initialized = true;
-
 		// fake fonts if necessary
 		if (!lyx_gui::font_available(getFont("mathfrak")))
 			fakeFont("mathfrak", "lyxfakefrak");
