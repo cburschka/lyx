@@ -10,10 +10,7 @@
  */
 
 
-// This is the rewrite of the tabular (table) support.
-
-// Ideally the tabular support should do as the mathed and use
-// LaTeX in the .lyx file too.
+// This is Juergen's rewrite of the tabular (table) support.
 
 // Things to think of when designing the new tabular support:
 // - color support (colortbl, color)
@@ -27,10 +24,7 @@
 // This is what I have written about tabular support in the LyX3-Tasks file:
 //
 //  o rewrite of table code. Should probably be written as some
-//          kind of an inset. At least get the code out of the kernel.
-//                - colortbl  -multirow
-//                - hhline    -multicolumn
-//                - dcolumn
+//    kind of an inset. [Done]
 // o enhance longtable support
 
 // Lgb

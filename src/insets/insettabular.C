@@ -375,24 +375,26 @@ void InsetTabular::edit(LCursor & cur, bool left)
 {
 	lyxerr << "InsetTabular::edit: " << this << endl;
 	finishUndo();
-	int cell;
+	cur.selection() = false;
 	cur.push(*this);
 	if (left) {
 		if (isRightToLeft(cur))
-			cell = tabular.getLastCellInRow(0);
+			cur.idx() = tabular.getLastCellInRow(0);
 		else
-			cell = 0;
+			cur.idx() = 0;
+		cur.par() = 0;
+		cur.pos() = 0;
 	} else {
 		if (isRightToLeft(cur))
-			cell = tabular.getFirstCellInRow(tabular.rows()-1);
+			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1);
 		else
-			cell = tabular.getNumberOfCells() - 1;
+			cur.idx() = tabular.getNumberOfCells() - 1;
+		cur.par() = 0;
+		cur.pos() = cur.lastpos(); // FIXME crude guess
 	}
-	cur.selection() = false;
 	// this accesses the position cache before it is initialized
 	//resetPos(cur);
 	//cur.bv().fitCursor();
-	cur.idx() = cell;
 }
 
 
@@ -533,15 +535,15 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		//if (hasSelection())
 		//	cur.selection() = false;
 		int const col = tabular.column_of_cell(cur.idx());
-		if (cur.bv().top_y() + cur.bv().painter().paperHeight()
-				< yo() + tabular.getHeightOfTabular())
-		{
-			cur.bv().scrollDocView(
-				cur.bv().top_y() + cur.bv().painter().paperHeight());
+		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
+		if (t < yo() + tabular.getHeightOfTabular()) {
+			cur.bv().scrollDocView(t);
 			cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
 		} else {
 			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
 		}
+		cur.par() = 0;
+		cur.pos() = 0;
 		resetPos(cur);
 		break;
 	}
@@ -550,9 +552,9 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		//if (hasSelection())
 		//	cur.selection() = false;
 		int const col = tabular.column_of_cell(cur.idx());
+		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
 		if (yo() < 0) {
-			cur.bv().scrollDocView(
-				cur.bv().top_y() - cur.bv().painter().paperHeight());
+			cur.bv().scrollDocView(t);
 			if (yo() > 0)
 				cur.idx() = col;
 			else
@@ -560,6 +562,8 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		} else {
 			cur.idx() = col;
 		}
+		cur.par() = cur.lastpar();
+		cur.pos() = cur.lastpos();
 		resetPos(cur);
 		break;
 	}
@@ -1029,8 +1033,7 @@ void InsetTabular::moveNextCell(LCursor & cur)
 			int row = tabular.row_of_cell(cur.idx());
 			if (row == tabular.rows() - 1)
 				return;
-			cur.idx() = tabular.getLastCellInRow(row);
-			cur.idx() = tabular.getCellBelow(cur.idx());
+			cur.idx() = tabular.getCellBelow(tabular.getLastCellInRow(row));
 		} else {
 			if (cur.idx() == 0)
 				return;
@@ -1213,7 +1216,6 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
 		tabular.appendColumn(bv.buffer()->params(), cur.idx());
-		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
 	case LyXTabular::DELETE_ROW:
@@ -1222,6 +1224,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		if (sel_row_start >= tabular.rows())
 			--sel_row_start;
 		cur.idx() = tabular.getCellNumber(sel_row_start, column);
+		cur.par() = 0;
 		cur.pos() = 0;
 		cur.selection() = false;
 		break;
@@ -1232,6 +1235,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		if (sel_col_start >= tabular.columns())
 			--sel_col_start;
 		cur.idx() = tabular.getCellNumber(row, sel_col_start);
+		cur.par() = 0;
 		cur.pos() = 0;
 		cur.selection() = false;
 		break;
@@ -1350,6 +1354,8 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		}
 		tabular.setMultiColumn(bv.buffer(), s_start, s_end - s_start + 1);
 		cur.idx() = s_start;
+		cur.par() = 0;
+		cur.pos() = 0;
 #endif
 		cur.selection() = false;
 		break;
