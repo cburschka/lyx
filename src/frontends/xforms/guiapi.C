@@ -262,7 +262,7 @@ extern "C" {
 
 	void gui_ShowDocument(LyXView & lv, Dialogs & d)
 	{
-		static FormDocument fd(&lv, &d);
+		static FormDocument fd(lv, d);
 		fd.show();
 	}
 
@@ -357,7 +357,7 @@ extern "C" {
 
 	void gui_ShowMathPanel(LyXView & lv, Dialogs & d)
 	{
-		static FormMathsPanel fmp(&lv, &d);
+		static FormMathsPanel fmp(lv, d);
 		fmp.show();
 	}
 
