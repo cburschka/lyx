@@ -80,7 +80,9 @@ void QBrowseBox::insertItem(QPixmap pixmap)
 	for (int row = 0; row < numRows(); ++row) {
 		for (int col = 0; col < numCols(); ++col) {
 			QPixmap small(w,h);
-			bitBlt(&small,0,0,&pixmap,col*w,row*h,w,h,Qt::CopyROP,false);
+			small.fill(backgroundColor());
+			bitBlt(&small, 0, 0, &pixmap, col * w, row * h,
+				w, h, Qt::CopyROP, false);
 			insertItem(small, row, col);
 		}
 	}
