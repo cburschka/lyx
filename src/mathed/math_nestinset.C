@@ -386,6 +386,9 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_MOUSE_RELEASE:
 		return lfunMouseRelease(cur, cmd);
 	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
+		//lyxerr << "Mouse double" << endl;
+		//lyxerr << "Mouse triple" << endl;
 		return dispatch(cur, FuncRequest(LFUN_WORDSEL));
 
 	case LFUN_RIGHTSEL:
