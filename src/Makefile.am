@@ -101,7 +101,6 @@ lyx_SOURCES = \
 	PrinterParams.C \
 	PrinterParams.h \
 	RowList_fwd.h \
-	ShareContainer.h \
 	Spacing.C \
 	Spacing.h \
 	Thesaurus.C \

@@ -1,11 +1,19 @@
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (lyx_SOURCES): remove ShareContainer.h
+
+	* paragraph_pimpl.h: remove usage of ShareContainer
+
+	* paragraph_pimpl.C: remove initialization of ShareContainer.
+
 2004-09-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	Fix bug #1666
-	
+
 	* BufferView.C (putSelectionAt): change the semantics when
 	backwards == true: now, this just swaps cursor and anchor wrt the
 	forward case
-	
+
 	* BufferView.h (putSelectionAt): add some documentation
 
 	* lyxfind.C (findBackwards): rewrite using while(). In particular,

@@ -26,6 +26,7 @@
 #include "outputparams.h"
 #include "texrow.h"
 
+#include <boost/next_prior.hpp>
 
 using lyx::pos_type;
 
@@ -36,8 +37,6 @@ using std::string;
 using std::ostream;
 
 
-// Initialize static member.
-ShareContainer<LyXFont> Paragraph::Pimpl::FontTable::container;
 // Initialization of the counter for the paragraph id's,
 unsigned int Paragraph::Pimpl::paragraph_id = 0;
 
@@ -666,7 +665,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += 17;
 			break;
 
-		case '*': case '[': 
+		case '*': case '[':
 			// avoid being mistaken for optional arguments
 			os << '{' << c << '}';
 			column += 2;
