@@ -1,3 +1,13 @@
+2001-12-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* text.C (getLengthMarkerHeight): for small heights, the arrows
+	are not always on top/bottom of the text
+	(drawLengthMarker): smaller arrows; take the left margin in
+	account; draw also vfills.
+	(paintFirstRow): 
+	(paintLastRow): remove special code for vfill and standard spaces,
+	since everything is handled in drawLengthMarker now.
+
 2001-12-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (insertErtContents): try to handle font and language
@@ -15,7 +25,6 @@
 	* BufferView2.C (removeAutoInsets): Use paragraph iterators
 	(John's patch)
 	* CutAndPaste.C (SwitchLayoutsBetweenClasses): Ditto
-
 
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 

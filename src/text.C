@@ -1472,7 +1472,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 		// and now the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
-		if (!firstpar->params().pagebreakBottom() && row_ptr->par()->next()) {
+		if (!firstpar->params().pagebreakBottom()
+		    && row_ptr->par()->next()) {
 			Paragraph * nextpar = row_ptr->par()->next();
 			Paragraph * comparepar = row_ptr->par();
 			float usual = 0;
@@ -3164,27 +3165,56 @@ int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
 	}
 
 	int const space_size = int(vsp.inPixels(bv));
-	int const arrow_size = 10;
+	int const arrow_size = 4;
  
 	LyXFont font;
 	font.decSize();
-	int const min_size = 2 * arrow_size + 10
-		+ lyxfont::maxAscent(font)
-		+ lyxfont::maxDescent(font);
+	int const min_size = std::max(3 * arrow_size,
+				      lyxfont::maxAscent(font)
+				      + lyxfont::maxDescent(font));
 
 	return std::max(min_size, space_size);
 }
 
  
 int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
-	VSpace const & vsp, int start)
+			      VSpace const & vsp, int start)
 {
-	string const str(prefix
-		+ " (" + vsp.asLyXCommand() + ")");
+	int const arrow_size = 4;
+ 	int const size = getLengthMarkerHeight(p.bv, vsp);
+	int const end = start + size;
+
+	// the label to display (if any)
+	string str;
+	// y-values for top arrow
+	int ty1, ty2;
+	// y-values for bottom arrow
+	int by1, by2;
+	switch (vsp.kind()) {
+	case VSpace::LENGTH:
+	{
+		str = prefix + " (" + vsp.asLyXCommand() + ")";
+		// adding or removing space
+		bool const added = !(vsp.length().len().value() < 0.0);
+		ty1 = added ? (start + arrow_size) : start;
+		ty2 = added ? start : (start + arrow_size);
+		by1 = added ? (end - arrow_size) : end;
+		by2 = added ? end : (end - arrow_size);
+		break;
+	}
+	case VSpace:: VFILL:
+		str = prefix + " (vertical fill)";
+		ty1 = ty2 = start;
+		by1 = by2 = end;
+		break;
+	default:
+		// nothing to draw here
+		return size;
+	}
  
-	int const arrow_size = 10;
- 
-	int const size = getLengthMarkerHeight(p.bv, vsp);
+	int const leftx = p.xo + leftMargin(p.bv, p.row);
+	int const midx = leftx + arrow_size;
+	int const rightx = midx + arrow_size;
  
 	// first the string
 	int w = 0;
@@ -3195,32 +3225,17 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 	font.setColor(LColor::added_space).decSize();
 	lyxfont::rectText(str, font, w, a, d);
  
-	int const end = start + size;
-
-	p.pain->rectText(p.xo + 2 * arrow_size + 5, 
-		start + ((end - start) / 2) + d,
-		str, font,
-		backgroundColor(),
-		backgroundColor());
- 
-	// adding or removing space
-	bool const added = !(vsp.length().len().value() < 0.0);
-
-	int const leftx = p.xo;
-	int const midx = leftx + arrow_size;
-	int const rightx = midx + arrow_size;
- 
+	p.pain->rectText(leftx + 2 * arrow_size + 5, 
+			 start + ((end - start) / 2) + d,
+			 str, font,
+			 backgroundColor(),
+			 backgroundColor());
+	
 	// top arrow
-	int const ty1 = added ? (start + arrow_size) : start;
-	int const ty2 = added ? start : (start + arrow_size);
-
 	p.pain->line(leftx, ty1, midx, ty2, LColor::added_space);
 	p.pain->line(midx, ty2, rightx, ty1, LColor::added_space);
 
 	// bottom arrow
-	int const by1 = added ? (end - arrow_size) : end;
-	int const by2 = added ? end : (end - arrow_size);
- 
 	p.pain->line(leftx, by1, midx, by2, LColor::added_space);
 	p.pain->line(midx, by2, rightx, by1, LColor::added_space);
 
@@ -3267,27 +3282,9 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 		y_top += 3 * defaultHeight();
 	}
 	
-	// draw a vfill top
-	if (parparams.spaceTop().kind() == VSpace::VFILL) {
-		int const y1 = p.yo + y_top + 3 * defaultHeight();
-		int const y2 = p.yo + 2 + y_top;
- 
-		p.pain->line(0, y1, LYX_PAPER_MARGIN, y1, LColor::added_space);
-		
-		p.pain->line(0, y2, LYX_PAPER_MARGIN, y2, LColor::added_space);
-
-		int const x = LYX_PAPER_MARGIN / 2;
- 
-		p.pain->line(x, y2, x, y1, LColor::added_space);
-		
-		y_top += 3 * defaultHeight();
-		y_top += int(parparams.spaceTop().inPixels(p.bv));
-	} else if (parparams.spaceTop().kind() == VSpace::LENGTH) {
-		y_top += drawLengthMarker(p, _("Space above"),
-			parparams.spaceTop(), p.yo + y_top);
-	} else {
-		y_top += int(parparams.spaceTop().inPixels(p.bv));
-	}
+	// draw the additional space if needed:
+	y_top += drawLengthMarker(p, _("Space above"),
+				  parparams.spaceTop(), p.yo + y_top);
 	
 	Buffer const * buffer = p.bv->buffer();
  
@@ -3437,7 +3434,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 {
 	Paragraph * par = p.row->par();
 	ParagraphParameters const & parparams = par->params();
-	int y_bottom = p.row->height();
+	int y_bottom = p.row->height() - 1;
 	
 	// think about the margins
 	if (!p.row->next() && bv_owner)
@@ -3451,7 +3448,8 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		pb_font.setColor(LColor::pagebreak).decSize();
 		int const y = p.yo + y_bottom - 2 * defaultHeight();
  
-		p.pain->line(p.xo, y, p.xo + p.width, y, LColor::pagebreak, Painter::line_onoffdash);
+		p.pain->line(p.xo, y, p.xo + p.width, y, LColor::pagebreak,
+			     Painter::line_onoffdash);
  
 		int w = 0;
 		int a = 0;
@@ -3464,28 +3462,12 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		y_bottom -= 3 * defaultHeight();
 	}
 	
-	// draw a vfill bottom
-	if (parparams.spaceBottom().kind() == VSpace::VFILL) {
-		int const x = LYX_PAPER_MARGIN / 2; 
-		int const x2 = LYX_PAPER_MARGIN;
-		int const y = p.yo + y_bottom - 3 * defaultHeight();
-		int const y2 = p.yo + y_bottom - 2;
-		
-		p.pain->line(0, y, x2, y, LColor::added_space);
-		p.pain->line(0, y2, x2, y2, LColor::added_space);
-		p.pain->line(x, y, x, y2, LColor::added_space);
- 
-		y_bottom -= 3 * defaultHeight();
-		y_bottom -= int(parparams.spaceBottom().inPixels(p.bv));
-	} else if (parparams.spaceBottom().kind() == VSpace::LENGTH) {
-		int const height =  getLengthMarkerHeight(p.bv, parparams.spaceBottom());
-		y_bottom -= drawLengthMarker(p, _("Space below"),
-				parparams.spaceBottom(),
-				p.yo + y_bottom - height);
- 
-	} else {
-		y_bottom -= int(parparams.spaceBottom().inPixels(p.bv));
-	}
+	// draw the additional space if needed:
+	int const height =  getLengthMarkerHeight(p.bv,
+						  parparams.spaceBottom());
+	y_bottom -= drawLengthMarker(p, _("Space below"),
+				     parparams.spaceBottom(),
+				     p.yo + y_bottom - height);
 	
 	Buffer const * buffer = p.bv->buffer();
  
