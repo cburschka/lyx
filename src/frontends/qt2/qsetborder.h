@@ -50,6 +50,8 @@ protected:
 private:
 	void init();
 
+	void drawLine(bool set, int x, int y, int x2, int y2);
+ 
 	void drawLeft(bool);
 	void drawRight(bool);
 	void drawTop(bool);
@@ -64,7 +66,7 @@ private:
 	int l;
 	int w;
 	int h;
-	
+
 	QPixmap buffer;
 };
  

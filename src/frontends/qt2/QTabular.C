@@ -45,6 +45,8 @@ void QTabular::build_dialog()
 	dialog_.reset(new QTabularDialog(this));
 
 	bc().setCancel(dialog_->closePB);
+
+	// FIXME: add widgets to read only
 }
 
 
@@ -59,32 +61,18 @@ void QTabular::update_borders()
 	LyXTabular * tabular(controller().tabular());
 	int cell(controller().inset()->getActCell());
  
-	if (controller().isMulticolumnCell()) {
-		dialog_->borders->setTop(tabular->TopLine(cell)?1:0);
-		dialog_->borders->setBottom(tabular->BottomLine(cell)?1:0);
-		// pay attention to left/right lines: they are only allowed
-		// to set if we are in first/last cell of row or if the left/right
-		// cell is also a multicolumn.
-		if (tabular->IsFirstCellInRow(cell) || tabular->IsMultiColumn(cell-1)) {
-			dialog_->borders->setLeft(tabular->LeftLine(cell)?1:0);
-			// FIXME: setEnabled(cell_options_->check_border_left, true);
-		} else {
-			dialog_->borders->setLeft(false);
-			// FIXME: setEnabled(cell_options_->check_border_left, false);
-		}
-		if (tabular->IsLastCellInRow(cell) || tabular->IsMultiColumn(cell+1)) {
-			dialog_->borders->setRight(tabular->RightLine(cell)?1:0);
-			// FIXME: setEnabled(cell_options_->check_border_right, true);
-		} else {
-			dialog_->borders->setRight(false);
-			// FIXME: setEnabled(cell_options_->check_border_right, false);
-		}
-	} else {
+	if (!controller().isMulticolumnCell()) {
 		dialog_->borders->setTop(tabular->TopLine(cell, true));
 		dialog_->borders->setBottom(tabular->BottomLine(cell, true));
 		dialog_->borders->setLeft(tabular->LeftLine(cell, true));
 		dialog_->borders->setRight(tabular->RightLine(cell, true));
+		return;
 	}
+ 
+	dialog_->borders->setTop(tabular->TopLine(cell));
+	dialog_->borders->setBottom(tabular->BottomLine(cell));
+	dialog_->borders->setLeft(tabular->LeftLine(cell));
+	dialog_->borders->setRight(tabular->RightLine(cell));
 }
 
 
@@ -93,8 +81,8 @@ void QTabular::update_contents()
 	LyXTabular * tabular(controller().tabular());
 	int cell(controller().inset()->getActCell());
 
-	int row(tabular->row_of_cell(cell));
-	int col(tabular->column_of_cell(cell));
+	int const row(tabular->row_of_cell(cell));
+	int const col(tabular->column_of_cell(cell));
  
 	dialog_->tabularRowED->setText(tostr(row + 1).c_str());
 	dialog_->tabularColumnED->setText(tostr(col + 1).c_str());
@@ -126,7 +114,7 @@ void QTabular::update_contents()
 	bool const isReadonly = bc().bp().isReadOnly();
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
-	LyXLength::UNIT default_unit = controller().metric() ? LyXLength::CM : LyXLength::CM;
+	LyXLength::UNIT default_unit = controller().metric() ? LyXLength::CM : LyXLength::IN;
 	if (!pwidth.zero()) {
 		dialog_->widthED->setText(tostr(pwidth.value()).c_str());
 		dialog_->widthUnit->setCurrentItem(pwidth.unit());
@@ -138,7 +126,7 @@ void QTabular::update_contents()
 	dialog_->widthUnit->setEnabled(!isReadonly);
 
 	int align = 0;
-	switch(tabular->GetAlignment(cell)) {
+	switch (tabular->GetAlignment(cell)) {
 	case LYX_ALIGN_LEFT:
 		align = 1;
 		break;
@@ -155,7 +143,7 @@ void QTabular::update_contents()
 	dialog_->hAlignCB->setCurrentItem(align);
 
 	int valign = 0;
-	switch(tabular->GetVAlignment(cell)) {
+	switch (tabular->GetVAlignment(cell)) {
 	case LyXTabular::LYX_VALIGN_TOP:
 		valign = 0;
 		break;
@@ -176,76 +164,7 @@ void QTabular::update_contents()
 	dialog_->hAlignCB->setEnabled(true);
 	dialog_->vAlignCB->setEnabled(!pwidth.zero());
 
-	if (tabular->IsLongTabular()) {
-		LyXTabular::ltType ltt;
-		bool use_empty;
-		bool row_set = tabular->GetRowOfLTHead(row, ltt);
-		dialog_->headerStatusCB->setChecked(row_set);
-		if (ltt.set) {
-			dialog_->headerBorderAboveCB->setChecked(ltt.topDL);
-			dialog_->headerBorderBelowCB->setChecked(ltt.bottomDL);
-			use_empty = true;
-		} else {
-			dialog_->headerBorderAboveCB->setChecked(false);
-			dialog_->headerBorderBelowCB->setChecked(false);
-			dialog_->headerBorderAboveCB->setEnabled(false);
-			dialog_->headerBorderBelowCB->setEnabled(false);
-			dialog_->firstheaderNoContentsCB->setChecked(false);
-			dialog_->firstheaderNoContentsCB->setEnabled(false);
-			use_empty = false;
-		}
-		//
-		row_set = tabular->GetRowOfLTFirstHead(row, ltt);
-		dialog_->firstheaderStatusCB->setChecked(row_set);
-		if (ltt.set && (!ltt.empty || !use_empty)) {
-			dialog_->firstheaderBorderAboveCB->setChecked(ltt.topDL);
-			dialog_->firstheaderBorderBelowCB->setChecked(ltt.bottomDL);
-		} else {
-			dialog_->firstheaderBorderAboveCB->setEnabled(false);
-			dialog_->firstheaderBorderBelowCB->setEnabled(false);
-			dialog_->firstheaderBorderAboveCB->setChecked(false);
-			dialog_->firstheaderBorderBelowCB->setChecked(false);
-			if (use_empty) {
-				dialog_->firstheaderNoContentsCB->setChecked(ltt.empty);
-				if (ltt.empty)
-					dialog_->firstheaderStatusCB->setEnabled(false);
-			}
-		}
-		//
-		row_set = tabular->GetRowOfLTFoot(row, ltt);
-		dialog_->footerStatusCB->setChecked(row_set);
-		if (ltt.set) {
-			dialog_->footerBorderAboveCB->setChecked(ltt.topDL);
-			dialog_->footerBorderBelowCB->setChecked(ltt.bottomDL);
-			use_empty = true;
-		} else {
-			dialog_->footerBorderAboveCB->setChecked(false);
-			dialog_->footerBorderBelowCB->setChecked(false);
-			dialog_->footerBorderAboveCB->setEnabled(false);
-			dialog_->footerBorderBelowCB->setEnabled(false);
-			dialog_->lastfooterNoContentsCB->setChecked(false);
-			dialog_->lastfooterNoContentsCB->setEnabled(false);
-			use_empty = false;
-		}
-		//
-		row_set = tabular->GetRowOfLTLastFoot(row, ltt);
-		dialog_->lastfooterStatusCB->setChecked(row_set);
-		if (ltt.set && (!ltt.empty || !use_empty)) {
-			dialog_->lastfooterBorderAboveCB->setChecked(ltt.topDL);
-			dialog_->lastfooterBorderBelowCB->setChecked(ltt.bottomDL);
-		} else {
-			dialog_->lastfooterBorderAboveCB->setEnabled(false);
-			dialog_->lastfooterBorderBelowCB->setEnabled(false);
-			dialog_->lastfooterBorderAboveCB->setChecked(false);
-			dialog_->lastfooterBorderBelowCB->setChecked(false);
-			if (use_empty) {
-				dialog_->lastfooterNoContentsCB->setChecked(ltt.empty);
-				if (ltt.empty)
-					dialog_->lastfooterStatusCB->setEnabled(false);
-			}
-		}
-		dialog_->newpageCB->setChecked(tabular->GetLTNewPage(row));
-	} else {
+	if (!tabular->IsLongTabular()) {
 		dialog_->headerStatusCB->setChecked(false);
 		dialog_->headerBorderAboveCB->setChecked(false);
 		dialog_->headerBorderBelowCB->setChecked(false);
@@ -261,8 +180,79 @@ void QTabular::update_contents()
 		dialog_->lastfooterBorderBelowCB->setChecked(false);
 		dialog_->lastfooterNoContentsCB->setChecked(false);
 		dialog_->newpageCB->setChecked(false);
+		return;
 	}
+ 
+	LyXTabular::ltType ltt;
+	bool use_empty;
+	bool row_set = tabular->GetRowOfLTHead(row, ltt);
+	dialog_->headerStatusCB->setChecked(row_set);
+	if (ltt.set) {
+		dialog_->headerBorderAboveCB->setChecked(ltt.topDL);
+		dialog_->headerBorderBelowCB->setChecked(ltt.bottomDL);
+		use_empty = true;
+	} else {
+		dialog_->headerBorderAboveCB->setChecked(false);
+		dialog_->headerBorderBelowCB->setChecked(false);
+		dialog_->headerBorderAboveCB->setEnabled(false);
+		dialog_->headerBorderBelowCB->setEnabled(false);
+		dialog_->firstheaderNoContentsCB->setChecked(false);
+		dialog_->firstheaderNoContentsCB->setEnabled(false);
+		use_empty = false;
+	}
+
+	row_set = tabular->GetRowOfLTFirstHead(row, ltt);
+	dialog_->firstheaderStatusCB->setChecked(row_set);
+	if (ltt.set && (!ltt.empty || !use_empty)) {
+		dialog_->firstheaderBorderAboveCB->setChecked(ltt.topDL);
+		dialog_->firstheaderBorderBelowCB->setChecked(ltt.bottomDL);
+	} else {
+		dialog_->firstheaderBorderAboveCB->setEnabled(false);
+		dialog_->firstheaderBorderBelowCB->setEnabled(false);
+		dialog_->firstheaderBorderAboveCB->setChecked(false);
+		dialog_->firstheaderBorderBelowCB->setChecked(false);
+		if (use_empty) {
+			dialog_->firstheaderNoContentsCB->setChecked(ltt.empty);
+			if (ltt.empty)
+				dialog_->firstheaderStatusCB->setEnabled(false);
+		}
+	}
+
+	row_set = tabular->GetRowOfLTFoot(row, ltt);
+	dialog_->footerStatusCB->setChecked(row_set);
+	if (ltt.set) {
+		dialog_->footerBorderAboveCB->setChecked(ltt.topDL);
+		dialog_->footerBorderBelowCB->setChecked(ltt.bottomDL);
+		use_empty = true;
+	} else {
+		dialog_->footerBorderAboveCB->setChecked(false);
+		dialog_->footerBorderBelowCB->setChecked(false);
+		dialog_->footerBorderAboveCB->setEnabled(false);
+		dialog_->footerBorderBelowCB->setEnabled(false);
+		dialog_->lastfooterNoContentsCB->setChecked(false);
+		dialog_->lastfooterNoContentsCB->setEnabled(false);
+		use_empty = false;
+	}
+
+	row_set = tabular->GetRowOfLTLastFoot(row, ltt);
+		dialog_->lastfooterStatusCB->setChecked(row_set);
+	if (ltt.set && (!ltt.empty || !use_empty)) {
+		dialog_->lastfooterBorderAboveCB->setChecked(ltt.topDL);
+		dialog_->lastfooterBorderBelowCB->setChecked(ltt.bottomDL);
+	} else {
+		dialog_->lastfooterBorderAboveCB->setEnabled(false);
+		dialog_->lastfooterBorderBelowCB->setEnabled(false);
+		dialog_->lastfooterBorderAboveCB->setChecked(false);
+		dialog_->lastfooterBorderBelowCB->setChecked(false);
+		if (use_empty) {
+			dialog_->lastfooterNoContentsCB->setChecked(ltt.empty);
+			if (ltt.empty)
+				dialog_->lastfooterStatusCB->setEnabled(false);
+		}
+	}
+	dialog_->newpageCB->setChecked(tabular->GetLTNewPage(row));
 }
+
 
 void QTabular::closeGUI()
 {
@@ -282,6 +272,7 @@ void QTabular::closeGUI()
 		str2 = "";
 	else
 		str2 = llen.asString();
+
 	if (str1 != str2) {
 		if (controller().isMulticolumnCell())
 			controller().set(LyXTabular::SET_MPWIDTH, str1);
@@ -295,6 +286,7 @@ void QTabular::closeGUI()
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 	else
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+ 
 	if (str1 != str2) {
 		if (controller().isMulticolumnCell())
 			controller().set(LyXTabular::SET_SPECIAL_MULTI, str1);
@@ -302,30 +294,3 @@ void QTabular::closeGUI()
 			controller().set(LyXTabular::SET_SPECIAL_COLUMN, str1);
 	}
 }
-#if 0
-// the unported rest...
-// not shure if and where this is needed (JSpitzm)
-ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
-{
-	InsetTabular * inset(controller().inset());
-	LyXTabular * tabular(controller().tabular());
-
-	int cell = inset->getActCell();
-
-	FIXME: Where to place?
-	if (actCell_ != cell) {
-		update();
-		postWarning(_("Wrong Cursor position, updated window"));
-		return ButtonPolicy::SMI_VALID;
-	}
-
-	FIXME: Necessary in QT?
-	// No point in processing directives that you can't do anything with
-	// anyhow, so exit now if the buffer is read-only.
-	if (bc().bp().isReadOnly()) {
-		update();
-		return ButtonPolicy::SMI_VALID;
-	}
-
-}
-#endif

@@ -16,7 +16,8 @@
 
 QSetBorder::QSetBorder(QWidget * parent, char const * name, WFlags fl)
 	: QWidget(parent, name, fl),
-	  left_(false), right_(false), top_(false), bottom_(false), buffer(75,75)
+	  left_(true), right_(true), top_(true), bottom_(true),
+	  buffer(75, 75)
 {
 	/* length of corner line */
 	l = buffer.width() / 10;
@@ -47,6 +48,8 @@ void QSetBorder::init()
 	paint.begin(&buffer);
 	paint.setPen(Qt::black);
 	
+	// FIXME: wow, readable !! :)
+ 
 	paint.drawLine(m + l , m, m + l, m + l);
 	paint.drawLine(w - (m + l), m, w - (m + l), m + l);
 
@@ -67,22 +70,18 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 {
 	if (e->y() > e->x()) {
 		if (e->y() < height() - e->x()) {
-			drawLeft(!left_);
-			left_ = !left_;
+			setLeft(!left_);
 			emit leftSet(left_);
 		} else {
-			drawBottom(!bottom_);
-			bottom_ = !bottom_;
+			setBottom(!bottom_);
 			emit bottomSet(bottom_);
 		}
 	} else {
 		if (e->y() < height() - e->x()) {
-			drawTop(!top_);
-			top_ = !top_;
+			setTop(!top_);
 			emit topSet(top_);
 		} else {
-			drawRight(!right_);
-			right_ = !right_;
+			setRight(!right_);
 			emit rightSet(right_);
 		}
 	}
@@ -91,7 +90,7 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 }
 
 
-void QSetBorder::drawLeft(bool draw)
+void QSetBorder::drawLine(bool draw, int x, int y, int x2, int y2)
 {
 	QPainter paint;
 	paint.begin(&buffer);
@@ -99,70 +98,62 @@ void QSetBorder::drawLeft(bool draw)
 	p.setWidth(2);
 	p.setColor(draw ? Qt::black : Qt::white);
 	paint.setPen(p);
-	paint.drawLine(m + l, m + l + 2, m + l, h - m - l - 1);
+	paint.drawLine(x, y, x2, y2);
 	paint.end();
+}
+
+
+void QSetBorder::drawLeft(bool draw)
+{
+	drawLine(draw, m + l, m + l + 2, m + l, h - m - l - 1);
 }
  
 
 void QSetBorder::drawRight(bool draw)
 {
-	QPainter paint;
-	paint.begin(&buffer);
-	QPen p = paint.pen();
-	p.setWidth(2);
-	p.setColor(draw ? Qt::black : Qt::white);
-	paint.setPen(p);
-	paint.drawLine(h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
-	paint.end();
+	drawLine(draw, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
 }
 
+ 
 void QSetBorder::drawTop(bool draw)
 {
-	QPainter paint;
-	paint.begin(&buffer);
-	QPen p = paint.pen();
-	p.setWidth(2);
-	p.setColor(draw ? Qt::black : Qt::white);
-	paint.setPen(p);
-	paint.drawLine(m + l + 2, m + l, w - m - l - 1, m + l);
-	paint.end();
+	drawLine(draw, m + l + 2, m + l, w - m - l - 1, m + l);
 }
+
 
 void QSetBorder::drawBottom(bool draw)
 {
-	QPainter paint;
-	paint.begin(&buffer);
-	QPen p = paint.pen();
-	p.setWidth(2);
-	p.setColor(draw ? Qt::black : Qt::white);
-	paint.setPen(p);
-	paint.drawLine(m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
-	paint.end();
+	drawLine(draw, m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
 }
 
+ 
 void QSetBorder::setLeft(bool border)
 {
 	left_ = border;
 	drawLeft(border);
 }
 
+
 void QSetBorder::setRight(bool border)
 {
 	right_ = border;
 	drawRight(border);
 }
+ 
 
 void QSetBorder::setTop(bool border)
 {
 	top_ = border;
 	drawTop(border);
 }
+ 
 
 void QSetBorder::setBottom(bool border)
 {
 	bottom_ = border;
 	drawBottom(border);
 }
+
 
 void QSetBorder::setAll(bool border)
 {
@@ -172,20 +163,24 @@ void QSetBorder::setAll(bool border)
 	setBottom(border);
 }
 
+
 bool QSetBorder::getLeft()
 {
 	return left_;
 }
+
 
 bool QSetBorder::getRight()
 {
 	return right_;
 }
 
+
 bool QSetBorder::getTop()
 {
 	return top_;
 }
+
 
 bool QSetBorder::getBottom()
 {

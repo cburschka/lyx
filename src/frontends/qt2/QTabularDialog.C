@@ -78,6 +78,7 @@ void QTabularDialog::rowDelete_clicked()
 	form_->controller().set(LyXTabular::DELETE_ROW);
 }
 
+ 
 void QTabularDialog::borderSet_clicked()
 {
 	form_->controller().set(LyXTabular::SET_ALL_LINES);
@@ -91,6 +92,7 @@ void QTabularDialog::borderUnset_clicked()
 	form_->update_borders();
 	form_->changed();
 }
+ 
 
 void QTabularDialog::leftBorder_changed()
 {
@@ -101,6 +103,7 @@ void QTabularDialog::leftBorder_changed()
 	form_->changed();
 }
 
+
 void QTabularDialog::rightBorder_changed()
 {
 	if (form_->controller().isMulticolumnCell())
@@ -109,6 +112,7 @@ void QTabularDialog::rightBorder_changed()
 		form_->controller().set(LyXTabular::TOGGLE_LINE_RIGHT);
 	form_->changed();
 }
+
 
 void QTabularDialog::topBorder_changed()
 {
@@ -119,6 +123,7 @@ void QTabularDialog::topBorder_changed()
 	form_->changed();
 }
 
+
 void QTabularDialog::bottomBorder_changed()
 {
 	if (form_->controller().isMulticolumnCell())
@@ -128,6 +133,7 @@ void QTabularDialog::bottomBorder_changed()
 	form_->changed();
 }
 
+
 void QTabularDialog::specialAlignment_changed()
 {
 	string special = specialAlignmentED->text().latin1();
@@ -136,6 +142,7 @@ void QTabularDialog::specialAlignment_changed()
 	else
 		form_->controller().set(LyXTabular::SET_SPECIAL_COLUMN, special);
 }
+
 
 void QTabularDialog::width_changed()
 {
@@ -148,15 +155,17 @@ void QTabularDialog::width_changed()
 		form_->controller().set(LyXTabular::SET_PWIDTH, width);
 }
 
+
 void QTabularDialog::multicolumn_clicked()
 {
 	form_->controller().set(LyXTabular::MULTICOLUMN);
 	form_->changed();
 }
 
+
 void QTabularDialog::rotateTabular_checked(int state)
 {
-	switch(state) {
+	switch (state) {
 	case 0:
 		form_->controller().set(LyXTabular::UNSET_ROTATE_TABULAR);
 		break;
@@ -169,9 +178,10 @@ void QTabularDialog::rotateTabular_checked(int state)
 	}
 }
 
+
 void QTabularDialog::rotateCell_checked(int state)
 {
-	switch(state) {
+	switch (state) {
 	case 0:
 		form_->controller().set(LyXTabular::UNSET_ROTATE_CELL);
 		break;
@@ -184,12 +194,13 @@ void QTabularDialog::rotateCell_checked(int state)
 	}
 }
 
+
 void QTabularDialog::hAlign_changed(int align)
 {
-	LyXTabular::Feature num;
-	LyXTabular::Feature multi_num;
+	LyXTabular::Feature num = LyXTabular::ALIGN_BLOCK;
+	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
 
-	switch(align) {
+	switch (align) {
 		case 0:
 		{
 			num = LyXTabular::ALIGN_BLOCK;
@@ -221,12 +232,13 @@ void QTabularDialog::hAlign_changed(int align)
 		form_->controller().set(num);
 }
 
+
 void QTabularDialog::vAlign_changed(int align)
 {
-	LyXTabular::Feature num;
-	LyXTabular::Feature multi_num;
+	LyXTabular::Feature num = LyXTabular::ALIGN_BLOCK;
+	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
 
-	switch(align) {
+	switch (align) {
 		case 0:
 		{
 			num = LyXTabular::VALIGN_TOP;
@@ -252,9 +264,10 @@ void QTabularDialog::vAlign_changed(int align)
 		form_->controller().set(num);
 }
 
+
 void QTabularDialog::longTabular_changed(int state)
 {
-	switch(state) {
+	switch (state) {
 	case 0:
 		form_->controller().set(LyXTabular::UNSET_LONGTABULAR);
 		break;
@@ -268,11 +281,13 @@ void QTabularDialog::longTabular_changed(int state)
 	form_->changed();
 }
 
+
 void QTabularDialog::ltNewpage_clicked()
 {
 	form_->controller().set(LyXTabular::SET_LTNEWPAGE);
 	form_->changed();
 }
+
 
 void QTabularDialog::ltHeaderStatus_clicked()
 {
@@ -438,4 +453,3 @@ void QTabularDialog::ltLastFooterEmpty_clicked()
 	lastfooterBorderBelowCB->setEnabled(!enable);
 	form_->changed();
 }
-

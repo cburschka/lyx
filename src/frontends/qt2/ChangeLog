@@ -1,7 +1,15 @@
+2002-11-27  John Levon  <levon@movementarian.org>
+
+	* qsetborder.h:
+	* qsetborder.C: cleanup
+ 
+	* QTabular.C:
+	* QTabularDialog.C: cleanups, fixes
+ 
 2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* ui/TabularDialog.ui
-	* QTabular.[Ch]
+	* ui/TabularDialog.ui:
+	* QTabular.[Ch]:
 	* QTabularDialog.[Ch]: implement most functions
 	* qsetborder.[Ch]: fixes
 
