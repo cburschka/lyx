@@ -197,11 +197,12 @@ Makefile: Makefile.in.in $(top_builddir)/config.status POTFILES.in
 	       $(SHELL) ./config.status
 
 ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
+	LC_ALL=C ; export LC_ALL ; \
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
 	     grep -l "_(\".*\")" `find src -name \*.[hHC] -print` |\
 	     sed -e '/xforms.forms/d' | \
-	     LC_COLLATE=C sort | uniq ) > $@-t \
+	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
 
@@ -211,6 +212,7 @@ l10n_pots: $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10
 
 $(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 	cd ${srcdir} ; \
+	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 	     BEGIN { \
 		     print "#, fuzzy"; \
@@ -236,6 +238,7 @@ $(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 
 $(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 	cd ${srcdir} ; \
+	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 	     /<string>/ { \
 	             line=$$0; \
@@ -253,6 +256,7 @@ $(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 
 $(srcdir)/layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	cd ${srcdir} ; \
+	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 	    /^Style / { \
 		line=$$0; \
@@ -285,6 +289,7 @@ $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
 
 $(srcdir)/ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 	cd ${srcdir} ; \
+	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 	    /^[^#]*Submenu/ { \
 		line=$$0; \
