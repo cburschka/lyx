@@ -17,8 +17,7 @@ using std::min;
 bool isParEnd(LyXText const & lt,
 	ParagraphList::iterator pit, RowList::iterator rit)
 {
-	RowList::iterator next_row = boost::next(rit);
-	return next_row == lt.rows().end() || lt.getPar(next_row) != pit;
+	return boost::next(rit) == lt.endRow(pit);
 }
 
 

@@ -618,24 +618,8 @@ void LyXText::redoParagraphs(ParagraphList::iterator start,
 
 void LyXText::redoParagraph(ParagraphList::iterator pit)
 {
-#if 0
-	// find first row of given par
-	RowList::iterator first;
-	for (first = rows().begin(); first != rows().end(); ++first)
-		if (getPar(first) == pit)
-			break;
-	
-	// find last row of given par
-	RowList::iterator last = first;
-	for ( ; last != rows().end() && getPar(last) == pit; ++last)
-		;
-
-	Assert(first == beginRow(pit));
-	Assert(last == endRow(pit));
-#else
 	RowList::iterator first = beginRow(pit);
 	RowList::iterator last = endRow(pit);
-#endif
 
 	// remove paragraph from rowlist
 	while (first != last) {
@@ -1655,11 +1639,9 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 	boundary = false;
 	// This (rtl_support test) is not needed, but gives
-	// some speedup if rtl_support=false
-	RowList::iterator next_rit = boost::next(rit);
-
-	bool const lastrow = lyxrc.rtl_support &&
-		(next_rit == rowlist_.end() || getPar(next_rit) != pit);
+	// some speedup if rtl_support == false
+	bool const lastrow = lyxrc.rtl_support
+			&& boost::next(rit) == endRow(pit);
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
@@ -1667,8 +1649,8 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		? pit->isRightToLeftPar(bv()->buffer()->params)
 		: false;
 	if (lastrow &&
-		 ((rtl &&  left_side && vc == rit->pos() && x < tmpx - 5) ||
-		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
+		 ((rtl  &&  left_side && vc == rit->pos() && x < tmpx - 5) ||
+		  (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
 		c = last + 1;
 	else if (vc == rit->pos()) {
 		c = vis2log(vc);

@@ -1246,8 +1246,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 	}
 
 	// is it a bottom line?
-	RowList::iterator next_rit = boost::next(rit);
-	if (next_rit == rows().end() || getPar(next_rit) != pit) {
+	if (boost::next(rit) == endRow(pit)) {
 		// the bottom margin
 		ParagraphList::iterator nextpit = boost::next(pit);
 		if (nextpit == ownerParagraphs().end() &&
@@ -1627,14 +1626,12 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 	    {
 			int const ns = numberOfSeparators(*this, pit, rit);
 			RowList::iterator next_row = boost::next(rit);
-			ParagraphList::iterator next_pit;
-
-			if (ns && next_row != rowlist_.end() &&
-			    (next_pit = getPar(next_row)) == pit &&
-			    !(next_pit->isNewline(next_row->pos() - 1))
-			    && !(next_pit->isInset(next_row->pos()) &&
-				 next_pit->getInset(next_row->pos()) &&
-				 next_pit->getInset(next_row->pos())->display())
+			if (ns
+				&& next_row != endRow(pit)
+				&& !pit->isNewline(next_row->pos() - 1)
+			  && !(pit->isInset(next_row->pos())
+				     && pit->getInset(next_row->pos())
+				     && pit->getInset(next_row->pos())->display())
 				) {
 				fill_separator = w / ns;
 			} else if (is_rtl) {
@@ -2153,23 +2150,15 @@ RowList::iterator LyXText::getRow(LyXCursor const & cur) const
 RowList::iterator
 LyXText::getRow(ParagraphList::iterator pit, pos_type pos) const
 {
-	if (rows().empty())
-		return rowlist_.end();
+	RowList::iterator rit = beginRow(pit);
+	RowList::iterator end = endRow(pit);
 
-	// find the first row of the specified paragraph
-	RowList::iterator rit = rowlist_.begin();
-	RowList::iterator end = rowlist_.end();
-	while (boost::next(rit) != end && getPar(rit) != pit) {
+#warning Why is this next thing needed? (Andre)
+	while (rit != end
+		     && rit->pos() < pos
+		     && boost::next(rit) != end
+		     && boost::next(rit)->pos() <= pos)
 		++rit;
-	}
-
-	// now find the wanted row
-	while (rit->pos() < pos
-	       && boost::next(rit) != end
-	       && getPar(boost::next(rit)) == pit
-	       && boost::next(rit)->pos() <= pos) {
-		++rit;
-	}
 
 	return rit;
 }
@@ -2182,20 +2171,20 @@ LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
 	y = 0;
 
 	if (rows().empty())
-		return rowlist_.end();
+		return firstRow();
+
+	RowList::iterator beg = beginRow(pit);
+	RowList::iterator end = endRow(pit);
+	RowList::iterator rit;
 
 	// find the first row of the specified paragraph
-	RowList::iterator rit = rowlist_.begin();
-	RowList::iterator end = rowlist_.end();
-	while (boost::next(rit) != end && getPar(rit) != pit) {
+	for (rit = firstRow(); rit != beg; rit = nextRow(rit))
 		y += rit->height();
-		++rit;
-	}
 
 	// now find the wanted row
-	while (rit->pos() < pos
+	while (rit != end
+	       && rit->pos() < pos
 	       && boost::next(rit) != end
-	       && getPar(boost::next(rit)) == pit
 	       && boost::next(rit)->pos() <= pos) {
 		y += rit->height();
 		++rit;
@@ -2315,4 +2304,28 @@ RowList::iterator LyXText::beginRow(ParagraphList::iterator pit) const
 RowList::iterator LyXText::endRow(ParagraphList::iterator pit) const
 {
 	return beginRow(boost::next(pit));
+}
+
+
+RowList::iterator LyXText::firstRow() const
+{
+	return rowlist_.begin();
+}
+
+
+RowList::iterator LyXText::lastRow() const
+{
+	return boost::prior(rowlist_.end());
+}
+
+
+RowList::iterator LyXText::nextRow(RowList::iterator rit) const
+{
+	return boost::next(rit);
+}
+
+
+RowList::iterator LyXText::previousRow(RowList::iterator rit) const
+{
+	return boost::prior(rit);
 }
