@@ -92,6 +92,7 @@ enum TextClassTags {
 	TC_INPUT,
 	TC_STYLE,
 	TC_DEFAULTSTYLE,
+	TC_ENVIRONMENT,
 	TC_NOSTYLE,
 	TC_COLUMNS,
 	TC_SIDES,
@@ -112,8 +113,7 @@ enum TextClassTags {
 	TC_COUNTER,
 	TC_NOFLOAT,
 	TC_TITLELATEXNAME,
-	TC_TITLELATEXTYPE,
-	TC_ENVIRONMENT
+	TC_TITLELATEXTYPE
 };
 
 // Reads a textclass structure from file.
@@ -125,6 +125,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "counter",         TC_COUNTER },
 		{ "defaultfont",     TC_DEFAULTFONT },
 		{ "defaultstyle",    TC_DEFAULTSTYLE },
+		{ "environment",     TC_ENVIRONMENT },
 		{ "float",           TC_FLOAT },
 		{ "input",           TC_INPUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
@@ -156,7 +157,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				     << MakeDisplayPath(filename)
 				     << endl;
 
-	LyXLex lexrc(textClassTags, TC_TITLELATEXTYPE);
+	LyXLex lexrc(textClassTags,
+		sizeof(textClassTags) / sizeof(textClassTags[0]));
 	bool error = false;
 
 	lexrc.setFile(filename);
@@ -218,7 +220,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 					LyXLayout lay;
 					lay.setName(name);
 					if (!(error = do_readStyle(lexrc, lay)))
-						layoutlist_.push_back(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
+						layoutlist_.push_back
+							(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
 					if (defaultlayout_.empty()) {
 						// We do not have a default
 						// layout yet, so we choose
