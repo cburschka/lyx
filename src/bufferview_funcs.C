@@ -359,6 +359,8 @@ string const currentState(BufferView * bv)
 	}
 #ifdef DEVEL_VERSION
 	state << _(", Paragraph: ") << text->cursor.par()->id();
+	state << "  Inset: " <<
+		(text->cursor.par()->inInset() ? text->cursor.par()->inInset()->id() : -1);
 #endif
 	return STRCONV(state.str());
 }

@@ -1363,9 +1363,11 @@ void Paragraph::id(int i)
 
 LyXLayout_ptr const & Paragraph::layout() const
 {
+/*
 	Inset * inset = inInset();
 	if (inset && inset->lyxCode() == Inset::ENVIRONMENT_CODE)
 		return static_cast<InsetEnvironment*>(inset)->layout();
+*/
 	return layout_;
 }
 
