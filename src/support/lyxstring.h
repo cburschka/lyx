@@ -522,12 +522,17 @@ public:
 	//@}
 
 private:
-	///
-	lyxstring & operator+(int);
-	///
-	lyxstring & operator=(int);
-	///
-	lyxstring & operator+=(int);
+	// These three operators can be used to discover erronous use of
+	// ints and strings. However a conforming C++ compiler will flag
+	// a lot of char operations as abmbigous when they are compiled
+	// in. Use them for debugging only (or perhaps not even then.)
+	// Lgb.
+	//
+	//lyxstring & operator+(int);
+	//
+	//lyxstring & operator=(int);
+	//
+	//lyxstring & operator+=(int);
 	
 	/// Forward declaration of the string representation
 	struct Srep;

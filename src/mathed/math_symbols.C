@@ -180,7 +180,7 @@ void BitmapMenu::Show()  {
 }
 
 FL_OBJECT*
-BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, char* data, Bool vert)
+BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, unsigned char* data, Bool vert)
 {
    if (i>=nb)
      return 0;
@@ -457,7 +457,7 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	if (id>=0) break;
     }
     if (i<6 && id>=0) {
-	char *bdata = 0;
+	unsigned char *bdata = 0;
 	int w = 0, h = 0, dw = 0, dh = 0;
 
 	lyxerr[Debug::MATHED] << "Imando " << i << ", " << id << endl;
@@ -524,7 +524,7 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	int ww = w/dw, hh = h/dh, x, y;
    
 	XImage *xima = XCreateImage(fl_display, 0, 1, XYBitmap, 0, 
-				    bdata, w, h, 8, 0);
+				    reinterpret_cast<char*>(bdata), w, h, 8, 0);
 	xima->byte_order = LSBFirst;
 	xima->bitmap_bit_order = LSBFirst;
 	x = (id % dw)*ww;

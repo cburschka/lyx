@@ -1,3 +1,49 @@
+1999-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.h: comment out the three private
+	operators, when compiling with string ansi conforming compilers
+	they make problems.
+
+	* src/mathed/math_symbols.C (AddBitmap): change 6th arg to be
+	unsigned char *.
+	(pixmapFromBitmapData): change type of bdata to be unsigned char *
+	(pixmapFromBitmapData): add a reinterpret_cast in the call to
+	XCreateImage
+
+	* src/mathed/math_panel.h: change 6th arg to AddBitmap to be
+	unsigned char *
+
+	* src/mathed/math_panel.C (create_math_panel): remove explicit
+	casts
+
+	* src/bmtable.h: change last paramter to fl_set_bmtable_data to be
+	unsigned char *.
+
+	* src/bmtable.C (struct BMTABLE_SPEC): make bdata unsigned char *
+	(draw_bitmaptable): add a reinterpret_cast to sp->bdata in the call
+	to XCreatePixmapFromBitmapData
+	(fl_set_bmtable_data): change the last argument to be unsigned
+	char *
+	(fl_set_bmtable_file): change bdata to unsinged char *, change bw
+	and bh to be unsigned int, remove explicit casts in call to
+	XReadBitmapFileData.
+
+	* images/arrows.xbm: made the arrays unsigned char *
+	* images/varsz.xbm: ditto
+	* images/misc.xbm: ditto
+	* images/greek.xbm: ditto
+	* images/dots.xbm: ditto
+	* images/brel.xbm: ditto
+	* images/bop.xbm: ditto
+
+	* Makefile.am (MAINTAINERCLEANFILES): added po/POTFILES.in
+
+	* acinclude.m4 (LYX_GXX_STRENGHT_REDUCE): removed. 
+	(LYX_PROG_CXX): added -pedantic to g++ compile options when
+	with-warnings, removed the __STRING_ANSI__ hack, seems to not be
+	needed. 
+	(LYX_CXX_CHEADERS): added <clocale> to the test. 
+
 1999-10-23  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.C (addNewlineAndDepth): changed to use string::append.

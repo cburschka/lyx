@@ -276,7 +276,7 @@ FD_panel *create_math_panel( )
    fl_set_button(fd_delim->left, 1);
    fl_set_pixmap_data(fd_delim->pix, delim0);
    fl_set_bmtable_data(fd_delim->menu,6,4,delim_width,delim_height,
-		       (char*)delim_bits);
+		       delim_bits);
    fl_set_bmtable_maxitems(fd_delim->menu, 23);
    
    fl_set_pixmap_data(fd_panel->sqrt, sqrt);
@@ -297,7 +297,7 @@ FD_panel *create_math_panel( )
    fl_set_input_filter(fd_matrix->halign, align_filter);
    
    fl_set_bmtable_data(fd_deco->menu,3,3,deco_width,deco_height,
-		       (char*)deco_bits);
+		       deco_bits);
    fl_set_bmtable_maxitems(fd_deco->menu, 8);
 
    fd_delim->left->u_ldata = 0;

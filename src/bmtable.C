@@ -24,7 +24,7 @@ typedef struct   {
    int dx, dy;   /* Size of each item */ 
    int bx, by;   /* Bitmap's position */
    int bw, bh;   /* Bitmap dimensions */
-   char* bdata;  /* Bitmap data */
+   unsigned char * bdata;  /* Bitmap data */
    int maxi;     /* Number of items */
    int i;        /* Current position */
    int mousebut; /* mouse button pushed */  
@@ -89,7 +89,8 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 	if (sp->bdata)  {
 		if (!sp->pix) {
 			sp->pix =  XCreatePixmapFromBitmapData(fl_display, fl_winget(), 
-					sp->bdata, sp->bw, sp->bh,
+					reinterpret_cast<char*>(sp->bdata),
+							       sp->bw, sp->bh,
 					fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
 					DefaultDepth(fl_display, DefaultScreen(fl_display)));
 			XFlush(fl_display);
@@ -224,7 +225,7 @@ extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx,
  * The user could change these later. See below.
  */ 
 void fl_set_bmtable_data(FL_OBJECT *ob, int nx, int ny, int bw, int bh, 
-			char *bdata)
+			unsigned char * bdata)
 {
    BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
    if (sp) {
@@ -285,11 +286,12 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT *ob, int nx, int ny,
 
 void fl_set_bmtable_file(FL_OBJECT *ob, int nx, int ny, char const *filename)
 {	
-   int bw, bh, xh, yh;
-   char *bdata;
+   int xh, yh;
+   unsigned int bw, bh;
+   unsigned char *bdata;
    
-   if(XReadBitmapFileData(filename, (unsigned int *) &bw, (unsigned int *) &bh,
-        (unsigned char **) &bdata, &xh, &yh)==BitmapSuccess)
+   if(XReadBitmapFileData(filename, &bw, &bh,
+			  &bdata, &xh, &yh)==BitmapSuccess)
      fl_set_bmtable_data(ob, nx, ny, bw, bh, bdata);
    XFlush(fl_display);
 }

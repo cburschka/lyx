@@ -47,7 +47,7 @@ int fl_get_bmtable_numb(FL_OBJECT *ob);
 void fl_set_bmtable(FL_OBJECT *, int pushed, int pos);
 
 /** Number of columns and rows, and the background bitmap */
-void fl_set_bmtable_data(FL_OBJECT *, int, int, int, int , char *);
+void fl_set_bmtable_data(FL_OBJECT *, int, int, int, int , unsigned char *);
 ///
 void fl_set_bmtable_pixmap_data(FL_OBJECT *, int, int, char **);
 ///

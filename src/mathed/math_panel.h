@@ -66,7 +66,7 @@ protected:
    ///
    FL_OBJECT* AddBitmap(int id,
 			int nx, int ny, int bw, int bh,
-			char* data, Bool vert=True); // Why Bool?
+			unsigned char* data, Bool vert=True); // Why Bool?
    ///
    void Create();
    ///

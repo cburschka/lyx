@@ -185,9 +185,7 @@ dnl Check the version of g++
     CXXFLAGS="$lyx_opt"
   fi
   if test $with_warnings = yes ; then
-    CXXFLAGS="$CXXFLAGS -ansi -Wall"
-    # a small hack to avoid problems with headers
-    echo '#undef __STRICT_ANSI__' >>confdefs.h
+    CXXFLAGS="$CXXFLAGS -ansi -pedantic -Wall"
   fi
 else
   GXX=
@@ -195,28 +193,6 @@ else
 fi
 ])dnl
 
-dnl We do not use this one anymore.
-dnl AC_DEFUN(LYX_GXX_STRENGTH_REDUCE,[
-dnl #check for the strength reduction bug of gcc
-dnl if test x$GXX = xyes && test $cross_compiling = no ; then
-dnl   AC_CACHE_CHECK( "for gcc strength-reduce bug", ac_cv_c_gcc_strength_bug,
-dnl                   AC_TRY_RUN([
-dnl int main(void) {
-dnl   static int Array[[3]];
-dnl   unsigned int B = 3;
-dnl   int i;
-dnl   for(i=0; i<B; i++) Array[[i]] = i - 3;
-dnl   exit( Array[[1]] != -2 );
-dnl }],
-dnl     ac_cv_c_gcc_strength_bug="no",
-dnl     ac_cv_c_gcc_strength_bug="yes",
-dnl     ac_cv_c_gcc_strength_bug="yes") )
-dnl   if test "$ac_cv_c_gcc_strength_bug" = "yes"
-dnl   then
-dnl     CXXFLAGS="$CXXFLAGS -fno-strength-reduce"
-dnl   fi
-dnl fi
-dnl ])dnl
 
 dnl Usage: LYX_CXX_RTTI : checks whether the C++ compiler
 dnl   supports RTTI
@@ -293,6 +269,7 @@ if test $lyx_cv_broken_stack = yes ; then
    correctly])
 fi])
 
+
 dnl Usage: LYX_CXX_STL_MODERN_STREAMS : checks whether the C++ compiler
 dnl   supports modern STL streams
 AC_DEFUN(LYX_CXX_STL_MODERN_STREAMS,[
@@ -346,7 +323,6 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
 ])
 
 
-
 dnl LYX_CXX_MUTABLE
 AC_DEFUN(LYX_CXX_MUTABLE, [
 AC_REQUIRE([LYX_PROG_CXX])
@@ -394,6 +370,7 @@ template<class T> class k<void,T> { };
 AC_MSG_RESULT([$ac_partial_specialization])
 ])
 
+
 dnl Usage: LYX_CXX_NAMESPACES : checks whether the C++ compiler
 dnl   has a correct namespace handling and define CXX_WORKING_NAMESPACES 
 dnl   if true. This macro does not do a thourough test, but it should be 
@@ -413,11 +390,13 @@ if test $lyx_cv_cxx_namespace = yes ; then
    [Define if your C++ compiler has correct support for namespaces])
 fi])
 
+
 dnl Usage: LYX_CXX_CHEADERS : checks whether the C++ compiler
 dnl   provides wrappers for C headers and use our alternate version otherwise.
 AC_DEFUN(LYX_CXX_CHEADERS,[
 AC_CACHE_CHECK(for C headers wrappers,lyx_cv_cxx_cheaders,
  [AC_TRY_CPP([
+#include <clocale>
 #include <cctype>
 #include <cerrno>
 #include <cmath>
@@ -656,6 +635,7 @@ AC_DEFUN(AC_VALIDATE_CACHE_SYSTEM_TYPE, [
     ac_cv_build_system_type="$build"
     ac_cv_target_system_type="$target"
 ])
+
 
 dnl We use this until autoconf fixes its version.
 AC_DEFUN(LYX_FUNC_SELECT_ARGTYPES,
