@@ -2456,12 +2456,6 @@ void LyXText::clearPaint()
 }
 
 
-void LyXText::postChangedInDraw()
-{
-	status_ = CHANGED_IN_DRAW;
-}
-
-
 void LyXText::postPaint(int start_y)
 {
 	text_status old = status_;

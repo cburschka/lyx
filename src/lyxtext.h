@@ -40,15 +40,10 @@ public:
 	enum text_status {
 		/// no repaint is needed
 		UNCHANGED = 0,
-		/**
-		 * A paint has caused a change in some rows
-		 * and rebreaking is needed.
-		 */
-		CHANGED_IN_DRAW = 1,
 		/// the refresh_row needs repainting
-		NEED_VERY_LITTLE_REFRESH = 2,
+		NEED_VERY_LITTLE_REFRESH = 1,
 		/// everything from refresh_y downwards needs repainting
-		NEED_MORE_REFRESH = 3
+		NEED_MORE_REFRESH = 2
 	};
 
 	///
@@ -118,8 +113,6 @@ public:
 	void setCharFont(Paragraph * par,
 			 lyx::pos_type pos, LyXFont const & font, bool toggleall);
 
-	/// return true if the row changed
-	void markChangeInDraw(Row * row, Row * next);
 	///
 	void breakAgainOneRow(Row * row);
 	/// what you expect when pressing <enter> at cursor position
@@ -190,9 +183,6 @@ public:
 
 	/// clear any pending paints
 	void clearPaint();
-
-	/// post notice that we changed during a draw
-	void postChangedInDraw();
 
 	/**
 	 * Mark position y as the starting point for a repaint

@@ -503,30 +503,7 @@ void BufferView::Pimpl::update()
 {
 	if (!bv_->theLockingInset() || !bv_->theLockingInset()->nodraw()) {
 		screen().update(*bv_);
-		bool fitc = false;
-		while (bv_->text->status() == LyXText::CHANGED_IN_DRAW) {
-			bv_->text->fullRebreak();
-			bv_->text->setCursor(bv_->text->cursor.par(),
-					     bv_->text->cursor.pos());
-			if (bv_->text->selection.set()) {
-				bv_->text->setCursor(bv_->text->selection.start,
-						     bv_->text->selection.start.par(),
-						     bv_->text->selection.start.pos());
-				bv_->text->setCursor(bv_->text->selection.end,
-						     bv_->text->selection.end.par(),
-						     bv_->text->selection.end.pos());
-			}
-			fitc = true;
-			bv_->text->postPaint(0);
-			screen().update(*bv_);
-		}
-
-		// do this here instead of in the screen::update because of
-		// the above loop!
 		bv_->text->clearPaint();
-
-		if (fitc)
-			fitCursor();
 	}
 }
 

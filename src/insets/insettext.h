@@ -342,9 +342,9 @@ private:
 	///
 	Row * crow(BufferView *) const;
 	///
-	void drawFrame(Painter &) const;
+	void drawFrame(Painter &, int x) const;
 	///
-	void clearInset(BufferView *, int baseline) const;
+	void clearInset(BufferView *, int start_x, int baseline) const;
 	///
 	void saveLyXTextState(LyXText *) const;
 	///

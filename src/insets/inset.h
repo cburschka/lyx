@@ -344,8 +344,6 @@ protected:
 	///
 	mutable int top_x;
 	///
-	mutable bool topx_set; /* have we already drawn ourself! */
-	///
 	mutable int top_baseline;
 	///
 	mutable int scx;

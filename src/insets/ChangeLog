@@ -1,3 +1,25 @@
+2003-03-22  John Levon  <levon@movementarian.org>
+
+	* inset.h:
+	* inset.C: remove no-longer-needed topx_set
+
+	* insetcollapsable.h:
+	* insetcollapsable.C: remove dead code
+
+	* insetminipage.C:
+	* insetert.C: rebreak the rows when a possible
+	  change in size is made, and reset the cursor
+	  (bug 962, bug 965)
+
+	* insettabular.C: remove topx_set, CHANGED_IN_DRAW
+
+	* insettext.C: remove CHANGED_IN_DRAW noticing/handling,
+	  topx_set. Fix drawing errors for clearInset(). Remove
+	  some unnecessary uses of topx, which should die.
+
+	* updatableinset.C: fix getMaxWidth() so CHANGED_IN_DRAW
+	  is no longer needed. Replace it with an ugly hack.
+
 2003-03-20  John Levon  <levon@movementarian.org>
 
 	* inset.h:

@@ -1341,29 +1341,6 @@ void LyXText::appendParagraph(Row * row)
 }
 
 
-// Do we even need this at all ? Code that uses  RowPainter *already*
-// sets need_break_row when it sees a CHANGED_IN_DRAW, though not
-// quite like this
-void LyXText::markChangeInDraw(Row * row, Row * prev)
-{
-	if (prev && prev->par() == row->par()) {
-		breakAgainOneRow(prev);
-		if (prev->next() != row) {
-			// breakAgainOneRow() has removed row_
-			need_break_row = prev;
-		} else {
-			need_break_row = row;
-		}
-	} else if (!prev) {
-		need_break_row = firstrow;
-	} else {
-		need_break_row = prev->next();
-	}
-	setCursor(cursor.par(), cursor.pos());
-	/* FIXME */
-}
-
-
 void LyXText::breakAgain(Row * row)
 {
 	bool not_ready = true;

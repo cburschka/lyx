@@ -445,9 +445,18 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		InsetERTMailer::string2params(cmd.argument, status_);
 
 		status(bv, status_);
-		// FIXME: how on holy earth do you actually get
-		// this thing to reinit the bloody insettext
-		// and change the size of this inset !!?!
+
+		/* FIXME: I refuse to believe we have to live
+		 * with ugliness like this ! Note that this
+		 * rebreak *is* needed. Consider a change from
+		 * Open (needfullrow) to Inlined (only the space
+		 * taken by the text).
+		 */
+		LyXText * t = inset.getLyXText(cmd.view());
+		t->need_break_row = t->firstRow();
+		t->fullRebreak();
+		t->setCursorIntern(t->cursor.par(), t->cursor.pos());
+		inset.update(cmd.view(), true);
 		bv->updateInset(this);
 		result = DISPATCHED;
 	}

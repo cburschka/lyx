@@ -117,8 +117,13 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		params_.pos   = params.pos;
 		params_.width = params.width;
 
-		// FIXME: what magical mysterious commands are actually
-		// needed here to update the bloody size of the inset !!!
+		/* FIXME: I refuse to believe we have to live
+		 * with ugliness like this ... */
+		LyXText * t = inset.getLyXText(cmd.view());
+		t->need_break_row = t->firstRow();
+		t->fullRebreak();
+		inset.update(cmd.view(), true);
+		t->setCursorIntern(t->cursor.par(), t->cursor.pos());
 		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}

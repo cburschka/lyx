@@ -210,7 +210,6 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 		x += scroll();
 
 	top_x = int(x);
-	topx_set = true;
 	top_baseline = baseline;
 
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
@@ -407,26 +406,6 @@ int InsetCollapsable::docbook(Buffer const * buf, ostream & os, bool mixcont) co
 {
 	return inset.docbook(buf, os, mixcont);
 }
-
-#if 0
-int InsetCollapsable::getMaxWidth(BufferView * bv,
-				  UpdatableInset const * in) const
-{
-#if 0
-	int const w = UpdatableInset::getMaxWidth(bv, in);
-
-	if (w < 0) {
-		// What does a negative max width signify? (Lgb)
-		// Use the max width of the draw-area (Jug)
-		return w;
-	}
-	// should be at least 30 pixels !!!
-	return max(30, w - width_collapsed());
-#else
-	return UpdatableInset::getMaxWidth(bv, in);
-#endif
-}
-#endif
 
 
 void InsetCollapsable::update(BufferView * bv, bool reinit)

@@ -33,8 +33,8 @@ public:
 	/// initialise painter
 	RowPainter(BufferView const & bv, LyXText const & text, Row const & row);
 
-	/// paint the row. Returns true if CHANGED_IN_DRAW (e.g. image was loaded)
-	bool paint(int y_offset, int x_offset, int y);
+	/// paint the row.
+	void paint(int y_offset, int x_offset, int y);
 
 private:
 	// paint various parts
@@ -52,12 +52,9 @@ private:
 	int paintPageBreak(string const & label, int y);
 	int paintAppendixStart(int y);
 	int paintLengthMarker(string const & prefix, VSpace const & vsp, int start);
-	/// returns true when CHANGED_IN_DRAW
-	bool paintText();
-	/// returns true when CHANGED_IN_DRAW
-	bool paintFromPos(lyx::pos_type & vpos);
-	/// returns true when CHANGED_IN_DRAW
-	bool paintInset(lyx::pos_type const pos);
+	void paintText();
+	void paintFromPos(lyx::pos_type & vpos);
+	void paintInset(lyx::pos_type const pos);
 
 	/// return left margin
 	int leftMargin() const;

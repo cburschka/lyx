@@ -161,7 +161,6 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	if (cursor_visible_) hideCursor();
 
 	int const old_first = text->top_y();
-	bool const internal = (text == bv->text);
 	text->top_y(y);
 
 	// If you want to fix the warning below, fix it so it
@@ -172,18 +171,18 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	    && old_first - y < owner_.workHeight()) {
 		if (text->top_y() < old_first) {
 			int const dest_y = old_first - text->top_y();
-			drawFromTo(text, bv, 0, dest_y, 0, 0, internal);
+			drawFromTo(text, bv, 0, dest_y, 0, 0);
 			copyInPixmap(p, dest_y, 0, owner_.workWidth(), owner_.height() - dest_y);
 			expose(0, 0, owner_.workWidth(), dest_y);
 		} else  {
 			int const src_y = text->top_y() - old_first;
-			drawFromTo(text, bv, owner_.height() - src_y, owner_.height(), 0, 0, internal);
+			drawFromTo(text, bv, owner_.height() - src_y, owner_.height(), 0, 0);
 			copyInPixmap(p, 0, 0, owner_.workWidth(), owner_.height() - src_y);
 			expose(0, owner_.height() - src_y, owner_.workWidth(), src_y);
 		}
 	} else {
 		lyxerr[Debug::GUI] << "dumb full redraw" << endl;
-		drawFromTo(text, bv, 0, owner_.height(), 0, 0, internal);
+		drawFromTo(text, bv, 0, owner_.height(), 0, 0);
 		repaint();
 	}
 

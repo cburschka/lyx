@@ -102,7 +102,7 @@ int RowPainter::leftMargin() const
 }
 
 
-bool RowPainter::paintInset(pos_type const pos)
+void RowPainter::paintInset(pos_type const pos)
 {
 	Inset * inset = const_cast<Inset*>(par_.getInset(pos));
 
@@ -114,11 +114,6 @@ bool RowPainter::paintInset(pos_type const pos)
 	inset->update(perv(bv_), false);
 
 	inset->draw(perv(bv_), font, yo_ + row_.baseline(), x_);
-
-	// return true if something changed when we drew an inset
-
-	return (!text_.need_break_row && !text_.isInInset()
-	    && bv_.text->status() == LyXText::CHANGED_IN_DRAW);
 }
 
 
@@ -260,7 +255,7 @@ void RowPainter::paintForeignMark(float const orig_x, LyXFont const & orig_font)
 }
 
 
-bool RowPainter::paintFromPos(pos_type & vpos)
+void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = text_.vis2log(vpos);
 
@@ -271,11 +266,10 @@ bool RowPainter::paintFromPos(pos_type & vpos)
 	char const c = par_.getChar(pos);
 
 	if (IsInsetChar(c)) {
-		if (paintInset(pos))
-			return true;
+		paintInset(pos);
 		++vpos;
 		paintForeignMark(orig_x, orig_font);
-		return false;
+		return;
 	}
 
 	// usual characters, no insets
@@ -300,7 +294,7 @@ bool RowPainter::paintFromPos(pos_type & vpos)
 
 	paintForeignMark(orig_x, orig_font);
 
-	return false;
+	return;
 }
 
 
@@ -854,7 +848,7 @@ void RowPainter::paintLast()
 }
 
 
-bool RowPainter::paintText()
+void RowPainter::paintText()
 {
 	pos_type const last = row_.lastPrintablePos();
 	pos_type body_pos = par_.beginningOfBody();
@@ -952,8 +946,7 @@ bool RowPainter::paintText()
 				x_ += separator_;
 			++vpos;
 		} else {
-			if (paintFromPos(vpos))
-				return true;
+			paintFromPos(vpos);
 		}
 	}
 
@@ -965,11 +958,11 @@ bool RowPainter::paintText()
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
 	}
-	return false;
+	return;
 }
 
 
-bool RowPainter::paint(int y_offset, int x_offset, int y)
+void RowPainter::paint(int y_offset, int x_offset, int y)
 {
 	xo_ = x_offset;
 	yo_ = y_offset;
@@ -1015,5 +1008,5 @@ bool RowPainter::paint(int y_offset, int x_offset, int y)
 	}
 
 	// paint text
-	return paintText();
+	paintText();
 }

@@ -281,7 +281,6 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 #endif
 
 	top_x = int(x);
-	topx_set = true;
 	top_baseline = baseline;
 	x += ADD_TO_TABULAR_WIDTH;
 
@@ -323,15 +322,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 
 	x -= ADD_TO_TABULAR_WIDTH;
 	x += width(bv, font);
-	if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
-		int i = 0;
-		for(Inset * inset = owner(); inset; ++i)
-			inset = inset->owner();
-		if (calculate_dimensions_of_cells(bv, false))
-			need_update = INIT;
-	} else {
-		need_update = NONE;
-	}
+	need_update = NONE;
 }
 
 

@@ -350,22 +350,14 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (nodraw())
 		return;
 
-	Painter & pain = bv->painter();
-
-	// this is the first thing we have to ask because if the x pos
-	// changed we have to do a complete rebreak of the text as we
-	// may have few space to draw in. Well we should check on this too
-	if (top_x != int(x)) {
+	// update our idea of where we are. Clearly, we should
+	// not have to know this information.
+	if (top_x != int(x))
 		top_x = int(x);
-		topx_set = true;
-		int nw = getMaxWidth(bv, this);
-		if (nw > 0 && old_max_width != nw) {
-			need_update = INIT;
-			old_max_width = nw;
-			bv->text->postChangedInDraw();
-			return;
-		}
-	}
+
+	int const start_x = int(x);
+
+	Painter & pain = bv->painter();
 
 	// call these methods so that insetWidth, insetAscent and
 	// insetDescent have the right values.
@@ -375,7 +367,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	// repaint the background if needed
 	if (backgroundColor() != LColor::background)
-		clearInset(bv, baseline);
+		clearInset(bv, start_x + TEXT_TO_INSET_OFFSET, baseline);
 
 	// no draw is necessary !!!
 	if ((drawFrame_ == LOCKED) && !locked && paragraphs.begin()->empty()) {
@@ -398,7 +390,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	if (the_locking_inset && (cpar(bv) == inset_par)
 		&& (cpos(bv) == inset_pos)) {
-		inset_x = cix(bv) - top_x + drawTextXOffset;
+		inset_x = cix(bv) - int(x) + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
@@ -431,25 +423,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	int yf = y_offset + first;
 	y = 0;
 	while ((row != 0) && (yf < ph)) {
-		Row * prev = row->previous();
 		RowPainter rp(*bv, *lt, *row);
-		if (rp.paint(y + y_offset + first, int(x), y + lt->top_y()))
-			lt->markChangeInDraw(row, prev);
-		if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
-			lt->need_break_row = row;
-			lt->fullRebreak();
-			lt->setCursor(lt->cursor.par(),
-				      lt->cursor.pos());
-			if (lt->selection.set()) {
-				lt->setCursor(lt->selection.start,
-					      lt->selection.start.par(),
-					      lt->selection.start.pos());
-				lt->setCursor(lt->selection.end,
-					      lt->selection.end.par(),
-					      lt->selection.end.pos());
-			}
-			break;
-		}
+		rp.paint(y + y_offset + first, int(x), y + lt->top_y());
 		y += row->height();
 		yf += row->height();
 		row = row->next();
@@ -458,14 +433,12 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	lt->clearPaint();
 
 	if ((drawFrame_ == ALWAYS) || (drawFrame_ == LOCKED && locked)) {
-		drawFrame(pain);
+		drawFrame(pain, int(start_x));
 	}
 
 	x += insetWidth - TEXT_TO_INSET_OFFSET;
 
-	if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
-		need_update |= FULL;
-	} else if (need_update != INIT) {
+	if (need_update != INIT) {
 		need_update = NONE;
 	}
 	if (clear)
@@ -473,10 +446,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-void InsetText::drawFrame(Painter & pain) const
+void InsetText::drawFrame(Painter & pain, int x) const
 {
 	static int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
-	frame_x = top_x + ttoD2;
+	frame_x = x + ttoD2;
 	frame_y = top_baseline - insetAscent + ttoD2;
 	frame_w = insetWidth - TEXT_TO_INSET_OFFSET;
 	frame_h = insetAscent + insetDescent - TEXT_TO_INSET_OFFSET;
@@ -495,6 +468,7 @@ void InsetText::update(BufferView * bv, bool reinit)
 		return;
 	}
 	in_update = true;
+
 	if (reinit || need_update == INIT) {
 		need_update = FULL;
 		// we should put this call where we set need_update to INIT!
@@ -502,6 +476,12 @@ void InsetText::update(BufferView * bv, bool reinit)
 		if (owner())
 			owner()->update(bv, true);
 		in_update = false;
+
+		int nw = getMaxWidth(bv, this);
+		if (nw > 0 && old_max_width != nw) {
+			need_update |= INIT;
+			old_max_width = nw;
+		}
 		return;
 	}
 
@@ -520,15 +500,22 @@ void InsetText::update(BufferView * bv, bool reinit)
 		clear = true;
 	}
 	if ((need_update & CURSOR_PAR) && (lt->status() == LyXText::UNCHANGED) &&
-		the_locking_inset)
-	{
+		the_locking_inset) {
 		lt->updateInset(the_locking_inset);
 	}
+
 	if (lt->status() == LyXText::NEED_MORE_REFRESH)
 		need_update |= FULL;
 	if (clear)
 		lt = 0;
+
 	in_update = false;
+
+	int nw = getMaxWidth(bv, this);
+	if (nw > 0 && old_max_width != nw) {
+		need_update |= INIT;
+		old_max_width = nw;
+	}
 }
 
 
@@ -2404,7 +2391,7 @@ void InsetText::clearSelection(BufferView * bv)
 }
 
 
-void InsetText::clearInset(BufferView * bv, int baseline) const
+void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 {
 	Painter & pain = bv->painter();
 	int w = insetWidth;
@@ -2419,8 +2406,7 @@ void InsetText::clearInset(BufferView * bv, int baseline) const
 		h = pain.paperHeight();
 	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
 		w = pain.paperWidth();
-//	w -= TEXT_TO_INSET_OFFSET;
-	pain.fillRectangle(top_x + 1, ty + 1, w - 1, h - 1, backgroundColor());
+	pain.fillRectangle(start_x + 1, ty + 1, w - 3, h - 1, backgroundColor());
 	need_update = FULL;
 }
 

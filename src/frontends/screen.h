@@ -146,12 +146,12 @@ protected:
 	virtual WorkArea & workarea() const = 0;
 
 	/// y1 and y2 are coordinates of the screen
-	virtual void drawFromTo(LyXText *, BufferView *, int y1, int y2,
-			int y_offset = 0, int x_offset = 0, bool internal = false);
+	void drawFromTo(LyXText *, BufferView *, int y1, int y2,
+	                int y_offset = 0, int x_offset = 0);
 
 	/// y is a coordinate of the text
-	virtual void drawOneRow(LyXText *, BufferView *, Row * row,
-			int y_text, int y_offset = 0, int x_offset = 0);
+	void drawOneRow(LyXText *, BufferView *, Row * row,
+	                int y_text, int y_offset = 0, int x_offset = 0);
 
 	/// is the blinking cursor currently drawn
 	bool cursor_visible_;

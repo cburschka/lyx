@@ -273,7 +273,6 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 		}
 	}
 	break;
-	case LyXText::CHANGED_IN_DRAW: // just to remove the warning
 	case LyXText::UNCHANGED:
 		// Nothing needs done
 		break;
@@ -338,9 +337,7 @@ void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 
 	workarea().getPainter().start();
 
-	drawFromTo(text, bv, top - text->top_y(),
-		   bottom - text->top_y(), yo,
-		   xo);
+	drawFromTo(text, bv, top - text->top_y(), bottom - text->top_y(), yo, xo);
 	expose(0, top - text->top_y(), workarea().workWidth(),
 	       bottom - text->top_y() - (top - text->top_y()));
 
@@ -357,11 +354,9 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 		return;
 	}
 
-
-
 	workarea().getPainter().start();
 
-	drawFromTo(text, bv, 0, workarea().workHeight(), 0, 0, text == bv->text);
+	drawFromTo(text, bv, 0, workarea().workHeight(), 0, 0);
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
 	workarea().getPainter().end();
@@ -411,8 +406,7 @@ void LyXScreen::greyOut()
 
 
 void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
-	int y1, int y2, int yo, int xo,
-	bool internal)
+	int y1, int y2, int yo, int xo)
 {
 	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << '-' << y2 << endl;
 
@@ -427,26 +421,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 
 
 	while (row != 0 && y < y2) {
-		LyXText::text_status st = text->status();
-		// we need this here as the row pointer may be illegal
-		// at a later time (Jug20020502)
-		Row * prev = row->previous();
 		RowPainter rp(*bv, *text, *row);
-
-		if (rp.paint(y + yo, xo, y + text->top_y()))
-			text->markChangeInDraw(row, prev);
-
-		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
-		while (internal && text->status() == LyXText::CHANGED_IN_DRAW) {
-			text->fullRebreak();
-			text->setCursor(text->cursor.par(),
-					text->cursor.pos());
-			text->postPaint(0);
-			Row * prev = row->previous();
-			RowPainter rp(*bv, *text, *row);
-			if (rp.paint(y + yo, xo, y + text->top_y()))
-				text->markChangeInDraw(row, prev);
-		}
+		rp.paint(y + yo, xo, y + text->top_y());
 		y += row->height();
 		row = row->next();
 	}
@@ -465,11 +441,12 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 {
 	int const y = y_text - text->top_y() + yo;
 
-	if (((y + row->height()) > 0) &&
-	    ((y - row->height()) <= static_cast<int>(workarea().workHeight()))) {
-		Row * prev = row->previous();
-		RowPainter rp(*bv, *text, *row);
-		if (rp.paint(y, xo, y + text->top_y()))
-			text->markChangeInDraw(row, prev);
-	}
+	if (y + row->height() <= 0)
+		return;
+
+	if (y - row->height() > workarea().workHeight())
+		return;
+
+	RowPainter rp(*bv, *text, *row);
+	rp.paint(y, xo, y + text->top_y());
 }
