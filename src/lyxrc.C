@@ -179,7 +179,7 @@ void LyXRC::setDefaults() {
 	tempdir_path = "/tmp";
 	use_tempdir = true;
 	ps_command = "gs";
-	view_dvi_paper_option = "-paper";
+	view_dvi_paper_option = "";
 	default_papersize = BufferParams::PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
@@ -1031,7 +1031,7 @@ void LyXRC::output(ostream & os) const
 		if (view_dvi_paper_option 
 		    != system_lyxrc.view_dvi_paper_option) {
 			os << "# Options used to specify paper size to the\n"
-			   << "# view_dvi_command\n"
+			   << "# view_dvi_command (e.g. -paper)\n"
 			   << "\\view_dvi_paper_option \""
 			   << view_dvi_paper_option << "\"\n";
 		}
@@ -1805,6 +1805,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_VIEWDVI_PAPEROPTION:
+		str = N_("Specify the paper command to DVI viewer (leave empty or use \"-paper\")");
 		break;
 		
 	case RC_DEFAULT_PAPERSIZE:
