@@ -1066,13 +1066,14 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 
 
 int paintRows(BufferView const & bv, LyXText const & text,
-	RowList::iterator rit, int xo, int y, int yf, int y2, int yo)
+	ParagraphList::iterator pit, RowList::iterator rit,
+	int xo, int y, int yf, int yo)
 {
 	lyxerr << "  paintRows: rit: " << &*rit << endl;
 	const_cast<LyXText&>(text).updateRowPositions();
-	int yy = yf - y;
+	int const yy = yf - y;
+	int const y2 = bv.painter().paperHeight();
 	
-	ParagraphList::iterator pit = text.ownerParagraphs().begin();
 	ParagraphList::iterator end = text.ownerParagraphs().end();
 	bool active = false;
 

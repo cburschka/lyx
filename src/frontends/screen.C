@@ -352,16 +352,16 @@ void LyXScreen::greyOut()
 void LyXScreen::drawFromTo(LyXText * text, BufferView * bv)
 {
 	hideCursor();
-	int const y2 = workarea().workHeight();
 	int const topy = text->top_y();
 	int y_text = topy;
-	ParagraphList::iterator dummypit;
-	RowList::iterator rit = text->getRowNearY(y_text, dummypit);
+	ParagraphList::iterator pit;
+	RowList::iterator rit = text->getRowNearY(y_text, pit);
 	int y = y_text - topy;
 
-	y = paintRows(*bv, *text, rit, 0, y, y, y2, 0);
+	y = paintRows(*bv, *text, pit, rit, 0, y, y, 0);
 
 	// maybe we have to clear the screen at the bottom
+	int const y2 = workarea().workHeight();
 	if (y < y2 && !text->isInInset()) {
 		workarea().getPainter().fillRectangle(0, y,
 			workarea().workWidth(), y2 - y,

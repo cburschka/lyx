@@ -292,7 +292,6 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	ParagraphList::iterator pit = paragraphs.begin();
 
 	int y_offset = baseline - rit->ascent_of_text();
-	int y2 = pain.paperHeight();
 	int first = 0;
 	int y = y_offset;
 	while (rit != end && y + rit->height() <= 0) {
@@ -311,7 +310,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	int yo = y_offset + first;
 
-	paintRows(*bv, text_, rit, x, 0, yo, y2, yo);
+	paintRows(*bv, text_, pit, rit, x, 0, yo, yo);
 
 	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked))
 		drawFrame(pain, int(start_x));
