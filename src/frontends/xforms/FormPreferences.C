@@ -1489,8 +1489,6 @@ void FormPreferences::Interface::apply(LyXRC & rc) const
 		fl_get_input(dialog_->input_popup_font_encoding);
 	rc.bind_file = fl_get_input(dialog_->input_bind_file);
 	rc.ui_file = fl_get_input(dialog_->input_ui_file);
-	rc.override_x_deadkeys =
-		fl_get_button(dialog_->check_override_x_dead_keys);
 }
 
 
@@ -1512,7 +1510,6 @@ void FormPreferences::Interface::build()
 	setPrehandler(dialog_->button_bind_file_browse);
 	setPrehandler(dialog_->input_ui_file);
 	setPrehandler(dialog_->button_ui_file_browse);
-	setPrehandler(dialog_->check_override_x_dead_keys);
 }
 
 
@@ -1529,8 +1526,6 @@ FormPreferences::Interface::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_BINDFILE);
 	if (ob == dialog_->input_ui_file)
 		return LyXRC::getDescription(LyXRC::RC_UIFILE);
-	if (ob == dialog_->check_override_x_dead_keys)
-		return LyXRC::getDescription(LyXRC::RC_OVERRIDE_X_DEADKEYS);
 	return string();
 }
 
@@ -1565,8 +1560,6 @@ void FormPreferences::Interface::update(LyXRC const & rc)
 		     rc.bind_file.c_str());
 	fl_set_input(dialog_->input_ui_file,
 		     rc.ui_file.c_str());
-	fl_set_button(dialog_->check_override_x_dead_keys,
-		      rc.override_x_deadkeys);
 }
 
 

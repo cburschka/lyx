@@ -1,3 +1,8 @@
+2002-12-16  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.[Ch]:
+	* lyx_main.C (init): remove override_x_deadkeys stuff.
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C: use LyXKeySym->isText() as last-ditch

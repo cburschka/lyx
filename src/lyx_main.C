@@ -463,11 +463,6 @@ void LyX::init(bool gui)
 	// Read menus
 	readUIFile(lyxrc.ui_file);
 
-	// Bind the X dead keys to the corresponding LyX functions if
-	// necessary.
-	if (lyxrc.override_x_deadkeys)
-		deadKeyBindings(toplevel_keymap.get());
-
 	if (lyxerr.debugging(Debug::LYXRC)) {
 		lyxrc.print();
 	}

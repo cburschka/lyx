@@ -89,7 +89,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
-	{ "\\override_x_deadkeys", LyXRC::RC_OVERRIDE_X_DEADKEYS },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\popup_bold_font", LyXRC::RC_POPUP_BOLD_FONT },
 	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
@@ -219,7 +218,6 @@ void LyXRC::setDefaults() {
 	font_norm = "iso8859-1";
 	font_norm_type = ISO_8859_1;
 	popup_font_encoding.erase();
-	override_x_deadkeys = true;
 	autosave = 300;
 	auto_region_delete = true;
 	auto_reset_options = false;
@@ -846,12 +844,6 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 		}
-		case RC_OVERRIDE_X_DEADKEYS:
-			if (lexrc.next()) {
-				override_x_deadkeys = lexrc.getBool();
-			}
-			break;
-
 		case RC_SERVERPIPE:
 			if (lexrc.next()) {
 				lyxpipes = ExpandPath(lexrc.getString());
@@ -1734,11 +1726,6 @@ void LyXRC::output(ostream & os) const
 		   << "# 2nd MISC SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
 
-	case RC_OVERRIDE_X_DEADKEYS:
-		if (override_x_deadkeys != system_lyxrc.override_x_deadkeys) {
-			os << "\\override_x_deadkeys "
-			   << tostr(override_x_deadkeys) << '\n';
-		}
 	case RC_AUTO_NUMBER:
 		if (auto_number != system_lyxrc.auto_number) {
 			os << "\\auto_number " << tostr(auto_number) << '\n';
@@ -1986,11 +1973,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_AUTORESET_OPTIONS:
 		str = _("De-select if you don't want the class options to be reset to defaults after class change.");
 		break;
-
-	case RC_OVERRIDE_X_DEADKEYS:
-		str = _("Select if LyX is to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard.");
-		break;
-
 
 	case RC_SERVERPIPE:
 		str = _("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");

@@ -72,7 +72,6 @@ enum LyXRCTags {
 	RC_AUTOREGIONDELETE,
 	RC_AUTORESET_OPTIONS,
 	RC_BIND,
-	RC_OVERRIDE_X_DEADKEYS,
 	RC_SERVERPIPE,
 	RC_INPUT,
 	RC_BINDFILE,
@@ -234,8 +233,6 @@ enum LyXRCTags {
 	bool use_scalable_fonts;
 	/// DPI of monitor
 	float dpi;
-	/// Whether lyx should handle deadkeys by itself
-	bool override_x_deadkeys;
 	///
 	string fontenc;
 	///
