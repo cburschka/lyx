@@ -1102,8 +1102,8 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	case LFUN_PREVIEW:
 		Exporter::Preview(owner->buffer(), argument);
 		break;
-
-        case LFUN_BUILDPROG:
+		
+	case LFUN_BUILDPROG:
 		Exporter::Export(owner->buffer(), "program", true);
 		break;
 
