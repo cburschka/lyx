@@ -342,12 +342,6 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 }
 
 
-string const & InsetFloat::type() const
-{
-	return params_.type;
-}
-
-
 void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
@@ -372,7 +366,7 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 		Paragraph * tmp = *pit;
 
 		if (tmp->layout()->name() == caplayout) {
-			string const name = floatname(type(), buf->params);
+			string const name = floatname(params_.type, buf->params);
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + tmp->asString(buf, false);

@@ -70,8 +70,6 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	string const & type() const;
-	///
 	void wide(bool w, BufferParams const &);
 	///
 	void addToToc(toc::TocList &, Buffer const *) const;

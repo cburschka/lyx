@@ -34,6 +34,7 @@
 
 #include "insets/insetbibitem.h"
 #include "insets/insetfloat.h"
+#include "insets/insetwrap.h"
 
 #include "support/LAssert.h"
 #include "support/textutils.h"
@@ -1173,8 +1174,16 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 			}
 
 			if (isOK) {
-				Floating const & fl
-					= textclass.floats().getType(static_cast<InsetFloat*>(in)->type());
+				string type;
+
+				if (in->lyxCode() == Inset::FLOAT_CODE)
+					type = static_cast<InsetFloat*>(in)->params().type;
+				else if (in->lyxCode() == Inset::WRAP_CODE)
+					type = static_cast<InsetWrap*>(in)->params().type;
+				else
+					lyx::Assert(0);
+
+				Floating const & fl = textclass.floats().getType(type);
 
 				textclass.counters().step(fl.type());
 

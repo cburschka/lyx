@@ -18,10 +18,11 @@
 #include "buffer.h"
 #include "FloatList.h"
 #include "insets/insetfloat.h"
+#include "insets/insetwrap.h"
 #include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
-
+#include "support/LAssert.h"
 #include "support/BoostFormat.h"
 
 using std::ostream;
@@ -78,7 +79,14 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	// belongs to.
 	Inset * i1 = owner();
 	Inset * i2 = i1 ? i1->owner() : 0;
-	string const type = static_cast<InsetFloat *>(i2)->type();
+	string type;
+	if (i2->lyxCode() == FLOAT_CODE)
+		type = static_cast<InsetFloat *>(i2)->params().type;
+	else if (i2->lyxCode() == WRAP_CODE)
+		type = static_cast<InsetWrap *>(i2)->params().type;
+	else
+		lyx::Assert(0);
+
 	FloatList const & floats =
 		bv->buffer()->params.getLyXTextClass().floats();
 	string const fl = i2 ? floats.getType(type).name() : N_("Float");
