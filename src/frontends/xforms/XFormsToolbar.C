@@ -30,6 +30,11 @@
 #include "lyx_forms.h"
 #include "combox.h"
 
+#include <boost/bind.hpp>
+
+using lyx::frontend::Box;
+using lyx::frontend::BoxList;
+
 using std::distance;
 using std::endl;
 using std::string;
@@ -90,10 +95,17 @@ XFormsToolbar::toolbarItem::operator=(toolbarItem const & ti)
 
 
 
-XFormsToolbar::XFormsToolbar(LyXView * o, int x, int y)
-	: owner_(static_cast<XFormsView *>(o)), combox_(0), xpos(x), ypos(y)
+XFormsToolbar::XFormsToolbar(LyXView * o)
+	: toolbar_(0),
+	  toolbar_buttons_(0),
+	  owner_(static_cast<XFormsView *>(o)),
+	  combox_(0)
 {
 	tooltip_ = new Tooltips;
+
+	using lyx::frontend::WidgetMap;
+	owner_->metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
+						   &widgets_));
 }
 
 
@@ -278,6 +290,23 @@ void XFormsToolbar::add(ToolbarBackend::Toolbar const & tb)
 	if (!toollist_.empty())
 		return;
 
+	// The toolbar contains three vertically-aligned Boxes,
+	// the center one of which is to contain the buttons,
+	// aligned horizontally.
+	// The other two provide some visual padding.
+	BoxList & boxlist = owner_->getBox(XFormsView::Top).children();
+	toolbar_ = &boxlist.push_back(Box(0,0));
+
+	int const padding = 2 + abs(fl_get_border_width());
+	toolbar_->children().push_back(Box(0, padding));
+
+	Box & toolbar_center = toolbar_->children().push_back(Box(0,0));
+	toolbar_center.set(Box::Horizontal);
+	toolbar_buttons_ = &toolbar_center.children();
+
+	toolbar_->children().push_back(Box(0, padding));
+
+	// Add the buttons themselves.
 	funcs.clear();
 
 	ToolbarBackend::item_iterator it = tb.items.begin();
@@ -294,18 +323,21 @@ void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 
 	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
-		xpos += sepspace;
+		toolbar_buttons_->push_back(Box(sepspace, 0));
 		break;
 	case ToolbarBackend::MINIBUFFER:
 		// Not implemented
 		break;
 	case ToolbarBackend::LAYOUTS:
-		xpos += standardspacing;
+		toolbar_buttons_->push_back(Box(standardspacing, 0));
 		if (combox_)
 			break;
 
 		combox_ = fl_add_combox(FL_DROPLIST_COMBOX,
-					xpos, ypos, 135, height, "");
+					0, 0, 135, height, "");
+
+		widgets_.add(combox_, *toolbar_buttons_, 135, height);
+
 		fl_set_combox_browser_height(combox_, 400);
 		fl_set_object_boxtype(combox_, FL_DOWN_BOX);
 		fl_set_object_color(combox_, FL_MCOL, FL_MCOL);
@@ -314,17 +346,17 @@ void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 
 		combox_->u_vdata = this;
 		fl_set_object_callback(combox_, C_layoutSelectedCB, 0);
-		xpos += 135;
 		break;
 	default: {
 		FL_OBJECT * obj;
 
-		xpos += standardspacing;
+		toolbar_buttons_->push_back(Box(standardspacing, 0));
 		item.icon = obj =
 			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-					    xpos, ypos,
-					    buttonwidth,
-					    height, "");
+					    0, 0, 0, 0, "");
+
+		widgets_.add(obj, *toolbar_buttons_, buttonwidth, height);
+
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
 		fl_set_object_gravity(obj,
 				      NorthWestGravity,
@@ -343,14 +375,6 @@ void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 
 		string const xpm = toolbarbackend.getIcon(func);
 		fl_set_pixmapbutton_file(obj, xpm.c_str());
-
-		// we must remember to update the positions
-		xpos += buttonwidth;
-		// ypos is constant
-		/* Here will come a check to see if the new
-		 * pos is within the bounds of the main frame,
-		 * and perhaps wrap the toolbar if not.
-		 */
 		break;
 	}
 	}

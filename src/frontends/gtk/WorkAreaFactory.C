@@ -19,7 +19,7 @@
 namespace WorkAreaFactory {
 
 
-WorkArea * create(LyXView & owner, int /*x*/, int /*y*/, int w, int h)
+WorkArea * create(LyXView & owner, int w, int h)
 {
 	return new GWorkArea(owner, w, h);
 }

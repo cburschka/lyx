@@ -15,6 +15,8 @@
 #include "funcrequest.h"
 #include "frontends/Menubar.h"
 
+#include "LayoutEngine.h"
+
 #include <boost/shared_ptr.hpp>
 
 #include "forms_fwd.h"
@@ -66,6 +68,10 @@ private:
 	XFormsView * owner_;
 	///
 	MenuBackend const * menubackend_;
+	///
+	lyx::frontend::Box * menubar_;
+	///
+	lyx::frontend::WidgetMap widgets_;
 	///
 	struct ItemInfo {
 		///

@@ -23,7 +23,12 @@
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
+#include <boost/bind.hpp>
+
 #include "lyx_forms.h"
+
+using lyx::frontend::Box;
+using lyx::frontend::BoxList;
 
 using lyx::support::lowercase;
 using lyx::support::subst;
@@ -82,8 +87,14 @@ extern "C" {
 
 
 XFormsMenubar::XFormsMenubar(LyXView * view, MenuBackend const & mb)
-	: owner_(static_cast<XFormsView*>(view)), menubackend_(&mb)
+	: owner_(static_cast<XFormsView*>(view)),
+	  menubackend_(&mb),
+	  menubar_(0)
 {
+	using lyx::frontend::WidgetMap;
+	owner_->metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
+						   &widgets_));
+
 	makeMenubar(menubackend_->getMenubar());
 }
 
@@ -94,16 +105,27 @@ XFormsMenubar::~XFormsMenubar()
 
 void XFormsMenubar::makeMenubar(Menu const & menu)
 {
-	FL_FORM * form = owner_->getForm();
-	int moffset = 0;
+	// Draw a frame around the whole.
+	BoxList & boxlist = owner_->getBox(XFormsView::Top).children();
 
-	// Create menu frame if there is non yet.
-	FL_OBJECT * frame = fl_add_frame(FL_UP_FRAME, 0, 0,
-					 form->w, mheight, "");
+	FL_OBJECT * frame = fl_add_frame(FL_UP_FRAME, 0, 0, 0, 0, "");
 	fl_set_object_resize(frame, FL_RESIZE_ALL);
-	fl_set_object_gravity(frame, NorthWestGravity,
-			      NorthEastGravity);
+	fl_set_object_gravity(frame, NorthWestGravity, NorthEastGravity);
 
+	menubar_ = &widgets_.add(frame, boxlist, 0, mheight);
+
+	// The menubar contains three vertically-aligned Boxes,
+	// the center one of which is to contain the buttons,
+	// aligned horizontally.
+	// The other two provide some visual padding.
+	menubar_->children().push_back(Box(0, yloc));
+	Box & menubar_center = menubar_->children().push_back(Box(0,0));
+	menubar_center.set(Box::Horizontal);
+	menubar_->children().push_back(Box(0, yloc));
+
+	BoxList & menubar_buttons = menubar_center.children();
+
+	// Add the buttons.
 	Menu::const_iterator i = menu.begin();
 	Menu::const_iterator end = menu.end();
 	for (; i != end; ++i) {
@@ -117,11 +139,12 @@ void XFormsMenubar::makeMenubar(Menu const & menu)
 		string const label = i->label();
 		string const shortcut = '#' + i->shortcut();
 		int const width = string_width(label);
-		obj = fl_add_button(FL_MENU_BUTTON,
-				    air + moffset, yloc,
-				    width + mbadd,
-				    mbheight,
-				    label.c_str());
+
+		obj = fl_add_button(FL_MENU_BUTTON, 0, 0, 0, 0, label.c_str());
+
+		menubar_buttons.push_back(Box(air, 0));
+		widgets_.add(obj, menubar_buttons, width + mbadd, mbheight);
+
 		fl_set_object_boxtype(obj, FL_FLAT_BOX);
 		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_lsize(obj, MENU_LABEL_SIZE);
@@ -129,7 +152,6 @@ void XFormsMenubar::makeMenubar(Menu const & menu)
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
 		fl_set_object_gravity(obj, NorthWestGravity,
 				      NorthWestGravity);
-		moffset += obj->w + air;
 		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
 		fl_set_object_callback(obj, C_XFormsMenubar_MenuCallback, 1);
 
@@ -138,7 +160,6 @@ void XFormsMenubar::makeMenubar(Menu const & menu)
 		buttonlist_.push_back(iteminfo);
 		obj->u_vdata = iteminfo.get();
 	}
-
 }
 
 

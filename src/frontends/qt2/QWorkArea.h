@@ -35,7 +35,7 @@ class QWorkArea : public WorkArea, public QWidget {
 public:
 	friend class QContentPane;
 
-	QWorkArea(LyXView & owner, int x, int y, int w, int h);
+	QWorkArea(LyXView & owner, int w, int h);
 
 	virtual ~QWorkArea();
 	/// return this widget's painter

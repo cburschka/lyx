@@ -1,5 +1,20 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* LayoutEngine.[Ch]: a layout engine for xforms, drawing heavily
+	on GTK+ code for inspiration.
+
+	* Makefile.am: add new files.
+
+	* WorkAreaFactory.C (create): no longer pass x,y data to XWorkArea.
+
+	* XFormsMenubar.[Ch]:
+	* XFormsToolbar.[Ch]:
+	* XFormsView.[Ch]:
+	* XMiniBuffer.[Ch]:
+	* XWorkArea.[Ch]: adjustments to use the new layout engine.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* WorkAreaFactory.C (create): pass a LyXView & to QWorkArea c-tor.
 
 	* XWorkArea.[Ch] (c-tor): now receives a LyXView &.

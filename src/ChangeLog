@@ -1,5 +1,11 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView.[Ch] (c-tor):
+	* BufferView_pimpl.[Ch] (c-tor): no longer receives x,y position.
+	No longer passes these data to the WorkArea generator.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.C (c-tor): pass LyXView & to WorkArea generator.
 
 2004-04-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>

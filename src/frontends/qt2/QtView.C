@@ -49,7 +49,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 
 	qApp->setMainWidget(this);
 
-	bufferview_.reset(new BufferView(this, 0, 0, width, height));
+	bufferview_.reset(new BufferView(this, width, height));
 
 	menubar_.reset(new QLMenubar(this, menubackend));
 	toolbar_.reset(new QLToolbar(this));

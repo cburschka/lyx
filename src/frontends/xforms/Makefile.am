@@ -149,6 +149,8 @@ libxforms_la_SOURCES = \
 	FormVSpace.h \
 	FormWrap.C \
 	FormWrap.h \
+	LayoutEngine.C \
+	LayoutEngine.h \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	XFormsMenubar.C \

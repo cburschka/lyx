@@ -16,6 +16,8 @@
 
 #include "lyx_forms.h"
 
+#include "LayoutEngine.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/connection.hpp>
@@ -23,6 +25,7 @@
 struct fl_freebrowser_;
 typedef fl_freebrowser_ FL_FREEBROWSER;
 
+class XFormsView;
 class ControlCommandBuffer;
 class Timeout;
 
@@ -30,8 +33,7 @@ class Timeout;
 class XMiniBuffer {
 public:
 	///
-	XMiniBuffer(ControlCommandBuffer & control,
-		    FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
+	XMiniBuffer(XFormsView & owner, ControlCommandBuffer & control);
 
 	///
 	~XMiniBuffer();
@@ -102,6 +104,10 @@ private:
 
 	/// are we showing an informational temporary message ?
 	bool info_shown_;
+	///
+	lyx::frontend::Box * minibuffer_;
+	///
+	lyx::frontend::WidgetMap widgets_;
 };
 
 #endif // XMINIBUFFER_H

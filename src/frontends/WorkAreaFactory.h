@@ -20,7 +20,7 @@ namespace WorkAreaFactory {
 	 * Make a work area. Used because we want to generate
 	 * a toolkit-specific instance.
 	 */
-	WorkArea * create(LyXView & owner, int x, int y, int w, int h);
+	WorkArea * create(LyXView & owner, int w, int h);
 }
 
 #endif // WORKAREA_FACTORY_H

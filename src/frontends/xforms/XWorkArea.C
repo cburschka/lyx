@@ -12,11 +12,18 @@
 #include <config.h>
 
 #include "XWorkArea.h"
+#include "XFormsView.h"
 
 #include "debug.h"
 #include "XLyXKeySym.h"
 #include "funcrequest.h"
 #include "Timeout.h"
+
+#include <boost/bind.hpp>
+
+using lyx::frontend::Box;
+using lyx::frontend::BoxList;
+using lyx::frontend::WidgetMap;
 
 using std::abs;
 using std::dec;
@@ -96,25 +103,21 @@ int C_event_cb(FL_FORM * form, void * xev)
 } // namespace anon
 
 
-XWorkArea::XWorkArea(LyXView & owner, int x, int y, int w, int h)
+XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 	: workareapixmap(0), painter_(*this)
 {
-	if (lyxerr.debugging(Debug::WORKAREA)) {
-		lyxerr << "\tbackground box: +"
-		       << x << '+' << y << ' '
-		       << w - 15 << 'x' << h << endl;
-	}
-
 	fl_freeze_all_forms();
 
 	FL_OBJECT * obj;
+	FL_OBJECT * frame;
 
-	obj = fl_add_box(FL_BORDER_BOX, x, y, w - 15, h, "");
+	// A frame around the work area.
+	frame = obj = fl_add_box(FL_BORDER_BOX, 0, 0, w, h, "");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
-	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR,
-					   x + w - 15, y, 17, h, "");
+	// The scrollbar.
+	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR, 0, 0, w, h, "");
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
@@ -124,24 +127,8 @@ XWorkArea::XWorkArea(LyXView & owner, int x, int y, int w, int h)
 	fl_set_scrollbar_value(scrollbar, 0.0);
 	fl_set_scrollbar_size(scrollbar, scrollbar->h);
 
-	int const bw = int(abs(fl_get_border_width()));
-
-	// Create the workarea pixmap
-	// FIXME remove redraw(w - 15 - 2 * bw, h - 2 * bw);
-
-	if (lyxerr.debugging(Debug::WORKAREA))
-		lyxerr << "\tfree object: +"
-		       << x + bw << '+' << y + bw << ' '
-		       << w - 15 - 2 * bw << 'x'
-		       << h - 2 * bw << endl;
-
-	// We add this object as late as possible to avoid problems
-	// with drawing.
-	// FIXME: like ??
-	work_area = obj = fl_add_free(FL_ALL_FREE,
-				      x + bw, y + bw,
-				      w - 15 - 2 * bw,
-				      h - 2 * bw, "",
+	// The work area itself
+	work_area = obj = fl_add_free(FL_ALL_FREE, 0, 0, w, h, "",
 				      C_work_area_handler);
 	obj->wantkey = FL_KEY_ALL;
 	obj->u_vdata = this;
@@ -149,6 +136,26 @@ XWorkArea::XWorkArea(LyXView & owner, int x, int y, int w, int h)
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
+
+	// Hand control of the layout of these widgets to the
+	// Layout Engine.
+	XFormsView & xview = dynamic_cast<XFormsView &>(owner);
+	BoxList & boxlist = xview.getBox(XFormsView::Center).children();
+
+	wa_box_ = &boxlist.push_back(Box(0,0));
+	wa_box_->set(Box::Horizontal);
+
+	Box & frame_box = widgets_.add(frame, wa_box_->children(), 0, 0);
+	frame_box.set(Box::Expand);
+
+	int const bw = int(abs(fl_get_border_width()));
+	Box & wa_box = embed(work_area, frame_box.children(), widgets_, bw);
+	wa_box.set(Box::Expand);
+
+	widgets_.add(scrollbar, wa_box_->children(), 17, 0);
+
+	xview.metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
+						 &widgets_));
 
 	/// X selection hook - xforms gets it wrong
 	fl_current_form->u_vdata = this;

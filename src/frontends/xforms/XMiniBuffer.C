@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "XMiniBuffer.h"
+#include "XFormsView.h"
 
 #include "freebrowser.h"
 #include "xforms_helpers.h"
@@ -24,6 +25,9 @@
 
 #include <boost/bind.hpp>
 
+using lyx::frontend::Box;
+using lyx::frontend::BoxList;
+using lyx::frontend::WidgetMap;
 
 using std::vector;
 using std::string;
@@ -32,21 +36,33 @@ using std::string;
 namespace {
 
 /// This creates the input widget for the minibuffer
-FL_OBJECT * create_input_box(void * parent, int type,
-			     FL_Coord, FL_Coord, FL_Coord, FL_Coord);
+FL_OBJECT * create_input_box(void * parent, int type);
 
 FL_FREEBROWSER * create_freebrowser(void * parent);
 
 } // namespace anon
 
 
-XMiniBuffer::XMiniBuffer(ControlCommandBuffer & control,
-			 FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w)
+XMiniBuffer::XMiniBuffer(XFormsView & owner,
+			 ControlCommandBuffer & control)
 	: controller_(control),
 	  info_shown_(false)
 {
-	input_ = create_input_box(this, FL_NORMAL_INPUT, x, y, h, w);
+	input_ = create_input_box(this, FL_NORMAL_INPUT);
 	freebrowser_.reset(create_freebrowser(this), fl_free_freebrowser);
+
+	// The minibuffer is 25 pixels high and is embedded inside a
+	// 2 pixel deep frame.
+	int const air = 2;
+
+	BoxList & boxlist = owner.getBox(XFormsView::Bottom).children();
+	minibuffer_ = &boxlist.push_back(Box(0,0));
+	Box & center = embed(input_, minibuffer_->children(), widgets_, air);
+	center.set(Box::Expand);
+	center.setMinimumDimensions(0, 25);
+
+	owner.metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
+						 &widgets_));
 
 	info_timer_.reset(new Timeout(1500));
 	idle_timer_.reset(new Timeout(6000));
@@ -315,10 +331,9 @@ void C_freebrowserCB(FL_FREEBROWSER * fb, int action)
 }
 
 
-FL_OBJECT * create_input_box(void * parent, int type,
-			     FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h)
+FL_OBJECT * create_input_box(void * parent, int type)
 {
-	FL_OBJECT * obj = fl_add_input(type, x, y, w, h, "");
+	FL_OBJECT * obj = fl_add_input(type, 0, 0, 0, 0, "");
 	fl_set_object_boxtype(obj, FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);

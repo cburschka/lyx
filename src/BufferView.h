@@ -54,7 +54,7 @@ public:
 	 * Create a view with the given owner main window,
 	 * of the given dimensions.
 	 */
-	BufferView(LyXView * owner, int x, int y, int w, int h);
+	BufferView(LyXView * owner, int w, int h);
 
 	~BufferView();
 

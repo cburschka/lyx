@@ -65,9 +65,8 @@ using std::vector;
 extern BufferList bufferlist;
 
 
-BufferView::BufferView(LyXView * owner, int xpos, int ypos,
-		       int width, int height)
-	: pimpl_(new Pimpl(*this, owner, xpos, ypos, width, height))
+BufferView::BufferView(LyXView * owner, int width, int height)
+	: pimpl_(new Pimpl(*this, owner, width, height))
 {}
 
 

@@ -16,6 +16,8 @@
 #include <vector>
 #include "forms_fwd.h"
 
+#include "LayoutEngine.h"
+
 #include "frontends/Toolbar.h"
 #include "ToolbarBackend.h"
 
@@ -27,7 +29,7 @@ class Tooltips;
 class XFormsToolbar : public Toolbar {
 public:
 	/// create an empty toolbar
-	XFormsToolbar(LyXView * o, int x, int y);
+	XFormsToolbar(LyXView * o);
 
 	///
 	~XFormsToolbar();
@@ -73,6 +75,13 @@ public:
 		FL_OBJECT * icon;
 	};
 
+	///
+	lyx::frontend::Box * toolbar_;
+	///
+	lyx::frontend::BoxList * toolbar_buttons_;
+	///
+	lyx::frontend::WidgetMap widgets_;
+
 	typedef std::vector<FuncRequest> Funcs;
 
 	Funcs funcs;
@@ -87,10 +96,6 @@ public:
 	Tooltips * tooltip_;
 	/// layout combo
 	FL_OBJECT * combox_;
-	/// x position of end of toolbar
-	int xpos;
-	/// y position of end of toolbar
-	int ypos;
 };
 
 #endif

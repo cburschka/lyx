@@ -46,8 +46,7 @@ class FuncStatus;
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
 	///
-	Pimpl(BufferView & bv, LyXView * owner,
-	      int xpos, int ypos, int width, int height);
+	Pimpl(BufferView & bv, LyXView * owner, int width, int height);
 	///
 	Painter & painter() const;
 	/// return the screen for this bview

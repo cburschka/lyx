@@ -115,13 +115,13 @@ boost::signals::connection lostcon;
 
 
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
-	     int xpos, int ypos, int width, int height)
+			 int width, int height)
 	: bv_(&bv), owner_(owner), buffer_(0), cursor_timeout(400),
 	  using_xterm_cursor(false), cursor_(bv)
 {
 	xsel_cache_.set = false;
 
-	workarea_.reset(WorkAreaFactory::create(*owner_, xpos, ypos, width, height));
+	workarea_.reset(WorkAreaFactory::create(*owner_, width, height));
 	screen_.reset(LyXScreenFactory::create(workarea()));
 
 	// Setup the signals

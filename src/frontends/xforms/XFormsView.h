@@ -12,11 +12,15 @@
 #ifndef LyXView_H
 #define LyXView_H
 
-
+#include "LayoutEngine.h"
 #include "forms_fwd.h"
 
 #include "frontends/LyXView.h"
 #include <X11/Xlib.h> // for Pixmap
+
+#include <boost/signals/signal0.hpp>
+
+#include <map>
 
 class XMiniBuffer;
 
@@ -27,10 +31,21 @@ class XMiniBuffer;
  */
 class XFormsView : public LyXView {
 public:
+	enum Position {
+		Top,
+		Bottom,
+		Left,
+		Right,
+		Center
+	};
+
 	/// create a main window of the given dimensions
 	XFormsView(int w, int h);
 
 	~XFormsView();
+
+	/// Accessor to the appropriate layout Box.
+	lyx::frontend::Box & getBox(Position pos) const;
 
 	/**
 	 * show - display the top-level window
@@ -56,6 +71,8 @@ public:
 	/// clear back to normal status message
 	virtual void clearMessage();
 
+	boost::signal0<void> metricsUpdated;
+
 private:
 	/**
 	 * setWindowTitle - set title of window
@@ -67,8 +84,14 @@ private:
 	/// update the minibuffer state message
 	void show_view_state();
 
-	/// makes the main form.
-	void create_form_form_main(int width, int height);
+	///
+	void updateMetrics();
+	/// The top-most box of the layout engine containing all other boxes.
+	lyx::frontend::Box window_;
+
+	// Accessors to the various Boxes.
+	std::map<Position, lyx::frontend::Box *> box_map_;
+
 	/// the minibuffer
 	boost::scoped_ptr<XMiniBuffer> minibuffer_;
 	///

@@ -1,3 +1,8 @@
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* WorkAreaFactory.h (create): passed a LyXView &.
+	No longer passed x, y data.
+
 2004-04-27  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: add myself as author.

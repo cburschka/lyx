@@ -27,6 +27,8 @@
 
 #include <boost/bind.hpp>
 
+using lyx::frontend::Box;
+
 using lyx::support::LibFileSearch;
 
 using std::abs;
@@ -48,13 +50,80 @@ int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
 }
 
 
+void print_metrics(std::ostream & os, std::string const & name, Box const & box)
+{
+	os << name << " metrics:"
+	   << "\tx = " << box.xorigin()
+	   << "\ty = " << box.yorigin()
+	   << "\tw = " << box.width()
+	   << "\th = " << box.height() << '\n';
+}
+
+
 XFormsView::XFormsView(int width, int height)
 	: LyXView(),
+	  window_(Box(width, height)),
 	  icon_pixmap_(0), icon_mask_(0)
 {
-	create_form_form_main(width, height);
-	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
+	int const air = 2;
 
+	// Logical layout of the boxes making up the LyX window.
+	Box & top    = window_.children().push_back(Box(0,0));
+	Box & middle = window_.children().push_back(Box(0,0));
+	middle.set(Box::Horizontal);
+	Box & bottom = window_.children().push_back(Box(0,0));
+
+	Box & left   = middle.children().push_back(Box(air,0));
+	Box & center = middle.children().push_back(Box(0,0));
+	center.set(Box::Expand);
+	Box & right  = middle.children().push_back(Box(air,0));
+
+	// Define accessors to the various boxes.
+	box_map_[Top]    = &top;
+	box_map_[Bottom] = &bottom;
+	box_map_[Left]   = &left;
+	box_map_[Center] = &center;
+	box_map_[Right]  = &right;
+
+	// Define the XForms components making up the window.
+	// Each uses the layout engine defined above to control its
+	// dimensions.
+	form_ = fl_bgn_form(FL_NO_BOX, width, height);
+	form_->u_vdata = this;
+	fl_set_form_atclose(form_, C_XFormsView_atCloseMainFormCB, 0);
+
+	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
+	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+
+	menubar_.reset(new XFormsMenubar(this, menubackend));
+
+	toolbar_.reset(new XFormsToolbar(this));
+	toolbar_->init();
+
+	bufferview_.reset(new BufferView(this, width, height));
+	minibuffer_.reset(new XMiniBuffer(*this, *controlcommand_));
+
+	//  Assign an icon to the main form.
+	string const iconname = LibFileSearch("images", "lyx", "xpm");
+	if (!iconname.empty()) {
+		unsigned int w, h;
+		icon_pixmap_ = fl_read_pixmapfile(fl_root,
+					   iconname.c_str(),
+					   &w,
+					   &h,
+					   &icon_mask_,
+					   0,
+					   0,
+					   0);
+		fl_set_form_icon(form_, icon_pixmap_, icon_mask_);
+	}
+
+	fl_end_form();
+
+	// Update the layout so that all widgets fit.
+	window_.show();
+	updateMetrics();
+	
 	view_state_con =
 		view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
 	focus_con =
@@ -75,6 +144,14 @@ XFormsView::~XFormsView()
 	minibuffer_->freeze();
 	fl_hide_form(form_);
 	fl_free_form(form_);
+}
+
+
+Box & XFormsView::getBox(Position pos) const
+{
+	std::map<Position, Box *>::const_iterator it = box_map_.find(pos);
+	BOOST_ASSERT(it != box_map_.end());
+	return *it->second;
 }
 
 
@@ -121,58 +198,16 @@ void XFormsView::show(int x, int y, string const & title)
 }
 
 
-void XFormsView::create_form_form_main(int width, int height)
-	/* to make this work as it should, .lyxrc should have been
-	 * read first; OR maybe this one should be made dynamic.
-	 * Hmmmm. Lgb.
-	 * We will probably not have lyxrc before the main form is
-	 * initialized, because error messages from lyxrc parsing
-	 * are presented (and rightly so) in GUI popups. Asger.
-	 */
+void XFormsView::updateMetrics()
 {
-	// the main form
-	form_ = fl_bgn_form(FL_NO_BOX, width, height);
-	getForm()->u_vdata = this;
-	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
-	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+	window_.updateMetrics();
 
-	// Parameters for the appearance of the main form
-	int const air = 2;
-	int const bw = abs(fl_get_border_width());
+	FL_FORM * form = getForm();
+	fl_set_form_size(form, window_.width(), window_.height());
 
-	menubar_.reset(new XFormsMenubar(this, menubackend));
-
-	toolbar_.reset(new XFormsToolbar(this, air, 30 + air + bw));
-	toolbar_->init();
-
-	int const ywork = 60 + 2 * air + bw;
-	int const workheight = height - ywork - (25 + 2 * air);
-
-	bufferview_.reset(new BufferView(this, air, ywork,
-		width - 3 * air, workheight));
-
-	minibuffer_.reset(new XMiniBuffer(*controlcommand_,
-		air, height - (25 + air), width - (2 * air), 25));
-
-	//  assign an icon to main form
-	string const iconname = LibFileSearch("images", "lyx", "xpm");
-	if (!iconname.empty()) {
-		unsigned int w, h;
-		icon_pixmap_ = fl_read_pixmapfile(fl_root,
-					   iconname.c_str(),
-					   &w,
-					   &h,
-					   &icon_mask_,
-					   0,
-					   0,
-					   0);
-		fl_set_form_icon(getForm(), icon_pixmap_, icon_mask_);
-	}
-
-	// set min size
-	fl_set_form_minsize(getForm(), 50, 50);
-
-	fl_end_form();
+	// Emit a signal so that all daughter widgets are layed-out
+	// correctly.
+	metricsUpdated();
 }
 
 

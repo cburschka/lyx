@@ -1,5 +1,13 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* WorkAreaFactory.C (create): No longer passed x, y data.
+
+	* QWorkArea.[Ch] (c-tor): No longer receives x, y data.
+
+	* QtView.[Ch] (c-tor): no longer passes x, y data to BufferView c-tor.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* WorkAreaFactory.C (create): pass a LyXView & to QWorkArea c-tor.
 
 	* QWorkArea.[Ch] (c-tor): now receives a LyXView &.

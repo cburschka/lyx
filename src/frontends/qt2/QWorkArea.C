@@ -39,7 +39,7 @@ namespace {
 QWorkArea const * wa_ptr = 0;
 }
 
-QWorkArea::QWorkArea(LyXView &, int, int, int, int)
+QWorkArea::QWorkArea(LyXView &, int, int)
 	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)
 {
 	scrollbar_ = new QScrollBar(QScrollBar::Vertical, this);

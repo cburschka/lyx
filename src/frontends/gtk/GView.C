@@ -83,7 +83,7 @@ GView::GView()
 	menubar_.reset(new GMenubar(this, menubackend));
 	toolbar_.reset(new GToolbar(this, 0, 0));
 	toolbar_->init();
-	bufferview_.reset(new BufferView(this, 0, 0, 300, 300));
+	bufferview_.reset(new BufferView(this, 300, 300));
 	minibuffer_.reset(new GMiniBuffer(this, *controlcommand_));
 
 	focus_command_buffer.connect(

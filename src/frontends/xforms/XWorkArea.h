@@ -16,6 +16,8 @@
 #include "frontends/WorkArea.h"
 #include "XPainter.h"
 
+#include "LayoutEngine.h"
+
 #include "lyx_forms.h"
 
 class LyXView;
@@ -24,7 +26,7 @@ class LyXView;
 class XWorkArea : public WorkArea {
 public:
 	///
-	XWorkArea(LyXView & owner, int xpos, int ypos, int width, int height);
+	XWorkArea(LyXView & owner, int width, int height);
 	///
 	~XWorkArea();
 	///
@@ -80,6 +82,10 @@ private:
 	bool screen_cleared;
 	/// the current document's height (for scrollbar)
 	int doc_height_;
+	///
+	lyx::frontend::Box * wa_box_;
+	///
+	lyx::frontend::WidgetMap widgets_;
 };
 
 #endif // XWORKAREA_H
