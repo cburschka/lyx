@@ -778,25 +778,18 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 
 // Gets uninstantiated font setting at position.
 // Optimized after profiling. (Asger)
+#ifndef NEW_INSETS
 LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 				      LyXParagraph::size_type pos) const
 {
-#ifdef NEW_INSETS
-	Assert(pos <= size());
-#endif
-#ifndef NEW_INSETS
 	if (pos < size()) {
-#endif
 		FontTable search_font(pos, LyXFont());
 		FontList::const_iterator cit = lower_bound(fontlist.begin(),
 						    fontlist.end(),
 						    search_font, matchFT());
 		if (cit != fontlist.end())
 			return (*cit).font();
-#ifndef NEW_INSETS
 	}
-#endif
-#ifndef NEW_INSETS
 	// > because last is the next unused position, and you can 
 	// use it if you want
 	else if (pos > size()) {
@@ -818,16 +811,27 @@ LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 	} else if (pos > 0) {
 		return GetFontSettings(bparams, pos - 1);
 	}
+
+	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
+}
 #else
+LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
+					    LyXParagraph::size_type pos) const
+{
+	Assert(pos <= size());
+	FontTable search_font(pos, LyXFont());
+	FontList::const_iterator cit = lower_bound(fontlist.begin(),
+						   fontlist.end(),
+						   search_font, matchFT());
+	if (cit != fontlist.end())
+		return (*cit).font();
+	
 	if (pos == size() && size())
 		return GetFontSettings(bparams, pos - 1);
-#endif
-	//else
-	// pos = size() = 0
+	
 	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
-
-	//return LyXFont(LyXFont::ALL_INHERIT);
 }
+#endif
 
 
 // Gets uninstantiated font setting at position 0
@@ -931,32 +935,23 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 }
 
 
+#ifndef NEW_INSETS
 LyXParagraph::value_type
 LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 {
-#ifndef NEW_INSETS
 	Assert(pos >= 0);
-#else
-	Assert(pos <= size());
-	if (!size() || pos == size()) return '\0';
-#endif
-
-#ifndef NEW_INSETS
+	
 	if (pos < size()) {
-#endif
 		return text[pos];
-#ifndef NEW_INSETS
 	}
-#endif
-#ifndef NEW_INSETS
+	
 	// > because last is the next unused position, and you can 
 	// use it if you want
 	else if (pos > size()) {
 		if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
 			return NextAfterFootnote()
 				->GetChar(pos - text.size() - 1);
-		else
-			{
+		else {
 			lyxerr << "ERROR (LyXParagraph::GetChar const): "
 				"position does not exist."
 			       << pos << " (" << static_cast<int>(pos)
@@ -989,8 +984,17 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 		}
 		return '\0'; // to shut up gcc
 	}
-#endif
 }
+#else
+LyXParagraph::value_type
+LyXParagraph::GetChar(LyXParagraph::size_type pos) const
+{
+	Assert(pos <= size());
+	if (!size() || pos == size()) return '\0';
+	
+	return text[pos];
+}
+#endif
 
 
 LyXParagraph::value_type
@@ -1033,6 +1037,7 @@ LyXParagraph::GetUChar(BufferParams const & bparams,
 	else
 		return c;
 }
+
 
 // return an string of the current word, and the end of the word in lastpos.
 string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
@@ -1077,7 +1082,6 @@ string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 	while (IsLetter(lastpos)) theword += GetChar(lastpos++);
 	
 	return theword;
-
 }
 
 
@@ -1443,6 +1447,7 @@ LyXParagraph const * LyXParagraph::previous() const
 }
 
 
+#ifndef NEW_INSETS
 void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 				  LyXParagraph::size_type pos,
 				  int flag)
@@ -1450,40 +1455,25 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 	size_type i;
 	size_type j;
 	// create a new paragraph
-#ifndef NEW_INSETS
 	size_type pos_end;
 	size_type pos_first;
 	LyXParagraph * par = ParFromPos(pos);
 	LyXParagraph * firstpar = FirstPhysicalPar();
    
 	LyXParagraph * tmp = new LyXParagraph(par);
-#else
-	//LyXParagraph * par = this;
-	//LyXParagraph * firstpar = this;
-	LyXParagraph * tmp = new LyXParagraph(this);
-#endif
 
-#ifndef NEW_INSETS
 	tmp->footnoteflag = footnoteflag;
 	tmp->footnotekind = footnotekind;
-#endif
+
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
 
-#ifndef NEW_INSETS
 	// layout stays the same with latex-environments
 	if (flag) {
 		tmp->SetOnlyLayout(bparams, firstpar->layout);
 		tmp->SetLabelWidthString(firstpar->params.labelWidthString());
 	}
-#else
-	// layout stays the same with latex-environments
-	if (flag) {
-		tmp->SetOnlyLayout(bparams, layout);
-		tmp->SetLabelWidthString(params.labelWidthString());
-	}
-#endif
-#ifndef NEW_INSETS
+
 	if (Last() > pos || !Last() || flag == 2) {
 		tmp->SetOnlyLayout(bparams, firstpar->layout);
 		tmp->params.align(firstpar->params.align());
@@ -1498,25 +1488,9 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
       
 		tmp->params.depth(firstpar->params.depth());
 		tmp->params.noindent(firstpar->params.noindent());
-#else
-	if (size() > pos || !size() || flag == 2) {
-		tmp->SetOnlyLayout(bparams, layout);
-		tmp->params.align(params.align());
-		tmp->SetLabelWidthString(params.labelWidthString());
-      
-		tmp->params.lineBottom(params.lineBottom());
-		params.lineBottom(false);
-		tmp->params.pagebreakBottom(params.pagebreakBottom());
-		params.pagebreakBottom(false);
-		tmp->params.spaceBottom(params.spaceBottom());
-		params.spaceBottom(VSpace(VSpace::NONE));
-      
-		tmp->params.depth(params.depth());
-		tmp->params.noindent(params.noindent());
-#endif
+
 		// copy everything behind the break-position
 		// to the new paragraph
-#ifndef NEW_INSETS
 		pos_first = 0;
 		while (ParFromPos(pos_first) != par)
 			++pos_first;
@@ -1535,23 +1509,8 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 			par->Erase(i - pos_first);
 
 		par->fitToSize();
-#else
-		size_type pos_end = text.size() - 1;
-		
-		for (i = j = pos; i <= pos_end; ++i) {
-			CutIntoMinibuffer(bparams, i);
-			if (tmp->InsertFromMinibuffer(j - pos))
-				++j;
-		}
-		tmp->fitToSize();
-		for (i = pos_end; i >= pos; --i)
-			Erase(i);
-
-		fitToSize();
-#endif
 	}
 
-#ifndef NEW_INSETS
 	// just an idea of me
 	if (!pos) {
 		tmp->params.lineTop(firstpar->params.lineTop());
@@ -1566,7 +1525,56 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 			firstpar->params.depth(tmp->params.depth());
 		}
 	}
+}
 #else
+void LyXParagraph::BreakParagraph(BufferParams const & bparams,
+				  LyXParagraph::size_type pos,
+				  int flag)
+{
+	// create a new paragraph
+	LyXParagraph * tmp = new LyXParagraph(this);
+	
+	// this is an idea for a more userfriendly layout handling, I will
+	// see what the users say
+	
+	// layout stays the same with latex-environments
+	if (flag) {
+		tmp->SetOnlyLayout(layout);
+		tmp->SetLabelWidthString(params.labelWidthString());
+	}
+	
+	if (size() > pos || !size() || flag == 2) {
+		tmp->SetOnlyLayout(layout);
+		tmp->params.align(params.align());
+		tmp->SetLabelWidthString(params.labelWidthString());
+		
+		tmp->params.lineBottom(params.lineBottom());
+		params.lineBottom(false);
+		tmp->params.pagebreakBottom(params.pagebreakBottom());
+		params.pagebreakBottom(false);
+		tmp->params.spaceBottom(params.spaceBottom());
+		params.spaceBottom(VSpace(VSpace::NONE));
+		
+		tmp->params.depth(params.depth());
+		tmp->params.noindent(params.noindent());
+		
+		// copy everything behind the break-position
+		// to the new paragraph
+		size_type pos_end = text.size() - 1;
+		size_type i = pos;
+		size_type j = pos;
+		for (; i <= pos_end; ++i) {
+			CutIntoMinibuffer(bparams, i);
+			if (tmp->InsertFromMinibuffer(j - pos))
+				++j;
+		}
+		tmp->fitToSize();
+		for (i = pos_end; i >= pos; --i)
+			Erase(i);
+		
+		fitToSize();
+	}
+	
 	// just an idea of me
 	if (!pos) {
 		tmp->params.lineTop(params.lineTop());
@@ -1576,14 +1584,14 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 		Clear();
 		// layout stays the same with latex-environments
 		if (flag) {
-			SetOnlyLayout(bparams, tmp->layout);
+			SetOnlyLayout(tmp->layout);
 			SetLabelWidthString(tmp->params.labelWidthString());
 			params.depth(tmp->params.depth());
 		}
 	}
-#endif
 }
-
+#endif
+	
 
 void LyXParagraph::MakeSameLayout(LyXParagraph const * par)
 {
@@ -1937,53 +1945,31 @@ void LyXParagraph::SetLabelWidthString(string const & s)
 }
 
 
+#ifndef NEW_INSETS
 void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
 				 LyXTextClass::size_type new_layout)
 {
-#ifndef NEW_INSETS
 	LyXParagraph * par = FirstPhysicalPar();
-#else
-	LyXParagraph * par = this;
-#endif
 	LyXParagraph * ppar = 0;
 	LyXParagraph * npar = 0;
-
+	
 	par->layout = new_layout;
-
-#ifndef NO_PEXTRA
+	
         if (par->params.pextraType() == PEXTRA_NONE) {
-#endif
                 if (par->previous()) {
-#ifndef NEW_INSETS
                         ppar = par->previous()->FirstPhysicalPar();
-#else
-			ppar = par->previous();
-#endif
                         while(ppar
 			      && ppar->previous()
 			      && (ppar->params.depth() > par->params.depth()))
-#ifndef NEW_INSETS
                                 ppar = ppar->previous()->FirstPhysicalPar();
-#else
-			ppar = ppar->previous();
-#endif
                 }
                 if (par->next()) {
-#ifndef NEW_INSETS
                         npar = par->next()->NextAfterFootnote();
-#else
-			npar = par->next();
-#endif
                         while(npar
 			      && npar->next()
 			      && (npar->params.depth() > par->params.depth()))
-#ifndef NEW_INSETS
                                 npar = npar->next()->NextAfterFootnote();
-#else
-			npar = npar->next();
-#endif
                 }
-#ifndef NO_PEXTRA
                 if (ppar && (ppar->params.pextraType() != PEXTRA_NONE)) {
                         string p1 = ppar->params.pextraWidth();
 			string p2 = ppar->params.pextraWidthp();
@@ -1999,63 +1985,69 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
                                             p1, p2);
                 }
         }
+}
+#else
+void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
+{
+#if 0
+	LyXParagraph * par = this;
+	LyXParagraph * ppar = 0;
+	LyXParagraph * npar = 0;
+	
+	par->layout = new_layout;
+	
+	if (par->previous()) {
+		ppar = par->previous();
+		while(ppar
+		      && ppar->previous()
+		      && (ppar->params.depth() > par->params.depth()))
+			ppar = ppar->previous();
+	}
+	if (par->next()) {
+		npar = par->next();
+		while(npar
+		      && npar->next()
+		      && (npar->params.depth() > par->params.depth()))
+			npar = npar->next();
+	}
+#else
+	layout = new_layout;
 #endif
 }
+#endif
 
 
+#ifndef NEW_INSETS
 void LyXParagraph::SetLayout(BufferParams const & bparams,
 			     LyXTextClass::size_type new_layout)
 {
 	LyXParagraph
-#ifndef NEW_INSETS
 		* par = FirstPhysicalPar(),
-#else
-		* par = this,
-#endif
 		* ppar = 0,
 		* npar = 0;
-
+	
         par->layout = new_layout;
 	par->params.labelWidthString(string());
 	par->params.align(LYX_ALIGN_LAYOUT);
 	par->params.spaceTop(VSpace(VSpace::NONE));
 	par->params.spaceBottom(VSpace(VSpace::NONE));
 	par->params.spacing(Spacing(Spacing::Default));
-
-#ifndef NO_PEXTRA
+	
         if (par->params.pextraType() == PEXTRA_NONE) {
-#endif
                 if (par->previous()) {
-#ifndef NEW_INSETS
                         ppar = par->previous()->FirstPhysicalPar();
-#else
-			ppar = par->previous();
-#endif
                         while(ppar
 			      && ppar->previous()
 			      && (ppar->params.depth() > par->params.depth()))
-#ifndef NEW_INSETS
                                 ppar = ppar->previous()->FirstPhysicalPar();
-#else
-			ppar = ppar->previous();
-#endif
                 }
                 if (par->next()) {
-#ifndef NEW_INSETS
                         npar = par->next()->NextAfterFootnote();
-#else
-			npar = par->next();
-#endif
                         while(npar
 			      && npar->next()
 			      && (npar->params.depth() > par->params.depth()))
-#ifndef NEW_INSETS
                                 npar = npar->next()->NextAfterFootnote();
-#else
-			npar = npar->next();
-#endif
                 }
-#ifndef NO_PEXTRA
                 if (ppar && (ppar->params.pextraType() != PEXTRA_NONE)) {
                         string const p1 = ppar->params.pextraWidth();
 			string const p2 = ppar->params.pextraWidthp();
@@ -2070,8 +2062,18 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
                                             p1, p2);
                 }
         }
-#endif
 }
+#else
+void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
+{
+        layout = new_layout;
+	params.labelWidthString(string());
+	params.align(LYX_ALIGN_LAYOUT);
+	params.spaceTop(VSpace(VSpace::NONE));
+	params.spaceBottom(VSpace(VSpace::NONE));
+	params.spacing(Spacing(Spacing::Default));
+}
+#endif
 
 
 // if the layout of a paragraph contains a manual label, the beginning of the 

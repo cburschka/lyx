@@ -333,6 +333,7 @@ public:
 	char GetAlign() const;
 	///
 	char GetDepth() const;
+#ifndef NEW_INSETS
 	///
 	void SetLayout(BufferParams const &,
 		       LyXTextClass::LayoutList::size_type new_layout);
@@ -340,11 +341,15 @@ public:
 	void SetOnlyLayout(BufferParams const &,
 			   LyXTextClass::LayoutList::size_type new_layout);
 	///
-	int GetFirstCounter(int i) const;
-#ifndef NEW_INSETS
-	///
 	size_type Last() const;
+#else
+	///
+	void SetLayout(LyXTextClass::LayoutList::size_type new_layout);
+	///
+	void SetOnlyLayout(LyXTextClass::LayoutList::size_type new_layout);
 #endif
+	///
+	int GetFirstCounter(int i) const;
 	///
 	void Erase(size_type pos);
 	/** the flag determines wether the layout should be copied

@@ -667,7 +667,7 @@ bool LyXTabular::SetMColumnPWidth(int cell, string const & width)
 
 
 bool LyXTabular::SetAlignSpecial(int cell, string const & special,
-								 LyXTabular::Feature what)
+				 LyXTabular::Feature what)
 {
 	if (what == SET_SPECIAL_MULTI)
 		cellinfo_of_cell(cell)->align_special = special;

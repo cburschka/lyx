@@ -1,5 +1,23 @@
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* text2.C (SetLayout): split in NEW_INSETS and non NEW_INSETS version
+
+	* tabular.C: small reformat
+
+	* paragraph.C (GetFontSettings): split in NEW_INSETS and non
+	NEW_INSETS verison
+	(GetChar): ditto
+	(BreakParagraph): ditto
+	(SetOnlyLayout): ditto
+	(SetLayout): ditto
+
+	* lyxparagraph.h: add definitions for SetLayout and SetOnlyLayout
+	with one arg less.
+
+	* lastfiles.C: removed most using decl, add std:: where needed
+
+	* buffer.C: ws changes
+
 	* MenuBackend.C (class compare_format): put into anon namespace
 	(expand): constify label, names, action, action2
 	(expand): 

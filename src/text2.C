@@ -543,61 +543,44 @@ void LyXText::MakeFontEntriesLayoutSpecific(Buffer const * buf,
 }
 
 
+#ifndef NEW_INSETS
 LyXParagraph * LyXText::SetLayout(BufferView * bview,
 				  LyXCursor & cur, LyXCursor & sstart_cur,
 				  LyXCursor & send_cur,
 				  LyXTextClass::size_type layout)
 {
-#ifndef NEW_INSETS
 	LyXParagraph * endpar = send_cur.par()->LastPhysicalPar()->next();
-#else
-	LyXParagraph * endpar = send_cur.par()->next();
-#endif
 	LyXParagraph * undoendpar = endpar;
-
+	
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
-#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->next();
-#else
-			endpar = endpar->next();
-#endif
 			undoendpar = endpar;
 		}
 	} else if (endpar) {
 		endpar = endpar->next(); // because of parindents etc.
 	}
-   
+	
 	SetUndo(bview->buffer(), Undo::EDIT,
-#ifndef NEW_INSETS
 		sstart_cur.par()->ParFromPos(sstart_cur.pos())->previous_,
-#else
-		sstart_cur.par()->previous(),
-#endif
 		undoendpar);
-
+	
 	/* ok we have a selection. This is always between sstart_cur
 	 * and sel_end cursor */ 
 	cur = sstart_cur;
-   
+	
 	LyXLayout const & lyxlayout =
 		textclasslist.Style(bview->buffer()->params.textclass, layout);
-   
+	
 	while (cur.par() != send_cur.par()) {
-#ifndef NEW_INSETS
 		if (cur.par()->footnoteflag == sstart_cur.par()->footnoteflag) {
-#endif
 			cur.par()->SetLayout(bview->buffer()->params, layout);
 			MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
-#ifndef NEW_INSETS
 			LyXParagraph * fppar = cur.par()->FirstPhysicalPar();
-#else
-			LyXParagraph * fppar = cur.par();
-#endif
 			fppar->params.spaceTop(lyxlayout.fill_top ?
-				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+					       VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
 			fppar->params.spaceBottom(lyxlayout.fill_bottom ? 
-				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+						  VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
 			if (lyxlayout.margintype == MARGIN_MANUAL)
 				cur.par()->SetLabelWidthString(lyxlayout.labelstring());
 			if (lyxlayout.labeltype != LABEL_BIBLIO
@@ -605,25 +588,17 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 				delete fppar->bibkey;
 				fppar->bibkey = 0;
 			}
-#ifndef NEW_INSETS
 		}
-#endif
 		cur.par(cur.par()->next());
 	}
-#ifndef NEW_INSETS
 	if (cur.par()->footnoteflag == sstart_cur.par()->footnoteflag) {
-#endif
 		cur.par()->SetLayout(bview->buffer()->params, layout);
 		MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
-#ifndef NEW_INSETS
 		LyXParagraph * fppar = cur.par()->FirstPhysicalPar();
-#else
-		LyXParagraph * fppar = cur.par();
-#endif
 		fppar->params.spaceTop(lyxlayout.fill_top ?
-			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+				       VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
 		fppar->params.spaceBottom(lyxlayout.fill_bottom ? 
-			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+					  VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
 		if (lyxlayout.margintype == MARGIN_MANUAL)
 			cur.par()->SetLabelWidthString(lyxlayout.labelstring());
 		if (lyxlayout.labeltype != LABEL_BIBLIO
@@ -631,11 +606,75 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 			delete fppar->bibkey;
 			fppar->bibkey = 0;
 		}
-#ifndef NEW_INSETS
 	}
-#endif
 	return endpar;
 }
+#else
+LyXParagraph * LyXText::SetLayout(BufferView * bview,
+				  LyXCursor & cur, LyXCursor & sstart_cur,
+				  LyXCursor & send_cur,
+				  LyXTextClass::size_type layout)
+{
+	LyXParagraph * endpar = send_cur.par()->next();
+	LyXParagraph * undoendpar = endpar;
+	
+	if (endpar && endpar->GetDepth()) {
+		while (endpar && endpar->GetDepth()) {
+			endpar = endpar->next();
+			undoendpar = endpar;
+		}
+	} else if (endpar) {
+		endpar = endpar->next(); // because of parindents etc.
+	}
+	
+	SetUndo(bview->buffer(), Undo::EDIT,
+		sstart_cur.par()->previous(),
+		undoendpar);
+	
+	/* ok we have a selection. This is always between sstart_cur
+	 * and sel_end cursor */ 
+	cur = sstart_cur;
+	
+	LyXLayout const & lyxlayout =
+		textclasslist.Style(bview->buffer()->params.textclass, layout);
+	
+	while (cur.par() != send_cur.par()) {
+		cur.par()->SetLayout(layout);
+		MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
+		LyXParagraph * fppar = cur.par();
+		fppar->params.spaceTop(lyxlayout.fill_top ?
+				       VSpace(VSpace::VFILL)
+				       : VSpace(VSpace::NONE));
+		fppar->params.spaceBottom(lyxlayout.fill_bottom ? 
+					  VSpace(VSpace::VFILL)
+					  : VSpace(VSpace::NONE));
+		if (lyxlayout.margintype == MARGIN_MANUAL)
+			cur.par()->SetLabelWidthString(lyxlayout.labelstring());
+		if (lyxlayout.labeltype != LABEL_BIBLIO
+		    && fppar->bibkey) {
+			delete fppar->bibkey;
+			fppar->bibkey = 0;
+		}
+		cur.par(cur.par()->next());
+	}
+	cur.par()->SetLayout(layout);
+	MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
+	LyXParagraph * fppar = cur.par();
+	fppar->params.spaceTop(lyxlayout.fill_top ?
+			       VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+	fppar->params.spaceBottom(lyxlayout.fill_bottom ? 
+				  VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+	if (lyxlayout.margintype == MARGIN_MANUAL)
+		cur.par()->SetLabelWidthString(lyxlayout.labelstring());
+	if (lyxlayout.labeltype != LABEL_BIBLIO
+	    && fppar->bibkey) {
+		delete fppar->bibkey;
+		fppar->bibkey = 0;
+	}
+	return endpar;
+}
+#endif
+
 
 // set layout over selection and make a total rebreak of those paragraphs
 void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
