@@ -606,15 +606,6 @@ statements in the syntax file. (If you have a regular environment which you
 won't use very often, you can use the B<-r> option rather than writing a
 syntax file.)
 
-Third, the syntax file describes a math translation table. The LyX math editor
-doesn't support a few commands. For example, C<_> is supported, but the
-equivalent C<\sb> is not. Put any commands you'd like translate between
-C<\begin{reLyXmt}> and C<\end{reLyXmt}> statements. The statement
-"C<\| {\Vert}>" means that any C<\|> in math mode will be converted to
-"C<\Vert >" (in cases where a token made up of a backslash and a non-letter is
-translated to something with letters at the end, a space is added by B<reLyX>.
-That way, "C<\|a>" is correctly translated to "C<\Vert a>").
-
 =head2 Miscellaneous
 
 You need Perl version 5.002 or later to run B<reLyX>. <plug> If you don't have

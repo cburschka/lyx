@@ -1,7 +1,10 @@
 .rn '' }`
-''' $RCSfile: reLyX.man,v $$Revision: 1.2 $$Date: 2000/03/29 23:02:36 $
+''' $RCSfile: reLyX.man,v $$Revision: 1.3 $$Date: 2002/10/28 09:52:39 $
 '''
 ''' $Log: reLyX.man,v $
+''' Revision 1.3  2002/10/28 09:52:39  poenitz
+''' the relyx changes
+'''
 ''' Revision 1.2  2000/03/29 23:02:36  karger
 ''' Very minor changes (sorry kayvan!)
 '''
@@ -621,15 +624,6 @@ whitespace-separated, between \f(CW\ebegin{reLyXre}\fR and \f(CW\eend{reLyXre}\f
 statements in the syntax file. (If you have a regular environment which you
 won't use very often, you can use the \fB\-r\fR option rather than writing a
 syntax file.)
-.PP
-Third, the syntax file describes a math translation table. The LyX math editor
-doesn't support a few commands. For example, \f(CW_\fR is supported, but the
-equivalent \f(CW\esb\fR is not. Put any commands you'd like translate between
-\f(CW\ebegin{reLyXmt}\fR and \f(CW\eend{reLyXmt}\fR statements. The statement
-\*(L"\f(CW\e| {\eVert}\fR\*(R" means that any \f(CW\e|\fR in math mode will be converted to
-\*(L"\f(CW\eVert \fR\*(R" (in cases where a token made up of a backslash and a non-letter is
-translated to something with letters at the end, a space is added by \fBreLyX\fR.
-That way, \*(L"\f(CW\e|a\fR\*(R" is correctly translated to \*(L"\f(CW\eVert a\fR").
 .Sh "Miscellaneous"
 You need Perl version 5.002 or later to run \fBreLyX\fR. <plug> If you don't have
 Perl, you should get it anyway (at http://www.perl.com), because it's a really
