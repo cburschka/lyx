@@ -1,3 +1,8 @@
+2004-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (SUBDIRS): remove m4 directory (does not have a
+	Makefile.am). 
+
 2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (dist_noinst_DATA): use the dist_ and noinst_
