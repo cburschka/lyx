@@ -33,6 +33,7 @@ LyXLength::LyXLength(double v, LyXLength::UNIT u)
 
 
 LyXLength::LyXLength(string const & data)
+	: val_(0), unit_(LyXLength::PT)
 {
 	LyXLength tmp;
 	
@@ -117,3 +118,4 @@ bool operator!=(LyXLength const & l1, LyXLength const & l2)
 {
 	return !(l1 == l2);
 }
+
