@@ -3134,26 +3134,22 @@ void LyXText::paintRowSelection(DrawRowParams & p)
 		}
 		return;
 	} else if (startrow != row && endrow != row) {
-		int w = p.width;
-		int h = row->height();
 		if (p.y > starty && p.y < endy) {
+			int w = p.width;
+			int h = row->height();
 			p.pain->fillRectangle(p.xo, p.yo, w, h, LColor::selection);
 		}
 		return;
 	}
 
-	if (!((startrow != row && !is_rtl) || (endrow != row && is_rtl))) {
-		return;
-	}
-
-	float tmpx = p.x;
-
-	p.pain->fillRectangle(p.xo, p.yo, int(p.x), row->height(), LColor::selection);
+	if ((startrow != row && !is_rtl) || (endrow != row && is_rtl))
+		p.pain->fillRectangle(p.xo, p.yo, int(p.x), row->height(), LColor::selection);
 
 	Buffer const * buffer = p.bv->buffer();
 	Paragraph * par = row->par();
 	pos_type main_body = beginningOfMainBody(buffer, par);
 	pos_type const last = rowLastPrintable(row);
+	float tmpx = p.x;
 
 	for (pos_type vpos = row->pos(); vpos <= last; ++vpos)  {
 		pos_type pos = vis2log(vpos);
@@ -3195,12 +3191,12 @@ void LyXText::paintRowSelection(DrawRowParams & p)
 				int(tmpx - old_tmpx + 1),
 				row->height(), LColor::selection);
 		}
+	}
 
-		if ((startrow != row && is_rtl) || (endrow != row && !is_rtl)) {
-			p.pain->fillRectangle(p.xo + int(tmpx),
-				p.yo, int(p.bv->workWidth() - tmpx),
-				row->height(), LColor::selection);
-		}
+	if ((startrow != row && is_rtl) || (endrow != row && !is_rtl)) {
+		p.pain->fillRectangle(p.xo + int(tmpx),
+				      p.yo, int(p.bv->workWidth() - tmpx),
+				      row->height(), LColor::selection);
 	}
 }
 

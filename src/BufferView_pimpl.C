@@ -28,6 +28,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "lyxtextclasslist.h"
+#include "language.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
@@ -3146,8 +3147,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		// ale970405+lasgoutt970425
 		// The argument can be up to two tokens separated
 		// by a space. The first one is the bibstyle.
-		string const db       = token(argument, ' ', 0);
-		string const bibstyle = token(argument, ' ', 1);
+		string const db = token(argument, ' ', 0);
+		string bibstyle = token(argument, ' ', 1);
+		if (bibstyle.empty())
+			bibstyle = "plain";
 
 		InsetCommandParams p("BibTeX", db, bibstyle);
 		InsetBibtex * inset = new InsetBibtex(p);
@@ -3463,7 +3466,9 @@ void BufferView::Pimpl::smartQuote()
 		textclasslist[bv_->buffer()->params.textclass][par->layout()];
 
 	if (style.pass_thru ||
-		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
+	    par->getFontSettings(buffer_->params,
+				 pos).language()->lang() == "hebrew" ||
+		(!insertInset(new InsetQuotes(c, buffer_->params))))
 		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, "\"");
 }
 

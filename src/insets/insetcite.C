@@ -362,8 +362,12 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 	string::const_iterator end = getContents().end();
 	// Paranoia check: make sure that there is no whitespace in here
 	string content;
+	char last = ",";
 	for (; it != end; ++it) {
-		if (*it != ' ') content += *it;
+		if (*it != ' ')
+			last = *it;
+		if (*it != ' ' || last != ',')
+			content += *it;
 	}
 
 	os << "{" << content << "}";
