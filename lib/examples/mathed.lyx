@@ -1,5 +1,5 @@
-#LyX 1.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 220
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass article
 \language english
 \inputencoding auto
@@ -175,30 +175,12 @@ all
  the extra ones defined by the AMS.
  For completeness, the tables of symbols in Lamport's and in Goosen's books
  are presented below.
-\layout Standard
-
-In order to display these extra symbols, however, the extra fonts that LyX
- requires must be made available to it.
- After installing LyX, type
-\layout LyX-Code
-
-xset +fp LYXDIR/xfonts
-\layout Standard
-
-at the console (where LYXDIR is the directory that contains the LyX files),
- start LyX, load up this document and enjoy!
-\layout Standard
-
-For making the fonts available permanently, you need to edit one of the
- following files (depending on your setup): /etc/X11/XF86Config-4, /etc/X11/XF86
-Config, or /etc/X11/fs/config.
 \layout Section
 
 Some example math tables
 \layout Standard
 
-If you've followed the instructions above successfully, then the following
- tables from Goossen et al.'s 
+The following tables from Goossen et al.'s 
 \begin_inset Quotes eld
 \end_inset 
 
@@ -207,16 +189,11 @@ The LaTeX companion
 \end_inset 
 
  should appear on the screen in all their glory.
- Otherwise you'll have a 
-\emph on 
-lot
-\emph default 
- of red text!
 \layout Standard
 
 
 \begin_inset ERT
-status Open
+status Collapsed
 
 \layout Standard
 
@@ -561,7 +538,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\alpha $
+\begin_inset Formula $\alpha$
 \end_inset 
 
 
@@ -585,7 +562,7 @@ alpha
 \layout Standard
 
 
-\begin_inset Formula $\beta $
+\begin_inset Formula $\beta$
 \end_inset 
 
 
@@ -609,7 +586,7 @@ beta
 \layout Standard
 
 
-\begin_inset Formula $\gamma $
+\begin_inset Formula $\gamma$
 \end_inset 
 
 
@@ -633,7 +610,7 @@ gamma
 \layout Standard
 
 
-\begin_inset Formula $\delta $
+\begin_inset Formula $\delta$
 \end_inset 
 
 
@@ -659,7 +636,7 @@ delta
 \layout Standard
 
 
-\begin_inset Formula $\epsilon $
+\begin_inset Formula $\epsilon$
 \end_inset 
 
 
@@ -683,7 +660,7 @@ epsilon
 \layout Standard
 
 
-\begin_inset Formula $\varepsilon $
+\begin_inset Formula $\varepsilon$
 \end_inset 
 
 
@@ -707,7 +684,7 @@ varepsilon
 \layout Standard
 
 
-\begin_inset Formula $\zeta $
+\begin_inset Formula $\zeta$
 \end_inset 
 
 
@@ -731,7 +708,7 @@ zeta
 \layout Standard
 
 
-\begin_inset Formula $\eta $
+\begin_inset Formula $\eta$
 \end_inset 
 
 
@@ -757,7 +734,7 @@ eta
 \layout Standard
 
 
-\begin_inset Formula $\theta $
+\begin_inset Formula $\theta$
 \end_inset 
 
 
@@ -781,7 +758,7 @@ theta
 \layout Standard
 
 
-\begin_inset Formula $\vartheta $
+\begin_inset Formula $\vartheta$
 \end_inset 
 
 
@@ -805,7 +782,7 @@ vartheta
 \layout Standard
 
 
-\begin_inset Formula $\iota $
+\begin_inset Formula $\iota$
 \end_inset 
 
 
@@ -829,7 +806,7 @@ iota
 \layout Standard
 
 
-\begin_inset Formula $\kappa $
+\begin_inset Formula $\kappa$
 \end_inset 
 
 
@@ -855,7 +832,7 @@ kappa
 \layout Standard
 
 
-\begin_inset Formula $\lambda $
+\begin_inset Formula $\lambda$
 \end_inset 
 
 
@@ -879,7 +856,7 @@ lambda
 \layout Standard
 
 
-\begin_inset Formula $\mu $
+\begin_inset Formula $\mu$
 \end_inset 
 
 
@@ -903,7 +880,7 @@ mu
 \layout Standard
 
 
-\begin_inset Formula $\nu $
+\begin_inset Formula $\nu$
 \end_inset 
 
 
@@ -927,7 +904,7 @@ nu
 \layout Standard
 
 
-\begin_inset Formula $\xi $
+\begin_inset Formula $\xi$
 \end_inset 
 
 
@@ -973,7 +950,7 @@ o
 \layout Standard
 
 
-\begin_inset Formula $\pi $
+\begin_inset Formula $\pi$
 \end_inset 
 
 
@@ -997,7 +974,7 @@ pi
 \layout Standard
 
 
-\begin_inset Formula $\varpi $
+\begin_inset Formula $\varpi$
 \end_inset 
 
 
@@ -1021,7 +998,7 @@ varpi
 \layout Standard
 
 
-\begin_inset Formula $\rho $
+\begin_inset Formula $\rho$
 \end_inset 
 
 
@@ -1047,7 +1024,7 @@ rho
 \layout Standard
 
 
-\begin_inset Formula $\varrho $
+\begin_inset Formula $\varrho$
 \end_inset 
 
 
@@ -1071,7 +1048,7 @@ varrho
 \layout Standard
 
 
-\begin_inset Formula $\sigma $
+\begin_inset Formula $\sigma$
 \end_inset 
 
 
@@ -1095,7 +1072,7 @@ sigma
 \layout Standard
 
 
-\begin_inset Formula $\varsigma $
+\begin_inset Formula $\varsigma$
 \end_inset 
 
 
@@ -1119,7 +1096,7 @@ varsigma
 \layout Standard
 
 
-\begin_inset Formula $\tau $
+\begin_inset Formula $\tau$
 \end_inset 
 
 
@@ -1145,7 +1122,7 @@ tau
 \layout Standard
 
 
-\begin_inset Formula $\upsilon $
+\begin_inset Formula $\upsilon$
 \end_inset 
 
 
@@ -1169,7 +1146,7 @@ upsilon
 \layout Standard
 
 
-\begin_inset Formula $\phi $
+\begin_inset Formula $\phi$
 \end_inset 
 
 
@@ -1193,7 +1170,7 @@ phi
 \layout Standard
 
 
-\begin_inset Formula $\varphi $
+\begin_inset Formula $\varphi$
 \end_inset 
 
 
@@ -1217,7 +1194,7 @@ varphi
 \layout Standard
 
 
-\begin_inset Formula $\chi $
+\begin_inset Formula $\chi$
 \end_inset 
 
 
@@ -1243,7 +1220,7 @@ chi
 \layout Standard
 
 
-\begin_inset Formula $\psi $
+\begin_inset Formula $\psi$
 \end_inset 
 
 
@@ -1267,7 +1244,7 @@ psi
 \layout Standard
 
 
-\begin_inset Formula $\omega $
+\begin_inset Formula $\omega$
 \end_inset 
 
 
@@ -1321,7 +1298,7 @@ omega
 \layout Standard
 
 
-\begin_inset Formula $\Gamma $
+\begin_inset Formula $\Gamma$
 \end_inset 
 
 
@@ -1345,7 +1322,7 @@ Gamma
 \layout Standard
 
 
-\begin_inset Formula $\Delta $
+\begin_inset Formula $\Delta$
 \end_inset 
 
 
@@ -1369,7 +1346,7 @@ Delta
 \layout Standard
 
 
-\begin_inset Formula $\Theta $
+\begin_inset Formula $\Theta$
 \end_inset 
 
 
@@ -1393,7 +1370,7 @@ Theta
 \layout Standard
 
 
-\begin_inset Formula $\Lambda $
+\begin_inset Formula $\Lambda$
 \end_inset 
 
 
@@ -1419,7 +1396,7 @@ Lambda
 \layout Standard
 
 
-\begin_inset Formula $\Xi $
+\begin_inset Formula $\Xi$
 \end_inset 
 
 
@@ -1443,7 +1420,7 @@ Xi
 \layout Standard
 
 
-\begin_inset Formula $\Pi $
+\begin_inset Formula $\Pi$
 \end_inset 
 
 
@@ -1467,7 +1444,7 @@ Pi
 \layout Standard
 
 
-\begin_inset Formula $\Sigma $
+\begin_inset Formula $\Sigma$
 \end_inset 
 
 
@@ -1491,7 +1468,7 @@ Sigma
 \layout Standard
 
 
-\begin_inset Formula $\Upsilon $
+\begin_inset Formula $\Upsilon$
 \end_inset 
 
 
@@ -1517,7 +1494,7 @@ Upsilon
 \layout Standard
 
 
-\begin_inset Formula $\Phi $
+\begin_inset Formula $\Phi$
 \end_inset 
 
 
@@ -1541,7 +1518,7 @@ Phi
 \layout Standard
 
 
-\begin_inset Formula $\Psi $
+\begin_inset Formula $\Psi$
 \end_inset 
 
 
@@ -1565,7 +1542,7 @@ Psi
 \layout Standard
 
 
-\begin_inset Formula $\Omega $
+\begin_inset Formula $\Omega$
 \end_inset 
 
 
@@ -1638,7 +1615,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\pm $
+\begin_inset Formula $\pm$
 \end_inset 
 
 
@@ -1662,7 +1639,7 @@ pm
 \layout Standard
 
 
-\begin_inset Formula $\cap $
+\begin_inset Formula $\cap$
 \end_inset 
 
 
@@ -1686,7 +1663,7 @@ cap
 \layout Standard
 
 
-\begin_inset Formula $\diamond $
+\begin_inset Formula $\diamond$
 \end_inset 
 
 
@@ -1710,7 +1687,7 @@ diamond
 \layout Standard
 
 
-\begin_inset Formula $\oplus $
+\begin_inset Formula $\oplus$
 \end_inset 
 
 
@@ -1736,7 +1713,7 @@ oplus
 \layout Standard
 
 
-\begin_inset Formula $\mp $
+\begin_inset Formula $\mp$
 \end_inset 
 
 
@@ -1760,7 +1737,7 @@ mp
 \layout Standard
 
 
-\begin_inset Formula $\cup $
+\begin_inset Formula $\cup$
 \end_inset 
 
 
@@ -1784,7 +1761,7 @@ cup
 \layout Standard
 
 
-\begin_inset Formula $\bigtriangleup $
+\begin_inset Formula $\bigtriangleup$
 \end_inset 
 
 
@@ -1808,7 +1785,7 @@ bigtriangleup
 \layout Standard
 
 
-\begin_inset Formula $\ominus $
+\begin_inset Formula $\ominus$
 \end_inset 
 
 
@@ -1834,7 +1811,7 @@ ominus
 \layout Standard
 
 
-\begin_inset Formula $\times $
+\begin_inset Formula $\times$
 \end_inset 
 
 
@@ -1858,7 +1835,7 @@ times
 \layout Standard
 
 
-\begin_inset Formula $\uplus $
+\begin_inset Formula $\uplus$
 \end_inset 
 
 
@@ -1882,7 +1859,7 @@ uplus
 \layout Standard
 
 
-\begin_inset Formula $\bigtriangledown $
+\begin_inset Formula $\bigtriangledown$
 \end_inset 
 
 
@@ -1906,7 +1883,7 @@ bigtriangledown
 \layout Standard
 
 
-\begin_inset Formula $\otimes $
+\begin_inset Formula $\otimes$
 \end_inset 
 
 
@@ -1932,7 +1909,7 @@ otimes
 \layout Standard
 
 
-\begin_inset Formula $\div $
+\begin_inset Formula $\div$
 \end_inset 
 
 
@@ -1956,7 +1933,7 @@ div
 \layout Standard
 
 
-\begin_inset Formula $\sqcap $
+\begin_inset Formula $\sqcap$
 \end_inset 
 
 
@@ -1980,7 +1957,7 @@ sqcap
 \layout Standard
 
 
-\begin_inset Formula $\triangleleft $
+\begin_inset Formula $\triangleleft$
 \end_inset 
 
 
@@ -2004,7 +1981,7 @@ triangleleft
 \layout Standard
 
 
-\begin_inset Formula $\oslash $
+\begin_inset Formula $\oslash$
 \end_inset 
 
 
@@ -2030,7 +2007,7 @@ oslash
 \layout Standard
 
 
-\begin_inset Formula $\ast $
+\begin_inset Formula $\ast$
 \end_inset 
 
 
@@ -2054,7 +2031,7 @@ ast
 \layout Standard
 
 
-\begin_inset Formula $\sqcup $
+\begin_inset Formula $\sqcup$
 \end_inset 
 
 
@@ -2078,7 +2055,7 @@ sqcup
 \layout Standard
 
 
-\begin_inset Formula $\triangleright $
+\begin_inset Formula $\triangleright$
 \end_inset 
 
 
@@ -2102,7 +2079,7 @@ triangleright
 \layout Standard
 
 
-\begin_inset Formula $\odot $
+\begin_inset Formula $\odot$
 \end_inset 
 
 
@@ -2128,7 +2105,7 @@ odot
 \layout Standard
 
 
-\begin_inset Formula $\star $
+\begin_inset Formula $\star$
 \end_inset 
 
 
@@ -2152,7 +2129,7 @@ star
 \layout Standard
 
 
-\begin_inset Formula $\vee $
+\begin_inset Formula $\vee$
 \end_inset 
 
 
@@ -2176,7 +2153,7 @@ vee
 \layout Standard
 
 
-\begin_inset Formula $\lhd $
+\begin_inset Formula $\lhd$
 \end_inset 
 
 
@@ -2200,7 +2177,7 @@ lhd
 \layout Standard
 
 
-\begin_inset Formula $\bigcirc $
+\begin_inset Formula $\bigcirc$
 \end_inset 
 
 
@@ -2226,7 +2203,7 @@ bigcirc
 \layout Standard
 
 
-\begin_inset Formula $\circ $
+\begin_inset Formula $\circ$
 \end_inset 
 
 
@@ -2250,7 +2227,7 @@ circ
 \layout Standard
 
 
-\begin_inset Formula $\wedge $
+\begin_inset Formula $\wedge$
 \end_inset 
 
 
@@ -2274,7 +2251,7 @@ wedge
 \layout Standard
 
 
-\begin_inset Formula $\rhd $
+\begin_inset Formula $\rhd$
 \end_inset 
 
 
@@ -2298,7 +2275,7 @@ rhd
 \layout Standard
 
 
-\begin_inset Formula $\dagger $
+\begin_inset Formula $\dagger$
 \end_inset 
 
 
@@ -2324,7 +2301,7 @@ dagger
 \layout Standard
 
 
-\begin_inset Formula $\bullet $
+\begin_inset Formula $\bullet$
 \end_inset 
 
 
@@ -2348,7 +2325,7 @@ bullet
 \layout Standard
 
 
-\begin_inset Formula $\setminus $
+\begin_inset Formula $\setminus$
 \end_inset 
 
 
@@ -2372,7 +2349,7 @@ setminus
 \layout Standard
 
 
-\begin_inset Formula $\unlhd $
+\begin_inset Formula $\unlhd$
 \end_inset 
 
 
@@ -2396,7 +2373,7 @@ unlhd
 \layout Standard
 
 
-\begin_inset Formula $\ddagger $
+\begin_inset Formula $\ddagger$
 \end_inset 
 
 
@@ -2422,7 +2399,7 @@ ddagger
 \layout Standard
 
 
-\begin_inset Formula $\cdot $
+\begin_inset Formula $\cdot$
 \end_inset 
 
 
@@ -2446,7 +2423,7 @@ cdot
 \layout Standard
 
 
-\begin_inset Formula $\wr $
+\begin_inset Formula $\wr$
 \end_inset 
 
 
@@ -2470,7 +2447,7 @@ wr
 \layout Standard
 
 
-\begin_inset Formula $\unrhd $
+\begin_inset Formula $\unrhd$
 \end_inset 
 
 
@@ -2494,7 +2471,7 @@ unrhd
 \layout Standard
 
 
-\begin_inset Formula $\amalg $
+\begin_inset Formula $\amalg$
 \end_inset 
 
 
@@ -2555,7 +2532,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\leq $
+\begin_inset Formula $\leq$
 \end_inset 
 
 
@@ -2581,7 +2558,7 @@ le
 \layout Standard
 
 
-\begin_inset Formula $\geq $
+\begin_inset Formula $\geq$
 \end_inset 
 
 
@@ -2605,7 +2582,7 @@ geq
 \layout Standard
 
 
-\begin_inset Formula $\equiv $
+\begin_inset Formula $\equiv$
 \end_inset 
 
 
@@ -2629,7 +2606,7 @@ equiv
 \layout Standard
 
 
-\begin_inset Formula $\models $
+\begin_inset Formula $\models$
 \end_inset 
 
 
@@ -2653,7 +2630,7 @@ models
 \layout Standard
 
 
-\begin_inset Formula $\prec $
+\begin_inset Formula $\prec$
 \end_inset 
 
 
@@ -2679,7 +2656,7 @@ prec
 \layout Standard
 
 
-\begin_inset Formula $\succ $
+\begin_inset Formula $\succ$
 \end_inset 
 
 
@@ -2703,7 +2680,7 @@ succ
 \layout Standard
 
 
-\begin_inset Formula $\sim $
+\begin_inset Formula $\sim$
 \end_inset 
 
 
@@ -2727,7 +2704,7 @@ sim
 \layout Standard
 
 
-\begin_inset Formula $\perp $
+\begin_inset Formula $\perp$
 \end_inset 
 
 
@@ -2751,7 +2728,7 @@ perp
 \layout Standard
 
 
-\begin_inset Formula $\preceq $
+\begin_inset Formula $\preceq$
 \end_inset 
 
 
@@ -2775,7 +2752,7 @@ preceq
 \layout Standard
 
 
-\begin_inset Formula $\succeq $
+\begin_inset Formula $\succeq$
 \end_inset 
 
 
@@ -2801,7 +2778,7 @@ succeq
 \layout Standard
 
 
-\begin_inset Formula $\simeq $
+\begin_inset Formula $\simeq$
 \end_inset 
 
 
@@ -2825,7 +2802,7 @@ simeq
 \layout Standard
 
 
-\begin_inset Formula $\mid $
+\begin_inset Formula $\mid$
 \end_inset 
 
 
@@ -2849,7 +2826,7 @@ mid
 \layout Standard
 
 
-\begin_inset Formula $\ll $
+\begin_inset Formula $\ll$
 \end_inset 
 
 
@@ -2873,7 +2850,7 @@ ll
 \layout Standard
 
 
-\begin_inset Formula $\gg $
+\begin_inset Formula $\gg$
 \end_inset 
 
 
@@ -2897,7 +2874,7 @@ gg
 \layout Standard
 
 
-\begin_inset Formula $\asymp $
+\begin_inset Formula $\asymp$
 \end_inset 
 
 
@@ -2923,7 +2900,7 @@ asymp
 \layout Standard
 
 
-\begin_inset Formula $\parallel $
+\begin_inset Formula $\parallel$
 \end_inset 
 
 
@@ -2947,7 +2924,7 @@ parallel
 \layout Standard
 
 
-\begin_inset Formula $\subset $
+\begin_inset Formula $\subset$
 \end_inset 
 
 
@@ -2971,7 +2948,7 @@ subset
 \layout Standard
 
 
-\begin_inset Formula $\supset $
+\begin_inset Formula $\supset$
 \end_inset 
 
 
@@ -2995,7 +2972,7 @@ supset
 \layout Standard
 
 
-\begin_inset Formula $\approx $
+\begin_inset Formula $\approx$
 \end_inset 
 
 
@@ -3019,7 +2996,7 @@ approx
 \layout Standard
 
 
-\begin_inset Formula $\bowtie $
+\begin_inset Formula $\bowtie$
 \end_inset 
 
 
@@ -3045,7 +3022,7 @@ bowtie
 \layout Standard
 
 
-\begin_inset Formula $\subseteq $
+\begin_inset Formula $\subseteq$
 \end_inset 
 
 
@@ -3069,7 +3046,7 @@ subseteq
 \layout Standard
 
 
-\begin_inset Formula $\supseteq $
+\begin_inset Formula $\supseteq$
 \end_inset 
 
 
@@ -3093,7 +3070,7 @@ supseteq
 \layout Standard
 
 
-\begin_inset Formula $\cong $
+\begin_inset Formula $\cong$
 \end_inset 
 
 
@@ -3117,7 +3094,7 @@ cong
 \layout Standard
 
 
-\begin_inset Formula $\Join $
+\begin_inset Formula $\Join$
 \end_inset 
 
 
@@ -3141,7 +3118,7 @@ Join
 \layout Standard
 
 
-\begin_inset Formula $\sqsubset $
+\begin_inset Formula $\sqsubset$
 \end_inset 
 
 
@@ -3167,7 +3144,7 @@ sqsubset
 \layout Standard
 
 
-\begin_inset Formula $\sqsupset $
+\begin_inset Formula $\sqsupset$
 \end_inset 
 
 
@@ -3191,7 +3168,7 @@ sqsupset
 \layout Standard
 
 
-\begin_inset Formula $\neq $
+\begin_inset Formula $\neq$
 \end_inset 
 
 
@@ -3215,7 +3192,7 @@ neq
 \layout Standard
 
 
-\begin_inset Formula $\smile $
+\begin_inset Formula $\smile$
 \end_inset 
 
 
@@ -3239,7 +3216,7 @@ smile
 \layout Standard
 
 
-\begin_inset Formula $\sqsubseteq $
+\begin_inset Formula $\sqsubseteq$
 \end_inset 
 
 
@@ -3263,7 +3240,7 @@ sqsubseteq
 \layout Standard
 
 
-\begin_inset Formula $\sqsupseteq $
+\begin_inset Formula $\sqsupseteq$
 \end_inset 
 
 
@@ -3289,7 +3266,7 @@ sqsupseteq
 \layout Standard
 
 
-\begin_inset Formula $\doteq $
+\begin_inset Formula $\doteq$
 \end_inset 
 
 
@@ -3313,7 +3290,7 @@ doteq
 \layout Standard
 
 
-\begin_inset Formula $\frown $
+\begin_inset Formula $\frown$
 \end_inset 
 
 
@@ -3337,7 +3314,7 @@ frown
 \layout Standard
 
 
-\begin_inset Formula $\in $
+\begin_inset Formula $\in$
 \end_inset 
 
 
@@ -3361,7 +3338,7 @@ in
 \layout Standard
 
 
-\begin_inset Formula $\ni $
+\begin_inset Formula $\ni$
 \end_inset 
 
 
@@ -3385,7 +3362,7 @@ ni
 \layout Standard
 
 
-\begin_inset Formula $\propto $
+\begin_inset Formula $\propto$
 \end_inset 
 
 
@@ -3433,7 +3410,7 @@ propto
 \layout Standard
 
 
-\begin_inset Formula $\vdash $
+\begin_inset Formula $\vdash$
 \end_inset 
 
 
@@ -3457,7 +3434,7 @@ vdash
 \layout Standard
 
 
-\begin_inset Formula $\dashv $
+\begin_inset Formula $\dashv$
 \end_inset 
 
 
@@ -3558,7 +3535,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\leftarrow $
+\begin_inset Formula $\leftarrow$
 \end_inset 
 
 
@@ -3582,7 +3559,7 @@ leftarrow
 \layout Standard
 
 
-\begin_inset Formula $\longleftarrow $
+\begin_inset Formula $\longleftarrow$
 \end_inset 
 
 
@@ -3606,7 +3583,7 @@ longleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\uparrow $
+\begin_inset Formula $\uparrow$
 \end_inset 
 
 
@@ -3632,7 +3609,7 @@ uparrow
 \layout Standard
 
 
-\begin_inset Formula $\Leftarrow $
+\begin_inset Formula $\Leftarrow$
 \end_inset 
 
 
@@ -3656,7 +3633,7 @@ Leftarrow
 \layout Standard
 
 
-\begin_inset Formula $\Longleftarrow $
+\begin_inset Formula $\Longleftarrow$
 \end_inset 
 
 
@@ -3680,7 +3657,7 @@ Longleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\Uparrow $
+\begin_inset Formula $\Uparrow$
 \end_inset 
 
 
@@ -3706,7 +3683,7 @@ Uparrow
 \layout Standard
 
 
-\begin_inset Formula $\rightarrow $
+\begin_inset Formula $\rightarrow$
 \end_inset 
 
 
@@ -3730,7 +3707,7 @@ rightarrow
 \layout Standard
 
 
-\begin_inset Formula $\longrightarrow $
+\begin_inset Formula $\longrightarrow$
 \end_inset 
 
 
@@ -3754,7 +3731,7 @@ longrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\downarrow $
+\begin_inset Formula $\downarrow$
 \end_inset 
 
 
@@ -3780,7 +3757,7 @@ downarrow
 \layout Standard
 
 
-\begin_inset Formula $\Rightarrow $
+\begin_inset Formula $\Rightarrow$
 \end_inset 
 
 
@@ -3804,7 +3781,7 @@ Rightarrow
 \layout Standard
 
 
-\begin_inset Formula $\Longrightarrow $
+\begin_inset Formula $\Longrightarrow$
 \end_inset 
 
 
@@ -3828,7 +3805,7 @@ Longrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\Downarrow $
+\begin_inset Formula $\Downarrow$
 \end_inset 
 
 
@@ -3854,7 +3831,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\leftrightarrow $
+\begin_inset Formula $\leftrightarrow$
 \end_inset 
 
 
@@ -3878,7 +3855,7 @@ leftrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\longleftrightarrow $
+\begin_inset Formula $\longleftrightarrow$
 \end_inset 
 
 
@@ -3902,7 +3879,7 @@ longleftrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\updownarrow $
+\begin_inset Formula $\updownarrow$
 \end_inset 
 
 
@@ -3928,7 +3905,7 @@ updownarrow
 \layout Standard
 
 
-\begin_inset Formula $\Leftrightarrow $
+\begin_inset Formula $\Leftrightarrow$
 \end_inset 
 
 
@@ -3952,7 +3929,7 @@ Leftrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\Longleftrightarrow $
+\begin_inset Formula $\Longleftrightarrow$
 \end_inset 
 
 
@@ -3976,7 +3953,7 @@ Longleftrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\Updownarrow $
+\begin_inset Formula $\Updownarrow$
 \end_inset 
 
 
@@ -4002,7 +3979,7 @@ Updownarrow
 \layout Standard
 
 
-\begin_inset Formula $\mapsto $
+\begin_inset Formula $\mapsto$
 \end_inset 
 
 
@@ -4026,7 +4003,7 @@ mapsto
 \layout Standard
 
 
-\begin_inset Formula $\longmapsto $
+\begin_inset Formula $\longmapsto$
 \end_inset 
 
 
@@ -4050,7 +4027,7 @@ longmapsto
 \layout Standard
 
 
-\begin_inset Formula $\nearrow $
+\begin_inset Formula $\nearrow$
 \end_inset 
 
 
@@ -4076,7 +4053,7 @@ nearrow
 \layout Standard
 
 
-\begin_inset Formula $\hookleftarrow $
+\begin_inset Formula $\hookleftarrow$
 \end_inset 
 
 
@@ -4100,7 +4077,7 @@ hookleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\hookrightarrow $
+\begin_inset Formula $\hookrightarrow$
 \end_inset 
 
 
@@ -4124,7 +4101,7 @@ hookrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\searrow $
+\begin_inset Formula $\searrow$
 \end_inset 
 
 
@@ -4150,7 +4127,7 @@ searrow
 \layout Standard
 
 
-\begin_inset Formula $\leftharpoonup $
+\begin_inset Formula $\leftharpoonup$
 \end_inset 
 
 
@@ -4174,7 +4151,7 @@ leftharpoonup
 \layout Standard
 
 
-\begin_inset Formula $\rightharpoonup $
+\begin_inset Formula $\rightharpoonup$
 \end_inset 
 
 
@@ -4198,7 +4175,7 @@ rightharpoonup
 \layout Standard
 
 
-\begin_inset Formula $\swarrow $
+\begin_inset Formula $\swarrow$
 \end_inset 
 
 
@@ -4224,7 +4201,7 @@ swarrow
 \layout Standard
 
 
-\begin_inset Formula $\leftharpoondown $
+\begin_inset Formula $\leftharpoondown$
 \end_inset 
 
 
@@ -4248,7 +4225,7 @@ leftharpoondown
 \layout Standard
 
 
-\begin_inset Formula $\rightharpoondown $
+\begin_inset Formula $\rightharpoondown$
 \end_inset 
 
 
@@ -4272,7 +4249,7 @@ rightharpoondown
 \layout Standard
 
 
-\begin_inset Formula $\nwarrow $
+\begin_inset Formula $\nwarrow$
 \end_inset 
 
 
@@ -4333,7 +4310,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\ldots $
+\begin_inset Formula $\ldots$
 \end_inset 
 
 
@@ -4357,7 +4334,7 @@ ldots
 \layout Standard
 
 
-\begin_inset Formula $\cdots $
+\begin_inset Formula $\cdots$
 \end_inset 
 
 
@@ -4381,7 +4358,7 @@ cdots
 \layout Standard
 
 
-\begin_inset Formula $\vdots $
+\begin_inset Formula $\vdots$
 \end_inset 
 
 
@@ -4405,7 +4382,7 @@ vdots
 \layout Standard
 
 
-\begin_inset Formula $\ddots $
+\begin_inset Formula $\ddots$
 \end_inset 
 
 
@@ -4429,7 +4406,7 @@ ddots
 \layout Standard
 
 
-\begin_inset Formula $\aleph $
+\begin_inset Formula $\aleph$
 \end_inset 
 
 
@@ -4455,7 +4432,7 @@ aleph
 \layout Standard
 
 
-\begin_inset Formula $\prime $
+\begin_inset Formula $\prime$
 \end_inset 
 
 
@@ -4479,7 +4456,7 @@ prime
 \layout Standard
 
 
-\begin_inset Formula $\forall $
+\begin_inset Formula $\forall$
 \end_inset 
 
 
@@ -4503,7 +4480,7 @@ forall
 \layout Standard
 
 
-\begin_inset Formula $\infty $
+\begin_inset Formula $\infty$
 \end_inset 
 
 
@@ -4527,7 +4504,7 @@ infty
 \layout Standard
 
 
-\begin_inset Formula $\hbar $
+\begin_inset Formula $\hbar$
 \end_inset 
 
 
@@ -4551,7 +4528,7 @@ hbar
 \layout Standard
 
 
-\begin_inset Formula $\emptyset $
+\begin_inset Formula $\emptyset$
 \end_inset 
 
 
@@ -4577,7 +4554,7 @@ emptyset
 \layout Standard
 
 
-\begin_inset Formula $\exists $
+\begin_inset Formula $\exists$
 \end_inset 
 
 
@@ -4601,7 +4578,7 @@ exists
 \layout Standard
 
 
-\begin_inset Formula $\nabla $
+\begin_inset Formula $\nabla$
 \end_inset 
 
 
@@ -4625,7 +4602,7 @@ nabla
 \layout Standard
 
 
-\begin_inset Formula $\surd $
+\begin_inset Formula $\surd$
 \end_inset 
 
 
@@ -4649,7 +4626,7 @@ surd
 \layout Standard
 
 
-\begin_inset Formula $\Box $
+\begin_inset Formula $\Box$
 \end_inset 
 
 
@@ -4673,7 +4650,7 @@ Box
 \layout Standard
 
 
-\begin_inset Formula $\triangle $
+\begin_inset Formula $\triangle$
 \end_inset 
 
 
@@ -4699,7 +4676,7 @@ triangle
 \layout Standard
 
 
-\begin_inset Formula $\Diamond $
+\begin_inset Formula $\Diamond$
 \end_inset 
 
 
@@ -4723,7 +4700,7 @@ Diamond
 \layout Standard
 
 
-\begin_inset Formula $\imath $
+\begin_inset Formula $\imath$
 \end_inset 
 
 
@@ -4747,7 +4724,7 @@ imath
 \layout Standard
 
 
-\begin_inset Formula $\jmath $
+\begin_inset Formula $\jmath$
 \end_inset 
 
 
@@ -4771,7 +4748,7 @@ jmath
 \layout Standard
 
 
-\begin_inset Formula $\ell $
+\begin_inset Formula $\ell$
 \end_inset 
 
 
@@ -4795,7 +4772,7 @@ ell
 \layout Standard
 
 
-\begin_inset Formula $\neg $
+\begin_inset Formula $\neg$
 \end_inset 
 
 
@@ -4821,7 +4798,7 @@ neg
 \layout Standard
 
 
-\begin_inset Formula $\top $
+\begin_inset Formula $\top$
 \end_inset 
 
 
@@ -4845,7 +4822,7 @@ top
 \layout Standard
 
 
-\begin_inset Formula $\flat $
+\begin_inset Formula $\flat$
 \end_inset 
 
 
@@ -4869,7 +4846,7 @@ flat
 \layout Standard
 
 
-\begin_inset Formula $\natural $
+\begin_inset Formula $\natural$
 \end_inset 
 
 
@@ -4893,7 +4870,7 @@ natural
 \layout Standard
 
 
-\begin_inset Formula $\sharp $
+\begin_inset Formula $\sharp$
 \end_inset 
 
 
@@ -4917,7 +4894,7 @@ sharp
 \layout Standard
 
 
-\begin_inset Formula $\wp $
+\begin_inset Formula $\wp$
 \end_inset 
 
 
@@ -4943,7 +4920,7 @@ wp
 \layout Standard
 
 
-\begin_inset Formula $\bot $
+\begin_inset Formula $\bot$
 \end_inset 
 
 
@@ -4967,7 +4944,7 @@ bot
 \layout Standard
 
 
-\begin_inset Formula $\clubsuit $
+\begin_inset Formula $\clubsuit$
 \end_inset 
 
 
@@ -4991,7 +4968,7 @@ clubsuit
 \layout Standard
 
 
-\begin_inset Formula $\diamondsuit $
+\begin_inset Formula $\diamondsuit$
 \end_inset 
 
 
@@ -5015,7 +4992,7 @@ diamondsuit
 \layout Standard
 
 
-\begin_inset Formula $\heartsuit $
+\begin_inset Formula $\heartsuit$
 \end_inset 
 
 
@@ -5039,7 +5016,7 @@ heartsuit
 \layout Standard
 
 
-\begin_inset Formula $\spadesuit $
+\begin_inset Formula $\spadesuit$
 \end_inset 
 
 
@@ -5065,7 +5042,7 @@ spadesuit
 \layout Standard
 
 
-\begin_inset Formula $\mho $
+\begin_inset Formula $\mho$
 \end_inset 
 
 
@@ -5089,7 +5066,7 @@ mho
 \layout Standard
 
 
-\begin_inset Formula $\Re $
+\begin_inset Formula $\Re$
 \end_inset 
 
 
@@ -5113,7 +5090,7 @@ Re
 \layout Standard
 
 
-\begin_inset Formula $\Im $
+\begin_inset Formula $\Im$
 \end_inset 
 
 
@@ -5137,7 +5114,7 @@ Im
 \layout Standard
 
 
-\begin_inset Formula $\angle $
+\begin_inset Formula $\angle$
 \end_inset 
 
 
@@ -5161,7 +5138,7 @@ angle
 \layout Standard
 
 
-\begin_inset Formula $\partial $
+\begin_inset Formula $\partial$
 \end_inset 
 
 
@@ -5222,7 +5199,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\sum $
+\begin_inset Formula $\sum$
 \end_inset 
 
 
@@ -5246,7 +5223,7 @@ sum
 \layout Standard
 
 
-\begin_inset Formula $\prod $
+\begin_inset Formula $\prod$
 \end_inset 
 
 
@@ -5270,7 +5247,7 @@ prod
 \layout Standard
 
 
-\begin_inset Formula $\coprod $
+\begin_inset Formula $\coprod$
 \end_inset 
 
 
@@ -5294,7 +5271,7 @@ coprod
 \layout Standard
 
 
-\begin_inset Formula $\int $
+\begin_inset Formula $\int$
 \end_inset 
 
 
@@ -5318,7 +5295,7 @@ int
 \layout Standard
 
 
-\begin_inset Formula $\oint $
+\begin_inset Formula $\oint$
 \end_inset 
 
 
@@ -5344,7 +5321,7 @@ oint
 \layout Standard
 
 
-\begin_inset Formula $\bigcap $
+\begin_inset Formula $\bigcap$
 \end_inset 
 
 
@@ -5368,7 +5345,7 @@ bigcap
 \layout Standard
 
 
-\begin_inset Formula $\bigcup $
+\begin_inset Formula $\bigcup$
 \end_inset 
 
 
@@ -5392,7 +5369,7 @@ bigcup
 \layout Standard
 
 
-\begin_inset Formula $\bigsqcup $
+\begin_inset Formula $\bigsqcup$
 \end_inset 
 
 
@@ -5416,7 +5393,7 @@ bigsqcup
 \layout Standard
 
 
-\begin_inset Formula $\bigvee $
+\begin_inset Formula $\bigvee$
 \end_inset 
 
 
@@ -5440,7 +5417,7 @@ bigvee
 \layout Standard
 
 
-\begin_inset Formula $\bigwedge $
+\begin_inset Formula $\bigwedge$
 \end_inset 
 
 
@@ -5466,7 +5443,7 @@ bigwedge
 \layout Standard
 
 
-\begin_inset Formula $\bigodot $
+\begin_inset Formula $\bigodot$
 \end_inset 
 
 
@@ -5490,7 +5467,7 @@ bigodot
 \layout Standard
 
 
-\begin_inset Formula $\bigotimes $
+\begin_inset Formula $\bigotimes$
 \end_inset 
 
 
@@ -5514,7 +5491,7 @@ bigotimes
 \layout Standard
 
 
-\begin_inset Formula $\bigoplus $
+\begin_inset Formula $\bigoplus$
 \end_inset 
 
 
@@ -5538,7 +5515,7 @@ bigoplus
 \layout Standard
 
 
-\begin_inset Formula $\biguplus $
+\begin_inset Formula $\biguplus$
 \end_inset 
 
 
@@ -5611,7 +5588,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\arccos $
+\begin_inset Formula $\arccos$
 \end_inset 
 
 
@@ -5623,7 +5600,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\cos $
+\begin_inset Formula $\cos$
 \end_inset 
 
 
@@ -5635,7 +5612,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\csc $
+\begin_inset Formula $\csc$
 \end_inset 
 
 
@@ -5647,7 +5624,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\exp $
+\begin_inset Formula $\exp$
 \end_inset 
 
 
@@ -5659,7 +5636,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\ker $
+\begin_inset Formula $\ker$
 \end_inset 
 
 
@@ -5671,7 +5648,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\limsup $
+\begin_inset Formula $\limsup$
 \end_inset 
 
 
@@ -5683,7 +5660,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\min $
+\begin_inset Formula $\min$
 \end_inset 
 
 
@@ -5695,7 +5672,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\sinh $
+\begin_inset Formula $\sinh$
 \end_inset 
 
 
@@ -5709,7 +5686,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\arcsin $
+\begin_inset Formula $\arcsin$
 \end_inset 
 
 
@@ -5721,7 +5698,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\cosh $
+\begin_inset Formula $\cosh$
 \end_inset 
 
 
@@ -5733,7 +5710,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\deg $
+\begin_inset Formula $\deg$
 \end_inset 
 
 
@@ -5745,7 +5722,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\gcd $
+\begin_inset Formula $\gcd$
 \end_inset 
 
 
@@ -5757,7 +5734,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\lg $
+\begin_inset Formula $\lg$
 \end_inset 
 
 
@@ -5769,7 +5746,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\ln $
+\begin_inset Formula $\ln$
 \end_inset 
 
 
@@ -5781,7 +5758,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\Pr $
+\begin_inset Formula $\Pr$
 \end_inset 
 
 
@@ -5793,7 +5770,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\sup $
+\begin_inset Formula $\sup$
 \end_inset 
 
 
@@ -5807,7 +5784,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\arctan $
+\begin_inset Formula $\arctan$
 \end_inset 
 
 
@@ -5819,7 +5796,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\cot $
+\begin_inset Formula $\cot$
 \end_inset 
 
 
@@ -5831,7 +5808,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\det $
+\begin_inset Formula $\det$
 \end_inset 
 
 
@@ -5843,7 +5820,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\hom $
+\begin_inset Formula $\hom$
 \end_inset 
 
 
@@ -5855,7 +5832,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\lim $
+\begin_inset Formula $\lim$
 \end_inset 
 
 
@@ -5867,7 +5844,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\log $
+\begin_inset Formula $\log$
 \end_inset 
 
 
@@ -5879,7 +5856,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\sec $
+\begin_inset Formula $\sec$
 \end_inset 
 
 
@@ -5891,7 +5868,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\tan $
+\begin_inset Formula $\tan$
 \end_inset 
 
 
@@ -5905,7 +5882,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\arg $
+\begin_inset Formula $\arg$
 \end_inset 
 
 
@@ -5917,7 +5894,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\coth $
+\begin_inset Formula $\coth$
 \end_inset 
 
 
@@ -5929,7 +5906,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\dim $
+\begin_inset Formula $\dim$
 \end_inset 
 
 
@@ -5941,7 +5918,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\inf $
+\begin_inset Formula $\inf$
 \end_inset 
 
 
@@ -5953,7 +5930,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\liminf $
+\begin_inset Formula $\liminf$
 \end_inset 
 
 
@@ -5965,7 +5942,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\max $
+\begin_inset Formula $\max$
 \end_inset 
 
 
@@ -5977,7 +5954,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\sin $
+\begin_inset Formula $\sin$
 \end_inset 
 
 
@@ -5989,7 +5966,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\tanh $
+\begin_inset Formula $\tanh$
 \end_inset 
 
 
@@ -6036,7 +6013,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\uparrow $
+\begin_inset Formula $\uparrow$
 \end_inset 
 
 
@@ -6060,7 +6037,7 @@ uparrow
 \layout Standard
 
 
-\begin_inset Formula $\Uparrow $
+\begin_inset Formula $\Uparrow$
 \end_inset 
 
 
@@ -6084,7 +6061,7 @@ Uparrow
 \layout Standard
 
 
-\begin_inset Formula $\downarrow $
+\begin_inset Formula $\downarrow$
 \end_inset 
 
 
@@ -6108,7 +6085,7 @@ downarrow
 \layout Standard
 
 
-\begin_inset Formula $\Downarrow $
+\begin_inset Formula $\Downarrow$
 \end_inset 
 
 
@@ -6134,7 +6111,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\{ $
+\begin_inset Formula $\{$
 \end_inset 
 
 
@@ -6158,7 +6135,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\} $
+\begin_inset Formula $\}$
 \end_inset 
 
 
@@ -6182,7 +6159,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\updownarrow $
+\begin_inset Formula $\updownarrow$
 \end_inset 
 
 
@@ -6206,7 +6183,7 @@ updownarrow
 \layout Standard
 
 
-\begin_inset Formula $\Updownarrow $
+\begin_inset Formula $\Updownarrow$
 \end_inset 
 
 
@@ -6232,7 +6209,7 @@ Updownarrow
 \layout Standard
 
 
-\begin_inset Formula $\lfloor $
+\begin_inset Formula $\lfloor$
 \end_inset 
 
 
@@ -6256,7 +6233,7 @@ lfloor
 \layout Standard
 
 
-\begin_inset Formula $\rfloor $
+\begin_inset Formula $\rfloor$
 \end_inset 
 
 
@@ -6280,7 +6257,7 @@ rfloor
 \layout Standard
 
 
-\begin_inset Formula $\lceil $
+\begin_inset Formula $\lceil$
 \end_inset 
 
 
@@ -6304,7 +6281,7 @@ lceil
 \layout Standard
 
 
-\begin_inset Formula $\rceil $
+\begin_inset Formula $\rceil$
 \end_inset 
 
 
@@ -6330,7 +6307,7 @@ rceil
 \layout Standard
 
 
-\begin_inset Formula $\langle $
+\begin_inset Formula $\langle$
 \end_inset 
 
 
@@ -6354,7 +6331,7 @@ langle
 \layout Standard
 
 
-\begin_inset Formula $\rangle $
+\begin_inset Formula $\rangle$
 \end_inset 
 
 
@@ -6400,7 +6377,7 @@ rangle
 \layout Standard
 
 
-\begin_inset Formula $\backslash $
+\begin_inset Formula $\backslash$
 \end_inset 
 
 
@@ -6448,7 +6425,7 @@ backslash
 \layout Standard
 
 
-\begin_inset Formula $\| $
+\begin_inset Formula $\|$
 \end_inset 
 
 
@@ -6503,225 +6480,6 @@ backslash
 \layout Caption
 
 Delimiters
-\end_inset 
-
-
-\layout Standard
-
-
-\begin_inset Float table
-placement H
-wide false
-collapsed false
-
-\layout Standard
-
-
-\begin_inset  Tabular
-<lyxtabular version="3" rows="2" columns="8">
-<features>
-<column alignment="right" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\rmoustache $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-rmoustache
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\lmoustache $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-lmoustache
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\rgroup $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-rgroup
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\lgroup $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-lgroup
-\end_inset 
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\arrowvert $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-arrowvert
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\Arrowvert $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-Arrowvert
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\begin_inset Formula $\bracevert $
-\end_inset 
-
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-
-\family typewriter 
-
-\backslash 
-bracevert
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-\end_inset 
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\layout Standard
-
-\end_inset 
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset 
-
-
-\layout Caption
-
-Large delimiters
 \end_inset 
 
 
@@ -7085,7 +6843,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\digamma $
+\begin_inset Formula $\digamma$
 \end_inset 
 
 
@@ -7109,7 +6867,7 @@ digamma
 \layout Standard
 
 
-\begin_inset Formula $\varkappa $
+\begin_inset Formula $\varkappa$
 \end_inset 
 
 
@@ -7133,7 +6891,7 @@ varkappa
 \layout Standard
 
 
-\begin_inset Formula $\beth $
+\begin_inset Formula $\beth$
 \end_inset 
 
 
@@ -7157,7 +6915,7 @@ beth
 \layout Standard
 
 
-\begin_inset Formula $\daleth $
+\begin_inset Formula $\daleth$
 \end_inset 
 
 
@@ -7181,7 +6939,7 @@ daleth
 \layout Standard
 
 
-\begin_inset Formula $\gimel $
+\begin_inset Formula $\gimel$
 \end_inset 
 
 
@@ -7240,7 +6998,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\ulcorner $
+\begin_inset Formula $\ulcorner$
 \end_inset 
 
 
@@ -7264,7 +7022,7 @@ ulcorner
 \layout Standard
 
 
-\begin_inset Formula $\urcorner $
+\begin_inset Formula $\urcorner$
 \end_inset 
 
 
@@ -7288,7 +7046,7 @@ urcorner
 \layout Standard
 
 
-\begin_inset Formula $\llcorner $
+\begin_inset Formula $\llcorner$
 \end_inset 
 
 
@@ -7312,7 +7070,7 @@ llcorner
 \layout Standard
 
 
-\begin_inset Formula $\lrcorner $
+\begin_inset Formula $\lrcorner$
 \end_inset 
 
 
@@ -7369,7 +7127,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\dashrightarrow $
+\begin_inset Formula $\dashrightarrow$
 \end_inset 
 
 
@@ -7393,7 +7151,7 @@ dashrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\dashleftarrow $
+\begin_inset Formula $\dashleftarrow$
 \end_inset 
 
 
@@ -7417,7 +7175,7 @@ dashleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\leftleftarrows $
+\begin_inset Formula $\leftleftarrows$
 \end_inset 
 
 
@@ -7443,7 +7201,7 @@ leftleftarrows
 \layout Standard
 
 
-\begin_inset Formula $\leftrightarrows $
+\begin_inset Formula $\leftrightarrows$
 \end_inset 
 
 
@@ -7467,7 +7225,7 @@ leftrightarrows
 \layout Standard
 
 
-\begin_inset Formula $\Lleftarrow $
+\begin_inset Formula $\Lleftarrow$
 \end_inset 
 
 
@@ -7491,7 +7249,7 @@ Lleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\twoheadleftarrow $
+\begin_inset Formula $\twoheadleftarrow$
 \end_inset 
 
 
@@ -7517,7 +7275,7 @@ twoheadleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\leftarrowtail $
+\begin_inset Formula $\leftarrowtail$
 \end_inset 
 
 
@@ -7541,7 +7299,7 @@ leftarrowtail
 \layout Standard
 
 
-\begin_inset Formula $\looparrowleft $
+\begin_inset Formula $\looparrowleft$
 \end_inset 
 
 
@@ -7565,7 +7323,7 @@ looparrowleft
 \layout Standard
 
 
-\begin_inset Formula $\leftrightharpoons $
+\begin_inset Formula $\leftrightharpoons$
 \end_inset 
 
 
@@ -7591,7 +7349,7 @@ leftrightharpoons
 \layout Standard
 
 
-\begin_inset Formula $\curvearrowleft $
+\begin_inset Formula $\curvearrowleft$
 \end_inset 
 
 
@@ -7615,7 +7373,7 @@ curvearrowleft
 \layout Standard
 
 
-\begin_inset Formula $\circlearrowleft $
+\begin_inset Formula $\circlearrowleft$
 \end_inset 
 
 
@@ -7639,7 +7397,7 @@ circlearrowleft
 \layout Standard
 
 
-\begin_inset Formula $\Lsh $
+\begin_inset Formula $\Lsh$
 \end_inset 
 
 
@@ -7665,7 +7423,7 @@ Lsh
 \layout Standard
 
 
-\begin_inset Formula $\upuparrows $
+\begin_inset Formula $\upuparrows$
 \end_inset 
 
 
@@ -7689,7 +7447,7 @@ upuparrows
 \layout Standard
 
 
-\begin_inset Formula $\upharpoonleft $
+\begin_inset Formula $\upharpoonleft$
 \end_inset 
 
 
@@ -7713,7 +7471,7 @@ upharpoonleft
 \layout Standard
 
 
-\begin_inset Formula $\downharpoonleft $
+\begin_inset Formula $\downharpoonleft$
 \end_inset 
 
 
@@ -7739,7 +7497,7 @@ downharpoonleft
 \layout Standard
 
 
-\begin_inset Formula $\multimap $
+\begin_inset Formula $\multimap$
 \end_inset 
 
 
@@ -7763,7 +7521,7 @@ multimap
 \layout Standard
 
 
-\begin_inset Formula $\leftrightsquigarrow $
+\begin_inset Formula $\leftrightsquigarrow$
 \end_inset 
 
 
@@ -7787,7 +7545,7 @@ leftrightsquigarrow
 \layout Standard
 
 
-\begin_inset Formula $\rightrightarrows $
+\begin_inset Formula $\rightrightarrows$
 \end_inset 
 
 
@@ -7813,7 +7571,7 @@ rightrightarrows
 \layout Standard
 
 
-\begin_inset Formula $\rightleftarrows $
+\begin_inset Formula $\rightleftarrows$
 \end_inset 
 
 
@@ -7837,7 +7595,7 @@ rightleftarrows
 \layout Standard
 
 
-\begin_inset Formula $\rightrightarrows $
+\begin_inset Formula $\rightrightarrows$
 \end_inset 
 
 
@@ -7861,7 +7619,7 @@ rightrightarrows
 \layout Standard
 
 
-\begin_inset Formula $\rightleftarrows $
+\begin_inset Formula $\rightleftarrows$
 \end_inset 
 
 
@@ -7887,7 +7645,7 @@ rightleftarrows
 \layout Standard
 
 
-\begin_inset Formula $\twoheadrightarrow $
+\begin_inset Formula $\twoheadrightarrow$
 \end_inset 
 
 
@@ -7911,7 +7669,7 @@ twoheadrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\rightarrowtail $
+\begin_inset Formula $\rightarrowtail$
 \end_inset 
 
 
@@ -7935,7 +7693,7 @@ rightarrowtail
 \layout Standard
 
 
-\begin_inset Formula $\looparrowright $
+\begin_inset Formula $\looparrowright$
 \end_inset 
 
 
@@ -7961,7 +7719,7 @@ looparrowright
 \layout Standard
 
 
-\begin_inset Formula $\rightleftharpoons $
+\begin_inset Formula $\rightleftharpoons$
 \end_inset 
 
 
@@ -7985,7 +7743,7 @@ rightleftharpoons
 \layout Standard
 
 
-\begin_inset Formula $\curvearrowright $
+\begin_inset Formula $\curvearrowright$
 \end_inset 
 
 
@@ -8009,7 +7767,7 @@ curvearrowright
 \layout Standard
 
 
-\begin_inset Formula $\circlearrowright $
+\begin_inset Formula $\circlearrowright$
 \end_inset 
 
 
@@ -8035,7 +7793,7 @@ circlearrowright
 \layout Standard
 
 
-\begin_inset Formula $\Rsh $
+\begin_inset Formula $\Rsh$
 \end_inset 
 
 
@@ -8059,7 +7817,7 @@ Rsh
 \layout Standard
 
 
-\begin_inset Formula $\downdownarrows $
+\begin_inset Formula $\downdownarrows$
 \end_inset 
 
 
@@ -8083,7 +7841,7 @@ downdownarrows
 \layout Standard
 
 
-\begin_inset Formula $\upharpoonright $
+\begin_inset Formula $\upharpoonright$
 \end_inset 
 
 
@@ -8109,7 +7867,7 @@ upharpoonright
 \layout Standard
 
 
-\begin_inset Formula $\downharpoonright $
+\begin_inset Formula $\downharpoonright$
 \end_inset 
 
 
@@ -8133,7 +7891,7 @@ downharpoonright
 \layout Standard
 
 
-\begin_inset Formula $\rightsquigarrow $
+\begin_inset Formula $\rightsquigarrow$
 \end_inset 
 
 
@@ -8204,7 +7962,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\nleftarrow $
+\begin_inset Formula $\nleftarrow$
 \end_inset 
 
 
@@ -8228,7 +7986,7 @@ nleftarrow
 \layout Standard
 
 
-\begin_inset Formula $\nrightarrow $
+\begin_inset Formula $\nrightarrow$
 \end_inset 
 
 
@@ -8252,7 +8010,7 @@ nrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\nLeftarrow $
+\begin_inset Formula $\nLeftarrow$
 \end_inset 
 
 
@@ -8278,7 +8036,7 @@ nLeftarrow
 \layout Standard
 
 
-\begin_inset Formula $\nRightarrow $
+\begin_inset Formula $\nRightarrow$
 \end_inset 
 
 
@@ -8302,7 +8060,7 @@ nRightarrow
 \layout Standard
 
 
-\begin_inset Formula $\nleftrightarrow $
+\begin_inset Formula $\nleftrightarrow$
 \end_inset 
 
 
@@ -8326,7 +8084,7 @@ nleftrightarrow
 \layout Standard
 
 
-\begin_inset Formula $\nLeftrightarrow $
+\begin_inset Formula $\nLeftrightarrow$
 \end_inset 
 
 
@@ -8383,7 +8141,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\leqq $
+\begin_inset Formula $\leqq$
 \end_inset 
 
 
@@ -8407,7 +8165,7 @@ leqq
 \layout Standard
 
 
-\begin_inset Formula $\leqslant $
+\begin_inset Formula $\leqslant$
 \end_inset 
 
 
@@ -8431,7 +8189,7 @@ leqslant
 \layout Standard
 
 
-\begin_inset Formula $\eqslantless $
+\begin_inset Formula $\eqslantless$
 \end_inset 
 
 
@@ -8457,7 +8215,7 @@ eqslantless
 \layout Standard
 
 
-\begin_inset Formula $\lesssim $
+\begin_inset Formula $\lesssim$
 \end_inset 
 
 
@@ -8481,7 +8239,7 @@ lesssim
 \layout Standard
 
 
-\begin_inset Formula $\lessapprox $
+\begin_inset Formula $\lessapprox$
 \end_inset 
 
 
@@ -8505,7 +8263,7 @@ lessapprox
 \layout Standard
 
 
-\begin_inset Formula $\approxeq $
+\begin_inset Formula $\approxeq$
 \end_inset 
 
 
@@ -8531,7 +8289,7 @@ approxeq
 \layout Standard
 
 
-\begin_inset Formula $\lessdot $
+\begin_inset Formula $\lessdot$
 \end_inset 
 
 
@@ -8555,7 +8313,7 @@ lessdot
 \layout Standard
 
 
-\begin_inset Formula $\lll $
+\begin_inset Formula $\lll$
 \end_inset 
 
 
@@ -8579,7 +8337,7 @@ lll
 \layout Standard
 
 
-\begin_inset Formula $\lessgtr $
+\begin_inset Formula $\lessgtr$
 \end_inset 
 
 
@@ -8605,7 +8363,7 @@ lessgtr
 \layout Standard
 
 
-\begin_inset Formula $\lesseqgtr $
+\begin_inset Formula $\lesseqgtr$
 \end_inset 
 
 
@@ -8629,7 +8387,7 @@ lesseqgtr
 \layout Standard
 
 
-\begin_inset Formula $\lesseqqgtr $
+\begin_inset Formula $\lesseqqgtr$
 \end_inset 
 
 
@@ -8653,7 +8411,7 @@ lesseqqgtr
 \layout Standard
 
 
-\begin_inset Formula $\doteqdot $
+\begin_inset Formula $\doteqdot$
 \end_inset 
 
 
@@ -8679,7 +8437,7 @@ doteqdot
 \layout Standard
 
 
-\begin_inset Formula $\risingdotseq $
+\begin_inset Formula $\risingdotseq$
 \end_inset 
 
 
@@ -8703,7 +8461,7 @@ risingdotseq
 \layout Standard
 
 
-\begin_inset Formula $\fallingdotseq $
+\begin_inset Formula $\fallingdotseq$
 \end_inset 
 
 
@@ -8727,7 +8485,7 @@ fallingdotseq
 \layout Standard
 
 
-\begin_inset Formula $\backsim $
+\begin_inset Formula $\backsim$
 \end_inset 
 
 
@@ -8753,7 +8511,7 @@ backsim
 \layout Standard
 
 
-\begin_inset Formula $\backsimeq $
+\begin_inset Formula $\backsimeq$
 \end_inset 
 
 
@@ -8777,7 +8535,7 @@ backsimeq
 \layout Standard
 
 
-\begin_inset Formula $\subseteqq $
+\begin_inset Formula $\subseteqq$
 \end_inset 
 
 
@@ -8801,7 +8559,7 @@ subseteqq
 \layout Standard
 
 
-\begin_inset Formula $\Subset $
+\begin_inset Formula $\Subset$
 \end_inset 
 
 
@@ -8827,7 +8585,7 @@ Subset
 \layout Standard
 
 
-\begin_inset Formula $\sqsubset $
+\begin_inset Formula $\sqsubset$
 \end_inset 
 
 
@@ -8851,7 +8609,7 @@ sqsubset
 \layout Standard
 
 
-\begin_inset Formula $\preccurlyeq $
+\begin_inset Formula $\preccurlyeq$
 \end_inset 
 
 
@@ -8875,7 +8633,7 @@ preccurlyeq
 \layout Standard
 
 
-\begin_inset Formula $\curlyeqprec $
+\begin_inset Formula $\curlyeqprec$
 \end_inset 
 
 
@@ -8901,7 +8659,7 @@ curlyeqprec
 \layout Standard
 
 
-\begin_inset Formula $\precsim $
+\begin_inset Formula $\precsim$
 \end_inset 
 
 
@@ -8925,7 +8683,7 @@ precsim
 \layout Standard
 
 
-\begin_inset Formula $\precapprox $
+\begin_inset Formula $\precapprox$
 \end_inset 
 
 
@@ -8949,7 +8707,7 @@ precapprox
 \layout Standard
 
 
-\begin_inset Formula $\vartriangleleft $
+\begin_inset Formula $\vartriangleleft$
 \end_inset 
 
 
@@ -8975,7 +8733,7 @@ vartriangleleft
 \layout Standard
 
 
-\begin_inset Formula $\trianglelefteq $
+\begin_inset Formula $\trianglelefteq$
 \end_inset 
 
 
@@ -8999,7 +8757,7 @@ trianglelefteq
 \layout Standard
 
 
-\begin_inset Formula $\vDash $
+\begin_inset Formula $\vDash$
 \end_inset 
 
 
@@ -9023,7 +8781,7 @@ vDash
 \layout Standard
 
 
-\begin_inset Formula $\Vvdash $
+\begin_inset Formula $\Vvdash$
 \end_inset 
 
 
@@ -9049,7 +8807,7 @@ Vvdash
 \layout Standard
 
 
-\begin_inset Formula $\smallsmile $
+\begin_inset Formula $\smallsmile$
 \end_inset 
 
 
@@ -9073,7 +8831,7 @@ smallsmile
 \layout Standard
 
 
-\begin_inset Formula $\smallfrown $
+\begin_inset Formula $\smallfrown$
 \end_inset 
 
 
@@ -9097,7 +8855,7 @@ smallfrown
 \layout Standard
 
 
-\begin_inset Formula $\bumpeq $
+\begin_inset Formula $\bumpeq$
 \end_inset 
 
 
@@ -9123,7 +8881,7 @@ bumpeq
 \layout Standard
 
 
-\begin_inset Formula $\Bumpeq $
+\begin_inset Formula $\Bumpeq$
 \end_inset 
 
 
@@ -9147,7 +8905,7 @@ Bumpeq
 \layout Standard
 
 
-\begin_inset Formula $\geqq $
+\begin_inset Formula $\geqq$
 \end_inset 
 
 
@@ -9171,7 +8929,7 @@ geqq
 \layout Standard
 
 
-\begin_inset Formula $\geqslant $
+\begin_inset Formula $\geqslant$
 \end_inset 
 
 
@@ -9197,7 +8955,7 @@ geqslant
 \layout Standard
 
 
-\begin_inset Formula $\eqslantgtr $
+\begin_inset Formula $\eqslantgtr$
 \end_inset 
 
 
@@ -9221,7 +8979,7 @@ eqslantgtr
 \layout Standard
 
 
-\begin_inset Formula $\gtrsim $
+\begin_inset Formula $\gtrsim$
 \end_inset 
 
 
@@ -9245,7 +9003,7 @@ gtrsim
 \layout Standard
 
 
-\begin_inset Formula $\gtrapprox $
+\begin_inset Formula $\gtrapprox$
 \end_inset 
 
 
@@ -9271,7 +9029,7 @@ gtrapprox
 \layout Standard
 
 
-\begin_inset Formula $\gtrdot $
+\begin_inset Formula $\gtrdot$
 \end_inset 
 
 
@@ -9295,7 +9053,7 @@ gtrdot
 \layout Standard
 
 
-\begin_inset Formula $\ggg $
+\begin_inset Formula $\ggg$
 \end_inset 
 
 
@@ -9319,7 +9077,7 @@ ggg
 \layout Standard
 
 
-\begin_inset Formula $\gtrless $
+\begin_inset Formula $\gtrless$
 \end_inset 
 
 
@@ -9345,7 +9103,7 @@ gtrless
 \layout Standard
 
 
-\begin_inset Formula $\gtreqless $
+\begin_inset Formula $\gtreqless$
 \end_inset 
 
 
@@ -9369,7 +9127,7 @@ gtreqless
 \layout Standard
 
 
-\begin_inset Formula $\gtreqqless $
+\begin_inset Formula $\gtreqqless$
 \end_inset 
 
 
@@ -9393,7 +9151,7 @@ gtreqqless
 \layout Standard
 
 
-\begin_inset Formula $\eqcirc $
+\begin_inset Formula $\eqcirc$
 \end_inset 
 
 
@@ -9419,7 +9177,7 @@ eqcirc
 \layout Standard
 
 
-\begin_inset Formula $\circeq $
+\begin_inset Formula $\circeq$
 \end_inset 
 
 
@@ -9443,7 +9201,7 @@ circeq
 \layout Standard
 
 
-\begin_inset Formula $\triangleq $
+\begin_inset Formula $\triangleq$
 \end_inset 
 
 
@@ -9467,7 +9225,7 @@ triangleq
 \layout Standard
 
 
-\begin_inset Formula $\thicksim $
+\begin_inset Formula $\thicksim$
 \end_inset 
 
 
@@ -9493,7 +9251,7 @@ thicksim
 \layout Standard
 
 
-\begin_inset Formula $\thickapprox $
+\begin_inset Formula $\thickapprox$
 \end_inset 
 
 
@@ -9517,7 +9275,7 @@ thickapprox
 \layout Standard
 
 
-\begin_inset Formula $\supseteqq $
+\begin_inset Formula $\supseteqq$
 \end_inset 
 
 
@@ -9541,7 +9299,7 @@ supseteqq
 \layout Standard
 
 
-\begin_inset Formula $\Supset $
+\begin_inset Formula $\Supset$
 \end_inset 
 
 
@@ -9567,7 +9325,7 @@ Supset
 \layout Standard
 
 
-\begin_inset Formula $\sqsupset $
+\begin_inset Formula $\sqsupset$
 \end_inset 
 
 
@@ -9591,7 +9349,7 @@ sqsupset
 \layout Standard
 
 
-\begin_inset Formula $\succcurlyeq $
+\begin_inset Formula $\succcurlyeq$
 \end_inset 
 
 
@@ -9615,7 +9373,7 @@ succcurlyeq
 \layout Standard
 
 
-\begin_inset Formula $\curlyeqsucc $
+\begin_inset Formula $\curlyeqsucc$
 \end_inset 
 
 
@@ -9641,7 +9399,7 @@ curlyeqsucc
 \layout Standard
 
 
-\begin_inset Formula $\succsim $
+\begin_inset Formula $\succsim$
 \end_inset 
 
 
@@ -9665,7 +9423,7 @@ succsim
 \layout Standard
 
 
-\begin_inset Formula $\succapprox $
+\begin_inset Formula $\succapprox$
 \end_inset 
 
 
@@ -9689,7 +9447,7 @@ succapprox
 \layout Standard
 
 
-\begin_inset Formula $\vartriangleright $
+\begin_inset Formula $\vartriangleright$
 \end_inset 
 
 
@@ -9715,7 +9473,7 @@ vartriangleright
 \layout Standard
 
 
-\begin_inset Formula $\trianglerighteq $
+\begin_inset Formula $\trianglerighteq$
 \end_inset 
 
 
@@ -9739,7 +9497,7 @@ trianglerighteq
 \layout Standard
 
 
-\begin_inset Formula $\Vdash $
+\begin_inset Formula $\Vdash$
 \end_inset 
 
 
@@ -9763,7 +9521,7 @@ Vdash
 \layout Standard
 
 
-\begin_inset Formula $\shortmid $
+\begin_inset Formula $\shortmid$
 \end_inset 
 
 
@@ -9789,7 +9547,7 @@ shortmid
 \layout Standard
 
 
-\begin_inset Formula $\shortparallel $
+\begin_inset Formula $\shortparallel$
 \end_inset 
 
 
@@ -9813,7 +9571,7 @@ shortparallel
 \layout Standard
 
 
-\begin_inset Formula $\between $
+\begin_inset Formula $\between$
 \end_inset 
 
 
@@ -9837,7 +9595,7 @@ between
 \layout Standard
 
 
-\begin_inset Formula $\pitchfork $
+\begin_inset Formula $\pitchfork$
 \end_inset 
 
 
@@ -9863,7 +9621,7 @@ pitchfork
 \layout Standard
 
 
-\begin_inset Formula $\varpropto $
+\begin_inset Formula $\varpropto$
 \end_inset 
 
 
@@ -9887,7 +9645,7 @@ varpropto
 \layout Standard
 
 
-\begin_inset Formula $\blacktriangleleft $
+\begin_inset Formula $\blacktriangleleft$
 \end_inset 
 
 
@@ -9911,7 +9669,7 @@ blacktriangleleft
 \layout Standard
 
 
-\begin_inset Formula $\therefore $
+\begin_inset Formula $\therefore$
 \end_inset 
 
 
@@ -9937,7 +9695,7 @@ therefore
 \layout Standard
 
 
-\begin_inset Formula $\backepsilon $
+\begin_inset Formula $\backepsilon$
 \end_inset 
 
 
@@ -9961,7 +9719,7 @@ backepsilon
 \layout Standard
 
 
-\begin_inset Formula $\blacktriangleright $
+\begin_inset Formula $\blacktriangleright$
 \end_inset 
 
 
@@ -9985,7 +9743,7 @@ blacktriangleright
 \layout Standard
 
 
-\begin_inset Formula $\because $
+\begin_inset Formula $\because$
 \end_inset 
 
 
@@ -10042,7 +9800,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\nless $
+\begin_inset Formula $\nless$
 \end_inset 
 
 
@@ -10066,7 +9824,7 @@ nless
 \layout Standard
 
 
-\begin_inset Formula $\nleq $
+\begin_inset Formula $\nleq$
 \end_inset 
 
 
@@ -10090,7 +9848,7 @@ nleq
 \layout Standard
 
 
-\begin_inset Formula $\nleqslant $
+\begin_inset Formula $\nleqslant$
 \end_inset 
 
 
@@ -10116,7 +9874,7 @@ nleqslant
 \layout Standard
 
 
-\begin_inset Formula $\nleqq $
+\begin_inset Formula $\nleqq$
 \end_inset 
 
 
@@ -10140,7 +9898,7 @@ nleqq
 \layout Standard
 
 
-\begin_inset Formula $\lneq $
+\begin_inset Formula $\lneq$
 \end_inset 
 
 
@@ -10164,7 +9922,7 @@ lneq
 \layout Standard
 
 
-\begin_inset Formula $\lneqq $
+\begin_inset Formula $\lneqq$
 \end_inset 
 
 
@@ -10190,7 +9948,7 @@ lneqq
 \layout Standard
 
 
-\begin_inset Formula $\lvertneqq $
+\begin_inset Formula $\lvertneqq$
 \end_inset 
 
 
@@ -10214,7 +9972,7 @@ lvertneqq
 \layout Standard
 
 
-\begin_inset Formula $\lnsim $
+\begin_inset Formula $\lnsim$
 \end_inset 
 
 
@@ -10238,7 +9996,7 @@ lnsim
 \layout Standard
 
 
-\begin_inset Formula $\lnapprox $
+\begin_inset Formula $\lnapprox$
 \end_inset 
 
 
@@ -10264,7 +10022,7 @@ lnapprox
 \layout Standard
 
 
-\begin_inset Formula $\nprec $
+\begin_inset Formula $\nprec$
 \end_inset 
 
 
@@ -10288,7 +10046,7 @@ nprec
 \layout Standard
 
 
-\begin_inset Formula $\npreceq $
+\begin_inset Formula $\npreceq$
 \end_inset 
 
 
@@ -10312,7 +10070,7 @@ npreceq
 \layout Standard
 
 
-\begin_inset Formula $\precnsim $
+\begin_inset Formula $\precnsim$
 \end_inset 
 
 
@@ -10338,7 +10096,7 @@ precnsim
 \layout Standard
 
 
-\begin_inset Formula $\precnapprox $
+\begin_inset Formula $\precnapprox$
 \end_inset 
 
 
@@ -10362,7 +10120,7 @@ precnapprox
 \layout Standard
 
 
-\begin_inset Formula $\nsim $
+\begin_inset Formula $\nsim$
 \end_inset 
 
 
@@ -10386,7 +10144,7 @@ nsim
 \layout Standard
 
 
-\begin_inset Formula $\nshortmid $
+\begin_inset Formula $\nshortmid$
 \end_inset 
 
 
@@ -10412,7 +10170,7 @@ nshortmid
 \layout Standard
 
 
-\begin_inset Formula $\nmid $
+\begin_inset Formula $\nmid$
 \end_inset 
 
 
@@ -10436,7 +10194,7 @@ nmid
 \layout Standard
 
 
-\begin_inset Formula $\nvdash $
+\begin_inset Formula $\nvdash$
 \end_inset 
 
 
@@ -10460,7 +10218,7 @@ nvdash
 \layout Standard
 
 
-\begin_inset Formula $\nvDash $
+\begin_inset Formula $\nvDash$
 \end_inset 
 
 
@@ -10486,7 +10244,7 @@ nvDash
 \layout Standard
 
 
-\begin_inset Formula $\ntriangleleft $
+\begin_inset Formula $\ntriangleleft$
 \end_inset 
 
 
@@ -10510,7 +10268,7 @@ ntriangleleft
 \layout Standard
 
 
-\begin_inset Formula $\ntrianglelefteq $
+\begin_inset Formula $\ntrianglelefteq$
 \end_inset 
 
 
@@ -10534,7 +10292,7 @@ ntrianglelefteq
 \layout Standard
 
 
-\begin_inset Formula $\nsubseteq $
+\begin_inset Formula $\nsubseteq$
 \end_inset 
 
 
@@ -10560,7 +10318,7 @@ nsubseteq
 \layout Standard
 
 
-\begin_inset Formula $\subsetneq $
+\begin_inset Formula $\subsetneq$
 \end_inset 
 
 
@@ -10584,7 +10342,7 @@ subsetneq
 \layout Standard
 
 
-\begin_inset Formula $\varsubsetneq $
+\begin_inset Formula $\varsubsetneq$
 \end_inset 
 
 
@@ -10608,7 +10366,7 @@ varsubsetneq
 \layout Standard
 
 
-\begin_inset Formula $\subsetneqq $
+\begin_inset Formula $\subsetneqq$
 \end_inset 
 
 
@@ -10634,7 +10392,7 @@ subsetneqq
 \layout Standard
 
 
-\begin_inset Formula $\varsubsetneqq $
+\begin_inset Formula $\varsubsetneqq$
 \end_inset 
 
 
@@ -10658,7 +10416,7 @@ varsubsetneqq
 \layout Standard
 
 
-\begin_inset Formula $\ngtr $
+\begin_inset Formula $\ngtr$
 \end_inset 
 
 
@@ -10682,7 +10440,7 @@ ngtr
 \layout Standard
 
 
-\begin_inset Formula $\ngeq $
+\begin_inset Formula $\ngeq$
 \end_inset 
 
 
@@ -10708,7 +10466,7 @@ ngeq
 \layout Standard
 
 
-\begin_inset Formula $\ngeqslant $
+\begin_inset Formula $\ngeqslant$
 \end_inset 
 
 
@@ -10732,7 +10490,7 @@ ngeqslant
 \layout Standard
 
 
-\begin_inset Formula $\ngeqq $
+\begin_inset Formula $\ngeqq$
 \end_inset 
 
 
@@ -10756,7 +10514,7 @@ ngeqq
 \layout Standard
 
 
-\begin_inset Formula $\gneq $
+\begin_inset Formula $\gneq$
 \end_inset 
 
 
@@ -10782,7 +10540,7 @@ gneq
 \layout Standard
 
 
-\begin_inset Formula $\gneqq $
+\begin_inset Formula $\gneqq$
 \end_inset 
 
 
@@ -10806,7 +10564,7 @@ gneqq
 \layout Standard
 
 
-\begin_inset Formula $\gvertneqq $
+\begin_inset Formula $\gvertneqq$
 \end_inset 
 
 
@@ -10830,7 +10588,7 @@ gvertneqq
 \layout Standard
 
 
-\begin_inset Formula $\gnsim $
+\begin_inset Formula $\gnsim$
 \end_inset 
 
 
@@ -10856,7 +10614,7 @@ gnsim
 \layout Standard
 
 
-\begin_inset Formula $\gnapprox $
+\begin_inset Formula $\gnapprox$
 \end_inset 
 
 
@@ -10880,7 +10638,7 @@ gnapprox
 \layout Standard
 
 
-\begin_inset Formula $\nsucc $
+\begin_inset Formula $\nsucc$
 \end_inset 
 
 
@@ -10904,7 +10662,7 @@ nsucc
 \layout Standard
 
 
-\begin_inset Formula $\nsucceq $
+\begin_inset Formula $\nsucceq$
 \end_inset 
 
 
@@ -10930,7 +10688,7 @@ nsucceq
 \layout Standard
 
 
-\begin_inset Formula $\succnsim $
+\begin_inset Formula $\succnsim$
 \end_inset 
 
 
@@ -10954,7 +10712,7 @@ succnsim
 \layout Standard
 
 
-\begin_inset Formula $\succnapprox $
+\begin_inset Formula $\succnapprox$
 \end_inset 
 
 
@@ -10978,7 +10736,7 @@ succnapprox
 \layout Standard
 
 
-\begin_inset Formula $\ncong $
+\begin_inset Formula $\ncong$
 \end_inset 
 
 
@@ -11004,7 +10762,7 @@ ncong
 \layout Standard
 
 
-\begin_inset Formula $\nshortparallel $
+\begin_inset Formula $\nshortparallel$
 \end_inset 
 
 
@@ -11028,7 +10786,7 @@ nshortparallel
 \layout Standard
 
 
-\begin_inset Formula $\nparallel $
+\begin_inset Formula $\nparallel$
 \end_inset 
 
 
@@ -11052,7 +10810,7 @@ nparallel
 \layout Standard
 
 
-\begin_inset Formula $\nvDash $
+\begin_inset Formula $\nvDash$
 \end_inset 
 
 
@@ -11078,7 +10836,7 @@ nvDash
 \layout Standard
 
 
-\begin_inset Formula $\nVDash $
+\begin_inset Formula $\nVDash$
 \end_inset 
 
 
@@ -11102,7 +10860,7 @@ nVDash
 \layout Standard
 
 
-\begin_inset Formula $\ntriangleright $
+\begin_inset Formula $\ntriangleright$
 \end_inset 
 
 
@@ -11126,7 +10884,7 @@ ntriangleright
 \layout Standard
 
 
-\begin_inset Formula $\ntrianglerighteq $
+\begin_inset Formula $\ntrianglerighteq$
 \end_inset 
 
 
@@ -11152,7 +10910,7 @@ ntrianglerighteq
 \layout Standard
 
 
-\begin_inset Formula $\nsupseteq $
+\begin_inset Formula $\nsupseteq$
 \end_inset 
 
 
@@ -11176,7 +10934,7 @@ nsupseteq
 \layout Standard
 
 
-\begin_inset Formula $\nsupseteqq $
+\begin_inset Formula $\nsupseteqq$
 \end_inset 
 
 
@@ -11200,7 +10958,7 @@ nsupseteqq
 \layout Standard
 
 
-\begin_inset Formula $\supsetneq $
+\begin_inset Formula $\supsetneq$
 \end_inset 
 
 
@@ -11226,7 +10984,7 @@ supsetneq
 \layout Standard
 
 
-\begin_inset Formula $\varsupsetneq $
+\begin_inset Formula $\varsupsetneq$
 \end_inset 
 
 
@@ -11250,7 +11008,7 @@ varsupsetneq
 \layout Standard
 
 
-\begin_inset Formula $\supsetneqq $
+\begin_inset Formula $\supsetneqq$
 \end_inset 
 
 
@@ -11274,7 +11032,7 @@ supsetneqq
 \layout Standard
 
 
-\begin_inset Formula $\varsupsetneqq $
+\begin_inset Formula $\varsupsetneqq$
 \end_inset 
 
 
@@ -11331,7 +11089,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\dotplus $
+\begin_inset Formula $\dotplus$
 \end_inset 
 
 
@@ -11355,7 +11113,7 @@ dotplus
 \layout Standard
 
 
-\begin_inset Formula $\smallsetminus $
+\begin_inset Formula $\smallsetminus$
 \end_inset 
 
 
@@ -11379,7 +11137,7 @@ smallsetminus
 \layout Standard
 
 
-\begin_inset Formula $\Cap $
+\begin_inset Formula $\Cap$
 \end_inset 
 
 
@@ -11405,7 +11163,7 @@ Cap
 \layout Standard
 
 
-\begin_inset Formula $\Cup $
+\begin_inset Formula $\Cup$
 \end_inset 
 
 
@@ -11429,7 +11187,7 @@ Cup
 \layout Standard
 
 
-\begin_inset Formula $\barwedge $
+\begin_inset Formula $\barwedge$
 \end_inset 
 
 
@@ -11453,7 +11211,7 @@ barwedge
 \layout Standard
 
 
-\begin_inset Formula $\veebar $
+\begin_inset Formula $\veebar$
 \end_inset 
 
 
@@ -11479,7 +11237,7 @@ veebar
 \layout Standard
 
 
-\begin_inset Formula $\doublebarwedge $
+\begin_inset Formula $\doublebarwedge$
 \end_inset 
 
 
@@ -11503,7 +11261,7 @@ doublebarwedge
 \layout Standard
 
 
-\begin_inset Formula $\boxminus $
+\begin_inset Formula $\boxminus$
 \end_inset 
 
 
@@ -11527,7 +11285,7 @@ boxminus
 \layout Standard
 
 
-\begin_inset Formula $\boxtimes $
+\begin_inset Formula $\boxtimes$
 \end_inset 
 
 
@@ -11553,7 +11311,7 @@ boxtimes
 \layout Standard
 
 
-\begin_inset Formula $\boxdot $
+\begin_inset Formula $\boxdot$
 \end_inset 
 
 
@@ -11577,7 +11335,7 @@ boxdot
 \layout Standard
 
 
-\begin_inset Formula $\boxplus $
+\begin_inset Formula $\boxplus$
 \end_inset 
 
 
@@ -11601,7 +11359,7 @@ boxplus
 \layout Standard
 
 
-\begin_inset Formula $\divideontimes $
+\begin_inset Formula $\divideontimes$
 \end_inset 
 
 
@@ -11627,7 +11385,7 @@ divideontimes
 \layout Standard
 
 
-\begin_inset Formula $\ltimes $
+\begin_inset Formula $\ltimes$
 \end_inset 
 
 
@@ -11651,7 +11409,7 @@ ltimes
 \layout Standard
 
 
-\begin_inset Formula $\rtimes $
+\begin_inset Formula $\rtimes$
 \end_inset 
 
 
@@ -11675,7 +11433,7 @@ rtimes
 \layout Standard
 
 
-\begin_inset Formula $\leftthreetimes $
+\begin_inset Formula $\leftthreetimes$
 \end_inset 
 
 
@@ -11701,7 +11459,7 @@ leftthreetimes
 \layout Standard
 
 
-\begin_inset Formula $\rightthreetimes $
+\begin_inset Formula $\rightthreetimes$
 \end_inset 
 
 
@@ -11725,7 +11483,7 @@ rightthreetimes
 \layout Standard
 
 
-\begin_inset Formula $\curlywedge $
+\begin_inset Formula $\curlywedge$
 \end_inset 
 
 
@@ -11749,7 +11507,7 @@ curlywedge
 \layout Standard
 
 
-\begin_inset Formula $\curlyvee $
+\begin_inset Formula $\curlyvee$
 \end_inset 
 
 
@@ -11775,7 +11533,7 @@ curlyvee
 \layout Standard
 
 
-\begin_inset Formula $\circleddash $
+\begin_inset Formula $\circleddash$
 \end_inset 
 
 
@@ -11799,7 +11557,7 @@ circleddash
 \layout Standard
 
 
-\begin_inset Formula $\circledast $
+\begin_inset Formula $\circledast$
 \end_inset 
 
 
@@ -11823,7 +11581,7 @@ circledast
 \layout Standard
 
 
-\begin_inset Formula $\circledcirc $
+\begin_inset Formula $\circledcirc$
 \end_inset 
 
 
@@ -11849,7 +11607,7 @@ circledcirc
 \layout Standard
 
 
-\begin_inset Formula $\centerdot $
+\begin_inset Formula $\centerdot$
 \end_inset 
 
 
@@ -11873,7 +11631,7 @@ centerdot
 \layout Standard
 
 
-\begin_inset Formula $\intercal $
+\begin_inset Formula $\intercal$
 \end_inset 
 
 
@@ -11944,7 +11702,7 @@ collapsed false
 \layout Standard
 
 
-\begin_inset Formula $\hbar $
+\begin_inset Formula $\hbar$
 \end_inset 
 
 
@@ -11968,7 +11726,7 @@ hbar
 \layout Standard
 
 
-\begin_inset Formula $\hslash $
+\begin_inset Formula $\hslash$
 \end_inset 
 
 
@@ -11992,7 +11750,7 @@ hslash
 \layout Standard
 
 
-\begin_inset Formula $\vartriangle $
+\begin_inset Formula $\vartriangle$
 \end_inset 
 
 
@@ -12018,7 +11776,7 @@ vartriangle
 \layout Standard
 
 
-\begin_inset Formula $\triangledown $
+\begin_inset Formula $\triangledown$
 \end_inset 
 
 
@@ -12042,7 +11800,7 @@ triangledown
 \layout Standard
 
 
-\begin_inset Formula $\square $
+\begin_inset Formula $\square$
 \end_inset 
 
 
@@ -12066,7 +11824,7 @@ square
 \layout Standard
 
 
-\begin_inset Formula $\lozenge $
+\begin_inset Formula $\lozenge$
 \end_inset 
 
 
@@ -12092,7 +11850,7 @@ lozenge
 \layout Standard
 
 
-\begin_inset Formula $\circledS $
+\begin_inset Formula $\circledS$
 \end_inset 
 
 
@@ -12116,7 +11874,7 @@ circledS
 \layout Standard
 
 
-\begin_inset Formula $\angle $
+\begin_inset Formula $\angle$
 \end_inset 
 
 
@@ -12140,7 +11898,7 @@ angle
 \layout Standard
 
 
-\begin_inset Formula $\measuredangle $
+\begin_inset Formula $\measuredangle$
 \end_inset 
 
 
@@ -12166,7 +11924,7 @@ measuredangle
 \layout Standard
 
 
-\begin_inset Formula $\nexists $
+\begin_inset Formula $\nexists$
 \end_inset 
 
 
@@ -12190,7 +11948,7 @@ nexists
 \layout Standard
 
 
-\begin_inset Formula $\mho $
+\begin_inset Formula $\mho$
 \end_inset 
 
 
@@ -12214,7 +11972,7 @@ mho
 \layout Standard
 
 
-\begin_inset Formula $\Finv $
+\begin_inset Formula $\Finv$
 \end_inset 
 
 
@@ -12240,7 +11998,7 @@ Finv
 \layout Standard
 
 
-\begin_inset Formula $\Game $
+\begin_inset Formula $\Game$
 \end_inset 
 
 
@@ -12264,7 +12022,7 @@ Game
 \layout Standard
 
 
-\begin_inset Formula $\Bbbk $
+\begin_inset Formula $\Bbbk$
 \end_inset 
 
 
@@ -12288,7 +12046,7 @@ Bbbk
 \layout Standard
 
 
-\begin_inset Formula $\backprime $
+\begin_inset Formula $\backprime$
 \end_inset 
 
 
@@ -12314,7 +12072,7 @@ backprime
 \layout Standard
 
 
-\begin_inset Formula $\varnothing $
+\begin_inset Formula $\varnothing$
 \end_inset 
 
 
@@ -12338,7 +12096,7 @@ varnothing
 \layout Standard
 
 
-\begin_inset Formula $\blacktriangle $
+\begin_inset Formula $\blacktriangle$
 \end_inset 
 
 
@@ -12362,7 +12120,7 @@ blacktriangle
 \layout Standard
 
 
-\begin_inset Formula $\blacktriangledown $
+\begin_inset Formula $\blacktriangledown$
 \end_inset 
 
 
@@ -12388,7 +12146,7 @@ blacktriangledown
 \layout Standard
 
 
-\begin_inset Formula $\blacksquare $
+\begin_inset Formula $\blacksquare$
 \end_inset 
 
 
@@ -12412,7 +12170,7 @@ blacksquare
 \layout Standard
 
 
-\begin_inset Formula $\blacklozenge $
+\begin_inset Formula $\blacklozenge$
 \end_inset 
 
 
@@ -12436,7 +12194,7 @@ blacklozenge
 \layout Standard
 
 
-\begin_inset Formula $\bigstar $
+\begin_inset Formula $\bigstar$
 \end_inset 
 
 
@@ -12462,7 +12220,7 @@ bigstar
 \layout Standard
 
 
-\begin_inset Formula $\sphericalangle $
+\begin_inset Formula $\sphericalangle$
 \end_inset 
 
 
@@ -12486,7 +12244,7 @@ sphericalangle
 \layout Standard
 
 
-\begin_inset Formula $\complement $
+\begin_inset Formula $\complement$
 \end_inset 
 
 
@@ -12510,7 +12268,7 @@ complement
 \layout Standard
 
 
-\begin_inset Formula $\eth $
+\begin_inset Formula $\eth$
 \end_inset 
 
 
@@ -12536,7 +12294,7 @@ eth
 \layout Standard
 
 
-\begin_inset Formula $\diagup $
+\begin_inset Formula $\diagup$
 \end_inset 
 
 
@@ -12560,7 +12318,7 @@ diagup
 \layout Standard
 
 
-\begin_inset Formula $\diagdown $
+\begin_inset Formula $\diagdown$
 \end_inset 
 
 

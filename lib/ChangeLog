@@ -1,3 +1,10 @@
+2002-12-20  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* mathed.lyx: Removed big delimiters table as they are not symbols.
+	Removed the instructions on adding the xfonts dir to the fontpath.
+
+	* symbols: Fix \psi, \leftarrow, \rightsquigarrow, and \varsubsetneq
+
 2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (install-xfonts): do not use "ln -sf" since some

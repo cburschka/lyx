@@ -153,7 +153,7 @@ tau                cmm         191 116 mathord  x
 upsilon            cmm         192 117 mathord  x
 phi                cmm         193 102 mathord  x
 chi                cmm         194  99 mathord  x
-psi                cmm          32 121 mathord  x
+psi                cmm         195 121 mathord  x
 omega              cmm          33 119 mathord  x
 varepsilon         cmm          34 101 mathord  x
 vartheta           cmm          35  74 mathord  x
@@ -288,8 +288,8 @@ owns               cmsy         51  39 mathrel  x
 gg                 cmsy        192   0 mathrel  x
 ll                 cmsy        191   0 mathrel  x
 leftrightarrow     cmsy         36 171 mathrel  x
-leftarrow          cmsy         32 172 mathrel  x
-gets               cmsy         32 172 mathrel  x
+leftarrow          cmsy        195 172 mathrel  x
+gets               cmsy        195 172 mathrel  x
 rightarrow         cmsy         33 174 mathrel  x
 to                 cmsy         33 174 mathrel  x
 mapstochar         cmsy         55   0 mathrel  x
@@ -355,8 +355,8 @@ vartriangleright   msa          66   0 mathrel  x
 vartriangleleft    msa          67   0 mathrel  x
 trianglerighteq    msa          68   0 mathrel  x
 trianglelefteq     msa          69   0 mathrel  x
-rightsquigarrow    msa          32   0 mathrel  x
-leadsto            msa          32   0 mathrel  x
+rightsquigarrow    msa         195   0 mathrel  x
+leadsto            msa         195   0 mathrel  x
 lhd                msa          67   0 mathbin  x
 unlhd              msa          69   0 mathbin  x
 rhd                msa          66   0 mathbin  x
@@ -508,7 +508,7 @@ nsim               msb         191   0 mathrel  x
 ncong              msb         192   0 mathrel  x
 diagup             msb         193   0 mathord  x
 diagdown           msb         194   0 mathord  x
-varsubsetneq       msb          32   0 mathrel  x
+varsubsetneq       msb         195   0 mathrel  x
 varsupsetneq       msb          33   0 mathrel  x
 nsubseteqq         msb          34   0 mathrel  x
 nsupseteqq         msb          35   0 mathrel  x
