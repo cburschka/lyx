@@ -57,12 +57,8 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 		dim_.d -= h_;
 	}
 	// seperate things a bit
-	int em = mathed_char_width(mi.base.font, 'M');
-	if (name() == "not")
-		// \not is a special case. 
-		// It must have 0 width to align properly with the next symbol.
-		dim_.w = 0;
-	else if (isRelOp())
+	int const em = mathed_char_width(mi.base.font, 'M');
+	if (isRelOp())
 		dim_.w += static_cast<int>(0.5*em+0.5);
 	else
 		dim_.w += static_cast<int>(0.15*em+0.5);
@@ -80,9 +76,7 @@ void MathSymbolInset::draw(MathPainterInfo & pi, int x, int y) const
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
-	int em = mathed_char_width(pi.base.font, 'M');
-	// Here we don't need a special case for \not, as it needs the same
-	// increase in x as the next symbol.
+	int const em = mathed_char_width(pi.base.font, 'M');
 	if (isRelOp())
 		x += static_cast<int>(0.25*em+0.5);
 	else

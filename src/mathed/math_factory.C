@@ -109,7 +109,9 @@ void initSymbols()
 			is >> tmp;
 			skip = !math_font_available(tmp);
 			continue;
-		} else if (line.size() >= 3 && line.substr(0, 3) == "end") {
+		} else if (line.size() >= 4 && line.substr(0, 4) == "else") {
+			skip = !skip;
+		} else if (line.size() >= 5 && line.substr(0, 5) == "endif") {
 			skip = false;
 			continue;
 		} else if (skip)

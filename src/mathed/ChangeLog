@@ -1,3 +1,9 @@
+2002-10-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* math_factory.C (initSymbols): Support "else" token.
+
+	* math_symbolinset.C (metrics): Remove special case for \not.
+
 2002-10-18  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (latexString): Revert yesterday's change. It's going to

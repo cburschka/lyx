@@ -196,8 +196,13 @@ clubsuit           cmsy        124 167 mathord  x
 diamondsuit        cmsy        125 168 mathord  x
 heartsuit          cmsy        126 169 mathord  x
 spadesuit          cmsy        127 170 mathord  x
-# We define \not as mathrel in order to align it properly
-not                cmsy         54   0 mathrel  x 
+# We define lyxnot as mathrel in order to have proper alignment
+lyxnot             cmsy         54  47 mathrel  x
+iffont cmsy
+\def\not{\lyxnot\kern-12mu}
+else
+\def\not{\lyxnot\kern-20mu}
+endif
 coprod             cmex         96   0 mathop   x
 bigvee             cmex         87   0 mathop   x
 bigwedge           cmex         86   0 mathop   x
@@ -779,20 +784,20 @@ iffont cmsy
 \def\mapsto{\mapstochar\kern-12mu\rightarrow}
 \def\longmapsto{\mapstochar\kern-9mu\lyxbar\kern-11mu\rightarrow}
 \def\models{\vert\kern-7.5mu\lyxeq}
-end
+endif
 iffont cmm
 \def\hookrightarrow{\lhook\kern-13mu\rightarrow}
 \def\hookleftarrow{\leftarrow\kern-13mu\rhook}
 \def\bowtie{\triangleright\kern-6mu\triangleleft}
-end
+endif
 iffont msa
 \def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}
 \def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}
 \def\dasharrow{\dashrightarrow}
-end
+endif
 iffont msb
 \def\Join{\ltimes\kern-12mu\rtimes}
-end
+endif
 \def\mathcircumflex{\mbox{\^{}}}
 
 neq                lyxsymbol             185 0 mathrel  x
