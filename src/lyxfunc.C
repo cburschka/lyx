@@ -1265,7 +1265,7 @@ string const LyXFunc::Dispatch(int ac,
 		string file_name;
 		int row;
 		istringstream istr(argument);
-		istr >> filename >> row;
+		istr >> file_name >> row;
 #endif
 		// Must replace extension of the file to be .lyx and get full path
 		string const s(ChangeExtension(file_name, ".lyx"));
