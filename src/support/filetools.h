@@ -183,8 +183,8 @@ string CleanupPath(string const & path) ;
 */
 string ReplaceEnvironmentPath(string const & path);
 
-/* Set Link to the path File Points to as a symbolic link.
-   Return True if succesfull, False other wise */
+/* Set Link to the path file points to as a symbolic link.
+   Returns true if successful */
 bool LyXReadLink(string const & file, string & Link);
 
 /* Uses kpsewhich to find tex files */

@@ -529,6 +529,7 @@ private:
 			    float & fill_hfill,
 			    float & fill_label_hfill,
 			    bool bidi = true) const;
+
 	///
 	void DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const;
 

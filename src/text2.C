@@ -3542,7 +3542,6 @@ void LyXText::CursorDownParagraph() const
 }
 
 
-
 void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 {
 	// Would be wrong to delete anything if we have a selection.
@@ -3886,14 +3885,14 @@ bool LyXText::TextHandleUndo(Undo * undo)
 void LyXText::FinishUndo()
 {
 	// makes sure the next operation will be stored
-	undo_finished = True;
+	undo_finished = true;
 }
 
 
 void LyXText::FreezeUndo()
 {
 	// this is dangerous and for internal use only
-	undo_frozen = True;
+	undo_frozen = true;
 }
 
 

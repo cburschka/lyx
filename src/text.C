@@ -3155,20 +3155,11 @@ void LyXText::SelectSelectedWord()
 /* -------> Delete from cursor up to the end of the current or next word. */
 void LyXText::DeleteWordForward()
 {
-	LyXCursor tmpcursor = cursor;
-        
 	if (!cursor.par->Last())
 		CursorRight();
-	// CHECK See comment on top of text.C
 	else {
-		/* -------> Skip initial non-word stuff. */
-		while ( cursor.pos < cursor.par->Last() 
-			&& (cursor.par->IsSeparator(cursor.pos)
-			    || cursor.par->IsKomma(cursor.pos)) )
-			cursor.pos++;
-		
-		SetCursorIntern(cursor.par, cursor.pos);
-		selection = True; // to avoid deletion 
+		LyXCursor tmpcursor = cursor;
+		selection = true; // to avoid deletion 
 		CursorRightOneWord();
 		sel_cursor = cursor;
 		cursor = tmpcursor;
@@ -3183,17 +3174,16 @@ void LyXText::DeleteWordForward()
 /* -------> Delete from cursor to start of current or prior word. */
 void LyXText::DeleteWordBackward()
 {
-       LyXCursor tmpcursor = cursor;
        if (!cursor.par->Last())
-         CursorLeft();
-       // CHECK See comment on top of text.C
-       else{
-         selection = true; // to avoid deletion 
-         CursorLeftOneWord();
-         sel_cursor = cursor;
-         cursor = tmpcursor;
-         SetSelection();
-         CutSelection();
+	       CursorLeft();
+       else {
+	       LyXCursor tmpcursor = cursor;
+	       selection = true; // to avoid deletion 
+	       CursorLeftOneWord();
+	       sel_cursor = cursor;
+	       cursor = tmpcursor;
+	       SetSelection();
+	       CutSelection();
        }
 }
 
@@ -3201,19 +3191,18 @@ void LyXText::DeleteWordBackward()
 /* -------> Kill to end of line. */
 void LyXText::DeleteLineForward()
 {
-	
-
 	if (!cursor.par->Last())
 		// Paragraph is empty, so we just go to the right
 		CursorRight();
 	else {
-		// CHECK See comment on top of text.C
 		LyXCursor tmpcursor = cursor;
+		selection = true; // to avoid deletion 
 		CursorEnd();
 		sel_cursor = cursor;
 		cursor = tmpcursor;
 		SetSelection();
-		if (selection == false) {
+		// What is this test for ??? (JMarc)
+		if (!selection) {
 			DeleteWordForward();
 		} else {
 			CutSelection();

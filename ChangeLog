@@ -1,3 +1,15 @@
+2000-05-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text.C (DeleteLineForward): set selection to true to avoid
+	that DeleteEmptyParagraphMechanism does some magic. This is how it
+	is done in all other functions, and seems reasonable.
+	(DeleteWordForward): do not jump over non-word stuff, since
+	CursorRightOneWord() already does it.
+	
+	Remove the CHECK tag from DeleteLineForward, DeleteWordForward and
+	DeleteWordBackward, since they seem safe to me (since selection is
+	set to "true") DeleteEmptyParagraphMechanism does nothing.
+
 2000-05-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_main.C (easyParse): simplify the code by factoring the
