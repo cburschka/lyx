@@ -36,7 +36,7 @@ public:
 		/// The name of the tempfile used for manipulations.
 		string tempname;
 		/// how the inset is displayed by LyX
-		grfx::DisplayType display;
+		lyx::graphics::DisplayType display;
 		/// The scale of the displayed graphic (If shown).
 		unsigned int lyxscale;
 	};

@@ -19,7 +19,8 @@
 using std::endl;
 using std::abs;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 // This is to be connected to a function that will return a new
 // instance of a viable derived class.
@@ -53,4 +54,5 @@ Image::getScaledDimensions(Params const & params) const
 	return std::make_pair(width, height);
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

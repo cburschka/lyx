@@ -167,7 +167,7 @@ public:
 			    bool = true, bool = false);
 
 	///
-	void addPreview(grfx::PreviewLoader &) const;
+	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 protected:
 	///

@@ -23,7 +23,8 @@
 class Inset;
 class BufferView;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class PreviewImage;
 class PreviewLoader;
@@ -87,7 +88,7 @@ private:
 	boost::signals::connection connection_;
 };
 
-} // namespace grfx
-
+} // namespace graphics
+} // namespace lyx
 
 #endif // PREVIEWEDINSET_H

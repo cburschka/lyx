@@ -33,7 +33,8 @@
 #include <vector>
 #include <utility>
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class Params;
 
@@ -107,6 +108,7 @@ protected:
 	getScaledDimensions(Params const & params) const;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // GRAPHICSIMAGE_H

@@ -27,7 +27,7 @@ class MetricsInfo;
 class PainterInfo;
 
 
-class RenderInset 
+class RenderInset
 {
 public:
 	virtual ~RenderInset();
@@ -62,7 +62,7 @@ public:
 
 	/// This should provide the text for the button
 	void update(string const &, bool editable);
-	
+
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw inset and update (xo, yo)-cache
@@ -84,7 +84,7 @@ public:
 	virtual RenderInset * clone() const;
 
 	/// Refresh the info about which file to display and how to display it.
-	void update(grfx::Params const & params);
+	void update(lyx::graphics::Params const & params);
 
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -109,10 +109,10 @@ private:
 
 	/// Is the image ready to draw, or should we display a message instead?
 	bool readyToDisplay() const;
-	
+
 	/// The stored data.
-	grfx::Loader loader_;
-	grfx::Params params_;
+	lyx::graphics::Loader loader_;
+	lyx::graphics::Params params_;
 
 	/// Cached variable (not copied).
 	mutable unsigned long checksum_;

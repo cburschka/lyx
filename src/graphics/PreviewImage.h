@@ -17,7 +17,8 @@
 
 class Inset;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class PreviewLoader;
 class Image;
@@ -55,6 +56,7 @@ private:
 	boost::scoped_ptr<Impl> const pimpl_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // PREVIEWIMAGE_H

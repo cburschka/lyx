@@ -25,7 +25,8 @@
 
 using namespace lyx::support;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 /** The cache contains one item per file, so use a map to find the
  *  cache item quickly by filename.
@@ -113,4 +114,5 @@ Cache::ItemPtr const Cache::item(string const & file) const
 	return it->second;
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

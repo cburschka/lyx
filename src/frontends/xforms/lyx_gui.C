@@ -172,7 +172,7 @@ void parse_init(int & argc, char * argv[])
 
 	lyxColorHandler.reset(new LyXColorHandler());
 
-	using namespace grfx;
+	using namespace lyx::graphics;
 
 	// connect the image loader based on the xforms library
 	Image::newImage = boost::bind(&xformsImage::newImage);

@@ -30,7 +30,8 @@
 
 using namespace lyx::support;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 bool PreviewedInset::activated()
 {
@@ -50,15 +51,15 @@ void PreviewedInset::generatePreview()
 	    !view() || !view()->buffer())
 		return;
 
-	grfx::Previews & previews = grfx::Previews::get();
-	grfx::PreviewLoader & loader = previews.loader(view()->buffer());
+	Previews & previews = Previews::get();
+	PreviewLoader & loader = previews.loader(view()->buffer());
 	addPreview(loader);
 	if (!snippet_.empty())
 		loader.startLoading();
 }
 
 
-void PreviewedInset::addPreview(grfx::PreviewLoader & ploader)
+void PreviewedInset::addPreview(PreviewLoader & ploader)
 {
 	if (!Previews::activated() || !previewWanted())
 		return;
@@ -88,8 +89,8 @@ void PreviewedInset::removePreview()
 	if (!view() || !view()->buffer() || snippet_.empty())
 		return;
 
-	grfx::Previews & previews = grfx::Previews::get();
-	grfx::PreviewLoader & loader = previews.loader(view()->buffer());
+	Previews & previews = Previews::get();
+	PreviewLoader & loader = previews.loader(view()->buffer());
 	loader.remove(snippet_);
 	snippet_.erase();
 	pimage_ = 0;
@@ -103,8 +104,8 @@ bool PreviewedInset::previewReady() const
 		return false;
 
 	if (!pimage_ || snippet_ != pimage_->snippet()) {
-		grfx::PreviewLoader & ploader =
-			grfx::Previews::get().loader(view()->buffer());
+		PreviewLoader & ploader =
+			Previews::get().loader(view()->buffer());
 		pimage_ = ploader.preview(snippet_);
 	}
 
@@ -115,7 +116,7 @@ bool PreviewedInset::previewReady() const
 }
 
 
-void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
+void PreviewedInset::imageReady(PreviewImage const & pimage) const
 {
 	// Check snippet against the Inset's current contents
 	if (snippet_ != pimage.snippet())
@@ -127,4 +128,5 @@ void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
 		view()->updateInset(&inset_);
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

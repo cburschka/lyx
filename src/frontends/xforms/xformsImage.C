@@ -45,7 +45,8 @@ unsigned int packedcolor(LColor::color c);
 } // namespace anon
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 /// Access to this class is through this static method.
 Image::ImagePtr xformsImage::newImage()
@@ -364,10 +365,13 @@ void xformsImage::errorCB(string const & error_message)
 	finishedLoading(false);
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 
 namespace {
+
+namespace grfx = lyx::graphics;
 
 extern "C" {
 

@@ -52,6 +52,7 @@
 using std::ostream;
 using std::vector;
 
+namespace grfx = lyx::graphics;
 
 class InsetFormula::PreviewImpl : public grfx::PreviewedInset {
 public:

@@ -21,7 +21,8 @@
 
 class Buffer;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class PreviewLoader;
 
@@ -66,6 +67,7 @@ private:
 	boost::scoped_ptr<Impl> const pimpl_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // PREVIEWS_H

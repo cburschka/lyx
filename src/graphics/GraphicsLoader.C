@@ -25,7 +25,8 @@
 
 #include <list>
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 struct Loader::Impl : boost::signals::trackable {
 	///
@@ -296,4 +297,5 @@ void Loader::Impl::startLoading()
 }
 
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

@@ -19,8 +19,8 @@
 using std::endl;
 using std::list;
 
-
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 int LoaderQueue::s_numimages_ = 5;
 int LoaderQueue::s_millisecs_ = 500;
@@ -113,4 +113,5 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 }
 
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

@@ -18,11 +18,16 @@
 #include "LString.h"
 #include "lyxlength.h"
 
+namespace grfx = lyx::graphics;
+
 class LyXLex;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 	class Params;
 }
+}
+
 
 /// This struct holds all the parameters needed by insetGraphics.
 struct InsetGraphicsParams

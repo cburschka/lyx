@@ -18,7 +18,8 @@
 #include "LString.h"
 #include "support/translator.h"
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 /// The status of the loading process
 enum ImageStatus {
@@ -68,6 +69,7 @@ extern Translator<DisplayType, string> displayTranslator;
 ///
 void setDisplayTranslator();
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // GRAPHICSTYPES_H

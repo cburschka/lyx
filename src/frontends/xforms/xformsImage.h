@@ -24,7 +24,8 @@
 struct flimage_;
 typedef flimage_ FL_IMAGE;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class xformsImage : public Image
 {
@@ -104,6 +105,7 @@ private:
 	PixmapStatus pixmap_status_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // XFORMSIMAGE_H

@@ -32,7 +32,8 @@ using namespace lyx::support;
 
 using std::endl;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 struct CacheItem::Impl : public boost::signals::trackable {
 
@@ -311,10 +312,13 @@ void CacheItem::Impl::imageLoaded(bool success)
 }
 
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 
 namespace {
+
+namespace grfx = lyx::graphics;
 
 string const findTargetFormat(string const & from)
 {
@@ -351,7 +355,8 @@ string const findTargetFormat(string const & from)
 } // anon namespace
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 void CacheItem::Impl::convertToDisplayFormat()
 {
@@ -409,4 +414,5 @@ void CacheItem::Impl::convertToDisplayFormat()
 	converter_->startConversion();
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

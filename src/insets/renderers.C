@@ -28,6 +28,8 @@
 
 using namespace lyx::support;
 
+namespace grfx = lyx::graphics;
+
 RenderInset::RenderInset()
 {}
 

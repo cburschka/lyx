@@ -14,7 +14,8 @@
 #include "graphics/GraphicsTypes.h"
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 /// The translator between the Display enum and corresponding lyx string.
 Translator<DisplayType, string> displayTranslator(DefaultDisplay, "default");
@@ -41,4 +42,5 @@ void setDisplayTranslator()
 	}
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

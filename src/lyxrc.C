@@ -40,6 +40,8 @@ using std::ios;
 using std::endl;
 using std::vector;
 
+namespace grfx = lyx::graphics;
+
 class kb_keymap;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;

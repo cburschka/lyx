@@ -37,7 +37,8 @@
 
 class InsetGraphics;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class Image;
 class Converter;
@@ -95,6 +96,7 @@ private:
 	boost::scoped_ptr<Impl> const pimpl_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // GRAPHICSCACHEITEM_H

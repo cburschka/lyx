@@ -19,9 +19,12 @@
 
 class LyXFont;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 	class Image;
 }
+}
+
 
 /**
  * Painter - A painter class to encapsulate all graphics parameters and operations
@@ -132,7 +135,7 @@ public:
 	/// draw an image from the image cache
 	virtual Painter & image(int x, int y,
 		int w, int h,
-		grfx::Image const & image) = 0;
+		lyx::graphics::Image const & image) = 0;
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,

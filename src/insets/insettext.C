@@ -76,6 +76,7 @@ using namespace lyx::support;
 using lyx::pos_type;
 using lyx::textclass_type;
 
+namespace grfx = lyx::graphics;
 
 // These functions should probably go into bufferview_funcs somehow (Jug)
 

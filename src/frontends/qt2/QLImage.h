@@ -18,7 +18,8 @@
 
 #include <qpixmap.h>
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class QLImage : public Image {
 public:
@@ -80,6 +81,7 @@ private:
 	QPixmap xformed_pixmap_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // QLIMAGE_H

@@ -1,3 +1,6 @@
+2003-07-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* introduce namespace lyx::graphics
 
 2003-06-27  André Pönitz  <poenitz@gmx.net>
 
@@ -16,7 +19,7 @@
 2003-06-06  Alfredo Braunstein  <abraunst@libero.it>
 
 	* Dialogs.[Ch] (visible): added.
-	
+
 2003-06-03  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.h: add sync_events()

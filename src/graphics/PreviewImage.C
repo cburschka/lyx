@@ -22,7 +22,8 @@
 
 using namespace lyx::support;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 struct PreviewImage::Impl : public boost::signals::trackable {
 	///
@@ -152,4 +153,5 @@ void PreviewImage::Impl::statusChanged()
 	}
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

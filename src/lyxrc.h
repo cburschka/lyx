@@ -337,7 +337,7 @@ enum LyXRCTags {
 	///
 	int label_init_length;
 	///
-	grfx::DisplayType display_graphics;
+	lyx::graphics::DisplayType display_graphics;
 	///
 	bool show_banner;
 	///

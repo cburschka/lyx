@@ -41,6 +41,7 @@ using std::ostream;
 using std::endl;
 using std::max;
 
+namespace grfx = lyx::graphics;
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), inset(bp),

@@ -33,6 +33,8 @@
 
 using namespace lyx::support;
 
+namespace grfx = lyx::graphics;
+
 typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 
 

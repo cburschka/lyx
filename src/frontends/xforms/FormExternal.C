@@ -32,6 +32,8 @@
 
 using namespace lyx::support;
 
+namespace grfx = lyx::graphics;
+
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 
 FormExternal::FormExternal(Dialog & parent)

@@ -211,7 +211,7 @@ public:
 	bool forceDefaultParagraphs(Inset const * in) const;
 
 	///
-	void addPreview(grfx::PreviewLoader &) const;
+	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 	//
 	// Public structures and variables

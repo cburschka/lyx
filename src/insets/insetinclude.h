@@ -109,7 +109,7 @@ public:
 	bool loadIfNeeded() const;
 
 	///
-	void addPreview(grfx::PreviewLoader &) const;
+	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 private:
 	/// get the text displayed on the button

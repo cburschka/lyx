@@ -230,7 +230,7 @@ public:
 	void appendParagraphs(Buffer * bp, ParagraphList &);
 
 	///
-	void addPreview(grfx::PreviewLoader &) const;
+	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 	//
 	// Public structures and variables

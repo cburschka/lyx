@@ -3,7 +3,7 @@
  * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
- * \author unknown
+ * \author Lars Gullik Bjønnes
  */
 
 #include <config.h>
@@ -58,6 +58,8 @@ using std::exit;
 using std::signal;
 using std::system;
 #endif
+
+namespace grfx = lyx::graphics;
 
 extern void LoadLyXFile(string const &);
 extern void QuitLyX();

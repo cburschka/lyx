@@ -63,6 +63,8 @@ using std::setfill;
 using std::setw;
 using std::endl;
 
+namespace grfx = lyx::graphics;
+
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
 

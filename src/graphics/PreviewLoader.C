@@ -117,7 +117,8 @@ typedef InProgressProcesses::value_type InProgressProcess;
 } // namespace anon
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 struct PreviewLoader::Impl : public boost::signals::trackable {
 	///
@@ -241,7 +242,8 @@ Buffer const & PreviewLoader::buffer() const
 	return pimpl_->buffer();
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 
 // The details of the Impl
@@ -306,7 +308,8 @@ void InProgress::stop() const
 } // namespace anon
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
@@ -637,8 +640,8 @@ void PreviewLoader::Impl::dumpData(ostream & os,
 	}
 }
 
-} // namespace grfx
-
+} // namespace graphics
+} // namespace lyx
 
 namespace {
 

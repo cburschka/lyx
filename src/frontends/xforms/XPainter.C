@@ -35,6 +35,7 @@ using namespace lyx::support;
 using std::endl;
 using std::max;
 
+namespace grfx = lyx::graphics;
 
 XPainter::XPainter(XWorkArea & xwa)
 	: Painter(), owner_(xwa)

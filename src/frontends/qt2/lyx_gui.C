@@ -119,7 +119,7 @@ void parse_init(int & argc, char * argv[])
 {
 	static LQApplication a(argc, argv);
 
-	using namespace grfx;
+	using namespace lyx::graphics;
 
 	Image::newImage = boost::bind(&QLImage::newImage);
 	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);

@@ -26,7 +26,8 @@
 #include <boost/shared_ptr.hpp>
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class CacheItem;
 
@@ -79,6 +80,7 @@ private:
 	boost::scoped_ptr<Impl> const pimpl_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // GRAPHICSCACHE_H

@@ -110,6 +110,8 @@ using std::for_each;
 using lyx::pos_type;
 using lyx::textclass_type;
 
+namespace grfx = lyx::graphics;
+
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 

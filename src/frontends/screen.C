@@ -48,6 +48,8 @@ using std::min;
 using std::max;
 using std::endl;
 
+namespace grfx = lyx::graphics;
+
 namespace {
 
 class SplashScreen : boost::noncopyable, boost::signals::trackable {

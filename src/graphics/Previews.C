@@ -22,9 +22,11 @@
 
 #include <map>
 
+namespace lyx {
+
 using namespace lyx::support;
 
-namespace grfx {
+namespace graphics {
 
 bool Previews::activated()
 {
@@ -99,4 +101,5 @@ void Previews::generateBufferPreviews(Buffer const & buffer) const
 	ploader.startLoading();
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

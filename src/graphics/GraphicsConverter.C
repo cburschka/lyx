@@ -36,7 +36,8 @@ using namespace lyx::support;
 using std::endl;
 using std::ostream;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 struct Converter::Impl : public boost::signals::trackable {
 	///
@@ -108,7 +109,9 @@ string const & Converter::convertedFile() const
 	return pimpl_->finished_ ? pimpl_->to_file_ : empty;
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
+
 
 //------------------------------
 // Implementation details follow
@@ -126,7 +129,8 @@ bool build_script(string const & from_file, string const & to_file_base,
 } // namespace anon
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		      string const & from_format, string const & to_format)
@@ -223,7 +227,8 @@ void Converter::Impl::converted(pid_t /* pid */, int retval)
 	}
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 namespace {
 

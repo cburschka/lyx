@@ -70,7 +70,7 @@ public:
 	///
 	void generatePreview() const;
 	///
-	void addPreview(grfx::PreviewLoader &) const;
+	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///
 	void mutate(string const & type);
 

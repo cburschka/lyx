@@ -22,7 +22,8 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class Converter : boost::noncopyable {
 public:
@@ -65,6 +66,7 @@ private:
 	boost::scoped_ptr<Impl> const pimpl_;
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // GRAPHICSCONVERTER_H

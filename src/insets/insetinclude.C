@@ -50,6 +50,8 @@ using std::endl;
 using std::vector;
 using std::pair;
 
+namespace grfx = lyx::graphics;
+
 extern BufferList bufferlist;
 
 

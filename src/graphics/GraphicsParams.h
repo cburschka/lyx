@@ -18,7 +18,8 @@
 #include "LString.h"
 
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 /** Parse a string of the form "200pt 500pt 300mm 5in" into a
  *  usable bounding box.
@@ -67,6 +68,7 @@ struct Params
 bool operator==(Params const &, Params const &);
 bool operator!=(Params const &, Params const &);
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // GRAPHICSPARAMS_H

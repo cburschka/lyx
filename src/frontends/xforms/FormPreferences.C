@@ -68,6 +68,8 @@ extern string user_lyxdir;
 
 using namespace lyx::support;
 
+namespace grfx = lyx::graphics;
+
 namespace {
 
 // These should probably go inside the class definition...

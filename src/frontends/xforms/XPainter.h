@@ -95,7 +95,7 @@ public:
 	/// draw an image from the image cache
 	virtual Painter & image(int x, int y,
 		int w, int h,
-		grfx::Image const & image);
+		lyx::graphics::Image const & image);
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,

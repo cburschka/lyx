@@ -18,7 +18,8 @@
 
 using std::abs;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 Params::Params()
 	: display(ColorDisplay),
@@ -95,4 +96,5 @@ bool operator!=(BoundingBox const & a, BoundingBox const & b)
 	return !(a == b);
 }
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx

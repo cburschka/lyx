@@ -36,6 +36,7 @@
 
 using std::endl;
 
+namespace grfx = lyx::graphics;
 
 QLPainter::QLPainter(QWorkArea & qwa)
 	: Painter(), owner_(qwa), paint_check_(0)

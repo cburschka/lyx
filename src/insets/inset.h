@@ -34,8 +34,10 @@ class WordLangTuple;
 class ParagraphList;
 class UpdatableInset;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 	class PreviewLoader;
+}
 }
 
 /// Insets
@@ -311,7 +313,7 @@ public:
 	 *  Most insets have no interest in this capability, so the method
 	 *  defaults to empty.
 	 */
-	virtual void addPreview(grfx::PreviewLoader &) const {}
+	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
 
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.

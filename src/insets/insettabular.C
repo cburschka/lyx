@@ -59,6 +59,8 @@ using std::endl;
 using std::swap;
 using std::max;
 
+namespace grfx = lyx::graphics;
+
 namespace {
 
 int const ADD_TO_HEIGHT = 2;

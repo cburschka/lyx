@@ -29,7 +29,8 @@
 #include <set>
 #include <queue>
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 class LoaderQueue {
 public:
@@ -74,6 +75,7 @@ private:
 	void stopLoader();
 };
 
-} // namespace grfx
+} // namespace graphics
+} // namespace lyx
 
 #endif // LOADERQUEUE_H

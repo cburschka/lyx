@@ -32,7 +32,8 @@ using namespace lyx::support;
 using std::find_if;
 using std::endl;
 
-namespace grfx {
+namespace lyx {
+namespace graphics {
 
 /// Access to this class is through this static method.
 Image::ImagePtr QLImage::newImage()
@@ -253,4 +254,5 @@ void QLImage::scale(Params const & params)
 	xformed_pixmap_ = xformed_pixmap_.xForm(m);
 }
 
-} // namespace grfx
+} // namespace graphics
+} // lyx
