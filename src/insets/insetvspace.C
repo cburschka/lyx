@@ -86,6 +86,13 @@ void InsetVSpace::read(Buffer const &, LyXLex & lex)
 		lex.next();
 		space_ = VSpace(lex.getString());
 	}
+
+	if (lex.isOK())
+		lex.next();
+	if (lex.getString() != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
+	}
 }
 
 
