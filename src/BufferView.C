@@ -134,12 +134,6 @@ void BufferView::beforeChange(LyXText * text)
 }
 
 
-void BufferView::finishChange(bool fitcur)
-{
-	pimpl_->finishChange(fitcur);
-}
-
-
 void BufferView::savePosition(unsigned int i)
 {
 	pimpl_->savePosition(i);

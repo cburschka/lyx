@@ -88,8 +88,6 @@ public:
 	///
 	void beforeChange(LyXText *);
 	///
-	void finishChange(bool fitcur = false);
-	///
 	void savePosition(unsigned int i);
 	///
 	void restorePosition(unsigned int i);

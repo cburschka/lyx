@@ -22,18 +22,31 @@
 #include "ParagraphParameters.h"
 #include "gettext.h"
 #include "intl.h"
+#include "language.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/screen.h"
 #include "frontends/WorkArea.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
+#include "insets/insetquotes.h"
 #include "insets/insetcommand.h"
 #include "undo_funcs.h"
 
 using std::endl;
 
 extern string current_layout;
+
+namespace {
+
+	void finishChange(BufferView * bv, bool fitcur = false)
+	{
+		finishUndo();
+		bv->moveCursorUpdate(fitcur);
+		bv->owner()->view_state_changed();
+	}
+
+}
 
 
 bool LyXText::gotoNextInset(BufferView * bv,
@@ -271,7 +284,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update(bv, false);
 		deleteWordForward(bv);
 		update(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
@@ -279,7 +292,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update(bv, false);
 		deleteWordBackward(bv);
 		update(bv, true);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_DELETE_LINE_FORWARD:
@@ -287,7 +300,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update(bv, false);
 		deleteLineForward(bv);
 		update(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_SHIFT_TAB:
@@ -296,7 +309,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		update(bv, false);
 		cursorTab(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_WORDRIGHT:
@@ -307,7 +320,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cursorLeftOneWord(bv);
 		else
 			cursorRightOneWord(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_WORDLEFT:
@@ -318,7 +331,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cursorRightOneWord(bv);
 		else
 			cursorLeftOneWord(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_BEGINNINGBUF:
@@ -326,7 +339,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		update(bv, false);
 		cursorTop(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_ENDBUF:
@@ -334,7 +347,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		update(bv, false);
 		cursorBottom(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_RIGHTSEL:
@@ -343,7 +356,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cursorLeft(bv);
 		else
 			cursorRight(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_LEFTSEL:
@@ -352,55 +365,55 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cursorRight(bv);
 		else
 			cursorLeft(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_UPSEL:
 		update(bv, false);
 		cursorUp(bv, true);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_DOWNSEL:
 		update(bv, false);
 		cursorDown(bv, true);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
 		update(bv, false);
 		cursorUpParagraph(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_DOWN_PARAGRAPHSEL:
 		update(bv, false);
 		cursorDownParagraph(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_PRIORSEL:
 		update(bv, false);
 		cursorPrevious(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_NEXTSEL:
 		update(bv, false);
 		cursorNext(bv);
-		bv->finishChange();
+		finishChange(bv, true);
 		break;
 
 	case LFUN_HOMESEL:
 		update(bv, false);
 		cursorHome(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_ENDSEL:
 		update(bv, false);
 		cursorEnd(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_WORDRIGHTSEL:
@@ -409,7 +422,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cursorLeftOneWord(bv);
 		else
 			cursorRightOneWord(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_WORDLEFTSEL:
@@ -418,7 +431,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cursorRightOneWord(bv);
 		else
 			cursorLeftOneWord(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_RIGHT: {
@@ -438,7 +451,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		}
 		if (!is_rtl)
 			cursorRight(bv, false);
-		bv->finishChange(false);
+		finishChange(bv);
 		break;
 	}
 
@@ -463,7 +476,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		}
 		if (is_rtl)
 			cursorRight(bv, false);
-		bv->finishChange(false);
+		finishChange(bv);
 		break;
 	}
 
@@ -472,7 +485,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
 		cursorUp(bv);
-		bv->finishChange(false);
+		finishChange(bv);
 		break;
 
 	case LFUN_DOWN:
@@ -480,7 +493,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
 		cursorDown(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_UP_PARAGRAPH:
@@ -488,7 +501,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
 		cursorUpParagraph(bv);
-		bv->finishChange();
+		finishChange(bv);
 		break;
 
 	case LFUN_DOWN_PARAGRAPH:
@@ -496,7 +509,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
 		cursorDownParagraph(bv);
-		bv->finishChange(false);
+		finishChange(bv, false);
 		break;
 
 	case LFUN_PRIOR:
@@ -504,7 +517,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
 		cursorPrevious(bv);
-		bv->finishChange(false);
+		finishChange(bv, false);
 		// was:
 		// finishUndo();
 		// moveCursorUpdate(false, false);
@@ -516,7 +529,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
 		cursorNext(bv);
-		bv->finishChange(false);
+		finishChange(bv, false);
 		break;
 
 	case LFUN_HOME:
@@ -524,7 +537,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		update(bv);
 		cursorHome(bv);
-		bv->finishChange(false);
+		finishChange(bv, false);
 		break;
 
 	case LFUN_END:
@@ -532,7 +545,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->beforeChange(this);
 		update(bv);
 		cursorEnd(bv);
-		bv->finishChange(false);
+		finishChange(bv, false);
 		break;
 
 	case LFUN_BREAKLINE:
@@ -875,7 +888,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			return Inset::UNDISPATCHED;
 		update(bv, false);
 		cursorTop(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_ENDBUFSEL:
@@ -883,7 +896,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			return Inset::UNDISPATCHED;
 		update(bv, false);
 		cursorBottom(bv);
-		bv->finishChange(true);
+		finishChange(bv, true);
 		break;
 
 	case LFUN_GETXY:
@@ -1007,6 +1020,29 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		tmp.push_back(Inset::LABEL_CODE);
 		tmp.push_back(Inset::REF_CODE);
 		gotoInset(bv, tmp, true);
+		break;
+	}
+
+	case LFUN_QUOTE: {
+		Paragraph const * par = cursor.par();
+		lyx::pos_type pos = cursor.pos();
+		char c;
+
+		if (!pos)
+			c = ' ';
+		else if (par->isInset(pos - 1) && par->getInset(pos - 1)->isSpace())
+			c = ' ';
+		else
+			c = par->getChar(pos - 1);
+
+		bv->hideCursor();
+		LyXLayout_ptr const & style = par->layout();
+
+		if (style->pass_thru ||
+				par->getFontSettings(bv->buffer()->params,
+					 pos).language()->lang() == "hebrew" ||
+			(!bv->insertInset(new InsetQuotes(c, bv->buffer()->params))))
+			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 		break;
 	}
 

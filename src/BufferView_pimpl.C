@@ -40,7 +40,6 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "funcrequest.h"
-#include "language.h"
 #include "factory.h"
 
 #include "insets/insetbib.h"
@@ -1089,14 +1088,6 @@ void BufferView::Pimpl::beforeChange(LyXText * text)
 }
 
 
-void BufferView::Pimpl::finishChange(bool fitcur)
-{
-	finishUndo();
-	moveCursorUpdate(fitcur);
-	bv_->owner()->view_state_changed();
-}
-
-
 void BufferView::Pimpl::savePosition(unsigned int i)
 {
 	if (i >= saved_positions_num)
@@ -1570,10 +1561,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 	break;
 
-	case LFUN_QUOTE:
-		smartQuote();
-		break;
-
 	case LFUN_HTMLURL:
 	case LFUN_URL:
 	{
@@ -1912,32 +1899,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	} // end of switch
 
 	return true;
-}
-
-
-void BufferView::Pimpl::smartQuote()
-{
-	LyXText const * lt = bv_->getLyXText();
-	Paragraph const * par = lt->cursor.par();
-	pos_type pos = lt->cursor.pos();
-	char c;
-
-	if (!pos
-	    || (par->isInset(pos - 1)
-		&& par->getInset(pos - 1)->isSpace()))
-		c = ' ';
-	else
-		c = par->getChar(pos - 1);
-
-	hideCursor();
-
-	LyXLayout_ptr const & style = par->layout();
-
-	if (style->pass_thru ||
-	    par->getFontSettings(buffer_->params,
-				 pos).language()->lang() == "hebrew" ||
-		(!insertInset(new InsetQuotes(c, buffer_->params))))
-		bv_->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 }
 
 

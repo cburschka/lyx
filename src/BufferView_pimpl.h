@@ -96,8 +96,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void beforeChange(LyXText *);
 	///
-	void finishChange(bool fitcur);
-	///
 	void savePosition(unsigned int i);
 	///
 	void restorePosition(unsigned int i);
@@ -142,8 +140,6 @@ private:
 	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
 	///
 	void hfill();
-	///
-	void smartQuote();
 
 	///
 	BufferView * bv_;
