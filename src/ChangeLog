@@ -1,3 +1,11 @@
+2003-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ToolbarBackend.C (getIcon): complain when icon cannot be found
+
+2003-06-24  "Garst R. Reese" <reese@isn.net>
+
+	* debug.C: fix typo
+
 2003-06-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx_main.C (init): honor LYX_DIR_14x and LYX_USERDIR_14x

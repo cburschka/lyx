@@ -1,5 +1,8 @@
 2003-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* images/*: rename a few icons because to follow the latest lfun
+	renaming frenzy
+
 	* configure.m4: add some code to workaround zsh incompatibilities
 	(bug 977)
 
@@ -37,9 +40,10 @@
 
 2003-06-12  Angus Leeming  <leeming@lyx.org>
 
-	* scripts/fig2pdftex.sh (legacy_xfig): Extract the necessary magic from
-	epstopdf and write it as a shell function, as suggested by Martin Vermeer.
-	Means that we are not dependent on the presence of epstopdf or of perl.
+	* scripts/fig2pdftex.sh (legacy_xfig): Extract the necessary magic
+	from epstopdf and write it as a shell function, as suggested by
+	Martin Vermeer. Means that we are not dependent on the presence of
+	epstopdf or of perl.
 
 2003-06-12  Angus Leeming  <leeming@lyx.org>
 
@@ -104,7 +108,8 @@
 
 2003-06-03  Angus Leeming  <leeming@lyx.org>
 
-	* external_templates: modify the templates to use the converter" mechanism.
+	* external_templates: modify the templates to use the converter"
+	mechanism.
 
 2003-06-02  John Levon  <levon@movementarian.org>
 

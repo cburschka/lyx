@@ -236,6 +236,9 @@ string const ToolbarBackend::getIcon(int action)
 				   << fullname << '\'' << endl;
 		return fullname;
 	}
-
+	
+	lyxerr[Debug::GUI] << "Cannot find icon for command \"" 
+			   << lyxaction.getActionName(f.action) 
+			   << ' ' << f.argument << '"' << endl;
 	return LibFileSearch("images", "unknown", "xpm");
 }

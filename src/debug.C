@@ -34,7 +34,7 @@ error_item errorTags[] = {
 	{ Debug::INIT,      "init",      N_("Program initialisation")},
 	{ Debug::KEY,       "key",       N_("Keyboard events handling")},
 	{ Debug::GUI,       "gui",       N_("GUI handling")},
-	{ Debug::PARSER,    "parser",    N_("Lyxlex grammer parser")},
+	{ Debug::PARSER,    "parser",    N_("Lyxlex grammar parser")},
 	{ Debug::LYXRC,     "lyxrc",     N_("Configuration files reading")},
 	{ Debug::KBMAP,     "kbmap",     N_("Custom keyboard definition")},
 	{ Debug::LATEX,     "latex",     N_("LaTeX generation/execution")},
