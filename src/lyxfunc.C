@@ -1495,7 +1495,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->owner()->updateLayoutChoice();
 		}
 	}
-	sendDispatchMessage(getMessage(), cmd);
+	sendDispatchMessage(_(getMessage()), cmd);
 }
 
 
