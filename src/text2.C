@@ -94,6 +94,7 @@ void LyXText::init(BufferView * bv)
 	current_font = getFont(beg, 0);
 
 	redoParagraphs(beg, end);
+	// why?
 	bv->cursor().resetAnchor();
 
 	updateCounters();

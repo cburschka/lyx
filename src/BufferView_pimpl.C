@@ -374,16 +374,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "resizeCurrentBuffer" << endl;
 
-	int par = -1;
-	int selstartpar = -1;
-	int selendpar = -1;
-
-	pos_type pos = 0;
-	pos_type selstartpos = 0;
-	pos_type selendpos = 0;
-	bool sel = false;
-	bool mark_set  = false;
-
 	owner_->busy(true);
 
 	owner_->message(_("Formatting document..."));
@@ -393,36 +383,12 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	if (!text)
 		return;
 
-	LCursor & cur = bv_->cursor();
-	par = cur.par();
-	pos = cur.pos();
-	selstartpar = cur.selBegin().par();
-	selstartpos = cur.selBegin().pos();
-	selendpar = cur.selEnd().par();
-	selendpos = cur.selEnd().pos();
-	sel = cur.selection();
-	mark_set = cur.mark();
+	// save the cursor mangled in init
+	LCursor cur = bv_->cursor();
 	text->init(bv_);
 	update();
-
-	if (par != -1) {
-		cur.selection() = true;
-		// At this point just to avoid the Delete-Empty-Paragraph-
-		// Mechanism when setting the cursor.
-		cur.mark() = mark_set;
-		if (sel) {
-			text->setCursor(cur, selstartpar, selstartpos);
-			cur.resetAnchor();
-			text->setCursor(cur, selendpar, selendpos);
-			cur.setSelection();
-			text->setCursor(cur, par, pos);
-		} else {
-			text->setCursor(cur, par, pos);
-			cur.resetAnchor();
-			cur.selection() = false;
-		}
-	}
-
+	bv_->cursor() = cur;
+	bv_->cursor().updatePos();
 	fitCursor();
 
 	switchKeyMap();

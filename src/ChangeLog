@@ -1,4 +1,9 @@
 
+2004-03-17  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): remove unneeded and
+	bogus "rebuild cursor" code
+
 2004-03-11  André Pönitz  <poenitz@gmx.net>
 
 	* buffer.[Ch]: use InsetText instead of LyXText as container for 
