@@ -442,7 +442,7 @@ void QPrefsDialog::change_color()
 		return;
 	QListBoxItem * ib(lb->item(lb->currentItem()));
 	QColorItem * ci(static_cast<QColorItem*>(ib));
-	QColor c(QColorDialog::getColor(ci->color()));
+	QColor c(QColorDialog::getColor(ci->color(), qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
 	if (c.isValid()) {
 		ci->color(c);
 		lb->update();

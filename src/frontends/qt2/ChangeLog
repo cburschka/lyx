@@ -1,3 +1,9 @@
+2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QPrefsDialog.C (change_color): 
+	* QDocumentDialog.C (toggleBranchColor): set the parent of the
+	color picker correctly.
+
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLPopupMenu.C (fire): make Qt process events before we

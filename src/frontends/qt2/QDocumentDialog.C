@@ -533,7 +533,7 @@ void QDocumentDialog::toggleBranchColor()
 		string x11hexname = branch->getColor();
 		if (x11hexname[0] == '#')
 			initial.setNamedColor(toqstr(x11hexname));
-		QColor ncol(QColorDialog::getColor(initial));
+		QColor ncol(QColorDialog::getColor(initial, qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
 		if (ncol.isValid()){
 			// add the color to the branchlist
 			branch->setColor(fromqstr(ncol.name()));
