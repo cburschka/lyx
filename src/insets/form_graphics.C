@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include "form_graphics.h"
 
-extern void GraphicxCB(FL_OBJECT*,long);
+extern "C" void GraphicxCB(FL_OBJECT*,long);
 
 FD_Graphics * create_form_Graphics(void)
 {

@@ -28,7 +28,7 @@ extern string system_tempdir;
 
 string browseFile();
 
-void GraphicxCB(FL_OBJECT * obj, long arg) 
+extern "C" void GraphicxCB(FL_OBJECT * obj, long arg) 
 {
 	lyxerr << "GraphicxCB: obj = " << obj << " arg = " << arg << endl;
 	switch (arg) {

@@ -5,6 +5,8 @@
 #include <map>
 #include "LString.h"
 
+using std::map;
+
 struct Language {
 	string lang;
 	string display;
