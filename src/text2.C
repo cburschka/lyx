@@ -60,19 +60,15 @@ using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
-	: height(0), width(0), anchor_row_offset_(0),
+	: height(0), width(0), anchor_y_(0),
 	  inset_owner(0), the_locking_inset(0), bv_owner(bv)
-{
-	anchor_row_ = endRow();
-}
+{}
 
 
 LyXText::LyXText(BufferView * bv, InsetText * inset)
-	: height(0), width(0), anchor_row_offset_(0),
+	: height(0), width(0), anchor_y_(0),
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv)
-{
-	anchor_row_ = endRow();
-}
+{}
 
 
 void LyXText::init(BufferView * bview)
@@ -87,8 +83,7 @@ void LyXText::init(BufferView * bview)
 	width = 0;
 	height = 0;
 
-	anchor_row_ = endRow();
-	anchor_row_offset_ = 0;
+	anchor_y_ = 0;
 
 	current_font = getFont(beg, 0);
 
@@ -559,12 +554,9 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	RowList::iterator end = pit->rows.end();
 
 	// remove rows of paragraph
-	int anchor_cnt = -1;
-	for (int i = 0; rit != end; ++rit, ++i) {
-		if (rit == anchor_row_)
-			anchor_cnt = i;
+	for (int i = 0; rit != end; ++rit, ++i)
 		height -= rit->height();
-	}
+
 	pit->rows.clear();
 
 	// rebreak the paragraph
@@ -589,13 +581,6 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 		setHeightOfRow(pit, tmprow);
 	}
 
-	if (anchor_cnt == -1) {
-		if (anchor_cnt >= pit->rows.size())
-			anchor_cnt = pit->rows.size();
-		anchor_row_ = pit->rows.begin();
-		advance(anchor_row_, anchor_cnt);
-	}
-
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
 }
 
@@ -617,8 +602,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	width = 0;
 	height = 0;
 
-	anchor_row_ = endRow();
-	anchor_row_offset_ = 0;
+	//anchor_y_ = 0;
 
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();

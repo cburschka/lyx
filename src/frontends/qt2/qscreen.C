@@ -76,7 +76,8 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 
 	text->top_y(y);
 
-	drawFromTo(text, bv, 0, owner_.height(), 0, 0);
+	// not needed in the xforms frontend anymore
+	//drawFromTo(text, bv, 0, owner_.height(), 0, 0);
 	repaint();
 
 	owner_.getPainter().end();

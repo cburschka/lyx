@@ -66,13 +66,8 @@ public:
 	/// our buffer's default layout font
 	LyXFont defaultfont_;
 private:
-	/** the 'anchor' row: the position of this row remains constant
-	 *  with respect to the top of the screen
-	 */
-	RowList::iterator anchor_row_;
-	/** the pixel offset with respect to this row of top_y
-	 */
-	int anchor_row_offset_;
+	/// offset of dran area to document start.
+	int anchor_y_;
 public:
 	/// update all cached row positions
 	void updateRowPositions();

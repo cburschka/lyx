@@ -97,10 +97,7 @@ void LyXText::updateRowPositions()
 
 int LyXText::top_y() const
 {
-	if (anchor_row_ == endRow())
-		return 0;
-
-	return anchor_row_->y() + anchor_row_offset_;
+	return anchor_y_;
 }
 
 
@@ -109,32 +106,8 @@ void LyXText::top_y(int newy)
 	if (ownerParagraphs().begin()->rows.empty())
 		return;
 
-	if (isInInset()) {
-		anchor_row_ = firstRow();
-		anchor_row_offset_ = newy;
-		return;
-	}
-
-	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
-
-	int y = newy;
-	ParagraphList::iterator dummypit;
-	anchor_row_ = getRowNearY(y, dummypit);
-	anchor_row_offset_ = newy - y;
-	lyxerr[Debug::GUI] << "changing reference to row: " << &*anchor_row_
-	       << " offset: " << anchor_row_offset_ << endl;
-}
-
-
-void LyXText::anchor_row(RowList::iterator rit)
-{
-	int old_y = top_y();
-	anchor_row_offset_ = 0;
-	anchor_row_ = rit;
-	anchor_row_offset_ = old_y - top_y();
-	lyxerr[Debug::GUI] << "anchor_row(): changing reference to row: "
-			   << &*anchor_row_ << " offset: "
-			   << anchor_row_offset_ << endl;
+	anchor_y_ = newy;
+	lyxerr[Debug::GUI] << "changing reference to offset: " << anchor_y_ << endl;
 }
 
 
