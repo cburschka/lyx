@@ -680,6 +680,7 @@ void LyXLayout::readMargin(LyXLex & lexrc)
 void LyXLayout::readLatexType(LyXLex & lexrc)
 {
 	keyword_item latexTypeTags[] = {
+		{ "bib_environment",  LATEX_BIB_ENVIRONMENT },
 		{ "command",          LATEX_COMMAND },
 		{ "environment",      LATEX_ENVIRONMENT },
 		{ "item_environment", LATEX_ITEM_ENVIRONMENT },
@@ -697,6 +698,7 @@ void LyXLayout::readLatexType(LyXLex & lexrc)
 	case LATEX_COMMAND:
 	case LATEX_ENVIRONMENT:
 	case LATEX_ITEM_ENVIRONMENT:
+	case LATEX_BIB_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
 		latextype = static_cast<LYX_LATEX_TYPES>(le);
 		break;

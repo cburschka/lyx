@@ -76,11 +76,9 @@ void InsetBibKey::setCounter(int c)
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
 void InsetBibKey::write(Buffer const *, ostream & os) const
 {
-	os << "\\bibitem ";
-	if (! getOptions().empty()) {
-		os << '['
-		   << getOptions() << ']';
-	}
+	os << "\n\\layout Bibliography\n\\bibitem ";
+	if (! getOptions().empty())
+		os << '[' << getOptions() << ']';
 	os << '{'
 	   << getContents() << "}\n";
 }
@@ -336,8 +334,8 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 	ParagraphList::iterator it = bv->buffer()->paragraphs.begin();
 	ParagraphList::iterator end = bv->buffer()->paragraphs.end();
 	for (; it != end; ++it) {
-		if (it->bibkey) {
-			int const wx = it->bibkey->width(bv, font);
+		if (it->bibkey()) {
+			int const wx = it->bibkey()->width(bv, font);
 			if (wx > w)
 				w = wx;
 		}
@@ -358,13 +356,13 @@ string const bibitemWidest(Buffer const * buffer)
 	ParagraphList::iterator it = buffer->paragraphs.begin();
 	ParagraphList::iterator end = buffer->paragraphs.end();
 	for (; it != end; ++it) {
-		if (it->bibkey) {
+		if (it->bibkey()) {
 			int const wx =
-				font_metrics::width(it->bibkey->getBibLabel(),
+				font_metrics::width(it->bibkey()->getBibLabel(),
 						    font);
 			if (wx > w) {
 				w = wx;
-				bkey = it->bibkey;
+				bkey = it->bibkey();
 			}
 		}
 	}

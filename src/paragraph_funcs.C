@@ -97,9 +97,6 @@ void breakParagraph(BufferParams const & bparams,
 	tmp->params().lineTop(par->params().lineTop());
 	tmp->params().pagebreakTop(par->params().pagebreakTop());
 	tmp->params().spaceTop(par->params().spaceTop());
-	tmp->bibkey = par->bibkey;
-
-	par->bibkey = 0;
 	par->params().clear();
 
 	par->layout(bparams.getLyXTextClass().defaultLayout());

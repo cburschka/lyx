@@ -1,7 +1,23 @@
+
+2003-02-17 André Pönitz <poenitz@gmx.net>
+	
+	* LyXAction.C:
+	* commandtags.h: new LFUN_INSERT_BIBKEY
+
+	* layout.h:
+	* lyxlayout.C:
+	* buffer.C:
+	* factory.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* paragraph.[Ch]:
+	* paragraph_func.C: remove special bibkey handling
+
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* text.C (Delete): fix case where delete at the end of
-	   the very first paragraph would not merge the pars
+	  the very first paragraph would not merge the pars
 
 2003-02-17  John Levon  <levon@movementarian.org>
 
@@ -744,7 +760,7 @@
 
 2002-10-11 André Pönitz <poenitz@gmx.net>
 
-	* lytext.h: make some functions public to allow access
+	* lyxtext.h: make some functions public to allow access
 	from inset/lyxtext for handling LFUN_PRIOR/NEXT
 
 2002-10-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

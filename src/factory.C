@@ -18,6 +18,7 @@
 #include "BufferView.h"
 #include "lyxtext.h"
 
+#include "insets/insetbib.h"
 #include "insets/insetcaption.h"
 #include "insets/insetert.h"
 #include "insets/insetexternal.h"
@@ -69,6 +70,9 @@ Inset * createInset(FuncRequest const & cmd)
 
 		case LFUN_INSET_OPTARG:
 			return new InsetOptArg(params);
+
+		case LFUN_INSERT_BIBKEY:
+			return new InsetBibKey(InsetCommandParams("bibkey"));
 
 		case LFUN_INSET_FLOAT:
 			// check if the float type exists

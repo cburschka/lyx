@@ -368,14 +368,11 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 
 Inset * LyXText::getInset() const
 {
-	Inset * inset = 0;
-	if (cursor.pos() == 0 && cursor.par()->bibkey) {
-		inset =	cursor.par()->bibkey;
-	} else if (cursor.pos() < cursor.par()->size()
+	if (cursor.pos() < cursor.par()->size()
 		   && cursor.par()->isInset(cursor.pos())) {
-		inset = cursor.par()->getInset(cursor.pos());
+		return cursor.par()->getInset(cursor.pos());
 	}
-	return inset;
+	return 0;
 }
 
 
@@ -471,11 +468,6 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 					    : VSpace(VSpace::NONE));
 		if (lyxlayout->margintype == MARGIN_MANUAL)
 			par->setLabelWidthString(lyxlayout->labelstring());
-		if (lyxlayout->labeltype != LABEL_BIBLIO
-		    && fppar->bibkey) {
-			delete fppar->bibkey;
-			fppar->bibkey = 0;
-		}
 		cur.par(par);
 		par = par->next();
 	} while (par != epar);
@@ -1271,13 +1263,15 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		textclass.counters().step("bibitem");
 		int number = textclass.counters().value("bibitem");
-		if (!par->bibkey) {
-			InsetCommandParams p("bibitem");
-			par->bibkey = new InsetBibKey(p);
+		//if (!par->bibkey()) {
+		if (par->bibkey()) {
+			par->bibkey()->setCounter(number);
+			par->params().labelString(layout->labelstring());
 		}
-		par->bibkey->setCounter(number);
-		par->params().labelString(layout->labelstring());
-
+		// else {
+		//	InsetCommandParams p("bibitem");
+		//	par->bibkey() = new InsetBibKey(p);
+		//}
 		// In biblio should't be following counters but...
 	} else {
 		string s = layout->labelstring();

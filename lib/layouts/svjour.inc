@@ -352,7 +352,7 @@ End
 # Bibliography style definition
 Style Bibliography
   Margin		First_Dynamic
-  LatexType		Item_Environment
+  LatexType		Bib_Environment
   LatexName		thebibliography
   NextNoIndent		1
   LeftMargin		MM

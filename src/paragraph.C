@@ -78,7 +78,6 @@ Paragraph::Paragraph()
 #endif
 	enumdepth = 0;
 	itemdepth = 0;
-	bibkey = 0; // ale970302
 	params().clear();
 }
 
@@ -99,7 +98,6 @@ Paragraph::Paragraph(Paragraph * par)
 	previous_->next_ = this;
 	// end
 
-	bibkey = 0; // ale970302
 	params().clear();
 }
 #endif
@@ -117,14 +115,6 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout_ = lp.layout();
-
-	// ale970302
-	if (lp.bibkey) {
-		bibkey = static_cast<InsetBibKey *>
-			(lp.bibkey->clone(*current_view->buffer()));
-	} else {
-		bibkey = 0;
-	}
 
 	// copy everything behind the break-position to the new paragraph
 	insetlist = lp.insetlist;
@@ -148,9 +138,6 @@ Paragraph::~Paragraph()
 	if (next_)
 		next_->previous_ = previous_;
 #endif
-
-	// ale970302
-	delete bibkey;
 
 	delete pimpl_;
 	//
@@ -233,10 +220,6 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 		}
 		os << "\\align " << string_align[h] << ' ';
 	}
-
-	// bibitem  ale970302
-	if (bibkey)
-		bibkey->write(buf, os);
 
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 
@@ -952,15 +935,19 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 	// Find the entry.
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it) {
-		if (it.getInset() == inset) {
+	for (; it != end; ++it)
+		if (it.getInset() == inset) 
 			return it.getPos();
-		}
-	}
-	if (inset == bibkey)
-		return 0;
-
 	return -1;
+}
+
+
+InsetBibKey * Paragraph::bibkey()
+{
+	InsetList::iterator it = insetlist.begin();
+	if (it != insetlist.end() && it.getInset()->lyxCode() == Inset::BIBTEX_CODE)
+		return static_cast<InsetBibKey *>(it.getInset()); 
+	return 0;
 }
 
 namespace {
@@ -1079,26 +1066,23 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 	switch (style->latextype) {
 	case LATEX_COMMAND:
-		os << '\\'
-		   << style->latexname();
+		os << '\\' << style->latexname();
 
 		// Separate handling of optional argument inset.
 		if (style->optionalargs == 1) {
 			InsetOptArg * it = optArgInset(*this);
-			if (it != 0)
+			if (it)
 				it->latexOptional(buf, os, false, false);
 		}
 		else
 			os << style->latexparam();
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
-		if (bibkey) {
-			bibkey->latex(buf, os, false, false);
-		} else
-			os << "\\item ";
-		break;
 	case LATEX_LIST_ENVIRONMENT:
 		os << "\\item ";
+		break;
+	case LATEX_BIB_ENVIRONMENT:
+		// ignore this, the inset will write itself
 		break;
 	default:
 		break;

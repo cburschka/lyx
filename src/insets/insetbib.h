@@ -46,9 +46,11 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	/// A user can't neither insert nor delete this inset
-	bool deletable() const {
-		return false;
-	}
+	//bool deletable() const {
+	//	return false;
+	//}
+	/// keep .lyx format compatible
+	bool directWrite() const { return true; }
 	///
 	void setCounter(int);
 	///

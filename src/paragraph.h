@@ -151,7 +151,7 @@ public:
 	char itemdepth;
 
 	///
-	InsetBibKey * bibkey;  // ale970302
+	InsetBibKey * bibkey();  // ale970302
 
 #ifndef NO_NEXT
 	///

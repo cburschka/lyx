@@ -1538,7 +1538,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			} else {
 				FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
 				inset_hit->localDispatch(cmd1);
-				// IMO this is a grosshack! Inset's should be changed so that
+				// IMO this is a gross hack! Insets should be changed so that
 				// they call the actions they have to do with the insetButtonRel.
 				// function and not in the edit(). This should be changed
 				// (Jug 20020329)
@@ -1550,17 +1550,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		// Maybe we want to edit a bibitem ale970302
-		if (bv->text->cursor.par()->bibkey) {
-			bool const is_rtl =
-				bv->text->cursor.par()->isRightToLeftPar(bv->buffer()->params);
-			int const width =
-				bibitemMaxWidth(bv, bv->buffer()->params.getLyXTextClass().defaultfont());
-			if ((is_rtl && x > bv->text->workWidth(bv)-20-width) ||
-					(!is_rtl && x < 20 + width)) {
-				bv->text->cursor.par()->bibkey->edit(bv, 0, 0, mouse_button::none);
-			}
-		}
 		break;
 	}
 
@@ -1621,6 +1610,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_CAPTION:
 #endif
 	case LFUN_INSERT_NOTE:
+	case LFUN_INSERT_BIBKEY:
 	case LFUN_INSET_ERT:
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_FOOTNOTE:

@@ -956,6 +956,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		inset->read(this, lex);
 		par->insertInset(pos, inset, font, current_change);
 		++pos;
+	} else if (token == "\\bibitem") {  // ale970302
+		InsetCommandParams p("bibitem", "dummy");
+		InsetBibKey * inset = new InsetBibKey(p);
+		inset->read(this, lex);
+		par->insertInset(pos, inset, font, current_change);
+		++pos;
 	} else if (token == "\\hfill") {
 		par->insertChar(pos, Paragraph::META_HFILL, font, current_change);
 		++pos;
@@ -980,12 +986,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		istr >> aid;
 		istr >> ct;
 		current_change = Change(Change::DELETED, author_ids[aid], ct);
-	} else if (token == "\\bibitem") {  // ale970302
-		if (!par->bibkey) {
-			InsetCommandParams p("bibitem", "dummy");
-			par->bibkey = new InsetBibKey(p);
-		}
-		par->bibkey->read(this, lex);
 	} else if (token == "\\the_end") {
 		the_end_read = true;
 	} else {
@@ -2034,6 +2034,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
+		case LATEX_BIB_ENVIRONMENT:
 		{
 			string const & latexname = style->latexname();
 
@@ -2088,6 +2089,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			break;
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
+		case LATEX_BIB_ENVIRONMENT:
 			if (style->latexparam() == "CDATA")
 				ofs << "]]>";
 			break;
@@ -2885,9 +2887,10 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 	ParagraphList::iterator pit = paragraphs.begin();
 	ParagraphList::iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
-		if (pit->bibkey) {
-			string const key = pit->bibkey->getContents();
-			string const opt = pit->bibkey->getOptions();
+		InsetBibKey * bib = pit->bibkey();
+		if (bib) {
+			string const key = bib->getContents();
+			string const opt = bib->getOptions();
 			string const ref = pit->asString(this, false);
 			string const info = opt + "TheBibliographyRef" + ref;
 

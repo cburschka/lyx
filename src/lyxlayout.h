@@ -177,6 +177,7 @@ public:
 	///
 	bool isEnvironment() const {
 		return (latextype == LATEX_ENVIRONMENT
+			|| latextype == LATEX_BIB_ENVIRONMENT
 			|| latextype == LATEX_ITEM_ENVIRONMENT
 			|| latextype == LATEX_LIST_ENVIRONMENT);
 	}

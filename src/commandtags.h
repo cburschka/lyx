@@ -296,6 +296,7 @@ enum kb_action {
 	LFUN_REJECT_CHANGE,             // Levon 20021016
 	LFUN_ACCEPT_ALL_CHANGES,        // Levon 20021016
 	LFUN_REJECT_ALL_CHANGES,        // Levon 20021016
+	LFUN_INSERT_BIBKEY,             // André 14 Feb 2003
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

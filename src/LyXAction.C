@@ -245,6 +245,8 @@ void LyXAction::init()
 		  Noop },
 		{ LFUN_INSET_OPTARG, "optional-insert", N_("Insert Optional Argument"),
 		  Noop },
+		{ LFUN_INSERT_BIBKEY, "bibkey-insert", N_("Insert Bibliography Key"),
+		  Noop },
 		{ LFUN_LANGUAGE, "language", N_("Change language"), Noop },
 		{ LFUN_LATEX_LOG, "latex-view-log", N_("View LaTeX log"),
 		  ReadOnly },

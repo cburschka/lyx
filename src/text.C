@@ -3455,19 +3455,6 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 				  str, font);
 		}
 	}
-
-	if (layout->labeltype == LABEL_BIBLIO && par->bibkey) {
-		LyXFont font = getLayoutFont(buffer, par);
-		float x;
-		if (is_rtl) {
-			x = ww - leftMargin(p.bv, p.row)
-				+ font_metrics::width(layout->labelsep, font);
-		} else {
-			x = p.x - font_metrics::width(layout->labelsep, font)
-				- par->bibkey->width(p.bv, font);
-		}
-		par->bibkey->draw(p.bv, font, p.yo + p.row->baseline(), x, p.cleared);
-	}
 }
 
 
