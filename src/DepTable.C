@@ -41,6 +41,7 @@ using std::ofstream;
 using std::ifstream;
 using std::flush;
 using std::endl;
+using std::getline;
 
 
 inline
@@ -225,13 +226,13 @@ void DepTable::write(string const & f) const
 			// CRC value.
 			// The older one is effectively set to 0 upon re-load.
 			lyxerr << "Write dep: "
-			       << cit->first << ' '
 			       << cit->second.crc_cur << ' '
-			       << cit->second.mtime_cur << endl;
+			       << cit->second.mtime_cur << ' '
+			       << cit->first << endl;
 		}
-		ofs << cit->first << ' '
-		    << cit->second.crc_cur << ' '
-		    << cit->second.mtime_cur << endl;
+		ofs << cit->second.crc_cur << ' '
+		    << cit->second.mtime_cur << ' '
+		    << cit->first << endl;
 	}
 }
 
@@ -244,12 +245,13 @@ void DepTable::read(string const & f)
 	// This doesn't change through the loop.
 	di.crc_prev = 0;
 
-	while (ifs >> nome >> di.crc_cur >> di.mtime_cur) {
+	while (ifs >> di.crc_cur >> di.mtime_cur && getline(ifs, nome)) {
+		nome = ltrim(nome);
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Read dep: "
-			       << nome << ' '
 			       << di.crc_cur << ' '
-			       << di.mtime_cur << endl;
+			       << di.mtime_cur << ' '
+			       << nome << endl;
 		}
 		deplist[nome] = di;
 	}
