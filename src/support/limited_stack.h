@@ -12,13 +12,11 @@
 
 #include <list>
 
-#include <boost/shared_ptr.hpp>
- 
 /**
  * limited_stack - a stack of limited size
  *
- * Like a normal stack, but only accepts pointer types,
- * and bottom elements are deleted on overflow
+ * Like a normal stack, but elements falling out
+ * of the bottom are destructed.
  */
 template <typename T>
 class limited_stack {
