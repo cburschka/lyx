@@ -345,6 +345,23 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				close = true;
 			}
 
+#ifdef WITH_WARNINGS
+#warning Bug: we can have an empty font change here!
+// if there has just been a font change, we are going to close it
+// right now, which means stupid latex code like \textsf{}. AFAIK,
+// this does not harm dvi output. A minor bug, thus (JMarc)
+#endif
+			// some insets cannot be inside a font change command
+			if (open_font && inset->noFontChange()) {
+				column +=running_font.
+					latexWriteEndChanges(os,
+							     basefont,
+							     basefont);
+				open_font = false;
+				basefont = owner_->getLayoutFont(bparams);
+				running_font = basefont;
+			}
+
 			int tmp = inset->latex(buf, os, moving_arg,
 					       style.free_spacing);
 

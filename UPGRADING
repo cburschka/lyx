@@ -15,6 +15,18 @@ If you have your own layout files, you may need to update them a little:
 The new layout format keywords are described in the Customization
 manual.
 
+If you have your own binding files (especially math.bind), you will
+have to update them
+
+- math-insert now takes a latex macro name as argument, so that
+  "math-insert sqrt" should now be "\math-insert \sqrt"
+
+- math-greek-toggle is now gone, and should be replaced by explicit
+  bindings like
+
+  \bind "M-m g a"      "math-insert \alpha"
+
+
 Build requirements
 ------------------
 

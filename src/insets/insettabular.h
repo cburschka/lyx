@@ -129,6 +129,10 @@ public:
 	bool insetAllowed(Inset::Code code) const;
 	///
 	bool isTextInset() const { return true; }
+	/** returns true if, when outputing LaTeX, font changes should
+            be closed before generating this inset. This is needed for
+            insets that may contain several paragraphs */
+	bool noFontChange() const { return true; }
 	///
 	bool display() const { return tabular->IsLongTabular(); }
 	///
