@@ -132,7 +132,7 @@ LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
 # but since at least gcc 2.6.x supports it and it is still too old for
 # us, it seems we are safe.
 if test -n "$GXX" ; then
-  X_CFLAGS=`echo ${X_CFLAGS} | sed -e 's/-I/-isystem/'`
+  X_CFLAGS=`echo ${X_CFLAGS} | sed -e 's/-I/-isystem /'`
 fi
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
