@@ -460,6 +460,26 @@ void InsetFormula::init()
 }
 
 
+// built some unique filename
+string constructFileName(string const & data)
+{
+	typedef std::map<string, int> cache_type;
+	static cache_type theCache;
+	static int theCounter = 0;
+
+	int number;
+	cache_type::const_iterator it = theCache.find(data);
+	if (it == theCache.end()) 
+		number = theCache[data] = theCounter++;
+	else
+		number = it->second;
+	
+	ostringstream os;
+	os << number;
+	return os.str();
+}
+
+
 void InsetFormula::updatePreview() const
 {
 	// nothing to be done if no preview requested
@@ -472,21 +492,16 @@ void InsetFormula::updatePreview() const
 	WriteStream wi(ls, false, false);
 	par_->write(wi);
 	string const data = ls.str();
-
-	// built some unique filename
-	ostringstream os;
-	os << "preview_";
-	for (string::const_iterator it = data.begin(); it != data.end(); ++it) 
-		os << char('A' + (*it & 15)) << char('a' + (*it >> 4));
-	string base = os.str();
-	string dir  = OnlyPath(lyx::tempName());
-	string file = dir + base + ".lyxpreview";
+	string const base = constructFileName(data);
+	string const dir  = OnlyPath(lyx::tempName());
+	string const file = dir + base + ".lyxpreview";
 
 	// everything is fine already
 	if (loader_.filename() == file)
 		return;
 
 	// the real work starts
+	//lyxerr << "### updatePreview() called for " << file << "\n";
 	std::ofstream of(file.c_str());
 	of << "\\batchmode"
 	   << "\\documentclass{article}"
@@ -500,4 +515,6 @@ void InsetFormula::updatePreview() const
 
 	// now we are done, start actual loading we will get called back via
 	// InsetFormula::statusChanged() if this is finished
-	loader_.reset(file); }
+	loader_.reset(file);
+}
+
