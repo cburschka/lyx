@@ -1,3 +1,20 @@
+2003-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (EXTRA_DIST):
+	* test-insets.tex: new file. Describes the insets and special
+	characters that tex2lyx handles.
+
+	* text.C (parse_text): support \vref, \vpageref (only one optional
+	argument), \prettyref; add support for include inset; when \\ has
+	optional arguments, use ERT; support also \listoffigures,
+	\listoftables, and \listof{xxx} for existing float types;
+	translate lenghts properly for graphics inset.
+	(parse_environment): add support for minipages
+
+	* text.C (translate_len): A simple function to translate a latex
+	length to something lyx can understand. Not perfect, but rather
+	best-effort.
+
 2003-08-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (parse_text): special handling for \item and \bibitem

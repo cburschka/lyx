@@ -1,7 +1,7 @@
 include $(top_srcdir)/config/common.am
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
-EXTRA_DIST = test-structure.tex
+EXTRA_DIST = test-structure.tex test-insets.tex
 
 #noinst_LTLIBRARIES = libtexparser.la
 #

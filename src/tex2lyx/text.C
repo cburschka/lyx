@@ -22,6 +22,7 @@ using std::endl;
 using std::map;
 using std::ostream;
 using std::ostringstream;
+using std::istringstream;
 using std::string;
 using std::vector;
 
@@ -62,7 +63,7 @@ void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
 namespace {
 
 char const * known_latex_commands[] = { "ref", "cite", "label", "index",
-"printindex", "pageref", "url", 0 };
+"printindex", "pageref", "url", "vref", "vpageref", "prettyref", "eqref", 0 };
 
 // LaTeX names for quotes
 char const * known_quotes[] = { "glqq", "grqq", "quotedblbase",
@@ -93,7 +94,41 @@ map<string, string> split_map(string const & s)
 	return res;
 }
 
+// A simple function to translate a latex length to something lyx can
+// understand. Not perfect, but rather best-effort.
+string translate_len(string const & len)
+{
+	const string::size_type i = len.find_first_not_of(" -01234567890.");
+	// a normal length
+	if (i == string::npos || len[i]  != '\\')
+		return len;
+	istringstream iss(string(len, 0, i));
+	double val;
+	iss >> val;
+	val = val*100;
+	ostringstream oss;
+	oss << val;
+	string const valstring = oss.str();
+	const string::size_type i2 = len.find(" ", i);
+	string const unit = string(len, i, i2 - i);
+	string const endlen = (i2 == string::npos) ? string() : string(len, i2);
+	if (unit == "\\textwidth")
+		return valstring + "text%" + endlen;
+	else if (unit == "\\columnwidth")
+		return valstring + "col%" + endlen;
+	else if (unit == "\\paperwidth")
+		return valstring + "page%" + endlen;
+	else if (unit == "\\linewidth")
+		return valstring + "line%" + endlen;
+	else if (unit == "\\paperheight")
+		return valstring + "pheight%" + endlen;
+	else if (unit == "\\textheight")
+		return valstring + "theight%" + endlen;
+	else
+		return len;
+}
 
+		
 void begin_inset(ostream & os, string const & name)
 {
 	os << "\n\\begin_inset " << name;
@@ -196,12 +231,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_math(p, os, FLAG_END, MATH_MODE);
 		os << "\\end{" << name << "}";
 		end_inset(os);
-	} else if (name == "tabular") {
+	}
+
+	else if (name == "tabular") {
 		parent_context.check_layout(os);
 		begin_inset(os, "Tabular ");
 		handle_tabular(p, os, parent_context);
 		end_inset(os);
-	} else if (parent_context.textclass.floats().typeExist(unstarred_name)) {
+	}
+
+	else if (parent_context.textclass.floats().typeExist(unstarred_name)) {
 		parent_context.check_layout(os);
 		begin_inset(os, "Float " + unstarred_name + "\n");
 		if (p.next_token().asInput() == "[") {
@@ -210,11 +249,58 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		os << "wide " << tostr(is_starred)
 		   << "\ncollapsed false\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-			end_inset(os);
-	} else if (name == "center") {
+		end_inset(os);
+	}
+
+	else if (name == "minipage") {
+		parent_context.check_layout(os);
+		begin_inset(os, "Minipage\n");
+		string position = "1";
+		string inner_pos = "0";
+		string height;
+		if (p.next_token().asInput() == "[") {
+			switch(p.getArg('[', ']')[0]) {
+			case 't': position = "0"; break;
+			case 'c': position = "1"; break;
+			case 'b': position = "2"; break;
+			default:
+				cerr << "invalid position for minipage"
+				     << endl;
+				break;
+			}
+			if (p.next_token().asInput() == "[") {
+				height = translate_len(p.getArg('[', ']'));
+			
+				if (p.next_token().asInput() == "[") {
+					switch(p.getArg('[', ']')[0]) {
+					case 't': inner_pos = "0"; break;
+					case 'c': inner_pos = "1"; break;
+					case 'b': inner_pos = "2"; break;
+					case 's': inner_pos = "3"; break;
+					default:
+						cerr << "invalid inner_pos for minipage"
+						     << endl;
+						break;
+					}
+				}
+			}
+		}
+		os << "position " << position << '\n';
+		os << "inner_position " << inner_pos << '\n';
+		os << "height \"" << height << "\"\n";
+		os << "width \"" << translate_len(p.verbatim_item()) << "\"\n";
+		os << "collapsed false\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+
+	}
+
+	else if (name == "center") {
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// The single '=' is meant here.
-	} else if ((newlayout = findLayout(parent_context.textclass, name)).get() &&
+	}
+
+	else if ((newlayout = findLayout(parent_context.textclass, name)).get() &&
 		   newlayout->isEnvironment()) {
 		Context context(true, parent_context.textclass, newlayout,
 				parent_context.layout);
@@ -234,7 +320,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
 		context.check_end_deeper(os);
-	} else {
+	}
+
+	else {
 		parent_context.check_layout(os);
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
 		parse_text_snippet(p, os, FLAG_END, outer, parent_context);
@@ -492,9 +580,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "Graphics ");
 			os << "\n\tfilename " << name << '\n';
 			if (opts.find("width") != opts.end())
-				os << "\twidth " << opts["width"] << '\n';
+				os << "\twidth "
+				   << translate_len(opts["width"]) << '\n';
 			if (opts.find("height") != opts.end())
-				os << "\theight " << opts["height"] << '\n';
+				os << "\theight "
+				   << translate_len(opts["height"]) << '\n';
 			end_inset(os);
 		}
 		
@@ -536,12 +626,36 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "tableofcontents") {
 			context.check_layout(os);
-			begin_inset(os, "LatexCommand ");
-			os << '\\' << t.cs() << "{}\n";
+			begin_inset(os, "LatexCommand \\tableofcontents\n");
 			end_inset(os);
 			skip_braces(p); // swallow this
 		}
 
+		else if (t.cs() == "listoffigures") {
+			context.check_layout(os);
+			begin_inset(os, "FloatList figure\n");
+			end_inset(os);
+			skip_braces(p); // swallow this
+		}
+
+		else if (t.cs() == "listoftables") {
+			context.check_layout(os);
+			begin_inset(os, "FloatList table\n");
+			end_inset(os);
+			skip_braces(p); // swallow this
+		}
+
+		else if (t.cs() == "listof") {
+			string const name = p.get_token().asString();
+			if (context.textclass.floats().typeExist(name)) {
+				context.check_layout(os);
+				begin_inset(os, "FloatList ");
+				os << name << "\n";
+				end_inset(os);
+				p.get_token(); // swallow second arg
+			} else 
+				handle_ert(os, "\\listof{" + name + "}", context);
+		}
 
 		else if (t.cs() == "textrm") {
 			context.check_layout(os);
@@ -654,6 +768,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
+		else if (t.cs() == "textcompwordmark") {
+			context.check_layout(os);
+			os << "\\SpecialChar \\textcompwordmark{}\n";
+			skip_braces(p);
+		}
+
 		else if (t.cs() == "@" && p.next_token().asInput() == ".") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\@.\n";
@@ -737,14 +857,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "\\") {
-			context.check_layout(os);
-			os << "\n\\newline \n";
+			string const next = p.next_token().asInput();
+			if (next == "[")
+				handle_ert(os, "\\\\" + p.getOpt(), context);
+			else if (next == "*") {
+				p.get_token();
+				handle_ert(os, "\\\\*" + p.getOpt(), context);
+			}
+			else {
+				context.check_layout(os);
+				os << "\n\\newline \n";
+			}
 		}
 	
-		else if (t.cs() == "input") {
+		else if (t.cs() == "input" || t.cs() == "include"
+			 || t.cs() == "verbatiminput") {
+			string name = '\\' + t.cs();
+			if (t.cs() == "verbatiminput"
+			    && p.next_token().asInput() == "*") 
+				name += p.get_token().asInput();
 			context.check_layout(os);
-			handle_ert(os, "\\input{" + p.verbatim_item() + "}\n",
-				   context);
+			begin_inset(os, "Include ");
+			os << name << '{' << p.getArg('{', '}') << "}\n";
+			os << "preview false\n";
+			end_inset(os);
 		}
 		else if (t.cs() == "fancyhead") {
 			context.check_layout(os);
