@@ -1,3 +1,63 @@
+2000-11-23  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* forms/bibforms.fd: tiny fix to get it to run with fdesign.
+
+	* forms/makefile: added bibforms.fd, include_form.fd.
+	Removed lyx_sendfax.fd.
+
+	* src/LaTeXLog.C (ShowLatexLog):
+	* src/LyXAction.C (init):
+	* src/bufferparams.C (readLanguage): altered messages as suggested by
+	John Levon.
+
+	* src/LyXView.C (c-tor): connected RedrawAllBufferRelatedDialogs() to
+	Dialogs::redrawGUI.
+
+	* src/credits.C: made fd_form_credits non-static, so that it can be
+	redrawn should the xforms colors be re-mapped.
+	* src/spellchecker.C ditto fd_form_spell_options.
+
+	* src/filedlg.[Ch] (redraw):
+	* src/intl.[Ch] (redraw):
+	* src/lyxfr0.[Ch] (redraw):
+	* src/insets/figinset.[Ch] (redraw):
+	* src/insets/insetexternal.[Ch] (redraw):
+	new methods, connected to Dialogs::redrawGUI.
+
+	* src/lyx_gui_misc.[Ch] (RedrawAllBufferRelatedDialogs): new function
+	to be connected to Dialogs::redrawGUI.
+
+	* src/frontends/xforms/FormCitation.C (build):
+	* src/frontends/xforms/FormCopyright.C (build):
+	* src/frontends/xforms/FormError.C (build):
+	* src/frontends/xforms/FormGraphics.C (build):
+	* src/frontends/xforms/FormIndex.C (build):
+	* src/frontends/xforms/FormTabularCreate.[Ch] (update):
+	* src/frontends/xforms/FormToc.C (build):
+	* src/frontends/xforms/FormUrl.C (build):
+	use the ButtonController correctly.
+
+	* src/frontends/xforms/FormCopyright.C (build):
+	* src/frontends/xforms/forms/form_copyright.fd: moved the text out of
+	the .fd file and into build().
+
+	* src/frontends/xforms/FormPreferences.C: tiny clean-up.
+
+	* src/frontends/xforms/FormToc.[Ch]: Don't use apply(). Use input().
+
+	* src/frontends/xforms/forms/form_citation.fd:
+	* src/frontends/xforms/forms/form_copyright.fd:
+	* src/frontends/xforms/forms/form_error.fd:
+	* src/frontends/xforms/forms/form_graphics.fd:
+	* src/frontends/xforms/forms/form_index.fd:
+	* src/frontends/xforms/forms/form_toc.fd:
+	* src/frontends/xforms/forms/form_url.fd:
+	renamed some of the objects. Named others explicitly for the first time.
+	Added Restore and Apply buttons where appropriate.
+
+	* src/insets/Makefile.am: removed form_graphics.[Ch] as they are not
+	used.
+
 2000-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/version.h: try the pre2 again
@@ -38,14 +98,14 @@
 
 	* src/LColor.C (init):
 	* src/lyxrc.C (getDescription): changed some comments as suggested by
-	Rob Lahaye.
+	John Levon.
 
 	* src/frontends/xforms/FormBase.[Ch]: modified to connect and
 	disconnect the redrawGUI signal in best-practice fashion.
 
 	* src/frontends/xforms/FormPreferences.[Ch]: renamed usage_tab_ as
 	long_opts_tab to reflect the change in name of this tabfolder, as
-	suggested by Rob Lahaye.
+	suggested by John Levon.
 	(connect, disconnect): new methods. Don't do much at present other than
 	ensuring that we can't resize the dialog. This just makes xforms go
 	crazy.
@@ -59,7 +119,7 @@
 	* src/frontends/xforms/forms/fdfix.sh: a little speed up fix.
 
 	* src/frontends/xforms/forms/form_preferences.fd: used normal counters
-	rather than simple counters, following suggestion by Rob Lahaye.
+	rather than simple counters, following suggestion by John Levon.
 
 	* src/frontends/xforms/forms/form_print.fd: used labelframe rather
 	than engraved frame + text.

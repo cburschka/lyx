@@ -29,6 +29,11 @@
 #include "trans_mgr.h"
 #include "support/lstrings.h"
 #include "language.h"
+#include "frontends/Dialogs.h" // redrawGUI
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::slot;
+#endif
 
 using std::endl;
 
@@ -46,11 +51,20 @@ Intl::Intl()
 	primarykeymap = false;
 	curkeymap = 0;
 	otherkeymap = 0;
+	r_ = Dialogs::redrawGUI.connect(slot(this, &Intl::redraw));
 }
 
 Intl::~Intl()
 {
+	r_.disconnect();
 	delete trans;
+}
+
+
+void Intl::redraw()
+{
+	if (fd_form_keymap && fd_form_keymap->KeyMap->visible)
+		fl_redraw_form(fd_form_keymap->KeyMap);
 }
 
 

@@ -20,6 +20,7 @@
 #include "BufferView.h"
 #include "bibforms.h"
 #include "buffer.h"
+#include "credits_form.h"
 #include "form1.h"
 #include "gettext.h"
 #include "include_form.h"
@@ -44,11 +45,13 @@ using std::endl;
 extern BufferView * current_view;
 
 extern FD_form_character * fd_form_character;
+extern FD_form_credits * fd_form_credits;
+extern FD_form_figure * fd_form_figure;
 extern FD_form_preamble * fd_form_preamble;
 extern FD_form_sendto * fd_form_sendto;
-extern FD_form_figure * fd_form_figure;
-extern FD_LaTeXLog * fd_latex_log;
 extern FD_form_spell_check * fd_form_spell_check;
+extern FD_form_spell_options * fd_form_spell_options;
+extern FD_LaTeXLog * fd_latex_log;
 extern FD_panel  * fd_panel;
 extern FD_delim  * fd_delim;
 extern FD_deco   * fd_deco;
@@ -64,7 +67,58 @@ extern "C" int CancelCloseBoxCB(FL_FORM *, void *)
 {
 	return FL_CANCEL;
 }
-
+// Redraw the form (on receipt of a Signal indicating, for example,
+// that the xform colors have been re-mapped).
+void RedrawAllBufferRelatedDialogs()
+{
+	if (bibitem_form && bibitem_form->bibitem_form->visible) {
+		fl_redraw_form(bibitem_form->bibitem_form);
+	}
+	if (fd_deco && fd_deco->deco->visible) {
+		fl_redraw_form(fd_deco->deco);
+	}
+	if (fd_delim && fd_delim->delim->visible) {
+		fl_redraw_form(fd_delim->delim);
+	}
+	if (fd_form_character->form_character->visible) {
+		fl_redraw_form(fd_form_character->form_character);
+	}
+	if (fd_form_credits && fd_form_credits->form_credits->visible) {
+		fl_redraw_form(fd_form_credits->form_credits);
+	}
+	if (fd_form_figure->form_figure->visible) {
+		fl_redraw_form(fd_form_figure->form_figure);
+	}
+	if (fd_form_preamble->form_preamble->visible) {
+		fl_redraw_form(fd_form_preamble->form_preamble);
+	}
+	if (fd_form_sendto->form_sendto->visible) {
+		fl_redraw_form(fd_form_sendto->form_sendto);
+	}
+	if (fd_form_spell_check &&
+	    fd_form_spell_check->form_spell_check->visible) {
+		fl_redraw_form(fd_form_spell_check->form_spell_check);
+	}
+	if (fd_form_spell_options &&
+	    fd_form_spell_options->form_spell_options->visible) {
+		fl_redraw_form(fd_form_spell_options->form_spell_options);
+	}
+	if (fd_latex_log->LaTeXLog->visible) {
+		fl_redraw_form(fd_latex_log->LaTeXLog);
+	}
+	if (fd_matrix && fd_matrix->matrix->visible) {
+		fl_redraw_form(fd_matrix->matrix);
+	}
+	if (fd_panel && fd_panel->panel->visible) {
+		fl_redraw_form(fd_panel->panel);
+	}
+	if (fd_space && fd_space->space->visible) {
+		fl_redraw_form(fd_space->space);
+	}
+	if (form && form->include->visible) {
+		fl_redraw_form(form->include);
+	}
+}
 
 // Prevents LyX from crashing when no buffers available
 // This is also one of the functions that we _really_ dont want

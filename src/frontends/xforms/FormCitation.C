@@ -82,12 +82,19 @@ void FormCitation::build()
 	minw_ = form()->w;
 	minh_ = form()->h;
 
-        // manage the ok, apply and cancel/close buttons
+        // Manage the ok, apply, restore and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
 	bc_.setCancel(dialog_->button_cancel);
 	bc_.setUndoAll(dialog_->button_restore);
 	bc_.refresh();
+
+	bc_.addReadOnly(dialog_->addBtn);
+	bc_.addReadOnly(dialog_->delBtn);
+	bc_.addReadOnly(dialog_->upBtn);
+	bc_.addReadOnly(dialog_->downBtn);
+	bc_.addReadOnly(dialog_->textBefore);
+	bc_.addReadOnly(dialog_->textAftr);
 }
 
 
@@ -132,6 +139,8 @@ void FormCitation::update()
 	setSize( size, bibPresent );
 
 	fl_set_input( dialog_->textAftr, params.getOptions().c_str());
+
+	bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
 

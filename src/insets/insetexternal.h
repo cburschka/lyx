@@ -19,11 +19,16 @@
 #include "insetbutton.h"
 #include "LString.h"
 #include "../lyx.h"
+#include <sigc++/signal_system.h>
 
 struct ExternalTemplate;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
+
 ///
-class InsetExternal : public InsetButton {
+class InsetExternal : public InsetButton, public Object {
 public:
 	InsetExternal();
 	///
@@ -85,6 +90,11 @@ public:
 	/// Callback function for the cancel button
 	static void cancelCB(FL_OBJECT *, long);
 private:
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colors have been re-mapped).
+	*/
+	void redraw();
+
 	/// Write the output for a specific file format
 	int write(string const & format, Buffer const *,
 		  std::ostream &) const;
@@ -150,6 +160,9 @@ private:
 
 	/// A temp filename
 	string tempname;
+
+	/// Redraw connection.
+	SigC::Connection r_;
 };
 
 #endif

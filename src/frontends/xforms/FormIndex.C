@@ -26,7 +26,7 @@
 #include "lyxfunc.h"
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Index"), new OkCancelReadOnlyPolicy),
+	: FormCommand(lv, d, _("Index"), new OkApplyCancelReadOnlyPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown
@@ -61,28 +61,30 @@ void FormIndex::build()
 {
 	dialog_ = build_index();
 
-#ifdef WITH_WARNINGS
-#warning use the buttoncontroller
-#endif
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
+
+	fl_set_input_return(dialog_->input_key, FL_RETURN_CHANGED);
+
+        // Manage the ok, apply, restore and cancel/close buttons
+	bc_.setOK(dialog_->button_ok);
+	bc_.setApply(dialog_->button_apply);
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.setUndoAll(dialog_->button_restore);
+	bc_.refresh();
+
+	bc_.addReadOnly(dialog_->input_key);
 }
 
 
 void FormIndex::update()
 {
-	fl_set_input(dialog_->key, params.getContents().c_str());
-
-	if (lv_->buffer()->isReadonly()) {
-		fl_deactivate_object(dialog_->key);
-		fl_deactivate_object(dialog_->ok);
-		fl_set_object_lcol(dialog_->ok, FL_INACTIVE);
-	} else {
-		fl_activate_object(dialog_->key);
-		fl_activate_object(dialog_->ok);
-		fl_set_object_lcol(dialog_->ok, FL_BLACK);
-	}
+	fl_set_input(dialog_->input_key, params.getContents().c_str());
+	// Surely, this should reset the buttons to their original state?
+	// It doesn't. Instead "Restore" becomes a "Close"
+	//bc_.refresh();
+	bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
 
@@ -90,7 +92,7 @@ void FormIndex::apply()
 {
 	if (lv_->buffer()->isReadonly()) return;
 
-	params.setContents(fl_get_input(dialog_->key));
+	params.setContents(fl_get_input(dialog_->input_key));
 
 	if (inset_ != 0) {
 		// Only update if contents have changed

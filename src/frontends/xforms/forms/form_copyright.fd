@@ -40,11 +40,11 @@ alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2000 LyX Team
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NorthWest FL_NorthEast
-name: 
+gravity: FL_NoGravity FL_NoGravity
+name: text_copyright
 callback: 
 argument: 
 
@@ -58,11 +58,29 @@ alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: This program is free software; you can redistribute it\nand/or modify it under the terms of the GNU General\nPublic License as published by the Free Software\nFoundation; either version 2 of the License, or\n(at your option) any later version.
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: text_licence
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 10 190 430 190
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: text_disclaimer
 callback: 
 argument: 
 
@@ -80,27 +98,9 @@ label: Close|#C^[^M
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_South FL_South
-name: button_ok
+name: button_cancel
 callback: C_FormBaseCancelCB
 argument: 0
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 190 430 190
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: LyX is distributed in the hope that it will\nbe useful, but WITHOUT ANY WARRANTY;\nwithout even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of\nthe GNU General Public License\nalong with this program; if not, write to\nthe Free Software Foundation, Inc.,\n675 Mass Ave, Cambridge, MA 02139, USA.
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
 
 ==============================
 create_the_forms

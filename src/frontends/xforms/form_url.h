@@ -5,8 +5,11 @@
 #define FD_form_url_h_
 
 /** Callbacks, globals and object handlers **/
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
@@ -19,6 +22,8 @@ struct FD_form_url {
 	FL_OBJECT *radio_html;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_ok;
+	FL_OBJECT *button_apply;
+	FL_OBJECT *button_restore;
 };
 
 #endif /* FD_form_url_h_ */

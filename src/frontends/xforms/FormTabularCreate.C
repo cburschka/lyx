@@ -20,6 +20,7 @@
 
 #include "FormTabularCreate.h"
 #include "form_tabular_create.h"
+#include "buffer.h"
 #include "BufferView.h"
 #include "Dialogs.h"
 #include "LyXView.h"
@@ -72,7 +73,7 @@ void FormTabularCreate::build()
 	fl_set_slider_precision(dialog_->slider_rows, 0);
 	fl_set_slider_precision(dialog_->slider_columns, 0);
 
-        // manage the ok, apply and cancel/close buttons
+        // Manage the ok, apply and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
 	bc_.setCancel(dialog_->button_cancel);
@@ -89,4 +90,10 @@ void FormTabularCreate::apply()
 	if (!lv_->view()->open_new_inset(in)) {
 		delete in;
 	}
+}
+
+
+void FormTabularCreate::update()
+{
+	bc_.readOnly(lv_->buffer()->isReadonly());
 }

@@ -23,7 +23,7 @@
 
 
 FormError::FormError(LyXView * lv, Dialogs * d)
-	: FormInset( lv, d, _("LaTeX Error"), new IgnorantPolicy),
+	: FormInset( lv, d, _("LaTeX Error"), new OkApplyCancelPolicy),
 	  dialog_(0), inset_(0)
 {
 	Assert(lv && d);
@@ -83,4 +83,8 @@ void FormError::build()
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
+	
+        // Manage the cancel/close button
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.refresh();
 }

@@ -93,10 +93,12 @@ void FormRef::build()
 	// Can change reference only through browser
 	fl_deactivate_object(dialog_->ref);
 
+        // Manage the ok and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setCancel(dialog_->button_cancel);
-	bc_.addReadOnly(dialog_->type);
 	bc_.refresh();
+
+	bc_.addReadOnly(dialog_->type);
 }
 
 

@@ -17,10 +17,15 @@
 #endif
 
 #include <vector>
+#include <sigc++/signal_system.h>
 
 #include "LString.h"
 #include FORMS_H_LOCATION
 #include "form1.h"
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
 
 /// LyXDirEntry internal structure definition
 class LyXDirEntry {
@@ -35,11 +40,13 @@ public:
 
 
 /// FileDlg class definition
-class LyXFileDlg 
+class LyXFileDlg : public Object
 {
 public:
 	///
 	LyXFileDlg();
+	///
+	~LyXFileDlg();
 
 	/// sets file selector user button action
 	void SetButton(int iIndex, string const & pszName = string(), 
@@ -89,6 +96,10 @@ private:
 	///
 	bool force_ok;
 
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colors have been re-mapped).
+	*/
+	void redraw();
 	/// updates dialog list to match class directory
 	void Reread();
 	/// sets dialog current directory
@@ -107,6 +118,8 @@ private:
 	bool HandleOK();
 	/// Simulates a click on OK/Cancel
 	void Force(bool);
+	/// Redraw connection.
+	SigC::Connection r_;
 };
 
 #endif

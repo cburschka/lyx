@@ -17,16 +17,16 @@ SHELL = /bin/sh
 # Various commands
 FDESIGN = fdesign
 
-SRCS = credits_form.fd form1.fd \
-	log_form.fd layout_forms.fd lyx.fd lyx_sendfax.fd math_forms.fd \
+SRCS = bibforms.fd credits_form.fd form1.fd include_form.fd \
+	log_form.fd layout_forms.fd lyx.fd math_forms.fd \
 	print_form.fd sp_form.fd
 
-OBJS = credits_form.c form1.c \
-	log_form.c layout_forms.c lyx.c lyx_sendfax.c math_forms.c \
+OBJS = bibforms.c credits_form.c form1.c include_form.c \
+	log_form.c layout_forms.c lyx.c math_forms.c \
 	print_form.c sp_form.c
 
-COBJS = credits_form.C form1.C \
-	log_form.C layout_forms.C lyx.C lyx_sendfax.C math_forms.C \
+COBJS = bibforms.C credits_form.C form1.C include_form.C \
+	log_form.C layout_forms.C lyx.C math_forms.C \
 	print_form.C sp_form.C
 
 all:
@@ -52,7 +52,7 @@ e: c
 	for hfil in *.h ; do \
 		if [ -f "$$hfil.patch" ] ; then \
 			(echo "Patching $$hfil with $$hfil.patch" ; \
-			patch --verbose $$hfil < $$hfil.patch) \
+			patch $$hfil < $$hfil.patch) \
 		fi; \
 		sed < $$hfil > $$hfil.tmp \
 			-e 's/\(extern\) \(void.*FL_OBJECT\)/\1 "C" \2/' \

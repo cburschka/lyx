@@ -6,6 +6,7 @@
 
 /** Callbacks, globals and object handlers **/
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
@@ -20,9 +21,6 @@ struct FD_form_graphics {
 	FL_OBJECT *button_browse;
 	FL_OBJECT *input_width;
 	FL_OBJECT *input_height;
-	FL_OBJECT *button_ok;
-	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
 	FL_OBJECT *radio_button_group_width;
 	FL_OBJECT *radio_width_percent_page;
 	FL_OBJECT *radio_width_default;
@@ -43,6 +41,10 @@ struct FD_form_graphics {
 	FL_OBJECT *check_inline;
 	FL_OBJECT *input_subcaption;
 	FL_OBJECT *check_subcaption;
+	FL_OBJECT *button_restore;
+	FL_OBJECT *button_ok;
+	FL_OBJECT *button_apply;
+	FL_OBJECT *button_cancel;
 };
 
 #endif /* FD_form_graphics_h_ */

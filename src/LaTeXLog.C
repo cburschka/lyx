@@ -41,10 +41,10 @@ void ShowLatexLog()
 		if (!fl_load_browser(fd_latex_log->browser_latexlog,
 				     use_build ? bname.c_str() : fname.c_str()))
 			fl_add_browser_line(fd_latex_log->browser_latexlog,
-					    _("Unable to show log file!"));
+					    _("No LaTeX log file found"));
 	} else {
 		fl_add_browser_line(fd_latex_log->browser_latexlog,
-			       _("NO LATEX LOG FILE!"));
+			       _("No LaTeX log file found"));
 	}
 	if (fd_latex_log->LaTeXLog->visible) {
 		fl_raise_form(fd_latex_log->LaTeXLog);

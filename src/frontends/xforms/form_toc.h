@@ -5,7 +5,7 @@
 #define FD_form_toc_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
 
@@ -14,8 +14,10 @@ struct FD_form_toc {
 	~FD_form_toc();
 
 	FL_FORM *form;
-	FL_OBJECT *browser;
-	FL_OBJECT *type;
+	FL_OBJECT *browser_toc;
+	FL_OBJECT *button_update;
+	FL_OBJECT *choice_toc_type;
+	FL_OBJECT *button_cancel;
 };
 
 #endif /* FD_form_toc_h_ */

@@ -65,6 +65,10 @@ FD_form_citation * FormCitation::build_citation()
   fdui->textAftr = obj = fl_add_input(FL_NORMAL_INPUT, 100, 570, 250, 30, idex(_("Text after|#e")));
     fl_set_button_shortcut(obj, scex(_("Text after|#e")), 1);
     fl_set_object_resize(obj, FL_RESIZE_X);
+  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 630, 90, 30, idex(_("Restore|#R")));
+    fl_set_button_shortcut(obj, scex(_("Restore|#R")), 1);
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
+    fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 130, 630, 90, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
@@ -76,10 +80,6 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_button_shortcut(obj, scex(_("Cancel|#C^[")), 1);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
-  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 630, 90, 30, idex(_("Restore|#R")));
-    fl_set_button_shortcut(obj, scex(_("Restore|#R")), 1);
-    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
-    fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

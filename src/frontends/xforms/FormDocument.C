@@ -100,7 +100,7 @@ void FormDocument::build()
     // the tabbed folder
     dialog_ = build_tabbed_document();
 
-    // manage the restore, ok, apply and cancel/close buttons
+    // Manage the restore, ok, apply, restore and cancel/close buttons
     bc_.setOK(dialog_->button_ok);
     bc_.setApply(dialog_->button_apply);
     bc_.setCancel(dialog_->button_cancel);

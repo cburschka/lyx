@@ -385,7 +385,7 @@ void LyXAction::init()
 		{ LFUN_TAB, "tab-forward", "", Noop },
 		{ LFUN_TABINSERT, "tab-insert", "", Noop },
 		{ LFUN_DIALOG_TABULAR_INSERT, "dialog-tabular-insert",
-		  N_("Open Insert Tabular Dialog"), Noop },
+		  N_("Insert Table"), Noop },
 		{ LFUN_TABULAR_FEATURE, "tabular-feature",
 		  N_("Tabular Features"), Noop },
 		{ LFUN_INSET_TABULAR, "tabular-insert",

@@ -37,7 +37,7 @@
 #include "frontends/Menubar.h"
 #include "MenuBackend.h"
 #include "ToolbarDefaults.h"
-#include "lyx_gui_misc.h"	// [update,Close]AllBufferRelatedDialogs
+#include "lyx_gui_misc.h"	// [update,Close,Redraw]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
 
 using std::endl;
@@ -75,6 +75,7 @@ LyXView::LyXView(int width, int height)
 	dialogs_->hideBufferDependent
 		.connect(slot(&CloseAllBufferRelatedDialogs));
 	Dialogs::redrawGUI.connect(slot(this, &LyXView::redraw));
+	Dialogs::redrawGUI.connect(slot(&RedrawAllBufferRelatedDialogs));
 }
 
 

@@ -18,7 +18,7 @@
 #include FORMS_H_LOCATION
 #include "ButtonController.h"
 #include "gettext.h"
-#include <sigc++/signal_system.h> // temporary
+#include <sigc++/signal_system.h>
 
 class Buffer;
 class Dialogs;
@@ -57,7 +57,7 @@ protected: // methods
 	virtual ~FormBase();
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colours have been re-mapped).
+	    that the xform colors have been re-mapped).
 	    Must be virtual because dialogs with tabbed folders will need to
 	    redraw the form for each tab.
 	*/

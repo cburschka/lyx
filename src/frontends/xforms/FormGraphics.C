@@ -40,7 +40,7 @@ using std::endl;
 
 
 FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
-	: FormInset(lv, d, _("Graphics"), new NoRepeatedApplyReadOnlyPolicy),
+	: FormInset(lv, d, _("Graphics"), new OkApplyCancelReadOnlyPolicy),
 	  dialog_(0), inset_(0),
 	  // The buttons c-tor values are the number of buttons we use
 	  // This is only to reduce memory waste.
@@ -142,12 +142,24 @@ void FormGraphics::build()
 	displayButtons.registerRadioButton(dialog_->radio_no_display,
 	                                   InsetGraphicsParams::NONE);
 
-        // manage the ok, apply and cancel/close buttons
+        // Manage the ok, apply, restore and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
 	bc_.setCancel(dialog_->button_cancel);
-	bc_.setUndoAll(0);
+	bc_.setUndoAll(dialog_->button_restore);
 	bc_.refresh();
+
+	bc_.addReadOnly(dialog_->input_filename);
+	bc_.addReadOnly(dialog_->button_browse);
+	bc_.addReadOnly(dialog_->input_width);
+	bc_.addReadOnly(dialog_->input_height);
+	bc_.addReadOnly(dialog_->radio_button_group_width);
+	bc_.addReadOnly(dialog_->radio_button_group_height);
+	bc_.addReadOnly(dialog_->radio_button_group_display);
+	bc_.addReadOnly(dialog_->input_rotate_angle);
+	bc_.addReadOnly(dialog_->check_inline);
+	bc_.addReadOnly(dialog_->input_subcaption);
+	bc_.addReadOnly(dialog_->check_subcaption);
 }
 
 
@@ -259,6 +271,9 @@ void FormGraphics::update()
 	// Update the inline figure check button
 	fl_set_button(dialog_->check_inline,
 	              igp.inlineFigure);
+
+	// update the dialog's read only / read-write status
+	bc_.readOnly(lv_->buffer()->isReadonly());
 
 	// Now make sure that the buttons are set correctly.
 	input(0, 0);

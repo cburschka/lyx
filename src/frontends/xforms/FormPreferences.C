@@ -186,7 +186,7 @@ void FormPreferences::build()
 {
 	dialog_ = build_preferences();
 
-	// manage the restore, save, apply and cancel/close buttons
+	// Manage the restore, save, apply and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
 	bc_.setCancel(dialog_->button_cancel);
@@ -627,14 +627,14 @@ void FormPreferences::Colors::InputBrowserLyX() const
 	// Is the choice an Xforms color...
 	RGBColor color;
 
-	if( selLyX-1 < int(xformColorDB.size()) ) {
+	if( selLyX-1 < xformColorDB.size() ) {
 		vector<XformColor>::size_type const i = selLyX - 1;
 		color = xformColorDB[i].color();
 	}
 	// or a LyX Logical color?
 	else {
 		vector<NamedColor>::size_type const i = selLyX - 1 -
-							xformColorDB.size();
+			xformColorDB.size();
 		color = lyxColorDB[i].color();
 	}
 
@@ -969,29 +969,31 @@ void FormPreferences::Colors::Modify()
 	vector<NamedColor>::size_type const selLyX =
 		fl_get_browser(dialog_->browser_lyx_objs);
 	if (selLyX < 1) return;
-	
+
 	vector<NamedColor>::size_type const selX11 =
 		fl_get_browser(dialog_->browser_x11);
 	if (selX11 < 1) return;
-	
-        // Is the choice an Xforms color...
-	if (selLyX-1 < int(xformColorDB.size())) {
+
+	// Is the choice an Xforms color...
+	if( selLyX-1 < xformColorDB.size() ) {
 		vector<XformColor>::size_type const i = selLyX - 1;
 		vector<NamedColor>::size_type const j = selX11 - 1;
 		xformColorDB[i].r  = colorDB[j].r;
 		xformColorDB[i].g  = colorDB[j].g;
 		xformColorDB[i].b  = colorDB[j].b;
-	} else { // or a LyX Logical color?
+	}
+	// or a LyX Logical color?
+	else {
 		vector<NamedColor>::size_type const i = selLyX - 1 -
 			xformColorDB.size();
 		vector<NamedColor>::size_type const j = selX11 - 1;
 		lyxColorDB[i].r  = colorDB[j].r;
 		lyxColorDB[i].g  = colorDB[j].g;
 		lyxColorDB[i].b  = colorDB[j].b;
-        }
-	
-        fl_freeze_form(dialog_->form);
-	
+	}
+
+	fl_freeze_form(dialog_->form);
+
 	fl_deselect_browser(dialog_->browser_x11);
 	fl_deactivate_object(dialog_->button_modify);
 	fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);

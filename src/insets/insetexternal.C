@@ -29,6 +29,11 @@
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/syscall.h"
+#include "frontends/Dialogs.h" // redrawGUI
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::slot;
+#endif
 
 using std::endl;
 
@@ -37,12 +42,21 @@ InsetExternal::InsetExternal()
 	: form_external(0)
 {
 	tempname = lyx::tempName(); //TmpFileName();
+	r_ = Dialogs::redrawGUI.connect(slot(this, &InsetExternal::redraw));
 }
 
 
 InsetExternal::~InsetExternal()
 {
 	lyx::unlink(tempname);
+	r_.disconnect();
+}
+
+
+void InsetExternal::redraw()
+{
+	if (form_external && form_external->form_external->visible)
+		fl_redraw_form(form_external->form_external);
 }
 
 

@@ -38,8 +38,8 @@ private:
 	virtual void updateSlot(bool) { update(); }
 	/// Update dialog before showing it
 	virtual void update();
-	/// Apply from dialog (modify or create inset)
-	virtual void apply();
+	/// Filter the inputs on callback from xforms
+	virtual bool input( FL_OBJECT *, long);
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * form() const;
 	///

@@ -13,8 +13,6 @@ libinsets_la_SOURCES = \
 	ExternalTemplate.h \
 	figinset.C \
 	figinset.h \
-	form_graphics.C \
-	form_graphics.h \
 	inset.C \
 	insetbib.C \
 	insetbib.h \

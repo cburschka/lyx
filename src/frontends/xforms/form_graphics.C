@@ -47,14 +47,6 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 270, 70, 210, 160, _("Display"));
     fl_set_object_lalign(obj, FL_ALIGN_CENTER);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 190, 350, 90, 30, _("Ok"));
-    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 290, 350, 90, 30, idex(_("Apply|#A")));
-    fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
-    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 390, 350, 90, 30, idex(_("Cancel|^[")));
-    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
 
   fdui->radio_button_group_width = fl_bgn_group();
   fdui->radio_width_percent_page = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 140, 80, 30, _("% of Page"));
@@ -109,6 +101,18 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_button_shortcut(obj, scex(_("Subcaption|#S")), 1);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
+  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 20, 350, 90, 30, idex(_("Update|#U")));
+    fl_set_button_shortcut(obj, scex(_("Update|#U")), 1);
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
+    fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 190, 350, 90, 30, _("Ok"));
+    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
+  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 290, 350, 90, 30, idex(_("Apply|#A")));
+    fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 390, 350, 90, 30, idex(_("Cancel|^[")));
+    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

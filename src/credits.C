@@ -25,7 +25,8 @@ extern string system_lyxdir;
 
 /**** Forms and Objects ****/
 
-static FD_form_credits *fd_form_credits = 0;
+// Non-static so that it can be redrawn if the xforms colors are re-mapped
+FD_form_credits *fd_form_credits = 0;
 
 void CreditsOKCB(FL_OBJECT *, long) {
       fl_hide_form(fd_form_credits->form_credits);

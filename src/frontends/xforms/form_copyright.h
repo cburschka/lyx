@@ -13,7 +13,10 @@ struct FD_form_copyright {
 	~FD_form_copyright();
 
 	FL_FORM *form;
-	FL_OBJECT *button_ok;
+	FL_OBJECT *text_copyright;
+	FL_OBJECT *text_licence;
+	FL_OBJECT *text_disclaimer;
+	FL_OBJECT *button_cancel;
 };
 
 #endif /* FD_form_copyright_h_ */

@@ -205,9 +205,8 @@ void BufferParams::readLanguage(LyXLex & lex)
 	if (!language) {
 		// Language tmptok was not found
 		language = default_language;
-		lyxerr << "Warning: language `"
-		       << tmptok << "' not recognized!\n"
-		       << "         Setting language to `" << language->lang()
+		lyxerr << "Warning: Setting language `"
+		       << tmptok << "' to `" << language->lang()
 		       << "'." << endl;
 	}
 }

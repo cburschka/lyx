@@ -106,7 +106,8 @@ PspellManager * sc;
 
 #endif
 
-static FD_form_spell_options *fd_form_spell_options = 0;
+// Non-static so that it can be redrawn if the xforms colors are re-mapped
+FD_form_spell_options *fd_form_spell_options = 0;
 FD_form_spell_check *fd_form_spell_check = 0;
 
 //void sigchldhandler(int sig);

@@ -44,26 +44,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
-name: browser
-callback: C_FormBaseApplyCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: RETURN_BUTTON
-box: 310 300 100 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Close|#C^[^M
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: 
-callback: C_FormBaseCancelCB
+name: browser_toc
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -80,8 +62,8 @@ label: Update|#U
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: 
-callback: C_FormBaseApplyCB
+name: button_update
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -98,8 +80,26 @@ label: Type|#T
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: type
-callback: C_FormBaseApplyCB
+name: choice_toc_type
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 310 300 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Close|#C^[^M
+shortcut: ^M
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: button_cancel
+callback: C_FormBaseCancelCB
 argument: 0
 
 ==============================

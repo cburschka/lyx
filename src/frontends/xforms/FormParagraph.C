@@ -78,7 +78,7 @@ void FormParagraph::build()
     minw_ = form()->w;
     minh_ = form()->h;
 
-    // manage the restore, ok, apply and cancel/close buttons
+    // Manage the ok, apply, restore and cancel/close buttons
     bc_.setOK(dialog_->button_ok);
     bc_.setApply(dialog_->button_apply);
     bc_.setCancel(dialog_->button_cancel);

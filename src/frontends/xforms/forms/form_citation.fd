@@ -212,6 +212,24 @@ argument:
 
 --------------------
 class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 630 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthWest FL_SouthWest
+name: button_restore
+callback: C_FormBaseRestoreCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
 type: RETURN_BUTTON
 box: 130 630 90 30
 boxtype: FL_UP_BOX
@@ -262,24 +280,6 @@ resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel
 callback: C_FormBaseCancelCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 10 630 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Restore|#R
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_SouthWest FL_SouthWest
-name: button_restore
-callback: C_FormBaseRestoreCB
 argument: 0
 
 ==============================

@@ -12,12 +12,17 @@
 #include "buffer.h"
 #include "LaTeXFeatures.h"
 #include "insets/lyxinset.h"
+#include <sigc++/signal_system.h>
 /* the rest is figure stuff */
 
 struct Figref;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
+
 ///
-class InsetFig: public Inset {
+class InsetFig: public Inset, public Object {
 public:
 	///
 	InsetFig(int tmpx, int tmpy, Buffer const &);
@@ -132,6 +137,10 @@ public:
 	///
 	bool psubfigure;
 private:
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colors have been re-mapped).
+	*/
+	void redraw();
 
 	///
 	Buffer const * owner;
@@ -145,6 +154,8 @@ private:
 	void TempRegenerate();
 	/// get sizes from .eps file
 	void GetPSSizes();
+	/// Redraw connection.
+	SigC::Connection r_;
 };
 
 

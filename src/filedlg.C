@@ -27,6 +27,7 @@ using std::sort;
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "gettext.h"
+#include "frontends/Dialogs.h"
 
 #ifdef HAVE_ERRNO_H
 #include <cerrno>
@@ -409,6 +410,21 @@ LyXFileDlg::LyXFileDlg()
 	}
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
+
+	r_ = Dialogs::redrawGUI.connect(SigC::slot(this, &LyXFileDlg::redraw));
+}
+
+
+LyXFileDlg::~LyXFileDlg()
+{
+	r_.disconnect();
+}
+
+
+void LyXFileDlg::redraw()
+{
+	if (pFileDlgForm->FileDlg && pFileDlgForm->FileDlg->visible)
+		fl_redraw_form(pFileDlgForm->FileDlg);
 }
 
 

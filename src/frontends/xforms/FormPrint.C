@@ -58,7 +58,7 @@ void FormPrint::build()
 	minw_ = form()->w;
 	minh_ = form()->h;
 
-	// manage the ok, apply and cancel/close buttons
+	// Manage the ok, apply and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
 	bc_.setCancel(dialog_->button_cancel);

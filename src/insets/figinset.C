@@ -62,6 +62,11 @@
 #include "bufferview_funcs.h"
 #include "ColorHandler.h"
 #include "converter.h"
+#include "frontends/Dialogs.h" // redrawGUI
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::slot;
+#endif
 
 using std::ostream;
 using std::istream;
@@ -941,6 +946,7 @@ InsetFig::InsetFig(int tmpx, int tmpy, Buffer const & o)
 	raw_wid = raw_hgh = 0;
 	changedfname = false;
 	RegisterFigure(this);
+	r_ = Dialogs::redrawGUI.connect(slot(this, &InsetFig::redraw));
 }
 
 
@@ -950,6 +956,14 @@ InsetFig::~InsetFig()
 		lyxerr << "Figure destructor called" << endl;
 	}
 	UnregisterFigure(this);
+	r_.disconnect();
+}
+
+
+void InsetFig::redraw()
+{
+	if (form && form->Figure->visible)
+		fl_redraw_form(form->Figure);
 }
 
 

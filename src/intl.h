@@ -14,11 +14,15 @@
 
 #include "LString.h"
 #include "form1.h"
+#include <sigc++/signal_system.h>
 
 class LyXText;
 class Combox;
 class TransManager;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
 
 /// default character set
 #define DEFCHSET "iso8859-1"
@@ -28,7 +32,7 @@ class TransManager;
   classes. Probably should the gui class just have a pointer to the non
   gui class.
   */
-class Intl {
+class Intl : public Object {
 public:
 	///
 	Intl();
@@ -67,6 +71,10 @@ public:
 	///
 	static void DispatchCallback(FL_OBJECT *, long);
 private:
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colors have been re-mapped).
+	*/
+	void redraw();
 	///
 	void update();
 	///
@@ -90,6 +98,8 @@ private:
 	string & sec_lang;
 	///
 	TransManager * trans;
+	/// Redraw connection.
+	SigC::Connection r_;
 };
 
 

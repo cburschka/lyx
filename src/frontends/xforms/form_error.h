@@ -14,6 +14,7 @@ struct FD_form_error {
 
 	FL_FORM *form;
 	FL_OBJECT *message;
+	FL_OBJECT *button_cancel;
 };
 
 #endif /* FD_form_error_h_ */

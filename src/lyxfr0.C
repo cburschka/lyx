@@ -17,7 +17,11 @@
 #include "lyxfr0.h"
 #include "lyxfr1.h"
 #include "lyx_gui_misc.h"
+#include "frontends/Dialogs.h" // redrawGUI
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::slot;
+#endif
 
 // callbacks for form form_search
 void SearchCancelCB(FL_OBJECT * ob, long)
@@ -57,13 +61,23 @@ void SearchReplaceCB(FL_OBJECT * ob, long)
 
 SearchForm::SearchForm()
 	: search_form(0)
-{}
+{
+	r_ = Dialogs::redrawGUI.connect(slot(this, &SearchForm::redraw));
+}
 
 
 SearchForm::~SearchForm()
 {
 	// The search_form should be closed and freed when SearchForm
 	// is destructed.
+	r_.disconnect();
+}
+
+
+void SearchForm::redraw()
+{
+	if (search_form && search_form->form_search->visible)
+		fl_redraw_form(search_form->form_search);
 }
 
 

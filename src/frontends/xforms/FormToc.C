@@ -32,7 +32,7 @@
 // confusing to the button controller so I've made an IgnorantPolicy to cover
 // this situation since the dialog doesn't care about buttons. ARRae 20001013
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents"), new IgnorantPolicy),
+	: FormCommand(lv, d, _("Table of Contents"), new OkApplyCancelPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown
@@ -67,7 +67,7 @@ void FormToc::build()
 {
 	dialog_ = build_toc();
 
-	fl_addto_choice(dialog_->type,
+	fl_addto_choice(dialog_->choice_toc_type,
 			_(" TOC | LOF | LOT | LOA "));
 
 	// Don't need to limit size of this dialog
@@ -75,6 +75,10 @@ void FormToc::build()
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
+
+        // Manage the cancel/close button
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.refresh();
 }
 
 
@@ -94,7 +98,7 @@ void FormToc::update()
 	else
 		type = Buffer::TOC_LOT;
 	
-	fl_set_choice( dialog_->type, type+1 );
+	fl_set_choice( dialog_->choice_toc_type, type+1 );
 
 	updateToc();
 }
@@ -104,15 +108,15 @@ void FormToc::updateToc()
 {
   	if (!lv_->view()->available()) {
 		toclist.clear();
-		fl_clear_browser( dialog_->browser );
-		fl_add_browser_line( dialog_->browser,
+		fl_clear_browser( dialog_->browser_toc );
+		fl_add_browser_line( dialog_->browser_toc,
 				     _("*** No Document ***"));
 		return;
 	}
 
 	vector<vector<Buffer::TocItem> > tmp =
 		lv_->view()->buffer()->getTocList();
-	int type = fl_get_choice( dialog_->type ) - 1;
+	int type = fl_get_choice( dialog_->choice_toc_type ) - 1;
 
 	// Check if all elements are the same.
 	if (toclist.size() == tmp[type].size()) {
@@ -131,34 +135,33 @@ void FormToc::updateToc()
 	int topline = 0;
 	int line = 0;
 	if (buffer == lv_->view()->buffer()) {
-		topline = fl_get_browser_topline( dialog_->browser );
-		line = fl_get_browser( dialog_->browser );
+		topline = fl_get_browser_topline( dialog_->browser_toc );
+		line = fl_get_browser( dialog_->browser_toc );
 	} else
 		buffer = lv_->view()->buffer();
 
-	fl_clear_browser( dialog_->browser );
+	fl_clear_browser( dialog_->browser_toc );
 
 	for (vector<Buffer::TocItem>::const_iterator it = toclist.begin();
 	     it != toclist.end(); ++it)
-		fl_add_browser_line( dialog_->browser,
+		fl_add_browser_line( dialog_->browser_toc,
 				     (string(4 * (*it).depth, ' ')
 				      + (*it).str).c_str());
 
-	fl_set_browser_topline( dialog_->browser, topline );
-	fl_select_browser_line( dialog_->browser, line );
+	fl_set_browser_topline( dialog_->browser_toc, topline );
+	fl_select_browser_line( dialog_->browser_toc, line );
 }
 
  
-void FormToc::apply()
+bool FormToc::input(FL_OBJECT *, long)
 {
-  	if (!lv_->view()->available())
-		return;
-
 	updateToc();
 
-	unsigned int const choice = fl_get_browser( dialog_->browser );
+	unsigned int const choice = fl_get_browser( dialog_->browser_toc );
 	if (0 < choice && choice - 1 < toclist.size()) {
 		string const tmp = tostr(toclist[choice-1].par->id());
 		lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tmp);
 	}
+
+	return true;
 }
