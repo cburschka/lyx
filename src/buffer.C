@@ -157,8 +157,12 @@ Buffer::~Buffer()
 
 string Buffer::getLatexName(bool no_path) const
 {
-	return ChangeExtension(MakeLatexName(filename), 
-			       ".tex", no_path); 
+	if (no_path)
+		return OnlyFilename(ChangeExtension(MakeLatexName(filename), 
+						    ".tex"));
+	else
+		return ChangeExtension(MakeLatexName(filename), 
+				       ".tex"); 
 }
 
 
@@ -3285,8 +3289,8 @@ int Buffer::runLiterate()
 	// get LaTeX-Filename
 	string name = getLatexName();
         // get Literate-Filename
-        string lit_name = ChangeExtension (getLatexName(), 
-					   lyxrc.literate_extension, true);
+        string lit_name = OnlyFilename(ChangeExtension (getLatexName(), 
+					   lyxrc.literate_extension));
 
 	string path = OnlyPath(filename);
 
@@ -3356,8 +3360,8 @@ int Buffer::buildProgram()
         // get LaTeX-Filename
         string name = getLatexName();
         // get Literate-Filename
-        string lit_name = ChangeExtension(getLatexName(), 
-					  lyxrc.literate_extension, true);
+        string lit_name = OnlyFilename(ChangeExtension(getLatexName(), 
+						       lyxrc.literate_extension));
  
         string path = OnlyPath(filename);
  
@@ -3727,7 +3731,7 @@ string Buffer::getIncludeonlyList(char delim)
 				    && insetinc->isNoLoad()) {
 					if (!lst.empty())
 						lst += delim;
-					lst += ChangeExtension(insetinc->getContents(), string(), true);
+					lst += OnlyFilename(ChangeExtension(insetinc->getContents(), string()));
 				}
 			}
 			++pos;

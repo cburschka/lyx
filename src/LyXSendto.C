@@ -81,7 +81,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
 	}
     }
 
-    string fname = ChangeExtension(buffer->getLatexName(), ftypeext, true);
+    string fname = OnlyFilename(ChangeExtension(buffer->getLatexName(), ftypeext));
     if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
     command = subst(command, "$$FName", fname);

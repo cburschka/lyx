@@ -358,7 +358,7 @@ int InsetInclude::Latex(ostream & os,
 		}
 		
 		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(getFileName(), ".tex", false);
+		string writefile = ChangeExtension(getFileName(), ".tex");
 		if (!master->tmppath.empty()
 		    && !master->niceFile) {
 			incfile = subst(incfile, '/','@');
@@ -368,7 +368,7 @@ int InsetInclude::Latex(ostream & os,
 			writefile = AddName(master->tmppath, incfile);
 		} else
 			writefile = getFileName();
-		writefile = ChangeExtension(writefile, ".tex", false);
+		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
@@ -388,14 +388,14 @@ int InsetInclude::Latex(ostream & os,
 			os << '\\' << command << '{' << incfile << '}';
 		} else {
 			os << '\\' << command << '{'
-			   << ChangeExtension(incfile, ".tex", false)
+			   << ChangeExtension(incfile, ".tex")
 			   <<  '}';
 		}
 	} else {
 		// \include don't want extension and demands that the
 		// file really have .tex
 		os << '\\' << command << '{'
-		   << ChangeExtension(incfile, string(), false)
+		   << ChangeExtension(incfile, string())
 		   << '}';
 	}
 

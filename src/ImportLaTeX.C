@@ -43,7 +43,7 @@ Buffer * ImportLaTeX::run()
 	Buffer * buf = 0;
 	int result = one.startscript(Systemcalls::System, tmp);
 	if (result == 0) {
-		string filename = ChangeExtension(file, ".lyx", false);
+		string filename = ChangeExtension(file, ".lyx");
 		// File was generated without problems. Load it.
 		buf = bufferlist.loadLyXFile(filename);
 	}

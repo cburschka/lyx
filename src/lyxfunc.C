@@ -2108,7 +2108,7 @@ string LyXFunc::Dispatch(int ac,
 		sscanf(argument.c_str(), " %s %d", file_name, &row);
 
 		// Must replace extension of the file to be .lyx and get full path
-		string s = ChangeExtension(string(file_name), ".lyx", false);
+		string s = ChangeExtension(string(file_name), ".lyx");
 
 		// Either change buffer or load the file
 		if (bufferlist.exists(s))
@@ -2845,7 +2845,7 @@ void LyXFunc::doImportHelper(
 	// get absolute path of file
 	filename = MakeAbsPath(filename);
 
-	string lyxfile = ChangeExtension(filename, ".lyx", false);
+	string lyxfile = ChangeExtension(filename, ".lyx");
 
 	// Check if the document already is open
 	if (bufferlist.exists(lyxfile)) {
@@ -2933,7 +2933,7 @@ bool doImportLinuxDoc(BufferView *, string const & filename)
 
 	int result = one.startscript(Systemcalls::System, tmp);
 	if (result == 0) {
-		string filename = ChangeExtension(filename, ".lyx", false);
+		string filename = ChangeExtension(filename, ".lyx");
 		// File was generated without problems. Load it.
 		buf = bufferlist.loadLyXFile(filename);
 	}

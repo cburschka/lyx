@@ -1,3 +1,74 @@
+These are temporary instructions from Shigeru Miyata <miyata@kusm.kyoto-u.ac.jp>
+===========================================================================
+
+(The top level) configure.cmd is obsoleted by.  Please follow the
+step like this:
+
+1. Install GNU m4, gnu?utils, aclocal/2, autoheader/2, automake/2,
+   autoconf/2, perl, GNU patch and a UNIX type shell like pdksh.
+2. Apply the patch development/OS2/quick_fix.patch
+   // os2_defines.h needs a modification because bmtable.c is C.
+   // Now it hits me, why don't we patch "test -x" (gnufutils)?
+   // However, we can't modify the behavior of "test -f", so
+   // it is still necessary to modify script files for LyX.
+3. Install xforms 0.88 and rename
+      forms.a   -> forms_d.a
+      forms_s.a -> forms.a
+   // Ever since 1.1.5pre1, you cannot link xforms dynamically.
+   // If you don't like this, please ask Holger Veit to export
+   // fl_get_scrollbar_bounds, fl_get_scrollbar_increment and
+   // fl_get_scrollbar_value from the DLL.  They're already there!
+4. Install Hung-Chi Chu's port of GNU gettext.  Other ports will
+   not work.
+5. Set environment variables
+      MAKE_SHELL=sh
+      LIBS=-lulib -lsocket -lbsd -lshm -lstdcpp
+   // ulib must be linked if we use static xforms library.
+   // Unless you are using pgcc, we use gcc rather than g++.
+   // Hence stdc++ must be linked explicitely.  Also please
+   // note that ld for pgcc often fails to link big executables
+   // like unstripped lyx.exe
+6. From sh prompt, type
+      autogen.sh
+   and then
+      configure --prefix=/XFree86 --datadir=/XFree86/lib/X11
+      x11make
+   // Please do not use make.cmd  make.exe should be OK.
+   // x11make.exe is the safest choice
+   // While you are running configure, make sure that it is not
+   // a background process to other CPU intensive processes.
+   // While OS/2 kernel is much more efficient, faster and
+   // more responsive than other systems like LINUX (you can
+   // easily *FEEL* this if you stop PM/WPS and run XFree86
+   // only), its TTY interface is lousy, to say the least.
+   // If the synchronization to the children breaks, configure
+   // often detects wrongfully.
+
+> Or it is possible to download the compiled program?
+
+7. If you are going to make a binary distribution, you have
+   to prepare lib/configure.cmd noweb2lyx.cmd and reLyX.cmd,
+   since end users may not have a UNIX type shell installed.
+   At this stage, lib/configure.cmd in the 1.1.5pre1 should work
+   without change.
+   // If Dekel Tsur introduces the converter_command tag to lyxrc,
+   // the situation changes.
+   In order to create noweb2lyx.cmd and reLyX.cmd, first rename
+   noweb2lyx and reLyX and open them in a text editor.  You
+   have to remove hardcoded path in the first line:
+#!perl
+   Also in reLyX.cmd, $lyxdir should be changed to include the
+   drive letter (the line 21):
+$lyxdir = "$ENV{X11ROOT}/XFree86/lib/X11/lyx";
+   Finally, prepend a line
+extproc perl.exe -S
+   so that cmd.exe pass the execution control to perl.
+   // I know configure.cmd had done this automatically.
+   // So you can compare the result with the scripts in 1.0.4
+   // distribution.
+
+
+===========================================================================
 
 README file for OS/2 version of LyX 1.0.1
 by Shigeru Miyata <miyata@kusm.kyoto-u.ac.jp>

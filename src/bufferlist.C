@@ -225,8 +225,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 		if (!(*it)->isDepClean(mastertmpdir)) {
 			string writefile = mastertmpdir;
 			writefile += '/';
-			writefile += ChangeExtension((*it)->fileName(),
-						     ".tex", true);
+			writefile += (*it)->getLatexName();
 			(*it)->makeLaTeXFile(writefile, mastertmpdir,
 					     false, true);
 			(*it)->markDepClean(mastertmpdir);

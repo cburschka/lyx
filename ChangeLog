@@ -1,4 +1,16 @@
+2000-05-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* add addendum to README.OS2 and small patch (from SMiyata)
+
 2000-05-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* many files: correct the calls to ChangeExtension().
+
+	* src/support/filetools.C (ChangeExtension): remove the no_path
+	argument, which does not belong there. Use OnlyFileName() instead.
+
+	* src/insets/insetbib.C (Latex): use absolute paths for bibtex
+	files when LaTeXing a non-nice latex file.
 
 	* src/lyxlookup.C (isDeadEvent): use a switch statement instead of
 	a chain of "if". Return false when deadkeys are not handled.

@@ -892,8 +892,7 @@ string AddPath(string const & path, string const & path_2)
  Strips path off if no_path == true.
  If no extension on oldname, just appends.
  */
-string ChangeExtension(string const & oldname, string const & extension, 
-			bool no_path) 
+string ChangeExtension(string const & oldname, string const & extension)
 {
 	string::size_type last_slash = oldname.rfind('/');
 	string::size_type last_dot = oldname.rfind('.');
@@ -906,14 +905,8 @@ string ChangeExtension(string const & oldname, string const & extension,
 		ext= '.' + extension;
 	else
 		ext = extension;
-	string ret_str;
-	if (no_path && last_slash != string::npos) {
-		++last_slash; // step it
-		ret_str = oldname.substr(last_slash,
-					 last_dot - last_slash) + ext;
-	} else
-		ret_str = oldname.substr(0, last_dot) + ext;
-	return CleanupPath(ret_str);
+
+	return CleanupPath(oldname.substr(0, last_dot) + ext);
 }
 
 

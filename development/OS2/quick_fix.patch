@@ -1,0 +1,155 @@
+diff -ubr -X g:/exclude lyx-devel/config/progtest.m4 lyx-build/config/progtest.m4
+--- lyx-devel/config/progtest.m4	Tue Feb 22 06:44:28 2000
++++ lyx-build/config/progtest.m4	Wed May 10 10:12:44 2000
+@@ -11,6 +11,19 @@
+ dnl AM_PATH_PROG_WITH_TEST(VARIABLE, PROG-TO-CHECK-FOR,
+ dnl   TEST-PERFORMED-ON-FOUND_PROGRAM [, VALUE-IF-NOT-FOUND [, PATH]])
+ AC_DEFUN(AM_PATH_PROG_WITH_TEST,
++[case "`uname -s 2> /dev/null`" in
++OS/2)
++  PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
++  PATH_IFS=';'
++  EXE_EXT='.exe'
++  CMD_EXT='.cmd'
++  ;;
++*)
++  PATH_IFS=':'
++  EXE_EXT=''
++  CMD_EXT=''
++  ;;
++esac]
+ [# Extract the first word of "$2", so it can be a program name with args.
+ set dummy $2; ac_word=[$]2
+ AC_MSG_CHECKING([for $ac_word])
+@@ -20,10 +33,12 @@
+   ac_cv_path_$1="[$]$1" # Let the user override the test with a path.
+   ;;
+   *)
+-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}$PATH_IFS"
+   for ac_dir in ifelse([$5], , $PATH, [$5]); do
+     test -z "$ac_dir" && ac_dir=.
+-    if test -f $ac_dir/$ac_word; then
++    if test -f $ac_dir/$ac_word \
++	 -o -f $ac_dir/$ac_word$EXE_EXT \
++	 -o -f $ac_dir/$ac_word$CMD_EXT; then
+       if [$3]; then
+ 	ac_cv_path_$1="$ac_dir/$ac_word"
+ 	break
+diff -ubr -X g:/exclude lyx-devel/lib/configure.m4 lyx-build/lib/configure.m4
+--- lyx-devel/lib/configure.m4	Tue Feb 22 06:44:42 2000
++++ lyx-build/lib/configure.m4	Wed May 10 07:24:02 2000
+@@ -28,6 +28,19 @@
+ dnl
+ define(SEARCH_PROG,[dnl
+ changequote([,])dnl
++case "`uname -s 2> /dev/null`" in
++OS/2)
++  PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
++  PATH_IFS=';'
++  EXE_EXT='.exe'
++  CMD_EXT='.cmd'
++  ;;
++*)
++  PATH_IFS=':'
++  EXE_EXT=''
++  CMD_EXT=''
++  ;;
++esac
+ MSG_CHECKING($1)
+ MSG_RESULT(($3))
+ $2=
+@@ -37,10 +50,12 @@
+ set dummy $ac_prog ; ac_word=$[2]
+ if test -n "$ac_word"; then
+   MSG_CHECKING([for \"$ac_word\"],[+])
+-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="$PATH_IFS"
+   for ac_dir in $PATH; do
+     test -z "$ac_dir" && ac_dir=.
+-    if test -x [$ac_dir/$ac_word]; then
++    if test -x [$ac_dir/$ac_word] \
++	 -o -x [$ac_dir/$ac_word$EXE_EXT] \
++	 -o -x [$ac_dir/$ac_word$CMD_EXT]; then
+       $2="$ac_prog"
+       break
+     fi
+@@ -179,8 +194,17 @@
+ fi
+ 
+ # Search for an installed reLyX or a ready-to-install one
++case "`uname -s 2> /dev/null`" in
++OS/2)
++save_PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
++PATH_IFS=';'
++;;
++*)
+ save_PATH=${PATH}
+-PATH=${PATH}:./reLyX/
++PATH_IFS=':'
++;;
++esac
++PATH=${PATH}${PATH_IFS}./reLyX/
+ SEARCH_PROG([for reLyX LaTeX-to-LyX translator],RELYX,reLyX)
+ PATH=${save_PATH}
+ 
+diff -ubr -X g:/exclude lyx-devel/lib/reLyX/acinclude.m4 lyx-build/lib/reLyX/acinclude.m4
+--- lyx-devel/lib/reLyX/acinclude.m4	Tue Sep 28 03:44:34 1999
++++ lyx-build/lib/reLyX/acinclude.m4	Wed May 10 05:38:36 2000
+@@ -11,15 +11,24 @@
+ dnl RELYX_SEARCH_PROG(VARIABLE-NAME,PROGRAMS-LIST,ACTION-IF-FOUND)
+ dnl             
+ define(RELYX_SEARCH_PROG,[dnl
++case "`uname -s 2> /dev/null`" in
++OS/2)
++  PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
++  PATH_IFS=';'
++  ;;
++*)
++  PATH_IFS=':'
++  ;;
++esac
+ for ac_prog in $2 ; do
+ # Extract the first word of "$ac_prog", so it can be a program name with
+ # args.
+   set dummy $ac_prog ; ac_word=$[2]
+   if test ! -n "[$]$1"; then
+-    IFS="${IFS=         }"; ac_save_ifs="$IFS"; IFS="${IFS}:"
++    IFS="${IFS=         }"; ac_save_ifs="$IFS"; IFS="${IFS}$PATH_IFS"
+     for ac_dir in $PATH; do
+       test -z "$ac_dir" && ac_dir=.
+-      if test -f [$ac_dir/$ac_word]; then
++      if test -f [$ac_dir/$ac_word] -o -f [$ac_dir/$ac_word$ac_exeext]; then
+         $1="$ac_prog"
+         break
+       fi
+diff -ubr -X g:/exclude lyx-devel/lib/reLyX/configure.in lyx-build/lib/reLyX/configure.in
+--- lyx-devel/lib/reLyX/configure.in	Tue Feb 22 06:45:24 2000
++++ lyx-build/lib/reLyX/configure.in	Wed May 10 05:38:34 2000
+@@ -2,6 +2,7 @@
+ AC_INIT(reLyX.in)
+ AC_PREREQ(2.13) dnl We want to use autoconf 2.13
+ AC_CONFIG_AUX_DIR(../../config)
++AC_EXEEXT
+ 
+ dnl PACKAGE=reLyX
+ dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
+diff -ubr -X g:/exclude lyx-devel/src/os2_defines.h lyx-build/src/os2_defines.h
+--- lyx-devel/src/os2_defines.h	Fri Mar 10 06:25:50 2000
++++ lyx-build/src/os2_defines.h	Fri May  5 11:37:48 2000
+@@ -13,9 +13,14 @@
+ #ifndef OS2_DEFINES_H
+ #define OS2_DEFINES_H
+ 
++#if defined (__cplusplus)
+ #include <cctype>
+-#include <process.h>
+ #include <cstdlib>
++#else
++#include <ctype.h>
++#include <stdlib.h>
++#endif
++#include <process.h>
+ #include <unistd.h>
+ #include <X11/Xlocale.h>
+ /* #include <malloc.h> */

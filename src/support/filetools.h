@@ -131,12 +131,10 @@ string AddName(string const & path, string const & fname);
 string AddPath(string const & path, string const & path2);
 
 /** Change extension of oldname to extension.
- If no_path is true, the path is stripped from the filename.
  If oldname does not have an extension, it is appended.
  If the extension is empty, any extension is removed from the name.
  */
-string ChangeExtension(string const & oldname, string const & extension, 
-		       bool no_path);
+string ChangeExtension(string const & oldname, string const & extension);
 
 /// Create absolute path. If impossible, don't do anything
 string ExpandPath(string const & path);

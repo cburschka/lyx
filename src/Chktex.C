@@ -47,7 +47,7 @@ Chktex::Chktex(string const & chktex, string const & f, string const & p)
 int Chktex::run(TeXErrors &terr)
 {
 	// run bibtex
-	string log = ChangeExtension(file, ".log", true);
+	string log = OnlyFilename(ChangeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
         Systemcalls one;
 	int result= one.startscript(Systemcalls::System, tmp);
@@ -65,7 +65,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string token;
 	int retval = 0;
 
-	string tmp = ChangeExtension(file, ".log", true);
+	string tmp = OnlyFilename(ChangeExtension(file, ".log"));
 
 	ifstream ifs(tmp.c_str());
 	while (getline(ifs, token)) {

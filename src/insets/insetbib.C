@@ -339,9 +339,13 @@ int InsetBibtex::Latex(ostream & os,
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
 	while(!adb.empty()) {
-		if (!owner->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
-			adb = MakeAbsPath(adb, owner->filepath);
+		if (!owner->niceFile) {
+			string fname 
+				= findtexfile(ChangeExtension(adb, "bib"),
+					      "bib");
+			if (!fname.empty())
+				adb = ChangeExtension(fname, string());
+		}
 		db_out += adb;
 		db_out += ',';
 		db_in= split(db_in, adb,',');
@@ -379,7 +383,7 @@ string InsetBibtex::getKeys(char delim)
 	string bibfiles = getContents();
 	bibfiles = split(bibfiles, tmp, ',');
 	while(!tmp.empty()) {
-		string fil = findtexfile(ChangeExtension(tmp, "bib", false),
+		string fil = findtexfile(ChangeExtension(tmp, "bib"),
 					 "bib");
 		lyxerr[Debug::LATEX] << "Bibfile: " << fil << endl;
 		// If we didn't find a matching file name just fail silently

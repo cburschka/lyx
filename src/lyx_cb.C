@@ -431,8 +431,7 @@ bool RunScript(Buffer * buffer, bool wait,
 		return false;
 	/* get DVI-Filename */
 	if (name.empty())
-		name = ChangeExtension(buffer->getLatexName(),
-				       ".dvi", true);
+		name = ChangeExtension(buffer->getLatexName(), ".dvi");
 
 	path = OnlyPath(name);
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
@@ -508,8 +507,8 @@ bool CreatePostscript(Buffer * buffer, bool wait = false)
 		return false;
         }
 	// Generate postscript file
-	string psname = ChangeExtension (buffer->fileName(),
-					 ".ps_tmp", true);
+	string psname = OnlyFilename(ChangeExtension (buffer->fileName(),
+					 ".ps_tmp"));
 
 	string paper;
 
@@ -596,8 +595,8 @@ bool PreviewPostscript(Buffer * buffer)
 
 	// Start postscript viewer
 	ProhibitInput(current_view);
-	string ps = ChangeExtension (buffer->fileName(),
-				     ".ps_tmp", true);
+	string ps = OnlyFilename(ChangeExtension (buffer->fileName(),
+				     ".ps_tmp"));
 	// push directorypath, if necessary 
         string path = OnlyPath(buffer->fileName());
         if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
@@ -622,7 +621,8 @@ void MenuFax(Buffer * buffer)
 	}
 
 	// Send fax
-	string ps = ChangeExtension (buffer->fileName(), ".ps_tmp", true);
+	string ps = OnlyFilename(ChangeExtension (buffer->fileName(), 
+						  ".ps_tmp"));
 	string path = OnlyPath (buffer->fileName());
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
@@ -757,8 +757,7 @@ void MenuMakeLinuxDoc(Buffer * buffer)
 	}
 	
 	// Get LinuxDoc-Filename
-	string s = ChangeExtension(buffer->fileName(), 
-				   ".sgml", false);
+	string s = ChangeExtension(buffer->fileName(), ".sgml");
 
 	if (!AskOverwrite(buffer, s))
 		return;
@@ -785,8 +784,7 @@ void MenuMakeDocBook(Buffer * buffer)
 	}
 	
 	// Get DocBook-Filename
-	string s = ChangeExtension(buffer->fileName(), 
-				   ".sgml", false);
+	string s = ChangeExtension(buffer->fileName(), ".sgml");
 
 	if (!AskOverwrite(buffer, s))
 		return;
@@ -807,8 +805,7 @@ void MenuMakeAscii(Buffer * buffer)
 	//if (!bv->text) return;
 	
 	/* get LaTeX-Filename */
-	string s = ChangeExtension (buffer->fileName(),
-				    ".txt", false);
+	string s = ChangeExtension (buffer->fileName(), ".txt");
 	
 
 	if (!AskOverwrite(buffer, s))
@@ -826,9 +823,8 @@ void MenuPrint(Buffer * buffer)
 	//if (!bv->text)
 	//	return;
 
-	string input_file = ChangeExtension(buffer->fileName(),
-					    lyxrc.print_file_extension,
-					    true);
+	string input_file = OnlyFilename(ChangeExtension(buffer->fileName(),
+					    lyxrc.print_file_extension));
 	fl_set_input(fd_form_print->input_file, input_file.c_str());
 	
 	if (fd_form_print->form_print->visible) {
@@ -853,7 +849,7 @@ void MenuMakeHTML(Buffer * buffer)
 	// the tex file name has to be correct for
 	// latex, but the html file name can be
 	// anything.
-	string result = ChangeExtension(file, ".html", false);
+	string result = ChangeExtension(file, ".html");
 	string infile = buffer->getLatexName(false);
 	string tmp = lyxrc.html_command;
 	tmp = subst(tmp, "$$FName", infile);
@@ -880,8 +876,8 @@ void MenuMakeHTML_LinuxDoc(Buffer * buffer)
 	// And now, run the converter
 	string file = buffer->fileName();
 
-	string result = ChangeExtension(file, ".html", false);
-	string infile = ChangeExtension(file, ".sgml", false);
+	string result = ChangeExtension(file, ".html");
+	string infile = ChangeExtension(file, ".sgml");
 	string tmp = lyxrc.linuxdoc_to_html_command;
 	tmp = subst(tmp, "$$FName", infile);
 	tmp = subst(tmp, "$$OutName", result);
@@ -905,8 +901,8 @@ void MenuMakeHTML_DocBook(Buffer * buffer)
 
 	// And now, run the converter
 	string file = buffer->fileName();
-	string result = ChangeExtension(file, ".html", false);
-	string infile = ChangeExtension(file, ".sgml", false);
+	string result = ChangeExtension(file, ".html");
+	string infile = ChangeExtension(file, ".sgml");
 	string tmp = lyxrc.docbook_to_html_command;
 	tmp = subst(tmp, "$$FName", infile);
 	tmp = subst(tmp, "$$OutName", result);
@@ -1269,7 +1265,7 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 	int errorcode = 0;
 
 	/* generate a path-less extension name */
-	string name = ChangeExtension (filename, ".sgml", true);
+	string name = OnlyFilename(ChangeExtension (filename, ".sgml"));
 	string path = OnlyPath (filename);
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = bv->buffer()->tmppath;
@@ -1330,7 +1326,7 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 int RunDocBook(int flag, string const & filename)
 {
 	/* generate a path-less extension name */
-	string name = ChangeExtension (filename, ".sgml", true);
+	string name = OnlyFilename(ChangeExtension (filename, ".sgml"));
 	string path = OnlyPath (filename);
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = current_view->buffer()->tmppath;

@@ -24,10 +24,9 @@ void ShowLatexLog()
 
 	filename = current_view->buffer()->getLatexName();
 	if (!filename.empty()) {
-		fname = ChangeExtension(filename, ".log", true);
-		bname = ChangeExtension(filename,
-					lyxrc.literate_extension + ".out", 
-					true);
+		fname = OnlyFilename(ChangeExtension(filename, ".log"));
+		bname = OnlyFilename(ChangeExtension(filename,
+					lyxrc.literate_extension + ".out"));
 		path = OnlyPath(filename);
 		if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 			path = current_view->buffer()->tmppath;

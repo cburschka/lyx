@@ -110,16 +110,18 @@ void LaTeX::deleteFilesOnError() const
 
 	// but the reason for the error might be in a generated file...
 
+	string ofname = OnlyFilename(file);
+
 	// bibtex file
-	string bbl = ChangeExtension(file, ".bbl", true);
+	string bbl = ChangeExtension(ofname, ".bbl");
 	::unlink(bbl.c_str());
 
 	// makeindex file
-	string ind = ChangeExtension(file, ".ind", true);
+	string ind = ChangeExtension(ofname, ".ind");
 	::unlink(ind.c_str());
 	
 	// Also remove the aux file
-	string aux = ChangeExtension(file, ".aux", true);
+	string aux = ChangeExtension(ofname, ".aux");
 	::unlink(aux.c_str());
 }
 
@@ -222,12 +224,12 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	// if needed.
 	
 	// run makeindex
-	if (head.haschanged(ChangeExtension(file, ".idx", true))) {
+	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		minib->Set(_("Running MakeIndex."));
 		minib->Store();
-		rerun = runMakeIndex(ChangeExtension(file, ".idx", true));
+		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 
 	// run bibtex
@@ -241,7 +243,8 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
 		minib->Set(_("Running BibTeX."));
 		minib->Store();
-		rerun = runBibTeX(ChangeExtension(file, ".aux", true), head);
+		rerun = runBibTeX(OnlyFilename(ChangeExtension(file, ".aux")), 
+				  head);
 	}
 	
 	// 1
@@ -288,12 +291,12 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	// more after this.
 	
 	// run makeindex if the <file>.idx has changed or was generated.
-	if (head.haschanged(ChangeExtension(file, ".idx", true))) {
+	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		minib->Set(_("Running MakeIndex."));
 		minib->Store();
-		rerun = runMakeIndex(ChangeExtension(file, ".idx", true));
+		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 	
 	// 2
@@ -370,7 +373,7 @@ bool LaTeX::scanAux(DepTable & dep)
 	if (dep.extchanged(".bib")
 	    || dep.extchanged(".bst")) return true;
 	
-	string aux = ChangeExtension(file, ".aux", true);
+	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
 	ifstream ifs(aux.c_str());
 	string token;
 	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
@@ -392,7 +395,7 @@ bool LaTeX::scanAux(DepTable & dep)
 				}
 				string full_l =
 					findtexfile(
-						ChangeExtension(l, "bib", false), "bib");
+						ChangeExtension(l, "bib"), "bib");
 				if (!full_l.empty()) {
 					if (!dep.exist(full_l))
 						return true;
@@ -406,7 +409,7 @@ bool LaTeX::scanAux(DepTable & dep)
 			// pass it to the helper
 			string full_l =
 				findtexfile(
-					ChangeExtension(style, "bst", false),
+					ChangeExtension(style, "bst"),
 					"bst");
 			if (!full_l.empty()) {
 				if (!dep.exist(full_l))
@@ -450,7 +453,7 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 				}
 				string full_l = 
 					findtexfile(
-						ChangeExtension(l, "bib", false),
+						ChangeExtension(l, "bib"),
 						"bib");
 				lyxerr[Debug::LATEX] << "Bibtex database: `"
 						     << full_l << "'" << endl;
@@ -468,7 +471,7 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 			// pass it to the helper
 			string full_l = 
 				findtexfile(
-					ChangeExtension(style, "bst", false),
+					ChangeExtension(style, "bst"),
 					"bst");
 			lyxerr[Debug::LATEX] << "Bibtex style: `"
 					     << full_l << "'" << endl;
@@ -481,7 +484,7 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 	if (using_bibtex) {
 		// run bibtex and
 		string tmp = "bibtex ";
-		tmp += ChangeExtension(file, string(), true);
+		tmp += OnlyFilename(ChangeExtension(file, string()));
 		Systemcalls one;
 		one.startscript(Systemcalls::System, tmp);
 		return true;
@@ -496,7 +499,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int last_line = -1;
 	int line_count = 1;
 	int retval = NO_ERRORS;
-	string tmp = ChangeExtension(file, ".log", true);
+	string tmp = OnlyFilename(ChangeExtension(file, ".log"));
 	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
 	ifstream ifs(tmp.c_str());
 
@@ -615,7 +618,7 @@ void LaTeX::deplog(DepTable & head)
 	// files used by the LaTeX run. The files are then entered into the
 	// dependency file.
 
-	string logfile = ChangeExtension(file, ".log", true);
+	string logfile = OnlyFilename(ChangeExtension(file, ".log"));
 	
 	ifstream ifs(logfile.c_str());
 	while (ifs) {
@@ -694,9 +697,8 @@ void LaTeX::deptex(DepTable & head)
 	FileInfo fi;
 	for (int i = 0; i < file_count; ++i) {
 		if (!(all_files[i].file & except)) {
-			tmp = ChangeExtension(file,
-					      all_files[i].extension,
-					      true);
+			tmp = OnlyFilename(ChangeExtension(file,
+							   all_files[i].extension));
 			lyxerr[Debug::DEPEND] << "deptex: " << tmp << endl;
 			if (fi.newFile(tmp).exist())
 				head.insert(tmp);
