@@ -1,4 +1,22 @@
 
+2004-03-11  André Pönitz  <poenitz@gmx.net>
+
+	* buffer.[Ch]: use InsetText instead of LyXText as container for 
+	the main lyx text.
+
+	* dociterator.[Ch]: drop the BufferView * member which is not needed
+	anymore after the change to buffer.C
+
+	* paragraph_funcs.C:
+	* text.C:
+	* text2.C:
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]:
+	* cursor.[Ch]:
+	* cursor_slice.[Ch]: adjust
+
+	* text3.C: fix bug in mathDispatch
+
 2004-03-08  André Pönitz  <poenitz@gmx.net>
 
 	* undo.[Ch]: use 'StableDocumentIterator' as base for

@@ -131,7 +131,8 @@ namespace {
 		lyxerr << "selection is: '" << sel << "'" << endl;
 
 		if (sel.empty()) {
-			cur.insert(new MathHullInset); // activates inset
+			cur.insert(new MathHullInset);
+			cur.dispatch(FuncRequest(LFUN_RIGHT));
 			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
@@ -143,14 +144,16 @@ namespace {
 			// create a macro if we see "\\newcommand" somewhere, and an ordinary
 			// formula otherwise
 			text->cutSelection(cur, true, true);
-			if (sel.find("\\newcommand") == string::npos &&
-					sel.find("\\def") == string::npos)
+			if (sel.find("\\newcommand") == string::npos
+			    && sel.find("\\def") == string::npos)
 			{
 				cur.insert(new MathHullInset);
+				cur.dispatch(FuncRequest(LFUN_RIGHT));
 				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			} else {
 				cur.insert(new InsetFormulaMacro(sel));
+				cur.dispatch(FuncRequest(LFUN_RIGHT));
 			}
 		}
 		cur.message(N_("Math editor mode"));
@@ -774,8 +777,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		if (cur.inset() && cur.inset()->asUpdatableInset())
-			cur.inset()->asUpdatableInset()->showInsetDialog(bv);
+		if (cur.inset().asUpdatableInset())
+			cur.inset().asUpdatableInset()->showInsetDialog(bv);
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -858,28 +861,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_COPY:
 		copySelection(cur);
 		cur.message(_("Copy"));
-		break;
-
-	case LFUN_BEGINNINGBUFSEL:
-		if (in_inset_) {
-			cur.undispatched();
-		} else {
-			if (!cur.selection())
-				cur.resetAnchor();
-			cursorTop(cur);
-			finishChange(cur, true);
-		}
-		break;
-
-	case LFUN_ENDBUFSEL:
-		if (in_inset_) {
-			cur.undispatched();
-		} else {
-			if (!cur.selection())
-				cur.resetAnchor();
-			cursorBottom(cur);
-			finishChange(cur, true);
-		}
 		break;
 
 	case LFUN_GETXY:
@@ -1093,7 +1074,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 		// This is to allow jumping over large insets
 		// FIXME: shouldn't be top-text-specific
-		if (!in_inset_ && cur.top() == old) {
+		if (isMainText() && cur.top() == old) {
 			if (cmd.y - bv->top_y() >= bv->workHeight())
 				cursorDown(cur);
 			else if (cmd.y - bv->top_y() < 0)
@@ -1461,9 +1442,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		params2string(cur.paragraph(), data);
 
 		// Will the paragraph accept changes from the dialog?
-		InsetBase * const inset = cur.inset();
-		bool const accept =
-			!(inset && inset->forceDefaultParagraphs(inset));
+		InsetBase & inset = cur.inset();
+		bool const accept = !inset.forceDefaultParagraphs(&inset);
 
 		data = "update " + tostr(accept) + '\n' + data;
 		bv->owner()->getDialogs().update("paragraph", data);

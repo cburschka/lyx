@@ -17,9 +17,8 @@
 #include <vector>
 #include <iosfwd>
 
-class BufferView;
-class MathAtom;
 class LyXText;
+class MathAtom;
 class Paragraph;
 class Row;
 
@@ -50,13 +49,6 @@ public:
 	typedef CursorSlice::col_type col_type;
 
 public:
-	///
-	DocumentIterator();
-	///
-	explicit DocumentIterator(BufferView & bv);
-	///
-	BufferView & bv() const { return *bv_; } 
-
 	//
 	// access to slice at tip
 	//
@@ -67,7 +59,7 @@ public:
 	/// how many nested insets do we have?
 	size_t depth() const { return size(); }
 	/// the containing inset
-	InsetBase * inset() const { return back().inset(); }
+	InsetBase & inset() const { return back().inset(); }
 	/// return the cell of the inset this cursor is in
 	idx_type idx() const { return back().idx(); }
 	/// return the cell of the inset this cursor is in
@@ -151,8 +143,6 @@ public:
 	///
 	LyXText * text() const;
 	///
-	CursorSlice const & innerTextSlice() const;
-	///
 	InsetBase * innerInsetOfType(int code) const;
 	///
 	LyXText * innerText() const;
@@ -171,19 +161,11 @@ public:
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocumentIterator const & cur);
-
-private:
-	///
-	BufferView * bv_;	
 };
 
 
 ///
-DocumentIterator bufferBegin(BufferView & bv);
-///
-DocumentIterator bufferEnd();
-///
-DocumentIterator insetBegin(BufferView & bv, InsetBase * inset);
+DocumentIterator insetBegin(InsetBase & inset);
 ///
 DocumentIterator insetEnd();
 
@@ -199,7 +181,7 @@ public:
 	/// non-explicit intended
 	StableDocumentIterator(const DocumentIterator & it);
 	///
-	DocumentIterator asDocumentIterator(BufferView & bv) const;
+	DocumentIterator asDocumentIterator(InsetBase * start) const;
 	///
 	size_t size() const { return data_.size(); }
 	///

@@ -55,7 +55,7 @@ public:
 	typedef lyx::paroffset_type par_type;
 	
 	/// constructor
-	LyXText(BufferView *, bool ininset);
+	explicit LyXText(BufferView *);
 	///
 	void init(BufferView *);
 
@@ -328,8 +328,8 @@ public:
 
 	/// access to our paragraphs
 	ParagraphList & paragraphs() const;
-	/// return true if this is owned by an inset.
-	bool isInInset() const;
+	/// return true if this is the main text
+	bool isMainText() const;
 	
 	/// return first row of text
 	RowList::iterator firstRow() const;
@@ -400,8 +400,6 @@ public:
 
 	///
 	mutable Bidi bidi;
-	///
-	bool in_inset_;
 	///
 	ParagraphList paragraphs_;
 

@@ -298,7 +298,7 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 void InsetCollapsable::edit(LCursor & cur, bool left)
 {
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
-	cur.push(this);
+	cur.push(*this);
 	inset.edit(cur, left);
 	open();
 }
@@ -306,7 +306,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 
 InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
-	cur.push(this);
+	cur.push(*this);
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status_ == Collapsed) {
 		setStatus(Open);
