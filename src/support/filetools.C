@@ -66,8 +66,6 @@
 using std::fgetc;
 using std::isalpha;
 using std::isalnum;
-using std::pclose;
-using std::popen;
 #endif
 
 using std::make_pair;

@@ -1,3 +1,11 @@
+2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* putenv.C (putenv): putenv should never be found in std::
+
+	* kill.C (kill): kill should never be found in std::
+
+	* filetools.C: pclose and popen should never be found in std::
+
 2002-06-07  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.5.
@@ -25,24 +33,24 @@
 	* lxtl.h: remove unused file
 
 2002-05-30  John Levon  <moz@compsoc.man.ac.uk>
- 
- 	* Makefile.am:
- 	* date.C:
- 	* getUserName.C:
- 	* fileblocks.c:
- 	* StrPool.h:
- 	* StrPool.C: remove unused files
-  
- 	* lyxalgo.h:
- 	* lyxlib.h:
- 	* mkdir.C:
- 	* path.h:
- 	* path.C:
- 	* systemcall.C:
- 	* textutils.h:
- 	* translator.h:
- 	* types.h: document and small cleanups
- 
+
+	* Makefile.am:
+	* date.C:
+	* getUserName.C:
+	* fileblocks.c:
+	* StrPool.h:
+	* StrPool.C: remove unused files
+
+	* lyxalgo.h:
+	* lyxlib.h:
+	* mkdir.C:
+	* path.h:
+	* path.C:
+	* systemcall.C:
+	* textutils.h:
+	* translator.h:
+	* types.h: document and small cleanups
+
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* switch from SigC signals to boost::signals.
