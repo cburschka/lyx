@@ -70,43 +70,26 @@ $$
 \c{}
 \cite[]{}
 
-% Natbib citations can usually have two optional args, but LyX currently
-% supports only one.
-\citet[]{}
-\Citet[]{}
-\citet*[]{}
-\Citet*[]{}
-%\citet[][]{}
-%\Citet[][]{}
-%\citet*[][]{}
-%\Citet*[][]{}
+% Natbib citations can usually have two optional args
+\citet[][]{}
+\Citet[][]{}
+\citet*[][]{}
+\Citet*[][]{}
 
-\citealt[]{}
-\Citealt[]{}
-\citealt*[]{}
-\Citealt*[]{}
-%\citealt[][]{}
-%\Citealt[][]{}
-%\citealt*[][]{}
-%\Citealt*[][]{}
+\citealt[][]{}
+\Citealt[][]{}
+\citealt*[][]{}
+\Citealt*[][]{}
 
-\citep[]{}
-\Citep[]{}
-\citep*[]{}
-\Citep*[]{}
-%\citep[][]{}
-%\Citep[][]{}
-%\citep*[][]{}
-%\Citep*[][]{}
+\citep[][]{}
+\Citep[][]{}
+\citep*[][]{}
+\Citep*[][]{}
 
-\citealp[]{}
-\Citealp[]{}
-\citealp*[]{}
-\Citealp*[]{}
-%\citealp[][]{}
-%\Citealp[][]{}
-%\citealp*[][]{}
-%\Citealp*[][]{}
+\citealp[][]{}
+\Citealp[][]{}
+\citealp*[][]{}
+\Citealp*[][]{}
 
 \citeauthor[]{}
 \Citeauthor[]{}
@@ -114,8 +97,20 @@ $$
 \Citeauthor*[]{}
 
 \citeyear[]{}
-\citeyearpar[]{}
-%\citeyearpar[][]{}
+\citeyearpar[][]{}
+
+% jurabib supports some natbib commands and additionally:
+\fullcite[][]{}
+\footcite[][]{}
+\footcitet[][]{}
+\footcitealt[][]{}
+\footcitep[][]{}
+\footcitealp[][]{}
+\footciteauthor[]{}
+\footciteyear[]{}
+\footciteyearpar[][]{}
+\citefield[]{}
+\citetitle[]{}
 
 \cline{ - }
 \d{}
@@ -386,6 +381,7 @@ $$
 \backmatter
 %\bezier{}(,)(,)(,)    % picture
 \bfdefault
+\bibliographyunit[]
 \bibname
 \botfigrule
 \bottomfraction
@@ -416,6 +412,7 @@ $$
 \dbltopfraction
 \def{}{}
 \definecolor{}{}{,,}
+\DescribeMacro{}
 \discretionary{}{}{}
 \encl{}
 \enclname
@@ -473,6 +470,8 @@ $$
 \labelitemiii
 \labelitemiv
 \language{}
+% We need this because the arguments must not be interpreted
+\let{}{}
 % \line(,){}    %picture
 \linebreak[]
 \linethickness{}
@@ -549,6 +548,7 @@ $$
 \psfrag*{}[][][][]{translate}
 \pushtabs
 % \put(,){}     %picture
+\putbib[]
 % \qbezier[](,)(,)(,)     %picture
 \r{}
 \raggedbottom
@@ -601,6 +601,7 @@ $$
 \stretch{}
 %\subitem{}   % unsupported theindex environment
 \subjectname
+\subfigure[]{translate}
 \subparagraph[]{}  % These "sub" versions of the sectioning commands weren't
 \subparagraph*{}   % in the original commandlist for some reason (adk)
 \subsection[]{}    %
@@ -619,7 +620,7 @@ $$
 %\textcolor{}{}      % reLyX doesn't care about this version
 \textnormal{translate}
 \textfraction
-\thanks{}
+\thanks{translate}
 \thicklines
 \thinlines
 \thispagestyle{}
