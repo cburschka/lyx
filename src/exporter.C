@@ -24,6 +24,7 @@
 #include "converter.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::vector;
 using std::find;
@@ -31,6 +32,18 @@ using std::find;
 bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
+	// There are so many different places that this function can be called
+	// from that the removal of auto insets is best done here.  This ensures
+	// we always have a clean buffer for inserting errors found during export.
+	BufferView * bv = buffer->getUser();
+	if (bv) {
+		// Remove all error insets
+		if (bv->removeAutoInsets()) {
+			bv->redraw();
+			bv->fitCursor();
+		}
+	}
+
 	string backend_format;
 	vector<string> backends = Backends(buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {

@@ -1098,15 +1098,15 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	case LFUN_UPDATE:
 		Exporter::Export(owner->buffer(), argument, true);
 		break;
-
+		
 	case LFUN_PREVIEW:
 		Exporter::Preview(owner->buffer(), argument);
 		break;
-		
+
         case LFUN_BUILDPROG:
 		Exporter::Export(owner->buffer(), "program", true);
-                break;
-                
+		break;
+
  	case LFUN_RUNCHKTEX:
 		MenuRunChktex(owner->buffer());
 		break;

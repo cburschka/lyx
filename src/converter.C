@@ -783,11 +783,9 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		return false;
 
 	BufferView * bv = buffer->getUser();
-	bool need_redraw = false;
 	if (bv) {
 		bv->owner()->prohibitInput();
-		// Remove all error insets
-		need_redraw = bv->removeAutoInsets();
+		// all error insets should have been removed by now
 	}
 
 	LaTeX latex("", filename, "");
@@ -797,9 +795,6 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		if ((result & LaTeX::ERRORS)) {
 			// Insert all errors as errors boxes
 			bv->insertErrors(terr);
-			need_redraw = true;
-		}
-		if (need_redraw) {
 			bv->redraw();
 			bv->fitCursor();
 		}
@@ -839,34 +834,24 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 		return false;
 
 	BufferView * bv = buffer->getUser();
-	string name = buffer->getLatexName();
-	bool need_redraw = false;
 
 	if (bv) {
 		bv->owner()->prohibitInput();
 		bv->owner()->message(_("Running LaTeX..."));
-		// Remove all error insets
-		need_redraw = bv->removeAutoInsets();
+		// all the autoinsets have already been removed
 	}
 
-
-	// do the LaTex run(s)
+	// do the LaTeX run(s)
+	string name = buffer->getLatexName();
+	LaTeX latex(command, name, buffer->filePath());	
 	TeXErrors terr;
-	LaTeX latex(command, name, buffer->filePath());
 	int result = latex.run(terr,
 			       bv ? bv->owner()->getLyXFunc() : 0);
-	
 
 	if (bv) {
 		if ((result & LaTeX::ERRORS)) {
 			// Insert all errors as errors boxes
 			bv->insertErrors(terr);
-			need_redraw = true;
-		}
-
-		// if we removed error insets before we ran LaTeX or if we inserted
-		// error insets after we ran LaTeX this must be run:
-		if (need_redraw) {
 			bv->redraw();
 			bv->fitCursor();
 		}

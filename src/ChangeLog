@@ -1,3 +1,16 @@
+2002-03-19  Allan Rae  <rae@lyx.org>
+
+	* exporter.C (Export): removeAutoInsets before doing anything else.
+	While I've just introduced a dependency on BufferView this really is
+	the best place to clean the buffer otherwise you need to cleanup in
+	a dozen places before calling export or cleanup in a dozen functions
+	that export calls.
+
+	* converter.C (runLaTeX): 
+	(scanLog): Better handling of removeAutoInsets and screen updates.
+
+	* lyxfunc.C (dispatch): small whitespace changes
+
 2002-03-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* WorkArea.C (C_WorkAreaEvent): return a value.
