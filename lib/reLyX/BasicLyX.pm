@@ -218,14 +218,6 @@ my $MathEnvironments = "(math|displaymath|xxalignat|(equation|eqnarray|align|ali
 # ListLayouts may have standard paragraphs nested inside them.
 my $ListLayouts = "Itemize|Enumerate|Description";
 
-# Striaght translation of LaTeX lengths to LyX ones.
-my %lengthAsLyXString = ('\textwidth' => 'text%',
-			 '\columnwidth' => 'col%',
-			 '\paperwidth' => 'page%',
-			 '\linewidth' => 'line%',
-			 '\paperheight' => 'pheight%',
-			 '\textheight' => 'theight%');
-
 # passed a string and an array
 # returns true if the string is an element of the array.
 sub foundIn {
@@ -358,6 +350,34 @@ sub ending_math {
 
     # All other tokens
     return 0;
+}
+
+
+# Straight translation of LaTeX lengths to LyX ones.
+my %lengthAsLyXString = ('\textwidth' => 'text%',
+			 '\columnwidth' => 'col%',
+			 '\paperwidth' => 'page%',
+			 '\linewidth' => 'line%',
+			 '\paperheight' => 'pheight%',
+			 '\textheight' => 'theight%');
+
+sub getAsLyXLength {
+    my $LatexLength = shift;
+
+    my $LyXLength = '';
+    # If $LatexLength is something like '4.5\columnwidth', translate into
+    # LyXese.
+    if ($LatexLength =~ /([0-9]+\.?[0-9]*)\s*(\\[a-z]*)/) {
+	if (defined($lengthAsLyXString{$2})) {
+	    $LyXLength = ($1 * 100) . $lengthAsLyXString{$2};
+	}
+    } else {
+	$LyXLength = $LatexLength;
+	# Remove any spaces from '4.5 cm'
+	$LyXLength =~ s/\s*//g;
+    }
+
+    return $LyXLength;
 }
 
 ##########################   MAIN TRANSLATOR SUBROUTINE   #####################
@@ -1046,14 +1066,7 @@ sub basic_lyx {
 		my $height = '0pt';
 		$tok = $fileobject->eatOptionalArgument;
 		if (defined($tok->print)) {
-		    $height = $tok->print;
-		    # if something like '4.5\columnwidth', translate into
-		    # LyXese.
-		    if ($height =~ /([0-9.]*)\s*(\\[a-z]*)/) {
-			if (defined($lengthAsLyXString{$2})) {
-			    $height = ($1 * 100) . $lengthAsLyXString{$2};
-			}
-		    }
+		    $height = getAsLyXLength($tok->print);
 		}
 
 		# Read the inner-pos optional argument, if it exists
@@ -1067,21 +1080,12 @@ sub basic_lyx {
 
 		# Read the width as (a reference to) an array of tokens.
 		$tok = $fileobject->eatBalanced;
-		# $width is Something like either '4.5cm' or '\columnwidth'.
-		my $width = pop(@{$tok})->print;
-		# If $width is something like '\columnwidth', then manipulate
-		# it into LyX format and also extract the length itself.
-		if (defined($lengthAsLyXString{$width})) {
-		    $width = $lengthAsLyXString{$width};
-		    my $val = pop(@{$tok});
-		    $val = (defined($val)) ? $val->print : '0';
-		    $width = ($val * 100) . $width;
-		}
+		my $width = getAsLyXLength($tok->exact_print);
 
 		print OUTFILE "position $pos\n";
 		print OUTFILE "inner_position $innerpos\n";
-		print OUTFILE "height $height\n";
-		print OUTFILE "width $width\n";
+		print OUTFILE "height \"$height\"\n";
+		print OUTFILE "width \"$width\"\n";
 		print OUTFILE "collapsed false\n";
 
 	    # \begin document
