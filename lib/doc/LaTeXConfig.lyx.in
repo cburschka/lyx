@@ -538,6 +538,30 @@ cv
  (useful for academics).
 \layout Subsection
 
+cl2emult
+\layout Description
+
+Found: @chk_cl2emult@
+\layout Description
+
+CTAN: N/A
+\layout Description
+
+FTP: 
+\begin_inset LatexCommand \url{ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: The document class 
+\family sans 
+cl2emult
+\family default 
+ is for writing multi authored Springer books.
+\layout Subsection
+
 dinbrief
 \layout Description
 
@@ -611,8 +635,8 @@ Die TeXnische Komödie
 \layout Description
 
 WWW: 
-\begin_inset LatexCommand
-	\url{http://www.dante.de}
+\begin_inset LatexCommand \url{http://www.dante.de}
+
 \end_inset 
 
 
@@ -1082,21 +1106,19 @@ WWW:
 
 \end_inset 
 
+
 \layout Description
 
 Notes: 
 \family sans 
 spie.cls 
 \family default 
-is a LaTeX class for submissions to the Proceedings of  
-SPIE--The International Society for Optical Engineering.
-More info on submitting a manuscript can be found at the SPIE website under
-\begin_inset LatexCommand
-\url{http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings}
+is a LaTeX class for submissions to the Proceedings of  SPIE--The International
+ Society for Optical Engineering.More info on submitting a manuscript can
+ be found at the SPIE website under
+\begin_inset LatexCommand \url{http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings}
 
 \end_inset 
-
-
 
 REVTeX
 \layout Description
@@ -1249,8 +1271,8 @@ Svprothe
  is a format suitable for publication in the journal Probability Theory
  and Related Fields.
  For more information, see section 
-\begin_inset LatexCommand
-	\ref{svjog}
+\begin_inset LatexCommand \ref{svjog}
+
 \end_inset 
 
 .
@@ -1283,8 +1305,8 @@ TUGboat
 \layout Description
 
 WWW: 
-\begin_inset LatexCommand
-	\url{http://www.tug.org}
+\begin_inset LatexCommand \url{http://www.tug.org}
+
 \end_inset 
 
 
