@@ -5,6 +5,11 @@
 
 	* Makefile.am (libxforms_la_SOURCES): remove FormInset.[Ch].
 
+	* FormBase.h (show):
+	* FormExternal.h (apply, build, update, input):
+	* FormSpellchecker.h (apply, build, update, partialUpdate):
+	propogate virtual keyword.
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* FileDialog.C: open/save name change

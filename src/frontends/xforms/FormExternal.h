@@ -31,16 +31,16 @@ public:
 	FormExternal();
 private:
 	/// apply changes
-	void apply();
+	virtual void apply();
 
 	/// build the dialog
-	void build();
+	virtual void build();
 
 	/// update the dialog
-	void update();
+	virtual void update();
 
 	/// Filter the inputs on callback from xforms
-	ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	///
 	void updateComboChange();

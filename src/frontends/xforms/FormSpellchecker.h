@@ -29,14 +29,14 @@ public:
 	FormSpellchecker();
 private:
 	/// not needed.
-	void apply() {}
+	virtual void apply() {}
 	/// Build the dialog
-	void build();
+	virtual void build();
 	///
-	void update();
+	virtual void update();
 
 	/// set suggestions and exit message
-	void partialUpdate(int);
+	virtual void partialUpdate(int);
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
