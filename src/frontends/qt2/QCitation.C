@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-
+#include "ui/QCitationFindDialogBase.h"
 #include "QCitationDialog.h"
 #include "QCitation.h"
 
@@ -80,9 +80,6 @@ void QCitation::build_dialog()
 {
 	dialog_.reset(new QCitationDialog(this));
 
-	dialog_->searchTypeCB->setChecked(false);
-	dialog_->searchCaseCB->setChecked(false);
-
 	// Manage the ok, apply, restore and cancel/close buttons
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
@@ -90,7 +87,7 @@ void QCitation::build_dialog()
 	bcview().setRestore(dialog_->restorePB);
 
 	bcview().addReadOnly(dialog_->addPB);
-	bcview().addReadOnly(dialog_->delPB);
+	bcview().addReadOnly(dialog_->deletePB);
 	bcview().addReadOnly(dialog_->upPB);
 	bcview().addReadOnly(dialog_->downPB);
 	bcview().addReadOnly(dialog_->citationStyleCO);
@@ -170,7 +167,7 @@ void QCitation::update_contents()
 {
 	// Make the list of all available bibliography keys
 	bibkeys = biblio::getKeys(controller().bibkeysInfo());
-	updateBrowser(dialog_->availableLB, bibkeys);
+	updateBrowser(dialog_->add_->availableLB, bibkeys);
 
 	// Ditto for the keys cited in this inset
 	citekeys = getVectorFromString(controller().params().getContents());

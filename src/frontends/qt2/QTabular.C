@@ -30,6 +30,7 @@
 #include "lengthcombo.h"
 #include "qsetborder.h"
 
+
 typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
 
 QTabular::QTabular(Dialog & parent)

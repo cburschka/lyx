@@ -25,6 +25,7 @@
 #include <qpushbutton.h>
 #include <qlabel.h>
 
+#include "ui/QCitationFindDialogBase.h"
 #include "QCitationDialog.h"
 #include "QCitation.h"
 #include "support/lstrings.h"
@@ -47,6 +48,14 @@ QCitationDialog::QCitationDialog(QCitation * form)
 		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+
+	add_ = new QCitationFindDialogBase(this, "", true);
+	connect(add_->previousPB, SIGNAL(clicked()), this, SLOT(previous()));
+	connect(add_->nextPB, SIGNAL(clicked()), this, SLOT(next()));
+	connect(add_->availableLB, SIGNAL(currentChanged(QListBoxItem *)), this, SLOT(availableChanged()));
+	connect(add_->availableLB, SIGNAL(selected(QListBoxItem *)), this, SLOT(addCitation()));
+	connect(add_->availableLB, SIGNAL(selected(QListBoxItem *)), add_, SLOT(accept()));
+	connect(add_->addPB, SIGNAL(clicked()), this, SLOT(addCitation()));
 }
 
 
@@ -61,10 +70,10 @@ void QCitationDialog::setButtons()
 		return;
 
 	int const sel_nr = selectedLB->currentItem();
-	int const avail_nr = availableLB->currentItem();
+	int const avail_nr = add_->availableLB->currentItem();
 
-	addPB->setEnabled(avail_nr >= 0);
-	delPB->setEnabled(sel_nr >= 0);
+	add_->addPB->setEnabled(avail_nr >= 0);
+	deletePB->setEnabled(sel_nr >= 0);
 	upPB->setEnabled(sel_nr > 0);
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < int(selectedLB->count() - 1));
 }
@@ -83,50 +92,44 @@ void QCitationDialog::selectedChanged()
 	}
 
 	infoML->setText(toqstr(biblio::getInfo(theMap, form_->citekeys[sel])));
-
-	vector<string>::const_iterator cit =
-		std::find(form_->bibkeys.begin(),
-		form_->bibkeys.end(), form_->citekeys[sel]);
-
-	if (cit != form_->bibkeys.end()) {
-		int const n = int(cit - form_->bibkeys.begin());
-		availableLB->setSelected(n, true);
-		availableLB->ensureCurrentVisible();
-	}
 	setButtons();
+}
+
+
+void QCitationDialog::previous()
+{
+	find(biblio::BACKWARD);
+}
+
+
+void QCitationDialog::next()
+{
+	find(biblio::FORWARD);
 }
 
 
 void QCitationDialog::availableChanged()
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
-	selectedLB->clearSelection();
-	infoML->clear();
+	add_->infoML->clear();
 
-	int const sel = availableLB->currentItem();
+	int const sel = add_->availableLB->currentItem();
 	if (sel < 0) {
 		setButtons();
 		return;
 	}
 
-	infoML->setText(toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
-
-	vector<string>::const_iterator cit =
-		std::find(form_->citekeys.begin(), form_->citekeys.end(),
-			  form_->bibkeys[sel]);
-
-	if (cit != form_->citekeys.end()) {
-		int const n = int(cit - form_->citekeys.begin());
-		selectedLB->setSelected(n, true);
-		selectedLB->ensureCurrentVisible();
-	}
+	add_->infoML->setText(toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
 	setButtons();
 }
 
 
-void QCitationDialog::add()
+void QCitationDialog::addCitation()
 {
-	int const sel = availableLB->currentItem();
+	int const sel = add_->availableLB->currentItem();
+
+	if (sel < 0)
+		return;
 
 	// Add the selected browser_bib key to browser_cite
 	selectedLB->insertItem(toqstr(form_->bibkeys[sel]));
@@ -172,7 +175,6 @@ void QCitationDialog::up()
 
 	form_->changed();
 	form_->fillStyles();
-	availableLB->clearSelection();
 	setButtons();
 }
 
@@ -194,20 +196,13 @@ void QCitationDialog::down()
 
 	form_->changed();
 	form_->fillStyles();
-	availableLB->clearSelection();
 	setButtons();
 }
 
 
-void QCitationDialog::previous()
+void QCitationDialog::add()
 {
-	doFind(biblio::BACKWARD);
-}
-
-
-void QCitationDialog::next()
-{
-	doFind(biblio::FORWARD);
+	add_->exec();
 }
 
 
@@ -217,17 +212,15 @@ void QCitationDialog::changed_adaptor()
 }
 
 
-void QCitationDialog::doFind(biblio::Direction dir)
+void QCitationDialog::find(biblio::Direction dir)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
-	string const str = fromqstr(searchED->text());
 
-	biblio::Search const type =
-		searchTypeCB->isChecked() ?
-		biblio::REGEX : biblio::SIMPLE;
+	biblio::Search const type = add_->searchTypeCB->isChecked()
+	       	? biblio::REGEX : biblio::SIMPLE;
 
 	vector<string>::const_iterator start = form_->bibkeys.begin();
-	int const sel = availableLB->currentItem();
+	int const sel = add_->availableLB->currentItem();
 	if (sel >= 0 && sel <= int(form_->bibkeys.size()-1))
 		start += sel;
 
@@ -237,11 +230,12 @@ void QCitationDialog::doFind(biblio::Direction dir)
 	else
 		start -= 1;
 
-	bool const caseSensitive = searchCaseCB->isChecked();
+	bool const casesens = add_->searchCaseCB->isChecked();
+	string const str = fromqstr(add_->searchED->text());
 
 	vector<string>::const_iterator cit =
 		biblio::searchKeys(theMap, form_->bibkeys, str,
-				   start, type, dir, caseSensitive);
+				   start, type, dir, casesens);
 
 	// not found. let's loop round
 	if (cit == form_->bibkeys.end()) {
@@ -251,7 +245,7 @@ void QCitationDialog::doFind(biblio::Direction dir)
 		else start = form_->bibkeys.end() - 1;
 
 		cit = biblio::searchKeys(theMap, form_->bibkeys, str,
-					 start, type, dir, caseSensitive);
+					 start, type, dir, casesens);
 
 		if (cit == form_->bibkeys.end())
 			return;
@@ -263,6 +257,6 @@ void QCitationDialog::doFind(biblio::Direction dir)
 	}
 
 	// Update the display
-	availableLB->setSelected(found, true);
-	availableLB->ensureCurrentVisible();
+	add_->availableLB->setSelected(found, true);
+	add_->availableLB->ensureCurrentVisible();
 }

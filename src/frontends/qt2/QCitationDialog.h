@@ -17,6 +17,7 @@
 #include "controllers/biblio.h"
 
 class QCitation;
+class QCitationFindDialogBase;
 
 class QCitationDialog : public QCitationDialogBase {
 	Q_OBJECT
@@ -28,22 +29,24 @@ public:
 
 	void setButtons();
 
+	QCitationFindDialogBase * add_;
+
 protected slots:
 
 	virtual void availableChanged();
 	virtual void selectedChanged();
-	virtual void next();
-	virtual void previous();
 	virtual void up();
 	virtual void down();
 	virtual void del();
+	virtual void addCitation();
 	virtual void add();
+	virtual void previous();
+	virtual void next();
 	virtual void changed_adaptor();
 
 private:
-	void doFind(biblio::Direction dir);
+	void find(biblio::Direction dir);
 
-private:
 	QCitation * form_;
 };
 
