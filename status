@@ -32,6 +32,8 @@ Instead they dispatch these LFUNs back to the core for consideration by it.
 As a side effect of the above, redesign the implementation of the Model-
 Controller-View implementation of the dialogs to make it transparent.
 
+Move as much code as possible from the Menu frontends to the Backend.
+
 (xforms): replace the Combox code with a native xforms widget, for eventual
 inclusion in the xforms library itself.
 
@@ -61,37 +63,11 @@ graphics-insert -> dialog-show-new-inset graphics
 buffer-child-insert -> dialog-show-new-inset include
 reference-insert -> dialog-show-new-inset ref
 
+Add support for optional submenus (OptSubMenu) in ui files.
+
 It is now possible to run LyX without a Toolbar if so desired.
-
-ReLyX changes
--------------
-
-Add support for 'm' column descriptors.
-
-Pass almost all math through reLyX unchanged.
-
-Add support for natbib citations.
-
-Add support for minipages.
-
-When reLyX creates a LyX file, the header now records this.
-
-Add support for generic LaTeX lengths.
-
-Layouts
--------
-
-Add classes mwart, mwbk, mwrep conforming to polish typographical conventions.
-
-Add elsart class.
-
-Update KOME classes.
 
 Bug fixes
 ---------
-
-Fix detection of fax programs.
-
-Fix the tgif converters.
 
 lyx2lyx now handles development version files.
