@@ -26,6 +26,7 @@
 #include "GError.h"
 #include "GTabularCreate.h"
 #include "GERT.h"
+#include "GPreamble.h"
 
 bool Dialogs::tooltipsEnabled()
 {
@@ -33,10 +34,11 @@ bool Dialogs::tooltipsEnabled()
 }
 Dialogs::Dialogs(LyXView * lv)
 {
-	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));
-	add(new GUIError<FormError, gnomeBC>(*lv, *this));
-	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
-	add(new GUIERT<FormERT, gnomeBC>(*lv, *this));
+	add(new GUIUrl<GUrl, gnomeBC>(*lv, *this));
+	add(new GUIError<GError, gnomeBC>(*lv, *this));
+	add(new GUITabularCreate<GTabularCreate, gnomeBC>(*lv, *this));
+	add(new GUIERT<GERT, gnomeBC>(*lv, *this));
+	add(new GUIPreamble<GPreamble, gnomeBC>(*lv, *this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

@@ -9,10 +9,11 @@
  * ================================================= 
  *
  * \author Baruch Even
+ * \author Michael Koziarski
  * */
 
-#ifndef FORMURL_H
-#define FORMURL_H
+#ifndef GURL_H
+#define GURL_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -30,12 +31,12 @@ class Entry;
 /**
  * This class implements the dialog to insert/modify urls.
  */
-class FormUrl : public FormCB<ControlUrl> {
+class GUrl : public FormCB<ControlUrl> {
 public:
 	///
-	FormUrl(ControlUrl & c);
+	GUrl(ControlUrl & c);
 	///
-	~FormUrl();
+	~GUrl();
 
 	void apply();
 	void update();

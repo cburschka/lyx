@@ -66,6 +66,8 @@ libgnome_la_SOURCES = \
 	GUrl.h \
 	GERT.C \
 	GERT.h \
+	GPreamble.C \
+	GPreamble.h \
 	gnome_helpers.C \
 	gnome_helpers.h \
 	GnomeBase.C \

@@ -1,3 +1,37 @@
+2002-03-29  Michael A. Koziarski  <michael@koziarski.com>
+
+	* GPreamble.C
+	* GPreamble.h
+	* Makefile.am
+	* dialogs/GPreamble.glade:Implemented Preamble dialog
+	* Dialogs.C
+	* GERT.C
+	* GERT.h
+	* GTabularCreate.C
+	* GTabularCreate.h
+	* GUrl.C
+	* GUrl.h
+	* GError.C
+	* GError.h:  Renamed classes to match the filenames
+	* dialogs/GERT.glade
+	* dialogs/GTabularCreate.glade
+	* dialogs/GUrl.glade
+	* dialogs/GError.glade: FormX isn't used for classes or files, so
+	it shouldn't be used for ui files either.
+	* dialogs/FormERT.glade
+	* dialogs/FormTabularCreate.glade
+	* dialogs/FormUrl.glade
+	* dialogs/FormError.glade
+	* dialogs/diaerror.glade
+	* dialogs/diahelpcopyright.glade
+	* dialogs/diahelpcredits.glade
+	* dialogs/diainsertcitation.glade
+	* dialogs/diainsertindex.glade
+	* dialogs/diainserttabular.glade
+	* dialogs/diainserturl.glade
+	* dialogs/diaprint.glade
+	* dialogs/diatoc.glade: old glade files.  Removed	
+
 2002-03-26  Michael A. Koziarski  <michael@koziarski.com>
 
 	* Makefile.am: Moved all 4 active Form* dialogs to new Filenames.

@@ -8,11 +8,12 @@
  *
  * ================================================= 
  *
+ * \author Michael Koziarski
  * \author Baruch Even
  * */
 
-#ifndef FORMERROR_H
-#define FORMERROR_H
+#ifndef GERROR_H
+#define GERROR_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -31,12 +32,12 @@ class Text;
 /**
  * This class implements the dialog to show error messages.
  */
-class FormError : public FormCB<ControlError> {
+class GError : public FormCB<ControlError> {
 public:
 	///
-	FormError(ControlError & c);
+	GError(ControlError & c);
 	///
-	~FormError() {}
+	~GError() {}
 	///
 	void apply() {}
 	///

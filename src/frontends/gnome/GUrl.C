@@ -7,6 +7,7 @@
  * ================================================= 
  *
  * \author Baruch Even
+ * \author Michael Koziarski
  */
 
 #ifdef __GNUG__
@@ -21,27 +22,22 @@
 #include <gtk--/entry.h>
 #include <gtk--/checkbutton.h>
 
-FormUrl::FormUrl(ControlUrl & c)
-	: FormCB<ControlUrl>(c, "FormUrl")
+GUrl::GUrl(ControlUrl & c)
+	: FormCB<ControlUrl>(c, "GUrl")
 {}
 
 
-FormUrl::~FormUrl()
-{
-	// Note that there is no need to destroy the class itself, it seems
-	// like everything is managed inside it. Deleting the class itself will
-	// a crash at the end of the program.
-	//dialog_->destroy();
-}
+GUrl::~GUrl()
+{}
 
 
-void FormUrl::build()
+void GUrl::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, &FormUrl::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, &FormUrl::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, &FormUrl::ApplyClicked));
-	restore_btn()->clicked.connect(SigC::slot(this, &FormUrl::RestoreClicked));
+	ok_btn()->clicked.connect(SigC::slot(this, &GUrl::OKClicked));
+	cancel_btn()->clicked.connect(SigC::slot(this, &GUrl::CancelClicked));
+	apply_btn()->clicked.connect(SigC::slot(this, &GUrl::ApplyClicked));
+	restore_btn()->clicked.connect(SigC::slot(this, &GUrl::RestoreClicked));
 
 	// Manage the buttons state
 	bc().setOK(ok_btn());
@@ -59,16 +55,16 @@ void FormUrl::build()
 }
 
 
-void FormUrl::connect_signals()
+void GUrl::connect_signals()
 {
 	// Get notifications on input change
-	slot_url_ = url()->changed.connect(SigC::slot(this, &FormUrl::InputChanged));
-	slot_name_ = name()->changed.connect(SigC::slot(this, &FormUrl::InputChanged));
-	slot_html_ = html_cb()->toggled.connect(SigC::slot(this, &FormUrl::InputChanged));
+	slot_url_ = url()->changed.connect(SigC::slot(this, &GUrl::InputChanged));
+	slot_name_ = name()->changed.connect(SigC::slot(this, &GUrl::InputChanged));
+	slot_html_ = html_cb()->toggled.connect(SigC::slot(this, &GUrl::InputChanged));
 }
 
 
-void FormUrl::disconnect_signals()
+void GUrl::disconnect_signals()
 {
 	slot_url_.disconnect();
 	slot_name_.disconnect();
@@ -76,7 +72,7 @@ void FormUrl::disconnect_signals()
 }
 
 
-void FormUrl::apply()
+void GUrl::apply()
 {
 	disconnect_signals();
 	controller().params().setContents(url()->get_text());
@@ -91,11 +87,8 @@ void FormUrl::apply()
 }
 
 
-void FormUrl::update()
+void GUrl::update()
 {
-	// Disconnect signals so we dont trigger the input changed state.
-	// This avoids the problem of having the buttons enabled when the dialog
-	// starts.
 	disconnect_signals();
 	
 	url()->set_text(controller().params().getContents());
@@ -103,41 +96,40 @@ void FormUrl::update()
 
 	html_cb()->set_active("url" != controller().params().getCmdName());
 
-	// Reconnect the signals.
 	connect_signals();
 }
 
 
-bool FormUrl::validate() const
+bool GUrl::validate() const
 {
 	return !url()->get_text().empty() && !name()->get_text().empty();
 }
 
-Gtk::Button * FormUrl::restore_btn() const 
+Gtk::Button * GUrl::restore_btn() const 
 {
         return getWidget<Gtk::Button>("r_restore_btn");
 }
-Gtk::Button * FormUrl::ok_btn() const 
+Gtk::Button * GUrl::ok_btn() const 
 {
         return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * FormUrl::apply_btn() const 
+Gtk::Button * GUrl::apply_btn() const 
 {
         return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * FormUrl::cancel_btn() const 
+Gtk::Button * GUrl::cancel_btn() const 
 {
         return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::Entry * FormUrl::url() const 
+Gtk::Entry * GUrl::url() const 
 {
         return getWidget<Gtk::Entry>("r_url");
 }
-Gtk::Entry * FormUrl::name() const 
+Gtk::Entry * GUrl::name() const 
 {
         return getWidget<Gtk::Entry>("r_name");
 }
-Gtk::CheckButton * FormUrl::html_cb() const 
+Gtk::CheckButton * GUrl::html_cb() const 
 {
         return getWidget<Gtk::CheckButton>("r_html_cb");
 }

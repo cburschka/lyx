@@ -11,8 +11,8 @@
  * \author Michael Koziarski <michael@koziarski.org>
  * */
 
-#ifndef FORMTABULARCREATE_H
-#define FORMTABULARCREATE_H
+#ifndef GTABULARCREATE_H
+#define GTABULARCREATE_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -28,12 +28,12 @@ class SpinButton;
 /**
  * This class implements the dialog to insert/modify urls.
  */
-class FormTabularCreate : public FormCB<ControlTabularCreate> {
+class GTabularCreate : public FormCB<ControlTabularCreate> {
 public:
 	///
-	FormTabularCreate(ControlTabularCreate & c);
+	GTabularCreate(ControlTabularCreate & c);
 	///
-	~FormTabularCreate();
+	~GTabularCreate();
 
 	void apply();
 	

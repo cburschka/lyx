@@ -6,6 +6,7 @@
  *
  * ================================================= 
  *
+ * \author Michael Koziarski
  * \author Baruch Even
  */
 
@@ -21,15 +22,15 @@
 #include <gtk--/button.h>
 #include <gtk--/text.h>
 
-FormError::FormError(ControlError & c)
-	: FormCB<ControlError>(c, "FormError")
+GError::GError(ControlError & c)
+	: FormCB<ControlError>(c, "GError")
 {}
 
 
-void FormError::build()
+void GError::build()
 {
 	// Connect the buttons.
-	button_close()->clicked.connect(SigC::slot(this, &FormError::CloseClicked));
+	button_close()->clicked.connect(SigC::slot(this, &GError::CloseClicked));
 
 	// Manage the buttons state
 	bc().setCancel(button_close());
@@ -39,17 +40,17 @@ void FormError::build()
 }
 
 
-void FormError::update()
+void GError::update()
 {
 	textarea()->insert(controller().params());
 }
 
-Gtk::Button * FormError::button_close() const 
+Gtk::Button * GError::button_close() const 
 {
         return getWidget<Gtk::Button>("r_button_close");
 }
 
-Gtk::Text * FormError::textarea() const 
+Gtk::Text * GError::textarea() const 
 {
         return getWidget<Gtk::Text>("r_textarea");
 }

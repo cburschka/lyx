@@ -21,21 +21,21 @@
 #include <gtk--/radiobutton.h>
 #include <gtk--/button.h>
 
-FormERT::FormERT(ControlERT & c)
-	: FormCB<ControlERT>(c, "FormERT")
+GERT::GERT(ControlERT & c)
+	: FormCB<ControlERT>(c, "GERT")
 {}
 
 
-FormERT::~FormERT()
+GERT::~GERT()
 {}
 
 
-void FormERT::build()
+void GERT::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, &FormERT::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, &FormERT::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, &FormERT::ApplyClicked));
+	ok_btn()->clicked.connect(SigC::slot(this, &GERT::OKClicked));
+	cancel_btn()->clicked.connect(SigC::slot(this, &GERT::CancelClicked));
+	apply_btn()->clicked.connect(SigC::slot(this, &GERT::ApplyClicked));
 
 	// Manage the buttons state
 	bc().setOK(ok_btn());
@@ -53,15 +53,15 @@ void FormERT::build()
 }
 
 
-void FormERT::connect_signals()
+void GERT::connect_signals()
 {
-	slot_open = open()->clicked.connect(SigC::slot(this, &FormERT::InputChanged));
-	slot_collapsed = collapsed()->clicked.connect(SigC::slot(this, &FormERT::InputChanged));
-	slot_inlined = inlined()->clicked.connect(SigC::slot(this, &FormERT::InputChanged));
+	slot_open = open()->clicked.connect(SigC::slot(this, &GERT::InputChanged));
+	slot_collapsed = collapsed()->clicked.connect(SigC::slot(this, &GERT::InputChanged));
+	slot_inlined = inlined()->clicked.connect(SigC::slot(this, &GERT::InputChanged));
 }
 
 
-void FormERT::disconnect_signals()
+void GERT::disconnect_signals()
 {
 	slot_open.disconnect();
 	slot_collapsed.disconnect();
@@ -69,7 +69,7 @@ void FormERT::disconnect_signals()
 }
 
 
-void FormERT::apply()
+void GERT::apply()
 {
 
 	if (open()->get_active())
@@ -82,7 +82,7 @@ void FormERT::apply()
 }
 
 
-void FormERT::update()
+void GERT::update()
 {
 	disconnect_signals();
 	switch (controller().params().status) {
@@ -100,33 +100,33 @@ void FormERT::update()
 
 }
 
-bool FormERT::validate() const
+bool GERT::validate() const
 {
 	return true;
 }
 
 
-Gtk::Button * FormERT::ok_btn() const 
+Gtk::Button * GERT::ok_btn() const 
 {
         return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * FormERT::apply_btn() const 
+Gtk::Button * GERT::apply_btn() const 
 {
         return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * FormERT::cancel_btn() const 
+Gtk::Button * GERT::cancel_btn() const 
 {
         return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::RadioButton * FormERT::open() const 
+Gtk::RadioButton * GERT::open() const 
 {
         return getWidget<Gtk::RadioButton>("r_open");
 }
-Gtk::RadioButton * FormERT::collapsed() const 
+Gtk::RadioButton * GERT::collapsed() const 
 {
         return getWidget<Gtk::RadioButton>("r_collapsed");
 }
-Gtk::RadioButton * FormERT::inlined() const 
+Gtk::RadioButton * GERT::inlined() const 
 {
         return getWidget<Gtk::RadioButton>("r_inlined");
 }
