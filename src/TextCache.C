@@ -3,9 +3,9 @@
  * 
  *           LyX, The Document Processor 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2000 The LyX Team
+ *           Copyright 1995-2001 The LyX Team
  *
- *           This file is Copyright 2000
+ *           This file is Copyright 2000-2001
  *           Lars Gullik Bjønnes
  *
  * ====================================================== */
@@ -31,6 +31,8 @@ using std::make_pair;
 
 extern BufferList bufferlist;
 
+namespace {
+
 class text_fits {
 public:
 	text_fits(Buffer * b, int p)
@@ -46,6 +48,28 @@ private:
 };
 
 
+class show_text {
+public:
+	show_text(ostream & o) : os(o) {}
+	void operator()(TextCache::value_type const & vt) {
+		os << "\tBuffer: " << vt.first
+		   << "\tWidth: " << vt.second.first << endl;
+	}
+private:
+	ostream & os;
+};
+
+
+class delete_text {
+public:
+	void operator()(TextCache::value_type & vt) {
+		delete vt.second.second;
+	}
+};
+
+} // namespace anon
+
+
 LyXText * TextCache::findFit(Buffer * b, int p)
 {
 	Cache::iterator it = find_if(cache.begin(), cache.end(),
@@ -57,18 +81,6 @@ LyXText * TextCache::findFit(Buffer * b, int p)
 	}
 	return 0;
 }
-
-
-class show_text {
-public:
-	show_text(ostream & o) : os(o) {}
-	void operator()(TextCache::value_type const & vt) {
-		os << "\tBuffer: " << vt.first
-		   << "\tWidth: " << vt.second.first << endl;
-	}
-private:
-	ostream & os;
-};
 
 
 void TextCache::show(ostream & os, string const & str)
@@ -98,32 +110,11 @@ void TextCache::add(Buffer * buf, int workwidth, LyXText * text)
 }
 
 
-class delete_text {
-public:
-	void operator()(TextCache::value_type & vt) {
-		delete vt.second.second;
-	}
-};
-
-
 void TextCache::clear()
 {
 	for_each(cache.begin(), cache.end(), delete_text());
 	cache.clear();
 }
-
-
-class has_buffer {
-public:
-	has_buffer(Buffer * b)
-		: buf(b) {}
-	bool operator()(TextCache::value_type const & vt) const{
-		if (vt.first == buf) return true;
-		return false;
-	}
-private:
-	Buffer const * buf;
-};
 
 
 void TextCache::removeAllWithBuffer(Buffer * buf)

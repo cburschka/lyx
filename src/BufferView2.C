@@ -1020,6 +1020,7 @@ LyXText * BufferView::getParentText(Inset * inset) const
 	return text;
 }
 
+
 Language const * BufferView::getParentLanguage(Inset * inset) const
 {
 	LyXText * text = getParentText(inset);
