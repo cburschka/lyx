@@ -1,3 +1,17 @@
+1999-12-20  Allan Rae  <rae@lyx.org>
+
+	* lib/templates/IEEEtran.lyx: small correction and update.
+
+	* configure.in: Attempted to use LYX_PATH_HEADER
+
+ 	* src/stl_string_fwd.h: Don't need HAVE_STL_STRING_FWD_H anymore
+
+	* acconfig.h, acinclude.m4 (LYX_STL_STRING_FWD): totally revised after
+ 	input from JMarc.  Now use preprocessor to find the header.
+ 	Also stopped making HAVE_STL_STRING_FWD_H and extended the comments.
+	(LYX_PATH_HEADER): My, so far, failed attempt to generalize
+ 	LYX_STL_STRING_FWD.  See comments in file.	
+
 1999-12-19  Asger Alstrup Nielsen  <alstrup@diku.dk>
 
 	* The global MiniBuffer * minibuffer variable is dead.

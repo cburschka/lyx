@@ -1,4 +1,4 @@
-#This file was created by <rae> Mon Dec 13 00:17:21 1999
+#This file was created by <rae> Mon Dec 20 11:39:44 1999
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass IEEEtran
@@ -43,6 +43,11 @@ Your name is with xyz Department\SpecialChar \ldots{}
 
 \latex latex 
 }
+\layout LaTeX
+
+
+\backslash 
+thispagestyle{empty}
 \layout Abstract
 
 This paper presents a simple template for IEEEtran documents.
@@ -104,7 +109,7 @@ BibTeX bibliography generation.
 
 
 \backslash 
-begin{bibliography}{Your Name}
+begin{biography}{Your Name}
 \layout Standard
 
 All about you.
@@ -112,5 +117,5 @@ All about you.
 
 
 \backslash 
-end{bibliography}
+end{biography}
 \the_end

@@ -40,7 +40,7 @@
 /* define this to the location of stl_string_fwd.h to be used with #include,
   NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
   	supplied version of the header.
-  e.g. <../include/stl_string_fwd.h> */
+  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path */
 #undef STL_STRING_FWD_H_LOCATION
 
 /* Define if your locale.h file contains LC_MESSAGES.  */
