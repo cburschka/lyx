@@ -68,10 +68,15 @@ MathInset * MathArrayInset::clone() const
 
 void MathArrayInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo m = mi;
-	if (m.base.style == LM_ST_DISPLAY)
-		m.base.style = LM_ST_TEXT;
-	MathGridInset::metrics(m);
+	MathArrayChanger dummy(mi.base);
+	MathGridInset::metrics(mi);
+}
+
+
+void MathArrayInset::draw(MathPainterInfo & pi, int x, int y) const
+{
+	MathArrayChanger dummy(pi.base);
+	MathGridInset::draw(pi, x, y);
 }
 
 

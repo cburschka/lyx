@@ -30,7 +30,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
+	///
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
 	MathArrayInset * asArrayInset() { return this; }
 	///

@@ -81,6 +81,11 @@ MathFracChanger::MathFracChanger(MathMetricsBase & mb)
 
 
 
+MathArrayChanger::MathArrayChanger(MathMetricsBase & mb)
+	: MathStyleChanger(mb, mb.style == LM_ST_DISPLAY ? LM_ST_TEXT : mb.style)
+{}
+
+
 MathShapeChanger::MathShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape)
 	: MathChanger<LyXFont, LyXFont::FONT_SHAPE>(font)
 {

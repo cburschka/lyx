@@ -69,7 +69,8 @@ struct TextMetricsInfo {};
 
 
 // Generic base for temporarily changing things.
-// The original state gets restored when the Changer is destructed
+// The original state gets restored when the Changer is destructed.
+
 template <class Struct, class Temp = Struct>
 struct MathChanger {
 	///
@@ -117,6 +118,13 @@ struct MathFracChanger : public MathStyleChanger {
 	///
 	MathFracChanger(MathMetricsBase & mb);
 };
+
+
+struct MathArrayChanger : public MathStyleChanger {
+	///
+	MathArrayChanger(MathMetricsBase & mb);
+};
+
 
 
 struct MathShapeChanger : public MathChanger<LyXFont, LyXFont::FONT_SHAPE> {
