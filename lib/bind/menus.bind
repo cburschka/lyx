@@ -67,12 +67,20 @@
 # Paragraph style menu
 #
 
-\bind "M-p 1"			"layout Chapter" 
-\bind "M-p 2"			"layout Section" 
-\bind "M-p 3"			"layout Subsection"  
-\bind "M-p 4"			"layout Subsubsection"    
-\bind "M-p 5"			"layout Paragraph"        
-\bind "M-p 6"			"layout Subparagraph"
+\bind "M-p ~S-0"		"layout Part" 
+\bind "M-p ~S-1"		"layout Chapter" 
+\bind "M-p ~S-2"		"layout Section" 
+\bind "M-p ~S-3"		"layout Subsection"  
+\bind "M-p ~S-4"		"layout Subsubsection"    
+\bind "M-p ~S-5"		"layout Paragraph"        
+\bind "M-p ~S-6"		"layout Subparagraph"
+\bind "M-p asterisk ~S-0"	"layout Part*" 
+\bind "M-p asterisk ~S-1"	"layout Chapter*" 
+\bind "M-p asterisk ~S-2"	"layout Section*" 
+\bind "M-p asterisk ~S-3"	"layout Subsection*"  
+\bind "M-p asterisk ~S-4"	"layout Subsubsection*"    
+\bind "M-p asterisk ~S-5"	"layout Paragraph*"        
+\bind "M-p asterisk ~S-6"	"layout Subparagraph*"
 \bind "M-p a"			"layout Abstract"
 \bind "M-p S-A"			"layout Author"
 \bind "M-p M-a"			"layout Address"
@@ -97,15 +105,16 @@
 \bind "M-p S-R"			"layout Rotatefoilhead"	# Foils!!
 \bind "M-p s"			"layout Standard"
 \bind "M-p t"			"layout Title"
-\bind "M-p x"			"layout LaTeX"
 \bind "M-p space"		"drop-layouts-choice"
-\bind "M-p S-at"		"layout Section*"	# M-p S-2
-\bind "M-p S-dollar"		"layout Subsubsection*"	# M-p S-4
-\bind "M-p S-numbersign"	"layout Subsection*"	# M-p S-3
 \bind "M-p v"			"layout Verse"
 
 \bind "M-p Left"		"depth-decrement"
 \bind "M-p Right"		"depth-increment"
+
+# These are kept for backwards compatibility (only make sense on US keyboard)
+\bind "M-p S-at"		"layout Section*"	# M-p S-2
+\bind "M-p S-dollar"		"layout Subsubsection*"	# M-p S-4
+\bind "M-p S-numbersign"	"layout Subsection*"	# M-p S-3
 
 
 #

@@ -1,3 +1,11 @@
+2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* bind/menus.bind: cleanup shortcuts for section layouts. Starred
+	versions are now obtained by prepending a * to the section number
+	(M-p asterisk 0 .. M-p asterisk 6)
+
+	* images/banner.xpm.orig: remove
+
 2002-07-15  Soeren Pietsch  <SPietsch@gmx.de>
 
 	* lib/configure.m4: fix the detection of cygwin when the shell is
