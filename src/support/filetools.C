@@ -582,7 +582,7 @@ string const createLyXTmpDir(string const & deflt)
 	if (!deflt.empty() && deflt != "/tmp") {
 		if (mkdir(deflt, 0777)) {
 #ifdef __EMX__
-			Path p(user_lyxdir());
+			Path p(package().user_support());
 #endif
 			if (IsDirWriteable(deflt)) {
 				// deflt could not be created because it
@@ -597,7 +597,7 @@ string const createLyXTmpDir(string const & deflt)
 			return deflt;
 	} else {
 #ifdef __EMX__
-		Path p(user_lyxdir());
+		Path p(package().user_support());
 #endif
 		return createTmpDir("/tmp", "lyx_tmpdir");
 	}
