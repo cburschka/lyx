@@ -2625,10 +2625,10 @@ void InsetTabular::markErased()
 {
 	int cell = 0;
 
-	while (!tabular->IsLastCell(cell)) {
-		++cell;
+	while (cell < tabular->GetNumberOfCells()) {
 		InsetText * inset = tabular->GetCellInset(cell);
 		inset->markErased();
+		++cell;
 	}
 }
 
