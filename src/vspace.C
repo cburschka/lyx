@@ -444,6 +444,9 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	}
 	
 	lyx::Assert(0);
+	// of course, we cannot get there, but gcc is too stupid to
+	// see that. *Sigh*
+	return string();
 }
 
 
