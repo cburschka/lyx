@@ -510,8 +510,9 @@ private:
 
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
-	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos);
-
+	RowList::iterator
+	insertRow(RowList::iterator rowit,
+		  Paragraph * par, lyx::pos_type pos);
 	/// removes the row and reset the touched counters
 	void removeRow(Row * row);
 
@@ -519,11 +520,11 @@ private:
 	void removeParagraph(Row * row);
 
 	/// insert the specified paragraph behind the specified row
-	void insertParagraph(Paragraph * par, Row * row);
+	void insertParagraph(Paragraph * par, RowList::iterator rowit);
 
 	/** appends  the implizit specified paragraph behind the specified row,
 	 * start at the implizit given position */
-	void appendParagraph(Row * row);
+	void appendParagraph(RowList::iterator rowit);
 
 	///
 	void breakAgain(Row * row);

@@ -88,7 +88,7 @@ void LyXText::init(BufferView * bview, bool reinit)
 
 	while (par) {
 		if (rowlist_.empty())
-			insertParagraph(par, 0);
+			insertParagraph(par, rowlist_.end());
 		else
 			insertParagraph(par, lastRow());
 		par = par->next();
@@ -263,18 +263,18 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 
 // inserts a new row before the specified row, increments
 // the touched counters
-void LyXText::insertRow(Row * row, Paragraph * par,
-			pos_type pos)
+RowList::iterator
+ LyXText::insertRow(RowList::iterator rowit, Paragraph * par,
+		    pos_type pos)
 {
 	Row * tmprow = new Row;
 	tmprow->par(par);
 	tmprow->pos(pos);
 
-	if (!row) {
-		rowlist_.insert(rowlist_.begin(), tmprow);
-	} else {
-		rowlist_.insert(row->next(), tmprow);
-	}
+	if (rowit == rowlist_.end())
+		return rowlist_.insert(rowlist_.begin(), tmprow);
+	else
+		return rowlist_.insert(boost::next(rowit), tmprow);
 }
 
 
@@ -326,17 +326,13 @@ void LyXText::removeParagraph(Row * row)
 }
 
 
-void LyXText::insertParagraph(Paragraph * par, Row * row)
+void LyXText::insertParagraph(Paragraph * par, RowList::iterator rowit)
 {
 	// insert a new row, starting at position 0
-	insertRow(row, par, 0);
+	RowList::iterator rit = insertRow(rowit, par, 0);
 
 	// and now append the whole paragraph before the new row
-	if (!row) {
-		appendParagraph(firstRow());
-	} else {
-		appendParagraph(row->next());
-	}
+	appendParagraph(rit);
 }
 
 
@@ -715,11 +711,8 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		// the ownerParagrah() so the paragraph inside the row is NOT
 		// my really first par anymore. Got it Lars ;) (Jug 20011206)
 		first_phys_par = ownerParagraph();
-		lyxerr << "ownerParagraph" << endl;
-
 	} else {
 		first_phys_par = tmprow->par();
-		lyxerr << "tmprow->par()" << endl;
 
 		// Find first row of this paragraph.
 		while (tmprow->previous()
@@ -756,6 +749,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	do {
 		if (tmppar) {
 			insertParagraph(tmppar, tmprow);
+
 			if (!tmprow) {
 				tmprow = firstRow();
 			}

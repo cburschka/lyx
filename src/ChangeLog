@@ -1,3 +1,17 @@
+2003-03-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (init): use rowlist_.end() and not 0.
+	(insertRow): change to take a RowList::iterator as arg, adjust
+	for this.
+	(insertParagraph): change to take a RowList::iterator as arg,
+	adjust for this.
+	(redoParagraphs): remove some debug msgs.
+
+	* text.C (appendParagraph): change to take a RowList::iterator
+	arg, adjust for this.
+	(breakAgain): add an assert
+	(breakAgainOneRow): ditto
+
 2003-03-29  John Levon  <levon@movementarian.org>
 
 	* text2.C: do not clear selection after inc/decDepth
@@ -64,7 +78,7 @@
 
 	* lyxfunc.C: remove a couple of silly questions,
 	use Alert::prompt
-	
+
 2003-03-28  John Levon  <levon@movementarian.org>
 
 	* text2.C: fix bug 974 (End on empty par)
@@ -74,7 +88,7 @@
 	* BufferView_pimpl.C:
 	* LyXAction.C:
 	* lfuns.h: remove do-nothing math greek lfuns
- 
+
 2003-03-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxgluelength.h (isValidGlueLength): add default arg on

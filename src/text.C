@@ -1312,20 +1312,21 @@ void LyXText::setHeightOfRow(Row * row)
 
 // Appends the implicit specified paragraph before the specified row,
 // start at the implicit given position
-void LyXText::appendParagraph(Row * row)
+void LyXText::appendParagraph(RowList::iterator rowit)
 {
-	pos_type const last = row->par()->size();
+	lyx::Assert(rowit != rowlist_.end());
+
+	pos_type const last = rowit->par()->size();
 	bool done = false;
 
 	do {
-		pos_type z = rowBreakPoint(*row);
+		pos_type z = rowBreakPoint(*rowit);
 
-		Row * tmprow = row;
+		RowList::iterator tmprow = rowit;
 
 		if (z < last) {
 			++z;
-			insertRow(row, row->par(), z);
-			row = row->next();
+			rowit = insertRow(rowit, rowit->par(), z);
 		} else {
 			done = true;
 		}
@@ -1334,7 +1335,7 @@ void LyXText::appendParagraph(Row * row)
 		// fixed fill setting now by calling inset->update() in
 		// SingleWidth when needed!
 		tmprow->fill(fill(*tmprow, workWidth()));
-		setHeightOfRow(tmprow);
+		setHeightOfRow(&*tmprow);
 
 	} while (!done);
 }
@@ -1342,6 +1343,8 @@ void LyXText::appendParagraph(Row * row)
 
 void LyXText::breakAgain(Row * row)
 {
+	lyx::Assert(row);
+
 	bool not_ready = true;
 
 	do  {
@@ -1387,6 +1390,8 @@ void LyXText::breakAgain(Row * row)
 // this is just a little changed version of break again
 void LyXText::breakAgainOneRow(Row * row)
 {
+	lyx::Assert(row);
+
 	pos_type z = rowBreakPoint(*row);
 	Row * tmprow = row;
 
