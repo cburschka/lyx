@@ -64,7 +64,7 @@ MathMatrixInset::MathMatrixInset(MathInsetTypes t)
 }
 
 
-MathMatrixInset::MathMatrixInset(MathInsetTypes t, int cols)
+MathMatrixInset::MathMatrixInset(MathInsetTypes t, unsigned int cols)
 	: MathGridInset(cols, 1), objtype_(t), nonum_(1), label_(1)
 {
 	setDefaults();
@@ -77,7 +77,7 @@ MathInset * MathMatrixInset::clone() const
 }
 
 
-char MathMatrixInset::defaultColAlign(int col)
+char MathMatrixInset::defaultColAlign(unsigned int col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGN:
@@ -93,7 +93,7 @@ char MathMatrixInset::defaultColAlign(int col)
 }
 
 
-int MathMatrixInset::defaultColSpace(int col)
+int MathMatrixInset::defaultColSpace(unsigned int col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGN:
@@ -123,7 +123,7 @@ void MathMatrixInset::metrics(MathStyles) const
 
 	if (numberedType()) {
 		int l = 0;
-		for (int row = 0; row < nrows(); ++row)
+		for (unsigned int row = 0; row < nrows(); ++row)
 			l = std::max(l, mathed_string_width(LM_TC_BF, size(), nicelabel(row)));
 
 		if (l)
@@ -148,7 +148,7 @@ void MathMatrixInset::draw(Painter & pain, int x, int y) const
 
 	if (numberedType()) {
 		int xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
-		for (int row = 0; row < nrows(); ++row) {
+		for (unsigned int row = 0; row < nrows(); ++row) {
 			int yy = y + rowinfo_[row].offset_;
 			drawStr(pain, LM_TC_BF, size(), xx, yy, nicelabel(row));
 		}
@@ -162,8 +162,8 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 
 	bool n = numberedType();
 
-	for (int row = 0; row < nrows(); ++row) {
-		for (int col = 0; col < ncols(); ++col) {
+	for (unsigned int row = 0; row < nrows(); ++row) {
+		for (unsigned int col = 0; col < ncols(); ++col) {
 			cell(index(row, col)).write(os, fragile);
 			os << eocString(col);
 		}
@@ -180,25 +180,25 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 }
 
 
-string MathMatrixInset::label(int row) const
+string MathMatrixInset::label(unsigned int row) const
 {
 	return label_[row];
 }
 
 
-void MathMatrixInset::label(int row, string const & label)
+void MathMatrixInset::label(unsigned int row, string const & label)
 {
 	label_[row] = label; 
 }
 
 
-void MathMatrixInset::numbered(int row, bool num)
+void MathMatrixInset::numbered(unsigned int row, bool num)
 {
 	nonum_[row] = !num; 
 }
 
 
-bool MathMatrixInset::numbered(int row) const
+bool MathMatrixInset::numbered(unsigned int row) const
 {
 	return !nonum_[row];
 }
@@ -219,7 +219,7 @@ bool MathMatrixInset::display() const
 std::vector<string> const MathMatrixInset::getLabelList() const
 {
 	std::vector<string> res;
-	for (int row = 0; row < nrows(); ++row)
+	for (unsigned int row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
 			res.push_back(label_[row]);
 	return res;
@@ -230,7 +230,7 @@ bool MathMatrixInset::numberedType() const
 {
 	if (getType() == LM_OT_SIMPLE || getType() == LM_OT_XXALIGNAT)
 		return false;
-	for (int row = 0; row < nrows(); ++row)
+	for (unsigned int row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
 			return true;
 	return false;
@@ -355,7 +355,7 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 }
 
 
-void MathMatrixInset::addRow(int row) 
+void MathMatrixInset::addRow(unsigned int row) 
 {
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
@@ -371,7 +371,7 @@ void MathMatrixInset::appendRow()
 }
 
 
-void MathMatrixInset::delRow(int row) 
+void MathMatrixInset::delRow(unsigned int row) 
 {
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
@@ -379,7 +379,7 @@ void MathMatrixInset::delRow(int row)
 }
 
 
-void MathMatrixInset::addCol(int col)
+void MathMatrixInset::addCol(unsigned int col)
 {
 	switch (getType()) {
 		case LM_OT_EQUATION:
@@ -409,7 +409,7 @@ void MathMatrixInset::addCol(int col)
 }
 
 
-void MathMatrixInset::delCol(int col)
+void MathMatrixInset::delCol(unsigned int col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGNAT:
@@ -424,7 +424,7 @@ void MathMatrixInset::delCol(int col)
 }
 
 
-string MathMatrixInset::nicelabel(int row) const
+string MathMatrixInset::nicelabel(unsigned int row) const
 {
 	if (nonum_[row])
 		return string();
@@ -459,6 +459,7 @@ namespace {
 	}	
 }
 
+
 void MathMatrixInset::mutate(string const & newtype)
 {
 	if (newtype == "dump") {
@@ -469,10 +470,11 @@ void MathMatrixInset::mutate(string const & newtype)
 	mutate(typecode(newtype));
 }
 
+
 void MathMatrixInset::glueall()
 {
 	MathArray ar;
-	for (int i = 0; i < nargs(); ++i)
+	for (unsigned int i = 0; i < nargs(); ++i)
 		ar.push_back(cell(i));
 	*this = MathMatrixInset(LM_OT_SIMPLE);
 	cell(0) = ar;
@@ -521,7 +523,7 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 					MathGridInset::addCol(1);
 
 					// split it "nicely"
-					int pos = firstRelOp(cell(0));	
+					unsigned int pos = firstRelOp(cell(0));	
 					cell(1) = cell(0);
 					cell(0).erase(pos, cell(0).size());
 					cell(1).erase(0, pos);
@@ -536,7 +538,7 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 					MathGridInset::addCol(1);
 
 					// split it "nicely" on the firest relop
-					int pos = firstRelOp(cell(0));	
+					unsigned int pos = firstRelOp(cell(0));	
 					cell(1) = cell(0);
 					cell(0).erase(pos, cell(0).size());
 					cell(1).erase(0, pos);
@@ -559,16 +561,16 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 				case LM_OT_EQUATION: {
 					// set correct (no)numbering
 					bool allnonum = true;
-					for (int r = 0; r < nrows(); ++r) {
-						if (!nonum_[r])
+					for (unsigned int row = 0; row < nrows(); ++row) {
+						if (!nonum_[row])
 							allnonum = false;
 					}
 
 					// set first non-empty label
 					string label;
-					for (int r = 0; r < nrows(); ++r) {
-						if (!label_[r].empty()) {
-							label = label_[r];
+					for (unsigned int row = 0; row < nrows(); ++row) {
+						if (!label_[row].empty()) {
+							label = label_[row];
 							break;
 						}
 					}
@@ -586,8 +588,8 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 				case LM_OT_XALIGNAT:
 				case LM_OT_XXALIGNAT:
 				default: {
-					for (int row = 0; row < nrows(); ++row) {
-						int c = 3 * row + 1;
+					for (unsigned int row = 0; row < nrows(); ++row) {
+						unsigned int c = 3 * row + 1;
 						cell(c).push_back(cell(c + 1));
 					}
 					MathGridInset::delCol(2);

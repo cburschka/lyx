@@ -6,36 +6,36 @@
 #include "debug.h"
 
 
-MathNestInset::MathNestInset(int nargs)
+MathNestInset::MathNestInset(unsigned int nargs)
 	: MathDimInset(), cells_(nargs)
 {}
 
 
-int MathNestInset::nargs() const
+unsigned int MathNestInset::nargs() const
 {
 	return cells_.size();
 }
 
 
-MathXArray & MathNestInset::xcell(int i)
+MathXArray & MathNestInset::xcell(unsigned int i)
 {
 	return cells_[i];
 }
 
 
-MathXArray const & MathNestInset::xcell(int i) const
+MathXArray const & MathNestInset::xcell(unsigned int i) const
 {
 	return cells_[i];
 }
 
 
-MathArray & MathNestInset::cell(int i)
+MathArray & MathNestInset::cell(unsigned int i)
 {
 	return cells_[i].data_;
 }
 
 
-MathArray const & MathNestInset::cell(int i) const
+MathArray const & MathNestInset::cell(unsigned int i) const
 {
 	return cells_[i].data_;
 }
@@ -43,7 +43,7 @@ MathArray const & MathNestInset::cell(int i) const
 
 void MathNestInset::substitute(MathMacro const & m)
 {
-	for (int i = 0; i < nargs(); ++i)
+	for (unsigned int i = 0; i < nargs(); ++i)
 		cell(i).substitute(m);
 }
 
@@ -51,7 +51,7 @@ void MathNestInset::substitute(MathMacro const & m)
 void MathNestInset::metrics(MathStyles st) const
 {
 	size_ = st;
-	for (int i = 0; i < nargs(); ++i)
+	for (unsigned int i = 0; i < nargs(); ++i)
 		xcell(i).metrics(st);
 }
 
@@ -60,12 +60,12 @@ void MathNestInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);
-	for (int i = 0; i < nargs(); ++i)
+	for (unsigned int i = 0; i < nargs(); ++i)
 		xcell(i).draw(pain, x + xcell(i).xo(), y + xcell(i).yo());
 }
 
 
-bool MathNestInset::idxNext(int & idx, int & pos) const
+bool MathNestInset::idxNext(unsigned int & idx, unsigned int & pos) const
 {
 	if (idx + 1 >= nargs())
 		return false;
@@ -75,13 +75,13 @@ bool MathNestInset::idxNext(int & idx, int & pos) const
 }
 
 
-bool MathNestInset::idxRight(int & idx, int & pos) const
+bool MathNestInset::idxRight(unsigned int & idx, unsigned int & pos) const
 {
 	return idxNext(idx, pos);
 }
 
 
-bool MathNestInset::idxPrev(int & idx, int & pos) const
+bool MathNestInset::idxPrev(unsigned int & idx, unsigned int & pos) const
 {
 	if (idx == 0)
 		return false;
@@ -91,13 +91,13 @@ bool MathNestInset::idxPrev(int & idx, int & pos) const
 }
 
 
-bool MathNestInset::idxLeft(int & idx, int & pos) const
+bool MathNestInset::idxLeft(unsigned int & idx, unsigned int & pos) const
 {
 	return idxPrev(idx, pos);
 }
 
 
-bool MathNestInset::idxFirst(int & i, int & pos) const
+bool MathNestInset::idxFirst(unsigned int & i, unsigned int & pos) const
 {
 	if (nargs() == 0)
 		return false;
@@ -107,7 +107,7 @@ bool MathNestInset::idxFirst(int & i, int & pos) const
 }
 
 
-bool MathNestInset::idxLast(int & i, int & pos) const
+bool MathNestInset::idxLast(unsigned int & i, unsigned int & pos) const
 {
 	if (nargs() == 0)
 		return false;
@@ -117,7 +117,7 @@ bool MathNestInset::idxLast(int & i, int & pos) const
 }
 
 
-bool MathNestInset::idxHome(int & /* idx */, int & pos) const
+bool MathNestInset::idxHome(unsigned int & /* idx */, unsigned int & pos) const
 {
 	if (pos == 0)
 		return false;
@@ -126,9 +126,9 @@ bool MathNestInset::idxHome(int & /* idx */, int & pos) const
 }
 
 
-bool MathNestInset::idxEnd(int & idx, int & pos) const
+bool MathNestInset::idxEnd(unsigned int & idx, unsigned int & pos) const
 {
-	int n = cell(idx).size();
+	unsigned int n = cell(idx).size();
 	if (pos == n)
 		return false;
 
@@ -142,7 +142,7 @@ void MathNestInset::dump() const
 	lyxerr << "---------------------------------------------\n";
 	write(lyxerr, false);
 	lyxerr << "\n";
-	for (int i = 0; i < nargs(); ++i)
+	for (unsigned int i = 0; i < nargs(); ++i)
 		lyxerr << cell(i) << "\n";
 	lyxerr << "---------------------------------------------\n";
 }
@@ -159,6 +159,6 @@ void MathNestInset::push_back(MathInset * p)
 
 void MathNestInset::validate(LaTeXFeatures & features) const
 {
-	for (int i = 0; i < nargs(); ++i)
+	for (unsigned int i = 0; i < nargs(); ++i)
 		cell(i).validate(features);
 }

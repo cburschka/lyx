@@ -23,7 +23,7 @@ public:
 	///
 	explicit MathMatrixInset(MathInsetTypes t);
 	///
-	MathMatrixInset(MathInsetTypes t, int cols);
+	MathMatrixInset(MathInsetTypes t, unsigned int cols);
 	///
 	MathInset * clone() const;
 	///
@@ -33,13 +33,13 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	string label(int row) const;
+	string label(unsigned int row) const;
 	///
-	void label(int row, string const & label);
+	void label(unsigned int row, string const & label);
 	///
-	void numbered(int row, bool num);
+	void numbered(unsigned int row, bool num);
 	///
-	bool numbered(int row) const;
+	bool numbered(unsigned int row) const;
 	///
 	bool numberedType() const;
 	///
@@ -52,13 +52,13 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	///
-	void addRow(int);
+	void addRow(unsigned int);
 	///
-	void delRow(int);
+	void delRow(unsigned int);
 	///
-	void addCol(int);
+	void addCol(unsigned int);
 	///
-	void delCol(int);
+	void delCol(unsigned int);
 	///
 	void appendRow();
 
@@ -68,9 +68,9 @@ public:
 	void mutate(MathInsetTypes);
 
 	///
-	int defaultColSpace(int col);
+	int defaultColSpace(unsigned int col);
 	///
-	char defaultColAlign(int col);
+	char defaultColAlign(unsigned int col);
 
 	///
 	MathInsetTypes getType() const;
@@ -87,7 +87,7 @@ private:
 	///
 	void glueall();
 	///
-	string nicelabel(int row) const;
+	string nicelabel(unsigned int row) const;
 
 	///
 	MathInsetTypes objtype_;

@@ -27,7 +27,7 @@ void MathArrayInset::write(std::ostream & os, bool fragile) const
 		os << '[' << char(v_align_) << ']';
 
 	os << '{';
-	for (int col = 0; col < ncols(); ++col)
+	for (unsigned int col = 0; col < ncols(); ++col)
 		os << colinfo_[col].align_;
 	os << "}\n";
 

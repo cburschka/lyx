@@ -41,17 +41,17 @@ struct MathCursorPos {
 	/// inset
 	MathInset * par_;
 	/// cell index
-	int idx_;
+	unsigned int idx_;
 	/// cell position
-	int pos_;
+	unsigned int pos_;
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
 	/// returns cell corresponding to this position
-	MathArray & cell(int idx) const;
+	MathArray & cell(unsigned int idx) const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
-	MathXArray & xcell(int idx) const;
+	MathXArray & xcell(unsigned int idx) const;
 };
 
 /// 
@@ -120,15 +120,15 @@ public:
 	///
 	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
-	MathArrayInset * enclosingArray(int &) const;
+	MathArrayInset * enclosingArray(unsigned int &) const;
 	///
 	InsetFormulaBase const * formula();
 	///
-	int pos() const;
+	unsigned int pos() const;
 	///
-	int idx() const;
+	unsigned int idx() const;
 	///
-	int size() const;
+	unsigned int size() const;
 	///
 	void interpret(string const &);
 	///
@@ -183,9 +183,9 @@ public:
 	///
 	char halign() const;
 	///
-	int col() const;
+	unsigned int col() const;
 	///
-	int row() const;
+	unsigned int row() const;
 
 	///
 	MathStyles style() const;
@@ -231,7 +231,7 @@ public:
 
 
 	///  
-	int last() const;
+	unsigned int last() const;
 	///
 	MathInset * parInset(int i) const;
 	///
@@ -261,13 +261,13 @@ private:
 	/// can the setPos routine enter that inset?
 	MathInset * positionable(MathAtom *, int x, int y) const;
 	/// write access to cursor cell position
-	int & pos();
+	unsigned int & pos();
 	/// write access to cursor cell index
-	int & idx();
+	unsigned int & idx();
 	/// x-offset of current cell relative to par xo
-	int cellXOffset() const;
+	unsigned int cellXOffset() const;
 	/// y-offset of current cell relative to par yo
-	int cellYOffset() const;
+	unsigned int cellYOffset() const;
 	/// current x position relative to par xo
 	int xpos() const;
 	/// current y position relative to par yo

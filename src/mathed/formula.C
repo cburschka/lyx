@@ -188,7 +188,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
 				bool old = par_->numberedType();
-				for (int row = 0; row < par_->nrows(); ++row)
+				for (unsigned int row = 0; row < par_->nrows(); ++row)
 					par_->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				updateLocal(bv, true);

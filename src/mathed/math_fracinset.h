@@ -27,9 +27,6 @@ public:
 	void draw(Painter &, int x, int y) const;
 public:
 	///
-	char const name() const;
-
-	///
 	const bool atop_;
 };
 

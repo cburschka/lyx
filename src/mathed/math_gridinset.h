@@ -60,7 +60,7 @@ class MathGridInset : public MathNestInset {
 
 public: 
 	///
-	MathGridInset(int m, int n);
+	MathGridInset(unsigned int m, unsigned int n);
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
@@ -70,82 +70,82 @@ public:
 	///
 	void halign(string const &);
 	///
-	void halign(char c, int col);
+	void halign(char c, unsigned int col);
 	///
-	char halign(int col) const;
+	char halign(unsigned int col) const;
 	///
 	void valign(char c);
 	///
 	char valign() const;
 	///
-	void vskip(LyXLength const &, int row);
+	void vskip(LyXLength const &, unsigned int row);
 	///
-	LyXLength vskip(int row) const;
+	LyXLength vskip(unsigned int row) const;
 	///
-	void resize(short int type, int cols);
+	void resize(short int type, unsigned int cols);
 	///
-	const RowInfo & rowinfo(int row) const;
+	const RowInfo & rowinfo(unsigned int row) const;
 	///
-	RowInfo & rowinfo(int row);
+	RowInfo & rowinfo(unsigned int row);
 	///
 	bool isGrid() const { return true; }
 
 	///
-	int ncols() const { return colinfo_.size(); }
+	unsigned int ncols() const { return colinfo_.size(); }
 	///
-	int nrows() const { return rowinfo_.size(); }
+	unsigned int nrows() const { return rowinfo_.size(); }
 	///
-	int col(int idx) const { return idx % ncols(); }
+	unsigned int col(unsigned int idx) const { return idx % ncols(); }
 	///
-	int row(int idx) const { return idx / ncols(); }
+	unsigned int row(unsigned int idx) const { return idx / ncols(); }
 	///
-	int cellXOffset(int idx) const;
+	int cellXOffset(unsigned int idx) const;
 	///
-	int cellYOffset(int idx) const;
+	int cellYOffset(unsigned int idx) const;
 
 	///
-	bool idxUp(int &, int &) const;
+	bool idxUp(unsigned int &, unsigned int &) const;
 	///
-	bool idxDown(int &, int &) const;
+	bool idxDown(unsigned int &, unsigned int &) const;
 	///
-	bool idxLeft(int &, int &) const;
+	bool idxLeft(unsigned int &, unsigned int &) const;
 	///
-	bool idxRight(int &, int &) const;
+	bool idxRight(unsigned int &, unsigned int &) const;
 	///
-	bool idxFirst(int &, int &) const;
+	bool idxFirst(unsigned int &, unsigned int &) const;
 	///
-	bool idxLast(int &, int &) const;
+	bool idxLast(unsigned int &, unsigned int &) const;
 	///
-	void idxDelete(int &, bool &, bool &);
+	void idxDelete(unsigned int &, bool &, bool &);
 	///
-	void idxDeleteRange(int, int);
+	void idxDeleteRange(unsigned int, unsigned int);
 			
 	///
-	void addRow(int);
+	void addRow(unsigned int);
 	///
-	void delRow(int);
+	void delRow(unsigned int);
 	///
-	void addCol(int);
+	void addCol(unsigned int);
 	///
-	void delCol(int);
+	void delCol(unsigned int);
 	///
 	virtual void appendRow();
 	///
-	int index(int row, int col) const;
+	unsigned int index(unsigned int row, unsigned int col) const;
 	///
-	std::vector<int> idxBetween(int from, int to) const;
+	std::vector<unsigned int> idxBetween(unsigned int from, unsigned int to) const;
 	///
-	virtual int defaultColSpace(int) { return 10; }
+	virtual int defaultColSpace(unsigned int) { return 10; }
 	///
-	virtual char defaultColAlign(int) { return 'c'; }
+	virtual char defaultColAlign(unsigned int) { return 'c'; }
 	///
 	void setDefaults();
 
 protected:
 	/// returns proper 'end of line' code for LaTeX
-	string eolString(int row) const;
+	string eolString(unsigned int row) const;
 	/// returns proper 'end of column' code for LaTeX
-	string eocString(int col) const;
+	string eocString(unsigned int col) const;
 
 	/// row info
 	std::vector<RowInfo> rowinfo_;

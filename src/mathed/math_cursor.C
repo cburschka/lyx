@@ -40,12 +40,13 @@
 #include "math_specialcharinset.h"
 #include "math_parser.h"
 
+#define FILEDEBUG 0
+
 using std::endl;
 using std::min;
 using std::max;
 using std::swap;
 using std::isalnum;
-
 
 namespace {
 
@@ -60,7 +61,7 @@ struct Selection
 		if (i1.idx_ == i2.idx_)
 			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
 		else {
-			std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
+			std::vector<unsigned int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				data_.push_back(i1.cell(indices[i]));
 		}
@@ -74,7 +75,7 @@ struct Selection
 		if (i1.idx_ == i2.idx_)
 			i1.cell().erase(i1.pos_, i2.pos_);
 		else {
-			std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
+			std::vector<unsigned int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
 		}
@@ -107,12 +108,14 @@ struct Selection
 Selection theSelection;
 
 
+#if FILEDEBUG
 std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 {
 	os << "(par: " << p.par_ << " idx: " << p.idx_
 	   << " pos: " << p.pos_ << ")";
 	return os;
 }
+#endif
 
 }
 
@@ -176,9 +179,9 @@ MathInset * MathCursor::parInset(int i) const
 }
 
 
+#if FILEDEBUG
 void MathCursor::dump(char const *) const
 {
-#if 0
 	lyxerr << "MC: " << what << "\n";
 	for (unsigned i = 0; i < Cursor_.size(); ++i)
 		lyxerr << "  i: " << i 
@@ -186,15 +189,12 @@ void MathCursor::dump(char const *) const
 			<< " idx: " << Cursor_[i].idx_
 			<< " par: " << Cursor_[i].par_ << "\n";
 	//lyxerr	<< " sel: " << selection_ << " data: " << array() << "\n";
-#endif
 }
-
 
 void MathCursor::seldump(char const * str) const
 {
 	//lyxerr << "SEL: " << str << ": '" << theSelection << "'\n";
 	//dump("   Pos");
-	return;
 
 	lyxerr << "\n\n\n=================vvvvvvvvvvvvv=======================   "
 		<<  str << "\ntheSelection: " << selection_
@@ -208,6 +208,13 @@ void MathCursor::seldump(char const * str) const
 	//lyxerr << "\nanchor.pos_: " << anchor().pos_;
 	lyxerr << "\n===================^^^^^^^^^^^^=====================\n\n\n";
 }
+
+#else
+
+void MathCursor::seldump(char const *) const {}
+void MathCursor::dump(char const *) const {}
+
+#endif
 
 
 bool MathCursor::isInside(MathInset const * p) const
@@ -355,11 +362,11 @@ void MathCursor::setPos(int x, int y)
 	cursor().par_  = outerPar();
 
 	while (1) {
-		idx() = -1;
-		cursor().pos_ = -1;
+		idx() = 0;
+		cursor().pos_ = 0;
 		//lyxerr << "found idx: " << idx() << " cursor: " << pos()  << "\n";
 		int distmin = 1 << 30; // large enough
-		for (int i = 0; i < par()->nargs(); ++i) {
+		for (unsigned int i = 0; i < par()->nargs(); ++i) {
 			MathXArray const & ar = par()->xcell(i);
 			int x1 = x - ar.xo();
 			int y1 = y - ar.yo();
@@ -745,7 +752,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		int y2 = c.yo() + c.descent();
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
-		std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
+		std::vector<unsigned int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
 			int x1 = c.xo();
@@ -774,7 +781,7 @@ void MathCursor::handleFont(MathTextCodes t)
 		getSelection(i1, i2); 
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
-			for (int pos = i1.pos_; pos != i2.pos_; ++pos) {
+			for (unsigned int pos = i1.pos_; pos != i2.pos_; ++pos) {
 				MathInset * p = ar.at(pos)->nucleus();
 				if (p)
 					p->handleFont(t);
@@ -825,25 +832,25 @@ InsetFormulaBase const * MathCursor::formula()
 }
 
 
-int MathCursor::idx() const
+unsigned int MathCursor::idx() const
 {
 	return cursor().idx_;
 }
 
 
-int & MathCursor::idx()
+unsigned int & MathCursor::idx()
 {
 	return cursor().idx_;
 }
 
 
-int MathCursor::pos() const
+unsigned int MathCursor::pos() const
 {
 	return cursor().pos_;
 }
 
 
-int & MathCursor::pos()
+unsigned int & MathCursor::pos()
 {
 	return cursor().pos_;
 }
@@ -861,7 +868,7 @@ bool MathCursor::selection() const
 }
 
 
-MathArrayInset * MathCursor::enclosingArray(int & idx) const
+MathArrayInset * MathCursor::enclosingArray(unsigned int & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		if (Cursor_[i].par_->isArray()) {
@@ -900,41 +907,35 @@ void MathCursor::normalize() const
 #endif
 	MathCursor * it = const_cast<MathCursor *>(this);
 
-	if (idx() < 0)
-		lyxerr << "this should not really happen - 1: " << idx() << "\n";
  	if (idx() >= par()->nargs()) {
-		lyxerr << "this should not really happen - 2: "
+		lyxerr << "this should not really happen - 1: "
 		       << idx() << " " << par()->nargs() << "\n";
 		dump("error 2");
 	}
-	it->idx()    = max(idx(), 0);
  	it->idx()    = min(idx(), par()->nargs() - 1);
 
-	if (pos() < 0)
-		lyxerr << "this should not really happen - 3: " << pos() << "\n";
 	if (pos() > size()) {
-		lyxerr << "this should not really happen - 4: "
+		lyxerr << "this should not really happen - 2: "
 		       << pos() << " " << size() << "\n";
 		dump("error 4");
 	}
-	it->pos() = max(pos(), 0);
 	it->pos() = min(pos(), size());
 }
 
 
-int MathCursor::size() const
+unsigned int MathCursor::size() const
 {
 	return array().size();
 }
 
 
-int MathCursor::col() const
+unsigned int MathCursor::col() const
 {
 	return par()->col(idx());
 }
 
 
-int MathCursor::row() const
+unsigned int MathCursor::row() const
 {
 	return par()->row(idx());
 }
@@ -1010,7 +1011,7 @@ MathArray & MathCursor::array() const
 		return dummy;
 	}
 
-	if (idx() < 0 || idx() >= par()->nargs()) {
+	if (idx() >= par()->nargs()) {
 		lyxerr << "############  idx_ " << idx() << " not valid\n";
 		return dummy;
 	}
@@ -1065,10 +1066,10 @@ void MathCursor::breakLine()
 		p->addRow(row());
 
 		// split line
-		const int r = row();
-		for (int c = col() + 1; c < p->ncols(); ++c) {
-			const int i1 = p->index(r, c);
-			const int i2 = p->index(r + 1, c);	
+		const unsigned int r = row();
+		for (unsigned int c = col() + 1; c < p->ncols(); ++c) {
+			const unsigned int i1 = p->index(r, c);
+			const unsigned int i2 = p->index(r + 1, c);	
 			lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
 			p->cell(i1).swap(p->cell(i2));
 		}
@@ -1082,7 +1083,7 @@ void MathCursor::breakLine()
 
 char MathCursor::valign() const
 {
-	int idx;
+	unsigned int idx;
 	MathArrayInset * p = enclosingArray(idx);
 	return p ? p->valign() : 0;
 }
@@ -1090,7 +1091,7 @@ char MathCursor::valign() const
 
 char MathCursor::halign() const
 {
-	int idx;
+	unsigned int idx;
 	MathArrayInset * p = enclosingArray(idx);
 	return p ? p->halign(idx % p->ncols()) : 0;
 }
@@ -1121,13 +1122,13 @@ MathCursorPos const & MathCursor::cursor() const
 }
 
 
-int MathCursor::cellXOffset() const
+unsigned int MathCursor::cellXOffset() const
 {
 	return par()->cellXOffset(idx());
 }
 
 
-int MathCursor::cellYOffset() const
+unsigned int MathCursor::cellYOffset() const
 {
 	return par()->cellYOffset(idx());
 }
@@ -1248,14 +1249,14 @@ void MathCursor::interpret(string const & s)
 	//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
 
 	if (s.size() > 7 && s.substr(0, 7) == "matrix ") {
-		int m = 1;
-		int n = 1;
+		unsigned int m = 1;
+		unsigned int n = 1;
 		string v_align;
 		string h_align;
 		istringstream is(s.substr(7).c_str());
 		is >> m >> n >> v_align >> h_align;
-		m = std::max(1, m);
-		n = std::max(1, n);
+		m = std::max(1u, m);
+		n = std::max(1u, n);
 		v_align += 'c';
 		MathArrayInset * p = new MathArrayInset(m, n);
 		p->valign(v_align[0]);
@@ -1423,7 +1424,7 @@ bool operator<(MathCursorPos const & ti, MathCursorPos const & it)
 }
 
 
-MathArray & MathCursorPos::cell(int idx) const
+MathArray & MathCursorPos::cell(unsigned int idx) const
 {
 	return par_->cell(idx);
 }
@@ -1435,7 +1436,7 @@ MathArray & MathCursorPos::cell() const
 }
 
 
-MathXArray & MathCursorPos::xcell(int idx) const
+MathXArray & MathCursorPos::xcell(unsigned int idx) const
 {
 	return par_->xcell(idx);
 }

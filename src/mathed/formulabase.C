@@ -91,7 +91,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 
 
 // returns the nearest enclosing grid
-MathArrayInset * matrixpar(int & idx)
+MathArrayInset * matrixpar(unsigned int & idx)
 {
 	idx = 0;
 	return (mathcursor ? mathcursor->enclosingArray(idx) : 0); 
@@ -555,7 +555,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		lyxerr << "handling halign '" << arg << "'\n";
-		int idx;
+		unsigned int idx;
 		MathArrayInset * p = matrixpar(idx);
 		if (!p)
 			break; 
@@ -568,7 +568,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		lyxerr << "handling valign '" << arg << "'\n";
-		int idx;
+		unsigned int idx;
 		MathArrayInset * p = matrixpar(idx);
 		if (!p)
 			break; 
@@ -580,7 +580,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_ROW_INSERT:
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		int idx;
+		unsigned int idx;
 		MathArrayInset * p = matrixpar(idx);
 		lyxerr << " calling LFUN_MATH_ROW_INSERT on " << p << endl;
 		if (!p)
@@ -593,7 +593,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_ROW_DELETE:
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		int idx;
+		unsigned int idx;
 		MathArrayInset * p = matrixpar(idx);
 		lyxerr << " calling LFUN_MATH_ROW_DELETE on " << p << endl;
 		if (!p)
@@ -606,7 +606,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_COLUMN_INSERT:
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		int idx;
+		unsigned int idx;
 		MathArrayInset * p = matrixpar(idx);
 		if (!p)
 			break; 
@@ -618,7 +618,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_COLUMN_DELETE:
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		int idx;
+		unsigned int idx;
 		MathArrayInset * p = matrixpar(idx);
 		if (!p)
 			break; 

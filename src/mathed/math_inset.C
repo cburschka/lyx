@@ -85,7 +85,7 @@ void MathInset::yo(int y) const
 }
 
 
-int MathInset::nargs() const
+unsigned int MathInset::nargs() const
 {
 	return 0;
 }
@@ -93,28 +93,28 @@ int MathInset::nargs() const
 
 MathXArray dummyCell;
 
-MathXArray & MathInset::xcell(int)
+MathXArray & MathInset::xcell(unsigned int)
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell;
 }
 
 
-MathXArray const & MathInset::xcell(int) const
+MathXArray const & MathInset::xcell(unsigned int) const
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell;
 }
 
 
-MathArray & MathInset::cell(int)
+MathArray & MathInset::cell(unsigned int)
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell.data_;
 }
 
 
-MathArray const & MathInset::cell(int) const
+MathArray const & MathInset::cell(unsigned int) const
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell.data_;
@@ -125,74 +125,74 @@ void MathInset::substitute(MathMacro const &)
 {}
 
 
-bool MathInset::idxNext(int &, int &) const
+bool MathInset::idxNext(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxRight(int &, int &) const
+bool MathInset::idxRight(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxPrev(int &, int &) const
+bool MathInset::idxPrev(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLeft(int &, int &) const
+bool MathInset::idxLeft(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxUp(int &, int &) const
+bool MathInset::idxUp(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxDown(int &, int &) const
+bool MathInset::idxDown(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxFirst(int &, int &) const
+bool MathInset::idxFirst(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLast(int &, int &) const
+bool MathInset::idxLast(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxHome(int &, int &) const
+bool MathInset::idxHome(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxEnd(int &, int &) const
+bool MathInset::idxEnd(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-void MathInset::idxDelete(int &, bool & popit, bool & deleteit)
+void MathInset::idxDelete(unsigned int &, bool & popit, bool & deleteit)
 {
 	popit    = false;
 	deleteit = false;
 }
 
 
-void MathInset::idxDeleteRange(int, int)
+void MathInset::idxDeleteRange(unsigned int, unsigned int)
 {}
 
 
@@ -255,10 +255,11 @@ void MathInset::validate(LaTeXFeatures &) const
 {}
 
 
-std::vector<int> MathInset::idxBetween(int from, int to) const
+std::vector<unsigned int>
+	MathInset::idxBetween(unsigned int from, unsigned int to) const
 {
-	std::vector<int> res;
-	for (int i = from; i <= to; ++i)
+	std::vector<unsigned int> res;
+	for (unsigned int i = from; i <= to; ++i)
 		res.push_back(i);
 	return res;
 }

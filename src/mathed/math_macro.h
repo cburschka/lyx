@@ -51,16 +51,16 @@ public:
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void dump(std::ostream & os) const;
+	void dump() const;
 
 	///
-	bool idxUp(int &, int &) const;
+	bool idxUp(unsigned int &, unsigned int &) const;
 	///
-	bool idxDown(int &, int &) const;
+	bool idxDown(unsigned int &, unsigned int &) const;
 	///
-	bool idxLeft(int &, int &) const;
+	bool idxLeft(unsigned int &, unsigned int &) const;
 	///
-	bool idxRight(int &, int &) const;
+	bool idxRight(unsigned int &, unsigned int &) const;
 
 	///
 	void validate(LaTeXFeatures &) const;
@@ -80,9 +80,4 @@ private:
 };
 
 
-inline std::ostream & operator<<(std::ostream & os, MathMacro const & m)
-{
-	m.dump(os);
-	return os;
-}
 #endif

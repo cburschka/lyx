@@ -880,7 +880,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 				else {
 					MathInset * p = createMathInset(t.cs());
-					for (int i = 0; i < p->nargs(); ++i) 
+					for (unsigned int i = 0; i < p->nargs(); ++i) 
 						parse_into(p->cell(i), FLAG_ITEM);
 					array.push_back(p);
 				}
@@ -889,7 +889,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			else {
 				MathInset * p = createMathInset(t.cs());
 				if (p) {
-					for (int i = 0; i < p->nargs(); ++i)
+					for (unsigned int i = 0; i < p->nargs(); ++i)
 						parse_into(p->cell(i), FLAG_ITEM);
 					array.push_back(p);
 				} else {

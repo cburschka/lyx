@@ -75,50 +75,51 @@ public:
 	virtual MathStyles size() const;
 
 	/// Where should we go when we press the up cursor key?
-	virtual bool idxUp(int & idx, int & pos) const;
+	virtual bool idxUp(unsigned int & idx, unsigned int & pos) const;
 	/// The down key
-	virtual bool idxDown(int & idx, int & pos) const;
+	virtual bool idxDown(unsigned int & idx, unsigned int & pos) const;
 	/// The left key
-	virtual bool idxLeft(int & idx, int & pos) const;
+	virtual bool idxLeft(unsigned int & idx, unsigned int & pos) const;
 	/// The right key
-	virtual bool idxRight(int & idx, int & pos) const;
+	virtual bool idxRight(unsigned int & idx, unsigned int & pos) const;
 
 	/// Move one physical cell up
-	virtual bool idxNext(int & idx, int & pos) const;
+	virtual bool idxNext(unsigned int & idx, unsigned int & pos) const;
 	/// Move one physical cell down
-	virtual bool idxPrev(int & idx, int & pos) const;
+	virtual bool idxPrev(unsigned int & idx, unsigned int & pos) const;
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	virtual bool idxFirst(int & idx, int & pos) const;
+	virtual bool idxFirst(unsigned int & idx, unsigned int & pos) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	virtual bool idxLast(int & idx, int & pos) const;
+	virtual bool idxLast(unsigned int & idx, unsigned int & pos) const;
 
 	/// Where should we go if we press home?
-	virtual bool idxHome(int & idx, int & pos) const;
+	virtual bool idxHome(unsigned int & idx, unsigned int & pos) const;
 	/// Where should we go if we press end?
-	virtual bool idxEnd(int & idx, int & pos) const;
+	virtual bool idxEnd(unsigned int & idx, unsigned int & pos) const;
 
 	/// Delete a cell and move cursor
 	// the return value indicates whether the cursor should leave the inset
 	// and/or the whole inset should be deleted
-	virtual void idxDelete(int & idx, bool & popit, bool & deleteit);
+	virtual void idxDelete(unsigned int & idx, bool & popit, bool & deleteit);
 	// deletes a cell range and moves the cursor 
-	virtual void idxDeleteRange(int from, int to);
+	virtual void idxDeleteRange(unsigned int from, unsigned int to);
 	// returns list of cell indices that are "between" from and to for
 	// selection purposes
-	virtual std::vector<int> idxBetween(int from, int to) const;
+	virtual std::vector<unsigned int>
+		idxBetween(unsigned int from, unsigned int to) const;
 
 	///
-	virtual int nargs() const;
+	virtual unsigned int nargs() const;
 
 	///
-	virtual MathArray & cell(int);
+	virtual MathArray & cell(unsigned int);
 	///
-	virtual MathArray const & cell(int) const;
+	virtual MathArray const & cell(unsigned int) const;
 	///
-	virtual MathXArray & xcell(int);
+	virtual MathXArray & xcell(unsigned int);
 	///
-	virtual MathXArray const & xcell(int) const;
+	virtual MathXArray const & xcell(unsigned int) const;
 			
 	///
 	virtual int xo() const;
@@ -131,25 +132,25 @@ public:
 	///
 
 	///
-	virtual int ncols() const { return 1; }
+	virtual unsigned int ncols() const { return 1; }
 	///
-	virtual int nrows() const { return 1; }
+	virtual unsigned int nrows() const { return 1; }
 	///
-	virtual int col(int) const { return 0; }
+	virtual unsigned int col(unsigned int) const { return 0; }
 	///
-	virtual int row(int) const { return 0; }
+	virtual unsigned int row(unsigned int) const { return 0; }
 	///
-	virtual int cellXOffset(int) const { return 0; }
+	virtual int cellXOffset(unsigned int) const { return 0; }
 	///
-	virtual int cellYOffset(int) const { return 0; }
+	virtual int cellYOffset(unsigned int) const { return 0; }
 	///
-	virtual void addRow(int) {}
+	virtual void addRow(unsigned int) {}
 	///
-	virtual void delRow(int) {}
+	virtual void delRow(unsigned int) {}
 	///
-	virtual void addCol(int) {}
+	virtual void addCol(unsigned int) {}
 	///
-	virtual void delCol(int) {}
+	virtual void delCol(unsigned int) {}
 
 	///
 	virtual void userSetSize(MathStyles &) {}

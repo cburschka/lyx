@@ -72,7 +72,7 @@ void MathMacro::metrics(MathStyles st) const
 		int lwid;
 		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
 
-		for (int i = 0; i < nargs(); ++i) {
+		for (unsigned int i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			c.metrics(st);
 			width_    = std::max(width_, c.width() + lwid);
@@ -114,7 +114,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 		int lwid;
 		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
 
-		for (int i = 0; i < nargs(); ++i) {
+		for (unsigned int i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			h += std::max(c.ascent(), lasc) + 5;
 			c.draw(pain, x + lwid, h);
@@ -134,20 +134,20 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathMacro::dump(std::ostream & os) const
+void MathMacro::dump() const
 {
 	MathMacroTable::dump();
-	os << "\n macro: '" << this << "'\n";
-	os << " name: '" << name() << "'\n";
-	os << " template: '" << tmplate_ << "'\n";
-	os << " template: '" << *tmplate_ << "'\n";
-	os << endl;
+	lyxerr << "\n macro: '" << this << "'\n";
+	lyxerr << " name: '" << name() << "'\n";
+	lyxerr << " template: '" << tmplate_ << "'\n";
+	lyxerr << " template: '" << *tmplate_ << "'\n";
+	lyxerr << endl;
 }
 
 void MathMacro::write(std::ostream & os, bool fragile) const
 {
 	os << '\\' << name();
-	for (int i = 0; i < nargs(); ++i) {
+	for (unsigned int i = 0; i < nargs(); ++i) {
 		os << '{';
 		cell(i).write(os, fragile);
 		os << '}';
@@ -160,7 +160,7 @@ void MathMacro::write(std::ostream & os, bool fragile) const
 void MathMacro::writeNormal(std::ostream & os) const
 {
 	os << "[macro " << name() << " ";
-	for (int i = 0; i < nargs(); ++i) {
+	for (unsigned int i = 0; i < nargs(); ++i) {
 		cell(i).writeNormal(os);
 		os << ' ';
 	}
@@ -168,25 +168,25 @@ void MathMacro::writeNormal(std::ostream & os) const
 }
 
 
-bool MathMacro::idxUp(int & idx, int & pos) const
+bool MathMacro::idxUp(unsigned int & idx, unsigned int & pos) const
 {
 	return MathNestInset::idxLeft(idx, pos);
 }
 
 
-bool MathMacro::idxDown(int & idx, int & pos) const
+bool MathMacro::idxDown(unsigned int & idx, unsigned int & pos) const
 {
 	return MathNestInset::idxRight(idx, pos);
 }
 
 
-bool MathMacro::idxLeft(int &, int &) const
+bool MathMacro::idxLeft(unsigned int &, unsigned int &) const
 {
 	return false;
 }
 
 
-bool MathMacro::idxRight(int &, int &) const
+bool MathMacro::idxRight(unsigned int &, unsigned int &) const
 {
 	return false;
 }
