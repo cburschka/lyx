@@ -1,3 +1,12 @@
+2001-02-17  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* LaTeX.C (run): Do not use 'scanres & RERUN' when deciding
+	whether to run bibtex.
+
+2001-02-16  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* Makefile.am (lyx_SOURCES): Remove BackStack.h
+
 2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Makefile.am (lyx_SOURCES): removed bibforms.h
