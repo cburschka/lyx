@@ -17,6 +17,7 @@
 #include "format.h"
 #include "debug.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"       // lowercase
 #include "support/lyxfunctional.h"  // compare_memfun
 #include "qt_helpers.h"
 
