@@ -159,7 +159,7 @@ case "$lyx_use_frontend" in
   xforms)
 	LYX_PATH_XPM
 	LYX_PATH_XFORMS
-	LYX_USE_XFORMS_IMAGE_LOADER
+	LYX_CHECK_XFORMS_IMAGE_LOADER
 	FRONTEND="xforms"
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
@@ -177,7 +177,7 @@ case "$lyx_use_frontend" in
   gnome)
     LYX_PATH_XPM
     LYX_PATH_XFORMS
-    LYX_USE_XFORMS_IMAGE_LOADER
+    LYX_CHECK_XFORMS_IMAGE_LOADER
     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
     AC_SUBST(GNOME_FRONTEND_CFLAGS)
     AC_SUBST(GNOME_FRONTEND_LIBS)
@@ -200,10 +200,6 @@ case "$lyx_use_frontend" in
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
-
-# Do this here instead of in the LYX_USE_XFORMS_IMAGE_LOADER macro
-AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-	       test x$lyx_use_xforms_image_loader = xno)
 
 ### Check for xforms and xpm (only if X has been found).
 if test "$have_x" = no ; then

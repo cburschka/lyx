@@ -2,6 +2,10 @@
 
 	* XPainter.C: missed a #ifdef USE_XFORMS_IMAGE_LOADER.
 
+	* xformsImage.C (init_graphics): Use new #ifdef USE_JPEG_IMAGE_LOADER
+	rather than HAVE_FLIMAGE_ENABLE_JPEG.
+	Remove #ifdef HAVE_FLIMAGE_ENABLE_PS.
+	
 	* FormPreferences.C: 
 	* forms/form_preferences.fd: remove override_x_deadkeys stuff.
 

@@ -422,7 +422,7 @@ void init_graphics()
 	flimage_enable_bmp();
 	flimage_enable_fits();
 	flimage_enable_gif();
-#ifdef HAVE_FLIMAGE_ENABLE_JPEG
+#ifdef USE_JPEG_IMAGE_LOADER
 	flimage_enable_jpeg();
 #endif
 
@@ -432,13 +432,11 @@ void init_graphics()
 
 	flimage_enable_pnm();
 
-#ifdef HAVE_FLIMAGE_ENABLE_PS
 	// xforms recognises PS but not EPS
 	// It dies horribly with lots of older PostScript files.
 	// Easiest, therefore, to disable PS support and insist that a PS-type
 	// file is converted to a bitmap format.
 	// flimage_enable_ps();
-#endif
 
 	flimage_enable_sgi();
 	flimage_enable_tiff();

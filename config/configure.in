@@ -162,7 +162,7 @@ case "$lyx_use_frontend" in
   xforms)
 	LYX_PATH_XPM
 	LYX_PATH_XFORMS
-	LYX_USE_XFORMS_IMAGE_LOADER
+	LYX_CHECK_XFORMS_IMAGE_LOADER
 	FRONTEND="xforms"
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
@@ -178,9 +178,12 @@ case "$lyx_use_frontend" in
     libforms version:             ${XFORMS_VERSION}\n"
 	;;
   gnome)
-    LYX_PATH_XPM
-    LYX_PATH_XFORMS
-    LYX_USE_XFORMS_IMAGE_LOADER
+# Leaving these tests in means that they are performed twice for the
+# xforms frontend. No, I don't understand why :-(
+# Angus 16 Dec 2002.
+#     LYX_PATH_XPM
+#     LYX_PATH_XFORMS
+#     LYX_CHECK_XFORMS_IMAGE_LOADER
     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
     AC_SUBST(GNOME_FRONTEND_CFLAGS)
     AC_SUBST(GNOME_FRONTEND_LIBS)
@@ -202,10 +205,6 @@ case "$lyx_use_frontend" in
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
-
-AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-	       test x$lyx_use_xforms_image_loader = xno)
-
 
 ### Check for xforms and xpm (only if X has been found).
 if test "$have_x" = no ; then

@@ -41,59 +41,51 @@ rm -f conftest*])
 
 XFORMS_VERSION=$lyx_cv_xfversion
 case "$lyx_cv_xfversion" in
-  "(unknown)"|0.8[1-7]*)
-	 LYX_ERROR(dnl
+"(unknown)"|0.8[[1-8]]*|0.89[[01234]])
+	LYX_ERROR(dnl
 Version $lyx_cv_xfversion of xforms is not compatible with LyX.
-   This version of LyX works best with versions 0.88 (recommended) and later.) ;;
-    0.88*) ;;
-    0.89[01234]) LYX_WARNING(dnl
+   This version of LyX works best with version 1.0 (recommended) and later.) ;;
+0.89*|0.9999*)
+	LYX_WARNING(dnl
 LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
-it is an unproven version and might still have some bugs. You should
-probably use version 0.89.6 (or 0.88) instead) ;;
-    0.89*) ;;
-    0.9999*) ;;
-    1.0*) ;;
-       *) LYX_WARNING(dnl
-Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,]
- since it is newer than 0.89. You might have slight problems with it.);;
+   it contains many bugs that have been squashed in version 1.0.
+   You should consider upgrading.) ;;
+1.0*) ;;
 esac
 fi
 ])
 
 
-
-dnl Check whether the xforms library has a viable image loader
-AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
+dnl Check the details of the xforms image loader
+AC_DEFUN(LYX_CHECK_XFORMS_IMAGE_LOADER,
 [AC_REQUIRE([LYX_PATH_XFORMS])
 save_LIBS=$LIBS
 LIBS="$XFORMS_LIB $XPM_LIB $LIBS"
-lyx_use_xforms_image_loader=no
+lyx_use_jpeg_image_loader=no
+
 AC_LANG_SAVE
 AC_LANG_C
 
-AC_CHECK_LIB(jpeg, jpeg_read_header,
-  [XFORMS_IMAGE_LIB=-ljpeg
-   LIBS="$LIBS -ljpeg"])
+dnl The image headers were split out of forms.h in xforms version 1.0.
+AC_CHECK_HEADERS(flimage.h X11/flimage.h, break)
 AC_SEARCH_LIBS(flimage_dup, flimage,
-  [lyx_use_xforms_image_loader=yes
-   if test "$ac_cv_search_flimage_dup" != "none required" ; then
-     XFORMS_IMAGE_LIB="-lflimage $XFORMS_IMAGE_LIB"
+  [if test "$ac_cv_search_flimage_dup" != "none required" ; then
+     XFORMS_IMAGE_LIB="-lflimage"
      LIBS="$XFORMS_IMAGE_LIB $LIBS"
   fi])
+
+dnl Only enable native loading of jpeg images if the jpeg library is installed.
+AC_CHECK_LIB(jpeg, jpeg_read_header,
+  [lyx_use_jpeg_image_loader=yes
+   XFORMS_IMAGE_LIB="$XFORMS_IMAGE_LIB -ljpeg"
+   LIBS="$LIBS -ljpeg"])
 AC_SUBST(XFORMS_IMAGE_LIB)
 
-if test $lyx_use_xforms_image_loader = yes ; then
+if test $lyx_use_jpeg_image_loader = yes ; then
   lyx_flags="$lyx_flags xforms-image-loader"
-  AC_DEFINE(USE_XFORMS_IMAGE_LOADER, 1,
-	    [Define if you want to use xforms built-in image loader])
-  AC_CHECK_FUNCS(flimage_enable_ps flimage_enable_jpeg)
-  AC_CHECK_HEADERS(flimage.h X11/flimage.h, break)
+  AC_DEFINE(USE_JPEG_IMAGE_LOADER, 1,
+	    [Define if you want to be able to load jpeg images natively])
 fi
-
-### If the gui cannot load images itself, then we default to the
-### very simple one in graphics/GraphicsImageXPM.[Ch]
-#AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-#	       test x$lyx_use_xforms_image_loader = xno)
 
 AC_LANG_RESTORE
 LIBS=$save_LIBS])
