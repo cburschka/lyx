@@ -1670,20 +1670,19 @@ bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 }
 
 static void checkLongtableSpecial(LyXTabular::ltType & ltt,
-                                  string const & special,
-                                  int const row, bool const flag)
+                                  string const & special, bool & flag)
 {
 	if (special == "dl_above") {
 		ltt.topDL = flag;
+		flag = true;
 	} else if (special == "dl_below") {
 		ltt.bottomDL = flag;
+		flag = true;
 	} else if (special == "empty") {
 		ltt.empty = flag;
-	} else {
-		if (flag)
-			ltt.row = row;
-		else
-			ltt.row = 0;
+		flag = false;
+	} else if (flag) {
+		ltt.empty = false;
 	}
 }
 
@@ -1994,29 +1993,29 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		flag = false;
 	case LyXTabular::SET_LTFIRSTHEAD:
 		(void)tabular->GetRowOfLTFirstHead(row, ltt);
-		checkLongtableSpecial(ltt, value, row + 1, flag);
-		tabular->SetLTHead(ltt, true);
+		checkLongtableSpecial(ltt, value, flag);
+		tabular->SetLTHead(row, flag, ltt, true);
 		break;
 	case LyXTabular::UNSET_LTHEAD:
 		flag = false;
 	case LyXTabular::SET_LTHEAD:
 		(void)tabular->GetRowOfLTHead(row, ltt);
-		checkLongtableSpecial(ltt, value, row + 1, flag);
-		tabular->SetLTHead(ltt, false);
+		checkLongtableSpecial(ltt, value, flag);
+		tabular->SetLTHead(row, flag, ltt, false);
 		break;
 	case LyXTabular::UNSET_LTFOOT:
 		flag = false;
 	case LyXTabular::SET_LTFOOT:
 		(void)tabular->GetRowOfLTFoot(row, ltt);
-		checkLongtableSpecial(ltt, value, row + 1, flag);
-		tabular->SetLTFoot(ltt, false);
+		checkLongtableSpecial(ltt, value, flag);
+		tabular->SetLTFoot(row, flag, ltt, false);
 		break;
 	case LyXTabular::UNSET_LTLASTFOOT:
 		flag = false;
 	case LyXTabular::SET_LTLASTFOOT:
 		(void)tabular->GetRowOfLTLastFoot(row, ltt);
-		checkLongtableSpecial(ltt, value, row + 1, flag);
-		tabular->SetLTFoot(ltt, true);
+		checkLongtableSpecial(ltt, value, flag);
+		tabular->SetLTFoot(row, flag, ltt, true);
 		break;
 	case LyXTabular::SET_LTNEWPAGE:
 	{

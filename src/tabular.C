@@ -79,6 +79,10 @@ LyXTabular::rowstruct::rowstruct()
 	bottom_line = false;
 	ascent_of_row = 0;
 	descent_of_row = 0;
+	endhead = false;
+	endfirsthead = false;
+	endfoot = false;
+	endlastfoot = false;
 	newpage = false;
 }
 
@@ -95,7 +99,6 @@ LyXTabular::columnstruct::columnstruct()
 
 LyXTabular::lttype::lttype()
 {
-	row = 0;
 	topDL = false;
 	bottomDL = false;
 	empty = false;
@@ -161,14 +164,7 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 	cell_info = lt.cell_info;
 	row_info = lt.row_info;
 	column_info = lt.column_info;
-
-	// long tabular stuff
 	SetLongTabular(lt.is_long_tabular);
-	endhead = lt.endhead;
-	endfoot = lt.endfoot;
-	endfirsthead = lt.endfirsthead;
-	endlastfoot = lt.endlastfoot;
-
 	rotate = lt.rotate;
 
 	Reinit();
@@ -232,10 +228,6 @@ void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
 	set_row_column_number_info();
 	is_long_tabular = false;
 	rotate = false;
-	endhead.row = 0;
-	endfirsthead.row = 0;
-	endfoot.row = 0;
-	endlastfoot.row = 0;
 }
 
 
@@ -1119,7 +1111,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 {
 	// header line
 	os << "<lyxtabular"
-	   << write_attribute("version", 2)
+	   << write_attribute("version", 3)
 	   << write_attribute("rows", rows_)
 	   << write_attribute("columns", columns_)
 	   << ">\n";
@@ -1127,10 +1119,16 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 	os << "<features"
 	   << write_attribute("rotate", tostr(rotate))
 	   << write_attribute("islongtable", tostr(is_long_tabular))
-	   << write_attribute("endhead", endhead.row)
-	   << write_attribute("endfirsthead", endfirsthead.row)
-	   << write_attribute("endfoot", endfoot.row)
-	   << write_attribute("endlastfoot", endlastfoot.row)
+	   << write_attribute("firstHeadTopDL", tostr(endfirsthead.topDL))
+	   << write_attribute("firstHeadBottomDL", tostr(endfirsthead.bottomDL))
+	   << write_attribute("firstHeadEmpty", tostr(endfirsthead.empty))
+	   << write_attribute("headTopDL", tostr(endhead.topDL))
+	   << write_attribute("headBottomDL", tostr(endhead.bottomDL))
+	   << write_attribute("footTopDL", tostr(endfoot.topDL))
+	   << write_attribute("footBottomDL", tostr(endfoot.bottomDL))
+	   << write_attribute("lastFootTopDL", tostr(endlastfoot.topDL))
+	   << write_attribute("lastFootBottomDL", tostr(endlastfoot.bottomDL))
+	   << write_attribute("lastFootEmpty", tostr(endlastfoot.empty))
 	   << ">\n";
 	for (int j = 0; j < columns_; ++j) {
 		os << "<column"
@@ -1146,6 +1144,10 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 		os << "<row"
 		   << write_attribute("topline", tostr(row_info[i].top_line))
 		   << write_attribute("bottomline", tostr(row_info[i].bottom_line))
+		   << write_attribute("endhead", tostr(row_info[i].endhead))
+		   << write_attribute("endfirsthead", tostr(row_info[i].endfirsthead))
+		   << write_attribute("endfoot", tostr(row_info[i].endfoot))
+		   << write_attribute("endlastfoot", tostr(row_info[i].endlastfoot))
 		   << write_attribute("newpage", tostr(row_info[i].newpage))
 		   << ">\n";
 		for (int j = 0; j < columns_; ++j) {
@@ -1349,13 +1351,13 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 		return;
 	if (version == 1)
 		ReadOld(buf, is, lex, line);
-	else if (version == 2)
-		ReadNew(buf, is, lex, line);
+	else if (version >= 2)
+		ReadNew(buf, is, lex, line, version);
 }
 
 
 void LyXTabular::ReadNew(Buffer const * buf, istream & is,
-						 LyXLex & lex, string const & l)
+						 LyXLex & lex, string const & l, int const version)
 {
 	string line(l);
 	int rows_arg;
@@ -1373,14 +1375,37 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	}
 	getTokenValue(line, "rotate", rotate);
 	getTokenValue(line, "islongtable", is_long_tabular);
-	getTokenValue(line, "endhead", endhead.row);
-	getTokenValue(line, "endfirsthead", endfirsthead.row);
-	getTokenValue(line, "endfoot", endfoot.row);
-	getTokenValue(line, "endlastfoot", endlastfoot.row);
-	endhead.row = abs(endhead.row);
-	endfirsthead.row = abs(endfirsthead.row);
-	endfoot.row = abs(endfoot.row);
-	endlastfoot.row = abs(endlastfoot.row);
+	// compatibility read for old longtable options
+	if (version < 3) {
+		int hrow;
+		int fhrow;
+		int frow;
+		int lfrow;
+
+		getTokenValue(line, "endhead", hrow);
+		getTokenValue(line, "endfirsthead", fhrow);
+		getTokenValue(line, "endfoot", frow);
+		getTokenValue(line, "endlastfoot", lfrow);
+		if (abs(hrow) > 0)
+			row_info[abs(hrow)-1].endhead = true;
+		if (abs(fhrow))
+			row_info[abs(fhrow)-1].endfirsthead = true;
+		if (abs(frow))
+			row_info[abs(frow)-1].endfoot = true;
+		if (abs(lfrow))
+			row_info[abs(lfrow)-1].endlastfoot = true;
+	} else {
+	   getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
+	   getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
+	   getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
+	   getTokenValue(line, "headTopDL", endhead.topDL);
+	   getTokenValue(line, "headBottomDL", endhead.bottomDL);
+	   getTokenValue(line, "footTopDL", endfoot.topDL);
+	   getTokenValue(line, "footBottomDL", endfoot.bottomDL);
+	   getTokenValue(line, "lastFootTopDL", endlastfoot.topDL);
+	   getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
+	   getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
+	}
 	for (int j = 0; j < columns_; ++j) {
 		l_getline(is,line);
 		if (!prefixIs(line,"<column")) {
@@ -1511,10 +1536,10 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		cont_row_info = vector<int>(rows_arg);
 		SetLongTabular(is_long_tabular_arg);
 		SetRotateTabular(rotate_arg);
-		endhead.row = a + 1;
-		endfirsthead.row = b + 1;
-		endfoot.row = c + 1;
-		endlastfoot.row = d + 1;
+		row_info[a].endhead = true;
+		row_info[b].endfirsthead = true;
+		row_info[c].endfoot = true;
+		row_info[d].endlastfoot = true;
 		for (i = 0; i < rows_; ++i) {
 			a = b = c = d = e = f = g = 0;
 			is >> a >> b >> c >> d;
@@ -1860,20 +1885,15 @@ LyXTabular::BoxType LyXTabular::GetUsebox(int cell) const
 	return UseParbox(cell);
 }
 
-bool LyXTabular::checkLTType(int row, ltType const & ltt) const
-{
-	if (!ltt.row || (ltt.row > rows_))
-		return false;
-	return (row == (ltt.row - 1));
-}
 
-
-void LyXTabular::SetLTHead(ltType const & hd, bool first)
+void LyXTabular::SetLTHead(int row, bool flag, ltType const & hd, bool first)
 {
 	if (first) {
 		endfirsthead = hd;
+		row_info[row].endfirsthead = flag;
 	} else {
 		endhead = hd;
+		row_info[row].endhead = flag;
 	}
 }
 
@@ -1881,23 +1901,25 @@ void LyXTabular::SetLTHead(ltType const & hd, bool first)
 bool LyXTabular::GetRowOfLTHead(int row, ltType & hd) const
 {
 	hd = endhead;
-	return checkLTType(row, hd);
+	return row_info[row].endhead;
 }
 
 
 bool LyXTabular::GetRowOfLTFirstHead(int row, ltType & hd) const
 {
 	hd = endfirsthead;
-	return checkLTType(row, hd);
+	return row_info[row].endfirsthead;
 }
 
 
-void LyXTabular::SetLTFoot(ltType const & fd, bool last)
+void LyXTabular::SetLTFoot(int row, bool flag, ltType const & fd, bool last)
 {
 	if (last) {
 		endlastfoot = fd;
+		row_info[row].endlastfoot = flag;
 	} else {
 		endfoot = fd;
+		row_info[row].endfoot = flag;
 	}
 }
 
@@ -1905,14 +1927,14 @@ void LyXTabular::SetLTFoot(ltType const & fd, bool last)
 bool LyXTabular::GetRowOfLTFoot(int row, ltType & fd) const
 {
 	fd = endfoot;
-	return checkLTType(row, fd);
+	return row_info[row].endfoot;
 }
 
 
 bool LyXTabular::GetRowOfLTLastFoot(int row, ltType & fd) const
 {
 	fd = endlastfoot;
-	return checkLTType(row, fd);
+	return row_info[row].endlastfoot;
 }
 
 
@@ -2255,25 +2277,25 @@ int LyXTabular::Latex(Buffer const * buf,
 		++ret;
 		ret += TeXBottomHLine(os, i);
 		if (IsLongTabular()) {
-			if (i == (endhead.row - 1)) {
+			if (row_info[i].endhead) {
 				if (endhead.bottomDL)
 					ret += TeXBottomHLine(os, i);
 				os << "\\endhead\n";
 				++ret;
 			}
-			if (i == (endfirsthead.row - 1)) {
+			if (row_info[i].endfirsthead) {
 				if (endfirsthead.bottomDL)
 					ret += TeXBottomHLine(os, i);
 				os << "\\endfirsthead\n";
 				++ret;
 			}
-			if (i == (endfoot.row - 1)) {
+			if (row_info[i].endfoot) {
 				if (endfoot.bottomDL)
 					ret += TeXBottomHLine(os, i);
 				os << "\\endfoot\n";
 				++ret;
 			}
-			if (i == (endlastfoot.row - 1)) {
+			if (row_info[i].endlastfoot) {
 				if (endlastfoot.bottomDL)
 					ret += TeXBottomHLine(os, i);
 				os << "\\endlastfoot\n";
@@ -2386,9 +2408,12 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 	//+                      Long Tabular case                             +
 	//+---------------------------------------------------------------------
 
+#warning Jose please have a look here I changed the longtable header/footer
+#warning ---- options so I had to disable the docbook code (Jug 20011219)
+#if 0
 	if ( IsLongTabular() ) {
 		// Header
-		if( endhead.row || endfirsthead.row ) {
+		if(endhead.row || endfirsthead.row ) {
 			os << "<thead>\n";
 			if( endfirsthead.row ) {
 				docbookRow( buf, os, endfirsthead.row - 1);
@@ -2411,6 +2436,7 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 			os << "</tfoot>\n";
 		}
 	}
+#endif
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
 	//+---------------------------------------------------------------------
@@ -2418,8 +2444,8 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 	os << "<tbody>\n";
 	for (int i = 0; i < rows_; ++i) {
 		if(!IsLongTabular() || (
-		   i != endhead.row - 1 && i != endfirsthead.row - 1 &&
-		   i != endfoot.row - 1 && i != endlastfoot.row - 1)) {
+		   !row_info[i].endhead && !row_info[i].endfirsthead &&
+		   !row_info[i].endfoot && !row_info[i].endlastfoot)) {
 			docbookRow( buf, os, i);
 		}
 	}

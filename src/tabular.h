@@ -161,8 +161,6 @@ public:
 	struct lttype {
 		// constructor
 		lttype();
-		// row of the header/footer type end definition
-		int row;
 		// double borders on top
 		bool topDL;
 		// double borders on bottom
@@ -368,13 +366,13 @@ public:
 	///
 	bool checkLTType(int row, ltType const &) const;
 	///
-	void SetLTHead(ltType const &, bool first);
+	void SetLTHead(int row, bool flag, ltType const &, bool first);
 	///
 	bool GetRowOfLTHead(int row, ltType &) const;
 	///
 	bool GetRowOfLTFirstHead(int row, ltType &) const;
 	///
-	void SetLTFoot(ltType const &, bool last);
+	void SetLTFoot(int row, bool flag, ltType const &, bool last);
 	///
 	bool GetRowOfLTFoot(int row, ltType &) const;
 	///
@@ -446,14 +444,23 @@ private:
 		///
 		rowstruct();
 		///
-		bool top_line;
-		///
-		bool bottom_line;
-		///
 		int ascent_of_row;
 		///
 		int descent_of_row;
+		///
+		bool top_line;
+		///
+		bool bottom_line;
 		/// This are for longtabulars only
+		/// a row of endhead
+		bool endhead;
+		/// a row of endfirsthead
+		bool endfirsthead;
+		/// a row of endfoot
+		bool endfoot;
+		/// row of endlastfoot
+		bool endlastfoot;
+		/// row for a pagebreak
 		bool newpage;
 	};
 	///
@@ -483,7 +490,7 @@ private:
 
 	///
 	void ReadNew(Buffer const * buf, std::istream & is,
-				 LyXLex & lex, string const & l);
+				 LyXLex & lex, string const & l, int const version);
 	///
 	void ReadOld(Buffer const * buf, std::istream & is,
 				 LyXLex & lex, string const & l);
@@ -509,16 +516,17 @@ private:
 	bool rotate;
 	//
 	// for long tabulars
-	///
+	//
 	bool is_long_tabular;
-	/// row of endhead
+	/// endhead data
 	ltType endhead;
-	/// row of endfirsthead
+	/// endfirsthead data
 	ltType endfirsthead;
-	/// row of endfoot
+	/// endfoot data
 	ltType endfoot;
-	/// row of endlastfoot
+	/// endlastfoot data
 	ltType endlastfoot;
+	//
 	///
 	InsetTabular * owner_;
 

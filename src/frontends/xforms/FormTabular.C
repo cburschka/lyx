@@ -370,9 +370,28 @@ void FormTabular::update()
 
 	if (enable) {
 		LyXTabular::ltType ltt;
-		fl_set_button(longtable_options_->radio_lt_firsthead,
-					  tabular->GetRowOfLTFirstHead(row, ltt));
-		if (ltt.row && !ltt.empty) {
+		bool use_empty;
+		bool row_set = tabular->GetRowOfLTHead(row, ltt);
+		fl_set_button(longtable_options_->radio_lt_head, row_set);
+		if (row_set) {
+			fl_set_button(longtable_options_->check_head_2border_above,
+				          ltt.topDL);
+			fl_set_button(longtable_options_->check_head_2border_above,
+			              ltt.topDL);
+			use_empty = true;
+		} else {
+			setEnabled(longtable_options_->check_head_2border_above, 0);
+			setEnabled(longtable_options_->check_head_2border_below, 0);
+			fl_set_button(longtable_options_->check_head_2border_above,0);
+			fl_set_button(longtable_options_->check_head_2border_above,0);
+			fl_set_button(longtable_options_->check_1head_empty,0);
+			setEnabled(longtable_options_->check_1head_empty, 0);
+			use_empty = false;
+		}
+		//
+		row_set = tabular->GetRowOfLTFirstHead(row, ltt);
+		fl_set_button(longtable_options_->radio_lt_firsthead, row_set);
+		if (row_set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_1head_2border_above,
 			              ltt.topDL);
 			fl_set_button(longtable_options_->check_1head_2border_above,
@@ -382,39 +401,34 @@ void FormTabular::update()
 			setEnabled(longtable_options_->check_1head_2border_below, 0);
 			fl_set_button(longtable_options_->check_1head_2border_above,0);
 			fl_set_button(longtable_options_->check_1head_2border_above,0);
-			fl_set_button(longtable_options_->check_1head_empty,ltt.empty);
-			if (ltt.empty)
-				setEnabled(longtable_options_->radio_lt_firsthead, 0);
+			if (use_empty) {
+				fl_set_button(longtable_options_->check_1head_empty,ltt.empty);
+				if (ltt.empty)
+					setEnabled(longtable_options_->radio_lt_firsthead, 0);
+			}
 		}
-		fl_set_button(longtable_options_->radio_lt_head,
-		              tabular->GetRowOfLTHead(row, ltt));
-		if (ltt.row) {
-			fl_set_button(longtable_options_->check_head_2border_above,
-				          ltt.topDL);
-			fl_set_button(longtable_options_->check_head_2border_above,
-			              ltt.topDL);
-		} else {
-			setEnabled(longtable_options_->check_head_2border_above, 0);
-			setEnabled(longtable_options_->check_head_2border_below, 0);
-			fl_set_button(longtable_options_->check_head_2border_above,0);
-			fl_set_button(longtable_options_->check_head_2border_above,0);
-		}
-		fl_set_button(longtable_options_->radio_lt_foot,
-		              tabular->GetRowOfLTFoot(row, ltt));
-		if (ltt.row) {
+		//
+		row_set = tabular->GetRowOfLTFoot(row, ltt);
+		fl_set_button(longtable_options_->radio_lt_foot, row_set);
+		if (row_set) {
 			fl_set_button(longtable_options_->check_foot_2border_above,
 			              ltt.topDL);
 			fl_set_button(longtable_options_->check_foot_2border_above,
 			              ltt.topDL);
+			use_empty = true;
 		} else {
 			setEnabled(longtable_options_->check_foot_2border_above, 0);
 			setEnabled(longtable_options_->check_foot_2border_below, 0);
 			fl_set_button(longtable_options_->check_foot_2border_above,0);
 			fl_set_button(longtable_options_->check_foot_2border_above,0);
+			fl_set_button(longtable_options_->check_lastfoot_empty, 0);
+			setEnabled(longtable_options_->check_lastfoot_empty, 0);
+			use_empty = false;
 		}
-		fl_set_button(longtable_options_->radio_lt_lastfoot,
-		              tabular->GetRowOfLTLastFoot(row, ltt));
-		if (ltt.row && !ltt.empty) {
+		//
+		row_set = tabular->GetRowOfLTLastFoot(row, ltt);
+		fl_set_button(longtable_options_->radio_lt_lastfoot, row_set);
+		if (row_set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_lastfoot_2border_above,
 			              ltt.topDL);
 			fl_set_button(longtable_options_->check_lastfoot_2border_above,
@@ -424,9 +438,12 @@ void FormTabular::update()
 			setEnabled(longtable_options_->check_lastfoot_2border_below,0);
 			fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
 			fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
-			fl_set_button(longtable_options_->check_lastfoot_empty, ltt.empty);
-			if (ltt.empty)
-				setEnabled(longtable_options_->radio_lt_lastfoot, 0);
+			if (use_empty) {
+				fl_set_button(longtable_options_->check_lastfoot_empty,
+				              ltt.empty);
+				if (ltt.empty)
+					setEnabled(longtable_options_->radio_lt_lastfoot, 0);
+			}
 		}
 		fl_set_button(longtable_options_->radio_lt_newpage,
 		              tabular->GetLTNewPage(row));
