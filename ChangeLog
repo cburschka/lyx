@@ -1,5 +1,8 @@
 2000-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyxrc.C (read): make sure the .kmap files exist when a keymap
+	is specified (adapted from a patch from edscott <edscott@imp.mx>).
+
 	* Makefile.am (bindist): new target.
 
 	* INSTALL: add instructions for doing a binary distribution.
