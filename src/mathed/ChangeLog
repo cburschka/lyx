@@ -1,3 +1,8 @@
+2001-09-02  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* math_hash.C (in_word_set): Initialize symbol table even when
+	symbols file was not found.
+
 2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* math_hash.C: added a using std::endl directive.

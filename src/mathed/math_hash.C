@@ -154,16 +154,6 @@ bool initialized = false;
 
 void ReadSymbols(string const & filename)
 {
-	for (latexkeys_a * p = wordlist_array; !string(p->name).empty(); ++p) {
-		latexkeys tmp;
-		tmp.name   = p->name;
-		tmp.token  = p->token;
-		tmp.id     = p->id;
-		tmp.type   = LMB_NONE;
-		tmp.latex_font_id = 0;
-		wordlist.push_back(tmp);
-	}
-
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
 	while (lex.isOK()) {
@@ -209,6 +199,27 @@ void ReadSymbols(string const & filename)
 
 		wordlist.push_back(tmp);
 	}
+}
+
+
+void InitSymbols()
+{
+	for (latexkeys_a * p = wordlist_array; !string(p->name).empty(); ++p) {
+		latexkeys tmp;
+		tmp.name   = p->name;
+		tmp.token  = p->token;
+		tmp.id     = p->id;
+		tmp.type   = LMB_NONE;
+		tmp.latex_font_id = 0;
+		wordlist.push_back(tmp);
+	}
+
+	lyxerr[Debug::MATHED] << "Reading symbols file\n";
+	string const file = LibFileSearch(string(), "symbols");
+	if (file.empty())
+		lyxerr << "Could not find symbols file" << endl;
+	else
+		ReadSymbols(file);
 
 	std::sort(wordlist.begin(), wordlist.end());
 }
@@ -217,12 +228,7 @@ void ReadSymbols(string const & filename)
 latexkeys const * in_word_set(string const & str)
 {
 	if (!initialized) {
-		lyxerr[Debug::MATHED] << "Reading symbols file\n";
-		string const file = LibFileSearch(string(), "symbols");
-		if (file.empty())
-			lyxerr << "Could not find symbols file" << endl;
-		else
-			ReadSymbols(file);
+		InitSymbols();
 		initialized = true;
 	}
 

@@ -33,7 +33,7 @@ LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) $(KBD) \
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
                textclass.lst packages.lst external_templates \
-               encodings languages
+               encodings languages symbols
 
 LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts \
              templates tex ui
