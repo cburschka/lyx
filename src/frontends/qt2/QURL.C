@@ -76,5 +76,5 @@ bool QURL::isValid()
 	string const u(fromqstr(dialog_->urlED->text()));
 	string const n(fromqstr(dialog_->nameED->text()));
 
-	return !u.empty() && !n.empty();
+	return !u.empty() || !n.empty();
 }

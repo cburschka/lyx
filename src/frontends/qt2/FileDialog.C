@@ -20,6 +20,7 @@
 #include "FileDialog_private.h"
 #include "debug.h"
 #include "qt_helpers.h"
+#include "gettext.h"
 
 #include <qapplication.h>
 
@@ -57,7 +58,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 {
 	string filter(mask);
 	if (mask.empty())
-		filter = qt_("All files (*)");
+		filter = _("All files (*)");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
@@ -87,7 +88,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 {
 	string filter(mask);
 	if (mask.empty())
-		filter = qt_("*|All files");
+		filter = _("*|All files");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path

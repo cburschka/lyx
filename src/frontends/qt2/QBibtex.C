@@ -76,7 +76,7 @@ void QBibtex::update_contents()
 	}
 
 	string bibtotoc = "bibtotoc";
-	string bibstyle(toqstr(controller().params().getOptions()));
+	string bibstyle(controller().params().getOptions());
 
 	// bibtotoc exists?
 	if (prefixIs(bibstyle, bibtotoc)) {
