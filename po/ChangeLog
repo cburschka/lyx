@@ -1,3 +1,8 @@
+2003-04-28  Michael Schmitt  <Michael.Schmitt@teststep.org>
+
+	* pocheck.pl: do not output several different messages about bad
+	translation for the same word.
+
 2003-04-09  John Levon  <levon@movementarian.org>
 
 	* Makefile.in.in: translate the toolbar name
