@@ -84,6 +84,13 @@ QPixmap getIconPixmap(int action)
 } // namespace anon
 
  
+class QLComboBox : public QComboBox {
+public:
+	QLComboBox(QWidget * parent) : QComboBox(parent) {}
+	void popup() { QComboBox::popup(); }
+};
+
+ 
 Toolbar::Pimpl::Pimpl(LyXView * o, Dialogs &, int, int)
 	: owner_(static_cast<QtView *>(o)), 
 	combo_(0)
@@ -213,9 +220,7 @@ void Toolbar::Pimpl::clearLayoutList()
 
 void Toolbar::Pimpl::openLayoutList()
 {
-#if 0 // popup() is protected
 	combo_->popup();
-#endif 
 }
 
 
@@ -239,7 +244,7 @@ void Toolbar::Pimpl::add(int action, bool)
 		toolbars_.push_back(new QToolBar(owner_));
 		break;
 	case ToolbarDefaults::LAYOUTS: {
-		combo_ = new QComboBox(toolbars_.back());
+		combo_ = new QLComboBox(toolbars_.back());
 		QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
 		combo_->setSizePolicy(p);
 		combo_->setFocusPolicy(QWidget::TabFocus);

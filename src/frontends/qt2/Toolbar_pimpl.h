@@ -28,7 +28,7 @@
  
 class QtView;
 class QToolBar;
-class QComboBox;
+class QLComboBox;
 class ToolbarProxy;
 
 struct Toolbar::Pimpl {
@@ -77,7 +77,7 @@ private:
 
 	std::vector<QToolBar *> toolbars_;
 
-	QComboBox * combo_;
+	QLComboBox * combo_;
 
 	typedef std::map<QToolButton *, int> ButtonMap;
 
