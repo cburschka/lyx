@@ -20,9 +20,11 @@
 
 #include "LString.h"
 #include <vector>
+#include <boost/shared_ptr.hpp>
 
 class LyXLex;
 class Buffer;
+class Menu;
 
 ///
 class MenuItem {
@@ -72,8 +74,10 @@ public:
 		 int action,
 		 bool optional = false)
 		: kind_(kind), label_(label),
-		  action_(action), submenu_(), optional_(optional) {}
+		  action_(action), submenuname_(), optional_(optional) {}
 
+	/// This one is just to please boost::shared_ptr<>
+	~MenuItem();
 	/// The label of a given menuitem
 	string const label() const;
 	/// The keyboard shortcut (usually underlined in the entry)
@@ -85,10 +89,13 @@ public:
 	/// the action (if relevant)
 	int action() const { return action_; }
 	/// the description of the  submenu (if relevant)
-	string const & submenu() const { return submenu_; }
+	string const & submenuname() const { return submenuname_; }
 	/// returns true if the entry should be ommited when disabled
 	bool optional() const { return optional_; }
+	///
+	Menu & submenu() const { return *submenu_.get(); }
 private:
+	friend class MenuBackend;
 	///
 	Kind kind_;
 	///
@@ -96,9 +103,11 @@ private:
 	///
 	int action_;
 	///
-	string submenu_;
+	string submenuname_;
 	///
 	bool optional_;
+	///
+	boost::shared_ptr<Menu> submenu_;
 };
 
 
@@ -116,12 +125,6 @@ public:
 	Menu & add(MenuItem const &);
 	///
 	Menu & read(LyXLex &);
-	/// Expands some special entries of the menu
-	/** The entries with the following kind are expanded to a
-	    sequence of Command MenuItems: Lastfiles, Documents,
-	    ViewFormats, ExportFormats, UpdateFormats
-	*/
-	void expand(Menu & tomenu, Buffer const *) const;
 	///
 	string const & name() const { return name_; }
 	///
@@ -173,6 +176,13 @@ public:
 	Menu const & getMenubar() const;
 	///
 	bool empty() const { return menulist_.empty(); }
+	/// Expands some special entries of the menu
+	/** The entries with the following kind are expanded to a
+	    sequence of Command MenuItems: Lastfiles, Documents,
+	    ViewFormats, ExportFormats, UpdateFormats
+	*/
+	void expand(Menu const & frommenu, Menu & tomenu,
+		    Buffer const *) const;
 	///
 	const_iterator begin() const {
 		return menulist_.begin();

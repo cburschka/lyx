@@ -153,7 +153,7 @@ void Menubar::Pimpl::openByName(string const & name)
 {
 	for (ButtonList::const_iterator cit = buttonlist_.begin();
 	     cit != buttonlist_.end(); ++cit) {
-		if ((*cit)->item_->submenu() == name) {
+		if ((*cit)->item_->submenuname() == name) {
 			MenuCallback((*cit)->obj_, 1);
 			return;
 		}
@@ -340,29 +340,20 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 
 
 int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
-				   string const & menu_name,
-				   vector<int> & smn)
+				   Menu const & menu, vector<int> & smn)
 {
-	if (!menubackend_->hasMenu(menu_name)) {
-		lyxerr << "ERROR:create_submenu: Unknown menu `"
-		       << menu_name << "'" << endl;
-		return -1;
-	}
-	Menu md;
-	menubackend_->getMenu(menu_name).expand(md, owner_->buffer());
-
-	int const menu = get_new_submenu(smn, win);
-	fl_setpup_softedge(menu, true);
-	fl_setpup_bw(menu, -1);
-	lyxerr[Debug::GUI] << "Adding menu " << menu
+	int const menuid = get_new_submenu(smn, win);
+	fl_setpup_softedge(menuid, true);
+	fl_setpup_bw(menuid, -1);
+	lyxerr[Debug::GUI] << "Adding menu " << menuid
 			   << " in deletion list" << endl;
 
 	// Compute the size of the largest label (because xforms is
 	// not able to support shortcuts correctly...)
 	int max_width = 0;
 	string widest_label;
-	Menu::const_iterator end = md.end();
-	for (Menu::const_iterator i = md.begin(); i != end; ++i) {
+	Menu::const_iterator end = menu.end();
+	for (Menu::const_iterator i = menu.begin(); i != end; ++i) {
 		MenuItem const & item = (*i);
 		if (item.kind() == MenuItem::Command) {
 			string const label = item.label() + '\t';
@@ -378,10 +369,10 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			   << "'" << endl;
 
 	// Compute where to put separators
-	vector<string> extra_labels(md.size());
+	vector<string> extra_labels(menu.size());
 	vector<string>::iterator it = extra_labels.begin();
 	vector<string>::iterator last = it;
-	for (Menu::const_iterator i = md.begin(); i != end; ++i, ++it)
+	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it)
 		if (i->kind() == MenuItem::Separator)
 			*last = "%l";
 		else if (!i->optional() ||
@@ -389,7 +380,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			last = it;
 
 	it = extra_labels.begin();
-	for (Menu::const_iterator i = md.begin(); i != end; ++i, ++it) {
+	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
 		MenuItem const & item = (*i);
 		string & extra_label = *it;
 
@@ -439,10 +430,10 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(menu, label.c_str(),
+				fl_addtopup(menuid, label.c_str(),
 					    shortcut.c_str());
 			} else
-				fl_addtopup(menu, label.c_str());
+				fl_addtopup(menuid, label.c_str());
 
 			lyxerr[Debug::GUI] << "Command: \""
 					   << lyxaction.getActionName(item.action())
@@ -453,9 +444,9 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 		}
 
 		case MenuItem::Submenu: {
-			int submenu = create_submenu(win, view,
+			int submenuid = create_submenu(win, view,
 						     item.submenu(), smn);
-			if (submenu == -1)
+			if (submenuid == -1)
 				return -1;
 			string label = item.label();
 			label += extra_label + "%m";
@@ -463,10 +454,10 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(menu, label.c_str(),
-					    submenu, shortcut.c_str());
+				fl_addtopup(menuid, label.c_str(),
+					    submenuid, shortcut.c_str());
 			} else {
-				fl_addtopup(menu, label.c_str(), submenu);
+				fl_addtopup(menuid, label.c_str(), submenuid);
 			}
 			break;
 		}
@@ -477,7 +468,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			break;
 
 		case MenuItem::Toc:
-			add_toc(menu, extra_label, smn, win);
+			add_toc(menuid, extra_label, smn, win);
 			break;
 
 		case MenuItem::Documents:
@@ -494,7 +485,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 
 		}
 	}
-	return menu;
+	return menuid;
 }
 
 
@@ -521,10 +512,14 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);
+
+	MenuBackend const * menubackend_ = iteminfo->pimpl_->menubackend_;
+	Menu tomenu;
+	Menu const frommenu = menubackend_->getMenu(item->submenuname());
+	menubackend_->expand(frommenu, tomenu, view->buffer());
 	vector<int> submenus;
 	int menu = iteminfo->pimpl_->
-		create_submenu(FL_ObjWin(ob), view,
-			       item->submenu(), submenus);
+		create_submenu(FL_ObjWin(ob), view, tomenu, submenus);
 	if (menu != -1) {
 		// place popup
 		fl_setpup_position(view->getForm()->x + ob->x,

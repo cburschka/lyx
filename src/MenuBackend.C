@@ -74,10 +74,14 @@ MenuItem::MenuItem(Kind kind, string const & label,
 					   << command << endl;
 		break;
 	case Submenu:
-		submenu_ = command;
+		submenuname_ = command;
 		break;
 	}
 }
+
+
+MenuItem::~MenuItem()
+{}
 
 
 string const MenuItem::label() const
@@ -394,10 +398,11 @@ void expandFloatInsert(Menu & tomenu)
 } // namespace anon
 
 
-void Menu::expand(Menu & tomenu, Buffer const * buf) const
+void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
+			 Buffer const * buf) const
 {
-	for (const_iterator cit = begin();
-	     cit != end() ; ++cit) {
+	for (Menu::const_iterator cit = frommenu.begin();
+	     cit != frommenu.end() ; ++cit) {
 		switch (cit->kind()) {
 		case MenuItem::Lastfiles: 
 			expandLastfiles(tomenu);
@@ -422,6 +427,15 @@ void Menu::expand(Menu & tomenu, Buffer const * buf) const
 			expandFloatInsert(tomenu);
 			break;
 
+		case MenuItem::Submenu: {
+			MenuItem item(*cit);
+			item.submenu_.reset(new Menu(cit->submenuname_));
+			expand(getMenu(cit->submenuname_),
+			       *item.submenu_, buf);
+			tomenu.add(item);
+		}
+		break;
+			
 		default:
 			tomenu.add(*cit);
 		}
@@ -429,14 +443,15 @@ void Menu::expand(Menu & tomenu, Buffer const * buf) const
 
 	// Check whether the shortcuts are unique
 	if (lyxerr.debugging(Debug::GUI))
-		checkShortcuts();
+		tomenu.checkShortcuts();
 }
 
 
 bool Menu::hasSubmenu(string const & name) const
 {
 	return find_if(begin(), end(),
-		       lyx::compare_memfun(&MenuItem::submenu, name)) != end();
+		       lyx::compare_memfun(&MenuItem::submenuname,
+					   name)) != end();
 }
 
 
