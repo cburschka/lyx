@@ -1,7 +1,7 @@
 #include <config.h>
 
-#include <errno.h>
-#include <stdlib.h>
+#include <cerrno>
+#include <cstdlib>
 #include <unistd.h>
 #include <sys/wait.h>
 #include "syscontr.h"

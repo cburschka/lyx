@@ -122,5 +122,3 @@ ostream & operator<<(ostream & o, Debug::type t);
 extern DebugStream lyxerr;
 
 #endif
-
-

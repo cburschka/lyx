@@ -228,7 +228,7 @@ void MathMacroArgument::Draw(int x, int baseline)
 	MathParInset::Draw(x, baseline);
     } else {
 	unsigned char s[3];
-	sprintf((char*)s, "#%d", number);
+	sprintf(reinterpret_cast<char*>(s), "#%d", number);
 	drawStr(LM_TC_TEX, size, x, baseline, &s[0], 2);
     }
 }
@@ -240,7 +240,7 @@ void MathMacroArgument::Metrics()
 	MathParInset::Metrics();
     } else {
 	unsigned char s[3];
-	sprintf((char*)s, "#%d", number);
+	sprintf(reinterpret_cast<char*>(s), "#%d", number);
 	width = mathed_string_width(LM_TC_TEX, size, &s[0], 2);
 	mathed_string_height(LM_TC_TEX, size, &s[0], 2, ascent, descent);
     }
@@ -424,7 +424,7 @@ void MathMacroTemplate::GetMacroXY(int i, int & x, int & y) const
 
 MathParInset * MathMacroTemplate::getMacroPar(int i) const
 {
-    return (i >= 0 && i < nargs) ? (MathParInset*)&args[i] : 0;
+    return (i >= 0 && i < nargs) ? static_cast<MathParInset*>(&args[i]) : 0;
 }
 
 

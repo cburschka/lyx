@@ -2048,7 +2048,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_GETTIP:
 	{
 		int qa = lyxaction.LookupFunc(argument.c_str());
-		setMessage(lyxaction.helpText((kb_action)qa));
+		setMessage(lyxaction.helpText(static_cast<kb_action>(qa)));
 	}
 	break;
 

@@ -91,7 +91,7 @@ struct isp_result {
 	isp_result() {
 		flag = ISP_UNKNOWN;
 		count = 0;
-		misses = (char**)0;
+		misses = static_cast<char**>(0);
 	}
 	~isp_result() {
 		if (misses) delete[] misses;
@@ -337,7 +337,7 @@ void create_ispell_pipe(string const & lang)
 
 		argv[argc++] = 0;
 
-		execvp("ispell", (char * const *) argv);
+		execvp("ispell", static_cast<char * const *>(argv));
 
 		// free the memory used by string::copy in the
 		// setup of argv
@@ -412,7 +412,7 @@ isp_result *ispell_check_word(char *word)
   
 	/* I think we have to check if ispell is still alive here because
 	   the signal-handler could have disabled blocking on the fd */
-	if (isp_pid == -1) return (isp_result *) 0;
+	if (isp_pid == -1) return 0;
 
 	result = new isp_result;
   

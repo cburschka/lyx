@@ -1,10 +1,10 @@
 /* This file is part of
  * ====================================================== 
  * 
- *          LyX, The Document Processor
+ *           LyX, The Document Processor
  * 	 
- *          Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
  * ====================================================== */
 
@@ -357,7 +357,7 @@ char kb_sequence::getiso()
 	
 	if(c > 0xff)
 		return '\0';
-	return (char)c;
+	return c;
 }
 
 

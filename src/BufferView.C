@@ -43,24 +43,24 @@
 #include "layout.h"
 
 extern BufferList bufferlist;
-void sigchldhandler(pid_t pid, int *status);
+void sigchldhandler(pid_t pid, int * status);
 
 extern void SetXtermCursor(Window win);
 extern bool input_prohibited;
 extern bool selection_possible;
 extern void BeforeChange();
 extern char ascii_type;
-extern int UnlockInset(UpdatableInset* inset);
+extern int UnlockInset(UpdatableInset * inset);
 extern void ToggleFloat();
 extern void MenuPasteSelection(char at);
-extern InsetUpdateStruct *InsetUpdateList;
+extern InsetUpdateStruct * InsetUpdateList;
 extern void UpdateInsetUpdateList();
 extern void FreeUpdateTimer();
 
 // This is _very_ temporary
 FL_OBJECT * figinset_canvas;
 
-BufferView::BufferView(LyXView *o, int xpos, int ypos,
+BufferView::BufferView(LyXView * o, int xpos, int ypos,
 		       int width, int height)
 	: owner_(o)
 {
@@ -93,7 +93,7 @@ BufferView::~BufferView()
 }
 
 
-void BufferView::buffer(Buffer *b)
+void BufferView::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView" << endl;
 	if (buffer_) {
@@ -470,27 +470,39 @@ void BufferView::gotoError()
 }
 
 
+extern "C" {
 // Just a bunch of C wrappers around static members of BufferView
-extern "C" void C_BufferView_UpCB(FL_OBJECT * ob, long buf) {
-	BufferView::UpCB(ob, buf);
-}
+	void C_BufferView_UpCB(FL_OBJECT * ob, long buf)
+	{
+		BufferView::UpCB(ob, buf);
+	}
 
-extern "C" void C_BufferView_DownCB(FL_OBJECT * ob, long buf) {
-	BufferView::DownCB(ob, buf);
-}
 
-extern "C" void C_BufferView_ScrollCB(FL_OBJECT * ob, long buf) {
-	BufferView::ScrollCB(ob, buf);
-}
+	void C_BufferView_DownCB(FL_OBJECT * ob, long buf)
+	{
+		BufferView::DownCB(ob, buf);
+	}
 
-extern "C" void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf) {
-	BufferView::CursorToggleCB(ob, buf);
-}
 
-extern "C" int C_BufferView_work_area_handler(FL_OBJECT * ob, int event,
-					      FL_Coord, FL_Coord, 
-					      int key, void * xev) {
-	return BufferView::work_area_handler(ob, event, 0, 0, key, xev);
+	void C_BufferView_ScrollCB(FL_OBJECT * ob, long buf)
+	{
+		BufferView::ScrollCB(ob, buf);
+	}
+
+
+	void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf)
+	{
+		BufferView::CursorToggleCB(ob, buf);
+	}
+
+
+	int C_BufferView_work_area_handler(FL_OBJECT * ob, int event,
+					   FL_Coord, FL_Coord, 
+					   int key, void * xev)
+	{
+		return BufferView::work_area_handler(ob, event,
+						     0, 0, key, xev);
+	}
 }
 
 
@@ -576,9 +588,9 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_border_width(-2); // to get visible feedback
 #endif
 	button_down = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
-						      width-15+4*bw,
-						      ypos + height-15,
-						      15, 15, "");
+						width - 15 + 4 * bw,
+						ypos + height - 15,
+						15, 15, "");
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -588,7 +600,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_pixmapbutton_data(obj, const_cast<char**>(down_xpm));
 	fl_set_border_width(-bw);
 
-#if FL_REVISION >85
+#if FL_REVISION > 85
 	// Remove the blue feedback rectangle
 	fl_set_pixmapbutton_focus_outline(obj, 0);
 #endif	
@@ -612,9 +624,8 @@ void BufferView::UpCB(FL_OBJECT * ob, long)
 	
 	if (view->buffer_ == 0) return;
 
-	XEvent const * ev2;
 	static long time = 0;
-	ev2 = fl_last_event();
+	XEvent const * ev2 = fl_last_event();
 	if (ev2->type == ButtonPress || ev2->type == ButtonRelease) 
 		time = 0;
 	int button = fl_get_button_numb(ob);
@@ -1854,7 +1865,7 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 	// these comments posted to lyx@via
 	{
 	int status = 1;
-	int pid = waitpid((pid_t)0, &status, WNOHANG);
+	int pid = waitpid(static_cast<pid_t>(0), &status, WNOHANG);
 	if (pid == -1) // error find out what is wrong
 		; // ignore it for now.
 	else if (pid > 0)

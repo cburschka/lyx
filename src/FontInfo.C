@@ -33,7 +33,7 @@ string FontInfo::getFontname(int size)
 	int closestind = -1;
 	double error = 100000;
 
-	for (int i = 0; i<matches; i++) {
+	for (int i = 0; i < matches; ++i) {
 		if (sizes[i] == 0) {
 			// Scalable font should not be considered close
 		} else if (sizes[i] == size) {
@@ -125,7 +125,7 @@ void FontInfo::query()
 		strings = new string[matches];
 
 		// We have matches. Run them through
-		for(int i = 0; i<matches; i++) {
+		for(int i = 0; i < matches; ++i) {
 			string name(list[i]);
 			sizes[i] = atoi(token(name, '-', 7).c_str());
 			strings[i] = name;

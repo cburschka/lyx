@@ -226,7 +226,6 @@ void LyX::init(int */*argc*/, char **argv)
 		build_lyxdir.clear();
 	}
 
-
         bool FollowLink;
 	do {
 	  // Path of binary/../share/name of binary/
@@ -301,7 +300,7 @@ void LyX::init(int */*argc*/, char **argv)
 	// Determine user lyx-dir
 	//
 	
-	user_lyxdir = AddPath(GetEnvPath("HOME"), string(".") + LYX_NAME);
+	user_lyxdir = AddPath(GetEnvPath("HOME"), string(".") + PACKAGE);
 	lyxerr[Debug::INIT] << "User LyX directory: '" 
 			    <<  user_lyxdir << '\'' << endl;
 
@@ -330,11 +329,11 @@ void LyX::init(int */*argc*/, char **argv)
 	}
 
 	// Calculate screen dpi as average of x-DPI and y-DPI:
-	Screen * scr= (DefaultScreenOfDisplay(fl_get_display()));
+	Screen * scr = DefaultScreenOfDisplay(fl_get_display());
 	lyxrc->dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
 		      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
 	lyxerr[Debug::INFO] << "DPI setting detected to be "
-		       << lyxrc->dpi+0.5 << endl;
+		       << lyxrc->dpi + 0.5 << endl;
 
 	//
 	// Read configuration files

@@ -135,7 +135,7 @@ private:
 inline 
 bool InsetInclude::isVerb() const
 {
-    return (bool)(flag == InsetInclude::VERB || flag == InsetInclude::VERBAST); 
+	return flag == InsetInclude::VERB || flag == InsetInclude::VERBAST; 
 }
 
 

@@ -14,7 +14,11 @@
 
 
 #include <config.h>
-#include <stdio.h>
+#ifdef __GLIBCPP__
+#include <fstream>
+#else
+#include <cstdio>
+#endif
 
 /* Number of bytes to read at once.  */
 #define BUFLEN (1 << 16)
@@ -80,15 +84,39 @@ static unsigned long const crctab[256] =
    Return crc if successful, 0 if an error occurs. */
  
 unsigned long
-lyxsum (char const*file)
+lyxsum (char const * file)
 {
-	unsigned char buf[BUFLEN];
 	unsigned long crc = 0;
 	long length = 0;
 	long bytes_read;
-	register FILE *fp;
+#if __GLIBCPP__
+	char buf[BUFLEN];
+	ifstream ifs(file);
+	if (!ifs) {
+		return 0;
+	}
  
-	fp = fopen (file, "r");
+	while ((bytes_read = ifs.readsome(buf, BUFLEN)) > 0) {
+		unsigned char * cp = reinterpret_cast<unsigned char*>(buf);
+		
+		length += bytes_read;
+		while (bytes_read--)
+			crc = (crc << 8) ^ crctab[((crc >> 24) ^ *(cp++)) & 0xFF];
+	}
+ 
+	if (ifs.fail()) {
+		ifs.close();
+		return 0;
+	}
+
+	ifs.close();
+	if (ifs.fail()) {
+		return 0;
+	}
+#else
+	unsigned char buf[BUFLEN];
+ 
+	register FILE * fp = fopen (file, "r");
 	if (fp == 0) {
 		return 0;
 	}
@@ -109,7 +137,7 @@ lyxsum (char const*file)
 	if (fclose (fp) == EOF)	{
 		return 0;
 	}
- 
+#endif 
 	bytes_read = length;
 	while (bytes_read > 0) {
 		crc = (crc << 8) ^ crctab[((crc >> 24) ^ bytes_read) & 0xFF];

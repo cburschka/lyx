@@ -374,14 +374,14 @@ int fl_get_bmtable(FL_OBJECT *ob)
 /* 
  * You can change the max number of items if you want.
  */
-void fl_set_bmtable_maxitems(FL_OBJECT *ob, int i)
+void fl_set_bmtable_maxitems(FL_OBJECT * ob, int i)
 {
-   if (i>0 && (BMTABLE_SPEC *)ob->spec)
+   if (i > 0 && (BMTABLE_SPEC *)ob->spec)
      ((BMTABLE_SPEC *)ob->spec)->maxi = i;
 }   
 
 
-int fl_get_bmtable_maxitems(FL_OBJECT *ob)
+int fl_get_bmtable_maxitems(FL_OBJECT * ob)
 {
    if ((BMTABLE_SPEC *)ob->spec)
      return  ((BMTABLE_SPEC *)ob->spec)->maxi;
@@ -417,7 +417,7 @@ int fl_get_bmtable_numb(FL_OBJECT *ob)
 }
 
 
-Pixmap fl_get_bmtable_pixmap(FL_OBJECT *ob)
+Pixmap fl_get_bmtable_pixmap(FL_OBJECT * ob)
 {
    if ((BMTABLE_SPEC *)ob->spec)
      return ((BMTABLE_SPEC *)ob->spec)->pix;
@@ -426,11 +426,11 @@ Pixmap fl_get_bmtable_pixmap(FL_OBJECT *ob)
 }
 
 
-void fl_draw_bmtable_item(FL_OBJECT *ob, int i, Drawable d, int xx, int yy)
+void fl_draw_bmtable_item(FL_OBJECT * ob, int i, Drawable d, int xx, int yy)
 {
    int x, y, w, h;
    GC gc = fl_state[fl_get_vclass()].gc[0];
-   BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+   BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
    
    if (sp && sp->pix) {
       x = (i % sp->nx)*sp->dx + FL_abs(ob->bw);

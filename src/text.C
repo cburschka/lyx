@@ -2178,16 +2178,6 @@ void LyXText::RedoParagraph()
  * same Paragraph one to the right and make a rebreak */
 void  LyXText::InsertChar(char c)
 {
-	Row * row;
-	Row * tmprow;
-	long y;
-	bool jumped_over_space;
-	LyXFont realtmpfont;
-	LyXFont rawtmpfont;
-	LyXParagraph::size_type z;
-	LyXParagraph::size_type lastpos;
-	LyXFont rawparfont;
-   
 	SetUndo(Undo::INSERT, 
 		cursor.par->ParFromPos(cursor.pos)->previous, 
 		cursor.par->ParFromPos(cursor.pos)->next);
@@ -2205,7 +2195,8 @@ void  LyXText::InsertChar(char c)
 	/* table stuff -- begin*/
   	if (cursor.par->table) {
 		InsertCharInTable(c);
-		goto out;
+		charInserted();
+		return;
 	}
 	/* table stuff -- end*/
    
@@ -2222,18 +2213,18 @@ void  LyXText::InsertChar(char c)
 #warning There is a bug here! (Asger)
 #endif
 	
-	realtmpfont = real_current_font;
-	rawtmpfont = current_font;  /* store the current font.
+	LyXFont realtmpfont = real_current_font;
+	LyXFont rawtmpfont = current_font;  /* store the current font.
 				     * This is because of the use
 				     * of cursor movements. The moving
 				     * cursor would refresh the 
 				     * current font */
 
 	// Get the font that is used to calculate the baselineskip
-	lastpos = cursor.par->Last();
-	rawparfont = cursor.par->GetFontSettings(lastpos - 1);
+	LyXParagraph::size_type lastpos = cursor.par->Last();
+	LyXFont rawparfont = cursor.par->GetFontSettings(lastpos - 1);
 
-	jumped_over_space = false;
+	bool jumped_over_space = false;
    
 	if (IsLineSeparatorChar(c)) {
 	   
@@ -2266,12 +2257,15 @@ void  LyXText::InsertChar(char c)
 				minibuffer->Set(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
 			else
 				minibuffer->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
-			goto out;
+			charInserted();
+			return;
 		}
 	} else if (IsNewlineChar(c)) {
 		if (cursor.par->FirstPhysicalPar() == cursor.par
-		    && cursor.pos <= BeginningOfMainBody(cursor.par))
-			goto out;
+		    && cursor.pos <= BeginningOfMainBody(cursor.par)) {
+			charInserted();
+			return;
+		}
 		/* no newline at first position 
 		 * of a paragraph or behind labels. 
 		 * TeX does not allow that. */
@@ -2293,8 +2287,8 @@ void  LyXText::InsertChar(char c)
 	   in future */ 
 	/* row = GetRow(cursor.par, cursor.pos, y);*/
 	/* ok, heres a better way: */ 
-	row = cursor.row;
-	y = cursor.y - row->baseline;
+	Row * row = cursor.row;
+	long y = cursor.y - row->baseline;
 	if (c != LyXParagraph::META_INSET)  /* in this case LyXText::InsertInset 
 				   * already insertet the character */
 		cursor.par->InsertChar(cursor.pos, c);
@@ -2302,7 +2296,7 @@ void  LyXText::InsertChar(char c)
 
 	if (!jumped_over_space) {
 		/* refresh the positions */
-		tmprow = row;
+		Row * tmprow = row;
 		while (tmprow->next && tmprow->next->par == row->par) {
 			tmprow = tmprow->next;
 			tmprow->pos++;
@@ -2314,7 +2308,8 @@ void  LyXText::InsertChar(char c)
 	     || cursor.par->IsNewline(cursor.pos)
 	     || cursor.row->fill == -1)
 	    && row->previous && row->previous->par == row->par) {
-		z = NextBreakPoint(row->previous, paperwidth);
+		LyXParagraph::size_type z = NextBreakPoint(row->previous,
+							   paperwidth);
 		if ( z >= row->pos) {
 			row->pos = z + 1;
 			
@@ -2345,7 +2340,8 @@ void  LyXText::InsertChar(char c)
 			    && rawparfont != rawtmpfont)
 				RedoHeightOfParagraph(cursor);
 			
-			goto out;
+			charInserted();
+			return;
 		}
 	}
    
@@ -2407,21 +2403,25 @@ void  LyXText::InsertChar(char c)
 			RedoDrawingOfParagraph(cursor); 
 		}
 	}
-  out:
 
+	charInserted();
+}
+   
+
+void LyXText::charInserted()
+{
 	// Here we could call FinishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it.
-	static unsigned short counter = 0;
+	static unsigned int counter = 0;
 	if (counter < 20) {
 		++counter;
 	} else {
 		FinishUndo();
 		counter = 0;
 	}
-	return;
 }
-   
-   
+
+
 void LyXText::PrepareToPrint(Row * row, float & x, float & fill_separator, 
 			     float & fill_hfill, float & fill_label_hfill)
 {

@@ -105,7 +105,7 @@ void InsetFormulaMacro::Read(LyXLex & lex)
 {
     FILE * file = lex.getFile();
     mathed_parser_file(file, lex.GetLineNo());   
-    mathed_parse(0, 0, (MathParInset **)&tmacro);
+    mathed_parse(0, 0, reinterpret_cast<MathParInset **>(&tmacro));
     
     // Update line number
     lex.setLineNo(mathed_parser_lineno());

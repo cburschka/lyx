@@ -483,7 +483,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case LM_TK_LIMIT:
       {
 	 if (binset) {
-	    binset->SetLimits((bool)(yylval.l->id));
+	    binset->SetLimits(bool(yylval.l->id));
 	    binset = 0;
 	 }
 	 break;
@@ -630,7 +630,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 
     case LM_TK_FONT:
       {
-	 varcode = (MathedTextCodes)yylval.l->id;
+	 varcode = static_cast<MathedTextCodes>(yylval.l->id);
 	  yy_mtextmode = bool(varcode == LM_TC_TEXTRM);
 	 flags |= (FLAG_BRACE|FLAG_BRACE_FONT);
 	break;
@@ -759,7 +759,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	     if (p) {
 		 data.Insert(p, p->getTCode());
 		 p->setArgumentIdx(0);
-		 mathed_parse(FLAG_END, p->GetData(), (MathParInset**)&p);
+		 mathed_parse(FLAG_END, p->GetData(), reinterpret_cast<MathParInset**>(&p));
 //		 for (int i= 0; p->setArgumentIdx(i); i++)
 //		   p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 	     } else 
@@ -777,7 +777,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	      if (accent) {
 		data.Insert(doAccent(p));
 	      } else
-		data.Insert(p, ((MathMacro*)p)->getTCode());
+		data.Insert(p, static_cast<MathMacro*>(p)->getTCode());
 	  }
 	  break;
       }

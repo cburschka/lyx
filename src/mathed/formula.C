@@ -302,7 +302,7 @@ InsetFormula::InsetFormula(bool display)
 InsetFormula::InsetFormula(MathParInset * p)
 {
    par = (p->GetType()>= LM_OT_MPAR) ? 
-         new MathMatrixInset((MathMatrixInset*)p): 
+         new MathMatrixInset(static_cast<MathMatrixInset*>(p)): 
          new MathParInset(p);
 //   mathcursor = 0;
    
@@ -461,7 +461,7 @@ void InsetFormula::Draw(LyXFont f, LyXScreen & scr, int baseline, float & x)
 	   font.drawString(s, pm, baseline, int(x+20));
        } else 
        if (par->GetType() == LM_OT_MPARN) {
-	   MathMatrixInset *mt = (MathMatrixInset*)par;
+	   MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
 	   int y;
 	   MathedRowSt const* crow = mt->getRowSt();
 	   while (crow) {
@@ -1113,9 +1113,11 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	    } else	    
 	    if (!varcode) {		
 		short f = (mathcursor->getLastCode()) ? 
-		          mathcursor->getLastCode():
-		          (MathedTextCodes)mathcursor->GetFCode();
-	       varcode =  MathIsAlphaFont(f) ?  (MathedTextCodes)f:LM_TC_VAR;
+		          mathcursor->getLastCode() :
+		          static_cast<MathedTextCodes>(mathcursor->GetFCode());
+		varcode = MathIsAlphaFont(f) ?
+			static_cast<MathedTextCodes>(f) :
+			LM_TC_VAR;
 	    }
 
 //	     lyxerr << "Varcode << vardoce;
@@ -1161,9 +1163,11 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	   if (c == ' ') {	    
 	       if (!varcode) {	
 		   short f = (mathcursor->getLastCode()) ? 
-		              mathcursor->getLastCode():
-		              (MathedTextCodes)mathcursor->GetFCode();
-		   varcode = MathIsAlphaFont(f) ? (MathedTextCodes)f:LM_TC_VAR;
+		              mathcursor->getLastCode() :
+		              static_cast<MathedTextCodes>(mathcursor->GetFCode());
+		   varcode = MathIsAlphaFont(f) ?
+			   static_cast<MathedTextCodes>(f) :
+			   LM_TC_VAR;
 	       }
 	      if (varcode == LM_TC_TEXTRM) {
 		  mathcursor->Insert(c, LM_TC_TEXTRM);

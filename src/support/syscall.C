@@ -4,10 +4,10 @@
 #pragma implementation
 #endif
 
-#include <errno.h>
+#include <cerrno>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <signal.h>
+#include <csignal>
 #include <cstdlib>
 #include <cstdio>
 #include <unistd.h>
@@ -25,7 +25,7 @@ Systemcalls::Systemcalls(Starttype how, string const & what, Callbackfct cback)
 	start   = how;
 	command = what;
 	cbk     = cback;
-	pid     = (pid_t) 0;
+	pid     = static_cast<pid_t>(0);
 	retval  = 0;
 	startscript();
 }
@@ -183,7 +183,7 @@ int Systemcalls::startscript(Starttype how, string const & what,
 	start   = how;
 	command = what;
 	cbk     = cback;
-	pid     = (pid_t) 0; // yet no child
+	pid     = static_cast<pid_t>(0); // yet no child
 	retval	= 0;
         return startscript();
 }

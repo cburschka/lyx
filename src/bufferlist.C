@@ -162,9 +162,8 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		FileInfo finfo(buf->fileName());
 		if (finfo.exist()) {
 			mode_t fmode = finfo.getMode();
+			struct utimbuf * times = new struct utimbuf;
 
-			struct utimbuf *times = 
-				(struct utimbuf*)new char[sizeof(struct utimbuf)];
 			times->actime = finfo.getAccessTime();
 			times->modtime = finfo.getModificationTime();
 			long blksize = finfo.getBlockSize();

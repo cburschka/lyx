@@ -41,7 +41,7 @@
 LyXAction lyxaction;
 
 void LyXAction::newFunc(kb_action action, string const & name,
-	     string const & helpText, unsigned int attrib)
+			string const & helpText, unsigned int attrib)
 {
 	lyx_func_map[name] = action;
 	func_info tmpinfo;
@@ -52,445 +52,310 @@ void LyXAction::newFunc(kb_action action, string const & name,
 }
 
 
+struct lfun_item {
+	kb_action action;
+	char const * name;
+	char const * helpText;
+	unsigned int attrib;
+};
+
 void LyXAction::init()
 {
+	// This function was changed to use the array below in initalization
+	// instead of calling newFunc numerous times because of compilation
+	// times. Since the array is not static we get back the memory it
+	// occupies after the init is completed. It compiles several
+	//magnitudes faster.
+	
 	static bool init = false;
 	if (init) return;
-	
-	newFunc(LFUN_ACUTE, "accent-acute",
-		"", Noop);
-	newFunc( LFUN_BREVE, "accent-breve",
-		 "", Noop);
-	newFunc( LFUN_CARON,"accent-caron",
-		 "", Noop);
-	newFunc(LFUN_CEDILLA,"accent-cedilla",
-		"", Noop);
-	newFunc(LFUN_CIRCLE,"accent-circle",
-		"", Noop);
-	newFunc(LFUN_CIRCUMFLEX,"accent-circumflex",
-		"", Noop);
-	newFunc(LFUN_DOT,"accent-dot",
-		"", Noop);
-	newFunc(LFUN_GRAVE,"accent-grave",
-		"", Noop);
-	newFunc(LFUN_HUNG_UMLAUT,"accent-hungarian-umlaut",
-		"", Noop);
-	newFunc(LFUN_MACRON,"accent-macron",
-		"", Noop);
-	newFunc(LFUN_OGONEK,"accent-ogonek",
-		"", Noop);
-	newFunc(LFUN_SPECIAL_CARON,"accent-special-caron",
-		"", Noop);
-	newFunc(LFUN_TIE,"accent-tie",
-		"", Noop);
-	newFunc(LFUN_TILDE,"accent-tilde",
-		"", Noop);
-	newFunc(LFUN_UMLAUT,"accent-umlaut",
-		"", Noop);
-	newFunc(LFUN_UNDERBAR,"accent-underbar",
-		"", Noop);
-	newFunc(LFUN_UNDERDOT,"accent-underdot",
-		"", Noop);
-	newFunc(LFUN_VECTOR,"accent-vector",
-		"", Noop);
-	newFunc(LFUN_APPENDIX,"appendix",
-		_("Insert appendix"), Noop);
-	newFunc(LFUN_APROPOS,"apropos",
-		_("Describe command"), NoBuffer|ReadOnly);
-	newFunc(LFUN_LEFTSEL,"backward-select",
-		_("Select previous char"), ReadOnly);
-	newFunc(LFUN_BIBDB_ADD,"bibtex-database-add",
-		"", Noop);
-	newFunc(LFUN_BIBDB_DEL,"bibtex-database-del",
-		"", Noop);
-	newFunc(LFUN_INSERT_BIBTEX,"bibtex-insert",
-		_("Insert bibtex"), Noop);
-	newFunc(LFUN_BIBTEX_STYLE,"bibtex-style",
-		"", Noop);
-	newFunc(LFUN_BREAKLINE,"break-line",
-		"", Noop);
-	newFunc(LFUN_BREAKPARAGRAPH,"break-paragraph",
-		"", Noop);
-	newFunc(LFUN_BREAKPARAGRAPHKEEPLAYOUT,"break-paragraph-keep-layout",
-		"", Noop);
-	newFunc(LFUN_BREAKPARAGRAPH_SKIP,"break-paragraph-skip",
-		"", Noop);
-	newFunc(LFUN_BUILDPROG, "build-program", _("Build program"), Noop);
-	newFunc(LFUN_AUTOSAVE,"buffer-auto-save",
-		_("Autosave"), Noop);
-	newFunc(LFUN_BEGINNINGBUF,"buffer-begin",
-		_("Go to beginning of document"), ReadOnly);
-	newFunc(LFUN_BEGINNINGBUFSEL,"buffer-begin-select",
-		_("Select to beginning of document"), ReadOnly);
-	newFunc(LFUN_CHILDINSERT,"buffer-child-insert",
-		"", Noop);
-	newFunc(LFUN_CHILDOPEN,"buffer-child-open",
-		"", ReadOnly);
-	newFunc(LFUN_RUNCHKTEX,"buffer-chktex",
-		_("Check TeX"), ReadOnly);
-	newFunc(LFUN_CLOSEBUFFER,"buffer-close",
-		_("Close"), ReadOnly);
-	newFunc(LFUN_ENDBUF,"buffer-end",
-		_("Go to end of document"), ReadOnly);
-	newFunc(LFUN_ENDBUFSEL,"buffer-end-select",
-		_("Select to end of document"), ReadOnly);
-	newFunc(LFUN_EXPORT,"buffer-export",
-		_("Export to"), ReadOnly);
-	newFunc(LFUN_FAX,"buffer-fax",
-		_("Fax"), ReadOnly);
-	newFunc(LFUN_INSERTFOOTNOTE, "buffer-float-insert", "", Noop);
-	newFunc(LFUN_IMPORT,"buffer-import",
-		_("Import document"), NoBuffer);
-	newFunc(LFUN_BUFFERBULLETSSELECT, "buffer-itemize-bullets-select",
-		"", Noop);
-	newFunc( LFUN_MENUNEW,"buffer-new",
-		_("New document") , NoBuffer);
-	newFunc(LFUN_MENUNEWTMPLT,"buffer-new-template",
-		_("New document from template"), NoBuffer);
-	newFunc(LFUN_MENUOPEN,"buffer-open",
-		_("Open"), NoBuffer);
-	newFunc(LFUN_PREVBUFFER,"buffer-previous",
-		_("Switch to previous document"), ReadOnly);
-	newFunc(LFUN_MENUPRINT,"buffer-print",
-		_("Print"), ReadOnly);
-	newFunc(LFUN_MENURELOAD,"buffer-reload",
-		_("Revert to saved"), ReadOnly);
-	newFunc(LFUN_READ_ONLY_TOGGLE,"buffer-toggle-read-only",
-		_("Toggle read-only"), ReadOnly);
-	newFunc(LFUN_RUNLATEX,"buffer-typeset",
-		_("Update DVI"), ReadOnly);
-	newFunc(LFUN_RUNDVIPS,"buffer-typeset-ps",
-		 _("Update PostScript"), ReadOnly);
-	newFunc(LFUN_PREVIEW,"buffer-view",
-		_("View DVI") , ReadOnly);
-	newFunc(LFUN_PREVIEWPS,"buffer-view-ps",
-		_("View PostScript") , ReadOnly);
-	newFunc(LFUN_MENUWRITE,"buffer-write",
-		_("Save"), ReadOnly);
-	newFunc(LFUN_MENUWRITEAS,"buffer-write-as",
-		_("Save As"), ReadOnly);
-	newFunc(LFUN_CANCEL,"cancel",
-		_("Cancel"), NoBuffer);
-	newFunc(LFUN_LEFT,"char-backward",
-		_("Go one char back"), ReadOnly);
-	newFunc(LFUN_RIGHT,"char-forward",
-		_("Go one char forward"), ReadOnly);
-	newFunc(LFUN_INSERT_CITATION,"citation-insert",
-		_("Insert citation"), Noop);
-	newFunc(LFUN_EXEC_COMMAND,"command-execute",
-		"", NoBuffer);
-	newFunc(LFUN_PREFIX,"command-prefix",
-		_("Execute command"), NoBuffer);
-	newFunc(LFUN_SEQUENCE, "command-sequence", "", Noop);
-	newFunc(LFUN_COPY,"copy",
-		_("Copy"), ReadOnly);
-	newFunc(LFUN_CUT,"cut",
-		_("Cut"), Noop);
-	newFunc(LFUN_BACKSPACE,"delete-backward",
-		"", Noop);
-	newFunc(LFUN_BACKSPACE_SKIP,"delete-backward-skip",
-		"", Noop);
-	newFunc(LFUN_DELETE,"delete-forward",
-		"", Noop);
-	newFunc(LFUN_DELETE_SKIP,"delete-forward-skip",
-		"", Noop);
-	newFunc(LFUN_DEPTH_MIN,"depth-decrement",
-		_("Decrement environment depth"), Noop);
-	newFunc(LFUN_DEPTH_PLUS,"depth-increment",
-		_("Increment environment depth"), Noop);
-	newFunc(LFUN_DEPTH,"depth-next",
-		_("Change environment depth"), Noop);
-	newFunc(LFUN_LDOTS,"dots-insert",
-		_("Insert ... dots"), Noop);
-	newFunc(LFUN_DOWN,"down",
-		_("Go down"), ReadOnly);
-	newFunc(LFUN_DOWNSEL,"down-select",
-		_("Select next line"), ReadOnly);
-	newFunc(LFUN_DROP_LAYOUTS_CHOICE,"drop-layouts-choice",
-		_("Choose Paragraph Environment"), ReadOnly);
-	newFunc(LFUN_END_OF_SENTENCE,"end-of-sentence-period-insert",
-		_("Insert end of sentence period"), Noop);
-	newFunc(LFUN_GOTOERROR,"error-next",
-		_("Go to next error"), Noop);
-	newFunc(LFUN_REMOVEERRORS,"error-remove-all",
-		_("Remove all error boxes"), ReadOnly);
-	newFunc(LFUN_FIGURE,"figure-insert",
-		_("Insert Figure"), Noop);
-	newFunc(LFUN_FILE_INSERT,"file-insert",
-		"", Noop);
-	newFunc(LFUN_FILE_INSERT_ASCII,"file-insert-ascii",
-		"", Noop);
-	newFunc(LFUN_FILE_NEW,"file-new",
-		"", NoBuffer);
-	newFunc(LFUN_FILE_OPEN,"file-open",
-		"", NoBuffer);
-	newFunc( LFUN_MENUSEARCH,"find-replace",
-		_("Find & Replace") , Noop);
-	newFunc(LFUN_BOLD,"font-bold",
-		_("Toggle bold"), Noop);
-	newFunc(LFUN_CODE,"font-code",
-		_("Toggle code style"), Noop);
-	newFunc(LFUN_DEFAULT,"font-default",
-		_("Default font style"), Noop);
-	newFunc(LFUN_EMPH,"font-emph",
-		_("Toggle emphasize"), Noop);
-	newFunc(LFUN_FREE,"font-free",
-		_("Toggle user defined style"), Noop);
-	newFunc(LFUN_NOUN,"font-noun",
-		_("Toggle noun style"), Noop);
-	newFunc(LFUN_ROMAN,"font-roman",
-		_("Toggle roman font style"), Noop);
-	newFunc(LFUN_SANS,"font-sans",
-		_("Toggle sans font style"), Noop);
-	newFunc(LFUN_FONT_SIZE,"font-size",
-		_("Set font size"), Noop);
-	newFunc(LFUN_FONT_STATE,"font-state",
-		_("Show font state"), ReadOnly);
-	newFunc(LFUN_UNDERLINE,"font-underline",
-		_("Toggle font underline"), Noop);
-	newFunc(LFUN_FOOTMELT,"footnote-insert",
-		_("Insert Footnote"), Noop);
-	newFunc(LFUN_RIGHTSEL,"forward-select",
-		_("Select next char"), ReadOnly);
-	newFunc(LFUN_HFILL,"hfill-insert",
-		_("Insert horizontal fill"), Noop);
-	newFunc(LFUN_HTMLURL,"html-insert",
-		"", Noop);
-	newFunc(LFUN_HYPHENATION,"hyphenation-point-insert",
-		_("Insert hyphenation point"), Noop);
-	newFunc(LFUN_INDEX_INSERT,"index-insert",
-		_("Insert index item"), Noop);
-	newFunc(LFUN_INDEX_INSERT_LAST, "index-insert-last",
-		_("Insert last index item"), Noop);
-	newFunc(LFUN_INDEX_PRINT,"index-print",
-		_("Insert index list"), Noop);
-	newFunc(LFUN_KMAP_OFF,"keymap-off",
-		_("Turn off keymap"), ReadOnly);
-	newFunc(LFUN_KMAP_PRIM,"keymap-primary",
-		_("Use primary keymap"), ReadOnly);
-	newFunc(LFUN_KMAP_SEC,"keymap-secondary",
-		_("Use secondary keymap"), ReadOnly);
-	newFunc(LFUN_KMAP_TOGGLE,"keymap-toggle",
-		_("Toggle keymap"), ReadOnly);
-	newFunc(LFUN_INSERT_LABEL,"label-insert",
-		_("Insert Label"), Noop);
-	newFunc(LFUN_LATEX_LOG,"latex-view-log",
-		_("View LaTeX log"), ReadOnly);
-	newFunc(LFUN_LAYOUT,"layout",
-		"", Noop);
-	newFunc(LFUN_LAYOUT_CHARACTER,"layout-character",
-		"", Noop);
-	newFunc(LFUN_LAYOUT_COPY,"layout-copy",
-		_("Copy paragraph environment type"), Noop);
-	newFunc(LFUN_LAYOUT_DOCUMENT,"layout-document",
-		"", ReadOnly);
-	newFunc(LFUN_LAYOUTNO,"layout-number",
-		"", Noop); // internal only
-	newFunc(LFUN_LAYOUT_PARAGRAPH,"layout-paragraph",
-		"", ReadOnly);
-	newFunc(LFUN_LAYOUT_PAPER, "layout-paper", "", ReadOnly);
-	newFunc(LFUN_LAYOUT_PASTE,"layout-paste",
-		_("Paste paragraph environment type"), Noop);
-	newFunc(LFUN_LAYOUT_PREAMBLE,"layout-preamble",
-		"", ReadOnly);
-	newFunc(LFUN_LAYOUT_QUOTES, "layout-quotes", "", ReadOnly);
-	newFunc(LFUN_LAYOUT_SAVE_DEFAULT, "layout-save-default",
-		"", ReadOnly);
-	newFunc(LFUN_LAYOUT_TABLE,"layout-table",
-		"", Noop);
-	newFunc(LFUN_HOME,"line-begin",
-		_("Go to beginning of line"), ReadOnly);
-	newFunc(LFUN_HOMESEL,"line-begin-select",
-		_("Select to beginning of line"), ReadOnly);
-	newFunc(LFUN_DELETE_LINE_FORWARD,"line-delete-forward",
-		"", Noop);
-	newFunc(LFUN_END,"line-end",
-		_("Go to end of line"), ReadOnly);
-	newFunc(LFUN_ENDSEL,"line-end-select",
-		_("Select to end of line"), ReadOnly);
-	newFunc(LFUN_LOA_INSERT,"loa-insert",
-		_("Insert list of algorithms"), Noop);
-	newFunc(LFUN_LOF_INSERT,"lof-insert",
-		_("Insert list of figures"), Noop);
-	newFunc(LFUN_LOT_INSERT,"lot-insert",
-		_("Insert list of tables"), Noop);
-	newFunc(LFUN_QUIT,"lyx-quit",
-		_("Exit"), NoBuffer);
-	newFunc(LFUN_MARGINMELT,"marginpar-insert",
-		_("Insert Margin note"), Noop);
-	newFunc(LFUN_MARK_OFF,"mark-off",
-		"", ReadOnly);
-	newFunc(LFUN_MARK_ON,"mark-on",
-		"", ReadOnly);
-	newFunc(LFUN_SETMARK,"mark-toggle",
-		"", ReadOnly);
-	newFunc(LFUN_MATH_DELIM,"math-delim",
-		"", Noop);
-	newFunc(LFUN_MATH_DISPLAY,"math-display",
-		"", Noop);
-	newFunc(LFUN_GREEK,"math-greek",
-		_("Math Greek"), Noop);
-	newFunc(LFUN_GREEK_TOGGLE,"math-greek-toggle",
-		"", Noop);
-	newFunc(LFUN_INSERT_MATH,"math-insert",
-		_("Insert math symbol"), Noop);
-	newFunc(LFUN_MATH_LIMITS,"math-limits",
-		"", Noop);
-	newFunc(LFUN_MATH_MACRO,"math-macro",
-		"", Noop);
-	newFunc(LFUN_MATH_MACROARG,"math-macro-arg",
-		"", Noop);
-	newFunc(LFUN_INSERT_MATRIX,"math-matrix",
-		"", Noop);
-	newFunc(LFUN_MATH_MODE,"math-mode",
-		_("Math mode"), Noop);
-	newFunc(LFUN_MATH_NONUMBER,"math-nonumber",
-		"", Noop);
-	newFunc(LFUN_MATH_NUMBER,"math-number",
-		"", Noop);
-	newFunc(LFUN_MATH_SIZE,"math-size",
-		"", Noop);
-	newFunc(LFUN_MELT,"melt",
-		_("Melt"), Noop);
-	newFunc(LFUN_MENU_OPEN_BY_NAME,"menu-open",
-		"", NoBuffer);
-	newFunc(LFUN_MENU_SEPARATOR, "menu-separator-insert", "", Noop);
-	newFunc(LFUN_META_FAKE,"meta-prefix",
-		"", NoBuffer);
-	newFunc(LFUN_INSERT_NOTE,"note-insert",
-		"", Noop);
-	newFunc(LFUN_GOTONOTE,"note-next",
-		"", ReadOnly);
-	newFunc(LFUN_OPENSTUFF,"open-stuff",
-		"", ReadOnly);
-	newFunc(LFUN_DOWN_PARAGRAPH,"paragraph-down",
-		_("Go one paragraph down"), ReadOnly);
-	newFunc(LFUN_DOWN_PARAGRAPHSEL,"paragraph-down-select",
-		_("Select next paragraph"), ReadOnly);
-	newFunc(LFUN_UP_PARAGRAPH,"paragraph-up",
-		_("Go one paragraph up"), ReadOnly);
-	newFunc(LFUN_UP_PARAGRAPHSEL,"paragraph-up-select",
-		 _("Select previous paragraph"), ReadOnly);
-	newFunc(LFUN_PARENTINSERT,"parent-insert",
-		"", Noop);
-	newFunc(LFUN_PASTE,"paste",
-		_("Paste") , Noop);
-	newFunc(LFUN_SAVEPREFERENCES, "preferences-save",
-		"Save Preferences", NoBuffer);
-	newFunc(LFUN_PASTESELECTION,"primary-selection-paste",
-		"", Noop);
-	newFunc(LFUN_PROTECTEDSPACE,"protected-space-insert",
-		_("Insert protected space"), Noop);
-	newFunc(LFUN_QUOTE,"quote-insert",
-		_("Insert quote"), Noop);
-	newFunc(LFUN_RECONFIGURE,"reconfigure",
-		_("Reconfigure"), NoBuffer);
-	newFunc(LFUN_REDO,"redo",
-		_("Redo"), Noop);
-	newFunc(LFUN_REFBACK,"reference-back",
-		"", ReadOnly);
-	newFunc(LFUN_REFGOTO,"reference-goto",
-		"", ReadOnly);
-	newFunc(LFUN_INSERT_REF,"reference-insert",
-		_("Insert cross reference"), Noop);
-	newFunc(LFUN_REFTOGGLE,"reference-toggle",
-		"", Noop);
-	newFunc(LFUN_NEXT,"screen-down",
-		"", ReadOnly);
-	newFunc(LFUN_NEXTSEL,"screen-down-select",
-		"", ReadOnly);
-	newFunc(LFUN_CENTER,"screen-recenter",
-		"", ReadOnly);
-	newFunc(LFUN_PRIOR,"screen-up",
-		"", ReadOnly);
-	newFunc(LFUN_PRIORSEL,"screen-up-select",
-		"", ReadOnly);
-	newFunc(LFUN_SELFINSERT,"self-insert",
-		"", Noop);
-	newFunc(LFUN_CHARATCURSOR,"server-char-after",
-		"", ReadOnly);
-	newFunc(LFUN_GETFONT,"server-get-font",
-		"", ReadOnly);
-	newFunc(LFUN_GETLATEX,"server-get-latex",
-		"", ReadOnly);
-	newFunc(LFUN_GETLAYOUT,"server-get-layout",
-		"", ReadOnly);
-	newFunc(LFUN_GETNAME,"server-get-name",
-		"", ReadOnly);
-	newFunc(LFUN_GETTIP,"server-get-tip",
-		"", ReadOnly);
-	newFunc(LFUN_GETXY,"server-get-xy",
-		"", ReadOnly);
-	newFunc(LFUN_GOTOFILEROW, "server-goto-file-row", "", Noop);
-	newFunc(LFUN_NOTIFY,"server-notify",
-		"", ReadOnly);
-	newFunc(LFUN_SETXY,"server-set-xy",
-		"", ReadOnly);
-	newFunc(LFUN_SPELLCHECK,"spellchecker",
-		"", Noop);
-	newFunc(LFUN_INSERT_MATH,"symbol-insert",
-		"", Noop);
-	newFunc(LFUN_TAB,"tab-forward",
-		"", Noop);
-	newFunc(LFUN_TABINSERT,"tab-insert",
-		"", Noop);
-	newFunc(LFUN_TABLE,"table-insert",
-		_("Insert Table"), Noop);
-	newFunc(LFUN_TEX,"tex-mode",
-		_("Toggle TeX style"), Noop);
-	newFunc(LFUN_TOC_INSERT,"toc-insert",
-		_("Insert table of contents"), Noop);
-	newFunc(LFUN_TOCVIEW,"toc-view",
-		_("View table of contents"), ReadOnly);
-	newFunc(LFUN_TOGGLECURSORFOLLOW,"toggle-cursor-follows-scrollbar",
-		_("Toggle cursor does/doesn't follow the scrollbar"),
-		ReadOnly);
-	newFunc(LFUN_ADD_TO_TOOLBAR,"toolbar-add-to",
-		"", NoBuffer);
-	newFunc(LFUN_PUSH_TOOLBAR,"toolbar-push",
-		"", NoBuffer);
-	newFunc(LFUN_UNDO,"undo",
-		_("Undo"), Noop);
-	newFunc(LFUN_UP,"up",
-		"", ReadOnly);
-	newFunc(LFUN_UPSEL,"up-select",
-		"", ReadOnly);
-	newFunc(LFUN_URL,"url-insert",
-		"", Noop);
-	newFunc(LFUN_VC_CHECKIN,"vc-check-in",
-		"", ReadOnly);
-	newFunc(LFUN_VC_CHECKOUT,"vc-check-out",
-		"", ReadOnly);
-	newFunc(LFUN_VC_HISTORY,"vc-history",
-		"", ReadOnly);
-	newFunc(LFUN_VC_REGISTER,"vc-register",
-		_("Register document under version control"), ReadOnly);
-	newFunc(LFUN_VC_REVERT,"vc-revert",
-		"", ReadOnly);
-	newFunc(LFUN_VC_UNDO,"vc-undo-last",
-		"", ReadOnly);
-	newFunc(LFUN_WORDLEFT,"word-backward",
-		"", ReadOnly);
-	newFunc(LFUN_WORDLEFTSEL,"word-backward-select",
-		"", ReadOnly);
-	newFunc(LFUN_CAPITALIZE_WORD,"word-capitalize",
-		"", Noop);
-	newFunc(LFUN_DELETE_WORD_BACKWARD,"word-delete-backward",
-		"", Noop);
-	newFunc(LFUN_DELETE_WORD_FORWARD,"word-delete-forward",
-		"", Noop);
-	newFunc(LFUN_WORDFINDBACKWARD,"word-find-backward",
-		"", ReadOnly);
-	newFunc(LFUN_WORDFINDFORWARD,"word-find-forward",
-		"", ReadOnly);
-	newFunc(LFUN_WORDRIGHT,"word-forward",
-		"", ReadOnly);
-	newFunc(LFUN_WORDRIGHTSEL,"word-forward-select",
-		"", ReadOnly);
-	newFunc(LFUN_LOWCASE_WORD,"word-lowcase",
-		"", Noop);
-	newFunc(LFUN_UPCASE_WORD,"word-upcase",
-		"", Noop);
+
+	lfun_item items[] = {
+	{ LFUN_ACUTE, "accent-acute", "", Noop },
+	{ LFUN_BREVE, "accent-breve", "", Noop },
+	{ LFUN_CARON, "accent-caron", "", Noop },
+	{ LFUN_CEDILLA, "accent-cedilla", "", Noop },
+	{ LFUN_CIRCLE, "accent-circle", "", Noop },
+	{ LFUN_CIRCUMFLEX, "accent-circumflex", "", Noop },
+	{ LFUN_DOT, "accent-dot", "", Noop },
+	{ LFUN_GRAVE, "accent-grave", "", Noop },
+	{ LFUN_HUNG_UMLAUT, "accent-hungarian-umlaut", "", Noop },
+	{ LFUN_MACRON, "accent-macron", "", Noop },
+	{ LFUN_OGONEK, "accent-ogonek", "", Noop },
+	{ LFUN_SPECIAL_CARON, "accent-special-caron", "", Noop },
+	{ LFUN_TIE, "accent-tie", "", Noop },
+	{ LFUN_TILDE, "accent-tilde", "", Noop },
+	{ LFUN_UMLAUT, "accent-umlaut", "", Noop },
+	{ LFUN_UNDERBAR, "accent-underbar", "", Noop },
+	{ LFUN_UNDERDOT, "accent-underdot", "", Noop },
+	{ LFUN_VECTOR, "accent-vector", "", Noop },
+	{ LFUN_APPENDIX, "appendix", N_("Insert appendix"), Noop },
+	{ LFUN_APROPOS, "apropos", N_("Describe command"), NoBuffer|ReadOnly },
+	{ LFUN_LEFTSEL, "backward-select",
+	  N_("Select previous char"), ReadOnly },
+	{ LFUN_BIBDB_ADD, "bibtex-database-add", "", Noop },
+	{ LFUN_BIBDB_DEL, "bibtex-database-del", "", Noop },
+	{ LFUN_INSERT_BIBTEX, "bibtex-insert", N_("Insert bibtex"), Noop },
+	{ LFUN_BIBTEX_STYLE, "bibtex-style", "", Noop },
+	{ LFUN_BREAKLINE, "break-line", "", Noop },
+	{ LFUN_BREAKPARAGRAPH, "break-paragraph", "", Noop },
+	{ LFUN_BREAKPARAGRAPHKEEPLAYOUT, "break-paragraph-keep-layout",
+	  "", Noop },
+	{ LFUN_BREAKPARAGRAPH_SKIP, "break-paragraph-skip", "", Noop },
+	{ LFUN_BUILDPROG, "build-program", _("Build program"), Noop },
+	{ LFUN_AUTOSAVE, "buffer-auto-save", N_("Autosave"), Noop },
+	{ LFUN_BEGINNINGBUF, "buffer-begin",
+	  N_("Go to beginning of document"), ReadOnly },
+	{ LFUN_BEGINNINGBUFSEL, "buffer-begin-select",
+	  N_("Select to beginning of document"), ReadOnly },
+	{ LFUN_CHILDINSERT, "buffer-child-insert", "", Noop },
+	{ LFUN_CHILDOPEN, "buffer-child-open", "", ReadOnly },
+	{ LFUN_RUNCHKTEX, "buffer-chktex", N_("Check TeX"), ReadOnly },
+	{ LFUN_CLOSEBUFFER, "buffer-close", N_("Close"), ReadOnly },
+	{ LFUN_ENDBUF, "buffer-end",
+	  N_("Go to end of document"), ReadOnly },
+	{ LFUN_ENDBUFSEL, "buffer-end-select",
+	  N_("Select to end of document"), ReadOnly },
+	{ LFUN_EXPORT, "buffer-export", N_("Export to"), ReadOnly },
+	{ LFUN_FAX, "buffer-fax", N_("Fax"), ReadOnly },
+	{ LFUN_INSERTFOOTNOTE, "buffer-float-insert", "", Noop },
+	{ LFUN_IMPORT, "buffer-import",
+	  N_("Import document"), NoBuffer },
+	{ LFUN_BUFFERBULLETSSELECT, "buffer-itemize-bullets-select",
+	  "", Noop },
+	{ LFUN_MENUNEW, "buffer-new", N_("New document") , NoBuffer },
+	{ LFUN_MENUNEWTMPLT,"buffer-new-template",
+	  N_("New document from template"), NoBuffer },
+	{ LFUN_MENUOPEN, "buffer-open", N_("Open"), NoBuffer },
+	{ LFUN_PREVBUFFER, "buffer-previous",
+	  N_("Switch to previous document"), ReadOnly },
+	{ LFUN_MENUPRINT, "buffer-print", N_("Print"), ReadOnly },
+	{ LFUN_MENURELOAD, "buffer-reload",
+	  N_("Revert to saved"), ReadOnly },
+	{ LFUN_READ_ONLY_TOGGLE, "buffer-toggle-read-only",
+	  N_("Toggle read-only"), ReadOnly },
+	{ LFUN_RUNLATEX, "buffer-typeset", N_("Update DVI"), ReadOnly },
+	{ LFUN_RUNDVIPS, "buffer-typeset-ps",
+	  N_("Update PostScript"), ReadOnly },
+	{ LFUN_PREVIEW, "buffer-view", N_("View DVI") , ReadOnly },
+	{ LFUN_PREVIEWPS, "buffer-view-ps",
+	  N_("View PostScript") , ReadOnly },
+	{ LFUN_MENUWRITE, "buffer-write", N_("Save"), ReadOnly },
+	{ LFUN_MENUWRITEAS, "buffer-write-as", N_("Save As"), ReadOnly },
+	{ LFUN_CANCEL, "cancel", N_("Cancel"), NoBuffer },
+	{ LFUN_LEFT, "char-backward", N_("Go one char back"), ReadOnly },
+	{ LFUN_RIGHT, "char-forward", N_("Go one char forward"), ReadOnly },
+	{ LFUN_INSERT_CITATION, "citation-insert",
+	  N_("Insert citation"), Noop },
+	{ LFUN_EXEC_COMMAND, "command-execute", "", NoBuffer },
+	{ LFUN_PREFIX, "command-prefix",
+	  N_("Execute command"), NoBuffer },
+	{ LFUN_SEQUENCE, "command-sequence", "", Noop },
+	{ LFUN_COPY, "copy", N_("Copy"), ReadOnly },
+	{ LFUN_CUT, "cut", N_("Cut"), Noop },
+	{ LFUN_BACKSPACE, "delete-backward", "", Noop },
+	{ LFUN_BACKSPACE_SKIP, "delete-backward-skip", "", Noop },
+	{ LFUN_DELETE, "delete-forward", "", Noop },
+	{ LFUN_DELETE_SKIP, "delete-forward-skip", "", Noop },
+	{ LFUN_DEPTH_MIN, "depth-decrement",
+		N_("Decrement environment depth"), Noop },
+	{ LFUN_DEPTH_PLUS, "depth-increment",
+		N_("Increment environment depth"), Noop },
+	{ LFUN_DEPTH, "depth-next", 
+		N_("Change environment depth"), Noop },
+	{ LFUN_LDOTS, "dots-insert", N_("Insert ... dots"), Noop },
+	{ LFUN_DOWN, "down", N_("Go down"), ReadOnly },
+	{ LFUN_DOWNSEL, "down-select",
+		N_("Select next line"), ReadOnly },
+	{ LFUN_DROP_LAYOUTS_CHOICE, "drop-layouts-choice",
+		N_("Choose Paragraph Environment"), ReadOnly },
+	{ LFUN_END_OF_SENTENCE, "end-of-sentence-period-insert",
+		N_("Insert end of sentence period"), Noop },
+	{ LFUN_GOTOERROR, "error-next", N_("Go to next error"), Noop },
+	{ LFUN_REMOVEERRORS, "error-remove-all",
+		N_("Remove all error boxes"), ReadOnly },
+	{ LFUN_FIGURE, "figure-insert", N_("Insert Figure"), Noop },
+	{ LFUN_FILE_INSERT, "file-insert", "", Noop },
+	{ LFUN_FILE_INSERT_ASCII, "file-insert-ascii", "", Noop },
+	{ LFUN_FILE_NEW, "file-new", "", NoBuffer },
+	{ LFUN_FILE_OPEN, "file-open", "", NoBuffer },
+	{ LFUN_MENUSEARCH, "find-replace", N_("Find & Replace") , Noop },
+	{ LFUN_BOLD, "font-bold", N_("Toggle bold"), Noop },
+	{ LFUN_CODE, "font-code", N_("Toggle code style"), Noop },
+	{ LFUN_DEFAULT, "font-default", N_("Default font style"), Noop },
+	{ LFUN_EMPH, "font-emph", N_("Toggle emphasize"), Noop },
+	{ LFUN_FREE, "font-free", N_("Toggle user defined style"), Noop },
+	{ LFUN_NOUN, "font-noun", N_("Toggle noun style"), Noop },
+	{ LFUN_ROMAN, "font-roman", N_("Toggle roman font style"), Noop },
+	{ LFUN_SANS, "font-sans", N_("Toggle sans font style"), Noop },
+	{ LFUN_FONT_SIZE, "font-size", N_("Set font size"), Noop },
+	{ LFUN_FONT_STATE, "font-state", N_("Show font state"), ReadOnly },
+	{ LFUN_UNDERLINE, "font-underline",
+	  N_("Toggle font underline"), Noop },
+	{ LFUN_FOOTMELT, "footnote-insert", N_("Insert Footnote"), Noop },
+	{ LFUN_RIGHTSEL, "forward-select", N_("Select next char"), ReadOnly },
+	{ LFUN_HFILL, "hfill-insert",
+	  N_("Insert horizontal fill"), Noop },
+	{ LFUN_HTMLURL, "html-insert", "", Noop },
+	{ LFUN_HYPHENATION, "hyphenation-point-insert",
+	  N_("Insert hyphenation point"), Noop },
+	{ LFUN_INDEX_INSERT, "index-insert",
+	  N_("Insert index item"), Noop },
+	{ LFUN_INDEX_INSERT_LAST, "index-insert-last",
+	  N_("Insert last index item"), Noop },
+	{ LFUN_INDEX_PRINT, "index-print", N_("Insert index list"), Noop },
+	{ LFUN_KMAP_OFF, "keymap-off", N_("Turn off keymap"), ReadOnly },
+	{ LFUN_KMAP_PRIM, "keymap-primary",
+	  N_("Use primary keymap"), ReadOnly },
+	{ LFUN_KMAP_SEC, "keymap-secondary",
+	  N_("Use secondary keymap"), ReadOnly },
+	{ LFUN_KMAP_TOGGLE, "keymap-toggle", N_("Toggle keymap"), ReadOnly },
+	{ LFUN_INSERT_LABEL, "label-insert", N_("Insert Label"), Noop },
+	{ LFUN_LATEX_LOG, "latex-view-log", N_("View LaTeX log"), ReadOnly },
+	{ LFUN_LAYOUT, "layout", "", Noop },
+	{ LFUN_LAYOUT_CHARACTER, "layout-character", "", Noop },
+	{ LFUN_LAYOUT_COPY, "layout-copy",
+	  N_("Copy paragraph environment type"), Noop },
+	{ LFUN_LAYOUT_DOCUMENT, "layout-document", "", ReadOnly },
+	{ LFUN_LAYOUTNO, "layout-number", "", Noop }, // internal only
+	{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", "", ReadOnly },
+	{ LFUN_LAYOUT_PAPER, "layout-paper", "", ReadOnly },
+	{ LFUN_LAYOUT_PASTE, "layout-paste",
+	  N_("Paste paragraph environment type"), Noop },
+	{ LFUN_LAYOUT_PREAMBLE, "layout-preamble", "", ReadOnly },
+	{ LFUN_LAYOUT_QUOTES, "layout-quotes", "", ReadOnly },
+	{ LFUN_LAYOUT_SAVE_DEFAULT, "layout-save-default", "", ReadOnly },
+	{ LFUN_LAYOUT_TABLE, "layout-table", "", Noop },
+	{ LFUN_HOME, "line-begin",
+	  N_("Go to beginning of line"), ReadOnly },
+	{ LFUN_HOMESEL, "line-begin-select",
+	  N_("Select to beginning of line"), ReadOnly },
+	{ LFUN_DELETE_LINE_FORWARD, "line-delete-forward", "", Noop },
+	{ LFUN_END, "line-end", N_("Go to end of line"), ReadOnly },
+	{ LFUN_ENDSEL, "line-end-select",
+	  N_("Select to end of line"), ReadOnly },
+	{ LFUN_LOA_INSERT, "loa-insert",
+	  N_("Insert list of algorithms"), Noop },
+	{ LFUN_LOF_INSERT, "lof-insert",
+	  N_("Insert list of figures"), Noop },
+	{ LFUN_LOT_INSERT, "lot-insert",
+	  N_("Insert list of tables"), Noop },
+	{ LFUN_QUIT, "lyx-quit", N_("Exit"), NoBuffer },
+	{ LFUN_MARGINMELT, "marginpar-insert",
+	  N_("Insert Margin note"), Noop },
+	{ LFUN_MARK_OFF, "mark-off", "", ReadOnly },
+	{ LFUN_MARK_ON, "mark-on", "", ReadOnly },
+	{ LFUN_SETMARK, "mark-toggle", "", ReadOnly },
+	{ LFUN_MATH_DELIM, "math-delim", "", Noop },
+	{ LFUN_MATH_DISPLAY, "math-display", "", Noop },
+	{ LFUN_GREEK, "math-greek", N_("Math Greek"), Noop },
+	{ LFUN_GREEK_TOGGLE, "math-greek-toggle", "", Noop },
+	{ LFUN_INSERT_MATH, "math-insert",
+	  N_("Insert math symbol"), Noop },
+	{ LFUN_MATH_LIMITS, "math-limits", "", Noop },
+	{ LFUN_MATH_MACRO, "math-macro", "", Noop },
+	{ LFUN_MATH_MACROARG, "math-macro-arg", "", Noop },
+	{ LFUN_INSERT_MATRIX, "math-matrix", "", Noop },
+	{ LFUN_MATH_MODE, "math-mode", N_("Math mode"), Noop },
+	{ LFUN_MATH_NONUMBER, "math-nonumber", "", Noop },
+	{ LFUN_MATH_NUMBER, "math-number", "", Noop },
+	{ LFUN_MATH_SIZE, "math-size", "", Noop },
+	{ LFUN_MELT, "melt", N_("Melt"), Noop },
+	{ LFUN_MENU_OPEN_BY_NAME, "menu-open", "", NoBuffer },
+	{ LFUN_MENU_SEPARATOR, "menu-separator-insert", "", Noop },
+	{ LFUN_META_FAKE, "meta-prefix", "", NoBuffer },
+	{ LFUN_INSERT_NOTE, "note-insert", "", Noop },
+	{ LFUN_GOTONOTE, "note-next", "", ReadOnly },
+	{ LFUN_OPENSTUFF, "open-stuff", "", ReadOnly },
+	{ LFUN_DOWN_PARAGRAPH, "paragraph-down",
+	  N_("Go one paragraph down"), ReadOnly },
+	{ LFUN_DOWN_PARAGRAPHSEL, "paragraph-down-select",
+	  N_("Select next paragraph"), ReadOnly },
+	{ LFUN_UP_PARAGRAPH, "paragraph-up",
+	  N_("Go one paragraph up"), ReadOnly },
+	{ LFUN_UP_PARAGRAPHSEL, "paragraph-up-select",
+	  N_("Select previous paragraph"), ReadOnly },
+	{ LFUN_PARENTINSERT, "parent-insert", "", Noop },
+	{ LFUN_PASTE, "paste", N_("Paste") , Noop },
+	{ LFUN_SAVEPREFERENCES, "preferences-save",
+	  "Save Preferences", NoBuffer },
+	{ LFUN_PASTESELECTION, "primary-selection-paste", "", Noop },
+	{ LFUN_PROTECTEDSPACE, "protected-space-insert",
+	  N_("Insert protected space"), Noop },
+	{ LFUN_QUOTE, "quote-insert", N_("Insert quote"), Noop },
+	{ LFUN_RECONFIGURE, "reconfigure",
+	  N_("Reconfigure"), NoBuffer },
+	{ LFUN_REDO, "redo", N_("Redo"), Noop },
+	{ LFUN_REFBACK, "reference-back", "", ReadOnly },
+	{ LFUN_REFGOTO, "reference-goto", "", ReadOnly },
+	{ LFUN_INSERT_REF, "reference-insert",
+	  N_("Insert cross reference"), Noop },
+	{ LFUN_REFTOGGLE, "reference-toggle", "", Noop },
+	{ LFUN_NEXT, "screen-down", "", ReadOnly },
+	{ LFUN_NEXTSEL, "screen-down-select", "", ReadOnly },
+	{ LFUN_CENTER, "screen-recenter", "", ReadOnly },
+	{ LFUN_PRIOR, "screen-up", "", ReadOnly },
+	{ LFUN_PRIORSEL, "screen-up-select", "", ReadOnly },
+	{ LFUN_SELFINSERT, "self-insert", "", Noop },
+	{ LFUN_CHARATCURSOR, "server-char-after", "", ReadOnly },
+	{ LFUN_GETFONT, "server-get-font", "", ReadOnly },
+	{ LFUN_GETLATEX, "server-get-latex", "", ReadOnly },
+	{ LFUN_GETLAYOUT, "server-get-layout", "", ReadOnly },
+	{ LFUN_GETNAME, "server-get-name", "", ReadOnly },
+	{ LFUN_GETTIP, "server-get-tip", "", ReadOnly },
+	{ LFUN_GETXY, "server-get-xy", "", ReadOnly },
+	{ LFUN_GOTOFILEROW, "server-goto-file-row", "", Noop },
+	{ LFUN_NOTIFY, "server-notify", "", ReadOnly },
+	{ LFUN_SETXY, "server-set-xy", "", ReadOnly },
+	{ LFUN_SPELLCHECK, "spellchecker", "", Noop },
+	{ LFUN_INSERT_MATH, "symbol-insert", "", Noop },
+	{ LFUN_TAB, "tab-forward", "", Noop },
+	{ LFUN_TABINSERT, "tab-insert", "", Noop },
+	{ LFUN_TABLE, "table-insert", N_("Insert Table"), Noop },
+	{ LFUN_TEX, "tex-mode", N_("Toggle TeX style"), Noop },
+	{ LFUN_TOC_INSERT, "toc-insert",
+	  N_("Insert table of contents"), Noop },
+	{ LFUN_TOCVIEW, "toc-view",
+	  N_("View table of contents"), ReadOnly },
+	{ LFUN_TOGGLECURSORFOLLOW, "toggle-cursor-follows-scrollbar",
+	  N_("Toggle cursor does/doesn't follow the scrollbar"),
+	  ReadOnly },
+	{ LFUN_ADD_TO_TOOLBAR, "toolbar-add-to", "", NoBuffer },
+	{ LFUN_PUSH_TOOLBAR, "toolbar-push", "", NoBuffer },
+	{ LFUN_UNDO, "undo", N_("Undo"), Noop },
+	{ LFUN_UP, "up", "", ReadOnly },
+	{ LFUN_UPSEL, "up-select", "", ReadOnly },
+	{ LFUN_URL, "url-insert", "", Noop },
+	{ LFUN_VC_CHECKIN, "vc-check-in", "", ReadOnly },
+	{ LFUN_VC_CHECKOUT, "vc-check-out", "", ReadOnly },
+	{ LFUN_VC_HISTORY, "vc-history", "", ReadOnly },
+	{ LFUN_VC_REGISTER, "vc-register",
+	  N_("Register document under version control"), ReadOnly },
+	{ LFUN_VC_REVERT, "vc-revert", "", ReadOnly },
+	{ LFUN_VC_UNDO, "vc-undo-last", "", ReadOnly },
+	{ LFUN_WORDLEFT, "word-backward", "", ReadOnly },
+	{ LFUN_WORDLEFTSEL, "word-backward-select", "", ReadOnly },
+	{ LFUN_CAPITALIZE_WORD, "word-capitalize", "", Noop },
+	{ LFUN_DELETE_WORD_BACKWARD, "word-delete-backward",
+	  "", Noop },
+	{ LFUN_DELETE_WORD_FORWARD, "word-delete-forward", "", Noop },
+	{ LFUN_WORDFINDBACKWARD, "word-find-backward", "", ReadOnly },
+	{ LFUN_WORDFINDFORWARD, "word-find-forward", "", ReadOnly },
+	{ LFUN_WORDRIGHT, "word-forward", "", ReadOnly },
+	{ LFUN_WORDRIGHTSEL, "word-forward-select", "", ReadOnly },
+	{ LFUN_LOWCASE_WORD, "word-lowcase", "", Noop },
+	{ LFUN_UPCASE_WORD, "word-upcase", "", Noop },
+	{ LFUN_NOACTION, "", "", Noop }
+	};
+
+	int i = 0;
+	while (items[i].action != LFUN_NOACTION) {
+		newFunc(items[i].action,
+			items[i].name,
+			_(items[i].helpText),
+			items[i].attrib);
+		++i;
+	}
 
 	init = true;
 }
@@ -652,7 +517,7 @@ string LyXAction::getApproxFuncName(string const & func) const
 
 string LyXAction::getActionName(int action) const
 {
-    info_map::const_iterator iit = lyx_info_map.find((kb_action)action);
+    info_map::const_iterator iit = lyx_info_map.find(static_cast<kb_action>(action));
 
     return iit != lyx_info_map.end() ? (*iit).second.name : string();
 }
@@ -668,7 +533,7 @@ string LyXAction::helpText(int pseudoaction) const
 	if (isPseudoAction(pseudoaction)) 
 		action = retrieveActionArg(pseudoaction, arg);
 	else 
-		action = (kb_action) pseudoaction;
+		action = static_cast<kb_action>(pseudoaction);
 
 	info_map::const_iterator ici = lyx_info_map.find(action);
 	if (ici != lyx_info_map.end()) {

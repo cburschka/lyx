@@ -4156,7 +4156,7 @@ void LaTeXOptions()
 		return;
 
 	fl_set_button(fd_latex_options->accents,
-		      (int)current_view->buffer()->params.allowAccents);
+		      int(current_view->buffer()->params.allowAccents));
 	
 	if (fd_latex_options->LaTeXOptions->visible) {
 		fl_raise_form(fd_latex_options->LaTeXOptions);

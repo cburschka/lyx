@@ -161,7 +161,8 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 	
 	if(event == FL_ENTER && !help.empty()){
 		fl_set_object_callback(t->bubble_timer,
-				       C_Toolbar_BubbleTimerCB, (long) ob);
+				       C_Toolbar_BubbleTimerCB,
+				       reinterpret_cast<long>(ob));
 		fl_set_timer(t->bubble_timer, 1);
 	}
 	else if(event != FL_MOTION){
@@ -327,17 +328,18 @@ void Toolbar::set(bool doingmain)
 						NorthWestGravity,
 						NorthWestGravity);
 			  fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
-						 (long)item->action);
+						 static_cast<long>(item->action));
 #if FL_REVISION >85
 			  // Remove the blue feedback rectangle
 			  fl_set_pixmapbutton_focus_outline(obj, 0);
 #endif
 
 			  // set the bubble-help (Matthias)
-			  obj->u_vdata = (void *) item->help.c_str();
+#warning This is dangerous!
+			  obj->u_vdata = const_cast<char*>(item->help.c_str());
 			  // we need to know what toolbar this item
 			  // belongs too. (Lgb)
-			  obj->u_ldata = (long) this;
+			  obj->u_ldata = reinterpret_cast<long>(this);
 			  
 			  fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 
@@ -485,8 +487,8 @@ void Toolbar::add(int action, bool doclean)
 		help += arg;
 		lyxerr.debug() << "Pseudo action " << action << endl;
 	} else {
-		pixmap = getPixmap((kb_action)action);
-		help = lyxaction.helpText((kb_action)action);
+		pixmap = getPixmap(static_cast<kb_action>(action));
+		help = lyxaction.helpText(static_cast<kb_action>(action));
 	}
 	
 	// adds an item to the list

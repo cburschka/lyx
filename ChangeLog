@@ -1,3 +1,22 @@
+1999-12-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+	
+	* Makefile.in.in (MKINSTALLDIRS): use $(srcdir)/@MKINSTALLDIRS@
+	* intl/Makefile.in (MKINSTALLDIRS):  ditto
+
+	* src/LyXAction.C (init): changed to hold the LFUN data in a
+	automatic array in stead of in callso to newFunc, this speeds up
+	compilation a lot. Also all the memory used by the array is
+	returned when the init is completed.
+
+	* a lot of files: compiled with -Wold-style-cast, changed most of
+	the reported offenders to C++ style casts. Did not change the
+	offenders in C files. 
+
+	* src/trans.h (Match): change argument type to unsigned int.
+
+	* src/support/DebugStream.C: fix some types on the streambufs so
+	that it works on a conforming implementation.
+
 1999-12-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/examples/example_{raw,lyxified}.lyx: fix embarassing sentence.

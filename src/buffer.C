@@ -420,7 +420,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			tmpret = lex.FindToken(string_footnotekinds);
 			if (tmpret == -1) tmpret++;
 			if (tmpret != LYX_LAYOUT_DEFAULT) 
-				footnotekind = (LyXParagraph::footnote_kind)tmpret; // bad
+				footnotekind = static_cast<LyXParagraph::footnote_kind>(tmpret); // bad
 			if (footnotekind == LyXParagraph::FOOTNOTE
 			    || footnotekind == LyXParagraph::MARGIN)
 				footnoteflag = LyXParagraph::CLOSED_FOOTNOTE;
@@ -2201,7 +2201,7 @@ void Buffer::makeLinuxDocFile(string const & filename, int column)
 
         string userName(getUserName());
 	ofs << "<!-- LinuxDoc file was created by LyX 1.0 (C) 1995-1999 "
-	    << "by <" << userName << "> " << (char*)date() << " -->\n";
+	    << "by <" << userName << "> " << date() << " -->\n";
 
 	if(params.options.empty())
 		sgmlOpenTag(ofs, 0, top_element);
@@ -2791,7 +2791,7 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 
         string userName(getUserName());
 	ofs << "<!-- DocBook file was created by LyX 1.0 (C) 1995-1999\n"
-	    << "by <" << userName << "> " << (char*)date() << " -->\n";
+	    << "by <" << userName << "> " << date() << " -->\n";
 
 	if(params.options.empty())
 		sgmlOpenTag(ofs, 0, top_element);

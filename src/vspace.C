@@ -42,8 +42,8 @@ static char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
 LyXLength::UNIT unitFromString (string const & data)
 {
 	int i = 0;
-	while ((i<num_units) && (data != unit_name[i])) ++i;
-	return (LyXLength::UNIT)i;
+	while ((i < num_units) && (data != unit_name[i])) ++i;
+	return static_cast<LyXLength::UNIT>(i);
 }
 
 /*  The following static items form a simple scanner for

@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1999 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
  * ====================================================== */
 
@@ -903,14 +903,13 @@ int LyXFont::drawText(char const * s, int n, Pixmap pm,
 
 	} else {
 		// emulate smallcaps since X doesn't support this
-		int i;
 		char c;
 		int sx = x;
 		LyXFont smallfont = *this;
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (i= 0; i < n; i++){
+		for (int i = 0; i < n; ++i){
 			c = s[i];
 			if (islower(c)){
 				c = toupper(c);

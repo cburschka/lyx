@@ -100,10 +100,10 @@ MathedInset* MathedIter::GetInset()
 
 // An active math inset MUST be derived from MathParInset because it 
 // must have at least one paragraph to edit
-MathParInset* MathedIter::GetActiveInset()
+MathParInset * MathedIter::GetActiveInset()
 {
     if (IsActive()) {
-	return (MathParInset*)GetInset();
+	return static_cast<MathParInset*>(GetInset());
     } 
     
     lyxerr << "Math Error: This is not an active inset" << endl;

@@ -367,14 +367,14 @@ void InitFigures()
 	Visual *vi;
 
 	bmparrsize = figarrsize = figallocchunk;
-	figures = (Figref**) malloc(sizeof(Figref*)*figallocchunk);
-	bitmaps = (figdata**) malloc(sizeof(figdata*)*figallocchunk);
+	figures = static_cast<Figref**>(malloc(sizeof(Figref*)*figallocchunk));
+	bitmaps = static_cast<figdata**>(malloc(sizeof(figdata*)*figallocchunk));
 
 	for (i = 0; i < 256; ++i) {
 		k = 0;
 		for (j = 0; j < 8; ++j)
 			if (i & (1 << (7-j))) k |= 1 << j;
-		bittable[i] = (char) ~k;
+		bittable[i] = char(~k);
 	}
 
 	fl_add_canvas_handler(figinset_canvas, ClientMessage,
@@ -579,14 +579,14 @@ static void runqueue()
 
 				bool err = true;
 				for (i = 0; i < nprop; ++i) {
-					char *p = XGetAtomName(tempdisp, prop[i]);
+					char * p = XGetAtomName(tempdisp, prop[i]);
 					if (strcmp(p, "GHOSTVIEW") == 0) {
 						err = false;
 						break;
 					}
 					XFree(p);
 				}
-				XFree((char *)prop);    /* jc: */
+				XFree(reinterpret_cast<char *>(prop));    /* jc: */
 				if (err) break;
 				// release the server
 				XUngrabServer(tempdisp);
@@ -659,7 +659,7 @@ static void runqueue()
 
 			// set up environment
 			while (environ[ne]) ++ne;
-			env = (char **) malloc(sizeof(char*)*(ne+2));
+			env = static_cast<char **>(malloc(sizeof(char*)*(ne+2)));
 			env[0] = tbuf2;
 			memcpy(&env[1], environ, sizeof(char*)*(ne+1));
 			environ = env;
@@ -717,8 +717,8 @@ static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
 	queue * p = new queue;
 	p->ofsx = psx;
 	p->ofsy = psy;
-	p->rx = ((float)data->raw_wid*72)/pswid;
-	p->ry = ((float)data->raw_hgh*72)/pshgh;
+	p->rx = (float(data->raw_wid) * 72.0)/pswid;
+	p->ry = (float(data->raw_hgh) * 72.0)/pshgh;
 
 	p->data = data;
 	p->next = 0;
@@ -759,7 +759,7 @@ static figdata * getfigdata(int wid, int hgh, string const & fname,
 	if (bmpinsref > bmparrsize) {
 		// allocate more space
 		bmparrsize += figallocchunk;
-		figdata ** tmp = (figdata**) malloc(sizeof(figdata*)*bmparrsize);
+		figdata ** tmp = static_cast<figdata**>(malloc(sizeof(figdata*)*bmparrsize));
 		memcpy(tmp, bitmaps, sizeof(figdata*)*(bmparrsize-figallocchunk));
 		free(bitmaps);
 		bitmaps = tmp;
@@ -934,7 +934,7 @@ static void RegisterFigure(InsetFig *fi)
 	if (figinsref > figarrsize) {
 		// allocate more space
 		figarrsize += figallocchunk;
-		Figref **tmp = (Figref**) malloc(sizeof(Figref*)*figarrsize);
+		Figref **tmp = static_cast<Figref**>(malloc(sizeof(Figref*)*figarrsize));
 		memcpy(tmp, figures, sizeof(Figref*)*(figarrsize-figallocchunk));
 		free(figures);
 		figures = tmp;
@@ -1080,7 +1080,7 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 		char * msg = 0;
 		// draw frame
 		XDrawRectangle(fl_display, pm, getGC(gc_copy),
-			       (int) x,
+			       int(x),
 			       baseline - hgh - 1, wid+1, hgh+1);
 		if (figure && figure->data) {
 		  if (figure->data->broken)  msg = _("[render error]");
@@ -1097,11 +1097,11 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 		string justname = OnlyFilename (fname);
 		font.drawString(justname, pm,
 			       baseline - font.maxAscent() - 4,
-			       (int) x + 8);
+			       int(x) + 8);
 		font.setSize (LyXFont::SIZE_TINY);
 		font.drawText (msg, strlen(msg), pm,
 			       baseline - 4,
-			       (int) x + 8);
+			       int(x) + 8);
 
 	}
 	x += Width(font);    // ?
@@ -1599,8 +1599,8 @@ void InsetFig::Recompute()
 
 	float sin_a = sin (angle / DEG2PI);  /* rotation; H. Zeller 021296 */
 	float cos_a = cos (angle / DEG2PI);
-	int frame_wid = (int) ceil (fabs(cos_a * pswid) + fabs(sin_a * pshgh));
-	int frame_hgh= (int) ceil (fabs(cos_a * pshgh) + fabs(sin_a * pswid));
+	int frame_wid = int(ceil(fabs(cos_a * pswid) + fabs(sin_a * pshgh)));
+	int frame_hgh= int(ceil(fabs(cos_a * pshgh) + fabs(sin_a * pswid)));
 
 	/* now recompute wid and hgh, and if that is changed, set changed */
 	/* this depends on chosen size of the picture and its bbox */
@@ -1614,16 +1614,16 @@ void InsetFig::Recompute()
 		case DEF:
 			break;
 		case CM:	/* cm */
-			newx = (int) (28.346*xwid);
+			newx = int(28.346 * xwid);
 			break;
 		case IN: /* in */
-			newx = (int) (72*xwid);
+			newx = int(72 * xwid);
 			break;
 		case PER_PAGE:	/* % of page */
-			newx = (int) (5.95*xwid);
+			newx = int(5.95 * xwid);
 			break;
 		case PER_COL:	/* % of col */
-			newx = (int) (2.975*xwid);
+			newx = int(2.975 * xwid);
 			break;
 		}
 		
@@ -1634,13 +1634,13 @@ void InsetFig::Recompute()
 			//lyxerr << "This should not happen!" << endl;
 			break;
 		case CM:        /* cm */
-			newy = (int) (28.346*xhgh);
+			newy = int(28.346 * xhgh);
 			break;
 		case IN: /* in */
-			newy = (int) (72*xhgh);
+			newy = int(72 * xhgh);
 			break;
 		case PER_PAGE:  /* % of page */
-			newy = (int) (8.42*xhgh);
+			newy = int(8.42 * xhgh);
 			break;
 		case PER_COL: 
 			// Doesn't occur; case exists to suppress
@@ -1656,12 +1656,12 @@ void InsetFig::Recompute()
 	if (frame_wid == 0)
 		nraw_x = 5;
 	else
-		nraw_x = (int) ((1.0 * pswid * newx)/frame_wid);
+		nraw_x = int((1.0 * pswid * newx)/frame_wid);
 
 	if (frame_hgh == 0)
 		nraw_y = 5;
 	else
-		nraw_y = (int) ((1.0 * pshgh * newy)/frame_hgh);
+		nraw_y = int((1.0 * pshgh * newy)/frame_hgh);
 
 	// cannot be zero, actually, set it to some minimum, so its clickable
 	if (newx < 5) newx = 5;
@@ -1746,10 +1746,10 @@ void InsetFig::GetPSSizes()
 				float fpsx, fpsy, fpswid, fpshgh;
 				if (fscanf(f, "%f %f %f %f", &fpsx, &fpsy,
 					   &fpswid, &fpshgh) == 4) {
-					psx = (int) fpsx;
-					psy = (int) fpsy;
-					pswid = (int) fpswid;
-					pshgh = (int) fpshgh;
+					psx = int(fpsx);
+					psy = int(fpsy);
+					pswid = int(fpswid);
+					pshgh = int(fpshgh);
 				} 
 
 				if (lyxerr.debugging()) {

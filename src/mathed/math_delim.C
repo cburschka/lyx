@@ -302,16 +302,16 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
 {
    Matriz mt, sqmt;
    XPoint p[32];
-   float *d, xx, yy, x2, y2;
-   int i= 0, j, n, r;
+   float xx, yy, x2, y2;
+   int i= 0, j, n;
    
    j = search_deco(code);   
-   if (j<0) return;
+   if (j < 0) return;
    
-   r = math_deco_table[j].angle;
-   d = math_deco_table[j].data;
+   int r = math_deco_table[j].angle;
+   float * d = math_deco_table[j].data;
    
-   if (h > 70 && (math_deco_table[j].code == (int) '(' || math_deco_table[j].code == (int) ')'))
+   if (h > 70 && (math_deco_table[j].code == int('(') || math_deco_table[j].code == int(')')))
       d = parenthHigh;
     
    mt.rota(r);
@@ -323,7 +323,7 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
    if (r> 0 && r< 3) y += h;   
    if (r>= 2) x += w;   
    do {
-      code = (int)d[i++];
+      code = int(d[i++]);
       switch (code) {
        case 0: break;
        case 1: 
@@ -336,24 +336,24 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
 	  else
 	    mt.transf(xx, yy, xx, yy);
 	  mt.transf(x2, y2, x2, y2);
-	  XDrawLine(fl_display, win, mathGC, x+(int)xx, y+(int)yy,
-		    x+(int)x2, y+(int)y2);
+	  XDrawLine(fl_display, win, mathGC, x + int(xx), y + int(yy),
+		    x + int(x2), y + int(y2));
 	  XFlush(fl_display);
 	  break;
        }	 
        case 2: 
        case 4:
        {
-	  n = (int)d[i++];
-	  for (j= 0; j<n; j++) {
+	  n = int(d[i++]);
+	  for (j = 0; j < n; ++j) {
 	     xx = d[i++]; yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
 	     if (code == 4) 
 	       sqmt.transf(xx, yy, xx, yy);
 	     else
 	       mt.transf(xx, yy, xx, yy);
-	     p[j].x = x+(int)xx;
-	     p[j].y = y+(int)yy;
+	     p[j].x = x + int(xx);
+	     p[j].y = y + int(yy);
 	     //  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 	  }
 	  XDrawLines(fl_display, win, mathLineGC, p, n, CoordModeOrigin);

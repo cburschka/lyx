@@ -225,7 +225,7 @@ GC GetClearGC()
 		val.foreground= WhitePixel(fl_display,
 					  DefaultScreen(fl_display));
 	}
-	val.function= GXcopy;
+	val.function = GXcopy;
 	val.graphics_exposures = false;
 	if (!fast_selection && background_color != "white") {
 		setForegroundColor(background_color.c_str(), val);

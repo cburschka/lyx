@@ -161,8 +161,9 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 	}
 	
 	for(string::size_type i = 0; i < keys.length(); ++i) {
-		char * temp;
-		temp = keymap_[static_cast<unsigned char>(keys[i])] = new char[2];
+		char * temp =
+			keymap_[static_cast<unsigned int>(keys[i])] =
+			new char[2];
 		temp[0] = 0; temp[1] = accent;
 	}
 	kmod_list_[accent]->exception_list = 0;
@@ -222,11 +223,11 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 			
-			tex_accent accent_1= getkeymod(str);
+			tex_accent accent_1 = getkeymod(str);
 			if (accent_1 == TEX_NOACCENT) return -1;
 
 			if (lex.next(true)) {
-				str= lex.text();
+				str = lex.text();
 				lyxerr[Debug::KBMAP] << str << endl;
 			} else
 				return -1;
@@ -237,10 +238,10 @@ int Trans::Load(LyXLex & lex)
 			if (kmod_list_[accent_1] == 0 || kmod_list_[accent_2] == 0)
 				return -1;
 
-			// Find what key accent_2 is on - should check about accent_1 also
-			int key;
-
-			for(key = 0; key < 256; ++key) {
+			// Find what key accent_2 is on - should
+			// check about accent_1 also
+			int key = 0;
+			for(; key < 256; ++key) {
 				if (keymap_[key] && keymap_[key][0] == 0
 				    && keymap_[key][1] == accent_2)
 					break;
@@ -254,7 +255,9 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			InsertException(kmod_list_[accent_1]->exception_list,(char)key, allowed, true, accent_2);
+			InsertException(kmod_list_[accent_1]->exception_list,
+					static_cast<char>(key), allowed,
+					true, accent_2);
 		}
 		break;
 		case KMAP: {
@@ -349,7 +352,7 @@ string Trans::process(char c, TransManager & k)
 	if ((t == 0 && (*dt = c)) || (t[0] != 0 && (dt = t)) ){
 		return k.normalkey(c, dt);
 	} else {
-		return k.deadkey(c, *kmod_list_[(tex_accent)t[1]]);
+		return k.deadkey(c, *kmod_list_[static_cast<tex_accent>(t[1])]);
 	}
 }
 
@@ -387,7 +390,7 @@ tex_accent getkeymod(string const & p)
 		
 		if ( lyx_accent_table[i].name && contains(p, lyx_accent_table[i].name)) {
 			lyxerr[Debug::KBMAP] << "Found it!" << endl;
-			return (tex_accent)i;
+			return static_cast<tex_accent>(i);
 		}
 	}
 	return TEX_NOACCENT;

@@ -102,7 +102,7 @@ void InsetQuotes::ParseString(string const & s)
 
 	for (i = 0; i < 6; ++i) {
 		if (str[0] == language_char[i]) {
-			language = (InsetQuotes::quote_language)i;
+			language = InsetQuotes::quote_language(i);
 			break;
 		}
 	}
@@ -114,7 +114,7 @@ void InsetQuotes::ParseString(string const & s)
 
 	for (i = 0; i < 2; ++i) {
 		if (str[1] == side_char[i]) {
-			side = (InsetQuotes::quote_side)i;
+			side = InsetQuotes::quote_side(i);
 			break;
 		}
 	}
@@ -126,7 +126,7 @@ void InsetQuotes::ParseString(string const & s)
 
 	for (i = 0; i < 2; ++i) {
 		if (str[2] == times_char[i]) {
-			times = (InsetQuotes::quote_times)i;
+			times = InsetQuotes::quote_times(i);
 			break;
 		}
 	}

@@ -153,7 +153,7 @@ void LyXComm::openConnection() {
 		       << strerror(errno) << endl;
 		return;
 	}
-	fl_add_io_callback(infd, FL_READ, C_LyXComm_callback, (void*)this);
+	fl_add_io_callback(infd, FL_READ, C_LyXComm_callback, this);
  
 	// --- prepare output pipe ---------------------------------------
  

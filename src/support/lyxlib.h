@@ -26,10 +26,10 @@ unsigned long lyxsum(char const * file);
 inline char * date() 
 {
 	time_t tid;
-	if ((tid= time(0)) == (time_t)-1)
-		return (char*)0;
+	if ((tid= time(0)) == static_cast<time_t>(-1))
+		return 0;
 	else
-		return (ctime(&tid));
+		return ctime(&tid);
 }
 
 

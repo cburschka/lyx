@@ -197,8 +197,8 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 	}
 	} // end of switch
 
-	label->u_vdata = (void*)this;
-	button->u_vdata = (void*)this;
+	label->u_vdata = this;
+	button->u_vdata = this;
 
 	// Hmm, it seems fl_create_browser is broken in xforms 0.86.
 	// We have to work around that by creating the dropped browser form
@@ -207,7 +207,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 	FL_FORM * current_form = fl_current_form;
 	fl_end_form();
 
-	bw = w+20; bh = hmax-hmin-12;
+	bw = w + 20; bh = hmax - hmin - 12;
 
 	form = fl_bgn_form(FL_NO_BOX, bw, bh);
 	browser = obj = fl_add_browser(FL_HOLD_BROWSER, 0, 0, bw, bh, "");
@@ -216,7 +216,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 	fl_set_object_callback(obj, C_Combox_combo_cb, 2);
 	fl_end_form();
-	browser->u_vdata = (void*)this;
+	browser->u_vdata = this;
 	form->u_vdata = browser;
 	fl_register_raw_callback(form, 
 				 ButtonPressMask|KeyPressMask,
@@ -309,23 +309,23 @@ void Combox::deactivate()
 
 void Combox::input_cb(FL_OBJECT *ob, long)
 {
-	Combox *combo = (Combox*)ob->u_vdata;
+	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 
-	char const *text = fl_get_input(ob);
+	char const * text = fl_get_input(ob);
 
 	combo->addto(text);
 	combo->is_empty = false;
 }
 
-extern "C" void C_Combox_input_cb(FL_OBJECT *ob, long data)
+extern "C" void C_Combox_input_cb(FL_OBJECT * ob, long data)
 {
   Combox::input_cb(ob, data);
 }
 
 
-void Combox::combo_cb(FL_OBJECT *ob, long data)
+void Combox::combo_cb(FL_OBJECT * ob, long data)
 {
-	Combox *combo = (Combox*)ob->u_vdata;
+	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 	switch (data) {
 	case 0:
 	{  
@@ -357,39 +357,40 @@ void Combox::combo_cb(FL_OBJECT *ob, long data)
 	}
 }
 
-extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) 
+extern "C" void C_Combox_combo_cb(FL_OBJECT * ob, long data) 
 {
 	Combox::combo_cb(ob, data);
 }
 
 
-int Combox::peek_event(FL_FORM * form, void *xev)
+int Combox::peek_event(FL_FORM * form, void * xev)
 {
-	FL_OBJECT *ob = (FL_OBJECT *)form->u_vdata;
-	Combox *combo = (Combox*)ob->u_vdata;
+	FL_OBJECT * ob = static_cast<FL_OBJECT *>(form->u_vdata);
+	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 	
 #if FL_REVISION < 86
 	if(((XEvent *)xev)->type == ButtonPress && !ob->belowmouse)
 #endif
 #if FL_REVISION > 85
 // I don't know why belowmouse does not work, but it doesn't. (Asger)
-		if (((XEvent *) xev)->type == ButtonPress && (
-			((XEvent *)xev)->xbutton.x - ob->x < 0 ||
-			((XEvent *)xev)->xbutton.x - ob->x > ob->w ||
-			((XEvent *)xev)->xbutton.y - ob->y < 0 ||
-			((XEvent *)xev)->xbutton.y - ob->y > ob->h))
+		// Are we sure?
+		if (static_cast<XEvent *>(xev)->type == ButtonPress && (
+			static_cast<XEvent *>(xev)->xbutton.x - ob->x < 0 ||
+			static_cast<XEvent *>(xev)->xbutton.x - ob->x > ob->w ||
+			static_cast<XEvent *>(xev)->xbutton.y - ob->y < 0 ||
+			static_cast<XEvent *>(xev)->xbutton.y - ob->y > ob->h))
 #endif
 	{
 		combo->Hide(1); 
 		return 1;
 	}
 		
-	if (((XEvent*)xev)->type != KeyPress) return 0;
+	if (static_cast<XEvent*>(xev)->type != KeyPress) return 0;
 	
 	char s_r[10];
 	static int num_bytes;
 	KeySym keysym_return;
-	num_bytes = XLookupString(&((XEvent*)xev)->xkey, s_r, 10, 
+	num_bytes = XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10, 
 				  &keysym_return, 0);
 	XFlush(fl_display);
 	switch (keysym_return) {

@@ -145,7 +145,7 @@ BitmapMenu::BitmapMenu(int n,  FL_OBJECT * bt, BitmapMenu * prevx): nb(n)
    w = h = 0;
    form = 0;
    i = 0;
-   ww = 2*FL_abs(FL_BOUND_WIDTH);
+   ww = 2 * FL_abs(FL_BOUND_WIDTH);
    x = y = ww;
    y += 8;
    bitmap = new FL_OBJECTP[nb];
@@ -245,16 +245,16 @@ int peek_event(FL_FORM * /*form*/, void *xev)
    if (BitmapMenu::active == 0)
      return 0;
   
-   if(((XEvent *)xev)->type == ButtonPress)
+   if(static_cast<XEvent *>(xev)->type == ButtonPress)
    {
 	 BitmapMenu::active->Hide();
 	 return 1;
    }
-   if(((XEvent *)xev)->type == KeyPress)
+   if(static_cast<XEvent *>(xev)->type == KeyPress)
    {
       char c[5];
       KeySym keysym;
-      XLookupString(&((XEvent *)xev)->xkey, &c[0], 5, &keysym, 0);
+      XLookupString(&static_cast<XEvent *>(xev)->xkey, &c[0], 5, &keysym, 0);
       if (keysym == XK_Left) 
 	BitmapMenu::active->Prev(); else
       if (keysym == XK_Right) 

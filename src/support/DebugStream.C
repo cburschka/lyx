@@ -37,15 +37,19 @@ ostream & operator<<(ostream & o, Debug::type t)
 */
 class nullbuf : public streambuf {
 protected:
+#ifndef MODERN_STL_STREAMS
+	typedef char char_type;
+	typedef int int_type;
 	///
 	virtual int sync() { return 0; }
+#endif
 	/// 
-	virtual streamsize xsputn(char const *, streamsize n) {
+	virtual streamsize xsputn(char_type const *, streamsize n) {
 		// fakes a purge of the buffer by returning n
 		return n;
 	}
 	///
-	virtual int overflow(int c = EOF) {
+	virtual int_type overflow(int_type c = EOF) {
 		// fakes success by returning c
 		return c == EOF ? ' ' : c;
 	}
@@ -60,6 +64,10 @@ public:
 	teebuf(streambuf * b1, streambuf * b2)
 		: streambuf(), sb1(b1), sb2(b2) {}
 protected:
+#ifndef MODERN_STL_STREAMS
+	typedef char char_type;
+	typedef int int_type;
+#endif
 	///
 	virtual int sync() {
 #ifdef MODERN_STL_STREAMS
@@ -71,7 +79,7 @@ protected:
 #endif
 	}
 	///
-	virtual streamsize xsputn(char const * p, streamsize n) {
+	virtual streamsize xsputn(char_type const * p, streamsize n) {
 #ifdef MODERN_STL_STREAMS
 		sb2->sputn(p, n);
 		return sb1->sputn(p, n);
@@ -81,7 +89,7 @@ protected:
 #endif
 	}
 	///
-	virtual int overflow(int c = EOF) {
+	virtual int_type overflow(int_type c = EOF) {
 #ifdef MODERN_STL_STREAMS
 		sb2->sputc(c);
 		return sb1->sputc(c);
@@ -104,6 +112,10 @@ public:
 	debugbuf(streambuf * b)
 		: streambuf(), sb(b) {}
 protected:
+#ifndef MODERN_STL_STREAMS
+	typedef char char_type;
+	typedef int int_type;
+#endif
 	///
 	virtual int sync() {
 #ifdef MODERN_STL_STREAMS
@@ -113,7 +125,7 @@ protected:
 #endif
 	}
 	///
-	virtual streamsize xsputn(char const * p, streamsize n) {
+	virtual streamsize xsputn(char_type const * p, streamsize n) {
 #ifdef MODERN_STL_STREAMS
 		return sb->sputn(p, n);
 #else
@@ -121,7 +133,7 @@ protected:
 #endif
 	}
 	///
-	virtual int overflow(int c = EOF) {
+	virtual int_type overflow(int_type c = EOF) {
 #ifdef MODERN_STL_STREAMS
 		return sb->sputc(c);
 #else
@@ -133,11 +145,13 @@ private:
 	streambuf * sb;
 };
 
+
 /// So that public parts of DebugStream does not need to know about filebuf
 struct DebugStream::debugstream_internal {
 	/// Used when logging to file.
 	filebuf fbuf;
 };
+
 
 /// Constructor, sets the debug level to t.
 DebugStream::DebugStream(Debug::type t)
@@ -164,6 +178,7 @@ DebugStream::~DebugStream()
 	if (internal)
 		delete internal;
 }
+
 
 /// Sets the debugstreams' logfile to f.
 void DebugStream::logFile(char const * f)

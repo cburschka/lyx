@@ -278,7 +278,7 @@ void  TransManager::TranslateAndInsert(char c, LyXText * text)
     // Process with tokens
     string temp;
 	
-    while(res.length()>0) {
+    while(res.length() > 0) {
 	res = split(res, temp, TransState::TOKEN_SEP);
 	insert(temp, text);
     }
@@ -289,7 +289,7 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 {	
     int l = str.length();
 	
-    for (int i = 0;i<l;i++){
+    for (int i = 0; i < l; ++i){
 	if (str[i] == '\"' 
 	    && text->GetFont(text->cursor.par,
 			     text->cursor.pos).latex() == LyXFont::OFF)

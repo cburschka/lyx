@@ -203,12 +203,12 @@ int Combox::get()
 }
 
 inline
-char const*Combox::getline()
+char const * Combox::getline()
 {
     if (type == FL_COMBOX_INPUT) 
       return fl_get_input(label);
     else
-      return ((browser) ? fl_get_browser_line(browser, sel): (char const*)0);
+      return browser ? fl_get_browser_line(browser, sel) : 0;
 }
 
 #endif

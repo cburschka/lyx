@@ -177,14 +177,13 @@ lyx_SOURCES = \
 
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h debug.h gettext.h \
 	lyx_gui.h lyx_gui_misc.h lyxrc.h support/path.h support/filetools.h \
-	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
+	bufferlist.h support/FileInfo.h lastfiles.h intl.h \
 	lyxserver.h layout.h gettext.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(LYX_DIR)\" -DTOP_SRCDIR=\"$(top_srcdir)\" \
-	-DLYX_NAME=\"$(PACKAGE)\" -c $(top_srcdir)/src/lyx_main.C
+	-c $(top_srcdir)/src/lyx_main.C
 
 main.o: main.C config.h lyx_main.h gettext.h LString.h support/filetools.h
-	$(CXXCOMPILE) -DPACKAGE=\"$(PACKAGE)\" -DLOCALEDIR=\"$(localedir)\" \
-	-c ${top_srcdir}/src/main.C
+	$(CXXCOMPILE) -DLOCALEDIR=\"$(localedir)\" -c $(top_srcdir)/src/main.C
 
 dist-hook:
 	cd $(distdir) ; rm -rf `find cheaders -name \*CVS\*`

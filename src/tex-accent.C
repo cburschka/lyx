@@ -38,7 +38,7 @@
 
 //static
 tex_accent_struct lyx_accent_table[18] = {
-	{ (tex_accent)0, "", "", "",(kb_action)0},
+	{ static_cast<tex_accent>(0), "", "", "", static_cast<kb_action>(0)},
 	{TEX_ACUTE,      "\\'",  " AEIOUYaeiouySZszRLCNrlcn", "acute",   LFUN_ACUTE},
 	{TEX_GRAVE,      "\\`",  " aeiouAEIOU",           "grave",    LFUN_GRAVE},
 	{TEX_MACRON,     "\\=",  " EeAIOUaiou",           "macron",    LFUN_MACRON},
@@ -56,19 +56,19 @@ tex_accent_struct lyx_accent_table[18] = {
 	{TEX_UMLAUT,     "\\\"", " AEIOUaeiouy",          "umlaut",    LFUN_UMLAUT},
 	{TEX_DOT,        "\\.",  " ZzICGicgEe",           "dot",    LFUN_DOT},
 	{TEX_OGONEK,     "\\k",  " AaEe",                 "ogonek",    LFUN_OGONEK},
-	{ (tex_accent)0, "", "", "",(kb_action)0}};
+	{ static_cast<tex_accent>(0), "", "", "", static_cast<kb_action>(0)}};
         
 
 tex_accent_struct get_accent(kb_action action)
 {
-	int i= 0;
-	while (i<= TEX_MAX_ACCENT){
+	int i = 0;
+	while (i <= TEX_MAX_ACCENT){
 		if (lyx_accent_table[i].action == action)
 			return lyx_accent_table[i];
-		i++;
+		++i;
 	}
-	struct tex_accent_struct temp = { (tex_accent)0, 0, 0,
-					  0,(kb_action)0};
+	struct tex_accent_struct temp = { static_cast<tex_accent>(0), 0, 0,
+					  0, static_cast<kb_action>(0)};
 	return temp;
 }
 

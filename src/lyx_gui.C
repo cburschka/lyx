@@ -186,11 +186,11 @@ LyXGUI::LyXGUI(LyX *owner, int *argc, char *argv[], bool GUI)
 	
 	// Make sure default screen is not larger than monitor
 	if (width == 690 && height == 510) {
-		Screen * scr = (DefaultScreenOfDisplay(fl_get_display()));
-		if (HeightOfScreen(scr)-24<height)
-			height = HeightOfScreen(scr)-24;
-		if (WidthOfScreen(scr)-8<width)
-			width = WidthOfScreen(scr)-8;
+		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
+		if (HeightOfScreen(scr) - 24 < height)
+			height = HeightOfScreen(scr) - 24;
+		if (WidthOfScreen(scr) - 8 < width)
+			width = WidthOfScreen(scr) - 8;
 	}
 
 }
@@ -347,7 +347,7 @@ void LyXGUI::create_forms()
 	  fl_set_object_color(obj, FL_WHITE, FL_BLACK);
 #else
 	FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
-	  fl_set_pixmapbutton_data(obj, (char**)banner);
+	  fl_set_pixmapbutton_data(obj, const_cast<char **>(banner));
 #if FL_REVISION > 85
 	  fl_set_pixmapbutton_focus_outline(obj, 3);
 #endif

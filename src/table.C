@@ -905,7 +905,7 @@ void LyXTable::Read(FILE * file)
         *atmp = 0;
         fgets(vtmp, sizeof(vtmp), file);
         sscanf(vtmp, "%d %d %d %s %s", &a, &b, &c, stmp, atmp);
-        column_info[i].alignment = (char) a;
+        column_info[i].alignment = static_cast<char>(a);
         column_info[i].left_line = b;
         column_info[i].right_line = c;
         if (*stmp == '"') { /* strip quotes if they exists */
@@ -923,21 +923,21 @@ void LyXTable::Read(FILE * file)
         } else if (*stmp)
             column_info[i].p_width = stmp;
     }
-    for (i = 0; i<rows;i++){
-	for (j = 0;j<columns;j++){
+    for (i = 0; i < rows; ++i) {
+	for (j = 0; j < columns; ++j) {
 	    *stmp = 0;
 	    *atmp = 0;
 	    a = b = c = d = e = f = g = 0;
 	    fgets(vtmp, sizeof(vtmp), file);
 	    sscanf(vtmp, "%d %d %d %d %d %d %d %s %s\n",
 		   &a, &b, &c, &d, &e, &f, &g, stmp, atmp);
-	    cell_info[i][j].multicolumn = (char) a;
-	    cell_info[i][j].alignment = (char) b;
-	    cell_info[i][j].top_line = (char) c;
-	    cell_info[i][j].bottom_line = (char) d;
-	    cell_info[i][j].has_cont_row = (bool) e;
-	    cell_info[i][j].rotate = (bool) f;
-	    cell_info[i][j].linebreaks = (bool) g;
+	    cell_info[i][j].multicolumn = static_cast<char>(a);
+	    cell_info[i][j].alignment = static_cast<char>(b);
+	    cell_info[i][j].top_line = static_cast<char>(c);
+	    cell_info[i][j].bottom_line = static_cast<char>(d);
+	    cell_info[i][j].has_cont_row = static_cast<bool>(e);
+	    cell_info[i][j].rotate = static_cast<bool>(f);
+	    cell_info[i][j].linebreaks = static_cast<bool>(g);
 	    // this is only to see if I have an empty string first
 	    // this clause should be always TRUE!!!
 	    if (*stmp == '"') {

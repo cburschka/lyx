@@ -580,6 +580,8 @@ private:
 	  specified row
 	  */
 	LyXParagraph::size_type RowLast(Row * row);
+	///
+	void charInserted();
 };
 
 #endif

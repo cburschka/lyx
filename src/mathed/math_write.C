@@ -118,10 +118,10 @@ void MathDelimInset::Write(string & outf)
     } else {
         if (left == '{' || left == '}') {
 	    outf += '\\';
-	    outf += (char) left;
+	    outf += char(left);
 	    outf += ' ';
         } else {
-	    outf += (char) left;
+	    outf += char(left);
 	    outf += ' ';
         }
     }
@@ -134,10 +134,10 @@ void MathDelimInset::Write(string & outf)
    } else {
        if (right == '{' || right == '}') {
 	   outf += '\\';
-	   outf += (char) right;
+	   outf += char(right);
 	   outf += ' ';
       } else {
-	   outf += (char) right;
+	   outf += char(right);
 	   outf += ' ';
       }
    }        
@@ -197,7 +197,7 @@ void MathAccentInset::Write(string & outf)
 	    outf += ' ';
           }
       } else
-        outf += (char) c;
+        outf += char(c);
 
       if (fn>= LM_TC_RM && fn<= LM_TC_TEXTRM)
         outf += '}';
@@ -315,7 +315,7 @@ void MathParInset::Write(string & outf)
 		       lyxerr <<"Math warning: Unexpected closing brace."
 			      << endl;
 	       else	       
-		 outf += (char) *s;
+		 outf += char(*s);
 	    }
 	    s++; ls--;
 	 }
@@ -397,7 +397,7 @@ void MathMatrixInset::Write(string & outf)
 	outf += '}';
 	if (v_align == 't' || v_align == 'b') {
 	    outf += '[';
-	    outf += (char) v_align;
+	    outf += char(v_align);
 	    outf += ']';
 	}
 	outf += '{';
