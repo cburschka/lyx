@@ -547,7 +547,7 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 	LyXLayout const & lyxlayout =
 		textclasslist.Style(bview->buffer()->params.textclass, layout);
 	
-	while (cur.par() != send_cur.par()) {
+	do {
 		cur.par()->setLayout(layout);
 		makeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
 		Paragraph * fppar = cur.par();
@@ -564,22 +564,10 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 			delete fppar->bibkey;
 			fppar->bibkey = 0;
 		}
-		cur.par(cur.par()->next());
-	}
-	cur.par()->setLayout(layout);
-	makeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
-	Paragraph * fppar = cur.par();
-	fppar->params().spaceTop(lyxlayout.fill_top ?
-				 VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
-	fppar->params().spaceBottom(lyxlayout.fill_bottom ? 
-				    VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
-	if (lyxlayout.margintype == MARGIN_MANUAL)
-		cur.par()->setLabelWidthString(lyxlayout.labelstring());
-	if (lyxlayout.labeltype != LABEL_BIBLIO
-	    && fppar->bibkey) {
-		delete fppar->bibkey;
-		fppar->bibkey = 0;
-	}
+		if (cur.par() != send_cur.par())
+			cur.par(cur.par()->next());
+	} while (cur.par() != send_cur.par());
+
 	return endpar;
 }
 
