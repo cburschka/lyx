@@ -75,22 +75,14 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 }
 
 
-InsetWrap::InsetWrap(InsetWrap const & in)
-	: InsetCollapsable(in), params_(in.params_)
-{}
-
-
 InsetWrap::~InsetWrap()
 {
-	InsetWrapMailer mailer(*this);
-	mailer.hideDialog();
+	InsetWrapMailer(*this).hideDialog();
 }
 
 
 dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
-
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
@@ -100,21 +92,16 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 		params_.width     = params.width;
 
 		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		return DISPATCHED;
 	}
-	break;
 
-	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetWrapMailer mailer(*this);
-		mailer.updateDialog(cmd.view());
-	}
-	break;
+	case LFUN_INSET_DIALOG_UPDATE: 
+		InsetWrapMailer(*this).updateDialog(cmd.view());
+		return DISPATCHED;
 
 	default:
-		result = InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 
@@ -261,8 +248,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
 		InsetWrap * tmp = const_cast<InsetWrap *>(this);
-		InsetWrapMailer mailer(*tmp);
-		mailer.showDialog(bv);
+		InsetWrapMailer(*tmp).showDialog(bv);
 	}
 	return true;
 }

@@ -39,8 +39,6 @@ public:
 	///
 	InsetWrap(BufferParams const &, string const &);
 	///
-	InsetWrap(InsetWrap const &);
-	///
 	~InsetWrap();
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
