@@ -41,7 +41,7 @@ def update_tabular(lines):
         rows = int(head[0])
         columns = int(head[1])
 
-        lines[i] = '<LyXTabular version="1" rows="%s" columns="%s">' % (head[0],head[1])
+        tabular_line = i
         i = i +1
         lines.insert(i, '<Features rotate="%s" islongtable="%s" endhead="%s" endfirsthead="%s" endfoot="%s" endlastfoot="%s">' % (head[2],head[3],head[4],head[5],head[6],head[7]))
 
@@ -58,13 +58,20 @@ def update_tabular(lines):
 
         cell_info = []
         ncells = 0
+        cont_row = []
         for j in range(rows):
+            c_row = 0
             for k in range(columns):
                 cell_info.append(string.split(lines[i]))
+                if cell_info[len(cell_info)-1][6] == '1':
+                    c_row = 1
                 if lines[i][0] != "2":
                     ncells = ncells + 1
                 del lines[i]
+            if c_row:
+                cont_row.append(j+1)
 
+        lines[tabular_line] = '<LyXTabular version="1" rows="%s" columns="%s">' % (rows-len(cont_row),columns)
         del lines[i]
         if not lines[i]:
             del lines[i]
@@ -83,18 +90,18 @@ def update_tabular(lines):
                     tmp.append('<Column alignment="%s" valignment="0" leftline="%s" rightline="%s" width=%s special=%s>' % (column_info[k][0],column_info[k][1], column_info[k][2], column_info[k][3], column_info[k][4]))
                 m = j*columns + k
 
-                leftline = int(cell_info[m][4]) or int(column_info[k][1])
+                leftline = int(column_info[k][1])
                 if cell_info[m][0] == '1':
                     n = m + 1
                     while n < rows * columns - 1 and cell_info[n][0] == '2':
                         n = n + 1
-                    rightline = int(cell_info[n][5]) or int(column_info[k][2])
+                    rightline = int(column_info[k][2])
                 else:
                     # not a multicolumn main cell
                     # rightline = int(cell_info[m][5]) or int(column_info[k][2])
                     rightline = int(column_info[k][2])
 
-                tmp.append('<Cell multicolumn="%s" alignment="%s" valignment="0" topline="%s" bottomline="%s" leftline="%d" rightline="%d" rotate="%s" usebox="0" width=%s special=%s>' % (cell_info[m][0],cell_info[m][1],cell_info[m][2],cell_info[m][3],leftline,rightline,cell_info[m][6],cell_info[m][7],cell_info[m][8]))
+                tmp.append('<Cell multicolumn="%s" alignment="%s" valignment="0" topline="%s" bottomline="%s" leftline="%d" rightline="%d" rotate="%s" usebox="%s" width=%s special=%s>' % (cell_info[m][0],cell_info[m][1],cell_info[m][2],cell_info[m][3],leftline,rightline,cell_info[m][5],cell_info[m][6],cell_info[m][7],cell_info[m][8]))
                 tmp.append('\\begin_inset Text')
                 tmp.append('')
                 tmp.append('\\layout Standard')
