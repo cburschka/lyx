@@ -1,3 +1,8 @@
+2000-01-21  Juergen Vigna  <jug@sad.it>
+
+	* src/buffer.C (writeFileAscii): Disabled code for special groff
+	handling of tabulars till I fix this in table.C
+
 2000-01-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/mkdir.C (mkdir): change second argument of mkdir to

@@ -1336,12 +1336,14 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
       
 		/* It might be a table */ 
 		if (par->table){
+#if 0
 			if (!lyxrc->ascii_roff_command.empty() &&
                             lyxrc->ascii_roff_command != "none") {
 				RoffAsciiTable(ofs, par);
 				par = par->next;
 				continue;
 			}
+#endif
 			cell = 1;
                         actcell = 0;
 			cells = par->table->columns;
