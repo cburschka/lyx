@@ -186,6 +186,7 @@ void QLToolbar::clearLayoutList()
 	if (!combo_)
 		return;
 
+	Toolbar::clearLayoutList();
 	combo_->clear();
 }
 

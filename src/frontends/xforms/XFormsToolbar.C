@@ -232,6 +232,7 @@ void XFormsToolbar::clearLayoutList()
 	if (!combox_)
 		return;
 
+	Toolbar::clearLayoutList();
 	fl_clear_combox(combox_);
 	fl_redraw_object(combox_);
 }

@@ -57,6 +57,12 @@ void Toolbar::update(bool in_math, bool in_table)
 }
 
 
+void Toolbar::clearLayoutList()
+{
+	last_textclass_ = -1;
+}
+
+
 bool Toolbar::updateLayoutList(int textclass)
 {
 	// update the layout display

@@ -1,3 +1,7 @@
+2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* XFormsToolbar.C (clearLayoutList): call Toolbar::clearLayoutList
+
 2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Always use std::endl with lyxerr

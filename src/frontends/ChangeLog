@@ -1,3 +1,7 @@
+2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Toolbar.C (clearLayoutList): new methods, which resets
+	last_textclass_. The derived methods should call that.
 
 2003-08-01  André Pönitz  <poenitz@gmx.net>
 

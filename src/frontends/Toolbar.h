@@ -47,7 +47,7 @@ public:
 	/// Drop down the layout list
 	virtual void openLayoutList() = 0;
 	/// Erase the layout list
-	virtual void clearLayoutList() = 0;
+	virtual void clearLayoutList();
 
 private:
 
