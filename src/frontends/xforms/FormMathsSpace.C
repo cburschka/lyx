@@ -46,10 +46,12 @@ void FormMathsSpace::build()
 
 	bc().setCancel(dialog_->button_close);
 
+	bc().addReadOnly(dialog_->button_negative);
+	bc().addReadOnly(dialog_->button_negmedspace);
+	bc().addReadOnly(dialog_->button_negthickspace);
 	bc().addReadOnly(dialog_->button_thin);
 	bc().addReadOnly(dialog_->button_medium);
 	bc().addReadOnly(dialog_->button_thick);
-	bc().addReadOnly(dialog_->button_negative);
 	bc().addReadOnly(dialog_->button_quadratin);
 	bc().addReadOnly(dialog_->button_twoquadratin);
 }
@@ -65,7 +67,7 @@ bool FormMathsSpace::input(FL_OBJECT *, long data)
 {
 	space_ = -1;
 
-	if (data >= 0 && data < 6) {
+	if (data >= 0 && data < 8) {
 		space_ = short(data);
 		apply();
 	}

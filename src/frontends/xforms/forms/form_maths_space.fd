@@ -9,14 +9,14 @@ SnapGrid: 2
 
 =============== FORM ===============
 Name: form_maths_space
-Width: 259
-Height: 149
-Number of Objects: 10
+Width: 277
+Height: 179
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 259 149
+box: 0 0 277 179
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -45,7 +45,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
+name: 
 callback: 
 argument: 
 
@@ -53,60 +53,6 @@ argument:
 class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 10 10 120 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Thin|#T
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_thin
-callback: C_FormBaseDeprecatedInputCB
-argument: 1
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 10 40 120 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Medium|#M
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_medium
-callback: C_FormBaseDeprecatedInputCB
-argument: 2
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 10 70 120 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Thick|#H
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_thick
-callback: C_FormBaseDeprecatedInputCB
-argument: 3
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 130 10 120 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,25 +70,61 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 130 40 120 30
+box: 10 40 120 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Quadratin|#Q
+label: Neg Medium|#E
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_quadratin
+name: button_negmedspace
 callback: C_FormBaseDeprecatedInputCB
-argument: 4
+argument: 1
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 130 70 120 30
+box: 10 70 120 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Neg Thick|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_negthickspace
+callback: C_FormBaseDeprecatedInputCB
+argument: 2
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 130 40 130 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Thick|#H
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_thick
+callback: C_FormBaseDeprecatedInputCB
+argument: 5
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 130 100 130 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -155,7 +137,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_twoquadratin
 callback: C_FormBaseDeprecatedInputCB
-argument: 5
+argument: 7
 
 --------------------
 class: FL_END_GROUP
@@ -178,7 +160,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 92 110 80 30
+box: 92 140 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -192,6 +174,60 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_close
 callback: C_FormBaseDeprecatedCancelCB
 argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 130 70 130 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Quadratin|#Q
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_quadratin
+callback: C_FormBaseDeprecatedInputCB
+argument: 6
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 100 120 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Thin|#I
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_thin
+callback: C_FormBaseDeprecatedInputCB
+argument: 3
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 130 10 130 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Medium|#M
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_medium
+callback: C_FormBaseDeprecatedInputCB
+argument: 4
 
 ==============================
 create_the_forms
