@@ -122,12 +122,15 @@ public:
 			     LyXFont const & outerfont, std::ostream &,
 			     TexRow & texrow, OutputParams const &) const;
 
-	///
+	/// Writes to stream the content of the paragraph for linuxdoc
 	void simpleLinuxDocOnePar(Buffer const & buf,
 				  std::ostream & os,
 				  LyXFont const & outerfont,
 				  OutputParams const & runparams,
 				  lyx::depth_type depth) const;
+
+	/// Can we drop the standard paragraph wrapper?
+	bool Paragraph::emptyTag() const;
 
 	/// Get the id of the paragraph, usefull for docbook and linuxdoc
 	std::string getID() const;

@@ -1331,6 +1331,31 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 }
 
 
+bool Paragraph::emptyTag() const
+{
+	for (pos_type i = 0; i < size(); ++i) {
+		if (isInset(i)) {
+			InsetBase const * inset = getInset(i);
+			InsetBase::Code lyx_code = inset->lyxCode();
+			if (lyx_code != InsetBase::TOC_CODE and
+			    lyx_code != InsetBase::INCLUDE_CODE and
+			    lyx_code != InsetBase::GRAPHICS_CODE and
+			    lyx_code != InsetBase::ERT_CODE and
+			    lyx_code != InsetBase::FLOAT_CODE and
+			    lyx_code != InsetBase::TABULAR_CODE) {
+				return false;
+			}
+		} else {
+			char c = getChar(i);
+			if(c!= ' ' and c!= '\t')
+				return false;
+		}
+
+	}
+	return true;
+}
+
+
 string Paragraph::getID() const
 {
 	for (pos_type i = 0; i < size(); ++i) {

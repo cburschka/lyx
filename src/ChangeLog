@@ -1,3 +1,9 @@
+2004-10-30  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (makeParagraphs):
+	* paragraph.[Ch] (emptyTag): for docbook and company, if the
+	standard paragraph has only a given type of content drop the wrapper.
+
 2004-10-29  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C (makeEnvironment):
