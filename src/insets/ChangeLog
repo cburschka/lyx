@@ -1,3 +1,11 @@
+2001-02-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	
+	* insettext.C (LocalDispatch): Update selection cursor when moving 
+	cursor to the right.
+	(moveRightIntern): Call to CursorRight with 2 argument eqaul to false.
+	(moveLeftIntern): Ditto.
+
 2001-02-05  Baruch Even  <baruch.even@writeme.com>
 
 	* insetgraphics.C: Updated automatic image conversion, it now goes into
