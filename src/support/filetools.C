@@ -185,7 +185,7 @@ string const FileOpenSearch(string const & path, string const & name,
 	string tmppath = split(path, path_element, ';');
 
 	while (notfound && !path_element.empty()) {
-		path_element = os::slashify_path(path_element);
+		path_element = os::internal_path(path_element);
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
 		path_element = subst(path_element, "$$LyX", system_lyxdir());
@@ -394,7 +394,7 @@ string const GetEnvPath(string const & name)
 #ifndef __EMX__
 	string const pathlist = subst(GetEnv(name), ':', ';');
 #else
-	string const pathlist = os::slashify_path(GetEnv(name));
+	string const pathlist = os::internal_path(GetEnv(name));
 #endif
 	return rtrim(pathlist, ";");
 }
@@ -538,7 +538,7 @@ string const createLyXTmpDir(string const & deflt)
 
 bool createDirectory(string const & path, int permission)
 {
-	string temp(rtrim(os::slashify_path(path), "/"));
+	string temp(rtrim(os::internal_path(path), "/"));
 
 	BOOST_ASSERT(!temp.empty());
 
@@ -573,7 +573,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		return RelPath;
 
 	// Copies given paths
-	string TempRel(os::slashify_path(RelPath));
+	string TempRel(os::internal_path(RelPath));
 	// Since TempRel is NOT absolute, we can safely replace "//" with "/"
 	TempRel = subst(TempRel, "//", "/");
 
@@ -624,7 +624,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 	}
 
 	// returns absolute path
-	return os::slashify_path(TempBase);
+	return os::internal_path(TempBase);
 }
 
 
@@ -639,7 +639,7 @@ string const AddName(string const & path, string const & fname)
 	string buf;
 
 	if (path != "." && path != "./" && !path.empty()) {
-		buf = os::slashify_path(path);
+		buf = os::internal_path(path);
 		if (!suffixIs(path, '/'))
 			buf += '/';
 	}
@@ -840,10 +840,10 @@ string const MakeRelPath(string const & abspath, string const & basepath)
 string const AddPath(string const & path, string const & path_2)
 {
 	string buf;
-	string const path2 = os::slashify_path(path_2);
+	string const path2 = os::internal_path(path_2);
 
 	if (!path.empty() && path != "." && path != "./") {
-		buf = os::slashify_path(path);
+		buf = os::internal_path(path);
 		if (path[path.length() - 1] != '/')
 			buf += '/';
 	}
@@ -877,7 +877,7 @@ string const ChangeExtension(string const & oldname, string const & extension)
 	else
 		ext = extension;
 
-	return os::slashify_path(oldname.substr(0, last_dot) + ext);
+	return os::internal_path(oldname.substr(0, last_dot) + ext);
 }
 
 

@@ -96,12 +96,6 @@ string::size_type common_path(string const & p1, string const & p2)
 }
 
 
-string slashify_path(string const & p)
-{
-	return p;
-}
-
-
 string external_path(string const & p)
 {
 	return p;

@@ -49,7 +49,7 @@ void init(int /* argc */, char * argv[])
 		return;
 	initialized = true;
 
-	string tmp = argv[0];
+	string tmp = internal_path(argv[0]);
 	binname_ = OnlyFilename(tmp);
 	tmp = ExpandPath(tmp); // This expands ./ and ~/
 
@@ -57,7 +57,7 @@ void init(int /* argc */, char * argv[])
 		string binsearchpath = GetEnvPath("PATH");
 		// This will make "src/lyx" work always :-)
 		binsearchpath += ";.";
-		tmp = argv[0];
+		tmp = internal_path(argv[0]);
 		tmp = FileOpenSearch(binsearchpath, tmp);
 	}
 
@@ -113,20 +113,25 @@ string::size_type common_path(string const & p1, string const & p2)
 }
 
 
-string slashify_path(string const & p)
-{
-	return subst(p, '\\', '/');
-}
-
-
 string external_path(string const & p)
 {
-	string dos_path = p;
+	string dos_path;
+#ifdef __CYGWIN__
+	// Translate from cygwin path syntax to dos path syntax
 	if (is_absolute_path(p)) {
-		char dp[255];
+		char dp[MAX_PATH];
 		cygwin_conv_to_full_win32_path(p.c_str(), dp);
-		dos_path = subst(dp,'\\','/');
+		dos_path = !dp ? "" : dp;
 	}
+
+	else return p;
+#else // regular Win32
+	dos_path = p;
+#endif
+	
+	//No backslashes in LaTeX files
+	dos_path = subst(dos_path,'\\','/');
+
 	lyxerr[Debug::LATEX]
 		<< "<Win32 path correction> ["
 		<< p << "]->>["
@@ -141,9 +146,13 @@ string external_path(string const & p)
 // the Win32/DOS pathnames into Cygwin pathnames.
 string internal_path(string const & p)
 {
-	char pp[256];
+#ifdef __CYGWIN__
+	char pp[MAX_PATH];
 	cygwin_conv_to_posix_path(p.c_str(), pp);
 	string const posix_path = MakeLatexName(pp);
+#else
+	string const posix_path = subst(p,"\\","/");
+#endif
 	lyxerr[Debug::DEPEND]
 		<< "<Win32 path correction> ["
 		<< p << "]->>["

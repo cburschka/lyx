@@ -1,3 +1,23 @@
+2004-12-19  Angus Leeming  <leeming@lyx.org>
+
+	* path_defines.C.in (setLyxPaths): on a Windows build,
+	remove the ".exe" extension from the name of the LyX binary when
+	trying to ascertain the name of the LyX system directory.
+	(Usually, <path to binary>/../share/<name of binary>/).
+
+	* os.h, os_os2.C, os_unix.C, os_win32.C (slashify_path): remove.
+
+	* os_win32.C (init): ensure that the name of the lyx executable is
+	stored internally with a unix-style path.
+
+	* os_win32.C (internal_path, external_path): differentiate between
+	cygwin and windows builds.
+
+	* filetools.C (FileOpenSearch, GetEnvPath, createDirectory,
+	MakeAbsPath, AddName, MakeRelPath, ChangeExtension):
+	* filename.C (mangledFilename):
+	s/slashify_path/internal_path/.
+
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* filename.C (mangledFilename): Given a Windows-style path, don't

@@ -302,7 +302,7 @@ void start(string const & batch, vector<string> const & files)
 
 	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
 	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
-			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
+			  os::internal_path(os::getTmpDir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
 		bind(&BufferView::loadLyXFile, view->view(), _1, true));

@@ -47,8 +47,6 @@ std::string current_root();
 shell_type shell();
 // DBCS aware!
 std::string::size_type common_path(std::string const & p1, std::string const & p2);
-// no-op on UNIX, '\\'->'/' on OS/2 and Win32, ':'->'/' on MacOS, etc.
-std::string slashify_path(std::string const & p);
 // Converts a unix style path to host OS style.
 std::string external_path(std::string const & p);
 // Converts a host OS style path to unix style.

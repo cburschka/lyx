@@ -1,3 +1,7 @@
+2004-12-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (start): s/slashify_path/internal_path/
+
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* qt_helpers.C (fromqstr): Don't use std::string(0) to construct

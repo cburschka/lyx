@@ -681,7 +681,7 @@ bool Buffer::save() const
 		s = fileName() + '~';
 		if (!lyxrc.backupdir_path.empty())
 			s = AddName(lyxrc.backupdir_path,
-				    subst(os::slashify_path(s),'/','!'));
+				    subst(os::internal_path(s),'/','!'));
 
 		// Rename is the wrong way of making a backup,
 		// this is the correct way.

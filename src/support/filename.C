@@ -77,7 +77,7 @@ string const FileName::mangledFilename() const
 		return (*it).second;
 
 	// Now the real work
-	string mname = os::slashify_path(name_);
+	string mname = os::internal_path(name_);
 	// Remove the extension.
 	mname = ChangeExtension(name_, string());
 	// Replace '/' in the file name with '_'
