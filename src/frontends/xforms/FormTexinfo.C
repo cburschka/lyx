@@ -57,8 +57,10 @@ void FormTexinfo::build() {
 
 	str = _("Double click to view contents of file.");
 	tooltips().init(dialog_->browser, str);
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser);
+#endif
 
 	str = _("Runs the script \"texhash\" which builds a new LaTeX tree. "
 		"Needed if you install a new TeX class or style. You need write "

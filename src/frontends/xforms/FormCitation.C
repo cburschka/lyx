@@ -174,18 +174,24 @@ void FormCitation::build()
 
 	str = _("The entries which will be cited. Select them with the arrow buttons from the right browser window.");
 	tooltips().init(dialog_->browser_cite, str);
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_cite);
+#endif
 
 	str = _("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
 	tooltips().init(dialog_->browser_bib, str);
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_bib);
+#endif
 
 	str = _("Information about the selected entry");
 	tooltips().init(dialog_->browser_info, str);
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_info);
+#endif
 
 	str = _("Here you may select how the citation label should look inside the text (Natbib).");
 	tooltips().init(dialog_->choice_style, str);

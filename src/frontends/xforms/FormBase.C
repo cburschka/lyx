@@ -30,10 +30,11 @@
 
 extern "C" {
 
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 // These should be in forms.h but aren't
 void fl_show_tooltip(const char *, int, int);
-
 void fl_hide_tooltip();
+#endif
 
 // Callback function invoked by xforms when the dialog is closed by the
 // window manager.
@@ -263,8 +264,8 @@ void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		}
 	}
 
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Tooltips are not displayed on browser widgets due to an xforms' bug.
-	// I have a fix, but it's not yet in the xforms sources.
 	// This is a work-around:
 	if (ob->objclass == FL_BROWSER) {
 		switch (event) {
@@ -282,6 +283,7 @@ void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 			break;
 		}
 	}
+#endif
 }
 
 
