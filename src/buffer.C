@@ -315,11 +315,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 	Paragraph * first_par = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
 
-#if 0
-	if (file_format < 216 && params.language->lang() == "hebrew")
-		font.setLanguage(default_language);
-#endif
-
 	if (!par) {
 		par = new Paragraph;
 		par->layout(params.getLyXTextClass().defaultLayout());
@@ -432,11 +427,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// not ALL_INHERIT,document_language then it will be set to the
 		// right values after this tag (Jug 20020420)
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-
-#if 0
-		if (file_format < 216 && params.language->lang() == "hebrew")
-			font.setLanguage(default_language);
-#endif
 
 		lex.eatLine();
 		string layoutname = lex.getString();
@@ -1281,12 +1271,6 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 			}
 			bool the_end = readLyXformat2(lex, par);
 			params.setPaperStuff();
-
-#if 0
-			// the_end was added in 213
-			if (file_format < 213)
-				the_end = true;
-#endif
 
 			if (!the_end) {
 				Alert::alert(_("Warning!"),
