@@ -456,63 +456,60 @@ void LyXText::setLayout(string const & layout)
 }
 
 
-// increment depth over selection and
-// make a total rebreak of those paragraphs
-void  LyXText::incDepth()
+void LyXText::incDepth()
 {
-	// If there is no selection, just use the current paragraph
-	if (!selection.set()) {
-		selection.start = cursor; // dummy selection
-		selection.end = cursor;
+	ParagraphList::iterator pit(cursor.par());
+	ParagraphList::iterator end(cursor.par());
+	ParagraphList::iterator start = pit;
+
+	if (selection.set()) {
+		pit = selection.start.par();
+		end = selection.end.par();
+		start = pit;
 	}
 
-	// We end at the next paragraph with depth 0
-	Paragraph * endpar = selection.end.par()->next();
+	ParagraphList::iterator pastend = end;
+	++pastend;
+	setUndo(bv(), Undo::EDIT, &(*start), &(*pastend));
 
-	Paragraph * undoendpar = endpar;
-
-	if (endpar && endpar->getDepth()) {
-		while (endpar && endpar->getDepth()) {
-			endpar = endpar->next();
-			undoendpar = endpar;
-		}
-	} else if (endpar) {
-		endpar = endpar->next(); // because of parindents etc.
-	}
-
-	setUndo(bv(), Undo::EDIT,
-		selection.start.par(), undoendpar);
-
-	LyXCursor tmpcursor = cursor; // store the current cursor
-
-	// ok we have a selection. This is always between sel_start_cursor
-	// and sel_end cursor
-	cursor = selection.start;
+	int prev_after_depth = 0;
+#warning parlist ... could be nicer ?
+	if (&(*start) != ownerParagraph())
+		prev_after_depth = boost::prior(start)->getMaxDepthAfter();
 
 	while (true) {
-		// NOTE: you can't change the depth of a bibliography entry
-		if (cursor.par()->layout()->labeltype != LABEL_BIBLIO) {
-			Paragraph * prev = cursor.par()->previous();
+		int const depth = pit->params().depth();
 
-			if (prev) {
-				if (cursor.par()->getDepth()
-				    < prev->getMaxDepthAfter()) {
-					cursor.par()->params().depth(cursor.par()->getDepth() + 1);
-				}
-			}
+		if (depth < prev_after_depth
+		    && pit->layout()->labeltype != LABEL_BIBLIO) {
+			pit->params().depth(depth + 1);
 		}
-		if (cursor.par() == selection.end.par())
+
+		prev_after_depth = pit->getMaxDepthAfter();
+
+		if (pit == end)
 			break;
-		cursor.par(cursor.par()->next());
+	
+		++pit;
 	}
 
-	redoParagraphs(selection.start, endpar);
+	// Wow, redoParagraphs is stupid.
+	LyXCursor tmpcursor;
+	setCursor(tmpcursor, &(*start), 0);
+	redoParagraphs(tmpcursor, &(*pastend));
 
-	// we have to reset visual the selection because the
+	// We need to actually move the text->cursor. I don't
+	// understand why ...
+	tmpcursor = cursor;
+
+	// we have to reset the visual selection because the
 	// geometry could have changed
-	setCursor(selection.start.par(), selection.start.pos());
-	selection.cursor = cursor;
-	setCursor(selection.end.par(), selection.end.pos());
+	if (selection.set()) {
+		setCursor(selection.start.par(), selection.start.pos());
+		selection.cursor = cursor;
+		setCursor(selection.end.par(), selection.end.pos());
+	}
+
 	updateCounters();
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
