@@ -16,7 +16,9 @@
 #ifndef UNDO_H
 #define UNDO_H
 
+#include "dociterator.h"
 #include "ParagraphList_fwd.h"
+
 #include "support/types.h"
 
 #include <string>
@@ -49,24 +51,16 @@ struct Undo {
 
 	/// which kind of operation are we recording for?
 	undo_kind kind;
-	/// hosting LyXText counted from buffer begin
-	int text;
-	/// cell in a tabular or similar
-	int index;
-	/// offset to the first paragraph in the paragraph list
-	int first_par;
-	/// offset to the last paragraph from the end of paragraph list
-	int end_par;
-	/// offset to the first paragraph in the paragraph list
-	int cursor_par;
-	/// the position of the cursor in the hosting paragraph
-	int cursor_pos;
+	/// the position of the cursor
+	StableDocumentIterator cursor;
+	/// counted from begin of buffer
+	lyx::paroffset_type from;
+	/// complement to end of this cell
+	lyx::paroffset_type end;
 	/// the contents of the saved paragraphs (for texted)
 	ParagraphList pars;
 	/// the contents of the saved matharray (for mathed)
 	std::string array;
-	/// in mathed?
-	bool math;
 };
 
 
@@ -78,12 +72,6 @@ bool textRedo(BufferView &);
 
 /// makes sure the next operation will be stored
 void finishUndo();
-
-/// whilst undo is frozen, no actions gets added to the undo stack
-void freezeUndo();
-
-/// track undos again
-void unFreezeUndo();
 
 
 /**

@@ -72,7 +72,7 @@ using std::string;
 
 
 LyXText::LyXText(BufferView * bv, bool in_inset)
-	: height_(0), width_(0), maxwidth_(bv ? bv->workWidth() : 100),
+	: width_(0), maxwidth_(bv ? bv->workWidth() : 100), height_(0),
 	  background_color_(LColor::background),
 	  bv_owner(bv), in_inset_(in_inset), xo_(0), yo_(0)
 {}
@@ -865,19 +865,9 @@ void LyXText::updateCounters()
 void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 {
 	BOOST_ASSERT(this == cur.text());
-	recordUndo(cur);
-	freezeUndo();
+	BOOST_ASSERT(inset);
 	cur.paragraph().insertInset(cur.pos(), inset);
-	// Just to rebreak and refresh correctly.
-	// The character will not be inserted a second time
-	insertChar(cur, Paragraph::META_INSET);
-	// If we enter a highly editable inset the cursor should be before
-	// the inset. After an undo LyX tries to call inset->edit(...)
-	// and fails if the cursor is behind the inset and getInset
-	// does not return the inset!
-	if (isHighlyEditableInset(inset))
-		cursorLeft(cur);
-	unFreezeUndo();
+	redoParagraph(cur);
 }
 
 
@@ -1014,7 +1004,6 @@ void LyXText::setSelectionRange(LCursor & cur, lyx::pos_type length)
 void LyXText::replaceSelectionWithString(LCursor & cur, string const & str)
 {
 	recordUndo(cur);
-	freezeUndo();
 
 	// Get font setting before we cut
 	pos_type pos = cur.selEnd().pos();
@@ -1032,7 +1021,6 @@ void LyXText::replaceSelectionWithString(LCursor & cur, string const & str)
 
 	// Cut the selection
 	cutSelection(cur, true, false);
-	unFreezeUndo();
 }
 
 
@@ -1124,7 +1112,10 @@ void LyXText::setCursor(CursorSlice & cur, par_type par,
 	}
 
 	if (pos > end) {
-		lyxerr << "dont like 2 please report" << endl;
+		lyxerr << "dont like 2, pos: " << pos
+		       << " size: " << para.size()
+		       << " row.pos():" << row.pos()
+		       << " par: " << par << endl;
 		// This shouldn't happen.
 		BOOST_ASSERT(false);
 	}

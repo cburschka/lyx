@@ -15,12 +15,14 @@
 #include "cursor_slice.h"
 
 #include <vector>
+#include <iosfwd>
 
 class BufferView;
 class MathAtom;
 class LyXText;
 class Paragraph;
 class Row;
+
 
 
 // only needed for gcc 2.95, remove when support terminated
@@ -166,6 +168,9 @@ public:
 	void forwardIdx();
 	/// move on one inset
 	void forwardInset();
+	/// output
+	friend std::ostream &
+	operator<<(std::ostream & os, DocumentIterator const & cur);
 
 private:
 	///
@@ -181,5 +186,32 @@ DocumentIterator bufferEnd();
 DocumentIterator insetBegin(BufferView & bv, InsetBase * inset);
 ///
 DocumentIterator insetEnd();
+
+
+// The difference to a ('non stable') DocumentIterator is the removed
+// (overwritte by 0...) part of the CursorSlice data items. So this thing
+// is suitable for external storage, but not for iteration as such.
+
+class StableDocumentIterator {
+public:
+	///
+	StableDocumentIterator() {}
+	/// non-explicit intended
+	StableDocumentIterator(const DocumentIterator & it);
+	///
+	DocumentIterator asDocumentIterator(BufferView & bv) const;
+	///
+	size_t size() const { return data_.size(); }
+	///
+	friend std::ostream &
+	operator<<(std::ostream & os, StableDocumentIterator const & cur);
+	///
+	friend std::istream &
+	operator>>(std::istream & is, StableDocumentIterator & cur);
+private:
+	std::vector<CursorSlice> data_;
+};
+
+bool operator==(StableDocumentIterator const &, StableDocumentIterator const &);
 
 #endif

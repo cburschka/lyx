@@ -20,9 +20,12 @@
 #include "cursor.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+
+#include "mathed/math_support.h"
+
+#include <algorithm>
 
 using lyx::paroffset_type;
 
@@ -38,46 +41,9 @@ bool undo_finished;
 
 std::ostream & operator<<(std::ostream & os, Undo const & undo)
 {
-	return os << " text: " << undo.text
-		<< " index: " << undo.index
-		<< " first: " << undo.first_par
-		<< " from end: " << undo.end_par
-		<< " cursor: " << undo.cursor_par
-		<< "/" << undo.cursor_pos;
-}
-
-
-// translates LyXText pointer into offset count from document begin
-ParIterator text2pit(Buffer & buf, LyXText * text, int & tcount)
-{
-	tcount = 0;
-	ParIterator pit = buf.par_iterator_begin();
-	ParIterator end = buf.par_iterator_end();
-
-	for ( ; pit != end; ++pit, ++tcount)
-		if (pit.text(buf) == text)
-			return pit;
-	lyxerr << "undo: should not happen" << std::endl;
-	return end;
-}
-
-
-// translates offset from buffer begin to ParIterator
-ParIterator num2pit(Buffer & buf, int num)
-{
-	ParIterator pit = buf.par_iterator_begin();
-	ParIterator end = buf.par_iterator_end();
-
-	for ( ; num && pit != end; ++pit, --num)
-		;
-
-	if (pit != end)
-		return pit;
-
-	// don't crash early...
-	lyxerr << "undo: num2pit: num: " << num << std::endl;
-	BOOST_ASSERT(false);
-	return buf.par_iterator_begin();
+	return os << " from: " << undo.from
+		<< " end: " << undo.end
+		<< " cursor:\n" << undo.cursor;
 }
 
 
@@ -85,126 +51,90 @@ void recordUndo(Undo::undo_kind kind,
 	LCursor & cur, paroffset_type first_par, paroffset_type last_par,
 	limited_stack<Undo> & stack)
 {
-#if 0
-	DocumentIterator it = bufferBegin(cur.bv());
-	DocumentIterator et = bufferEnd();
-	size_t count = 0;
-	for ( ; it != et; it.forwardPos(), ++count)
-		if (it.top() == cur.top())
-			lyxerr << "### found at " << count << std::endl;
-#endif
+	BOOST_ASSERT(first_par <= cur.lastpar());
+	BOOST_ASSERT(last_par <= cur.lastpar());
 
-	if (first_par > last_par) {
-		paroffset_type t = first_par;
-		first_par = last_par;
-		last_par = t;
-	}
+	if (first_par > last_par)
+		std::swap(first_par, last_par);
 
-	Buffer & buf = *cur.bv().buffer();
-	int const end_par = cur.lastpar() + 1 - last_par;
+	// create the position information of the Undo entry
+	Undo undo;
+	undo.kind = kind;
+	undo.cursor = StableDocumentIterator(cur);
+	undo.from = first_par;
+	undo.end = cur.lastpar() - last_par;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
-	// overlapping only with insert and delete inside one paragraph:
-	// nobody wants all removed character appear one by one when undoing.
-	if (!undo_finished && kind != Undo::ATOMIC) {
-		// Check whether storing is needed.
-		if (!buf.undostack().empty()
-		    && buf.undostack().top().kind == kind
-		    && buf.undostack().top().first_par == first_par
-		    && buf.undostack().top().end_par == end_par) {
-			// No additonal undo recording needed -
-			// effectively, we combine undo recordings to one.
-			return;
-		}
-	}
+	// As nobody wants all removed character appear one by one when undoing,
+	// we want combine 'similar' non-ATOMIC undo recordings to one.
+	if (!undo_finished
+	    && kind != Undo::ATOMIC
+	    && !stack.empty()
+	    && stack.top().cursor.size() == undo.cursor.size()
+		  && stack.top().kind == undo.kind
+		  && stack.top().from == undo.from
+		  && stack.top().end == undo.end)
+		return;
 
-	// push and fill the Undo entry
-	if (cur.inTexted()) {
-		stack.push(Undo());
-		LyXText * text = cur.text();
-		int textnum;
-		ParIterator pit = text2pit(buf, text, textnum);
-		Undo & undo = stack.top();
-		undo.kind = kind;
-		undo.text = textnum;
-		undo.index = pit.index();
-		undo.first_par = first_par;
-		undo.end_par = end_par;
-		undo.cursor_par = cur.par();
-		undo.cursor_pos = cur.pos();
-		undo.math = false;
-		//lyxerr << "undo record: " << stack.top() << std::endl;
-
+	// fill in the real data to be saved
+	if (cur.inMathed()) {
+		// simply use the whole cell
+		undo.array = asString(cur.cell());
+	} else {
+		// some more effort needed here as 'the whole cell' of the
+		// main LyXText _is_ the whole document.
 		// record the relevant paragraphs
+		LyXText * text = cur.text();
+		BOOST_ASSERT(text);
 		ParagraphList & plist = text->paragraphs();
 		ParagraphList::iterator first = plist.begin();
 		advance(first, first_par);
 		ParagraphList::iterator last = plist.begin();
-		advance(last, last_par);
-
-		for (ParagraphList::iterator it = first; it != last; ++it)
-			undo.pars.push_back(*it);
-		undo.pars.push_back(*last);
-	} else {
-		BOOST_ASSERT(false); // not in mathed (yet)
-		stack.push(Undo());
-		Undo & undo = stack.top();
-		undo.math = false;
+		advance(last, last_par + 1);
+		undo.pars = ParagraphList(first, last);
 	}
 
-	// and make sure that next time, we should be combining if possible
+	// push the undo entry to undo stack 
+	//lyxerr << "undo record: " << stack.top() << std::endl;
+	stack.push(undo);
+
+	// next time we'll try again to combine entries if possible
 	undo_finished = false;
 }
 
 
-// returns false if no undo possible
-bool performUndoOrRedo(BufferView & bv, Undo const & undo)
+void performUndoOrRedo(BufferView & bv, Undo const & undo)
 {
-	Buffer & buf = *bv.buffer();
+	LCursor & cur = bv.cursor();
 	lyxerr << "undo, performing: " << undo << std::endl;
-	ParIterator pit = num2pit(buf, undo.text);
-	LyXText * text = pit.text(buf);
-	ParagraphList & plist = text->paragraphs();
+	cur.setCursor(undo.cursor.asDocumentIterator(bv), false);
 
-	// remove new stuff between first and last
-	{
-		ParagraphList::iterator first = plist.begin();
-		advance(first, undo.first_par);
-		ParagraphList::iterator last = plist.begin();
-		advance(last, plist.size() - undo.end_par);
-		plist.erase(first, ++last);
-	}
-
-	// re-insert old stuff instead
-	if (plist.empty()) {
-		plist.assign(undo.pars.begin(), undo.pars.end());
+	if (cur.inMathed()) {
+		// We stored the full cell here as there is not much to be
+		// gained by storing just 'a few' paragraphs (most if not
+		// all math inset cells have just one paragraph!)
+		asArray(undo.array, cur.cell());
 	} else {
+		// Some finer machinery is needed here.
+		LyXText * text = cur.text();
+		BOOST_ASSERT(text);
+		ParagraphList & plist = text->paragraphs();
+
+		// remove new stuff between first and last
 		ParagraphList::iterator first = plist.begin();
-		advance(first, undo.first_par);
+		advance(first, undo.from);
+		ParagraphList::iterator last = plist.begin();
+		advance(last, plist.size() - undo.end);
+		plist.erase(first, last);
+
+		// re-insert old stuff instead
+		first = plist.begin();
+		advance(first, undo.from);
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
 	}
 
-	// set cursor
-	lyxerr << "undo, text: " << undo.text
-	       << " inset: " << pit.inset()
-	       << " index: " << undo.index
-	       << " par: " << undo.cursor_par
-	       << " pos: " << undo.cursor_pos
-	       << std::endl;
-
-	text->updateCounters();
-
-	// rebreak the entire lyxtext
-#warning needed?
-	text->redoParagraphs(buf.paragraphs().begin(), buf.paragraphs().end());
-	bv.cursor().resetAnchor();
-
-	ParIterator pit2 = num2pit(buf, undo.text);
-	advance(pit2, undo.cursor_par);
-	bv.setCursor(pit2, undo.cursor_pos);
-
+	cur.resetAnchor();
 	finishUndo();
-	return true;
 }
 
 
@@ -212,7 +142,6 @@ bool performUndoOrRedo(BufferView & bv, Undo const & undo)
 bool textUndoOrRedo(BufferView & bv,
 	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
 {
-	Buffer & buf = *bv.buffer();
 	if (stack.empty()) {
 		// nothing to do
 		finishUndo();
@@ -223,44 +152,36 @@ bool textUndoOrRedo(BufferView & bv,
 	stack.pop();
 	finishUndo();
 
+	// this implements redo
 	if (!undo_frozen) {
 		otherstack.push(undo);
-		otherstack.top().pars.clear();
-		ParIterator pit = num2pit(buf, undo.text);
-		ParagraphList & plist = pit.plist();
-		if (undo.first_par + undo.end_par <= int(plist.size())) {
-			ParagraphList::iterator first = plist.begin();
-			advance(first, undo.first_par);
-			ParagraphList::iterator last = plist.begin();
-			advance(last, plist.size() - undo.end_par + 1);
-			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
+		DocumentIterator dit = undo.cursor.asDocumentIterator(bv);
+		if (dit.inMathed()) {
+			// not much to be done
+		} else {
+			otherstack.top().pars.clear();
+			LyXText * text = dit.text();
+			BOOST_ASSERT(text);
+			ParagraphList & plist = text->paragraphs();
+			if (undo.from + undo.end <= int(plist.size())) {
+				ParagraphList::iterator first = plist.begin();
+				advance(first, undo.from);
+				ParagraphList::iterator last = plist.begin();
+				advance(last, plist.size() - undo.end);
+				otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
+			}
 		}
-		otherstack.top().cursor_pos = bv.cursor().pos();
-		otherstack.top().cursor_par = bv.cursor().par();
-		lyxerr << " undo other: " << otherstack.top() << std::endl;
+		otherstack.top().cursor = bv.cursor();
+		//lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
 
-	freezeUndo();
-	bool const ret = performUndoOrRedo(bv, undo);
-	unFreezeUndo();
-	return ret;
+	undo_frozen = true;
+	performUndoOrRedo(bv, undo);
+	undo_frozen = false;
+	return true;
 }
 
 } // namespace anon
-
-
-void freezeUndo()
-{
-	// this is dangerous and for internal use only
-	undo_frozen = true;
-}
-
-
-void unFreezeUndo()
-{
-	// this is dangerous and for internal use only
-	undo_frozen = false;
-}
 
 
 void finishUndo()
@@ -292,6 +213,9 @@ void recordUndo(Undo::undo_kind kind,
 	Buffer * buf = cur.bv().buffer();
 	recordUndo(kind, cur, first, last, buf->undostack());
 	buf->redostack().clear();
+	//lyxerr << "undostack:\n";
+	//for (size_t i = 0, n = buf->undostack().size(); i != n && i < 6; ++i)
+	//	lyxerr << "  " << i << ": " << buf->undostack()[i] << std::endl;
 }
 
 

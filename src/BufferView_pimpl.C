@@ -607,6 +607,7 @@ void BufferView::Pimpl::update()
 		updateScrollbar();
 	}
 	screen().redraw(*bv_);
+	bv_->owner()->view_state_changed();
 }
 
 

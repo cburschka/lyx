@@ -90,9 +90,6 @@ namespace {
 	void toggleAndShow(LCursor & cur, LyXText * text,
 		LyXFont const & font, bool toggleall = true)
 	{
-		if (!cur.bv().available())
-			return;
-
 		text->toggleFree(cur, font, toggleall);
 
 		if (font.language() != ignore_language ||
@@ -106,7 +103,6 @@ namespace {
 				text->setCursor(cur, cur.par(), cur.pos(),
 						false, !cur.boundary());
 		}
-		cur.update();
 	}
 
 
@@ -120,17 +116,17 @@ namespace {
 	}
 
 
-	void finishChange(LCursor & cur, bool selecting = false)
+	void finishChange(LCursor & cur, bool selecting)
 	{
 		finishUndo();
 		moveCursor(cur, selecting);
-		cur.bv().owner()->view_state_changed();
 	}
 
 
 	void mathDispatch(LCursor & cur, LyXText * text,
 		FuncRequest const & cmd, bool display)
 	{
+		recordUndo(cur);
 		string sel = cur.selectionAsString(false);
 		lyxerr << "selection is: '" << sel << "'" << endl;
 
@@ -341,6 +337,7 @@ void doInsertInset(LCursor & cur, LyXText * text,
 	if (!inset)
 		return;
 
+	recordUndo(cur);
 	bool gotsel = false;
 	if (cur.selection()) {
 		cur.bv().owner()->dispatch(FuncRequest(LFUN_CUT));
@@ -410,19 +407,19 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DELETE_WORD_FORWARD:
 		cur.clearSelection();
 		deleteWordForward(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
 		cur.clearSelection();
 		deleteWordBackward(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_DELETE_LINE_FORWARD:
 		cur.clearSelection();
 		deleteLineForward(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_WORDRIGHT:
@@ -432,7 +429,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cursorLeftOneWord(cur);
 		else
 			cursorRightOneWord(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_WORDLEFT:
@@ -442,21 +439,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cursorRightOneWord(cur);
 		else
 			cursorLeftOneWord(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_BEGINNINGBUF:
 		if (!cur.mark())
 			cur.clearSelection();
 		cursorTop(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_ENDBUF:
 		if (!cur.mark())
 			cur.clearSelection();
 		cursorBottom(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_RIGHT:
@@ -569,7 +566,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (!cur.mark())
 			cur.clearSelection();
 		cursorUpParagraph(cur);
-		finishChange(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_DOWN_PARAGRAPH:
@@ -634,7 +631,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cutSelection(cur, true, false);
 		}
 		moveCursor(cur, false);
-		bv->owner()->view_state_changed();
 		break;
 
 	case LFUN_DELETE_SKIP:
@@ -664,7 +660,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		} else {
 			cutSelection(cur, true, false);
 		}
-		bv->owner()->view_state_changed();
 		bv->switchKeyMap();
 		cur.update();
 		break;
@@ -688,7 +683,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.update();
 		cur.resetAnchor();
 		bv->switchKeyMap();
-		bv->owner()->view_state_changed();
 		break;
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
@@ -697,7 +691,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.update();
 		cur.resetAnchor();
 		bv->switchKeyMap();
-		bv->owner()->view_state_changed();
 		break;
 
 	case LFUN_BREAKPARAGRAPH_SKIP: {
@@ -717,7 +710,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.update();
 //	anchor() = cur;
 		bv->switchKeyMap();
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -774,6 +766,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
+		recordUndo(cur);
 		InsetBase * inset = createInset(bv, cmd);
 		if (inset)
 			insertInset(cur, inset);
@@ -1192,7 +1185,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			bv->haveSelection(cur.selection());
 
 		bv->switchKeyMap();
-		bv->owner()->view_state_changed();
 		bv->owner()->updateMenubar();
 		bv->owner()->updateToolbar();
 		break;
@@ -1229,7 +1221,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// real_current_font.number can change so we need to
 		// update the minibuffer
 		if (old_font != real_current_font)
-			bv->owner()->view_state_changed();
 		bv->updateScrollbar();
 		break;
 	}
@@ -1341,7 +1332,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setEmph(LyXFont::TOGGLE);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1349,7 +1339,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setSeries(LyXFont::BOLD_SERIES);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1357,7 +1346,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setNoun(LyXFont::TOGGLE);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1365,7 +1353,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1373,7 +1360,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setFamily(LyXFont::SANS_FAMILY);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1381,14 +1367,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setFamily(LyXFont::ROMAN_FAMILY);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
 	case LFUN_DEFAULT: {
 		LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1396,7 +1380,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setUnderbar(LyXFont::TOGGLE);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1404,7 +1387,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLyXSize(cmd.argument);
 		toggleAndShow(cur, this, font);
-		bv->owner()->view_state_changed();
 		break;
 	}
 
@@ -1416,13 +1398,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		font.setLanguage(lang);
 		toggleAndShow(cur, this, font);
 		bv->switchKeyMap();
-		bv->owner()->view_state_changed();
 		break;
 	}
 
 	case LFUN_FREEFONT_APPLY:
 		toggleAndShow(cur, this, freefont, toggleall);
-		bv->owner()->view_state_changed();
 		cur.message(_("Character set"));
 		break;
 
@@ -1435,7 +1415,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
-			bv->owner()->view_state_changed();
 			cur.message(_("Character set"));
 		}
 		break;
@@ -1519,7 +1498,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (tclass.floats().typeExist(cmd.argument)) {
 			// not quite sure if we want this...
 			recordUndo(cur);
-			freezeUndo();
 			cur.clearSelection();
 			breakParagraph(cur);
 
@@ -1530,8 +1508,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 			setLayout(cur, tclass.defaultLayoutName());
 			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
-			cur.insert(new InsetFloatList(cmd.argument));
-			unFreezeUndo();
+			insertInset(cur, new InsetFloatList(cmd.argument));
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << cmd.argument << endl;

@@ -14,9 +14,6 @@
 
 
 
-std::ostream & operator<<(std::ostream & os, DocumentIterator const & cur);
-
-
 DocumentIterator::DocumentIterator()
 	: bv_(0)
 {}
@@ -393,9 +390,49 @@ DocumentIterator insetEnd()
 }
 
 
-std::ostream & operator<<(std::ostream & os, DocumentIterator const & cur)
+std::ostream & operator<<(std::ostream & os, DocumentIterator const & dit)
 {
-	for (size_t i = 0, n = cur.size(); i != n; ++i)
-		os << " " << cur.operator[](i) << "\n";
+	os << "bv: " << &dit.bv() << "\n";
+	for (size_t i = 0, n = dit.size(); i != n; ++i)
+		os << " " << dit.operator[](i) << "\n";
 	return os;
 }
+
+
+
+///////////////////////////////////////////////////////
+
+StableDocumentIterator::StableDocumentIterator(const DocumentIterator & dit)
+{
+	data_ = dit;
+	for (size_t i = 0, n = data_.size(); i != n; ++i)
+		data_[i].inset_ = 0;
+}
+
+
+DocumentIterator
+StableDocumentIterator::asDocumentIterator(BufferView & bv) const
+{
+	// this function re-creates the cache of inset pointers
+	//lyxerr << "converting:\n" << *this << std::endl;
+	DocumentIterator dit(bv);
+	dit.clear();
+	InsetBase * inset = 0;
+	for (size_t i = 0, n = data_.size(); i != n; ++i) {
+		dit.push_back(data_[i]);
+		dit.back().inset_ = inset;
+		if (i + 1 != n)
+			inset = dit.nextInset();
+	}
+	//lyxerr << "convert:\n" << *this << " to:\n" << dit << std::endl;
+	return dit;
+}
+
+
+std::ostream & operator<<(std::ostream & os, StableDocumentIterator const & dit)
+{
+	for (size_t i = 0, n = dit.data_.size(); i != n; ++i)
+		os << " " << dit.data_[i] << "\n";
+	return os;
+}
+

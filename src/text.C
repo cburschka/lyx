@@ -898,6 +898,8 @@ void LyXText::redoParagraph(LCursor & cur)
 void LyXText::insertChar(LCursor & cur, char c)
 {
 	BOOST_ASSERT(this == cur.text());
+	BOOST_ASSERT(c != Paragraph::META_INSET);
+
 	recordUndo(cur, Undo::INSERT);
 
 	Paragraph & par = cur.paragraph();
@@ -983,10 +985,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 		}
 	}
 
-	// Here case LyXText::InsertInset already inserted the character
-	if (c != Paragraph::META_INSET)
-		par.insertChar(cur.pos(), c);
-
+	par.insertChar(cur.pos(), c);
 	setCharFont(pit, cur.pos(), rawtmpfont);
 
 	current_font = rawtmpfont;

@@ -272,7 +272,7 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 
 string const InsetCollapsable::getNewLabel(string const & l) const
 {
-	string la;
+	string label;
 	pos_type const max_length = 15;
 	pos_type const p_siz = inset.paragraphs().begin()->size();
 	pos_type const n = min(max_length, p_siz);
@@ -281,13 +281,13 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 	for( ; i < n && j < p_siz; ++j) {
 		if (inset.paragraphs().begin()->isInset(j))
 			continue;
-		la += inset.paragraphs().begin()->getChar(j);
+		label += inset.paragraphs().begin()->getChar(j);
 		++i;
 	}
 	if (inset.paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
-		la += "...";
+		label += "...";
 	}
-	return la.empty() ? l : la;
+	return label.empty() ? l : label;
 }
 
 

@@ -307,7 +307,7 @@ void MathNestInset::handleFont
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	//recordUndo(cur, Undo::ATOMIC);
+	recordUndo(cur, Undo::ATOMIC);
 
 	if (cur.inset()->asMathInset()->name() == font)
 		cur.handleFont(font);
@@ -320,7 +320,7 @@ void MathNestInset::handleFont
 
 void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 {
-	//recordUndo(cur, Undo::ATOMIC);
+	recordUndo(cur, Undo::ATOMIC);
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(arg, font, b);
@@ -354,7 +354,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		is >> n;
 		if (was_macro)
 			cur.macroModeClose();
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		cur.selPaste(n);
 		break;
 	}
@@ -531,13 +531,13 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		cur.backspace();
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		cur.erase();
 		cur.dispatched(FINISHED_LEFT);
 		break;
@@ -566,7 +566,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.dispatched(FINISHED_RIGHT);
 			break;
 		}
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		if (cmd.argument.size() != 1) {
 			cur.insert(cmd.argument);
 			break;
@@ -604,7 +604,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_CUT:
-		//recordUndo(cur, Undo::DELETE);
+		recordUndo(cur, Undo::DELETE);
 		cur.selCut();
 		break;
 
@@ -618,7 +618,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cmd.argument.empty()) {
 			// do superscript if LyX handles
 			// deadkeys
-			//recordUndo(cur, Undo::ATOMIC);
+			recordUndo(cur, Undo::ATOMIC);
 			script(cur, true);
 		}
 		break;
@@ -695,14 +695,14 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_MATH_SIZE:
 #if 0
 		if (!arg.empty()) {
-			//recordUndo(cur, Undo::ATOMIC);
+			recordUndo(cur, Undo::ATOMIC);
 			cur.setSize(arg);
 		}
 #endif
 		break;
 
 	case LFUN_INSERT_MATRIX: {
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		unsigned int m = 1;
 		unsigned int n = 1;
 		string v_align;
@@ -728,14 +728,14 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			ls = '(';
 		if (rs.empty())
 			rs = ')';
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
 		break;
 	}
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		cur.insert(MathAtom(new MathSpaceInset(",")));
 		break;
 
@@ -746,7 +746,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		interpret(cur, '\\');
 		break;
 
@@ -754,7 +754,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH:
-		//recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur, Undo::ATOMIC);
 		cur.niceInsert(cmd.argument);
 		break;
 

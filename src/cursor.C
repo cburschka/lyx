@@ -85,7 +85,7 @@ void LCursor::setCursor(DocumentIterator const & cur, bool sel)
 
 DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
-	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+	//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	BOOST_ASSERT(pos() <= lastpos());
 	BOOST_ASSERT(idx() <= lastidx());
 	BOOST_ASSERT(par() <= lastpar());
@@ -1233,38 +1233,6 @@ CursorSlice LCursor::normalAnchor()
 #endif
 	return normal;
 }
-
-
-/*
-DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd)
-{
-	// mouse clicks are somewhat special
-	// check
-	switch (cmd.action) {
-	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_MOTION:
-	case LFUN_MOUSE_RELEASE:
-	case LFUN_MOUSE_DOUBLE: {
-		CursorSlice & pos = back();
-		int x = 0;
-		int y = 0;
-		getPos(x, y);
-		if (x < cmd.x && pos() != 0) {
-			DispatchResult const res = prevAtom().nucleus()->dispatch(cmd);
-			if (res.dispatched())
-				return res;
-		}
-		if (x > cmd.x && pos() != lastpos()) {
-			DispatchResult const res = inset()->dispatch(cmd);
-			if (res.dispatched())
-				return res;
-		}
-	}
-	default:
-	break;
-	}
-}
-*/
 
 
 void LCursor::handleFont(string const & font)

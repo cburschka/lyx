@@ -820,7 +820,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 	kb_action action = cmd.action;
 
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
-	lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
+	//lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
