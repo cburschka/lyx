@@ -98,9 +98,12 @@ void BranchList::setSelected(string const & s, bool val)
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
-		if (s.find(it->getBranch(), 0) != string::npos)
+		if (s == it->getBranch()) {
 			it->setSelected(val);
+			return;
+		}
 	}
+	BOOST_ASSERT(false);
 }
 
 
