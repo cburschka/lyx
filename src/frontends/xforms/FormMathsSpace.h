@@ -48,7 +48,7 @@ private:
 	boost::scoped_ptr<FD_form_maths_space> dialog_;
 
 	/// The current choice.
-	short space_;
+	int space_;
 };
 
 #endif //  FORM_MATHSSPACE_H

@@ -1,3 +1,9 @@
+2002-01-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormMathsSpace.h (space_):
+	* FormMathsStyle.h (style_): change from a short to an int to fix
+	type conversion warnings.
+
 2002-01-28  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* FormMathsSpace.[Ch]:
@@ -27,7 +33,7 @@
 
 	* forms/form_minipage.fd: add text_warning field.
 
-	*FormMinipage.[Ch]: added input filters and warnings
+	* FormMinipage.[Ch]: added input filters and warnings
 	(ButtonPolicy::SMInput FormMinipage::input)
 
 2002-01-28  Angus Leeming  <a.leeming@ic.ac.uk>
