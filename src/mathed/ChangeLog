@@ -6,6 +6,8 @@
 
 	* math_xiter.C: use MathedRowContainer::erase
 
+	* math_parser.C: use MathedRowContainer::insert_after
+
 2001-03-08  André Pönitz  <poenitz@htwm.de>
 	* math_rowst.h: give MathedRowContainer an 'insert' method. 
 

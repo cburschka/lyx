@@ -424,8 +424,10 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 	int acc_brace = 0;
 	int acc_braces[8];
 	MathParInset * mt = (mtx) ? *mtx : 0;
-	MathedRowSt * crow = (mt) ? mt->getRowSt().data_ : 0;
-	
+	MathedRowContainer::iterator crow;
+	if (mt)
+		crow = mt->getRowSt().begin();
+
 	++plevel;
 	MathedIter data(&array);
 	while (t) {
@@ -602,10 +604,8 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		case LM_TK_NEWLINE:
 			if (mt && (flags & FLAG_END)) {
 				if (mt->Permit(LMPF_ALLOW_CR)) {
-					if (crow) {
-						crow->next_ = new MathedRowSt(mt->GetColumns() + 1);
-						crow = crow->next_;
-					}
+					mt->getRowSt().insert_after(crow, MathedRowSt(mt->GetColumns() + 1));
+					++crow;
 					data.insert('K', LM_TC_CR);
 				} else 
 					mathPrintError("Unexpected newline");
@@ -869,7 +869,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 					}
 					mt->SetStyle(size);
 					mt->SetType(mathed_env);
-					crow = mt->getRowSt().data_;
+					crow = mt->getRowSt().begin();
 				}
 				
 				lyxerr[Debug::MATHED] << "MATH BEGIN[" << mathed_env << "]" << endl;
