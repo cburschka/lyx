@@ -57,8 +57,6 @@ AC_AIX
 ### check which frontend we want to use
 LYX_USE_FRONTEND
 
-#old gnome stuff removed by Michael Koziarski 25-05-2002
-
 ### Check for a C++ compiler
 LYX_PROG_CXX
 ### Some checks on what the C++ compiler can(not) do
@@ -171,20 +169,20 @@ case "$lyx_use_frontend" in
 	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
     libforms version:             ${XFORMS_VERSION}\n"
 	;;
-  gnome)
-    LYX_PATH_XPM
-    LYX_PATH_XFORMS
-    LYX_CHECK_XFORMS_IMAGE_LOADER
-    PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
-    AC_SUBST(GNOME_FRONTEND_CFLAGS)
-    AC_SUBST(GNOME_FRONTEND_LIBS)
+dnl   gnome)
+dnl     LYX_PATH_XPM
+dnl     LYX_PATH_XFORMS
+dnl     LYX_CHECK_XFORMS_IMAGE_LOADER
+dnl     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
+dnl     AC_SUBST(GNOME_FRONTEND_CFLAGS)
+dnl     AC_SUBST(GNOME_FRONTEND_LIBS)
 
-    FRONTEND="xforms gnome"
-    FRONTEND_GUILIB="gnome/*.lo"
-    FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
-    FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
-    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
-	;;
+dnl     FRONTEND="xforms gnome"
+dnl     FRONTEND_GUILIB="gnome/*.lo"
+dnl     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
+dnl     FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
+dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
+dnl 	;;
   qt)
     QT_DO_IT_ALL
     FRONTEND="qt2"

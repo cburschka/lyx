@@ -1,3 +1,9 @@
+2003-01-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinclude.m4:
+	* configure.ac:
+	* configure.in: comment out gnome frontend support
+
 2003-01-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinclude.m4 (LYX_CHECK_ERRORS): do not delete $cache_file if
