@@ -623,34 +623,43 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_DELIM:
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		int ilt = '(';
-		int irt = '.';
 		static const string vdelim("(){}[]./|");
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 
 		if (arg.empty())
 			break;
 
+		// try to read integers first
+		int ilt = '(';
+		int irt = '.';
 		istringstream is(arg.c_str());
-		string lt;
-		string rt;
-		is >> lt >> rt;
-		//lyxerr << "formulabase::LFUN_MATH_DELIM, lt: '" << lt << "'\n";
-		//lyxerr << "formulabase::LFUN_MATH_DELIM, rt: '" << rt << "'\n";
+		is >> ilt >> irt;
 
-		if (lt.size() > 1) {
-			latexkeys const * l = in_word_set(lt);
-			if (l)
-				ilt = l->id;
-		} else if (vdelim.find(lt[0]) != string::npos)
-				ilt = lt[0];
+		if (!is) { // ok, the beasties are no integers... try something else
+			ilt = '(';
+			irt = '.';
 
-		if (rt.size() > 1) {
-			latexkeys const * l = in_word_set(rt);
-			if (l)
-				irt = l->id;
-		} else if (vdelim.find(rt[0]) != string::npos)
-				irt = rt[0];
+			istringstream is(arg.c_str());
+			string lt;
+			string rt;
+			is >> lt >> rt;
+			//lyxerr << "formulabase::LFUN_MATH_DELIM, lt: '" << lt << "'\n";
+			//lyxerr << "formulabase::LFUN_MATH_DELIM, rt: '" << rt << "'\n";
+
+			if (lt.size() > 1) {
+				latexkeys const * l = in_word_set(lt);
+				if (l)
+					ilt = l->id;
+			} else if (vdelim.find(lt[0]) != string::npos)
+					ilt = lt[0];
+
+			if (rt.size() > 1) {
+				latexkeys const * l = in_word_set(rt);
+				if (l)
+					irt = l->id;
+			} else if (vdelim.find(rt[0]) != string::npos)
+					irt = rt[0];
+		}
 
 		handleDelim(bv, ilt, irt);
 		updateLocal(bv, true);

@@ -1109,9 +1109,9 @@ MathUpDownInset * MathCursor::nearbyUpDownInset() const
 	MathInset * p = array().prevInset(cursor().pos_);
 	if (p && p->isUpDownInset())
 		return static_cast<MathUpDownInset *>(p);
-	p = array().nextInset(cursor().pos_);
-	if (p && p->isUpDownInset())
-		return static_cast<MathUpDownInset *>(p);
+	//p = array().nextInset(cursor().pos_);
+	//if (p && p->isUpDownInset())
+	//	return static_cast<MathUpDownInset *>(p);
 	return 0;
 }
 
