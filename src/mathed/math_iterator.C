@@ -59,6 +59,12 @@ MathXArray const & MathIterator::xcell() const
 }
 
 
+MathArray const & MathIterator::cell() const
+{
+	return par()->xcell(position().idx_).data_;
+}
+
+
 MathInset * MathIterator::nextInset() const
 {
 	if (position().pos_ == xcell().data_.size())
@@ -132,6 +138,13 @@ void MathIterator::operator++()
 }
 
 
+void MathIterator::jump(int i)
+{
+	position().pos_ += i;
+	lyx::Assert(position().pos_ >= 0);
+	lyx::Assert(position().pos_ <= cell().size());
+}
+
 
 bool operator==(MathIterator const & it, MathIterator const & jt)
 {
@@ -149,7 +162,6 @@ bool operator!=(MathIterator const & it, MathIterator const & jt)
 		return true;
 	return it.cursor() != jt.cursor();	
 }
-
 
 
 MathIterator ibegin(MathInset * p)

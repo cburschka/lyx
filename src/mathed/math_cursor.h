@@ -235,6 +235,8 @@ public:
 	void dump(char const * str) const;
 	///
 	void stripFromLastEqualSign();
+	/// moves on 
+	void setSelection(cursor_type const & where, size_type n);
 
 	///
 	friend class Selection;

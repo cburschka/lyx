@@ -1449,3 +1449,10 @@ void MathCursor::stripFromLastEqualSign()
 }
 
 
+void MathCursor::setSelection(cursor_type const & where, size_type n)
+{
+	selection_ = true;
+	Anchor_ = where;
+	Cursor_ = where;
+	cursor().pos_ += n;
+}

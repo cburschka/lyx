@@ -18,8 +18,10 @@ public:
 	MathCursorPos const & operator*() const;
 	///
 	MathCursorPos const & operator->() const;
-	///
+	/// move on one step
 	void operator++();
+	/// move on several steps
+	void jump(int n);
 	/// read access to top most item
 	MathCursorPos const & position() const;
 	/// write access to top most item
@@ -32,9 +34,11 @@ public:
 	MathInset * par();
 	/// helper for iend
 	void goEnd();
-	
-private:
-	/// write access to top most item
+	/// read access to top most item
+	MathArray const & cell() const;
+
+private:	
+	/// read access to top most item
 	MathXArray const & xcell() const;
 	/// write access to top most item
 	MathInset * nextInset() const;

@@ -40,8 +40,10 @@
 #include "math_cursor.h"
 #include "math_factory.h"
 #include "math_hullinset.h"
+#include "math_iterator.h"
 #include "math_macrotable.h"
 #include "math_parser.h"
+#include "math_pos.h"
 #include "math_spaceinset.h"
 #include "undo_funcs.h"
 
@@ -112,6 +114,7 @@ void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f) const
 	font_ = f;
 	metrics(bv);
 }
+
 
 void InsetFormulaBase::metrics(BufferView * bv) const 
 {
@@ -220,7 +223,7 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 		MathMetricsInfo mi(bv, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
 		bv->fitLockedInsetCursor(x, y, asc, des);
-		//lyxerr << "showInsetCursor: x: " << x << " y: " << y << "\n";
+		//lyxerr << "showInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << "\n";
 	}
 	toggleInsetCursor(bv);
 }
@@ -711,6 +714,64 @@ int InsetFormulaBase::xlow() const
 int InsetFormulaBase::xhigh() const
 {
 	return xo_ + width(view_, font_);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
+                   bool const &, bool const &)
+{
+#ifdef WITH_WARNINGS
+#warning pretty ugly
+#endif
+	static InsetFormulaBase * lastformula = 0;
+	static MathIterator current = MathIterator(ibegin(par().nucleus()));
+	static MathArray ar;
+	static string laststr;
+
+	if (lastformula != this || laststr != str) {
+		//lyxerr << "reset lastformula to " << this << "\n";
+		lastformula = this;
+		laststr = str;
+ 		current	= ibegin(par().nucleus());
+		ar.clear();
+		mathed_parse_cell(ar, str);
+	} else {
+		++current;
+	}
+	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
+
+	for (MathIterator it = current; it != iend(par().nucleus()); ++it) {
+		if (it.cell().matchpart(ar, it.position().pos_)) {
+			mathcursor->setSelection(it.cursor(), ar.size());
+			current = it;
+			it.jump(ar.size());
+			// I guess some of the following can go
+			bv->toggleSelection(true);
+			hideInsetCursor(bv);
+			updateLocal(bv, true);
+			showInsetCursor(bv);
+			metrics(bv);
+			return true;
+		}
+	}
+
+	//lyxerr << "not found!\n";
+	lastformula = 0;
+	// we have to unlock ourself in this function by default!
+	// don't ask me why...
+	bv->unlockInset(this);
+	return false;
+}
+
+
+bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
+                    bool const & a, bool const & b)
+{
+	lyxerr << "searching backward not implemented in mathed" << endl;
+	return searchForward(bv, what, a, b);
 }
 
 

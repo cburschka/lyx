@@ -102,6 +102,16 @@ public:
 	///
 	BufferView * view() const { return view_; }
 
+	///
+	virtual bool searchForward(BufferView *, string const &,
+	                           bool const & = true, bool const & = false);
+	///
+	virtual bool searchBackward(BufferView *, string const &,
+	                            bool const & = true, bool const & = false);
+	///
+	virtual bool isTextInset() const { return true; }
+
+
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);

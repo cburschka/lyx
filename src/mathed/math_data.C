@@ -211,10 +211,17 @@ MathArray::iterator MathArray::end()
 
 bool MathArray::match(MathArray const & ar) const
 {
-	if (size() != ar.size())
+	return size() == ar.size() && matchpart(ar, 0);
+}
+
+
+bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
+{
+	if (size() < ar.size() + pos)
 		return false;
-	for (const_iterator it = begin(), jt = ar.begin(); it != end(); ++it, ++jt)
-		if (!it->nucleus()->match(jt->nucleus()))
+	const_iterator it = begin() + pos; 
+	for (const_iterator jt = ar.begin(); jt != ar.end(); ++jt, ++it)
+		if (!jt->nucleus()->match(it->nucleus()))
 			return false;
 	return true;
 }

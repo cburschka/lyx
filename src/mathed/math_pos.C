@@ -20,6 +20,7 @@ MathCursorPos::MathCursorPos(MathInset * p)
 }
 
 
+
 MathArray & MathCursorPos::cell(MathArray::idx_type idx) const
 {
 	lyx::Assert(par_);
