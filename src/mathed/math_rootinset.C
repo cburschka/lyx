@@ -37,20 +37,20 @@ MathInset * MathRootInset::clone() const
 void MathRootInset::metrics(MathMetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
-	dim_.a = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
-	dim_.d = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
-	dim_.w = xcell(0).width() + xcell(1).width() + 10;
+	dim_.a = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
+	dim_.d = max(cell(1).descent() + 5, cell(0).descent()) + 2;
+	dim_.w = cell(0).width() + cell(1).width() + 10;
 	metricsMarkers();
 }
 
 
 void MathRootInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	int const w = xcell(0).width();
+	int const w = cell(0).width();
 	// the "exponent"
-	xcell(0).draw(pi, x, y - 5 - xcell(0).descent());
+	cell(0).draw(pi, x, y - 5 - cell(0).descent());
 	// the "base"
-	xcell(1).draw(pi, x + w + 8, y);
+	cell(1).draw(pi, x + w + 8, y);
 	int const a = ascent();
 	int const d = descent();
 	int xp[5];

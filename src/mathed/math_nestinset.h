@@ -74,10 +74,6 @@ public:
 	MathArray & cell(idx_type);
 	/// direct access to the cell
 	MathArray const & cell(idx_type) const;
-	/// direct access to the cell including the drawing cache
-	MathXArray & xcell(idx_type);
-	/// direct access to the cell including the drawing cache
-	MathXArray const & xcell(idx_type) const;
 
 	/// can we move into this cell (see macroarg.h)
 	bool isActive() const;
@@ -105,7 +101,7 @@ public:
 
 protected:
 	/// we store the cells in a vector
-	typedef std::vector<MathXArray> cells_type;
+	typedef std::vector<MathArray> cells_type;
 	/// thusly:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor

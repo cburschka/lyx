@@ -30,7 +30,7 @@
 
 #include "LString.h"
 #include "frontends/mouse_state.h"
-#include "math_xdata.h"
+#include "math_data.h"
 
 /**
 
@@ -170,10 +170,6 @@ public:
 	virtual MathArray & cell(idx_type);
 	/// return cell given its number
 	virtual MathArray const & cell(idx_type) const;
-	/// return cell plus drawing cache given its number
-	virtual MathXArray & xcell(idx_type);
-	/// return cell plus drawing cache given its number
-	virtual MathXArray const & xcell(idx_type) const;
 
 	/// the number of columns of this inset if it is grid-like
 	virtual col_type ncols() const { return 1; }

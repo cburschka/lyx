@@ -40,7 +40,7 @@ MathInset::mode_type MathFontInset::currentMode() const
 void MathFontInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, key_->name.c_str());
-	dim_ = xcell(0).metrics(mi);
+	dim_ = cell(0).metrics(mi);
 	metricsMarkers();
 }
 
@@ -50,21 +50,21 @@ void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 	//lyxerr << "MathFontInset::draw\n";
 	//MathNestInset::draw(pi, x, y);
 	MathFontSetChanger dummy(pi.base, key_->name.c_str());
-	xcell(0).draw(pi, x + 1, y);
+	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
 
 void MathFontInset::metricsT(TextMetricsInfo const & mi) const
 {
-	dim_ = xcell(0).metricsT(mi);
+	dim_ = cell(0).metricsT(mi);
 }
 
 
 void MathFontInset::drawT(TextPainter & pain, int x, int y) const
 {
 	//lyxerr << "drawing font code: " << code_ << '\n';
-	xcell(0).drawT(pain, x, y);
+	cell(0).drawT(pain, x, y);
 }
 
 

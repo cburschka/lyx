@@ -76,33 +76,19 @@ Dimension MathInset::dimensions() const
 }
 
 
-MathXArray dummyCell;
+MathArray dummyCell;
 
-MathXArray & MathInset::xcell(idx_type)
+MathArray & MathInset::cell(idx_type)
 {
 	lyxerr << "I don't have a cell 1\n";
 	return dummyCell;
 }
 
 
-MathXArray const & MathInset::xcell(idx_type) const
+MathArray const & MathInset::cell(idx_type) const
 {
 	lyxerr << "I don't have a cell 2\n";
 	return dummyCell;
-}
-
-
-MathArray & MathInset::cell(idx_type)
-{
-	lyxerr << "I don't have a cell 3\n";
-	return dummyCell.data();
-}
-
-
-MathArray const & MathInset::cell(idx_type) const
-{
-	lyxerr << "I don't have a cell 4\n";
-	return dummyCell.data();
 }
 
 

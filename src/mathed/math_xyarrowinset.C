@@ -33,7 +33,7 @@ MathXYMatrixInset const * MathXYArrowInset::targetMatrix() const
 }
 
 
-MathXArray const & MathXYArrowInset::targetCell() const
+MathArray const & MathXYArrowInset::targetCell() const
 {
 #if 0	
 	MathXYMatrixInset const * p = targetMatrix();
@@ -55,20 +55,20 @@ MathXArray const & MathXYArrowInset::targetCell() const
 		lyxerr << "target: n: " << n << " out of range\n";
 		n = 0;
 	}
-  return p->xcell(n);
+  return p->cell(n);
 #else
-	static MathXArray dummy;
+	static MathArray dummy;
 	return dummy;
 #endif
 }
 
 
-MathXArray const & MathXYArrowInset::sourceCell() const
+MathArray const & MathXYArrowInset::sourceCell() const
 {
 #if 0
-  return targetMatrix()->xcell(mi_.idx);
+  return targetMatrix()->cell(mi_.idx);
 #else
-	static MathXArray dummy;
+	static MathArray dummy;
 	return dummy;
 #endif
 }
@@ -84,9 +84,9 @@ void MathXYArrowInset::metrics(MathMetricsInfo & mi) const
 
 	if (editing()) {
 		int w    = mathed_string_width(mi.base.font, "target: ");
-		width_   = w + max(xcell(0).width(), xcell(1).width());
-		ascent_  = xcell(0).ascent();
-		descent_ = xcell(0).descent() + xcell(1).height() + 10;
+		width_   = w + max(cell(0).width(), cell(1).width());
+		ascent_  = cell(0).ascent();
+		descent_ = cell(0).descent() + cell(1).height() + 10;
 	} else {
 		width_   = 0;
 		ascent_  = 0;
@@ -111,12 +111,12 @@ void MathXYArrowInset::draw(MathPainterInfo & pi, int x, int y) const
 		int lwid;
 		mathed_string_dim(pi.base.font, "target: ", lasc, ldes, lwid);
 
-		xcell(0).draw(pi, x + lwid, y);
+		cell(0).draw(pi, x + lwid, y);
 		drawStr(pi, pi.base.font, x + 3, y, "target");
-		y += max(xcell(0).descent(), ldes) + 5;
+		y += max(cell(0).descent(), ldes) + 5;
 
-		y += max(xcell(1).ascent(), lasc) + 5;
-		xcell(1).draw(pi, x + lwid, y);
+		y += max(cell(1).ascent(), lasc) + 5;
+		cell(1).draw(pi, x + lwid, y);
 		drawStr(pi, pi.base.font, x + 3, y, "label");
 
 #endif
@@ -124,10 +124,10 @@ void MathXYArrowInset::draw(MathPainterInfo & pi, int x, int y) const
 	} else {
 
 		drawStr(pi, font_, x, y, "X");
-		MathXArray const & s = sourceCell();
-		MathXArray const & t = targetCell();
+		MathArray const & s = sourceCell();
+		MathArray const & t = targetCell();
 		pi.pain.line(s.xm(), s.ym(), t.xm(), t.ym(), LColor::math);
-		xcell(1).draw(pi, (s.xm() + t.xm())/2, (s.ym() + t.ym())/2);
+		cell(1).draw(pi, (s.xm() + t.xm())/2, (s.ym() + t.ym())/2);
 
 	}
 }

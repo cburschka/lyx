@@ -18,8 +18,7 @@ MathInset * MathDiffInset::clone() const
 
 void MathDiffInset::addDer(MathArray const & der)
 {
-	cells_.push_back(MathXArray());
-	cells_.back().data() = der;
+	cells_.push_back(der);
 }
 
 

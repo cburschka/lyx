@@ -31,7 +31,7 @@ MathInset * MathFontOldInset::clone() const
 void MathFontOldInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, key_->name.c_str());
-	dim_ = xcell(0).metrics(mi);
+	dim_ = cell(0).metrics(mi);
 	metricsMarkers();
 }
 
@@ -39,20 +39,20 @@ void MathFontOldInset::metrics(MathMetricsInfo & mi) const
 void MathFontOldInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	MathFontSetChanger dummy(pi.base, key_->name.c_str());
-	xcell(0).draw(pi, x + 1, y);
+	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
 
 void MathFontOldInset::metricsT(TextMetricsInfo const & mi) const
 {
-	dim_ = xcell(0).metricsT(mi);
+	dim_ = cell(0).metricsT(mi);
 }
 
 
 void MathFontOldInset::drawT(TextPainter & pain, int x, int y) const
 {
-	xcell(0).drawT(pain, x, y);
+	cell(0).drawT(pain, x, y);
 }
 
 

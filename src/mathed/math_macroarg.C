@@ -40,7 +40,7 @@ void MathMacroArgument::write(WriteStream & os) const
 void MathMacroArgument::metrics(MathMetricsInfo & mi) const
 {
 	if (expanded_)
-		dim_ = xcell(0).metrics(mi);
+		dim_ = cell(0).metrics(mi);
 	else
 		mathed_string_dim(mi.base.font, str_, dim_);
 }
@@ -49,7 +49,7 @@ void MathMacroArgument::metrics(MathMetricsInfo & mi) const
 void MathMacroArgument::draw(MathPainterInfo & pi, int x, int y) const
 {
 	if (expanded_)
-		xcell(0).draw(pi, x, y);
+		cell(0).draw(pi, x, y);
 	else
 		drawStrRed(pi, x, y, str_);
 }

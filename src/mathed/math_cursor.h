@@ -209,8 +209,6 @@ public:
 	///
 	MathArray & array() const;
 	///
-	MathXArray & xarray() const;
-	///
 	bool hasPrevAtom() const;
 	///
 	bool hasNextAtom() const;

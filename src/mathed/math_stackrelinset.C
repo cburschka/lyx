@@ -22,22 +22,22 @@ MathInset * MathStackrelInset::clone() const
 
 void MathStackrelInset::metrics(MathMetricsInfo & mi) const
 {
-	xcell(1).metrics(mi);
+	cell(1).metrics(mi);
 	MathFracChanger dummy(mi.base);
-	xcell(0).metrics(mi);
-	dim_.w = max(xcell(0).width(), xcell(1).width()) + 4;
-	dim_.a = xcell(1).ascent() + xcell(0).height() + 4;
-	dim_.d = xcell(1).descent();
+	cell(0).metrics(mi);
+	dim_.w = max(cell(0).width(), cell(1).width()) + 4;
+	dim_.a = cell(1).ascent() + cell(0).height() + 4;
+	dim_.d = cell(1).descent();
 }
 
 
 void MathStackrelInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int m  = x + width() / 2;
-	int yo = y - xcell(1).ascent() - xcell(0).descent() - 1;
-	xcell(1).draw(pi, m - xcell(1).width() / 2, y);
+	int yo = y - cell(1).ascent() - cell(0).descent() - 1;
+	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	MathFracChanger dummy(pi.base);
-	xcell(0).draw(pi, m - xcell(0).width() / 2, yo);
+	cell(0).draw(pi, m - cell(0).width() / 2, yo);
 }
 
 

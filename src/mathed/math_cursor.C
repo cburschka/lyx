@@ -830,7 +830,7 @@ void MathCursor::touch()
 	MathIterator::const_iterator it = Cursor_.begin();
 	MathIterator::const_iterator et = Cursor_.end();
 	for ( ; it != et; ++it)
-		it->xcell().touch();
+		it->cell().touch();
 }
 
 
@@ -948,19 +948,6 @@ MathArray & MathCursor::array() const
 	}
 
 	return cursor().cell();
-}
-
-
-MathXArray & MathCursor::xarray() const
-{
-	static MathXArray dummy;
-
-	if (depth() == 0) {
-		lyxerr << "############  depth() == 0 not valid\n";
-		return dummy;
-	}
-
-	return cursor().xcell();
 }
 
 

@@ -20,16 +20,16 @@ MathInset * MathLefteqnInset::clone() const
 
 void MathLefteqnInset::metrics(MathMetricsInfo & mi) const
 {
-	xcell(0).metrics(mi);
-	dim_.a = xcell(0).ascent() + 2;
-	dim_.d = xcell(0).descent() + 2;
+	cell(0).metrics(mi);
+	dim_.a = cell(0).ascent() + 2;
+	dim_.d = cell(0).descent() + 2;
 	dim_.w = 4;
 }
 
 
 void MathLefteqnInset::draw(MathPainterInfo & pain, int x, int y) const
 {
-	xcell(0).draw(pain, x + 2, y);
+	cell(0).draw(pain, x + 2, y);
 	//mathed_draw_framebox(pain, x, y, this);
 }
 

@@ -2,7 +2,7 @@
 #define MATH_POS_H
 
 #include <iosfwd>
-#include "math_xdata.h"
+#include "math_data.h"
 
 
 /// Description of a position
@@ -17,10 +17,6 @@ public:
 	MathArray & cell() const;
 	/// returns cell corresponding to this position
 	MathArray & cell(MathArray::idx_type idx) const;
-	/// returns xcell corresponding to this position
-	MathXArray & xcell() const;
-	/// returns xcell corresponding to this position
-	MathXArray & xcell(MathArray::idx_type idx) const;
 	/// gets screen position of the thing
 	void getPos(int & x, int & y) const;
 

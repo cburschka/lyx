@@ -37,20 +37,6 @@ MathArray & MathCursorPos::cell() const
 }
 
 
-MathXArray & MathCursorPos::xcell(MathArray::idx_type idx) const
-{
-	lyx::Assert(par_);
-	return par_->xcell(idx);
-}
-
-
-MathXArray & MathCursorPos::xcell() const
-{
-	lyx::Assert(par_);
-	return par_->xcell(idx_);
-}
-
-
 void MathCursorPos::getPos(int & x, int & y) const
 {
 	par_->getPos(idx_, pos_, x, y);

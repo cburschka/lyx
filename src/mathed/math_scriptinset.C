@@ -73,27 +73,27 @@ bool MathScriptInset::idxLast(idx_type & idx, pos_type & pos) const
 }
 
 
-MathXArray const & MathScriptInset::down() const
+MathArray const & MathScriptInset::down() const
 {
-	return xcell(0);
+	return cell(0);
 }
 
 
-MathXArray & MathScriptInset::down()
+MathArray & MathScriptInset::down()
 {
-	return xcell(0);
+	return cell(0);
 }
 
 
-MathXArray const & MathScriptInset::up() const
+MathArray const & MathScriptInset::up() const
 {
-	return xcell(1);
+	return cell(1);
 }
 
 
-MathXArray & MathScriptInset::up()
+MathArray & MathScriptInset::up()
 {
-	return xcell(1);
+	return cell(1);
 }
 
 
@@ -103,15 +103,15 @@ void MathScriptInset::ensure(bool up)
 }
 
 
-MathXArray const & MathScriptInset::nuc() const
+MathArray const & MathScriptInset::nuc() const
 {
-	return xcell(2);
+	return cell(2);
 }
 
 
-MathXArray & MathScriptInset::nuc()
+MathArray & MathScriptInset::nuc()
 {
-	return xcell(2);
+	return cell(2);
 }
 
 
@@ -341,7 +341,7 @@ bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 void MathScriptInset::write(WriteStream & os) const
 {
 	if (nuc().size()) {
-		os << nuc().data();
+		os << nuc();
 		if (nuc().back()->takesLimits()) {
 			if (limits_ == -1)
 				os << "\\nolimits ";
@@ -356,10 +356,10 @@ void MathScriptInset::write(WriteStream & os) const
 	}
 
 	if (hasDown() && down().size())
-		os << "_{" << down().data() << '}';
+		os << "_{" << down() << '}';
 
 	if (hasUp() && up().size())
-		os << "^{" << up().data() << '}';
+		os << "^{" << up() << '}';
 
 	if (lock_ && !os.latex())
 		os << "\\lyxlock ";
@@ -379,27 +379,27 @@ void MathScriptInset::normalize(NormalStream & os) const
 		os << "[sub ";
 
 	if (nuc().size())
-		os << nuc().data() << ' ';
+		os << nuc() << ' ';
 	else
 		os << "[par]";
 
 	if (u && d)
-		os << down().data() << ' ' << up().data() << ']';
+		os << down() << ' ' << up() << ']';
 	else if (d)
-		os << down().data() << ']';
+		os << down() << ']';
 	else if (u)
-		os << up().data() << ']';
+		os << up() << ']';
 }
 
 
 void MathScriptInset::maplize(MapleStream & os) const
 {
 	if (nuc().size())
-		os << nuc().data();
+		os << nuc();
 	if (hasDown() && down().size())
-		os << '[' << down().data() << ']';
+		os << '[' << down() << ']';
 	if (hasUp() && up().size())
-		os << "^(" << up().data() << ')';
+		os << "^(" << up() << ')';
 }
 
 
@@ -410,17 +410,17 @@ void MathScriptInset::mathematicize(MathematicaStream & os) const
 
 	if (nuc().size()) {
 		if (d) 
-			os << "Subscript[" << nuc().data();
+			os << "Subscript[" << nuc();
 		else
-			os << nuc().data();
+			os << nuc();
 	}
 
 	if (u)
-		os << "^(" << up().data() << ")";
+		os << "^(" << up() << ")";
 
 	if (nuc().size())
 		if (d)
-			os << "," << down().data() << "]"; 
+			os << "," << down() << "]"; 
 }
 
 
@@ -437,27 +437,27 @@ void MathScriptInset::mathmlize( MathMLStream & os) const
 		os << MTag("msub");
 
 	if (nuc().size())
-		os << nuc().data();
+		os << nuc();
 	else
 		os << "<mrow/>";
 
 	if (u && d)
-		os << down().data() << up().data() << ETag("msubsup");
+		os << down() << up() << ETag("msubsup");
 	else if (u)
-		os << up().data() << ETag("msup");
+		os << up() << ETag("msup");
 	else if (d)
-		os << down().data() << ETag("msub");
+		os << down() << ETag("msub");
 }
 
 
 void MathScriptInset::octavize(OctaveStream & os) const
 {
 	if (nuc().size())
-		os << nuc().data();
+		os << nuc();
 	if (hasDown() && down().size())
-		os << '[' << down().data() << ']';
+		os << '[' << down() << ']';
 	if (hasUp() && up().size())
-		os << "^(" << up().data() << ')';
+		os << "^(" << up() << ')';
 }
 
 

@@ -1,17 +1,16 @@
 // -*- C++ -*-
 /*
- *  Purpose:     A general purpose resizable array.
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     January 1996
- *
- *  Dependencies: None (almost)
- *
- *  Copyright: 1996, Alejandro Aguilar Sierra
- *                 1997  The LyX Team!
- *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
  */
+
+/** \class MathArray
+    \brief Low level container for math insets
+    \author Alejandro Aguilar Sierra
+    \author André Pönitz
+    \author Lars Gullik Bjønnes
+    \version February 2001
+  */
 
 #ifndef MATH_DATA_H
 #define MATH_DATA_H
@@ -20,25 +19,21 @@
 #include <vector>
 
 #include "math_atom.h"
+#include "dimension.h"
 
 class MathMacro;
 class LaTeXFeatures;
 class ReplaceData;
+class MathMetricsInfo;
+class MathPainterInfo;
+class TextMetricsInfo;
+class TextPainter;
 
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-
-/** \class MathArray
-    \brief Low level container for math insets
-
-    \author Alejandro Aguilar Sierra
-    \author André Pönitz
-    \author Lars Gullik Bjønnes
-    \version February 2001
-  */
 
 class MathArray : private std::vector<MathAtom> {
 public:
@@ -64,7 +59,7 @@ public:
 	
 public:
 	///
-	MathArray() {}
+	MathArray();
 	///
 	MathArray(const_iterator from, const_iterator to);
 	///
@@ -110,9 +105,70 @@ public:
 	MathAtom & operator[](pos_type);
 	/// checked read access
 	MathAtom const & operator[](pos_type) const;
+	/// rebuild cached metrics information
+	Dimension const & metrics(MathMetricsInfo & mi) const;
+	/// redraw cell using cache metrics information
+	void draw(MathPainterInfo & pi, int x, int y) const;
+	/// rebuild cached metrics information
+	Dimension const & metricsT(TextMetricsInfo const & mi) const;
+	/// redraw cell using cache metrics information
+	void drawT(TextPainter & pi, int x, int y) const;
+	/// mark cell for re-drawing
+	void touch() const;
+
+	/// access to cached x coordinate of last drawing
+	int xo() const { return xo_; }
+	/// access to cached y coordinate of last drawing
+	int yo() const { return yo_; }
+	/// access to cached x coordinate of mid point of last drawing
+	int xm() const { return xo_ + dim_.w / 2; }
+	/// access to cached y coordinate of mid point of last drawing
+	int ym() const { return yo_ + (dim_.d - dim_.a) / 2; }
+	/// returns x coordinate of given position in the array
+	int pos2x(size_type pos) const;
+	/// returns position of given x coordinate
+	int pos2x(size_type pos1, size_type pos2, int glue) const;
+	/// returns position of given x coordinate
+	size_type x2pos(int pos) const;
+	/// returns position of given x coordinate fstarting from a certain pos
+	size_type x2pos(size_type startpos, int targetx, int glue) const;
+	/// returns distance of this cell to the point given by x and y
+	// assumes valid position and size cache
+	int dist(int x, int y) const;
+
+	/// ascent of this cell above the baseline
+	int ascent() const { return dim_.a; }
+	/// descent of this cell below the baseline
+	int descent() const { return dim_.d; }
+	/// height of the cell
+	int height() const { return dim_.a + dim_.d; }
+	/// width of this cell
+	int width() const { return dim_.w; }
+	/// dimensions of cell
+	Dimension const & dim() const	{ return dim_; }
+	/// dimensions of cell
+	void setDim(Dimension const & d) const { dim_ = d; }
+	/// bounding box of this cell
+	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
+	/// gives center coordinates
+	void center(int & x, int & y) const;
+	/// adjust (x,y) to point on boundary on a straight line from the center
+	void towards(int & x, int & y) const;
+
 private:
 	/// is this an exact match at this position?
 	bool find1(MathArray const & ar, size_type pos) const;
+
+	/// cached dimensions of cell
+	mutable Dimension dim_;
+	/// cached x coordinate of last drawing
+	mutable int xo_;
+	/// cached y coordinate of last drawing
+	mutable int yo_;
+	/// cached cleaness of cell
+	mutable bool clean_;
+	/// cached draw status of cell
+	mutable bool drawn_;
 };
 
 ///

@@ -38,11 +38,11 @@ int MathBinomInset::dw() const
 void MathBinomInset::metrics(MathMetricsInfo & mi) const
 {
 	MathScriptChanger(mi.base);
-	xcell(0).metrics(mi);
-	xcell(1).metrics(mi);
-	dim_.a = xcell(0).height() + 4 + 5;
-	dim_.d = xcell(1).height() + 4 - 5;
-	dim_.w = max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4;
+	cell(0).metrics(mi);
+	cell(1).metrics(mi);
+	dim_.a = cell(0).height() + 4 + 5;
+	dim_.d = cell(1).height() + 4 - 5;
+	dim_.w = max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
 }
 
 
@@ -50,8 +50,8 @@ void MathBinomInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int m = x + width() / 2;
 	MathScriptChanger(pi.base);
-	xcell(0).draw(pi, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
-	xcell(1).draw(pi, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
+	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 3 - 5);
+	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 3 - 5);
 	mathed_draw_deco(pi, x, y - ascent(), dw(), height(), "(");
 	mathed_draw_deco(pi, x + width() - dw(), y - ascent(),	dw(), height(), ")");
 }

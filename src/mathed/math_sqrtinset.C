@@ -22,17 +22,17 @@ MathInset * MathSqrtInset::clone() const
 
 void MathSqrtInset::metrics(MathMetricsInfo & mi) const
 {
-	xcell(0).metrics(mi);
-	dim_.a = xcell(0).ascent()  + 4;
-	dim_.d = xcell(0).descent() + 2;
-	dim_.w = xcell(0).width()   + 12;
+	cell(0).metrics(mi);
+	dim_.a = cell(0).ascent()  + 4;
+	dim_.d = cell(0).descent() + 2;
+	dim_.w = cell(0).width()   + 12;
 	metricsMarkers();
 }
 
 
 void MathSqrtInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	xcell(0).draw(pi, x + 10, y);
+	cell(0).draw(pi, x + 10, y);
 	int const a = ascent();
 	int const d = descent();
 	int xp[4];
@@ -48,19 +48,19 @@ void MathSqrtInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathSqrtInset::metricsT(TextMetricsInfo const & mi) const
 {
-	xcell(0).metricsT(mi);
-	dim_.a = xcell(0).ascent()  + 1;
-	dim_.d = xcell(0).descent();
-	dim_.w = xcell(0).width()   + 2;
+	cell(0).metricsT(mi);
+	dim_.a = cell(0).ascent()  + 1;
+	dim_.d = cell(0).descent();
+	dim_.w = cell(0).width()   + 2;
 }
 
 
 void MathSqrtInset::drawT(TextPainter & pain, int x, int y) const
 {
-	xcell(0).drawT(pain, x + 2, y);
-	pain.horizontalLine(x + 2, y - xcell(0).ascent(), xcell(0).width(), '_');
-	pain.verticalLine  (x + 1, y - xcell(0).ascent() + 1, xcell(0).height());
-	pain.draw(x, y + xcell(0).descent(), '\\');
+	cell(0).drawT(pain, x + 2, y);
+	pain.horizontalLine(x + 2, y - cell(0).ascent(), cell(0).width(), '_');
+	pain.verticalLine  (x + 1, y - cell(0).ascent() + 1, cell(0).height());
+	pain.draw(x, y + cell(0).descent(), '\\');
 }
 
 

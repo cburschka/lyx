@@ -254,7 +254,7 @@ void MathGridInset::metrics(MathMetricsInfo & mi) const
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			MathXArray const & c = xcell(index(row, col));
+			MathArray const & c = cell(index(row, col));
 			asc  = max(asc,  c.ascent());
 			desc = max(desc, c.descent());
 		}
@@ -297,7 +297,7 @@ void MathGridInset::metrics(MathMetricsInfo & mi) const
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			wid = max(wid, xcell(index(row, col)).width());
+			wid = max(wid, cell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
@@ -386,7 +386,7 @@ void MathGridInset::metrics(MathMetricsInfo & mi) const
 void MathGridInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		xcell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
+		cell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
 
 	for (row_type row = 0; row <= nrows(); ++row)
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
@@ -409,14 +409,14 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	// let the cells adjust themselves
 	//MathNestInset::metrics(mi);
 	for (idx_type i = 0; i < nargs(); ++i)
-		xcell(i).metricsT(mi);
+		cell(i).metricsT(mi);
 
 	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			MathXArray const & c = xcell(index(row, col));
+			MathArray const & c = cell(index(row, col));
 			asc  = max(asc,  c.ascent());
 			desc = max(desc, c.descent());
 		}
@@ -459,7 +459,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			wid = max(wid, xcell(index(row, col)).width());
+			wid = max(wid, cell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
@@ -497,7 +497,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 void MathGridInset::drawT(TextPainter & pain, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		xcell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 
@@ -536,7 +536,7 @@ void MathGridInset::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert
-		(cells_.begin() + (row + 1) * ncols(), ncols(), MathXArray());
+		(cells_.begin() + (row + 1) * ncols(), ncols(), MathArray());
 	cellinfo_.insert
 		(cellinfo_.begin() + (row + 1) * ncols(), ncols(), CellInfo());
 }
@@ -545,7 +545,7 @@ void MathGridInset::addRow(row_type row)
 void MathGridInset::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
-	//cells_.insert(cells_.end(), ncols(), MathXArray());
+	//cells_.insert(cells_.end(), ncols(), MathArray());
 	for (col_type col = 0; col < ncols(); ++col) {
 		cells_.push_back(cells_type::value_type());
 		cellinfo_.push_back(CellInfo());
@@ -617,9 +617,9 @@ int MathGridInset::cellXOffset(idx_type idx) const
 	int x = colinfo_[c].offset_;
 	char align = colinfo_[c].align_;
 	if (align == 'r' || align == 'R')
-		x += colinfo_[c].width_ - xcell(idx).width();
+		x += colinfo_[c].width_ - cell(idx).width();
 	if (align == 'c' || align == 'C')
-		x += (colinfo_[c].width_ - xcell(idx).width()) / 2;
+		x += (colinfo_[c].width_ - cell(idx).width()) / 2;
 	return x;
 }
 
@@ -637,13 +637,13 @@ bool MathGridInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 		if (idx < ncols())
 			return false;
 		idx -= ncols();
-		pos = xcell(idx).x2pos(targetx - xcell(idx).xo());
+		pos = cell(idx).x2pos(targetx - cell(idx).xo());
 		return true;
 	} else {
 		if (idx >= ncols() * (nrows() - 1))
 			return false;
 		idx += ncols();
-		pos = xcell(idx).x2pos(targetx - xcell(idx).xo());
+		pos = cell(idx).x2pos(targetx - cell(idx).xo());
 		return true;
 	}
 }

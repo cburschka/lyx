@@ -66,17 +66,17 @@ public:
 	/// get limits
 	int limits() const { return limits_; }
 	/// returns subscript
-	MathXArray const & down() const;
+	MathArray const & down() const;
 	/// returns subscript
-	MathXArray & down();
+	MathArray & down();
 	/// returns superscript
-	MathXArray const & up() const;
+	MathArray const & up() const;
 	/// returns superscript
-	MathXArray & up();
+	MathArray & up();
 	/// returns nucleus
-	MathXArray const & nuc() const;
+	MathArray const & nuc() const;
 	/// returns nucleus
-	MathXArray & nuc();
+	MathArray & nuc();
 	/// do we have a superscript?
 	bool hasUp() const;
 	/// do we have a subscript?

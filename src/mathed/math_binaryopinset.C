@@ -34,19 +34,19 @@ int MathBinaryOpInset::opwidth() const
 void MathBinaryOpInset::metrics(MathMetricsInfo & mi) const
 {
 	mi_ = mi;
-	xcell(0).metrics(mi);
-	xcell(1).metrics(mi);
-	width_   = xcell(0).width() + xcell(1).width() + opwidth();
-	ascent_  = max(xcell(0).ascent(),  xcell(1).ascent());
-	descent_ = max(xcell(0).descent(), xcell(1).descent());
+	cell(0).metrics(mi);
+	cell(1).metrics(mi);
+	width_   = cell(0).width() + cell(1).width() + opwidth();
+	ascent_  = max(cell(0).ascent(),  cell(1).ascent());
+	descent_ = max(cell(0).descent(), cell(1).descent());
 }
 
 
 void MathBinaryOpInset::draw(MathPainterInfo & pain, int x, int y) const
 {
-	xcell(0).draw(pain, x, y);
-	drawChar(pain, LM_TC_CONST, mi_, x + xcell(0).width() , y, op_);
-	xcell(1).draw(pain, x + width() - xcell(1).width(), y);
+	cell(0).draw(pain, x, y);
+	drawChar(pain, LM_TC_CONST, mi_, x + cell(0).width() , y, op_);
+	cell(1).draw(pain, x + width() - cell(1).width(), y);
 }
 
 

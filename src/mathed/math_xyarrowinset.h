@@ -37,9 +37,9 @@ public:
 	///
 	MathXYMatrixInset const * targetMatrix() const;
 	///
-	MathXArray const & targetCell() const;
+	MathArray const & targetCell() const;
 	///
-	MathXArray const & sourceCell() const;
+	MathArray const & sourceCell() const;
 
 	///
 	bool up_;

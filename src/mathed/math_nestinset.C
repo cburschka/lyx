@@ -23,33 +23,21 @@ MathInset::idx_type MathNestInset::nargs() const
 }
 
 
-MathXArray & MathNestInset::xcell(idx_type i)
-{
-	return cells_[i];
-}
-
-
-MathXArray const & MathNestInset::xcell(idx_type i) const
-{
-	return cells_[i];
-}
-
-
 MathArray & MathNestInset::cell(idx_type i)
 {
-	return cells_[i].data();
+	return cells_[i];
 }
 
 
 MathArray const & MathNestInset::cell(idx_type i) const
 {
-	return cells_[i].data();
+	return cells_[i];
 }
 
 
 void MathNestInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
 {
-	MathXArray const & ar = xcell(idx);
+	MathArray const & ar = cell(idx);
 	x = ar.xo() + ar.pos2x(pos);
 	y = ar.yo();
 	// move cursor visually into empty cells ("blue rectangles");
@@ -68,7 +56,7 @@ void MathNestInset::metrics(MathMetricsInfo const & mi) const
 {
 	MathMetricsInfo m = mi;
 	for (idx_type i = 0; i < nargs(); ++i)
-		xcell(i).metrics(m);
+		cell(i).metrics(m);
 }
 
 
@@ -185,7 +173,7 @@ void MathNestInset::drawSelection(MathPainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const
 {
 	if (idx1 == idx2) {
-		MathXArray const & c = xcell(idx1);
+		MathArray const & c = cell(idx1);
 		int x1 = c.xo() + c.pos2x(pos1);
 		int y1 = c.yo() - c.ascent();
 		int x2 = c.xo() + c.pos2x(pos2);
@@ -194,7 +182,7 @@ void MathNestInset::drawSelection(MathPainterInfo & pi,
 	} else {
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, idx1, idx2)) {
-				MathXArray const & c = xcell(i);
+				MathArray const & c = cell(i);
 				int x1 = c.xo();
 				int y1 = c.yo() - c.ascent();
 				int x2 = c.xo() + c.width();
@@ -307,6 +295,8 @@ void MathNestInset::write(WriteStream & os) const
 		os << '{' << cell(i) << '}';
 	if (lock_ && !os.latex())
 		os << "\\lyxlock ";
+	if (nargs() == 0)
+		os << ' ';
 }
 
 

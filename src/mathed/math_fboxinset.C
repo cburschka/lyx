@@ -36,10 +36,10 @@ void MathFboxInset::metrics(MathMetricsInfo & mi) const
 {
 	if (key_->name == "fbox") {
 		MathFontSetChanger dummy(mi.base, "textnormal");
-		dim_ = xcell(0).metrics(mi);
+		dim_ = cell(0).metrics(mi);
 		metricsMarkers2(5); // 5 pixels margin
 	} else {
-		dim_ = xcell(0).metrics(mi);
+		dim_ = cell(0).metrics(mi);
 		metricsMarkers2(5); // 5 pixels margin
 	}
 }
@@ -51,9 +51,9 @@ void MathFboxInset::draw(MathPainterInfo & pi, int x, int y) const
 			LColor::black);
 	if (key_->name == "fbox") {
 		MathFontSetChanger dummy(pi.base, "textnormal");
-		xcell(0).draw(pi, x + 5, y);
+		cell(0).draw(pi, x + 5, y);
 	} else {
-		xcell(0).draw(pi, x + 5, y);
+		cell(0).draw(pi, x + 5, y);
 	}
 }
 

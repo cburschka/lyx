@@ -34,7 +34,7 @@ void MathTextInset::getPos(idx_type, pos_type pos, int & x, int & y) const
 
 
 bool MathTextInset::idxUpDown(idx_type &, pos_type & pos, bool up,
-	int targetx) const
+	int /*targetx*/) const
 {
 	// try to move only one screen row up or down if possible
 	idx_type i = pos2row(pos);
@@ -50,14 +50,14 @@ bool MathTextInset::idxUpDown(idx_type &, pos_type & pos, bool up,
 			return false;
 	}
 	MathGridInset::CellInfo const & cell2 = cache_.cellinfo_[i];
-	pos = xcell(0).x2pos(cell2.begin_, x, cell2.glue_);
+	pos = cell(0).x2pos(cell2.begin_, x, cell2.glue_);
 	return true;
 }
 
 
 void MathTextInset::metrics(MathMetricsInfo & mi) const
 {
-	xcell(0).metrics(mi);
+	cell(0).metrics(mi);
 
 	// we do our own metrics fiddling
 	// delete old cache
@@ -104,7 +104,7 @@ void MathTextInset::metrics(MathMetricsInfo & mi) const
 		// We passed the limit. Create a row entry.
 		//lyxerr << "passed limit\n";
 		cache_.appendRow();
-		MathXArray & ar = cache_.xcell(cache_.nargs() - 1);
+		MathArray & ar = cache_.cell(cache_.nargs() - 1);
 		MathGridInset::CellInfo & row = cache_.cellinfo_.back();
 		if (c == '\n') {
 			// we are here because we hit a hard newline
@@ -129,8 +129,7 @@ void MathTextInset::metrics(MathMetricsInfo & mi) const
 			row.end_   = i + 1;
 			begin      = i + 1;
 		}
-		ar.data() =
-			MathArray(cell(0).begin() + row.begin_, cell(0).begin() + row.end_);
+		ar = MathArray(cell(0).begin() + row.begin_, cell(0).begin() + row.end_);
 		//lyxerr << "line: " << ar << "\n";
 		// in any case, start the new row with empty boxes
 		curr = 0;
@@ -138,12 +137,11 @@ void MathTextInset::metrics(MathMetricsInfo & mi) const
 	}
 	// last row: put in everything else
 	cache_.appendRow();
-	MathXArray & ar = cache_.xcell(cache_.nargs() - 1);
+	MathArray & ar = cache_.cell(cache_.nargs() - 1);
 	MathGridInset::CellInfo & row = cache_.cellinfo_.back();
 	row.begin_ = begin;
 	row.end_   = cell(0).size();
-	ar.data()  =
-		MathArray(cell(0).begin() + row.begin_, cell(0).begin() + row.end_);
+	ar = MathArray(cell(0).begin() + row.begin_, cell(0).begin() + row.end_);
 	//lyxerr << "last line: " << ar.data() << "\n";
 
 	// what to report?

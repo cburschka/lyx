@@ -40,9 +40,9 @@ public:
 	///
 	MathMacro(MathMacro const &);
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
 	MathInset * clone() const;
 	///
@@ -63,15 +63,11 @@ public:
 	bool match(MathInset *) const { return false; }
 
 	///
-	void normalize(NormalStream &) const;
-	///
 	void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;
-	///
-	void write(WriteStream & os) const;
 
 private:
 	///
@@ -88,7 +84,7 @@ private:
 	///
 	MathAtom & tmplate_;
 	///
-	mutable MathXArray expanded_;
+	mutable MathArray expanded_;
 	///
 	mutable MathMetricsInfo mi_;
 	///

@@ -23,14 +23,14 @@ MathInset * MathEnvInset::clone() const
 
 void MathEnvInset::metrics(MathMetricsInfo & mi) const
 {
-	dim_ = xcell(0).metrics(mi);
+	dim_ = cell(0).metrics(mi);
 	metricsMarkers2();
 }
 
 
 void MathEnvInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	xcell(0).draw(pi, x + 1, y);
+	cell(0).draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);
 }
 

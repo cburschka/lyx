@@ -30,6 +30,6 @@ bool MathFracbaseInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 	if (idx == target)
 		return false;
 	idx = target;
-	pos = xcell(idx).x2pos(targetx);
+	pos = cell(idx).x2pos(targetx);
 	return true;
 }

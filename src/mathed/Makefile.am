@@ -144,8 +144,6 @@ libmathed_la_SOURCES = \
 	math_undersetinset.h \
 	math_xarrowinset.C \
 	math_xarrowinset.h \
-	math_xdata.C \
-	math_xdata.h \
 	math_xyarrowinset.C \
 	math_xyarrowinset.h \
 	math_xymatrixinset.C \

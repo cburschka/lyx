@@ -68,7 +68,7 @@ bool MathMacro::defining() const
 
 void MathMacro::expand() const
 {
-	expanded_ = tmplate_->xcell(tmplate_->cell(1).empty() ? 0 : 1);
+	expanded_ = tmplate_->cell(tmplate_->cell(1).empty() ? 0 : 1);
 }
 
 
@@ -93,7 +93,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 		mathed_string_dim(font_, "#1: ", ldim);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
-			MathXArray const & c = xcell(i);
+			MathArray const & c = cell(i);
 			c.metrics(mi_);
 			dim_.w  = max(dim_.w, c.width() + ldim.w);
 			dim_.d += max(c.ascent(),  ldim.a) + 5;
@@ -103,7 +103,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 	}
 
 	expand();
-	expanded_.data().substitute(*this);
+	expanded_.substitute(*this);
 	expanded_.metrics(mi_);
 	dim_ = expanded_.dim();
 }
@@ -133,7 +133,7 @@ void MathMacro::draw(MathPainterInfo & pi, int x, int y) const
 		mathed_string_dim(font_, "#1: ", ldim);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
-			MathXArray const & c = xcell(i);
+			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.a) + 5;
 			c.draw(pi, x + ldim.w, h);
 			char str[] = "#1:";
@@ -166,12 +166,12 @@ bool MathMacro::idxUpDown(idx_type & idx, pos_type &, bool up, int x) const
 	if (up) {
 		if (!MathNestInset::idxLeft(idx, pos))
 			return false;
-		pos = xcell(idx).x2pos(x);
+		pos = cell(idx).x2pos(x);
 		return true;
 	} else {
 		if (!MathNestInset::idxRight(idx, pos))
 			return false;
-		pos = xcell(idx).x2pos(x);
+		pos = cell(idx).x2pos(x);
 		return true;
 	}
 }
@@ -200,45 +200,26 @@ void MathMacro::validate(LaTeXFeatures & features) const
 void MathMacro::maplize(MapleStream & os) const
 {
 	updateExpansion();
-	::maplize(expanded_.data(), os);
+	::maplize(expanded_, os);
 }
 
 
 void MathMacro::mathmlize(MathMLStream & os) const
 {
 	updateExpansion();
-	::mathmlize(expanded_.data(), os);
+	::mathmlize(expanded_, os);
 }
 
 
 void MathMacro::octavize(OctaveStream & os) const
 {
 	updateExpansion();
-	::octavize(expanded_.data(), os);
-}
-
-
-void MathMacro::normalize(NormalStream & os) const
-{
-	os << "[macro " << name() << " ";
-	for (idx_type i = 0; i < nargs(); ++i)
-		os << cell(i) << ' ';
-	os << ']';
-}
-
-
-void MathMacro::write(WriteStream & os) const
-{
-	os << '\\' << name();
-	for (idx_type i = 0; i < nargs(); ++i)
-		os << '{' << cell(i) << '}';
-	if (nargs() == 0)
-		os << ' ';
+	::octavize(expanded_, os);
 }
 
 
 void MathMacro::updateExpansion() const
 {
 	expand();
-	expanded_.data().substitute(*this);
+	expanded_.substitute(*this);
 }

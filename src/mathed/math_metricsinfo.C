@@ -14,9 +14,11 @@ MathMetricsBase::MathMetricsBase()
 
 
 
+
 MathMetricsInfo::MathMetricsInfo()
 	: fullredraw(false)
 {}
+
 
 
 

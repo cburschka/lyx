@@ -544,8 +544,8 @@ void extractIntegrals(MathArray & ar)
 
 		// handle scripts if available
 		if (!testIntSymbol(it->nucleus())) {
-			p->cell(2) = it->nucleus()->asScriptInset()->down().data();
-			p->cell(3) = it->nucleus()->asScriptInset()->up().data();
+			p->cell(2) = it->nucleus()->asScriptInset()->down();
+			p->cell(3) = it->nucleus()->asScriptInset()->up();
 		}
 		p->cell(0) = MathArray(it + 1, jt);
 
@@ -610,7 +610,7 @@ void extractSums(MathArray & ar)
 		MathScriptInset * sub = (*it)->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
-			MathArray & ar = sub->down().data();
+			MathArray & ar = sub->down();
 			MathArray::iterator xt =
 				find_if(ar.begin(), ar.end(), &testEqualSign);
 			if (xt != ar.end()) {
@@ -626,7 +626,7 @@ void extractSums(MathArray & ar)
 
 		// collect upper bound
 		if (sub && sub->hasUp())
-			p->cell(3) = sub->up().data();
+			p->cell(3) = sub->up();
 
 		// use something  behind the script as core
 		MathArray::iterator tt = extractArgument(p->cell(0), it + 1, ar.end());
@@ -729,7 +729,7 @@ void extractDiff(MathArray & ar)
 			if (script && script->hasUp()) {
 				// things like   d.../dx^n
 				int mult = 1;
-				if (extractNumber(script->up().data(), mult)) {
+				if (extractNumber(script->up(), mult)) {
 					//lyxerr << "mult: " << mult << endl;
 					for (int i = 0; i < mult; ++i)
 						diff->addDer(MathArray(dt + 1, st));
@@ -785,7 +785,7 @@ void extractLims(MathArray & ar)
 			continue;
 
 		// and it must contain a -> symbol
-		MathArray & s = sub->down().data();
+		MathArray & s = sub->down();
 		MathArray::iterator st = find_if(s.begin(), s.end(), &testRightArrow);
 		if (st == s.end())
 			continue;
