@@ -1,12 +1,12 @@
 #LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+\lyxformat 224
 \textclass article
 \language english
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize Default
 \paperpackage a4
 \use_geometry 0
@@ -23,6 +23,8 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes 0
+\end_header
 
 \layout Title
 
@@ -119,12 +121,8 @@ LyX for LaTeX Users
 
 LyX has lots of features for people who read or write a language other than
  English.
- In addition, the keybindings, toolbar, and many other characteristics are
- highly configurable (mostly by editing your 
-\family typewriter 
-lyxrc
-\family default 
- file).
+ In addition, the keybindings, toolbars, and many other characteristics
+ are highly configurable.
  See 
 \family sans 
 \bar under 
