@@ -803,6 +803,12 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		}
 	}
 
+	// The following code is necessary because the cursor position past
+	// the last char in a row is logically equivalent to that before
+	// the first char in the next row. That's why insets causing row
+	// divisions -- Newline and display-style insets -- must be treated
+	// specially, so cursor up/down doesn't get stuck in an air gap -- MV
+	// Newline inset, air gap below:
 	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
 		if (bidi.level(end -1) % 2 == 0)
 			tmpx -= singleWidth(par, end - 1);
@@ -810,9 +816,14 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 			tmpx += singleWidth(par, end - 1);
 		c = end - 1;
 	}
-
-	if (row.pos() < end && c >= end 
+	// Air gap above display inset:
+	if (row.pos() < end && c >= end && end < par.size()
 	    && par.isInset(end) && par.getInset(end)->display()) {
+		c = end - 1;
+	}
+	// Air gap below display inset:
+	if (row.pos() < end && c >= end && par.isInset(end - 1) 
+	    && par.getInset(end - 1)->display()) {
 		c = end - 1;
 	}
 
