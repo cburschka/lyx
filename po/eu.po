@@ -1,31 +1,29 @@
 # LyX-en Euskerazko (Basque) mezuak.
 # Copyright (C) 1997-1999 LyX Team.
-# Iñaki Larrañaga<>, 2000
-#
+# Iñaki Larrañaga Murgoitio<dooteo@euskalgnu.org>, 2002
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.1.6fix1\n"
+"Project-Id-Version: lyx-1.1.6fix4\n"
 "POT-Creation-Date: 2002-01-11 13:16+0100\n"
-"PO-Revision-Date: 2001-04-17 12:19+02:00\n"
-"Last-Translator: Iñaki Larrañaga<>\n"
-"Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
+"PO-Revision-Date: 2002-04-03 17:49+0200\n"
+"Last-Translator: dooteo <dooteo@euskalgnu.org>\n"
+"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/buffer.C:323
 msgid "Couldn't set the layout for "
-msgstr ""
+msgstr "Aurkezpena honentzako ezin ezarri "
 
 #: src/buffer.C:325
-#, fuzzy
 msgid "one paragraph"
-msgstr "Parrafo bat gora joan"
+msgstr "parrafo bat"
 
 #: src/buffer.C:328
-#, fuzzy
 msgid " paragraphs"
-msgstr "Parrafoa"
+msgstr " parrafoak"
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
@@ -37,23 +35,20 @@ msgid "Textclass Loading Error!"
 msgstr "Idazki-mota Irakurtzen Akatsa!"
 
 #: src/buffer.C:331 src/buffer.C:343
-#, fuzzy
 msgid "When reading "
-msgstr "Irakurtzerakoan Akatsa "
+msgstr "Irakurtzerakoan "
 
 #: src/buffer.C:335
 msgid "Encountered "
-msgstr ""
+msgstr "Aurkitua "
 
 #: src/buffer.C:337
-#, fuzzy
 msgid "one unknown token"
-msgstr "Ekitaldi ezezaguna"
+msgstr "hitzberezi ezezagun bat"
 
 #: src/buffer.C:340
-#, fuzzy
 msgid " unknown tokens"
-msgstr "Ekitaldi ezezaguna"
+msgstr " hitzberezi ezezagunak"
 
 #: src/CutAndPaste.C:449 src/buffer.C:397
 msgid "Layout had to be changed from\n"
@@ -70,7 +65,7 @@ msgstr "Idazki-motaren akatsa"
 
 #: src/buffer.C:550
 msgid "The document uses an unknown textclass \""
-msgstr "Idazkiak idazki-mota ezezaguna darabil\""
+msgstr "Idazkiak idazki-mota ezezaguna darabil \""
 
 #: src/buffer.C:552
 msgid "LyX will not be able to produce output correctly."
@@ -85,9 +80,8 @@ msgid "-- substituting default"
 msgstr "-- jatorrizkoa ordezkatzen"
 
 #: src/buffer.C:992
-#, fuzzy
 msgid "Unknown token: "
-msgstr "Ekitaldi ezezaguna"
+msgstr "Hitzberezi ezezaguna: "
 
 #: src/buffer.C:1121
 #, c-format
@@ -129,7 +123,7 @@ msgstr "LyX fitxategiaren egitura hau orain darabiltzun"
 
 #: src/buffer.C:1165
 msgid "is supported in this LyX version. Expect some problems."
-msgstr "LyX-en bertsioa baino berriagoa da. Arazoak ekarriko ditu."
+msgstr "LyX-en bertsioa baino berriagoa da. Arazoak ekar ditzake."
 
 #: src/buffer.C:1189
 msgid "Not a LyX file!"
@@ -216,11 +210,11 @@ msgstr "  Gordeketak kale! Saiatzen..."
 
 #: src/bufferlist.C:332
 msgid "  Save failed! Bummer. Document is lost."
-msgstr "  Gordetzeak kale! Nola leike. Idazkia galduta."
+msgstr "  Gordetzeak kale! Nola leike. Idazkia galdu da."
 
 #: src/bufferlist.C:356
 msgid "An emergency save of this document exists!"
-msgstr "Idazki honen larrialdiko kopia dago!"
+msgstr "Idazki honen larrialdiko kopi bat dago!"
 
 #: src/bufferlist.C:358
 msgid "Try to load that instead?"
@@ -339,7 +333,7 @@ msgstr "Albo Oharra sartzen..."
 
 #: src/bufferview_funcs.C:100
 msgid "Error! unknown language"
-msgstr "Akatsa! Hizkuntza Ezezaguna"
+msgstr "Akatsa! Hizkuntza ezezaguna"
 
 #: src/LyXAction.C:326 src/bufferview_funcs.C:109
 msgid "Melt"
@@ -415,7 +409,7 @@ msgstr "LyX: X11 kolorearen antzekoa erabiltzen "
 
 #: src/ColorHandler.C:139
 msgid "LyX: Couldn't allocate '"
-msgstr "LyX: Ezin alokatu"
+msgstr "LyX: Ezin alokatu '"
 
 #: src/ColorHandler.C:140
 msgid "' for "
@@ -475,7 +469,7 @@ msgstr "Eraikitze lanean akatsak azaldu dira."
 
 #: src/converter.C:643 src/converter.C:788 src/converter.C:858
 msgid "You should try to fix them."
-msgstr "Horiek zuzentzen Saiatu."
+msgstr "Horiek zuzendu beharko zenituzke."
 
 #: src/converter.C:668
 msgid "Error while trying to move directory:"
@@ -495,7 +489,7 @@ msgstr "Akats bat atzeman da"
 
 #: src/converter.C:784 src/converter.C:854
 msgid "You should try to fix it."
-msgstr "Hori zuzentzen Saiatu."
+msgstr "Hori zuzendu beharko zenuke."
 
 #: src/converter.C:787 src/converter.C:857
 msgid " errors detected."
@@ -535,7 +529,7 @@ msgstr "LaTeX lantzean akatsak sortu dira."
 
 #: src/credits.C:55
 msgid "ERROR: LyX wasn't able to read CREDITS file"
-msgstr "AKATSA: LyX-ek CREDITS fitxategia ezin irakurri"
+msgstr "AKATSA: LyX-ek CREDITS fitxategia ezin du irakurri"
 
 #: src/credits.C:59
 msgid "Please install correctly to estimate the great"
@@ -568,7 +562,7 @@ msgstr "Matthias"
 
 #: src/credits_form.C:29
 msgid "All these people have contributed to the LyX project. Thanks,"
-msgstr "Pertsona hauek denak LyX proiektuan lagundu dute. Esker Anitz,"
+msgstr "Pertsona guzti hauek LyX proiektuan lagundu dute. Esker Anitz,"
 
 #: src/CutAndPaste.C:452
 msgid ""
@@ -690,21 +684,20 @@ msgid "No information for exporting to "
 msgstr "Hau kanporatzeko informaziorik ez"
 
 #: src/exporter.C:74
-#, fuzzy
 msgid "Cannot run latex."
-msgstr "Fitxategian ezin idatzi"
+msgstr "Latex ezin da landu"
 
 #: src/exporter.C:75
 msgid "The path to the lyx file cannot contain spaces."
-msgstr ""
+msgstr "Lyx fitxategiaren ibilbideak hutsunerik ezin du eduki."
 
 #: src/exporter.C:89
 msgid "Document exported as "
-msgstr "Idazkia kanporatua "
+msgstr "Idazkia honela kanporatua "
 
 #: src/exporter.C:91
 msgid " to file `"
-msgstr "fitxategira `"
+msgstr " fitxategira `"
 
 #: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
@@ -773,7 +766,7 @@ msgstr "Gorde Honela...|H"
 
 #: src/ext_l10n.h:23
 msgid "Revert to Saved|d"
-msgstr "Gordetakora Itzuli|d"
+msgstr "Gordetakora Joan|d"
 
 #: src/ext_l10n.h:24
 msgid "Version Control|V"
@@ -805,7 +798,7 @@ msgstr "Argitatzeko Egiztatu|g"
 
 #: src/ext_l10n.h:33
 msgid "Revert to Last Version|L"
-msgstr "Azken Bertsiora Itzuli|z"
+msgstr "Azken Bertsiora Joan|z"
 
 #: src/ext_l10n.h:34
 msgid "Undo Last Check In|U"
@@ -873,7 +866,7 @@ msgstr "TeX Egiaztatu|X"
 
 #: src/ext_l10n.h:50
 msgid "Remove All Error Boxes|E"
-msgstr "Ezabatu Akats-Mezu guztiak|z"
+msgstr "Ezabatu Akats-mezu-kutxa guztiak|z"
 
 #: src/ext_l10n.h:53
 msgid "as Lines|L"
@@ -957,15 +950,15 @@ msgstr "Lerroa gehitu|e"
 
 #: src/ext_l10n.h:73
 msgid "Append Column|u"
-msgstr "Zutabea gehitu|u"
+msgstr "Zutabea Gehitu|u"
 
 #: src/ext_l10n.h:74
 msgid "Delete Row|w"
-msgstr "Lerroa ezabatu|z"
+msgstr "Lerroa Ezabatu|z"
 
 #: src/ext_l10n.h:75
 msgid "Delete Column|D"
-msgstr "Zutabea ezabatu|a"
+msgstr "Zutabea Ezabatu|a"
 
 #: src/ext_l10n.h:76
 msgid "Math Formula|h"
@@ -1237,7 +1230,7 @@ msgstr "Erreferentzi Eskuliburua|r"
 
 #: src/ext_l10n.h:143
 msgid "FAQ|F"
-msgstr "Sarritan Egindako Galderak|d"
+msgstr "SEG, Sarritan Egindako Galderak|d"
 
 #: src/ext_l10n.h:144
 msgid "Table of Contents|a"
@@ -1249,7 +1242,7 @@ msgstr "Akats Ezagunak|A"
 
 #: src/ext_l10n.h:146
 msgid "LaTeX Configuration|L"
-msgstr "LaTeX-en  Egokitzaketa|L"
+msgstr "LaTeX-en Egokitzaketa|L"
 
 #: src/ext_l10n.h:147
 msgid "Copyright and Warranty...|o"
@@ -1264,9 +1257,8 @@ msgid "Version...|V"
 msgstr "Bertsioa...|B"
 
 #: src/ext_l10n.h:150
-#, fuzzy
 msgid "\t\t\tAbstract"
-msgstr "Laburpena"
+msgstr "\t\t\tLaburpena"
 
 #: src/ext_l10n.h:151
 msgid "ACT"
@@ -1306,11 +1298,11 @@ msgstr "Eskerbideak"
 
 #: src/ext_l10n.h:160
 msgid "Addchap"
-msgstr "Alea Gehitu"
+msgstr "Kapitulua Gehitu"
 
 #: src/ext_l10n.h:161
 msgid "Addchap*"
-msgstr "Alea* Gehitu"
+msgstr "Kapitulua* Gehitu"
 
 #: src/ext_l10n.h:162
 msgid "Addition"
@@ -1322,7 +1314,7 @@ msgstr "Helbidea"
 
 #: src/ext_l10n.h:164
 msgid "AddressForOffprints"
-msgstr ""
+msgstr "Offprint-entzako Helbidea"
 
 #: src/ext_l10n.h:165
 msgid "Addsec"
@@ -1354,11 +1346,11 @@ msgstr "Eta"
 
 #: src/ext_l10n.h:172
 msgid "Anlagen"
-msgstr ""
+msgstr "Ezarketak"
 
 #: src/ext_l10n.h:173
 msgid "Anrede"
-msgstr ""
+msgstr "Elkarrizketa"
 
 #: src/ext_l10n.h:174
 msgid "Appendices"
@@ -1394,7 +1386,7 @@ msgstr ""
 
 #: src/ext_l10n.h:182
 msgid "Backaddress"
-msgstr "Itzulketa helbidea"
+msgstr "Itzulera helbidea"
 
 #: src/ext_l10n.h:183
 msgid "Bank"
@@ -1410,7 +1402,7 @@ msgstr "Banko Kodea"
 
 #: src/ext_l10n.h:186
 msgid "Betreff"
-msgstr ""
+msgstr "Gaia"
 
 #: src/ext_l10n.h:187
 msgid "Bibliography"
@@ -1446,15 +1438,15 @@ msgstr "AzalpenErdiratua"
 
 #: src/ext_l10n.h:195
 msgid "Chapter"
-msgstr "Alea"
+msgstr "Kapitulua"
 
 #: src/ext_l10n.h:196
 msgid "Chapter*"
-msgstr "Alea*"
+msgstr "Kapitulua*"
 
 #: src/ext_l10n.h:197
 msgid "Chapter_Exercises"
-msgstr "Ale Ariketa"
+msgstr "Kapitulu_Ariketa"
 
 #: src/ext_l10n.h:198
 msgid "Citta"
@@ -1614,12 +1606,11 @@ msgstr "Izenburuordea"
 
 #: src/ext_l10n.h:237
 msgid "FADE_IN:"
-msgstr "SARERRA:"
+msgstr "SARRERA:"
 
 #: src/ext_l10n.h:238
-#, fuzzy
 msgid "FADE_OUT"
-msgstr "IRTEERA:"
+msgstr "IRTEERA: "
 
 #: src/ext_l10n.h:239
 msgid "FADE_OUT:"
@@ -1680,7 +1671,7 @@ msgstr "Orokorra"
 
 #: src/ext_l10n.h:253
 msgid "Gruss"
-msgstr ""
+msgstr "Agurra"
 
 #: src/ext_l10n.h:254
 msgid "HTTP"
@@ -1696,15 +1687,15 @@ msgstr "BARNE."
 
 #: src/ext_l10n.h:257
 msgid "INTERCUT"
-msgstr ""
+msgstr "ELKARMOZTU"
 
 #: src/ext_l10n.h:258
 msgid "IhrSchreiben"
-msgstr ""
+msgstr "Haren Gutuna"
 
 #: src/ext_l10n.h:259
 msgid "IhrZeichen"
-msgstr ""
+msgstr "Haren Ikurra"
 
 #: src/ext_l10n.h:260
 msgid "Institute"
@@ -1737,11 +1728,11 @@ msgstr "Giltza"
 
 #: src/ext_l10n.h:267
 msgid "Keywords"
-msgstr "Giltza"
+msgstr "Giltzak"
 
 #: src/ext_l10n.h:268
 msgid "Konto"
-msgstr ""
+msgstr "Kontua"
 
 #: src/ext_l10n.h:269
 msgid "LaTeX"
@@ -1753,7 +1744,7 @@ msgstr "LaTeX Izenburua"
 
 #: src/ext_l10n.h:271
 msgid "Labeling"
-msgstr "Txarteketa"
+msgstr "Txartelketa"
 
 #: src/ext_l10n.h:272
 msgid "Land"
@@ -1764,9 +1755,8 @@ msgid "LandscapeSlide"
 msgstr "Zeharretako Barra"
 
 #: src/ext_l10n.h:274
-#, fuzzy
 msgid "Left_Header"
-msgstr "Burua"
+msgstr "Ezker_Burua"
 
 #: src/ext_l10n.h:275
 msgid "Lemma"
@@ -1774,7 +1764,7 @@ msgstr "Lema"
 
 #: src/ext_l10n.h:276
 msgid "Lemma*"
-msgstr "Lema"
+msgstr "Lema*"
 
 #: src/ext_l10n.h:277
 msgid "Letter"
@@ -1818,7 +1808,7 @@ msgstr "Matematika Gutunak"
 
 #: src/ext_l10n.h:287
 msgid "MeinZeichen"
-msgstr ""
+msgstr "Nere Ikurra"
 
 #: src/ext_l10n.h:288
 msgid "Minisec"
@@ -1867,15 +1857,15 @@ msgstr "ArgitariarentzatOharra"
 
 #: src/ext_l10n.h:299
 msgid "Offprint"
-msgstr ""
+msgstr "Offprint"
 
 #: src/ext_l10n.h:300
 msgid "Offprints"
-msgstr ""
+msgstr "Offprints"
 
 #: src/ext_l10n.h:301
 msgid "Offsets"
-msgstr ""
+msgstr "Offsets"
 
 #: src/ext_l10n.h:302
 msgid "Oggetto"
@@ -1887,7 +1877,7 @@ msgstr "Irekitzen"
 
 #: src/ext_l10n.h:304
 msgid "Ort"
-msgstr ""
+msgstr "Lekua"
 
 #: src/ext_l10n.h:305
 msgid "Overlay"
@@ -1947,7 +1937,7 @@ msgstr "GutunAgindua"
 
 #: src/ext_l10n.h:319
 msgid "Postvermerk"
-msgstr ""
+msgstr "Gutun-Oharra"
 
 #: src/ext_l10n.h:320
 msgid "Preprint"
@@ -1987,11 +1977,11 @@ msgstr "Galdera"
 
 #: src/ext_l10n.h:329
 msgid "Quotation"
-msgstr "Parrafo Sakona"
+msgstr "Quotation"
 
 #: src/ext_l10n.h:330
 msgid "Quote"
-msgstr "Lerro Sakona"
+msgstr "Quote"
 
 #: src/ext_l10n.h:331
 msgid "REVTEX_Title"
@@ -2039,23 +2029,20 @@ msgid "Right_Address"
 msgstr "Helbide_Zuzena"
 
 #: src/ext_l10n.h:342
-#, fuzzy
 msgid "Right_Header"
-msgstr "BuruZuzena"
+msgstr "Eskuin_Burua"
 
 #: src/ext_l10n.h:343
 msgid "Rotatefoilhead"
 msgstr "OrriBuruaBiratu"
 
 #: src/ext_l10n.h:344
-#, fuzzy
 msgid "RunningAuthor"
-msgstr "Egilea"
+msgstr "EgileaLantzen"
 
 #: src/ext_l10n.h:345
-#, fuzzy
 msgid "RunningTitle"
-msgstr "LaTeX_Izenburua_Lantzen"
+msgstr "IzenburuaLantzen"
 
 #: src/ext_l10n.h:346
 msgid "Running_LaTeX_Title"
@@ -2074,9 +2061,8 @@ msgid "SGML"
 msgstr "SGML"
 
 #: src/ext_l10n.h:350
-#, fuzzy
 msgid "Scene"
-msgstr "Bidali"
+msgstr "Antzezlekua"
 
 #: src/ext_l10n.h:351
 msgid "Scrap"
@@ -2148,7 +2134,7 @@ msgstr "Gutunberezia"
 
 #: src/ext_l10n.h:368
 msgid "Stadt"
-msgstr ""
+msgstr "Herria"
 
 #: src/ext_l10n.h:369
 msgid "Standard"
@@ -2160,20 +2146,19 @@ msgstr "Egoera"
 
 #: src/ext_l10n.h:371
 msgid "Strasse"
-msgstr ""
+msgstr "Kalea"
 
 #: src/ext_l10n.h:372
 msgid "Street"
 msgstr "Kalea"
 
 #: src/ext_l10n.h:373
-#, fuzzy
 msgid "SubSection"
 msgstr "Azpiatala"
 
 #: src/ext_l10n.h:374
 msgid "SubTitle"
-msgstr "Azpiizenburua"
+msgstr "AzpiIzenburua"
 
 #: src/ext_l10n.h:375
 msgid "Subject"
@@ -2221,7 +2206,7 @@ msgstr "Gaitzizena"
 
 #: src/ext_l10n.h:386
 msgid "TITLE_OVER:"
-msgstr ""
+msgstr "GAINEKO_IZENBURUA:"
 
 #: src/ext_l10n.h:387
 msgid "TOC_Author"
@@ -2257,7 +2242,7 @@ msgstr "Telex"
 
 #: src/ext_l10n.h:395
 msgid "Thanks"
-msgstr "Eskarrik Asko"
+msgstr "Eskerrik Asko"
 
 #: src/ext_l10n.h:396
 msgid "Theorem"
@@ -2288,7 +2273,6 @@ msgid "ThreeAuthors"
 msgstr "HiruEgile"
 
 #: src/ext_l10n.h:403
-#, fuzzy
 msgid "TickList"
 msgstr "ErosketaZerrenda"
 
@@ -2301,9 +2285,8 @@ msgid "Titlehead"
 msgstr "Izenburua"
 
 #: src/ext_l10n.h:406
-#, fuzzy
 msgid "Topic"
-msgstr "&Goikaldea"
+msgstr "Gaia"
 
 #: src/ext_l10n.h:407
 msgid "Town"
@@ -2345,7 +2328,7 @@ msgstr "URL"
 
 #: src/ext_l10n.h:416
 msgid "Unterschrift"
-msgstr ""
+msgstr "Zinadura"
 
 #: src/ext_l10n.h:417
 msgid "Uppertitleback"
@@ -2361,7 +2344,7 @@ msgstr "Olerki-lerroa"
 
 #: src/ext_l10n.h:420
 msgid "Verteiler"
-msgstr ""
+msgstr "Banatzailea"
 
 #: src/ext_l10n.h:421
 msgid "VisibleText"
@@ -2385,7 +2368,7 @@ msgstr "ZureErref"
 
 #: src/ext_l10n.h:426
 msgid "Zusatz"
-msgstr ""
+msgstr "Oharra"
 
 #: src/ext_l10n.h:427
 msgid "cc"
@@ -2417,7 +2400,7 @@ msgstr "Arabiera"
 
 #: src/ext_l10n.h:434
 msgid "Austrian"
-msgstr "Austriakoak"
+msgstr "Austriera"
 
 #: src/ext_l10n.h:435
 msgid "Bahasa"
@@ -2425,7 +2408,7 @@ msgstr "Bahasaera"
 
 #: src/ext_l10n.h:436
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugalera (Brazil)"
 
 #: src/ext_l10n.h:437
 msgid "Breton"
@@ -2532,13 +2515,12 @@ msgid "Polish"
 msgstr "Polishera"
 
 #: src/ext_l10n.h:463
-#, fuzzy
 msgid "Portugese"
-msgstr "Portugekera"
+msgstr "Portugalera"
 
 #: src/ext_l10n.h:464
 msgid "Romanian"
-msgstr "Erromakera"
+msgstr "Erromaniera"
 
 #: src/ext_l10n.h:465
 msgid "Russian"
@@ -2549,14 +2531,12 @@ msgid "Scottish"
 msgstr "Skottishera"
 
 #: src/ext_l10n.h:467
-#, fuzzy
 msgid "Serbian"
-msgstr "Errenkada"
+msgstr "Serbiera"
 
 #: src/ext_l10n.h:468
-#, fuzzy
 msgid "Serbo-Croatian"
-msgstr "Kroatakera"
+msgstr "Serbio-Kroataera"
 
 #: src/ext_l10n.h:469
 msgid "Spanish"
@@ -2575,9 +2555,8 @@ msgid "Swedish"
 msgstr "Suediera"
 
 #: src/ext_l10n.h:473
-#, fuzzy
 msgid "Thai"
-msgstr "Hauxe"
+msgstr "Thai"
 
 #: src/ext_l10n.h:474
 msgid "Turkish"
@@ -2762,7 +2741,7 @@ msgstr "Irudi hau ez bistaratu|#n"
 
 #: src/form1.C:177
 msgid "Display as Grayscale|#i"
-msgstr "Txuribeltzean Bistaratu|#g"
+msgstr "Gris Eskalan Bistaratu|#g"
 
 #: src/form1.C:180
 msgid "Display as Monochrome|#s"
@@ -2937,23 +2916,23 @@ msgstr ""
 
 #: src/frontends/gnome/FormCopyright.C:48
 msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version.\n"
+"This program is free software; you can redistribute it and/or modify it under "
+"the terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. You should have received a copy of the GNU General Public License "
-"along with this program; if not, write to the Free Software Foundation, "
-"Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR "
+"A PARTICULAR PURPOSE. See the GNU General Public License for more details. "
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc.,  675 Mass "
+"Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"Programa hau software askea ('free software') da; Free Software Foundation-"
-"ek argitatu duen  GNU-ren Baimen Publiko Orokorraren, Baimenaren 2. bertisoa "
-"edo (nahiago baduzu) garatuagoa den beste edozein bertsiotan, hitzetan "
+"Programa hau software askea ('free software') da; Free Software Foundation-ek "
+"argitatu duen  GNU-ren Baimen Publiko Orokorraren, Baimenaren 2. bertisoa edo "
+"(nahiago baduzu) garatuagoa den beste edozein bertsiotan, hitzetan "
 "oinarritatuta zuk programa hau berzabaldu (hedatu) edo eta aldatu dezakezu.\n"
-"LyX erabilgarria izango delakoan zabaltzen da baina inolako GARANTIARIK "
-"GABE; MERKATARITZA edo NORBERANTZAT ERABILKETA EGOKITZAKETARAKO garanti "
+"LyX erabilgarria izango delakoan zabaltzen da baina inolako GARANTIARIK GABE; "
+"MERKATARITZA edo NORBERANTZAT ERABILKETA EGOKITZAKETARAKO garanti "
 "inplizitorik gabe gainera. Zehaztasun gehiagotarako GNU-ren Lizentzi Publiko "
 "Orokorra irakurri. Programa honekin batera GNU-ren Lizentzi Publiko "
 "Orokorraren kopia bat jaso behar zenduke; horrela ez izanez gero, Free "
@@ -2962,7 +2941,7 @@ msgstr ""
 
 #: src/frontends/gnome/FormError.C:89
 msgid " Error "
-msgstr "Akatsa"
+msgstr " Akatsa "
 
 #: src/frontends/gnome/FormIndex.C:119
 msgid " Index "
@@ -2974,7 +2953,7 @@ msgstr "Akatsa:"
 
 #: src/frontends/gnome/FormPrint.C:166 src/frontends/xforms/FormPrint.C:159
 msgid "Unable to print"
-msgstr "Inprimaketa Ezinezkoa"
+msgstr "Ezin Inprimatu"
 
 #: src/frontends/gnome/FormPrint.C:167 src/frontends/xforms/FormPrint.C:160
 msgid "Check that your parameters are correct"
@@ -2992,7 +2971,7 @@ msgstr "Atzera joan"
 
 #: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:143
 msgid "*** No labels found in document ***"
-msgstr "*** Idazkiaren txartelik ez dira aurkitu ***"
+msgstr "*** Idazkian txartelik ez dira aurkitu ***"
 
 #: src/frontends/gnome/FormRef.C:116
 msgid " Reference "
@@ -3032,7 +3011,7 @@ msgstr "Izena:"
 
 #: src/frontends/gnome/FormRef.C:311
 msgid " Reference: "
-msgstr "Erreferentzia: "
+msgstr " Erreferentzia: "
 
 #: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
 #: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
@@ -3139,7 +3118,7 @@ msgstr "Erreferentzien sarrera testua"
 
 #: src/frontends/kde/citationdlg.C:96
 msgid "Text to place after citation"
-msgstr "Testua, aipamenaren ondoren kokatzeko"
+msgstr "Testua aipamenaren ondoren kokatzeko"
 
 #: src/frontends/kde/dlg/copyrightdlgdata.C:61
 msgid ""
@@ -3336,7 +3315,7 @@ msgstr "&Orrialde bakoitiak"
 
 #: src/frontends/kde/dlg/printdlgdata.C:233
 msgid "&Printer"
-msgstr "&Inprimagailua"
+msgstr "&Irarkola"
 
 #: src/frontends/kde/dlg/printdlgdata.C:246
 msgid "&File"
@@ -3348,7 +3327,7 @@ msgstr "&Alderantzizko antolaketa"
 
 #: src/frontends/kde/dlg/printdlgdata.C:298
 msgid "Co&llate"
-msgstr "Erkatu"
+msgstr "&Tartekatu"
 
 #: src/frontends/kde/dlg/printdlgdata.C:312
 msgid "&Browse"
@@ -3528,7 +3507,7 @@ msgstr "em neurrietan"
 
 #: src/frontends/kde/paraextradlg.C:37 src/frontends/kde/parageneraldlg.C:70
 msgid "Scaled points (1/65536 pt)"
-msgstr "Neurriratutako puntuak (1/65536 pt)"
+msgstr "Eskalatutako puntuak (1/65536 pt)"
 
 #: src/frontends/kde/paraextradlg.C:38 src/frontends/kde/parageneraldlg.C:71
 msgid "Big/PS points (1/72 inch)"
@@ -3578,7 +3557,7 @@ msgstr "Jauzi Haundia"
 
 #: src/frontends/kde/parageneraldlg.C:42 src/frontends/kde/parageneraldlg.C:49
 msgid "VFill"
-msgstr "GoibeherakoBetegarria"
+msgstr "GBehe Betegarria"
 
 #: src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
 msgid "Length"
@@ -3598,11 +3577,11 @@ msgstr "Orri bikoitiarrak soilik inprimatu"
 
 #: src/frontends/kde/printdlg.C:28
 msgid "Print from page number"
-msgstr "Orri zenbakitik inprimatu"
+msgstr "Zenbakidun orritik inprimatu"
 
 #: src/frontends/kde/printdlg.C:29
 msgid "Print to page number"
-msgstr "Orri zenbakirarte inprimatu"
+msgstr "Zenbakidun orrirarte inprimatu"
 
 #: src/frontends/kde/printdlg.C:30
 msgid "Print in reverse order (last page first)"
@@ -3618,7 +3597,7 @@ msgstr "Hainbat kopia eman"
 
 #: src/frontends/kde/printdlg.C:33
 msgid "Printer name"
-msgstr "Inprimagailuaren izena"
+msgstr "Irarkolaren izena"
 
 #: src/frontends/kde/printdlg.C:34
 msgid "Output filename"
@@ -3683,7 +3662,7 @@ msgstr "Sakonera"
 
 #: src/frontends/kde/urldlg.C:33
 msgid "Url :"
-msgstr "Url : "
+msgstr "Url :"
 
 #: src/frontends/kde/urldlg.C:45
 msgid "Generate hyperlink"
@@ -3707,7 +3686,7 @@ msgstr "Teklak Ezarri|#T"
 
 #: src/frontends/xforms/form_citation.C:38
 msgid "Bibliography keys|#B"
-msgstr "Bibliografi Teklak|#B"
+msgstr "Bibliografi Giltzak|#B"
 
 #: src/frontends/xforms/form_citation.C:46
 msgid "@4->"
@@ -3777,10 +3756,10 @@ msgstr ""
 
 #: src/frontends/xforms/FormCopyright.C:56
 msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"This program is free software; you can redistribute it and/or modify it under "
+"the terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version."
 msgstr ""
 "Programa hau software askea da; berzabaldu eta/edo\n"
 "GNU-ren (GPL) Baimen Publiko Orokorreko hitzetan (terminoetan)\n"
@@ -3791,11 +3770,11 @@ msgstr ""
 #: src/frontends/xforms/FormCopyright.C:61
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. You should have received a copy of the GNU General Public License "
-"along with this program; if not, write to the Free Software Foundation, "
-"Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR "
+"A PARTICULAR PURPOSE. See the GNU General Public License for more details. "
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
+"Ave, Cambridge, MA 02139, USA."
 msgstr ""
 "LyX erabilgarria izango delakoan zabaltzen da\n"
 "baina inolako GARANTIARIK GABE;\n"
@@ -3820,18 +3799,18 @@ msgstr "Idazki Aurkezpena"
 
 #: src/frontends/xforms/FormDocument.C:117
 msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 "
+"| B5 "
 msgstr ""
-" Jatorrizkoa | Egokitua |USgutuna| USlegala | USexekutibo | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
+" Jatorrizkoa | Egokitua |USgutuna| USlegala | USexekutibo | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
 msgstr ""
-" Batez | A4 margen txikia (argazkia soilik) | A4 margen oso txikia (argazkia "
+" Ezer | A4 margen txikia (argazkia soilik) | A4 margen oso txikia (argazkia "
 "soilik) | A4 margen zabalak (argazkiak soilik) "
 
 #: src/frontends/xforms/FormDocument.C:179
@@ -3938,7 +3917,7 @@ msgstr "Idazki mota berrira ezin aldatu"
 #: src/frontends/xforms/form_paragraph.C:314
 #: src/frontends/xforms/form_tabular.C:28
 msgid "Tabbed folder"
-msgstr ""
+msgstr "Karpeta Txarteldua"
 
 #: src/frontends/xforms/form_document.C:85
 msgid "Special:|#S"
@@ -4226,7 +4205,7 @@ msgstr "Monokromo eran|#M"
 
 #: src/frontends/xforms/form_graphics.C:96
 msgid "in Grayscale|#G"
-msgstr "Txuribeltz eran|#T"
+msgstr "Gris Eskalan|#G"
 
 #: src/frontends/xforms/form_graphics.C:101
 msgid "in Color|#C"
@@ -4348,7 +4327,7 @@ msgstr "Azpi|#p"
 
 #: src/frontends/xforms/form_paragraph.C:141
 msgid "Pagebreaks"
-msgstr "Orri Jauziak"
+msgstr "Orrijauziak"
 
 #: src/frontends/xforms/form_paragraph.C:145
 msgid "Lines"
@@ -4393,7 +4372,7 @@ msgstr "Azpikalde|#A"
 
 #: src/frontends/xforms/form_paragraph.C:253
 msgid "HFill between Minipage paragraphs|#H"
-msgstr "Zeharretako Betegarri Orri-ttipi parrafoen artean|#H"
+msgstr "Zeharretako Betegarri Orritxoko parrafoen artean|#H"
 
 #: src/frontends/xforms/form_paragraph.C:260
 msgid "Start new Minipage|#S"
@@ -4470,7 +4449,7 @@ msgstr "Ibilbideak"
 
 #: src/frontends/xforms/FormPreferences.C:269
 msgid "Printer"
-msgstr "Inprimagailua"
+msgstr "Irarkola"
 
 #: src/frontends/xforms/FormPreferences.C:277
 msgid "Spell checker"
@@ -4484,8 +4463,8 @@ msgstr "Kolorea ezar diezazkieken LyX-eko objetuak."
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
-"LyX-eko objetuaren kolorea aldatu. Oharra: gero, aldaketa \"Eragin\" zaztatu "
-"behar duzu."
+"LyX-eko objetuaren kolorea aldatu. Oharra: gero, aldaketa onartzeko "
+"\"Eragin\" zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
@@ -4545,11 +4524,11 @@ msgstr "Bihurtzailearen izakera bideratzen duten Zotzak"
 
 #: src/frontends/xforms/FormPreferences.C:1014
 msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
+"Remove the current converter from the list of available converters. Note: you "
+"must then \"Apply\" the change."
 msgstr ""
-"Bihurtzaile eskuragarrien zerrendatik oraingo bihurtzailea ezabatu. \n"
-"Oharra: aldaketa onartzeko \"Eragin\" zaztatu."
+"Bihurtzaile eskuragarrien zerrendatik oraingo bihurtzailea ezabatu. Oharra: "
+"aldaketa onartzeko \"Eragin\" zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -4558,10 +4537,10 @@ msgstr "Gehitu"
 
 #: src/frontends/xforms/FormPreferences.C:1017
 msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
+"Add the current converter to the list of available converters. Note: you must "
+"then \"Apply\" the change."
 msgstr ""
-"Bihurtzaile eskuragarrien zerrendan oraingo bihurtzailea gehitu. Oharra: \n"
+"Bihurtzaile eskuragarrien zerrendan oraingo bihurtzailea gehitu. Oharra: "
 "aldaketa onartzeko \"Eragin\" zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:1019
@@ -4570,8 +4549,7 @@ msgid ""
 "the change."
 msgstr ""
 "Oraingo bihurtzailearen edukinak (gaiak) aldatu. Oharra: aldaketa onartzeko "
-"\"Eragin\" \n"
-"zaztatu."
+"\"Eragin\" zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:1112
 #: src/frontends/xforms/FormPreferences.C:1114
@@ -4607,7 +4585,8 @@ msgid "The format name as it will appear in the menus."
 msgstr "Egituraren izena era berdinean aukera zerrendatan agertuko da."
 
 #: src/frontends/xforms/FormPreferences.C:1280
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgid ""
+"The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
 "Teklatu bizkortzailea. GUI izenean hizki bat erabili. Hizki larri eta xumeak "
 "ezberditzen ditu."
@@ -4625,30 +4604,31 @@ msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
 msgstr ""
-"Egitura eskuragarrien zerrendatik oraingo egitura ezabatu. Oharra: \n"
-"aldaketa \"Eragin\" behar duzu."
+"Egitura eskuragarrien zerrendatik oraingo egitura ezabatu. Oharra: aldaketa "
+"onartzeko \"Eragin\" zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
 msgstr ""
-"Egitura eskuragarrien zerrendan oraingo egitura gehitu. Oharra: aldaketa \n"
-"\"Eragin\" behar duzu."
+"Egitura eskuragarrien zerrendan oraingo egitura gehitu. Oharra: aldaketa "
+"onartzeko \"Eragin\" zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:1291
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
 msgstr ""
-"Oraingo egituraren edukina aldatu. Oharra: aldaketa \n"
-"\"Eragin\" behar duzu."
+"Oraingo egituraren edukina aldatu. Oharra: aldaketa onartzeko \"Eragin\" "
+"zaztatu."
 
 #: src/frontends/xforms/FormPreferences.C:1407
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgid ""
+"Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
-"Bihurtzaileak erabilitako egitura ezin ezabatu. Lehendabizi \n"
-"bihurtzailea ezabatu."
+"Bihurtzaileak erabilitako egitura ezin ezabatu. Lehendabizi bihurtzailea "
+"ezabatu."
 
 #: src/frontends/xforms/FormPreferences.C:1578
 msgid "Sys Bind"
@@ -4725,13 +4705,13 @@ msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
 msgstr ""
-"Hizkimotak era honetan antolatuta sartu behar dira:  ttipia > indizea > \n"
-"oin oharra > txikia > arrunta  > handia > galanta > egundokoa > \n"
-"erraldoia > izutzekoa."
+"Hizkimotak era honetan antolatuta sartu behar dira:  ttipia > indizea > oin "
+"oharra > txikia > arrunta  > handia > galanta > egundokoa > erraldoia > "
+"izutzekoa."
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
-msgstr " ezer | ispell | aspell"
+msgstr " ezer | ispell | aspell "
 
 #: src/frontends/xforms/FormPreferences.C:2952
 msgid "Personal dictionary"
@@ -4998,7 +4978,7 @@ msgstr "Laisterbidea|#L"
 
 #: src/frontends/xforms/form_preferences.C:745
 msgid "Show banner|#S"
-msgstr "Sarrerako Iragarria erakutsi|#e"
+msgstr "Sarrerako Iragarkia erakutsi|#e"
 
 #: src/frontends/xforms/form_preferences.C:753
 msgid "Auto region delete|#A"
@@ -5121,7 +5101,7 @@ msgstr "beste aukerak"
 
 #: src/frontends/xforms/form_preferences.C:929
 msgid "spool printer prefix"
-msgstr "aurrezarri inprim. ilara"
+msgstr "aurrezarri irarkola ilara"
 
 #: src/frontends/xforms/form_preferences.C:932
 msgid "paper size"
@@ -5174,7 +5154,7 @@ msgstr "Inprimatu"
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
-msgstr "Inprimag.|#p"
+msgstr "Irrakola.|#I"
 
 #: src/frontends/xforms/form_print.C:44 src/lyx.C:80
 msgid "File|#F"
@@ -5246,7 +5226,7 @@ msgstr "Erreferentzira Joan|#J"
 
 #: src/frontends/xforms/FormTabular.C:26
 msgid "Tabular Layout"
-msgstr "Tabaulaketa Itxura"
+msgstr "Tabulaketa Itxura"
 
 #: src/frontends/xforms/FormTabular.C:127
 msgid "Tabular"
@@ -5254,7 +5234,7 @@ msgstr "Tabulaketa"
 
 #: src/frontends/xforms/FormTabular.C:129
 msgid "Column/Row"
-msgstr "Zutabea/Lerroaa"
+msgstr "Zutabea/Lerroa"
 
 #: src/frontends/xforms/FormTabular.C:131
 msgid "Cell"
@@ -5266,7 +5246,7 @@ msgstr "Taula-Luzea"
 
 #: src/frontends/xforms/FormTabular.C:440
 msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Oharra: Kurtsora kokapen okerra, eguneratutako lehioa"
+msgstr "Oharra: Kurtsore kokapen okerra, eguneratutako lehioa"
 
 #: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
 #: src/insets/insetinfo.C:221
@@ -5368,7 +5348,7 @@ msgstr "Zehar-Lerrokaketa"
 #: src/frontends/xforms/form_tabular.C:229
 #: src/frontends/xforms/form_tabular.C:355
 msgid "V. Alignment"
-msgstr "Goitibeherako Lerrokaketa"
+msgstr "Goibehe Lerrokaketa"
 
 #: src/frontends/xforms/form_tabular.C:233
 #: src/frontends/xforms/form_tabular.C:359
@@ -5462,7 +5442,7 @@ msgstr "HTML mota|#H"
 
 #: src/frontends/xforms/input_validators.C:102
 msgid "ERROR!  Unable to print!"
-msgstr "AKATSA! Inprimaketa Ezinezkoa"
+msgstr "AKATSA! Ezin Inprimatu!"
 
 #: src/frontends/xforms/input_validators.C:103
 msgid "Check 'range of pages'!"
@@ -5501,7 +5481,7 @@ msgstr "Orri Zenbakia Sartu%m"
 #: src/frontends/xforms/Menubar_pimpl.C:421
 #, no-c-format
 msgid "Insert vref%m"
-msgstr "Goitibeherako erref Sartu"
+msgstr "Goitibeherako erref%m Sartu"
 
 #: src/frontends/xforms/Menubar_pimpl.C:423
 #, no-c-format
@@ -5533,7 +5513,7 @@ msgstr "hutsunea, '#', '~', '$' edo '%'."
 #: src/frontends/xforms/xform_helpers.C:276
 #: src/frontends/xforms/xform_helpers.C:321
 msgid "The absolute path is required."
-msgstr "Ibilbide osoa beharrezkoa da."
+msgstr "Ibilbide osoa eskatzen da."
 
 #: src/frontends/xforms/xform_helpers.C:223
 #: src/frontends/xforms/xform_helpers.C:247
@@ -5583,11 +5563,11 @@ msgstr "Barneratzen"
 
 #: src/importer.C:57
 msgid "Can not import file"
-msgstr "Fitxategia ezin da barnekatu."
+msgstr "Fitxategia ezin da barneratu."
 
 #: src/importer.C:58
 msgid "No information for importing from "
-msgstr "Informaziorik ez dago hemendik barnekatzeko "
+msgstr "Informaziorik ez dago hemendik barneratzeko "
 
 #. we are done
 #: src/importer.C:81
@@ -5988,7 +5968,7 @@ msgstr "Hauek Inoiz ez dira txandatzen"
 
 #: src/layout_forms.C:72
 msgid "These are always toggled"
-msgstr "Hauek beti bihurtzen dira"
+msgstr "Hauek beti txandatzen dira"
 
 #: src/layout_forms.C:90 src/lyx_gui_misc.C:429
 msgid "OK|#O"
@@ -6024,7 +6004,7 @@ msgstr "zian"
 
 #: src/LColor.C:59
 msgid "magenta"
-msgstr "arrosa"
+msgstr "magenta"
 
 #: src/LColor.C:60
 msgid "yellow"
@@ -6276,7 +6256,7 @@ msgstr "Fax-a"
 
 #: src/LyXAction.C:136
 msgid "Import document"
-msgstr "Idazkia barnekatu"
+msgstr "Idazkia barneratu"
 
 #: src/LyXAction.C:140
 msgid "Get the printer parameters"
@@ -6568,7 +6548,7 @@ msgstr "Irten"
 
 #: src/LyXAction.C:303
 msgid "Insert Marginalnote"
-msgstr "Alboko Oharra Sartu"
+msgstr "Albo-oharra Sartu"
 
 #: src/LyXAction.C:306
 msgid "Insert Margin note"
@@ -6631,9 +6611,8 @@ msgid "Insert cross reference"
 msgstr "Gurutzatutako erreferentzia Sartu"
 
 #: src/LyXAction.C:369
-#, fuzzy
 msgid "Scroll inset"
-msgstr "Multzoa higitu "
+msgstr "Multzoa higitu"
 
 #: src/LyXAction.C:388
 msgid "Insert Table"
@@ -6733,11 +6712,11 @@ msgstr "Izen bereko beste idazki bat irekita dago!"
 
 #: src/lyx_cb.C:230
 msgid "Replace with current document?"
-msgstr "Oraingo idazkia ordezkatu?"
+msgstr "Oraingo idazkiarekin ordezkatu?"
 
 #: src/lyx_cb.C:238
 msgid "Document renamed to '"
-msgstr "Idazkia berrizendatu (bezala) '"
+msgstr "Idazkia honela berrizendatu '"
 
 #: src/lyx_cb.C:239
 msgid "', but not saved..."
@@ -6850,11 +6829,11 @@ msgstr "Irudia Sartuta"
 
 #: src/lyx_cb.C:977
 msgid "Running configure..."
-msgstr "Egokiketa Lantzen..."
+msgstr "Egokiketa lantzen..."
 
 #: src/lyx_cb.C:984
 msgid "Reloading configuration..."
-msgstr "Egokiketa Berrbereganatzen..."
+msgstr "Egokiketa Berbereganatzen..."
 
 #: src/lyx_cb.C:986
 msgid "The system has been reconfigured."
@@ -6996,11 +6975,11 @@ msgstr "Barkatu!"
 
 #: src/lyxfr1.C:124 src/lyxfr1.C:161
 msgid "You cannot replace a single space, nor an empty character."
-msgstr "Ez hutsune bakarra ez hizki hutsik ezin dituzu ordezkatu."
+msgstr "Ez hutsune bakar bat ez hizki hutsik ezin dituzu ordezkatu."
 
 #: src/lyxfr1.C:192 src/lyxfr1.C:239
 msgid "String not found!"
-msgstr "Hizkikaterik ez da aurkitu!"
+msgstr "Hitzkaterik ez da aurkitu!"
 
 #: src/lyxfr1.C:196
 msgid "1 string has been replaced."
@@ -7008,7 +6987,7 @@ msgstr "Hitzkate bat ordezkatua izan da."
 
 #: src/lyxfr1.C:199
 msgid " strings have been replaced."
-msgstr " hizkikate ordezkatu dira."
+msgstr " hitzkate ordezkatu dira."
 
 #: src/lyxfr1.C:235
 msgid "Found."
@@ -7114,7 +7093,7 @@ msgstr "Idazki semea irekitzen "
 
 #: src/lyxfunc.C:2793
 msgid "Unknown kind of footnote"
-msgstr "Oin Ohar mota ezezaguna"
+msgstr "Oin-Ohar mota ezezaguna"
 
 #: src/lyxfunc.C:2912
 msgid "Syntax: set-color <lyx_name> <x11_name>"
@@ -7161,7 +7140,7 @@ msgstr ""
 
 #: src/lyxfunc.C:3096
 msgid "File already exists:"
-msgstr "Fitxategia iadanik badago:"
+msgstr "Fitxategia jadanik badago:"
 
 #: src/lyxfunc.C:3098
 msgid "Do you want to open the document?"
@@ -7243,18 +7222,18 @@ msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
 msgstr ""
-" Aldaketabarik %l| Ttipia | Oso Txikia | Txikiago | Txikia | Arrunta | "
-"Handia | Galanta | Egundokoa | Erraldoia %l| Handitu | Txikitu | Berrezarri "
+" Aldaketabarik %l| Ttipia | Oso Txikia | Txikiago | Txikia | Arrunta | Handia "
+"| Galanta | Egundokoa | Erraldoia %l| Handitu | Txikitu | Berrezarri "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
-" Aldaketabarik %l| Enfasia | Azpimarratu | Izena | LaTeX era %l| Berrezarri"
+" Aldaketabarik %l| Enfasia | Azpimarratu | Izena | LaTeX era %l| Berrezarri "
 
 #: src/lyx_gui.C:328
 msgid ""
-" No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
-"Magenta | Yellow %l| Reset "
+" No change %l| No color | Black | White | Red | Green | Blue | Cyan | Magenta "
+"| Yellow %l| Reset "
 msgstr ""
 " Aldakertabarik %l| Kolorebarik | Beltza | Zuria | Gorria | Orlegia | Urdina "
 "| Zian | Arrosa | Oria %l| Berrezarri "
@@ -7302,7 +7281,7 @@ msgstr "Idazkia irakur-soilekoa da:"
 
 #: src/lyx_main.C:95
 msgid "Wrong command line option `"
-msgstr "Aginduaren lerroko aukera okerra `"
+msgstr "Aginduen lerroan aukera okerra `"
 
 #: src/lyx_main.C:97
 msgid "'. Exiting."
@@ -7326,11 +7305,11 @@ msgstr "Sistemaren direktorioa honela ezarrita: "
 
 #: src/lyx_main.C:321
 msgid "LyX Warning! Couldn't determine system directory. "
-msgstr "LyX Oharra! Sistemaren direktorioa ezin zehaztu."
+msgstr "LyX Oharra! Sistemaren direktorioa ezin zehaztu. "
 
 #: src/lyx_main.C:322
 msgid "Try the '-sysdir' command line parameter or "
-msgstr "Aginduaren lerroan '-sysdir' parametroarekin saiatu edo"
+msgstr "Aginduaren lerroan '-sysdir' agerbidearekin saiatu edo "
 
 #: src/lyx_main.C:323
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
@@ -7346,11 +7325,11 @@ msgstr "Jatorrizko eraikiak erabiltzen "
 
 #: src/lyx_main.C:328
 msgid " but expect problems."
-msgstr " baina arazoei adi egon zaitez."
+msgstr " baina arazoak ager daiteke."
 
 #: src/lyx_main.C:331
 msgid "Expect problems."
-msgstr "Arazoak etor daitezke."
+msgstr "Arazoak etor daiteke."
 
 #: src/lyx_main.C:563
 msgid "You have specified an invalid LyX directory."
@@ -7383,11 +7362,11 @@ msgstr " eta egokitzaketa lantzen..."
 
 #: src/lyx_main.C:582
 msgid "Failed. Will use "
-msgstr "Kale. Erabili "
+msgstr "Kale. Horren ordez "
 
 #: src/lyx_main.C:583
 msgid " instead."
-msgstr " hau."
+msgstr " erabili."
 
 #: src/lyx_main.C:590
 msgid "Done!"
@@ -7410,7 +7389,6 @@ msgid "Setting debug level to "
 msgstr "Akats garbiketa maila ezartzera "
 
 #: src/lyx_main.C:716
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -7440,7 +7418,7 @@ msgstr ""
 "                  garbiketa egiteko ezaugarriak ezarri.\n"
 "                  ezaugarri zerrenda ikusteko `lyx -dbg' idatzi\n"
 "\t-x [--execute] agindua\n"
-"                  , non agindua lyx aginsu bat den.\n"
+"                  , non agindua lyx agindu bat den.\n"
 "\t-e [--export] fmt\n"
 "                  non fmt aukerazko kanpoko egitura den.\n"
 "\t-i [--import] fmt fitxategia.xxx\n"
@@ -7470,7 +7448,7 @@ msgstr "Fitxategi mota galdua [adbz latex, ps...] "
 
 #: src/lyx_main.C:810 src/lyx_main.C:825
 msgid " switch!"
-msgstr " aldaketan!"
+msgstr " aukeran!"
 
 #: src/lyx_main.C:823
 msgid "Missing type [eg latex, ps...] after "
@@ -7481,8 +7459,7 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"LaTeX2e fontenc sortarako hizkimota kodeatua erabiltzen da. Ingles ez "
-"diren \n"
+"LaTeX2e fontenc sortarako hizkimota kodeatua erabiltzen da. Ingles ez diren "
 "hizkuntzentzako T1 erabiltzea aholkatzen da."
 
 #: src/lyxrc.C:1654
@@ -7490,8 +7467,8 @@ msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
-"Inprimatzeko jatorrizko inprimagailua. Ezer ez bada zehazten, LyX-ek \n"
-"guneko PRINTER aldagaia erabiliko du."
+"Inprimatzeko jatorrizko irarkola. Ezer ez bada zehazten, LyX-ek guneko "
+"PRINTER aldagaia erabiliko du."
 
 #: src/lyxrc.C:1658
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -7507,11 +7484,13 @@ msgstr "Orrialde bakoitiak inprimatzeko Aukera"
 
 #: src/lyxrc.C:1670
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Komaz banatutako inprimatu beharreko orrialdeen zehaztaketa Aukera."
+msgstr ""
+"Inprimatu beharreko orrialdeen zerrenda komaz-banatutako zehaztaketaren "
+"Aukera."
 
 #: src/lyxrc.C:1674
 msgid "The option for specifying the number of copies to print."
-msgstr "Inprimatu beharreko kopia kopuruaren zehaztaketaren Aukera."
+msgstr "Inprimatu beharreko kopia-kopuruaren zehaztaketaren Aukera."
 
 #: src/lyxrc.C:1678
 msgid "The option for specifying whether the copies should be collated."
@@ -7527,24 +7506,24 @@ msgstr "Inprimakia zeharretaka ateratzeko Aukera."
 
 #: src/lyxrc.C:1690
 msgid "The option to specify paper type."
-msgstr "Orri mota zehazteko Aukera."
+msgstr "Orriaren mota zehazteko Aukera."
 
 #: src/lyxrc.C:1694
 msgid "Option to specify the dimensions of the print paper."
-msgstr "Inprima orriaren neurria zehazteko Aukera."
+msgstr "Inprima-orriaren neurria zehazteko Aukera."
 
 #: src/lyxrc.C:1698
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
-"Inprimagailu zehatz batetan inprimatu dezan inprimatze programari ematen "
-"zaion Aukera (edo agerbidea)."
+"Irarkola zehatz batetan inprimatu dezan inprimatze programari ematen zaion "
+"Aukera (edo agerbidea)."
 
 #: src/lyxrc.C:1702
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
-"LyX-ek zure inprimatze aginduari emango dion imprimagailuaren izena hautatu."
+"LyX-ek zure inprimatze aginduari emango dion irarkolaren izena hautatu."
 
 #: src/lyxrc.C:1706
 msgid "Option to pass to the print program to print to a file."
@@ -7553,43 +7532,43 @@ msgstr "Inprimatze programak fitxategi batean inprimitu dezan Aukera."
 #: src/lyxrc.C:1710
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
-"Inprimatze programaren irteerako fitxategiaren luzapena. Ohituraz, \"ps\"."
+"Inprimatze programaren irteerako fitxategiaren luzapena. Ohituraz, \".ps\"."
 
 #: src/lyxrc.C:1714
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
-"Beste guztien atzetik, baina DVI fitxategia inprimatzera bidali aurretik \n"
+"Beste guztien atzetik, baina DVI fitxategia inprimatzera bidali aurretik "
 "inprimatzeko programari ematen zaizkion beste aukerak."
 
 #: src/lyxrc.C:1718
 msgid ""
-"When set, this printer option automatically prints to a file and then calls "
-"a separate print spooling program on that file with the given name and "
+"When set, this printer option automatically prints to a file and then calls a "
+"separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
-"Ezarritakoan, inprimaketa aukera honek (bere kasa) fitxategi batetara \n"
+"Ezarritakoan, inprimaketa aukera honek (bere kasa) fitxategi batetara "
 "inprimatuko du, eta ondoren, emondako izen eta luzapendun fitxategia "
-"erabiliko \n"
-"duen inprimaketa poltsaz arduratzen den beste programa bati deituko dio."
+"erabiliko duen inprimaketa poltsaz arduratzen den beste programa bati deituko "
+"dio."
 
 #: src/lyxrc.C:1722
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
-"Inprimatzeko lehiotxoan inprimagailu zehatz baten izena idatziz, agerbide "
-"edo argumentu hau ilarako aginduaren ostean inprimagailuaren izenarekin "
-"elkartuta egongo da."
+"Inprimatzeko lehiotxoan irarkola zehatz baten izena idatziz, agerbide edo "
+"argumentu hau ilarako aginduaren ostean inprimagailuaren izenarekin elkartuta "
+"egongo da."
 
 #: src/lyxrc.C:1726
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
-"LyX-ek bere kasa zure pantailak zenbat puntu atzeko dituen zehazten du. "
-"Okerren bat gertatu ezkero, zehazteketa hemen berridatzi."
+"LyX-ek bere kasa zure pantailak atz-eko zenbat puntu dituen zehazten du. "
+"Okerren bat gertatuz gero, zehazteketa hemen berridatzi."
 
 #: src/lyxrc.C:1731
 #, no-c-format
@@ -7597,7 +7576,7 @@ msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
-"Pantailako hizkimoten ehuneko zenbateko zoom-a. %100-ean ezartzeak "
+"Pantailako hizkimoten ehuneko zenbateko zoom-a. % 100-ean ezartzeak "
 "hizkimoten neurriak gutxigorabehera orrian agertzen direnen pareko azaltzen "
 "ditu."
 
@@ -7649,8 +7628,8 @@ msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
-"LyX-ek bere aldibaterako direktorioa bide horretan ezar dezake. LyX "
-"amaitzean ezabatuak izango dira."
+"LyX-ek bere aldibaterako direktorioa bide horretan ezar dezake. LyX amaitzean "
+"ezabatuak izango dira."
 
 #: src/lyxrc.C:1780
 msgid ""
@@ -7678,8 +7657,8 @@ msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
 msgstr ""
-"Zure teklatuarentzako zehaztu behar litzatekeen hizki-hilak (azentoen "
-"hizkiak) LyX-ek arduratu behar al duen hautatu."
+"Zure atzoldiarentzako (teklatua) zehaztu behar litzatekeen hizki-hilak "
+"(azentoen hizkiak) LyX-ek arduratu behar al duen hautatu."
 
 #: src/lyxrc.C:1797
 msgid ""
@@ -7703,26 +7682,26 @@ msgid ""
 "will look in its global and local ui/ directories."
 msgstr ""
 "Erabiltzailearen Interfasea (UI) fitxategia. Bide osoa zehaztu daiteke, edo "
-"LyX-ek beraren orokor eta bertako ui/ direktorioetan begira dezake."
+"LyX-ek berorren orokor eta bertako ui/ direktorioetan begira dezake."
 
 #: src/lyxrc.C:1811
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
-"Zure teklatuarentzako mapa fitxategi zuzena ezartzeko erabiltzen da. Hau "
-"beharko duzu baldin eta Amerikar motako teklatu batekin Alemanierazko "
+"Zure atzoldiarentzako (teklatua) mapa fitxategi zuzena ezartzeko erabiltzen "
+"da. Hau beharko duzu baldin eta Amerikar motako teklatu batekin Alemanierazko "
 "idazkiak idaztea nahi badituzu."
 
 #: src/lyxrc.C:1825
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
-"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
-"is specified, an internal routine is used."
+"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" is "
+"specified, an internal routine is used."
 msgstr ""
 "ASCII irteerako taulen ekoizpena egiten duen kanpoko programa bat zehazteko "
-"erabili. Adbz, \"groff -t -Tlatin1 $$FName\" non $$FName sarrerako "
-"fitxategia den. \"Ezer ez\" esan ezkero, barruko funtzioa erabiliko da."
+"erabili. Adbz, \"groff -t -Tlatin1 $$FName\" non $$FName sarrerako fitxategia "
+"den. \"Ezer ez\" esan ezkero, barruko funtzioa erabiliko da."
 
 #: src/lyxrc.C:1829
 msgid ""
@@ -7735,8 +7714,8 @@ msgstr ""
 #: src/lyxrc.C:1833
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr ""
-"Azken fitxategien kopuru handiena. Fitxategia aukeraren zerrendan 9 baino "
-"gehiago ager daiteke."
+"Landutako azken fitxategien kopuru handiena. Fitxategia aukeraren zerrendan 9 "
+"baino gehiago ager daiteke."
 
 #: src/lyxrc.C:1837
 msgid "Select to check whether the lastfiles still exist."
@@ -7751,8 +7730,8 @@ msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
-"Hitz bateratuak, \"disk drive\"-en ordez \"diskdrive\" bezala, zuzenak "
-"bezala hartu?"
+"Hitz bateratuak, \"disk drive\"-en ordez \"diskdrive\" bezala, zuzenak bezala "
+"hartu?"
 
 #: src/lyxrc.C:1855
 msgid "What command runs the spell checker?"
@@ -7794,16 +7773,16 @@ msgid ""
 msgstr ""
 "Pantailako hizkimota haundi-txikigarriak (eskalagarriak) erabiltzeari utzi? "
 "Ezezko erantzunean, LyX-ek dagoen neurriarekiko gertuena erabiliko du. "
-"Hizkimota haundi-txikigarriak itxura txarra badute eta hizkimoten neurri "
-"asko finkatu behar izan ezkero, orduan hau erabili."
+"Hizkimota haundi-txikigarriak itxura txarra badute eta hizkimoten neurri asko "
+"finkatu behar izanez gero, orduan hau erabili."
 
 #: src/lyxrc.C:1882
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
-"n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
+"-n38\" Refer to the ChkTeX documentation."
 msgstr ""
-"chktex nola landu behar den zehaztu. Adbz, \"chktex -n11 -n1 -n3 -n6 -n9 -"
-"n22 -n25 -n30 -n38\". ChkTeX-en laguntzako eskuliburuak irakurri."
+"chktex nola landu behar den zehaztu. Adbz, \"chktex -n11 -n1 -n3 -n6 -n9 -n22 "
+"-n25 -n30 -n38\". ChkTeX-en laguntzako eskuliburuak irakurri."
 
 #: src/lyxrc.C:1886
 msgid ""
@@ -7811,26 +7790,25 @@ msgid ""
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 "Zuk higitze barra mugitzean LyX-ek, jatorriz, idazteko gezia ez du lekuz "
-"aldatzen."
+"aldatzen. Kurtsore gezia beti pantailan edukitzeko hautaketa piztu."
 
 #: src/lyxrc.C:1890
 msgid ""
-"Sets whether LyX asks for a second confirmation to exit when you have "
-"changed documents. (LyX will still ask to save changed documents.)"
+"Sets whether LyX asks for a second confirmation to exit when you have changed "
+"documents. (LyX will still ask to save changed documents.)"
 msgstr ""
-"Idazkiak aldatu ostean LyX-etik irteteko bigarren baieztapen bat eskatu "
-"behar al duen zehaztu. (LyX-ek aldatutako idazkiak gordetzea nahi al dituzun "
+"Idazkiak aldatu ostean LyX-etik irteteko bigarren baieztapen bat eskatu behar "
+"al duen zehaztu. (LyX-ek aldatutako idazkiak gordetzea nahi al dituzun "
 "galdetzen jarraituko du)."
 
 #: src/lyxrc.C:1894
 msgid ""
-"LyX continously displays names of last command executed, along with a list "
-"of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
-"slow."
+"LyX continously displays names of last command executed, along with a list of "
+"defined short-cuts for it in the minibuffer. Set to false if LyX seems slow."
 msgstr ""
 "LyX-ek landutako azken aginduen izenak, beraiei dagokien lasterbideekin "
-"batera, buffertxoan erakusten ibiltzen da beti. Baldin eta LyX motel ibili "
-"ezkero, hautaketa kendu."
+"batera, buffertxoan erakusten ibiltzen da beti. Baldin eta LyX motel "
+"ibilizgero, hautaketa kendu."
 
 #: src/lyxrc.C:1898
 msgid "De-select if you don't want LyX to create backup files."
@@ -7841,59 +7819,62 @@ msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
-"Babeseko fitxategiak gordetzeko ibilbidea. Esaldi hutsa sartu ezkero, LyX-ek "
-"babeseko kopia jatorrizkoa den direktorio berdinean gordeko du."
+"Babeseko fitxategiak gordetzeko ibilbidea. Esaldi hutsa bada, LyX-ek babeseko "
+"kopia jatorrizkoa den direktorio berdinean gordeko du."
 
 #: src/lyxrc.C:1906
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
-"Hautatu Eskuinetik-Ezkerreruntzko hizkuntzak baimentzeko (adbz, Arabikoa, "
-"Hebreoa)."
+"Hautatu Eskuinetik-Ezkerreruntzko hizkuntzak baimentzeko (adbz, Arabiera, "
+"Hebreoera)."
 
 #: src/lyxrc.C:1910
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
-"Hautatu idazkiko hizkuntzarentzat atzerritar den beste bateko hitzen "
-"argitasuna kontrolatzeko."
+"Hautatu hitzen argitasuna kontrolatzeko idazkiarentzat atzerritarra den beste "
+"hizkuntza batekin."
 
 #: src/lyxrc.C:1914
 msgid ""
-"The latex command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Hizkuntzaren sorta jasotzeko latex agindua. Adbz, \"\\usepackage{babel}\", "
+"Hizkuntza sorta jasotzeko latex agindua. Adbz, \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:1918
-#, fuzzy
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "Hasierako iragarria (banner) ez baduzu nahi, hautaketa kendu."
+msgstr ""
+"Hautaketa kendu \\documentclass -erako hizkuntzak agerbide bezala "
+"erabiltzerik ez baduzu nahi."
 
 #: src/lyxrc.C:1922
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
+"Hautaketa kendu idazkiaren hizkuntza jatorrizko hizkuntza denean babel ez "
+"erabiltzerik ez baduzu nahi."
 
 #: src/lyxrc.C:1926
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
-"Hautatu idazkiaren hasieran hizkuntz aldaketaren agindua beharrezkoa izan "
-"ezkero."
+"Hautatu idazkiaren hasieran hizkuntz aldaketaren agindua beharrezkoa izanez "
+"gero."
 
 #: src/lyxrc.C:1930
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
-"Hautatu idazkiaren amaieran hizkuntz aldaketaren agindua beharrezkoa izan "
-"ezkero."
+"Hautatu idazkiaren amaieran hizkuntz aldaketaren agindua beharrezkoa izanez "
+"gero."
 
 #: src/lyxrc.C:1934
 msgid ""
@@ -7901,18 +7882,17 @@ msgid ""
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
-"Idazkiaren hizkuntzatik beste hizkuntza batera aldatzeko latex agindua. "
-"Adbz, \\selectlanguage{$$lang}, non $$lang bigarren hizkuntzagatik "
-"ordezkatua izan den."
+"Idazkiaren hizkuntzatik beste hizkuntza batetara aldatzeko latex agindua. "
+"Adbz, \\selectlanguage{$$lang}, non $$lang bigarren hizkuntzagatik ordezkatua "
+"izan den."
 
 #: src/lyxrc.C:1938
 msgid "The latex command for changing back to the language of the document."
-msgstr "Idazkiko hizkuntzara aldatzeko latex agindua."
+msgstr "Idazkiaren hizkuntzara aldatzeko latex agindua."
 
 #: src/lyxrc.C:1942
-#, fuzzy
 msgid "The latex command for local changing of the language."
-msgstr "Idazkiko hizkuntzara aldatzeko latex agindua."
+msgstr "Hizkuntzaren bertoko aldaketa egiteko latex agindua."
 
 #: src/lyxrc.C:1947
 #, no-c-format
@@ -7925,21 +7905,21 @@ msgstr ""
 
 #: src/lyxrc.C:1951
 msgid "De-select if you don't want the startup banner."
-msgstr "Hasierako iragarria (banner) ez baduzu nahi, hautaketa kendu."
+msgstr "Hasierako iragarkia (banner) ez baduzu nahi, hautaketa kendu."
 
 #: src/lyxrc.C:1955
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
 msgstr ""
-"Gurpilaren higidura ezartzailea (gurpildun edo bost botoidun xaguentzako)."
+"Gurpilaren higiduraren faktore ezartzailea (gurpildun edo bost botoidun "
+"xaguentzako)."
 
 #: src/lyxrc.C:1968
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
 msgstr ""
-"Honek jokaera ezartzen du, hots, idazki berri bat sortzerakoan beroni "
-"buruzko fitxategiaren izenagatik galdetzea nahi duzu, edo bestela zuk hau "
-"gorde arte itxoitea eta orduan galdetzea."
+"Honek jokaera ezartzen du, hots, idazki berri bat sortzerakoan edo zuk hau "
+"gorde arte itxoitea eta orduan galdetzea nahi al duzun. "
 
 #: src/lyxrc.C:1972
 msgid "New documents will be assigned this language."
@@ -8010,7 +7990,7 @@ msgstr " (Aldatua)"
 
 #: src/LyXView.C:372
 msgid " (read only)"
-msgstr " (irakur era)"
+msgstr " (irakurteran)"
 
 #: src/mathed/formula.C:911 src/mathed/formula.C:1257
 msgid "TeX mode"
@@ -8078,7 +8058,7 @@ msgstr "Zutabeak "
 
 #: src/mathed/math_forms.C:147
 msgid "Vertical align|#V"
-msgstr "Goitiberako Lerrokaketa|#V"
+msgstr "Goitibeherako Lerrokaketa|#V"
 
 #: src/mathed/math_forms.C:152
 msgid "Horizontal align|#H"
@@ -8291,7 +8271,7 @@ msgstr "Ahaztu hitza|#h"
 
 #: src/sp_form.C:99
 msgid "Accept word in this session|#A"
-msgstr "Lanordu honetan hitza onartu|#A"
+msgstr "Lanketa honetan hitza onartu|#A"
 
 #: src/sp_form.C:101
 msgid "Stop spellchecking|#T"
@@ -8321,7 +8301,7 @@ msgstr "LyX Barneko Akatsa!"
 
 #: src/support/filetools.C:160
 msgid "Could not test if directory is writeable"
-msgstr "Direktorioa idazkorra al dan ezin egiaztatu"
+msgstr "Direktorioa idazkorra al den ezin egiaztatu"
 
 #: src/support/filetools.C:410
 msgid "Error! Cannot open directory:"
@@ -8388,8 +8368,8 @@ msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
-"Hizki-mota aldaketa zehaztu gabe. Hizki mota definitzeko Aurkezpen aukera-"
-"zerrendako Hizkia erabili."
+"Hizki-mota aldaketa zehaztu gabe. Hizki mota zehazteko Aurkezpena "
+"aukera-zerrendako Hizki-jokoa erabili."
 
 #: src/text2.C:2192 src/text2.C:2305
 msgid "Don't know what to do with half floats."
@@ -8430,261 +8410,3 @@ msgstr "Ezin duzu Orritxo batean parrafo margena sartu!"
 msgid "Float would include float!"
 msgstr "Mugikor batek mugikor bat dauka!"
 
-#~ msgid "A&A"
-#~ msgstr "A&A"
-
-#~ msgid "Acknowledgement-numbered"
-#~ msgstr "Zenbatutako Eskerbidea"
-
-#~ msgid "Acknowledgement(s)"
-#~ msgstr "Eskerbidea(k)"
-
-#~ msgid "Acknowledgement-unnumbered"
-#~ msgstr "Zenbatugabeko Eskerbidea"
-
-#~ msgid "Acnowledgement"
-#~ msgstr "Eskerbidea"
-
-#~ msgid "Algorithm-numbered"
-#~ msgstr "Zenbatutako Algoritmoa"
-
-#~ msgid "Algorithm-plain"
-#~ msgstr "Algoritmo Laua"
-
-#~ msgid "AuthorRunning"
-#~ msgstr "EgileaLantzen"
-
-#~ msgid "Axiom-numbered"
-#~ msgstr "Zenbatutako Axioma"
-
-#~ msgid "Axiom-plain"
-#~ msgstr "Axioma Laua"
-
-#~ msgid "Case-numbered"
-#~ msgstr "Zenbatutako-kutxa"
-
-#~ msgid "Claim-numbered"
-#~ msgstr "Zenbatutako Aldarrikapena"
-
-#~ msgid "Claim-plain"
-#~ msgstr "Aldarrikapen Laua"
-
-#~ msgid "Claim-unnumbered"
-#~ msgstr "Zenbatugabeko Aldarrikapena"
-
-#~ msgid "Conclusion-numbered"
-#~ msgstr "Zenbatutako Hitzaldi Burua"
-
-#~ msgid "Conclusion-unnumbered"
-#~ msgstr "Zenbatugabeko Hitzaldi Burua"
-
-#~ msgid "Condition-numbered"
-#~ msgstr "Zenbatutako Baldintza"
-
-#~ msgid "Condition-plain"
-#~ msgstr "Baldintza Laua"
-
-#~ msgid "Conjecture-numbered"
-#~ msgstr "Zenbatutako Agerpidea"
-
-#~ msgid "Conjecture-plain"
-#~ msgstr "Agerpide Laua"
-
-#~ msgid "Conjecture-unnumbered"
-#~ msgstr "Zenbatugabeko Agerpidea"
-
-#~ msgid "Corollary-numbered"
-#~ msgstr "Zenbatutako Ondorioa"
-
-#~ msgid "Corollary-plain"
-#~ msgstr "Ondorio Laua"
-
-#~ msgid "Corollary-unnumbered"
-#~ msgstr "Zenbatugabeko Ondorioa"
-
-#~ msgid "Correspondence"
-#~ msgstr "Erantzupidea"
-
-#~ msgid "Criterion-numbered"
-#~ msgstr "Zenbatutako Erizpidea"
-
-#~ msgid "Criterion-plain"
-#~ msgstr "Erizpide Laua"
-
-#~ msgid "Current"
-#~ msgstr "Oraingoa"
-
-#~ msgid "Definition-numbered"
-#~ msgstr "Zenbatutako Zehaztaketa"
-
-#~ msgid "Definition-plain"
-#~ msgstr "Zehaztaketa Laua"
-
-#~ msgid "Definition-unnumbered"
-#~ msgstr "Zenbatugabeko Zehaztaketa"
-
-#~ msgid "Example-numbered"
-#~ msgstr "Zenbatutako Adibidea"
-
-#~ msgid "Example-plain"
-#~ msgstr "Adibide Laua"
-
-#~ msgid "Example-unnumbered"
-#~ msgstr "Zenbatugabeko Adibidea"
-
-#~ msgid "Exercise-numbered"
-#~ msgstr "Zenbatutako Ariketa"
-
-#~ msgid "Exercise-plain"
-#~ msgstr "Ariketa Laua"
-
-#~ msgid "Fact-numbered"
-#~ msgstr "Zenbatutako Gertaera"
-
-#~ msgid "Fact-plain"
-#~ msgstr "Gertaera Laua"
-
-#~ msgid "Fact-unnumbered"
-#~ msgstr "Zenbatugabeko Gertaera"
-
-#~ msgid "first"
-#~ msgstr "lehen"
-
-#~ msgid "foilhead"
-#~ msgstr "Orriburua"
-
-#~ msgid "Idea"
-#~ msgstr "Burutazioa"
-
-#~ msgid "journal"
-#~ msgstr "egunkaria"
-
-#~ msgid "Lemma-numbered"
-#~ msgstr "Zenbatutako Lema"
-
-#~ msgid "Lemma-plain"
-#~ msgstr "Lema laua"
-
-#~ msgid "Lemma-unnumbered"
-#~ msgstr "Lema zenbatugabea"
-
-#~ msgid "Lyx-Code"
-#~ msgstr "Lyx Kodea"
-
-#, fuzzy
-#~ msgid "modying"
-#~ msgstr "Eraldatzen"
-
-#~ msgid "Notation-numbered"
-#~ msgstr "Zenbatutako Oharrak"
-
-#~ msgid "Note-numbered"
-#~ msgstr "Zenbatutako Oharra"
-
-#~ msgid "Note-plain"
-#~ msgstr "Ohar Laua"
-
-#~ msgid "Notetoeditor"
-#~ msgstr "Argitariarentzatoharra"
-
-#~ msgid "Note-unnumbered"
-#~ msgstr "Zenbakirikgabeko Oharra"
-
-#~ msgid "Paragraph-numbered"
-#~ msgstr "Zenbatutako-parrafoa"
-
-#~ msgid "Parenthetical"
-#~ msgstr "Parentesiartean"
-
-#~ msgid "Placefigure"
-#~ msgstr "Jarri-irudia"
-
-#~ msgid "Placetable"
-#~ msgstr "Jarri-taula"
-
-#~ msgid "Problem-numbered"
-#~ msgstr "Zenbatutako-arazoa"
-
-#~ msgid "Problem-plain"
-#~ msgstr "Arazo-laua"
-
-#~ msgid "Proposition-numbered"
-#~ msgstr "Zenabatutako-proposamena"
-
-#~ msgid "Proposition-plain"
-#~ msgstr "Proposamen-laua"
-
-#~ msgid "Proposition-unnumbered"
-#~ msgstr "Zenbatugabek-proposamena"
-
-#~ msgid "Recieved"
-#~ msgstr "Eskuratua"
-
-#~ msgid "Recieved/Accepted"
-#~ msgstr "Eskuratu/Onartua"
-
-#~ msgid "Remark-numbered"
-#~ msgstr "Zenbatutako-oharra"
-
-#~ msgid "Remark-plain"
-#~ msgstr "Ohar-laua"
-
-#~ msgid "Remark-unnumbered"
-#~ msgstr "Zenbatugabeko-oharra"
-
-#~ msgid "Section-numbered"
-#~ msgstr "Zenbatutako-atala"
-
-#~ msgid "Shortfoilhead"
-#~ msgstr "OrriburuMotza"
-
-#~ msgid "style"
-#~ msgstr "itxura"
-
-#~ msgid "Style"
-#~ msgstr "Itxura"
-
-#~ msgid "Subsection-numbered"
-#~ msgstr "Zenbatutako-azpiatala"
-
-#~ msgid "Subsubsection-numbered"
-#~ msgstr "Zenbatutako-azpiazpiatala"
-
-#~ msgid "Suggested"
-#~ msgstr "Aholkatua"
-
-#~ msgid "Summary-numbered"
-#~ msgstr "Zenbatutako-laburpena"
-
-#~ msgid "surname"
-#~ msgstr "gaitziena"
-
-#~ msgid "Theorem-numbered"
-#~ msgstr "Zenbatutako-azalkizuna"
-
-#~ msgid "Theorem-plain"
-#~ msgstr "Azalkizun-laua"
-
-#~ msgid "Theorem-unnumbered"
-#~ msgstr "Zenbatugabeko-azalkizuna"
-
-#~ msgid "Title_Running"
-#~ msgstr "Izenburua_Lantzen"
-
-#~ msgid "Translated"
-#~ msgstr "Itzulita"
-
-#~ msgid "Use"
-#~ msgstr "Erabili"
-
-#~ msgid "Brazil"
-#~ msgstr "Brazilkera"
-
-#~ msgid "Hungarian"
-#~ msgstr "Hungariera"
-
-#~ msgid "Citation style|#s"
-#~ msgstr "Aipamen itxura|#t"
-
-#~ msgid "Text before|#T"
-#~ msgstr "Testu aurretik|#T"
