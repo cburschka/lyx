@@ -1,3 +1,12 @@
+2004-08-13  José Matos  <jamatos@lyx.org>
+	* layouts/elsart.layout: removed temporarily to correct the
+	permission settings of the file.
+
+	* layouts/db_stdclass.inc: remove specific docbook counters, they
+	are not need anymore.
+
+	* layouts/db_stdcounters.inc: removed since it lost its usefulness.
+
 2004-08-09  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview_tools.py: move code common to both
