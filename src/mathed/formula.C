@@ -192,10 +192,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	ostringstream os;
 	WriteStream wi(os, false, false);
 	par_->write(wi);
-	if (preview(os.str(), preview_) && preview_.get()) {
+	if (preview(os.str(), preview_)) {
 		cerr << "image could be drawn\n";
-		// LyX crashes if we try that. Why? Andre'
-		//pi.pain.image(x, y, w, h, *(preview_->image()));
+		pi.pain.image(x + 40, y, 50, 50, *(preview_->image()));
 	}
 #endif
 

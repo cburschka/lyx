@@ -5,6 +5,8 @@
 #include "graphics/GraphicsTypes.h"
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsImage.h"
+#include "graphics/GraphicsParams.h"
 #include "graphics/GraphicsCacheItem.h"
 #include "Lsstream.h"
 
@@ -30,7 +32,7 @@ bool preview(string const & str, grfx::GraphicPtr & graphic)
 {
 	string base = canonical_name(str);
 	string dir  = "/tmp/lyx/";
-	string file = dir + base + ".ps";
+	string file = dir + base + ".eps";
 	cerr << "writing '" << str << "' to '" << file << "'\n";
 
 	// get the cache
@@ -45,9 +47,8 @@ bool preview(string const & str, grfx::GraphicPtr & graphic)
 		// is it already loaded?
 		if (gr->status() == grfx::Loaded) {
 			cerr << "file '" << file << "' ready for display\n";
-			cerr << "im: " << graphic.get() << " " << gr.get() << "\n";
 			graphic = gr;
-			return true;
+			return graphic->image()->setPixmap(grfx::GParams());
 		}
 
 		// otherwise we have to wait again
@@ -67,7 +68,7 @@ bool preview(string const & str, grfx::GraphicPtr & graphic)
 	of.close();
 
 	string const cmd =
-		"latex " + base + ".tex ; dvips -o " + base + ".ps " + base + ".dvi ";
+		"latex " + base + ".tex ; dvips -E -o " + base + ".eps " + base + ".dvi ";
 	//cerr << "calling: '" << "(cd " + dir + "; " + cmd + ")\n";
 	Systemcall sc;
 	sc.startscript(Systemcall::Wait, "(cd " + dir + "; " + cmd + ")");
