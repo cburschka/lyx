@@ -1,21 +1,22 @@
+# translation of da.po to Danish
 # translation of lyx-da.po to Danish
 # Dansk oversættelse af LyX
 # Copyright (C) 1997-2003 LyX Team
 # Asger Alstrup <alstrup@diku.dk>, 1997-1999.
 # Claus Hindsgaul <claus_h@image.dk>, 2000-2003.
-# Reviewed by Ole Laursen <olau@hardworking.dk>, 2002
+# Reviewed by Ole Laursen <olau@hardworking.dk>, 2002.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-da\n"
+"Project-Id-Version: lyx\n"
 "POT-Creation-Date: 2003-10-22 17:44+0200\n"
-"PO-Revision-Date: 2003-03-10 09:25GMT\n"
+"PO-Revision-Date: 2003-11-02 15:17+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -601,7 +602,7 @@ msgstr "Opdatér resultat|#O"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:62
 msgid "Directory:|#D"
-msgstr "Katalog:|#K"
+msgstr "Mappe:|#K"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:80
 msgid "Pattern:|#P"
@@ -695,7 +696,6 @@ msgid "LyX View"
 msgstr "LyX-visning"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:230
-#, fuzzy
 msgid "Draft mode|#o"
 msgstr "Kladdetilstand|#a"
 
@@ -1467,7 +1467,7 @@ msgstr "Skabelonsti:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2273
 msgid "Temp dir:|#d"
-msgstr "Midlertidigt katalog:|#M"
+msgstr "Midlertidig mappe:|#M"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2328
 msgid "Check last files:|#C"
@@ -1681,9 +1681,8 @@ msgid "Ignore|#I"
 msgstr "Ignorér|#I"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:170
-#, fuzzy
 msgid "Ignore All|#g"
-msgstr "Ignorér|#I"
+msgstr "Ignorér alle|#g"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
@@ -3296,9 +3295,8 @@ msgid "&Vertical:"
 msgstr "&Lodret:"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-#, fuzzy
 msgid "Horizontal alignment per column (l,c,r)"
-msgstr "Vandret justering per række (t,c,b)"
+msgstr "Vandret justering rækkevist (l,c,r)"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
 msgid "&Horizontal:"
@@ -3379,7 +3377,6 @@ msgid "Alig&nment:"
 msgstr "&Justering:"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-#, fuzzy
 msgid "&Don't indent"
 msgstr "&Indryk ikke"
 
@@ -3449,14 +3446,12 @@ msgid "&Lines && Pagebreaks"
 msgstr "&Linjer && Sideskift"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-#, fuzzy
 msgid "Label Width"
 msgstr "Mærkatbredde"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-#, fuzzy
 msgid "Lo&ngest label"
-msgstr "Læn&gste mærkat"
+msgstr "Læ&ngste mærkat"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
 msgid "L&ines"
@@ -3508,8 +3503,7 @@ msgstr "&roff-kommando:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
+msgstr "Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -3769,7 +3763,7 @@ msgstr "CheckTeX startindstillinger og -flag"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
 msgid "&Backup directory:"
-msgstr "Katalog for sikker&hedskopier:"
+msgstr "Mappe til sikker&hedskopier:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:122
 msgid "&Document templates:"
@@ -3781,11 +3775,11 @@ msgstr "Ly&X-serverdatakanal:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:152
 msgid "&Use temporary directory"
-msgstr "Benyt &midlertidigt katalog"
+msgstr "Benyt &midlertidig mappe"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
 msgid "&Working directory:"
-msgstr "&Arbejdskatalog:"
+msgstr "&Arbejdsmappe:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -3926,9 +3920,8 @@ msgid "Al&ternative language:"
 msgstr "Alternati&vt sprog:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
-#, fuzzy
 msgid "Escape cha&racters:"
-msgstr "&Escape-tegn:"
+msgstr "Es&cape-tegn:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
 msgid "Personal &dictionary:"
@@ -3943,9 +3936,8 @@ msgid "aspell"
 msgstr "aspell"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
-#, fuzzy
 msgid "hspell"
-msgstr "ispell"
+msgstr "hspell"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 msgid "Accept compound &words"
@@ -4263,9 +4255,8 @@ msgid "Ignore this word"
 msgstr "Ignorér dette ord"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-#, fuzzy
 msgid "I&gnore All"
-msgstr "Ignorér"
+msgstr "I&gnorér alle"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 msgid "Accept word for this session"
@@ -4284,9 +4275,8 @@ msgid "Current word"
 msgstr "Nuværende ord"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
-#, fuzzy
 msgid "Unknown word:"
-msgstr "Ukendt:"
+msgstr "Ukendt ord:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
@@ -4375,7 +4365,6 @@ msgid "Width unit"
 msgstr "Breddeenhed"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-#, fuzzy
 msgid "Fixed width of the column"
 msgstr "Fast kolonnebredde"
 
@@ -4563,8 +4552,7 @@ msgid "&View"
 msgstr "V&is"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -6313,9 +6301,8 @@ msgid "Labeling"
 msgstr "Mærkning"
 
 #: ../../1.3.x/lib/layouts/scrclass.inc:108
-#, fuzzy
 msgid "Addpart"
-msgstr "Tilføj"
+msgstr "Tilføjdel"
 
 #: ../../1.3.x/lib/layouts/scrclass.inc:114
 msgid "Addchap"
@@ -6369,19 +6356,16 @@ msgid "Extratitle"
 msgstr "Ekstratitel"
 
 #: ../../1.3.x/lib/layouts/scrclass.inc:246
-#, fuzzy
 msgid "Captionabove"
-msgstr "Billedtekst"
+msgstr "Billedtekstover"
 
 #: ../../1.3.x/lib/layouts/scrclass.inc:252
-#, fuzzy
 msgid "Captionbelow"
-msgstr "Billedtekst"
+msgstr "Billedtekstunder"
 
 #: ../../1.3.x/lib/layouts/scrclass.inc:258
-#, fuzzy
 msgid "Dictum"
-msgstr "Datum"
+msgstr "Dictum"
 
 #: ../../1.3.x/lib/layouts/scrlettr.layout:93
 #: ../../1.3.x/lib/layouts/scrlttr2.layout:130
@@ -6540,53 +6524,44 @@ msgid " Keywords"
 msgstr " Nøgleord"
 
 #: ../../1.3.x/lib/layouts/scrlttr2.layout:77
-#, fuzzy
 msgid "NextAddress"
-msgstr "Adresse"
+msgstr "NæsteAdresse"
 
 #: ../../1.3.x/lib/layouts/scrlttr2.layout:184
-#, fuzzy
 msgid "SenderAddress"
-msgstr "Modtageradresse"
+msgstr "AfsenderAdresse"
 
 #: ../../1.3.x/lib/layouts/scrlttr2.layout:200
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ../../1.3.x/lib/layouts/scrlttr2.layout:209
-#, fuzzy
 msgid "E-Mail"
 msgstr "E-post"
 
 #: ../../1.3.x/lib/layouts/scrlttr2.layout:233
-#, fuzzy
 msgid "Logo"
-msgstr "Log"
+msgstr "Logo"
 
 #: ../../1.3.x/lib/layouts/elsart.layout:135
-#, fuzzy
 msgid "Author_Address"
-msgstr "ForfatterAdr"
+msgstr "Forfatter_Adresse"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:31
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Kapitel_øvelser"
+msgstr "Kapitelsammenfatning"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:52
-#, fuzzy
 msgid "Epigraph"
-msgstr "Biografi"
+msgstr "Epigrafi"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:64
-#, fuzzy
 msgid "Poemtitle"
-msgstr "HøjformatSlide"
+msgstr "Digttitel"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:82
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "HøjformatSlide"
+msgstr "Digttitel*"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -8806,7 +8781,7 @@ msgstr "Kan ikke konvertere fil"
 
 #: src/converter.C:734 src/converter.C:737
 msgid "Error while trying to move directory:"
-msgstr "Fejl under flytning af katalog:"
+msgstr "Fejl under flytning af mappe:"
 
 #: src/converter.C:735 src/converter.C:777
 #, c-format
@@ -9066,11 +9041,11 @@ msgstr " fra "
 
 #: src/frontends/controllers/ControlAboutlyx.C:88
 msgid "Library directory: "
-msgstr "Brugerkatalog: "
+msgstr "Brugermappe: "
 
 #: src/frontends/controllers/ControlAboutlyx.C:91
 msgid "User directory: "
-msgstr "Brugerkatalog: "
+msgstr "Brugermappe: "
 
 #: src/frontends/controllers/ControlCharacter.C:68
 msgid "Character set"
@@ -9272,32 +9247,30 @@ msgid " strings have been replaced."
 msgstr " strenge er erstattet."
 
 #: src/frontends/controllers/ControlSpellchecker.C:106
-#, fuzzy
 msgid ""
 "The spell-checker could not be started.\n"
 "Maybe it is mis-configured."
 msgstr ""
-"Stavekontrollen døde af en eller anden grund.\n"
-"Måske blev den bevidst dræbt."
+"Stavekontrollen kunne ikke startes.\n"
+"Måske er den sat forkert op."
 
 #: src/frontends/controllers/ControlSpellchecker.C:109
 #: src/frontends/controllers/ControlSpellchecker.C:202
 msgid "The spell-checker has failed"
-msgstr ""
+msgstr "Stavekontrollen mislykkedes"
 
 #: src/frontends/controllers/ControlSpellchecker.C:196
-#, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Stavekontrollen døde af en eller anden grund.\n"
-"Måske blev den bevidst dræbt."
+"Måske blev den dræbt."
 
 #: src/frontends/controllers/ControlSpellchecker.C:218
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words checked."
-msgstr "Èt ord tjekket."
+msgstr "%1$d ord tjekket."
 
 #: src/frontends/controllers/ControlSpellchecker.C:222
 #: src/frontends/controllers/ControlSpellchecker.C:228
@@ -9305,14 +9278,12 @@ msgid "One word checked."
 msgstr "Èt ord tjekket."
 
 #: src/frontends/controllers/ControlSpellchecker.C:226
-#, fuzzy
 msgid " words checked."
-msgstr "Èt ord tjekket."
+msgstr " ord tjekket."
 
 #: src/frontends/controllers/ControlSpellchecker.C:233
-#, fuzzy
 msgid "Spell-checking is complete"
-msgstr "Stavekontrol fuldført!"
+msgstr "Stavekontrol fuldført"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 msgid "No version control log file found."
@@ -9455,7 +9426,7 @@ msgstr "mellemrum, '#', '~', '$' eller '%'."
 
 #: src/frontends/controllers/helper_funcs.C:117
 msgid "directory name can't contain any of these characters:"
-msgstr "katalognavn må ikke indeholde nogen af disse tegn:"
+msgstr "mappenavn må ikke indeholde nogen af disse tegn:"
 
 #: src/frontends/gnome/GLog.C:55 src/frontends/qt2/QLog.C:56
 msgid "Build log"
@@ -9497,7 +9468,7 @@ msgstr "Alle filer (*)"
 
 #: src/frontends/qt2/FileDialog.C:116
 msgid "Directories"
-msgstr "Kataloger"
+msgstr "Mapper"
 
 #: src/frontends/qt2/QBibitem.C:34
 msgid "Bibliography Item"
@@ -9898,19 +9869,19 @@ msgstr "Ny"
 
 #: src/frontends/qt2/QPrefsDialog.C:554
 msgid "Select a document templates directory"
-msgstr "Vælg katalog for skabeloner"
+msgstr "Vælg mappe til skabeloner"
 
 #: src/frontends/qt2/QPrefsDialog.C:562
 msgid "Select a temporary directory"
-msgstr "Vælg midlertidigt katalog"
+msgstr "Vælg midlertidig mappe"
 
 #: src/frontends/qt2/QPrefsDialog.C:570
 msgid "Select a backups directory"
-msgstr "Vælg katalog for sikkerhedskopier"
+msgstr "Vælg mappe til sikkerhedskopier"
 
 #: src/frontends/qt2/QPrefsDialog.C:578
 msgid "Select a document directory"
-msgstr "Vælg dokumentkatalog"
+msgstr "Vælg dokumentmappe"
 
 #: src/frontends/qt2/QPrefsDialog.C:586
 msgid "Give a filename for the LyX server pipe"
@@ -10132,7 +10103,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:76
 msgid "Browse directory for BibTeX stylefiles"
-msgstr "Gennemse dit katalog for BibTeX-stilfiler"
+msgstr "Gennemse din mappe for BibTeX-stilfiler"
 
 #: src/frontends/xforms/FormBibtex.C:79
 msgid ""
@@ -10156,7 +10127,7 @@ msgid ""
 "in directories where TeX finds them are listed!"
 msgstr ""
 "Opdaterer dit TeX-system med en ny bibstyle-liste. Kun de stile, der ligger "
-"i de kataloger hver TeX finder dem, bliver vist!"
+"i de mapper hver TeX finder dem, bliver vist!"
 
 #: src/frontends/xforms/FormBibtex.C:109
 msgid "Select Database"
@@ -10243,16 +10214,12 @@ msgstr ""
 "ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
-"Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
-"Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:214
 msgid "Search your database (all fields will be searched)."
@@ -10292,8 +10259,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:239
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+msgstr " Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:289
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
@@ -10304,12 +10270,11 @@ msgid " Author-year | Numerical "
 msgstr " Forfatter-år | Numerisk "
 
 #: src/frontends/xforms/FormDocument.C:340
-#, fuzzy
 msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger "
 msgstr ""
-" standard | lillebitte | hævet/sænket | fodnote | lille | normal | stor | "
+" standard | lillebitte | mindre | fodnote | lille | normal | stor | "
 "større | størst | kæmpe | enorm"
 
 #. Stack tabs
@@ -10345,7 +10310,7 @@ msgstr "Redigér ekstern fil"
 #: src/frontends/xforms/FormFiledialog.C:194
 #: src/frontends/xforms/FormFiledialog.C:363
 msgid "Warning! Couldn't open directory."
-msgstr "Advarsel! Kunne ikke åbne katalog."
+msgstr "Advarsel! Kunne ikke åbne mappe."
 
 #: src/frontends/xforms/FormFloat.C:42
 msgid "Float Options"
@@ -10406,10 +10371,8 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Tilføj alle processer til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr ""
-"Tilføj den valgte underproces til listen over processer, der skal dræbes."
+msgid "Add the currently selected child process to the list of processes to kill."
+msgstr "Tilføj den valgte underproces til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:77
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -10436,7 +10399,7 @@ msgstr "Filen som skal indsættes."
 
 #: src/frontends/xforms/FormGraphics.C:145
 msgid "Browse the directories."
-msgstr "Gennemsøg katalogerne."
+msgstr "Gennemsøg mapperne."
 
 #: src/frontends/xforms/FormGraphics.C:148
 msgid "Scale the image to inserted percentage value."
@@ -10729,10 +10692,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, der kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:551
 msgid "Find a new color."
@@ -10889,7 +10850,7 @@ msgstr "Skabelonsti"
 
 #: src/frontends/xforms/FormPreferences.C:2227
 msgid "Temporary dir"
-msgstr "Midlertidigt katalog"
+msgstr "Midlertidig mappe"
 
 #: src/frontends/xforms/FormPreferences.C:2232
 msgid "Last files"
@@ -10908,12 +10869,11 @@ msgid "Fonts must be positive!"
 msgstr "Skrifter skal være positive!"
 
 #: src/frontends/xforms/FormPreferences.C:2724
-#, fuzzy
 msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
 msgstr ""
-"Skrifter skal angives i rækkefølgen lillebitte > hævet/sænket > fodnote > "
+"Skrifter skal angives i rækkefølgen lillebitte > mindst > mindre > "
 "lille > normal > stor > større > størst > enorm > kæmpe."
 
 #: src/frontends/xforms/FormPreferences.C:2853
@@ -10939,7 +10899,7 @@ msgstr "Angiv filnavn som udskriftsmål."
 
 #: src/frontends/xforms/FormPrint.C:85
 msgid "Browse directories for file name."
-msgstr "Gennemse kataloger for filnavn."
+msgstr "Gennemse mapper for filnavn."
 
 #. set up the tooltips for Range
 #: src/frontends/xforms/FormPrint.C:89
@@ -11051,8 +11011,7 @@ msgstr "Søg baglæns."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Eksportér dokumentet i dette format, før nedenstående kommando udføres på "
 "den."
@@ -11165,7 +11124,7 @@ msgid ""
 msgstr ""
 "Kører skriptet \"texhash\", der opbygger et nyt LaTeX-træ. Kræves hvis du "
 "installerer en ny TeX-klasse eller -stil. For at udføre det, skal du have "
-"skriveadgang til tex-katalogerne. Det er normalt /var/lib/texmf m.fl."
+"skriveadgang til tex-mapperne. Det er normalt /var/lib/texmf m.fl."
 
 #: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:33
 msgid "Table of Contents"
@@ -11252,16 +11211,16 @@ msgstr "Absolut sti kræves."
 #: src/frontends/xforms/xforms_helpers.C:426
 #: src/frontends/xforms/xforms_helpers.C:472
 msgid "Directory does not exist."
-msgstr "Katalog eksisterer ikke."
+msgstr "Mappe eksisterer ikke."
 
 #: src/frontends/xforms/xforms_helpers.C:367
 #: src/frontends/xforms/xforms_helpers.C:431
 msgid "Cannot write to this directory."
-msgstr "Kan ikke skrive til dette katalog."
+msgstr "Kan ikke skrive til denne mappe."
 
 #: src/frontends/xforms/xforms_helpers.C:391
 msgid "Cannot read this directory."
-msgstr "Kan ikke læse dette katalog."
+msgstr "Kan ikke læse denne mappe."
 
 #: src/frontends/xforms/xforms_helpers.C:409
 #: src/frontends/xforms/xforms_helpers.C:455
@@ -11271,7 +11230,7 @@ msgstr "Ingen ind-fil."
 #: src/frontends/xforms/xforms_helpers.C:437
 #: src/frontends/xforms/xforms_helpers.C:483
 msgid "A file is required, not a directory."
-msgstr "Der kræves en fil, ikke et katalog."
+msgstr "Der kræves en fil, ikke en mappe."
 
 #: src/frontends/xforms/xforms_helpers.C:442
 msgid "Cannot write to this file."
@@ -11279,7 +11238,7 @@ msgstr "Kan ikke skrive til denne fil"
 
 #: src/frontends/xforms/xforms_helpers.C:477
 msgid "Cannot read from this directory."
-msgstr "Kan ikke læse dette katalog."
+msgstr "Kan ikke læse denne mappe."
 
 #: src/frontends/xforms/xforms_helpers.C:488
 msgid "File does not exist."
@@ -11394,9 +11353,8 @@ msgid "Opened Footnote Inset"
 msgstr "Åbnede fodnote-indstik"
 
 #: src/insets/insetgraphics.C:225
-#, fuzzy
 msgid "Not shown."
-msgstr " ukendt"
+msgstr "Ikke vist."
 
 #: src/insets/insetgraphics.C:228
 msgid "Loading..."
@@ -11444,7 +11402,7 @@ msgstr "Kan ikke kopiere fil"
 
 #: src/insets/insetgraphics.C:644
 msgid "into tempdir"
-msgstr "til midlertidigt katalog"
+msgstr "til midlertidig mappe"
 
 #: src/insets/insetgraphics.C:681 src/insets/insetgraphics.C:685
 msgid "Cannot convert Image (not existing file?)"
@@ -11626,20 +11584,20 @@ msgid "Opened Wrap Inset"
 msgstr "Åbnede ombrydningsindstik"
 
 #: src/ispell.C:201 src/ispell.C:208 src/ispell.C:217
-#, fuzzy
 msgid "Can't create pipe for spellchecker."
-msgstr "Start stavekontrollen."
+msgstr "Kan ikke oprette dataledning til stavekontrol."
 
 #: src/ispell.C:222 src/ispell.C:227 src/ispell.C:232
-#, fuzzy
 msgid "Can't open pipe for spellchecker."
-msgstr "Stop stavekontrollen."
+msgstr "Kan ikke åbne dataledning til stavekontrol."
 
 #: src/ispell.C:241
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
+"Kunne ikke oprette en ispell-proces.\n"
+"Du har muligvis ikke de rigtige sprog installeret."
 
 #. select returned error
 #: src/ispell.C:263
@@ -11647,10 +11605,12 @@ msgid ""
 "The spell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
+"Staveprocessen returnerede med en fejl.\n"
+"Den kan være sat forkert op."
 
 #: src/ispell.C:372
 msgid "Could not communicate with the spell-checker program."
-msgstr ""
+msgstr "Kunne ikke kommunikere med stavekontrol-programmet."
 
 #: src/kbsequence.C:157
 msgid "   options: "
@@ -11888,11 +11848,11 @@ msgstr "LYX_DIR_13x skal-variabel er ugyldig."
 
 #: src/lyx_main.C:344
 msgid "System directory set to: "
-msgstr "Systemkatalog sat til: "
+msgstr "Systemmappe sat til: "
 
 #: src/lyx_main.C:352
 msgid "LyX Warning! Couldn't determine system directory. "
-msgstr "LyX-advarsel! Kunne ikke bestemme systemkataloget. "
+msgstr "LyX-advarsel! Kunne ikke bestemme systemmappen. "
 
 #: src/lyx_main.C:353
 msgid "Try the '-sysdir' command line parameter or "
@@ -11900,7 +11860,7 @@ msgstr "Prøv '-sysdir' kommandolinjeparametren eller "
 
 #: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr "sæt skal-variablen LYX_DIR_13x til LyX-systemkataloget "
+msgstr "sæt skal-variablen LYX_DIR_13x til LyX-systemmappen "
 
 #: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
@@ -11925,7 +11885,7 @@ msgstr "Forvent problemer."
 
 #: src/lyx_main.C:593
 msgid "LyX: reconfiguring user directory"
-msgstr "LyX: genkonfigurerer brugerkatalog"
+msgstr "LyX: genkonfigurerer brugermappe"
 
 #: src/lyx_main.C:597 src/lyx_main.C:645
 msgid "Done!"
@@ -11933,7 +11893,7 @@ msgstr "Færdig!"
 
 #: src/lyx_main.C:607
 msgid "You have specified an invalid LyX directory."
-msgstr "Du har angivet et ugyldigt LyX-katalog"
+msgstr "Du har angivet en ugyldig LyX-mappe."
 
 #: src/lyx_main.C:608
 msgid "It is needed to keep your own configuration."
@@ -11945,16 +11905,16 @@ msgstr "Skal jeg prøve at sætte det op for dig (anbefales)?"
 
 #: src/lyx_main.C:610
 msgid "Running without personal LyX directory."
-msgstr "Kører uden personligt LyX-katalog."
+msgstr "Kører uden personlig LyX-mappe."
 
 #: src/lyx_main.C:617
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
-msgstr "LyX: Opretter kataloget %1$s og kører \"configure\"..."
+msgstr "LyX: Opretter mappen %1$s og kører \"configure\"..."
 
 #: src/lyx_main.C:622
 msgid "LyX: Creating directory "
-msgstr "LyX: Opretter kataloget "
+msgstr "LyX: Opretter mappen "
 
 #: src/lyx_main.C:623
 msgid " and running configure..."
@@ -12027,8 +11987,8 @@ msgstr ""
 "Brug: lyx [ tilvalg ] [ navn.lyx ... ]\n"
 "Tilvalg (versalfølsomme):\n"
 "\t-help              sammenfatning af brugen af LyX\n"
-"\t-userdir katalog   forsøg at sætte brugerkatalog til katalog\n"
-"\t-sysdir katalog    forsøg at sætte systemkatalog til katalog\n"
+"\t-userdir mappe     forsøg at sætte brugermappe til mappe\n"
+"\t-sysdir mappe      forsøg at sætte systemmappe til mappe\n"
 "\t-geometry WxH+X+Y  angiv hovedvinduets geometri\n"
 "                  vælg dele, der skal afluses.\n"
 "                  Skriv 'lyx -dbg' for at se listen over dele\n"
@@ -12043,11 +12003,11 @@ msgstr ""
 
 #: src/lyx_main.C:830
 msgid "Missing directory for -sysdir switch"
-msgstr "Manglende katalog for tilvalget '-sysdir'"
+msgstr "Manglende mappe for tilvalget '-sysdir'"
 
 #: src/lyx_main.C:840
 msgid "Missing directory for -userdir switch"
-msgstr "Manglende katalog for tilvalget '-userdir'"
+msgstr "Manglende mappe for tilvalget '-userdir'"
 
 #: src/lyx_main.C:850
 msgid "Missing command string after --execute switch"
@@ -12321,8 +12281,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
 #: src/lyxrc.C:1840
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12338,8 +12297,7 @@ msgstr "Om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1852
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1856
 msgid "The option for specifying the number of copies to print."
@@ -12379,8 +12337,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
 #: src/lyxrc.C:1888
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1892
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -12430,13 +12387,11 @@ msgstr ""
 
 #: src/lyxrc.C:1917
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1923
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1927
 msgid "The bold font in the dialogs."
@@ -12455,17 +12410,15 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1950
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"Standardstien til dine dokumenter. En tom værdi vælger det katalog, LyX blev "
+"Standardstien til dine dokumenter. En tom værdi vælger den mappe, LyX blev "
 "startet fra."
 
 #: src/lyxrc.C:1954
@@ -12474,7 +12427,7 @@ msgid ""
 "value selects the directory LyX was started from."
 msgstr ""
 "Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon. En tom værdi "
-"vælger det katalog, LyX blev startet fra."
+"vælger den mappe, LyX blev startet fra."
 
 #: src/lyxrc.C:1958
 msgid ""
@@ -12489,7 +12442,7 @@ msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
 msgstr ""
-"Vælges, hvis du ønsker at bruge en midlertidigt katalogstruktur til at gemme "
+"Vælges, hvis du ønsker at bruge en midlertidigt mappestruktur til at gemme "
 "midlertidige TeX-uddata."
 
 #: src/lyxrc.C:1966
@@ -12526,7 +12479,7 @@ msgid ""
 "its global and local bind/ directories."
 msgstr ""
 "Tastaturudlægningsfil. Kan angive en absolut sti. Ellers vil LyX lede i sine "
-"globale og lokale 'bind/'-kataloger."
+"globale og lokale 'bind/'-mapper."
 
 #: src/lyxrc.C:1986
 msgid ""
@@ -12534,7 +12487,7 @@ msgid ""
 "will look in its global and local ui/ directories."
 msgstr ""
 "Brugergrænseflade-fil. Hvis der ikke angives en absolut sti vil LyX lede i "
-"sine globale og lokale 'ui/'-kataloger."
+"sine globale og lokale 'ui/'-mapper."
 
 #: src/lyxrc.C:1992
 msgid ""
@@ -12608,8 +12561,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:2046
@@ -12664,11 +12616,10 @@ msgid ""
 "the backup file in the same directory as the original file."
 msgstr ""
 "Stien, hvor sikkerhedskopier gemmes. Hvis den er tom, vil LyX gemme dem i "
-"samme katalog, som den originale fil."
+"samme mappe, som den originale fil."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -12691,8 +12642,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:2094
 msgid ""
@@ -12709,8 +12659,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:2106
@@ -12756,8 +12705,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2144
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxrc.C:2148
 msgid "Shows a typeset preview of things such as math"
@@ -12869,7 +12817,7 @@ msgstr " Makro: "
 
 #: src/support/filetools.C:448
 msgid "Error! Cannot open directory:"
-msgstr "Fejl! Kan ikke åbne katalog:"
+msgstr "Fejl! Kan ikke åbne mappe:"
 
 #: src/support/filetools.C:468
 msgid "Error! Could not remove file:"
@@ -12877,11 +12825,11 @@ msgstr "Fejl: Kunne ikke slette fil:"
 
 #: src/support/filetools.C:492 src/support/filetools.C:528
 msgid "Error! Couldn't create temporary directory:"
-msgstr "Fejl: Kunne ikke oprette midlertidigt katalog:"
+msgstr "Fejl: Kunne ikke oprette midlertidig mappe:"
 
 #: src/support/filetools.C:509
 msgid "Error! Couldn't delete temporary directory:"
-msgstr "Fejl: Kunne ikke slette midlertidigt katalog:"
+msgstr "Fejl: Kunne ikke slette midlertidig mappe:"
 
 #: src/support/filetools.C:574
 msgid "Internal error!"
@@ -12893,7 +12841,7 @@ msgstr "Kald af createDirectory med ugyldigt navn"
 
 #: src/support/filetools.C:580
 msgid "Error! Couldn't create directory:"
-msgstr "Fejl! Kunne ikke oprette katalog:"
+msgstr "Fejl! Kunne ikke oprette mappe:"
 
 #: src/support/filetools.C:1344
 msgid "Could not delete auto-save file!"
@@ -12921,8 +12869,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
 #: src/text.C:3363
 msgid "Page Break (top)"
@@ -13442,3 +13389,4 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Canceled"
 #~ msgstr "Annulleret"
+
