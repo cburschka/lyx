@@ -1,3 +1,7 @@
+2002-05-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxstring.C (operator>>): try a new version of the operator>>
+
 2002-04-14  Herbert Voss  <voss@perce.de>
 
 	* lstrings.[Ch]: move the getVectorFromString and the vice versa
@@ -11,7 +15,7 @@
 
 2002-04-08  Herbert Voss  <voss@perce.de>
 
-	* filetools.C (getExtFromContents): get tgif run 
+	* filetools.C (getExtFromContents): get tgif run
 
 2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>
 

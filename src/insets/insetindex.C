@@ -39,8 +39,9 @@ void InsetIndex::edit(BufferView * bv, bool)
 
 int InsetIndex::docbook(Buffer const *, ostream & os) const
 {
-  os << "<indexterm><primary>" << getContents() << "</primary></indexterm>";
-  return 0;
+	os << "<indexterm><primary>" << getContents()
+	   << "</primary></indexterm>";
+	return 0;
 }
 
 
@@ -53,6 +54,7 @@ Inset::Code InsetIndex::lyxCode() const
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
+
 
 string const InsetPrintIndex::getScreenLabel(Buffer const *) const
 {

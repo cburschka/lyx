@@ -401,6 +401,9 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		LyXLookupString(ev, dummy, 1, &keysym);
 #else
 		XLookupString(xke, dummy, 1, &keysym, 0);
+//		int num_keys = XLookupString(xke, dummy, 10, &keysym, &xcs);
+//		lyxerr << "We have " << num_keys << " keys in the returned buffer" << endl;
+//		lyxerr << "Our dummy string is " << dummy << endl;
 #endif
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * tmp = XKeysymToString(key);

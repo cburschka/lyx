@@ -109,7 +109,7 @@ string floatname(string const & type)
 
 	return _(it->second.name());
 }
- 
+
 } // namespace anon
 
 

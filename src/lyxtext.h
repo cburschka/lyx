@@ -177,9 +177,8 @@ public:
 	///
 	void insertInset(BufferView *, Inset * inset);
 
-	/** Completes the insertion with a full rebreak.
-	    Returns true if something was broken. */
-	bool fullRebreak(BufferView *);
+	/** Completes the insertion with a full rebreak. */
+	void fullRebreak(BufferView *);
 
 	///
 	mutable Row * need_break_row;

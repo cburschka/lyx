@@ -1092,20 +1092,19 @@ void BufferView::Pimpl::update()
 		screen_->update(bv_->text, bv_);
 		bool fitc = false;
 		while (bv_->text->status() == LyXText::CHANGED_IN_DRAW) {
-			if (bv_->text->fullRebreak(bv_)) {
-				st = LyXText::NEED_MORE_REFRESH;
-				bv_->text->setCursor(bv_, bv_->text->cursor.par(),
-									 bv_->text->cursor.pos());
-				if (bv_->text->selection.set()) {
-					bv_->text->setCursor(bv_, bv_->text->selection.start,
-								  bv_->text->selection.start.par(),
-								  bv_->text->selection.start.pos());
-					bv_->text->setCursor(bv_, bv_->text->selection.end,
-								  bv_->text->selection.end.par(),
-								  bv_->text->selection.end.pos());
-				}
-				fitc = true;
+			bv_->text->fullRebreak(bv_);
+			st = LyXText::NEED_MORE_REFRESH;
+			bv_->text->setCursor(bv_, bv_->text->cursor.par(),
+					     bv_->text->cursor.pos());
+			if (bv_->text->selection.set()) {
+				bv_->text->setCursor(bv_, bv_->text->selection.start,
+						     bv_->text->selection.start.par(),
+						     bv_->text->selection.start.pos());
+				bv_->text->setCursor(bv_, bv_->text->selection.end,
+						     bv_->text->selection.end.par(),
+						     bv_->text->selection.end.pos());
 			}
+			fitc = true;
 			bv_->text->status(bv_, st);
 			screen_->update(bv_->text, bv_);
 		}
@@ -1655,6 +1654,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
 			      << action <<"] arg[" << argument << "]" << endl;
 
+	LyXTextClass const & tclass = textclasslist[buffer_->params.textclass];
+
 	switch (action) {
 		// --- Misc -------------------------------------------
 	case LFUN_APPENDIX:
@@ -1675,7 +1676,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		InsetCommandParams p;
 		p.setCmdName("tableofcontents");
 		Inset * inset = new InsetTOC(p);
-		if (!insertInset(inset, "Standard"))
+		if (!insertInset(inset, tclass.defaultLayoutName()))
 			delete inset;
 		break;
 	}
@@ -1802,15 +1803,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */
-		textclass_type tclass = buffer_->params.textclass;
-		bool hasLayout =
-			textclasslist[tclass].hasLayout(argument);
+		bool hasLayout = tclass.hasLayout(argument);
 		string layout = argument;
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
-			string const & obs = textclasslist[tclass][layout]
-				.obsoleted_by();
+			string const & obs = tclass[layout].obsoleted_by();
 			if (!obs.empty())
 				layout = obs;
 		}
@@ -2488,7 +2486,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		LyXText * lt = bv_->getLyXText();
 
-		LyXLayout const & style = textclasslist[buffer_->params.textclass][lt->cursor.par()->layout()];
+		LyXLayout const & style = tclass[lt->cursor.par()->layout()];
 
 		if (style.free_spacing) {
 			lt->insertChar(bv_, ' ');
@@ -3209,7 +3207,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetCommandParams p("printindex");
 		Inset * inset = new InsetPrintIndex(p);
-		if (!insertInset(inset, "Standard"))
+		if (!insertInset(inset, tclass.defaultLayoutName()))
 			delete inset;
 	}
 	break;
@@ -3218,7 +3216,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetCommandParams p("lyxparent", argument);
 		Inset * inset = new InsetParent(p, *buffer_);
-		if (!insertInset(inset, "Standard"))
+		if (!insertInset(inset, tclass.defaultLayoutName()))
 			delete inset;
 	}
 
@@ -3243,7 +3241,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_FLOAT_LIST:
 		if (floatList.typeExist(argument)) {
 			Inset * inset = new InsetFloatList(argument);
-			if (!insertInset(inset, "Standard"))
+			if (!insertInset(inset, tclass.defaultLayoutName()))
 				delete inset;
 		} else {
 			lyxerr << "Non-existent float type: "

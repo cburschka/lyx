@@ -60,13 +60,15 @@ public:
 	///
 	void edit(BufferView *, bool = true) {}
 	///
-	EDITABLE editable() const{ return NOT_EDITABLE; }
+	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
 	bool display() const { return true; }
 	///
 	Inset::Code lyxCode() const;
 	///
 	string const getScreenLabel(Buffer const *) const;
+	///
+	virtual bool needFullRow() const { return true; }
 };
 
 #endif

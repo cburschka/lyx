@@ -1043,7 +1043,7 @@ string const getExtFromContents(string const & filename)
 			break;
 		}
 
-		std::getline(ifs, str);
+		getline(ifs, str);
 		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str << endl;
 
 		string const stamp = str.substr(0,2);
@@ -1103,7 +1103,7 @@ string const getExtFromContents(string const & filename)
 					format =  "xwd";
 				}
 			}
-			
+
 			firstLine = false;
 		}
 
@@ -1362,7 +1362,7 @@ string const readBB_from_PSFile(string const & file)
 	// end of the file. Than we have in the header:
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
-	string const file_ = zippedFile(file) ?	
+	string const file_ = zippedFile(file) ?
 		string(unzipFile(file)) : string(file);
 	string const format = getExtFromContents(file_);
 	if (format != "eps" && format != "ps")
@@ -1371,10 +1371,9 @@ string const readBB_from_PSFile(string const & file)
 	std::ifstream is(file_.c_str());
 	while (is) {
 		string s;
-		std::getline(is,s);
-		if (contains(s,"%%BoundingBox:") && !contains(s,"atend")) 
+		getline(is,s);
+		if (contains(s,"%%BoundingBox:") && !contains(s,"atend"))
 			return (frontStrip(s.substr(14)));
 	}
 	return string();
 }
-

@@ -1732,16 +1732,9 @@ void swap(lyxstring & str1, lyxstring & str2)
 
 #include <iostream>
 
+#if 0
 istream & operator>>(istream & is, lyxstring & s)
 {
-#if 0
-	// very bad solution
-	char * nome = new char[1024];
-	is >> nome;
-	lyxstring tmp(nome);
-	delete [] nome;
-	if (!tmp.empty()) s = tmp;
-#else
 	// better solution
 	int w = is.width(0);
 	s.clear();
@@ -1752,9 +1745,44 @@ istream & operator>>(istream & is, lyxstring & s)
 		if (--w == 1) break;
 	}
 	if (s.empty()) is.setstate(std::ios::failbit);
-#endif
 	return is;
 }
+#else
+istream & operator>>(istream & is, lyxstring & str)
+{
+	typedef istream            istream_type;
+	typedef int         int_type;
+	typedef std::streambuf streambuf_type;
+	typedef string     string_type;
+	typedef string::size_type         size_type;
+	size_type extracted = 0;
+
+//	istream_type::sentry cerb(is, false);
+//	if (cerb) {
+		str.erase();
+		std::streamsize w = is.width();
+		size_type n;
+		n = w > 0 ? static_cast<size_type>(w) : str.max_size();
+
+		int_type const eof = EOF;
+		streambuf_type * sb = is.rdbuf();
+		int_type c = sb->sgetc();
+
+		while (extracted < n
+		       && c != eof && !isspace(c)) {
+			str += c;
+			++extracted;
+			c = sb->snextc();
+		}
+		if (c == eof)
+			is.setstate(std::ios::eofbit);
+		is.width(0);
+//	}
+	if (!extracted)
+		is.setstate(std::ios::failbit);
+	return is;
+}
+#endif
 
 
 ostream & operator<<(ostream & o, lyxstring const & s)

@@ -1,10 +1,10 @@
 2002-04-30  Rob Lahaye <lahaye@users.sourceforge.net>
 	* FormDocument.C: "USletter" -> "US letter" etc.
-	                  "Other" -> "Custom".
+			  "Other" -> "Custom".
 	* FormParagraph.C: "Other" -> "Custom"
 	* FormPreferences.C: "USletter" -> "US letter" etc.
 	* forms/form_document.fd: 'Papersize" -> "Paper size"
-	                          style consistency
+				  style consistency
 	* forms/form_preferences.fd: style consistency
 
 2002-04-30  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -34,7 +34,7 @@
 
 	* FormBibtex.C:
 	* FormCitation.C: fix two typos
- 
+
 2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCharacter.h:
@@ -53,7 +53,7 @@
 
 	* FormMathsPanel.C: translate Close
 	* FormGraphics.C: a little more translation
- 
+
 2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCitation.C (apply, input): ensure that the choice is always valid.

@@ -1,3 +1,19 @@
+2002-05-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* screen.C (drawFromTo): change sine fullRebreak always return
+	true.
+
+	* buffer.C (parseSingleLyXformat2Token): reindent some
+
+	* BufferView_pimpl.C (update): change since fullRebreak always
+	return true.
+	(Dispatch): git rid of the last hardcoded "Standard"s.
+
+2002-05-01  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.[Ch] (fullRebreak): make it return void now that we always
+	returned true.
+
 2002-04-30  Juergen Vigna  <jug@sad.it>
 
 	* buffer.C (parseSingleLyXformat2Token): reset the font before the
@@ -5,14 +21,14 @@
 
 2002-04-29  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* buffer.C (parseSingleLyXformat2Token): Fix reading of old format 
+	* buffer.C (parseSingleLyXformat2Token): Fix reading of old format
 	minipages: use col% instead of p%, and also use the current font.
 	(makeLaTeXFile): Fix use babel condition.
 	(parseSingleLyXformat2Token): Correct font when reading old floats.
 
 2002-04-28  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* BufferView_pimpl.C (Dispatch): Check that float type exists when 
+	* BufferView_pimpl.C (Dispatch): Check that float type exists when
 	inserting list of floats.
 
 2002-04-25  Herbert Voss  <voss@lyx.org>
@@ -39,11 +55,11 @@
 
 2002-04-23  Mike Ressler  <mike.ressler@alum.mit.edu>
 
-	* lyxtextclass.[Ch]: add layout keyword ProvidesNatbib. 
+	* lyxtextclass.[Ch]: add layout keyword ProvidesNatbib.
 
 	* LaTeXFeatures.C: do not add \usepackage{natbib} to tex file if
 	natbib is provided by the LaTeX class.
-	
+
 2002-04-23  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.[Ch]: remove use of wrong and unneeded insetSleep/
@@ -84,7 +100,7 @@
 	* tabular.C (OldFormatRead): check also for \\end_inset as Lars
 	changed the read and substituted \\end_float with \\end_inset!
 
-	* BufferView_pimpl.C (cursorPrevious): 
+	* BufferView_pimpl.C (cursorPrevious):
 	(cursorNext): fixed to make it work with rows heigher than the work
 	area without moving the cursor only the draw of the row.
 	(workAreaMotionNotify): fix jumping over high rows.

@@ -900,18 +900,17 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 }
 
 
-bool LyXText::fullRebreak(BufferView * bview)
+void LyXText::fullRebreak(BufferView * bview)
 {
 	if (!firstrow) {
 		init(bview);
-		return true;
+		return;
 	}
 	if (need_break_row) {
 		breakAgain(bview, need_break_row);
 		need_break_row = 0;
-		return true;
+		return;
 	}
-	return true;
 }
 
 
