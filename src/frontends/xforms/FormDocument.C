@@ -901,9 +901,9 @@ bool FormDocument::language_apply(BufferParams & params)
 		new_language = default_language;
 
 	if (old_language != new_language
-	    && old_language->RightToLeft() == params.language->RightToLeft()
+	    && old_language->RightToLeft() == new_language->RightToLeft()
 	    && !lv_->buffer()->isMultiLingual())
-		lv_->buffer()->changeLanguage(old_language, params.language);
+		lv_->buffer()->changeLanguage(old_language, new_language);
 
 	if (old_language != new_language) {
 		redo = true;
