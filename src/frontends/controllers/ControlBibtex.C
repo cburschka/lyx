@@ -25,6 +25,7 @@
 #include "helper_funcs.h"
 #include "tex_helpers.h"
 #include "gettext.h"
+#include "support/lstrings.h"
 
 #include "frontends/LyXView.h"
 
@@ -69,7 +70,13 @@ string const ControlBibtex::Browse(string const & in_name,
 
 string const ControlBibtex::getBibStyles() const
 {
-	return getTexFileList("bstFiles.lst", false);
+	string list = getTexFileList("bstFiles.lst", false);
+	// test, if we have a valid list, otherwise run rescan
+	if (list.empty()) {
+		rescanBibStyles();
+		list = getTexFileList("bstFiles.lst", false);
+	}
+	return list;
 }
 
 

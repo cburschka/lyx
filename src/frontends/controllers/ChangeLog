@@ -1,3 +1,14 @@
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ControlTexinfo.C: do the same for Texinfo
+
+	* tex_helpers.C: don't try to read a file that isn't there
+
+2002-06-21  Herbert Voss  <voss@perce.de>
+ 
+ 	* ControlBibtex.C: do an automatic update, when no bst-list
+ 	exists
+ 
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUI.h: createIndex() changed

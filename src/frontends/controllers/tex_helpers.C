@@ -66,15 +66,17 @@ void texhash()
 
 string const getTexFileList(string const & filename, bool withFullPath)
 {
-	vector<string> dbase = getVectorFromString(
-		GetFileContents(LibFileSearch(string(),filename)), "\n");
+	string const file = LibFileSearch("", filename);
+	if (file.empty())
+		return string();
+ 
+	vector<string> dbase =
+		getVectorFromString(GetFileContents(file), "\n");
+
 	lyx::eliminate_duplicates(dbase); 
 	string const str_out = withFullPath ?
 		getStringFromVector(dbase, "\n") :
 		getStringFromVector(listWithoutPath(dbase), "\n");
-	// everything ok?
-	if (str_out.empty())
-		return _("Missing filelist. try Rescan");
 	return str_out;
 }
 
@@ -92,8 +94,6 @@ string const getListOfOptions(string const & classname,
 		s = s.substr(s.find("DeclareOption"));
 		s = split(s,'{');		// cut front
 		s = token(s,'}',0);		// cut end
-// FIXME: why is this commented out ?
-//		s = s.substr(0, s.find('}')+1); // format entry
 		optionList += (s + '\n');
 	    }
 	}

@@ -32,6 +32,25 @@
 
 extern string user_lyxdir; // home of *Files.lst
 
+namespace {
+
+string getFileList(ControlTexinfo::texFileSuffix type, bool withFullPath)
+{
+	switch (type) {
+	    case ControlTexinfo::bst: 
+		return getTexFileList("bstFiles.lst", withFullPath);
+		break;
+	    case ControlTexinfo::cls:
+		return getTexFileList("clsFiles.lst", withFullPath);
+		break;
+	    case ControlTexinfo::sty:
+		return getTexFileList("styFiles.lst", withFullPath);
+		break;
+	}
+	return string();
+}
+ 
+}
 
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
@@ -55,18 +74,14 @@ void ControlTexinfo::runTexhash() const
 string const
 ControlTexinfo::getContents(texFileSuffix type, bool withFullPath) const
 {
-	switch (type) {
-	    case bst: 
-		return getTexFileList("bstFiles.lst", withFullPath);
-		break;
-	    case cls:
-		return getTexFileList("clsFiles.lst", withFullPath);
-		break;
-	    case sty:
-		return getTexFileList("styFiles.lst", withFullPath);
-		break;
+	string list(getFileList(type, withFullPath));
+
+	// initial scan
+	if (list.empty()) {
+		rescanStyles();
+		list = getFileList(type, withFullPath);
 	}
-	return string();
+	return list;
 }
 
 
