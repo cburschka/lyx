@@ -2515,23 +2515,6 @@ void InsetText::clearInset(BufferView * bv, int baseline, bool & cleared) const
 }
 
 
-Paragraph * InsetText::getParFromID(int id) const
-{
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
-	for (; it != end; ++it) {
-		if (it->id() == id) {
-			return &*(it);
-		}
-		Paragraph * tmp2 = it->getParFromID(id);
-		if (tmp2 != 0) {
-			return tmp2;
-		}
-	}
-	return 0;
-}
-
-
 Paragraph * InsetText::firstParagraph() const
 {
 	Paragraph * result;

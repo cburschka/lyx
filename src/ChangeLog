@@ -1,5 +1,14 @@
 2003-02-14  John Levon  <levon@movementarian.org>
 
+	* buffer.C: use ParIterator for getParFromID()
+
+	* paragraph.h:
+	* paragraph.C:
+	* paragraph_pimpl.h:
+	* paragraph_pimpl.C: remove unused getParFromID()
+
+2003-02-14  John Levon  <levon@movementarian.org>
+
 	* buffer.C: remove some very old #if 0'd parse code
 
 2003-02-13  John Levon  <levon@movementarian.org>

@@ -3413,18 +3413,21 @@ Paragraph * Buffer::getParFromID(int id) const
 {
 	if (id < 0)
 		return 0;
+ 
+	// why should we allow < 0 ??
+	//lyx::Assert(id >= 0);
 
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParConstIterator it(par_iterator_begin());
+	ParConstIterator end(par_iterator_end());
+
 	for (; it != end; ++it) {
-		if (it->id() == id) {
-			return &*it;
-		}
-		Paragraph * tmp = it->getParFromID(id);
-		if (tmp) {
-			return tmp;
+		// go on then, show me how to remove
+		// the cast
+		if ((*it)->id() == id) {
+			return const_cast<Paragraph*>(*it);
 		}
 	}
+
 	return 0;
 }
 

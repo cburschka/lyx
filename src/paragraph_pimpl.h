@@ -172,8 +172,6 @@ struct Paragraph::Pimpl {
 		      LyXLayout const & layout) const;
 
 	///
-	Paragraph * getParFromID(int id) const;
-	///
 	unsigned int id_;
 	///
 	static unsigned int paragraph_id;

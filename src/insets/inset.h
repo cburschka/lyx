@@ -201,7 +201,7 @@ public:
 	virtual bool isTextInset() const { return false; }
 	///
 	virtual bool doClearArea() const { return true; }
-	///
+	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 	/// returns true the inset can hold an inset of given type
 	virtual bool insetAllowed(Inset::Code) const { return false; }
@@ -288,11 +288,7 @@ public:
 			return scx;
 		return 0;
 	}
-	/// try to get a paragraph pointer from it's id if we have a
-	/// paragraph to give back!
-	virtual Paragraph * getParFromID(int /* id */) const {
-		return 0;
-	}
+
 	/// try to get a inset pointer from it's id if we have
 	/// an inset to give back!
 	virtual Inset * getInsetFromID(int /* id */) const {

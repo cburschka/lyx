@@ -849,19 +849,6 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 }
 
 
-Paragraph * Paragraph::Pimpl::getParFromID(int id) const
-{
-	InsetList::iterator cit = owner_->insetlist.begin();
-	InsetList::iterator lend = owner_->insetlist.end();
-	Paragraph * result;
-	for (; cit != lend; ++cit) {
-		if ((result = cit.getInset()->getParFromID(id)))
-			return result;
-	}
-	return 0;
-}
-
-
 LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 					    BufferParams const & bparams) const
 {

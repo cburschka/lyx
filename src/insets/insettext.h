@@ -203,8 +203,6 @@ public:
 	///
 	void clearSelection(BufferView * bv);
 	///
-	Paragraph * getParFromID(int id) const;
-	///
 	Inset * getInsetFromID(int id) const;
 	///
 	Paragraph * firstParagraph() const;

@@ -1978,12 +1978,6 @@ ParagraphParameters const & Paragraph::params() const
 }
 
 
-Paragraph * Paragraph::getParFromID(int id) const
-{
-	return pimpl_->getParFromID(id);
-}
-
-
 bool Paragraph::isFreeSpacing() const
 {
 	// for now we just need this, later should we need this in some

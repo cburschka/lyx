@@ -1,3 +1,14 @@
+2003-02-14  John Levon  <levon@movementarian.org>
+
+	* inset.h:
+	* inset.C:
+	* insetcollapsable.h:
+	* insetcollapsable.C:
+	* insettabular.h:
+	* insettabular.C:
+	* insettext.h:
+	* insettext.C: remove unused getParFromID()
+
 2003-02-13  John Levon  <levon@movementarian.org>
 
 	* insettext.h:
