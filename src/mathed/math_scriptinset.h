@@ -56,7 +56,7 @@ public:
 	/// Target pos when we enter the inset from the right by pressing "Left"
 	bool idxLast(idx_type & idx, pos_type & pos) const;
 	/// can we enter this cell?
-	bool validCell(idx_type i) const { return script_[i]; }
+	bool validCell(idx_type i) const { return i == 2 || script_[i]; }
 
 	/// identifies scriptinsets
 	MathScriptInset const * asScriptInset() const;
