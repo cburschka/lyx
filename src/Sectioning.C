@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #ifdef __GNUG__

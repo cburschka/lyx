@@ -44,7 +44,7 @@ public:
 		///
 		CHANGE = 4
 	};
-					    
+
 	///
 	BufferView(LyXView * owner, int , int , int, int);
 	///
@@ -73,7 +73,7 @@ public:
 	void updateScrollbar();
 	///
 	Inset * checkInsetHit(LyXText *, int & x, int & y);
-	/// 
+	///
 	void redoCurrentBuffer();
 	///
 	int resizeCurrentBuffer();
@@ -81,16 +81,16 @@ public:
 	void cursorPrevious(LyXText *);
 	///
 	void cursorNext(LyXText *);
-	/// 
+	///
 	bool available() const;
 	///
 	LyXView * owner() const;
 	///
 	void beforeChange(LyXText *);
-        ///
-        void savePosition(unsigned int i);
-        ///
-        void restorePosition(unsigned int i);
+	///
+	void savePosition(unsigned int i);
+	///
+	void restorePosition(unsigned int i);
 	///
 	bool isSavedPosition(unsigned int i);
 	/** This holds the mapping between buffer paragraphs and screen rows.
@@ -108,7 +108,7 @@ public:
 	///
 	UpdatableInset * theLockingInset() const;
 	///
-	void theLockingInset(UpdatableInset * inset); 
+	void theLockingInset(UpdatableInset * inset);
 	///
 	void updateInset(Inset * inset, bool mark_dirty);
 	///
@@ -184,7 +184,7 @@ public:
 	void toggleToggle();
 	///
 	void center();
-	
+
 	///
 	bool focus() const;
 	///
@@ -200,7 +200,7 @@ public:
 	void setState();
 
 	///
-	bool ChangeInsets(Inset::Code code, string const & from, 
+	bool ChangeInsets(Inset::Code code, string const & from,
 			  string const & to);
 	///
 	bool ChangeRefsIfUnique(string const & from, string const & to);

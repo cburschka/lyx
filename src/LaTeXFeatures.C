@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 the LyX Team.
  *
@@ -46,7 +46,7 @@ void LaTeXFeatures::require(string const & name)
 {
 	if (isRequired(name))
 		return;
-	
+
 	features.push_back(name);
 }
 
@@ -59,7 +59,7 @@ void LaTeXFeatures::useLayout(string const & lyt)
 
 bool LaTeXFeatures::isRequired(string const & name) const
 {
-	FeaturesList::const_iterator i = find(features.begin(), 
+	FeaturesList::const_iterator i = find(features.begin(),
 					      features.end(),
 					      name);
 	return i != features.end();
@@ -91,25 +91,25 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 }
 
 
-void LaTeXFeatures::includeFile(string const & key, string const & name) 
+void LaTeXFeatures::includeFile(string const & key, string const & name)
 {
 	IncludedFiles[key] = name;
 }
 
 
-bool LaTeXFeatures::hasLanguages() 
+bool LaTeXFeatures::hasLanguages()
 {
 	return !UsedLanguages.empty();
 }
 
 
-string LaTeXFeatures::getLanguages() const 
+string LaTeXFeatures::getLanguages() const
 {
 	ostringstream languages;
 
 	for (LanguageList::const_iterator cit =
 		    UsedLanguages.begin();
-	     cit != UsedLanguages.end(); 
+	     cit != UsedLanguages.end();
 	     ++cit)
 		languages << (*cit)->babel() << ',';
 
@@ -117,7 +117,7 @@ string LaTeXFeatures::getLanguages() const
 }
 
 
-set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) 
+set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding)
 {
 	set<string> encodings;
 	for (LanguageList::const_iterator it =
@@ -129,7 +129,7 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding)
 }
 
 namespace {
-	
+
 char const * simplefeatures[] = {
 	"array",
 	"verbatim",
@@ -164,7 +164,7 @@ string const LaTeXFeatures::getPackages() const
 				 << simplefeatures[i]
 				 << "}\n";
 	}
-	
+
 	/**
 	 * The rest of these packages are somewhat more complicated
 	 * than those above.
@@ -174,17 +174,17 @@ string const LaTeXFeatures::getPackages() const
 	    && ! tclass.provides(LyXTextClass::amsmath)) {
 		packages << "\\usepackage{amsmath}\n";
 	}
-		
+
 	// color.sty
 	if (isRequired("color")) {
 		if (params.graphicsDriver == "default")
 			packages << "\\usepackage{color}\n";
 		else
-			packages << "\\usepackage[" 
+			packages << "\\usepackage["
 				 << params.graphicsDriver
 				 << "]{color}\n";
 	}
-		
+
 	// makeidx.sty
 	if (isRequired("makeidx")) {
 		if (! tclass.provides(LyXTextClass::makeidx))
@@ -197,7 +197,7 @@ string const LaTeXFeatures::getPackages() const
 		if (params.graphicsDriver == "default")
 			packages << "\\usepackage{graphicx}\n";
 		else
-			packages << "\\usepackage[" 
+			packages << "\\usepackage["
 				 << params.graphicsDriver
 				 << "]{graphicx}\n";
 	}
@@ -254,7 +254,7 @@ string const LaTeXFeatures::getPackages() const
 		}
 		packages << "]{natbib}\n";
 	}
-	
+
 	packages << externalPreambles;
 
 	return packages.str().c_str();
@@ -266,10 +266,10 @@ string const LaTeXFeatures::getMacros() const
 	ostringstream macros;
 
 	// always include this
-	if (true || isRequired("lyx")) 
+	if (true || isRequired("lyx"))
 		macros << lyx_def << '\n';
 
-	if (isRequired("lyxline")) 
+	if (isRequired("lyxline"))
 		macros << lyxline_def << '\n';
 
 	if (isRequired("noun"))
@@ -278,7 +278,7 @@ string const LaTeXFeatures::getMacros() const
 	if (isRequired("lyxarrow"))
 		macros << lyxarrow_def << '\n';
 
-	// quotes. 
+	// quotes.
 	if (isRequired("quotesinglbase"))
 		macros << quotesinglbase_def << '\n';
 	if (isRequired("quotedblbase"))
@@ -291,21 +291,21 @@ string const LaTeXFeatures::getMacros() const
 		macros << guillemotleft_def << '\n';
 	if (isRequired("guillemotright"))
 		macros << guillemotright_def << '\n';
-    
-        // Math mode    
+
+	// Math mode
 	if (isRequired("boldsymbol") && !isRequired("amsmath"))
 		macros << boldsymbol_def << '\n';
 	if (isRequired("binom") && !isRequired("amsmath"))
 		macros << binom_def << '\n';
 	if (isRequired("mathcircumflex"))
 		macros << mathcircumflex_def << '\n';
-		
+
 	// other
 	if (isRequired("NeedLyXMinipageIndent"))
 		macros << minipageindent_def;
-	if (isRequired("ParagraphIndent")) 
+	if (isRequired("ParagraphIndent"))
 		macros << paragraphindent_def;
-	if (isRequired("NeedLyXFootnoteCode")) 
+	if (isRequired("NeedLyXFootnoteCode"))
 		macros << floatingfootnote_def;
 
 	// floats
@@ -324,7 +324,7 @@ string const LaTeXFeatures::getMacros() const
 
 string const LaTeXFeatures::getTClassPreamble() const
 {
-	// the text class specific preamble 
+	// the text class specific preamble
 	LyXTextClass const & tclass = textclasslist[params.textclass];
 	ostringstream tcpreamble;
 
@@ -335,9 +335,9 @@ string const LaTeXFeatures::getTClassPreamble() const
 	for (; cit != end; ++cit) {
 		tcpreamble << tclass[*cit].preamble();
 	}
-	
+
 	return tcpreamble.str().c_str();
-}	
+}
 
 
 string const LaTeXFeatures::getLyXSGMLEntities() const
@@ -396,10 +396,10 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 	// ostringstream floats;
 	for (; cit != end; ++cit) {
 		Floating const & fl = floatList.getType((*cit));
-		
+
 		// For builtin floats we do nothing.
 		if (fl.builtin()) continue;
-		
+
 		// We have to special case "table" and "figure"
 		if (fl.type() == "tabular" || fl.type() == "figure") {
 			// Output code to modify "table" or "figure"
@@ -419,7 +419,7 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 			}
 		} else {
 			// The other non builtin floats.
-			
+
 			string const type = fl.type();
 			string const placement = fl.placement();
 			string const ext = fl.ext();
@@ -434,7 +434,7 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 			os << "\n"
 			   << "\\floatname{" << type << "}{"
 			   << name << "}\n";
-			
+
 			// What missing here is to code to minimalize the code
 			// output so that the same floatstyle will not be
 			// used several times, when the same style is still in

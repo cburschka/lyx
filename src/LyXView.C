@@ -1,9 +1,8 @@
-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -75,7 +74,7 @@ LyXView::~LyXView()
 }
 
 
-void LyXView::resize() 
+void LyXView::resize()
 {
 	view()->resize();
 }
@@ -148,7 +147,7 @@ Menubar * LyXView::getMenubar() const
 }
 
 
-void LyXView::updateMenubar() 
+void LyXView::updateMenubar()
 {
 	if ((!view() || !view()->buffer())
 	    && menubackend.hasMenu("main_nobuffer"))
@@ -194,7 +193,7 @@ void LyXView::updateLayoutChoice()
 	// document is loaded.
 	if (!view() || !view()->buffer()) {
 		toolbar->clearLayoutList();
-		return;	
+		return;
 	}
 
 	// Update the layout display

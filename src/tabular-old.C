@@ -1,13 +1,13 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 2000-2001 The LyX Team.
  *
  *           @author: Jürgen Vigna
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #include <config.h>
@@ -134,7 +134,7 @@ bool getTokenValue(string const & str, const char * token, LyXLength & len)
 	if (!getTokenValue(str, token, tmp))
 		return false;
 	return isValidLength(tmp, &len);
-}    
+}
 
 
 inline

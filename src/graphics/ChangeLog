@@ -1,5 +1,7 @@
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* most files: ws cleanup
+
 	* Makefile.am: remove ld -r stuff
 
 2002-03-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -99,7 +101,7 @@
 2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ImageLoaderXPM.C: don't set XpmColorKey flag if we don't use it
- 
+
 2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* GraphicsCacheItem.h: do not include <config.h> in header files
@@ -147,7 +149,7 @@
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ImageLoaderXPM.C (runImageLoader): get display information from
-	GUIRunTime. 
+	GUIRunTime.
 
 2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -165,8 +167,8 @@
 2001-04-16  Allan Rae  <rae@lyx.org>
 
 	* ImageLoaderXPM.C (runImageLoader): #warning triggers an error on Sun
-	CC 6.0 as an unrecognised preprocessor directive.  So ensure they're 
-	wrapped. 
+	CC 6.0 as an unrecognised preprocessor directive.  So ensure they're
+	wrapped.
 
 2001-04-02  Baruch Even  <baruch@lyx.org>
 

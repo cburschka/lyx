@@ -1,6 +1,6 @@
 /* This file is part of              -*- C++ -*-
 * ======================================================
-* 
+*
 *           LyX, The Document Processor
 *
 *           Copyright 1995 Matthias Ettrich
@@ -63,17 +63,17 @@ public:
 		FloatInsert
 	};
 	/// Create a Command type MenuItem
-	MenuItem(Kind kind, 
-		 string const & label = string(), 
-		 string const & command = string(), 
+	MenuItem(Kind kind,
+		 string const & label = string(),
+		 string const & command = string(),
 		 bool optional = false);
 	MenuItem(Kind kind,
-		 string const & label, 
-		 int action, 
+		 string const & label,
+		 int action,
 		 bool optional = false)
 		: kind_(kind), label_(label),
 		  action_(action), submenu_(), optional_(optional) {}
- 
+
 	/// The label of a given menuitem
 	string const label() const;
 	/// The keyboard shortcut (usually underlined in the entry)
@@ -81,7 +81,7 @@ public:
 	/// The complete label, with label and shortcut separated by a '|'
 	string const fulllabel() const { return label_;}
 	/// The kind of entry
-	Kind kind() const { return kind_; } 
+	Kind kind() const { return kind_; }
 	/// the action (if relevant)
 	int action() const { return action_; }
 	/// the description of the  submenu (if relevant)
@@ -110,7 +110,7 @@ public:
 	///
 	typedef ItemList::const_iterator const_iterator;
 	///
-	explicit Menu(string const & name = string(), bool mb = false) 
+	explicit Menu(string const & name = string(), bool mb = false)
 		: menubar_(mb), name_(name) {}
 	///
 	Menu & add(MenuItem const &);
@@ -122,9 +122,9 @@ public:
 	    ViewFormats, ExportFormats, UpdateFormats
 	*/
 	void expand(Menu & tomenu, Buffer *) const;
-	/// 
+	///
 	bool menubar() const { return menubar_; }
-	/// 
+	///
 	string const & name() const { return name_; }
 	///
 	bool empty() const { return items_.empty(); }
@@ -132,18 +132,18 @@ public:
 	ItemList::size_type size() const { return items_.size(); }
 	///
 	bool hasSubmenu(string const &) const;
-        ///
-        const_iterator begin() const {
-                return items_.begin();
-        }
-        ///
-        const_iterator end() const {
-                return items_.end();
-        }
+	///
+	const_iterator begin() const {
+		return items_.begin();
+	}
+	///
+	const_iterator end() const {
+		return items_.end();
+	}
 
 	// Check whether the menu shortcuts are unique
 	void checkShortcuts() const;
-	
+
 private:
 	///
 	ItemList items_;
@@ -175,14 +175,14 @@ public:
 	Menu const & getMenu (string const &) const;
 	//
 	bool empty() const { return menulist_.empty(); }
-        ///
-        const_iterator begin() const {
-                return menulist_.begin();
-        }
-        ///
-        const_iterator end() const {
-                return menulist_.end();
-        }
+	///
+	const_iterator begin() const {
+		return menulist_.begin();
+	}
+	///
+	const_iterator end() const {
+		return menulist_.end();
+	}
 private:
 	///
 	MenuList menulist_;

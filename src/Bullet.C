@@ -3,7 +3,7 @@
  * generate the bullets in the bullet-panel's.
  *
  * This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -54,7 +54,7 @@ Bullet::Bullet(int f, int c, int s)
 
 
 
-Bullet::Bullet(string const & t) 
+Bullet::Bullet(string const & t)
 	:  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
 #ifdef ENABLE_ASSERTIONS
@@ -215,7 +215,7 @@ string const Bullet::bulletSize(int s)
 	// See additional comments in bulletEntry() below.
 
 	static char const * BulletSize[SIZEMAX] = {
-		"\\tiny",  "\\scriptsize", "\\footnotesize", "\\small", "\\normalsize", 
+		"\\tiny",  "\\scriptsize", "\\footnotesize", "\\small", "\\normalsize",
 		"\\large", "\\Large",      "\\LARGE",        "\\huge",  "\\Huge"
 	};
 
@@ -238,10 +238,10 @@ string const Bullet::bulletEntry(int f, int c)
 	// to get around a compiler bug in an earler version of gcc (< 2.7.2.1)
 	// static string const BulletPanels[FONTMAX][CHARMAX] = {
 	static char const * BulletPanel0[CHARMAX] = {
-		/* standard */ 
+		/* standard */
 		"\\normalfont\\bfseries{--}", "\\(\\vdash\\)",
 		"\\(\\dashv\\)", "\\(\\flat\\)", "\\(\\natural\\)",
-		"\\(\\sharp\\)", "\\(\\ast\\)", "\\(\\star\\)", 
+		"\\(\\sharp\\)", "\\(\\ast\\)", "\\(\\star\\)",
 		"\\(\\bullet\\)", "\\(\\circ\\)", "\\(\\cdot\\)",
 		"\\(\\dagger\\)", "\\(\\bigtriangleup\\)",
 		"\\(\\bigtriangledown\\)", "\\(\\triangleleft\\)",
@@ -249,9 +249,9 @@ string const Bullet::bulletEntry(int f, int c)
 		"\\(\\oplus\\)", "\\(\\ominus\\)", "\\(\\otimes\\)",
 		"\\(\\oslash\\)", "\\(\\odot\\)", "\\(\\spadesuit\\)",
 		"\\(\\diamond\\)", "\\(\\Diamond\\)", "\\(\\Box\\)",
-		"\\(\\diamondsuit\\)", "\\(\\heartsuit\\)", 
+		"\\(\\diamondsuit\\)", "\\(\\heartsuit\\)",
 		"\\(\\clubsuit\\)", "\\(\\rightarrow\\)", "\\(\\leadsto\\)",
-		"\\(\\rightharpoonup\\)", "\\(\\rightharpoondown\\)", 
+		"\\(\\rightharpoonup\\)", "\\(\\rightharpoondown\\)",
 		"\\(\\Rightarrow\\)", "\\(\\succ\\)"
 	};
 	static char const * BulletPanel1[CHARMAX] = {

@@ -33,38 +33,38 @@ enum SearchResult {
 
 /// returns true if the specified string is at the specified  position
 bool IsStringInText(Paragraph * par, pos_type pos,
-                    string const & str, bool const & = true,
-                    bool const & = false);
+		    string const & str, bool const & = true,
+		    bool const & = false);
 
 /// if the string is found: return true and set the cursor to the new position
 SearchResult SearchForward(BufferView *, LyXText * text, string const & str,
-                           bool const & = true, bool const & = false);
+			   bool const & = true, bool const & = false);
 ///
 SearchResult SearchBackward(BufferView *, LyXText * text, string const & str,
-                            bool const & = true, bool const & = false);
+			    bool const & = true, bool const & = false);
 
 
 int LyXReplace(BufferView * bv,
-               string const & searchstr, string const & replacestr,
-               bool forward, bool casesens, bool matchwrd, bool replaceall,
-               bool once)
+	       string const & searchstr, string const & replacestr,
+	       bool forward, bool casesens, bool matchwrd, bool replaceall,
+	       bool once)
 {
-	if (!bv->available() || bv->buffer()->isReadonly()) 
+	if (!bv->available() || bv->buffer()->isReadonly())
 		return 0;
-   
+
 	// CutSelection cannot cut a single space, so we have to stop
 	// in order to avoid endless loop :-(
 	if (searchstr.length() == 0
 		|| (searchstr.length() == 1 && searchstr[0] == ' '))
 	{
 		Alert::alert(_("Sorry!"), _("You cannot replace a single space, "
-		                          "nor an empty character."));
+					  "nor an empty character."));
 		return 0;
 	}
-	
+
 	LyXText * text = bv->getLyXText();
 
-	// now we can start searching for the first 
+	// now we can start searching for the first
 	// start at top if replaceall
 	bool fw = forward;
 	if (replaceall) {
@@ -77,7 +77,7 @@ int LyXReplace(BufferView * bv,
 		// override search direction because we search top to bottom
 		fw = true;
 	}
-	
+
 	// if nothing selected or selection does not equal search string
 	// search and select next occurance and return if no replaceall
 	string str1;
@@ -110,25 +110,25 @@ int LyXReplace(BufferView * bv,
 		if (!once)
 			found = LyXFind(bv, searchstr, fw, false, casesens, matchwrd);
 	} while (!once && replaceall && found);
-   
+
 	if (bv->focus())
 		bv->showCursor();
-	
+
 	return replace_count;
 }
 
 bool LyXFind(BufferView * bv,
-             string const & searchstr, bool forward,
-             bool frominset, bool casesens, bool matchwrd)
+	     string const & searchstr, bool forward,
+	     bool frominset, bool casesens, bool matchwrd)
 {
 	if (!bv->available() || searchstr.empty())
 		return false;
-	
+
 	LyXText * text = bv->getLyXText();
 
 	bv->hideCursor();
 	bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-	
+
 	if (text->selection.set())
 		text->cursor = forward ?
 			text->selection.end : text->selection.start;
@@ -156,13 +156,13 @@ bool LyXFind(BufferView * bv,
 					text->setCursor(bv, par, pos);
 			}
 			if (par) {
-				result = forward ? 
+				result = forward ?
 					SearchForward(bv, text, searchstr, casesens, matchwrd) :
 					SearchBackward(bv, text, searchstr, casesens, matchwrd);
 			}
 		}
 	} else {
-		result = forward ? 
+		result = forward ?
 			SearchForward(bv, text, searchstr, casesens, matchwrd) :
 			SearchBackward(bv, text, searchstr, casesens, matchwrd);
 	}
@@ -178,10 +178,10 @@ bool LyXFind(BufferView * bv,
 		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
 	} else if (result == SR_NOT_FOUND)
 		found = false;
-   
+
 	if (bv->focus())
 		bv->showCursor();
-   
+
 	return found;
 }
 
@@ -193,13 +193,13 @@ bool IsStringInText(Paragraph * par, pos_type pos,
 {
 	if (!par)
 		return false;
-   
+
 	string::size_type size = str.length();
 	pos_type i = 0;
 	while (((pos + i) < par->size())
 	       && (string::size_type(i) < size)
 	       && (cs ? (str[i] == par->getChar(pos + i))
-	           : (uppercase(str[i]) == uppercase(par->getChar(pos + i)))))
+		   : (uppercase(str[i]) == uppercase(par->getChar(pos + i)))))
 	{
 		++i;
 	}
@@ -220,7 +220,7 @@ bool IsStringInText(Paragraph * par, pos_type pos,
 // if the string can be found: return true and set the cursor to
 // the new position, cs = casesensitive, mw = matchword
 SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
-                           bool const & cs, bool const & mw)
+			   bool const & cs, bool const & mw)
 {
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
@@ -239,16 +239,16 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 				return SR_FOUND_NOUPDATE;
 			text = bv->getLyXText();
 		}
- 
+
 		++pos;
- 
+
 		if (pos >= par->size()) {
 			prev_par = par;
 			par = par->next();
 			pos = 0;
 		}
 	}
- 
+
 	if (par) {
 		text->setCursor(bv, par, pos);
 		return SR_FOUND;
@@ -265,8 +265,8 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 // if the string can be found: return true and set the cursor to
 // the new position, cs = casesensitive, mw = matchword
 SearchResult SearchBackward(BufferView * bv, LyXText * text,
-                            string const & str,
-                            bool const & cs, bool const & mw)
+			    string const & str,
+			    bool const & cs, bool const & mw)
 {
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
@@ -295,9 +295,9 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 			if (inset->searchBackward(bv, str, cs, mw))
 				return SR_FOUND_NOUPDATE;
 			text = bv->getLyXText();
-		}		
+		}
 	} while (par && !IsStringInText(par, pos, str, cs, mw));
-  
+
 	if (par) {
 		text->setCursor(bv, par, pos);
 		return SR_FOUND;
@@ -307,4 +307,3 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 		return SR_NOT_FOUND;
 	}
 }
-

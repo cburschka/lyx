@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -53,7 +53,7 @@ int kb_sequence::addkey(unsigned int key, unsigned int mod, unsigned int nmod)
 	if (curmap) {
 		return curmap->lookup(key, mod, this);
 	}
-	
+
 	return LFUN_UNKNOWN_ACTION;
 }
 
@@ -70,7 +70,7 @@ string::size_type kb_sequence::parse(string const & s)
 			++i;
 		if (i >= s.length())
 			break;
-		
+
 		if (i + 1 < s.length() && s[i + 1] == '-') {
 			switch (s[i]) {
 			case 's': case 'S':
@@ -111,7 +111,7 @@ string::size_type kb_sequence::parse(string const & s)
 			string::size_type j = i;
 			for (; j < s.length() && s[j] != ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
-			
+
 			KeySym key = XStringToKeysym(tbuf.c_str());
 			if (key == NoSymbol) {
 				lyxerr[Debug::KBMAP]
@@ -120,12 +120,12 @@ string::size_type kb_sequence::parse(string const & s)
 				return j;
 			}
 			i = j;
-			
+
 			addkey(key, mod, nmod);
 			mod = 0;
 		}
 	}
-	
+
 	// empty sequence?
 	if (!length_)
 		return 0;
@@ -141,7 +141,7 @@ string const kb_sequence::print() const
 
 	//if (deleted_)
 	//	return buf;
-	
+
 	for (vector<unsigned int>::size_type i = 0; i < length_; ++i) {
 		buf += kb_keymap::printKeysym(sequence[i], modifiers[i] & 0xffff);
 

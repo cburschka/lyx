@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -36,7 +36,7 @@ public:
 	LyXGUI(LyX * owner, int * argc, char * argv[], bool gui);
 	///
 	~LyXGUI();
-	
+
 	/**
 	   This functions starts the ball. For XForms it runs a loop of
 	   fl_check_forms(). For QT this will probably be .exec().
@@ -46,19 +46,19 @@ public:
 	    main initialization.
 	*/
 	void init();
-	
+
 	/// Register the buffer with the first found LyXView in lyxViews
 	void regBuf(Buffer *);
-	
+
 	/// Access to (first?) LyXView
 	LyXView * getLyXView() const;
-	
+
 private:
 	///
 	void setDefaults();
 	///
 	void create_forms();
-	
+
 	/// The LyX that owns this GUI.
 	LyX * _owner;
 	///

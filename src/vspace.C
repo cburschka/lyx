@@ -60,8 +60,8 @@ bool isEndOfData(string const & data)
  * @param data input string
  * @return a char representing the type of token returned
  *
- * The possible return values are : 
- * 	+	stretch indicator for glue length
+ * The possible return values are :
+ *	+	stretch indicator for glue length
  *	-	shrink indicator for glue length
  *	n	a numeric value (stored in number array)
  *	u	a unit type (stored in unit array)
@@ -91,7 +91,7 @@ char nextToken(string & data)
 			if (number_index > 3) return 'E';
 
 			string buffer;
-		
+
 			// we have found some number
 			if (i == string::npos) {
 				buffer = data;
@@ -107,13 +107,13 @@ char nextToken(string & data)
 				return 'n';
 			} else return 'E';
 		}
-		
+
 		i = data.find_first_not_of("abcdefghijklmnopqrstuvwxyz%");
 		if (i != 0) {
 			if (unit_index > 3) return 'E';
 
 			string buffer;
-		
+
 			// we have found some alphabetical string
 			if (i == string::npos) {
 				buffer = data;
@@ -217,7 +217,7 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 		break;
 	}
 	// end of hack
-	
+
 	int  pattern_index = 0;
 	int  table_index = 0;
 	char pattern[20];
@@ -241,7 +241,7 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 		if (!*table[table_index].pattern)
 			return false;
 	}
-	
+
 	// Get the values from the appropriate places.  If an index
 	// is zero, the corresponding array value is zero or UNIT_NONE,
 	// so we needn't check this.
@@ -286,7 +286,7 @@ bool isValidLength(string const & data, LyXLength * result)
 		break;
 	}
 	// end of hack
-	
+
 	number_index = unit_index = 1;  // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
@@ -301,8 +301,8 @@ bool isValidLength(string const & data, LyXLength * result)
 	pattern[pattern_index] = '\0';
 
 	// only the most basic pattern is accepted here
-	if (compare(pattern, "nu") != 0) return false;		
-	
+	if (compare(pattern, "nu") != 0) return false;
+
 	// It _was_ a correct length string.
 	// Store away the values we found.
 	if (result) {
@@ -454,14 +454,14 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	case LENGTH:
 	{
 		string const lenstr = len_.asLatexString();
-		
+
 		ret = keep_ ? "\\vspace*{" + lenstr + '}'
 			: "\\vspace{" + lenstr + '}';
 	}
 	break;
 
 	}
-	
+
 	return ret;
 }
 
@@ -473,7 +473,7 @@ int VSpace::inPixels(BufferView * bv) const
 	int const default_height = bv->text->defaultHeight(); // [pixels]
 
 	int retval = 0;
-	
+
 	switch (kind_) {
 	case NONE:
 		// Value for this is already set
@@ -481,18 +481,18 @@ int VSpace::inPixels(BufferView * bv) const
 	case DEFSKIP:
 		retval = bv->buffer()->params.getDefSkip().inPixels(bv);
 		break;
-			
+
 		// This is how the skips are normally defined by
 		// LateX.  But there should be some way to change
 		// this per document.
 	case SMALLSKIP:
 		retval = default_height / 4;
 		break;
-			
+
 	case MEDSKIP:
 		retval = default_height / 2;
 		break;
-			
+
 	case BIGSKIP:
 		retval = default_height;
 		break;
@@ -501,13 +501,13 @@ int VSpace::inPixels(BufferView * bv) const
 		// leave space for the vfill symbol
 		retval = 3 * default_height;
 		break;
-		
+
 	case LENGTH: {
 		int const default_width  = bv->workWidth();
 		retval = len_.len().inPixels(default_width, default_height);
 		break;
 	}
-		
+
 	}
 	return retval;
 }

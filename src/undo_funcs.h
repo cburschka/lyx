@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
@@ -34,14 +34,14 @@ extern void freezeUndo();
 /// this is dangerous and for internal use only
 extern void unFreezeUndo();
 ///
-extern void setUndo(BufferView *, Undo::undo_kind kind, 
-                    Paragraph const * first, Paragraph const * behind);
+extern void setUndo(BufferView *, Undo::undo_kind kind,
+		    Paragraph const * first, Paragraph const * behind);
 ///
 extern void setRedo(BufferView *, Undo::undo_kind kind,
-                    Paragraph const * first, Paragraph const * behind);
+		    Paragraph const * first, Paragraph const * behind);
 ///
 extern Undo * createUndo(BufferView *, Undo::undo_kind kind,
-                         Paragraph const * first, Paragraph const * behind);
+			 Paragraph const * first, Paragraph const * behind);
 /// for external use in lyx_cb.C
 extern void setCursorParUndo(BufferView *);
 

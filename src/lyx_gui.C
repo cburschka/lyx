@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -72,7 +72,7 @@ FL_resource res[] =
 
 
 extern "C" {
-	
+
 static
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
@@ -80,7 +80,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 		// We don't abort on BadWindow
 		return 0;
 	}
-	
+
 	// emergency cleanup
 	LyX::emergencyCleanup();
 
@@ -92,7 +92,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 	lyx::abort();
 	return 0; // Solaris CC wants us to return something
 }
-	
+
 }
 
 
@@ -103,15 +103,15 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	if (!gui)
 		return;
 
-	// 
+	//
 	setDefaults();
-	
+
 	static const int num_res = sizeof(res)/sizeof(FL_resource);
 	fl_initialize(argc, argv, "LyX", cmdopt, num_res);
 	// It appears that, in xforms >=0.89.5, fl_initialize()
 	// calls setlocale() and ruins our LC_NUMERIC setting.
 	locale_init();
-     	fl_get_app_resources(res, num_res);
+	fl_get_app_resources(res, num_res);
 
 	static const int geometryBitmask =
 		XParseGeometry(geometry,
@@ -132,10 +132,10 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 
 	// A width less than 590 pops up an awkward main window
 	// The minimal values of width/height (590/400) are defined in
-	// src/lyx.C  
-        if (width < 590) width = 590;
+	// src/lyx.C
+	if (width < 590) width = 590;
 	if (height < 400) height = 400;
-	
+
 	// If width is not set by geometry, check it against monitor width
 	if (!(geometryBitmask & 4)) {
 		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
@@ -168,8 +168,8 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 // A destructor is always necessary  (asierra-970604)
 LyXGUI::~LyXGUI()
 {
-        // Lyxserver was created in this class so should be destroyed
-        // here.  asierra-970604
+	// Lyxserver was created in this class so should be destroyed
+	// here.  asierra-970604
 	delete lyxserver;
 	lyxserver = 0;
 	delete lyxViews;
@@ -196,22 +196,22 @@ void LyXGUI::init()
 	if (lyxrc.popup_font_encoding.empty())
 		lyxrc.popup_font_encoding = lyxrc.font_norm;
 	// Set the font name for popups and menus
-        string boldfontname = lyxrc.popup_bold_font
-		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc.popup_font_encoding;
+	string boldfontname = lyxrc.popup_bold_font
+			       + "-*-*-*-?-*-*-*-*-"
+			       + lyxrc.popup_font_encoding;
 		// "?" means "scale that font"
-        string fontname = lyxrc.popup_normal_font 
-		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc.popup_font_encoding;
+	string fontname = lyxrc.popup_normal_font
+			       + "-*-*-*-?-*-*-*-*-"
+			       + lyxrc.popup_font_encoding;
 
 	int bold = fl_set_font_name(FL_BOLD_STYLE, boldfontname.c_str());
 	int normal = fl_set_font_name(FL_NORMAL_STYLE, fontname.c_str());
-        if (bold < 0)
-                lyxerr << "Could not set menu font to "
+	if (bold < 0)
+		lyxerr << "Could not set menu font to "
 		       << boldfontname << endl;
 
-        if (normal < 0)
-                lyxerr << "Could not set popup font to "
+	if (normal < 0)
+		lyxerr << "Could not set popup font to "
 		       << fontname << endl;
 
 	if (bold < 0 && normal < 0) {
@@ -232,15 +232,15 @@ void LyXGUI::init()
 	else if (normal < 0)
 		fl_set_font_name(FL_NORMAL_STYLE, boldfontname.c_str());
 
- 	// put here (after fl_initialize) to avoid segfault. Cannot be done
+	// put here (after fl_initialize) to avoid segfault. Cannot be done
 	// in setDefaults() (Matthias 140496)
-	// Moved from ::LyXGUI to ::init to allow popup font customization 
+	// Moved from ::LyXGUI to ::init to allow popup font customization
 	// (petr 120997).
- 	fl_setpup_fontstyle(FL_NORMAL_STYLE);
- 	fl_setpup_fontsize(FL_NORMAL_SIZE);
- 	fl_setpup_color(FL_MCOL, FL_BLACK);
+	fl_setpup_fontstyle(FL_NORMAL_STYLE);
+	fl_setpup_fontsize(FL_NORMAL_SIZE);
+	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-#if FL_REVISION < 89 
+#if FL_REVISION < 89
 	fl_set_oneliner_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
 #else
 	fl_set_tooltip_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
@@ -272,7 +272,7 @@ void LyXGUI::create_forms()
 	// should a mapping exist.
 	string const filename = AddName(user_lyxdir, "preferences.xform");
 	XformsColor::read(filename);
-	
+
 	// Show the main & title form
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;
 	// Did we get a valid position?

@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -55,7 +55,7 @@ void Intl::ToggleKeyMap()
 		KeyMapSec();
 	} else if (keymapon) {
 		KeyMapOn(false);
-	} else	
+	} else
 		KeyMapPrim();
 }
 

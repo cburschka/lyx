@@ -29,13 +29,13 @@ struct keyword_item {
     texclass and others to come.
     @see lyxrc.C for an example of usage.
   */
-class LyXLex : boost::noncopyable { 
+class LyXLex : boost::noncopyable {
 public:
 	///
 	LyXLex (keyword_item *, int);
 	///
 	~LyXLex();
-	
+
 	/// Lex basic codes
 	enum {
 		///
@@ -76,10 +76,10 @@ public:
 	bool nextToken();
 	/// Push a token, that next token got from lyxlex.
 	void pushToken(string const &);
-	
-	/// 
+
+	///
 	int getLineNo() const;
-	
+
 	///
 	int getInteger() const;
 	///
@@ -88,7 +88,7 @@ public:
 	float getFloat() const;
 	///
 	string const getString() const;
-	
+
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
 	    serves as a template for how many spaces the lines
@@ -97,7 +97,7 @@ public:
 	    perfectly if you use tabs.
 	*/
 	string const getLongString(string const & endtag);
-	
+
 	///
 	bool eatLine();
 	///
@@ -109,7 +109,7 @@ public:
 	/** Pushes a token list on a stack and replaces it with a new one.
 	 */
 	void pushTable(keyword_item *, int);
-	
+
 	/** Pops a token list into void and replaces it with the one now
 	    on top of the stack.
 	*/

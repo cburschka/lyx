@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
@@ -53,7 +53,7 @@ bool textUndo(BufferView * bv)
 			if (first) {
 				bv->buffer()->redostack.push(
 					createUndo(bv, undo->kind, first,
-					           bv->buffer()->getParFromID(undo->number_of_behind_par)));
+						   bv->buffer()->getParFromID(undo->number_of_behind_par)));
 			}
 		}
 	}
@@ -84,7 +84,7 @@ bool textRedo(BufferView * bv)
 			if (first) {
 				bv->buffer()->undostack.push(
 					createUndo(bv, undo->kind, first,
-					           bv->buffer()->getParFromID(undo->number_of_behind_par)));
+						   bv->buffer()->getParFromID(undo->number_of_behind_par)));
 			}
 		}
 	}
@@ -105,9 +105,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 	bool result = false;
 	if (undo) {
 		Paragraph * before =
-			bv->buffer()->getParFromID(undo->number_of_before_par); 
+			bv->buffer()->getParFromID(undo->number_of_before_par);
 		Paragraph * behind =
-			bv->buffer()->getParFromID(undo->number_of_behind_par); 
+			bv->buffer()->getParFromID(undo->number_of_behind_par);
 		Paragraph * tmppar;
 		Paragraph * tmppar2;
 		Paragraph * tmppar5;
@@ -131,8 +131,8 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		// replace the paragraphs with the undo informations
 
 		Paragraph * tmppar3 = undo->par;
-		undo->par = 0; 	/* otherwise the undo destructor would
-		                   delete the paragraph */
+		undo->par = 0;	/* otherwise the undo destructor would
+				   delete the paragraph */
 
 		// get last undo par and set the right(new) inset-owner of the
 		// paragraph if there is any. This is not needed if we don't have
@@ -151,7 +151,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				tmppar4->setInsetOwner(in);
 			}
 		}
-    
+
 		// now remove the old text if there is any
 #ifdef DELETE_UNUSED_PARAGRAPHS
 		vector<Paragraph *> vvpar;
@@ -169,9 +169,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				tmppar = tmppar5;
 				tmppar5 = tmppar5->next();
 				// a memory optimization for edit:
-				// Only layout information 
+				// Only layout information
 				// is stored in the undo. So restore
-				// the text informations. 
+				// the text informations.
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
 #ifndef DELETE_UNUSED_PARAGRAPHS
@@ -181,14 +181,14 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				}
 			}
 		}
-    
+
 		// put the new stuff in the list if there is one
 		if (tmppar3) {
 			if (before)
 				before->next(tmppar3);
 			else
 				bv->text->ownerParagraph(firstUndoParagraph(bv, undo->number_of_inset_id)->id(),
-				                         tmppar3);
+							 tmppar3);
 
 			tmppar3->previous(before);
 		} else {
@@ -197,7 +197,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			// one is the first!
 			if (!before && behind) {
 				bv->text->ownerParagraph(firstUndoParagraph(bv, undo->number_of_inset_id)->id(),
-				                         behind);
+							 behind);
 				tmppar3 = behind;
 			}
 		}
@@ -206,8 +206,8 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			if (behind)
 				behind->previous(tmppar4);
 		}
-    
-    
+
+
 		// Set the cursor for redoing
 		if (before) {
 			Inset * it = before->inInset();
@@ -228,8 +228,8 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			it = static_cast<UpdatableInset*>(tmppar3->inInset());
 		if (it) {
 			it->getLyXText(bv)->redoParagraphs(bv,
-			                                   it->getLyXText(bv)->cursor,
-			                                   endpar);
+							   it->getLyXText(bv)->cursor,
+							   endpar);
 			if (tmppar) {
 				it = static_cast<UpdatableInset*>(tmppar->inInset());
 				LyXText * t;
@@ -245,7 +245,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			}
 			bv->updateInset(it, false);
 			bv->text->setCursorIntern(bv, bv->text->cursor.par(),
-			                          bv->text->cursor.pos());
+						  bv->text->cursor.pos());
 		} else {
 			bv->text->redoParagraphs(bv, bv->text->cursor, endpar);
 			if (tmppar) {
@@ -319,7 +319,7 @@ void unFreezeUndo()
 
 
 void setUndo(BufferView * bv, Undo::undo_kind kind,
-             Paragraph const * first, Paragraph const * behind)
+	     Paragraph const * first, Paragraph const * behind)
 {
 	if (!undo_frozen) {
 		bv->buffer()->undostack.push(createUndo(bv, kind, first, behind));
@@ -329,14 +329,14 @@ void setUndo(BufferView * bv, Undo::undo_kind kind,
 
 
 void setRedo(BufferView * bv, Undo::undo_kind kind,
-             Paragraph const * first, Paragraph const * behind)
+	     Paragraph const * first, Paragraph const * behind)
 {
 	bv->buffer()->redostack.push(createUndo(bv, kind, first, behind));
 }
 
 
 Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
-                  Paragraph const * first, Paragraph const * behind)
+		  Paragraph const * first, Paragraph const * behind)
 {
 	lyx::Assert(first);
 
@@ -353,14 +353,14 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 
 	// Undo::EDIT  and Undo::FINISH are
 	// always finished. (no overlapping there)
-	// overlapping only with insert and delete inside one paragraph: 
+	// overlapping only with insert and delete inside one paragraph:
 	// Nobody wants all removed  character
-	// appear one by one when undoing. 
+	// appear one by one when undoing.
 	// EDIT is special since only layout information, not the
 	// contents of a paragaph are stored.
 	if (!undo_finished && (kind != Undo::EDIT) && (kind != Undo::FINISH)) {
 		// check wether storing is needed
-		if (!bv->buffer()->undostack.empty() && 
+		if (!bv->buffer()->undostack.empty() &&
 		    bv->buffer()->undostack.top()->kind == kind &&
 		    bv->buffer()->undostack.top()->number_of_before_par == before_number &&
 		    bv->buffer()->undostack.top()->number_of_behind_par == behind_number) {
@@ -387,7 +387,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 	{
 		Paragraph * tmppar = start;
 		Paragraph * tmppar2 = new Paragraph(*tmppar, true);
-		
+
 		// a memory optimization: Just store the layout information
 		// when only edit
 		if (kind == Undo::EDIT) {
@@ -395,7 +395,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 		}
 
 		undopar = tmppar2;
-  
+
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
 #if 0
@@ -410,7 +410,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 				tmppar2->clearContents();
 			}
 			tmppar2->next()->previous(tmppar2);
-			
+
 			tmppar2 = tmppar2->next();
 		}
 		tmppar2->next(0);
@@ -419,11 +419,11 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 
 	int cursor_par = undoCursor(bv).par()->id();
 	int cursor_pos =  undoCursor(bv).pos();
-	
+
 	Undo * undo = new Undo(kind, inset_id,
-	                       before_number, behind_number,  
-	                       cursor_par, cursor_pos, undopar);
-  
+			       before_number, behind_number,
+			       cursor_par, cursor_pos, undopar);
+
 	undo_finished = false;
 	return undo;
 }
@@ -432,7 +432,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 void setCursorParUndo(BufferView * bv)
 {
 	setUndo(bv, Undo::FINISH, bv->text->cursor.par(),
-	        bv->text->cursor.par()->next());
+		bv->text->cursor.par()->next());
 }
 
 

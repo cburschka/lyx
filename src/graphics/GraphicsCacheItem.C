@@ -48,7 +48,7 @@ GCacheItem::GCacheItem(InsetGraphics const & inset, GParams const & params)
 namespace {
 
 typedef GCacheItem::ModifiedItemPtr ModifiedItemPtr;
- 
+
 class Compare_Params {
 public:
 	Compare_Params(GParams const & p) : p_(p) {}
@@ -112,7 +112,7 @@ void GCacheItem::modify(InsetGraphics const & inset, GParams const & params)
 		(*it)->add(inset);
 		return;
 	}
-	
+
 	// If no ModifiedItem exists with these params, then create one.
 	ModifiedItemPtr item(new ModifiedItem(inset, params, image_));
 	modified_images.push_back(item);
@@ -187,7 +187,7 @@ ImagePtr const GCacheItem::image(InsetGraphics const & inset) const
 	// find a ModifiedItem that is referenced by this inset.
 	ListType::const_iterator begin = modified_images.begin();
 	ListType::const_iterator end   = modified_images.end();
-	ListType::const_iterator it = 
+	ListType::const_iterator it =
 		std::find_if(begin, end, Find_Inset(inset));
 
 	// Someone's being daft.
@@ -212,7 +212,7 @@ ImageStatus GCacheItem::status(InsetGraphics const & inset) const
 	// find a ModifiedItem that is referenced by this inset.
 	ListType::const_iterator begin = modified_images.begin();
 	ListType::const_iterator end   = modified_images.end();
-	ListType::const_iterator it = 
+	ListType::const_iterator it =
 		std::find_if(begin, end, Find_Inset(inset));
 
 	// Someone's being daft.
@@ -270,7 +270,7 @@ void GCacheItem::changeDisplay(bool changed_background)
 		}
 		return;
 	}
-	
+
 	ListType temp_list;
 
 	for (ListType::iterator it = begin; it != end; ++it) {
@@ -399,7 +399,7 @@ string const findTargetFormat(string const & from)
 	typedef GImage::FormatList FormatList;
 	FormatList const & formats = GImage::loadableFormats();
 
-	// There must be a format to load from.	
+	// There must be a format to load from.
 	lyx::Assert(!formats.empty());
 
 	// First ascertain if we can load directly with no conversion
@@ -425,7 +425,7 @@ string const findTargetFormat(string const & from)
 
 } // anon namespace
 
-	
+
 void GCacheItem::convertToDisplayFormat()
 {
 	setStatus(Converting);
@@ -439,16 +439,16 @@ void GCacheItem::convertToDisplayFormat()
 		setStatus(ErrorNoFile);
 		return;
 	}
-	
+
 // maybe that other zip extensions also be useful, especially the
 // ones that may be declared in texmf/tex/latex/config/graphics.cfg.
 // for example:
 /* -----------snip-------------
-          {\DeclareGraphicsRule{.pz}{eps}{.bb}{}%
-           \DeclareGraphicsRule{.eps.Z}{eps}{.eps.bb}{}%
-           \DeclareGraphicsRule{.ps.Z}{eps}{.ps.bb}{}%
-           \DeclareGraphicsRule{.ps.gz}{eps}{.ps.bb}{}%
-           \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{}}}%
+	  {\DeclareGraphicsRule{.pz}{eps}{.bb}{}%
+	   \DeclareGraphicsRule{.eps.Z}{eps}{.eps.bb}{}%
+	   \DeclareGraphicsRule{.ps.Z}{eps}{.ps.bb}{}%
+	   \DeclareGraphicsRule{.ps.gz}{eps}{.ps.bb}{}%
+	   \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{}}}%
    -----------snip-------------*/
 
 	lyxerr[Debug::GRAPHICS]
@@ -488,7 +488,7 @@ void GCacheItem::convertToDisplayFormat()
 
 	// Take only the filename part of the file, without path or extension.
 	string const temp = ChangeExtension(OnlyFilename(filename), string());
-	
+
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
 	string const to_file_base = lyx::tempName(string(), temp);
@@ -555,7 +555,7 @@ ImagePtr const ModifiedItem::image() const
 
 void ModifiedItem::modify(ImagePtr const & new_image)
 {
-	if (!new_image.get()) 
+	if (!new_image.get())
 		return;
 
 	original_image_ = new_image;
@@ -576,7 +576,7 @@ void ModifiedItem::modify(ImagePtr const & new_image)
 
 void ModifiedItem::setPixmap()
 {
-	if (!modified_image_.get()) 
+	if (!modified_image_.get())
 		return;
 
 	if (params().display == GParams::NONE) {
@@ -635,7 +635,7 @@ ModifiedItemPtr ModifiedItem::changeDisplay()
 	// Loop over the list of insets. Compare the updated params for each
 	// with params(). If different, move into a new list.
 	ListType::iterator begin = insets.begin();
- 	ListType::iterator end   = insets.end();
+	ListType::iterator end   = insets.end();
 	ListType::iterator it =
 		std::remove_if(begin, end, Params_Changed(params()));
 

@@ -1,14 +1,14 @@
 /* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor 	 
+ * ======================================================
+ *
+ *           LyX, The Document Processor
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
  *           This file is Copyright 1997-1998
  *           Asger Alstrup
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #include <config.h>
@@ -49,7 +49,7 @@ int Chktex::run(TeXErrors &terr)
 	// run bibtex
 	string log = OnlyFilename(ChangeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
-        Systemcall one;
+	Systemcall one;
 	int result= one.startscript(Systemcall::Wait, tmp);
 	if (result == 0) {
 		result = scanLogFile(terr);

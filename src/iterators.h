@@ -50,7 +50,7 @@ public:
 		return positions.top().par;
 	}
 	///
-	PosHolder::size_type size() const 
+	PosHolder::size_type size() const
 		{ return positions.size(); }
 	///
 	friend

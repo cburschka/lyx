@@ -1,5 +1,5 @@
 /* This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -56,8 +56,8 @@
 using std::endl;
 
 namespace {
-	/// pid for the `ispell' process. 
-	pid_t isp_pid = -1; 
+	/// pid for the `ispell' process.
+	pid_t isp_pid = -1;
 }
 
 ///
@@ -73,7 +73,7 @@ namespace {
 #include "sp_pspell.h"
 
 
-PSpell::PSpell() 
+PSpell::PSpell()
 	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN),
 	  alive_(false)
 {
@@ -88,14 +88,14 @@ PSpell::PSpell(BufferParams const & params, string const & lang)
 }
 
 
-PSpell::~PSpell() 
+PSpell::~PSpell()
 {
 	cleanUp();
 	close();
 	if (els)
 		delete_pspell_string_emulation(els);
 }
-	
+
 
 void PSpell::initialize(BufferParams const &, string const & lang)
 {
@@ -113,7 +113,7 @@ void PSpell::initialize(BufferParams const &, string const & lang)
 }
 
 
-void PSpell::cleanUp() 
+void PSpell::cleanUp()
 {
 	if (spell_error_object) {
 		delete_pspell_can_have_error(spell_error_object);
@@ -137,9 +137,9 @@ enum PSpell::spellStatus PSpell::check(string const & word)
 			pspell_manager_suggest(sc, word.c_str());
 		lyx::Assert(sugs != 0);
 		els = pspell_word_list_elements(sugs);
-		if (pspell_word_list_empty(sugs)) 
+		if (pspell_word_list_empty(sugs))
 			flag = ISP_UNKNOWN;
-		else 
+		else
 			flag = ISP_MISSED;
 	}
 	return flag;
@@ -160,7 +160,7 @@ void PSpell::insert(string const & word)
 }
 
 
-void PSpell::accept(string const & word) 
+void PSpell::accept(string const & word)
 {
 	if (sc)
 		pspell_manager_add_to_session(sc, word.c_str());
@@ -260,8 +260,8 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 		       << endl;
 		goto END;
 	}
-	
-	if (isp_pid == 0) {        
+
+	if (isp_pid == 0) {
 		/* child process */
 		dup2(pipein[0], STDIN_FILENO);
 		dup2(pipeout[1], STDOUT_FILENO);
@@ -296,16 +296,16 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 		} else {
 			// Report run-together words with
 			// missing blanks as errors
-			tmp = new char[3]; 
+			tmp = new char[3];
 			string("-B").copy(tmp, 2); tmp[2] = '\0';
-			argv[argc++] = tmp; 
+			argv[argc++] = tmp;
 		}
 		if (lyxrc.isp_use_esc_chars) {
 			// Specify additional characters that
 			// can be part of a word
 			tmp = new char[3];
 			string("-w").copy(tmp, 2); tmp[2] = '\0';
-			argv[argc++] = tmp; 
+			argv[argc++] = tmp;
 			// Put the escape chars in ""s
 			string tms = "\"" + lyxrc.isp_esc_chars + "\"";
 			tmp = new char[tms.length() + 1];
@@ -347,7 +347,7 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 		// setup of argv
 		for (int i = 0; i < argc - 1; ++i)
 			delete[] argv[i];
-		
+
 		lyxerr << "LyX: Failed to start ispell!" << endl;
 		_exit(0);
 	}
@@ -368,17 +368,17 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 
 		// Configure provides us with macros which are supposed to do
 		// the right typecast.
-		retval = select(SELECT_TYPE_ARG1 (pipeout[0]+1), 
-				SELECT_TYPE_ARG234 (&infds), 
-				0, 
-				0, 
+		retval = select(SELECT_TYPE_ARG1 (pipeout[0]+1),
+				SELECT_TYPE_ARG234 (&infds),
+				0,
+				0,
 				SELECT_TYPE_ARG5 (&tv));
 
 		if (retval > 0) {
 			// Ok, do the reading. We don't have to FD_ISSET since
 			// there is only one fd in infds.
 			fgets(buf, 2048, in);
-		
+
 			// determine if the spell checker is really Aspell
 			if (strstr(buf, "Aspell"))
 				actual_spell_checker = ASC_ASPELL;
@@ -387,7 +387,7 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 
 			fputs("!\n", out); // Set terse mode (silently accept correct words)
 
-		
+
 		} else if (retval == 0) {
 			// timeout. Give nice message to user.
 			lyxerr << "Ispell read timed out, what now?" << endl;
@@ -405,7 +405,7 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 	}
   END:
 	if (isp_pid == -1) {
-		error_ = 
+		error_ =
 			"\n\n"
 			"The spellcheck-process has died for some reason.\n"
 			"*One* possible reason could be that you do not have\n"
@@ -425,20 +425,20 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
  */
 void reapSpellchecker(void)
 {
-	if (isp_pid == -1) 
+	if (isp_pid == -1)
 		return;
 
 	waitpid(isp_pid, 0, WNOHANG);
 }
 
- 
+
 bool ISpell::alive()
 {
 	return isp_pid != -1;
 }
 
 
-void ISpell::cleanUp() 
+void ISpell::cleanUp()
 {
 	::fclose(out);
 }
@@ -450,12 +450,12 @@ enum ISpell::spellStatus ISpell::check(string const & word)
 
 	::fputs(word.c_str(), out);
 	::fputc('\n', out);
-  
+
 	char buf[1024];
-	::fgets(buf, 1024, in); 
-  
+	::fgets(buf, 1024, in);
+
 	// I think we have to check if ispell is still alive here because
-	// the signal-handler could have disabled blocking on the fd 
+	// the signal-handler could have disabled blocking on the fd
 	if (!alive()) return ISP_UNKNOWN;
 
 	switch (*buf) {
@@ -498,8 +498,8 @@ enum ISpell::spellStatus ISpell::check(string const & word)
 
 void ISpell::close()
 {
-	// Note: If you decide to optimize this out when it is not 
-	// needed please note that when Aspell is used this command 
+	// Note: If you decide to optimize this out when it is not
+	// needed please note that when Aspell is used this command
 	// is also needed to save the replacement dictionary.
 	// -- Kevin Atkinson (kevinatk@home.com)
 
@@ -518,7 +518,7 @@ void ISpell::insert(string const & word)
 }
 
 
-void ISpell::accept(string const & word) 
+void ISpell::accept(string const & word)
 {
 	::fputc('@', out); // Accept in this session
 	::fputs(word.c_str(), out);

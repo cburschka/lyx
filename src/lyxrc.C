@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -105,8 +105,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\print_landscape_flag", LyXRC::RC_PRINTLANDSCAPEFLAG },
 	{ "\\print_oddpage_flag", LyXRC::RC_PRINTODDPAGEFLAG },
 	{ "\\print_pagerange_flag", LyXRC::RC_PRINTPAGERANGEFLAG },
-        { "\\print_paper_dimension_flag", LyXRC::RC_PRINTPAPERDIMENSIONFLAG },
-        { "\\print_paper_flag", LyXRC::RC_PRINTPAPERFLAG },
+	{ "\\print_paper_dimension_flag", LyXRC::RC_PRINTPAPERDIMENSIONFLAG },
+	{ "\\print_paper_flag", LyXRC::RC_PRINTPAPERFLAG },
 	{ "\\print_reverse_flag", LyXRC::RC_PRINTREVERSEFLAG },
 	{ "\\print_spool_command", LyXRC::RC_PRINTSPOOL_COMMAND },
 	{ "\\print_spool_printerprefix", LyXRC::RC_PRINTSPOOL_PRINTERPREFIX },
@@ -145,7 +145,7 @@ keyword_item lyxrcTags[] = {
 #endif
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
-	{ "\\viewer" ,LyXRC::RC_VIEWER}, 
+	{ "\\viewer" ,LyXRC::RC_VIEWER},
 	{ "\\wheel_jump", LyXRC::RC_WHEEL_JUMP }
 };
 
@@ -155,7 +155,7 @@ const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
 } // namespace anon
 
 
-LyXRC::LyXRC() 
+LyXRC::LyXRC()
 {
 	setDefaults();
 }
@@ -228,7 +228,7 @@ void LyXRC::setDefaults() {
 	display_graphics = "color";
 	display_shortcuts = true;
 	// Spellchecker settings:
-#ifdef USE_PSPELL	
+#ifdef USE_PSPELL
 	use_pspell = true;
 #endif
 	isp_command = "ispell";
@@ -286,16 +286,16 @@ void LyXRC::readBindFileIfNeeded()
 
 
 int LyXRC::read(string const & filename)
-{	
+{
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
-	
+
 	lexrc.setFile(filename);
 	if (!lexrc.isOK()) return -2;
-	
+
 	lyxerr[Debug::LYXRC] << "Reading '" << filename << "'..." << endl;
-	
+
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
 		// telling us if we have missed a LyXRCTags element in
@@ -308,17 +308,17 @@ int LyXRC::read(string const & filename)
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
-			continue; 
+			continue;
 		case LyXLex::LEX_FEOF:
-			continue; 
+			continue;
 		default: break;
 		}
 		switch (static_cast<LyXRCTags>(le)) {
 		case RC_INPUT: // Include file
-		        if (lexrc.next()) {
+			if (lexrc.next()) {
 				string const tmp =
 					LibFileSearch(string(),
-						      lexrc.getString()); 
+						      lexrc.getString());
 				if (read(tmp)) {
 					lexrc.printError("Error reading "
 							 "included file: "+tmp);
@@ -340,18 +340,18 @@ int LyXRC::read(string const & filename)
 					bind_file = tmp;
 			}
 			break;
-			
-		case RC_UIFILE: 
+
+		case RC_UIFILE:
 			if (lexrc.next()) {
 				ui_file = lexrc.getString();
 			}
 			break;
-			
+
 		case RC_EXIT_CONFIRMATION:
 			if (lexrc.next())
 				exit_confirmation = lexrc.getBool();
 			break;
-			
+
 		case RC_AUTORESET_OPTIONS:
 			if (lexrc.next())
 				auto_reset_options = lexrc.getBool();
@@ -371,162 +371,162 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				use_kbmap = lexrc.getBool();
 			break;
-			
+
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
 				string const kmap(lexrc.getString());
 				if (kmap.empty()) {
 					// nothing
-				} else if (!LibFileSearch("kbd", kmap, 
-							  "kmap").empty()) 
+				} else if (!LibFileSearch("kbd", kmap,
+							  "kmap").empty())
 					primary_kbmap = kmap;
-				else 
+				else
 					lexrc.printError("LyX: Keymap `$$Token' not found");
 			}
 			break;
-			
+
 		case RC_KBMAP_SECONDARY:
 			if (lexrc.next()) {
 				string const kmap(lexrc.getString());
 				if (kmap.empty()) {
 					// nothing
-				} else if (!LibFileSearch("kbd", kmap, 
-							  "kmap").empty()) 
+				} else if (!LibFileSearch("kbd", kmap,
+							  "kmap").empty())
 					secondary_kbmap = kmap;
-				else 
+				else
 					lexrc.printError("LyX: Keymap `$$Token' not found");
 			}
 			break;
-			
+
 		case RC_FONT_ENCODING:
 			if (lexrc.next())
 				fontenc = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTER:
 			if (lexrc.next())
 				printer = lexrc.getString();
 			break;
-			
+
 		case RC_PRINT_COMMAND:
 			if (lexrc.next())
 				print_command = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTEVENPAGEFLAG:
 			if (lexrc.next())
 				print_evenpage_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTODDPAGEFLAG:
 			if (lexrc.next())
 				print_oddpage_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTPAGERANGEFLAG:
 			if (lexrc.next())
 				print_pagerange_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTCOPIESFLAG:
 			if (lexrc.next())
 				print_copies_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTCOLLCOPIESFLAG:
 			if (lexrc.next())
 				print_collcopies_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTREVERSEFLAG:
 			if (lexrc.next())
 				print_reverse_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTLANDSCAPEFLAG:
 			if (lexrc.next())
 				print_landscape_flag = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTTOPRINTER:
 			if (lexrc.next())
 				print_to_printer = lexrc.getString();
 			break;
-			
+
 		case RC_PRINT_ADAPTOUTPUT:
 			if (lexrc.next())
 				print_adapt_output = lexrc.getBool();
 			break;
-			
+
 		case RC_PRINTTOFILE:
 			if (lexrc.next())
 				print_to_file = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTFILEEXTENSION:
 			if (lexrc.next())
 				print_file_extension = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTEXSTRAOPTIONS:
 			if (lexrc.next())
 				print_extra_options = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTSPOOL_COMMAND:
 			if (lexrc.next())
 				print_spool_command = lexrc.getString();
 			break;
-			
+
 		case RC_PRINTSPOOL_PRINTERPREFIX:
 			if (lexrc.next())
 				print_spool_printerprefix = lexrc.getString();
 			break;
-			
-                case RC_PRINTPAPERDIMENSIONFLAG:
+
+		case RC_PRINTPAPERDIMENSIONFLAG:
 			if (lexrc.next())
 				print_paper_dimension_flag = lexrc.getString();
 			break;
-			
-                case RC_PRINTPAPERFLAG:
+
+		case RC_PRINTPAPERFLAG:
 			if (lexrc.next())
 				print_paper_flag = lexrc.getString();
 			break;
-			
+
 		case RC_CUSTOM_EXPORT_COMMAND:
 			if (lexrc.next())
 				custom_export_command = lexrc.getString();
 			break;
-			
+
 		case RC_CUSTOM_EXPORT_FORMAT:
 			if (lexrc.next())
 				custom_export_format = lexrc.getString();
 			break;
 
 		case RC_DEFAULT_PAPERSIZE:
-                        if (lexrc.next()) {
-			        string const size =
+			if (lexrc.next()) {
+				string const size =
 					lowercase(lexrc.getString());
 				if (size == "usletter")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_USLETTER;
 				else if (size == "legal")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_LEGALPAPER;
 				else if (size == "executive")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_EXECUTIVEPAPER;
 				else if (size == "a3")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_A3PAPER;
 				else if (size == "a4")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_A4PAPER;
 				else if (size == "a5")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_A5PAPER;
 				else if (size == "b5")
-				        default_papersize =
+					default_papersize =
 						BufferParams::PAPER_B5PAPER;
 			}
 			break;
@@ -534,7 +534,7 @@ int LyXRC::read(string const & filename)
 		case RC_VIEWDVI_PAPEROPTION:
 			if (lexrc.next())
 				view_dvi_paper_option = lexrc.getString();
-			else 
+			else
 				view_dvi_paper_option.erase();
 			break;
 
@@ -542,17 +542,17 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				ps_command = lexrc.getString();
 			break;
-			
+
 		case RC_CHKTEX_COMMAND:
 			if (lexrc.next())
 				chktex_command = lexrc.getString();
 			break;
-			
+
 		case RC_SCREEN_DPI:
 			if (lexrc.next())
 				dpi = lexrc.getInteger();
 			break;
-			
+
 		case RC_SCREEN_ZOOM:
 			if (lexrc.next())
 				zoom = lexrc.getInteger();
@@ -562,7 +562,7 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				wheel_jump = lexrc.getInteger();
 			break;
-			
+
 		case RC_SCREEN_FONT_SIZES:
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_TINY] =
@@ -595,68 +595,68 @@ int LyXRC::read(string const & filename)
 				font_sizes[LyXFont::SIZE_HUGER] =
 					lexrc.getFloat();
 			break;
-			
-                case RC_SCREEN_FONT_SCALABLE:
-                        if (lexrc.next())
-                                use_scalable_fonts = lexrc.getBool();
+
+		case RC_SCREEN_FONT_SCALABLE:
+			if (lexrc.next())
+				use_scalable_fonts = lexrc.getBool();
 			break;
-			
+
 		case RC_AUTOSAVE:
 			if (lexrc.next())
 				autosave = lexrc.getInteger();
 			break;
-			
+
 		case RC_DOCUMENTPATH:
 			if (lexrc.next()) {
 				document_path = ExpandPath(lexrc.getString());
 			}
 			break;
-			
+
 		case RC_TEMPLATEPATH:
 			if (lexrc.next())
 				template_path = ExpandPath(lexrc.getString());
 			break;
-			
+
 		case RC_TEMPDIRPATH:
 			if (lexrc.next())
 				tempdir_path = ExpandPath(lexrc.getString());
 			break;
-			
+
 		case RC_USETEMPDIR:
 			if (lexrc.next())
 				use_tempdir = lexrc.getBool();
 			break;
-			
+
 		case RC_LASTFILES:
 			if (lexrc.next())
 				lastfiles = ExpandPath(lexrc.getString());
 			break;
-			
-                case RC_NUMLASTFILES:
-                        if (lexrc.next())
-                                num_lastfiles = lexrc.getInteger();
+
+		case RC_NUMLASTFILES:
+			if (lexrc.next())
+				num_lastfiles = lexrc.getInteger();
 			break;
-			
-                case RC_CHECKLASTFILES:
-                        if (lexrc.next())
-                                check_lastfiles = lexrc.getBool();
+
+		case RC_CHECKLASTFILES:
+			if (lexrc.next())
+				check_lastfiles = lexrc.getBool();
 			break;
-			
+
 		case RC_SCREEN_FONT_ROMAN:
 			if (lexrc.next())
 				roman_font_name = lexrc.getString();
 			break;
-			
+
 		case RC_SCREEN_FONT_SANS:
 			if (lexrc.next())
 				sans_font_name = lexrc.getString();
 			break;
-			
+
 		case RC_SCREEN_FONT_TYPEWRITER:
 			if (lexrc.next())
 				typewriter_font_name = lexrc.getString();
 			break;
-			
+
 		case RC_SCREEN_FONT_ENCODING:
 			if (lexrc.next()) {
 				font_norm = lexrc.getString();
@@ -668,12 +668,12 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				popup_bold_font = lexrc.getString();
 			break;
-			
+
 		case RC_POPUP_NORMAL_FONT:
 			if (lexrc.next())
 				popup_normal_font = lexrc.getString();
 			break;
-			
+
 		case RC_POPUP_FONT_ENCODING:
 			if (lexrc.next())
 				popup_font_encoding = lexrc.getString();
@@ -689,7 +689,7 @@ int LyXRC::read(string const & filename)
 				lexrc.printError("Missing color tag.");
 				break;
 			}
-			
+
 			if (lexrc.next()) {
 				x11_name = lexrc.getString();
 			} else {
@@ -705,10 +705,10 @@ int LyXRC::read(string const & filename)
 		}
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
-		        if (lexrc.next())
-		        	auto_region_delete = lexrc.getBool();
+			if (lexrc.next())
+				auto_region_delete = lexrc.getBool();
 			break;
-			
+
 		case RC_BIND:
 		{
 			// we should not do an explicit binding before
@@ -720,21 +720,21 @@ int LyXRC::read(string const & filename)
 			int action = 0;
 			string::size_type res = 0;
 			string seq, cmd;
-			
+
 			if (lexrc.next()) {
 				seq = lexrc.getString();
 			} else {
 				lexrc.printError("RC_BIND: Missing key sequence");
 				break;
 			}
-			
+
 			if (lexrc.next(true)) {
 				cmd = lexrc.getString();
 			} else {
 				lexrc.printError("RC_BIND: missing command");
 				break;
 			}
-			
+
 			if ((action = lyxaction.LookupFunc(cmd))>= 0) {
 				if (lyxerr.debugging(Debug::LYXRC)) {
 					lyxerr << "RC_BIND: Sequence `"
@@ -748,7 +748,7 @@ int LyXRC::read(string const & filename)
 					lexrc.printError(
 						"RC_BIND: "
 						"Invalid key sequence `"
-						+ seq + '\''); 
+						+ seq + '\'');
 				}
 			} else {// cmd is the last token read.
 				lexrc.printError(
@@ -765,7 +765,7 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				lyxpipes = ExpandPath(lexrc.getString());
 			break;
-			
+
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			if (lexrc.next())
 				cursor_follows_scrollbar = lexrc.getBool();
@@ -777,7 +777,7 @@ int LyXRC::read(string const & filename)
 			break;
 
 		case RC_ASCIIROFF_COMMAND:
- 			if (lexrc.next())
+			if (lexrc.next())
 				ascii_roff_command = lexrc.getString();
 			break;
 		case RC_ASCII_LINELEN:
@@ -828,8 +828,8 @@ int LyXRC::read(string const & filename)
 				isp_esc_chars = lexrc.getString();
 			break;
 		case RC_MAKE_BACKUP:
-		        if (lexrc.next())
-		                make_backup = lexrc.getBool();
+			if (lexrc.next())
+				make_backup = lexrc.getBool();
 			break;
 		case RC_BACKUPDIR_PATH:
 			if (lexrc.next())
@@ -887,7 +887,7 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				show_banner = lexrc.getBool();
 			break;
-			
+
 		case RC_NEW_ASK_FILENAME:
 			if (lexrc.next())
 				new_ask_filename = lexrc.getBool();
@@ -992,7 +992,7 @@ void LyXRC::output(ostream & os) const
 	   << "# This file is written by LyX, if you want to make your own\n"
 	   << "# modifications you should do them from inside LyX and save\n"
 	   << "\n";
-	
+
 	// Why the switch you might ask. It is a trick to ensure that all
 	// the elements in the LyXRCTags enum is handled. As you can see
 	// there are no breaks at all. So it is just a huge fall-through.
@@ -1015,7 +1015,7 @@ void LyXRC::output(ostream & os) const
 		os << "\n#\n"
 		   << "# MISC SECTION ######################################\n"
 		   << "#\n\n";
-		
+
 	case RC_SHOW_BANNER:
 		if (show_banner != system_lyxrc.show_banner) {
 			os << "# Set to false to inhibit the startup banner.\n"
@@ -1059,16 +1059,16 @@ void LyXRC::output(ostream & os) const
 			   << "\\display_graphics " << display_graphics
 			   << "\n";
 		}
-			
+
 	case RC_DISPLAY_SHORTCUTS:
 		if (display_shortcuts != system_lyxrc.display_shortcuts) {
 			os << "# Display name of the last command executed,\n"
-			   << "# with a list of short-cuts in the minibuffer.\n" 
+			   << "# with a list of short-cuts in the minibuffer.\n"
 			   << "\\display_shortcuts " << tostr(display_shortcuts)
 			   << "\n";
 		}
 	case RC_VIEWDVI_PAPEROPTION:
-		if (view_dvi_paper_option 
+		if (view_dvi_paper_option
 		    != system_lyxrc.view_dvi_paper_option) {
 			os << "# Options used to specify paper size to the\n"
 			   << "# view_dvi_command (e.g. -paper)\n"
@@ -1138,7 +1138,7 @@ void LyXRC::output(ostream & os) const
 		os << "\n#\n"
 		   << "# SCREEN & FONTS SECTION ############################\n"
 		   << "#\n\n";
-		
+
 	case RC_POPUP_NORMAL_FONT:
 		if (popup_normal_font != system_lyxrc.popup_normal_font) {
 			os << "\\popup_normal_font \"" << popup_normal_font
@@ -1240,15 +1240,15 @@ void LyXRC::output(ostream & os) const
 			   << " " << font_sizes[LyXFont::SIZE_HUGER]
 			   << "\n";
 		}
-		
+
 		os << "\n#\n"
 		   << "# COLOR SECTION ###################################\n"
 		   << "#\n\n";
-		
+
 	case RC_SET_COLOR:
 		for (int i = 0; i < LColor::ignore; ++i) {
 			LColor::color lc = static_cast<LColor::color>(i);
-			
+
 			string const col(lcolor.getX11Name(lc));
 			if (col != system_lcolor.getX11Name(lc)) {
 				os << "\\set_color \""
@@ -1256,11 +1256,11 @@ void LyXRC::output(ostream & os) const
 				   << col << "\"\n";
 			}
 		}
-		
+
 		os << "\n#\n"
 		   << "# PRINTER SECTION ###################################\n"
 		   << "#\n\n";
-		
+
 	case RC_PRINTER:
 		if (printer != system_lyxrc.printer) {
 			os << "\\printer \"" << printer << "\"\n";
@@ -1318,7 +1318,7 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_PRINTCOPIESFLAG:
 		if (print_copies_flag != system_lyxrc.print_copies_flag) {
-			os << "\\print_copies_flag \"" << print_copies_flag 
+			os << "\\print_copies_flag \"" << print_copies_flag
 			   << "\"\n";
 		}
 	case RC_PRINTCOLLCOPIESFLAG:
@@ -1358,7 +1358,7 @@ void LyXRC::output(ostream & os) const
 		os << "\n#\n"
 		   << "# EXPORT SECTION ####################################\n"
 		   << "#\n\n";
-		
+
 	case RC_CUSTOM_EXPORT_COMMAND:
 		if (custom_export_command
 		    != system_lyxrc.custom_export_command) {
@@ -1376,7 +1376,7 @@ void LyXRC::output(ostream & os) const
 		os << "\n#\n"
 		   << "# TEX SECTION #######################################\n"
 		   << "#\n\n";
-		
+
 	case RC_FONT_ENCODING:
 		if (fontenc != system_lyxrc.fontenc) {
 			os << "\\font_encoding \"" << fontenc << "\"\n";
@@ -1542,12 +1542,12 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_LANGUAGE_AUTO_BEGIN:
 		if (language_auto_begin != system_lyxrc.language_auto_begin) {
-			os << "\\language_auto_begin " 
+			os << "\\language_auto_begin "
 			   << tostr(language_auto_begin) << "\n";
 		}
 	case RC_LANGUAGE_AUTO_END:
 		if (language_auto_end != system_lyxrc.language_auto_end) {
-			os << "\\language_auto_end " 
+			os << "\\language_auto_end "
 			   << tostr(language_auto_end) << "\n";
 		}
 	case RC_MARK_FOREIGN_LANGUAGE:
@@ -1604,12 +1604,12 @@ void LyXRC::output(ostream & os) const
 		for (Formats::const_iterator cit = system_formats.begin();
 		     cit != system_formats.end(); ++cit)
 			if (!formats.getFormat(cit->name()))
-				os << "\\format \"" << cit->name() 
+				os << "\\format \"" << cit->name()
 				   << "\" \"\" \"\" \"\"\n";
 	case RC_VIEWER:
 		for (Formats::const_iterator cit = formats.begin();
 		     cit != formats.end(); ++cit) {
-			Format const * format = 
+			Format const * format =
 				system_formats.getFormat(cit->name());
 			if ((!format || format->viewer() != cit->viewer()) &&
 			    (format || !cit->viewer().empty()))
@@ -1641,7 +1641,7 @@ void LyXRC::output(ostream & os) const
 		for (Converters::const_iterator cit = system_converters.begin();
 		     cit != system_converters.end(); ++cit)
 			if (!converters.getConverter(cit->from, cit->to))
-				os << "\\converter \"" << cit->from 
+				os << "\\converter \"" << cit->from
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 	}
 	os.flush();
@@ -1668,23 +1668,23 @@ void LyXRC::set_font_norm_type()
 }
 
 
-string const LyXRC::getDescription(LyXRCTags tag) 
+string const LyXRC::getDescription(LyXRCTags tag)
 {
 	string str;
-	
+
 	switch (tag) {
 	case RC_FONT_ENCODING:
 		str = N_("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
 		break;
-		
+
 	case RC_PRINTER:
 		str = N_("The default printer to print on. If none is specified, LyX will use the environment variable PRINTER.");
 		break;
-		
+
 	case RC_PRINT_COMMAND:
 		str = N_("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
 		break;
-		
+
 	case RC_PRINTEVENPAGEFLAG:
 		str = N_("The option to print only even pages.");
 		break;
@@ -1713,104 +1713,104 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = N_("The option to print out in landscape.");
 		break;
 
-        case RC_PRINTPAPERFLAG:
+	case RC_PRINTPAPERFLAG:
 		str = N_("The option to specify paper type.");
 		break;
 
 	case RC_PRINTPAPERDIMENSIONFLAG:
 		str = N_("Option to specify the dimensions of the print paper.");
 		break;
-		
+
 	case RC_PRINTTOPRINTER:
 		str = N_("Option to pass to the print program to print on a specific printer.");
 		break;
-		
+
 	case RC_PRINT_ADAPTOUTPUT:
 		str = N_("Select for LyX to pass the name of the destination printer to your print command.");
 		break;
-		
+
 	case RC_PRINTTOFILE:
 		str = N_("Option to pass to the print program to print to a file.");
 		break;
-		
+
 	case RC_PRINTFILEEXTENSION:
 		str = N_("Extension of printer program output file. Usually \".ps\".");
 		break;
-		
+
 	case RC_PRINTEXSTRAOPTIONS:
 		str = N_("Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed.");
 		break;
-		
+
 	case RC_PRINTSPOOL_COMMAND:
 		str = N_("When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments.");
 		break;
-		
+
 	case RC_PRINTSPOOL_PRINTERPREFIX:
 		str = N_("If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command.");
 		break;
-		
+
 	case RC_SCREEN_DPI:
 		str = N_("DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here.");
 		break;
-		
+
 	case RC_SCREEN_ZOOM:
 		//xgettext:no-c-format
 		str = N_("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
 		break;
-		
+
 	case RC_SCREEN_FONT_SIZES:
 		str = N_("The font sizes used for calculating the scaling of the screen fonts.");
 		break;
-		
+
 	case RC_SCREEN_FONT_ROMAN:
 	case RC_SCREEN_FONT_SANS:
 	case RC_SCREEN_FONT_TYPEWRITER:
 		str = N_("The screen fonts used to display the text while editing.");
 		break;
-		
+
 	case RC_POPUP_BOLD_FONT:
 		str = N_("The bold font in the dialogs.");
 		break;
-		
+
 	case RC_POPUP_NORMAL_FONT:
 		str = N_("The normal font in the dialogs.");
 		break;
-		
+
 	case RC_SCREEN_FONT_ENCODING:
 		str = N_("The encoding for the screen fonts.");
 		break;
-		
+
 	case RC_POPUP_FONT_ENCODING:
 		str = N_("The encoding for the menu/popups fonts.");
 		break;
-		
+
 	case RC_SET_COLOR:
 		break;
-		
+
 	case RC_AUTOSAVE:
 		str = N_("The time interval between auto-saves (in seconds). 0 means no auto-save.");
 		break;
-		
+
 	case RC_DOCUMENTPATH:
 		str = N_("The default path for your documents.  An empty value selects the directory LyX was started from.");
 		break;
-		
+
 	case RC_TEMPLATEPATH:
 		str = N_("The path that LyX will set when offering to choose a template.  An empty value selects the directory LyX was started from.");
 		break;
-		
+
 	case RC_TEMPDIRPATH:
 		str = N_("LyX will place its temporary directories in this path. They will be deleted when you quit LyX.");
 		break;
-		
+
 	case RC_USETEMPDIR:
 		str = N_("Select if you wish to use a temporary directory structure to store temporary TeX output.");
 		break;
-		
+
 	case RC_LASTFILES:
 		str = N_("The file where the last-files information should be stored.");
 		break;
-		
+
 	case RC_AUTOREGIONDELETE:
 		str = N_("De-select if you don't want the current selection to be replaced automatically by what you type.");
 		break;
@@ -1818,7 +1818,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_AUTORESET_OPTIONS:
 		str = N_("De-select if you don't want the class options to be reset to defaults after class change.");
 		break;
-		
+
 	case RC_OVERRIDE_X_DEADKEYS:
 		str = N_("Select if LyX is to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard.");
 		break;
@@ -1835,7 +1835,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_UIFILE:
 		str = N_("The  UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
 		break;
-		
+
 	case RC_KBMAP:
 	case RC_KBMAP_PRIMARY:
 	case RC_KBMAP_SECONDARY:
@@ -1845,89 +1845,89 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_ASCIIROFF_COMMAND:
 		str = N_("Use to define an external program to render tables in the ASCII output. E.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" is specified, an internal routine is used.");
 		break;
-		
+
 	case RC_ASCII_LINELEN:
 		str = N_("This is the maximum line length of an exported ASCII file (LaTeX, SGML or plain text).");
 		break;
-		
+
 	case RC_NUMLASTFILES:
 		str = N_("Maximal number of lastfiles. Up to 9 can appear in the file menu.");
 		break;
-		
+
 	case RC_CHECKLASTFILES:
 		str = N_("Select to check whether the lastfiles still exist.");
 		break;
-		
+
 	case RC_VIEWDVI_PAPEROPTION:
 		str = N_("Specify the paper command to DVI viewer (leave empty or use \"-paper\")");
 		break;
-		
+
 	case RC_DEFAULT_PAPERSIZE:
 		str = N_("Specify the default paper size.");
 		break;
-		
+
 	case RC_PS_COMMAND:
 		break;
-		
+
 	case RC_ACCEPT_COMPOUND:
 		str = N_("Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?");
 		break;
-		
+
 	case RC_SPELL_COMMAND:
 		str = N_("What command runs the spell checker?");
 		break;
-		
+
 	case RC_USE_INP_ENC:
 		str = N_("Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries.");
 		break;
-		
+
 	case RC_USE_ALT_LANG:
 	case RC_ALT_LANG:
 		str = N_("Specify an alternate language. The default is to use the language of the document.");
 		break;
-		
+
 	case RC_USE_PERS_DICT:
 	case RC_PERS_DICT:
 		str = N_("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
 		break;
-		
+
 	case RC_USE_ESC_CHARS:
 	case RC_ESC_CHARS:
 		str = N_("Specify additional chars that can be part of a word.");
 		break;
-		
+
 	case RC_SCREEN_FONT_SCALABLE:
 		str = N_("Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling.");
 		break;
-		
+
 	case RC_CHKTEX_COMMAND:
 		str = N_("Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation.");
 		break;
-		
+
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = N_("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
 		break;
-		
+
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
 		str = N_("Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)");
 		break;
-		
+
 	case RC_EXIT_CONFIRMATION:
 		str = N_("Sets whether LyX asks for a second confirmation to exit when you have changed documents. (LyX will still ask to save changed documents.)");
 		break;
-		
+
 	case RC_DISPLAY_GRAPHICS:
 		str = N_("Select how LyX will display any graphics.");
 		break;
-		
+
 	case RC_DISPLAY_SHORTCUTS:
 		str = N_("LyX continously displays names of last command executed, along with a list of defined short-cuts for it in the minibuffer. Set to false if LyX seems slow.");
 		break;
-		
+
 	case RC_MAKE_BACKUP:
 		str = N_("De-select if you don't want LyX to create backup files.");
 		break;
-		
+
 	case RC_BACKUPDIR_PATH:
 		str = N_("The path for storing backup files. If it is an empty string, LyX will store the backup file in the same directory as the original file.");
 		break;
@@ -1935,11 +1935,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_RTL_SUPPORT:
 		str = N_("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
 		break;
-		
+
 	case RC_MARK_FOREIGN_LANGUAGE:
 		str = N_("Select to control the highlighting of words with a language foreign to that of the document.");
 		break;
-		
+
 	case RC_LANGUAGE_PACKAGE:
 		str = N_("The latex command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
 		break;
@@ -1951,19 +1951,19 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_LANGUAGE_USE_BABEL:
 		str = N_("De-select if you don't want babel to be used when the language of the document is the default language.");
 		break;
-		
+
 	case RC_LANGUAGE_AUTO_BEGIN:
 		str = N_("Select if a language switching command is needed at the beginning of the document.");
 		break;
-		
+
 	case RC_LANGUAGE_AUTO_END:
 		str = N_("Select if a language switching command is needed at the end of the document.");
 		break;
-		
+
 	case RC_LANGUAGE_COMMAND_BEGIN:
 		str = N_("The latex command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language.");
 		break;
-		
+
 	case RC_LANGUAGE_COMMAND_END:
 		str = N_("The latex command for changing back to the language of the document.");
 		break;
@@ -1976,28 +1976,28 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		//xgettext:no-c-format
 		str = N_("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
 		break;
-		
+
 	case RC_SHOW_BANNER:
 		str = N_("De-select if you don't want the startup banner.");
 		break;
-		
+
 	case RC_WHEEL_JUMP:
 		str = N_("The wheel movement factor (for mice with wheels or five button mice).");
 		break;
-		
+
 	case RC_CONVERTER:
 		break;
-		
+
 	case RC_VIEWER:
 		break;
-		
+
 	case RC_FORMAT:
 		break;
-		
+
 	case RC_NEW_ASK_FILENAME:
 		str = N_("This sets the behaviour if you want to be asked for a filename when creating a new document or wait until you save it and be asked then.");
 		break;
-		
+
 	case RC_DEFAULT_LANGUAGE:
 		str = N_("New documents will be assigned this language.");
 		break;
@@ -2005,7 +2005,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_LABEL_INIT_LENGTH:
 		str = N_("Maximum number of words in the initialization string for a new label");
 		break;
-		
+
 	default:
 		break;
 	}

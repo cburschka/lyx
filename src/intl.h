@@ -18,9 +18,9 @@ public:
 		PRIMARY,
 		SECONDARY
 	};
-	
+
 	Intl();
-	
+
 	/// {en/dis}able the keymap
 	void KeyMapOn(bool on);
 

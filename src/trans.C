@@ -111,7 +111,7 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys)
 }
 
 
-int Trans::Load(LyXLex & lex) 
+int Trans::Load(LyXLex & lex)
 {
 	bool error = false;
 
@@ -127,7 +127,7 @@ int Trans::Load(LyXLex & lex)
 					       << "'" << endl;
 			} else
 				return -1;
-			
+
 			string const keys = lex.getString();
 
 			if (lex.next(true)) {
@@ -159,7 +159,7 @@ int Trans::Load(LyXLex & lex)
 			AddDeadkey(accent, keys);
 #endif
 			break;
-		}	
+		}
 		case KCOMB: {
 			string str;
 
@@ -169,7 +169,7 @@ int Trans::Load(LyXLex & lex)
 				lyxerr[Debug::KBMAP] << str << endl;
 			} else
 				return -1;
-			
+
 			tex_accent accent_1 = getkeymod(str);
 			if (accent_1 == TEX_NOACCENT) return -1;
 
@@ -209,7 +209,7 @@ int Trans::Load(LyXLex & lex)
 			} else {
 				return -1;
 			}
-			
+
 			InsertException(kmod_list_[accent_1].exception_list,
 					static_cast<char>(it->first), allowed,
 					true, accent_2);
@@ -323,7 +323,7 @@ int Trans::Load(string const & language)
 	FreeKeymap();
 	LyXLex lex(kmapTags, K_LAST-1);
 	lex.setFile(filename);
-	
+
 	int const res = Load(lex);
 
 	if (res == 0) {
@@ -344,7 +344,7 @@ tex_accent getkeymod(string const & p)
 			       << ", lyx_accent_table[" << i
 			       << "].name = `" << lyx_accent_table[i].name
 			       << "'" << endl;
-		
+
 		if (lyx_accent_table[i].name
 		     && contains(p, lyx_accent_table[i].name)) {
 			lyxerr[Debug::KBMAP] << "Found it!" << endl;

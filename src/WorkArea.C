@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -34,7 +34,7 @@
 // xforms doesn't define this (but it should be in <forms.h>).
 extern "C"
 FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
- 
+
 using std::endl;
 using std::abs;
 using std::hex;
@@ -54,26 +54,26 @@ extern "C" {
 	// Just a bunch of C wrappers around static members of WorkArea
 	static
 	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long buf)
-        {
+	{
 		WorkArea::scroll_cb(ob, buf);
-        }
+	}
 
-	
+
 	static
 	int C_WorkArea_work_area_handler(FL_OBJECT * ob, int event,
-					 FL_Coord, FL_Coord, 
+					 FL_Coord, FL_Coord,
 					 int key, void * xev)
-        {
+	{
 		return WorkArea::work_area_handler(ob, event,
 						   0, 0, key, xev);
-        }
+	}
 
 	static
 	int C_WorkAreaEventCB(FL_FORM * form, void * xev) {
 		WorkArea * wa = static_cast<WorkArea*>(form->u_vdata);
- 		int ret = wa->event_cb(static_cast<XEvent*>(xev));
+		int ret = wa->event_cb(static_cast<XEvent*>(xev));
 		lyxerr << "Pending: " << XPending(fl_get_display()) << endl;
-		
+
 		return ret;
 	}
 }
@@ -115,7 +115,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		int const splash_y = ypos + (height - splash_h) / 2;
 		splash_ = obj =
 			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-					    splash_x, splash_y, 
+					    splash_x, splash_y,
 					    splash_w, splash_h, "");
 		fl_set_pixmapbutton_file(obj, splash_file.c_str());
 		fl_set_pixmapbutton_focus_outline(obj, 3);
@@ -148,7 +148,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	obj->u_vdata = this;
 	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
 	setScrollbarBounds(0.0, 0.0);
-	
+
 	///
 	/// The free object
 
@@ -162,7 +162,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		       << xpos + bw << '+' << ypos + bw << ' '
 		       << width - 15 - 2 * bw << 'x'
 		       << height - 2 * bw << endl;
-	
+
 	work_area = obj = fl_add_free(FL_ALL_FREE,
 				      xpos + bw, ypos + bw,
 				      width - 15 - 2 * bw, // scrollbarwidth
@@ -177,8 +177,8 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 
 	/// X selection hook - xforms gets it wrong
 	fl_current_form->u_vdata = this;
-	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_WorkAreaEventCB); 
- 
+	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_WorkAreaEventCB);
+
 	fl_unfreeze_all_forms();
 }
 
@@ -208,7 +208,7 @@ bool WorkArea::belowMouse() const
 void WorkArea::resize(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();
-	
+
 	int const bw = int(abs(fl_get_border_width()));
 
 	// a box
@@ -245,7 +245,7 @@ void destroy_object(FL_OBJECT * obj)
 	fl_free_object(obj);
 }
 } // namespace anon
-	
+
 
 void WorkArea::createPixmap(int width, int height)
 {
@@ -264,7 +264,7 @@ void WorkArea::createPixmap(int width, int height)
 
 	if (cur_width == width && cur_height == height && workareapixmap)
 		return;
-	
+
 	cur_width = width;
 	cur_height = height;
 
@@ -274,11 +274,11 @@ void WorkArea::createPixmap(int width, int height)
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "Creating pixmap ("
 		       << width << 'x' << height << ")" << endl;
-	
+
 	workareapixmap = XCreatePixmap(fl_get_display(),
 				       RootWindow(fl_get_display(), 0),
 				       width,
-				       height, 
+				       height,
 				       fl_get_visual_depth());
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tpixmap=" << workareapixmap << endl;
@@ -339,12 +339,12 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	static int x_old = -1;
 	static int y_old = -1;
 	static long scrollbar_value_old = -1;
-	
+
 	XEvent * ev = static_cast<XEvent*>(xev);
 	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
 
 	if (!area) return 1;
-	
+
 	switch (event) {
 	case FL_DRAW:
 		if (!area->work_area ||
@@ -362,7 +362,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					  ev->xbutton.y - ob->y,
 					  ev->xbutton.button);
 		//area->workAreaKeyPress(XK_Pointer_Button1, ev->xbutton.state);
-		break; 
+		break;
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
@@ -394,7 +394,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 #endif
 	{
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYBOARD" << endl;
-		
+
 		KeySym keysym = 0;
 		char dummy[1];
 		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
@@ -410,7 +410,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			char const * tmp2 = XKeysymToString(keysym);
 			string const stm = (tmp ? tmp : "");
 			string const stm2 = (tmp2 ? tmp2 : "");
-			
+
 			lyxerr[Debug::KEY] << "WorkArea: Key is `" << stm << "' ["
 			       << key << "]" << endl;
 			lyxerr[Debug::KEY] << "WorkArea: Keysym is `" << stm2 << "' ["
@@ -456,7 +456,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 						   << endl;
 				//}
 		}
-		
+
 #endif
 		unsigned int const ret_state = xke->state;
 
@@ -489,7 +489,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		last_time_pressed = xke->time;
 		last_key_pressed = xke->keycode;
 		last_state_pressed = ret_state;
-		
+
 		area->workAreaKeyPress(ret_key, ret_state);
 	}
 	break;
@@ -535,7 +535,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: OTHER" << endl;
 		break;
 	}
-  
+
 	return 1;
 }
 
@@ -546,13 +546,13 @@ string clipboard_selection;
 bool clipboard_read = false;
 
 extern "C" {
-	
+
 	static
 	int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
-				 void const * data, long size) 
+				 void const * data, long size)
 	{
 		clipboard_selection.erase();
-		
+
 		if (size > 0)
 			clipboard_selection.reserve(size);
 		for (int i = 0; i < size; ++i)
@@ -580,7 +580,7 @@ int WorkArea::event_cb(XEvent * xev)
 			lyxerr[Debug::GUI] << "Lost selection." << endl;
 			selectionLost.emit();
 //			ret = 1;
-			break; 
+			break;
 	}
 	return ret;
 }
@@ -592,24 +592,24 @@ void WorkArea::haveSelection(bool yes) const
 		XSetSelectionOwner(fl_get_display(), XA_PRIMARY, None, CurrentTime);
 		return;
 	}
- 
+
 	XSetSelectionOwner(fl_get_display(), XA_PRIMARY, FL_ObjWin(work_area), CurrentTime);
 }
 
- 
-string const WorkArea::getClipboard() const 
+
+string const WorkArea::getClipboard() const
 {
 	clipboard_read = false;
-	
+
 	if (fl_request_clipboard(work_area, 0, request_clipboard_cb) == -1)
 		return string();
 
 	XEvent ev;
-	
+
 	while (!clipboard_read) {
 		if (fl_check_forms() == FL_EVENT) {
 			fl_XNextEvent(&ev);
-			lyxerr << "Received unhandled X11 event" << endl; 
+			lyxerr << "Received unhandled X11 event" << endl;
 			lyxerr << "Type: 0x" << hex << ev.xany.type <<
 				" Target: 0x" << hex << ev.xany.window << endl;
 		}
@@ -617,11 +617,11 @@ string const WorkArea::getClipboard() const
 	return clipboard_selection;
 }
 
-	
+
 void WorkArea::putClipboard(string const & s) const
 {
 	static string hold;
 	hold = s;
-	
+
 	fl_stuff_clipboard(work_area, 0, hold.data(), hold.size(), 0);
 }

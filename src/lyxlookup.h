@@ -1,9 +1,9 @@
 /* This file is part of                   -*- C++ -*-
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-* 	 
-*           Copyright 1995 Matthias Ettrich 
+*
+*           Copyright 1995 Matthias Ettrich
 *           Copyright 1995-2001 The LyX Team.
 *
 * ====================================================== */
@@ -21,7 +21,7 @@
 extern void InitLyXLookup(Display *, Window);
 
 /// Read a keysym and/or a string (like XLookupString)
-extern int LyXLookupString(XEvent * event,    
+extern int LyXLookupString(XEvent * event,
 			   char * buffer_return, int bytes_buffer,
 			   KeySym * keysym_return);
 

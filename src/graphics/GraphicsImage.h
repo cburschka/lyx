@@ -83,10 +83,10 @@ public:
 
 	/// Clip the image using params.
 	virtual void clip(GParams const & params) = 0;
-	
+
 	/// Rotate the image using params.
 	virtual void rotate(GParams const & params) = 0;
-	
+
 	/// Scale the image using params.
 	virtual void scale(GParams const & params) = 0;
 

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -89,7 +89,7 @@ tex_accent_struct get_accent(kb_action action)
 string const DoAccent(string const & s, tex_accent accent)
 {
 	string res;
-	
+
 	res += lyx_accent_table[accent].cmd;
 	res += '{';
 	if (s == "i" || s == "j") {
@@ -105,4 +105,3 @@ string const DoAccent(char c, tex_accent accent)
 {
 	return DoAccent(tostr(c), accent);
 }
-

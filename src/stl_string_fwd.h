@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -15,7 +15,7 @@
 /*
  * This file exists to appease STLPort when using included lyxstring.
  * It won't be around forever ...
- */ 
+ */
 
 #ifndef USE_INCLUDED_STRING
 //   include the real stl_string_fwd.h

@@ -87,7 +87,7 @@ private:
 class BufferList : boost::noncopyable {
 public:
 	///
- 	BufferList();
+	BufferList();
 
 	/// state info
 	enum list_state {
@@ -99,7 +99,7 @@ public:
 
 	/// returns the state of the bufferlist
 	list_state getState() const { return state_; }
-	
+
 	/**
 	   Loads a LyX file or...
 
@@ -107,22 +107,22 @@ public:
 	   \param tolastfiles Wether the file should be put in the
 	   last opened files list or not.
 	   \return The newly loaded LyX file.
-	*/  
-	Buffer * loadLyXFile(string const & filename, 
+	*/
+	Buffer * loadLyXFile(string const & filename,
 			     bool tolastfiles = true);
-	
+
 	///
 	bool empty() const;
 
 	///
-        bool qwriteAll();
+	bool qwriteAll();
 
 	/// Close all open buffers.
 	void closeAll();
 
 	/**
 	   Read a file into a buffer readonly or not.
-	   \return 
+	   \return
 	*/
 	Buffer * readFile(string const &, bool ro);
 
@@ -139,7 +139,7 @@ public:
 
 	///
 	void emergencyWriteAll();
-	
+
 	/**
 	   Close buffer.
 	   \param buf the buffer that should be closed
@@ -149,13 +149,13 @@ public:
 
 	///
 	Buffer * first();
-	
+
 	/// returns true if the buffer exists already
 	bool exists(string const &) const;
 
 	/// returns true if the buffer is loaded
 	bool isLoaded(Buffer const * b) const;
-	
+
 	/// returns a pointer to the buffer with the given name.
 	Buffer * getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.
@@ -163,11 +163,11 @@ public:
 private:
 	/// ask to save a buffer on quit
 	bool qwriteOne(Buffer * buf, string const & fname,
-		       string & unsaved_list); 
+		       string & unsaved_list);
 
 	///
 	BufferStorage bstore;
-	
+
 	///
 	list_state state_;
 	///

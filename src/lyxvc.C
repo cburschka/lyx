@@ -80,9 +80,9 @@ void LyXVC::registrer()
 		vcs = new RCS(owner_->fileName());
 		vcs->owner(owner_);
 	}
-	
+
 	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isLyxClean() && 
+	if (!vcs->owner()->isLyxClean() &&
 	    Alert::askQuestion(_("Changes in document:"),
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
@@ -107,7 +107,7 @@ void LyXVC::registrer()
 			   _("This document has NOT been registered."));
 		return;
 	}
-	
+
 	vcs->registrer(tmp.second);
 }
 
@@ -115,7 +115,7 @@ void LyXVC::registrer()
 void LyXVC::checkIn()
 {
 	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isLyxClean() && 
+	if (!vcs->owner()->isLyxClean() &&
 	    Alert::askQuestion(_("Changes in document:"),
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
@@ -145,7 +145,7 @@ void LyXVC::checkIn()
 void LyXVC::checkOut()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
-	if (!vcs->owner()->isLyxClean() 
+	if (!vcs->owner()->isLyxClean()
 	    && !Alert::askQuestion(_("Changes in document:"),
 			   MakeDisplayPath(vcs->owner()->fileName(), 50),
 			   _("Ignore changes and proceed with check out?"))) {
@@ -153,7 +153,7 @@ void LyXVC::checkOut()
 	}
 
 	vcs->checkOut();
-	
+
 }
 
 

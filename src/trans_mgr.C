@@ -70,7 +70,7 @@ TransDeadkeyState::TransDeadkeyState()
 string const TransDeadkeyState::normalkey(char c)
 {
 	string res;
-	
+
 	KmodException::iterator it = deadkey_info_.exception_list.begin();
 	KmodException::iterator end = deadkey_info_.exception_list.end();
 
@@ -91,7 +91,7 @@ string const TransDeadkeyState::normalkey(char c)
 string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 {
 	string res;
-	
+
 	// Check if the same deadkey was typed twice
 	if (deadkey_ == c) {
 		res = deadkey_;
@@ -100,7 +100,7 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 		currentState = init_state_;
 		return res;
 	}
-	
+
 	// Check if it is a combination or an exception
 	KmodException::const_iterator cit = deadkey_info_.exception_list.begin();
 	KmodException::const_iterator end = deadkey_info_.exception_list.end();
@@ -121,9 +121,9 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 		}
 	}
 
-	// Not a combination or an exception. 
+	// Not a combination or an exception.
 	// Output deadkey1 and keep deadkey2
-	
+
 	if (deadkey_!= 0)
 		res = deadkey_;
 	deadkey_ = c;
@@ -185,8 +185,8 @@ TransManager::TransManager()
 {}
 
 
-TransManager::~TransManager() 
-{ 
+TransManager::~TransManager()
+{
 	delete t1_;
 	delete t2_;
 }
@@ -194,9 +194,9 @@ TransManager::~TransManager()
 
 int TransManager::SetPrimary(string const & language)
 {
-	if (t1_->GetName() == language) 
+	if (t1_->GetName() == language)
 		return 0;
-	
+
 	return t1_->Load(language);
 }
 
@@ -205,7 +205,7 @@ int TransManager::SetSecondary(string const & language)
 {
 	if (t2_->GetName() == language)
 		return 0;
-	
+
 	return t2_->Load(language);
 }
 
@@ -220,7 +220,7 @@ void TransManager::EnablePrimary()
 {
 	if (t1_->IsDefined())
 		active_ = t1_;
-	
+
 	lyxerr[Debug::KBMAP] << "Enabling primary keymap" << endl;
 }
 
@@ -243,10 +243,10 @@ void TransManager::DisableKeymap()
 void  TransManager::TranslateAndInsert(char c, LyXText * text)
 {
 	string res = active_->process(c, *this);
-	
+
 	// Process with tokens
 	string temp;
-	
+
 	while (res.length() > 0) {
 		res = split(res, temp, TransState::TOKEN_SEP);
 		insert(temp, text);
@@ -255,9 +255,9 @@ void  TransManager::TranslateAndInsert(char c, LyXText * text)
 
 
 void TransManager::insertVerbatim(string const & str, LyXText * text)
-{	
+{
 	string::size_type const l = str.length();
-	
+
 	for (string::size_type i = 0; i < l; ++i) {
 		text->insertChar(current_view, str[i]);
 	}
@@ -266,14 +266,14 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 
 void TransManager::insert(string const & str, LyXText * text)
 {
-	// Go through the character encoding only if the current 
+	// Go through the character encoding only if the current
 	// encoding (chset_->name()) matches the current font_norm
 	// (lyrxc->font_norm)
-	
+
 	// Is false to speak about "only if" the current encoding will
 	// almost always be equal to font_norm.
 	pair<bool, int> enc = chset_.encodeString(str);
-	if (chset_.getName() != lyxrc.font_norm || 
+	if (chset_.getName() != lyxrc.font_norm ||
 	    !enc.first) {
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
@@ -304,7 +304,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 			return;
 		}
 	}
-	
+
 	if (active_ == &default_ || c == 0) {
 		KmodInfo i;
 		i.accent = accent;

@@ -13,8 +13,8 @@
 #endif
 
 class LyXView;
-class DropDown; 
-class Timeout; 
+class DropDown;
+class Timeout;
 
 ///
 class MiniBuffer : public SigC::Object {
@@ -23,7 +23,7 @@ public:
 		spaces,
 		nospaces
 	};
-	
+
 	///
 	MiniBuffer(LyXView * o,
 		   FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
@@ -33,7 +33,7 @@ public:
 
 	/// create drop down
 	void dd_init();
- 
+
 	///
 	void addSet(string const &,
 		    string const & = string());
@@ -44,7 +44,7 @@ public:
 	void messagePush(string const & str);
 	///
 	void messagePop();
-	
+
 	/** Makes the minibuffer wait for a string to be inserted.
 	    Waits for a string to be inserted into the minibuffer, when
 	    the string has been inserted the signal stringReady is
@@ -56,7 +56,7 @@ public:
 	///
 	void redraw();
 	///
-        int peek_event(FL_OBJECT *, int, int);
+	int peek_event(FL_OBJECT *, int, int);
 	///
 	SigC::Signal1<void, string const &> stringReady;
 	///
@@ -74,7 +74,7 @@ private:
 	void stored_slot();
 	///
 	void stored_set(string const &);
-	/// set the minibuffer content if str non-empty 
+	/// set the minibuffer content if str non-empty
 	void set_complete_input(string const &);
 	/// append c to the current contents
 	void append_char(char c);

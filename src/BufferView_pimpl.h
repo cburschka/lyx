@@ -46,7 +46,7 @@ struct BufferView::Pimpl : public SigC::Object {
 	void update();
 	//
 	void update(LyXText *, BufferView::UpdateCodes);
-  	/// Update pixmap of screen
+	/// Update pixmap of screen
 	void updateScreen();
 	///
 	void workAreaExpose();
@@ -60,7 +60,7 @@ struct BufferView::Pimpl : public SigC::Object {
 	 * If hit, the coordinates are changed relative to the inset.
 	 */
 	Inset * checkInsetHit(LyXText *, int & x, int & y);
-	/// 
+	///
 	int scrollUp(long time);
 	///
 	int scrollDown(long time);
@@ -143,12 +143,12 @@ private:
 	 * if one exists. If so, the inset is returned, and the co-ordinates are
 	 * made relative. Otherwise, 0 is returned.
 	 */
-	Inset * checkInset(LyXText const & text, LyXCursor const & cursor, int & x, int & y) const; 
+	Inset * checkInset(LyXText const & text, LyXCursor const & cursor, int & x, int & y) const;
 	///
 	friend class BufferView;
 	/// open and lock an updatable inset
 	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
-	/// 
+	///
 	void specialChar(InsetSpecialChar::Kind);
 	///
 	void newline();
@@ -201,7 +201,7 @@ private:
 	std::vector<Position> saved_positions;
 	///
 	void moveCursorUpdate(bool selecting);
-	/// Get next inset of this class from current cursor position  
+	/// Get next inset of this class from current cursor position
 	Inset * getInsetByCode(Inset::Code code);
 	///
 	void MenuInsertLyXFile(string const & filen);

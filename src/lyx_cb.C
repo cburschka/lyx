@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich,
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -38,7 +38,7 @@
 
 #include <fstream>
 #include <algorithm>
-#include <utility> 
+#include <utility>
 #include <iostream>
 
 using std::vector;
@@ -83,7 +83,7 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 {
 	// FIXME: needed ?
 	XFlush(GUIRunTime::x11Display());
- 
+
 	if (!buffer->save()) {
 		if (Alert::askQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(buffer->fileName(), 50),
@@ -145,7 +145,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 				 _("Save anyway?")))
 			return false;
 		// Falls through to name change and save
-	} 
+	}
 	// No, but do we have another file with this name open?
 	else if (!buffer->isUnnamed() && bufferlist.exists(fname)) {
 		if (Alert::askQuestion(_("Another document with same name open!"),
@@ -165,7 +165,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	} // Check whether the file exists
 	else {
 		FileInfo const myfile(fname);
-		if (myfile.isOK() && !Alert::askQuestion(_("Document already exists:"), 
+		if (myfile.isOK() && !Alert::askQuestion(_("Document already exists:"),
 						  MakeDisplayPath(fname, 50),
 						  _("Replace file?")))
 			return false;
@@ -197,9 +197,9 @@ int MenuRunChktex(Buffer * buffer)
 	if (buffer->isSGML()) {
 		Alert::alert(_("Chktex does not work with SGML derived documents."));
 		return 0;
-	} else 
+	} else
 		ret = buffer->runChktex();
-   
+
 	if (ret >= 0) {
 		string s;
 		string t;
@@ -263,13 +263,13 @@ void AutoSave(BufferView * bv)
 	}
 
 	bv->owner()->message(_("Autosaving current document..."));
-	
+
 	// create autosave filename
-	string fname = 	bv->buffer()->filePath();
+	string fname =	bv->buffer()->filePath();
 	fname += "#";
 	fname += OnlyFilename(bv->buffer()->fileName());
 	fname += "#";
-	
+
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
 	pid_t const pid = fork(); // If you want to debug the autosave
@@ -280,7 +280,7 @@ void AutoSave(BufferView * bv)
 		// to fork. But we will do the save
 		// anyway.
 		bool failed = false;
-		
+
 		string const tmp_ret = lyx::tempName(string(), "lyxauto");
 		if (!tmp_ret.empty()) {
 			bv->buffer()->writeFile(tmp_ret, 1);
@@ -295,7 +295,7 @@ void AutoSave(BufferView * bv)
 		} else {
 			failed = true;
 		}
-		
+
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
 			if (!bv->buffer()->writeFile(fname, 1)) {
@@ -309,7 +309,7 @@ void AutoSave(BufferView * bv)
 			_exit(0);
 		}
 	}
-	
+
 	bv->buffer()->markBakClean();
 	bv->owner()->resetAutosaveTimer();
 }
@@ -340,7 +340,7 @@ Buffer * NewLyxFile(string const & filename)
 			    << "\nName is " << name
 			    << "\nTemplate is " << tmpname << endl;
 
-	// find a free buffer 
+	// find a free buffer
 	Buffer * tmpbuf = bufferlist.newFile(name, tmpname);
 	if (tmpbuf)
 		lastfiles->newFile(tmpbuf->fileName());
@@ -351,7 +351,7 @@ Buffer * NewLyxFile(string const & filename)
 // Insert ascii file (if filename is empty, prompt for one)
 void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
-	if (!bv->available()) 
+	if (!bv->available())
 		return;
 
 	string const tmpstr = getContentsOfAsciiFile(bv, f, asParagraph);
@@ -360,7 +360,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 
 	// insert the string
 	bv->hideCursor();
-	
+
 	// clear the selection
 	bool flag = (bv->text == bv->getLyXText());
 	if (flag)
@@ -371,7 +371,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		bv->getLyXText()->insertStringAsParagraphs(bv, tmpstr);
 	if (flag)
 		bv->update(bv->text,
-		           BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			   BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 
@@ -383,7 +383,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	if (fname.empty()) {
 		FileDialog fileDlg(bv->owner(), _("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
- 
+
 		FileDialog::Result result = fileDlg.Select(bv->owner()->buffer()->filePath());
 
 		if (result.first == FileDialog::Later)
@@ -391,7 +391,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 		fname = result.second;
 
-		if (fname.empty()) 
+		if (fname.empty())
 			return string();
 	}
 
@@ -420,13 +420,13 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	string const tmpstr(tmp.begin(), tmp.end());
 #else
 	// This is what we want to use and what we will use once the
-	// compilers get good enough. 
+	// compilers get good enough.
 	//string tmpstr(ii, end); // yet a reason for using std::string
 	// alternate approach to get the file into a string:
 	string tmpstr;
 	copy(ii, end, back_inserter(tmpstr));
 #endif
-	
+
 	return tmpstr;
 }
 
@@ -465,7 +465,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 			par_text = split(par_text, head, ' ');
 			if (i > 0)
 				text += '-'; // Is it legal to use spaces in
-			                     // labels ?
+					     // labels ?
 			text += head;
 		}
 
@@ -493,12 +493,12 @@ void Reconfigure(BufferView * bv)
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
 	Systemcall one;
-	one.startscript(Systemcall::Wait, 
+	one.startscript(Systemcall::Wait,
 			AddName(system_lyxdir, "configure"));
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
-	Alert::alert(_("The system has been reconfigured."), 
+	Alert::alert(_("The system has been reconfigured."),
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));
 }

@@ -1,16 +1,16 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
 
 #ifndef LSTRING_H
-#define LSTRING_H 
+#define LSTRING_H
 
 #ifndef _CONFIG_H
 #error The <config.h> header should always be included before LString.h

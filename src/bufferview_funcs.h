@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -50,7 +50,7 @@ extern void styleReset(BufferView *);
 extern void underline(BufferView *);
 ///
 extern void fontSize(BufferView *, string const &);
-/// Returns the current font and depth as a message. 
+/// Returns the current font and depth as a message.
 extern string const currentState(BufferView *);
 ///
 extern void toggleAndShow(BufferView *, LyXFont const &,

@@ -37,4 +37,3 @@ void MenuInsertLabel(BufferView * bv, string const & arg);
 ///
 void Reconfigure(BufferView * bv);
 #endif
-

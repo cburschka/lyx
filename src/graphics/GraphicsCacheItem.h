@@ -33,7 +33,7 @@
 #pragma interface
 #endif
 
-#include "GraphicsTypes.h" 
+#include "GraphicsTypes.h"
 #include <list>
 #include "LString.h"
 #include <boost/utility.hpp>
@@ -46,7 +46,7 @@ namespace grfx {
 
 class GParams;
 class ModifiedItem;
- 
+
 /// A grfx::GCache item holder.
 class GCacheItem : boost::noncopyable, public SigC::Object {
 public:
@@ -70,7 +70,7 @@ public:
 
 	/// The name of the original image file.
 	string const & filename() const;
-	
+
 	/// Is this image file referenced by this inset?
 	bool referencedBy(InsetGraphics const &) const;
 
@@ -123,7 +123,7 @@ private:
 	void imageLoaded(bool);
 
 	/// How far have we got in loading the original, unmodified image?
-	ImageStatus status() const; 
+	ImageStatus status() const;
 
 	/** Sets the status of the loading process. Also notifies
 	 *  listeners that the status has chacnged.
@@ -244,7 +244,7 @@ private:
 	ImagePtr modified_image_;
 	///
 	ImageStatus status_;
-	/// 
+	///
 	boost::shared_ptr<GParams> p_;
 };
 

@@ -61,7 +61,7 @@ public:
 
 
 /// Init State
-class TransInitState : 	virtual public TransFSMData, public TransState {
+class TransInitState :	virtual public TransFSMData, public TransState {
 public:
 	///
 	TransInitState();
@@ -104,7 +104,7 @@ public:
 		deadkey2_ = 0;
 		deadkey2_info_.accent = TEX_NOACCENT;
 		currentState = deadkey_state_;
-		
+
 		return false;
 	}
 	///

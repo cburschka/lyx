@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -81,7 +81,7 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 {
 	if (!bv->available() || !text)
 	    return;
-	
+
 	bv->hideCursor();
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	if (decInc >= 0)
@@ -124,7 +124,7 @@ void styleReset(BufferView * bv)
 {
 #ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
-#else 
+#else
 	LyXFont font(LyXFont::ALL_INHERIT);
 #endif
 	toggleAndShow(bv, font);
@@ -147,12 +147,12 @@ void fontSize(BufferView * bv, string const & size)
 }
 
 
-// Returns the current font and depth as a message. 
+// Returns the current font and depth as a message.
 string const currentState(BufferView * bv)
 {
 	ostringstream state;
 
-	if (bv->available()) { 
+	if (bv->available()) {
 		// I think we should only show changes from the default
 		// font. (Asger)
 		LyXText * text = bv->getLyXText();
@@ -164,12 +164,12 @@ string const currentState(BufferView * bv)
 
 		state << _("Font:") << ' '
 		      << font.stateText(&buffer->params);
-		
+
 		// The paragraph depth
 		int depth = text->getDepth();
 		if (depth > 0)
 			state << _(", Depth: ") << depth;
-		
+
 		// The paragraph spacing, but only if different from
 		// buffer spacing.
 		if (!text->cursor.par()->params().spacing().isDefault()) {
@@ -180,7 +180,7 @@ string const currentState(BufferView * bv)
 			switch (cur_space) {
 			case Spacing::Single:
 				state << _("Single");
-				
+
 				break;
 			case Spacing::Onehalf:
 				state << _("Onehalf");
@@ -211,7 +211,7 @@ string const currentState(BufferView * bv)
  */
 void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
-	if (bv->available()) { 
+	if (bv->available()) {
 		if (bv->theLockingInset()) {
 			bv->theLockingInset()->setFont(bv, font, toggleall);
 			return;
@@ -229,7 +229,7 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 		    font.number() != LyXFont::IGNORE) {
 			LyXCursor & cursor = text->cursor;
 			text->computeBidiTables(bv->buffer(), cursor.row());
-			if (cursor.boundary() != 
+			if (cursor.boundary() !=
 			    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
 					     text->real_current_font))
 				text->setCursor(bv, cursor.par(), cursor.pos(),

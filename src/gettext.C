@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -38,7 +38,7 @@ char const * _(char const * str)
 }
 
 
-string const _(string const & str) 
+string const _(string const & str)
 {
 	if (!str.empty()) {
 		int const s = str.length();
@@ -65,7 +65,7 @@ void locale_init()
 
 void gettext_init(string const & localedir)
 {
-	bindtextdomain(PACKAGE, localedir.c_str()); 
+	bindtextdomain(PACKAGE, localedir.c_str());
 	textdomain(PACKAGE);
 }
 

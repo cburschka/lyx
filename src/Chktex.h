@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *	     Copyright 1995 Matthias Ettrich
@@ -10,7 +10,7 @@
  *           This file is Copyright 1997
  *           Asger Alstrup
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #ifndef CHKTEX_H
@@ -35,7 +35,7 @@ public:
 	*/
 	Chktex(string const & cmd, string const & file,
 	       string const & path);
-	
+
 	/** Runs chktex.
 	    @return -1 if fail, number of messages otherwise.
 	  */
@@ -49,7 +49,7 @@ private:
 
 	///
 	string file;
-	
+
 	///
 	string path;
 };

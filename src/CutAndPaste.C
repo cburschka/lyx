@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
@@ -65,9 +65,9 @@ void DeleteBuffer()
 {
 	if (!buf)
 		return;
-	
+
 	Paragraph * tmppar;
-	
+
 	while (buf) {
 		tmppar =  buf;
 		buf = buf->next();
@@ -80,17 +80,17 @@ void DeleteBuffer()
 
 
 bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
-                               int start, int & end, char tc, bool doclear,
+			       int start, int & end, char tc, bool doclear,
 							   bool realcut)
 {
 	if (!startpar || (start > startpar->size()))
 		return false;
-	
+
 	if (realcut)
 		DeleteBuffer();
-	
+
 	textclass = tc;
-	
+
 	if (!(*endpar) || startpar == (*endpar)) {
 		// only within one paragraph
 		if (realcut) {
@@ -103,7 +103,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		for (; i < end; ++i) {
 			if (realcut)
 				startpar->copyIntoMinibuffer(*current_view->buffer(),
-				                             start);
+							     start);
 			startpar->erase(start);
 			if (realcut)
 				buf->insertFromMinibuffer(buf->size());
@@ -112,13 +112,13 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 	} else {
 		// more than one paragraph
 		(*endpar)->breakParagraphConservative(current_view->buffer()->params,
-		                                      end);
+						      end);
 		*endpar = (*endpar)->next();
 		end = 0;
-		
+
 		startpar->breakParagraphConservative(current_view->buffer()->params,
-		                                     start);
-		
+						     start);
+
 		// store the selection
 		if (realcut) {
 			buf = startpar->next();
@@ -127,12 +127,12 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 			startpar->next()->previous(0);
 		}
 		(*endpar)->previous()->next(0);
-		
+
 		// cut the selection
 		startpar->next(*endpar);
-		
+
 		(*endpar)->previous(startpar);
-		
+
 		// the cut selection should begin with standard layout
 		if (realcut) {
 			buf->params().clear();
@@ -160,15 +160,15 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 
 
 bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
-                                int start, int end, char tc)
+				int start, int end, char tc)
 {
 	if (!startpar || (start > startpar->size()))
 		return false;
-	
+
 	DeleteBuffer();
-	
+
 	textclass = tc;
-	
+
 	if (!endpar || startpar == endpar) {
 		// only within one paragraph
 		buf = new Paragraph;
@@ -186,7 +186,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		Paragraph * tmppar = startpar;
 		buf = new Paragraph(*tmppar, false);
 		Paragraph * tmppar2 = buf;
-		
+
 		while (tmppar != endpar
 		       && tmppar->next()) {
 			tmppar = tmppar->next();
@@ -195,12 +195,12 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 			tmppar2 = tmppar2->next();
 		}
 		tmppar2->next(0);
-		
+
 		// the buf paragraph is too big
 		pos_type tmpi2 = start;
 		for (; tmpi2; --tmpi2)
 			buf->erase(0);
-		
+
 		// now tmppar 2 is too big, delete all after end
 		tmpi2 = end;
 		while (tmppar2->size() > tmpi2) {
@@ -218,14 +218,14 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 
 
 bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
-                                 int & pos, char tc)
+				 int & pos, char tc)
 {
 	if (!checkPastePossible(*par))
 		return false;
-	
+
 	if (pos > (*par)->size())
 		pos = (*par)->size();
-	
+
 #if 0
 	// Paragraph * tmpbuf;
 	Paragraph * tmppar = *par;
@@ -235,7 +235,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	if (!buf->next()) {
 		// only within a paragraph
 		Paragraph * tmpbuf = new Paragraph(*buf, false);
-		
+
 		// Some provisions should be done here for checking
 		// if we are inserting at the beginning of a
 		// paragraph. If there are a space at the beginning
@@ -263,12 +263,12 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 #endif
 	{
 		// many paragraphs
-		
+
 		// make a copy of the simple cut_buffer
 		Paragraph * tmpbuf = buf;
 		Paragraph * simple_cut_clone = new Paragraph(*tmpbuf, false);
 		Paragraph * tmpbuf2 = simple_cut_clone;
-		
+
 		while (tmpbuf->next()) {
 			tmpbuf = tmpbuf->next();
 			tmpbuf2->next(new Paragraph(*tmpbuf, false));
@@ -321,42 +321,42 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		}
 		// now reset it to 0
 		buf->previous(0);
-		
+
 		// make sure there is no class difference
 		SwitchLayoutsBetweenClasses(textclass, tc, buf,
-		                            current_view->buffer()->params);
-		
+					    current_view->buffer()->params);
+
 		// make the buf exactly the same layout than
 		// the cursor paragraph
 		buf->makeSameLayout(*par);
-		
+
 		// find the end of the buffer
 		Paragraph * lastbuffer = buf;
 		while (lastbuffer->next())
 			lastbuffer = lastbuffer->next();
-		
+
 		bool paste_the_end = false;
-		
+
 		// open the paragraph for inserting the buf
 		// if necessary
 		if (((*par)->size() > pos) || !(*par)->next()) {
 			(*par)->breakParagraphConservative(current_view->buffer()->params,
-			                                   pos);
+							   pos);
 			paste_the_end = true;
 		}
 		// set the end for redoing later
 		*endpar = (*par)->next()->next();
-		
+
 		// paste it!
 		lastbuffer->next((*par)->next());
 		(*par)->next()->previous(lastbuffer);
-		
+
 		(*par)->next(buf);
 		buf->previous(*par);
-		
+
 		if ((*par)->next() == lastbuffer)
 			lastbuffer = *par;
-		
+
 		(*par)->pasteParagraph(current_view->buffer()->params);
 		// store the new cursor position
 		*par = lastbuffer;
@@ -377,7 +377,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// restore the simple cut buffer
 		buf = simple_cut_clone;
 	}
-	
+
 	return true;
 }
 
@@ -386,7 +386,7 @@ int CutAndPaste::nrOfParagraphs()
 {
 	if (!buf)
 		return 0;
-	
+
 	int n = 1;
 	Paragraph * tmppar = buf;
 	while (tmppar->next()) {
@@ -411,9 +411,9 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 		par = *it;
 		string const name = par->layout();
 		LyXTextClass const & tclass = textclasslist[c2];
-		
+
 		bool hasLayout = tclass.hasLayout(name);
-		
+
 		string lay = tclass.defaultLayoutName();
 		if (hasLayout) {
 			lay = name;
@@ -422,7 +422,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 			lay = tclass.defaultLayoutName();
 		}
 		par->layout(lay);
-		
+
 		if (name != par->layout()) {
 			++ret;
 			string const s = _("Layout had to be changed from\n")
@@ -447,6 +447,6 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 bool CutAndPaste::checkPastePossible(Paragraph *)
 {
 	if (!buf) return false;
-	
+
 	return true;
 }

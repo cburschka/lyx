@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -99,14 +99,14 @@ public:
 	}
 	///
 	const_iterator begin() const {
-                return languagelist.begin();
-        }
-        ///
-        const_iterator end() const {
-                return languagelist.end();
-        }
+		return languagelist.begin();
+	}
 	///
-	
+	const_iterator end() const {
+		return languagelist.end();
+	}
+	///
+
 private:
 	///
 	LanguageList languagelist;

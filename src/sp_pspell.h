@@ -15,9 +15,9 @@ class PSpell : public SpellBase
   public:
 
     PSpell();
-    
+
     PSpell(BufferParams const & params, string const & lang);
-    
+
     ~PSpell();
 
     /// initialize spell checker
@@ -40,15 +40,15 @@ class PSpell : public SpellBase
 
     /// store replacement
     void store(string const & mis, string const & cor);
-     
+
     char const * nextMiss();
 
     char const * error();
-   
+
   private:
 
     PspellManager * sc;
-    
+
     PspellStringEmulation * els;
 
     PspellCanHaveError * spell_error_object;
@@ -59,7 +59,5 @@ class PSpell : public SpellBase
 
     bool alive_;
 };
-   
+
 #endif
-
-

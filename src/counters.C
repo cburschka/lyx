@@ -1,6 +1,6 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
@@ -58,7 +58,7 @@ void Counter::reset()
 }
 
 
-Counters::~Counters() 
+Counters::~Counters()
 {
 	// We need this since we store the Counter's as pointers in
 	// the counterList.
@@ -106,7 +106,7 @@ void Counters::newCounter(string const & newc, string const & oldc)
 }
 
 
-void Counters::set(string const & ctr, int val) 
+void Counters::set(string const & ctr, int val)
 {
 	CounterList::iterator it = counterList.find(ctr);
 	if (it == counterList.end()) {
@@ -128,7 +128,7 @@ void Counters::addto(string const & ctr, int val)
 }
 
 
-int Counters::value(string const & ctr) const 
+int Counters::value(string const & ctr) const
 {
 	CounterList::const_iterator cit = counterList.find(ctr);
 	if (cit == counterList.end()) {

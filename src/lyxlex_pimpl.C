@@ -32,7 +32,7 @@ struct compare_tags {
 // } // end of anon namespace
 
 
-LyXLex::Pimpl::Pimpl(keyword_item * tab, int num) 
+LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
 	: is(&fb__), table(tab), no_items(num),
 	  status(0), lineno(0), commentChar('#')
 {
@@ -53,7 +53,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 	       << " of file " << MakeDisplayPath(name) << ']' << endl;
 }
 
-	
+
 void LyXLex::Pimpl::printTable(ostream & os)
 {
 	os << "\nNumber of tags: " << no_items << '\n';
@@ -94,14 +94,14 @@ void LyXLex::Pimpl::pushTable(keyword_item * tab, int num)
 	verifyTable();
 }
 
-	
+
 void LyXLex::Pimpl::popTable()
 {
 	if (pushed.empty()) {
 		lyxerr << "LyXLex error: nothing to pop!" << endl;
 		return;
 	}
-	
+
 	pushed_table tmp = pushed.top();
 	pushed.pop();
 	table = tmp.table_elem;
@@ -124,7 +124,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 	return fb__.is_open() && is.good();
 }
 
-	
+
 void LyXLex::Pimpl::setStream(istream & i)
 {
 	if (fb__.is_open() || is.tellg() > 0)
@@ -157,7 +157,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			buff[pushTok.length()] = '\0';
 			pushTok.erase();
 			return true;
-		}     
+		}
 	}
 	if (!esc) {
 		unsigned char c = 0; // getc() returns an int
@@ -180,7 +180,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				++lineno;
 				continue;
 			}
-			
+
 			if (c == '\"') {
 				int i = -1;
 				do {
@@ -190,27 +190,27 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						buff[++i] = c;
 				} while (c != '\"' && c != '\n' && is &&
 					 i != (LEX_MAX_BUFF - 2));
-				
+
 				if (i == (LEX_MAX_BUFF - 2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
 					++i;
 				}
-				
+
 				if (c != '\"') {
 					printError("Missing quote");
 					if (c == '\n')
 						++lineno;
 				}
-				
+
 				buff[i] = '\0';
 				status = LEX_DATA;
-				break; 
+				break;
 			}
-			
+
 			if (c == ',')
 				continue;              /* Skip ','s */
-			
+
 				// using relational operators with chars other
 				// than == and != is not safe. And if it is done
 				// the type _have_ to be unsigned. It usually a
@@ -229,7 +229,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				buff[i] = '\0';
 				status = LEX_TOKEN;
 			}
-			
+
 			if (c == '\r' && is) {
 				// The Windows support has lead to the
 				// possibility of "\r\n" at the end of
@@ -238,28 +238,28 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				is.get(cc);
 				c = cc;
 			}
-			
+
 			if (c == '\n')
 				++lineno;
-			
+
 		}
 		if (status) return true;
-		
+
 		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 		buff[0] = '\0';
 		return false;
 	} else {
 		unsigned char c = 0; // getc() returns an int
 		char cc = 0;
-		
+
 		status = 0;
 		while (is && !status) {
 			is.get(cc);
 			c = cc;
-			
+
 			// skip ','s
 			if (c == ',') continue;
-			
+
 			if (c == '\\') {
 				// escape
 				int i = 0;
@@ -281,7 +281,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				status = LEX_TOKEN;
 				continue;
 			}
-			
+
 			if (c == commentChar) {
 				// Read rest of line (fast :-)
 				// That is still not fast... (Lgb)
@@ -297,7 +297,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				++lineno;
 				continue;
 			}
-			
+
 			// string
 			if (c == '\"') {
 				int i = -1;
@@ -317,28 +317,28 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 							buff[++i] = '\\';
 					}
 					buff[++i] = c;
-					
+
 					if (!escaped && c == '\"') break;
 				} while (c != '\n' && is &&
 					 i != (LEX_MAX_BUFF - 2));
-				
+
 				if (i == (LEX_MAX_BUFF - 2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
 					++i;
 				}
-				
+
 				if (c != '\"') {
 					printError("Missing quote");
 					if (c == '\n')
 						++lineno;
 				}
-				
+
 				buff[i] = '\0';
 				status = LEX_DATA;
-				break; 
+				break;
 			}
-			
+
 			if (c > ' ' && is) {
 				int i = 0;
 				do {
@@ -363,9 +363,9 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			if (c == '\n')
 				++lineno;
 		}
-		
+
 		if (status) return true;
-		
+
 		status = is.eof() ? LEX_FEOF : LEX_UNDEF;
 		buff[0] = '\0';
 		return false;
@@ -395,7 +395,7 @@ int LyXLex::Pimpl::lex()
 		return status;
 }
 
-	
+
 bool LyXLex::Pimpl::eatLine()
 {
 	int i = 0;
@@ -470,22 +470,22 @@ bool LyXLex::Pimpl::nextToken()
 				} while (c >= ' ' && c != '\\' && is
 					 && i != (LEX_MAX_BUFF-1));
 			}
-			
+
 			if (i == (LEX_MAX_BUFF - 1)) {
 				printError("Line too long");
 			}
-			
+
 			if (c == '\\') is.putback(c); // put it back
 			buff[i] = '\0';
 			status = LEX_TOKEN;
 		}
-		
+
 		if (c == '\n')
 			++lineno;
-		
+
 	}
 	if (status)  return true;
-	
+
 	status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 	buff[0] = '\0';
 	return false;

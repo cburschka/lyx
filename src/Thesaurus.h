@@ -9,15 +9,15 @@
 
 #ifndef THESAURUS_H
 #define THESAURUS_H
- 
+
 #include <vector>
 #include <map>
- 
+
 #include "LString.h"
 #ifdef HAVE_LIBAIKSAURUS
 #include "Aiksaurus.h"
 #endif
- 
+
 /**
  * This class provides an interface to whatever thesauri we might support.
  */
@@ -30,7 +30,7 @@ public:
 	~Thesaurus();
 
 	typedef std::map<string, std::vector<string> > Meanings;
- 
+
 	/**
 	 * look up some text in the thesaurus
 	 */
@@ -41,7 +41,7 @@ private:
 	Aiksaurus * aik_;
 #endif
 };
- 
+
 extern Thesaurus thesaurus;
- 
+
 #endif

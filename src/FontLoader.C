@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1997 Asger Alstrup
  *           and the LyX Team.
  *
@@ -72,7 +72,7 @@ void FontLoader::reset()
 
 
 // Unload all fonts
-void FontLoader::unload() 
+void FontLoader::unload()
 {
 	// Unload all fonts
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
@@ -95,8 +95,8 @@ void FontLoader::unload()
 // Get font info
 /* Takes care of finding which font that can match the given request. Tries
 different alternatives. */
-void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family, 
-			     LyXFont::FONT_SERIES series, 
+void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
+			     LyXFont::FONT_SERIES series,
 			     LyXFont::FONT_SHAPE shape)
 {
 	// Do we have the font info already?
@@ -104,7 +104,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 		return;
 
 	// Special fonts
-	switch (family) 
+	switch (family)
 	{
 		case LyXFont::SYMBOL_FAMILY:
 			fontinfo[family][series][shape] =
@@ -137,19 +137,19 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 			return;
 
 		case LyXFont::MSB_FAMILY:
-			fontinfo[family][series][shape] = 
+			fontinfo[family][series][shape] =
 				new FontInfo("-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::EUFRAK_FAMILY:
-			fontinfo[family][series][shape] = 
+			fontinfo[family][series][shape] =
 				new FontInfo("-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		default:
 			break;
 	}
- 
+
 
 	// Normal font. Let's search for an existing name that matches.
 	string ffamily;
@@ -259,19 +259,19 @@ bool dummyXFontStructisGood = false;
 } // namespace anon
 
 /// Do load font
-XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family, 
-				LyXFont::FONT_SERIES series, 
-				LyXFont::FONT_SHAPE shape, 
+XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
+				LyXFont::FONT_SERIES series,
+				LyXFont::FONT_SHAPE shape,
 				LyXFont::FONT_SIZE size)
 {
 	if (!lyxrc.use_gui) {
 		if (!dummyXFontStructisGood) {
 			// no character specific info
-			dummyXFontStruct.per_char = 0; 
+			dummyXFontStruct.per_char = 0;
 			// unit ascent on character displays
-			dummyXFontStruct.ascent = 1; 
+			dummyXFontStruct.ascent = 1;
 			// no descent on character displays
-			dummyXFontStruct.descent = 0; 
+			dummyXFontStruct.descent = 0;
 			dummyXFontStructisGood = true;
 		}
 
@@ -279,7 +279,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	}
 
 	getFontinfo(family, series, shape);
-	int fsize = int((lyxrc.font_sizes[size] * lyxrc.dpi * 
+	int fsize = int((lyxrc.font_sizes[size] * lyxrc.dpi *
 			  (lyxrc.zoom/100.0)) / 72.27 + 0.5);
 
 	string font = fontinfo[family][series][shape]->getFontname(fsize);
@@ -295,7 +295,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	current_view->owner()->messagePush(_("Loading font into X-Server..."));
 
 	fs = XLoadQueryFont(GUIRunTime::x11Display(), font.c_str());
-	
+
 	if (fs == 0) {
 		if (font == "fixed") {
 			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;
@@ -315,7 +315,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 		f.setUnderbar(LyXFont::INHERIT);
 		f.setNoun(LyXFont::INHERIT);
 		f.setColor(LColor::inherit);
-		lyxerr << "Font '" << f.stateText(0) 
+		lyxerr << "Font '" << f.stateText(0)
 		       << "' matched by\n" << font << endl;
 	}
 

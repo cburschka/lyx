@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1998-2001 The LyX Team
  *
  *======================================================*/
@@ -125,7 +125,7 @@ string const LColor::getGUIName(LColor::color c) const
 string const LColor::getX11Name(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
-	if (ici != infotab.end()) 
+	if (ici != infotab.end())
 		return ici->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
@@ -195,7 +195,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
-	
+
 	InfoTab::const_iterator ici = infotab.begin();
 	InfoTab::const_iterator end = infotab.end();
 	for (; ici != end; ++ici) {

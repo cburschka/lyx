@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -37,7 +37,7 @@ LyXLength::LyXLength(string const & data)
 	: val_(0), unit_(LyXLength::PT)
 {
 	LyXLength tmp;
-	
+
 	if (!isValidLength (data, &tmp))
 		return; // should raise an exception
 
@@ -106,7 +106,7 @@ void LyXLength::unit(LyXLength::UNIT u)
 }
 
 
-bool LyXLength::zero() const 
+bool LyXLength::zero() const
 {
 	return val_ == 0.0;
 }
@@ -128,7 +128,7 @@ int LyXLength::inPixels(int default_width, int default_height) const
 	// display negative space with text too
 	double result = 0.0;
 	int val_sign = val_ < 0.0 ? -1 : 1;
-		
+
 	switch (unit_) {
 	case LyXLength::SP:
 		// Scaled point: sp = 1/65536 pt
@@ -210,4 +210,3 @@ bool operator!=(LyXLength const & l1, LyXLength const & l2)
 {
 	return !(l1 == l2);
 }
-

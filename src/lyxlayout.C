@@ -1,9 +1,8 @@
-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -28,51 +27,51 @@ using std::endl;
 //  The order of the LayoutTags enum is no more important. [asierra300396]
 // Tags indexes.
 enum LayoutTags {
-	LT_ALIGN = 1, 
-	LT_ALIGNPOSSIBLE, 
-	LT_MARGIN, 
-	LT_BOTTOMSEP, 
-	LT_COPYSTYLE, 
-	LT_OBSOLETEDBY, 
+	LT_ALIGN = 1,
+	LT_ALIGNPOSSIBLE,
+	LT_MARGIN,
+	LT_BOTTOMSEP,
+	LT_COPYSTYLE,
+	LT_OBSOLETEDBY,
 	//LT_EMPTY,
-	LT_END, 
-	//LT_ENVIRONMENT_DEFAULT, 
+	LT_END,
+	//LT_ENVIRONMENT_DEFAULT,
 	//LT_FANCYHDR,
-	LT_FILL_BOTTOM, 
-	LT_FILL_TOP, 
+	LT_FILL_BOTTOM,
+	LT_FILL_TOP,
 	//LT_FIRST_COUNTER,
-	LT_FONT, 
-	LT_FREE_SPACING, 
+	LT_FONT,
+	LT_FREE_SPACING,
 	LT_PASS_THRU,
 	//LT_HEADINGS,
-	LT_ITEMSEP, 
-	LT_KEEPEMPTY, 
-	LT_LABEL_BOTTOMSEP, 
-	LT_LABELFONT, 
+	LT_ITEMSEP,
+	LT_KEEPEMPTY,
+	LT_LABEL_BOTTOMSEP,
+	LT_LABELFONT,
 	LT_TEXTFONT,
-	LT_LABELINDENT, 
-	LT_LABELSEP, 
-	LT_LABELSTRING, 
-	LT_LABELSTRING_APPENDIX, 
+	LT_LABELINDENT,
+	LT_LABELSEP,
+	LT_LABELSTRING,
+	LT_LABELSTRING_APPENDIX,
 	LT_LABELTYPE,
 	LT_ENDLABELSTRING,
 	LT_ENDLABELTYPE,
-	LT_LATEXNAME, 
-	LT_LATEXPARAM, 
-	LT_LATEXTYPE, 
-	LT_LEFTMARGIN, 
-	LT_NEED_PROTECT, 
-	LT_NEWLINE, 
-	LT_NEXTNOINDENT, 
-	LT_PARINDENT, 
-	LT_PARSEP, 
-	LT_PARSKIP, 
+	LT_LATEXNAME,
+	LT_LATEXPARAM,
+	LT_LATEXTYPE,
+	LT_LEFTMARGIN,
+	LT_NEED_PROTECT,
+	LT_NEWLINE,
+	LT_NEXTNOINDENT,
+	LT_PARINDENT,
+	LT_PARSEP,
+	LT_PARSKIP,
 	//LT_PLAIN,
-	LT_PREAMBLE, 
-	LT_RIGHTMARGIN, 
-	LT_SPACING, 
-	LT_TOPSEP, 
-        LT_INTITLE 
+	LT_PREAMBLE,
+	LT_RIGHTMARGIN,
+	LT_SPACING,
+	LT_TOPSEP,
+	LT_INTITLE
 };
 
 /////////////////////
@@ -120,27 +119,27 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "bottomsep",			LT_BOTTOMSEP },
 		{ "copystyle",                  LT_COPYSTYLE },
 		{ "end",			LT_END },
-		{ "endlabelstring",            	LT_ENDLABELSTRING },
-		{ "endlabeltype",             	LT_ENDLABELTYPE },
+		{ "endlabelstring",	LT_ENDLABELSTRING },
+		{ "endlabeltype",	LT_ENDLABELTYPE },
 		{ "fill_bottom",		LT_FILL_BOTTOM },
 		{ "fill_top",			LT_FILL_TOP },
-		{ "font",                  	LT_FONT },
-		{ "freespacing",	   	LT_FREE_SPACING },
+		{ "font",	LT_FONT },
+		{ "freespacing",		LT_FREE_SPACING },
 		{ "intitle",                    LT_INTITLE },
-		{ "itemsep",               	LT_ITEMSEP },
+		{ "itemsep",	LT_ITEMSEP },
 		{ "keepempty",                  LT_KEEPEMPTY },
 		{ "labelbottomsep",             LT_LABEL_BOTTOMSEP },
-		{ "labelfont",             	LT_LABELFONT },
-		{ "labelindent",           	LT_LABELINDENT },
-		{ "labelsep",              	LT_LABELSEP },
-		{ "labelstring",           	LT_LABELSTRING },
+		{ "labelfont",	LT_LABELFONT },
+		{ "labelindent",	LT_LABELINDENT },
+		{ "labelsep",	LT_LABELSEP },
+		{ "labelstring",	LT_LABELSTRING },
 		{ "labelstringappendix",        LT_LABELSTRING_APPENDIX },
-		{ "labeltype",             	LT_LABELTYPE },
-		{ "latexname",             	LT_LATEXNAME },
+		{ "labeltype",	LT_LABELTYPE },
+		{ "latexname",	LT_LATEXNAME },
 		{ "latexparam",			LT_LATEXPARAM },
-		{ "latextype",             	LT_LATEXTYPE },
-		{ "leftmargin",            	LT_LEFTMARGIN },
-		{ "margin",                	LT_MARGIN },
+		{ "latextype",	LT_LATEXTYPE },
+		{ "leftmargin",	LT_LEFTMARGIN },
+		{ "margin",	LT_MARGIN },
 		{ "needprotect",                LT_NEED_PROTECT },
 		{ "newline",			LT_NEWLINE },
 		{ "nextnoindent",		LT_NEXTNOINDENT },
@@ -148,7 +147,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "parindent",			LT_PARINDENT },
 		{ "parsep",			LT_PARSEP },
 		{ "parskip",			LT_PARSKIP },
-		{ "passthru",		   	LT_PASS_THRU },
+		{ "passthru",			LT_PASS_THRU },
 		{ "preamble",                   LT_PREAMBLE },
 		{ "rightmargin",		LT_RIGHTMARGIN },
 		{ "spacing",                    LT_SPACING },
@@ -165,12 +164,12 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		// See comment in lyxrc.C.
 		switch (le) {
 		case LyXLex::LEX_FEOF:
-			continue; 
+			continue;
 
 		case LyXLex::LEX_UNDEF:		// parse error
 			lexrc.printError("Unknown layout tag `$$Token'");
 			error = true;
-			continue; 
+			continue;
 		default: break;
 		}
 		switch (static_cast<LayoutTags>(le)) {
@@ -179,9 +178,9 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_COPYSTYLE:     // initialize with a known style
-		        if (lexrc.next()) {
+			if (lexrc.next()) {
 				string const style = lexrc.getString();
-			
+
 				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
 					this->operator=(tclass[style]);
@@ -194,7 +193,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 					for (; it != end; ++it) {
 						lyxerr << it->name() << endl;
 					}
-					
+
 					//lexrc.printError("Cannot copy known "
 					//		 "style `$$Token'");
 				}
@@ -202,9 +201,9 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_OBSOLETEDBY:     // replace with a known style
-		        if (lexrc.next()) {
+			if (lexrc.next()) {
 				string const style = lexrc.getString();
-				
+
 				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
 					this->operator=(tclass[style]);
@@ -213,8 +212,8 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 						obsoleted_by_ = style;
 				} else {
 					lyxerr << "Cannot replace with unknown style `" << style << "'" << endl;
-					
-					//lexrc.printError("Cannot replace with" 
+
+					//lexrc.printError("Cannot replace with"
 					//		 " unknown style "
 					//		 "`$$Token'");
 				}
@@ -232,11 +231,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		case LT_INTITLE:
 			intitle = lexrc.next() && lexrc.getInteger();
 			break;
-			
+
 		case LT_NEED_PROTECT:
 			needprotect = lexrc.next() && lexrc.getInteger();
 			break;
-			
+
 		case LT_KEEPEMPTY:
 			keepempty = lexrc.next() && lexrc.getInteger();
 			break;
@@ -262,10 +261,10 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_LATEXNAME:
-		        if (lexrc.next())
-		                latexname_ = lexrc.getString();
+			if (lexrc.next())
+				latexname_ = lexrc.getString();
 			break;
-                        
+
 		case LT_LATEXPARAM:
 			if (lexrc.next())
 				latexparam_ = lexrc.getString();
@@ -282,11 +281,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		case LT_ENDLABELTYPE:
 			readEndLabelType(lexrc);
 			break;
-			
+
 		case LT_LEFTMARGIN:	// left margin type
-		        if (lexrc.next())
+			if (lexrc.next())
 				leftmargin = lexrc.getString();
-			break;			
+			break;
 
 		case LT_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
@@ -420,7 +419,7 @@ void LyXLayout::readAlign(LyXLex & lexrc)
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown alignment `$$Token'");
-		return; 
+		return;
 	default: break;
 	};
 	switch (static_cast<AlignTags>(le)) {
@@ -461,7 +460,7 @@ void LyXLayout::readAlignPossible(LyXLex & lexrc)
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown alignment `$$Token'");
-			continue; 
+			continue;
 		default: break;
 		};
 		switch (static_cast<AlignTags>(le)) {
@@ -534,7 +533,7 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown labeltype tag `$$Token'");
-		return; 
+		return;
 	default: break;
 	}
 	switch (static_cast<LabelTypeTags>(le)) {

@@ -1,14 +1,14 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 2000-2001 The LyX Team.
  *
  *           @author: Jürgen Vigna
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #ifndef TABULAR_FUNCS_H
@@ -30,7 +30,7 @@ string const write_attribute(string const & name, T const & t)
 {
 	if (tostr(t).empty())
 		return string();
-	
+
 	string str = " " + name + "=\"" + tostr(t) + "\"";
 	return str;
 }
@@ -52,14 +52,14 @@ extern bool string2type(string const str, bool & num);
 extern bool getTokenValue(string const & str, char const * token, string &ret);
 extern bool getTokenValue(string const & str, char const * token, int & num);
 extern bool getTokenValue(string const & str, char const * token,
-                          LyXAlignment & num);
+			  LyXAlignment & num);
 extern bool getTokenValue(string const & str, char const * token,
-                          LyXTabular::VAlignment & num);
+			  LyXTabular::VAlignment & num);
 extern bool getTokenValue(string const & str, char const * token,
-                          LyXTabular::BoxType & num);
+			  LyXTabular::BoxType & num);
 extern bool getTokenValue(string const & str, char const * token, bool & flag);
 extern bool getTokenValue(string const & str, char const * token,
-                          LyXLength & len);
+			  LyXLength & len);
 extern void l_getline(std::istream & is, string & str);
 
 #endif

@@ -36,7 +36,7 @@ struct ParameterStruct {
 	///
 	LyXAlignment align;
 	///
-	depth_type depth; 
+	depth_type depth;
 	///
 	bool start_of_appendix;
 	///
@@ -46,18 +46,18 @@ struct ParameterStruct {
 	///
 	string labelwidthstring;
 #ifndef NO_PEXTRA_REALLY
-        ///
-        int pextra_type;
-        ///
-        string pextra_width;
-        ///
-        string pextra_widthp;
-        ///
-        int pextra_alignment;
-        ///
-        bool pextra_hfill;
-        ///
-        bool pextra_start_minipage;
+	///
+	int pextra_type;
+	///
+	string pextra_width;
+	///
+	string pextra_widthp;
+	///
+	int pextra_alignment;
+	///
+	bool pextra_hfill;
+	///
+	bool pextra_start_minipage;
 #endif
 };
 
@@ -77,7 +77,7 @@ ParameterStruct::ParameterStruct()
 
 inline
 bool operator==(ParameterStruct const & ps1,
-		ParameterStruct const & ps2) 
+		ParameterStruct const & ps2)
 {
 	return ps1.added_space_top == ps2.added_space_top
 		&& ps1.added_space_bottom == ps2.added_space_bottom
@@ -102,7 +102,7 @@ bool operator==(ParameterStruct const & ps1,
 		&& ps1.pextra_start_minipage == ps2.pextra_start_minipage
 #endif
 	;
-	
+
 }
 
 #endif

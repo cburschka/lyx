@@ -1,6 +1,6 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
@@ -9,7 +9,7 @@
  *           Lars Gullik Bjønnes
  *           Ben Stanley
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #include <config.h>
@@ -68,7 +68,7 @@ void DepTable::insert(string const & fi, bool upd)
 		lyxerr[Debug::DEPEND] << " Already in DepTable" << endl;
 	}
 }
-		
+
 
 void DepTable::update()
 {
@@ -94,13 +94,13 @@ void DepTable::update()
 			// file doesn't exist
 			// remove stale files - if it's re-created, it
 			// will be re-inserted by deplog.
-			lyxerr[Debug::DEPEND] << itr->first 
+			lyxerr[Debug::DEPEND] << itr->first
 				<< " doesn't exist. removing from DepTable." << endl;
 			DepList::iterator doomed = itr++;
 			deplist.erase(doomed);
 			continue;
 		}
-		
+
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			if (di.changed())
 				lyxerr << " +";
@@ -238,7 +238,7 @@ void DepTable::read(string const & f)
 	dep_info di;
 	// This doesn't change through the loop.
 	di.crc_prev = 0;
-	
+
 	while (ifs >> nome >> di.crc_cur >> di.mtime_cur) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Read dep: "
@@ -249,4 +249,3 @@ void DepTable::read(string const & f)
 		deplist[nome] = di;
 	}
 }
-

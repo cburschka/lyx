@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -34,7 +34,7 @@ public:
 
 	///
 	typedef Files::const_iterator const_iterator;
-	
+
 	/** Read the lastfiles file.
 	    @param file The file to read the lastfiles form.
 	    @param dostat Whether to check for file existance.
@@ -43,7 +43,7 @@ public:
 	explicit
 	LastFiles(string const & file,
 		  bool dostat = true, unsigned int num = 4);
-	
+
 	/** Insert #file# into the list.
 	    This funtion inserts #file# into the last files list. If the file
 	    already exist it is moved to the top of the list, else exist it
@@ -84,14 +84,14 @@ private:
 		*/
 		ABSOLUTEMAXLASTFILES = 20
 	};
-	
+
 	/// a list of lastfiles
 	Files files;
 	/// number of files in the lastfiles list.
 	unsigned int num_files;
 	/// check for file existance or not.
 	bool dostat;
-	
+
 	/** Read the lastfiles file.
 	    Reads the #.lyx_lastfiles# at the beginning of the LyX session.
 	    This will read the lastfiles file (usually #.lyx_lastfiles#). It
@@ -103,6 +103,6 @@ private:
 	/** Used by the constructor to set the number of stored last files.
 	    @param num the number of lastfiles to set.
 	*/
-        void setNumberOfFiles(unsigned int num);
+	void setNumberOfFiles(unsigned int num);
 };
 #endif

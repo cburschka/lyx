@@ -1,15 +1,15 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor 	 
+ * ======================================================
+ *
+ *           LyX, The Document Processor
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The Lyx Team
  *
  *           This file is Copyright 1996-2001
  *           Lars Gullik Bjønnes
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #ifndef LATEX_H
@@ -100,7 +100,7 @@ bool operator!=(Aux_Info const & a, Aux_Info const & o)
 class LaTeX : boost::noncopyable {
 public:
 	/** Return values from scanLogFile() and run() (to come)
-	    
+
 	    This enum should be enlarged a bit so that one could
 	    get more feedback from the LaTeX run.
 	*/
@@ -140,7 +140,7 @@ public:
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
 	};
-	
+
 
 	/**
 	   cmd = the latex command, file = name of the (temporary) latex file,
@@ -150,7 +150,7 @@ public:
 
 	///
 	virtual ~LaTeX() {}
-	
+
 	/// runs LaTeX several times
 	int run(TeXErrors &, LyXFunc *);
 
@@ -181,7 +181,7 @@ protected:
 
 	///
 	void scanAuxFile(string const &, Aux_Info &);
-	
+
 	///
 	void updateBibtexDependencies(DepTable &,
 				      std::vector<Aux_Info> const &);
@@ -191,19 +191,19 @@ protected:
 
 	///
 	void deleteFilesOnError() const;
-	
+
 	///
 	string cmd;
 
 	///
 	string file;
-	
+
 	///
 	string path;
 
 	/// used by scanLogFile
 	int num_errors;
-	
+
 	/// The name of the final output file.
 	string output_file;
 };

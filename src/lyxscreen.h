@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team
  *
@@ -47,17 +47,17 @@ public:
 
 	///
 	~LyXScreen();
- 
+
 	/// Sets the cursor color to LColor::cursor.
 	void setCursorColor();
-	
+
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
 	void draw(LyXText *, BufferView *, unsigned int y);
 
 	/// Redraws the screen, without using existing pixmap
 	void redraw(LyXText *, BufferView *);
-   
+
 	/// Returns a new top so that the cursor is visible
 	unsigned int topCursorVisible(LyXText const *);
 	/// Redraws the screen such that the cursor is visible
@@ -80,7 +80,7 @@ public:
 	///
 	void toggleToggle(LyXText *, BufferView *,
 			  int y_offset = 0, int x_offset = 0);
-	
+
 	/** Updates part of the screen. If text->status is
 	    LyXText::NEED_MORE_REFRESH, we update from the
 	    point of change and to the end of the screen.
@@ -94,11 +94,11 @@ public:
 	bool cursor_visible;
 private:
 	/// Copies specified area of pixmap to screen
-	void expose(int x, int y, int exp_width, int exp_height); 
+	void expose(int x, int y, int exp_width, int exp_height);
 
 	/// y1 and y2 are coordinates of the screen
 	void drawFromTo(LyXText *, BufferView *, int y1, int y2,
-	                int y_offset = 0, int x_offset = 0, bool internal=false);
+			int y_offset = 0, int x_offset = 0, bool internal=false);
 
 	/// y is a coordinate of the text
 	void drawOneRow(LyXText *, BufferView *, Row * row,
@@ -106,7 +106,7 @@ private:
 
 	///
 	WorkArea & owner;
-	
+
 	///
 	Pixmap cursor_pixmap;
 	///

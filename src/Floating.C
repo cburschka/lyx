@@ -1,6 +1,6 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998-2001 The LyX Team.
@@ -17,7 +17,7 @@
 #include "Floating.h"
 
 
-Floating::Floating() 
+Floating::Floating()
 {}
 
 

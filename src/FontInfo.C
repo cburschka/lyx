@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1997 Asger Alstrup
  *           and the LyX Team.
  *
@@ -67,13 +67,13 @@ string const FontInfo::getFontname(int size)
 
 	// We use the closest match
 	lyxerr[Debug::FONT] << "Using closest font match to get size "
-			    << size 
+			    << size
 			    << " with\n" << strings[closestind] << endl;
 	return strings[closestind];
 }
 
 
-/// Build newly sized font string 
+/// Build newly sized font string
 string const FontInfo::resize(string const & font, int size) const
 {
 	string ret(font);
@@ -134,7 +134,7 @@ void FontInfo::query()
 		for (int i = 0; i < matches; ++i) {
 			string name(list[i]);
 			lyxerr[Debug::FONT] << "match #" << i << " "
-					    << name << endl; 
+					    << name << endl;
 			sizes[i] = lyx::atoi(token(name, '-', 7));
 			strings[i] = name;
 			if (sizes[i] == 0) {

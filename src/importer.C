@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -34,7 +34,7 @@ extern BufferList bufferlist;
 extern void InsertAsciiFile(BufferView *, string const &, bool);
 
 
-bool Importer::Import(LyXView * lv, string const & filename, 
+bool Importer::Import(LyXView * lv, string const & filename,
 		      string const & format)
 {
 	string const displaypath = MakeDisplayPath(filename);
@@ -103,7 +103,7 @@ bool Importer::IsImportable(string const & format)
 vector<Format const *> const Importer::GetImportableFormats()
 {
 	vector<string> loaders = Loaders();
-	vector<Format const *> result = 
+	vector<Format const *> result =
 		converters.getReachableTo(loaders[0], true);
 	for (vector<string>::const_iterator it = loaders.begin() + 1;
 	     it != loaders.end(); ++it) {

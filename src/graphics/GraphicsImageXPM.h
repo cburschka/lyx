@@ -44,7 +44,7 @@ public:
 
 	/// Get the image width
 	unsigned int getWidth() const;
-	
+
 	/// Get the image height
 	unsigned int getHeight() const;
 
@@ -62,10 +62,10 @@ public:
 
 	/// Clip the image using params.
 	void clip(GParams const & params);
-	
+
 	/// Rotate the image using params.
 	void rotate(GParams const & params);
-	
+
 	/// Scale the image using params.
 	void scale(GParams const & params);
 
@@ -82,7 +82,7 @@ private:
 	 *  c_color together with g_color and m_color entries for each c_color
 	 *  entry when it is first stored.
 	 */
-	class Data 
+	class Data
 	{
 	public:
 		/// Default c-tor. Initialise everything to zero.
@@ -132,7 +132,7 @@ private:
 
 		unsigned int color_none_id() const;
 	};
-	
+
 	Data image_;
 
 	/// The pixmap itself.
@@ -147,7 +147,7 @@ private:
 		///
 		PIXMAP_SUCCESS
 	};
-	
+
 	PixmapStatus pixmap_status_;
 };
 

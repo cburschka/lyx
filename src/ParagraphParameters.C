@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #ifdef __GNUG__
@@ -36,14 +35,14 @@ void ParagraphParameters::clear()
 	tmp.labelwidthstring.erase();
 	tmp.start_of_appendix = false;
 #ifndef NO_PEXTRA_REALLY
-        //tmp.pextra_type = PEXTRA_NONE;
-        tmp.pextra_type = 0;
-        tmp.pextra_width.erase();
-        tmp.pextra_widthp.erase();
-        //tmp.pextra_alignment = MINIPAGE_ALIGN_TOP;
-        tmp.pextra_alignment = 0;
-        tmp.pextra_hfill = false;
-        tmp.pextra_start_minipage = false;
+	//tmp.pextra_type = PEXTRA_NONE;
+	tmp.pextra_type = 0;
+	tmp.pextra_width.erase();
+	tmp.pextra_widthp.erase();
+	//tmp.pextra_alignment = MINIPAGE_ALIGN_TOP;
+	tmp.pextra_alignment = 0;
+	tmp.pextra_hfill = false;
+	tmp.pextra_start_minipage = false;
 #endif
 	set_from_struct(tmp);
 }
@@ -62,18 +61,18 @@ bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 		param->spacing == pp.param->spacing &&
 #ifndef NO_PEXTRA_REALLY
 		param->pextra_type == pp.param->pextra_type &&
-                param->pextra_width == pp.param->pextra_width && 
-                param->pextra_widthp == pp.param->pextra_widthp &&
-                param->pextra_alignment == pp.param->pextra_alignment && 
-                param->pextra_hfill == pp.param->pextra_hfill && 
-                param->pextra_start_minipage == pp.param->pextra_start_minipage &&
+		param->pextra_width == pp.param->pextra_width &&
+		param->pextra_widthp == pp.param->pextra_widthp &&
+		param->pextra_alignment == pp.param->pextra_alignment &&
+		param->pextra_hfill == pp.param->pextra_hfill &&
+		param->pextra_start_minipage == pp.param->pextra_start_minipage &&
 #endif
 		param->noindent == pp.param->noindent &&
 		param->depth == pp.param->depth;
 }
 
 
-void ParagraphParameters::set_from_struct(ParameterStruct const & ps) 
+void ParagraphParameters::set_from_struct(ParameterStruct const & ps)
 {
 	// get new param from container with tmp as template
 	param = container.get(ps);

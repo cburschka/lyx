@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -80,10 +80,10 @@ struct Debug {
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
-	static Debug::type value(string const & val); 
+	static Debug::type value(string const & val);
 
-	/** Display the tags and descriptions of the current debug level 
-	    of ds 
+	/** Display the tags and descriptions of the current debug level
+	    of ds
 	*/
 	static void showLevel(std::ostream & o, type level);
 

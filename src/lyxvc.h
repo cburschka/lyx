@@ -19,7 +19,7 @@ class Buffer;
     The support in LyX is based loosely upon the version control in GNU Emacs,
     but is not as extensive as that one. See examples/VC.lyx for a simple
     tutorial and manual for the use of the version control system in LyX.
-    
+
     LyXVC use this algorithm when it searches for VC files:
     for RCS it searches for <filename>,v and RCS/<filename>,v similar
     should be done for CVS. By doing this there doesn't need to be any
@@ -40,7 +40,7 @@ public:
 	  control by a VCS.
 	  */
 	bool file_found_hook(string const & fn);
-	
+
 	/** This function should be run when a file is requested for loading,
 	  but it does not exist. This function will then check for a VC master
 	  file with the same name (see above function). If this exists the
@@ -75,9 +75,9 @@ public:
 	 */
 	const string getLogFile() const;
 
-	/// 
+	///
 	void toggleReadOnly();
-	
+
 	/// Is the document under administration by RCS?
 	bool inUse();
 
@@ -92,7 +92,7 @@ public:
 private:
 	///
 	Buffer * owner_;
-	
+
 	///
 	VCS * vcs;
 };

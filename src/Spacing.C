@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -23,8 +23,8 @@ using std::ostream;
 
 string const Spacing::spacing_string[]
 	= {"single", "onehalf", "double", "other"};
- 
-float Spacing::getValue() const 
+
+float Spacing::getValue() const
 {
 	switch (space) {
 	case Default: // nothing special should happen with this...
@@ -63,9 +63,9 @@ void Spacing::set(Spacing::Space sp, string const & val)
 void Spacing::writeFile(ostream & os, bool para) const
 {
 	if (space == Default) return;
-	
+
 	string cmd = para ? "\\paragraph_spacing " : "\\spacing ";
-	
+
 	if (getSpace() == Spacing::Other) {
 		os.setf(ios::showpoint|ios::fixed);
 		os.precision(2);
@@ -73,7 +73,7 @@ void Spacing::writeFile(ostream & os, bool para) const
 		   << " " << getValue() << " \n";
 	} else {
 		os << cmd << spacing_string[getSpace()] << " \n";
-	}	
+	}
 }
 
 

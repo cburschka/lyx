@@ -20,7 +20,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 		///
 		LEX_MAX_BUFF = 2048
 	};
-	
+
 	///
 	Pimpl(keyword_item * tab, int num);
 	///
@@ -55,7 +55,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	std::filebuf fb__;
 	/// the stream that we use.
 	std::istream is;
-	/// 
+	///
 	string name;
 	///
 	keyword_item * table;

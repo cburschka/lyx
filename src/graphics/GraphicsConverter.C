@@ -50,7 +50,7 @@ string const move_file(string const & from_file, string const & to_file)
 
 } // namespace anon
 
- 
+
 namespace grfx {
 
 GConverter & GConverter::get()
@@ -58,7 +58,7 @@ GConverter & GConverter::get()
 	static GConverter singleton;
 	return singleton;
 }
-	
+
 
 bool GConverter::isReachable(string const & from_format_name,
 			     string const & to_format_name) const
@@ -99,7 +99,7 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 		on_finish->emit(string());
 		return;
 	}
-		
+
 	fs << script.str().c_str();
 	fs.close();
 
@@ -115,7 +115,7 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 
 	// Launch the conversion process.
 	ConvProcessPtr shared_ptr;
-	shared_ptr.reset(new ConvProcess(script_file, script_command, 
+	shared_ptr.reset(new ConvProcess(script_file, script_command,
 					 to_file, on_finish));
 	all_processes_.push_back(shared_ptr);
 }
@@ -124,7 +124,7 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 namespace {
 
 typedef boost::shared_ptr<ConvProcess> ConvProcessPtr;
- 
+
 class Find_Ptr {
 public:
 	Find_Ptr(ConvProcess * ptr) : ptr_(ptr) {}
@@ -139,7 +139,7 @@ private:
 };
 
 } // namespace anon
- 
+
 
 void GConverter::erase(ConvProcess * process)
 {
@@ -155,7 +155,7 @@ void GConverter::erase(ConvProcess * process)
 }
 
 
-bool GConverter::build_script(string const & from_file, 
+bool GConverter::build_script(string const & from_file,
 			      string const & to_file_base,
 			      string const & from_format,
 			      string const & to_format,
@@ -219,7 +219,7 @@ bool GConverter::build_script(string const & from_file,
 		// Store in the shell script
 		script << "\n" << command << "\n\n";
 
-		// Test that this was successful. If not, remove 
+		// Test that this was successful. If not, remove
 		// ${outfile} and exit the shell script
 		script << "if [ $? -ne 0 ]; then\n"
 		       << "\t'rm' -f ${outfile}\n"
@@ -253,7 +253,7 @@ bool GConverter::build_script(string const & from_file,
 }
 
 
-ConvProcess::ConvProcess(string const & script_file, 
+ConvProcess::ConvProcess(string const & script_file,
 			 string const & script_command,
 			 string const & to_file, SignalTypePtr on_finish)
 	: script_file_(script_file), to_file_(to_file), on_finish_(on_finish)
@@ -261,7 +261,7 @@ ConvProcess::ConvProcess(string const & script_file,
 	Forkedcall::SignalTypePtr convert_ptr;
 	convert_ptr.reset(new Forkedcall::SignalType);
 
-    	convert_ptr->connect(SigC::slot(this, &ConvProcess::converted));
+	convert_ptr->connect(SigC::slot(this, &ConvProcess::converted));
 
 	Forkedcall call;
 	int retval = call.startscript(script_command, convert_ptr);

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -60,7 +60,7 @@ int lyxfont::ascent(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].ascent;
 	else
 		return finfo->ascent;
@@ -73,7 +73,7 @@ int lyxfont::descent(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].descent;
 	else
 		return finfo->descent;
@@ -86,7 +86,7 @@ int lyxfont::lbearing(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].lbearing;
 	else
 		return 0;
@@ -99,7 +99,7 @@ int lyxfont::rbearing(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].rbearing;
 	else
 		return width(c, f);
@@ -126,7 +126,7 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 			Uchar c = encoding->ucs(s[i]);
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
-                }
+		}
 		int result = width(xs.get(), n, font);
 		return result;
 	}
@@ -167,7 +167,7 @@ int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return n;
-	
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		return ::XTextWidth16(getXFontstruct(f), s, n);
 	} else {
@@ -205,7 +205,7 @@ int lyxfont::XTextWidth16(LyXFont const & f, XChar2b const * str, int count)
 }
 
 
-void lyxfont::XSetFont(Display * display, GC gc, LyXFont const & f) 
+void lyxfont::XSetFont(Display * display, GC gc, LyXFont const & f)
 {
 	::XSetFont(display, gc, getFontID(f));
 }
@@ -226,7 +226,7 @@ void lyxfont::buttonText(string const & str, LyXFont const & font,
 		int & width, int & ascent, int & descent)
 {
 	static int const d = 3;
-	
+
 	width = lyxfont::width(str, font) + d * 2 + 2;
 	ascent = lyxfont::maxAscent(font) + d;
 	descent = lyxfont::maxDescent(font) + d;

@@ -1,13 +1,13 @@
 /* -*- C++ -*- */
 /* This file is part of
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-*        
+*
 *           Copyright 1995 Matthias Ettrich
 *           Copyright 1995-2001 The LyX Team
 *
-* ====================================================== 
+* ======================================================
  A few prototypes missing from Sun and SCO 3.2v4 header files */
 
 #ifndef BROKEN_HEADERS_H

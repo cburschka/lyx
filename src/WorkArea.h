@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -130,16 +130,16 @@ public:
 	SigC::Signal0<void> selectionRequested;
 	/// emitted when another X client has stolen our selection
 	SigC::Signal0<void> selectionLost;
- 
+
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);
 private:
 	///
 	void createPixmap(int, int);
- 
+
 	///
 	FL_OBJECT * backgroundbox;
-	///	
+	///
 	FL_OBJECT * work_area;
 	///
 	FL_OBJECT * scrollbar;

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *	    LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *	    Copyright 1995-2001 The LyX Team
  *
@@ -73,11 +73,11 @@ struct PrinterParams {
 	///
 	bool unsorted_copies;
 	///
-  	int count_copies;
+	int count_copies;
 	// The settings below should allow us to print any read-only doc in
 	// whatever size/orientation we want it -- overriding the documents
 	// settings.
-        // Override the documents orientation
+	// Override the documents orientation
 	// bool orientation;
 	// Print n pages per physical sheet
 	// unsigned int nup;
@@ -104,7 +104,7 @@ struct PrinterParams {
 			}
 			switch (target) {
 			case PRINTER:
-//  				Assert(!printer_name.empty());
+//				Assert(!printer_name.empty());
 				break;
 			case FILE:
 				lyx::Assert(!file_name.empty());

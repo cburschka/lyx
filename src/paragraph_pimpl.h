@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -97,12 +97,12 @@ struct Paragraph::Pimpl {
 		/// End position of paragraph this font attribute covers
 		lyx::pos_type pos_;
 		/** Font. Interpretation of the font values:
-		    If a value is LyXFont::INHERIT_*, it means that the font 
+		    If a value is LyXFont::INHERIT_*, it means that the font
 		    attribute is inherited from either the layout of this
-		    paragraph or, in the case of nested paragraphs, from the 
-		    layout in the environment one level up until completely 
+		    paragraph or, in the case of nested paragraphs, from the
+		    layout in the environment one level up until completely
 		    resolved.
-		    The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT 
+		    The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT
 		    allowed in these font tables.
 		*/
 		boost::shared_ptr<LyXFont> font_;
@@ -153,7 +153,7 @@ private:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(BufferParams const &,
 		      string const & str, lyx::pos_type pos);
- 
+
 	/// Who owns us?
 	Paragraph * owner_;
 	///

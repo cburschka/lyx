@@ -1,8 +1,8 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor 	 
+ * ======================================================
+ *
+ *           LyX, The Document Processor
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team
  *
@@ -59,7 +59,7 @@
 //    I believe there are only three possible scenarios where the two first
 //    are also covered by the third.
 //        - The simplest scenario is what we have now, a single
-//          BufferView only.  
+//          BufferView only.
 //          o Opening
 //            Nothing to do with the TextCache is done when opening a file.
 //          o Switching
@@ -114,7 +114,7 @@ class TextCache {
 public:
 	///
 	typedef std::map<Buffer *, std::pair<int,LyXText *> > Cache;
-	
+
 	///
 	typedef Cache::value_type value_type;
 

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -73,7 +73,7 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 	vt.rownumber(row);
 	RowList::const_iterator cit =
 		find_if(rowlist.begin(), rowlist.end(), same_rownumber(vt));
-	
+
 	if (cit != rowlist.end()) {
 		id = cit->id();
 		pos = cit->pos();
@@ -118,4 +118,4 @@ TexRow & TexRow::operator+= (TexRow const & tr)
 {
 	rowlist.insert(rowlist.end(), tr.rowlist.begin(), tr.rowlist.end());
 	return *this;
-}	
+}

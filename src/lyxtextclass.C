@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -69,7 +69,7 @@ bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 		lay.reslabelfont.realize(defaultfont(), default_language);
 #endif
 		return false; // no errors
-	} 
+	}
 	lyxerr << "Error parsing style `" << lay.name() << "'" << endl;
 	return true;
 }
@@ -131,37 +131,37 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		lyxerr[Debug::TCLASS] << "Reading input file "
 				     << MakeDisplayPath(filename)
 				     << endl;
-	
+
 	LyXLex lexrc(textClassTags, TC_RIGHTMARGIN);
 	bool error = false;
 
-        lexrc.setFile(filename);
-	if (!lexrc.isOK()) error = true; 
+	lexrc.setFile(filename);
+	if (!lexrc.isOK()) error = true;
 
 	// parsing
 	while (lexrc.isOK() && !error) {
 		int le = lexrc.lex();
 		switch (le) {
 		case LyXLex::LEX_FEOF:
-			continue; 
+			continue;
 
-		case LyXLex::LEX_UNDEF:                                 
+		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown TextClass tag `$$Token'");
 			error = true;
-			continue; 
+			continue;
 		default: break;
 		}
 		switch (static_cast<TextClassTags>(le)) {
 		case TC_OUTPUTTYPE:   // output type definition
 			readOutputType(lexrc);
 			break;
-			
+
 		case TC_INPUT: // Include file
-		        if (lexrc.next()) {
-		        	string tmp = LibFileSearch("layouts",
-							    lexrc.getString(), 
+			if (lexrc.next()) {
+				string tmp = LibFileSearch("layouts",
+							    lexrc.getString(),
 							    "layout");
-				
+
 				if (Read(tmp, true)) {
 					lexrc.printError("Error reading input"
 							 "file: "+tmp);
@@ -177,7 +177,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				defaultlayout_ = name;
 			}
 			break;
-			
+
 		case TC_STYLE:
 			if (lexrc.next()) {
 				string const name = subst(lexrc.getString(),
@@ -221,7 +221,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			if (lexrc.next())
 				columns_ = lexrc.getInteger();
 			break;
-			
+
 		case TC_SIDES:
 			if (lexrc.next()) {
 				switch (lexrc.getInteger()) {
@@ -236,12 +236,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				}
 			}
 			break;
-			
+
 		case TC_PAGESTYLE:
-		        lexrc.next();
+			lexrc.next();
 			pagestyle_ = strip(lexrc.getString());
 			break;
-			
+
 		case TC_DEFAULTFONT:
 			defaultfont_.lyxRead(lexrc);
 			if (!defaultfont_.resolved()) {
@@ -251,7 +251,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE));
 #else
 				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE),
-				                     default_language);
+						     default_language);
 #endif
 			}
 			break;
@@ -270,10 +270,10 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			tocdepth_ = lexrc.getInteger();
 			break;
 
-			// First step to support options 
-	        case TC_CLASSOPTIONS:
+			// First step to support options
+		case TC_CLASSOPTIONS:
 			readClassOptions(lexrc);
-		        break;
+			break;
 
 		case TC_PREAMBLE:
 			preamble_ = lexrc.getLongString("EndPreamble");
@@ -295,19 +295,19 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			break;
 
 		case TC_LEFTMARGIN:	// left margin type
-		        if (lexrc.next())
+			if (lexrc.next())
 				leftmargin_ = lexrc.getString();
-			break;			
+			break;
 
 		case TC_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
 				rightmargin_ = lexrc.getString();
 			break;
 		}
-	}	
+	}
 
 	if (!merge) { // we are at top level here.
-		lyxerr[Debug::TCLASS] << "Finished reading textclass " 
+		lyxerr[Debug::TCLASS] << "Finished reading textclass "
 				      << MakeDisplayPath(filename)
 				      << endl;
 		if (defaultlayout_.empty()) {
@@ -316,7 +316,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			error = true;
 		}
 	} else
-		lyxerr[Debug::TCLASS] << "Finished reading input file " 
+		lyxerr[Debug::TCLASS] << "Finished reading input file "
 				      << MakeDisplayPath(filename)
 				      << endl;
 
@@ -389,7 +389,7 @@ void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown MaxCounter tag `$$Token'");
-		return; 
+		return;
 	default: break;
 	}
 	switch (static_cast<MaxCounterTags>(le)) {
@@ -451,7 +451,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
-			continue; 
+			continue;
 		default: break;
 		}
 		switch (static_cast<ClassOptionsTags>(le)) {
@@ -461,7 +461,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 			break;
 		case CO_PAGESTYLE:
 			lexrc.next();
-			opt_pagestyle_ = strip(lexrc.getString()); 
+			opt_pagestyle_ = strip(lexrc.getString());
 			break;
 		case CO_OTHER:
 			lexrc.next();
@@ -497,7 +497,7 @@ string const & LyXTextClass::rightmargin() const
 bool LyXTextClass::hasLayout(string const & n) const
 {
 	string const name = (n.empty() ? defaultLayoutName() : n);
-	
+
 	return find_if(layoutlist.begin(), layoutlist.end(),
 		       lyx::compare_memfun(&LyXLayout::name, name))
 		!= layoutlist.end();
@@ -507,10 +507,10 @@ bool LyXTextClass::hasLayout(string const & n) const
 LyXLayout const & LyXTextClass::operator[](string const & n) const
 {
 	lyx::Assert(!n.empty());
-	
+
 	if (n.empty())
 		lyxerr << "Operator[] called with empty n" << endl;
-	
+
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
 	static string lastLayoutName;
@@ -519,7 +519,7 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 	if (name == lastLayoutName)
 		return layoutlist[lastLayoutIndex];
 
-	
+
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
@@ -529,14 +529,14 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 		lyxerr << "We failed to find the layout '" << name
 		       << "' in the layout list. You MUST investigate!"
 		       << endl;
-		
+
 		// we require the name to exist
 		lyx::Assert(false);
 	}
 
 	lastLayoutName = name;
 	lastLayoutIndex = std::distance(layoutlist.begin(), cit);
-	
+
 	return *cit;
 }
 
@@ -545,7 +545,7 @@ bool LyXTextClass::delete_layout(string const & name)
 {
 	if (name == defaultLayoutName())
 		return false;
-	
+
 	LayoutList::iterator it =
 		remove_if(layoutlist.begin(), layoutlist.end(),
 			  lyx::compare_memfun(&LyXLayout::name, name));
@@ -575,7 +575,7 @@ bool LyXTextClass::load() const
 	}
 	loaded = true;
 	return loaded;
-	
+
 }
 
 
@@ -669,7 +669,7 @@ bool LyXTextClass::provides(LyXTextClass::Provides p) const
 {
 	return provides_ & p;
 }
-	
+
 
 unsigned int LyXTextClass::columns() const
 {

@@ -41,7 +41,7 @@ public:
 	  The traditional Latex format is also accepted, like
 	  4cm plus 10pt minus 10pt */
 	explicit LyXGlueLength(string const & data);
-	
+
 	///
 	LyXLength const & len() const;
 	///

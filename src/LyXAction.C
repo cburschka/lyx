@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -22,12 +22,12 @@
 using std::ostream;
 using std::endl;
 
-/*  
+/*
      NAMING RULES FOR USER-COMMANDS
      Here's the set of rules to apply when a new command name is introduced:
- 
+
      1) Use the object.event order. That is, use `word-forward'
-        instead of `forward-word'.
+	instead of `forward-word'.
      2) Don't introduce an alias for an already named object. Same for events.
      3) Forward movement or focus is called `forward' (not `right').
      4) Backward movement or focus is called `backward' (not `left').
@@ -35,20 +35,20 @@ using std::endl;
      6) Downward movement is called `down'.
      7) The begin of an object is called `begin' (not `start').
      8) The end of an object is called `end'.
- 
+
      (May 19 1996, 12:04, RvdK)
  */
 
-// These are globals. 
+// These are globals.
 LyXAction lyxaction;
 
 // Small helper function
 inline
 bool isPseudoAction(int a)
-{ 
-	return a > int(LFUN_LASTACTION); 
+{
+	return a > int(LFUN_LASTACTION);
 }
-     
+
 
 
 void LyXAction::newFunc(kb_action action, string const & name,
@@ -70,7 +70,7 @@ void LyXAction::init()
 	// times. Since the array is not static we get back the memory it
 	// occupies after the init is completed. It compiles several
 	// magnitudes faster.
-	
+
 	static bool init;
 	if (init) return;
 
@@ -117,7 +117,7 @@ void LyXAction::init()
 		{ LFUN_BREAKPARAGRAPHKEEPLAYOUT, "break-paragraph-keep-layout",
 		  "", Noop },
 		{ LFUN_BREAKPARAGRAPH_SKIP, "break-paragraph-skip", "", Noop },
-		{ LFUN_BUILDPROG, "build-program", 
+		{ LFUN_BUILDPROG, "build-program",
 		  N_("Build program"), ReadOnly },
 		{ LFUN_AUTOSAVE, "buffer-auto-save", N_("Autosave"), Noop },
 		{ LFUN_BEGINNINGBUF, "buffer-begin",
@@ -145,7 +145,7 @@ void LyXAction::init()
 		{ LFUN_MENUPRINT, "buffer-print", N_("Print"), ReadOnly },
 		{ LFUN_MENURELOAD, "buffer-reload",
 		  N_("Revert to saved"), ReadOnly },
-		{ LFUN_SWITCHBUFFER, "buffer-switch", 
+		{ LFUN_SWITCHBUFFER, "buffer-switch",
 		  N_("Switch to an open document"), ReadOnly },
 		{ LFUN_READ_ONLY_TOGGLE, "buffer-toggle-read-only",
 		  N_("Toggle read-only"), ReadOnly },
@@ -230,7 +230,7 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_HFILL, "hfill-insert",
 		  N_("Insert horizontal fill"), Noop },
-		{ LFUN_HELP_OPEN, "help-open", N_("Open a Help file"), 
+		{ LFUN_HELP_OPEN, "help-open", N_("Open a Help file"),
 		  NoBuffer|Argument},
 		{ LFUN_HTMLURL, "html-insert", "", Noop },
 		{ LFUN_HYPHENATION, "hyphenation-point-insert",
@@ -316,13 +316,13 @@ void LyXAction::init()
 		{ LFUN_INSET_MINIPAGE, "minipage-insert", "", Noop },
 		{ LFUN_INSERT_NOTE, "note-insert", "", Noop },
 		{ LFUN_GOTONOTE, "note-next", "", ReadOnly },
-		{ LFUN_INSET_TOGGLE, "inset-toggle", 
+		{ LFUN_INSET_TOGGLE, "inset-toggle",
 		  N_("toggle inset"), ReadOnly },
 		{ LFUN_DOWN_PARAGRAPH, "paragraph-down",
 		  N_("Go one paragraph down"), ReadOnly },
 		{ LFUN_DOWN_PARAGRAPHSEL, "paragraph-down-select",
 		  N_("Select next paragraph"), ReadOnly },
-		{ LFUN_GOTO_PARAGRAPH, "paragraph-goto", 
+		{ LFUN_GOTO_PARAGRAPH, "paragraph-goto",
 		  N_("Go to paragraph"), ReadOnly },
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", "", Noop },
 		{ LFUN_UP_PARAGRAPH, "paragraph-up",
@@ -473,7 +473,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 
 	if (aci == pit->second.end()) {
 		// the action does not have any pseudoactions with this arg
-		lyxerr[Debug::ACTION] 
+		lyxerr[Debug::ACTION]
 			<< "Action " << action
 			<< "does not have any pseudoactions with arg "
 			<< arg << endl;
@@ -481,8 +481,8 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 	}
 
 	// pseudo action exist
-	lyxerr[Debug::ACTION] << "Pseudoaction exist[" 
-			      << action << '|' 
+	lyxerr[Debug::ACTION] << "Pseudoaction exist["
+			      << action << '|'
 			      << arg << "] = " << aci->second << endl;
 
 	return aci->second;
@@ -514,7 +514,7 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 	lyxerr[Debug::ACTION] << "Creating new pseudoaction "
 			      << pseudo_counter << " for [" << action
 			      << '|' << arg << "]\n";
-	
+
 	return pseudo_counter;
 }
 
@@ -525,9 +525,9 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 {
 	arg.erase(); // clear it to be sure.
 
-	if (!isPseudoAction(pseudo)) 
+	if (!isPseudoAction(pseudo))
 		return static_cast<kb_action>(pseudo);
-	
+
 	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
 
 	if (pit != lyx_pseudo_map.end()) {
@@ -582,21 +582,21 @@ int LyXAction::getApproxFunc(string const & func) const
 		// Checking for prefix is not so simple, but
 		// using a simple bounding function gives
 		// a similar result.  [ale 19981103]
-	 	func_map::const_iterator fit = 
- 			lyx_func_map.lower_bound(func);
-		
- 		if (fit != lyx_func_map.end()) {
+		func_map::const_iterator fit =
+			lyx_func_map.lower_bound(func);
+
+		if (fit != lyx_func_map.end()) {
 			action =  fit->second;
 		}
 	} else {  // Go get the next function
-	 	func_map::const_iterator fit = 
- 			lyx_func_map.upper_bound(func);
-		
- 		if (fit != lyx_func_map.end()) {
+		func_map::const_iterator fit =
+			lyx_func_map.upper_bound(func);
+
+		if (fit != lyx_func_map.end()) {
 			action =  fit->second;
 		}
 	}
-	
+
 	return action;
 }
 
@@ -617,14 +617,14 @@ string const LyXAction::getActionName(int action) const
 	ac = retrieveActionArg(action, arg);
 	if (!arg.empty())
 		arg.insert(0, " ");
-	
+
 	info_map::const_iterator iit = lyx_info_map.find(ac);
 
 	if (iit != lyx_info_map.end()) {
 		string ret(iit->second.name);
 		ret += arg;
 		return ret;
-	} else 
+	} else
 		return string();
 }
 
@@ -665,8 +665,8 @@ string const LyXAction::helpText(int pseudoaction) const
 }
 
 
-bool LyXAction::funcHasFlag(kb_action action, 
-                            LyXAction::func_attrib flag) const 
+bool LyXAction::funcHasFlag(kb_action action,
+			    LyXAction::func_attrib flag) const
 {
 	info_map::const_iterator ici = lyx_info_map.find(action);
 
@@ -681,13 +681,13 @@ bool LyXAction::funcHasFlag(kb_action action,
 }
 
 
-LyXAction::const_func_iterator LyXAction::func_begin() const 
+LyXAction::const_func_iterator LyXAction::func_begin() const
 {
 	return lyx_func_map.begin();
 }
 
 
-LyXAction::const_func_iterator LyXAction::func_end() const 
+LyXAction::const_func_iterator LyXAction::func_end() const
 {
 	return lyx_func_map.end();
 }

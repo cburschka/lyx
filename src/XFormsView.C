@@ -1,9 +1,8 @@
-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -41,13 +40,13 @@ extern void QuitLyX();
 BufferView * current_view;
 
 extern "C" {
-	
+
 static
 int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
 {
 	return XFormsView::atCloseMainFormCB(form, p);
 }
-	
+
 }
 
 
@@ -62,7 +61,7 @@ XFormsView::XFormsView(int width, int height)
 						&LyXFunc::miniDispatch));
 	minibuffer->timeout.connect(SigC::slot(getLyXFunc(),
 					       &LyXFunc::initMiniBuffer));
-	
+
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
 }
@@ -113,10 +112,10 @@ void XFormsView::show(int place, int border, string const & title)
 void XFormsView::create_form_form_main(int width, int height)
 	/* to make this work as it should, .lyxrc should have been
 	 * read first; OR maybe this one should be made dynamic.
-	 * Hmmmm. Lgb. 
+	 * Hmmmm. Lgb.
 	 * We will probably not have lyxrc before the main form is
-	 * initialized, because error messages from lyxrc parsing 
-	 * are presented (and rightly so) in GUI popups. Asger. 
+	 * initialized, because error messages from lyxrc parsing
+	 * are presented (and rightly so) in GUI popups. Asger.
 	 */
 {
 	// the main form
@@ -128,7 +127,7 @@ void XFormsView::create_form_form_main(int width, int height)
 	// Parameters for the appearance of the main form
 	int const air = 2;
 	int const bw = abs(fl_get_border_width());
-	
+
 	//
 	// THE MENUBAR
 	//
@@ -158,7 +157,7 @@ void XFormsView::create_form_form_main(int width, int height)
 	// MINIBUFFER
 	//
 
-	minibuffer = new MiniBuffer(this, air, height - (25 + air), 
+	minibuffer = new MiniBuffer(this, air, height - (25 + air),
 				    width - (2 * air), 25);
 
 	//
@@ -166,12 +165,12 @@ void XFormsView::create_form_form_main(int width, int height)
 	//
 
 	autosave_timeout->timeout.connect(SigC::slot(this, &XFormsView::AutoSave));
-	
+
 	//
 	// Misc
 	//
 
-        //  assign an icon to main form
+	//  assign an icon to main form
 	string iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty()) {
 		unsigned int w, h;
@@ -189,10 +188,10 @@ void XFormsView::create_form_form_main(int width, int height)
 
 	// set min size
 	fl_set_form_minsize(form_, 50, 50);
-	
+
 	fl_end_form();
 
-	minibuffer->dd_init(); 
+	minibuffer->dd_init();
 }
 
 
@@ -202,7 +201,7 @@ void XFormsView::init()
 	invalidateLayoutChoice();
 	updateLayoutChoice();
 	updateMenubar();
-	
+
 	// Start autosave timer
 	if (lyxrc.autosave) {
 		autosave_timeout->setTimeout(lyxrc.autosave * 1000);
@@ -233,14 +232,14 @@ void XFormsView::prohibitInput() const
 
 	static Cursor cursor;
 	static bool cursor_undefined = true;
-   
+
 	if (cursor_undefined) {
 		cursor = XCreateFontCursor(fl_get_display(), XC_watch);
 		XFlush(fl_get_display());
 		cursor_undefined = false;
 	}
-   
-	/* set the cursor to the watch for all forms and the canvas */ 
+
+	/* set the cursor to the watch for all forms and the canvas */
 	XDefineCursor(fl_get_display(), getForm()->window, cursor);
 
 	XFlush(fl_get_display());
@@ -251,7 +250,7 @@ void XFormsView::prohibitInput() const
 void XFormsView::allowInput() const
 {
 	/* reset the cursor from the watch for all forms and the canvas */
-   
+
 	XUndefineCursor(fl_get_display(), getForm()->window);
 
 	XFlush(fl_get_display());

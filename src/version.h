@@ -17,7 +17,7 @@ extern char const * lyx_version;
 ///
 extern char const * lyx_release_date;
 
-/// This version string is intended to be used in files created by LyX 
+/// This version string is intended to be used in files created by LyX
 extern char const * lyx_docversion;
 
 /// This is the version information shown by 'lyx -version'

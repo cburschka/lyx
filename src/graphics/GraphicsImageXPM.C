@@ -124,7 +124,7 @@ void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 		break;
 
 	case XpmNoMemory:
-		lyxerr[Debug::GRAPHICS] 
+		lyxerr[Debug::GRAPHICS]
 			<< "Insufficient memory to read in XPM file"
 			<< std::endl;
 		break;
@@ -135,7 +135,7 @@ void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 		delete xpm_image;
 
 		lyxerr[Debug::GRAPHICS]
-			<< "Error reading XPM file '" 
+			<< "Error reading XPM file '"
 			<< XpmGetErrorString(success) << "'"
 			<< std::endl;
 	} else {
@@ -200,15 +200,15 @@ bool GImageXPM::setPixmap(GParams const & params)
 	// Load up the pixmap
 	XpmImage xpm_image = image_.get();
 	int const status =
-		XpmCreatePixmapFromXpmImage(display, 
-					    XRootWindowOfScreen(screen), 
-					    &xpm_image, 
+		XpmCreatePixmapFromXpmImage(display,
+					    XRootWindowOfScreen(screen),
+					    &xpm_image,
 					    &pixmap, &mask, &attrib);
 
 	XpmFreeAttributes(&attrib);
 
 	if (status != XpmSuccess) {
-		lyxerr << "Error creating pixmap from xpm_image '" 
+		lyxerr << "Error creating pixmap from xpm_image '"
 		       << XpmGetErrorString(status) << "'"
 		       << std::endl;
 		pixmap_status_ = PIXMAP_FAILED;
@@ -298,7 +298,7 @@ void GImageXPM::rotate(GParams const & params)
 	max_y = std::max(max_y, y_rot); min_y = std::min(min_y, y_rot);
 
 	typedef unsigned int dimension;
-	
+
 	dimension const new_width  = 1 + int(max_x - min_x); // round up!
 	dimension const new_height = 1 + int(max_y - min_y);
 
@@ -382,7 +382,7 @@ bool contains_color_none(XpmImage const & image);
 
 string const unique_color_string(XpmImage const & image);
 
-// create a copy (using malloc and strcpy). If (!in) return 0; 
+// create a copy (using malloc and strcpy). If (!in) return 0;
 char * clone_c_string(char const * in);
 
 // Given a string of the form #ff0571 create appropriate grayscale and
@@ -638,7 +638,7 @@ char * clone_c_string(char const * in)
 	if (!in)
 		return 0;
 
-        // Don't forget the '\0'
+	// Don't forget the '\0'
 	char * out = static_cast<char *>(malloc(strlen(in) + 1));
 	return strcpy(out, in);
 }

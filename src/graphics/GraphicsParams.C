@@ -28,7 +28,7 @@ GParams::GParams(InsetGraphicsParams const & iparams)
 {
 	if (iparams.clip)
 		bb = iparams.bb;
-		  
+
 	if (iparams.rotate)
 		angle = int(iparams.rotateAngle);
 
@@ -119,7 +119,7 @@ BoundingBox::BoundingBox(string const & bb)
 		return;
 
 	LyXLength const length_yb(tmp1);
-	
+
 	tmp2 = split(tmp2, tmp1, ' ');
 	if (!isValidLength(tmp1) || !isValidLength(tmp2))
 		return;
@@ -148,7 +148,7 @@ BoundingBox::BoundingBox(string const & bb)
 }
 
 
-bool BoundingBox::empty() const 
+bool BoundingBox::empty() const
 {
 	return (!xl && !yb && !xr && !yt);
 }

@@ -147,7 +147,7 @@ GCache::find(InsetGraphics const & inset)
 		if (it->second->referencedBy(inset))
 			return it;
 	}
-	
+
 	return cache->end();
 }
 
@@ -161,7 +161,7 @@ GCache::find(InsetGraphics const & inset) const
 		if (it->second->referencedBy(inset))
 			return it;
 	}
-	
+
 	return cache->end();
 }
 

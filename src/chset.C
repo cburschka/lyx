@@ -23,11 +23,11 @@ bool CharacterSet::loadFile(string const & fname)
 {
 	map_.clear();
 	name_.erase();
- 
+
 	// ascii 7-bit
 	if (fname.empty() || fname == "ascii")
 		return true;
-	
+
 	// open definition file
 	lyxerr[Debug::KBMAP]
 		<< "Reading character set file " << fname << ".cdef" << endl;
@@ -38,12 +38,12 @@ bool CharacterSet::loadFile(string const & fname)
 		return true;		// no definition, use 7-bit ascii
 	}
 	name_ = fname;
-	
+
 	string line;
 	// Ok, I'll be the first to admit that this is probably not
 	// the fastest way to parse the cdef files, but I though it
 	// was a bit neat. Anyway it is wrong to use the lyxlex parse
-	// without the use of a keyword table.     
+	// without the use of a keyword table.
 	LRegex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
 	while (getline(ifs, line)) {
 		if (reg.exact_match(line)) {

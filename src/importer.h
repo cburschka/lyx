@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -26,12 +26,12 @@ class Importer {
 public:
 	///
 	static
-	bool Import(LyXView * lv, string const & filename, 
+	bool Import(LyXView * lv, string const & filename,
 		    string const & format);
 #if 0
 	///
 	static
-        bool IsImportable(string const & format);
+	bool IsImportable(string const & format);
 #endif
 	///
 	static

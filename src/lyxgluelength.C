@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -58,7 +58,7 @@ string const LyXGlueLength::asString() const
 					buffer << len_.value() << unit_name[len_.unit()]
 					       << "+-" << plus_.value()
 					       << unit_name[plus_.unit()];
-	
+
 				else
 					buffer << len_.value() << unit_name[len_.unit()]
 					       << '+' << plus_.value()
@@ -73,13 +73,13 @@ string const LyXGlueLength::asString() const
 				buffer << len_.value() << unit_name[len_.unit()]
 				       << '+' << plus_.value()
 				       << unit_name[plus_.unit()];
-	
+
 	else
 		if (!minus_.zero())
 			if (len_.unit() == minus_.unit())
 				buffer << len_.value() << '-' << minus_.value()
 				       << unit_name[len_.unit()];
-	
+
 			else
 				buffer << len_.value() << unit_name[len_.unit()]
 				       << '-' << minus_.value()
@@ -139,8 +139,8 @@ LyXLength const & LyXGlueLength::minus() const
 bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
 {
 	return l1.len() == l2.len()
-	         && l1.plus() == l2.plus()
-	         && l1.minus() == l2.minus();
+		 && l1.plus() == l2.plus()
+		 && l1.minus() == l2.minus();
 }
 
 

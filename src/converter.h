@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -84,8 +84,8 @@ bool operator<(Format const & a, Format const & b)
 ///
 class Formats {
 public:
-        ///
-        typedef std::vector<Format> FormatList;
+	///
+	typedef std::vector<Format> FormatList;
 	///
 	typedef FormatList::const_iterator const_iterator;
 	///
@@ -99,7 +99,7 @@ public:
 	///
 	void add(string const & name);
 	///
-	void add(string const & name, string const & extension, 
+	void add(string const & name, string const & extension,
 		 string const & prettyname, string const & shortcut);
 	///
 	void erase(string const & name);
@@ -176,7 +176,7 @@ public:
 ///
 class Converters {
 public:
-        typedef std::vector<Converter> ConverterList;
+	typedef std::vector<Converter> ConverterList;
 	///
 	typedef ConverterList::const_iterator const_iterator;
 	///
@@ -241,7 +241,7 @@ public:
 	}
 private:
 	///
-	bool scanLog(Buffer const * buffer, string const & command, 
+	bool scanLog(Buffer const * buffer, string const & command,
 		     string const & filename);
 	///
 	bool runLaTeX(Buffer const * buffer, string const & command);

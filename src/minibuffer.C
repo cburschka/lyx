@@ -3,10 +3,10 @@
  *                 The MiniBuffer Class
  *                 read minibuffer.h for more
  *                 information.
- * 
+ *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.  
- * 
+ *           Copyright 1995-2001 The LyX Team.
+ *
  * ###########################################################################
  */
 
@@ -18,9 +18,9 @@
 #pragma implementation
 #endif
 
-// FIXME: temporary 
+// FIXME: temporary
 #include "frontends/xforms/DropDown.h"
- 
+
 #include "minibuffer.h"
 
 #include "support/lyxalgo.h"
@@ -47,7 +47,7 @@ namespace {
 
 struct prefix {
 	string p;
-	prefix(string const & s) 
+	prefix(string const & s)
 		: p(s) {}
 	bool operator()(string const & s) const {
 		return prefixIs(s, p);
@@ -71,8 +71,8 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 	deactivate();
 }
 
- 
-// thanks for nothing, xforms (recursive creation not allowed) 
+
+// thanks for nothing, xforms (recursive creation not allowed)
 void MiniBuffer::dd_init()
 {
 	dropdown_ = new DropDown(owner_, the_buffer);
@@ -88,8 +88,8 @@ MiniBuffer::~MiniBuffer()
 	delete dropdown_;
 }
 
- 
-void MiniBuffer::stored_slot() 
+
+void MiniBuffer::stored_slot()
 {
 	if (stored_) {
 		stored_ = false;
@@ -98,7 +98,7 @@ void MiniBuffer::stored_slot()
 }
 
 
-void MiniBuffer::stored_set(string const & str) 
+void MiniBuffer::stored_set(string const & str)
 {
 	stored_input = str;
 	stored_ = true;
@@ -122,7 +122,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			set_input(input);
 			stored_ = false;
 		}
-		
+
 		switch (key) {
 		case XK_Down:
 			if (hist_iter != history_->end()) {
@@ -135,7 +135,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			} else {
 				set_input((*hist_iter));
 			}
-			return 1; 
+			return 1;
 		case XK_Up:
 			if (hist_iter == history_->begin()) {
 				// no further history
@@ -145,12 +145,12 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				--hist_iter;
 				set_input((*hist_iter));
 			}
-			return 1; 
+			return 1;
 		case 9:
 		case XK_Tab:
 		{
 			// Completion handling.
-			
+
 			vector<string> comp;
 			lyx::copy_if(completion_.begin(),
 				     completion_.end(),
@@ -187,11 +187,11 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 					test += tmp[test.length()];
 				}
 				set_input(test);
-				
+
 				int x,y,w,h;
 				fl_get_wingeometry(fl_get_real_object_window(the_buffer),
 					&x, &y, &w, &h);
- 
+
 				// asynchronous completion
 				int const air = the_buffer->x;
 				x += air;
@@ -199,7 +199,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				w = the_buffer->w;
 				dropdown_->select(comp, x, y, w);
 			}
-			return 1; 
+			return 1;
 		}
 		case 27:
 		case XK_Escape:
@@ -208,7 +208,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			init();
 			deactivate();
 			//escape.emit();
-			return 1; 
+			return 1;
 		case 13:
 		case XK_Return:
 		{
@@ -255,9 +255,9 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				return 1;
 			}
 			}
-			
+
 		}
-		
+
 		default:
 			return 0;
 		}
@@ -266,22 +266,22 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 		//lyxerr << "Unhandled minibuffer event!" << endl;
 		break;
 	}
-	
+
 	return 0;
 }
 
 
 extern "C" {
-	
+
 	static
-	int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
+	int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event,
 				    FL_Coord, FL_Coord,
 				    int key, void * /*xev*/)
 	{
 		MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
 		return mini->peek_event(ob, event, key);
 	}
-	
+
 }
 
 
@@ -299,26 +299,26 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 			   FL_Coord w, FL_Coord h)
 {
 	FL_OBJECT * obj;
-	
+
 	the_buffer = obj = fl_add_input(type, x, y, w, h, text.c_str());
-        fl_set_object_boxtype(obj, FL_DOWN_BOX);
-        fl_set_object_resize(obj, FL_RESIZE_ALL);
-        fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
-        fl_set_object_color(obj, FL_MCOL, FL_MCOL);
-        fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	
+	fl_set_object_boxtype(obj, FL_DOWN_BOX);
+	fl_set_object_resize(obj, FL_RESIZE_ALL);
+	fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
+	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+
 	// To intercept Up, Down, Table for history
-        fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
-        obj->u_vdata = this;
-        obj->wantkey = FL_KEY_TAB;
+	fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
+	obj->u_vdata = this;
+	obj->wantkey = FL_KEY_TAB;
 
 	set_input(text);
-	
+
 	return obj;
 }
 
 
-void MiniBuffer::message(string const & str) 
+void MiniBuffer::message(string const & str)
 {
 	timer->restart();
 	string const ntext = strip(str);
@@ -329,7 +329,7 @@ void MiniBuffer::message(string const & str)
 }
 
 
-void MiniBuffer::messagePush(string const & str) 
+void MiniBuffer::messagePush(string const & str)
 {
 	text_stored = text;
 	message(str);
@@ -390,7 +390,7 @@ void MiniBuffer::deactivate()
 }
 
 
-void MiniBuffer::redraw() 
+void MiniBuffer::redraw()
 {
 	fl_redraw_object(the_buffer);
 	XFlush(fl_display);
@@ -406,7 +406,7 @@ void MiniBuffer::set_complete_input(string const & str)
 	}
 }
 
- 
+
 void MiniBuffer::append_char(char c)
 {
 	if (!c || !isprint(c))
@@ -420,7 +420,7 @@ void MiniBuffer::append_char(char c)
 	fl_set_input(the_buffer, str.c_str());
 }
 
- 
+
 void MiniBuffer::set_input(string const & str)
 {
 	fl_set_input(the_buffer, str.c_str());

@@ -34,7 +34,7 @@ public:
 	FuncStatus & unknown(bool b);
 	///
 	bool unknown() const;
-	
+
 	///
 	FuncStatus & disabled (bool b);
 	///

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This is the bullet class definition file.
  * This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -60,7 +60,7 @@ private:
 	   This enum makes adding additional panels or changing panel sizes
 	   easier. Since you only need change these values for all tests to
 	   be correct for the new values.
-	   
+
 	   Note: MAX means the size of the array so to test you need:
 	   (x < MAX)  *not* (x <= MAX)
 	*/
@@ -74,33 +74,33 @@ private:
 		///
 		SIZEMAX = 10
 	};
-	
+
 	///
 	void generateText() const;
 	///
 	static string const bulletSize(int);
 	///
 	static string const bulletEntry(int, int);
-	
+
 	///
 	int font;
 	///
 	int character;
 	///
 	int size;
-	
-	// size, character and font are array indices to access 
+
+	// size, character and font are array indices to access
 	// the predefined arrays of LaTeX equivalent strings.
-	
+
 	/** flag indicates if user has control of text (1)
 	    or if I can use it to generate strings (0)
 	    or have already (-1)
 	*/
-	mutable short user_text; 
-	
+	mutable short user_text;
+
 	//NOTE: Arranging these four shorts above to be together
 	//      like this should ensure they are in a single cache line
-	
+
 	/** text may contain a user-defined LaTeX symbol command
 	    or one generated internally from the font, character
 	    and size settings.

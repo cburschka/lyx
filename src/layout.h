@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -142,25 +142,25 @@ enum LYX_END_LABEL_TYPES {
 	///
 	END_LABEL_ENUM_LAST = END_LABEL_STATIC
 };
-		
-/* Fix labels are printed flushright, manual labels flushleft. 
+
+/* Fix labels are printed flushright, manual labels flushleft.
  * MARGIN_MANUAL and MARGIN_FIRST_DYNAMIC are *only* for LABEL_MANUAL,
- * MARGIN_DYNAMIC and MARGIN_STATIC are *not* for LABEL_MANUAL. 
+ * MARGIN_DYNAMIC and MARGIN_STATIC are *not* for LABEL_MANUAL.
  * This seems a funny restriction, but I think other combinations are
- * not needed, so I will not change it yet. 
+ * not needed, so I will not change it yet.
  * Correction: MARGIN_FIRST_DYNAMIC also usable with LABEL_STATIC
  */
 
 
-/* There is a parindent and a parskip. Which one is used depends on the 
- * paragraph_separation-flag of the text-object. 
+/* There is a parindent and a parskip. Which one is used depends on the
+ * paragraph_separation-flag of the text-object.
  * BUT: parindent is only thrown away, if a parskip is defined! So if you
- * want a space between the paragraphs and a parindent at the same time, 
+ * want a space between the paragraphs and a parindent at the same time,
  * you should set parskip to zero and use topsep, parsep and bottomsep.
- * 
- * The standard layout is an exception: its parindent is only set, if the 
+ *
+ * The standard layout is an exception: its parindent is only set, if the
  * previous paragraph is standard too. Well, this is LateX and it is good!
- */ 
+ */
 
 
 #endif

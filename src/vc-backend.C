@@ -28,7 +28,7 @@ using std::getline;
 int VCS::doVCCommand(string const & cmd, string const & path)
 {
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
-        Systemcall one;
+	Systemcall one;
 	Path p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
@@ -129,7 +129,7 @@ void RCS::scanMaster()
 					break;
 				}
 			} while (!contains(tmpt, ";"));
-			
+
 		} else if (token == "comment") {
 			// we don't need to read any further than this.
 			read_enough = true;
@@ -306,7 +306,7 @@ void CVS::revert()
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
 	string const fil = OnlyFilename(owner_->fileName());
-	
+
 	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + "\"",
 		    owner_->filePath());
 	owner_->markLyxClean();

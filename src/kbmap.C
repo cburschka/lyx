@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -34,7 +34,7 @@ string const kb_keymap::printKeysym(unsigned int key, unsigned int mod)
 	mod &= ModsMask;
 
 	char const * const s = XKeysymToString(key);
-	
+
 	if (mod & ShiftMask) buf += "S-";
 	if (mod & ControlMask) buf += "C-";
 	if (mod & Mod1Mask) buf += "M-";
@@ -79,7 +79,7 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 		       << seq << "' Action `"
 		       << action << "'" << endl;
 	}
-	
+
 	kb_sequence k(0, 0);
 
 	string::size_type const res = k.parse(seq);
@@ -178,7 +178,7 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 			}
 		}
 	}
-	
+
 	Table::iterator newone = table.insert(table.end(), kb_key());
 	newone->code = code;
 	newone->mod = modmsk;

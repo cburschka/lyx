@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1998-2001 The LyX Team
  *
  *======================================================*/
@@ -64,13 +64,13 @@ PainterBase & PainterBase::buttonFrame(int x, int y, int w, int h)
 {
 	//  Width of a side of the button
 	int d = 2;
-	
+
 	fillRectangle(x, y, w, d, LColor::top);
 	fillRectangle(x, (y+h-d), w, d, LColor::bottom);
-	
+
 	// Now a couple of trapezoids
 	int x1[4], y1[4];
-	
+
 	x1[0] = x + d;   y1[0] = y + d;
 	x1[1] = x + d;   y1[1] = (y + h - d);
 	x1[2] = x;     y1[2] = y + h;
@@ -87,8 +87,8 @@ PainterBase & PainterBase::buttonFrame(int x, int y, int w, int h)
 }
 
 
-PainterBase & PainterBase::rectText(int x, int baseline, 
-				    string const & str, 
+PainterBase & PainterBase::rectText(int x, int baseline,
+				    string const & str,
 				    LyXFont const & font,
 				    LColor::color back,
 				    LColor::color frame)
@@ -96,10 +96,10 @@ PainterBase & PainterBase::rectText(int x, int baseline,
 	int width;
 	int ascent;
 	int descent;
-	
+
 	lyxfont::rectText(str, font, width, ascent, descent);
 	rectangle(x, baseline - ascent, width, ascent + descent, frame);
-	fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
+	fillRectangle(x + 1, baseline - ascent + 1, width - 1,
 		      ascent + descent - 1, back);
 	text(x + 3, baseline, str, font);
 	return *this;
@@ -107,13 +107,13 @@ PainterBase & PainterBase::rectText(int x, int baseline,
 
 
 PainterBase & PainterBase::buttonText(int x, int baseline,
-				      string const & str, 
+				      string const & str,
 				      LyXFont const & font)
 {
 	int width;
 	int ascent;
 	int descent;
-	
+
 	lyxfont::buttonText(str, font, width, ascent, descent);
 	button(x, baseline - ascent, width, descent + ascent);
 	text(x + 4, baseline, str, font);

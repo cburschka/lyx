@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -173,7 +173,7 @@ public:
 		return latextype == LATEX_PARAGRAPH;
 	}
 	///
-	bool isCommand() const { 
+	bool isCommand() const {
 		return latextype == LATEX_COMMAND;
 	}
 	///
@@ -192,7 +192,7 @@ private:
 
 	/** Name of an layout that has replaced this layout.
 	    This is used to rename a layout, while keeping backward
-	    compatibility 
+	    compatibility
 	*/
 	string obsoleted_by_;
 

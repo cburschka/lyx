@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -38,7 +38,7 @@ Language const * inherit_language = &inherit_lang;
 void Languages::setDefaults()
 {
 	languagelist["english"] = Language("english", "english", N_("English"),
-					   false, 
+					   false,
 					   encodings.getEncoding("iso8859-1"),
 					   "en", "");
 	english_language = default_language = &languagelist["english"];
@@ -79,10 +79,10 @@ void Languages::read(string const & filename)
 		Encoding const * encoding = encodings.getEncoding(encoding_str);
 		if (!encoding) {
 			encoding = encodings.getEncoding("iso8859-1");
-			lyxerr << "Unknown encoding " << encoding_str << endl; 
+			lyxerr << "Unknown encoding " << encoding_str << endl;
 		}
 
-		languagelist[lang] = Language(lang, babel, display, rtl, 
+		languagelist[lang] = Language(lang, babel, display, rtl,
 					      encoding, code, latex_options);
 	}
 
@@ -103,7 +103,7 @@ void Languages::read(string const & filename)
 
 Language const * Languages::getLanguage(string const & language) const
 {
-       	const_iterator it = languagelist.find(language);
+	const_iterator it = languagelist.find(language);
 	if (it != languagelist.end())
 		return &it->second;
 	else

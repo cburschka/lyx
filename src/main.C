@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -30,10 +30,10 @@ int main(int argc, char * argv[])
 	string lyx_localedir = GetEnvPath("LYX_LOCALEDIR");
 	if (lyx_localedir.empty())
 		lyx_localedir = LOCALEDIR;
-	
+
 	// initialize for internationalized version *EK*
-	locale_init(); 
-	gettext_init(lyx_localedir); 
+	locale_init();
+	gettext_init(lyx_localedir);
 
 	LyX lyx(&argc, argv);
 	return 0; // SUCCESS

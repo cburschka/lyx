@@ -1,6 +1,6 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
@@ -62,7 +62,7 @@ void ToolbarDefaults::add(int action)
 }
 
 
-void ToolbarDefaults::init() 
+void ToolbarDefaults::init()
 {
 	add(LAYOUTS);
 	add(LFUN_FILE_OPEN);
@@ -75,19 +75,19 @@ void ToolbarDefaults::init()
 	add(LFUN_COPY);
 	add(LFUN_PASTE);
 	add(SEPARATOR);
-	
+
 	add(LFUN_EMPH);
 	add(LFUN_NOUN);
 	add(LFUN_FREE);
 	add(SEPARATOR);
-	
+
 	add(LFUN_INSET_FOOTNOTE);
 	add(LFUN_INSET_MARGINAL);
 
 	add(LFUN_DEPTH_PLUS);
 	add(SEPARATOR);
 
-        add(LFUN_MATH_MODE);
+	add(LFUN_MATH_MODE);
 	add(SEPARATOR);
 
 	add(LFUN_INSET_GRAPHICS);
@@ -95,7 +95,7 @@ void ToolbarDefaults::init()
 }
 
 
-void ToolbarDefaults::read(LyXLex & lex) 
+void ToolbarDefaults::read(LyXLex & lex)
 {
 	//consistency check
 	if (compare_no_case(lex.getString(), "toolbar")) {
@@ -104,9 +104,9 @@ void ToolbarDefaults::read(LyXLex & lex)
 	}
 
 	defaults.clear();
-	
+
 	bool quit = false;
-	
+
 	lex.pushTable(toolTags, TO_LAST - 1);
 
 	if (lyxerr.debugging(Debug::PARSER))
@@ -123,19 +123,19 @@ void ToolbarDefaults::read(LyXLex & lex)
 				add(func);
 			}
 			break;
-		   
+
 		case TO_SEPARATOR:
 			add(SEPARATOR);
 			break;
-		   
+
 		case TO_LAYOUTS:
 			add(LAYOUTS);
 			break;
-		   
+
 		case TO_NEWLINE:
 			add(NEWLINE);
 			break;
-			
+
 		case TO_ENDTOOLBAR:
 			quit = true;
 			break;
@@ -155,7 +155,7 @@ void ToolbarDefaults::add(string const & func)
 
 	if (tf == -1) {
 		lyxerr << "Toolbar::add: no LyX command called `"
-		       << func << "' exists!" << endl; 
+		       << func << "' exists!" << endl;
 	} else {
 		add(tf);
 	}

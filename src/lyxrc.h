@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -44,7 +44,7 @@ enum LyXRCTags {
 	RC_PRINTEXSTRAOPTIONS,
 	RC_PRINTSPOOL_COMMAND,
 	RC_PRINTSPOOL_PRINTERPREFIX,
-        RC_PRINTPAPERFLAG,
+	RC_PRINTPAPERFLAG,
 	RC_PRINTPAPERDIMENSIONFLAG,
 	RC_CUSTOM_EXPORT_COMMAND,
 	RC_CUSTOM_EXPORT_FORMAT,
@@ -121,7 +121,7 @@ enum LyXRCTags {
 	RC_DEFAULT_LANGUAGE,
 	RC_LABEL_INIT_LENGTH,
 	RC_DISPLAY_GRAPHICS,
-#ifdef USE_PSPELL	
+#ifdef USE_PSPELL
 	RC_USE_PSPELL,
 #endif
 	RC_LAST
@@ -139,7 +139,7 @@ enum LyXRCTags {
 	///
 	void write(string const & filename) const;
 	///
-        void print() const;
+	void print() const;
 	///
 	void output(std::ostream & os) const;
 	///
@@ -178,14 +178,14 @@ enum LyXRCTags {
 	string print_extra_options;
 	///
 	string print_spool_command;
-        ///
+	///
 	string print_spool_printerprefix;
 	///
 	string print_paper_flag;
 	///
 	string print_paper_dimension_flag;
 	///
-        string custom_export_command;
+	string custom_export_command;
 	///
 	string custom_export_format;
 	///
@@ -194,8 +194,8 @@ enum LyXRCTags {
 	string ps_command;
 	/// option for telling the dvi viewer about the paper size
 	string view_dvi_paper_option;
-        /// default paper size for local xdvi/dvips/ghostview/whatever
-        BufferParams::PAPER_SIZE default_papersize;
+	/// default paper size for local xdvi/dvips/ghostview/whatever
+	BufferParams::PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	string chktex_command;
 	///
@@ -278,7 +278,7 @@ enum LyXRCTags {
 	///
 	unsigned int ascii_linelen;
 	/// Ispell command
-#ifdef USE_PSPELL	
+#ifdef USE_PSPELL
 	bool use_pspell;
 #endif
 	string isp_command;
@@ -325,7 +325,7 @@ enum LyXRCTags {
 	///
 	string language_command_local;
 	///
-	bool language_global_options; 
+	bool language_global_options;
 	///
 	bool language_use_babel;
 	///

@@ -66,7 +66,7 @@ private:
 			return p.unique();
 		}
 	};
-	
+
 	/** Remove all unique items.
 	    This removes all elements from params that is only referenced
 	    from the private container. This can be considered a memory
@@ -78,7 +78,7 @@ private:
 						     isUnique());
 		params.erase(it, params.end());
 	}
-	
+
 	/// The actual container.
 	mutable Params params;
 };

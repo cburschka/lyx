@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -37,15 +37,15 @@ public:
 	typedef LayoutList::const_iterator const_iterator;
 	///
 	explicit
-	LyXTextClass (string const & = string(), 
-		      string const & = string(), 
+	LyXTextClass (string const & = string(),
+		      string const & = string(),
 		      string const & = string());
 
 	///
 	const_iterator begin() const { return layoutlist.begin(); }
 	///
 	const_iterator end() const { return layoutlist.end(); }
-	
+
 	///
 	bool Read(string const & filename, bool merge = false);
 	///
@@ -97,7 +97,7 @@ public:
 	};
 	///
 	bool provides(Provides p) const;
-	
+
 	///
 	unsigned int columns() const;
 	///
@@ -125,7 +125,7 @@ public:
 
 	/// Text that dictates how wide the right margin is on the screen
 	string const & rightmargin() const;
-        ///
+	///
 	int maxcounter() const;
 	///
 	int size() const;

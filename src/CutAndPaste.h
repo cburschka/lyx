@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995-2001 the LyX Team.
  *
  * ====================================================== */
@@ -40,13 +40,13 @@ public:
 	static
 	int nrOfParagraphs();
 	/** needed to switch between different classes this works
-	    for a list of paragraphs beginning with the specified par 
+	    for a list of paragraphs beginning with the specified par
 	    return value is the number of wrong conversions
 	*/
 	static
 	int SwitchLayoutsBetweenClasses(lyx::textclass_type class1,
-	                                lyx::textclass_type class2,
-	                                Paragraph * par,
+					lyx::textclass_type class2,
+					Paragraph * par,
 					BufferParams const & bparams);
 	///
 	static

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -130,19 +130,19 @@ public:
 	/** Wether paragraphs are separated by using a indent like in
 	  articles or by using a little skip like in letters.
 	  */
-  	PARSEP paragraph_separation;
+	PARSEP paragraph_separation;
 	///
 	InsetQuotes::quote_language quotes_language;
 	///
 	InsetQuotes::quote_times quotes_times;
 	///
-	string fontsize; 
+	string fontsize;
 	///
- 	lyx::textclass_type textclass;
+	lyx::textclass_type textclass;
 
 	/* this are for the PaperLayout */
 	/// the general papersize (papersize2 or paperpackage
-	char papersize; // add apprip. signedness 
+	char papersize; // add apprip. signedness
 	///  the selected Geometry papersize
 	char papersize2; // add approp. signedness
 	/// a special paperpackage .sty-file

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -39,7 +39,7 @@ BufferParams::BufferParams()
 	: textclass(textclasslist.NumberOfClass("article").second)
 {
 	paragraph_separation = PARSEP_INDENT;
-	defskip = VSpace(VSpace::MEDSKIP); 
+	defskip = VSpace(VSpace::MEDSKIP);
 	quotes_language = InsetQuotes::EnglishQ;
 	quotes_times = InsetQuotes::DoubleQ;
 	fontsize = "default";
@@ -74,9 +74,9 @@ void BufferParams::writeFile(ostream & os) const
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
 
- 	// the textclass
- 	os << "\\textclass " << textclasslist[textclass].name() << '\n';
-	
+	// the textclass
+	os << "\\textclass " << textclasslist[textclass].name() << '\n';
+
 	// then the the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
@@ -85,12 +85,12 @@ void BufferParams::writeFile(ostream & os) const
 		   << tmppreamble
 		   << "\n\\end_preamble\n";
 	}
-      
-	/* the options */ 
+
+	/* the options */
 	if (!options.empty()) {
 		os << "\\options " << options << '\n';
 	}
-   
+
 	/* then the text parameters */
 	if (language != ignore_language)
 		os << "\\language " << language->lang() << '\n';
@@ -113,31 +113,31 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_numerical_citations " << use_numerical_citations
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
-        if (!paperwidth.empty())
+	if (!paperwidth.empty())
 		os << "\\paperwidth "
 		   << VSpace(paperwidth).asLyXCommand() << '\n';
-        if (!paperheight.empty())
+	if (!paperheight.empty())
 		os << "\\paperheight "
 		   << VSpace(paperheight).asLyXCommand() << '\n';
-        if (!leftmargin.empty())
+	if (!leftmargin.empty())
 		os << "\\leftmargin "
 		   << VSpace(leftmargin).asLyXCommand() << '\n';
-        if (!topmargin.empty())
+	if (!topmargin.empty())
 		os << "\\topmargin "
 		   << VSpace(topmargin).asLyXCommand() << '\n';
-        if (!rightmargin.empty())
+	if (!rightmargin.empty())
 		os << "\\rightmargin "
 		   << VSpace(rightmargin).asLyXCommand() << '\n';
-        if (!bottommargin.empty())
+	if (!bottommargin.empty())
 		os << "\\bottommargin "
 		   << VSpace(bottommargin).asLyXCommand() << '\n';
-        if (!headheight.empty())
+	if (!headheight.empty())
 		os << "\\headheight "
 		   << VSpace(headheight).asLyXCommand() << '\n';
-        if (!headsep.empty())
+	if (!headsep.empty())
 		os << "\\headsep "
 		   << VSpace(headsep).asLyXCommand() << '\n';
-        if (!footskip.empty())
+	if (!footskip.empty())
 		os << "\\footskip "
 		   << VSpace(footskip).asLyXCommand() << '\n';
 	os << "\\secnumdepth " << secnumdepth
@@ -151,7 +151,7 @@ void BufferParams::writeFile(ostream & os) const
 		// An output operator for insetquotes would be nice
 	case InsetQuotes::SingleQ:
 		os << "\\quotes_times 1\n"; break;
-	case InsetQuotes::DoubleQ: 
+	case InsetQuotes::DoubleQ:
 		os << "\\quotes_times 2\n"; break;
 	}
 	os << "\\papercolumns " << columns
@@ -223,7 +223,7 @@ void BufferParams::useClassDefaults()
 bool BufferParams::hasClassDefaults() const
 {
 	LyXTextClass const & tclass = textclasslist[textclass];
-	
+
 	return (sides == tclass.sides()
 		&& columns == tclass.columns()
 		&& pagestyle == tclass.pagestyle()
@@ -246,7 +246,7 @@ void BufferParams::readPreamble(LyXLex & lex)
 void BufferParams::readLanguage(LyXLex & lex)
 {
 	if (!lex.next()) return;
-	
+
 	string const tmptok = lex.getString();
 
 	// check if tmptok is part of tex_babel in tex-defs.h
@@ -264,14 +264,14 @@ void BufferParams::readLanguage(LyXLex & lex)
 void BufferParams::readGraphicsDriver(LyXLex & lex)
 {
 	if (!lex.next()) return;
-	
+
 	string const tmptok = lex.getString();
 	// check if tmptok is part of tex_graphics in tex_defs.h
 	int n = 0;
 	while (true) {
 		string const test = tex_graphics[n++];
-		
-		if (test == tmptok) {	 
+
+		if (test == tmptok) {
 			graphicsDriver = tmptok;
 			break;
 		} else if (test == "last_item") {
@@ -280,6 +280,6 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 				"         Setting graphics driver to `default'.\n");
 			graphicsDriver = "default";
 			break;
-		}      
+		}
 	}
 }

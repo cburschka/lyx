@@ -6,7 +6,7 @@
  *
  *  \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- *  Used internally by the GraphicsCache. 
+ *  Used internally by the GraphicsCache.
  *  Only a subset of InsetGraphicsParams is needed for display purposes.
  *  The GraphicsParams c-tor also interrogates lyxrc to ascertain whether
  *  to display or not.
@@ -47,7 +47,7 @@ struct BoundingBox {
 bool operator==(BoundingBox const &, BoundingBox const &);
 bool operator!=(BoundingBox const &, BoundingBox const &);
 
-struct GParams 
+struct GParams
 {
 	GParams(InsetGraphicsParams const &);
 

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -73,7 +73,7 @@ bool BufferView::insertLyXFile(string const & filen)
 			   MakeDisplayPath(fname, 50));
 		return false;
 	}
-	
+
 	beforeChange(text);
 
 	ifstream ifs(fname.c_str());
@@ -83,9 +83,9 @@ bool BufferView::insertLyXFile(string const & filen)
 			   MakeDisplayPath(fname, 50));
 		return false;
 	}
-	
+
 	int const c = ifs.peek();
-       
+
 	LyXLex lex(0, 0);
 	lex.setStream(ifs);
 
@@ -95,7 +95,7 @@ bool BufferView::insertLyXFile(string const & filen)
 		lyxerr[Debug::INFO] << "Will insert file with header" << endl;
 		res = buffer()->readFile(lex, text->cursor.par());
 	} else {
-		lyxerr[Debug::INFO] << "Will insert file without header" 
+		lyxerr[Debug::INFO] << "Will insert file without header"
 				    << endl;
 		res = buffer()->readLyXformat2(lex, text->cursor.par());
 	}
@@ -171,7 +171,7 @@ bool BufferView::removeAutoInsets()
 				cursor_par = cursor_par_prev;
 				cursor_pos = cursor_par_prev->size();
 				cursor_par_prev = cursor_par->previous();
-				// cursor_par_next remains the same 
+				// cursor_par_next remains the same
 			} else if (cursor_par_next) {
 				// First step below may occur before while{}
 				// .
@@ -254,13 +254,13 @@ void BufferView::insertErrors(TeXErrors & terr)
 		int const errorrow = cit->error_in_line;
 
 		// Insert error string for row number
-		int tmpid = -1; 
+		int tmpid = -1;
 		int tmppos = -1;
 
 		if (buffer()->texrow.getIdFromRow(errorrow, tmpid, tmppos)) {
 			buffer()->texrow.increasePos(tmpid, tmppos);
 		}
-		
+
 		Paragraph * texrowpar = 0;
 
 		if (tmpid == -1) {
@@ -285,7 +285,7 @@ void BufferView::insertErrors(TeXErrors & terr)
 
 void BufferView::setCursorFromRow(int row)
 {
-	int tmpid = -1; 
+	int tmpid = -1;
 	int tmppos = -1;
 
 	buffer()->texrow.getIdFromRow(row, tmpid, tmppos);
@@ -356,7 +356,7 @@ void BufferView::menuRedo()
 		return;
 	}
 #endif
-   
+
 	if (available()) {
 		owner()->message(_("Redo"));
 		hideCursor();
@@ -423,14 +423,14 @@ void BufferView::paste()
 	toggleSelection();
 	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
-	
+
 	// paste
 	text->pasteSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 // why fake a selection only I think it should be a real one and not only
 // a painted one (Jug 20020318).
 #if 0
-	// clear the selection 
+	// clear the selection
 	toggleSelection();
 	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -438,7 +438,7 @@ void BufferView::paste()
 }
 
 
-/* these functions are for the spellchecker */ 
+/* these functions are for the spellchecker */
 string const BufferView::nextWord(float & value)
 {
 	if (!available()) {
@@ -449,11 +449,11 @@ string const BufferView::nextWord(float & value)
 	return text->selectNextWordToSpellcheck(this, value);
 }
 
-  
+
 void BufferView::selectLastWord()
 {
 	if (!available()) return;
-   
+
 	LyXCursor cur = text->selection.cursor;
 	hideCursor();
 	beforeChange(text);
@@ -467,7 +467,7 @@ void BufferView::selectLastWord()
 void BufferView::endOfSpellCheck()
 {
 	if (!available()) return;
-   
+
 	hideCursor();
 	beforeChange(text);
 	text->selectSelectedWord(this);
@@ -483,15 +483,15 @@ void BufferView::replaceWord(string const & replacestring)
 	LyXText * tt = getLyXText();
 	hideCursor();
 	update(tt, BufferView::SELECT|BufferView::FITCUR);
-   
-	/* clear the selection (if there is any) */ 
+
+	/* clear the selection (if there is any) */
 	toggleSelection(false);
 	update(tt, BufferView::SELECT|BufferView::FITCUR);
-   
-	/* clear the selection (if there is any) */ 
+
+	/* clear the selection (if there is any) */
 	toggleSelection(false);
 	tt->replaceSelectionWithString(this, replacestring);
-   
+
 	tt->setSelectionOverString(this, replacestring);
 
 	// Go back so that replacement string is also spellchecked
@@ -560,7 +560,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		    (cursor.par()->getInset(cursor.pos() - 1) ==
 		     locking_inset))
 			text->setCursor(this, cursor,
-			                cursor.par(), cursor.pos() - 1);
+					cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
 		if (locking_inset->isTextInset() &&
@@ -610,7 +610,7 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		return 0;
 	} else if (inset && theLockingInset() &&
 		   theLockingInset()->unlockInsetInInset(this, inset)) {
-		// owner inset has updated the layout combo 
+		// owner inset has updated the layout combo
 		finishUndo();
 		return 0;
 	}
@@ -625,8 +625,8 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
 	setUndo(this, kind,
-	        text->cursor.par(),
-	        text->cursor.par()->next());
+		text->cursor.par(),
+		text->cursor.par()->next());
 }
 
 
@@ -664,7 +664,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			need_update = true;
 
 			// FIXME
-			
+
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {
@@ -696,10 +696,10 @@ bool BufferView::ChangeCitationsIfUnique(string const & from,
 					 string const & to)
 {
 	typedef pair<string, string> StringPair;
-	
-	vector<StringPair> keys = buffer()->getBibkeyList();	
-	if (count_if(keys.begin(), keys.end(), 
-		     lyx::equal_1st_in_pair<StringPair>(from)) 
+
+	vector<StringPair> keys = buffer()->getBibkeyList();
+	if (count_if(keys.begin(), keys.end(),
+		     lyx::equal_1st_in_pair<StringPair>(from))
 	    > 1)
 		return false;
 

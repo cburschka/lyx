@@ -1,8 +1,8 @@
 /* This file is part of
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-*        
+*
 *           Copyright 1995 Matthias Ettrich
 *           Copyright 1995-2001 the LyX Team.
 *
@@ -22,7 +22,7 @@ void Variables::set(string const & var, string const & val)
 {
 	// We want to use const_iterator (Lgb)
 	Vars::iterator cit = vars_.find(var);
-	if (cit != vars_.end()) 
+	if (cit != vars_.end())
 		vars_.erase(var);
 	vars_[var] = val;;
 }
@@ -31,9 +31,9 @@ void Variables::set(string const & var, string const & val)
 string const Variables::get(string const & var) const
 {
 	Vars::const_iterator cit = vars_.find(var);
-	if (cit != vars_.end()) 
+	if (cit != vars_.end())
 		return cit->second;
-	else 
+	else
 		return string();
 }
 
@@ -41,7 +41,7 @@ string const Variables::get(string const & var) const
 bool Variables::isSet(string const & var) const
 {
 	Vars::const_iterator cit = vars_.find(var);
-	return (cit != vars_.end()); 
+	return (cit != vars_.end());
 }
 
 
@@ -80,4 +80,3 @@ int main() {
 }
 
 #endif
-

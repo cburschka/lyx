@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -106,13 +106,13 @@ bool LyXTextClassList::Read ()
 			"lyxlex was not able to set file: "
 		       << real_file << endl;
 	}
-	
+
 	if (!lex.isOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
 			"textclass file  `" << MakeDisplayPath(real_file, 1000)
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
- 		return false;
+		return false;
 	}
 
 	bool finished = false;
@@ -172,7 +172,7 @@ LyXTextClassList textclasslist;
 void LyXSetStyle()
 {
 	lyxerr[Debug::TCLASS] << "LyXSetStyle: parsing configuration...\n";
-	
+
 	if (!textclasslist.Read()) {
 		lyxerr[Debug::TCLASS] << "LyXSetStyle: an error occured "
 			"during parsing.\n             Exiting." << endl;

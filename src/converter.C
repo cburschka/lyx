@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -72,7 +72,7 @@ bool Format::isChildFormat() const
 {
 	if (name_.empty())
 		return false;
-        return isdigit(name_[name_.length() - 1]);
+	return isdigit(name_[name_.length() - 1]);
 }
 
 
@@ -116,10 +116,10 @@ void Formats::add(string const & name)
 }
 
 
-void Formats::add(string const & name, string const & extension, 
+void Formats::add(string const & name, string const & extension,
 		  string const & prettyname, string const & shortcut)
 {
-	FormatList::iterator it = 
+	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			lyx::compare_memfun(&Format::name, name));
 	if (it == formatlist.end())
@@ -134,7 +134,7 @@ void Formats::add(string const & name, string const & extension,
 
 void Formats::erase(string const & name)
 {
-	FormatList::iterator it = 
+	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			lyx::compare_memfun(&Format::name, name));
 	if (it != formatlist.end())
@@ -185,10 +185,10 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 		if (paper_size == "letter")
 			paper_size = "us";
 		command += " " + paper_size;
-		if (buffer->params.orientation 
+		if (buffer->params.orientation
 		    == BufferParams::ORIENTATION_LANDSCAPE)
 			command += 'r';
-        }
+	}
 
 	command += " " + QuoteName(OnlyFilename((filename)));
 
@@ -325,7 +325,7 @@ void Converters::add(string const & from, string const & to,
 		converter.flags = flags;
 	}
 	converter.readFlags();
-	
+
 	if (converter.latex && (latex_command_.empty() || to == "dvi"))
 		latex_command_ = subst(command, token_from, "");
 	// If we have both latex & pdflatex, we set latex_command to latex.
@@ -355,10 +355,10 @@ void Converters::erase(string const & from, string const & to)
 // This method updates the pointers From and To in all the converters.
 // The code is not very efficient, but it doesn't matter as the number
 // of formats and converters is small.
-// Furthermore, this method is called only on startup, or after 
+// Furthermore, this method is called only on startup, or after
 // adding/deleting a format in FormPreferences (the latter calls can be
 // eliminated if the formats in the Formats class are stored using a map or
-// a list (instead of a vector), but this will cause other problems). 
+// a list (instead of a vector), but this will cause other problems).
 void Converters::update(Formats const & formats)
 {
 	ConverterList::iterator it = converterlist_.begin();
@@ -419,7 +419,7 @@ Converters::getReachableTo(string const & target, bool clear_visited)
 		if (i != s || target != "lyx") {
 			result.push_back(&formats.get(i));
 		}
-		
+
 		vector<int>::iterator it = vertices_[i].in_vertices.begin();
 		vector<int>::iterator end = vertices_[i].in_vertices.end();
 		for (; it != end; ++it) {
@@ -523,7 +523,7 @@ Converters::getPath(string const & from, string const & to)
 			found = true;
 			break;
 		}
-		
+
 		vector<int>::const_iterator beg =
 			vertices_[i].out_vertices.begin();
 		vector<int>::const_iterator cit = beg;
@@ -615,8 +615,8 @@ bool Converters::convert(Buffer const * buffer,
 		} else {
 			if (conv.need_aux && !run_latex
 			    && !latex_command_.empty()) {
-				lyxerr[Debug::FILES] 
-					<< "Running " << latex_command_ 
+				lyxerr[Debug::FILES]
+					<< "Running " << latex_command_
 					<< " to update aux file"<<  endl;
 				runLaTeX(buffer, latex_command_);
 			}
@@ -704,11 +704,11 @@ bool Converters::convert(Buffer const * buffer,
 			}
 		}
 		return true;
-	} else 
+	} else
 		return move(outfile, to_file, conv.latex);
 }
 
-// If from = /path/file.ext and to = /path2/file2.ext2 then this method 
+// If from = /path/file.ext and to = /path2/file2.ext2 then this method
 // moves each /path/file*.ext file to /path2/file2*.ext2'
 bool Converters::move(string const & from, string const & to, bool copy)
 {
@@ -728,7 +728,7 @@ bool Converters::move(string const & from, string const & to, bool copy)
 			string from2 = path + *it;
 			string to2 = to_base + it->substr(base.length());
 			to2 = ChangeExtension(to2, to_extension);
-			lyxerr[Debug::FILES] << "moving " << from2 
+			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
 			bool moved = (copy)
 				? lyx::copy(from2, to2)
@@ -848,7 +848,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	// do the LaTeX run(s)
 	string name = buffer->getLatexName();
-	LaTeX latex(command, name, buffer->filePath());	
+	LaTeX latex(command, name, buffer->filePath());
 	TeXErrors terr;
 	int result = latex.run(terr,
 			       bv ? bv->owner()->getLyXFunc() : 0);
@@ -888,12 +888,12 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	if (bv)
 		bv->owner()->allowInput();
- 
-	int const ERROR_MASK = 
+
+	int const ERROR_MASK =
 			LaTeX::NO_LOGFILE |
 			LaTeX::ERRORS |
 			LaTeX::NO_OUTPUT;
-	
+
 	return (result & ERROR_MASK) == 0;
 
 }

@@ -13,7 +13,7 @@
 #ifdef HAVE_LIBAIKSAURUS
 
 #include <algorithm>
- 
+
 using std::sort;
 
 Thesaurus::Thesaurus()
@@ -36,14 +36,14 @@ Thesaurus::Meanings Thesaurus::lookup(string const & text)
 		return meanings;
 
 	// weird api, but ...
- 
+
 	int prev_meaning = -1;
 	int cur_meaning;
 	string meaning;
 
-	// correct, returns "" at the end 
+	// correct, returns "" at the end
 	string ret = aik_->next(cur_meaning);
- 
+
 	while (!ret.empty()) {
 		if (cur_meaning != prev_meaning) {
 			meaning = ret;
@@ -52,9 +52,9 @@ Thesaurus::Meanings Thesaurus::lookup(string const & text)
 		} else {
 			if (ret != text) {
 				meanings[meaning].push_back(ret);
-			} 
+			}
 		}
- 
+
 		ret = aik_->next(cur_meaning);
 	}
 
@@ -62,7 +62,7 @@ Thesaurus::Meanings Thesaurus::lookup(string const & text)
 		it != meanings.end(); ++it) {
 			sort(it->second.begin(), it->second.end());
 	}
- 
+
 	return meanings;
 }
 
@@ -71,13 +71,13 @@ Thesaurus::Meanings Thesaurus::lookup(string const & text)
 Thesaurus::Thesaurus()
 {
 }
- 
- 
+
+
 Thesaurus::~Thesaurus()
 {
 }
 
- 
+
 Thesaurus::Meanings Thesaurus::lookup(string const &)
 {
 	return Meanings();
@@ -86,4 +86,4 @@ Thesaurus::Meanings Thesaurus::lookup(string const &)
 #endif // HAVE_LIBAIKSAURUS
 
 // Global instance
-Thesaurus thesaurus; 
+Thesaurus thesaurus;

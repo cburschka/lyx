@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -69,7 +69,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string filename = buffer->getLatexName(false);
 	if (!buffer->tmppath.empty())
 		filename = AddName(buffer->tmppath, filename);
-	filename = ChangeExtension(filename, 
+	filename = ChangeExtension(filename,
 				   formats.extension(backend_format));
 
 	// Ascii backend
@@ -138,7 +138,7 @@ vector<Format const *> const
 Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
 {
 	vector<string> backends = Backends(buffer);
-	vector<Format const *> result = 
+	vector<Format const *> result =
 		converters.getReachable(backends[0], only_viewable, true);
 	for (vector<string>::const_iterator it = backends.begin() + 1;
 	     it != backends.end(); ++it) {

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -53,7 +53,7 @@ private:
 	virtual void setWindowTitle(string const &, string const &);
 	/// makes the main form.
 	void create_form_form_main(int width, int height);
-	/// A pointer to the form.	
+	/// A pointer to the form.
 	FL_FORM * form_;
 };
 #endif

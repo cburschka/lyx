@@ -36,8 +36,8 @@ struct Box {
 	 */
 	bool contained(int x, int y);
 };
- 
+
 
 std::ostream & operator<<(std::ostream &, Box const &);
- 
+
 #endif // BOX_H

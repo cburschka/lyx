@@ -1,6 +1,6 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1996-2001 The LyX Team.
@@ -33,7 +33,7 @@ LyXLex::LyXLex(keyword_item * tab, int num)
 {}
 
 
-LyXLex::~LyXLex() 
+LyXLex::~LyXLex()
 {
 	delete pimpl_;
 }
@@ -131,7 +131,7 @@ float LyXLex::getFloat() const
 {
 	// replace comma with dot in case the file was written with
 	// the wrong locale (should be rare, but is easy enough to
-	// avoid). 
+	// avoid).
 	string str = subst(pimpl_->getString(), ",", ".");
 	if (isStrDbl(str))
 		return strToDbl(str);
@@ -150,7 +150,7 @@ string const LyXLex::getString() const
 
 // I would prefer to give a tag number instead of an explicit token
 // here, but it is not possible because Buffer::readLyXformat2 uses
-// explicit tokens (JMarc) 
+// explicit tokens (JMarc)
 string const LyXLex::getLongString(string const & endtoken)
 {
 	string str, prefix;
@@ -160,15 +160,15 @@ string const LyXLex::getLongString(string const & endtoken)
 		if (!eatLine())
 			// blank line in the file being read
 			continue;
-		
+
 		string const token = frontStrip(strip(getString()), " \t");
-		
+
 		lyxerr[Debug::PARSER] << "LongString: `"
 				      << getString() << '\'' << endl;
 
 		// We do a case independent comparison, like search_kw
 		// does.
-                if (compare_no_case(token, endtoken) != 0) {
+		if (compare_no_case(token, endtoken) != 0) {
 			string tmpstr = getString();
 			if (firstline) {
 				unsigned int i = 0;
@@ -180,14 +180,14 @@ string const LyXLex::getLongString(string const & endtoken)
 				firstline = false;
 				lyxerr[Debug::PARSER] << "Prefix = `" << prefix
 						      << '\'' << endl;
-			} 
+			}
 
-			if (!prefix.empty() 
+			if (!prefix.empty()
 			    && prefixIs(tmpstr, prefix)) {
 				tmpstr.erase(0, prefix.length() - 1);
 			}
 			str += frontStrip(tmpstr, "\t") + '\n';
-                }
+		}
 		else // token == endtoken
 			break;
 	}
@@ -237,7 +237,7 @@ void LyXLex::pushToken(string const & pt)
 int LyXLex::findToken(char const * str[])
 {
 	int i = 0;
-   
+
 	if (next()) {
 		if (compare(pimpl_->buff, "default")) {
 			while (str[i][0] && compare(str[i], pimpl_->buff)) {

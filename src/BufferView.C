@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -53,7 +53,7 @@ LyXView * BufferView::owner() const
 }
 
 
-Painter & BufferView::painter() 
+Painter & BufferView::painter()
 {
 	return pimpl_->painter();
 }
@@ -199,19 +199,19 @@ void BufferView::insetUnlock()
 
 bool BufferView::focus() const
 {
-  	return pimpl_->focus();
+	return pimpl_->focus();
 }
 
 
 void BufferView::focus(bool f)
 {
-  	pimpl_->focus(f);
+	pimpl_->focus(f);
 }
 
 
 bool BufferView::active() const
 {
-  	return pimpl_->active();
+	return pimpl_->active();
 }
 
 
@@ -221,7 +221,7 @@ int BufferView::workWidth() const
 }
 
 
-bool BufferView::belowMouse() const 
+bool BufferView::belowMouse() const
 {
 	return pimpl_->belowMouse();
 }
@@ -251,7 +251,7 @@ void BufferView::toggleToggle()
 }
 
 
-void BufferView::center() 
+void BufferView::center()
 {
 	pimpl_->center();
 }

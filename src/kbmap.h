@@ -34,7 +34,7 @@ public:
 
 	/// print all available keysyms
 	string const print() const;
-	
+
 	/**
 	 * Look up a key press in the keymap.
 	 * @param key the keysym
@@ -64,13 +64,13 @@ private:
 	struct kb_key {
 		/// Keysym
 		unsigned int code;
-		
+
 		/// Modifier masks
 		unsigned int mod;
-		
+
 		/// Keymap for prefix keys
 		boost::shared_ptr<kb_keymap> table;
-		
+
 		/// Action for !prefix keys
 		int action;
 	};
@@ -81,7 +81,7 @@ private:
 	 * @param r internal recursion level
 	 */
 	void defkey(kb_sequence * seq, int action, unsigned int r = 0);
-	
+
 	///  Returns a string of the given key
 	string const printKey(kb_key const & key) const;
 

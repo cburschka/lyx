@@ -9,7 +9,7 @@
  *
  *  grfx::GCache is the manager of the image cache.
  *  It is responsible for creating the grfx::GCacheItem's and maintaining them.
- *  
+ *
  *  grfx::GCache is a singleton class. It is possible to have only one
  *  instance of it at any moment.
  */
@@ -93,7 +93,7 @@ private:
 	 */
 	CacheType * cache;
 };
- 
+
 } // namespace grfx
 
 

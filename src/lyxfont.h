@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.   
+ *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
 
@@ -125,7 +125,7 @@ public:
 		///
 		IGNORE_SIZE
 	};
- 
+
 	/// Used for emph, underbar, noun and latex toggles
 	enum FONT_MISC_STATE {
 		///
@@ -177,28 +177,28 @@ public:
 
 	/// Decreases font size by one
 	LyXFont & decSize();
- 
+
 	/// Increases font size by one
 	LyXFont & incSize();
- 
+
 	///
 	FONT_FAMILY family() const;
- 
+
 	///
 	FONT_SERIES series() const;
- 
+
 	///
 	FONT_SHAPE shape() const;
- 
+
 	///
 	FONT_SIZE size() const;
- 
+
 	///
 	FONT_MISC_STATE emph() const;
- 
+
 	///
 	FONT_MISC_STATE underbar() const;
- 
+
 	///
 	FONT_MISC_STATE noun() const;
 
@@ -208,7 +208,7 @@ public:
 	///
 	LColor::color color() const;
 
- 	///
+	///
 	Language const * language() const;
 
 	///
@@ -219,7 +219,7 @@ public:
 
 	///
 	bool isSymbolFont() const;
-	
+
 	///
 	LyXFont & setFamily(LyXFont::FONT_FAMILY f);
 	///
@@ -238,21 +238,21 @@ public:
 	LyXFont & setNumber(LyXFont::FONT_MISC_STATE n);
 	///
 	LyXFont & setColor(LColor::color c);
- 	///
+	///
 	LyXFont & setLanguage(Language const * l);
 
 	/// Set family after LyX text format
 	LyXFont & setLyXFamily(string const &);
- 
+
 	/// Set series after LyX text format
 	LyXFont & setLyXSeries(string const &);
- 
+
 	/// Set shape after LyX text format
 	LyXFont & setLyXShape(string const &);
- 
+
 	/// Set size after LyX text format
 	LyXFont & setLyXSize(string const &);
- 
+
 	/// Returns misc flag after LyX text format
 	LyXFont::FONT_MISC_STATE setLyXMisc(string const &);
 
@@ -261,7 +261,7 @@ public:
 
 	/// Returns size of font in LaTeX text notation
 	string const latexSize() const;
- 
+
 	/** Updates font settings according to request.
 	    If an attribute is IGNORE, the attribute is left as it is.
 	    When toggleall = true, all properties that matches the font in use
@@ -274,11 +274,11 @@ public:
 	void update(LyXFont const & newfont,
 		    Language const * default_lang,
 		    bool toggleall = false);
- 
+
 	/** Reduce font to fall back to template where possible.
 	    Equal fields are reduced to INHERIT */
 	void reduce(LyXFont const & tmplt);
- 
+
 	/// Realize font from a template (INHERIT are realized)
 #ifndef INHERIT_LANGUAGE
 	LyXFont & realize(LyXFont const & tmplt);
@@ -287,16 +287,16 @@ public:
 #endif
 	/// Is a given font fully resolved?
 	bool resolved() const;
- 
+
 	/// Read a font specification from LyXLex. Used for layout files.
 	LyXFont & lyxRead(LyXLex &);
- 
+
 	/// Writes the changes from this font to orgfont in .lyx format in file
 #ifndef INHERIT_LANGUAGE
 	void lyxWriteChanges(LyXFont const & orgfont, std::ostream &) const;
 #else
 	void lyxWriteChanges(LyXFont const & orgfont, Language const * doclang,
-	                     std::ostream &) const;
+			     std::ostream &) const;
 #endif
 
 	/** Writes the head of the LaTeX needed to change to this font.
@@ -355,16 +355,16 @@ private:
 
 	///
 	FontBits bits;
-	
+
 	///
 	Language const * lang;
-	
+
 	/// Sane font
 	static FontBits sane;
-	
+
 	/// All inherit font
 	static FontBits inherit;
- 
+
 	/// All ignore font
 	static FontBits ignore;
 
@@ -382,7 +382,7 @@ LyXFont::FONT_SHAPE LyXFont::shape() const
 
 
 inline
-LyXFont::FONT_FAMILY LyXFont::family() const 
+LyXFont::FONT_FAMILY LyXFont::family() const
 {
 	return bits.family;
 }

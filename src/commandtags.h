@@ -113,7 +113,7 @@ enum kb_action {
 	LFUN_UMLAUT,
 	LFUN_DOT,
 	LFUN_OGONEK,
-	LFUN_VECTOR, // 90              //  Alejandro 040696 
+	LFUN_VECTOR, // 90              //  Alejandro 040696
 	LFUN_SELFINSERT,
 	LFUN_GETBUFNAME,
 	LFUN_GETXY,
@@ -214,8 +214,8 @@ enum kb_action {
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
 	LFUN_FLOAT_LIST,                // Lgb 20010503
-	LFUN_READ_ONLY_TOGGLE,          // Lgb 97-05-27    
-	LFUN_BIBDB_ADD,                 // Ale 970530   
+	LFUN_READ_ONLY_TOGGLE,          // Lgb 97-05-27
+	LFUN_BIBDB_ADD,                 // Ale 970530
 	LFUN_BIBDB_DEL,                 // Ale 970530
 	LFUN_BIBTEX_STYLE, // 190       // Ale 970530
 	LFUN_GETTIP,                    // Ale 970603
@@ -259,7 +259,7 @@ enum kb_action {
 	LFUN_LOFVIEW, // 230            // Dekel 20000519
 	LFUN_LOTVIEW,                   // Dekel 20000519
 	LFUN_LOAVIEW,                   // Dekel 20000519
- 	LFUN_SET_COLOR,                 // SLior 20000611
+	LFUN_SET_COLOR,                 // SLior 20000611
 	LFUN_INSET_EXTERNAL,            // Alstrup 20000609
 	LFUN_INSET_MARGINAL,            // Lgb 20000626
 	LFUN_INSET_MINIPAGE,            // Lgb 20000627

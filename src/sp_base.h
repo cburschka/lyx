@@ -21,13 +21,13 @@ class SpellBase
 	ISP_MISSED,
 	ISP_IGNORE
    };
-   
+
    virtual ~SpellBase() {}
 
    virtual void initialize(BufferParams const & , string const &) = 0;
 
    virtual bool alive() = 0;
-   
+
    virtual void cleanUp() = 0;
 
    virtual enum spellStatus check(string const &) = 0;
@@ -43,8 +43,7 @@ class SpellBase
    virtual char const * error() = 0;
 
    virtual char const * nextMiss() = 0;
-     
+
 };
 
 #endif
-   

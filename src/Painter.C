@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1998-2001 The LyX Team
  *
  *======================================================*/
@@ -41,7 +41,7 @@ using std::max;
 namespace {
 
 inline
-Display * display() 
+Display * display()
 {
 	return GUIRunTime::x11Display();
 }
@@ -69,7 +69,7 @@ PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 			    enum line_style ls,
 			    enum line_width lw)
 {
-	XDrawLine(display(), owner.getPixmap(), 
+	XDrawLine(display(), owner.getPixmap(),
 		  lyxColorHandler->getGCLinepars(ls, lw, col),
 		  x1, y1, x2, y2);
 	return *this;
@@ -82,18 +82,18 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 			     enum line_width lw)
 {
 	boost::scoped_array<XPoint> points(new XPoint[np]);
-	
+
 	for (int i = 0; i < np; ++i) {
 		points[i].x = xp[i];
 		points[i].y = yp[i];
 	}
-	
-        XDrawLines(display(), owner.getPixmap(),
-		   lyxColorHandler->getGCLinepars(ls, lw, col), 
+
+	XDrawLines(display(), owner.getPixmap(),
+		   lyxColorHandler->getGCLinepars(ls, lw, col),
 		   points.get(), np, CoordModeOrigin);
-	
+
 	return *this;
-}      
+}
 
 
 PainterBase & Painter::rectangle(int x, int y, int w, int h,
@@ -102,7 +102,7 @@ PainterBase & Painter::rectangle(int x, int y, int w, int h,
 				 enum line_width lw)
 {
 	XDrawRectangle(display(), owner.getPixmap(),
-		       lyxColorHandler->getGCLinepars(ls, lw, col), 
+		       lyxColorHandler->getGCLinepars(ls, lw, col),
 		       x, y, w, h);
 	return *this;
 }
@@ -121,39 +121,39 @@ PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 				   LColor::color col)
 {
 	boost::scoped_array<XPoint> points(new XPoint[np]);
-	
+
 	for (int i = 0; i < np; ++i) {
 		points[i].x = xp[i];
 		points[i].y = yp[i];
 	}
-	
+
 	XFillPolygon(display(), owner.getPixmap(),
-		     lyxColorHandler->getGCForeground(col), points.get(), np, 
+		     lyxColorHandler->getGCForeground(col), points.get(), np,
 		     Nonconvex, CoordModeOrigin);
-	
+
 	return *this;
-}      
+}
 
 
 PainterBase & Painter::arc(int x, int y,
 			   unsigned int w, unsigned int h,
 			   int a1, int a2, LColor::color col)
 {
-        XDrawArc(display(), owner.getPixmap(),
+	XDrawArc(display(), owner.getPixmap(),
 		 lyxColorHandler->getGCForeground(col),
-                 x, y, w, h, a1, a2);
+		 x, y, w, h, a1, a2);
 	return *this;
-}     
+}
 
 
 /// Draw lines from x1,y1 to x2,y2. They are arrays
-PainterBase & Painter::segments(int const * x1, int const * y1, 
+PainterBase & Painter::segments(int const * x1, int const * y1,
 				int const * x2, int const * y2, int ns,
 				LColor::color col,
 				enum line_style ls, enum line_width lw)
 {
 	boost::scoped_array<XSegment> s(new XSegment[ns]);
-	
+
 	for (int i = 0; i < ns; ++i) {
 		s[i].x1 = x1[i];
 		s[i].y1 = y1[i];
@@ -163,7 +163,7 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 	XDrawSegments(display(), owner.getPixmap(),
 		      lyxColorHandler->getGCLinepars(ls, lw, col),
 		      s.get(), ns);
-	
+
 	return *this;
 }
 
@@ -217,7 +217,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		text(x , y, xs.get(), ls, font);
 		return *this;
 	}
-	
+
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		lyxfont::XSetFont(display(), gc, f);
@@ -241,11 +241,11 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			}
 		}
 	}
-	
+
 	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, lyxfont::width(s, ls, f));
 	}
-	
+
 	return *this;
 }
 
@@ -282,11 +282,11 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 			}
 		}
 	}
-	
+
 	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, lyxfont::width(s, ls, f));
 	}
-	
+
 	return *this;
 }
 

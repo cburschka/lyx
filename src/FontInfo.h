@@ -1,16 +1,16 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1997 Asger Alstrup
  *           and the LyX Team.
  *
  * ====================================================== */
 
 #ifndef FONTINFO_H
-#define FONTINFO_H 
+#define FONTINFO_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -21,7 +21,7 @@
 #include <boost/smart_ptr.hpp>
 
 /** This class manages a font.
-    The idea is to create a FontInfo object with a font name pattern with a 
+    The idea is to create a FontInfo object with a font name pattern with a
     wildcard at the size field. Then this object can host request for font-
     instances of any given size. If no exact match is found, the closest size
     is chosen instead. If the font is scalable, the flag
@@ -86,7 +86,7 @@ private:
 	/// Ask X11 about this font pattern
 	void query();
 
-	/// Build newly sized font string 
+	/// Build newly sized font string
 	string const resize(string const &, int size) const;
 };
 #endif

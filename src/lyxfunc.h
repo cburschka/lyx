@@ -18,7 +18,7 @@ class LyXView;
 class LyXText;
 
 
-/** This class encapsulates all the LyX command operations. 
+/** This class encapsulates all the LyX command operations.
     This is the class of the LyX's "high level event handler".
     Every user command is processed here, either invocated from
     keyboard or from the GUI. All GUI objects, including buttons and
@@ -29,28 +29,28 @@ public:
 	///
 	explicit
 	LyXFunc(LyXView *);
-    
+
 	/// LyX dispatcher, executes lyx actions.
 	string const dispatch(kb_action ac, string argument = string());
 
 	/// The same as dispatch, but also shows shortcuts and command
-	/// name in minibuffer if show_sc is true (more to come?) 
+	/// name in minibuffer if show_sc is true (more to come?)
 	void verboseDispatch(kb_action action,
 			     string const & argument,
 			     bool show_sc);
-	
+
 	/// Same as above, using a pseudoaction as argument
 	void verboseDispatch(int ac, bool show_sc);
 
 	/// Same as above, when the command is provided as a string
 	void verboseDispatch(string const & s, bool show_sc);
 
-	/// 
+	///
 	void miniDispatch(string const & s);
 
 	///
 	void initMiniBuffer();
-		
+
 	///
 	void processKeySym(KeySym k, unsigned int state);
 
@@ -58,24 +58,24 @@ public:
 	/// can contain the string argument.
 	FuncStatus getStatus(int ac) const;
 	///
-	FuncStatus getStatus(kb_action action, 
+	FuncStatus getStatus(kb_action action,
 			     string const & argument = string()) const;
-	
+
 	/// The last key was meta
 	bool wasMetaKey() const;
 
-        /// True if lyxfunc reports an error
-        bool errorStat() const { return errorstat; }
-        /// Buffer to store result messages
-        void setMessage(string const & m) const;
-        /// Buffer to store result messages
-        void setErrorMessage(string const &) const; 
-        /// Buffer to store result messages from getStatus
-        void setStatusMessage(string const &) const; 
-        /// Buffer to store result messages
-        string const getMessage() const { return dispatch_buffer; }
-        /// Buffer to store result messages
-        string const getStatusMessage() const { return status_buffer; }
+	/// True if lyxfunc reports an error
+	bool errorStat() const { return errorstat; }
+	/// Buffer to store result messages
+	void setMessage(string const & m) const;
+	/// Buffer to store result messages
+	void setErrorMessage(string const &) const;
+	/// Buffer to store result messages from getStatus
+	void setStatusMessage(string const &) const;
+	/// Buffer to store result messages
+	string const getMessage() const { return dispatch_buffer; }
+	/// Buffer to store result messages
+	string const getStatusMessage() const { return status_buffer; }
 	/// Handle a accented char keysequenze
 	void handleKeyFunc(kb_action action);
 
@@ -84,30 +84,30 @@ private:
 	LyXView * owner;
 	///
 	static int psd_idx;
- 	///
- 	kb_sequence keyseq;
- 	///
- 	kb_sequence cancel_meta_seq;
+	///
+	kb_sequence keyseq;
+	///
+	kb_sequence cancel_meta_seq;
 	///
 	unsigned meta_fake_bit;
 	///
 	void moveCursorUpdate(bool flag = true, bool selecting = false);
 	///
 	void setupLocalKeymap();
-        ///
-        kb_action lyx_dead_action;
-        ///
-        kb_action lyx_calling_dead_action;
-        /// Error status, only Dispatch can change this flag
-        mutable bool errorstat;
+	///
+	kb_action lyx_dead_action;
+	///
+	kb_action lyx_calling_dead_action;
+	/// Error status, only Dispatch can change this flag
+	mutable bool errorstat;
 
-        /** Buffer to store messages and result data. Is there a
+	/** Buffer to store messages and result data. Is there a
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
-        mutable string dispatch_buffer;
-        /** Buffer to store messages and result data from getStatus
+	mutable string dispatch_buffer;
+	/** Buffer to store messages and result data from getStatus
 	*/
-        mutable string status_buffer;
+	mutable string status_buffer;
 	/// Command name and shortcut information
 	string commandshortcut;
 
@@ -132,15 +132,15 @@ private:
 	LyXText * TEXT(bool) const;
 	///
 };
-     
-     
+
+
 /*--------------------  inlines  --------------------------*/
 
 inline
-bool LyXFunc::wasMetaKey() const 
-{ 
+bool LyXFunc::wasMetaKey() const
+{
 	return (meta_fake_bit != 0);
 }
-     
+
 
 #endif

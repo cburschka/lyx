@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-*        
+*
 *           Copyright 1995 Matthias Ettrich
 *           Copyright 1995-2001 the LyX Team.
 *
@@ -26,7 +26,7 @@
 #include <list>
 #include <map>
 
-class BufferParams; 
+class BufferParams;
 struct Language;
 
 /** The packages and commands that a buffer needs. This class
@@ -35,11 +35,11 @@ struct Language;
 
     i.e require("amssymb")
 
-    To add support you should only need to require() the package name as 
+    To add support you should only need to require() the package name as
     packages which don't have special requirements are handled automatically.
     If your new package does need special consideration you'll need to alter
     string const getPackages() const;
-    Remember to update the validate function in buffer.C and paragraph.C 
+    Remember to update the validate function in buffer.C and paragraph.C
     when you do so.
 */
 class LaTeXFeatures {
@@ -62,7 +62,7 @@ public:
 	void getFloatDefinitions(std::ostream & os) const;
 	/// Print requirements to lyxerr
 	void showStruct() const;
-	/// 
+	///
 	void addExternalPreamble(string const &);
 	/// Provide a string name-space to the requirements
 	void require(string const & name);

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2001 The LyX Team.
  *
  * ====================================================== */
@@ -50,7 +50,7 @@ bool FuncStatus::unknown () const
 FuncStatus & FuncStatus::disabled (bool b)
 {
 	if (b)
-	  	v_ |= DISABLED;
+		v_ |= DISABLED;
 	else
 		v_ &= !DISABLED;
 	return *this;
@@ -71,7 +71,7 @@ void FuncStatus::setOnOff (bool b)
 
 bool FuncStatus::onoff (bool b) const
 {
-	if (b) 
+	if (b)
 		return (v_ & ON);
 	else
 		return (v_ & OFF);

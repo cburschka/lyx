@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-*        
+*
 *           Copyright 1995 Matthias Ettrich
 *           Copyright 1995-2001 the LyX Team.
 *
@@ -23,13 +23,13 @@
 ///
 class Variables {
 public:
-	/// 
+	///
 	void set(string const &, string const &);
-	/// 
+	///
 	string const get(string const &) const;
 	///
 	bool isSet(string const & var) const;
-	/// 
+	///
 	string const expand(string const &) const;
 private:
 	///

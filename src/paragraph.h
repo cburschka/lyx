@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -77,7 +77,7 @@ public:
 	};
 	///
 	typedef char value_type;
-	/// The same as ParameterStruct::depth_type 
+	/// The same as ParameterStruct::depth_type
 	typedef unsigned int depth_type;
 
 	///
@@ -105,13 +105,13 @@ public:
 	///
 	string const asString(Buffer const *, lyx::pos_type beg, lyx::pos_type end,
 			      bool label);
-	
+
 	///
 	void writeFile(Buffer const *, std::ostream &, BufferParams const &,
 		       depth_type) const;
 	///
 	void validate(LaTeXFeatures &) const;
-	
+
 	///
 	int id() const;
 	///
@@ -124,13 +124,13 @@ public:
 				 std::ostream &, TexRow & texrow,
 				 bool moving_arg);
 
-	/// 
+	///
 	int startTeXParParams(BufferParams const &, std::ostream &) const;
 
-	/// 
+	///
 	int endTeXParParams(BufferParams const &, std::ostream &) const;
 
-	
+
 	///
 	bool simpleTeXOnePar(Buffer const *, BufferParams const &,
 			     std::ostream &, TexRow & texrow, bool moving_arg);
@@ -170,7 +170,7 @@ public:
 	string const & layout() const;
 	///
 	void layout(string const & new_layout);
-	
+
 	///
 	void setCounter(int i, int v);
 	///
@@ -180,11 +180,11 @@ public:
 
 	///
 	char enumdepth;
-	
+
 	///
 	char itemdepth;
 
-	/// 
+	///
 	InsetBibKey * bibkey;  // ale970302
 
 	///
@@ -206,15 +206,15 @@ public:
 	Paragraph * depthHook(depth_type depth);
 	/// for the environments
 	Paragraph const * depthHook(depth_type depth) const;
-	/// 
+	///
 	Paragraph * outerHook();
-	/// 
+	///
 	Paragraph const * outerHook() const;
 	///
 	int beginningOfMainBody() const;
 	///
 	string const & getLabelstring() const;
-	
+
 	/// the next two functions are for the manual labels
 	string const getLabelWidthString() const;
 	///
@@ -232,7 +232,7 @@ public:
 	///
 	void erase(lyx::pos_type pos);
 	/** the flag determines wether the layout should be copied
-	 */ 
+	 */
 	void breakParagraph(BufferParams const &, lyx::pos_type pos, int flag);
 	///
 	void breakParagraphConservative(BufferParams const &, lyx::pos_type pos);
@@ -249,7 +249,7 @@ public:
 	    font attached to this paragraph.
 	    If pos == -2, use the label font of the layout attached here.
 	    In all cases, the font is instantiated, i.e. does not have any
-	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
+	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or
 	    LyXFont::TOGGLE.
 	*/
 	LyXFont const getFont(BufferParams const &, lyx::pos_type pos) const;
@@ -265,7 +265,7 @@ public:
 	void setFont(lyx::pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
 	LyXFont::FONT_SIZE highestFontInRange(lyx::pos_type startpos,
-	                                      lyx::pos_type endpos,
+					      lyx::pos_type endpos,
 					      LyXFont::FONT_SIZE const def_size) const;
 	///
 	void insertChar(lyx::pos_type pos, value_type c);
@@ -306,12 +306,12 @@ public:
 	bool isKomma(lyx::pos_type pos) const;
 	/// Used by the spellchecker
 	bool isLetter(lyx::pos_type pos) const;
-	/// 
+	///
 	bool isWord(lyx::pos_type pos) const;
 
 	/** paste this paragraph with the next one
 	    be carefull, this doesent make any check at all
-	*/ 
+	*/
 	void pasteParagraph(BufferParams const &);
 
 	/// returns -1 if inset not found
@@ -321,7 +321,7 @@ public:
 	Paragraph * getParFromID(int id) const;
 
 	///
-	int stripLeadingSpaces(lyx::textclass_type tclass); 
+	int stripLeadingSpaces(lyx::textclass_type tclass);
 
 #ifndef NO_PEXTRA_REALLY
 	/* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
@@ -373,7 +373,7 @@ public:
 		Inset * operator*() { return it->inset; }
 		///
 		Inset * operator->() { return it->inset; }
-		
+
 		///
 		lyx::pos_type getPos() const { return it->pos; }
 		///
@@ -390,7 +390,7 @@ public:
 	};
 	///
 	friend class inset_iterator;
-	
+
 	///
 	inset_iterator inset_iterator_begin();
 	///

@@ -46,7 +46,7 @@ public:
 
 	/// Constructor for reading from a .lyx file
 	explicit VSpace(string const & data);
-	
+
 	/// return the type of vertical space
 	vspace_kind kind() const;
 	/// return the length of this space
@@ -60,9 +60,9 @@ public:
 	bool operator==(VSpace const &) const;
 
 	// conversion
- 
+
 	/// how it goes into the LyX file
-	string const asLyXCommand() const; 
+	string const asLyXCommand() const;
 	/// the latex representation
 	string const asLatexCommand(BufferParams const & params) const;
 	/// the size of the space on-screen

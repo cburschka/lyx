@@ -1,14 +1,14 @@
 /* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor 	 
+ * ======================================================
+ *
+ *           LyX, The Document Processor
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
  *           This file is Copyright 1996-2001
  *           Lars Gullik Bjønnes
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #include <config.h>
@@ -62,7 +62,7 @@ extern BufferList bufferlist;
 void TeXErrors::insertError(int line, string const & error_desc,
 			    string const & error_text)
 {
-        Error newerr(line, error_desc, error_text);
+	Error newerr(line, error_desc, error_text);
 	errors.push_back(newerr);
 }
 
@@ -104,7 +104,7 @@ void LaTeX::deleteFilesOnError() const
 	// makeindex file
 	string ind = ChangeExtension(ofname, ".ind");
 	lyx::unlink(ind);
-	
+
 	// Also remove the aux file
 	string aux = ChangeExtension(ofname, ".aux");
 	lyx::unlink(aux);
@@ -124,12 +124,12 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	const unsigned int MAX_RUN = 6;
 	DepTable head; // empty head
 	bool rerun = false; // rerun requested
-	
+
 	// The class LaTeX does not know the temp path.
 	bufferlist.updateIncludedTeXfiles(lyx::getcwd()); //GetCWD());
-	
+
 	// Never write the depfile if an error was encountered.
-	
+
 	// 0
 	// first check if the file dependencies exist:
 	//     ->If it does exist
@@ -191,7 +191,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		str << _("LaTeX run number") << ' ' << count;
 		lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 	}
-	
+
 	this->operator()();
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
@@ -219,7 +219,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	// And if there were undefined citations or changes in references
 	// the .aux file is checked for signs of bibtex. Bibtex is then run
 	// if needed.
-	
+
 	// run makeindex
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
@@ -227,7 +227,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
 		}
-		
+
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 
@@ -242,7 +242,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			lfun->dispatch(LFUN_MESSAGE, _("Running BibTeX."));
 		}
-		
+
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info);
 	} else if (!had_depfile) {
@@ -251,7 +251,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		/// insert the .bib and .bst files into the .dep-pdf file.
 		updateBibtexDependencies(head, bibtex_info);
 	}
-	
+
 	// 1
 	// we know on this point that latex has been run once (or we just
 	// returned) and the question now is to decide if we need to run
@@ -276,14 +276,14 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			str << _("LaTeX run number") << ' ' << count;
 			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 		}
-		
+
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & ERRORS) {
 			deleteFilesOnError();
 			return scanres; // return on error
 		}
-		
+
 		// update the depedencies
 		deplog(head); // reads the latex log
 		head.update();
@@ -298,7 +298,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	// again to make sure everything is redone correctly.
 	// Also there should be no need to run the external programs any
 	// more after this.
-	
+
 	// run makeindex if the <file>.idx has changed or was generated.
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
@@ -306,10 +306,10 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
 		}
-		
+
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
-	
+
 	// 2
 	// we will only run latex more if the log file asks for it.
 	// or if the sumchange() is true.
@@ -320,7 +320,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	//     -> rerun not asked for:
 	//             just return (fall out of bottom of func)
 	//
-	while ((head.sumchange() || rerun || (scanres & RERUN)) 
+	while ((head.sumchange() || rerun || (scanres & RERUN))
 	       && count < MAX_RUN) {
 		// Yes rerun until message goes away, or until
 		// MAX_RUNS are reached.
@@ -332,14 +332,14 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			str << _("LaTeX run number") << ' ' << count;
 			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 		}
-		
+
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & ERRORS) {
 			deleteFilesOnError();
 			return scanres; // return on error
 		}
-		
+
 		// keep this updated
 		head.update();
 	}
@@ -358,7 +358,7 @@ int LaTeX::operator()()
 #else // cmd.exe (OS/2) causes SYS0003 error at "/dev/null"
 	string tmp = cmd + ' ' + file + " > nul";
 #endif
-        Systemcall one;
+	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
 }
 
@@ -385,7 +385,7 @@ vector<Aux_Info> const
 LaTeX::scanAuxFiles(string const & file)
 {
 	vector<Aux_Info> result;
-	
+
 	result.push_back(scanAuxFile(file));
 
 	for (int i = 1; i < 1000; ++i) {
@@ -490,7 +490,7 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 			string file = findtexfile(*it2, "bst");
 			if (!file.empty())
 				dep.insert(file, true);
-		}			
+		}
 	}
 }
 
@@ -526,7 +526,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	string token;
 	while (getline(ifs, token)) {
 		lyxerr[Debug::LATEX] << "Log line: " << token << endl;
-		
+
 		if (token.empty())
 			continue;
 
@@ -666,7 +666,7 @@ void LaTeX::deplog(DepTable & head)
 	//   Writing index file sample.idx
 	LRegex reg5("Writing index file ([^ ]+).*");
 	LRegex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
-	
+
 	ifstream ifs(logfile.c_str());
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.
@@ -679,7 +679,7 @@ void LaTeX::deplog(DepTable & head)
 		getline(ifs, token);
 		token = strip(token, '\r');
 		if (token.empty()) continue;
-		
+
 		if (reg1.exact_match(token)) {
 			LRegex::SubMatches const & sub = reg1.exec(token);
 			foundfile = LSubstring(token, sub[1].first,
@@ -706,21 +706,21 @@ void LaTeX::deplog(DepTable & head)
 
 		// convert from native os path to unix path
 		foundfile = os::internal_path(foundfile);
-		
-		lyxerr[Debug::DEPEND] << "Found file: " 
+
+		lyxerr[Debug::DEPEND] << "Found file: "
 				      << foundfile << endl;
-		
+
 		// Ok now we found a file.
 		// Now we should make sure that this is a file that we can
 		// access through the normal paths.
 		// We will not try any fancy search methods to
 		// find the file.
-		
+
 		// (1) foundfile is an
 		//     absolute path and should
 		//     be inserted.
 		if (AbsolutePath(foundfile)) {
-			lyxerr[Debug::DEPEND] << "AbsolutePath file: " 
+			lyxerr[Debug::DEPEND] << "AbsolutePath file: "
 					      << foundfile << endl;
 			// On initial insert we want to do the update at once
 			// since this file can not be a file generated by

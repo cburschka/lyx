@@ -1,13 +1,13 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 2000-2001 The LyX Team.
  *
  *           @author: Jürgen Vigna
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #include <config.h>
@@ -34,7 +34,7 @@ string const write_attribute(string const & name, bool const & b)
 	// file format bloat for tabulars.
 	if (!b)
 		return string();
-	
+
 	return write_attribute(name, tostr(b));
 }
 
@@ -45,7 +45,7 @@ string const write_attribute(string const & name, int const & i)
 	// file format bloat for tabulars.
 	if (!i)
 		return string();
-	
+
 	return write_attribute(name, tostr(i));
 }
 
@@ -55,7 +55,7 @@ string const write_attribute(string const & name, LyXLength const & value)
 	// we write only the value if we really have one same reson as above.
 	if (value.zero())
 		return string();
-	
+
 	return write_attribute(name, value.asString());
 }
 
@@ -238,7 +238,7 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 	if (!getTokenValue(str, token, tmp))
 		return false;
 	return string2type(tmp, flag);
-}    
+}
 
 
 bool getTokenValue(string const & str, const char * token, LyXLength & len)
@@ -250,7 +250,7 @@ bool getTokenValue(string const & str, const char * token, LyXLength & len)
 	if (!getTokenValue(str, token, tmp))
 		return false;
 	return isValidLength(tmp, &len);
-}    
+}
 
 
 void l_getline(istream & is, string & str)

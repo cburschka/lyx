@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -34,7 +34,7 @@ extern char const * string_footnotekinds[];
 extern char const * string_align[];
 
 // The following was moved from tex-defs.h to here, because tex-defs.h is
-// used all over. As it happens, that meant that these strings were included 
+// used all over. As it happens, that meant that these strings were included
 // 27 times in the object file. (Asger)
 
 ///

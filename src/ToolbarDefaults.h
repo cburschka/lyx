@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
@@ -27,7 +27,7 @@ class LyXLex;
 ///
 class ToolbarDefaults {
 public:
-        /// The special toolbar actions
+	/// The special toolbar actions
 	enum  ItemType {
 		/// adds space between buttons in the toolbar
 		SEPARATOR=-3,

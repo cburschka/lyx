@@ -87,7 +87,7 @@ using SigC::slot;
 using lyx::pos_type;
 using lyx::textclass_type;
 
-/* the selection possible is needed, that only motion events are 
+/* the selection possible is needed, that only motion events are
  * used, where the bottom press event was on the drawing area too */
 bool selection_possible = false;
 
@@ -153,10 +153,10 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	workarea_.workAreaKeyPress
 		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
 	workarea_.selectionRequested
-		.connect(slot(this, &BufferView::Pimpl::selectionRequested)); 
+		.connect(slot(this, &BufferView::Pimpl::selectionRequested));
 	workarea_.selectionLost
 		.connect(slot(this, &BufferView::Pimpl::selectionLost));
-	
+
 	cursor_timeout.timeout.connect(slot(this,
 					    &BufferView::Pimpl::cursorToggle));
 	cursor_timeout.start();
@@ -165,7 +165,7 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 }
 
 
-Painter & BufferView::Pimpl::painter() 
+Painter & BufferView::Pimpl::painter()
 {
 	return workarea_.getPainter();
 }
@@ -186,7 +186,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		textcache.add(buffer_, workarea_.workWidth(), bv_->text);
 		if (lyxerr.debugging())
 			textcache.show(lyxerr, "BufferView::buffer");
-		
+
 		bv_->text = 0;
 	}
 
@@ -194,7 +194,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	buffer_ = b;
 
 	if (bufferlist.getState() == BufferList::CLOSING) return;
-	
+
 	// Nuke old image
 	// screen is always deleted when the buffer is changed.
 	screen_.reset(0);
@@ -300,18 +300,18 @@ void BufferView::Pimpl::redoCurrentBuffer()
 int BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "resizeCurrentBuffer" << endl;
-	
+
 	Paragraph * par = 0;
 	Paragraph * selstartpar = 0;
 	Paragraph * selendpar = 0;
 	UpdatableInset * the_locking_inset = 0;
-	
+
 	pos_type pos = 0;
 	pos_type selstartpos = 0;
 	pos_type selendpos = 0;
 	bool selection = false;
 	bool mark_set  = false;
-	
+
 	owner_->prohibitInput();
 
 	owner_->message(_("Formatting document..."));
@@ -381,7 +381,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	setState();
 	owner_->allowInput();
 
-	/// clear the "Formatting Document" message 
+	/// clear the "Formatting Document" message
 	owner_->message("");
 
 	return 0;
@@ -398,7 +398,7 @@ void BufferView::Pimpl::updateScreen()
 void BufferView::Pimpl::updateScrollbar()
 {
 	/* If the text is smaller than the working area, the scrollbar
-	 * maximum must be the working area height. No scrolling will 
+	 * maximum must be the working area height. No scrolling will
 	 * be possible */
 	if (!bv_->text) {
 		workarea_.setScrollbar(0, 1.0);
@@ -414,11 +414,11 @@ void BufferView::Pimpl::updateScrollbar()
 		workarea_.setScrollbar(current_scrollbar_value, 1.0);
 		return;
 	}
-	
+
 	double const lineh = bv_->text->defaultHeight();
 	double const slider_size =
 		(text_height == 0) ? 1.0 : 1.0 / double(text_height);
-	
+
 	static long old_text_height;
 	static double old_lineh;
 	static double old_slider_size;
@@ -450,7 +450,7 @@ void BufferView::Pimpl::scrollCB(double value)
 
 	if (current_scrollbar_value < 0)
 		current_scrollbar_value = 0;
-   
+
 	if (!screen_.get())
 		return;
 
@@ -460,9 +460,9 @@ void BufferView::Pimpl::scrollCB(double value)
 		waitForX();
 		return;
 	}
- 
+
 	LyXText * vbt = bv_->text;
- 
+
 	int const height = vbt->defaultHeight();
 	int const first = static_cast<int>((bv_->text->first_y + height));
 	int const last = static_cast<int>((bv_->text->first_y + workarea_.height() - height));
@@ -480,26 +480,26 @@ int BufferView::Pimpl::scrollUp(long time)
 {
 	if (!buffer_) return 0;
 	if (!screen_.get()) return 0;
-   
+
 	double value = workarea_.getScrollbarValue();
-   
+
 	if (value == 0) return 0;
 
 	float add_value =  (bv_->text->defaultHeight()
 			    + float(time) * float(time) * 0.125);
-   
+
 	if (add_value > workarea_.height())
 		add_value = float(workarea_.height() -
 				  bv_->text->defaultHeight());
-   
+
 	value -= add_value;
 
 	if (value < 0)
 		value = 0;
-   
+
 	workarea_.setScrollbarValue(value);
-   
-	scrollCB(value); 
+
+	scrollCB(value);
 	return 0;
 }
 
@@ -508,28 +508,28 @@ int BufferView::Pimpl::scrollDown(long time)
 {
 	if (!buffer_) return 0;
 	if (!screen_.get()) return 0;
-   
+
 	double value = workarea_.getScrollbarValue();
 	pair<float, float> p = workarea_.getScrollbarBounds();
 	double const max = p.second;
-	
+
 	if (value == max) return 0;
 
 	float add_value =  (bv_->text->defaultHeight()
 			    + float(time) * float(time) * 0.125);
-   
+
 	if (add_value > workarea_.height())
 		add_value = float(workarea_.height() -
 				  bv_->text->defaultHeight());
-   
+
 	value += add_value;
-   
+
 	if (value > max)
 		value = max;
 
 	workarea_.setScrollbarValue(value);
-	
-	scrollCB(value); 
+
+	scrollCB(value);
 	return 0;
 }
 
@@ -564,20 +564,20 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 					  state);
 		return;
 	}
-   
+
 	/* The test for not selection possible is needed, that only motion
 	   events are used, where the bottom press event was on
 	   the drawing area too */
 	if (!selection_possible)
 		return;
- 
+
 	screen_->hideCursor();
 
 	bv_->text->setCursorFromCoordinates(bv_, x, y + bv_->text->first_y);
-      
+
 	if (!bv_->text->selection.set())
 		update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
-      
+
 	bv_->text->setSelection(bv_);
 	screen_->toggleToggle(bv_->text, bv_);
 	fitCursor();
@@ -587,7 +587,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 
 // Single-click on work area
 void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
-                                            unsigned int button)
+					    unsigned int button)
 {
 	if (!buffer_ || !screen_.get())
 		return;
@@ -605,7 +605,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			break;
 		}
 	}
-	
+
 	// Middle button press pastes if we have a selection
 	// We do this here as if the selection was inside an inset
 	// it could get cleared on the unlocking of the inset so
@@ -615,10 +615,10 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		owner_->getLyXFunc()->dispatch(LFUN_COPY);
 		paste_internally = true;
 	}
-	
+
 	if (bv_->theLockingInset()) {
 		// We are in inset locking mode
-		
+
 		/* Check whether the inset was hit. If not reset mode,
 		   otherwise give the event to the inset */
 		if (inset_hit == bv_->theLockingInset()) {
@@ -629,20 +629,20 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			bv_->unlockInset(bv_->theLockingInset());
 		}
 	}
-	
+
 	if (!inset_hit)
 		selection_possible = true;
 	screen_->hideCursor();
 
 	int const screen_first = bv_->text->first_y;
-	
+
 	// Clear the selection
 	screen_->toggleSelection(bv_->text, bv_);
 	bv_->text->clearSelection();
 	bv_->text->fullRebreak(bv_);
 	update();
 	updateScrollbar();
-	
+
 	// Single left click in math inset?
 	if (isHighlyEditableInset(inset_hit)) {
 		// Highly editable inset, like math
@@ -655,25 +655,25 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		inset->edit(bv_); //, xpos, ypos, button);
 		inset->insetButtonPress(bv_, xpos, ypos, button);
 		return;
-	} 
-	
+	}
+
 	// Right click on a footnote flag opens float menu
-	if (button == 3) { 
+	if (button == 3) {
 		selection_possible = false;
 		return;
 	}
-	
+
 	if (!inset_hit) // otherwise it was already set in checkInsetHit(...)
 		bv_->text->setCursorFromCoordinates(bv_, xpos, ypos + screen_first);
 	finishUndo();
 	bv_->text->selection.cursor = bv_->text->cursor;
 	bv_->text->cursor.x_fix(bv_->text->cursor.x());
-	
+
 	owner_->updateLayoutChoice();
 	if (fitCursor()) {
 		selection_possible = false;
 	}
-	
+
 	// Insert primary selection with middle mouse
 	// if there is a local selection in the current buffer,
 	// insert this
@@ -682,14 +682,14 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
 		else
 			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION,
-			                               "paragraph");
+						       "paragraph");
 		selection_possible = false;
 		return;
 	}
 }
 
 
-void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button) 
+void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a word
 	if (!buffer_)
@@ -749,7 +749,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 void BufferView::Pimpl::selectionRequested()
 {
 	static string sel;
-	
+
 	if (!available())
 		return;
 
@@ -761,7 +761,7 @@ void BufferView::Pimpl::selectionRequested()
 		 text->selection.end != bv_->text->xsel_cache.end))
 	{
 		bv_->text->xsel_cache = text->selection;
-		sel = text->selectionAsString(bv_->buffer(), false); 
+		sel = text->selectionAsString(bv_->buffer(), false);
 	} else if (!text->selection.set()) {
 		sel = string();
 		bv_->text->xsel_cache.set(false);
@@ -771,10 +771,10 @@ void BufferView::Pimpl::selectionRequested()
 	}
 }
 
- 
+
 void BufferView::Pimpl::selectionLost()
 {
-	if (active() && available()) { 
+	if (active() && available()) {
 		hideCursor();
 		toggleSelection();
 		bv_->getLyXText()->clearSelection();
@@ -783,7 +783,7 @@ void BufferView::Pimpl::selectionLost()
 	}
 }
 
- 
+
 void BufferView::Pimpl::enterView()
 {
 	if (active() && available()) {
@@ -816,15 +816,15 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// We are in inset locking mode.
 
 		/* LyX does a kind of work-area grabbing for insets.
-		   Only a ButtonPress Event outside the inset will 
+		   Only a ButtonPress Event outside the inset will
 		   force a insetUnlock. */
 		bv_->theLockingInset()->
 			insetButtonRelease(bv_, x, y, button);
 		return;
 	}
-	
+
 	selection_possible = false;
-	
+
 	if (button == 2)
 		return;
 
@@ -832,7 +832,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	if (button == 1) {
 		workarea_.haveSelection(bv_->getLyXText()->selection.set());
 	}
- 
+
 	setState();
 	owner_->showState();
 	owner_->updateMenubar();
@@ -845,7 +845,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// if we reach this point with a selection, it
 		// must mean we are currently selecting.
 		// But we don't want to open the inset
-		// because that is annoying for the user. 
+		// because that is annoying for the user.
 		// So just pretend we didn't hit it.
 		// this is OK because a "kosher" ButtonRelease
 		// will follow a ButtonPress that clears
@@ -854,7 +854,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// problems if we end up opening an inset
 		if (bv_->getLyXText()->selection.set())
 			return;
- 
+
 		// CHECK fix this proper in 0.13
 		// well, maybe 13.0 !!!!!!!!!
 
@@ -889,7 +889,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	}
 
 	// Maybe we want to edit a bibitem ale970302
-	if (bv_->text->cursor.par()->bibkey && x < 20 + 
+	if (bv_->text->cursor.par()->bibkey && x < 20 +
 	    bibitemMaxWidth(bv_, textclasslist[buffer_->params.textclass].defaultfont())) {
 		bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, 0);
 	}
@@ -905,23 +905,23 @@ Box BufferView::Pimpl::insetDimensions(LyXText const & text,
 	pos_type const pos = cursor.pos();
 
 	lyx::Assert(par.getInset(pos));
- 
+
 	Inset const & inset(*par.getInset(pos));
 
 	LyXFont const & font = text.getFont(buffer_, &par, pos);
- 
+
 	int const width = inset.width(bv_, font);
 	int const inset_x = font.isVisibleRightToLeft()
 		? (cursor.x() - width) : cursor.x();
- 
+
 	return Box(
 		inset_x + inset.scroll(),
 		inset_x + width,
 		cursor.y() - inset.ascent(bv_, font),
 		cursor.y() + inset.descent(bv_, font));
 }
- 
- 
+
+
 Inset * BufferView::Pimpl::checkInset(LyXText const & text,
 				      LyXCursor const & cursor,
 				      int & x, int & y) const
@@ -934,7 +934,7 @@ Inset * BufferView::Pimpl::checkInset(LyXText const & text,
 	}
 
 	Inset /*const*/ * inset = par.getInset(pos);
- 
+
 	if (!isEditableInset(inset)) {
 		return 0;
 	}
@@ -942,40 +942,40 @@ Inset * BufferView::Pimpl::checkInset(LyXText const & text,
 	Box b(insetDimensions(text, cursor));
 
 	if (!b.contained(x, y)) {
-		lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y 
+		lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y
 			<< " box " << b << endl;
 		return 0;
 	}
- 
+
 	text.setCursor(bv_, &par, pos, true);
- 
+
 	x -= b.x1;
 	// The origin of an inset is on the baseline
 	y -= (text.cursor.y());
-  
+
 	return inset;
 }
 
- 
+
 Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 {
 	if (!screen_.get())
 		return 0;
-  
+
 	int y_tmp = y + text->first_y;
- 
+
 	LyXCursor cursor;
 	text->setCursorFromCoordinates(bv_, cursor, x, y_tmp);
- 
+
 	Inset * inset(checkInset(*text, cursor, x, y_tmp));
 
 	if (inset) {
 		y = y_tmp;
 		return inset;
 	}
- 
+
 	// look at previous position
- 
+
 	if (cursor.pos() == 0) {
 		return 0;
 	}
@@ -1071,7 +1071,7 @@ void BufferView::Pimpl::update()
 // -3 - update
 // -2 - update, move sel_cursor if selection, fitcursor
 // -1 - update, move sel_cursor if selection, fitcursor, mark dirty
-//  0 - update, move sel_cursor if selection, fitcursor 
+//  0 - update, move sel_cursor if selection, fitcursor
 //  1 - update, move sel_cursor if selection, fitcursor, mark dirty
 //  3 - update, move sel_cursor if selection
 //
@@ -1091,7 +1091,7 @@ void BufferView::Pimpl::update()
 //       UPDATE = 0,
 //       SELECT = 1,
 //       FITCUR = 2,
-//       CHANGE = 4 
+//       CHANGE = 4
 // };
 //
 // UPDATE_ONLY = UPDATE;
@@ -1121,7 +1121,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	} else {
 	    update();
 	}
-		
+
 	if ((f & FITCUR)) {
 		fitCursor();
 	}
@@ -1139,7 +1139,7 @@ void BufferView::Pimpl::cursorToggle()
 		cursor_timeout.restart();
 		return;
 	}
- 
+
 	if (!screen_.get()) {
 		cursor_timeout.restart();
 		return;
@@ -1148,13 +1148,13 @@ void BufferView::Pimpl::cursorToggle()
 	/* FIXME */
 	extern void reapSpellchecker(void);
 	reapSpellchecker();
-	 
+
 	if (!bv_->theLockingInset()) {
 		screen_->cursorToggle(bv_);
 	} else {
 		bv_->theLockingInset()->toggleInsetCursor(bv_);
 	}
-	
+
 	cursor_timeout.restart();
 }
 
@@ -1163,17 +1163,17 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 {
 	if (!text->cursor.row()->previous())
 		return;
-	
+
 	int y = text->first_y;
 	Row * cursorrow = text->cursor.row();
-	
+
 	text->setCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y);
 	finishUndo();
 	// This is to allow jumping over large insets
 	if ((cursorrow == text->cursor.row()))
 		text->cursorUp(bv_);
-	
-  	if (text->inset_owner ||
+
+	if (text->inset_owner ||
 	    text->cursor.row()->height() < workarea_.height())
 		screen_->draw(bv_->text, bv_,
 			      text->cursor.y()
@@ -1188,20 +1188,20 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 {
 	if (!text->cursor.row()->next())
 		return;
-	
+
 	int y = text->first_y + workarea_.height();
 //	if (text->inset_owner)
 //		y += bv_->text->first;
 	text->getRowNearY(y);
-    
+
 	Row * cursorrow = text->cursor.row();
 	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea_->height());
 	finishUndo();
 	// This is to allow jumping over large insets
 	if ((cursorrow == bv_->text->cursor.row()))
 		text->cursorDown(bv_);
-	
- 	if (text->inset_owner ||
+
+	if (text->inset_owner ||
 	    text->cursor.row()->height() < workarea_.height())
 		screen_->draw(bv_->text, bv_, text->cursor.y() -
 			      text->cursor.row()->baseline());
@@ -1250,7 +1250,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = bufferlist.exists(fname) ?
-	 		bufferlist.getBuffer(fname) :
+			bufferlist.getBuffer(fname) :
 			bufferlist.loadLyXFile(fname); // don't ask, just load it
 		if (b != 0) buffer(b);
 	}
@@ -1345,7 +1345,7 @@ bool BufferView::Pimpl::active() const
 }
 
 
-bool BufferView::Pimpl::belowMouse() const 
+bool BufferView::Pimpl::belowMouse() const
 {
 	return workarea_.belowMouse();
 }
@@ -1390,7 +1390,7 @@ void BufferView::Pimpl::toggleToggle()
 }
 
 
-void BufferView::Pimpl::center() 
+void BufferView::Pimpl::center()
 {
 	beforeChange(bv_->text);
 	if (bv_->text->cursor.y() > static_cast<int>((workarea_.height() / 2))) {
@@ -1403,16 +1403,16 @@ void BufferView::Pimpl::center()
 }
 
 
-void BufferView::Pimpl::pasteClipboard(bool asPara) 
+void BufferView::Pimpl::pasteClipboard(bool asPara)
 {
 	if (!buffer_)
 		return;
 
 	screen_->hideCursor();
 	beforeChange(bv_->text);
-	
+
 	string const clip(workarea_.getClipboard());
-	
+
 	if (clip.empty())
 		return;
 
@@ -1441,7 +1441,7 @@ inline
 void BufferView::Pimpl::moveCursorUpdate(bool selecting)
 {
 	LyXText * lt = bv_->getLyXText();
-	
+
 	if (selecting || lt->selection.mark()) {
 		lt->setSelection(bv_);
 		if (lt->bv_owner)
@@ -1456,7 +1456,7 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting)
 
 	if (!lt->selection.set())
 		workarea_.haveSelection(false);
-	
+
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
 	//owner->showState();
@@ -1502,7 +1502,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 		FileDialog::Result result =
 			fileDlg.Select(initpath,
 				       _("*.lyx| LyX Documents (*.lyx)"));
- 
+
 		if (result.first == FileDialog::Later)
 			return;
 
@@ -1520,7 +1520,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	filename = FileSearch(string(), filename, "lyx");
 
 	string const disp_fn(MakeDisplayPath(filename));
-	
+
 	ostringstream s1;
 	s1 << _("Inserting document") << ' '
 	   << disp_fn << " ...";
@@ -1544,7 +1544,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 {
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
 			      << action <<"] arg[" << argument << "]" << endl;
-	
+
 	switch (action) {
 		// --- Misc -------------------------------------------
 	case LFUN_APPENDIX:
@@ -1569,7 +1569,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			delete inset;
 		break;
 	}
-		
+
 	case LFUN_SCROLL_INSET:
 		// this is not handled here as this funktion is only aktive
 		// if we have a locking_inset and that one is (or contains)
@@ -1588,12 +1588,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		}
 		break;
 	}
-		
+
 	case LFUN_PASTE:
 		bv_->paste();
 		setState();
 		break;
-		
+
 	case LFUN_PASTESELECTION:
 	{
 		bool asPara = false;
@@ -1602,28 +1602,28 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		pasteClipboard(asPara);
 	}
 	break;
-	
+
 	case LFUN_CUT:
 		bv_->cut();
 		break;
-		
+
 	case LFUN_COPY:
 		bv_->copy();
 		break;
-		
+
 	case LFUN_LAYOUT_COPY:
 		bv_->copyEnvironment();
 		break;
-		
+
 	case LFUN_LAYOUT_PASTE:
 		bv_->pasteEnvironment();
 		setState();
 		break;
-		
+
 	case LFUN_GOTOERROR:
 		gotoInset(Inset::ERROR_CODE, false);
 		break;
-		
+
 	case LFUN_GOTONOTE:
 		gotoInset(Inset::IGNORE_CODE, false);
 		break;
@@ -1640,15 +1640,15 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_HYPHENATION:
 		specialChar(InsetSpecialChar::HYPHENATION);
 		break;
-		
+
 	case LFUN_LIGATURE_BREAK:
 		specialChar(InsetSpecialChar::LIGATURE_BREAK);
 		break;
-		
+
 	case LFUN_LDOTS:
 		specialChar(InsetSpecialChar::LDOTS);
 		break;
-		
+
 	case LFUN_END_OF_SENTENCE:
 		specialChar(InsetSpecialChar::END_OF_SENTENCE);
 		break;
@@ -1656,19 +1656,19 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_MENU_SEPARATOR:
 		specialChar(InsetSpecialChar::MENU_SEPARATOR);
 		break;
-		
+
 	case LFUN_HFILL:
 		hfill();
 		break;
-		
+
 	case LFUN_DEPTH_MIN:
 		changeDepth(bv_, bv_->getLyXText(), -1);
 		break;
-		
+
 	case LFUN_DEPTH_PLUS:
 		changeDepth(bv_, bv_->getLyXText(), 1);
 		break;
-		
+
 	case LFUN_FREE:
 		owner_->getDialogs()->setUserFreeFont();
 		break;
@@ -1676,7 +1676,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_FILE_INSERT:
 		MenuInsertLyXFile(argument);
 		break;
-	
+
 	case LFUN_FILE_INSERT_ASCII_PARA:
 		InsertAsciiFile(bv_, argument, true);
 		break;
@@ -1684,14 +1684,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_FILE_INSERT_ASCII:
 		InsertAsciiFile(bv_, argument, false);
 		break;
-		
+
 	case LFUN_LAYOUT:
 	{
 		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
 				    << argument << endl;
-		
+
 		// Derive layout number from given argument (string)
-		// and current buffer's textclass (number). */    
+		// and current buffer's textclass (number). */
 		textclass_type tclass = buffer_->params.textclass;
 		bool hasLayout =
 			textclasslist[tclass].hasLayout(argument);
@@ -1701,7 +1701,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (hasLayout) {
 			string const & obs = textclasslist[tclass][layout]
 				.obsoleted_by();
-			if (!obs.empty()) 
+			if (!obs.empty())
 				layout = obs;
 		}
 
@@ -1745,50 +1745,50 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		bold(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_NOUN:
 		noun(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_CODE:
 		code(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_SANS:
 		sans(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_ROMAN:
 		roman(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_DEFAULT:
 		styleReset(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_UNDERLINE:
 		underline(bv_);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_FONT_SIZE:
 		fontSize(bv_, argument);
 		owner_->showState();
 		break;
-		
+
 	case LFUN_FONT_STATE:
 		owner_->getLyXFunc()->setMessage(currentState(bv_));
 		break;
-		
+
 	case LFUN_UPCASE_WORD:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT
 		       | BufferView::FITCUR);
@@ -1801,11 +1801,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::CHANGE);
 	}
 	break;
-		
+
 	case LFUN_LOWCASE_WORD:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->changeCase(bv_, LyXText::text_lowercase);
 		if (lt->inset_owner)
@@ -1816,11 +1816,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::CHANGE);
 	}
 	break;
-		
+
 	case LFUN_CAPITALIZE_WORD:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->changeCase(bv_, LyXText::text_capitalization);
 		if (lt->inset_owner)
@@ -1835,7 +1835,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_TRANSPOSE_CHARS:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->transposeChars(*bv_);
 		if (lt->inset_owner)
@@ -1846,8 +1846,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::CHANGE);
 	}
 	break;
-		
-					  
+
+
 	case LFUN_INSERT_LABEL:
 		MenuInsertLabel(bv_, argument);
 		break;
@@ -1880,29 +1880,29 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		string label(argument);
 		if (label.empty()) {
-			InsetRef * inset = 
+			InsetRef * inset =
 				static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
 			if (inset) {
-                                label = inset->getContents();
+				label = inset->getContents();
 				savePosition(0);
 			}
 		}
-		
+
 		if (!label.empty()) {
 			//bv_->savePosition(0);
 			if (!bv_->gotoLabel(label))
-				Alert::alert(_("Error"), 
-					   _("Couldn't find this label"), 
+				Alert::alert(_("Error"),
+					   _("Couldn't find this label"),
 					   _("in current document."));
 		}
 	}
 	break;
-		
+
 		// --- Cursor Movements -----------------------------
 	case LFUN_RIGHT:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		bool is_rtl = lt->cursor.par()->isRightToLeftPar(buffer_->params);
 		if (!lt->selection.mark())
 			beforeChange(lt);
@@ -1927,7 +1927,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_LEFT:
 	{
 		// This is soooo ugly. Isn`t it possible to make
@@ -1960,11 +1960,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_UP:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
@@ -1974,11 +1974,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_DOWN:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
@@ -1992,7 +1992,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_UP_PARAGRAPH:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
@@ -2002,11 +2002,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_DOWN_PARAGRAPH:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
@@ -2016,11 +2016,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_PRIOR:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
@@ -2030,11 +2030,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_NEXT:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::UPDATE);
@@ -2044,11 +2044,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_HOME:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
@@ -2058,11 +2058,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_END:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt,
@@ -2073,12 +2073,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_SHIFT_TAB:
 	case LFUN_TAB:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt,
@@ -2089,11 +2089,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_WORDRIGHT:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
@@ -2106,11 +2106,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_WORDLEFT:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
@@ -2123,11 +2123,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_BEGINNINGBUF:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt,
@@ -2138,11 +2138,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_ENDBUF:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt,
@@ -2153,12 +2153,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-      
+
 		/* cursor selection ---------------------------- */
 	case LFUN_RIGHTSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		if (lt->cursor.par()->isRightToLeftPar(buffer_->params))
@@ -2170,11 +2170,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_LEFTSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		if (lt->cursor.par()->isRightToLeftPar(buffer_->params))
@@ -2186,11 +2186,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_UPSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorUp(bv_);
@@ -2199,11 +2199,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_DOWNSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorDown(bv_);
@@ -2216,7 +2216,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_UP_PARAGRAPHSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorUpParagraph(bv_);
@@ -2225,11 +2225,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_DOWN_PARAGRAPHSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorDownParagraph(bv_);
@@ -2238,11 +2238,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_PRIORSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		cursorPrevious(lt);
 		finishUndo();
@@ -2250,11 +2250,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_NEXTSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		cursorNext(lt);
 		finishUndo();
@@ -2262,11 +2262,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_HOMESEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorHome(bv_);
 		finishUndo();
@@ -2274,7 +2274,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_ENDSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
@@ -2286,11 +2286,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_WORDRIGHTSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		if (lt->cursor.par()->isRightToLeftPar(buffer_->params))
 			lt->cursorLeftOneWord(bv_);
@@ -2301,11 +2301,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_WORDLEFTSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		if (lt->cursor.par()->isRightToLeftPar(buffer_->params))
 			lt->cursorRightOneWord(bv_);
@@ -2316,11 +2316,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_BEGINNINGBUFSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (lt->inset_owner)
 			break;
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
@@ -2330,11 +2330,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 	case LFUN_ENDBUFSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (lt->inset_owner)
 			break;
 		update(lt,
@@ -2360,7 +2360,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		moveCursorUpdate(false);
 	}
 	break;
-		
+
 	case LFUN_PROTECTEDSPACE:
 	{
 		LyXText * lt = bv_->getLyXText();
@@ -2379,7 +2379,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		moveCursorUpdate(false);
 	}
 	break;
-		
+
 	case LFUN_SETMARK:
 	{
 		LyXText * lt = bv_->getLyXText();
@@ -2401,7 +2401,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->selection.cursor = lt->cursor;
 	}
 	break;
-		
+
 	case LFUN_DELETE:
 	{
 		LyXText * lt = bv_->getLyXText();
@@ -2430,7 +2430,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXText * lt = bv_->getLyXText();
 
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
-		
+
 		LyXCursor cursor = lt->cursor;
 
 		if (!lt->selection.set()) {
@@ -2444,15 +2444,15 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 						(bv_,
 						 cursor.par()->params().lineTop(),
 						 cursor.par()->params().lineBottom(),
-						 cursor.par()->params().pagebreakTop(), 
+						 cursor.par()->params().pagebreakTop(),
 						 cursor.par()->params().pagebreakBottom(),
-						 VSpace(VSpace::NONE), 
+						 VSpace(VSpace::NONE),
 						 cursor.par()->params().spaceBottom(),
-						 cursor.par()->params().spacing(), 
-						 cursor.par()->params().align(), 
+						 cursor.par()->params().spacing(),
+						 cursor.par()->params().align(),
 						 cursor.par()->params().labelWidthString(), 0);
 					lt->cursorLeft(bv_);
-					update(lt, 
+					update(lt,
 					       BufferView::SELECT
 					       | BufferView::FITCUR
 					       | BufferView::CHANGE);
@@ -2492,7 +2492,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_DELETE_WORD_BACKWARD:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->deleteWordBackward(bv_);
 		update(lt,
@@ -2503,12 +2503,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 	}
 	break;
-		
+
 		/* -------> Kill to end of line. */
 	case LFUN_DELETE_LINE_FORWARD:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->deleteLineForward(bv_);
 		update(lt,
@@ -2518,12 +2518,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		moveCursorUpdate(false);
 	}
 	break;
-		
+
 		/* -------> Set mark off. */
 	case LFUN_MARK_OFF:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->selection.cursor = lt->cursor;
@@ -2535,7 +2535,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_MARK_ON:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		beforeChange(lt);
 		lt->selection.mark(true);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
@@ -2543,11 +2543,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->getLyXFunc()->setMessage(N_("Mark on"));
 	}
 	break;
-		
+
 	case LFUN_BACKSPACE:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (!lt->selection.set()) {
 			if (owner_->getIntl()->getTrans().backspace()) {
 				lt->backspace(bv_);
@@ -2572,22 +2572,22 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		LyXText * lt = bv_->getLyXText();
-		
+
 		LyXCursor cursor = lt->cursor;
-		
+
 		if (!lt->selection.set()) {
-			if (cursor.pos() == 0 
-			    && !(cursor.par()->params().spaceTop() 
+			if (cursor.pos() == 0
+			    && !(cursor.par()->params().spaceTop()
 				 == VSpace (VSpace::NONE))) {
-				lt->setParagraph 
+				lt->setParagraph
 					(bv_,
-					 cursor.par()->params().lineTop(),      
+					 cursor.par()->params().lineTop(),
 					 cursor.par()->params().lineBottom(),
-					 cursor.par()->params().pagebreakTop(), 
+					 cursor.par()->params().pagebreakTop(),
 					 cursor.par()->params().pagebreakBottom(),
 					 VSpace(VSpace::NONE), cursor.par()->params().spaceBottom(),
-					 cursor.par()->params().spacing(), 
-					 cursor.par()->params().align(), 
+					 cursor.par()->params().spacing(),
+					 cursor.par()->params().align(),
 					 cursor.par()->params().labelWidthString(), 0);
 				update(lt,
 				       BufferView::SELECT
@@ -2609,7 +2609,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_BREAKPARAGRAPH:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		beforeChange(lt);
 		lt->breakParagraph(bv_, 0);
 		update(lt,
@@ -2625,7 +2625,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		beforeChange(lt);
 		lt->breakParagraph(bv_, 1);
 		update(lt,
@@ -2637,16 +2637,16 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->showState();
 		break;
 	}
-	
+
 	case LFUN_BREAKPARAGRAPH_SKIP:
 	{
 		// When at the beginning of a paragraph, remove
 		// indentation and add a "defskip" at the top.
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
 		LyXText * lt = bv_->getLyXText();
-		
+
 		LyXCursor cursor = lt->cursor;
-		
+
 		beforeChange(lt);
 		if (cursor.pos() == 0) {
 			if (cursor.par()->params().spaceTop() == VSpace(VSpace::NONE)) {
@@ -2661,7 +2661,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 					 cursor.par()->params().align(),
 					 cursor.par()->params().labelWidthString(), 1);
 				//update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			} 
+			}
 		}
 		else {
 			lt->breakParagraph(bv_, 0);
@@ -2681,14 +2681,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_PARAGRAPH_SPACING:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		Paragraph * par = lt->cursor.par();
 		Spacing::Space cur_spacing = par->params().spacing().getSpace();
 		float cur_value = 1.0;
 		if (cur_spacing == Spacing::Other) {
 			cur_value = par->params().spacing().getValue();
 		}
-		
+
 		istringstream istr(argument.c_str());
 
 		string tmp;
@@ -2727,7 +2727,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		}
 	}
 	break;
-	
+
 	case LFUN_INSET_TOGGLE:
 	{
 		LyXText * lt = bv_->getLyXText();
@@ -2737,7 +2737,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->toggleInset(bv_);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		setState();
-	}	
+	}
 		break;
 
 	case LFUN_QUOTE:
@@ -2755,7 +2755,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->getDialogs()->createUrl(p.getAsString());
 	}
 	break;
-	
+
 	case LFUN_INSERT_URL:
 	{
 		InsetCommandParams p;
@@ -2768,15 +2768,15 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			updateInset(inset, true);
 	}
 	break;
-	
+
 	case LFUN_INSET_ERT:
 		insertAndEditInset(new InsetERT(buffer_->params));
 		break;
-	
+
 	case LFUN_INSET_EXTERNAL:
 		insertAndEditInset(new InsetExternal);
 		break;
-	
+
 	case LFUN_INSET_FOOTNOTE:
 		insertAndEditInset(new InsetFoot(buffer_->params));
 		break;
@@ -2819,7 +2819,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lyxerr << "Non-existent float type: "
 			       << argument << endl;
 		}
-		
+
 	}
 	break;
 
@@ -2832,7 +2832,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		insertAndEditInset(new InsetTheorem);
 		break;
 #endif
-		
+
 	case LFUN_INSET_CAPTION:
 	{
 		// Do we have a locking inset...
@@ -2852,7 +2852,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		}
 	}
 	break;
-	
+
 	case LFUN_INSET_TABULAR:
 	{
 		int r = 2;
@@ -2880,13 +2880,13 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			owner_->getLyXFunc()->setMessage("EOF");
 	}
 	break;
-	
+
 	case LFUN_GETXY:
 		owner_->getLyXFunc()->setMessage(tostr(bv_->getLyXText()->cursor.x())
 						 + ' '
 						 + tostr(bv_->getLyXText()->cursor.y()));
 		break;
-		
+
 	case LFUN_SETXY:
 	{
 		int x = 0;
@@ -2898,26 +2898,26 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		bv_->getLyXText()->setCursorFromCoordinates(bv_, x, y);
 	}
 	break;
-	
+
 	case LFUN_GETLAYOUT:
 		owner_->getLyXFunc()->setMessage(tostr(bv_->getLyXText()->cursor.par()->layout()));
 		break;
-			
+
 	case LFUN_GETFONT:
 	{
 		LyXFont & font = bv_->getLyXText()->current_font;
-                if (font.shape() == LyXFont::ITALIC_SHAPE)
+		if (font.shape() == LyXFont::ITALIC_SHAPE)
 			owner_->getLyXFunc()->setMessage("E");
-                else if (font.shape() == LyXFont::SMALLCAPS_SHAPE)
+		else if (font.shape() == LyXFont::SMALLCAPS_SHAPE)
 			owner_->getLyXFunc()->setMessage("N");
-                else
+		else
 			owner_->getLyXFunc()->setMessage("0");
 
 	}
 	break;
 
 	// --- accented characters ---------------------------
-		
+
 	case LFUN_UMLAUT:
 	case LFUN_CIRCUMFLEX:
 	case LFUN_GRAVE:
@@ -2948,12 +2948,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			       | BufferView::CHANGE);
 		}
 		break;
-	
+
 	case LFUN_MATH_MACRO:
 		mathDispatchMathMacro(bv_, argument);
 		break;
 
-	case LFUN_MATH_DELIM:     
+	case LFUN_MATH_DELIM:
 		mathDispatchMathDelim(bv_, argument);
 		break;
 
@@ -2973,14 +2973,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		mathDispatchMathDisplay(bv_, argument);
 		break;
 
-	case LFUN_MATH_MODE:             // Open or create an inlined math inset 
+	case LFUN_MATH_MODE:             // Open or create an inlined math inset
 		mathDispatchMathMode(bv_, argument);
 		break;
-		
+
 	case LFUN_GREEK:                 // Insert a single greek letter
 		mathDispatchGreek(bv_, argument);
 		break;
-		
+
 	case LFUN_CITATION_INSERT:
 	{
 		InsetCommandParams p;
@@ -2993,18 +2993,18 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			updateInset(inset, true);
 	}
 	break;
-		    
+
 	case LFUN_INSERT_BIBTEX:
-	{   
+	{
 		// ale970405+lasgoutt970425
-		// The argument can be up to two tokens separated 
+		// The argument can be up to two tokens separated
 		// by a space. The first one is the bibstyle.
 		string const db       = token(argument, ' ', 0);
 		string const bibstyle = token(argument, ' ', 1);
 
 		InsetCommandParams p("BibTeX", db, bibstyle);
 		InsetBibtex * inset = new InsetBibtex(p);
-		
+
 		if (insertInset(inset)) {
 			if (argument.empty())
 				inset->edit(bv_);
@@ -3012,38 +3012,38 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			delete inset;
 	}
 	break;
-		
+
 	// BibTeX data bases
 	case LFUN_BIBDB_ADD:
 	{
-		InsetBibtex * inset = 
+		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
 		if (inset) {
 			inset->addDatabase(argument);
 		}
 	}
 	break;
-		    
+
 	case LFUN_BIBDB_DEL:
 	{
-		InsetBibtex * inset = 
+		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
 		if (inset) {
 			inset->delDatabase(argument);
 		}
 	}
 	break;
-	
+
 	case LFUN_BIBTEX_STYLE:
 	{
-		InsetBibtex * inset = 
+		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
 		if (inset) {
 			inset->setOptions(argument);
 		}
 	}
 	break;
-		
+
 	case LFUN_INDEX_CREATE:
 	{
 		InsetCommandParams p("index");
@@ -3057,7 +3057,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->getDialogs()->createIndex(p.getAsString());
 	}
 	break;
-		    
+
 	case LFUN_INDEX_INSERT:
 	{
 		InsetCommandParams p;
@@ -3070,7 +3070,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			updateInset(inset, true);
 	}
 	break;
-		    
+
 	case LFUN_INDEX_INSERT_LAST:
 	{
 		string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
@@ -3079,7 +3079,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 					+ idxstring + _(("' indexed.")));
 			InsetCommandParams p("index", idxstring);
 			InsetIndex * inset = new InsetIndex(p);
-			
+
 			if (!insertInset(inset))
 				delete inset;
 			else
@@ -3104,7 +3104,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (!insertInset(inset, "Standard"))
 			delete inset;
 	}
-		 
+
 	break;
 
 	case LFUN_CHILD_INSERT:
@@ -3121,7 +3121,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			bv_->owner()->getDialogs()->showInclude(inset);
 		}
 	}
-	break; 
+	break;
 
 	case LFUN_FLOAT_LIST:
 	{
@@ -3131,7 +3131,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			delete inset;
 	}
 	break;
-	
+
 	case LFUN_THESAURUS_ENTRY:
 	{
 		string arg = argument;
@@ -3139,7 +3139,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (arg.empty()) {
 			arg = bv_->getLyXText()->selectionAsString(buffer_,
 								   false);
- 
+
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
@@ -3152,11 +3152,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		bv_->owner()->getDialogs()->showThesaurus(arg);
 	}
 		break;
- 
+
 	case LFUN_SELFINSERT:
 	{
 		if (argument.empty()) break;
-		
+
 		/* Automatically delete the currently selected
 		 * text and replace it with what is being
 		 * typed in now. Depends on lyxrc settings
@@ -3164,7 +3164,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		 * true (on). */
 
 		LyXText * lt = bv_->getLyXText();
-		
+
 		if (lyxrc.auto_region_delete) {
 			if (lt->selection.set()) {
 				lt->cutSelection(bv_, false, false);
@@ -3175,24 +3175,24 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			}
 			workarea_.haveSelection(false);
 		}
-		
+
 		beforeChange(lt);
 		LyXFont const old_font(lt->real_current_font);
-		
+
 		string::const_iterator cit = argument.begin();
 		string::const_iterator end = argument.end();
 		for (; cit != end; ++cit) {
 			owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
 		}
-		
+
 		bv_->update(lt,
 			    BufferView::SELECT
 			    | BufferView::FITCUR
 			    | BufferView::CHANGE);
-		
+
 		lt->selection.cursor = lt->cursor;
 		moveCursorUpdate(false);
-		
+
 		// real_current_font.number can change so we need to
 		// update the minibuffer
 		if (old_font != lt->real_current_font)
@@ -3209,14 +3209,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		string arg;
 		if (!argument.empty())
 			arg = argument;
-		else 
+		else
 			arg = lyxrc.date_insert_format;
 		char datetmp[32];
 		int const datetmp_len =
 			::strftime(datetmp, 32, arg.c_str(), now_tm);
 
 		LyXText * lt = bv_->getLyXText();
-		
+
 		for (int i = 0; i < datetmp_len; i++) {
 			lt->insertChar(bv_, datetmp[i]);
 			update(lt,
@@ -3233,7 +3233,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_UNKNOWN_ACTION:
 		owner_->getLyXFunc()->setErrorMessage(N_("Unknown function!"));
 		break;
-	
+
 	default:
 		return false;
 	} // end of switch
@@ -3280,10 +3280,10 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 {
 	if (available()) {
 		LyXText * lt = bv_->getLyXText();
-		
+
 		hideCursor();
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
+		InsetSpecialChar * new_inset =
 			new InsetSpecialChar(kind);
 		if (!insertInset(new_inset))
 			delete new_inset;
@@ -3306,13 +3306,13 @@ void BufferView::Pimpl::smartQuote()
 		c = ' ';
 	else
 		c = par->getChar(pos - 1);
-		
+
 
 	hideCursor();
 
 	LyXLayout const & style =
 		textclasslist[bv_->buffer()->params.textclass][par->layout()];
-	
+
 	if (style.pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
 		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, "\"");
@@ -3327,12 +3327,12 @@ void BufferView::Pimpl::insertAndEditInset(Inset * inset)
 		delete inset;
 }
 
- 
+
 // Open and lock an updatable inset
 bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
 {
 	LyXText * lt = bv_->getLyXText();
-	
+
 	beforeChange(lt);
 	finishUndo();
 	if (!insertInset(new_inset)) {
@@ -3357,7 +3357,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	// not quite sure if we want this...
 	setCursorParUndo(bv_);
 	freezeUndo();
-	
+
 	beforeChange(bv_->text);
 	if (!lout.empty()) {
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
@@ -3366,7 +3366,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 
 		if (bv_->text->cursor.par()->size()) {
 			bv_->text->cursorLeft(bv_);
-			
+
 			bv_->text->breakParagraph(bv_);
 			update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
@@ -3386,17 +3386,17 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 		}
 
 		bv_->text->setLayout(bv_, lay);
-		
+
 		bv_->text->setParagraph(bv_, 0, 0,
 				   0, 0,
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
 				   Spacing(),
-				   LYX_ALIGN_LAYOUT, 
+				   LYX_ALIGN_LAYOUT,
 				   string(),
 				   0);
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
-	
+
 	bv_->text->insertInset(bv_, inset);
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
@@ -3432,7 +3432,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 			}
 		}
 	}
-  
+
 	// then check if the inset is a top_level inset (has no owner)
 	// if yes do the update as always otherwise we have to update the
 	// toplevel inset where this inset is inside
@@ -3468,13 +3468,13 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
 				  bool same_content)
 {
 	if (!available()) return;
-	
+
 	hideCursor();
 	beforeChange(bv_->text);
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-	
+
 	LyXCursor const & cursor = bv_->text->cursor;
- 
+
 	string contents;
 	if (same_content &&
 	    cursor.par()->isInset(cursor.pos())) {
@@ -3484,10 +3484,10 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
 			contents =
 				static_cast<InsetCommand const *>(inset)->getContents();
 	}
-	
- 
+
+
 	if (!bv_->text->gotoNextInset(bv_, codes, contents)) {
-		if (bv_->text->cursor.pos() 
+		if (bv_->text->cursor.pos()
 		    || bv_->text->cursor.par() != bv_->text->ownerParagraph()) {
 			LyXCursor tmp = bv_->text->cursor;
 			bv_->text->cursor.par(bv_->text->ownerParagraph());

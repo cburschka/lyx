@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -90,7 +90,7 @@ bool operator!=(LyXCursor const & a, LyXCursor const & b)
 
 ///
 inline
-bool operator<(LyXCursor const & a, LyXCursor const & b) 
+bool operator<(LyXCursor const & a, LyXCursor const & b)
 {
 	// Can this be done in a nother way?
 	return (a.y() < b.y() && a.pos() < b.pos());
@@ -98,7 +98,7 @@ bool operator<(LyXCursor const & a, LyXCursor const & b)
 
 ///
 inline
-bool operator>(LyXCursor const & a, LyXCursor const & b) 
+bool operator>(LyXCursor const & a, LyXCursor const & b)
 {
 	return b < a;
 }

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1998-2001 The LyX Team
  *
  *======================================================*/
@@ -20,11 +20,11 @@
 #include "LString.h"
 
 /**
-  This is a stateless class. 
+  This is a stateless class.
 
   It has one basic purposes:
   To serve as a color-namespace container (the Color enum).
-  
+
 
   */
 /**
@@ -38,7 +38,7 @@
  * - A real, predefined color, such as black, white, red or green.
  * - A logical color, such as no color, inherit, math
  */
- 
+
 class LColor // : public boost::noncopyable {
 // made copyable for same reasons as LyXRC was made copyable. See there for
 // explanation.
@@ -116,7 +116,7 @@ public:
 
 		/// caption frame color
 		captionframe,
- 
+
 		/// collapsable insets text
 		collapsable,
 		/// collapsable insets frame
@@ -158,7 +158,7 @@ public:
 		/// Color used for bottom background
 		buttonbg,
 
-	        // Logical attributes
+		// Logical attributes
 
 		/// Color is inherited
 		inherit,
@@ -172,19 +172,19 @@ public:
 	void setColor(LColor::color col, string const & x11name);
 	/// set the given LyX color to the color defined by the X11 name given
 	bool setColor(string const & lyxname, string const & x11name);
- 
+
 	/// Get GUI name of color
 	string const getGUIName(LColor::color c) const;
- 
+
 	/// Get X11 name of color
 	string const getX11Name(LColor::color c) const;
- 
+
 	/// Get LaTeX name of color
 	string const getLaTeXName(LColor::color c) const;
- 
+
 	/// Get LyX name of color
 	string const getLyXName(LColor::color c) const;
- 
+
 	/// get the color from the GUI name
 	LColor::color getFromGUIName(string const & guiname) const;
 	/// get the color from the LyX name

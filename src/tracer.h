@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -28,7 +28,7 @@ public:
 		lyxerr << string(depth, ' ') << "TRACE IN: "
 		       << str << std::endl;
 		depth += 2;
-		
+
 	}
 	///
 	~Trace() {

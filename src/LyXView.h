@@ -69,7 +69,7 @@ public:
 	void messagePush(string const & str);
 	///
 	void messagePop();
-	
+
 	///
 	Menubar * getMenubar() const;
 
@@ -100,13 +100,13 @@ public:
 protected:
 	///
 	Menubar * menubar;
-	/// 
+	///
 	Toolbar * toolbar;
 	/** This is supposed to be a pointer or a list of pointers to the
 	   BufferViews currently being shown in the LyXView. So far
 	   this is not used, but that should change pretty soon. (Lgb) */
 	BufferView * bufferview;
-	/// 
+	///
 	MiniBuffer * minibuffer;
 	///
 	Intl * intl;
@@ -117,7 +117,7 @@ protected:
 	///
 	void invalidateLayoutChoice();
 private:
-	/// 
+	///
 	LyXFunc * lyxfunc;
 	///
 	Dialogs * dialogs_;

@@ -1,8 +1,8 @@
 /* This file is part of
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-*        
+*
 *           Copyright 1999-2001 The LyX Team.
 *
 * ====================================================== */
@@ -64,7 +64,7 @@ int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
 
 } // namespace anon
 
-	
+
 Debug::type const Debug::ANY = Debug::type(
 	Debug::INFO | Debug::INIT | Debug::KEY | Debug::GUI |
 	Debug::PARSER | Debug::LYXRC | Debug::KBMAP | Debug::LATEX |
@@ -74,7 +74,7 @@ Debug::type const Debug::ANY = Debug::type(
 	Debug::INSETTEXT | Debug::GRAPHICS);
 
 
-Debug::type Debug::value(string const & val) 
+Debug::type Debug::value(string const & val)
 {
 	type l = Debug::NONE;
 	string v(val);
@@ -84,11 +84,11 @@ Debug::type Debug::value(string const & val)
 		if (tmp.empty())
 			break;
 		// Is it a number?
-		if (isStrInt(tmp)) 
+		if (isStrInt(tmp))
 			l |= static_cast<type>(strToInt(tmp));
 		else
 		// Search for an explicit name
-		for (int i = 0 ; i < numErrorTags ; ++i) 
+		for (int i = 0 ; i < numErrorTags ; ++i)
 			if (tmp == errorTags[i].name) {
 				l |= errorTags[i].level;
 				break;
@@ -112,7 +112,7 @@ void Debug::showLevel(ostream & o, Debug::type level)
 }
 
 
-void Debug::showTags(ostream & os) 
+void Debug::showTags(ostream & os)
 {
 	for (int i = 0 ; i < numErrorTags ; ++i)
 		os << setw(7) << errorTags[i].level

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -10,27 +10,27 @@
 
 /**
   Docu   : To use the lyxserver define the name of the pipe in your
-           lyxrc:
-           \serverpipe "/home/myhome/.lyxpipe"
-           Then use .lyxpipe.in and .lyxpipe.out to communicate to LyX.
-           Each message consists of a single line in ASCII. Input lines
-           (client -> LyX) have the following format:
-            "LYXCMD:<clientname>:<functionname>:<argument>"
-           Answers from LyX look like this:
-           "INFO:<clientname>:<functionname>:<data>"
+	   lyxrc:
+	   \serverpipe "/home/myhome/.lyxpipe"
+	   Then use .lyxpipe.in and .lyxpipe.out to communicate to LyX.
+	   Each message consists of a single line in ASCII. Input lines
+	   (client -> LyX) have the following format:
+	    "LYXCMD:<clientname>:<functionname>:<argument>"
+	   Answers from LyX look like this:
+	   "INFO:<clientname>:<functionname>:<data>"
  [asierra970531] Or like this in case of error:
-           "ERROR:<clientname>:<functionname>:<error message>"
-           where <clientname> and <functionname> are just echoed.
-           If LyX notifies about a user defined extension key-sequence,
-           the line looks like this:
-           "NOTIFY:<key-sequence>"
+	   "ERROR:<clientname>:<functionname>:<error message>"
+	   where <clientname> and <functionname> are just echoed.
+	   If LyX notifies about a user defined extension key-sequence,
+	   the line looks like this:
+	   "NOTIFY:<key-sequence>"
  [asierra970531] New server-only messages to implement a simple protocol
-           "LYXSRV:<clientname>:<protocol message>"
-           where <protocol message> can be "hello" or "bye". If hello is
-           received LyX will inform the client that it's listening its
-           messages, and 'bye' will inform that lyx is closing.
+	   "LYXSRV:<clientname>:<protocol message>"
+	   where <protocol message> can be "hello" or "bye". If hello is
+	   received LyX will inform the client that it's listening its
+	   messages, and 'bye' will inform that lyx is closing.
 
-           See development/server_monitor.c for an example client.
+	   See development/server_monitor.c for an example client.
   Purpose: implement a client/server lib for LyX
 */
 
@@ -68,10 +68,10 @@
 using std::endl;
 
 // provide an empty mkfifo() if we do not have one. This disables the
-// lyxserver. 
+// lyxserver.
 #ifndef HAVE_MKFIFO
 int mkfifo(char const * __path, mode_t __mode) {
-        return 0;
+	return 0;
 }
 #endif
 
@@ -82,7 +82,7 @@ extern LyXAction lyxaction;
 
 
 extern "C" {
-	
+
 	// C wrapper
 	static
 	void C_LyXComm_callback(int fd, void *v)
@@ -99,7 +99,7 @@ extern "C" {
 void LyXComm::openConnection()
 {
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Opening connection" << endl;
-       
+
 	// If we are up, that's an error
 	if (ready) {
 		lyxerr << "LyXComm: Already connected" << endl;
@@ -107,7 +107,7 @@ void LyXComm::openConnection()
 	}
 	// We assume that we don't make it
 	ready = false;
- 
+
 	if (pipename.empty()) {
 		lyxerr[Debug::LYXSERVER]
 			<< "LyXComm: server is disabled, nothing to do"
@@ -122,46 +122,46 @@ void LyXComm::openConnection()
 		endPipe(infd, inPipeName());
 		return;
 	}
- 
+
 	if (fcntl(outfd, F_SETFL, O_NONBLOCK) < 0) {
 		lyxerr << "LyXComm: Could not set flags on pipe " << outPipeName()
 		       << '\n' << strerror(errno) << endl;
 		return;
 	}
- 
+
 	// We made it!
 	ready = true;
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Connection established" << endl;
 }
 
-	
+
 /// Close pipes
 void LyXComm::closeConnection()
 {
-       	lyxerr[Debug::LYXSERVER] << "LyXComm: Closing connection" << endl;
+	lyxerr[Debug::LYXSERVER] << "LyXComm: Closing connection" << endl;
 
 	if (pipename.empty()) {
 		lyxerr[Debug::LYXSERVER]
 			<< "LyXComm: server is disabled, nothing to do"
 			<< endl;
-	        return;
+		return;
 	}
 
 	if (!ready) {
 		lyxerr << "LyXComm: Already disconnected" << endl;
 		return;
 	}
- 
+
 	endPipe(infd, inPipeName());
 	endPipe(outfd, outPipeName());
- 
+
 	ready = false;
 }
 
 int LyXComm::startPipe(string const & filename, bool write)
 {
 	int fd;
- 
+
 #ifdef __EMX__
 	HPIPE os2fd;
 	APIRET rc;
@@ -177,7 +177,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 		pipename.erase();
 		return -1;
 	}
- 
+
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
 		lyxerr <<"LyXComm: Could not create pipe " << filename
@@ -193,7 +193,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 		return -1;
 	};
 	// Imported handles can be used both with OS/2 APIs and emx
-	// library functions. 
+	// library functions.
 	fd = _imphandle(os2fd);
 #else
 	if (::access(filename.c_str(), F_OK) == 0) {
@@ -203,7 +203,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 		pipename.erase();
 		return -1;
 	}
- 
+
 	if (::mkfifo(filename.c_str(), 0600) < 0) {
 		lyxerr << "LyXComm: Could not create pipe " << filename << '\n'
 		       << strerror(errno) << endl;
@@ -211,17 +211,17 @@ int LyXComm::startPipe(string const & filename, bool write)
 	};
 	fd = ::open(filename.c_str(), write ? (O_RDWR) : (O_RDONLY|O_NONBLOCK));
 #endif
- 
+
 	if (fd < 0) {
 		lyxerr << "LyXComm: Could not open pipe " << filename << '\n'
 		       << strerror(errno) << endl;
 		lyx::unlink(filename);
 		return -1;
 	}
- 
+
 	if (!write)
 		fl_add_io_callback(fd, FL_READ, C_LyXComm_callback, this);
- 
+
 	return fd;
 }
 
@@ -234,7 +234,7 @@ void LyXComm::endPipe(int & fd, string const & filename)
 #ifdef __EMX__
 	APIRET rc;
 	int errnum;
- 
+
 	rc = DosDisConnectNPipe(fd);
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
@@ -243,12 +243,12 @@ void LyXComm::endPipe(int & fd, string const & filename)
 		return;
 	}
 #endif
- 
+
 	if (::close(fd) < 0) {
 		lyxerr << "LyXComm: Could not close pipe " << filename
 		       << '\n' << strerror(errno) << endl;
 	}
- 
+
 // OS/2 pipes are deleted automatically
 #ifndef __EMX__
 	if (lyx::unlink(filename) < 0) {
@@ -274,14 +274,14 @@ void LyXComm::emergencyCleanup()
 void LyXComm::callback(int fd, void *v)
 {
 	LyXComm * c = static_cast<LyXComm*>(v);
- 
+
 	if (lyxerr.debugging(Debug::LYXSERVER)) {
 		lyxerr << "LyXComm: Receiving from fd " << fd << endl;
 	}
- 
-        const int CMDBUFLEN = 100;
+
+	const int CMDBUFLEN = 100;
 	char charbuf[CMDBUFLEN];
-  	string cmd;
+	string cmd;
 // nb! make lsbuf a class-member for multiple sessions
 	static string lsbuf;
 
@@ -297,24 +297,24 @@ void LyXComm::callback(int fd, void *v)
 			// commit any commands read
 			while (lsbuf.find('\n') != string::npos) // while still
 							// commands
-							// left 
+							// left
 			{
 				// split() grabs the entire string if
-				// the delim /wasn't/ found. ?:-P 
+				// the delim /wasn't/ found. ?:-P
 				lsbuf= split(lsbuf, cmd,'\n');
 				lyxerr[Debug::LYXSERVER]
 					<< "LyXComm: status:" << status
-					<< ", lsbuf:" << lsbuf 
+					<< ", lsbuf:" << lsbuf
 					<< ", cmd:" << cmd << endl;
 				if (!cmd.empty())
-					c->clientcb(c->client, cmd); 
-				        //\n or not \n?
+					c->clientcb(c->client, cmd);
+					//\n or not \n?
 			}
 		}
 		if (errno == EAGAIN)
 		{  // EAGAIN is not really an error , it means we're
 		   // only reading too fast for the writing process on
-		   // the other end of the pipe. 
+		   // the other end of the pipe.
 			errno = 0;
 			return; // up to libforms select-loop (*crunch*)
 		}
@@ -323,7 +323,7 @@ void LyXComm::callback(int fd, void *v)
 			lyxerr << "LyXComm: " << strerror(errno) << endl;
 			if (!lsbuf.empty())
 			{
-				lyxerr << "LyxComm: truncated command: " 
+				lyxerr << "LyxComm: truncated command: "
 				       << lsbuf << endl;
 				lsbuf.erase();
 			}
@@ -398,9 +398,9 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 {
 	lyxerr[Debug::LYXSERVER] << "LyXServer: Received: '"
 				 << msg << '\'' << endl;
- 
+
 	char const * p = msg.c_str();
- 
+
 	// --- parse the string --------------------------------------------
 	//
 	//  Format: LYXCMD:<client>:<func>:<argstring>\n
@@ -409,26 +409,26 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	while (*p) {
 		// --- 1. check 'header' ---
 
-	        if (compare(p, "LYXSRV:", 7) == 0) {
-			server_only = true; 
+		if (compare(p, "LYXSRV:", 7) == 0) {
+			server_only = true;
 		} else if (0 != compare(p, "LYXCMD:", 7)) {
 			lyxerr << "LyXServer: Unknown request \"" << p << "\"" << endl;
 			return;
 		}
 		p += 7;
-		
+
 		// --- 2. for the moment ignore the client name ---
 		string client;
 		while (*p && *p != ':')
 			client += char(*p++);
 		if (*p == ':') ++p;
 		if (!*p) return;
-		
+
 		// --- 3. get function name ---
 		string cmd;
 		while (*p && *p != ':')
 			cmd += char(*p++);
-		
+
 		// --- 4. parse the argument ---
 		string arg;
 		if (!server_only && *p == ':' && *(++p)) {
@@ -436,17 +436,17 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				arg += char(*p++);
 			if (*p) ++p;
 		}
- 
+
 		lyxerr[Debug::LYXSERVER]
 			<< "LyXServer: Client: '" << client
 			<< "' Command: '" << cmd
 			<< "' Argument: '" << arg << '\'' << endl;
-		
+
 		// --- lookup and exec the command ------------------
- 
+
 		if (server_only) {
 			string buf;
-			// return the greeting to inform the client that 
+			// return the greeting to inform the client that
 			// we are listening.
 			if (cmd == "hello") {
 				// One more client
@@ -457,8 +457,8 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 					return;
 				}
 				int i= 0; //find place in clients[]
-				while (!serv->clients[i].empty() 
-				       && i<serv->numclients) 
+				while (!serv->clients[i].empty()
+				       && i<serv->numclients)
 					++i;
 				serv->clients[i] = client;
 				serv->numclients++;
@@ -492,7 +492,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			}
 			return;
 		}
- 
+
 		if (!cmd.empty()) {
 			// which lyxfunc should we let it connect to?
 			// The correct solution would be to have a
@@ -504,7 +504,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			kb_action action = static_cast<kb_action>(lyxaction.LookupFunc(cmd));
 			//int action = -1;
 			string rval, buf;
-		    
+
 			if (action>= 0) {
 				rval = serv->func->dispatch(action, arg);
 			} else {
@@ -519,7 +519,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				buf = "ERROR:";
 			else
 				buf = "INFO:";
-			buf += string(client) + ":" + cmd 	+ ":" + rval + "\n";
+			buf += string(client) + ":" + cmd	+ ":" + rval + "\n";
 			serv->pipes.send(buf);
 
 			// !!! we don't do any error checking -
@@ -527,7 +527,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			//  message is lost and others too
 			//  maybe; so the client should empty
 			//  the outpipe before issuing a request.
-		
+
 			// not found
 		}
 	}  /* while *p */
@@ -547,4 +547,3 @@ void LyXServer::notifyClient(string const & s)
 	string buf = string("NOTIFY:") + s + "\n";
 	pipes.send(buf);
 }
-

@@ -16,11 +16,11 @@ class ISpell : public SpellBase
 		ASC_ISPELL,
 		ASC_ASPELL
     };
-    
+
     ISpell();
-    
+
     ISpell(BufferParams const & params, string const & lang);
-    
+
     ~ISpell();
 
 
@@ -44,14 +44,14 @@ class ISpell : public SpellBase
 
     /// store replacement
     void store(string const & mis, string const & cor);
-     
+
     char const * nextMiss();
 
     char const * error();
-   
+
   private:
 
-    ActualSpellChecker actual_spell_checker;   
+    ActualSpellChecker actual_spell_checker;
 
     /// instream to communicate with ispell
     FILE * in;
@@ -73,9 +73,7 @@ class ISpell : public SpellBase
     char * b;
     ///
     char * e;
-   
+
 };
-   
+
 #endif
-
-

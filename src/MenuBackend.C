@@ -1,6 +1,6 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
@@ -46,8 +46,8 @@ using std::sort;
 MenuBackend menubackend;
 
 
-MenuItem::MenuItem(Kind kind, string const & label, 
-		   string const & command, bool optional) 
+MenuItem::MenuItem(Kind kind, string const & label,
+		   string const & command, bool optional)
 	: kind_(kind), label_(label), optional_(optional)
 {
 	switch (kind) {
@@ -67,11 +67,11 @@ MenuItem::MenuItem(Kind kind, string const & label,
 
 		if (action_ == LFUN_UNKNOWN_ACTION) {
 			lyxerr << "MenuItem(): LyX command `"
-			       << command << "' does not exist." << endl; 
+			       << command << "' does not exist." << endl;
 		}
 		if (optional_)
-			lyxerr[Debug::GUI] << "Optional item " 
-					   << command << endl; 
+			lyxerr[Debug::GUI] << "Optional item "
+					   << command << endl;
 		break;
 	case Submenu:
 		submenu_ = command;
@@ -80,15 +80,15 @@ MenuItem::MenuItem(Kind kind, string const & label,
 }
 
 
-string const MenuItem::label() const 
-{ 
-	return token(label_, '|', 0); 
+string const MenuItem::label() const
+{
+	return token(label_, '|', 0);
 }
 
 
 string const MenuItem::shortcut() const
-{ 
-	return token(label_, '|', 1); 
+{
+	return token(label_, '|', 1);
 }
 
 
@@ -128,7 +128,7 @@ Menu & Menu::read(LyXLex & lex)
 		{ "importformats", md_importformats },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
-		{ "optitem", md_optitem }, 
+		{ "optitem", md_optitem },
 		{ "separator", md_separator },
 		{ "submenu", md_submenu },
 		{ "toc", md_toc },
@@ -153,7 +153,7 @@ Menu & Menu::read(LyXLex & lex)
 			string const name = _(lex.getString());
 			lex.next(true);
 			string const command = lex.getString();
-			add(MenuItem(MenuItem::Command, name, 
+			add(MenuItem(MenuItem::Command, name,
 				     command, optional));
 			optional = false;
 			break;
@@ -198,7 +198,7 @@ Menu & Menu::read(LyXLex & lex)
 		case md_floatinsert:
 			add(MenuItem(MenuItem::FloatInsert));
 			break;
-			
+
 		case md_submenu: {
 			lex.next(true);
 			string const mlabel = _(lex.getString());
@@ -254,7 +254,7 @@ namespace {
 class compare_format {
 public:
 	bool operator()(Format const * p1, Format const * p2) {
-		return *p1 < *p2;	
+		return *p1 < *p2;
 	}
 };
 
@@ -270,7 +270,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			int ii = 1;
 			LastFiles::const_iterator lfit = lastfiles->begin();
 			LastFiles::const_iterator end = lastfiles->end();
-			
+
 			for (; lfit != end && ii < 10; ++lfit, ++ii) {
 				string const label = tostr(ii) + ". "
 					+ MakeDisplayPath((*lfit), 30)
@@ -283,12 +283,12 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			}
 		}
 		break;
-		
+
 		case MenuItem::Documents: {
 			typedef vector<string> Strings;
-			
+
 			Strings const names = bufferlist.getFileNames();
-			
+
 			if (names.empty()) {
 				tomenu.add(MenuItem(MenuItem::Command,
 						    _("No Documents Open!"),
@@ -315,9 +315,9 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats: {
 			typedef vector<Format const *> Formats;
-			
+
 			Formats formats;
-			
+
 			kb_action action;
 			switch (cit->kind()) {
 			case MenuItem::ImportFormats:
@@ -325,22 +325,22 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				action = LFUN_IMPORT;
 				break;
 			case MenuItem::ViewFormats:
-				formats = Exporter::GetExportableFormats(buf, true); 
+				formats = Exporter::GetExportableFormats(buf, true);
 				action = LFUN_PREVIEW;
 				break;
 			case MenuItem::UpdateFormats:
-				formats = Exporter::GetExportableFormats(buf, true); 
+				formats = Exporter::GetExportableFormats(buf, true);
 				action = LFUN_UPDATE;
 				break;
 			default:
-				formats = Exporter::GetExportableFormats(buf, false); 
+				formats = Exporter::GetExportableFormats(buf, false);
 				action = LFUN_EXPORT;
 			}
 			sort(formats.begin(), formats.end(), compare_format());
 
 			Formats::const_iterator fit = formats.begin();
 			Formats::const_iterator end = formats.end();
-			
+
 			for (; fit != end ; ++fit) {
 				if ((*fit)->dummy())
 					continue;
@@ -388,7 +388,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				string const label = cit->second.name();
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
-				
+
 				// and the wide version
 				int const action2 = lyxaction
 					.getPseudoAction(LFUN_INSET_WIDE_FLOAT,
@@ -399,7 +399,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			}
 		}
 		break;
-		
+
 		default:
 			tomenu.add(*cit);
 		}
@@ -448,7 +448,7 @@ void MenuBackend::read(LyXLex & lex)
 
 	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
-		case md_menubar: 
+		case md_menubar:
 			menubar = true;
 			// fallback to md_menu
 		case md_menu: {
@@ -461,7 +461,7 @@ void MenuBackend::read(LyXLex & lex)
 					lex.printError("Cannot append to menu `$$Token' unless it is of the same type");
 					return;
 				}
-			} else {				
+			} else {
 				Menu menu(name, menubar);
 				menu.read(lex);
 				add(menu);
@@ -486,7 +486,7 @@ void MenuBackend::defaults()
 {
 	menulist_.clear();
 
-	lyxerr[Debug::GUI] << "MenuBackend::defaults: using default values" 
+	lyxerr[Debug::GUI] << "MenuBackend::defaults: using default values"
 			   << endl;
 
 	Menu file("file");
@@ -506,7 +506,7 @@ void MenuBackend::defaults()
 		.add(MenuItem(MenuItem::Command,
 			      _("LinuxDoc...|L"), "buffer-import linuxdoc"));
 	add(import);
- 
+
 	Menu edit("edit");
 	edit
 		.add(MenuItem(MenuItem::Command, _("Cut"), "cut"))
@@ -534,8 +534,8 @@ void MenuBackend::defaults()
 	if (lyxerr.debugging(Debug::GUI)) {
 		for (const_iterator cit = begin();
 		    cit != end() ; ++cit)
-			lyxerr << "Menu name: " << cit->name() 
-			       << ", Menubar: " << cit->menubar() 
+			lyxerr << "Menu name: " << cit->name()
+			       << ", Menubar: " << cit->menubar()
 			       << endl;
 	}
 }

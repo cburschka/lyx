@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -23,7 +23,7 @@ LyXCursor::LyXCursor()
 {}
 
 
-void LyXCursor::par(Paragraph * p) 
+void LyXCursor::par(Paragraph * p)
 {
 	par_ = p;
 }
@@ -47,7 +47,7 @@ lyx::pos_type LyXCursor::pos() const
 }
 
 
-void LyXCursor::boundary(bool b) 
+void LyXCursor::boundary(bool b)
 {
 	boundary_ = b;
 }

@@ -17,7 +17,7 @@ class LyXLex;
 class TransManager;
 
 /**
-  Trans: holds a .kmap file 
+  Trans: holds a .kmap file
   */
 //class Trans : public TransInterface {
 class Trans {
@@ -37,7 +37,7 @@ public:
 	string const process(char, TransManager &);
 	///
 	bool isAccentDefined(tex_accent, KmodInfo &) const;
-    
+
 private:
 	///
 	void AddDeadkey(tex_accent, string const &);
@@ -75,4 +75,4 @@ string const & Trans::Match(unsigned char c)
 	return dummy;
 }
 
-#endif 
+#endif

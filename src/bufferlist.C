@@ -1,15 +1,15 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Word Processor
  *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team. 
+ *           Copyright 1995-2001 The LyX Team.
  *
  *           This file is Copyright 1996-2001
  *           Lars Gullik Bjønnes
  *
- * ====================================================== 
+ * ======================================================
  */
 
 #include <config.h>
@@ -124,7 +124,7 @@ bool BufferList::qwriteOne(Buffer * buf, string const & fname,
 			if (buf->isUnnamed()) {
 				removeAutosaveFile(buf->fileName());
 			}
- 
+
 			unsaved_list += MakeDisplayPath(fname, 50) + "\n";
 			return true;
 		case 3: // Cancel
@@ -134,7 +134,7 @@ bool BufferList::qwriteOne(Buffer * buf, string const & fname,
 	return true;
 }
 
- 
+
 bool BufferList::qwriteAll()
 {
 	string unsaved;
@@ -151,10 +151,10 @@ bool BufferList::qwriteAll()
 				return false;
 		}
 	}
- 
+
 	if (!unsaved.empty() && lyxrc.exit_confirmation) {
 		return Alert::askQuestion(_("Some documents were not saved:"),
-		                          unsaved, _("Exit anyway?"));
+					  unsaved, _("Exit anyway?"));
 	}
 
 	return true;
@@ -167,7 +167,7 @@ void BufferList::closeAll()
 	// Since we are closing we can just as well delete all
 	// in the textcache this will also speed the closing/quiting up a bit.
 	textcache.clear();
-	
+
 	while (!bstore.empty()) {
 		close(bstore.front());
 	}
@@ -178,14 +178,14 @@ void BufferList::closeAll()
 bool BufferList::close(Buffer * buf)
 {
 	lyx::Assert(buf);
-	
+
 	// CHECK
 	// Trace back why we need to use buf->getUser here.
 	// Perhaps slight rewrite is in order? (Lgb)
-	
-        if (buf->getUser())
+
+	if (buf->getUser())
 		buf->getUser()->insetUnlock();
-	
+
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		if (buf->getUser())
 			buf->getUser()->owner()->prohibitInput();
@@ -260,7 +260,7 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 int BufferList::unlockInset(UpdatableInset * inset)
 {
 	lyx::Assert(inset);
-	
+
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
@@ -298,21 +298,21 @@ void BufferList::emergencyWriteAll()
 }
 
 
-void BufferList::emergencyWrite(Buffer * buf) 
+void BufferList::emergencyWrite(Buffer * buf)
 {
 	// assert(buf) // this is not good since C assert takes an int
-	               // and a pointer is a long (JMarc)
+		       // and a pointer is a long (JMarc)
 	assert(buf != 0); // use c assert to avoid a loop
 
-	
+
 	// No need to save if the buffer has not changed.
 	if (buf->isLyxClean())
 		return;
-	
+
 	lyxerr << fmt(_("lyx: Attempting to save document %s as..."),
 		      buf->isUnnamed() ? OnlyFilename(buf->fileName()).c_str()
 		      : buf->fileName().c_str()) << endl;
-	
+
 	// We try to save three places:
 
 	// 1) Same place as document. Unless it is an unnamed doc.
@@ -328,7 +328,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 			lyxerr << _("  Save failed! Trying...") << endl;
 		}
 	}
-	
+
 	// 2) In HOME directory.
 	string s = AddName(GetEnvPath("HOME"), buf->fileName());
 	s += ".emergency";
@@ -338,9 +338,9 @@ void BufferList::emergencyWrite(Buffer * buf)
 		lyxerr << _("  Save seems successful. Phew.") << endl;
 		return;
 	}
-	
+
 	lyxerr << _("  Save failed! Trying...") << endl;
-	
+
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
 	// drive letter on OS/2
@@ -366,11 +366,11 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	FileInfo fileInfo2(s);
 
 	if (!fileInfo2.exist()) {
-		Alert::alert(_("Error!"), _("Cannot open file"), 
+		Alert::alert(_("Error!"), _("Cannot open file"),
 			MakeDisplayPath(s));
 		return 0;
 	}
- 
+
 	Buffer * b = bstore.newBuffer(s, ronly);
 
 	// Check if emergency save file exists and is newer.
@@ -443,7 +443,7 @@ bool BufferList::exists(string const & s) const
 bool BufferList::isLoaded(Buffer const * b) const
 {
 	lyx::Assert(b);
-	
+
 	BufferStorage::const_iterator cit =
 		find(bstore.begin(), bstore.end(), b);
 	return cit != bstore.end();
@@ -495,7 +495,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 	}
 
 	b->setReadonly(false);
-	
+
 	return b;
 }
 
@@ -511,7 +511,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 
 	// file already open?
 	if (exists(s)) {
-		if (Alert::askQuestion(_("Document is already open:"), 
+		if (Alert::askQuestion(_("Document is already open:"),
 				MakeDisplayPath(s, 50),
 				_("Do you want to reload that document?"))) {
 			// Reload is accomplished by closing and then loading
@@ -520,7 +520,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 			}
 			// Fall through to new load. (Asger)
 		} else {
-			// Here, we pretend that we just loaded the 
+			// Here, we pretend that we just loaded the
 			// open document
 			return getBuffer(s);
 		}
@@ -542,7 +542,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		if (LyXVC::file_not_found_hook(s)) {
 			// Ask if the file should be checked out for
 			// viewing/editing, if so: load it.
-		        if (Alert::askQuestion(_("Do you want to retrieve file under version control?"))) {
+			if (Alert::askQuestion(_("Do you want to retrieve file under version control?"))) {
 				// How can we know _how_ to do the checkout?
 				// With the current VC support it has to be,
 				// a RCS file since CVS do not have special ,v files.
@@ -550,7 +550,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 				return loadLyXFile(filename, tolastfiles);
 			}
 		}
-		if (Alert::askQuestion(_("Cannot open specified file:"), 
+		if (Alert::askQuestion(_("Cannot open specified file:"),
 				MakeDisplayPath(s, 50),
 				_("Create new document with this name?")))
 			{

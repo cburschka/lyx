@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -65,7 +65,7 @@ void UndoStack::push(Undo * undo_arg)
 {
 	if (!undo_arg)
 		return;
-	
+
 	stakk.push_front(undo_arg);
 	if (stakk.size() > limit) {
 		Undo * tmp = stakk.back();

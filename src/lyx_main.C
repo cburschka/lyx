@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -87,7 +87,7 @@ LyX::LyX(int * argc, char * argv[])
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap.reset(new kb_keymap);
 	defaultKeyBindings(toplevel_keymap.get());
-	
+
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
 	lyxerr[Debug::INIT] << "Initializing LyXGUI..." << endl;
@@ -105,7 +105,7 @@ LyX::LyX(int * argc, char * argv[])
 			exit(0);
 		}
 	}
-	
+
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
 	init(gui);
@@ -114,7 +114,7 @@ LyX::LyX(int * argc, char * argv[])
 	lyxGUI->init();
 
 	// Load the files specified in the command line.
-	if ((*argc) == 2) 
+	if ((*argc) == 2)
 		lyxerr[Debug::INFO] << "Opening document..." << endl;
 	else if ((*argc) > 2)
 		lyxerr[Debug::INFO] << "Opening documents..." << endl;
@@ -157,7 +157,7 @@ LyX::LyX(int * argc, char * argv[])
 		// try to dispatch to last loaded buffer first
 		bool dispatched	= last_loaded->dispatch(batch_command);
 
-		// if this was successful, return. 
+		// if this was successful, return.
 		// Maybe we could do something more clever than aborting...
 		if (dispatched) {
 			lyxerr << "We are done!" << endl;
@@ -171,7 +171,7 @@ LyX::LyX(int * argc, char * argv[])
 
 		// fall through...
 	}
-	
+
 	// Let the ball begin...
 	lyxGUI->runTime();
 }
@@ -184,7 +184,7 @@ LyX::~LyX()
 
 
 extern "C" {
-	
+
 static
 void error_handler(int err_sig)
 {
@@ -202,7 +202,7 @@ void error_handler(int err_sig)
 		lyxerr << "\nlyx: SIGSEGV signal caught" << endl;
 		lyxerr <<
 			"Sorry, you have found a bug in LyX. "
-			"Please read the bug-reporting instructions " 
+			"Please read the bug-reporting instructions "
 			"in Help->Introduction and send us a bug report, "
 			"if necessary. Thanks !" << endl;
 		break;
@@ -210,7 +210,7 @@ void error_handler(int err_sig)
 		// no comments
 		break;
 	}
-   
+
 	// Deinstall the signal handlers
 	signal(SIGHUP, SIG_DFL);
 	signal(SIGINT, SIG_DFL);
@@ -221,7 +221,7 @@ void error_handler(int err_sig)
 	LyX::emergencyCleanup();
 
 	lyxerr << "Bye." << endl;
-	if (err_sig!= SIGHUP && 
+	if (err_sig!= SIGHUP &&
 	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
 		lyx::abort();
 	exit(0);
@@ -246,7 +246,7 @@ void LyX::init(bool gui)
 	string binpath = os::binpath();
 	string binname = os::binname();
 	string fullbinname = MakeAbsPath(binname, binpath);
-	
+
 	if (binpath.empty()) {
 		lyxerr << _("Warning: could not determine path of binary.")
 		       << "\n"
@@ -281,7 +281,7 @@ void LyX::init(bool gui)
 
 	// LYX_DIR_11x environment variable
 	string const lyxdir = GetEnvPath("LYX_DIR_11x");
-	
+
 	if (!lyxdir.empty()) {
 		lyxerr[Debug::INIT] << "LYX_DIR_11x: " << lyxdir << endl;
 		searchpath += lyxdir + ';';
@@ -295,18 +295,18 @@ void LyX::init(bool gui)
 		if (LyXReadLink(fullbinname, link)) {
 			// Path of binary/../share/name of binary/
 			searchpath += NormalizePath(AddPath(binpath,
-							    "../share/") 
+							    "../share/")
 						    + OnlyFilename(binname));
 			searchpath += ';';
 			fullbinpath = link;
 			binpath = MakeAbsPath(OnlyPath(fullbinpath));
 		}
 	}
-	
-        bool followlink;
+
+	bool followlink;
 	do {
 		// Path of binary/../share/name of binary/
-		searchpath += NormalizePath(AddPath(binpath, "../share/") + 
+		searchpath += NormalizePath(AddPath(binpath, "../share/") +
 		      OnlyFilename(binname)) + ';';
 
 		// Follow Symlinks
@@ -361,7 +361,7 @@ void LyX::init(bool gui)
 		if (system_lyxdir != NormalizePath(lyxdir)) {
 			lyxerr <<_("LYX_DIR_11x environment variable no good.")
 			       << '\n'
-			       << _("System directory set to: ") 
+			       << _("System directory set to: ")
 			       << system_lyxdir << endl;
 			path_shown = true;
 		}
@@ -381,7 +381,7 @@ void LyX::init(bool gui)
 					<< "Giving up." << endl;
 				exit(1);
 			}
-			lyxerr << _("Using built-in default ") 
+			lyxerr << _("Using built-in default ")
 			       << LYX_DIR << _(" but expect problems.")
 			       << endl;
 		} else {
@@ -393,12 +393,12 @@ void LyX::init(bool gui)
 	// Report the system directory if debugging is on
 	if (!path_shown)
 		lyxerr[Debug::INIT] << "System directory: '"
-				    << system_lyxdir << '\'' << endl; 
+				    << system_lyxdir << '\'' << endl;
 
 	//
 	// Determine user lyx-dir
 	//
-	
+
 	// Directories are searched in this order:
 	// 1) -userdir command line parameter
 	// 2) LYX_USERDIR_11x environment variable
@@ -418,7 +418,7 @@ void LyX::init(bool gui)
 			explicit_userdir = false;
 	}
 
-	lyxerr[Debug::INIT] << "User LyX directory: '" 
+	lyxerr[Debug::INIT] << "User LyX directory: '"
 			    <<  user_lyxdir << '\'' << endl;
 
 	// Check that user LyX directory is ok. We don't do that if
@@ -428,7 +428,7 @@ void LyX::init(bool gui)
 	} else {
 		first_start = false;
 	}
-	
+
 	//
 	// Shine up lyxrc defaults
 	//
@@ -437,7 +437,7 @@ void LyX::init(bool gui)
 	if (lyxrc.template_path.empty()) {
 		lyxrc.template_path = AddPath(system_lyxdir, "templates");
 	}
-   
+
 	// Default lastfiles file: $HOME/.lyx/lastfiles
 	if (lyxrc.lastfiles.empty()) {
 		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
@@ -446,12 +446,12 @@ void LyX::init(bool gui)
 	// Disable gui when either lyxrc or easyparse says so
 	if (!gui)
 		lyxrc.use_gui = false;
- 
-        // Calculate screen dpi as average of x-DPI and y-DPI:
+
+	// Calculate screen dpi as average of x-DPI and y-DPI:
 	if (lyxrc.use_gui) {
 		lyxrc.dpi = GUIRunTime::getScreenDPI();
 		lyxerr[Debug::INIT] << "DPI setting detected to be "
-                                                << lyxrc.dpi + 0.5 << endl;
+						<< lyxrc.dpi + 0.5 << endl;
 	} else {
 		lyxrc.dpi = 1; // I hope this is safe
 	}
@@ -488,7 +488,7 @@ void LyX::init(bool gui)
 	readUIFile(lyxrc.ui_file);
 
 	// Bind the X dead keys to the corresponding LyX functions if
-	// necessary. 
+	// necessary.
 	if (lyxrc.override_x_deadkeys)
 		deadKeyBindings(toplevel_keymap.get());
 
@@ -496,7 +496,7 @@ void LyX::init(bool gui)
 		lyxrc.print();
 	}
 
-	// Create temp directory	
+	// Create temp directory
 	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
 	system_tempdir = os::getTmpDir();
 	if (lyxerr.debugging(Debug::INIT)) {
@@ -505,8 +505,8 @@ void LyX::init(bool gui)
 
 	// load the lastfiles mini-database
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
-			    << lyxrc.lastfiles << "'..." << endl; 
-	lastfiles.reset(new LastFiles(lyxrc.lastfiles, 
+			    << lyxrc.lastfiles << "'..." << endl;
+	lastfiles.reset(new LastFiles(lyxrc.lastfiles,
 				      lyxrc.check_lastfiles,
 				      lyxrc.num_lastfiles));
 
@@ -524,25 +524,25 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("Left", LFUN_LEFT);
 	kbmap->bind("Up", LFUN_UP);
 	kbmap->bind("Down", LFUN_DOWN);
-	
+
 	kbmap->bind("Tab", LFUN_TAB);
 	kbmap->bind("ISO_Left_Tab", LFUN_TAB); // jbl 2001-23-02
-	
+
 	kbmap->bind("Home", LFUN_HOME);
 	kbmap->bind("End", LFUN_END);
 	kbmap->bind("Prior", LFUN_PRIOR);
 	kbmap->bind("Next", LFUN_NEXT);
-	
+
 	kbmap->bind("Return", LFUN_BREAKPARAGRAPH);
 	//kbmap->bind("~C-~S-~M-nobreakspace", LFUN_PROTECTEDSPACE);
-	
+
 	kbmap->bind("Delete", LFUN_DELETE);
 	kbmap->bind("BackSpace", LFUN_BACKSPACE);
 
 	// sub- and superscript -MV
 	kbmap->bind("~S-underscore", LFUN_SUBSCRIPT);
 	kbmap->bind("~S-asciicircum", LFUN_SUPERSCRIPT);
-	
+
 	// kbmap->bindings to enable the use of the numeric keypad
 	// e.g. Num Lock set
 	//kbmap->bind("KP_0", LFUN_SELFINSERT);
@@ -569,8 +569,8 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("KP_End", LFUN_END);
 	kbmap->bind("KP_Prior", LFUN_PRIOR);
 	kbmap->bind("KP_Next", LFUN_NEXT);
-	
-        kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
+
+	kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
 	kbmap->bind("S-Tab", LFUN_SHIFT_TAB);  // jug20000522
 	kbmap->bind("S-ISO_Left_Tab", LFUN_SHIFT_TAB); // jbl 2001-23-02
 }
@@ -582,13 +582,13 @@ void LyX::emergencyCleanup()
 	// like to delete any we find, but our lyxdir might
 	// contain documents etc. which might be helpful on
 	// a crash
- 
+
 	bufferlist.emergencyWriteAll();
 	if (lyxserver)
 		lyxserver->emergencyCleanup();
 }
 
- 
+
 // LyX can optionally take over the handling of deadkeys
 void LyX::deadKeyBindings(kb_keymap * kbmap)
 {
@@ -628,7 +628,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	} else {
 		first_start = !explicit_userdir;
 	}
-	
+
 	// If the user specified explicitely a directory, ask whether
 	// to create it (otherwise, always create it)
 	if (explicit_userdir &&
@@ -665,22 +665,22 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 bool LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
-	
+
 	string const lyxrc_path = LibFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
-	        lyxerr[Debug::INIT] << "Found " << name
+		lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
-		if (lyxrc.read(lyxrc_path) < 0) { 
-		        Alert::alert(_("LyX Warning!"), 
+		if (lyxrc.read(lyxrc_path) < 0) {
+			Alert::alert(_("LyX Warning!"),
 				   _("Error while reading ") + lyxrc_path + ".",
 				   _("Using built-in defaults."));
 			return false;
 		}
 		return true;
 	} else {
-	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		lyxerr[Debug::INIT] << "Could not find " << name << endl;
 	}
-	
+
 	return false;
 }
 
@@ -700,15 +700,15 @@ void LyX::readUIFile(string const & name)
 	};
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
-	
+
 	string const ui_path = LibFileSearch("ui", name, "ui");
 
 	if (ui_path.empty()) {
-	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		lyxerr[Debug::INIT] << "Could not find " << name << endl;
 		menubackend.defaults();
 		return;
 	}
-	
+
 	lyxerr[Debug::INIT] << "Found " << name
 			    << " in " << ui_path << endl;
 	LyXLex lex(uitags, ui_last - 1);
@@ -717,13 +717,13 @@ void LyX::readUIFile(string const & name)
 		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
 		       << endl;
 	}
-	
+
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {
-		case ui_menuset: 
+		case ui_menuset:
 			menubackend.read(lex);
 			break;
 
@@ -791,9 +791,9 @@ void commandLineHelp()
 		  "\t-userdir dir       try to set user directory to dir\n"
 		  "\t-sysdir dir        try to set system directory to dir\n"
 		  "\t-geometry WxH+X+Y  set geometry of the main window\n"
-                  "\t-dbg feature[,feature]...\n"
-                  "                  select the features to debug.\n"
-                  "                  Type `lyx -dbg' to see the list of features\n"
+		  "\t-dbg feature[,feature]...\n"
+		  "                  select the features to debug.\n"
+		  "                  Type `lyx -dbg' to see the list of features\n"
 		  "\t-x [--execute] command\n"
 		  "                  where command is a lyx command.\n"
 		  "\t-e [--export] fmt\n"
@@ -837,14 +837,14 @@ bool LyX::easyParse(int * argc, char * argv[])
 				Debug::showTags(lyxerr);
 				exit(0);
 			}
-		} 
+		}
 		// Check for "-sysdir"
 		else if (arg == "-sysdir") {
 			if (i + 1 < *argc) {
 				system_lyxdir = argv[i + 1];
 				removeargs = 2;
 			} else {
-				lyxerr << _("Missing directory for -sysdir switch!") 
+				lyxerr << _("Missing directory for -sysdir switch!")
 				       << endl;
 				exit(0);
 			}
@@ -864,7 +864,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		else if (arg == "--help" || arg == "-help") {
 			commandLineHelp();
 			exit(0);
-		} 
+		}
 		// Check for --version or -version
 		else if (arg == "--version" || arg == "-version") {
 			commandLineVersionInfo();
@@ -905,7 +905,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 				string const type(argv[i+1]);
 				string const file(argv[i+2]);
 				removeargs = 3;
-	
+
 				batch_command = "buffer-import " + type + " " + file;
 				lyxerr << "batch_command: "
 				       << batch_command << endl;

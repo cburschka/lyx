@@ -49,7 +49,7 @@ GImage::getScaledDimensions(GParams const & params) const
 			height = width * getHeight() / getWidth();
 		}
 	}
-	
+
 	if (width == 0 || height == 0)
 		// Something is wrong!
 		return std::make_pair(getWidth(), getHeight());
@@ -57,4 +57,3 @@ GImage::getScaledDimensions(GParams const & params) const
 	return std::make_pair(width, height);
 }
 } // namespace grfx
-

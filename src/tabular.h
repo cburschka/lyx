@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 2000-2001 The LyX Team.
  *
  *           @author: Jürgen Vigna
@@ -30,7 +30,7 @@ class InsetTabular;
 class LaTeXFeatures;
 class Buffer;
 
-/* The features the text class offers for tables */ 
+/* The features the text class offers for tables */
 
 ///
 class LyXTabular  {
@@ -175,7 +175,7 @@ public:
 	};
 	///
 	typedef struct lttype ltType;
-	
+
 	/* konstruktor */
 	///
 	LyXTabular(BufferParams const &,
@@ -191,7 +191,7 @@ public:
 	///
 	LyXTabular * clone(BufferParams const &,
 			   InsetTabular *, bool same_id = false);
-	
+
 	/// Returns true if there is a topline, returns false if not
 	bool TopLine(int cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
@@ -200,7 +200,7 @@ public:
 	bool LeftLine(int cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
 	bool RightLine(int cell, bool onlycolumn = false) const;
-	
+
 	///
 	bool TopAlreadyDrawed(int cell) const;
 	///
@@ -212,7 +212,7 @@ public:
 	int GetAdditionalHeight(int row) const;
 	///
 	int GetAdditionalWidth(int cell) const;
-	
+
 	/* returns the maximum over all rows */
 	///
 	int GetWidthOfColumn(int cell) const;
@@ -300,7 +300,7 @@ public:
 	int docBook(Buffer const * buf, std::ostream & os) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int const depth,
-	          bool onlydata, unsigned char delim) const;
+		  bool onlydata, unsigned char delim) const;
 	///
 	bool IsMultiColumn(int cell, bool real = false) const;
 	///
@@ -566,24 +566,24 @@ private:
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
 	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
-	                             bool fragile, bool fp) const;
+				     bool fragile, bool fp) const;
 	///
 	bool isValidRow(int const row) const;
 	///
 	int TeXRow(std::ostream &, int const row, Buffer const * buf,
-	           bool fragile, bool fp) const;
+		   bool fragile, bool fp) const;
 	///
 	// helper function for ASCII returns number of newlines
 	///
 	int asciiTopHLine(std::ostream &, int row,
-	                  std::vector<unsigned int> const &) const;
+			  std::vector<unsigned int> const &) const;
 	///
 	int asciiBottomHLine(std::ostream &, int row,
-	                     std::vector<unsigned int> const &) const;
+			     std::vector<unsigned int> const &) const;
 	///
 	int asciiPrintCell(Buffer const *, std::ostream &,
-	                   int cell, int row, int column,
-	                   std::vector<unsigned int> const &,
+			   int cell, int row, int column,
+			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(Buffer const * buf, std::ostream & os, int row) const;

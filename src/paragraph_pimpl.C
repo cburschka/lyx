@@ -1,10 +1,10 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team. 
+ *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
 
@@ -40,18 +40,18 @@ ShareContainer<LyXFont> Paragraph::Pimpl::FontTable::container;
 unsigned int Paragraph::Pimpl::paragraph_id = 0;
 
 namespace {
- 
+
 string special_phrases[][2] = {
 	{ "LyX", "\\LyX{}" },
 	{ "TeX", "\\TeX{}" },
 	{ "LaTeX2e", "\\LaTeXe{}" },
 	{ "LaTeX", "\\LaTeX{}" },
 	};
- 
+
 size_t phrases_nr = sizeof(special_phrases)/sizeof(special_phrases[0]);
- 
+
 } // namespace anon
- 
+
 
 Paragraph::Pimpl::Pimpl(Paragraph * owner)
 	: owner_(owner)
@@ -96,7 +96,7 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 
 	// Then this has no meaning. (Lgb)
 	if (!size() || pos == size()) return '\0';
-	
+
 	return text[pos];
 }
 
@@ -108,7 +108,7 @@ void Paragraph::Pimpl::setChar(pos_type pos, value_type c)
 
 
 void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
-                                  LyXFont const & font)
+				  LyXFont const & font)
 {
 	lyx::Assert(pos <= size());
 
@@ -117,18 +117,18 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
 	for (FontList::iterator it = lower_bound(fontlist.begin(),
-	                                              fontlist.end(),
-	                                              search_font, matchFT());
+						      fontlist.end(),
+						      search_font, matchFT());
 	     it != fontlist.end(); ++it)
 	{
 		it->pos(it->pos() + 1);
 	}
-   
+
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
 	for (InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
-	                                               owner_->insetlist.end(),
-	                                               search_inset, matchIT());
+						       owner_->insetlist.end(),
+						       search_inset, matchIT());
 	     it != owner_->insetlist.end(); ++it)
 	{
 		++it->pos;
@@ -142,10 +142,10 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 {
 	lyx::Assert(inset);
 	lyx::Assert(pos <= size());
-	
+
 	insertChar(pos, META_INSET, font);
 	lyx::Assert(text[pos] == META_INSET);
-	
+
 	// Add a new entry in the inset table.
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
@@ -158,7 +158,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 		owner_->insetlist.insert(it, InsetTable(pos, inset));
 		inset->parOwner(owner_);
 	}
-	
+
 	if (inset_owner)
 		inset->setOwner(inset_owner);
 }
@@ -167,7 +167,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 void Paragraph::Pimpl::erase(pos_type pos)
 {
 	lyx::Assert(pos < size());
-	// if it is an inset, delete the inset entry 
+	// if it is an inset, delete the inset entry
 	if (text[pos] == Paragraph::META_INSET) {
 		// find the entry
 		InsetTable search_inset(pos, 0);
@@ -180,19 +180,19 @@ void Paragraph::Pimpl::erase(pos_type pos)
 			owner_->insetlist.erase(it);
 		}
 	}
-	
+
 	text.erase(text.begin() + pos);
-	
+
 	// Erase entries in the tables.
 	FontTable search_font(pos, LyXFont());
-	
+
 	FontList::iterator it =
 		lower_bound(fontlist.begin(),
 			    fontlist.end(),
 			    search_font, matchFT());
 	if (it != fontlist.end() && it->pos() == pos &&
-	    (pos == 0 || 
-	     (it != fontlist.begin() 
+	    (pos == 0 ||
+	     (it != fontlist.begin()
 	      && boost::prior(it)->pos() == pos - 1))) {
 		// If it is a multi-character font
 		// entry, we just make it smaller
@@ -207,12 +207,12 @@ void Paragraph::Pimpl::erase(pos_type pos)
 			it = fontlist.begin() + i - 1;
 		}
 	}
-	
+
 	// Update all other entries.
 	FontList::iterator fend = fontlist.end();
 	for (; it != fend; ++it)
 		it->pos(it->pos() - 1);
-	
+
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator lend = owner_->insetlist.end();
@@ -226,23 +226,23 @@ void Paragraph::Pimpl::erase(pos_type pos)
 
 
 void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
-                                       pos_type const i,
-                                       int & column, LyXFont const & font,
-                                       LyXLayout const & style)
+				       pos_type const i,
+				       int & column, LyXFont const & font,
+				       LyXLayout const & style)
 {
 	if (style.pass_thru) return;
 	if (column > tex_code_break_column
-	    && i 
+	    && i
 	    && getChar(i - 1) != ' '
 	    && (i < size() - 1)
 	    // same in FreeSpacing mode
 	    && !style.free_spacing
 		&& !owner_->isFreeSpacing()
-	    // In typewriter mode, we want to avoid 
+	    // In typewriter mode, we want to avoid
 	    // ! . ? : at the end of a line
 	    && !(font.family() == LyXFont::TYPEWRITER_FAMILY
 		 && (getChar(i - 1) == '.'
-		     || getChar(i - 1) == '?' 
+		     || getChar(i - 1) == '?'
 		     || getChar(i - 1) == ':'
 		     || getChar(i - 1) == '!'))) {
 		if (tex_code_break_column == 0) {
@@ -267,7 +267,7 @@ bool Paragraph::Pimpl::isTextAt(BufferParams const & bp,
 				string const & str, pos_type pos)
 {
 	LyXFont const & font = owner_->getFont(bp, pos);
- 
+
 	for (string::size_type i = 0; i < str.length(); ++i) {
 		if (pos + static_cast<pos_type>(i) >= size())
 			return false;
@@ -279,7 +279,7 @@ bool Paragraph::Pimpl::isTextAt(BufferParams const & bp,
 	return true;
 }
 
- 
+
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
 					     ostream & os,
@@ -317,7 +317,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			}
 
 			int tmp = inset->latex(buf, os, moving_arg,
-			                       style.free_spacing);
+					       style.free_spacing);
 
 			if (close)
 				os << "}";
@@ -346,7 +346,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		running_font = basefont;
 		break;
 
-	case Paragraph::META_HFILL: 
+	case Paragraph::META_HFILL:
 		os << "\\hfill{}";
 		column += 7;
 		break;
@@ -355,12 +355,12 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		// And now for the special cases within each mode
 
 		switch (c) {
-		case '\\': 
+		case '\\':
 			os << "\\textbackslash{}";
 			column += 15;
 			break;
-			
-		case '°': case '±': case '²': case '³':  
+
+		case '°': case '±': case '²': case '³':
 		case '×': case '÷': case '¹': case 'ª':
 		case 'º': case '¬': case 'µ':
 			if ((bparams.inputenc == "latin1" ||
@@ -378,7 +378,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				os << c;
 			}
 			break;
-			
+
 		case '|': case '<': case '>':
 			// In T1 encoding, these characters exist
 			if (lyxrc.fontenc == "T1") {
@@ -401,7 +401,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				os << c;
 				break;
-			} 
+			}
 			// Otherwise, we use what LaTeX
 			// provides us.
 			switch (c) {
@@ -419,7 +419,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				break;
 			}
 			break;
-			
+
 		case '-': // "--" in Typewriter mode -> "-{}-"
 			if (i <= size() - 2
 			    && getChar(i + 1) == '-'
@@ -430,12 +430,12 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				os << '-';
 			}
 			break;
-			
-		case '\"': 
+
+		case '\"':
 			os << "\\char`\\\"{}";
 			column += 9;
 			break;
-			
+
 		case '£':
 			if (bparams.inputenc == "default") {
 				os << "\\pounds{}";
@@ -444,24 +444,24 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				os << c;
 			}
 			break;
-			
+
 		case '$': case '&':
 		case '%': case '#': case '{':
 		case '}': case '_':
 			os << '\\' << c;
 			column += 1;
 			break;
-			
+
 		case '~':
 			os << "\\textasciitilde{}";
 			column += 16;
 			break;
-			
+
 		case '^':
 			os << "\\textasciicircum{}";
 			column += 17;
 			break;
-			
+
 		case '*': case '[': case ']':
 			// avoid being mistaken for optional arguments
 			os << '{' << c << '}';
@@ -471,13 +471,13 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		case ' ':
 			// Blanks are printed before font switching.
 			// Sure? I am not! (try nice-latex)
-		       	// I am sure it's correct. LyX might be smarter
-		       	// in the future, but for now, nothing wrong is
-		       	// written. (Asger)
+			// I am sure it's correct. LyX might be smarter
+			// in the future, but for now, nothing wrong is
+			// written. (Asger)
 			break;
 
 		default:
- 
+
 			// I assume this is hack treating typewriter as verbatim
 			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				if (c != '\0') {
@@ -485,15 +485,15 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				}
 				break;
 			}
-		
+
 			// LyX, LaTeX etc.
- 
+
 			// FIXME: if we have "LaTeX" with a font change in the middle (before
 			// the 'T', then the "TeX" part is still special cased. Really we
 			// should only operate this on "words" for some definition of word
- 
+
 			size_t pnr = 0;
- 
+
 			for (; pnr < phrases_nr; ++pnr) {
 				if (isTextAt(bparams, special_phrases[pnr][0], i)) {
 					os << special_phrases[pnr][1];
@@ -552,12 +552,12 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 					    BufferParams const & bparams) const
 {
 	LyXFont tmpfont(font);
-	
+
 	// check for environment font information
 	char par_depth = owner_->getDepth();
 	Paragraph const * par = owner_;
 	LyXTextClass const & tclass = textclasslist[bparams.textclass];
-	
+
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
@@ -575,5 +575,5 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 		, bparams.language
 #endif
 		);
-	return tmpfont;	
+	return tmpfont;
 }

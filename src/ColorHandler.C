@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1998-2001 The LyX Team
  *
  *======================================================*/
@@ -25,14 +25,14 @@
 using std::endl;
 
 
-LyXColorHandler::LyXColorHandler() 
+LyXColorHandler::LyXColorHandler()
 {
 	display = GUIRunTime::x11Display();
 	drawable = XCreatePixmap(display,
 				 RootWindow(display, GUIRunTime::x11Screen()),
 				 10, 10,
 				 GUIRunTime::x11VisualDepth());
-	
+
 	colormap = GUIRunTime::x11Colormap();
 	// Clear the GC cache
 	for (int i = 0; i <= LColor::ignore; ++i) {
@@ -72,8 +72,8 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 	//if (lyxerr.debugging()) {
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
 	//}
-	
-    	if (colorGCcache[c] != 0)
+
+	if (colorGCcache[c] != 0)
 		return colorGCcache[c];
 
 	XColor xcol;
@@ -83,7 +83,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 	// Look up the RGB values for the color, and an approximate
 	// color that we can hope to get on this display.
-        if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
+	if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
 		lyxerr << _("LyX: Unknown X11 color ") << s
 		       << _(" for ") << lcolor.getGUIName(c) << '\n'
 		       << _("     Using black instead, sorry!") << endl;
@@ -94,7 +94,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 	} else if (XAllocColor(display, colormap, &xcol) != 0) {
 		if (lyxerr.debugging(Debug::GUI)) {
 			lyxerr << _("LyX: X11 color ") << s
-			       << _(" allocated for ") 
+			       << _(" allocated for ")
 			       << lcolor.getGUIName(c) << endl;
 		}
 		val.foreground = xcol.pixel;
@@ -120,13 +120,13 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		double closest_distance = 1e20; // we want to minimize this
 		double distance = 0;
 		for (int t = 0; t < vi->map_entries; ++t) {
-			// The Euclidean distance between two points in 
+			// The Euclidean distance between two points in
 			// a three-dimensional space, the RGB color-cube,
 			// is used as the distance measurement between two
 			// colors.
 
 			// Since square-root is monotonous, we don't have to
-			// take the square-root to find the minimum, and thus 
+			// take the square-root to find the minimum, and thus
 			// we use the squared distance instead to be faster.
 
 			// If we want to get fancy, we could convert the RGB
@@ -140,17 +140,17 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 				closest_pixel = t;
 			}
 		}
-		lyxerr << _("LyX: Couldn't allocate '") << s 
+		lyxerr << _("LyX: Couldn't allocate '") << s
 		       << _("' for ") << lcolor.getGUIName(c)
-		       << _(" with (r,g,b)=(") 
+		       << _(" with (r,g,b)=(")
 		       << xcol.red << "," << xcol.green << ","
 		       << xcol.blue << ").\n"
 		       << _("     Using closest allocated "
-			    "color with (r,g,b)=(") 
+			    "color with (r,g,b)=(")
 		       << cmap[closest_pixel].red << ","
 		       << cmap[closest_pixel].green << ","
 		       << cmap[closest_pixel].blue << _(") instead.\n")
-		       << _("Pixel [") << closest_pixel << _("] is used.") 
+		       << _("Pixel [") << closest_pixel << _("] is used.")
 		       << endl;
 		val.foreground = cmap[closest_pixel].pixel;
 	}
@@ -168,7 +168,7 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 	//if (lyxerr.debugging()) {
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
 	//}
-	
+
 	int index = lw + (ls << 1) + (c << 6);
 
 	LineGCCache::iterator it = lineGCcache.find(index);
@@ -177,7 +177,7 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 
 	XGCValues val;
 	XGetGCValues(display, getGCForeground(c), GCForeground, &val);
-	
+
 	switch (lw) {
 	case PainterBase::line_thin:
 		val.line_width = 0;
@@ -186,7 +186,7 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 		val.line_width = 2;
 		break;
 	}
-	
+
 	switch (ls) {
 	case PainterBase::line_solid:
 		val.line_style = LineSolid;
@@ -205,8 +205,8 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 	val.function = GXcopy;
 
 	return lineGCcache[index] =
-		XCreateGC(display, drawable, 
-			  GCForeground | GCLineStyle | GCLineWidth | 
+		XCreateGC(display, drawable,
+			  GCForeground | GCLineStyle | GCLineWidth |
 			  GCCapStyle | GCJoinStyle | GCFunction, &val);
 }
 
@@ -236,7 +236,7 @@ void LyXColorHandler::updateColor (LColor::color c)
 					      PainterBase::line_width(lw), c);
 			}
 		}
- 
+
 }
 
 //

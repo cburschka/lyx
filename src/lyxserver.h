@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
-* ====================================================== 
-* 
+* ======================================================
+*
 *           LyX, The Document Processor
-*        
+*
 *           Copyright 1995 Matthias Ettrich
 *           Copyright 1995-2001 The LyX Team.
 *
@@ -51,7 +51,7 @@ public:
 
 	/// clean up in emergency
 	void emergencyCleanup();
- 
+
 	/// Send message
 	void send(string const &);
 
@@ -71,16 +71,16 @@ private:
 
 	/// Open pipes
 	void openConnection();
-	
+
 	/// Close pipes
 	void closeConnection();
 
 	/// start a pipe
 	int startPipe(string const &, bool);
- 
+
 	/// finish a pipe
 	void endPipe(int &, string const &);
- 
+
 	/// This is -1 if not open
 	int infd;
 
@@ -111,23 +111,23 @@ public:
 	// The lyx server should not take an argument "LyXFunc" but this is
 	// how it will be done for 0.12. In 0.13 we must write a non-gui
 	// bufferview.
-        // IMO lyxserver is atypical, and for the moment the only one, non-gui
-        // bufferview. We just have to find a way to handle situations like if
-        // lyxserver is using a buffer that is being edited with a bufferview.
-        // With a common buffer list this is not a problem, maybe. (Alejandro)
+	// IMO lyxserver is atypical, and for the moment the only one, non-gui
+	// bufferview. We just have to find a way to handle situations like if
+	// lyxserver is using a buffer that is being edited with a bufferview.
+	// With a common buffer list this is not a problem, maybe. (Alejandro)
 	///
 	LyXServer(LyXFunc * f, string const & pip)
 		: numclients(0), func(f), pipes(pip, (this), callback) {}
-        /// 
+	///
 	~LyXServer();
 	///
 	void notifyClient(string const &);
-	
+
 	/// whilst crashing etc.
 	void emergencyCleanup() {
 		pipes.emergencyCleanup();
 	}
- 
+
 private:
 	///
 	static void callback(LyXServer *, string const & msg);

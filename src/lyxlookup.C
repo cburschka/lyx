@@ -1,9 +1,9 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
- *           Copyright 1995 Matthias Ettrich 
+ *
+ *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX team.
  *
  * ====================================================== */
@@ -41,7 +41,7 @@ XComposeStatus compose_status= {0, 0};
 
 
 // This is called after the main LyX window has been created
-void InitLyXLookup(Display * display, Window window) 
+void InitLyXLookup(Display * display, Window window)
 {
 	xic = 0;
 
@@ -52,7 +52,7 @@ void InitLyXLookup(Display * display, Window window)
 	// This part could be done before opening display
 	string oldlocale = setlocale(LC_CTYPE, 0);
 	setlocale(LC_CTYPE, "");
-       	if (!XSupportsLocale()) {
+	if (!XSupportsLocale()) {
 		lyxerr[Debug::KEY]
 			<< "InitLyXLookup: X does not support this locale."
 			<< endl;
@@ -60,7 +60,7 @@ void InitLyXLookup(Display * display, Window window)
 	}
 	// reset the LC_CTYPE locale to previous value.
 	setlocale(LC_CTYPE, oldlocale.c_str());
-	
+
 	char const * locmod;
 	if (!(locmod = XSetLocaleModifiers(""))) {
 		lyxerr[Debug::KEY] << "InitLyXLookup: Could not set modifiers "
@@ -70,7 +70,7 @@ void InitLyXLookup(Display * display, Window window)
 	else
 		lyxerr[Debug::KEY] << "InitLyXLookup: X locale modifiers are `"
 				   << locmod << '\'' << endl;
-	
+
 	// This part will have to be done for each frame
 	xim = XOpenIM (display, 0, 0, 0);
 	if (xim) {
@@ -78,17 +78,17 @@ void InitLyXLookup(Display * display, Window window)
 				XNInputStyle,
 				XIMPreeditNothing|XIMStatusNothing,
 				XNClientWindow, window,
-				XNFocusWindow, window, 
+				XNFocusWindow, window,
 				0);
-		
+
 		if (!xic) {
 			lyxerr[Debug::KEY] << "InitLyXLookup: "
 				"could not create an input context" << endl;
 			XCloseIM (xim);
 			xim = 0;
-		} 
+		}
 	}
-	else 
+	else
 		lyxerr[Debug::KEY] << "InitLyXLookup: could not open "
 			"an input method." << endl;
 }
@@ -162,16 +162,16 @@ bool isDeadEvent(KeySym keysym)
 
 
 // This is called instead of XLookupString()
-int LyXLookupString(XEvent * event,    
+int LyXLookupString(XEvent * event,
 		    char * buffer_return, int bytes_buffer,
-		    KeySym * keysym_return) 
+		    KeySym * keysym_return)
 {
 	if (event->type != KeyPress) {
 		lyxerr << "LyXLookupString: wrong event type: "
 		       << event->type << endl;
 		return 0;
 	}
-	
+
 	int result = 0;
 	if (xic) {
 #if 1
@@ -179,10 +179,10 @@ int LyXLookupString(XEvent * event,
 		XLookupString(&event->xkey, buffer_return,
 			      bytes_buffer, keysym_return,
 			      0);
-		
+
 		if (lyxrc.override_x_deadkeys &&
 		    isDeadEvent(*keysym_return)) {
-			lyxerr[Debug::KEY]  
+			lyxerr[Debug::KEY]
 				<< "LyXLookupString: found DeadEvent" << endl;
 			return 0;
 		}
@@ -191,11 +191,11 @@ int LyXLookupString(XEvent * event,
 		if (XFilterEvent (event, None)) {
 			lyxerr[Debug::KEY] <<"XFilterEvent" << endl;
 			*keysym_return = NoSymbol;
-                        return 0;
+			return 0;
 		}
 #endif
 		Status status_return = 0;
-		
+
 		result =  XmbLookupString(xic, &event->xkey, buffer_return,
 				       bytes_buffer, keysym_return,
 				       &status_return);
@@ -212,7 +212,7 @@ int LyXLookupString(XEvent * event,
 			lyxerr[Debug::KEY] << "XLookupChars "
 					   << string(buffer_return, result)
 					   << endl;
-			
+
 			*keysym_return = NoSymbol;
 			break;
 		case XLookupKeySym:
@@ -239,7 +239,7 @@ int LyXLookupString(XEvent * event,
 
 
 // This is called after the main window has been destroyed
-void CloseLyXLookup() 
+void CloseLyXLookup()
 {
 	if (xic) {
 		lyxerr[Debug::KEY] << "CloseLyXLookup: destroying input context"
@@ -259,16 +259,16 @@ void CloseLyXLookup()
 XComposeStatus compose_status= {0, 0};
 
 // This is called after the main LyX window has been created
-void InitLyXLookup(Display *, Window) 
+void InitLyXLookup(Display *, Window)
 {
 	//Nothing to do.
 }
 
 // This is called instead of XLookupString(). I this particular case,
 // this *is* XLookupString...
-int LyXLookupString(XEvent * event,    
+int LyXLookupString(XEvent * event,
 		    char * buffer_return, int bytes_buffer,
-		    KeySym * keysym_return) 
+		    KeySym * keysym_return)
 {
 	return XLookupString(&event->xkey, buffer_return,
 				  bytes_buffer, keysym_return,
@@ -276,10 +276,9 @@ int LyXLookupString(XEvent * event,
 }
 
 // This is called after the main window has been destroyed
-void CloseLyXLookup() 
+void CloseLyXLookup()
 {
 	// Nothing to do
 }
 
 #endif // HAVE_XOPENIM
-

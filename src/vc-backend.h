@@ -43,13 +43,13 @@ public:
 	/**
 	 * getLog - read the revision log into the given file
 	 * @param fname file name to read into
-	 */ 
+	 */
 	virtual void getLog(string const &) = 0;
 	/// return the current version description
 	virtual string const versionString() const = 0;
 	/// return the current version
 	string const & version() const {
-		return version_; 
+		return version_;
 	}
 	/// return the user who has locked the file
 	string const & locker() const { return locker_; }
@@ -62,7 +62,7 @@ public:
 protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
- 
+
 	/**
 	 * doVCCommand - call out to the version control utility
 	 * @param cmd the command to execute
@@ -71,21 +71,21 @@ protected:
 	 */
 	static int doVCCommand(string const & cmd, string const & path);
 
-	/** 
+	/**
 	 * The master VC file. For RCS this is *,v or RCS/ *,v. master should
 	 * have full path.
 	 */
 	string master_;
-	
+
 	/// The status of the VC controlled file.
 	VCStatus vcstatus;
-	
-	/** 
+
+	/**
 	 * The version of the VC file. I am not sure if this can be a
-	 * string or if it must be a float/int. 
+	 * string or if it must be a float/int.
 	 */
 	string version_;
-	
+
 	/// The user currently keeping the lock on the VC file.
 	string locker_;
 	/// The buffer using this VC
@@ -154,7 +154,7 @@ public:
 
 protected:
 	virtual void scanMaster();
- 
+
 private:
 	string file_;
 };
