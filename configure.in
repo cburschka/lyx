@@ -342,6 +342,8 @@ AC_OUTPUT([Makefile \
        boost/libs/Makefile \
        boost/libs/regex/Makefile \
        boost/libs/regex/src/Makefile \
+       boost/libs/signals/Makefile \
+       boost/libs/signals/src/Makefile \
        config/Makefile \
        development/lyx.spec \
        lib/Makefile \

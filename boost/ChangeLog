@@ -1,3 +1,18 @@
+2002-05-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* libs/signals/Makefile.am: new file
+	* libs/signals/.cvsignore: ditto
+	* libs/signals/src/.cvsignore: ditto
+	* libs/signals/src/Makefile.am: ditto
+	* libs/signals/src/connection.cpp: ditto
+	* libs/signals/src/signal_base.cpp: ditto
+	* libs/signals/src/slot.cpp: ditto
+	* libs/signals/src/trackable.cpp: ditto
+
+	* libs/regex/src/.cvsignore: add libboostregex.la
+
+	* libs/Makefile.am (SUBDIRS): add signals
+
 2002-05-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* libs/regex/src/Makefile.am (libboostregex_la_SOURCES): add a

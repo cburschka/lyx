@@ -4,14 +4,12 @@ src/BufferView2.C
 src/bufferview_funcs.C
 src/BufferView_pimpl.C
 src/Chktex.C
-src/ColorHandler.C
 src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
 src/ext_l10n.h
 src/FloatList.C
-src/FontLoader.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/ButtonController.h
 src/frontends/controllers/character.C
@@ -69,6 +67,7 @@ src/frontends/qt2/QToc.C
 src/frontends/qt2/QURL.C
 src/frontends/qt2/QVCLog.C
 src/frontends/xforms/Alert_pimpl.C
+src/frontends/xforms/ColorHandler.C
 src/frontends/xforms/combox.C
 src/frontends/xforms/FeedbackController.C
 src/frontends/xforms/FileDialog.C
@@ -150,6 +149,7 @@ src/frontends/xforms/FormUrl.C
 src/frontends/xforms/FormVCLog.C
 src/frontends/xforms/input_validators.C
 src/frontends/xforms/Menubar_pimpl.C
+src/frontends/xforms/xfont_loader.C
 src/frontends/xforms/xforms_helpers.C
 src/gettext.h
 src/importer.C
