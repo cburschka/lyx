@@ -270,13 +270,13 @@ int InsetQuotes::latex(Buffer const &, ostream & os,
 	string qstr;
 
 	if (language_ == FrenchQ && times_ == DoubleQ
-	    && runparams.lang == "frenchb") {
+	    && runparams.local_language == "frenchb") {
 		if (side_ == LeftQ)
 			qstr = "\\og "; //the spaces are important here
 		else
 			qstr = " \\fg{}"; //and here
 	} else if (language_ == FrenchQ && times_ == DoubleQ
-		   && runparams.lang == "french") {
+		   && runparams.local_language == "french") {
 		if (side_ == LeftQ)
 			qstr = "<< "; //the spaces are important here
 		else

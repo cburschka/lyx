@@ -1031,7 +1031,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		OutputParams rp = runparams;
 		rp.moving_arg = moving_arg;
 		rp.free_spacing = style->free_spacing;
-		rp.lang = font.language()->babel();
+		rp.local_language = font.language()->babel();
 		rp.intitle = style->intitle;
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
 					      os, texrow, rp,

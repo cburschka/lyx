@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "format.h"
 #include "gettext.h"
+#include "language.h"
 #include "LaTeX.h"
 
 #include "frontends/Alert.h"
@@ -290,7 +291,6 @@ bool Converters::convert(Buffer const * buffer,
 	}
 	OutputParams runparams;
 	runparams.flavor = getFlavor(edgepath);
-
 	string path = OnlyPath(from_file);
 	Path p(path);
 
@@ -531,6 +531,8 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 {
 	buffer.busy(true);
 	buffer.message(_("Running LaTeX..."));
+	
+	runparams.document_language = buffer.params().language->babel();
 
 	// do the LaTeX run(s)
 	string name = buffer.getLatexName();

@@ -44,6 +44,7 @@ using lyx::support::prefixIs;
 using lyx::support::QuoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
+using lyx::support::subst;
 using lyx::support::suffixIs;
 using lyx::support::Systemcall;
 using lyx::support::unlink;
@@ -274,7 +275,7 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
+		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")), runparams);
 	}
 
 	// run bibtex
@@ -342,7 +343,7 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
+		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")), runparams);
 	}
 
 	// 2
@@ -393,12 +394,13 @@ int LaTeX::startscript()
 }
 
 
-bool LaTeX::runMakeIndex(string const & f)
+bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "idx file has been made,"
 		" running makeindex on file "
 			     <<  f << endl;
 	string tmp = lyxrc.index_command + " ";
+	tmp = subst(tmp, "$$lang", runparams.document_language);
 	tmp += QuoteName(f);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);

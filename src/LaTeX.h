@@ -155,7 +155,7 @@ private:
 	void deplog(DepTable & head);
 
 	///
-	bool runMakeIndex(std::string const &);
+	bool runMakeIndex(std::string const &, OutputParams const &);
 
 	///
 	std::vector<Aux_Info> const scanAuxFiles(std::string const &);

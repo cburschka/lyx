@@ -58,7 +58,11 @@ struct OutputParams {
 
 	/** the babel name of the language at the point where the inset is
 	 */
-	std::string lang;
+	std::string local_language;
+
+	/** Document language babel name
+	 */	
+	mutable std::string document_language;
 
 	/** free_spacing == true means that the inset is in a free-spacing
 	    paragraph.
