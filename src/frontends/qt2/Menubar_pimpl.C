@@ -44,7 +44,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 	Menu::const_iterator m = mbe.getMenubar().begin();
 	Menu::const_iterator end = mbe.getMenubar().end();
 	for (; m != end; ++m) {
-		createMenu(owner_->menuBar(), &(*m), this);
+		createMenu(owner_->menuBar(), &(*m), this, true);
 	}
 }
 

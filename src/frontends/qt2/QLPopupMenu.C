@@ -16,6 +16,9 @@
 
 #include "support/lstrings.h"
 
+using std::pair;
+using std::make_pair;
+ 
 namespace {
  
 string const getLabel(MenuItem const & mi)
@@ -39,32 +42,31 @@ string const getLabel(MenuItem const & mi)
 } 
 
 
-int createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner)
+pair<int, QLPopupMenu *> createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner, bool is_toplevel)
 {
 	// FIXME: leaks ??
-	QLPopupMenu * pm = new QLPopupMenu(owner, item->submenuname());
-	return parent->insertItem(getLabel(*item).c_str(), pm);
+	QLPopupMenu * pm = new QLPopupMenu(owner, item->submenuname(), is_toplevel);
+	int id = parent->insertItem(getLabel(*item).c_str(), pm);
+	return make_pair(id, pm);
 }
  
  
-QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner, string const & name)
+QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner, string const & name, bool toplevel)
 	: owner_(owner), name_(name)
 {
-	connect(this, SIGNAL(aboutToShow()), this, SLOT(showing()));
+	if (toplevel)
+		connect(this, SIGNAL(aboutToShow()), this, SLOT(showing()));
 }
  
 
-bool QLPopupMenu::disabled(string const & name)
+bool QLPopupMenu::disabled(Menu * menu)
 {
 	bool disable = true;
  
-	Menu tomenu;
-	Menu const frommenu = owner_->backend().getMenu(name);
-	owner_->backend().expand(frommenu, tomenu, owner_->view()->buffer());
-	Menu::const_iterator m = tomenu.begin();
-	Menu::const_iterator end = tomenu.end();
+	Menu::const_iterator m = menu->begin();
+	Menu::const_iterator end = menu->end();
 	for (; m != end; ++m) {
-		if (m->kind() == MenuItem::Submenu && !disabled(m->submenuname())) {
+		if (m->kind() == MenuItem::Submenu && !disabled(m->submenu())) {
 			disable = false;
 		} else {
 			FuncStatus const status =
@@ -77,20 +79,17 @@ bool QLPopupMenu::disabled(string const & name)
 }
  
 
-void QLPopupMenu::showing()
+void QLPopupMenu::populate(Menu * menu)
 {
-	clear();
-	Menu tomenu;
-	Menu const frommenu = owner_->backend().getMenu(name_);
-	owner_->backend().expand(frommenu, tomenu, owner_->view()->buffer());
-	Menu::const_iterator m = tomenu.begin();
-	Menu::const_iterator end = tomenu.end();
+	Menu::const_iterator m = menu->begin();
+	Menu::const_iterator end = menu->end();
 	for (; m != end; ++m) {
 		if (m->kind() == MenuItem::Separator) {
 			insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
-			int id(createMenu(this, m, owner_));
-			setItemEnabled(id, !disabled(m->submenuname()));
+			pair<int, QLPopupMenu *> res = createMenu(this, m, owner_);
+			setItemEnabled(res.first, !disabled(m->submenu()));
+			res.second->populate(m->submenu());
 		} else {
 			FuncStatus const status =
 				owner_->view()->getLyXFunc().getStatus(m->action());
@@ -101,4 +100,14 @@ void QLPopupMenu::showing()
 			setItemChecked(m->action(), status.onoff(true));
 		}
 	}
+}
+
+ 
+void QLPopupMenu::showing()
+{
+	clear();
+	Menu tomenu;
+	Menu const frommenu = owner_->backend().getMenu(name_);
+	owner_->backend().expand(frommenu, tomenu, owner_->view()->buffer());
+	populate(&tomenu); 
 }
