@@ -163,9 +163,8 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 
 	LyXLayout_ptr const & layout = par->layout();
 
-	Paragraph::depth_type par_depth = par->getDepth();
 	// We specialize the 95% common case:
-	if (!par_depth) {
+	if (!par->getDepth()) {
 		if (layout->labeltype == LABEL_MANUAL
 		    && pos < beginningOfMainBody(buf, par)) {
 			// 1% goes here
@@ -218,9 +217,7 @@ LyXFont const LyXText::getLayoutFont(Buffer const * buf, Paragraph * par) const
 {
 	LyXLayout_ptr const & layout = par->layout();
 
-	Paragraph::depth_type par_depth = par->getDepth();
-
-	if (!par_depth) {
+	if (!par->getDepth()) {
 		return layout->resfont;
 	}
 
@@ -232,9 +229,7 @@ LyXFont const LyXText::getLabelFont(Buffer const * buf, Paragraph * par) const
 {
 	LyXLayout_ptr const & layout = par->layout();
 
-	Paragraph::depth_type par_depth = par->getDepth();
-
-	if (!par_depth) {
+	if (!par->getDepth()) {
 		return layout->reslabelfont;
 	}
 
