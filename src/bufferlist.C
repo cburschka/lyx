@@ -235,7 +235,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
 			writefile += '/';
 			writefile += (*it)->getLatexName();
 			(*it)->makeLaTeXFile(writefile, mastertmpdir,
-					     runparams, false, true);
+					     runparams, true);
 			(*it)->markDepClean(mastertmpdir);
 		}
 	}

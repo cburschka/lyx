@@ -83,15 +83,17 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	else if (buffer->isDocBook())
 		buffer->makeDocBookFile(filename, !put_in_tempdir);
 	// LaTeX backend
-	else if (backend_format == format)
-		buffer->makeLaTeXFile(filename, string(), runparams, true);
-	else if (contains(buffer->filePath(), ' ')) {
+	else if (backend_format == format) {
+		runparams.nice = true;
+		buffer->makeLaTeXFile(filename, string(), runparams);
+	} else if (contains(buffer->filePath(), ' ')) {
 		Alert::error(_("File name error"),
 			   _("The directory path to the document cannot contain spaces."));
 		return false;
-	} else
-		buffer->makeLaTeXFile(filename, buffer->filePath(),
-				      runparams, false);
+	} else {
+		runparams.nice = false;
+		buffer->makeLaTeXFile(filename, buffer->filePath(), runparams);
+	}
 
 	string outfile_base = (put_in_tempdir)
 		? filename : buffer->getLatexName(false);

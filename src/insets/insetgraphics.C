@@ -672,7 +672,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 }
 
 
-int InsetGraphics::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
+int InsetGraphics::latex(Buffer const * buf, ostream & os,
+			 LatexRunParams const & runparams,
 			 bool /*fragile*/, bool/*fs*/) const
 {
 	// If there is no file specified or not existing,
@@ -726,7 +727,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os, LatexRunParams const 
 
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
-	if (buf->niceFile) {
+	if (runparams.nice) {
 		os << before <<'{' << params().filename << '}' << after;
 		return 1;
 	}

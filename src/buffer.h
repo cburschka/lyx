@@ -148,14 +148,12 @@ public:
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,
 			   LatexRunParams const &,
-			   bool nice,
 			   bool only_body = false,
 			   bool only_preamble = false);
 	///
 	void makeLaTeXFile(std::ostream & os,
 			   string const & original_path,
 			   LatexRunParams const &,
-			   bool nice,
 			   bool only_body = false,
 			   bool only_preamble = false);
 	///

@@ -566,7 +566,8 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Dump the preamble only.
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, true, false, true);
+	runparams.nice = true;
+	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, false, true);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:

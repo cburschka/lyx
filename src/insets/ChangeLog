@@ -4,6 +4,13 @@
 
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
+	* insetbibtex.C (latex):
+	* insetgraphics.C (latex):
+	* insetinclude.C (latex): extract the buffer's 'nice'ness from
+	runparams rather than from the buffer itself.
+
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
 	* inset*.[Ch] (latex):
 	passed a LatexRunParams parameter.
 

@@ -16,6 +16,7 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "latexrunparams.h"
 
 #include "support/filetools.h"
 #include "support/path.h"
@@ -82,7 +83,8 @@ string const InsetBibtex::getScreenLabel(Buffer const *) const
 }
 
 
-int InsetBibtex::latex(Buffer const * buffer, ostream & os, LatexRunParams const &,
+int InsetBibtex::latex(Buffer const * buffer, ostream & os,
+		       LatexRunParams const & runparams,
 		       bool /*fragile*/, bool/*fs*/) const
 {
 	// changing the sequence of the commands
@@ -103,7 +105,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os, LatexRunParams const
 		}
 	}
 
-	if (!buffer->niceFile
+	if (!runparams.nice
 	    && IsFileReadable(MakeAbsPath(style, buffer->filePath()) + ".bst")) {
 		style = MakeAbsPath(style, buffer->filePath());
 	}
@@ -143,7 +145,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os, LatexRunParams const
 	// have a comma-separated list of bibliographies
 	string db_out;
 	while (!adb.empty()) {
-		if (!buffer->niceFile &&
+		if (!runparams.nice &&
 		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib"))
 			 adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
 		db_out += adb;

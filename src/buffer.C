@@ -952,7 +952,7 @@ void Buffer::writeFileAscii(ostream & os, int linelen)
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
 			   LatexRunParams const & runparams,
-			   bool nice, bool only_body, bool only_preamble)
+			   bool only_body, bool only_preamble)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 
@@ -966,7 +966,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	}
 
 	makeLaTeXFile(ofs, original_path,
-		      runparams, nice, only_body, only_preamble);
+		      runparams, only_body, only_preamble);
 
 	ofs.close();
 	if (ofs.fail()) {
@@ -977,10 +977,11 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 void Buffer::makeLaTeXFile(ostream & os,
 			   string const & original_path,
-			   LatexRunParams const & runparams,
-			   bool nice, bool only_body, bool only_preamble)
+			   LatexRunParams const & runparams_in,
+			   bool only_body, bool only_preamble)
 {
-	niceFile = nice; // this will be used by Insetincludes.
+	LatexRunParams runparams = runparams_in;
+	niceFile = runparams.nice; // this will be used by Insetincludes.
 
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
@@ -993,7 +994,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// first paragraph of the document. (Asger)
 	texrow.start(paragraphs.begin()->id(), 0);
 
-	if (!only_body && nice) {
+	if (!only_body && runparams.nice) {
 		os << "%% " << lyx_docversion << " created this file.  "
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
@@ -1010,7 +1011,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// original_path is set. This is done for usual tex-file, but not
 	// for nice-latex-file. (Matthias 250696)
 	if (!only_body) {
-		if (!nice) {
+		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
 			os << "\\batchmode\n"; // changed
 			// from \nonstopmode
@@ -1963,7 +1964,8 @@ int Buffer::runChktex()
 	// Generate the LaTeX file if neccessary
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	makeLaTeXFile(name, org_path, runparams, false);
+	runparams.nice = false;
+	makeLaTeXFile(name, org_path, runparams);
 
 	TeXErrors terr;
 	Chktex chktex(lyxrc.chktex_command, name, filePath());

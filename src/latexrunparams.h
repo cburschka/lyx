@@ -12,26 +12,24 @@
 #ifndef LatexRunParams_H
 #define LatexRunParams_H
 
-/** The latex that we export depends occasionally on what is to
-    compile the file.
-*/
 struct LatexRunParams {
         enum FLAVOR {
                 LATEX,
                 PDFLATEX
         };
 
-        LatexRunParams() : flavor(LATEX) {}
-	//, nice(false), fragile(false) {}
+        LatexRunParams() : flavor(LATEX), nice(false) {}
 
+	/** The latex that we export depends occasionally on what is to
+	    compile the file.
+	*/
         FLAVOR flavor;
-//         bool nice;
-//         bool fragile;
+	/** Are we to write a 'nice' LaTeX file or not.
+	    This esentially seems to mean whether InsetInclude, InsetGraphics
+	    and InsetExternal should add the absolute path to any external
+	    files or not.
+	*/
+	bool nice;
 };
-
-// enum LatexFlavor {
-// 	LATEX_FLAVOR,
-// 	PDFLATEX_FLAVOR
-// };
 
 #endif // LatexRunParams_H

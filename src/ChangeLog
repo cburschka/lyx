@@ -4,6 +4,16 @@
 
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
+	* latexrunparams.h: add a 'bool nice' which defaults to false.
+
+	* buffer.[Ch] (makeLaTeXFile): remove the nice parameter as it is
+	now encapsulated within runparams.
+
+	* bufferlist.C (updateIncludedTeXfiles):
+	* exporter.C (Export): ensuing change to the calls to makeLaTeXFile.
+
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
 	* latexrunparams.h: new file containing struct LatexRunParams.
 	* Makefile.am: add new file.
 

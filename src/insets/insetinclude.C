@@ -313,8 +313,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
 
-		if (!buffer->tmppath.empty()
-		    && !buffer->niceFile) {
+		if (!buffer->tmppath.empty() && !runparams.nice) {
 			incfile = subst(incfile, '/','@');
 #ifdef __EMX__
 			incfile = subst(incfile, ':', '$');
@@ -328,10 +327,8 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 
 		tmp->markDepClean(buffer->tmppath);
 
-		tmp->makeLaTeXFile(writefile,
-				   OnlyPath(getMasterFilename()),
-				   runparams,
-				   buffer->niceFile, true);
+		tmp->makeLaTeXFile(writefile, OnlyPath(getMasterFilename()),
+				   runparams, true);
 	}
 
 	if (isVerbatim()) {
