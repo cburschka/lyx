@@ -48,6 +48,7 @@ void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 	bv->owner()->getDialogs()->showTOC( this );
 }
 
+
 int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel() << endl << endl;
