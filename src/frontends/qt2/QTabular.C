@@ -441,15 +441,7 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		return ButtonPolicy::SMI_VALID;
 	}
 
-	if (ob == tabular_options_->button_append_row)
-		num = LyXTabular::APPEND_ROW;
-	else if (ob == tabular_options_->button_append_column)
-		num = LyXTabular::APPEND_COLUMN;
-	else if (ob == tabular_options_->button_delete_row)
-		num = LyXTabular::DELETE_ROW;
-	else if (ob == tabular_options_->button_delete_column)
-		num = LyXTabular::DELETE_COLUMN;
-	else if (ob == tabular_options_->button_set_borders)
+	if (ob == tabular_options_->button_set_borders)
 		num = LyXTabular::SET_ALL_LINES;
 	else if (ob == tabular_options_->button_unset_borders)
 		num = LyXTabular::UNSET_ALL_LINES;

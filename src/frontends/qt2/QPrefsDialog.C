@@ -49,7 +49,6 @@ using std::endl;
 QPrefsDialog::QPrefsDialog(QPrefs * form)
 	: QPrefsDialogBase(0, 0, false, 0), form_(form)
 {
-	// FIXME: wrong
 	connect(savePB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()),
