@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "lyxrow.h"
 #include "paragraph.h"

@@ -22,6 +22,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "intl.h"
+#include "LColor.h"
 #include "lyxfind.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
@@ -102,11 +103,11 @@ void InsetText::init(InsetText const * ins)
 
 		autoBreakRows_ = ins->autoBreakRows_;
 		drawFrame_ = ins->drawFrame_;
-		frame_color_ = ins->frame_color_;
+		setFrameColor(ins->frameColor());
 	} else {
 		textwidth_ = 0; // broken
 		drawFrame_ = NEVER;
-		frame_color_ = LColor::insetframe;
+		setFrameColor(LColor::insetframe);
 		autoBreakRows_ = false;
 	}
 	the_locking_inset = 0;
@@ -280,7 +281,7 @@ void InsetText::drawFrame(Painter & pain, int x) const
 	int const frame_y = top_baseline - dim_.asc + ttoD2;
 	int const frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
 	int const frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
-	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frame_color_);
+	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frameColor());
 }
 
 
@@ -1448,6 +1449,12 @@ void InsetText::setAutoBreakRows(bool flag)
 void InsetText::setDrawFrame(DrawFrame how)
 {
 	drawFrame_ = how;
+}
+
+
+EnumLColor InsetText::frameColor() const
+{
+	return LColor::color(frame_color_);
 }
 
 

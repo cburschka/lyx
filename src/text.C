@@ -26,6 +26,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxlength.h"
 #include "lyxrc.h"
 #include "lyxrow.h"

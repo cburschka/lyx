@@ -1,6 +1,11 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* bufferparams.C, paragraph_pimpl.C: add #include "LColor.h".
+	* bufferparams.C:
+	* bufferview_funcs.C:
+	* lyxfunc.C:
+	* paragraph_pimpl.C:
+	* rowpainter.C:
+	* text.C: add #include "LColor.h".
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 

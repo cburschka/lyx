@@ -1,5 +1,19 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* insettext.[Ch] (frameColor): new accessor function.
+	(frame_color_): stored as an int, allows us to remove #include "LColor.h" from
+	insettext.h
+
+	* insetbranch.C:
+	* insettabular.C:
+	* insettext.C:
+	add #include "LColor.h".
+
+	* insetcollapsable.h: add #include "LColor.h"
+	(for its framecolor member variable).
+	
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* insetenv.C (constructor): use accessor functions to access InsetText variables.
 
 	* insettext.h: rename autoBreakRows as autoBreakRows_. Make private.

@@ -18,6 +18,7 @@
 #include "insettext.h"
 
 #include "box.h"
+#include "LColor.h"
 #include "lyxfont.h"
 
 #include <boost/weak_ptr.hpp>

@@ -19,6 +19,7 @@
 #include "encoding.h"
 #include "gettext.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"

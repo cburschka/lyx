@@ -37,6 +37,7 @@
 #include "intl.h"
 #include "iterators.h"
 #include "kbmap.h"
+#include "LColor.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "lyxfind.h"

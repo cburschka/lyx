@@ -17,6 +17,7 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "paragraph.h"
 

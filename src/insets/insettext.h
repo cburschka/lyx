@@ -13,7 +13,6 @@
 #define INSETTEXT_H
 
 #include "updatableinset.h"
-#include "LColor.h"
 #include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
 #include "lyxtext.h"
@@ -129,6 +128,7 @@ public:
 	///
 	void setDrawFrame(DrawFrame);
 	///
+	EnumLColor frameColor() const;
 	void setFrameColor(EnumLColor);
 	///
 	LyXText * getLyXText(BufferView const *,
@@ -268,8 +268,10 @@ private:
 	bool autoBreakRows_;
 	///
 	DrawFrame drawFrame_;
-	///
-	LColor::color frame_color_;
+	/** We store the LColor::color value as an int to get LColor.h out
+	 *  of the header file.
+	 */
+	int frame_color_;
 	///
 	mutable bool locked;
 	///

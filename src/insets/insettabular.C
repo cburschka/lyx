@@ -20,6 +20,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyx_cb.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
