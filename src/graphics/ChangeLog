@@ -1,3 +1,8 @@
+2002-04-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* GraphicsImageXPM.C (convertTo7chars): drop all conversions and
+	only work on the string.
+
 2002-04-17  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsImageXPM.C (Data::reset): Fix the loading of xpm files by
@@ -57,7 +62,7 @@
 	path to graphics file.
 
 	* GraphicsParams.[Ch] (c-tor): now passed filepath.
-	
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* most files: ws cleanup

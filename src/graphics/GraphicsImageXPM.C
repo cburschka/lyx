@@ -516,6 +516,7 @@ void GImageXPM::Data::resetData(int w, int h, unsigned int * d)
 	data_.reset(d);
 }
 
+
 unsigned int * GImageXPM::Data::initialisedData(int w, int h) const
 {
 	size_t const data_size = w * h;
@@ -558,52 +559,27 @@ string const convertTo7chars(string const & input)
 		// Can't deal with it.
 		return input;
 
-	int nbytes;
-	double factor;
+	string format(input);
+
 	switch (size) {
 	case 13: // #rrrrggggbbbb
-	    nbytes = 4;
-	    factor = 1.0 / 256.0;
-	    break;
-
+		format.erase(3, 2);
+		format.erase(5, 2);
+		format.erase(7, 2);
+		break;
 	case 10: // #rrrgggbbb
-	    nbytes = 3;
-	    factor = 1.0 / 16.0;
-	    break;
-
-	case 4:  // #rgb
-	    nbytes = 1;
-	    factor = 16.0;
-	    break;
+		format.erase(3, 1);
+		format.erase(5, 1);
+		format.erase(7, 1);
+		break;
+	case 4: // #rgb
+		format.insert(2, 1, '0');
+		format.insert(4, 1, '0');
+		format.append(1, '0');
+		break;
 	}
 
-	int r, g, b;
-	int const pos1 = 1;
-	int const pos2 = pos1 + nbytes;
-	int const pos3 = pos2 + nbytes;
-	
-	stringstream ss;
-	ss << input.substr(pos1, nbytes) << ' '
-	   << input.substr(pos2, nbytes) << ' '
-	   << input.substr(pos3, nbytes);
-	ss >> std::hex >> r >> g >> b;
-	if (ss.fail())
-		// Oh, you're on your own.
-		return input;
-	
-	// The existing r,g,b values are multiplied by these factors
-	// to end up with values in the range 0 <= c <= 255
-	r = int(factor * double(r));
-	g = int(factor * double(g));
-	b = int(factor * double(b));
-
-	ostringstream oss;
-	oss << '#' << std::hex << std::setfill('0')
-	    << std::setw(2) << r
-	    << std::setw(2) << g
-	    << std::setw(2) << b;
-
-	return oss.str().c_str();
+	return format;
 }
 
 
