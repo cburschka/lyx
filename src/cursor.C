@@ -79,17 +79,15 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	FuncRequest cmd = cmd0;
-
-	for (int i = cursor_.size() - 1; i >= 1; --i) {
-		current_ = i;
-		CursorSlice const & citem = cursor_[i];
-		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
+	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
+		lyxerr << "trying to dispatch to inset " << inset() << endl;
 		DispatchResult res = inset()->dispatch(*this, cmd);
 		if (res.dispatched()) {
-			lyxerr << " successfully dispatched to inset " << citem.inset_ << endl;
+			lyxerr << " successfully dispatched to inset " << inset() << endl;
 			return DispatchResult(true, true);
 		}
-		// remove one level of cursor
+		// "Mutate" the request for semi-handled requests that need
+		// additional handling in outer levels.
 		switch (res.val()) {
 			case FINISHED:
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
@@ -104,15 +102,16 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				cmd = FuncRequest(LFUN_FINISHED_DOWN);
 				break;
 			default:
-				lyxerr << "not handled on level " << i << " val: " << res.val() << endl;
+				//lyxerr << "not handled on level " << current_
+				//	<< " val: " << res.val() << endl;
 				break;
 		}
 	}
-	current_ = 0;
+	BOOST_ASSERT(current_ == 0);
 	lyxerr << "trying to dispatch to main text " << bv_->text()
 		<< " with cursor: " << *this << endl;
 	DispatchResult res = bv_->text()->dispatch(*this, cmd);
-	lyxerr << "   result: " << res.val() << endl;
+	//lyxerr << "   result: " << res.val() << endl;
 	return res;
 }
 

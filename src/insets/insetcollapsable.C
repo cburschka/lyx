@@ -137,7 +137,6 @@ int InsetCollapsable::height_collapsed() const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	//lyxerr << "InsetCollapsable::metrics:  width: " << mi.base.textwidth << endl;
 	if (status_ == Inlined) {
 		inset.metrics(mi, dim);
 	} else {
@@ -150,7 +149,6 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 	}
 	dim_ = dim;
-	//lyxerr << "InsetCollapsable::metrics:  dim.wid: " << dim.wid << endl;
 }
 
 
@@ -217,8 +215,6 @@ InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		if (hitButton(cmd)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
-			// drop one level
-			cur.bv().cursor() = cur;
 			return DispatchResult(false, FINISHED_RIGHT);
 		}
 		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
