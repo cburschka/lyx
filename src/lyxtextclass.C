@@ -291,7 +291,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_PROVIDESURL:
 			if (lexrc.next() && lexrc.getInteger())
-				provides_ = url;
+				provides_ |= url;
 			break;
 
 		case TC_LEFTMARGIN:	// left margin type
