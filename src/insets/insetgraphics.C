@@ -665,8 +665,20 @@ void InsetGraphics::updateInset() const
 
 	// We do it this way so that in the face of some error, we will still
 	// be in a valid state.
-	if (!params.filename.empty() && lyxrc.use_gui
-	    && params.display != InsetGraphicsParams::NONE) {
+	InsetGraphicsParams::DisplayType local_display = params.display;
+	if (local_display == InsetGraphicsParams::DEFAULT) {
+		if (lyxrc.display_graphics == "mono")
+			local_display = InsetGraphicsParams::MONOCHROME;
+		else if (lyxrc.display_graphics == "gray")
+			local_display = InsetGraphicsParams::GRAYSCALE;
+		else if (lyxrc.display_graphics == "color")
+			local_display = InsetGraphicsParams::COLOR;
+		else
+			local_display = InsetGraphicsParams::NONE;
+	}
+
+	if (!params.filename.empty() && lyxrc.use_gui &&
+	    local_display != InsetGraphicsParams::NONE) {
 		temp = gc.addFile(params.filename);
 	}
 

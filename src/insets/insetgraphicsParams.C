@@ -18,12 +18,11 @@
 
 #include "insetgraphicsParams.h"
 
+#include "lyxrc.h"
 #include "support/translator.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/LOstream.h"
-#include "lyxrc.h"
-
 #include "support/LAssert.h"
 
 namespace {
@@ -35,7 +34,7 @@ bool translatorsSet = false;
 /// This is the translator between the Display enum and corresponding lyx
 /// file strings.
 Translator< InsetGraphicsParams::DisplayType, string >
-displayTranslator(InsetGraphicsParams::MONOCHROME, "monochrome");
+displayTranslator(InsetGraphicsParams::DEFAULT, "default");
 
 // this is only compatibility stuff for the first 1.2 version
 // it is obselete until 1.3
@@ -67,6 +66,7 @@ InsetGraphicsParams::InsetGraphicsParams()
 	if (! translatorsSet) {
 		translatorsSet = true;
 		// Fill the display translator
+		displayTranslator.addPair(DEFAULT, "default");
 		displayTranslator.addPair(MONOCHROME, "monochrome");
 		displayTranslator.addPair(GRAYSCALE, "grayscale");
 		displayTranslator.addPair(COLOR, "color");
@@ -149,7 +149,8 @@ void InsetGraphicsParams::testInvariant() const
 {
 	// Filename might be empty (when the dialog is first created).
 	// Assert(!filename.empty());
-	lyx::Assert(display == COLOR ||
+	lyx::Assert(display == DEFAULT ||
+	       display == COLOR ||
 	       display == MONOCHROME ||
 	       display == GRAYSCALE ||
 	       display == NONE

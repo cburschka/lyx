@@ -195,25 +195,25 @@ void FormGraphics::apply()
 	igp.clip = fl_get_button(bbox_->button_clip);
 	igp.subcaption = fl_get_button(file_->check_subcaption);
 	igp.subcaptionText = getStringFromInput(file_->input_subcaption);
-	// use preferences settings if choice is set to default
-	if (fl_get_choice(file_->choice_display) == 1) {
-		if (lyxrc.display_graphics == "mono")
-			igp.display = InsetGraphicsParams::MONOCHROME;
-		else if (lyxrc.display_graphics == "gray")
-			igp.display = InsetGraphicsParams::GRAYSCALE;
-		else if (lyxrc.display_graphics == "color")
-			igp.display = InsetGraphicsParams::COLOR;
-		else if (lyxrc.display_graphics == "no")
-			igp.display = InsetGraphicsParams::NONE;
-	} else if (fl_get_choice(file_->choice_display) == 2) {
-		igp.display = InsetGraphicsParams::MONOCHROME;
-	} else if (fl_get_choice(file_->choice_display) == 3) {
-		igp.display = InsetGraphicsParams::GRAYSCALE;
-	} else if (fl_get_choice(file_->choice_display) == 4) {
-		igp.display = InsetGraphicsParams::COLOR;
-	} else if (fl_get_choice(file_->choice_display) == 5) {
-		igp.display = InsetGraphicsParams::NONE;
-	}
+
+	switch (fl_get_choice(file_->choice_display)) {
+	case 1:
+		igp.display = InsetGraphicsParams::DEFAULT;		
+		break;
+	case 2:
+		igp.display = InsetGraphicsParams::MONOCHROME;		
+		break;
+	case 3:
+		igp.display = InsetGraphicsParams::GRAYSCALE;		
+		break;
+	case 4:
+		igp.display = InsetGraphicsParams::COLOR;		
+		break;
+	case 5:
+		igp.display = InsetGraphicsParams::NONE;		
+		break;
+ 	}
+
 	if (fl_get_button(size_->button_default))
 	    igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (fl_get_button(size_->button_wh))
@@ -299,23 +299,23 @@ void FormGraphics::update()
 		   fl_get_button(file_->check_subcaption));
 
 	switch (igp.display) {
-	    case InsetGraphicsParams::NONE: {	// dont't display
-		fl_set_choice(file_->choice_display, 5);
+	case InsetGraphicsParams::DEFAULT:
+		fl_set_choice(file_->choice_display, 1);
 		break;
-	    }
-	    case InsetGraphicsParams::MONOCHROME: {
+	case InsetGraphicsParams::MONOCHROME:
 		fl_set_choice(file_->choice_display, 2);
 		break;
-	    }
-	    case InsetGraphicsParams::GRAYSCALE: {
+	case InsetGraphicsParams::GRAYSCALE:
 		fl_set_choice(file_->choice_display, 3);
 		break;
-	    }
-	    case InsetGraphicsParams::COLOR: {
+	case InsetGraphicsParams::COLOR:
 		fl_set_choice(file_->choice_display, 4);
 		break;
-	    }
-	}
+	case InsetGraphicsParams::NONE:
+		fl_set_choice(file_->choice_display, 5);
+		break;
+ 	}
+
 	updateWidgetsFromLength(size_->input_width,
 		size_->choice_width_units,igp.width,defaultUnit);
 	updateWidgetsFromLength(size_->input_height,

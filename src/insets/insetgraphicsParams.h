@@ -29,11 +29,13 @@ struct InsetGraphicsParams
 {
 	/// How do we display the image?
 	enum DisplayType {
+	    DEFAULT,		// whatever is in lyxrc.display_graphics
 	    COLOR,		// full color range
 	    GRAYSCALE,		// 256 shades of gray
 	    MONOCHROME,		// In black and white.
 	    NONE		// only keep a frame in place.
 	};
+	///
 	enum sizeType {
 	    DEFAULT_SIZE,	// like none
 	    WH,			// width/height values

@@ -1,3 +1,11 @@
+2002-02-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphics.C (updateInset): if params.display == DEFAULT,
+	interogate lyxrc.display_graphics before diaplaying the graphic.
+
+	* insetgraphicsParams.[Ch]: respect the new DEFAULT state of
+	InsetGraphicsParams::DisplayType.
+
 2002-01-31  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphic.C: (readfigInset) set display to pref-default
