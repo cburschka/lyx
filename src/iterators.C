@@ -14,6 +14,8 @@
 #include "iterators.h"
 #include "paragraph.h"
 
+#include "insets/inset.h"
+
 #include <boost/next_prior.hpp>
 #include <boost/optional.hpp>
 

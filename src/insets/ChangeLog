@@ -1,3 +1,7 @@
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* inset.h: add the InsetOld::Code wrapper class InsetOld_code.
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C (localDispatch): ensure that params_.masterFilename_ is

@@ -332,6 +332,18 @@ private:
 };
 
 
+/** \c InsetOld_code is a wrapper for InsetOld::Code.
+ *  It can be forward-declared and passed as a function argument without
+ *  having to expose inset.h.
+ */
+class InsetOld_code {
+	InsetOld::Code val_;
+public:
+	InsetOld_code(InsetOld::Code val) : val_(val) {}
+	operator InsetOld::Code() const{ return val_; }
+};
+
+
 /**
  * returns true if pointer argument is valid
  * and points to an editable inset

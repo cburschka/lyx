@@ -285,7 +285,7 @@ void Paragraph::insertInset(pos_type pos, InsetOld * inset,
 }
 
 
-bool Paragraph::insetAllowed(InsetOld::Code code)
+bool Paragraph::insetAllowed(InsetOld_code code)
 {
 	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
 	if (pimpl_->inset_owner)

@@ -21,8 +21,6 @@
 #include "lyxlayout_ptr_fwd.h"
 #include "RowList_fwd.h"
 
-#include "insets/inset.h" // Just for InsetOld::Code
-
 #include "support/types.h"
 
 #include "support/std_string.h"
@@ -32,9 +30,11 @@ class BufferParams;
 class BufferView;
 class Counters;
 class InsetBibitem;
+class InsetOld_code;
 class Language;
 class LaTeXFeatures;
 class LatexRunParams;
+class LyXFont;
 class LyXFont_size;
 class ParagraphParameters;
 class TexRow;
@@ -259,7 +259,7 @@ public:
 	///
 	void insertInset(lyx::pos_type pos, InsetOld * inset, LyXFont const &, Change change = Change(Change::INSERTED));
 	///
-	bool insetAllowed(InsetOld::Code code);
+	bool insetAllowed(InsetOld_code code);
 	///
 	InsetOld * getInset(lyx::pos_type pos);
 	///

@@ -358,7 +358,7 @@ private:
 
 
 /** \c LyXFont_size is a wrapper for LyXFont::FONT_SIZE.
- *  It can be forward-declared andpassed as a function argument without
+ *  It can be forward-declared and passed as a function argument without
  *  having to expose lyxfont.h.
  */
 class LyXFont_size {
