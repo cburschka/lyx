@@ -60,17 +60,20 @@ void FormToc::update()
 
 ButtonPolicy::SMInput FormToc::input(FL_OBJECT * ob, long)
 {
+	if (ob == dialog_->browser_toc) {
+		unsigned int const choice = fl_get_browser(dialog_->browser_toc);
+
+		if (choice - 1 < toclist_.size() && choice >= 1) {
+			controller().Goto(toclist_[choice - 1].par->id());
+		}
+		return ButtonPolicy::SMI_VALID;
+	}
+
 	if (ob != dialog_->choice_toc_type) {
 		updateType();
 	}
  
 	updateContents();
-
-	unsigned int const choice = fl_get_browser(dialog_->browser_toc);
-
-	if (choice - 1 < toclist_.size() && choice >= 1) {
-		controller().Goto(toclist_[choice - 1].par->id());
-	}
 
 	return ButtonPolicy::SMI_VALID;
 }

@@ -36,6 +36,7 @@
 #include "helper_funcs.h"      // for browseFile
 #include "support/lstrings.h"
 #include "support/filetools.h" // for AddName, zippedFile
+#include "frontends/Alert.h"
 #include "BufferView.h"
 
 using std::pair;
@@ -132,3 +133,10 @@ string const ControlGraphics::readBB(string const & file)
 }
 
 
+void ControlGraphics::checkFilename(string const & fname) {
+	if (!IsFileReadable(fname))
+		Alert::alert(_("Warning!"),
+			     _("Filename") + ' '
+			     + fname + _(" does not exist!"));
+
+}

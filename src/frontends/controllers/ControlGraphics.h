@@ -40,7 +40,8 @@ public:
 	string const readBB(string const & file);
 	/// Control the bb
 	bool bbChanged;
-
+	/// test if file exist
+	void checkFilename(string const & fname);
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();

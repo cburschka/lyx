@@ -28,7 +28,6 @@
 #include "input_validators.h"
 #include "debug.h" // for lyxerr
 #include "support/lstrings.h"  // for strToDbl & tostr
-#include "support/FileInfo.h"
 #include "support/filetools.h"  // for MakeAbsPath etc
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h" // for lyxrc.display_graphics
@@ -43,7 +42,7 @@ int const WIDTH_MAXDIGITS = 10;
 int const HEIGHT_MAXDIGITS = 10;
 int const ROTATE_MAXCHARS = 4;
 int const FILENAME_MAXCHARS = 1024;
-string defaultUnit = "cm"; 
+string defaultUnit("cm"); 
  
 } // namespace anon
 
@@ -164,6 +163,9 @@ void FormGraphics::build()
 	fl_addto_tabfolder(dialog_->tabFolder, _("LaTeX Size"), size_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("Bounding Box"), bbox_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("Extras"), special_->form);
+	// set the right default unit
+	if (lyxrc.default_papersize < 3)
+	    defaultUnit = "in"; 
 }
 
 
@@ -174,6 +176,7 @@ void FormGraphics::apply()
 
 	// the file section
 	igp.filename = getStringFromInput(file_->input_filename);
+	controller().checkFilename(igp.filename);
 	igp.subcaption = fl_get_button(file_->check_subcaption);
 	igp.subcaptionText = getStringFromInput(file_->input_subcaption);
 	igp.rotate = fl_get_button(file_->check_rotate);
@@ -266,8 +269,6 @@ void FormGraphics::apply()
 
 
 void FormGraphics::update() {	
-	if (lyxrc.default_papersize < 3)
-	    defaultUnit = string("in"); 
 	// Update dialog with details from inset
 	InsetGraphicsParams & igp = controller().params();
 
@@ -281,7 +282,7 @@ void FormGraphics::update() {
 	fl_set_input(file_->input_rotate_angle,
 	             tostr(igp.rotateAngle).c_str());
 	if (igp.rotateOrigin.empty())
-	    fl_set_choice(file_->choice_origin,0);
+	    fl_set_choice(file_->choice_origin,1);
 	else
 	    fl_set_choice_text(file_->choice_origin,igp.rotateOrigin.c_str());
 	setEnabled(file_->input_rotate_angle,
@@ -310,9 +311,9 @@ void FormGraphics::update() {
 		break;
  	}
 	updateWidgetsFromLength(lyxview_->input_lyxwidth,
-		lyxview_->choice_width_lyxwidth, igp.lyxwidth,defaultUnit);
+		lyxview_->choice_width_lyxwidth, igp.lyxwidth, defaultUnit);
 	updateWidgetsFromLength(lyxview_->input_lyxheight,
-		lyxview_->choice_width_lyxheight, igp.lyxheight,defaultUnit);
+		lyxview_->choice_width_lyxheight, igp.lyxheight, defaultUnit);
 	fl_set_input(lyxview_->input_lyxscale, tostr(igp.lyxscale).c_str());
 	switch (igp.lyxsize_type) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
@@ -347,9 +348,9 @@ void FormGraphics::update() {
 	// the size section
 	// Update the draft and clip mode
 	updateWidgetsFromLength(size_->input_width,
-		size_->choice_width_units,igp.width,defaultUnit);
+		size_->choice_width_units, igp.width, defaultUnit);
 	updateWidgetsFromLength(size_->input_height,
-		size_->choice_height_units,igp.height,defaultUnit);
+		size_->choice_height_units, igp.height, defaultUnit);
 	fl_set_input(size_->input_scale, tostr(igp.scale).c_str());
 	switch (igp.size_type) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
@@ -483,13 +484,10 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    	setEnabled(lyxview_->choice_width_lyxheight, 0);
 	    	setEnabled(lyxview_->input_lyxscale, 1);
 	} else if (ob == lyxview_->button_latex_values) {
-		if (fl_get_choice(size_->choice_width_units) > 3
-			&& fl_get_choice(size_->choice_width_units) < 8
-			|| fl_get_choice(size_->choice_height_units) > 3
-			&& fl_get_choice(size_->choice_height_units) < 8)
-				Alert::alert(_("Warning!"),
-			   	_("The units t%, p%, c% and l% are not allowed here."),
-			   	_("Cannot use the values from LaTeX size!"));
+		if (contains(fl_get_choice_text(size_->choice_width_units),'%')) 
+			Alert::alert(_("Warning!"),
+			   _("The units t%, p%, c% and l% are not allowed here."),
+			   _("Cannot use the values from LaTeX size!"));
 		else {
 	    		LyXLength dummy = LyXLength(getLengthFromWidgets(size_->input_width,
 				size_->choice_width_units));

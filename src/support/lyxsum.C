@@ -16,6 +16,8 @@
 #include "support/lyxlib.h"
 #include "debug.h"
 
+using std::endl;
+
 // Various implementations of lyx::sum(), depending on what methods
 // are available. Order is faster to slowest.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
@@ -31,7 +33,6 @@
 #include <sys/mman.h>
 
 using std::ifstream;
-using std::endl;
 using std::for_each;
 using std::istreambuf_iterator;
 using std::istream_iterator;
@@ -89,6 +90,9 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 } // namespace
 
 #if HAVE_DECL_ISTREAMBUF_ITERATOR
+using std::ifstream;
+using std::istreambuf_iterator;
+
 unsigned long lyx::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"

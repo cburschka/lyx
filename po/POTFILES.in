@@ -71,10 +71,10 @@ src/frontends/qt2/QURL.C
 src/frontends/qt2/QVCLog.C
 src/frontends/xforms/Alert_pimpl.C
 src/frontends/xforms/combox.C
+src/frontends/xforms/FeedbackController.C
 src/frontends/xforms/FileDialog.C
 src/frontends/xforms/form_aboutlyx.C
 src/frontends/xforms/FormAboutlyx.C
-src/frontends/xforms/FormBase.C
 src/frontends/xforms/form_bibitem.C
 src/frontends/xforms/FormBibitem.C
 src/frontends/xforms/form_bibtex.C
@@ -191,7 +191,6 @@ src/lyxfont.C
 src/lyxfunc.C
 src/lyx_main.C
 src/lyxrc.C
-src/LyXSendto.C
 src/lyxtextclasslist.C
 src/lyxvc.C
 src/LyXView.C

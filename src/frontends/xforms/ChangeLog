@@ -1,3 +1,11 @@
+2002-03-09  Herbert Voss  <voss@lyx.org>
+
+	* FormGraphics.C: test if file exists, simplify an if command
+
+2002-03-10  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormToc.C: make goto not reset the dialog
+ 
 2002-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FeedbackController.[Ch]: new files, providing a standard interface to

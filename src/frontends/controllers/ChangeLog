@@ -1,3 +1,13 @@
+2002-03-10  Herbert Voss  <voss@lyx.org>
+
+	* biblio.C (parseBibTeX): fix bug
+	(familyName): improve parsing
+
+2002-03-09  Herbert Voss  <voss@lyx.org>
+
+	* ControlGraphics.[Ch]: adding checkFilename() for testing 
+	of non-existing files
+
 2002-03-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ControlSendto.C (allFormats): fix a iterators are not pointers
@@ -9,7 +19,8 @@
 
 2002-03-05  Herbert Voss  <voss@lyx.org>
 
-	biblio.C: (getInfo) simplify if using paragraph layout "bibliography".
+	* biblio.C (getInfo): simplify if using paragraph layout
+	"bibliography". 
 
 2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
 

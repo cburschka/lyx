@@ -146,10 +146,18 @@ string const familyName(string const & name)
 	// Very simple parser
 	string fname = name;
 
-	string::size_type idx = fname.rfind(".");
+	// possible authorname combinations are:
+	// "Surname, FirstName"
+	// "Surname, F."
+	// "FirstName Surname"
+	// "F. Surname"
+	string::size_type idx = fname.find(",");
+	if (idx != string::npos)
+		return frontStrip(fname.substr(0,idx));
+	idx = fname.rfind(".");
 	if (idx != string::npos)
 		fname = frontStrip(fname.substr(idx+1));
-
+	
 	return fname;
 }
 
@@ -209,10 +217,6 @@ string const getYear(InfoMap const & map, string const & key)
 }
 
 } // namespace anon 
-
-
-
-
 
 
 
@@ -339,8 +343,8 @@ string const parseBibTeX(string data, string const & findkey)
 		string::size_type const idx =
 			dummy.empty() ? string::npos : dummy.find('%');
 		if (idx != string::npos) {
+			// ignore lines with a beginning '%'
 			if (idx > 0) {
-				// This is safe. data MUST contain a '%'
 				data_ += dummy.substr(0,data.find('%'));
 			}
 		} else {
@@ -379,12 +383,12 @@ string const parseBibTeX(string data, string const & findkey)
 		data = strip(data, '}');// maybe there is a main closing '}'
 	// happens, when last keyword
 	string::size_type const idx =
-		data.empty() ? data.find('=') : string::npos;
+		!data.empty() ? data.find('=') : string::npos;
 
 	if (idx == string::npos)
 		return string();
 
-	data = data.substr(idx, data.length() - 1);
+	data = data.substr(idx);
 	data = frontStrip(strip(data));
 
 	if (data.length() < 2 || data[0] != '=') {	// a valid entry?
@@ -403,16 +407,16 @@ string const parseBibTeX(string data, string const & findkey)
 			} else {
 				return data;	// no {} and no "", pure data
 			}
-			string tmp = data.substr(keypos, data.length()-1);
+			string tmp = data.substr(keypos);
 			while (tmp.find('{') != string::npos &&
 			       tmp.find('}') != string::npos &&
 			       tmp.find('{') < tmp.find('}') &&
 			       tmp.find('{') < tmp.find(enclosing)) {
 				
 				keypos += tmp.find('{') + 1;
-				tmp = data.substr(keypos, data.length() - 1);
+				tmp = data.substr(keypos);
 				keypos += tmp.find('}') + 1;
-				tmp = data.substr(keypos, data.length() - 1);
+ 				tmp = data.substr(keypos);
 			}
 			if (tmp.find(enclosing) == string::npos)
 				return data;
