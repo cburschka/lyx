@@ -28,10 +28,13 @@ int Systemcall::startscript(Starttype how, string const & what)
 	string command = what;
 
 	if (how == DontWait) {
-		if (os::shell() == os::UNIX) {
+		switch (os::shell()) {
+		case os::UNIX:
 			command += " &";
-		} else {
-			command = "start /min/n " + command;
+			break;
+		case os::CMD_EXE:
+			command = "start /min " + command;
+			break;
 		}
 	}
 

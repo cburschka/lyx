@@ -1,5 +1,12 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
+	* os.C: Add _WIN32 to the #define.
+ 
+	* systemcall.C (startscript): remove trailing '/n' from request to
+	start the command in a minimized window under DOS.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
 	* Makefile.am (INCLUDES): Remove trailing slash from -Ifoo/
 	to overcome bug in the MinGW port of g++ 3.4.2.
 
