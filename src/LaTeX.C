@@ -197,7 +197,8 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (lfun) {
 		ostringstream str;
 		str << _("LaTeX run number") << ' ' << count;
-		lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
+		// check lyxstring string stream and gcc 3.1 before fixing
+		lfun->dispatch(LFUN_MESSAGE, string(str.str().c_str()));
 	}
 
 	this->operator()();
@@ -233,7 +234,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		if (lfun) {
-			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+			lfun->dispatch(LFUN_MESSAGE, string(_("Running MakeIndex.")));
 		}
 
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
@@ -248,7 +249,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
 		if (lfun) {
-			lfun->dispatch(LFUN_MESSAGE, _("Running BibTeX."));
+			lfun->dispatch(LFUN_MESSAGE, string(_("Running BibTeX.")));
 		}
 
 		updateBibtexDependencies(head, bibtex_info);
@@ -282,7 +283,8 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
-			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
+			// check lyxstring string stream and gcc 3.1 before fixing
+			lfun->dispatch(LFUN_MESSAGE, string(str.str().c_str()));
 		}
 
 		this->operator()();
@@ -312,7 +314,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		if (lfun) {
-			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+			lfun->dispatch(LFUN_MESSAGE, string(_("Running MakeIndex.")));
 		}
 
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
@@ -338,7 +340,8 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
-			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
+			// check lyxstring string stream and gcc 3.1 before fixing
+			lfun->dispatch(LFUN_MESSAGE, string(str.str().c_str()));
 		}
 
 		this->operator()();

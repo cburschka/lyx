@@ -601,7 +601,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
 		else
 			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION,
-						       "paragraph");
+						       string("paragraph"));
 		selection_possible = false;
 		return;
 	}
@@ -3240,7 +3240,7 @@ void BufferView::Pimpl::smartQuote()
 
 	if (style->pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
-		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, "\"");
+		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, string("\""));
 }
 
 
