@@ -1097,10 +1097,10 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		return true;
 	}
 
-	//if (c == '%') {
-	//	cur.niceInsert(MathAtom(new MathCommentInset));
-	//	return true;
-	//}
+	if (c == '~') {
+		cur.niceInsert(createMathInset("sim"));
+		return true;
+	}
 
 	// try auto-correction
 	//if (autocorrect() && hasPrevAtom() && math_autocorrect(prevAtom(), c))
@@ -1115,7 +1115,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 
 bool MathNestInset::script(LCursor & cur, bool up)
 {
-	// Hack to get \\^ and \\_ working
+	// Hack to get \^ and \_ working
 	lyxerr << "handling script: up: " << up << endl;
 	if (cur.inMacroMode() && cur.macroName() == "\\") {
 		if (up)
