@@ -29,8 +29,8 @@ InsetEnvironment::InsetEnvironment
 	: InsetText(bp), layout_(bp.getLyXTextClass()[name])
 {
 	setInsetName(name);
-	autoBreakRows = true;
-	drawFrame_ = ALWAYS;
+	setAutoBreakRows(true);
+	setDrawFrame(ALWAYS);
 }
 
 

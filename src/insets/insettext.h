@@ -125,7 +125,7 @@ public:
 	///
 	void setAutoBreakRows(bool);
 	///
-	bool getAutoBreakRows() const { return autoBreakRows; }
+	bool getAutoBreakRows() const { return autoBreakRows_; }
 	///
 	void setDrawFrame(DrawFrame);
 	///
@@ -209,12 +209,6 @@ protected:
 	void lockInset(BufferView *);
 	/// lock an inset inside this one
 	void lockInset(BufferView *, UpdatableInset *);
-	///
-	bool autoBreakRows;
-	///
-	DrawFrame drawFrame_;
-	///
-	LColor::color frame_color;
 
 private:
 	///
@@ -270,6 +264,12 @@ private:
 	void collapseParagraphs(BufferView *);
 
 	/* Private structures and variables */
+	///
+	bool autoBreakRows_;
+	///
+	DrawFrame drawFrame_;
+	///
+	LColor::color frame_color_;
 	///
 	mutable bool locked;
 	///

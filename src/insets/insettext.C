@@ -100,14 +100,14 @@ void InsetText::init(InsetText const * ins)
 		for (; pit != end; ++pit)
 			pit->setInsetOwner(this);
 
-		autoBreakRows = ins->autoBreakRows;
+		autoBreakRows_ = ins->autoBreakRows_;
 		drawFrame_ = ins->drawFrame_;
-		frame_color = ins->frame_color;
+		frame_color_ = ins->frame_color_;
 	} else {
 		textwidth_ = 0; // broken
 		drawFrame_ = NEVER;
-		frame_color = LColor::insetframe;
-		autoBreakRows = false;
+		frame_color_ = LColor::insetframe;
+		autoBreakRows_ = false;
 	}
 	the_locking_inset = 0;
 	for_each(paragraphs.begin(), paragraphs.end(),
@@ -280,7 +280,7 @@ void InsetText::drawFrame(Painter & pain, int x) const
 	int const frame_y = top_baseline - dim_.asc + ttoD2;
 	int const frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
 	int const frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
-	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frame_color);
+	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frame_color_);
 }
 
 
@@ -289,7 +289,7 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 	if (!bv)
 		return;
 
-	if (!autoBreakRows && paragraphs.size() > 1)
+	if (!autoBreakRows_ && paragraphs.size() > 1)
 		collapseParagraphs(bv);
 
 	if (!text_.selection.set())
@@ -813,7 +813,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_PASTE: {
-		if (!autoBreakRows) {
+		if (!autoBreakRows_) {
 			if (CutAndPaste::nrOfParagraphs() > 1) {
 #ifdef WITH_WARNINGS
 #warning FIXME horrendously bad UI
@@ -839,7 +839,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_BREAKPARAGRAPH:
-		if (!autoBreakRows) {
+		if (!autoBreakRows_) {
 			result = DISPATCHED;
 			break;
 		}
@@ -849,7 +849,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-		if (!autoBreakRows) {
+		if (!autoBreakRows_) {
 			result = DISPATCHED;
 			break;
 		}
@@ -859,7 +859,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKLINE: {
-		if (!autoBreakRows) {
+		if (!autoBreakRows_) {
 			result = DISPATCHED;
 			break;
 		}
@@ -872,7 +872,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_LAYOUT:
 		// do not set layouts on non breakable textinsets
-		if (autoBreakRows) {
+		if (autoBreakRows_) {
 			string cur_layout = cpar()->layout()->name();
 
 			// Derive layout number from given argument (string)
@@ -1437,8 +1437,8 @@ void InsetText::setText(string const & data, LyXFont const & font)
 
 void InsetText::setAutoBreakRows(bool flag)
 {
-	if (flag != autoBreakRows) {
-		autoBreakRows = flag;
+	if (flag != autoBreakRows_) {
+		autoBreakRows_ = flag;
 		if (!flag)
 			removeNewlines();
 	}
@@ -1453,7 +1453,7 @@ void InsetText::setDrawFrame(DrawFrame how)
 
 void InsetText::setFrameColor(EnumLColor col)
 {
-	frame_color = col;
+	frame_color_ = col;
 }
 
 
