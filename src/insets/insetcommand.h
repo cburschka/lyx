@@ -121,6 +121,9 @@ public:
 	void setParams(InsetCommandParams const &);
 	///
 	SigC::Signal0<void> hideDialog;
+	///
+	bool insetButtonRelease(BufferView *, int x, int y, int button);
+
 private:
 	///
 	InsetCommandParams p_;

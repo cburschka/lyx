@@ -53,9 +53,6 @@ public:
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int docbook(Buffer const *, std::ostream &) const;
-	///
-	bool insetButtonRelease(BufferView *, int x, int y, int button)
-		{ return true; }
 };
 
 #endif

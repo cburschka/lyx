@@ -1,3 +1,9 @@
+2002-02-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetcommand.C (insetButtonRelease): ... and move it here.
+
+	* inseturl.h: remove insetButtonRelease from there...
+
 2002-02-26  Juergen Vigna  <jug@sad.it>
 
 	* inseturl.h: Added a insetButtonRelease call returning true as
