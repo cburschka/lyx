@@ -86,8 +86,11 @@ void FormBibtex::build()
 
 	str = _("Choose a BibTeX style from the list.");
 	tooltips().init(dialog_->browser_styles, str);
+
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_styles);
+#endif
 
 	str = _("Updates your TeX system for a new bibstyle list. Only "
 		"the styles which are in directories where TeX finds them "

@@ -43,7 +43,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_NONE
+resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: tabfolder_prefs
 callback: 
@@ -193,7 +193,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_NONE
+resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: tabfolder_inner
 callback: 

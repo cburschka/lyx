@@ -37,10 +37,21 @@ using std::vector;
 using std::bind2nd;
 
 
+namespace {
+
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
+bool const scalableTabfolders = false;
+#else
+bool const scalableTabfolders = true;
+#endif
+
+} // namespace anon
+
+
 typedef FormCB<ControlTabular, FormDB<FD_tabular> > base_class;
 
 FormTabular::FormTabular()
-	: base_class(_("Edit table settings")),
+	: base_class(_("Edit table settings"), scalableTabfolders),
 	closing_(false), actCell_(-1)
 {
 }
@@ -113,6 +124,11 @@ void FormTabular::build()
 
 	longtable_options_.reset(build_tabular_longtable(this));
 
+	// Enable the tabfolder to be rescaled correctly.
+	if (scalableTabfolders)
+		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
+
+	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder, _("Tabular"),
 			   tabular_options_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Column/Row"),

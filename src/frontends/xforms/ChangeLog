@@ -1,3 +1,27 @@
+2003-04-09  Angus Leeming  <leeming@lyx.org>
+
+	* FormAboutlyx.C:
+	* FormDocument.C:
+	* FormGraphics.C:
+	* FormPreferences.C:
+	* FormTabular.C:
+	* forms/form_preferences.fd: prepare the way for resizable
+	tabfolders if the xforms version is up to the task.
+
+2003-04-11  Angus Leeming  <leeming@lyx.org>
+
+	Enable "proper" tooltips in browser widgets if your version of
+	the xforms library is recent enough.
+
+	* FormBase.C (PrehandlerCB): Conditional compilation of
+	"tooltips in browser widgets work-around".
+
+	* FormBibtex.C (build):
+	* FormCitation.C (build):
+	* FormForks.C (build):
+	* FormTexinfo.C (build): only set the prehandler for browser widgets
+	if xforms does not support tooltips for same.
+
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
 	* forms/fdfix.sh: 

@@ -53,10 +53,21 @@ using std::bind2nd;
 using std::vector;
 
 
+namespace {
+
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
+bool const scalableTabfolders = false;
+#else
+bool const scalableTabfolders = true;
+#endif
+
+} // namespace anon
+
+
 typedef FormCB<ControlDocument, FormDB<FD_document> > base_class;
 
 FormDocument::FormDocument()
-	: base_class(_("Document Layout"), false),
+	: base_class(_("Document Layout"), scalableTabfolders),
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {}
@@ -336,6 +347,11 @@ void FormDocument::build()
 	fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,
 				   bmtablefile.c_str());
 
+	// Enable the tabfolder to be rescaled correctly.
+	if (scalableTabfolders)
+		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
+
+	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder,_("Document"),
 			   class_->form);
 	fl_addto_tabfolder(dialog_->tabfolder,_("Paper"),

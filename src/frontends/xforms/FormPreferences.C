@@ -88,13 +88,19 @@ pair<string,string> parseFontName(string const & name)
 }
 
 
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
+bool const scalableTabfolders = false;
+#else
+bool const scalableTabfolders = true;
+#endif
+
 } // namespace anon
 
 
 typedef FormCB<ControlPrefs, FormDB<FD_preferences> > base_class;
 
 FormPreferences::FormPreferences()
-	: base_class(_("Preferences"), false),
+	: base_class(_("Preferences"), scalableTabfolders),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this),
 	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
@@ -181,7 +187,28 @@ void FormPreferences::build()
 	screen_fonts_.build();
 	spelloptions_.build();
 
-	// Now add them to the tabfolder
+	// Enable the tabfolders to be rescaled correctly.
+	if (scalableTabfolders) {
+		FL_OBJECT * folder = dialog_->tabfolder_prefs;
+		fl_set_tabfolder_autofit(folder, FL_FIT);
+
+		folder = look_n_feel_tab_->tabfolder_inner;
+		fl_set_tabfolder_autofit(folder, FL_FIT);
+
+		folder = converters_tab_->tabfolder_inner;
+		fl_set_tabfolder_autofit(folder, FL_FIT);
+
+		folder = inputs_tab_->tabfolder_inner;
+		fl_set_tabfolder_autofit(folder, FL_FIT);
+
+		folder = outputs_tab_->tabfolder_inner;
+		fl_set_tabfolder_autofit(folder, FL_FIT);
+
+		folder = lang_opts_tab_->tabfolder_inner;
+		fl_set_tabfolder_autofit(folder, FL_FIT);
+	}
+	
+	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Look & Feel"),
 			   look_n_feel_tab_->form);

@@ -27,10 +27,21 @@
 #include FORMS_H_LOCATION
 
 
+namespace {
+
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
+bool const scalableTabfolders = false;
+#else
+bool const scalableTabfolders = true;
+#endif
+
+} // namespace anon
+
+
 typedef FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > base_class;
 
 FormAboutlyx::FormAboutlyx()
-	: base_class(_("About LyX"), false)
+	: base_class(_("About LyX"), scalableTabfolders)
 {}
 
 
@@ -66,7 +77,11 @@ void FormAboutlyx::build()
 
 	fl_add_browser_line(license_->browser_license, cs.str().c_str());
 
-	// stack tabs
+	// Enable the tabfolder to be rescaled correctly.
+	if (scalableTabfolders)
+		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
+
+	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder, _("Version"),
 			   version_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Credits"),

@@ -36,6 +36,10 @@ What's new
 
 - add support for the hspell spell-checker for hebrew [Qt only]
 
+- [xforms only] add support for scalable tabfolders and for 'native' tooltips
+  in browser widgets. You must recompile against xforms 1.0.2 or greater
+  to enable these new features.
+
 - update dutch, finnish, german, polish [bug #1002], romanian, russian
   and spanish interface localisation. Add support for nynorsk. Fix
   Help>Table of Contents.
