@@ -1224,8 +1224,9 @@ bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhig
 	while (1) {
 		// avoid invalid nesting when selecting
 		if (!selection_ || positionable(it.cursor(), Anchor_)) {
-			int xo = it.position().xpos();
-			int yo = it.position().ypos();
+			MathCursorPos const & top = it.position();
+			int xo = top.xpos();
+			int yo = top.ypos();
 			if (xlow - 2 <= xo && xo <= xhigh + 2 &&
 					ylow - 2 <= yo && yo <= yhigh + 2)
 			{

@@ -74,9 +74,20 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;
 
+	//lyxerr << "x: " << x << " y: " << y << " " << pain.workAreaHeight() << endl;
+
 	xo_    = x;
 	yo_    = y;
 	drawn_ = true;
+
+	if (y + descent_ <= 0)                   // don't draw above the workarea
+		return;
+	if (y - ascent_ >= pain.paperHeight())   // don't draw below the workarea
+		return;
+	if (x + width_ <= 0)                     // don't draw left of workarea
+		return;
+	if (x >= pain.paperWidth())              // don't draw right of workarea
+		return;
 
 	const_iterator it = begin(), et = end();
 
