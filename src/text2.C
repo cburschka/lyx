@@ -2633,7 +2633,7 @@ LyXText::text_status LyXText::status() const
 
 void LyXText::status(BufferView * bview, LyXText::text_status st) const
 {
-	LyXText * t = view->text;
+	LyXText * t = bview->text;
  
 	// We should only go up with refreshing code so this means that if
 	// we have a MORE refresh we should never set it to LITTLE if we still
