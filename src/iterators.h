@@ -18,6 +18,7 @@
 
 class LyXText;
 class InsetOld;
+class Cursor;
 
 class ParIterator {
 public:
@@ -50,6 +51,8 @@ public:
 	int index() const;
 	///
 	size_t size() const;
+	///
+	void asCursor(Cursor & cursor) const;
 	///
 	friend
 	bool operator==(ParIterator const & iter1, ParIterator const & iter2);

@@ -1084,18 +1084,10 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		// is it block, flushleft or flushright?
 		// set x how you need it
 		int align;
-		if (pit->params().align() == LYX_ALIGN_LAYOUT) {
+		if (pit->params().align() == LYX_ALIGN_LAYOUT)
 			align = layout->align;
-		} else {
+		else
 			align = pit->params().align();
-		}
-		// ERT insets should always be LEFT ALIGNED on screen
-		InsetOld * inset = pit->inInset();
-		if (inset && inset->owner() &&
-			inset->owner()->lyxCode() == InsetOld::ERT_CODE)
-		{
-			align = LYX_ALIGN_LEFT;
-		}
 
 		// Display-style insets should always be on a centred row
 		// The test on pit->size() is to catch zero-size pars, which
@@ -1485,26 +1477,10 @@ void LyXText::changeCase(LyXText::TextCase action)
 void LyXText::Delete()
 {
 	// this is a very easy implementation
-
 	LyXCursor old_cursor = cursor;
-	int const old_cur_par_id = cursorPar()->id();
-	int const old_cur_par_prev_id =
-		old_cursor.par() ? getPar(old_cursor.par() - 1)->id() : -1;
 
 	// just move to the right
 	cursorRight(bv());
-
-	// CHECK Look at the comment here.
-	// This check is not very good...
-	// The cursorRightIntern calls DeleteEmptyParagraphMechanism
-	// and that can very well delete the par or par->previous in
-	// old_cursor. Will a solution where we compare paragraph id's
-	//work better?
-	int iid = cursor.par() ? getPar(cursor.par() - 1)->id() : -1;
-	if (iid == old_cur_par_prev_id && cursorPar()->id() != old_cur_par_id) {
-		// delete-empty-paragraph-mechanism has done it
-		return;
-	}
 
 	// if you had success make a backspace
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {

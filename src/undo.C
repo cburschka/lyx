@@ -147,12 +147,9 @@ void recordUndo(Undo::undo_kind kind,
 	ParagraphList::iterator last = plist.begin();
 	advance(last, last_par);
 
-	for (ParagraphList::iterator it = first; it != last; ++it) {
+	for (ParagraphList::iterator it = first; it != last; ++it)
 		undo_pars.push_back(*it);
-		undo_pars.back().id(it->id());
-	}
 	undo_pars.push_back(*last);
-	undo_pars.back().id(last->id());
 
 	// and make sure that next time, we should be combining if possible
 	undo_finished = false;

@@ -12,7 +12,6 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
-#include "ParagraphList_fwd.h"
 #include "textcursor.h"
 
 #include "support/types.h"
@@ -20,6 +19,7 @@
 #include <vector>
 
 class BufferView;
+class InsetOld;
 class DispatchResult;
 class FuncRequest;
 class LyXText;
@@ -32,12 +32,16 @@ class LyXText;
 class CursorItem : public TextCursor {
 public:
 	///
-	CursorItem() : text_(0) {}
+	CursorItem() : inset_(0), text_(0), idx_(0), par_(0), pos_(0) {}
 public:
+	///
+	InsetOld * inset_;
 	///
 	LyXText * text_;
 	///
-	ParagraphList::iterator pit_;
+	int idx_;
+	///
+	int par_;
 	///
 	int pos_;
 };

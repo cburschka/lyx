@@ -1195,16 +1195,16 @@ string const Paragraph::asString(Buffer const & buffer, bool label) const
 			s += c;
 		else if (c == META_INSET &&
 			 getInset(i)->lyxCode() == InsetOld::MATH_CODE) {
-			ostringstream ost;
-			getInset(i)->ascii(buffer, ost);
-			s += subst(STRCONV(ost.str()),'\n',' ');
+			ostringstream os;
+			getInset(i)->ascii(buffer, os);
+			s += subst(STRCONV(os.str()),'\n',' ');
 		}
 	}
 
 	return s;
 #else
 	// This should really be done by the caller and not here.
-	string ret(asString(buffer, 0, size(), label));
+	string ret = asString(buffer, 0, size(), label);
 	return subst(ret, '\n', ' ');
 #endif
 }
@@ -1327,7 +1327,8 @@ Paragraph::value_type Paragraph::getChar(pos_type pos) const
 	// This is in the critical path!
 	pos_type const siz = text_.size();
 
-	BOOST_ASSERT(0 <= pos && pos <= siz);
+	BOOST_ASSERT(0 <= pos);
+	BOOST_ASSERT(pos <= siz);
 
 	if (pos == siz) {
 		lyxerr << "getChar() on pos " << pos << " in par id "
@@ -1344,12 +1345,6 @@ Paragraph::value_type Paragraph::getChar(pos_type pos) const
 int Paragraph::id() const
 {
 	return pimpl_->id_;
-}
-
-
-void Paragraph::id(int i)
-{
-	pimpl_->id_ = i;
 }
 
 

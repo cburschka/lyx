@@ -22,12 +22,25 @@
 #include "insets/updatableinset.h"
 
 using std::vector;
+using std::endl;
 
 
-DispatchResult Cursor::dispatch(FuncRequest const &)
+DispatchResult Cursor::dispatch(FuncRequest const & cmd)
 {
 	for (int i = data_.size() - 1; i >= 0; --i) {
-		lyxerr << "trying to dispatch to " << data_[i].text_ << std::endl;
+		lyxerr << "trying to dispatch to inset" << data_[i].inset_ << endl;
+		DispatchResult res = data_[i].inset_->dispatch(cmd);
+		lyxerr << "   result: " << result << endl;
+
+		if (res == DISPATCHED) {
+			update();
+			return DISPATCHED;
+		}
+	
+		if (res == DISPATCHED_NOUPDATE)
+			return DISPATCHED;
+
+		lyxerr << "# unhandled result: " << res << endl;
 	}
 	return UNDISPATCHED;
 }
@@ -36,7 +49,7 @@ DispatchResult Cursor::dispatch(FuncRequest const &)
 void buildCursor(Cursor & cursor, BufferView & bv)
 {
 	UpdatableInset * inset = bv.theLockingInset();
-	lyxerr << "\nbuildCursor: " << inset << std::endl;
+	lyxerr << "\nbuildCursor: " << inset << endl;
 	if (!inset)
 		return;
 
@@ -54,26 +67,17 @@ void buildCursor(Cursor & cursor, BufferView & bv)
 	}
 
 	if (!ok) {
-		lyxerr << " tli not found! inset: " << inset << std::endl;
+		lyxerr << " tli not found! inset: " << inset << endl;
 		return;
 	}
 
-	vector<ParagraphList::iterator> pits;
-	vector<ParagraphList const *>   plists;
-	vector<LyXText *>               texts;
-/*
-	pit.getPits(pits, plists, texts);
-
-	cursor.data_.resize(pits.size());
-	for (size_t i = 0, n = pits.size(); i != n; ++i) {
-		cursor.data_[i].text_ = texts[i];
-		cursor.data_[i].pit_  = pits[i];
-		//cursor.data_[i].pos_ = texts[i]->cursor.pos();
-		cursor.data_[i].pos_ = 0;
-		lyxerr << " text: " << cursor.data_[i].text_
-		       << " pit: " << cursor.data_[i].pit_->id()
+	pit.asCursor(cursor);
+	for (size_t i = 0, n = cursor.data_.size(); i != n; ++i) {
+		lyxerr << " inset: " << cursor.data_[i].inset_
+		       << " idx: " << cursor.data_[i].idx_
+		       << " text: " << cursor.data_[i].text_
+		       << " par: " << cursor.data_[i].par_
 		       << " pos: " << cursor.data_[i].pos_
-		       << std::endl;
+		       << endl;
 	}
-*/
 }

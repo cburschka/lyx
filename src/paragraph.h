@@ -71,8 +71,6 @@ public:
 
 	///
 	int id() const;
-	///
-	void id(int i);
 
 	///
 	Language const * getParLanguage(BufferParams const &) const;

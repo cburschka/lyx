@@ -18,8 +18,8 @@
 
 #include <cstddef>
 
-namespace lyx
-{
+namespace lyx {
+
 	/// a type for positions used in paragraphs
 	// needs to be signed for a while to hold the special value -1 that is
 	// used there...
@@ -88,6 +88,6 @@ namespace lyx
 		NEXT_WORD
 	};
 
-}
+} // namespace lyx
 
 #endif // LYX_TYPES_H

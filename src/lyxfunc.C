@@ -447,11 +447,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				disable = true;
 			}
 		} else {
-			static InsetTabular inset(*owner->buffer(), 1, 1);
-			FuncStatus ret;
-
+			static InsetTabular inset(*buf, 1, 1);
 			disable = true;
-			ret = inset.getStatus(ev.argument);
+			FuncStatus ret = inset.getStatus(ev.argument);
 			if (ret.onoff(true) || ret.onoff(false))
 				flag.setOnOff(false);
 		}
@@ -474,9 +472,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = buf->isUnnamed() || buf->isClean();
 		break;
 	case LFUN_BOOKMARK_GOTO:
-		disable =  !view()->
+		disable = !view()->
 			isSavedPosition(strToUnsignedInt(ev.argument));
 		break;
+
 	case LFUN_MERGE_CHANGES:
 	case LFUN_ACCEPT_CHANGE:
 	case LFUN_REJECT_CHANGE:
@@ -484,6 +483,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_REJECT_ALL_CHANGES:
 		disable = !buf->params().tracking_changes;
 		break;
+
 	case LFUN_INSET_TOGGLE: {
 		LyXText * lt = view()->getLyXText();
 		disable = !(isEditableInset(lt->getInset())
@@ -710,19 +710,18 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			code = InsetOld::SPACE_CODE;
 		break;
 	case LFUN_INSET_DIALOG_SHOW: {
-			LyXText * lt = view()->getLyXText();
-			InsetOld * inset = lt->getInset();
-			disable = !inset;
-			if (!disable) {
-				code = inset->lyxCode();
-				if (!(code == InsetOld::INCLUDE_CODE
-					|| code == InsetOld::BIBTEX_CODE
-					|| code == InsetOld::FLOAT_LIST_CODE
-					|| code == InsetOld::TOC_CODE))
-					disable = true;
-			}
+		InsetOld * inset = view()->getLyXText()->getInset();
+		disable = !inset;
+		if (!disable) {
+			code = inset->lyxCode();
+			if (!(code == InsetOld::INCLUDE_CODE
+				|| code == InsetOld::BIBTEX_CODE
+				|| code == InsetOld::FLOAT_LIST_CODE
+				|| code == InsetOld::TOC_CODE))
+				disable = true;
 		}
 		break;
+	}
 	default:
 		break;
 	}
@@ -882,7 +881,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	if (view()->available())
 		view()->hideCursor();
 
-#if 0
+#if 1
 	{
 		Cursor cursor;
 		buildCursor(cursor, *view());
@@ -890,6 +889,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			lyxerr << "dispatched by Cursor::dispatch()\n";
 			goto exit_with_message;
 		}
+		lyxerr << "### NOT DISPATCHED BY Cursor::dispatch() ###\n";
 	}
 #endif
 
@@ -905,10 +905,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			int dummy_y;
 			inset->getCursorPos(view(), inset_x, dummy_y);
 #endif
-			if (action == LFUN_UNKNOWN_ACTION
-			    && argument.empty()) {
+			if (action == LFUN_UNKNOWN_ACTION && argument.empty())
 				argument = encoded_last_key;
-			}
 
 			// the insets can't try to handle this,
 			// a table cell in the dummy position will
@@ -1198,8 +1196,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		QuitLyX();
 		break;
 
-	case LFUN_TOCVIEW:
-	{
+	case LFUN_TOCVIEW: {
 		InsetCommandParams p("tableofcontents");
 		string const data = InsetCommandMailer::params2string("toc", p);
 		owner->getDialogs().show("toc", data, 0);
@@ -1246,8 +1243,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 //#warning Find another implementation here (or another lyxfunc)!
 #endif
 #endif
-	case LFUN_HELP_OPEN:
-	{
+
+	case LFUN_HELP_OPEN: {
 		string const arg = argument;
 		if (arg.empty()) {
 			setErrorMessage(N_("Missing argument"));

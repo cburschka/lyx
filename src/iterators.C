@@ -13,15 +13,12 @@
 
 #include "iterators.h"
 #include "paragraph.h"
-#include "debug.h"
+#include "cursor.h"
 
 #include "insets/inset.h"
 
 #include <boost/next_prior.hpp>
 #include <boost/optional.hpp>
-
-// it's conceptionally a stack, but undo needs random access...
-//#include <stack>
 
 using boost::next;
 using boost::optional;
@@ -175,6 +172,22 @@ int ParIterator::index() const
 		return 0;
 
 	return *(pimpl_->positions[pimpl_->positions.size() - 2].index);
+}
+
+
+void ParIterator::asCursor(Cursor & cursor) const
+{
+	cursor.data_.clear();
+	for (size_t i = 1, n = size(); i < n; ++i) {
+		ParPosition const & pos = pimpl_->positions[i - 1];
+		CursorItem item;
+		item.inset_ = (*pos.it)->inset;
+		item.idx_   = (*pos.index);
+		item.text_  = (*pos.it)->inset->getText(*pos.index);
+		item.par_   = 0;
+		item.pos_   = 0;
+		cursor.data_.push_back(item);
+	}
 }
 
 
