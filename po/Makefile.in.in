@@ -237,6 +237,7 @@ $(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 	             gsub(/&amp;/, "\\&", line); \
 	             gsub(/&lt;/, "<", line); \
 	             gsub(/&gt;/, ">", line); \
+		     gsub(/\"/, "\\\"", line); \
 		     if (length(line) > 0) \
                              printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
 		     FILENAME, FNR, line); \
