@@ -39,7 +39,7 @@ libqt2_la_OBJADD = \
 	../xforms/FormBibitem.lo \
 	../xforms/FormBibtex.lo \
 	../xforms/FormBrowser.lo \
-	../xforms/FormDocument.lo \
+	../xforms/FormDocument.lo	\
 	../xforms/FormError.lo \
 	../xforms/FormExternal.lo \
 	../xforms/FormGraphics.lo \

@@ -1,10 +1,10 @@
 <!DOCTYPE UI><UI>
-<class>FormDocumentDialogBase</class>
+<class>FormDocumentDialog</class>
 <widget>
     <class>QDialog</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>FormDocumentDialogBase</cstring>
+        <cstring>FormDocumentDialog</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
@@ -90,7 +90,7 @@
                                         <class>QLineEdit</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>extraOptionsED</cstring>
+                                            <cstring>docExtraED</cstring>
                                         </property>
                                     </widget>
                                     <widget row="2"  column="0" >
@@ -187,7 +187,7 @@
                                         </item>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>pagestyleCO</cstring>
+                                            <cstring>docPagestyleCO</cstring>
                                         </property>
                                     </widget>
                                     <widget row="6"  column="0" >
@@ -278,14 +278,14 @@
                                                 </item>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>defaultSkipCO</cstring>
+                                                    <cstring>docSkipCO</cstring>
                                                 </property>
                                             </widget>
                                             <widget>
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>defaultSkipED</cstring>
+                                                    <cstring>docSkipED</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -333,14 +333,14 @@
                                                 </item>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>spacingCO</cstring>
+                                                    <cstring>docSpacingCO</cstring>
                                                 </property>
                                             </widget>
                                             <widget>
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>spacingED</cstring>
+                                                    <cstring>docSpacingED</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -349,14 +349,14 @@
                                         <class>QComboBox</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>fontsCO</cstring>
+                                            <cstring>docFontsCO</cstring>
                                         </property>
                                     </widget>
                                     <widget row="0"  column="1" >
                                         <class>QComboBox</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>classesCO</cstring>
+                                            <cstring>docClassCO</cstring>
                                         </property>
                                     </widget>
                                     <widget row="3"  column="1" >
@@ -387,7 +387,7 @@
                                         </item>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>fontSizeCO</cstring>
+                                            <cstring>docFontSizeCO</cstring>
                                         </property>
                                     </widget>
                                 </grid>
@@ -404,13 +404,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -460,7 +453,7 @@
                                         <class>QRadioButton</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>oneSideRB</cstring>
+                                            <cstring>docSidesOneRB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -471,7 +464,7 @@
                                         <class>QRadioButton</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>twoSidesRB</cstring>
+                                            <cstring>docSidesTwoRB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -503,7 +496,7 @@
                                         <class>QRadioButton</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>oneColumnRB</cstring>
+                                            <cstring>docColumnsOneRB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -514,7 +507,7 @@
                                         <class>QRadioButton</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>twoColumnsRB</cstring>
+                                            <cstring>docColumnsTwoRB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -546,7 +539,7 @@
                                         <class>QRadioButton</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>indentRB</cstring>
+                                            <cstring>docIndentRB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -557,7 +550,7 @@
                                         <class>QRadioButton</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>skipRB</cstring>
+                                            <cstring>docSkipRB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -578,13 +571,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -629,13 +615,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -739,7 +718,7 @@
                                 </item>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>papersizeCO</cstring>
+                                    <cstring>papersize2CO</cstring>
                                 </property>
                             </widget>
                             <spacer>
@@ -754,13 +733,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -813,7 +785,7 @@
                                 </item>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>specialCO</cstring>
+                                    <cstring>paperPackageCO</cstring>
                                 </property>
                             </widget>
                         </hbox>
@@ -830,13 +802,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -881,19 +846,12 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                             <widget>
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox1</cstring>
+                                    <cstring>useGeometryCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -920,13 +878,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                         </hbox>
                     </widget>
@@ -942,13 +893,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -1069,21 +1013,21 @@
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>marginLeftED</cstring>
+                                                    <cstring>leftMarginED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="1"  column="1" >
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>marginBottomED</cstring>
+                                                    <cstring>bottomMarginED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="3"  column="1" >
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>marginRightED</cstring>
+                                                    <cstring>rightMarginED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="1"  column="0" >
@@ -1105,7 +1049,7 @@
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>marginTopED</cstring>
+                                                    <cstring>topMarginED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="2"  column="0" >
@@ -1245,21 +1189,21 @@
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>headheightED</cstring>
+                                                    <cstring>headHeightED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="1"  column="1" >
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>headsepED</cstring>
+                                                    <cstring>headSepED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="2"  column="1" >
                                                 <class>QLineEdit</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>footskipED</cstring>
+                                                    <cstring>footSkipED</cstring>
                                                 </property>
                                             </widget>
                                             <widget row="2"  column="0" >
@@ -1333,13 +1277,6 @@
                                 <height>20</height>
                             </size>
                         </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
-                        </property>
                     </spacer>
                 </vbox>
             </widget>
@@ -1382,13 +1319,6 @@
                                 <height>20</height>
                             </size>
                         </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
-                        </property>
                     </spacer>
                     <widget>
                         <class>QLayoutWidget</class>
@@ -1417,13 +1347,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -1484,13 +1407,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -1594,7 +1510,7 @@
                                         </item>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>encodingCO</cstring>
+                                            <cstring>inputEncCO</cstring>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -1611,13 +1527,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -1716,7 +1625,7 @@
                                                 </item>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>quoteStyleTypeCO</cstring>
+                                                    <cstring>quotesLanguageCO</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -1740,7 +1649,7 @@
                                                 <class>QRadioButton</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>quoteStyleSingleRB</cstring>
+                                                    <cstring>singleRB</cstring>
                                                 </property>
                                                 <property stdset="1">
                                                     <name>text</name>
@@ -1751,7 +1660,7 @@
                                                 <class>QRadioButton</class>
                                                 <property stdset="1">
                                                     <name>name</name>
-                                                    <cstring>quoteStyleDoubleRB</cstring>
+                                                    <cstring>doubleRB</cstring>
                                                 </property>
                                                 <property stdset="1">
                                                     <name>text</name>
@@ -1782,13 +1691,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                         </vbox>
                     </widget>
@@ -1804,13 +1706,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -1861,13 +1756,6 @@
                                 <height>20</height>
                             </size>
                         </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
-                        </property>
                     </spacer>
                     <widget>
                         <class>QLayoutWidget</class>
@@ -1896,13 +1784,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -1971,13 +1852,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                             <widget>
                                 <class>QLayoutWidget</class>
@@ -2013,15 +1887,15 @@
                                         <class>QSpinBox</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>sectionNumberDepthSB</cstring>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>minValue</name>
-                                            <number>-2</number>
+                                            <cstring>secNumDepthSB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>maxValue</name>
                                             <number>5</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>minValue</name>
+                                            <number>-2</number>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -2038,13 +1912,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -2091,12 +1958,12 @@
                                             <cstring>tocDepthSB</cstring>
                                         </property>
                                         <property stdset="1">
-                                            <name>minValue</name>
-                                            <number>-1</number>
-                                        </property>
-                                        <property stdset="1">
                                             <name>maxValue</name>
                                             <number>5</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>minValue</name>
+                                            <number>-1</number>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -2113,13 +1980,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -2163,7 +2023,7 @@
                                         <class>QComboBox</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>psDriverCO</cstring>
+                                            <cstring>postscriptDriverCO</cstring>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -2180,13 +2040,6 @@
                                 <property stdset="1">
                                     <name>sizeType</name>
                                     <enum>Expanding</enum>
-                                </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
                                 </property>
                                 <property>
                                     <name>sizeHint</name>
@@ -2231,19 +2084,12 @@
                                                 <height>20</height>
                                             </size>
                                         </property>
-                                        <property>
-                                            <name>sizeHint</name>
-                                            <size>
-                                                <width>20</width>
-                                                <height>20</height>
-                                            </size>
-                                        </property>
                                     </spacer>
                                     <widget>
                                         <class>QCheckBox</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>amsMathCB</cstring>
+                                            <cstring>useAmsMathCB</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>text</name>
@@ -2262,13 +2108,6 @@
                                         <property stdset="1">
                                             <name>sizeType</name>
                                             <enum>Expanding</enum>
-                                        </property>
-                                        <property>
-                                            <name>sizeHint</name>
-                                            <size>
-                                                <width>20</width>
-                                                <height>20</height>
-                                            </size>
                                         </property>
                                         <property>
                                             <name>sizeHint</name>
@@ -2300,13 +2139,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                         </vbox>
                     </widget>
@@ -2322,13 +2154,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -2401,13 +2226,6 @@
                                         <property stdset="1">
                                             <name>sizeType</name>
                                             <enum>Expanding</enum>
-                                        </property>
-                                        <property>
-                                            <name>sizeHint</name>
-                                            <size>
-                                                <width>20</width>
-                                                <height>20</height>
-                                            </size>
                                         </property>
                                         <property>
                                             <name>sizeHint</name>
@@ -2542,13 +2360,6 @@
                                                 <height>20</height>
                                             </size>
                                         </property>
-                                        <property>
-                                            <name>sizeHint</name>
-                                            <size>
-                                                <width>20</width>
-                                                <height>20</height>
-                                            </size>
-                                        </property>
                                     </spacer>
                                     <widget>
                                         <class>QButtonGroup</class>
@@ -2587,6 +2398,10 @@
                                                     <name>toggleButton</name>
                                                     <bool>true</bool>
                                                 </property>
+                                                <property stdset="1">
+                                                    <name>toggleButton</name>
+                                                    <bool>true</bool>
+                                                </property>
                                             </widget>
                                             <widget>
                                                 <class>QToolButton</class>
@@ -2597,6 +2412,10 @@
                                                 <property stdset="1">
                                                     <name>text</name>
                                                     <string>&amp;2</string>
+                                                </property>
+                                                <property stdset="1">
+                                                    <name>toggleButton</name>
+                                                    <bool>true</bool>
                                                 </property>
                                                 <property stdset="1">
                                                     <name>toggleButton</name>
@@ -2617,6 +2436,10 @@
                                                     <name>toggleButton</name>
                                                     <bool>true</bool>
                                                 </property>
+                                                <property stdset="1">
+                                                    <name>toggleButton</name>
+                                                    <bool>true</bool>
+                                                </property>
                                             </widget>
                                             <widget>
                                                 <class>QToolButton</class>
@@ -2627,6 +2450,10 @@
                                                 <property stdset="1">
                                                     <name>text</name>
                                                     <string>&amp;4</string>
+                                                </property>
+                                                <property stdset="1">
+                                                    <name>toggleButton</name>
+                                                    <bool>true</bool>
                                                 </property>
                                                 <property stdset="1">
                                                     <name>toggleButton</name>
@@ -2651,13 +2478,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -2702,13 +2522,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                             <widget>
                                 <class>QButtonGroup</class>
@@ -2717,12 +2530,12 @@
                                     <cstring>bulletTypeBG</cstring>
                                 </property>
                                 <property stdset="1">
-                                    <name>title</name>
-                                    <string></string>
-                                </property>
-                                <property stdset="1">
                                     <name>frameShape</name>
                                     <enum>NoFrame</enum>
+                                </property>
+                                <property stdset="1">
+                                    <name>title</name>
+                                    <string></string>
                                 </property>
                                 <property stdset="1">
                                     <name>radioButtonExclusive</name>
@@ -2735,15 +2548,6 @@
                                     <property>
                                         <name>name</name>
                                         <cstring>Spacer26</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>77</x>
-                                            <y>12</y>
-                                            <width>20</width>
-                                            <height>20</height>
-                                        </rect>
                                     </property>
                                     <property stdset="1">
                                         <name>orientation</name>
@@ -2760,138 +2564,7 @@
                                             <height>20</height>
                                         </size>
                                     </property>
-                                    <property>
-                                        <name>sizeHint</name>
-                                        <size>
-                                            <width>20</width>
-                                            <height>20</height>
-                                        </size>
-                                    </property>
                                 </spacer>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet01PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>121</x>
-                                            <y>11</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet02PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>144</x>
-                                            <y>11</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet03PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>167</x>
-                                            <y>11</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet04PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>190</x>
-                                            <y>11</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
                                 <widget>
                                     <class>QToolButton</class>
                                     <property stdset="1">
@@ -2908,15 +2581,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -2939,15 +2616,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -2970,15 +2651,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3001,15 +2686,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3032,15 +2721,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3063,15 +2756,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3094,15 +2791,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3125,15 +2826,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3156,15 +2861,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3187,15 +2896,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3218,15 +2931,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3249,15 +2966,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3280,15 +3001,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3311,15 +3036,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3342,46 +3071,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
                                         <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet33PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>167</x>
-                                            <y>77</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3404,15 +3106,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3435,15 +3141,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3466,15 +3176,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3497,15 +3211,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3528,15 +3246,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3559,15 +3281,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3590,15 +3316,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3621,15 +3351,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3652,15 +3386,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3683,15 +3421,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3714,15 +3456,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3745,10 +3491,6 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
@@ -3756,114 +3498,16 @@
                                         </sizepolicy>
                                     </property>
                                     <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet05PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>213</x>
-                                            <y>11</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
                                         <name>text</name>
                                         <string></string>
                                     </property>
                                     <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
                                         <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bullet00PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>98</x>
-                                            <y>11</y>
-                                            <width>23</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>0</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bulletDing3PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>11</x>
-                                            <y>99</y>
-                                            <width>66</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string>Di&amp;ng 3</string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>toggleButton</name>
-                                        <bool>true</bool>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QToolButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>bulletDing4PB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>geometry</name>
-                                        <rect>
-                                            <x>11</x>
-                                            <y>121</y>
-                                            <width>66</width>
-                                            <height>22</height>
-                                        </rect>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string>Din&amp;g 4</string>
                                     </property>
                                 </widget>
                                 <widget>
@@ -3882,15 +3526,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3913,15 +3561,19 @@
                                         </rect>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
                                         <name>sizePolicy</name>
                                         <sizepolicy>
                                             <hsizetype>0</hsizetype>
                                             <vsizetype>0</vsizetype>
                                         </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -3932,7 +3584,7 @@
                                     <class>QToolButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>bulletStandardPB</cstring>
+                                        <cstring>bulletPanelStandardPB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>geometry</name>
@@ -3951,12 +3603,16 @@
                                         <name>toggleButton</name>
                                         <bool>true</bool>
                                     </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
                                 </widget>
                                 <widget>
                                     <class>QToolButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>bulletMathsPB</cstring>
+                                        <cstring>bulletPanelMathsPB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>geometry</name>
@@ -3975,12 +3631,16 @@
                                         <name>toggleButton</name>
                                         <bool>true</bool>
                                     </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
                                 </widget>
                                 <widget>
                                     <class>QToolButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>bulletDing1PB</cstring>
+                                        <cstring>bulletPanelDing1PB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>geometry</name>
@@ -3999,12 +3659,16 @@
                                         <name>toggleButton</name>
                                         <bool>true</bool>
                                     </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
                                 </widget>
                                 <widget>
                                     <class>QToolButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>bulletDing2PB</cstring>
+                                        <cstring>bulletPanelDing2PB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>geometry</name>
@@ -4018,6 +3682,303 @@
                                     <property stdset="1">
                                         <name>text</name>
                                         <string>D&amp;ing 2</string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bulletPanelDing3PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>11</x>
+                                            <y>99</y>
+                                            <width>66</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Di&amp;ng 3</string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bulletPanelDing4PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>11</x>
+                                            <y>121</y>
+                                            <width>66</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Din&amp;g 4</string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet33PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>167</x>
+                                            <y>77</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet00PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>98</x>
+                                            <y>11</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet01PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>121</x>
+                                            <y>11</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet02PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>144</x>
+                                            <y>11</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet03PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>167</x>
+                                            <y>11</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet04PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>190</x>
+                                            <y>11</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QToolButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet05PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>geometry</name>
+                                        <rect>
+                                            <x>213</x>
+                                            <y>11</y>
+                                            <width>23</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>toggleButton</name>
+                                        <bool>true</bool>
                                     </property>
                                     <property stdset="1">
                                         <name>toggleButton</name>
@@ -4045,13 +4006,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                         </hbox>
                     </widget>
@@ -4067,13 +4021,6 @@
                         <property stdset="1">
                             <name>sizeType</name>
                             <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
                         </property>
                         <property>
                             <name>sizeHint</name>
@@ -4118,13 +4065,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                             <widget>
                                 <class>QLayoutWidget</class>
@@ -4160,7 +4100,7 @@
                                         <class>QLineEdit</class>
                                         <property stdset="1">
                                             <name>name</name>
-                                            <cstring>latexED</cstring>
+                                            <cstring>bulletLatexED</cstring>
                                         </property>
                                         <property stdset="1">
                                             <name>maxLength</name>
@@ -4189,13 +4129,6 @@
                                         <height>20</height>
                                     </size>
                                 </property>
-                                <property>
-                                    <name>sizeHint</name>
-                                    <size>
-                                        <width>20</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
                             </spacer>
                         </hbox>
                     </widget>
@@ -4207,16 +4140,6 @@
             <property stdset="1">
                 <name>name</name>
                 <cstring>warningLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string></string>
-            </property>
-            <property stdset="1">
-                <name>font</name>
-                <font>
-                    <bold>1</bold>
-                </font>
             </property>
             <property stdset="1">
                 <name>palette</name>
@@ -4440,6 +4363,16 @@
                 </palette>
             </property>
             <property stdset="1">
+                <name>font</name>
+                <font>
+                    <bold>1</bold>
+                </font>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string></string>
+            </property>
+            <property stdset="1">
                 <name>alignment</name>
                 <set>AlignCenter</set>
             </property>
@@ -4474,13 +4407,6 @@
                     <property stdset="1">
                         <name>sizeType</name>
                         <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
                     </property>
                     <property>
                         <name>sizeHint</name>
@@ -4535,7 +4461,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Close</string>
+                        <string>Cancel</string>
                     </property>
                 </widget>
             </hbox>
@@ -4546,307 +4472,307 @@
     <connection>
         <sender>okPB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotOK()</slot>
     </connection>
     <connection>
         <sender>restorePB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotRestore()</slot>
     </connection>
     <connection>
-        <sender>specialCO</sender>
+        <sender>paperPackageCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotSpecialPaperPackage(int)</slot>
     </connection>
     <connection>
         <sender>orientationBG</sender>
         <signal>clicked(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotOrientation(int)</slot>
     </connection>
     <connection>
-        <sender>papersizeCO</sender>
+        <sender>papersize2CO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotPapersize(int)</slot>
     </connection>
     <connection>
-        <sender>CheckBox1</sender>
+        <sender>useGeometryCB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotUseGeometryPackage(bool)</slot>
     </connection>
     <connection>
         <sender>customWidthED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotWidth(const QString&amp;)</slot>
     </connection>
     <connection>
         <sender>customHeightED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotHeight(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>marginTopED</sender>
+        <sender>topMarginED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotMarginTop(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>marginBottomED</sender>
+        <sender>bottomMarginED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotMarginBottom(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>marginLeftED</sender>
+        <sender>leftMarginED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotMarginLeft(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>marginRightED</sender>
+        <sender>rightMarginED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotMarginRight(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>headheightED</sender>
+        <sender>headHeightED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotHeadheight(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>headsepED</sender>
+        <sender>headSepED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotHeadsep(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>footskipED</sender>
+        <sender>footSkipED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotFootskip(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>classesCO</sender>
+        <sender>docClassCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotClass(int)</slot>
     </connection>
     <connection>
-        <sender>pagestyleCO</sender>
+        <sender>docPagestyleCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotPageStyle(int)</slot>
     </connection>
     <connection>
-        <sender>fontsCO</sender>
+        <sender>docFontsCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotFont(int)</slot>
     </connection>
     <connection>
-        <sender>fontSizeCO</sender>
+        <sender>docFontSizeCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotFontSize(int)</slot>
     </connection>
     <connection>
-        <sender>extraOptionsED</sender>
+        <sender>docExtraED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotExtraOptions(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>defaultSkipCO</sender>
+        <sender>docSkipCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotDefaultSkip(int)</slot>
     </connection>
     <connection>
-        <sender>defaultSkipED</sender>
+        <sender>docSkipED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotDefaultSkip(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>spacingCO</sender>
+        <sender>docSpacingCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotSpacing(int)</slot>
     </connection>
     <connection>
-        <sender>spacingED</sender>
+        <sender>docSpacingED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotSpacing(const QString&amp;)</slot>
     </connection>
     <connection>
         <sender>sidesBG</sender>
         <signal>clicked(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotSides(int)</slot>
     </connection>
     <connection>
         <sender>columnsBG</sender>
         <signal>clicked(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotColumns(int)</slot>
     </connection>
     <connection>
         <sender>separationBG</sender>
         <signal>clicked(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotSeparation(int)</slot>
     </connection>
     <connection>
         <sender>languageCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotLanguage(int)</slot>
     </connection>
     <connection>
-        <sender>encodingCO</sender>
+        <sender>inputEncCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotEncoding(int)</slot>
     </connection>
     <connection>
-        <sender>quoteStyleTypeCO</sender>
+        <sender>quotesLanguageCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotQuoteStyle(int)</slot>
     </connection>
     <connection>
         <sender>quoteStyleBG</sender>
         <signal>clicked(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotQuoteStyle(int)</slot>
     </connection>
     <connection>
         <sender>floatPlacementED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotFloatPlacement(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>sectionNumberDepthSB</sender>
+        <sender>secNumDepthSB</sender>
         <signal>valueChanged(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotSectionNumberDepth(int)</slot>
     </connection>
     <connection>
         <sender>tocDepthSB</sender>
         <signal>valueChanged(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotTOCDepth(int)</slot>
     </connection>
     <connection>
-        <sender>psDriverCO</sender>
+        <sender>postscriptDriverCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotPSDriver(int)</slot>
     </connection>
     <connection>
-        <sender>amsMathCB</sender>
+        <sender>useAmsMathCB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotAMSMath(bool)</slot>
     </connection>
     <connection>
         <sender>applyPB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotApply()</slot>
     </connection>
     <connection>
         <sender>cancelPB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotClose()</slot>
     </connection>
     <connection>
-        <sender>latexED</sender>
+        <sender>bulletLatexED</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletLaTeX(const QString&amp;)</slot>
     </connection>
     <connection>
-        <sender>bulletStandardPB</sender>
+        <sender>bulletPanelStandardPB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletStandard()</slot>
     </connection>
     <connection>
-        <sender>bulletMathsPB</sender>
+        <sender>bulletPanelMathsPB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletMaths()</slot>
     </connection>
     <connection>
-        <sender>bulletDing1PB</sender>
+        <sender>bulletPanelDing1PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDing1()</slot>
     </connection>
     <connection>
-        <sender>bulletDing2PB</sender>
+        <sender>bulletPanelDing2PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDing2()</slot>
     </connection>
     <connection>
-        <sender>bulletDing3PB</sender>
+        <sender>bulletPanelDing3PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDing3()</slot>
     </connection>
     <connection>
-        <sender>bulletDing4PB</sender>
+        <sender>bulletPanelDing4PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDing4()</slot>
     </connection>
     <connection>
         <sender>bulletTypeBG</sender>
         <signal>clicked(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletSymbol(int)</slot>
     </connection>
     <connection>
         <sender>bulletSizeCO</sender>
         <signal>activated(int)</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletSize(int)</slot>
     </connection>
     <connection>
         <sender>bulletDepth1PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDepth1()</slot>
     </connection>
     <connection>
         <sender>bulletDepth2PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDepth2()</slot>
     </connection>
     <connection>
         <sender>bulletDepth3PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDing3()</slot>
     </connection>
     <connection>
         <sender>bulletDepth4PB</sender>
         <signal>clicked()</signal>
-        <receiver>FormDocumentDialogBase</receiver>
+        <receiver>FormDocumentDialog</receiver>
         <slot>slotBulletDepth4()</slot>
     </connection>
     <slot access="public">slotAMSMath(bool)</slot>
@@ -4902,47 +4828,47 @@
     <slot access="public">slotWidth(const QString&amp;)</slot>
 </connections>
 <tabstops>
-    <tabstop>classesCO</tabstop>
-    <tabstop>pagestyleCO</tabstop>
-    <tabstop>fontsCO</tabstop>
-    <tabstop>fontSizeCO</tabstop>
-    <tabstop>extraOptionsED</tabstop>
-    <tabstop>defaultSkipCO</tabstop>
-    <tabstop>defaultSkipED</tabstop>
-    <tabstop>spacingCO</tabstop>
-    <tabstop>spacingED</tabstop>
-    <tabstop>oneSideRB</tabstop>
-    <tabstop>twoSidesRB</tabstop>
-    <tabstop>oneColumnRB</tabstop>
-    <tabstop>twoColumnsRB</tabstop>
-    <tabstop>indentRB</tabstop>
-    <tabstop>skipRB</tabstop>
-    <tabstop>papersizeCO</tabstop>
-    <tabstop>specialCO</tabstop>
-    <tabstop>CheckBox1</tabstop>
+    <tabstop>docClassCO</tabstop>
+    <tabstop>docPagestyleCO</tabstop>
+    <tabstop>docFontsCO</tabstop>
+    <tabstop>docFontSizeCO</tabstop>
+    <tabstop>docExtraED</tabstop>
+    <tabstop>docSkipCO</tabstop>
+    <tabstop>docSkipED</tabstop>
+    <tabstop>docSpacingCO</tabstop>
+    <tabstop>docSpacingED</tabstop>
+    <tabstop>docSidesOneRB</tabstop>
+    <tabstop>docSidesTwoRB</tabstop>
+    <tabstop>docColumnsOneRB</tabstop>
+    <tabstop>docColumnsTwoRB</tabstop>
+    <tabstop>docIndentRB</tabstop>
+    <tabstop>docSkipRB</tabstop>
+    <tabstop>papersize2CO</tabstop>
+    <tabstop>paperPackageCO</tabstop>
+    <tabstop>useGeometryCB</tabstop>
     <tabstop>portraitRB</tabstop>
     <tabstop>landscapeRB</tabstop>
-    <tabstop>marginTopED</tabstop>
-    <tabstop>marginBottomED</tabstop>
-    <tabstop>marginLeftED</tabstop>
-    <tabstop>marginRightED</tabstop>
+    <tabstop>topMarginED</tabstop>
+    <tabstop>bottomMarginED</tabstop>
+    <tabstop>leftMarginED</tabstop>
+    <tabstop>rightMarginED</tabstop>
     <tabstop>customWidthED</tabstop>
     <tabstop>customHeightED</tabstop>
-    <tabstop>headheightED</tabstop>
-    <tabstop>headsepED</tabstop>
-    <tabstop>footskipED</tabstop>
+    <tabstop>headHeightED</tabstop>
+    <tabstop>headSepED</tabstop>
+    <tabstop>footSkipED</tabstop>
     <tabstop>languageCO</tabstop>
-    <tabstop>encodingCO</tabstop>
-    <tabstop>quoteStyleTypeCO</tabstop>
-    <tabstop>quoteStyleSingleRB</tabstop>
-    <tabstop>quoteStyleDoubleRB</tabstop>
+    <tabstop>inputEncCO</tabstop>
+    <tabstop>quotesLanguageCO</tabstop>
+    <tabstop>singleRB</tabstop>
+    <tabstop>doubleRB</tabstop>
     <tabstop>floatPlacementED</tabstop>
-    <tabstop>sectionNumberDepthSB</tabstop>
+    <tabstop>secNumDepthSB</tabstop>
     <tabstop>tocDepthSB</tabstop>
-    <tabstop>psDriverCO</tabstop>
-    <tabstop>amsMathCB</tabstop>
+    <tabstop>postscriptDriverCO</tabstop>
+    <tabstop>useAmsMathCB</tabstop>
     <tabstop>bulletSizeCO</tabstop>
-    <tabstop>latexED</tabstop>
+    <tabstop>bulletLatexED</tabstop>
     <tabstop>restorePB</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>applyPB</tabstop>

@@ -1,165 +1,176 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright (C) 2000 The LyX Team.
  *
- *           @author Jürgen Vigna, Kalle Dalheimer
+ *           @author Kalle Dalheimer
  *
  *======================================================*/
 
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-#include "FormBase.h"
 #include <vector>
+#include <boost/smart_ptr.hpp>
+
+#include "Qt2Base.h"
+#include "qt2BC.h"
+#undef emit
 
 #ifdef __GNUG_
 #pragma interface
 #endif
 
+class ControlDocument;
+class FormDocumentDialogImpl;
+class BufferParams;
 class LyXView;
 class Dialogs;
-class Combox;
-class BufferParams;
-
-class QWidget;
-class FormDocumentDialog;
-
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
-class QComboBox;
-
-#include <qpixmap.h>
 
 /** This class provides an Qt2 implementation of the FormDocument Popup.
     The table-layout-form here changes values for latex-tabulars
+    @author Kalle Dalheimer
  */
-class FormDocument : public DialogBase {
+class FormDocument
+  : public Qt2CB<ControlDocument, Qt2DB<FormDocumentDialogImpl> >
+{
 public:
-    /// #FormDocument x(Communicator ..., Popups ...);#
-    FormDocument(LyXView *, Dialogs *);
-    ///
-    ~FormDocument();
-    ///
-    enum EnumPopupStatus {
-	///
-        POPUP_UNMODIFIED,
-	///
-        POPUP_MODIFIED,
-	///
-        POPUP_READONLY
-    };
-
+	/// #FormDocument x(Communicator ..., Popups ...);#
+	FormDocument(LyXView *, Dialogs *);
 private:
-  /// Show the dialog.
-   void show();
-   /// Hide the dialog.
-   void hide();
+	///
+	enum State {
+		///
+		INPUT,
+		///
+		CHECKCHOICECLASS,
+		///
+		CHOICEBULLETSIZE,
+		///
+		INPUTBULLETLATEX,
+		///
+		BULLETDEPTH1,
+		///
+		BULLETDEPTH2,
+		///
+		BULLETDEPTH3,
+		///
+		BULLETDEPTH4,
+		///
+		BULLETPANEL1,
+		///
+		BULLETPANEL2,
+		///
+		BULLETPANEL3,
+		///
+		BULLETPANEL4,
+		///
+		BULLETPANEL5,
+		///
+		BULLETPANEL6,
+		///
+		BULLETBMTABLE
+	};
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual qt2BC & bc();
+	/// Build the dialog
+	virtual void build();
+// 	/// Filter the inputs
+// 	virtual bool input( FL_OBJECT *, long );
+	/// Update the popup.
+	virtual void update();
+	/// Apply from popup
+	virtual void apply();
+	/// Cancel from popup
+	virtual void cancel();
 
-    void checkMarginValues();
-    ///
-    void checkReadOnly();
-    ///
-    void UpdateLayoutDocument(BufferParams const & params);
+// 	///
+// 	virtual QDialog* form() const;
 
-public:
-    ///
-     void checkChoiceClass(QComboBox* cb);
-//     ///
-     bool checkDocumentInput(QWidget* w);
-//     ///
-  void bulletDepth( int );
-    /// 
- void choiceBulletSize();
-//     ///
-  void inputBulletLaTeX();
-//     ///
-  void setBulletPics();
-//     ///
-  void bulletBMTable( int );
+	///
+	bool CheckDocumentInput(QWidget* ob, long);
+	///
+	void ChoiceBulletSize(QWidget* ob, long);
+	///
+	void InputBulletLaTeX(QWidget* ob, long);
+	///
+	void BulletDepth(QWidget* ob, State);
+	///
+	void BulletPanel(QWidget* ob, State);
+	///
+	void BulletBMTable(QWidget* ob, long);
+	///
+	void checkMarginValues();
+	///
+	void checkReadOnly();
+	///
+	void CheckChoiceClass(QWidget* ob, long);
+	///
+	void UpdateLayoutDocument(BufferParams const & params);
 
-    /// Update the popup.
-    void update();
-    ///
-    void paper_update(BufferParams const &);
-    ///
-    void class_update(BufferParams const &);
-    ///
-    void language_update(BufferParams const &);
-    ///
-    void options_update(BufferParams const &);
-    ///
-    void bullets_update(BufferParams const &);
-    /// Apply from popup
-    void apply();
-    ///
-    void paper_apply();
-    ///
-    bool class_apply();
-    ///
-    bool language_apply();
-    ///
-    bool options_apply();
-    ///
-    void bullets_apply();
-    /// Cancel from popup
-    void cancel();
-    /// Build the popup
-    void build();
-    /// Explicitly free the popup.
-    void free();
+	///
+	void paper_update(BufferParams const &);
+	///
+	void class_update(BufferParams const &);
+	///
+	void language_update(BufferParams const &);
+	///
+	void options_update(BufferParams const &);
+	///
+	void bullets_update(BufferParams const &);
 
-//     /// Typedefinitions from the fdesign produced Header file
-//     FD_form_tabbed_document * build_tabbed_document();
-//     ///
-//     FD_form_doc_paper * build_doc_paper();
-//     ///
-//     FD_form_doc_class * build_doc_class();
-//     ///
-//     FD_form_doc_language * build_doc_language();
-//     ///
-//     FD_form_doc_options * build_doc_options();
-//     ///
-//     FD_form_doc_bullet * build_doc_bullet();
+	///
+	void paper_apply();
+	///
+	bool class_apply();
+	///
+	bool language_apply();
+	///
+	bool options_apply();
+	///
+	void bullets_apply();
 
-//     /// Real GUI implementation.
-  FormDocumentDialog* dialog_;
+	/// Fdesign generated methods
+	QDialog* build_tabbed_document();
+	///
+	QDialog* build_doc_paper();
+	///
+	QDialog* build_doc_class();
+	///
+	QDialog* build_doc_language();
+	///
+	QDialog* build_doc_options();
+	///
+	QDialog* build_doc_bullet();
 
-    /// Which LyXView do we belong to?
-    LyXView * lv_;
-    ///
-    Dialogs * d_;
-    /// Update connection.
-    Connection u_;
-    /// Hide connection.
-    Connection h_;
-    /// has form contents changed? Used to control OK/Apply
-    EnumPopupStatus status;
-    ///
-    int ActCell;
-    ///
-    int Confirmed;
-    ///
-    int currentBulletPanel;
-    ///
-    int currentBulletDepth;
-    ///
-
-  QPixmap* standardpix;
-  QPixmap* amssymbpix;
-  QPixmap* psnfss1pix;
-  QPixmap* psnfss2pix;
-  QPixmap* psnfss3pix;
-  QPixmap* psnfss4pix;
-  QPixmap bulletpics[36];
+	/// Real GUI implementation.
+	boost::scoped_ptr<FormDocumentDialogImpl> dialog_;
+	///
+	int ActCell;
+	///
+	int Confirmed;
+	///
+	int current_bullet_panel;
+	///
+	int current_bullet_depth;
+// 	///
+// 	FL_OBJECT * fbullet;
+// 	///
+// 	boost::scoped_ptr<Combox> combo_language;
+// 	///
+// 	boost::scoped_ptr<Combox> combo_doc_class;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, qt2BC> bc_;
 };
+
+
+inline
+qt2BC & FormDocument::bc()
+{
+	return bc_;
+}
 
 #endif

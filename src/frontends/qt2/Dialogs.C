@@ -43,6 +43,7 @@
 #include "BufferView.h"
 
 #include "controllers/ControlCopyright.h"
+#include "GUI.h"
 
 #include "qt2BC.h"
 
@@ -75,7 +76,8 @@ Dialogs::Dialogs(LyXView * lv)
     // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-23
     // add(new FormError(lv, this));
 
-    add(new FormGraphics(lv, this));
+    // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-28
+    //    add(new FormGraphics(lv, this));
     //	add(new FormIndex(lv, this));
     add(new FormParagraph(lv, this));
     add(new FormPreferences(lv, this));
@@ -86,7 +88,7 @@ Dialogs::Dialogs(LyXView * lv)
     add(new FormTabularCreate(lv, this));
     //	add(new FormToc(lv, this));
     //	add(new FormUrl(lv, this));
-    
+
     // reduce the number of connections needed in
     // dialogs by a simple connection here.
     hideAll.connect(hideBufferDependent.slot());

@@ -14,12 +14,12 @@
 #ifndef QT2BASE_H
 #define QT2BASE_H
 
-#include <boost/smart_ptr.hpp>
-
 class QDialog;
 
 #include <qfont.h>
 #include <qobject.h>
+
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
@@ -53,19 +53,19 @@ protected:
 protected slots:
     // dialog closed from WM
     void slotWMHide();
-    
+
     // Apply button clicked
     void slotApply();
-    
+
     // OK button clicked
     void slotOK();
-    
+
     // Cancel button clicked
     void slotCancel();
-    
+
     // Restore button clicked
     void slotRestore();
-    
+
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual QDialog* form() const = 0;

@@ -1,16 +1,16 @@
-#ifndef FORMDOCUMENTDIALOG_H
-#define FORMDOCUMENTDIALOG_H
-#include "FormDocumentDialogBase.h"
+#ifndef FORMDOCUMENTDIALOGIMPL_H
+#define FORMDOCUMENTDIALOGIMPL_H
+#include "FormDocumentDialog.h"
 
 class FormDocument;
 
-class FormDocumentDialog : public FormDocumentDialogBase
+class FormDocumentDialogImpl : public FormDocumentDialog
 { 
     Q_OBJECT
 
 public:
-    FormDocumentDialog( FormDocument* form, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
-    ~FormDocumentDialog();
+    FormDocumentDialogImpl( FormDocument* form, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    ~FormDocumentDialogImpl();
 
 public slots:
       void slotApply();
