@@ -74,7 +74,7 @@ string const & QExternal::helpText()
 {
 	InsetExternal::Params & params = controller().params();
 
-	params.templ = controller().getTemplate(dialog_->externalCO->currentItem() + 1);
+	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
 	return params.templ.helpText;
 }
 
@@ -86,15 +86,5 @@ void QExternal::apply()
 	params.filename = dialog_->fileED->text().latin1();
 	params.parameters = dialog_->paramsED->text().latin1();
 
-	params.templ = controller().getTemplate(dialog_->externalCO->currentItem() + 1);
-}
-
-
-bool QExternal::isValid()
-{
-	bool const valid = !string(dialog_->fileED->text()).empty();
-	dialog_->viewPB->setEnabled(valid);
-	dialog_->editPB->setEnabled(valid);
-	dialog_->updatePB->setEnabled(valid);
-	return valid;
+	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
 }

@@ -1,9 +1,13 @@
 2002-10-31  John Levon  <levon@movementarian.org>
 
-	* qt2/QGraphics.C:
-	* qt2/QGraphicsDialog.C:
-	* qt2/QGraphicsDialog.h:
-	* qt2/ui/QGraphicsDialog.ui: bb unit fixes
+	* QExternal.C: fix crash, valid check
+ 
+2002-10-31  John Levon  <levon@movementarian.org>
+
+	* QGraphics.C:
+	* QGraphicsDialog.C:
+	* QGraphicsDialog.h:
+	* ui/QGraphicsDialog.ui: bb unit fixes
  
 2002-10-30  John Levon  <levon@movementarian.org>
 
