@@ -1218,16 +1218,16 @@ void LyXTabular::read(Buffer const * buf, istream & is,
 		getTokenValue(line, "endlastfoot", lfrow);
 		setHeaderFooterRows(abs(hrow), abs(fhrow), abs(frow), abs(lfrow));
 	} else {
-	   getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
-	   getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
-	   getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
-	   getTokenValue(line, "headTopDL", endhead.topDL);
-	   getTokenValue(line, "headBottomDL", endhead.bottomDL);
-	   getTokenValue(line, "footTopDL", endfoot.topDL);
-	   getTokenValue(line, "footBottomDL", endfoot.bottomDL);
-	   getTokenValue(line, "lastFootTopDL", endlastfoot.topDL);
-	   getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
-	   getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
+		getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
+		getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
+		getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
+		getTokenValue(line, "headTopDL", endhead.topDL);
+		getTokenValue(line, "headBottomDL", endhead.bottomDL);
+		getTokenValue(line, "footTopDL", endfoot.topDL);
+		getTokenValue(line, "footBottomDL", endfoot.bottomDL);
+		getTokenValue(line, "lastFootTopDL", endlastfoot.topDL);
+		getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
+		getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
 	}
 	for (int j = 0; j < columns_; ++j) {
 		l_getline(is,line);
