@@ -395,38 +395,39 @@ void LScreen::cursorToggle(BufferView * bv) const
 
 
 /* returns a new top so that the cursor is visible */
-unsigned int LScreen::topCursorVisible(LyXText const * text)
+unsigned int LScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 {
-	int newtop = text->first_y;
+	int const vheight = owner.workHeight();
+	int newtop = top_y; 
 
-	Row * row = text->cursor.row();
+	Row * row = cursor.row();
 
 	// Is this a hack? Yes, probably... (Lgb)
 	if (!row)
 		return max(newtop, 0);
 
-	if (text->cursor.y() - row->baseline() + row->height()
-	    - text->first_y >= owner.workHeight()) {
-		if (row->height() < owner.workHeight()
-		    && row->height() > owner.workHeight() / 4) {
-			newtop = text->cursor.y()
+	if (cursor.y() - row->baseline() + row->height()
+	    - top_y >= vheight) {
+		if (row->height() < vheight
+		    && row->height() > vheight / 4) {
+			newtop = cursor.y()
 				+ row->height()
-				- row->baseline() - owner.workHeight();
+				- row->baseline() - vheight;
 		} else {
 			// scroll down
-			newtop = text->cursor.y()
-				- owner.workHeight() / 2;   /* the scroll region must be so big!! */
+			newtop = cursor.y()
+				- vheight / 2;   /* the scroll region must be so big!! */
 		}
 
-	} else if (static_cast<int>((text->cursor.y()) - row->baseline()) <
-		   text->first_y && text->first_y > 0) {
-		if (row->height() < owner.workHeight()
-		    && row->height() > owner.workHeight() / 4) {
-			newtop = text->cursor.y() - row->baseline();
+	} else if (static_cast<int>(cursor.y() - row->baseline()) <
+		   top_y && top_y > 0) {
+		if (row->height() < vheight
+		    && row->height() > vheight / 4) {
+			newtop = cursor.y() - row->baseline();
 		} else {
 			// scroll up
-			newtop = text->cursor.y() - owner.workHeight() / 2;
-			newtop = min(newtop, text->first_y);
+			newtop = cursor.y() - vheight / 2;
+			newtop = min(newtop, top_y);
 		}
 	}
 
@@ -441,7 +442,7 @@ unsigned int LScreen::topCursorVisible(LyXText const * text)
 bool LScreen::fitCursor(LyXText * text, BufferView * bv)
 {
 	// Is a change necessary?
-	int const newtop = topCursorVisible(text);
+	int const newtop = topCursorVisible(text->cursor, text->first_y);
 	bool const result = (newtop != text->first_y);
 	if (result)
 		draw(text, bv, newtop);

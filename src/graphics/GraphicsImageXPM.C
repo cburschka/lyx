@@ -613,7 +613,7 @@ void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr)
 		return;
 
 	Display * display = fl_get_display();
-	Colormap cmap     = fl_colormap;
+	Colormap cmap     = fl_state[fl_get_vclass()].colormap;
 	XColor xcol;
 	XColor ccol;
 	if (XLookupColor(display, cmap, c_color, &xcol, &ccol) == 0)

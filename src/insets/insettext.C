@@ -2374,7 +2374,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
-	t->first_y = bv->screen().topCursorVisible(t);
+	t->first_y = bv->screen().topCursorVisible(t->cursor, t->first_y);
 	if (!owner()) {
 		updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
@@ -2412,7 +2412,7 @@ void InsetText::reinitLyXText() const
 			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		}
-		t->first_y = bv->screen().topCursorVisible(t);
+		t->first_y = bv->screen().topCursorVisible(t->cursor, t->first_y);
 		if (!owner()) {
 			updateLocal(bv, FULL, false);
 			// this will scroll the screen such that the cursor becomes visible

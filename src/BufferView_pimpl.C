@@ -233,7 +233,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			updateScreen();
 			updateScrollbar();
 		}
-		bv_->text->first_y = screen().topCursorVisible(bv_->text);
+		bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
 		owner_->updateMenubar();
 		owner_->updateToolbar();
 		// Similarly, buffer-dependent dialogs should be updated or
@@ -390,7 +390,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->theLockingInset(the_locking_inset);
 	}
 
-	bv_->text->first_y = screen().topCursorVisible(bv_->text);
+	bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
 
 	// this will scroll the screen such that the cursor becomes visible
 	updateScrollbar();

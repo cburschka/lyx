@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file screen.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team
- *
- * ====================================================== */
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */ 
 
 #ifndef LYXSCREEN_H
 #define LYXSCREEN_H
@@ -19,16 +18,24 @@
 #include <X11/Xlib.h>
 
 class LyXText;
+class LyXCursor;
 class WorkArea;
 class Buffer;
 class BufferView;
 
 struct Row;
 
-/** The class LScreen is used for the main Textbody.
-    Concretely, the screen is held in a pixmap.  This pixmap is kept up to
-    date and used to optimize drawing on the screen.
-    This class also handles the drawing of the cursor and partly the selection.
+/**
+ * LScreen - document rendering management
+ *
+ * This class is used to manage the on-screen rendering inside the
+ * work area; it is responsible for deciding which LyXText rows
+ * need re-drawing.
+ *
+ * This class will arrange for LyXText to paint onto a pixmap
+ * provided by the WorkArea widget.
+ *
+ * The blinking cursor is also handled here.
  */
 class LScreen {
 public:
@@ -60,8 +67,17 @@ public:
 	/// Redraws the screen, without using existing pixmap
 	void redraw(LyXText *, BufferView *);
 
-	/// Returns a new top so that the cursor is visible
-	unsigned int topCursorVisible(LyXText const *);
+	/**
+	 * topCursorVisible - get a new "top" to make the cursor visible
+	 * @param c the cursor
+	 * @param top_y the current y location of the containing region
+	 *
+	 * This helper function calculates a new y co-ordinate for
+	 * the top of the containing region such that the cursor contained
+	 * within the LyXText is "nicely" visible.
+	 */ 
+	unsigned int topCursorVisible(LyXCursor const & c, int top_y);
+ 
 	/// Redraws the screen such that the cursor is visible
 	bool fitCursor(LyXText *, BufferView *);
 	///
