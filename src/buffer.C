@@ -2897,14 +2897,16 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			    << sgml_includedfiles << " \n]>\n\n";
 	}
 
-	if (params.options.empty())
-		sgmlOpenTag(ofs, 0, top_element);
-	else {
-		string top = top_element;
+	string top = top_element;	
+	top += " lang=\"";
+	top += params.language->code();
+	top += "\"";
+
+	if (!params.options.empty()) {
 		top += " ";
 		top += params.options;
-		sgmlOpenTag(ofs, 0, top);
 	}
+	sgmlOpenTag(ofs, 0, top);
 
 	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
@@ -3007,8 +3009,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 			sgmlOpenTag(ofs, depth + command_depth, command_name);
 			item_name = "title";
-			if (command_name != "!-- --")
-				sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
+			sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
 			break;
 
 		case LATEX_ENVIRONMENT:
@@ -3037,9 +3038,13 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			}
 			
 			if (style.latextype == LATEX_ENVIRONMENT) {
-				if (!style.latexparam().empty())
-			  		sgmlOpenTag(ofs, depth + command_depth,
-						    style.latexparam());
+				if (!style.latexparam().empty()) {
+					if(style.latexparam() == "CDATA")
+						ofs << "<![ CDATA [";
+					else
+						sgmlOpenTag(ofs, depth + command_depth,
+							    style.latexparam());
+				}
 				break;
 			}
 
@@ -3087,13 +3092,16 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		switch (style.latextype) {
 		case LATEX_COMMAND:
 			end_tag = "title";
-			if (command_name != "!-- --")
-				sgmlCloseTag(ofs, depth + command_depth, end_tag);
+			sgmlCloseTag(ofs, depth + command_depth, end_tag);
 			break;
 		case LATEX_ENVIRONMENT:
-			if (!style.latexparam().empty())
-				sgmlCloseTag(ofs, depth + command_depth,
-					     style.latexparam());
+			if (!style.latexparam().empty()) {
+				if(style.latexparam() == "CDATA")
+					ofs << "]]>";
+				else
+					sgmlCloseTag(ofs, depth + command_depth,
+						     style.latexparam());
+			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
 			if (desc_on == 1) break;

@@ -1,3 +1,10 @@
+2001-01-28  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (makeDocBookFile): adds support for document language.
+	A silly restriction on the name of LatexCommand types where removed.
+	Added support for CDATA sections, allows to chars unsecaped, used
+	among others in code, to avoid escape < and >.
+	
 2001-01-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (savePosition, restorePosition): Use a vector of 

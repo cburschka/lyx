@@ -1,3 +1,22 @@
+2001-01-28  José Matos <jamatos@fep.up.pt>
+
+	* layouts/db_lyxmacros.inc
+	* layouts/db_stdclass.inc
+	* layouts/db_stdlayouts.inc
+	* layouts/db_stdlists.inc
+	* layouts/db_stdsections.inc
+	* layouts/db_stdstarsections.inc
+	* layouts/db_stdstruct.inc
+	* layouts/db_stdtitle.inc: new files with modular support
+	for docbook.
+
+	* layouts/docbook-chapter.layout
+	* layouts/docbook-section.layout: new files, useful for
+	document inclusion.
+	
+	* layouts/docbook.layout
+	* layouts/docbook-book.layout: updated to use the modular support.
+
 2001-01-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* ui/default.ui: Move the Bookmarks submenu to the Navigate menu.
