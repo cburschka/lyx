@@ -12,9 +12,9 @@ void MathDimInset::metricsT(TextMetricsInfo const &) const
 /*
 	std::ostringstream os;
 	os << MathAtom(this);
-	dim_.w = int(os.str().size());
-	dim_.a = 1;
-	dim_.d = 0;
+	dim_.wid = int(os.str().size());
+	dim_.asc = 1;
+	dim_.des = 0;
 */
 }
 

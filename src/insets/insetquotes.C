@@ -173,18 +173,18 @@ string const InsetQuotes::dispString(Language const * loclang) const
 void InsetQuotes::dimension(BufferView *, LyXFont const & font,
 	Dimension & dim) const
 {
-	dim.a = font_metrics::maxAscent(font);
-	dim.d = font_metrics::maxDescent(font);
-	dim.w = 0;
+	dim.asc = font_metrics::maxAscent(font);
+	dim.des = font_metrics::maxDescent(font);
+	dim.wid = 0;
 
 	string const text = dispString(font.language());
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
-			dim.w += font_metrics::width('i', font);
+			dim.wid += font_metrics::width('i', font);
 		else if (i == 0 || text[i] != text[i - 1])
-			dim.w += font_metrics::width(text[i], font);
+			dim.wid += font_metrics::width(text[i], font);
 		else
-			dim.w += font_metrics::width(',', font);
+			dim.wid += font_metrics::width(',', font);
 	}
 }
 

@@ -40,9 +40,9 @@ void InsetNewline::write(Buffer const *, ostream & os) const
 void InsetNewline::dimension(BufferView *, LyXFont const & font,
 	Dimension & dim) const
 {
-	dim.a = font_metrics::maxAscent(font);
-	dim.d = font_metrics::maxDescent(font);
-	dim.w = font_metrics::width('n', font);
+	dim.asc = font_metrics::maxAscent(font);
+	dim.des = font_metrics::maxDescent(font);
+	dim.wid = font_metrics::width('n', font);
 }
 
 

@@ -239,16 +239,16 @@ void InsetMinipage::dimension(BufferView * bv, LyXFont const & font,
 		InsetCollapsable::dimension(bv, font, dim);
 		switch (params_.pos) {
 		case top:
-			dim.a = d.a;
-			dim.d = d.d;
+			dim.asc = d.asc;
+			dim.des = d.des;
 			break;
 		case center:
-			dim.a = d.height() / 2;
-			dim.d = dim.a;
+			dim.asc = d.height() / 2;
+			dim.des = dim.asc;
 			break;
 		case bottom:
-			dim.a = d.d;
-			dim.d = d.a;
+			dim.asc = d.des;
+			dim.des = d.asc;
 			break;
 		}
 	}
@@ -288,7 +288,7 @@ int InsetMinipage::latex(Buffer const * buf, ostream & os,
 
 bool InsetMinipage::insetAllowed(Inset::Code code) const
 {
-	if ((code == Inset::FLOAT_CODE) || (code == Inset::MARGIN_CODE))
+	if (code == Inset::FLOAT_CODE || code == Inset::MARGIN_CODE)
 		return false;
 
 	return InsetCollapsable::insetAllowed(code);

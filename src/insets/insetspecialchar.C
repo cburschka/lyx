@@ -41,8 +41,8 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
 	Dimension & dim) const
 {
-	dim.a = font_metrics::maxAscent(font);
-	dim.d = font_metrics::maxDescent(font);
+	dim.asc = font_metrics::maxAscent(font);
+	dim.des = font_metrics::maxDescent(font);
 
 	string s;
 	switch (kind_) {
@@ -52,9 +52,9 @@ void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
 		case MENU_SEPARATOR:      s = " x ";   break;
 		case HYPHENATION:      s = "-";   break;
 	}
-	dim.w = font_metrics::width(s, font);
-	if (kind_ == HYPHENATION && dim.w > 5)
-		dim.w -= 2; // to make it look shorter
+	dim.wid = font_metrics::width(s, font);
+	if (kind_ == HYPHENATION && dim.wid > 5)
+		dim.wid -= 2; // to make it look shorter
 }
 
 

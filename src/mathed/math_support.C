@@ -348,9 +348,9 @@ deco_struct const * search_deco(string const & name)
 
 void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
 {
-	dim.d = font_metrics::descent(c, font);
-	dim.a = font_metrics::ascent(c, font);
-	dim.w = mathed_char_width(font, c);
+	dim.des = font_metrics::descent(c, font);
+	dim.asc = font_metrics::ascent(c, font);
+	dim.wid = mathed_char_width(font, c);
 }
 
 
@@ -375,17 +375,17 @@ int mathed_char_width(LyXFont const & font, unsigned char c)
 void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
 {
 #if 1
-	dim.a = 0;
-	dim.d = 0;
+	dim.asc = 0;
+	dim.des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-		dim.a = max(dim.a, font_metrics::ascent(*it, font));
-		dim.d = max(dim.d, font_metrics::descent(*it, font));
+		dim.asc = max(dim.asc, font_metrics::ascent(*it, font));
+		dim.des = max(dim.des, font_metrics::descent(*it, font));
 	}
 #else
-	dim.a = font_metrics::maxAscent(font);
-	dim.d = font_metrics::maxDescent(font);
+	dim.asc = font_metrics::maxAscent(font);
+	dim.des = font_metrics::maxDescent(font);
 #endif
-	dim.w = font_metrics::width(s, font);
+	dim.wid = font_metrics::width(s, font);
 }
 
 

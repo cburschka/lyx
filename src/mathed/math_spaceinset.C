@@ -41,20 +41,20 @@ MathInset * MathSpaceInset::clone() const
 void MathSpaceInset::metrics(MetricsInfo &) const
 {
 	switch (space_) {
-		case 0: dim_.w = 6; break;
-		case 1: dim_.w = 8; break;
-		case 2: dim_.w = 10; break;
-		case 3: dim_.w = 6; break;
-		case 4: dim_.w = 8; break;
-		case 5: dim_.w = 10; break;
-		case 6: dim_.w = 20; break;
-		case 7: dim_.w = 40; break;
-		case 8: dim_.w = -2; break;
-		case 9: dim_.w =  2; break;
-		default: dim_.w = 6;
+		case 0: dim_.wid = 6; break;
+		case 1: dim_.wid = 8; break;
+		case 2: dim_.wid = 10; break;
+		case 3: dim_.wid = 6; break;
+		case 4: dim_.wid = 8; break;
+		case 5: dim_.wid = 10; break;
+		case 6: dim_.wid = 20; break;
+		case 7: dim_.wid = 40; break;
+		case 8: dim_.wid = -2; break;
+		case 9: dim_.wid =  2; break;
+		default: dim_.wid = 6;
 	}
-	dim_.a = 4;
-	dim_.d = 0;
+	dim_.asc = 4;
+	dim_.des = 0;
 }
 
 

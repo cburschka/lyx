@@ -43,27 +43,27 @@ InsetSpace::Kind InsetSpace::kind() const
 void InsetSpace::dimension(BufferView *, LyXFont const & font,
 			   Dimension & dim) const
 {
-	dim.a = font_metrics::maxAscent(font);
-	dim.d = font_metrics::maxDescent(font);
+	dim.asc = font_metrics::maxAscent(font);
+	dim.des = font_metrics::maxDescent(font);
 
 	switch (kind_) {
 		case THIN:
 		case NEGTHIN:
-			dim.w = font_metrics::width("x", font) / 3;
+			dim.wid = font_metrics::width("x", font) / 3;
 			break;
 		case PROTECTED:
 		case NORMAL:
-			dim.w = font_metrics::width("x", font);
+			dim.wid = font_metrics::width("x", font);
 			break;
 		case QUAD:
-			dim.w = 20;
+			dim.wid = 20;
 			break;
 		case QQUAD:
-			dim.w = 40;
+			dim.wid = 40;
 			break;
 		case ENSPACE:
 		case ENSKIP:
-			dim.w = 10;
+			dim.wid = 10;
 			break;
 	}
 }

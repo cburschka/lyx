@@ -21,12 +21,12 @@ void ButtonInset::metrics(MetricsInfo & mi) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	if (editing()) {
 		MathNestInset::metrics(mi);
-		dim_.w = cell(0).width() + cell(1).width() + 4;
-		dim_.a = max(cell(0).ascent(), cell(1).ascent());
-		dim_.d = max(cell(0).descent(), cell(1).descent());
+		dim_.wid = cell(0).width() + cell(1).width() + 4;
+		dim_.asc = max(cell(0).ascent(), cell(1).ascent());
+		dim_.des = max(cell(0).descent(), cell(1).descent());
 	} else {
 		mathed_string_dim(mi.base.font, screenLabel(), dim_);
-		dim_.w += 10;
+		dim_.wid += 10;
 	}
 }
 

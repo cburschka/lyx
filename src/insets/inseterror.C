@@ -65,9 +65,9 @@ void InsetError::dimension(BufferView *, LyXFont const & font,
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	dim.a = font_metrics::maxAscent(efont) + 1;
-	dim.d = font_metrics::maxDescent(efont) + 1;
-	dim.w = 6 + font_metrics::width(_("Error"), efont);
+	dim.asc = font_metrics::maxAscent(efont) + 1;
+	dim.des = font_metrics::maxDescent(efont) + 1;
+	dim.wid = 6 + font_metrics::width(_("Error"), efont);
 }
 
 

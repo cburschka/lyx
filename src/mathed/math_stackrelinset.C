@@ -22,9 +22,9 @@ void MathStackrelInset::metrics(MetricsInfo & mi) const
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
-	dim_.w = max(cell(0).width(), cell(1).width()) + 4;
-	dim_.a = cell(1).ascent() + cell(0).height() + 4;
-	dim_.d = cell(1).descent();
+	dim_.wid = max(cell(0).width(), cell(1).width()) + 4;
+	dim_.asc = cell(1).ascent() + cell(0).height() + 4;
+	dim_.des = cell(1).descent();
 }
 
 

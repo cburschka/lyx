@@ -84,17 +84,17 @@ void MathMacro::metrics(MetricsInfo & mi) const
 		dim_ = expanded_.metrics(mi_);
 		metricsMarkers2(2);
 
-		dim_.w +=  mathed_string_width(font_, name()) + 10;
+		dim_.wid +=  mathed_string_width(font_, name()) + 10;
 
-		Dimension ldim;
-		mathed_string_dim(font_, "#1: ", ldim);
+		Dimension dim;
+		mathed_string_dim(font_, "#1: ", dim);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			c.metrics(mi_);
-			dim_.w  = max(dim_.w, c.width() + ldim.w);
-			dim_.d += max(c.ascent(),  ldim.a) + 5;
-			dim_.d += max(c.descent(), ldim.d) + 5;
+			dim_.wid  = max(dim_.wid, c.width() + dim.wid);
+			dim_.des += max(c.ascent(),  dim.asc) + 5;
+			dim_.des += max(c.descent(), dim.des) + 5;
 		}
 		return;
 	}
@@ -131,12 +131,12 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
-			h += max(c.ascent(), ldim.a) + 5;
-			c.draw(pi, x + ldim.w, h);
+			h += max(c.ascent(), ldim.asc) + 5;
+			c.draw(pi, x + ldim.wid, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
 			drawStr(pi, texfont, x + 3, h, str);
-			h += max(c.descent(), ldim.d) + 5;
+			h += max(c.descent(), ldim.des) + 5;
 		}
 		return;
 	}

@@ -17,17 +17,17 @@
 
 void Dimension::operator+=(Dimension const & dim)
 {
-	if (a < dim.a)
-		a = dim.a;
-	if (d < dim.d)
-		d = dim.d;
-	w += dim.w;
+	if (asc < dim.asc)
+		asc = dim.asc;
+	if (des < dim.des)
+		des = dim.des;
+	wid += dim.wid;
 }
 
 
 void Dimension::clear(LyXFont const & font)
 {
-	a = font_metrics::maxAscent(font);
-	d = font_metrics::maxDescent(font);
-	w = 0;
+	asc = font_metrics::maxAscent(font);
+	des = font_metrics::maxDescent(font);
+	wid = 0;
 }

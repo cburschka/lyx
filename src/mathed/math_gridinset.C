@@ -368,17 +368,17 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 	}
 
 
-	dim_.w   =   colinfo_[ncols() - 1].offset_
+	dim_.wid   =   colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
 		 + vlinesep() * colinfo_[ncols()].lines_
 		       + border();
 
-	dim_.a  = - rowinfo_[0].offset_
+	dim_.asc  = - rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
 		 + hlinesep() * rowinfo_[0].lines_
 		       + border();
 
-	dim_.d =   rowinfo_[nrows() - 1].offset_
+	dim_.des =   rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
 		 + hlinesep() * rowinfo_[nrows()].lines_
 		       + border();
@@ -530,17 +530,17 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	}
 
 
-	dim_.w  =  colinfo_[ncols() - 1].offset_
+	dim_.wid  =  colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
 		 //+ vlinesep() * colinfo_[ncols()].lines_
 		       + 2;
 
-	dim_.a  = -rowinfo_[0].offset_
+	dim_.asc  = -rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
 		 //+ hlinesep() * rowinfo_[0].lines_
 		       + 1;
 
-	dim_.d  =  rowinfo_[nrows() - 1].offset_
+	dim_.des  =  rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
 		 //+ hlinesep() * rowinfo_[nrows()].lines_
 		       + 1;

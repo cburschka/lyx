@@ -34,9 +34,9 @@ MathInset * MathRootInset::clone() const
 void MathRootInset::metrics(MetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
-	dim_.a = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
-	dim_.d = max(cell(1).descent() + 5, cell(0).descent()) + 2;
-	dim_.w = cell(0).width() + cell(1).width() + 10;
+	dim_.asc = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
+	dim_.des = max(cell(1).descent() + 5, cell(0).descent()) + 2;
+	dim_.wid = cell(0).width() + cell(1).width() + 10;
 	metricsMarkers();
 }
 

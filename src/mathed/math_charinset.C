@@ -72,9 +72,9 @@ void MathCharInset::metrics(MetricsInfo & mi) const
 	}
 	int const em = mathed_char_width(mi.base.font, 'M');
 	if (isBinaryOp(char_))
-		dim_.w += static_cast<int>(0.5*em+0.5);
+		dim_.wid += static_cast<int>(0.5*em+0.5);
 	else if (char_ == '\'')
-		dim_.w += static_cast<int>(0.1667*em+0.5);
+		dim_.wid += static_cast<int>(0.1667*em+0.5);
 #else
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, dim_);
@@ -114,9 +114,9 @@ void MathCharInset::draw(PainterInfo & pi, int x, int y) const
 
 void MathCharInset::metricsT(TextMetricsInfo const &) const
 {
-	dim_.w = 1;
-	dim_.a = 1;
-	dim_.d = 0;
+	dim_.wid = 1;
+	dim_.asc = 1;
+	dim_.des = 0;
 }
 
 

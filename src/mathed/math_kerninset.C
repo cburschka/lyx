@@ -30,9 +30,9 @@ MathInset * MathKernInset::clone() const
 
 void MathKernInset::metrics(MetricsInfo & mi) const
 {
-	dim_.w = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
-	dim_.a = 0;
-	dim_.d = 0;
+	dim_.wid = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
+	dim_.asc = 0;
+	dim_.des = 0;
 }
 
 

@@ -33,10 +33,10 @@ void MathBraceInset::metrics(MetricsInfo & mi) const
 	cell(0).metrics(mi);
 	Dimension t;
 	mathed_char_dim(mi.base.font, '{', t);
-	wid_ = t.w;
-	dim_.a = max(cell(0).ascent(), t.a);
-	dim_.d = max(cell(0).descent(), t.d);
-	dim_.w = cell(0).width() + 2 * wid_;
+	wid_ = t.wid;
+	dim_.asc = max(cell(0).ascent(), t.asc);
+	dim_.des = max(cell(0).descent(), t.des);
+	dim_.wid = cell(0).width() + 2 * wid_;
 }
 
 

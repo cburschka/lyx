@@ -21,29 +21,29 @@ class LyXFont;
 struct Dimension {
 public:
 	/// constructor
-	Dimension() : w(0), a(0), d(0) {}
+	Dimension() : wid(0), asc(0), des(0) {}
 	/// initialize data
-	Dimension(int ww, int aa, int dd) : w(ww), a(aa), d(dd) {}
+	Dimension(int w, int a, int d) : wid(w), asc(a), des(d) {}
 
 	/// glue horizontally
 	void operator+=(Dimension const & dim);
 	/// set to empty box
-	void clear() { w = a = d = 0; }
+	void clear() { wid = asc = des = 0; }
 	/// set to empty box suitble for given font
 	void clear(LyXFont const & font);
 	/// get height
-	int height() const { return a + d; }
+	int height() const { return asc + des; }
 	/// get ascent
-	int ascent() const { return a; }
+	int ascent() const { return asc; }
 	/// get descent
-	int descent() const { return d; }
+	int descent() const { return des; }
 	/// get width
-	int width() const { return w; }
+	int width() const { return wid; }
 
 public:
 	/// these are intentionally public as things like
 	///
-	///   dim.a += 20; 
+	///   dim.asc += 20; 
 	///
 	/// are used all over the place and "hiding" those behind
 	///
@@ -51,11 +51,11 @@ public:
 	///
 	/// makes the code neither faster nor clearer
 	/// width
-	int w;
+	int wid;
 	/// ascent
-	int a;
+	int asc;
 	/// descent
-	int d;
+	int des;
 };
 
 #endif

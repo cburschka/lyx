@@ -49,15 +49,15 @@ void MathSymbolInset::metrics(MetricsInfo & mi) const
 	mathed_string_dim(mi.base.font, sym_->draw, dim_);
 	// correct height for broken cmex and wasy font
 	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
-		h_ = 4 * dim_.d / 5;
-		dim_.a += h_;
-		dim_.d -= h_;
+		h_ = 4 * dim_.des / 5;
+		dim_.asc += h_;
+		dim_.des -= h_;
 	}
 	// seperate things a bit
 	if (isRelOp())
-		dim_.w += static_cast<int>(0.5*em+0.5);
+		dim_.wid += static_cast<int>(0.5*em+0.5);
 	else
-		dim_.w += static_cast<int>(0.1667*em+0.5);
+		dim_.wid += static_cast<int>(0.1667*em+0.5);
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)

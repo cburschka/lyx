@@ -1,3 +1,19 @@
+
+2003-05-27  André Pönitz  <poenitz@gmx.net>
+
+	* insetbutton.C:
+	* insetcollapsable.C:
+	* inseterror.C:
+	* insetgraphics.C:
+	* insetlatexaccent.C:
+	* insetminipage.C:
+	* insetnewline.C:
+	* insetquotes.C:
+	* insetspace.C:
+	* insetspecialchar.C:
+	* insettabular.C:
+	* insettext.C: dim.w -> dim.wid
+
 2003-05-26  John Levon  <levon@movementarian.org>
 
 	* insettabular.C: avoid drawing all of a long table

@@ -24,9 +24,9 @@ void MathXArrowInset::metrics(MetricsInfo & mi) const
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.w = std::max(cell(0).width(), cell(1).width()) + 10;
-	dim_.a = cell(0).height() + 10;
-	dim_.d = cell(1).height();
+	dim_.wid = std::max(cell(0).width(), cell(1).width()) + 10;
+	dim_.asc = cell(0).height() + 10;
+	dim_.des = cell(1).height();
 }
 
 

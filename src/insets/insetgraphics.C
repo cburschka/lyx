@@ -308,10 +308,10 @@ void InsetGraphics::dimension(BufferView *, LyXFont const & font,
 	cache_->old_ascent = 50;
 	if (imageIsDrawable())
 		cache_->old_ascent = cache_->loader.image()->getHeight();
-	dim.a = cache_->old_ascent;
-	dim.d = 0;
+	dim.asc = cache_->old_ascent;
+	dim.des = 0;
 	if (imageIsDrawable())
-		dim.w = cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
+		dim.wid = cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
 	else {
 		int font_width = 0;
 
@@ -330,7 +330,7 @@ void InsetGraphics::dimension(BufferView *, LyXFont const & font,
 			font_width = std::max(font_width, font_metrics::width(msg, msgFont));
 		}
 
-		dim.w = std::max(50, font_width + 15);
+		dim.wid = std::max(50, font_width + 15);
 	}
 }
 

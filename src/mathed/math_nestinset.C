@@ -60,16 +60,16 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 
 void MathNestInset::metricsMarkers(int frame) const
 {
-	dim_.d += frame;
-	dim_.w += 2 * frame;
+	dim_.des += frame;
+	dim_.wid += 2 * frame;
 }
 
 
 void MathNestInset::metricsMarkers2(int frame) const
 {
-	dim_.a += frame;
-	dim_.d += frame;
-	dim_.w += 2 * frame;
+	dim_.asc += frame;
+	dim_.des += frame;
+	dim_.wid += 2 * frame;
 }
 
 

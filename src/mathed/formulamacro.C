@@ -146,9 +146,9 @@ void InsetFormulaMacro::dimension(BufferView * bv, LyXFont const & font,
 {
 	metrics(bv, font);
 	dim = par()->dimensions();
-	dim.a += 5;
-	dim.d += 5;
-	dim.w += 10 + font_metrics::width(prefix(), font);
+	dim.asc += 5;
+	dim.des += 5;
+	dim.wid += 10 + font_metrics::width(prefix(), font);
 }
 
 
@@ -184,8 +184,8 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	Dimension dim;
 	dimension(bv, font, dim);
 	int const x = int(xx);
-	int const a = y - dim.a + 1;
-	int const w = dim.w - 2;
+	int const a = y - dim.asc + 1;
+	int const w = dim.wid - 2;
 	int const h = dim.height() - 2;
 
 	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too

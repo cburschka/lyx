@@ -89,12 +89,12 @@ void MathDelimInset::metrics(MetricsInfo & mi) const
 	cell(0).metrics(mi);
 	Dimension t;
 	mathed_char_dim(mi.base.font, 'I', t);
-	int h0 = (t.a + t.d) / 2;
-	int a0 = max(cell(0).ascent(), t.a)   - h0;
-	int d0 = max(cell(0).descent(), t.d)  + h0;
-	dim_.a = max(a0, d0) + h0;
-	dim_.d = max(a0, d0) - h0;
-	dim_.w = cell(0).width() + 2 * dw() + 8;
+	int h0 = (t.asc + t.des) / 2;
+	int a0 = max(cell(0).ascent(), t.asc)   - h0;
+	int d0 = max(cell(0).descent(), t.des)  + h0;
+	dim_.asc = max(a0, d0) + h0;
+	dim_.des = max(a0, d0) - h0;
+	dim_.wid = cell(0).width() + 2 * dw() + 8;
 }
 
 

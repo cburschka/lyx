@@ -37,9 +37,9 @@ void MathBinomInset::metrics(MetricsInfo & mi) const
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.a = cell(0).height() + 4 + 5;
-	dim_.d = cell(1).height() + 4 - 5;
-	dim_.w = max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
+	dim_.asc = cell(0).height() + 4 + 5;
+	dim_.des = cell(1).height() + 4 - 5;
+	dim_.wid = max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
 }
 
 

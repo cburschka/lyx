@@ -125,16 +125,16 @@ void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 
 void InsetCollapsable::dimension_collapsed(Dimension & dim) const
 {
-	font_metrics::buttonText(label, labelfont, dim.w, dim.a, dim.d);
-	dim.w += 2 * TEXT_TO_INSET_OFFSET;
+	font_metrics::buttonText(label, labelfont, dim.wid, dim.asc, dim.des);
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 }
 
 
 int InsetCollapsable::height_collapsed() const
 {
 	Dimension dim;
-	font_metrics::buttonText(label, labelfont, dim.w, dim.a, dim.d);
-	return dim.a + dim.d;
+	font_metrics::buttonText(label, labelfont, dim.wid, dim.asc, dim.des);
+	return dim.asc + dim.des;
 }
 
 
@@ -146,8 +146,8 @@ void InsetCollapsable::dimension(BufferView * bv, LyXFont const & font,
 		return;
 	Dimension insetdim;
 	inset.dimension(bv, font, insetdim);
-	dim.d += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
-	dim.w = max(dim.w, insetdim.width());
+	dim.des += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
+	dim.wid = max(dim.wid, insetdim.width());
 }
 
 
@@ -158,7 +158,7 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 			baseline, label, labelfont);
 	Dimension dim;
 	dimension_collapsed(dim);
-	x += dim.w;
+	x += dim.wid;
 }
 
 

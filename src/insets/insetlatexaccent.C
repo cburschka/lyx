@@ -272,24 +272,24 @@ void InsetLatexAccent::dimension(BufferView *, LyXFont const & font,
 	// used and add to max based on that.
 	if (candisp) {
 		if (ic == ' ')
-			dim.a = font_metrics::ascent('a', font);
+			dim.asc = font_metrics::ascent('a', font);
 		else
-			dim.a = font_metrics::ascent(ic, font);
+			dim.asc = font_metrics::ascent(ic, font);
 		if (plusasc)
-			dim.a += (font_metrics::maxAscent(font) + 3) / 3;
+			dim.asc += (font_metrics::maxAscent(font) + 3) / 3;
 
 		if (ic == ' ')
-			dim.d = font_metrics::descent('a', font);
+			dim.des = font_metrics::descent('a', font);
 		else
-			dim.d = font_metrics::descent(ic, font);
+			dim.des = font_metrics::descent(ic, font);
 		if (plusdesc)
-			dim.d += 3;
+			dim.des += 3;
 
-		dim.w = font_metrics::width(ic, font);
+		dim.wid = font_metrics::width(ic, font);
 	} else {
-		dim.a = font_metrics::maxAscent(font) + 4;
-		dim.d = font_metrics::maxDescent(font) + 4;
-		dim.w = font_metrics::width(contents, font) + 4;
+		dim.asc = font_metrics::maxAscent(font) + 4;
+		dim.des = font_metrics::maxDescent(font) + 4;
+		dim.wid = font_metrics::width(contents, font) + 4;
 	}
 }
 

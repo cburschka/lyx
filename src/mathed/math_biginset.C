@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_biginset.h"
 #include "math_support.h"
 #include "math_parser.h"
@@ -41,9 +40,9 @@ void MathBigInset::metrics(MetricsInfo & mi) const
 {
 	double const h = mathed_char_ascent(mi.base.font, 'I');
 	double const f = increase();
-	dim_.w = 6;
-	dim_.a = int(h + f * h);
-	dim_.d = int(f * h);
+	dim_.wid = 6;
+	dim_.asc = int(h + f * h);
+	dim_.des = int(f * h);
 }
 
 

@@ -38,11 +38,11 @@ void InsetButton::dimension(BufferView * bv, LyXFont const &,
 	string const s = getScreenLabel(bv->buffer());
 
 	if (editable())
-		font_metrics::buttonText(s, font, dim.w, dim.a, dim.d);
+		font_metrics::buttonText(s, font, dim.wid, dim.asc, dim.des);
 	else
-		font_metrics::rectText(s, font, dim.w, dim.a, dim.d);
+		font_metrics::rectText(s, font, dim.wid, dim.asc, dim.des);
 
-	dim.w += 4;
+	dim.wid += 4;
 }
 
 

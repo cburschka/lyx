@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_amsarrayinset.h"
 #include "math_mathmlstream.h"
 #include "metricsinfo.h"
@@ -64,7 +63,7 @@ void MathAMSArrayInset::metrics(MetricsInfo & mi) const
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(m);
-	dim_.w += 12;
+	dim_.wid += 12;
 }
 
 

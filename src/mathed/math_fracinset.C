@@ -37,9 +37,9 @@ void MathFracInset::metrics(MetricsInfo & mi) const
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.w = max(cell(0).width(), cell(1).width()) + 2;
-	dim_.a = cell(0).height() + 2 + 5;
-	dim_.d = cell(1).height() + 2 - 5;
+	dim_.wid = max(cell(0).width(), cell(1).width()) + 2;
+	dim_.asc = cell(0).height() + 2 + 5;
+	dim_.des = cell(1).height() + 2 - 5;
 }
 
 
@@ -58,9 +58,9 @@ void MathFracInset::metricsT(TextMetricsInfo const & mi) const
 {
 	cell(0).metricsT(mi);
 	cell(1).metricsT(mi);
-	dim_.w = max(cell(0).width(), cell(1).width());
-	dim_.a = cell(0).height() + 1;
-	dim_.d = cell(1).height();
+	dim_.wid = max(cell(0).width(), cell(1).width());
+	dim_.asc = cell(0).height() + 1;
+	dim_.des = cell(1).height();
 }
 
 

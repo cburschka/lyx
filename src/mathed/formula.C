@@ -289,15 +289,15 @@ void InsetFormula::dimension(BufferView * bv, LyXFont const & font,
 {
 	metrics(bv, font);
 	if (preview_->previewReady()) {
-		dim.a = preview_->pimage()->ascent();
+		dim.asc = preview_->pimage()->ascent();
 		int const descent = preview_->pimage()->descent();
-		dim.d = display() ? descent + 12 : descent;
+		dim.des = display() ? descent + 12 : descent;
 		// insert a one pixel gap in front of the formula
-		dim.w = 1 + preview_->pimage()->width();
+		dim.wid = 1 + preview_->pimage()->width();
 	} else {
 		dim = par_->dimensions();
-		dim.a += 1;
-		dim.d += 1;
+		dim.asc += 1;
+		dim.des += 1;
 	}
 }
 

@@ -29,7 +29,7 @@ void MathDotsInset::metrics(MetricsInfo & mi) const
 	else if (key_->name == "dotsc")
 		dh_ = ascent() / 4;
 	else if (key_->name == "vdots") {
-		dim_.w = (dim_.w / 2) + 1;
+		dim_.wid = (dim_.wid / 2) + 1;
 		dh_ = ascent();
 	}
 	else if (key_->name == "ddots")

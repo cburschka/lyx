@@ -215,7 +215,7 @@ Dimension const & MathArray::metrics(MetricsInfo & mi) const
 	if (empty())
 		return dim_;
 
-	dim_.w = 0;
+	dim_.wid = 0;
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->metrics(mi);
 		dim_ += (*it)->dimensions();

@@ -28,7 +28,7 @@ void MathFrameboxInset::metrics(MetricsInfo & mi) const
 	dim_    = cell(0).dim();
 	dim_   += cell(1).dim();
 	dim_   += cell(2).dim();
-	dim_.w += 4 * w_ + 4;
+	dim_.wid += 4 * w_ + 4;
 	metricsMarkers2(5); // 5 pixels margin
 }
 

@@ -20,9 +20,9 @@ MathInset * MathSqrtInset::clone() const
 void MathSqrtInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
-	dim_.a = cell(0).ascent()  + 4;
-	dim_.d = cell(0).descent() + 2;
-	dim_.w = cell(0).width()   + 12;
+	dim_.asc = cell(0).ascent()  + 4;
+	dim_.des = cell(0).descent() + 2;
+	dim_.wid = cell(0).width()   + 12;
 	metricsMarkers();
 }
 
@@ -46,9 +46,9 @@ void MathSqrtInset::draw(PainterInfo & pi, int x, int y) const
 void MathSqrtInset::metricsT(TextMetricsInfo const & mi) const
 {
 	cell(0).metricsT(mi);
-	dim_.a = cell(0).ascent()  + 1;
-	dim_.d = cell(0).descent();
-	dim_.w = cell(0).width()   + 2;
+	dim_.asc = cell(0).ascent()  + 1;
+	dim_.des = cell(0).descent();
+	dim_.wid = cell(0).width()   + 2;
 }
 
 

@@ -145,20 +145,20 @@ int MathScriptInset::dy1() const
 int MathScriptInset::dx0() const
 {
 	lyx::Assert(hasDown());
-	return hasLimits() ? (dim_.w - down().width()) / 2 : nwid();
+	return hasLimits() ? (dim_.wid - down().width()) / 2 : nwid();
 }
 
 
 int MathScriptInset::dx1() const
 {
 	lyx::Assert(hasUp());
-	return hasLimits() ? (dim_.w - up().width()) / 2 : nwid();
+	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid();
 }
 
 
 int MathScriptInset::dxx() const
 {
-	return hasLimits() ? (dim_.w - nwid()) / 2  :  0;
+	return hasLimits() ? (dim_.wid - nwid()) / 2  :  0;
 }
 
 
@@ -186,22 +186,22 @@ void MathScriptInset::metrics(MetricsInfo & mi) const
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.w = 0;
+	dim_.wid = 0;
 	if (hasLimits()) {
-		dim_.w = nwid();
+		dim_.wid = nwid();
 		if (hasUp())
-			dim_.w = max(dim_.w, up().width());
+			dim_.wid = max(dim_.wid, up().width());
 		if (hasDown())
-			dim_.w = max(dim_.w, down().width());
+			dim_.wid = max(dim_.wid, down().width());
 	} else {
 		if (hasUp())
-			dim_.w = max(dim_.w, up().width());
+			dim_.wid = max(dim_.wid, up().width());
 		if (hasDown())
-			dim_.w = max(dim_.w, down().width());
-		dim_.w += nwid();
+			dim_.wid = max(dim_.wid, down().width());
+		dim_.wid += nwid();
 	}
-	dim_.a = dy1() + (hasUp() ? up().ascent() : 0);
-	dim_.d = dy0() + (hasDown() ? down().descent() : 0);
+	dim_.asc = dy1() + (hasUp() ? up().ascent() : 0);
+	dim_.des = dy0() + (hasDown() ? down().descent() : 0);
 	metricsMarkers2();
 }
 

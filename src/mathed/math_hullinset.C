@@ -175,8 +175,8 @@ void MathHullInset::metrics(MetricsInfo & mi) const
 	MathGridInset::metrics(mi);
 
 	if (display()) {
-		dim_.a += 12;
-		dim_.d += 12;
+		dim_.asc += 12;
+		dim_.des += 12;
 	}
 
 	if (numberedType()) {
@@ -186,15 +186,15 @@ void MathHullInset::metrics(MetricsInfo & mi) const
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
 
 		if (l)
-			dim_.w += 30 + l;
+			dim_.wid += 30 + l;
 	}
 
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
 	math_font_max_dim(mi.base.font, asc, des);
-	dim_.a = max(dim_.a, asc);
-	dim_.d = max(dim_.d, des);
+	dim_.asc = max(dim_.asc, asc);
+	dim_.des = max(dim_.des, des);
 
 	// for markers
 	metricsMarkers2();
@@ -228,9 +228,9 @@ void MathHullInset::metricsT(TextMetricsInfo const & mi) const
 		ostringstream os;
 		WriteStream wi(os, false, true);
 		write(wi);
-		dim_.w = os.str().size();
-		dim_.a = 1;
-		dim_.d = 0;
+		dim_.wid = os.str().size();
+		dim_.asc = 1;
+		dim_.des = 0;
 	}
 }
 

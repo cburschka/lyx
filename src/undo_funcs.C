@@ -214,7 +214,6 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 					  bv->text->cursor.pos());
 	}
 
-
 	finishUndo();
 	bv->text->postPaint(0);
 
@@ -223,8 +222,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 
 bool createUndo(BufferView * bv, Undo::undo_kind kind,
-	ParagraphList::iterator itfirst, ParagraphList::iterator itlast,
-	shared_ptr<Undo> & u)
+	int first_id, int last_id, shared_ptr<Undo> & u)
 {
 	Buffer * b = bv->buffer();
 
@@ -234,9 +232,6 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	ParIterator first   = null;
 	ParIterator last    = null;
 	ParIterator behind  = null;
-
-	int const first_id  = itfirst->id();
-	int const last_id   = itlast->id();
 
 	for (ParIterator it = b->par_iterator_begin(); it != null; ++it) {
 		if ((*it)->id() == first_id) {
@@ -331,8 +326,6 @@ bool textUndoOrRedo(BufferView * bv,
 	limited_stack<boost::shared_ptr<Undo> > & stack,
 		    limited_stack<boost::shared_ptr<Undo> > & /*otherstack*/)
 {
-	//Buffer * b = bv->buffer();
-
 	if (stack.empty()) {
 		finishNoUndo(bv);
 		return false;
@@ -342,27 +335,28 @@ bool textUndoOrRedo(BufferView * bv,
 	stack.pop();
 	finishUndo();
 
-	if (!undo_frozen) {
 /*
+	if (!undo_frozen) {
+		Buffer * buf = bv->buffer();
 		ParIterator p = b->getParFromID(undo->number_of_before_par);
+		ParIterator const end = b->par_iterator_end();
 		bool ok = false;
 		ParagraphList::iterator first;
 		// default constructed?
-		ParIterator const end = b->par_iterator_end();
 		if (p != end) {
 			first = p.par();
 			if (first->next())
 				first = first->next();
 		} else
 			first = undoParagraphs(bv, undo->number_of_inset_id)->begin();
-		if (first) {
+		if (ok) {
 			shared_ptr<Undo> u;
 			ParIterator behind = b->getParFromID(undo->number_of_behind_par);
 			if (createUndo(bv, undo->kind, first, behind.par(), u))
 				otherstack.push(u);
 		}
-*/
 	}
+*/
 
 	// Now we can unlock the inset for saftey because the inset
 	// pointer could be changed during the undo-function. Anyway
@@ -427,7 +421,7 @@ void setUndo(BufferView * bv, Undo::undo_kind kind,
 	//return;
 	if (!undo_frozen) {
 		shared_ptr<Undo> u;
-		if (createUndo(bv, kind, first, last, u))
+		if (createUndo(bv, kind, first->id(), last->id(), u))
 			bv->buffer()->undostack.push(u);
 		bv->buffer()->redostack.clear();
 	}

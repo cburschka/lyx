@@ -80,11 +80,11 @@ void MathDecorationInset::metrics(MetricsInfo & mi) const
 	dw_  = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
 
 	if (upper()) {
-		dy_ = -dim_.a - dh_;
-		dim_.a += dh_ + 1;
+		dy_ = -dim_.asc - dh_;
+		dim_.asc += dh_ + 1;
 	} else {
-		dy_ = dim_.d + 1;
-		dim_.d += dh_ + 2;
+		dy_ = dim_.des + 1;
+		dim_.des += dh_ + 2;
 	}
 
 	metricsMarkers();

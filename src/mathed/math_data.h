@@ -120,9 +120,9 @@ public:
 	/// access to cached y coordinate of last drawing
 	int yo() const { return yo_; }
 	/// access to cached x coordinate of mid point of last drawing
-	int xm() const { return xo_ + dim_.w / 2; }
+	int xm() const { return xo_ + dim_.wid / 2; }
 	/// access to cached y coordinate of mid point of last drawing
-	int ym() const { return yo_ + (dim_.d - dim_.a) / 2; }
+	int ym() const { return yo_ + (dim_.des - dim_.asc) / 2; }
 	/// write access to coordinate;
 	void setXY(int x, int y) const;
 	/// returns x coordinate of given position in the array
@@ -138,13 +138,13 @@ public:
 	int dist(int x, int y) const;
 
 	/// ascent of this cell above the baseline
-	int ascent() const { return dim_.a; }
+	int ascent() const { return dim_.asc; }
 	/// descent of this cell below the baseline
-	int descent() const { return dim_.d; }
+	int descent() const { return dim_.des; }
 	/// height of the cell
-	int height() const { return dim_.a + dim_.d; }
+	int height() const { return dim_.asc + dim_.des; }
 	/// width of this cell
-	int width() const { return dim_.w; }
+	int width() const { return dim_.wid; }
 	/// dimensions of cell
 	Dimension const & dim() const	{ return dim_; }
 	/// dimensions of cell

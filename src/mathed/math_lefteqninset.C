@@ -18,9 +18,9 @@ MathInset * MathLefteqnInset::clone() const
 void MathLefteqnInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
-	dim_.a = cell(0).ascent() + 2;
-	dim_.d = cell(0).descent() + 2;
-	dim_.w = 4;
+	dim_.asc = cell(0).ascent() + 2;
+	dim_.des = cell(0).descent() + 2;
+	dim_.wid = 4;
 	metricsMarkers2();
 }
 
