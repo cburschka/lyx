@@ -1,3 +1,7 @@
+2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* vspace.C (asLatexCommand): use an explict temp variable.
+
 2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: use FRONTEND_*

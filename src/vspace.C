@@ -452,9 +452,14 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 			: "\\vfill{}";
 		break;
 	case LENGTH:
-		ret = keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
-			: "\\vspace{" + len_.asLatexString() + '}';
-		break;
+	{
+		string const lenstr = len_.asLatexString();
+		
+		ret = keep_ ? "\\vspace*{" + lenstr + '}'
+			: "\\vspace{" + lenstr + '}';
+	}
+	break;
+
 	}
 	
 	return ret;
