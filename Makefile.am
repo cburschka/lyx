@@ -58,9 +58,9 @@ doxydoc: sourcedoc/Doxyfile
 	cd sourcedoc; \
 	doxygen ./Doxyfile
 
-sourcedoc/Doxyfile: sourcedoc/Doxyfile.in config.status
-	cd $(top_builddir) \
-	&& CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+#sourcedoc/Doxyfile: sourcedoc/Doxyfile.in config.status
+#	cd $(top_builddir) \
+#	&& CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*
