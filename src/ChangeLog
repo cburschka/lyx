@@ -1,5 +1,13 @@
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* buffer.C: comment out some some code that depend upon lyx_format
+	< 220
+
+	* paragraph.h (NO_PEXTRA_REALLY): turn off all pextra
+	* ParagraphParameters.h (NO_PEXTRA_REALLY): ditto
+
+	* buffer.h (NO_COMPABILITY): turn off compability
+
 	* ColorHandler.C: include scoped_array.hpp
 
 	* font.C: Use more specific smart_ptr header.

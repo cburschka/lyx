@@ -330,8 +330,11 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 	Paragraph * first_par = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
+
+#if 0
 	if (file_format < 216 && params.language->lang() == "hebrew")
 		font.setLanguage(default_language);
+#endif
 
 	if (!par) {
 		par = new Paragraph;
@@ -521,8 +524,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// not ALL_INHERIT,document_language then it will be set to the
 		// right values after this tag (Jug 20020420)
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+
+#if 0
 		if (file_format < 216 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
+#endif
 
 		lex.eatLine();
 		string layoutname = lex.getString();
@@ -1082,7 +1088,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (ert_comp.active && ert_comp.contents.empty()) {
 			ert_comp.font.setLanguage(font.language());
 		}
-#endif			
+#endif
 	} else if (token == "\\numeric") {
 		lex.next();
 		font.setNumber(font.setLyXMisc(lex.getString()));
@@ -1697,13 +1703,21 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						   _("Old LyX file format found. "
 						     "Use LyX 0.10.x to read this!"));
 					return false;
+				} else if (file_format < 220) {
+					Alert::alert(_("ERROR!"),
+						     _("Old LyX file format found. "
+						       "User LyX 1.2.x to read this!"));
+					return false;
 				}
 			}
 			bool the_end = readLyXformat2(lex, par);
 			params.setPaperStuff();
+
+#if 0
 			// the_end was added in 213
 			if (file_format < 213)
 				the_end = true;
+#endif
 
 			if (!the_end) {
 				Alert::alert(_("Warning!"),

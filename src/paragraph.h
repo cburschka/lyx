@@ -33,7 +33,7 @@ class Language;
 // After 1.2.0 is released, during 1.3.0cvs, we enable this. And after
 // a while we verify that reading of 1.2.x files work perfectly we remove
 // this code completely. (Lgb)
-//#define NO_PEXTRA_REALLY 1
+#define NO_PEXTRA_REALLY 1
 
 // Define this if you want to try out the new storage container for
 // paragraphs. std::container instead of obfuscated homegrown

@@ -35,7 +35,7 @@ class ParIterator;
 // When lyx 1.3.x starts we should enable this
 // btw. we should also test this with 1.2 so that we
 // do not get any surprises. (Lgb)
-//#define NO_COMPABILITY 1
+#define NO_COMPABILITY 1
 
 ///
 struct DEPCLEAN {

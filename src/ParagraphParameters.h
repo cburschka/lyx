@@ -12,7 +12,7 @@
 #include "layout.h"
 
 // Not yet... lyx 1.3.x or so
-//#define NO_PEXTRA_REALLY 1
+#define NO_PEXTRA_REALLY 1
 
 #include "ParameterStruct.h"
 
