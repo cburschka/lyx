@@ -8612,16 +8612,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QGraphics_moc.C">
-							<FileConfiguration
-								Name="Debug|Win32">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Release|Win32">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QGraphicsDialog_moc.C">
@@ -10436,15 +10426,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\support\atoi.C">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\..\src\support\chdir.C">
 					<FileConfiguration
 						Name="Debug|Win32">
@@ -10494,18 +10475,6 @@
 				</File>
 				<File
 					RelativePath="..\..\src\support\filefilterlist.h">
-				</File>
-				<File
-					RelativePath="..\..\src\support\FileInfo.C">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\support\FileInfo.h">
 				</File>
 				<File
 					RelativePath="..\..\src\support\FileMonitor.C">
@@ -10578,6 +10547,12 @@
 				</File>
 				<File
 					RelativePath="..\..\src\support\forkedcontr.h">
+				</File>
+				<File
+					RelativePath="..\..\src\support\fs_extras.C">
+				</File>
+				<File
+					RelativePath="..\..\src\support\fs_extras.h">
 				</File>
 				<File
 					RelativePath="..\..\src\support\getcwd.C">
@@ -10786,22 +10761,6 @@
 					RelativePath=".\version.C">
 				</File>
 			</Filter>
-		</Filter>
-		<Filter
-			Name="boost"
-			Filter="">
-			<File
-				RelativePath="..\..\boost\libs\filesystem\src\convenience.cpp">
-			</File>
-			<File
-				RelativePath="..\..\boost\libs\filesystem\src\exception.cpp">
-			</File>
-			<File
-				RelativePath="..\..\boost\libs\filesystem\src\operations_posix_windows.cpp">
-			</File>
-			<File
-				RelativePath="..\..\boost\libs\filesystem\src\path_posix_windows.cpp">
-			</File>
 		</Filter>
 	</Files>
 	<Globals>

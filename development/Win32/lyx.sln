@@ -6,6 +6,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lyx", "lyx.vcproj", "{96777
 		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
 		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
 		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
+		{684579F5-D732-45CE-BBFB-9419BB98DADC} = {684579F5-D732-45CE-BBFB-9419BB98DADC}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libboost_regex", "..\..\boost\libs\regex\regex.vcproj", "{FDBBC827-4BD2-4E7D-B050-0967A0B6C754}"
@@ -13,6 +14,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libboost_regex", "..\..\boo
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libboost_signals", "..\..\boost\libs\signals\signals.vcproj", "{3BF0EC29-8B64-460F-AE0A-96794D38088D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libboost_filesystem", "..\..\boost\libs\filesystem\filesystem.vcproj", "{684579F5-D732-45CE-BBFB-9419BB98DADC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -34,6 +39,10 @@ Global
 		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Debug.Build.0 = Debug|Win32
 		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Release.ActiveCfg = Release|Win32
 		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Release.Build.0 = Release|Win32
+		{684579F5-D732-45CE-BBFB-9419BB98DADC}.Debug.ActiveCfg = Debug|Win32
+		{684579F5-D732-45CE-BBFB-9419BB98DADC}.Debug.Build.0 = Debug|Win32
+		{684579F5-D732-45CE-BBFB-9419BB98DADC}.Release.ActiveCfg = Release|Win32
+		{684579F5-D732-45CE-BBFB-9419BB98DADC}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

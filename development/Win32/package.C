@@ -19,13 +19,13 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 
 #include <boost/assert.hpp>
 #include <boost/tuple/tuple.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <list>
 #include <utility>
@@ -50,6 +50,8 @@
 #endif
 
 using std::string;
+
+namespace fs = boost::filesystem;
 
 
 namespace lyx {
@@ -255,19 +257,7 @@ std::pair<string, string> const get_build_dirs(string const & abs_binary)
 			}
 		}
 
-		// Check whether binary is a symbolic link.
-		// If so, resolve it and repeat the exercise.
-		FileInfo const file(binary, true);
-		if (!file.isOK() || !file.isLink())
-			break;
-
-		string link;
-		if (LyXReadLink(binary, link, true)) {
-			binary = link;
-		} else {
-			// Unable to resolve the link.
-			break;
-		}
+		break;
 	}
 
 	lyxerr[Debug::INIT] << check_text << " no" << std::endl;
@@ -317,14 +307,12 @@ string const get_locale_dir(string const & system_support_dir)
 	// be "../locale/".)
 	path = NormalizePath(AddPath(system_support_dir, relative_locale_dir()));
 
-	FileInfo fi(path);
-	if (fi.isOK() && fi.isDir())
+	if (fs::is_directory(path))
 		return path;
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
 	path = hardcoded_localedir();
-	FileInfo fi2(path);
-	if (fi2.isOK() && fi2.isDir())
+	if (fs::is_directory(path))
 		return path;
 
 	return string();
@@ -378,7 +366,7 @@ string const get_binary_path(string const & exe)
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
 	string const abs_exe_path = MakeAbsPath(exe_path);
-	if (FileInfo(abs_exe_path, true).isOK())
+	if (fs::exists(abs_exe_path))
 		return abs_exe_path;
 
 	// 2. exe must be the name of the binary only and it
@@ -395,7 +383,7 @@ string const get_binary_path(string const & exe)
 		string const exe_dir = MakeAbsPath(*it);
 
 		string const exe_path = AddName(exe_dir, exe_name);
-		if (FileInfo(exe_path, true).isOK())
+		if (fs::exists(exe_path))
 			return exe_path;
 	}
 
@@ -471,48 +459,7 @@ get_system_support_dir(string const & abs_binary,
 			return lyxdir;
 		}
 
-		// Check whether binary is a symbolic link.
-		// If so, resolve it and repeat the exercise.
-		FileInfo const file(binary, true);
-		if (!file.isOK() || !file.isLink())
-			break;
-
-		string link;
-		if (LyXReadLink(binary, link, true)) {
-			binary = link;
-		} else {
-			// Unable to resolve the link.
-			break;
-		}
-	}
-
-	// 4. Repeat the exercise on the directory itself.
-	string binary_dir = OnlyPath(abs_binary);
-	while (true) {
-		// This time test whether the directory is a symbolic link
-		// *before* looking for "chkconfig.ltx".
-		// (We've looked relative to the original already.)
-		FileInfo const file(binary_dir, true);
-		if (!file.isOK() || !file.isLink())
-			break;
-
-		string link;
-		if (LyXReadLink(binary_dir, link, true)) {
-			binary_dir = link;
-		} else {
-			// Unable to resolve the link.
-			break;
-		}
-
-		// Try and find "chkconfig.ltx".
-		string const lyxdir =
-			NormalizePath(AddPath(binary_dir, relative_lyxdir));
-		searched_dirs.push_back(lyxdir);
-
-		if (!FileSearch(lyxdir, chkconfig_ltx).empty()) {
-			// Success! "chkconfig.ltx" has been found.
-			return lyxdir;
-		}
+		break;
 	}
 
 	// 5. In desparation, try the hard-coded system support dir.
@@ -657,8 +604,7 @@ bool check_env_var_dir(string const & dir,
 bool check_env_var_dir(string const & dir,
 		       string const & env_var)
 {
-	FileInfo fi(dir);
-	bool const success = (fi.isOK() && fi.isDir());
+	bool const success = fs::is_directory(dir);
 
 	if (!success) {
 		// Put this string on a single line so that the gettext
