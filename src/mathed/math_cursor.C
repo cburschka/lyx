@@ -635,8 +635,8 @@ void MathCursor::macroModeClose()
 {
 	string s = macroName();
 	if (s.size()) {
-		pos() = pos() - s.size();
-		for (unsigned i = 0; i < s.size(); ++i)
+		pos() = pos() - s.size() - 1;
+		for (unsigned i = 0; i <= s.size(); ++i)
 			plainErase();
 		lastcode_ = LM_TC_VAR;
 		interpret("\\" + s);
@@ -649,10 +649,9 @@ string MathCursor::macroName() const
 	string s;
 	for (int i = pos() - 1; i >= 0; --i) {
 		MathInset * p = array().at(i)->nucleus();
-		if (p && p->code() == LM_TC_TEX)
-			s = p->getChar() + s;
-		else
+		if (!p || p->code() != LM_TC_TEX || p->getChar() == '\\')
 			break;
+		s = p->getChar() + s;
 	}
 	return s;
 }
@@ -1333,11 +1332,6 @@ void MathCursor::interpret(string const & s)
 
 	if (lastcode_ == LM_TC_TEX) {
 		if (macroName().empty()) {
-			if (strchr("$%{}", c)) {
-				insert(new MathCharInset(c, LM_TC_TEX));	
-				lastcode_ = LM_TC_VAR;
-				return;
-			}
 			insert(c, LM_TC_TEX);
 			if (!isalpha(c) && c != '#') {
 				macroModeClose();
@@ -1362,14 +1356,14 @@ void MathCursor::interpret(string const & s)
 	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
 		static char const greekl[][26] =
 			{"alpha", "beta", "chi", "delta", "epsilon", "phi",
-			 "gamma", "eta", "iota", "", "kappa", "lambda", "mu",
+			 "gamma", "eta", "iota", "iota", "kappa", "lambda", "mu",
 			 "nu", "omikron", "pi", "omega", "rho", "sigma",
-			 "tau", "upsilon", "theta", "", "xi", "upsilon", "zeta"};
+			 "tau", "upsilon", "theta", "omega", "xi", "upsilon", "zeta"};
 		static char const greeku[][26] =
 			{"Alpha", "Beta", "Chi", "Delta", "Epsilon", "Phi",
-			 "Gamma", "Eta", "Iota", "", "Kappa", "Lambda", "Mu",
+			 "Gamma", "Eta", "Iota", "Iota", "Kappa", "Lambda", "Mu",
 			 "Nu", "Omikron", "Pi", "Omega", "Rho", "Sigma", "Tau",
-			 "Upsilon", "Theta", "", "xi", "Upsilon", "Zeta"};
+			 "Upsilon", "Theta", "Omega", "xi", "Upsilon", "Zeta"};
 	
 		latexkeys const * l = 0;	
 		if ('a' <= c && c <= 'z')
@@ -1390,6 +1384,7 @@ void MathCursor::interpret(string const & s)
 
 	if (c == '\\') {
 		lastcode_ = LM_TC_TEX;
+		insert(c, LM_TC_TEX);
 		//bv->owner()->message(_("TeX mode"));
 		return;	
 	}
