@@ -258,6 +258,8 @@ void QGraphics::apply()
 	else
 	    igp.rotateOrigin = string();
 
+	igp.rotate = igp.rotateAngle != 0.0;
+	 
 	igp.special = dialog_->latexoptions->text();
 }
 

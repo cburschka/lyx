@@ -2384,31 +2384,31 @@
     </connection>
     <connection>
         <sender>lbXunit</sender>
-        <signal>highlighted(int)</signal>
+        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
         <sender>lbYunit</sender>
-        <signal>highlighted(int)</signal>
+        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
         <sender>rtXunit</sender>
-        <signal>highlighted(int)</signal>
+        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
         <sender>rtYXunit</sender>
-        <signal>highlighted(int)</signal>
+        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
         <sender>origin</sender>
-        <signal>highlighted(int)</signal>
+        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
@@ -2485,14 +2485,14 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>displayscale</sender>
-        <signal>returnPressed()</signal>
+        <sender>displayratioCB</sender>
+        <signal>stateChanged(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>displayratioCB</sender>
-        <signal>stateChanged(int)</signal>
+        <sender>displayscale</sender>
+        <signal>textChanged(const QString&amp;)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>

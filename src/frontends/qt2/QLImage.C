@@ -240,7 +240,7 @@ void QLImage::rotate(Params const & params)
 	lyxerr[Debug::GRAPHICS] << "rotating image by " << params.angle << " degrees" << endl;
  
 	QWMatrix m;
-	m.rotate(params.angle);
+	m.rotate(-params.angle);
 	xformed_pixmap_ = xformed_pixmap_.xForm(m);
 }
 
