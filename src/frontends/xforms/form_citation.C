@@ -135,7 +135,7 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 410, 460, 90, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 400, 460, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);

@@ -1,3 +1,13 @@
+2001-11-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+       * forms/form_ref.fd, form_preferences.fd, form_citation.fd,
+       form_graphics.fd, form_paragraph.fd: Enlarged the Restore button
+       to 100p (now German translation fits in).
+       * forms/form_external.fd, form_bibtex.fd, form_print.fd,
+       form_preferences.fd, form_graphics.fd, form.include.fd,
+       form-external.fd:
+       Unified label "Browse..." and unified its width to 100p.
+
 2001-11-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
        * forms/form_graphics.fd: fixed shortcut clash

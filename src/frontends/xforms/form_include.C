@@ -27,7 +27,7 @@ FD_form_include * FormInclude::build_include()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 210, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 70, 160, 90, "");
   {
-    char const * const dummy = N_("Browse|#B");
+    char const * const dummy = N_("Browse...|#B");
     fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 30, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

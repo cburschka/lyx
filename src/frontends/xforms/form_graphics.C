@@ -29,13 +29,13 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   {
     char const * const dummy = N_("File|#F");
-    fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 90, 20, 280, 30, idex(_(dummy)));
+    fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 90, 20, 270, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
-    char const * const dummy = N_("Browse|#B");
-    fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 380, 20, 90, 30, idex(_(dummy)));
+    char const * const dummy = N_("Browse...|#B");
+    fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 370, 20, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -103,7 +103,7 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 20, 350, 90, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 20, 350, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);

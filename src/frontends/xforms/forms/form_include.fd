@@ -58,13 +58,13 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Browse|#B
-shortcut:
+label: Browse...|#B
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_browse
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -77,11 +77,11 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Don't typeset|#D
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_typeset
-callback:
+callback: 
 argument: 
 
 --------------------
@@ -100,7 +100,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
 callback: C_FormBaseOKCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -113,12 +113,12 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
 callback: C_FormBaseCancelCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -131,12 +131,12 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Load|#L
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_load
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -149,12 +149,12 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: File name:|#F
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_filename
 callback: C_FormBaseInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -167,7 +167,7 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Visible space|#s
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_visiblespace
@@ -203,12 +203,12 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Verbatim|#V
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_verbatim
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -221,12 +221,12 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Use input|#i
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_useinput
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -239,12 +239,12 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Use include|#U
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_useinclude
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_END_GROUP

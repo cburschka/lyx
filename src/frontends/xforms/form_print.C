@@ -139,7 +139,7 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
-    char const * const dummy = N_("Browse|#B");
+    char const * const dummy = N_("Browse...|#B");
     fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 220, 300, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

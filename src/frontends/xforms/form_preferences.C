@@ -31,7 +31,7 @@ FD_form_preferences * FormPreferences::build_preferences()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 5, 390, 90, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 5, 390, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -213,22 +213,30 @@ FD_form_interface * FormPreferences::build_interface()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("User Interface file|#U");
-    fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 160, 185, 30, idex(_(dummy)));
+    fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 160, 170, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 160, 80, 30, _("Browse..."));
+  {
+    char const * const dummy = N_("Browse...|#r");
+    fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 335, 160, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Bind file|#B");
-    fdui->input_bind_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 195, 185, 30, idex(_(dummy)));
+    fdui->input_bind_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 195, 170, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_bind_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 195, 80, 30, _("Browse..."));
+  {
+    char const * const dummy = N_("Browse...|#w");
+    fdui->button_bind_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 335, 195, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -535,7 +543,7 @@ FD_form_spelloptions * FormPreferences::build_spelloptions()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Browse...|#B");
-    fdui->button_personal_dict = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 195, 89, 30, idex(_(dummy)));
+    fdui->button_personal_dict = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 195, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -606,25 +614,33 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("1st|#1");
-    fdui->input_kbmap1 = obj = fl_add_input(FL_NORMAL_INPUT, 144, 97, 195, 30, idex(_(dummy)));
+    fdui->input_kbmap1 = obj = fl_add_input(FL_NORMAL_INPUT, 145, 100, 190, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("2nd|#2");
-    fdui->input_kbmap2 = obj = fl_add_input(FL_NORMAL_INPUT, 144, 129, 195, 30, idex(_(dummy)));
+    fdui->input_kbmap2 = obj = fl_add_input(FL_NORMAL_INPUT, 145, 135, 190, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_kbmap1_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 341, 99, 90, 30, _("Browse"));
+  {
+    char const * const dummy = N_("Browse...|#o");
+    fdui->button_kbmap1_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 100, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_kbmap2_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 341, 128, 90, 30, _("Browse"));
+  {
+    char const * const dummy = N_("Browse...|#w");
+    fdui->button_kbmap2_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 135, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("RtL support|#R");
-    fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 170, 30, 30, idex(_(dummy)));
+    fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 175, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -632,7 +648,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Auto begin|#b");
-    fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 170, 30, 30, idex(_(dummy)));
+    fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 175, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -640,7 +656,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Use babel|#U");
-    fdui->check_use_babel = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 170, 30, 30, idex(_(dummy)));
+    fdui->check_use_babel = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 175, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -648,7 +664,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Mark foreign|#M");
-    fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 200, 30, 30, idex(_(dummy)));
+    fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 205, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -656,7 +672,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Auto finish|#f");
-    fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 200, 30, 30, idex(_(dummy)));
+    fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 205, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -664,7 +680,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Global|#G");
-    fdui->check_global_options = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 200, 30, 30, idex(_(dummy)));
+    fdui->check_global_options = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 205, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -684,9 +700,9 @@ FD_form_language * FormPreferences::build_language()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 170, 440, 60, "");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 235, 440, 85, "");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 95, 440, 70, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 175, 440, 60, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 240, 440, 80, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 95, 440, 75, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 5, 10, 440, 80, "");
   fl_end_form();
 
@@ -871,7 +887,7 @@ FD_form_paths * FormPreferences::build_paths()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_default_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 10, 90, 30, _("Browse..."));
+  fdui->button_default_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 10, 100, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -881,7 +897,7 @@ FD_form_paths * FormPreferences::build_paths()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_template_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 45, 90, 30, _("Browse..."));
+  fdui->button_template_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 45, 100, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -896,7 +912,7 @@ FD_form_paths * FormPreferences::build_paths()
   fdui->input_temp_dir = obj = fl_add_input(FL_NORMAL_INPUT, 170, 80, 170, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_temp_dir_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 80, 90, 30, _("Browse..."));
+  fdui->button_temp_dir_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 80, 100, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -911,7 +927,7 @@ FD_form_paths * FormPreferences::build_paths()
   fdui->input_lastfiles = obj = fl_add_input(FL_NORMAL_INPUT, 170, 115, 170, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_lastfiles_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 115, 90, 30, _("Browse..."));
+  fdui->button_lastfiles_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 115, 100, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -938,7 +954,7 @@ FD_form_paths * FormPreferences::build_paths()
   fdui->input_backup_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 205, 170, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_backup_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 205, 90, 30, _("Browse..."));
+  fdui->button_backup_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 205, 100, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -948,7 +964,7 @@ FD_form_paths * FormPreferences::build_paths()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_serverpipe_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 245, 90, 30, _("Browse..."));
+  fdui->button_serverpipe_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 345, 245, 100, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();

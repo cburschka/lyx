@@ -170,7 +170,7 @@ FD_form_paragraph * FormParagraph::build_paragraph()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 360, 90, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 360, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

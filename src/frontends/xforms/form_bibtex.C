@@ -27,7 +27,7 @@ FD_form_bibtex * FormBibtex::build_bibtex()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 170, "");
   {
     char const * const dummy = N_("Database:|#D");
-    fdui->database = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 260, 30, idex(_(dummy)));
+    fdui->database = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 245, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -44,20 +44,20 @@ FD_form_bibtex * FormBibtex::build_bibtex()
     fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
   {
     char const * const dummy = N_("Style:|#S");
-    fdui->style = obj = fl_add_input(FL_NORMAL_INPUT, 90, 50, 260, 30, idex(_(dummy)));
+    fdui->style = obj = fl_add_input(FL_NORMAL_INPUT, 90, 50, 245, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Browse...|#B");
-    fdui->database_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 360, 10, 80, 30, idex(_(dummy)));
+    fdui->database_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 10, 100, 29, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Browse...|#r");
-    fdui->style_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 360, 50, 80, 30, idex(_(dummy)));
+    fdui->style_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 50, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);

@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -456,12 +456,12 @@ style: FL_BOLD_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Label Width
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
-callback:
-argument:
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_INPUT
@@ -520,7 +520,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 360 90 30
+box: 10 360 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -603,9 +603,9 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
-callback:
-argument:
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_TEXT
@@ -624,7 +624,7 @@ gravity: FL_NoGravity FL_NoGravity
 name: text_warning
 callback: 
 argument: 
- 
+
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
@@ -635,8 +635,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label:
-shortcut:
+label: 
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_value_space_above
@@ -653,8 +653,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label:
-shortcut:
+label: 
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_value_space_below

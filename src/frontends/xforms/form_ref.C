@@ -39,14 +39,14 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Update|#U");
-    fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 300, 90, 30, idex(_(dummy)));
+    fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 300, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Sort|#S");
-    fdui->check_sort = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 110, 300, 30, 30, idex(_(dummy)));
+    fdui->check_sort = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 130, 300, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
@@ -78,7 +78,7 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 340, 90, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 340, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
