@@ -1,3 +1,10 @@
+2001-10-03  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C: ditto
+
+	* insetcollapsable.C: change updateInset calls to not tell BV that
+	we have changed status.
+
 2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insettabular.C (deletable): make const

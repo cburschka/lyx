@@ -1039,7 +1039,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 
 	if (text->inset_owner) {
 		text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
-	    updateInset(text->inset_owner, true);
+	    updateInset(text->inset_owner, false);
 	} else {
 	    update();
 	}

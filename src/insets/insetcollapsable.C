@@ -243,7 +243,7 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 		first_after_edit = true;
 		if (!bv->lockInset(this))
 			return;
-		bv->updateInset(this, true);
+		bv->updateInset(this, false);
 		inset.edit(bv);
 	} else {
 		if (!bv->lockInset(this))
@@ -271,7 +271,7 @@ void InsetCollapsable::edit(BufferView * bv, bool front)
 		if (!bv->lockInset(this))
 			return;
 		inset.setUpdateStatus(bv, InsetText::FULL);
-		bv->updateInset(this, true);
+		bv->updateInset(this, false);
 		inset.edit(bv, front);
 	} else {
 		if (!bv->lockInset(this))
@@ -334,11 +334,11 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 // should not be called on inset open!
 //			inset.insetButtonRelease(bv, 0, 0, button);
 			inset.setUpdateStatus(bv, InsetText::FULL);
-			bv->updateInset(this, true);
+			bv->updateInset(this, false);
 		} else {
 			collapsed_ = true;
 			bv->unlockInset(this);
-			bv->updateInset(this, true);
+			bv->updateInset(this, false);
 		}
 	} else if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -602,7 +602,7 @@ void InsetCollapsable::open(BufferView * bv)
 	if (!collapsed_) return;
 	
 	collapsed_ = false;
-	bv->updateInset(this, true);
+	bv->updateInset(this, false);
 }
 
 
@@ -612,7 +612,7 @@ void InsetCollapsable::close(BufferView * bv) const
 		return;
 	
 	collapsed_ = true;
-	bv->updateInset(const_cast<InsetCollapsable *>(this), true);
+	bv->updateInset(const_cast<InsetCollapsable *>(this), false);
 }
 
 
