@@ -1,3 +1,8 @@
+2001-10-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* paragraph.C (asString): Do not ignore newline/hfill chars when
+ 	copying to the clipboard.
+
 2001-09-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* paragraph_pimpl.C (simpleTeXSpecialChars): Call to textrow.start

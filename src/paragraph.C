@@ -1951,6 +1951,10 @@ string const Paragraph::asString(Buffer const * buffer,
 		value_type const c = getUChar(buffer->params, i);
 		if (IsPrintable(c))
 			ost << c;
+		else if (c == META_NEWLINE)
+			ost << '\n';
+		else if (c == META_HFILL)
+			ost << '\t'; 
 		else if (c == META_INSET) {
 			getInset(i)->ascii(buffer, ost);
 		}
