@@ -1,3 +1,8 @@
+2005-02-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (latex): Remove line continuation '%\n' (bug xxx,
+	workaround for broken HTML converter)
+
 2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insetcollapsable.C (leaveInset): size() -> depth()

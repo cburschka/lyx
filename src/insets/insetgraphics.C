@@ -294,48 +294,47 @@ string const InsetGraphics::createLatexOptions() const
 	// before writing it to the output stream.
 	ostringstream options;
 	if (!params().bb.empty())
-	    options << " bb=" << rtrim(params().bb) << ",\n";
+	    options << "bb=" << rtrim(params().bb) << ',';
 	if (params().draft)
-	    options << " draft,\n";
+	    options << "draft,";
 	if (params().clip)
-	    options << " clip,\n";
+	    options << "clip,";
 	double const scl = convert<double>(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
-			options << " scale=" << scl / 100.0
-				<< ",\n";
+			options << "scale=" << scl / 100.0 << ',';
 	} else {
 		if (!params().width.zero())
-			options << " width=" << params().width.asLatexString() << ",\n";
+			options << "width=" << params().width.asLatexString() << ',';
 		if (!params().height.zero())
-			options << " height=" << params().height.asLatexString() << ",\n";
+			options << "height=" << params().height.asLatexString() << ',';
 		if (params().keepAspectRatio)
-			options << " keepaspectratio,\n";
+			options << "keepaspectratio,";
 	}
 
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
 	if (!params().rotateAngle.empty()
 		&& !float_equal(convert<double>(params().rotateAngle), 0.0, 0.001)) {
-	    options << "  angle=" << params().rotateAngle << ",\n";
+	    options << "angle=" << params().rotateAngle << ',';
 	    if (!params().rotateOrigin.empty()) {
-		options << "  origin=" << params().rotateOrigin[0];
+		options << "origin=" << params().rotateOrigin[0];
 		if (contains(params().rotateOrigin,"Top"))
 		    options << 't';
 		else if (contains(params().rotateOrigin,"Bottom"))
 		    options << 'b';
 		else if (contains(params().rotateOrigin,"Baseline"))
 		    options << 'B';
-		options << ",\n";
+		options << ',';
 	    }
 	}
 
 	if (!params().special.empty())
-	    options << params().special << ",\n";
+	    options << params().special << ',';
 
 	string opts = options.str();
-	// delete last ",\n"
-	return opts.substr(0, opts.size() - 2);
+	// delete last ','
+	return opts.substr(0, opts.size() - 1);
 }
 
 
@@ -722,9 +721,9 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	lyxerr[Debug::GRAPHICS] << "\tOpts = " << opts << endl;
 
 	if (!opts.empty() && !message.empty())
-		before += ("[%\n" + opts + ',' + message + ']');
+		before += ('[' + opts + ',' + message + ']');
 	else if (!opts.empty() || !message.empty())
-		before += ("[%\n" + opts + message + ']');
+		before += ('[' + opts + message + ']');
 
 	lyxerr[Debug::GRAPHICS]
 		<< "\tBefore = " << before
