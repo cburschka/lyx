@@ -1,3 +1,8 @@
+2002-11-21  Angus Leeming  <leeming@lyx.org>
+
+	* FormSpellchecker.C (updateState): new method, replacing Black Magic.
+	Should also resolve Darren Freeman's redraw of the status bar problem.
+
 2002-11-20  Angus Leeming  <leeming@lyx.org>
 
 	* forms/fdfix.sh: 

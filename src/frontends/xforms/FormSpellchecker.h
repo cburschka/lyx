@@ -40,6 +40,17 @@ private:
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	///
+	enum State {
+		START,
+		RUNNING,
+		STOP
+	};
+	///
+	void updateState(State state);
+	///
+	State state_;
 };
 
 #endif // FORMSPELLCHECKER_H

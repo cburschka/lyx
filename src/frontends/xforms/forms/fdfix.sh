@@ -52,8 +52,7 @@ fi
 # Create the initial .c and .h files
 FDESIGN=fdesign
 FDFILE=${BASENAME}.fd
-(cd ${DIRNAME} && ${FDESIGN} -convert ${FDFILE})
-if [ $? -ne 0 ]; then
+if (cd ${DIRNAME} && ${FDESIGN} -convert ${FDFILE}); then : ; else
     echo "\"${FDESIGN} -convert ${FDFILE}\" failed. Please investigate."
     exit 1
 fi
@@ -100,8 +99,7 @@ fi
 rm -f ${HIN}
 MOVE_H_FILE=1
 if [ -r ${BASENAME}.h ]; then
-    cmp -s ${HOUT} ${BASENAME}.h
-    if [ $? -eq 0 ]; then
+    if cmp -s ${HOUT} ${BASENAME}.h; then
 	MOVE_H_FILE=0
     fi
 fi
@@ -126,8 +124,7 @@ echo "#include <config.h>" >> ${COUT}
 echo "#include \"forms_gettext.h\"" >> ${COUT}
 echo "#include \"gettext.h\"" >> ${COUT}
 
-grep bmtable ${CIN} > /dev/null
-if [ $? -eq 0 ]; then
+if grep bmtable ${CIN} > /dev/null; then
     echo "#include \"bmtable.h\"" >> ${COUT}
 fi
 

@@ -28,7 +28,7 @@ typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 
 FormSpellchecker::FormSpellchecker()
-	: base_class(_("Spellchecker"))
+	: base_class(_("Spellchecker")), state_(STOP)
 {}
 
 
@@ -77,6 +77,73 @@ void FormSpellchecker::build()
 }
 
 
+void FormSpellchecker::updateState(State state)
+{
+	switch (state) {
+	case START:
+		fl_set_slider_value(dialog_->slider_progress, 0.0);
+		fl_set_object_label(dialog_->slider_progress, "0 %");
+		break;
+
+	case RUNNING: 
+	{
+		controller().check();
+
+		int const progress = controller().getProgress();
+		if (progress == 0)
+			break;
+
+		double const wordcount = controller().getCount();
+		double const total = 100.0 * wordcount / progress;
+		string const label = tostr(progress) + " %";
+
+		fl_set_slider_bounds(dialog_->slider_progress, 0.0, total);
+		fl_set_slider_value(dialog_->slider_progress, wordcount);
+		fl_set_object_label(dialog_->slider_progress, label.c_str());
+		break;
+	}
+
+	case STOP: 
+	{
+		controller().stop();
+
+		double const wordcount = controller().getCount();
+
+		// set slider 'finished' status
+		fl_set_slider_bounds(dialog_->slider_progress, 0.0, wordcount);
+		fl_set_slider_value(dialog_->slider_progress, wordcount);
+		fl_set_object_label(dialog_->slider_progress, "100 %");
+		break;
+	}
+	}
+
+	bool const state_change = state_ != state;
+	state_ = state;
+
+	if (!state_change)
+		return;
+
+	bool const set_running = (state == RUNNING);
+	string const label = set_running ? _("Stop") : _("Start");
+	
+	fl_set_object_label(dialog_->button_start, label.c_str());	
+	fl_set_button_shortcut(dialog_->button_start, "#S", 1);
+	fl_redraw_object(dialog_->button_start);
+
+	string const tip = set_running ?
+		_("Stop the spellingchecker.") :
+		_("Start the spellingchecker.");
+	tooltips().init(dialog_->button_start, tip);
+	
+	setEnabled(dialog_->button_replace,      set_running);
+	setEnabled(dialog_->button_ignore,       set_running);
+	setEnabled(dialog_->button_accept,       set_running);
+	setEnabled(dialog_->button_add,          set_running);
+	setEnabled(dialog_->browser_suggestions, set_running);
+	setEnabled(dialog_->input_replacement,   set_running);
+}
+
+
 void FormSpellchecker::update()
 {
 	// clear input fields
@@ -85,48 +152,14 @@ void FormSpellchecker::update()
 	fl_clear_browser(dialog_->browser_suggestions);
 
 	// reset dialog and buttons into start condition
-	input(0, 0);
-
-	// reset slider to zero count
-	fl_set_slider_value(dialog_->slider_progress, 0.0);
-	fl_set_object_label(dialog_->slider_progress, "0 %");
+	updateState(START);
 }
 
 
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 {
-	if (!ob || ob == dialog_->button_start) {
-		static bool running = false;
-
-		// update running status of spellingchecker
-		running = !running && ob == dialog_->button_start;
-
-		// modify text of Start/Stop button according to running status
-		string const labeltext = running ? _("Stop") : _("Start");
-		fl_set_object_label(dialog_->button_start, labeltext.c_str());	
-		fl_set_button_shortcut(dialog_->button_start, "#S", 1);
-		fl_show_object(dialog_->button_start);
-
-		// adjust tooltips to modified Start/Stop button
-		string const str = (running ? _("Stop the spellingchecker.") :
-					_("Start the spellingchecker."));
-		tooltips().init(dialog_->button_start, str);
-
-		// enable buttons according to running status
-		setEnabled(dialog_->button_replace, running);
-		setEnabled(dialog_->button_ignore, running);
-		setEnabled(dialog_->button_accept, running);
-		setEnabled(dialog_->button_add, running);
-		setEnabled(dialog_->browser_suggestions, running);
-		setEnabled(dialog_->input_replacement, running);
-
-		// call controller if Start/Stop button is pressed
-		if (ob) {
-			if (running)
-				controller().check();
-			else
-				controller().stop();
-		}
+	if (ob == dialog_->button_start) {
+		updateState(RUNNING);
 
 	} else if (ob == dialog_->button_replace) {
 		string const tmp = getString(dialog_->input_replacement);
@@ -160,17 +193,6 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 		}
 	}
 
-	// update slider with word count and progress
-	int const progress = controller().getProgress();
-	if (progress > 0) {
-		double const wordcount = controller().getCount();
-		double const total = 100.0 * wordcount / progress;
-		string const label = tostr(progress) + " %";
-		fl_set_slider_bounds(dialog_->slider_progress, 0.0, total);
-		fl_set_slider_value(dialog_->slider_progress, wordcount);
-		fl_set_object_label(dialog_->slider_progress, label.c_str());
-	}
-
 	return ButtonPolicy::SMI_VALID;
 }
 
@@ -178,27 +200,22 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 void FormSpellchecker::partialUpdate(int id)
 {
 	switch (id) {
-	case 1: // set suggestions
+	case 1:
 	{
+		// Set suggestions.
 		string w = controller().getWord();
 		fl_set_input(dialog_->input_replacement, w.c_str());
 		fl_set_object_label(dialog_->text_unknown, w.c_str());
 		fl_clear_browser(dialog_->browser_suggestions);
 		while (!(w = controller().getSuggestion()).empty()) {
-			fl_add_browser_line(dialog_->browser_suggestions, w.c_str());
+			fl_add_browser_line(dialog_->browser_suggestions,
+					    w.c_str());
 		}
+		break;
 	}
-	break;
-	case 2: // end of spell checking
-
-		// reset dialog and buttons into start condition
-		input(0, 0);
-
-		// set slider 'finished' status
-		fl_set_slider_bounds(dialog_->slider_progress, 0.0, controller().getCount());
-		fl_set_slider_value(dialog_->slider_progress, controller().getCount());
-		fl_set_object_label(dialog_->slider_progress, "100 %");
-
+	case 2:
+		// End of spell checking.
+		updateState(STOP);
 		break;
 	}
 }
