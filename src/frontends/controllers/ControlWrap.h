@@ -12,58 +12,29 @@
 #ifndef CONTROLWRAP_H
 #define CONTROLWRAP_H
 
+#include "Dialog.h"
 
-#include "ControlInset.h"
-#include "lyxlength.h"
+class InsetWrapParams;
 
-// needed to instatiate inset->hideDialog in ControlInset
-#include "insets/insetwrap.h"
-
-class InsetWrap;
-
-///
-struct WrapParams {
-	///
-	WrapParams() {}
-	///
-	WrapParams(InsetWrap const &);
-	///
-	LyXLength pageWidth;
-	///
-	string placement;
-};
-
-
-inline
-bool operator==(WrapParams const & p1, WrapParams const & p2)
-{
-	return p1.pageWidth == p2.pageWidth && p1.placement == p2.placement;
-}
-
-
-inline
-bool operator!=(WrapParams const & p1, WrapParams const & p2)
-{
-	return !(p1 == p2);
-}
-
-
-/** A controller for Minipage dialogs.
- */
-class ControlWrap : public ControlInset<InsetWrap, WrapParams>  {
+class ControlWrap : public Dialog::Controller  {
 public:
 	///
-	ControlWrap(LyXView &, Dialogs &);
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
+	ControlWrap(Dialog &);
 	///
-	virtual void applyParamsNoInset();
-	/// get the parameters from the string passed to createInset.
-	virtual WrapParams const getParams(string const &)
-		{ return WrapParams(); }
-	/// get the parameters from the inset passed to showInset.
-	virtual WrapParams const getParams(InsetWrap const &);
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
+	///
+	InsetWrapParams & params() { return *params_.get(); }
+	///
+	InsetWrapParams const & params() const { return *params_.get(); }
+private:
+	///
+	boost::scoped_ptr<InsetWrapParams> params_;
 };
 
 #endif

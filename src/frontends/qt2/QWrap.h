@@ -13,19 +13,18 @@
 #define QWRAP_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlWrap;
 class QWrapDialog;
 
 
-class QWrap
-	: public Qt2CB<ControlWrap, Qt2DB<QWrapDialog> >
-{
+class QWrap : public QController<ControlWrap, QView<QWrapDialog> > {
 public:
 	friend class QWrapDialog;
 
-	QWrap();
+	QWrap(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

@@ -10,24 +10,24 @@
 
 #include <config.h>
 
-
 #include "xformsBC.h"
 #include "ControlWrap.h"
 #include "FormWrap.h"
 #include "forms/form_wrap.h"
 #include "Tooltips.h"
 
-#include "support/lstrings.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
 #include "checkedwidgets.h"
 
+#include "insets/insetwrap.h"
+#include "support/lstrings.h"
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlWrap, FormDB<FD_wrap> > base_class;
+typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;
 
-FormWrap::FormWrap()
-	: base_class(_("Wrap Options"))
+FormWrap::FormWrap(Dialog & parent)
+	: base_class(parent, _("Wrap Options"))
 {}
 
 
@@ -80,26 +80,29 @@ void FormWrap::build()
 
 void FormWrap::apply()
 {
-	controller().params().pageWidth =
+	InsetWrapParams & params = controller().params();
+
+	params.width =
 		LyXLength(getLengthFromWidgets(dialog_->input_width,
 					       dialog_->choice_width_units));
 
 	char const c = static_cast<char>(placement_.get());
 	if (c)
-		controller().params().placement = c;
+		params.placement = c;
 	else
-		controller().params().placement.erase(); // default
+		params.placement.erase(); // default
 }
 
 
 void FormWrap::update()
 {
-	LyXLength len(controller().params().pageWidth);
+	InsetWrapParams const & params = controller().params();
+	LyXLength len(params.width);
 	fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
 	fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
 
-	if (controller().params().placement.empty())
+	if (params.placement.empty())
 		placement_.set(dialog_->radio_default); // default
 	else
-		placement_.set(controller().params().placement.c_str()[0]);
+		placement_.set(params.placement.c_str()[0]);
 }

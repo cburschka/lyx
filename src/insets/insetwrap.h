@@ -16,13 +16,24 @@
 #include "toc.h"
 #include "lyxlength.h"
 
-#include <boost/signals/signal0.hpp>
 
-class Painter;
+struct InsetWrapParams {
+	///
+	void write(std::ostream &) const;
+	///
+	void read(LyXLex &);
+    
+	///
+	string type;
+	///
+	string placement;
+	///
+	LyXLength width;
+};
+
 
 /** The wrap inset
-
-*/
+ */
 class InsetWrap : public InsetCollapsable {
 public:
 	///
@@ -31,6 +42,8 @@ public:
 	InsetWrap(InsetWrap const &, bool same_id = false);
 	///
 	~InsetWrap();
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -66,16 +79,39 @@ public:
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///
-	boost::signal0<void> hideDialog;
-	///
 	int latexTextWidth(BufferView *) const;
+	///
+	InsetWrapParams const & params() const { return params_; }
 private:
 	///
-	string Type_;
+	InsetWrapParams params_;
+};
+
+
+
+#include "mailinset.h"
+
+
+class InsetWrapMailer : public MailInset {
+public:
 	///
-	string Placement_;
+	InsetWrapMailer(InsetWrap & inset);
 	///
-	LyXLength width_;
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetWrapParams &);
+	///
+	static string const params2string(string const & name,
+					  InsetWrapParams const &);
+private:
+	///
+	string const name_;
+	///
+	InsetWrap & inset_;
 };
 
 #endif

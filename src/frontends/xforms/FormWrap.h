@@ -13,7 +13,7 @@
 #define FORMWRAP_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
 class ControlWrap;
@@ -23,10 +23,10 @@ struct FD_wrap;
     Dialog.
  */
 class FormWrap
-	: public FormCB<ControlWrap, FormDB<FD_wrap> > {
+	: public FormController<ControlWrap, FormView<FD_wrap> > {
 public:
 	///
-	FormWrap();
+	FormWrap(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

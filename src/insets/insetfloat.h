@@ -17,7 +17,6 @@
 #include "insetcollapsable.h"
 #include "toc.h"
 
-class Painter;
 
 struct InsetFloatParams {
 	///
@@ -46,10 +45,8 @@ public:
 	InsetFloat(InsetFloat const &, bool same_id = false);
 	///
 	~InsetFloat();
-
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
-
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///

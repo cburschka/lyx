@@ -1,5 +1,10 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.h: remove showWrap.
+	* guiapi.[Ch]: remove gui_ShowWrap.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h: remove showFloat.
 	* guiapi.[Ch]: remove gui_ShowFloat.
 

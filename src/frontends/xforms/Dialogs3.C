@@ -65,6 +65,10 @@
 #include "FormUrl.h"
 #include "forms/form_url.h"
 
+#include "ControlWrap.h"
+#include "FormWrap.h"
+#include "forms/form_wrap.h"
+
 #include "xformsBC.h"
 #include "ButtonController.h"
 
@@ -92,7 +96,7 @@ namespace {
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
 				     "include", "index", "label", "ref",
-				     "toc", "url" };
+				     "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -177,6 +181,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "url") {
 		dialog->setController(new ControlUrl(*dialog));
 		dialog->setView(new FormUrl(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "wrap") {
+		dialog->setController(new ControlWrap(*dialog));
+		dialog->setView(new FormWrap(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	}
 

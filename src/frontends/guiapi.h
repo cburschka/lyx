@@ -16,7 +16,6 @@
 #include "LString.h"
 
 class Dialogs;
-class InsetWrap;
 class InsetGraphics;
 class InsetMinipage;
 class InsetTabular;
@@ -50,7 +49,6 @@ void gui_ShowTabularCreate(Dialogs &);
 void gui_ShowTexinfo(Dialogs &);
 void gui_ShowThesaurus(string const &, Dialogs &);
 void gui_ShowVCLogFile(Dialogs &);
-void gui_ShowWrap(InsetWrap *, Dialogs &);
 
 } // extern "C"
 

@@ -10,22 +10,25 @@
 
 #include <config.h>
 
-
 #include "insetwrap.h"
-#include "gettext.h"
-#include "lyxfont.h"
-#include "BufferView.h"
-#include "lyxtext.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
-#include "support/lstrings.h"
-#include "LaTeXFeatures.h"
-#include "debug.h"
+#include "insettext.h"
+
 #include "buffer.h"
+#include "BufferView.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "FloatList.h"
+#include "gettext.h"
+#include "LaTeXFeatures.h"
+#include "lyxfont.h"
+#include "lyxlex.h"
+#include "lyxtext.h"
+
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
-#include "lyxlex.h"
-#include "FloatList.h"
+
+#include "support/LOstream.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 using std::endl;
@@ -49,7 +52,7 @@ string floatname(string const & type, BufferParams const & bp)
 
 
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
-	: InsetCollapsable(bp), width_(50, LyXLength::PCW)
+	: InsetCollapsable(bp)
 {
 	string lab(_("wrap: "));
 	lab += floatname(type, bp);
@@ -59,7 +62,8 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	Type_ = type;
+	params_.type = type;
+	params_.width = LyXLength(50, LyXLength::PCW);
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
@@ -68,39 +72,61 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 
 
 InsetWrap::InsetWrap(InsetWrap const & in, bool same_id)
-	: InsetCollapsable(in, same_id), Type_(in.Type_),
-	  Placement_(in.Placement_), width_(in.width_)
+	: InsetCollapsable(in, same_id), params_(in.params_)
 {}
 
 
 InsetWrap::~InsetWrap()
 {
-	hideDialog();
+	InsetWrapMailer mailer(*this);
+	mailer.hideDialog();
 }
 
 
-void InsetWrap::write(Buffer const * buf, ostream & os) const
+dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
+{
+	Inset::RESULT result = UNDISPATCHED;
+
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetWrapParams params;
+		InsetWrapMailer::string2params(cmd.argument, params);
+
+		params_.placement = params.placement;
+		params_.width     = params.width;
+
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+	default:
+		result = InsetCollapsable::localDispatch(cmd);
+	}
+
+	return result;
+}
+
+
+void InsetWrapParams::write(ostream & os) const
 {
 	os << "Wrap " // getInsetName()
-	   << Type_ << '\n';
+	   << type << '\n';
 
-	if (!Placement_.empty()) {
-		os << "placement " << Placement_ << "\n";
+	if (!placement.empty()) {
+		os << "placement " << placement << "\n";
 	}
-	os << "width \"" << width_.asString() << "\"\n";
-
-	InsetCollapsable::write(buf, os);
+	os << "width \"" << width.asString() << "\"\n";
 }
 
 
-void InsetWrap::read(Buffer const * buf, LyXLex & lex)
+void InsetWrapParams::read(LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
 		string token = lex.getString();
 		if (token == "placement") {
 			lex.next();
-			Placement_ = lex.getString();
+			placement = lex.getString();
 		} else {
 			// take countermeasures
 			lex.pushToken(token);
@@ -111,7 +137,7 @@ void InsetWrap::read(Buffer const * buf, LyXLex & lex)
 		string token = lex.getString();
 		if (token == "width") {
 			lex.next();
-			width_ = LyXLength(lex.getString());
+			width = LyXLength(lex.getString());
 		} else {
 			lyxerr << "InsetWrap::Read:: Missing 'width'-tag!"
 			       << endl;
@@ -119,6 +145,19 @@ void InsetWrap::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
+}
+
+
+void InsetWrap::write(Buffer const * buf, ostream & os) const
+{
+	params_.write(os);
+	InsetCollapsable::write(buf, os);
+}
+
+
+void InsetWrap::read(Buffer const * buf, LyXLex & lex)
+{
+	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -145,24 +184,24 @@ string const InsetWrap::editMessage() const
 int InsetWrap::latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
-	os << "\\begin{floating" << Type_ << '}';
-	if (!Placement_.empty()) {
-		os << '[' << Placement_ << ']';
+	os << "\\begin{floating" << params_.type << '}';
+	if (!params_.placement.empty()) {
+		os << '[' << params_.placement << ']';
 	}
-	os  << '{' << width_.asLatexString() << "}%\n";
+	os  << '{' << params_.width.asLatexString() << "}%\n";
 
 	int const i = inset.latex(buf, os, fragile, fp);
 
-	os << "\\end{floating" << Type_ << "}%\n";
+	os << "\\end{floating" << params_.type << "}%\n";
 	return i + 2;
 }
 
 
 int InsetWrap::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
-	os << '<' << Type_ << '>';
+	os << '<' << params_.type << '>';
 	int const i = inset.docbook(buf, os, mixcont);
-	os << "</" << Type_ << '>';
+	os << "</" << params_.type << '>';
 
 	return i;
 }
@@ -188,7 +227,7 @@ int InsetWrap::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	    static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, inset) < 0) {
 		return -1;
 	}
-	if (!width_.zero()) {
+	if (!params_.width.zero()) {
 		int const ww1 = latexTextWidth(bv);
 		int const ww2 = InsetCollapsable::getMaxWidth(bv, inset);
 		if (ww2 > 0 && ww2 < ww1) {
@@ -203,26 +242,26 @@ int InsetWrap::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 
 int InsetWrap::latexTextWidth(BufferView * bv) const
 {
-	return width_.inPixels(InsetCollapsable::latexTextWidth(bv));
+	return params_.width.inPixels(InsetCollapsable::latexTextWidth(bv));
 }
 
 
 string const & InsetWrap::type() const
 {
-	return Type_;
+	return params_.type;
 }
 
 
 LyXLength const & InsetWrap::pageWidth() const
 {
-	return width_;
+	return params_.width;
 }
 
 
 void InsetWrap::pageWidth(LyXLength const & ll)
 {
-	if (ll != width_) {
-		width_ = ll;
+	if (ll != params_.width) {
+		params_.width = ll;
 		need_update = FULL;
 	}
 }
@@ -230,20 +269,22 @@ void InsetWrap::pageWidth(LyXLength const & ll)
 
 void InsetWrap::placement(string const & p)
 {
-	Placement_ = p;
+	params_.placement = p;
 }
 
 
 string const & InsetWrap::placement() const
 {
-	return Placement_;
+	return params_.placement;
 }
 
 
 bool InsetWrap::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
-		bv->owner()->getDialogs().showWrap(const_cast<InsetWrap *>(this));
+		InsetWrap * tmp = const_cast<InsetWrap *>(this);
+		InsetWrapMailer mailer(*tmp);
+		mailer.showDialog();
 	}
 	return true;
 }
@@ -266,4 +307,52 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 		}
 		tmp = tmp->next();
 	}
+}
+
+
+InsetWrapMailer::InsetWrapMailer(InsetWrap & inset)
+	: name_("wrap"), inset_(inset)
+{}
+
+
+string const InsetWrapMailer::inset2string() const
+{
+	return params2string(name(), inset_.params());
+}
+
+
+void InsetWrapMailer::string2params(string const & in,
+				    InsetWrapParams & params)
+{
+	params = InsetWrapParams();
+
+	string name;
+	string body = split(in, name, ' ');
+
+	if (name != "wrap" || body.empty())
+		return;
+
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	body = split(body, name, '\n');
+	if (!prefixIs(name, "Wrap "))
+		return;
+
+	istringstream data(body);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	params.read(lex);
+}
+
+
+string const
+InsetWrapMailer::params2string(string const & name,
+			       InsetWrapParams const & params)
+{
+	ostringstream data;
+	data << name << ' ';
+	params.write(data);
+
+	return data.str();
 }

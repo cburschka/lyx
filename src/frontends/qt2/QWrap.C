@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "debug.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"
@@ -22,15 +21,18 @@
 #include "Qt2BC.h"
 #include "lengthcombo.h"
 
+#include "insets/insetwrap.h"
+
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 
-typedef Qt2CB<ControlWrap, Qt2DB<QWrapDialog> > base_class;
+
+typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
 
 
-QWrap::QWrap()
-	: base_class(qt_("LyX: Text-wrapping Settings"))
+QWrap::QWrap(Dialog & parent)
+	: base_class(parent, qt_("LyX: Text-wrapping Settings"))
 {
 }
 
@@ -57,9 +59,9 @@ void QWrap::apply()
 	if (dialog_->widthED->text().isEmpty())
 		unit = LyXLength::UNIT_NONE;
 
-	WrapParams & params = controller().params();
+	InsetWrapParams & params = controller().params();
 
-	params.pageWidth = LyXLength(value, unit);
+	params.width = LyXLength(value, unit);
 
 	switch (dialog_->valignCO->currentItem()) {
 	case 0:
@@ -92,9 +94,9 @@ string const numtostr(double val) {
 
 void QWrap::update_contents()
 {
-	WrapParams & params = controller().params();
+	InsetWrapParams & params = controller().params();
 
-	LyXLength len(params.pageWidth);
+	LyXLength len(params.width);
 	dialog_->widthED->setText(toqstr(numtostr(len.value())));
 	dialog_->unitsLC->setCurrentItem(len.unit());
 

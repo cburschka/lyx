@@ -10,38 +10,33 @@
 
 #include <config.h>
 
-
 #include "ControlWrap.h"
-#include "BufferView.h"
-#include "buffer.h"
+#include "funcrequest.h"
+#include "lyxlength.h"
+#include "insets/insetwrap.h"
 
 
-ControlWrap::ControlWrap(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetWrap, WrapParams>(lv, d)
+ControlWrap::ControlWrap(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-
-void ControlWrap::applyParamsToInset()
+void ControlWrap::initialiseParams(string const & data)
 {
-	inset()->pageWidth(params().pageWidth);
-	inset()->placement(params().placement);
-	bufferview()->updateInset(inset(), true);
-
+	InsetWrapParams params;
+	InsetWrapMailer::string2params(data, params);
+	params_.reset(new InsetWrapParams(params));
 }
 
 
-void ControlWrap::applyParamsNoInset()
-{}
-
-
-WrapParams const ControlWrap::getParams(InsetWrap const & inset)
+void ControlWrap::clearParams()
 {
-	return WrapParams(inset);
+	params_.reset();
 }
 
 
-WrapParams::WrapParams(InsetWrap const & inset)
-	: pageWidth(inset.pageWidth()),
-	  placement(inset.placement())
-{}
+void ControlWrap::dispatchParams()
+{
+	string const lfun = InsetWrapMailer::params2string("wrap", params());
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+}

@@ -34,7 +34,6 @@
 #include "ControlTabular.h"
 #include "ControlTexinfo.h"
 #include "ControlVCLog.h"
-#include "ControlWrap.h"
 
 #include "QAbout.h"
 #include "QAboutDialog.h"
@@ -84,8 +83,6 @@
 
 #include "QVCLog.h"
 #include "QVCLogDialog.h"
-#include "QWrap.h"
-#include "QWrapDialog.h"
 
 #include "Qt2BC.h"
 
@@ -150,9 +147,6 @@ ThesaurusDialog;
 typedef GUI<ControlVCLog, QVCLog, OkCancelPolicy, Qt2BC>
 VCLogFileDialog;
 
-typedef GUI<ControlWrap, QWrap, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-WrapDialog;
-
 
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
@@ -180,7 +174,6 @@ struct Dialogs::Impl {
 #endif
 
 	VCLogFileDialog     vclogfile;
-	WrapDialog          wrap;
 };
 
 #endif // DIALOGS_IMPL_H

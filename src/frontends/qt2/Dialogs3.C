@@ -26,6 +26,7 @@
 #include "ControlRef.h"
 #include "ControlToc.h"
 #include "ControlUrl.h"
+#include "ControlWrap.h"
 
 #include "QBibitem.h"
 #include "QBibitemDialog.h"
@@ -55,6 +56,8 @@
 #include "QTocDialog.h"
 #include "QURL.h"
 #include "QURLDialog.h"
+#include "QWrap.h"
+#include "QWrapDialog.h"
 
 #include "Qt2BC.h"
 #include "ButtonController.h"
@@ -78,7 +81,7 @@ namespace {
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
 				     "include", "index", "label", "ref",
-				     "toc", "url" };
+				     "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -165,6 +168,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "url") {
 		dialog->setController(new ControlUrl(*dialog));
 		dialog->setView(new QURL(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "wrap") {
+		dialog->setController(new ControlWrap(*dialog));
+		dialog->setView(new QWrap(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	}
 

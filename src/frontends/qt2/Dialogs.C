@@ -48,6 +48,5 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  thesaurus(lv, d),
 #endif
 
-	  vclogfile(lv, d),
-	  wrap(lv, d)
+	  vclogfile(lv, d)
 {}
