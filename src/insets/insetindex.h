@@ -40,6 +40,8 @@ public:
 	void edit(BufferView * bv, bool front = true);
 	///
 	Inset::Code lyxCode() const;
+	///
+	int docbook(Buffer const *, std::ostream &) const;
 };
 
 

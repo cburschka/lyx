@@ -1,3 +1,12 @@
+2001-11-02  Ben Guillon  <nicolas.marsgui@libertysurf.fr>
+
+	* insetindex.h (docbook):
+	* insetindex.C (docbook): added support for docbook export.
+
+2001-11-02  José Matos  <jamatos@fep.up.pt>
+
+	* insetcaption.C(docbook): added support for docbook export.
+
 2001-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* gettext.C (locale_init): set LC_NUMERIC to "C" even if nls is

@@ -120,8 +120,11 @@ int InsetCaption::ascii(Buffer const * /*buf*/,
 }
 
 
-int InsetCaption::docbook(Buffer const * /*buf*/, ostream & /*os*/) const
+int InsetCaption::docbook(Buffer const * buf, ostream & os) const
 {
-	// Fix: Implement me!
-	return 0;
+	int ret;
+	os << "<title>";
+	ret = InsetText::docbook(buf, os);
+	os << "</title>\n";
+	return ret;
 }
