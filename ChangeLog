@@ -1,3 +1,24 @@
+2000-03-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/doc/LaTeXConfig.lyx.in: add description of textclass llncs.
+
+	* src/mathed/math_macro.C (draw): do some cast magic.
+	(Metrics): ditto.
+
+	* src/mathed/math_defs.h: change byte* argument to byte const*.
+
+	* src/mathed/formulamacro.[Ch]: add free_spc to Latex() method.
+
+	* src/insets/insetfoot.[Ch]: Clone() always returns an Inset* (well I
+	know it is right to return InsetFoot* too, but cxx does not like
+	it...). 
+
+	* src/insets/insetcollapsable.[Ch] (Clone): make const.
+
+	* development/lyx.spec.in: unset LINGUAS to avoid i18n problems.
+
+	* src/mathed/math_delim.C: change == to proper assignment.
+
 2000-03-09  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (setPos): fixed various cursor positioning

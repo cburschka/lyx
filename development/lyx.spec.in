@@ -36,10 +36,12 @@ place that the Redhat tetex package is installed and would see it.
 %setup
 
 %build
+unset LINGUAS
 CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr 
 make
 
 %install
+unset LINGUAS
 rm -rf ${RPM_BUILD_ROOT}
 install -d -m 755 ${RPM_BUILD_ROOT}
 make prefix=${RPM_BUILD_ROOT}/usr install

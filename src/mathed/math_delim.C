@@ -321,7 +321,7 @@ public:
 			sort(math_deco_table,
 			     math_deco_table + math_deco_table_size,
 			     math_deco_compare());
-			init_deco_table::init == true;
+			init_deco_table::init = true;
 		}
 	}
 private:

@@ -33,9 +33,9 @@ InsetFoot::InsetFoot(Buffer * bf): InsetCollapsable(bf)
 }
 
 
-InsetFoot * InsetFoot::Clone() const
+Inset * InsetFoot::Clone() const
 {
-    InsetFoot * result = new InsetFoot(buffer);
+    Inset * result = new InsetFoot(buffer);
     return result;
 }
 

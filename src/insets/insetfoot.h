@@ -33,7 +33,7 @@ public:
     ///
     ~InsetFoot() {}
     ///
-    InsetFoot * Clone() const;
+    Inset * Clone() const;
     ///
     Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
 #ifndef USE_OSTREAM_ONLY

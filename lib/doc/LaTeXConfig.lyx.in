@@ -492,6 +492,33 @@ dinbrief
  can be used to type letters according to German conventions.
 \layout Subsection
 
+docbook
+\layout Description
+
+Found: @chk_docbook@
+\layout Description
+
+CTAN: N/A
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand \url{http://www.sgmltools.org}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: The class docbook is not a LaTeX document class.
+ It is designed to produce Docbook SGML documents, which, in turn, can be
+ exported as HTML, RTF, text, or dvi (through 
+\family typewriter 
+jadetex
+\family default 
+).
+ You need the sgmltools v2.0 package installed to use this.
+\layout Subsection
+
 g-brief-en
 \layout Description
 
@@ -759,31 +786,43 @@ LinuxDoc
  
 \layout Subsection
 
-docbook
+llncs
 \layout Description
 
-Found: @chk_docbook@
+Found: @chk_llncs@
 \layout Description
 
 CTAN: N/A
 \layout Description
 
-WWW: 
-\begin_inset LatexCommand \url{http://www.sgmltools.org}
+Notes: The document class 
+\family sans 
+llncs 
+\family default 
+can be used to write articles for submission to the Springer journal 
+\begin_inset Quotes eld
+\end_inset 
+
+Lecture Notes in Computer Science
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ LaTeX documents are available from Springer's ftp site on the following
+ URL:
+\newline 
+
+\begin_inset LatexCommand \url{ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e}
 
 \end_inset 
 
+.
+ 
+\begin_deeper 
+\layout Standard
 
-\layout Description
-
-Notes: The class docbook is not a LaTeX document class.
- It is designed to produce Docbook SGML documents, which, in turn, can be
- exported as HTML, RTF, text, or dvi (through 
-\family typewriter 
-jadetex
-\family default 
-).
- You need the sgmltools v2.0 package installed to use this.
+The LyX layout file for this document class is still insufficiently tested.
+\end_deeper 
 \layout Subsection
 
 paper

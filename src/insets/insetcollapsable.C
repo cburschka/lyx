@@ -32,7 +32,7 @@ InsetCollapsable::InsetCollapsable(Buffer * bf): InsetText(bf)
 }
 
 
-Inset * InsetCollapsable::Clone()
+Inset * InsetCollapsable::Clone() const
 {
     Inset * result = new InsetCollapsable(buffer);
     return result;

@@ -238,7 +238,7 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 
 // In a near future maybe we use a better fonts renderer
 void MathedInset::drawStr(Painter & pain, short type, int size,
-			  int x, int y, byte * s, int ls)
+			  int x, int y, byte const * s, int ls)
 {
 	string st;
 	if (MathIsBinary(type)) {
@@ -246,7 +246,7 @@ void MathedInset::drawStr(Painter & pain, short type, int size,
 			st += string(" ") + char(s[i]) + ' ';
 		}
 	} else {
-		st = string(reinterpret_cast<char*>(s), ls);
+		st = string(reinterpret_cast<char const *>(s), ls);
 	}
 	LyXFont mf = mathed_get_font(type, size);
 	pain.text(x, y, st, mf);

@@ -66,11 +66,12 @@ Inset * InsetFormulaMacro::Clone() const
 void InsetFormulaMacro::Write(ostream & os) const
 {
 	os << "FormulaMacro ";
-	Latex(os, 0);
+	Latex(os, 0, false);
 }
 
 
-int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/) const
+int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/, 
+			     bool /*free_spacing*/) const
 {
     int ret = 1;
     tmacro->WriteDef(os);
@@ -79,7 +80,8 @@ int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/) const
+int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/, 
+			     bool /*free_spacing*/) const
 {
     int ret = 1;
     tmacro->WriteDef(file);

@@ -271,13 +271,14 @@ void MathMacroArgument::draw(Painter & pain, int x, int baseline)
 #ifdef HAVE_SSTREAM
 	    ostringstream ost;
 	    ost << '#' << number;
-	    drawStr(pain, LM_TC_TEX, size, x, baseline, ost.str().c_str(), 2);
+	    drawStr(pain, LM_TC_TEX, size, x, baseline, 
+		    reinterpret_cast<byte const *>(ost.str().c_str()), 2);
 #else
 	    char s[3];
 	    ostrstream ost(s, 3);
 	    ost << '#' << number << '\0';
 	    drawStr(pain, LM_TC_TEX, size, x, baseline,
-		    reinterpret_cast<unsigned char*>(ost.str()), 2);
+		    reinterpret_cast<byte *>(ost.str()), 2);
 #endif
     }
 }
@@ -291,18 +292,20 @@ void MathMacroArgument::Metrics()
 #ifdef HAVE_SSTREAM
 	    ostringstream ost;
 	    ost << '#' << number;
-	    width = mathed_string_width(LM_TC_TEX, size, ost.str().c_str(), 2);
+	    width = mathed_string_width(LM_TC_TEX, size, 
+					reinterpret_cast<byte const *>(ost.str().c_str()), 2);
 	    mathed_string_height(LM_TC_TEX, size,
-				 ost.str().c_str(), 2, ascent, descent);
+				 reinterpret_cast<byte const *>(ost.str().c_str()), 
+				 2, ascent, descent);
 #else
 	char s[3];
 	ostrstream ost(s, 3);
 	ost << '#' << number << '\0';
 	width = mathed_string_width(LM_TC_TEX, size,
-				    reinterpret_cast<unsigned char*>
+				    reinterpret_cast<byte *>
 				    (ost.str()), 2);
 	mathed_string_height(LM_TC_TEX, size,
-			     reinterpret_cast<unsigned char*>(ost.str()),
+			     reinterpret_cast<byte *>(ost.str()),
 			     2, ascent, descent);
 #endif
     }
