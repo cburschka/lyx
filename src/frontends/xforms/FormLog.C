@@ -28,15 +28,20 @@ FormLog::FormLog()
 
 void FormLog::update()
 {
+	bool const buildlog = controller().logfile().first == Buffer::buildlog;
+
+	string const title = buildlog ?
+		_("LyX: LaTeX Log") :
+		_("LyX: Literate Programming Build Log");
+	fl_set_form_title(dialog_->form, title.c_str());
+
 	fl_clear_browser(dialog_->browser);
-
-	bool buildlog = (controller().logfile().first == Buffer::buildlog);
-
-	fl_set_form_title(dialog_->form,
-			  buildlog ? _("Build log") : _("LaTeX Log"));
-	if (!fl_load_browser(dialog_->browser,
-			     controller().logfile().second.c_str()))
-		fl_add_browser_line(dialog_->browser,
-				    buildlog ? _("No build log file found")
-				    : _("No LaTeX log file found"));
+	int const valid = fl_load_browser(dialog_->browser,
+					  controller().logfile().second.c_str());
+	if (!valid) {
+		string const error = buildlog ?
+			_("No LaTeX log file found.") :
+			_("No Literate Programming build log file found.");
+		fl_add_browser_line(dialog_->browser, error.c_str());
+	}
 }

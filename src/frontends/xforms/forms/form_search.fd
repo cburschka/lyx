@@ -5,18 +5,19 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_search
-Width: 440
-Height: 160
-Number of Objects: 11
+Width: 375
+Height: 125
+Number of Objects: 10
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 440 160
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 375 125
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -31,37 +32,19 @@ callback:
 argument: 
 
 --------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 300 10 130 80
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
-name: 
-callback: 
-argument: 
-
---------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 10 180 30
+box: 110 5 165 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Find|#n
+label: Find|#F
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
+gravity: FL_West FL_East
 name: input_search
 callback: C_FormBaseInputCB
 argument: 0
@@ -69,35 +52,35 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 40 180 30
+box: 110 35 165 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Replace with|#W
+label: Replace with|#w
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
+gravity: FL_West FL_East
 name: input_replace
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 200 80 90 30
+type: RETURN_BUTTON
+box: 280 5 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Forwards >|#F^s
-shortcut: 
+label: Find next
+shortcut: ^M
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_NorthEast FL_NorthEast
 name: button_findnext
 callback: C_FormBaseInputCB
 argument: 0
@@ -105,35 +88,17 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 80 90 30
+box: 280 35 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label:  < Backwards|#B^r
+label: Replace|#R
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: button_findprev
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 110 120 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Replace|#R#r
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_East FL_East
 name: button_replace
 callback: C_FormBaseInputCB
 argument: 0
@@ -141,7 +106,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 350 120 80 30
+box: 280 95 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -159,17 +124,17 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 300 20 150 30
+box: 5 70 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Case sensitive|#s#S
+label: Case sensitive|#C
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
+gravity: FL_West FL_NoGravity
 name: check_casesensitive
 callback: C_FormBaseInputCB
 argument: 0
@@ -177,17 +142,17 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 300 50 150 30
+box: 145 70 130 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Match word|#M#m
+label: Match word|#M
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
+gravity: FL_NoGravity FL_NoGravity
 name: check_matchword
 callback: C_FormBaseInputCB
 argument: 0
@@ -195,18 +160,36 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 120 90 30
+box: 280 65 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Replace All|#A#a
+label: Replace all|#a
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_East FL_East
 name: button_replaceall
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 5 95 140 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Search backwards|#S
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: check_searchbackwards
 callback: C_FormBaseInputCB
 argument: 0
 

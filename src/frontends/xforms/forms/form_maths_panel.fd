@@ -5,18 +5,19 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_maths_panel
-Width: 260
-Height: 211
+Width: 255
+Height: 200
 Number of Objects: 25
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 260 211
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 255 200
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 170 170 80 30
+box: 160 170 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -42,8 +43,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Close 
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseDeprecatedCancelCB
 argument: 0
@@ -51,17 +52,17 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: SELECT_BROWSER
-box: 170 30 80 130
+box: 165 20 80 140
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Functions
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NoGravity FL_SouthEast
 name: browser_funcs
 callback: C_FormBaseDeprecatedInputCB
 argument: MM_FUNC
@@ -70,7 +71,7 @@ argument: MM_FUNC
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 140 50 30
+box: 5 135 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +89,7 @@ argument: MM_GREEK
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 80 50 30
+box: 105 75 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +107,7 @@ argument: MM_ARROW
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 80 50 30
+box: 5 75 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,7 +125,7 @@ argument: MM_BOP
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 80 50 30
+box: 55 75 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -142,7 +143,7 @@ argument: MM_BRELATS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 110 50 30
+box: 105 105 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -160,7 +161,7 @@ argument: MM_MISC
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 130 40 30 30
+box: 125 35 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -178,7 +179,7 @@ argument: MM_EQU
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 10 10 30 30
+box: 5 5 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -196,7 +197,7 @@ argument: MM_SQRT
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 40 10 30 30
+box: 35 5 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -214,7 +215,7 @@ argument: MM_FRAC
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 70 10 30 30
+box: 65 5 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -232,7 +233,7 @@ argument: MM_DELIM
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 100 40 30 30
+box: 95 35 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -250,7 +251,7 @@ argument: MM_MATRIX
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 100 10 30 30
+box: 95 5 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -268,7 +269,7 @@ argument: MM_DECO
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 130 10 30 30
+box: 125 5 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -286,7 +287,7 @@ argument: MM_SPACE
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 110 50 30
+box: 55 105 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -304,7 +305,7 @@ argument: MM_DOTS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 110 50 30
+box: 5 105 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -322,7 +323,7 @@ argument: MM_VARSIZE
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 40 40 30 30
+box: 35 35 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -340,7 +341,7 @@ argument: MM_SUB
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 10 40 30 30
+box: 5 35 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -358,7 +359,7 @@ argument: MM_SUPER
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 70 40 30 30
+box: 65 35 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -376,7 +377,7 @@ argument: MM_STYLE
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 140 50 30
+box: 55 135 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -394,7 +395,7 @@ argument: MM_AMS_ARROWS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 140 50 30
+box: 105 135 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -412,7 +413,7 @@ argument: MM_AMS_BREL
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 170 50 30
+box: 5 165 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -430,7 +431,7 @@ argument: MM_AMS_NREL
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 170 50 30
+box: 55 165 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -448,7 +449,7 @@ argument: MM_AMS_OPS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 170 50 30
+box: 105 165 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

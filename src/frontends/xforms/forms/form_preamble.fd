@@ -9,15 +9,15 @@ SnapGrid: 5
 
 =============== FORM ===============
 Name: form_preamble
-Width: 380
-Height: 420
+Width: 290
+Height: 325
 Number of Objects: 5
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 380 420
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 290 325
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -33,16 +33,16 @@ argument:
 
 --------------------
 class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 50 380 100 30
+type: RETURN_BUTTON
+box: 5 295 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: OK|#O
-shortcut: 
+label: OK
+shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_ok
@@ -52,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 160 380 100 30
+box: 100 295 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 270 380 100 30
+box: 195 295 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +88,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: MULTILINE_INPUT
-box: 10 10 360 360
+box: 5 5 280 285
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -101,7 +101,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
 name: input_preamble
 callback: C_FormBaseInputCB
-argument: 
+argument: 0
 
 ==============================
 create_the_forms

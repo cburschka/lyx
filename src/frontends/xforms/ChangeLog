@@ -4,8 +4,27 @@
 	glue lengths are valid. Improve code documentation and layout.
 	InsetGraphicsParams::scale is now a float; modify dialog to suit.
 
-	* forms/form_graphics.fd: remove text_warning widget. Reshape.
-	
+	* FormLog.C (update): more descriptive title and warning messages.
+
+	* FormMathsPanel.C (c-tor): allow dialog to be resized.
+
+	* FormPreamble.C (build): rearrange.
+	(apply): use getString, not fl_get_input.
+
+	* FormSearch.C (build): add tooltips.
+	(input): use getString, not fl_get_input.
+
+	* FormShowFile.C: more descriptive title.
+
+	* forms/form_browser.fd:
+	* forms/form_preamble.fd: reshape.
+
+	* forms/form_graphics.fd: reshape. Remove text_warning widget.
+
+	* forms/form_maths_panel.fd:
+	* forms/form_ref.fd:
+	* forms/form_search.fd: reshape. Fix gravity.
+
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormFloat.C (input): fix the radio buttongroup behaviour.

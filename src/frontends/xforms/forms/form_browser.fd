@@ -5,22 +5,23 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_browser
-Width: 470
-Height: 380
+Width: 395
+Height: 310
 Number of Objects: 4
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 470 380
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 395 310
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 10 10 450 320
+box: 5 5 385 270
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_BOTTOM
@@ -51,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 370 340 90 30
+box: 300 280 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -59,7 +60,7 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Close|^[^M
-shortcut:
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
@@ -69,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 270 340 90 30
+box: 205 280 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

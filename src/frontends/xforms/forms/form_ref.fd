@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_ref
 Width: 395
-Height: 330
+Height: 300
 Number of Objects: 13
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 395 330
+box: 0 0 395 300
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 5 35 385 110
+box: 5 35 280 110
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -52,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 155 100 25
+box: 290 75 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -62,7 +62,7 @@ lcol: FL_BLACK
 label: Update|#U
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_South FL_South
+gravity: FL_East FL_East
 name: button_update
 callback: C_FormBaseInputCB
 argument: 0
@@ -70,7 +70,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 5 155 100 25
+box: 290 40 100 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -80,7 +80,7 @@ lcol: FL_BLACK
 label: Sort|#S
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_South FL_South
+gravity: FL_East FL_East
 name: check_sort
 callback: C_FormBaseInputCB
 argument: 0
@@ -88,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 300 90 25
+box: 5 270 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +106,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 110 300 90 25
+box: 110 270 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,7 +124,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 300 300 90 25
+box: 300 270 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -142,7 +142,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 205 300 90 25
+box: 205 270 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -179,7 +179,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 265 280 25
+box: 110 230 280 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -197,7 +197,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 195 280 25
+box: 110 160 280 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -215,7 +215,7 @@ argument:
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 110 230 280 25
+box: 110 195 280 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -233,7 +233,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 220 155 100 25
+box: 290 115 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -243,7 +243,7 @@ lcol: FL_BLACK
 label: Go to|#G
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_South FL_South
+gravity: FL_East FL_East
 name: button_go
 callback: C_FormBaseInputCB
 argument: 0

@@ -23,7 +23,7 @@
 
 
 FormShowFile::FormShowFile()
-	: FormCB<ControlShowFile, FormBrowser>(string())
+	: FormCB<ControlShowFile, FormBrowser>(_("Show File"))
 {}
 
 
@@ -31,9 +31,12 @@ void FormShowFile::update()
 {
 	fl_hide_object(dialog_->button_update);
 	fl_clear_browser(dialog_->browser);
+
 	// courier medium
 	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);
-	fl_set_form_title(dialog_->form, controller().getFileName().c_str());
+
+	string const title = "LyX: " + controller().getFileName();
+	fl_set_form_title(dialog_->form, title.c_str());
 
 	string const contents = controller().getFileContents();
 	if (contents.empty())

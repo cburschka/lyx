@@ -19,6 +19,7 @@
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
 #include "xforms_helpers.h"
+
 #include FORMS_H_LOCATION
 
 typedef FormCB<ControlPreamble, FormDB<FD_preamble> > base_class;
@@ -32,21 +33,22 @@ void FormPreamble::build()
 {
 	dialog_.reset(build_preamble(this));
 
-	fl_set_input_return(dialog_->input_preamble, FL_RETURN_CHANGED);
-
-	// trigger an input event when pasting using the middle mouse button.
-	setPrehandler(dialog_->input_preamble);
-
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
+
+	// trigger an input event for cut&paste with middle mouse button.
+	setPrehandler(dialog_->input_preamble);
+
+	// for activate ok/apply immediately upon input
+	fl_set_input_return(dialog_->input_preamble, FL_RETURN_CHANGED);
 }
 
 
 void FormPreamble::apply()
 {
-	controller().params(fl_get_input(dialog_->input_preamble));
+	controller().params(getString(dialog_->input_preamble));
 }
 
 

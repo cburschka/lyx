@@ -61,7 +61,7 @@ void ControlSearch::replace(string const & search, string const & replace,
 		} else {
 			string str = tostr(replace_count);
 			str += _(" strings have been replaced.");
-			lv_.message(str.c_str());
+			lv_.message(str);
 		}
 	}
 }

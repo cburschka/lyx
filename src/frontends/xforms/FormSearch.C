@@ -18,6 +18,9 @@
 #include "ControlSearch.h"
 #include "FormSearch.h"
 #include "forms/form_search.h"
+#include "Tooltips.h"
+#include "xforms_helpers.h"
+
 #include FORMS_H_LOCATION
 
 typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
@@ -33,9 +36,29 @@ void FormSearch::build()
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setCancel(dialog_->button_close);
+
+	// disable for read-only documents
 	bc().addReadOnly(dialog_->input_replace);
 	bc().addReadOnly(dialog_->button_replace);
 	bc().addReadOnly(dialog_->button_replaceall);
+
+	// set up the tooltips
+	string str = _("Enter the string you want to find.");
+	tooltips().init(dialog_->input_search, str);
+	str = _("Enter the replacement string.");
+	tooltips().init(dialog_->input_replace, str);
+	str = _("Continue to next search result.");
+	tooltips().init(dialog_->button_findnext, str);
+	str = _("Replace search result by replacement string.");
+	tooltips().init(dialog_->button_replace, str);
+	str = _("Replace all by replacement string.");
+	tooltips().init(dialog_->button_replaceall, str);
+	str = _("Do case sensitive search.");
+	tooltips().init(dialog_->check_casesensitive, str);
+	str = _("Search only matching words.");
+	tooltips().init(dialog_->check_matchword, str);
+	str = _("Search backwards.");
+	tooltips().init(dialog_->check_searchbackwards, str);
 }
 
 
@@ -46,23 +69,19 @@ void FormSearch::update()
 }
 
 
-ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * obj, long)
+ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * ob, long)
 {
-	if (obj == dialog_->button_findnext ||
-	    obj == dialog_->button_findprev) {
-		bool const forward = (obj == dialog_->button_findnext);
-
-		controller().find(fl_get_input(dialog_->input_search),
+	if (ob == dialog_->button_findnext) {
+		controller().find(getString(dialog_->input_search),
 				  fl_get_button(dialog_->check_casesensitive),
 				  fl_get_button(dialog_->check_matchword),
-				  forward);
+				  !fl_get_button(dialog_->check_searchbackwards));
 
-	} else if (obj == dialog_->button_replace ||
-		   obj == dialog_->button_replaceall) {
-		bool const all = (obj == dialog_->button_replaceall);
+	} else if (ob == dialog_->button_replace || ob == dialog_->button_replaceall) {
+		bool const all = (ob == dialog_->button_replaceall);
 
-		controller().replace(fl_get_input(dialog_->input_search),
-				     fl_get_input(dialog_->input_replace),
+		controller().replace(getString(dialog_->input_search),
+				     getString(dialog_->input_replace),
 				     fl_get_button(dialog_->check_casesensitive),
 				     fl_get_button(dialog_->check_matchword),
 				     all);

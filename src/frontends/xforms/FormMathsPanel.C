@@ -68,7 +68,7 @@
 using std::vector;
 
 FormMathsPanel::FormMathsPanel(LyXView & lv, Dialogs & d)
-	: FormBaseBD(lv, d, _("Maths Panel"), false),
+	: FormBaseBD(lv, d, _("Maths Panel")),
 	  active_(0), bc_(_("Close"))
 {
 	deco_.reset(  new FormMathsDeco(  lv, d, *this));
