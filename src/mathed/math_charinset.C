@@ -14,21 +14,14 @@
 
 
 MathCharInset::MathCharInset(char c)
-	: char_(c), code_(nativeCode(c)), needbs_(false)
+	: char_(c), code_(nativeCode(c))
 {
 //lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
 }
 
 
 MathCharInset::MathCharInset(char c, MathTextCodes t)
-	: char_(c), code_((t == LM_TC_MIN) ? nativeCode(c) : t), needbs_(false)
-{
-//lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
-}
-
-
-MathCharInset::MathCharInset(char c, MathTextCodes t, bool needbs)
-	: char_(c), code_((t == LM_TC_MIN) ? nativeCode(c) : t), needbs_(needbs)
+	: char_(c), code_((t == LM_TC_MIN) ? nativeCode(c) : t)
 {
 //lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
 }
@@ -38,8 +31,6 @@ MathTextCodes MathCharInset::nativeCode(char c) const
 {
 	if (isalpha(c))
 		return LM_TC_VAR;
-	if (strchr("#$%{|}", c))
-		return LM_TC_SPECIAL;
 	//if (strchr("0123456789;:!|[]().,?+/-*<>=", c)
 	return LM_TC_CONST;
 }
@@ -100,8 +91,6 @@ void MathCharInset::writeTrailer(std::ostream & os) const
 
 void MathCharInset::writeRaw(std::ostream & os) const
 {
-	if (needbs_)
-		os << "\\";
 	os << char_;
 }
 
@@ -116,8 +105,6 @@ void MathCharInset::write(std::ostream & os, bool) const
 
 void MathCharInset::writeNormal(std::ostream & os) const
 {
-	if (needbs_)
-		os << "\\";
 	os << char_;
 }
 

@@ -39,6 +39,7 @@
 #include "math_rootinset.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
+#include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
 #include "debug.h"
 #include "support.h"
@@ -682,18 +683,18 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cat() == catBegin) {
-			array.push_back(new MathCharInset('{', LM_TC_SPECIAL));
+			array.push_back(new MathCharInset('{', LM_TC_TEX));
 		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			array.push_back(new MathCharInset('}', LM_TC_SPECIAL));
+			array.push_back(new MathCharInset('}', LM_TC_TEX));
 		}
 		
 		else if (t.cat() == catAlign) {
 			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
-			array.push_back(new MathCharInset('&', LM_TC_SPECIAL));
+			array.push_back(new MathCharInset('&', LM_TC_TEX));
 		}
 		
 		else if (t.cat() == catSuper)
@@ -796,7 +797,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			break;
 
 		else  LM_TK_SPECIAL:
-			array.push_back(new MathCharInset(ival_, LM_TC_SPECIAL));
+			array.push_back(new MathCharInset(ival_, LM_TC_TEX));
 			break;
 */
 		
@@ -849,7 +850,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			int pos;
 			for (pos = array.size() - 1; pos >= 0; --pos) {
 				MathInset * q = array.nextInset(pos);
-				if (q->getChar() == '{' && q->code() == LM_TC_SPECIAL)
+				if (q->getChar() == '{')
 					break;
 			}
 			if (pos >= 0) {

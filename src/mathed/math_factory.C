@@ -15,6 +15,7 @@
 #include "math_notinset.h"
 #include "math_rootinset.h"
 #include "math_spaceinset.h"
+#include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
 #include "math_symbolinset.h"
 #include "math_stackrelinset.h"
@@ -30,6 +31,8 @@ MathInset * createMathInset(latexkeys const * l)
 			return new MathBigopInset(l);
 		case LM_TK_FUNCLIM:
 			return new MathFuncLimInset(l);
+		case LM_TK_SPECIAL:
+			return new MathSpecialCharInset(l->id);
 		case LM_TK_SYM: 
 			return new MathSymbolInset(l);
 		case LM_TK_STACK:

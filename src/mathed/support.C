@@ -165,7 +165,6 @@ LyXFont WhichFont(MathTextCodes type, MathStyles size)
 		f = Math_Fonts[5];
 		break;
 
-	case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
 	case LM_TC_TEXTRM:
 	case LM_TC_CONST:
 	case LM_TC_TEX:

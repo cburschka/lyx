@@ -37,6 +37,7 @@
 #include "math_matrixinset.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
+#include "math_specialcharinset.h"
 #include "math_parser.h"
 
 using std::endl;
@@ -1281,6 +1282,11 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
+	if (lastcode_ != LM_TC_TEX && strchr("#$%{|}", c)) {
+		insert(new MathSpecialCharInset(c));	
+		return;
+	}
+
 	if (lastcode_ == LM_TC_TEX) {
 		if (macroName().empty()) {
 			insert(c, LM_TC_TEX);
@@ -1296,11 +1302,6 @@ void MathCursor::interpret(string const & s)
 				lastcode_ = LM_TC_VAR;
 			}
 		}
-		return;
-	}
-
-	if (c == '{' || c == '}') {
-		niceInsert(new MathCharInset(c, LM_TC_SPECIAL));
 		return;
 	}
 

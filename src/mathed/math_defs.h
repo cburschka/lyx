@@ -75,8 +75,6 @@ enum MathTextCodes  {
 	LM_TC_TEXTRM,
 	/// Math mode TeX characters ",;:{}"  
 	LM_TC_TEX,
-	/// Special characters "{}&#_%"
-	LM_TC_SPECIAL,
 	/// Internal code when typing greek
 	LM_TC_GREEK,
 	/// Internal code when typing a single greek character
