@@ -1,3 +1,10 @@
+2002-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xformsGImage.C (statusCB, errorCB): close the file streams once the
+	image is loaded or if an error occurs.
+	(init_graphics): FLIMAGE_SETUP setup must be static as xforms stores
+	it permanently (and does not make a copy!).
+
 2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xformsGImage.[Ch]: new files. An image loader based on xforms library

@@ -308,8 +308,14 @@ void xformsGImage::statusCB(string const & status_message)
 		return;
 
 	if (prefixIs(status_message, "Done Reading")) {
-		on_finish_->emit(true);
-		on_finish_.reset();
+		if (image_) {
+			flimage_close(image_);
+		}
+
+		if (on_finish_.get()) {
+			on_finish_->emit(true);
+			on_finish_.reset();
+		}
 	}
 }
 
@@ -319,8 +325,14 @@ void xformsGImage::errorCB(string const & error_message)
 	if (error_message.empty() || !on_finish_.get())
 		return;
 
-	on_finish_->emit(false);
-	on_finish_.reset();
+	if (image_) {
+		flimage_close(image_);
+	}
+
+	if (on_finish_.get()) {
+		on_finish_->emit(false);
+		on_finish_.reset();
+	}
 }
 
 } // namespace grfx
@@ -398,7 +410,9 @@ void init_graphics()
 	flimage_enable_xwd();
 	flimage_enable_xpm();
 
-	FLIMAGE_SETUP setup;
+	// xforms stores this permanently (does not make a copy) so
+	// this should never be destroyed.
+	static FLIMAGE_SETUP setup;
 	setup.visual_cue    = status_report;
 	setup.error_message = error_report;
 	flimage_setup(&setup);
