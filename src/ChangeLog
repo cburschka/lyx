@@ -1,5 +1,10 @@
 2003-04-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* buffer.C (readFile): set message_ after file is loaded.
+	(makeDocBookFile): remove double return
+	(changeLanguage): reset message_ upon language change.
+	(B_): new func, use this to get translated buffer strings.
+
 	* main.C: add myself and Jean Marc as authors.
 
 2003-04-24  Lars Gullik Bjønnes  <larsbj@gullik.net>

@@ -25,6 +25,7 @@
 #include "author.h"
 
 #include <boost/shared_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 
 class BufferView;
 class LyXRC;
@@ -33,6 +34,7 @@ class LaTeXFeatures;
 class Language;
 class ParIterator;
 class ParConstIterator;
+class Messages;
 
 
 /** The buffer object.
@@ -169,6 +171,9 @@ public:
 
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
+	/// get l10n translated to the buffers language
+	string const B_(string const & l10n) const;
+
 	///
 	int runChktex();
 	/// return true if the main lyx file does not need saving
@@ -326,6 +331,8 @@ private:
 	    of the buffers in the list of users to do a #updateLayoutChoice#.
 	*/
 	BufferView * users;
+	///
+	boost::scoped_ptr<Messages> messages_;
 public:
 	///
 	class inset_iterator {

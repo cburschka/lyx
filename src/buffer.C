@@ -36,6 +36,7 @@
 #include "lyxtextclasslist.h"
 #include "sgml.h"
 #include "paragraph_funcs.h"
+#include "messages.h"
 #include "author.h"
 
 #include "frontends/LyXView.h"
@@ -494,12 +495,21 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 
 bool Buffer::readFile(LyXLex & lex, string const & filename)
 {
-	return readFile(lex, filename, paragraphs.begin());
+	bool ret = readFile(lex, filename, paragraphs.begin());
+
+	// After we have read a file, we must ensure that the buffer
+	// language is set and used in the gui.
+	// If you know of a better place to put this, please tell me. (Lgb)
+	messages_.reset(new Messages(params.language->code(),
+				     "/usr/local/share/locale"));
+	
+	return ret;
 }
 
 
 // FIXME: all the below Alerts should give the filename..
-bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iterator pit)
+bool Buffer::readFile(LyXLex & lex, string const & filename,
+		      ParagraphList::iterator pit)
 {
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
@@ -1631,7 +1641,6 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 #endif
 		Alert::error(_("Could not save document"), text);
 		return;
-		return;
 	}
 
 	niceFile = nice; // this will be used by Insetincludes.
@@ -2206,6 +2215,8 @@ void Buffer::redraw()
 
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
+	// Take care of l10n/i18n
+	messages_.reset(new Messages(to->code(), "/usr/local/share/locale"));
 
 	ParIterator end = par_iterator_end();
 	for (ParIterator it = par_iterator_begin(); it != end; ++it)
@@ -2312,6 +2323,16 @@ void Buffer::delUser(BufferView *)
 Language const * Buffer::getLanguage() const
 {
 	return params.language;
+}
+
+
+string const Buffer::B_(string const & l10n) const
+{
+	if (messages_.get()) {
+		return messages_->get(l10n);
+	}
+	
+	return _(l10n);
 }
 
 
