@@ -46,7 +46,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: slider_rows
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	bounds: 1 20
 	precision: 0
@@ -67,7 +67,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: slider_columns
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	bounds: 1 20
 	precision: 0
@@ -88,7 +88,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_valign
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -106,7 +106,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_halign
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -124,7 +124,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormBaseDeprecatedOKCB
+callback: C_FormBaseOKCB
 argument: 0
 
 --------------------
@@ -142,7 +142,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormBaseDeprecatedApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -160,7 +160,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
-callback: C_FormBaseDeprecatedCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 ==============================

@@ -54,8 +54,6 @@ libxforms_la_SOURCES = \
 	Dialogs_impl.h \
 	DropDown.h \
 	DropDown.C \
-	FeedbackController.C \
-	FeedbackController.h \
 	FileDialog.C \
 	FontInfo.C \
 	FontInfo.h \
@@ -65,8 +63,6 @@ libxforms_la_SOURCES = \
 	FormAboutlyx.h \
 	FormBase.C \
 	FormBase.h \
-	FormBaseDeprecated.C \
-	FormBaseDeprecated.h \
 	FormBibitem.C \
 	FormBibitem.h \
 	FormBibtex.C \

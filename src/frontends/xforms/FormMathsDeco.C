@@ -20,24 +20,19 @@
 #include "ControlMath.h"
 #include "FormMathsDeco.h"
 #include "forms/form_maths_deco.h"
+#include "xformsBC.h"
+
 #include "bmtable.h"
 #include FORMS_H_LOCATION
 
 #include "deco.xbm"
 
 
-FormMathsDeco::FormMathsDeco(LyXView & lv, Dialogs & d,
-			     FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Decorations & Accents"), false)
+typedef FormCB<ControlMathSub, FormDB<FD_maths_deco> > base_class;
+
+FormMathsDeco::FormMathsDeco()
+	: base_class(_("Maths Decorations & Accents"), false)
 {}
-
-
-FL_FORM * FormMathsDeco::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
 
 
 void FormMathsDeco::build()
@@ -61,19 +56,19 @@ void FormMathsDeco::build()
 void FormMathsDeco::apply()
 {
 	if (deco_ < nr_latex_deco)
-		parent_.insertSymbol(latex_deco[deco_]);
+		controller().insertSymbol(latex_deco[deco_]);
 }
 
 
-bool FormMathsDeco::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormMathsDeco::input(FL_OBJECT * ob, long)
 {
 	deco_ = fl_get_bmtable(ob);
 	if (deco_ < 0)
-		return false;
+		return ButtonPolicy::SMI_INVALID;
 	//if (ob == dialog_->bmtable_deco1)
 	//	deco_ += 0;
 	if (ob == dialog_->bmtable_deco2)
 		deco_ += 12;
 	apply();
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }

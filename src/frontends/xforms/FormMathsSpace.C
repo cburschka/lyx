@@ -19,23 +19,19 @@
 
 #include "FormMathsSpace.h"
 #include "forms/form_maths_space.h"
+#include "ControlMath.h"
+#include "xformsBC.h"
+
 #include FORMS_H_LOCATION
 
 extern char * latex_mathspace[];
 
-FormMathsSpace::FormMathsSpace(LyXView & lv, Dialogs & d,
-			       FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Spacing"), false),
+typedef FormCB<ControlMathSub, FormDB<FD_maths_space> > base_class;
+
+FormMathsSpace::FormMathsSpace()
+	: base_class(_("Maths Spacing"), false),
 	  space_(-1)
 {}
-
-
-FL_FORM * FormMathsSpace::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
 
 
 void FormMathsSpace::build()
@@ -60,10 +56,10 @@ void FormMathsSpace::build()
 void FormMathsSpace::apply()
 {
 	if (space_ >= 0)
-		parent_.insertSymbol(latex_mathspace[space_]);
+		controller().insertSymbol(latex_mathspace[space_]);
 }
 
-bool FormMathsSpace::input(FL_OBJECT *, long data)
+ButtonPolicy::SMInput FormMathsSpace::input(FL_OBJECT *, long data)
 {
 	space_ = -1;
 
@@ -71,5 +67,5 @@ bool FormMathsSpace::input(FL_OBJECT *, long data)
 		space_ = short(data);
 		apply();
 	}
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }

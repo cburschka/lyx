@@ -19,11 +19,8 @@
 
 #include "FormMathsMatrix.h"
 #include "forms/form_maths_matrix.h"
-
-#include "funcrequest.h"
-#include "lyxfunc.h"
-
-#include "frontends/LyXView.h"
+#include "ControlMath.h"
+#include "xformsBC.h"
 
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
@@ -59,18 +56,11 @@ extern "C" {
 }
 
 
-FormMathsMatrix::FormMathsMatrix(LyXView & lv, Dialogs & d,
-				 FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Matrix"), false)
+typedef FormCB<ControlMathSub, FormDB<FD_maths_matrix> > base_class;
+
+FormMathsMatrix::FormMathsMatrix()
+	: base_class(_("Maths Matrix"), false)
 {}
-
-
-FL_FORM * FormMathsMatrix::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
 
 
 void FormMathsMatrix::build()
@@ -105,15 +95,20 @@ void FormMathsMatrix::apply()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	parent_.dispatchFunc(LFUN_INSERT_MATRIX, STRCONV(os.str()));
+	controller().dispatchFunc(LFUN_INSERT_MATRIX, STRCONV(os.str()));
 }
 
 			      
+void FormMathsMatrix::update()
+{
+	bc().valid();
+}
 
-bool FormMathsMatrix::input(FL_OBJECT * ob, long)
+
+ButtonPolicy::SMInput FormMathsMatrix::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->choice_valign ||
-	    ob == dialog_->slider_rows) return true;
+	    ob == dialog_->slider_rows) return ButtonPolicy::SMI_VALID;
 
 	int const nx = int(fl_get_slider_value(dialog_->slider_columns)+0.5);
 	for (int i = 0; i < nx; ++i)
@@ -123,7 +118,7 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 
 	fl_set_input(dialog_->input_halign, h_align_str);
 	fl_redraw_object(dialog_->input_halign);
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }
 
 

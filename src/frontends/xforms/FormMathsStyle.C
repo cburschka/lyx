@@ -20,9 +20,10 @@
 
 #include "FormMathsStyle.h"
 #include "forms/form_maths_style.h"
-#include "bmtable.h"
+#include "ControlMath.h"
+#include "xformsBC.h"
 
-#include "debug.h"
+#include "bmtable.h"
 
 #include FORMS_H_LOCATION
 
@@ -39,20 +40,12 @@ kb_action latex_mathfontcmds[] = {
 };
 
 
+typedef FormCB<ControlMathSub, FormDB<FD_maths_style> > base_class;
 
-FormMathsStyle::FormMathsStyle(LyXView & lv, Dialogs & d,
-			       FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Styles & Fonts"), false),
+FormMathsStyle::FormMathsStyle()
+	: base_class(_("Maths Styles & Fonts"), false),
 	  style_(-1)
 {}
-
-
-FL_FORM * FormMathsStyle::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
 
 
 void FormMathsStyle::build()
@@ -86,21 +79,23 @@ void FormMathsStyle::build()
 void FormMathsStyle::apply()
 {
 	if ((style_ >= 0) && (style_ < 4))
-		parent_.insertSymbol(latex_mathstyle[style_]);
+		controller().insertSymbol(latex_mathstyle[style_]);
 	else if ((style_ >= 4) && (style_ < 14))
-		parent_.dispatchFunc(latex_mathfontcmds[style_ - 4]);
+		controller().dispatchFunc(latex_mathfontcmds[style_-4]);
 }
 
 
-bool FormMathsStyle::input(FL_OBJECT * ob, long data)
+ButtonPolicy::SMInput FormMathsStyle::input(FL_OBJECT * ob, long data)
 {
 	style_ = fl_get_bmtable(ob);
-	if (style_ < 0) return false;
+	if (style_ < 0) return ButtonPolicy::SMI_INVALID;
+
 	//if (ob == dialog_->bmtable_style1) style_ += 0;
 	if (ob == dialog_->bmtable_style2) style_ += 1;
 	if (ob == dialog_->bmtable_font1)  style_ += 4;
 	if (ob == dialog_->bmtable_font2)  style_ += 9;
 	if (data >= 12) style_ = short(data);
 	apply();
-	return true;
+
+	return ButtonPolicy::SMI_VALID;
 }

@@ -18,17 +18,9 @@
 #endif
 
 #include "ControlMath.h"
-
-#include "frontends/LyXView.h"
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"
-#include "funcrequest.h"
-
-#include "forms/form_maths_deco.h"
-#include "forms/form_maths_delim.h"
-#include "forms/form_maths_matrix.h"
-#include "forms/form_maths_space.h"
-#include "forms/form_maths_style.h"
+#include "xformsBC.h"
 
 #include "FormMathsBitmap.h"
 #include "FormMathsDeco.h"
@@ -37,8 +29,13 @@
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
 
+#include "forms/form_maths_deco.h"
+#include "forms/form_maths_delim.h"
+#include "forms/form_maths_matrix.h"
+#include "forms/form_maths_space.h"
+#include "forms/form_maths_style.h"
+
 #include FORMS_H_LOCATION
-#include <boost/bind.hpp>
 
 #include "deco.xpm"
 #include "delim.xpm"
@@ -66,29 +63,27 @@
 #include "ams_ops.xbm"
 
 
-FormMathsPanel::FormMathsPanel(LyXView & lv, Dialogs & d)
-	: FormBaseBD(lv, d, _("Maths Panel")),
-	  active_(0), bc_(_("Close"))
+typedef FormCB<ControlMath, FormDB<FD_maths_panel> > base_class;
+
+FormMathsPanel::FormMathsPanel()
+	: base_class(_("Maths Panel"))
 {}
 
 
-FL_FORM * FormMathsPanel::form() const
-{
-	return dialog_.get() ? dialog_->form : 0;
-}
-
-
-FormMathsBitmap * FormMathsPanel::addDaughter(FL_OBJECT * button,
+FormMathsBitmap * FormMathsPanel::addDaughter(void * key,
 					      string const & title,
 					      char const * const * data,
 					      int size)
 {
-	char const * const * end = data + size;
-	FormMathsBitmap * bitmap =
-		new FormMathsBitmap(lv_, d_, *this, title,
-				    std::vector<string>(data, end));
-	daughters_[button] = DaughterDialog(bitmap);
-	return bitmap;
+	char const * const * const end = data + size;
+	FormMathsBitmap * const view =
+		new FormMathsBitmap(title, std::vector<string>(data, end));
+
+	typedef ButtonController<IgnorantPolicy, xformsBC> BC;
+	BC * const bc = new BC;
+
+	controller().addDaughter(key, view, bc);
+	return view;
 }
 
 
@@ -121,16 +116,19 @@ void FormMathsPanel::build()
 	fl_set_pixmap_data(dialog_->button_equation,
 			   const_cast<char**>(equation));
 
-	daughters_[dialog_->button_deco] =
-		DaughterDialog(new FormMathsDeco(lv_, d_, *this));
-	daughters_[dialog_->button_delim] =
-		DaughterDialog(new FormMathsDelim(lv_, d_, *this));
-	daughters_[dialog_->button_matrix] =
-		DaughterDialog(new FormMathsMatrix(lv_, d_, *this));
-	daughters_[dialog_->button_space] =
-		DaughterDialog(new FormMathsSpace(lv_, d_, *this));
-	daughters_[dialog_->button_style] =
-		DaughterDialog(new FormMathsStyle(lv_, d_, *this));
+	typedef ButtonController<IgnorantPolicy, xformsBC> BC_ignorant;
+	typedef ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> BC_ok;
+
+	controller().addDaughter(dialog_->button_deco,
+				 new FormMathsDeco, new BC_ignorant);
+	controller().addDaughter(dialog_->button_delim,
+				 new FormMathsDelim, new BC_ok);
+	controller().addDaughter(dialog_->button_matrix,
+				 new FormMathsMatrix, new BC_ok);
+	controller().addDaughter(dialog_->button_space,
+				 new FormMathsSpace, new BC_ignorant);
+	controller().addDaughter(dialog_->button_style,
+				 new FormMathsStyle,  new BC_ignorant);
 
 	FormMathsBitmap * bitmap;
 	bitmap = addDaughter(dialog_->button_arrow, _("Arrows"),
@@ -198,24 +196,7 @@ void FormMathsPanel::build()
 }
 
 
-void FormMathsPanel::showDaughter(FL_OBJECT * button)
-{
-	Store::iterator it = daughters_.find(button);
-	FormMathsSub * const new_active =
-		(it == daughters_.end()) ? 0 : it->second.get();
-
-	if (active_ != new_active) {
-		if (active_ && active_->isVisible())
-			active_->hide();
-		active_ = new_active;
-	}
-
-	if (active_ && !active_->isVisible())
-		active_->show();
-}
-
-
-bool FormMathsPanel::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormMathsPanel::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->button_arrow ||
 	    ob == dialog_->button_boperator ||
@@ -234,59 +215,32 @@ bool FormMathsPanel::input(FL_OBJECT * ob, long)
 	    ob == dialog_->button_deco ||
 	    ob == dialog_->button_space ||
 	    ob == dialog_->button_style) {
-		showDaughter(ob);
+		controller().showDaughter(ob);
 
 	} else if (ob == dialog_->button_super) {
-		dispatchFunc(LFUN_SUPERSCRIPT);
+		controller().dispatchFunc(LFUN_SUPERSCRIPT);
 
 	} else if (ob == dialog_->button_sub) {
-		dispatchFunc(LFUN_SUBSCRIPT);
+		controller().dispatchFunc(LFUN_SUBSCRIPT);
 
 //  	} else if (ob == dialog_->???) {
-//  		dispatchFunc(LFUN_SUBSCRIPT);
-//  		dispatchFunc(LFUN_LEFT);
-//  		dispatchFunc(LFUN_SUPERSCRIPT);
+//  		controller().dispatchFunc(LFUN_SUBSCRIPT);
+//  		controller().dispatchFunc(LFUN_LEFT);
+//  		controller().dispatchFunc(LFUN_SUPERSCRIPT);
 
 	} else if (ob == dialog_->button_equation) {
-		dispatchFunc(LFUN_MATH_DISPLAY);
+		controller().dispatchFunc(LFUN_MATH_DISPLAY);
 
 	} else if (ob == dialog_->button_frac) {
-		insertSymbol("frac");
+		controller().insertSymbol("frac");
 
 	} else if (ob == dialog_->button_sqrt) {
-		insertSymbol("sqrt");
+		controller().insertSymbol("sqrt");
 
 	} else if (ob == dialog_->browser_funcs) {
 		int const i = fl_get_browser(dialog_->browser_funcs) - 1;
-		insertSymbol(function_names[i]);
+		controller().insertSymbol(function_names[i]);
 	}
 
-	return true;
-}
-
-
-void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
-{
-	if (bs)
-		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
-	else
-		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
-}
-
-
-void FormMathsPanel::dispatchFunc(kb_action action, string const & arg) const
-{
-	lv_.dispatch(FuncRequest(action, arg));
-}
-
-
-FormMathsSub::FormMathsSub(LyXView & lv, Dialogs & d, FormMathsPanel const & p,
-			   string const & t, bool allowResize)
-	: FormBaseBD(lv, d, t, allowResize), parent_(p), bc_(_("Close"))
-{}
-
-
-bool FormMathsSub::isVisible() const
-{
-	return form() ? form()->visible : false;
+	return ButtonPolicy::SMI_VALID;
 }

@@ -18,33 +18,28 @@
 #pragma interface
 #endif
 
-#include "FormMathsPanel.h"
+#include "FormBase.h"
 
-#include <boost/scoped_ptr.hpp>
-
+class ControlMathSub;
 struct FD_maths_style;
 
 /**
  * This class provides an XForms implementation of the maths style.
  */
-class FormMathsStyle : public FormMathsSub {
+class FormMathsStyle : public FormCB<ControlMathSub, FormDB<FD_maths_style> > {
 public:
 	///
-	FormMathsStyle(LyXView &, Dialogs &, FormMathsPanel const &);
+	FormMathsStyle();
 
 private:
-	/// Build the dialog
-	virtual void build();
-	/// input handler
-	virtual bool input(FL_OBJECT *, long);
-	/// Apply from dialog (modify or create inset)
+	///
 	virtual void apply();
-
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-
-	// Real GUI implementation
-	boost::scoped_ptr<FD_maths_style> dialog_;
+	///
+	virtual void build();
+	///
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	/// Not needed.
+	virtual void update() {}
 
 	/// The current choice.
 	int style_;

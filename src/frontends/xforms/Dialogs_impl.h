@@ -87,25 +87,9 @@
 #include "ControlShowFile.h"
 #include "FormShowFile.h"
 
-#include "FormMathsBitmap.h"
-
+#include "ControlMath.h"
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"
-
-#include "FormMathsDeco.h"
-#include "forms/form_maths_deco.h"
-
-#include "FormMathsDelim.h"
-#include "forms/form_maths_delim.h"
-
-#include "FormMathsMatrix.h"
-#include "forms/form_maths_matrix.h"
-
-#include "FormMathsSpace.h"
-#include "forms/form_maths_space.h"
-
-#include "FormMathsStyle.h"
-#include "forms/form_maths_style.h"
 
 #include "ControlMinipage.h"
 #include "FormMinipage.h"
@@ -225,7 +209,8 @@ IndexDialog;
 typedef GUI<ControlLog, FormLog, OkCancelPolicy, xformsBC>
 LogFileDialog;
 
-typedef FormMathsPanel MathPanelDialog;
+typedef GUI<ControlMath, FormMathsPanel, OkCancelReadOnlyPolicy, xformsBC>
+MathPanelDialog;
 
 typedef GUI<ControlMinipage, FormMinipage, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 MinipageDialog;

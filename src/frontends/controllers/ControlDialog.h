@@ -34,12 +34,12 @@ public:
 	 *  Publicly accessible so that it can be invoked by the Dialogs class.
 	 */
 	virtual void show();
-protected:
 	/// Hide the dialog.
 	virtual void hide();
 	/// Update the dialog.
 	virtual void update();
 
+protected:
 	/// clean-up on hide.
 	virtual void clearParams() {}
 	/// set the params before show or update

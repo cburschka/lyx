@@ -18,33 +18,28 @@
 #pragma interface
 #endif
 
-#include "FormMathsPanel.h"
+#include "FormBase.h"
 
-#include <boost/scoped_ptr.hpp>
-
+class ControlMathSub;
 struct FD_maths_space;
 
 /**
  * This class provides an XForms implementation of the maths space.
  */
-class FormMathsSpace : public FormMathsSub {
+class FormMathsSpace : public FormCB<ControlMathSub, FormDB<FD_maths_space> > {
 public:
 	///
-	FormMathsSpace(LyXView &, Dialogs &, FormMathsPanel const &);
+	FormMathsSpace();
 
 private:
-	/// Build the dialog
-	virtual void build();
-	/// input handler
-	virtual bool input(FL_OBJECT *, long);
-	/// Apply from dialog (modify or create inset)
+	///
 	virtual void apply();
-
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-
-	// Real GUI implementation
-	boost::scoped_ptr<FD_maths_space> dialog_;
+	///
+	virtual void build();
+	///
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	/// Not needed.
+	virtual void update() {}
 
 	/// The current choice.
 	int space_;

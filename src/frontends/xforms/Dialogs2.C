@@ -141,7 +141,7 @@ void Dialogs::showLogFile()
 
 void Dialogs::showMathPanel()
 {
-	pimpl_->mathpanel.show();
+	pimpl_->mathpanel.controller().show();
 }
 
 

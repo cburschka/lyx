@@ -14,35 +14,51 @@
 #ifndef FORM_MATHSBITMAP_H
 #define FORM_MATHSBITMAP_H
 
-#include "LString.h"
-#include "FormMathsPanel.h"
-
-#include <boost/shared_ptr.hpp>
-
-#include <vector>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "FormBase.h"
+#include <boost/shared_ptr.hpp>
+#include <vector>
+
+struct BitmapStore 
+{
+	BitmapStore(int nt_in, int nx_in, int ny_in, int bw_in, int bh_in,
+		    unsigned char const * data_in, bool vert_in)
+		: nt(nt_in), nx(nx_in), ny(ny_in), bw(bw_in), bh(bh_in),
+		  data(data_in), vert(vert_in)
+	{}
+
+	int nt;
+	int nx;
+	int ny;
+	int bw;
+	int bh;
+	unsigned char const * data;
+	bool vert;
+};
+
+
+struct FD_maths_bitmap 
+{
+	~FD_maths_bitmap();
+	FL_FORM * form;
+	FL_OBJECT * button_close;
+};
+
+
 /**
  * This class provides an XForms implementation of a maths bitmap form.
  */
-class FormMathsBitmap : public FormMathsSub {
-	///
-	friend class FormMathsPanel;
 
+class ControlMathSub;
+
+class FormMathsBitmap : public FormCB<ControlMathSub, FormDB<FD_maths_bitmap> >
+{
 public:
 	///
-	typedef boost::shared_ptr<FL_OBJECT> bm_ptr;
-	///
-	typedef boost::shared_ptr<FL_FORM> fl_ptr;
-
-	///
-	FormMathsBitmap(LyXView &, Dialogs & d, FormMathsPanel const &,
-			string const &, std::vector<string> const &);
-	///
-	~FormMathsBitmap();
+	FormMathsBitmap(string const &, std::vector<string> const &);
 	///
 	void addBitmap(int, int, int, int, int, unsigned char const *,
 		       bool = true);
@@ -51,24 +67,27 @@ private:
 	///
 	int GetIndex(FL_OBJECT *);
 
-	/// Build the dialog
-	virtual void build();
-	/// apply the data
+	///
 	virtual void apply();
-	/// input handler
-	bool input(FL_OBJECT *, long);
+	///
+	virtual void build();
+	///
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	/// Not needed.
+	virtual void update() {}
 
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
+	///
+	FL_OBJECT * buildBitmap(BitmapStore const & bmstore);
 
 	/// The latex names associated with each symbol
 	std::vector<string> latex_;
 	/// The latex name chosen
 	string latex_chosen_;
-	/// Real GUI implementation
-	fl_ptr form_;
-	/// The bitmap tables
-	std::vector<bm_ptr> bitmaps_;
+
+	/** Temporary store for bitmap data passed to addBitmap()
+	 *  but before the FL_OBJECT is created in build().
+	 */
+	std::vector<BitmapStore> bitmaps_;
 
 	/// Border width
 	int ww_;

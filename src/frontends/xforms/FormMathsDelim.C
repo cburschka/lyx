@@ -19,14 +19,10 @@
 
 #include "FormMathsDelim.h"
 #include "forms/form_maths_delim.h"
+#include "ControlMath.h"
+#include "xformsBC.h"
 
 #include "bmtable.h"
-
-#include "debug.h"
-#include "funcrequest.h"
-#include "lyxfunc.h"
-
-#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 
@@ -54,18 +50,12 @@ static char const * delim_values[] = {
 
 using std::endl;
 
-FormMathsDelim::FormMathsDelim(LyXView & lv, Dialogs & d,
-			       FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Delimiters"), false)
+
+typedef FormCB<ControlMathSub, FormDB<FD_maths_delim> > base_class;
+
+FormMathsDelim::FormMathsDelim()
+	: base_class(_("Maths Delimiters"), false)
 {}
-
-
-FL_FORM * FormMathsDelim::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
 
 
 void FormMathsDelim::build()
@@ -102,11 +92,17 @@ void FormMathsDelim::apply()
 
 	ostringstream os;
 	os << delim_values[left] << ' ' << delim_values[right];
-	parent_.dispatchFunc(LFUN_MATH_DELIM, STRCONV(os.str()));
+	controller().dispatchFunc(LFUN_MATH_DELIM, STRCONV(os.str()));
 }
 
 
-bool FormMathsDelim::input(FL_OBJECT *, long)
+void FormMathsDelim::update()
+{
+	bc().valid();
+}
+
+
+ButtonPolicy::SMInput FormMathsDelim::input(FL_OBJECT *, long)
 {
 	int left = int(dialog_->radio_left->u_ldata);
 	int right= int(dialog_->radio_right->u_ldata);
@@ -149,5 +145,5 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 	dialog_->radio_left->u_ldata  = left;
 	dialog_->radio_right->u_ldata = right;
 
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }

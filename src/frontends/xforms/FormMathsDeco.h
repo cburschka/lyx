@@ -18,37 +18,31 @@
 #pragma interface
 #endif
 
-#include "FormMathsPanel.h"
+#include "FormBase.h"
 
-#include <boost/scoped_ptr.hpp>
-
+class ControlMathSub;
 struct FD_maths_deco;
 
 /**
  * This class provides an XForms implementation of the maths deco.
  */
-class FormMathsDeco : public FormMathsSub {
+class FormMathsDeco : public FormCB<ControlMathSub, FormDB<FD_maths_deco> > {
 public:
 	///
-	FormMathsDeco(LyXView &, Dialogs &, FormMathsPanel const &);
+	FormMathsDeco();
 
 private:
-	/// Build the dialog
-	virtual void build();
-	/// Apply from dialog (modify or create inset)
+	///
 	virtual void apply();
-	/// Input selection:
-	virtual bool input(FL_OBJECT *, long);
-
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-
-	// Real GUI implementation
-	boost::scoped_ptr<FD_maths_deco> dialog_;
+	///
+	virtual void build();
+	///
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	/// Not needed.
+	virtual void update() {}
 
 	/// Current choice
 	int deco_;
-
 };
 
 #endif //  FORM_MATHSDECO_H

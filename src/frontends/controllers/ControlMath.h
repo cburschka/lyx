@@ -6,6 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -13,8 +14,92 @@
 #ifndef CONTROL_MATH_H
 #define CONTROL_MATH_H
 
+#include "commandtags.h"
+#include "ControlDialog_impl.h"
+
+#include "ButtonController.h"
+#include "ButtonPolicies.h"
+
 #include "LString.h"
- 
+#include <boost/shared_ptr.hpp>
+#include <map>
+
+
+class GUIMathSub;
+
+
+class ControlMath : public ControlDialogBD {
+public:
+	///
+	ControlMath(LyXView &, Dialogs &);
+
+	/// dispatch an LFUN
+	void dispatchFunc(kb_action act, string const & arg = string()) const;
+	/// dispatch a symbol insert
+	void insertSymbol(string const & sym, bool bs = true) const;
+
+	///
+	void addDaughter(void * key, ViewBase * v, ButtonControllerBase * bc);
+	///
+	void showDaughter(void *);
+	
+private:
+	///
+	virtual void apply();
+
+	///
+	typedef boost::shared_ptr<GUIMathSub> DaughterPtr;
+	///
+	typedef std::map<void *, DaughterPtr> Store;
+
+	/** The store of all daughter dialogs.
+	 *  The map uses the button on the main panel to identify them.
+	 */
+	Store daughters_;
+
+	/// A pointer to the currently active daughter dialog.
+	GUIMathSub * active_;
+};
+
+
+class ControlMathSub : public ControlDialogBD {
+public:
+	///
+	ControlMathSub(LyXView &, Dialogs &, ControlMath const & p);
+
+	/// dispatch an LFUN
+	void dispatchFunc(kb_action act, string const & arg = string()) const;
+	/// dispatch a symbol insert
+	void insertSymbol(string const & sym, bool bs = true) const;
+
+private:
+	///
+	virtual void apply();
+	///
+	ControlMath const & parent_;
+};
+
+
+class GUIMathSub {
+public:
+	///
+	GUIMathSub(LyXView & lv, Dialogs & d,
+		   ControlMath const & p,
+		   ViewBase * v,
+		   ButtonControllerBase * bc);
+	///
+	ControlMathSub & controller() { return controller_; }
+
+private:
+	///
+	ControlMathSub controller_;
+	///
+	boost::scoped_ptr<ButtonControllerBase> bc_;
+	///
+	boost::scoped_ptr<ViewBase> view_;
+};
+
+
 extern char const * function_names[];
 extern int const nr_function_names;
 extern char const * latex_arrow[];

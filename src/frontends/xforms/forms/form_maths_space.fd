@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_negative
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_negmedspace
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 1
 
 --------------------
@@ -100,7 +100,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_negthickspace
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 2
 
 --------------------
@@ -118,7 +118,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_thick
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 5
 
 --------------------
@@ -136,7 +136,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_twoquadratin
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 7
 
 --------------------
@@ -172,7 +172,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
-callback: C_FormBaseDeprecatedCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -190,7 +190,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_quadratin
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 6
 
 --------------------
@@ -208,7 +208,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_thin
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 3
 
 --------------------
@@ -226,7 +226,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_medium
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 4
 
 ==============================

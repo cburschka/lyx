@@ -20,6 +20,10 @@
 #include "xformsBC.h"
 #include "xforms_resize.h"
 #include "Tooltips.h"
+#include "xforms_helpers.h" // formatted
+
+#include "gettext.h"        // _()
+#include "BoostFormat.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch
@@ -29,22 +33,28 @@
 extern "C" {
 
 #if FL_VERSION > 0 || FL_REVISION >= 89
-// This should be in forms.h but isn't
+
+// These should be in forms.h but aren't
+void fl_show_tooltip(const char *, int, int);
+
 void fl_hide_tooltip();
+
 #endif
 
 // Callback function invoked by xforms when the dialog is closed by the
-// window manager
+// window manager.
 static int C_WMHideCB(FL_FORM * form, void *);
 
-// Callback function invoked by the xforms pre- and post-handler routines
+// Callback function invoked by the xforms pre-handler routine.
 static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 
 } // extern "C"
 
 
 FormBase::FormBase(string const & t, bool allowResize)
-	: ViewBase(), minw_(0), minh_(0), allow_resize_(allowResize),
+	: ViewBase(),
+	  warning_posted_(false), message_widget_(0),
+	  minw_(0), minh_(0), allow_resize_(allowResize),
 	  title_(t), icon_pixmap_(0), icon_mask_(0),
 	  tooltips_(new Tooltips())
 {}
@@ -184,6 +194,14 @@ void FormBase::setPrehandler(FL_OBJECT * ob)
 }
 
 
+void FormBase::setMessageWidget(FL_OBJECT * ob)
+{
+	lyx::Assert(ob && ob->objclass == FL_TEXT);
+	message_widget_ = ob;
+	fl_set_object_lsize(message_widget_, FL_NORMAL_SIZE);
+}
+
+
 void FormBase::InputCB(FL_OBJECT * ob, long data)
 {
 	// It is possible to set the choice to 0 when using the
@@ -199,6 +217,141 @@ void FormBase::InputCB(FL_OBJECT * ob, long data)
 ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
 {
 	return ButtonPolicy::SMI_VALID;
+}
+
+
+// preemptive handler for feedback messages
+void FormBase::MessageCB(FL_OBJECT * ob, int event)
+{
+	lyx::Assert(ob);
+
+	switch (event) {
+	case FL_ENTER:
+	{
+		string const feedback = getFeedback(ob);
+		if (feedback.empty() && warning_posted_)
+			break;
+
+		warning_posted_ = false;
+		postMessage(getFeedback(ob));
+		break;
+	}
+
+	case FL_LEAVE:
+		if (!warning_posted_)
+			clearMessage();
+		break;
+
+	default:
+		break;
+	}
+}
+
+
+void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
+{
+	lyx::Assert(ob);
+
+	if (ob->objclass == FL_INPUT && event == FL_PUSH && key == 2) {
+		// Trigger an input event when pasting in an xforms input object
+		// using the middle mouse button.
+		InputCB(ob, 0);
+		return;
+	}
+
+
+	if (event != FL_ENTER && event != FL_LEAVE)
+		return;
+
+	if (ob->objclass == FL_TABFOLDER) {
+		// This prehandler is used to work-around an xforms bug and
+		// ensures that the form->x, form->y coords of the active
+		// tabfolder are up to date.
+
+		// The tabfolder itself can be very narrow, being just
+		// the visible border to the tabs.
+		// We thus use both FL_ENTER and FL_LEAVE as flags,
+		// in case the FL_ENTER event is not caught.
+
+		FL_FORM * const folder = fl_get_active_folder(ob);
+		if (folder && folder->window) {
+			fl_get_winorigin(folder->window,
+					 &(folder->x), &(folder->y));
+		}
+
+	}
+
+	if (message_widget_) {
+		// Post feedback as the mouse enters the object,
+		// remove it as the mouse leaves.
+		MessageCB(ob, event);
+	}
+
+#if FL_VERSION > 0 || FL_REVISION >= 89
+	// Tooltips are not displayed on browser widgets due to an xforms' bug.
+	// This is a work-around:
+	if (ob->objclass == FL_BROWSER) {
+		if (event == FL_ENTER && ob->tooltip && *(ob->tooltip)) {
+			fl_show_tooltip(ob->tooltip, ob->form->x + ob->x,
+					ob->form->y + ob->y + ob->h + 1);
+		} else if (event == FL_LEAVE) {
+			fl_hide_tooltip();
+		}
+	}
+#endif
+}
+
+
+void FormBase::postWarning(string const & warning)
+{
+	warning_posted_ = true;
+	postMessage(warning);
+}
+
+
+void FormBase::clearMessage()
+{
+	lyx::Assert(message_widget_);
+
+	warning_posted_ = false;
+
+	string const existing = message_widget_->label
+		? message_widget_->label : string();
+	if (existing.empty())
+		return;
+
+	// This trick is needed to get xforms to clear the label...
+	fl_set_object_label(message_widget_, "");
+	fl_hide_object(message_widget_);
+}
+
+
+void FormBase::postMessage(string const & message)
+{
+	lyx::Assert(message_widget_);
+
+#if USE_BOOST_FORMAT
+	boost::format fmter = warning_posted_ ?
+		boost::format(_("WARNING! %1$s")) :
+		boost::format("%1$s");
+
+	int const width = message_widget_->w - 10;
+	string const str = formatted(boost::io::str(fmter % message),
+				     width, FL_NORMAL_SIZE);
+#else
+	string const tmp = warning_posted_ ?
+		_("WARNING!") + string(" ") + message :
+		message;
+
+	string const str = formatted(tmp, width, FL_NORMAL_SIZE);
+#endif
+
+	fl_set_object_label(message_widget_, str.c_str());
+	FL_COLOR const label_color = warning_posted_ ? FL_RED : FL_LCOL;
+	fl_set_object_lcol(message_widget_, label_color);
+
+	if (!message_widget_->visible)
+		fl_show_object(message_widget_);
 }
 
 

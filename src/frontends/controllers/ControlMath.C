@@ -12,10 +12,106 @@
 #include <config.h>
 
 #include "ControlMath.h"
+#include "ViewBase.h"
+
+#include "debug.h" 
+#include "funcrequest.h"
+
+#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 #include "support/filetools.h"
-#include "debug.h" 
+
+
+ControlMath::ControlMath(LyXView & lv, Dialogs & d)
+	: ControlDialogBD(lv, d)
+{}
+
+
+void ControlMath::apply()
+{
+	view().apply();
+}
+
+
+void ControlMath::dispatchFunc(kb_action action, string const & arg) const
+{
+	lv_.dispatch(FuncRequest(action, arg));
+}
+
+
+void ControlMath::insertSymbol(string const & sym, bool bs) const
+{
+	if (bs)
+		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
+	else
+		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
+}
+
+
+void ControlMath::addDaughter(void * key, ViewBase * v,
+			      ButtonControllerBase * bc)
+{
+	if (daughters_.find(key) != daughters_.end())
+		return;
+
+	daughters_[key] = DaughterPtr(new GUIMathSub(lv_, d_, *this, v, bc));
+}
+
+
+void ControlMath::showDaughter(void * key)
+{
+	Store::iterator it = daughters_.find(key);
+	GUIMathSub * const new_active =
+		(it == daughters_.end()) ? 0 : it->second.get();
+
+	if (active_ != new_active) {
+		if (active_ )
+			active_->controller().hide();
+		active_ = new_active;
+	}
+
+	if (active_)
+		active_->controller().show();
+}
+
+
+
+ControlMathSub::ControlMathSub(LyXView & lv, Dialogs & d, ControlMath const & p)
+	: ControlDialogBD(lv, d),
+	  parent_(p)
+{}
+
+
+void ControlMathSub::apply()
+{
+	view().apply();
+}
+
+
+void ControlMathSub::dispatchFunc(kb_action action, string const & arg) const
+{
+	parent_.dispatchFunc(action, arg);
+}
+
+
+void ControlMathSub::insertSymbol(string const & sym, bool bs) const
+{
+	parent_.insertSymbol(sym, bs);
+}
+
+
+GUIMathSub::GUIMathSub(LyXView & lv, Dialogs & d,
+		       ControlMath const & p,
+		       ViewBase * v,
+		       ButtonControllerBase * bc)
+	: controller_(lv, d, p), bc_(bc), view_(v)
+{
+	controller_.setView(*view_);
+	controller_.setButtonController(*bc_);
+	view_->setController(controller_);
+}
+
 
 char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",

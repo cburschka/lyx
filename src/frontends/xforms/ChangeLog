@@ -1,3 +1,32 @@
+2002-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs_impl.h:
+	* Dialogs2.C: no need to include math sub dialog header files.
+	Use standard MCV implementation of main math panel dialog.
+
+	* FormBaseDeprecated.[Ch]:
+	* FeedbackController.[Ch]: removed.
+
+	* FormBase.[Ch]: Merge the contents of FeedbackController into here
+	also.
+	(FormCB): make the controller methods publicly accessible.
+
+	* forms/form_maths_deco.fd:
+	* forms/form_maths_delim.fd:
+	* forms/form_maths_matrix.fd:
+	* forms/form_maths_panel.fd:
+	* forms/form_maths_space.fd:
+	* forms/form_maths_style.fd: s/Deprecated//
+
+	* FormMathsBitmap.[Ch]:
+	* FormMathsDeco.[Ch]:
+	* FormMathsDelim.[Ch]:
+	* FormMathsMatrix.[Ch]:
+	* FormMathsPanel.[Ch]:
+	* FormMathsSpace.[Ch]:
+	* FormMathsStyle.[Ch]: implement a Controller-View split of the math
+	dialogs.
+
 2002-11-22  Angus Leeming  <leeming@lyx.org>
 
 	The first step towards a math dialog controller...

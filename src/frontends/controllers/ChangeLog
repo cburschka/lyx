@@ -1,3 +1,10 @@
+2002-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* ControlDialog.h (hide, update): move from protected to public.
+
+	* ControlMath.[Ch]: add controllers for the main math panel dialog and
+	for any daughter dialogs stored by the main panel.
+
 2002-11-21  Angus Leeming  <leeming@lyx.org>
 
 	* ControlDocument.[Ch] (classApply): no longer returns bool.
