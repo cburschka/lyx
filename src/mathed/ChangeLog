@@ -1,3 +1,8 @@
+2001-07-09  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* math_matrixinset.C (mutate): Use only the first label when
+	mutating eqnarray to display formula.
+
 2001-07-09  Juergen Vigna  <jug@sad.it>
 
 	* formulabase.C (mathDispatchCreation): don't do anything with the

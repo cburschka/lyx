@@ -476,13 +476,20 @@ void MathMatrixInset::mutate(short newtype)
 			switch (newtype) {
 				case LM_OT_SIMPLE:
 				case LM_OT_EQUATION: {
-					string label;
 					bool allnonum = true;
 					for (int r = 0; r < nrows(); ++r) {
-						label += label_[r];
 						if (!nonum_[r])
 							allnonum = false;
 					}
+
+					string label;
+					for (int r = 0; r < nrows(); ++r) {
+						if (!label_[r].empty()) {
+							label = label_[r];
+							break;
+						}
+					}
+
 					glueall();
 					mutate(newtype);
 					label_[0] = label;
