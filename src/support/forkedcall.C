@@ -40,7 +40,9 @@
 #include <sys/wait.h>
 #include <csignal>
 #include <cstdlib>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 using std::endl;
 
