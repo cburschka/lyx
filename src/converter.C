@@ -246,7 +246,7 @@ Converter::GetReachable(string const & from, bool only_viewable)
 			name += ":" + (*it).from;
 			string tmp;
 			split((*it).command, tmp, ' ');
-			prettyname  += _("(using ") + tmp + ")";	
+			prettyname  += _(" (using ") + tmp + ")";	
 		}
 		if (!only_viewable || !format->viewer.empty())
 			result.push_back(pair<string,string>(name, prettyname));

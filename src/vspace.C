@@ -93,9 +93,8 @@ char nextToken(string & data)
 		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
                         string buffer = data.substr(0, i + 1);
-			double x = strToDbl(buffer);
-			if (x || (buffer[0] == '0')) {
-				number[number_index] = x;
+			if (isStrDbl(buffer)) {
+				number[number_index] = strToDbl(buffer);
 				lyx_advance(data, i + 1);
 				++number_index;
 				return 'n';

@@ -1092,7 +1092,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 		lex.next();
 		string token(lex.GetString());
 		if (token == "\\lyxformat") { // the first token _must_ be...
-			lex.next();
+			lex.EatLine();
 			format = lex.GetFloat();
 			if (format > 1) {
 				if (LYX_FORMAT - format > 0.05) {

@@ -32,6 +32,8 @@ class Intl {
 public:
 	///
 	Intl();
+	///
+	~Intl();
 	
 	/// show key mapping dialog
 	void MenuKeymap(); 

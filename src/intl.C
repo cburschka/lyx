@@ -48,6 +48,11 @@ Intl::Intl()
 	otherkeymap = 0;
 }
 
+Intl::~Intl()
+{
+	delete trans;
+}
+
 
 int Intl::SetPrimary(string const & lang)
 {
@@ -274,22 +279,22 @@ void Intl::InitKeyMapper(bool on)
 	Language2->addto("default");
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
-		Language->addto((*cit).second.lang().c_str());
-		Language2->addto((*cit).second.lang().c_str());
+		Language->addto((*cit).second.lang());
+		Language2->addto((*cit).second.lang());
 		++n;
 	}
 
 	Language->addto(_("other..."));
 	Language2->addto(_("other..."));
 	otherkeymap = n + 1;
-	if (!Language->select_text(prim_lang.c_str())) {
+	if (!Language->select_text(prim_lang)) {
 		Language->select(n+1);
 		fl_set_input(fd_form_keymap->OtherKeymap, prim_lang.c_str());
 	}
 	else 
 		trans->SetPrimary(prim_lang);
 
-	if (!Language2->select_text(sec_lang.c_str())) {
+	if (!Language2->select_text(sec_lang)) {
 		Language2->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap2, sec_lang.c_str());
 	}
@@ -300,7 +305,7 @@ void Intl::InitKeyMapper(bool on)
 	if (keymapon)
 		Keymap(23); // turn primary on
 
-	trans->setCharset(lyxrc.font_norm.c_str());
+	trans->setCharset(lyxrc.font_norm);
 }
 
 

@@ -1,3 +1,36 @@
+2000-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (readFile): make sure that the whole version number
+	is read after \lyxformat (even when it contains a comma)
+
+	* lib/ui/default.ui: change shortcut of math menu to M-a.
+
+2000-09-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/vspace.C (nextToken): use isStrDbl() to check for proper
+	double values.
+
+	* src/LyXView.C (updateWindowTitle): show the full files name in
+	window title, limited to 30 characters.
+
+	* src/support/lyxstring.C (lyxstring): fix it correctly this time.
+	When a number of characters has been given, we should not assume
+	that the string is 0-terminated.
+
+	* src/intl.C (InitKeyMapper): remove a bunch of string::c_str()
+	calls (fixes some memory leaks)
+	
+	* src/intl.[Ch]: add a destructor for Intl, in order to delete the
+	trans member on exit.
+
+2000-09-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/converter.C (GetReachable): fix typo.
+
+	* src/lyxlex.C (GetFloat): rewrite to use strToDbl() and
+	understand ',' instead of '.'.
+	(GetInteger): rewrite to use strToInt().
+
 2000-09-26  Juergen Vigna  <jug@sad.it>
 
 	* src/frontends/xforms/FormParagraph.C: fixed de/activation of fields,

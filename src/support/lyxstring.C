@@ -415,11 +415,7 @@ lyxstring::lyxstring(value_type const * s, size_type n)
 	Assert(s && n < npos); // STD!
 	static Srep empty_rep(0, "");
 	if (*s && n) { // s is not empty string and n > 0
-		size_type l = 0;
-		while (l < n && s[l])
-			l++;
-		rep = new Srep(l, s);
-		// rep = new Srep(min(strlen(s),n), s);
+		rep = new Srep(n, s);
 	} else {
 		++empty_rep.ref;
 		rep = &empty_rep;

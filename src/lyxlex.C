@@ -20,6 +20,7 @@
 #include "lyxlex.h"
 #include "lyxlex_pimpl.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 using std::istream;
@@ -111,8 +112,8 @@ int LyXLex::lex()
 
 int LyXLex::GetInteger() const
 {
-	if (pimpl_->buff[0] > ' ')   
-		return atoi(pimpl_->buff);
+	if (isStrInt(pimpl_->GetString()))
+		return strToInt(pimpl_->GetString());
 	else {
 		pimpl_->printError("Bad integer `$$Token'");
 		return -1;
@@ -122,12 +123,16 @@ int LyXLex::GetInteger() const
 
 float LyXLex::GetFloat() const
 {
-   if (pimpl_->buff[0] > ' ')
-       return atof(pimpl_->buff);
-   else {
-	pimpl_->printError("Bad float `$$Token'");
-	return -1;
-   }
+	// replace comma with dot in case the file was written with
+	// the wrong locale (should be rare, but is easy enough to
+	// avoid). 
+	string str = subst(pimpl_->GetString(), ",", ".");
+	if (isStrDbl(str))
+		return strToDbl(str);
+	else {
+		pimpl_->printError("Bad float `$$Token'");
+		return -1;
+	}
 }
 
 

@@ -4,7 +4,7 @@ _("Toc|T");
 _("Refs|R");
 _("Layout|L");
 _("Insert|I");
-_("Math|M");
+_("Math|a");
 _("Options|O");
 _("Documents|D");
 _("Help|H");
