@@ -25,6 +25,8 @@ class UpdatableInset : public InsetOld {
 public:
 	///
 	virtual EDITABLE editable() const;
+	/// identification as math inset
+	UpdatableInset * asUpdatableInset() { return this; }
 
 	/// return the cursor pos, relative to the inset pos
 	virtual void getCursorPos(int, int &, int &) const {}

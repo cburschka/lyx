@@ -40,7 +40,7 @@ public:
 	/// identifies NestInsets
 	MathNestInset const * asNestInset() const { return this; }
 	/// get cursor position
-	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
+	void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// order of movement through the cells when pressing the left key
 	bool idxLeft(idx_type & idx, pos_type & pos) const;

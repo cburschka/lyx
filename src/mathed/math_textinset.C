@@ -40,11 +40,11 @@ MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 }
 
 
-void MathTextInset::getPos(idx_type /*idx*/, pos_type pos, int & x, int & y) const
+void MathTextInset::getScreenPos(idx_type /*idx*/, pos_type pos, int & x, int & y) const
 {
 	idx_type const i = pos2row(pos);
 	pos_type const p = pos - cache_.cellinfo_[i].begin_;
-	cache_.getPos(i, p, x, y);
+	cache_.getScreenPos(i, p, x, y);
 	y = cache_.cell(i).yo();
 }
 

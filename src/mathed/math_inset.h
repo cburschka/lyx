@@ -79,6 +79,8 @@ class MathInset : public InsetBase {
 public:
 	/// our members behave nicely...
 	MathInset() {}
+	/// identification as math inset
+	MathInset * asMathInset() { return this; }
 
 	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
@@ -150,7 +152,7 @@ public:
 	/// can we enter this cell?
 	virtual bool validCell(idx_type) const { return true; }
 	/// get coordinates
-	virtual void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
+	virtual void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// identifies certain types of insets
 	virtual MathAMSArrayInset       * asAMSArrayInset()       { return 0; }

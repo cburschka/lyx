@@ -89,41 +89,34 @@ bool CursorSlice::boundary() const
 
 MathInset * CursorSlice::asMathInset() const
 {
-	return static_cast<MathInset *>(const_cast<InsetBase *>(inset_));
+	return inset_ ? inset_->asMathInset() : 0;
 }
 
 
 UpdatableInset * CursorSlice::asUpdatableInset() const
 {
-	return static_cast<UpdatableInset *>(const_cast<InsetBase *>(inset_));
+	return inset_ ? inset_->asUpdatableInset() : 0;
 }
 
 
-MathArray & CursorSlice::cell(CursorSlice::idx_type idx) const
+void CursorSlice::cell(CursorSlice::idx_type idx) const
 {
-	BOOST_ASSERT(inset_);
 	BOOST_ASSERT(asMathInset());
-	return asMathInset()->cell(idx);
+	asMathInset()->cell(idx);
 }
 
 
 MathArray & CursorSlice::cell() const
 {
-	BOOST_ASSERT(inset_);
+	BOOST_ASSERT(asMathInset());
 	return asMathInset()->cell(idx_);
 }
 
 
-void CursorSlice::getPos(int & x, int & y) const
+void CursorSlice::getScreenPos(int & x, int & y) const
 {
-	BOOST_ASSERT(inset_);
-	asMathInset()->getPos(idx_, pos_, x, y);
-}
-
-
-void CursorSlice::setPos(int pos)
-{
-	pos_ = pos;
+	BOOST_ASSERT(asMathInset());
+	asMathInset()->getScreenPos(idx_, pos_, x, y);
 }
 
 

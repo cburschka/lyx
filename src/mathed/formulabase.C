@@ -166,33 +166,33 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 
 void InsetFormulaBase::getCursor(BufferView &, int & x, int & y) const
 {
-	mathcursor->getPos(x, y);
+	mathcursor->getScreenPos(x, y);
 }
 
 
 void InsetFormulaBase::getCursorPos(int, int & x, int & y) const
 {
-	if (!mathcursor) {
-		lyxerr << "getCursorPos - should not happen";
+	if (mathcursor) {
+		mathcursor->getScreenPos(x, y);
+		x = mathcursor->targetX();
+		x -= xo_;
+		y -= yo_;
+		lyxerr << "InsetFormulaBase::getCursorPos: " << x << ' ' << y << endl;
+	} else {
 		x = 0;
 		y = 0;
-		return;
+		lyxerr << "getCursorPos - should not happen";
 	}
-	mathcursor->getPos(x, y);
-	x = mathcursor->targetX();
-	x -= xo_;
-	y -= yo_;
-	lyxerr << "InsetFormulaBase::getCursorPos: " << x << ' ' << y << endl;
 }
 
 
 void InsetFormulaBase::getCursorDim(int & asc, int & desc) const
 {
-	if (!mathcursor)
-		return;
-	asc = 10;
-	desc = 2;
-	//math_font_max_dim(font_, asc, des);
+	if (mathcursor) {
+		asc = 10;
+		desc = 2;
+		//math_font_max_dim(font_, asc, des);
+	}
 }
 
 
@@ -226,7 +226,7 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		MathArray ar;
 		asArray(bv->getClipboard(), ar);
 		mathcursor->selClear();
-		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+		mathcursor->setScreenPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->insert(ar);
 		bv->update();
 		return DispatchResult(true, true);
@@ -240,7 +240,7 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		//delete mathcursor;
 		//mathcursor = new MathCursor(this, x == 0);
 		//metrics(bv);
-		//mathcursor->setPos(x + xo_, y + yo_);
+		//mathcursor->setScreenPos(x + xo_, y + yo_);
 		return DispatchResult(true, true);
 	}
 
@@ -258,7 +258,7 @@ DispatchResult InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		releaseMathCursor(bv);
 		mathcursor = new MathCursor(this, cmd.x == 0);
 		//metrics(bv);
-		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+		mathcursor->setScreenPos(cmd.x + xo_, cmd.y + yo_);
 	}
 
 	if (cmd.button() == mouse_button::button3) {
@@ -270,7 +270,7 @@ DispatchResult InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		first_x = cmd.x;
 		first_y = cmd.y;
 		mathcursor->selClear();
-		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+		mathcursor->setScreenPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->dispatch(cmd);
 		return DispatchResult(true, true);
 	}
@@ -302,7 +302,7 @@ DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 		mathcursor->selStart();
 
 	BufferView * bv = cmd.view();
-	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+	mathcursor->setScreenPos(cmd.x + xo_, cmd.y + yo_);
 	bv->update();
 	return DispatchResult(true, true);
 }
@@ -326,7 +326,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y)
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, true);
 	//metrics(bv);
-	mathcursor->setPos(x + xo_, y + yo_);
+	mathcursor->setScreenPos(x + xo_, y + yo_);
 	bv->fullCursor().push(this);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
@@ -506,7 +506,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		int y = 0;
 		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
-		mathcursor->setPos(x, y);
+		mathcursor->setScreenPos(x, y);
 		break;
 	}
 

@@ -22,11 +22,12 @@
 
 #include "support/types.h"
 
+class BufferView;
 class InsetBase;
-class UpdatableInset;
 class MathInset;
-class LyXText;
 class MathArray;
+class LyXText;
+class UpdatableInset;
 
 
 /// This encapsulates a single slice of a document iterator as used e.g.
@@ -80,12 +81,10 @@ public:
 	///
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
-	/// returns cell corresponding to this position
-	MathArray & cell(idx_type idx) const;
+	/// set cell corresponding to this position
+	void cell(idx_type idx) const;
 	/// gets screen position of the thing
-	void getPos(int & x, int & y) const;
-	/// set position
-	void setPos(int pos);
+	void getScreenPos(int & x, int & y) const;
 	///
 	MathInset * asMathInset() const;
 
@@ -138,6 +137,9 @@ void increment(CursorBase &);
 CursorBase ibegin(InsetBase * p);
 ///
 CursorBase iend(InsetBase * p);
+///
+CursorSlice & cursorTip(BufferView &);
+
 
 
 #endif

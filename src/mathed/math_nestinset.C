@@ -45,7 +45,7 @@ MathArray const & MathNestInset::cell(idx_type i) const
 }
 
 
-void MathNestInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
+void MathNestInset::getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const
 {
 	MathArray const & ar = cell(idx);
 	x = ar.xo() + ar.pos2x(pos);

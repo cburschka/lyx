@@ -614,3 +614,8 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	update();
 }
 
+
+CursorSlice & cursorTip(BufferView & bv)
+{
+	return bv.cursor();
+}

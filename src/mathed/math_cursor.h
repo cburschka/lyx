@@ -98,9 +98,9 @@ public:
 	void niceInsert(std::string const &);
 
 	/// in pixels from top of screen
-	void setPos(int x, int y);
+	void setScreenPos(int x, int y);
 	/// in pixels from top of screen
-	void getPos(int & x, int & y) const;
+	void getScreenPos(int & x, int & y) const;
 	/// in pixels from left of screen
 	int targetX() const;
 	/// current inset

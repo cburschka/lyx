@@ -262,19 +262,19 @@ bool positionable
 }
 
 
-void MathCursor::setPos(int x, int y)
+void MathCursor::setScreenPos(int x, int y)
 {
-	dump("setPos 1");
+	dump("setScreenPos 1");
 	bool res = bruteFind(x, y,
 		formula()->xlow(), formula()->xhigh(),
 		formula()->ylow(), formula()->yhigh());
 	if (!res) {
 		// this can happen on creation of "math-display"
-		dump("setPos 1.5");
+		dump("setScreenPos 1.5");
 		first();
 	}
 	targetx_ = -1; // "no target"
-	dump("setPos 2");
+	dump("setScreenPos 2");
 }
 
 
@@ -641,9 +641,9 @@ void MathCursor::handleNest(MathAtom const & a, int c)
 }
 
 
-void MathCursor::getPos(int & x, int & y) const
+void MathCursor::getScreenPos(int & x, int & y) const
 {
-	inset()->getPos(idx(), pos(), x, y);
+	inset()->getScreenPos(idx(), pos(), x, y);
 }
 
 
@@ -652,7 +652,7 @@ int MathCursor::targetX() const
 	if (targetx_ != -1)
 		return targetx_;
 	int x = 0, y = 0;
-	getPos(x, y);
+	getScreenPos(x, y);
 	return x;
 }
 
@@ -944,7 +944,7 @@ bool MathCursor::goUpDown(bool up)
 	// So fiddle around with it only if you know what you are doing!
   int xo = 0;
 	int yo = 0;
-	getPos(xo, yo);
+	getScreenPos(xo, yo);
 
 	// check if we had something else in mind, if not, this is the future goal
 	if (targetx_ == -1)
@@ -1018,7 +1018,7 @@ bool MathCursor::goUpDown(bool up)
 
 		// any improvement so far?
 		int xnew, ynew;
-		getPos(xnew, ynew);
+		getScreenPos(xnew, ynew);
 		if (up ? ynew < yo : ynew > yo)
 			return true;
 	}
@@ -1037,7 +1037,7 @@ bool MathCursor::bruteFind
 		// avoid invalid nesting when selecting
 		if (!selection_ || positionable(it, Anchor_)) {
 			int xo, yo;
-			it.back().getPos(xo, yo);
+			it.back().getScreenPos(xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 				//lyxerr << "x: " << x << " y: " << y << " d: " << endl;
@@ -1066,13 +1066,13 @@ void MathCursor::bruteFind2(int x, int y)
 	double best_dist = 1e10;
 
 	CursorBase it = Cursor_;
-	it.back().setPos(0);
+	it.back().pos(0);
 	CursorBase et = Cursor_;
 	int n = et.back().asMathInset()->cell(et.back().idx_).size();
-	et.back().setPos(n);
+	et.back().pos(n);
 	for (int i = 0; ; ++i) {
 		int xo, yo;
-		it.back().getPos(xo, yo);
+		it.back().getScreenPos(xo, yo);
 		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 		// '<=' in order to take the last possible position
 		// this is important for clicking behind \sum in e.g. '\sum_i a'
@@ -1443,7 +1443,7 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 			CursorSlice & pos = Cursor_.back();
 			int x = 0;
 			int y = 0;
-			getPos(x, y);
+			getScreenPos(x, y);
 			if (x < cmd.x && hasPrevAtom()) {
 				DispatchResult const res =
 					prevAtom().nucleus()->dispatch(cmd, pos.idx_, pos.pos_);

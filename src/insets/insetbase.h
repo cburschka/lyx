@@ -18,12 +18,14 @@
 
 class Buffer;
 class BufferView;
+class DispatchResult;
 class FuncRequest;
+class LaTeXFeatures;
+class MathInset;
 class MetricsInfo;
 class Dimension;
 class PainterInfo;
-class LaTeXFeatures;
-class DispatchResult;
+class UpdatableInset;
 
 /// Common base class to all insets
 class InsetBase {
@@ -45,6 +47,11 @@ public:
 	virtual ~InsetBase() {}
 	/// replicate ourselves
 	virtual std::auto_ptr<InsetBase> clone() const = 0;
+
+	/// identification as math inset
+	virtual MathInset * asMathInset() { return 0; }
+	/// identification as non-math inset
+	virtual UpdatableInset * asUpdatableInset() { return 0; }
 
 	// the real dispatcher
 	DispatchResult
