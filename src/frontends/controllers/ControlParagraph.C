@@ -48,7 +48,7 @@ bool ControlParagraph::initialiseParams(string const & data)
 			lex.next();
 			bool const accept = lex.getBool();
 			action = accept ? 1 : 2;
-		} else {
+		} else if (!token.empty()) {
 			// Unrecognised token
 			return false;
 		}
@@ -71,6 +71,9 @@ bool ControlParagraph::initialiseParams(string const & data)
 		lex.next();
 		string const token = lex.getString();
 
+		if (token.empty())
+			continue;
+
 		int Int = 0;
 		if (token == "\\alignpossible" ||
 		    token == "\\aligndefault" ||
@@ -92,8 +95,9 @@ bool ControlParagraph::initialiseParams(string const & data)
 			ininset_ = Int;
 		}
 	}
-	if (nset != 3)
+	if (nset != 3) {
 		return false;
+	}
 
 	// If "update", then set the activation status of the button controller
 	if (action > 0) {
