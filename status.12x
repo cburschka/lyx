@@ -1,10 +1,10 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.2.3.
+This file describes what has been done in the preparation of LyX 1.2.4.
 All comments are welcome.
 
-You can find a list of bugs pending for 1.2.3 at URL
-http://bugzilla.lyx.org/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&&target_milestone=1.2.3
+You can find a list of bugs pending for 1.2.4 at URL
+http://bugzilla.lyx.org/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&&target_milestone=1.2.4
 
 I'd be glad if some of you could take the time to check it out (or fix
 a bug or two if you are feeling adventurous). Let me recall that all
@@ -19,29 +19,5 @@ What's new
 
 ** Updates
 
-- updated italian User Guide
-
-- updated french localization
-
 ** Bug fixes
 
-- fix bug where the configure script would try to delete the /dev/null
-  device when there has been an error in configuration step
-
-- fix bug where autosaving would leave a lot of zombie processes after
-  a long time
-
-- fix problem where it was not possible to force some values to 0 in
-  custom margins
-
-- fix bug where horizontal alignment would be reset automatically to
-  "left" in the tabular dialog
-
-- fix functions word-find-forward and word-find-backward, the meanings
-  of which were inverted
-
-- when the lyx binary was invoked through a symbolic link, LyX would
-  print annoying messages on the console; they are now output only
-  when debugging.
-
-- fix an installation issue with solaris
