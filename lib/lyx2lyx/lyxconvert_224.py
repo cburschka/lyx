@@ -78,9 +78,17 @@ def layout2begin_layout(lines):
         lines[i]= replace(lines[i], '\\layout', '\\begin_layout')
         i = i + 1
 
+def end_document(lines):
+    i = find_token(lines, "\\the_end", 0)
+    if i == -1:
+        lines.append("\\end_document")
+        return
+    lines[i] = "\\end_document"
+    
 def convert(header, body):
     add_end_layout(body)
     layout2begin_layout(body)
+    end_document(body)
 
 if __name__ == "__main__":
     pass

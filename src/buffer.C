@@ -295,7 +295,7 @@ int Buffer::readHeader(LyXLex & lex)
 // changed to be public and have one parameter
 // if par = 0 normal behavior
 // else insert behavior
-// Returns false if "\the_end" is not read (Asger)
+// Returns false if "\end_document" is not read (Asger)
 bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 {
 	Paragraph::depth_type depth = 0;
@@ -329,7 +329,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 		lyxerr[Debug::PARSER] << "Handling token: `"
 				      << token << '\'' << endl;
 
-		if (token == "\\the_end") {
+		if (token == "\\end_document") {
 			the_end_read = true;
 			continue;
 		}
@@ -698,7 +698,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 		pit->write(this, ofs, params, depth);
 
 	// Write marker that shows file is complete
-	ofs << "\n\\the_end" << endl;
+	ofs << "\n\\end_document" << endl;
 
 	// Shouldn't really be needed....
 	//ofs.close();

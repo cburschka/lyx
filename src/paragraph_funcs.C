@@ -988,7 +988,7 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 
 		lyxerr[Debug::PARSER] << "Handling paragraph token: `"
 				      << token << '\'' << endl;
-		if (token == "\\begin_layout" || token == "\\the_end"
+		if (token == "\\begin_layout" || token == "\\end_document"
 		    || token == "\\end_inset" || token == "\\begin_deeper"
 		    || token == "\\end_deeper") {
 			lex.pushToken(token);

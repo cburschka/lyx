@@ -1,3 +1,7 @@
+2003-07-28  José Matos  <jamatos@lyx.org>
+
+	* buffer.C (readBody, do_writeFile):
+	* paragraph.C(readParagraph): \end_document replaces \the_end.
 
 2003-07-29  André Pönitz  <poenitz@gmx.net>
 

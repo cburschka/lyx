@@ -1,3 +1,7 @@
+2003-07-28  José Matos  <jamatos@lyx.org>
+
+	* insetext.C (read): \end_document replaces \the_end.
+
 2003-07-28  José Matos  <jamatos@fep.up.pt>
 
 	* insetert.C (write): \layout -> \begin_layout.

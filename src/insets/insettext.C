@@ -252,8 +252,8 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 			break;
 		}
 
-		if (token == "\\the_end") {
-			lex.printError("\\the_end read in inset! Error in document!");
+		if (token == "\\end_document") {
+			lex.printError("\\end_document read in inset! Error in document!");
 			return;
 		}
 
