@@ -2,7 +2,9 @@
 
 	* math_hash.C: Use std::map instead of faking it
 	
-	* symbol_def.C: remove unneded symbol definitions
+	* symbol_def.h: remove unneeded symbol definitions
+
+	*	support.C: use the decorations' name for drawing
 
 2001-09-02  Dekel Tsur  <dekelts@tau.ac.il>
 

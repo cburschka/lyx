@@ -3,19 +3,17 @@
 #define MATH_DOTSINSET_H
 
 #include "math_diminset.h"
-#include "math_defs.h"
+#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-struct latexkeys;
-
 /// The different kinds of ellipsis
 class MathDotsInset : public MathDimInset {
 public:
 	///
-	explicit MathDotsInset(latexkeys const *);
+	explicit MathDotsInset(string const &);
 	///
 	MathInset * clone() const;
 	///
@@ -30,6 +28,6 @@ protected:
 	/// cache for the thing's heigth
 	mutable int dh_;
 	///
-	latexkeys const * key_;
+	string const name_;
 };   
 #endif

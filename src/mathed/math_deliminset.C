@@ -86,6 +86,6 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 	int const w = dw();
 	int const b = y - ascent_ - 2;
 	xcell(0).draw(pain, x + w + 2, y);
-	mathed_draw_deco(pain, x + 1, b, w, height() + 4, left_);
-	mathed_draw_deco(pain, x + width() - w - 1, b, w, height() + 4, right_);
+	mathed_draw_deco(pain, x + 1, b, w, height() + 4, left_->name);
+	mathed_draw_deco(pain, x + width() - w - 1, b, w, height() + 4, right_->name);
 }

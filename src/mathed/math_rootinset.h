@@ -16,7 +16,6 @@
 #define MATH_ROOT_H
 
 #include "math_nestinset.h"
-#include "symbol_def.h"
 
 #ifdef __GNUG__
 #pragma interface

@@ -3,6 +3,7 @@
 #define MATH_DECORATIONINSET_H
 
 #include "math_nestinset.h"
+#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,12 +13,10 @@
     \author Alejandro Aguilar Sierra
  */
 
-struct latexkeys;
-
 class MathDecorationInset : public MathNestInset {
 public:
 	///
-	explicit MathDecorationInset(latexkeys const *);
+	explicit MathDecorationInset(string const & name);
 	///
 	MathInset * clone() const;
 	///
@@ -36,7 +35,7 @@ private:
 	bool protect() const;
 
 	///
-	latexkeys const * key_;
+	string const name_;
 	/// height cache of deco
 	mutable int dh_;
 	/// vertical offset cache of deco

@@ -24,9 +24,7 @@
 #endif
 
 #include "LString.h"
-
 #include "math_defs.h"
-#include "symbol_def.h"
 
 class MathMatrixInset;
 class MathMacroTemplate;

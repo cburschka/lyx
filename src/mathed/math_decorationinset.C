@@ -11,10 +11,9 @@
 using std::ostream;
 
 
-MathDecorationInset::MathDecorationInset(latexkeys const * key)
-	: MathNestInset(1), key_(key)
-{
-}
+MathDecorationInset::MathDecorationInset(string const & name)
+	: MathNestInset(1), name_(name)
+{}
 
 
 MathInset * MathDecorationInset::clone() const
@@ -25,17 +24,17 @@ MathInset * MathDecorationInset::clone() const
 
 bool MathDecorationInset::upper() const
 {
-	return key_->id != LM_underline && key_->id != LM_underbrace;
+	return name_ != "underline" && name_ != "underbrace";
 }
 
 
 bool MathDecorationInset::protect() const
 {
 	return
-			key_->name == "overbrace" ||
-			key_->name == "underbrace" ||
-			key_->name == "overleftarrow" ||
-			key_->name == "overrightarrow";
+			name_ == "overbrace" ||
+			name_ == "underbrace" ||
+			name_ == "overleftarrow" ||
+			name_ == "overrightarrow";
 }
 
 
@@ -56,21 +55,15 @@ void MathDecorationInset::metrics(MathStyles st) const
 		dy_ = descent_ + 1;
 		descent_ += dh_ + 2;
 	}
-
-	if (key_->id == LM_not) {
-		ascent_  += dh_;
-		descent_ += dh_;
-		dh_ = height();
-		dy_ = - ascent_;
-	}
 }
+
 
 void MathDecorationInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(x);
 	xcell(0).draw(pain, x, y);
-	mathed_draw_deco(pain, x, y + dy_, width_, dh_, key_);
+	mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);
 }
 
 
@@ -78,23 +71,15 @@ void MathDecorationInset::write(ostream & os, bool fragile) const
 {
 	if (fragile && protect())
 		os << "\\protect";
-	os << '\\' << key_->name;
-
-	if (key_->id == LM_not)
-		os << ' ';
-	else
-		os << '{';
-
+	os << '\\' << name_ << '{';
 	cell(0).write(os, fragile);  
-
-	if (key_->id != LM_not)
-		os << '}';
+	os << '}';
 }
 
 
 void MathDecorationInset::writeNormal(ostream & os) const
 {
-	os << "[" << key_->name << " ";
+	os << "[" << name_ << " ";
 	cell(0).writeNormal(os);
 	os << "] ";
 }

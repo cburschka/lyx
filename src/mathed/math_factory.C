@@ -53,11 +53,11 @@ MathInset * createMathInset(latexkeys const * l)
 	case LM_TK_ROOT:
 		return new MathRootInset;
 	case LM_TK_DECORATION:
-		return new MathDecorationInset(l);
+		return new MathDecorationInset(l->name);
 	case LM_TK_SPACE:
 		return new MathSpaceInset(l->id);
 	case LM_TK_DOTS:
-		return new MathDotsInset(l);
+		return new MathDotsInset(l->name);
 	}
 	return new MathFuncInset(l->name);
 }

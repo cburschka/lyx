@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <algorithm>
+#include <map>
 
 #include "mathed/support.h"
 #include "lyxfont.h"
@@ -11,8 +11,6 @@
 #include "Painter.h"
 #include "debug.h"
 
-using std::sort;
-using std::lower_bound;
 using std::endl;
 using std::max;
 
@@ -454,102 +452,94 @@ float const tilde[] = {
 
 
 struct deco_struct {
-	int code;
 	float const * data;
 	int angle;
 };
 
-deco_struct deco_table[] = {   
+struct named_deco_struct {
+	char const * name;
+	float const * data;
+	int angle;
+};
+
+named_deco_struct deco_table[] = {   
 	// Decorations
-	{ LM_widehat,       &angle[0],      3 },
-	{ LM_widetilde,     &tilde[0],      0 },
-	{ LM_underline,     &hline[0],      0 },
-	{ LM_overline,      &hline[0],      0 },
-	{ LM_underbrace,    &brace[0],      1 },
-	{ LM_overbrace,     &brace[0],      3 },
-	{ LM_overleftarrow, &arrow[0],      1 },
-	{ LM_overightarrow, &arrow[0],      3 },
-	                                    
-	// Delimiters                       
-	{ '(',              &parenth[0],    0 },
-	{ ')',              &parenth[0],    2 },
-	{ '{',              &brace[0],      0 },
-	{ '}',              &brace[0],      2 },
-	{ '[',              &brack[0],      0 },
-	{ ']',              &brack[0],      2 },
-	{ '|',              &vert[0],       0 },
-	{ '/',              &slash[0],      0 },
-	{ LM_Vert,          &Vert[0],       0 },
-	{ '\\',             &slash[0],      1 },
-	{ LM_langle,        &angle[0],      0 },
-	{ LM_lceil,         &corner[0],     0 }, 
-	{ LM_lfloor,        &corner[0],     1 },  
-	{ LM_rangle,        &angle[0],      2 }, 
-	{ LM_rceil,         &corner[0],     3 }, 
-	{ LM_rfloor,        &corner[0],     2 },
-	{ LM_downarrow,     &arrow[0],      2 },
-	{ LM_Downarrow,     &Arrow[0],      2 }, 
-	{ LM_uparrow,       &arrow[0],      0 },
-	{ LM_Uparrow,       &Arrow[0],      0 },
-	{ LM_updownarrow,   &udarrow[0],    0 },
-	{ LM_Updownarrow,   &Udarrow[0],    0 },	 
-	                                    
-	// Accents                          
-	{ LM_ddot,          &hline2[0],     0 },
-	{ LM_hat,           &angle[0],      3 },
-	{ LM_grave,         &slash[0],      1 },
-	{ LM_acute,         &slash[0],      0 },
-	{ LM_tilde,         &tilde[0],      0 },
-	{ LM_bar,           &hline[0],      0 },
-	{ LM_dot,           &hlinesmall[0], 0 },
-	{ LM_check,         &angle[0],      1 },
-	{ LM_breve,         &parenth[0],    1 },
-	{ LM_vec,           &arrow[0],      3 },
-	{ LM_not,           &slash[0],      0 },  
-	                                    
-	// Dots                             
-	{ LM_ldots,         &hline3[0],     0 }, 
-	{ LM_cdots,         &hline3[0],     0 },
-	{ LM_vdots,         &hline3[0],     1 },
-	{ LM_ddots,         &dline3[0],     0 }
+	{"widehat",       angle,      3 },
+	{"widetilde",     tilde,      0 },
+	{"underline",     hline,      0 },
+	{"overline",      hline,      0 },
+	{"underbrace",    brace,      1 },
+	{"overbrace",     brace,      3 },
+	{"overleftarrow", arrow,      1 },
+	{"overightarrow", arrow,      3 },
+	                                                  
+	// Delimiters 
+	{"(",            parenth,    0 },
+	{")",            parenth,    2 },
+	{"{",            brace,      0 },
+	{"}",            brace,      2 },
+	{"[",            brack,      0 },
+	{"]",            brack,      2 },
+	{"|",            vert,       0 },
+	{"/",            slash,      0 },
+	{"Vert",         Vert,       0 },
+	{"'",            slash,      1 },
+	{"langle",       angle,      0 },
+	{"lceil",        corner,     0 }, 
+	{"lfloor",       corner,     1 },  
+	{"rangle",       angle,      2 }, 
+	{"rceil",        corner,     3 }, 
+	{"rfloor",       corner,     2 },
+	{"downarrow",    arrow,      2 },
+	{"Downarrow",    Arrow,      2 }, 
+	{"uparrow",      arrow,      0 },
+	{"Uparrow",      Arrow,      0 },
+	{"updownarrow",  udarrow,    0 },
+	{"Updownarrow",  Udarrow,    0 },	 
+	                                                  
+	// Accents
+	{"ddot",         hline2,     0 },
+	{"hat",          angle,      3 },
+	{"grave",        slash,      1 },
+	{"acute",        slash,      0 },
+	{"tilde",        tilde,      0 },
+	{"bar",          hline,      0 },
+	{"dot",          hlinesmall, 0 },
+	{"check",        angle,      1 },
+	{"breve",        parenth,    1 },
+	{"vec",          arrow,      3 },
+	{"not",          slash,      0 },  
+	                                                  
+	// Dots
+	{"ldots",        hline3,     0 }, 
+	{"cdots",        hline3,     0 },
+	{"vdots",        hline3,     1 },
+	{"ddots",        dline3,     0 }
 };
 
 
-struct deco_compare {
-	/// for use by sort and lower_bound
-	int operator()(deco_struct const & a, deco_struct const & b) const
-	{
-		return a.code < b.code;
-	}
-};
-
-
-int const deco_table_size = sizeof(deco_table) / sizeof(deco_struct);
-
+std::map<string, deco_struct> deco_list;
 
 // sort the table on startup
 struct init_deco_table {
 	init_deco_table() {
-			std::sort(deco_table,
-			     deco_table + deco_table_size,
-			     deco_compare());
+		unsigned const n = sizeof(deco_table) / sizeof(deco_table[0]);
+		for (named_deco_struct * p = deco_table; p != deco_table + n; ++p) {
+			deco_struct d;
+			d.data  = p->data;
+			d.angle = p->angle;
+			deco_list[p->name]= d;
+		}
 	}
 };
 
 static init_deco_table dummy;
 
 
-deco_struct const * search_deco(int code)
+deco_struct const * search_deco(string const & name)
 {
-	const deco_struct search_elem = { code, 0, 0 };
-	
-	deco_struct const * res =
-		lower_bound(deco_table, deco_table + deco_table_size, search_elem,
-			deco_compare());
-	if (res != deco_table + deco_table_size &&
-	    res->code == code)
-		return res;
-	return 0;
+	map<string, deco_struct>::const_iterator p = deco_list.find(name);
+	return (p == deco_list.end()) ? 0 : &(p->second); 
 }
 
 
@@ -638,13 +628,11 @@ int mathed_string_width(MathTextCodes type, MathStyles size, string const & s)
 
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
-	latexkeys const * l)
+	const string & name)
 {
 	Matrix mt;
 	Matrix sqmt;
 	int i = 0;
-	string const & name = l->name;
-	int code = (name.size() > 1) ? l->id : name[0];
 
 	if (name == ".") {
 		pain.line(x + w/2, y, x + w/2, y + h,
@@ -652,17 +640,17 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 		return;
 	}	
 	
-	deco_struct const * mds = search_deco(code);
+	deco_struct const * mds = search_deco(name);
 	if (!mds) {
 		lyxerr << "Deco was not found. Programming error?\n";
-		lyxerr << "name: '" << name << "', code: " << code << "\n";
+		lyxerr << "name: '" << name << "\n";
 		return;
 	}
 	
 	int const r = mds->angle;
 	float const * d = mds->data;
 	
-	if (h > 70 && (mds->code == int('(') || mds->code == int(')')))
+	if (h > 70 && (name == "(" || name == ")"))
 		d = parenthHigh;
 	
 	mt.rotate(r);
@@ -679,6 +667,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	if (r >= 2)
 		x += w;   
 
+	int code;
 	do {
 		float xx;
 		float yy;

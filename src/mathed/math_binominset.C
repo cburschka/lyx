@@ -3,7 +3,6 @@
 #endif
 
 #include "math_binominset.h"
-#include "math_parser.h"
 #include "support.h"
 #include "support/LOstream.h"
 
@@ -47,10 +46,8 @@ void MathBinomInset::draw(Painter & pain, int x, int y) const
 	int m = x + width() / 2;
 	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
 	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
-	mathed_draw_deco(pain, x, y - ascent_,
-		dw(), height(), in_word_set("("));
-	mathed_draw_deco(pain, x + width() - dw(), y - ascent_,	
-		dw(), height(), in_word_set(")"));
+	mathed_draw_deco(pain, x, y - ascent_, dw(), height(), "(");
+	mathed_draw_deco(pain, x + width() - dw(), y - ascent_,	dw(), height(), ")");
 }
 
 

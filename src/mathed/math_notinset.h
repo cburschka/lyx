@@ -4,8 +4,6 @@
 
 #include "math_diminset.h"
 
-struct latexkeys;
-
 // \\not
 
 class MathNotInset : public MathDimInset {

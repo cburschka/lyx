@@ -28,7 +28,6 @@
 #pragma interface
 #endif
 
-#include "symbol_def.h"
 #include "xarray.h"
 
 /** Abstract base class for all math objects.
