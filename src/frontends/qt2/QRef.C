@@ -73,7 +73,7 @@ void QRef::update_contents()
 	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
 
 	dialog_->typeCO->setCurrentItem(InsetRef::getType(params.getCmdName()));
-	dialog_->typeCO->setEnabled(!typeAllowed() && !readOnly());
+	dialog_->typeCO->setEnabled(typeAllowed() && !readOnly());
 	if (!typeAllowed())
 		dialog_->typeCO->setCurrentItem(0);
 
@@ -111,8 +111,8 @@ bool QRef::nameAllowed()
 
 bool QRef::typeAllowed()
 {
-	return controller().docType() == ControlRef::LINUXDOC ||
-	    controller().docType() == ControlRef::DOCBOOK;
+	return controller().docType() != ControlRef::LINUXDOC &&
+	    controller().docType() != ControlRef::DOCBOOK;
 }
 
 
