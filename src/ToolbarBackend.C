@@ -155,7 +155,7 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 		Toolbars::iterator tcit = toolbars.begin();
 		Toolbars::iterator tend = toolbars.end();
 		for (; tcit != tend; ++tcit) {
-			if (tcit->name == name)
+			if (compare_ascii_no_case(name, tcit->name) == 0)
 				break;
 		}
 
