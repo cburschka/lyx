@@ -282,9 +282,6 @@ vector<string> const InsetFormulaBase::getLabelList() const
 
 void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 {
-	metrics(bv);
-	if (mathcursor)
-		bv->fitCursor();
 	bv->updateInset(this, dirty);
 }
 
