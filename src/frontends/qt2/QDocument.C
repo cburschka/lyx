@@ -165,6 +165,12 @@ void QDocument::build_dialog()
 }
 
 
+void QDocument::showPreamble()
+{
+	dialog_->showPreamble();
+}
+
+
 void QDocument::apply()
 {
 	BufferParams & params = controller().params();

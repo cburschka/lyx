@@ -41,8 +41,9 @@ public:
 	void updateFontsize(string const &, string const &);
 	void updatePagestyle(string const &, string const &);
 
+	void showPreamble();
+
 public slots:
-	void setTitle(int);
 	void change_adaptor();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
@@ -61,18 +62,6 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
-	enum Module {
-		LAYOUT,
-		PAPER,
-		MARGINS,
-		LANGUAGE,
-		BULLETS,
-		NUMBERING,
-		BIBLIOGRAPHY,
-		PACKAGES,
-		PREAMBLE
-	};
-
 	ClassModuleBase * layoutModule;
 	PaperModuleBase * paperModule;
 	MarginsModuleBase * marginsModule;

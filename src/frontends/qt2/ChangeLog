@@ -1,5 +1,16 @@
 2003-03-28  John Levon  <levon@movementarian.org>
 
+	* panelstack.C: make sure the first panel is visible
+
+	* QDocument.h:
+	* QDocument.C: add (unused) showPreamble
+
+	* QDocumentDialog.h:
+	* QDocumentDialog.C:
+	* ui/QDocumentDialog.ui: use PanelStack
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
 	* Makefile.am:
 	* Makefile.dialogs:
 	* moc/Makefile.am:

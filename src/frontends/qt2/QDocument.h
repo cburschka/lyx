@@ -32,6 +32,9 @@ public:
 	friend class QDocumentDialog;
 
 	QDocument();
+
+	void showPreamble();
+
 private:
 	/// Apply changes
 	void apply();

@@ -129,7 +129,9 @@ void Dialogs::showMathPanel()
 
 void Dialogs::showPreamble()
 {
-	// FIXME
+	pimpl_->document.controller().show();
+	// Oh Angus, won't you help a poor child ?
+	//pimpl_->document.view()->showPreamble();
 }
 
 

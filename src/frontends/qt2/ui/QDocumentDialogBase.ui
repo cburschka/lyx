@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>411</width>
-            <height>230</height>
+            <width>422</width>
+            <height>393</height>
         </rect>
     </property>
     <property stdset="1">
@@ -32,7 +32,7 @@
         <name>sizeGripEnabled</name>
         <bool>true</bool>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -41,7 +41,96 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
+        <widget>
+            <class>PanelStack</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>docPS</cstring>
+            </property>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout4</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>defaultPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Use Class Defaults</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Reset to  the default settings for the document class</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>savePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Save as Document Defaults</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Save settings as LyX's default document settings</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -131,194 +220,22 @@
                 </widget>
             </hbox>
         </widget>
-        <widget row="0"  column="1" >
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>Layout4</cstring>
-            </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>0</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget row="2"  column="0" >
-                    <class>QWidgetStack</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>moduleStack</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>7</vsizetype>
-                        </sizepolicy>
-                    </property>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>titleL</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>title here</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>Line</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>Line1</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget row="0"  column="0" >
-            <class>QListBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>moduleLB</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>7</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>vScrollBarMode</name>
-                <enum>AlwaysOff</enum>
-            </property>
-            <property stdset="1">
-                <name>variableWidth</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>Layout4</cstring>
-            </property>
-            <hbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>0</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>defaultPB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Use Class Defaults</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Reset default params of the current class</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>savePB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Save as Document Defaults</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Save settings as LyX's default template</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-    </grid>
+    </vbox>
 </widget>
 <customwidgets>
     <customwidget>
-        <class>QWidgetStack</class>
-        <header location="global">qwidgetstack.h</header>
+        <class>PanelStack</class>
+        <header location="local">panelstack.h</header>
         <sizehint>
-            <width>0</width>
+            <width>-1</width>
             <height>-1</height>
         </sizehint>
-        <container>0</container>
+        <container>1</container>
         <sizepolicy>
             <hordata>7</hordata>
             <verdata>7</verdata>
         </sizepolicy>
         <pixmap>image0</pixmap>
-        <slot access="public">raiseWidget(int)</slot>
     </customwidget>
 </customwidgets>
 <images>
@@ -328,18 +245,6 @@
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>moduleLB</sender>
-        <signal>highlighted(int)</signal>
-        <receiver>moduleStack</receiver>
-        <slot>raiseWidget(int)</slot>
-    </connection>
-    <connection>
-        <sender>moduleLB</sender>
-        <signal>highlighted(int)</signal>
-        <receiver>QDocumentDialogBase</receiver>
-        <slot>setTitle(int)</slot>
-    </connection>
     <connection>
         <sender>savePB</sender>
         <signal>clicked()</signal>
@@ -353,8 +258,7 @@
         <slot>useDefaultsClicked()</slot>
     </connection>
     <slot access="public">change_adaptor()</slot>
-    <slot access="protected">useDefaultsClicked()</slot>
     <slot access="protected">saveDefaultClicked()</slot>
-    <slot access="public">setTitle(int)</slot>
+    <slot access="protected">useDefaultsClicked()</slot>
 </connections>
 </UI>

@@ -27,6 +27,7 @@
 #include "ui/NumberingModuleBase.h"
 #include "ui/MarginsModuleBase.h"
 #include "ui/PreambleModuleBase.h"
+#include "panelstack.h"
 
 #include "Spacing.h"
 #include "support/lstrings.h"
@@ -59,19 +60,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
 
-	moduleLB->clear();
-	moduleLB->insertItem(qt_("Layout"), LAYOUT);
-	moduleLB->insertItem(qt_("Paper"), PAPER);
-	moduleLB->insertItem(qt_("Margins"), MARGINS);
-	moduleLB->insertItem(qt_("Language"), LANGUAGE);
-	moduleLB->insertItem(qt_("Bullets"), BULLETS);
-	moduleLB->insertItem(qt_("Numbering"), NUMBERING);
-	moduleLB->insertItem(qt_("Bibliography"), BIBLIOGRAPHY);
-	moduleLB->insertItem(qt_("Packages"), PACKAGES);
-	moduleLB->insertItem(qt_("Preamble"), PREAMBLE);
-	moduleLB->setCurrentItem(LAYOUT);
-	moduleLB->setMinimumSize(moduleLB->sizeHint());
-
 	layoutModule = new ClassModuleBase(this);
 	paperModule = new PaperModuleBase(this);
 	marginsModule = new MarginsModuleBase(this);
@@ -82,168 +70,92 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	packagesModule = new PackagesModuleBase(this);
 	preambleModule = new PreambleModuleBase(this);
 
-	moduleStack->addWidget(layoutModule, LAYOUT);
-	moduleStack->addWidget(paperModule, PAPER);
-	moduleStack->addWidget(marginsModule, MARGINS);
-	moduleStack->addWidget(langModule, LANGUAGE);
-	moduleStack->addWidget(bulletsModule, BULLETS);
-	moduleStack->addWidget(numberingModule, NUMBERING);
-	moduleStack->addWidget(biblioModule, BIBLIOGRAPHY);
-	moduleStack->addWidget(packagesModule, PACKAGES);
-	moduleStack->addWidget(preambleModule, PREAMBLE);
-
-	moduleStack->raiseWidget(LAYOUT);
-
-
-	// take care of title
-	QFont f = titleL->font();
-	f.setWeight(QFont::Bold);
-	titleL->setFont(f);
-	setTitle(LAYOUT);
+	docPS->addPanel(layoutModule, _("Layout"));
+	docPS->addPanel(paperModule, _("Paper"));
+	docPS->addPanel(marginsModule, _("Margins"));
+	docPS->addPanel(langModule, _("Language"));
+	docPS->addPanel(numberingModule, _("Table of Contents"));
+	docPS->addPanel(biblioModule, _("Bibliography"));
+	docPS->addPanel(packagesModule, _("LaTeX packages"));
+	docPS->addPanel(bulletsModule, _("Bullets"));
+	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
+	docPS->setCurrentPanel(_("Layout"));
 
 	// preamble
-	connect(preambleModule->preambleMLE, SIGNAL(textChanged()),
-		 this, SLOT(change_adaptor()));
+	connect(preambleModule->preambleMLE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	// biblio
-	connect(biblioModule->natbibCB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
+	connect(biblioModule->natbibCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	// language & quote
-	connect(langModule->singleQuoteRB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(langModule->doubleQuoteRB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(langModule->languageCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(langModule->encodingCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
+	connect(langModule->singleQuoteRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(langModule->doubleQuoteRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(langModule->languageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(langModule->encodingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(langModule->quoteStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	// numbering
-	connect(numberingModule->sectionnrDepthSB,
-		 SIGNAL(valueChanged(int)),
-		 this, SLOT(change_adaptor()));
-	connect(numberingModule->tocDepthSB,
-		 SIGNAL(valueChanged(int)),
-		 this, SLOT(change_adaptor()));
+	connect(numberingModule->sectionnrDepthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(numberingModule->tocDepthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	// packages
-	connect(packagesModule->amsCB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(packagesModule->psdriverCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
+	connect(packagesModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(packagesModule->psdriverCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	// layout
-	connect(layoutModule->classCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->optionsLE,
-		 SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->pagestyleCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->fontsCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->fontsizeCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->lspacingCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->lspacingCO, SIGNAL(activated(int)),
-		 this, SLOT(setLSpacing(int)));
-	connect(layoutModule->lspacingLE,
-		 SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->floatPlacementLE,
-		 SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->skipRB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->indentRB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->skipCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->skipLE,
-		 SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(layoutModule->skipLengthCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
+	connect(layoutModule->classCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(layoutModule->optionsLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(layoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(layoutModule->fontsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(layoutModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(layoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(layoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
+	connect(layoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(layoutModule->floatPlacementLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(layoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(layoutModule->indentRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(layoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(layoutModule->skipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(layoutModule->skipLengthCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
-	connect(layoutModule->classCO, SIGNAL(activated(int)),
-		 this, SLOT(classChanged()));
-	connect(layoutModule->skipCO, SIGNAL(activated(int)),
-		 this, SLOT(setSkip(int)));
-	connect(layoutModule->skipRB, SIGNAL(toggled(bool)),
-		 this, SLOT(enableSkip(bool)));
+	connect(layoutModule->classCO, SIGNAL(activated(int)), this, SLOT(classChanged()));
+	connect(layoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(setSkip(int)));
+	connect(layoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(enableSkip(bool)));
 
 	// margins
-	connect(marginsModule->marginCO, SIGNAL(activated(int)),
-		 this, SLOT(setCustomMargins(int)));
-
-	connect(marginsModule->marginCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->topLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->topUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->bottomUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->innerLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->innerUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->outerLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->outerUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->headheightLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->headheightUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->headsepUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(marginsModule->footskipUnit, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
+	connect(marginsModule->marginCO, SIGNAL(activated(int)), this, SLOT(setCustomMargins(int)));
+	connect(marginsModule->marginCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->topLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->topUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->bottomUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->innerLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->innerUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->outerLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->outerUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->headheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->headheightUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->headsepUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(marginsModule->footskipUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 	// paper
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this, SLOT(setMargins(int)));
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this, SLOT(setCustomPapersize(int)));
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this, SLOT(setCustomPapersize(int)));
-	connect(paperModule->portraitRB, SIGNAL(toggled(bool)),
-		 this, SLOT(portraitChanged()));
+	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setMargins(int)));
+	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
+	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
+	connect(paperModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(portraitChanged()));
 
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->paperheightLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->paperwidthLE, SIGNAL(textChanged(const QString&)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->paperwidthUnitCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->paperheightUnitCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->portraitRB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->landscapeRB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->twoColumnCB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
-	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)),
-		 this, SLOT(change_adaptor()));
+	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(paperModule->paperheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(paperModule->paperwidthLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(paperModule->paperwidthUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(paperModule->paperheightUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(paperModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(paperModule->landscapeRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(paperModule->twoColumnCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 
 	// bullets
-	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)),
-		 this, SLOT(change_adaptor()));
-	connect(bulletsModule->bulletsLV, SIGNAL(selectionChanged()),
-		 this, SLOT(change_adaptor()));
+	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(bulletsModule->bulletsLV, SIGNAL(selectionChanged()), this, SLOT(change_adaptor()));
 }
 
 
@@ -252,37 +164,9 @@ QDocumentDialog::~QDocumentDialog()
 }
 
 
-void QDocumentDialog::setTitle(int item)
+void QDocumentDialog::showPreamble()
 {
-	switch(item) {
-	case LAYOUT:
-		titleL->setText(qt_("Document Style"));
-		break;
-	case PAPER:
-		titleL->setText(qt_("Papersize and Orientation"));
-		break;
-	case MARGINS:
-		titleL->setText(qt_("Margins"));
-		break;
-	case LANGUAGE:
-		titleL->setText(qt_("Language Settings and Quote Style"));
-		break;
-	case BULLETS:
-		titleL->setText(qt_("Bullet Types"));
-		break;
-	case NUMBERING:
-		titleL->setText(qt_("Numbering"));
-		break;
-	case BIBLIOGRAPHY:
-		titleL->setText(qt_("Bibliography Settings"));
-		break;
-	case PACKAGES:
-		titleL->setText(qt_("LaTeX Packages and Options"));
-		break;
-	case PREAMBLE:
-		titleL->setText(qt_("LaTeX Preamble"));
-		break;
-	}
+	docPS->setCurrentPanel(_("LaTeX Preamble"));
 }
 
 

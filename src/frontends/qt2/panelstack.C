@@ -105,7 +105,11 @@ void PanelStack::setCurrentPanel(string const & name)
 	PanelMap::const_iterator cit = panel_map_.find(name);
 	lyx::Assert(cit != panel_map_.end());
 
-	switchPanel(cit->second);
+	// force on first set
+	if (list_->currentItem() ==  cit->second)
+		switchPanel(cit->second);
+
+	list_->setCurrentItem(cit->second);
 }
 
 
