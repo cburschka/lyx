@@ -69,7 +69,6 @@ void ToolbarBackend::read(LyXLex & lex)
 
 	Toolbar tb;
 	tb.name = lex.getString();
-	lex.next(true);
 	
 	bool quit = false;
 

@@ -25,7 +25,7 @@
 #
 # This is the default toolbar:
 
-Toolbar "Standard" "on,top"
+Toolbar "Standard"
 	Layouts
 	Item "New document" "buffer-new"
 	Item "Open document" "file-open"
@@ -48,7 +48,7 @@ Toolbar "Standard" "on,top"
 	Item "Insert table" "tabular-insert 4 4"
 End
 
-Toolbar "Extra" "on,top"
+Toolbar "Extra"
 	Item "Numbered list" "layout Enumerate"
 	Item "Itemized list" "layout Itemize"
 	Item "List" "layout List"
@@ -77,7 +77,7 @@ Toolbar "Extra" "on,top"
 	Item "Thesaurus" "thesaurus-entry"
 End
 
-Toolbar "Table" "off,bottom"
+Toolbar "Table"
 	Item "Add row" "tabular-feature append-row"
 	Item "Add column" "tabular-feature append-column"
 	Item "Delete row" "tabular-feature delete-row"
@@ -102,7 +102,7 @@ Toolbar "Table" "off,bottom"
 	Item "Set multi-column" "tabular-feature multicolumn"
 End
 
-Toolbar "Math" "off,bottom"
+Toolbar "Math"
 	Item "Show math panel" "math-panel"
 	Item "Set display mode" "math-display"
 	Item "Subscript" "math-subscript"
@@ -126,6 +126,6 @@ Toolbar "Math" "off,bottom"
 	Item "Delete column" "tabular-feature delete-column"
 End
 
-Toolbar "Command Buffer" "off,bottom"
+Toolbar "Command Buffer"
 	Minibuffer
 End
