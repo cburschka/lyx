@@ -65,7 +65,7 @@ public:
 	///
 	void insert(MathArray const &);
 	///
-	void paste(MathGridInset const & data);
+	void paste(string const & data);
 	///
 	void erase();
 	///
@@ -96,6 +96,8 @@ public:
 	void plainInsert(MathAtom const &);
 	///
 	void niceInsert(MathAtom const &);
+	///
+	void niceInsert(string const &);
 
 	/// in pixels from top of screen
 	void setPos(int x, int y);
@@ -157,10 +159,8 @@ public:
 	void selClear();
 	/// clears or deletes selection depending on lyxrc setting
 	void selClearOrDel();
-	///
-	void selGet(MathArray & ar);
-	///
-	void drawSelection(MathPainterInfo & pain) const;
+	/// draws light-blue selection background
+	void drawSelection(MathPainterInfo & pi) const;
 	///
 	void handleNest(MathAtom const & at);
 	/// remove this as soon as LyXFunc::getStatus is "localized"
@@ -265,12 +265,12 @@ private:
 	/// are we in a nucleus of a script inset?
 	bool inNucleus() const;
 
-	/// grab grid marked by anchor and current cursor 
-	MathGridInset grabSelection() const;
+	/// grab selection marked by anchor and current cursor 
+	string grabSelection() const;
 	/// erase the selected part and re-sets the cursor
 	void eraseSelection();
 	/// guess what
-	MathGridInset grabAndEraseSelection();
+	string grabAndEraseSelection();
 
 	/// the name of the macro we are currently inputting
 	string macroName() const;

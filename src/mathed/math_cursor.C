@@ -24,9 +24,7 @@
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
-#include "BufferView.h"
 #include "debug.h"
-#include "LColor.h"
 #include "frontends/Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"
@@ -42,8 +40,6 @@
 #include "math_macroarg.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
-#include "math_parser.h"
-#include "math_replace.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_support.h"
@@ -64,7 +60,7 @@ using std::isalpha;
 
 
 // matheds own cut buffer
-MathGridInset theCutBuffer = MathGridInset(1, 1);
+string theCutBuffer;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
@@ -376,10 +372,20 @@ void MathCursor::insert(MathAtom const & t)
 }
 
 
+void MathCursor::niceInsert(string const & t)
+{
+	MathArray ar = asArray(t);
+	if (ar.size() == 1)
+		niceInsert(ar[0]);
+	else 
+		insert(ar);
+}
+
+
 void MathCursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
-	MathGridInset safe = grabAndEraseSelection();
+	string safe = grabAndEraseSelection();
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
@@ -400,12 +406,9 @@ void MathCursor::insert(MathArray const & ar)
 }
 
 
-void MathCursor::paste(MathGridInset const & data)
+void MathCursor::paste(string const & data)
 {
-	ostringstream os;
-  WriteStream wi(os, false, false);
-  data.write(wi);
-	dispatch(FuncRequest(LFUN_PASTE, os.str()));
+	dispatch(FuncRequest(LFUN_PASTE, data));
 }
 
 
@@ -534,7 +537,7 @@ void MathCursor::selCopy()
 		theCutBuffer = grabSelection();
 		selection_ = false;
 	} else {
-		theCutBuffer = MathGridInset(1, 1);
+		theCutBuffer.erase();
 	}
 }
 
@@ -595,14 +598,6 @@ void MathCursor::selClearOrDel()
 }
 
 
-void MathCursor::selGet(MathArray & ar)
-{
-	dump("selGet");
-	if (selection_)
-		ar = grabSelection().glue();
-}
-
-
 void MathCursor::drawSelection(MathPainterInfo & pi) const
 {
 	if (!selection_)
@@ -617,7 +612,7 @@ void MathCursor::drawSelection(MathPainterInfo & pi) const
 void MathCursor::handleNest(MathAtom const & a)
 {
 	MathAtom at = a;
-	at.nucleus()->cell(0) = grabAndEraseSelection().glue();
+	at.nucleus()->cell(0) = asArray(grabAndEraseSelection());
 	insert(at);
 	pushRight(prevAtom());
 }
@@ -1096,7 +1091,7 @@ bool MathCursor::script(bool up)
 	}
 
 	macroModeClose();
-	MathGridInset safe = grabAndEraseSelection();
+	string safe = grabAndEraseSelection();
 	if (inNucleus()) {
 		// we are in a nucleus of a script inset, move to _our_ script
 		par()->asScriptInset()->ensure(up);
@@ -1251,25 +1246,6 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-/*
-	if (isalpha(c) && lastcode_ == LM_TC_GREEK) {
-		insert(c, LM_TC_VAR);
-		return true;
-	}
-
-	if (isalpha(c) && lastcode_ == LM_TC_GREEK1) {
-		insert(c, LM_TC_VAR);
-		lastcode_ = LM_TC_VAR;
-		return true;
-	}
-
-	if (c == '\\') {
-		insert(c, LM_TC_TEX);
-		//bv->owner()->message(_("TeX mode"));
-		return true;
-	}
-*/
-
 	// try auto-correction
 	//if (autocorrect_ && hasPrevAtom() && math_autocorrect(prevAtom(), c))
 	//	return true;
@@ -1347,29 +1323,29 @@ void region(MathCursorPos const & i1, MathCursorPos const & i2,
 }
 
 
-MathGridInset MathCursor::grabSelection() const
+string MathCursor::grabSelection() const
 {
 	if (!selection_)
-		return MathGridInset();
+		return string();
+
 	MathCursorPos i1;
 	MathCursorPos i2;
 	getSelection(i1, i2);
-	// shouldn't we assert on i1.par_ == i2.par_?
-	if (i1.idx_ == i2.idx_) {
-		MathGridInset data(1, 1);
-		MathArray::const_iterator it = i1.cell().begin();
-		data.cell(0) = MathArray(it + i1.pos_, it + i2.pos_);
-		return data;
-	}
+
 	row_type r1, r2;
 	col_type c1, c2;
 	region(i1, i2, r1, r2, c1, c2);
-	MathGridInset data(c2 - c1 + 1, r2 - r1 + 1);
-	for (row_type row = 0; row < data.nrows(); ++row)
-		for (col_type col = 0; col < data.ncols(); ++col) {
-			idx_type i = i1.par_->index(row + r1, col + c1);
-			data.cell(data.index(row, col)) = i1.par_->cell(i);
+
+	string data;
+	for (row_type row = r1; row <= r2; ++row) {
+		if (row > r1)
+			data += "\\n";
+		for (col_type col = c1; col <= c2; ++col) {
+			if (col > c1)
+				data += "&";
+			data += asString(i1.par_->cell(i1.par_->index(row, col)));
 		}
+	}
 	return data;
 }
 
@@ -1394,11 +1370,11 @@ void MathCursor::eraseSelection()
 }
 
 
-MathGridInset MathCursor::grabAndEraseSelection()
+string MathCursor::grabAndEraseSelection()
 {
 	if (!selection_)
-		return MathGridInset();
-	MathGridInset res = grabSelection();
+		return string();
+	string res = grabSelection();
 	eraseSelection();
 	selection_ = false;
 	return res;

@@ -308,8 +308,12 @@ public:
 
 std::ostream & operator<<(std::ostream &, MathAtom const &);
 
+// converts single cell to string
 string asString(MathArray const & ar);
+// converts string to single cell
 MathArray asArray(string const & str);
+
+// initialize math
 void initMath();
 
 /// here to ssave a few includes in the insets

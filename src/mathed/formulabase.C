@@ -721,7 +721,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->insert(asArray(argument));
+		mathcursor->niceInsert(argument);
 		updateLocal(bv, true);
 		break;
 	
