@@ -86,7 +86,7 @@ void ControlPrint::clearParams()
 
 string const ControlPrint::Browse(string const & in_name)
 {
-	string const title = N_("Print to file");
+	string const title = _("Print to file");
 	string const pattern = "*.ps";
 
 	// Show the file browser dialog
