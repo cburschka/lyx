@@ -33,7 +33,7 @@ LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts \
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 	external_templates $(LYXLIBDIRS) build-listerrors \
-	encodings languages
+	encodings languages configure.m4
 
 libinstalldirs:
 	for dir in $(LYXLIBDIRS) ; do \

@@ -1,4 +1,11 @@
+2002-01-17  Sergey Vlasov  <vsu@mivlgu.murom.ru>
+
+	* src/insets/insettext.C (LocalDispatch): fix insertion of some
+	characters (numbers from numpad, cyrillic characters...).
+
 2002-01-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lib/Makefile.am (EXTRA_DIST): add configure.m4
 
 	* configure.in (ALL_LINGUAS): add 'sk' lingua.
 
