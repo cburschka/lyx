@@ -25,6 +25,8 @@
 #   float                -> Gleitobjekt
 #   font                 -> Schrift
 #   graphics             -> Grafik (Einzahl!)
+#   index                -> Stichwortverzeichnis   (H. Haase)
+#   index entry          -> Stichwort   (H. Haase)
 #   inline               -> eingebettet
 #   key                  -> Schlüssel
 #   label                -> Marke
@@ -56,8 +58,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-11 16:35+0100\n"
-"PO-Revision-Date: 2004-01-11 24:00+0100\n"
+"POT-Creation-Date: 2004-02-15 15:03+0100\n"
+"PO-Revision-Date: 2004-02-15 15:18+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1409,7 +1411,7 @@ msgstr "Von:|#V"
 #: ../src/frontends/xforms/forms/form_preferences.fd:2087
 #: ../src/frontends/xforms/forms/form_print.fd:188
 msgid "To:|#T"
-msgstr "Nach:|#N"
+msgstr "Bis:|#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2105
 msgid "Converter:|#C"
@@ -2276,7 +2278,7 @@ msgstr "&Abbrechen"
 #: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
 #: src/insets/insetindex.C:70
 msgid "Index"
-msgstr "Index"
+msgstr "Stichwortverzeichnis"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
 msgid "&Key"
@@ -3127,7 +3129,7 @@ msgstr "&Stichwort"
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
-msgstr "Index-Eintrag"
+msgstr "Stichwort"
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
 msgid "Log"
@@ -7017,7 +7019,7 @@ msgstr "Kurztitel|K"
 
 #: ../lib/ui/default.ui:203
 msgid "Index Entry...|I"
-msgstr "Index-Eintrag...|I"
+msgstr "Stichwort...|i"
 
 #: ../lib/ui/default.ui:204
 msgid "URL...|U"
@@ -7225,7 +7227,7 @@ msgstr "Inhaltsverzeichnis|I"
 
 #: ../lib/ui/default.ui:285
 msgid "Index List|I"
-msgstr "Index-Liste|L"
+msgstr "Stichwortverzeichnis|S"
 
 #: ../lib/ui/default.ui:286
 msgid "BibTeX Reference...|B"
@@ -8046,11 +8048,11 @@ msgstr "Ligatur-Trennmöglichkeit einfügen"
 
 #: src/LyXAction.C:237
 msgid "Insert index item"
-msgstr "Index-Element einfügen"
+msgstr "Stichwort einfügen"
 
 #: src/LyXAction.C:238
 msgid "Insert index list"
-msgstr "Index-Liste einfügen"
+msgstr "Stichwortverzeichnis einfügen"
 
 #: src/LyXAction.C:240
 msgid "Turn off keymap"
@@ -11267,7 +11269,7 @@ msgstr "Unformatiert*"
 
 #: src/insets/insetindex.C:33
 msgid "Idx"
-msgstr "Idx"
+msgstr "Stichwort"
 
 #: src/insets/insetlabel.C:47 src/mathed/math_hullinset.C:799
 msgid "Enter label:"
