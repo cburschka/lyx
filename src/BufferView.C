@@ -148,6 +148,18 @@ void BufferView::upCB(long time, int button)
 }
 
 
+void BufferView::enterView()
+{
+	pimpl_->enterView();
+}
+
+
+void BufferView::leaveView()
+{
+	pimpl_->leaveView();
+}
+
+
 // Callback for scrollbar slider
 void BufferView::scrollCB(double value)
 {

@@ -428,9 +428,11 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	case FL_ENTER:
 		lyxerr.debug() << "Workarea event: ENTER" << endl;
+		area->owner->enterView();
 		break;
 	case FL_LEAVE:
 		lyxerr.debug() << "Workarea event: LEAVE" << endl;
+		area->owner->leaveView();
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;

@@ -218,6 +218,10 @@ public:
 	///
 	void tripleClick(int x, int y, unsigned int button);
 	///
+	void enterView();
+	///
+	void leaveView();
+	///
 	void workAreaSelectionNotify(Window win, XEvent * event);
 private:
 	struct Pimpl;

@@ -51,6 +51,21 @@ void waitForX()
 }
 
 
+static
+void SetXtermCursor(Window win)
+{
+	static Cursor cursor;
+	static bool cursor_undefined = true;
+	if (cursor_undefined){
+		cursor = XCreateFontCursor(fl_display, XC_xterm);
+		XFlush(fl_display);
+		cursor_undefined = false;
+	}
+	XDefineCursor(fl_display, win, cursor);
+	XFlush(fl_display);
+}
+
+
 BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	     int xpos, int ypos, int width, int height)
 	: bv_(b), owner_(o)
@@ -65,6 +80,7 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	workarea->setFocus();
 	work_area_focus = true;
 	lyx_focus = false;
+	using_xterm_cursor = false;
 }
 
 
@@ -743,6 +759,24 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(0);
+	}
+}
+
+
+void BufferView::Pimpl::enterView()
+{
+	if (active() && available()) {
+		SetXtermCursor(workarea->getWin());
+		using_xterm_cursor = true;
+	}
+}
+
+
+void BufferView::Pimpl::leaveView()
+{
+	if (using_xterm_cursor) {
+		XUndefineCursor(fl_display, workarea->getWin());
+		using_xterm_cursor = false;
 	}
 }
 

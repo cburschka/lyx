@@ -17,21 +17,6 @@ extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_character * fd_form_character;
 
 
-static
-void SetXtermCursor(Window win)
-{
-	static Cursor cursor;
-	static bool cursor_undefined = true;
-	if (cursor_undefined){
-		cursor = XCreateFontCursor(fl_display, XC_xterm);
-		XFlush(fl_display);
-		cursor_undefined = false;
-	}
-	XDefineCursor(fl_display, win, cursor);
-	XFlush(fl_display);
-}
-
-
 void Foot(BufferView * bv)
 {
 	if (!bv->available()) 
@@ -190,10 +175,6 @@ void AllowInput(BufferView * bv)
 		XUndefineCursor(fl_display,
 				fd_form_character->form_character->window);
 
-	// What to do about this? (Lgb)
-	if (bv->belowMouse())
-		SetXtermCursor(bv->owner()->getForm()->window);
-
 	XFlush(fl_display);
 	fl_activate_all_forms();
 }
@@ -258,8 +239,10 @@ string CurrentState(BufferView * bv)
 		// font. (Asger)
 		Buffer * buffer = bv->buffer();
 		LyXFont font = bv->text->real_current_font;
-		LyXFont defaultfont = textclasslist.TextClass(buffer->
-							      params.textclass).defaultfont();
+		LyXFont const & defaultfont =
+			textclasslist
+			.TextClass(buffer->params.textclass)
+			.defaultfont();
 		font.reduce(defaultfont);
 		state = _("Font: ") + font.stateText();
 		// The paragraph depth
@@ -297,7 +280,6 @@ string CurrentState(BufferView * bv)
 }
 
 
-// candidate for move to BufferView
 /* -------> Does the actual toggle job of the XxxCB() calls above.
  * Also shows the current font state.
  */

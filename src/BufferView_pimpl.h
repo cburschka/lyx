@@ -77,6 +77,10 @@ struct BufferView::Pimpl {
 	///
 	void tripleClick(int x, int y, unsigned int button);
 	///
+	void enterView();
+	///
+	void leaveView();
+	///
 	void cursorToggle();
 	///
 	void cursorPrevious();
@@ -142,5 +146,7 @@ struct BufferView::Pimpl {
 	WorkArea * workarea;
 	///
 	UpdateInset updatelist;
+private:
+	bool using_xterm_cursor;
 };
 #endif

@@ -1,5 +1,18 @@
 2000-04-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/WorkArea.C (work_area_handler): call BufferView::enterView
+	and Buffer::leaveView when FL_ENTER and FL_LEAVE.
+
+	* src/BufferView.C (enterView): new func
+	(leaveView): new func
+
+	* src/BufferView_pimpl.C (enterView): new func, sets xterm cursor
+	when approp.
+	(leaveView): new func, undefines xterm cursor when approp.
+
+	* src/bufferview_funcs.C: moved SetXCursor to BufferView_pimp.C
+	(AllowInput): delete the Workarea cursor handling from this func.
+
 	* src/Painter.C (underline): draw a slimer underline in most cases.
 
 	* src/lyx_main.C (error_handler): use extern "C"
