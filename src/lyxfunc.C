@@ -3222,12 +3222,13 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			}
 		}
 	} else {
-		s = lyxrc.document_path + "newfile" + tostr(++newfile_number);
+		s = AddPath(lyxrc.document_path,
+			    "newfile" + tostr(++newfile_number));
 		FileInfo fi(s);
 		while (bufferlist.exists(s) || fi.readable()) {
 			++newfile_number;
-			s = lyxrc.document_path + "newfile" +
-				tostr(newfile_number);
+			s = AddPath(lyxrc.document_path,
+				    "newfile" +	tostr(newfile_number));
 			fi.newFile(s);
 		}
 	}

@@ -29,8 +29,6 @@ the executable file might be covered by the GNU General Public License. */
    and with lyxstring. Dynamic casts have been replaced by static_casts.
    One fix to avoid unsigned/signed warnings.
 
-   Some further changes might be needed to avoid use of namespaces.
-
    Lars Gullik Bjønnes (larsbj@lyx.org)
 */
 
@@ -41,8 +39,11 @@ the executable file might be covered by the GNU General Public License. */
 #include <iostream>
 #include <streambuf.h>
 
+#ifdef CXX_WORKING_NAMESPACES
 namespace std
 {
+#endif
+	
   class stringbuf : public streambuf
   {
   public:
@@ -167,7 +168,10 @@ namespace std
       stringstreambase(s, which)
     { }
   };
+
+#ifdef CXX_WORKING_NAMESPACES
 }
+#endif
 
 inline int stringbuf::sync()
 {

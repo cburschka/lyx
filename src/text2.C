@@ -2434,7 +2434,7 @@ bool LyXText::IsStringInText(LyXParagraph * par,
 			     string const & str) const
 {
 	if (par) {
-		unsigned int i = 0;
+		LyXParagraph::size_type i = 0;
 		while (pos + i < par->Last() && i < str.length()&& 
 		       str[i] == par->GetChar(pos + i)) {
 			++i;

@@ -1,3 +1,14 @@
+2000-09-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C: construct correctly the automatic new file
+	names. 
+
+	* src/text2.C (IsStringInText): change type of variable i to shut
+	off a warning.
+
+	* src/support/sstream.h: do not use namespaces if the compiler
+	does not support them.
+
 2000-09-15  Marko Vendelin <markov@ioc.ee>
 	* src/frontends/gnome/FormCitation.C
 	* src/frontends/gnome/FormCitation.h
