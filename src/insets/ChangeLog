@@ -1,3 +1,9 @@
+2001-03-27  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* figinset.C (GetPSSizes): Fix for the case when filename doesn't
+ 	contain a suffix.
+	(Clone): ditto
+
 2001-03-26  Juergen Vigna  <jug@sad.it>
 
 	* lyxinset.h: added ShowInsetDialog() function in UpdatableInset.

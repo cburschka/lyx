@@ -1255,12 +1255,15 @@ Inset * InsetFig::Clone(Buffer const & buffer) const
 	tmp->pswid = pswid;
 	tmp->pshgh = pshgh;
 	tmp->fname = fname;
-	if (!fname.empty() && IsFileReadable(fname) 
+	string lfname = fname;
+	if (!fname.empty() && GetExtension(fname).empty())
+		lfname += ".eps";
+	if (!fname.empty() && IsFileReadable(lfname) 
 	    && (flags & 3) && !lyxrc.ps_command.empty()
 	    && lyxrc.use_gui) { 
 		// do not display if there is
 		// "do not display" chosen (Matthias 260696)
-		tmp->figure->data = getfigdata(wid, hgh, fname, psx, psy,
+		tmp->figure->data = getfigdata(wid, hgh, lfname, psx, psy,
 					       pswid, pshgh, raw_wid, raw_hgh,
 					       angle, flags & (3|8));
 	} else tmp->figure->data = 0;
@@ -1553,7 +1556,10 @@ void InsetFig::GetPSSizes()
 
 	if (fname.empty()) return;
 	string p;
-	ifstream ifs(fname.c_str());
+	string lfname = fname;
+	if (GetExtension(fname).empty())
+		lfname += ".eps";
+	ifstream ifs(lfname.c_str());
 
 	if (!ifs) return;	// file not found !!!!
 
