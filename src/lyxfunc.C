@@ -661,8 +661,12 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_MENU_SEPARATOR:
 	case LFUN_LDOTS:
 	case LFUN_END_OF_SENTENCE:
-	case LFUN_PROTECTEDSPACE:
 		code = Inset::SPECIALCHAR_CODE;
+		break;
+	case LFUN_PROTECTEDSPACE:
+		// slight hack: we know this is allowed in math mode
+		if (!mathcursor)
+			code = Inset::SPECIALCHAR_CODE;
 		break;
 	default:
 		break;

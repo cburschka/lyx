@@ -1,5 +1,7 @@
 2002-04-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* lyxfunc.C (getStatus): LFUN_PROTECTED_SPACE is allowed in maths
+
 	* paragraph_pimpl.C (simpleTeXSpecialChars): remove bogus
 	ensuremath around textordmasculine, textordfeminine and
 	textdegree.

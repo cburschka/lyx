@@ -602,14 +602,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		}
 		break;
 
-	case LFUN_MATH_SPACE:
-	{
-		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->insert(MathAtom(new MathSpaceInset(1)));
-		updateLocal(bv, true);
-		break;
-	}
-
 	case LFUN_SUPERSCRIPT:
 	case LFUN_SUBSCRIPT:
 	{
@@ -637,7 +629,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	}
 
 	case LFUN_PROTECTEDSPACE:
-		//lyxerr << " called LFUN_PROTECTEDSPACE\n";
+	case LFUN_MATH_SPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->insert(MathAtom(new MathSpaceInset(1)));
 		updateLocal(bv, true);
