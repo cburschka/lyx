@@ -50,9 +50,9 @@ using std::string;
 #include <ApplicationServices/ApplicationServices.h>
 #endif
 
-namespace {
 
-void addFontPath()
+
+void qfont_loader::addToFontPath()
 {
 #ifdef Q_WS_X11
 	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
@@ -72,6 +72,10 @@ void addFontPath()
 		       << endl;
 	}
 #endif
+}
+
+void qfont_loader::initFontPath()
+{
 #ifdef Q_WS_MACX
 	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
 	CFURLRef  myAppResourcesURL, FontsURL;
@@ -101,6 +105,7 @@ void addFontPath()
 #endif
 }
 
+namespace {
 
 struct symbol_font {
 	LyXFont::FONT_FAMILY lyx_family;
@@ -385,13 +390,6 @@ bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return false;
-#ifdef Q_WS_MACX
-	static bool need_bundle_fonts = true;
-	if (need_bundle_fonts) {
-		addFontPath();
-		need_bundle_fonts = false;
-	}
-#endif
 
 	static vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);
 	static vector<bool> cache(LyXFont::NUM_FAMILIES, false);
@@ -417,7 +415,7 @@ bool qfont_loader::available(LyXFont const & f)
 			return false;
 
 		first_time = false;
-		addFontPath();
+		addToFontPath();
 		tmp = getSymbolFont(pat);
 		if (tmp.second) {
 			cache[family] = true;

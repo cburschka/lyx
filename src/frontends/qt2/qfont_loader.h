@@ -48,6 +48,12 @@ public:
 	/// return pixel width for the given unicode char
 	int charwidth(LyXFont const & f, Uchar val);
 
+	/// Called before QApplication is initialized
+	static void initFontPath();
+	
+	/// Called the first time when available() can't load a symbol font
+	static void addToFontPath();
+
 private:
 	/// hold info about a particular font
 	struct font_info {
