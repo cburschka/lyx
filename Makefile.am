@@ -53,15 +53,10 @@ bindist:
 	@echo "*** distribution and refer to *you* in case of problem."
 	@echo "*** $(bindistfile) has been created."
 
-doxydoc: sourcedoc/Doxyfile
-	cd sourcedoc; \
-	doxygen ./Doxyfile
-
-distclean-local:
-	rm -rf $(srcdir)/sourcedoc/html $(srcdir)/sourcedoc/latex \
-	$(srcdir)/sourcedoc/main
+doxydoc:
+	cd sourcedoc; make doxydoc
 
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*
 
-.PHONY: sourcedoc
+.PHONY: doxydoc
