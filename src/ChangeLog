@@ -1,3 +1,8 @@
+2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (fullRebreak): try to always return true and see what
+	happens...
+
 2002-04-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MenuBackend.C (expand): use Floating::listName

@@ -909,7 +909,7 @@ bool LyXText::fullRebreak(BufferView * bview)
 		need_break_row = 0;
 		return true;
 	}
-	return false;
+	return true;
 }
 
 
