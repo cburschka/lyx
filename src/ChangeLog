@@ -1,5 +1,20 @@
 2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text.C (backspace): adjust
+
+	* tabular.C (SetMultiColumn): adjust
+
+	* CutAndPaste.C (cutSelection): adjust
+	(pasteSelection): adjust
+
+	* tabular.C (SetMultiColumn): make it take a Buffer* instead of a
+	Buffer const * as arg
+
+	* ParagraphList.C (erase): new function
+	* paragraph_funcs.C (mergeParagraph): use it
+	(mergeParagraph): make it take a Buffer* instead of a
+	BufferParams* as arg
+
 	* paragraph_funcs.C (breakParagraph): take ParagraphList::iterator
 	as arg
 	(breakParagraphConservative): ditto

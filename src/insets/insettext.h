@@ -248,7 +248,7 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	/// append text onto the existing text
-	void appendParagraphs(BufferParams const & bp, Paragraph *);
+	void appendParagraphs(Buffer * bp, Paragraph *);
 
 	///
 	void addPreview(grfx::PreviewLoader &) const;

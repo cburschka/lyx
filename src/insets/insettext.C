@@ -2770,7 +2770,6 @@ bool InsetText::checkInsertChar(LyXFont & font)
 
 void InsetText::collapseParagraphs(BufferView * bv) const
 {
-	BufferParams const & bparams = bv->buffer()->params;
 	LyXText * llt = getLyXText(bv);
 
 	while (paragraphs.begin()->next()) {
@@ -2791,7 +2790,7 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 					llt->selection.end.pos() + paragraphs.begin()->size());
 			}
 		}
-		mergeParagraph(bparams, &*paragraphs.begin());
+		mergeParagraph(bv->buffer(), paragraphs.begin());
 	}
 	reinitLyXText();
 }
@@ -2805,9 +2804,10 @@ void InsetText::getDrawFont(LyXFont & font) const
 }
 
 
-void InsetText::appendParagraphs(BufferParams const & bparams,
+void InsetText::appendParagraphs(Buffer * buffer,
 				 Paragraph * newpar)
 {
+	BufferParams const & bparams = buffer->params;
 	Paragraph * buf;
 	Paragraph * tmpbuf = newpar;
 	Paragraph * lastbuffer = buf = new Paragraph(*tmpbuf, false);
@@ -2837,7 +2837,7 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 	// paste it!
 	lastbuffer->next(buf);
 	buf->previous(lastbuffer);
-	mergeParagraph(bparams, lastbuffer);
+	mergeParagraph(buffer, lastbuffer);
 
 	reinitLyXText();
 }

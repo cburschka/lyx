@@ -95,6 +95,18 @@ void ParagraphList::clear()
 }
 
 
+void ParagraphList::erase(ParagraphList::iterator it)
+{
+	Paragraph * prev = it->previous();
+	Paragraph * next = it->next();
+
+	prev->next(next);
+	next->previous(prev);
+
+	delete &*it;
+}
+
+
 ParagraphList::iterator ParagraphList::begin()
 {
 	return iterator(parlist);

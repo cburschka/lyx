@@ -48,6 +48,8 @@ public:
 	///
 	void clear();
 	///
+	void erase(iterator it);
+	///
 	iterator begin();
 	///
 	iterator begin() const;

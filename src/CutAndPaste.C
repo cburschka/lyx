@@ -165,7 +165,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 	// paste the paragraphs again, if possible
 	if (startpar->hasSameLayout(startpar->next()) ||
 	    startpar->next()->empty()) {
-		mergeParagraph(buffer->params, startpar);
+		mergeParagraph(buffer, startpar);
 		// this because endpar gets deleted here!
 		(*endpar) = startpar;
 	}
@@ -377,20 +377,20 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		if ((*par)->next() == lastbuffer)
 			lastbuffer = *par;
 
-		mergeParagraph(current_view->buffer()->params, *par);
+		mergeParagraph(current_view->buffer(), *par);
 		// store the new cursor position
 		*par = lastbuffer;
 		pos = lastbuffer->size();
 		// maybe some pasting
 		if (lastbuffer->next() && paste_the_end) {
 			if (lastbuffer->next()->hasSameLayout(lastbuffer)) {
-				mergeParagraph(current_view->buffer()->params, lastbuffer);
+				mergeParagraph(current_view->buffer(), lastbuffer);
 			} else if (!lastbuffer->next()->size()) {
 				lastbuffer->next()->makeSameLayout(lastbuffer);
-				mergeParagraph(current_view->buffer()->params, lastbuffer);
+				mergeParagraph(current_view->buffer(), lastbuffer);
 			} else if (!lastbuffer->size()) {
 				lastbuffer->makeSameLayout(lastbuffer->next());
-				mergeParagraph(current_view->buffer()->params, lastbuffer);
+				mergeParagraph(current_view->buffer(), lastbuffer);
 			} else
 				lastbuffer->next()->stripLeadingSpaces();
 		}

@@ -35,7 +35,7 @@ void breakParagraphConservative(BufferParams const & bparams,
  * Append the next paragraph onto the tail of this one.
  * Be careful, this doesent make any check at all.
  */
-void mergeParagraph(BufferParams const & bparams,
+void mergeParagraph(Buffer * buf,
 		    ParagraphList::iterator par);
 
 

@@ -1542,7 +1542,7 @@ LyXTabular::cellstruct * LyXTabular::cellinfo_of_cell(int cell) const
 }
 
 
-void LyXTabular::SetMultiColumn(Buffer const * buffer, int cell, int number)
+void LyXTabular::SetMultiColumn(Buffer * buffer, int cell, int number)
 {
 	cellinfo_of_cell(cell)->multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 	cellinfo_of_cell(cell)->alignment = column_info[column_of_cell(cell)].alignment;
@@ -1552,7 +1552,7 @@ void LyXTabular::SetMultiColumn(Buffer const * buffer, int cell, int number)
 #if 1
 	for (int i = 1; i < number; ++i) {
 		cellinfo_of_cell(cell+i)->multicolumn = CELL_PART_OF_MULTICOLUMN;
-		cellinfo_of_cell(cell)->inset.appendParagraphs(buffer->params,
+		cellinfo_of_cell(cell)->inset.appendParagraphs(buffer,
 			cellinfo_of_cell(cell+i)->inset.paragraph());
 		cellinfo_of_cell(cell+i)->inset.clear(false);
 	}

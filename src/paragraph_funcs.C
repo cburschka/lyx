@@ -154,8 +154,10 @@ void breakParagraphConservative(BufferParams const & bparams,
 }
 
 
-void mergeParagraph(BufferParams const & bparams, ParagraphList::iterator par)
+void mergeParagraph(Buffer * buf, ParagraphList::iterator par)
 {
+	BufferParams const & bparams = buf->params;
+
 	ParagraphList::iterator the_next = boost::next(par);
 
 	// first the DTP-stuff
@@ -173,13 +175,7 @@ void mergeParagraph(BufferParams const & bparams, ParagraphList::iterator par)
 			++j;
 	}
 
-	// delete the next paragraph
-#warning a ParagraphList::erase is needed. (Lgb)
-	// Isn't this really just par?
-	ParagraphList::iterator ppar = boost::prior(the_next);
-	ParagraphList::iterator npar = boost::next(the_next);
-	delete &*the_next;
-	ppar->next(&*npar);
+	buf->paragraphs.erase(the_next);
 }
 
 

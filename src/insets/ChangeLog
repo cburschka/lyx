@@ -1,3 +1,10 @@
+2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (collapseParagraphs): adjust
+	(appendParagraphs): make it take a Buffer* instead of a
+	BufferParams& as arg.
+	(appendParagraphs): adjust
+
 2003-03-04  Angus Leeming  <leeming@lyx.org>
 
 	* insetbibitem.C (localDispatch):

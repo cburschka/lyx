@@ -301,7 +301,7 @@ public:
 	///
 	bool IsMultiColumn(int cell, bool real = false) const;
 	///
-	void SetMultiColumn(Buffer const *, int cell, int number);
+	void SetMultiColumn(Buffer *, int cell, int number);
 	///
 	int UnsetMultiColumn(int cell); // returns number of new cells
 	///
