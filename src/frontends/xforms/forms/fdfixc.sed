@@ -22,8 +22,8 @@ s/[ 	]*$//
 /^\/\*-----/d
 
 
-# Replace "forms.h" by FORMS_H_LOCATION in the #include directives
-s/#include \"forms\.h\"/#include FORMS_H_LOCATION/
+# Remove '#include "forms.h"'. It is replace by a macro in fdfix.sh.
+/^#include \"forms\.h\"/d
 
 
 # Pretty formatting; replace all leading whitespace with a tab
@@ -72,6 +72,11 @@ s/\(	fdui->form\)\(.*bgn_form.*\)/\1\2\
 # For all lines containing "bmtable",
 # replace "fl_add_button" with "fl_add_bmtable"
 /bmtable/ s/fl_add_button/fl_add_bmtable/
+
+
+# For all lines containing "combox",
+# replace "fl_add_choice" with "fl_add_combox"
+/combox/ s/fl_add_choice([^,]*/fl_add_combox(FL_DROPLIST_COMBOX/
 
 
 # For all lines containing fl_add_choice,

@@ -26,6 +26,8 @@
 #include "Tooltips.h"
 #include FORMS_H_LOCATION
 #include "combox.h"
+#include "xforms_helpers.h"
+
 #include "ToolbarDefaults.h"
 #include "LyXAction.h"
 
@@ -84,9 +86,8 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 
 
 Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
-	: owner_(static_cast<XFormsView *>(o)), xpos(x), ypos(y)
+	: owner_(static_cast<XFormsView *>(o)), combox_(0), xpos(x), ypos(y)
 {
-	combox_ = 0;
 	tooltip_ = new Tooltips();
 }
 
@@ -99,8 +100,6 @@ Toolbar::Pimpl::~Pimpl()
 	//toollist.clear();
 	toollist_.erase(toollist_.begin(), toollist_.end());
 
-	delete combox_;
-
 	fl_unfreeze_form(owner_->getForm());
 	delete tooltip_;
 }
@@ -112,10 +111,10 @@ void Toolbar::Pimpl::update()
 	ToolbarList::const_iterator end = toollist_.end();
 	for (; p != end; ++p) {
 		if (p->action == ToolbarDefaults::LAYOUTS && combox_) {
-			if (owner_->getLyXFunc().getStatus(LFUN_LAYOUT).disabled())
-				combox_->deactivate();
-			else
-				combox_->activate();
+			LyXFunc const & lf = owner_->getLyXFunc();
+			bool const disable =
+				lf.getStatus(LFUN_LAYOUT).disabled();
+			setEnabled(combox_, !disable);
 			continue;
 		}
 
@@ -147,16 +146,25 @@ void Toolbar::Pimpl::update()
 }
 
 
-// this one is not "C" because combox callbacks are really C++ %-|
-void Toolbar::Pimpl::layoutSelectedCB(int, void * arg, Combox *)
+namespace {
+
+void C_layoutSelectedCB(FL_OBJECT * ob, long)
 {
-	reinterpret_cast<Toolbar::Pimpl *>(arg)->layoutSelected();
+	if (!ob || !ob->u_vdata)
+		return;
+	Toolbar::Pimpl * ptr = static_cast<Toolbar::Pimpl *>(ob->u_vdata);
+	ptr->layoutSelected();
 }
+
+} // namespace anon
 
 
 void Toolbar::Pimpl::layoutSelected()
 {
-	string const & layoutguiname = combox_->getline();
+	if (!combox_)
+		return;
+
+	string const & layoutguiname = getString(combox_);
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
 
@@ -175,50 +183,64 @@ void Toolbar::Pimpl::layoutSelected()
 
 void Toolbar::Pimpl::setLayout(string const & layout)
 {
-	if (combox_) {
-		LyXTextClass const & tc =
-			owner_->buffer()->params.getLyXTextClass();
-		combox_->select(_(tc[layout]->name()));
+	if (!combox_)
+		return;
+
+	LyXTextClass const & tc = owner_->buffer()->params.getLyXTextClass();
+	string const layoutname = _(tc[layout]->name());
+
+	int const nnames = fl_get_combox_maxitems(combox_);
+	for (int i = 1; i <= nnames; ++i) {
+		string const name = fl_get_combox_line(combox_, i);
+		if (name == layoutname) {
+			fl_set_combox(combox_, i);
+			break;
+		}
 	}
 }
 
 
 void Toolbar::Pimpl::updateLayoutList(bool force)
 {
-	// Update the layout display
-	if (!combox_) return;
+	if (!combox_)
+		return;
 
 	// If textclass is different, we need to update the list
-	if (combox_->empty() || force) {
-		combox_->clear();
+	if (fl_get_combox_maxitems(combox_) == 0 || force) {
+		fl_clear_combox(combox_);
 		LyXTextClass const & tc =
 			owner_->buffer()->params.getLyXTextClass();
 		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {
 			// ignore obsolete entries
-			if ((*cit)->obsoleted_by().empty())
-				combox_->addline(_((*cit)->name()));
+			if ((*cit)->obsoleted_by().empty()) {
+				string const & name = _((*cit)->name());
+				fl_addto_combox(combox_, name.c_str());
+			}
 		}
 	}
 	// we need to do this.
-	combox_->redraw();
+	fl_redraw_object(combox_);
 }
 
 
 void Toolbar::Pimpl::clearLayoutList()
 {
-	if (combox_) {
-		combox_->clear();
-		combox_->redraw();
-	}
+	if (!combox_)
+		return;
+
+	fl_clear_combox(combox_);
+	fl_redraw_object(combox_);
 }
 
 
 void Toolbar::Pimpl::openLayoutList()
 {
-	if (combox_)
-		combox_->show();
+	if (!combox_)
+		return;
+
+	fl_show_combox_browser(combox_);
 }
 
 
@@ -281,8 +303,6 @@ void setPixmap(FL_OBJECT * obj, int action)
 
 void Toolbar::Pimpl::add(int action)
 {
-	FL_OBJECT * obj;
-
 	toolbarItem item;
 	item.action = action;
 
@@ -295,15 +315,24 @@ void Toolbar::Pimpl::add(int action)
 		break;
 	case ToolbarDefaults::LAYOUTS:
 		xpos += standardspacing;
-		if (!combox_)
-			combox_ = new Combox(FL_COMBOX_DROPLIST);
-		combox_->add(xpos, ypos, 135, height, 400);
-		combox_->setcallback(layoutSelectedCB, this);
-		combox_->resize(FL_RESIZE_ALL);
-		combox_->gravity(NorthWestGravity, NorthWestGravity);
+		if (combox_)
+			break;
+
+		combox_ = fl_add_combox(FL_DROPLIST_COMBOX,
+					xpos, ypos, 135, height, "");
+		fl_set_combox_browser_height(combox_, 400);
+		fl_set_object_boxtype(combox_, FL_DOWN_BOX);
+		fl_set_object_color(combox_, FL_MCOL, FL_MCOL);
+		fl_set_object_gravity(combox_, FL_NorthWest, FL_NorthWest);
+		fl_set_object_resize(combox_, FL_RESIZE_ALL);
+
+		combox_->u_vdata = this;
+		fl_set_object_callback(combox_, C_layoutSelectedCB, 0);
 		xpos += 135;
 		break;
-	default:
+	default: {
+		FL_OBJECT * obj;
+
 		xpos += standardspacing;
 		item.icon = obj =
 			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
@@ -335,6 +364,7 @@ void Toolbar::Pimpl::add(int action)
 		 * and perhaps wrap the toolbar if not.
 		 */
 		break;
+	}
 	}
 
 	toollist_.push_back(item);

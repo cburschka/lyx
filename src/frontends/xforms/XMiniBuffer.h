@@ -18,9 +18,12 @@
 
 #include "LString.h"
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include <boost/signals/connection.hpp>
 
-class DropDown;
+struct fl_freebrowser_;
+typedef fl_freebrowser_ FL_FREEBROWSER;
+
 class ControlCommandBuffer;
 class Timeout;
 
@@ -33,9 +36,6 @@ public:
 
 	///
 	~XMiniBuffer();
-
-	/// create drop down
-	void dd_init();
 
 	/// repaint the minibuffer
 	void redraw();
@@ -52,6 +52,9 @@ public:
 	/// disable event management
 	void freeze();
 
+	/// xforms callback routine
+	void freebrowserCB(int action);
+
 private:
 	/// Are we in editing mode?
 	bool isEditingMode() const;
@@ -61,15 +64,6 @@ private:
 
 	/// go back to "at rest" message
 	void idle_timeout();
-
-	/**
-	 * Append "c" to the current input contents when the completion
-	 * list is displayed and has focus.
-	 */
-	void append_char(char c);
-
-	/// completion selection callback
-	void set_complete_input(string const & str);
 
 	/// set the minibuffer content in editing mode
 	void set_input(string const &);
@@ -81,7 +75,7 @@ private:
 	void show_info(string const & info, string const & input, bool append = true);
 
 	/// the dropdown menu
-	boost::scoped_ptr<DropDown> dropdown_;
+	boost::shared_ptr<FL_FREEBROWSER> freebrowser_;
 
 	/// info timer
 	boost::scoped_ptr<Timeout> info_timer_;

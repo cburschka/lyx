@@ -1,0 +1,68 @@
+/**
+ * \file freebrowser.h
+ * \author Angus Leeming
+ *
+ * A freebrowser is a browser widget in its own form.
+ * It is used for example to instantiate the drop-down list beneath a
+ * combox.
+ */
+
+#ifndef FL_FREEBROWSER_H
+#define FL_FREEBROWSER_H
+
+#if defined(__cplusplus)
+extern "C"
+{
+#endif
+
+enum freebrowser_position {
+    FL_FREEBROWSER_BELOW,
+    FL_FREEBROWSER_ABOVE
+};
+
+typedef struct fl_freebrowser_ {
+    /** Use this and you'll be told when something happens.
+     *	\param == 0: the browser has merely been hidden.
+     *         == 1: a change has been made.
+     */
+    void (* callback) (struct fl_freebrowser_ *, int action);
+
+    /** Set this to 1 if you want to capture all KeyPress events
+     *  generating printable chars.
+     */
+    int want_printable;
+    /** Is set only if want_printable is true. */
+    char last_printable;
+
+    /** Details of the implementation. */
+    void * parent;
+    FL_FORM * form;
+    FL_OBJECT * browser;
+    Window save_window;
+} FL_FREEBROWSER;
+
+
+/** A function to create a freebrowser widget, "owned" by widget \param parent.
+ */
+FL_EXPORT FL_FREEBROWSER * fl_create_freebrowser(void * parent);
+
+FL_EXPORT void fl_free_freebrowser(FL_FREEBROWSER *);
+
+/** \param abs_x, \param abs_y are the coordinates of the top left corner
+ *  of the browser relative to the top left hand corner of the _screen_.
+ *  \param w, \param h are the browser dimensions.
+ */
+FL_EXPORT void fl_show_freebrowser(FL_FREEBROWSER *,
+				   FL_Coord abs_x, FL_Coord abs_y,
+				   FL_Coord w, FL_Coord h);
+
+FL_EXPORT void fl_hide_freebrowser(FL_FREEBROWSER *);
+
+/** Return the browser itself. */
+FL_EXPORT FL_OBJECT * fl_get_freebrowser_browser(FL_FREEBROWSER *);
+
+#if defined(__cplusplus)
+}
+#endif
+
+#endif

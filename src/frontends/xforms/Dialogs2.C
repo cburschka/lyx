@@ -18,7 +18,6 @@
 
 #include "Tooltips.h"
 #include "xformsBC.h"
-#include "combox.h"
 
 #include "ControlDocument.h"
 #include "FormDocument.h"

@@ -20,7 +20,6 @@
 
 #include "bmtable.h"
 #include "checkedwidgets.h"
-#include "combox.h"
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "xforms_helpers.h"
 
@@ -39,6 +38,7 @@
 
 #include XPM_H_LOCATION
 #include FORMS_H_LOCATION
+#include "combox.h"
 
 #include <boost/bind.hpp>
 
@@ -88,6 +88,7 @@ void FormDocument::build()
 	class_.reset(build_document_class(this));
 
 	// disable for read-only documents
+	bcview().addReadOnly(class_->combox_doc_class);
 	bcview().addReadOnly(class_->radio_doc_indent);
 	bcview().addReadOnly(class_->radio_doc_skip);
 	bcview().addReadOnly(class_->choice_doc_pagestyle);
@@ -118,19 +119,14 @@ void FormDocument::build()
 
 	FL_OBJECT * obj;
 
-	// the class list is a combo-box and has to be inserted manually
-	obj = class_->choice_doc_class;
-	fl_deactivate_object(obj);
-	fl_addto_form(class_->form);
-	combo_doc_class.reset(new Combox(FL_COMBOX_DROPLIST));
-	combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400);
-	combo_doc_class->shortcut("#C",1);
-	combo_doc_class->setcallback(ComboInputCB, this);
-	fl_end_form();
-	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
-	     cit != textclasslist.end(); ++cit) {
-		combo_doc_class->addto(cit->description());
+	// Fill the combox and choices.
+	obj = class_->combox_doc_class;
+	LyXTextClassList::const_iterator tit  = textclasslist.begin();
+	LyXTextClassList::const_iterator tend = textclasslist.end();
+	for (; tit != tend; ++tit) {
+		fl_addto_combox(obj, tit->description().c_str());
 	}
+	fl_set_combox_browser_height(obj, 400);
 
 	fl_addto_choice(class_->choice_doc_spacing,
 			_(" Single | OneHalf | Double | Custom "));
@@ -239,6 +235,7 @@ void FormDocument::build()
 	language_.reset(build_document_language(this));
 
 	// disable for read-only documents
+	bcview().addReadOnly(language_->combox_language);
 	bcview().addReadOnly(language_->choice_inputenc);
 	bcview().addReadOnly(language_->choice_quotes_language);
 	bcview().addReadOnly(language_->radio_single);
@@ -252,22 +249,13 @@ void FormDocument::build()
 	// Store the identifiers for later
 	lang_ = getSecond(langs);
 
-	// The language is a combo-box and has to be inserted manually
-	obj = language_->choice_language;
-	fl_deactivate_object(obj);
-	fl_addto_form(language_->form);
-	combo_language.reset(new Combox(FL_COMBOX_DROPLIST));
-	combo_language->add(obj->x, obj->y, obj->w, obj->h, 400);
-	combo_language->shortcut("#L",1);
-	combo_language->setcallback(ComboInputCB, this);
-	fl_end_form();
-
 	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
 	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		combo_language->addto(lit->first);
+		fl_addto_combox(language_->combox_language,
+				lit->first.c_str());
 	}
-	combo_language->select(1);
+	fl_set_combox_browser_height(language_->combox_language, 400);
 
 	fl_addto_choice(language_->choice_quotes_language,
 			_(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
@@ -416,6 +404,8 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		setEnabled(class_->input_doc_spacing,
 			   fl_get_choice(class_->choice_doc_spacing) == 4);
 
+	} else if (ob == class_->combox_doc_class) {
+		CheckChoiceClass();
 	} else if (ob == class_->radio_doc_skip ||
 		   ob == class_->radio_doc_indent ||
 		   ob == class_->choice_doc_skip) {
@@ -449,7 +439,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->button_reset_defaults) {
 		BufferParams & params = controller().params();
-		params.textclass = combo_doc_class->get() - 1;
+		params.textclass = fl_get_combox(class_->combox_doc_class) - 1;
 		params.useClassDefaults();
 		UpdateLayoutDocument(params);
 
@@ -593,15 +583,6 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 }
 
 
-void FormDocument::ComboInputCB(int, void * v, Combox * combox)
-{
-	FormDocument * pre = static_cast<FormDocument*>(v);
-	if (combox == pre->combo_doc_class.get())
-		pre->CheckChoiceClass();
-	pre->bc().valid();
-}
-
-
 bool FormDocument::class_apply(BufferParams &params)
 {
 	bool redo = false;
@@ -616,7 +597,7 @@ bool FormDocument::class_apply(BufferParams &params)
 	params.fontsize = getString(class_->choice_doc_fontsize);
 	params.pagestyle = getString(class_->choice_doc_pagestyle);
 
-	params.textclass = combo_doc_class->get() - 1;
+	params.textclass = fl_get_combox(class_->combox_doc_class) - 1;
 
 	BufferParams::PARSEP tmpsep = params.paragraph_separation;
 	if (fl_get_button(class_->radio_doc_indent))
@@ -778,7 +759,7 @@ bool FormDocument::language_apply(BufferParams & params)
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
-	int const pos = combo_language->get();
+	int const pos = fl_get_combox(language_->combox_language);
 	Language const * new_language = languages.getLanguage(lang_[pos-1]);
 	if (!new_language)
 		new_language = default_language;
@@ -820,11 +801,9 @@ void FormDocument::bullets_apply(BufferParams & params)
 	/* update the bullet settings */
 	BufferParams & buf_params = controller().params();
 
-	// a little bit of loop unrolling
-	params.user_defined_bullets[0] = buf_params.temp_bullets[0];
-	params.user_defined_bullets[1] = buf_params.temp_bullets[1];
-	params.user_defined_bullets[2] = buf_params.temp_bullets[2];
-	params.user_defined_bullets[3] = buf_params.temp_bullets[3];
+	for (int i = 0; i < 4; ++i) {
+		params.user_defined_bullets[i] = buf_params.temp_bullets[i];
+	}
 }
 
 
@@ -835,7 +814,7 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 
 	LyXTextClass const & tclass = textclasslist[params.textclass];
 
-	combo_doc_class->select(tclass.description());
+	fl_set_combox(class_->combox_doc_class, params.textclass + 1);
 	fl_clear_choice(class_->choice_doc_fontsize);
 	fl_addto_choice(class_->choice_doc_fontsize, "default");
 	fl_addto_choice(class_->choice_doc_fontsize,
@@ -945,7 +924,7 @@ void FormDocument::language_update(BufferParams const & params)
 		return;
 
 	int const pos = int(findPos(lang_, params.language->lang()));
-	combo_language->select(pos+1);
+	fl_set_combox(language_->combox_language, pos+1);
 
 	fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
 	fl_set_choice(language_->choice_quotes_language, params.quotes_language + 1);
@@ -1095,13 +1074,9 @@ void FormDocument::bullets_update(BufferParams const & params)
 void FormDocument::checkReadOnly()
 {
 	if (bc().readOnly(controller().bufferIsReadonly())) {
-		combo_doc_class->deactivate();
-		combo_language->deactivate();
 		postWarning(_("Document is read-only."
 			      " No changes to layout permitted."));
 	} else {
-		combo_doc_class->activate();
-		combo_language->activate();
 		clearMessage();
 	}
 }
@@ -1238,7 +1213,8 @@ void FormDocument::CheckChoiceClass()
 {
 	BufferParams & params = controller().params();
 
-	lyx::textclass_type const tc = combo_doc_class->get() - 1;
+	lyx::textclass_type const tc =
+		fl_get_combox(class_->combox_doc_class) - 1;
 
 	if (controller().loadTextclass(tc)) {
 		params.textclass = tc;
@@ -1254,7 +1230,7 @@ void FormDocument::CheckChoiceClass()
 
 	} else {
 		int const revert = int(params.textclass);
-		combo_doc_class->select(revert + 1);
+		fl_set_combox(class_->combox_doc_class, revert + 1);
 	}
 }
 

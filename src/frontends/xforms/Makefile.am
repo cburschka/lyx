@@ -18,8 +18,10 @@ libxforms_la_SOURCES = \
 	bmtable.h \
 	checkedwidgets.C \
 	checkedwidgets.h \
-	combox.C \
+	combox.c \
 	combox.h \
+	freebrowser.c \
+	freebrowser.h \
 	fdesign_base.C \
 	fdesign_base.h \
 	input_validators.C \
@@ -48,8 +50,6 @@ libxforms_la_SOURCES = \
 	ColorHandler.h \
 	Dialogs.C \
 	Dialogs2.C \
-	DropDown.h \
-	DropDown.C \
 	FileDialog.C \
 	FontInfo.C \
 	FontInfo.h \

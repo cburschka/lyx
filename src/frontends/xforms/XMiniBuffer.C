@@ -13,12 +13,15 @@
 #include <config.h>
 
 #include "XMiniBuffer.h"
-#include "DropDown.h"
 #include "ControlCommandBuffer.h"
+#include "freebrowser.h"
+#include "xforms_helpers.h"
 
 #include "gettext.h"
 
 #include "frontends/Timeout.h"
+
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 
@@ -38,6 +41,10 @@ namespace {
 FL_OBJECT * create_input_box(void * parent, int type,
 			     FL_Coord, FL_Coord, FL_Coord, FL_Coord);
 
+FL_FREEBROWSER * create_freebrowser(void * parent);
+
+FL_OBJECT * get_freebrowser_browser(boost::shared_ptr<FL_FREEBROWSER> &);
+
 } // namespace anon
 
 
@@ -47,6 +54,8 @@ XMiniBuffer::XMiniBuffer(ControlCommandBuffer & control,
 	  info_shown_(false)
 {
 	input_ = create_input_box(this, FL_NORMAL_INPUT, x, y, h, w);
+	freebrowser_.reset(create_freebrowser(this), fl_free_freebrowser);
+	
 	info_timer_.reset(new Timeout(1500));
 	idle_timer_.reset(new Timeout(6000));
 	info_con = info_timer_->timeout.connect(boost::bind(&XMiniBuffer::info_timeout, this));
@@ -61,12 +70,34 @@ XMiniBuffer::~XMiniBuffer()
 {}
 
 
-// thanks for nothing, xforms (recursive creation not allowed)
-void XMiniBuffer::dd_init()
+void XMiniBuffer::freebrowserCB(int action)
 {
-	dropdown_.reset(new DropDown(input_));
-	result_con = dropdown_->result.connect(boost::bind(&XMiniBuffer::set_complete_input, this, _1));
-	keypress_con = dropdown_->keypress.connect(boost::bind(&XMiniBuffer::append_char, this, _1));
+	if (action < 0 || action > 1)
+		// unrecognized action
+		return;
+
+	if (action == 0)
+		// The freebrowser has been hidden
+		return;
+
+	if (freebrowser_->last_printable) {
+		// Append this char to the current input contents
+		string input = getString(input_);
+		input += freebrowser_->last_printable;
+		fl_set_input(input_, input.c_str());
+
+	} else {
+		// Fill the input widget with the selected
+		// browser entry.
+		FL_OBJECT * browser = get_freebrowser_browser(freebrowser_);
+		string const str = getString(browser);
+
+		if (!str.empty()) {
+			// add a space so the user can type
+			// an argument immediately
+			set_input(str + ' ');
+		}
+	}
 }
 
 
@@ -139,6 +170,19 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 
 			set_input(new_input);
 
+			// Fill freebrowser_'s browser with the list of
+			// available completions
+			FL_OBJECT * browser =
+				get_freebrowser_browser(freebrowser_);
+			fl_clear_browser(browser);
+			vector<string>::const_iterator cit = comp.begin();
+			vector<string>::const_iterator end = comp.end();
+			for (; cit != end; ++cit) {
+				fl_add_browser_line(browser, cit->c_str());
+			}
+			fl_select_browser_line(browser, 1);
+
+			// Set the position of the freebrowser and display it.
 			int x,y,w,h;
 			fl_get_wingeometry(fl_get_real_object_window(input_),
 					   &x, &y, &w, &h);
@@ -148,7 +192,9 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			x += air;
 			y += h - (input_->h + air);
 			w = input_->w;
-			dropdown_->select(comp, x, y, w);
+			h = 100;
+
+			fl_show_freebrowser(freebrowser_.get(), x, y-h, w, h);
 			return 1;
 		}
 		case 27:
@@ -242,30 +288,6 @@ void XMiniBuffer::redraw()
 }
 
 
-void XMiniBuffer::append_char(char c)
-{
-	if (!c || !isprint(c))
-		return;
-
-	char const * tmp = fl_get_input(input_);
-	string str = tmp ? tmp : "";
-
-	str += c;
-
-	fl_set_input(input_, str.c_str());
-}
-
-
-void XMiniBuffer::set_complete_input(string const & str)
-{
-	if (!str.empty()) {
-		// add a space so the user can type
-		// an argument immediately
-		set_input(str + ' ');
-	}
-}
-
-
 void XMiniBuffer::message(string const & str)
 {
 	if (!isEditingMode())
@@ -291,6 +313,17 @@ int C_XMiniBuffer_peek_event(FL_OBJECT * ob, int event,
 }
 
 
+extern "C"
+void C_freebrowserCB(FL_FREEBROWSER * fb, int action)
+{
+	if (!fb || !fb->parent)
+		return;
+
+	XMiniBuffer * ptr = static_cast<XMiniBuffer *>(fb->parent);
+	ptr->freebrowserCB(action);
+}
+
+
 FL_OBJECT * create_input_box(void * parent, int type,
 			     FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h)
 {
@@ -307,6 +340,21 @@ FL_OBJECT * create_input_box(void * parent, int type,
 	obj->wantkey = FL_KEY_TAB;
 
 	return obj;
+}
+
+
+FL_FREEBROWSER * create_freebrowser(void * parent)
+{
+	FL_FREEBROWSER * fb = fl_create_freebrowser(parent);
+	fb->want_printable = 1;
+	fb->callback = C_freebrowserCB;
+	return fb;
+}
+
+FL_OBJECT * get_freebrowser_browser(boost::shared_ptr<FL_FREEBROWSER> & fb)
+{
+	FL_FREEBROWSER * ptr = fb.get();
+	return ptr ? fl_get_freebrowser_browser(ptr) : 0;
 }
 
 } // namespace anon

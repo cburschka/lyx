@@ -20,10 +20,10 @@
 #include "FormCharacter.h"
 #include "forms/form_character.h"
 #include "gettext.h"
-#include "combox.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
 #include FORMS_H_LOCATION
+#include "combox.h"
 
 #include "frnt_lang.h"
 
@@ -40,14 +40,6 @@ FormCharacter::FormCharacter(Dialog & parent)
 	: base_class(parent, _("Character Layout"), false)
 {}
 
-
-void FormCharacter::ComboInputCB(int, void * v, Combox *)
-{
-	FormCharacter * pre = static_cast<FormCharacter*>(v);
-	// must use input() directly, to avoid treating the Combox
-	// as an FL_OBJECT, leading to a crash (bug 406)
-	pre->bc().input(pre->input(0, 0));
-}
 
 void FormCharacter::build()
 {
@@ -90,27 +82,9 @@ void FormCharacter::build()
 	choice = ' ' + getStringFromVector(getFirst(color), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_color, choice.c_str());
 
-	// xforms appears to need this to prevent a crash...
-	fl_addto_choice(dialog_->choice_language, "prevent crash");
-
-	// insert default language box manually
-	fl_addto_form(dialog_->form);
-	FL_OBJECT * ob = dialog_->choice_language;
-	fl_hide_object(dialog_->choice_language);
-
-	combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
-	combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
-	combo_language2_->shortcut("#L", 1);
-	combo_language2_->setcallback(ComboInputCB, this);
-	fl_end_form();
-
-	// build up the combox entries
-	vector<LanguagePair>::const_iterator it  = langs.begin();
-	vector<LanguagePair>::const_iterator end = langs.end();
-	for (; it != end; ++it) {
-		combo_language2_->addto(it->first);
-	}
-	combo_language2_->select(1);
+	choice = ' ' + getStringFromVector(getFirst(langs), " | ") + ' ';
+	fl_addto_combox(dialog_->combox_language, choice.c_str());
+	fl_set_combox_browser_height(dialog_->combox_language, 250);
 
 	// Manage the ok, apply and cancel/close buttons
 	bcview().setApply(dialog_->button_apply);
@@ -141,7 +115,7 @@ void FormCharacter::apply()
 	pos = fl_get_choice(dialog_->choice_color);
 	controller().setColor(color_[pos - 1]);
 
-	pos = combo_language2_->get();
+	pos = fl_get_combox(dialog_->combox_language);
 	controller().setLanguage(lang_[pos - 1]);
 
 	bool const toggleall = fl_get_button(dialog_->check_toggle_all);
@@ -170,7 +144,7 @@ void FormCharacter::update()
 	fl_set_choice(dialog_->choice_color, pos+1);
 
 	pos = int(findPos(lang_, controller().getLanguage()));
-	combo_language2_->select(pos+1);
+	fl_set_combox(dialog_->combox_language, pos+1);
 
 	fl_set_button(dialog_->check_toggle_all, controller().getToggleAll());
 }
@@ -204,7 +178,7 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 	if (color_[pos - 1] != LColor::ignore)
 		activate = ButtonPolicy::SMI_VALID;
 
-	pos = combo_language2_->get();
+	pos = fl_get_combox(dialog_->combox_language);
 	if (lang_[pos - 1] != "No change")
 		activate = ButtonPolicy::SMI_VALID;
 

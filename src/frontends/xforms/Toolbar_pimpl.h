@@ -21,15 +21,11 @@
 
 class XFormsView;
 class Tooltips;
-class Combox;
 
 /** The LyX xforms toolbar class
  */
 struct Toolbar::Pimpl {
 public:
-	/// called when user selects a layout from combox
-	static void layoutSelectedCB(int, void *, Combox *);
-
 	/// create an empty toolbar
 	Pimpl(LyXView * o, int x, int y);
 
@@ -49,7 +45,7 @@ public:
 	void openLayoutList();
 	/// Erase the layout list
 	void clearLayoutList();
-	/// the non-static version of layoutSelectedCB
+	///
 	void layoutSelected();
 
 	/// an item on the toolbar
@@ -79,7 +75,7 @@ public:
 	/// tooltips manager
 	Tooltips * tooltip_;
 	/// layout combo
-	Combox * combox_;
+	FL_OBJECT * combox_;
 	/// x position of end of toolbar
 	int xpos;
 	/// y position of end of toolbar

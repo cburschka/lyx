@@ -819,19 +819,19 @@ argument: 0
 
 --------------------
 class: FL_CHOICE
-type: NORMAL_CHOICE
+type: DROPLIST_CHOICE
 box: 110 10 160 25
 boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Class:|#l
+label: Class:|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_class
+name: combox_doc_class
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1330,10 +1330,10 @@ argument:
 
 --------------------
 class: FL_CHOICE
-type: NORMAL_CHOICE
+type: DROPLIST_CHOICE
 box: 120 35 190 25
 boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -1342,7 +1342,7 @@ label: Language:|#L
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_language
+name: combox_language
 callback: C_FormBaseInputCB
 argument: 0
 

@@ -1605,7 +1605,7 @@ class: FL_CHOICE
 type: NORMAL_CHOICE
 box: 231 56 200 30
 boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
@@ -1614,7 +1614,7 @@ label: Default language:|#l
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_default_lang
+name: combox_default_lang
 callback: C_FormBaseInputCB
 argument: 0
 

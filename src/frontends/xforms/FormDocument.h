@@ -21,7 +21,6 @@
 
 class ControlDocument;
 
-class Combox;
 class BufferParams;
 
 struct FD_document;
@@ -37,8 +36,6 @@ struct FD_document_bullet;
 class FormDocument : public FormCB<ControlDocument, FormDB<FD_document> > {
 public:
 	FormDocument();
-	///
-	static void ComboInputCB(int, void *, Combox *);
 private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
@@ -113,10 +110,6 @@ private:
 	int current_bullet_depth;
 	///
 	FL_OBJECT * fbullet;
-	///
-	boost::scoped_ptr<Combox> combo_language;
-	///
-	boost::scoped_ptr<Combox> combo_doc_class;
 	///
 	std::vector<string> lang_;
 };

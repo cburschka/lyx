@@ -140,9 +140,12 @@ INTRO_MESSAGE ${TMP}
 echo "#include <config.h>" >> ${TMP}
 echo "#include \"forms_gettext.h\"" >> ${TMP}
 echo "#include \"gettext.h\"" >> ${TMP}
+echo "#include FORMS_H_LOCATION" >> ${TMP}
 
 grep bmtable ${CIN} > /dev/null &&
 	echo "#include \"bmtable.h\"" >> ${TMP}
+grep combox ${CIN} > /dev/null &&
+	echo "#include \"combox.h\"" >> ${TMP}
 
 sed -f ${FDFIXC} < ${CIN} >> ${TMP}
 

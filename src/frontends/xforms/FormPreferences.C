@@ -17,7 +17,6 @@
 #include "xformsBC.h"
 #include "ButtonController.h"
 
-#include "combox.h"
 #include "Color.h"
 #include "input_validators.h"
 #include "forms_gettext.h"
@@ -48,6 +47,8 @@
 #include <boost/bind.hpp>
 
 #include FORMS_H_LOCATION
+#include "combox.h"
+
 #include <utility>
 #include <iomanip>
 #include <X11/Xlib.h>
@@ -1603,7 +1604,7 @@ FD_preferences_language const * FormPreferences::Language::dialog()
 
 void FormPreferences::Language::apply(LyXRC & rc)
 {
-	int const pos = combo_default_lang->get();
+	int const pos = fl_get_combox(dialog_->combox_default_lang);
 	rc.default_language = lang_[pos-1];
 
 	int button = fl_get_button(dialog_->check_use_kbmap);
@@ -1657,38 +1658,18 @@ void FormPreferences::Language::build()
 	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
 	lang_ = getSecond(langs);
 
-	// The default_language is a combo-box and has to be inserted manually
-	fl_freeze_form(dialog_->form);
-	fl_addto_form(dialog_->form);
-
-	FL_OBJECT * obj = dialog_->choice_default_lang;
-	fl_deactivate_object(dialog_->choice_default_lang);
-	combo_default_lang.reset(new Combox(FL_COMBOX_DROPLIST));
-	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
-	combo_default_lang->shortcut("#L",1);
-	combo_default_lang->setcallback(ComboCB, &parent_);
-
+	FL_OBJECT * obj = dialog_->combox_default_lang;
 	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
 	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		combo_default_lang->addto(lit->first);
+		fl_addto_combox(obj, lit->first.c_str());
 	}
-	combo_default_lang->select(1);
-
-	fl_end_form();
-	fl_unfreeze_form(dialog_->form);
+	fl_set_combox_browser_height(obj, 400);
 
 	// set up the feedback mechanism
 	setPrehandler(dialog_->input_package);
 	setPrehandler(dialog_->check_use_kbmap);
-
-	// This is safe, as nothing is done to the pointer, other than
-	// to use its address in a block-if statement.
-	// No it's not! Leads to crash.
-	// setPrehandler(
-	//		reinterpret_cast<FL_OBJECT *>(combo_default_lang),
-	//		C_FormPreferencesFeedbackCB);
-
+	setPrehandler(dialog_->combox_default_lang);
 	setPrehandler(dialog_->input_kbmap1);
 	setPrehandler(dialog_->input_kbmap2);
 	setPrehandler(dialog_->check_rtl_support);
@@ -1709,7 +1690,7 @@ void FormPreferences::Language::build()
 string const
 FormPreferences::Language::feedback(FL_OBJECT const * const ob) const
 {
-	if (reinterpret_cast<Combox const *>(ob) == combo_default_lang.get())
+	if (ob == dialog_->combox_default_lang)
 		return LyXRC::getDescription(LyXRC::RC_DEFAULT_LANGUAGE);
 	if (ob == dialog_->check_use_kbmap)
 		return LyXRC::getDescription(LyXRC::RC_KBMAP);
@@ -1776,7 +1757,7 @@ void FormPreferences::Language::update(LyXRC const & rc)
 		      rc.use_kbmap);
 
 	int const pos = int(findPos(lang_, rc.default_language));
-	combo_default_lang->select(pos + 1);
+	fl_set_combox(dialog_->combox_default_lang, pos + 1);
 
 	if (rc.use_kbmap) {
 		fl_set_input(dialog_->input_kbmap1,
@@ -1807,15 +1788,6 @@ void FormPreferences::Language::update(LyXRC const & rc)
 	// Activate/Deactivate the input fields dependent on the state of the
 	// buttons.
 	input(0);
-}
-
-
-void FormPreferences::Language::ComboCB(int, void * v, Combox * combox)
-{
-	FormPreferences * pre = static_cast<FormPreferences*>(v);
-	// This is safe, as nothing is done to the pointer, other than
-	// to use its address in a block-if statement.
-	pre->bc().valid(pre->input(reinterpret_cast<FL_OBJECT *>(combox), 0));
 }
 
 

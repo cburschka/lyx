@@ -20,9 +20,6 @@
 #include "LColor.h"           // for LColor enum
 #include "character.h"        // for FONT_STATE enum
 
-#include <boost/scoped_ptr.hpp>
-
-class Combox;
 struct FD_character;
 
 /**
@@ -49,12 +46,6 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	/** Callback method (used only to activate Apply button when
-	    combox is changed */
-	static void ComboInputCB(int, void *, Combox *);
-
-	///
-	boost::scoped_ptr<Combox> combo_language2_;
 	///
 	std::vector<LyXFont::FONT_FAMILY>  family_;
 	///

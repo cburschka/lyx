@@ -4,6 +4,36 @@
 
 2003-04-02  Angus Leeming  <leeming@lyx.org>
 
+	* combox.C:
+	* DropDown.[Ch]: removed.
+
+	* combox.[ch]:
+	* freebrowser.[ch]: replace Alejandro's Combox and John's DropDown
+	C++ code with something that can be integrated into xforms itself.
+
+	* Dialogs2.C: remove #include "combox.h".
+
+	* FormCharacter.[Ch]:
+	* forms/form_character.fd:
+	* FormDocument.[Ch]:
+	* forms/form_document.fd:
+	* FormPreferences.[Ch]:
+	* forms/form_preferences.fd:
+	* Toolbar_pimpl.[Ch]: replace code using Alejandro's Combox with
+	code using an FL_OBJECT of type FL_COMBOX.
+
+	* XMiniBuffer.[Ch]: replace John's DropDown with code using
+	FL_FREEBROWSER.
+
+	* Makefile.am: remove combox.C, DropDown.[Ch].
+	Add combox.c, freebrowser.[ch].
+
+	* forms/README:
+	* forms/fdfix.sh:
+	* forms/fdfixc.sed: update to suit the new combox code.
+
+2003-04-02  Angus Leeming  <leeming@lyx.org>
+
 	* FormDocument.[Ch]:
 	* FormPreferences.[Ch]:
 	* Toolbar_pimpl.[Ch]:

@@ -26,7 +26,6 @@
 
 class ControlPrefs;
 
-class Combox;
 class Dialogs;
 class LyXView;
 class RGBColor;
@@ -291,16 +290,12 @@ private:
 		bool input(FL_OBJECT const * const);
 		///
 		void update(LyXRC const & rc);
-		///
-		static void ComboCB(int, void *, Combox *);
 
 	private:
 		///
 		FormPreferences & parent_;
 		///
 		boost::scoped_ptr<FD_preferences_language> dialog_;
-		///
-		boost::scoped_ptr<Combox> combo_default_lang;
 		///
 		std::vector<string> lang_;
 	};

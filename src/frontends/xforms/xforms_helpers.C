@@ -26,6 +26,7 @@
 #include <fstream>
 
 #include FORMS_H_LOCATION
+#include "combox.h"
 
 using std::ofstream;
 using std::pair;
@@ -129,6 +130,10 @@ string const getString(FL_OBJECT * ob, int line)
 
 		if (line >= 1 && line <= fl_get_choice_maxitems(ob))
 			tmp = fl_get_choice_item_text(ob, line);
+		break;
+
+	case FL_COMBOX:
+		tmp = fl_get_combox_text(ob);
 		break;
 
 	default:

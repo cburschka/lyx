@@ -41,9 +41,10 @@ Being more explicit:
 	FL_TEXT           | text
 
 The only exceptions to this are objects that are to be converted in the sed
-scripts. At the moment this applies only to bmtable:
+scripts. At the moment this applies only to bmtable and to combox:
 
 	Convert an FL_BUTTON to a FL_BMTABLE by using prefix "bmtable".
+	Convert an FL_CHOICE to a FL_COMBOX by using prefix "combox".
 
 Enter the full name of the callback eg.:
         C_FormBaseOkCB

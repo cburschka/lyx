@@ -1,231 +1,87 @@
-// -*- C++ -*-
 /**
  * \file combox.h
- * Copyright 1996 Alejandro Aguilar Sierra
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
+ * \author Angus Leeming
  *
- * \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
+ * A combination of two objects (a button and a browser) is encapsulated to
+ * get a combobox-like object.
  */
 
-/* A combination of two objects (a button and a browser) is encapsulated to
- * get a combobox-like object. All XForms functions are hidden.
- *
- * Change log:
- *
- *  2/06/1996,   Alejandro Aguilar Sierra
- *    Created and tested.
- *
- *  4/06/1996,   Alejandro Aguilar Sierra
- *    Added droplist mode (a button with a black down arrow at right)
- *    and support for middle and right buttons, as XForms choice object.
+#ifndef FL_COMBOX_H
+#define FL_COMBOX_H
+
+#if defined(__cplusplus)
+extern "C"
+{
+#endif
+
+/** This will eventually be moved into the enum of in-built widgets
+    in forms.h. */
+enum {
+    FL_COMBOX = 200
+};
+
+/** The types of combox. At the moment, there's only one. */
+enum {
+    FL_DROPLIST_COMBOX
+};
+
+/** A function to create a combox widget.
+ *  \param type is, as yet, unused. there is only one type of combox.
+ *  \param x, \param y: the x,y coordinates of the upper left hand corner
+ *  of the widget, relative to the parent form'd origin.
+ *  \param w, \param h: the widget's dimensions.
+ *  \param label: the widget's label as it appears on the GUI.
  */
+FL_EXPORT FL_OBJECT *
+fl_create_combox(int type, FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
+		 char const * label);
 
-#ifndef COMBOX_H
-#define COMBOX_H
+/** A function to create a combox widget and add it to the parent form.
+ *  \see fl_create_combox() for an explanation of the argument list.
+ */
+FL_EXPORT FL_OBJECT *
+fl_add_combox(int type, FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
+	      char const * label);
 
+/** The combox browser has a default height of 100 pixels. Adjust to suit. */
+FL_EXPORT void fl_set_combox_browser_height(FL_OBJECT * ob, int bh);
 
-#include FORMS_H_LOCATION
-#include <cstdlib>
-#include "LString.h"
+/** The browser will be displayed either below or above the button,
+ *  dependent upon \param position.
+ */
+FL_EXPORT void fl_set_combox_position(FL_OBJECT * ob, int position);
 
-///
-enum combox_type {
-	///
-	FL_COMBOX_NORMAL,
-	///
-	FL_COMBOX_DROPLIST,
-	///
-	FL_COMBOX_INPUT
-};
+/** Empty the browser and the combox, \param ob. */
+FL_EXPORT void fl_clear_combox(FL_OBJECT * ob);
 
-class Combox;
+/** Add a line to the combox browser.*/
+FL_EXPORT void fl_addto_combox(FL_OBJECT * ob, char const * text);
 
-/// callback prototype
-typedef void (*FL_COMBO_CB) (int, void *, Combox *);
-/// pre post prototype
-typedef void (*FL_COMBO_PRE_POST) ();
+/** Set the combox to return line \param choice of the combox browser. */
+FL_EXPORT void fl_set_combox(FL_OBJECT * ob, int choice);
 
+/** \return the currently selected line of the combox browser. */
+FL_EXPORT int fl_get_combox(FL_OBJECT * ob);
 
-///
-class Combox {
-public:
-	///
-	explicit Combox(combox_type t = FL_COMBOX_NORMAL);
-	///
-	~Combox();
+/** \return the contents of the combox.
+ *  (Also the contents of currently selected line of the combox browser.)
+ */
+FL_EXPORT char const * fl_get_combox_text(FL_OBJECT * ob);
 
-	/** To add this object to a form. Note that there are two heights
-	 *  for normal (button) and expanded (browser) mode each.
-	 */
-	void add(int x, int y, int w, int hmin, int hmax);
+/** \return the contents of \param line of the combox browser. */
+FL_EXPORT char const * fl_get_combox_line(FL_OBJECT * ob, int line);
 
-	/// Add lines. Same as for fl_browser object
-	void addline(string const &);
-	/// Add lines. Same as for fl_browser object
-	void addto(string const &);
+/** \return the number of items in the combox browser. */
+FL_EXPORT int fl_get_combox_maxitems(FL_OBJECT * ob);
 
-	/// Returns the selected item
-	int get() const;
+/** Show the browser */
+void fl_show_combox_browser(FL_OBJECT * ob);
 
-	/// Returns a pointer to the selected line of text
-	string const getline() const;
+/** Hide the browser */
+void fl_hide_combox_browser(FL_OBJECT * ob);
 
-	///  Select an arbitrary item
-	void select(int);
-	///
-	bool select(string const &);
-
-	///  Clear all the list
-	void clear();
-
-	/// Is the combox cleared (empty)
-	bool empty() const { return is_empty; }
-
-	/// Remove the objects from the form they are in.
-	void remove();
-
-	/**
-	 * Assign a callback to this object. The callback should be a void
-	 * function with a int, a void pointer, and a Combox pointer as
-	 * parameters.
-	*/
-	void setcallback(FL_COMBO_CB, void *);
-
-	///  Pre handler
-	void setpre(FL_COMBO_PRE_POST);
-	/// Post handler
-	void setpost(FL_COMBO_PRE_POST);
-
-	///  XForms attributes
-	void resize(unsigned);
-	///
-	void gravity(unsigned, unsigned);
-	///
-	void activate();
-	///
-	void deactivate();
-	///
-	void shortcut(string const &, int);
-	///
-	void redraw();
-	///
-	void show();
-	///
-	static void combo_cb(FL_OBJECT *, long);
-	///
-	static void input_cb(FL_OBJECT *, long);
-	///
-	static int  peek_event(FL_FORM *, void *);
- protected:
-	/// At least Hide should not be public
-	void hide(int who = 0);
-	///
-	FL_OBJECT * browser;
- private:
-	///
-	combox_type type;
-	///
-	int bw;
-	///
-	int bh;
-	///
-	int sel;
-	///
-	bool is_empty;
-	///
-	FL_COMBO_CB callback;
-	///
-	void * cb_arg;
-	///
-	FL_COMBO_PRE_POST _pre;
-	///
-	FL_COMBO_PRE_POST _post;
-	///
-	FL_OBJECT * button;
-	///
-	FL_OBJECT * label;
-	///
-	FL_FORM* form;
-};
-
-
-
-//-----------------  Inline methods  ---------------------------
-
-inline
-void Combox::addto(string const & text)
-{
-	if (browser) {
-		fl_addto_browser(browser, text.c_str());
-		is_empty = false;
-	}
+#if defined(__cplusplus)
 }
-
-
-inline
-void Combox::resize(unsigned r)
-{
-   fl_set_object_resize(button, r);
-   if (label!= button) fl_set_object_resize(label, r);
-}
-
-
-inline
-void Combox::gravity(unsigned g1, unsigned g2)
-{
-   fl_set_object_gravity(button, g1, g2);
-   if (label!= button) fl_set_object_gravity(label, g1, g2);
-}
-
-
-inline
-void Combox::shortcut(string const & s, int i)
-{
-   if (button)
-      fl_set_object_shortcut(button, s.c_str(), i);
-}
-
-
-inline
-void Combox::setcallback(FL_COMBO_CB cb, void * a = 0)
-{
-   callback = cb;
-   cb_arg = a;
-}
-
-
-inline
-void Combox::setpre(FL_COMBO_PRE_POST cb)
-{
-	_pre = cb;
-}
-
-
-inline
-void Combox::setpost(FL_COMBO_PRE_POST cb)
-{
-	_post = cb;
-}
-
-
-inline
-int Combox::get() const
-{
-   return sel;
-}
-
-
-inline
-string const Combox::getline() const
-{
-    if (type == FL_COMBOX_INPUT)
-      return fl_get_input(label);
-    else
-      return (browser && sel > 0) ?
-	      string(fl_get_browser_line(browser, sel)) : string();
-}
+#endif
 
 #endif
