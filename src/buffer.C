@@ -374,7 +374,8 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += tostr(unknown_layouts);
 			s += _(" paragraphs");
 		}
-		WriteAlert(_("Textclass Loading Error!"),s);
+		WriteAlert(_("Textclass Loading Error!"), s,
+			   _("When reading " + fileName()));
 	}	
 
 	return the_end_read;
