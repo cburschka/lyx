@@ -21,7 +21,7 @@ class VSpace;
 int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp);
 
 /// paint the rows of the main text, return last drawn y value
-int paintText(BufferView & bv, LyXText & text);
+int paintText(BufferView & bv);
 
 /// paint the rows of a text inset
 void paintTextInset(BufferView & bv, LyXText & text, int x, int y);

@@ -106,7 +106,13 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	bool workAreaDispatch(FuncRequest const & ev);
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
+	///
+	int top_y() const;
+	///
+	void top_y(int y);
 private:
+	/// the y coordinate of the top of the screen
+	int top_y_;
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
 	/// add an error to the list

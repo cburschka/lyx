@@ -146,7 +146,7 @@ namespace {
 
 InsetOld * LyXText::checkInsetHit(int & x, int & y)
 {
-	int y_tmp = y + top_y();
+	int y_tmp = y + bv_owner->top_y();
 
 	LyXCursor cur;
 	setCursorFromCoordinates(cur, x, y_tmp);
@@ -243,7 +243,7 @@ void LyXText::gotoInset(InsetOld::Code code, bool same_content)
 
 void LyXText::cursorPrevious()
 {
-	int y = top_y();
+	int y = bv_owner->top_y();
 
 	RowList::iterator rit = cursorRow();
 
@@ -282,7 +282,7 @@ void LyXText::cursorPrevious()
 	ParagraphList::iterator pit = cursor.par();
 	previousRow(pit, rit);
 	setCursor(cur, pit, rit->pos(), false);
-	if (cur.y() > top_y())
+	if (cur.y() > bv_owner->top_y())
 		cursorUp(true);
 	bv()->updateScrollbar();
 }
@@ -290,21 +290,21 @@ void LyXText::cursorPrevious()
 
 void LyXText::cursorNext()
 {
-	int topy = top_y();
+	int topy = bv_owner->top_y();
 
 	RowList::iterator rit = cursorRow();
 	if (rit == lastRow()) {
 		int y = cursor.y() - rit->baseline() + cursorRow()->height();
 		if (y > topy + bv()->workHeight())
-			bv()->updateScrollbar();
+			bv_owner->updateScrollbar();
 		return;
 	}
 
-	int y = topy + bv()->workHeight();
+	int y = topy + bv_owner->workHeight();
 	if (inset_owner && !topy) {
-		y -= (bv()->text->cursor.iy()
-			  - bv()->text->top_y()
-			  + bv()->theLockingInset()->insetInInsetY());
+		y -= (bv_owner->text->cursor.iy()
+			  - bv_owner->top_y()
+			  + bv_owner->theLockingInset()->insetInInsetY());
 	}
 
 	ParagraphList::iterator dummypit;
@@ -315,7 +315,7 @@ void LyXText::cursorNext()
 	finishUndo();
 
 	int new_y;
-	if (rit == bv()->text->cursorRow()) {
+	if (rit == bv_owner->text->cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
 		cursorDown(true);
@@ -323,7 +323,7 @@ void LyXText::cursorNext()
 		// This is what we used to do, so we wouldn't skip right past
 		// tall rows, but it's not working right now.
 #if 0
-		new_y = bv->text->top_y() + bv->workHeight();
+		new_y = bv->top_y() + bv->workHeight();
 #endif
 	} else {
 		if (inset_owner) {
@@ -339,7 +339,7 @@ void LyXText::cursorNext()
 	nextRow(pit, rit);	
 	LyXCursor cur;
 	setCursor(cur, pit, rit->pos(), false);
-	if (cur.y() < top_y() + bv()->workHeight())
+	if (cur.y() < bv_owner->top_y() + bv()->workHeight())
 		cursorDown(true);
 	bv()->updateScrollbar();
 }
@@ -1218,7 +1218,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			int start_x = inset_x + tli->scroll();
 			FuncRequest cmd1 = cmd;
 			cmd1.x = cmd.x - start_x;
-			cmd1.y = cmd.y - cursor.iy() + bv->text->top_y();
+			cmd1.y = cmd.y - cursor.iy() + bv->top_y();
 			tli->localDispatch(cmd1);
 			break;
 		}
@@ -1233,7 +1233,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		}
 
 		RowList::iterator cursorrow = bv->text->cursorRow();
-		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + bv->text->top_y());
+		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + bv->top_y());
 	#if 0
 		// sorry for this but I have a strange error that the y value jumps at
 		// a certain point. This seems like an error in my xforms library or
@@ -1289,7 +1289,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			paste_internally = true;
 		}
 
-		int const screen_first = bv->text->top_y();
+		int const screen_first = bv->top_y();
 
 		if (bv->theLockingInset()) {
 			// We are in inset locking mode

@@ -64,6 +64,12 @@ public:
 	/// return the owning main view
 	LyXView * owner() const;
 
+	/// return the visible top y
+	int top_y() const;
+	
+	/// set the visible top y
+ 	void top_y(int);
+	
 	/// resize event has happened
 	void resize();
 

@@ -489,7 +489,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		lockInset(bv);
 
 	int tmp_x = cmd.x - drawTextXOffset;
-	int tmp_y = cmd.y + dim_.asc - getLyXText(bv)->top_y();
+	int tmp_y = cmd.y + dim_.asc - bv->top_y();
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 
 	if (the_locking_inset) {
@@ -524,7 +524,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 			localDispatch(FuncRequest(bv, LFUN_COPY));
 			paste_internally = true;
 		}
-		int old_top_y = text_.top_y();
+		int old_top_y = bv->top_y();
 
 		text_.setCursorFromCoordinates(cmd.x - drawTextXOffset,
 					     cmd.y + dim_.asc);
@@ -538,7 +538,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		bv->owner()->setLayout(cpar()->layout()->name());
 
 		// we moved the view we cannot do mouse selection in this case!
-		if (getLyXText(bv)->top_y() != old_top_y)
+		if (bv->top_y() != old_top_y)
 			no_selection = true;
 		old_par = cpar();
 		// Insert primary selection with middle mouse
@@ -568,7 +568,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 		return the_locking_inset->localDispatch(cmd1);
 
 	int tmp_x = cmd.x - drawTextXOffset;
-	int tmp_y = cmd.y + dim_.asc - getLyXText(bv)->top_y();
+	int tmp_y = cmd.y + dim_.asc - bv->top_y();
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {

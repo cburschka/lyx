@@ -70,12 +70,6 @@ private:
 public:
 	/// update all cached row positions
 	void updateRowPositions();
-	/// get the y coord. of the top of the screen (relative to doc start)
-	int top_y() const;
-	/// set the y coord. of the top of the screen (relative to doc start)
-	void top_y(int newy);
-	/// set the anchoring row. top_y will be computed relative to this
-	void anchor_row(RowList::iterator rit);
 	///
 	InsetText * inset_owner;
 	///

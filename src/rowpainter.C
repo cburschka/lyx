@@ -1062,7 +1062,7 @@ int paintRows(BufferView const & bv, LyXText const & text,
 			if (row == rit)
 				active = true;
 			if (active) {
-				RowPainter painter(bv, text, pit, row, y + yo, xo, y + text.top_y());
+				RowPainter painter(bv, text, pit, row, y + yo, xo, y + bv.top_y());
 				painter.paint();
 				y += row->height();
 				if (yy + y >= y2)
@@ -1080,13 +1080,13 @@ int paintRows(BufferView const & bv, LyXText const & text,
 } // namespace anon
 
 
-int paintText(BufferView & bv, LyXText & text)
+int paintText(BufferView & bv)
 {
-	int const topy = text.top_y();
+	int const topy = bv.top_y();
 	ParagraphList::iterator pit;
-	RowList::iterator rit = text.getRowNearY(topy, pit);
+	RowList::iterator rit = bv.text->getRowNearY(topy, pit);
 	int y = rit->y() - topy;
-	return paintRows(bv, text, pit, rit, 0, y, y, 0);
+	return paintRows(bv, *bv.text, pit, rit, 0, y, y, 0);
 }
 
 
@@ -1102,13 +1102,10 @@ void paintTextInset(BufferView & bv, LyXText & text, int x, int baseline)
 		y += rit->height();
 		text.nextRow(pit, rit);
 	}
-	if (y_offset < 0) {
-		text.top_y(-y_offset);
+	if (y_offset < 0)
 		paintRows(bv, text, pit, rit, x, 0, y, y);
-	} else {
-		text.top_y(y - y_offset);
+	else
 		paintRows(bv, text, pit, rit, x, 0, y_offset, y_offset);
-	}
 }
 
 

@@ -1,3 +1,17 @@
+
+2003-08-27  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyxtext.h (top_y): move top_y from here
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]: to here
+	* frontends/screen.C:
+	* insets/insettabular.C:
+	* insets/insettext.C: adjust  
+	* rowpainter.[Ch] (paintRows): remove LyXText & argument
+
 2003-08-27  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView.[Ch]:

@@ -1399,17 +1399,6 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 		cur.ix(int(x));
 	} else
 		cur.ix(cur.x());
-/* We take out this for the time being because 1) the redraw code is not
-   prepared to this yet and 2) because some good policy has yet to be decided
-   while editting: for instance how to act on rows being created/deleted
-   because of DEPM.
-*/
-#if 0
-	//if the cursor is in a visible row, anchor to it
-	int topy = top_y();
-	if (topy < y && y < topy + bv()->workHeight())
-		anchor_row(row);
-#endif
 }
 
 
@@ -1694,7 +1683,7 @@ void LyXText::cursorUp(bool selecting)
 	int y = cursor.y() - cursorRow()->baseline() - 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
-		int topy = top_y();
+		int topy = bv_owner->top_y();
 		int y1 = cursor.iy() - topy;
 		int y2 = y1;
 		y -= topy;
@@ -1720,7 +1709,7 @@ void LyXText::cursorDown(bool selecting)
 	int y = cursor.y() - cursorRow()->baseline() + cursorRow()->height() + 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting && cursorRow() == cursorIRow()) {
-		int topy = top_y();
+		int topy = bv_owner->top_y();
 		int y1 = cursor.iy() - topy;
 		int y2 = y1;
 		y -= topy;

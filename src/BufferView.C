@@ -225,6 +225,18 @@ void BufferView::center()
 }
 
 
+int BufferView::top_y() const
+{
+	return pimpl_->top_y();
+}
+
+
+void BufferView::top_y(int y)
+{
+	pimpl_->top_y(y);
+}
+
+
 string const BufferView::getClipboard() const
 {
 	return pimpl_->workarea().getClipboard();

@@ -273,6 +273,18 @@ Painter & BufferView::Pimpl::painter() const
 }
 
 
+void BufferView::Pimpl::top_y(int y)
+{
+	top_y_ = y;
+}
+
+
+int BufferView::Pimpl::top_y() const
+{
+	return top_y_;
+}
+
+
 void BufferView::Pimpl::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
@@ -293,6 +305,8 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	// set current buffer
 	buffer_ = b;
 
+	top_y_ = 0;
+	
 	// if we're quitting lyx, don't bother updating stuff
 	if (quitting)
 		return;
@@ -310,7 +324,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			resizeCurrentBuffer();
 
 		// FIXME: needed when ?
-		bv_->text->top_y(screen().topCursorVisible(bv_->text));
+		top_y(screen().topCursorVisible(bv_->text));
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -461,7 +475,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->theLockingInset(the_locking_inset);
 	}
 
-	bv_->text->top_y(screen().topCursorVisible(bv_->text));
+	top_y(screen().topCursorVisible(bv_->text));
 
 	switchKeyMap();
 	owner_->busy(false);
@@ -484,9 +498,9 @@ void BufferView::Pimpl::updateScrollbar()
 	LyXText const & t = *bv_->text;
 
 	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", top_y() "
-		<< t.top_y() << ", default height " << defaultRowHeight() << endl;
+		<< top_y() << ", default height " << defaultRowHeight() << endl;
 
-	workarea().setScrollbarParams(t.height, t.top_y(), defaultRowHeight());
+	workarea().setScrollbarParams(t.height, top_y(), defaultRowHeight());
 }
 
 
@@ -499,15 +513,15 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	screen().hideCursor();
 
-	bv_->text->top_y(value);
+	top_y(value);
 	screen().redraw(*bv_);
 
 	if (!lyxrc.cursor_follows_scrollbar)
 		return;
 
 	int const height = defaultRowHeight();
-	int const first = int((bv_->text->top_y() + height));
-	int const last = int((bv_->text->top_y() + workarea().workHeight() - height));
+	int const first = top_y() + height;
+	int const last = top_y() + workarea().workHeight() - height;
 
 	LyXText * text = bv_->text;
 	if (text->cursor.y() < first)
@@ -529,7 +543,7 @@ void BufferView::Pimpl::scroll(int lines)
 	int const line_height = defaultRowHeight();
 
 	// The new absolute coordinate
-	int new_top_y = t->top_y() + lines * line_height;
+	int new_top_y = top_y() + lines * line_height;
 
 	// Restrict to a valid value
 	new_top_y = std::min(t->height - 4 * line_height, new_top_y);
@@ -538,7 +552,7 @@ void BufferView::Pimpl::scroll(int lines)
 	scrollDocView(new_top_y);
 
 	// Update the scrollbar.
-	workarea().setScrollbarParams(t->height, t->top_y(), defaultRowHeight());
+	workarea().setScrollbarParams(t->height, top_y(), defaultRowHeight());
 }
 
 
@@ -797,7 +811,7 @@ void BufferView::Pimpl::center()
 	// and also might have moved top_y() must make sure to call
 	// updateScrollbar() currently. Never mind that this is a
 	// pretty obfuscated way of updating t->top_y()
-	text->top_y(new_y);
+	top_y(new_y);
 	//screen().draw();
 	update();
 }

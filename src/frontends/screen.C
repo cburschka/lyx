@@ -163,7 +163,7 @@ void LyXScreen::showCursor(BufferView & bv)
 	int h = ascent + descent;
 	int x = 0;
 	int y = 0;
-	int const top_y = bv.text->top_y();
+	int const top_y = bv.top_y();
 
 	if (bv.theLockingInset()) {
 		// Would be nice to clean this up to make some understandable sense...
@@ -220,23 +220,25 @@ void LyXScreen::toggleCursor(BufferView & bv)
 }
 
 
-bool LyXScreen::fitManualCursor(BufferView * /*bv*/, LyXText * text,
+bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 	int /*x*/, int y, int asc, int desc)
 {
 	int const vheight = workarea().workHeight();
-	int newtop = text->top_y();
-
-	if (y + desc - text->top_y() >= vheight)
+	int const topy = bv->top_y();
+	int newtop = topy;
+	
+	
+	if (y + desc - topy >= vheight)
 		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!
-	else if (y - asc < text->top_y() && text->top_y() > 0)
+	else if (y - asc < topy && topy > 0)
 		newtop = y - vheight / 4;
 
 	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
 
-	if (newtop == text->top_y())
+	if (newtop == topy)
 		return false;
 
-	text->top_y(newtop);
+	bv->top_y(newtop);
 	return true;
 }
 
@@ -244,7 +246,7 @@ bool LyXScreen::fitManualCursor(BufferView * /*bv*/, LyXText * text,
 unsigned int LyXScreen::topCursorVisible(LyXText * text)
 {
 	LyXCursor const & cursor = text->cursor;
-	int top_y = text->top_y();
+	int top_y = text->bv()->top_y();
 	int newtop = top_y;
 	int const vheight = workarea().workHeight();
 
@@ -279,8 +281,8 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 {
 	// Is a change necessary?
 	int const newtop = topCursorVisible(text);
-	bool const result = (newtop != text->top_y());
-	text->top_y(newtop);
+	bool const result = (newtop != bv->top_y());
+	bv->top_y(newtop);
 	return result;
 }
 
@@ -298,7 +300,7 @@ void LyXScreen::redraw(BufferView & bv)
 
 	hideCursor();
 
-	int const y = paintText(bv, *bv.text);
+	int const y = paintText(bv);
 
 	// maybe we have to clear the screen at the bottom
 	int const y2 = workarea().workHeight();

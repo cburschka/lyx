@@ -860,10 +860,10 @@ InsetOld::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			clearSelection();
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
-		if (bv->text->top_y() + bv->painter().paperHeight() <
+		if (bv->top_y() + bv->painter().paperHeight() <
 		    top_baseline + tabular.getHeightOfTabular())
 			{
-				bv->scrollDocView(bv->text->top_y() + bv->painter().paperHeight());
+				bv->scrollDocView(bv->top_y() + bv->painter().paperHeight());
 				actcell = tabular.getCellBelow(first_visible_cell) + column;
 			} else {
 				actcell = tabular.getFirstCellInRow(tabular.rows() - 1) + column;
@@ -878,7 +878,7 @@ InsetOld::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
 		if (top_baseline < 0) {
-			bv->scrollDocView(bv->text->top_y() - bv->painter().paperHeight());
+			bv->scrollDocView(bv->top_y() - bv->painter().paperHeight());
 			if (top_baseline > 0)
 				actcell = column;
 			else

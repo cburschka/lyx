@@ -103,19 +103,6 @@ void LyXText::updateRowPositions()
 }
 
 
-int LyXText::top_y() const
-{
-	return anchor_y_;
-}
-
-
-void LyXText::top_y(int newy)
-{
-	anchor_y_ = newy;
-	lyxerr[Debug::GUI] << "changing reference to offset: " << anchor_y_ << endl;
-}
-
-
 int LyXText::workWidth() const
 {
 	return inset_owner ? inset_owner->textWidth() : bv()->workWidth();
