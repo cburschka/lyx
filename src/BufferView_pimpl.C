@@ -47,14 +47,12 @@
 #include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettoc.h"
-#include "insets/insetref.h"
-#include "insets/insetparent.h"
 #include "insets/insetindex.h"
+#include "insets/insetref.h"
 #include "insets/insetinclude.h"
 #include "insets/insetcite.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetmarginal.h"
-#include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 
 #include "mathed/formulabase.h"
@@ -909,16 +907,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 
 	switch (ev.action) {
 
-	case LFUN_TOC_INSERT:
-	{
-		InsetCommandParams p;
-		p.setCmdName("tableofcontents");
-		Inset * inset = new InsetTOC(p);
-		if (!insertInset(inset, tclass.defaultLayoutName()))
-			delete inset;
-		break;
-	}
-
 	case LFUN_SCROLL_INSET:
 		// this is not handled here as this function is only active
 		// if we have a locking_inset and that one is (or contains)
@@ -1101,26 +1089,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 	break;
 
-	case LFUN_INSET_CAPTION:
-	{
-		// Do we have a locking inset...
-		if (bv_->theLockingInset()) {
-			lyxerr << "Locking inset code: "
-			       << static_cast<int>(bv_->theLockingInset()->lyxCode());
-			InsetCaption * new_inset =
-				new InsetCaption(buffer_->params);
-			new_inset->setOwner(bv_->theLockingInset());
-			new_inset->setAutoBreakRows(true);
-			new_inset->setDrawFrame(0, InsetText::LOCKED);
-			new_inset->setFrameColor(0, LColor::captionframe);
-			if (insertInset(new_inset))
-				new_inset->edit(bv_);
-			else
-				delete new_inset;
-		}
-	}
-	break;
-
 
 	// --- accented characters ---------------------------
 
@@ -1215,9 +1183,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	{
 		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) {
+		if (inset)
 			inset->delDatabase(ev.argument);
-		}
 	}
 	break;
 
@@ -1225,50 +1192,9 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	{
 		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) {
+		if (inset) 
 			inset->setOptions(ev.argument);
-		}
 	}
-	break;
-
-	case LFUN_INDEX_INSERT:
-	{
-		string entry = ev.argument;
-		if (entry.empty())
-			entry = bv_->getLyXText()->getStringToIndex(bv_);
-
-		if (entry.empty()) {
-			owner_->getDialogs().createIndex();
-			break;
-		}
-
-		InsetIndex * inset = new InsetIndex(InsetCommandParams("index", entry));
-
-		if (!insertInset(inset)) {
-			delete inset;
-		} else {
-			updateInset(inset, true);
-		}
-	}
-	break;
-
-	case LFUN_INDEX_PRINT:
-	{
-		InsetCommandParams p("printindex");
-		Inset * inset = new InsetPrintIndex(p);
-		if (!insertInset(inset, tclass.defaultLayoutName()))
-			delete inset;
-	}
-	break;
-
-	case LFUN_PARENTINSERT:
-	{
-		InsetCommandParams p("lyxparent", ev.argument);
-		Inset * inset = new InsetParent(p, *buffer_);
-		if (!insertInset(inset, tclass.defaultLayoutName()))
-			delete inset;
-	}
-
 	break;
 
 	case LFUN_CHILD_INSERT:

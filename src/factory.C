@@ -5,10 +5,14 @@
 #include "FloatList.h"
 #include "debug.h"
 #include "BufferView.h"
+#include "lyxtext.h"
+
+#include "insets/insetcaption.h"
 #include "insets/insetert.h"
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
 #include "insets/insetfoot.h"
+#include "insets/insetindex.h"
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetnote.h"
@@ -17,6 +21,7 @@
 #include "insets/insetref.h"
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
+#include "insets/insettoc.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
@@ -67,6 +72,16 @@ Inset * createInset(FuncRequest const & cmd)
 			lyxerr << "Non-existent float type: " << cmd.argument << endl;
 			return 0;
 
+		case LFUN_INDEX_INSERT: {
+			string entry = cmd.argument;
+			if (entry.empty())
+				entry = bv->getLyXText()->getStringToIndex(bv);
+			if (!entry.empty())
+				return new InsetIndex(InsetCommandParams("index", entry));
+			bv->owner()->getDialogs().createIndex();
+			return 0;
+		}
+
 		case LFUN_TABULAR_INSERT:
 			if (!cmd.argument.empty()) {
 				int r = 2;
@@ -76,6 +91,29 @@ Inset * createInset(FuncRequest const & cmd)
 			}
 			bv->owner()->getDialogs().showTabularCreate();
 			return 0;
+
+		case LFUN_INSET_CAPTION:
+			if (bv->theLockingInset()) {
+				lyxerr << "Locking inset code: "
+							 << static_cast<int>(bv->theLockingInset()->lyxCode());
+				InsetCaption * inset = new InsetCaption(params);
+				inset->setOwner(bv->theLockingInset());
+				inset->setAutoBreakRows(true);
+				inset->setDrawFrame(0, InsetText::LOCKED);
+				inset->setFrameColor(0, LColor::captionframe);
+				return inset;
+			}
+			return 0;
+
+		case LFUN_INDEX_PRINT: 
+			return new InsetPrintIndex(InsetCommandParams("printindex"));
+
+		case LFUN_TOC_INSERT:
+			return new InsetTOC(InsetCommandParams("tableofcontents"));
+
+		case LFUN_PARENTINSERT:
+			return new InsetParent(
+				InsetCommandParams("lyxparent", cmd.argument), *bv->buffer());
 
 	#if 0
 		case LFUN_INSET_LIST:

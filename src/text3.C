@@ -1140,40 +1140,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-#if 0
-	case LFUN_INSET_LIST:
-	case LFUN_INSET_THEOREM:
-#endif
-	case LFUN_INSERT_NOTE:
-	case LFUN_INSET_ERT:
-	case LFUN_INSET_EXTERNAL:
-	case LFUN_INSET_FLOAT:
-	case LFUN_INSET_FOOTNOTE:
-	case LFUN_INSET_MARGINAL:
-	case LFUN_INSET_MINIPAGE:
-	case LFUN_INSET_OPTARG:
-	case LFUN_INSET_WIDE_FLOAT:
-	case LFUN_TABULAR_INSERT:
-	{
-		Inset * inset = createInset(cmd);
-		if (inset) {
-			bool gotsel = false;
-			if (selection.set()) {
-				cutSelection(bv, true, false);
-				gotsel = true;
-			}
-			if (bv->insertInset(inset)) {
-				inset->edit(bv);
-				if (gotsel)
-					bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
-			}
-			else
-				delete inset;
-		}
-		break;
-	}
-
-
 	case LFUN_QUOTE: {
 		Paragraph const * par = cursor.par();
 		lyx::pos_type pos = cursor.pos();
@@ -1580,6 +1546,45 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->owner()->view_state_changed();
 		break;
 	}
+
+#if 0
+	case LFUN_INSET_LIST:
+	case LFUN_INSET_THEOREM:
+#endif
+	case LFUN_INSERT_NOTE:
+	case LFUN_INSET_CAPTION:
+	case LFUN_INSET_ERT:
+	case LFUN_INSET_EXTERNAL:
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_FOOTNOTE:
+	case LFUN_INSET_MARGINAL:
+	case LFUN_INSET_MINIPAGE:
+	case LFUN_INSET_OPTARG:
+	case LFUN_INSET_WIDE_FLOAT:
+	case LFUN_TABULAR_INSERT:
+	case LFUN_INDEX_INSERT:
+	case LFUN_INDEX_PRINT: 
+	case LFUN_PARENTINSERT:
+	case LFUN_TOC_INSERT:
+	{
+		Inset * inset = createInset(cmd);
+		if (inset) {
+			bool gotsel = false;
+			if (selection.set()) {
+				cutSelection(bv, true, false);
+				gotsel = true;
+			}
+			if (bv->insertInset(inset)) {
+				inset->edit(bv);
+				if (gotsel)
+					bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
+			}
+			else
+				delete inset;
+		}
+		break;
+	}
+
 
 	default:
 		return Inset::UNDISPATCHED;
