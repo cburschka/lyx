@@ -360,9 +360,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			column += 15;
 			break;
 
-		case '°': case '±': case '²': case '³':
-		case '×': case '÷': case '¹': case 'ª':
-		case 'º': case '¬': case 'µ':
+		case '±': case '²': case '³':
+		case '×': case '÷': case '¹': 
+		case '¬': case 'µ':
 			if ((bparams.inputenc == "latin1" ||
 			     bparams.inputenc == "latin9") ||
 			    (bparams.inputenc == "auto" &&
