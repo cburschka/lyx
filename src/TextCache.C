@@ -73,10 +73,10 @@ void TextCache::show(ostream & os, string const & str)
 }
 
 
-void TextCache::show(ostream & os, LyXText const * lt)
+void TextCache::show(ostream & os, LyXText * lt)
 {
 	show_text st(os);
-	st(const_cast<LyXText*>(lt));
+	st(lt);
 }
 
 

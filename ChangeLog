@@ -1,3 +1,16 @@
+2000-02-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (ChangeExtension): patch from Etienne
+	applied.
+
+	* src/TextCache.C (show): remove const_cast and make second
+	parameter non-const LyXText *.
+
+	* src/TextCache.h: use non const LyXText in show.
+
+	* src/paragraph.C (SimpleTeXSpecialChars): patch to make urls work
+	with hebrew.
+
 2000-02-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxsum.C: rework to be more flexible.

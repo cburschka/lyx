@@ -2923,10 +2923,11 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 		if (inset) {
 			bool close = false;
 			int len = file.length();
-			if ( (inset->LyxCode() == Inset::GRAPHICS_CODE
-			      || inset->LyxCode() == Inset::MATH_CODE)
-			     && running_font.getFontDirection()
-			     == LYX_DIR_RIGHT_TO_LEFT) {
+			if ((inset->LyxCode() == Inset::GRAPHICS_CODE
+			     || inset->LyxCode() == Inset::MATH_CODE
+			     || inset->LyxCode() == Inset::URL_CODE)
+			    && running_font.getFontDirection()
+			    == LYX_DIR_RIGHT_TO_LEFT) {
 				file += "\\L{";
 				close = true;
 			}

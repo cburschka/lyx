@@ -904,12 +904,10 @@ string ChangeExtension(string const & oldname, string const & extension,
 			bool no_path) 
 {
 	string::size_type last_slash = oldname.rfind('/');
-	string::size_type last_dot;
-	if (last_slash != string::npos)
-		last_dot = oldname.find('.', last_slash);
-	else
-		last_dot = oldname.rfind('.');
-
+	string::size_type last_dot = oldname.rfind('.');
+	if (last_dot < last_slash && last_slash != string::npos)
+		last_dot = string::npos;
+	
 	string ext;
 	// Make sure the extension starts with a dot
 	if (!extension.empty() && extension[0] != '.')

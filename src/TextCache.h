@@ -122,7 +122,7 @@ public:
 	    Uses msg as header for the list. */
 	void show(ostream & o, string const & msg);
 	/// Gives info on a single LyXText (buffer and width)
-	static void show(ostream & o, LyXText const *);
+	static void show(ostream & o, LyXText *);
 	/** Adds a LyXText to the cache iff its buffer is
 	    present in bufferlist. */
 	void add(LyXText *);
