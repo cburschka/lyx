@@ -38,6 +38,6 @@ struct Box {
 };
  
 
-std::ostream & operator<<(std::ostream &, Box &);
+std::ostream & operator<<(std::ostream &, Box const &);
  
 #endif // BOX_H
