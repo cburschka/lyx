@@ -1,3 +1,8 @@
+2004-12-12  John Spray  <spray_john@users.sourceforge.net>
+
+	* glade/Makefile.am: update to include all current glade
+		files.  This fixes "make install" for the gtk frontend.
+
 2004-12-08  John Spray  <spray_john@users.sourceforge.net>
 
 	* FileDialogPrivate.C: use Gtk::FileChooser.set_current_name 
