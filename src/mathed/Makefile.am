@@ -68,6 +68,8 @@ libmathed_la_SOURCES = \
 	math_parser.h \
 	math_rootinset.C \
 	math_rootinset.h \
+	math_scopeinset.C \
+	math_scopeinset.h \
 	math_scriptinset.C \
 	math_scriptinset.h \
 	math_sizeinset.C \

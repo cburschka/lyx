@@ -3,18 +3,20 @@
 #include "math_parser.h"
 #include <algorithm>
 
+
+bool operator<(const latexkeys & a, const latexkeys & b)
+{
+	return string(a.name) < string(b.name);
+}
+
 namespace {
 
 // This lists needs to remain sorted all the time!
 
 latexkeys wordlist[] = 
 {
-	//{"displaystyle",  LM_TK_STY, LM_ST_DISPLAY, LMB_NONE},
 	//{"oint",  LM_TK_BIGSYM, LM_oint, LMB_NONE},
 	//{"pmod",  LM_TK_SYM, 0, LMB_NONE},
-	//{"scriptscriptstyle",  LM_TK_STY, LM_ST_SCRIPTSCRIPT, LMB_NONE},
-	//{"scriptstyle",  LM_TK_STY, LM_ST_SCRIPT, LMB_NONE},
-	//{"textstyle",  LM_TK_STY, LM_ST_TEXT, LMB_NONE},
 	{"!",  LM_TK_SPACE, 0, LMB_NONE},
 	{"#",  LM_TK_SPECIAL, '#', LMB_NONE},
 	{"$",  LM_TK_SPECIAL, '$', LMB_NONE},
@@ -51,7 +53,7 @@ latexkeys wordlist[] =
 	{"Vert",  LM_TK_NOGLYPH, LM_Vert, LMB_NONE},
 	{"Xi",  LM_TK_SYM, LM_Xi, LMB_NONE},
 	{"[",  LM_TK_BEGIN, LM_OT_EQUATION, LMB_NONE},
-	{"\\",  LM_TK_NEWLINE, static_cast<unsigned>(-1), LMB_NONE},
+	{"\\",  LM_TK_NEWLINE, static_cast<unsigned>(-1), LMB_NONE}, // -1 needed in mathed_parse_lines!
 	{"]",  LM_TK_END, LM_OT_EQUATION, LMB_NONE},
 	{"_",  LM_TK_SPECIAL, '_', LMB_NONE},
 	{"acute",  LM_TK_DECORATION, LM_acute, LMB_NONE},
@@ -112,6 +114,7 @@ latexkeys wordlist[] =
 	{"diamond",  LM_TK_SYM, LM_diamond, LMB_OPERATOR},
 	{"diamondsuit",  LM_TK_SYM, LM_diamondsuit, LMB_NONE},
 	{"dim",  LM_TK_FUNC, 0, LMB_NONE},
+	//{"displaystyle",  LM_TK_STY, LM_ST_DISPLAY, LMB_NONE},
 	{"div",  LM_TK_SYM, LM_div, LMB_OPERATOR},
 	{"dot",  LM_TK_DECORATION, LM_dot, LMB_NONE},
 	{"doteq",  LM_TK_NOGLYPH, 0, LMB_RELATION},
@@ -233,6 +236,8 @@ latexkeys wordlist[] =
 	{"rightharpoondown",  LM_TK_NOGLYPH, 0, LMB_NONE},
 	{"rightharpoonup",  LM_TK_NOGLYPH, 0, LMB_NONE},
 	{"rightleftharpoons",  LM_TK_NOGLYPH, 0, LMB_NONE},
+	//{"scriptscriptstyle",  LM_TK_STY, LM_ST_SCRIPTSCRIPT, LMB_NONE},
+	//{"scriptstyle",  LM_TK_STY, LM_ST_SCRIPT, LMB_NONE},
 	{"searrow",  LM_TK_NOGLYPH, 0, LMB_NONE},
 	{"sec",  LM_TK_FUNC, 0, LMB_NONE},
 	{"setminus",  LM_TK_NOGLYPH, 0, LMB_OPERATOR},
@@ -265,6 +270,7 @@ latexkeys wordlist[] =
 	{"tanh",  LM_TK_FUNC, 0, LMB_NONE},
 	{"tau",  LM_TK_SYM, LM_tau, LMB_NONE},
 	{"textrm",  LM_TK_FONT, LM_TC_TEXTRM, LMB_NONE},
+	//{"textstyle",  LM_TK_STY, LM_ST_TEXT, LMB_NONE},
 	{"theta",  LM_TK_SYM, LM_theta, LMB_NONE},
 	{"tilde",  LM_TK_DECORATION, LM_tilde, LMB_NONE},
 	{"times",  LM_TK_SYM, LM_times, LMB_OPERATOR},
@@ -297,14 +303,7 @@ latexkeys wordlist[] =
 	{"{",  LM_TK_SPECIAL, '{', LMB_NONE},
 	{"|",  LM_TK_UNDEF, '|', LMB_NONE},
 	{"}",  LM_TK_SPECIAL, '}', LMB_NONE}
-// -1 needed in mathed_parse_lines!
 };
-
-
-bool operator<(const latexkeys & a, const latexkeys & b)
-{
-	return string(a.name) < string(b.name);
-}
 
 
 // the "Initializer": Its default constructor is executed on loading and
