@@ -292,7 +292,9 @@ InsetFormula::InsetFormula(bool display)
 
 InsetFormula::InsetFormula(MathParInset * p)
 {
-   par = (p->GetType()>= LM_OT_MPAR) ? 
+   if (is_matrix_type(p->GetType()))
+	   lyxerr << "InsetFormula::InsetFormula: This shouldn't happen" << endl; 
+   par = is_multiline(p->GetType()) ? 
          new MathMatrixInset(static_cast<MathMatrixInset*>(p)): 
          new MathParInset(p);
 //   mathcursor = 0;
@@ -355,9 +357,13 @@ int InsetFormula::DocBook(Buffer const * buf, ostream & os) const
 // Check if uses AMS macros 
 void InsetFormula::Validate(LaTeXFeatures & features) const
 {
-    // Validation only necesary if not using an AMS Style
-    if (!features.amsstyle)
-      mathedValidate(features, par);
+	if (is_ams(par->GetType()))
+		features.amsstyle = true;
+
+	// Validation is necessary only if not using AMS math.
+	// To be safe, we will always run mathedValidate.
+	//if (!features.amsstyle)
+	mathedValidate(features, par);
 }
 
 
@@ -446,19 +452,19 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 		par->draw(pain, int(x), baseline);
 	}
 	x += float(width(bv, font));
-	
-	if (par->GetType() == LM_OT_PARN || par->GetType() == LM_OT_MPARN) {
+
+	if (is_numbered(par->GetType())) {
 		LyXFont wfont = WhichFont(LM_TC_BF, par->size);
 		wfont.setLatex(LyXFont::OFF);
 		
-		if (par->GetType() == LM_OT_PARN) {
+		if (is_singlely_numbered(par->GetType())) {
 			string str;
 			if (!label.empty())
 				str = string("(") + label + ")";
 			else
 				str = string("(#)");
 			pain.text(int(x + 20), baseline, str, wfont);
-		} else if (par->GetType() == LM_OT_MPARN) {
+		} else {
 			MathMatrixInset * mt =
 				static_cast<MathMatrixInset*>(par);
 			int y;
@@ -606,7 +612,7 @@ void InsetFormula::display(bool dspf)
 	 par->SetType(LM_OT_PAR);
 	 par->SetStyle(LM_ST_DISPLAY);
       } else {
-	 if (par->GetType() >= LM_OT_MPAR) { 
+	 if (is_multiline(par->GetType())) { 
 	    MathParInset * p = new MathParInset(par);
 	    delete par;
 	    par = p;
@@ -615,7 +621,7 @@ void InsetFormula::display(bool dspf)
 	 }
 	 par->SetType(LM_OT_MIN);
 	 par->SetStyle(LM_ST_TEXT);
-	 if (!label.empty() && par->GetType() != LM_OT_MPARN) {
+	 if (!label.empty()) {
 		 label.erase();
 	 }
       }
@@ -631,7 +637,7 @@ vector<string> const InsetFormula::getLabelList() const
 
 	vector<string> label_list;
 
-	if (par->GetType() == LM_OT_MPARN) {
+	if (is_multi_numbered(par->GetType())) {
 		MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
 		MathedRowSt const * crow = mt->getRowSt();
 		while (crow) {
@@ -719,7 +725,7 @@ bool InsetFormula::SetNumber(bool numbf)
 {
    if (disp_flag) {
       short type = par->GetType();
-      bool oldf = (type == LM_OT_PARN || type == LM_OT_MPARN);
+      bool oldf = is_numbered(type);
       if (numbf && !oldf) ++type;
       if (!numbf && oldf) --type;
       par->SetType(type);
@@ -793,8 +799,10 @@ InsetFormula::LocalDispatch(BufferView * bv,
       UpdateLocal(bv);
       break;
     case LFUN_BREAKLINE:
+    {
       bv->lockedInsetStoreUndo(Undo::INSERT);
-      mathcursor->Insert(' ', LM_TC_CR);
+      byte c = arg.empty() ? 'e' : arg[0];
+      mathcursor->Insert(c, LM_TC_CR);
       if (!label.empty()) {
 	 mathcursor->setLabel(label);
 	 label.erase();
@@ -802,6 +810,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
       par = mathcursor->GetPar();
       UpdateLocal(bv);
       break;
+    }
     case LFUN_TAB:
       bv->lockedInsetStoreUndo(Undo::INSERT);
       mathcursor->Insert(0, LM_TC_TAB);
@@ -915,8 +924,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
       bv->lockedInsetStoreUndo(Undo::INSERT);
        if (disp_flag) {
 	  short type = par->GetType();
-	  bool oldf = (type == LM_OT_PARN || type == LM_OT_MPARN);
-	  if (oldf) {
+	  if (is_numbered(type)) {
 	     --type;
 	     if (!label.empty()) {
 		     label.erase();
@@ -934,7 +942,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
     
     case LFUN_MATH_NONUMBER:
     { 
-	if (par->GetType() == LM_OT_MPARN) {
+	if (is_multi_numbered(par->GetType())) {
 //	   MathMatrixInset *mt = (MathMatrixInset*)par;
 	   //BUG 
 //	   mt->SetNumbered(!mt->IsNumbered());
@@ -1060,8 +1068,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
        if (par->GetType() < LM_OT_PAR)
 	      break;
 
-       string old_label = (par->GetType() == LM_OT_MPARN ||
-			   par->GetType() == LM_OT_MPAR)
+       string old_label = is_multiline(par->GetType())
 	       ?  mathcursor->getLabel() : label;
 
 #warning This is a terrible hack! We should find a better solution.
@@ -1094,7 +1101,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
        if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
 	      bv->redraw();
 
-       if (par->GetType() == LM_OT_MPARN)
+       if (is_multi_numbered(par->GetType()))
 	  mathcursor->setLabel(new_label);
 //	  MathMatrixInset *mt = (MathMatrixInset*)par;
 //	  mt->SetLabel(new_label);

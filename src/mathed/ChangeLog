@@ -1,5 +1,10 @@
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* Many files: Add support for multline and alignat environments from 
+	amsmath.
+
+2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
+
 	* math_symbols.C (math_insert_greek): Move cursor right when
 	unlocking the math inset.
 

@@ -96,6 +96,7 @@ Menuset
 	Submenu "Tabular|T" "edit_tabular"
 	Submenu "Floats & Insets|I" "edit_floats"
 	Item "Math Panel|l" "math-panel"
+	Submenu "Math|M" "edit_math"
 	Separator
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
@@ -140,6 +141,18 @@ Menuset
 	Separator
 	Item "Delete Row|w" "tabular-feature delete-row"
 	Item "Delete Column|D" "tabular-feature delete-column"
+    End
+
+    Menu "edit_math"
+	Item "Make eqnarray|e" "break-line e"
+	Item "Make multline|m" "break-line m"
+	Item "Make alignat 1 column|1"  "break-line 1"
+	Item "Make alignat 2 columns|2"  "break-line 2"
+	Item "Make alignat 3 columns|3"  "break-line 3"
+	Separator
+	Item "Toggle numbering|n" "math-number"
+	Item "Toggle numbering of line|u" "math-nonumber"
+	Item "Toggle limits|l" "math-limits"
     End
 
 #

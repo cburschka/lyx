@@ -63,23 +63,6 @@ enum MathedStyles {
 };
 
 
-/// Standard LaTeX Math Environments
-enum MathedEnvironment {
-	///
-	LM_EN_INTEXT = 0,
-	///
-	LM_EN_DISPLAY,
-	///
-	LM_EN_EQUATION,
-	///
-	LM_EN_EQNARRAYAST,
-	///
-	LM_EN_EQNARRAY,
-	///
-	LM_EN_ARRAY
-};
-
-
 /** The restrictions of a standard LaTeX math paragraph
   allows to get a small number of text codes (<30) */
 enum MathedTextCodes  {
@@ -161,8 +144,17 @@ enum MathedInsetTypes  {
 	LM_OT_MPAR,
 	/// A multiline numbered paragraph
 	LM_OT_MPARN,
+	///
+	LM_OT_ALIGNAT,
+	///
+	LM_OT_ALIGNATN,
+	///
+	LM_OT_MULTLINE,
+	///
+	LM_OT_MULTLINEN,
 	/// An array
 	LM_OT_MATRIX,
+
 	/// A big operator
 	LM_OT_BIGOP,
 	/// A LaTeX macro
@@ -655,6 +647,55 @@ void MathParInset::SetStyle(short sz)
 	} 
 	MathedInset::SetStyle(sz);
     }
+}
+
+inline
+bool is_eqn_type(short int type)
+{
+	return type >= LM_OT_MIN && type < LM_OT_MATRIX;
+}
+
+
+inline
+bool is_matrix_type(short int type)
+{
+	return type == LM_OT_MATRIX;
+}
+
+inline
+bool is_multiline(short int type)
+{
+	return type >= LM_OT_MPAR && type < LM_OT_MATRIX;
+}
+
+
+inline bool is_ams(short int type)
+{
+	return type > LM_OT_MPARN && type < LM_OT_MATRIX;
+}
+
+inline
+bool is_singlely_numbered(short int type)
+{
+	return type == LM_OT_PARN || type == LM_OT_MULTLINEN;
+}
+
+inline
+bool is_multi_numbered(short int type)
+{
+	return type == LM_OT_MPARN || type == LM_OT_ALIGNATN;
+}
+
+inline
+bool is_numbered(short int type)
+{
+	return is_singlely_numbered(type) || is_multi_numbered(type);
+}
+
+inline
+bool is_multicolumn(short int type)
+{
+	return type == LM_OT_ALIGNAT || type == LM_OT_ALIGNATN;
 }
 
 #endif

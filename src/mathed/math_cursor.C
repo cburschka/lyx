@@ -329,6 +329,38 @@ void MathedCursor::End()
 }
 
 
+MathMatrixInset * create_multiline(short int type, int cols)
+{
+	int columns;
+	string align;
+	if (cols < 1)
+		cols = 1;
+
+	switch (type) {
+	case LM_OT_ALIGNAT:
+	case LM_OT_ALIGNATN:
+		columns = 2*cols;
+		for (int i = 0; i < cols; ++i)
+			align += "rl";
+		break;
+	case LM_OT_MULTLINE:
+	case LM_OT_MULTLINEN:
+		columns = 1;
+		align = "c"; // This is incorrect!
+		break;
+	case LM_OT_MPAR:
+	case LM_OT_MPARN:
+	default:
+		columns = 3;
+		align = "rcl";
+		break;
+	}
+
+	MathMatrixInset * mt = new MathMatrixInset(columns, -1);
+	mt->SetAlign(' ', align);
+	return mt;
+}
+
 void MathedCursor::Insert(byte c, MathedTextCodes t)
 {  
    if (selection) SelDel();
@@ -342,10 +374,21 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
    if (t == LM_TC_CR) {
       MathParInset * p = cursor->p;
       if (p == par && p->GetType()<LM_OT_MPAR && p->GetType()>LM_OT_MIN) {
-	 MathMatrixInset * mt = new MathMatrixInset(3, 0);
-	 mt->SetAlign(' ', "rcl");
+	 short int type = LM_OT_MPAR;
+	 int cols = 1;
+	 if (c >= '1' && c <= '9') {
+		 type = LM_OT_ALIGNAT;
+		 cols = c - '0';
+	 } else if (c == 'm')
+		 type = LM_OT_MULTLINE;
+	 else if (c == 'e')
+		 type = LM_OT_MPAR;
+
+	 if (p->GetType() == LM_OT_PARN)
+	     ++type;
+	 MathMatrixInset * mt = create_multiline(type, cols);
 	 mt->SetStyle(LM_ST_DISPLAY);
-	 mt->SetType((p->GetType() == LM_OT_PARN) ? LM_OT_MPARN: LM_OT_MPAR);
+	 mt->SetType(type);
 	 mt->SetData(p->GetData());
 	 p->SetData(0);//BUG duda
 	 delete p;
@@ -448,7 +491,7 @@ void MathedCursor::DelLine()
 	return;
     }
     MathParInset *p= cursor->p;
-    if (p &&  (p->GetType()<= LM_OT_MATRIX && p->GetType()>= LM_OT_MPAR)) {
+    if (p && p->GetType() <= LM_OT_MATRIX && p->GetType() >= LM_OT_MPAR) {
 	cursor->delRow();
     }
 }

@@ -318,29 +318,31 @@ void MathMatrixInset::Write(ostream & os, bool fragile)
     }
 }
 
-
 void mathed_write(MathParInset * p, ostream & os, int * newlines,
 		  bool fragile, string const & label)
 {
    number_of_newlines = 0;
    short mathed_env = p->GetType();
 
-   if (mathed_env == LM_EN_INTEXT) {
+   if (mathed_env == LM_OT_MIN) {
 	   if (fragile) os << "\\protect";
 	   os << "\\( "; // changed from " \\( " (Albrecht Dress)
    } 
    else {
-     if (mathed_env == LM_EN_DISPLAY){
+     if (mathed_env == LM_OT_PAR){
 	     os << "\\[\n";
      } else {
 	     os << "\\begin{"
 		<< latex_mathenv[mathed_env]
-		<< "}\n";
+		<< "}";
+	     if (mathed_env == LM_OT_ALIGNAT || mathed_env == LM_OT_ALIGNATN)
+		     os << "{" << p->GetColumns()/2 << "}";
+	     os << "\n";
      }
      ++number_of_newlines;
    }
    
-   if (!label.empty() && label[0] > ' ' && mathed_env == LM_EN_EQUATION){
+   if (!label.empty() && label[0] > ' ' && is_singlely_numbered(mathed_env)) {
 	   os << "\\label{"
 	      << label
 	      << "}\n";
@@ -349,11 +351,11 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
 
    p->Write(os, fragile);
    
-   if (mathed_env == LM_EN_INTEXT){
+   if (mathed_env == LM_OT_MIN){
 	   if (fragile) os << "\\protect";
 	   os << " \\)";
    }
-   else if (mathed_env == LM_EN_DISPLAY) {
+   else if (mathed_env == LM_OT_PAR) {
 	   os << "\\]\n";
      ++number_of_newlines;
    }

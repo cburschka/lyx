@@ -40,6 +40,9 @@ using std::isdigit;
 using std::isspace;
 #endif
 
+extern MathMatrixInset * create_multiline(short int type, int cols);
+
+
 enum {
 	FLAG_BRACE      = 1,	//  A { needed
 	FLAG_BRACE_ARG  = 2,	//  Next { is argument
@@ -57,20 +60,24 @@ YYSTYPE yylval;
 
 
 static
-short mathed_env = LM_EN_INTEXT;
+MathedInsetTypes mathed_env = LM_OT_MIN;
 
 string mathed_label;
 
 
-char const * latex_mathenv[] = { 
+int const latex_mathenv_num = 10;
+char const * latex_mathenv[latex_mathenv_num] = { 
    "math", 
    "displaymath", 
    "equation", 
    "eqnarray*",
    "eqnarray",
+   "alignat*",
+   "alignat",
+   "multline*",
+   "multline",
    "array"
 };
-
 
 
 char const * latex_mathspace[] = {
@@ -252,19 +259,19 @@ int yylex(void)
 		 return LM_TK_NEWLINE;
 	 }
 	 if (c == '(') {
-		 yylval.i = LM_EN_INTEXT;
+		 yylval.i = LM_OT_MIN;
 		 return LM_TK_BEGIN;
 	 }
 	 if (c == ')') {
-		 yylval.i = LM_EN_INTEXT;
+		 yylval.i = LM_OT_MIN;
 		 return LM_TK_END;
 	 }
 	 if (c == '[') {
-		 yylval.i = LM_EN_DISPLAY;
+		 yylval.i = LM_OT_PAR;
 		 return LM_TK_BEGIN;
 	 }
 	 if (c == ']') {
-		 yylval.i = LM_EN_DISPLAY;
+		 yylval.i = LM_OT_PAR;
 		 return LM_TK_END;
 	 }
 	 if (strchr(latex_special_chars, c)) {
@@ -296,7 +303,8 @@ int yylex(void)
 //		  for (i = 0; i < 5 && strncmp(yytext, latex_mathenv[i],
 //				strlen(latex_mathenv[i])); ++i);
 		  
-		  for (i = 0; i < 6 && strcmp(yytext, latex_mathenv[i]); ++i);
+		  for (i = 0; i < latex_mathenv_num
+			       && strcmp(yytext, latex_mathenv[i]); ++i);
 		  yylval.i = i;
 	       } else
 	       if (l->token == LM_TK_SPACE) 
@@ -757,7 +765,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       }
     case LM_TK_END:
       {
-         if (mathed_env != yylval.i && yylval.i!= LM_EN_ARRAY)
+         if (mathed_env != yylval.i && yylval.i != LM_OT_MATRIX)
 	   mathPrintError("Unmatched environment");
 	 // debug info [made that conditional -JMarc]
 	 if (lyxerr.debugging(Debug::MATHED))
@@ -771,7 +779,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       }
     case LM_TK_BEGIN:
       {
-	 if (yylval.i == LM_EN_ARRAY) {
+	 if (yylval.i == LM_OT_MATRIX) {
 	    char ar[120], ar2[8];
 	    ar[0] = ar2[0] = '\0'; 
             char rg = LexGetArg(0);
@@ -785,7 +793,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	    mm->SetAlign(ar2[0], ar);
        	    data.Insert(mm, LM_TC_ACTIVE_INSET);
             mathed_parse(FLAG_END, mm->GetData(), &mm);
-	 } else if (yylval.i >= LM_EN_INTEXT && yylval.i<= LM_EN_EQNARRAY) {
+	 } else if (is_eqn_type(yylval.i)) {
 	     if (plevel!= 0) {
 		 mathPrintError("Misplaced environment");
 		 break;
@@ -796,11 +804,15 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	     }
 	     
 	     mathed_env = yylval.i;
-	     if (mathed_env>= LM_EN_DISPLAY) {
+	     if (mathed_env != LM_OT_MIN) {
 		 size = LM_ST_DISPLAY;
-		 if (mathed_env>LM_EN_EQUATION) {
-		     mt = new MathMatrixInset(3, -1);
-		     mt->SetAlign(' ', "rcl");
+		 if (is_multiline(mathed_env)) {
+		     int cols = 1;
+		     if (is_multicolumn(mathed_env)) {
+			 LexGetArg('{');
+			 cols = strToInt(string(yytext));
+		     }
+		     mt = create_multiline(mathed_env, cols);
 		     if (mtx) *mtx = mt;
 		     flags |= FLAG_END;
 //		     data.Insert(' ', LM_TC_TAB);
@@ -811,7 +823,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 		 mt->SetType(mathed_env);
 		 crow = mt->getRowSt();
 	     }
-	       	       	       
+
 #ifdef DEBUG
 	     lyxerr << "MATH BEGIN[" << mathed_env << "]" << endl;
 #endif

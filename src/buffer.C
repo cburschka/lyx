@@ -1888,7 +1888,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 			ofs << "}\n";
 			texrow.newline();
 		}
-		if (params.use_amsmath
+		if (features.amsstyle
 		    && !tclass.provides(LyXTextClass::amsmath)) {
 			ofs << "\\usepackage{amsmath}\n";
 			texrow.newline();
