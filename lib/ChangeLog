@@ -1,3 +1,8 @@
+2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Makefile.am (install-xfonts): do not use "ln -sf" since some
+	solaris versions do not like it. "ln -f -s" is better.
+
 2002-12-17  John Levon  <levon@movementarian.org>
 
 	* configure.m4: back out LaTeX viewer again

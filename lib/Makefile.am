@@ -54,7 +54,7 @@ install-xfonts:
 	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/xfonts ; \
 	files=`sed -e 's/^[0-9]*$$//' -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; \
 	for i in $${files} ; do \
-	  ln -sf `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
+	  ln -f -s `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
 	done ; \
 	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir ; \
 	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale
