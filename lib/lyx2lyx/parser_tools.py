@@ -90,7 +90,6 @@ def get_paragraph(lines, i):
 
 
 def is_nonempty_line(line):
-    line = line[:-1]
     return line != " "*len(line)
 
 def find_nonempty_line(lines, start, end = 0):

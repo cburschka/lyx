@@ -74,8 +74,7 @@ def remove_oldfloat(lines, language):
 	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
 
 	new = floats[floattype]+[""]
-	new = new+lines[i2:j]
-	new.append("\\end_inset ")
+	new = new+lines[i2:j]+["\\end_inset ", ""]
 	# After a float, all font attribute are reseted.
 	# We need to output '\foo default' for every attribute foo
 	# whose value is not default before the float.
@@ -84,8 +83,14 @@ def remove_oldfloat(lines, language):
 	# In fact, it might be safer to output '\foo default' for all 
 	# font attributes.
 	k = get_paragraph(lines, i)
+	flag = 0
 	for token in font_tokens:
 	    if find_token(lines, token, k, i) != -1:
+		if not flag:
+		    # This is not necessary, but we want the output to be
+		    # as similar as posible to the lyx format
+		    flag = 1
+		    new.append("")
 		if token == "\\lang":
 		    new.append(token+" "+language+" ")
 		else:
@@ -211,21 +216,41 @@ def remove_oldert(lines):
 	    tmp = []
 	    for line in lines[k:k2]:
 		if font_rexp.match(line):
+		    if new2 == []:
+			# This is not necessary, but we want the output to be
+			# as similar as posible to the lyx format
+			new2 = [""]
 		    new2.append(line)
 		else:
 		    tmp.append(line)
 
 	    if is_empty(tmp):
-		new = new+tmp
+		if filter(lambda x:x != "", tmp) != []:
+		    if new == []:
+			# This is not necessary, but we want the output to be
+			# as similar as posible to the lyx format
+			lines[i-1] = lines[i-1]+" "
+		    else:
+			new = new+[" "]
 	    else:
 		new = new+ert_begin+tmp+["\\end_inset ", ""]
 
 	    if inset:
 		k3 = find_token(lines, "\\end_inset", k2+1)
-		new = new+[""]+lines[k2:k3+1]+["", ""]
+		new = new+[""]+lines[k2:k3+1]+[""] # Put an empty line after \end_inset
 		k = k3+1
+		# Skip the empty line after \end_inset
+		if not is_nonempty_line(lines[k]):
+		    k = k+1
+		    new.append("")
 	    elif specialchar:
-		new = new+[specialchar_str]
+		if new == []:
+		    # This is not necessary, but we want the output to be
+		    # as similar as posible to the lyx format
+		    lines[i-1] = lines[i-1]+specialchar_str
+		    new = [""]
+		else:
+		    new = new+[specialchar_str, ""]
 		k = k2
 	    else:
 		break
