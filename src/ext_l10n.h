@@ -171,6 +171,7 @@ _("Version...|V");
 _("");
 _("A&A");
 _("ACT");
+_("AMS");
 _("AT_RISE:");
 _("Abstract");
 _("Accepted");

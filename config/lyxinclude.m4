@@ -197,7 +197,7 @@ dnl Check the version of g++
     case $gxx_version in
 	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion -Winline";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion -Winline";;
-	*)      CXXFLAGS="$CXXFLAGS -ansi -W -Wall -Wno-return-type";;
+	*)      CXXFLAGS="$CXXFLAGS -W -Wall -Wno-return-type";;
     esac
     if test $lyx_devel_version = yes ; then
 	case $gxx_version in

@@ -49,12 +49,6 @@
 /************************************************************ 
  ** You should not need to change anything beyond this point */
 
-/* even though -ansi might have been specified for gcc, we want all
-  usual prototypes.  */
-#ifdef __STRICT_ANSI__
-/**/#undef __STRICT_ANSI__
-#endif
-
 #ifndef HAVE_STRCHR
 #define strchr(a,b)     index(a,b)
 #endif

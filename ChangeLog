@@ -1,3 +1,15 @@
+2000-09-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/kde/Makefile.am: fix rule for
+	formindexdialogdata_moc.C
+
+	* src/.cvsignore: add ext_l10n.h to ignore
+
+	* acconfig.h: stop messing with __STRICT_ANSI__ 
+	* config/gnome.m4: remove option to set -ansi
+	* config/kde.m4: remove option to set -ansi
+	* config/lyxinclude.m4: don't set -ansi 
+
 2000-09-27  Juergen Vigna  <jug@sad.it>
 
 	* various files: remove "default" language check.
@@ -364,7 +376,6 @@
 
 	* src/frontends/kde/FormRef.h: removed trailing comma from enums.
 
-
 2000-09-19  Marko Vendelin <markov@ioc.ee>
 	
 	* src/frontends/gnome/Menubar_pimpl.C
@@ -389,8 +400,6 @@
 	* src/frontends/gnome/FormCitation.C
 	* src/frontends/gnome/FormCitation.h: rewrite to use main window
 	action area. Only "Insert new citation" is implemented.
-
-
 
 2000-09-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

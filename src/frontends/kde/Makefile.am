@@ -110,6 +110,8 @@ formurldialog_moc.C: formurldialog.h
 formindexdialog.C: formindexdialog_moc.C
 formindexdialog_moc.C: formindexdialog.h
 	$(MOC) formindexdialog.h -o formindexdialog_moc.C
+formindexdialogdata_moc.C: formindexdialogdata.h
+	$(MOC) formindexdialogdata.h -o formindexdialogdata_moc.C
 
 formcitationdialog.C: formcitationdialog_moc.C
 formcitationdialog_moc.C: formcitationdialog.h

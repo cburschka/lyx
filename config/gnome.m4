@@ -43,31 +43,6 @@ AC_DEFUN([GNOME_COMPILE_WARNINGS],[
   fi
   AC_MSG_RESULT($warnCFLAGS)
 
-  AC_ARG_ENABLE(iso-c,
-    [  --enable-iso-c          Try to warn if code is not ISO C ],,
-    enable_iso_c=no)
-
-  AC_MSG_CHECKING(what language compliance flags to pass to the C compiler)
-  complCFLAGS=
-  if test "x$enable_iso_c" != "xno"; then
-    if test "x$GCC" = "xyes"; then
-      case " $CFLAGS " in
-      *[\ \	]-ansi[\ \	]*) ;;
-      *) complCFLAGS="$complCFLAGS -ansi" ;;
-      esac
-
-      case " $CFLAGS " in
-      *[\ \	]-pedantic[\ \	]*) ;;
-      *) complCFLAGS="$complCFLAGS -pedantic" ;;
-      esac
-    fi
-  fi
-  AC_MSG_RESULT($complCFLAGS)
-  if test "x$cflags_set" != "xyes"; then
-    CFLAGS="$CFLAGS $warnCFLAGS $complCFLAGS"
-    cflags_set=yes
-    AC_SUBST(cflags_set)
-  fi
 ])
 
 dnl For C++, do basically the same thing.
@@ -97,31 +72,6 @@ AC_DEFUN([GNOME_CXX_WARNINGS],[
   fi
   AC_MSG_RESULT($warnCXXFLAGS)
 
-   AC_ARG_ENABLE(iso-cxx,
-     [  --enable-iso-cxx          Try to warn if code is not ISO C++ ],,
-     enable_iso_cxx=no)
-
-   AC_MSG_CHECKING(what language compliance flags to pass to the C++ compiler)
-   complCXXFLAGS=
-   if test "x$enable_iso_cxx" != "xno"; then
-     if test "x$GCC" = "xyes"; then
-      case " $CXXFLAGS " in
-      *[\ \	]-ansi[\ \	]*) ;;
-      *) complCXXFLAGS="$complCXXFLAGS -ansi" ;;
-      esac
-
-      case " $CXXFLAGS " in
-      *[\ \	]-pedantic[\ \	]*) ;;
-      *) complCXXFLAGS="$complCXXFLAGS -pedantic" ;;
-      esac
-     fi
-   fi
-  AC_MSG_RESULT($complCXXFLAGS)
-  if test "x$cxxflags_set" != "xyes"; then
-    CXXFLAGS="$CXXFLAGS $warnCXXFLAGS $complCXXFLAGS"
-    cxxflags_set=yes
-    AC_SUBST(cxxflags_set)
-  fi
 ])
 dnl Curses detection: Munged from Midnight Commander's configure.in
 dnl
