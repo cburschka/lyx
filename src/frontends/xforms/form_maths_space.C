@@ -29,7 +29,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
   fdui->spaces = fl_bgn_group();
   {
     char const * const dummy = N_("Thin|#T");
-    fdui->radio_thin = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 10, 120, 30, idex(_(dummy)));
+    fdui->radio_thin = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 20, 10, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_MCOL, FL_YELLOW);
@@ -37,7 +37,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 1);
   {
     char const * const dummy = N_("Medium|#M");
-    fdui->radio_medium = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 40, 120, 30, idex(_(dummy)));
+    fdui->radio_medium = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 20, 40, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_MCOL, FL_YELLOW);
@@ -45,7 +45,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 2);
   {
     char const * const dummy = N_("Thick|#H");
-    fdui->radio_thick = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 70, 120, 30, idex(_(dummy)));
+    fdui->radio_thick = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 20, 70, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_MCOL, FL_YELLOW);
@@ -53,7 +53,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 3);
   {
     char const * const dummy = N_("Negative|#N");
-    fdui->radio_negative = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 140, 10, 120, 30, idex(_(dummy)));
+    fdui->radio_negative = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 140, 10, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_MCOL, FL_YELLOW);
@@ -61,7 +61,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Quadratin|#Q");
-    fdui->radio_quadratin = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 140, 40, 120, 30, idex(_(dummy)));
+    fdui->radio_quadratin = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 140, 40, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_MCOL, FL_YELLOW);
@@ -69,7 +69,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 4);
   {
     char const * const dummy = N_("2Quadratin|#2");
-    fdui->radio_twoquadratin = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 140, 70, 120, 30, idex(_(dummy)));
+    fdui->radio_twoquadratin = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 140, 70, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_MCOL, FL_YELLOW);

@@ -35,16 +35,18 @@ FD_form_print * FormPrint::build_print()
   fdui->group_radio_printto = fl_bgn_group();
   {
     char const * const dummy = N_("Printer|#P");
-    fdui->radio_printer = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 225, 80, 30, idex(_(dummy)));
+    fdui->radio_printer = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 225, 80, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("File|#F");
-    fdui->radio_file = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 265, 80, 30, idex(_(dummy)));
+    fdui->radio_file = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 265, 80, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
@@ -70,23 +72,26 @@ FD_form_print * FormPrint::build_print()
   fdui->group_radio_pages = fl_bgn_group();
   {
     char const * const dummy = N_("All Pages|#G");
-    fdui->radio_all_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 30, 160, 30, idex(_(dummy)));
+    fdui->radio_all_pages = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 30, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Only Odd Pages|#O");
-    fdui->radio_odd_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 60, 160, 30, idex(_(dummy)));
+    fdui->radio_odd_pages = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 60, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Only Even Pages|#E");
-    fdui->radio_even_pages = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 90, 160, 30, idex(_(dummy)));
+    fdui->radio_even_pages = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 90, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
@@ -95,16 +100,18 @@ FD_form_print * FormPrint::build_print()
   fdui->group_radio_order = fl_bgn_group();
   {
     char const * const dummy = N_("Normal Order|#N");
-    fdui->radio_order_normal = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 180, 30, 150, 30, idex(_(dummy)));
+    fdui->radio_order_normal = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 180, 30, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Reverse Order|#R");
-    fdui->radio_order_reverse = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 180, 60, 150, 30, idex(_(dummy)));
+    fdui->radio_order_reverse = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 180, 60, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();

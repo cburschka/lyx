@@ -201,23 +201,26 @@ FD_form_column_options * FormTabular::build_column_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Left|#e");
-    fdui->radio_align_left = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 205, 35, 105, 25, idex(_(dummy)));
+    fdui->radio_align_left = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 205, 35, 105, 25, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Right|#i");
-    fdui->radio_align_right = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 205, 85, 105, 25, idex(_(dummy)));
+    fdui->radio_align_right = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 205, 85, 105, 25, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Center|#c");
-    fdui->radio_align_center = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 205, 60, 105, 25, idex(_(dummy)));
+    fdui->radio_align_center = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 205, 60, 105, 25, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
@@ -333,23 +336,26 @@ FD_form_cell_options * FormTabular::build_cell_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Left|#e");
-    fdui->radio_align_left = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 205, 35, 110, 25, idex(_(dummy)));
+    fdui->radio_align_left = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 205, 35, 110, 25, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Right|#i");
-    fdui->radio_align_right = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 205, 85, 115, 25, idex(_(dummy)));
+    fdui->radio_align_right = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 205, 85, 115, 25, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Center|#c");
-    fdui->radio_align_center = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 205, 60, 115, 25, idex(_(dummy)));
+    fdui->radio_align_center = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 205, 60, 115, 25, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {

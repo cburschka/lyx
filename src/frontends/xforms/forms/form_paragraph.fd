@@ -68,7 +68,7 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 30 80 30
 boxtype: FL_NO_BOX
@@ -86,7 +86,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 60 80 30
 boxtype: FL_NO_BOX
@@ -104,7 +104,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 115 30 80 30
 boxtype: FL_NO_BOX
@@ -122,7 +122,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 115 60 80 30
 boxtype: FL_NO_BOX

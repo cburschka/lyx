@@ -125,16 +125,18 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
   fdui->group_radio_orientation = fl_bgn_group();
   {
     char const * const dummy = N_("Portrait|#o");
-    fdui->radio_portrait = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 255, 40, 120, 30, idex(_(dummy)));
+    fdui->radio_portrait = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 40, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Landscape|#L");
-    fdui->radio_landscape = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 255, 75, 120, 30, idex(_(dummy)));
+    fdui->radio_landscape = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 75, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
@@ -321,16 +323,18 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->group_doc_sides = fl_bgn_group();
   {
     char const * const dummy = N_("One|#n");
-    fdui->radio_doc_sides_one = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 30, 120, 30, idex(_(dummy)));
+    fdui->radio_doc_sides_one = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 300, 30, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Two|#T");
-    fdui->radio_doc_sides_two = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 60, 120, 30, idex(_(dummy)));
+    fdui->radio_doc_sides_two = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 300, 60, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
@@ -339,16 +343,18 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->group_doc_columns = fl_bgn_group();
   {
     char const * const dummy = N_("One|#e");
-    fdui->radio_doc_columns_one = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 120, 110, 30, idex(_(dummy)));
+    fdui->radio_doc_columns_one = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 300, 120, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Two|#w");
-    fdui->radio_doc_columns_two = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 150, 110, 30, idex(_(dummy)));
+    fdui->radio_doc_columns_two = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 300, 150, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
@@ -357,16 +363,18 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->group_doc_sep = fl_bgn_group();
   {
     char const * const dummy = N_("Indent|#I");
-    fdui->radio_doc_indent = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 50, 260, 110, 30, idex(_(dummy)));
+    fdui->radio_doc_indent = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 50, 260, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Skip|#K");
-    fdui->radio_doc_skip = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 50, 290, 110, 30, idex(_(dummy)));
+    fdui->radio_doc_skip = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 50, 290, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
     fl_set_button(obj, 1);
@@ -421,16 +429,18 @@ FD_form_doc_language * FormDocument::build_doc_language()
  fl_bgn_group();
   {
     char const * const dummy = N_("Single|#S");
-    fdui->radio_single = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 110, 180, 90, 30, idex(_(dummy)));
+    fdui->radio_single = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 110, 180, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Double|#D");
-    fdui->radio_double = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 210, 180, 90, 30, idex(_(dummy)));
+    fdui->radio_double = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 210, 180, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
@@ -538,16 +548,16 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
   fl_set_border_width(-1);
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   fl_set_border_width(-3);
-  fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 90, 105, 265, 180, "");
+  fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 135, 105, 260, 180, "");
   fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETBMTABLE);
   fl_set_object_lcol(obj, FL_BLUE);
   fl_set_object_boxtype(obj, FL_UP_BOX);
   fl_set_bmtable_pixmap_file(obj, 6, 6,
 			     LibFileSearch("images",
-					   "standard",
+				   "standard",
 					   "xpm").c_str());
   fl_set_border_width(-1);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 95, 20, 255, 70, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 135, 20, 260, 55, "");
   {
     char const * const dummy = N_("Size|#z");
     fdui->choice_bullet_size = obj = fl_add_choice(FL_NORMAL_CHOICE, 15, 45, 65, 30, idex(_(dummy)));
@@ -569,86 +579,106 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
   fdui->radio_bullet_depth = fl_bgn_group();
   {
     char const * const dummy = N_("1|#1");
-    fdui->radio_bullet_depth_1 = obj = fl_add_button(FL_RADIO_BUTTON, 105, 35, 55, 40, idex(_(dummy)));
+    fdui->radio_bullet_depth_1 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 150, 35, 40, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_LARGE_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETDEPTH1);
     fl_set_button(obj, 1);
   {
     char const * const dummy = N_("2|#2");
-    fdui->radio_bullet_depth_2 = obj = fl_add_button(FL_RADIO_BUTTON, 165, 35, 55, 40, idex(_(dummy)));
+    fdui->radio_bullet_depth_2 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 210, 35, 40, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_LARGE_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETDEPTH2);
   {
     char const * const dummy = N_("3|#3");
-    fdui->radio_bullet_depth_3 = obj = fl_add_button(FL_RADIO_BUTTON, 225, 35, 55, 40, idex(_(dummy)));
+    fdui->radio_bullet_depth_3 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 270, 35, 40, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_LARGE_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETDEPTH3);
   {
     char const * const dummy = N_("4|#4");
-    fdui->radio_bullet_depth_4 = obj = fl_add_button(FL_RADIO_BUTTON, 285, 35, 55, 40, idex(_(dummy)));
+    fdui->radio_bullet_depth_4 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 330, 35, 40, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_LARGE_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETDEPTH4);
   fl_end_group();
 
-  obj = fl_add_text(FL_NORMAL_TEXT, 105, 10, 85, 20, _("Bullet Depth"));
+  obj = fl_add_text(FL_NORMAL_TEXT, 145, 10, 85, 20, _("Bullet Depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
 
   fdui->radio_bullet_panel = fl_bgn_group();
   {
     char const * const dummy = N_("Standard|#S");
-    fdui->radio_bullet_panel_standard = obj = fl_add_button(FL_RADIO_BUTTON, 15, 105, 65, 30, idex(_(dummy)));
+    fdui->radio_bullet_panel_standard = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 105, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL1);
     fl_set_button(obj, 1);
   {
     char const * const dummy = N_("Maths|#M");
-    fdui->radio_bullet_panel_maths = obj = fl_add_button(FL_RADIO_BUTTON, 15, 135, 65, 30, idex(_(dummy)));
+    fdui->radio_bullet_panel_maths = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 135, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL2);
   {
     char const * const dummy = N_("Ding 2|#i");
-    fdui->radio_bullet_panel_ding2 = obj = fl_add_button(FL_RADIO_BUTTON, 15, 195, 65, 30, idex(_(dummy)));
+    fdui->radio_bullet_panel_ding2 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 195, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL3);
   {
     char const * const dummy = N_("Ding 3|#n");
-    fdui->radio_bullet_panel_ding3 = obj = fl_add_button(FL_RADIO_BUTTON, 15, 225, 65, 30, idex(_(dummy)));
+    fdui->radio_bullet_panel_ding3 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 225, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL4);
   {
     char const * const dummy = N_("Ding 4|#g");
-    fdui->radio_bullet_panel_ding4 = obj = fl_add_button(FL_RADIO_BUTTON, 15, 255, 65, 30, idex(_(dummy)));
+    fdui->radio_bullet_panel_ding4 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 255, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL5);
   {
     char const * const dummy = N_("Ding 1|#D");
-    fdui->radio_bullet_panel_ding1 = obj = fl_add_button(FL_RADIO_BUTTON, 15, 165, 65, 30, idex(_(dummy)));
+    fdui->radio_bullet_panel_ding1 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 165, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL6);

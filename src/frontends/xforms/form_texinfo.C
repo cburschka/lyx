@@ -36,9 +36,10 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
   {
     char const * const dummy = N_("LaTeX Classes|#C");
-    fdui->radio_cls = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 350, 20, 30, 30, idex(_(dummy)));
+    fdui->radio_cls = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 350, 20, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
@@ -46,18 +47,20 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_button(obj, 1);
   {
     char const * const dummy = N_("LaTeX Styles|#S");
-    fdui->radio_sty = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 350, 50, 30, 30, idex(_(dummy)));
+    fdui->radio_sty = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 350, 50, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("BibTeX Styles|#B");
-    fdui->radio_bst = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 350, 80, 30, 30, idex(_(dummy)));
+    fdui->radio_bst = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 350, 80, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);

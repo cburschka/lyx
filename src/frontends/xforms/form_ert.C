@@ -32,23 +32,26 @@ FD_form_ert * FormERT::build_ert()
   fdui->group_alignment = fl_bgn_group();
   {
     char const * const dummy = N_("Open|#O");
-    fdui->radio_open = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 19, 30, 152, 30, idex(_(dummy)));
+    fdui->radio_open = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 19, 30, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Collapsed|#C");
-    fdui->radio_collapsed = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 19, 60, 152, 30, idex(_(dummy)));
+    fdui->radio_collapsed = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 19, 60, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Inlined View|#I");
-    fdui->radio_inlined = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 19, 90, 152, 30, idex(_(dummy)));
+    fdui->radio_inlined = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 19, 90, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();

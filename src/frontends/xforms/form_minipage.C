@@ -41,23 +41,26 @@ FD_form_minipage * FormMinipage::build_minipage()
   fdui->group_alignment = fl_bgn_group();
   {
     char const * const dummy = N_("Top|#T");
-    fdui->radio_top = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 249, 30, 152, 30, idex(_(dummy)));
+    fdui->radio_top = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 249, 30, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Middle|#d");
-    fdui->radio_middle = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 249, 60, 152, 30, idex(_(dummy)));
+    fdui->radio_middle = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 249, 60, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Bottom|#B");
-    fdui->radio_bottom = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 249, 90, 152, 30, idex(_(dummy)));
+    fdui->radio_bottom = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 249, 90, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();

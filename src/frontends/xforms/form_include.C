@@ -74,23 +74,26 @@ FD_form_include * FormInclude::build_include()
   fdui->include_grp = fl_bgn_group();
   {
     char const * const dummy = N_("Verbatim|#V");
-    fdui->check_verbatim = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_(dummy)));
+    fdui->check_verbatim = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Use input|#i");
-    fdui->check_useinput = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
+    fdui->check_useinput = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Use include|#U");
-    fdui->check_useinclude = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
+    fdui->check_useinclude = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();

@@ -1,6 +1,6 @@
---- form_document.C	Wed Oct  4 18:07:46 2000
-+++ form_document.C.orig	Wed Oct  4 18:07:23 2000
-@@ -9,6 +9,8 @@
+--- form_document.C	Mon Jan  7 09:19:31 2002
++++ form_document.C.new	Mon Jan  7 09:19:24 2002
+@@ -10,6 +10,8 @@
  #include <stdlib.h>
  #include "form_document.h"
  #include "FormDocument.h"
@@ -9,25 +9,25 @@
  
  FD_form_tabbed_document::~FD_form_tabbed_document()
  {
-@@ -390,10 +392,18 @@
+@@ -543,10 +545,18 @@
  
    fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
    fdui->form->u_vdata = this;
 +  fl_set_border_width(-1);
    obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
--  fdui->bmtable_bullet_panel = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 90, 105, 260, 180, "");
+-  fdui->bmtable_bullet_panel = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 135, 105, 260, 180, "");
 -    fl_set_object_boxtype(obj, FL_NO_BOX);
 -    fl_set_pixmapbutton_file(obj, _("/nfs/sinco/source/lyx/lyx-devel/lib/images/psnfss2.xpm"));
 +  fl_set_border_width(-3);
-+  fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 90, 105, 265, 180, "");
++  fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 135, 105, 260, 180, "");
 +  fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETBMTABLE);
 +  fl_set_object_lcol(obj, FL_BLUE);
 +  fl_set_object_boxtype(obj, FL_UP_BOX);
 +  fl_set_bmtable_pixmap_file(obj, 6, 6,
 +			     LibFileSearch("images",
-+					   "standard",
++				   "standard",
 +					   "xpm").c_str());
 +  fl_set_border_width(-1);
-   obj = fl_add_frame(FL_ENGRAVED_FRAME, 95, 20, 255, 70, "");
-   fdui->choice_bullet_size = obj = fl_add_choice(FL_NORMAL_CHOICE, 15, 45, 65, 30, idex(_("Size|#z")));
-     fl_set_button_shortcut(obj, scex(_("Size|#z")), 1);
+   obj = fl_add_frame(FL_ENGRAVED_FRAME, 135, 20, 260, 55, "");
+   {
+     char const * const dummy = N_("Size|#z");

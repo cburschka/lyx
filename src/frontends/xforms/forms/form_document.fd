@@ -328,7 +328,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -344,7 +344,7 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 255 40 120 30
 boxtype: FL_NO_BOX
@@ -362,7 +362,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 255 75 120 30
 boxtype: FL_NO_BOX
@@ -928,7 +928,7 @@ argument: INPUT
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -944,7 +944,7 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 300 30 120 30
 boxtype: FL_NO_BOX
@@ -962,7 +962,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 300 60 120 30
 boxtype: FL_NO_BOX
@@ -1000,7 +1000,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1016,7 +1016,7 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 300 120 110 30
 boxtype: FL_NO_BOX
@@ -1034,7 +1034,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 300 150 110 30
 boxtype: FL_NO_BOX
@@ -1072,7 +1072,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1088,7 +1088,7 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 50 260 110 30
 boxtype: FL_NO_BOX
@@ -1106,7 +1106,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 50 290 110 30
 boxtype: FL_NO_BOX
@@ -1170,8 +1170,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label:
-shortcut:
+label: 
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_default_skip_units
@@ -1259,7 +1259,7 @@ argument: INPUT
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1275,7 +1275,7 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 110 180 90 30
 boxtype: FL_NO_BOX
@@ -1293,7 +1293,7 @@ callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 210 180 90 30
 boxtype: FL_NO_BOX
@@ -1523,7 +1523,7 @@ argument:
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 90 105 260 180
+box: 135 105 260 180
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_BOTTOM
@@ -1538,13 +1538,12 @@ name: bmtable_bullet_panel
 callback: 
 argument: 
 	file: /nfs/sinco/source/lyx/lyx-devel/lib/images/psnfss2.xpm
-	focus_file: 
 	fullpath: 1
 
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 95 20 255 70
+box: 135 20 260 55
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1598,7 +1597,7 @@ argument: INPUTBULLETLATEX
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1614,9 +1613,9 @@ callback:
 argument: 
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 105 35 55 40
+box: 150 35 40 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1633,9 +1632,9 @@ argument: BULLETDEPTH1
 	value: 1
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 165 35 55 40
+box: 210 35 40 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1651,9 +1650,9 @@ callback: C_FormBaseDeprecatedInputCB
 argument: BULLETDEPTH2
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 225 35 55 40
+box: 270 35 40 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1669,9 +1668,9 @@ callback: C_FormBaseDeprecatedInputCB
 argument: BULLETDEPTH3
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 285 35 55 40
+box: 330 35 40 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1707,7 +1706,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 105 10 85 20
+box: 145 10 85 20
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -1725,7 +1724,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1741,9 +1740,9 @@ callback:
 argument: 
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 15 105 65 30
+box: 15 105 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1760,9 +1759,9 @@ argument: BULLETPANEL1
 	value: 1
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 15 135 65 30
+box: 15 135 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1778,9 +1777,9 @@ callback: C_FormBaseDeprecatedInputCB
 argument: BULLETPANEL2
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 15 195 65 30
+box: 15 195 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1796,9 +1795,9 @@ callback: C_FormBaseDeprecatedInputCB
 argument: BULLETPANEL3
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 15 225 65 30
+box: 15 225 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1814,9 +1813,9 @@ callback: C_FormBaseDeprecatedInputCB
 argument: BULLETPANEL4
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 15 255 65 30
+box: 15 255 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1832,9 +1831,9 @@ callback: C_FormBaseDeprecatedInputCB
 argument: BULLETPANEL5
 
 --------------------
-class: FL_BUTTON
+class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 15 165 65 30
+box: 15 165 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

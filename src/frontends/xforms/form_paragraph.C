@@ -32,30 +32,34 @@ FD_form_paragraph * FormParagraph::build_paragraph()
   fdui->group_radio_alignment = fl_bgn_group();
   {
     char const * const dummy = N_("Right|#R");
-    fdui->radio_align_right = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 15, 30, 80, 30, idex(_(dummy)));
+    fdui->radio_align_right = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 30, 80, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Left|#f");
-    fdui->radio_align_left = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 15, 60, 80, 30, idex(_(dummy)));
+    fdui->radio_align_left = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 60, 80, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Block|#c");
-    fdui->radio_align_block = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 115, 30, 80, 30, idex(_(dummy)));
+    fdui->radio_align_block = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 115, 30, 80, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Center|#n");
-    fdui->radio_align_center = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 115, 60, 80, 30, idex(_(dummy)));
+    fdui->radio_align_center = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 115, 60, 80, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_group();

@@ -335,10 +335,12 @@ FD_form_colors * FormPreferences::build_colors()
     fl_set_slider_size(obj, 0.15);
 
   fdui->group_radio_printto = fl_bgn_group();
-  fdui->radio_hsv = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 250, 220, 30, 30, _("HSV"));
+  fdui->radio_hsv = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 250, 220, 30, 30, _("HSV"));
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->radio_rgb = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 335, 220, 30, 30, _("RGB"));
+  fdui->radio_rgb = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 335, 220, 30, 30, _("RGB"));
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_button(obj, 1);
@@ -452,28 +454,32 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
   fdui->radio_button_group_display = fl_bgn_group();
   {
     char const * const dummy = N_("in Monochrome|#M");
-    fdui->radio_display_monochrome = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 285, 35, 30, 30, idex(_(dummy)));
+    fdui->radio_display_monochrome = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 285, 35, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_button(obj, 1);
   {
     char const * const dummy = N_("in Grayscale|#G");
-    fdui->radio_display_grayscale = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 285, 65, 30, 30, idex(_(dummy)));
+    fdui->radio_display_grayscale = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 285, 65, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("in Color|#C");
-    fdui->radio_display_color = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 285, 95, 30, 30, idex(_(dummy)));
+    fdui->radio_display_color = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 285, 95, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Don't display|#D");
-    fdui->radio_no_display = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 285, 125, 30, 30, idex(_(dummy)));
+    fdui->radio_no_display = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 285, 125, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_group();
 
