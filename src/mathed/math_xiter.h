@@ -4,6 +4,7 @@
 
 #include "math_iter.h"
 #include "math_rowst.h"
+#include "math_rowst.h"
 
 class MathParInset;
 
@@ -86,6 +87,8 @@ public:
 	}
 	
 private:
+	///
+	MathedRowContainer & container();
 	/// This function is not recursive, as MathPar::Metrics is
 	void IMetrics(int, int &, int &, int &);
 	/// Font size (display, text, script, script2) 
@@ -106,7 +109,6 @@ private:
 	bool limits_;
 	/// 
 	MathedRowContainer::iterator crow_;
-	
 	///
 	//friend class MathedCursor;
 };

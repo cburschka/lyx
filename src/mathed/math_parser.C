@@ -603,8 +603,8 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			if (mt && (flags & FLAG_END)) {
 				if (mt->Permit(LMPF_ALLOW_CR)) {
 					if (crow) {
-						crow->setNext(new MathedRowSt(mt->GetColumns() + 1)); // this leaks
-						crow = crow->getNext();
+						crow->next_ = new MathedRowSt(mt->GetColumns() + 1);
+						crow = crow->next_;
 					}
 					data.insert('K', LM_TC_CR);
 				} else 

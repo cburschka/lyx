@@ -52,7 +52,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
 			if (!ro) 
 				row_ = r;
 			else
-				ro->setNext(r);
+				ro->next_ = r;
 			mrow = mrow->next_;
 			ro = r;
 			++nr_;

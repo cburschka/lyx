@@ -36,6 +36,12 @@ MathParInset * MathedXIter::getPar() const
 	return p_;
 }
 
+MathedRowContainer & MathedXIter::container()
+{
+	Assert(p_);
+	return p_->getRowSt();
+}
+
 
 void MathedXIter::GetPos(int & xx, int & yy) const
 { 
@@ -122,7 +128,7 @@ void MathedXIter::Clean(int pos2)
 				MathedRowContainer::iterator r = crow_;
 				++r;
 				if (r) {
-					crow_.st_->setNext(r.st_->getNext());
+					crow_.st_->next_ = r.st_->next_;
 					delete r.st_;
 				}	   
 			}
@@ -160,10 +166,10 @@ void MathedXIter::Merge(MathedArray const & a)
 			if (p_ && p_->Permit(LMPF_ALLOW_CR)) {
 				MathedRowContainer::iterator r( new MathedRowSt(ncols + 1) );
 				if (crow_) {
-					r.st_->setNext(crow_.st_->getNext());
-					crow_.st_->setNext(r.st_);
+					r.st_->next_ = crow_.st_->next_;
+					crow_.st_->next_ = r.st_;
 				} else {
-					r.st_->setNext(0);
+					r.st_->next_ = 0;
 				}
 				crow_ = r;
 			} else {
@@ -186,7 +192,7 @@ void MathedXIter::SetData(MathParInset * pp)
 	x_ = y_ = 0;
 	array = &p_->GetData();
 	ncols = p_->GetColumns();
-	crow_ = p_->getRowSt().begin();
+	crow_ = container().begin();
 	if (p_->Permit(LMPF_ALLOW_CR))
 		flags |= MthIF_CR;
 	if (p_->Permit(LMPF_ALLOW_TAB))
@@ -240,7 +246,7 @@ bool MathedXIter::Next()
 			} else
 				if (c == LM_TC_CR && p_) {
 					x_ = 0;
-					if (crow_ && crow_.st_->getNext()) {
+					if (crow_ && crow_.st_->next_) {
 						++crow_;
 						y_ = crow_->getBaseline();
 						w = crow_->getTab(0);
@@ -272,7 +278,7 @@ void MathedXIter::GoBegin()
 	x_ = y_ = 0;   
 	sw_ = sx_ = 0;
 	if (p_) {
-		crow_ = p_->getRowSt().begin();
+		crow_ = container().begin();
 		if (crow_) {
 			x_ = crow_->getTab(0);
 			y_ = crow_->getBaseline();
@@ -375,11 +381,11 @@ void MathedXIter::addRow()
 	// Create new item for the structure    
 	MathedRowContainer::iterator r( new MathedRowSt(ncols + 1) );
 	if (crow_) {
-		r.st_->setNext(crow_.st_->getNext());
-		crow_.st_->setNext(r.st_);
+		r.st_->next_ = crow_.st_->next_;
+		crow_.st_->next_ = r.st_;
 	} else {
 		crow_ = r;
-		r.st_->setNext(0);
+		r.st_->next_ = 0;
 	}    
 	// Fill missed tabs in current row
 	while (col < ncols - 1) 
@@ -419,9 +425,9 @@ void MathedXIter::delRow()
 	
 	if (line_empty) {
 		
-		MathedRowContainer::iterator r( crow_.st_->getNext() );
+		MathedRowContainer::iterator r( crow_.st_->next_ );
 		if (r) {
-			crow_.st_->setNext(r.st_->getNext());
+			crow_.st_->next_ = r.st_->next_;
 			delete r.st_;
 		}
 		join(p1);
@@ -447,7 +453,7 @@ void MathedXIter::ipop()
 	x_ = stck.x;
 	y_ = stck.y;
 	if (p_) {
-		crow_ = p_->getRowSt().begin();
+		crow_ = container().begin();
 		if (crow_)
 			for (int i = 0; i < row; ++i)
 				++crow_;
@@ -599,7 +605,7 @@ MathedRowSt * MathedXIter::adjustVerticalSt()
 			if (col >= ncols) ncols = col + 1; 
 			MathedRowSt * r = new MathedRowSt(ncols + 1); // this leaks
 //	    r->next = crow_->next;
-			crow_.st_->setNext(r);
+			crow_.st_->next_ = r;
 			crow_.st_ = r;
 //	    lyxerr << " CX[" << crow_ << "]";
 		}   

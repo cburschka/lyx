@@ -69,11 +69,6 @@ public:
 	explicit MathedRowSt(int n)
 			: MathedRowStruct(n), next_(0)
 		{}
-	/// Should be const but...
-	MathedRowSt * getNext() const;
-	/// ...we couldn't use this.
-	void setNext(MathedRowSt * n);
-//private:
 	///
 	MathedRowSt * next_;
 };
@@ -90,7 +85,7 @@ struct MathedRowContainer {
 		iterator() : st_(0) {}
 		///
 		explicit iterator(MathedRowSt * st) : st_(st) {}
-		/// "better" conversion to bool
+		///
 		explicit iterator(MathedRowContainer * m) : st_(m->data_) {}
 		/// "better" conversion to bool
 		operator void *() const { return st_; }
@@ -122,24 +117,28 @@ struct MathedRowContainer {
 	///
 	bool empty() const { return data_ == 0; }
 
+	/// insert 'item' before 'iterator'
+	void insert(iterator const & pos, MathedRowSt const & item) {
+		MathedRowSt * st = new MathedRowSt(item);
+		link_before(pos, st);
+	}
+
+	void link_before(iterator const & it, MathedRowSt * r) {
+		if (data_ == it.st_)
+			data_ = r;
+		else {
+			MathedRowSt * pos = data_;
+			if (pos->next_ == it.st_)
+				pos->next_ = r;
+		}
+		r->next_  = it.st_;
+	}
+			
+
 	///
 	MathedRowSt * data_;
 };
 
-
-
-inline
-MathedRowSt * MathedRowSt::getNext() const
-{
-	return next_;
-}
-
-
-inline
-void MathedRowSt::setNext(MathedRowSt * n)
-{
-	next_ = n;
-}
 
 
 inline

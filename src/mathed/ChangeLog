@@ -1,3 +1,9 @@
+2001-03-08  André Pönitz  <poenitz@htwm.de>
+	* math_rowst.h: give MathedRowContainer an 'insert' method. 
+
+	* math_xiter.C: new 'container()' method to encapsulated access to
+	  the MathParInset's MathedRowContainer
+	
 2001-03-06  André Pönitz  <poenitz@htwm.de>
 	* array.[Ch]: factor out deep_copy,
 	  remove third argument from raw_pointer_insert 
