@@ -1,6 +1,5 @@
-#This file was created by <phb> Tue Apr 13 00:28:13 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
 \textclass article
 \language french
 \inputencoding default
@@ -26,7 +25,8 @@
 \layout Standard
 
 CECI EST LE TITRE DU DOCUMENT 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Le titre devrait ressembler un peu plus à un titre ("TITLE")
 \end_inset 
 
@@ -34,7 +34,8 @@ Le titre devrait ressembler un peu plus à un titre ("TITLE")
 \layout Standard
 
 par Fée LyX 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Fée est l'auteur de ce document ("AUTHOR")
 \end_inset 
 
@@ -42,7 +43,8 @@ Fée est l'auteur de ce document ("AUTHOR")
 \layout Standard
 
 12 Juin 1972 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Ceci est une "DATE".(NdT: Si si !)
 \end_inset 
 
@@ -50,7 +52,8 @@ Ceci est une "DATE".(NdT: Si si !)
 \layout Standard
 
 Table des Matières 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Ce serait plus agréable de ne pas avoir à taper la
  "Table des Matières"  explicitement.
 \end_inset 
@@ -85,7 +88,8 @@ Ce serait plus agréable de ne pas avoir à taper la
 
 1.
  Philosophie Générale 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Les titres de "Sections" ne sont pas assez en valeur, et ne
 devraient pas ^etre numérotés manuellement.
 \end_inset 
@@ -106,7 +110,8 @@ LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
  TeX, créé par Donald Knuth en 1984.
  LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
  Leslie Lamport disait lui-même (voir référence [1]) 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Cette "Citation Bibliographique" ne devrait probablement pas
 ^etre écrite en dur. Que se passe-t-il si le livre de Leslie Lamport
 passe en seconde position dans la bibliographie?
@@ -133,8 +138,9 @@ Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
 \end_inset 
 
  
-\begin_inset Info Indication:
-C'est une citation (QUOTE)
+\begin_inset Info
+Indication:
+C'est une citation (QUOTE).
 \end_inset 
 
 
@@ -176,17 +182,19 @@ What you see is what you mean
 
 LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
  ( Après tout, quelle autre raison pourrait vous le faire utiliser? 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Cette parenthèse serait bien mieux en "Note de bas de page"
 \end_inset 
 
 ) Je NE RÉSISTE PLUS 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 \end_inset 
 
  à l'envie de vous les présenter.
- En voici quelques une.
+ En voici quelques-unes.
  
 \layout Standard
 
@@ -197,9 +205,10 @@ A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 \layout Standard
 
 Voir Section 1.2, page 1 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Cette "Référence Croisée" ne devrait pas ^etre écrite en dur.
-Que se passe-t-il si l'on change la numèrotation des sections?
+Que se passe-t-il si l'on change la numérotation des sections?
 \end_inset 
 
  pour une discussion plus approfondie sur les avantages de LyX par rapport
@@ -233,14 +242,15 @@ JE SUIS SUPER!
 \layout Standard
 
 
-\begin_inset Info Indication: C'est du source de programme ("CODE")
+\begin_inset Info
+Indication: C'est du source de programme ("CODE").
 \end_inset 
 
 
 \layout Standard
 
 Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
- J'ai donc écrit ceci
+ J'ai donc écrit ceci :
 \layout Standard
 
 LyX est vraiment un extraordinaire
@@ -253,7 +263,8 @@ Il fait gagner tellement de temps
 \layout Standard
 
 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Pas terrible comme poésie! Mais ce sont quand m^eme
 des vers ("VERSE").
 \end_inset 
@@ -263,9 +274,10 @@ des vers ("VERSE").
 
 4.
  Les maths 
-\begin_inset Info Indication:
+\begin_inset Info
+Indication:
 Les mathématiques qui suivent devraient ^etre traitées
-en "Mode Mathématique":
+en "Mode Mathématique".
 \end_inset 
 
 

@@ -1,6 +1,5 @@
-#This file was created by <phb> Tue Apr 13 00:29:05 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
 \textclass article
 \language french
 \inputencoding default
@@ -57,7 +56,8 @@ LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
  Il a été construit, à son tour, à partir d'un langage de composition, appelé
  TeX, créé par Donald Knuth en 1984.
  LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
- Leslie Lamport disait lui-même (voir référence 
+ Leslie Lamport disait lui-même (voir référence\SpecialChar ~
+
 \begin_inset LatexCommand \cite{lamport}
 
 \end_inset 
@@ -126,7 +126,7 @@ Après tout, quelle autre raison pourrait vous le faire utiliser?
 ne résiste plus
 \shape default 
  à l'envie de vous les présenter.
- En voici quelques une.
+ En voici quelques-unes.
 \layout Itemize
 
 LyX gère les marges et la numérotation des notes de bas de page pour vous.
@@ -135,12 +135,14 @@ LyX gère les marges et la numérotation des notes de bas de page pour vous.
 L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
 \layout Standard
 
-Voir Section 
+Voir Section\SpecialChar ~
+
 \begin_inset LatexCommand \ref{sec:lyxmeilleur}
 
 \end_inset 
 
-, page 
+, page\SpecialChar ~
+
 \begin_inset LatexCommand \pageref{sec:lyxmeilleur}
 
 \end_inset 
@@ -174,7 +176,7 @@ JE SUIS SUPER!
 \layout Standard
 
 Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
- J'ai donc écrit ceci
+ J'ai donc écrit ceci :
 \layout Verse
 
 LyX est vraiment un extraordinaire
@@ -234,12 +236,13 @@ Je ne me suis pas ennuyé à mettre les équations mathématiques en mode affichage.
  Je n'ai pas non plus utilisé le mode de numérotation automatique des équations
  de LyX parce qu'il n'est pas décrit dans le 
 \emph on 
-Manuel d'Apprentissage
+Manuel\SpecialChar ~
+d'Apprentissage
 \emph default 
 .
 \layout Itemize
 
-Je n'ai pas eut à taper le mot 
+Je n'ai pas eu à taper le mot 
 \begin_inset Quotes fld
 \end_inset 
 
@@ -252,12 +255,12 @@ References
 \begin_inset Quotes fld
 \end_inset 
 
-Bibliography,
+Bibliography
 \begin_inset Quotes frd
 \end_inset 
 
- en fonction de la classe du document) lorsque vous sélectionnez l'environnement
- 
+, en fonction de la classe du document) lorsque vous sélectionnez l'environnemen
+t 
 \family sans 
 Bibliography
 \family default 
