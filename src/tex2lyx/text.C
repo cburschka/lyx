@@ -16,6 +16,7 @@
 #include "tex2lyx.h"
 #include "context.h"
 #include "FloatList.h"
+#include "lengthcommon.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/filetools.h"
@@ -103,45 +104,80 @@ map<string, string> split_map(string const & s)
 	return res;
 }
 
-// A simple function to translate a latex length to something lyx can
-// understand. Not perfect, but rather best-effort.
-string translate_len(string const & len)
+
+/*!
+ * Split a LaTeX length into value and unit.
+ * The latter can be a real unit like "pt", or a latex length variable
+ * like "\textwidth". The unit may contain additional stuff like glue
+ * lengths, but we don't care, because such lengths are ERT anyway.
+ * \return true if \param value and \param unit are valid.
+ */
+bool splitLatexLength(string const & len, string & value, string & unit)
 {
-	const string::size_type i = len.find_first_not_of(" -0123456789.,");
+	if (len.empty())
+		return false;
+	const string::size_type i = len.find_first_not_of(" -+0123456789.,");
 	//'4,5' is a valid LaTeX length number. Change it to '4.5'
 	string const length = lyx::support::subst(len, ',', '.');
-	// a normal length
-	if (i == string::npos || len[i]  != '\\')
-		return length;
-	double val;
+	if (i == string::npos)
+		return false;
 	if (i == 0) {
-		// We had something like \textwidth without a factor
-		val = 100;
+		if (len[0] == '\\') {
+			// We had something like \textwidth without a factor
+			value = "1.0";
+		} else {
+			return false;
+		}
 	} else {
-		istringstream iss(string(length, 0, i));
-		iss >> val;
-		val = val * 100;
+		value = trim(string(length, 0, i));
 	}
-	ostringstream oss;
-	oss << val;
-	string const valstring = oss.str();
-	const string::size_type i2 = length.find(" ", i);
-	string const unit = string(len, i, i2 - i);
-	string const endlen = (i2 == string::npos) ? string() : string(len, i2);
-	if (unit == "\\textwidth")
-		return valstring + "text%" + endlen;
-	else if (unit == "\\columnwidth")
-		return valstring + "col%" + endlen;
-	else if (unit == "\\paperwidth")
-		return valstring + "page%" + endlen;
-	else if (unit == "\\linewidth")
-		return valstring + "line%" + endlen;
-	else if (unit == "\\paperheight")
-		return valstring + "pheight%" + endlen;
-	else if (unit == "\\textheight")
-		return valstring + "theight%" + endlen;
+	if (value == "-")
+		value = "-1.0";
+	// 'cM' is a valid LaTeX length unit. Change it to 'cm'
+	if (lyx::support::contains(len, '\\'))
+		unit = trim(string(len, i));
 	else
+		unit = lyx::support::lowercase(trim(string(len, i)));
+	return true;
+}
+
+
+// A simple function to translate a latex length to something lyx can
+// understand. Not perfect, but rather best-effort.
+string translate_len(string const & length)
+{
+	string unit;
+	string valstring;
+	// If the input is invalid, return what we have.
+	if (!splitLatexLength(length, valstring, unit))
 		return length;
+	// LyX uses percent values
+	double value;
+	istringstream iss(valstring);
+	iss >> value;
+	value *= 100;
+	ostringstream oss;
+	oss << value;
+	string const percentval = oss.str();
+	// a normal length
+	if (unit.empty() || unit[0] != '\\')
+		return valstring + unit;
+	const string::size_type i = unit.find(" ", i);
+	string const endlen = (i == string::npos) ? string() : string(unit, i);
+	if (unit == "\\textwidth")
+		return percentval + "text%" + endlen;
+	else if (unit == "\\columnwidth")
+		return percentval + "col%" + endlen;
+	else if (unit == "\\paperwidth")
+		return percentval + "page%" + endlen;
+	else if (unit == "\\linewidth")
+		return percentval + "line%" + endlen;
+	else if (unit == "\\paperheight")
+		return percentval + "pheight%" + endlen;
+	else if (unit == "\\textheight")
+		return percentval + "theight%" + endlen;
+	else
+		return valstring + unit;
 }
 
 
@@ -1151,8 +1187,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// Problem: \= creates a tabstop inside the tabbing environment
 		// and else an accent. In the latter case we really would want
 		// \={o} instead of \= o.
+		else if (t.cs() == "=" && (flags & FLAG_TABBING))
+			handle_ert(os, t.asInput(), context);
+
 		else if (t.cs() == "H" || t.cs() == "c" || t.cs() == "^" || t.cs() == "'"
-		      || t.cs() == "~" || t.cs() == "." || (t.cs() == "=" && ! (flags & FLAG_TABBING))) {
+		      || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
 			// we need the trim as the LyX parser chokes on such spaces
 			context.check_layout(os);
 			os << "\n\\i \\" << t.cs() << "{"
@@ -1231,33 +1270,93 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if ( t.cs() == "smallskip" ||
-		          t.cs() == "medskip" ||
-			  t.cs() == "bigskip" ||
-			  t.cs() == "vfill" ||
-		         (t.cs() == "vspace" && p.next_token().asInput() != "*")) {
-			string arg;
-			if (t.cs() == "vspace")
-				arg = p.getArg('{', '}');
-			else
-				arg = t.cs();
-			// We may only add the vspace to the current context if the
-			// current paragraph is not empty.
-			if (context.atParagraphStart()
-			    && (p.next_token().cat() != catNewline || p.next_token().cs().size() == 1)
-			    && (! (p.next_token().cat() == catEscape && p.next_token().cs() == "end"))
-			    && (! (p.next_token().cat() == catEscape && p.next_token().cs() == "par"))) {
-				context.extra_stuff += "\\added_space_top " + arg + " ";
-				p.skip_spaces();
-			} else {
-				if (t.cs() == "vspace")
-					handle_ert(os, t.asInput() + '{' + arg + '}', context);
-				else
-					handle_ert(os, t.asInput(), context);
+		else if (t.cs() == "smallskip" ||
+		         t.cs() == "medskip" ||
+			 t.cs() == "bigskip" ||
+			 t.cs() == "vfill") {
+			context.check_layout(os);
+			begin_inset(os, "VSpace ");
+			os << t.cs();
+			end_inset(os);
+		}
+
+		else if (t.cs() == "vspace") {
+			bool starred = false;
+			if (p.next_token().asInput() == "*") {
+				p.get_token();
+				starred = true;
 			}
-			// Would be nice to recognize added_space_bottom too...
-			// At the moment this is parsed as added_space_top of the
-			// next paragraph.
+			string const length = p.verbatim_item();
+			string unit;
+			string valstring;
+			bool valid = splitLatexLength(length, valstring, unit);
+			bool known_vspace = false;
+			bool known_unit = false;
+			double value;
+			if (valid) {
+				istringstream iss(valstring);
+				iss >> value;
+				if (value == 1.0) {
+					if (unit == "\\smallskipamount") {
+						unit = "smallskip";
+						known_vspace = true;
+					} else if (unit == "\\medskipamount") {
+						unit = "medskip";
+						known_vspace = true;
+					} else if (unit == "\\bigskipamount") {
+						unit = "bigskip";
+						known_vspace = true;
+					} else if (unit == "\\fill") {
+						unit = "vfill";
+						known_vspace = true;
+					}
+				} else {
+					switch (unitFromString(unit)) {
+					case LyXLength::SP:
+					case LyXLength::PT:
+					case LyXLength::BP:
+					case LyXLength::DD:
+					case LyXLength::MM:
+					case LyXLength::PC:
+					case LyXLength::CC:
+					case LyXLength::CM:
+					case LyXLength::IN:
+					case LyXLength::EX:
+					case LyXLength::EM:
+					case LyXLength::MU:
+						known_unit = true;
+						break;
+					default:
+						break;
+					}
+				}
+			}
+
+			if (known_unit || known_vspace) {
+				// Literal length or known variable
+				context.check_layout(os);
+				begin_inset(os, "VSpace ");
+				if (known_unit)
+					os << value;
+				os << unit;
+				if (starred)
+					os << '*';
+				end_inset(os);
+			} else {
+				// LyX can't handle other length variables in Inset VSpace
+				string name = t.asInput();
+				if (starred)
+					name += '*';
+				if (valid) {
+					if (value == 1.0)
+						handle_ert(os, name + '{' + unit + '}', context);
+					else if (value == -1.0)
+						handle_ert(os, name + "{-" + unit + '}', context);
+					else
+						handle_ert(os, name + '{' + valstring + unit + '}', context);
+				} else
+					handle_ert(os, name + '{' + length + '}', context);
+			}
 		}
 
 		else {
@@ -1280,7 +1379,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();				// Eat '*'
 				name += '*';
 			}
-			if (! parse_command(t.asInput(), p, os, outer, context))
+			if (! parse_command(name, p, os, outer, context))
 				handle_ert(os, name, context);
 		}
 

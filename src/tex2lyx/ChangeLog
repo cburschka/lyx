@@ -1,3 +1,9 @@
+2003-12-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C: Use the new VSpace inset (fixes a bug with added_space top)
+	* text.C: Fix \= in tabbing env again
+	* text.C: Fix invocation of parse_command()
+
 2003-11-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tex2lyx.C:

@@ -436,8 +436,14 @@ bool MathCursor::backspace()
 		}
 	}
 
-	--pos();
-	plainErase();
+	if (hasPrevAtom() && prevAtom()->nargs() > 0) {
+		// let's require two backspaces for 'big stuff' and
+		// highlight on the first
+		left(true);
+	} else {
+		--pos();
+		plainErase();
+	}
 	return true;
 }
 

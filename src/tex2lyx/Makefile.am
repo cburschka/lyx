@@ -18,6 +18,7 @@ BUILT_SOURCES = \
 	FloatList.C \
 	Floating.C \
 	counters.C \
+	lengthcommon.C \
 	lyxlayout.h \
 	lyxlayout.C \
 	lyxtextclass.C \
