@@ -49,7 +49,7 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	MathFontSetChanger dummy(mi.base, sym_->inset.c_str());
 	mathed_string_dim(mi.base.font, sym_->draw, ascent_, descent_, width_);
 	// correct height for broken cmex font
-	if (sym_->inset == "cmex") {
+	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
 		h_ = 4 * descent_ / 5;
 		ascent_  += h_;
 		descent_ -= h_;
