@@ -1444,7 +1444,7 @@ void LyXRC::output(ostream & os) const
 #ifdef USE_PSPELL
 	case RC_USE_PSPELL:
 		if (use_pspell != system_lyxrc.use_pspell) {
-			os << "\\use_pspell \"" << use_pspell << "\"\n";
+			os << "\\use_pspell " << tostr(use_pspell) << "\n";
 		}
 #endif
 	case RC_SPELL_COMMAND:

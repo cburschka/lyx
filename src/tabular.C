@@ -552,7 +552,7 @@ int LyXTabular::GetAdditionalHeight(int row) const
 	bool top = true;
 	bool bottom = true;
 
-	for (int column = 0; column < columns_ - 1 && bottom; ++column) {
+	for (int column = 0; column < columns_ && bottom; ++column) {
 		switch (cell_info[row - 1][column].multicolumn) {
 		case LyXTabular::CELL_BEGIN_OF_MULTICOLUMN:
 			bottom = cell_info[row - 1][column].bottom_line;
@@ -561,7 +561,7 @@ int LyXTabular::GetAdditionalHeight(int row) const
 			bottom = row_info[row - 1].bottom_line;
 		}
 	}
-	for (int column = 0; column < columns_ - 1 && top; ++column) {
+	for (int column = 0; column < columns_ && top; ++column) {
 		switch (cell_info[row][column].multicolumn){
 		case LyXTabular::CELL_BEGIN_OF_MULTICOLUMN:
 			top = cell_info[row][column].top_line;

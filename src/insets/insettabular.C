@@ -2732,7 +2732,7 @@ bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
 
 	// maybe some speedup
 	if ((last < n) && tabular->GetCellInset(last) == in) {
-		if (tabular->GetPWidth(last+1).zero())
+		if (tabular->GetPWidth(last).zero())
 			return true;
 		return false;
 	}

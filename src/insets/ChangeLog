@@ -1,3 +1,8 @@
+2002-01-16  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (forceDefaultParagraphs): fixed bug returning value
+	of wrong cell.
+
 2002-01-16  Allan Rae  <rae@lyx.org>
 
 	* insetinclude.C (docbook): someone forgot a ";"
