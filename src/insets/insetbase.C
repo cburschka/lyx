@@ -13,4 +13,3 @@ dispatch_result InsetBase::localDispatch(FuncRequest const & cmd)
 	pos_type pos = 0;
 	return dispatch(cmd, idx, pos);
 }
-

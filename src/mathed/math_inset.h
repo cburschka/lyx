@@ -70,7 +70,6 @@ class MathMLStream;
 class WriteStream;
 class InfoStream;
 
-class LaTeXFeatures;
 class BufferView;
 class UpdatableInset;
 class MathMacroTemplate;
@@ -213,8 +212,6 @@ public:
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 
-	/// request "external features"
-	virtual void validate(LaTeXFeatures &) const {}
 	/// char char code if possible
 	virtual void handleFont(string const &) {}
 	/// is this inset equal to a given other inset?

@@ -19,6 +19,7 @@ class FuncRequest;
 class MetricsInfo;
 class Dimension;
 class PainterInfo;
+class LaTeXFeatures;
 
 /** Dispatch result codes
 		DISPATCHED          = the inset catched the action
@@ -81,6 +82,8 @@ public:
 	virtual void cache(BufferView *) const {}
 	///
 	virtual BufferView * view() const { return 0; }
+	/// request "external features"
+	virtual void validate(LaTeXFeatures &) const {}
 };
 
 #endif

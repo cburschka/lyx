@@ -27,6 +27,9 @@
 	* insettabular.[Ch]:
 	* insettext.[Ch]: unify first drawing phase
 
+	* inset.[Ch]:
+	* insetbase.h: move validate() to the base
+
 2003-05-31  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: moved insetwrap.[Ch] into alphabetical order.

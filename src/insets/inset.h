@@ -23,7 +23,6 @@
 #include <vector>
 
 class LyXFont;
-class Dimension;
 class Buffer;
 class Painter;
 class LatexRunParams;
@@ -34,8 +33,6 @@ class LyXCursor;
 class FuncRequest;
 class WordLangTuple;
 class ParagraphList;
-
-struct LaTeXFeatures;
 
 namespace grfx {
 	class PreviewLoader;
@@ -192,8 +189,6 @@ public:
 	virtual int linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///
 	virtual int docbook(Buffer const *, std::ostream &, bool) const = 0;
-	/// Updates needed features for this inset.
-	virtual void validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code lyxCode() const { return NO_CODE; }

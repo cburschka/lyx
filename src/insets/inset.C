@@ -60,10 +60,6 @@ Inset::EDITABLE Inset::editable() const
 }
 
 
-void Inset::validate(LaTeXFeatures &) const
-{}
-
-
 bool Inset::autoDelete() const
 {
 	return false;
