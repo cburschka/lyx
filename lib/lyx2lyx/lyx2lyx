@@ -55,9 +55,9 @@ Options:
 
 
 def parse_options(argv):
-    _options =  ["help", "version", "list", "from=", "to=", "output=", "quiet"]
+    _options =  ["help", "version", "list", "debug=", "from=", "to=", "output=", "quiet"]
     try:
-       opts, args = getopt.getopt(argv[1:], "f:hlo:qt:v", _options)
+       opts, args = getopt.getopt(argv[1:], "d:f:hlo:qt:v", _options)
     except getopt.error:
         usage()
         sys.exit(2)
