@@ -19,23 +19,39 @@ class Paragraph;
 
 /// returns false if no undo possible
 bool textUndo(BufferView *);
+
 /// returns false if no redo possible
 bool textRedo(BufferView *);
+
 /// makes sure the next operation will be stored
 void finishUndo();
-/// Whilst undo is frozen, all actions do not get added
-/// to the undo stack
+
+/**
+ * Whilst undo is frozen, all actions do not get added
+ * to the undo stack
+ */
 void freezeUndo();
+
 /// Track undos again
 void unFreezeUndo();
-/// FIXME
+
+/**
+ * Record undo information - call with the first paragraph that will be changed
+ * and the last paragraph that will be changed. So we give an inclusive
+ * range.
+ * This is called before you make the changes to the paragraph, and it
+ * will record the original information of the paragraphs in the undo stack.
+ */
 void setUndo(BufferView *, Undo::undo_kind kind,
 		    ParagraphList::iterator first, ParagraphList::iterator last);
+/// Convienience: Prepare undo when change in a single paragraph.
 void setUndo(BufferView *, Undo::undo_kind kind,
 		    ParagraphList::iterator first);
-// set undo for containing paragraph
+
+/// Convienience: Prepare undo for the paragraph that contains the cursor
 void setUndo(BufferView *, Undo::undo_kind kind);
-/// FIXME
+
+/// Convienience: Prepare and finish undo for the paragraph that contains the cursor
 void setCursorParUndo(BufferView *);
 
 /// Are we avoiding tracking undos currently ?

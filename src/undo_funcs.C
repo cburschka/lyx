@@ -114,15 +114,11 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		//LyXText * text = inset ? inset->getLyXText(bv) : bv->text;
 		LyXText * text = bv->text;
 		lyxerr << "handle: text: " << text << "\n";
-		if (undo.first_par_offset) {
-			ParagraphList::iterator redo = plist->begin();
-			lyxerr << "handle: 1\n";
-			advance(redo, undo.first_par_offset);
-			lyxerr << "handle: 2\n";
-			text->setCursorIntern(plist->begin(), 0);
-		}
+		// The cursor should be sane, so we will put it to the top
+		text->setCursorIntern(plist->begin(), 0);
 		lyxerr << "handle: 3\n";
-		text->redoParagraphs(text->cursor, plist->end());
+		// Rebreak the entire document
+		text->fullRebreak();
 		lyxerr << "handle: after redo\n";
 
 		if (inset) {
@@ -192,6 +188,7 @@ void createUndo(BufferView * bv, Undo::undo_kind kind,
 	plist = &buf->paragraphs;
 	// this is what we'd like to have in the end for small grained undo
 	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it) {
+		// This does not work if we are nested twice or more
 		if (it->id() == first->id())
 			first = it.outerPar();
 		if (it->id() == last->id())
@@ -208,25 +205,23 @@ void createUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 
-	// Undo::EDIT and Undo::FINISH are
-	// always finished. (no overlapping there)
+	// Undo::EDIT and Undo::FINISH are always finished.
+	// (no overlapping there)
 	// overlapping only with insert and delete inside one paragraph:
-	// Nobody wants all removed  character
-	// appear one by one when undoing.
+	// Nobody wants all removed character appear one by one when undoing.
 	// EDIT is special since only layout information, not the
 	// contents of a paragaph are stored.
-	if (!undo_finished && kind != Undo::EDIT && kind != Undo::FINISH) {
+	if (! undo_finished && kind != Undo::EDIT && kind != Undo::FINISH) {
 		// Check whether storing is needed.
-		if (!buf->undostack.empty() &&
-		    buf->undostack.top().kind == kind &&
-		    buf->undostack.top().first_par_offset == first_offset &&
-		    buf->undostack.top().last_par_offset == last_offset) {
-			// No undo needed.
+		if (! buf->undostack.empty() 
+		    && buf->undostack.top().kind == kind 
+		    && buf->undostack.top().first_par_offset == first_offset
+		    && buf->undostack.top().last_par_offset == last_offset) {
+			// No undo recording needed.
 			return;
 		}
 	}
 
-	// Create a new Undo.
 	int const cursor_offset = std::distance
 		(text->ownerParagraphs().begin(), text->cursor.par());
 
@@ -344,19 +339,6 @@ bool textRedo(BufferView * bv)
 }
 
 
-void setUndo(BufferView * bv, Undo::undo_kind kind)
-{
-	setUndo(bv, kind, bv->text->cursor.par());
-}
-
-
-void setUndo(BufferView * bv, Undo::undo_kind kind,
-	     ParagraphList::iterator first)
-{
-	setUndo(bv, kind, first, first);
-}
-
-
 void setUndo(BufferView * bv, Undo::undo_kind kind,
 	     ParagraphList::iterator first, ParagraphList::iterator last)
 {
@@ -367,7 +349,20 @@ void setUndo(BufferView * bv, Undo::undo_kind kind,
 }
 
 
+void setUndo(BufferView * bv, Undo::undo_kind kind,
+	     ParagraphList::iterator first)
+{
+	setUndo(bv, kind, first, first);
+}
+
+
+void setUndo(BufferView * bv, Undo::undo_kind kind)
+{
+	setUndo(bv, kind, bv->text->cursor.par());
+}
+
+
 void setCursorParUndo(BufferView * bv)
 {
-	setUndo(bv, Undo::FINISH, bv->text->cursor.par());
+	setUndo(bv, Undo::FINISH);
 }

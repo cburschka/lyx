@@ -1,3 +1,9 @@
+2003-07-25  Asger Alstrup  <alstrup@lyx.org>
+
+	* undo_funcs.C (textHandleUndo): Fix undo crash in first paragraph
+	by not having a special case, and always doing a full rebreak of
+	the document after undo.
+
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
 	* factory.C (createInset): InsetExternal::setParams now takes a
