@@ -249,7 +249,7 @@ void BufferList::resize()
 
 bool BufferList::close(Buffer * buf)
 {
-        buf->getUser()->insetUnlock();
+        if (buf->getUser()) buf->getUser()->insetUnlock();
 	
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		ProhibitInput();
@@ -325,7 +325,8 @@ int BufferList::unlockInset(UpdatableInset * inset)
 	if (!inset) return 1;
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
-		if ((*it)->getUser()->the_locking_inset == inset) {
+		if ((*it)->getUser()
+		    && (*it)->getUser()->the_locking_inset == inset) {
 			(*it)->getUser()->insetUnlock();
 			return 0;
 		}

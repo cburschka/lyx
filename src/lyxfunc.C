@@ -96,19 +96,6 @@ extern tex_accent_struct get_accent(kb_action action);
 
 extern void AutoSave();
 extern void MenuSearch();
-extern void CopyCB();
-extern void CopyEnvironmentCB();
-extern void PasteEnvironmentCB();
-extern void GotoNote();
-extern void NoteCB();
-extern void OpenStuff();
-extern void HyphenationPoint();
-extern void Ldots();
-extern void EndOfSentenceDot();
-extern void MenuSeparator();
-extern void HFill();
-extern void MenuUndo();
-extern void MenuRedo();
 extern void SetUpdateTimer(float timer = 0.3);
 extern void FreeUpdateTimer();
 extern bool MenuPreview(Buffer *);
@@ -132,7 +119,7 @@ extern void Reconfigure();
 extern int current_layout;
 extern int getISOCodeFromLaTeX(char *);
 
-extern int UnlockInset(UpdatableInset *);
+//extern int UnlockInset(UpdatableInset *);
 
 extern void ShowLatexLog();
 
@@ -209,7 +196,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	if (owner->view()->available() &&
 	    owner->view()->the_locking_inset &&
 	    keysym_return == XK_Escape) {
-		UnlockInset(owner->view()->the_locking_inset);
+		owner->view()->unlockInset(owner->view()->the_locking_inset);
 		owner->view()->text->CursorRight();
 		return 0;
 	}
@@ -534,8 +521,8 @@ string LyXFunc::Dispatch(int ac,
 				UpdatableInset * inset = 
 					owner->view()->the_locking_inset;
 				inset->GetCursorPos(slx, sly);
-				UnlockInset(inset);
-				MenuUndo();
+				owner->view()->unlockInset(inset);
+				owner->view()->menuUndo();
 				inset = static_cast<UpdatableInset*>(owner->view()->text->cursor.par->GetInset(owner->view()->text->cursor.pos));
 				if (inset) 
 					inset->Edit(slx, sly);
@@ -545,8 +532,8 @@ string LyXFunc::Dispatch(int ac,
 					int slx, sly;
 					UpdatableInset * inset = owner->view()->the_locking_inset;
 					inset->GetCursorPos(slx, sly);
-					UnlockInset(inset);
-					MenuRedo();
+					owner->view()->unlockInset(inset);
+					owner->view()->menuRedo();
 					inset = static_cast<UpdatableInset*>(owner->view()->text->cursor.par->GetInset(owner->view()->text->cursor.pos));
 					if (inset)
 						inset->Edit(slx, sly);
@@ -792,28 +779,28 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_TOC_INSERT:
 	{
 		Inset * new_inset = new InsetTOC(owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 	
 	case LFUN_LOF_INSERT:
 	{
 		Inset * new_inset = new InsetLOF(owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 	
 	case LFUN_LOA_INSERT:
 	{
 		Inset * new_inset = new InsetLOA(owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 
 	case LFUN_LOT_INSERT:
 	{
 		Inset * new_inset = new InsetLOT(owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 		
@@ -830,11 +817,11 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_UNDO:
-		MenuUndo();
+		owner->view()->menuUndo();
 		break;
 		
 	case LFUN_REDO:
-		MenuRedo();
+		owner->view()->menuRedo();
 		break;
 		
 	case LFUN_MENUSEARCH:
@@ -842,7 +829,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_PASTE:
-		PasteCB();
+		owner->view()->paste();
 		break;
 		
 	case LFUN_PASTESELECTION:
@@ -854,19 +841,19 @@ string LyXFunc::Dispatch(int ac,
 	}
 
 	case LFUN_CUT:
-		CutCB();
+		owner->view()->cut();
 		break;
 		
 	case LFUN_COPY:
-		CopyCB();
+		owner->view()->copy();
 		break;
 		
 	case LFUN_LAYOUT_COPY:
-		CopyEnvironmentCB();
+		owner->view()->copyEnvironment();
 		break;
 		
 	case LFUN_LAYOUT_PASTE:
-		PasteEnvironmentCB();
+		owner->view()->pasteEnvironment();
 		break;
 		
 	case LFUN_GOTOERROR:
@@ -874,7 +861,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_REMOVEERRORS:
-		if (owner->buffer()->removeAutoInsets()) {
+		if (owner->view()->removeAutoInsets()) {
 			owner->view()->redraw();
 			owner->view()->fitCursor();
 			owner->view()->updateScrollbar();
@@ -882,31 +869,31 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_GOTONOTE:
-		GotoNote();
+		owner->view()->gotoNote();
 		break;
 		
 	case LFUN_OPENSTUFF:
-		OpenStuff();
+		owner->view()->openStuff();
 		break;
 		
 	case LFUN_HYPHENATION:
-		HyphenationPoint();
+		owner->view()->hyphenationPoint();
 		break;
 		
 	case LFUN_LDOTS:
-		Ldots();
+		owner->view()->ldots();
 		break;
 		
 	case LFUN_END_OF_SENTENCE:
-		EndOfSentenceDot();
+		owner->view()->endOfSentenceDot();
 		break;
 
 	case LFUN_MENU_SEPARATOR:
-		MenuSeparator();
+		owner->view()->menuSeparator();
 		break;
 		
 	case LFUN_HFILL:
-		HFill();
+		owner->view()->hfill();
 		break;
 		
 	case LFUN_DEPTH:
@@ -1255,7 +1242,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		if (!label.empty()) {
 			owner->view()->savePosition();
-			owner->buffer()->gotoLabel(label.c_str());
+			owner->view()->gotoLabel(label.c_str());
 		}
 	}
 	break;
@@ -1605,7 +1592,7 @@ string LyXFunc::Dispatch(int ac,
 			// just comment out the lone below...
 			owner->view()->getScreen()->ShowCursor();
 		} else {
-			CutCB();
+			owner->view()->cut();
 		}
 		SetUpdateTimer();
 		break;
@@ -1649,7 +1636,7 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->smallUpdate(1);
 			}
 		} else {
-			CutCB();
+			owner->view()->cut();
 		}
 		SetUpdateTimer();
 	}
@@ -1718,7 +1705,7 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->getScreen()->ShowCursor();
 			}
 		} else {
-			CutCB();
+			owner->view()->cut();
 		}
 		SetUpdateTimer();
 	}
@@ -1751,7 +1738,7 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->smallUpdate (1);
 			}
 		} else
-			CutCB();
+			owner->view()->cut();
 		SetUpdateTimer();
 	}
 	break;
@@ -1825,7 +1812,7 @@ string LyXFunc::Dispatch(int ac,
 			new_inset = new InsetUrl("htmlurl", "", "");
 		else
 			new_inset = new InsetUrl("url", "", "");
-		owner->buffer()->insertInset(new_inset);
+		owner->view()->insertInset(new_inset);
 		new_inset->Edit(0, 0);
 	}
 	break;
@@ -1919,7 +1906,7 @@ string LyXFunc::Dispatch(int ac,
 		        owner->view()->buffer(bufferlist.loadLyXFile(s));
 
 		// Set the cursor  
-		owner->buffer()->setCursorFromRow(row);
+		owner->view()->setCursorFromRow(row);
 
 		// Recenter screen
 		owner->view()->beforeChange();
@@ -2066,7 +2053,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSERT_MATRIX:
 	{ 	   
 		if (owner->view()->available()) { 
-			owner->buffer()->
+			owner->view()->
 				open_new_inset(new InsetFormula(false));
 			owner->view()->
 				the_locking_inset->LocalDispatch(action, argument.c_str());
@@ -2083,7 +2070,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_MATH_DISPLAY:
 	{
 		if (owner->view()->available())
-			owner->buffer()->open_new_inset(new InsetFormula(true));
+			owner->view()->open_new_inset(new InsetFormula(true));
 		break;
 	}
 		    
@@ -2096,7 +2083,7 @@ string LyXFunc::Dispatch(int ac,
 		        else {
 				string s1 = token(s, ' ', 1);
 				int na = s1.empty() ? 0: atoi(s1.c_str());
-				owner->buffer()->
+				owner->view()->
 					open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
 		}
@@ -2107,7 +2094,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		
 		if (owner->view()->available())
-			owner->buffer()->open_new_inset(new InsetFormula);
+			owner->view()->open_new_inset(new InsetFormula);
 		setMessage(N_("Math editor mode"));
 	}
 	break;
@@ -2132,9 +2119,9 @@ string LyXFunc::Dispatch(int ac,
 				new_inset->setOptions(token(lsarg, '|', 1));
 			} else
 				new_inset->setContents(lsarg);
-			owner->buffer()->insertInset(new_inset);
+			owner->view()->insertInset(new_inset);
 		} else {
-			owner->buffer()->insertInset(new_inset);
+			owner->view()->insertInset(new_inset);
 			new_inset->Edit(0, 0);
 		}
 	}
@@ -2154,7 +2141,7 @@ string LyXFunc::Dispatch(int ac,
 					  bibstyle,
 					  owner->buffer());
 		
-		owner->buffer()->insertInset(new_inset);
+		owner->view()->insertInset(new_inset);
 		if (lsarg.empty()) {
 			new_inset->Edit(0, 0);
 		}
@@ -2203,7 +2190,7 @@ string LyXFunc::Dispatch(int ac,
 		if (!argument.empty()) {
   			string lsarg(argument);
 			new_inset->setContents(lsarg);
-			owner->buffer()->insertInset(new_inset);
+			owner->view()->insertInset(new_inset);
 		} else {
 			//reh 98/09/21
 			//get the current word for an argument
@@ -2235,7 +2222,7 @@ string LyXFunc::Dispatch(int ac,
 			//put the new inset into the buffer.
 			// there should be some way of knowing the user
 			//cancelled & avoiding this, but i don't know how
-			owner->buffer()->insertInset(new_inset);
+			owner->view()->insertInset(new_inset);
 		}
 	}
 	break;
@@ -2243,7 +2230,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INDEX_PRINT:
 	{
 		Inset * new_inset = new InsetPrintIndex(owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 	}
 	break;
 
@@ -2251,7 +2238,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		lyxerr << "arg " << argument << endl;
 		Inset * new_inset = new InsetParent(argument, owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 	}
 	break;
 
@@ -2259,7 +2246,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		Inset * new_inset = new InsetInclude(argument,
 						     owner->buffer());
-		owner->buffer()->insertInset(new_inset, "Standard", true);
+		owner->view()->insertInset(new_inset, "Standard", true);
 		new_inset->Edit(0, 0);
 	}
 	break;
@@ -2280,7 +2267,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 
 	case LFUN_INSERT_NOTE:
-		NoteCB();
+		owner->view()->insertNote();
 		break;
 		
 	case LFUN_INSERTFOOTNOTE: 
@@ -2803,7 +2790,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 	// Inserts document
 	owner->getMiniBuffer()->Set(_("Inserting document"),
 				    MakeDisplayPath(filename), "...");
-	bool res = owner->buffer()->insertLyXFile(filename);
+	bool res = owner->view()->insertLyXFile(filename);
 	if (res) {
 		owner->getMiniBuffer()->Set(_("Document"),
 					    MakeDisplayPath(filename),

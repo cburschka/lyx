@@ -200,9 +200,8 @@ void Buffer::fileName(string const & newfile)
 }
 
 
-// candidate for move to BufferView
 // Inserts a file into current document
-bool Buffer::insertLyXFile(string const & filen)
+bool BufferView::insertLyXFile(string const & filen)
 	//
 	// (c) CHT Software Service GmbH
 	// Uwe C. Schroeder
@@ -225,7 +224,7 @@ bool Buffer::insertLyXFile(string const & filen)
 		return false;
 	}
 	
-	users->beforeChange();
+	beforeChange();
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
@@ -243,10 +242,10 @@ bool Buffer::insertLyXFile(string const & filen)
 
 	if (c == '#') {
 		lyxerr.debug() << "Will insert file with header" << endl;
-		res = readFile(lex, users->text->cursor.par);
+		res = buffer()->readFile(lex, text->cursor.par);
 	} else {
 		lyxerr.debug() << "Will insert file without header" << endl;
-		res = readLyXformat2(lex, users->text->cursor.par);
+		res = buffer()->readLyXformat2(lex, text->cursor.par);
 	}
 
 	resize();
@@ -2108,14 +2107,6 @@ bool Buffer::isSGML() const
 void Buffer::sgmlOpenTag(ostream & os, int depth,
 			 string const & latexname) const
 {
-#if 0
-	static char const * space[] = {
-		" ","  ", "   ", "    ", "     ", "      ",
-		"       ",
-		"        ", "         ", "          ",
-		"          "};
-	os << space[depth] << "<" << latexname << ">\n";
-#endif
 	os << string(depth, ' ') << "<" << latexname << ">\n";
 }
 
@@ -2123,13 +2114,6 @@ void Buffer::sgmlOpenTag(ostream & os, int depth,
 void Buffer::sgmlCloseTag(ostream & os, int depth,
 			  string const & latexname) const
 {
-#if 0
-	static char * space[] = {" ", "  ", "   ", "    ", "     ",
-				 "      ", "       ", "        ",
-				 "         ", "          ", "          "};
-
-	os << space[depth] << "</" << latexname << ">\n";
-#endif
 	os << string(depth, ' ') << "</" << latexname << ">\n";
 }
 
@@ -2196,13 +2180,13 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 			}
 		}
 
-		/* environment tag closing */
+		// environment tag closing
 		for( ; depth > par->depth; --depth) {
 			sgmlCloseTag(ofs, depth, environment_stack[depth]);
 			environment_stack[depth].clear();
 		}
 
-		/* write opening SGML tags */
+		// write opening SGML tags
 		switch(style.latextype) {
 		case LATEX_PARAGRAPH:
 			if(depth == par->depth 
@@ -3122,12 +3106,11 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 }
 
 
-// candidate for move to BufferView
-bool Buffer::removeAutoInsets()
+bool BufferView::removeAutoInsets()
 {
-	LyXParagraph * par = paragraph;
+	LyXParagraph * par = buffer()->paragraph;
 
-	LyXCursor cursor = users->text->cursor;
+	LyXCursor cursor = text->cursor;
 	LyXCursor tmpcursor = cursor;
 	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
 	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
@@ -3137,19 +3120,20 @@ bool Buffer::removeAutoInsets()
 		if (par->AutoDeleteInsets()){
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-				/* this is possible now, since SetCursor takes
-				   care about footnotes */
-				users->text->SetCursorIntern(par, 0);
-				users->text->RedoParagraphs(users->text->cursor, users->text->cursor.par->Next());
-				users->text->FullRebreak();
+				// this is possible now, since SetCursor takes
+				// care about footnotes
+				text->SetCursorIntern(par, 0);
+				text->RedoParagraphs(text->cursor,
+						     text->cursor.par->Next());
+				text->FullRebreak();
 			}
 		}
 		par = par->next;
 	}
-	/* avoid forbidden cursor positions caused by error removing */ 
+	// avoid forbidden cursor positions caused by error removing
 	if (cursor.pos > cursor.par->Last())
 		cursor.pos = cursor.par->Last();
-	users->text->SetCursorIntern(cursor.par, cursor.pos);
+	text->SetCursorIntern(cursor.par, cursor.pos);
 
 	return a;
 }
@@ -3175,7 +3159,7 @@ int Buffer::runLaTeX()
 	users->owner()->getMiniBuffer()->Set(_("Running LaTeX..."));   
 
 	// Remove all error insets
-	bool a = removeAutoInsets();
+	bool a = users->removeAutoInsets();
 
 	// Always generate the LaTeX file
 	makeLaTeXFile(name, org_path, false);
@@ -3194,7 +3178,7 @@ int Buffer::runLaTeX()
 	} else if ((res & LaTeX::ERRORS)) {
 		users->owner()->getMiniBuffer()->Set(_("Done"));
 		// Insert all errors as errors boxes
-		insertErrors(terr);
+		users->insertErrors(terr);
 		
 		// Dvi should also be kept dirty if the latex run
 		// ends up with errors. However it should be possible
@@ -3241,7 +3225,7 @@ int Buffer::runLiterate()
 	users->owner()->getMiniBuffer()->Set(_("Running Literate..."));   
 
 	// Remove all error insets
-	bool a = removeAutoInsets();
+	bool a = users->removeAutoInsets();
 
 	// generate the Literate file if necessary
 	if (!isDviClean() || a) {
@@ -3263,7 +3247,7 @@ int Buffer::runLiterate()
 	} else if ((res & Literate::ERRORS)) {
 		users->owner()->getMiniBuffer()->Set(_("Done"));
 		// Insert all errors as errors boxes
-		insertErrors(terr);
+		users->insertErrors(terr);
 		
 		// Dvi should also be kept dirty if the latex run
 		// ends up with errors. However it should be possible
@@ -3310,7 +3294,7 @@ int Buffer::buildProgram()
         users->owner()->getMiniBuffer()->Set(_("Building Program..."));   
  
         // Remove all error insets
-        bool a = removeAutoInsets();
+        bool a = users->removeAutoInsets();
  
         // generate the LaTeX file if necessary
         if (!isNwClean() || a) {
@@ -3332,7 +3316,7 @@ int Buffer::buildProgram()
         } else if ((res & Literate::ERRORS)) {
                 users->owner()->getMiniBuffer()->Set(_("Done"));
                 // Insert all errors as errors boxes
-                insertErrors(terr);
+		users->insertErrors(terr);
                 
                 // Literate files should also be kept dirty if the literate 
                 // command run ends up with errors.
@@ -3377,7 +3361,7 @@ int Buffer::runChktex()
 	users->owner()->getMiniBuffer()->Set(_("Running chktex..."));
 
 	// Remove all error insets
-	bool a = removeAutoInsets();
+	bool a = users->removeAutoInsets();
 
 	// Generate the LaTeX file if neccessary
 	if (!isDviClean() || a) {
@@ -3394,7 +3378,7 @@ int Buffer::runChktex()
 			   _("Could not run with file:"), name);
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
-		insertErrors(terr);
+		users->insertErrors(terr);
 	}
 
 	// if we removed error insets before we ran chktex or if we inserted
@@ -3410,18 +3394,14 @@ int Buffer::runChktex()
 }
 
 
-extern void AllFloats(char, char);
-
-
-// candidate for move to BufferView
-void Buffer::insertErrors(TeXErrors & terr)
+void BufferView::insertErrors(TeXErrors & terr)
 {
 	// Save the cursor position
-	LyXCursor cursor = users->text->cursor;
+	LyXCursor cursor = text->cursor;
 
 	// This is drastic, but it's the only fix, I could find. (Asger)
-	AllFloats(1, 0);
-	AllFloats(1, 1);
+	allFloats(1, 0);
+	allFloats(1, 1);
 
 	for (TeXErrors::Errors::const_iterator cit = terr.begin();
 	     cit != terr.end();
@@ -3435,47 +3415,46 @@ void Buffer::insertErrors(TeXErrors & terr)
 		int tmpid = -1; 
 		int tmppos = -1;
 
-		texrow.getIdFromRow(errorrow, tmpid, tmppos);
+		buffer()->texrow.getIdFromRow(errorrow, tmpid, tmppos);
 
 		LyXParagraph * texrowpar = 0;
 
 		if (tmpid == -1) {
-			texrowpar = users->text->FirstParagraph();
+			texrowpar = text->FirstParagraph();
 			tmppos = 0;
 		} else {
-			texrowpar = users->text->GetParFromID(tmpid);
+			texrowpar = text->GetParFromID(tmpid);
 		}
 
 		if (texrowpar == 0)
 			continue;
 
 		InsetError * new_inset = new InsetError(msgtxt);
-		users->text->SetCursorIntern(texrowpar, tmppos);
-		users->text->InsertInset(new_inset);
-		users->text->FullRebreak();
+		text->SetCursorIntern(texrowpar, tmppos);
+		text->InsertInset(new_inset);
+		text->FullRebreak();
 	}
 	// Restore the cursor position
-	users->text->SetCursorIntern(cursor.par, cursor.pos);
+	text->SetCursorIntern(cursor.par, cursor.pos);
 }
 
 
-// candidate for move to BufferView
-void Buffer::setCursorFromRow (int row)
+void BufferView::setCursorFromRow(int row)
 {
 	int tmpid = -1; 
 	int tmppos = -1;
 
-	texrow.getIdFromRow(row, tmpid, tmppos);
+	buffer()->texrow.getIdFromRow(row, tmpid, tmppos);
 
 	LyXParagraph * texrowpar;
 
 	if (tmpid == -1) {
-		texrowpar = users->text->FirstParagraph();
+		texrowpar = text->FirstParagraph();
 		tmppos = 0;
 	} else {
-		texrowpar = users->text->GetParFromID(tmpid);
+		texrowpar = text->GetParFromID(tmpid);
 	}
-	users->text->SetCursor(texrowpar, tmppos);
+	text->SetCursor(texrowpar, tmppos);
 }
 
 
@@ -3738,74 +3717,72 @@ void Buffer::setOldPaperStuff()
 #endif
 
 
-// candidate for move to BufferView
-void Buffer::insertInset(Inset * inset, string const & lout,
+void BufferView::insertInset(Inset * inset, string const & lout,
 			 bool no_table)
 {
 	// check for table/list in tables
-	if (no_table && users->text->cursor.par->table){
+	if (no_table && text->cursor.par->table){
 		WriteAlert(_("Impossible Operation!"),
 			   _("Cannot insert table/list in table."),
 			   _("Sorry."));
 		return;
 	}
 	// not quite sure if we want this...
-	users->text->SetCursorParUndo();
-	users->text->FreezeUndo();
+	text->SetCursorParUndo();
+	text->FreezeUndo();
 	
-	users->beforeChange();
+	beforeChange();
 	if (!lout.empty()) {
-		users->update(-2);
-		users->text->BreakParagraph();
-		users->update(-1);
+		update(-2);
+		text->BreakParagraph();
+		update(-1);
 		
-		if (users->text->cursor.par->Last()) {
-			users->text->CursorLeft();
+		if (text->cursor.par->Last()) {
+			text->CursorLeft();
 			
-			users->text->BreakParagraph();
-			users->update(-1);
+			text->BreakParagraph();
+			update(-1);
 		}
 
-		int lay = textclasslist.NumberOfLayout(params.textclass,
+		int lay = textclasslist.NumberOfLayout(buffer()->params.textclass,
 						       lout).second;
 		if (lay == -1) // layout not found
 			// use default layout "Standard" (0)
 			lay = 0;
 		
-		users->text->SetLayout(lay);
+		text->SetLayout(lay);
 		
-		users->text->SetParagraph(0, 0,
+		text->SetParagraph(0, 0,
 				   0, 0,
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
 				   LYX_ALIGN_LAYOUT, 
 				   string(),
 				   0);
-		users->update(-1);
+		update(-1);
 		
-		users->text->current_font.setLatex(LyXFont::OFF);
+		text->current_font.setLatex(LyXFont::OFF);
 	}
 	
-	users->text->InsertInset(inset);
-	users->update(-1);
+	text->InsertInset(inset);
+	update(-1);
 
-	users->text->UnFreezeUndo();	
+	text->UnFreezeUndo();	
 }
 
 
 // Open and lock an updatable inset
-// candidate for move to BufferView
-void Buffer::open_new_inset(UpdatableInset * new_inset)
+void BufferView::open_new_inset(UpdatableInset * new_inset)
 {
-	users->beforeChange();
-	users->text->FinishUndo();
+	beforeChange();
+	text->FinishUndo();
 	insertInset(new_inset);
-	users->text->CursorLeft();
-	users->update(1);
+	text->CursorLeft();
+	update(1);
     	new_inset->Edit(0, 0);
 }
 
 
-/* This function should be in Buffer because it's a buffer's property (ale) */
+// This function should be in Buffer because it's a buffer's property (ale)
 string Buffer::getIncludeonlyList(char delim)
 {
 	string lst;
@@ -3834,7 +3811,7 @@ string Buffer::getIncludeonlyList(char delim)
 }
 
 
-/* This is also a buffer property (ale) */ 
+// This is also a buffer property (ale)
 string Buffer::getReferenceList(char delim)
 {
 	/// if this is a child document and the parent is already loaded
@@ -3866,7 +3843,7 @@ string Buffer::getReferenceList(char delim)
 }
 
 
-/* This is also a buffer property (ale) */ 
+// This is also a buffer property (ale)
 string Buffer::getBibkeyList(char delim)
 {
 	/// if this is a child document and the parent is already loaded
@@ -3920,16 +3897,15 @@ string Buffer::getBibkeyList(char delim)
 }
 
 
-// candidate for move to BufferView
 /* This is also a buffer property (ale) */
 // Not so sure about that. a goto Label function can not be buffer local, just
 // think how this will work in a multiwindo/buffer environment, all the
 // cursors in all the views showing this buffer will move. (Lgb)
 // OK, then no cursor action should be allowed in buffer. (ale)
-bool Buffer::gotoLabel(string const & label)
+bool BufferView::gotoLabel(string const & label)
 
 {
-        LyXParagraph * par = paragraph;
+        LyXParagraph * par = buffer()->paragraph;
         LyXParagraph::size_type pos;
         Inset * inset;
         while (par) {
@@ -3937,10 +3913,10 @@ bool Buffer::gotoLabel(string const & label)
                 while ((inset = par->ReturnNextInsetPointer(pos))){     
                         for (int i = 0; i < inset->GetNumberOfLabels(); i++) {
 				if (label == inset->getLabel(i)) {
-					users->beforeChange();
-					users->text->SetCursor(par, pos);
-					users->text->sel_cursor = users->text->cursor;
-					users->update(0);
+					beforeChange();
+					text->SetCursor(par, pos);
+					text->sel_cursor = text->cursor;
+					update(0);
 					return true;
 				}
 			}
@@ -3984,7 +3960,8 @@ void Buffer::markDepClean(string const & name)
 	}
 }
 
-void Buffer::Dispatch(const string & command)
+
+void Buffer::Dispatch(string const & command)
 {
 	// Split command string into command and argument
 	string cmd, line = frontStrip(command);
@@ -3993,7 +3970,8 @@ void Buffer::Dispatch(const string & command)
 	Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
 }
 
-void Buffer::Dispatch(int action, const string & argument)
+
+void Buffer::Dispatch(int action, string const & argument)
 {
 	switch (action) {
 		case LFUN_EXPORT: 
@@ -4005,5 +3983,4 @@ void Buffer::Dispatch(int action, const string & argument)
 		break;
 
 	} // end of switch
-
 }

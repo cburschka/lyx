@@ -39,8 +39,8 @@ using std::max;
 #include "math_panel.h"                 
 #include "math_parser.h"
 
-extern void Update(signed char);
-extern int UnlockInset(UpdatableInset *);
+//extern void Update(signed char);
+//extern int UnlockInset(UpdatableInset *);
 extern short greek_kb_flag;
 
 extern BufferView * current_view;
@@ -355,20 +355,21 @@ Bool math_insert_greek(char const c)
       math_insert_symbol(s);
       if (greek_kb_flag<2) {
 	 greek_kb_flag = 0;
-	 UnlockInset(current_view->the_locking_inset);
+	 current_view->unlockInset(current_view->the_locking_inset);
       }
       return True;
    } else
      return False; 
 }
 
-void math_insert_symbol(char const* s)
+
+void math_insert_symbol(char const * s)
 {
    if (current_view->available())   {
       if (!current_view->the_locking_inset) {
 	 InsetFormula * new_inset = new InsetFormula();
 	 current_view->beforeChange();
-	 current_view->buffer()->insertInset(new_inset);
+	 current_view->insertInset(new_inset);
 //	 Update(1);//BUG
 	 new_inset->Edit(0, 0);
 	 new_inset->InsertSymbol(s);
@@ -380,6 +381,7 @@ void math_insert_symbol(char const* s)
 			"class of inset." << endl;
    }
 }
+
 
 BitmapMenu * sym_menu= 0;
 

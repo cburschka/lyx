@@ -1,3 +1,73 @@
+2000-01-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/bufferlist.C (close): don't call insetUnlock if the buffer
+	does not have a BufferView.
+	(unlockInset): ditto + don't access the_locking_inset if the
+	buffer does not have a BufferView.
+
+	* src/LyXView.C (KeyPressMask_raw_callback): add a XSync in
+	certain circumstances so that we don't continue a keyboard
+	operation long after the key was released. Try f.ex. to load a
+	large document, press PageDown for some seconds and then release
+	it. Before this change the document would contine to scroll for
+	some time, with this change it stops imidiatly.
+
+	* src/support/block.h: don't allocate more space than needed. As
+	long as we don't try to write to the arr[x] in a array_type arr[x]
+	it is perfectly ok. (if you write to it you might segfault).
+	added operator value_type*() so that is possible to pass the array
+	to functions expecting a C-pointer.
+
+	* lib/Makefile.am (dist-hook): don't fail completely if unable to
+	cvs.
+
+	* intl/*: updated to gettext 0.10.35, tried to add our own
+	required modifications. Please verify.
+
+	* po/*: updated to gettext 0.10.35, tried to add our own required
+	modifications. Please verify.
+	
+	* src/support/lstrings.C (tostr): go at fixing the problem with
+	cxx and stringstream. When stringstream is used return
+	oss.str().c_str() so that problems with lyxstring and basic_string
+	are avoided. Note that the best solution would be for cxx to use
+	basic_string all the way, but it is not conformant yet. (it seems)
+
+	* src/lyx_cb.C + other files: moved several global functions to
+	class BufferView, some have been moved to BufferView.[Ch] others
+	are still located in lyx_cb.C. Code changes because of this. (part
+	of "get rid of current_view project".)
+
+	* src/buffer.C + other files: moved several Buffer functions to
+	class BufferView, the functions are still present in buffer.C.
+	Code changes because of this.
+
+	* config/lcmessage.m4: updated to most recent. used when creating
+	acinclude.m4.
+
+	* config/progtest.m4: updated to most recent. used when creating
+	acinclude.m4.
+	
+	* config/gettext.m4: updated to most recent. applied patch for
+	tmplinguas.
+
+	* config/gettext.m4.patch: new file that shows what changes we
+	have done to the local copy of gettext.m4.
+
+	* config/libtool.m4: new file, used in creation of acinclude.m4
+
+	* config/lyxinclude.m4: new file, this is the lyx created m4
+	macros, used in making acinclude.m4.
+	
+	* autogen.sh: GNU m4 discovered as a separate task not as part of
+	the lib/configure creation. 
+	Generate acinlucde from files in config. Actually cat
+	lyxinclude.m4, libtool.m4 and gettext.m4 together. This makes it
+	easier to upgrade .m4 files that really are external.
+
+	* src/Spacing.h: moved using std::istringstream to right after
+	<sstream>. This should fix the problem seen with some compilers.
+
 2000-01-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.C: began some work to remove the dependency a lot of

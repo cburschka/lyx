@@ -59,9 +59,6 @@ extern void ShowCopyright();
 extern void show_symbols_form(LyXFunc *);
 extern void ProhibitInput();
 extern void AllowInput();
-extern void OpenStuff();
-extern void ToggleFloat();
-extern void AllFloats(char flag, char figmar);
 extern void LaTeXOptions();
 
 // A bunch of wrappers
@@ -1067,12 +1064,12 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	case 17: tmpfunc->Dispatch(LFUN_PASTESELECTION, "paragraph"); break;
 
 		// floats & insets sub-menu
-	case 21: ToggleFloat(); break;
+	case 21: men->currentView()->toggleFloat(); break;
 	case 22: tmpfunc->Dispatch(LFUN_MELT); break;
-	case 23: AllFloats(1, 0); break;
-	case 24: AllFloats(0, 0); break;
-	case 25: AllFloats(1, 1); break;
-	case 26: AllFloats(0, 1); break;
+	case 23: men->currentView()->allFloats(1, 0); break;
+	case 24: men->currentView()->allFloats(0, 0); break;
+	case 25: men->currentView()->allFloats(1, 1); break;
+	case 26: men->currentView()->allFloats(0, 1); break;
 	case 27: tmpfunc->Dispatch(LFUN_REMOVEERRORS); break;
 
 	case 31: tmpfunc->Dispatch(LFUN_TABLE); break;

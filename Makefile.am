@@ -5,7 +5,7 @@ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 configure \
 SUBDIRS = intl po src lib
 
 EXTRA_DIST = ANNOUNCE OLD-CHANGES INSTALL.OS2 INSTALL.autoconf README.OS2 \
-	UPGRADING lyx.man \
+	UPGRADING lyx.man acconfig.h \
 	config development forms images
 ETAGS_ARGS = --c++
 man_MANS = lyx.1

@@ -38,14 +38,6 @@ extern "C" void DepthCB(FL_OBJECT *, long);
 ///
 extern void FreeCB();
 ///
-extern void CutCB();
-///
-extern void PasteCB();
-///
-extern void CopyCB();
-///
-extern void NoteCB();
-///
 extern void HtmlUrlCB();
 ///
 extern void UrlCB();
@@ -71,9 +63,9 @@ extern void AllowInput();
 ///
 struct InsetUpdateStruct {
 	///
-	Inset* inset;
+	Inset * inset;
 	///
-	InsetUpdateStruct* next;
+	InsetUpdateStruct * next;
 };
 #endif
 

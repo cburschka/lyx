@@ -36,7 +36,7 @@ extern int mono_video;
 extern int reverse_video;
 extern int fast_selection;
 extern BufferView * current_view;
-extern int UnlockInset(UpdatableInset * inset);
+//extern int UnlockInset(UpdatableInset * inset);
 
 // ale070405
 extern int bibitemMaxWidth(LyXFont const &);
@@ -1648,7 +1648,7 @@ void LyXText::TableFeatures(int feature)
       }
       case LyXTable::DELETE_ROW:
           if (current_view->the_locking_inset)
-              UnlockInset(current_view->the_locking_inset);
+              current_view->unlockInset(current_view->the_locking_inset);
           RemoveTableRow(&cursor);
           RedoParagraph();
           return;
@@ -1658,7 +1658,7 @@ void LyXText::TableFeatures(int feature)
           int cell_org = actCell;
           int cell = 0;
           if (current_view->the_locking_inset)
-              UnlockInset(current_view->the_locking_inset);
+              current_view->unlockInset(current_view->the_locking_inset);
           do {
               if (!pos || (cursor.par->IsNewline(pos-1))){
                   if (cursor.par->table->DeleteCellIfColumnIsDeleted(cell, cell_org)){

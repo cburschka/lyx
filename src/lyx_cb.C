@@ -114,9 +114,6 @@ bool selection_possible = false;
 // away. Definitely not the best solution, but I think it sorta works.
 bool toggleall = true;
 
-void InsertCorrectQuote();
-
-
 /* 
    This is the inset locking stuff needed for mathed --------------------
 
@@ -157,11 +154,11 @@ void UpdateInset(Inset * inset, bool mark_dirty = true);
 /* these functions return 1 if an error occured, 
    otherwise 0 */
 // Now they work only for updatable insets. [Alejandro 080596]
-int LockInset(UpdatableInset * inset);
+//int LockInset(UpdatableInset * inset);
 void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
-void FitLockedInsetCursor(long x, long y, int asc, int desc);
-int UnlockInset(UpdatableInset * inset);
-void LockedInsetStoreUndo(Undo::undo_kind kind);
+//void FitLockedInsetCursor(long x, long y, int asc, int desc);
+//int UnlockInset(UpdatableInset * inset);
+//void LockedInsetStoreUndo(Undo::undo_kind kind);
 
 /* this is for asyncron updating. UpdateInsetUpdateList will be called
    automatically from LyX. Just insert the Inset into the Updatelist */
@@ -177,17 +174,6 @@ InsetUpdateStruct * InsetUpdateList = 0;
 
 /* some function prototypes */
 
-void GotoNote();
-void OpenStuff();
-void ToggleFloat();
-void MenuUndo();
-void MenuRedo();
-void HyphenationPoint();
-void MenuSeparator();
-void HFill();
-void Newline();
-void ProtectedBlank();
-void CopyCB();
 int RunLinuxDoc(int, string const &);
 int RunDocBook(int, string const &);
 void MenuWrite(Buffer * buf);
@@ -1229,7 +1215,7 @@ void MenuInsertLabel(char const * arg)
 	if (!label.empty()) {
 		InsetLabel * new_inset = new InsetLabel;
 		new_inset->setContents(label);
-		current_view->buffer()->insertInset(new_inset);
+		current_view->insertInset(new_inset);
 	}
 	AllowInput();
 }
@@ -1431,13 +1417,11 @@ int RunDocBook(int flag, string const & filename)
 }
 
 
-// candidate for move to BufferView
-void AllFloats(char flag, char figmar)
+void BufferView::allFloats(char flag, char figmar)
 {
-	if (!current_view->available())
-		return;
+	if (!available()) return;
 
-	LyXCursor cursor = current_view->text->cursor;
+	LyXCursor cursor = text->cursor;
 
 	if (!flag && cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    && ((figmar 
@@ -1449,15 +1433,15 @@ void AllFloats(char flag, char figmar)
  		    && cursor.par->footnotekind != LyXParagraph::WIDE_FIG 
  		    && cursor.par->footnotekind != LyXParagraph::WIDE_TAB
 		    && cursor.par->footnotekind != LyXParagraph::ALGORITHM)))
-		ToggleFloat();
+		toggleFloat();
 	else
-		current_view->beforeChange();
+		beforeChange();
 
 	LyXCursor tmpcursor = cursor;
 	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
 	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
 
-	LyXParagraph *par = current_view->buffer()->paragraph;
+	LyXParagraph *par = buffer()->paragraph;
 	while (par) {
 		if (flag) {
 			if (par->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE
@@ -1476,11 +1460,9 @@ void AllFloats(char flag, char figmar)
 				if (par->previous
 				    && par->previous->footnoteflag != 
 				    LyXParagraph::CLOSED_FOOTNOTE){ /* should be */ 
-					current_view->text
-						->SetCursorIntern(par
-								  ->previous,
-								  0);
-					current_view->text->OpenFootnote();
+					text->SetCursorIntern(par->previous,
+							      0);
+					text->OpenFootnote();
 				}
 			}
 		}
@@ -1508,17 +1490,17 @@ void AllFloats(char flag, char figmar)
 					    )
 				    )
 				) {
-				current_view->text->SetCursorIntern(par, 0);
-				current_view->text->CloseFootnote();
+				text->SetCursorIntern(par, 0);
+				text->CloseFootnote();
 			}
 		}
 		par = par->next;
 	}
 
-	current_view->text->SetCursorIntern(cursor.par, cursor.pos);
-	current_view->redraw();
-	current_view->fitCursor();
-	current_view->updateScrollbar();
+	text->SetCursorIntern(cursor.par, cursor.pos);
+	redraw();
+	fitCursor();
+	updateScrollbar();
 }
 
 
@@ -2102,169 +2084,152 @@ void MenuLayoutSave()
 }
 
 
-// candidate for move to BufferView
-void NoteCB()
+void BufferView::insertNote()
 {
 	InsetInfo * new_inset = new InsetInfo();
-	current_view->buffer()->insertInset(new_inset);
+	insertInset(new_inset);
 	new_inset->Edit(0, 0);
 }
 
 
-// candidate for move to BufferView
-void OpenStuff()
+void BufferView::openStuff()
 {
-	if (current_view->available()) {
-		current_view->owner()->getMiniBuffer()->Set(_("Open/Close..."));
-		current_view->getScreen()->HideCursor();
-		current_view->beforeChange();
-		current_view->update(-2);
-		current_view->text->OpenStuff();
-		current_view->update(0);
+	if (available()) {
+		owner()->getMiniBuffer()->Set(_("Open/Close..."));
+		getScreen()->HideCursor();
+		beforeChange();
+		update(-2);
+		text->OpenStuff();
+		update(0);
 	}
 }
 
 
-// candidate for move to BufferView
-void ToggleFloat()
+void BufferView::toggleFloat()
 {
-	if (current_view->available()) {
-		current_view->owner()->getMiniBuffer()->Set(_("Open/Close..."));
-		current_view->getScreen()->HideCursor();
-		current_view->beforeChange();
-		current_view->update(-2);
-		current_view->text->ToggleFootnote();
-		current_view->update(0);
+	if (available()) {
+		owner()->getMiniBuffer()->Set(_("Open/Close..."));
+		getScreen()->HideCursor();
+		beforeChange();
+		update(-2);
+		text->ToggleFootnote();
+		update(0);
 	}
 }
 
 
-// candidate for move to BufferView
-void MenuUndo()
+void BufferView::menuUndo()
 {
-/*	if (current_view->buffer()->the_locking_inset) {
-	current_view->owner()->getMiniBuffer()->Set(_("Undo not yet supported in math mode"));
-	return;
-	}*/
-   
-	if (current_view->available()) {
-		current_view->owner()->getMiniBuffer()->Set(_("Undo"));
-		current_view->getScreen()->HideCursor();
-		current_view->beforeChange();
-		current_view->update(-2);
-		if (!current_view->text->TextUndo())
-			current_view->owner()->getMiniBuffer()->Set(_("No further undo information"));
+	if (available()) {
+		owner()->getMiniBuffer()->Set(_("Undo"));
+		getScreen()->HideCursor();
+		beforeChange();
+		update(-2);
+		if (!text->TextUndo())
+			owner()->getMiniBuffer()->Set(_("No further undo information"));
 		else
-			current_view->update(-1);
+			update(-1);
 	}
 }
 
 
-// candidate for move to BufferView
-void MenuRedo()
+void BufferView::menuRedo()
 {
-	if (current_view->the_locking_inset) {
-		current_view->owner()->getMiniBuffer()->Set(_("Redo not yet supported in math mode"));
+	if (the_locking_inset) {
+		owner()->getMiniBuffer()->Set(_("Redo not yet supported in math mode"));
 		return;
 	}    
    
-	if (current_view->available()) {
-		current_view->owner()->getMiniBuffer()->Set(_("Redo"));
-		current_view->getScreen()->HideCursor();
-		current_view->beforeChange();
-		current_view->update(-2);
-		if (!current_view->text->TextRedo())
-			current_view->owner()->getMiniBuffer()->Set(_("No further redo information"));
+	if (available()) {
+		owner()->getMiniBuffer()->Set(_("Redo"));
+		getScreen()->HideCursor();
+		beforeChange();
+		update(-2);
+		if (!text->TextRedo())
+			owner()->getMiniBuffer()->Set(_("No further redo information"));
 		else
-			current_view->update(-1);
+			update(-1);
 	}
 }
 
 
-// candidate for move to BufferView
-void HyphenationPoint()
+void BufferView::hyphenationPoint()
 {
-	if (current_view->available())  {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
-		current_view->buffer()->insertInset(new_inset);
+		insertInset(new_inset);
 	}
 }
 
 
-// candidate for move to BufferView
-void Ldots()
+void BufferView::ldots()
 {
-	if (current_view->available())  {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
+	if (available())  {
+		getScreen()->HideCursor();
+		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::LDOTS);
-		current_view->buffer()->insertInset(new_inset);
+		insertInset(new_inset);
 	}
 }
 
 
-// candidate for move to BufferView
-void EndOfSentenceDot()
+void BufferView::endOfSentenceDot()
 {
-	if (current_view->available()) {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
-		current_view->buffer()->insertInset(new_inset);
+		insertInset(new_inset);
 	}
 }
 
 
-// candidate for move to BufferView
-void MenuSeparator()
+void BufferView::menuSeparator()
 {
-	if (current_view->available()) {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
-		current_view->buffer()->insertInset(new_inset);
+		insertInset(new_inset);
 	}
 }
 
 
-// candidate for move to BufferView
-void Newline()
+void BufferView::newline()
 {
-	if (current_view->available()) {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
-		current_view->text->InsertChar(LyXParagraph::META_NEWLINE);
-		current_view->update(-1);
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
+		text->InsertChar(LyXParagraph::META_NEWLINE);
+		update(-1);
 	}
 }
 
 
-// candidate for move to BufferView
-void ProtectedBlank()
+void BufferView::protectedBlank()
 {
-	if (current_view->available()) {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
-		current_view->text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
-		current_view->update(-1);
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
+		text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
+		update(-1);
 	}
 }
 
 
-// candidate for move to BufferView
-void HFill()
+void BufferView::hfill()
 {
-	if (current_view->available()) {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
-		current_view->text->InsertChar(LyXParagraph::META_HFILL);
-		current_view->update(-1);
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
+		text->InsertChar(LyXParagraph::META_HFILL);
+		update(-1);
 	}
 }
 
@@ -2393,10 +2358,6 @@ void ToggleAndShow(LyXFont const & font)
   		current_view->text->ToggleFree(font, toggleall);
 		current_view->update(1);
 	}
-	// removed since it overrides the ToggleFree Message about the style
-	// Since Styles are more "High Level" than raw fonts I think the user
-	// prefers it like this               Matthias
-	// FontStateShowCB( 0, 0 );
 }
 
 
@@ -2437,78 +2398,73 @@ extern "C" void TableCB(FL_OBJECT *, long)
 }
 
 
-// candidate for move to BufferView
-void CopyEnvironmentCB()
+void BufferView::copyEnvironment()
 {
-	if (current_view->available()) {
-		current_view->text->copyEnvironmentType();
-		/* clear the selection, even if mark_set */ 
-		current_view->getScreen()->ToggleSelection();
-		current_view->text->ClearSelection();
-		current_view->update(-2);
-		current_view->owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
+	if (available()) {
+		text->copyEnvironmentType();
+		// clear the selection, even if mark_set
+		getScreen()->ToggleSelection();
+		text->ClearSelection();
+		update(-2);
+		owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
 	}
 }
 
 
-// candidate for move to BufferView
-void PasteEnvironmentCB()
+void BufferView::pasteEnvironment()
 {
-	if (current_view->available()) {
-		current_view->text->pasteEnvironmentType();
-		current_view->owner()->getMiniBuffer()->Set(_("Paragraph environment type set"));
-		current_view->update(1);
+	if (available()) {
+		text->pasteEnvironmentType();
+		owner()->getMiniBuffer()->Set(_("Paragraph environment type set"));
+		update(1);
 	}
 }
 
 
-// candidate for move to BufferView
-void CopyCB()
+void BufferView::copy()
 {
-	if (current_view->available()) {
-		current_view->text->CopySelection();
-		/* clear the selection, even if mark_set */ 
-		current_view->getScreen()->ToggleSelection();
-		current_view->text->ClearSelection();
-		current_view->update(-2);
-		current_view->owner()->getMiniBuffer()->Set(_("Copy"));
+	if (available()) {
+		text->CopySelection();
+		// clear the selection, even if mark_set
+		getScreen()->ToggleSelection();
+		text->ClearSelection();
+		update(-2);
+		owner()->getMiniBuffer()->Set(_("Copy"));
 	}
 }
 
 
-// candidate for move to BufferView
-void CutCB()
+void BufferView::cut()
 {
-	if (current_view->available()) {
-		current_view->getScreen()->HideCursor();
-		current_view->update(-2);
-		current_view->text->CutSelection();
-		current_view->update(1);
-		current_view->owner()->getMiniBuffer()->Set(_("Cut"));
+	if (available()) {
+		getScreen()->HideCursor();
+		update(-2);
+		text->CutSelection();
+		update(1);
+		owner()->getMiniBuffer()->Set(_("Cut"));
 	}
 }
 
 
-// candidate for move to BufferView
-void PasteCB()
+void BufferView::paste()
 {
-	if (!current_view->available()) return;
+	if (!available()) return;
 	
-	current_view->owner()->getMiniBuffer()->Set(_("Paste"));
-	current_view->getScreen()->HideCursor();
-	/* clear the selection */
-	current_view->getScreen()->ToggleSelection();
-	current_view->text->ClearSelection();
-	current_view->update(-2);
+	owner()->getMiniBuffer()->Set(_("Paste"));
+	getScreen()->HideCursor();
+	// clear the selection
+	getScreen()->ToggleSelection();
+	text->ClearSelection();
+	update(-2);
 	
-	/* paste */ 
-	current_view->text->PasteSelection();
-	current_view->update(1);
+	// paste
+	text->PasteSelection();
+	update(1);
 	
-	/* clear the selection */ 
-	current_view->getScreen()->ToggleSelection();
-	current_view->text->ClearSelection();
-	current_view->update(-2);
+	// clear the selection 
+	getScreen()->ToggleSelection();
+	text->ClearSelection();
+	update(-2);
 }
 
 
@@ -3104,54 +3060,46 @@ extern "C" void DocumentBulletsCB(FL_OBJECT *, long)
 }
 
 
-// candidate for move to BufferView
-void GotoNote()
+void BufferView::gotoNote()
 {
-	if (!current_view->getScreen())
-		return;
+	if (!getScreen()) return;
    
-	current_view->getScreen()->HideCursor();
-	current_view->beforeChange();
-	current_view->update(-2);
+	getScreen()->HideCursor();
+	beforeChange();
+	update(-2);
 	LyXCursor tmp;
    
-	if (!current_view->text->GotoNextNote()) {
-		if (current_view->text->cursor.pos 
-		    || current_view->text->cursor.par != 
-		    current_view->text->FirstParagraph())
-			{
-				tmp = current_view->text->cursor;
-				current_view->text->cursor.par = 
-					current_view->text->FirstParagraph();
-				current_view->text->cursor.pos = 0;
-				if (!current_view->text->GotoNextNote()) {
-					current_view->text->cursor = tmp;
-					current_view->owner()->getMiniBuffer()->Set(_("No more notes"));
+	if (!text->GotoNextNote()) {
+		if (text->cursor.pos 
+		    || text->cursor.par != text->FirstParagraph()) {
+				tmp = text->cursor;
+				text->cursor.par = text->FirstParagraph();
+				text->cursor.pos = 0;
+				if (!text->GotoNextNote()) {
+					text->cursor = tmp;
+					owner()->getMiniBuffer()->Set(_("No more notes"));
 					LyXBell();
 				}
 			} else {
-				current_view->owner()->getMiniBuffer()->Set(_("No more notes"));
+				owner()->getMiniBuffer()->Set(_("No more notes"));
 				LyXBell();
 			}
 	}
-	current_view->update(0);
-	current_view->text->sel_cursor = 
-		current_view->text->cursor;
+	update(0);
+	text->sel_cursor = text->cursor;
 }
 
 
-// candidate for move to BufferView
-void InsertCorrectQuote()
+void BufferView::insertCorrectQuote()
 {
-	Buffer * cbuffer = current_view->buffer();
 	char c;
 
-	if  (current_view->text->cursor.pos )
-		c = current_view->text->cursor.par->GetChar(current_view->text->cursor.pos - 1);
+	if (text->cursor.pos)
+		c = text->cursor.par->GetChar(text->cursor.pos - 1);
 	else 
 		c = ' ';
 
-	cbuffer->insertInset(new InsetQuotes(c, cbuffer->params));
+	insertInset(new InsetQuotes(c, buffer()->params));
 }
 
 
@@ -3525,7 +3473,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	if (fl_get_button(fd_form_figure->radio_inline)
 	    || current_view->text->cursor.par->table) {
 		InsetFig * new_inset = new InsetFig(100, 20, buffer);
-		buffer->insertInset(new_inset);
+		current_view->insertInset(new_inset);
 		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 		new_inset->Edit(0, 0);
 		return;
@@ -3574,7 +3522,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	current_view->update(-1);
       
 	Inset * new_inset = new InsetFig(100, 100, buffer);
-	buffer->insertInset(new_inset);
+	current_view->insertInset(new_inset);
 	new_inset->Edit(0, 0);
 	current_view->update(0);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
@@ -3661,74 +3609,66 @@ void Reconfigure()
 }
 
 
-// candidate for move to BufferView
 /* these functions are for the spellchecker */ 
-char * NextWord(float & value)
+char * BufferView::nextWord(float & value)
 {
-	if (!current_view->available()){
+	if (!available()) {
 		value = 1;
 		return 0;
 	}
 
-	char * string =  current_view->text->SelectNextWord(value);
+	char * string = text->SelectNextWord(value);
 
 	return string;
 }
 
   
-// candidate for move to BufferView
-void SelectLastWord()
+void BufferView::selectLastWord()
 {
-	if (!current_view->available())
-		return;
+	if (!available()) return;
    
-	current_view->getScreen()->HideCursor();
-	current_view->beforeChange();
-	current_view->text->SelectSelectedWord();
-	current_view->getScreen()->ToggleSelection(false);
-	current_view->update(0);
+	getScreen()->HideCursor();
+	beforeChange();
+	text->SelectSelectedWord();
+	getScreen()->ToggleSelection(false);
+	update(0);
 }
 
 
-// candidate for move to BufferView
-void EndOfSpellCheck()
+void BufferView::endOfSpellCheck()
 {
-	if (!current_view->available())
-		return;
+	if (!available()) return;
    
-	current_view->getScreen()->HideCursor();
-	current_view->beforeChange();
-	current_view->text->SelectSelectedWord();
-	current_view->text->ClearSelection();
-	current_view->update(0);
+	getScreen()->HideCursor();
+	beforeChange();
+	text->SelectSelectedWord();
+	text->ClearSelection();
+	update(0);
 }
 
 
-// candidate for move to BufferView
-void ReplaceWord(string const & replacestring)
+void BufferView::replaceWord(string const & replacestring)
 {
-	if (!current_view->getScreen())
-		return;
+	if (!getScreen()) return;
 
-	current_view->getScreen()->HideCursor();
-	current_view->update(-2);
+	getScreen()->HideCursor();
+	update(-2);
    
 	/* clear the selection (if there is any) */ 
-	current_view->getScreen()->ToggleSelection(false);
-	current_view->update(-2);
+	getScreen()->ToggleSelection(false);
+	update(-2);
    
 	/* clear the selection (if there is any) */ 
-	current_view->getScreen()->ToggleSelection(false);
-	current_view->text->
-		ReplaceSelectionWithString(replacestring.c_str());
+	getScreen()->ToggleSelection(false);
+	text->ReplaceSelectionWithString(replacestring.c_str());
    
-	current_view->text->SetSelectionOverString(replacestring.c_str());
+	text->SetSelectionOverString(replacestring.c_str());
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
-		current_view->text->CursorLeftIntern();
+		text->CursorLeftIntern();
 	}
-	current_view->update(1);
+	update(1);
 }
 // End of spellchecker stuff
 
@@ -3932,7 +3872,7 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 
 	Inset * new_inset = 
 		new InsetRef(t, current_view->buffer());
-	current_view->buffer()->insertInset(new_inset);
+	current_view->insertInset(new_inset);
 }
 
 
@@ -4048,81 +3988,71 @@ void UpdateInset(Inset * inset, bool mark_dirty)
 }
 
 
-// candidate for move to BufferView
 /* these functions return 1 if an error occured, 
    otherwise 0 */
-int LockInset(UpdatableInset * inset)
+int BufferView::lockInset(UpdatableInset * inset)
 {
-	if (!current_view->the_locking_inset && inset){
-		current_view->the_locking_inset = inset;
+	if (!the_locking_inset && inset){
+		the_locking_inset = inset;
 		return 0;
 	}
 	return 1;
 }
 
 
-// candidate for move to BufferView
-void ShowLockedInsetCursor(long x, long y, int asc, int desc)
+void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (current_view->the_locking_inset &&
-	    current_view->getScreen()){
-		y += current_view->text->cursor.y;
-		current_view->getScreen()->ShowManualCursor(x, y,
-							    asc, desc);
+	if (the_locking_inset && getScreen()) {
+		y += text->cursor.y;
+		getScreen()->ShowManualCursor(x, y,
+					      asc, desc);
 	}
 }
 
 
-// candidate for move to BufferView
-void HideLockedInsetCursor(long x, long y, int asc, int desc)
+void BufferView::hideLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (current_view->the_locking_inset &&
-	    current_view->getScreen()){
-		y += current_view->text->cursor.y;
-		current_view->getScreen()->HideManualCursor(x, y,
-							    asc, desc);
+	if (the_locking_inset && getScreen()) {
+		y += text->cursor.y;
+		getScreen()->HideManualCursor(x, y,
+					      asc, desc);
 	}
 }
 
 
-// candidate for move to BufferView
-void FitLockedInsetCursor(long x, long y, int asc, int desc)
+void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (current_view->the_locking_inset &&
-	    current_view->getScreen()){
-		y += current_view->text->cursor.y;
-		if (current_view->getScreen()->FitManualCursor(x, y, asc, desc))
-			current_view->updateScrollbar();
+	if (the_locking_inset && getScreen()){
+		y += text->cursor.y;
+		if (getScreen()->FitManualCursor(x, y, asc, desc))
+			updateScrollbar();
 	}
 }
 
 
-// candidate for move to BufferView
-int UnlockInset(UpdatableInset * inset)
+int BufferView::unlockInset(UpdatableInset * inset)
 {
-	if (inset &&
-	    current_view->the_locking_inset == inset){
+	if (inset && the_locking_inset == inset) {
 		inset->InsetUnlock();
-		current_view->the_locking_inset = 0;
-		current_view->text->FinishUndo();
+		the_locking_inset = 0;
+		text->FinishUndo();
 		return 0;
 	}
 	return bufferlist.unlockInset(inset);
 }
 
 
-// candidate for move to BufferView
-void LockedInsetStoreUndo(Undo::undo_kind kind)
+void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 {
-	if (!current_view->the_locking_inset)
+	if (!the_locking_inset)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
-	current_view->text->SetUndo(kind,
-				    current_view->text->cursor.par->
-				    ParFromPos(current_view->text->cursor.pos)->previous, 
-				    current_view->text->cursor.par->
-				    ParFromPos(current_view->text->cursor.pos)->next);
+	text->SetUndo(kind,
+		      text->cursor.par->
+		      ParFromPos(text->cursor.pos)->previous, 
+		      text->cursor.par->
+		      ParFromPos(text->cursor.pos)->next);
 }
 
 

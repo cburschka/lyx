@@ -19,7 +19,7 @@
 #include FORMS_H_LOCATION
 #include "BackStack.h"
 #include "lyxtext.h"
-
+#include "LaTeX.h"
 
 class LyXView;
 class Buffer;
@@ -96,6 +96,83 @@ public:
 	void insetSleep();
 	///
 	void insetWakeup();
+	///
+	void replaceWord(string const & replacestring);
+	///
+	void endOfSpellCheck();
+	///
+	void selectLastWord();
+	///
+	char * nextWord(float & value);
+	///
+	void insertCorrectQuote();
+	///
+	void gotoNote();
+	///
+	bool gotoLabel(string const & label);
+	///
+	void paste();
+	///
+	void cut();
+	///
+	void copy();
+	///
+	void pasteEnvironment();
+	///
+	void copyEnvironment();
+	///
+	void hfill();
+	///
+	void protectedBlank();
+	///
+	void newline();
+	///
+	void menuSeparator();
+	///
+	void endOfSentenceDot();
+	///
+	void ldots();
+	///
+	void hyphenationPoint();
+	///
+	void menuUndo();
+	///
+	void menuRedo();
+	///
+	void toggleFloat();
+	///
+	void openStuff();
+	///
+	void insertNote();
+	///
+	void allFloats(char flag, char figmar);
+	/// removes all autodeletable insets
+	bool removeAutoInsets();
+	///
+	void insertErrors(TeXErrors & terr);
+	///
+	void setCursorFromRow(int row);
+	/** Insert an inset into the buffer
+	    Insert inset into buffer, placing it in a layout of lout,
+	    if no_table make sure that it doesn't end up in a table. */
+	void insertInset(Inset * inset, string const & lout = string(),
+			 bool no_table = false);
+	/// open and lock an updatable inset
+	void open_new_inset(UpdatableInset * new_inset);
+	/// Inserts a lyx file at cursor position. Returns false if it fails.
+	bool insertLyXFile(string const & file);
+	///
+	int lockInset(UpdatableInset * inset);
+	///
+	void showLockedInsetCursor(long x, long y, int asc, int desc);
+	///
+	void hideLockedInsetCursor(long x, long y, int asc, int desc);
+	///
+	void fitLockedInsetCursor(long x, long y, int asc, int desc);
+	///
+	int unlockInset(UpdatableInset * inset);
+	///
+	void lockedInsetStoreUndo(Undo::undo_kind kind);
 private:
 	/// Update pixmap of screen
 	void updateScreen();

@@ -10,13 +10,22 @@ class block {
 public:
 	typedef T value_type;
 	typedef size_t size_type;
-	typedef value_type * pointer;
-	typedef value_type const * const_pointer;
-	typedef value_type & reference;
-	typedef value_type const & const_reference;
-	typedef value_type * iterator;
-	typedef value_type const * const_iterator;
+	typedef T * pointer;
+	typedef T const * const_pointer;
+	typedef T & reference;
+	typedef T const & const_reference;
+	typedef T * iterator;
+	typedef T const * const_iterator;
 	size_type size() const { return s; }
+	operator T* () { return arr; }
+	reference at(int i) {
+		Assert(i >= 0 && i < s);
+		return arr[i];
+	}
+	const_reference at(int i) const {
+		Assert(i >= 0 && i < s);
+		return arr[i];
+	}
 	reference operator[](int i) { return arr[i]; }
 	const_reference operator[](int i) const { return arr[i]; }
 	void operator=(block const & b) {
@@ -37,7 +46,7 @@ public:
 	const_iterator begin() const { return arr[0]; }
 	const_iterator end() const { return arr[s]; }
 private:
-	value_type arr[s + 1];
+	T arr[s];
 };
 
 #endif // BLOCK_H_

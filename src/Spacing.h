@@ -14,10 +14,10 @@
 
 #ifdef HAVE_SSTREAM
 #include <sstream>
+using std::istringstream;
 #else
 #include <strstream>
 #endif
-using std::istringstream;
 
 #include "support/LOstream.h"
 

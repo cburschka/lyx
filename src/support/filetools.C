@@ -324,9 +324,21 @@ bool PutEnv(string const & envstr)
         //   Is doing a getenv() and a free() of the older value 
         //   a good idea? (JMarc)
 	// Actually we don't have to leak...calling putenv like this
-	// should be enough:
+	// should be enough: ... and this is obviously not enough if putenv
+	// does not make a copy of the string. It is also not very wise to
+	// put a string on the free store. If we have to leak we should do it
+	// like this:
+	/*
+	char * leaker = new char[envstr.length() + 1];
+	envstr.copy(leaker, envstr.length());
+	leaker[envstr.length()] = '\0';
+	int retval = putenv(const_cast<PUTENV_TYPE_ARG>(leaker));
+	*/
+
+	// If putenv does not make a copy of the char const * this
+	// is very dangerous. OTOH if it does take a copy this is the
+	// best solution.
 	int retval = putenv(const_cast<PUTENV_TYPE_ARG>(envstr.c_str()));
-	//int retval = putenv(const_cast<PUTENV_TYPE_ARG>((new string(envstr))->c_str()));
 #else
 #ifdef HAVE_SETENV 
         string varname;

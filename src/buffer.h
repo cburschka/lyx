@@ -120,7 +120,7 @@ public:
 	}
 
         /// Open and lock an updatable inset
-        void open_new_inset(UpdatableInset *);
+        //void open_new_inset(UpdatableInset *);
 
 	///
 	void loadAutoSaveFile();
@@ -136,7 +136,7 @@ public:
 	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
 
 	/// Inserts a lyx file at cursor position. Returns false if it fails.
-	bool insertLyXFile(string const & filename);
+	//bool insertLyXFile(string const & filename);
 
 	/// Write file. Returns false if unsuccesful.
 	bool writeFile(string const &, bool);
@@ -296,11 +296,11 @@ public:
 	/** Insert an inset into the buffer
 	    Insert inset into buffer, placing it in a layout of lout,
 	    if no_table make sure that it doesn't end up in a table. */
-	void insertInset(Inset *, string const & lout = string(), 
-			 bool no_table = false);
+	//void insertInset(Inset *, string const & lout = string(), 
+	//		 bool no_table = false);
 
         ///
-        void setCursorFromRow (int);
+	//void setCursorFromRow (int);
 
 	///
 	string getIncludeonlyList(char delim = ',');
@@ -309,10 +309,10 @@ public:
 	///
 	string getBibkeyList(char delim = '|');
 	///
-	bool gotoLabel(string const &);
+	//bool gotoLabel(string const &);
 
 	/// removes all autodeletable insets
-	bool removeAutoInsets();
+	//bool removeAutoInsets();
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */
@@ -346,9 +346,11 @@ public:
 	    doing a 'nice' LaTeX file */
 	bool niceFile;
 
+	/// Used when typesetting to place errorboxes.
+	TexRow texrow;
 private:
 	///
-	void insertErrors(TeXErrors &);
+	//void insertErrors(TeXErrors &);
 
         ///
         void linuxDocHandleFootnote(ostream & os,
@@ -425,8 +427,6 @@ private:
 	*/
 	BufferView * users;
 
-	/// Used when typesetting to place errorboxes.
-	TexRow texrow;
 };
 
 

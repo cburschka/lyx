@@ -146,11 +146,12 @@ string tostr(long i)
 	char str[30];
 	ostrstream oss(str, 30);
 	oss << i << '\0';
+	return oss.str();
 #else
 	ostringstream oss;
 	oss << i;
+	return oss.str().c_str();
 #endif
-	return oss.str();
 }
 
 
@@ -160,11 +161,12 @@ string tostr(unsigned long i)
 	char str[30];
 	ostrstream oss(str, 30);
 	oss << i << '\0';
+	return oss.str();
 #else
 	ostringstream oss;
 	oss << i;
+	return oss.str().c_str();
 #endif
-	return oss.str();
 }
 
 
@@ -204,11 +206,12 @@ string tostr(double d)
 	char tmp[40];
 	ostrstream oss(tmp, 40);
 	oss << d << '\0';
+	return oss.str();
 #else
 	ostringstream oss;
 	oss << d;
+	return oss.str().c_str();
 #endif
-	return oss.str();
 }
 
 

@@ -44,4 +44,5 @@ install-data-local: libinstalldirs
 dist-hook:
 	cd ${distdir} ; rm -rf `find . -name \*CVS\*` ; \
 	rm -rf doc/BUGS.lyx ; \
-	cvs -Q export -r HEAD -d doc lyxdoc
+	{ cvs -Q export -r HEAD -d doc lyxdoc || \
+	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }

@@ -82,7 +82,7 @@ inline
 void InsetRef::gotoLabel()
 {
     if (master) {
-	master->gotoLabel(getContents());
+	master->getUser()->gotoLabel(getContents());
     }
 }
 #endif

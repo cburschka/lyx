@@ -54,8 +54,7 @@ extern void SetXtermCursor(Window win);
 extern bool input_prohibited;
 extern bool selection_possible;
 extern char ascii_type;
-extern int UnlockInset(UpdatableInset * inset);
-extern void ToggleFloat();
+//extern int UnlockInset(UpdatableInset * inset);
 extern void MenuPasteSelection(char at);
 extern InsetUpdateStruct * InsetUpdateList;
 extern void UpdateInsetUpdateList();
@@ -1047,7 +1046,7 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT * ob, Window,
 							 button);
 				return 0;
 			} else {
-				UnlockInset(the_locking_inset);
+				unlockInset(the_locking_inset);
 			}
 		}
 
@@ -1290,7 +1289,7 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 			}
 		}
 		if (hit == true) {
-			ToggleFloat();
+			toggleFloat();
 			selection_possible = false;
 			return 0;
 		}
@@ -1317,7 +1316,7 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 		    && y + screen_first < text->cursor.y -
 		    text->cursor.row->baseline
 		    + font.maxAscent() * 1.2 + font.maxDescent() * 1.2) {
-			ToggleFloat();
+			toggleFloat();
 			selection_possible = false;
 			return 0;
 		}

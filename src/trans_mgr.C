@@ -18,7 +18,6 @@
 
 extern LyXRC * lyxrc;
 extern string DoAccent(string const &, tex_accent);
-extern void InsertCorrectQuote();
 extern string DoAccent(char, tex_accent);
 extern BufferView * current_view;
 
@@ -290,7 +289,7 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 		if (str[i] == '\"' 
 		    && text->GetFont(text->cursor.par,
 				     text->cursor.pos).latex() == LyXFont::OFF)
-			InsertCorrectQuote();
+			current_view->insertCorrectQuote();
 		else
 			text->InsertChar(str[i]);
 	}

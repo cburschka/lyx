@@ -1059,7 +1059,6 @@ void LyXText::ToggleFree(LyXFont font, bool toggleall)
 
 	// Set font
 	SetFont(font, toggleall);
-	//current_view->owner()->getMiniBuffer()->Set(_("Font style changed"));
 
 	/* Implicit selections are cleared afterwards and cursor is set to the
 	   original position. */

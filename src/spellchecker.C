@@ -626,7 +626,7 @@ void ShowSpellChecker()
 		if (obj == fd_form_spell_check->done) break;
 	}
 	fl_hide_form(fd_form_spell_check->form_spell_check);
-	EndOfSpellCheck();
+	current_view->endOfSpellCheck();
 	return;
 }
 
@@ -666,7 +666,7 @@ bool RunSpellChecker(string const & lang)
 	ispell_terse_mode();
 
 	while (true) {
-		word = NextWord(newval);
+		word = current_view->nextWord(newval);
 		if (word == 0) break;
 		word_count++;
 		
@@ -700,7 +700,7 @@ bool RunSpellChecker(string const & lang)
 		switch (result->flag) {
 		case ISP_UNKNOWN:
 		case ISP_MISSED:
-			SelectLastWord();
+			current_view->selectLastWord();
 			fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
@@ -725,7 +725,7 @@ bool RunSpellChecker(string const & lang)
 				if (obj == fd_form_spell_check->replace || 
 				    obj == fd_form_spell_check->input) {
 				        ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-					ReplaceWord(fl_get_input(fd_form_spell_check->input));
+					current_view->replaceWord(fl_get_input(fd_form_spell_check->input));
 					break;
 				}
 				if (obj == fd_form_spell_check->browser) {
@@ -734,7 +734,7 @@ bool RunSpellChecker(string const & lang)
 					if (clickline == 
 					    fl_get_browser(fd_form_spell_check->browser)) {
 				                ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-						ReplaceWord(fl_get_input(fd_form_spell_check->input));
+						current_view->replaceWord(fl_get_input(fd_form_spell_check->input));
 						break;
 					}
 					clickline = fl_get_browser(fd_form_spell_check->browser);
