@@ -325,7 +325,9 @@ bool FontLoader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return false;
-	load(f.family(), f.series(), f.realShape(), f.size());
+
+	if (!fontinfo[f.family()][f.series()][f.realShape()])
+		getFontinfo(f.family(), f.series(), f.realShape());
 	return fontinfo[f.family()][f.series()][f.realShape()]
 		->getFontname(f.size()).size();
 }
