@@ -2056,9 +2056,7 @@ void Paragraph::setChar(size_type pos, value_type c)
 
 Paragraph::inset_iterator::inset_iterator(Paragraph::InsetList::iterator const & iter)
  : it(iter) 
-{
-
-}
+{}
 
 
 Paragraph::inset_iterator Paragraph::inset_iterator_begin()
@@ -2078,10 +2076,12 @@ ParagraphParameters & Paragraph::params()
 	return pimpl_->params;
 }
 
+
 ParagraphParameters const & Paragraph::params() const
 {
 	return pimpl_->params;
 }
+
 
 Paragraph * Paragraph::getParFromID(int id) const
 {
