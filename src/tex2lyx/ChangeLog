@@ -1,3 +1,10 @@
+2005-01-31  Angus Leeming  <leeming@lyx.org>
+
+	* tex2lyx.C (main): enable tex2lyx to find the top level
+	build directory when run in-place.
+
+	Also add "fs::path::default_name_check(fs::no_check);"
+
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tex2lyx.C: rewrite to use boost.filesystem

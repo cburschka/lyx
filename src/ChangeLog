@@ -1,3 +1,8 @@
+2005-01-31  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (priv_exec): specify explicitly the relative location
+	of the top level build directory when run in-place.
+
 2005-01-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (MenuInsertLyXFile): do breakParagraph on the

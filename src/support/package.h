@@ -22,6 +22,16 @@ namespace support {
 
 class Package;
 
+/** When run in-place <build-dir>/src/lyx is one level up from
+ *  the <build-dir> whilst <build-dir>/src/tex2lyx/tex2lyx is
+ *  two levels up.
+ */
+enum exe_build_dir_to_top_build_dir {
+	top_build_dir_is_one_level_up,
+	top_build_dir_is_two_levels_up
+};
+
+
 /** Initialise package() with the command line data.
  *  This data is exactly as it was passed in the argv[] array.
  *
@@ -36,7 +46,8 @@ class Package;
  */
 void init_package(std::string const & command_line_arg0,
 		  std::string const & command_line_system_support_dir,
-		  std::string const & command_line_user_support_dir);
+		  std::string const & command_line_user_support_dir,
+		  exe_build_dir_to_top_build_dir);
 
 /** Accessor to the global data.
  *  Asserts that init_package() has been called first.
@@ -53,7 +64,8 @@ public:
 	 */
 	Package(std::string const & command_line_arg0,
 		std::string const & command_line_system_support_dir,
-		std::string const & command_line_user_support_dir);
+		std::string const & command_line_user_support_dir,
+		exe_build_dir_to_top_build_dir);
 
 	/** The directory containing the LyX executable.
 	 */

@@ -205,7 +205,8 @@ void LyX::priv_exec(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	bool const want_gui = easyParse(argc, argv);
 
-	lyx::support::init_package(argv[0], cl_system_support, cl_user_support);
+	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
+				   lyx::support::top_build_dir_is_one_level_up);
 
 	if (want_gui)
 		lyx_gui::parse_init(argc, argv);

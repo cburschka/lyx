@@ -1,3 +1,9 @@
+2005-01-31  Angus Leeming  <leeming@lyx.org>
+
+	* package.[Ch] (init_package, c-tor): define and use an enum to
+	specify explicitly the location of the top level build directory
+	when the executable is run in-place.
+
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* fs_extras.C: add changes from Asgers Win32 patch.

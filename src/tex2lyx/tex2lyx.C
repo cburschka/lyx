@@ -28,6 +28,7 @@
 
 #include <boost/function.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
 
 #include <cctype>
 #include <fstream>
@@ -381,6 +382,8 @@ bool tex2lyx(string const &infilename, string const &outfilename)
 
 int main(int argc, char * argv[])
 {
+	fs::path::default_name_check(fs::no_check);
+
 	easyParse(argc, argv);
 
 	if (argc <= 1) {
@@ -390,7 +393,8 @@ int main(int argc, char * argv[])
 	}
 
 	lyx::support::os::init(argc, argv);
-	lyx::support::init_package(argv[0], cl_system_support, cl_user_support);
+	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
+				   lyx::support::top_build_dir_is_two_levels_up);
 
 	string const system_syntaxfile = lyx::support::LibFileSearch("reLyX", "syntax.default");
 	if (system_syntaxfile.empty()) {
