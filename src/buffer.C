@@ -32,6 +32,8 @@
 #include <locale>
 #endif
 
+#include <boost/tuple/tuple.hpp>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -299,11 +301,11 @@ std::stack<ErtComp> ert_stack;
 ErtComp ert_comp;
 #endif
 
-} // anon
-
-
 #warning And _why_ is this here? (Lgb)
 int unknown_layouts;
+
+} // anon
+
 
 // candidate for move to BufferView
 // (at least some parts in the beginning of the func)
