@@ -158,13 +158,6 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 }
 
 
-string const & InsetFormulaMacro::hullType() const
-{
-	static string macro("macro");
-	return macro;
-}
-
-
 void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 			     int y, float & xx, bool /*cleared*/) const
 {

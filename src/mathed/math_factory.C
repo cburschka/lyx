@@ -297,7 +297,7 @@ MathAtom createMathInset(string const & s)
 	if (s == "stack")
 		return MathAtom(new MathStackrelInset);
 	if (s == "binom" || s == "choose")
-		return MathAtom(new MathBinomInset);
+		return MathAtom(new MathBinomInset(s == "choose"));
 	if (s == "over" || s == "frac")
 		return MathAtom(new MathFracInset);
 	if (s == "atop")

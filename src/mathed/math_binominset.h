@@ -14,7 +14,7 @@
 class MathBinomInset : public MathFracbaseInset {
 public:
 	///
-	MathBinomInset();
+	explicit MathBinomInset(bool choose = false);
 	///
 	MathInset * clone() const;
 	///
@@ -28,6 +28,8 @@ public:
 private:
 	///
 	int dw() const;
+	///
+	bool choose_;
 };
 
 #endif

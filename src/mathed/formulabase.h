@@ -43,7 +43,7 @@ public:
 	///
 	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
 	///
-	virtual string const & hullType() const = 0;
+	virtual string hullType() const { return "none"; }
 	/// lowest x coordinate
 	virtual int xlow() const;
 	/// highest x coordinate
@@ -125,6 +125,7 @@ private:
 	/// common base for handling accents
 	void handleAccent(BufferView * bv, string const & arg, string const & name);
 
+protected:
 	///
 	mutable BufferView * view_;
 	///

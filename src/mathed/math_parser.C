@@ -582,7 +582,10 @@ bool Parser::parse_normal(MathAtom & at)
 	if (ar.size() != 1) {
 		lyxerr << "Unusual contents found: " << ar << endl;
 		at.reset(new MathParInset);
-		at->cell(0) = ar;
+		if (at->nargs() > 0)
+			at->cell(0) = ar;
+		else
+			lyxerr << "Unusual contents found: " << ar << endl;
 		return true;
 	}
 	at = ar[0];
@@ -690,7 +693,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			MathArray ar;
 			parse_into(ar, FLAG_BRACE_LAST, mathmode);
 			// reduce multiple nesting levels to a single one
-			// this helps to keep the annoyance of  a choose b to a minimum
+			// this helps to keep the annoyance of  "a choose b"  to a minimum
 			if (ar.size() && ar.front()->asBraceInset())
 				ar = ar.front()->asBraceInset()->cell(0);
 			cell->push_back(MathAtom(new MathBraceInset));

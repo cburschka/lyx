@@ -13,7 +13,8 @@
 using std::max;
 
 
-MathBinomInset::MathBinomInset()
+MathBinomInset::MathBinomInset(bool choose)
+	: choose_(choose)
 {}
 
 
@@ -58,7 +59,10 @@ void MathBinomInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathBinomInset::write(WriteStream & os) const
 {
-	os << '{' << cell(0) << " \\choose " << cell(1) << '}';
+	if (choose_)
+		os << '{' << cell(0) << " \\choose " << cell(1) << '}';
+	else
+		os << "\\binom{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 

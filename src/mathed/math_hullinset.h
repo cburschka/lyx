@@ -107,7 +107,7 @@ private:
 	/// consistency check
 	void check() const;
 
-	/// "simple", "display", "eqnarray",...
+	/// "none", "simple", "display", "eqnarray",...
 	string type_;
 	///
 	std::vector<int> nonum_;

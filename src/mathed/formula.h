@@ -34,7 +34,9 @@ public:
 	///
 	InsetFormula();
 	///
-	//explicit InsetFormula(string const & type);
+	explicit InsetFormula(BufferView *);
+	///
+	explicit InsetFormula(const string & data);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -48,8 +50,6 @@ public:
 	void write(Buffer const *, std::ostream &) const;
 	///
 	void read(Buffer const *, LyXLex & lex);
-	///
-	void read(const string & data);
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
@@ -72,7 +72,7 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	string const & hullType() const;
+	string hullType() const;
 	///
 	MathAtom const & par() const { return par_; }
 	///

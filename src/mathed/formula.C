@@ -63,14 +63,23 @@ InsetFormula::InsetFormula()
 	: par_(MathAtom(new MathHullInset)), loader_(0)
 {}
 
-/*
 
-InsetFormula::InsetFormula(string const & type)
-	: par_(MathAtom(new MathHullInset(type))), loader_(0)
-{}
+InsetFormula::InsetFormula(BufferView * bv)
+	: par_(MathAtom(new MathHullInset)), loader_(0)
+{
+	view_ = bv;
+}
 
 
-*/
+InsetFormula::InsetFormula(string const & data)
+	: par_(MathAtom(new MathHullInset)), loader_(0)
+{
+	if (!data.size())
+		return;
+	if (!mathed_parse_normal(par_, data)) 
+		lyxerr << "cannot interpret '" << data << "' as math\n";
+}
+
 
 
 Inset * InsetFormula::clone(Buffer const &, bool) const
@@ -94,23 +103,6 @@ int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 	return wi.line();
 }
 
-
-void InsetFormula::read(string const & s)
-{
-	if (s.size()) {
-		bool res = mathed_parse_normal(par_, s);
-
-		if (!res)
-			res = mathed_parse_normal(par_, "$" + s + "$");
-
-		if (!res) {
-			lyxerr << "cannot interpret '" << s << "' as math\n";
-			par_ = MathAtom(new MathHullInset("simple"));
-		}
-	}
-	metrics();
-	updatePreview();
-}
 
 
 int InsetFormula::ascii(Buffer const *, ostream & os, int) const
@@ -184,7 +176,8 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	if (canPreview()) {
 		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, *(loader_->image()));
 	} else {
-		pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
+		//pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
+		pi.base.style = LM_ST_TEXT;
 		pi.base.font  = font;
 		pi.base.font.setColor(LColor::math);
 		if (lcolor.getX11Name(LColor::mathbg)
@@ -302,7 +295,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			hull()->mutate(arg);
+			mutate(arg);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -326,9 +319,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int y = 0;
 			mathcursor->getPos(x, y);
 			if (hullType() == "simple")
-				hull()->mutate("equation");
+				mutate("equation");
 			else
-				hull()->mutate("simple");
+				mutate("simple");
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -419,15 +412,16 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 }
 
 
-string const & InsetFormula::hullType() const
+string InsetFormula::hullType() const
 {
-	return hull()->getType();
+	return hull() ? hull()->getType() : "none";
 }
 
 
 void InsetFormula::mutate(string const & type )
 {
-	hull()->mutate(type);
+	if (hull())
+		hull()->mutate(type);
 }
 
 
