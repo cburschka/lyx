@@ -92,30 +92,27 @@ bool BufferView::removeAutoInsets()
 {
 	LyXParagraph * par = buffer()->paragraph;
 
-	LyXCursor cursor = text->cursor;
-	LyXCursor tmpcursor = cursor;
-	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
-	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
+	LyXCursor tmpcursor = text->cursor;
+	LyXCursor cursor;
 
 	bool a = false;
 	while (par) {
+		// this has to be done before the delete
+		text->SetCursor(cursor, par, 0);
 		if (par->AutoDeleteInsets()){
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-				// this is possible now, since SetCursor takes
-				// care about footnotes
-				text->SetCursorIntern(par, 0);
-				text->RedoParagraphs(text->cursor,
-						     text->cursor.par->Next());
+				text->RedoParagraphs(cursor,
+						     cursor.par->Next());
 				text->FullRebreak();
 			}
 		}
 		par = par->next;
 	}
 	// avoid forbidden cursor positions caused by error removing
-	if (cursor.pos > cursor.par->Last())
-		cursor.pos = cursor.par->Last();
-	text->SetCursorIntern(cursor.par, cursor.pos);
+	if (tmpcursor.pos > tmpcursor.par->Last())
+		tmpcursor.pos = tmpcursor.par->Last();
+	text->SetCursorIntern(tmpcursor.par, tmpcursor.pos);
 
 	return a;
 }

@@ -2224,7 +2224,7 @@ void LyXText::CutSelection(bool doclear)
 	cursor.par = sel_end_cursor.par = endpar;
 	cursor.pos = sel_end_cursor.pos;
     }
-    endpar = sel_end_cursor.par->Next();
+    endpar = endpar->Next();
 
     // sometimes necessary
     if (doclear)

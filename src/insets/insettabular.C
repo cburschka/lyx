@@ -101,12 +101,17 @@ void InsetTabular::Write(ostream & os) const
 
 void InsetTabular::Read(LyXLex & lex)
 {
-//    bool old_format = (lex.GetString() == "\\LyXTable");
+    bool old_format = (lex.GetString() == "\\LyXTable");
     string token;
 
     if (tabular)
 	delete tabular;
     tabular = new LyXTabular(this, lex);
+
+    init_inset = true;
+
+    if (old_format)
+	return;
 
     lex.nextToken();
     token = lex.GetString();
@@ -118,7 +123,6 @@ void InsetTabular::Read(LyXLex & lex)
         lex.printError("Missing \\end_inset at this point. "
                        "Read: `$$Token'");
     }
-    init_inset = true;
 }
 
 
@@ -888,8 +892,8 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 {
     int
 	i,
-	sel_pos_start,
-	sel_pos_end,
+	sel_start,
+	sel_end,
         setLines = 0,
         setAlign = LYX_ALIGN_LEFT,
         lineSet;
@@ -911,14 +915,14 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
     }
     if (hasCellSelection()) {
 	if (sel_cell_start > sel_cell_end) {
-	    sel_pos_start = sel_cell_end;
-	    sel_pos_end = sel_cell_start;
+	    sel_start = sel_cell_end;
+	    sel_end = sel_cell_start;
 	} else {
-	    sel_pos_start = sel_cell_start;
-	    sel_pos_end = sel_cell_end;
+	    sel_start = sel_cell_start;
+	    sel_end = sel_cell_end;
 	}
     } else
-	sel_pos_start = sel_pos_end = actcell;
+	sel_start = sel_end = actcell;
     switch (feature) {
       case LyXTabular::SET_PWIDTH:
       {
@@ -959,42 +963,42 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
       }
       case LyXTabular::TOGGLE_LINE_TOP:
           lineSet = !tabular->TopLine(actcell);
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetTopLine(i,lineSet);
           UpdateLocal(bv, true);
           break;
     
       case LyXTabular::TOGGLE_LINE_BOTTOM:
           lineSet = !tabular->BottomLine(actcell); 
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetBottomLine(i,lineSet);
           UpdateLocal(bv, true);
           break;
 		
       case LyXTabular::TOGGLE_LINE_LEFT:
           lineSet = !tabular->LeftLine(actcell);
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetLeftLine(i,lineSet);
           UpdateLocal(bv, true);
           break;
 
       case LyXTabular::TOGGLE_LINE_RIGHT:
           lineSet = !tabular->RightLine(actcell);
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetRightLine(i,lineSet);
           UpdateLocal(bv, true);
           break;
       case LyXTabular::ALIGN_LEFT:
       case LyXTabular::ALIGN_RIGHT:
       case LyXTabular::ALIGN_CENTER:
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetAlignment(i,setAlign);
           UpdateLocal(bv, true);
           break;
       case LyXTabular::MULTICOLUMN:
       {
-	  if (tabular->row_of_cell(sel_pos_start) !=
-	      tabular->row_of_cell(sel_pos_end)) {
+	  if (tabular->row_of_cell(sel_start) !=
+	      tabular->row_of_cell(sel_end)) {
 	      WriteAlert(_("Impossible Operation!"), 
 			 _("Multicolumns can only be horizontally."), 
 			 _("Sorry."));
@@ -1017,12 +1021,12 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	  int
 	      s_start, s_end;
 
-	  if (sel_pos_start > sel_pos_end) {
-	      s_start = sel_pos_end;
-	      s_end = sel_pos_start;
+	  if (sel_start > sel_end) {
+	      s_start = sel_end;
+	      s_end = sel_start;
 	  } else {
-	      s_start = sel_pos_start;
-	      s_end = sel_pos_end;
+	      s_start = sel_start;
+	      s_end = sel_end;
 	  }
 	  tabular->SetMultiColumn(s_start, s_end);
 	  cursor.pos = s_start;
@@ -1033,7 +1037,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
       case LyXTabular::SET_ALL_LINES:
           setLines = 1;
       case LyXTabular::UNSET_ALL_LINES:
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetAllLines(i, setLines);
           UpdateLocal(bv, true);
           break;
@@ -1052,16 +1056,16 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
           tabular->SetRotateTabular(false);
           break;
       case LyXTabular::SET_ROTATE_CELL:
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetRotateCell(i,true);
           break;
       case LyXTabular::UNSET_ROTATE_CELL:
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetRotateCell(i,false);
           break;
       case LyXTabular::SET_LINEBREAKS:
           what = !tabular->GetLinebreaks(actcell);
-	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
+	  for(i=sel_start; i<=sel_end; ++i)
 	      tabular->SetLinebreaks(i,what);
           break;
       case LyXTabular::SET_LTFIRSTHEAD:

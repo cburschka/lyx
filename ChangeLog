@@ -1,3 +1,13 @@
+2000-05-17  Juergen Vigna  <jug@sad.it>
+
+	* src/BufferView2.C (removeAutoInsets): fixed use of AutoDeleteInsets
+	which was wrong if the removing caused removing of rows!
+
+	* src/lyxlex_pimpl.C (next, nextToken): insert support for pushToken.
+	(pushToken): new function.
+
+	* src/text2.C (CutSelection): fix problem discovered with purify
+
 2000-05-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/debug.C (showTags): enlarge the first column, now that we

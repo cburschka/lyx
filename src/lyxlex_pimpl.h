@@ -61,6 +61,8 @@ struct LyXLex::Pimpl {
 	
 	bool nextToken();
 	
+	void pushToken(string const &);
+
 	/// fb__ is only used to open files, the stream is accessed through is
 	std::filebuf fb__;
 	/// the stream that we use.
@@ -79,5 +81,7 @@ struct LyXLex::Pimpl {
 	pushed_table * pushed;
 	///
 	int lineno;
+	///
+	string pushTok;
 };
 #endif

@@ -207,6 +207,12 @@ bool LyXLex::nextToken()
 }
 
 
+void LyXLex::pushToken(string const & pt)
+{
+	pimpl_->pushToken(pt);
+}
+
+
 int LyXLex::FindToken(char const * str[])
 {  
    int i = -1;

@@ -1025,7 +1025,16 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->SetFont(pos, font);
 		++pos;
 	} else if (token == "\\LyXTable") {
+#ifdef USE_TABULAR_INSETS
+		Inset * inset = new InsetTabular(this);
+		inset->Read(lex);
+		par->InsertChar(pos, LyXParagraph::META_INSET);
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+		++pos;
+#else
 		par->table = new LyXTable(lex);
+#endif
 	} else if (token == "\\hfill") {
 		par->InsertChar(pos, LyXParagraph::META_HFILL);
 		par->SetFont(pos, font);
@@ -2263,7 +2272,8 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 		LyXLayout const & style =
 			textclasslist.Style(users->buffer()->params.textclass,
 					    par->layout);
-		par->AutoDeleteInsets();
+#warning please check if this call is really needed!!!
+//		par->AutoDeleteInsets();
 
 		// treat <toc> as a special case for compatibility with old code
 		if (par->GetChar(0) == LyXParagraph::META_INSET) {
@@ -2863,7 +2873,8 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 		LyXLayout const & style =
 			textclasslist.Style(users->buffer()->params.textclass,
 					    par->layout);
-		par->AutoDeleteInsets();
+#warning please check if this call is really needed!!!
+//		par->AutoDeleteInsets();
 
 		// environment tag closing
 		for( ; depth > par->depth; --depth) {

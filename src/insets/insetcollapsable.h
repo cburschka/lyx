@@ -34,7 +34,7 @@ public:
     ///
     static int const TEXT_TO_BOTTOM_OFFSET = 2;
     ///
-	explicit
+    explicit
     InsetCollapsable(Buffer *);
     ///
     ~InsetCollapsable() {}
@@ -93,12 +93,12 @@ protected:
     bool collapsed;
     ///
     LColor::color framecolor;
+    ///
+    LyXFont labelfont;
 
 private:
     ///
     string label;
-    ///
-    LyXFont labelfont;
     ///
     bool autocollapse;
     ///

@@ -142,6 +142,12 @@ void LyXLex::Pimpl::setStream(istream & i)
 
 bool LyXLex::Pimpl::next(bool esc /* = false */)
 {
+	if (!pushTok.empty()) {
+		pushTok.copy(buff, string::npos);
+		buff[pushTok.length()] = '\0';
+		pushTok.erase();
+		return true;
+	}
 	if (!esc) {
 		unsigned char c = 0; // getc() returns an int
 		char cc = 0;
@@ -395,6 +401,13 @@ bool LyXLex::Pimpl::EatLine()
 
 bool LyXLex::Pimpl::nextToken()
 {
+	if (!pushTok.empty()) {
+		pushTok.copy(buff, string::npos);
+		buff[pushTok.length()] = '\0';
+		pushTok.erase();
+		return true;
+	}
+
 	status = 0;
 	while (is && !status) {
 		unsigned char c = 0;
@@ -437,4 +450,10 @@ bool LyXLex::Pimpl::nextToken()
 	status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 	buff[0] = '\0';
 	return false;
+}
+
+
+void LyXLex::Pimpl::pushToken(string const & pt)
+{
+	pushTok = pt;
 }

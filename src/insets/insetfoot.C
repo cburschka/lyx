@@ -81,9 +81,9 @@ bool InsetFoot::InsertInsetAllowed(Inset * inset) const
     return true;
 }
 
-LyXFont InsetFoot::GetDrawFont(LyXParagraph * par, int pos) const
+LyXFont InsetFoot::GetDrawFont(LyXParagraph * p, int pos) const
 {
-    LyXFont fn = InsetCollapsable::GetDrawFont(par, pos);
+    LyXFont fn = InsetCollapsable::GetDrawFont(p, pos);
     fn.decSize();
     fn.decSize();
     return fn;

@@ -71,6 +71,8 @@ public:
 	  split a word if it contains a backslash.
 	  */
 	bool nextToken();
+	/// Push a token, that next token got from lyxlex.
+	void pushToken(string const &);
 	
 	/// 
 	int GetLineNo() const;

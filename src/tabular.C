@@ -22,6 +22,7 @@
 #include "vspace.h"
 #include "layout.h"
 #include "lyx_gui_misc.h"
+#include "buffer.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
 #include "insets/insettabular.h"
@@ -1100,7 +1101,7 @@ void LyXTabular::Read(LyXLex & lex)
 
     l_getline(is, line);
     if (!prefixIs(line, "<LyXTabular ")) {
-	OldFormatRead(is, line);
+	OldFormatRead(lex, line);
 	return;
     }
 
@@ -1198,7 +1199,7 @@ void LyXTabular::Read(LyXLex & lex)
 }
 
 
-void LyXTabular::OldFormatRead(istream & is, string fl)
+void LyXTabular::OldFormatRead(LyXLex & lex, string fl)
 {
     int version;
     int i, j;
@@ -1215,12 +1216,16 @@ void LyXTabular::OldFormatRead(istream & is, string fl)
     int g = 0;
     int h = 0;
 	
+    istream & is = lex.getStream();
     string s;
     s = fl;
     if (s.length() > 8)
 	version = atoi(s.c_str() + 8);
     else
 	version = 1;
+
+    int * cont_row_info;
+
     if (version < 5) {
 	lyxerr << "Tabular format < 5 is not supported anymore\n"
 	    "Get an older version of LyX (< 1.1.x) for conversion!"
@@ -1248,63 +1253,118 @@ void LyXTabular::OldFormatRead(istream & is, string fl)
 		getline(is, tmp);
 	    }
 	}
-	set_row_column_number_info();
-	return;
-    }
-    is >> rows_arg >> columns_arg >> is_long_tabular_arg
-       >> rotate_arg >> a >> b >> c >> d;
-    Init(rows_arg, columns_arg);
-    SetLongTabular(is_long_tabular_arg);
-    SetRotateTabular(rotate_arg);
-    endhead = a;
-    endfirsthead = b;
-    endfoot = c;
-    endlastfoot = d;
-    for (i = 0; i < rows_; ++i) {
-	a = b = c = d = e = f = g = h = 0;
-	is >> a >> b >> c >> d;
-	row_info[i].top_line = a;
-	row_info[i].bottom_line = b;
+    } else {
+	is >> rows_arg >> columns_arg >> is_long_tabular_arg
+	   >> rotate_arg >> a >> b >> c >> d;
+	Init(rows_arg, columns_arg);
+	SetLongTabular(is_long_tabular_arg);
+	SetRotateTabular(rotate_arg);
+	endhead = a;
+	endfirsthead = b;
+	endfoot = c;
+	endlastfoot = d;
+	for (i = 0; i < rows_; ++i) {
+	    a = b = c = d = e = f = g = h = 0;
+	    is >> a >> b >> c >> d;
+	    row_info[i].top_line = a;
+	    row_info[i].bottom_line = b;
 //	row_info[i].is_cont_row = c;
-	row_info[i].newpage = d;
-    }
-    for (i = 0; i < columns_; ++i) {
-	string s1;
-	string s2;
-	is >> a >> b >> c;
-	char ch; // skip '"'
-	is >> ch;
-	getline(is, s1, '"');
-	is >> ch; // skip '"'
-	getline(is, s2, '"');
-	column_info[i].alignment = static_cast<char>(a);
-	column_info[i].left_line = b;
-	column_info[i].right_line = c;
-	column_info[i].p_width = s1;
-	column_info[i].align_special = s2;
-    }
-    for (i = 0; i < rows_; ++i) {
-	for (j = 0; j < columns_; ++j) {
+	    row_info[i].newpage = d;
+	}
+	for (i = 0; i < columns_; ++i) {
 	    string s1;
 	    string s2;
-	    is >> a >> b >> c >> d >> e >> f >> g;
-	    char ch;
-	    is >> ch; // skip '"'
+	    is >> a >> b >> c;
+	    char ch; // skip '"'
+	    is >> ch;
 	    getline(is, s1, '"');
 	    is >> ch; // skip '"'
 	    getline(is, s2, '"');
-	    cell_info[i][j].multicolumn = static_cast<char>(a);
-	    cell_info[i][j].alignment = static_cast<char>(b);
-	    cell_info[i][j].top_line = static_cast<char>(c);
-	    cell_info[i][j].bottom_line = static_cast<char>(d);
+	    column_info[i].alignment = static_cast<char>(a);
+	    column_info[i].left_line = b;
+	    column_info[i].right_line = c;
+	    column_info[i].p_width = s1;
+	    column_info[i].align_special = s2;
+	}
+	for (i = 0; i < rows_; ++i) {
+	    for (j = 0; j < columns_; ++j) {
+		string s1;
+		string s2;
+		is >> a >> b >> c >> d >> e >> f >> g;
+		char ch;
+		is >> ch; // skip '"'
+		getline(is, s1, '"');
+		is >> ch; // skip '"'
+		getline(is, s2, '"');
+		cell_info[i][j].multicolumn = static_cast<char>(a);
+		cell_info[i][j].alignment = static_cast<char>(b);
+		cell_info[i][j].top_line = static_cast<char>(c);
+		cell_info[i][j].bottom_line = static_cast<char>(d);
 //			cell_info[i][j].has_cont_row = static_cast<bool>(e);
-	    cell_info[i][j].rotate = static_cast<bool>(f);
-	    cell_info[i][j].linebreaks = static_cast<bool>(g);
-	    cell_info[i][j].align_special = s1;
-	    cell_info[i][j].p_width = s2;
+		cell_info[i][j].rotate = static_cast<bool>(f);
+		cell_info[i][j].linebreaks = static_cast<bool>(g);
+		cell_info[i][j].align_special = s1;
+		cell_info[i][j].p_width = s2;
+	    }
 	}
     }
     set_row_column_number_info();
+    LyXParagraph * par = new LyXParagraph;
+    LyXParagraph * return_par = 0;
+    LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
+    LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
+    string token, tmptok;
+    int pos = 0;
+    char depth = 0;
+    LyXFont font(LyXFont::ALL_INHERIT);
+
+    while (lex.IsOK()) {
+        lex.nextToken();
+        token = lex.GetString();
+        if (token.empty())
+            continue;
+	if ((token == "\\layout") || (token == "\\end_float")) {
+	    lex.pushToken(token);
+	    break;
+	}
+	if (owner_->BufferOwner()->parseSingleLyXformat2Token(lex, par,
+							      return_par,
+							      token, pos,
+							      depth, font,
+							      footnoteflag,
+							      footnotekind))
+	{
+	    // the_end read
+	    lex.pushToken(token);
+	    break;
+	}
+	if (return_par) {
+	    lex.printError("New Paragraph allocated! This should not happen!");
+	    lex.pushToken(token);
+	    delete par;
+	    par = return_par;
+	    break;
+	}
+    }
+    // now we have the par we should fill the insets with this!
+    int cell = 0;
+    InsetText *inset = GetCellInset(cell);
+
+    for(int i=0; i < par->Last(); ++i) {
+	if (par->IsNewline(i)) {
+	    ++cell;
+	    if (cell > GetNumberOfCells()) {
+		lyxerr << "Some error in reading old table format occured!" <<
+		    endl << "Terminating when reading cell[" << cell << "]!" <<
+		    endl;
+		return;
+	    }
+	    inset = GetCellInset(cell);
+	    continue;
+	}
+	par->CopyIntoMinibuffer(i);
+	inset->par->InsertFromMinibuffer(inset->par->Last());
+    }
 }
 
 
@@ -2395,7 +2455,7 @@ int LyXTabular::Latex(ostream & os, bool fragile, bool fp) const
 	    ret += TeXCellPreamble(os, cell);
 	    ret += GetCellInset(cell)->Latex(os, fragile, fp);
 	    ret += TeXCellPostamble(os, cell);
-	    if (j < (columns_ - 1)) { // not last cell in row
+	    if (!IsLastCellInRow(cell)) { // not last cell in row
 		os << "&" << endl;
 		++ret;
 	    }

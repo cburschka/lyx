@@ -30,11 +30,10 @@ InsetERT::InsetERT(Buffer * bf)
     LyXFont font(LyXFont::ALL_SANE);
     font.setLatex (LyXFont::ON);
     real_current_font = current_font = font;
-    LyXFont labelfont(LyXFont::ALL_SANE);
+    labelfont = LyXFont(LyXFont::ALL_SANE);
     labelfont.decSize();
     labelfont.decSize();
     labelfont.setColor(LColor::ert);
-    setLabelFont(labelfont);
     setAutoCollapse(false);
     setInsetName("ERT");
 }

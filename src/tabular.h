@@ -176,7 +176,7 @@ public:
     ///
     void Read(LyXLex &);
     ///
-    void OldFormatRead(std::istream &, string);
+    void OldFormatRead(LyXLex &, string);
     ///
     /// helper function for Latex returns number of newlines
     ///

@@ -835,15 +835,15 @@ void InsetText::Validate(LaTeXFeatures & features) const
 
 
 // Returns the width of a character at a certain spot
-int InsetText::SingleWidth(Painter & pain, LyXParagraph * par, int pos) const
+int InsetText::SingleWidth(Painter & pain, LyXParagraph * p, int pos) const
 {
-    LyXFont font = GetDrawFont(par, pos);
-    char c = par->GetChar(pos);
+    LyXFont font = GetDrawFont(p, pos);
+    char c = p->GetChar(pos);
 
     if (IsPrintable(c)) {
         return lyxfont::width(c, font);
     } else if (c == LyXParagraph::META_INSET) {
-        Inset const * tmpinset = par->GetInset(pos);
+        Inset const * tmpinset = p->GetInset(pos);
         if (tmpinset)
             return tmpinset->width(pain, font);
         else
@@ -857,15 +857,15 @@ int InsetText::SingleWidth(Painter & pain, LyXParagraph * par, int pos) const
 
 
 // Returns the width of a character at a certain spot
-void InsetText::SingleHeight(Painter & pain, LyXParagraph * par,int pos,
+void InsetText::SingleHeight(Painter & pain, LyXParagraph * p,int pos,
 			     int & asc, int & desc) const
 {
-    LyXFont font = GetDrawFont(par, pos);
-    char c = par->GetChar(pos);
+    LyXFont font = GetDrawFont(p, pos);
+    char c = p->GetChar(pos);
 
     asc = desc = 0;
     if (c == LyXParagraph::META_INSET) {
-        Inset const * tmpinset=par->GetInset(pos);
+        Inset const * tmpinset=p->GetInset(pos);
         if (tmpinset) {
 	    asc = tmpinset->ascent(pain, font);
 	    desc = tmpinset->descent(pain, font);
@@ -885,23 +885,23 @@ void InsetText::SingleHeight(Painter & pain, LyXParagraph * par,int pos,
 // smaller. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont InsetText::GetFont(LyXParagraph * par, int pos) const
+LyXFont InsetText::GetFont(LyXParagraph * p, int pos) const
 {
-    char par_depth = par->GetDepth();
+    char par_depth = p->GetDepth();
 
     LyXLayout const & layout =
-	    textclasslist.Style(buffer->params.textclass, par->GetLayout());
+	    textclasslist.Style(buffer->params.textclass, p->GetLayout());
 
     // We specialize the 95% common case:
-    if (par->footnoteflag == LyXParagraph::NO_FOOTNOTE && !par_depth) {
+    if (p->footnoteflag == LyXParagraph::NO_FOOTNOTE && !par_depth) {
         if (pos >= 0) {
             // 95% goes here
             if (layout.labeltype == LABEL_MANUAL
-                && pos < BeginningOfMainBody(par)) {
+                && pos < BeginningOfMainBody(p)) {
 		// 1% goes here
-                return par->GetFontSettings(pos).realize(layout.reslabelfont);
+                return p->GetFontSettings(pos).realize(layout.reslabelfont);
             } else
-                return par->GetFontSettings(pos).realize(layout.resfont);
+                return p->GetFontSettings(pos).realize(layout.resfont);
         } else {
             // 5% goes here.
             // process layoutfont for pos == -1 and labelfont for pos < -1
@@ -917,14 +917,14 @@ LyXFont InsetText::GetFont(LyXParagraph * par, int pos) const
 
     if (pos >= 0){
         // 95% goes here
-        if (pos < BeginningOfMainBody(par)) {
+        if (pos < BeginningOfMainBody(p)) {
             // 1% goes here
             layoutfont = layout.labelfont;
         } else {
             // 99% goes here
             layoutfont = layout.font;
         }
-        tmpfont = par->GetFontSettings(pos);
+        tmpfont = p->GetFontSettings(pos);
         tmpfont.realize(layoutfont);
     } else{
         // 5% goes here.
@@ -937,12 +937,12 @@ LyXFont InsetText::GetFont(LyXParagraph * par, int pos) const
     
     // Resolve against environment font information
     //if (par->GetDepth()){ // already in while condition
-    while (par && par_depth && !tmpfont.resolved()) {
-        par = par->DepthHook(par_depth - 1);
-        if (par) {
+    while (p && par_depth && !tmpfont.resolved()) {
+        p = p->DepthHook(par_depth - 1);
+        if (p) {
             tmpfont.realize(textclasslist.Style(buffer->params.textclass,
-                                                par->GetLayout()).font);
-            par_depth = par->GetDepth();
+                                                p->GetLayout()).font);
+            par_depth = p->GetDepth();
         }
     }
     tmpfont.realize((textclasslist.TextClass(buffer->params.textclass).
@@ -952,19 +952,19 @@ LyXFont InsetText::GetFont(LyXParagraph * par, int pos) const
 
 
 // the font for drawing may be different from the real font
-LyXFont InsetText::GetDrawFont(LyXParagraph * par, int pos) const
+LyXFont InsetText::GetDrawFont(LyXParagraph * p, int pos) const
 {
-    return GetFont(par, pos);
+    return GetFont(p, pos);
 }
 
 
-int InsetText::BeginningOfMainBody(LyXParagraph * par) const
+int InsetText::BeginningOfMainBody(LyXParagraph * p) const
 {
     if (textclasslist.Style(buffer->params.textclass,
-                       par->GetLayout()).labeltype != LABEL_MANUAL)
-        return 0;
+			    p->GetLayout()).labeltype != LABEL_MANUAL)
+	return 0;
     else
-        return par->BeginningOfMainBody();
+        return p->BeginningOfMainBody();
 }
 
 

@@ -142,12 +142,12 @@ void InsetCollapsable::draw(Painter & pain, LyXFont const & f,
     button_length = width_collapsed(pain, labelfont) + 2;
     button_top_y = -ascent_collapsed(pain, f);
     button_bottom_y = descent_collapsed(pain, f);
+    top_x = int(x);
+    top_baseline = baseline;
     if (collapsed) {
 	draw_collapsed(pain, f, baseline, x);
 	return;
     }
-
-    int top_x = int(x);
 
     draw_collapsed(pain, f, baseline, x);
     x -= TEXT_TO_INSET_OFFSET;
