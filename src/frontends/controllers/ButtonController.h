@@ -19,6 +19,9 @@
 
 #include <list>
 
+#include "gettext.h"
+#include "ButtonControllerBase.h"
+
 template <class Button, class Widget>
 class GuiBC : public ButtonControllerBase
 {

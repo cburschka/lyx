@@ -14,13 +14,10 @@
 #ifndef GNOMEBC_H
 #define GNOMEBC_H
 
-#include <list>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "ButtonControllerBase.h"
 #include "ButtonController.h"
 
 namespace Gtk {

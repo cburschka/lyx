@@ -1,5 +1,5 @@
 /**
- * $Id: FormCitationDialogImpl.C,v 1.7 2001/06/05 17:05:51 lasgouttes Exp $
+ * $Id: FormCitationDialogImpl.C,v 1.8 2001/06/16 14:48:12 leeming Exp $
  */
 
 #include <config.h>
@@ -24,6 +24,7 @@
 
 using std::vector;
 using std::find;
+using std::max;
 
 /*
  *  Constructs a FormCitationDialogImpl which is a child of 'parent', with the

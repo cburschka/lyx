@@ -1,3 +1,10 @@
+2001-06-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitationDialogImpl.C: added using directive.
+
+	* qt2BC.[Ch]: qt2BC now derives from GuiBC<QButton, QWidget>.
+	No idea why this wasn't done ages ago! 
+
 2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCharacter.C:

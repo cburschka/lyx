@@ -1,36 +1,30 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
- *           This file Copyright 2000
- *           Allan Rae
  * ======================================================
  *
- * Author: Allan Rae <rae@lyx.org>
- * Non-xforms-specific code stripped-out and placed in a base class by
- * Angus Leeming <a.leeming@ic.ac.uk>
+ * \file qt2BC.h
+ * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Baruch Even, baruch.even@writeme.com
  */
 
 #ifndef QT2BC_H
 #define QT2BC_H
 
-#include <list>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "ButtonController.h"
+
 class QWidget;
 class QButton;
-
-#include <boost/utility.hpp>
-#include "ButtonControllerBase.h"
-#include "ButtonController.h"
 
 /** General purpose button controller for up to four buttons.
     Controls the activation of the OK, Apply and Cancel buttons.
@@ -38,53 +32,21 @@ class QButton;
     the activation policy and which buttons correspond to which output of the
     state machine.
 */
-class qt2BC : public ButtonControllerBase
+class qt2BC : public GuiBC<QButton, QWidget>
 {
 public:
 	///
 	qt2BC(string const &, string const &);
 
-	/* Initialise Button Functions */
-	/// Call refresh() when finished setting the buttons.
-	void setOK(QButton * obj) {
-		okay_ = obj;
-	}
-	///
-	void setApply(QButton * obj) {
-		apply_ = obj;
-	}
-	///
-	void setCancel(QButton * obj) {
-		cancel_ = obj;
-	}
-	///
-	void setRestore(QButton * obj) {
-		restore_ = obj;
-	}
-	///
-	void addReadOnly(QWidget * obj) {
-		read_only_.push_front(obj);
-	}
-	///
-	void eraseReadOnly() {
-		read_only_.erase(read_only_.begin(), read_only_.end());
-	}
-
-	/* Action Functions */
-	/// force a refresh of the buttons
-	virtual void refresh();
-
 private:
-	///
-	QButton * okay_;
-	///
-	QButton * apply_;
-	///
-	QButton * cancel_;
-	///
-	QButton * restore_;
-	/// List of items to be deactivated when in one of the read-only states
-	std::list<QWidget *> read_only_;
+	/// Updates the button sensitivity (enabled/disabled)
+	void setButtonEnabled(QButton *, bool enabled);
+
+	/// Updates the widget sensitivity (enabled/disabled)
+	void setWidgetEnabled(QWidget *, bool enabled);
+
+	/// Set the label on the button
+	void setButtonLabel(QButton *, string const & label);
 };
 
-#endif // XFORMSBC_H
+#endif // QT2BC_H

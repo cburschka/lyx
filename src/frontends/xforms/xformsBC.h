@@ -18,14 +18,11 @@
 #define XFORMSBC_H
 
 #include FORMS_H_LOCATION
-#include <list>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "gettext.h"
-#include "ButtonControllerBase.h"
 #include "ButtonController.h"
 
 class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT>
