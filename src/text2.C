@@ -269,46 +269,32 @@ void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 
 
 ParagraphList::iterator
-LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
-		   LyXCursor & send_cur,
+LyXText::setLayout(ParagraphList::iterator start,
+		   ParagraphList::iterator end,
 		   string const & layout)
 {
-	ParagraphList::iterator endpit = boost::next(getPar(send_cur));
-	ParagraphList::iterator undoendpit = endpit;
+	ParagraphList::iterator undopit = end;
 	ParagraphList::iterator pars_end = paragraphs().end();
 
-	if (endpit != pars_end && endpit->getDepth()) {
-		while (endpit != pars_end && endpit->getDepth()) {
-			++endpit;
-			undoendpit = endpit;
-		}
-	} else if (endpit != pars_end) {
-		// because of parindents etc.
-		++endpit;
-	}
-
-	recUndo(sstart_cur.par(), parOffset(undoendpit) - 1);
-
-	// ok we have a selection. This is always between sstart_cur
-	// and sel_end cursor
-	cur = sstart_cur;
-	ParagraphList::iterator pit = getPar(sstart_cur);
-	ParagraphList::iterator epit = boost::next(getPar(send_cur));
+	while (undopit != pars_end && undopit->getDepth())
+		++undopit;
+	//because of parindets etc
+	if (undopit != pars_end)
+		++undopit;
+	recUndo(parOffset(start), parOffset(undopit) - 1);
 
 	BufferParams const & bufparams = bv()->buffer()->params();
 	LyXLayout_ptr const & lyxlayout =
 		bufparams.getLyXTextClass()[layout];
 
-	do {
+	for (ParagraphList::iterator pit = start; pit != end; ++pit) {
 		pit->applyLayout(lyxlayout);
 		makeFontEntriesLayoutSpecific(bufparams, *pit);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
 			pit->setLabelWidthString(lyxlayout->labelstring());
-		cur.par(std::distance(paragraphs().begin(), pit));
-		++pit;
-	} while (pit != epit);
+	}
 
-	return endpit;
+	return undopit;
 }
 
 
@@ -335,9 +321,11 @@ void LyXText::setLayout(string const & layout)
 		return;
 	}
 
-	ParagraphList::iterator endpit = setLayout(cursor, selection.start,
-						   selection.end, layout);
-	redoParagraphs(getPar(selection.start), endpit);
+	ParagraphList::iterator start = getPar(selection.start.par());
+	ParagraphList::iterator end = boost::next(getPar(selection.end.par()));
+	ParagraphList::iterator endpit = setLayout(start, end, layout);
+
+	redoParagraphs(start, endpit);
 	updateCounters();
 	redoCursor();
 }
@@ -430,11 +418,11 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	if (!selection.set()) {
 		// Determine basis font
 		LyXFont layoutfont;
-		if (cursor.pos() < cursorPar()->beginOfBody()) {
+		if (cursor.pos() < cursorPar()->beginOfBody())
 			layoutfont = getLabelFont(cursorPar());
-		} else {
+		else
 			layoutfont = getLayoutFont(cursorPar());
-		}
+
 		// Update current font
 		real_current_font.update(font,
 					 bv()->buffer()->params().language,
@@ -597,36 +585,26 @@ string LyXText::getStringToIndex()
 // they do not duplicate themself and you cannot play dirty tricks with
 // them!
 
-void LyXText::setParagraph(
-			   Spacing const & spacing,
-			   LyXAlignment align,
-			   string const & labelwidthstring,
-			   bool noindent)
+void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
+	string const & labelwidthstring, bool noindent)
 {
 	setSelection();
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator endpit = boost::next(getPar(selection.end));
-	ParagraphList::iterator undoendpit = endpit;
 	ParagraphList::iterator pars_end = paragraphs().end();
 
-	if (endpit != pars_end && endpit->getDepth()) {
-		while (endpit != pars_end && endpit->getDepth()) {
-			++endpit;
-			undoendpit = endpit;
-		}
-	} else if (endpit != pars_end) {
-		// because of parindents etc.
+	while (endpit != pars_end && endpit->getDepth())
 		++endpit;
-	}
+	// because of parindents etc.
+	if (endpit != pars_end)
+		++endpit;
 
-	recUndo(selection.start.par(), parOffset(undoendpit) - 1);
+	recUndo(selection.start.par(), parOffset(endpit) - 1);
 
-	int tmppit = selection.end.par();
+	ParagraphList::reverse_iterator pit(getPar(selection.end.par()));
+	ParagraphList::reverse_iterator beg(getPar(selection.start.par()));
 
-	while (tmppit != selection.start.par() - 1) {
-		setCursor(tmppit, 0);
-
-		ParagraphList::iterator const pit = cursorPar();
+	for (++beg; pit != beg; ++pit) {
 		ParagraphParameters & params = pit->params();
 		params.spacing(spacing);
 
@@ -643,7 +621,6 @@ void LyXText::setParagraph(
 		}
 		pit->setLabelWidthString(labelwidthstring);
 		params.noindent(noindent);
-		--tmppit;
 	}
 
 	redoParagraphs(getPar(selection.start), endpit);
@@ -982,43 +959,38 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// and selection.end
 
 	// make sure that the depth behind the selection are restored, too
-	ParagraphList::iterator endpit = boost::next(getPar(selection.end.par()));
-	ParagraphList::iterator undoendpit = endpit;
+	ParagraphList::iterator begpit = getPar(selection.start.par());
+	ParagraphList::iterator endpit = getPar(selection.end.par());
+	ParagraphList::iterator undopit = boost::next(endpit);
 	ParagraphList::iterator pars_end = paragraphs().end();
 
-	if (endpit != pars_end && endpit->getDepth()) {
-		while (endpit != pars_end && endpit->getDepth()) {
-			++endpit;
-			undoendpit = endpit;
-		}
-	} else if (endpit != pars_end) {
-		// because of parindents etc.
-		++endpit;
-	}
+	while (undopit != pars_end && undopit->getDepth())
+		++undopit;
+	//because of parindents etc.
+	if (undopit != pars_end)
+		++undopit;
+	recUndo(selection.start.par(), parOffset(undopit) - 1);
 
-	recUndo(selection.start.par(), parOffset(undoendpit) - 1);
-
-	endpit = getPar(selection.end.par());
 	int endpos = selection.end.pos();
 
 	BufferParams const & bufparams = bv()->buffer()->params();
 	boost::tie(endpit, endpos) = realcut ?
 		CutAndPaste::cutSelection(bufparams,
 					  paragraphs(),
-					  getPar(selection.start.par()), endpit,
+					  begpit , endpit,
 					  selection.start.pos(), endpos,
 					  bufparams.textclass,
 					  doclear)
 		: CutAndPaste::eraseSelection(bufparams,
 					      paragraphs(),
-					      getPar(selection.start.par()), endpit,
+					      begpit, endpit,
 					      selection.start.pos(), endpos,
 					      doclear);
 	// sometimes necessary
 	if (doclear)
-		getPar(selection.start.par())->stripLeadingSpaces();
+		begpit->stripLeadingSpaces();
 
-	redoParagraphs(getPar(selection.start.par()), boost::next(endpit));
+	redoParagraphs(begpit, undopit);
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
 	// we prefer the end for when tracking changes
@@ -1027,9 +999,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 
 	// need a valid cursor. (Lgb)
 	clearSelection();
-
-	setCursor(cursorPar(), cursor.pos());
-	selection.cursor = cursor;
+	redoCursor();
 	updateCounters();
 }
 

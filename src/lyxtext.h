@@ -81,9 +81,8 @@ public:
 	  those paragraphs
 	  */
 	ParagraphList::iterator
-	setLayout(LyXCursor & actual_cursor,
-		  LyXCursor & selection_start,
-		  LyXCursor & selection_end,
+	setLayout(ParagraphList::iterator start,
+		  ParagraphList::iterator end,
 		  std::string const & layout);
 	///
 	void setLayout(std::string const & layout);

@@ -1,3 +1,8 @@
+2003-12-08  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyxtext.h, text2.C (setLayout): don't use cursor to iterate,
+	when a pit is enough. Standarize a couple of loops. 
+
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): DIALOG_SHOW now handles "latexlog" and
