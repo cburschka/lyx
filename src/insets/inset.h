@@ -217,13 +217,9 @@ public:
 	///
 	int y() const { return yo_; }
 	///
-	virtual void deleteLyXText(BufferView *, bool = true) const {}
-	/// returns the actuall scroll-value
-	virtual int scroll(bool recursive=true) const {
-		if (!recursive || !owner_)
-			return scx;
-		return 0;
-	}
+	virtual void deleteLyXText(BufferView *) const {}
+	/// returns the actual scroll-value
+	virtual int scroll(bool recursive = true) const;
 
 	/// if this insets owns paragraphs (f.ex. InsetText) then it
 	/// should return it's very first one!

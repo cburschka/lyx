@@ -1650,8 +1650,9 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
 }
 
 
-void InsetTabular::deleteLyXText(BufferView * /*bv*/, bool /*recursive*/) const
+void InsetTabular::deleteLyXText(BufferView * /*bv*/) const
 {
+#warning this is strange, isnt it? But this is 1.3.x code...
 	//resizeLyXText(bv, recursive);
 }
 

@@ -92,7 +92,7 @@ public:
 	void setAutoCollapse(bool f);
 #endif
 	///
-	void deleteLyXText(BufferView *, bool recursive=true) const;
+	void deleteLyXText(BufferView *) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///

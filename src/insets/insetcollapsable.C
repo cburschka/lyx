@@ -351,9 +351,9 @@ void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetCollapsable::deleteLyXText(BufferView * bv, bool recursive) const
+void InsetCollapsable::deleteLyXText(BufferView * bv) const
 {
-	inset.deleteLyXText(bv, recursive);
+	inset.deleteLyXText(bv);
 }
 
 

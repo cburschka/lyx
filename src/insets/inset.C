@@ -141,6 +141,13 @@ bool InsetOld::checkInsertChar(LyXFont &)
 }
 
 
+int InsetOld::scroll(bool recursive) const
+{
+	if (!recursive || !owner_)
+		return scx;
+	return 0;
+}
+
 bool isEditableInset(InsetOld const * i)
 {
 	return i && i->editable();

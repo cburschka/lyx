@@ -959,14 +959,12 @@ void InsetText::setViewCache(BufferView const * bv) const
 }
 
 
-void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
+void InsetText::deleteLyXText(BufferView * bv) const
 {
-	if (recursive) {
-		/// then remove all LyXText in text-insets
-		for_each(const_cast<ParagraphList&>(paragraphs).begin(),
-			 const_cast<ParagraphList&>(paragraphs).end(),
-			 boost::bind(&Paragraph::deleteInsetsLyXText, _1, bv));
-	}
+	/// then remove all LyXText in text-insets
+	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
+		 const_cast<ParagraphList&>(paragraphs).end(),
+		 boost::bind(&Paragraph::deleteInsetsLyXText, _1, bv));
 }
 
 

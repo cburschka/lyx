@@ -119,7 +119,7 @@ public:
 	///
 	void setViewCache(BufferView const * bv) const;
 	///
-	void deleteLyXText(BufferView *, bool recursive = true) const;
+	void deleteLyXText(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	/// Appends \c list with all labels found within this inset.
