@@ -79,7 +79,8 @@ struct MathStackXIter {
 	}
 
 	MathedXIter * pop() {
-		return &item[--i];
+    --i;
+		return &item[i - 1];
 	}
 
 	MathedXIter * Item(int idx) {

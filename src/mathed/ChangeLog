@@ -1,3 +1,9 @@
+
+2001-03-15  André Pönitz  <poenitz@htwm.de>
+
+	* math_cursor.C: fix bug (cursor was leaving two insets at a time instead
+	   of one)
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* math_macrotable.h: noncopyable is in namespace boost
