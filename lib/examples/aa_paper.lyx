@@ -1,7 +1,6 @@
-#This file was created by <pit> Mon Nov 24 22:57:48 1997
-#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
-\textclass aapaper
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass aa
 \language english
 \inputencoding latin1
 \fontscheme default
@@ -19,8 +18,8 @@
 \defskip medskip
 \quotes_language english
 \quotes_times 2
-\papercolumns 1
-\papersides 1
+\papercolumns 2
+\papersides 2
 \paperpagestyle default
 
 \layout Thesaurus
@@ -298,8 +297,7 @@ energy transport by grey radiation diffusion.
 \layout Standard
 
 For the one-zone-model Baker obtains necessary conditions for dynamical,
- secular and vibrational (or pulsational) stability [Eqs.
-\protected_separator 
+ secular and vibrational (or pulsational) stability [Eqs.\SpecialChar ~
 (34a,
 \latex latex 
 
@@ -319,8 +317,7 @@ c) in Baker
 
 ].
  Using Baker's notation:
-\begin_inset Formula 
-\begin{eqnarray*}
+\begin_inset Formula \begin{eqnarray*}
 M_{\mathrm{r}} &  & \mathrm{mass}\, \mathrm{internal}\, \mathrm{to}\, \mathrm{the}\, \mathrm{radius}\, r\\
 m &  & \mathrm{mass}\, \mathrm{of}\, \mathrm{the}\, \mathrm{zone}\\
 r_{0} &  & \mathrm{unperturbed}\, \mathrm{zone}\, \mathrm{radius}\\
@@ -336,8 +333,7 @@ and with the definitions of the
 \emph on 
 local cooling time
 \emph default 
- (see Fig.
-\protected_separator 
+ (see Fig.\SpecialChar ~
 
 \begin_inset LatexCommand \ref{FigGam}
 
@@ -347,9 +343,7 @@ local cooling time
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{equation}
-\label{}
+\begin_inset Formula \begin{equation}
 \tau _{\mathrm{co}}=\frac{E_{\mathrm{th}}}{L_{r0}}\, ,
 \end{equation}
 
@@ -361,9 +355,7 @@ local free-fall time
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{equation}
-\label{}
+\begin_inset Formula \begin{equation}
 \tau _{\mathrm{ff}}=\sqrt{\frac{3\pi }{32G}\frac{4\pi r_{0}^{3}}{3M_{\mathrm{r}}}\, ,}
 \end{equation}
 
@@ -378,8 +370,7 @@ Baker's
 \end_inset 
 
  have the following form:
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 \sigma _{0} & = & \frac{\pi }{\sqrt{8}}\frac{1}{\tau _{\mathrm{ff}}}\\
 K & = & \frac{\sqrt{32}}{\pi }\frac{1}{\delta }\frac{\tau _{\mathrm{ff}}}{\tau _{\mathrm{co}}}\, ;
 \end{eqnarray}
@@ -394,9 +385,7 @@ where
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{equation}
-\label{}
+\begin_inset Formula \begin{equation}
 \begin{array}{l}
 \delta =-\left( \frac{\partial \ln \rho }{\partial \ln T}\right) _{P}\\
 e=mc^{2}
@@ -435,8 +424,7 @@ is a thermodynamical quantity which is of order
  is proportional to the ratio of the free-fall time and the cooling time.
  Substituting into Baker's criteria, using thermodynamic identities and
  definitions of thermodynamic quantities, 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 \Gamma _{1}=\left( \frac{\partial \ln P}{\partial \ln \rho }\right) _{S}\, ,\: \chi _{\rho }=\left( \frac{\partial \ln P}{\partial \ln \rho }\right) _{T}\, ,\: \kappa _{P}=\left( \frac{\partial \ln \kappa }{\partial \ln P}\right) _{T}\]
 
 \end_inset 
@@ -445,8 +433,7 @@ is a thermodynamical quantity which is of order
 \layout Standard
 
 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 \nabla _{\mathrm{ad}}=\left( \frac{\partial \ln T}{\partial \ln P}\right) _{S}\, ,\: \chi _{T}=\left( \frac{\partial \ln P}{\partial \ln T}\right) _{\rho }\, ,\: \kappa _{T}=\left( \frac{\partial \ln \kappa }{\partial \ln P}\right) _{T}\]
 
 \end_inset 
@@ -459,8 +446,7 @@ stability
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 \frac{\pi ^{2}}{8}\frac{1}{\tau _{\mathrm{ff}}^{2}}(3\Gamma _{1}-4) & > & 0\label{ZSDynSta} \\
 \frac{\pi ^{2}}{\tau _{\mathrm{co}}\tau _{\mathrm{ff}}^{2}}\Gamma _{1}\nabla _{\mathrm{ad}}\left[ \frac{1-3/4\chi _{\rho }}{\chi _{T}}(\kappa _{T}-4)+\kappa _{P}+1\right]  & > & 0\label{ZSSecSta} \\
 \frac{\pi ^{2}}{4}\frac{3}{\tau _{\mathrm{co}}\tau _{\mathrm{ff}}^{2}}\Gamma _{1}^{2}\nabla _{\mathrm{ad}}\left[ 4\nabla _{\mathrm{ad}}-(\nabla _{\mathrm{ad}}\kappa _{T}+\kappa _{P})-\frac{4}{3\Gamma _{1}}\right]  & > & 0\label{ZSVibSta} 
@@ -492,8 +478,7 @@ a factor containing only constitutive relations and their derivatives.
 \layout Standard
 
 The first factors, depending on only timescales, are positive by definition.
- The signs of the left hand sides of the inequalities
-\protected_separator 
+ The signs of the left hand sides of the inequalities\SpecialChar ~
 (
 \begin_inset LatexCommand \ref{ZSDynSta}
 
@@ -520,8 +505,7 @@ functions of the thermodynamic state in the local zone
  The one-zone stability can therefore be determined from a simple equation
  of state, given for example, as a function of density and temperature.
  Once the microphysics, i.e.
- the thermodynamics and opacities (see Table
-\protected_separator 
+ the thermodynamics and opacities (see Table\SpecialChar ~
 
 \begin_inset LatexCommand \ref{KapSou}
 
@@ -546,55 +530,106 @@ Opacity sources
 
 
 \layout Standard
-\align center \LyXTable
-multicol4
-4 2 0 0 -1 -1 -1 -1
-1 0 0 0
-1 0 0 0
-0 0 0 0
-0 1 0 0
-2 0 0 
-2 0 0 
-0 2 1 0 0 0 0
-0 2 1 0 0 0 0
-0 8 1 0 0 0 0
-0 8 1 0 0 0 0
-0 2 1 0 0 0 0
-0 8 1 0 0 0 0
-0 8 1 0 0 0 0
-0 8 1 0 0 0 0
+
+
+\begin_inset  Tabular
+<lyxtabular version="2" rows="4" columns="2">
+<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<column alignment="left" valignment="top" leftline="false" rightline="false" width="" special="">
+<column alignment="left" valignment="top" leftline="false" rightline="false" width="" special="">
+<row topline="true" bottomline="true" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
 
 Source
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 T/[K]
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="false" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 Yorke 1979, Yorke 1980a
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 
 \begin_inset Formula \( \leq 1700^{\mathrm{a}} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="false" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 Krügel 1971
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 
 \begin_inset Formula \( 1700\leq T\leq 5000 \)
 \end_inset 
 
  
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="true" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 Cox & Stewart 1969
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
 
 \begin_inset Formula \( 5000\leq  \)
 \end_inset 
 
  
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
 \layout Standard
+\added_space_top medskip* 
 
-
-\begin_inset Formula \( \mathrm{a} \)
+\begin_inset Formula \( ^{\textrm{a}} \)
 \end_inset 
 
  This is footnote a
@@ -639,8 +674,7 @@ stability equations of state
 .
 \layout Standard
 
-The sign determining part of inequality
-\protected_separator 
+The sign determining part of inequality\SpecialChar ~
 (
 \begin_inset LatexCommand \ref{ZSDynSta}
 
@@ -654,18 +688,14 @@ The sign determining part of inequality
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{equation}
-\label{}
+\begin_inset Formula \begin{equation}
 \Gamma _{1}>\frac{4}{3}
 \end{equation}
 
 \end_inset 
 
 Stability of the thermodynamical equilibrium demands
-\begin_inset Formula 
-\begin{equation}
-\label{}
+\begin_inset Formula \begin{equation}
 \chi _{\rho }>0,\: \: c_{v}>0\, ,
 \end{equation}
 
@@ -675,9 +705,7 @@ and
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{equation}
-\label{}
+\begin_inset Formula \begin{equation}
 \chi _{T}>0
 \end{equation}
 
@@ -688,8 +716,7 @@ holds for a wide range of physical situations.
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 \Gamma _{3}-1=\frac{P}{\rho T}\frac{\chi _{T}}{c_{v}} & > & 0\\
 \Gamma _{1}=\chi _{\rho }+\chi _{T}(\Gamma _{3}-1) & > & 0\\
 \nabla _{\mathrm{ad}}=\frac{\Gamma _{3}-1}{\Gamma _{1}} & > & 0
@@ -697,8 +724,7 @@ holds for a wide range of physical situations.
 
 \end_inset 
 
-we find the sign determining terms in inequalities
-\protected_separator 
+we find the sign determining terms in inequalities\SpecialChar ~
 (
 \begin_inset LatexCommand \ref{ZSSecSta}
 
@@ -718,8 +744,7 @@ stability
 \layout Standard
 
 
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 3\Gamma _{1}-4=:\, S_{\mathrm{dyn}}> & 0 & \label{DynSta} \\
 \frac{1-3/4\chi _{\rho }}{\chi _{T}}(\kappa _{T}-4)+\kappa _{P}+1=:\, S_{\mathrm{sec}}> & 0 & \label{SecSta} \\
 4\nabla _{\mathrm{ad}}-(\nabla _{\mathrm{ad}}\kappa _{T}+\kappa _{P}-\frac{4}{3\Gamma _{1}}=:\, S_{\mathrm{vib}}> & 0 & \label{VibSta} 
@@ -762,8 +787,7 @@ e relations
 \end_inset 
 
 .
- See Fig.
-\protected_separator 
+ See Fig.\SpecialChar ~
 
 \begin_inset LatexCommand \ref{FigVibStab}
 
@@ -774,8 +798,7 @@ e relations
 \end_inset 
 
 .
- Regions of secular instability are listed in Table
-\protected_separator 
+ Regions of secular instability are listed in Table\SpecialChar ~
 
 \begin_inset LatexCommand \ref{TabSecInst}
 
@@ -855,21 +878,18 @@ ge\SpecialChar \-
 mein\SpecialChar \-
 schaft, DFG
 \emph default 
- project number Ts
-\protected_separator 
+ project number Ts\SpecialChar ~
 17/2--1.
 \layout Bibliography
 \bibitem [1966]{baker}
 
-Baker N., 1966, in: Stellar Evolution, eds.
-\protected_separator 
+Baker N., 1966, in: Stellar Evolution, eds.\SpecialChar ~
 R.
  F.
  Stein, A.
  G.
  W.
- Cameron, Plenum, New York, p.
-\protected_separator 
+ Cameron, Plenum, New York, p.\SpecialChar ~
 333
 \layout Bibliography
 \bibitem [1988]{balluch}
@@ -880,8 +900,7 @@ Balluch M., 1988, A&A 200, 58
 
 Cox J.
  P., 1980, Theory of Stellar Pulsation, Princeton University Press, Princeton,
- p.
-\protected_separator 
+ p.\SpecialChar ~
 165
 \layout Bibliography
 \bibitem [1969]{cox69}
@@ -893,8 +912,7 @@ Cox A.
 \bibitem [1971]{kruegel}
 
 Krügel E., 1971, Der Rosselandsche Mittelwert bei tiefen Temperaturen, Diplom--Th
-esis, Univ.
-\protected_separator 
+esis, Univ.\SpecialChar ~
  Göttingen
 \layout Bibliography
 \bibitem [1980]{mizuno}
