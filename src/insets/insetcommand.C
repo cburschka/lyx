@@ -99,7 +99,7 @@ int InsetCommand::width(Painter & pain, LyXFont const &) const
 			      LColor::commandbg, LColor::commandframe,
 			      false, width, ascent, descent);
 	}
-	return width;
+	return width+4;
 #else
 	LyXFont f = font;
 	f.decSize();
@@ -121,14 +121,14 @@ void InsetCommand::draw(Painter & pain, LyXFont const &,
 	string s = getScreenLabel();
 
 	if (Editable()) {
-		pain.buttonText(int(x), baseline, s, font, true, width);
+		pain.buttonText(int(x)+2, baseline, s, font, true, width);
 	} else {
-		pain.rectText(int(x), baseline, s, font,
+		pain.rectText(int(x)+2, baseline, s, font,
 			      LColor::commandbg, LColor::commandframe,
 			      true, width);
 	}
 
-	x += width;
+	x += width + 4;
 #else
 		
 	x += 3;

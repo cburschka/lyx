@@ -161,6 +161,9 @@ private:
     bool moveUp(BufferView *, bool activate_inset = true);
     bool moveDown(BufferView *, bool activate_inset = true);
     bool Delete();
+    bool cutSelection();
+    bool copySelection();
+    bool pasteSelection();
     ///
     bool hasSelection() const { return selection_start != selection_end; }
     ///

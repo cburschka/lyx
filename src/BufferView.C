@@ -643,7 +643,7 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 
 	if (buffer_ == 0 || !screen) return;
 
-	Inset * inset_hit = checkInsetHit(xpos, ypos);
+	Inset * inset_hit = checkInsetHit(xpos, ypos, button);
 
 	// ok ok, this is a hack.
 	if (button == 4 || button == 5) {
@@ -749,7 +749,8 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 		return;
 	}
 	
-	text->SetCursorFromCoordinates(xpos, ypos + screen_first);
+	if (!inset_hit) // otherwise it was already set in checkInsetHit(...)
+		text->SetCursorFromCoordinates(xpos, ypos + screen_first);
 	text->FinishUndo();
 	text->sel_cursor = text->cursor;
 	text->cursor.x_fix = text->cursor.x;
@@ -817,7 +818,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 	// If we hit an inset, we have the inset coordinates in these
 	// and inset_hit points to the inset.  If we do not hit an
 	// inset, inset_hit is 0, and inset_x == x, inset_y == y.
-	Inset * inset_hit = checkInsetHit(x, y);
+	Inset * inset_hit = checkInsetHit(x, y, button);
 
 	if (the_locking_inset) {
 		// We are in inset locking mode.
@@ -967,18 +968,21 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
  * If hit, the coordinates are changed relative to the inset. 
  * Otherwise coordinates are not changed, and false is returned.
  */
-Inset * BufferView::checkInsetHit(int & x, int & y)
+Inset * BufferView::checkInsetHit(int & x, int & y, unsigned int button)
 {
 	if (!screen)
 		return 0;
   
 	int y_tmp = y + screen->first;
   
-	LyXCursor & old_cursor = text->cursor;
-	text->SetCursorFromCoordinates(x,y);
-	LyXCursor & cursor = text->cursor;
-
-	bool is_rtl = text->real_current_font.isVisibleRightToLeft();
+	LyXCursor cursor;
+	text->SetCursorFromCoordinates(cursor, x, y_tmp);
+#if 1
+	bool move_cursor = true;
+#else
+	bool move_cursor = ((cursor.par != text->cursor.par) ||
+			    (cursor.pos != text->cursor.pos)) && (button < 2);
+#endif
 
 	if (cursor.pos < cursor.par->Last()
 	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
@@ -988,7 +992,9 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		// Check whether the inset really was hit
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
 		LyXFont font = text->GetFont(cursor.par, cursor.pos);
+		bool is_rtl = font.isVisibleRightToLeft();
 		int start_x, end_x;
+
 		if (is_rtl) {
 			start_x = cursor.x - tmpinset->width(painter(), font);
 			end_x = cursor.x;
@@ -1000,9 +1006,11 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(painter(), font)) {
+			if (move_cursor)
+				text->SetCursorFromCoordinates(x, y_tmp);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
-			y = y_tmp - (cursor.y); 
+			y = y_tmp - (text->cursor.y); 
 			return tmpinset;
 		}
 	}
@@ -1011,11 +1019,12 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 	    (cursor.par->GetChar(cursor.pos-1) == LyXParagraph::META_INSET) &&
 	    (cursor.par->GetInset(cursor.pos - 1)) &&
 	    (cursor.par->GetInset(cursor.pos - 1)->Editable())) {
-		text->CursorLeft();
-		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
-		LyXFont font = text->GetFont(cursor.par, cursor.pos);
+		Inset * tmpinset = cursor.par->GetInset(cursor.pos-1);
+		LyXFont font = text->GetFont(cursor.par, cursor.pos-1);
+		bool is_rtl = font.isVisibleRightToLeft();
 		int start_x, end_x;
-		if (is_rtl) {
+
+		if (!is_rtl) {
 			start_x = cursor.x - tmpinset->width(painter(), font);
 			end_x = cursor.x;
 		} else {
@@ -1025,15 +1034,14 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(painter(), font)) {
+			if (move_cursor)
+				text->SetCursorFromCoordinates(x, y_tmp);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
-			y = y_tmp - (cursor.y); 
+			y = y_tmp - (text->cursor.y); 
 			return tmpinset;
-		} else {
-			text->CursorRight();
 		}
 	}
-	text->SetCursor(old_cursor.par, old_cursor.pos);
 	return 0;
 }
 

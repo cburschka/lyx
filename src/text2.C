@@ -3159,6 +3159,20 @@ void LyXText::SetCursorFromCoordinates(int x, long y) const
 	DeleteEmptyParagraphMechanism(old_cursor);
 }
 
+void LyXText::SetCursorFromCoordinates(LyXCursor & cur, int x, long y) const
+{
+	/* get the row first */ 
+   
+	Row * row = GetRowNearY(y);
+	int column = GetColumnNearX(row, x);
+   
+	cur.par = row->par;
+	cur.pos = row->pos + column;
+	cur.x = x;
+	cur.y = y + row->baseline;
+   	cur.row = row;
+}
+
 
 void LyXText::CursorLeft() const
 {

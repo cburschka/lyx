@@ -193,7 +193,6 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
     computeTextRows(pain, x);
     UpdatableInset::draw(pain, f, baseline, x);
     
-    bool do_reset_pos = (x != top_x) || (baseline != top_baseline);
     top_x = int(x);
     top_baseline = baseline;
     computeBaselines(baseline);
@@ -203,11 +202,6 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
         drawRowText(pain, rows[r].pos, rows[r + 1].pos, rows[r].baseline, x);
     }
     x += insetWidth;
-    if (!the_locking_inset && do_reset_pos) {
-//        HideInsetCursor(bv);
-//        resetPos(bv);
-//        ShowInsetCursor(bv);
-    }
 }
 
 
@@ -488,12 +482,13 @@ InsetText::LocalDispatch(BufferView * bv,
     switch (action) {
 	// Normal chars
     case -1:
+	cutSelection();
+	actpos = selection_start;
 	par->InsertChar(actpos,arg[0]);
 	par->SetFont(actpos,real_current_font);
-	UpdateLocal(bv, true);
 	++actpos;
 	selection_start = selection_end = actpos;
-	resetPos(bv);
+	UpdateLocal(bv, true);
 	break;
         // --- Cursor Movements ---------------------------------------------
     case LFUN_RIGHTSEL:
@@ -562,12 +557,41 @@ InsetText::LocalDispatch(BufferView * bv,
 	}
 	moveLeft(bv);
     case LFUN_DELETE:
-	if (Delete()) { // we need update
+	bool ret;
+	if (hasSelection())
+	    ret = cutSelection();
+	else
+	    ret = Delete();
+	if (ret) { // we need update
 	    selection_start = selection_end = actpos;
 	    UpdateLocal(bv, true);
 	} else if (hasSelection()) {
 	    selection_start = selection_end = actpos;
 	    UpdateLocal(bv, false);
+	}
+	break;
+    case LFUN_CUT:
+	if (cutSelection()) { // we need update
+	    actpos = selection_end = selection_start;
+	    UpdateLocal(bv, true);
+	} else if (hasSelection()) {
+	    selection_start = selection_end = actpos;
+	    UpdateLocal(bv, false);
+	}
+	break;
+    case LFUN_COPY:
+	if (copySelection()) { // we need update
+	    selection_start = selection_end = actpos;
+	    UpdateLocal(bv, true);
+	} else if (hasSelection()) {
+	    selection_start = selection_end = actpos;
+	    UpdateLocal(bv, false);
+	}
+	break;
+    case LFUN_PASTE:
+	if (pasteSelection()) {
+	    selection_start = selection_end = actpos;
+	    UpdateLocal(bv, true);
 	}
 	break;
     case LFUN_HOME:
@@ -935,6 +959,9 @@ bool InsetText::moveDown(BufferView * bv, bool activate_inset)
 
 void InsetText::resetPos(BufferView * bv)
 {
+    if (!rows.size())
+	return;
+
     int old_pos = actpos;
 
     cy = top_baseline;
@@ -959,7 +986,7 @@ bool InsetText::Delete()
     /* some insets are undeletable here */
     if (par->GetChar(actpos)==LyXParagraph::META_INSET) {
         /* force complete redo when erasing display insets */ 
-        /* this is a cruel mathod but save..... Matthias */ 
+        /* this is a cruel method but save..... Matthias */ 
         if (par->GetInset(actpos)->Deletable() &&
             par->GetInset(actpos)->display()) {
             par->Erase(actpos);
@@ -1245,6 +1272,85 @@ void InsetText::computeBaselines(int baseline) const
 
 void InsetText::UpdateLocal(BufferView *bv, bool flag)
 {
-    init_inset = flag;
+    HideInsetCursor(bv);
+    if (flag) {
+	computeTextRows(bv->painter(), xpos);
+	computeBaselines(top_baseline);
+	resetPos(bv);
+    }
     bv->updateInset(this, flag);
+    ShowInsetCursor(bv);
+}
+
+// this is for the simple cut and paste mechanism
+// this then should be a global stuff so that cut'n'paste can work in and
+// and outside text-insets
+static LyXParagraph * simple_cut_buffer = 0;
+// static char simple_cut_buffer_textclass = 0;
+
+// for now here this should be in another Cut&Paste Class!
+//
+static void DeleteSimpleCutBuffer()
+{
+	if (!simple_cut_buffer)
+		return;
+	LyXParagraph * tmppar;
+
+	while (simple_cut_buffer) {
+		tmppar =  simple_cut_buffer;
+		simple_cut_buffer = simple_cut_buffer->next;
+		delete tmppar;
+	}
+	simple_cut_buffer = 0;
+}
+
+bool InsetText::cutSelection()
+{
+    if (!hasSelection())
+	return false;
+    DeleteSimpleCutBuffer();
+
+    // only within one paragraph
+    simple_cut_buffer = new LyXParagraph;
+    LyXParagraph::size_type i = selection_start;
+    for (; i < selection_end; ++i) {
+	par->CopyIntoMinibuffer(selection_start);
+	par->Erase(selection_start);
+	simple_cut_buffer->InsertFromMinibuffer(simple_cut_buffer->Last());
+    }
+    return true;
+}
+
+bool InsetText::copySelection()
+{
+    if (!hasSelection())
+	return false;
+    DeleteSimpleCutBuffer();
+
+    // only within one paragraph
+    simple_cut_buffer = new LyXParagraph;
+    LyXParagraph::size_type i = selection_start;
+    for (; i < selection_end; ++i) {
+	par->CopyIntoMinibuffer(i);
+	simple_cut_buffer->InsertFromMinibuffer(simple_cut_buffer->Last());
+    }
+    return true;
+}
+
+bool InsetText::pasteSelection()
+{
+    if (!simple_cut_buffer)
+	return false;
+
+    LyXParagraph * tmppar = simple_cut_buffer->Clone();
+
+    while (simple_cut_buffer->size()) {
+	simple_cut_buffer->CutIntoMinibuffer(0);
+	simple_cut_buffer->Erase(0);
+	par->InsertFromMinibuffer(actpos);
+	++actpos;
+    }
+    delete simple_cut_buffer;
+    simple_cut_buffer = tmppar;
+    return true;
 }

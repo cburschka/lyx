@@ -245,6 +245,7 @@ public:
 			     bool setfont = true) const;
 	///
 	void SetCursorFromCoordinates(int x, long y) const;
+	void SetCursorFromCoordinates(LyXCursor &, int x, long y) const;
 	///
 	void CursorUp() const;
 	///

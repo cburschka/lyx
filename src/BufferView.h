@@ -204,7 +204,7 @@ private:
 	///
 	void create_view();
 	///
-	Inset * checkInsetHit(int & x, int & y);
+	Inset * checkInsetHit(int & x, int & y, unsigned int button);
 	/// 
 	int scrollUp(long time);
 	///
