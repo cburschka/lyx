@@ -110,7 +110,7 @@ string TmpFileName(string const & dir, string const & mask)
 				if (!fnfo.newFile(ret).exist())
 					return ret;
 			}
-	lyxerr.print("Not able to find a uniq tmpfile name.");
+	lyxerr << "Not able to find a uniq tmpfile name." << endl;
 	return string();
 }
 
@@ -351,7 +351,7 @@ int DeleteAllFilesInDir (string const & path)
 			continue;
 		string unlinkpath = AddName (path, temp);
 
-		lyxerr.debug("Deleting file: " + unlinkpath);
+		lyxerr.debug() << "Deleting file: " << unlinkpath << endl;
 
  		if (remove (unlinkpath.c_str()))
 			WriteFSAlert (_("Error! Could not remove file:"), 
@@ -493,7 +493,7 @@ string OnlyPath(string const & Filename)
 	string::size_type j = Filename.rfind('/');
 	if (j==string::npos)
 		return "./";
-	return Filename.substr(0, j+1);
+	return Filename.substr(0, j + 1);
 }
 
 
@@ -649,8 +649,6 @@ string ExpandPath(string const & path)
 // Can't handle "../../" or "/../" (Asger)
 string NormalizePath(string const & path)
 {
-	Assert(!path.empty()); // We don't allow empty path. (Lgb)
-	
 	string TempBase;
 	string RTemp;
 	string Temp;

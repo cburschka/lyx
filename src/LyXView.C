@@ -22,7 +22,7 @@
 #include "minibuffer.h"
 #include "lyxfunc.h"
 #include "lyx.xpm"
-#include "error.h"
+#include "debug.h"
 #include "layout_forms.h"
 #include "intl.h"
 #include "lyxrc.h"
@@ -51,7 +51,7 @@ LyXView::LyXView(int width, int height)
 {
 	fd_form_main = create_form_form_main(width,height);
 	fl_set_form_atclose(_form, atCloseMainFormCB, 0);
-	lyxerr.debug("Initializing LyXFunc");
+	lyxerr.debug() << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
 	intl = new Intl;
 }
@@ -69,7 +69,7 @@ LyXView::~LyXView()
 
 /// Redraw the main form.
 void LyXView::redraw() {
-	lyxerr.debug("LyXView::redraw()");
+	lyxerr.debug() << "LyXView::redraw()" << endl;
 	fl_redraw_form(_form);
 	minibuffer->Activate();
 }
@@ -95,7 +95,7 @@ void LyXView::UpdateTimerCB(FL_OBJECT *ob, long)
 // Callback for autosave timer
 void LyXView::AutosaveTimerCB(FL_OBJECT *, long)
 {
-	lyxerr.debug("Running AutoSave()");
+	lyxerr.debug() << "Running AutoSave()" << endl;
 	AutoSave();
 }
 

@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -15,7 +15,7 @@
 #endif
 
 #include "insetlatexaccent.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"
 #include "lyxdraw.h"
 #include "support/lstrings.h"
@@ -102,7 +102,7 @@ void InsetLatexAccent::checkContents()
 	}
         if (contents[0] != '\\') return; // demand that first char is a '\\'
 
-	lyxerr.debug("Decode: " + contents);
+	lyxerr.debug() << "Decode: " << contents << endl;
 
         remdot = false; plusasc = false; plusdesc = false;
 
@@ -213,15 +213,16 @@ void InsetLatexAccent::checkContents()
 		case LSLASH:     ic = 'L'; break;
 		default:
 			// if this happens something is really wrong
-			lyxerr.print("InsetLaTexAccent: weird error.");
+			lyxerr << "InsetLaTexAccent: weird error." << endl;
 			break;
 		}
 		//ic = (modtype == DOT_LESS_J ? 'j' : 'i');
-		lyxerr.debug("Contents: [" + contents + "], ic: " + ic 
-			     + ", top: " + tostr(plusasc) 
-			     + ", bot: " + tostr(plusdesc) 
-			     + ", dot: " + tostr(remdot) 
-			     + ", mod: " + tostr(modtype));
+		lyxerr.debug() << "Contents: [" << contents << "]"
+			       << ", ic: " << ic 
+			       << ", top: " << plusasc 
+			       << ", bot: " << plusdesc 
+			       << ", dot: " << remdot 
+			       << ", mod: " << modtype << endl;
 	// Special case for space
 	} else if (contents[3] == '}') {
 		ic = ' ';
@@ -255,11 +256,12 @@ void InsetLatexAccent::checkContents()
 		if (contents[++i] != '}' && contents[++i]) return;
 					   
 		// fine, the char is properly decoded now (hopefully)
-		lyxerr.debug("Contents: [" + contents + "], ic: " + ic
-			     + ", top: " + tostr(plusasc) 
-			     + ", bot: " + tostr(plusdesc) 
-			     + ", dot: " + tostr(remdot) 
-			     + ", mod: " + tostr(modtype));
+		lyxerr.debug() << "Contents: [" << contents << "]"
+			       << ", ic: " << ic
+			       << ", top: " << plusasc 
+			       << ", bot: " << plusdesc 
+			       << ", dot: " << remdot
+			       << ", mod: " << modtype << endl;
 	}
         candisp = true;
 }
@@ -393,7 +395,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 			int tmpvar = baseline - font.ascent('i');
 			float tmpx = 0;
 			if (font.shape() == LyXFont::ITALIC_SHAPE) tmpx += (8*hg)/10; // italic
-			lyxerr.debug("Removing dot.", Error::ANY);
+			lyxerr.debug() << "Removing dot." << endl;
 			// remove the dot first
 			scr.fillRectangle(gc_clear, int(x + tmpx),
 					  tmpvar, wid,
@@ -662,4 +664,9 @@ bool InsetLatexAccent::IsEqual(Inset* other)
 		return (contents == otheraccent->contents);
 	}
 	return false;
+}
+
+ostream & operator<<(ostream & o, InsetLatexAccent::ACCENT_TYPES at)
+{
+	return o << int(at);
 }

@@ -19,7 +19,7 @@
 #endif
 
 #include "kbmap.h"
-#include "error.h"
+#include "debug.h"
 
 // The only modifiers that we handle. We want to throw away things
 // like NumLock. 
@@ -219,8 +219,9 @@ int kb_sequence::parse(char const*s)
          
 			key = XStringToKeysym(tbuf);
 			if(key == NoSymbol) {
-				lyxerr.debug("kbmap.C: No such keysym: "
-					     + string(tbuf),Error::KBMAP);
+				lyxerr[Debug::KBMAP]
+					<< "kbmap.C: No such keysym: "
+					<< tbuf << endl;
 				return j;
 			}
 			i = j;
@@ -387,8 +388,9 @@ int kb_keymap::bind(char const *seq, int action)
 	if (!res) {
 		defkey(&k, action);
 	} else
-		lyxerr.debug(string("Parse error at position ") + tostr(res) +
-			     " in key sequence '" + seq + "'.", Error::KBMAP);
+		lyxerr[Debug::KBMAP] << "Parse error at position " << res
+				     << " in key sequence '" << seq << "'."
+				     << endl;
 	return res;
 }
 
@@ -549,8 +551,11 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 			if(idx+1 == seq->length) {
 				char buf[20]; buf[0] = 0;
 				seq->print(buf, 20, true);
-				lyxerr.debug(string("Warning: New binding for '") + buf + 
-					     "' is overriding old binding...", Error::KEY);
+				lyxerr[Debug::KEY]
+					<< "Warning: New binding for '"
+					<< buf 
+					<< "' is overriding old binding..."
+					<< endl;
 
 				if(t->table) {
 					delete t->table;
@@ -561,8 +566,9 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 			} else if (!t->table) {
 				char buf[20]; buf[0] = 0;
 				seq->print(buf, 20, true);
-				lyxerr.print(string("Error: New binding for '") + buf + 
-					     "' is overriding old binding...");
+				lyxerr << "Error: New binding for '" << buf
+				       << "' is overriding old binding..."
+				       << endl;
 				return -1;
 			} else
 				return t->table->defkey(seq, action, idx+1);

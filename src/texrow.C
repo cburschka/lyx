@@ -4,9 +4,9 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *          Copyright (C) 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -16,7 +16,7 @@
 
 #include "texrow.h"
 #include "lyxparagraph.h"
-#include "error.h"
+#include "debug.h"
 
 // Delete linked list
 void TexRow::reset()

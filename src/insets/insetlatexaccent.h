@@ -8,8 +8,8 @@
  *
  *======================================================*/
 
-#ifndef _INSET_LATEX_ACCENT_H
-#define _INSET_LATEX_ACCENT_H
+#ifndef INSET_LATEX_ACCENT_H
+#define INSET_LATEX_ACCENT_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -118,7 +118,8 @@ private:
 		///
  		LSLASH
 	};
-	
+
+	friend ostream & operator<<(ostream &, ACCENT_TYPES);
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///

@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1998 The LyX Team.
+ *           Copyright 1995-1999 The LyX Team.
  *
  * ======================================================*/
 
@@ -53,7 +53,7 @@
 #include "lyxserver.h"
 #include "lyxfunc.h"
 #include "lyx_main.h"
-#include "error.h"
+#include "debug.h"
 #include "support/lstrings.h"
 
 #ifdef __EMX__
@@ -83,11 +83,11 @@ extern LyXAction lyxaction;
  
  // Open pipes
 void LyXComm::openConnection() {
-	lyxerr.debug("LyXComm: Opening connection", Error::LYXSERVER);
+	lyxerr[Debug::LYXSERVER] << "LyXComm: Opening connection" << endl;
        
 	// If we are up, that's an error
 	if (ready) {
-		lyxerr.print("LyXComm: Already connected");
+		lyxerr << "LyXComm: Already connected" << endl;
 		return;
 	}
 	// We assume that we don't make it
@@ -111,32 +111,32 @@ void LyXComm::openConnection() {
 #else
 	if (access(tmp.c_str(), F_OK) == 0) {
 #endif
-		lyxerr.print("LyXComm: Pipe " + tmp + " already exists.");
-		lyxerr.print("If no other LyX program is active, please delete"
-			     " the pipe by hand and try again.");
+		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
+		       << "If no other LyX program is active, please delete"
+			" the pipe by hand and try again." << endl;
 		pipename = string();
 		return;
 	}
 #ifndef __EMX__
 	if (mkfifo(tmp.c_str(), 0600) < 0) {
-		lyxerr.print("LyXComm: Could not create pipe " + tmp);
-		lyxerr.print(strerror(errno));
+		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
+		       << strerror(errno) << endl;
 		return;
 	};
 	infd = open(tmp.c_str(), O_RDONLY|O_NONBLOCK);
 #else
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr.print("LyXComm: Could not create pipe " + tmp);
-		lyxerr.print(strerror(errnum));
+		lyxerr <<"LyXComm: Could not create pipe " << tmp
+		       << strerror(errnum) << endl;
 		return;
 	};
 	// Listen to it.
 	rc = DosConnectNPipe(fd);
 	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr.print("LyXComm: Could not create pipe " + tmp);
-		lyxerr.print(strerror(errnum));
+		lyxerr <<"LyXComm: Could not create pipe " + tmp);
+		lyxerr <<strerror(errnum);
 		return;
 	};
 	// Imported handles can be used both with OS/2 APIs and emx
@@ -144,8 +144,8 @@ void LyXComm::openConnection() {
 	infd = _imphandle(fd);
 #endif
 	if (infd < 0) {
-		lyxerr.print("LyXComm: Could not open pipe " + tmp);
-		lyxerr.print(strerror(errno));
+		lyxerr << "LyXComm: Could not open pipe " << tmp << '\n'
+		       << strerror(errno) << endl;
 		return;
 	}
 	fl_add_io_callback(infd, FL_READ, callback, (void*)this);
@@ -162,56 +162,58 @@ void LyXComm::openConnection() {
 
 	if (rc == ERROR_PIPE_BUSY) {
 #endif
-		lyxerr.print("LyXComm: Pipe " + tmp + " already exists.");
-		lyxerr.print("If no other LyX program is active, please delete"
-			     " the pipe by hand and try again.");
+		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
+		       << "If no other LyX program is active, please delete"
+			" the pipe by hand and try again." << endl;
 		pipename = string();
 		return;
 	}
 #ifndef __EMX__
 	if (mkfifo(tmp.c_str(), 0600) < 0) {
-		lyxerr.print("LyXComm: Could not create pipe " + tmp);
-		lyxerr.print(strerror(errno));
+		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
+		       << strerror(errno) << endl;
 		return;
 	};
 	if (access(tmp.c_str(), F_OK) != 0) {
-		lyxerr.print("LyXComm: Pipe " + tmp + " does not exist");
+		lyxerr << "LyXComm: Pipe " << tmp
+		       << " does not exist" << endl;
 		return;
 	}
 	outfd = open(tmp.c_str(), O_RDWR);
 #else
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr.print("LyXComm: Could not create pipe " + tmp);
-		lyxerr.print(strerror(errnum));
+		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
+		       << strerror(errnum) << endl;
 		return;
 	}
 	rc = DosConnectNPipe(fd);
 	if (rc == ERROR_BAD_PIPE) {
-		lyxerr.print("LyXComm: Pipe " + tmp + " does not exist");
+		lyxerr << "LyXComm: Pipe " << tmp
+		       << " does not exist" << endl;
 		return;
 	}
 	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr.print("LyXComm: Could not create pipe " + tmp);
-		lyxerr.print(strerror(errnum));
+		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
+		       << strerror(errnum) << endl;
 		return;
 	}
 	outfd = _imphandle(fd);
 #endif
 	if (outfd < 0) {
-		lyxerr.print("LyXComm: Could not open pipe " + tmp);
-		lyxerr.print(strerror(errno));
+		lyxerr << "LyXComm: Could not open pipe " << tmp << '\n'
+		       << strerror(errno) << endl;
 		return;
 	}
 	if (fcntl(outfd, F_SETFL, O_NONBLOCK) < 0) {
-		lyxerr.print("LyXComm: Could not set flags on pipe " + tmp);
-		lyxerr.print(strerror(errno));
+		lyxerr << "LyXComm: Could not set flags on pipe " << tmp
+		       << '\n' << strerror(errno) << endl;
 		return;
 	};
 	// We made it!
 	ready = true;
-	lyxerr.debug("LyXComm: Connection established", Error::LYXSERVER);
+	lyxerr[Debug::LYXSERVER] << "LyXComm: Connection established" << endl;
 }
  
 /// Close pipes
@@ -220,14 +222,14 @@ void LyXComm::closeConnection() {
 	APIRET rc;
 	int errnum;
 #endif
-       	lyxerr.debug("LyXComm: Closing connection", Error::LYXSERVER);
+       	lyxerr[Debug::LYXSERVER] << "LyXComm: Closing connection" << endl;
 
 	if (pipename.empty()) {
 	        return;
 	}
 
 	if (!ready) {
-		lyxerr.print("LyXComm: Already disconnected");
+		lyxerr << "LyXComm: Already disconnected" << endl;
 		return;
 	}
  
@@ -239,19 +241,19 @@ void LyXComm::closeConnection() {
 		rc = DosDisConnectNPipe(infd);
 		if (rc != NO_ERROR) {
 			errnum = TranslateOS2Error(rc);
-			lyxerr.print("LyXComm: Could not disconnect pipe " + tmp);
-			lyxerr.print(strerror(errnum));
+			lyxerr << "LyXComm: Could not disconnect pipe " << tmp
+			       << '\n' << strerror(errnum) << endl;
 			return;
 		}
 #endif
 		if (close(infd) < 0) {
-			lyxerr.print("LyXComm: Could not close pipe " + tmp);
-			lyxerr.print(strerror(errno));
+			lyxerr << "LyXComm: Could not close pipe " << tmp
+			       << '\n' << strerror(errno) << endl;
 		}
 #ifndef __EMX__		// OS/2 named pipes will be automatically removed.
 		if (unlink(tmp.c_str()) < 0){
-			lyxerr.print("LyXComm: Could not remove pipe " + tmp);
-			lyxerr.print(strerror(errno));
+			lyxerr << "LyXComm: Could not remove pipe " << tmp
+			       << '\n' << strerror(errno) << endl;
 		};
 #endif
 	}
@@ -261,19 +263,19 @@ void LyXComm::closeConnection() {
 		rc = DosDisConnectNPipe(outfd);
 		if (rc != NO_ERROR) {
 			errnum = TranslateOS2Error(rc);
-			lyxerr.print("LyXComm: Could not disconnect pipe " + tmp);
-			lyxerr.print(strerror(errnum));
+			lyxerr << "LyXComm: Could not disconnect pipe " << tmp
+			       << '\n' << strerror(errnum) << endl;
 			return;
 		}
 #endif
 		if (close(outfd) < 0) {
-			lyxerr.print("LyXComm: Could not close pipe " + tmp);
-			lyxerr.print(strerror(errno));
+			lyxerr << "LyXComm: Could not close pipe " << tmp
+			       << '\n' << strerror(errno) << endl;
 		}
 #ifndef __EMX__
 		if (unlink(tmp.c_str()) < 0){
-			lyxerr.print("LyXComm: Could not remove pipe " + tmp);
-			lyxerr.print(strerror(errno));
+			lyxerr << "LyXComm: Could not remove pipe " << tmp
+			       << '\n' << strerror(errno) << endl;
 		};
 #endif
 	}
@@ -285,8 +287,8 @@ void LyXComm::callback(int fd, void *v)
 {
 	LyXComm * c = (LyXComm *) v;
  
-	if (lyxerr.debugging(Error::LYXSERVER)) {
-		lyxerr.print(string("LyXComm: Receiving from fd ") + tostr(fd));
+	if (lyxerr.debugging(Debug::LYXSERVER)) {
+		lyxerr << "LyXComm: Receiving from fd " << fd << endl;
 	}
  
         const int CMDBUFLEN = 100;
@@ -312,10 +314,10 @@ void LyXComm::callback(int fd, void *v)
 				// split() grabs the entire string if
 				// the delim /wasn't/ found. ?:-P 
 				lsbuf=split(lsbuf, cmd,'\n');
-				lyxerr.debug(string("LyXComm: status:") 
-					     + tostr(status) + ", lsbuf:" + lsbuf 
-					     + ", cmd:" + cmd, 
-					     Error::LYXSERVER);
+				lyxerr[Debug::LYXSERVER]
+					<< "LyXComm: status:" << status
+					<< ", lsbuf:" << lsbuf 
+					<< ", cmd:" << cmd << endl;
 				if(!cmd.empty())
 					c->clientcb(c->client, cmd); 
 				        //\n or not \n?
@@ -330,11 +332,11 @@ void LyXComm::callback(int fd, void *v)
 		}
 		if(errno != 0 )
 		{
-			lyxerr.print(string("LyXComm: ") + strerror(errno));
+			lyxerr << "LyXComm: " << strerror(errno) << endl;
 			if(!lsbuf.empty())
 			{
-				lyxerr.print("LyxComm: truncated command: " 
-					     + lsbuf);
+				lyxerr << "LyxComm: truncated command: " 
+				       << lsbuf << endl;
 				lsbuf.erase();
 			}
 			break; // reset connection
@@ -347,22 +349,24 @@ void LyXComm::callback(int fd, void *v)
  
 void LyXComm::send(string const & msg) {
 	if (msg.empty()) {
-		lyxerr.print("LyXComm: Request to send empty string. Ignoring.");
+		lyxerr << "LyXComm: Request to send empty string. Ignoring."
+		       << endl;
 		return;
 	}
 
-	if (lyxerr.debugging(Error::LYXSERVER)) {
-		lyxerr.print("LyXComm: Sending '" + msg + '\'');
+	if (lyxerr.debugging(Debug::LYXSERVER)) {
+		lyxerr << "LyXComm: Sending '" << msg << '\'' << endl;
 	}
 
 	if (pipename.empty()) return;
 
 	if (!ready) {
-		lyxerr.print("LyXComm: Pipes are closed. Could not send "+ msg);
+		lyxerr << "LyXComm: Pipes are closed. Could not send "
+		       << msg << endl;
 	} else if (write(outfd, msg.c_str(), msg.length()) < 0) {
-		lyxerr.print("LyXComm: Error sending message: " + msg);
-		lyxerr.print(strerror(errno));
-		lyxerr.print("LyXComm: Resetting connection");
+		lyxerr << "LyXComm: Error sending message: " << msg
+		       << '\n' << strerror(errno)
+		       << "\nLyXComm: Resetting connection" << endl;
 		closeConnection();
 		openConnection();
 	}
@@ -372,8 +376,8 @@ void LyXComm::send(string const & msg) {
 	rc = DosResetBuffer(outfd);	// To avoid synchronization problems.
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr.print("LyXComm: Message could not be flushed: " +msg);
-		lyxerr.print(strerror(errnum));
+		lyxerr <<"LyXComm: Message could not be flushed: " +msg);
+		lyxerr <<strerror(errnum));
 	}
 #endif
 }
@@ -402,7 +406,8 @@ LyXServer::~LyXServer()
 
 void LyXServer::callback(LyXServer * serv, string const & msg)
 {
-	lyxerr.debug("LyXServer: Received: '" + msg + '\'', Error::LYXSERVER);
+	lyxerr[Debug::LYXSERVER] << "LyXServer: Received: '"
+				 << msg << '\'' << endl;
  
 	char const *p = msg.c_str();
  
@@ -416,7 +421,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	        if (strncmp(p, "LYXSRV:", 7)==0) {
 			server_only = true; 
 		} else if(0!=strncmp(p, "LYXCMD:", 7)) {
-			lyxerr.print("LyXServer: Unknown request");
+			lyxerr << "LyXServer: Unknown request" << endl;
 			return;
 		}
 		p += 7;
@@ -441,7 +446,10 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			if(*p) p++;
 		}
  
-		lyxerr.debug("LyXServer: Client: '" + client + "' Command: '" + cmd + "' Argument: '" + arg + '\'', Error::LYXSERVER);
+		lyxerr[Debug::LYXSERVER]
+			<< "LyXServer: Client: '" << client
+			<< "' Command: '" << cmd
+			<< "' Argument: '" << arg << '\'' << endl;
 		
 		// --- lookup and exec the command ------------------
  
@@ -452,7 +460,9 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			if (cmd == "hello") {
 				// One more client
 				if(serv->numclients==MAX_CLIENTS){ //paranoid check
-					lyxerr.debug("LyXServer: too many clients...", Error::LYXSERVER);
+					lyxerr[Debug::LYXSERVER]
+						<< "LyXServer: too many clients..."
+						<< endl;
 					return;
 				}
 				int i=0; //find place in clients[]
@@ -462,7 +472,9 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				serv->clients[i] = client;
 				serv->numclients++;
 				buf = "LYXSRV:" + client + ":hello\n";
-				lyxerr.debug("LyXServer: Greeting " + client, Error::LYXSERVER);
+				lyxerr[Debug::LYXSERVER]
+					<< "LyXServer: Greeting "
+					<< client << endl;
 				serv->pipes.send(buf);
 			} else if (cmd == "bye") {
 				// If clients==0 maybe we should reset the pipes
@@ -474,14 +486,18 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				if (i<serv->numclients) {
 					serv->numclients--;
 					serv->clients[i].erase();
-					lyxerr.debug("LyXServer: Client " + client + " said goodbye",
-						Error::LYXSERVER);
+					lyxerr[Debug::LYXSERVER]
+						<< "LyXServer: Client "
+						<< client << " said goodbye"
+						<< endl;
 				} else {
-					lyxerr.debug("LyXServer: ignoring bye messge from unregistered client" +
-						client + "\n", Error::LYXSERVER);
+					lyxerr[Debug::LYXSERVER]
+						<< "LyXServer: ignoring bye messge from unregistered client"
+						<< client << endl;
 				}
 			} else {
-				lyxerr.print("LyXServer: Undefined server command " + cmd + ".");
+				lyxerr <<"LyXServer: Undefined server command "
+				       << cmd << "." << endl;
 			}
 			return;
 		}

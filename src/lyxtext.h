@@ -4,12 +4,13 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _LYXTEXT_H
-#define _LYXTEXT_H
+#ifndef LYXTEXT_H
+#define LYXTEXT_H
 
 #ifdef __GNUG__
 #pragma interface

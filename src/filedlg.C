@@ -280,14 +280,13 @@ void LyXFileDlg::Reread()
 		File = AddName(pszDirectory, fname);
 
 		fileInfo.newFile(File, true);
-
 		fileInfo.modeString(szMode);
 		unsigned int nlink = fileInfo.getNumberOfLinks();
 		string user =	lyxUserCache.Find(fileInfo.getUid());
 		string group = lyxGroupCache.Find(fileInfo.getGid());
 
 		time_t modtime = fileInfo.getModificationTime();
-		Time += ctime(&modtime);
+		Time = ctime(&modtime);
 		
 		if (curTime > fileInfo.getModificationTime() + SIX_MONTH_SEC
 		    || curTime < fileInfo.getModificationTime()
@@ -300,10 +299,13 @@ void LyXFileDlg::Reread()
 #warning fix!
 			
 			Time.erase(10, 9);
+			Time.erase(15, string::npos);
+		} else {
+			Time.erase(16, string::npos);
 		}
 
-		Buffer = szMode + ' ' +
-			nlink + ' ' +
+		Buffer = string(szMode) + ' ' +
+			tostr(nlink) + ' ' +
 			user + ' ' +
 			group + ' ' +
 			Time.substr(4, string::npos) + ' ';
@@ -469,7 +471,7 @@ void LyXFileDlg::SetButton(int iIndex, string const & pszName,
 		*pTemp = pszPath;
 	} else {
 		fl_hide_object(pObject);
-		(*pTemp).erase();
+		(*pTemp).clear();
 	}
 }
 
@@ -620,7 +622,7 @@ bool LyXFileDlg::HandleDoubleClick()
 			Temp += pszTemp;
 		} else {
 			// Directory higher up
-			Temp.erase();
+			Temp.clear();
 			for (i = 0; i < iSelect; ++i) {
 				string piece = fl_get_browser_line(pFileDlgForm->List, i+1);
 				// The '+2' is here to count the '@b' (JMarc)

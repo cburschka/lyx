@@ -25,7 +25,7 @@
 #include "math_inset.h"
 #include "symbol_def.h"
 #include "support/lstrings.h"
-#include "error.h"
+#include "debug.h"
 
 const int SizeInset = sizeof(char*) + 2;
 const int SizeFont = 2;
@@ -79,7 +79,8 @@ MathedInset* MathedIter::GetInset()
       memcpy(&p, &array->bf[pos+1], sizeof(p));
       return p;
    } else {
-      fprintf(stderr,"Math Error: This is not an inset[%d]\n", array->bf[pos]);
+	   lyxerr << "Math Error: This is not an inset["
+		  << array->bf[pos] << "]" << endl;
      return 0;
    }
 }
@@ -92,7 +93,7 @@ MathParInset* MathedIter::GetActiveInset()
 	return (MathParInset*)GetInset();
     } 
     
-    fprintf(stderr,"Math Error: This is not an active inset\n");
+    lyxerr << "Math Error: This is not an active inset" << endl;
     return 0;
 }
 
@@ -309,11 +310,10 @@ bool MathedIter::Delete()
      else 
       if (c==LM_TC_TAB || c==LM_TC_CR) {
 	 shift++;
-//	 fprintf(stderr, "Es un tab.");
+//	 lyxerr <<"Es un tab.";
       }
      else {
-	fprintf(stderr, "Math Warning: expected inset.");
-	fflush(stderr);
+	     lyxerr << "Math Warning: expected inset." << endl;
      }
    } 
     
@@ -330,7 +330,7 @@ bool MathedIter::Delete()
 LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
 {
    if (!array) {
-//      fprintf(stderr, "Math error: Attempting to copy a void array.\n");
+//      lyxerr << "Math error: Attempting to copy a void array." << endl;
       return 0;
    }
       
@@ -356,7 +356,7 @@ LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
 
        int dx = pos2 - pos1;
        a = new LyxArrayBase(dx+LyxArrayBase::ARRAY_MIN_SIZE);
-//       fprintf(stderr, "VA %d %d %d ", pos1, pos2, dx); fflush(stderr);
+//       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
        memcpy(&a->bf[(fc) ? 1: 0], &array->bf[pos1], dx);
        if (fc) {
 	   a->bf[0] = fc;
@@ -385,7 +385,7 @@ LyxArrayBase *MathedIter::Copy(int pos1, int pos2)
 void MathedIter::Clear()
 {
    if (!array) {
-      fprintf(stderr, "Math error: Attempting to clean a void array.\n");
+	   lyxerr << "Math error: Attempting to clean a void array." << endl;
       return;
    }   
    Reset();  
@@ -438,7 +438,7 @@ void MathedIter::adjustTabs()
 void MathedXIter::Clean(int pos2)
 {
     if (!array) {
-	fprintf(stderr, "Math error: Attempting to clean a void array.\n");
+	    lyxerr << "Math error: Attempting to clean a void array." << endl;
 	return;
     } 
     
@@ -485,8 +485,9 @@ void MathedXIter::Clean(int pos2)
 void MathedXIter::Merge(LyxArrayBase *a0)
 {
     if (!a0) {
-	lyxerr.debug("Math error: Attempting to merge a void array.",
-		     Error::MATHED);
+	    lyxerr[Debug::MATHED]
+		    << "Math error: Attempting to merge a void array." << endl;
+
 	return;
     }
     // All insets must be clonned
@@ -585,10 +586,10 @@ byte* MathedXIter::GetString(int& ls)
 
 bool MathedXIter::Next()
 {  
-//    fprintf(stderr, "Ne[%d]", pos);
+//    lyxerr << "Ne[" << pos << "]";
    if (!OK()) return false;
    int w=0;
-//   fprintf(stderr, "xt ");
+//   lyxerr << "xt ";
    if (IsInset()) {
       MathedInset* px = GetInset();
       w = px->Width();
@@ -600,13 +601,13 @@ bool MathedXIter::Next()
    } else {  
       byte c = GetChar();
       if (c>=' ') {
-//	  fprintf(stderr, "WD[%d %d %c] ", fcode, size, c); fflush(stderr);
+//	  lyxerr << "WD[" << fcode << " " << size << " " << c << endl;
 	  w = mathed_char_width(fcode, size, c);
       } else
       if (c==LM_TC_TAB && p) {
 //	 w = p->GetTab(col+1);
 	  w = (crow) ? crow->getTab(col+1): 0;
-	 //fprintf(stderr, "WW[%d]", w);
+	 //lyxerr << "WW[" << w << "]";
       } else
       if (c==LM_TC_CR && p) {
 	  x = 0;
@@ -615,12 +616,12 @@ bool MathedXIter::Next()
 	      y = crow->getBaseline();
 	      w = crow->getTab(0);
 	  }
-//	  fprintf(stderr, "WW[%d %d|%d]", col, row, w);
+//	  lyxerr << "WW[" << col " " << row << "|" << w << "]";
       } else 
-	fprintf(stderr, "No hubo w[%d]!", (int)c);   
+	      lyxerr << "No hubo w[" << c << "]!";
    }
    if (MathedIter::Next()) {
-//       fprintf(stderr, "LNX %d ", pos); fflush(stderr);
+//       lyxerr <<"LNX " << pos << endl;
 //       if (sw>0 && GetChar()!=LM_TC_UP && GetChar()!=LM_TC_DOWN) {
 //	   w = (sx>sw) ? 0: sw-sx;
       if ((sw>0 || sx>0) && GetChar()!=LM_TC_UP && GetChar()!=LM_TC_DOWN) {
@@ -729,9 +730,9 @@ bool MathedXIter::Down()
 void MathedXIter::addRow()
 {
     if (!crow) {
-	lyxerr.debug(string("MathErr: Attempt to insert new"
-			     " line in a subparagraph. ")
-		     + tostr(this), Error::MATHED);
+	lyxerr[Debug::MATHED] << "MathErr: Attempt to insert new"
+		" line in a subparagraph. " << this << endl;
+
 	return;
     }    
     // Create new item for the structure    
@@ -763,8 +764,7 @@ void MathedXIter::addRow()
 void MathedXIter::delRow()
 {
     if (!crow) {
-	lyxerr.debug("MathErr: Attempt to delete a line in a subparagraph.",
-		     Error::MATHED);
+	    lyxerr[Debug::MATHED] << "MathErr: Attempt to delete a line in a subparagraph." << endl;
 	return;
     }
     bool line_empty = true;
@@ -841,14 +841,14 @@ void MathedXIter::setTab(int tx, int tab)
 	crow->w[tab] = tx;
     }
     else 
-      fprintf(stderr, "MathErr: No tabs allowed here");
+	    lyxerr << "MathErr: No tabs allowed here" << endl;
 }
 
 
 void MathedXIter::subMetrics(int a, int d)
 {
     if (!crow) {
-//	fprintf(stderr, "MathErr: Attempt to submetric a subparagraph.");
+//	lyxerr << "MathErr: Attempt to submetric a subparagraph." << endl;
 	return;
     }    
     crow->asc = a;
@@ -911,8 +911,9 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 	    limits = false;                   
 	}      
 	else {
-	    lyxerr.debug(string("Mathed Sel-Error: Unrecognized code[")
-			 + tostr(cx) + ']', Error::MATHED);
+		lyxerr[Debug::MATHED]
+			<< "Mathed Sel-Error: Unrecognized code["
+			<< cx << ']' << endl;
 	    break;
 	}       
 	if (pos<pos2)  Next();
@@ -948,10 +949,10 @@ MathedRowSt *MathedXIter::adjustVerticalSt()
 {
     GoBegin();
     if (!crow) {
-//	fprintf(stderr, " CRW%d ", ncols);
+//	lyxerr << " CRW" << ncols << " ";
 	    crow = new MathedRowSt(ncols+1); // this leaks
     }
-//    fprintf(stderr, " CRW[%p] ", crow);
+//    lyxerr<< " CRW[" << crow << "] ";
     MathedRowSt *row = crow;
     while (OK()) {
 	if (IsCR()) {
@@ -960,7 +961,7 @@ MathedRowSt *MathedXIter::adjustVerticalSt()
 //	    r->next = crow->next;
 	    crow->next = r;
 	    crow = r;
-//	    fprintf(stderr, " CX[%p]", crow);
+//	    lyxerr << " CX[" << crow << "]";
 	}   
 	Next();	
     }

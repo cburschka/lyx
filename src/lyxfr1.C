@@ -1,12 +1,12 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich,
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich,
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
@@ -26,7 +26,7 @@
 #include "lyxfr1.h"
 #include "lyxfunc.h"
 #include "lyxscreen.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "LyXView.h"

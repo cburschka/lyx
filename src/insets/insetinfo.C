@@ -18,7 +18,7 @@
 
 #include "insetinfo.h"
 #include "lyxparagraph.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxdraw.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
@@ -100,8 +100,8 @@ void InsetInfo::Read(LyXLex &lex)
 {
 	string tmp = lex.GetString(); // should be "Info"
 	if (tmp != "Info")
-		lyxerr.print("ERROR (InsetInfo::Read): "
-			      "consistency check 1 failed.");
+		lyxerr << "ERROR (InsetInfo::Read): "
+			"consistency check 1 failed." << endl;
 
 	while (lex.IsOK()) {
 		if (!lex.EatLine())
@@ -110,7 +110,7 @@ void InsetInfo::Read(LyXLex &lex)
 			continue;
 
 		string const token = strip(lex.GetString());
-		lyxerr.debug("Note: " + token, Error::LEX_PARSER);
+		lyxerr[Debug::PARSER] << "Note: " << token << endl;
 		
 		if (token != "\\end_inset") {
 			contents += token + '\n';

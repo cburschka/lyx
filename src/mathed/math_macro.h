@@ -14,14 +14,15 @@
  *
  *   This code is under the GNU General Public Licence version 2 or later.
  */
-#ifndef __MATH_MACRO__
-#define __MATH_MACRO__
+#ifndef MATH_MACRO
+#define MATH_MACRO
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "math_defs.h"
+#include "debug.h"
 
 ///
 typedef MathParInset* MathParInsetP;
@@ -108,7 +109,7 @@ class MathMacroArgument: public MathParInset
     ///
     MathMacroArgument(int);
     ///
-    ~MathMacroArgument() { fprintf(stderr, "help, destroyme!\n"); }
+	~MathMacroArgument() { lyxerr << "help, destroyme!" << endl; }
     ///
     MathedInset *Clone() { return this; }
 	///

@@ -9,7 +9,7 @@
  *           This file is Copyright 1996-1999
  *           Lars Gullik Bjønnes
  *
- *======================================================
+ * ======================================================
  */
 
 #ifdef __GNUG__
@@ -26,7 +26,7 @@
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "lastfiles.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"
 #include "lyxscreen.h"
 #include "lyxtext.h"
@@ -81,7 +81,7 @@ Buffer* BufferStorage::newBuffer(string const &s,
 	       && buffer[i]) i++;
 	buffer[i] = new Buffer(s, lyxrc, ronly);
 	buffer[i]->params.useClassDefaults();
-	lyxerr.debug(string("Assigning to buffer ") + tostr(i), Error::ANY);
+	lyxerr.debug() << "Assigning to buffer " << i << endl;
 	return buffer[i];
 }
 
@@ -220,7 +220,7 @@ bool BufferList::write(Buffer *buf, bool makeBackup)
 			times->actime = finfo.getAccessTime();
 			times->modtime = finfo.getModificationTime();
 			long blksize = finfo.getBlockSize();
-			lyxerr.debug(string("BlockSize: ") + tostr(blksize));
+			lyxerr.debug() << "BlockSize: " << blksize << endl;
 			FilePtr fin(buf->filename,FilePtr::read);
 			FilePtr fout(s,FilePtr::truncate);
 			if (fin() && fout()) {
@@ -238,11 +238,11 @@ bool BufferList::write(Buffer *buf, bool makeBackup)
 				chmod(s.c_str(), fmode);
 				
 				if (utime(s.c_str(), times)) {
-					lyxerr.print("utime error.");
+					lyxerr << "utime error." << endl;
 				}
 				delete [] cbuf;
 			} else {
-				lyxerr.print("LyX was not able to make backupcopy. Beware.");
+				lyxerr << "LyX was not able to make backupcopy. Beware." << endl;
 			}
 			delete[] times;
 		}
@@ -421,10 +421,10 @@ void BufferList::emergencyWriteAll()
 		if (!b->isLyxClean()) {
 			bool madeit=false;
 			
-			lyxerr.print(_("lyx: Attempting to save"
+			lyxerr <<_("lyx: Attempting to save"
 				      " document ")
-				      + b->filename
-				      + _(" as..."));
+			       << b->filename
+			       << _(" as...") << endl;
 			
 			for (int i=0; i<3 && !madeit; i++) {
 				string s;
@@ -444,16 +444,17 @@ void BufferList::emergencyWriteAll()
 				}
 				s += ".emergency";
 				
-				lyxerr.print(string("  ") + tostr(i+1) + ") " + s);
+				lyxerr << "  " << i+1 << ") " << s << endl;
 				
 				if (b->writeFile(s,true)) {
 					b->markLyxClean();
-					lyxerr.print(_("  Save seems successful. Phew."));
+					lyxerr << _("  Save seems successful. Phew.") << endl;
 					madeit = true;
 				} else if (i != 2) {
-					lyxerr.print(_("  Save failed! Trying..."));
+					lyxerr << _("  Save failed! Trying...")
+					       << endl;
 				} else {
-					lyxerr.print(_("  Save failed! Bummer. Document is lost."));
+					lyxerr << _("  Save failed! Bummer. Document is lost.") << endl;
 				}
 			}
 		}
@@ -650,7 +651,7 @@ Buffer* BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		if (LyXVC::file_not_found_hook(s)) {
 			// Ask if the file should be checked out for
 			// viewing/editing, if so: load it.
-			lyxerr.print("Do you want to checkout?");
+			lyxerr << "Do you want to checkout?" << endl;
 		}
 		if (AskQuestion(_("Cannot open specified file:"), 
 				MakeDisplayPath(s,50),

@@ -7,8 +7,8 @@
    - add a help text in LyXAction::getHelp() in LyXAction.C
    \* ======================================================================= */
 
-#ifndef _COMMANDTAGS_H_
-#define _COMMANDTAGS_H_
+#ifndef COMMANDTAGS_H
+#define COMMANDTAGS_H
 
 
 /** These are all the lyxfunctions (as enums).
@@ -240,5 +240,7 @@ enum kb_action {
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
+class ostream;
+ostream & operator<<(ostream &, kb_action);
 #endif
 

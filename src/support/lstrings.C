@@ -1,9 +1,9 @@
 #include <config.h>
 
 #include <algorithm>
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cctype>
+#include <cstdio>
+#include <cstdlib>
 
 #include "LString.h"
 #include "lstrings.h"

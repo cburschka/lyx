@@ -11,7 +11,7 @@
 #include "insetinclude.h"
 #include "buffer.h"
 #include "bufferlist.h"
-#include "error.h"
+#include "debug.h"
 #include "support/filetools.h"
 #include "lyxrc.h"
 #include "LyXView.h"
@@ -338,13 +338,13 @@ int InsetInclude::Latex(string &file, signed char /*fragile*/)
 		Buffer *tmp = bufferlist.getBuffer(getFileName());
 
 		if (tmp->params.textclass != master->params.textclass) {
-			lyxerr.print("ERROR: Cannot handle include file `"
-				     + MakeDisplayPath(getFileName())
-				     + "' which has textclass `"
-				     + lyxstyle.NameOfClass(tmp->params.textclass)
-				     + "' instead of `"
-				     + lyxstyle.NameOfClass(master->params.textclass)
-				     + "'.");
+			lyxerr << "ERROR: Cannot handle include file `"
+			       << MakeDisplayPath(getFileName())
+			       << "' which has textclass `"
+			       << lyxstyle.NameOfClass(tmp->params.textclass)
+			       << "' instead of `"
+			       << lyxstyle.NameOfClass(master->params.textclass)
+			       << "'." << endl;
 			return 0;
 		}
 		
@@ -360,8 +360,8 @@ int InsetInclude::Latex(string &file, signed char /*fragile*/)
 		} else
 			writefile = getFileName();
 		writefile = ChangeExtension(writefile,".tex",false);
-		lyxerr.debug("incfile:" + incfile, Error::LATEX);
-		lyxerr.debug("writefile:" + writefile, Error::LATEX);
+		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
 		tmp->markDepClean(master->tmppath);
 		

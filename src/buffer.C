@@ -68,7 +68,7 @@
 #include "Literate.h"
 #include "Chktex.h"
 #include "LyXView.h"
-#include "error.h"
+#include "debug.h"
 #include "LaTeXFeatures.h"
 #include "support/syscall.h"
 #include "support/lyxlib.h"
@@ -116,7 +116,7 @@ Buffer::Buffer(string const & file, LyXRC *lyxrc, bool ronly)
 	inset_slept = false;
 	users = 0;
 	lyxvc.setBuffer(this);
-	lyxerr.debug("Buffer::Buffer()");
+	lyxerr.debug() << "Buffer::Buffer()" << endl;
 	if (read_only || (lyxrc && lyxrc->use_tempdir)) {
 		tmppath = CreateBufferTmpDir();
 	} else tmppath.erase();
@@ -125,7 +125,7 @@ Buffer::Buffer(string const & file, LyXRC *lyxrc, bool ronly)
 
 Buffer::~Buffer()
 {
-	lyxerr.debug("Buffer::~Buffer()");
+	lyxerr.debug() << "Buffer::~Buffer()" << endl;
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
@@ -241,10 +241,10 @@ bool Buffer::insertLyXFile(string const & filen)
 	bool res = true;
 
 	if (c=='#') {
-		lyxerr.debug("Will insert file with header");
+		lyxerr.debug() << "Will insert file with header" << endl;
 		res = readFile(lex, text->cursor.par);
 	} else {
-		lyxerr.debug("Will insert file without header");
+		lyxerr.debug() << "Will insert file without header" << endl;
 		res = readLyXformat2(lex, text->cursor.par);
 	}
 	resize();
@@ -733,7 +733,7 @@ bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph *par)
 				// This one is on its way out
 				lex.EatLine();
 				tmptok = strip(lex.GetString());
-				//lyxerr.print(string(tmptok[0]));
+				//lyxerr <<string(tmptok[0]));
 				if (tmptok[0] == '\\') {
 					// then this latex is a
 					// latex command
@@ -755,7 +755,7 @@ bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph *par)
 				// This one is on its way out...
 				lex.EatLine();
 				tmptok = strip(lex.GetString());
-				//lyxerr.print(string(tmptok[0]));
+				//lyxerr <<string(tmptok[0]));
 				if (tmptok == "\\tableofcontents") {
 					inset = new InsetTOC(this);
 				} else if (tmptok == "\\listoffigures") {
@@ -1127,14 +1127,15 @@ bool Buffer::readFile(LyXLex &lex, LyXParagraph *par)
 bool Buffer::writeFile(string const & filename, bool flag)
 {
 	// if flag is false writeFile will not create any GUI
-	// warnings, only stderr.
+	// warnings, only cerr.
 	// Needed for autosave in background or panic save (Matthias 120496)
 
 	if (read_only && (filename == this->filename)) {
 		// Here we should come with a question if we should
 		// perform the write anyway.
 		if (flag)
-			lyxerr.print(_("Error! Document is read-only: ") + filename);
+			lyxerr << _("Error! Document is read-only: ")
+			       << filename << endl;
 		else
 			WriteAlert(_("Error! Document is read-only: "), filename);
 		return false;
@@ -1145,7 +1146,8 @@ bool Buffer::writeFile(string const & filename, bool flag)
 		// Here we should come with a question if we should
 		// try to do the save anyway. (i.e. do a chmod first)
 		if (flag)
-			lyxerr.print(_("Error! Cannot write file: ") + filename);
+			lyxerr << _("Error! Cannot write file: ")
+			       << filename << endl;
 		else
 			WriteFSAlert(_("Error! Cannot write file: "), filename);
 		return false;
@@ -1154,7 +1156,8 @@ bool Buffer::writeFile(string const & filename, bool flag)
 	FilePtr file(filename, FilePtr::truncate);
 	if (!file()) {
 		if (flag)
-			lyxerr.print(_("Error! Cannot write file: ") + filename);
+			lyxerr << _("Error! Cannot write file: ")
+			       << filename << endl;
 		else
 			WriteFSAlert(_("Error! Cannot write file: "), filename);
 		return false;
@@ -1188,8 +1191,8 @@ bool Buffer::writeFile(string const & filename, bool flag)
 	fprintf(file, "\n\\the_end\n");
 	if (file.close()) {
 		if (flag)
-			lyxerr.print(_("Error! Could not close file properly: ")
-				     +	filename);
+			lyxerr << _("Error! Could not close file properly: ")
+			       << filename << endl;
 		else
 			WriteFSAlert(_("Error! Could not close file properly: "),
 				     filename);
@@ -1505,7 +1508,7 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 				} else if (c != '\0')
 					fprintf(file, "%c", c);
 				else if (c == '\0')
-					lyxerr.debug("writeAsciiFile: NULL char in structure.");
+					lyxerr.debug() << "writeAsciiFile: NULL char in structure." << endl;
 				currlinelen++;
 				break;
 			}
@@ -1541,7 +1544,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 			   string const & original_path,
 			   bool nice, bool only_body)
 {
-	lyxerr.debug("makeLaTeXFile...", Error::LATEX);
+	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 	params.textclass = GetCurrentTextClass();
 	niceFile = nice; // this will be used by Insetincludes.
 
@@ -1556,10 +1559,10 @@ void Buffer::makeLaTeXFile(string const & filename,
 	}
 
 	// validate the buffer.
-	lyxerr.debug("  Validating buffer...", Error::LATEX);
+	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
 	LaTeXFeatures features(tclass->number_of_defined_layouts);
 	validate(features);
-	lyxerr.debug("  Buffer validation done.", Error::LATEX);
+	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 	
 	texrow.reset();
 	// The starting paragraph of the coming rows is the 
@@ -1579,7 +1582,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 		texrow.newline();
 		texrow.newline();
 	}
-	lyxerr.debug("lyx header finished");
+	lyxerr.debug() << "lyx header finished" << endl;
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode, uses \listfiles and has a 
 	// special input@path to allow the including of figures
@@ -1942,7 +1945,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 		texrow.newline();
 		texrow.newline();
 	} // only_body
-	lyxerr.debug("preamble finished, now the body.");
+	lyxerr.debug() << "preamble finished, now the body." << endl;
 	
 	bool was_title = false;
 	bool already_title = false;
@@ -1957,15 +1960,16 @@ void Buffer::makeLaTeXFile(string const & filename,
 	while (par) {
 		++loop_count;
 		if (par->IsDummy())
-			lyxerr.debug("Error in MakeLateXFile.", Error::LATEX);
+			lyxerr[Debug::LATEX] << "Error in MakeLateXFile."
+					     << endl;
 		LyXLayout * layout = lyxstyle.Style(params.textclass,
 						    par->layout);
 	    
 	        if (layout->intitle) {
 			if (already_title) {
-				lyxerr.print("Error in MakeLatexFile: You"
-					     " should not mix title layouts"
-					     " with normal ones.");
+				lyxerr <<"Error in MakeLatexFile: You"
+					" should not mix title layouts"
+					" with normal ones." << endl;
 			} else
 				was_title = true;
 	        } else if (was_title && !already_title) {
@@ -2022,9 +2026,10 @@ void Buffer::makeLaTeXFile(string const & filename,
 		LFile += "\\end{document}\n";
 		texrow.newline();
 	
-		lyxerr.debug("makeLaTeXFile...done", Error::LATEX);
+		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
 	} else {
-		lyxerr.debug("LaTeXFile for inclusion made.", Error::LATEX);
+		lyxerr[Debug::LATEX] << "LaTeXFile for inclusion made."
+				     << endl;
 	}
 
 	// Just to be sure. (Asger)
@@ -2043,7 +2048,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 	if (file.close()) {
 		WriteFSAlert(_("Error! Could not close file properly:"), filename);
 	}
-	lyxerr.debug("Finished making latex file.");
+	lyxerr.debug() << "Finished making latex file." << endl;
 }
 
 
@@ -3529,8 +3534,9 @@ void Buffer::RoffAsciiTable(FILE *file, LyXParagraph *par)
 			if (c != '\0')
 				fprintf(fp, "%c", c);
 			else if (c == '\0')
-				lyxerr.debug("RoffAsciiTable:"
-					     " NULL char in structure.");
+				lyxerr.debug()
+					<< "RoffAsciiTable:"
+					" NULL char in structure." << endl;
 			break;
 		}
 	}
@@ -3539,7 +3545,7 @@ void Buffer::RoffAsciiTable(FILE *file, LyXParagraph *par)
 	string cmd = lyxrc->ascii_roff_command + " >" + fname2;
 	subst(cmd, "$$FName",fname1);
 	Systemcalls one(Systemcalls::System, cmd);
-	if (!(lyxerr.debugging(Error::ROFF))) {
+	if (!(lyxerr.debugging(Debug::ROFF))) {
 		remove(fname1.c_str());
 	}
 	if (!(fp=fopen(fname2.c_str(),"r"))) {
@@ -3639,8 +3645,8 @@ void Buffer::validate(LaTeXFeatures &features)
     
 	while (par) {
 		// We don't use "lyxerr.debug" because of speed. (Asger)
-		if (lyxerr.debugging(Error::LATEX))
-			lyxerr.print(string("Paragraph: ") + tostr(par));
+		if (lyxerr.debugging(Debug::LATEX))
+			lyxerr << "Paragraph: " <<  par << endl;
 
 		// Now just follow the list of paragraphs and run
 		// validate on each of them.
@@ -3674,7 +3680,7 @@ void Buffer::validate(LaTeXFeatures &features)
 		}
 	}
 	
-	if (lyxerr.debugging(Error::LATEX)) {
+	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct(params);
 	}
 }
@@ -3830,7 +3836,7 @@ string Buffer::getIncludeonlyList(char delim)
 		} 
 		par = par->next;
 	}
-	lyxerr.debug(string("Includeonly(") + list + ')');
+	lyxerr.debug() << "Includeonly(" << list << ')' << endl;
 	return list;
 }
 
@@ -3862,7 +3868,7 @@ string Buffer::getReferenceList(char delim)
 		} 
 		par = par->next;
 	}
-	lyxerr.debug(string("References(") + list + string(")"));
+	lyxerr.debug() << "References(" <<  list << ")" << endl;
 	return list;
 }
 
@@ -3916,7 +3922,7 @@ string Buffer::getBibkeyList(char delim)
 		}
 	}
  
-	lyxerr.debug(string("Bibkeys(") + bibkeys + string(")"));
+	lyxerr.debug() << "Bibkeys(" << bibkeys << ")" << endl;
 	return bibkeys;
 }
 

@@ -22,7 +22,7 @@
 #include "Literate.h"
 #include "lyxlex.h"
 #include "support/FileInfo.h"
-#include "error.h"
+#include "debug.h"
 #include "support/lyxlib.h"
 #include "support/syscall.h"
 #include "support/syscontr.h"
@@ -55,8 +55,7 @@ int Literate::weave(TeXErrors &terr, MiniBuffer *minib)
         // The class LaTeX does not know the temp path.
         bufferlist.updateIncludedTeXfiles(GetCWD());
         
-        lyxerr.debug(string(_("Weaving document")),
-                     Error::LATEX);
+        lyxerr[Debug::LATEX] << "Weaving document" << endl;
         minib->Set(string(_("Weaving document")));
         minib->Store();
 
@@ -66,7 +65,7 @@ int Literate::weave(TeXErrors &terr, MiniBuffer *minib)
         tmp2 = literate_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
         ret1 = one.Startscript(Systemcalls::System, tmp1);
         ret2 = two.Startscript(Systemcalls::System, tmp2);
-        lyxerr.debug(string(_("LITERATE")) + " {" + tmp1 + "} {" + tmp2 + "}");
+        lyxerr.debug() << "LITERATE {" << tmp1 << "} {" << tmp2 << "}" << endl;
 	scanres = scanLiterateLogFile(terr);
 	if (scanres & Literate::ERRORS) return scanres; // return on literate error
 
@@ -89,8 +88,7 @@ int Literate::build(TeXErrors &terr, MiniBuffer *minib)
         // The class LaTeX does not know the temp path.
         bufferlist.updateIncludedTeXfiles(GetCWD());
         
-        lyxerr.debug(string(_("Building program")), 
-                     Error::LATEX);
+        lyxerr[Debug::LATEX] << "Building program" << endl;
         minib->Set(string(_("Building program")));
         minib->Store();
 
@@ -101,7 +99,7 @@ int Literate::build(TeXErrors &terr, MiniBuffer *minib)
         ret1 = one.Startscript(Systemcalls::System, tmp1);
         ret2 = two.Startscript(Systemcalls::System, tmp2);
         scanres = scanBuildLogFile(terr);
-        lyxerr.debug("Done.", Error::LATEX);
+        lyxerr[Debug::LATEX] << "Done." << endl;
 
         return scanres;
 }
@@ -129,18 +127,18 @@ int Literate::scanLiterateLogFile(TeXErrors &terr)
                 else // blank line in the file being read
                         continue;
  
-                lyxerr.debug(token, Error::LATEX);
+                lyxerr[Debug::LATEX] << token << endl;
                 
                 if (prefixIs(token, "Build Warning:")) {
                         // Here shall we handle different
                         // types of warnings
                         retval |= LATEX_WARNING;
-                        lyxerr.debug("Build Warning.", Error::LATEX);
+                        lyxerr[Debug::LATEX] << "Build Warning." << endl;
                 } else if (prefixIs(token, "! Build Error:")) {
                         // Here shall we handle different
                         // types of errors
                         retval |= LATEX_ERROR;
-                        lyxerr.debug("Build Error.", Error::LATEX);
+                        lyxerr[Debug::LATEX] << "Build Error." << endl;
                         // this is not correct yet
                         terr.scanError(lex);
                         num_errors++;
@@ -172,18 +170,18 @@ int Literate::scanBuildLogFile(TeXErrors &terr)
                 else // blank line in the file being read
                         continue;
  
-                lyxerr.debug(token, Error::LATEX);
+                lyxerr[Debug::LATEX] << token << endl;
                 
                 if (prefixIs(token, "Build Warning:")) {
                         // Here shall we handle different
                         // types of warnings
                         retval |= LATEX_WARNING;
-                        lyxerr.debug("Build Warning.", Error::LATEX);
+                        lyxerr[Debug::LATEX] << "Build Warning." << endl;
                 } else if (prefixIs(token, "! Build Error:")) {
                         // Here shall we handle different
                         // types of errors
                         retval |= LATEX_ERROR;
-                        lyxerr.debug("Build Error.", Error::LATEX);
+                        lyxerr[Debug::LATEX] << "Build Error." << endl;
                         // this is not correct yet
                         terr.scanError(lex);
                         num_errors++;

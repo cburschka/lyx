@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef LYXFUNC_H_
-#define LYXFUNC_H_
+#ifndef LYXFUNC_H
+#define LYXFUNC_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -13,7 +13,6 @@
 #include "insets/lyxinset.h"
 #include "LString.h"
 class LyXView;
-
 
 /** This class encapsulates all the LyX command operations. 
     This is the class of the LyX's "high level event handler".

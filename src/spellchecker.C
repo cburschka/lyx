@@ -14,7 +14,6 @@
 
 #include <unistd.h>
 #include <fcntl.h>
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <csignal>
@@ -47,6 +46,8 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"
+#include "debug.h"
+#include "support/lstrings.h"
 
 extern LyXRC *lyxrc;
 extern BufferView *current_view;
@@ -233,17 +234,19 @@ void create_ispell_pipe(string const & lang)
 	isp_pid = -1;
 
 	if(pipe(pipein)==-1 || pipe(pipeout)==-1) {
-		fprintf(stderr,"LyX: Can't create pipe for spellchecker!");
+		lyxerr << "LyX: Can't create pipe for spellchecker!" << endl;
 		return;
 	}
 
 	if ((out = fdopen(pipein[1], "w"))==0) {
-		fprintf(stderr,"LyX: Can't create stream for pipe for spellchecker!");
+		lyxerr << "LyX: Can't create stream for pipe for spellchecker!"
+		       << endl;
 		return;
 	}
 
 	if ((in = fdopen(pipeout[0], "r"))==0) {
-		fprintf(stderr,"LyX: Can't create stream for pipe for spellchecker!");
+		lyxerr <<"LyX: Can't create stream for pipe for spellchecker!"
+		       << endl;
 		return;
 	}
 
@@ -254,7 +257,8 @@ void create_ispell_pipe(string const & lang)
 	isp_pid = fork();
 
 	if(isp_pid==-1) {
-		fprintf(stderr,"LyX: Can't create child process for spellchecker!");
+		lyxerr << "LyX: Can't create child process for spellchecker!"
+		       << endl;
 		return;
 	}
 
@@ -340,7 +344,7 @@ void create_ispell_pipe(string const & lang)
 		for (int i=0; i < argc -1; i++)
 			delete[] argv[i];
 		
-		fprintf(stderr, "LyX: Failed to start ispell!\n");
+		lyxerr << "LyX: Failed to start ispell!" << endl;
 		_exit(0);
 	}
 
@@ -382,7 +386,7 @@ void create_ispell_pipe(string const & lang)
 		
 	} else if (retval == 0) {
 		// timeout. Give nice message to user.
-		fprintf(stderr, "Ispell read timed out, what now?\n");
+		lyxerr << "Ispell read timed out, what now?" << endl;
 #ifdef WITH_WARNINGS
 #warning Is this the correct thing to do?
 #endif
@@ -392,7 +396,7 @@ void create_ispell_pipe(string const & lang)
 		isp_fd = -1;
 	} else {
 		// Select returned error
-		fprintf(stderr, "Select on ispell returned error, what now?\n");
+		lyxerr << "Select on ispell returned error, what now?" << endl;
 	}
 }
 
@@ -767,7 +771,7 @@ bool RunSpellChecker(string const & lang)
 	if(isp_pid!=-1) {
 		ispell_terminate();
 		string word_msg;
-		word_msg += int(word_count);
+		word_msg += tostr(word_count);
 		if (word_count != 1) {
 			word_msg += _(" words checked.");
 		} else {

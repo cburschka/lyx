@@ -22,4 +22,3 @@ typedef lyxstring string;
 //typedef lyxwstring wstring;
 #endif
 #endif
-

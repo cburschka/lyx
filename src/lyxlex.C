@@ -13,7 +13,7 @@
 #endif
 
 #include "lyxlex.h"
-#include "error.h"
+#include "debug.h"
 #include "support/filetools.h"
 
 LyXLex::LyXLex(keyword_item * tab, int num)
@@ -41,7 +41,7 @@ void LyXLex::pushTable(keyword_item * tab, int num)
 void LyXLex::popTable()
 {
 	if (pushed == 0)
-		lyxerr.print("LyXLex error: nothing to pop!");
+		lyxerr << "LyXLex error: nothing to pop!" << endl;
 
 	pushed_table * tmp;
 	tmp = pushed;
@@ -55,27 +55,27 @@ void LyXLex::popTable()
 
 void LyXLex::printTable()
 {
-	lyxerr.print(string("\nNumber of tags: ") + tostr(no_items));
+	lyxerr << "\nNumber of tags: " << no_items << endl;
 	for(int i=0; i<no_items; i++)
-		lyxerr.print(string("table[")+ tostr(i) +
-                              "]:  tag: `" + table[i].tag +
-                              "'  code:" + tostr(table[i].code));
-	lyxerr.print(string());
+		lyxerr << "table[" << i
+		       << "]:  tag: `" << table[i].tag
+		       << "'  code:" << table[i].code << endl;
+	lyxerr << endl;
 }
 
 
 void LyXLex::printError(string const & message)
 {
 	string tmpmsg = subst(message, "$$Token", GetString());
-	lyxerr.print("LyX: " + tmpmsg + " [around line " + tostr(lineno) + " of file "
-		      + MakeDisplayPath(name) + ']');
+	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
+	       << " of file " << MakeDisplayPath(name) << ']' << endl;
 }
 
 
 bool LyXLex::setFile(string const & filename)
 {
         if (file) 
-		lyxerr.print("Error in LyXLex::setFile: file already set.");
+		lyxerr << "Error in LyXLex::setFile: file already set." <<endl;
 	file = fopen(filename.c_str(), "r");
 	name = filename;
 	owns_file = true;
@@ -87,7 +87,7 @@ bool LyXLex::setFile(string const & filename)
 void LyXLex::setFile(FILE * f)
 {
         if (file) 
-		lyxerr.print("Error in LyXLex::setFile: file already set.");
+		lyxerr << "Error in LyXLex::setFile: file already set." << endl;
 	file = f;
 	owns_file = false;
 	lineno = 0; // this is bogus if the file already has been read from
@@ -147,7 +147,8 @@ string LyXLex::getLongString(string const & endtoken)
 		
 		string const token = frontStrip(strip(GetString()), " \t");
 		
-		lyxerr.debug("LongString: `"+GetString()+'\'', Error::LEX_PARSER);
+		lyxerr[Debug::PARSER] << "LongString: `"
+				      << GetString() << '\'' << endl;
 
 		// We do a case independent comparison, like search_kw
 		// does.
@@ -161,8 +162,8 @@ string LyXLex::getLongString(string const & endtoken)
 					prefix += ' ';
 				}
 				firstline = false;
-				lyxerr.debug("Prefix = `"+prefix+'\'',
-					      Error::LEX_PARSER); 
+				lyxerr[Debug::PARSER] << "Prefix = `" << prefix
+						      << '\'' << endl;
 			} 
 
 			if (!prefix.empty() 
@@ -226,15 +227,11 @@ int LyXLex::search_kw(char const * const tag) const
 	while (l < r) {
 		m = (l+r)/2;
 
-		if (lyxerr.debugging(Error::LEX_PARSER)) {
-			string my_l;
-			my_l+="LyXLex::search_kw: elem " ;
-			my_l+= m; 
-			my_l+=" tag "; 
-			my_l+=table[m].tag;
-			my_l+=" search tag ";
-			my_l+= tag;
-			lyxerr.print(my_l);
+		if (lyxerr.debugging(Debug::PARSER)) {
+			lyxerr << "LyXLex::search_kw: elem " << m
+			       << " tag " << table[m].tag
+			       << " search tag " << tag
+			       << endl;
 		}
 
 		if (table[m].tag)
@@ -253,7 +250,7 @@ bool LyXLex::next(bool esc)
 
 	if (!esc) {
 		int c; // getc() returns an int
-		int i;
+		//int i;
 		
 		
 		status = 0;
@@ -267,7 +264,7 @@ bool LyXLex::next(bool esc)
 			}
 			
 			if (c=='\"') {
-				i = -1;
+				int i = -1;
 				do {
 					c = getc(file);
 					if (c != '\r')
@@ -296,7 +293,7 @@ bool LyXLex::next(bool esc)
 				continue;              /* Skip ','s */
 			
 			if (c > ' ' && !feof(file))  {
-				i = 0;
+				int i = 0;
 				do {
 					buff[i++] = c;
 					c = getc(file);
@@ -328,7 +325,7 @@ bool LyXLex::next(bool esc)
 		return false;
 	} else {
 		int c; // getc() returns an int
-		int i;
+		//int i;
 		
 		
 		status = 0;
@@ -340,7 +337,7 @@ bool LyXLex::next(bool esc)
 			
 			if (c=='\\') {
 				// escape
-				i = 0;
+				int i = 0;
 				do {
 					if (c == '\\') {
 						// escape the next char
@@ -367,7 +364,7 @@ bool LyXLex::next(bool esc)
 
 			// string
 			if (c=='\"') {
-				i = -1;
+				int i = -1;
 				bool escaped = false;
 				do {
 					escaped = false;
@@ -402,7 +399,7 @@ bool LyXLex::next(bool esc)
 			}
 			
 			if (c > ' ' && !feof(file))  {
-				i = 0;
+				int i = 0;
 				do {
 					if (c == '\\') {
 						// escape the next char

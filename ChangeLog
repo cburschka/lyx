@@ -10,6 +10,40 @@
 
 1999-10-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* autogen.sh (AUTOCONF): let the autogen script create the
+	POTFILES.in file too. POTFILES.in should perhaps now not be
+	included in the cvs module.
+
+	* some more files changed to use C++ includes instead of C ones.
+
+	* src/filedlg.C (Reread): fixed a bug wrt Time. It was appended
+	not assigned.
+	(Reread): added tostr to nlink. buggy output otherwise.
+	(Reread): added a string() around szMode when assigning to Buffer,
+	without this I got a log of garbled info strings.
+
+	* acconfig.h: commented out the PTR_AS_INT macros. They should not
+	be needed.
+
+	* I have added several ostream & operator<<(ostream &, some_type)
+	functions. This has been done to avoid casting and warnings when
+	outputting enums to lyxerr. This as thus eliminated a lot of
+	explicit casts and has made the code clearer. Among the enums
+	affected: kb_action, InsetLatexAccent::ACCENT_TYPE, a couple of
+	mathed enums, some font enum the Debug::type enum. 
+
+	* src/support/lyxstring.h (clear): missing method. equivalent of
+	erase(0, npos).
+
+	* all files that contained "stderr": rewrote constructs that used
+	stderr to use lyxerr instead. (except bmtable)
+
+	* src/support/DebugStream.h (level): and the passed t with
+	Debug::ANY to avoid spurious bits set.
+
+	* src/debug.h (Debug::type value): made it accept strings of the
+	type INFO,INIT,KEY.
+
 	* configure.in (Check for programs): Added a check for kpsewhich,
 	the latex generation will use this later to better the dicovery of
 	all used files. 
@@ -30,6 +64,18 @@
 	* src/bufferparams.C (BufferParams): default input encoding is now
 	"latin1" 
 
+	* acinclude.m4 (cross_compiling): comment out macro
+	LYX_GXX_STRENGTH_REDUCE. 
+
+	* acconfig.h: make sure that const is not defined (to empty) when
+	we are compiling C++. Remove commented out code using SIZEOF_xx
+	macros.
+	
+	* configure.in : move the test for const and inline as late as
+	possible so that these C tests do not interefere with C++ ones.
+	Remove the call to LYX_GXX_STRENGTH_REDUCE, since its usefulness
+	has not been proven. 
+
 1999-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/table.C (getDocBookAlign): remove bad default value for
@@ -41,6 +87,12 @@
 
 	* lib/reLyX/.cvsignore: add configure and aclocal.m4 to the list
 	of files to ignore.
+
+1999-10-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Most files: finished the change from the old error code to use
+	DebugStream for all lyxerr debugging. Only minor changes remain
+	(e.g. the setting of debug levels using strings instead of number) 
 
 1999-10-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

@@ -195,28 +195,28 @@ else
 fi
 ])dnl
 
-
-AC_DEFUN(LYX_GXX_STRENGTH_REDUCE,[
-#check for the strength reduction bug of gcc
-if test x$GXX = xyes && test $cross_compiling = no ; then
-  AC_CACHE_CHECK( "for gcc strength-reduce bug", ac_cv_c_gcc_strength_bug,
-                  AC_TRY_RUN([
-int main(void) {
-  static int Array[[3]];
-  unsigned int B = 3;
-  int i;
-  for(i=0; i<B; i++) Array[[i]] = i - 3;
-  exit( Array[[1]] != -2 );
-}],
-    ac_cv_c_gcc_strength_bug="no",
-    ac_cv_c_gcc_strength_bug="yes",
-    ac_cv_c_gcc_strength_bug="yes") )
-  if test "$ac_cv_c_gcc_strength_bug" = "yes"
-  then
-    CXXFLAGS="$CXXFLAGS -fno-strength-reduce"
-  fi
-fi
-])dnl
+dnl We do not use this one anymore.
+dnl AC_DEFUN(LYX_GXX_STRENGTH_REDUCE,[
+dnl #check for the strength reduction bug of gcc
+dnl if test x$GXX = xyes && test $cross_compiling = no ; then
+dnl   AC_CACHE_CHECK( "for gcc strength-reduce bug", ac_cv_c_gcc_strength_bug,
+dnl                   AC_TRY_RUN([
+dnl int main(void) {
+dnl   static int Array[[3]];
+dnl   unsigned int B = 3;
+dnl   int i;
+dnl   for(i=0; i<B; i++) Array[[i]] = i - 3;
+dnl   exit( Array[[1]] != -2 );
+dnl }],
+dnl     ac_cv_c_gcc_strength_bug="no",
+dnl     ac_cv_c_gcc_strength_bug="yes",
+dnl     ac_cv_c_gcc_strength_bug="yes") )
+dnl   if test "$ac_cv_c_gcc_strength_bug" = "yes"
+dnl   then
+dnl     CXXFLAGS="$CXXFLAGS -fno-strength-reduce"
+dnl   fi
+dnl fi
+dnl ])dnl
 
 dnl Usage: LYX_CXX_RTTI : checks whether the C++ compiler
 dnl   supports RTTI

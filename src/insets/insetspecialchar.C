@@ -15,7 +15,7 @@
 
 #include "insetspecialchar.h"
 #include "lyxdraw.h"
-#include "error.h"
+#include "debug.h"
 #include "LaTeXFeatures.h"
 
 InsetSpecialChar::InsetSpecialChar()

@@ -321,7 +321,7 @@ const char* flyx_shortcut_extract(const char*sc)
 
 	if (sd[0]=='|') {
 		sd++;
-		//fprintf(stderr, "%s\n", sd);
+		//lyxerr << sd << endl;
 		return sd;
 	}
 	return "";

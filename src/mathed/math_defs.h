@@ -135,6 +135,8 @@ enum MathedTextCodes  {
    LM_TC_MAX
 };
 
+ostream & operator<<(ostream &, MathedTextCodes mtc);
+
 ///
 #define LM_TC_NORMAL LM_TC_VAR
  

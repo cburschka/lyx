@@ -6,7 +6,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 /*
  *	International support for LyX
@@ -24,7 +24,7 @@
 #include "tex-strings.h"
 #include "combox.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"
 #include "trans_mgr.h"
 #include "support/lstrings.h"
@@ -52,16 +52,16 @@ Intl::~Intl()
 
 int Intl::SetPrimary(string const & lang)
 {
-	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print("Primary: `" + lang + "'");
+	if (lyxerr.debugging(Debug::KBMAP))
+		lyxerr << "Primary: `" << lang << "'" << endl;
 	return trans->SetPrimary(lang);
 }
 
 
 int Intl::SetSecondary(string const & lang)
 {
-	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print("Secondary: `" + lang + "'");
+	if (lyxerr.debugging(Debug::KBMAP))
+		lyxerr << "Secondary: `" << lang << "'" << endl;
 	return trans->SetSecondary(lang);
 }
 
@@ -136,8 +136,8 @@ void Intl::KeyMapPrim()
 	/* read text from choice */
 	i = Language->get();
 	
-	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print(string("Table: ") + tex_babel[i-1]);
+	if (lyxerr.debugging(Debug::KBMAP))
+		lyxerr << "Table: " << tex_babel[i-1] << endl;
 
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap);
@@ -172,8 +172,8 @@ void Intl::KeyMapSec()
 	/* read text from choice */
 	i = Language2->get();
 	
-	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print(string("Table: ") + tex_babel[i-1]);
+	if (lyxerr.debugging(Debug::KBMAP))
+		lyxerr << "Table: " << tex_babel[i-1] << endl;
 
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap2);
@@ -229,7 +229,7 @@ void Intl::DispatchCallback(FL_OBJECT *ob,long code)
 void Intl::InitKeyMapper(bool on)
 	/* initialize key mapper */
 {
-	lyxerr.debug("Initializing key mappings...", Error::KBMAP);
+	lyxerr[Debug::KBMAP] << "Initializing key mappings..." << endl;
 
 	if (prim_lang.empty() && sec_lang.empty())
 		keymapon = false; 
@@ -314,8 +314,8 @@ void Intl::Keymap(long code)
 {
 	char const *p;
 
-	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print(string("KeyMap callback: ") + tostr(code));
+	if (lyxerr.debugging(Debug::KBMAP))
+		lyxerr << "KeyMap callback: " << code << endl;
 
 	switch (code) {
 	case 0:

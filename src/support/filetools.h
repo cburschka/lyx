@@ -1,7 +1,7 @@
 // -*- C++-*-
 /* lyx-filetool.h : tools functions for file/path handling
    this file is part of LyX, the High Level Word Processor
-   copyright (C) 1995-1997, Matthias Ettrich and the LyX Team
+   Copyright 1995-1999, Matthias Ettrich and the LyX Team
 */
 
 #ifndef LYX_FILETOOL_H
@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <fcntl.h>
 #include <cerrno>
-#include "error.h"
+#include "debug.h"
 #include "LString.h"
 #include "support/lstrings.h"
 
@@ -102,7 +102,7 @@ private:
 			switch(errno) {
 			case EINVAL:
 				// Internal LyX error.
-				lyxerr.print("FilePtr: Wrong parameter given to fopen.");
+				lyxerr << "FilePtr: Wrong parameter given to fopen." << endl;
 				break;
 			default:
 				// unknown error

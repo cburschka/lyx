@@ -4,12 +4,12 @@
 #pragma implementation "trans_mgr.h"
 #endif
 
-#include <assert.h>
+//#include <cassert>
 #include "trans_mgr.h"
 #include "trans.h"
 #include "lyxtext.h"
 #include "LString.h"
-#include "error.h"
+#include "debug.h"
 #include "chset.h"
 #include "insets/insetlatexaccent.h"
 #include "BufferView.h"
@@ -282,7 +282,7 @@ void TransManager::EnablePrimary()
     if (t1_->IsDefined())
 	active_=t1_;
 
-    lyxerr.debug("Enabling primary keymap",Error::KBMAP);
+    lyxerr[Debug::KBMAP] << "Enabling primary keymap" << endl;
 }
 
 
@@ -290,14 +290,14 @@ void TransManager::EnableSecondary()
 {
     if (t2_->IsDefined( ))
 	active_=t2_;
-    lyxerr.debug("Enabling secondary keymap",Error::KBMAP);
+    lyxerr[Debug::KBMAP] << "Enabling secondary keymap" << endl;
 }
 
 
 void TransManager::DisableKeymap()
 {
     active_=default_;
-    lyxerr.debug("Disabling keymap",Error::KBMAP);
+    lyxerr[Debug::KBMAP] << "Disabling keymap" << endl;
 }
 
 

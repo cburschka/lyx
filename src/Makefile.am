@@ -70,9 +70,8 @@ lyx_SOURCES = \
 	credits.h \
 	credits_form.C \
 	credits_form.h \
+	debug.h \
 	definitions.h \
-	error.C \
-	error.h \
 	figure.h \
 	filedlg.C \
 	filedlg.h \
@@ -175,7 +174,7 @@ lyx_SOURCES = \
 	vspace.C \
 	vspace.h
 
-lyx_main.o: lyx_main.C lyx_main.h config.h version.h error.h gettext.h
+lyx_main.o: lyx_main.C lyx_main.h config.h version.h debug.h gettext.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(LYX_DIR)\" -DTOP_SRCDIR=\"$(top_srcdir)\" \
 	-DLYX_NAME=\"$(PACKAGE)\" -c $(top_srcdir)/src/lyx_main.C
 

@@ -11,7 +11,7 @@
 #include "insetbib.h"
 #include "combox.h"
 #include "buffer.h"
-#include "error.h"
+#include "debug.h"
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "gettext.h"

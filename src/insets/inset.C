@@ -15,7 +15,7 @@
 #endif
 
 #include "lyxinset.h"
-#include "error.h"
+#include "debug.h"
 #include "support/lstrings.h"
 
 /* Insets default methods */
@@ -71,34 +71,34 @@ LyXFont Inset::ConvertFont(LyXFont font)
 
 void UpdatableInset::InsetButtonPress(int x, int y, int button)
 {
-	lyxerr.debug(string("Inset Button Press x=")+ tostr(x) +
-		      ", y=" + tostr(y) + ", button=" + tostr(button));
+	lyxerr.debug() << "Inset Button Press x=" << x
+		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
 void UpdatableInset::InsetButtonRelease(int x, int y, int button)
 {
-	lyxerr.debug(string("Inset Button Release x=")+ tostr(x) +
-		      ", y=" + tostr(y) + ", button=" + tostr(button));
+	lyxerr.debug() << "Inset Button Release x=" << x
+		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
 void UpdatableInset::InsetKeyPress(XKeyEvent *)
 {
-	lyxerr.debug("Inset Keypress");
+	lyxerr.debug() << "Inset Keypress" << endl;
 }
 
 
 void UpdatableInset::InsetMotionNotify(int x, int y, int state)
 {
-	lyxerr.debug(string("Inset Motion Notify x=")+ tostr(x) +
-		      ", y=" + tostr(y) + ", state=" + tostr(state));
+	lyxerr.debug() << "Inset Motion Notify x=" << x
+		       << ", y=" << y << ", state=" << state << endl;
 }
 
 
 void UpdatableInset::InsetUnlock()
 {
-	lyxerr.debug("Inset Unlock", Error::ANY);
+	lyxerr.debug() << "Inset Unlock" << endl;
 }
 
 

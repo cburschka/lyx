@@ -1,12 +1,12 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
@@ -20,7 +20,7 @@
 #endif
 
 #include "LyXAction.h"
-#include "error.h"
+#include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 
@@ -452,10 +452,9 @@ int  LyXAction::searchActionArg(kb_action action, char const *arg)
 	for (int i=0; i<psd_idx; i++) {
 		if (action==tb->action && !strcmp(tb->name, arg)) {	 
 
-			lyxerr.debug(string("Pseudoaction already exist[") 
-				     + tostr(action) + '|' 
-				     + tostr(arg) + ']',
-				     Error::KEY);
+			lyxerr[Debug::KEY] << "Pseudoaction already exist[" 
+					   << action << '|' 
+					   << arg << ']' << endl;
 
 			return LFUN_LASTACTION+i;
 		}
@@ -474,8 +473,8 @@ int LyXAction::getPseudoAction(kb_action action, char const *arg)
 	if (psdaction >= 0) return psdaction;
 
 	if (psd_idx>=MAX_PSEUDO_ACTION) {
-		lyxerr.print("Lyx Error: No more pseudo-actions allowed");
-		lyxerr.print("           Tell the developers.");
+		lyxerr << "Lyx Error: No more pseudo-actions allowed"
+		       << "           Tell the developers." << endl;
 		return -1;
 	}
 	lyx_func_args[psd_idx].name = strdup(arg);
@@ -493,7 +492,7 @@ int LyXAction::retrieveActionArg(int i, char const** arg)
 		*arg = lyx_func_args[i].name;
 		return (int)lyx_func_args[i].action;
 	} else {
-		lyxerr.print("Lyx Error: Unrecognized pseudo-action");
+		lyxerr << "Lyx Error: Unrecognized pseudo-action" << endl;
 		return -1;
 	}
 }
@@ -526,9 +525,9 @@ int LyXAction::LookupFunc(char const *func)
 	}
 	if (arg && action >= 0) {
 		action = getPseudoAction((kb_action)action, arg);
-		lyxerr.debug(string("Pseudo action_arg[")
-			     + tostr(action) + '|' 
-			     + tostr(arg) + ']',Error::KEY);
+		lyxerr[Debug::KEY] << "Pseudo action_arg["
+				   << action << '|' 
+				   << arg << ']' << endl;
 	}
 	return action;
 }
@@ -749,8 +748,12 @@ bool LyXAction::isFuncRO(kb_action action) const
 	} else
 	  if (k<0) l = m+1; else r = m;
     }
-    lyxerr.debug(string("RO[") + tostr(action)
-		  + string(" ") + tostr(is_ro) + string("]"));
+    lyxerr.debug() << "RO[" << action
+		   << " " << is_ro << "]" << endl;
     return is_ro;
 }
 
+ostream & operator<<(ostream & o, kb_action action)
+{
+	return o << int(action);
+}

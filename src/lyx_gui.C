@@ -26,7 +26,7 @@
 #include "tex-strings.h"
 #include "lyx_main.h"
 #include "latexoptions.h"
-#include "error.h"
+#include "debug.h"
 #include "version.h"
 #include "LyXView.h"
 #include "buffer.h"
@@ -154,7 +154,7 @@ static int LyX_XErrHandler(Display *display, XErrorEvent *xeev)
 	// Get the reason for the crash.
 	char etxt[513];
 	XGetErrorText(display, xeev->error_code, etxt, 512);
-	lyxerr.print(etxt);
+	lyxerr << etxt << endl;
 	// By doing an abort we get a nice backtrace. (hopefully)
 	abort();
 	return 0; // Solaris CC wants us to return something
@@ -175,7 +175,7 @@ LyXGUI::LyXGUI(LyX *owner, int *argc, char *argv[], bool GUI)
 	fl_get_app_resources(res, num_res);
 	Display *display = fl_get_display();
 	if (!display) {
-		lyxerr.print("LyX: unable to access X display, exiting");
+		lyxerr << "LyX: unable to access X display, exiting" << endl;
 		exit(1);
 	}
 	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);
@@ -259,7 +259,8 @@ void LyXGUI::init()
                 fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str());
         else
 #endif
-                lyxerr.print("Could not set menu font to " + menufontname);
+                lyxerr << "Could not set menu font to "
+		       << menufontname << endl;
 
 #if FL_REVISION > 85
         if (fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str()) < 0)
@@ -271,7 +272,8 @@ void LyXGUI::init()
                 fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str());
         else
 #endif
-                lyxerr.print("Could not set popup font to " + popupfontname);
+                lyxerr << "Could not set popup font to "
+		       << popupfontname << endl;
 
  	// put here (after fl_initialize) to avoid segfault. Cannot be done
 	// in setDefaults() (Matthias 140496)
@@ -323,9 +325,9 @@ void LyXGUI::init()
 
 void LyXGUI::create_forms()
 {
-	lyxerr.debug("Initializing LyXView...");
+	lyxerr.debug() << "Initializing LyXView..." << endl;
 	lyxViews = new LyXView(width, height);
-	lyxerr.debug("Initializing LyXView...done");
+	lyxerr.debug() << "Initializing LyXView...done" << endl;
 
 	// From here down should be done by somebody else. (Lgb)
 
@@ -622,7 +624,7 @@ void LyXGUI::runTime()
 
 	while (!finished) {
 		if (fl_check_forms() == FL_EVENT) {
-			lyxerr.print("LyX: This shouldn't happen...");
+			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);
 		}
 	}

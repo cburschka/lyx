@@ -16,7 +16,7 @@
 
 #include "insetcommand.h"
 #include "lyxdraw.h"
-#include "error.h"
+#include "debug.h"
 
 InsetCommand::InsetCommand()
 {
@@ -160,12 +160,12 @@ void InsetCommand::scanCommand(string const &cmd)
 	if (!tcontents.empty()) setContents(tcontents); 
                 	// setContents is overloaded in InsetInclude
 
-	if (lyxerr.debugging(Error::LEX_PARSER))
-	     lyxerr.print("Command <" + cmd
-			   + "> == <" + getCommand()
-			   + "> == <" + getCmdName()
-			   + '|' + getContents()
-			   + '|' + getOptions() +'>');
+	if (lyxerr.debugging(Debug::PARSER))
+		lyxerr << "Command <" <<  cmd
+		       << "> == <" << getCommand()
+		       << "> == <" << getCmdName()
+		       << '|' << getContents()
+		       << '|' << getOptions() << '>' << endl;
 }
 
 

@@ -20,7 +20,7 @@
 #include "tex-strings.h"
 #include "bufferparams.h"
 #include "support/FileInfo.h"
-#include "error.h"
+#include "debug.h"
 #include "LaTeXFeatures.h"
 #include "insets/insetinclude.h"
 #include "support/filetools.h"
@@ -106,7 +106,7 @@ LyXParagraph::LyXParagraph(LyXParagraph *par)
 
         bibkey = 0; // ale970302        
         // ale970302
-//        fprintf(stderr, "new bib "); fflush(stderr);    
+//        lyxerr << "new bib " << endl;
 //        if (par->bibkey) {
 //	    bibkey = new InsetBibKey(par->bibkey);
 //        }
@@ -325,8 +325,8 @@ void LyXParagraph::writeFile(FILE *file, BufferParams &params,
 			if (c != '\0')
 				fprintf(file, "%c", c);
 			else
-				lyxerr.print("ERROR (LyXParagraph::writeFile):"
-					     " NULL char in structure.");
+				lyxerr << "ERROR (LyXParagraph::writeFile):"
+					" NULL char in structure." << endl;
 			column++;
 			break;
 		}
@@ -355,13 +355,13 @@ void LyXParagraph::validate(LaTeXFeatures &features)
 	FontTable *tmpfonttable = fonttable;
 	while (tmpfonttable) {
 		if (tmpfonttable->font.noun() == LyXFont::ON) {
-			lyxerr.debug(string("font.noun: ") 
-				     + tostr(tmpfonttable->font.noun()),
-				     Error::LATEX);
+			lyxerr[Debug::LATEX] << "font.noun: " 
+					     << tmpfonttable->font.noun()
+					     << endl;
 			features.noun = true;
-			lyxerr.debug("Noun enabled. Font: "
-				     +tmpfonttable->font.stateText(),
-				     Error::LATEX);
+			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
+					     << tmpfonttable->font.stateText()
+					     << endl;
 		}
 		switch (tmpfonttable->font.color()) {
 		case LyXFont::NONE: 
@@ -370,9 +370,9 @@ void LyXParagraph::validate(LaTeXFeatures &features)
 			break;
 		default:
 			features.color = true;
-			lyxerr.debug("Color enabled. Font: "
-				     +tmpfonttable->font.stateText(),
-				     Error::LATEX);
+			lyxerr[Debug::LATEX] << "Color enabled. Font: "
+					     << tmpfonttable->font.stateText()
+					     << endl;
 		}
 		tmpfonttable = tmpfonttable->next;
 	}
@@ -555,7 +555,8 @@ void LyXParagraph::Erase(int pos)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			NextAfterFootnote()->Erase(pos - last - 1);
 		else 
-			lyxerr.debug("ERROR (LyXParagraph::Erase): position does not exist.");
+			lyxerr.debug() << "ERROR (LyXParagraph::Erase): "
+				"position does not exist." << endl;
 		return;
 	}
 	if (pos < last) { // last is free for insertation, but should be empty
@@ -631,7 +632,8 @@ void LyXParagraph::Erase(int pos)
 		}
       
 	} else {
-		lyxerr.print("ERROR (LyXParagraph::Erase): can't erase non-existant char.");
+		lyxerr << "ERROR (LyXParagraph::Erase): "
+			"can't erase non-existant char." << endl;
 	}
 }
 
@@ -648,7 +650,8 @@ void LyXParagraph::Enlarge(int pos, int number)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			NextAfterFootnote()->Enlarge(pos - last - 1, number);
 		else 
-			lyxerr.print("ERROR (LyXParagraph::Enlarge): position does not exist.");
+			lyxerr << "ERROR (LyXParagraph::Enlarge): "
+				"position does not exist." << endl;
 		return;
 	}
 
@@ -690,8 +693,8 @@ void LyXParagraph::InsertChar(int pos, char c)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			NextAfterFootnote()->InsertChar(pos - last - 1, c);
 		else 
-			lyxerr.debug("ERROR (LyXParagraph::InsertChar): "
-				     "position does not exist.");
+			lyxerr.debug() << "ERROR (LyXParagraph::InsertChar): "
+				"position does not exist." << endl;
 		return;
 	}
 
@@ -741,14 +744,14 @@ void LyXParagraph::InsertInset(int pos, Inset *inset)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			NextAfterFootnote()->InsertInset(pos - last - 1, inset);
 		else 
-			lyxerr.print("ERROR (LyXParagraph::InsertInset): " 
-				     "position does not exist: " + tostr(pos));
+			lyxerr << "ERROR (LyXParagraph::InsertInset): " 
+				"position does not exist: " << pos << endl;
 		return;
 	}
 
 	if (text[pos]!=LYX_META_INSET) {
-		lyxerr.print("ERROR (LyXParagraph::InsertInset): "
-			     "there is no LYX_META_INSET");
+		lyxerr << "ERROR (LyXParagraph::InsertInset): "
+			"there is no LYX_META_INSET" << endl;
 		return;
 	}
 
@@ -769,7 +772,8 @@ Inset* LyXParagraph::GetInset(int pos)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			return NextAfterFootnote()->GetInset(pos - last - 1);
 		else { 
-		        lyxerr.print(string("ERROR (LyXParagraph::GetInset): position does not exist: ") + tostr(pos));
+		        lyxerr << "ERROR (LyXParagraph::GetInset): position does not exist: "
+			       << pos << endl;
 		}
 		return 0;
 	}
@@ -783,8 +787,8 @@ Inset* LyXParagraph::GetInset(int pos)
 	if (tmpi)
 		return tmpi->inset;
 	else {
-		lyxerr.print(string("ERROR (LyXParagraph::GetInset): "
-				     "Inset does not exist: ") + tostr(pos));
+		lyxerr << "ERROR (LyXParagraph::GetInset): "
+			"Inset does not exist: " << pos << endl;
 		text[pos] = ' '; /// WHY!!! does this set the pos to ' '????
 		// Did this commenting out introduce a bug? So far I have not
 		// seen any, please enlighten me. (Lgb)
@@ -819,9 +823,8 @@ LyXFont LyXParagraph::GetFontSettings(int pos)
 			// enough for this to be anable on debug?
 			// We want strict error checking, but it's ok to only
 			// have it when debugging. (Asger)
-			lyxerr.print(
-				string("ERROR (LyXParagraph::GetFontSettings): "
-					"position does not exist. ") + tostr(pos));
+			lyxerr << "ERROR (LyXParagraph::GetFontSettings): "
+				"position does not exist. " << pos << endl;
 		}
 	} else if (pos) {
 		return GetFontSettings(pos - 1);
@@ -906,8 +909,8 @@ char LyXParagraph::GetChar(int pos)
 	if (pos < 0) {
 		// This function is important. It should not work around bugs.
 		// Let's find the bugs instead and fix them. (Asger)
-		lyxerr.print(string("FATAL ERROR (LyXParagraph::GetChar):"
-				     " bad position ") + tostr(pos));
+		lyxerr << "FATAL ERROR (LyXParagraph::GetChar):"
+			" bad position "  << pos << endl;
 		abort();
 	}
 #endif
@@ -922,15 +925,15 @@ char LyXParagraph::GetChar(int pos)
 		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
 			return NextAfterFootnote()->GetChar(pos - last - 1);
 		else 
-			lyxerr.print("ERROR (LyXParagraph::GetChar): "
-				     "position does not exist.");
+			lyxerr << "ERROR (LyXParagraph::GetChar): "
+				"position does not exist." << endl;
 		return '\0';
 	} else { // pos==last
 		/* we should have a footnote environment */ 
 		if (!next || next->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 // Notice that LyX does request the last char from time to time. (Asger)
-//			lyxerr.print("ERROR (LyXParagraph::GetChar): "
-//				      "expected footnote.");
+//			lyxerr << "ERROR (LyXParagraph::GetChar): "
+//				      "expected footnote." << endl;
 			return '\0';
 		}
 		switch (next->footnotekind) {
@@ -957,8 +960,8 @@ char LyXParagraph::GetChar(int pos)
 // 			return LYX_META_TAB;
 // 		if (next->footnotekind == LyXParagraph::ALGORITHM)
 // 			return LYX_META_ALGORITHM;
-// 		lyxerr.print("ERROR (LyXParagraph::GetChar): "
-// 			      "unknown footnote kind.");
+// 		lyxerr << "ERROR (LyXParagraph::GetChar): "
+// 			      "unknown footnote kind." << endl;
 // 		return 'F';		/* this should not happen!  */
 		// This _can_ not happen, due to the type of next->footnotekind
 		// being LyXParagraph::footnot_kind
@@ -987,8 +990,8 @@ string LyXParagraph::GetWord(int & lastpos)
 	if (lastpos < 0) {
 		// This function is important. It should not work around bugs.
 		// Let's find the bugs instead and fix them. (Asger)
-		lyxerr.print(string("FATAL ERROR (LyXParagraph::GetWord):"
-				     " bad position ") + tostr(lastpos));
+		lyxerr << "FATAL ERROR (LyXParagraph::GetWord):"
+			" bad position " << lastpos << endl;
 		abort();
 	}
 #endif
@@ -1054,8 +1057,8 @@ LyXParagraph *LyXParagraph::ParFromPos(int pos)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			return NextAfterFootnote()->ParFromPos(pos - last - 1);
 		else 
-			lyxerr.print("ERROR (LyXParagraph::ParFromPos): "
-				     "position does not exist.");
+			lyxerr << "ERROR (LyXParagraph::ParFromPos): "
+				"position does not exist." << endl;
 		return this;
 	}
 	else
@@ -1071,9 +1074,9 @@ int LyXParagraph::PositionInParFromPos(int pos)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			return NextAfterFootnote()->PositionInParFromPos(pos - last - 1);
 		else 
-			lyxerr.print(
+			lyxerr <<
 				"ERROR (LyXParagraph::PositionInParFromPos): "
-				"position does not exist.");
+				"position does not exist." << endl;
 		return pos;
 	}
 	else
@@ -1089,8 +1092,8 @@ void LyXParagraph::SetFont(int pos, LyXFont const & font)
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 			NextAfterFootnote()->SetFont(pos - last - 1, font);
 		} else {
-			lyxerr.print("ERROR (LyXParagraph::SetFont): "
-				     "position does not exist.");
+			lyxerr << "ERROR (LyXParagraph::SetFont): "
+				"position does not exist." << endl;
 		}
 		return;
 	}
@@ -1837,8 +1840,8 @@ LyXParagraph* LyXParagraph::DepthHook(int deth)
    
 	if (!newpar) {
 		if (Previous() || GetDepth())
-			lyxerr.print("ERROR (LyXParagraph::DepthHook): "
-				     "no hook.");
+			lyxerr << "ERROR (LyXParagraph::DepthHook): "
+				"no hook." << endl;
 		newpar = this;
 	}
 	return newpar->FirstPhysicalPar();
@@ -1859,9 +1862,8 @@ int LyXParagraph::AutoDeleteInsets()
 				Erase(tmpi2->pos);
 			} else {}
 		else
-			lyxerr.print(
-				"ERROR (LyXParagraph::AutoDeleteInsets): "
-				"cannot auto-delete insets");
+			lyxerr << "ERROR (LyXParagraph::AutoDeleteInsets): "
+				"cannot auto-delete insets" << endl;
 	}
 	return i;
 }
@@ -1939,13 +1941,13 @@ LyXParagraph* LyXParagraph::TeXOnePar(string &file, TexRow &texrow,
 				      string &foot, TexRow &foot_texrow,
 				      int &foot_count)
 {
-	lyxerr.debug(string("TeXOnePar...     ") + tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
 	LyXParagraph *par = next;
 	LyXLayout * style = lyxstyle.Style(GetCurrentTextClass(), layout);
 
 	bool further_blank_line = false;
 	if (IsDummy())
-		lyxerr.print("ERROR (LyXParagraph::TeXOnePar) is dummy.");
+		lyxerr << "ERROR (LyXParagraph::TeXOnePar) is dummy." << endl;
 
 	if (start_of_appendix) {
 		file += "\\appendix\n";
@@ -2093,7 +2095,7 @@ LyXParagraph* LyXParagraph::TeXOnePar(string &file, TexRow &texrow,
 		texrow.newline();
 	}
 
-	lyxerr.debug(string("TeXOnePar...done ") + tostr(par), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXOnePar...done " << par << endl;
 	return par;
 }
 
@@ -2101,8 +2103,7 @@ LyXParagraph* LyXParagraph::TeXOnePar(string &file, TexRow &texrow,
 // This one spits out the text of the paragraph
 bool LyXParagraph::SimpleTeXOnePar(string &file, TexRow &texrow)
 {
-	lyxerr.debug(string("SimpleTeXOnePar...     ") + tostr(this), 
-		     Error::LATEX);
+	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
 
 	if (table)
 		return SimpleTeXOneTablePar(file, texrow);
@@ -2272,8 +2273,7 @@ bool LyXParagraph::SimpleTeXOnePar(string &file, TexRow &texrow)
 		return_value = false;
 	}
 
-	lyxerr.debug(string("SimpleTeXOnePar...done ") + tostr(this), 
-		     Error::LATEX);
+	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
 	return return_value;
 }
 
@@ -2281,8 +2281,7 @@ bool LyXParagraph::SimpleTeXOnePar(string &file, TexRow &texrow)
 // This one spits out the text of a table paragraph
 bool LyXParagraph::SimpleTeXOneTablePar(string &file, TexRow &texrow)
 {
-	lyxerr.debug(string("SimpleTeXOneTablePar...     ")+
-		     tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...     " << this << endl;
 	char c;
 	int column, tmp;
    
@@ -2422,7 +2421,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string &file, TexRow &texrow)
 	tmp = table->TexEndOfCell(file, current_cell_number);
 	for (;tmp>0;tmp--)
 		texrow.newline();
-	lyxerr.debug(string("SimpleTeXOneTablePar...done ")+ tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...done " << this << endl;
 	return return_value;
 }
 
@@ -2432,8 +2431,7 @@ bool LyXParagraph::TeXContTableRows(string &file, int i,
 				    int current_cell_number,
 				    int &column, TexRow &texrow)
 {
-       lyxerr.debug(string("TeXContTableRows...     ") +
-                    tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXContTableRows...     " << this << endl;
 	if (!table)
 		return false;
     
@@ -2521,7 +2519,7 @@ bool LyXParagraph::TeXContTableRows(string &file, int i,
 		running_font = basefont;
 		cell = table->CellHasContRow(current_cell_number);
 	}
-	lyxerr.debug(string("TeXContTableRows...done ")+ tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXContTableRows...done " << this << endl;
 	return return_value;
 }
 
@@ -2597,8 +2595,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string &file, string &extra,
 {
 	if (!table)
 		return;
-	lyxerr.debug(string("SimpleDocbookOneTablePar...     ") +
-		     tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar... " << this << endl;
 	int column, tmp;
 	//bool return_value = false; // unused
 	int current_cell_number = -1;
@@ -2751,8 +2748,8 @@ void LyXParagraph::SimpleDocBookOneTablePar(string &file, string &extra,
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
 		file += "</INFORMALTABLE>";
 	file += '\n';
-	lyxerr.debug(string("SimpleDocbookOneTablePar...done ") +
-		     tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar...done "
+			     << this << endl;
 }
 
 void LyXParagraph::DocBookContTableRows(string &file, string &extra,
@@ -2762,8 +2759,8 @@ void LyXParagraph::DocBookContTableRows(string &file, string &extra,
 	if (!table)
 		return;
 	
-	lyxerr.debug(string("DocBookContTableRows... ") +
-		     tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "DocBookContTableRows... " << this << endl;
+
 	int cell, lastpos; //tmp; //unused
 	LyXFont font1,font2;
 	char c;
@@ -2880,8 +2877,7 @@ void LyXParagraph::DocBookContTableRows(string &file, string &extra,
 		font1 = font2 = getFont(-1);
 		cell = table->CellHasContRow(current_cell_number);
 	}
-	lyxerr.debug(string("DocBookContTableRows...done ") +
-		     tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "DocBookContTableRows...done " << this << endl;
 }
 
 
@@ -3243,7 +3239,7 @@ bool LyXParagraph::RoffContTableRows(FILE *fp, int i, int actcell)
 				if (c != '\0')
 					fprintf(fp, "%c", c);
 				else
-					lyxerr.debug("RoffAsciiTable: NULL char in structure.");
+					lyxerr.debug() << "RoffAsciiTable: NULL char in structure." << endl;
 				break;
 			}
 		}
@@ -3256,12 +3252,12 @@ LyXParagraph * LyXParagraph::TeXDeeper(string &file, TexRow &texrow,
 				       string &foot, TexRow &foot_texrow,
 				       int &foot_count)
 {
-	lyxerr.debug(string("TeXDeeper...     ") + tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
 	LyXParagraph *par = this;
 
 	while (par && par->depth == depth) {
 		if (par->IsDummy())
-			lyxerr.print("ERROR (LyXParagraph::TeXDeeper)");
+			lyxerr << "ERROR (LyXParagraph::TeXDeeper)" << endl;
 		if (lyxstyle.Style(GetCurrentTextClass(), 
 				   par->layout)->isEnvironment()
 		    || par->pextra_type != PEXTRA_NONE) 
@@ -3275,7 +3271,7 @@ LyXParagraph * LyXParagraph::TeXDeeper(string &file, TexRow &texrow,
 						     foot_count);
 			}
 	}
-	lyxerr.debug(string("TeXDeeper...done ") + tostr(par), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
 
 	return par;
 }
@@ -3297,9 +3293,9 @@ LyXParagraph* LyXParagraph::TeXEnvironment(string &file, TexRow &texrow,
 	char
 		par_sep = current_view->currentBuffer()->params.paragraph_separation;
     
-	lyxerr.debug(string("TeXEnvironment...     ") + tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
 	if (IsDummy())
-		lyxerr.print("ERROR (LyXParagraph::TeXEnvironment)");
+		lyxerr << "ERROR (LyXParagraph::TeXEnvironment)" << endl;
 
 	LyXLayout * style = lyxstyle.Style(GetCurrentTextClass(), layout);
        
@@ -3567,8 +3563,7 @@ LyXParagraph* LyXParagraph::TeXEnvironment(string &file, TexRow &texrow,
                 file += '\n';
 		texrow.newline();
 	}
-	lyxerr.debug(string("TeXEnvironment...done ") 
-		     + tostr(par), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
 	return par;  // ale970302
 }
 
@@ -3577,20 +3572,19 @@ LyXParagraph * LyXParagraph::TeXFootnote(string &file, TexRow &texrow,
 					 string &foot, TexRow &foot_texrow,
 					 int &foot_count)
 {
-	lyxerr.debug(string("TeXFootnote...     ") 
-		     + tostr(this), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXFootnote...  " << this << endl;
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
-		lyxerr.print("ERROR (LyXParagraph::TeXFootnote): "
-			     "No footnote!");
+		lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
+			"No footnote!" << endl;
 
 	LyXParagraph *par = this;
 	LyXLayout * style = lyxstyle.Style(GetCurrentTextClass(), 
 					   previous->GetLayout());
 	
 	if (style->needprotect && footnotekind != LyXParagraph::FOOTNOTE){
-		lyxerr.print("ERROR (LyXParagraph::TeXFootnote): "
-			     "Float other than footnote in command"
-			     " with moving argument is illegal");
+		lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
+			"Float other than footnote in command"
+			" with moving argument is illegal" << endl;
 	}
 
 	if (footnotekind != LyXParagraph::FOOTNOTE
@@ -3702,7 +3696,8 @@ LyXParagraph * LyXParagraph::TeXFootnote(string &file, TexRow &texrow,
 			LyXLayout *style = lyxstyle.Style(GetCurrentTextClass(),
 							  par->layout);
 			if (par->IsDummy())
-				lyxerr.print("ERROR (LyXParagraph::TeXFootnote)");
+				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
+				       << endl;
 			if (style->isEnvironment()
 			    || par->pextra_type == PEXTRA_MINIPAGE) { /* && !minipage_open ?? */
 				// Allows the use of minipages within float environments.
@@ -3734,7 +3729,8 @@ LyXParagraph * LyXParagraph::TeXFootnote(string &file, TexRow &texrow,
 			LyXLayout *style = lyxstyle.Style(GetCurrentTextClass(),
 							  par->layout);
 			if (par->IsDummy())
-				lyxerr.print("ERROR (LyXParagraph::TeXFootnote)");
+				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
+				       << endl;
 			if (style->isEnvironment()
 			    || par->pextra_type == PEXTRA_MINIPAGE) { /* && !minipage_open ?? */
 				// Allows the use of minipages within float environments.
@@ -3756,8 +3752,9 @@ LyXParagraph * LyXParagraph::TeXFootnote(string &file, TexRow &texrow,
 			}
 		} while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE);
 		if (dummy_count) {
-			lyxerr.print("ERROR (LyXParagraph::TeXFootnote): "
-				     "Footnote in a Footnote -- not supported");
+			lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
+				"Footnote in a Footnote -- not supported"
+			       << endl;
 		}
 	}
 
@@ -3806,8 +3803,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(string &file, TexRow &texrow,
 		texrow.newline();
 	}
 
-	lyxerr.debug(string("TeXFootnote...done ") +
-		     tostr(par->next), Error::LATEX);
+	lyxerr[Debug::LATEX] << "TeXFootnote...done " << par->next << endl;
 	return par;
 }
 

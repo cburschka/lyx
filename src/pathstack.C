@@ -11,7 +11,7 @@
 
 #include "pathstack.h"
 #include "support/filetools.h"
-#include "error.h"
+#include "debug.h"
 #include "LString.h"
 #include "gettext.h"
 
@@ -51,7 +51,7 @@ int PathStack::PathPush(string const & Path)
 		return 2;
 	}
 
-	lyxerr.debug("PathPush: " + Path);
+	lyxerr.debug() << "PathPush: " << Path << endl;
 	// adds new node
 	NewNode = new PathStack(CurrentPath);
 	NewNode->Next = Next;
@@ -78,7 +78,7 @@ int PathStack::PathPop()
 			     Path);
 		Result = 2;
 	}
-	lyxerr.debug("PathPop: " + OldNode->Path);
+	lyxerr.debug() << "PathPop: " << OldNode->Path << endl;
 	delete OldNode;
 
 	return Result;

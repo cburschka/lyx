@@ -31,7 +31,7 @@
 #include "lyxrc.h"
 #include "LyXView.h"
 #include "support/lstrings.h"
-#include "error.h"
+#include "debug.h"
 
 #include "formula.h"
 
@@ -207,7 +207,7 @@ BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, char* data, Bool v
 void BitmapMenu::Create()
 {
    if (i<nb)  {
-      fprintf(stderr, "Error: Bitmaps not created!");
+	   lyxerr << "Error: Bitmaps not created!" << endl;
       return;
    }
    form = fl_bgn_form(FL_UP_BOX, w, h);   
@@ -264,7 +264,7 @@ static void math_cb(FL_OBJECT* ob, long data)
    int i = menu->GetIndex(ob);   
    char const *s = 0;
 
-//   fprintf(stderr, "data[%d]", data);     
+//   lyxerr << "data[" << data << "]";
    if (i<0) return;
    switch (data)  {
     case MM_GREEK: 
@@ -286,7 +286,7 @@ static void math_cb(FL_OBJECT* ob, long data)
       s = latex_misc[i];  
       break;
     case MM_DOTS: 
-//      fprintf(stderr, "dots[%s %d]", latex_dots[i], i);
+//      lyxerr << "dots[" << latex_dots[i] << " " << i << "]";
       s = latex_dots[i-29];  
       break;
    }
@@ -365,7 +365,8 @@ void math_insert_symbol(char const* s)
 	if (current_view->currentBuffer()->the_locking_inset->LyxCode()==Inset::MATH_CODE)
 	  ((InsetFormula*)current_view->currentBuffer()->the_locking_inset)->InsertSymbol(s);
         else 
-	  fprintf(stderr, "Math error: attempt to write on a wrong class of inset.\n");
+		lyxerr << "Math error: attempt to write on a wrong "
+			"class of inset." << endl;
    }
 }
 
@@ -452,8 +453,7 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	char *bdata = 0;
 	int w = 0, h = 0, dw = 0, dh = 0;
 
-	lyxerr.debug(string("Imando ") + tostr(i) + ", " + tostr(id),
-		     Error::MATHED);
+	lyxerr[Debug::MATHED] << "Imando " << i << ", " << id << endl;
 	switch (i) {
 	 case 0: 
 	    if (id<=10) {

@@ -31,7 +31,7 @@ extern BufferView *current_view;
 /*  length units
  */
 
-static const int   num_units            = int(LyXLength::UNIT_NONE);
+static const int   num_units            = LyXLength::UNIT_NONE;
 
 // I am not sure if "mu" should be possible to select (Lgb)
 static char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",

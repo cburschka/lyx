@@ -116,12 +116,15 @@ char * strerror(int n);
 #endif
 */
 
+/*
 #if SIZEOF_VOID_P == SIZEOF_INT
 # define PTR_AS_INT(p) int(p)
 #else
 # define PTR_AS_INT(p) long(p)
 #endif
+*/
 
+/* do we need this anymore?*/
 #ifdef BROKEN_CONST
 #include <string.h>
 #include "broken_const.h"
@@ -135,6 +138,12 @@ char * strerror(int n);
 #if defined inline && defined __cplusplus
 /**/#undef inline
 #endif
+
+/* C++ always has a good enough `const' */
+#if defined const && defined __cplusplus
+/**/#undef const
+#endif
+
 
 #ifdef __EMX__
 #include "os2_defines.h"

@@ -36,7 +36,7 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "error.h"
+#include "debug.h"
 #include "lyx_gui_misc.h"
 
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
@@ -153,7 +153,7 @@ LyXFont WhichFont(short type, int size)
 	f.decSize();
 	break;
      default:
-	fprintf(stderr, "Mathed Error: wrong font size: %d\n", size);
+	     lyxerr << "Mathed Error: wrong font size: " << size << endl;
 	break;
     }
     
@@ -700,7 +700,7 @@ void InsetFormula::InsetMotionNotify(int x, int y, int /*button*/)
 
 void InsetFormula::InsetKeyPress(XKeyEvent *)
 {
-   lyxerr.debug("Used InsetFormula::InsetKeyPress.", Error::MATHED);
+	lyxerr[Debug::MATHED] << "Used InsetFormula::InsetKeyPress." << endl;
 }
 
 // Special Mathed functions
@@ -1081,7 +1081,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	     mathcursor->setAccent(0);
 	 }
 	 if (c==0) {      // Dead key, do nothing 
-	     //fprintf(stderr, "deadkey");
+	     //lyxerr << "deadkey" << endl;
 	     break;
 	 } 
 	 if (isalpha(c)) {
@@ -1097,7 +1097,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	       varcode =  MathIsAlphaFont(f) ?  (MathedTextCodes)f:LM_TC_VAR;
 	    }
 
-//	     fprintf(stderr, "Varcode %d ", varcode);
+//	     lyxerr << "Varcode << vardoce;
 	    mathcursor->Insert(c, (greek_kb_flag) ? LM_TC_SYMB: varcode);
 	    varcode = LM_TC_MIN;
 	    if (greek_kb_flag<2) greek_kb_flag = 0;
@@ -1170,7 +1170,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	   } 
 	 UpdateLocal();
       } else {
-	// fprintf(stderr, "Closed by action %d\n", action);
+	// lyxerr << "Closed by action " << action << endl;
 	result =  false;
       }
    }

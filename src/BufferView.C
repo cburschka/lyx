@@ -33,7 +33,7 @@
 #include "lyxscreen.h"
 #include "up.xpm"
 #include "down.xpm"
-#include "error.h"
+#include "debug.h"
 #include "lyxdraw.h"
 #include "lyx_gui_misc.h"
 #include "BackStack.h"
@@ -90,7 +90,7 @@ BufferView::~BufferView()
 
 void BufferView::setBuffer(Buffer *b)
 {
-	lyxerr.debug("Setting buffer in BufferView");
+	lyxerr.debug() << "Setting buffer in BufferView" << endl;
 	if (_buffer) {
 		_buffer->InsetSleep();
 		_buffer->delUser(this);
@@ -112,7 +112,7 @@ void BufferView::setBuffer(Buffer *b)
 	}
 
 	if (_buffer) {
-		lyxerr.debug(string("  Buffer addr: ") + tostr(_buffer));
+		lyxerr.debug() << "  Buffer addr: " << _buffer << endl;
 		_buffer->addUser(this);
 		_owner->getMenus()->showMenus();
 		// If we don't have a text object for this, we make one
@@ -127,7 +127,7 @@ void BufferView::setBuffer(Buffer *b)
 		updateAllVisibleBufferRelatedPopups();
 	        _buffer->InsetWakeup();
 	} else {
-		lyxerr.debug("  No Buffer!");
+		lyxerr.debug() << "  No Buffer!" << endl;
 		_owner->getMenus()->hideMenus();
 		//workAreaExpose();
 		updateScrollbar();
@@ -166,7 +166,7 @@ static bool lgb_hack = false;
 
 void BufferView::redraw()
 {
-	lyxerr.debug("BufferView::redraw()");
+	lyxerr.debug() << "BufferView::redraw()" << endl;
 	lgb_hack = true;
 	fl_redraw_object(work_area);
 	fl_redraw_object(scrollbar);
@@ -255,7 +255,7 @@ void BufferView::updateScrollbar()
 
 void BufferView::redoCurrentBuffer()
 {
-	lyxerr.debug("BufferView::redoCurrentBuffer");
+	lyxerr.debug() << "BufferView::redoCurrentBuffer" << endl;
 	if (_buffer && _buffer->text) {
 		resize();
 		_owner->updateLayoutChoice();
@@ -265,7 +265,7 @@ void BufferView::redoCurrentBuffer()
 
 int BufferView::resizeCurrentBuffer()
 {
-	lyxerr.debug("resizeCurrentBuffer");
+	lyxerr.debug() << "resizeCurrentBuffer" << endl;
 	
 	LyXParagraph *par = 0;
 	LyXParagraph *selstartpar = 0;
@@ -1328,13 +1328,13 @@ void BufferView::CursorToggleCB(FL_OBJECT *ob, long)
 		Window tmpwin;
 		int tmp;
 		XGetInputFocus(fl_display, &tmpwin, &tmp);
-		lyxerr.debug(string("tmpwin: ") + tostr(tmpwin));
-		lyxerr.debug(string("window: ")
-			     + tostr(view->_owner->getForm()->window));
-		lyxerr.debug(string("work_area_focus: ")
-			     + tostr(view->work_area_focus));
-		lyxerr.debug(string("lyx_focus      : ")
-			     + tostr(view->lyx_focus));
+		if (lyxerr.debugging()) {
+			lyxerr << "tmpwin: " << tmpwin
+			       << "\nwindow: " << view->_owner->getForm()->window
+			       << "\nwork_area_focus: " << view->work_area_focus
+			       << "\nlyx_focus      : " << view->lyx_focus
+			       << endl;
+		}
 		if (tmpwin != view->_owner->getForm()->window) {
 			view->lyx_focus = false;
 			goto skip_timer;

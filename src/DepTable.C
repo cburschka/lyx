@@ -46,9 +46,9 @@ DepTable::DepTable(string const & f,
 		char tmp2[256];
 		sprintf(tmp1, "%lu", new_sum);
 		sprintf(tmp2, "%lu", old_sum);
-		lyxerr.debug("New file inserted in deplog: " + 
-			     file + " " +
-			     tmp1 + " " + tmp2);
+		lyxerr.debug() << "New file inserted in deplog: "
+			       << file << " "
+			       << tmp1 << " " << tmp2 << endl;
 	}
 	next = 0;
 }
@@ -79,8 +79,8 @@ void DepTable::update()
 			char tmp2[256];
 			sprintf(tmp1, "%lu", new_sum);
 			sprintf(tmp2, "%lu", old_sum);
-			lyxerr.debug("update: " + file + " " +
-				     tmp1 + " " + tmp2);
+			lyxerr.debug() << "update: " << file << " "
+				       << tmp1 << " " << tmp2 << endl;
 		}
 	}
 	if (next) next->update();
@@ -141,9 +141,9 @@ void DepTable::read(string const &f)
 				char tmp2[255];
 				sprintf(tmp1, "%lu", one);
 				sprintf(tmp2, "%lu", two);
-				lyxerr.debug(string("read dep: ") +
-					     nome + " " + tmp1 +
-					     " " + tmp2);
+				lyxerr.debug() << "read dep: "
+					       << nome << " " << tmp1
+					       << " " << tmp2 << endl;
 			}
 			insert(string(nome), false, one, two);
 		}
@@ -158,8 +158,8 @@ void DepTable::write(FILE * f)
 		char tmp2[255];
 		sprintf(tmp1, "%lu", new_sum);
 		sprintf(tmp2, "%lu", old_sum);
-		lyxerr.print("Write dep: " + file + " " +
-			     tmp1 + " " + tmp2);
+		lyxerr << "Write dep: " << file << " "
+		       << tmp1 << " " << tmp2 << endl;
 	}
 	fprintf(f, "%s %lu %lu\n", file.c_str(),
 		new_sum, old_sum);

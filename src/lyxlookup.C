@@ -1,12 +1,12 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich 
-*           Copyright (C) 1995-1998 The LyX team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich 
+ *           Copyright 1995-1999 The LyX team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
@@ -21,7 +21,7 @@
 #include <locale.h>
 #endif
 
-#include "error.h"
+#include "debug.h"
 
 static XIM xim;
 static XIC xic;
@@ -147,12 +147,12 @@ int LyXLookupString(XEvent *event,
 			return 0;
 		}
 		if (XFilterEvent (event, None)) {
-			//lyxerr.print("XFilterEvent");
+			//lyxerr <<"XFilterEvent");
 			*keysym_return = NoSymbol;
                         return 0;
 		}
 		if (event->type != KeyPress)
-			lyxerr.print("LyXLookupString: wrong event type" 
+			lyxerr <<"LyXLookupString: wrong event type" 
 				      +string(event->type));
 		Status status_return;
 		
@@ -161,18 +161,18 @@ int LyXLookupString(XEvent *event,
 				       &status_return);
 		switch(status_return) {
 		case XLookupBoth:
-			//lyxerr.print("XLookupBoth");
+			//lyxerr <<"XLookupBoth");
 			break;
 		case XLookupChars:
-			//lyxerr.print("XLookupChars");
+			//lyxerr <<"XLookupChars");
 			*keysym_return = NoSymbol;
 			break;
 		case XLookupKeySym:
-			//lyxerr.print("XLookupKeySym");
+			//lyxerr <<"XLookupKeySym");
 			result = 0;
 			break;
 		default:
-			//lyxerr.print("default");
+			//lyxerr <<"default");
 			*keysym_return = NoSymbol;
 			result = 0;
 			break;

@@ -16,7 +16,7 @@
 #endif
 
 #include "LString.h"
-#include "error.h"
+#include "debug.h"
 #include "lyx_sty.h"
 #include "lyxrc.h"
 #include "LaTeXFeatures.h"
@@ -244,13 +244,10 @@ string LaTeXFeatures::getTClassPreamble(BufferParams const &params)
 
 
 void LaTeXFeatures::showStruct(BufferParams &params) {
-	lyxerr.print("LyX needs the following commands when LaTeXing:");
+	lyxerr << "LyX needs the following commands when LaTeXing:"
 	// packs
-	lyxerr.print("***** Packages:");
-	lyxerr.print(getPackages(params));
-	lyxerr.print("***** Macros:");
-	lyxerr.print(getMacros(params));
-	lyxerr.print("***** Textclass stuff:");
-	lyxerr.print(getTClassPreamble(params));
-	lyxerr.print("***** done.");
+	       << "\n***** Packages:" << getPackages(params)
+	       << "\n***** Macros:" << getMacros(params)
+	       << "\n***** Textclass stuff:" << getTClassPreamble(params)
+	       << "\n***** done." << endl;
 }

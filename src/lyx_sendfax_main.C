@@ -3,7 +3,7 @@
 
 #include <cstdlib>
 #include FORMS_H_LOCATION
-#include "error.h"
+#include "debug.h"
 #include "lyx_sendfax.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
@@ -121,7 +121,7 @@ bool button_send(string const &fname, string const &sendcmd)
     subst(cmd, "$$Name",name);
     subst(cmd, "$$Phone",phone);
     subst(cmd, "$$FName",fname);
-    lyxerr.print("CMD: "+cmd);
+    lyxerr << "CMD: " << cmd << endl;
     Systemcalls one(Systemcalls::System, cmd);
     show_logfile(logfile,false);
     remove(logfile.c_str());

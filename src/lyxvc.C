@@ -6,7 +6,7 @@
 
 #include FORMS_H_LOCATION
 #include "lyxvc.h"
-#include "error.h"
+#include "debug.h"
 #include "lyx_gui_misc.h"
 #include "bufferlist.h"
 #include "support/syscall.h"
@@ -49,9 +49,10 @@ bool LyXVC::file_found_hook(string const & fn)
 	FileInfo f;
 	// Check if *,v exists.
 	tmp += ",v";
-	lyxerr.debug(string("Checking if file is under vc: ") + tmp, Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "Checking if file is under vc: "
+			     << tmp << endl;
 	if (f.newFile(tmp).readable()) {
-		lyxerr.debug("Yes it is under vc.", Error::LYXVC);
+		lyxerr[Debug::LYXVC] << "Yes it is under vc." << endl;
 		master = tmp;
 		backend = RCS_VCS;
 		scanMaster();
@@ -60,9 +61,10 @@ bool LyXVC::file_found_hook(string const & fn)
 		// Check if RCS/*,v exists.
 		tmp = AddName(AddPath(OnlyPath(fn), "RCS"), fn);
 		tmp += ",v";
-		lyxerr.debug("Checking if file is under vc: " + tmp, Error::LYXVC);
+		lyxerr[Debug::LYXVC] << "Checking if file is under vc: "
+				     << tmp << endl;
 		if (f.newFile(tmp).readable()) {
-			lyxerr.debug("Yes it is under vc.", Error::LYXVC);
+			lyxerr[Debug::LYXVC] << "Yes it is under vc."<< endl;
 			master = tmp;
 			backend = RCS_VCS;
 			scanMaster();
@@ -85,7 +87,7 @@ bool LyXVC::file_not_found_hook(string const &)
 
 void LyXVC::scanMaster()
 {
-	lyxerr.debug("LyXVC: This file is a VC file.", Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "LyXVC: This file is a VC file." << endl;
 
 	LyXLex lex(0, 0);
 	lex.setFile(master);
@@ -96,8 +98,8 @@ void LyXVC::scanMaster()
 		lex.next();
 		token = lex.GetString();
 		
-		lyxerr.debug("LyXVC::scanMaster: current lex text: `"
-				+token+"'", Error::LYXVC);
+		lyxerr[Debug::LYXVC] <<"LyXVC::scanMaster: current lex text: `"
+				     << token << "'" << endl;
 
 		if (token.empty())
 			continue;
@@ -136,7 +138,9 @@ void LyXVC::scanMaster()
 			read_enough = true;
 		} else {
 			// unexpected
-			lyxerr.debug("LyXVC::scanMaster(): unexpected token", Error::LYXVC);
+			lyxerr[Debug::LYXVC]
+				<< "LyXVC::scanMaster(): unexpected token"
+				<< endl;
 		}
 	}
 }
@@ -176,11 +180,11 @@ void LyXVC::registrer()
 		return;
 	}
 
-	lyxerr.debug("LyXVC: registrer", Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
 	string tmp = askForText(_("LyX VC: Initial description"),
 				 _("(no initial description)"));
 	if (tmp.empty()) {
-		lyxerr.debug("LyXVC: user cancelled", Error::LYXVC);
+		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
 		WriteAlert(_("Info"), _("This document has NOT been registered."));
 		return;
 	}
@@ -210,7 +214,7 @@ void LyXVC::checkIn()
 		return;
 	}
 
-	lyxerr.debug("LyXVC: checkIn", Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
 	_owner->getUser()->getOwner()->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
 	string tmp = askForText(_("LyX VC: Log Message"));
 	if (tmp.empty()) tmp = "(no log msg)";
@@ -222,7 +226,7 @@ void LyXVC::checkIn()
 
 void LyXVC::checkOut()
 {
-	lyxerr.debug("LyXVC: checkOut", Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
 	if (!_owner->isLyxClean() 
 	    && !AskQuestion(_("Changes in document:"),
 			   MakeDisplayPath(_owner->getFileName(),50),
@@ -239,7 +243,7 @@ void LyXVC::checkOut()
 
 void LyXVC::revert()
 {
-	lyxerr.debug("LyXVC: revert", Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "LyXVC: revert" << endl;
 	// Here we should check if the buffer is dirty. And if it is
 	// we should warn the user that reverting will discard all
 	// changes made since the last check in.
@@ -259,7 +263,7 @@ void LyXVC::revert()
 
 void LyXVC::undoLast()
 {
-	lyxerr.debug("LyXVC: undoLast", Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + getVersion() + " \""
 		    + OnlyFilename(_owner->getFileName()) + "\"");
 }
@@ -379,7 +383,7 @@ void LyXVC::showLog()
 
 int LyXVC::doVCCommand(string const & cmd)
 {
-	lyxerr.debug("doVCCommand: " + cmd, Error::LYXVC);
+	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
         Systemcalls one;
 	PathPush(_owner->filepath);
 	int ret = one.Startscript(Systemcalls::System, cmd);

@@ -7,7 +7,7 @@
  *	    Copyright (C) 1997 Asger Alstrup
  *           and the LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 #include <cmath>	// fabs()
@@ -18,7 +18,7 @@
 #endif
 
 #include "FontInfo.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
 #include "support/lstrings.h"
 
@@ -37,8 +37,8 @@ string FontInfo::getFontname(int size)
 		if (sizes[i] == 0) {
 			// Scalable font should not be considered close
 		} else if (sizes[i] == size) {
-			lyxerr.debug(string("Exact font match with\n")
-					      + strings[i], Error::FONT);
+			lyxerr[Debug::FONT] << "Exact font match with\n"
+					    << strings[i] << endl;
 			return strings[i];
 		} else if (fabs(sizes[i] - size - 0.1) < error) {
 			error = fabs(sizes[i] - size - 0.1);
@@ -49,8 +49,8 @@ string FontInfo::getFontname(int size)
 	if (scalable && lyxrc->use_scalable_fonts) {
 		// We can use scalable
 		string font = resize(strings[scaleindex], size);
-		lyxerr.debug("Using scalable font to get\n"
-			      + font, Error::FONT);
+		lyxerr[Debug::FONT] << "Using scalable font to get\n"
+				    << font << endl;
 		return font;
 	}
 
@@ -61,9 +61,9 @@ string FontInfo::getFontname(int size)
 	}
 
 	// We use the closest match
-	lyxerr.debug(string("Using closest font match to get size ")
-		     + tostr(size) 
-		     + " with\n" + strings[closestind], Error::FONT);
+	lyxerr[Debug::FONT] << "Using closest font match to get size "
+			    << size 
+			    << " with\n" << strings[closestind] << endl;
 	return strings[closestind];
 }
 
@@ -106,7 +106,7 @@ void FontInfo::query()
 		return;
 
 	if (pattern.empty()) {
-		lyxerr.print("Can not use empty font name for font query.");
+		lyxerr << "Can not use empty font name for font query." << endl;
 		queried = true;
 		return;
 	}

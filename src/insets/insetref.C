@@ -9,7 +9,7 @@
 #include FORMS_H_LOCATION 
 #include "insetref.h"
 #include "buffer.h"
-#include "error.h"
+#include "debug.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "LyXView.h"
 #include "lyxfunc.h"

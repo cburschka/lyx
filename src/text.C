@@ -27,6 +27,7 @@
 #include "buffer.h"
 #include "lyxscreen.h"
 #include "minibuffer.h"
+#include "debug.h"
 
 static const int LYX_PAPER_MARGIN = 20;
 
@@ -513,8 +514,7 @@ int LyXText::RightMargin(Row *row)
       }
    }
 
-   //fprintf(stderr,"rightmargin: %s\n", layout->rightmargin.c_str());
-   //fflush(stderr);
+   //lyxerr << "rightmargin: " << layout->rightmargin << endl;
    x += (lyxstyle.TextClass(parameters->textclass)->defaultfont.signedStringWidth(layout->rightmargin) * 4
 	 / (row->par->GetDepth() + 4));
    return x;
@@ -3255,8 +3255,7 @@ void LyXText::GetVisibleRow(LyXScreen &scr, int offset,
 	LyXFont font;
 	int maxdesc;
 	if (row_ptr->height <= 0) {
-		fprintf(stderr, "LYX_ERROR: row.height: %d \n",
-			row_ptr->height);
+		lyxerr << "LYX_ERROR: row.height: " << row_ptr->height << endl;
 		return;
 	}
 	left_margin = LabelEnd(row_ptr);

@@ -49,7 +49,7 @@
 #include "lastfiles.h"
 #include "support/FileInfo.h"
 #include "lyxscreen.h"
-#include "error.h"
+#include "debug.h"
 #include "support/syscall.h"
 #include "support/lyxlib.h"
 #include "lyxserver.h"
@@ -979,7 +979,7 @@ void MenuPrint(Buffer *buffer)
 
 void QuitLyX()
 {
-	lyxerr.debug("Running QuitLyX.");
+	lyxerr.debug() << "Running QuitLyX." << endl;
 
 	if (!bufferlist.QwriteAll())
 		return;
@@ -994,7 +994,7 @@ void QuitLyX()
 	bufferlist.closeAll();
 
 	// do any other cleanup procedures now
-	lyxerr.debug("Deleting tmp dir " + system_tempdir);
+	lyxerr.debug() << "Deleting tmp dir " << system_tempdir << endl;
 
 	DestroyLyXTmpDir(system_tempdir);
 
@@ -1091,9 +1091,9 @@ Buffer * NewLyxFile(string const & filename)
 		tmpname = split(tmpname, ':');
 	}
 #endif
-	lyxerr.debug("Arg is " + filename);
-	lyxerr.debug("Name is " + name);
-	lyxerr.debug("Template is " + tmpname);
+	lyxerr.debug() << "Arg is " << filename
+		       << "\nName is " << name
+		       << "\nTemplate is " << tmpname << endl;
 
 	// find a free buffer 
 	Buffer *tmpbuf = bufferlist.newFile(name,tmpname);
@@ -2946,19 +2946,19 @@ void DocumentApplyCB(FL_OBJECT *, long)
 	Spacing tmpSpacing = params->spacing;
 	switch(fl_get_choice(fd_form_document->choice_spacing)) {
 	case 1:
-		lyxerr.debug("Spacing: SINGLE");
+		lyxerr.debug() << "Spacing: SINGLE" << endl;
 		params->spacing.set(Spacing::Single);
 		break;
 	case 2:
-		lyxerr.debug("Spacing: ONEHALF");
+		lyxerr.debug() << "Spacing: ONEHALF" << endl;
 		params->spacing.set(Spacing::Onehalf);
 		break;
 	case 3:
-		lyxerr.debug("Spacing: DOUBLE");
+		lyxerr.debug() << "Spacing: DOUBLE" << endl;
 		params->spacing.set(Spacing::Double);
 		break;
 	case 4:
-		lyxerr.debug("Spacing: OTHER");
+		lyxerr.debug() << "Spacing: OTHER" << endl;
 		params->spacing.set(Spacing::Other, 
 				    fl_get_input(fd_form_document->input_spacing));
 		break;

@@ -21,6 +21,7 @@
 #include "math_iter.h"
 #include "math_parser.h"
 #include "support/lstrings.h"
+#include "debug.h"
 
 extern char const *latex_mathenv[];
 extern char *latex_mathspace[];
@@ -290,7 +291,8 @@ void MathParInset::Write(string &outf)
 		 outf += l->name;
 		 outf += ' ';
 	       } else { 
-		 fprintf(stderr, "Illegal symbol code[%u %d %d]", *s, ls, data.FCode());
+		       lyxerr << "Illegal symbol code[" << *s
+			      << " " << ls << " " << data.FCode() << "]";
 	       }
 	    } else {
 	       // Is there a standard logical XOR?
@@ -302,7 +304,8 @@ void MathParInset::Write(string &outf)
 		  if (*s=='}') brace--;
 	       }
 	       if (*s=='}' && data.FCode()==LM_TC_TEX && brace<0) 
-		 fprintf(stderr, "Math warning: Unexpected closing brace.\n");
+		       lyxerr <<"Math warning: Unexpected closing brace."
+			      << endl;
 	       else	       
 		 outf += (char) *s;
 	    }
@@ -348,7 +351,7 @@ void MathParInset::Write(string &outf)
 	       break;
 	    }
 	 default:
-	   fprintf(stderr, "WMath Error: unrecognized code[%d]", cx);
+		 lyxerr << "WMath Error: unrecognized code[" << cx << "]";
 	   return;
 	}     
    }

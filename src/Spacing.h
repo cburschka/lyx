@@ -1,18 +1,18 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 1996 Matthias Ettrich
-*           and the LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
-#ifndef _SPACING_H
-#define _SPACING_H
+#ifndef SPACING_H
+#define SPACING_H
 
-#include <stdio.h>
+#include <cstdio>
 
 ///
 class Spacing {

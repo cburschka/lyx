@@ -22,7 +22,7 @@
 #include FORMS_H_LOCATION
 #include "minibuffer.h"  
 #include "LyXView.h"
-#include "error.h"
+#include "debug.h"
 #include "gettext.h"
 
 extern bool keyseqUncomplete();
@@ -40,7 +40,7 @@ void MiniBuffer::TimerCB(FL_OBJECT *, long tmp)
 void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 {
 	MiniBuffer *obj = (MiniBuffer*)ob->u_vdata;
-	lyxerr.debug("Getting ready to execute: " + obj->cur_cmd);
+	lyxerr.debug() << "Getting ready to execute: " << obj->cur_cmd << endl;
 	fl_set_focus_object(obj->owner->getForm(),
 			    obj->owner->currentView()->getWorkArea());
 	if (obj->cur_cmd.empty()) { 
@@ -62,8 +62,8 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 		function = arg;
 		arg.erase();
 	}
-	lyxerr.debug("Function: " + function);
-	lyxerr.debug("Arg     : " + arg);
+	lyxerr.debug() << "Function: " << function
+		       << "\nArg     : " << arg << endl;
 	// Check if the name is valid (ale)
 	// No, let the dispatch functions handle that.
 	//int action = lyxaction.LookupFunc(function.c_str());
@@ -72,7 +72,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 	    // Dispatch only returns requested data for a few commands (ale)
 	string res=obj->owner->getLyXFunc()->Dispatch(function.c_str(),
 						       arg.c_str());
-	lyxerr.debug(string("Minibuffer Res: ") + res);
+	lyxerr.debug() << "Minibuffer Res: " << res << endl;
 /*	if (!res.empty())
 		if(obj->owner->getLyXFunc()->errorStat())
 			obj->Set(_("Error:"), _(res.c_str()), string(), 4);

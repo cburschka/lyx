@@ -41,7 +41,7 @@
 #include "minibuffer.h"
 #include "lyxscreen.h"
 #include "intl.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
@@ -121,12 +121,14 @@ void Menus::openByName(string const &menuName)
 		else if (menuName == _("Options"))   ShowOptionsMenu(menu_options, 0);
 		else if (menuName == _("Documents")) ShowBufferMenu(menu_buffer, 0);
 		else if (menuName == _("Help"))      ShowHelpMenu(menu_help, 0);
-		else lyxerr.print("The menu '" + menuName + "' is not available.");
+		else lyxerr << "The menu '" << menuName
+			    << "' is not available." << endl;
 	} else {
 		if (menuName == _("File")) 	     ShowFileMenu2(menu_file2, 0);
 		else if (menuName == _("Options"))   ShowOptionsMenu(menu_options2, 0);
 		else if (menuName == _("Help"))      ShowHelpMenu(menu_help2, 0);
-		else lyxerr.print("The menu '" + menuName + "' is not available.");
+		else lyxerr << "The menu '" << menuName
+			    << "' is not available." << endl;
 	}
 }
 

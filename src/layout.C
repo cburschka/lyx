@@ -35,7 +35,7 @@
 #include "lyxlex.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
-#include "error.h"
+#include "debug.h"
 #include "gettext.h"
 
 /* Global variable: textclass table */
@@ -44,15 +44,15 @@ LyXTextClassList lyxstyle;
 // Reads the style files
 void LyXSetStyle()
 {
-	lyxerr.debug("LyXSetStyle: parsing configuration...");
+	lyxerr.debug() << "LyXSetStyle: parsing configuration..." << endl;
 	
 	if (!lyxstyle.Read()) {
-		lyxerr.print("LyXSetStyle: an error occured during parsing.");
-		lyxerr.print("             Exiting.");
+		lyxerr << "LyXSetStyle: an error occured during parsing.\n"
+		       << "             Exiting." << endl;
 		exit(1);
 	}
 
-	lyxerr.debug("LyXSetStyle: configuration parsed.");
+	lyxerr.debug() << "LyXSetStyle: configuration parsed." << endl;
 }
 
 
@@ -814,11 +814,12 @@ LyXTextClass::~LyXTextClass()
 int LyXTextClass::Read (string const &filename, LyXLayoutList *list)
 {
 	if (!list)
-		lyxerr.debug("Reading textclass "
-			     + MakeDisplayPath(filename), Error::TCLASS);
+		lyxerr[Debug::TCLASS] << "Reading textclass "
+				      << MakeDisplayPath(filename)
+				      << endl;
 	else 
-		lyxerr.debug("Reading input file "
-			     + MakeDisplayPath(filename), Error::TCLASS);
+		lyxerr[Debug::TCLASS] << "Reading input file "
+				      << MakeDisplayPath(filename) << endl;
 
 	LyXLex lexrc(layoutTags, sizeof(layoutTags)/sizeof(keyword_item));
 	bool error = false;
@@ -892,7 +893,9 @@ int LyXTextClass::Read (string const &filename, LyXLayoutList *list)
 					tmpl->name = name;
 				}
 
-				lyxerr.debug("  Reading style "+tmpl->name, Error::TCLASS);
+				lyxerr[Debug::TCLASS] << "  Reading style "
+						      << tmpl->name
+						      << endl;
 
 				if (!tmpl->Read(lexrc, l)) {
 					// Resolve fonts
@@ -1072,12 +1075,14 @@ int LyXTextClass::Read (string const &filename, LyXLayoutList *list)
 			number_of_defined_layouts = l->GetNum();
 			delete l;
 		}
-		lyxerr.debug("Finished reading textclass " 
-			     + MakeDisplayPath(filename), Error::TCLASS);
+		lyxerr[Debug::TCLASS] << "Finished reading textclass " 
+				      << MakeDisplayPath(filename)
+				      << endl;
 	}
 	else
-		lyxerr.debug("Finished reading input file " 
-			     + MakeDisplayPath(filename), Error::TCLASS);
+		lyxerr[Debug::TCLASS] << "Finished reading input file " 
+				      << MakeDisplayPath(filename)
+				      << endl;
 
 	return error;
 }
@@ -1093,11 +1098,11 @@ void LyXTextClass::load()
 	string real_file = LibFileSearch("layouts", name, "layout");
 
 	if (Read(real_file)) {
-		lyxerr.print("Error reading `"
-			     + MakeDisplayPath(real_file) + '\'');
-		lyxerr.print("(Check `" + name + "')");
-		lyxerr.print("Check your installation and "
-			     "try Options/Reconfigure...");
+		lyxerr << "Error reading `"
+		       << MakeDisplayPath(real_file)
+		       << "'\n(Check `" << name
+		       << "')\nCheck your installation and "
+			"try Options/Reconfigure..." << endl;
 	}
 	loaded = true;
 }
@@ -1274,12 +1279,13 @@ bool LyXTextClassList::Read ()
 {
 	LyXLex lex(0, 0);
 	string real_file = LibFileSearch("", "textclass.lst");
-	lyxerr.debug("Reading textclasses from "+real_file,Error::TCLASS);
+	lyxerr[Debug::TCLASS] << "Reading textclasses from "
+			      << real_file << endl;
 
 	if (real_file.empty()) {
-		lyxerr.print("LyXTextClassList::Read: unable to find "
-			      "textclass file  `" +
-			      MakeDisplayPath(real_file, 1000) + "'. Exiting.");
+		lyxerr << "LyXTextClassList::Read: unable to find "
+			"textclass file  `" << MakeDisplayPath(real_file, 1000)
+		       << "'. Exiting." << endl;
 
 		WriteAlert(_("LyX wasn't able to find its layout descriptions!"),
 			   _("Check that the file \"textclass.lst\""),
@@ -1293,10 +1299,10 @@ bool LyXTextClassList::Read ()
 	lex.setFile(real_file);
 	
 	if (!lex.IsOK()) {
-		lyxerr.print("LyXTextClassList::Read: unable to open "
-			      "textclass file  `" +
-			      MakeDisplayPath(real_file, 1000) + '\'');
-		lyxerr.print("Check your installation. LyX can't continue.");
+		lyxerr << "LyXTextClassList::Read: unable to open "
+			"textclass file  `" << MakeDisplayPath(real_file, 1000)
+		       << "\'\nCheck your installation. LyX can't continue."
+		       << endl;
  		return false;
 	}
 	bool finished = false;
@@ -1311,15 +1317,15 @@ bool LyXTextClassList::Read ()
 			break;
 		default:
 			fname = lex.GetString();
-			lyxerr.debug("Fname: " + fname, Error::TCLASS);
+			lyxerr[Debug::TCLASS] << "Fname: " << fname << endl;
 			if (lex.next()) {
 				clname = lex.GetString();
-				lyxerr.debug("Clname: " + clname,
-					     Error::TCLASS);
+				lyxerr[Debug::TCLASS]
+					<< "Clname: " << clname << endl;
 				if (lex.next()) {
 					      desc = lex.GetString();
-					      lyxerr.debug("Desc: " + desc,
-							   Error::TCLASS);
+					      lyxerr[Debug::TCLASS]
+						      << "Desc: " << desc << endl;
 					      // This code is run when we have
 					      // fname, clname and desc
 					      tmpl =new LyXTextClass(fname,
@@ -1327,7 +1333,7 @@ bool LyXTextClassList::Read ()
 								     desc);
 					      Add (tmpl);
 					      if (lyxerr.
-						  debugging(Error::TCLASS)) {
+						  debugging(Debug::TCLASS)) {
 					            tmpl->load();
 					      }
 				}
@@ -1336,7 +1342,7 @@ bool LyXTextClassList::Read ()
 	}
 	
 	if (num_textclass == 0) {
-		lyxerr.print("LyXTextClassList::Read: no textclass found!");
+		lyxerr << "LyXTextClassList::Read: no textclass found!" << endl;
 		WriteAlert(_("LyX wasn't able to find any layout description!"),
 			   _("Check the contents of  the file \"textclass.lst\""),
 			   _("Sorry, has to exit :-("));

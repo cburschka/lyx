@@ -4,10 +4,10 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team
  *
- *======================================================*/
+ * ======================================================*/
 
 #ifndef LYXSCREEN_H
 #define LYXSCREEN_H

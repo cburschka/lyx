@@ -471,6 +471,7 @@ private:
 	XFontStruct* getXFontstruct() const;
 };
 
+ostream & operator<<(ostream &, LyXFont::FONT_MISC_STATE);
 
 inline LyXFont::LyXFont()
 {

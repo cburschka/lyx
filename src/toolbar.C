@@ -1,15 +1,15 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*           This file is Copyright 1996-1998
-*           Lars Gullik Bjønnes
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ *           This file is Copyright 1996-1998
+ *           Lars Gullik Bjønnes
+ *
+ * ======================================================*/
 
 //  Added pseudo-action handling, asierra 180296
 
@@ -25,7 +25,7 @@
 #include "toolbar.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
-#include "error.h"
+#include "debug.h"
 #include "combox.h"
 #include "lyx_cb.h"
 #include "LyXView.h"
@@ -127,8 +127,8 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 	toolbarItem *tmplist = rct.toollist;
 	while (tmplist != 0) {
 		add(tmplist->action);
-		lyxerr.debug(string("tool action: ") + tostr(tmplist->action),
-			      Error::TOOLBAR);
+		lyxerr[Debug::TOOLBAR] << "tool action: "
+				       << tmplist->action << endl;
 		tmplist=tmplist->next;
 	}
 }
@@ -197,7 +197,7 @@ void Toolbar::ToolbarCB(FL_OBJECT *ob, long ac)
 	
 	string res = t->owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
-		lyxerr.debug(res, Error::TOOLBAR); 
+		lyxerr[Debug::TOOLBAR] << res << endl;
 }
 
 
@@ -424,7 +424,7 @@ void Toolbar::add(int action, bool doclean)
 	if (!doclean && owner) {
 		// first «hide» the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
-		lyxerr.print("Toolbar::add: «hide» the toolbar buttons.");
+		lyxerr << "Toolbar::add: «hide» the toolbar buttons." << endl;
 		toolbarItem *item, *tmp=0;
 		item = toollist;
 
@@ -461,7 +461,7 @@ void Toolbar::add(int action, bool doclean)
 		help = lyxaction.helpText(act);
 		help += " ";
 		help += arg;
-		lyxerr.debug(string("Pseudo action ") + tostr(action));
+		lyxerr.debug() << "Pseudo action " << action << endl;
 	} else {
 		pixmap = getPixmap((kb_action)action);
 		help = lyxaction.helpText((kb_action)action);
@@ -497,8 +497,8 @@ void Toolbar::add(string const & func, bool doclean)
 	int tf = lyxaction.LookupFunc(func.c_str());
 
 	if (tf == -1){
-		lyxerr.print("Toolbar::add: no LyX command called`"
-				+func+"'exists!"); 
+		lyxerr << "Toolbar::add: no LyX command called`"
+		       << func << "'exists!" << endl; 
 	} else {
 		add(tf, doclean);
 	}
@@ -520,22 +520,22 @@ void Toolbar::clean()
 		delete item;
 		item = tmp;
 	}
-	//lyxerr.print(string("Combox: ") + int(combox));
+	lyxerr[Debug::TOOLBAR] << "Combox: " << combox << endl;
 	if (combox) {
 		delete combox;
 		combox = 0;
 	}
 	if (owner)
 		fl_unfreeze_form(owner->getForm());
-	lyxerr.debug("toolbar cleaned",Error::TOOLBAR);
+	lyxerr[Debug::TOOLBAR] << "toolbar cleaned" << endl;
 	cleaned = true;
 }
 
 
 void Toolbar::push(int nth)
 {
-	lyxerr.debug(string("Toolbar::push: trying to trigger no `")+ tostr(nth)+'\'',
-		      Error::TOOLBAR);
+	lyxerr[Debug::TOOLBAR] << "Toolbar::push: trying to trigger no `"
+			       << nth << '\'' << endl;
 	
 	if (nth == 0) return;
 
@@ -558,8 +558,8 @@ void Toolbar::read(LyXLex &lex)
 {
 	//consistency check
 	if (lex.GetString() != "\\begin_toolbar")
-		lyxerr.print("Toolbar::read: ERROR wrong token:`"
-				+lex.GetString()+'\''); 
+		lyxerr << "Toolbar::read: ERROR wrong token:`"
+		       << lex.GetString() << '\'' << endl;
 
 	clean();
 	string func;
@@ -567,20 +567,21 @@ void Toolbar::read(LyXLex &lex)
 	
 	lex.pushTable(toolTags, TO_LAST - 1);
 
-	if (lyxerr.debugging(Error::LEX_PARSER))
+	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable();
 	
 	while (lex.IsOK() && !quit) {
 		
-		lyxerr.debug("Toolbar::read: current lex text: `"
-				+lex.GetString()+'\'',Error::TOOLBAR);
+		lyxerr[Debug::TOOLBAR] << "Toolbar::read: current lex text: `"
+				       << lex.GetString() << '\'' << endl;
 
 		switch(lex.lex()) {
 		  case TO_ADD:
 			  if (lex.EatLine()) {
 				  func = lex.GetString();
-				  lyxerr.debug("Toolbar::read TO_ADD func: `"
-					       + func + "'", Error::TOOLBAR);
+				  lyxerr[Debug::TOOLBAR]
+					  << "Toolbar::read TO_ADD func: `"
+					  << func << "'" << endl;
 				  add(func);
 			  }
 			  break;

@@ -4,6 +4,8 @@ libsupport_a_LIBADD = @LIBOBJS@
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../
 libsupport_a_SOURCES = \
+	DebugStream.C \
+	DebugStream.h \
 	FileInfo.C \
 	FileInfo.h \
 	LAssert.h \

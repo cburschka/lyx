@@ -26,7 +26,7 @@
 #include "lyxfr1.h"
 #include "lyxfunc.h"
 #include "lyxscreen.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "LyXView.h" // only because of form_main

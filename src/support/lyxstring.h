@@ -437,9 +437,14 @@ const_reference> const_reverse_iterator;
 	
 	///
 	lyxstring & replace(iterator i, iterator i2, iterator j, iterator j2);
-	
+
 	/// Erase n chars from position i.
 	lyxstring & erase(size_type i = 0, size_type n = npos);
+
+	///
+	lyxstring & clear() {
+		return erase(0, npos);
+	}
 
 	///
 	iterator erase(iterator i);

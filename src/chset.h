@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _Chset_h_
-#define _Chset_h_
+#ifndef CHSET_H
+#define CHSET_H
 
 #ifdef __GNUG__
 #pragma interface

@@ -28,8 +28,13 @@
 #include "math_iter.h"
 #include "math_inset.h"
 #include "support/lstrings.h"
-#include "error.h"
+#include "debug.h"
 
+
+ostream & operator<<(ostream & o, MathedTextCodes mtc)
+{
+	return o << int(mtc);
+}
 
 enum MathedMacroFlag {
     MMF_Env=1,
@@ -37,6 +42,10 @@ enum MathedMacroFlag {
     MMF_Edit=4
 };
 
+ostream & operator<<(ostream & o, MathedMacroFlag mmf)
+{
+	return o << int(mmf);
+}
 
 extern GC mathGC, mathFrameGC, latexGC;
 extern int mathed_string_width(short type, int style, byte const* s, int ls);
@@ -158,9 +167,8 @@ void MathMacro::Write(FILE *file)
 void MathMacro::Write(string &file)
 {
     if (tmplate->flags & MMF_Exp) {
-	lyxerr.debug(string("Expand ")+ tostr(tmplate->flags)
-		     + ' ' + tostr(MMF_Exp), 
-		     Error::MATHED);
+	    lyxerr[Debug::MATHED] << "Expand " << tmplate->flags
+				  << ' ' << MMF_Exp << endl; 
 	tmplate->update(this);
 	tmplate->Write(file);
     } else {
@@ -452,8 +460,8 @@ void MathMacroTable::addTemplate(MathMacroTemplate *m)
     if (num_macros<max_macros)
       macro_table[num_macros++] = m;
     else
-      lyxerr.print("Error (MathMacroTable::addTemplate): "
-		   "Macro table exhausted!");
+	    lyxerr << "Error (MathMacroTable::addTemplate): "
+		    "Macro table exhausted!" << endl;
 }
 
 
@@ -471,7 +479,7 @@ void MathMacroTable::builtinMacros()
     
     built = true;
     
-    lyxerr.debug("Building macros", Error::MATHED);
+    lyxerr[Debug::MATHED] << "Building macros" << endl;
     
     // This macro doesn't have arguments
     m = new MathMacroTemplate("notin");  // this leaks

@@ -19,7 +19,7 @@
 #include "support/FileInfo.h"
 #include "lastfiles.h"
 #include "support/filetools.h"
-#include "error.h"
+#include "debug.h"
 
 LastFiles::LastFiles(string const & filename, bool st, char num)
 	: dostat(st)
@@ -41,8 +41,9 @@ void LastFiles::setNumberOfFiles(char no)
 	if (1 <= no && no <= ABSOLUTEMAXLASTFILES)
 		num_files = no;
 	else {
-		lyxerr.print(string("LyX: lastfiles: too many files\n"
-			"\tdefault (=") + tostr(DEFAULTFILES) + ") used.");
+		lyxerr << "LyX: lastfiles: too many files\n"
+			"\tdefault (=" << int(DEFAULTFILES) // int() only because of anon enum
+		       << ") used." << endl;
 		num_files = DEFAULTFILES;
 	}
 }
@@ -95,8 +96,8 @@ void LastFiles::writeFile(string const & filename) const
  				fprintf(fd, "\"%s\"\n", files[i].c_str());
  		}
 	} else
-		lyxerr.print("LyX: Warning: unable to save LastFiles: "
-			      +	filename);
+		lyxerr << "LyX: Warning: unable to save LastFiles: "
+		       << filename << endl;
 }
 
 

@@ -4,7 +4,7 @@
    Author : chb, 30.Oct.1995
    Docu   : see kbmap.C
    Purpose: class definitions for XKeyEvent keymap handling
-   \* ======================================================================= */
+   \* ==================================================================== */
 
 #ifndef KBMAP_H
 #define KBMAP_H

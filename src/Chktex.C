@@ -24,7 +24,7 @@
 #include "support/filetools.h"
 #include "lyxlex.h"
 #include "support/FileInfo.h"
-#include "error.h"
+#include "debug.h"
 #include "support/syscall.h"
 #include "support/syscontr.h"
 #include "pathstack.h"

@@ -16,7 +16,7 @@
 
 #include "insetquotes.h"
 #include "support/lyxlib.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "buffer.h"
@@ -92,8 +92,8 @@ void InsetQuotes::ParseString(string str)
 {
 	int i;
 	if (str.length() != 3) {
-		lyxerr.print("ERROR (InsetQuotes::InsetQuotes):"
-			      " bad string length.");
+		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+			" bad string length." << endl;
 		str = "eld";
 	}
 
@@ -104,8 +104,8 @@ void InsetQuotes::ParseString(string str)
 		}
 	}
 	if (i>=6) {
-		lyxerr.print("ERROR (InsetQuotes::InsetQuotes):"
-			      " bad language specification.");
+		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+			" bad language specification." << endl;
 		language = InsetQuotes::EnglishQ; 
 	}
 
@@ -116,8 +116,8 @@ void InsetQuotes::ParseString(string str)
 		}
 	}
 	if (i>=2) {
-		lyxerr.print("ERROR (InsetQuotes::InsetQuotes):"
-			      " bad side specification.");
+		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+			" bad side specification." << endl;
 		side = InsetQuotes::LeftQ; 
 	}
 
@@ -128,8 +128,8 @@ void InsetQuotes::ParseString(string str)
 		}
 	}
 	if (i>=2) {
-		lyxerr.print("ERROR (InsetQuotes::InsetQuotes):"
-			      " bad times specification.");
+		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+			" bad times specification." << endl;
 		times = InsetQuotes::DoubleQ; 
 	}
 }

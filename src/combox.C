@@ -38,7 +38,7 @@
 #include "combox.h"
 #include <cstring>
 
-#include "error.h"
+#include "debug.h"
 
 Combox::Combox(combox_type t): type(t)
 {
@@ -73,20 +73,20 @@ void Combox::clear()
 
 void Combox::remove()
 {
-	//lyxerr.print(string("Button: ") + int(button));
+	lyxerr.debug() << "Button: " << button << endl;
 	if (button) {
 		fl_delete_object(button);
 		fl_free_object(button); 
 	}
 	
-	//lyxerr.print(string("Label: ") + int(label));
+	lyxerr.debug() << "Label: " << label << endl;
 	if (label && label!=button) {
 		fl_delete_object(label);
 		fl_free_object(label); 
 	}
 	
-	//lyxerr.print(string("Form: ") + int(form));
-	//lyxerr.print(string("Browser: ") + int(browser));
+	lyxerr.debug() << "Form: " << form << endl;
+	lyxerr.debug() << "Browser: " << browser << endl;
 	if (form && browser) {
 	   fl_delete_object(browser);
 	   fl_free_object(browser);

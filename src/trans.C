@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <cstdio>
+//#include <cstdio>
 
 #ifdef __GNUG__
 #pragma implementation "trans.h"
@@ -11,7 +11,7 @@
 #include "support/filetools.h"
 #include "tex-strings.h"
 #include "lyxlex.h"
-#include "error.h"
+#include "debug.h"
 #include "trans_mgr.h"
 
 
@@ -198,19 +198,21 @@ int Trans::Load(LyXLex &lex)
 		switch(lex.lex()) {
 		case KMOD:
 		{
-			if (lyxerr.debugging(Error::KBMAP))
-				fprintf(stderr,"KMOD:	%s\n",lex.text());
+			if (lyxerr.debugging(Debug::KBMAP))
+				lyxerr << "KMOD:\t" << lex.text() << endl;
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "key     `%s'\n", lex.text());
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "key\t`" << lex.text()
+					       << "'" << endl;
 			} else
 				return -1;
 			
 			string keys = lex.GetString();
 
 			if (lex.next(true)) {
-				if ( lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "accent     `%s'\n", lex.text());
+				if ( lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "accent\t`" << lex.text()
+					       << "'" << endl;
 			} else
 				return -1;
 
@@ -220,10 +222,9 @@ int Trans::Load(LyXLex &lex)
 				return -1;
 
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr,
-						"allowed     `%s'\n",
-						lex.text());
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "allowed\t`" << lex.text()
+					       << "'" << endl;
 			} else
 				return -1;
 
@@ -235,10 +236,10 @@ int Trans::Load(LyXLex &lex)
 		case KCOMB: {
 			const char *str;
 
-			lyxerr.debug("KCOMB:",Error::KBMAP);
+			lyxerr[Debug::KBMAP] << "KCOMB:" << endl;
 			if (lex.next(true)) {
 				str=lex.text();
-				lyxerr.debug(str,Error::KBMAP);
+				lyxerr[Debug::KBMAP] << str << endl;
 			} else
 				return -1;
 			
@@ -247,7 +248,7 @@ int Trans::Load(LyXLex &lex)
 
 			if (lex.next(true)) {
 				str=lex.text();
-				lyxerr.debug(str,Error::KBMAP);
+				lyxerr[Debug::KBMAP] << str << endl;
 			} else
 				return -1;
 
@@ -268,7 +269,8 @@ int Trans::Load(LyXLex &lex)
 
 			if (lex.next()) {
 				allowed=lex.GetString();
-				lyxerr.debug("allowed: "+allowed,Error::KBMAP);
+				lyxerr[Debug::KBMAP] << "allowed: "
+						     << allowed << endl;
 			} else
 				return -1;
 
@@ -279,12 +281,13 @@ int Trans::Load(LyXLex &lex)
 			char key_from;
 			char *string_to;
 
-			if (lyxerr.debugging(Error::KBMAP))
-				fprintf(stderr, "KMAP: %s\n", lex.text());
+			if (lyxerr.debugging(Debug::KBMAP))
+				lyxerr << "KMAP:\t" << lex.text() << endl;
 			if (lex.next(true)) {
 				key_from=lex.text()[0];
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "     `%s'\n", lex.text());
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "\t`" << lex.text() << "'"
+					       << endl;
 			} else
 				return -1;
 
@@ -292,8 +295,9 @@ int Trans::Load(LyXLex &lex)
 				char const *t = lex.text();
 				string_to = strcpy(new char[strlen(t)+1],t);
 				keymap_[(unsigned char)key_from]=string_to;
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "     `%s'\n", string_to);
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "\t`" << string_to << "'"
+					       << endl;
 			} else
 				return -1;
 
@@ -304,25 +308,28 @@ int Trans::Load(LyXLex &lex)
 			char key;
 			const char *str;
 
-			if (lyxerr.debugging(Error::KBMAP))
-				fprintf(stderr, "KXMOD: %s\n", lex.text());
+			if (lyxerr.debugging(Debug::KBMAP))
+				lyxerr << "KXMOD:\t" << lex.text() << endl;
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "     `%s'\n", lex.text());
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "\t`" << lex.text() << "'"
+					       << endl;
 				accent = getkeymod(lex.GetString());
 			} else
 				return -1;
 
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "      `%s'\n", lex.text());
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "\t`" << lex.text() << "'"
+					       << endl;
 				key=lex.text()[0];
 			} else
 				return -1;
 
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Error::KBMAP))
-					fprintf(stderr, "      `%s'\n", lex.text());
+				if (lyxerr.debugging(Debug::KBMAP))
+					lyxerr << "\t`" << lex.text() << "'"
+					       << endl;
 				str=lex.text();
 			} else
 				return -1;
@@ -331,7 +338,7 @@ int Trans::Load(LyXLex &lex)
 			break;
 		}
 		case LyXLex::LEX_FEOF:
-			lyxerr.debug("End of parsing",Error::LEX_PARSER);
+			lyxerr[Debug::PARSER] << "End of parsing" << endl;
 			break;
 		default:
 			lex.printError("ParseKeymapFile: "
@@ -393,13 +400,14 @@ tex_accent getkeymod(string const &p)
 	/* return modifier - decoded from p and update p */
 {
 	for (int i = 1; i <= TEX_MAX_ACCENT; i++) {
-		if (lyxerr.debugging(Error::KBMAP))
-			fprintf(stderr,
-				"p = %s, lyx_accent_table[%d].name = `%s'\n",
-				p.c_str(), i, lyx_accent_table[i].name);
+		if (lyxerr.debugging(Debug::KBMAP))
+			lyxerr << "p = " << p
+			       << ", lyx_accent_table[" << i
+			       <<"].name = `" << lyx_accent_table[i].name
+			       << "'" << endl;
 		
 		if ( lyx_accent_table[i].name && contains(p, lyx_accent_table[i].name)) {
-			lyxerr.debug("Found it!",Error::KBMAP);
+			lyxerr[Debug::KBMAP] << "Found it!" << endl;
 			return (tex_accent)i;
 		}
 	}

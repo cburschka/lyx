@@ -7,7 +7,7 @@
 #include "chset.h"
 #include "support/filetools.h"
 #include "lyxlex.h"
-#include "error.h"
+#include "debug.h"
 
 
 CharacterSet::CharacterSet()
@@ -43,11 +43,12 @@ bool CharacterSet::loadFile(const string& fname)
 		return true;	// ascii 7-bit
 
 	// open definition file
-	lyxerr.debug("Opening keymap file "+ fname+ ".cdef",Error::KBMAP);
+	lyxerr[Debug::KBMAP]
+		<< "Opening keymap file " << fname << ".cdef" << endl;
 	string filename = LibFileSearch("kbd", fname.c_str(), "cdef");
 	FilePtr f(filename, FilePtr::read);
 	if (filename.empty() || !f()) {
-		lyxerr.print("Unable to open keymap file");
+		lyxerr << "Unable to open keymap file" << endl;
 		return true;		// no definition, use 7-bit ascii
 	}
 
@@ -65,8 +66,8 @@ bool CharacterSet::loadFile(const string& fname)
 		
 		switch(lex.lex()){
 		case LyXLex::LEX_FEOF :
-			lyxerr.debug("End of parsing of .cdef file",
-				     Error::KBMAP);
+			lyxerr[Debug::KBMAP] << "End of parsing of .cdef file"
+					     << endl;
 			break;
 		default:
 			// Get Integer
@@ -86,9 +87,9 @@ bool CharacterSet::loadFile(const string& fname)
 			tempc->next=map_;
 			map_=tempc;
 	
-			if (lyxerr.debugging(Error::KBMAP))
-				fprintf(stderr, "Chardef: %d to [%s]\n", 
-					n, tempc->str.c_str());
+			if (lyxerr.debugging(Debug::KBMAP))
+				lyxerr << "Chardef: " << n
+				       << " to [" << tempc->str << "]" << endl;
 			break;
 		}
 	}
@@ -103,7 +104,9 @@ bool CharacterSet::encodeString(string& str)
     
 	while(t) {
 		if (t->str==str) {
-			str = tostr(t->ic);
+			str.erase();
+			str += t->ic;
+			//str = tostr(t->ic);
 			break;
 		}
 		t=t->next;

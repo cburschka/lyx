@@ -9,7 +9,7 @@
 #include FORMS_H_LOCATION  
 #include "insetindex.h"
 #include "buffer.h"
-#include "error.h"
+#include "debug.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "LString.h"

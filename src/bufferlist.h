@@ -1,24 +1,25 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*
-*           This file is Copyleft (C) 1996
-*           Lars Gullik Bjønnes
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team
+ *
+ *           This file is Copyright 1996
+ *           Lars Gullik Bjønnes
+ *
+ * ======================================================*/
 
-#ifndef _BUFFER_LIST_H_
-#define _BUFFER_LIST_H_
+#ifndef BUFFER_LIST_H
+#define BUFFER_LIST_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "buffer.h"
-#include "error.h"
+#include "debug.h"
 
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind

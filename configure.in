@@ -57,14 +57,8 @@ AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
 AC_PROG_CXXCPP
 
-### Compiler Characteristics
-AC_C_CONST
-AC_C_INLINE
-
 ### check the size of pointers and ints
 # the defaults are given for cross compilation.
-AC_CHECK_SIZEOF(void *, 4)
-AC_CHECK_SIZEOF(int, 4)
 LYX_CXX_MUTABLE
 LYX_CXX_PARTIAL
 LYX_CXX_EXPLICIT
@@ -72,9 +66,6 @@ LYX_CXX_STL_STACK
 LYX_CXX_STL_STRING
 LYX_CXX_NAMESPACES
 LYX_CXX_RTTI
-
-### check for compiler brokenness
-LYX_GXX_STRENGTH_REDUCE
 
 ### Libarary Files
 dnl by testing these we check if it is ok to have
@@ -147,6 +138,10 @@ fi
 ### Setup GNU gettext
 dnl GNU gettext is written in C
 AC_LANG_C
+# Some tests that may be useful for gettext
+AC_C_CONST
+AC_C_INLINE
+# Do the real setup now
 AM_GNU_GETTEXT
 # a hack for those who try to change LyX, but do not have gettext installed 
 case  "${XGETTEXT}" in 

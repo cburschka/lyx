@@ -19,7 +19,7 @@
 #include "gettext.h"
 #include "definitions.h"
 #include "lyxfont.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
 #include "lyxdraw.h"
@@ -124,16 +124,16 @@ LyXFont& LyXFont::decSize()
 	case SIZE_SCRIPT:       setSize(SIZE_TINY);     break;
 	case SIZE_TINY:         break;
 	case INCREASE_SIZE:
-		lyxerr.print("Can't LyXFont::decSize on INCREASE_SIZE");
+		lyxerr << "Can't LyXFont::decSize on INCREASE_SIZE" << endl;
 		break;
 	case DECREASE_SIZE:
-		lyxerr.print("Can't LyXFont::decSize on DECREASE_SIZE");
+		lyxerr <<"Can't LyXFont::decSize on DECREASE_SIZE" << endl;
 		break;
 	case INHERIT_SIZE:
-		lyxerr.print("Can't LyXFont::decSize on INHERIT_SIZE");
+		lyxerr <<"Can't LyXFont::decSize on INHERIT_SIZE" << endl;
 		break;
 	case IGNORE_SIZE:
-		lyxerr.print("Can't LyXFont::decSize on IGNORE_SIZE");
+		lyxerr <<"Can't LyXFont::decSize on IGNORE_SIZE" << endl;
 		break;
 	}
 	return (*this);
@@ -155,16 +155,16 @@ LyXFont& LyXFont::incSize()
 	case SIZE_SCRIPT:       setSize(SIZE_FOOTNOTE); break;
 	case SIZE_TINY:         setSize(SIZE_SCRIPT);   break;
 	case INCREASE_SIZE:
-		lyxerr.print("Can't LyXFont::incSize on INCREASE_SIZE");
+		lyxerr <<"Can't LyXFont::incSize on INCREASE_SIZE" << endl;
 		break;
 	case DECREASE_SIZE:
-		lyxerr.print("Can't LyXFont::incSize on DECREASE_SIZE");
+		lyxerr <<"Can't LyXFont::incSize on DECREASE_SIZE" << endl;
 		break;
 	case INHERIT_SIZE:
-		lyxerr.print("Can't LyXFont::incSize on INHERIT_SIZE");
+		lyxerr <<"Can't LyXFont::incSize on INHERIT_SIZE" << endl;
 		break;
 	case IGNORE_SIZE:
-		lyxerr.print("Can't LyXFont::incSize on IGNORE_SIZE");
+		lyxerr <<"Can't LyXFont::incSize on IGNORE_SIZE" << endl;
 		break;
 	}
 	return (*this);
@@ -181,8 +181,8 @@ LyXFont::FONT_MISC_STATE LyXFont::setMisc(FONT_MISC_STATE newfont,
 		else if (org == OFF)
 			return ON;
 		else {
-			lyxerr.print("LyXFont::setMisc: Need state"
-				      " ON or OFF to toggle. Setting to ON");
+			lyxerr <<"LyXFont::setMisc: Need state"
+				" ON or OFF to toggle. Setting to ON" << endl;
 			return ON;
 		}
 	} else if (newfont == IGNORE)
@@ -380,7 +380,8 @@ LyXFont& LyXFont::setLyXFamily(string const & fam)
 	if (s == LyXFamilyNames[i]) {
 		setFamily(LyXFont::FONT_FAMILY(i));
 	} else
-		lyxerr.print("LyXFont::setLyXFamily: Unknown family `"+s+'\'');
+		lyxerr << "LyXFont::setLyXFamily: Unknown family `"
+		       << s << '\'' << endl;
 	return (*this);
 }
 
@@ -395,7 +396,8 @@ LyXFont& LyXFont::setLyXSeries(string const & ser)
 	if (s == LyXSeriesNames[i]) {
 		setSeries(LyXFont::FONT_SERIES(i));
 	} else
-		lyxerr.print("LyXFont::setLyXSeries: Unknown series `"+s+'\'');
+		lyxerr << "LyXFont::setLyXSeries: Unknown series `"
+		       << s << '\'' << endl;
 	return (*this);
 }
 
@@ -410,7 +412,8 @@ LyXFont& LyXFont::setLyXShape(string const & sha)
 	if (s == LyXShapeNames[i]) {
 		setShape(LyXFont::FONT_SHAPE(i));
 	} else
-		lyxerr.print("LyXFont::setLyXShape: Unknown shape `"+s+'\'');
+		lyxerr << "LyXFont::setLyXShape: Unknown shape `"
+		       << s << '\'' << endl;
 	return (*this);
 }
 
@@ -424,7 +427,8 @@ LyXFont& LyXFont::setLyXSize(string const & siz)
 	if (s == LyXSizeNames[i]) {
 		setSize(LyXFont::FONT_SIZE(i));
 	} else
-		lyxerr.print("LyXFont::setLyXSize: Unknown size `"+s+'\'');
+		lyxerr << "LyXFont::setLyXSize: Unknown size `"
+		       << s << '\'' << endl;
 	return (*this);
 }
 
@@ -436,7 +440,8 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") i++;
 	if (s == LyXMiscNames[i])
 		return FONT_MISC_STATE(i);
-	lyxerr.print("LyXFont::setLyXMisc: Unknown misc flag `"+s+'\'');
+	lyxerr << "LyXFont::setLyXMisc: Unknown misc flag `"
+	       << s << '\'' << endl;
 	return OFF;
 }
 
@@ -449,7 +454,8 @@ LyXFont& LyXFont::setLyXColor(string const & col)
 	if (s == LyXColorNames[i]) {
 		setColor(LyXFont::FONT_COLOR(i));
 	} else
-		lyxerr.print("LyXFont::setLyXColor: Unknown Color `"+s+'\'');
+		lyxerr << "LyXFont::setLyXColor: Unknown Color `"
+		       << s << '\'' << endl;
 	return (*this);
 }
 
@@ -465,7 +471,8 @@ LyXFont& LyXFont::setGUISize(string const & siz)
 	if (s == _(lGUISizeNames[i].c_str())) {
 		setSize(LyXFont::FONT_SIZE(i));
 	} else
-		lyxerr.print("LyXFont::setGUISize: Unknown Size `"+s+'\'');
+		lyxerr << "LyXFont::setGUISize: Unknown Size `"
+		       << s << '\'' << endl;
 	return (*this);
 }
 
@@ -576,12 +583,14 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, FILE * file) const
 		switch (underbar()) {
 		case OFF:	fprintf(file, "\\bar no \n"); break;
 		case ON:        fprintf(file, "\\bar under \n"); break;
-		case TOGGLE:	lyxerr.print("LyXFont::lyxWriteFontChanges: "
-					      "TOGGLE should not appear here!");
+		case TOGGLE:	lyxerr << "LyXFont::lyxWriteFontChanges: "
+					"TOGGLE should not appear here!"
+				       << endl;
 				break;
 		case INHERIT:   fprintf(file, "\\bar default \n"); break;
-		case IGNORE:    lyxerr.print("LyXFont::lyxWriteFontChanges: "
-					      "IGNORE should not appear here!");
+		case IGNORE:    lyxerr << "LyXFont::lyxWriteFontChanges: "
+					"IGNORE should not appear here!"
+				       << endl;
 				break;
 		}
 	}
@@ -593,12 +602,14 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, FILE * file) const
 		switch (latex()) {
 		case OFF:	fprintf(file, "\\latex no_latex \n"); break;
 		case ON:        fprintf(file, "\\latex latex \n"); break;
-		case TOGGLE:	lyxerr.print("LyXFont::lyxWriteFontChanges: "
-					      "TOGGLE should not appear here!");
+		case TOGGLE:	lyxerr << "LyXFont::lyxWriteFontChanges: "
+					"TOGGLE should not appear here!"
+				       << endl;
 				break;
 		case INHERIT:   fprintf(file, "\\latex default \n"); break;
-		case IGNORE:    lyxerr.print("LyXFont::lyxWriteFontChanges: "
-					      "IGNORE should not appear here!");
+		case IGNORE:    lyxerr << "LyXFont::lyxWriteFontChanges: "
+					"IGNORE should not appear here!"
+				       << endl;
 				break;
 		}
 	}
@@ -959,4 +970,9 @@ bool LyXFont::equalExceptLatex(LyXFont const &f) const
 	LyXFont f1 = *this;
 	f1.setLatex(f.latex());
 	return f1 == f;
+}
+
+ostream & operator<<(ostream & o, LyXFont::FONT_MISC_STATE fms)
+{
+	return o << int(fms);
 }

@@ -14,7 +14,7 @@
  */
 
 #include <config.h>
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation "formulamacro.h"

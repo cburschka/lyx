@@ -19,6 +19,7 @@
 #include FORMS_H_LOCATION
 #include "math_cursor.h"
 #include "math_parser.h"
+#include "debug.h"
 
 extern void mathed_set_font(short type, int style);
 extern int mathed_char_width(short type, int style, byte c);
@@ -125,7 +126,8 @@ MathParInset::Draw(int x, int y)
 		limits = false;
 	    }
 	 else {	 
-	    fprintf(stderr, "GMathed Error: Unrecognized code[%d]\n", cx);
+		 lyxerr << "GMathed Error: Unrecognized code[" << cx
+			<< "]" << endl;
 	    break;
 	 }
       }
@@ -223,7 +225,8 @@ MathParInset::Metrics()
 	      data.Next();
 	  }      
 	else {
-	    fprintf(stderr, "Mathed Error: Unrecognized code[%d]\n", cx);
+		lyxerr << "Mathed Error: Unrecognized code[" << cx
+		       << "]" << endl;
 	    break;
 	}       
 	cxp = cx;

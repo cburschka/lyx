@@ -21,7 +21,7 @@
 #include "pathstack.h"
 #include "support/filetools.h"
 #include "bufferlist.h"
-#include "error.h"
+#include "debug.h"
 #include "support/FileInfo.h"
 #include "lastfiles.h"
 #include "intl.h"
@@ -37,7 +37,7 @@ string system_tempdir;
 string user_lyxdir;	// Default $HOME/.lyx
 
 // Should this be kept global? Asger says Yes.
-Error lyxerr;
+DebugStream lyxerr;
 
 LastFiles *lastfiles;
 LyXRC *lyxrc;
@@ -70,19 +70,19 @@ LyX::LyX(int *argc, char *argv[])
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap = new kb_keymap;
 
-	lyxerr.debug("Initializing lyxrc");
+	lyxerr.debug() << "Initializing lyxrc" << endl;
 	lyxrc = new LyXRC;
 
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
-	lyxerr.debug("Initializing LyXGUI...");
+	lyxerr.debug() << "Initializing LyXGUI..." << endl;
 	lyxGUI = new LyXGUI(this, argc, argv, gui);
-	lyxerr.debug("Initializing LyXGUI...done");
+	lyxerr.debug() << "Initializing LyXGUI...done" << endl;
 
 	// Initialization of LyX (reads lyxrc and more)
-	lyxerr.debug("Initializing LyX::init...");
+	lyxerr.debug() << "Initializing LyX::init..." << endl;
 	init(argc, argv);
-	lyxerr.debug("Initializing LyX::init...done");
+	lyxerr.debug() << "Initializing LyX::init...done" << endl;
 
 	lyxGUI->init();
 
@@ -91,9 +91,9 @@ LyX::LyX(int *argc, char *argv[])
 	// the only thing left on the command line should be
 	// filenames.
 	if ((*argc)==2) 
-		lyxerr.debug("Opening document...");
+		lyxerr.debug() << "Opening document..." << endl;
 	else if ((*argc)>2)
-		lyxerr.debug("Opening documents...");
+		lyxerr.debug() << "Opening documents..." << endl;
 
 	Buffer *last_loaded = 0;
 
@@ -106,7 +106,8 @@ LyX::LyX(int *argc, char *argv[])
 
 	if (first_start) {
 		string splash = i18nLibFileSearch("examples", "splash.lyx");
-		lyxerr.debug("Opening splash document "+splash+"...");
+		lyxerr.debug() << "Opening splash document "
+			       << splash << "..." << endl;
 		Buffer * loadb = bufferlist.loadLyXFile(splash);
 		if (loadb != 0) {
 			last_loaded = loadb;
@@ -114,7 +115,7 @@ LyX::LyX(int *argc, char *argv[])
 	}
 
 	if (last_loaded != 0) {
-		lyxerr.debug("Yes we loaded some files.");
+		lyxerr.debug() << "Yes we loaded some files." << endl;
 		lyxGUI->regBuf(last_loaded);
 	}
 	
@@ -175,10 +176,12 @@ void LyX::init(int */*argc*/, char **argv)
 	binpath = MakeAbsPath(OnlyPath(binpath));
 
 	if (binpath.empty()) {
-		lyxerr.print(_("Warning: could not determine path of binary."));
-		lyxerr.print(_("If you have problems, try starting LyX with an absolute path."));
+		lyxerr << _("Warning: could not determine path of binary.")
+		       << "\n"
+		       << _("If you have problems, try starting LyX with an absolute path.")
+		       << endl;
 	}
-	lyxerr.debug("Path of binary: " + binpath);
+	lyxerr.debug() << "Path of binary: " << binpath << endl;
 
 	//
 	// Determine system directory.
@@ -207,7 +210,7 @@ void LyX::init(int */*argc*/, char **argv)
 	string lyxdir = GetEnvPath("LYX_DIR_10x");
 	
 	if (!lyxdir.empty()) {
-		lyxerr.debug("LYX_DIR_10x: " + lyxdir, Error::INIT);
+		lyxerr[Debug::INIT] << "LYX_DIR_10x: " << lyxdir << endl;
 		searchpath += lyxdir + ';';
 	}
 
@@ -216,11 +219,12 @@ void LyX::init(int */*argc*/, char **argv)
 	if (!FileSearch(build_lyxdir, "lyxrc.defaults").empty()) {
 		searchpath += MakeAbsPath(AddPath(TOP_SRCDIR, "lib"),
 					  binpath) + ';';
-		lyxerr.debug("Checking whether LyX is run in "
-			      "place... yes", Error::INIT);
+		lyxerr[Debug::INIT] << "Checking whether LyX is run in "
+			"place... yes" << endl;
 	} else {
-		lyxerr.debug("Checking whether LyX is run in place... no",
-			      Error::INIT);
+		lyxerr[Debug::INIT]
+			<< "Checking whether LyX is run in place... no"
+			<< endl;
 		build_lyxdir.erase();
 	}
 
@@ -250,7 +254,8 @@ void LyX::init(int */*argc*/, char **argv)
 	searchpath += LYX_DIR;
 
 	// If debugging, show complete search path
-	lyxerr.debug("System directory search path: "+searchpath, Error::INIT);
+	lyxerr[Debug::INIT] << "System directory search path: "
+			    << searchpath << endl;
 
 	string const filename = "chkconfig.ltx";
 	string temp = FileOpenSearch(searchpath, filename, string());
@@ -264,41 +269,43 @@ void LyX::init(int */*argc*/, char **argv)
 	// Warn if environment variable is set, but unusable
 	if (!lyxdir.empty()) {
 		if (system_lyxdir != NormalizePath(lyxdir)) {
-			lyxerr.print(_("LYX_DIR_10x environment variable no good."));
-			lyxerr.print(_("System directory set to: ") 
-				     + system_lyxdir);
+			lyxerr <<_("LYX_DIR_10x environment variable no good.")
+			       << '\n'
+			       << _("System directory set to: ") 
+			       << system_lyxdir << endl;
 			path_shown = true;
 		}
 	}
 
 	// Warn the user if we couldn't find "chkconfig.ltx"
 	if (system_lyxdir.empty()) {
-		lyxerr.print(_("LyX Warning! Couldn't determine system directory."));
-		lyxerr.print(_("Try the '-sysdir' command line parameter or"));
-		lyxerr.print(_("set the environment variable LYX_DIR_10x to the "
-			      "LyX system directory"));
-		lyxerr.print(_("containing the file `chkconfig.ltx'."));
+		lyxerr <<_("LyX Warning! Couldn't determine system directory.")
+		       <<_("Try the '-sysdir' command line parameter or")
+		       <<_("set the environment variable LYX_DIR_10x to the "
+			   "LyX system directory")
+		       << _("containing the file `chkconfig.ltx'.") << endl;
 		if (!path_shown)
-			lyxerr.print(_("Using built-in default ") 
-				     + string(LYX_DIR) + _(" but expect problems."));
+			lyxerr << _("Using built-in default ") 
+			       << LYX_DIR << _(" but expect problems.")
+			       << endl;
 		else
-			lyxerr.print(_("Expect problems."));
+			lyxerr << _("Expect problems.") << endl;
 		system_lyxdir = LYX_DIR;
 		path_shown = true;
 	}
 
 	// Report the system directory if debugging is on
 	if (!path_shown)
-		lyxerr.debug("System directory: '" + system_lyxdir + '\'', 
-			      Error::INIT);
+		lyxerr[Debug::INIT] << "System directory: '"
+				    << system_lyxdir << '\'' << endl; 
 
 	//
 	// Determine user lyx-dir
 	//
 	
 	user_lyxdir = AddPath(GetEnvPath("HOME"), string(".") + LYX_NAME);
-	lyxerr.debug("User LyX directory: '" 
-		     + user_lyxdir + '\'', Error::INIT);
+	lyxerr[Debug::INIT] << "User LyX directory: '" 
+			    <<  user_lyxdir << '\'' << endl;
 
 	// Check that user LyX directory is ok.
 	queryUserLyXDir();
@@ -307,7 +314,7 @@ void LyX::init(int */*argc*/, char **argv)
 	// Load the layouts first
 	//
 
-	lyxerr.debug("Reading layouts...", Error::INIT);
+	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
 	LyXSetStyle();
 
 	//
@@ -328,8 +335,8 @@ void LyX::init(int */*argc*/, char **argv)
 	Screen * scr=(DefaultScreenOfDisplay(fl_get_display()));
 	lyxrc->dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
 		      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
-	lyxerr.debug(string("DPI setting detected to be ") + 
-		      tostr(lyxrc->dpi+0.5));
+	lyxerr.debug() << "DPI setting detected to be "
+		       << lyxrc->dpi+0.5 << endl;
 
 	//
 	// Read configuration files
@@ -343,19 +350,19 @@ void LyX::init(int */*argc*/, char **argv)
 	if (!lyxrc->hasBindFile)
 		lyxrc->ReadBindFile();
 
-	if (lyxerr.debugging(Error::LYXRC)) {
+	if (lyxerr.debugging(Debug::LYXRC)) {
 		lyxrc->Print();
 	}
 
 	// Create temp directory	
 	system_tempdir = CreateLyXTmpDir(lyxrc->tempdir_path);
-	if (lyxerr.debugging(Error::INIT)) {
-		lyxerr.print("LyX tmp dir: `" + system_tempdir + '\'');
+	if (lyxerr.debugging(Debug::INIT)) {
+		lyxerr << "LyX tmp dir: `" << system_tempdir << '\'' << endl;
 	}
 
 	// load the lastfiles mini-database
-	lyxerr.debug("Reading lastfiles `" + lyxrc->lastfiles + "'...", 
-		      Error::INIT);
+	lyxerr[Debug::INIT] << "Reading lastfiles `"
+			    << lyxrc->lastfiles << "'..." << endl; 
 	lastfiles = new LastFiles(lyxrc->lastfiles, 
 				  lyxrc->check_lastfiles,
 				  lyxrc->num_lastfiles);
@@ -384,20 +391,22 @@ void LyX::queryUserLyXDir()
 	if (!AskQuestion(_("You don't have a personal LyX directory."),
 			 _("It is needed to keep your own configuration."),
 			 _("Should I try to set it up for you (recommended)?"))) {
-		lyxerr.print(_("Running without personal LyX directory."));
+		lyxerr << _("Running without personal LyX directory.") << endl;
 		// No, let's use $HOME instead.
 		user_lyxdir = GetEnvPath("HOME");
 		return;
 	}
 
 	// Tell the user what is going on
-	lyxerr.print(_("LyX: Creating directory ") + user_lyxdir + _(" and running configure..."));
+	lyxerr << _("LyX: Creating directory ") << user_lyxdir
+	       << _(" and running configure...") << endl;
 
 	// Create directory structure
 	if (!createDirectory(user_lyxdir, 0755)) {
 		// Failed, let's use $HOME instead.
 		user_lyxdir = GetEnvPath("HOME");
-		lyxerr.print(_("Failed. Will use ") + user_lyxdir + _(" instead."));
+		lyxerr << _("Failed. Will use ") << user_lyxdir
+		       << _(" instead.") << endl;
 		return;
 	}
 
@@ -405,80 +414,68 @@ void LyX::queryUserLyXDir()
 	PathPush(user_lyxdir);
 	system(AddName(system_lyxdir,"configure").c_str());
 	PathPop();
-	lyxerr.print(string("LyX: ") + _("Done!"));
+	lyxerr << "LyX: " << _("Done!") << endl;
 }
 
 
 // Read the rc file `name'
 void LyX::ReadRcFile(string const & name)
 {
-	lyxerr.debug("About to read "+name+"...", Error::INIT);
+	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 	
 	string lyxrc_path = LibFileSearch(string(), name);
 	if (!lyxrc_path.empty()){
-	        lyxerr.debug("Found "+name+" in " + lyxrc_path, Error::INIT);
+	        lyxerr[Debug::INIT] << "Found " << name
+				    << " in " << lyxrc_path << endl;
 		if (lyxrc->Read(lyxrc_path) < 0) { 
 		        WriteAlert(_("LyX Warning!"), 
 				   _("Error while reading ")+lyxrc_path+".",
 				   _("Using built-in defaults."));
 		}
 	} else
-	  	lyxerr.debug("Could not find "+name, Error::INIT);
+	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
 }
 
 
 // Set debugging level and report result to user
 void setDebuggingLevel(int dbgLevel)
 {
-	lyxerr.print(string(_("Setting debug level to ")) + tostr(dbgLevel));
-	lyxerr.setDebugLevel(dbgLevel);
-	lyxerr.debug(string("Debugging INFO #") + tostr(Error::INFO),
-		     Error::INFO);
-	lyxerr.debug(string("Debugging INIT #") + tostr(Error::INIT),
-		     Error::INIT);
-	lyxerr.debug(string("Debugging KEY #") + tostr(Error::KEY),
-		     Error::KEY);
-	lyxerr.debug(string("Debugging TOOLBAR #") + tostr(Error::TOOLBAR), 
-		     Error::TOOLBAR);
-	lyxerr.debug(string("Debugging LEX and PARSER #") +
-		     tostr(Error::LEX_PARSER),
-		     Error::LEX_PARSER);
-	lyxerr.debug(string("Debugging LYXRC #") + tostr(Error::LYXRC),
-		     Error::LYXRC);
-	lyxerr.debug(string("Debugging KBMAP #") + tostr(Error::KBMAP),
-		     Error::KBMAP);
-	lyxerr.debug(string("Debugging LATEX #") + tostr(Error::LATEX),
-		     Error::LATEX);
-	lyxerr.debug(string("Debugging MATHED #") + tostr(Error::MATHED), 
-		     Error::MATHED);
-	lyxerr.debug(string("Debugging FONT #") + tostr(Error::FONT),
-		     Error::FONT);
-	lyxerr.debug(string("Debugging TCLASS #") + tostr(Error::TCLASS), 
-		     Error::TCLASS);
-	lyxerr.debug(string("Debugging LYXVC #") + tostr(Error::LYXVC),
-		     Error::LYXVC);
-	lyxerr.debug(string("Debugging LYXSERVER #") + tostr(Error::LYXSERVER),
-		     Error::LYXVC);
+	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
+	lyxerr.level(Debug::type(dbgLevel));
+	lyxerr[Debug::INFO] << "Debugging INFO #"  << Debug::INFO << endl;
+	lyxerr[Debug::INIT] << "Debugging INIT #"  << Debug::INIT << endl;
+	lyxerr[Debug::KEY] << "Debugging KEY #"  << Debug::KEY << endl;
+	lyxerr[Debug::TOOLBAR] << "Debugging TOOLBAR #"  << Debug::TOOLBAR << endl; 
+	lyxerr[Debug::PARSER] << "Debugging LEX and PARSER #" << Debug::PARSER << endl;
+	lyxerr[Debug::LYXRC] << "Debugging LYXRC #" << Debug::LYXRC << endl;
+	lyxerr[Debug::KBMAP] << "Debugging KBMAP #" << Debug::KBMAP << endl;
+	lyxerr[Debug::LATEX] << "Debugging LATEX #" << Debug::LATEX << endl;
+	lyxerr[Debug::MATHED] << "Debugging MATHED #"  << Debug::MATHED << endl; 
+	lyxerr[Debug::FONT] << "Debugging FONT #" << Debug::FONT << endl;
+	lyxerr[Debug::TCLASS] << "Debugging TCLASS #" << Debug::TCLASS << endl; 
+	lyxerr[Debug::LYXVC] << "Debugging LYXVC #" << Debug::LYXVC << endl;
+	lyxerr[Debug::LYXSERVER] << "Debugging LYXSERVER #" << Debug::LYXSERVER << endl;
 }
 
 
 // Give command line help
 void commandLineHelp()
 {
-	lyxerr.print(_("LyX " LYX_VERSION " of " LYX_RELEASE ".\n"));
-	lyxerr.print(_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"));
-	lyxerr.print(_("Command line switches (case sensitive):"));
-	lyxerr.print(_("   -help           summarize LyX usage"));
-	lyxerr.print(_("   -sysdir x       try to set system directory to x"));
-	lyxerr.print(_("   -width x        set the width of the main window"));
-	lyxerr.print(_("   -height y       set the height of the main window"));
-	lyxerr.print(_("   -xpos x         set the x position of the main window"));
-	lyxerr.print(_("   -ypos y         set the y position of the main window"));
-	lyxerr.print(_("   -dbg n          where n is a sum of debugging options. Try -dbg 65535 -help"));
-	lyxerr.print(_("   -Reverse        swaps foreground & background colors"));
-	lyxerr.print(_("   -Mono           runs LyX in black and white mode"));
-	lyxerr.print(_("   -FastSelection  use a fast routine for drawing selections\n"));
-	lyxerr.print(_("Check the LyX man page for more options."));
+	lyxerr << "LyX " LYX_VERSION << " of " LYX_RELEASE << endl;
+	lyxerr <<
+		_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+		  "Command line switches (case sensitive):\n"
+		  "\t-help           summarize LyX usage\n"
+		  "\t-sysdir x       try to set system directory to x\n"
+		  "\t-width x        set the width of the main window\n"
+		  "\t-height y       set the height of the main window\n"
+		  "\t-xpos x         set the x position of the main window\n"
+		  "\t-ypos y         set the y position of the main window\n"
+		  "\t-dbg n          where n is a sum of debugging options. Try -dbg 65535 -help\n"
+		  "\t-Reverse        swaps foreground & background colors\n"
+		  "\t-Mono           runs LyX in black and white mode\n"
+		  "\t-FastSelection  use a fast routine for drawing selections\n\n"
+		  "Check the LyX man page for more options.") << endl;
 }
 
 
@@ -502,7 +499,8 @@ bool LyX::easyParse(int *argc, char *argv[])
 					argv[j] = argv[j+2];
 				i--; // After shift, check this number again.
 			} else
-				lyxerr.print(_("Missing number for -dbg switch!"));
+				lyxerr << _("Missing number for -dbg switch!")
+				       << endl;
 		} 
 		// Check for "-sysdir"
 		else if (arg == "-sysdir") {
@@ -516,7 +514,8 @@ bool LyX::easyParse(int *argc, char *argv[])
 					argv[j] = argv[j+2];
 				i--; // After shift, check this number again.
 			} else
-				lyxerr.print(_("Missing directory for -sysdir switch!"));
+				lyxerr << _("Missing directory for -sysdir switch!")
+				       << endl;
 		// Check for --help or -help
 		} else if (arg == "--help" || arg == "-help") {
 			commandLineHelp();
@@ -535,21 +534,21 @@ void error_handler(int err_sig)
 {
 	switch (err_sig) {
 	case SIGHUP:
-		fprintf(stderr, "\nlyx: SIGHUP signal caught\n");
+		lyxerr << "\nlyx: SIGHUP signal caught" << endl;
 		break;
 	case SIGINT:
 		// no comments
 		break;
 	case SIGFPE:
-		fprintf(stderr, "\nlyx: SIGFPE signal caught\n");
+		lyxerr << "\nlyx: SIGFPE signal caught" << endl;
 		break;
 	case SIGSEGV:
-		fprintf(stderr, "\nlyx: SIGSEGV signal caught\n");
-		fprintf(stderr,
+		lyxerr << "\nlyx: SIGSEGV signal caught" << endl;
+		lyxerr <<
 			"Sorry, you have found a bug in LyX."
 			" If possible, please read 'Known bugs'\n"
 			"under the Help menu and then send us "
-			"a full bug report. Thanks!\n");
+			"a full bug report. Thanks!" << endl;
 		break;
 	case SIGTERM:
 		// no comments
@@ -565,7 +564,7 @@ void error_handler(int err_sig)
 
 	bufferlist.emergencyWriteAll();
 
-	lyxerr.print("Bye.");
+	lyxerr << "Bye." << endl;
 	if(err_sig!=SIGHUP && (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
 		abort();
 	exit(0);

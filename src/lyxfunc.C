@@ -51,7 +51,7 @@
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "lyxscreen.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
@@ -157,7 +157,7 @@ LyXFunc::~LyXFunc()
 }
 
 
-string LyXFunc::argAsString(char const *const argument)
+string LyXFunc::argAsString(char const * const argument)
 {
 	string tmp(argument);
 
@@ -165,7 +165,7 @@ string LyXFunc::argAsString(char const *const argument)
 		// get the arg from somewhere else, a popup, or ask for
 		// it in the minibuffer.
 	}
-	lyxerr.debug("argAsString: <" + tmp + '>');
+	lyxerr.debug() << "argAsString: <" << tmp << '>' << endl;
 	return tmp;
 }
 
@@ -206,20 +206,20 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 
 	num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
 
-	if (lyxerr.debugging(Error::KEY)) {
-		lyxerr.print(string("KeySym is ")
-			     + XKeysymToString(keysym_return)
-			     + "["
-			     + tostr(keysym_return) + "]"
-			     + " and num_bytes is "
-			     + tostr(num_bytes)
-			     + " the string returned is \""
-			     + string(s_r) + '\"');
+	if (lyxerr.debugging(Debug::KEY)) {
+		lyxerr << "KeySym is "
+		       << XKeysymToString(keysym_return)
+		       << "["
+		       << keysym_return << "]"
+		       << " and num_bytes is "
+		       << num_bytes
+		       << " the string returned is \""
+		       << s_r << '\"' << endl;
 	}
 	// Do nothing if we have nothing (JMarc)
 	if (num_bytes == 0 && keysym_return == NoSymbol) {
-		lyxerr.debug("Empty kbd action (probably composing)",
-			     Error::KEY);
+		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
+				   << endl;
 		return 0;
 	}
 	
@@ -264,13 +264,13 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 		
 	if (action == 0) action = LFUN_PREFIX;
 
-	if (lyxerr.debugging(Error::KEY)) {
+	if (lyxerr.debugging(Debug::KEY)) {
 		char buf[100];
 		keyseq.print(buf,100);
-		lyxerr.print(string("Key [")
-			     + tostr(action) + "]["
-			     + buf + "]["
-			     + tostr(num_bytes) +"]");
+		lyxerr << "Key ["
+		       << action << "]["
+		       << buf << "]["
+		       << num_bytes << "]" << endl;
 	}
 
 	// already here we know if it any point in going further
@@ -301,7 +301,7 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 			argument[1] = 0;
 		}
 		if (!argument) {
-			lyxerr.debug("Empty argument!");
+			lyxerr.debug() << "Empty argument!" << endl;
 			// This can`t possibly be of any use
 			// so we`ll skip the dispatch.
 			return 0;
@@ -453,7 +453,7 @@ string LyXFunc::Dispatch(int ac,
             owner->currentBuffer()->isReadonly() && 
             lyxaction.isFuncRO(action)) {
 		setErrorMessage(N_("Document is read-only"));
-		lyxerr.debug("Error: Document is read-only.");
+		lyxerr.debug() << "Error: Document is read-only." << endl;
 		goto exit_with_message;
 	}
 
@@ -1055,9 +1055,9 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LAYOUTNO:
 	{
-		lyxerr.debug("LFUN_LAYOUTNO: (arg) " + string(argument));
+		lyxerr.debug() << "LFUN_LAYOUTNO: (arg) " << argument << endl;
 		int sel = atoi(argument);
-		lyxerr.debug(string("LFUN_LAYOUTNO: (sel) ") + tostr(sel));
+		lyxerr.debug() << "LFUN_LAYOUTNO: (sel) "<< sel << endl;
 		
 		// Should this give a setMessage instead?
 		if (sel == 0) 
@@ -1076,8 +1076,8 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LAYOUT:
 	{
-		lyxerr.debug("LFUN_LAYOUT: (arg) "
-			     + string(argument));
+		lyxerr.debug() << "LFUN_LAYOUT: (arg) "
+			       << argument << endl;
 		
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
@@ -1892,9 +1892,9 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_GETNAME:
 		setMessage(owner->currentBuffer()->getFileName());
-		lyxerr.debug(string("FNAME[") +
-			     owner->currentBuffer()->getFileName() +
-			     "] ");
+		lyxerr.debug() << "FNAME["
+			       << owner->currentBuffer()->getFileName()
+			       << "] " << endl;
 		break;
 		
 	case LFUN_NOTIFY:
@@ -1996,11 +1996,11 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_PUSH_TOOLBAR:
 	{
 		int nth = atoi(argument);
-		if (lyxerr.debugging(Error::TOOLBAR)) {
-			lyxerr.print(string("LFUN_PUSH_TOOLBAR: argument = `")
-				     + argument + "'");
-			lyxerr.print(string("LFUN_PUSH_TOOLBAR: nth = `")
-				     + tostr(nth) + "'");
+		if (lyxerr.debugging(Debug::TOOLBAR)) {
+			lyxerr << "LFUN_PUSH_TOOLBAR: argument = `"
+			       << argument << "'\n"
+			       << "LFUN_PUSH_TOOLBAR: nth = `"
+			       << nth << "'" << endl;
 		}
 		
 		if (nth <= 0) {
@@ -2014,13 +2014,13 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_ADD_TO_TOOLBAR:
 	{
-		if (lyxerr.debugging(Error::TOOLBAR)) {
-			lyxerr.print(string("LFUN_ADD_TO_TOOLBAR:"
-					     "argument = `")+ argument + '\'');
+		if (lyxerr.debugging(Debug::TOOLBAR)) {
+			lyxerr << "LFUN_ADD_TO_TOOLBAR:"
+				"argument = `" << argument << '\'' << endl;
 		}
 		string tmp(argument);
-		//lyxerr.print(string("Argument: ") + argument);
-		//lyxerr.print(string("Tmp     : ") + tmp);
+		//lyxerr <<string("Argument: ") + argument);
+		//lyxerr <<string("Tmp     : ") + tmp);
 		if (tmp.empty()) {
 			LyXBell();
 			setErrorMessage(N_("Usage: toolbar-add-to <LyX command>"));
@@ -2255,7 +2255,7 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_PARENTINSERT:
 	{
-		lyxerr.print(string("arg ") + argument);
+		lyxerr << "arg " << argument << endl;
 		Inset *new_inset = new InsetParent(argument, owner->currentBuffer());
 		owner->currentBuffer()->insertInset(new_inset, "Standard", true);
 	}
@@ -2402,7 +2402,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		break;
 	default:
-		lyxerr.print("A truly unknown func!");
+		lyxerr << "A truly unknown func!" << endl;
 		break;
 	}
 	} // end of switch
@@ -2456,7 +2456,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	
 	if (fname.empty()) {
 		owner->getMiniBuffer()->Set(_("Canceled."));
-		lyxerr.debug("New Document Cancelled.");
+		lyxerr.debug() << "New Document Cancelled." << endl;
 		return;
 	}
         
@@ -2519,7 +2519,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	}
   
 	// find a free buffer
-	lyxerr.debug("Find a free buffer.");
+	lyxerr.debug() << "Find a free buffer." << endl;
 	owner->currentView()->setBuffer(bufferlist.newFile(s,templname));
 }
 

@@ -28,7 +28,7 @@
 #include "math_inset.h"
 #include "math_macro.h"
 #include "math_root.h"
-#include "error.h"
+#include "debug.h"
 
 enum {
 	FLAG_BRACE      = 1,	//  A { needed
@@ -100,7 +100,8 @@ char *strnew(char const* s)
 
 static void mathPrintError(char const *msg) 
 {
-    fprintf(stderr, "Line ~%d: Math parse error: %s\n", yylineno, msg); 
+	lyxerr << "Line ~" << yylineno << ": Math parse error: "
+	       << msg << endl;
 }
 
 
@@ -144,13 +145,15 @@ static char LexGetArg(char lf, bool accept_spaces=false)
       if (c>' ') {
 	 if (!lf) lf = c; else
 	 if (c!=lf)
-	   fprintf(stderr, "Math parse error: unexpected '%c'\n", c);
+		 lyxerr << "Math parse error: unexpected '"
+			<< c << "'" << endl;
 	 break;
       }
    }
    rg = (lf=='{') ? '}': ((lf=='[') ? ']': ((lf=='(') ? ')': 0));
    if (!rg) {
-      fprintf(stderr, "Math parse error: unknown bracket '%c'\n", lf);
+	   lyxerr << "Math parse error: unknown bracket '"
+		  << lf << "'" << endl;
       return '\0';
    } 
    do {
@@ -463,7 +466,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 	 MathParInset *p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->SetData(ar);
-//	 fprintf(stderr, "UP[%d]", p->GetStyle());
+//	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
 	 data.Insert (p, LM_TC_UP);
 	 break;
       }
@@ -493,8 +496,8 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 	 } else 
 	    mathPrintError("Unexpected tab");
 	 // debug info. [made that conditional -JMarc]
-	 if (lyxerr.debugging(Error::MATHED))
-		 fprintf(stderr, "%d %d\n", data.getCol(), mt->GetColumns());
+	 if (lyxerr.debugging(Debug::MATHED))
+		 lyxerr << data.getCol() << " " << mt->GetColumns() << endl;
 	break;
       }
     case LM_TK_NEWLINE:
@@ -600,16 +603,16 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 	 lfd=yylex();
 	 if (lfd==LM_TK_SYM || lfd==LM_TK_STR || lfd==LM_TK_BOP|| lfd==LM_TK_SPECIAL)
 	   lfd = (lfd==LM_TK_SYM) ? yylval.l->id: yylval.i;
-//	 fprintf(stderr, "L[%d %c]", lfd, lfd);
+//	 lyxerr << "L[" << lfd << " " << lfd << "]";
 	 LyxArrayBase* a = mathed_parse(FLAG_RIGHT);
 	 rgd=yylex();
-//	 fprintf(stderr, "R[%d]", rgd);
+//	 lyxerr << "R[" << rgd << "]";
 	 if (rgd==LM_TK_SYM || rgd==LM_TK_STR || rgd==LM_TK_BOP || rgd==LM_TK_SPECIAL)
 	   rgd = (rgd==LM_TK_SYM) ? yylval.l->id: yylval.i;	 
 	 MathDelimInset *dl = new MathDelimInset(lfd, rgd);
 	 dl->SetData(a);
 	 data.Insert(dl, LM_TC_ACTIVE_INSET);
-//	 fprintf(stderr, "RL[%d %d]", lfd, rgd);
+//	 lyxerr << "RL[" << lfd << " " << rgd << "]";
   	 break;
       }
     case LM_TK_RIGHT:
@@ -691,8 +694,8 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
          if (mathed_env != yylval.i && yylval.i!=LM_EN_ARRAY)
 	   mathPrintError("Unmatched environment");
 	 // debug info [made that conditional -JMarc]
-	 if (lyxerr.debugging(Error::MATHED))
-		 fprintf(stderr, "[%d]\n", yylval.i);
+	 if (lyxerr.debugging(Debug::MATHED))
+		 lyxerr << "[" << yylval.i << "]" << endl;
 	 plevel--;
 	 if (mt) { // && (flags & FLAG_END)) {
 	    mt->SetData(array);
@@ -745,10 +748,10 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 	     }
 	       	       	       
 #ifdef DEBUG
-	       fprintf(stderr, "MATH BEGIN[%d]\n", mathed_env);
+	     lyxerr << "MATH BEGIN[" << mathed_env << "]" << endl;
 #endif
 	 } else {
-//	     fprintf(stderr, "MATHCRO[%s]",yytext);
+//	     lyxerr << "MATHCRO[" << yytext << "]";
 	     MathMacro* p = 
 	       MathMacroTable::mathMTable.getMacro(yytext);
 	     if (p) {
@@ -783,7 +786,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 	  if (rg != '}') {
 	     mathPrintError("Expected '{'");
 	      // debug info
-	      fprintf(stderr, "[%s]\n", yytext); fflush(stderr);
+	     lyxerr << "[" << yytext << "]" << endl;
 	      panic = true;
 	     break;
 	  } 
@@ -799,19 +802,19 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 		  mathed_label = strnew(yytext);
 	  }
 #ifdef DEBUG
-	  fprintf(stderr, "Label[%d]\n", mathed_label);
+	  lyxerr << "Label[" << mathed_label << "]" << endl;
 #endif
 	  break;
 	} 
      default:
        mathPrintError("Unrecognized token");
        // debug info
-       fprintf(stderr, "[%d %s]\n", t, yytext);
+       lyxerr << "[" << t << " " << yytext << "]" << endl;
        break;
     }
     tprev = t;
     if (panic) {
-       fprintf(stderr, " Math Panic, expect problems!\n"); 
+	    lyxerr << " Math Panic, expect problems!" << endl;
        //   Search for the end command. 
        do t = yylex (); while (t != LM_TK_END && t);
     } else

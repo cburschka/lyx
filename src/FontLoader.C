@@ -10,8 +10,8 @@
  *======================================================*/
 
 #include <config.h>
-#include <math.h>	// fabs()
-#include <stdlib.h>	// atoi()
+#include <cmath>	// fabs()
+#include <cstdlib>	// atoi()
 
 #ifdef __GNUG__
 #pragma implementation "FontLoader.h"
@@ -20,7 +20,7 @@
 #include "gettext.h"
 #include "FontLoader.h"
 #include "FontInfo.h"
-#include "error.h"
+#include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
 extern LyXRC * lyxrc;
 #include "minibuffer.h"
@@ -208,8 +208,8 @@ XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	string font = fontinfo[family][series][shape]->getFontname(fsize);
 
 	if (font.empty()) {
-		lyxerr.print("No font matches request. Using 'fixed'.");
-		lyxerr.print("Start LyX as 'lyx -dbg 515' to get more information.");
+		lyxerr << "No font matches request. Using 'fixed'." << endl;
+		lyxerr << "Start LyX as 'lyx -dbg 515' to get more information." << endl;
 		font = "fixed";
 	}
 
@@ -220,13 +220,13 @@ XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 	if (fs == 0) {
 		if (font=="fixed") {
-			lyxerr.print("We're doomed. Can't get 'fixed' font.");
+			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;
 		} else {
-			lyxerr.print("Could not get font. Using 'fixed'.");
+			lyxerr << "Could not get font. Using 'fixed'." << endl;
 			fs = XLoadQueryFont(fl_display, "fixed");
 		}
 	} else {
-		if (lyxerr.debugging(Error::FONT)) {
+		if (lyxerr.debugging(Debug::FONT)) {
 			// Tell user the font matching
 			LyXFont f;
 			f.setFamily(family);
@@ -239,8 +239,8 @@ XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 			f.setNoun(LyXFont::INHERIT);
 			f.setLatex(LyXFont::INHERIT);
 			f.setColor(LyXFont::INHERIT_COLOR);
-			lyxerr.print(string("Font '") + f.stateText() 
-				      + "' matched by\n" + font + '\n');
+			lyxerr << "Font '" << f.stateText() 
+			       << "' matched by\n" << font << endl;
 		}
 	}
 	minibuffer->Reset();

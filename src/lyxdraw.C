@@ -1,7 +1,7 @@
 #include <config.h>
 
 #include "lyxdraw.h"
-#include "error.h"
+#include "debug.h"
 
 extern int reverse_video;
 extern int mono_video;
@@ -66,7 +66,7 @@ bool setForegroundColor(char const * const color, XGCValues & val)
 		{
 			val.foreground = xcol.pixel;
 		} else {
-			lyxerr.print(string("LyX: Couldn't get color ") + color);
+			lyxerr << "LyX: Couldn't get color " << color << endl;
 			return false;
 		}
 	}
@@ -371,7 +371,8 @@ GC GetSelectionGC()
 		if (!setForegroundColor(selection_color, val)) {
 			fast_selection = True;
 			if (clear_gc) clear_gc = 0;
-			lyxerr.print("     Will use FastSelection-method.\n");
+			lyxerr << "     Will use FastSelection-method."
+			       << endl;
 		}
 	}
 	selection_gc = XCreateGC(fl_display, fl_root,

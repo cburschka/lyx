@@ -48,7 +48,7 @@ extern long int background_pixels;
 #include "filedlg.h"
 #include "support/filetools.h"
 #include "LyXView.h" // just because of form_main
-#include "error.h"
+#include "debug.h"
 #include "lyxdraw.h"
 #include "LaTeXFeatures.h"
 #include "lyxrc.h"
@@ -127,10 +127,10 @@ void addpidwait(int pid)
 	pw = p;
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(string("Pids to wait for: ") + tostr(p->pid));
+		lyxerr << "Pids to wait for: " << p->pid << endl;
 		while (p->next) {
 			p = p->next;
-			lyxerr.print(string() + tostr(p->pid));
+			lyxerr << p->pid << endl;
 		}
 	}
 }
@@ -145,9 +145,8 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 	XClientMessageEvent *e = (XClientMessageEvent*) ev;
 
 	if(lyxerr.debugging()) {
-		fprintf(stderr,
-			"ClientMessage, win:[xx] gs:[%ld] pm:[%ld]\n",
-			e->data.l[0], e->data.l[1]);
+		lyxerr << "ClientMessage, win:[xx] gs:[" << e->data.l[0]
+		       << "] pm:[" << e->data.l[1] << "]" << endl;
 	}
 
 	// just kill gs, that way it will work for sure
@@ -174,23 +173,26 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					figinset_canvas), &wa);
 				XFlush(fl_display);
 				if (lyxerr.debugging()) {
-					fprintf(stderr,
-						"Starting image translation %ld %d %dx%d %d %d\n",
-					       p->bitmap, p->flags, p->wid, p->hgh, wa.depth,
-					       XYPixmap);
+					lyxerr 
+						<< "Starting image translation "
+						<< p->bitmap << " "
+						<< p->flags << " "
+						<< p->wid << "x" << p->hgh
+						<< " " << wa.depth
+						<< " " << XYPixmap << endl;
+
 				}
 				// now fork rendering process
 				forkstat = fork();
 				if (forkstat == -1) {
-					lyxerr.debug("Cannot fork, using slow "
-						      "method for pixmap translation.");
+					lyxerr.debug() << "Cannot fork, using slow "
+						"method for pixmap translation." << endl;
 					tmpdisp = fl_display;
 				} else if (forkstat > 0) {
 					// register child
 					if (lyxerr.debugging()) {
-						lyxerr.print(
-							string("Spawned child ")
-							+ tostr(forkstat));
+						lyxerr << "Spawned child "
+						       << forkstat << endl;
 					}
 					addpidwait(forkstat);
 					break; // in parent process
@@ -202,11 +204,11 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					       p->wid, p->hgh, (1<<wa.depth)-1, XYPixmap);
 				XFlush(tmpdisp);
 				if (lyxerr.debugging()) {
-					lyxerr.print("Got the image");
+					lyxerr << "Got the image" << endl;
 				}
 				if (!im) {
 					if (lyxerr.debugging()) {
-						lyxerr.print("Error getting the image");
+						lyxerr << "Error getting the image" << endl;
 					}
 					goto noim;
 				}
@@ -231,18 +233,18 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					}
 				}
 				if (lyxerr.debugging()) {
-					lyxerr.print("Putting image back");
+					lyxerr << "Putting image back" << endl;
 				}
 				XPutImage(tmpdisp, p->bitmap, gc, im, 0, 0,
 					  0, 0, p->wid, p->hgh);
 				XDestroyImage(im);
 				if (lyxerr.debugging()) {
-					lyxerr.print("Done translation");
+					lyxerr << "Done translation" << endl;
 				}
 			  noim:
 				if (lyxerr.debugging()) {
-					lyxerr.print(string("Killing gs ") 
-						     + tostr(p->gspid));
+					lyxerr << "Killing gs " 
+					       << p->gspid << endl;
 				}
 				kill(p->gspid, SIGHUP);
 
@@ -256,8 +258,8 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				}
 			} else {
 				if (lyxerr.debugging()) {
-					lyxerr.print(string("Killing gs ") 
-						     +tostr(p->gspid));
+					lyxerr << "Killing gs " 
+					       << p->gspid << endl;
 				}
 				kill(p->gspid, SIGHUP);
 
@@ -279,11 +281,12 @@ static void AllocColors(int num)
 	int i;
 
 	if (lyxerr.debugging()) {
-		printf("Allocating color cube %dx%dx%d\n", num, num, num);
+		lyxerr << "Allocating color cube " << num
+		       << 'x' << num << 'x' << num << endl;
 	}
 
 	if (num <= 1) {
-		lyxerr.print("Error allocating color colormap.");
+		lyxerr << "Error allocating color colormap." << endl;
 		gs_color = false;
 		return;
 	}
@@ -297,8 +300,8 @@ static void AllocColors(int num)
 			if (i) XFreeColors(fl_display, color_map,
 					   gs_pixels, i, 0);
 			if(lyxerr.debugging()) {
-				lyxerr.print(string("Cannot allocate color cube " )
-					     + tostr(num));
+				lyxerr << "Cannot allocate color cube "
+				       << num << endl;;
 			}
 			AllocColors(num-1);
 			return;
@@ -319,12 +322,12 @@ static void AllocGrays(int num)
 	int i;
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(string("Allocating grayscale ramp ") 
-			     + tostr(num));
+		lyxerr << "Allocating grayscale ramp "
+		       << num << endl;
 	}
 
 	if (num < 4) {
-		lyxerr.print("Error allocating grayscale colormap.");
+		lyxerr << "Error allocating grayscale colormap." << endl;
 		gs_color = false;
 		return;
 	}
@@ -336,8 +339,8 @@ static void AllocGrays(int num)
 			if (i) XFreeColors(fl_display, color_map,
 					   gs_pixels, i, 0);
 			if (lyxerr.debugging()) {
-				lyxerr.print(string("Cannot allocate grayscale ") 
-					     + tostr(num));
+				lyxerr << "Cannot allocate grayscale " 
+				       << num << endl;
 			}
 			AllocGrays(num/2);
 			return;
@@ -408,13 +411,13 @@ void DoneFigures()
 	figarrsize = 0;
 	bmparrsize = 0;
 
-	lyxerr.debug("Unregistering figures...");
+	lyxerr.debug() << "Unregistering figures..." << endl;
 
 	fl_remove_canvas_handler(figinset_canvas, ClientMessage,
 				 GhostscriptMsg);
 
 	if (gs_color) {
-		lyxerr.debug("Freeing up the colors...");
+		lyxerr.debug() << "Freeing up the colors..." << endl;
 		XFreeColors(fl_display, color_map, gs_pixels,
 			    gs_num_pixels, 0);
 		/******????????????????? what's planes in this case ??????***/
@@ -510,7 +513,7 @@ static void runqueue()
 		
 		if (pid == -1) {
 			if (lyxerr.debugging()) {
-				lyxerr.print("GS start error! Cannot fork.");
+				lyxerr << "GS start error! Cannot fork." << endl;
 			}
 			p->data->broken = true;
 			p->data->reading = false;
@@ -555,9 +558,8 @@ static void runqueue()
 //#warning BUG seems that the only bug here might be the hardcoded dpi.. Bummer!
 			
 			if (lyxerr.debugging()) {
-				lyxerr.print(string("Will set GHOSTVIEW"
-						     " property to [") +
-					     tbuf + "]");
+				lyxerr << "Will set GHOSTVIEW property to ["
+				       << tbuf << "]" << endl;
 			}
 			// wait until property is deleted if executing multiple
 			// ghostscripts
@@ -565,7 +567,7 @@ static void runqueue()
 				// grab server to prevent other child interfering
 				// with setting GHOSTVIEW property
 				if (lyxerr.debugging()) {
-					lyxerr.print("Grabbing the server");
+					lyxerr << "Grabbing the server" << endl;
 				}
 				XGrabServer(tempdisp);
 				prop = XListProperties(tempdisp, fl_get_canvas_id(
@@ -589,11 +591,11 @@ static void runqueue()
 				// ok, property found, we must wait until ghostscript
 				// deletes it
 				if (lyxerr.debugging()) {
-					lyxerr.print("Releasing the server");
-					lyxerr.print(string("[") +
-						      tostr(getpid()) +
-						      "] GHOSTVIEW property"
-						      " found. Waiting.");
+					lyxerr << "Releasing the server" << endl;
+					lyxerr << "["
+					       << getpid()
+					       << "] GHOSTVIEW property"
+						" found. Waiting." << endl;
 				}
 #ifdef WITH_WARNINGS
 #warning What is this doing? (wouldn't a sleep(1); work too?')
@@ -644,7 +646,7 @@ static void runqueue()
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 			if (lyxerr.debugging()) {
-				lyxerr.print("Releasing the server");
+				lyxerr << "Releasing the server" << endl;
 			}
 			XCloseDisplay(tempdisp);
 
@@ -681,18 +683,18 @@ static void runqueue()
 					 p->data->fname.c_str(), 
 					 "showpage.ps", "quit.ps", "-", 0);
 			// if we are still there, an error occurred.
-			lyxerr.print(string("Error executing ghostscript. ")
-				     + "Code: " + tostr(err));
-			lyxerr.debug("Cmd: " 
-				     + lyxrc->ps_command
-				     +" -sDEVICE=x11 "
-				     + tbuf + tostr(' ')
-				     + p->data->fname);
+			lyxerr << "Error executing ghostscript. "
+			       << "Code: " << err << endl;
+			lyxerr.debug() << "Cmd: " 
+				       << lyxrc->ps_command
+				       << " -sDEVICE=x11 "
+				       << tbuf << ' '
+				       << p->data->fname << endl;
 			_exit(0);	// no gs?
 		}
 		// normal process (parent)
 		if (lyxerr.debugging()) {
-			lyxerr.print(string("GS [") + tostr(pid) + "] started");
+			lyxerr << "GS ["  << pid << "] started" << endl;
 		}
 		gsqueue = gsqueue->next;
 		gsrunning++;
@@ -771,9 +773,11 @@ static figdata *getfigdata(int wid, int hgh, string const & fname,
 		figinset_canvas), &wa);
 
 	if (lyxerr.debugging()) {
-		printf("Create pixmap disp:%d scr:%d w:%d h:%d depth:%d\n",
-		       PTR_AS_INT(fl_display), DefaultScreen(fl_display), 
-		       wid, hgh, wa.depth);
+		lyxerr << "Create pixmap disp:" << fl_display
+		       << " scr:" << DefaultScreen(fl_display)
+		       << " w:" << wid
+		       << " h:" << hgh
+		       << " depth:" << wa.depth << endl;
 	}
 	
 	p->ref = 1;
@@ -808,8 +812,8 @@ static void makeupdatelist(figdata *p)
 
 	for (i = 0; i < figinsref; ++i) if (figures[i]->data == p) {
 		if (lyxerr.debugging()) {
-			printf("Updating inset %d\n", 
-			       PTR_AS_INT(figures[i]->inset));
+			lyxerr << "Updating inset " << figures[i]->inset
+			       << endl;
 		}
 		//UpdateInset(figures[i]->inset);
 		// add inset figures[i]->inset into to_update list
@@ -825,22 +829,25 @@ void sigchldchecker(pid_t pid, int *status)
 
 	bool pid_handled = false;
 	
-	lyxerr.debug(string("Got pid = ") + tostr(pid));
+	lyxerr.debug() << "Got pid = " << pid << endl;
 	pid_handled = false;
 	for (i = bmpinsref - 1; i >= 0; --i) {
 		if (bitmaps[i]->reading && pid == bitmaps[i]->gspid) {
-			lyxerr.debug("Found pid in bitmaps");
+			lyxerr.debug() << "Found pid in bitmaps" << endl;
 			// now read the file and remove it from disk
 			p = bitmaps[i];
 			p->reading = false;
 			if (bitmaps[i]->gsdone) *status = 0;
 			if (*status == 0) {
-				lyxerr.debug(string("GS [") + tostr(pid) +
-					     "] exit OK.");
+				lyxerr.debug() << "GS [" << pid
+					       << "] exit OK." << endl;
 			} else {
-				fprintf(stderr, "GS [%ld] error %d E:%d %d S:%d %d\n", long(pid),
-					*status, WIFEXITED(*status), WEXITSTATUS(*status),
-					WIFSIGNALED(*status), WTERMSIG(*status));
+				lyxerr << "GS [" << pid  << "] error "
+				       << *status << " E:"
+				       << WIFEXITED(*status)
+				       << " " << WEXITSTATUS(*status)
+				       << " S:" << WIFSIGNALED(*status)
+				       << " " << WTERMSIG(*status) << endl;
 			}
 			if (*status == 0) {
 				bitmap_waiting = true;
@@ -862,12 +869,12 @@ void sigchldchecker(pid_t pid, int *status)
 		}
 	}
 	if (!pid_handled) {
-		lyxerr.debug("Checking pid in pidwait");
+		lyxerr.debug() << "Checking pid in pidwait" << endl;
 		pidwait *p = pw, *prev = 0;
 		while (p) {
 			if (pid == p->pid) {
-				lyxerr.debug("Found pid in pidwait");
-				lyxerr.debug(string("Caught child pid of recompute routine ") + tostr(pid));
+				lyxerr.debug() << "Found pid in pidwait" << endl;
+				lyxerr.debug() << "Caught child pid of recompute routine " << pid << endl;
 				if (prev)
 					prev->next = p->next;
 				else
@@ -881,32 +888,31 @@ void sigchldchecker(pid_t pid, int *status)
 	}
 
 	if (pid == -1) {
-		lyxerr.debug("waitpid error");
+		lyxerr.debug() << "waitpid error" << endl;
 		switch (errno) {
 		case ECHILD:
-			lyxerr.print(
-				"The process or process group specified by pid "
-				"does  not exist or is not a child of the cal-"
-				"ling process or can never be  in  the  states "
-				"specified by options.");
+			lyxerr << "The process or process group specified by "
+				"pid does  not exist or is not a child of "
+				"the calling process or can never be in the "
+				"states specified by options." << endl;
 			break;
 		case EINTR:
-			lyxerr.print(
-				"waitpid() was interrupted due to the  receipt "
-				"of a signal sent by the calling process.");
+			lyxerr << "waitpid() was interrupted due to the "
+				"receipt of a signal sent by the calling "
+				"process." << endl;
 			break;
 		case EINVAL:
-			lyxerr.print(
-				"An invalid value was specified for options.");
+			lyxerr << "An invalid value was specified for "
+				"options." << endl;
 			break;
 		default:
-			lyxerr.print("Unknown error from waitpid");
+			lyxerr << "Unknown error from waitpid" << endl;
 			break;
 		}
 	} else if (pid == 0) {
-		lyxerr.print("waitpid nohang");
+		lyxerr << "waitpid nohang" << endl;;
 	} else {
-		lyxerr.debug("normal exit from childhandler");
+		lyxerr.debug() << "normal exit from childhandler" << endl;
 	}
 }
 
@@ -943,8 +949,8 @@ static void RegisterFigure(InsetFig *fi)
 	fi->figure = tmpfig;
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(string("Register Figure: buffer:[") +
-			     tostr(current_view->currentBuffer()) + "]");
+		lyxerr << "Register Figure: buffer:["
+		       << current_view->currentBuffer() << "]" << endl;
 	}
 }
 
@@ -1025,7 +1031,7 @@ InsetFig::InsetFig(int tmpx, int tmpy, Buffer *o)
 InsetFig::~InsetFig()
 {
 	if (lyxerr.debugging()) {
-		lyxerr.print("Figure destructor called");
+		lyxerr << "Figure destructor called" << endl;
 	}
 	UnregisterFigure(this);
 }
@@ -1127,7 +1133,7 @@ void InsetFig::Read(LyXLex &lex)
 		lex.next();
 
 		string const token = lex.GetString();
-		lyxerr.debug("Token: " + token);
+		lyxerr.debug() << "Token: " << token << endl;
 		
 		if (token.empty())
 			continue;
@@ -1175,7 +1181,7 @@ void InsetFig::Read(LyXLex &lex)
 			case PER_PAGE: wtype = PER_PAGE; break;
 			case PER_COL: wtype = PER_COL; break;
 			default:
-				lyxerr.debug("Unknown type!");
+				lyxerr.debug() << "Unknown type!" << endl;
 				break;
 			}
 			twtype = wtype;
@@ -1191,7 +1197,7 @@ void InsetFig::Read(LyXLex &lex)
 			case IN: htype = IN; break;
 			case PER_PAGE: htype = PER_PAGE; break;
 			default:
-				lyxerr.debug("Unknown type!");
+				lyxerr.debug() << "Unknown type!" << endl;
 				break;
 			}
 			thtype = htype;
@@ -1257,7 +1263,7 @@ bool InsetFig::Deletable() const
 
 void InsetFig::Edit(int, int)
 {
-	lyxerr.debug("Editing InsetFig.");
+	lyxerr.debug() << "Editing InsetFig." << endl;
 	Regenerate();
 
 	// We should have RO-versions of the form instead.
@@ -1288,8 +1294,9 @@ Inset *InsetFig::Clone()
 	InsetFig *tmp = new InsetFig(100, 100, owner);
 
 	if (lyxerr.debugging()) {
-		fprintf(stderr, "Clone Figure: buffer:[%d], cbuffer:[xx]\n",
-		       PTR_AS_INT(current_view->currentBuffer()));
+		lyxerr << "Clone Figure: buffer:["
+		       << current_view->currentBuffer()
+		       << "], cbuffer:[xx]" << endl;
 	}
 
 	tmp->wid = wid;
@@ -1632,19 +1639,19 @@ void InsetFig::Recompute()
 		
 		switch (htype) {
 		case DEF:
-			//fprintf(stderr, "This should not happen!\n");
+			//lyxerr << "This should not happen!" << endl;
 			break;
-		case CM:	/* cm */
+		case CM:        /* cm */
 			newy = (int) (28.346*xhgh);
 			break;
 		case IN: /* in */
 			newy = (int) (72*xhgh);
 			break;
-		case PER_PAGE:	/* % of page */
+		case PER_PAGE:  /* % of page */
 			newy = (int) (8.42*xhgh);
 			break;
-         	case PER_COL: 
-                        // Doesn't occur; case exists to suppress
+		case PER_COL: 
+			// Doesn't occur; case exists to suppress
 			// compiler warnings.  
                         break;
 		}
@@ -1731,8 +1738,8 @@ void InsetFig::GetPSSizes()
 	for (;;) {
 		c = fgetc(f);
 		if (c == EOF) {
-			lyxerr.debug("End of (E)PS file reached and"
-				      " no BoundingBox!");
+			lyxerr.debug() << "End of (E)PS file reached and"
+				" no BoundingBox!" << endl;
 			break;
 		}
 		if (c == '%' && lastchar == '%') {
@@ -1750,9 +1757,11 @@ void InsetFig::GetPSSizes()
 				} 
 
 				if (lyxerr.debugging()) {
-					fprintf(stderr, "%%%%BoundingBox:"
-						" %d %d %d %d\n",
-						psx, psy, pswid, pshgh);
+					lyxerr << "%%%%BoundingBox:"
+					       << psx << ' '
+					       << psy << ' '
+					       << pswid << ' '
+					       << pshgh << endl;
 					break;
 				}
 			}
@@ -1811,7 +1820,7 @@ void InsetFig::CallbackFig(long arg)
 			fl_activate_object(form->Width);
 			break;
 		default:
-			lyxerr.debug("Unknown type!");
+			lyxerr.debug() << "Unknown type!" << endl;
 			break;
 		}
 		regen = true;
@@ -1842,7 +1851,7 @@ void InsetFig::CallbackFig(long arg)
 			fl_activate_object(form->Height);
 			break;
 		default:
-			lyxerr.debug("Unknown type!");
+			lyxerr.debug() << "Unknown type!" << endl;
 			break;
 		}
 		regen = true;
@@ -1905,7 +1914,8 @@ void InsetFig::CallbackFig(long arg)
 			Recompute();
 			/* now update inset */
 			if (lyxerr.debugging()) {
-				fprintf(stderr, "Update: [%dx%d]\n", wid, hgh);
+				lyxerr << "Update: ["
+				       << wid << 'x' << hgh << ']' << endl;
 			}
 			UpdateInset(this);
 			if (arg == 8) {
@@ -2070,7 +2080,7 @@ void InsetFig::Preview(char const *p)
  	pid = fork();
 
   	if (pid == -1) {
-  		lyxerr.print("Cannot fork process!");
+  		lyxerr << "Cannot fork process!" << endl;
   		return;		// error
   	}
   	if (pid > 0) {
@@ -2081,11 +2091,11 @@ void InsetFig::Preview(char const *p)
 	string buf1 = OnlyPath(owner->getFileName());
 	string buf2 = MakeAbsPath(p, buf1);
 	
-	lyxerr.print(string("Error during rendering ") +
-		      tostr(execlp(lyxrc->view_pspic_command.c_str(),
-				 lyxrc->view_pspic_command.c_str(),
-				 buf2.c_str(), 
-				 0)));
+	lyxerr << "Error during rendering "
+	       << execlp(lyxrc->view_pspic_command.c_str(),
+			 lyxrc->view_pspic_command.c_str(),
+			 buf2.c_str(), 0)
+	       << endl;
 	_exit(0);
 }
 
@@ -2098,7 +2108,8 @@ void InsetFig::BrowseFile()
 	LyXFileDlg fileDlg;
 
 	if (lyxerr.debugging()) {
-		fprintf(stderr, "Filename: %s\n", owner->getFileName().c_str());
+		lyxerr << "Filename: "
+		       << owner->getFileName() << endl;
 	}
 	string p = fl_get_input(form->EpsFile);
 
@@ -2158,7 +2169,7 @@ void GraphicsCB(FL_OBJECT *obj, long arg)
 	/* obj->form contains the form */
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(string("GraphicsCB callback: ") + tostr(arg));
+		lyxerr << "GraphicsCB callback: " << arg << endl;
 	}
 
 	/* find inset we were reacting to */
@@ -2167,8 +2178,7 @@ void GraphicsCB(FL_OBJECT *obj, long arg)
 		    == obj->form) {
 	    
 			if (lyxerr.debugging()) {
-				lyxerr.print(string("Calling back figure ")
-					     + tostr(i));
+				lyxerr << "Calling back figure " << i << endl;
 			}
 			figures[i]->inset->CallbackFig(arg);
 			return;
@@ -2182,8 +2192,7 @@ void HideFiguresPopups()
 		if (figures[i]->inset->form 
 		    && figures[i]->inset->form->Figure->visible) {
 			if (lyxerr.debugging()) {
-				lyxerr.print(string("Hiding figure ")
-					     + tostr(i));
+				lyxerr << "Hiding figure " << i << endl;
 			}
 			// hide and free the form
 			figures[i]->inset->CallbackFig(9);

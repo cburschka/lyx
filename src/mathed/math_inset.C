@@ -273,7 +273,7 @@ bool MathFracInset::Inside(int x, int y)
 
 void MathFracInset::SetFocus(int /*x*/, int y)
 {  
-//    fprintf(stderr, "y %d %d %d ", y, yo, den->yo);
+//    lyxerr << "y " << y << " " << yo << " " << den->yo << " ";
     idx = (y > yo) ? 1: 0;
 }
 
@@ -410,7 +410,7 @@ void MathMatrixInset::Metrics()
     MathedRowSt *cprow=0, *cxrow;
 
     if (!row) {
-//	fprintf(stderr, " MIDA ");
+//	lyxerr << " MIDA ";
 	MathedXIter it(this);
 	row = it.adjustVerticalSt();
     } 

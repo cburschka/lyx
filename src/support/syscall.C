@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <cstdlib>
 #include <cstdio>
+#include "debug.h"
 #include <unistd.h>
 #include "syscall.h"
 #include "syscontr.h"
@@ -98,16 +99,19 @@ void Systemcalls::waitForChild()
 			retval = WEXITSTATUS(status);
 			wait = false;
 		} else if (WIFSIGNALED(status)) {
-			fprintf(stderr,"LyX: Child didn't catch signal %d "
-				"and died. Too bad.\n", WTERMSIG(status));
+			lyxerr << "LyX: Child didn't catch signal "
+			       << WTERMSIG(status)
+			       <<" and died. Too bad." << endl;
 			wait = false;
 		} else if (WIFSTOPPED(status)) {
-			fprintf(stderr,"LyX: Child (pid: %ld) stopped on "
-				"signal %d. Waiting for child to finish.\n", 
-				(long) pid, WSTOPSIG(status));
+			lyxerr << "LyX: Child (pid: " << pid
+			       << ") stopped on signal "
+			       << WSTOPSIG(status)
+			       << ". Waiting for child to finish." << endl;
 		} else {
-			fprintf(stderr,"LyX: Something rotten happened while "
-				"waiting for child %ld\n", (long) pid);
+			lyxerr << "LyX: Something rotten happened while "
+				"waiting for child "
+			       << pid << endl;
 			wait = false;
 		}
 	}

@@ -27,7 +27,7 @@
 #include "math_macro.h"
 #include "math_root.h"
 #include "support/lstrings.h"
-#include "error.h"
+#include "debug.h"
 
 extern void mathed_set_font(short type, int style);
 
@@ -147,7 +147,7 @@ void MathedCursor::SetPar(MathParInset *p)
 
 void MathedCursor::Draw(long unsigned pm, int x, int y)
 {
-//    fprintf(stderr, "Cursor[%d %d] ", x, y);
+//    lyxerr << "Cursor[" << x << " " << y << "] ";
     win = pm;    // win = (mathedCanvas) ? mathedCanvas: pm;
     par->Metrics();
     int w = par->Width()+2, a = par->Ascent()+1, h = par->Height()+1;
@@ -165,7 +165,7 @@ void MathedCursor::Draw(long unsigned pm, int x, int y)
 
 void MathedCursor::Redraw()
 {  
-   lyxerr.debug("Mathed: Redrawing!", Error::MATHED);
+	lyxerr[Debug::MATHED] << "Mathed: Redrawing!" << endl;
    par->Metrics();
    int w = par->Width(), h = par->Height();
    int x, y;
@@ -261,7 +261,7 @@ bool MathedCursor::Right(bool sel)
       if (!selection) { 
 	  MathParInset *p = cursor->GetActiveInset();
 	  if (!p) {
-	      fprintf(stderr, "Math error: Inset expected.\n");
+		  lyxerr << "Math error: Inset expected." << endl;
 	      return cursor->Next();
 	  }
 	  p->setArgumentIdx(0);
@@ -424,7 +424,7 @@ void MathedCursor::Insert(MathedInset* p, int t)
        }
      
    } else
-     fprintf(stderr, "Math error: Full stack.\n");
+	   lyxerr << "Math error: Full stack." << endl;
 }
 
 void MathedCursor::Delete() 
@@ -585,7 +585,7 @@ void MathedCursor::SetSize(short size)
 void MathedCursor::setLabel(char const* label)
 {  // ugly hack and possible bug
     if (!cursor->setLabel(strnew(label)))
-      fprintf(stderr, "MathErr: Bad place to set labels.");
+	    lyxerr << "MathErr: Bad place to set labels." << endl;
 }
 
 
@@ -634,8 +634,7 @@ void MathedCursor::Interpret(char const *s)
     if (!l) {       
 	p = MathMacroTable::mathMTable.getMacro(s);
 	if (!p) {
-	    lyxerr.debug(string("Macro2 ") + s + ' ' 
-			 + tostr(tcode), Error::MATHED);
+	    lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
 	    if (strcmp("root", s)==0) {
 		p = new MathRootInset();
 		tcode = LM_TC_ACTIVE_INSET;
@@ -643,7 +642,7 @@ void MathedCursor::Interpret(char const *s)
 	      p = new MathFuncInset(s, LM_OT_UNDEF);
 	} else {
 	    tcode = ((MathMacro*)p)->getTCode();
-	    fprintf(stderr, "Macro2 %s %d  ", s, tcode);
+	    lyxerr << "Macro2 " << s << ' ' << tcode << "  " ;
 	}
     } else {
 	MathedInsetTypes fractype = LM_OT_FRAC;
@@ -665,7 +664,7 @@ void MathedCursor::Interpret(char const *s)
 	 }  
 	 case LM_TK_STACK:
 	    fractype = LM_OT_STACKREL;
-	    lyxerr.debug(" i:stackrel ", Error::MATHED);
+	    lyxerr[Debug::MATHED] << " i:stackrel " << endl;
 	 case LM_TK_FRAC: 
 	 {	 
 	     p = new MathFracInset(fractype);
@@ -705,8 +704,7 @@ void MathedCursor::Interpret(char const *s)
 	 case LM_TK_MACRO:
 	    p = MathMacroTable::mathMTable.getMacro(s);
 	    tcode = ((MathMacro*)p)->getTCode();
-	    lyxerr.debug(string("Macro ") + s + ' ' 
-			 + tostr(tcode), Error::MATHED);
+	    lyxerr[Debug::MATHED] << "Macro " << s << ' ' << tcode << endl;
 	    break;
 	 default:
 	 {
@@ -752,7 +750,7 @@ void MathedCursor::MacroModeOpen()
       Insert (imacro);
       macro_mode = true;
    } else
-     fprintf(stderr, "Mathed Warning: Already in macro mode\n");
+	   lyxerr << "Mathed Warning: Already in macro mode" << endl;
 }
 
 void MathedCursor::MacroModeClose()
@@ -792,7 +790,7 @@ void MathedCursor::MacroModeBack()
      } else 
 	MacroModeClose();
    } else
-     fprintf(stderr, "Mathed Warning: we are not in macro mode\n");
+	   lyxerr << "Mathed Warning: we are not in macro mode" << endl;
 }
 
 void MathedCursor::MacroModeInsert(char c)
@@ -802,7 +800,7 @@ void MathedCursor::MacroModeInsert(char c)
       macrobf[macroln++] = c;
       imacro->Metrics();
    } else
-     fprintf(stderr, "Mathed Warning: we are not in macro mode\n");
+	   lyxerr << "Mathed Warning: we are not in macro mode" << endl;
 }
 
 void MathedCursor::SelCopy()
@@ -834,7 +832,7 @@ void MathedCursor::SelCut()
 
 void MathedCursor::SelDel()
 {
-//    fprintf(stderr, "Deleting sel ");
+//    lyxerr << "Deleting sel "
     if (selection) {    
 	if (cursor->pos==selpos) return;
      	cursor->Clean(selpos);
@@ -845,7 +843,7 @@ void MathedCursor::SelDel()
 
 void MathedCursor::SelPaste()
 {
-//    fprintf(stderr, "paste %p %d ", selarray, cursor->pos);
+//    lyxerr << "paste " << selarray << " " << curor->pos;
     if (selection) SelDel();
     if (selarray) {
 	cursor->Merge(selarray);
@@ -855,7 +853,7 @@ void MathedCursor::SelPaste()
 
 void MathedCursor::SelStart()
 {
-   lyxerr.debug("Starting sel ",Error::MATHED);
+	lyxerr[Debug::MATHED] << "Starting sel " << endl;
     if (!anchor) {
 	selpos = cursor->pos;   
 	selstk = new MathStackXIter(mathstk); 
@@ -870,7 +868,7 @@ void MathedCursor::SelStart()
 
 void MathedCursor::SelClear()
 {   
-   lyxerr.debug("Clearing sel ", Error::MATHED);
+	lyxerr[Debug::MATHED] << "Clearing sel " << endl;
     selection = false;
     delete selstk;
     selstk = 0;
@@ -887,12 +885,12 @@ void MathedCursor::SelBalance()
     // If unbalanced, balance them
     while (d != 0) {
         if (d<0) {
-//            fprintf(stderr, "b[%d %d %d %d]", mathstk.Level(), selstk->Level(), anchor->GetX(), cursor->GetX());
+//            lyxerr << "b[" << mathstk.Level() << " " << selstk->Level << " " << anchor->GetX() << " " << cursor->GetX() << "]";
             anchor = selstk->pop();
             if (anchor->GetX() >= cursor->GetX()) 
 	      anchor->Next();
         } else {
-//            fprintf(stderr, "a[%d %d]", mathstk.Level(), selstk->Level());
+//            lyxerr <<"a[" << mathstk.Level() << " " << selstk->Level() <<"]";
             Pop();
         }
         d = mathstk.Level() - selstk->Level();
@@ -955,10 +953,10 @@ XPoint *MathedCursor::SelGetArea(int& np)
     point[i].x = point[0].x;
     point[i++].y = point[0].y;
     np = i;
-//    fprintf(stderr, "AN[%d %d %d %d] ", x, y, x1, y1); 
-//    fprintf(stderr, "MT[%d %d %d %d] ", a, d, a1, d1);
+//    lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "] ";
+//    lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "] ";
 //    for (i=0; i<np; i++)
-//      fprintf(stderr, "XY[%d %d] ", point[i].x, point[i].y);
+//      lyxerr << "XY[" << point[i].x << " " << point[i].y << "] ";
     
     return &point[0];
 }

@@ -112,7 +112,7 @@ public:
 	void printError(string const & message);
 
 	/**
-	  Prints the current token table on stderr.
+	  Prints the current token table on cerr.
 	  */
 	void printTable();
 protected:

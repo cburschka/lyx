@@ -14,7 +14,7 @@
 #pragma implementation "lyxrc.h"
 #endif
 
-#include "error.h"
+#include "debug.h"
 
 #include "lyxrc.h"
 #include "LyXAction.h"
@@ -304,10 +304,10 @@ int LyXRC::ReadBindFile(string name)
 {
 	hasBindFile = true;
 	string tmp = i18nLibFileSearch("bind",name,"bind");
-	lyxerr.debug("Reading bindfile:" + tmp, Error::LYXRC); 
+	lyxerr[Debug::LYXRC] << "Reading bindfile:" << tmp << endl;
 	int result = Read(tmp);
 	if (result) {
-		lyxerr.print("Error reading bind file: " + tmp);
+		lyxerr << "Error reading bind file: " << tmp << endl;
 	}
 	return result;
 }
@@ -318,13 +318,13 @@ int LyXRC::Read(string const &filename)
 	string bindFile = "cua";
 
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
-	if (lyxerr.debugging(Error::LEX_PARSER))
+	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable();
 	
 	lexrc.setFile(filename);
 	if (!lexrc.IsOK()) return -2;
 
-	lyxerr.debug("Reading '" + filename + "'...", Error::INIT);
+	lyxerr[Debug::INIT] << "Reading '" << filename << "'..." << endl;
 	
 	while (lexrc.IsOK()) {
 
@@ -718,11 +718,11 @@ int LyXRC::Read(string const &filename)
 			}
 
 			if ((action = lyxaction.LookupFunc(cmd.c_str()))>=0) {
-				if (lyxerr.debugging(Error::KEY)) {
-					lyxerr.print("RC_BIND: Sequence `"
-						      + seq + "' Command `"
-						      + cmd + "' Action `"
-						      + tostr(action) + '\'');
+				if (lyxerr.debugging(Debug::KEY)) {
+					lyxerr << "RC_BIND: Sequence `"
+					       << seq << "' Command `"
+					       << cmd << "' Action `"
+					       << action << '\'' << endl;
 				}
 				res = bindKey(seq.c_str(), action);
 				if (res != 0) {
@@ -833,7 +833,7 @@ int LyXRC::Read(string const &filename)
 
 void LyXRC::Print()
 {
-	lyxerr.print("The current internal LyXRC:");
+	lyxerr << "The current internal LyXRC:" << endl;
 }
 
 

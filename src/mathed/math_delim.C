@@ -347,14 +347,14 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
 	  n = (int)d[i++];
 	  for (j=0; j<n; j++) {
 	     xx = d[i++]; yy = d[i++];
-//	     fprintf(stderr, " %g %g ", xx, yy);
+//	     lyxerr << " " << xx << " " << yy << " ";
 	     if (code==4) 
 	       sqmt.transf(xx, yy, xx, yy);
 	     else
 	       mt.transf(xx, yy, xx, yy);
 	     p[j].x = x+(int)xx;
 	     p[j].y = y+(int)yy;
-	     //      fprintf(stderr, "P[%d %g %g %d %d]", j, xx, yy, x, y);
+	     //  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 	  }
 	  XDrawLines(fl_display, win, mathLineGC, p, n, CoordModeOrigin);
 	  XFlush(fl_display);

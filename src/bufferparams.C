@@ -19,7 +19,7 @@
 #include "tex-strings.h"
 #include "layout.h"
 #include "vspace.h"
-#include "error.h"
+#include "debug.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 
@@ -236,8 +236,8 @@ void BufferParams::useClassDefaults() {
 void BufferParams::readPreamble(LyXLex &lex)
 {
 	if (lex.GetString() != "\\begin_preamble")
-		lyxerr.print("Error (BufferParams::readPreamble):"
-			      "consistency check failed.");
+		lyxerr << "Error (BufferParams::readPreamble):"
+			"consistency check failed." << endl;
 
 	preamble = lex.getLongString("\\end_preamble");
 }
@@ -261,9 +261,10 @@ void BufferParams::readLanguage(LyXLex &lex)
 			break;
 		}
 		else if (test.empty()) {
-			lyxerr.print("Warning: language `"
-				      + tmptok + "' not recognized!");
-			lyxerr.print("         Setting language to `default'.");
+			lyxerr << "Warning: language `"
+			       << tmptok << "' not recognized!\n"
+			       << "         Setting language to `default'."
+			       << endl;
 			language = "default";
 			break;	 
 		}      
