@@ -393,11 +393,12 @@ void BufferView::Pimpl::scroll(int lines)
 	LyXText const * t = bv_->text;
 	int const line_height = t->defaultHeight();
 
-	int const disp = lines * line_height;
+	// The new absolute coordinate
+	int new_first_y = t->first_y + lines * line_height;
 
 	// Restrict to a valid value
-	int new_first_y = std::min(t->height - 4 * line_height, disp);
-	new_first_y = std::max(0, disp);
+	new_first_y = std::min(t->height - 4 * line_height, new_first_y);
+	new_first_y = std::max(0, new_first_y);
 
 	scrollDocView(new_first_y);
 
