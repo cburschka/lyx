@@ -1149,8 +1149,7 @@ void LyXText::setCursor(CursorSlice & cur, paroffset_type par,
 	if (paragraphs().begin()->rows.empty())
 		return;
 
-	// get the cursor y position in text
-
+	// now some strict checking
 	ParagraphList::iterator pit = getPar(par);
 	Row const & row = *pit->getRow(pos);
 	pos_type const end = row.endpos();

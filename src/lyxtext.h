@@ -178,7 +178,11 @@ public:
 	lyx::pos_type getColumnNearX(ParagraphList::iterator pit,
 		Row const & row, int & x, bool & boundary) const;
 
-	/// select the word we need depending on word_location
+	/** Find the word under \c from in the relative location
+	 *  defined by \c word_location.
+	 *  @param from return here the start of the word
+	 *  @param to return here the end of the word
+	 */
 	void getWord(CursorSlice & from, CursorSlice & to, lyx::word_location const);
 	/// just selects the word the cursor is in
 	void selectWord(lyx::word_location loc);

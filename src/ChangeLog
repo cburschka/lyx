@@ -1,3 +1,7 @@
+2004-01-14  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text.C (getWord): fix getWord (and thus LFUN_WORDSEL)
+	* text3.C (dispatch): fix LFUN_WORD{RIGHT,LEFT}SEL
 
 2004-01-13  André Pönitz  <poenitz@gmx.net>
 

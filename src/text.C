@@ -1710,7 +1710,6 @@ void LyXText::cursorRightOneWord(CursorSlice & cur)
 void LyXText::getWord(CursorSlice & from, CursorSlice & to, word_location const loc)
 {
 	ParagraphList::iterator from_par = getPar(from);
-	ParagraphList::iterator to_par = getPar(to);
 	switch (loc) {
 	case lyx::WHOLE_WORD_STRICT:
 		if (from.pos() == 0 || from.pos() == from_par->size()
@@ -1744,6 +1743,7 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to, word_location const 
 		break;
 	}
 	to = from;
+	ParagraphList::iterator to_par = getPar(to);
 	while (to.pos() < to_par->size()
 	       && !to_par->isSeparator(to.pos())
 	       && !to_par->isKomma(to.pos())

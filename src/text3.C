@@ -618,6 +618,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDRIGHTSEL:
+		if (!selection.set())
+			bv->resetAnchor();
 		if (rtl())
 			cursorLeftOneWord();
 		else
@@ -626,6 +628,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDLEFTSEL:
+		if (!selection.set())
+			bv->resetAnchor();
 		if (rtl())
 			cursorRightOneWord();
 		else
@@ -634,12 +638,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDSEL: {
-		CursorSlice cur1 = cursor();
-		CursorSlice cur2;
-		getWord(cur1, cur2, lyx::WHOLE_WORD);
-		setCursor(cur1.par(), cur1.pos());
-		clearSelection();
-		setCursor(cur2.par(), cur2.pos());
+		selectWord(lyx::WHOLE_WORD);
 		finishChange(bv, true);
 		break;
 	}
