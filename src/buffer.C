@@ -1182,7 +1182,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 			} else if (file_format > LYX_FORMAT) {
 				// future format
 				Alert::alert(_("Warning!"),
-					_("The file was created with a newer version of"
+					_("The file was created with a newer version of "
 					"LyX. This is likely to cause problems."));
 
 			} else if (file_format < LYX_FORMAT) {
