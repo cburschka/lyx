@@ -256,13 +256,13 @@ string const move_file(string const & from_file, string const & to_file)
 	ostringstream command;
 	command << "fromfile=" << from_file << "\n"
 		<< "tofile="   << to_file << "\n\n"
-		<< "'mv' -f ${fromfile} ${tofile} ||\n"
+		<< "'mv' -f \"${fromfile}\" \"${tofile}\" ||\n"
 		<< "{\n"
-		<< "\t'cp' -f ${fromfile} ${tofile} ||\n"
+		<< "\t'cp' -f \"${fromfile}\" \"${tofile}\" ||\n"
 		<< "\t{\n"
 		<< "\t\texit 1\n"
 		<< "\t}\n"
-		<< "\t'rm' -f ${fromfile}\n"
+		<< "\t'rm' -f \"${fromfile}\"\n"
 		<< "}\n";
 
 	return command.str();
@@ -328,9 +328,9 @@ bool build_script(string const & from_file,
 		       << "outfile="     << QuoteName(outfile) << '\n';
 
 		string command = conv.command;
-		command = subst(command, token_from, "${infile}");
-		command = subst(command, token_base, "${infile_base}");
-		command = subst(command, token_to,   "${outfile}");
+		command = subst(command, token_from, "\"${infile}\"");
+		command = subst(command, token_base, "\"${infile_base}\"");
+		command = subst(command, token_to,   "\"${outfile}\"");
 		command = LibScriptSearch(command);
 
 		// Store in the shell script
@@ -339,7 +339,7 @@ bool build_script(string const & from_file,
 		// Test that this was successful. If not, remove
 		// ${outfile} and exit the shell script
 		script << "{\n"
-		       << "\t'rm' -f ${outfile}\n"
+		       << "\t'rm' -f \"${outfile}\"\n"
 		       << "\texit 1\n"
 		       << "}\n\n";
 
@@ -348,10 +348,10 @@ bool build_script(string const & from_file,
 		// ${outfile}.1.
 		// If this occurs, move ${outfile}.0 to ${outfile}
 		// and delete ${outfile}.?
-		script << "if [ ! -f ${outfile} ]; then\n"
-		       << "\tif [ -f ${outfile}.0 ]; then\n"
-		       << "\t\t'mv' -f ${outfile}.0 ${outfile}\n"
-		       << "\t\t'rm' -f ${outfile}.?\n"
+		script << "if [ ! -f \"${outfile}\" ]; then\n"
+		       << "\tif [ -f \"${outfile}\".0 ]; then\n"
+		       << "\t\t'mv' -f \"${outfile}\".0 \"${outfile}\"\n"
+		       << "\t\t'rm' -f \"${outfile}\".?\n"
 		       << "\telse\n"
 		       << "\t\texit 1\n"
 		       << "\tfi\n"
@@ -359,12 +359,12 @@ bool build_script(string const & from_file,
 
 		// Delete the infile, if it isn't the original, from_file.
 		if (infile != from_file) {
-			script << "'rm' -f ${infile}\n\n";
+			script << "'rm' -f \"${infile}\"\n\n";
 		}
 	}
 
 	// Move the final outfile to to_file
-	script << move_file("${outfile}", QuoteName(to_file));
+	script << move_file("\"${outfile}\"", QuoteName(to_file));
 	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
 
 	return true;
