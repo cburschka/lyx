@@ -1,3 +1,9 @@
+2002-03-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* depcomp: fixed bug in dependency tracking for Tru64 Unix.
+
+	* depcomp.diff: the patch is added to the repository, as Lars wishes...
+	
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxinclude.m4 (LYX_CHECK_LDR): deleted; to complex does not give us anything. 

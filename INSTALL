@@ -342,15 +342,36 @@ notify us.
     repository, due to the tricks used by automake for dependencies. Ask
     Jean-Marc.Lasgouttes@inria.fr for a workaround.
 
+    Or rather, it may well work if you are using automake 1.5 and autoconf 2.5
+    or greater, but you'll have to patch automake's depcomp first. (Depcomp
+    is a little shell script to automagically work out file dependencies
+    and it's broken for automake 1.5 and Tru64 :-(). The patch is to be found
+    in config/depcomp.diff.
+    Angus 22 March, 2002.
+
   o On Tru64 Unix, you may have to compile with
     --with-included-string to work around a Tru64 linker limitation
     (the STL string template creates names which may be too long). We
-    also had reports that it helps with gcc 2.95.2 on solaris 2.6. 
+    also had reports that it helps with gcc 2.95.2 on solaris 2.6.
+
+    Using Tru64 Unix 4.0e, the std::string is fine.
+    Angus 22 March, 2002.
 
   o On Tru64 Unix with cxx, you may have a compilation error in
     lyx_main.C if you have GNU gettext installed. This is due to a bug
     in gettext. To solve this, you can either (1) configure with
     --with-included-gettext or (2) add -D__STDC__ to cxx flags.
+
+  o On Tru64 Unix 4.0e, the STL library routine std::count is broken
+    (/usr/include/cxx/algorithm.cc, line 289 on my machine).
+    It calculates "n" but does not return it! The fix is to add "return n;" to
+    the end of the (4-line long) routine.
+    Angus 22 March, 2002.
+
+  o On Tru64 Unix 4.0e, compilation of support/lyxsum.C dies horribly. The
+    work-around is to use the old version, 1.18, of this routine. Ask
+    Angus Leeming <leeming@lyx.org> for details.
+    Angus 22 March, 2002.
 
   o According to John Collins <collins@phys.psu.edu>, on SunOS 4.1.3 you may 
     find two sets of X libraries, and they are of course incompatible :-)

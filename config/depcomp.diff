@@ -1,0 +1,39 @@
+Index: depcomp
+===================================================================
+RCS file: /usr/local/lyx/cvsroot/lyx-devel/config/depcomp,v
+retrieving revision 1.1
+diff -u -p -r1.1 depcomp
+--- depcomp	17 Oct 2001 15:38:58 -0000	1.1
++++ depcomp	22 Mar 2002 12:18:23 -0000
+@@ -198,14 +198,28 @@ aix)
+   ;;
+ 
+ tru64)
+-   # The Tru64 AIX compiler uses -MD to generate dependencies as a side
++   # The Tru64 DEC compiler uses -MD to generate dependencies as a side
+    # effect.  `cc -MD -o foo.o ...' puts the dependencies into `foo.o.d'.
+    # At least on Alpha/Redhat 6.1, Compaq CCC V6.2-504 seems to put 
+    # dependencies in `foo.d' instead, so we check for that too.
+    # Subdirectories are respected.
+ 
+-   tmpdepfile1="$object.d"
+-   tmpdepfile2=`echo "$object" | sed -e 's/.o$/.d/'` 
++   # This is incorrect as it assumes that $object has a .o extension when
++   # it could well have a .lo one.
++   #tmpdepfile1="$object.d"
++   # This is just bad sed. The /.o$/ should be /\.o/, nonwithstanding the
++   # flawed logic, described above.
++   #tmpdepfile2=`echo "$object" | sed -e 's/.o$/.d/'`
++
++   # The correct way:
++   # Strip the (.o, or .lo) extension from $object
++   # (Same piece of sed magic as used for the AIX compiler above.)
++   stripped=`echo "$object" | sed -e 's,^.*/,,' -e 's/\(.*\)\..*$/\1/'`
++   # Tru64 compiler dependency file.
++   tmpdepfile1="$stripped.o.d"
++   # Compaq CCC V6.2 dependency file.
++   tmpdepfile2="$stripped.d"
++
+    if test "$libtool" = yes; then
+       "$@" -Wc,-MD
+    else
