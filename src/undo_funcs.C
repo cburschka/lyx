@@ -123,7 +123,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		}
 		// this surprisingly fills the undo! (Andre')
 		size_t par = 0;
-		//while (deletepar && deletepar != *behind) {
+		//while (deletepar && deletepar != *behind) 
 		while (deletepar != *behind) {
 			deletelist.push_back(&*deletepar);
 			++deletepar;
@@ -222,46 +222,29 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	ParIterator tmppar =
 		bv->buffer()->getParFromID(undo.number_of_cursor_par);
 
-	if (it) {
-		if (tmppar != end) {
-			LyXText * t;
-			Inset * it = tmppar->inInset();
-			if (it) {
-				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
-				it->localDispatch(cmd);
-				t = it->getLyXText(bv);
-			} else {
-				t = bv->text;
-			}
-			t->setCursorIntern(*tmppar, undo.cursor_pos);
-			// Clear any selection and set the selection
-			// cursor for an evt. new selection.
-			t->clearSelection();
-			t->selection.cursor = t->cursor;
-			t->updateCounters();
-			bv->fitCursor();
+	if (tmppar != end) {
+		LyXText * t;
+		Inset * it = tmppar->inInset();
+		if (it) {
+			FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
+			it->localDispatch(cmd);
+			t = it->getLyXText(bv);
+		} else {
+			t = bv->text;
 		}
+		t->setCursorIntern(*tmppar, undo.cursor_pos);
+		// Clear any selection and set the selection
+		// cursor for an evt. new selection.
+		t->clearSelection();
+		t->selection.cursor = t->cursor;
+		t->updateCounters();
+	}
+
+	if (it) {
+		bv->fitCursor();
 		bv->updateInset(it);
 		bv->text->setCursorIntern(bv->text->cursor.par(),
 					  bv->text->cursor.pos());
-	} else {
-		if (tmppar != end) {
-			LyXText * t;
-			Inset * it = tmppar->inInset();
-			if (it) {
-				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
-				it->localDispatch(cmd);
-				t = it->getLyXText(bv);
-			} else {
-				t = bv->text;
-			}
-			t->setCursorIntern(*tmppar, undo.cursor_pos);
-			// Clear any selection and set the selection
-			// cursor for an evt. new selection.
-			t->clearSelection();
-			t->selection.cursor = t->cursor;
-			t->updateCounters();
-		}
 	}
 
 	// And here it's safe enough to delete all removed paragraphs.

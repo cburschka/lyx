@@ -88,6 +88,13 @@ ParIterator::ParIterator(ParIterator const & pi)
 {}
 
 
+void ParIterator::operator=(ParIterator const & pi)
+{
+	ParIterator tmp(pi);
+	pimpl_.swap(tmp.pimpl_);
+}
+
+
 ParIterator & ParIterator::operator++()
 {
 	while (!pimpl_->positions.empty()) {

@@ -25,6 +25,8 @@ public:
 	///
 	ParIterator(ParIterator const &);
 	///
+	void operator=(ParIterator const &);
+	///
 	ParIterator & operator++();
 	///
 	ParagraphList::iterator operator*() const;
