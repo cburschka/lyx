@@ -135,3 +135,5 @@ What's new
 
 - improve the lyx.spec file used to produce rpms
 
+- fix a bug where the DVI file was not updated due to an old format
+  .dep file (this happened only when use_tempdir was set to false)
