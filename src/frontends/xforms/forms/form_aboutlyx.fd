@@ -9,13 +9,13 @@ Unit of measure: FL_COORD_PIXEL
 =============== FORM ===============
 Name: form_aboutlyx
 Width: 450
-Height: 370
+Height: 400
 Number of Objects: 3
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 450 370
+box: 0 0 450 400
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 320 330 120 30
+box: 320 360 120 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -51,7 +51,7 @@ argument: 0
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 10 20 430 300
+box: 10 20 430 330
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -69,13 +69,13 @@ argument:
 =============== FORM ===============
 Name: form_tab_version
 Width: 430
-Height: 280
+Height: 310
 Number of Objects: 3
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 430 280
+box: 0 0 430 310
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -93,25 +93,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 120 410 150
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Text
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_version
-callback: 
-argument: 
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 10 410 100
+box: 10 10 410 110
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
@@ -126,16 +108,34 @@ name: text_copyright
 callback: 
 argument: 
 
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 10 130 410 170
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Text
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: text_version
+callback: 
+argument: 
+
 =============== FORM ===============
 Name: form_tab_credits
 Width: 430
-Height: 280
+Height: 310
 Number of Objects: 2
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 430 280
+box: 0 0 430 310
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -153,7 +153,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 10 10 410 260
+box: 10 10 410 290
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_BOTTOM
@@ -171,13 +171,13 @@ argument: 0
 =============== FORM ===============
 Name: form_tab_license
 Width: 430
-Height: 280
+Height: 310
 Number of Objects: 3
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 430 280
+box: 0 0 430 310
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -213,7 +213,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 120 410 150
+box: 10 120 410 180
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE

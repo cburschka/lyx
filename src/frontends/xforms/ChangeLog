@@ -1,5 +1,8 @@
 2001-07-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* forms/form_aboutlyx.fd: made a bit bigger to get the Copyright &
+	Version stuff in.
+
 	* input_validators.[Ch] (fl_int_filter, fl_float_filter): new methods.
 
 	* FormGraphics.C (build): uncommented the fl_set_input_return call for

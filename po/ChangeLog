@@ -1,3 +1,8 @@
+2001-07-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Makefile.in.in: replaced "find src -path" call with unix-standard
+	equivalent. (From Lars).
+
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* po files: merge with lyx.pot

@@ -24,8 +24,8 @@ struct FD_form_tab_version {
 	~FD_form_tab_version();
 
 	FL_FORM *form;
-	FL_OBJECT *text_version;
 	FL_OBJECT *text_copyright;
+	FL_OBJECT *text_version;
 };
 struct FD_form_tab_credits {
 	~FD_form_tab_credits();
