@@ -1,5 +1,12 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* paragraph.C:
+	* ParagraphParameters.h:
+	* ParagraphParameters.C: move output code to a
+	::write() method
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* BufferView.C (insertLyXFile):
 	* buffer.h:
 	* buffer.C:

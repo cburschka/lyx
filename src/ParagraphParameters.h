@@ -9,8 +9,11 @@
 
 #include "ParameterStruct.h"
 
+#include <iosfwd>
+
 class VSpace;
 class Spacing;
+class LyXLex;
 
 
 ///
@@ -84,6 +87,13 @@ public:
 	LyXLength const & leftIndent() const;
 	///
 	void leftIndent(LyXLength const &);
+
+	/// read the parameters from a lex
+	void read(LyXLex & lex);
+
+	/// write out the parameters to a stream
+	void write(std::ostream & os) const;
+
 private:
 	///
 	void set_from_struct(ParameterStruct const &);

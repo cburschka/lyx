@@ -2,6 +2,12 @@
 
 #include "ParagraphParameters.h"
 #include "ParameterStruct.h"
+#include "tex-strings.h"
+#include "lyxlex.h"
+
+#include <iostream>
+
+using std::ostream;
 
 // Initialize static member var.
 ShareContainer<ParameterStruct> ParagraphParameters::container;
@@ -246,7 +252,6 @@ void ParagraphParameters::labelWidthString(string const & lws)
 }
 
 
-
 LyXLength const & ParagraphParameters::leftIndent() const
 {
 	return param->leftindent;
@@ -258,4 +263,66 @@ void ParagraphParameters::leftIndent(LyXLength const & li)
 	ParameterStruct tmp(*param);
 	tmp.leftindent = li;
 	set_from_struct(tmp);
+}
+
+
+void ParagraphParameters::read(LyXLex & lex)
+{
+}
+
+
+void ParagraphParameters::write(ostream & os) const
+{
+	// Maybe some vertical spaces.
+	if (spaceTop().kind() != VSpace::NONE)
+		os << "\\added_space_top "
+		   << spaceTop().asLyXCommand() << ' ';
+	if (spaceBottom().kind() != VSpace::NONE)
+		os << "\\added_space_bottom "
+		   << spaceBottom().asLyXCommand() << ' ';
+
+	// Maybe the paragraph has special spacing
+	spacing().writeFile(os, true);
+
+	// The labelwidth string used in lists.
+	if (!labelWidthString().empty())
+		os << "\\labelwidthstring "
+		   << labelWidthString() << '\n';
+
+	// Lines above or below?
+	if (lineTop())
+		os << "\\line_top ";
+	if (lineBottom())
+		os << "\\line_bottom ";
+
+	// Pagebreaks above or below?
+	if (pagebreakTop())
+		os << "\\pagebreak_top ";
+	if (pagebreakBottom())
+		os << "\\pagebreak_bottom ";
+
+	// Start of appendix?
+	if (startOfAppendix())
+		os << "\\start_of_appendix ";
+
+	// Noindent?
+	if (noindent())
+		os << "\\noindent ";
+
+	// Do we have a manual left indent?
+	if (!leftIndent().zero())
+		os << "\\leftindent " << leftIndent().asString()
+		   << ' ';
+
+	// Alignment?
+	if (align() != LYX_ALIGN_LAYOUT) {
+		int h = 0;
+		switch (align()) {
+		case LYX_ALIGN_LEFT: h = 1; break;
+		case LYX_ALIGN_RIGHT: h = 2; break;
+		case LYX_ALIGN_CENTER: h = 3; break;
+		default: h = 0; break;
+		}
+		os << "\\align " << string_align[h] << ' ';
+	}
 }

@@ -15,7 +15,6 @@
 #include "lyxrc.h"
 #include "layout.h"
 #include "language.h"
-#include "tex-strings.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "debug.h"
@@ -165,58 +164,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 	// First write the layout
 	os << "\n\\layout " << layout()->name() << '\n';
 
-	// Maybe some vertical spaces.
-	if (params().spaceTop().kind() != VSpace::NONE)
-		os << "\\added_space_top "
-		   << params().spaceTop().asLyXCommand() << ' ';
-	if (params().spaceBottom().kind() != VSpace::NONE)
-		os << "\\added_space_bottom "
-		   << params().spaceBottom().asLyXCommand() << ' ';
-
-	// Maybe the paragraph has special spacing
-	params().spacing().writeFile(os, true);
-
-	// The labelwidth string used in lists.
-	if (!params().labelWidthString().empty())
-		os << "\\labelwidthstring "
-		   << params().labelWidthString() << '\n';
-
-	// Lines above or below?
-	if (params().lineTop())
-		os << "\\line_top ";
-	if (params().lineBottom())
-		os << "\\line_bottom ";
-
-	// Pagebreaks above or below?
-	if (params().pagebreakTop())
-		os << "\\pagebreak_top ";
-	if (params().pagebreakBottom())
-		os << "\\pagebreak_bottom ";
-
-	// Start of appendix?
-	if (params().startOfAppendix())
-		os << "\\start_of_appendix ";
-
-	// Noindent?
-	if (params().noindent())
-		os << "\\noindent ";
-
-	// Do we have a manual left indent?
-	if (!params().leftIndent().zero())
-		os << "\\leftindent " << params().leftIndent().asString()
-		   << ' ';
-
-	// Alignment?
-	if (params().align() != LYX_ALIGN_LAYOUT) {
-		int h = 0;
-		switch (params().align()) {
-		case LYX_ALIGN_LEFT: h = 1; break;
-		case LYX_ALIGN_RIGHT: h = 2; break;
-		case LYX_ALIGN_CENTER: h = 3; break;
-		default: h = 0; break;
-		}
-		os << "\\align " << string_align[h] << ' ';
-	}
+	params().write(os);
 
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 
