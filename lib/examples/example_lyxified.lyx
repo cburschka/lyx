@@ -1,5 +1,5 @@
-#This file was created by <cfog> Tue Jan  6 11:05:07 1998
-#LyX 0.12 (C) 1995-1997 Matthias Ettrich and the LyX Team
+#This file was created by <lasgoutt> Fri Dec 10 15:52:11 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
 \language default
@@ -35,7 +35,7 @@ June 12, 1972
 \layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents
+\begin_inset LatexCommand \tableofcontents{}
 
 \end_inset 
 
@@ -45,8 +45,8 @@ June 12, 1972
 Basic Philosophy
 \layout Standard
 
-The basic philosophy of LyX is that you should worry about the form of what
- you're writing and not the content.
+The basic philosophy of LyX is that you should worry about the content of
+ what you're writing and not the form.
 \layout Subsection
 
 How LyX does it

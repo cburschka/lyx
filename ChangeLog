@@ -1,5 +1,7 @@
 1999-12-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/examples/example_{raw,lyxified}.lyx: fix embarassing sentence.
+
 	* src/support/lyxstring.C: remove the inline added earlier since
 	they cause a bunch of unsatisfied symbols when linking with dec
 	cxx. Cxx likes to have the body of inlines at the place where they
