@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language frenchb
 \inputencoding latin1
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -25,10 +27,18 @@
 \layout Title
 
 Bienvenue dans l'univers de LyX !
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Informations de révision :
-Traduction : Mise à jour, Date: 2001/06/10
-Original : Révision: 1.5, Date: 2000/12/28
+\layout Standard
+
+Traduction : Mise à jour, Date : 22/03/2002
+\layout Standard
+
+Original : Révision : 1.6, Date : 21/03/2002
 \end_inset 
 
 
@@ -76,11 +86,14 @@ LyX est ce qu'on appelle un
  -- en ce sens qu'il facilite l'écriture des documents.
  Mais la distinction est minime, ne vous inquiétez pas.
  La documentation est là pour faire toute la lumière là-dessus
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Avons-nous déjà mentionné que vous devez lire la documentation ? 
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 
@@ -122,10 +135,10 @@ d'Apprentissage
 LyX possède de nombreuses fonctionnalités pour ceux qui lisent ou écrivent
  dans d'autres langues que l'anglais.
  En outre, le clavier, la barre d'outils et beaucoup d'autres caractéristiques
- sont pleinement configurables (pour la plupart en éditant votre fichier
- 
-\family typewriter 
-lyxrc
+ sont pleinement configurables (pour la plupart avec 
+\family sans 
+Éditer\SpecialChar \menuseparator
+Préférences
 \family default 
 ).
  Voir 

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \begin_preamble
 \usepackage{multicol}
@@ -14,6 +14,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -28,10 +30,18 @@
 \layout Title
 
 MultiColonnes
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Informations de révision :
-Traduction : Mise à jour Date: 2001/03/24
-Original : Révision: 1.2, Date: 2000/11/03
+\layout Standard
+
+Traduction : Mise à jour Date : 22/03/2002
+\layout Standard
+
+Original : Révision : 1.3, Date : 21/03/2002
 \end_inset 
 
 
@@ -40,7 +50,9 @@ Original : Révision: 1.2, Date: 2000/11/03
 par 
 \noun on 
 Lars Gullik Bjønnes
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Traduction par Adrien 
@@ -49,10 +61,12 @@ Rebollo
 \noun default 
  
 \family typewriter 
-<Adrien.Rebollo@wanadoo.fr>
+<Adrien.Rebollo@gmx.fr>
 \family default 
 .
-\end_float 
+\end_inset 
+
+
 \layout Section
 
 Objectif
@@ -110,17 +124,25 @@ end{multicols}
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 \noindent 
 
 \series bold 
 \size small 
 The Adventure of the Empty House
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 NdT : Ne pensant pas être à la hauteur d'une traduction littéraire de 
@@ -130,9 +152,8 @@ Conan Doyle
 , et ne voyant pas de nécessité impérieuse d'insérer du texte français à
  la place, j'ai préféré le laisser tel quel.
  -- ar
-\end_float 
+\end_inset 
 
-\size small 
 
 \newline 
 by 
@@ -166,10 +187,16 @@ ty which utterly submerged my mind.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Colonnes Multiples
@@ -181,10 +208,16 @@ Le même schéma s'applique si vous voulez plus de deux colonnes.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{3}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -211,10 +244,16 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Des colonnes dans une Colonne
@@ -224,10 +263,16 @@ Vous pouvez même avoir des colonnes dans une colonne :
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -240,10 +285,16 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -261,10 +312,16 @@ The youth moved in the best society--had, so far as was known, no enemies
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -294,10 +351,16 @@ The evidence of those who had played with him-- Mr.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsection
 
 Exemples complexes
@@ -321,11 +384,16 @@ cm sur la page, un saut de page sera inséré avant ce
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
-begin{multicols}{2}[Et l'histoire continue et continue et continue et continue...][
-5cm]
+begin{multicols}{2}[Et l'histoire continue et continue et continue et continue...][5cm]
+\end_inset 
+
+
 \layout Standard
 
 
@@ -352,10 +420,16 @@ On the evening of the crime, he returned from the club exactly at ten.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Préface et Sections
@@ -372,12 +446,18 @@ multicols
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}[
 \backslash 
 subsubsection{C'est la commande de section en préface}][5cm]
+\end_inset 
+
+
 \layout Standard
 
 
@@ -412,10 +492,16 @@ A minute examination of the circumstances served only to make the case more
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Espace Libre
@@ -446,7 +532,10 @@ es :
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -454,6 +543,9 @@ setlength{
 multicolsep}{3cm}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -486,10 +578,16 @@ ion.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Paragraph
 
 Remarque :
@@ -506,12 +604,18 @@ setlength
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 multicolsep}{13pt}
+\end_inset 
+
+
 \layout Subsubsection
 
 Largeur de Colonne et Séparation
@@ -528,7 +632,10 @@ cm :
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -536,6 +643,9 @@ setlength{
 columnsep}{3cm}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -556,10 +666,16 @@ My observations of No.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 Une fois de plus, il faut réinitialiser la valeur pour éviter de l'utiliser
@@ -567,12 +683,18 @@ Une fois de plus, il faut réinitialiser la valeur pour éviter de l'utiliser
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 columnsep}{10pt}
+\end_inset 
+
+
 \layout Subsubsection
 
 Lignes Verticales
@@ -593,7 +715,10 @@ r.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -601,6 +726,9 @@ setlength{
 columnseprule}{2pt}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -693,29 +821,45 @@ The Holy War
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 Comme d'habitude, on réinitialise la valeur après usage.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 columnseprule}{0pt}
+\end_inset 
+
+
 \layout Standard
 
 Pour lire le reste de l'histoire, il faudra que vous alliez à la bibliothèque...
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 ...ou trichez comme nous et allez la trouver dans le projet Gutenberg quelque
  part sur le réseau.
-\end_float 
+\end_inset 
+
+
 \the_end

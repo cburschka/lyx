@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \begin_preamble
 \usepackage{multirow}
@@ -14,6 +14,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -28,17 +30,27 @@
 \layout Title
 
 Quelques exemples d'emploi de tableaux dans LyX
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Informations de révision :
-Traduction : Mise à jour Date: 2001/02/16
-Original : Révision: 1.3, Date: 2000/11/03
+\layout Standard
+
+Traduction : Mise à jour Date : 22/03/2002
+\layout Standard
+
+Original : Révision : 1.4, Date : 21/03/2002
 \end_inset 
 
 
 \layout Author
 
 par Jürgen Vigna (jug@sad.it)
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Traduction : Adrien 
@@ -47,10 +59,12 @@ Rebollo
 \noun default 
  
 \family typewriter 
-<Adrien.Rebollo@wanadoo.fr>
+<Adrien.Rebollo@gmx.fr>
 \family default 
 .
-\end_float 
+\end_inset 
+
+
 \layout Standard
 
 Tableau\SpecialChar ~
@@ -62,13 +76,13 @@ Longs.
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="98" columns="3">
-<features rotate="false" islongtable="true" endhead="4" endfirsthead="2" endfoot="5" endlastfoot="5">
-<column alignment="left" valignment="top" leftline="true" rightline="false" width="5cm" special="">
-<column alignment="left" valignment="top" leftline="false" rightline="false" width="" special="">
-<column alignment="right" valignment="top" leftline="true" rightline="true" width="" special="">
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="98" columns="3">
+<features islongtable="true" lastFootEmpty="true">
+<column alignment="left" valignment="top" leftline="true" width="5cm">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="right" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -78,14 +92,14 @@ Longs.
 Exemple d'annuaire téléphonique (ne pas faire attention aux noms)
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -93,8 +107,8 @@ Exemple d'annuaire téléphonique (ne pas faire attention aux noms)
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -104,14 +118,14 @@ Exemple d'annuaire téléphonique (ne pas faire attention aux noms)
 NOM
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -122,8 +136,8 @@ TEL.
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -133,14 +147,14 @@ TEL.
  Exemple d'annuaire téléphonique
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -148,8 +162,8 @@ TEL.
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -159,14 +173,14 @@ TEL.
 NOM
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -177,8 +191,8 @@ TEL.
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -188,14 +202,14 @@ TEL.
  suite ...
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -203,8 +217,8 @@ TEL.
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="parbox" width="" special="">
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="parbox">
 \begin_inset Text
 
 \layout Standard
@@ -214,7 +228,7 @@ TEL.
 Kemenater
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="left" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -222,7 +236,7 @@ Kemenater
 Klaus
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -231,8 +245,8 @@ Klaus
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -242,7 +256,7 @@ Klaus
 Maccioni
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -250,7 +264,7 @@ Maccioni
 Piero
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -259,8 +273,8 @@ Piero
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="1" alignment="left" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -268,14 +282,14 @@ Piero
  
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -283,8 +297,8 @@ Piero
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -294,7 +308,7 @@ Piero
 Annovi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -302,7 +316,7 @@ Annovi
 Silvia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="right" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="right" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -311,8 +325,8 @@ Silvia
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -322,7 +336,7 @@ Silvia
 Bertoli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -330,7 +344,7 @@ Bertoli
 Stefano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -339,8 +353,8 @@ Stefano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -350,7 +364,7 @@ Stefano
 Bozzi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -358,7 +372,7 @@ Bozzi
 Walter
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -367,8 +381,8 @@ Walter
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -378,7 +392,7 @@ Walter
 Cachia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -386,7 +400,7 @@ Cachia
 Maria
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -395,8 +409,8 @@ Maria
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -406,7 +420,7 @@ Maria
 Cachia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -414,7 +428,7 @@ Cachia
 Maurizio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -423,8 +437,8 @@ Maurizio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -434,7 +448,7 @@ Maurizio
 Cinquemani
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -442,7 +456,7 @@ Cinquemani
 Giusi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -451,8 +465,8 @@ Giusi
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -462,7 +476,7 @@ Giusi
 Colin
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -470,7 +484,7 @@ Colin
 Bernard
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -479,8 +493,8 @@ Bernard
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -490,7 +504,7 @@ Bernard
 Concli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -498,7 +512,7 @@ Concli
 Gianfranco
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -507,8 +521,8 @@ Gianfranco
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -518,7 +532,7 @@ Gianfranco
 Dal Bosco
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -526,7 +540,7 @@ Dal Bosco
 Carolina
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -535,8 +549,8 @@ Carolina
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -546,7 +560,7 @@ Carolina
 Dalpiaz
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -554,7 +568,7 @@ Dalpiaz
 Annamaria
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -563,8 +577,8 @@ Annamaria
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -574,7 +588,7 @@ Annamaria
 Feliciello
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -582,7 +596,7 @@ Feliciello
 Domenico
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -591,8 +605,8 @@ Domenico
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -602,7 +616,7 @@ Domenico
 Focarelli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -610,7 +624,7 @@ Focarelli
 Paola
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -619,8 +633,8 @@ Paola
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -630,7 +644,7 @@ Paola
 Galletti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -638,7 +652,7 @@ Galletti
 Oreste
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -647,8 +661,8 @@ Oreste
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -658,7 +672,7 @@ Oreste
 Gasparini
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -666,7 +680,7 @@ Gasparini
 Franca
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -675,8 +689,8 @@ Franca
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -686,7 +700,7 @@ Franca
 Rizzardi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -694,7 +708,7 @@ Rizzardi
 Paola
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -703,8 +717,8 @@ Paola
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -714,7 +728,7 @@ Paola
 Lassini
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -722,7 +736,7 @@ Lassini
 Giancarlo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -731,8 +745,8 @@ Giancarlo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -742,7 +756,7 @@ Giancarlo
 Malfatti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -750,7 +764,7 @@ Malfatti
 Luciano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -759,8 +773,8 @@ Luciano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -770,7 +784,7 @@ Luciano
 Malfatti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -778,7 +792,7 @@ Malfatti
 Valeriano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -787,8 +801,8 @@ Valeriano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -798,7 +812,7 @@ Valeriano
 Meneguzzo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -806,7 +820,7 @@ Meneguzzo
 Roberto
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -815,8 +829,8 @@ Roberto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -826,7 +840,7 @@ Roberto
 Mezzadra
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -834,7 +848,7 @@ Mezzadra
 Roberto
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -843,8 +857,8 @@ Roberto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -854,7 +868,7 @@ Roberto
 Pirpamer
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -862,7 +876,7 @@ Pirpamer
 Erich
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -871,8 +885,8 @@ Erich
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -882,7 +896,7 @@ Erich
 Pochiesa
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -890,7 +904,7 @@ Pochiesa
 Paolo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -899,8 +913,8 @@ Paolo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -910,7 +924,7 @@ Paolo
 Radina
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -918,7 +932,7 @@ Radina
 Claudio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -927,8 +941,8 @@ Claudio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -938,7 +952,7 @@ Claudio
 Stuffer
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -946,7 +960,7 @@ Stuffer
 Oskar
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -955,8 +969,8 @@ Oskar
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -966,7 +980,7 @@ Oskar
 Tacchelli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -974,7 +988,7 @@ Tacchelli
 Ugo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -983,8 +997,8 @@ Ugo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -994,7 +1008,7 @@ Ugo
 Tezzele
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1002,7 +1016,7 @@ Tezzele
 Margit
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1011,8 +1025,8 @@ Margit
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1022,7 +1036,7 @@ Margit
 Unterkalmsteiner
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1030,7 +1044,7 @@ Unterkalmsteiner
 Frieda
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1039,8 +1053,8 @@ Frieda
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1050,7 +1064,7 @@ Frieda
 Vieider
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1058,7 +1072,7 @@ Vieider
 Hilde
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1067,8 +1081,8 @@ Hilde
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1078,7 +1092,7 @@ Hilde
 Vigna
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1086,7 +1100,7 @@ Vigna
 Jürgen
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1095,8 +1109,8 @@ Jürgen
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1106,7 +1120,7 @@ Jürgen
 Weber
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1114,7 +1128,7 @@ Weber
 Maurizio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1123,8 +1137,8 @@ Maurizio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1134,7 +1148,7 @@ Maurizio
 Winkler
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1142,7 +1156,7 @@ Winkler
 Franz
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1151,8 +1165,8 @@ Franz
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell multicolumn="1" alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1160,14 +1174,14 @@ Franz
  
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1175,8 +1189,8 @@ Franz
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1186,7 +1200,7 @@ Franz
 Annovi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1194,7 +1208,7 @@ Annovi
 Silvia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1203,8 +1217,8 @@ Silvia
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1214,7 +1228,7 @@ Silvia
 Bertoli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1222,7 +1236,7 @@ Bertoli
 Stefano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1231,8 +1245,8 @@ Stefano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1242,7 +1256,7 @@ Stefano
 Bozzi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1250,7 +1264,7 @@ Bozzi
 Walter
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1259,8 +1273,8 @@ Walter
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1270,7 +1284,7 @@ Walter
 Cachia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1278,7 +1292,7 @@ Cachia
 Maria
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1287,8 +1301,8 @@ Maria
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1298,7 +1312,7 @@ Maria
 Cachia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1306,7 +1320,7 @@ Cachia
 Maurizio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1315,8 +1329,8 @@ Maurizio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1326,7 +1340,7 @@ Maurizio
 Cinquemani
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1334,7 +1348,7 @@ Cinquemani
 Giusi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1343,8 +1357,8 @@ Giusi
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1354,7 +1368,7 @@ Giusi
 Colin
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1362,7 +1376,7 @@ Colin
 Bernard
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1371,8 +1385,8 @@ Bernard
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1382,7 +1396,7 @@ Bernard
 Concli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1390,7 +1404,7 @@ Concli
 Gianfranco
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1399,8 +1413,8 @@ Gianfranco
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1410,7 +1424,7 @@ Gianfranco
 Dal Bosco
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1418,7 +1432,7 @@ Dal Bosco
 Carolina
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1427,8 +1441,8 @@ Carolina
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1438,7 +1452,7 @@ Carolina
 Dalpiaz
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1446,7 +1460,7 @@ Dalpiaz
 Annamaria
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1455,8 +1469,8 @@ Annamaria
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1466,7 +1480,7 @@ Annamaria
 Feliciello
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1474,7 +1488,7 @@ Feliciello
 Domenico
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1483,8 +1497,8 @@ Domenico
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1494,7 +1508,7 @@ Domenico
 Focarelli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1502,7 +1516,7 @@ Focarelli
 Paola
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1511,8 +1525,8 @@ Paola
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1522,7 +1536,7 @@ Paola
 Galletti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1530,7 +1544,7 @@ Galletti
 Oreste
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1539,8 +1553,8 @@ Oreste
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1550,7 +1564,7 @@ Oreste
 Gasparini
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1558,7 +1572,7 @@ Gasparini
 Franca
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1567,8 +1581,8 @@ Franca
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1578,7 +1592,7 @@ Franca
 Rizzardi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1586,7 +1600,7 @@ Rizzardi
 Paola
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1595,8 +1609,8 @@ Paola
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1606,7 +1620,7 @@ Paola
 Lassini
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1614,7 +1628,7 @@ Lassini
 Giancarlo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1623,8 +1637,8 @@ Giancarlo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1634,7 +1648,7 @@ Giancarlo
 Malfatti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1642,7 +1656,7 @@ Malfatti
 Luciano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1651,8 +1665,8 @@ Luciano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1662,7 +1676,7 @@ Luciano
 Malfatti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1670,7 +1684,7 @@ Malfatti
 Valeriano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1679,8 +1693,8 @@ Valeriano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1690,7 +1704,7 @@ Valeriano
 Meneguzzo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1698,7 +1712,7 @@ Meneguzzo
 Roberto
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1707,8 +1721,8 @@ Roberto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1718,7 +1732,7 @@ Roberto
 Mezzadra
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1726,7 +1740,7 @@ Mezzadra
 Roberto
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1735,8 +1749,8 @@ Roberto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1746,7 +1760,7 @@ Roberto
 Pirpamer
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1754,7 +1768,7 @@ Pirpamer
 Erich
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1763,8 +1777,8 @@ Erich
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1774,7 +1788,7 @@ Erich
 Pochiesa
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1782,7 +1796,7 @@ Pochiesa
 Paolo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1791,8 +1805,8 @@ Paolo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1802,7 +1816,7 @@ Paolo
 Radina
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1810,7 +1824,7 @@ Radina
 Claudio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1819,8 +1833,8 @@ Claudio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1830,7 +1844,7 @@ Claudio
 Stuffer
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1838,7 +1852,7 @@ Stuffer
 Oskar
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1847,8 +1861,8 @@ Oskar
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1858,7 +1872,7 @@ Oskar
 Tacchelli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1866,7 +1880,7 @@ Tacchelli
 Ugo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1875,8 +1889,8 @@ Ugo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1886,7 +1900,7 @@ Ugo
 Tezzele
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1894,7 +1908,7 @@ Tezzele
 Margit
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1903,8 +1917,8 @@ Margit
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1914,7 +1928,7 @@ Margit
 Unterkalmsteiner
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1922,7 +1936,7 @@ Unterkalmsteiner
 Frieda
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1931,8 +1945,8 @@ Frieda
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1942,7 +1956,7 @@ Frieda
 Vieider
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1950,7 +1964,7 @@ Vieider
 Hilde
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1959,8 +1973,8 @@ Hilde
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1970,7 +1984,7 @@ Hilde
 Vigna
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1978,7 +1992,7 @@ Vigna
 Jürgen
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1987,8 +2001,8 @@ Jürgen
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -1998,7 +2012,7 @@ Jürgen
 Weber
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2006,7 +2020,7 @@ Weber
 Maurizio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2015,8 +2029,8 @@ Maurizio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2026,7 +2040,7 @@ Maurizio
 Winkler
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2034,7 +2048,7 @@ Winkler
 Franz
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2043,8 +2057,8 @@ Franz
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell multicolumn="1" alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2052,14 +2066,14 @@ Franz
  
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2067,8 +2081,8 @@ Franz
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2078,7 +2092,7 @@ Franz
 Annovi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2086,7 +2100,7 @@ Annovi
 Silvia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2095,8 +2109,8 @@ Silvia
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2106,7 +2120,7 @@ Silvia
 Bertoli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2114,7 +2128,7 @@ Bertoli
 Stefano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2123,8 +2137,8 @@ Stefano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2134,7 +2148,7 @@ Stefano
 Bozzi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2142,7 +2156,7 @@ Bozzi
 Walter
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2151,8 +2165,8 @@ Walter
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2162,7 +2176,7 @@ Walter
 Cachia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2170,7 +2184,7 @@ Cachia
 Maria
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2179,8 +2193,8 @@ Maria
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2190,7 +2204,7 @@ Maria
 Cachia
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2198,7 +2212,7 @@ Cachia
 Maurizio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2207,8 +2221,8 @@ Maurizio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2218,7 +2232,7 @@ Maurizio
 Cinquemani
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2226,7 +2240,7 @@ Cinquemani
 Giusi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2235,8 +2249,8 @@ Giusi
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2246,7 +2260,7 @@ Giusi
 Colin
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2254,7 +2268,7 @@ Colin
 Bernard
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2263,8 +2277,8 @@ Bernard
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2274,7 +2288,7 @@ Bernard
 Concli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2282,7 +2296,7 @@ Concli
 Gianfranco
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2291,8 +2305,8 @@ Gianfranco
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2302,7 +2316,7 @@ Gianfranco
 Dal Bosco
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2310,7 +2324,7 @@ Dal Bosco
 Carolina
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2319,8 +2333,8 @@ Carolina
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2330,7 +2344,7 @@ Carolina
 Dalpiaz
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2338,7 +2352,7 @@ Dalpiaz
 Annamaria
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2347,8 +2361,8 @@ Annamaria
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2358,7 +2372,7 @@ Annamaria
 Feliciello
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2366,7 +2380,7 @@ Feliciello
 Domenico
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2375,8 +2389,8 @@ Domenico
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2386,7 +2400,7 @@ Domenico
 Focarelli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2394,7 +2408,7 @@ Focarelli
 Paola
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2403,8 +2417,8 @@ Paola
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2414,7 +2428,7 @@ Paola
 Galletti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2422,7 +2436,7 @@ Galletti
 Oreste
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2431,8 +2445,8 @@ Oreste
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2442,7 +2456,7 @@ Oreste
 Gasparini
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2450,7 +2464,7 @@ Gasparini
 Franca
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2459,8 +2473,8 @@ Franca
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2470,7 +2484,7 @@ Franca
 Rizzardi
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2478,7 +2492,7 @@ Rizzardi
 Paola
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2487,8 +2501,8 @@ Paola
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2498,7 +2512,7 @@ Paola
 Lassini
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2506,7 +2520,7 @@ Lassini
 Giancarlo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2515,8 +2529,8 @@ Giancarlo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2526,7 +2540,7 @@ Giancarlo
 Malfatti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2534,7 +2548,7 @@ Malfatti
 Luciano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2543,8 +2557,8 @@ Luciano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2554,7 +2568,7 @@ Luciano
 Malfatti
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2562,7 +2576,7 @@ Malfatti
 Valeriano
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2571,8 +2585,8 @@ Valeriano
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2582,7 +2596,7 @@ Valeriano
 Meneguzzo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2590,7 +2604,7 @@ Meneguzzo
 Roberto
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2599,8 +2613,8 @@ Roberto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2610,7 +2624,7 @@ Roberto
 Mezzadra
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2618,7 +2632,7 @@ Mezzadra
 Roberto
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2627,8 +2641,8 @@ Roberto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2638,7 +2652,7 @@ Roberto
 Pirpamer
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2646,7 +2660,7 @@ Pirpamer
 Erich
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2655,8 +2669,8 @@ Erich
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2666,7 +2680,7 @@ Erich
 Pochiesa
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2674,7 +2688,7 @@ Pochiesa
 Paolo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2683,8 +2697,8 @@ Paolo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2694,7 +2708,7 @@ Paolo
 Radina
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2702,7 +2716,7 @@ Radina
 Claudio
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2711,8 +2725,8 @@ Claudio
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2722,7 +2736,7 @@ Claudio
 Stuffer
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2730,7 +2744,7 @@ Stuffer
 Oskar
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2739,8 +2753,8 @@ Oskar
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2750,7 +2764,7 @@ Oskar
 Tacchelli
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2758,7 +2772,7 @@ Tacchelli
 Ugo
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2767,8 +2781,8 @@ Ugo
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="left" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2778,7 +2792,7 @@ Ugo
 Tezzele
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2786,7 +2800,7 @@ Tezzele
 Margit
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2824,14 +2838,14 @@ multirow
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="5" columns="4">
-<features rotate="false" islongtable="true" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="5" columns="4">
+<features islongtable="true">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2839,7 +2853,7 @@ multirow
 a
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2847,7 +2861,7 @@ a
 b
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2855,7 +2869,7 @@ b
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2864,24 +2878,34 @@ d
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 multirow{4}{14mm}{
-\latex default 
+\end_inset 
+
 Texte de la colonne 1
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \end_inset 
+
+
+\end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2889,23 +2913,33 @@ Texte de la colonne 1
 C2a
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 multirow{4}{14mm}{
-\latex default 
+\end_inset 
+
 Texte de la colonne 2
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \end_inset 
+
+
+\end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2914,15 +2948,15 @@ C4a
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2930,14 +2964,14 @@ C4a
 C2b
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2946,15 +2980,15 @@ C4b
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2962,14 +2996,14 @@ C4b
 C2c
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2978,15 +3012,15 @@ C4c
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -2994,14 +3028,14 @@ C4c
 C2e
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3037,24 +3071,41 @@ Utiliser des Environnements-Minipages
 Notez que les notes de bas de page sont affichées immédiatement après la
  fin de la mini-page.
  La numérotation par défaut utilise des lettres minuscules.
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 {
 \backslash 
 centering
-\layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \pextra_type 2 \pextra_alignment 0 \pextra_widthp 25
+\end_inset 
 
+
+\layout Standard
+
+
+\begin_inset Minipage
+position 0
+inner_position 0
+height "0pt"
+width "25p%"
+collapsed false
+
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="4" columns="4">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="4" columns="4">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3062,7 +3113,7 @@ centering
 a
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3070,7 +3121,7 @@ a
 b
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3078,7 +3129,7 @@ b
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3087,8 +3138,8 @@ d
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3096,23 +3147,33 @@ d
 b 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 1
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 footnote{
-\latex default 
+\end_inset 
+
 exemple1 case(b,1)
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \end_inset 
+
+
+\end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3120,7 +3181,7 @@ exemple1 case(b,1)
 2
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3129,8 +3190,8 @@ exemple1 case(b,1)
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3138,7 +3199,7 @@ exemple1 case(b,1)
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3146,7 +3207,7 @@ c
 4
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3154,7 +3215,7 @@ c
 5
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3163,8 +3224,8 @@ c
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3172,7 +3233,7 @@ c
 d 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3180,7 +3241,7 @@ d
 7
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3188,20 +3249,30 @@ d
 8
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 9
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 footnote{
-\latex default 
+\end_inset 
+
 exemple1 case(d,9)
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
+\end_inset 
+
+
 \end_inset 
 </cell>
 </row>
@@ -3210,9 +3281,20 @@ exemple1 case(d,9)
 \end_inset 
 
 
-\layout LaTeX
+\end_inset 
 
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
+\end_inset 
+
+
 \end_deeper 
 \layout Enumerate
 
@@ -3229,8 +3311,9 @@ Cochez le bouton
 \family sans 
 Tableau\SpecialChar ~
 Long
-\begin_float footnote 
-\end_deeper 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 NdT : 
@@ -3238,10 +3321,9 @@ NdT :
 Longtable
 \family default 
  en version originale.
-\end_float 
- dans l'onglet 
-\family sans 
-Tableau
+\end_inset 
+
+ dans l'onglet Tableau
 \family default 
  de la fenêtre 
 \family sans 
@@ -3250,19 +3332,18 @@ du\SpecialChar ~
 tableau
 \family default 
  et les notes de bas de page seront affichées au bas de la page.
-\begin_deeper 
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="4" columns="4">
-<features rotate="false" islongtable="true" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="4" columns="4">
+<features islongtable="true">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3270,7 +3351,7 @@ tableau
 a
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3278,7 +3359,7 @@ a
 b
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3286,7 +3367,7 @@ b
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3295,8 +3376,8 @@ d
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3304,23 +3385,33 @@ d
 b 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 1
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 footnote{
-\latex default 
+\end_inset 
+
 exemple2 case(b,1)
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \end_inset 
+
+
+\end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3328,7 +3419,7 @@ exemple2 case(b,1)
 2
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3337,8 +3428,8 @@ exemple2 case(b,1)
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3346,7 +3437,7 @@ exemple2 case(b,1)
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3354,7 +3445,7 @@ c
 4
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3362,7 +3453,7 @@ c
 5
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3371,8 +3462,8 @@ c
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3380,7 +3471,7 @@ c
 d 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3388,7 +3479,7 @@ d
 7
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3396,20 +3487,30 @@ d
 8
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 9
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 footnote{
-\latex default 
+\end_inset 
+
 exemple2 case(d,9)
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
+\end_inset 
+
+
 \end_inset 
 </cell>
 </row>
@@ -3435,14 +3536,14 @@ Cette façon de faire est lourde mais simplement pour montrer que ça marche,
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="4" columns="4">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="false" width="" special="">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="" special="">
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="4" columns="4">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3450,7 +3551,7 @@ Cette façon de faire est lourde mais simplement pour montrer que ça marche,
 a
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3458,7 +3559,7 @@ a
 b
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3466,7 +3567,7 @@ b
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3475,8 +3576,8 @@ d
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3484,19 +3585,25 @@ d
 b
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 1
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 footnotemark
 \end_inset 
+
+
+\end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3504,7 +3611,7 @@ footnotemark
 2
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3513,8 +3620,8 @@ footnotemark
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3522,7 +3629,7 @@ footnotemark
 c
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3530,7 +3637,7 @@ c
 4
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3538,7 +3645,7 @@ c
 5
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3547,8 +3654,8 @@ c
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3556,7 +3663,7 @@ c
 d
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3564,7 +3671,7 @@ d
 7
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -3572,16 +3679,22 @@ d
 8
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 9
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 footnotemark
+\end_inset 
+
+
 \end_inset 
 </cell>
 </row>
@@ -3590,8 +3703,13 @@ footnotemark
 \end_inset 
 
 
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 addtocounter{footnote}{-1}
@@ -3603,4 +3721,7 @@ footnotetext{exemple3 case(b,1)}%
 addtocounter{footnote}{1}
 \backslash 
 footnotetext{exemple3 case(d,9)}
+\end_inset 
+
+
 \the_end

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \begin_preamble
 \usepackage{dcolumn}
@@ -15,6 +15,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -29,7 +31,9 @@
 \layout Title
 
 Une meilleure solution pour l'Alignement Décimal
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Traduction par Adrien 
@@ -38,15 +42,24 @@ Rebollo
 \noun default 
  
 \family typewriter 
-<Adrien.Rebollo@wanadoo.fr>
+<Adrien.Rebollo@gmx.fr>
 \family default 
 .
-\end_float 
+\end_inset 
 
-\begin_inset Info
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Informations de révision :
-Traduction : Mise à jour Date: 2001/03/20
-Original : Révision: 1.3, Date: 2000/11/03
+\layout Standard
+
+Traduction : Mise à jour Date : 22/03/2002
+\layout Standard
+
+Original : Révision : 1.4, Date : 21/03/2002
 \end_inset 
 
 
@@ -100,12 +113,12 @@ d{4}
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="5" columns="2">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
-<column alignment="center" valignment="top" leftline="false" rightline="false" width="" special="">
-<column alignment="right" valignment="top" leftline="true" rightline="false" width="" special="d{4}">
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="right" valignment="top" leftline="true" width="0pt" special="d{4}">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -113,7 +126,7 @@ d{4}
 Expression
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -122,20 +135,20 @@ Valeur
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 
-\begin_inset Formula \( \pi  \)
+\begin_inset Formula $\pi $
 \end_inset 
 
 
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="right" valignment="top" topline="false" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell multicolumn="1" alignment="right" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -144,20 +157,20 @@ Valeur
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 
-\begin_inset Formula \( \pi ^{\pi } \)
+\begin_inset Formula $\pi ^{\pi }$
 \end_inset 
 
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -166,20 +179,20 @@ Valeur
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 
-\begin_inset Formula \( (\pi ^{\pi })^{\pi } \)
+\begin_inset Formula $(\pi ^{\pi })^{\pi }$
 \end_inset 
 
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -188,20 +201,20 @@ Valeur
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
 
 
-\begin_inset Formula \( \pi ^{\pi ^{\pi }} \)
+\begin_inset Formula $\pi ^{\pi ^{\pi }}$
 \end_inset 
 
 
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -249,11 +262,15 @@ t plusieurs types de colonnes dans le préambule.
 \layout LyX-Code
 
 D{inputsep}{outputsep}{decimal places}
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 NdT : non traduit car je ne suis pas certain du sens
-\end_float 
+\end_inset 
+
+
 \layout Standard
 
 Le lecteur intéressé se référera à la documentation du paquetage 
