@@ -45,6 +45,9 @@
 #include "FormCitation.h"
 #include "forms/form_citation.h"
 
+#include "ControlChanges.h"
+#include "GChanges.h"
+
 #include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
@@ -167,6 +170,9 @@ BibtexDialog;
 typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>
 CharacterDialog;
 
+typedef GUI<ControlChanges, GChanges, NoRepeatedApplyReadOnlyPolicy, gnomeBC>
+ChangesDialog;
+
 typedef GUI<ControlCitation, FormCitation, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 CitationDialog;
 
@@ -266,6 +272,7 @@ struct Dialogs::Impl {
 	BibitemDialog       bibitem;
 	BibtexDialog        bibtex;
 	CharacterDialog     character;
+	ChangesDialog       changes;
 	CitationDialog      citation;
 	DocumentDialog      document;
 	ErrorDialog         error;

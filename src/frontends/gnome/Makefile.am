@@ -129,6 +129,8 @@ libgnome_la_SOURCES = \
 	FileDialog.C \
 	GAbout.C \
 	GAbout.h \
+	GChanges.C \
+	GChanges.h \
 	GError.C \
 	GError.h \
 	GERT.C \

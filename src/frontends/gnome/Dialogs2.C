@@ -144,6 +144,10 @@ void Dialogs::showMathPanel()
 	pimpl_->mathpanel.controller().show();
 }
 
+void Dialogs::showMergeChanges()
+{
+	pimpl_->changes.controller().show();
+}
 
 void Dialogs::showMinipage(InsetMinipage * im)
 {
