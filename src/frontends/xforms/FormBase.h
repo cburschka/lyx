@@ -156,14 +156,14 @@ class FormCB: public Base
 {
 protected:
 	///
-	FormCB(ControlButtons &, string const &, bool allowResize=true);
+	FormCB(Controller &, string const &, bool allowResize=true);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(ControlButtons & c, string const & t,
+FormCB<Controller, Base>::FormCB(Controller & c, string const & t,
 				 bool allowResize)
 	: Base(c, t, allowResize)
 {}

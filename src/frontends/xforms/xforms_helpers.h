@@ -48,9 +48,6 @@ std::vector<string> const getVectorFromBrowser(FL_OBJECT *);
 /// Given an fl_input, return its contents.
 string const getStringFromInput(FL_OBJECT * ob);
 
-/** Given an fl_browser, return the contents of the currently
-    highlighted line.
-*/
 /** Given an fl_browser, return the contents of line
     (xforms numbering convention; starts at 1).
 */
