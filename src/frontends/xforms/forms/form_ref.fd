@@ -209,8 +209,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_South FL_South
 name: input_ref
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHOICE
