@@ -92,6 +92,7 @@ void xfont_loader::unload()
 }
 
 namespace {
+
 string const symbolPattern(LyXFont::FONT_FAMILY family)
 {
 	switch (family) {
@@ -127,7 +128,25 @@ string const symbolPattern(LyXFont::FONT_FAMILY family)
 	}	
 }
 
+bool addFontPath()
+{
+	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
+	if (!dir.empty()) {
+		int n;
+		char ** p = XGetFontPath(fl_get_display(), &n);
+		if (std::find(p, p + n, dir) != p + n)
+			return false;
+		lyxerr << "Adding " << dir << " to the font path.\n";
+		string const command = "xset fp+ " + dir;
+		Systemcall s;
+		if (!s.startscript(Systemcall::Wait, command)) 
+			return true;
+		lyxerr << "Unable to add font path.\n";
+	}
+	return false;
 }
+
+} // namespace anon
 
 // Get font info
 /* Takes care of finding which font that can match the given request. Tries
@@ -149,21 +168,9 @@ void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 		    !fontinfo[family][series][shape]->exist() &&
 		    first_time) {
 			first_time = false;
-			string const dir = 
-				OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
-			if (!dir.empty()) {
-				int n;
-				char ** p = XGetFontPath(fl_get_display(), &n);
-				if (std::find(p, p+n, dir) != p+n)
-					return;
-				lyxerr << "Adding " << dir << " to the font path.\n";
-				string const command = "xset fp+ " + dir;
-				Systemcall s;
-				if (!s.startscript(Systemcall::Wait, command)) {
-					delete fontinfo[family][series][shape];
-					fontinfo[family][series][shape] = new FontInfo(pat);	
-				} else
-					lyxerr << "Unable to add font path.\n";
+			if (addFontPath()) {
+				delete fontinfo[family][series][shape];
+				fontinfo[family][series][shape] = new FontInfo(pat);	
 			}
 		}
 		return;

@@ -26,6 +26,13 @@
 #include "support/lstrings.h"
 #endif
 
+#ifdef Q_WS_X11
+#include <qwidget.h>
+#include <X11/Xlib.h>
+#include "support/systemcall.h"
+#include "support/filetools.h"
+#endif
+
 using std::endl;
 
 
@@ -68,35 +75,96 @@ QFont const & qfont_loader::get(LyXFont const & f)
 	return ret;
 }
 
+namespace {
+
+string const symbolPattern(LyXFont::FONT_FAMILY family)
+{
+	switch (family) {
+	case LyXFont::SYMBOL_FAMILY:
+		return "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific";
+
+	case LyXFont::CMR_FAMILY:
+		return "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::CMSY_FAMILY:
+		return "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::CMM_FAMILY:
+		return "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::CMEX_FAMILY:
+		return "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::MSA_FAMILY:
+		return "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::MSB_FAMILY:
+		return "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::EUFRAK_FAMILY:
+		return "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::WASY_FAMILY:
+		return "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	default:
+		return string();
+	}	
+}
+
+bool addFontPath()
+{
+#ifdef Q_WS_X11
+	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
+	if (!dir.empty()) {
+		QWidget w;
+		int n;
+		char ** p = XGetFontPath(w.x11Display(), &n);
+		if (std::find(p, p+n, dir) != p+n)
+			return false;
+		lyxerr << "Adding " << dir << " to the font path.\n";
+		string const command = "xset fp+ " + dir;
+		Systemcall s;
+		if (!s.startscript(Systemcall::Wait, command)) 
+			return true;
+		lyxerr << "Unable to add font path.\n";
+	}
+#endif
+	return false;
+}
+
+bool isAvailable(QFont const & font, LyXFont const & f) {
+#if QT_VERSION >= 300
+	return font.exactMatch();
+#else
+	string tmp = symbolPattern(f.family());
+	if (tmp.empty())
+		return false;
+	else
+		return token(tmp, '-', 2) == 
+			token(font.rawName().latin1(), '-', 2);
+#endif
+}
+
+} // namespace anon
 
 qfont_loader::font_info::font_info(LyXFont const & f)
 	: metrics(font)
 {
-	switch (f.family()) {
-		case LyXFont::SYMBOL_FAMILY:
-			font.setRawName("-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific");
-			break;
-		case LyXFont::CMR_FAMILY:
-			font.setRawName("-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			break;
-		case LyXFont::CMSY_FAMILY:
-			font.setRawName("-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*");
-			break;
-		case LyXFont::CMM_FAMILY:
-			font.setRawName("-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			break;
-		case LyXFont::CMEX_FAMILY:
-			font.setRawName("-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*");
-			break;
-		case LyXFont::MSA_FAMILY:
-			font.setRawName("-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*");
-			break;
-		case LyXFont::MSB_FAMILY:
-			font.setRawName("-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*");
-			break;
-		case LyXFont::EUFRAK_FAMILY:
-			font.setRawName("-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			break;
+
+	string pat = symbolPattern(f.family());
+	if (!pat.empty()) {
+		static bool first_time = true;
+		font.setRawName(pat.c_str());
+		if (f.family() != LyXFont::SYMBOL_FAMILY &&
+		    !isAvailable(font, f) && first_time) {
+			first_time = false;
+			if (addFontPath()) {
+				font.setRawName(pat.c_str());
+			}
+		}
+	} else 
+		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
 			font.setFamily("times");
 			break;
@@ -105,6 +173,8 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 			break;
 		case LyXFont::TYPEWRITER_FAMILY:
 			font.setFamily("courier");
+			break;
+		default:
 			break;
 	}
 
@@ -164,24 +234,5 @@ bool qfont_loader::available(LyXFont const & f)
 	if (!lyxrc.use_gui)
 		return false;
 
-#if QT_VERSION >= 300
-	return getfontinfo(f)->font.exactMatch();
-#else
-	string tmp;
-	switch (f.family()) {
-	case LyXFont::SYMBOL_FAMILY:  tmp = "symbol"; break;
-	case LyXFont::CMR_FAMILY:     tmp = "cmr10"; break;
-	case LyXFont::CMSY_FAMILY:    tmp = "cmsy10"; break;
-	case LyXFont::CMM_FAMILY:     tmp = "cmmi10"; break;
-	case LyXFont::CMEX_FAMILY:    tmp = "cmex10"; break;
-	case LyXFont::MSA_FAMILY:     tmp = "msam10"; break;
-	case LyXFont::MSB_FAMILY:     tmp = "msbm10"; break;
-	default: break;
-	}
-	if (tmp.empty())
-		return false;
-	else
-		return token(getfontinfo(f)->font.rawName().latin1(), '-', 2)
-			== tmp;
-#endif
+	return isAvailable(getfontinfo(f)->font, f);
 }

@@ -1,3 +1,8 @@
+2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (font_info): Add xfonts to the font path if
+	necessary.
+
 2002-10-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* QVCLog.C (update_contents): modify
