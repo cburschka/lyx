@@ -837,6 +837,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			    && argument.empty()) {
 				argument = encoded_last_key;
 			}
+
+			// the insets can't try to handle this,
+			// a table cell in the dummy position will
+			// lock its insettext, the insettext will
+			// pass it the bufferview, and succeed,
+			// so it will stay not locked. Not good
+			// if we've just done LFUN_ESCAPE (which
+			// injects an LFUN_PARAGRAPH_UPDATE)
+			if (action == LFUN_PARAGRAPH_UPDATE) {
+				view()->dispatch(ev);
+				goto exit_with_message;
+			}
+
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {
 				view()->undo();

@@ -87,7 +87,7 @@ void LyXText::updateRowPositions()
 
 int LyXText::top_y() const
 {
-	if (anchor_row_ == rowlist_.end() )
+	if (anchor_row_ == rowlist_.end())
 		return 0;
 
 	return anchor_row_->y() + anchor_row_offset_;

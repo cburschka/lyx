@@ -1,3 +1,7 @@
+2003-05-28  John Levon  <levon@movementarian.org>
+
+	* lyxfunc.C: fix LFUN_ESCAPE (bug 1055)
+
 2003-05-28  André Pönitz  <poenitz@gmx.net>
 
 	* metricsinfo.[Ch]: remove 'fullredraw' member

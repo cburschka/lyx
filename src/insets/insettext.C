@@ -362,7 +362,7 @@ int InsetText::textWidth(BufferView * bv, bool fordraw) const
 			   (int)getLyXText(bv)->width);
 
 	if (w < 0)
-    return -1;
+		return -1;
 
 	return w - 2 * TEXT_TO_INSET_OFFSET;
 }

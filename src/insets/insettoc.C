@@ -66,7 +66,7 @@ dispatch_result InsetTOC::localDispatch(FuncRequest const & cmd)
 		InsetCommandMailer("toc", *this).showDialog(cmd.view());
 		return DISPATCHED;
 	default:
-		return UNDISPATCHED;
+		return InsetCommand::localDispatch(cmd);
 	}
 }
 

@@ -334,7 +334,7 @@ dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 			break;
 
 		default:
-			return UNDISPATCHED;
+			return InsetCommand::localDispatch(cmd);
 	}
 	return DISPATCHED;
 }

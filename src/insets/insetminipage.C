@@ -236,14 +236,14 @@ void InsetMinipage::dimension(BufferView * bv, LyXFont const & font,
 		dimension_collapsed(dim);
 	else {
 		Dimension d;
-		InsetCollapsable::dimension(bv, font, dim);
+		InsetCollapsable::dimension(bv, font, d);
 		switch (params_.pos) {
 		case top:
 			dim.asc = d.asc;
 			dim.des = d.des;
 			break;
 		case center:
-			dim.asc = d.height() / 2;
+			dim.asc = d.ascent() + d.descent() / 2;
 			dim.des = dim.asc;
 			break;
 		case bottom:
@@ -251,6 +251,7 @@ void InsetMinipage::dimension(BufferView * bv, LyXFont const & font,
 			dim.des = d.asc;
 			break;
 		}
+		dim.wid = d.wid;
 	}
 }
 

@@ -52,7 +52,7 @@ dispatch_result InsetIndex::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		default:
-			return UNDISPATCHED;
+			return InsetCommand::localDispatch(cmd);
 	}
 }
 

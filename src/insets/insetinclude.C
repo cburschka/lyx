@@ -136,7 +136,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return UNDISPATCHED;
+		return InsetButton::localDispatch(cmd);
 	}
 }
 

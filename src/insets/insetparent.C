@@ -56,7 +56,7 @@ dispatch_result InsetParent::localDispatch(FuncRequest const & cmd)
 			cmd.view()->owner()->dispatch(FuncRequest(LFUN_CHILDOPEN, getContents()));
 			return DISPATCHED;
 		default:
-			return UNDISPATCHED;
+			return InsetCommand::localDispatch(cmd);
 	}
 }
 
