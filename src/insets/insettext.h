@@ -339,10 +339,6 @@ private:
 	///
 	mutable int insetWidth;
 	///
-	mutable int last_width;
-	///
-	mutable int last_height;
-	///
 	mutable int top_y;
 	///
 	Paragraph * inset_par;

@@ -1,3 +1,11 @@
+2001-12-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettext.C (draw): 
+	(drawFrame): use insetWidth instead of last_width
+
+	* insettext.h: remove variable last_width (insetWidth is exactly
+	the same) and last_height (computed but never used!)
+
 2001-12-10  Allan Rae  <rae@lyx.org>
 
 	* insettabular.C (localDispatch): cleanup unlockInsetInInset calls
@@ -9,7 +17,7 @@
 2001-12-05  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insetAllowed): fixed for the case that we directly
-	ask the insettext from it's LyXText.
+	ask the insettext from its LyXText.
 	(paragraph): fixed the crash when assigning the par->next() from
 	the EmptyParagraphMechanism!
 
@@ -825,7 +833,7 @@
 2001-07-18  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.C (edit): fixed hopefully the y parameter which
-	is givven to the InsetText.
+	is given to the InsetText.
 	(insetButtonPress): ditto
 	(insetButtonRelease): ditto
 	(insetMotionNotify): ditto

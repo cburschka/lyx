@@ -179,8 +179,6 @@ void InsetText::init(InsetText const * ins, bool same_id)
 		autoBreakRows = false;
 	}
 	top_y = 0;
-	last_width = 0;
-	last_height = 0;
 	insetAscent = 0;
 	insetDescent = 0;
 	insetWidth = 0;
@@ -398,9 +396,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		x += static_cast<float>(scroll());
 
 	// if top_x differs we did it already
-	if (!cleared && (top_x == int(x)) &&
-		((need_update&(INIT|FULL)) || (top_baseline!=baseline) ||
-		 (last_drawn_width!=insetWidth))) {
+	if (!cleared && (top_x == int(x))
+	    && ((need_update&(INIT|FULL)) || (top_baseline != baseline)
+		||(last_drawn_width != insetWidth))) {
 		clearInset(bv, baseline, cleared);
 	}
 
@@ -417,8 +415,6 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	top_baseline = baseline;
 	top_y = baseline - ascent(bv, f);
-	last_width = width(bv, f);
-	last_height = ascent(bv, f) + descent(bv, f);
 
 	if (last_drawn_width != insetWidth) {
 		if (!cleared) 
@@ -435,7 +431,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (!cleared && (need_update == CURSOR)
 	    && !getLyXText(bv)->selection.set()) {
 		drawFrame(pain, cleared);
-		x += last_width; // was width(bv, f);
+		x += insetWidth; 
 		need_update = NONE;
 		return;
 	}
@@ -498,7 +494,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		clearFrame(pain, cleared);
 	}
 	
-	x += last_width /* was width(bv, f) */ - TEXT_TO_INSET_OFFSET;
+	x += insetWidth - TEXT_TO_INSET_OFFSET;
 	
 	if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
 		need_update |= FULL;
@@ -517,7 +513,7 @@ void InsetText::drawFrame(Painter & pain, bool cleared) const
 	if (!frame_is_visible || cleared) {
 		frame_x = top_x + ttoD2;
 		frame_y = top_baseline - insetAscent + ttoD2;
-		frame_w = last_width - TEXT_TO_INSET_OFFSET;
+		frame_w = insetWidth - TEXT_TO_INSET_OFFSET;
 		frame_h = insetAscent + insetDescent - TEXT_TO_INSET_OFFSET;
 		pain.rectangle(frame_x, frame_y,
 			       frame_w, frame_h,
