@@ -17,7 +17,6 @@
 #include "gettext.h" // for _()
 
 #include "support/lstrings.h"
-#include "support/LAssert.h"
 
 #include <boost/regex.hpp>
 
@@ -57,7 +56,7 @@ string const familyName(string const & name)
 
 string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 {
-	Assert(!map.empty());
+	BOOST_ASSERT(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
@@ -109,7 +108,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 
 string const getYear(InfoMap const & map, string const & key)
 {
-	Assert(!map.empty());
+	BOOST_ASSERT(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
@@ -173,7 +172,7 @@ vector<string> const getKeys(InfoMap const & map)
 
 string const getInfo(InfoMap const & map, string const & key)
 {
-	Assert(!map.empty());
+	BOOST_ASSERT(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())

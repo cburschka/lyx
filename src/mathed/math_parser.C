@@ -721,7 +721,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			if (flags & FLAG_BRACE_LAST)
 				return;
 			error("found '}' unexpectedly");
-			//lyx::Assert(0);
+			//BOOST_ASSERT(false);
 			//add(cell, '}', LM_TC_TEX);
 		}
 

@@ -67,7 +67,6 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
-#include "support/LAssert.h"
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
@@ -680,9 +679,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			disable = !inset;
 			if (!disable) {
 				code = inset->lyxCode();
-				if (!(code == InsetOld::INCLUDE_CODE 
-					|| code == InsetOld::BIBTEX_CODE 
-					|| code == InsetOld::FLOAT_LIST_CODE 
+				if (!(code == InsetOld::INCLUDE_CODE
+					|| code == InsetOld::BIBTEX_CODE
+					|| code == InsetOld::FLOAT_LIST_CODE
 					|| code == InsetOld::TOC_CODE))
 					disable = true;
 			}
@@ -1466,9 +1465,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			FuncRequest cmd(view(), LFUN_INSET_DIALOG_SHOW);
 			inset->localDispatch(cmd);
 		}
-  	}
-	break;							 
-	
+	}
+	break;
+
 	case LFUN_DIALOG_UPDATE: {
 		string const & name = argument;
 		// Can only update a dialog connected to an existing inset
@@ -1982,7 +1981,7 @@ string const LyXFunc::view_status_message()
 
 BufferView * LyXFunc::view() const
 {
-	Assert(owner);
+	BOOST_ASSERT(owner);
 	return owner->view().get();
 }
 

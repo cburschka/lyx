@@ -34,8 +34,6 @@
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
-#include "support/LAssert.h"
-
 #include "support/std_sstream.h"
 
 using namespace lyx::support;
@@ -199,7 +197,7 @@ Buffer const & InsetTabular::buffer() const
 
 BufferView * InsetTabular::view() const
 {
-	Assert(false);
+	BOOST_ASSERT(false);
 	return 0;
 }
 
@@ -245,7 +243,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	//	mi.base.textwidth << "\n";
 	if (!mi.base.bv) {
 		lyxerr << "InsetTabular::metrics: need bv" << endl;
-		Assert(0);
+		BOOST_ASSERT(false);
 	}
 
 	calculate_dimensions_of_cells(mi);
@@ -361,7 +359,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 				     int row, int column, int cell) const
 {
-	Assert(hasSelection());
+	BOOST_ASSERT(hasSelection());
 	int cs = tabular.column_of_cell(sel_cell_start);
 	int ce = tabular.column_of_cell(sel_cell_end);
 	if (cs > ce) {
@@ -2400,7 +2398,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 {
 	// when entering this function the inset should be ALWAYS locked!
-	Assert(the_locking_inset);
+	BOOST_ASSERT(the_locking_inset);
 
 	WordLangTuple word(the_locking_inset->selectNextWordToSpellcheck(bv, value));
 	if (!word.word().empty())

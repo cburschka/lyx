@@ -17,10 +17,7 @@
 #include "lyxlex.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "support/LAssert.h"
 #include "support/std_sstream.h"
-
-using namespace lyx::support;
 
 using std::istringstream;
 using std::ostringstream;
@@ -130,14 +127,14 @@ void ControlParagraph::dispatchParams()
 
 ParagraphParameters & ControlParagraph::params()
 {
-	Assert(params_.get());
+	BOOST_ASSERT(params_.get());
 	return *params_;
 }
 
 
 ParagraphParameters const & ControlParagraph::params() const
 {
-	Assert(params_.get());
+	BOOST_ASSERT(params_.get());
 	return *params_;
 }
 

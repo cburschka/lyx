@@ -13,7 +13,6 @@
 
 #ifdef USE_PSPELL
 
-#include "support/LAssert.h"
 #include "debug.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
@@ -96,14 +95,14 @@ enum PSpell::Result PSpell::check(WordLangTuple const & word)
 	PspellManager * m = it->second.manager;
 
 	int word_ok = pspell_manager_check(m, word.word().c_str());
-	Assert(word_ok != -1);
+	BOOST_ASSERT(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
 		PspellWordList const * sugs =
 			pspell_manager_suggest(m, word.word().c_str());
-		Assert(sugs != 0);
+		BOOST_ASSERT(sugs != 0);
 		els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs))
 			res = UNKNOWN;

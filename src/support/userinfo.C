@@ -11,8 +11,9 @@
 #include <config.h>
 
 #include "userinfo.h"
-#include "LAssert.h"
 #include "filetools.h"
+
+#include <boost/assert.hpp>
 
 #include <pwd.h>
 #include <unistd.h>
@@ -24,7 +25,7 @@ namespace support {
 string const user_name()
 {
 	struct passwd * pw(getpwuid(geteuid()));
-	Assert(pw);
+	BOOST_ASSERT(pw);
 
 	string name = pw->pw_gecos;
 	if (name.empty())

@@ -12,9 +12,11 @@
 
 #include "author.h"
 
-#include "support/LAssert.h"
 #include "support/std_istream.h"
 #include "support/lstrings.h"
+
+#include <boost/assert.hpp>
+
 
 using namespace lyx::support;
 
@@ -63,7 +65,7 @@ int AuthorList::record(Author const & a)
 
 void AuthorList::record(int id, Author const & a)
 {
-	Assert(unsigned(id) < authors_.size());
+	BOOST_ASSERT(unsigned(id) < authors_.size());
 
 	authors_[id] = a;
 }
@@ -72,7 +74,7 @@ void AuthorList::record(int id, Author const & a)
 Author const & AuthorList::get(int id)
 {
 	Authors::const_iterator it(authors_.find(id));
-	Assert(it != authors_.end());
+	BOOST_ASSERT(it != authors_.end());
 	return it->second;
 }
 

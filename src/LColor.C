@@ -18,7 +18,6 @@
 
 #include "debug.h"
 #include "LColor.h"
-#include "support/LAssert.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 
@@ -172,18 +171,18 @@ void LColor::operator=(LColor const & c)
 }
 
 
-void LColor::fill(LColor::color c, 
+void LColor::fill(LColor::color c,
 				string const & lyxname,
-				string const & x11name, 
-				string const & latexname, 
-				string const & guiname) 
+				string const & x11name,
+				string const & latexname,
+				string const & guiname)
 {
 	ColorEntry ce;
 	ce.lcolor = c;
-	ce.guiname = guiname.c_str();	
-	ce.latexname = latexname.c_str();	
-	ce.x11name = x11name.c_str();	
-	ce.lyxname = lyxname.c_str();	
+	ce.guiname = guiname.c_str();
+	ce.latexname = latexname.c_str();
+	ce.x11name = x11name.c_str();
+	ce.lyxname = lyxname.c_str();
 	pimpl_->fill(ce);
 }
 
@@ -201,10 +200,10 @@ string const LColor::getGUIName(string const &  s) const
 {
 	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
 	if (ici != pimpl_->transform.end()) {
-		Pimpl::InfoTab::const_iterator 
+		Pimpl::InfoTab::const_iterator
 			it = pimpl_->infotab.find(ici->second);
-		if (it != pimpl_->infotab.end()) 
-			return it->second.guiname;	
+		if (it != pimpl_->infotab.end())
+			return it->second.guiname;
 	}
 	return "none";
 }
@@ -227,9 +226,9 @@ string const LColor::getX11Name(string const & s) const
 {
 	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
 	if (ici != pimpl_->transform.end()) {
-		Pimpl::InfoTab::const_iterator 
+		Pimpl::InfoTab::const_iterator
 			it = pimpl_->infotab.find(ici->second);
-		if (it != pimpl_->infotab.end()) 
+		if (it != pimpl_->infotab.end())
 			return it->second.x11name;
 	}
 	lyxerr << "LyX internal error: Missing color"
@@ -252,9 +251,9 @@ string const LColor::getLaTeXName(string const & s) const
 {
 	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
 	if (ici != pimpl_->transform.end()) {
-		Pimpl::InfoTab::const_iterator 
+		Pimpl::InfoTab::const_iterator
 			it = pimpl_->infotab.find(ici->second);
-		if (it != pimpl_->infotab.end()) 
+		if (it != pimpl_->infotab.end())
 			return it->second.latexname;
 	}
 	return "black";
@@ -284,7 +283,7 @@ void LColor::setColor(LColor::color col, string const & x11name)
 		return;
 	}
 	lyxerr << "LyX internal error: color and such." << endl;
-	Assert(false);
+	BOOST_ASSERT(false);
 }
 
 

@@ -12,9 +12,7 @@
 
 #include "ViewBase.h"
 #include "ControlButtons.h"
-#include "support/LAssert.h"
 
-using namespace lyx::support;
 
 ViewBase::ViewBase(string const & t)
 	: controller_ptr_(0), title_(t)
@@ -41,14 +39,14 @@ string const & ViewBase::getTitle() const
 
 ControlButtons & ViewBase::getController()
 {
-	Assert(controller_ptr_);
+	BOOST_ASSERT(controller_ptr_);
 	return *controller_ptr_;
 }
 
 
 ControlButtons const & ViewBase::getController() const
 {
-	Assert(controller_ptr_);
+	BOOST_ASSERT(controller_ptr_);
 	return *controller_ptr_;
 }
 

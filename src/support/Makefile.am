@@ -27,8 +27,6 @@ libsupport_la_SOURCES = \
 	FileInfo.h \
 	FileMonitor.h \
 	FileMonitor.C \
-	LAssert.C \
-	LAssert.h \
 	abort.C \
 	atoi.C \
 	boost-inst.C \

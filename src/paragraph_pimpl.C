@@ -25,9 +25,6 @@
 #include "lyxrc.h"
 #include "texrow.h"
 
-#include "support/LAssert.h"
-
-using namespace lyx::support;
 
 using lyx::pos_type;
 
@@ -177,7 +174,7 @@ Change const Paragraph::Pimpl::lookupChangeFull(pos_type pos) const
 
 void Paragraph::Pimpl::markErased()
 {
-	Assert(tracking());
+	BOOST_ASSERT(tracking());
 
 	// FIXME: we should actually remove INSERTED chars.
 	// difficult because owning insettexts/tabulars need
@@ -262,7 +259,7 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 	// This is in the critical path for loading!
 	pos_type const siz = size();
 
-	Assert(pos <= siz);
+	BOOST_ASSERT(pos <= siz);
 
 	if (pos == siz) {
 		lyxerr << "getChar() on pos " << pos << " in par id "
@@ -273,7 +270,7 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 
 	return text[pos];
 #else
-	Assert(pos < size());
+	BOOST_ASSERT(pos < size());
 	return text[pos];
 #endif
 }
@@ -289,7 +286,7 @@ void Paragraph::Pimpl::setChar(pos_type pos, value_type c)
 void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 				  LyXFont const & font, Change change)
 {
-	Assert(pos <= size());
+	BOOST_ASSERT(pos <= size());
 
 	if (tracking()) {
 		changes_->record(change, pos);
@@ -326,11 +323,11 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 void Paragraph::Pimpl::insertInset(pos_type pos,
 				   InsetOld * inset, LyXFont const & font, Change change)
 {
-	Assert(inset);
-	Assert(pos <= size());
+	BOOST_ASSERT(inset);
+	BOOST_ASSERT(pos <= size());
 
 	insertChar(pos, META_INSET, font, change);
-	Assert(text[pos] == META_INSET);
+	BOOST_ASSERT(text[pos] == META_INSET);
 
 	// Add a new entry in the insetlist.
 	owner_->insetlist.insert(inset, pos);
@@ -386,7 +383,7 @@ void Paragraph::Pimpl::eraseIntern(pos_type pos)
 
 bool Paragraph::Pimpl::erase(pos_type pos)
 {
-	Assert(pos < size());
+	BOOST_ASSERT(pos < size());
 
 	if (tracking()) {
 		Change::Type changetype(changes_->lookup(pos));

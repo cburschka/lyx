@@ -1,3 +1,7 @@
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* several files: change Assert to BOOST_ASSERT
+
 2003-09-09  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettext.[Ch]: remove drawText[XY]Offset
@@ -57,8 +61,8 @@
 	* insettabular.h: move #include "FuncStatus.h" out of the header file.
 	* insettoc.[Ch]: move #include "metricsinfo.h" out of the header file.
 
-	* insetcollapsable.h: 
-	* insetbranch.C: 
+	* insetcollapsable.h:
+	* insetbranch.C:
 	* insetnote.C: move #include "funcrequest.h" out of the header file.
 
 2003-09-03  Angus Leeming  <leeming@lyx.org>

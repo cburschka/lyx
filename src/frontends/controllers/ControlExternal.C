@@ -20,7 +20,6 @@
 
 #include "insets/ExternalTemplate.h"
 
-#include "support/LAssert.h"
 
 using namespace lyx::support;
 using std::vector;
@@ -55,21 +54,21 @@ void ControlExternal::dispatchParams()
 
 void ControlExternal::setParams(InsetExternal::Params const & p)
 {
-	Assert(params_.get());
+	BOOST_ASSERT(params_.get());
 	*params_ = p;
 }
 
 
 InsetExternal::Params const & ControlExternal::params() const
 {
-	Assert(params_.get());
+	BOOST_ASSERT(params_.get());
 	return *params_;
 }
 
 
 void ControlExternal::editExternal()
 {
-	Assert(params_.get());
+	BOOST_ASSERT(params_.get());
 
 	dialog().view().apply();
 	string const lfun =

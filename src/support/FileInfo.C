@@ -10,9 +10,11 @@
 
 #include <config.h>
 
-#include <cerrno>
 #include "FileInfo.h"
-#include "LAssert.h"
+
+#include <boost/assert.hpp>
+
+#include <cerrno>
 
 #if !S_IRUSR
 # if S_IREAD
@@ -207,7 +209,7 @@ FileInfo & FileInfo::newFile(int fildes)
 // should not be in FileInfo
 char FileInfo::typeIndicator() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	if (S_ISDIR(buf_.st_mode))
 		return '/';
 #ifdef S_ISLNK
@@ -230,7 +232,7 @@ char FileInfo::typeIndicator() const
 
 mode_t FileInfo::getMode() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_mode;
 }
 
@@ -238,7 +240,7 @@ mode_t FileInfo::getMode() const
 // should not be in FileInfo
 string FileInfo::modeString() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	char str[11];
 	str[0] = typeLetter(buf_.st_mode);
 	flagRWX((buf_.st_mode & 0700) << 0, &str[1]);
@@ -253,49 +255,49 @@ string FileInfo::modeString() const
 
 time_t FileInfo::getModificationTime() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_mtime;
 }
 
 
 time_t FileInfo::getAccessTime() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_atime;
 }
 
 
 time_t FileInfo::getStatusChangeTime() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_ctime;
 }
 
 
 nlink_t FileInfo::getNumberOfLinks() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_nlink;
 }
 
 
 uid_t FileInfo::getUid() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_uid;
 }
 
 
 gid_t FileInfo::getGid() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_gid;
 }
 
 
 off_t FileInfo::getSize() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return buf_.st_size;
 }
 
@@ -314,49 +316,49 @@ bool FileInfo::isOK() const
 
 bool FileInfo::isLink() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return S_ISLNK(buf_.st_mode);
 }
 
 
 bool FileInfo::isRegular() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return S_ISREG(buf_.st_mode);
 }
 
 
 bool FileInfo::isDir() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return S_ISDIR(buf_.st_mode);
 }
 
 
 bool FileInfo::isChar() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return S_ISCHR(buf_.st_mode);
 }
 
 
 bool FileInfo::isBlock() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return S_ISBLK(buf_.st_mode);
 }
 
 
 bool FileInfo::isFifo() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 	return S_ISFIFO(buf_.st_mode);
 }
 
 
 bool FileInfo::isSocket() const
 {
-	Assert(isOK());
+	BOOST_ASSERT(isOK());
 #ifdef S_ISSOCK
 	return S_ISSOCK(buf_.st_mode);
 #else

@@ -25,7 +25,6 @@
 #include "graphics/GraphicsImage.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 
 using namespace lyx::support;
 
@@ -77,7 +76,7 @@ void ButtonRenderer::update(string const & text, bool editable)
 
 void ButtonRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Assert(mi.base.bv);
+	BOOST_ASSERT(mi.base.bv);
 
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -93,7 +92,7 @@ void ButtonRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void ButtonRenderer::draw(PainterInfo & pi, int x, int y) const
 {
-	Assert(pi.base.bv);
+	BOOST_ASSERT(pi.base.bv);
 	view_ = pi.base.bv->owner()->view();
 
 	// Draw it as a box with the LaTeX text
@@ -133,7 +132,7 @@ void GraphicRenderer::update(lyx::graphics::Params const & params)
 	params_ = params;
 
 	if (!params_.filename.empty()) {
-		Assert(AbsolutePath(params_.filename));
+		BOOST_ASSERT(AbsolutePath(params_.filename));
 		loader_.reset(params_.filename, params_);
 	}
 }
@@ -231,7 +230,7 @@ void GraphicRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void GraphicRenderer::draw(PainterInfo & pi, int x, int y) const
 {
-	Assert(pi.base.bv);
+	BOOST_ASSERT(pi.base.bv);
 	view_ = pi.base.bv->owner()->view();
 
 #if 0

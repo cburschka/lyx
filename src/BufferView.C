@@ -40,7 +40,6 @@
 #include "insets/updatableinset.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx_count
 
 
@@ -260,7 +259,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	//
 	// Moved from lyx_cb.C (Lgb)
 {
-	Assert(!filen.empty());
+	BOOST_ASSERT(!filen.empty());
 
 	string const fname = MakeAbsPath(filen);
 

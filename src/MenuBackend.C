@@ -40,7 +40,6 @@
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/lyxfunctional.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -829,7 +828,7 @@ Menu const & MenuBackend::getMenu(string const & name) const
 				     lyx::compare_memfun(&Menu::name, name));
 	if (cit == end())
 		lyxerr << "No submenu named " << name << endl;
-	Assert(cit != end());
+	BOOST_ASSERT(cit != end());
 	return (*cit);
 }
 
@@ -839,7 +838,7 @@ Menu & MenuBackend::getMenu(string const & name)
 	MenuList::iterator it =
 		find_if(menulist_.begin(), menulist_.end(),
 			lyx::compare_memfun(&Menu::name, name));
-	Assert(it != menulist_.end());
+	BOOST_ASSERT(it != menulist_.end());
 	return (*it);
 }
 

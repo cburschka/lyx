@@ -20,14 +20,12 @@
 
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
-#include "support/LAssert.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
 
 namespace support = lyx::support;
 
-using support::Assert;
 using support::ChangeExtension;
 using support::FileMonitor;
 using support::IsFileReadable;
@@ -333,7 +331,7 @@ string const findTargetFormat(string const & from)
 	FormatList const formats = lyx::graphics::Image::loadableFormats();
 
 	// There must be a format to load from.
-	Assert(!formats.empty());
+	BOOST_ASSERT(!formats.empty());
 
 	// First ascertain if we can load directly with no conversion
 	FormatList::const_iterator it  = formats.begin();

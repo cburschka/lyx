@@ -1,23 +1,23 @@
 /**
- * \file BranchList.C 
+ * \file BranchList.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Martin Vermeer
- * 
+ *
  * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>
 
 #include "BranchList.h"
-#include "support/LAssert.h"
+
+#include <boost/assert.hpp>
 
 #include <functional>
 
 using std::bind2nd;
 using std::binary_function;
-using namespace lyx::support;
 
 
 string const Branch::getBranch() const
@@ -71,7 +71,7 @@ string BranchList::getColor(string const & s) const
 			return it->getColor();
 		}
 	}
-	Assert(false); // Always
+	BOOST_ASSERT(false); // Always
 	return string(); // never gets here
 }
 
@@ -87,7 +87,7 @@ void BranchList::setColor(string const & s, string const & val)
 			return;
 		}
 	}
-	Assert(false);
+	BOOST_ASSERT(false);
 }
 
 
@@ -131,7 +131,7 @@ void BranchList::add(string const & s)
 		}
 		if (j == string::npos)
 			break;
-		i = j + 1; 
+		i = j + 1;
 	}
 }
 
@@ -141,7 +141,7 @@ namespace {
 struct match : public binary_function<Branch, string, bool> {
 	bool operator()(Branch const & br, string const & s) const {
 	return (br.getBranch() == s);
-	}                                                                       
+	}
 };
 
 } // namespace anon.
@@ -158,7 +158,7 @@ bool BranchList::selected(string const & s) const
 	List::const_iterator it = list.begin();
 	List::const_iterator end = list.end();
 	for (; it != end; ++it) {
-		if (s == it->getBranch()) 
+		if (s == it->getBranch())
 			return it->getSelected();
 	}
 	return false;
@@ -182,12 +182,12 @@ string BranchList::allBranches() const
 
 
 string BranchList::allSelected() const
-{	
+{
 	List::const_iterator it = list.begin();
 	List::const_iterator end = list.end();
 	string ret;
 	for (; it != end; ++it) {
-		if (it->getSelected()) 
+		if (it->getSelected())
 			ret += it->getBranch() + separator();
 	}
 	// remove final '|':

@@ -12,8 +12,6 @@
 
 #include "Color.h"
 
-#include "support/LAssert.h"
-
 #include "lyx_forms.h"
 
 #include "support/std_sstream.h"
@@ -21,7 +19,6 @@
 #include <cmath>
 #include <iomanip>
 
-namespace support = lyx::support;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
@@ -87,9 +84,9 @@ string const X11hexname(RGBColor const & col)
 
 
 RGBColor::RGBColor(string const & x11hexname)
-	: r(0), g(0), b(0) 
+	: r(0), g(0), b(0)
 {
-	support::Assert(x11hexname.size() == 7 && x11hexname[0] == '#');
+	BOOST_ASSERT(x11hexname.size() == 7 && x11hexname[0] == '#');
 	r = hexstrToInt(x11hexname.substr(1,2));
 	g = hexstrToInt(x11hexname.substr(3,2));
 	b = hexstrToInt(x11hexname.substr(5,2));

@@ -18,10 +18,6 @@
 
 #include "insets/inset.h"
 
-#include "support/LAssert.h"
-
-namespace support = lyx::support;
-
 
 namespace lyx {
 namespace graphics {

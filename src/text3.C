@@ -42,7 +42,6 @@
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
@@ -114,7 +113,7 @@ namespace {
 			return 0;
 
 		// get inset dimensions
-		Assert(par->getInset(pos));
+		BOOST_ASSERT(par->getInset(pos));
 
 		LyXFont const & font = text.getFont(par, pos);
 
@@ -881,7 +880,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		Assert(bv->theLockingInset());
+		BOOST_ASSERT(bv->theLockingInset());
 		bv->theLockingInset()->getLockingInset()->showInsetDialog(bv);
 		break;
 

@@ -10,12 +10,12 @@
 
 #include <config.h>
 
+#include "lyx_main.h"
 #include "debug.h"
-#include "support/LAssert.h"
+
+#include <boost/assert.hpp>
 
 #include <exception>
-
-using namespace lyx::support;
 
 using std::endl;
 
@@ -25,7 +25,33 @@ void throw_exception(std::exception const & e)
 {
 	lyxerr << "Exception caught:\n"
 	    << e.what() << endl;
-	Assert(false);
+	BOOST_ASSERT(false);
+}
+
+
+namespace {
+
+void emergencyCleanup()
+{
+        static bool didCleanup;
+        if (didCleanup)
+                return;
+
+        didCleanup = true;
+
+        LyX::emergencyCleanup();
+}
+
+}
+
+
+void assertion_failed(char const * expr, char const * function,
+		      char const * file, long line)
+{
+	lyxerr << "Assertion triggered in " << function << " by \"" <<
+		expr << " in file " << file << ":" << line << endl;
+	emergencyCleanup();
+	assert(false);
 }
 
 

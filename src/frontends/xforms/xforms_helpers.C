@@ -18,7 +18,6 @@
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/lstrings.h" // frontStrip, strip
 #include "support/tostr.h"
 
@@ -100,7 +99,7 @@ vector<string> const getVector(FL_OBJECT * ob)
 		}
 		break;
 	default:
-		Assert(0);
+		BOOST_ASSERT(false);
 	}
 
 	return vec;
@@ -111,7 +110,7 @@ vector<string> const getVector(FL_OBJECT * ob)
 string const getString(FL_OBJECT * ob, int line)
 {
 	// Negative line value does not make sense.
-	Assert(line >= 0);
+	BOOST_ASSERT(line >= 0);
 
 	char const * tmp = 0;
 	switch (ob->objclass) {
@@ -140,7 +139,7 @@ string const getString(FL_OBJECT * ob, int line)
 		break;
 
 	default:
-		Assert(0);
+		BOOST_ASSERT(false);
 	}
 
 	return tmp ? trim(tmp) : string();
@@ -149,7 +148,7 @@ string const getString(FL_OBJECT * ob, int line)
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 {
 	// Paranoia check
-	Assert(input  && input->objclass  == FL_INPUT &&
+	BOOST_ASSERT(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
 
 	string const length = trim(fl_get_input(input));
@@ -190,7 +189,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 			     string const & default_unit)
 {
 	// Paranoia check
-	Assert(input  && input->objclass  == FL_INPUT &&
+	BOOST_ASSERT(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
 
 	if (len.empty()) {

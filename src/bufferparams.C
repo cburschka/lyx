@@ -36,7 +36,6 @@
 
 #include "frontends/Alert.h"
 
-#include "support/LAssert.h"
 #include "support/lyxalgo.h" // for lyx::count
 
 #include <boost/array.hpp>
@@ -148,28 +147,28 @@ BranchList const & BufferParams::branchlist() const
 
 Bullet & BufferParams::temp_bullet(lyx::size_type index)
 {
-	support::Assert(index < 4);
+	BOOST_ASSERT(index < 4);
 	return pimpl_->temp_bullets[index];
 }
 
 
 Bullet const & BufferParams::temp_bullet(lyx::size_type index) const
 {
-	support::Assert(index < 4);
+	BOOST_ASSERT(index < 4);
 	return pimpl_->temp_bullets[index];
 }
 
 
 Bullet & BufferParams::user_defined_bullet(lyx::size_type index)
 {
-	support::Assert(index < 4);
+	BOOST_ASSERT(index < 4);
 	return pimpl_->user_defined_bullets[index];
 }
 
 
 Bullet const & BufferParams::user_defined_bullet(lyx::size_type index) const
 {
-	support::Assert(index < 4);
+	BOOST_ASSERT(index < 4);
 	return pimpl_->user_defined_bullets[index];
 }
 
@@ -328,9 +327,9 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 				string color = lex.getString();
 				branchlist().setColor(branch, color);
 				// Update also the LColor table:
-				if (color == "none") 
+				if (color == "none")
 					color = lcolor.getX11Name(LColor::background);
-				lcolor.fill(static_cast<LColor::color>(lcolor.size()), 
+				lcolor.fill(static_cast<LColor::color>(lcolor.size()),
 						branch, color);
 			}
 		}
@@ -527,9 +526,9 @@ void BufferParams::writeFile(ostream & os) const
 	std::list<Branch>::const_iterator end = branchlist().end();
 	for (; it != end; ++it) {
 		os << "\\branch " << it->getBranch()
-		   << "\n\\selected " << it->getSelected()	
-		   << "\n\\color " << it->getColor()	
-		   << "\n\\end_branch" 
+		   << "\n\\selected " << it->getSelected()
+		   << "\n\\color " << it->getColor()
+		   << "\n\\end_branch"
 		   << "\n";
 	}
 

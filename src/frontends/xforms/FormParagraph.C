@@ -28,7 +28,6 @@
 #include "Spacing.h"
 #include "vspace.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
@@ -442,7 +441,7 @@ namespace {
 void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 {
 	// Paranoia check!
-	Assert(choice_type  && choice_type->objclass  == FL_CHOICE &&
+	BOOST_ASSERT(choice_type  && choice_type->objclass  == FL_CHOICE &&
 		    input_length && input_length->objclass == FL_INPUT);
 
 	if (fl_get_choice(choice_type) != 7)
@@ -462,7 +461,7 @@ VSpace const setVSpaceFromWidgets(FL_OBJECT * choice_type,
 				  FL_OBJECT * check_keep)
 {
 	// Paranoia check!
-	Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
+	BOOST_ASSERT(choice_type   && choice_type->objclass   == FL_CHOICE &&
 		    input_length  && input_length->objclass  == FL_INPUT &&
 		    choice_length && choice_length->objclass == FL_CHOICE &&
 		    check_keep    && check_keep->objclass    == FL_CHECKBUTTON);
@@ -510,7 +509,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 			  FL_OBJECT * check_keep)
 {
 	// Paranoia check!
-	Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
+	BOOST_ASSERT(choice_type   && choice_type->objclass   == FL_CHOICE &&
 		    input_length  && input_length->objclass  == FL_INPUT &&
 		    choice_length && choice_length->objclass == FL_CHOICE &&
 		    check_keep    && check_keep->objclass    == FL_CHECKBUTTON);

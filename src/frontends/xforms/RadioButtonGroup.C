@@ -17,12 +17,9 @@
 
 #include "debug.h"
 
-#include "support/LAssert.h"
 #include "support/lyxfunctional.h"
 
 #include "lyx_forms.h"
-
-using namespace lyx::support;
 
 using std::endl;
 
@@ -31,7 +28,7 @@ void RadioButtonGroup::init(FL_OBJECT * ob, size_type value)
 {
 	// Object must be a ROUND3DBUTTON (let all radio buttons look the same)
 	// and of type RADIO_BUTTON (otherwise it ain't work).
-	Assert(ob && ob->objclass == FL_ROUND3DBUTTON
+	BOOST_ASSERT(ob && ob->objclass == FL_ROUND3DBUTTON
 			&& ob->type == FL_RADIO_BUTTON);
 
 	map.push_back(ButtonValuePair(ob, value));

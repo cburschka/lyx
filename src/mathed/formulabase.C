@@ -13,7 +13,6 @@
 
 #include "formulabase.h"
 #include "support/std_sstream.h"
-#include "support/LAssert.h"
 #include "formula.h"
 #include "formulamacro.h"
 #include "funcrequest.h"
@@ -712,7 +711,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	mathcursor->normalize();
 	mathcursor->touch();
 
-	Assert(mathcursor);
+	BOOST_ASSERT(mathcursor);
 
 	if (mathcursor->selection() || was_selection)
 		toggleInsetSelection(bv);

@@ -17,14 +17,10 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
-#include "support/LAssert.h"
-
-using namespace lyx::support;
-
 
 void MailInset::showDialog(BufferView * bv) const
 {
-	Assert(bv);
+	BOOST_ASSERT(bv);
 	bv->owner()->getDialogs().show(name(), inset2string(*bv->buffer()),
 				       &inset());
 }
@@ -32,7 +28,7 @@ void MailInset::showDialog(BufferView * bv) const
 
 void MailInset::updateDialog(BufferView * bv) const
 {
-	Assert(bv);
+	BOOST_ASSERT(bv);
 	if(bv->owner()->getDialogs().visible(name()))
 		bv->owner()->getDialogs().update(name(),
 						 inset2string(*bv->buffer()));

@@ -51,7 +51,6 @@
 #include "insets/insetfloat.h"
 #include "insets/insetwrap.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -108,7 +107,7 @@ void LyXText::init(BufferView * bview)
 // smaller. (Asger)
 LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 {
-	Assert(pos >= 0);
+	BOOST_ASSERT(pos >= 0);
 
 	LyXLayout_ptr const & layout = pit->layout();
 #warning broken?
@@ -623,7 +622,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
 	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
 	//	<< " workWidth: " << workWidth() << endl;
-	//Assert(mi.base.textwidth);
+	//BOOST_ASSERT(mi.base.textwidth);
 
 	// rebuild row cache
 	width  = 0;
@@ -1003,7 +1002,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 				else if (in->lyxCode() == InsetOld::WRAP_CODE)
 					type = static_cast<InsetWrap*>(in)->params().type;
 				else
-					Assert(0);
+					BOOST_ASSERT(false);
 
 				Floating const & fl = textclass.floats().getType(type);
 
@@ -1333,7 +1332,7 @@ void LyXText::redoCursor()
 void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 			pos_type pos, bool boundary)
 {
-	Assert(pit != ownerParagraphs().end());
+	BOOST_ASSERT(pit != ownerParagraphs().end());
 
 	cur.par(pit);
 	cur.pos(pos);

@@ -26,7 +26,6 @@
 
 #include "support/tostr.h"
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 
@@ -44,7 +43,7 @@ ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 
 PrinterParams & ControlPrint::params() const
 {
-	Assert(params_);
+	BOOST_ASSERT(params_);
 	return *params_;
 }
 

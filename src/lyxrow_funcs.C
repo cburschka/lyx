@@ -18,12 +18,9 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 
-#include "support/LAssert.h"
-
 #include <boost/next_prior.hpp>
 
 using lyx::pos_type;
-using lyx::support::Assert;
 
 using std::max;
 using std::min;
@@ -38,7 +35,7 @@ bool isParEnd(Paragraph const & par, RowList::iterator rit)
 		lyxerr << "broken row 1: end: " << rit->end() << " next: "
 			<< boost::next(rit)->pos() << endl;
 		lyxerr << endl;
-		Assert(false);
+		BOOST_ASSERT(false);
 	}
 #endif
 	return boost::next(rit) == par.rows.end();
@@ -58,7 +55,7 @@ pos_type lastPos(Paragraph const & par, RowList::iterator rit)
 		lyxerr << "broken row 2: end: " << rit->end() << " next: "
 			<< boost::next(rit)->pos() << endl;
 		lyxerr << endl;
-		Assert(false);
+		BOOST_ASSERT(false);
 	}
 	return boost::next(rit)->pos() - 1;
 }

@@ -13,9 +13,8 @@
 #include "math_pos.h"
 #include "math_inset.h"
 #include "debug.h"
-#include "support/LAssert.h"
 
-using namespace lyx::support;
+#include <boost/assert.hpp>
 
 using std::endl;
 
@@ -28,21 +27,21 @@ CursorPos::CursorPos()
 CursorPos::CursorPos(MathInset * p)
 	: inset_(p), idx_(0), pos_(0)
 {
-	Assert(inset_);
+	BOOST_ASSERT(inset_);
 }
 
 
 
 MathArray & CursorPos::cell(MathArray::idx_type idx) const
 {
-	Assert(inset_);
+	BOOST_ASSERT(inset_);
 	return inset_->cell(idx);
 }
 
 
 MathArray & CursorPos::cell() const
 {
-	Assert(inset_);
+	BOOST_ASSERT(inset_);
 	return inset_->cell(idx_);
 }
 

@@ -14,7 +14,6 @@
 #include "debug.h"
 #include "funcrequest.h"
 
-#include "support/LAssert.h"
 #include "support/lyxalgo.h" // sorted
 #include "support/lstrings.h"
 #include "support/filetools.h"
@@ -340,7 +339,7 @@ string const find_xpm(string const & name)
 {
 	XPMmap const * const begin = sorted_xpm_map;
 	XPMmap const * const end = begin + nr_sorted_xpm_map;
-	Assert(lyx::sorted(begin, end));
+	BOOST_ASSERT(lyx::sorted(begin, end));
 
 	XPMmap const * const it =
 		std::find_if(begin, end, CompareKey(name));

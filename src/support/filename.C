@@ -12,10 +12,11 @@
 
 #include "filename.h"
 
-#include "LAssert.h"
 #include "filetools.h"
 #include "lstrings.h"
 #include "os.h"
+
+#include <boost/assert.hpp>
 
 
 namespace lyx {
@@ -30,7 +31,7 @@ FileName::FileName()
 FileName::FileName(string const & abs_filename, bool save_abs)
 	: name_(abs_filename), save_abs_path_(save_abs)
 {
-	Assert(AbsolutePath(name_));
+	BOOST_ASSERT(AbsolutePath(name_));
 }
 
 

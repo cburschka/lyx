@@ -22,7 +22,6 @@
 #include "lyxrc.h"
 
 #include "support/filetools.h" //  LibFileSearch
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
@@ -186,14 +185,14 @@ void FormDialogView::hide()
 
 void FormDialogView::setPrehandler(FL_OBJECT * ob)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 	fl_set_object_prehandler(ob, C_PrehandlerCB);
 }
 
 
 void FormDialogView::setMessageWidget(FL_OBJECT * ob)
 {
-	Assert(ob && ob->objclass == FL_TEXT);
+	BOOST_ASSERT(ob && ob->objclass == FL_TEXT);
 	message_widget_ = ob;
 	fl_set_object_lsize(message_widget_, FL_NORMAL_SIZE);
 }
@@ -220,7 +219,7 @@ ButtonPolicy::SMInput FormDialogView::input(FL_OBJECT *, long)
 // preemptive handler for feedback messages
 void FormDialogView::MessageCB(FL_OBJECT * ob, int event)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	switch (event) {
 	case FL_ENTER:
@@ -247,7 +246,7 @@ void FormDialogView::MessageCB(FL_OBJECT * ob, int event)
 
 void FormDialogView::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	if (ob->objclass == FL_INPUT && event == FL_PUSH && key == 2) {
 		// Trigger an input event when pasting in an xforms input
@@ -299,7 +298,7 @@ void FormDialogView::postWarning(string const & warning)
 
 void FormDialogView::clearMessage()
 {
-	Assert(message_widget_);
+	BOOST_ASSERT(message_widget_);
 
 	warning_posted_ = false;
 
@@ -316,7 +315,7 @@ void FormDialogView::clearMessage()
 
 void FormDialogView::postMessage(string const & message)
 {
-	Assert(message_widget_);
+	BOOST_ASSERT(message_widget_);
 
 	int const width = message_widget_->w - 10;
 	string const tmp = warning_posted_ ?
@@ -338,7 +337,7 @@ namespace {
 
 FormDialogView * GetForm(FL_OBJECT * ob)
 {
-	Assert(ob && ob->form && ob->form->u_vdata);
+	BOOST_ASSERT(ob && ob->form && ob->form->u_vdata);
 	FormDialogView * ptr =
 		static_cast<FormDialogView *>(ob->form->u_vdata);
 	return ptr;
@@ -383,7 +382,7 @@ void C_FormDialogView_InputCB(FL_OBJECT * ob, long d)
 static int C_WMHideCB(FL_FORM * form, void *)
 {
 	// Close the dialog cleanly, even if the WM is used to do so.
-	Assert(form && form->u_vdata);
+	BOOST_ASSERT(form && form->u_vdata);
 	FormDialogView * ptr = static_cast<FormDialogView *>(form->u_vdata);
 	ptr->dialog().CancelButton();
 	return FL_CANCEL;
@@ -394,11 +393,11 @@ static int C_PrehandlerCB(FL_OBJECT * ob, int event,
 {
 	// Note that the return value is important in the pre-emptive handler.
 	// Don't return anything other than 0.
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	// Don't Assert this one, as it can happen quite naturally when things
 	// are being deleted in the d-tor.
-	//Assert(ob->form);
+	//BOOST_ASSERT(ob->form);
 	if (!ob->form) return 0;
 
 	FormDialogView * ptr =

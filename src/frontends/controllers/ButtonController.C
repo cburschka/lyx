@@ -8,17 +8,15 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
+
 #include "ButtonController.h"
 #include "BCView.h"
-#include "support/LAssert.h"
 
-using namespace lyx::support;
 
 BCView & ButtonController::view() const
 {
-	Assert(view_.get());
+	BOOST_ASSERT(view_.get());
 	return *view_.get();
 }
 
@@ -30,7 +28,7 @@ void ButtonController::view(BCView * view)
 
 ButtonPolicy & ButtonController::bp() const
 {
-	Assert(bp_.get());
+	BOOST_ASSERT(bp_.get());
 	return *bp_.get();
 }
 

@@ -99,9 +99,9 @@ void QDocument::build_dialog()
 	// paper
 	QComboBox * cb = dialog_->pageLayoutModule->papersizeCO;
 	cb->insertItem(qt_("Default"));
-       	cb->insertItem(qt_("Custom"));
-       	cb->insertItem(qt_("US letter"));
-       	cb->insertItem(qt_("US legal"));
+	cb->insertItem(qt_("Custom"));
+	cb->insertItem(qt_("US letter"));
+	cb->insertItem(qt_("US legal"));
 	cb->insertItem(qt_("US executive"));
 	cb->insertItem(qt_("A3"));
 	cb->insertItem(qt_("A4"));

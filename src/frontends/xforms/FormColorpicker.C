@@ -20,7 +20,6 @@
 #include "lyxrc.h"
 
 #include "support/filetools.h" //  LibFileSearch
-#include "support/LAssert.h"
 #include "support/tostr.h"
 
 #include "lyx_forms.h"
@@ -346,7 +345,7 @@ extern "C" {
 
 void C_FormColorpickerInputCB(FL_OBJECT * ob, long d)
 {
-	lyx::support::Assert(ob && ob->form && ob->form->u_vdata);
+	BOOST_ASSERT(ob && ob->form && ob->form->u_vdata);
 	FormColorpicker * ptr =
 		static_cast<FormColorpicker *>(ob->form->u_vdata);
 	ptr->input(ob, d);
@@ -356,7 +355,7 @@ void C_FormColorpickerInputCB(FL_OBJECT * ob, long d)
 static int C_WMHideCB(FL_FORM * form, void *)
 {
 	// Close the dialog cleanly, even if the WM is used to do so.
-	lyx::support::Assert(form && form->u_vdata);
+	BOOST_ASSERT(form && form->u_vdata);
 	FormColorpicker * ptr = static_cast<FormColorpicker *>(form->u_vdata);
 	ptr->input(0, 0);
 	return FL_CANCEL;

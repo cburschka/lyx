@@ -13,7 +13,8 @@
 #include "PrinterParams.h"
 
 #include "support/lstrings.h"
-#include "support/LAssert.h"
+
+#include <boost/assert.hpp>
 
 
 PrinterParams::PrinterParams(Target t,
@@ -65,13 +66,13 @@ void PrinterParams::testInvariant() const
 #ifdef ENABLE_ASSERTIONS
 	switch (target) {
 	case PRINTER:
-		//lyx::support::Assert(!printer_name.empty());
+		//BOOST_ASSERT(!printer_name.empty());
 		break;
 	case FILE:
-		lyx::support::Assert(!file_name.empty());
+		BOOST_ASSERT(!file_name.empty());
 		break;
 	default:
-		lyx::support::Assert(false);
+		BOOST_ASSERT(false);
 		break;
 	}
 #endif

@@ -10,10 +10,10 @@
  */
 
 #include <config.h>
+
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 
 #include "QBrowseBox.h"
 #include "BulletsModule.h"
@@ -236,7 +236,7 @@ void BulletsModule::setBullet(int level, const Bullet & bullet)
 		case 1: pb = bullet2PB; co = bulletsize2CO; break;
 		case 2: pb = bullet3PB; co = bulletsize3CO; break;
 		case 3: pb = bullet4PB; co = bulletsize4CO; break;
-		default: Assert(false); break;
+		default: BOOST_ASSERT(false); break;
 	}
 
 	setBullet(pb, co, bullet);

@@ -15,7 +15,6 @@
 #include "xforms_helpers.h"
 #include "lyxgluelength.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
@@ -66,7 +65,7 @@ void setWidget(bool valid, FL_OBJECT * input, FL_OBJECT * label)
 CheckedLyXLength::CheckedLyXLength(FL_OBJECT * input, FL_OBJECT * label)
 	: input_(input), label_(label ? label : input)
 {
-	Assert(input && input->objclass == FL_INPUT);
+	BOOST_ASSERT(input && input->objclass == FL_INPUT);
 }
 
 
@@ -86,7 +85,7 @@ bool CheckedLyXLength::check() const
 CheckedGlueLength::CheckedGlueLength(FL_OBJECT * input, FL_OBJECT * label)
 	: input_(input), label_(label ? label : input)
 {
-	Assert(input && input->objclass == FL_INPUT);
+	BOOST_ASSERT(input && input->objclass == FL_INPUT);
 }
 
 

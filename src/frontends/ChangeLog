@@ -1,3 +1,7 @@
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Timeout.C: change Assert to BOOST_ASSERT
+
 2003-09-07  Angus Leeming  <leeming@lyx.org>
 
 	* Alert.h: remove #include <algorithm>.

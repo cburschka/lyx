@@ -26,7 +26,6 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include "support/std_sstream.h"
@@ -93,7 +92,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	else if (i2->lyxCode() == WRAP_CODE)
 		type = static_cast<InsetWrap *>(i2)->params().type;
 	else
-		Assert(0);
+		BOOST_ASSERT(false);
 
 	FloatList const & floats =
 		pi.base.bv->buffer()->params().getLyXTextClass().floats();

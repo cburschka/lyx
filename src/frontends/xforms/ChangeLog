@@ -1,3 +1,7 @@
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* several files: change Assert to BOOST_ASSERT
+
 2003-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.C (UserCache::add, GroupCache::add): convert
@@ -62,7 +66,7 @@
 
 	* Alert_pimpl.C:  move #include "debug.h" out of the header file.
 
-2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
+2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormDocument.C: fix crash on doc settings for non-branched doc
 
@@ -75,11 +79,11 @@
 
 	* FormShowFile.C (build): Remove redundant "LyX:" string from title.
 
-2003-08-21  Martin Vermeer  <martin.vermeer@hut.fi>	
+2003-08-21  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormNote.C: cosmetic fix.
 
-2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
+2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormDocument.C: make the layout file's "Other" class option
 	appear on the document panel as "Extra Options".
@@ -88,7 +92,7 @@
 
 	* form/form_tabular.fd: fix shortcut ("Middle|#m" => "Middle|#M")
 
-2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
+2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ColorHandler.[Ch]:
 	* Dialogs.C:
@@ -105,9 +109,9 @@
 	tab of the document settings dialog. Branches are user definable
 	and have a "display colour" to distinguish them on-screen.
 
-	ColorHandler was somewhat cleaned up. 
+	ColorHandler was somewhat cleaned up.
 	(1) make possible a dynamically growing LColor list by allowing
-	the graphic context cache to grow along (vector); 
+	the graphic context cache to grow along (vector);
 	(2) eliminate an IMHO unnecessary step in colour allocation.
 
 2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
@@ -121,7 +125,7 @@
 2003-08-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* .cvsignore: add lyx_forms.h-tmp, stamp-forms, lyx_xpm.h-tmp,
-	stamp-xpm. 
+	stamp-xpm.
 
 2003-08-06  Martin Vermeer  <martin.vermeer@hut.di>
 
@@ -132,7 +136,7 @@
 	* Color.[Ch]:
 	* FormPreferences.C: moved the RGB to hex string method
 	from FormPreferences to Color and added a hex string to RGB
-	method. 
+	method.
 
 2003-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

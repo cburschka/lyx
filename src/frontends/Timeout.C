@@ -13,10 +13,6 @@
 
 #include "Timeout.h"
 
-#include "support/LAssert.h"
-
-using namespace lyx::support;
-
 
 Timeout::~Timeout()
 {
@@ -68,7 +64,7 @@ Timeout & Timeout::setType(Type t)
 Timeout & Timeout::setTimeout(unsigned int msec)
 {
 	// Can't have a timeout of zero!
-	Assert(msec);
+	BOOST_ASSERT(msec);
 
 	timeout_ms = msec;
 	return * this;

@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "lyxrc.h"
-#include "support/LAssert.h"
 #include "support/limited_stack.h"
 #include "debug.h"
 #include "support/std_sstream.h"
@@ -34,8 +33,6 @@
 
 
 //#define FILEDEBUG 1
-
-using namespace lyx::support;
 
 using std::endl;
 using std::isalpha;
@@ -823,28 +820,28 @@ bool MathCursor::hasNextAtom() const
 
 MathAtom const & MathCursor::prevAtom() const
 {
-	Assert(pos() > 0);
+	BOOST_ASSERT(pos() > 0);
 	return array()[pos() - 1];
 }
 
 
 MathAtom & MathCursor::prevAtom()
 {
-	Assert(pos() > 0);
+	BOOST_ASSERT(pos() > 0);
 	return array()[pos() - 1];
 }
 
 
 MathAtom const & MathCursor::nextAtom() const
 {
-	Assert(pos() < size());
+	BOOST_ASSERT(pos() < size());
 	return array()[pos()];
 }
 
 
 MathAtom & MathCursor::nextAtom()
 {
-	Assert(pos() < size());
+	BOOST_ASSERT(pos() < size());
 	return array()[pos()];
 }
 
@@ -910,14 +907,14 @@ void MathCursor::getSelection(CursorPos & i1, CursorPos & i2) const
 
 CursorPos & MathCursor::cursor()
 {
-	Assert(depth());
+	BOOST_ASSERT(depth());
 	return Cursor_.back();
 }
 
 
 CursorPos const & MathCursor::cursor() const
 {
-	Assert(depth());
+	BOOST_ASSERT(depth());
 	return Cursor_.back();
 }
 
@@ -1392,7 +1389,7 @@ CursorPos MathCursor::normalAnchor() const
 		Anchor_ = Cursor_;
 		lyxerr << "unusual Anchor size" << endl;
 	}
-	//lyx::Assert(Anchor_.size() >= cursor.depth());
+	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.depth());
 	// use Anchor on the same level as Cursor
 	CursorPos normal = Anchor_[depth() - 1];
 	if (depth() < Anchor_.size() && !(normal < cursor())) {

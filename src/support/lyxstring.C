@@ -14,8 +14,6 @@
 
 #include "lyxstring.h"
 
-#include "LAssert.h"
-
 #include "debug.h"
 
 #include <iostream>
@@ -63,7 +61,7 @@ using std::ostream;
 
 namespace lyx {
 
-using support::Assert;
+using support::BOOST_ASSERT;
 
 ///////////////////////////////////////
 // The internal string representation
@@ -375,13 +373,13 @@ void stringInvariant::helper() const
 	// test every last little thing we *know* should be true.
 	// I may have missed a test or two, so feel free to fill
 	// in the gaps.  ARRae.
-	Assert(object);
-	Assert(object->rep);
-	Assert(object->rep->s);    // s is never 0
-	Assert(object->rep->res);  // res cannot be 0
-	Assert(object->rep->sz <= object->rep->res);
-	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
-	Assert(object->rep->ref < 1UL << (8UL * sizeof(object->rep->ref) - 1));
+	BOOST_ASSERT(object);
+	BOOST_ASSERT(object->rep);
+	BOOST_ASSERT(object->rep->s);    // s is never 0
+	BOOST_ASSERT(object->rep->res);  // res cannot be 0
+	BOOST_ASSERT(object->rep->sz <= object->rep->res);
+	BOOST_ASSERT(object->rep->ref >= 1);  // its in use so it must be referenced
+	BOOST_ASSERT(object->rep->ref < 1UL << (8UL * sizeof(object->rep->ref) - 1));
 	// if it does ever == then we should be generating a new copy
 	// and starting again.  (Is char always 8-bits?)
 }
@@ -409,7 +407,7 @@ string::string()
 
 string::string(string const & x, size_type pos, size_type n)
 {
-	Assert(pos <= x.rep->sz); // STD!
+	BOOST_ASSERT(pos <= x.rep->sz); // STD!
 	if (pos == 0 && n >= x.length()) { // this is the default
 		x.rep->ref++;
 		rep = x.rep;
@@ -421,7 +419,7 @@ string::string(string const & x, size_type pos, size_type n)
 
 string::string(value_type const * s, size_type n)
 {
-	Assert(s && n < npos); // STD!
+	BOOST_ASSERT(s && n < npos); // STD!
 	static Srep empty_rep(0, "");
 	if (n) { // n > 0
 		rep = new Srep(n, s);
@@ -434,7 +432,7 @@ string::string(value_type const * s, size_type n)
 
 string::string(value_type const * s)
 {
-	Assert(s); // STD!
+	BOOST_ASSERT(s); // STD!
 	static Srep empty_rep(0, "");
 	if (*s) { // s is not empty string
 		rep = new Srep(strlen(s), s);
@@ -447,7 +445,7 @@ string::string(value_type const * s)
 
 string::string(size_type n, value_type c)
 {
-	Assert(n < npos); // STD!
+	BOOST_ASSERT(n < npos); // STD!
 	rep = new Srep(n, c);
 }
 
@@ -534,7 +532,7 @@ string::size_type string::size() const
 
 void string::resize(size_type n, value_type c)
 {
-	Assert(n <= npos); // STD!
+	BOOST_ASSERT(n <= npos); // STD!
 	TeststringInvariant(this);
 
 	// This resets sz to res_arg
@@ -572,7 +570,7 @@ string & string::operator=(string const & x)
 
 string & string::operator=(value_type const * s)
 {
-	Assert(s); // OURS!
+	BOOST_ASSERT(s); // OURS!
 	TeststringInvariant(this);
 //	printf("string::operator= (value_type const *)\n");
 
@@ -609,7 +607,7 @@ string & string::assign(string const & x)
 
 string & string::assign(string const & x, size_type pos, size_type n)
 {
-	Assert(pos <= x.rep->sz); // STD!
+	BOOST_ASSERT(pos <= x.rep->sz); // STD!
 	TeststringInvariant(this);
 
 	return assign(x.substr(pos, n));
@@ -618,7 +616,7 @@ string & string::assign(string const & x, size_type pos, size_type n)
 
 string & string::assign(value_type const * s, size_type n)
 {
-	Assert(s && n < npos); // STD!
+	BOOST_ASSERT(s && n < npos); // STD!
 	TeststringInvariant(this);
 
 	if (rep->ref == 1) // recycle rep
@@ -633,7 +631,7 @@ string & string::assign(value_type const * s, size_type n)
 
 string & string::assign(value_type const * s)
 {
-	Assert(s); // OURS!
+	BOOST_ASSERT(s); // OURS!
 	TeststringInvariant(this);
 
 	return assign(s, strlen(s));
@@ -668,13 +666,13 @@ string::const_reference string::operator[](size_type pos) const
 {
 #if 0
 	// This is actually what the standard requires,
-	Assert(pos <= rep->sz); // OURS!
+	BOOST_ASSERT(pos <= rep->sz); // OURS!
 	static char const helper = '\0';
 	return pos == rep->sz ? helper : rep->s[pos];
 #else
 	// but we use this one since it is stricter
 	// and more according to the real intent of std::string.
-	Assert(pos < rep->sz); // OURS!
+	BOOST_ASSERT(pos < rep->sz); // OURS!
 	return rep->s[pos];
 #endif
 }
@@ -682,7 +680,7 @@ string::const_reference string::operator[](size_type pos) const
 
 string::reference string::operator[](size_type pos)
 {
-	Assert(pos < rep->sz); // OURS!
+	BOOST_ASSERT(pos < rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -692,14 +690,14 @@ string::reference string::operator[](size_type pos)
 
 string::const_reference string::at(size_type n) const
 {
-	Assert(n < rep->sz); // STD!
+	BOOST_ASSERT(n < rep->sz); // STD!
 	return rep->s[n];
 }
 
 
 string::reference string::at(size_type n)
 {
-	Assert(n < rep->sz); // STD!
+	BOOST_ASSERT(n < rep->sz); // STD!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -721,7 +719,7 @@ string & string::operator+=(string const & x)
 
 string & string::operator+=(value_type const * x)
 {
-	Assert(x); // OURS!
+	BOOST_ASSERT(x); // OURS!
 	TeststringInvariant(this);
 
 	return append(x);
@@ -759,7 +757,7 @@ string & string::append(string const & x)
 
 string & string::append(string const & x, size_type pos, size_type n)
 {
-	Assert(pos <= x.rep->sz); // STD!
+	BOOST_ASSERT(pos <= x.rep->sz); // STD!
 	TeststringInvariant(this);
 
 	return append(x.substr(pos, n));
@@ -768,7 +766,7 @@ string & string::append(string const & x, size_type pos, size_type n)
 
 string & string::append(value_type const * p, size_type n)
 {
-	Assert(p); // OURS!
+	BOOST_ASSERT(p); // OURS!
 	TeststringInvariant(this);
 
 	if (!*p || !n) return *this;
@@ -780,7 +778,7 @@ string & string::append(value_type const * p, size_type n)
 
 string & string::append(value_type const * p)
 {
-	Assert(p); // OURS!
+	BOOST_ASSERT(p); // OURS!
 	return append(p, strlen(p));
 }
 
@@ -820,7 +818,7 @@ string & string::insert(size_type pos, string const & x)
 string & string::insert(size_type pos, string const & x,
 			      size_type pos2, size_type n)
 {
-	Assert(pos <= rep->sz && pos2 <= x.rep->sz); // STD!
+	BOOST_ASSERT(pos <= rep->sz && pos2 <= x.rep->sz); // STD!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -831,7 +829,7 @@ string & string::insert(size_type pos, string const & x,
 
 string & string::insert(size_type pos, value_type const * p, size_type n)
 {
-	Assert(p); // OURS!
+	BOOST_ASSERT(p); // OURS!
 	TeststringInvariant(this);
 
 	if (*p && n) {
@@ -845,7 +843,7 @@ string & string::insert(size_type pos, value_type const * p, size_type n)
 
 string & string::insert(size_type pos, value_type const * p)
 {
-	Assert(p); // OURS!
+	BOOST_ASSERT(p); // OURS!
 	return insert(pos, p, strlen(p));
 }
 
@@ -928,7 +926,7 @@ string::size_type string::find(string const & a, size_type i) const
 string::size_type string::find(value_type const * ptr, size_type i,
 				     size_type n) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 	if (!rep->sz || !*ptr || i >= rep->sz) return npos;
 
 	TeststringInvariant(this);
@@ -959,7 +957,7 @@ string::size_type string::find(value_type const * ptr, size_type i,
 
 string::size_type string::find(value_type const * s, size_type i) const
 {
-	Assert(s); // OURS!
+	BOOST_ASSERT(s); // OURS!
 	if (!rep->sz || i >= rep->sz) return npos;
 
 	TeststringInvariant(this);
@@ -1011,7 +1009,7 @@ string::size_type string::rfind(string const & a, size_type i) const
 string::size_type string::rfind(value_type const * ptr, size_type i,
 				      size_type n) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 	TeststringInvariant(this);
 
 	n = min(n, strlen(ptr));
@@ -1039,7 +1037,7 @@ string::size_type string::rfind(value_type const * ptr, size_type i,
 string::size_type string::rfind(value_type const * ptr,
 				      size_type i) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 
 	if (!ptr || !*ptr) return npos;
 	return rfind(ptr, i, strlen(ptr));
@@ -1063,7 +1061,7 @@ string::size_type string::rfind(value_type c, size_type i) const
 string::size_type string::find_first_of(string const & a,
 					      size_type i) const
 {
-	Assert(i <= rep->sz); // OURS!
+	BOOST_ASSERT(i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1077,7 +1075,7 @@ string::size_type string::find_first_of(value_type const * ptr,
 					      size_type i,
 					      size_type n) const
 {
-	Assert(ptr && i <= rep->sz); // OURS!
+	BOOST_ASSERT(ptr && i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 	if (!n) return npos;
 
@@ -1091,7 +1089,7 @@ string::size_type string::find_first_of(value_type const * ptr,
 string::size_type string::find_first_of(value_type const * ptr,
 					      size_type i) const
 {
-	Assert(ptr && i <= rep->sz); // OURS!
+	BOOST_ASSERT(ptr && i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1103,7 +1101,7 @@ string::size_type string::find_first_of(value_type const * ptr,
 
 string::size_type string::find_first_of(value_type c, size_type i) const
 {
-	Assert(i <= rep->sz); // OURS!
+	BOOST_ASSERT(i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1130,7 +1128,7 @@ string::size_type string::find_last_of(value_type const * ptr,
 					     size_type i,
 					     size_type n) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 	TeststringInvariant(this);
 	if (!n) return npos;
 
@@ -1145,7 +1143,7 @@ string::size_type string::find_last_of(value_type const * ptr,
 string::size_type string::find_last_of(value_type const * ptr,
 					     size_type i) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 	TeststringInvariant(this);
 
 	size_type ii = min(rep->sz - 1, i);
@@ -1175,7 +1173,7 @@ string::size_type string::find_first_not_of(string const & a,
 	TeststringInvariant(this);
 
 	if (!rep->sz) return npos;
-	Assert(i <= rep->sz);
+	BOOST_ASSERT(i <= rep->sz);
 	for (size_type t = i; t < rep->sz; ++t) {
 		if (a.find(rep->s[t]) == npos) return t;
 	}
@@ -1187,7 +1185,7 @@ string::size_type string::find_first_not_of(value_type const * ptr,
 						  size_type i,
 						  size_type n) const
 {
-	Assert(ptr && i <= rep->sz); // OURS!
+	BOOST_ASSERT(ptr && i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	if (!n) return (i < rep->sz) ? i : npos;
@@ -1201,7 +1199,7 @@ string::size_type string::find_first_not_of(value_type const * ptr,
 string::size_type string::find_first_not_of(value_type const * ptr,
 						  size_type i) const
 {
-	Assert(ptr && i <= rep->sz); // OURS!
+	BOOST_ASSERT(ptr && i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1215,7 +1213,7 @@ string::size_type string::find_first_not_of(value_type c,
 						  size_type i) const
 {
 	if (!rep->sz) return npos;
-	Assert(i <= rep->sz); // OURS!
+	BOOST_ASSERT(i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1242,7 +1240,7 @@ string::size_type string::find_last_not_of(value_type const * ptr,
 						 size_type i,
 						 size_type n) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 	TeststringInvariant(this);
 
 	if (!n) return npos;
@@ -1258,7 +1256,7 @@ string::size_type string::find_last_not_of(value_type const * ptr,
 string::size_type string::find_last_not_of(value_type const * ptr,
 						 size_type i) const
 {
-	Assert(ptr); // OURS!
+	BOOST_ASSERT(ptr); // OURS!
 	TeststringInvariant(this);
 
 	size_type ii = min(rep->sz - 1, i);
@@ -1288,7 +1286,7 @@ string::size_type string::find_last_not_of(value_type c,
 
 string & string::replace(size_type i, size_type n, string const & x)
 {
-	Assert(i <= rep->sz); // OURS!
+	BOOST_ASSERT(i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	return replace(i, n, x, 0, x.rep->sz);
@@ -1298,7 +1296,7 @@ string & string::replace(size_type i, size_type n, string const & x)
 string & string::replace(size_type i, size_type n, string const & x,
 			       size_type i2, size_type n2)
 {
-	Assert(i <= rep->sz && i2 <= x.rep->sz); // STD!
+	BOOST_ASSERT(i <= rep->sz && i2 <= x.rep->sz); // STD!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -1310,7 +1308,7 @@ string & string::replace(size_type i, size_type n, string const & x,
 string & string::replace(size_type i, size_type n,
 			       value_type const * p, size_type n2)
 {
-	Assert(p && i <= rep->sz); // OURS!
+	BOOST_ASSERT(p && i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -1321,7 +1319,7 @@ string & string::replace(size_type i, size_type n,
 
 string & string::replace(size_type i, size_type n, value_type const * p)
 {
-	Assert(p && i <= rep->sz); // OURS!
+	BOOST_ASSERT(p && i <= rep->sz); // OURS!
 	TeststringInvariant(this);
 
 	return replace(i, min(n, rep->sz), p, (!p) ? 0 : strlen(p));
@@ -1331,7 +1329,7 @@ string & string::replace(size_type i, size_type n, value_type const * p)
 string & string::replace(size_type i, size_type n,
 			       size_type n2, value_type c)
 {
-	Assert(i <= rep->sz);  // OURS!
+	BOOST_ASSERT(i <= rep->sz);  // OURS!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -1361,7 +1359,7 @@ string & string::replace(iterator i, iterator i2, const string & str)
 string & string::replace(iterator i, iterator i2,
 			       value_type const * p, size_type n)
 {
-	Assert(p); // OURS!
+	BOOST_ASSERT(p); // OURS!
 	TeststringInvariant(this);
 
 	return replace(i - begin(), i2 - i, p, n);
@@ -1370,7 +1368,7 @@ string & string::replace(iterator i, iterator i2,
 
 string & string::replace(iterator i, iterator i2, value_type const * p)
 {
-	Assert(p); // OURS!
+	BOOST_ASSERT(p); // OURS!
 	TeststringInvariant(this);
 
 	return replace(i - begin(), i2 - i, p);
@@ -1406,7 +1404,7 @@ void string::swap(string & str)
 
 string & string::erase(size_type i, size_type n)
 {
-	Assert(i <= rep->sz); // STD!
+	BOOST_ASSERT(i <= rep->sz); // STD!
 	TeststringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -1461,8 +1459,8 @@ string::value_type const * string::data() const
 string::size_type string::copy(value_type * buf, size_type len,
 				     size_type pos) const
 {
-	Assert(buf); // OURS!
-	Assert(pos <= rep->sz); // STD!
+	BOOST_ASSERT(buf); // OURS!
+	BOOST_ASSERT(pos <= rep->sz); // STD!
 	TeststringInvariant(this);
 
 	register int nn = min(len, length() - pos);
@@ -1510,7 +1508,7 @@ int string::compare(string const & str) const
 
 int string::compare(value_type const * s) const
 {
-	Assert(s); //OURS!
+	BOOST_ASSERT(s); //OURS!
 	TeststringInvariant(this);
 	int n = (!s) ? 0 : strlen(s);
 	return internal_compare(0, rep->sz, s, n, n);
@@ -1520,7 +1518,7 @@ int string::compare(value_type const * s) const
 int string::compare(size_type pos, size_type n,
 		       string const & str) const
 {
-	Assert(pos <= rep->sz); // OURS!
+	BOOST_ASSERT(pos <= rep->sz); // OURS!
 	TeststringInvariant(this);
 	return internal_compare(pos, n, str.rep->s, str.rep->sz, str.rep->sz);
 }
@@ -1529,8 +1527,8 @@ int string::compare(size_type pos, size_type n,
 int string::compare(size_type pos, size_type n, string const & str,
 		       size_type pos2, size_type n2) const
 {
-	Assert(pos <= rep->sz); // OURS!
-	Assert(pos2 <= str.rep->sz); // OURS!
+	BOOST_ASSERT(pos <= rep->sz); // OURS!
+	BOOST_ASSERT(pos2 <= str.rep->sz); // OURS!
 	TeststringInvariant(this);
 	return internal_compare(pos, n,
 				str.rep->s + pos2,
@@ -1541,7 +1539,7 @@ int string::compare(size_type pos, size_type n, string const & str,
 int string::compare(size_type pos, size_type n, value_type const * s,
 		       size_type n2) const
 {
-	Assert(s && pos <= rep->sz); // OURS!
+	BOOST_ASSERT(s && pos <= rep->sz); // OURS!
 	TeststringInvariant(this);
 	return internal_compare(pos, n, s, (!s) ? 0 : strlen(s), n2);
 }
@@ -1554,7 +1552,7 @@ int string::compare(size_type pos, size_type n, value_type const * s,
 // i = index, n = length
 string string::substr(size_type i, size_type n) const
 {
-	Assert(i <= rep->sz); // STD!
+	BOOST_ASSERT(i <= rep->sz); // STD!
 	TeststringInvariant(this);
 
 	return string(*this, i, n);
@@ -1573,14 +1571,14 @@ bool operator==(string const & a, string const & b)
 
 bool operator==(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	return b.compare(a) == 0;
 }
 
 
 bool operator==(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	return a.compare(b) == 0;
 }
 
@@ -1593,14 +1591,14 @@ bool operator!=(string const & a, string const & b)
 
 bool operator!=(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	return b.compare(a) != 0;
 }
 
 
 bool operator!=(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	return a.compare(b) != 0;
 }
 
@@ -1613,14 +1611,14 @@ bool operator>(string const & a, string const & b)
 
 bool operator>(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	return b.compare(a) < 0; // since we reverse the parameters
 }
 
 
 bool operator>(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	return a.compare(b) > 0;
 }
 
@@ -1633,14 +1631,14 @@ bool operator<(string const & a, string const & b)
 
 bool operator<(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	return b.compare(a) > 0; // since we reverse the parameters
 }
 
 
 bool operator<(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	return a.compare(b) < 0;
 }
 
@@ -1653,14 +1651,14 @@ bool operator>=(string const & a, string const & b)
 
 bool operator>=(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	return b.compare(a) <= 0; // since we reverse the parameters
 }
 
 
 bool operator>=(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	return a.compare(b) >= 0;
 }
 
@@ -1673,14 +1671,14 @@ bool operator<=(string const & a, string const & b)
 
 bool operator<=(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	return b.compare(a) >= 0; // since we reverse the parameters
 }
 
 
 bool operator<=(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	return a.compare(b) <= 0;
 }
 
@@ -1695,7 +1693,7 @@ string operator+(string const & a, string const & b)
 
 string operator+(string::value_type const * a, string const & b)
 {
-	Assert(a); // OURS!
+	BOOST_ASSERT(a); // OURS!
 	string tmp(a);
 	tmp += b;
 	return tmp;
@@ -1713,7 +1711,7 @@ string operator+(string::value_type a, string const & b)
 
 string operator+(string const & a, string::value_type const * b)
 {
-	Assert(b); // OURS!
+	BOOST_ASSERT(b); // OURS!
 	string tmp(a);
 	tmp += b;
 	return tmp;

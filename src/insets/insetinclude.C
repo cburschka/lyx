@@ -149,7 +149,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		if (button_.box().contains(cmd.x, cmd.y))
 			InsetIncludeMailer(*this).showDialog(cmd.view());
 		return DISPATCHED;
-	
+
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetIncludeMailer(*this).showDialog(cmd.view());
 		return DISPATCHED;
@@ -537,7 +537,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		button_.metrics(mi, dim);
 	}
-	int center_indent = (params_.flag == INPUT ? 0 : 
+	int center_indent = (params_.flag == INPUT ? 0 :
 		(mi.base.textwidth - dim.wid) / 2);
 	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
 	button_.setBox(b);

@@ -27,7 +27,6 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 using namespace lyx::support;
@@ -257,7 +256,7 @@ int InsetQuotes::latex(Buffer const & buf, ostream & os,
 {
 	// How do we get the local language here??
 	lyx::pos_type curr_pos = ownerPar(buf, this).getPositionOfInset(this);
-	Assert(curr_pos != -1);
+	BOOST_ASSERT(curr_pos != -1);
 
 #warning FIXME. We _must_ find another way to get the language. (Lgb)
 #if 0

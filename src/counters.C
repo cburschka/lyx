@@ -13,10 +13,11 @@
 
 #include "counters.h"
 #include "debug.h"
-#include "support/std_sstream.h"
 
+#include "support/std_sstream.h"
 #include "support/lstrings.h"
-#include "support/LAssert.h"
+
+#include <boost/assert.hpp>
 
 using namespace lyx::support;
 
@@ -171,7 +172,7 @@ void Counters::reset()
 
 void Counters::reset(string const & match)
 {
-	Assert(!match.empty());
+	BOOST_ASSERT(!match.empty());
 
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator end = counterList.end();

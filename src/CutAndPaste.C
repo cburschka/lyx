@@ -27,8 +27,8 @@
 #include "insets/insetinclude.h"
 #include "insets/insettabular.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
+
 
 using std::for_each;
 using std::make_pair;
@@ -178,9 +178,9 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 				ParagraphList::iterator endpit,
 				int start, int end, textclass_type tc)
 {
-	Assert(0 <= start && start <= startpit->size());
-	Assert(0 <= end && end <= endpit->size());
-	Assert(startpit != endpit || start <= end);
+	BOOST_ASSERT(0 <= start && start <= startpit->size());
+	BOOST_ASSERT(0 <= end && end <= endpit->size());
+	BOOST_ASSERT(startpit != endpit || start <= end);
 
 	ParagraphList paragraphs;
 
@@ -225,7 +225,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 	if (!checkPastePossible())
 		return make_pair(PitPosPair(pit, pos), pit);
 
-	Assert (pos <= pit->size());
+	BOOST_ASSERT (pos <= pit->size());
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList simple_cut_clone = cuts[cut_index].first;
@@ -380,7 +380,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 					     ParagraphList & pars,
 					     ErrorList & errorlist)
 {
-	Assert(!pars.empty());
+	BOOST_ASSERT(!pars.empty());
 
 	int ret = 0;
 	if (c1 == c2)

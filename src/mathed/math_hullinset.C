@@ -22,7 +22,6 @@
 #include "funcrequest.h"
 #include "support/std_sstream.h"
 #include "LaTeXFeatures.h"
-#include "support/LAssert.h"
 
 #include "frontends/Alert.h"
 #include "lyxrc.h"
@@ -263,7 +262,7 @@ void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 string MathHullInset::label(row_type row) const
 {
 	row_type n = nrows();
-	Assert(row < n);
+	BOOST_ASSERT(row < n);
 	return label_[row];
 }
 
@@ -672,8 +671,8 @@ void MathHullInset::infoize(std::ostream & os) const
 
 void MathHullInset::check() const
 {
-	Assert(nonum_.size() == nrows());
-	Assert(label_.size() == nrows());
+	BOOST_ASSERT(nonum_.size() == nrows());
+	BOOST_ASSERT(label_.size() == nrows());
 }
 
 

@@ -1,3 +1,8 @@
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* GraphicsCacheItem.C: change Assert to BOOST_ASSERT
+	* Previews.C: ditto
+
 2003-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsImage.C:
@@ -19,7 +24,7 @@
 
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
-	* LoaderQueue.C (get): 
+	* LoaderQueue.C (get):
 
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 

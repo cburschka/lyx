@@ -37,9 +37,7 @@
 #include "insets/insetspecialchar.h"
 #include "insets/insettabular.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
-
 #include "support/std_sstream.h"
 
 using namespace lyx::support;
@@ -1072,7 +1070,7 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
 				return pit.outerPar();
 	}
 	lyxerr << "outerPar: should not happen" << endl;
-	Assert(false);
+	BOOST_ASSERT(false);
 	return const_cast<Buffer &>(buf).paragraphs().end(); // shut up compiler
 }
 
@@ -1095,6 +1093,6 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 				return *pit.pit();
 	}
 	lyxerr << "ownerPar: should not happen" << endl;
-	Assert(false);
+	BOOST_ASSERT(false);
 	return buf.paragraphs().front(); // shut up compiler
 }

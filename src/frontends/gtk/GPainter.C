@@ -23,11 +23,12 @@
 #include "frontends/font_metrics.h"
 #include "codeConvert.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include <boost/scoped_array.hpp>
+
 #include <X11/Xft/Xft.h>
+
 #include <cmath>
 
 
@@ -190,8 +191,8 @@ Painter & GPainter::text(int x, int y,
 	string const & s, LyXFont const & f)
 {
 	size_t size = s.length() + 1;
-	wchar_t * wcs = (wchar_t *) alloca(size * sizeof(wchar_t));	
-	size = mbstowcs(wcs, s.c_str(), size);  
+	wchar_t * wcs = (wchar_t *) alloca(size * sizeof(wchar_t));
+	size = mbstowcs(wcs, s.c_str(), size);
 	return text(x, y, wcs, size, f);
 }
 
@@ -239,7 +240,7 @@ Painter & GPainter::text(int x, int y, wchar_t const * s, int ls,
 		for(int i = 0; i < ls; ++i) {
 			c = lyx::support::uppercase(s[i]);
 			if(c != s[i]) {
-				XftDrawString32(draw, xftClr, fontS, tmpx, y, 
+				XftDrawString32(draw, xftClr, fontS, tmpx, y,
 						wcsToFcChar32StrFast(&c), 1);
 				tmpx += font_metrics::width(c, smallfont);
 			} else {
@@ -254,7 +255,7 @@ Painter & GPainter::text(int x, int y, wchar_t const * s, int ls,
 	return *this;
 }
 
-								
+
 Painter & GPainter::text(int x, int y,
 	char const * s, size_t ls,
 	LyXFont const & f)

@@ -8,15 +8,16 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
+
 #include "GnomeBase.h"
-#include "support/LAssert.h"
 #include "debug.h"
 #include "support/filetools.h"
 #include "ControlButtons.h"
+
 #include <glib.h>
 #include <gtkmm/dialog.h>
+
 
 GnomeBase::GnomeBase(string const & name)
 	: ViewBase(),
@@ -49,7 +50,7 @@ void GnomeBase::loadXML()
 
 	if (file.empty()) {
 		lyxerr << "Cannot find glade file. Aborting." << std::endl;
-		lyx::Assert(true);
+		BOOST_ASSERT(true);
 	}
 
 	lyxerr[Debug::GUI] << "Glade file to open is " << file << endl;

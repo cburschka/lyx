@@ -36,9 +36,7 @@
 #include "insets/insetoptarg.h"
 
 #include "support/lstrings.h"
-#include "support/LAssert.h"
 #include "support/textutils.h"
-
 #include "support/std_sstream.h"
 
 
@@ -294,14 +292,14 @@ bool Paragraph::insetAllowed(InsetOld::Code code)
 
 InsetOld * Paragraph::getInset(pos_type pos)
 {
-	Assert(pos < size());
+	BOOST_ASSERT(pos < size());
 	return insetlist.get(pos);
 }
 
 
 InsetOld const * Paragraph::getInset(pos_type pos) const
 {
-	Assert(pos < size());
+	BOOST_ASSERT(pos < size());
 	return insetlist.get(pos);
 }
 
@@ -310,7 +308,7 @@ InsetOld const * Paragraph::getInset(pos_type pos) const
 LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
 {
-	Assert(pos <= size());
+	BOOST_ASSERT(pos <= size());
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
@@ -330,7 +328,7 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 
 lyx::pos_type Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
 {
-	Assert(pos <= size());
+	BOOST_ASSERT(pos <= size());
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
@@ -363,7 +361,7 @@ LyXFont const Paragraph::getFirstFontSettings() const
 LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 				 LyXFont const & outerfont) const
 {
-	Assert(pos >= 0);
+	BOOST_ASSERT(pos >= 0);
 
 	LyXLayout_ptr const & lout = layout();
 
@@ -485,7 +483,7 @@ Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 
 void Paragraph::setFont(pos_type pos, LyXFont const & font)
 {
-	Assert(pos <= size());
+	BOOST_ASSERT(pos <= size());
 
 	// First, reduce font against layout/label font
 	// Update: The SetCharFont() routine in text2.C already
@@ -1208,14 +1206,14 @@ void Paragraph::cleanChanges()
 
 Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
 {
-	Assert(!size() || pos < size());
+	BOOST_ASSERT(!size() || pos < size());
 	return pimpl_->lookupChange(pos);
 }
 
 
 Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
 {
-	Assert(!size() || pos < size());
+	BOOST_ASSERT(!size() || pos < size());
 	return pimpl_->lookupChangeFull(pos);
 }
 

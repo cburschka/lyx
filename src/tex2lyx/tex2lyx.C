@@ -62,7 +62,7 @@ void handle_comment(Parser & p)
 
 string const trim(string const & a, char const * p)
 {
-	// lyx::Assert(p);
+	// BOOST_ASSERT(p);
 
 	if (a.empty() || !*p)
 		return a;

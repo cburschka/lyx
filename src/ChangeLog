@@ -1,13 +1,22 @@
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* boost.C (emergencyCleanup): moved here from LAssert.c
+	(assertion_failed): new function, called by BOOST_ASSERT
+
+	* several files: change Assert to BOOST_ASSERT
+
 2003-09-09  Angus Leeming  <leeming@lyx.org>
 
-	* buffer.[Ch]: Add an Impl class and move Buffer's member variables into it.
-	As a result move several header files out of buffer.h.
+	* buffer.[Ch]: Add an Impl class and move Buffer's member
+	variables into it. As a result move several header files out of
+	buffer.h. 
 
 	Add header files to lots of .C files all over the tree as a result.
 
 2003-09-09  Angus Leeming  <leeming@lyx.org>
 
-	* buffer.[Ch]: make Buffer's member variables private. Add accessor functions.
+	* buffer.[Ch]: make Buffer's member variables private. Add
+	accessor functions. 
 
 	Lots of changes all over the tree as a result.
 
@@ -241,7 +250,7 @@
 	* insets/insetminipage.C:
 	* insets/insetnote.C:
 	* insets/insetoptarg.C: add header files needed to compile again.
-	
+
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* RowList_fwd.h: new file, forward-declaring Row rather than

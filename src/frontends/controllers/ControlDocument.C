@@ -29,7 +29,6 @@
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/path_defines.h"
 
 using namespace lyx::support;
@@ -46,7 +45,7 @@ ControlDocument::~ControlDocument()
 
 BufferParams & ControlDocument::params()
 {
-	Assert(bp_.get());
+	BOOST_ASSERT(bp_.get());
 	return *bp_;
 }
 

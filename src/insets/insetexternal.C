@@ -132,7 +132,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		support::Assert(cmd.view());
+		BOOST_ASSERT(cmd.view());
 
 		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
@@ -142,7 +142,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_MODIFY: {
-		support::Assert(cmd.view());
+		BOOST_ASSERT(cmd.view());
 
 		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
@@ -528,7 +528,7 @@ void InsetExternal::updateExternal(string const & format,
 
 		// Cannot proceed...
 		if (!support::copy(from_file, temp_file))
- 			return;
+			return;
 		from_file = temp_file;
 	}
 
@@ -540,7 +540,7 @@ void InsetExternal::updateExternal(string const & format,
 	// Yes if to_file does not exist or if from_file is newer than to_file
 	if (support::compare_timestamps(from_file, abs_to_file) < 0)
 		return;
-	
+
 	string const to_filebase = support::ChangeExtension(to_file, string());
 	converters.convert(&buf, from_file, to_filebase, from_format, to_format);
 }

@@ -15,12 +15,12 @@
 #include "changes.h"
 #include "debug.h"
 
-#include "support/LAssert.h"
+#include <boost/assert.hpp>
 
-using namespace lyx::support;
 
 using std::endl;
 using lyx::pos_type;
+
 
 bool operator==(Change const & l, Change const & r)
 {
@@ -326,7 +326,7 @@ Change const Changes::lookupFull(pos_type pos) const
 	}
 
 	check();
-	Assert(false);
+	BOOST_ASSERT(false);
 	return Change(Change::UNCHANGED);
 }
 
@@ -348,7 +348,7 @@ Change::Type Changes::lookup(pos_type pos) const
 	}
 
 	check();
-	Assert(0);
+	BOOST_ASSERT(0);
 	return Change::UNCHANGED;
 }
 
@@ -486,7 +486,7 @@ void Changes::check() const
 	if (lyxerr.debugging(Debug::CHANGES))
 		lyxerr[Debug::CHANGES] << "End" << endl;
 
-	Assert(dont_assert);
+	BOOST_ASSERT(dont_assert);
 }
 
 

@@ -8,13 +8,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
+
 #include "GView.h"
-#include "support/LAssert.h"
 #include "debug.h"
 #include "support/filetools.h"
 #include "ControlButtons.h"
+
 #include <glib.h>
 #include <gtkmm/dialog.h>
 
@@ -49,7 +49,7 @@ void GView::loadXML()
 
 	if (file.empty()) {
 		lyxerr << "Cannot find glade file. Aborting." << endl;
-		lyx::Assert(true);
+		BOOST_ASSERT(true);
 	}
 
 	lyxerr[Debug::GUI] << "Glade file to open is " << file << endl;

@@ -17,9 +17,9 @@
 #include <config.h>
 
 #include "Bullet.h"
-#include "support/LAssert.h"
 
-using namespace lyx::support;
+#include <boost/assert.hpp>
+
 
 /** The four LaTeX itemize environment default bullets
  */
@@ -354,25 +354,25 @@ string const Bullet::bulletEntry(int f, int c)
 void Bullet::testInvariant() const
 {
 #ifdef ENABLE_ASSERTIONS
-	Assert(font >= MIN);
-	Assert(font < FONTMAX);
-	Assert(character >= MIN);
-	Assert(character < CHARMAX);
-	Assert(size >= MIN);
-	Assert(size < SIZEMAX);
-	Assert(user_text >= -1);
-	Assert(user_text <= 1);
+	BOOST_ASSERT(font >= MIN);
+	BOOST_ASSERT(font < FONTMAX);
+	BOOST_ASSERT(character >= MIN);
+	BOOST_ASSERT(character < CHARMAX);
+	BOOST_ASSERT(size >= MIN);
+	BOOST_ASSERT(size < SIZEMAX);
+	BOOST_ASSERT(user_text >= -1);
+	BOOST_ASSERT(user_text <= 1);
 	// now some relational/operational tests
 	if (user_text == 1) {
-		Assert(font == -1 && (character == -1 && size == -1));
-		//        Assert(!text.empty()); // this isn't necessarily an error
+		BOOST_ASSERT(font == -1 && (character == -1 && size == -1));
+		//        BOOST_ASSERT(!text.empty()); // this isn't necessarily an error
 	}
 	//      else if (user_text == -1) {
-	//        Assert(!text.empty()); // this also isn't necessarily an error
+	//        BOOST_ASSERT(!text.empty()); // this also isn't necessarily an error
 	//      }
 	//      else {
 	//        // user_text == 0
-	//        Assert(text.empty()); // not usually true
+	//        BOOST_ASSERT(text.empty()); // not usually true
 	//      }
 #endif
 }

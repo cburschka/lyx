@@ -1,10 +1,16 @@
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* BulletsModule.C: change Assert to BOOST_ASSERT
+	* panelstack.C: ditto
+	* QDocument.C: ditto
+
 2003-09-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLToolbar.C: include <qtoolbar.h>
 
 	* QLPopupMenu.h: include <utility>
 
-	* qt_helpers.C: 
+	* qt_helpers.C:
 	* qfont_loader.C: include <algorithm>
 
 2003-09-08  Angus Leeming  <leeming@lyx.org>
@@ -69,10 +75,10 @@
 
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
-	* QCitation.h: 
-	* QGraphics.h: 
-	* QPrefs.h: 
-	* qscreen.[Ch]: 
+	* QCitation.h:
+	* QGraphics.h:
+	* QPrefs.h:
+	* qscreen.[Ch]:
 	ensure that the header files can be compiled stand-alone.
 
 2003-09-05  Angus Leeming  <leeming@lyx.org>
@@ -99,8 +105,8 @@
 
 2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* QWorkArea.C (QWorkArea): 
-	(dragEnterEvent): 
+	* QWorkArea.C (QWorkArea):
+	(dragEnterEvent):
 	(dropEvent): add support for drag and drop of URIs
 
 2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -109,8 +115,8 @@
 
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* ui/Makefile.am (INCLUDES): 
-	* moc/Makefile.am (INCLUDES): 
+	* ui/Makefile.am (INCLUDES):
+	* moc/Makefile.am (INCLUDES):
 	* Makefile.am (INCLUDES): use QT_INCLUDES
 
 	* QLToolbar.C (clearLayoutList): call Toolbar::clearLayoutList
@@ -124,8 +130,8 @@
 
 2003-07-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* qfont_loader.C: 
-	* QLPopupMenu.h: add includes needed by gcc 2.95.3 
+	* qfont_loader.C:
+	* QLPopupMenu.h: add includes needed by gcc 2.95.3
 
 2003-07-27  John Levon  <levon@movementarian.org>
 
@@ -134,14 +140,14 @@
 
 2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* QPrefs.C: 
-	* QDocumentDialog.C: 
-	* QDocument.C: 
+	* QPrefs.C:
+	* QDocumentDialog.C:
+	* QDocument.C:
 	* QGraphics.C: adapt PAPER_* enums
 
 2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* QLMenubar.h: 
+	* QLMenubar.h:
 	* QLMenubar.C: derives from Menubar (replaces Menubar::Pimpl)
 
 	* Menubar_pimpl.C:
@@ -151,7 +157,7 @@
 
 2003-07-25  Jean-Marc Lasgouttes <lasgouttes@lyx.org>
 
-	* QLToolbar.h: 
+	* QLToolbar.h:
 	* QLToolbar.C: derives from Toolbar (replaces Toolbar::Pimpl)
 
 	* Toolbar_pimpl.C:

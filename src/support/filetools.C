@@ -24,7 +24,6 @@
 #include "debug.h"
 #include "support/tostr.h"
 #include "support/systemcall.h"
-#include "support/LAssert.h"
 
 #include "filetools.h"
 #include "lstrings.h"
@@ -37,7 +36,9 @@
 
 #include "support/std_sstream.h"
 
+#include <boost/assert.hpp>
 #include <boost/cregex.hpp>
+
 #include <cctype>
 #include <cstdlib>
 #include <cstdio>
@@ -514,7 +515,7 @@ bool createDirectory(string const & path, int permission)
 {
 	string temp(rtrim(os::slashify_path(path), "/"));
 
-	Assert(!temp.empty());
+	BOOST_ASSERT(!temp.empty());
 
 	if (mkdir(temp, permission))
 		return false;
@@ -1343,7 +1344,7 @@ string const readBB_from_PSFile(string const & file)
 
 int compare_timestamps(string const & file1, string const & file2)
 {
-	Assert(AbsolutePath(file1) && AbsolutePath(file2));
+	BOOST_ASSERT(AbsolutePath(file1) && AbsolutePath(file2));
 
 	// If the original is newer than the copy, then copy the original
 	// to the new directory.

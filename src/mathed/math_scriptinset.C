@@ -17,9 +17,6 @@
 #include "math_symbolinset.h"
 #include "debug.h"
 #include "funcrequest.h"
-#include "support/LAssert.h"
-
-using namespace lyx::support;
 
 using std::max;
 using std::auto_ptr;
@@ -159,14 +156,14 @@ int MathScriptInset::dy1() const
 
 int MathScriptInset::dx0() const
 {
-	Assert(hasDown());
+	BOOST_ASSERT(hasDown());
 	return hasLimits() ? (dim_.wid - down().width()) / 2 : nwid();
 }
 
 
 int MathScriptInset::dx1() const
 {
-	Assert(hasUp());
+	BOOST_ASSERT(hasUp());
 	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid();
 }
 

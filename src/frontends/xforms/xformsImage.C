@@ -15,7 +15,6 @@
 #include "Color.h"
 #include "format.h"
 #include "debug.h"
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/lyxfunctional.h"  // compare_memfun
 #include "support/lyxlib.h"
@@ -376,7 +375,7 @@ extern "C" {
 
 int status_report(FL_IMAGE * ob, const char *s)
 {
-	Assert(ob && ob->u_vdata);
+	BOOST_ASSERT(ob && ob->u_vdata);
 
 	string const str = s ? rtrim(s) : string();
 	if (str.empty())
@@ -395,7 +394,7 @@ int status_report(FL_IMAGE * ob, const char *s)
 
 static void error_report(FL_IMAGE * ob, const char *s)
 {
-	Assert(ob && ob->u_vdata);
+	BOOST_ASSERT(ob && ob->u_vdata);
 
 	string const str = s ? rtrim(s) : string();
 	if (str.empty())

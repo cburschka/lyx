@@ -27,7 +27,6 @@
 #include "frnt_lang.h"
 #include "lyxfont.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/path_defines.h"
@@ -308,7 +307,7 @@ void FormPreferences::apply()
 
 string const FormPreferences::getFeedback(FL_OBJECT * ob)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	if (ob->form->fdui == colors_.dialog())
 		return colors_.feedback(ob);
@@ -341,7 +340,7 @@ string const FormPreferences::getFeedback(FL_OBJECT * ob)
 
 ButtonPolicy::SMInput FormPreferences::input(FL_OBJECT * ob, long)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	bool valid = true;
 

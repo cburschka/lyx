@@ -15,9 +15,7 @@
 #include "ButtonController.h"
 #include "BCView.h"
 #include "lyxrc.h"
-#include "support/LAssert.h"
 
-using namespace lyx::support;
 
 ControlButtons::ControlButtons()
 	: emergency_exit_(false), is_closing_(false),
@@ -68,14 +66,14 @@ bool ControlButtons::IconifyWithMain() const
 
 ButtonController & ControlButtons::bc()
 {
-	Assert(bc_ptr_.get());
+	BOOST_ASSERT(bc_ptr_.get());
 	return *bc_ptr_.get();
 }
 
 
 ViewBase & ControlButtons::view()
 {
-	Assert(view_ptr_);
+	BOOST_ASSERT(view_ptr_);
 	return *view_ptr_;
 }
 

@@ -20,7 +20,6 @@
 #include "lyxfunc.h"
 #include "MenuBackend.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
@@ -343,7 +342,7 @@ void XFormsMenubar::MenuCallback(FL_OBJECT * ob, long button)
 	}
 
 	// Paranoia check
-	Assert(item->kind() == MenuItem::Submenu);
+	BOOST_ASSERT(item->kind() == MenuItem::Submenu);
 
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);

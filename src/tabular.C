@@ -28,7 +28,6 @@
 
 #include "insets/insettabular.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
@@ -1298,14 +1297,14 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 	l_getline(is, line);
 	if (!prefixIs(line, "<lyxtabular ")
 		&& !prefixIs(line, "<LyXTabular ")) {
-		Assert(false);
+		BOOST_ASSERT(false);
 		return;
 	}
 
 	int version;
 	if (!getTokenValue(line, "version", version))
 		return;
-	Assert(version >= 2);
+	BOOST_ASSERT(version >= 2);
 
 	int rows_arg;
 	if (!getTokenValue(line, "rows", rows_arg))
@@ -1589,7 +1588,7 @@ int LyXTabular::getLastCellBelow(int cell) const
 
 int LyXTabular::getCellNumber(int row, int column) const
 {
-	Assert(column >= 0 || column < columns_ || row >= 0 || row < rows_);
+	BOOST_ASSERT(column >= 0 || column < columns_ || row >= 0 || row < rows_);
 	return cell_info[row][column].cellno;
 }
 

@@ -190,7 +190,7 @@ for frontend in $FRONTENDS ; do
   dnl	;;
     gtk)
 	  XFORMS_DO_IT_ALL
-    	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.0 libglademm-2.0)
+	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.0 libglademm-2.0)
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms gtk"
 	  RPM_FRONTEND="gtk"
@@ -369,6 +369,12 @@ int mkstemp(char*);
 #define USE_BOOST_FORMAT 1
 #else
 #define USE_BOOST_FORMAT 0
+#endif
+
+#if defined(ENABLE_ASSERTIONS)
+#define BOOST_ENABLE_ASSERT_HANDLER 1
+#else
+#define BOOST_DISABLE_ASSERTS 1
 #endif
 
 #define BOOST_DISABLE_THREADS 1

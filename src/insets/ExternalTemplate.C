@@ -16,10 +16,11 @@
 #include "lyxlex.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/path_defines.h"
+
+#include <boost/assert.hpp>
 
 #include <algorithm>
 
@@ -307,7 +308,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 		default:
 			lex.printError("ExternalTemplate::readTemplate: "
 				       "Wrong tag: $$Token");
-			support::Assert(false);
+			BOOST_ASSERT(false);
 			break;
 		}
 	}

@@ -70,7 +70,6 @@ TODO
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // float_equal
 #include "support/os.h"
@@ -342,7 +341,7 @@ copyToDirIfNeeded(string const & file_in, string const & dir)
 {
 	using support::rtrim;
 
-	support::Assert(AbsolutePath(file_in));
+	BOOST_ASSERT(AbsolutePath(file_in));
 
 	string const only_path = support::OnlyPath(file_in);
 	if (rtrim(support::OnlyPath(file_in) , "/") == rtrim(dir, "/"))
@@ -358,7 +357,7 @@ copyToDirIfNeeded(string const & file_in, string const & dir)
 		mangled = FileName(file_in).mangledFilename();
 
 	string const file_out = support::MakeAbsPath(mangled, dir);
-	
+
 	unsigned long const checksum_in  = support::sum(file_in);
 	unsigned long const checksum_out = support::sum(file_out);
 
@@ -439,7 +438,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				<< "\tunzipped to " << orig_file << endl;
 		}
 	}
-	
+
 	string const from = getExtFromContents(orig_file);
 	string const to   = findTargetFormat(from, runparams);
 	lyxerr[Debug::GRAPHICS]

@@ -19,9 +19,6 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
-#include "support/LAssert.h"
-
-using lyx::support::Assert;
 
 Kernel::Kernel(LyXView & lyxview)
 	: lyxview_(lyxview)
@@ -94,13 +91,13 @@ BufferView const * Kernel::bufferview() const
 
 Buffer & Kernel::buffer()
 {
-	Assert(lyxview_.buffer());
+	BOOST_ASSERT(lyxview_.buffer());
 	return *lyxview_.buffer();
 }
 
 
 Buffer const & Kernel::buffer() const
 {
-	Assert(lyxview_.buffer());
+	BOOST_ASSERT(lyxview_.buffer());
 	return *lyxview_.buffer();
 }

@@ -18,10 +18,7 @@
 #include "math_support.h"
 #include "math_replace.h"
 #include "debug.h"
-#include "support/LAssert.h"
 #include "frontends/Painter.h"
-
-using namespace lyx::support;
 
 using std::abs;
 using std::endl;
@@ -47,14 +44,14 @@ void MathArray::substitute(MathMacro const & m)
 
 MathAtom & MathArray::operator[](pos_type pos)
 {
-	Assert(pos < size());
+	BOOST_ASSERT(pos < size());
 	return base_type::operator[](pos);
 }
 
 
 MathAtom const & MathArray::operator[](pos_type pos) const
 {
-	Assert(pos < size());
+	BOOST_ASSERT(pos < size());
 	return base_type::operator[](pos);
 }
 
@@ -67,7 +64,7 @@ void MathArray::insert(size_type pos, MathAtom const & t)
 
 void MathArray::insert(size_type pos, MathArray const & ar)
 {
-	Assert(pos <= size());
+	BOOST_ASSERT(pos <= size());
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 

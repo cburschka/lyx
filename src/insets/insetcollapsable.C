@@ -27,9 +27,6 @@
 #include "frontends/Painter.h"
 #include "frontends/LyXView.h"
 
-#include "support/LAssert.h"
-
-using namespace lyx::support;
 using namespace lyx::graphics;
 
 using std::endl;
@@ -140,7 +137,7 @@ void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 {
-	Assert(pi.base.bv);
+	BOOST_ASSERT(pi.base.bv);
 	cache(pi.base.bv);
 
 	Dimension dim_collapsed;

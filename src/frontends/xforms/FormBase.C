@@ -21,7 +21,6 @@
 #include "controllers/ControlButtons.h"
 
 #include "support/filetools.h" //  LibFileSearch
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
@@ -125,7 +124,7 @@ void FormBase::show()
 {
 	// build() is/should be called from the controller, so form() should
 	// always exist.
-	Assert(form());
+	BOOST_ASSERT(form());
 
 	// we use minw_ to flag whether the dialog has ever been shown.
 	// In turn, prepare_to_show() initialises various bits 'n' pieces
@@ -184,14 +183,14 @@ void FormBase::hide()
 
 void FormBase::setPrehandler(FL_OBJECT * ob)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 	fl_set_object_prehandler(ob, C_PrehandlerCB);
 }
 
 
 void FormBase::setMessageWidget(FL_OBJECT * ob)
 {
-	Assert(ob && ob->objclass == FL_TEXT);
+	BOOST_ASSERT(ob && ob->objclass == FL_TEXT);
 	message_widget_ = ob;
 	fl_set_object_lsize(message_widget_, FL_NORMAL_SIZE);
 }
@@ -218,7 +217,7 @@ ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
 // preemptive handler for feedback messages
 void FormBase::MessageCB(FL_OBJECT * ob, int event)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	switch (event) {
 	case FL_ENTER:
@@ -245,7 +244,7 @@ void FormBase::MessageCB(FL_OBJECT * ob, int event)
 
 void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 {
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	if (ob->objclass == FL_INPUT && event == FL_PUSH && key == 2) {
 		// Trigger an input event when pasting in an xforms input object
@@ -297,7 +296,7 @@ void FormBase::postWarning(string const & warning)
 
 void FormBase::clearMessage()
 {
-	Assert(message_widget_);
+	BOOST_ASSERT(message_widget_);
 
 	warning_posted_ = false;
 
@@ -314,7 +313,7 @@ void FormBase::clearMessage()
 
 void FormBase::postMessage(string const & message)
 {
-	Assert(message_widget_);
+	BOOST_ASSERT(message_widget_);
 
 	int const width = message_widget_->w - 10;
 	string const tmp = warning_posted_ ?
@@ -336,7 +335,7 @@ namespace {
 
 FormBase * GetForm(FL_OBJECT * ob)
 {
-	Assert(ob && ob->form && ob->form->u_vdata);
+	BOOST_ASSERT(ob && ob->form && ob->form->u_vdata);
 	FormBase * ptr = static_cast<FormBase *>(ob->form->u_vdata);
 	return ptr;
 }
@@ -380,7 +379,7 @@ void C_FormBaseInputCB(FL_OBJECT * ob, long d)
 static int C_WMHideCB(FL_FORM * form, void *)
 {
 	// Close the dialog cleanly, even if the WM is used to do so.
-	Assert(form && form->u_vdata);
+	BOOST_ASSERT(form && form->u_vdata);
 	FormBase * ptr = static_cast<FormBase *>(form->u_vdata);
 	ptr->getController().CancelButton();
 	return FL_CANCEL;
@@ -391,11 +390,11 @@ static int C_PrehandlerCB(FL_OBJECT * ob, int event,
 {
 	// Note that the return value is important in the pre-emptive handler.
 	// Don't return anything other than 0.
-	Assert(ob);
+	BOOST_ASSERT(ob);
 
 	// Don't Assert this one, as it can happen quite naturally when things
 	// are being deleted in the d-tor.
-	//Assert(ob->form);
+	//BOOST_ASSERT(ob->form);
 	if (!ob->form) return 0;
 
 	FormBase * ptr = static_cast<FormBase *>(ob->form->u_vdata);

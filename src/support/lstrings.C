@@ -13,7 +13,6 @@
 
 #include "support/std_string.h"
 #include "lstrings.h"
-#include "LAssert.h"
 #include "support/std_sstream.h"
 #include "debug.h"
 #include "BoostFormat.h"
@@ -434,7 +433,7 @@ string const subst(string const & a,
 
 string const trim(string const & a, char const * p)
 {
-	Assert(p);
+	BOOST_ASSERT(p);
 
 	if (a.empty() || !*p)
 		return a;
@@ -452,7 +451,7 @@ string const trim(string const & a, char const * p)
 
 string const rtrim(string const & a, char const * p)
 {
-	Assert(p);
+	BOOST_ASSERT(p);
 
 	if (a.empty() || !*p)
 		return a;
@@ -469,7 +468,7 @@ string const rtrim(string const & a, char const * p)
 
 string const ltrim(string const & a, char const * p)
 {
-	Assert(p);
+	BOOST_ASSERT(p);
 
 	if (a.empty() || !*p)
 		return a;
@@ -662,7 +661,7 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 
 string bformat(string const & fmt, string const & arg1)
 {
-	Assert(contains(fmt, "%1$s"));
+	BOOST_ASSERT(contains(fmt, "%1$s"));
 	string const str = subst(fmt, "%1$s", arg1);
 	return subst(str, "%%", "%");
 }
@@ -670,8 +669,8 @@ string bformat(string const & fmt, string const & arg1)
 
 string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
-	Assert(contains(fmt, "%1$s"));
-	Assert(contains(fmt, "%2$s"));
+	BOOST_ASSERT(contains(fmt, "%1$s"));
+	BOOST_ASSERT(contains(fmt, "%2$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	return subst(str, "%%", "%");
@@ -680,8 +679,8 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 
 string bformat(string const & fmt, int arg1, int arg2)
 {
-	Assert(contains(fmt, "%1$d"));
-	Assert(contains(fmt, "%2$d"));
+	BOOST_ASSERT(contains(fmt, "%1$d"));
+	BOOST_ASSERT(contains(fmt, "%2$d"));
 	string str = subst(fmt, "%1$d", tostr(arg1));
 	str = subst(str, "%2$d", tostr(arg2));
 	return subst(str, "%%", "%");
@@ -691,9 +690,9 @@ string bformat(string const & fmt, int arg1, int arg2)
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3)
 {
-	Assert(contains(fmt, "%1$s"));
-	Assert(contains(fmt, "%2$s"));
-	Assert(contains(fmt, "%3$s"));
+	BOOST_ASSERT(contains(fmt, "%1$s"));
+	BOOST_ASSERT(contains(fmt, "%2$s"));
+	BOOST_ASSERT(contains(fmt, "%3$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);
@@ -704,10 +703,10 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
-	Assert(contains(fmt, "%1$s"));
-	Assert(contains(fmt, "%2$s"));
-	Assert(contains(fmt, "%3$s"));
-	Assert(contains(fmt, "%4$s"));
+	BOOST_ASSERT(contains(fmt, "%1$s"));
+	BOOST_ASSERT(contains(fmt, "%2$s"));
+	BOOST_ASSERT(contains(fmt, "%3$s"));
+	BOOST_ASSERT(contains(fmt, "%4$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);
@@ -719,11 +718,11 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4, string const & arg5)
 {
-	Assert(contains(fmt, "%1$s"));
-	Assert(contains(fmt, "%2$s"));
-	Assert(contains(fmt, "%3$s"));
-	Assert(contains(fmt, "%4$s"));
-	Assert(contains(fmt, "%5$s"));
+	BOOST_ASSERT(contains(fmt, "%1$s"));
+	BOOST_ASSERT(contains(fmt, "%2$s"));
+	BOOST_ASSERT(contains(fmt, "%3$s"));
+	BOOST_ASSERT(contains(fmt, "%4$s"));
+	BOOST_ASSERT(contains(fmt, "%5$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);

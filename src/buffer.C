@@ -51,7 +51,6 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/gzstream.h"
-#include "support/LAssert.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
@@ -115,7 +114,7 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 
 typedef std::map<string, bool> DepClean;
 
-struct Buffer::Impl 
+struct Buffer::Impl
 {
 	Impl(Buffer & parent, string const & file, bool readonly);
 
@@ -573,7 +572,7 @@ bool Buffer::readFile(string const & filename, ParagraphList::iterator pit)
 bool Buffer::readFile(LyXLex & lex, string const & filename,
 		      ParagraphList::iterator pit)
 {
-	Assert(!filename.empty());
+	BOOST_ASSERT(!filename.empty());
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),

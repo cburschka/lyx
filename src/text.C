@@ -43,7 +43,6 @@
 
 #include "insets/insettext.h"
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -72,14 +71,14 @@ int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 BufferView * LyXText::bv()
 {
-	Assert(bv_owner != 0);
+	BOOST_ASSERT(bv_owner != 0);
 	return bv_owner;
 }
 
 
 BufferView * LyXText::bv() const
 {
-	Assert(bv_owner != 0);
+	BOOST_ASSERT(bv_owner != 0);
 	return bv_owner;
 }
 
@@ -193,7 +192,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 {
 	if (pos >= pit->size()) {
 		lyxerr << "in singleWidth(), pos: " << pos << endl;
-		Assert(false);
+		BOOST_ASSERT(false);
 		return 0;
 	}
 
@@ -217,7 +216,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 
 	if (c == Paragraph::META_INSET) {
 		InsetOld * tmpinset = pit->getInset(pos);
-		Assert(tmpinset);
+		BOOST_ASSERT(tmpinset);
 		if (tmpinset->lyxCode() == InsetOld::HFILL_CODE) {
 			// Because of the representation as vertical lines
 			return 3;
@@ -846,7 +845,7 @@ int LyXText::labelFill(ParagraphList::iterator pit, Row const & row) const
 {
 	pos_type last = pit->beginningOfBody();
 
-	Assert(last > 0);
+	BOOST_ASSERT(last > 0);
 
 	// -1 because a label ends either with a space that is in the label,
 	// or with the beginning of a footnote that is outside the label.
@@ -2066,7 +2065,7 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 	if (rit != pit->rows.begin())
 		--rit;
 	else {
-		Assert(pit != ownerParagraphs().begin());
+		BOOST_ASSERT(pit != ownerParagraphs().begin());
 		--pit;
 		rit = boost::prior(pit->rows.end());
 	}

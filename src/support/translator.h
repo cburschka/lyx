@@ -17,7 +17,6 @@
 #include <algorithm>
 #include <functional>
 
-#include "support/LAssert.h"
 #include "support/lyxfunctional.h"
 /**
  * This class template is used to translate between two elements, specifically
@@ -50,7 +49,7 @@ public:
 
 	/// Find the mapping for the first argument
 	T2 const & find(T1 const & first) const {
-		lyx::support::Assert(!map.empty());
+		BOOST_ASSERT(!map.empty());
 
 		// For explanation see the next find() function.
 		typename Map::const_iterator it =
@@ -67,7 +66,7 @@ public:
 
 	/// Find the mapping for the second argument
 	T1 const & find(T2 const & second) const {
-		lyx::support::Assert(!map.empty());
+		BOOST_ASSERT(!map.empty());
 
 		// The idea is as follows:
 		// find_if() will try to compare the data in the vector with

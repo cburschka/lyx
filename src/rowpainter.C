@@ -32,10 +32,8 @@
 
 #include "insets/insettext.h"
 
-#include "support/LAssert.h"
 #include "support/textutils.h"
 
-using namespace lyx::support;
 
 using std::max;
 using lyx::pos_type;
@@ -178,7 +176,7 @@ void RowPainter::paintInset(pos_type const pos)
 {
 	InsetOld * inset = const_cast<InsetOld*>(pit_->getInset(pos));
 
-	Assert(inset);
+	BOOST_ASSERT(inset);
 
 	PainterInfo pi(perv(bv_));
 	pi.base.font = getFont(pos);

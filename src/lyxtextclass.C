@@ -22,7 +22,6 @@
 #include "FloatList.h"
 
 #include "support/lstrings.h"
-#include "support/LAssert.h"
 #include "support/filetools.h"
 
 
@@ -760,7 +759,7 @@ bool LyXTextClass::hasLayout(string const & n) const
 
 LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
 {
-	Assert(!name.empty());
+	BOOST_ASSERT(!name.empty());
 
 	LayoutList::const_iterator cit =
 		find_if(layoutlist_.begin(),
@@ -776,7 +775,7 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
 			lyxerr  << " " << it->get()->name() << endl;
 
 		// we require the name to exist
-		Assert(false);
+		BOOST_ASSERT(false);
 	}
 
 	return (*cit);

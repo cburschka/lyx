@@ -13,7 +13,6 @@
 
 #ifdef USE_ASPELL
 
-#include "support/LAssert.h"
 #include "debug.h"
 
 #include <aspell.h>
@@ -89,14 +88,14 @@ enum ASpell::Result ASpell::check(WordLangTuple const & word)
 	AspellSpeller * m = it->second.speller;
 
 	int word_ok = aspell_speller_check(m, word.word().c_str(), -1);
-	Assert(word_ok != -1);
+	BOOST_ASSERT(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
 		AspellWordList const * sugs =
 			aspell_speller_suggest(m, word.word().c_str(), -1);
-		Assert(sugs != 0);
+		BOOST_ASSERT(sugs != 0);
 		els = aspell_word_list_elements(sugs);
 		if (aspell_word_list_empty(sugs))
 			res = UNKNOWN;

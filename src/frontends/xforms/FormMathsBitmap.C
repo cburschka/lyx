@@ -20,9 +20,6 @@
 
 #include "ControlMath.h"
 
-#include "support/LAssert.h"
-
-using namespace lyx::support;
 
 using std::max;
 using std::vector;
@@ -74,7 +71,7 @@ void FormMathsBitmap::addBitmap(BitmapStore const & bm)
 
 void FormMathsBitmap::build()
 {
-	Assert(bitmaps_.size() > 0);
+	BOOST_ASSERT(bitmaps_.size() > 0);
 
 	h_+= 42; // Allow room for a Close button
 

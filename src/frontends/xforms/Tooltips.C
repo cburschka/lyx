@@ -20,7 +20,6 @@
 
 #include "xforms_helpers.h" // formatted
 
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
@@ -65,7 +64,7 @@ void Tooltips::set()
 
 void Tooltips::init(FL_OBJECT * ob, string const & tip)
 {
-	Assert(ob && ob->form);
+	BOOST_ASSERT(ob && ob->form);
 
 	// Store the tooltip string
 	string const str = formatted(trim(tip), 400);

@@ -21,14 +21,12 @@
 
 #include "controllers/ButtonController.h"
 
-#include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
 
 #include "lyx_forms.h"
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
 
 using std::ostringstream;
 
@@ -47,10 +45,10 @@ extern "C" {
 	int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
 					 char const * cur, int c)
 	{
-		Assert(ob);
+		BOOST_ASSERT(ob);
 		FormMathsMatrix * pre =
 			static_cast<FormMathsMatrix *>(ob->u_vdata);
-		Assert(pre);
+		BOOST_ASSERT(pre);
 		return pre->AlignFilter(cur, c);
 	}
 

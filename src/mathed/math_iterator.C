@@ -12,9 +12,9 @@
 
 #include "math_iterator.h"
 #include "math_inset.h"
-#include "support/LAssert.h"
 
-using namespace lyx::support;
+#include <boost/assert.hpp>
+
 
 MathIterator::MathIterator()
 {}
@@ -56,7 +56,7 @@ void MathIterator::push(MathInset * p)
 void MathIterator::pop()
 {
 	//lyxerr << "pop: " << endl;
-	Assert(size());
+	BOOST_ASSERT(size());
 	pop_back();
 }
 
@@ -124,8 +124,8 @@ void MathIterator::operator++()
 void MathIterator::jump(difference_type i)
 {
 	back().pos_ += i;
-	//Assert(back().pos_ >= 0);
-	Assert(back().pos_ <= cell().size());
+	//BOOST_ASSERT(back().pos_ >= 0);
+	BOOST_ASSERT(back().pos_ <= cell().size());
 }
 
 

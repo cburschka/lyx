@@ -12,11 +12,12 @@
 
 
 #include "xforms_resize.h"
-#include "support/LAssert.h"
+
+#include <boost/assert.hpp>
+
 #include <algorithm> // std::max. Use FL_max in .c code...
 #include "lyx_forms.h"
 
-using namespace lyx::support;
 
 namespace {
 
@@ -95,7 +96,7 @@ double get_scaling_factor(FL_FORM * form)
 
 double get_tabfolder_scale_to_fit(FL_OBJECT * folder)
 {
-	Assert(folder && folder->objclass == FL_TABFOLDER);
+	BOOST_ASSERT(folder && folder->objclass == FL_TABFOLDER);
 
 	fl_freeze_form(folder->form);
 	int const saved_folder_id = fl_get_folder_number(folder);
@@ -117,7 +118,7 @@ double get_tabfolder_scale_to_fit(FL_OBJECT * folder)
 
 void scale_tabfolder_horizontally(FL_OBJECT * folder, double factor)
 {
-	Assert(folder && folder->objclass == FL_TABFOLDER);
+	BOOST_ASSERT(folder && folder->objclass == FL_TABFOLDER);
 
 	fl_freeze_form(folder->form);
 	int const saved_folder_id = fl_get_folder_number(folder);
@@ -138,7 +139,7 @@ void scale_tabfolder_horizontally(FL_OBJECT * folder, double factor)
 
 double get_scale_to_fit(FL_FORM * form)
 {
-	Assert(form);
+	BOOST_ASSERT(form);
 
 	double factor = get_scaling_factor(form);
 	for (FL_OBJECT * ob = form->first; ob; ob = ob->next) {
@@ -152,7 +153,7 @@ double get_scale_to_fit(FL_FORM * form)
 
 void scale_form_horizontally(FL_FORM * form, double factor)
 {
-	Assert(form);
+	BOOST_ASSERT(form);
 
 	if (factor <= 1.0)
 		return;
