@@ -159,3 +159,28 @@ int InsetOld::width() const
 {
 	return dim_.wid;
 }
+
+
+bool InsetOld::insetAllowed(InsetOld * in) const
+{
+	return insetAllowed(in->lyxCode());
+}
+
+
+bool InsetOld::checkInsertChar(LyXFont &)
+{
+	return false;
+}
+
+
+bool isEditableInset(InsetOld const * i)
+{
+	return i && i->editable();
+}
+
+
+bool isHighlyEditableInset(InsetOld const * i)
+{
+	return i && i->editable() == InsetOld::HIGHLY_EDITABLE;
+}
+

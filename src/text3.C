@@ -1116,7 +1116,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		if (change_layout) {
 			current_layout = layout;
-			update();
 			setLayout(layout);
 			bv->owner()->setLayout(layout);
 			update();
@@ -1126,8 +1125,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PASTESELECTION: {
-		if (!bv->buffer())
-			break;
 		// this was originally a beforeChange(bv->text), i.e
 		// the outermost LyXText!
 		bv->beforeChange(this);

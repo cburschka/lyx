@@ -776,10 +776,9 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	bool was_empty = (paragraphs.begin()->empty() &&
-			  paragraphs.size() == 1);
-
+	bool was_empty = paragraphs.begin()->empty() && paragraphs.size() == 1;
 	no_selection = false;
+
 	RESULT result = UpdatableInset::localDispatch(cmd);
 	if (result != UNDISPATCHED)
 		return DISPATCHED;
@@ -848,16 +847,14 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			recordUndo(bv, Undo::INSERT, text_.cursor.par());
 #endif
 			bv->switchKeyMap();
-			if (lyxrc.auto_region_delete) {
-				if (text_.selection.set()) {
-					text_.cutSelection(false, false);
-				}
-			}
+
+			if (lyxrc.auto_region_delete && text_.selection.set())
+				text_.cutSelection(false, false);
 			text_.clearSelection();
-			for (string::size_type i = 0; i < cmd.argument.length(); ++i) {
+
+			for (string::size_type i = 0; i < cmd.argument.length(); ++i)
 				bv->owner()->getIntl().getTransManager().
 					TranslateAndInsert(cmd.argument[i], &text_);
-			}
 		}
 		text_.selection.cursor = text_.cursor;
 		updflag = true;
@@ -903,53 +900,21 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		}
 		break;
 
-	case LFUN_BACKSPACE: {
+	case LFUN_BACKSPACE:
 		if (text_.selection.set())
 			text_.cutSelection(true, false);
 		else
 			text_.backspace();
 		updflag = true;
 		break;
-	}
 
-	case LFUN_DELETE: {
-		if (text_.selection.set()) {
+	case LFUN_DELETE:
+		if (text_.selection.set())
 			text_.cutSelection(true, false);
-		} else {
+		else 
 			text_.Delete();
-		}
 		updflag = true;
 		break;
-	}
-
-	case LFUN_CUT: {
-		text_.cutSelection(true, true);
-		updflag = true;
-		break;
-	}
-
-	case LFUN_COPY:
-		finishUndo();
-		text_.copySelection();
-		break;
-
-	case LFUN_PASTESELECTION:
-	{
-		string const clip(bv->getClipboard());
-
-		if (clip.empty())
-			break;
-		if (cmd.argument == "paragraph") {
-			text_.insertStringAsParagraphs(clip);
-		} else {
-			text_.insertStringAsLines(clip);
-		}
-		// bug 393
-		text_.clearSelection();
-
-		updflag = true;
-		break;
-	}
 
 	case LFUN_PASTE: {
 		if (!autoBreakRows) {
@@ -1015,7 +980,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			string cur_layout = cpar()->layout()->name();
 
 			// Derive layout number from given argument (string)
-			// and current buffer's textclass (number). */
+			// and current buffer's textclass (number). 
 			LyXTextClass const & tclass =
 				bv->buffer()->params.getLyXTextClass();
 			string layout = cmd.argument;
@@ -1023,8 +988,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 			// If the entry is obsolete, use the new one instead.
 			if (hasLayout) {
-				string const & obs =
-					tclass[layout]->obsoleted_by();
+				string const & obs = tclass[layout]->obsoleted_by();
 				if (!obs.empty())
 					layout = obs;
 			}
@@ -1047,52 +1011,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			bv->owner()->setLayout(cpar()->layout()->name());
 		}
 		break;
-	case LFUN_PARAGRAPH_SPACING:
-		// This one is absolutely not working. When fiddling with this
-		// it also seems to me that the paragraphs inside the insettext
-		// inherit bufferparams/paragraphparams in a strange way. (Lgb)
-		// FIXME: how old is this comment ? ...
-	{
-		ParagraphList::iterator pit = text_.cursor.par();
-		Spacing::Space cur_spacing = pit->params().spacing().getSpace();
-		float cur_value = 1.0;
-		if (cur_spacing == Spacing::Other) {
-			cur_value = pit->params().spacing().getValue();
-		}
-
-		istringstream istr(STRCONV(cmd.argument));
-		string tmp;
-		istr >> tmp;
-		Spacing::Space new_spacing = cur_spacing;
-		float new_value = cur_value;
-		if (tmp.empty()) {
-			lyxerr << "Missing argument to `paragraph-spacing'"
-				   << endl;
-		} else if (tmp == "single") {
-			new_spacing = Spacing::Single;
-		} else if (tmp == "onehalf") {
-			new_spacing = Spacing::Onehalf;
-		} else if (tmp == "double") {
-			new_spacing = Spacing::Double;
-		} else if (tmp == "other") {
-			new_spacing = Spacing::Other;
-			float tmpval = 0.0;
-			istr >> tmpval;
-			lyxerr << "new_value = " << tmpval << endl;
-			if (tmpval != 0.0)
-				new_value = tmpval;
-		} else if (tmp == "default") {
-			new_spacing = Spacing::Default;
-		} else {
-			lyxerr << _("Unknown spacing argument: ")
-				   << cmd.argument << endl;
-		}
-		if (cur_spacing != new_spacing || cur_value != new_value) {
-			pit->params().spacing(Spacing(new_spacing, new_value));
-			updflag = true;
-		}
-	}
-	break;
 
 	default:
 		if (!bv->dispatch(cmd))
@@ -1182,7 +1100,6 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
 
 	for (; pit != pend; ++pit) {
-		string sgmlparam;
 		int desc_on = 0; // description mode
 
 		LyXLayout_ptr const & style = pit->layout();
@@ -1289,7 +1206,8 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
-			if (desc_on == 1) break;
+			if (desc_on == 1)
+				break;
 			end_tag= "para";
 			lines += sgml::closeTag(os, depth + 1 + command_depth, mixcont, end_tag);
 			break;

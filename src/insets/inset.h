@@ -347,35 +347,17 @@ private:
 };
 
 
-inline
-bool InsetOld::insetAllowed(InsetOld * in) const
-{
-	return insetAllowed(in->lyxCode());
-}
-
-
-inline
-bool InsetOld::checkInsertChar(LyXFont &)
-{
-	return false;
-}
-
 /**
  * returns true if pointer argument is valid
  * and points to an editable inset
  */
-inline bool isEditableInset(InsetOld const * i)
-{
-	return i && i->editable();
-}
+bool isEditableInset(InsetOld const * i);
+
 
 /**
  * returns true if pointer argument is valid
  * and points to a highly editable inset
  */
-inline bool isHighlyEditableInset(InsetOld const * i)
-{
-	return i && i->editable() == InsetOld::HIGHLY_EDITABLE;
-}
+bool isHighlyEditableInset(InsetOld const * i);
 
 #endif

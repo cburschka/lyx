@@ -349,8 +349,8 @@ lyx::pos_type Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
 			return cit->pos();
 
 	// This should not happen, but if so, we take no chances.
-	lyxerr << "Pararaph::getEndPosOfFontSpan: This should not happen!"
-	       << endl;
+	//lyxerr << "Paragraph::getEndPosOfFontSpan: This should not happen!"
+	//      << endl;
 	return pos;
 }
 

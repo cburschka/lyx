@@ -1,4 +1,11 @@
 
+2003-08-07  André Pönitz  <poenitz@gmx.net>
+
+	* inset.[Ch]: move non-crucial functions out-of-line
+
+	* insettext.C: rely on LyXText's LFUN handlers in some more cases,
+	remove duplicated code.
+
 2003-08-05  André Pönitz  <poenitz@gmx.net>
 
 	* insetbibitem.C:
