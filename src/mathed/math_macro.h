@@ -17,7 +17,7 @@
 #include "math_nestinset.h"
 #include "metricsinfo.h"
 #include "math_macroarg.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class MathMacroTemplate;
 

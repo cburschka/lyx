@@ -24,7 +24,7 @@
 #ifndef GRAPHICSIMAGE_H
 #define GRAPHICSIMAGE_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/function/function0.hpp>

@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "textpainter.h"
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 
 
 TextPainter::TextPainter(int xmax, int ymax)

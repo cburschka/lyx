@@ -14,7 +14,7 @@
 
 
 #include "ControlDialog_impl.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "funcrequest.h"
 #include "lyxrc.h"
 #include "LColor.h"

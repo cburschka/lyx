@@ -12,7 +12,7 @@
 #ifndef ERRORLIST_H
 #define ERRORLIST_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <vector>
 

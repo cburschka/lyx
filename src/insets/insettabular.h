@@ -47,7 +47,7 @@
 
 #include "inset.h"
 #include "tabular.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "frontends/mouse_state.h"
 
 class FuncStatus;

@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include "lyxlib.h"
 

@@ -13,7 +13,7 @@
 
 #include "math_binaryopinset.h"
 #include "PainterInfo.h"
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 

@@ -15,7 +15,7 @@
 class ControlButtons;
 class ButtonController;
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/utility.hpp>
 

@@ -14,7 +14,7 @@
 #ifndef PARAGRAPHPARAMETERS_H
 #define PARAGRAPHPARAMETERS_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "ShareContainer.h"
 #include "layout.h"
 

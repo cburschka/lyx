@@ -18,7 +18,7 @@
 
 #include "lyx_forms.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 
 FormVCLog::FormVCLog(Dialog & parent)

@@ -11,10 +11,10 @@
 
 #include <config.h>
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "lstrings.h"
 #include "LAssert.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "debug.h"
 #include "BoostFormat.h"
 #include "lyxlib.h"

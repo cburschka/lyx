@@ -13,7 +13,7 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <map>
 
 

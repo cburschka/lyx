@@ -13,7 +13,7 @@
 #include <fstream>
 
 #include "support/lyxlib.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 using std::ifstream;
 using std::ofstream;

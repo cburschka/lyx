@@ -12,7 +12,7 @@
 
 
 #include "support/lstrings.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "qt_helpers.h"
 #include "ButtonController.h"
 #include "ControlAboutlyx.h"

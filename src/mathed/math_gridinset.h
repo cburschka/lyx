@@ -14,7 +14,7 @@
 
 #include "math_nestinset.h"
 #include "vspace.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 /** Gridded math inset base class.

@@ -12,7 +12,7 @@
 #ifndef VC_BACKEND_H
 #define VC_BACKEND_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class Buffer;
 

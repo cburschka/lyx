@@ -17,7 +17,7 @@
 
 #include <map>
 #include "frontends/Painter.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class LyXFont;
 class GWorkArea;

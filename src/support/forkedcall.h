@@ -26,7 +26,7 @@
 #ifndef FORKEDCALL_H
 #define FORKEDCALL_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/signal2.hpp>

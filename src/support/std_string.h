@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LString.h
+ * \file std_string.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,12 +10,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LSTRING_H
-#define LSTRING_H
+#ifndef STD_STRING_H
+#define STD_STRING_H
 
 #if 0
 #ifndef _CONFIG_H
-#error The <config.h> header should always be included before LString.h
+#error The <config.h> header should always be included before std_string.h
 #endif
 #endif
 
@@ -27,7 +27,7 @@ using std::string;
 #else
 
 #ifdef __STRING__
-#error The <string> header has been included before LString.h
+#error The <string> header has been included before std_string.h
 #else
 #define __STRING__
 #endif
@@ -36,4 +36,4 @@ using lyx::string;
 #define STRCONV(STR) STR.c_str()
 #endif
 
-#endif
+#endif // NOT STD_STRING_H

@@ -14,7 +14,7 @@
 
 #include <deque>
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/utility.hpp>
 
 /** The latest documents loaded.

@@ -13,7 +13,7 @@
 #define QTHELPERS_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <utility>
 

@@ -18,7 +18,7 @@
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
 #include "debug.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "math_mathmlstream.h"
 
 #include <map>

@@ -20,7 +20,7 @@
 #include "encoding.h"
 #include "lyxlex.h"
 #include "factory.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"

@@ -12,7 +12,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <queue>
 #include <vector>

@@ -16,7 +16,7 @@
 #ifndef FORKEDCONTR_H
 #define FORKEDCONTR_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>

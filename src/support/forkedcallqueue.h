@@ -22,7 +22,7 @@
 
 #include <queue>
 #include <utility>
-#include "LString.h"
+#include "support/std_string.h"
 
 namespace lyx {
 namespace support {

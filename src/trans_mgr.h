@@ -17,7 +17,7 @@
 #include "tex-accent.h"
 #include "trans_decl.h"
 #include "chset.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class LyXText;
 class Trans;

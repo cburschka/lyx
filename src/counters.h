@@ -15,7 +15,7 @@
 #ifndef COUNTERS_H
 #define COUNTERS_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <map>
 
 

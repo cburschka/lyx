@@ -14,7 +14,7 @@
 #define GMINI_BUFFER_H
 
 #include "frontends/Timeout.h"
-#include "LString.h"
+#include "support/std_string.h"
 class ControlCommandBuffer;
 
 class GMiniBuffer : public SigC::Object

@@ -13,7 +13,7 @@
 
 #include "biblio.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "gettext.h" // for _()
 
 #include "support/lstrings.h"

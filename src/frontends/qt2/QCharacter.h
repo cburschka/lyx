@@ -18,7 +18,7 @@
 #include "controllers/character.h"
 #include "controllers/frnt_lang.h"
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <vector>
 

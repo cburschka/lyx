@@ -19,7 +19,7 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "lyxrc.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "debug.h"
 #include "buffer.h"
 #include "ParagraphParameters.h"

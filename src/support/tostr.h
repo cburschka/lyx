@@ -15,7 +15,7 @@
 #ifndef TOSTR_H
 #define TOSTR_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 // When trying to convert this to a template using std::stringstream,
 // note that this will pull in the whole of <string> in more than 150

@@ -20,7 +20,7 @@
 #include "lyxtext.h"
 #include "metricsinfo.h"
 
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 
 using std::endl;
 using std::ostream;

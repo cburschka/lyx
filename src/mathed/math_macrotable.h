@@ -13,7 +13,7 @@
 #define MATH_MACROTABLE_H
 
 #include <map>
-#include "LString.h"
+#include "support/std_string.h"
 #include "math_atom.h"
 
 

@@ -12,7 +12,7 @@
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/utility.hpp>
 

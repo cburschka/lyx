@@ -15,7 +15,7 @@
 #ifndef LYX_LENGTH_H
 #define LYX_LENGTH_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /**
  * LyXLength - Represents latex length measurement

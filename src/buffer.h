@@ -12,7 +12,7 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "undo.h"
 #include "support/limited_stack.h"
 

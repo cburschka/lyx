@@ -13,7 +13,7 @@
 #define FORMS_GETTEXT_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /// Extract shortcut from "<identifer>|<shortcut>" string
 string const scex(string const &);

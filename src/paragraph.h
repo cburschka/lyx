@@ -26,7 +26,7 @@
 #include "changes.h"
 #include "RowList.h"
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class Buffer;
 class BufferParams;

@@ -22,7 +22,7 @@
 
 #include "controllers/ButtonController.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "delim.xbm"
 #include "delim0.xpm"

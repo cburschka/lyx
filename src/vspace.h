@@ -14,7 +14,7 @@
 
 #include "lyxgluelength.h"
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class BufferParams;
 class BufferView;

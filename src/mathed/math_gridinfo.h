@@ -12,7 +12,7 @@
 #ifndef MATH_GRIDINFO_H
 #define MATH_GRIDINFO_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 struct ColInfo
 {

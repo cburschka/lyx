@@ -15,7 +15,7 @@
 #define LATEX_H
 
 #include "latexrunparams.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include <vector>
 #include <set>
 

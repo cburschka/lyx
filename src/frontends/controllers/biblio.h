@@ -13,7 +13,7 @@
 #define BIBLIOHELPERS_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <map>
 #include <vector>
 

@@ -16,7 +16,7 @@
 #include <map>
 #include <utility>
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /// a class for mapping char strings such as "\^{A}" to the integer value
 class CharacterSet {

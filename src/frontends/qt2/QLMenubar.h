@@ -15,7 +15,7 @@
 #define QLMENUBAR_H
 
 #include "frontends/Menubar.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include <map>
 
 class LyXView;

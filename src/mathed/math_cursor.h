@@ -16,7 +16,7 @@
 
 #include "math_inset.h"
 #include "math_iterator.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class InsetFormulaBase;
 class BufferView;

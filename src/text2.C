@@ -20,7 +20,7 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "undo_funcs.h"

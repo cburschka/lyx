@@ -13,7 +13,7 @@
 #include "command_inset.h"
 #include "math_mathmlstream.h"
 #include "funcrequest.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using std::auto_ptr;
 

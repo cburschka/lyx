@@ -13,7 +13,7 @@
 #define MATH_FACTORY_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class MathAtom;
 class MathArray;

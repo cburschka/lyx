@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "exporter.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "format.h"
 #include "ParagraphParameters.h"
 #include "iterators.h"

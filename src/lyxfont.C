@@ -20,7 +20,7 @@
 #include "lyxrc.h"
 #include "lyxlex.h"
 #include "language.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "support/lstrings.h"
 #include "bufferparams.h" // stateText
 

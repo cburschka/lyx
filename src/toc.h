@@ -13,8 +13,8 @@
 #ifndef TOC_H
 #define TOC_H
 
-#include "support/LOstream.h"
-#include "LString.h"
+#include "support/std_ostream.h"
+#include "support/std_string.h"
 
 #include <map>
 #include <vector>

@@ -22,7 +22,7 @@
 #include "frontends/font_metrics.h"
 #include "support/lstrings.h"
 #include "lyxlex.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

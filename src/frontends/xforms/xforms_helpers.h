@@ -16,7 +16,7 @@
 #include "forms_fwd.h"
 
 #include "Color.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <algorithm>
 #include <vector>

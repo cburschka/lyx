@@ -13,7 +13,7 @@
 #define GUIAPI_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class Dialogs;
 

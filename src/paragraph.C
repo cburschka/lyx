@@ -27,7 +27,7 @@
 #include "language.h"
 #include "latexrunparams.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"

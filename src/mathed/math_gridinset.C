@@ -16,7 +16,7 @@
 #include "funcrequest.h"
 #include "frontends/Painter.h"
 #include "debug.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 
 #include "insets/mailinset.h"

@@ -12,7 +12,7 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /** This is a "float layout" object. It contains the parameters for how to
     handle the different kinds of floats, default ones and user created ones.

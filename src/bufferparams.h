@@ -15,7 +15,7 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "vspace.h"
 #include "Spacing.h"
 #include "Bullet.h"

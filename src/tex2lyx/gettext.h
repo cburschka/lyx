@@ -12,7 +12,7 @@
 #ifndef GETTEXT_H
 #define GETTEXT_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 ///
 string const _(string const &);

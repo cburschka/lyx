@@ -20,7 +20,7 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <vector>
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>

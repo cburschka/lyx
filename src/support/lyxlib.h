@@ -15,7 +15,7 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 namespace lyx {
 namespace support {

@@ -15,7 +15,7 @@
 
 #include "frontends/FileDialog.h"
 #include <qfiledialog.h>
-#include "LString.h"
+#include "support/std_string.h"
 
 class QToolButton;
 

@@ -12,8 +12,8 @@
 #ifndef LYX_MANIP_H
 #define LYX_MANIP_H
 
-#include "LString.h"
-#include "support/LOstream.h"
+#include "support/std_string.h"
+#include "support/std_ostream.h"
 
 ///
 struct NewLineAndDepth_ {

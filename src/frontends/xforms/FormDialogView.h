@@ -20,7 +20,7 @@
 #include "ButtonPolicies.h"
 #include "forms_fwd.h"
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/scoped_ptr.hpp>
 #include <X11/Xlib.h> // for Pixmap
 

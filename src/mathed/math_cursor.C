@@ -16,7 +16,7 @@
 #include "support/LAssert.h"
 #include "support/limited_stack.h"
 #include "debug.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "math_cursor.h"
 #include "formulabase.h"
 #include "funcrequest.h"

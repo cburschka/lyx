@@ -16,7 +16,7 @@
 
 #include <boost/utility.hpp>
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <vector>
 

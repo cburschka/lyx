@@ -13,7 +13,7 @@
 #define INSET_LATEX_ACCENT_H
 
 #include "inset.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "dimension.h"
 
 /** Insertion of accents

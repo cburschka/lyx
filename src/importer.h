@@ -15,7 +15,7 @@
 #define IMPORTER_H
 
 #include <vector>
-#include "LString.h"
+#include "support/std_string.h"
 
 class LyXView;
 class Format;

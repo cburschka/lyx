@@ -13,7 +13,7 @@
 #include "author.h"
 
 #include "support/LAssert.h"
-#include "support/LIstream.h"
+#include "support/std_istream.h"
 #include "support/lstrings.h"
 
 using namespace lyx::support;

@@ -13,7 +13,7 @@
 #define XLYXKEYSYM_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <X11/Xlib.h>
 #include "frontends/LyXKeySym.h"
 

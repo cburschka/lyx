@@ -34,7 +34,7 @@
 
 #include "support/LAssert.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 using namespace lyx::graphics;

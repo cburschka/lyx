@@ -14,7 +14,7 @@
 #ifndef KBMAP_H
 #define KBMAP_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
 

@@ -13,7 +13,7 @@
 #include <cstdlib>
 #include <unistd.h>
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/tostr.h"

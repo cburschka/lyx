@@ -12,7 +12,7 @@
 #ifndef PATH_H
 #define PATH_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/utility.hpp>
 
 namespace lyx {

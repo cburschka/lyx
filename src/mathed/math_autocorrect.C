@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "math_autocorrect.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "debug.h"
 #include "support/filetools.h" //  LibFileSearch
 #include "math_data.h"

@@ -17,7 +17,7 @@
 #ifndef GRAPHICSCONVERTER_H
 #define GRAPHICSCONVERTER_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/signals/signal1.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>

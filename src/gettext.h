@@ -41,7 +41,7 @@
  *   Panic/fatal (that should not happen) messages need not be translated
  */
 
-#include "LString.h"
+#include "support/std_string.h"
 
 //#ifdef ENABLE_NLS
 

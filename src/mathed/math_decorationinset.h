@@ -14,7 +14,7 @@
 #define MATH_DECORATIONINSET_H
 
 #include "math_nestinset.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 class latexkeys;

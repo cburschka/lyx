@@ -14,7 +14,7 @@
 #define MENUBAR_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /**
  * The LyX GUI independent menubar class

@@ -36,7 +36,7 @@
 #include "lyxlib.h"
 #include "os.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include <boost/cregex.hpp>
 #include <cctype>

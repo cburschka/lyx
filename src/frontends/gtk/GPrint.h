@@ -12,7 +12,7 @@
 #ifndef GPRINT_H
 #define GPRINT_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "GViewBase.h"
 
 class ControlPrint;

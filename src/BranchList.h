@@ -30,7 +30,7 @@
 #ifndef BRANCHES_H
 #define BRANCHES_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <list>
 
 class Branch {

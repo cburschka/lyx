@@ -15,7 +15,7 @@
 
 #include "support/types.h"
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <set>
 #include <list>

@@ -18,7 +18,7 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal1.hpp>

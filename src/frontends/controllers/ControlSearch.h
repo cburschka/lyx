@@ -14,7 +14,7 @@
 
 
 #include "ControlDialog_impl.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 /** A controller for Search dialogs.
  */

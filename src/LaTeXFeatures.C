@@ -22,7 +22,7 @@
 #include "FloatList.h"
 #include "language.h"
 #include "encoding.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "support/filetools.h"
 

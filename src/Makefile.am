@@ -81,13 +81,11 @@ lyx_SOURCES = \
 	InsetList.h \
 	LColor.C \
 	LColor.h \
-	LString.h \
 	LaTeX.C \
 	LaTeX.h \
 	LaTeXFeatures.C \
 	LaTeXFeatures.h \
 	latexrunparams.h \
-	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \
 	MenuBackend.C \

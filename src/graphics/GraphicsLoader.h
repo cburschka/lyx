@@ -25,7 +25,7 @@
 #define GRAPHICSLOADER_H
 
 #include "GraphicsTypes.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/signals/signal0.hpp>
 #include <boost/scoped_ptr.hpp>

@@ -12,7 +12,7 @@
 #ifndef XFORMSMENUBAR_H
 #define XFORMSMENUBAR_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "frontends/Menubar.h"
 
 #include <boost/shared_ptr.hpp>

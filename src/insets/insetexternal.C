@@ -23,7 +23,7 @@
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "frontends/lyx_gui.h"
 

@@ -13,7 +13,7 @@
 #include "math_boxinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 
 using std::auto_ptr;
 

@@ -13,7 +13,7 @@
 #ifndef ENCODING_H
 #define ENCODING_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "lyxrc.h"
 
 #include <map>

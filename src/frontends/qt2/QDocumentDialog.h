@@ -14,7 +14,7 @@
 
 
 #include "ui/QDocumentDialogBase.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 #include "ui/BulletsModuleBase.h"
 #include "BulletsModule.h"

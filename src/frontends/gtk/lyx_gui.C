@@ -41,7 +41,7 @@
 #include "xftFontLoader.h"
 #include "GWorkArea.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include <iomanip>
 #include <fcntl.h>
 #include <boost/bind.hpp>

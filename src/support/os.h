@@ -12,7 +12,7 @@
 #ifndef OS_H
 #define OS_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /// wrap OS specific stuff
 namespace lyx {

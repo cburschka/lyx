@@ -15,7 +15,7 @@
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include <vector>
 
 class kb_keymap;

@@ -15,7 +15,7 @@
 
 #include "QDialogView.h"
 #include <vector>
-#include "LString.h"
+#include "support/std_string.h"
 
 class ControlRef;
 class QRefDialog;

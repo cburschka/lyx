@@ -11,7 +11,7 @@
 #include <config.h>
 #include <gtkmm.h>
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include "FileDialogPrivate.h"
 

@@ -15,7 +15,7 @@
 #include "lyxgluelength.h"
 #include "lengthcommon.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 
 LyXGlueLength::LyXGlueLength(LyXLength const & len)

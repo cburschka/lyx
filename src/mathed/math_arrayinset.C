@@ -14,7 +14,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include <iterator>
 

@@ -13,7 +13,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 ///
 class Bullet {

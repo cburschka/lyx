@@ -14,7 +14,7 @@
 #ifndef LYXFIND_H
 #define LYXFIND_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "support/types.h"
 
 class BufferView;

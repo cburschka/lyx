@@ -29,10 +29,6 @@ libsupport_la_SOURCES = \
 	FileMonitor.C \
 	LAssert.C \
 	LAssert.h \
-	LIstream.h \
-	LOstream.h \
-	os.C \
-	os.h \
 	abort.C \
 	atoi.C \
 	boost-inst.C \
@@ -62,6 +58,8 @@ libsupport_la_SOURCES = \
 	$(LYXSTRING) lyxsum.C \
 	mkdir.C \
 	nt_defines.h \
+	os.C \
+	os.h \
 	os2_defines.h \
 	os2_errortable.h \
 	path.C \
@@ -74,6 +72,10 @@ libsupport_la_SOURCES = \
 	snprintf.h \
 	snprintf.c \
 	sstream.h \
+	std_istream.h \
+	std_ostream.h \
+	std_sstream.h \
+	std_string.h \
 	systemcall.C \
 	systemcall.h \
 	tempname.C \

@@ -15,7 +15,7 @@
 #include <boost/scoped_ptr.hpp>
 
 #include "ControlDialog_impl.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "WordLangTuple.h"
 
 class SpellBase;

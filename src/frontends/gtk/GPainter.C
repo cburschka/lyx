@@ -12,7 +12,7 @@
 #include <gtkmm.h>
 
 #include "GPainter.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "debug.h"
 #include "GWorkArea.h"
 #include "lyxrc.h"

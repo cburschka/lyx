@@ -11,7 +11,7 @@
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <qwidget.h>
 

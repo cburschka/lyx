@@ -13,7 +13,7 @@
 #define XFT_FONT_LOADER_H
 
 #include "lyxfont.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include <X11/Xft/Xft.h>
 
 class GWorkArea;

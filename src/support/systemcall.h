@@ -15,7 +15,7 @@
 #ifndef SYSTEMCALL_H
 #define SYSTEMCALL_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 namespace lyx {
 namespace support {

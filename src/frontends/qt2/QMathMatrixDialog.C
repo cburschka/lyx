@@ -12,7 +12,7 @@
 
 #include "qt_helpers.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "ControlMath.h"
 
 #include "QMath.h"

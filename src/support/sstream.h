@@ -35,7 +35,7 @@ the executable file might be covered by the GNU General Public License. */
 #ifndef SSTREAM_H
 #define SSTREAM_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <iostream>
 #include <streambuf.h>
 

@@ -14,7 +14,7 @@
 
 #include "lyxlength.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using std::abs;
 

@@ -15,7 +15,7 @@
 #include <vector>
 #include <map>
 
-#include "LString.h"
+#include "support/std_string.h"
 #ifdef HAVE_LIBAIKSAURUS
 #include AIKSAURUS_H_LOCATION
 #endif

@@ -20,7 +20,7 @@
 #include "debug.h"
 #include "textpainter.h"
 #include "funcrequest.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "LaTeXFeatures.h"
 #include "support/LAssert.h"
 

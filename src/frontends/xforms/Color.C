@@ -16,7 +16,7 @@
 
 #include "lyx_forms.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include <iomanip>
 
 namespace support = lyx::support;

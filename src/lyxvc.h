@@ -12,7 +12,7 @@
 #ifndef LYX_VC_H
 #define LYX_VC_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class VCS;
 class Buffer;

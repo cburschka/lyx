@@ -14,7 +14,7 @@
 
 
 #include "ui/QDelimiterDialogBase.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class QMathDelimiter;
 class IconPalette;

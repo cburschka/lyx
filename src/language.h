@@ -16,7 +16,7 @@
 #define LANGUAGE_H
 
 #include <map>
-#include "LString.h"
+#include "support/std_string.h"
 
 class Encoding;
 

@@ -14,7 +14,7 @@
 
 
 #include "Kernel.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 

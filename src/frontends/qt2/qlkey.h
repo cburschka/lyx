@@ -14,7 +14,7 @@
 
 
 #include <qnamespace.h>
-#include "LString.h"
+#include "support/std_string.h"
 
 /**
  * Return true if the key event is a modifier.

@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "formulabase.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "support/LAssert.h"
 #include "formula.h"
 #include "formulamacro.h"

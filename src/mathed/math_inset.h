@@ -13,7 +13,7 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "insets/insetbase.h"
 
 /**

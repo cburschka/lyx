@@ -51,7 +51,7 @@
 
 #include "debug.h"
 #include "math_support.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
 #include "frontends/lyx_gui.h"

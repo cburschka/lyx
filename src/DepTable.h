@@ -13,7 +13,7 @@
 #ifndef DEP_TABLE_H
 #define DEP_TABLE_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <map>
 
 ///

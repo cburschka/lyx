@@ -14,7 +14,7 @@
 #ifndef BUFFERVIEW_FUNCS_H
 #define BUFFERVIEW_FUNCS_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class BufferView;
 class LyXFont;

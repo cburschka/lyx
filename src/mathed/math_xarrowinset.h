@@ -13,7 +13,7 @@
 #define MATH_XARROWINSET_H
 
 #include "math_fracbase.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 /// Wide arrows like \xrightarrow

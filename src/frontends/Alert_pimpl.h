@@ -11,7 +11,7 @@
 
 // GUI-specific implementations
 
-#include "LString.h"
+#include "support/std_string.h"
 
 
 int prompt_pimpl(string const & title, string const & question,

@@ -13,7 +13,7 @@
 #define MATH_BOXINSET_H
 
 #include "math_nestinset.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 class LyXFont;

@@ -15,7 +15,7 @@
 #define GRAPHICSPARAMS_H
 
 #include "GraphicsTypes.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 namespace lyx {

@@ -13,7 +13,7 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class PainterInfo;
 class LyXFont;

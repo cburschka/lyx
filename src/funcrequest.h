@@ -14,7 +14,7 @@
 
 #include "lfuns.h"
 #include "frontends/mouse_state.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class BufferView;
 

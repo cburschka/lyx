@@ -14,7 +14,7 @@
 #define XPAINTER_H
 
 #include "frontends/Painter.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <X11/Xlib.h>
 

@@ -12,7 +12,7 @@
 #ifndef WORD_LANG_TUPLE_H
 #define WORD_LANG_TUPLE_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /**
  * A word and its given language code ("en_US").

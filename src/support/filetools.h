@@ -14,7 +14,7 @@
 
 #include <vector>
 #include <utility>
-#include "LString.h"
+#include "support/std_string.h"
 
 
 namespace lyx {

@@ -13,7 +13,7 @@
 #define HELPERFUNCS_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <utility> // pair
 #include <vector> // pair

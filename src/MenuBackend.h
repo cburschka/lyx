@@ -13,7 +13,7 @@
 #ifndef MENUBACKEND_H
 #define MENUBACKEND_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/shared_ptr.hpp>
 

@@ -17,7 +17,7 @@
 #include "lyxfont.h"
 #include "layout.h"
 #include "Spacing.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class LyXLex;
 class LyXTextClass;

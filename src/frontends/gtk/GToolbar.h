@@ -15,7 +15,7 @@
 #include <gtkmm.h>
 #include "frontends/Toolbar.h"
 #include "ToolbarBackend.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class GToolbar : public Toolbar, public SigC::Object
 {

@@ -13,7 +13,7 @@
 #define MATH_SPLITINSET_H
 
 #include "math_gridinset.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 class MathSplitInset : public MathGridInset {

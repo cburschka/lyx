@@ -13,7 +13,7 @@
 #define GTEXT_H
 
 #include "GViewBase.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 class ControlCommand;
 

@@ -16,7 +16,7 @@
 #ifndef LYX_STY_H
 #define LYX_STY_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 ///
 extern string const lyx_def;

@@ -27,7 +27,7 @@
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

@@ -19,7 +19,7 @@
 #include <vector>
 #include <boost/utility.hpp>
 
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 
 /** An abstract base class for button policies.
     A state machine implementation of the various button policies used by the

@@ -13,7 +13,7 @@
 #ifndef LYXSERVER_H
 #define LYXSERVER_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/signals/trackable.hpp>
 

@@ -11,7 +11,7 @@
 #define LYXTEXTCLASS_H
 
 #include "lyxlayout.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "lyxlayout_ptr_fwd.h"
 
 #include "support/types.h"

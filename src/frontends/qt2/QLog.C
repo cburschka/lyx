@@ -13,7 +13,7 @@
 
 #include "qt_helpers.h"
 #include "ControlLog.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>

@@ -13,7 +13,7 @@
 #define MATH_STREAMSTR_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class WriteStream;
 class NormalStream;

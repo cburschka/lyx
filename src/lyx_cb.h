@@ -12,7 +12,7 @@
 #ifndef LYX_CB_H
 #define LYX_CB_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class Buffer;
 class BufferView;

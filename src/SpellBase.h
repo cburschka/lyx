@@ -13,7 +13,7 @@
 #ifndef SPELL_BASE_H
 #define SPELL_BASE_H
 
-#include "LString.h" // can't forward declare...
+#include "support/std_string.h" // can't forward declare...
 
 class BufferParams;
 class WordLangTuple;

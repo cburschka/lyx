@@ -19,7 +19,7 @@
 
 #include <iosfwd>
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/utility.hpp>
 
 ///

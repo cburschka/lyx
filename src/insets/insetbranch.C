@@ -18,7 +18,7 @@
 #include "gettext.h"
 #include "lyxlex.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using std::auto_ptr;
 using std::ostream;

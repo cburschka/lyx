@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 
 #include "paragraph.h"
 #include "sgml.h"

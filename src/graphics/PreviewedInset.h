@@ -16,7 +16,7 @@
 #ifndef PREVIEWEDINSET_H
 #define PREVIEWEDINSET_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 

@@ -1,5 +1,14 @@
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
+	Replace LString.h with support/std_string.h,
+	Lsstream.h with support/std_sstream.h,
+	support/LIstream.h with support/std_istream.h,
+	support/LOstream.h with support/std_ostream.h.
+
+	Changes resulting throughout the tree.
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
 	* sgml.h: ensure that the header file can be compiled stand-alone.
 	* *.C: strip out redundant #includes. (320 in total.)
 

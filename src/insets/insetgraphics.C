@@ -63,7 +63,7 @@ TODO
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 

@@ -13,7 +13,7 @@
 #define MATH_EXTERN_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class NormalStream;
 class MapleStream;

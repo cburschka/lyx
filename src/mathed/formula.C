@@ -20,7 +20,7 @@
 
 #include "debug.h"
 #include "latexrunparams.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 
 #include "frontends/Painter.h"

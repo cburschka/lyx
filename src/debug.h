@@ -15,7 +15,7 @@
 
 #include <iosfwd>
 
-#include "LString.h"
+#include "support/std_string.h"
 
 /** Ideally this should have been a namespace, but since we try to be
     compilable on older C++ compilators too, we use a struct instead.

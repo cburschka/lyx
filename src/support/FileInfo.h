@@ -18,7 +18,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <boost/utility.hpp>
-#include "LString.h"
+#include "support/std_string.h"
 
 namespace lyx {
 namespace support {

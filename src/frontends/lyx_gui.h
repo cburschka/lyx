@@ -13,7 +13,7 @@
 #define LYX_GUI_H
 
 #include "LColor.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "FuncStatus.h"
 
 #include <vector>

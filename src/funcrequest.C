@@ -15,7 +15,7 @@
 #include "lyxfunc.h" // only for setMessage()
 #include "frontends/LyXView.h"
 #include "debug.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 
 using std::vector;

@@ -17,7 +17,7 @@
 
 #include "kbsequence.h"
 #include "lfuns.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/signals/trackable.hpp>
 

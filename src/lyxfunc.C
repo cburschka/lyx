@@ -33,7 +33,7 @@
 #include "LyXAction.h"
 #include "debug.h"
 #include "gettext.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "encoding.h"
 #include "frontends/LyXView.h"
 #include "frontends/lyx_gui.h"

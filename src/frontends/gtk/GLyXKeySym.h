@@ -12,7 +12,7 @@
 #ifndef GLYX_KEYSYM_H
 #define GLYX_KEYSYM_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "frontends/LyXKeySym.h"
 
 class GLyXKeySym : public LyXKeySym

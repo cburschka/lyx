@@ -15,7 +15,7 @@
 #include "ControlAboutlyx.h"
 #include "gettext.h"
 #include "version.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "support/filetools.h" // FileSearch
 #include "support/path_defines.h"

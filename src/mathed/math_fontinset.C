@@ -14,7 +14,7 @@
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 #include "LaTeXFeatures.h"
-#include "support/LOstream.h"
+#include "support/std_ostream.h"
 
 using std::auto_ptr;
 

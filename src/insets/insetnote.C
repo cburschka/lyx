@@ -21,7 +21,7 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using std::auto_ptr;
 using std::ostream;

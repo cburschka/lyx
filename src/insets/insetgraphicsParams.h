@@ -15,7 +15,7 @@
 
 
 #include "graphics/GraphicsTypes.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "lyxlength.h"
 #include "support/filename.h"
 

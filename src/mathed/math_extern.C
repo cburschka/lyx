@@ -30,7 +30,7 @@
 #include "math_stringinset.h"
 #include "math_symbolinset.h"
 #include "math_parser.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"

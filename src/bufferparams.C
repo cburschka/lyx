@@ -21,7 +21,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "lyxlex.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"

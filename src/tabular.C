@@ -19,7 +19,7 @@
 
 #include "tabular.h"
 #include "LaTeXFeatures.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "buffer.h"
 #include "debug.h"
 #include "lyxlex.h"

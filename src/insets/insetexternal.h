@@ -15,7 +15,7 @@
 #include "inset.h"
 #include "graphics/GraphicsTypes.h"
 #include "support/filename.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>

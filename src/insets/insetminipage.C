@@ -20,7 +20,7 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using std::endl;
 using std::auto_ptr;

@@ -16,7 +16,7 @@
 
 #include "ButtonController.h"
 #include "BCView.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "gettext.h"
 
 class GBC : public GuiBC<Gtk::Button, Gtk::Widget>

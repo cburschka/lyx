@@ -30,7 +30,7 @@
 
 #include <boost/bind.hpp>
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include <fstream>
 #include <iomanip>
 

@@ -12,7 +12,7 @@
 #ifndef USERINFO_H
 #define USERINFO_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 namespace lyx {
 namespace support {

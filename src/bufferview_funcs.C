@@ -26,7 +26,7 @@
 #include "mathed/math_cursor.h"
 
 #include "support/tostr.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "insets/insettext.h"
 

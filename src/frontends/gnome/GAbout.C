@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "support/lstrings.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 #include "gnome_helpers.h"
 #include "gnomeBC.h"

@@ -10,7 +10,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <qwidget.h>
 

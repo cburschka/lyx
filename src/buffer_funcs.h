@@ -12,7 +12,7 @@
 #ifndef BUFFER_FUNCS_H
 #define BUFFER_FUNCS_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 class Buffer;
 class TeXErrors;

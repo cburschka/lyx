@@ -27,7 +27,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

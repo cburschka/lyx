@@ -17,7 +17,7 @@
 #define COLOR_H
 
 
-#include "LString.h"
+#include "support/std_string.h"
 #include "LColor.h"
 
 /** Given col, fills r, g, b in the range 0-255.

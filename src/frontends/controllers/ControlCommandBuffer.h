@@ -14,7 +14,7 @@
 #ifndef CONTROLCOMMANDBUFFER_H
 #define CONTROLCOMMANDBUFFER_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <vector>
 

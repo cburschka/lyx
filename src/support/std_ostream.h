@@ -1,17 +1,17 @@
 // -*- C++ -*-
 /**
- * \file LIstream.h
+ * \file std_ostream.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  */
 
-#ifndef LISTREAM_H
-#define LISTREAM_H
+#ifndef STD_OSTREAM_H
+#define STD_OSTREAM_H
 
-#ifdef HAVE_ISTREAM
-#include <istream>
+#ifdef HAVE_OSTREAM
+#include <ostream>
 #else
 #include <iostream>
 #endif
 
-#endif
+#endif // NOT STD_OSTREAM_H

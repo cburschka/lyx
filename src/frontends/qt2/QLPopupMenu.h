@@ -15,7 +15,7 @@
 
 #include <qpopupmenu.h>
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <map>
 

@@ -12,7 +12,7 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <vector>
 #include <memory>

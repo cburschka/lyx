@@ -12,7 +12,7 @@
 #ifndef FILENAME_H
 #define FILENAME_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 
 namespace lyx {

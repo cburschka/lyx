@@ -12,7 +12,7 @@
 #ifndef DEBUGSTREAM_H
 #define DEBUGSTREAM_H
 
-#include "LOstream.h"
+#include "std_ostream.h"
 
 #ifdef TEST_DEBUGSTREAM
 #include <string>

@@ -10,8 +10,8 @@
 
 #include <config.h>
  
-#include "Lsstream.h"
-#include "LString.h"
+#include "support/std_sstream.h"
+#include "support/std_string.h"
 
 
 string const tostr(bool b)

@@ -12,7 +12,7 @@
 #ifndef TEXT_CACHE_H
 #define TEXT_CACHE_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 #include <iosfwd>
 #include <map>

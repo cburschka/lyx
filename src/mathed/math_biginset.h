@@ -13,7 +13,7 @@
 #define MATH_BIGINSET_H
 
 #include "math_diminset.h"
-#include "LString.h"
+#include "support/std_string.h"
 
 
 /// Inset for \bigl & Co.

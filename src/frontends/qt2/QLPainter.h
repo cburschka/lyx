@@ -14,7 +14,7 @@
 
 
 #include "Painter.h"
-#include "LString.h"
+#include "support/std_string.h"
 #include "LColor.h"
 
 #include <boost/scoped_ptr.hpp>

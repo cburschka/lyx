@@ -17,7 +17,7 @@
 #include "lyxlex.h"
 #include "ParagraphParameters.h"
 #include "support/LAssert.h"
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

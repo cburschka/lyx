@@ -12,7 +12,7 @@
 #ifndef LYXKEYSYM_H
 #define LYXKEYSYM_H
 
-#include "LString.h"
+#include "support/std_string.h"
 #include <boost/shared_ptr.hpp>
 
 /**

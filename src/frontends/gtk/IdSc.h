@@ -12,7 +12,7 @@
 #ifndef ID_SC_H
 #define ID_SC_H
 
-#include "LString.h"
+#include "support/std_string.h"
 
 namespace id_sc
 {

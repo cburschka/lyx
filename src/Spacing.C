@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "Lsstream.h"
+#include "support/std_sstream.h"
 #include "Spacing.h"
 
 using std::ios;
