@@ -7,6 +7,7 @@
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_exfuncinset.h"
+#include "math_exintinset.h"
 #include "math_funcinset.h"
 #include "math_matrixinset.h"
 #include "math_mathmlstream.h"
@@ -114,7 +115,7 @@ typedef bool TestItemFunc(MathInset *);
 typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
 
 // search end of nested sequence
-MathArray::iterator searchNestedEnd(
+MathArray::iterator endNestSearch(
 	MathArray::iterator it,
 	MathArray::iterator last,
 	TestItemFunc testOpen,
@@ -150,7 +151,7 @@ void replaceNested(
 			continue;
 
 		// search end of sequence
-		MathArray::iterator jt = searchNestedEnd(it, ar.end(), testOpen, testClose);
+		MathArray::iterator jt = endNestSearch(it, ar.end(), testOpen, testClose);
 		if (jt == ar.end())
 			continue;
 
@@ -164,19 +165,23 @@ void replaceNested(
 } 
 
 
-bool testParanOpen(MathInset * p)
+//
+// search deliminiters
+//
+
+bool openParanTest(MathInset * p)
 {
 	return extractString(p) == "(";
 }
 
 
-bool testParanClose(MathInset * p)
+bool closeParanTest(MathInset * p)
 {
 	return extractString(p) == ")";
 }
 
 
-MathInset * replaceByDelimInset(const MathArray & ar)
+MathInset * delimReplacement(const MathArray & ar)
 {
 	MathDelimInset * del = new MathDelimInset("(", ")");
 	del->cell(0) = ar;
@@ -187,9 +192,15 @@ MathInset * replaceByDelimInset(const MathArray & ar)
 // replace '('...')' sequences by a real MathDelimInset
 void extractDelims(MathArray & ar) {
 	lyxerr << "\nDelims from: " << ar << "\n";
-	replaceNested(ar, testParanOpen, testParanClose, replaceByDelimInset);
+	replaceNested(ar, openParanTest, closeParanTest, delimReplacement);
 	lyxerr << "\nDelims to: " << ar << "\n";
 }
+
+
+
+//
+// search well-known functions
+//
 
 
 // replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real MathExFuncInset
@@ -241,16 +252,28 @@ void extractFunctions(MathArray & ar)
 } 
 
 
-bool testIntSymbol(MathInset * p)
+//
+// search integrals
+//
+
+bool intSymbolTest(MathInset * p)
 {
 	return p->asSymbolInset() && p->asSymbolInset()->name() == "int";
 }
 
 
-bool testSmallD(MathInset * p)
+bool differentialTest(MathInset * p)
 {
 	string s = extractString(p);
 	return s.size() && s[0] == 'd';
+}
+
+
+MathInset * intReplacement(const MathArray & ar)
+{
+	MathDelimInset * del = new MathDelimInset("(", ")");
+	del->cell(0) = ar;
+	return del;
 }
 
 
@@ -267,19 +290,19 @@ void extractIntegrals(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a integral name?
-		if (!testIntSymbol(it->nucleus()))
+		if (!intSymbolTest(it->nucleus()))
 			continue;
 
 		// search 'd'
 		MathArray::iterator jt =
-			searchNestedEnd(it, ar.end(), testIntSymbol, testSmallD);
+			endNestSearch(it, ar.end(), intSymbolTest, differentialTest);
 
 		// create a proper inset as replacement
-		//MathInset * p = replaceArg(MathArray(it + 1, jt));
+		MathInset * p = intReplacement(MathArray(it + 1, jt));
 
 		// replace the original stuff by the new inset
-		//ar.erase(it + 1, jt + 1);
-		//(*it).reset(p);
+		ar.erase(it + 1, jt + 1);
+		(*it).reset(p);
 	}
 }
 
