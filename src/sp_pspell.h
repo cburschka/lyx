@@ -12,52 +12,47 @@ class BufferParams;
 
 class PSpell : public SpellBase
 {
-  public:
+public:
+	///
+	PSpell();
+	///
+	PSpell(BufferParams const & params, string const & lang);
+	///
+	~PSpell();
+	/// initialize spell checker
+	void initialize(BufferParams const & params, string const & lang);
+	///
+	bool alive() { return alive_; }
+	/// clean up after error
+	void cleanUp();
+	/// check word
+	enum spellStatus check(string const & word);
+	/// close spellchecker
+	void close();
+	///
+	void insert(string const & word);
+	///
+	void accept(string const & word);
+	/// store replacement
+	void store(string const & mis, string const & cor);
+	///
+	char const * nextMiss();
+	///
+	char const * error();
 
-    PSpell();
-
-    PSpell(BufferParams const & params, string const & lang);
-
-    ~PSpell();
-
-    /// initialize spell checker
-    void initialize(BufferParams const & params, string const & lang);
-
-    bool alive() { return alive_; }
-
-    /// clean up after error
-    void cleanUp();
-
-    /// check word
-    enum spellStatus check(string const & word);
-
-    /// close spellchecker
-    void close();
-
-    void insert(string const & word);
-
-    void accept(string const & word);
-
-    /// store replacement
-    void store(string const & mis, string const & cor);
-
-    char const * nextMiss();
-
-    char const * error();
-
-  private:
-
-    PspellManager * sc;
-
-    PspellStringEmulation * els;
-
-    PspellCanHaveError * spell_error_object;
-
-    spellStatus flag;
-
-    const char * error_;
-
-    bool alive_;
+private:
+	///
+	PspellManager * sc;
+	///
+	PspellStringEmulation * els;
+	///
+	PspellCanHaveError * spell_error_object;
+	///
+	spellStatus flag;
+	///
+	const char * error_;
+	///
+	bool alive_;
 };
 
 #endif
