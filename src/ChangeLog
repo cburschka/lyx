@@ -1,3 +1,7 @@
+2003-07-14  Alfredo Braunstein  <abraunst@libero.it>
+
+	* text2.C (init): fix a crash fired on resize
+	
 2003-07-11  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.[Ch]: added new closing signal

@@ -88,10 +88,12 @@ void LyXText::init(BufferView * bview, bool reinit)
 		rowlist_.clear();
 		need_break_row = rows().end();
 		width = height = 0;
-		top_y(0);
 		clearPaint();
 	} else if (!rowlist_.empty())
 		return;
+
+	anchor_row_ = rows().end();
+	anchor_row_offset_ = 0;
 
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
