@@ -1,54 +1,42 @@
 // -*- C++ -*-
 /**
  * \file QPrint.h
- * Copyright 2001 LyX Team
- * see the file COPYING
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author Edwin Leuven, leuven@fee.uva.nl
  */
+
 #ifndef QPRINT_H
 #define QPRINT_H
 
-#include "DialogBase.h"
-#include "boost/utility.hpp"
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-class Dialogs;
-class LyXView;
+#include "Qt2Base.h"
+
+class ControlPrint;
 class QPrintDialog;
 
-class QPrint : public DialogBase {
-public: 
-	QPrint(LyXView *, Dialogs *);
-	~QPrint();
+///
+class QPrint
+	: public Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > 
+{
+public:
+	///
+	friend class QPrintDialog;
+	///
+	QPrint(ControlPrint &);
 
-	/// start print
-	void print();
-	/// close
-	void close();
- 
-private: 
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog.
-	void update(bool = false);
-
-	/// Real GUI implementation.
-	QPrintDialog * dialog_;
-
-	/// the LyXView we belong to
-	LyXView * lv_;
- 
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	
-	/// Hide connection.
-	SigC::Connection h_;
-	/// Update connection.
-	SigC::Connection u_;
+private:
+	/// Apply changes
+	virtual void apply();
+	/// update
+	virtual void update_contents();
+	/// build the dialog
+	virtual void build_dialog();
 };
 
 #endif // QPRINT_H

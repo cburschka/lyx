@@ -22,35 +22,15 @@ class QPrintDialog : public QPrintDialogBase
 { Q_OBJECT
 
 public:
-	QPrintDialog(QPrint * f, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
-	~QPrintDialog();
+	QPrintDialog(QPrint * f);
 	
-	// FIXME: these should return std::string !
-	const char * getFrom();
-	const char * getTo();
-	const char * getPrinter();
-	const char * getFile();
-	const char * getCount();
-	PrinterParams::Target getTarget();
-	PrinterParams::WhichPages getWhichPages();
-	bool getReverse();
-	bool getSort();
-	void setFrom(const char *);
-	void setTo(const char *);
-	void setPrinter(const char *);
-	void setFile(const char *);
-	void setCount(int);
-	void setTarget(PrinterParams::Target);
-	void setWhichPages(PrinterParams::WhichPages);
-	void setReverse(bool);
-	void setSort(bool);
-	  
-
 protected slots:
-	void cancel_adaptor();
-	void browse_file();
-	void print();
-	void set_collate(int);
+	virtual void change_adaptor();
+	virtual void browseClicked();
+	virtual void fileChanged();
+	virtual void copiesChanged(int);
+	virtual void printerChanged();
+	virtual void pagerangeChanged();
 
 private:
 	QPrint * form_;

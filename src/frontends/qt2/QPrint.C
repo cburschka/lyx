@@ -1,131 +1,121 @@
 /**
  * \file QPrint.C
- * Copyright 2001 LyX Team
- * see the file COPYING
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author Edwin Leuven, leuven@fee.uva.nl
  */
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include <qlineedit.h>
+#include <qcheckbox.h>
+#include <qradiobutton.h>
+#include <qspinbox.h>
+#include <qpushbutton.h>
+ 
 #include "QPrintDialog.h"
 #include "QPrint.h"
-#include "Dialogs.h"
+#include "Qt2BC.h"
 #include "gettext.h"
-#include "buffer.h"
-#include "lyxrc.h" 
-#include "QtLyXView.h" 
-
-#include "PrinterParams.h" 
-#include "Liason.h" 
-#include "BufferView.h" 
-#include "support/lstrings.h"
-#include "qmessagebox.h"
-
-using Liason::printBuffer;
-using Liason::getPrinterParams;
-using std::max;
-
-QPrint::QPrint(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
-{
-	d->showPrint.connect(SigC::slot(this, &QPrint::show));
-}
-
-
-QPrint::~QPrint()
-{
-	delete dialog_;
-}
-
-
-// we can safely ignore the parameter because we can always update
-void QPrint::update(bool)
-{
-	if (!lv_->view()->available())
-	       return;
-
-	PrinterParams pp(getPrinterParams(lv_->buffer()));
-
-	dialog_->setTarget(pp.target);
-       	dialog_->setPrinter(pp.printer_name.c_str());
-       	dialog_->setFile(pp.file_name.c_str());
-	dialog_->setWhichPages(pp.which_pages);
-        dialog_->setReverse(pp.reverse_order);
-	dialog_->setSort(pp.unsorted_copies);
-	dialog_->setCount(pp.count_copies);
-	
-       	if (!pp.from_page.empty()) {
-		dialog_->setFrom(pp.from_page.c_str());
-	       	if (pp.to_page)
-			dialog_->setTo(tostr(pp.to_page).c_str());
-		else
-			dialog_->setTo("");
-	} else {
-		dialog_->setFrom("");
-		dialog_->setTo("");
-	}
-}
-
  
-void QPrint::print()
+#include "QtLyXView.h"
+#include "ControlPrint.h"
+
+#include "support/lstrings.h"
+ 
+typedef Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > base_class;
+
+QPrint::QPrint(ControlPrint & c)
+	: base_class(c, _("Print"))
 {
-	if (!lv_->view()->available())
-	       return;
+}
+
+
+void QPrint::build_dialog()
+{
+	dialog_.reset(new QPrintDialog(this));
+
+	bc().setOK(dialog_->printPB); 
+	bc().setCancel(dialog_->closePB);
+}
+
+
+void QPrint::update_contents()
+{
+	PrinterParams & pp = controller().params();
+
+	dialog_->printerED->setText(pp.printer_name.c_str());
+	dialog_->fileED->setText(pp.file_name.c_str());
+ 
+	dialog_->printerRB->setChecked(true);
+	if (pp.target == PrinterParams::FILE)
+		dialog_->fileRB->setChecked(true);
+ 
+	dialog_->reverseCB->setChecked(pp.reverse_order);
+
+	QRadioButton * button;
+	switch (pp.which_pages) {
+		case PrinterParams::ALL: button = dialog_->allRB; break;
+		case PrinterParams::ODD: button = dialog_->oddRB; break;
+		case PrinterParams::EVEN: button = dialog_->evenRB; break;
+	}
+	button->setChecked(true);
+ 
+	// hmmm... maybe a bit weird but maybe not
+	// we might just be remembering the last
+	// time this was printed.
+	if (!pp.from_page.empty()) {
+		dialog_->fromED->setText(pp.from_page.c_str());
+
+		dialog_->toED->setText("");
+		if (pp.to_page) 
+			dialog_->toED->setText(tostr(pp.to_page).c_str());
+	} else {
+		dialog_->fromED->setText("");
+		dialog_->toED->setText("");
+	}
+
+	dialog_->copiesSB->setValue(pp.count_copies);
+}
+
+
+void QPrint::apply()
+{
+	PrinterParams::WhichPages wp;
+
+	if (dialog_->allRB->isChecked())
+		wp = PrinterParams::ALL;
+	else if (dialog_->oddRB->isChecked())
+		wp = PrinterParams::ODD;
+	else
+		wp = PrinterParams::EVEN;
 
 	string from;
 	int to(0);
-
-	if (strlen(dialog_->getFrom())) {
-		from = dialog_->getFrom();
-		if (strlen(dialog_->getTo()))
-			to = strToInt(dialog_->getTo());
-	}
-	
-	int retval = printBuffer(lv_->buffer(), PrinterParams(dialog_->getTarget(),
-		string(dialog_->getPrinter()), string(dialog_->getFile()), 
-		dialog_->getWhichPages(), from, to, dialog_->getReverse(), 
-		dialog_->getSort(), max(strToInt(dialog_->getCount()),1)));
-
-	if (!retval) {
-		// FIXME: should have a utility class for this
-		string message(_("An error occured while printing.\n\n"));
-		message += _("Check the parameters are correct.\n");
-	        QMessageBox msg( _("LyX: Print Error"), message.c_str(), QMessageBox::Warning, 1,0,0);
-		msg.raise();
-		msg.setActiveWindow();
-		msg.show();
-	}
-}
-
-
-void QPrint::show()
-{
-	if (!dialog_)
-		dialog_ = new QPrintDialog(this, 0, _("LyX: Print"));
- 
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(SigC::slot(this, &QPrint::hide));
-		u_ = d_->updateBufferDependent.connect(SigC::slot(this, &QPrint::update));
+	if (!dialog_->fromED->text().isEmpty()) {
+		// we have at least one page requested
+		from = dialog_->fromED->text().latin1();
+		if (!dialog_->toED->text().isEmpty())
+			to = strToInt(dialog_->toED->text().latin1());
 	}
 
-	dialog_->raise();
-	dialog_->setActiveWindow();
+	PrinterParams::Target t = PrinterParams::PRINTER;
+	if (dialog_->fileRB->isChecked())
+		t = PrinterParams::FILE;
+
+	PrinterParams const pp(t,
+		dialog_->printerED->text().latin1(),
+		dialog_->fileED->text().latin1(),
+		wp, from, to,
+		dialog_->reverseCB->isChecked(),
+		!dialog_->collateCB->isChecked(),
+		strToInt(dialog_->copiesSB->text().latin1()));
  
-	update();
-	dialog_->show();
-}
-
-
-void QPrint::close()
-{
-	h_.disconnect();
-	u_.disconnect();
-}
-
- 
-void QPrint::hide()
-{
-	dialog_->hide();
-	close();
+	controller().params() = pp;
 }

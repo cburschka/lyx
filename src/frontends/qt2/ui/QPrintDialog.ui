@@ -13,13 +13,13 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>359</width>
+            <width>331</width>
             <height>342</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Form1</string>
+        <string>Print</string>
     </property>
     <vbox>
         <property stdset="1">
@@ -56,44 +56,60 @@
                     <class>QRadioButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>toPrinter</cstring>
+                        <cstring>printerRB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Printer</string>
+                        <string>P&amp;rinter</string>
                     </property>
                     <property stdset="1">
                         <name>checked</name>
                         <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to the printer</string>
                     </property>
                 </widget>
                 <widget row="1"  column="0" >
                     <class>QRadioButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>toFile</cstring>
+                        <cstring>fileRB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
                         <string>&amp;File</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to a file</string>
                     </property>
                 </widget>
                 <widget row="0"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>printerName</cstring>
+                        <cstring>printerED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to the given printer</string>
                     </property>
                 </widget>
                 <widget row="1"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>fileName</cstring>
+                        <cstring>fileED</cstring>
                     </property>
                     <property stdset="1">
                         <name>enabled</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to a file</string>
                     </property>
                 </widget>
                 <widget row="1"  column="2" >
@@ -104,11 +120,11 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Browse...</string>
+                        <string>&amp;Browse ...</string>
                     </property>
                     <property stdset="1">
                         <name>enabled</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
                     </property>
                 </widget>
             </grid>
@@ -133,58 +149,55 @@
                 </property>
                 <property stdset="1">
                     <name>spacing</name>
-                    <number>3</number>
+                    <number>6</number>
                 </property>
                 <widget row="0"  column="0" >
                     <class>QRadioButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>allPages</cstring>
+                        <cstring>allRB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>All</string>
+                        <string>&amp;All</string>
                     </property>
                     <property stdset="1">
                         <name>checked</name>
                         <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Print all pages</string>
                     </property>
                 </widget>
                 <widget row="1"  column="0" >
                     <class>QRadioButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>oddPages</cstring>
+                        <cstring>oddRB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Odd</string>
+                        <string>&amp;Odd</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Print odd pages only</string>
                     </property>
                 </widget>
                 <widget row="2"  column="0" >
                     <class>QRadioButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>evenPages</cstring>
+                        <cstring>evenRB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Even</string>
+                        <string>&amp;Even</string>
                     </property>
-                </widget>
-                <widget row="3"  column="1" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>fromPageL</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Starting range:</string>
-                    </property>
-                    <property stdset="1">
-                        <name>enabled</name>
-                        <bool>false</bool>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Print even pages only</string>
                     </property>
                 </widget>
                 <widget row="3"  column="2" >
@@ -195,55 +208,98 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Last page:</string>
+                        <string>&amp;Last page:</string>
                     </property>
                     <property stdset="1">
                         <name>enabled</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>toED</cstring>
                     </property>
                 </widget>
                 <widget row="4"  column="2" >
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>toPage</cstring>
+                        <cstring>toED</cstring>
                     </property>
                     <property stdset="1">
                         <name>enabled</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Page number to print to</string>
                     </property>
                 </widget>
                 <widget row="0"  column="2" >
                     <class>QCheckBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>reverse</cstring>
+                        <cstring>reverseCB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Reverse order</string>
+                        <string>Re&amp;verse order</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Print in reverse order</string>
                     </property>
                 </widget>
                 <widget row="4"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>fromPage</cstring>
+                        <cstring>fromED</cstring>
                     </property>
                     <property stdset="1">
                         <name>enabled</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Page number to print from</string>
                     </property>
                 </widget>
                 <widget row="4"  column="0" >
-                    <class>QRadioButton</class>
+                    <class>QLabel</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>customPages</cstring>
+                        <cstring>rangeLA</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Pages:</string>
+                        <string>Ran&amp;ge</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>fromED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Set a range of pages to print</string>
+                    </property>
+                </widget>
+                <widget row="3"  column="1" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>fromPageL</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Starting range:</string>
+                    </property>
+                    <property stdset="1">
+                        <name>enabled</name>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>fromED</cstring>
                     </property>
                 </widget>
             </grid>
@@ -271,7 +327,7 @@
                     <class>QSpinBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>copies</cstring>
+                        <cstring>copiesSB</cstring>
                     </property>
                     <property stdset="1">
                         <name>minValue</name>
@@ -281,20 +337,28 @@
                         <name>value</name>
                         <number>1</number>
                     </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Number of copies</string>
+                    </property>
                 </widget>
                 <widget>
                     <class>QCheckBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>collate</cstring>
+                        <cstring>collateCB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Co&amp;llate</string>
+                        <string>&amp;Collate</string>
                     </property>
                     <property stdset="1">
                         <name>enabled</name>
                         <bool>false</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Collate copies</string>
                     </property>
                 </widget>
                 <spacer>
@@ -371,11 +435,11 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>cancelPB</cstring>
+                        <cstring>closePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Cancel</string>
+                        <string>Close</string>
                     </property>
                     <property stdset="1">
                         <name>default</name>
@@ -388,75 +452,117 @@
 </widget>
 <connections>
     <connection>
-        <sender>toFile</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>browsePB</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>toFile</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>fileName</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>toFile</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>printerName</receiver>
-        <slot>setDisabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>printPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QPrintDialogBase</receiver>
-        <slot>print()</slot>
-    </connection>
-    <connection>
-        <sender>cancelPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QPrintDialogBase</receiver>
-        <slot>cancel_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>copies</sender>
+        <sender>copiesSB</sender>
         <signal>valueChanged(int)</signal>
         <receiver>QPrintDialogBase</receiver>
-        <slot>set_collate(int)</slot>
+        <slot>copiesChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>printerED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>printerChanged()</slot>
+    </connection>
+    <connection>
+        <sender>fileED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>fileChanged()</slot>
     </connection>
     <connection>
         <sender>browsePB</sender>
         <signal>clicked()</signal>
         <receiver>QPrintDialogBase</receiver>
-        <slot>browse_file()</slot>
+        <slot>browseClicked()</slot>
     </connection>
     <connection>
-        <sender>customPages</sender>
+        <sender>allRB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>fromPage</receiver>
-        <slot>setEnabled(bool)</slot>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>customPages</sender>
+        <sender>oddRB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>fromPageL</receiver>
-        <slot>setEnabled(bool)</slot>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>customPages</sender>
+        <sender>evenRB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>toPage</receiver>
-        <slot>setEnabled(bool)</slot>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>customPages</sender>
+        <sender>reverseCB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>toPageL</receiver>
-        <slot>setEnabled(bool)</slot>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
-    <slot access="protected">cancel_adaptor()</slot>
-    <slot access="protected">enable_pagerange(int)</slot>
-    <slot access="protected">browse_file()</slot>
-    <slot access="protected">print()</slot>
-    <slot access="protected">set_collate(int)</slot>
+    <connection>
+        <sender>collateCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>fromED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>pagerangeChanged()</slot>
+    </connection>
+    <connection>
+        <sender>fromED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>toED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>pagerangeChanged()</slot>
+    </connection>
+    <connection>
+        <sender>toED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>fileRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>printerRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QPrintDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <slot access="protected">browseClicked()</slot>
+    <slot access="public">change_adaptor()</slot>
+    <slot access="public">copiesChanged(int)</slot>
+    <slot access="public">fileChanged()</slot>
+    <slot access="protected">pagerangeChanged()</slot>
+    <slot access="public">printerChanged()</slot>
 </connections>
+<tabstops>
+    <tabstop>printerRB</tabstop>
+    <tabstop>printerED</tabstop>
+    <tabstop>fileRB</tabstop>
+    <tabstop>fileED</tabstop>
+    <tabstop>browsePB</tabstop>
+    <tabstop>allRB</tabstop>
+    <tabstop>oddRB</tabstop>
+    <tabstop>evenRB</tabstop>
+    <tabstop>fromED</tabstop>
+    <tabstop>toED</tabstop>
+    <tabstop>reverseCB</tabstop>
+    <tabstop>copiesSB</tabstop>
+    <tabstop>collateCB</tabstop>
+    <tabstop>printPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
 </UI>

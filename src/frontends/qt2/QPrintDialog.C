@@ -22,161 +22,66 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "lyxrc.h" 
-#include "PrinterParams.h"
 
 #include <gettext.h>
-#include <cstring>
 
 
-QPrintDialog::QPrintDialog(QPrint * f, QWidget * parent,  const char * name, bool modal, WFlags fl)
-	: QPrintDialogBase(parent, name, modal, fl), 
+QPrintDialog::QPrintDialog(QPrint * f)
+	: QPrintDialogBase(0, 0, false, 0),
 	form_(f)
 {
-	setCaption(name);
+	connect(printPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
 }
 
- 
-QPrintDialog::~QPrintDialog()
+void QPrintDialog::change_adaptor()
 {
+	form_->changed();
 }
-
-
-const char * QPrintDialog::getFrom() {
-	return fromPage->text();
-}
-
-
-const char * QPrintDialog::getTo() {
-	return toPage->text();
-}
-
-	
-PrinterParams::Target QPrintDialog::getTarget() {
-	if (toPrinter->isChecked())
-		return PrinterParams::PRINTER;
-	else
-		return PrinterParams::FILE;
-}
-
-
-const char * QPrintDialog::getPrinter() {
-	return printerName->text();
-}
-
-
-const char * QPrintDialog::getFile() {
-	return fileName->text();
-}
-
-
-PrinterParams::WhichPages QPrintDialog::getWhichPages() {
-	if (oddPages->isChecked())
-		return PrinterParams::ODD;
-	else if (evenPages->isChecked())
-		return PrinterParams::EVEN;
-	else
-		return PrinterParams::ALL;
-}
-
-
-bool QPrintDialog::getReverse() {
-	return reverse->isChecked();
-}
-
-
-bool QPrintDialog::getSort() {
-	return collate->isChecked();
-}
-
-
-const char * QPrintDialog::getCount() {
-	return copies->text();
-}
-
-
-void QPrintDialog::setTarget(PrinterParams::Target t) {
-	toPrinter->setChecked(t==PrinterParams::PRINTER);
-	toFile->setChecked(t!=PrinterParams::PRINTER);
-}
-
-
-void QPrintDialog::setPrinter(const char * name) {
-	printerName->setText(name);
-}
-
-
-void QPrintDialog::setFile(const char * name) {
-	fileName->setText(name);
-}	 
-
-
-void QPrintDialog::setWhichPages(PrinterParams::WhichPages wp) {
-	switch (wp) {
-		case PrinterParams::ALL:
-			allPages->setChecked(true);
-			break;
-		case PrinterParams::EVEN:
-			evenPages->setChecked(true);
-			break;
-		case PrinterParams::ODD:
-			oddPages->setChecked(true);
-			break;
+ 
+ 
+void QPrintDialog::browseClicked()
+{
+	QString file = QFileDialog::getOpenFileName(QString::null, 
+		_("PostScript files (*.ps)"), this, 0, _("Select a file to print to"));
+	if (!file.isNull()) {
+		fileED->setText(file);
+		form_->changed();
 	}
 }
 
-
-void QPrintDialog::setReverse(bool on) {
-	reverse->setChecked(on);
-}
-
-
-void QPrintDialog::setSort(bool on) {
-	collate->setChecked(on);
-}
-
-
-void QPrintDialog::setCount(int num) {
-	copies->setValue(num);
-	collate->setEnabled(num > 1);
-}
-
-
-void QPrintDialog::setFrom(const char * text) {
-	fromPage->setText(text);
-}
-
-
-void QPrintDialog::setTo(const char * text) {
-	toPage->setText(text);
+ 
+void QPrintDialog::fileChanged()
+{
+	if (!fileED->text().isEmpty())
+		fileRB->setChecked(true);
+	form_->changed();
 }
 
  
-void QPrintDialog::browse_file()
+void QPrintDialog::copiesChanged(int i)
 {
-	QString d( OnlyPath(tostr(fileName->text())).c_str());
-	QString s( QFileDialog::getOpenFileName(d, "PostScript Files (*.ps)", this));
-	if (!s.isNull()) 
-		fileName->setText(s);
+	collateCB->setEnabled(i != 1);
+	form_->changed();
 }
 
  
-void QPrintDialog::print()
+void QPrintDialog::printerChanged()
 {
-	form_->print();
-	form_->close();
-	hide();
+	printerRB->setChecked(true);
+	form_->changed();
 }
 
  
-void QPrintDialog::cancel_adaptor()
+void QPrintDialog::pagerangeChanged()
 {
-	form_->close();
-	hide();
-}
-
+	int from = strToUnsignedInt(fromED->text().latin1());
+	int to = strToUnsignedInt(toED->text().latin1());
  
-void QPrintDialog::set_collate(int copies)
-{
-	collate->setEnabled(copies > 1);
+	if (!toED->text().isEmpty() && from > to)
+		fromED->setText(toED->text());
+ 
+	form_->changed();
 }

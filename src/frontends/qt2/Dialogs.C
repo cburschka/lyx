@@ -26,6 +26,7 @@
 #include "QLogDialog.h"
 #include "QMinipageDialog.h"
 #include "QPreambleDialog.h"
+#include "QPrintDialog.h"
 #include "QRefDialog.h"
 #include "QTabularCreateDialog.h"
 #include "QThesaurusDialog.h"
@@ -77,6 +78,7 @@
 #include "controllers/ControlLog.h"
 #include "controllers/ControlMinipage.h"
 #include "controllers/ControlPreamble.h"
+#include "controllers/ControlPrint.h"
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSplash.h"
 #include "controllers/ControlTabularCreate.h"
@@ -88,7 +90,6 @@
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlFloat.h"
 #include "controllers/ControlLabel.h"
-#include "controllers/ControlPrint.h"
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSearch.h"
 #include "controllers/ControlSpellchecker.h"
@@ -120,6 +121,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUILog<QLog, Qt2BC>(*lv, *this));
 	add(new GUIMinipage<QMinipage, Qt2BC>(*lv, *this));
 	add(new GUIPreamble<QPreamble, Qt2BC>(*lv, *this)); 
+	add(new GUIPrint<QPrint, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this));
