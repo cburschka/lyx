@@ -30,6 +30,8 @@
 	///
 	std::string latexname;
 	///
+	std::string latexparam;
+	///
 	LyXFont font;
 	///
 	LyXFont labelfont;

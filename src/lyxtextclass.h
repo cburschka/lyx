@@ -27,6 +27,7 @@ struct CharStyle {
 	std::string name;
 	std::string latextype;
 	std::string latexname;
+	std::string latexparam;
 	LyXFont font;
 	LyXFont labelfont;
 	std::string preamble;

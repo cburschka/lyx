@@ -525,6 +525,7 @@ enum CharStyleTags {
 	CS_LABELFONT,
 	CS_LATEXTYPE,
 	CS_LATEXNAME,
+	CS_LATEXPARAM,
 	CS_PREAMBLE,
 	CS_END
 };
@@ -537,6 +538,7 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 		{ "font", CS_FONT },
 		{ "labelfont", CS_LABELFONT },
 		{ "latexname", CS_LATEXNAME },
+		{ "latexparam", CS_LATEXPARAM },
 		{ "latextype", CS_LATEXTYPE },
 		{ "preamble", CS_PREAMBLE}
 	};
@@ -545,6 +547,7 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 
 	string latextype;
 	string latexname;
+	string latexparam;
 	LyXFont font(LyXFont::ALL_INHERIT);
 	LyXFont labelfont(LyXFont::ALL_INHERIT);
 	string preamble;
@@ -566,6 +569,10 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 		case CS_LATEXNAME:
 			lexrc.next();
 			latexname = lexrc.getString();
+			break;
+		case CS_LATEXPARAM:
+			lexrc.next();
+			latexparam = subst(lexrc.getString(), "&quot;", "\"");
 			break;
 		case CS_LABELFONT:
 			labelfont.lyxRead(lexrc);
@@ -590,6 +597,7 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 		cs.name = name;
 		cs.latextype = latextype;
 		cs.latexname = latexname;
+		cs.latexparam = latexparam;
 		cs.font = font;
 		cs.labelfont = labelfont;
 		cs.preamble = preamble;

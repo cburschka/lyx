@@ -49,6 +49,7 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 	params_.type = cs->name;
 	params_.latextype = cs->latextype;
 	params_.latexname = cs->latexname;
+	params_.latexparam = cs->latexparam;
 	params_.font = cs->font;
 	params_.labelfont = cs->labelfont;
 	init();
@@ -153,7 +154,10 @@ int outputVerbatim(std::ostream & os, InsetText inset)
 int InsetCharStyle::latex(Buffer const &, ostream & os,
 		     OutputParams const &) const
 {
-	os << "%\n\\" << params_.latexname << "{";
+	os << "%\n\\" << params_.latexname;
+	if (!params_.latexparam.empty())
+		os << params_.latexparam;
+	os << "{";
 	int i = outputVerbatim(os, inset);
 	os << "}%\n";
 		i += 2;
@@ -164,7 +168,10 @@ int InsetCharStyle::latex(Buffer const &, ostream & os,
 int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
 			     OutputParams const &) const
 {
-	os << "<" << params_.latexname << ">";
+	os << "<" << params_.latexname;
+	if (!params_.latexparam.empty())
+		os << " " << params_.latexparam;
+	os << ">";
 	int const i = outputVerbatim(os, inset);
 	os << "</" << params_.latexname << ">";
 	return i;
@@ -174,7 +181,10 @@ int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
 int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
 			    OutputParams const &) const
 {
-	os << "<" << params_.latexname << ">";
+	os << "<" << params_.latexname;
+	if (!params_.latexparam.empty())
+		os << " " << params_.latexparam;
+	os << ">";
 	int const i = outputVerbatim(os, inset);
 	os << "</" << params_.latexname << ">";
 	return i;
