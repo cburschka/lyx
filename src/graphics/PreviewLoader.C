@@ -86,16 +86,6 @@ private:
 };
 
 
-// Given a base-10 number return the number of digits needed to store it.
-// Eg 2 requires 1 digit, 22 requires 2 digits and 999 requires 3 digits.
-// Note that André suggests just returning '12' here...
-    int ndigits(int /*num*/)
-{
-	//return 1 + int(std::log10(double(num)));
-	return 5;
-}
-
-
 /// Store info on a currently executing, forked process.
 struct InProgress {
 	///
@@ -256,18 +246,14 @@ namespace {
 
 struct IncrementedFileName {
 	IncrementedFileName(string const & to_format,
-			    string const & filename_base, int nd)
-		: to_format_(to_format), base_(filename_base),
-		  ndigits_(nd), counter_(1)
+			    string const & filename_base)
+		: to_format_(to_format), base_(filename_base), counter_(1)
 	{}
 
 	StrPair const operator()(string const & snippet)
 	{
 		ostringstream os;
-		os << base_
-		   << setfill('0') << setw(ndigits_) << counter_++
-		   << "." << to_format_;
-
+		os << base_ << counter_++ << "." << to_format_;
 		string const file = os.str().c_str();
 
 		return make_pair(snippet, file);
@@ -276,7 +262,6 @@ struct IncrementedFileName {
 private:
 	string const & to_format_;
 	string const & base_;
-	int const ndigits_;
 	int counter_;
 };
 
@@ -292,9 +277,8 @@ InProgress::InProgress(string const & filename_base,
 	PendingSnippets::const_iterator pend = pending.end();
 	BitmapFile::iterator sit = snippets.begin();
 
-	std::transform(pit, pend, sit,
-		       IncrementedFileName(to_format, filename_base,
-					   ndigits(int(snippets.size()))));
+	std::transform(pit, pend, sit, 
+		       IncrementedFileName(to_format, filename_base));
 }
 
 
@@ -471,6 +455,9 @@ void PreviewLoader::Impl::startLoading()
 	// such processes if it starts correctly.
 	InProgress inprogress(filename_base, pending_, pconverter_->to);
 
+	// clear pending_, so we're ready to start afresh.
+	pending_.clear();
+
 	// Output the LaTeX file.
 	string const latexfile = filename_base + ".tex";
 
@@ -485,13 +472,9 @@ void PreviewLoader::Impl::startLoading()
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << " " << latexfile << " "
-	   << int(font_scaling_factor_) << " "
-	   << ndigits(int(pending_.size()));
+	   << int(font_scaling_factor_);
 
 	string const command = LibScriptSearch(cs.str().c_str());
-
-	// clear pending_, so we're ready to start afresh.
-	pending_.clear();
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	Forkedcall::SignalTypePtr convert_ptr;
