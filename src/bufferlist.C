@@ -78,7 +78,7 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 	text += file + _(" has unsaved changes.\n\nDo you want to save the document?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, _("&Save"), _("&Discard"), _("&Cancel quit"));
+		text, 0, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		// FIXME: WriteAs can be asynch !
