@@ -293,20 +293,20 @@ void LyXText::cursorPrevious()
 
 void LyXText::cursorNext()
 {
-	int top_y = top_y();
+	int topy = top_y();
 
 	if (!cursor.row()->next()) {
 		int y = cursor.y() - cursor.row()->baseline() +
 			cursor.row()->height();
-		if (y > top_y + bv()->workHeight()) {
+		if (y > topy + bv()->workHeight()) {
 			bv()->screen().draw(bv()->text, bv(), bv()->text->top_y() + bv()->workHeight());
 			bv()->updateScrollbar();
 		}
 		return;
 	}
 
-	int y = top_y + bv()->workHeight();
-	if (inset_owner && !top_y) {
+	int y = topy + bv()->workHeight();
+	if (inset_owner && !topy) {
 		y -= (bv()->text->cursor.iy()
 			  - bv()->text->top_y()
 			  + bv()->theLockingInset()->insetInInsetY());
