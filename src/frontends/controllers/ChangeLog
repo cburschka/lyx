@@ -1,3 +1,8 @@
+2002-04-19  Marco Morandini <morandini@aero.polimi.it>
+
+	* ControlGraphics.C: pass the browseFile dialog a string of only those
+	formats that can currently be loaded by LyX.
+
 2002-04-15  Herbert Voss  <voss@perce.de>
 
 	* biblio.[Ch] (parseBibTeX): fix bug while scanning bibtexentries
