@@ -1101,7 +1101,7 @@ argument: 0
 Name: form_preferences_lnf_misc
 Width: 450
 Height: 350
-Number of Objects: 17
+Number of Objects: 16
 
 --------------------
 class: FL_BOX
@@ -1161,26 +1161,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 65 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Exit confirmation|#E
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_exit_confirm
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-	value: 1
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 15 105 30 30
+box: 15 75 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1199,7 +1180,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 145 30 30
+box: 15 130 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER

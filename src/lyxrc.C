@@ -69,7 +69,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
-	{ "\\exit_confirmation", LyXRC::RC_EXIT_CONFIRMATION },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
 	{ "\\input", LyXRC::RC_INPUT },
@@ -225,7 +224,6 @@ void LyXRC::setDefaults() {
 	check_lastfiles = true;
 	make_backup = true;
 	backupdir_path.erase();
-	exit_confirmation = true;
 	display_graphics = "color";
 	// Spellchecker settings:
 #ifdef USE_PSPELL
@@ -345,11 +343,6 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next()) {
 				ui_file = lexrc.getString();
 			}
-			break;
-
-		case RC_EXIT_CONFIRMATION:
-			if (lexrc.next())
-				exit_confirmation = lexrc.getBool();
 			break;
 
 		case RC_AUTORESET_OPTIONS:
@@ -1046,13 +1039,6 @@ void LyXRC::output(ostream & os) const
 		if (autosave != system_lyxrc.autosave) {
 			os << "# The time interval between auto-saves in seconds.\n"
 			   << "\\autosave " << autosave << "\n";
-		}
-	case RC_EXIT_CONFIRMATION:
-		if (exit_confirmation != system_lyxrc.exit_confirmation) {
-			os << "# Ask for confirmation before exit if there are\n"
-			   << "# unsaved changed documents.\n"
-			   << "\\exit_confirmation " << tostr(exit_confirmation)
-			   << "\n";
 		}
 	case RC_DISPLAY_GRAPHICS:
 		if (display_graphics != system_lyxrc.display_graphics) {
@@ -1923,10 +1909,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
 		str = _("Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)");
-		break;
-
-	case RC_EXIT_CONFIRMATION:
-		str = _("Sets whether LyX asks for a second confirmation to exit when you have changed documents. (LyX will still ask to save changed documents.)");
 		break;
 
 	case RC_DISPLAY_GRAPHICS:

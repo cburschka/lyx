@@ -152,11 +152,6 @@ bool BufferList::qwriteAll()
 		}
 	}
 
-	if (!unsaved.empty() && lyxrc.exit_confirmation) {
-		return Alert::askQuestion(_("Some documents were not saved:"),
-					  unsaved, _("Exit anyway?"));
-	}
-
 	return true;
 }
 

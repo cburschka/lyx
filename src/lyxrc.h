@@ -96,7 +96,6 @@ enum LyXRCTags {
 	RC_CHKTEX_COMMAND,
 	RC_CURSOR_FOLLOWS_SCROLLBAR,
 	RC_DIALOGS_ICONIFY_WITH_MAIN,
-	RC_EXIT_CONFIRMATION,
 	RC_MAKE_BACKUP,
 	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
@@ -301,8 +300,6 @@ enum LyXRCTags {
 	string isp_esc_chars;
 	///
 	bool use_kbmap;
-	/// Ask for confirmation of exit when there are unsaved documents?
-	bool exit_confirmation;
 	///
 	string primary_kbmap;
 	///

@@ -1821,7 +1821,6 @@ void FormPreferences::LnFmisc::apply() const
 {
 	lyxrc.auto_region_delete =
 		fl_get_button(dialog_->check_auto_region_delete);
-	lyxrc.exit_confirmation = fl_get_button(dialog_->check_exit_confirm);
 	lyxrc.cursor_follows_scrollbar =
 		fl_get_button(dialog_->check_cursor_follows_scrollbar);
 	lyxrc.dialogs_iconify_with_main =
@@ -1867,7 +1866,6 @@ void FormPreferences::LnFmisc::build()
 
 	// set up the feedback mechanism
 	setPrehandler(dialog_->check_auto_region_delete);
-	setPrehandler(dialog_->check_exit_confirm);
 	setPrehandler(dialog_->counter_autosave);
 	setPrehandler(dialog_->check_cursor_follows_scrollbar);
 	setPrehandler(dialog_->check_dialogs_iconify_with_main);
@@ -1887,8 +1885,6 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 
 	if (ob == dialog_->check_auto_region_delete)
 		str = lyxrc.getDescription(LyXRC::RC_AUTOREGIONDELETE);
-	else if (ob == dialog_->check_exit_confirm)
-		str = lyxrc.getDescription(LyXRC::RC_EXIT_CONFIRMATION);
 	else if (ob == dialog_->check_cursor_follows_scrollbar)
 		str = lyxrc.getDescription(LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR);
 	else if (ob == dialog_->check_dialogs_iconify_with_main)
@@ -1913,7 +1909,6 @@ void FormPreferences::LnFmisc::update()
 {
 	fl_set_button(dialog_->check_auto_region_delete,
 		      lyxrc.auto_region_delete);
-	fl_set_button(dialog_->check_exit_confirm, lyxrc.exit_confirmation);
 	fl_set_button(dialog_->check_cursor_follows_scrollbar,
 		      lyxrc.cursor_follows_scrollbar);
 	fl_set_button(dialog_->check_dialogs_iconify_with_main,

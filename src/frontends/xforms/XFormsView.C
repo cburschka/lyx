@@ -32,6 +32,7 @@
 #include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyxfunc.h"
+#include "bufferview_funcs.h"
 #include "BufferView.h"
 
 #include <boost/bind.hpp>
