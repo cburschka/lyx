@@ -37,6 +37,11 @@ Language const * inherit_language = &inherit_lang;
 
 void Languages::setDefaults()
 {
+	// We need to set the encoding of latex_lang
+	latex_lang = Language("latex", "latex", "Latex", false,
+			      encodings.getEncoding("iso8859-1"),
+			      "latex", "");
+
 	languagelist["english"] = Language("english", "english", N_("English"),
 					   false,
 					   encodings.getEncoding("iso8859-1"),
@@ -46,6 +51,11 @@ void Languages::setDefaults()
 
 void Languages::read(string const & filename)
 {
+	// We need to set the encoding of latex_lang
+	latex_lang = Language("latex", "latex", "Latex", false,
+			      encodings.getEncoding("iso8859-1"),
+			      "latex", "");
+
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
 	while (lex.isOK()) {
