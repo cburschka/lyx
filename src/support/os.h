@@ -18,17 +18,20 @@ public:
 	static void init(int argc, char * argv[]);
 
 	//
-	static string binpath() {return binpath_;}
-
+	static string const & binpath() {return binpath_;}
 	//
-	static string binname() {return binname_;}
+	static string const & binname() {return binname_;}
+	//
+	static string const & homepath() {return homepath_;}
+	//
+	static string const & nulldev() {return nulldev_;}
 
 	// system_tempdir actually doesn't belong here.
 	// I put it here only to avoid a global variable.
 	static void setTmpDir(string p) {tmpdir_ = p;}
 
 	//
-	static string getTmpDir() {return tmpdir_;}
+	static string const & getTmpDir() {return tmpdir_;}
 
 	//
 	static string current_root();
@@ -59,6 +62,8 @@ private:
 	static string binpath_;
 	static string binname_;
 	static string tmpdir_;
+	static string homepath_;
+	static string nulldev_;
 	static os::shell_type _shell;
 	// Used only on OS/2 to determine file system encoding.
 	static unsigned long cp_;

@@ -26,6 +26,7 @@ using std::sort;
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
+#include "support/os.h"
 #include "gettext.h"
 #include "frontends/Dialogs.h"
 #include "forms_gettext.h"
@@ -535,7 +536,7 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long arg)
 		break;
 
 	case 11: // home
-		current_dlg_->SetDirectory(GetEnvPath("HOME"));
+		current_dlg_->SetDirectory(os::homepath());
 		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;

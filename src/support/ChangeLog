@@ -1,3 +1,14 @@
+ 2004-12-14  Angus Leeming  <leeming@lyx.org>
+ 
+	* os.h, os_os2.C, os_unix.C, os_win32.C:
+	(binpath, binname, getTmpDir): return a const reference rather than
+	a copy of the data.
+	(homepath, nulldev): new functions returning the name of "HOME" and
+	the null device, respectively.
+
+	* filetools.C: (ExpandPath, MakeDisplayPath): use os::homepath(), not
+	GetEnvPath("HOME").
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* os.h, os_{os2,unix,win32}.C (init): change interface to no longer

@@ -10,13 +10,26 @@
 
 #include <windows.h>
 #include <io.h>
-#include <sys/cygwin.h>
+#include <fcntl.h>
 
+#ifdef __CYGWIN__
+#include <sys/cygwin.h>
+#include <cstdlib>
+#endif
+ 
 
 string os::binpath_ = string();
 string os::binname_ = string();
-string os::tmpdir_ = string();
+string os::tmpdir_;
+string os::homepath_;
+string os::nulldev_;
+
+#ifdef __CYGWIN__
 os::shell_type os::_shell = os::UNIX;
+#else
+os::shell_type os::_shell = os::CMD_EXE;
+#endif
+
 unsigned long os::cp_ = 0;
 
 using std::endl;
@@ -43,12 +56,25 @@ void os::init(int /* argc */, char * argv[]) {
 	if (suffixIs(tmp, "/.libs/"))
 		tmp.erase(tmp.length()-6, string::npos);
 	binpath_ = tmp;
+
+#ifdef __CYGWIN__
+	tmpdir_ = "/tmp";
+	homepath_ = GetEnvPath("HOME");
+	nulldev_ = "/dev/null";
+#else
+	// Use own tempdir
+	tmp.erase(tmp.length()-4,4);
+	tmpdir_ = tmp + "tmp";
+
+	homepath_ = GetEnvPath("HOMEDRIVE") + GetEnvPath("HOMEPATH");
+	nulldev_ = "nul";
+#endif
 }
 
 void os::warn(string mesg) {
 	MessageBox(0, mesg.c_str(), "LyX error",
 	MB_OK|MB_ICONSTOP|MB_SYSTEMMODAL);
-	}
+}
 
 string os::current_root() {
 	return string("/");

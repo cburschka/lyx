@@ -9,7 +9,9 @@
 
 string os::binpath_ = string();
 string os::binname_ = string();
-string os::tmpdir_ = string();
+string os::tmpdir_;
+string os::homepath_;
+string os::nulldev_;
 os::shell_type os::_shell = os::UNIX;
 unsigned long os::cp_ = 0;
 
@@ -37,6 +39,10 @@ void os::init(int /*argc*/, char * argv[]) /* :cp_(0), _shell(os::UNIX) */
 	if (suffixIs(tmp, "/.libs/"))
 		tmp.erase(tmp.length() - 6, string::npos);
 	binpath_ = tmp;
+
+	tmpdir_ = "/tmp";
+	homepath_ = GetEnvPath("HOME");
+	nulldev_ = "/dev/null";
 }
 
 void os::warn(string /*mesg*/) {

@@ -14,7 +14,9 @@
 
 string os::binpath_ = string();
 string os::binname_ = string();
-string os::tmpdir_ = string();
+string os::tmpdir_;
+string os::homepath_;
+string os::nulldev_;
 os::shell_type os::_shell = os::UNIX;
 unsigned long os::cp_ = 0;
 
@@ -63,6 +65,10 @@ void os::init(int argc, char * argv[])
 	// CPList[1] == system default codepage, the rest are auxilary.
 	// Once cp_ is correctly set, you can call other routines.
 	cp_ = CPList[1];
+
+	tmpdir_ = "/tmp";
+	homepath_ = GetEnvPath("HOME");
+	nulldev_ = "null";
 }
 
 void os::warn(string /*mesg*/) {

@@ -434,8 +434,8 @@ void LyX::init(bool gui)
 
 		// default behaviour
 		if (user_lyxdir.empty())
-			user_lyxdir = AddPath(GetEnvPath("HOME"),
-							string(".") + PACKAGE);
+			user_lyxdir = AddPath(os::homepath(),
+					      string(".") + PACKAGE);
 			explicit_userdir = false;
 	}
 
@@ -643,7 +643,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 			 _("Should I try to set it up for you (recommended)?"))) {
 		lyxerr << _("Running without personal LyX directory.") << endl;
 		// No, let's use $HOME instead.
-		user_lyxdir = GetEnvPath("HOME");
+		user_lyxdir = os::homepath();
 		return;
 	}
 
@@ -660,7 +660,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	if (!createDirectory(user_lyxdir, 0755)) {
 		// Failed, let's use $HOME instead.
-		user_lyxdir = GetEnvPath("HOME");
+		user_lyxdir = os::homepath();
 #if USE_BOOST_FORMAT
 		lyxerr << boost::format(_("Failed. Will use %1$s instead."))
 			% user_lyxdir
