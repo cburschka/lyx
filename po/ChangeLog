@@ -1,3 +1,13 @@
+2000-10-06  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in: Over zealous in yesterdays work.
+	Cleaned up to be gettext.m4 friendly.  Should work fine now.
+
+2000-10-05  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in: First attempt at generating POTFILES.in
+	and ../src/ext_l10n.h via a Makefile
+
 2000-07-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* no.po: update a bit for new ui
