@@ -8,9 +8,6 @@
 
 import sys
 import os
-import os.path
-
-
 
 if sys.argv[1] != "-":
 	os.close(0)

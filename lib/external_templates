@@ -24,15 +24,18 @@ Template RasterImage
 	Format LaTeX
 		Product "\\includegraphics{$$Basename.eps}"
 		UpdateCommand "convert $$Parameters $$FName $$Basename.eps"
+		UpdateResult "$$Basename.eps"
 		Requirement "graphics"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
 		UpdateCommand "python $$Sysdir/scripts/pic2ascii.py $$FName $$Parameters"
+		UpdateResult "$$Basename.asc"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
 		UpdateCommand "python $$Sysdir/scripts/pic2png_eps.py $$FName $$Parameters"
+		UpdateResult "$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
 		Product "[Bitmap: $$FName]"
@@ -66,15 +69,18 @@ Template XFig
 	Format LaTeX
 		Product "\\begin{picture}(0,0)\\includegraphics{$$Basename.eps}\\end{picture}\\input{$$Basename.pstex_t}"
 		UpdateCommand "python $$Sysdir/scripts/fig2pstex.py $$FName $$Parameters"
+		UpdateResult "$$Basename.eps"
 		Requirement "graphics"	
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
 		UpdateCommand "python $$Sysdir/scripts/pic2ascii.py $$FName $$Parameters"
+		UpdateResult "$$Basename.asc"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
 		UpdateCommand "python $$Sysdir/scripts/pic2png_eps.py $$FName $$Parameters"
+		UpdateResult "$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
 		Product "[XFig: $$FName]"
@@ -114,6 +120,7 @@ Template ChessDiagram
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
 		UpdateCommand "python $$Sysdir/scripts/fen2ascii.py $$FName $$Basename.asc"
+		UpdateResult "$$Basename.asc"
 	FormatEnd
 	Format DocBook
 		Product "[Chess: $$Basename]"

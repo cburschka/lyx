@@ -4,7 +4,6 @@
 
 import sys
 import os
-import os.path
 import string
 
 pid = os.fork()
