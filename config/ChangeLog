@@ -1,6 +1,7 @@
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxinclude.m4 (lyx_warning): add entry for gcc 3.1
+	(lyx_warning): disable exceptions for gcc 3.1 too
 
 	* kde.m4: remove file
 
