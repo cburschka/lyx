@@ -515,6 +515,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			case Inset::WRAP_CODE:
 				disable = ev.argument != "wrap";
 				break;
+			case Inset::NOTE_CODE:
+				disable = ev.argument != "note";
+				break;
 			default:
 				break;
 		}

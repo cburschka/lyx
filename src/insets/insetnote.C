@@ -102,6 +102,13 @@ void InsetNote::setButtonLabel()
 }
 
 
+bool InsetNote::showInsetDialog(BufferView * bv) const
+{
+	InsetNoteMailer("note", const_cast<InsetNote &>(*this)).showDialog(bv);
+	return true;
+}
+
+
 dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();

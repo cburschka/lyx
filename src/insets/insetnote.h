@@ -53,6 +53,8 @@ public:
 	void setButtonLabel();
 	///
 	dispatch_result InsetNote::localDispatch(FuncRequest const &);
+	/// show the note dialog
+	bool showInsetDialog(BufferView * bv) const;
 	///
 	int latex(Buffer const *, std::ostream &,
 			LatexRunParams const &) const;
