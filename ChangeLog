@@ -1,3 +1,13 @@
+2001-01-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/paragraph.C (SimpleTeXOnePar) Put \protect before paragraph
+	alignment commands (when needed).
+
+	* src/text.C (InsertChar): Add ':' to number separator chars.
+	Use contains instead of strchr.
+
+	* src/mathed/math_draw.C (Metrics): Use the correct GetString.
+
 2001-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* release 1.1.6. tagged as lyx-1_1_6 in CVS (in branch

@@ -344,6 +344,14 @@ bool contains(string const & a, string const & b)
 }
 
 
+bool contains(string const & a, char b)
+{
+	if (a.empty())
+		return false;
+	return a.find(b) != string::npos;
+}
+
+
 bool contains(char const * a, char const * b)
 {
 	Assert(a && b);

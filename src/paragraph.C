@@ -2563,6 +2563,8 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			case LYX_ALIGN_SPECIAL:
 				break;
 			case LYX_ALIGN_LEFT:
+				if (moving_arg)
+					os << "\\protect";
 				if (getParLanguage(bparams)->babel() != "hebrew") {
 					os << "\\raggedright ";
 					column+= 13;
@@ -2572,6 +2574,8 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 				}
 				break;
 			case LYX_ALIGN_RIGHT:
+				if (moving_arg)
+					os << "\\protect";
 				if (getParLanguage(bparams)->babel() != "hebrew") {
 					os << "\\raggedleft ";
 					column+= 12;
@@ -2581,6 +2585,8 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 				}
 				break;
 			case LYX_ALIGN_CENTER:
+				if (moving_arg)
+					os << "\\protect";
 				os << "\\centering ";
 				column+= 11;
 				break;
