@@ -1,3 +1,14 @@
+2002-11-08  John Levon  <levon@movementarian.org>
+
+	* iterators.h:
+	* iterators.C:
+	* buffer.h:
+	* buffer.C:
+	* paragraph.h:
+	* paragraph.C:
+	* toc.h:
+	* toc.C: ParConstIterator, and use it (from Lars)
+ 
 2002-11-07  Ben Stanley  <bds02@uow.edu.au>
 
 	* lyxtextclass.[Ch]: revise and add doxygen comments

@@ -35,6 +35,7 @@ class TeXErrors;
 class LaTeXFeatures;
 class Language;
 class ParIterator;
+class ParConstIterator;
 
 
 ///
@@ -402,7 +403,11 @@ public:
 	///
 	ParIterator par_iterator_begin();
 	///
+	ParConstIterator par_iterator_begin() const;
+	///
 	ParIterator par_iterator_end();
+	///
+	ParConstIterator par_iterator_end() const;
 
 	///
 	Inset * getInsetFromID(int id_arg) const;

@@ -1727,7 +1727,7 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string const Paragraph::asString(Buffer const * buffer, bool label)
+string const Paragraph::asString(Buffer const * buffer, bool label) const
 {
 	BufferParams const & bparams = buffer->params;
 	string s;
@@ -1755,7 +1755,7 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 
 
 string const Paragraph::asString(Buffer const * buffer,
-				 pos_type beg, pos_type end, bool label)
+				 pos_type beg, pos_type end, bool label) const
 {
 	ostringstream ost;
 

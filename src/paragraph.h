@@ -77,10 +77,10 @@ public:
 	bool isMultiLingual(BufferParams const &);
 
 	///
-	string const asString(Buffer const *, bool label);
+	string const asString(Buffer const *, bool label) const;
 	///
 	string const asString(Buffer const *, lyx::pos_type beg, lyx::pos_type end,
-			      bool label);
+			      bool label) const;
 
 	///
 	void write(Buffer const *, std::ostream &, BufferParams const &,

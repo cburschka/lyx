@@ -74,4 +74,46 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2) {
 	return !(iter1 == iter2);
 }
 
+
+class ParConstIterator {
+public:
+	///
+	typedef std::stack<ParPosition> PosHolder;
+	///
+	ParConstIterator() {}
+	///
+	ParConstIterator(Paragraph * par) {
+		positions.push(ParPosition(par));
+	}
+	///
+	ParConstIterator & operator++();
+	///
+	Paragraph const * operator*() {
+		return positions.top().par;
+	}
+	///
+	PosHolder::size_type size() const
+		{ return positions.size(); }
+	///
+	friend
+	bool operator==(ParConstIterator const & iter1,
+			ParConstIterator const & iter2);
+private:
+	///
+	PosHolder positions;
+};
+
+
+///
+inline
+bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2) {
+	return iter1.positions == iter2.positions;
+}
+
+///
+inline
+bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2) {
+	return !(iter1 == iter2);
+}
+
 #endif

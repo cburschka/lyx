@@ -21,7 +21,7 @@
 #endif
 
 #include <config.h>
- 
+
 #include "support/LOstream.h"
 #include "LString.h"
 
@@ -34,12 +34,12 @@ class Paragraph;
 
 /** Nice functions and objects to handle TOCs
  */
-namespace toc 
+namespace toc
 {
 
 ///
 struct TocItem {
-	TocItem(Paragraph * p, int d, string const & s)
+	TocItem(Paragraph const * p, int d, string const & s)
 		: par(p), depth(d), str(s) {}
 	///
 	string const asString() const;
@@ -48,7 +48,7 @@ struct TocItem {
 	/// the action corresponding to the goTo above
 	int action() const;
 	///
-	Paragraph * par;
+	Paragraph const * par;
 	///
 	int depth;
 	///
@@ -68,7 +68,7 @@ std::vector<string> const getTypes(Buffer const *);
 
 ///
 void asciiTocList(string const &, Buffer const *, std::ostream &);
-	
+
 /** Given the cmdName of the TOC param, returns the type used
     by ControlToc::getContents() */
 string const getType(string const & cmdName);

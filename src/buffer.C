@@ -3343,6 +3343,18 @@ ParIterator Buffer::par_iterator_end()
 	return ParIterator();
 }
 
+ParConstIterator Buffer::par_iterator_begin() const
+{
+	return ParConstIterator(&*(paragraphs.begin()));
+}
+
+
+ParConstIterator Buffer::par_iterator_end() const
+{
+	return ParConstIterator();
+}
+
+
 
 void Buffer::addUser(BufferView * u)
 {

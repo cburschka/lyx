@@ -76,10 +76,11 @@ TocList const getTocList(Buffer const * buf)
 
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 
-	ParIterator pit = buf->par_iterator_begin();
-	ParIterator end = buf->par_iterator_end();
+	ParConstIterator pit = buf->par_iterator_begin();
+	ParConstIterator end = buf->par_iterator_end();
 	for (; pit != end; ++pit) {
-		Paragraph * par = *pit;
+ 
+		Paragraph const * par = *pit;
  
 #ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
