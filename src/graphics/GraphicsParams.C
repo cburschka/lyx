@@ -63,10 +63,10 @@ BoundingBox::BoundingBox(string const & bb)
 
 	// inBP returns the length in Postscript points.
 	// Note further that there are 72 Postscript pixels per inch.
-	int const xl_tmp = LyXLength(a).inBP();
-	int const yb_tmp = LyXLength(b).inBP();
-	int const xr_tmp = LyXLength(c).inBP();
-	int const yt_tmp = LyXLength(d).inBP();
+	int const xl_tmp = abs(LyXLength(a).inBP());
+	int const yb_tmp = abs(LyXLength(b).inBP());
+	int const xr_tmp = abs(LyXLength(c).inBP());
+	int const yt_tmp = abs(LyXLength(d).inBP());
 
 	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
 		return;
