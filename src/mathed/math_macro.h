@@ -47,7 +47,7 @@ class MathMacro: public MathParInset
 	///
     void Metrics();
 	///
-    MathedInset *Clone();
+    MathMacro * Clone();
 	///
     void Write(FILE *);
 	///
@@ -111,7 +111,7 @@ class MathMacroArgument: public MathParInset
     ///
 	~MathMacroArgument() { lyxerr << "help, destroyme!" << endl; }
     ///
-    MathedInset *Clone() { return this; }
+    MathMacroArgument * Clone() { return this; }
 	///
     void Metrics();
 	///

@@ -126,7 +126,7 @@ bool InsetLatex::Deletable() const
 }
 
 
-Inset * InsetLatex::Clone()
+InsetLatex * InsetLatex::Clone() const
 {
 	InsetLatex * result = new InsetLatex(contents);
 	return result;

@@ -55,7 +55,7 @@ public:
 	///
 	bool Deletable() const;
 	///
-	Inset * Clone();
+	InsetLatex * Clone() const;
 	///
 	Inset::Code LyxCode() const;
 private:

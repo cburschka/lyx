@@ -177,7 +177,7 @@ void InsetFormulaMacro::Draw(LyXFont font, LyXScreen &scr,
 void InsetFormulaMacro::Edit(int x, int y)
 {
     opened = true;
-    par = (MathParInset*)tmacro->Clone();
+    par = static_cast<MathParInset*>(tmacro->Clone());
     InsetFormula::Edit(x, y);
 }
 
@@ -185,7 +185,7 @@ void InsetFormulaMacro::Edit(int x, int y)
 void InsetFormulaMacro::InsetUnlock()
 {
     opened = false;
-    LyxArrayBase *tarray = tmacro->GetData();
+    LyxArrayBase * tarray = tmacro->GetData();
     MathedIter it(tarray);
     it.Clear();
     tmacro->SetData(par->GetData());
@@ -198,7 +198,7 @@ bool InsetFormulaMacro::LocalDispatch(int action, char const *arg)
 {
     if (action == LFUN_MATH_MACROARG) {
 	int i = atoi(arg) - 1;
-	if (i>= 0 && i<tmacro->getNoArgs()) {
+	if (i >= 0 && i < tmacro->getNoArgs()) {
 	    mathcursor->Insert(tmacro->getMacroPar(i), LM_TC_INSET);
 	    InsetFormula::UpdateLocal();
 	}

@@ -35,9 +35,9 @@ MathRootInset::~MathRootInset()
 }
 
 
-MathedInset *MathRootInset::Clone()
+MathRootInset * MathRootInset::Clone()
 {
-   MathRootInset* p = new MathRootInset(GetStyle());
+   MathRootInset * p = new MathRootInset(GetStyle());
    MathedIter it(array), itr(uroot->GetData());
    p->SetData(it.Copy());
    p->setArgumentIdx(0);

@@ -101,10 +101,13 @@ MathMacro::~MathMacro()
 }
 
 
-MathedInset *MathMacro::Clone()
+MathMacro * MathMacro::Clone()
 {
+#if 0
     MathMacro *m = new MathMacro(this);
     return m;
+#endif
+    return new MathMacro(this);
 }
 
 

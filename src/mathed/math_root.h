@@ -36,7 +36,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     ~MathRootInset();
     ///
-    MathedInset * Clone();
+    MathRootInset * Clone();
     ///
     void Draw(int x, int baseline);
     ///

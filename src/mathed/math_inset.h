@@ -38,17 +38,17 @@
 class MathFuncInset: public MathedInset  {
 public:
 	///
-   MathFuncInset(char const *nm, short ot= LM_OT_FUNC, short st= LM_ST_TEXT);
+   MathFuncInset(char const * nm, short ot= LM_OT_FUNC, short st= LM_ST_TEXT);
 	///
    ~MathFuncInset();
 	///
-   MathedInset *Clone();
+   MathFuncInset * Clone();
 	///
    void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    void Metrics();
 	///
@@ -59,7 +59,7 @@ protected:
 	///
    bool lims;
 	///
-   char *fname;
+   char * fname;
 };
 
 
@@ -73,13 +73,13 @@ class MathAccentInset: public MathedInset {
 	///
    ~MathAccentInset();
 	///
-   MathedInset *Clone();
+   MathAccentInset * Clone();
 	///
    void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    void Metrics();
 	///
@@ -93,7 +93,7 @@ class MathAccentInset: public MathedInset {
 	///
    int code;
 	///
-   MathedInset *inset;
+   MathedInset * inset;
 	///
    int dh, dy;
 };
@@ -103,15 +103,15 @@ class MathAccentInset: public MathedInset {
 class MathDotsInset: public MathedInset {
  public:
 	///
-   MathDotsInset(char const*, int, short st= LM_ST_TEXT);
+   MathDotsInset(char const *, int, short st= LM_ST_TEXT);
 	///
-   ~MathDotsInset() { };
+   ~MathDotsInset() {}
 	///
-   MathedInset *Clone();
+   MathDotsInset * Clone();
 	///
    void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
    void Write(string &file);
 	///
@@ -126,17 +126,17 @@ class MathDotsInset: public MathedInset {
 class MathSpaceInset: public MathedInset  {
  public:
 	///
-   MathSpaceInset(int sp, short ot= LM_OT_SPACE, short st= LM_ST_TEXT);
+   MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
 	///
-   ~MathSpaceInset() { };
+   ~MathSpaceInset() {}
 	///
-   MathedInset *Clone();
+   MathSpaceInset * Clone();
 	///
   void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    inline void Metrics();
 	///
@@ -153,17 +153,17 @@ class MathSpaceInset: public MathedInset  {
 class MathBigopInset: public MathedInset {
  public:
 	///
-   MathBigopInset(char const*, int, short st= LM_ST_TEXT);
+   MathBigopInset(char const *, int, short st = LM_ST_TEXT);
 	///
-   ~MathBigopInset() { };
+   ~MathBigopInset() {}
 	///
-   MathedInset *Clone();
+   MathBigopInset * Clone();
 	///
    void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    void Metrics();
 	///
@@ -186,9 +186,9 @@ class MathSqrtInset: public MathParInset {
     ///
     MathSqrtInset(short st= LM_ST_TEXT);
     ///
-    ~MathSqrtInset() { };
+    ~MathSqrtInset() {}
     ///
-    MathedInset *Clone();
+    MathSqrtInset * Clone();
     ///
     void Draw(int x, int baseline);
     ///
@@ -214,24 +214,24 @@ class MathFracInset: public MathParInset {
 	///
     ~MathFracInset();
 	///
-    MathedInset *Clone();
+    MathFracInset * Clone();
 	///
     void Draw(int x, int baseline);
 	///
-    void Write(FILE *file);
+    void Write(FILE * file);
 	///
-    void Write(string &file);
+    void Write(string & file);
 	///
     void Metrics();
  
     /** This does the same that SetData(LyxArrayBase*) but for both
          numerator and denominator at once.
      */
-    void SetData(LyxArrayBase*, LyxArrayBase*);
+    void SetData(LyxArrayBase *, LyxArrayBase *);
 	///
-    void SetData(LyxArrayBase*);
+    void SetData(LyxArrayBase *);
 	///
-    void GetXY(int& x, int& y) const;
+    void GetXY(int & x, int & y) const;
 	///
     void SetFocus(int, int);
     ///
@@ -241,7 +241,7 @@ class MathFracInset: public MathParInset {
     ///
     bool setArgumentIdx(int i); // was bool Up/down(void);
     ///
-    int  getArgumentIdx() { return (int)idx; }
+    int  getArgumentIdx() { return int(idx); }
     ///
     int  getMaxArgumentIdx() { return 1; }
 	///
@@ -250,7 +250,7 @@ class MathFracInset: public MathParInset {
 	///
     short idx;
 	///
-    MathParInset *den;
+    MathParInset * den;
 	///
     int w0, w1, des0, dh;
 };
@@ -262,15 +262,15 @@ class MathDelimInset: public MathParInset {
 	///
    MathDelimInset(int, int, short st= LM_ST_TEXT);
 	///
-   ~MathDelimInset() { };
+   ~MathDelimInset() {}
 	///
-   MathedInset *Clone();
+   MathDelimInset * Clone();
 	///
    void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    void Metrics();
  protected:
@@ -287,15 +287,15 @@ class MathDecorationInset: public MathParInset {
 	///
    MathDecorationInset(int, short st= LM_ST_TEXT);
 	///
-   ~MathDecorationInset() { };
+   ~MathDecorationInset() {}
 	///
-   MathedInset *Clone();
+   MathDecorationInset * Clone();
 	///
    void Draw(int, int);
 	///
-   void Write(FILE *file);
+   void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    void Metrics();
 	///
@@ -322,17 +322,17 @@ MathFuncInset::~MathFuncInset()
 inline
 bool MathFuncInset::GetLimits() const 
 {  
-   return (bool)(lims && (GetStyle() == LM_ST_DISPLAY)); 
+   return bool(lims && (GetStyle() == LM_ST_DISPLAY)); 
 } 
 
 inline
-void MathFuncInset::Write(FILE *file)
+void MathFuncInset::Write(FILE * file)
 {
    fprintf(file, "\\%s ", name);
 }
 
 inline
-void MathFuncInset::Write(string &file)
+void MathFuncInset::Write(string & file)
 {
    file += '\\';
    file += name;
@@ -342,7 +342,7 @@ void MathFuncInset::Write(string &file)
 inline
 void MathSpaceInset::Metrics()
 {
-   width = (space) ? space*2: 2;
+   width = (space) ? space * 2 : 2;
    if (space>3) width *= 2;
    if (space == 5) width *= 2;
    width += 4;
@@ -360,26 +360,24 @@ inline
 bool MathBigopInset::GetLimits() const 
 {  
     // Default case
-    if (lims<0) {
-	return (bool)(sym!= LM_int && sym!= LM_oint && (GetStyle() == LM_ST_DISPLAY));
+    if (lims < 0) {
+	return sym != LM_int && sym != LM_oint && GetStyle() == LM_ST_DISPLAY;
     } 
     
     // Custom 
-    return (bool)(lims>0);
+    return lims > 0;
 } 
 
 inline
 void MathBigopInset::SetLimits(bool ls) 
 {  
-    lims = (ls) ? 1: 0; 
+    lims = ls ? 1 : 0; 
 } 
 
 inline
 bool MathDecorationInset::GetLimits() const
 { 
-   return (bool)(deco == LM_underbrace||deco == LM_overbrace);
+   return deco == LM_underbrace || deco == LM_overbrace;
 }    
 
-
 #endif
-

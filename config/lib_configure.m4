@@ -174,6 +174,9 @@ dnl
 # Search LaTeX2e
 SEARCH_PROG([for a LaTeX2e program],LATEX,latex latex2e,CHECKLATEX2E,dnl
   [lyx_check_config=no])
+if test x$lyx_check_config != x ; then
+SEARCH_PROG([for the pdflatex program],PDFLATEX,pdflatex,CHECKLATEX2E)
+fi
 
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
