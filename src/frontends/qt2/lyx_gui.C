@@ -40,6 +40,7 @@
 #include "QLImage.h"
 #include "qfont_loader.h"
 #include "io_callback.h"
+#include "socket_callback.h"
 #include "lcolorcache.h"
 
 #include <qapplication.h>
@@ -70,6 +71,7 @@ float getDPI()
 }
 
 map<int, io_callback *> io_callbacks;
+map<int, socket_callback *> socket_callbacks;
 
 } // namespace anon
 
@@ -177,6 +179,7 @@ void sync_events()
 
 void exit()
 {
+	delete lyxsocket;
 	delete lyxserver;
 	lyxserver = 0;
 
@@ -248,21 +251,34 @@ void remove_read_callback(int fd)
 }
 
 
-void set_datasocket_callback(LyXDataSocket * /* p */)
-{}
+void set_datasocket_callback(LyXDataSocket * p)
+{
+	socket_callbacks[p->fd()] = new socket_callback(p);
+}
 
+void set_serversocket_callback(LyXServerSocket * p)
+{
+	socket_callbacks[p->fd()] = new socket_callback(p);
+}
 
-void remove_datasocket_callback(LyXDataSocket * /* p */)
-{}
+void remove_socket_callback(int fd)
+{
+	map<int, socket_callback *>::iterator it = socket_callbacks.find(fd);
+	if (it != socket_callbacks.end()) {
+		delete it->second;
+		socket_callbacks.erase(it);
+	}
+}
 
+void remove_datasocket_callback(LyXDataSocket * p)
+{
+	remove_socket_callback(p->fd());
+}
 
-void set_serversocket_callback(LyXServerSocket * /* p */)
-{}
-
-
-void remove_serversocket_callback(LyXServerSocket * /* p */)
-{}
-
+void remove_serversocket_callback(LyXServerSocket * p)
+{
+	remove_socket_callback(p->fd());
+}
 
 string const roman_font_name()
 {

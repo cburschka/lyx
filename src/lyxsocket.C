@@ -45,6 +45,13 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 		lyxerr << "lyx: Disabling LyX socket." << endl;
 		return;
 	}
+
+	// These env vars are used by DVI inverse search
+	// Needed by xdvi
+	lyx::support::putenv("XEDITOR", "lyxclient -g %f %l");
+	// Needed by lyxclient
+	lyx::support::putenv("LYXSOCKET", address_);
+
 	lyx_gui::set_serversocket_callback(this);
 	lyxerr[Debug::LYXSERVER] << "lyx: New server socket "
 				 << fd_ << ' ' << address_ << endl;
