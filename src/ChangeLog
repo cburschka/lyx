@@ -1,5 +1,13 @@
 2003-04-09  John Levon  <levon@movementarian.org>
 
+	* lyxfunc.C:
+	* lfuns.h:
+	* LyXAction.h:
+	* LyXAction.C: remove LFUN_APROPOS, LFUN_GETTIP,
+	and the "help" bits as well
+
+2003-04-09  John Levon  <levon@movementarian.org>
+
 	* ToolbarBackend.h:
 	* ToolbarBackend.C: allow multiple toolbars
 

@@ -1368,14 +1368,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	}
 	break;
 
-	case LFUN_APROPOS:
-	case LFUN_GETTIP:
-	{
-		int const qa = lyxaction.LookupFunc(argument);
-		setMessage(lyxaction.helpText(static_cast<kb_action>(qa)));
-	}
-	break;
-
 	// --- insert characters ----------------------------------------
 
 	// ---  Mathed stuff. If we are here, there is no locked inset yet.

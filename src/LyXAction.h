@@ -28,8 +28,6 @@ private:
 		string name;
 		/// the func_attrib values set
 		unsigned int attrib;
-		/// the help text for this action
-		string helpText;
 	};
 
 public:
@@ -76,9 +74,6 @@ public:
 	/// Return the name (and argument) associated with the given (pseudo) action
 	string const getActionName(int action) const;
 
-	/// Return one line help text associated with (pseudo)action
-	string const helpText(int action) const;
-
 	/// True if the command has `flag' set
 	bool funcHasFlag(kb_action action, func_attrib flag) const;
 
@@ -95,8 +90,7 @@ private:
 	/// populate the action container with our actions
 	void init();
 	/// add the given action
-	void newFunc(kb_action, string const & name,
-		     string const & helpText, unsigned int attrib);
+	void newFunc(kb_action, string const & name, unsigned int attrib);
 
 	/**
 	 * This is a list of all the LyXFunc names with the
@@ -107,7 +101,7 @@ private:
 
 	/**
 	 * This is a mapping from action number to an object holding
-	 * info about this action. f.ex. helptext, command name (string),
+	 * info about this action. f.ex. command name (string),
 	 * command attributes (ro)
 	 */
 	info_map lyx_info_map;
