@@ -1,7 +1,8 @@
 2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetgraphicsParams.C (latexify): use \textbackslash in preference to
-	$\backslash$.
+	$\backslash$ and pass a "string const &" to the function.
+	(prepareFile, latex): use Path rather than MakeAbsPath.
 
 2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 

@@ -99,6 +99,7 @@ TODO Before initial production release:
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
+#include "support/path.h"
 
 #include <algorithm> // For the std::max
 
@@ -609,7 +610,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//   return original filename without the extension
 	//
 	// if it's a zipped one, than let LaTeX do the rest!!!
-	string filename_  = MakeAbsPath(params().filename, buf->filePath());
+	string filename_  = params().filename;
 	bool const zipped = zippedFile(filename_);
 
 	if ((zipped && params().noUnzip) || buf->niceFile) {
@@ -617,6 +618,10 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 				    << filename_ << endl;
 		return filename_;
 	}
+
+	// Enable these helper functions to find the file if it is stored as
+	// a relative path.
+	Path p(buf->filePath());
 
 	if (zipped)
 		filename_ = unzipFile(filename_);
@@ -644,7 +649,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 
 namespace {
 
-string const latexify(string const str)
+string const latexify(string const & str)
 {
 	ostringstream out;
 
@@ -695,8 +700,13 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			<< _("empty figure path") << "}\n";
 		return 1; // One end-of-line marker added to the stream.
 	}
+
+	// Enable these helper functions to find the file if it is stored as
+	// a relative path.
+	Path p(buf->filePath());
+
 	// Ditto if the file is not there.
-	if (!IsFileReadable(MakeAbsPath(params().filename, buf->filePath()))) {
+	if (!IsFileReadable(params().filename)) {
 		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
 		    << latexify(MakeRelPath(params().filename, buf->filePath()))
 		    << _(" not found") << "}\n";
@@ -728,8 +738,6 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	int const newlines =
 		int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
 
-	// lyxerr << "includegraphics: " << newlines << " lines of text"
-	//        << endl;
 	return newlines;
 }
 
