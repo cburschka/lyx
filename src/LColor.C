@@ -24,6 +24,7 @@
 #include <map>
 
 using lyx::support::compare_ascii_no_case;
+using lyx::support::ascii_lowercase;
 
 using std::endl;
 using std::string;
@@ -249,10 +250,14 @@ void LColor::addColor(LColor::color c, string const & lyxname) const
 
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
-	if (pimpl_->transform.find(lyxname) == pimpl_->transform.end())
-		addColor(static_cast<color>(pimpl_->infotab.size()), lyxname);
+	string const lcname = ascii_lowercase(lyxname);
+	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
+		lyxerr << "LColor::getFromLyXName: Unknown color \"" 
+		       << lyxname << '"' << endl;
+		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);
+	}
 
-	return static_cast<LColor::color>(pimpl_->transform[lyxname]);
+	return static_cast<LColor::color>(pimpl_->transform[lcname]);
 }
 
 
