@@ -1000,7 +1000,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// it here
 				os << s;
 				if (!context.atParagraphStart())
-					os << "\\n\\size "
+					os << "\n\\size "
 					   << context.font.size << "\n";
 			} else if (is_known(next.cs(), known_font_families)) {
 				// s will change the font family, so we must

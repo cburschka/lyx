@@ -1,3 +1,7 @@
+2005-02-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_text): Use '\n' and not '\\n' for a newline ;-)
+
 2005-02-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): Only reset font changes if not at the
