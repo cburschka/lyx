@@ -95,9 +95,12 @@ sub translate_preamble {
 	"letterpaper"    => "\\papersize letterpaper",
 	"legalpaper"     => "\\papersize legalpaper",
 	"executivepaper" => "\\papersize executivepaper",
+	"a3paper"	 => "\\papersize a3paper",
 	"a4paper"        => "\\papersize a4paper",
 	"a5paper"        => "\\papersize a5paper",
-	"b5paper"        => "\\papersize b5paper",
+	"b3paper"	 => "\\papersize b3paper",
+	"b4paper"	 => "\\papersize b4paper",
+	"b5paper"	 => "\\papersize b5paper",
 
 	"twoside"        => "\\papersides 2",
 	"oneside"        => "\\papersides 1",
@@ -107,6 +110,18 @@ sub translate_preamble {
 	"onecolumn"      => "\\papercolumns 1",
 	"twocolumn"      => "\\papercolumns 2",
     );
+
+    # if the language file is available then added it to the options table
+    if(-e "$main::lyxdir/languages") {
+	open (LANGUAGES, "<$main::lyxdir/languages");
+
+	while(<LANGUAGES>) {
+	    next if(/^\#/); #ignore comments
+	    my @lang_field = split(/\s+/);
+	    $Option_Trans_Table{$lang_field[1]} = "\\language $lang_field[1]";
+	}
+	close(LANGUAGES);
+    }
 
     # This is the string in which we're concatenating everything we translate
     my $LyX_Preamble = "";
@@ -131,16 +146,8 @@ sub translate_preamble {
 #	}
 #}
 
-    # Write first two lines of the lyx file
-    my ($nm, $dt);
-    # whoami is needed on Win32, because getlong/getpwuid aren't implemented
-    # I'd rather use internal Perl functions when possible, though
-    $nm = (eval {getlogin || getpwuid($<)}) || `whoami`;
-    chomp($nm); # whomai returns "foo\n"
-    $dt = localtime;
-    $LyX_Preamble .= "\#This file was created by <$nm> $dt\n";
-    $LyX_Preamble .= "\#LyX 1.0 (C) 1995-1999 Matthias Ettrich " .
-                    "and the LyX Team\n";
+    # Write first line of the lyx file
+    $LyX_Preamble .= "\#LyX 1.2 created this file. For more info see http://www.lyx.org/\n";
 
     # Print \lyxformat.
     $LyX_Preamble .= "\\lyxformat $Format\n";
@@ -213,6 +220,124 @@ sub translate_preamble {
 	# write an official preamble if we find anything that's not comment
 	$write_preamble ||= (! /^\s*$/ && ! /^\s*%/);
     }
+
+    # Process $Latex_Preamble, and try to extarct as much as possible to
+    # $Lyx_Preamble (jamatos 2001/07/21)
+
+    # Deal with counters, for now just "tocdepth" and "secnumdepth"
+    my %Counter_Table = (
+	"secnumdepth"	=> "\\secnumdepth",
+	"tocdepth"	=> "\\tocdepth"
+    );
+
+    my $ct;
+    foreach $ct (keys %Counter_Table) {
+	$Latex_Preamble =~ s/\\setcounter\{$ct\}\{(.*)\}\s*// && do {
+	    $LyX_Preamble .= "$Counter_Table{$ct} $1\n";
+	}
+    }
+
+    if($Latex_Preamble =~ s/\\pagestyle\{(.*)\}\s*//) {
+	$LyX_Preamble .= "\\paperpagestyle $1\n";
+    }
+    if($Latex_Preamble =~ s/\\usepackage\[(.*)\]\{inputenc\}\s*//) {
+	$LyX_Preamble .= "\\inputencoding $1\n";
+    }
+
+    ## Deal with several \usepackage{} cases
+    my %Usepackage_Table = (
+	"amsmath"	=> "\\use_amsmath 1",
+	"amssymb"	=> "",
+
+	"geometry"	=> "\\use_geometry 1",
+
+	"babel"		=> "",
+
+	"pslatex"	=> "\\fontscheme pslatex",
+	"ae"		=> "\\fontscheme ae",
+	"aecompl"	=> "",
+	"times"		=> "\\fontscheme times",
+	"palatino"	=> "\\fontscheme palatino",
+	"helvet"	=> "\\fontscheme helvet",
+	"avant"		=> "\\fontscheme avant",
+	"newcent"	=> "\\fontscheme newcent",
+	"bookman"	=> "\\fontscheme bookman",
+
+	"a4wide"	=> "\\paperpackage widemarginsa4",
+	"a4"		=> "\\paperpackage a4wide",
+
+	"graphics"	=> "\\graphics default",
+	"rotating"	=> ""
+    );
+
+    my $up;
+    foreach $up (keys %Usepackage_Table) {
+	$Latex_Preamble =~ s/\\usepackage\{$up\}\s*// && do {
+	    $LyX_Preamble .= "$Usepackage_Table{$up}";
+	    $LyX_Preamble .= "\n" unless ($Usepackage_Table{$up} eq "");
+	}
+    }
+
+    ## Handle geometry options
+    ## The custom paper missing from the options list since it involves two parameters
+    my %Geometry_Options =(
+	'verbose'	=> sub { return "" },
+
+	"letterpaper"   => sub { return "\\papersize letterpaper\n" },
+	"legalpaper"    => sub { return "\\papersize legalpaper\n" },
+	"executivepaper"=> sub { return "\\papersize executivepaper\n" },
+	"a3paper"	=> sub { return "\\papersize a3paper\n" },
+	"a4paper"       => sub { return "\\papersize a4paper\n" },
+	"a5paper"       => sub { return "\\papersize a5paper\n" },
+	"b3paper"	=> sub { return "\\papersize b3paper\n" },
+	"b4paper"	=> sub { return "\\papersize b4paper\n" },
+	"b5paper"	=> sub { return "\\papersize b5paper\n" },
+
+	'tmargin=(\w*)'	=> sub { return "\\topmargin $1\n" },
+	'bmargin=(\w*)'	=> sub { return "\\bottommargin $1\n" },
+	'lmargin=(\w*)'	=> sub { return "\\leftmargin $1\n" },
+	'rmargin=(\w*)'	=> sub { return "\\rightmargin $1\n" },
+	'headsep=(\w*)'	=> sub { return "\\headsep $1\n" },
+	'footskip=(\w*)'	=> sub { return "\\footskip $1\n" },
+	'headheight=(\w*)'	=> sub { return "\\headheight $1\n" }
+    );
+
+    if( $Latex_Preamble =~ /\\geometry\{(.*)\}/) {
+	my $geom_options = $1;
+	my $op;
+	foreach $op (keys %Geometry_Options) {
+	    $geom_options =~ s/$op// && do {
+	        $LyX_Preamble .= $Geometry_Options{$op}();
+		print "Geometry option $op\n" if $debug_on;
+	    }
+	}
+	$geom_options =~ s/^,+|,+(?=,)|,+$//g; # extra commas
+	if( $geom_options =~ /\s*/) {
+	    $Latex_Preamble =~ s/\\geometry\{(.*)\}//;
+	}
+	else {
+	    $Latex_Preamble =~ s/\\geometry\{(.*)\}/\\geometry\{$geom_options\}/;
+	}
+    }
+
+    ## Paragraph skip or indentation
+    if ( $Latex_Preamble =~ 
+	 s/\\setlength\\parskip\{\\(.*)amount\}\s*\\setlength\\parindent\{0pt\}//) {
+	$LyX_Preamble .= "\\paragraph_separation skip\n";
+	$LyX_Preamble .= "\\defskip $1\n";
+    }
+
+    ## Paragraph spacing
+    if ( $Latex_Preamble =~ s/\\(\w*)spacing//) {
+	$LyX_Preamble .= "\\spacing  $1\n";
+    }
+
+    ## remove LyX specific stuff
+    $Latex_Preamble =~ s/\\IfFileExists\{url.sty\}\{\\usepackage\{url\}\}\s*\{\\newcommand\{\\url\}\{\\texttt\}\}\s*//;
+
+    ##  this two need probably a more fine grained control
+    $Latex_Preamble =~ s/\\makeatletter\s*//;
+    $Latex_Preamble =~ s/\\makeatother\s*//;
 
     if ($write_preamble) {
 	$Latex_Preamble =~ s/^\s*//;

@@ -1,3 +1,10 @@
+2001-07-22  José Matos  <jamatos@fep.up.pt>
+
+	* reLyX/MakePreamble.pm (translate_preamble): add lots of options
+	to convert from latex to lyx preamble. That means support for language, 
+	geometry, several \usepackages. Almost all the options that are present
+	in Layout->Document.
+	
 2001-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ui/default.ui: change 'hyphenation break' to 'ligature break'.
