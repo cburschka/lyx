@@ -1,3 +1,7 @@
+2001-04-04  Juergen Vigna  <jug@sad.it>
+
+	* vspace.C: had to include stdio.h for use of sscanf
+
 2001-04-03  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView.h: 

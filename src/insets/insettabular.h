@@ -63,222 +63,222 @@ class Buffer;
 
 class InsetTabular : public UpdatableInset {
 public:
-    ///
-    enum UpdateCodes {
-	NONE = 0,
-	CURSOR = 1,
-	CELL = 2,
-	SELECTION = 3,
-	FULL = 4,
-	INIT = 5
-    };
-    ///
-    InsetTabular(Buffer const &, int rows = 1, int columns = 1);
-    ///
-    InsetTabular(InsetTabular const &, Buffer const &);
-    ///
-    ~InsetTabular();
-    ///
-    Inset * Clone(Buffer const &) const;
-    ///
-    void Read(Buffer const *, LyXLex &);
-    ///
-    void Write(Buffer const *, std::ostream &) const;
-    ///
-    int ascent(BufferView *, LyXFont const &) const;
-    ///
-    int descent(BufferView *, LyXFont const &) const;
-    ///
-    int width(BufferView *, LyXFont const & f) const;
-    ///
-    void draw(BufferView *, const LyXFont &, int , float &, bool) const;
-    ///
-    void update(BufferView *, LyXFont const &, bool = false);
-    ///
-    string const EditMessage() const;
-    ///
-    void Edit(BufferView *, int x, int y, unsigned int);
-    ///
-    bool doClearArea() const { return !locked; };
-    ///
-    void InsetUnlock(BufferView *);
-    ///
-    void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;
-    ///
-    bool LockInsetInInset(BufferView *, UpdatableInset *);
-    ///
-    bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
-    ///
-    bool UpdateInsetInInset(BufferView *, Inset *);
-    ///
-    unsigned int InsetInInsetY();
-    ///
-    UpdatableInset * GetLockingInset();
-    ///
-    UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
-    ///
-    bool InsertInset(BufferView *, Inset *);
-    ///
-    bool IsTextInset() const { return true; }
-    ///
-    bool display() const { return tabular->IsLongTabular(); }
-    ///
-    void InsetButtonRelease(BufferView *, int, int, int);
-    ///
-    void InsetButtonPress(BufferView *, int, int, int);
-    ///
-    void InsetMotionNotify(BufferView *, int, int, int);
-    ///
-    void InsetKeyPress(XKeyEvent *);
-    ///
-    UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
-					 string const &);
-    ///
-    int Latex(Buffer const *, std::ostream &, bool, bool) const;
-    ///
-    int Ascii(Buffer const *, std::ostream &, int linelen) const;
-    ///
-    int Linuxdoc(Buffer const *, std::ostream &) const;
-    ///
-    int DocBook(Buffer const *, std::ostream &) const;
-    ///
-    void Validate(LaTeXFeatures & features) const;
-    ///
-    Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
-    ///
-    void GetCursorPos(BufferView *, int & x, int & y) const;
-    ///
-    void ToggleInsetCursor(BufferView *);
-    ///
-    bool TabularFeatures(BufferView * bv, string const & what);
-    ///
-    void TabularFeatures(BufferView * bv, LyXTabular::Feature feature,
-			 string const & val = string());
-    ///
-    int GetActCell() const { return actcell; }
-    ///
-    void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
-    ///
-    int getMaxWidth(BufferView *, UpdatableInset const *) const;
-    ///
-    Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
-    ///
-    LyXText * getLyXText(BufferView const *, bool const recursive = false) const;
-    ///
-    void resizeLyXText(BufferView *) const;
-    ///
-    void OpenLayoutDialog(BufferView *) const;
-    ///
-    bool ShowInsetDialog(BufferView *) const;
-    ///
-    LyXFunc::func_status getStatus(string const & argument) const;
+	///
+	enum UpdateCodes {
+		NONE = 0,
+		CURSOR = 1,
+		CELL = 2,
+		SELECTION = 3,
+		FULL = 4,
+		INIT = 5
+	};
+	///
+	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
+	///
+	InsetTabular(InsetTabular const &, Buffer const &);
+	///
+	~InsetTabular();
+	///
+	Inset * Clone(Buffer const &) const;
+	///
+	void Read(Buffer const *, LyXLex &);
+	///
+	void Write(Buffer const *, std::ostream &) const;
+	///
+	int ascent(BufferView *, LyXFont const &) const;
+	///
+	int descent(BufferView *, LyXFont const &) const;
+	///
+	int width(BufferView *, LyXFont const & f) const;
+	///
+	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
+	///
+	void update(BufferView *, LyXFont const &, bool = false);
+	///
+	string const EditMessage() const;
+	///
+	void Edit(BufferView *, int x, int y, unsigned int);
+	///
+	bool doClearArea() const { return !locked; };
+	///
+	void InsetUnlock(BufferView *);
+	///
+	void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;
+	///
+	bool LockInsetInInset(BufferView *, UpdatableInset *);
+	///
+	bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
+	///
+	bool UpdateInsetInInset(BufferView *, Inset *);
+	///
+	unsigned int InsetInInsetY();
+	///
+	UpdatableInset * GetLockingInset();
+	///
+	UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+	///
+	bool InsertInset(BufferView *, Inset *);
+	///
+	bool IsTextInset() const { return true; }
+	///
+	bool display() const { return tabular->IsLongTabular(); }
+	///
+	void InsetButtonRelease(BufferView *, int, int, int);
+	///
+	void InsetButtonPress(BufferView *, int, int, int);
+	///
+	void InsetMotionNotify(BufferView *, int, int, int);
+	///
+	void InsetKeyPress(XKeyEvent *);
+	///
+	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
+										 string const &);
+	///
+	int Latex(Buffer const *, std::ostream &, bool, bool) const;
+	///
+	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	///
+	int Linuxdoc(Buffer const *, std::ostream &) const;
+	///
+	int DocBook(Buffer const *, std::ostream &) const;
+	///
+	void Validate(LaTeXFeatures & features) const;
+	///
+	Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
+	///
+	void GetCursorPos(BufferView *, int & x, int & y) const;
+	///
+	void ToggleInsetCursor(BufferView *);
+	///
+	bool TabularFeatures(BufferView * bv, string const & what);
+	///
+	void TabularFeatures(BufferView * bv, LyXTabular::Feature feature,
+						 string const & val = string());
+	///
+	int GetActCell() const { return actcell; }
+	///
+	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+	///
+	int getMaxWidth(BufferView *, UpdatableInset const *) const;
+	///
+	Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
+	///
+	LyXText * getLyXText(BufferView const *, bool const recursive = false) const;
+	///
+	void resizeLyXText(BufferView *) const;
+	///
+	void OpenLayoutDialog(BufferView *) const;
+	///
+	bool ShowInsetDialog(BufferView *) const;
+	///
+	LyXFunc::func_status getStatus(string const & argument) const;
 
-    //
-    // Public structures and variables
-    ///
-    LyXTabular * tabular;
-    ///
-    SigC::Signal0<void> hideDialog;
+	//
+	// Public structures and variables
+	///
+	LyXTabular * tabular;
+	///
+	SigC::Signal0<void> hideDialog;
 
 private:
-    ///
-    bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
-				       bool = false) const;
-    ///
-    void DrawCellLines(Painter &, int x, int baseline,
-		       int row, int cell) const;
-    ///
-    void DrawCellSelection(Painter &, int x, int baseline,
-			   int row, int column, int cell) const;
-    ///
-    void ShowInsetCursor(BufferView *, bool show=true);
-    ///
-    void HideInsetCursor(BufferView *);
-    ///
-    void setPos(BufferView *, int x, int y) const;
-    ///
-    UpdatableInset::RESULT moveRight(BufferView *, bool lock = true);
-    ///
-    UpdatableInset::RESULT moveLeft(BufferView *, bool lock = true);
-    ///
-    UpdatableInset::RESULT moveUp(BufferView *, bool lock = true);
-    ///
-    UpdatableInset::RESULT moveDown(BufferView *, bool lock = true);
-    ///
-    bool moveNextCell(BufferView *, bool lock = false);
-    ///
-    bool movePrevCell(BufferView *, bool lock = false);
-    ///
-    bool Delete();
-    ///
-    int getCellXPos(int cell) const;
-    ///
-    void resetPos(BufferView *) const;
-    ///
-    void RemoveTabularRow();
-    ///
-    bool hasSelection() const {
+	///
+	bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
+									   bool = false) const;
+	///
+	void DrawCellLines(Painter &, int x, int baseline,
+					   int row, int cell) const;
+	///
+	void DrawCellSelection(Painter &, int x, int baseline,
+						   int row, int column, int cell) const;
+	///
+	void ShowInsetCursor(BufferView *, bool show=true);
+	///
+	void HideInsetCursor(BufferView *);
+	///
+	void setPos(BufferView *, int x, int y) const;
+	///
+	UpdatableInset::RESULT moveRight(BufferView *, bool lock = true);
+	///
+	UpdatableInset::RESULT moveLeft(BufferView *, bool lock = true);
+	///
+	UpdatableInset::RESULT moveUp(BufferView *, bool lock = true);
+	///
+	UpdatableInset::RESULT moveDown(BufferView *, bool lock = true);
+	///
+	bool moveNextCell(BufferView *, bool lock = false);
+	///
+	bool movePrevCell(BufferView *, bool lock = false);
+	///
+	bool Delete();
+	///
+	int getCellXPos(int cell) const;
+	///
+	void resetPos(BufferView *) const;
+	///
+	void RemoveTabularRow();
+	///
+	bool hasSelection() const {
 	return sel_cell_start != sel_cell_end;
-    }
-    ///
-    void clearSelection() const {
+	}
+	///
+	void clearSelection() const {
 	sel_cell_start = sel_cell_end = 0;
-    }
-    ///
-    bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,
-			   bool behind = false);
-    ///
-    bool ActivateCellInsetAbs(BufferView *, int x = 0, int y = 0, int button = 0);
-    ///
-    bool InsetHit(BufferView * bv, int x, int y) const;
-    ///
-    int GetMaxWidthOfCell(BufferView * bv, int cell) const;
-    ///
-    bool hasPasteBuffer() const;
-    ///
-    bool copySelection(BufferView *);
-    ///
-    bool pasteSelection(BufferView *);
-    ///
-    bool cutSelection();
-    ///
-    bool isRightToLeft(BufferView *);
+	}
+	///
+	bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,
+						   bool behind = false);
+	///
+	bool ActivateCellInsetAbs(BufferView *, int x = 0, int y=0, int button=0);
+	///
+	bool InsetHit(BufferView * bv, int x, int y) const;
+	///
+	int GetMaxWidthOfCell(BufferView * bv, int cell) const;
+	///
+	bool hasPasteBuffer() const;
+	///
+	bool copySelection(BufferView *);
+	///
+	bool pasteSelection(BufferView *);
+	///
+	bool cutSelection();
+	///
+	bool isRightToLeft(BufferView *);
 
-    //
-    // Private structures and variables
-    ///
-    InsetText * the_locking_inset;
-    ///
-    InsetText * old_locking_inset;
-    ///
-    Buffer const * buffer;
-    ///
-    mutable LyXCursor cursor;
-    ///
-    mutable unsigned int inset_x;
-    ///
-    mutable unsigned int inset_y;
-    ///
-    mutable int sel_cell_start;
-    ///
-    mutable int sel_cell_end;
-    ///
-    mutable int actcell;
-    ///
-    mutable int oldcell;
-    ///
-    mutable int actcol;
-    ///
-    mutable int actrow;
-    ///
-    mutable int first_visible_cell;
-    ///
-    bool no_selection;
-    ///
-    bool no_draw;
-    ///
-    mutable bool locked;
-    ///
-    mutable UpdateCodes need_update;
+	//
+	// Private structures and variables
+	///
+	InsetText * the_locking_inset;
+	///
+	InsetText * old_locking_inset;
+	///
+	Buffer const * buffer;
+	///
+	mutable LyXCursor cursor;
+	///
+	mutable unsigned int inset_x;
+	///
+	mutable unsigned int inset_y;
+	///
+	mutable int sel_cell_start;
+	///
+	mutable int sel_cell_end;
+	///
+	mutable int actcell;
+	///
+	mutable int oldcell;
+	///
+	mutable int actcol;
+	///
+	mutable int actrow;
+	///
+	mutable int first_visible_cell;
+	///
+	bool no_selection;
+	///
+	bool no_draw;
+	///
+	mutable bool locked;
+	///
+	mutable UpdateCodes need_update;
 };
 #endif

@@ -15,6 +15,8 @@
 #pragma implementation "vspace.h"
 #endif
 
+#include <stdio.h>
+
 #include "lyx_main.h"
 #include "buffer.h"
 #include "vspace.h"
