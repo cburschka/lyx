@@ -17,11 +17,13 @@
 #include <boost/next_prior.hpp>
 #include <boost/optional.hpp>
 
-#include <stack>
+// it's conceptionally a stack, but undo needs random access...
+//#include <stack>
+#include <vector>
 
 using boost::next;
 using boost::optional;
-using std::stack;
+using std::vector;
 
 ///
 /// ParPosition
@@ -68,14 +70,14 @@ bool operator!=(ParPosition const & pos1, ParPosition const & pos2)
 ///
 
 struct ParIterator::Pimpl {
-	typedef stack<ParPosition> PosHolder;
+	typedef vector<ParPosition> PosHolder;
 	PosHolder positions;
 };
 
 ParIterator::ParIterator(ParagraphList::iterator pit, ParagraphList const & pl)
 	: pimpl_(new Pimpl)
 {
-	pimpl_->positions.push(ParPosition(pit, pl));
+	pimpl_->positions.push_back(ParPosition(pit, pl));
 }
 
 
@@ -98,14 +100,14 @@ void ParIterator::operator=(ParIterator const & pi)
 ParIterator & ParIterator::operator++()
 {
 	while (!pimpl_->positions.empty()) {
-		ParPosition & p = pimpl_->positions.top();
+		ParPosition & p = pimpl_->positions.back();
 
 		// Does the current inset contain more "cells" ?
 		if (p.index) {
 			++(*p.index);
 			ParagraphList * plist = (*p.it)->inset->getParagraphs(*p.index);
 			if (plist && !plist->empty()) {
-				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
+				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
 				return *this;
 			}
 			++(*p.it);
@@ -121,7 +123,7 @@ ParIterator & ParIterator::operator++()
 			ParagraphList * plist = (*p.it)->inset->getParagraphs(0);
 			if (plist && !plist->empty()) {
 				p.index.reset(0);
-				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
+				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
 				return *this;
 			}
 		}
@@ -137,7 +139,7 @@ ParIterator & ParIterator::operator++()
 		}
 
 		// Drop end and move up in the stack.
-		pimpl_->positions.pop();
+		pimpl_->positions.pop_back();
 	}
 	return *this;
 }
@@ -145,13 +147,19 @@ ParIterator & ParIterator::operator++()
 
 ParagraphList::iterator ParIterator::operator*() const
 {
-	return pimpl_->positions.top().pit;
+	return pimpl_->positions.back().pit;
 }
 
 
 ParagraphList::iterator ParIterator::operator->() const
 {
-	return pimpl_->positions.top().pit;
+	return pimpl_->positions.back().pit;
+}
+
+
+ParagraphList::iterator ParIterator::outerPar() const
+{
+	return pimpl_->positions[0].pit;
 }
 
 
@@ -163,7 +171,7 @@ size_t ParIterator::size() const
 
 ParagraphList & ParIterator::plist() const
 {
-	return *const_cast<ParagraphList*>(pimpl_->positions.top().plist);
+	return *const_cast<ParagraphList*>(pimpl_->positions.back().plist);
 }
 
 
@@ -185,7 +193,7 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2)
 
 
 struct ParConstIterator::Pimpl {
-	typedef stack<ParPosition> PosHolder;
+	typedef vector<ParPosition> PosHolder;
 	PosHolder positions;
 };
 
@@ -194,7 +202,7 @@ ParConstIterator::ParConstIterator(ParagraphList::iterator pit,
 				   ParagraphList const & pl)
 	: pimpl_(new Pimpl)
 {
-	pimpl_->positions.push(ParPosition(pit, pl));
+	pimpl_->positions.push_back(ParPosition(pit, pl));
 }
 
 
@@ -210,14 +218,14 @@ ParConstIterator::ParConstIterator(ParConstIterator const & pi)
 ParConstIterator & ParConstIterator::operator++()
 {
 	while (!pimpl_->positions.empty()) {
-		ParPosition & p = pimpl_->positions.top();
+		ParPosition & p = pimpl_->positions.back();
 
 		// Does the current inset contain more "cells" ?
 		if (p.index) {
 			++(*p.index);
 			ParagraphList * plist = (*p.it)->inset->getParagraphs(*p.index);
 			if (plist && !plist->empty()) {
-				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
+				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
 				return *this;
 			}
 			++(*p.it);
@@ -233,7 +241,7 @@ ParConstIterator & ParConstIterator::operator++()
 			ParagraphList * plist = (*p.it)->inset->getParagraphs(0);
 			if (plist && !plist->empty()) {
 				p.index.reset(0);
-				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
+				pimpl_->positions.push_back(ParPosition(plist->begin(), *plist));
 				return *this;
 			}
 		}
@@ -249,7 +257,7 @@ ParConstIterator & ParConstIterator::operator++()
 		}
 
 		// Drop end and move up in the stack.
-		pimpl_->positions.pop();
+		pimpl_->positions.pop_back();
 	}
 
 	return *this;
@@ -258,13 +266,13 @@ ParConstIterator & ParConstIterator::operator++()
 
 ParagraphList::iterator ParConstIterator::operator*() const
 {
-	return pimpl_->positions.top().pit;
+	return pimpl_->positions.back().pit;
 }
 
 
 ParagraphList::iterator ParConstIterator::operator->() const
 {
-	return pimpl_->positions.top().pit;
+	return pimpl_->positions.back().pit;
 }
 
 

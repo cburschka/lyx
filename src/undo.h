@@ -31,22 +31,24 @@ public:
 	///
 	undo_kind kind;
 	///
-	int number_of_before_par;
+	int inset_id; // valid if >= 0, if < 0 then not in inset
 	///
-	int number_of_behind_par;
+	int plist_id;
 	///
-	int number_of_cursor_par;
+	int first_par_offset;
 	///
-	int number_of_inset_id; // valid if >= 0, if < 0 then not in inset
+	int last_par_offset;
+	///
+	int cursor_par_offset;
 	///
 	int cursor_pos; // valid if >= 0
 	///
 	ParagraphList pars;
 
 	///
-	Undo(undo_kind kind, int inset_id,
-	     int before_par_id, int behind_par_id,
-	     int cursor_par_id, int cursor_pos,
+	Undo(undo_kind kind, int inset_id, int plist_id,
+	     int first, int last,
+	     int cursor, int cursor_pos,
 	     ParagraphList const & par_arg);
 
 };

@@ -658,7 +658,7 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 }
 
 
-// deletes and inserts again all paragaphs between the cursor
+// deletes and inserts again all paragraphs between the cursor
 // and the specified par
 // This function is needed after SetLayout and SetFont etc.
 void LyXText::redoParagraphs(LyXCursor const & cur,

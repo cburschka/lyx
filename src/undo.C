@@ -11,20 +11,19 @@
 #include <config.h>
 
 #include "undo.h"
-#include "paragraph.h"
 
-
-Undo::Undo(undo_kind kind_arg, int id_inset_arg,
-	   int number_before_arg, int number_behind_arg,
-	   int cursor_par_arg, int cursor_pos_arg,
-	   ParagraphList const & par_arg)
-	: pars(par_arg)
-{
-	kind = kind_arg;
-	number_of_inset_id = id_inset_arg;
-	number_of_before_par = number_before_arg;
-	number_of_behind_par = number_behind_arg;
-	number_of_cursor_par = cursor_par_arg;
-	cursor_pos = cursor_pos_arg;
-}
+Undo::Undo(undo_kind kind_arg, int inset, int plist,
+	   int first, int last,
+	   int cursor, int cursor_pos_arg,
+	   ParagraphList const & par)
+	:
+		kind(kind_arg),
+		inset_id(inset),
+		plist_id(plist),
+		first_par_offset(first),
+		last_par_offset(last),
+		cursor_par_offset(cursor),
+		cursor_pos(cursor_pos_arg),
+		pars(par)
+{}
 
