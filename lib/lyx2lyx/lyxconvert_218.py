@@ -392,7 +392,7 @@ def remove_figinset(lines):
 	if rotateAngle != "":
 	    new.append("\trotate")
 	    append(new, "rotateAngle", rotateAngle)
-	new.append("\trotateOrigin center")
+	new.append("\trotateOrigin leftBaseline")
 	new.append("\tlyxsize_type 1")
 	append(new, "lyxwidth", lyxwidth)
 	append(new, "lyxheight", lyxheight)
