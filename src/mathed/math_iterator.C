@@ -17,13 +17,6 @@
 #include <boost/assert.hpp>
 
 
-MathArray const & MathIterator::cell() const
-{
-	CursorSlice const & top = back();
-	return top.asMathInset()->cell(top.idx_);
-}
-
-
 void MathIterator::operator++()
 {
 	CursorSlice & top = back();
@@ -88,9 +81,8 @@ MathIterator iend(MathInset * p)
 {
 	MathIterator it;
 	it.push_back(CursorSlice(p));
-	return it;
 	CursorSlice & top = it.back();
 	top.idx_ = top.asMathInset()->nargs() - 1;
-	top.pos_ = it.cell().size();
+	top.pos_ = top.asMathInset()->cell(top.idx_).size();
 	return it;
 }

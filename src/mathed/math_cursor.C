@@ -1068,7 +1068,8 @@ void MathCursor::bruteFind2(int x, int y)
 	MathIterator it = Cursor_;
 	it.back().setPos(0);
 	MathIterator et = Cursor_;
-	et.back().setPos(it.cell().size());
+	int n = et.back().asMathInset()->cell(et.back().idx_).size();
+	et.back().setPos(n);
 	for (int i = 0; ; ++i) {
 		int xo, yo;
 		it.back().getPos(xo, yo);

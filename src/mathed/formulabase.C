@@ -847,13 +847,15 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
 
 	for (MathIterator it = current; it != iend(par().nucleus()); ++it) {
-		if (it.cell().matchpart(ar, it.back().pos_)) {
+		CursorSlice & top = it.back();
+		MathArray const & a = top.asMathInset()->cell(top.idx_);
+		if (a.matchpart(ar, top.pos_)) {
 			delete mathcursor;
 			mathcursor = new MathCursor(this, true);
 			//metrics(bv);
 			mathcursor->setSelection(it, ar.size());
 			current = it;
-			it.back().pos_ += ar.size();
+			top.pos_ += ar.size();
 			bv->update();
 			return true;
 		}
