@@ -44,17 +44,6 @@ class Paragraph;
 class InsetText : public UpdatableInset {
 public:
 	///
-	/// numbers need because of test if codeA < codeB
-	///
-	enum UpdateCodes {
-		///
-		NONE = 0,
-		///
-		FULL = 16,
-		///
-		INIT = 32
-	};
-	///
 	enum DrawFrame {
 		///
 		NEVER = 0,
@@ -83,8 +72,6 @@ public:
 	int textWidth() const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	void setUpdateStatus(int what) const;
 	///
 	string const editMessage() const;
 	///
@@ -217,11 +204,7 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
-	//
-	// Public structures and variables
 	///
-	mutable int need_update;
-
 	bool haveParagraphs() const {
 		return true;
 	}

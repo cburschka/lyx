@@ -229,7 +229,6 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (collapsed_ && cmd.button() != mouse_button::button3) {
 		collapsed_ = false;
-		inset.setUpdateStatus(InsetText::FULL);
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
 		return;
@@ -239,7 +238,6 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 	{
 		if (collapsed_) {
 			collapsed_ = false;
-			inset.setUpdateStatus(InsetText::FULL);
 			bv->updateInset(this);
 			bv->buffer()->markDirty();
 		} else {
@@ -300,7 +298,6 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 					lyxerr << "branch collapsed_" << endl;
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
-						inset.setUpdateStatus(InsetText::FULL);
 						bv->updateInset(this);
 						bv->buffer()->markDirty();
 						inset.localDispatch(cmd);

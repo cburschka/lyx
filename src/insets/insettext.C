@@ -169,7 +169,6 @@ void InsetText::init(InsetText const * ins)
 		 boost::bind(&Paragraph::setInsetOwner, _1, this));
 	top_y = 0;
 	no_selection = true;
-	need_update = FULL;
 	drawTextXOffset = 0;
 	drawTextYOffset = 0;
 	locked = false;
@@ -188,7 +187,6 @@ void InsetText::clear(bool just_mark_erased)
 		for (; it != end; ++it) {
 			it->markErased();
 		}
-		need_update = FULL;
 		return;
 	}
 
@@ -201,7 +199,6 @@ void InsetText::clear(bool just_mark_erased)
 	paragraphs.begin()->layout(old_layout);
 
 	reinitLyXText();
-	need_update = INIT;
 }
 
 
@@ -270,7 +267,6 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		lex.printError("Missing \\end_inset at this point. "
 					   "Read: `$$Token'");
 	}
-	need_update = FULL;
 }
 
 
@@ -314,7 +310,6 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	// no draw is necessary !!!
 	if (drawFrame_ == LOCKED && !locked && paragraphs.begin()->empty()) {
 		top_baseline = baseline;
-		need_update = NONE;
 		return;
 	}
 
@@ -326,10 +321,8 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	top_baseline = baseline;
 	top_y = baseline - dim_.asc;
 
-	if (last_drawn_width != dim_.wid) {
-		need_update |= FULL;
+	if (last_drawn_width != dim_.wid)
 		last_drawn_width = dim_.wid;
-	}
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
 		inset_x = cix() - x + drawTextXOffset;
@@ -365,9 +358,6 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked))
 		drawFrame(pain, int(start_x));
-
-	if (need_update != INIT)
-		need_update = NONE;
 }
 
 
@@ -383,12 +373,6 @@ void InsetText::drawFrame(Painter & pain, int x) const
 }
 
 
-void InsetText::setUpdateStatus(int what) const
-{
-	need_update |= what;
-}
-
-
 void InsetText::updateLocal(BufferView * bv, bool mark_dirty)
 {
 	if (!bv)
@@ -398,8 +382,7 @@ void InsetText::updateLocal(BufferView * bv, bool mark_dirty)
 		collapseParagraphs(bv);
 
 	text_.partialRebreak();
-	setUpdateStatus(FULL);
-	bool flag = mark_dirty || need_update != NONE || text_.selection.set();
+	bool flag = mark_dirty || text_.selection.set();
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
@@ -433,11 +416,9 @@ void InsetText::insetUnlock(BufferView * bv)
 	}
 	no_selection = true;
 	locked = false;
-	int code = NONE;
 
 	if (text_.selection.set()) {
 		text_.clearSelection();
-		code = FULL;
 	} else if (owner()) {
 		bv->owner()->setLayout(owner()->getLyXText(bv)
 				       ->cursor.par()->layout()->name());
@@ -450,8 +431,6 @@ void InsetText::insetUnlock(BufferView * bv)
 	} else if (paragraphs.size() > 1) {
 		text_.setCursor(boost::next(first_par), 0);
 	}
-	if (code != NONE)
-		setUpdateStatus(code);
 }
 
 
@@ -474,7 +453,6 @@ void InsetText::lockInset(BufferView * bv)
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
 	}
-	setUpdateStatus(FULL);
 }
 
 
@@ -591,13 +569,11 @@ bool InsetText::updateInsetInInset(BufferView * bv, InsetOld * inset)
 			found = tl_inset->updateInsetInInset(bv, inset);
 		} else {
 			text_.updateInset(tl_inset);
-			setUpdateStatus(FULL);
 		}
 		return found;
 	}
 	bool found = text_.updateInset(inset);
 	if (found) {
-		setUpdateStatus(FULL);
 		if (the_locking_inset &&
 		    cpar() == inset_par && cpos() == inset_pos)
 		{
@@ -889,7 +865,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			return result;
 		}
 	}
-	bool updwhat = false;
 	bool updflag = false;
 
 	switch (cmd.action) {
@@ -923,7 +898,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			}
 		}
 		text_.selection.cursor = text_.cursor;
-		updwhat = true;
 		updflag = true;
 		result = DISPATCHED_NOUPDATE;
 		break;
@@ -933,22 +907,18 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	case LFUN_RIGHT:
 		result = moveRight(bv);
 		finishUndo();
-		updwhat = true;
 		break;
 	case LFUN_LEFT:
 		finishUndo();
 		result = moveLeft(bv);
-		updwhat = true;
 		break;
 	case LFUN_DOWN:
 		finishUndo();
 		result = moveDown(bv);
-		updwhat = true;
 		break;
 	case LFUN_UP:
 		finishUndo();
 		result = moveUp(bv);
-		updwhat = true;
 		break;
 
 	case LFUN_PRIOR:
@@ -959,7 +929,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			text_.clearSelection();
 			result = DISPATCHED_NOUPDATE;
 		}
-		updwhat = true;
 		break;
 
 	case LFUN_NEXT:
@@ -970,7 +939,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			text_.clearSelection();
 			result = DISPATCHED_NOUPDATE;
 		}
-		updwhat = true;
 		break;
 
 	case LFUN_BACKSPACE: {
@@ -978,7 +946,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			text_.cutSelection(true, false);
 		else
 			text_.backspace();
-		updwhat = true;
 		updflag = true;
 		break;
 	}
@@ -989,14 +956,12 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		} else {
 			text_.Delete();
 		}
-		updwhat = true;
 		updflag = true;
 		break;
 	}
 
 	case LFUN_CUT: {
 		text_.cutSelection(true, true);
-		updwhat = true;
 		updflag = true;
 		break;
 	}
@@ -1004,7 +969,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	case LFUN_COPY:
 		finishUndo();
 		text_.copySelection();
-		updwhat = true;
 		break;
 
 	case LFUN_PASTESELECTION:
@@ -1021,7 +985,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		// bug 393
 		text_.clearSelection();
 
-		updwhat = true;
 		updflag = true;
 		break;
 	}
@@ -1048,7 +1011,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		text_.pasteSelection(sel_index);
 		// bug 393
 		text_.clearSelection();
-		updwhat = true;
 		updflag = true;
 		break;
 	}
@@ -1060,7 +1022,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		}
 		replaceSelection(bv->getLyXText());
 		text_.breakParagraph(paragraphs, 0);
-		updwhat = true;
 		updflag = true;
 		break;
 
@@ -1071,7 +1032,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		}
 		replaceSelection(bv->getLyXText());
 		text_.breakParagraph(paragraphs, 1);
-		updwhat = true;
 		updflag = true;
 		break;
 
@@ -1083,7 +1043,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 		replaceSelection(bv->getLyXText());
 		text_.insertInset(new InsetNewline);
-		updwhat = true;
 		updflag = true;
 		break;
 	}
@@ -1119,7 +1078,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 				cur_layout = layout;
 				text_.setLayout(layout);
 				bv->owner()->setLayout(cpar()->layout()->name());
-				updwhat = true;
 				updflag = true;
 			}
 		} else {
@@ -1169,7 +1127,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
 			pit->params().spacing(Spacing(new_spacing, new_value));
-			updwhat = true;
 			updflag = true;
 		}
 	}
@@ -1186,7 +1143,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	// these two are really unhandled ...
 	case LFUN_ENDBUF:
 	case LFUN_BEGINNINGBUF:
-		updwhat = true;
 		if (!bv->dispatch(cmd))
 			result = UNDISPATCHED;
 		break;
@@ -1199,7 +1155,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDSEL:
 	case LFUN_WORDLEFTSEL:
 	case LFUN_WORDRIGHTSEL:
-		updwhat = true;
 
 		// fallthrough
 
@@ -1209,8 +1164,8 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	if (updwhat)
-		updateLocal(bv, updflag);
+	updateLocal(bv, updflag);
+
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
 	if (!was_empty && paragraphs.begin()->empty() &&
@@ -1223,7 +1178,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	if (result >= FINISHED)
 		bv->unlockInset(this);
 
-	if (result == DISPATCHED_NOUPDATE && (need_update & FULL))
+	if (result == DISPATCHED_NOUPDATE)
 		result = DISPATCHED;
 	return result;
 }
@@ -1479,8 +1434,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
 
-	if (bv->fitLockedInsetCursor(cx(), cy(), asc, desc))
-		need_update |= FULL;
+	bv->fitLockedInsetCursor(cx(), cy(), asc, desc);
 }
 
 
@@ -1727,7 +1681,6 @@ void InsetText::setParagraphData(ParagraphList const & plist)
 	}
 
 	reinitLyXText();
-	need_update = INIT;
 }
 
 
@@ -1761,7 +1714,6 @@ void InsetText::setAutoBreakRows(bool flag)
 		autoBreakRows = flag;
 		if (!flag)
 			removeNewlines();
-		need_update = INIT;
 	}
 }
 
@@ -1770,8 +1722,7 @@ void InsetText::setDrawFrame(BufferView * bv, DrawFrame how)
 {
 	if (how != drawFrame_) {
 		drawFrame_ = how;
-		if (bv)
-			updateLocal(bv, false);
+		updateLocal(bv, false);
 	}
 }
 
@@ -1780,8 +1731,7 @@ void InsetText::setFrameColor(BufferView * bv, LColor::color col)
 {
 	if (frame_color != col) {
 		frame_color = col;
-		if (bv)
-			updateLocal(bv, false);
+		updateLocal(bv, false);
 	}
 }
 
@@ -1905,8 +1855,6 @@ void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 		const_cast<InsetText*>(this)->updateLocal(bv, false);
 		// this will scroll the screen such that the cursor becomes visible
 		bv->updateScrollbar();
-	} else {
-		need_update |= FULL;
 	}
 #endif
 }
@@ -1935,8 +1883,6 @@ void InsetText::reinitLyXText() const
 	if (!owner()) {
 		// this will scroll the screen such that the cursor becomes visible
 		bv->updateScrollbar();
-	} else {
-		need_update = FULL;
 	}
 }
 
@@ -1993,7 +1939,6 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 	if (top_x + drawTextXOffset + w > pain.paperWidth())
 		w = pain.paperWidth();
 	pain.fillRectangle(start_x + 1, ty + 1, w - 3, h - 1, backgroundColor());
-	need_update = FULL;
 }
 
 
@@ -2147,9 +2092,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 
 bool InsetText::checkInsertChar(LyXFont & font)
 {
-	if (owner())
-		return owner()->checkInsertChar(font);
-	return true;
+	return owner() ? owner()->checkInsertChar(font) : true;
 }
 
 
@@ -2204,9 +2147,8 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	mergeParagraph(buffer->params, paragraphs, boost::prior(ins));
 
 	ParagraphList::iterator pend = plist.end();
-	for (; pit != pend; ++pit) {
+	for (; pit != pend; ++pit)
 		paragraphs.push_back(*pit);
-	}
 
 	reinitLyXText();
 }
@@ -2220,8 +2162,7 @@ void InsetText::addPreview(PreviewLoader & loader) const
 	for (; pit != pend; ++pit) {
 		InsetList::const_iterator it  = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
-		for (; it != end; ++it) {
+		for (; it != end; ++it)
 			it->inset->addPreview(loader);
-		}
 	}
 }
