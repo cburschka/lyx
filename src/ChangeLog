@@ -1,3 +1,8 @@
+2004-01-07  Angus Leeming  <leeming@lyx.org>
+
+	* LyXAction.C:
+	* lfuns.h: add LFUN_WORD_FIND and LFUN_WORD_REPLACE.
+
 2004-01-07  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text.C (breakParagraph): remove an outdated #warning
