@@ -20,6 +20,7 @@
 #include "format.h"
 #include "gettext.h"
 #include "lyx_forms.h"
+#include "support/lstrings.h"
 
 using std::vector;
 

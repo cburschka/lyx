@@ -35,6 +35,7 @@
 #include "funcrequest.h"
 #include "author.h"
 
+#include "support/lstrings.h"
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
 #include "support/tostr.h"
