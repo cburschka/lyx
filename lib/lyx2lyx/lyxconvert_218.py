@@ -399,6 +399,31 @@ def remove_figinset(lines):
 	new = new + ["\end_inset"]
 	lines[i:j+1] = new
 
+attr_re = re.compile(r' \w*="(false|0|)"')
+line_re = re.compile(r'<(features|column|row|cell)')
+
+def update_tabular(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, '\\begin_inset  Tabular', i)
+        if i == -1:
+            break
+
+        # scan table header meta-info
+        lines[i+1] = string.replace(lines[i+1], 'version="2"', 'version="3"')
+
+        j = find_token(lines, '</lyxtabular>', i)
+        if j == -1:
+            break
+
+	for k in xrange(i+2,j):
+	    if check_token(lines[k], "<column"):
+		 lines[k] = string.replace(lines[k], 'width=""', 'width="0pt"')
+	    if line_re.match(lines[k]):
+		lines[k] = re.sub(attr_re, "", lines[k])
+
+	i = i+1
+
 def change_preamble(lines):
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
@@ -412,6 +437,7 @@ def convert(header, body):
 	language = "english"
 
     change_preamble(header)
+    update_tabular(body)
     remove_oldminipage(body)
     remove_oldfloat(body, language)
     remove_figinset(body)

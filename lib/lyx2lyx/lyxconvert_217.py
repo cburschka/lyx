@@ -22,7 +22,7 @@ bool_table =  {"0": "false", "1":"true" }
 align_table = {"0": "top", "2": "left", "4": "right", "8": "center"}
 use_table = {"0": "none", "1": "parbox"}
 
-table_meta_re = re.compile(r'<LyXTabular version="1" rows="(\d*)" columns="(\d*)">')
+#table_meta_re = re.compile(r'<LyXTabular version="1" rows="(\d*)" columns="(\d*)">')
 def update_tabular(lines):
     i=0
     while 1:
