@@ -123,3 +123,18 @@ InsetRef::type_info InsetRef::types[] = {
 	{ "prettyref",	N_("PrettyRef"),		N_("PrettyRef: ")},
 	{ "", "", "" }
 };
+
+
+int InsetRef::getType(string const & name)
+{
+	for (int i = 0; !types[i].latex_name.empty(); ++i)
+		if (name == types[i].latex_name)
+			return i;
+	return 0;
+}
+
+
+string const & InsetRef::getName(int type)
+{
+	return types[type].latex_name;
+}

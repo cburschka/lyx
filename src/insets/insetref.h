@@ -32,6 +32,10 @@ public:
 		string short_gui_name;
 	};
 	static type_info types[];
+	///
+	static int getType(string const & name);
+	///
+	static string const & getName(int type);
 
 	///
 	InsetRef(InsetCommandParams const &, Buffer const &);

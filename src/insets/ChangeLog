@@ -1,6 +1,11 @@
+2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetref.C (getType, getName): Move methods from 
+	src/frontends/xforms/FormRef.C.
+
 2001-01-12  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/insets/insettabular.C: Various improvements.
+	* insettabular.C: Various improvements (use only one dummy position).
 
 2001-01-25  Dekel Tsur  <dekelts@tau.ac.il>
 

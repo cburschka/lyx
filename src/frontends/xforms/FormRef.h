@@ -57,10 +57,6 @@ private:
 	void updateBrowser(std::vector<string> const &) const;
 	///
 	FD_form_ref * build_ref();
-	///
-	int getType() const;
-	///
-	string const getName(int type) const;
 
 	///
 	Goto toggle;

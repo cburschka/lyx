@@ -98,7 +98,8 @@ void FormRef::update()
 	if (inset_) {
 		fl_set_input(dialog_->ref,  params.getContents().c_str());
 		fl_set_input(dialog_->name, params.getOptions().c_str());
-		fl_set_choice(dialog_->type, getType()+1);
+		fl_set_choice(dialog_->type, 
+			      InsetRef::getType(params.getCmdName()) + 1);
 	}
 
 	toggle = GOBACK;
@@ -174,7 +175,7 @@ void FormRef::apply()
 		return;
 
 	int const type = fl_get_choice(dialog_->type) - 1;
-	params.setCmdName(getName(type));
+	params.setCmdName(InsetRef::getName(type));
 
 	params.setOptions(fl_get_input(dialog_->name));
 	params.setContents(fl_get_input(dialog_->ref));
@@ -267,7 +268,7 @@ bool FormRef::input(FL_OBJECT *, long data)
 	case 5:
 	{
 		int const type = fl_get_choice(dialog_->type) - 1;
-		if (params.getCmdName() == getName(type) && inset_) {
+		if (params.getCmdName() == InsetRef::getName(type) && inset_) {
 			activate = false;
 		}
 	}
@@ -281,17 +282,3 @@ bool FormRef::input(FL_OBJECT *, long data)
 }
 
 
-int FormRef::getType() const
-{
-	string const & command = params.getCmdName();
-	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
-		if (command == InsetRef::types[i].latex_name)
-			return i;
-	return 0;
-}
-
-
-string const FormRef::getName(int type) const
-{
-	return InsetRef::types[type].latex_name;
-}
