@@ -1,3 +1,9 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.[Ch] (LibScriptSearch): modify the code that replaces
+	the $$s placeholder with a path, so that it now inserts the path
+	of the lyx support directory, not the scripts subdirectory.
+	
 2005-01-19  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* lyxsum.C, socktools.C, tempname.C, userinfo.C: use the

@@ -362,7 +362,8 @@ string const LibScriptSearch(string const & command_in)
 	string::size_type const pos1 = command.find(token_scriptpath);
 	if (pos1 == string::npos)
 		return command;
-	// Find the end of the "$$s/some_script" word within command
+	// Find the end of the "$$s/some_script" word within command.
+	// Assumes that the script name does not contain spaces.
 	string::size_type const start_script = pos1 + 4;
 	string::size_type const pos2 = command.find(' ', start_script);
 	string::size_type const size_script = pos2 == string::npos?
@@ -370,13 +371,13 @@ string const LibScriptSearch(string const & command_in)
 
 	// Does this script file exist?
 	string const script =
-		LibFileSearch("scripts", command.substr(start_script, size_script));
+		LibFileSearch(".", command.substr(start_script, size_script));
 
 	if (script.empty()) {
 		// Replace "$$s/" with ""
 		command.erase(pos1, 4);
 	} else {
-		// Replace "$$s/some_script" with "$LYX_SCRIPT_PATH/some_script"
+		// Replace "$$s/foo/some_script" with "<path to>/some_script".
 		string::size_type const size_replace = size_script + 4;
 		command.replace(pos1, size_replace, QuoteName(script));
 	}

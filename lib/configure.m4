@@ -322,7 +322,7 @@ SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
 test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 
 # We have a script to convert previewlyx to ppm or to png
-lyxpreview_to_bitmap_command='python $$s/lyxpreview2bitmap.py'
+lyxpreview_to_bitmap_command='python $$s/scripts/lyxpreview2bitmap.py'
 
 # Search for 'dvipng'. Only enable the conversion from lyxpreview -> png
 # if dvipng is found.
@@ -584,9 +584,9 @@ cat >$outfile <<EOF
 \\converter docbook    html       "$docbook_to_html_command"	""
 \\converter dvi        pdf3       "$dvi_to_pdf_command"	""
 \\converter dvi        ps         "$dvi_to_ps_command"	""
-\\converter fen        asciichess "python \$\$s/fen2ascii.py \$\$i \$\$o"	""
-\\converter fig        pdftex     "sh \$\$s/fig2pdftex.sh \$\$i \$\$o"	""
-\\converter fig        pstex      "sh \$\$s/fig2pstex.sh \$\$i \$\$o"	""
+\\converter fen        asciichess "python \$\$s/scripts/fen2ascii.py \$\$i \$\$o"	""
+\\converter fig        pdftex     "sh \$\$s/scripts/fig2pdftex.sh \$\$i \$\$o"	""
+\\converter fig        pstex      "sh \$\$s/scripts/fig2pstex.sh \$\$i \$\$o"	""
 \\converter html       latex      "$html_to_latex_command"	""
 \\converter latex      html       "$latex_to_html_command"	"originaldir,needaux"
 \\converter latex      dvi        "$latex_to_dvi"	"latex"
@@ -654,9 +654,9 @@ fi
 
 cat >>$outfile <<EOF
 
-\\copier    fig        "sh \$\$s/fig_copy.sh \$\$i \$\$o"
-\\copier    pstex      "python \$\$s/tex_copy.py \$\$i \$\$o \$\$l"
-\\copier    pdftex     "python \$\$s/tex_copy.py \$\$i \$\$o \$\$l"
+\\copier    fig        "sh \$\$s/scripts/fig_copy.sh \$\$i \$\$o"
+\\copier    pstex      "python \$\$s/scripts/tex_copy.py \$\$i \$\$o \$\$l"
+\\copier    pdftex     "python \$\$s/scripts/tex_copy.py \$\$i \$\$o \$\$l"
 
 $rc_entries
 \\font_encoding "$chk_fontenc"
