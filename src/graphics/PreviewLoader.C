@@ -81,7 +81,7 @@ struct FindFirst {
 	FindFirst(string const & comp) : comp_(comp) {}
 	bool operator()(StrPair const & sp)
 	{
-		return sp.first < comp_;
+		return sp.first == comp_;
 	}
 private:
 	string const comp_;
