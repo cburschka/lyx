@@ -68,6 +68,7 @@ Enjoy!
 
 The LyX team.
 
+
 What's new
 ==========
 
@@ -86,24 +87,24 @@ What's new
 - The built-in Qt dialogs are now correctly translated for the
   languages that Qt supports [Qt >= 3.2 only]
 
-- add support for icelandic, latvian, lithuanian and nynorsk
+- add support for Icelandic, Latvian, Lithuanian and Nynorsk
 
-- updated basque, danish, german, italian and romanian localizations; 
-  updated basque and german documentations
+- updated Basque, Danish, German, Italian and Romanian localizations;
+  updated Basque and German documentation
 
 ** Bug fixes
 
 * Document input/output:
 
-- partly fix handling of included files; external insets are still not
+- partly fix the handling of included files. External insets are still not
   working correctly [bug #605]
 
 - fix nesting of language change commands, especially important for
-  arabic [bug #1404]
+  Arabic [bug #1404]
 
 - fix missing line break in front of \end{...} in some cases [bug #1225]
 
-- fix running makeindex and bibtex when the file name contains some
+- run makeindex and bibtex correctly when the file name contains some
   special characters [bug #1526]
 
 - prevent clashes with LaTeX packages defining "\boldsymbol" [bug #1498]
@@ -124,7 +125,7 @@ What's new
 
 - use opening quotation marks after an opening square bracket
 
-- fix toggling of short title inset in some cases
+- fix the toggling of the short title inset in some cases
 
 - when the autodetection of latex classes cannot be done for some
   reason, provide a sensible list of textclasses
