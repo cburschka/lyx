@@ -18,7 +18,7 @@
 #include "XFormsView.h"
 #include "debug.h"
 
-#if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
+#ifdef USE_XFORMS_IMAGE_LOADER
 #include "xformsGImage.h"
 #else
 #include "graphics/GraphicsImageXPM.h"
@@ -61,7 +61,7 @@ int GUIRunTime::initApplication(int &, char * [])
 			"version of a dynamic XForms library\n"
 			"or you have build LyX with conflicting header "
 			"and library (different\n"
-			"versions of XForms. Sorry but there is no point "
+			"versions of XForms). Sorry but there is no point "
 			"in continuing executing LyX!" << endl;
 		return 1;
 	}
@@ -130,7 +130,7 @@ void GUIRunTime::initialiseGraphics()
 {
 	using namespace grfx;
 
-#if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
+#ifdef USE_XFORMS_IMAGE_LOADER
 	// connect the image loader based on the xforms library
 	GImage::newImage.connect(boost::bind(&xformsGImage::newImage));
 	GImage::loadableFormats.connect(boost::bind(&xformsGImage::loadableFormats));

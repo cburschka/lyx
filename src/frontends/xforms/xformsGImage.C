@@ -402,7 +402,9 @@ void init_graphics()
 	flimage_enable_bmp();
 	flimage_enable_fits();
 	flimage_enable_gif();
+#ifdef HAVE_FLIMAGE_ENABLE_JPEG
 	flimage_enable_jpeg();
+#endif
 
 	// xforms itself uses pngtopnm to convert to a loadable format.
 	// We prefer to use our own conversion mechanism, therefore.

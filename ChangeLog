@@ -1,3 +1,12 @@
+2002-06-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.in: move the test for xpm/xforms out of the frontends
+	case, to avoid code duplication
+
+2002-06-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* acconfig.h: remove FORMS_IMAGE_H_LOCATION and FORMS_H_LOCATION
+
 2002-06-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* configure.in: remove LYX_REGEX call

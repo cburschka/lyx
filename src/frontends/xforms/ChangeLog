@@ -1,3 +1,15 @@
+2002-06-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* GUIRunTime.C (initialiseGraphics): condition the choice of
+	loader on USE_XFORMS_IMAGE_LOADER
+
+	* xformsGImage.C (init_graphics): do not initialize jpeg support
+	if not available
+
+2002-06-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xformsGImage.h: use FLIMAGE_H_LOCATION to include flimage.h.
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormMathsPanel.C: do not include ButtonController.tmpl

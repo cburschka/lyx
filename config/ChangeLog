@@ -1,3 +1,12 @@
+2002-06-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xforms.m4 (LYX_USE_XFORMS_IMAGE_LOADER): complete rewrite. Now
+	simpler and hopefully better. Please test.
+	(LYX_PATH_XFORMS): move test for flimage.h in
+	LYX_USE_XFORMS_IMAGE_LOADER. 
+	(LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG): killed. Now just a couple
+	lines in LYX_USE_XFORMS_IMAGE_LOADER.
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxinclude.m4 (lyx_warning): turn off exceptions for 2.96 and 3.1
