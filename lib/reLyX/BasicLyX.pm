@@ -218,6 +218,14 @@ my $MathEnvironments = "(math|displaymath|xxalignat|(equation|eqnarray|align|ali
 # ListLayouts may have standard paragraphs nested inside them.
 my $ListLayouts = "Itemize|Enumerate|Description";
 
+# Striaght translation of LaTeX lengths to LyX ones.
+my %lengthAsLyXString = ('\textwidth' => 'text%',
+			 '\columnwidth' => 'col%',
+			 '\paperwidth' => 'page%',
+			 '\linewidth' => 'line%',
+			 '\paperheight' => 'pheight%',
+			 '\textheight' => 'theight%');
+
 # passed a string and an array
 # returns true if the string is an element of the array.
 sub foundIn {
@@ -1011,6 +1019,49 @@ sub basic_lyx {
 		$tok = $fileobject->eatGroup;
 		new RelyxTable::Table $tok;
 
+	    # minipage
+	    } elsif ($env eq "minipage") {
+		&CheckForNewParagraph;
+
+	        print OUTFILE "\\begin_inset Minipage\n";
+
+		# The minipage environment is defined as:
+		# \begin{minipage}[pos][height][inner-pos]{width} <text>
+		# \end{minipage}
+		my $pos = foo bar....
+
+		# Read any optional argument.
+		$tok = $fileobject->eatOptionalArgument;
+		my $arg = $tok->print if defined($tok->print);
+
+		my %map = ('t' => '0', 'c' => '1', 'b' => '2');
+		if ($debug_on && $arg ne '' && !defined($map{$arg})) {
+		    print "\nIgnoring unknown positioning arg '$arg'\n";
+		}
+
+		# The minipage is centred by default.
+		$arg = '1' if (!defined($map{$arg}) ||
+			       ($arg = $map{$arg}) eq '');
+
+		# Read the width as (a reference to) an array of tokens.
+		$tok = $fileobject->eatBalanced;
+		# $arg is Something like either '4.5cm' or '\columnwidth'.
+		$arg = pop(@{$tok})->print;
+		# If $arg is something like '\columnwidth', then manipulate
+		# it into LyX format and also extract the length itself.
+		if (defined($lengthAsLyXString{$arg})) {
+		    $arg = $lengthAsLyXString{$arg};
+		    my $val = pop(@{$tok});
+		    $val = (defined($val)) ? $val->print : '0';
+		    $arg = ($val * 100) . $arg;
+		}
+
+		print OUTFILE "position $arg\n";
+		print OUTFILE "inner_position 0\n";
+		print OUTFILE "height \"0pt\"\n";
+		print OUTFILE "width \"$arg\"\n";
+		print OUTFILE "collapsed false\n";
+
 	    # \begin document
 	    } elsif ($env eq "document") {
 		# do nothing
@@ -1081,6 +1132,13 @@ sub basic_lyx {
 
 		# Anything after a table will be a new paragraph
 		$IsNewParagraph = 1; $MayBeDeeper = 1;
+
+	    # minipage
+	    } elsif ($env eq "minipage") {
+	        print OUTFILE "\n\\end_inset \n\n";
+
+		# Next stuff will be new env.
+		# $IsNewParagraph = 1;
 
 	    } elsif ($env eq "document") {
 	        print "\nDone with document!" if $debug_on;
