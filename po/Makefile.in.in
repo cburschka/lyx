@@ -242,7 +242,7 @@ POTFILES.in: $(top_srcdir)/src/ext_l10n.h $(POTFILE_IN_DEPS)
 	     awk 'BEGIN {FS= ":"} {print $$1}' | \
 	     sed -e '/xforms.forms/d' | \
 	     sort -f -d | uniq ) > $@-t \
-	&& mv $@-t $@
+	&& mv $@-t $(srcdir)/$@
 
 POTFILES: POTFILES.in
 	( if test 'x$(srcdir)' != 'x.'; then \

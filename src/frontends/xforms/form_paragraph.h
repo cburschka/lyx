@@ -5,15 +5,14 @@
 #define FD_form_paragraph_general_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormParagraphInputCB(FL_OBJECT *, long);
-extern  "C" void C_FormParagraphVSpaceCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormParagraphInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormParagraphCancelCB(FL_OBJECT *, long);
-extern  "C" void C_FormParagraphApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormParagraphOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormParagraphRestoreCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

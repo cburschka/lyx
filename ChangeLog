@@ -1,3 +1,12 @@
+2000-10-10  Allan Rae  <rae@lyx.org>
+
+	* src/BufferView_pimpl.C (buffer): don't call upadteBufferDependent
+	unless there really is a buffer.  hideBufferDependent is called
+	instead.
+
+	* Makefile.in.in (POTFILES.in): one little tweak to ensure POTFILES.in
+	stays in $(srcdir).
+
 2000-10-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/lyxrc.example: Few changes.

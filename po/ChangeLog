@@ -1,3 +1,8 @@
+2000-10-10  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in (POTFILES.in): one little tweak to ensure POTFILES.in
+	stays in $(srcdir).
+
 2000-10-06  Allan Rae  <rae@lyx.org>
 
 	* Makefile.in.in: Over zealous in yesterdays work.
