@@ -1,3 +1,10 @@
+
+2003-09-16  André Pönitz  <poenitz@gmx.net>
+
+	* paragraph.[Ch]:
+	* paragraph_pimpl.[Ch]: un-pimpl Paragraph::(Pimpl::)text for a >10%
+	  performance boost.
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfont.h (LyXFont_size): a wrapper class for LyXFont::FONT_SIZE.

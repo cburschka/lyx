@@ -56,6 +56,8 @@ public:
 	typedef char value_type;
 	///
 	typedef lyx::depth_type depth_type;
+	///
+	typedef std::vector<value_type> TextContainer;
 
 	///
 	Paragraph();
@@ -120,9 +122,9 @@ public:
 	void deleteInsetsLyXText(BufferView *);
 
 	///
-	lyx::pos_type size() const;
+	lyx::pos_type size() const { return text_.size(); }
 	///
-	bool empty() const;
+	bool empty() const { return text_.empty(); }
 	///
 	void setContentsFromPar(Paragraph const & par);
 	///
@@ -307,6 +309,9 @@ public:
 private:
 	///
 	LyXLayout_ptr layout_;
+	/// keeping this here instead of in the pimpl makes LyX >10% faster
+	// for average tasks as buffer loading/switching etc.
+	TextContainer text_;
 
 	struct Pimpl;
 	///

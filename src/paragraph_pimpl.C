@@ -72,7 +72,6 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
 	: params(p.params), owner_(owner)
 {
 	inset_owner = p.inset_owner;
-	text = p.text;
 	fontlist = p.fontlist;
 	id_ = paragraph_id++;
 
@@ -81,16 +80,9 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
 }
 
 
-void Paragraph::Pimpl::clear()
-{
-	text.clear();
-#warning changes ?
-}
-
-
 void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 {
-	text = par.pimpl_->text;
+	owner_->text_ = par.text_;
 	if (par.pimpl_->tracking()) {
 		changes_.reset(new Changes(*(par.pimpl_->changes_.get())));
 	}
@@ -256,31 +248,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
-#if 1
-	// This is in the critical path for loading!
-	pos_type const siz = size();
-
-	BOOST_ASSERT(pos <= siz);
-
-	if (pos == siz) {
-		lyxerr << "getChar() on pos " << pos << " in par id "
-		       << owner_->id() << " of size " << siz
-		       << "  is a bit silly !" << endl;
-		return '\0';
-	}
-
-	return text[pos];
-#else
-	BOOST_ASSERT(pos < size());
-	return text[pos];
-#endif
-}
-
-
-void Paragraph::Pimpl::setChar(pos_type pos, value_type c)
-{
-#warning changes
-	text[pos] = c;
+	return owner_->getChar(pos);
 }
 
 
@@ -297,12 +265,12 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 	// maybe inserting ascii text)
 	if (pos == size()) {
 		// when appending characters, no need to update tables
-		text.push_back(c);
+		owner_->text_.push_back(c);
 		owner_->setFont(pos, font);
 		return;
 	}
 
-	text.insert(text.begin() + pos, c);
+	owner_->text_.insert(owner_->text_.begin() + pos, c);
 
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
@@ -328,7 +296,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 	BOOST_ASSERT(pos <= size());
 
 	insertChar(pos, META_INSET, font, change);
-	BOOST_ASSERT(text[pos] == META_INSET);
+	BOOST_ASSERT(owner_->text_[pos] == META_INSET);
 
 	// Add a new entry in the insetlist.
 	owner_->insetlist.insert(inset, pos);
@@ -341,11 +309,11 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 void Paragraph::Pimpl::eraseIntern(pos_type pos)
 {
 	// if it is an inset, delete the inset entry
-	if (text[pos] == Paragraph::META_INSET) {
+	if (owner_->text_[pos] == Paragraph::META_INSET) {
 		owner_->insetlist.erase(pos);
 	}
 
-	text.erase(text.begin() + pos);
+	owner_->text_.erase(owner_->text_.begin() + pos);
 
 	// Erase entries in the tables.
 	FontTable search_font(pos, LyXFont());
@@ -392,7 +360,7 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			if (text[pos] == Paragraph::META_INSET) {
+			if (owner_->text_[pos] == Paragraph::META_INSET) {
 				InsetOld * i(owner_->getInset(pos));
 				i->markErased();
 			}
@@ -463,7 +431,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 
 	// does the wanted text start at point?
 	for (string::size_type i = 0; i < str.length(); ++i) {
-		if (str[i] != text[pos + i])
+		if (str[i] != owner_->text_[pos + i])
 			return false;
 	}
 

@@ -60,7 +60,7 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & lp)
-	: y(0), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
+	: y(0), text_(lp.text_), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
 {
 	enumdepth = 0;
 	itemdepth = 0;
@@ -86,6 +86,8 @@ void Paragraph::operator=(Paragraph const & lp)
 		return;
 
 	lyxerr << "Paragraph::operator=()" << endl;
+
+	text_ = lp.text_;
 
 	delete pimpl_;
 	pimpl_ = new Pimpl(*lp.pimpl_, this);
@@ -1270,21 +1272,21 @@ void Paragraph::rejectChange(pos_type start, pos_type end)
 }
 
 
-lyx::pos_type Paragraph::size() const
-{
-	return pimpl_->size();
-}
-
-
-bool Paragraph::empty() const
-{
-	return pimpl_->empty();
-}
-
-
 Paragraph::value_type Paragraph::getChar(pos_type pos) const
 {
-	return pimpl_->getChar(pos);
+	// This is in the critical path!
+	pos_type const siz = text_.size();
+
+	BOOST_ASSERT(pos <= siz);
+
+	if (pos == siz) {
+		lyxerr << "getChar() on pos " << pos << " in par id "
+		       << id() << " of size " << siz
+		       << "  is a bit silly !" << endl;
+		return '\0';
+	}
+
+	return text_[pos];
 }
 
 
@@ -1325,12 +1327,13 @@ UpdatableInset * Paragraph::inInset() const
 
 void Paragraph::clearContents()
 {
-	pimpl_->clear();
+	text_.clear();
 }
+
 
 void Paragraph::setChar(pos_type pos, value_type c)
 {
-	pimpl_->setChar(pos, c);
+	text_[pos] = c;
 }
 
 

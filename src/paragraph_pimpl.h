@@ -26,22 +26,9 @@ class LyXLayout;
 
 struct Paragraph::Pimpl {
 	///
-	typedef std::vector<value_type> TextContainer;
-
-	///
 	Pimpl(Paragraph * owner);
 	/// Copy constructor
 	Pimpl(Pimpl const &, Paragraph * owner);
-	///
-	lyx::pos_type size() const {
-		return text.size();
-	}
-	///
-	bool empty() const {
-		return text.empty();
-	}
-	///
-	void clear();
 	///
 	void setContentsFromPar(Paragraph const & par);
 	/// set tracking mode
@@ -182,6 +169,8 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 
 private:
+	///
+	lyx::pos_type size() const { return owner_->size(); }
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, lyx::pos_type pos) const;
 
@@ -190,8 +179,6 @@ private:
 
 	/// Who owns us?
 	Paragraph * owner_;
-	///
-	TextContainer text;
 };
 
 #endif
