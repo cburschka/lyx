@@ -78,7 +78,7 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 	text += file + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+		text, 0, 2, _("&Save Changes"), _("&Discard Changes"), _("&Cancel"));
 
 	if (ret == 0) {
 		// FIXME: WriteAs can be asynch !
@@ -187,7 +187,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 	text += fname + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+		text, 0, 2, _("&Save Changes"), _("&Discard Changes"), _("&Cancel"));
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
