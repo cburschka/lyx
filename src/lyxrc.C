@@ -916,6 +916,10 @@ int LyXRC::read(string const & filename)
 		}
 	}
 
+	/// Update converters data-structures
+	converters.Update(formats);
+	converters.BuildGraph();
+
 	return 0;
 }
 
