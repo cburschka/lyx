@@ -1,11 +1,11 @@
 # This file is part of LyX
 
 # LyX keyboard definitions similar to those of Scientific Word.
-# Prepared by Serge Winitzki. Version 1.0
+# Prepared by Serge Winitzki. Version 1.2
 
-# Tip: to find how LyX calls a pressed key, look at the status bar after
-# entering a non-existent key combination. E.g. want to find how "Ctrl-&" is
-# referenced, so press Ctrl-S Ctrl-&: the status bar shows "C-s S-C-ampersand."
+# Tip: to find the "LyX name" for a key, look at the status bar after
+# typing some non-existent key combination. E.g. to find how "Ctrl-&" is
+# referenced, press Ctrl-S Ctrl-&: the status bar shows "C-s S-C-ampersand."
 
 #\bind "C-a"                    "------"
 #\bind "C-b"                    "font-bold"
@@ -25,7 +25,7 @@
 \bind "C-f"	"math-insert frac"
 \bind "C-g"	"math-greek"
 
-# Do I need this?
+# Do we need this?
 #\bind "C-h"	"hyphenation-point-insert"
 
 # Sciword mnemonic.
@@ -38,9 +38,12 @@
 
 # Toggle: in text mode, switch to math, and vice versa. Also C-t.
 \bind "C-m"	"math-mode"
-#\bind "C-n"	"------"
+# C-n is numbering equations now. Sciword had "C-Tab" mnemonic which conflicts with many things.
+# Numbering equations. Should perhaps simplify math-number and math-nonumber into one command since they are used in very different contexts. This and also math-macro stuff should be available in the Lyx menus!
+\bind "C-n"	"math-number"
+\bind "S-C-n" "math-nonumber"
 \bind "C-o"	"open-stuff"
-\bind "C-p"	"font-code"
+
 # Insert a quote character. Do I need this?
 \bind "C-q"	"quote-insert"
 
@@ -48,7 +51,9 @@
 \bind "C-r"	"math-insert sqrt"
 
 # This combination is now a gateway to math symbols (C-s ...)
-#\bind "C-s"	"font-smallcaps"
+#\bind "C-s"	"------"
+
+# Sciword mnemonic for going between text and math modes.
 \bind "C-t"	"math-mode"
 \bind "C-u"	"font-underline"
 \bind "C-v"	"paste"
@@ -58,7 +63,7 @@
 \bind "S-C-z"	"redo"
 
 
-# This combination makes an umlaut accept now.
+# This combination makes an umlaut accent now.
 #\bind "S-C-quotedbl"           "quote-insert"
 
 # Bracket delimiters. Sciword mnemonic is to press Control-<bracket key>
@@ -68,13 +73,13 @@
 \bind "C-0"	"math-delim ( )"
 \bind "S-C-parenright"	"math-delim ( )"
 
-\bind "C-S-bracketleft"		"math-delim [ ]"
-\bind "C-S-bracketright"	"math-delim [ ]"
+\bind "C-bracketleft"		"math-delim [ ]"
+\bind "C-bracketright"	"math-delim [ ]"
 \bind "C-S-less"		"math-delim langle rangle"
 \bind "C-S-greater"		"math-delim langle rangle"
 
 # The bar bracket: on some keyboards, e.g. British, the bar character is
-# misplaced to an Alt-something
+# bound to an Alt-something and on some wayward Unices to "brokenbar".
 \bind "C-S-bar"		"math-delim | |"
 \bind "C-S-brokenbar"	"math-delim | |"
 \bind "C-M-bar"		"math-delim | |"
@@ -82,28 +87,22 @@
 \bind "S-C-braceleft"		"math-delim { }"
 \bind "S-C-braceright"		"math-delim { }"
 
-# Accents. Sciword mnemonic. Mostly need to press Ctrl-<accent key>
-# e.g. Ctrl-. for overdot, Ctrl-' for acute accent, Ctrl-~ for tilda etc.
+# Accents by Sciword mnemonics. Mostly press Ctrl-<accent key>
+# e.g. Ctrl-. for overdot, Ctrl-' for acute accent, Ctrl-~ for tilde etc.
 # Some of them seem to work only in math mode?
 
-# S-C-period?
 \bind "C-period"	"accent-dot"
+\bind "S-C-colon"	"math-insert ddot"
 \bind "C-quoteleft"	"accent-grave"
 \bind "S-C-asciitilde"	"accent-tilde"
 \bind "S-C-quotedbl"	"accent-umlaut"
 \bind "C-apostrophe"	"accent-acute"
 \bind "S-C-asciicircum" "accent-circumflex"
-\bind "C-equal"	"accent-vector"
+\bind "C-equal"		"accent-vector"
 # Why is it not "accent-bar"?
 \bind "C-minus"	"math-insert bar"
 # What is "accent-underbar"?
 #\bind "S-C-underscore"	"accent-underbar"
-
-# Numbering equations. Should perhaps simplify math-number and math-nonumber into one command. This and also math-macro stuff should be available in the menus!
-# Sciword mnemonic, kind of (was just "TAB").
-
-\bind "C-Tab"	"math-number"
-\bind "C-S-Tab"	"math-nonumber"
 
 # Function keys.
 
@@ -120,7 +119,7 @@
 \bind "F6"                     "font-emph"
 \bind "F7"                     "font-code"
 \bind "F8"                     "font-noun"
-# F9 bound below as meta-prefix (e.g. if the keyboard doesn't have ALT).
+# F9 bound below as meta-prefix (useful e.g. if the keyboard doesn't have a working ALT).
 #\bind "F9"                     "------"
 #\bind "F10"                    "------"
 
@@ -148,6 +147,7 @@
 \bind "C-s e"		"math-insert sum"
 \bind "C-s p"		"math-insert prod"
 \bind "C-s i"		"math-insert infty"
+\bind "C-s x"		"symbol-insert times"
 
 # My own embellishments for symbols I use often.
 
@@ -158,8 +158,9 @@
 \bind "C-s equal"	"math-insert equiv"
 \bind "M-equal"		"math-insert approx"
 \bind "M-minus"		"math-insert sim"
-\bind "M-less"		"math-insert leq"
-\bind "M-greater"	"math-insert geq"
+\bind "C-minus"		"math-insert rightarrow"
+\bind "S-M-less"	"math-insert leq"
+\bind "S-M-greater"	"math-insert geq"
 \bind "C-s S-less"	"math-insert ll"
 \bind "C-s S-greater"	"math-insert gg"
 
@@ -304,6 +305,7 @@
 # Insert menu
 #
 
+\bind "M-i c"                  "citation-insert"
 \bind "M-i f"                  "footnote-insert"
 \bind "M-i h"                  "hfill-insert"
 \bind "M-i m"                  "marginpar-insert"
@@ -333,7 +335,7 @@
 # Documents menu
 #
 
-#\bind "M-d p"                  "buffer-previous"
+\bind "M-d p"                  "buffer-previous"
 \bind "M-d space"              "menu-open Documents"
 
 
@@ -460,20 +462,4 @@
 #
 
 \bind "M-x c"                  "screen-recenter"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
