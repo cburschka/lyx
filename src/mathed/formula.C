@@ -219,15 +219,9 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 	// before the metrics are computed.
 	bool const use_preview = preview_->previewReady();
 
-	Dimension dim;
-	MetricsInfo mi;
-	mi.base.bv = pi.base.bv;
-	mi.base.font = pi.base.font;
-	metrics(mi, dim);
-	dim_ = dim;
-	int const w = dim.wid;
-	int const d = dim.des;
-	int const a = dim.asc;
+	int const w = dim_.wid;
+	int const d = dim_.des;
+	int const a = dim_.asc;
 	int const h = a + d;
 
 	if (use_preview) {

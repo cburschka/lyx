@@ -342,19 +342,12 @@ void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 	cache_->view = bv->owner()->view();
 	int oasc = cache_->old_ascent;
 
-	Dimension dim;
-	MetricsInfo mi;
-	mi.base.bv = pi.base.bv;
-	mi.base.font = pi.base.font;
-	metrics(mi, dim);
-	dim_ = dim;
-
 	// we may have changed while someone other was drawing us so better
 	// to not draw anything as we surely call to redraw ourself soon.
 	// This is not a nice thing to do and should be fixed properly somehow.
 	// But I still don't know the best way to go. So let's do this like this
 	// for now (Jug 20020311)
-	if (dim.asc != oasc)
+	if (dim_.asc != oasc)
 		return;
 
 	// Make sure now that x is updated upon exit from this routine

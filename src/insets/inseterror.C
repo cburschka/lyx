@@ -13,7 +13,6 @@
 #include "inseterror.h"
 
 #include "BufferView.h"
-#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxfont.h"
@@ -83,16 +82,10 @@ void InsetError::draw(PainterInfo & pi, int x, int y) const
 
 	// Draw as "Error" in a framed box
 	x += 1;
-	Dimension dim;
-	MetricsInfo mi;
-	mi.base.bv = pi.base.bv;
-	mi.base.font = pi.base.font;
-	metrics(mi, dim);
-	dim_ = dim;
-	pi.pain.fillRectangle(x, y - dim.asc + 1,
-	      dim.wid - 2, dim.asc + dim.des - 2, LColor::insetbg);
-	pi.pain.rectangle(x, y - dim.asc + 1,
-	      dim.wid - 2, dim.asc + dim.des - 2, LColor::error);
+	pi.pain.fillRectangle(x, y - dim_.asc + 1,
+	      dim_.wid - 2, dim_.asc + dim_.des - 2, LColor::insetbg);
+	pi.pain.rectangle(x, y - dim_.asc + 1,
+	      dim_.wid - 2, dim_.asc + dim_.des - 2, LColor::error);
 	pi.pain.text(x + 2, y, _("Error"), efont);
 }
 

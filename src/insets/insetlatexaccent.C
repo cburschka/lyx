@@ -362,13 +362,6 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		font.setLanguage(english_language);
 
-	Dimension dim;
-	MetricsInfo mi;
-	mi.base.bv = pi.base.bv;
-	mi.base.font = pi.base.font;
-	metrics(mi, dim);
-	dim_ = dim;
-
 	if (candisp) {
 		float x2 = x + (rbearing(font) - lbearing(font)) / 2.0;
 		float hg;

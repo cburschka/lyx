@@ -132,9 +132,8 @@ string InsetFormulaMacro::prefix() const
 }
 
 
-void InsetFormulaMacro::metrics(MetricsInfo & m, Dimension & dim) const
+void InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	MetricsInfo mi = m;
 	par()->metrics(mi, dim_);
 	dim_.asc += 5;
 	dim_.des += 5;
@@ -171,15 +170,9 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 
-	Dimension dim;
-	MetricsInfo mi;
-	mi.base.bv = pi.base.bv;
-	mi.base.font = pi.base.font;
-	metrics(mi, dim);
-	dim_ = dim;
-	int const a = y - dim.asc + 1;
-	int const w = dim.wid - 2;
-	int const h = dim.height() - 2;
+	int const a = y - dim_.asc + 1;
+	int const w = dim_.wid - 2;
+	int const h = dim_.height() - 2;
 
 	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
 	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
