@@ -92,8 +92,6 @@ MathInset::mode_type asMode(string const & str)
 		return MathInset::MATH_MODE;
 	if (str == "textmode" || str == "forcetext")
 		return MathInset::TEXT_MODE;
-	if (str == "verbatimmode")
-		return MathInset::VERBATIM_MODE;
 	return MathInset::UNDECIDED_MODE;
 }
 
@@ -274,6 +272,10 @@ private:
 	void lex(string const & s);
 	///
 	bool good() const;
+	///
+	string parse_verbatim_item();
+	///
+	string parse_verbatim_option();
 
 	///
 	int lineno_;
@@ -524,6 +526,41 @@ bool Parser::parse(MathAtom & at)
 }
 
 
+string Parser::parse_verbatim_option()
+{
+	string res;
+	if (nextToken().character() == '[') {
+		Token t = getToken();
+		for (Token t = getToken(); t.character() != ']' && good(); t = getToken()) {
+			if (t.cat() == catBegin) {
+				putback();
+				res += '{' + parse_verbatim_item() + '}';
+			} else 
+				res += t.asString();
+		}
+	}
+	return res;
+}
+
+
+string Parser::parse_verbatim_item()
+{
+	string res;
+	if (nextToken().cat() == catBegin) {
+		Token t = getToken();
+		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
+			if (t.cat() == catBegin) {
+				putback();
+				res += '{' + parse_verbatim_item() + '}';
+			}
+			else 
+				res += t.asString();
+		}
+	}
+	return res;
+}
+
+
 MathArray Parser::parse(unsigned flags, mode_type mode)
 {
 	MathArray ar;
@@ -694,32 +731,28 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub) {
-			if (mode == MathInset::VERBATIM_MODE)
-				cell->push_back(MathAtom(new MathStringInset(t.asString())));
-			else {
-				bool up = (t.cat() == catSuper);
-				// we need no new script inset if the last thing was a scriptinset,
-				// which has that script already not the same script already
-				if (!cell->size())
-					cell->push_back(MathAtom(new MathScriptInset(up)));
-				else if (cell->back()->asScriptInset() &&
-						!cell->back()->asScriptInset()->has(up))
-					cell->back().nucleus()->asScriptInset()->ensure(up);
-				else if (cell->back()->asScriptInset())
-					cell->push_back(MathAtom(new MathScriptInset(up)));
-				else
-					cell->back() = MathAtom(new MathScriptInset(cell->back(), up));
-				MathScriptInset * p = cell->back().nucleus()->asScriptInset();
-				// special handling of {}-bases
-				// is this always correct?
-				if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
-						p->nuc().back()->extraBraces())
-					p->nuc() = p->nuc().back()->asNestInset()->cell(0);
-				parse(p->cell(up), FLAG_ITEM, mode);
-				if (limits) {
-					p->limits(limits);
-					limits = 0;
-				}
+			bool up = (t.cat() == catSuper);
+			// we need no new script inset if the last thing was a scriptinset,
+			// which has that script already not the same script already
+			if (!cell->size())
+				cell->push_back(MathAtom(new MathScriptInset(up)));
+			else if (cell->back()->asScriptInset() &&
+					!cell->back()->asScriptInset()->has(up))
+				cell->back().nucleus()->asScriptInset()->ensure(up);
+			else if (cell->back()->asScriptInset())
+				cell->push_back(MathAtom(new MathScriptInset(up)));
+			else
+				cell->back() = MathAtom(new MathScriptInset(cell->back(), up));
+			MathScriptInset * p = cell->back().nucleus()->asScriptInset();
+			// special handling of {}-bases
+			// is this always correct?
+			if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
+					p->nuc().back()->extraBraces())
+				p->nuc() = p->nuc().back()->asNestInset()->cell(0);
+			parse(p->cell(up), FLAG_ITEM, mode);
+			if (limits) {
+				p->limits(limits);
+				limits = 0;
 			}
 		}
 
@@ -950,10 +983,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			string const name = getArg('{', '}');
 
 			if (name == "array" || name == "subarray") {
-				string const valign =
-					asString(parse(FLAG_OPTION, MathInset::VERBATIM_MODE)) + 'c';
-				string const halign =
-					asString(parse(FLAG_ITEM, MathInset::VERBATIM_MODE));
+				string const valign = parse_verbatim_option() + 'c';
+				string const halign = parse_verbatim_item();
 				cell->push_back(MathAtom(new MathArrayInset(name, valign[0], halign)));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
@@ -1050,12 +1081,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "label") {
-			MathArray ar = parse(FLAG_ITEM, MathInset::VERBATIM_MODE);
+			string label = parse_verbatim_item();
 			if (grid.asHullInset()) {
-				grid.asHullInset()->label(cellrow, asString(ar));
+				grid.asHullInset()->label(cellrow, label);
 			} else {
 				cell->push_back(createMathInset(t.cs()));
-				cell->push_back(MathAtom(new MathBraceInset(ar)));
+				cell->push_back(MathAtom(new MathBraceInset(asArray(label))));
 			}
 		}
 
@@ -1132,14 +1163,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 				else if (l->inset == "parbox") {
 					// read optional positioning and width
-					MathArray pos, width;
-					parse(pos, FLAG_OPTION, MathInset::VERBATIM_MODE);
-
-					parse(width, FLAG_ITEM, MathInset::VERBATIM_MODE);
+					string pos   = parse_verbatim_option();
+ 					string width = parse_verbatim_item();
 					cell->push_back(createMathInset(t.cs()));
 					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
-					cell->back().nucleus()->asParboxInset()->setPosition(asString(pos));
-					cell->back().nucleus()->asParboxInset()->setWidth(asString(width));
+					cell->back().nucleus()->asParboxInset()->setPosition(pos);
+					cell->back().nucleus()->asParboxInset()->setWidth(width);
 				}
 
 				else {

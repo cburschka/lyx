@@ -360,12 +360,12 @@ void MathScriptInset::write(WriteStream & os) const
 {
 	if (nuc().size()) {
 		os << nuc();
-		if (nuc().back()->takesLimits()) {
+		//if (nuc().back()->takesLimits()) {
 			if (limits_ == -1)
 				os << "\\nolimits ";
 			if (limits_ == 1)
 				os << "\\limits ";
-		}
+		//}
 	} else {
 		if (os.firstitem())
 			lyxerr[Debug::MATHED] << "suppressing {} when writing\n";
