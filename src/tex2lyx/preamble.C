@@ -68,8 +68,7 @@ string h_fontscheme              = "default";
 string h_graphics                = "default";
 string h_paperfontsize           = "default";
 string h_spacing                 = "single";
-// Match the entry in ../src/tex-strings.C. Why not "default"?
-string h_papersize               = "Default";
+string h_papersize               = "default";
 string h_paperpackage            = "none";
 string h_use_geometry            = "0";
 string h_use_amsmath             = "0";
@@ -226,7 +225,9 @@ void handle_package(string const & name, string const & opts)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2\n"
-	   << "\\lyxformat 235\n"
+	   << "\\lyxformat 236\n"
+	   << "\\begin_document\n"
+	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n"
 	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (!h_options.empty())
@@ -254,7 +255,8 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
 	   << "\\tracking_changes " << h_tracking_changes << "\n"
-	   << "\\end_header\n";
+	   << "\\end_header\n\n"
+	   << "\\begin_body\n";
 	// clear preamble for subdocuments
 	h_preamble.str("");
 }

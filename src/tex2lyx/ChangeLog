@@ -1,3 +1,11 @@
+2004-08-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C (end_preamble): change file format from 235 to 236
+	* preamble.C (end_preamble): add \begin_document, \begin_header and
+	\begin_body tags
+	* preamble.C (h_papersize): change from "Default" to "default"
+	* tex2lyx.C (tex2lyx): add end_body tag
+
 2008-08-16  José Matos  <jamatos@lyx.org>
 
 	* context.C (begin_deeper, end_deeper):

@@ -304,7 +304,7 @@ void tex2lyx(std::istream &is, std::ostream &os)
 	Context context(true, textclass);
 	parse_text(p, ss, FLAG_END, true, context);
 	context.check_end_layout(ss);
-	ss << "\n\\end_document\n";
+	ss << "\n\\end_body\n\\end_document\n";
 	active_environments.pop_back();
 	ss.seekg(0);
 	os << ss.str();
