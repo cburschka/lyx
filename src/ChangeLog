@@ -1,6 +1,11 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
-	* LaTeXFeatures.[Ch]: append an '_' to the names of all private member variables.
+	* LaTeXFeatures.[Ch]: append a '_' to the names of all private member variables.
+	(ctor): pass and store a 'Buffer const &'
+	(buffer): new member function.
+
+	* buffer.C (makeDocBookFile, makeLinuxDocFile, makeLaTeXFile): pass '*this' to
+	the LaTeXFeatures ctor.
 
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 	

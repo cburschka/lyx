@@ -1111,7 +1111,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(params());
+	LaTeXFeatures features(*this, params());
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 
@@ -1250,7 +1250,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	niceFile() = nice; // this will be used by included files.
 
-	LaTeXFeatures features(params());
+	LaTeXFeatures features(*this, params());
 
 	validate(features);
 
@@ -1680,7 +1680,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	niceFile() = nice; // this will be used by Insetincludes.
 
-	LaTeXFeatures features(params());
+	LaTeXFeatures features(*this, params());
 	validate(features);
 
 	texrow().reset();

@@ -20,6 +20,7 @@
 #include <list>
 #include <map>
 
+class Buffer;
 class BufferParams;
 struct Language;
 
@@ -39,7 +40,7 @@ struct Language;
 class LaTeXFeatures {
 public:
 	///
-	LaTeXFeatures(BufferParams const &);
+	LaTeXFeatures(Buffer const &, BufferParams const &);
 	/// The packages needed by the document
 	string const getPackages() const;
 	/// The macros definitions needed by the document
@@ -77,6 +78,8 @@ public:
 	///
 	void useLayout(string const & lyt);
 	///
+	Buffer const & buffer() const;
+	///
 	BufferParams const & bufferParams() const;
 	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
 	bool useBabel() const;
@@ -102,6 +105,8 @@ private:
 	typedef std::map<string , string> FileMap;
 	///
 	FileMap IncludedFiles_;
+	///
+	Buffer const & buffer_;
 	///
 	BufferParams const & params_;
 };

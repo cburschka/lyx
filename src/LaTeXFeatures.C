@@ -42,8 +42,8 @@ using std::ostringstream;
 using std::set;
 
 
-LaTeXFeatures::LaTeXFeatures(BufferParams const & p)
-	: params_(p)
+LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p)
+	: buffer_(b), params_(p)
 {}
 
 
@@ -446,6 +446,12 @@ void LaTeXFeatures::showStruct() const {
 	       << "\n***** Macros:" << getMacros()
 	       << "\n***** Textclass stuff:" << getTClassPreamble()
 	       << "\n***** done." << endl;
+}
+
+
+Buffer const & LaTeXFeatures::buffer() const
+{
+	return buffer_;
 }
 
 
