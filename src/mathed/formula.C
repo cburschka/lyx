@@ -39,6 +39,14 @@
 #include "font.h"
 #include "support/lyxlib.h"
 #include "lyxrc.h"
+#include "math_defs.h"
+#include "math_inset.h"
+#include "math_parinset.h"
+#include "math_matrixinset.h"
+#include "math_rowst.h"
+#include "math_spaceinset.h"
+#include "math_deliminset.h"
+#include "support.h"
 
 using std::ostream;
 using std::istream;
@@ -72,11 +80,7 @@ static bool sel_flag;
 
 MathedCursor * InsetFormula::mathcursor = 0; 
 
-
-int MathedInset::df_asc;
-int MathedInset::df_des;
-int MathedInset::df_width;
-int MathedInset::workWidth;
+void mathed_init_fonts();
 
 
 static
@@ -85,70 +89,70 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par);
 
 LyXFont WhichFont(short type, int size)
 {
-    LyXFont f;
+	LyXFont f;
     
-      if (!Math_Fonts)
-	mathed_init_fonts();
-   
-   switch (type) {
-    case LM_TC_SYMB:	     
-      f = Math_Fonts[2];
-      break;
-    case LM_TC_BSYM:	     
-      f = Math_Fonts[2];
-      break;
-    case LM_TC_VAR:
-    case LM_TC_IT:
-      f = Math_Fonts[0];
-      break;
-    case LM_TC_BF:
-      f = Math_Fonts[3];
-      break;
-    case LM_TC_SF:
-      f = Math_Fonts[7];
-      break;
-    case LM_TC_CAL:
-      f = Math_Fonts[4];
-      break;
-    case LM_TC_TT:
-      f = Math_Fonts[5];
-      break;
-    case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
-    case LM_TC_TEXTRM:
-    case LM_TC_RM:    
-      f = Math_Fonts[6];
-      break;
-    default:
-      f = Math_Fonts[1];
-      break;   
-   }
-    
-    f.setSize(lfont_size);
-    
-    switch (size) {
-     case LM_ST_DISPLAY:     
-	if (type == LM_TC_BSYM) {
-	    f.incSize();
-	    f.incSize();
+	if (!Math_Fonts)
+		mathed_init_fonts();
+	
+	switch (type) {
+	case LM_TC_SYMB:	     
+		f = Math_Fonts[2];
+		break;
+	case LM_TC_BSYM:	     
+		f = Math_Fonts[2];
+		break;
+	case LM_TC_VAR:
+	case LM_TC_IT:
+		f = Math_Fonts[0];
+		break;
+	case LM_TC_BF:
+		f = Math_Fonts[3];
+		break;
+	case LM_TC_SF:
+		f = Math_Fonts[7];
+		break;
+	case LM_TC_CAL:
+		f = Math_Fonts[4];
+		break;
+	case LM_TC_TT:
+		f = Math_Fonts[5];
+		break;
+	case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
+	case LM_TC_TEXTRM:
+	case LM_TC_RM:    
+		f = Math_Fonts[6];
+		break;
+	default:
+		f = Math_Fonts[1];
+		break;   
 	}
+	
+	f.setSize(lfont_size);
+	
+	switch (size) {
+	case LM_ST_DISPLAY:     
+		if (type == LM_TC_BSYM) {
+			f.incSize();
+			f.incSize();
+		}
 	break;
-     case LM_ST_TEXT:
+	case LM_ST_TEXT:
+		break;
+	case LM_ST_SCRIPT:
+		f.decSize();
+		break;
+	case LM_ST_SCRIPTSCRIPT:
+		f.decSize();
+		f.decSize();
 	break;
-     case LM_ST_SCRIPT:
-	f.decSize();
-	break;
-     case LM_ST_SCRIPTSCRIPT:
-	f.decSize();
-	f.decSize();
-	break;
-     default:
-	     lyxerr << "Mathed Error: wrong font size: " << size << endl;
-	break;
-    }
-
-    if (type != LM_TC_TEXTRM) 
-      f.setColor(LColor::math);
-    return f;
+	default:
+		lyxerr << "Mathed Error: wrong font size: " << size << endl;
+		break;
+	}
+	
+	if (type != LM_TC_TEXTRM) 
+		f.setColor(LColor::math);
+	return f;
 }
 
 
@@ -188,95 +192,26 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
 }
 
 
-LyXFont mathed_get_font(short type, int size)
-{
-	LyXFont f = WhichFont(type, size);
-	if (type == LM_TC_TEX) {
-		f.setLatex(LyXFont::ON);
-	}
-	return f;
-}
 
 
-int mathed_string_width(short type, int size, string const & s)
-{
-	string st;
-	if (MathIsBinary(type))
-		for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-			st += ' ';
-			st += *it;
-			st += ' ';
-		}
-	else
-		st = s;
-
-	LyXFont const f = WhichFont(type, size);
-	return lyxfont::width(st, f);
-}
-
-int mathed_char_width(short type, int size, byte c)
-{
-	if (MathIsBinary(type)) {
-		string s;
-		s += c;
-		return mathed_string_width(type, size, s);
-	}
-	else
-    return lyxfont::width(c, WhichFont(type, size));
-}
 
 
-int mathed_string_height(short type, int size, string const & s,
-			 int & asc, int & des)
-{
-	LyXFont font = WhichFont(type, size);
-	asc = des = 0;
-	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-		des = max(des, lyxfont::descent(*it, font));
-		asc = max(asc, lyxfont::ascent(*it, font));
-	}
-	return asc + des;
-}
 
 
-int mathed_char_height(short type, int size, byte c, int & asc, int & des)
-{
-   LyXFont font = WhichFont(type, size);
-   des = lyxfont::descent(c, font);
-   asc = lyxfont::ascent(c, font);
-   return asc + des;
-}
 
 
-// In a near future maybe we use a better fonts renderer
-void MathedInset::drawStr(Painter & pain, short type, int siz,
-			  int x, int y, string const & s)
-{
-	string st;
-	if (MathIsBinary(type))
-		for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-			st += ' ';
-			st += *it;
-			st += ' ';
-		}
-	else
-		st = s;
-
-	LyXFont const mf = mathed_get_font(type, siz);
-	pain.text(x, y, st, mf);
-}
 
 
 InsetFormula::InsetFormula(bool display)
 {
-  par = new MathParInset; // this leaks
-  //   mathcursor = 0;
-  disp_flag = display;
-  //label = 0;
-  if (disp_flag) {
-    par->SetType(LM_OT_PAR);
-    par->SetStyle(LM_ST_DISPLAY);
-  }
+	par = new MathParInset; // this leaks
+	//   mathcursor = 0;
+	disp_flag = display;
+	//label = 0;
+	if (disp_flag) {
+		par->SetType(LM_OT_PAR);
+		par->SetStyle(LM_ST_DISPLAY);
+	}
 }
 
 
@@ -1270,34 +1205,6 @@ InsetFormula::LocalDispatch(BufferView * bv,
    return result;
 }
 
-
-void
-MathFuncInset::draw(Painter & pain, int x, int y)
-{ 
-	if (!name.empty() && name[0] > ' ') {
-		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
-		font.setLatex(LyXFont::ON);
-	        x += (lyxfont::width('I', font) + 3) / 4;
-		pain.text(x, y, name, font);
-	}
-}
-
-
-void MathFuncInset::Metrics() 
-{
-	//ln = (name) ? strlen(name): 0;
-	LyXFont  font = WhichFont(LM_TC_TEXTRM, size);
-	font.setLatex(LyXFont::ON);
-	if (name.empty()) {
-		width = df_width;
-		descent = df_des;
-		ascent = df_asc;
-	} else {
-		width = lyxfont::width(name, font)
-			+ lyxfont::width('I', font) / 2;
-		mathed_string_height(LM_TC_TEXTRM, size, name, ascent, descent);
-	}
-}
 
 
 static

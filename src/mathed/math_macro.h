@@ -21,13 +21,10 @@
 #pragma interface
 #endif
 
-#include "math_defs.h"
-#include "debug.h"
+#include <vector>
 
-///
-typedef MathParInset * MathParInsetP;
-///
-typedef MathedArray * MathedArrayP;
+#include "math_parinset.h"
+#include "debug.h"
 
 class MathMacroTemplate;
 

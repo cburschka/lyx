@@ -19,14 +19,18 @@
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__
-#pragma implementation "math_macro.h"
-#pragma implementation "math_defs.h"
+#pragma implementation
 #endif
 
 #include "LString.h"
 #include "math_macro.h"
+#include "array.h"
 #include "math_iter.h"
 #include "math_inset.h"
+#include "math_accentinset.h"
+#include "math_deliminset.h"
+#include "math_fracinset.h"
+#include "math_rowst.h"
 #include "support/lstrings.h"
 #include "debug.h"
 
@@ -484,7 +488,7 @@ void MathMacroTable::builtinMacros()
     iter.Insert(inset, LM_TC_ACTIVE_INSET);
     array = new MathedArray; 
     iter.SetData(array);
-    MathFracInset *frac = new MathFracInset(LM_OT_ATOP);
+    MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
     iter.Insert(frac, LM_TC_ACTIVE_INSET);
     inset->SetData(array);
     array = new MathedArray;

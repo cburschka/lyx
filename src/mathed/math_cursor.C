@@ -30,6 +30,15 @@
 #include "debug.h"
 #include "LColor.h"
 #include "Painter.h"
+#include "math_matrixinset.h"
+#include "math_rowst.h"
+#include "math_spaceinset.h"
+#include "math_funcinset.h"
+#include "math_bigopinset.h"
+#include "math_fracinset.h"
+#include "math_decorationinset.h"
+#include "math_dotsinset.h"
+#include "math_accentinset.h"
 
 static MathedArray * selarray = 0;
 

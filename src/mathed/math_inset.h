@@ -30,320 +30,79 @@
 #include "math_defs.h"
 #include "symbol_def.h"
 
-/**
- Functions or LaTeX names for objects that I don't know how to draw.
+/** Abstract base class for all math objects.
+    A math insets is for use of the math editor only, it isn't a
+    general LyX inset. It's used to represent all the math objects.
+    The formulaInset (a LyX inset) encapsulates a math inset.
  */
-class MathFuncInset: public MathedInset  {
-public:
-	///
-	explicit
-	MathFuncInset(string const & nm,
-		      short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
-	///
-	~MathFuncInset();
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-	///
-	inline bool GetLimits() const;
-protected:
-	///
-	int ln;
-	///
-	bool lims;
-	///
-	string fname;
+class MathedInset  {
+ public: 
+    /// A math inset has a name (usually its LaTeX name), type and font-size
+    MathedInset(string const & nm, short ot, short st);
+    ///
+    explicit
+    MathedInset(MathedInset *);
+    ///
+    virtual ~MathedInset() {}
+    /// Draw the object
+    virtual void draw(Painter &, int x, int baseline) = 0;	
+    /// Write LaTeX and Lyx code
+    virtual void Write(std::ostream &, bool fragile) = 0;
+    /// Reproduces itself
+    virtual MathedInset * Clone() = 0;
+    /// Compute the size of the object
+    virtual void Metrics() = 0; 
+    /// 
+    virtual int Ascent() const { return ascent; }
+    ///
+    virtual int Descent() const { return descent; }
+    ///
+    virtual int Width() const { return width; }
+    ///
+    virtual int Height() const { return ascent + descent; }
+    ///
+    virtual bool GetLimits() const { return false; }
+    ///
+    virtual void SetLimits(bool) {}   
+    ///
+    string const & GetName() const { return name; }
+    ///
+    short GetType() const { return objtype; }
+    ///
+    short GetStyle() const { return size; }
+    //Man:  Avoid to use these functions if it's not strictly necessary 
+    ///
+    virtual void  SetType(short t) { objtype = t; }
+    ///
+    virtual void  SetStyle(short st) { size = st; } // Metrics();
+    ///
+    virtual void  SetName(string const & n) { name = n; }
+    ///
+    static int workWidth;
+	 protected:
+    ///
+    string name;
+    ///
+    short objtype;
+    ///
+    int width;
+    ///
+    int ascent;
+    ///
+    int descent;
+    ///
+    short size;
+    /// Default metrics
+    static int df_asc;
+    ///
+    static int df_des;
+    ///
+    static int df_width;
+    /// In a near future maybe we use a better fonts renderer than X
+    void drawStr(Painter &, short, int, int, int, string const &);
+    ///
+    friend class MathedCursor;
+    ///
+    friend void mathed_init_fonts();
 };
-
-
-/// Accents
-class MathAccentInset: public MathedInset {
-public:
-	///
-	MathAccentInset(byte, MathedTextCodes, int, short st = LM_ST_TEXT);
-	///
-	MathAccentInset(MathedInset *, int, short st = LM_ST_TEXT);
-	///
-	~MathAccentInset();
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-	///
-	int getAccentCode() const { return code; }
-	
-protected:
-	///
-	byte c;
-	///
-	MathedTextCodes fn;
-	///
-	int code;
-	///
-	MathedInset * inset;
-	///
-	int dh, dy;
-};
-
-
-///
-class MathDotsInset: public MathedInset {
-public:
-	///
-	MathDotsInset(string const &, int, short st = LM_ST_TEXT);
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-protected:
-	///
-	int dh, code;
-};   
-
-
-/// Smart spaces
-class MathSpaceInset: public MathedInset  {
-public:
-	///
-	MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	inline void Metrics();
-	///
-	inline void SetSpace(int sp);
-	///
-	int GetSpace() { return space; }
-protected:
-	///
-	int space;
-};
-
-
-/// big operators
-class MathBigopInset: public MathedInset {
-public:
-	///
-	MathBigopInset(string const &, int, short st = LM_ST_TEXT);
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-	///
-	inline bool GetLimits() const;
-	///
-	inline void SetLimits(bool);
-protected:
-	///
-	int lims;
-	///
-	int sym;   
-};
-
- 
-//------- All editable insets must be derived from MathParInset.
-
-///
-class MathSqrtInset: public MathParInset {
-public:
-	///
-	MathSqrtInset(short st = LM_ST_TEXT);
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int x, int baseline);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-	///
-	bool Inside(int, int);
-private:
-	///
-	int hmax, wbody;
-};
-
-
-/// Fraction like objects (frac, stackrel, binom) 
-class MathFracInset: public MathParInset {
-public:
-	///
-	MathFracInset(short ot = LM_OT_FRAC);
-	///
-	~MathFracInset();
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int x, int baseline);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-	
-	/** This does the same that SetData(MathedArray*) but for both
-	    numerator and denominator at once.
-	*/
-	void SetData(MathedArray *, MathedArray *);
-	///
-	void SetData(MathedArray *);
-	///
-	void GetXY(int & x, int & y) const;
-	///
-	void SetFocus(int, int);
-	///
-	bool Inside(int, int);
-	///
-	MathedArray * GetData();
-	///
-	bool setArgumentIdx(int i); // was bool Up/down(void);
-	///
-	int getArgumentIdx() const { return idx; }
-	///
-	int getMaxArgumentIdx() const { return 1; }
-	///
-	void  SetStyle(short);
-protected:
-	///
-	int idx;
-	///
-	MathParInset * den;
-	///
-	int w0, w1, des0, dh;
-};
-
-
-/// A delimiter
-class MathDelimInset: public MathParInset {
-public:
-	///
-	MathDelimInset(int, int, short st = LM_ST_TEXT);
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-protected:
-	///
-	int left, right;
-	///
-	int dw, dh;
-};
-
-
-/// Decorations over (below) a math object
-class MathDecorationInset: public MathParInset {
-public:
-	///
-	MathDecorationInset(int, short st = LM_ST_TEXT);
-	///
-	MathedInset * Clone();
-	///
-	void draw(Painter &, int, int);
-	///
-	void Write(std::ostream &, bool fragile);
-	///
-	void Metrics();
-	///
-	inline bool GetLimits() const;
-protected:
-	///
-	int deco;
-	///
-	bool upper;
-	///
-	int dw, dh, dy;
-};
-
-
-// --------------------  Inline functions ---------------------
-
- 
-inline
-MathFuncInset::~MathFuncInset()
-{}
-
-
-inline
-bool MathFuncInset::GetLimits() const 
-{  
-   return bool(lims && (GetStyle() == LM_ST_DISPLAY)); 
-} 
-
-
-inline
-void MathFuncInset::Write(std::ostream & os, bool /* fragile */)
-{
-	os << "\\" << name << ' ';
-}
-
-
-inline
-void MathSpaceInset::Metrics()
-{
-   width = space ? space * 2 : 2;
-   if (space > 3) width *= 2;
-   if (space == 5) width *= 2;
-   width += 4;
-   ascent = 4; descent = 0;
-}
-
-
-inline
-void MathSpaceInset::SetSpace(int sp)
-{ 
-   space = sp;
-   Metrics();
-}    
-
-
-inline
-bool MathBigopInset::GetLimits() const 
-{  
-    // Default case
-    if (lims < 0) {
-	return sym != LM_int && sym != LM_oint && GetStyle() == LM_ST_DISPLAY;
-    } 
-    
-    // Custom 
-    return lims > 0;
-} 
-
-
-inline
-void MathBigopInset::SetLimits(bool ls) 
-{  
-    lims = ls ? 1 : 0; 
-} 
-
-
-inline
-bool MathDecorationInset::GetLimits() const
-{ 
-   return deco == LM_underbrace || deco == LM_overbrace;
-}    
-
 #endif

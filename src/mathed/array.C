@@ -102,7 +102,7 @@ void MathedArray::raw_pointer_insert(void * p, int pos, int len)
 void MathedArray::strange_copy(MathedArray * dest, int dpos,
 				int spos, int len)
 {
-	my_memcpy(&dest[dpos], &bf_[spos], len);
+	my_memcpy(&dest->bf_[dpos], &bf_[spos], len);
 }
 
 

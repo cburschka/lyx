@@ -1,3 +1,10 @@
+2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* array.C (strange_copy): fix bug (hopefully) 
+	* many files: add a lot of new files and move methods to the class
+	files they belong to. Only first attempt at cleanup more will
+	follow.
+	
 2001-02-12  André Pönitz  <poenitz@htwm.de>
 	
 	* math_macro.[hC]: replace MathMacroArgument[] with

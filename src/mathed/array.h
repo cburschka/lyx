@@ -18,15 +18,12 @@
 
 #include <vector>
 
+#include "math_defs.h"
 
 class MathedInset;
 
 #ifdef __GNUG__
 #pragma interface
-#endif
-
-#ifndef byte
-#define byte unsigned char
 #endif
 
 /** \class MathedArray

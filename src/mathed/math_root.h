@@ -19,8 +19,7 @@
 #pragma interface
 #endif
 
-#include "math_defs.h"
-#include "math_inset.h"
+#include "math_sqrtinset.h"
 #include "symbol_def.h"
 #include "LString.h"
 

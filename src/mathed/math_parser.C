@@ -20,16 +20,28 @@
 #include <cctype>
 
 #ifdef __GNUG__
-#pragma implementation "math_parser.h"
+#pragma implementation
 #endif
 
 #include "math_parser.h"
+#include "array.h"
+#include "math_rowst.h"
 #include "math_iter.h"
 #include "math_inset.h"
 #include "math_macro.h"
 #include "math_root.h"
+#include "math_matrixinset.h"
+#include "math_accentinset.h"
+#include "math_bigopinset.h"
+#include "math_funcinset.h"
+#include "math_spaceinset.h"
+#include "math_dotsinset.h"
+#include "math_fracinset.h"
+#include "math_deliminset.h"
+#include "math_decorationinset.h"
 #include "debug.h"
 #include "support/lyxlib.h"
+#include "mathed/support.h"
 
 using std::istream;
 using std::endl;
@@ -82,9 +94,6 @@ char const * latex_mathenv[latex_mathenv_num] = {
 };
 
 
-char const * latex_mathspace[] = {
-   "!", ",", ":", ";", "quad", "qquad"
-};
 
 
 char const * latex_special_chars = "#$%&_{}";
