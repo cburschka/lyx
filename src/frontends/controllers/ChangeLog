@@ -1,3 +1,8 @@
+2001-03-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ControlCredits.C (getCredits): remove std:: qualifier for
+	getline(). 
+
 2001-03-23  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* ControlCredits.C (getCredits): add std:: on vector

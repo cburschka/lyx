@@ -15,6 +15,7 @@
 #ifndef USE_INCLUDED_STRING
 #include <string>
 using std::string;
+using std::getline
 #else
 #ifdef __STRING__
 #error The <string> header has been included before LString.h

@@ -140,7 +140,8 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 						      command2);
 		} else
 			// case 2
-			res = one.startscript(Systemcalls::SystemDontWait, command);
+			res = one.startscript(Systemcalls::SystemDontWait,
+					      command + QuoteName(dviname));
 		break;
 
 	case PrinterParams::FILE:

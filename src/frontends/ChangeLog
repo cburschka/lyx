@@ -1,3 +1,8 @@
+2001-03-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Liason.C (printBuffer): do not forget file name
+	when printing with empty print_spool_command.
+
 2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ButtonPolicies.[Ch]: removed (thought I did this before?). The files

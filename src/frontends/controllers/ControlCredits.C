@@ -54,7 +54,7 @@ std::vector<string> const ControlCredits::getCredits() const
 
 			for(;;) {
 				string line;
-				std::getline(in, line);
+				getline(in, line);
 				if (!in.good()) break;
 				data.push_back(line);
 			}
