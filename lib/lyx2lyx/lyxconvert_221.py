@@ -16,6 +16,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import string
+from parser_tools import find_token
 
 def add_end(header):
     header.append("\\end_header");
@@ -29,10 +30,19 @@ def convert_bibtex(lines):
         lines[i] = string.replace(lines[i],"\\begin_inset LatexCommand \\BibTeX",
                                   "\\begin_inset LatexCommand \\bibtex")
 
+def remove_insetparent(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset LatexCommand \\lyxparent", i)
+        if i == -1:
+            break
+        del lines[i:i+3]
+
 def convert(header, body):
     add_end(header)
     convert_spaces(body)
     convert_bibtex(body)
+    remove_insetparent(body)
 
 if __name__ == "__main__":
     pass
