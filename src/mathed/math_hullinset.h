@@ -21,6 +21,8 @@ public:
 	///
 	explicit MathHullInset(MathInsetTypes t);
 	///
+	MathHullInset(MathInsetTypes t, MathGridInset const & grid);
+	///
 	MathHullInset(MathInsetTypes t, col_type cols);
 	///
 	MathInset * clone() const;

@@ -26,6 +26,9 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
+	bool needsBraces() const { return false; }
+
+	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;

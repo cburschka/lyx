@@ -100,6 +100,13 @@ MathHullInset::MathHullInset(MathInsetTypes t)
 }
 
 
+MathHullInset::MathHullInset(MathInsetTypes t, MathGridInset const & grid)
+	: MathGridInset(grid), objtype_(t), nonum_(1), label_(1)
+{
+	setDefaults();
+}
+
+
 MathHullInset::MathHullInset(MathInsetTypes t, col_type cols)
 	: MathGridInset(cols, 1), objtype_(t), nonum_(1), label_(1)
 {
