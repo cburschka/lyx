@@ -30,7 +30,7 @@ public:
 	/**
 	 * Initialise the spellchecker with the given buffer params and language.
 	 */
-	ASpell(BufferParams const & params, string const & lang);
+	ASpell(BufferParams const & params, std::string const & lang);
 
 	virtual ~ASpell();
 
@@ -50,21 +50,21 @@ public:
 	virtual void accept(WordLangTuple const &);
 
 	/// return the next near miss after a MISSED result
-	virtual string const nextMiss();
+	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual string const error();
+	virtual std::string const error();
 
 private:
 	/// add a speller of the given language
-	void addSpeller(string const & lang);
+	void addSpeller(std::string const & lang);
 
 	struct Speller {
 		AspellSpeller * speller;
 		AspellConfig * config;
 	};
 
-	typedef std::map<string, struct Speller> Spellers;
+	typedef std::map<std::string, struct Speller> Spellers;
 
 	/// the spellers
 	Spellers spellers_;
