@@ -89,8 +89,9 @@ void BufferParams::writeFile(ostream & os) const
 	}
    
 	/* then the text parameters */
-	os << "\\language " << language->lang()
-	   << "\n\\inputencoding " << inputenc
+	if (language != ignore_language)
+		os << "\\language " << language->lang() << '\n';
+	os << "\\inputencoding " << inputenc
 	   << "\n\\fontscheme " << fonts
 	   << "\n\\graphics " << graphicsDriver << '\n';
 

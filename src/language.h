@@ -116,5 +116,6 @@ extern Languages languages;
 extern Language const * default_language;
 extern Language const * english_language;
 extern Language const * ignore_language;
+extern Language const * inherit_language;
 
 #endif

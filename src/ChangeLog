@@ -1,3 +1,38 @@
+2001-07-27  Juergen Vigna  <jug@sad.it>
+
+	* text2.C: font.realize function adaption.
+
+	* text.C (draw): add a warnings lyxerr text if needed.
+
+	* layout.C: font.realize function adaption.
+
+	* language.C: add inherit_language and implement it's handlings
+
+	* bufferview_funcs.C (StyleReset): remove language parameter from
+	font creation (should be language_inherit now).
+
+	* bufferparams.C (writeFile): handle ignore_language.
+
+	* paragraph.C (getFontSettings): the language has to be resolved
+	otherwise we have problems in LyXFont!
+
+	* lyxfont.C (lyxWriteChanges): added document_language parameter
+	(update): removed unneeded language parameter
+
+	* paragraph.C (validate): fixed wrong output of color-package when
+	using interface colors for certain fonts in certain environments,
+	which should not seen as that on the final output.
+
+2001-07-26  Juergen Vigna  <jug@sad.it>
+
+	* lyxfont.C (realize): honor ignore_language too!
+	(resolved): ditto.
+
+	* paragraph.C (TeXOnePar): handle ignore language right (hopefully).
+
+	* text.C (draw): one place more for ignore_language to not draw
+	itself!
+
 2001-07-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* LaTeXFeatures.C (getPackages): clean-up a little of the natbib code.

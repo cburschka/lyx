@@ -164,8 +164,8 @@ Paragraph::~Paragraph()
 
 
 void Paragraph::writeFile(Buffer const * buf, ostream & os,
-			     BufferParams const & bparams,
-			     depth_type dth) const
+                          BufferParams const & bparams,
+                          depth_type dth) const
 {
 	// The beginning or end of a deeper (i.e. nested) area?
 	if (dth != params().depth()) {
@@ -251,7 +251,7 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 		// Write font changes
 		LyXFont font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
-			font2.lyxWriteChanges(font1, os);
+			font2.lyxWriteChanges(font1, bparams.language, os);
 			column = 0;
 			font1 = font2;
 		}
@@ -349,6 +349,10 @@ void Paragraph::validate(LaTeXFeatures & features) const
 		case LColor::none:
 		case LColor::inherit:
 		case LColor::ignore:
+			// probably we should put here all interface colors used for
+			// font displaying! For now I just add this ones I know of (Jug)
+		case LColor::latex:
+		case LColor::note:
 			break;
 		default:
 			features.color = true;
@@ -358,7 +362,10 @@ void Paragraph::validate(LaTeXFeatures & features) const
 		}
 
 		Language const * language = cit->font().language();
-		if (language->babel() != doc_language->babel()) {
+		if (language != ignore_language &&
+			language != inherit_language &&
+			language->babel() != doc_language->babel())
+		{
 			features.UsedLanguages.insert(language);
 			lyxerr[Debug::LATEX] << "Found language "
 					     << language->babel() << endl;
@@ -434,8 +441,11 @@ bool Paragraph::insertFromMinibuffer(Paragraph::size_type pos)
 		return false;
 	if (minibuffer_char == Paragraph::META_INSET)
 		insertInset(pos, minibuffer_inset, minibuffer_font);
-	else
-		insertChar(pos, minibuffer_char, minibuffer_font);
+	else {
+		LyXFont f = minibuffer_font;
+		if (checkInsertChar(f))
+			insertChar(pos, minibuffer_char, f);
+	}
 	return true;
 }
 
@@ -455,6 +465,14 @@ void Paragraph::clear()
 void Paragraph::erase(Paragraph::size_type pos)
 {
 	pimpl_->erase(pos);
+}
+
+
+bool Paragraph::checkInsertChar(LyXFont & font)
+{
+	if (pimpl_->inset_owner)
+		return pimpl_->inset_owner->checkInsertChar(font);
+	return true;
 }
 
 
@@ -550,7 +568,7 @@ Inset const * Paragraph::getInset(Paragraph::size_type pos) const
 
 // Gets uninstantiated font setting at position.
 LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
-					    Paragraph::size_type pos) const
+                                         Paragraph::size_type pos) const
 {
 	lyx::Assert(pos <= size());
 	
@@ -558,13 +576,17 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 	Pimpl::FontList::const_iterator cit = lower_bound(pimpl_->fontlist.begin(),
 						   pimpl_->fontlist.end(),
 						   search_font, Pimpl::matchFT());
-	if (cit != pimpl_->fontlist.end())
-		return cit->font();
-	
-	if (pos == size() && size())
-		return getFontSettings(bparams, pos - 1);
-	
-	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
+	LyXFont retfont;
+	if (cit != pimpl_->fontlist.end()) {
+		retfont = cit->font();
+	} else if (pos == size() && size()) {
+		retfont = getFontSettings(bparams, pos - 1);
+	} else
+		retfont = LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
+	if (retfont.language() == inherit_language)
+		retfont.setLanguage(bparams.language);
+
+	return retfont;
 }
 
 
@@ -605,7 +627,7 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 		else
 			layoutfont = layout.font;
 		tmpfont = getFontSettings(bparams, pos);
-		tmpfont.realize(layoutfont);
+		tmpfont.realize(layoutfont, bparams.language);
 	} else {
 		// process layoutfont for pos == -1 and labelfont for pos < -1
 		if (pos == -1)
@@ -623,14 +645,14 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 		if (par) {
 			tmpfont.realize(textclasslist.
 					Style(bparams.textclass,
-					      par->getLayout()).font);
+					      par->getLayout()).font, bparams.language);
 			par_depth = par->getDepth();
 		}
 	}
 
 	tmpfont.realize(textclasslist
 			.TextClass(bparams.textclass)
-			.defaultfont());
+			.defaultfont(), bparams.language);
 	return tmpfont;
 }
 
@@ -1235,6 +1257,8 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	Language const * doc_language = bparams.language;
 	Language const * previous_language = previous_
 		? previous_->getParLanguage(bparams) : doc_language;
+	if (language == ignore_language || language == inherit_language)
+		lyxerr << "1:" << language->lang() << endl;
 	if (language->babel() != doc_language->babel() &&
 	    language->babel() != previous_language->babel()) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
@@ -1244,13 +1268,14 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	}
 
 	if (bparams.inputenc == "auto" &&
-	    language->encoding() != previous_language->encoding()) {
+	    language->encoding() != previous_language->encoding())
+	{
 		os << "\\inputencoding{"
 		   << language->encoding()->LatexName()
 		   << "}" << endl;
 		texrow.newline();
 	}
-	
+
 	switch (style.latextype) {
 	case LATEX_COMMAND:
 		os << '\\'
@@ -1295,8 +1320,9 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		os << "}";
 
 	if (language->babel() != doc_language->babel() &&
-	    (!next_
-	     || next_->getParLanguage(bparams)->babel() != language->babel())) {
+	    (!next_ ||
+	     next_->getParLanguage(bparams)->babel() != language->babel()))
+	{
 		os << endl 
 		   << subst(lyxrc.language_command_end, "$$lang",
 			    doc_language->babel());
@@ -1550,15 +1576,24 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
+#ifdef FIXED_LANGUAGE_END_DETECTION
 		if (next_) {
 			running_font
 				.latexWriteEndChanges(os, basefont,
-						      next_->getFont(bparams,
-								     0));
+				                      next_->getFont(bparams,
+				                      0));
 		} else {
 			running_font.latexWriteEndChanges(os, basefont,
-							  basefont);
+			                                  basefont);
 		}
+#else
+#ifdef WITH_WARNINGS
+#warning For now we ALWAYS have to close the foreign font settings if they are
+#warning there as we start another \selectlanguage with the next paragraph if
+#warning we are in need of this. This should be fixed sometime (Jug)
+#endif
+		running_font.latexWriteEndChanges(os, basefont,  basefont);
+#endif
 	}
 
 	// Needed if there is an optional argument but no contents.
@@ -1794,9 +1829,13 @@ bool Paragraph::isWord(size_type pos ) const
 Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const 
 {
-	if (size() > 0)
-		return getFirstFontSettings().language();
-	else if (previous_)
+	if (size() > 0) {
+		Language const * lang = getFirstFontSettings().language();
+#warning We should make this somewhat better, any ideas? (Jug)
+		if (lang == inherit_language || lang == ignore_language)
+			lang = bparams.language;
+		return lang;
+	} else if (previous_)
 		return previous_->getParLanguage(bparams);
 	else
 		return bparams.language;
@@ -1828,7 +1867,9 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 	Language const * doc_language =	bparams.language;
 	for (Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	     cit != pimpl_->fontlist.end(); ++cit)
-		if (cit->font().language() != doc_language)
+		if (cit->font().language() != inherit_language &&
+			cit->font().language() != ignore_language &&
+			cit->font().language() != doc_language)
 			return true;
 	return false;
 }

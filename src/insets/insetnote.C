@@ -33,11 +33,7 @@ void InsetNote::init()
 	font.decSize();
 	font.setColor(LColor::note);
 	setLabelFont(font);
-#if 0
-	setAutoCollapse(false);
-#endif
 	setBackgroundColor(LColor::note);
-
 	setLabel(_("note"));
 	setInsetName("Note");
 }
@@ -47,6 +43,19 @@ InsetNote::InsetNote()
 	: InsetCollapsable()
 {
 	init();
+}
+
+
+InsetNote::InsetNote(InsetNote const & in, bool same_id)
+	: InsetCollapsable(in, same_id)
+{
+	init();
+}
+
+
+Inset * InsetNote::clone(Buffer const &, bool same_id) const
+{
+	return new InsetNote(*const_cast<InsetNote *>(this), same_id);
 }
 
 

@@ -169,7 +169,7 @@ bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT1)
-	: bits(inherit), lang(ignore_language)
+	: bits(inherit), lang(inherit_language)
 {}
 
 
@@ -409,8 +409,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setMisc(FONT_MISC_STATE newfont,
 
 
 /// Updates font settings according to request
-void LyXFont::update(LyXFont const & newfont,
-		     Language const * document_language, bool toggleall)
+void LyXFont::update(LyXFont const & newfont, bool toggleall)
 {
 	if (newfont.family() == family() && toggleall)
 		setFamily(INHERIT_FAMILY); // toggle 'back'
@@ -459,10 +458,7 @@ void LyXFont::update(LyXFont const & newfont,
 	
 	setNumber(setMisc(newfont.number(), number()));
 	if (newfont.language() == language() && toggleall)
-		if (language() == document_language)
-			setLanguage(default_language);
-		else
-			setLanguage(document_language);
+		setLanguage(inherit_language);
 	else if (newfont.language() != ignore_language)
 		setLanguage(newfont.language());
 
@@ -496,12 +492,24 @@ void LyXFont::reduce(LyXFont const & tmplt)
 #endif
 	if (color() == tmplt.color())
 		setColor(LColor::inherit);
+	if (language() == tmplt.language())
+		setLanguage(inherit_language);
 }
 
 
 /// Realize font from a template
-LyXFont & LyXFont::realize(LyXFont const & tmplt)
+LyXFont & LyXFont::realize(LyXFont const & tmplt, Language const * deflang)
 {
+	if (language() == inherit_language) {
+		if (tmplt.language() == inherit_language ||
+			tmplt.language() == ignore_language ||
+			tmplt.language() == default_language)
+		{
+			setLanguage(deflang);
+		} else {
+			setLanguage(tmplt.language());
+		}
+	}
 	if (bits == inherit) {
 		bits = tmplt.bits;
 		return *this;
@@ -550,7 +558,8 @@ bool LyXFont::resolved() const
 #ifndef NO_LATEX
 		latex() != INHERIT &&
 #endif
-		color() != LColor::inherit);
+		color() != LColor::inherit &&
+		language() != inherit_language);
 }
 
 
@@ -762,7 +771,8 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 
 
 /// Writes the changes from this font to orgfont in .lyx format in file
-void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
+void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
+                              Language const * doclang, ostream & os) const
 {
 	os << "\n";
 	if (orgfont.family() != family()) {
@@ -829,7 +839,9 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 		os << "\\color " << col_str << "\n";
 	}
 	if (orgfont.language() != language()) {
-		if (language())
+		if (language() == inherit_language)
+			os << "\\lang " << doclang->lang() << "\n";
+		else if (language())
 			os << "\\lang " << language()->lang() << "\n";
 		else
 			os << "\\lang unknown\n";
@@ -936,7 +948,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
 int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
-				  LyXFont const & next) const
+                                  LyXFont const & next) const
 {
 	int count = 0;
 	bool env = false;

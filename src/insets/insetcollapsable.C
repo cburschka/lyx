@@ -79,13 +79,6 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
 }
 
 
-Inset * InsetCollapsable::clone(Buffer const &, bool same_id) const
-{
-	return new InsetCollapsable(*const_cast<InsetCollapsable *>(this),
-								same_id);
-}
-
-
 bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
 {
 	if (!insetAllowed(in->lyxCode())) {

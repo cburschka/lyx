@@ -1801,7 +1801,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 			return the_locking_inset->getLyXText(bv);
 		}
 		return cached_text.get();
-	} else if (it->second.remove) {
+	} else if (it != cache.end() && it->second.remove) {
 		if (locked) {
 			saveLyXTextState(it->second.text.get());
 		} else {

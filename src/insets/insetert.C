@@ -28,7 +28,6 @@ using std::ostream;
 void InsetERT::init()
 {
 	setButtonLabel();
-
 	labelfont = LyXFont(LyXFont::ALL_SANE);
 	labelfont.decSize();
 	labelfont.decSize();
@@ -40,6 +39,19 @@ void InsetERT::init()
 InsetERT::InsetERT() : InsetCollapsable()
 {
 	init();
+}
+
+
+InsetERT::InsetERT(InsetERT const & in, bool same_id)
+	: InsetCollapsable(in, same_id)
+{
+	init();
+}
+
+
+Inset * InsetERT::clone(Buffer const &, bool same_id) const
+{
+	return new InsetERT(*const_cast<InsetERT *>(this), same_id);
 }
 
 
@@ -237,4 +249,14 @@ void InsetERT::setButtonLabel()
 	} else {
 		setLabel(_("666"));
 	}
+}
+
+
+bool InsetERT::checkInsertChar(LyXFont & font)
+{
+	LyXFont f(LyXFont::ALL_INHERIT);
+	font = f;
+	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font.setColor(LColor::latex);
+	return true;
 }

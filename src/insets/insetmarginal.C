@@ -32,6 +32,20 @@ InsetMarginal::InsetMarginal()
 }
 
 
+InsetMarginal::InsetMarginal(InsetMarginal const & in, bool same_id)
+	: InsetFootlike(in, same_id)
+{
+	setLabel(_("margin"));
+	setInsetName("Marginal");
+}
+
+
+Inset * InsetMarginal::clone(Buffer const &, bool same_id) const
+{
+	return new InsetMarginal(*const_cast<InsetMarginal *>(this), same_id);
+}
+
+
 string const InsetMarginal::editMessage() const
 {
 	return _("Opened Marginal Note Inset");

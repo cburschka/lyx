@@ -287,6 +287,9 @@ public:
 #endif
 	/// close the inset
 	virtual void close(BufferView *) {}
+	/// check if the font of the char we want inserting is correct
+	/// and modify it if it is not.
+	virtual bool checkInsertChar(LyXFont & font) { return true; }
 	
 protected:
 	///
@@ -444,6 +447,9 @@ public:
 	virtual bool nodraw() const {
 		return block_drawing_;
 	}
+	/// check if the font of the char we want inserting is correct
+	/// and modify it if it is not.
+	virtual bool checkInsertChar(LyXFont & font) { return true; }
 	///
 	// needed for spellchecking text
 	///

@@ -268,6 +268,8 @@ public:
 	///
 	void insertChar(size_type pos, value_type c, LyXFont const &);
 	///
+	bool checkInsertChar(LyXFont &);
+	///
 	void insertInset(size_type pos, Inset * inset);
 	///
 	void insertInset(size_type pos, Inset * inset, LyXFont const &);

@@ -46,8 +46,6 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & in, bool same_id = false);
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
-	
 	void read(Buffer const *, LyXLex &);
 	///
 	void write(Buffer const *, std::ostream &) const;
@@ -70,7 +68,7 @@ public:
 	///
 	bool insertInset(BufferView *, Inset * inset);
 	///
-	bool insetAllowed(Inset::Code code) const {
+	virtual bool insetAllowed(Inset::Code code) const {
 		return inset.insetAllowed(code);
 	}
 	///
@@ -203,6 +201,9 @@ public:
 	                    bool const & cs = true, bool const & mw = false) {
 		return inset.searchBackward(bv, str, cs, mw);
 	}
+	/// check if the font of the char we want inserting is correct
+	/// and modify it if it is not.
+	virtual bool checkInsertChar(LyXFont &) { return false; }
 
 protected:
 	///

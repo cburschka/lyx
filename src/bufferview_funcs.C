@@ -129,7 +129,7 @@ void Roman(BufferView * bv)
 
 void StyleReset(BufferView * bv)
 {
-	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
+	LyXFont font(LyXFont::ALL_INHERIT);
 	ToggleAndShow(bv, font);
 }
 

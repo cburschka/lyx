@@ -564,6 +564,11 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		x += lyxfont::width(textstring, font);
 	}
 
+#ifdef WITH_WARNINGS
+	if ((font.language() == inherit_language) ||
+		(font.language() == ignore_language))
+		lyxerr << "No this shouldn't happen!\n";
+#endif
 	if (lyxrc.mark_foreign_language &&
 	    font.language() != bview->buffer()->params.language) {
 		int const y = offset + row->height() - 1;

@@ -25,6 +25,10 @@ class InsetNote : public InsetCollapsable {
 public:
 	/// 
 	InsetNote();
+	///
+	InsetNote(InsetNote const &, bool same_id = false);
+	///
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	/// constructor with initial contents
 	InsetNote(Buffer const *, string const & contents, bool collapsed);
 	///

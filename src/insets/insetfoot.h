@@ -28,6 +28,10 @@ public:
 	///
 	InsetFoot();
 	///
+	InsetFoot(InsetFoot const &, bool same_id = false);
+	///
+	Inset * clone(Buffer const &, bool same_id = false) const;
+	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;

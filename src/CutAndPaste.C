@@ -187,7 +187,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 
 
 bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
-				 int & pos, char tc)
+                                 int & pos, char tc)
 {
 	if (!checkPastePossible(*par))
 		return false;

@@ -29,9 +29,17 @@ InsetFootlike::InsetFootlike()
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-#if 0
-	setAutoCollapse(false);
-#endif
+}
+
+
+InsetFootlike::InsetFootlike(InsetFootlike const & in, bool same_id)
+	: InsetCollapsable(in, same_id)
+{
+	LyXFont font(LyXFont::ALL_SANE);
+	font.decSize();
+	font.decSize();
+	font.setColor(LColor::collapsable);
+	setLabelFont(font);
 }
 
 

@@ -113,7 +113,7 @@ LyXText::~LyXText()
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
 LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
-			       Paragraph::size_type pos) const
+                               Paragraph::size_type pos) const
 {
 	LyXLayout const & layout = 
 		textclasslist.Style(buf->params.textclass, par->getLayout());
@@ -128,10 +128,10 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 				// 1% goes here
 				LyXFont f = par->getFontSettings(buf->params,
 								 pos);
-				return f.realize(layout.reslabelfont);
+				return f.realize(layout.reslabelfont, buf->params.language);
 			} else {
 				LyXFont f = par->getFontSettings(buf->params, pos);
-				return f.realize(layout.resfont);
+				return f.realize(layout.resfont, buf->params.language);
 			}
 			
 		} else {
@@ -158,7 +158,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 			layoutfont = layout.font;
 		}
 		tmpfont = par->getFontSettings(buf->params, pos);
-		tmpfont.realize(layoutfont);
+		tmpfont.realize(layoutfont, buf->params.language);
 	} else {
 		// 5% goes here.
 		// process layoutfont for pos == -1 and labelfont for pos < -1
@@ -174,12 +174,14 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 		if (par) {
 			tmpfont.realize(textclasslist.
 					Style(buf->params.textclass,
-					      par->getLayout()).font);
+					      par->getLayout()).font,
+							buf->params.language);
 			par_depth = par->getDepth();
 		}
 	}
 
-	tmpfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
+	tmpfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont(),
+	                buf->params.language);
 
 	return tmpfont;
 }
@@ -191,7 +193,7 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 {
 	Buffer const * buf = bv->buffer();
 	LyXFont font = getFont(buf, par, pos);
-	font.update(fnt, buf->params.language, toggleall);
+	font.update(fnt, toggleall);
 	// Let the insets convert their font
 	if (par->getChar(pos) == Paragraph::META_INSET) {
 		Inset * inset = par->getInset(pos);
@@ -224,12 +226,14 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 			tp = tp->outerHook();
 			if (tp)
 				layoutfont.realize(textclasslist.
-						   Style(buf->params.textclass,
-							 tp->getLayout()).font);
+				                   Style(buf->params.textclass,
+				                         tp->getLayout()).font,
+				                   buf->params.language);
 		}
 	}
 
-	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
+	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont(),
+	                   buf->params.language);
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
@@ -266,12 +270,14 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 			tp = tp->outerHook();
 			if (tp)
 				layoutfont.realize(textclasslist.
-						   Style(buf->params.textclass,
-							 tp->getLayout()).font);
+				                   Style(buf->params.textclass,
+				                         tp->getLayout()).font,
+				                   buf->params.language);
 		}
 	}
 
-	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
+	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont(),
+	                   buf->params.language);
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
@@ -674,15 +680,14 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 		else
 			layoutfont = getFont(bview->buffer(), cursor.par(),-1);
 		// Update current font
-		real_current_font.update(font,
-					 bview->buffer()->params.language,
-					 toggleall);
+		real_current_font.update(font, toggleall);
 
 		// Reduce to implicit settings
 		current_font = real_current_font;
 		current_font.reduce(layoutfont);
 		// And resolve it completely
-		real_current_font.realize(layoutfont);
+		real_current_font.realize(layoutfont,
+		                          bview->buffer()->params.language);
 		return;
 	}
 
@@ -1034,7 +1039,7 @@ void LyXText::toggleFree(BufferView * bview,
 	// is disabled.
 	LyXCursor resetCursor = cursor;
 	bool implicitSelection = (font.language() == ignore_language
-				  && font.number() == LyXFont::IGNORE)
+	                          && font.number() == LyXFont::IGNORE)
 		? selectWordWhenUnderCursor(bview) : false;
 
 	// Set font

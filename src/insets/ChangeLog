@@ -1,3 +1,16 @@
+2001-07-27  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (checkInsertChar): implementation of function
+	checkInsertChar.
+
+	* inset.h: added new function checkInsertChar.
+
+	* various files: added c-tor and clone() function.
+	
+	* insetcollapsable.h: removed clone function here as this should
+	be only realized in REAL insets and added it to all collapsable
+	insets! (with the copy-constructor).
+
 2001-07-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetminipage.C (read): handle missing parameters more gracefully

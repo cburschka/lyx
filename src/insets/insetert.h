@@ -30,7 +30,13 @@ public:
 	///
 	InsetERT();
 	///
+	InsetERT(InsetERT const &, bool same_id = false);
+	///
+	Inset * clone(Buffer const &, bool same_id = false) const;
+	///
 	InsetERT(string const & contents, bool collapsed);
+	///
+	Inset::Code lyxCode() const { return Inset::ERT_CODE; }
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
@@ -63,6 +69,9 @@ public:
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
 	                                     string const &);
+	///
+	bool checkInsertChar(LyXFont &);
+
 private:
 	///
 	void init();
