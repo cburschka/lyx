@@ -103,11 +103,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	titleL->setFont(f);
 	setTitle(LAYOUT);
 
-	// FIXME: Edwin, please change this by making each module have
-	// a change_adaptor(), and connecting inside designer; then
-	// connect each module's change_adaptor to  the main form's
-	// one here.
- 
 	// preamble 
 	connect(preambleModule->preambleMLE, SIGNAL(textChanged()),
 		 this , SLOT(change_adaptor()));

@@ -38,6 +38,15 @@ using std::endl;
 
 qfont_loader::qfont_loader()
 {
+	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
+		for (int i2 = 0; i2 < 2; ++i2) {
+			for (int i3 = 0; i3 < 4; ++i3) {
+				for (int i4 = 0; i4 < 10; ++i4) {
+					fontinfo_[i1][i2][i3][i4] = 0;
+				}
+			}
+		}
+	}
 }
 
 
@@ -48,18 +57,16 @@ qfont_loader::~qfont_loader()
 
 void qfont_loader::update()
 {
-#warning crashes ???? 
-#if 0 
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
-		for (int i2 = 0; i1 < 2; ++i2) {
-			for (int i3 = 0; i1 < 4; ++i3) {
-				for (int i4 = 0; i1 < 10; ++i4) {
-					fontinfo_[i1][i2][i3][i4].reset(0);
+		for (int i2 = 0; i2 < 2; ++i2) {
+			for (int i3 = 0; i3 < 4; ++i3) {
+				for (int i4 = 0; i4 < 10; ++i4) {
+					delete fontinfo_[i1][i2][i3][i4];
+					fontinfo_[i1][i2][i3][i4] = 0;
 				}
 			}
 		}
 	}
-#endif 
 }
 
 
@@ -222,10 +229,10 @@ qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
 		// FIXME
 	}
 
-	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()].get();
+	font_info const * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
 	if (!fi) {
 		fi = new font_info(f);
-		fontinfo_[f.family()][f.series()][f.realShape()][f.size()].reset(fi);
+		fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi;
 	}
 
 	return fi;

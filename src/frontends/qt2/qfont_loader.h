@@ -21,8 +21,6 @@
 #include <qfont.h>
 #include <qfontmetrics.h>
 
-#include <boost/scoped_ptr.hpp>
-
 /**
  * Qt font loader for LyX. Matches LyXFonts against
  * actual QFont instances, and also caches metrics.
@@ -61,7 +59,7 @@ private:
 	font_info const * getfontinfo(LyXFont const & f);
 
 	/// BUTT ugly !
-	boost::scoped_ptr<font_info> fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
+	font_info const * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
 extern qfont_loader fontloader;
