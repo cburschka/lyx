@@ -88,9 +88,10 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 }
 
 
-void InsetQuotes::ParseString(string str)
+void InsetQuotes::ParseString(string const & s)
 {
 	int i;
+	string str(s);
 	if (str.length() != 3) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad string length." << endl;
@@ -137,8 +138,7 @@ void InsetQuotes::ParseString(string str)
 string InsetQuotes::DispString() const
 {
  	string disp;
-
-	disp = quote_char[quote_index[side][language]];
+	disp += quote_char[quote_index[side][language]];
 	if (times == InsetQuotes::DoubleQ)
 		disp += disp;
 
@@ -307,7 +307,7 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 	}
 }
 
-Inset* InsetQuotes::Clone()
+Inset * InsetQuotes::Clone()
 {
   return new InsetQuotes(language, side, times);
 }

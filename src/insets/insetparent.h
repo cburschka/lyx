@@ -4,12 +4,12 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997-1998 LyX Team
+ *           Copyright (C) 1997-1999 LyX Team
  * 
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_PARENT_H
-#define _INSET_PARENT_H
+#ifndef INSET_PARENT_H
+#define INSET_PARENT_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -29,15 +29,15 @@ public:
 	/// Non-standard LyX macro
 	InsetParent(): InsetCommand("lyxparent") { }
 	///
-        InsetParent(string fn, Buffer* owner=0);
+        InsetParent(string fn, Buffer * owner=0);
 	///
         ~InsetParent() {}
 	/// 
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
         ///
-        Inset* Clone() { return new InsetParent(getContents()); }
+        Inset * Clone() { return new InsetParent(getContents()); }
     	///
 	string getScreenLabel() const { return string(_("Parent:"))+getContents(); }
         ///
@@ -51,5 +51,4 @@ public:
         ///
         void setParent(string fn) { setContents(fn); }
 };
-
 #endif

@@ -4,13 +4,13 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *                        1996-1998 LyX Team
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1996-1999 the LyX Team.
  * 
  *======================================================*/
 
-#ifndef _INSET_LOA_H
-#define _INSET_LOA_H
+#ifndef INSET_LOA_H
+#define INSET_LOA_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -28,11 +28,11 @@ public:
 	///
 	InsetLOA(): InsetCommand("listofalgorithms") {}
 	///
-	InsetLOA(Buffer *b): InsetCommand("listofalgorithms"),owner(b) {}
+	InsetLOA(Buffer * b): InsetCommand("listofalgorithms"),owner(b) {}
         ///
-	void Validate(LaTeXFeatures &features) const;
+	void Validate(LaTeXFeatures & features) const;
         ///
-        Inset* Clone() { return new InsetLOA(owner); }
+        Inset * Clone() { return new InsetLOA(owner); }
     	///
 	string getScreenLabel() const { return _("List of Algorithms"); }
 
@@ -48,7 +48,7 @@ public:
 	Inset::Code LyxCode() const { return Inset::LOA_CODE; }
 private:
 	///
-	Buffer *owner;
+	Buffer * owner;
 };
 
 #endif

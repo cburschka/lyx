@@ -6,7 +6,7 @@
  * 	 
  *	    Copyright (C) 1997 LyX Team (this file was created this year)
  * 
- *======================================================*/
+ * ======================================================*/
 
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
@@ -33,11 +33,11 @@ public:
 		flag = InsetInclude::INCLUDE;
 	}
 	///
-	InsetInclude(string const &,  Buffer*);
+	InsetInclude(string const &,  Buffer *);
 	///
 	~InsetInclude();
         ///
-        Inset* Clone();
+        Inset * Clone();
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This is 1 if the childs have labels, 0 otherwise
@@ -58,9 +58,9 @@ public:
         ///
 	void Read(LyXLex &);
 	/// 
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	
 	///
 	void Validate(LaTeXFeatures &) const;
@@ -84,18 +84,18 @@ public:
 		return filename;
 	}
         ///  In "input" mode uses \input instead of \include.
-	bool isInput() const { return (bool)(flag == InsetInclude::INPUT); }
+	bool isInput() const { return flag == InsetInclude::INPUT; }
         ///  If this is true, the child file shouldn't be loaded by lyx
-	bool isNoLoad() const { return (bool)(noload); }
+	bool isNoLoad() const { return noload; }
 
         /**  A verbatim file shouldn't be loaded by LyX
 	 *  No need to generate LaTeX code of a verbatim file
 	 */ 
 	bool isVerb() const;
 	///
-	bool isVerbVisibleSpace() const { return (bool)(flag==InsetInclude::VERBAST);}
+	bool isVerbVisibleSpace() const { return flag==InsetInclude::VERBAST;}
         ///  
-	bool isInclude() const { return (bool)(flag == InsetInclude::INCLUDE);}
+	bool isInclude() const { return flag == InsetInclude::INCLUDE;}
         ///  
 	void setInput();
         ///  
@@ -126,7 +126,7 @@ private:
 	///
         int flag;
         ///
-	Buffer *master;
+	Buffer * master;
 	///
 	string filename;
 };

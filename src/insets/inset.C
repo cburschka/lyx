@@ -37,11 +37,10 @@ unsigned char Inset::Editable() const
   return 0;
 }
 
+
 void Inset::Validate(LaTeXFeatures &) const
 {
-	// nothing by default
 }
-
 
 
 bool Inset::AutoDelete() const
@@ -61,13 +60,7 @@ LyXFont Inset::ConvertFont(LyXFont font)
 }
 
 
-// Inset::Code Inset::LyxCode() const
-// {
-//   return Inset::NO_CODE;
-// }
-
  /* some stuff for inset locking */
-
 
 void UpdatableInset::InsetButtonPress(int x, int y, int button)
 {
@@ -111,5 +104,4 @@ unsigned char UpdatableInset::Editable() const
 
 void UpdatableInset::ToggleInsetCursor()
 {
-  // nothing
 }

@@ -845,9 +845,6 @@ void LyXTable::Write(FILE* file)
     }
 }
 
-#ifdef WITH_WARNINGS
-#warning Clean up this code in 0.13 (Jug)
-#endif
 void LyXTable::Read(FILE* file)
 {
     int version;
@@ -873,14 +870,18 @@ void LyXTable::Read(FILE* file)
         version = atoi(s.c_str()+8);
     else
         version = 1;
+#ifdef WITH_WARNINGS
+#warning Insert a error message window here that this format is not supported anymore
+#endif
+    if (version < 5) {
+	fprintf(stderr,"Tabular format < 5 is not supported anymore\n"
+		"Get an older version of LyX (< 1.1.x) for conversion!\n");
+	return;
+    }
     a=b=c=d=-1;
-    if (version > 2) {
-        fgets(vtmp,sizeof(vtmp),file);
-        sscanf(vtmp, "%d %d %d %d %d %d %d %d\n", &rows_arg, &columns_arg,
-               &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);
-    } else
-        fscanf(file, "%d %d\n",
-               &rows_arg, &columns_arg);
+    fgets(vtmp,sizeof(vtmp),file);
+    sscanf(vtmp, "%d %d %d %d %d %d %d %d\n", &rows_arg, &columns_arg,
+	   &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);
     Init(rows_arg, columns_arg);
     SetLongTable(is_long_table_arg);
     SetRotateTable(rotate_arg);
@@ -921,57 +922,37 @@ void LyXTable::Read(FILE* file)
         } else if (*stmp)
             column_info[i].p_width = stmp;
     }
-    if (version == 1){
-        for (i=0; i<rows;i++){
-            for (j=0;j<columns;j++){
-                fscanf(file, "%d %d\n", &a, &b);
-                cell_info[i][j].multicolumn = (char) a;
-                cell_info[i][j].alignment = (char) b;
-            }
-        }
-    } else if (version < 4) {
-        for (i=0; i<rows;i++){
-            for (j=0;j<columns;j++){
-                fscanf(file, "%d %d %d %d\n", &a, &b, &c, &d);
-                cell_info[i][j].multicolumn = (char) a;
-                cell_info[i][j].alignment = (char) b;
-                cell_info[i][j].top_line = (char) c;
-                cell_info[i][j].bottom_line = (char) d;
-            }
-        }
-    } else {
-        for (i=0; i<rows;i++){
-            for (j=0;j<columns;j++){
-                *stmp = 0;
-                *atmp = 0;
-                a=b=c=d=e=f=g=0;
-                fgets(vtmp,sizeof(vtmp),file);
-                sscanf(vtmp, "%d %d %d %d %d %d %d %s %s\n",
-                       &a, &b, &c, &d, &e, &f, &g, stmp, atmp);
-                cell_info[i][j].multicolumn = (char) a;
-                cell_info[i][j].alignment = (char) b;
-                cell_info[i][j].top_line = (char) c;
-                cell_info[i][j].bottom_line = (char) d;
-                cell_info[i][j].has_cont_row = (bool) e;
-                cell_info[i][j].rotate = (bool) f;
-                cell_info[i][j].linebreaks = (bool) g;
-                // this is only to see if I have an empty string first
-                // this clause should be always TRUE!!!
-                if (*stmp == '"') {
-                    *stmp = 0;
-                    *atmp = 0;
-                    if (stmp[1] == '"')
-                        sscanf(vtmp,"%*d %*d %*d %*d %*d %*d %*d %*s \"%[^\"]\"",
-                               atmp);
-                    else // otherwise after the first empty "" read is aborded
-                        sscanf(vtmp,"%*d %*d %*d %*d %*d %*d %*d \"%[^\"]\" \"%[^\"]\"",
-                               stmp, atmp);
-                    cell_info[i][j].align_special = stmp;
-                    cell_info[i][j].p_width = atmp;
-                } else if (*stmp)
-                    cell_info[i][j].align_special = stmp;
-            }
-        }
+    for (i=0; i<rows;i++){
+	for (j=0;j<columns;j++){
+	    *stmp = 0;
+	    *atmp = 0;
+	    a=b=c=d=e=f=g=0;
+	    fgets(vtmp,sizeof(vtmp),file);
+	    sscanf(vtmp, "%d %d %d %d %d %d %d %s %s\n",
+		   &a, &b, &c, &d, &e, &f, &g, stmp, atmp);
+	    cell_info[i][j].multicolumn = (char) a;
+	    cell_info[i][j].alignment = (char) b;
+	    cell_info[i][j].top_line = (char) c;
+	    cell_info[i][j].bottom_line = (char) d;
+	    cell_info[i][j].has_cont_row = (bool) e;
+	    cell_info[i][j].rotate = (bool) f;
+	    cell_info[i][j].linebreaks = (bool) g;
+	    // this is only to see if I have an empty string first
+	    // this clause should be always TRUE!!!
+	    if (*stmp == '"') {
+		*stmp = 0;
+		*atmp = 0;
+		if (stmp[1] == '"')
+		    sscanf(vtmp,"%*d %*d %*d %*d %*d %*d %*d %*s \"%[^\"]\"",
+			   atmp);
+		else // otherwise after the first empty "" read is aborded
+		    sscanf(vtmp,"%*d %*d %*d %*d %*d %*d %*d \"%[^\"]\" \"%[^\"]\"",
+			   stmp, atmp);
+		cell_info[i][j].align_special = stmp;
+		cell_info[i][j].p_width = atmp;
+	    } else if (*stmp)
+		cell_info[i][j].align_special = stmp;
+	}
     }
     set_row_column_number_info();
 }
@@ -1189,13 +1170,6 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                 if (nvcell < numberofcells && (cell < GetNumberOfCells()-1) &&
                     !ShouldBeVeryLastCell(cell)) {
                     fcell = nvcell;
-#if 0
-                    // Now jump all ContRows
-                    while (IsContRow(fcell))
-                        fcell++;
-                    while (!IsFirstCell(fcell))
-                        fcell--;
-#endif
                     for (i=0; i < NumberOfCellsInRow(fcell); i++){
                         if (TopLine(fcell+i))
                             tmp++;
@@ -1469,46 +1443,6 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
     //int tmp; // tmp2; // unused
     int nvcell; // fcell; // unused
     if (ShouldBeVeryLastCell(cell)) {
-#if 0
-        // the very end at the very beginning
-        if (Linebreaks(cell))
-            file += "\\smallskip{}}";
-        if (IsMultiColumn(cell))
-            file += '}';
-        if (RotateCell(cell)) {
-            file += "\n\\end{sideways}";
-            ret++;
-        }
-        file += "\\\\\n";
-        ret++;
-    
-        tmp = 0;
-        fcell = cell; 
-        while (!IsFirstCell(fcell))fcell--;
-        for (i=0; i < NumberOfCellsInRow(fcell); i++){
-            if (BottomLine(fcell+i))
-                tmp++;
-        }
-        if (tmp == NumberOfCellsInRow(fcell)){
-            file += "\\hline ";
-        } else {
-            tmp = 0;
-            for (i=0; i < NumberOfCellsInRow(fcell); i++){
-                if (BottomLine(fcell+i)){
-                   file += "\\cline{";
-                   file += column_of_cell(fcell+i)+1;
-                   file += '-';
-                   file += right_column_of_cell(fcell+i)+1;
-                   file += "} ";
-                    tmp = 1;
-                }
-            }
-        }
-        if (tmp){
-            file += '\n';
-            ret++;
-        }
-#endif
        addNewlineAndDepth(file,--depth);
         file += "</ENTRY>";
        addNewlineAndDepth(file,--depth);
@@ -1521,12 +1455,6 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
         else
             file += "</TGROUP>";
        addNewlineAndDepth(file,--depth);
-#if 0
-        if (rotate) {
-            file += "\n\\end{sideways}";
-            ret++;
-        }
-#endif
         ret += 4;
     } else {
         nvcell = NextVirtualCell(cell+1);
@@ -1566,39 +1494,6 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                     file += '|';
 #endif
             }
-#if 0
-            tmp = 0;
-            if (GetNumberOfCells()) {
-                fcell = 0;
-                for (i=0; i < NumberOfCellsInRow(fcell); i++){
-                    if (TopLine(fcell+i))
-                        tmp++;
-                }
-                if (tmp == NumberOfCellsInRow(fcell)){
-                    file += "\\hline ";
-                } else {
-                    tmp = 0;
-                    for (i=0; i < NumberOfCellsInRow(fcell); i++){
-                        if (TopLine(fcell+i)){
-                           file += "\\cline{";
-                           file += column_of_cell(fcell+i)+1;
-                           file += '-';
-                           file += right_column_of_cell(fcell+i)+1;
-                           file += "} ";
-                            tmp = 1;
-                        }
-                    }
-                }
-                if (tmp){
-                    file += '\n';
-                    ret++;
-                }
-            }
-            if (RotateCell(0)) {
-                file += "\\begin{sideways}\n";
-                ret++;
-            }
-#endif
             file += "<TBODY>";
            addNewlineAndDepth(file,++depth);
             file += "<ROW>";
@@ -1615,18 +1510,6 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
            addNewlineAndDepth(file,++depth);
             ret += 3;
         } else {
-#if 0
-            // usual cells
-            if (Linebreaks(cell))
-                file += "\\smallskip{}}";
-            if (IsMultiColumn(cell)){
-                file += '}';
-            }
-            if (RotateCell(cell)) {
-                file += "\n\\end{sideways}";
-                ret++;
-            }
-#endif
             if (IsLastCell(cell)) {
                addNewlineAndDepth(file,--depth);
                 file += "</ENTRY>";
@@ -1649,157 +1532,6 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                file += ">";
                addNewlineAndDepth(file,++depth);
                 ret += 4;
-#if 0
-                int row = row_of_cell(cell);
-                string hline1,hline2;
-                bool print_hline = true;
-                bool pr_top_hline,flag1,flag2;
-                flag1 = IsLongTable() &&
-                    ((row == endhead) || (row == endfirsthead) ||
-                     (row == endfoot) || (row == endlastfoot));
-                row++;
-                flag2 = IsLongTable() &&
-                    ((row <= endhead) || (row <= endfirsthead) ||
-                     (row <= endfoot) || (row <= endlastfoot));
-                row--;
-                // print the bottom hline only if (otherwise it is doubled):
-                // - is no LongTable
-                // - there IS a first-header
-                // - the next row is no special header/footer
-                //   & this row is no special header/footer
-                // - the next row is a special header/footer
-                //   & this row is a special header/footer
-                pr_top_hline = (flag1 && flag2) || (!flag1 && !flag2) ||
-                    (endfirsthead == endhead);
-                file += "\\\\\n";
-                ret++;
-                tmp = 0;
-                fcell = cell;
-                while (!IsFirstCell(fcell))
-                    fcell--;
-                for (i=0; i < NumberOfCellsInRow(cell); i++){
-                    if (BottomLine(fcell+i))
-                        tmp++;
-                }
-                if (tmp == NumberOfCellsInRow(cell)){
-                    file += "\\hline ";
-                    hline1 = "\\hline ";
-                } else {
-                    tmp = 0;
-                    for (i=0; i < NumberOfCellsInRow(fcell); i++){
-                        if (BottomLine(fcell+i)){
-                            file += "\\cline{";
-                            file += column_of_cell(fcell+i)+1;
-                            file += '-';
-                            file += right_column_of_cell(fcell+i)+1;
-                            file += "} ";
-                            hline1 += "\\cline{";
-                            hline1 += column_of_cell(fcell+i)+1;
-                            hline1 += '-';
-                            hline1 += right_column_of_cell(fcell+i)+1;
-                            hline1 += "} ";
-                            tmp = 1;
-                        }
-                    }
-                }
-                if (tmp){
-                    file += '\n';
-                    ret++;
-                }
-                if (IsLongTable() && (row == endfoot)) {
-                    file += "\\endfoot\n";
-                    ret++;
-                    print_hline = false; // no double line below footer
-                }
-                if (IsLongTable() && (row == endlastfoot)) {
-                    file += "\\endlastfoot\n";
-                    ret++;
-                    print_hline = false; // no double line below footer
-                }
-                if (IsLongTable() && row_info[row].newpage) {
-                    file += "\\newpage\n";
-                    ret++;
-                    print_hline = false; // no line below a \\newpage-command
-                }
-                tmp = 0;
-                if (nvcell < numberofcells && (cell < GetNumberOfCells()-1) &&
-                    !ShouldBeVeryLastCell(cell)) {
-                    fcell = nvcell;
-                    for (i=0; i < NumberOfCellsInRow(fcell); i++){
-                        if (TopLine(fcell+i))
-                            tmp++;
-                    }
-                    if (tmp == NumberOfCellsInRow(fcell)){
-                        if (print_hline)
-                            file += "\\hline ";
-                        hline2 = "\\hline ";
-                    }
-                    else {
-                        tmp = 0;
-                        for (i=0; i < NumberOfCellsInRow(fcell); i++){
-                            if (TopLine(fcell+i)){
-                                if (print_hline) {
-                                   file += "\\cline{";
-                                   file += column_of_cell(fcell+i)+1;
-                                   file += '-';
-                                   file += right_column_of_cell(fcell+i)+1;
-                                   file += "} ";
-                               }
-                                hline2 += "\\cline{";
-                                hline2 += column_of_cell(fcell+i)+1;
-                                hline2 += '-';
-                                hline2 += right_column_of_cell(fcell+i)+1;
-                                hline2 += "} ";
-                                tmp = 1;
-                            }
-                        }
-                    }
-                    if (tmp && print_hline){
-                        file += '\n';
-                        ret++;
-                    }
-                }
-                // the order here is important as if one defines two
-                // or more things in one line only the first entry is
-                // displayed the other are set to an empty-row. This
-                // is important if I have a footer and want that the
-                // lastfooter is NOT displayed!!!
-                bool sflag2 = (row == endhead) || (row == endfirsthead) ||
-                    (row == endfoot) || (row == endlastfoot);
-                row--;
-//                sflag2 = IsLongTable() && (row >= 0) &&
-//                    (sflag2 || (row == endhead) || (row == endfirsthead));
-                row += 2;
-                bool sflag1 = IsLongTable() && (row != endhead) &&
-                    (row != endfirsthead) &&
-                    ((row == endfoot) || (row == endlastfoot));
-                row--;
-                if (IsLongTable() && (row == endhead)) {
-                    file += "\\endhead\n";
-                    ret++;
-                }
-                if (IsLongTable() && (row == endfirsthead)) {
-                    file += "\\endfirsthead\n";
-                    ret++;
-                }
-                if (sflag1) { // add the \hline for next foot row
-                    if (!hline1.empty()) {
-                        file += hline1 + '\n';
-                        ret++;
-                    }
-                }
-                // add the \hline for the first row
-                if (pr_top_hline && sflag2) {
-                    if (!hline2.empty()) {
-                        file += hline2 + '\n';
-                        ret++;
-                    }
-                }
-                if (nvcell < numberofcells && RotateCell(nvcell)) {
-                    file += "\\begin{sideways}\n";
-                    ret++;
-                }
-#endif
             } else {
                addNewlineAndDepth(file,--depth);
                 file += "</ENTRY>";
@@ -1818,54 +1550,8 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                file += ">";
                addNewlineAndDepth(file,++depth);
                 ret += 3;
-#if 0
-                if (nvcell < numberofcells && RotateCell(nvcell)) {
-                    file += "\\begin{sideways}\n";
-                    ret++;
-                }
-#endif
             }
         }
-#if 0
-        if (nvcell < numberofcells && IsMultiColumn(nvcell)) {
-            file += "\\multicolumn{";
-            file += cells_in_multicolumn(nvcell);
-            file += "}{";
-            if (!cellinfo_of_cell(cell+1)->align_special.empty()) {
-                file += cellinfo_of_cell(cell+1)->align_special;
-                file += "}{";
-            } else {
-                if (LeftLine(nvcell))
-                    file += '|';
-                if (!GetPWidth(nvcell).empty()) {
-                    file += "p{";
-                    file += GetPWidth(nvcell);
-                    file += '}';
-                } else {
-                    switch (GetAlignment(nvcell)) {
-                      case LYX_ALIGN_LEFT: file += 'l'; break;
-                      case LYX_ALIGN_RIGHT: file += 'r'; break;
-                      default:  file += 'c'; break;
-                    }
-                }
-                if (RightLine(nvcell))
-                    file += '|';
-                //if (column_of_cell(cell+2)!=0 && LeftLine(cell+2))
-                if (((nvcell+1) < numberofcells) &&
-                    (NextVirtualCell(nvcell+1) < numberofcells) &&
-                    (column_of_cell(NextVirtualCell(nvcell+1))!=0) &&
-                    LeftLine(NextVirtualCell(nvcell+1)))
-                    file += '|';
-                file += "}{";
-            }
-        }
-        if (nvcell < numberofcells && Linebreaks(nvcell)) {
-//            !column_info[column_of_cell(nvcell)].p_width.empty()) {
-            file += "\\parbox{";
-            file += GetPWidth(nvcell);
-            file += "}{\\smallskip{}";
-        }
-#endif
     }
     return ret;
 }

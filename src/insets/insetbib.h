@@ -5,12 +5,12 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *          Copyright (C) 1995-1999 The LyX Team.
  * 
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_BIB_H
-#define _INSET_BIB_H
+#ifndef INSET_BIB_H
+#define INSET_BIB_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -28,11 +28,11 @@ public:
 	///
 	InsetCitation(): InsetCommand("cite") { }
 	///
-	InsetCitation(string const & key, string const & note=string());
+	InsetCitation(string const & key, string const & note = string());
         ///
 	~InsetCitation();
         ///
-        Inset* Clone() { return new InsetCitation(contents, options); }
+        Inset * Clone() { return new InsetCitation(contents, options); }
     	///
 	string getScreenLabel()const;
         ///
@@ -54,13 +54,13 @@ public:
 	///
 	InsetBibKey(): InsetCommand("bibitem") { counter = 1; }
 	///
-	InsetBibKey(string const & key, string const & label=string());
+	InsetBibKey(string const & key, string const & label = string());
 	///
-	InsetBibKey(InsetBibKey const*);
+	InsetBibKey(InsetBibKey const *);
 	///
 	~InsetBibKey();
 	///
-        Inset* Clone() { return new InsetBibKey(this); }
+        Inset * Clone() { return new InsetBibKey(this); }
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
         void Write(FILE *);
 	///
@@ -98,7 +98,7 @@ public:
         ///
         ~InsetBibtex();
         ///
-	Inset* Clone() { return new InsetBibtex(contents, options, 0); }
+	Inset * Clone() { return new InsetBibtex(contents, options, 0); }
 	///  
 	Inset::Code LyxCode() const
 	{
@@ -111,7 +111,7 @@ public:
 	/// 
 	int Latex(FILE *, signed char);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
 	string getKeys();
 	///

@@ -34,19 +34,19 @@ InsetSpecialChar::~InsetSpecialChar()
 }
 
 
-int InsetSpecialChar::Ascent(LyXFont const&font) const
+int InsetSpecialChar::Ascent(LyXFont const & font) const
 {
 	return font.maxAscent();
 }
 
 
-int InsetSpecialChar::Descent(LyXFont const&font) const
+int InsetSpecialChar::Descent(LyXFont const & font) const
 {
 	return font.maxDescent();
 }
 
 
-int InsetSpecialChar::Width(LyXFont const&font) const
+int InsetSpecialChar::Width(LyXFont const & font) const
 {
 	LyXFont f = font;
 	switch (kind) {
@@ -73,8 +73,8 @@ int InsetSpecialChar::Width(LyXFont const&font) const
 }
 
 
-void InsetSpecialChar::Draw(LyXFont font, LyXScreen &scr,
-			    int baseline, float &x)
+void InsetSpecialChar::Draw(LyXFont font, LyXScreen & scr,
+			    int baseline, float & x)
 {
 	switch (kind) {
 	case HYPHENATION:
@@ -117,7 +117,7 @@ void InsetSpecialChar::Draw(LyXFont font, LyXScreen &scr,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetSpecialChar::Write(FILE *file)
+void InsetSpecialChar::Write(FILE * file)
 {
 	string command;
 	switch (kind) {
@@ -131,7 +131,7 @@ void InsetSpecialChar::Write(FILE *file)
 
 
 // This function will not be necessary when lyx3
-void InsetSpecialChar::Read(LyXLex &lex)
+void InsetSpecialChar::Read(LyXLex & lex)
 {    
 	lex.nextToken();
 	string command = lex.GetString();
@@ -149,7 +149,7 @@ void InsetSpecialChar::Read(LyXLex &lex)
 }
 
 
-int InsetSpecialChar::Latex(FILE *file, signed char /*fragile*/)
+int InsetSpecialChar::Latex(FILE * file, signed char /*fragile*/)
 {
 	string command;
 	signed char dummy = 0;
@@ -159,7 +159,7 @@ int InsetSpecialChar::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetSpecialChar::Latex(string &file, signed char /*fragile*/)
+int InsetSpecialChar::Latex(string & file, signed char /*fragile*/)
 {
 	switch (kind) {
 	case HYPHENATION:	file += "\\-";	break;
@@ -171,7 +171,7 @@ int InsetSpecialChar::Latex(string &file, signed char /*fragile*/)
 }
 
 
-int InsetSpecialChar::Linuxdoc(string &file)
+int InsetSpecialChar::Linuxdoc(string & file)
 {
 	switch (kind) {
 	case HYPHENATION:	file += "";	break;
@@ -183,7 +183,7 @@ int InsetSpecialChar::Linuxdoc(string &file)
 }
 
 
-int InsetSpecialChar::DocBook(string &file)
+int InsetSpecialChar::DocBook(string & file)
 {
 	switch (kind) {
 	case HYPHENATION:	file += "";	break;
@@ -195,14 +195,14 @@ int InsetSpecialChar::DocBook(string &file)
 }
 
 
-Inset* InsetSpecialChar::Clone()
+Inset * InsetSpecialChar::Clone()
 {
-	InsetSpecialChar *result = new InsetSpecialChar(kind);
+	InsetSpecialChar * result = new InsetSpecialChar(kind);
 	return result;
 }
 
 
-void InsetSpecialChar::Validate(LaTeXFeatures& features) const
+void InsetSpecialChar::Validate(LaTeXFeatures & features) const
 {
 	if (kind == MENU_SEPARATOR) {
 		features.lyxarrow = true;

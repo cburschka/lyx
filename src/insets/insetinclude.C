@@ -20,18 +20,19 @@
 #include "gettext.h"
 #include "include_form.h"
 #include "support/FileInfo.h"
+#include "layout.h"
 
-extern BufferView *current_view;
+extern BufferView * current_view;
 
-extern LyXRC *lyxrc;
+extern LyXRC * lyxrc;
 extern BufferList bufferlist;
-extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 
 
-FD_include *create_form_include(void)
+FD_include * create_form_include(void)
 {
-  FL_OBJECT *obj;
-  FD_include *fdui = (FD_include *) fl_calloc(1, sizeof(FD_include));
+  FL_OBJECT * obj;
+  FD_include * fdui = (FD_include *) fl_calloc(1, sizeof(FD_include));
 
   fdui->include = fl_bgn_form(FL_NO_BOX, 340, 210);
   obj = fl_add_box(FL_UP_BOX,0,0,340,210,"");
@@ -86,12 +87,12 @@ FD_include *create_form_include(void)
 /*---------------------------------------*/
 
 
-FD_include *form = 0;
+FD_include * form = 0;
 
 extern "C" void include_cb(FL_OBJECT *, long arg)
 {
     
-	InsetInclude *inset = (InsetInclude*)form->vdata;
+	InsetInclude * inset = static_cast<InsetInclude*>(form->include->u_vdata);
 	switch (arg) {
 	case 0:
 	{
@@ -183,7 +184,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 }
 
 
-InsetInclude::InsetInclude(string const & fname, Buffer *bf)
+InsetInclude::InsetInclude(string const & fname, Buffer * bf)
 	: InsetCommand("include") 
 {
 	master = bf;
@@ -195,7 +196,7 @@ InsetInclude::InsetInclude(string const & fname, Buffer *bf)
 
 InsetInclude::~InsetInclude()
 {
-	if (form && form->vdata == this) {
+	if (form && form->include->u_vdata == this) {
 		// this inset is in the popup so hide the popup 
 		// and remove the reference to this inset. ARRae
 		if (form->include) {
@@ -221,7 +222,7 @@ Inset * InsetInclude::Clone()
 		ii->setVerb();
 		ii->setVisibleSpace(isVerbVisibleSpace());
 	}
-	return (Inset*)ii;
+	return ii;
 }
 
 void InsetInclude::Edit(int, int)
@@ -233,7 +234,7 @@ void InsetInclude::Edit(int, int)
                 form = create_form_include();
 		fl_set_form_atclose(form->include, IgnoreCloseBoxCB, 0);
 	}
-        form->vdata = this;
+        form->include->u_vdata = this;
     
         fl_set_input(form->input, contents.c_str());
 	fl_set_button(form->flag1, int(isNoLoad()));
@@ -257,13 +258,13 @@ void InsetInclude::Edit(int, int)
 }
 
 
-void InsetInclude::Write(FILE *file)
+void InsetInclude::Write(FILE * file)
 {
 	fprintf(file, "Include %s\n", getCommand().c_str());
 }
 
 
-void InsetInclude::Read(LyXLex &lex)
+void InsetInclude::Read(LyXLex & lex)
 {
 	InsetCommand::Read(lex);
     
@@ -313,7 +314,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(FILE *file, signed char /*fragile*/)
+int InsetInclude::Latex(FILE * file, signed char /*fragile*/)
 {
 	string include_file;
 	signed char dummy = 0;
@@ -323,7 +324,7 @@ int InsetInclude::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetInclude::Latex(string &file, signed char /*fragile*/)
+int InsetInclude::Latex(string & file, signed char /*fragile*/)
 {
 	string writefile, incfile;
 
@@ -341,9 +342,9 @@ int InsetInclude::Latex(string &file, signed char /*fragile*/)
 			lyxerr << "ERROR: Cannot handle include file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' which has textclass `"
-			       << lyxstyle.NameOfClass(tmp->params.textclass)
+			       << textclasslist.NameOfClass(tmp->params.textclass)
 			       << "' instead of `"
-			       << lyxstyle.NameOfClass(master->params.textclass)
+			       << textclasslist.NameOfClass(master->params.textclass)
 			       << "'." << endl;
 			return 0;
 		}
@@ -400,7 +401,7 @@ int InsetInclude::Latex(string &file, signed char /*fragile*/)
 }
 
 
-void InsetInclude::Validate(LaTeXFeatures& features) const
+void InsetInclude::Validate(LaTeXFeatures & features) const
 {
 	if (isVerb())
 		features.verbatim = true;
@@ -410,7 +411,7 @@ void InsetInclude::Validate(LaTeXFeatures& features) const
 	// to be loaded:
 	if (loadIfNeeded()) {
 		// a file got loaded
-		Buffer *tmp = bufferlist.getBuffer(getFileName());
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
 		tmp->validate(features);
 	}
 }
@@ -423,7 +424,7 @@ string InsetInclude::getLabel(int) const
 	
 	
     if (loadIfNeeded()) {
-	Buffer *tmp = bufferlist.getBuffer(getFileName());
+	Buffer * tmp = bufferlist.getBuffer(getFileName());
 	tmp->setParentName(""); 
 	label =  tmp->getReferenceList('\n');
 	tmp->setParentName(getMasterFilename());
@@ -438,7 +439,7 @@ int InsetInclude::GetNumberOfLabels() const {
     int nl;
 
     if (loadIfNeeded()) {
-	Buffer *tmp = bufferlist.getBuffer(getFileName());
+	Buffer * tmp = bufferlist.getBuffer(getFileName());
 	tmp->setParentName("");    
 	label = tmp->getReferenceList('\n');
 	tmp->setParentName(getMasterFilename());
@@ -451,14 +452,14 @@ int InsetInclude::GetNumberOfLabels() const {
 
 string InsetInclude::getKeys() const
 {
-	string list;
+	string lst;
 	
 	if (loadIfNeeded()) {
 		Buffer *tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName(""); 
-		list =  tmp->getBibkeyList(',');
+		lst =  tmp->getBibkeyList(',');
 		tmp->setParentName(getMasterFilename());
 	}
 	
-	return list;
+	return lst;
 }

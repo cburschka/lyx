@@ -6,10 +6,10 @@
  * 	 
  *	    Copyright (C) 1997 Asger Alstrup
  *
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_SPECIALCHAR_H
-#define _INSET_SPECIALCHAR_H
+#ifndef INSET_SPECIALCHAR_H
+#define INSET_SPECIALCHAR_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -43,27 +43,27 @@ public:
 	///
 	~InsetSpecialChar();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	/// Will not be used when lyxf3
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	/// 
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///  
 	Inset::Code LyxCode() const
 	{

@@ -67,30 +67,34 @@ bool IsLetterCharOrDigit(char ch)
 
 // Returns the current selection. If nothing is selected or if the selection
 // spans 2 paragraphs, an empty string is returned.
-string const GetCurrentSelectionAsString(LyXText *lt) 
+string const GetCurrentSelectionAsString(LyXText * lt) 
 {
-	LyXParagraph 	*par;
-	int 		pos;
-	int		endpos;
-	int		i;
 	char		sz[LYXSEARCH_MAXLEN];
-	char		ch;
-	bool		fPrevIsSpace;
 
 	sz[0] = 0;
-	par = lt->cursor.par;
+	LyXParagraph * par = lt->cursor.par;
 	if (lt->selection && (lt->sel_cursor.par == par)) {
 		// (selected) and (begin/end in same paragraph)
-		pos = lt->sel_start_cursor.pos;
-		endpos = lt->sel_end_cursor.pos;
-		i = 0;
-		fPrevIsSpace = false;
+#ifdef NEW_TEXT
+		LyXParagraph::size_type pos =
+			lt->sel_start_cursor.pos;
+		LyXParagraph::size_type endpos =
+			lt->sel_end_cursor.pos;
+#else
+		int pos =
+			lt->sel_start_cursor.pos;
+		int endpos =
+			lt->sel_end_cursor.pos;
+#endif
+		int i = 0;
+		bool fPrevIsSpace = false;
+		char ch;
 		while ((i < LYXSEARCH_MAXLEN-2) && 
 			(pos < par->Last()) && (pos < endpos)) {
 			ch = par->GetChar(pos);
 
 			//HB??: Maybe (ch <= ' ') 
-			if ((ch == ' ') || ((unsigned char)ch <= LYX_META_INSET)) {
+			if ((ch == ' ') || (ch <= LYX_META_INSET)) {
 				// consecutive spaces --> 1 space char
 				if (fPrevIsSpace) {
 					pos++;		// Next text pos
@@ -293,13 +297,14 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 // if the string can be found: return true and set the cursor to
 // the new position 
 // (was: LyXText::SearchForward(char const* string) in text2.C )
-bool LyXFindReplace1::SearchForward(LyXText *lt)
+bool LyXFindReplace1::SearchForward(LyXText * lt)
 {
-	LyXParagraph *par;
-	int pos;
-
-	par = lt->cursor.par;
-	pos = lt->cursor.pos;
+	LyXParagraph * par = lt->cursor.par;
+#ifdef NEW_TEXT
+	LyXParagraph::size_type pos = lt->cursor.pos;
+#else
+	int pos = lt->cursor.pos;
+#endif
 
 	while (par && !IsSearchStringInText(par,pos)) {
 		if (pos<par->Last()-1)
@@ -356,48 +361,46 @@ int LyXFindReplace1::CompareChars(char chSearch, char chText)
 {
 	if (CaseSensitive())
 		return (chSearch - chText);
-	return (toupper((unsigned char) chSearch) - toupper((unsigned char) chText));
+	return (toupper(chSearch) - toupper(chText));
 }
 
 
 // returns true if the search string is at the specified position 
 // (Copied from the original "LyXText::IsStringInText" in text2.C )
-bool LyXFindReplace1::IsSearchStringInText(LyXParagraph *par, int pos)
+#ifdef NEW_TEXT
+bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
+					   LyXParagraph::size_type pos)
+#else
+bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
+					   int pos)
+#endif
 {
 	char		chSrch = 0;
 	char		chText;
-	bool		fPrevIsSpace;
-	int		iText;
-	string::size_type iSrch;
 
 	if (!par) 
 		return false;
 
-	fPrevIsSpace = false;
-	iText = 0; iSrch = 0;
-	while (pos+iText < par->Last() && 
+	bool fPrevIsSpace = false;
+	int iText = 0;
+	string::size_type iSrch = 0;
+	while (pos + iText < par->Last() && 
 	       iSrch < SearchString().length()) {
 		chSrch = SearchString()[iSrch];
 		chText = par->GetChar(pos+iText);
-// Why was this code there ??? Insets are *not* spaces!
-// It seems that there is some code here to handle multiple spaces. I
-// wonder why this is useful...  (JMarc)
-// 		if ((chText == ' ') || 
-// 		    ((unsigned char)chText <= LYX_META_INSET)) 
  		if (chText == ' ') {
 			if (fPrevIsSpace) {
 				iText++;  // next Text pos
 				continue; // same search pos
 			}
-// 			chText = ' ';				
 			fPrevIsSpace = true;
 		} else
 			fPrevIsSpace = false;
 		if (CompareChars(chSrch, chText) != 0)
 			break;
 		
-		iSrch++;
-		iText++;
+		++iSrch;
+		++iText;
 	}
 
 	if (iSrch < SearchString().length())
@@ -405,7 +408,7 @@ bool LyXFindReplace1::IsSearchStringInText(LyXParagraph *par, int pos)
 
 	if (!MatchWord() 
 	    || ((pos <= 0 || !IsLetterCharOrDigit(par->GetChar(pos-1)))
-		&& (pos+iText >= par->Last() 
+		&& (pos + iText >= par->Last() 
 		    || !IsLetterCharOrDigit(par->GetChar(pos + iText))))) {
 		iLenSelected = iText;
 		return true;

@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -14,8 +14,8 @@
 #include "LaTeXFeatures.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 
-extern BufferView *current_view;
-extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+extern BufferView * current_view;
+extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 
 InsetUrl::InsetUrl(string const & cmd)
 	: fd_form_url(0)
@@ -28,7 +28,7 @@ InsetUrl::InsetUrl(string const & cmd)
 }
 
 
-InsetUrl::InsetUrl(InsetCommand const &inscmd)
+InsetUrl::InsetUrl(InsetCommand const & inscmd)
 	: fd_form_url(0)
 {
 	setCmdName(inscmd.getCmdName());
@@ -41,8 +41,8 @@ InsetUrl::InsetUrl(InsetCommand const &inscmd)
 }
 
 
-InsetUrl::InsetUrl(string const &ins_name,string const &ins_cont,
-		   string const &ins_opt)
+InsetUrl::InsetUrl(string const & ins_name, string const & ins_cont,
+		   string const & ins_opt)
 	: fd_form_url(0)
 {
 	setCmdName(ins_name);
@@ -65,9 +65,9 @@ InsetUrl::~InsetUrl()
 }
 
 
-void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
+void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 {
-	InsetUrl *inset = (InsetUrl*) ob->u_vdata;
+	InsetUrl * inset = static_cast<InsetUrl*>(ob->u_vdata);
 	string url = fl_get_input(inset->fd_form_url->url_name);
 	string name = fl_get_input(inset->fd_form_url->name_name);
 	string cmdname;
@@ -76,7 +76,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 	else
 		cmdname = "url";
 	
-	Buffer *buffer = current_view->currentBuffer();
+	Buffer * buffer = current_view->currentBuffer();
 	
 	if ((url != inset->getContents() ||
 	     name != inset->getOptions() ||
@@ -95,14 +95,17 @@ void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 	
 	if (inset->fd_form_url) {
 		fl_hide_form(inset->fd_form_url->form_url);
+		fl_free_form(inset->fd_form_url->form_url);
 		inset->fd_form_url = 0;
 	}
 }
 
-extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT *ob, long)
+
+extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
 {
-	InsetUrl::CloseUrlCB(ob,0);
+	InsetUrl::CloseUrlCB(ob, data);
 }
+
 
 void InsetUrl::Edit(int, int)
 {
@@ -158,7 +161,7 @@ string InsetUrl::getScreenLabel() const
 }
 
 
-int InsetUrl::Latex(FILE *file, signed char fragile)
+int InsetUrl::Latex(FILE * file, signed char fragile)
 {
 	string latex_output;
 	int res = Latex(latex_output, fragile);
@@ -181,7 +184,7 @@ int InsetUrl::Latex(string &file, signed char fragile)
 }
 
 
-int InsetUrl::Linuxdoc(string &file)
+int InsetUrl::Linuxdoc(string & file)
 {
 	file +=  "<"+ getCmdName() +
 		 " url=\""  + getContents()+"\"" +
@@ -191,7 +194,7 @@ int InsetUrl::Linuxdoc(string &file)
 }
 
 
-int InsetUrl::DocBook(string &file)
+int InsetUrl::DocBook(string & file)
 {
 	file +=  "<ulink url=\""  + getContents() + "\">" +
 		 getOptions() +"</ulink>";
@@ -200,7 +203,7 @@ int InsetUrl::DocBook(string &file)
 }
 
 
-void InsetUrl::Validate(LaTeXFeatures& features) const
+void InsetUrl::Validate(LaTeXFeatures & features) const
 {
 	features.url = true;
 }

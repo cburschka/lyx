@@ -15,34 +15,27 @@
 #pragma implementation
 #endif
 
-#include "lyxlex.h"
+#include <fstream>
+#include <algorithm>
 #include "support/FileInfo.h"
 #include "lastfiles.h"
-#include "support/filetools.h"
 #include "debug.h"
 
-LastFiles::LastFiles(string const & filename, bool st, char num)
+LastFiles::LastFiles(string const & filename, bool st, unsigned int num)
 	: dostat(st)
 {
 	setNumberOfFiles(num);
-	files = new string[num_files];
 	readFile(filename);
 }
 
 
-LastFiles::~LastFiles()
+void LastFiles::setNumberOfFiles(unsigned int no)
 {
-	delete[] files;
-}
-
-
-void LastFiles::setNumberOfFiles(char no)
-{
-	if (1 <= no && no <= ABSOLUTEMAXLASTFILES)
+	if (0 < no && no <= ABSOLUTEMAXLASTFILES)
 		num_files = no;
 	else {
 		lyxerr << "LyX: lastfiles: too many files\n"
-			"\tdefault (=" << int(DEFAULTFILES) // int() only because of anon enum
+			"\tdefault (=" << int(DEFAULTFILES)
 		       << ") used." << endl;
 		num_files = DEFAULTFILES;
 	}
@@ -52,48 +45,30 @@ void LastFiles::setNumberOfFiles(char no)
 void LastFiles::readFile(string const & filename)
 {
 	// we will not complain if we can't find filename nor will
-	// we issue a warning. Lgb.
-	LyXLex lex(0, 0); /* LyXLex should be changed
-			      * to allow constructor with
-			      * no parameters. */
-	bool error = false;
-
-	lex.setFile(filename);
-
-	if (!lex.IsOK()) return;
-
+	// we issue a warning. (Lgb)
+	ifstream ifs(filename.c_str());
 	string tmp;
 	FileInfo fileInfo;
-	int i = 0;
 
-	while (lex.IsOK() && !error && i < num_files) {
-		switch(lex.lex()) {
-		case LyXLex::LEX_FEOF:
-			error = true;
-			break;
-		default:
-			tmp = lex.GetString();
-			// Check if the file exist
-			if (dostat) {
-				if (!(fileInfo.newFile(tmp).exist() &&
-				      fileInfo.isRegular()))
-					break; // the file does not exist
-			}
-			files[i] = tmp;
-			i++;
-			break;
+	while(getline(ifs, tmp) && files.size() < num_files) {
+		if (dostat) {
+			if (!(fileInfo.newFile(tmp).exist() &&
+			      fileInfo.isRegular()))
+				continue;
 		}
+		files.push_back(tmp);
 	}
 }
 
 
 void LastFiles::writeFile(string const & filename) const
 {
-	FilePtr fd(filename, FilePtr::write);
-	if (fd()) {
- 		for (int i = 0; i < num_files; i++) {
- 			if (!files[i].empty())
- 				fprintf(fd, "\"%s\"\n", files[i].c_str());
+	ofstream ofs(filename.c_str());
+	if (ofs) {
+ 		for (Files::const_iterator cit = files.begin();
+		     cit != files.end();
+		     ++cit) {
+			ofs << (*cit) << '\n';
  		}
 	} else
 		lyxerr << "LyX: Warning: unable to save LastFiles: "
@@ -103,12 +78,19 @@ void LastFiles::writeFile(string const & filename) const
 
 void LastFiles::newFile(string const & file)
 {
-	int n;
-	// Find this file in list. If not in list, point to last entry
-	for(n = 0; n < (num_files - 1); n++)
-		if(files[n] == file) break;
+	// If file already exist, delete it and reinsert at front.
+	Files::iterator it = find(files.begin(), files.end(), file);
+	if (it != files.end())
+		files.erase(it);
+	files.push_front(file);
+	if (files.size() > num_files)
+		files.pop_back();
+}
 
-	for(int i = n; i >= 1; i--)
-		files[i] = files[i - 1];
-	files[0] = file;
+
+string LastFiles::operator[](unsigned int i) const
+{
+	if (i < files.size())
+		return files[i];
+	return string();
 }

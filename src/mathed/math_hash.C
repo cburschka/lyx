@@ -361,20 +361,20 @@ in_word_set (register const char *str, register int len)
 
       if (key <= MAX_HASH_VALUE && key >= 0)
         {
-          register int index = lookup[key];
+          register int idx = lookup[key];
 
-          if (index >= 0 && index < MAX_HASH_VALUE)
+          if (idx >= 0 && idx < MAX_HASH_VALUE)
             {
-              register char const *s = wordlist[index].name;
+              register char const * s = wordlist[idx].name;
 
               if (*s == *str && !strcmp (str + 1, s + 1))
-                return &wordlist[index];
+                return &wordlist[idx];
             }
-          else if (index < 0 && index >= -MAX_HASH_VALUE)
+          else if (idx < 0 && idx >= -MAX_HASH_VALUE)
             return 0;
           else
             {
-              register int offset = key + index + (index > 0 ? -MAX_HASH_VALUE : MAX_HASH_VALUE);
+              register int offset = key + idx + (idx > 0 ? -MAX_HASH_VALUE : MAX_HASH_VALUE);
               register struct latexkeys *base = &wordlist[-lookup[offset]];
               register struct latexkeys *ptr = base + -lookup[offset + 1];
 

@@ -15,6 +15,7 @@
 #include "lyxscreen.h"
 #include "gettext.h"
 #include "lyxtext.h"
+#include "layout.h"
 
 extern void BeforeChange();
 

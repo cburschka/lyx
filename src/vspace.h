@@ -17,6 +17,7 @@
 #endif
 
 #include <cstdio>
+#include "LString.h"
 
 ///  LyXLength Class
 class LyXLength {
@@ -210,5 +211,3 @@ private:
 };
 
 #endif
-
-

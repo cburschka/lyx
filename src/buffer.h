@@ -19,8 +19,8 @@
 // every time the LyX-file was left unchanged between the two actions mentioned
 // above.
 
-#ifndef _BUFFER_H_
-#define _BUFFER_H_
+#ifndef BUFFER_H
+#define BUFFER_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -370,9 +370,9 @@ private:
         ///
 	void DocBookHandleFootnote(FILE *file,LyXParagraph* &par, int const depth);
 	///
-        void sgmlOpenTag(FILE * file,int depth,string & latexname);
+        void sgmlOpenTag(FILE * file,int depth,string const & latexname) const;
         ///
-        void sgmlCloseTag(FILE * file,int depth,string & latexname);
+        void sgmlCloseTag(FILE * file,int depth,string const & latexname) const;
 	///
 	void LinuxDocError(LyXParagraph *par, int pos, char const *message);
         ///

@@ -4,13 +4,13 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *                        1996-1998 LyX Team
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1996-1999 the LyX Team.
  * 
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_INDEX_H
-#define _INSET_INDEX_H
+#ifndef INSET_INDEX_H
+#define INSET_INDEX_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -35,7 +35,7 @@ public:
 	///
 	~InsetIndex();
 	///
-	Inset *Clone() { return new InsetIndex(contents);}
+	Inset * Clone() { return new InsetIndex(contents);}
 	///
 	void Edit(int, int);
 	///
@@ -53,13 +53,13 @@ public:
 	///
 	InsetPrintIndex();
 	///
-	InsetPrintIndex(Buffer*);
+	InsetPrintIndex(Buffer *);
 	///
 	~InsetPrintIndex();
 	/// Updates needed features for this inset.
-	void Validate(LaTeXFeatures &features) const;
+	void Validate(LaTeXFeatures & features) const;
 	///
-	void Edit(int, int){;}
+	void Edit(int, int) {}
 	///
 	unsigned char Editable() const{
 		return 1;
@@ -72,18 +72,16 @@ public:
 	string getScreenLabel() const;
 private:
 	///
-	Buffer *owner;
+	Buffer * owner;
 };
 
 // this was shifted here rather than a separate
 // file because its little and only need by
 // insetindex.C and lyx_gui_misc.C ARRae 981020
 struct FD_index_form {
-	FL_FORM *index_form;
-	FL_OBJECT *key;
-	void *vdata;
-	long ldata;
+	FL_FORM * index_form;
+	FL_OBJECT * key;
 };
 
-extern FD_index_form *index_form;
+extern FD_index_form * index_form;
 #endif

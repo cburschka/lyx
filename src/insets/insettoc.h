@@ -4,13 +4,13 @@
  *
  *           LyX, The Document Word Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *                        1996-1998 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1996-1999 The LyX Team.
  * 
  *======================================================*/
 
-#ifndef _INSET_TOC_H
-#define _INSET_TOC_H
+#ifndef INSET_TOC_H
+#define INSET_TOC_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -28,9 +28,9 @@ public:
 	///
 	InsetTOC(): InsetCommand("tableofcontents") {}
 	///
-	InsetTOC(Buffer *b): InsetCommand("tableofcontents"),owner(b){}
+	InsetTOC(Buffer * b): InsetCommand("tableofcontents"),owner(b) {}
         ///
-        Inset* Clone() { return new InsetTOC(owner); }
+        Inset * Clone() { return new InsetTOC(owner); }
     	///
 	string getScreenLabel() const { return _("Table of Contents"); }
 	/// On edit, we open the TOC pop-up
@@ -44,12 +44,12 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 private:
 	///
-	Buffer *owner;
+	Buffer * owner;
 };
 
 #endif

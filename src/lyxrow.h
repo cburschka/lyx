@@ -4,26 +4,28 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
-#ifndef _LYXROW_H
-#define _LYXROW_H
+#ifndef LYXROW_H
+#define LYXROW_H
 
-//#include "lyxparagraph.h"
-
-class LyXParagraph;
+#include "lyxparagraph.h"
 
 ///
 struct Row {
 	///
-	LyXParagraph *par;
+	LyXParagraph * par;
 	///
+#ifdef NEW_TEXT
+	LyXParagraph::size_type pos;
+#else
 	int pos;
+#endif
 	///
 	unsigned short  baseline;
-	///
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
 	int fill;
@@ -33,9 +35,9 @@ struct Row {
 	unsigned short ascent_of_text;
 	
 	///
-	Row* next;
+	Row * next;
 	///
-	Row* previous;
+	Row * previous;
 };
 
 #endif

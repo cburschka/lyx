@@ -273,7 +273,7 @@ void MathedIter::Insert(MathedInset* p, int type)
 //      array->bf[pos-1] = type;
     {
 	unsigned char *pt = &array->bf[pos];
-	unsigned char *ps = (unsigned char *)&p;
+	unsigned char *ps = reinterpret_cast<unsigned char*>(&p);
 	size_t i;
 	*pt++ = type;
 	for(i = 0; i < sizeof(p); i++) {
@@ -574,9 +574,9 @@ void MathedXIter::SetData(MathParInset *pp)
 byte* MathedXIter::GetString(int& ls)
 {  
    static byte s[255];
-   byte const *sx =  MathedIter::GetString(ls);
+   byte const *sxs =  MathedIter::GetString(ls);
    if (ls>0) {
-       strncpy((char *)s, (char const*)sx, ls);
+       strncpy(reinterpret_cast<char*>(s), reinterpret_cast<const char*>(sxs), ls);
        x += mathed_string_width(fcode, size, s, ls);
        return &s[0];
    } 	    
@@ -862,7 +862,7 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 	byte cx, cxp=0;// *s;
 	int x1;// ls;
     int asc=0, des=0;
-    bool limits = false;
+    bool limit = false;
   
     descent = ascent = width = 0;
     if (!array) return;
@@ -875,7 +875,7 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 	    mathed_char_height(FCode(), size, cx, asc, des);
 	    if (asc > ascent) ascent = asc;
 	    if (des > descent) descent = des;
-	    limits = false;
+	    limit = false;
 	} else
 	if (MathIsInset(cx)) {
 	    MathedInset *pp = GetInset();
@@ -883,7 +883,7 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 		if (!asc && p) {
 		    int xx, yy;
 		    p->GetXY(xx, yy);
-		    ((MathParInset*)pp)->GetXY(xx, asc);
+		    static_cast<MathParInset*>(pp)->GetXY(xx, asc);
 		    asc = yy - asc;
 		}
 		asc += ((limits) ? pp->Height()+4: pp->Ascent());
@@ -892,12 +892,12 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 		  if (!des && p) {
 		      int xx, yy;
 		      p->GetXY(xx, yy);
-		      ((MathParInset*)pp)->GetXY(xx, des);
+		      static_cast<MathParInset*>(pp)->GetXY(xx, des);
 		      if (des-pp->Height()<yy && !asc)
 			asc = yy - (des-pp->Height());
 		      des -= yy;
 		  }
-		  des += ((limits) ? pp->Height()+4: pp->Height()-pp->Ascent()/2);
+		  des += (limit ? pp->Height()+4: pp->Height()-pp->Ascent()/2);
 	      } else {
 		  asc = pp->Ascent();
 		  des = pp->Descent();
@@ -905,10 +905,10 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 	    if (asc > ascent) ascent = asc;
 	    if (des > descent) descent = des;
 	    if (cx!=LM_TC_UP && cx!=LM_TC_DOWN)
-	      limits = pp->GetLimits();
+	      limit = pp->GetLimits();
 	} else 
 	if (cx==LM_TC_TAB) {
-	    limits = false;                   
+	    limit = false;                   
 	}      
 	else {
 		lyxerr[Debug::MATHED]
@@ -916,7 +916,7 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 			<< cx << ']' << endl;
 	    break;
 	}       
-	if (pos<pos2)  Next();
+	if (pos < pos2)  Next();
 	cxp = cx;
    }
     width = x - x1;
@@ -953,7 +953,7 @@ MathedRowSt *MathedXIter::adjustVerticalSt()
 	    crow = new MathedRowSt(ncols+1); // this leaks
     }
 //    lyxerr<< " CRW[" << crow << "] ";
-    MathedRowSt *row = crow;
+    MathedRowSt *mrow = crow;
     while (OK()) {
 	if (IsCR()) {
 	    if (col>=ncols) ncols = col+1; 
@@ -965,6 +965,6 @@ MathedRowSt *MathedXIter::adjustVerticalSt()
 	}   
 	Next();	
     }
-    return row;
+    return mrow;
 }
 

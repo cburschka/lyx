@@ -1,83 +1,88 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 1996 Matthias Ettrich
-*           and the LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ====================================================== */
 
-#ifndef _LASTFILES_H
-#define _LASTFILES_H
+#ifndef LASTFILES_H
+#define LASTFILES_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include <deque>
 #include "LString.h"
 
 
 /** The latest documents loaded
-  This class takes care of the last .lyx files used by the LyX user. It
-  both reads and writes this information to a file. The number of files
-  kept are user defined, but defaults to four.
+    This class takes care of the last .lyx files used by the LyX user. It
+    both reads and writes this information to a file. The number of files
+    kept are user defined, but defaults to four.
 */
 class LastFiles 
 {
 public:
+	///
+	typedef deque<string> Files;
+
 	/**@name Constructors and Deconstructors */
 	//@{
 	/**
-	  Parameters are: name of file to read. Whether you want LastFiles 
-	  to check for file existance, and the number of files to remember.
-	  */
-	LastFiles(string const &, bool dostat = true, char num = 4);
-	///
-	~LastFiles();
+	   Parameters are: name of file to read. Whether LastFiles should
+	   check for file existance, and the number of files to remember.
+	*/
+	LastFiles(string const &, bool dostat = true, unsigned int num = 4);
 	//@}
-
+	
 	/**@name Methods */
 	//@{
 	/**
-	  This funtion inserts #file# into the last files list. If the file
-	  already exist it is moved to the top of the list. If it don't
-	  exist it is placed on the top of the list. If the list already is
-	  full the last visited file in the list is puched out and deleted.
-	 */
+	   This funtion inserts #file# into the last files list. If the file
+	   already exist it is moved to the top of the list, else exist it
+	   is placed on the top of the list. If the list is full the last
+	   file in the list is popped from the end.
+	*/
 	void newFile(string const &);
-	/**  Writes the lastfiles table to disk. A " is placed around the
-	  filenames to preserve special chars. (not all are preserved
-	  anyway, but at least space is.)
-	  */
+	/**  Writes the lastfiles table to disk. One file on each line, this
+	     way we can at least have some special chars (e.g. space), but
+	     newline in filenames are thus not allowed.
+	*/
 	void writeFile(string const &) const;
+	///
+	string operator[](unsigned int) const;
+	///
+	Files::const_iterator begin() const { return files.begin(); }
+	///
+	Files::const_iterator end() const { return files.end(); }
 	//@}
 private:
 	/**@name const variables */
 	//@{
-	/// 
 	enum {
 		///
-		DEFAULTFILES = 4
-	};
-	/** There is no point in keeping more than this number of files
-	  at the same time. However perhaps someday someone finds use for
-	  more files and wants to change it. Please do. But don't show
-	  the files in a menu...
-	  */
-	enum {
-		///
+		DEFAULTFILES = 4,
+		/** There is no point in keeping more than this number
+		    of files at the same time. However perhaps someday
+		    someone finds use for more files and wants to
+		    change it. Please do. But don't show the files in
+		    a menu...
+		*/
 		ABSOLUTEMAXLASTFILES = 20
 	};
 	//@}
-
+	
 	/**@name Variables */
 	//@{
-	/// an array of lastfiles
-	string *files;
+	/// a list of lastfiles
+	Files files;
 	/// number of files in the lastfiles list.
-	char num_files;
+	unsigned int num_files;
 	/// check for file existance or not.
 	bool dostat;
 	//@}
@@ -85,43 +90,13 @@ private:
 	/**@name Methods */
 	//@{
 	/** reads the .lyx_lastfiles at the beginning of the LyX session.
-	  This will read the lastfiles file (usually .lyx_lastfiles). It
-	  will normally discard files that don't exist anymore, unless
-	  LastFiles has been initialized with dostat = false. 
-	 */
+	    This will read the lastfiles file (usually .lyx_lastfiles). It
+	    will normally discard files that don't exist anymore, unless
+	    LastFiles has been initialized with dostat = false. 
+	*/
 	void readFile(string const &);
 	/// used by the constructor to set the number of stored last files.
-        void setNumberOfFiles(char num);
-	//@}
-
-	/**@name Friends */
-	//@{
-	///
-	friend class LastFiles_Iter;
+        void setNumberOfFiles(unsigned int num);
 	//@}
 };
-
-
-/// An Iterator class for LastFiles
-class LastFiles_Iter {
-public:
-	///
-	LastFiles_Iter(const LastFiles& la)
-	{cs = &la; index = 0;}
-	///
-	string operator() ()
-	{
-		return (index < cs->num_files)? cs->files[index++] 
-					        : string();
-	}
-	///
-	string operator[] (int a)
-	{ return cs->files[a];}
-private:
-	///
-	const LastFiles *cs;
-	///
-	char index;
-};
-
 #endif

@@ -6,10 +6,10 @@
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_LATEX_H
-#define _INSET_LATEX_H
+#ifndef INSET_LATEX_H
+#define INSET_LATEX_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -33,29 +33,29 @@ public:
 	///
 	~InsetLatex();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	///
 	bool Deletable() const;
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///
 	Inset::Code LyxCode() const;
 private:

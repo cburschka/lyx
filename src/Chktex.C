@@ -61,32 +61,21 @@ int Chktex::scanLogFile(TeXErrors &terr)
 	string token;
 	int retval = 0;
 
-	LyXLex lex(0, 0);
-
 	string tmp = ChangeExtension(file, ".log", true);
 
-	if (!lex.setFile(tmp)) {
-		// Unable to open file. Return at once
-		return -1;
-	}
-
-	while (lex.IsOK()) {
-		if (lex.EatLine())
-			token = lex.GetString();
-		else // blank line in the file being read
-			continue;
-
+	ifstream ifs(tmp.c_str());
+	while (getline(ifs, token)) {
 		string srcfile, line, pos, warno, warning;
-		token=split(token, srcfile, ':');
-		token=split(token, line, ':');
-		token=split(token, pos, ':');
-		token=split(token, warno, ':');
-		token=split(token, warning, ':');
+		token = split(token, srcfile, ':');
+		token = split(token, line, ':');
+		token = split(token, pos, ':');
+		token = split(token, warno, ':');
+		token = split(token, warning, ':');
 
 		int lineno = atoi(line.c_str());
 		warno = _("ChkTeX warning id #") + warno;
 		terr.insertError(lineno, warno, warning);
-		retval++;
+		++retval;
 	}
 	return retval;
 }

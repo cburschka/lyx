@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-#include <cstdio>
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -20,7 +17,6 @@
 #include "support/filetools.h"
 #include "LaTeX.h"
 #include "Literate.h"
-#include "lyxlex.h"
 #include "support/FileInfo.h"
 #include "debug.h"
 #include "support/lyxlib.h"
@@ -37,15 +33,14 @@ Literate::Literate(string const & latex, string const & f, string const & p,
 		   string const & l, 
 		   string const & literate, string const & literate_f, 
 		   string const & build, string const & build_f)
-                   : LaTeX (latex, f, p),
+                   : LaTeX(latex, f, p),
 		     litfile(l),
 		     literate_cmd(literate), literate_filter(literate_f), 
 		     build_cmd(build), build_filter(build_f)
-{
-}
+{}
 
 
-int Literate::weave(TeXErrors &terr, MiniBuffer *minib)
+int Literate::weave(TeXErrors & terr, MiniBuffer * minib)
 {
         int scanres = Literate::NO_ERRORS;
         string tmp1, tmp2;
@@ -66,21 +61,18 @@ int Literate::weave(TeXErrors &terr, MiniBuffer *minib)
         ret1 = one.startscript(Systemcalls::System, tmp1);
         ret2 = two.startscript(Systemcalls::System, tmp2);
         lyxerr.debug() << "LITERATE {" << tmp1 << "} {" << tmp2 << "}" << endl;
-	scanres = scanLiterateLogFile(terr);
+	scanres = scanLiterateLogFile();
 	if (scanres & Literate::ERRORS) return scanres; // return on literate error
-
 	return run(terr, minib);
 }
 
 
-int Literate::build(TeXErrors &terr, MiniBuffer *minib)
+int Literate::build(TeXErrors & terr, MiniBuffer * minib)
         // We know that this function will only be run if the lyx buffer
         // has been changed. 
 {
         int scanres = Literate::NO_ERRORS;
         num_errors = 0; // just to make sure.
-        // DepTable head; // empty head // unused
-        // bool rerun = false; // rerun requested // unused
         string tmp1, tmp2;
         int ret1, ret2;
         Systemcalls one, two;
@@ -98,35 +90,22 @@ int Literate::build(TeXErrors &terr, MiniBuffer *minib)
         tmp2 = build_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
         ret1 = one.startscript(Systemcalls::System, tmp1);
         ret2 = two.startscript(Systemcalls::System, tmp2);
-        scanres = scanBuildLogFile(terr);
+        scanres = scanBuildLogFile();
         lyxerr[Debug::LATEX] << "Done." << endl;
 
         return scanres;
 }
 
 
-int Literate::scanLiterateLogFile(TeXErrors &terr)
+int Literate::scanLiterateLogFile()
 {
         string token;
         int retval = NO_ERRORS;
         
-        LyXLex lex(0, 0);
- 
         string tmp = litfile + ".log";
         
-        if (!lex.setFile(tmp)) {
-                // unable to open file
-                // return at once
-                retval |= NO_LOGFILE;
-                return retval;
-        }
-        
-        while (lex.IsOK()) {
-                if (lex.EatLine())
-                        token = lex.GetString();
-                else // blank line in the file being read
-                        continue;
- 
+        ifstream ifs(tmp.c_str());
+	while (getline(ifs, token)) {
                 lyxerr[Debug::LATEX] << token << endl;
                 
                 if (prefixIs(token, "Build Warning:")) {
@@ -140,7 +119,6 @@ int Literate::scanLiterateLogFile(TeXErrors &terr)
                         retval |= LATEX_ERROR;
                         lyxerr[Debug::LATEX] << "Build Error." << endl;
                         // this is not correct yet
-                        terr.scanError(lex);
                         num_errors++;
                 }
         }       
@@ -148,28 +126,15 @@ int Literate::scanLiterateLogFile(TeXErrors &terr)
 }
 
 
-int Literate::scanBuildLogFile(TeXErrors &terr)
+int Literate::scanBuildLogFile()
 {
         string token;
         int retval = NO_ERRORS;
-        
-        LyXLex lex(0, 0);
  
         string tmp = litfile + ".log";
         
-        if (!lex.setFile(tmp)) {
-                // unable to open file
-                // return at once
-                retval |= NO_LOGFILE;
-                return retval;
-        }
-        
-        while (lex.IsOK()) {
-                if (lex.EatLine())
-                        token = lex.GetString();
-                else // blank line in the file being read
-                        continue;
- 
+        ifstream ifs(tmp.c_str());
+	while (getline(ifs, token)) {
                 lyxerr[Debug::LATEX] << token << endl;
                 
                 if (prefixIs(token, "Build Warning:")) {
@@ -183,11 +148,8 @@ int Literate::scanBuildLogFile(TeXErrors &terr)
                         retval |= LATEX_ERROR;
                         lyxerr[Debug::LATEX] << "Build Error." << endl;
                         // this is not correct yet
-                        terr.scanError(lex);
                         num_errors++;
                 }
         }       
         return retval;
 }
-
-

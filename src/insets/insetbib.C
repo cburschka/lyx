@@ -19,11 +19,11 @@
 #include "lyxtext.h"
 #include "support/filetools.h"
 
-extern BufferView *current_view;
+extern BufferView * current_view;
 
-FD_citation_form *citation_form=0;
-FD_bibitem_form *bibitem_form=0;
-static Combox *bibcombox = 0;
+FD_citation_form * citation_form = 0;
+FD_bibitem_form * bibitem_form = 0;
+static Combox * bibcombox = 0;
 
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 void BibitemUpdate(Combox *);
@@ -34,19 +34,10 @@ FD_bibitem_form * create_form_bibitem_form(void);
 extern "C" void bibitem_cb(FL_OBJECT *, long data)
 {
 	switch (data) {
-//       case 0: fl_hide_form(citation_form->citation_form);
-//               break;
-//       case 1: 
 	case 1: // OK, citation
         {
-//               InsetCommand *inset = (InsetCommand*)citation_form->vdata;
-//               inset->setContents(bibcombox->getline());
-//               inset->setOptions(fl_get_input(citation_form->label));
-//               fl_hide_form(citation_form->citation_form);
-//               UpdateInset(inset);
-//               break;
 		if(!current_view->currentBuffer()->isReadonly()) {
-			InsetCommand *inset = (InsetCommand*)citation_form->vdata;
+			InsetCommand *inset = static_cast<InsetCommand*>(citation_form->citation_form->u_vdata);
 			inset->setContents(bibcombox->getline());
 			inset->setOptions(fl_get_input(citation_form->label));
 			fl_hide_form(citation_form->citation_form);
@@ -57,23 +48,12 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 		}
 		// fall through to Cancel on RO-mode
         }       
-//       case 2:  fl_hide_form(bibitem_form->bibitem_form);
 	case 0: fl_hide_form(citation_form->citation_form);
                 break;
-//       case 3:
-
 	case 3: // OK, bibitem
         {
-//               InsetCommand *inset = (InsetCommand *)bibitem_form->vdata;
-//               inset->setContents(fl_get_input(bibitem_form->key));
-//               inset->setOptions(fl_get_input(bibitem_form->label));
-//               fl_hide_form(bibitem_form->bibitem_form);
-//              // Does look like a hack? It is! (but will change at 0.13)
-//               current_view->currentBuffer()->text->RedoParagraph();
-//               current_view->currentBuffer()->update(1);
-//               break;
 		if(!current_view->currentBuffer()->isReadonly()) {
-			InsetCommand *inset = (InsetCommand *)bibitem_form->vdata;
+			InsetCommand *inset = static_cast<InsetCommand*>(bibitem_form->bibitem_form->u_vdata);
 			inset->setContents(fl_get_input(bibitem_form->key));
 			inset->setOptions(fl_get_input(bibitem_form->label));
 			fl_hide_form(bibitem_form->bibitem_form);
@@ -159,7 +139,7 @@ InsetCitation::~InsetCitation()
 {
 	if(citation_form && citation_form->citation_form
 	   && citation_form->citation_form->visible
-	   && citation_form->vdata == this)
+	   && citation_form->citation_form->u_vdata == this)
 		fl_hide_form(citation_form->citation_form);
 }
 
@@ -174,7 +154,7 @@ void InsetCitation::Edit(int, int)
 		fl_set_form_atclose(citation_form->citation_form, 
 				    CancelCloseBoxCB, 0);
 	}
-	citation_form->vdata = this;
+	citation_form->citation_form->u_vdata = this;
 
 	BibitemUpdate(bibcombox);
 	if (!bibcombox->select_text(getContents().c_str()))
@@ -276,7 +256,7 @@ void InsetBibKey::Edit(int, int)
 		fl_set_form_atclose(bibitem_form->bibitem_form, 
 				    CancelCloseBoxCB, 0);
 	}
-	bibitem_form->vdata = this;
+	bibitem_form->bibitem_form->u_vdata = this;
 	// InsetBibtex uses the same form, with different labels
 	fl_set_object_label(bibitem_form->key, idex(_("Key:|#K")));
 	fl_set_button_shortcut(bibitem_form->key,scex(_("Key:|#K")),1);
@@ -411,7 +391,7 @@ string InsetBibtex::getKeys()
 						linebuf = subst(linebuf,
 								'{', '(');
 						linebuf = split(linebuf,
-								tmp, '(');
+								tmp,'(');
 						tmp = lowercase(tmp);
 	    					if (!prefixIs(tmp, "@string") && !prefixIs(tmp, "@preamble") ) {
 							linebuf = split(linebuf, tmp,',');
@@ -440,7 +420,7 @@ void InsetBibtex::Edit(int, int)
 				    CancelCloseBoxCB, 0);
 	}
 
-	bibitem_form->vdata = this;
+	bibitem_form->bibitem_form->u_vdata = this;
 	fl_set_object_label(bibitem_form->key, _("Database:"));
 	fl_set_object_label(bibitem_form->label, _("Style:  "));
 	fl_set_input(bibitem_form->key, getContents().c_str());
@@ -448,13 +428,14 @@ void InsetBibtex::Edit(int, int)
 	if (bibitem_form->bibitem_form->visible) {
 		fl_raise_form(bibitem_form->bibitem_form);
 	} else {
-		fl_show_form(bibitem_form->bibitem_form,FL_PLACE_MOUSE, FL_FULLBORDER,
+		fl_show_form(bibitem_form->bibitem_form,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("BibTeX"));
 	}   
 }
 
 
-bool InsetBibtex::addDatabase(string const &db)
+bool InsetBibtex::addDatabase(string const & db)
 {
 	if (!contains(contents, db.c_str())) {
 		if (!contents.empty()) 
@@ -466,7 +447,7 @@ bool InsetBibtex::addDatabase(string const &db)
 }
 
 
-bool InsetBibtex::delDatabase(string const &db)
+bool InsetBibtex::delDatabase(string const & db)
 {
 	if (contains(contents, db.c_str())) {
 		string bd = db;
@@ -486,7 +467,7 @@ bool InsetBibtex::delDatabase(string const &db)
 
 
 // This function should be in LyXView when multiframe works ale970302
-void BibitemUpdate(Combox* combox)
+void BibitemUpdate(Combox * combox)
 {
 	combox->clear();
     
@@ -504,7 +485,7 @@ void BibitemUpdate(Combox* combox)
 
 
 // ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
-int bibitemMaxWidth(const class LyXFont &font)
+int bibitemMaxWidth(LyXFont const & font)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
@@ -526,8 +507,8 @@ string bibitemWidthest()
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph *par = current_view->currentBuffer()->paragraph;
-	InsetBibKey *bkey=0;
+	LyXParagraph * par = current_view->currentBuffer()->paragraph;
+	InsetBibKey * bkey=0;
 	LyXFont font;
       
 	while (par) {

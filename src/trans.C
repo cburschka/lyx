@@ -183,7 +183,7 @@ void Trans::AddDeadkey(tex_accent accent,const string& keys,
 	
 	for(string::size_type i = 0; i < keys.length(); ++i) {
 		char * temp;
-		temp = keymap_[(unsigned char)keys[i]] = new char[2];
+		temp = keymap_[keys[i]] = new char[2];
 		temp[0] = 0; temp[1] = accent;
 	}
 	kmod_list_[accent]->exception_list=0;
@@ -294,7 +294,7 @@ int Trans::Load(LyXLex &lex)
 			if (lex.next(true)) {
 				char const *t = lex.text();
 				string_to = strcpy(new char[strlen(t)+1],t);
-				keymap_[(unsigned char)key_from]=string_to;
+				keymap_[key_from]=string_to;
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << string_to << "'"
 					       << endl;

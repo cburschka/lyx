@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -16,121 +16,10 @@
 #include "commandtags.h"
 #include "gettext.h"
 
-extern BufferView *current_view;
-
-// Temporarily disabled the GUI code. Reasons:
-// - Only page-ref button works currently, IMO we should use a LyX action
-//   instead, to toggle the kind of refs.
-// - To change the label, IMO it's faster to delete the old one and insert
-//   a new one.
-// - To goto to the label, IMO it's much faster to just click on the
-//   inset. That's how I've implemented it now, I hope you'll like it.
-// - The more GUI code we can remove, the less work we'll have at
-//   the toolkit switch.
-//   (ale 970723)
-
-#if 0
-
-/* Header file generated with fdesign. */
-
-/**** Callback routines ****/
-
-static void ref_close_cb(FL_OBJECT *, long);
-static void goto_label_cb(FL_OBJECT *, long);
-static void label_change_cb(FL_OBJECT *, long);
-
-/**** Forms and Objects ****/
-
-typedef struct {
-	FL_FORM *ref;
-	void *vdata;
-	long ldata;
-	FL_OBJECT *pg_grp;
-	FL_OBJECT *flag1;
-	FL_OBJECT *flag2;
-} FD_ref;
-
-/* Form definition file generated with fdesign. */
-
-static
-FD_ref *create_form_ref(void)
-{
-  FL_OBJECT *obj;
-  FD_ref *fdui = (FD_ref *) fl_calloc(1, sizeof(*fdui));
-
-  fdui->ref = fl_bgn_form(FL_NO_BOX, 210, 170);
-  obj = fl_add_box(FL_UP_BOX,0,0,210,170,"");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME,10,20,130,60,"");
-  obj = fl_add_button(FL_RETURN_BUTTON,120,130,80,30,_("Close"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,ref_close_cb,0);
-  obj = fl_add_text(FL_NORMAL_TEXT,20,10,110,20,_("Reference Type"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj,FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-  obj = fl_add_button(FL_NORMAL_BUTTON,10,130,100,30,_("Goto Label"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,goto_label_cb,0);
-  obj = fl_add_button(FL_NORMAL_BUTTON,10,90,100,30,_("Change Label"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,label_change_cb,0);
-
-  fdui->pg_grp = fl_bgn_group();
-  fdui->flag1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,20,30,20,20,_("Page Number"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-  fdui->flag2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,20,50,20,20,_("Reference"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-  fl_end_group();
-
-  fl_end_form();
-
-  fdui->ref->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
+extern BufferView * current_view;
 
 
-static FD_ref *form = 0;
-
-
-static
-void ref_close_cb(FL_OBJECT *, long)
-{
-	InsetRef *inset = (InsetRef*)form->vdata;
-
-	if (fl_get_button(form->flag1)) {
-		inset->setFlag(InsetRef::PAGE_REF);
-		inset->setCmdName("pageref");
-	} else {
-		inset->setFlag(InsetRef::REF);
-		inset->setCmdName("ref");
-	}
-		
-	fl_hide_form(form->ref);
-}
-
-
-static
-void goto_label_cb(FL_OBJECT *, long)
-{
-	// code yet to be written
-	InsetRef *inset = (InsetRef*)form->vdata;
-        inset->gotoLabel();
-#warning MAKEME!
-}
-
-
-static
-void label_change_cb(FL_OBJECT *, long)
-{
-	// code yet to be written
-	InsetRef *inset = (InsetRef*)form->vdata;
-#warning MAKEME!
-}
-
-#endif
-
-InsetRef::InsetRef(string const & cmd, Buffer *bf)
+InsetRef::InsetRef(string const & cmd, Buffer * bf)
 	: master(bf)
 {
 	scanCommand(cmd);
@@ -141,7 +30,7 @@ InsetRef::InsetRef(string const & cmd, Buffer *bf)
 }
 
 
-InsetRef::InsetRef(InsetCommand const &inscmd, Buffer *bf)
+InsetRef::InsetRef(InsetCommand const & inscmd, Buffer * bf)
 	: master(bf)
 {
 	setCmdName(inscmd.getCmdName());
@@ -161,26 +50,8 @@ InsetRef::~InsetRef()
 
 void InsetRef::Edit(int, int)
 {
-        current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_REFGOTO
-							 , getContents().c_str());
-//        gotoLabel();
-/*    
-        if (!form) { 
-                form = create_form_ref();
-		fl_set_form_atclose(form->ref, IgnoreCloseBoxCB, 0);
-	}
-        form->vdata = this; 
-    
-	fl_set_button(form->flag1, (flag == InsetRef::REF) ? 1 : 0);
-	fl_set_button(form->flag2, (flag == InsetRef::PAGE_REF) ? 1 : 0);
-	
-        if (form->ref->visible) {
-		fl_raise_form(form->ref);
-	} else {
-		fl_show_form(form->ref,FL_PLACE_MOUSE, FL_FULLBORDER,
-			     _("Cross-Reference"));
-	}
- */
+        current_view->getOwner()->getLyXFunc()
+		->Dispatch(LFUN_REFGOTO, getContents().c_str());
 }
 
 
@@ -192,7 +63,8 @@ string InsetRef::getScreenLabel() const
 	else 
 		temp += _("Ref: ");
 	temp += getContents();
-	if(!current_view->currentBuffer()->isLatex() && !getOptions().empty()) {
+	if(!current_view->currentBuffer()->isLatex()
+	   && !getOptions().empty()) {
 		temp += "||";
 		temp += getOptions();
 	}
@@ -200,7 +72,7 @@ string InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(FILE *file, signed char /*fragile*/)
+int InsetRef::Latex(FILE * file, signed char /*fragile*/)
 {
 	if(getOptions().empty())
 		fprintf(file, "%s", escape(getCommand()).c_str());
@@ -213,7 +85,7 @@ int InsetRef::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetRef::Latex(string &file, signed char /*fragile*/)
+int InsetRef::Latex(string & file, signed char /*fragile*/)
 {
 	if(getOptions().empty())
 		file += escape(getCommand());
@@ -226,17 +98,19 @@ int InsetRef::Latex(string &file, signed char /*fragile*/)
 }
 
 
-int InsetRef::Linuxdoc(string &file)
+int InsetRef::Linuxdoc(string & file)
 {
-	file += "<ref id=\"" + getContents() + "\" name=\""+ getOptions() +"\" >" ;
+	file += "<ref id=\"" + getContents()
+		+ "\" name=\""+ getOptions() +"\" >" ;
 
 	return 0;
 }
 
 
-int InsetRef::DocBook(string &file)
+int InsetRef::DocBook(string & file)
 {
-	file += "<link linkend=\"" + getContents() + "\">"+ getOptions() +"</link>" ;
+	file += "<link linkend=\"" + getContents()
+		+ "\">"+ getOptions() +"</link>" ;
 
 	return 0;
 }
@@ -255,7 +129,7 @@ string InsetRef::escape(string const & lab) const {
 			enc += hexdigit[c>>4];
 			enc += hexdigit[c & 15];
 		} else {
-			enc += (char) c;
+			enc += c;
 		}
 	}
 	return enc;

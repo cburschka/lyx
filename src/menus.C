@@ -45,8 +45,9 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
+#include "layout.h"
 
-extern FD_form_screen *fd_form_screen;
+extern FD_form_screen * fd_form_screen;
 extern BufferList bufferlist;
 
 // I would really prefere to see most or all of these 'extern's disappear.
@@ -55,7 +56,7 @@ extern BufferList bufferlist;
 extern void MenuLayoutSave();
 extern void ShowCredits();
 extern void ShowCopyright();
-extern void show_symbols_form(LyXFunc*);
+extern void show_symbols_form(LyXFunc *);
 extern void BeforeChange();
 extern void ProhibitInput();
 extern void AllowInput();
@@ -66,53 +67,53 @@ extern void LaTeXOptions();
 
 // A bunch of wrappers
 
-extern "C" void C_Menus_ShowFileMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowFileMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowFileMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowFileMenu2(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowFileMenu2(FL_OBJECT * ob, long data)
 {
 	Menus::ShowFileMenu2(ob, data);
 }
 
-extern "C" void C_Menus_ShowEditMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowEditMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowEditMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowLayoutMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowLayoutMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowLayoutMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowInsertMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowInsertMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowInsertMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowMathMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowMathMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowMathMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowOptionsMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowOptionsMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowOptionsMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowBufferMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowBufferMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowBufferMenu(ob, data);
 }
 
-extern "C" void C_Menus_ShowHelpMenu(FL_OBJECT *ob, long data)
+extern "C" void C_Menus_ShowHelpMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowHelpMenu(ob, data);
 }
 
 
-Menus::Menus(LyXView *view,int air)
+Menus::Menus(LyXView * view, int air)
 	: _view(view)
 {	
 	create_menus(air);
@@ -132,7 +133,7 @@ Menus::Menus(LyXView *view,int air)
 }
 
 
-inline BufferView *Menus::currentView() 
+inline BufferView * Menus::currentView() 
 {
 	return _view->currentView(); 
 }
@@ -152,7 +153,7 @@ void Menus::hideMenus()
 }
 
 
-void Menus::openByName(string const &menuName)
+void Menus::openByName(string const & menuName)
 	/* Opens the visible menu of given name, or simply does nothing
 	   when the name is not known. NOTE THE EXTREMELY STUPID
 	   IMPLEMENTATION! :-) There are probably hundred ways to do
@@ -161,20 +162,31 @@ void Menus::openByName(string const &menuName)
 	   experienced GG (GUI Guy/Girl). RVDK_PATCH_5. */
 {
 	if (menu_file->visible) {
-		if (menuName == _("File")) 	     ShowFileMenu(menu_file, 0);
-		else if (menuName == _("Edit"))      ShowEditMenu(menu_edit, 0);
-		else if (menuName == _("Layout"))    ShowLayoutMenu(menu_layout, 0);
-		else if (menuName == _("Insert"))    ShowInsertMenu(menu_insert, 0);
-		else if (menuName == _("Math"))      ShowMathMenu(menu_math, 0);
-		else if (menuName == _("Options"))   ShowOptionsMenu(menu_options, 0);
-		else if (menuName == _("Documents")) ShowBufferMenu(menu_buffer, 0);
-		else if (menuName == _("Help"))      ShowHelpMenu(menu_help, 0);
+		if (menuName == _("File"))
+			ShowFileMenu(menu_file, 0);
+		else if (menuName == _("Edit"))
+			ShowEditMenu(menu_edit, 0);
+		else if (menuName == _("Layout"))
+			ShowLayoutMenu(menu_layout, 0);
+		else if (menuName == _("Insert"))
+			ShowInsertMenu(menu_insert, 0);
+		else if (menuName == _("Math"))
+			ShowMathMenu(menu_math, 0);
+		else if (menuName == _("Options"))
+			ShowOptionsMenu(menu_options, 0);
+		else if (menuName == _("Documents"))
+			ShowBufferMenu(menu_buffer, 0);
+		else if (menuName == _("Help"))
+			ShowHelpMenu(menu_help, 0);
 		else lyxerr << "The menu '" << menuName
 			    << "' is not available." << endl;
 	} else {
-		if (menuName == _("File")) 	     ShowFileMenu2(menu_file2, 0);
-		else if (menuName == _("Options"))   ShowOptionsMenu(menu_options2, 0);
-		else if (menuName == _("Help"))      ShowHelpMenu(menu_help2, 0);
+		if (menuName == _("File"))
+			ShowFileMenu2(menu_file2, 0);
+		else if (menuName == _("Options"))
+			ShowOptionsMenu(menu_options2, 0);
+		else if (menuName == _("Help"))
+			ShowHelpMenu(menu_help2, 0);
 		else lyxerr << "The menu '" << menuName
 			    << "' is not available." << endl;
 	}
@@ -183,11 +195,11 @@ void Menus::openByName(string const &menuName)
 
 void Menus::create_menus(int air)
 {
-	FL_FORM *form = _view->getForm(); 
+	FL_FORM * form = _view->getForm(); 
 
 	// Here I'd really like to see code like:
 	// addMenuBar();
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 
 	const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
 	const int mheight = 30;
@@ -216,7 +228,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#F")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowFileMenu, 0);
-	obj->u_ldata = (long)this;
+	obj->u_vdata = this;
 	
 	// Edit menu button
 	menu_edit = obj =
@@ -230,7 +242,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#E")),1);
 	fl_set_object_callback(obj,C_Menus_ShowEditMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	// Layout menu button
 	menu_layout = obj =
@@ -244,7 +256,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#L")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowLayoutMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	// Insert menu button button
 	menu_insert = obj =
@@ -258,7 +270,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#I")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowInsertMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	// Math menu button
 	menu_math = obj =
@@ -272,7 +284,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#M")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowMathMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	// Options menu button
 	menu_options = obj =
@@ -286,7 +298,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#O")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowOptionsMenu, 0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 
 	// Documents menu button
 	menu_buffer = obj =
@@ -300,7 +312,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#D")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowBufferMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	// Help menu button
 	menu_help = obj =
@@ -314,7 +326,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#H")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowHelpMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	fl_end_group();
 
@@ -347,7 +359,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#F")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowFileMenu2, 0);
-	obj->u_ldata = (long)this;
+	obj->u_vdata = this;
 	
 	// Options menu button
 	menu_options2 = obj =
@@ -361,7 +373,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#O")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowOptionsMenu, 0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 
 	// Help menu button
 	menu_help2 = obj =
@@ -375,7 +387,7 @@ void Menus::create_menus(int air)
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#H")), 1);
 	fl_set_object_callback(obj,C_Menus_ShowHelpMenu,0);
-	obj->u_ldata = (long) this;
+	obj->u_vdata = this;
 	
 	fl_end_group();
 
@@ -429,9 +441,9 @@ void Menus::ScreenOptions()
 // Here comes all the menu callbacks.
 //
 
-void Menus::ShowFileMenu(FL_OBJECT *ob, long)
+void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 
 	// Regarding the pseudo-menu-button:
 	// ok, ok this is a hack. It would be better to use the menus of the
@@ -446,8 +458,8 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	Buffer *tmpbuffer = men->_view->currentBuffer();
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
+	Buffer * tmpbuffer = men->_view->currentBuffer();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	bool LinuxDoc = tmpbuffer->isLinuxDoc();
 	bool DocBook  = tmpbuffer->isDocBook();
@@ -455,12 +467,13 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 
 	// Import sub-menu
 
-	int SubFileImport =fl_defpup(FL_ObjWin(ob),
-				     _("Import%t"
-				       "|LaTeX...%x30"
-				       "|Ascii Text as Lines...%x31"
-				       "|Ascii Text as Paragraphs%x32"
-				       "|Noweb%x33"));
+	int SubFileImport = fl_defpup(FL_ObjWin(ob),
+				      _("Import%t"
+					"|LaTeX...%x30"
+					"|Ascii Text as Lines...%x31"
+					"|Ascii Text as Paragraphs%x32"
+					"|Noweb%x33"));
+	
 	fl_setpup_shortcut(SubFileImport, 30, scex(_("FIM|Ll#l#L")));
 	fl_setpup_shortcut(SubFileImport, 31, scex(_("FIM|Aa#a#A")));
 	fl_setpup_shortcut(SubFileImport, 32, scex(_("FIM|Pp#p#P")));
@@ -472,28 +485,28 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 	// and now docbook also.
 	int SubFileExport = 0;
 	if (!LinuxDoc && !DocBook)
-            SubFileExport=fl_defpup(FL_ObjWin(ob),
-				      _("Export%t"
-					"|as LaTeX...%x40"
-					"|as DVI...%x41"
-					"|as PostScript...%x42"
-					"|as Ascii Text...%x43"
-					"|as HTML...%x44"
-					"|Custom...%x45"));
+		SubFileExport=fl_defpup(FL_ObjWin(ob),
+					_("Export%t"
+					  "|as LaTeX...%x40"
+					  "|as DVI...%x41"
+					  "|as PostScript...%x42"
+					  "|as Ascii Text...%x43"
+					  "|as HTML...%x44"
+					  "|Custom...%x45"));
         else if(LinuxDoc)
-            SubFileExport=fl_defpup(FL_ObjWin(ob),
-				      _("Export%t"
-					"|as LinuxDoc...%x40"
-					"|as DVI...%x41"
-					"|as PostScript...%x42"
-					"|as Ascii Text...%x43"));
+		SubFileExport=fl_defpup(FL_ObjWin(ob),
+					_("Export%t"
+					  "|as LinuxDoc...%x40"
+					  "|as DVI...%x41"
+					  "|as PostScript...%x42"
+					  "|as Ascii Text...%x43"));
         else if(DocBook)
-            SubFileExport=fl_defpup(FL_ObjWin(ob),
-				      _("Export%t"
-					"|as DocBook...%x40"
-					"|as DVI...%x41"
-					"|as PostScript...%x42"
-					"|as Ascii Text...%x43"));
+		SubFileExport=fl_defpup(FL_ObjWin(ob),
+					_("Export%t"
+					  "|as DocBook...%x40"
+					  "|as DVI...%x41"
+					  "|as PostScript...%x42"
+					  "|as Ascii Text...%x43"));
 
 	fl_setpup_shortcut(SubFileExport, 40, scex(_("FEX|Ll#l#L")));
 	fl_setpup_shortcut(SubFileExport, 41, scex(_("FEX|Dd#d#D")));
@@ -589,20 +602,14 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 	fl_setpup_shortcut(FileMenu, 17, scex(_("FM|xX#x#X")));
 
 	// make the lastfiles menu
-	LastFiles_Iter liter(*lastfiles); // :-)
-	string filname;
 	int ii = 1;
-	while( ii < 10 && !(filname = liter()).empty() ) {
-		string tmp;
-		string tmp2;
-		string relbuf = MakeDisplayPath(filname,30);
-		tmp += tostr(ii);
-		tmp2 = tmp;
-		tmp += ". " + relbuf;
-		tmp2 += string("#") + tostr(ii);
+	for (LastFiles::Files::const_iterator cit = lastfiles->begin();
+	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
+		string tmp = tostr(ii);
+		string tmp2 = tmp + "#" + tmp;;
+		tmp += ". " + MakeDisplayPath((*cit), 30);
 		fl_addtopup(FileMenu, tmp.c_str());
 		fl_setpup_shortcut(FileMenu, 18 - 1 + ii, tmp2.c_str());
-		ii++;
 	}
 
 	// place popup
@@ -665,7 +672,9 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 		// Lastfiles:
 	case 18: // The first item with lastfiles.
 	default:
-		men->currentView()->setBuffer(bufferlist.loadLyXFile(liter[choice-18])); // ok one more
+		men->currentView()
+			->setBuffer(bufferlist
+				    .loadLyXFile((*lastfiles)[choice - 18]));
 		break;
 	}
 	fl_freepup(SubFileImport);
@@ -676,9 +685,9 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 }
 
 
-void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
+void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 
 	// Regarding the pseudo-menu-button:
 	// ok, ok this is a hack. It would be better to use the menus of the
@@ -693,7 +702,7 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	// Import sub-menu
 	
@@ -703,6 +712,7 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 				       "|Ascii Text as Lines...%x16"
 				       "|Ascii Text as Paragraphs...%x17"
 				       "|Noweb...%x18"));
+	
 	fl_setpup_shortcut(SubFileImport, 15, scex(_("FIM|Ll#l#L")));
 	fl_setpup_shortcut(SubFileImport, 16, scex(_("FIM|Aa#a#A")));
 	fl_setpup_shortcut(SubFileImport, 17, scex(_("FIM|Pp#p#P")));
@@ -722,6 +732,7 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 				 "|Open...%l"
 				 "|Import%m%l"
 				 "|Exit%l"), SubFileImport);
+	
 	fl_setpup_shortcut(FileMenu, 1, scex(_("FM|Nn#n#N")));
 	fl_setpup_shortcut(FileMenu, 2, scex(_("FM|tT#t#T")));
 	fl_setpup_shortcut(FileMenu, 3, scex(_("FM|Oo#o#O")));
@@ -729,20 +740,14 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 	fl_setpup_shortcut(FileMenu, 5, scex(_("FM|xX#x#X")));
 	
 	// make the lastfiles menu
-	LastFiles_Iter liter(*lastfiles); // :-)
-	string filname;
 	int ii = 1;
-	while( ii < 10 && !(filname = liter()).empty() ) {
-		string tmp;
-		string tmp2;
-		string relbuf = MakeDisplayPath(filname,30);
-		tmp += tostr(ii);
-		tmp2 = tmp;
-		tmp += ". " + relbuf;
-		tmp2 += string("#") + tostr(ii);
+	for (LastFiles::Files::const_iterator cit = lastfiles->begin();
+	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
+		string tmp = tostr(ii);
+		string tmp2 = tmp + "#" + tmp;;
+		tmp += ". " + MakeDisplayPath((*cit), 30);
 		fl_addtopup(FileMenu, tmp.c_str());
-		fl_setpup_shortcut(FileMenu, 6 - 1 + ii, tmp2.c_str());
-		ii++;
+		fl_setpup_shortcut(FileMenu, 18 - 1 + ii, tmp2.c_str());
 	}
 
 	// place popup
@@ -781,8 +786,11 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 		tmpfunc->Dispatch(LFUN_QUIT);
 		break;
 		// Lastfiles:
+	case 6: // The first item with lastfiles.
 	default:
-		men->currentView()->setBuffer(bufferlist.loadLyXFile(liter[choice-6]));
+		men->currentView()
+			->setBuffer(bufferlist
+				    .loadLyXFile((*lastfiles)[choice - 6]));
 		break;
 	}
 
@@ -793,17 +801,17 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 }
 
 
-void Menus::ShowEditMenu(FL_OBJECT *ob, long)
+void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 	
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	Buffer *tmpbuffer = men->_view->currentBuffer();
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
+	Buffer * tmpbuffer = men->_view->currentBuffer();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	// Floats & Insets submenu
 	int SubEditFloats=fl_defpup(FL_ObjWin(ob),
@@ -814,8 +822,8 @@ void Menus::ShowEditMenu(FL_OBJECT *ob, long)
 				    "|Close All Footnotes/Margin Notes%x24"
 				    "|Open All Figures/Tables%x25"
 				    "|Close All Figures/Tables%x26%l"
-				    "|Remove all Error Boxes%x27")
-		);
+				    "|Remove all Error Boxes%x27"));
+	
 	fl_setpup_shortcut(SubEditFloats, 21, scex(_("EMF|Oo#o#O")));
 	fl_setpup_shortcut(SubEditFloats, 22, scex(_("EMF|Mm#m#M")));
 	fl_setpup_shortcut(SubEditFloats, 23, scex(_("EMF|Aa#a#A")));
@@ -1115,9 +1123,9 @@ void Menus::ShowEditMenu(FL_OBJECT *ob, long)
 }
 
 
-void Menus::ShowLayoutMenu(FL_OBJECT *ob, long)
+void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 
 	if (!men->currentView()->available())
 		return;
@@ -1127,8 +1135,8 @@ void Menus::ShowLayoutMenu(FL_OBJECT *ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
    
-	Buffer *tmpbuffer = men->_view->currentBuffer();
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
+	Buffer * tmpbuffer = men->_view->currentBuffer();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int LayoutMenu = fl_newpup(FL_ObjWin(ob));
 	fl_addtopup(LayoutMenu, _("Character..."
@@ -1202,33 +1210,29 @@ void Menus::ShowLayoutMenu(FL_OBJECT *ob, long)
 	case 10: tmpfunc->Dispatch(LFUN_TEX); break;
 	case 11: tmpfunc->Dispatch(LFUN_DEPTH_PLUS); break;
 	case 12: tmpfunc->Dispatch(LFUN_LAYOUT_PREAMBLE); break;
-	case 13: tmpfunc->Dispatch(LFUN_LAYOUT_SAVE_DEFAULT); break;//MenuLayoutSave(); break;
+	case 13: tmpfunc->Dispatch(LFUN_LAYOUT_SAVE_DEFAULT); break;
 	}
 	fl_freepup(LayoutMenu); 
 }
 
 
-void Menus::ShowInsertMenu(FL_OBJECT *ob, long /*data*/)
+void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 	
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
  
-	Buffer *tmpbuffer = men->_view->currentBuffer();
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
-
-#if 0
-	// Is textclass LinuxDoc?
-	bool LinuxDoc = tmpbuffer->isLinuxDoc();
-#endif
+	Buffer * tmpbuffer = men->_view->currentBuffer();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int SubInsertAscii = fl_defpup(FL_ObjWin(ob),
 				       _("Import ASCII file%t"
 				       "|As Lines%x41"
 				       "|As Paragraphs%x42"));
+	
 	fl_setpup_shortcut(SubInsertAscii, 41, scex(_("IMA|Ll#l#L")));
 	fl_setpup_shortcut(SubInsertAscii, 42, scex(_("IMA|Pp#p#P")));
 
@@ -1239,7 +1243,8 @@ void Menus::ShowInsertMenu(FL_OBJECT *ob, long /*data*/)
 					   "|List of Tables%x23"
 					   "|List of Algorithms%x24"
 					   "|Index List%x25"
-					   "|BibTeX Reference%x26"));      
+					   "|BibTeX Reference%x26"));
+	
 	fl_setpup_shortcut(SubInsertTableList, 21, scex(_("IMT|Cc#c#C")));
 	fl_setpup_shortcut(SubInsertTableList, 22, scex(_("IMT|Ff#f#F")));
 	fl_setpup_shortcut(SubInsertTableList, 23, scex(_("IMT|Tt#t#T")));
@@ -1247,30 +1252,21 @@ void Menus::ShowInsertMenu(FL_OBJECT *ob, long /*data*/)
 	fl_setpup_shortcut(SubInsertTableList, 25, scex(_("IMT|Ii#i#I")));
 	fl_setpup_shortcut(SubInsertTableList, 26, scex(_("IMT|Bb#b#B")));
 
-	int SubInsertFloatList;
-	//if (men->_view->currentBuffer()->params.columns == 1) {
-	// SubInsertFloatList = fl_defpup(FL_ObjWin(ob),
-	//				 _("Floats%t"
-	//				   "|Figure Float%x71"
-	//				   "|Table Float%l%x72"
-	//				   "|Algorithm Float%x73"));
-	//}
-	//else {
-	  SubInsertFloatList = fl_defpup(FL_ObjWin(ob),
-					 _("Floats%t"
-					   "|Figure Float%x71"
-					   "|Table Float%x72"
-					   "|Wide Figure Float%x73"
-					   "|Wide Table Float%l%x74"
-					   "|Algorithm Float%x75"));
-	  //}
+	int SubInsertFloatList = fl_defpup(FL_ObjWin(ob),
+				       _("Floats%t"
+					 "|Figure Float%x71"
+					 "|Table Float%x72"
+					 "|Wide Figure Float%x73"
+					 "|Wide Table Float%l%x74"
+					 "|Algorithm Float%x75"));
+	
 	fl_setpup_shortcut(SubInsertFloatList, 71, scex(_("IMF|gG#g#G")));
 	fl_setpup_shortcut(SubInsertFloatList, 72, scex(_("IMF|Tt#t#T")));
 	fl_setpup_shortcut(SubInsertFloatList, 73, scex(_("IMF|Ww#w#W")));
 	fl_setpup_shortcut(SubInsertFloatList, 74, scex(_("IMF|iI#i#I")));
 	fl_setpup_shortcut(SubInsertFloatList, 75, scex(_("IMF|Aa#a#A")));
  	
-	int SubInsertSpecial=fl_defpup(FL_ObjWin(ob),
+	int SubInsertSpecial = fl_defpup(FL_ObjWin(ob),
 				       _("Special Character%t"
 					 "|HFill%x31"
 					 "|Hyphenation Point%x32"
@@ -1329,25 +1325,13 @@ void Menus::ShowInsertMenu(FL_OBJECT *ob, long /*data*/)
 	fl_setpup_shortcut(InsertMenu, 15, scex(_("IM|dD#d#D")));
 	fl_setpup_shortcut(InsertMenu, 16, scex(_("IM|wW#w#W")));
 
-#if 0
-	if (LinuxDoc) {
-		/* for linuxdoc sgml */
-#endif
-		fl_addtopup(InsertMenu, _("|URL..."));
-		fl_setpup_shortcut(InsertMenu, 17, scex(_("IM|Uu#u#U")));
-#if 0
-	}      
-#endif
+	fl_addtopup(InsertMenu, _("|URL..."));
+	fl_setpup_shortcut(InsertMenu, 17, scex(_("IM|Uu#u#U")));
+
 	if (tmpbuffer->isReadonly()) {
                 for (int ii = 1; ii <= 16; ii++)
 	                fl_setpup_mode(InsertMenu, ii, FL_PUP_GREY);
-#if 0
-                if (LinuxDoc) {
-#endif
-                        fl_setpup_mode(InsertMenu, 17, FL_PUP_GREY);
-#if 0
-                }
-#endif
+		fl_setpup_mode(InsertMenu, 17, FL_PUP_GREY);
 	}
 
 	fl_setpup_position(
@@ -1433,19 +1417,19 @@ void Menus::ShowInsertMenu(FL_OBJECT *ob, long /*data*/)
 }
 
 
-void Menus::ShowMathMenu(FL_OBJECT *ob, long)
+void Menus::ShowMathMenu(FL_OBJECT * ob, long)
 {
-	extern void math_insert_symbol(char const* s);
+	extern void math_insert_symbol(char const * s);
 
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	Buffer *tmpbuffer = men->_view->currentBuffer();
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
+	Buffer * tmpbuffer = men->_view->currentBuffer();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int MathMenu = fl_defpup(FL_ObjWin(ob), 
 				 _("Fraction"
@@ -1519,9 +1503,9 @@ void Menus::ShowMathMenu(FL_OBJECT *ob, long)
 }
 
 
-void Menus::ShowOptionsMenu(FL_OBJECT *ob, long)
+void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
@@ -1529,7 +1513,7 @@ void Menus::ShowOptionsMenu(FL_OBJECT *ob, long)
 	fl_redraw_object(ob);
 
 	//Buffer *tmpbuffer = men->_view->currentBuffer();
-	LyXFunc *tmpfunc = men->_view->getLyXFunc();
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int OptionsMenu = fl_defpup(FL_ObjWin(ob),
 				    _("Screen Fonts..."
@@ -1568,9 +1552,9 @@ void Menus::ShowOptionsMenu(FL_OBJECT *ob, long)
 }
 
 
-void Menus::ShowBufferMenu(FL_OBJECT *ob, long)
+void Menus::ShowBufferMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 	
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
@@ -1596,14 +1580,14 @@ void Menus::ShowBufferMenu(FL_OBJECT *ob, long)
 
 
 static
-char const *doc_files [] = {"Intro", "Tutorial", 
-			    "UserGuide", "Extended",
-			    "Customization", "Reference",
-			    "BUGS", "LaTeXConfig"}; 
+char const * doc_files [] = {"Intro", "Tutorial", 
+			     "UserGuide", "Extended",
+			     "Customization", "Reference",
+			     "BUGS", "LaTeXConfig"}; 
 
-void Menus::ShowHelpMenu(FL_OBJECT *ob, long)
+void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 {
-	Menus *men = (Menus*) ob->u_ldata;
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
 
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
@@ -1669,7 +1653,7 @@ void Menus::ShowHelpMenu(FL_OBJECT *ob, long)
 }
 
 
-void Menus::MenuDocu(string const &docname) 
+void Menus::MenuDocu(string const & docname) 
 {
 	string fname = i18nLibFileSearch("doc", docname, "lyx");
 	_view->getMiniBuffer()->Set(_("Opening help file"),

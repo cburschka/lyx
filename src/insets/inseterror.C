@@ -27,8 +27,8 @@ InsetError::InsetError()
 	form = 0;
 }
 
-InsetError::InsetError(string const & string)
-	: contents(string)
+InsetError::InsetError(string const & str)
+	: contents(str)
 {
 	form = 0;
 }
@@ -44,7 +44,7 @@ InsetError::~InsetError()
 }
 
 
-int InsetError::Ascent(LyXFont const &font) const
+int InsetError::Ascent(LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -52,7 +52,7 @@ int InsetError::Ascent(LyXFont const &font) const
 }
 
 
-int InsetError::Descent(LyXFont const &font) const
+int InsetError::Descent(LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -60,7 +60,7 @@ int InsetError::Descent(LyXFont const &font) const
 }
 
 
-int InsetError::Width(LyXFont const &font) const
+int InsetError::Width(LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -68,8 +68,8 @@ int InsetError::Width(LyXFont const &font) const
 }
 
 
-void InsetError::Draw(LyXFont font, LyXScreen &scr,
-		      int baseline, float &x)
+void InsetError::Draw(LyXFont font, LyXScreen & scr,
+		      int baseline, float & x)
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -77,15 +77,9 @@ void InsetError::Draw(LyXFont font, LyXScreen &scr,
    
 	// Draw as "Error" in a framed box
 	x += 1;
-	//scr.drawFilledRectangle(int(x), baseline - Ascent(font)+1,
-	//			Width(font)-2,Ascent(font)+ Descent(font)-2,
-	//			FL_GRAY80);
 	scr.fillRectangle(gc_lighted,
 			  int(x), baseline - Ascent(font)+1,
 			  Width(font)-2,Ascent(font)+ Descent(font)-2);
-	//scr.drawRectangle(int(x), baseline-Ascent(font)+1,
-	//		  Width(font)-2, Ascent(font)+Descent(font)-2,
-	//		  FL_RED);
 	scr.drawRectangle(gc_foot,
 			  int(x), baseline-Ascent(font)+1,
 			  Width(font)-2, Ascent(font)+Descent(font)-2); 
@@ -140,9 +134,9 @@ unsigned char InsetError::Editable() const
 }
 
 
-void InsetError::CloseErrorCB(FL_OBJECT *, long data)
+void InsetError::CloseErrorCB(FL_OBJECT * ob, long)
 {
-	InsetError *inset = (InsetError*) data;
+	InsetError * inset = static_cast<InsetError*>(ob->u_vdata);
 	if (inset->form) {
 		fl_hide_form(inset->form);
 		fl_free_form(inset->form);
@@ -150,10 +144,11 @@ void InsetError::CloseErrorCB(FL_OBJECT *, long data)
 	}
 }
 
+
 // A C wrapper
-extern "C" void C_InsetError_CloseErrorCB(FL_OBJECT *, long data)
+extern "C" void C_InsetError_CloseErrorCB(FL_OBJECT * ob, long data)
 {
-        InsetError::CloseErrorCB(0,data);
+        InsetError::CloseErrorCB(ob , data);
 }
 
 
@@ -162,13 +157,14 @@ void InsetError::Edit(int, int)
 	static int ow = 400, oh = 240;
 
 	if (!form) {
-		FL_OBJECT *obj;
-		form = fl_bgn_form(FL_UP_BOX,ow,oh);
+		FL_OBJECT * obj;
+		form = fl_bgn_form(FL_UP_BOX, ow, oh);
 		strobj = fl_add_box(FL_FRAME_BOX,10,10,380,180,"");
 		fl_set_object_color(strobj,FL_MCOL,FL_MCOL);
 		fl_set_object_gravity(strobj, FL_NorthWest, FL_SouthEast);
 		obj = fl_add_button(FL_RETURN_BUTTON,140,200,120,30,_("Close"));
-		fl_set_object_callback(obj, C_InsetError_CloseErrorCB, (long)this);
+		fl_set_object_callback(obj, C_InsetError_CloseErrorCB, 0);
+		obj->u_vdata = this;
 		fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
 		fl_end_form();
@@ -187,6 +183,6 @@ void InsetError::Edit(int, int)
 
 Inset* InsetError::Clone()
 {
-	InsetError *result = new InsetError(contents);
+	InsetError * result = new InsetError(contents);
 	return result;
 }

@@ -58,6 +58,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
+#include "layout.h"
 
 extern MiniBuffer *minibuffer;
 extern Combox *combo_language;
@@ -425,30 +426,11 @@ void MenuWriteAs(Buffer *buffer)
 	MenuWrite(buffer);
 }    
 
-#if 0
-extern bool gsworking();
-#endif
 
 int MenuRunLaTeX(Buffer *buffer)
 {
 	int ret = 0;
 
-#if 0
-	if (gsworking()) {
-		WriteAlert(_("Sorry, can't do this while pictures are being rendered."),
-			   _("Please wait a few seconds for this to finish and try again."),
-			   _("(or kill runaway gs processes by hand and try again.)"));
-		return 1;
-	}
-	extern pid_t isp_pid; // from spellchecker.C
-	if(isp_pid != -1)
-	{
-	  WriteAlert(_("Can't do this while the spellchecker is running."),
-	    _("Stop the spellchecker first."));
-	  return 1;
-	}
-#endif
-	
 	if (buffer->isLinuxDoc())
 		ret = RunLinuxDoc(1, buffer->getFileName());
 	else if (buffer->isLiterate())
@@ -1130,8 +1112,12 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	tmppar->readSimpleWholeFile(myfile);
 	
 	// set the end of the string
+#ifdef NEW_TEXT
+	// I don't think this is needed. Actually it might be plain wrong.
+	tmppar->InsertChar(tmppar->text.size() - 1,'\0');
+#else
 	tmppar->InsertChar(tmppar->last-1,'\0');
-      
+#endif 
 	// insert the string
 	current_view->getScreen()->HideCursor();
       
@@ -1340,15 +1326,15 @@ int RunDocBook(int flag, string const & filename)
 		return 0;
 	
 	current_view->currentBuffer()->makeDocBookFile(name,0);
-#if 0
-	string add_flags;
-	LYX_PAPER_SIZE ps = (LYX_PAPER_SIZE) current_view->currentBuffer()->params.papersize;
-	switch (ps) {
-	case PAPER_A4PAPER:  add_flags = "-p a4";     break;
-	case PAPER_USLETTER: add_flags = "-p letter"; break;
-	default: /* nothing to be done yet ;-) */     break; 
-	}
-#endif	
+
+	// Shall this code go or should it stay? (Lgb)
+//  	string add_flags;
+//  	LYX_PAPER_SIZE ps = (LYX_PAPER_SIZE) current_view->currentBuffer()->params.papersize;
+//  	switch (ps) {
+//  	case PAPER_A4PAPER:  add_flags = "-p a4";     break;
+//  	case PAPER_USLETTER: add_flags = "-p letter"; break;
+//  	default: /* nothing to be done yet ;-) */     break; 
+//  	}
 	ProhibitInput();
 	
 	Systemcalls one;
@@ -1568,8 +1554,8 @@ bool UpdateLayoutParagraph()
 
 	int align = buf->text->cursor.par->GetAlign();
 	if (align == LYX_ALIGN_LAYOUT)
-		align =	lyxstyle.Style(buf->params.textclass,
-				       buf->text->cursor.par->GetLayout())->align;
+		align =	textclasslist.Style(buf->params.textclass,
+				       buf->text->cursor.par->GetLayout()).align;
 	 
 	switch (align) {
 	case LYX_ALIGN_RIGHT:
@@ -1786,10 +1772,10 @@ bool UpdateLayoutDocument(BufferParams *params)
 
 	if (params == 0)
 		params = &current_view->currentBuffer()->params;
-	LyXTextClass *tclass = lyxstyle.TextClass(params->textclass);
+	LyXTextClass const & tclass = textclasslist.TextClass(params->textclass);
 	
 	fl_set_choice_text(fd_form_document->choice_class, 
-			   lyxstyle.DescOfClass(params->textclass).c_str());
+			   textclasslist.DescOfClass(params->textclass).c_str());
 	combo_language->select_text(params->language.c_str());
 	
 	fl_set_choice_text(fd_form_document->choice_fonts, 
@@ -1803,18 +1789,18 @@ bool UpdateLayoutDocument(BufferParams *params)
 	fl_clear_choice(fd_form_document->choice_fontsize);
 	fl_addto_choice(fd_form_document->choice_fontsize, "default");
 	fl_addto_choice(fd_form_document->choice_fontsize, 
-			tclass->opt_fontsize.c_str());
+			tclass.opt_fontsize().c_str());
 	fl_set_choice(fd_form_document->choice_fontsize, 
-		      tokenPos(tclass->opt_fontsize, '|', params->fontsize) + 2);
+		      tokenPos(tclass.opt_fontsize(), '|', params->fontsize) + 2);
 
 	// ale970405+lasgoutt970513
 	fl_clear_choice(fd_form_document->choice_pagestyle);
 	fl_addto_choice(fd_form_document->choice_pagestyle, "default");
 	fl_addto_choice(fd_form_document->choice_pagestyle, 
-			tclass->opt_pagestyle.c_str());
+			tclass.opt_pagestyle().c_str());
     
 	fl_set_choice(fd_form_document->choice_pagestyle,
-		      tokenPos(tclass->opt_pagestyle, '|', params->pagestyle) + 2);
+		      tokenPos(tclass.opt_pagestyle(), '|', params->pagestyle) + 2);
 
 	fl_set_button(fd_form_document->radio_indent, 0);
 	fl_set_button(fd_form_document->radio_skip, 0);
@@ -2301,8 +2287,8 @@ string CurrentState()
 		// font. (Asger)
 		Buffer * buffer = current_view->currentBuffer();
 		LyXFont font = buffer->text->real_current_font;
-		LyXFont defaultfont = lyxstyle.TextClass(buffer->
-							 params.textclass)->defaultfont;
+		LyXFont defaultfont = textclasslist.TextClass(buffer->
+							 params.textclass).defaultfont();
 		font.reduce(defaultfont);
 		state = _("Font: ") + font.stateText();
 
@@ -2650,10 +2636,8 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 	
-	bool line_top, line_bottom;
-	bool pagebreak_top, pagebreak_bottom;
 	VSpace space_top, space_bottom;
-	char align;
+	LyXAlignment align;
 	string labelwidthstring;
 	bool noindent;
 
@@ -2668,10 +2652,10 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 		fl_set_choice (fd_form_paragraph->choice_space_below, 1);
 	}
    
-	line_top = fl_get_button(fd_form_paragraph->check_lines_top);
-	line_bottom = fl_get_button(fd_form_paragraph->check_lines_bottom);
-	pagebreak_top = fl_get_button(fd_form_paragraph->check_pagebreaks_top);
-	pagebreak_bottom = fl_get_button(fd_form_paragraph->check_pagebreaks_bottom);
+	bool line_top = fl_get_button(fd_form_paragraph->check_lines_top);
+	bool line_bottom = fl_get_button(fd_form_paragraph->check_lines_bottom);
+	bool pagebreak_top = fl_get_button(fd_form_paragraph->check_pagebreaks_top);
+	bool pagebreak_bottom = fl_get_button(fd_form_paragraph->check_pagebreaks_bottom);
 	switch (fl_get_choice (fd_form_paragraph->choice_space_above)) {
 	case 1: space_top = VSpace(VSpace::NONE); break;
 	case 2: space_top = VSpace(VSpace::DEFSKIP); break;
@@ -2786,7 +2770,7 @@ void UpdateDocumentButtons(BufferParams const &params)
 extern "C" void ChoiceClassCB(FL_OBJECT *ob, long)
 {
 	ProhibitInput();
-	if (lyxstyle.Load(fl_get_choice(ob)-1)) {
+	if (textclasslist.Load(fl_get_choice(ob)-1)) {
 		if (AskQuestion(_("Should I set some parameters to"),
 				fl_get_choice_text(ob),
 				_("the defaults of this document class?"))) {
@@ -2894,10 +2878,10 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 
-	char new_class = fl_get_choice(fd_form_document->choice_class) - 1;
+	LyXTextClassList::ClassList::size_type new_class = fl_get_choice(fd_form_document->choice_class) - 1;
 	if (params->textclass != new_class) {
 		// try to load new_class
-		if (lyxstyle.Load(new_class)) {
+		if (textclasslist.Load(new_class)) {
 			// successfully loaded
 			redo = true;
 			minibuffer->Set(_("Converting document to new document class..."));
@@ -2959,9 +2943,9 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	else
 		params->columns = 1;
 	if (fl_get_button(fd_form_document->radio_sides_two))
-		params->sides = 2;
+		params->sides = LyXTextClass::TwoSides;
 	else
-		params->sides = 1;
+		params->sides = LyXTextClass::OneSide;
 
 	Spacing tmpSpacing = params->spacing;
 	switch(fl_get_choice(fd_form_document->choice_spacing)) {
@@ -2986,14 +2970,14 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (tmpSpacing != params->spacing)
 		redo = true;
 	
-	signed char tmpchar = (signed char) 
-		fl_get_counter_value(fd_form_document->slider_secnumdepth);;
+	signed char tmpchar =  
+		static_cast<signed char>(fl_get_counter_value(fd_form_document->slider_secnumdepth));
 	if (params->secnumdepth != tmpchar)
 		redo = true;
 	params->secnumdepth = tmpchar;
    
-	params->tocdepth = (signed char) 
-		fl_get_counter_value(fd_form_document->slider_tocdepth);;
+	params->tocdepth =  
+		static_cast<int>(fl_get_counter_value(fd_form_document->slider_tocdepth));
 
 	params->float_placement =
 		fl_get_input(fd_form_document->input_float_placement);
@@ -3721,8 +3705,8 @@ extern "C" void TocCancelCB(FL_OBJECT *, long)
 
 extern "C" void TocUpdateCB(FL_OBJECT *, long)
 {
-	static LyXParagraph* stapar = 0;
-	TocList *tmptoclist = 0;
+	static LyXParagraph * stapar = 0;
+	TocList * tmptoclist = 0;
    
 	/* deleted the toclist */ 
 	if (toclist){
@@ -3743,10 +3727,9 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 	}
 	fl_hide_object(fd_form_toc->browser_toc);
 	/* get the table of contents */ 
-	LyXParagraph *par = current_view->currentBuffer()->paragraph;
+	LyXParagraph * par = current_view->currentBuffer()->paragraph;
 	char labeltype;
-	char* line = new char[200];
-	//int i = 0;
+	char * line = new char[200];
 	int pos = 0;
 	unsigned char c;
 	int topline = 0;
@@ -3756,8 +3739,8 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 	stapar = par;
    
 	while (par) {
-		labeltype = lyxstyle.Style(current_view->currentBuffer()->params.textclass, 
-					   par->GetLayout())->labeltype;
+		labeltype = textclasslist.Style(current_view->currentBuffer()->params.textclass, 
+					   par->GetLayout()).labeltype;
       
 		if (labeltype >= LABEL_COUNTER_CHAPTER
 		    && labeltype <= LABEL_COUNTER_CHAPTER +
@@ -3767,13 +3750,12 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			
 			for (pos=0; 
 			     pos < (labeltype - 
-				    lyxstyle.TextClass(current_view->currentBuffer()->
-						       params.textclass)->maxcounter) * 4 + 2;
+				    textclasslist.TextClass(current_view->currentBuffer()->
+						       params.textclass).maxcounter()) * 4 + 2;
 			     pos++)
 				line[pos] = ' ';
 			
 			// Then the labestring
-			//i = 0;
 			if (!par->labelstring.empty()) {
 				string::size_type i = 0;
 				while (pos < 199 && i < par->labelstring.length()) {
@@ -3786,11 +3768,16 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			line[pos] = ' ';
 			pos++;
 			
-			/* now the contents */ 
+			/* now the contents */
+#ifdef NEW_TEXT
+			LyXParagraph::size_type i = 0;
+			while (pos < 199 && i < par->size()) {
+#else
 			int i = 0;
 			while (pos < 199 && i < par->last) {
+#endif
 				c = par->GetChar(i);
-				if (isprint((unsigned char) c) || c >= 128) {
+				if (isprint(c) || c >= 128) {
 					line[pos] = c;
 					pos++;
 				}

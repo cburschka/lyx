@@ -8,8 +8,8 @@
  * 
  *======================================================*/
 
-#ifndef _INSET_REF_H
-#define _INSET_REF_H
+#ifndef INSET_REF_H
+#define INSET_REF_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -33,15 +33,15 @@ public:
 	};
 	
 	///
-	InsetRef(): InsetCommand("ref") { flag = InsetRef::REF; }
+	InsetRef() : InsetCommand("ref") { flag = InsetRef::REF; }
 	///
-	InsetRef(string const &, Buffer*);
+	InsetRef(string const &, Buffer *);
 	///
-	InsetRef(InsetCommand const&, Buffer*);
+	InsetRef(InsetCommand const &, Buffer *);
 	///
 	~InsetRef();
         ///
-        Inset* Clone() { return new InsetRef (getCommand(), master); }
+        Inset * Clone() { return new InsetRef (getCommand(), master); }
 	///
 	Inset::Code LyxCode() const { return Inset::REF_CODE; }
 	///
@@ -61,20 +61,20 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 private:
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;
 	///
         Ref_Flags flag;
         ///
-	Buffer *master;
+	Buffer * master;
 };
 
 
@@ -85,5 +85,4 @@ void InsetRef::gotoLabel()
 	master->gotoLabel(getContents());
     }
 }
-
 #endif

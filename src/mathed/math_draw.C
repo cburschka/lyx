@@ -363,8 +363,8 @@ MathBigopInset::Metrics()
       t = LM_TC_TEXTRM;
    }
    mathed_set_font(t, size);
-   mathed_string_height(t, size, (unsigned char const *)s, ls, ascent, descent);
-   width = mathed_string_width(t, size, (unsigned char const *)s, ls);
+   mathed_string_height(t, size, reinterpret_cast<const unsigned char*>(s), ls, ascent, descent);
+   width = mathed_string_width(t, size, reinterpret_cast<const unsigned char*>(s), ls);
    if (sym==LM_oint) width += 2;
 }
 

@@ -1,16 +1,16 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1998 The LyX Team.
+ *
+ * ====================================================== */
 
-#ifndef _LyXView_H_
-#define _LyXView_H_
+#ifndef LyXView_H
+#define LyXView_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -21,6 +21,8 @@
 #include "buffer.h"
 #include "menus.h"
 #include "BufferView.h"
+#include "layout.h"
+
 class LyXFunc;
 class Toolbar;
 class MiniBuffer;
@@ -59,7 +61,7 @@ public:
 	void setPosition(int, int);
 
 	/// Show the main form.
-	void show(int, int, char const* t= "LyX");
+	void show(int, int, char const * t= "LyX");
 
 	/// init (should probably be removed later) (Lgb)
 	void init();
@@ -68,28 +70,28 @@ public:
 	void redraw();
 
 	/// returns the buffer currently shown in the main form.
-	Buffer *currentBuffer(){ return bufferview->currentBuffer();}
+	Buffer * currentBuffer(){ return bufferview->currentBuffer();}
 
 	///
-	BufferView *currentView() { return bufferview; }
+	BufferView * currentView() { return bufferview; }
 
 	/// returns a pointer to the form.
-	FL_FORM *getForm() { return _form; }
+	FL_FORM * getForm() { return _form; }
 
 	/// return a pointer to the toolbar
-	Toolbar *getToolbar() { return toolbar; }
+	Toolbar * getToolbar() { return toolbar; }
 
 	/// return a pointer to the lyxfunc
-	LyXFunc *getLyXFunc() { return lyxfunc; }
+	LyXFunc * getLyXFunc() { return lyxfunc; }
 
 	/// return a pointer to the minibuffer
-	MiniBuffer *getMiniBuffer() { return minibuffer; }
+	MiniBuffer * getMiniBuffer() { return minibuffer; }
 
 	///
-	Menus *getMenus() { return menus; }
+	Menus * getMenus() { return menus; }
 
 	///
-	Intl *getIntl() { return intl; }
+	Intl * getIntl() { return intl; }
 
 	///
 	void updateLayoutChoice();
@@ -101,27 +103,27 @@ public:
 	void resetAutosaveTimer();
 private:
 	/// 
-	LyXFunc *lyxfunc;
+	LyXFunc * lyxfunc;
 	/// 
-	Toolbar *toolbar;
+	Toolbar * toolbar;
 	/// 
-	MiniBuffer *minibuffer;
+	MiniBuffer * minibuffer;
 	///
-	Menus *menus;
+	Menus * menus;
 	///
-	Intl *intl;
+	Intl * intl;
 
 	/** This is supposed to be a pointer or a list of pointers to the
 	   BufferViews currently being shown in the LyXView. So far
 	   this is not used, but that should change pretty soon. (Lgb) */
-	BufferView *bufferview;
+	BufferView * bufferview;
 	///
 	void invalidateLayoutChoice();
 	///
 	void UpdateDocumentClassChoice();
 public:
  	///
- 	static int KeyPressMask_raw_callback(FL_FORM *, void *xev);
+ 	static int KeyPressMask_raw_callback(FL_FORM *, void * xev);
 	/** This callback is run when a close event is sent from the
 	  window manager. */
 	static int atCloseMainFormCB(FL_FORM *, void *);
@@ -131,17 +133,15 @@ public:
 	static void UpdateTimerCB(FL_OBJECT *, long);
 private:
 	/// makes the main form.
-	FD_form_main *create_form_form_main(int width, int height);
+	FD_form_main * create_form_form_main(int width, int height);
 	/// A pointer to the form.	
-	FD_form_main *_form_main;
+	FD_form_main * _form_main;
 	/// A pointer to the form.	
-	FL_FORM *_form;
+	FL_FORM * _form;
 
 	/** The last textclass layout list in the layout choice selector
 	  This should probably be moved to the toolbar, but for now it's
 	here. (Asger) */
 	int last_textclass;
 };
-
-
 #endif

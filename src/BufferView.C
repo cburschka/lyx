@@ -40,6 +40,7 @@
 #include "lyxtext.h"
 #include "lyx_cb.h"
 #include "gettext.h"
+#include "layout.h"
 
 extern BufferList bufferlist;
 void sigchldhandler(pid_t pid, int *status);
@@ -56,7 +57,7 @@ extern InsetUpdateStruct *InsetUpdateList;
 extern void UpdateInsetUpdateList();
 
 // This is _very_ temporary
-FL_OBJECT *figinset_canvas;
+FL_OBJECT * figinset_canvas;
 
 BufferView::BufferView(LyXView *o, int xpos, int ypos,
 		       int width, int height)
@@ -78,14 +79,7 @@ BufferView::BufferView(LyXView *o, int xpos, int ypos,
 	fl_set_focus_object(_owner->getForm(), work_area);
 	work_area_focus = true;
 	lyx_focus = false;
-        backstack = new BackStack(16);
 }
-
-
-BufferView::~BufferView()
-{
-	delete backstack;
-}   
 
 
 void BufferView::setBuffer(Buffer *b)
@@ -129,7 +123,6 @@ void BufferView::setBuffer(Buffer *b)
 	} else {
 		lyxerr.debug() << "  No Buffer!" << endl;
 		_owner->getMenus()->hideMenus();
-		//workAreaExpose();
 		updateScrollbar();
 		fl_redraw_object(work_area);
 	}
@@ -241,9 +234,9 @@ void BufferView::updateScrollbar()
 	fl_set_slider_increment(scrollbar,work_area->h-lineh,lineh);
 #endif
 	if (maxfloat>0){
-		if ((hfloat/maxfloat) * (float) height2 < 3)
+		if ((hfloat/maxfloat) * float(height2) < 3)
 			fl_set_slider_size(scrollbar,
-					   3/(float)height2);
+					   3/float(height2));
 		else
 			fl_set_slider_size(scrollbar,
 					   hfloat/maxfloat);
@@ -267,9 +260,9 @@ int BufferView::resizeCurrentBuffer()
 {
 	lyxerr.debug() << "resizeCurrentBuffer" << endl;
 	
-	LyXParagraph *par = 0;
-	LyXParagraph *selstartpar = 0;
-	LyXParagraph *selendpar = 0;
+	LyXParagraph * par = 0;
+	LyXParagraph * selstartpar = 0;
+	LyXParagraph * selendpar = 0;
 	int pos = 0;
 	int selstartpos = 0;
 	int selendpos = 0;
@@ -364,33 +357,34 @@ void BufferView::gotoError()
 		_buffer->text->cursor;
 }
 
+
 // Just a bunch of C wrappers around static members of BufferView
-extern "C" void C_BufferView_UpCB(FL_OBJECT *ob, long buf) {
-	BufferView::UpCB(ob,buf);
+extern "C" void C_BufferView_UpCB(FL_OBJECT * ob, long buf) {
+	BufferView::UpCB(ob, buf);
 }
 
-extern "C" void C_BufferView_DownCB(FL_OBJECT *ob, long buf) {
-	BufferView::DownCB(ob,buf);
+extern "C" void C_BufferView_DownCB(FL_OBJECT * ob, long buf) {
+	BufferView::DownCB(ob, buf);
 }
 
-extern "C" void C_BufferView_ScrollCB(FL_OBJECT *ob, long buf) {
-	BufferView::ScrollCB(ob,buf);
+extern "C" void C_BufferView_ScrollCB(FL_OBJECT * ob, long buf) {
+	BufferView::ScrollCB(ob, buf);
 }
 
-extern "C" void C_BufferView_CursorToggleCB(FL_OBJECT *ob, long buf) {
-	BufferView::CursorToggleCB(ob,buf);
+extern "C" void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf) {
+	BufferView::CursorToggleCB(ob, buf);
 }
 
-extern "C" int C_BufferView_work_area_handler(FL_OBJECT *ob, int event,
+extern "C" int C_BufferView_work_area_handler(FL_OBJECT * ob, int event,
 					      FL_Coord, FL_Coord, 
-					      int key, void *xev) {
+					      int key, void * xev) {
 	return BufferView::work_area_handler(ob, event, 0, 0, key, xev);
 }
 
 
 void BufferView::create_view(int xpos, int ypos, int width, int height)
 {
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	const int bw = abs(fl_get_border_width());
 
 	// a hack for the figinsets (Matthias)
@@ -441,7 +435,8 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj,NorthEastGravity, NorthEastGravity);
-	fl_set_object_callback(obj,C_BufferView_UpCB,(long)this);
+	fl_set_object_callback(obj, C_BufferView_UpCB, 0);
+	obj->u_vdata = this;
 	fl_set_pixmapbutton_data(obj, up_xpm);
 
 #if FL_REVISION >85
@@ -459,7 +454,8 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
-	fl_set_object_callback(obj,C_BufferView_ScrollCB,(long)this);
+	fl_set_object_callback(obj, C_BufferView_ScrollCB, 0);
+	obj->u_vdata = this;
 	
 	// down - scrollbar button
 #if FL_REVISION > 85
@@ -475,7 +471,8 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
-	fl_set_object_callback(obj,C_BufferView_DownCB,(long)this);
+	fl_set_object_callback(obj, C_BufferView_DownCB, 0);
+	obj->u_vdata = this;
 	fl_set_pixmapbutton_data(obj, down_xpm);
 	fl_set_border_width(-bw);
 
@@ -497,13 +494,13 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 
 
 // Callback for scrollbar up button
-void BufferView::UpCB(FL_OBJECT *ob, long buf)
+void BufferView::UpCB(FL_OBJECT * ob, long)
 {
-	BufferView *view = (BufferView*) buf;
+	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
 	
 	if (view->_buffer == 0) return;
 
-	const XEvent*ev2;
+	XEvent const * ev2;
 	static long time = 0;
 	ev2 = fl_last_event();
 	if (ev2->type == ButtonPress || ev2->type == ButtonRelease) 
@@ -540,20 +537,20 @@ void waitForX()
 	}
 	static XEvent ev;
 	XChangeProperty(fl_display, w, a, a, 8,
-			PropModeAppend, (unsigned char *)"", 0);
+			PropModeAppend, reinterpret_cast<unsigned char*>(""), 0);
 	XWindowEvent(fl_display, w, PropertyChangeMask, &ev);
 }
 
 
 // Callback for scrollbar slider
-void BufferView::ScrollCB(FL_OBJECT *ob, long buf)
+void BufferView::ScrollCB(FL_OBJECT * ob, long)
 {
-	BufferView *view = (BufferView*) buf;
+	BufferView *view = static_cast<BufferView*>(ob->u_vdata);
 	extern bool cursor_follows_scrollbar;
 	
 	if (view->_buffer == 0) return;
 
-	view->current_scrollbar_value = (long)fl_get_slider_value(ob);
+	view->current_scrollbar_value = long(fl_get_slider_value(ob));
 	if (view->current_scrollbar_value < 0)
 		view->current_scrollbar_value = 0;
    
@@ -584,13 +581,13 @@ void BufferView::ScrollCB(FL_OBJECT *ob, long buf)
 
 
 // Callback for scrollbar down button
-void BufferView::DownCB(FL_OBJECT *ob, long buf)
+void BufferView::DownCB(FL_OBJECT * ob, long)
 {
-	BufferView *view = (BufferView*) buf;
+	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
 
 	if (view->_buffer == 0) return;
 	
-	const XEvent*ev2;
+	XEvent const *ev2;
 	static long time = 0;
 	ev2 = fl_last_event();
 	if (ev2->type == ButtonPress || ev2->type == ButtonRelease) 
@@ -619,11 +616,11 @@ int BufferView::ScrollUp(long time)
 		return 0;
    
 	float add_value =  (_buffer->text->DefaultHeight()
-			    + (float)(time) * (float)(time) * 0.125);
+			    + float(time) * float(time) * 0.125);
    
 	if (add_value > work_area->h)
-		add_value = (float) (work_area->h -
-				     _buffer->text->DefaultHeight());
+		add_value = float(work_area->h -
+				  _buffer->text->DefaultHeight());
    
 	value -= add_value;
 
@@ -632,7 +629,7 @@ int BufferView::ScrollUp(long time)
    
 	fl_set_slider_value(scrollbar, value);
    
-	ScrollCB(scrollbar,(long)this); 
+	ScrollCB(scrollbar, 0); 
 	return 0;
 }
 
@@ -651,11 +648,11 @@ int BufferView::ScrollDown(long time)
 		return 0;
    
 	float add_value =  (_buffer->text->DefaultHeight()
-			    + (float)(time) * (float)(time) * 0.125);
+			    + float(time) * float(time) * 0.125);
    
 	if (add_value > work_area->h)
-		add_value = (float) (work_area->h -
-				     _buffer->text->DefaultHeight());
+		add_value = float(work_area->h -
+				  _buffer->text->DefaultHeight());
    
 	value += add_value;
    
@@ -664,7 +661,7 @@ int BufferView::ScrollDown(long time)
    
 	fl_set_slider_value(scrollbar, value);
    
-	ScrollCB(scrollbar,(long)this); 
+	ScrollCB(scrollbar, 0); 
 	return 0;
 }
 
@@ -684,7 +681,7 @@ void BufferView::ScrollUpOnePage(long /*time*/)
 	
 	fl_set_slider_value(scrollbar, y);
    
-	ScrollCB(scrollbar,(long)this); 
+	ScrollCB(scrollbar, 0); 
 }
 
 
@@ -706,7 +703,7 @@ void BufferView::ScrollDownOnePage(long /*time*/)
 	
 	fl_set_slider_value(scrollbar, y);
    
-	ScrollCB(scrollbar,(long)this); 
+	ScrollCB(scrollbar, 0); 
 }
 
 
@@ -718,8 +715,8 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 	static int y_old = -1;
 	static long scrollbar_value_old = -1;
 	
-	XEvent* ev = (XEvent*) xev;
-	BufferView *view = (BufferView*) ob->u_vdata;
+	XEvent * ev = static_cast<XEvent*>(xev);
+	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
 
 	// If we don't have a view yet; return
 	if (!view || quitting) return 0;
@@ -858,7 +855,7 @@ int BufferView::WorkAreaMotionNotify(FL_OBJECT *ob, Window,
 }
 
 
-extern int bibitemMaxWidth(const class LyXFont &);
+extern int bibitemMaxWidth(LyXFont const &);
 
 // Single-click on work area
 int BufferView::WorkAreaButtonPress(FL_OBJECT *ob, Window,
@@ -1163,8 +1160,8 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT *ob, Window ,
 
 	// Maybe we want to edit a bibitem ale970302
 	if (_buffer->text->cursor.par->bibkey && x < 20 + 
-	    bibitemMaxWidth(lyxstyle.TextClass(_buffer->
-					params.textclass)->defaultfont)) {
+	    bibitemMaxWidth(textclasslist.TextClass(_buffer->
+					params.textclass).defaultfont())) {
 		_buffer->text->cursor.par->bibkey->Edit(0, 0);
 	}
 
@@ -1177,7 +1174,7 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT *ob, Window ,
  * If hit, the coordinates are changed relative to the inset. 
  * Otherwise coordinates are not changed, and false is returned.
  */
-Inset * BufferView::checkInsetHit(int &x, int &y)
+Inset * BufferView::checkInsetHit(int & x, int & y)
 {
 	if (!getScreen())
 		return 0;
@@ -1272,19 +1269,17 @@ int BufferView::workAreaExpose()
 
 
 // Callback for cursor timer
-void BufferView::CursorToggleCB(FL_OBJECT *ob, long)
+void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 {
-	BufferView *view = (BufferView*) ob->u_vdata;
+	BufferView *view = static_cast<BufferView*>(ob->u_vdata);
 	
 	/* quite a nice place for asyncron Inset updating, isn't it? */
 	// actually no! This is run even if no buffer exist... so (Lgb)
 	if (view && !view->_buffer) {
 		goto set_timer_and_return;
 	}
-#ifdef WITH_WARNINGS
-#warning NOTE!
-#endif
 
+	// NOTE:
 	// On my quest to solve the gs rendre hangups I am now
 	// disabling the SIGHUP completely, and will do a wait
 	// now and then instead. If the guess that xforms somehow
@@ -1312,7 +1307,6 @@ void BufferView::CursorToggleCB(FL_OBJECT *ob, long)
 	// rendering process.
 
 	// these comments posted to lyx@via
-//#if 0
 	{
 	int status = 1;
 	int pid = waitpid((pid_t)0, &status, WNOHANG);
@@ -1321,7 +1315,6 @@ void BufferView::CursorToggleCB(FL_OBJECT *ob, long)
 	else if (pid > 0)
 		sigchldhandler(pid, &status);
 	}
-//#endif
 	if (InsetUpdateList) 
 		UpdateInsetUpdateList();
 
@@ -1387,7 +1380,7 @@ int BufferView::WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 	Atom tmpatom;
 	unsigned long ul1;
 	unsigned long ul2;
-	unsigned char* uc = 0;
+	unsigned char * uc = 0;
 	int tmpint;
 	screen->HideCursor();
 	BeforeChange();
@@ -1436,12 +1429,13 @@ int BufferView::WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 		XFlush(fl_display);
         
 		if (uc){
-			if (!ascii_type)
+			if (!ascii_type) {
 				_buffer->text->
-					InsertStringA((char*)uc);
-			else
+					InsertStringA(reinterpret_cast<char*>(uc));
+			} else {
 				_buffer->text->
-					InsertStringB((char*)uc);
+					InsertStringB(reinterpret_cast<char*>(uc));
+			}
 			free(uc);
 			uc = 0;
 		}
@@ -1457,7 +1451,7 @@ void BufferView::cursorPrevious()
 	if (!currentBuffer()->text->cursor.row->previous) return;
 	
 	long y = getScreen()->first;
-	Row* cursorrow = currentBuffer()->text->cursor.row;
+	Row * cursorrow = currentBuffer()->text->cursor.row;
 	currentBuffer()->text->
 	  SetCursorFromCoordinates(currentBuffer()->text->
 				   cursor.x_fix,
@@ -1506,7 +1500,7 @@ bool BufferView::available() const
 
 void BufferView::savePosition()
 {
-	backstack->push(currentBuffer()->getFileName(),
+	backstack.push(currentBuffer()->getFileName(),
 			currentBuffer()->text->cursor.x,
 			currentBuffer()->text->cursor.y);
 }
@@ -1514,13 +1508,13 @@ void BufferView::savePosition()
 
 void BufferView::restorePosition()
 {
-	if (backstack->empty()) return;
+	if (backstack.empty()) return;
 	
 	int  x, y;
-	string fname = backstack->pop(&x, &y);
+	string fname = backstack.pop(&x, &y);
 	
 	BeforeChange();
-	Buffer *b = (bufferlist.exists(fname)) ? bufferlist.getBuffer(fname):
+	Buffer * b = (bufferlist.exists(fname)) ? bufferlist.getBuffer(fname):
 		bufferlist.loadLyXFile(fname); // don't ask, just load it
 	setBuffer(b);
 	currentBuffer()->text->SetCursorFromCoordinates(x, y);

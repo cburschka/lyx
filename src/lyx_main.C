@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
  * ======================================================*/
 
@@ -39,25 +39,21 @@ string user_lyxdir;	// Default $HOME/.lyx
 // Should this be kept global? Asger says Yes.
 DebugStream lyxerr;
 
-LastFiles *lastfiles;
-LyXRC *lyxrc;
+LastFiles * lastfiles;
+LyXRC * lyxrc;
 
 // This is the global bufferlist object
 BufferList bufferlist;
 
-LyXServer *lyxserver = 0;
+LyXServer * lyxserver = 0;
 // this should be static, but I need it in buffer.C
 bool finished = false;	// flag, that we are quitting the program
 
 // convenient to have it here.
-kb_keymap *toplevel_keymap;
+kb_keymap * toplevel_keymap;
 
-// from spellchecker.C
-#if 0
-extern void sigchldhandler(int sig);
-#endif
 
-LyX::LyX(int *argc, char *argv[])
+LyX::LyX(int * argc, char * argv[])
 {
 	// Prevent crash with --help
 	lyxGUI = 0;
@@ -95,7 +91,7 @@ LyX::LyX(int *argc, char *argv[])
 	else if ((*argc)>2)
 		lyxerr.debug() << "Opening documents..." << endl;
 
-	Buffer *last_loaded = 0;
+	Buffer * last_loaded = 0;
 
 	for (int argi = (*argc) - 1; argi >= 1; argi--) {
 		Buffer * loadb = bufferlist.loadLyXFile(argv[argi]);
@@ -146,14 +142,6 @@ void LyX::init(int */*argc*/, char **argv)
 	signal(SIGINT, error_handler);
 	signal(SIGTERM, error_handler);
 
-#if 0
-	// Install the SIGCHLD handler
-	act_.sa_handler = sigchldhandler;
-        //act_.sa_mask = SIGCHLD;
-        act_.sa_flags = 0;
-	//act_.sa_flags = SA_RESTART; //perhaps
-        sigaction(SIGCHLD, &act_, 0);
-#endif
 	//
 	// Determine path of binary
 	//
@@ -478,10 +466,10 @@ void commandLineHelp()
 }
 
 
-bool LyX::easyParse(int *argc, char *argv[])
+bool LyX::easyParse(int * argc, char * argv[])
 {
 	bool gui = true;
-	for(int i=1; i < *argc; i++) {
+	for(int i = 1; i < *argc; ++i) {
 		string arg = argv[i];
 		// Check for -dbg int
 		if (arg == "-dbg") {

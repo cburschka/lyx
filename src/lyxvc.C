@@ -21,9 +21,6 @@
 extern BufferList bufferlist;
 extern void MenuWrite(Buffer *);
 
-#if 0
-extern bool gsworking();
-#endif
 
 LyXVC::LyXVC()
 {
@@ -146,7 +143,7 @@ void LyXVC::scanMaster()
 }
 
 
-void LyXVC::setBuffer(Buffer *buf)
+void LyXVC::setBuffer(Buffer * buf)
 {
 	_owner = buf;
 }
@@ -302,22 +299,23 @@ string const LyXVC::getLocker() const
 }
 
 // This is a hack anyway so I'll put it here in the mean time.
-void LyXVC::logClose(FL_OBJECT *obj, long)
+void LyXVC::logClose(FL_OBJECT * obj, long)
 {
-	LyXVC *This = (LyXVC*)obj->form->u_vdata;
+	LyXVC * This = static_cast<LyXVC*>(obj->form->u_vdata);
 	fl_hide_form(This->browser->LaTeXLog);
 }
 
+
 // and, hack over hack, here is a C wrapper :)
-extern "C" void C_LyXVC_logClose(FL_OBJECT *ob, long data)
+extern "C" void C_LyXVC_logClose(FL_OBJECT * ob, long data)
 {
 	LyXVC::logClose(ob, data);
 }
 
 
-void LyXVC::logUpdate(FL_OBJECT *obj, long)
+void LyXVC::logUpdate(FL_OBJECT * obj, long)
 {
-	LyXVC *This = (LyXVC*)obj->form->u_vdata;
+	LyXVC * This = static_cast<LyXVC*>(obj->form->u_vdata);
 	This->showLog();
 }
 
@@ -332,14 +330,17 @@ void LyXVC::viewLog(string const & fil)
 	static int ow = -1, oh;
 
 	if (!browser) {
-		FL_OBJECT *obj;
+		FL_OBJECT * obj;
 		browser = (FD_LaTeXLog *) fl_calloc(1, sizeof(*browser));
 		
 		browser->LaTeXLog = fl_bgn_form(FL_NO_BOX, 470, 380);
-		browser->LaTeXLog->u_vdata = (void*)this;
+		browser->LaTeXLog->u_vdata = this;
 		obj = fl_add_box(FL_UP_BOX, 0, 0, 470, 380, "");
-		browser->browser_latexlog = fl_add_browser(FL_NORMAL_BROWSER, 10, 10, 450, 320, "");
-		obj = fl_add_button(FL_RETURN_BUTTON, 270, 340, 90, 30, _("Close"));
+		browser->browser_latexlog = fl_add_browser(FL_NORMAL_BROWSER,
+							   10, 10,
+							   450, 320, "");
+		obj = fl_add_button(FL_RETURN_BUTTON, 270, 340, 90, 30,
+				    _("Close"));
 		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 		fl_set_object_callback(obj, C_LyXVC_logClose, 0);
 		obj = fl_add_button(FL_NORMAL_BUTTON,370,340,90,30,
@@ -352,7 +353,8 @@ void LyXVC::viewLog(string const & fil)
 	}
 
 	if (!fl_load_browser(browser->browser_latexlog, fil.c_str()))
-		fl_add_browser_line(browser->browser_latexlog, _("No RCS History!"));
+		fl_add_browser_line(browser->browser_latexlog,
+				    _("No RCS History!"));
 	
 	if (browser->LaTeXLog->visible) {
 		fl_raise_form(browser->LaTeXLog);
@@ -371,26 +373,6 @@ void LyXVC::viewLog(string const & fil)
 
 void LyXVC::showLog()
 {
-	// This I really don't like, but we'll look at this problem
-	// in 0.13. Then we can make a clean solution.
-#if 0
-	if (gsworking()) {
-                WriteAlert(_("Sorry, can't do this while"
-			     " pictures are being rendered."),
-                           _("Please wait a few seconds for"
-			     " this to finish and try again."),
-                           _("(or kill runaway gs processes"
-			     " by hand and try again.)"));
-                return;
-        }
-        extern pid_t isp_pid; // from spellchecker.C
-        if(isp_pid != -1) {
-		WriteAlert(_("Can't do this while the"
-			     " spellchecker is running."),
-			   _("Stop the spellchecker first."));
-		return;
-	}
-#endif
 	string tmpf = tmpnam(0);
 	doVCCommand("rlog \""
 		    + OnlyFilename(_owner->getFileName()) + "\" > " + tmpf);

@@ -16,9 +16,9 @@
 #include "BufferView.h"
 #include "gettext.h"
 
-extern FD_form_paper *fd_form_paper;
-extern MiniBuffer *minibuffer;
-extern BufferView *current_view;
+extern FD_form_paper * fd_form_paper;
+extern MiniBuffer * minibuffer;
+extern BufferView * current_view;
 
 
 inline void DeactivatePaperButtons ()
@@ -89,11 +89,7 @@ static void checkMarginValues()
     
 	fl_hide_object(fd_form_paper->text_warning);
 	ActivatePaperButtons();
-#if 0
-	val = fl_get_choice(fd_form_paper->choice_papersize2)-1;
-	if (val == VM_PAPER_DEFAULT)
-		return;
-#endif
+
 	allEmpty = (!strlen(fl_get_input(fd_form_paper->input_top_margin)) &&
 		    !strlen(fl_get_input(fd_form_paper->input_bottom_margin)) &&
 		    !strlen(fl_get_input(fd_form_paper->input_left_margin)) &&
@@ -188,9 +184,9 @@ void PaperApplyCB(FL_OBJECT *, long)
 	if (! current_view->available()) 
 		return;
 	
-	BufferParams *params = &current_view->currentBuffer()->params;
+	BufferParams * params = &current_view->currentBuffer()->params;
 	
-	const FD_form_paper* fd = fd_form_paper;
+	FD_form_paper const * fd = fd_form_paper;
     
 	params->papersize2 = fl_get_choice(fd->choice_papersize2)-1;
 	params->paperpackage = fl_get_choice(fd->choice_paperpackage)-1;
@@ -222,21 +218,18 @@ void PaperCancelCB(FL_OBJECT *, long)
 }
 
 
-void PaperOKCB(FL_OBJECT *ob, long data)
+void PaperOKCB(FL_OBJECT * ob, long data)
 {
 	PaperCancelCB(ob,data);
 	PaperApplyCB(ob,data);
 }
 
 
-void PaperMarginsCB(FL_OBJECT *ob, long)
+void PaperMarginsCB(FL_OBJECT * ob, long)
 {
-	const FD_form_paper
-		*fd = fd_form_paper;
-	string
-		str;
-	char
-		val;
+	FD_form_paper const * fd = fd_form_paper;
+	string str;
+	char val;
     
 	checkMarginValues();
 	if (ob == fd->choice_papersize2) {
@@ -258,11 +251,15 @@ void PaperMarginsCB(FL_OBJECT *ob, long)
 			fl_set_choice(fd->choice_papersize2, VM_PAPER_DEFAULT + 1);
 			fl_set_button(fd->push_use_geometry, 0);
 		}
-	} else if ((ob==fd->input_custom_width) || (ob==fd->input_custom_height) ||
-		   (ob==fd->input_left_margin) || (ob==fd->input_right_margin) ||
-		   (ob==fd->input_top_margin) || (ob==fd->input_bottom_margin) ||
-		   (ob==fd->input_head_height) || (ob==fd->input_head_sep) ||
-		   (ob==fd->input_foot_skip)) {
+	} else if ((ob==fd->input_custom_width)
+		   || (ob==fd->input_custom_height) 
+		   || (ob==fd->input_left_margin)
+		   || (ob==fd->input_right_margin) 
+		   || (ob==fd->input_top_margin)
+		   || (ob==fd->input_bottom_margin) 
+		   || (ob==fd->input_head_height)
+		   || (ob==fd->input_head_sep)
+		   || (ob==fd->input_foot_skip)) {
 		str = fl_get_input(ob);
 		if (!str.empty() && !isValidLength(str)) {
 			fl_set_object_label(fd_form_paper->text_warning,

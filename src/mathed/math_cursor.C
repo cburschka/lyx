@@ -41,12 +41,14 @@ inline bool IsAlpha(char c)
 }
 
 // This was very smaller, I'll change it later 
-inline bool IsMacro(short token, int id)
+inline bool IsMacro(short tok, int id)
 {
-   return (token!=LM_TK_STACK && token!=LM_TK_FRAC && token!=LM_TK_SQRT && token!=LM_TK_WIDE &&
-	   token!=LM_TK_SPACE && token!=LM_TK_DOTS &&  token!=LM_TK_FUNCLIM &&
-	   token!=LM_TK_BIGSYM && token!=LM_TK_ACCENT && 
-	   !(token==LM_TK_SYM && id<255));
+   return (tok != LM_TK_STACK && tok != LM_TK_FRAC && tok != LM_TK_SQRT
+	   && tok != LM_TK_WIDE
+	   && tok != LM_TK_SPACE && tok != LM_TK_DOTS
+	   && tok != LM_TK_FUNCLIM
+	   && tok != LM_TK_BIGSYM && tok != LM_TK_ACCENT && 
+	   !(tok == LM_TK_SYM && id < 255));
 }
 
 // Yes, mathed isn't using string yet.

@@ -837,9 +837,9 @@ int LyXFont::ascent(char c) const
 {
 	XFontStruct *finfo = getXFontstruct();
 	if (finfo->per_char
-	    && (unsigned int) c >= finfo->min_char_or_byte2
-	    && (unsigned int) c <= finfo->max_char_or_byte2) {
-		unsigned int index = (unsigned int) c - finfo->min_char_or_byte2;
+	    && c >= static_cast<char>(finfo->min_char_or_byte2)
+	    && c <= static_cast<char>(finfo->max_char_or_byte2)) {
+		unsigned int index = c - finfo->min_char_or_byte2;
 		return finfo->per_char[index].ascent;
 	} else
 		return finfo->ascent;
@@ -850,9 +850,9 @@ int LyXFont::descent(char c) const
 {
 	XFontStruct *finfo = getXFontstruct();
 	if (finfo->per_char
-	    && (unsigned int) c >= finfo->min_char_or_byte2
-	    && (unsigned int) c <= finfo->max_char_or_byte2) {
-		unsigned int index = (unsigned int) c - finfo->min_char_or_byte2;
+	    && c >= static_cast<char>(finfo->min_char_or_byte2)
+	    && c <= static_cast<char>(finfo->max_char_or_byte2)) {
+		unsigned int index = c - finfo->min_char_or_byte2;
 		return finfo->per_char[index].descent;
 	} else
 		return finfo->descent;
@@ -884,8 +884,8 @@ int LyXFont::textWidth(char const *s, int n) const
 		smallfont.setShape(LyXFont::UP_SHAPE);
 		for (int i=0; i < n; i++){
 			c = s[i];
-			if (islower((unsigned char) c)){
-				c = toupper( (unsigned char) c );
+			if (islower(c)){
+				c = toupper(c);
 				result += XTextWidth(smallfont.getXFontstruct(), &c, 1);
 			} else {
 				result += XTextWidth(getXFontstruct(), &c, 1);
@@ -935,8 +935,8 @@ int LyXFont::drawText(char const* s, int n, Pixmap pm,
 		smallfont.setShape(LyXFont::UP_SHAPE);
 		for (i=0; i < n; i++){
 			c = s[i];
-			if (islower((unsigned char) c)){
-				c = toupper((unsigned char) c);
+			if (islower(c)){
+				c = toupper(c);
 				XDrawString(fl_display,
 					    pm,
 					    smallfont.getGC(),

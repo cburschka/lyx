@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -37,26 +37,26 @@ InsetLatex::~InsetLatex()
 }
 
 
-int InsetLatex::Ascent(LyXFont const &font) const
+int InsetLatex::Ascent(LyXFont const & font) const
 {
 	return font.maxAscent() + 1;
 }
 
 
-int InsetLatex::Descent(LyXFont const &font) const
+int InsetLatex::Descent(LyXFont const & font) const
 {
 	return font.maxDescent() + 1;
 }
 
 
-int InsetLatex::Width(LyXFont const &font) const
+int InsetLatex::Width(LyXFont const & font) const
 {
 	return 6 + font.stringWidth(contents);
 }
 
 
-void InsetLatex::Draw(LyXFont font, LyXScreen &scr,
-		      int baseline, float &x)
+void InsetLatex::Draw(LyXFont font, LyXScreen & scr,
+		      int baseline, float & x)
 {
 	// Latex-insets are always LaTeX, so just correct the font */ 
 	font.setLatex(LyXFont::ON);
@@ -64,15 +64,9 @@ void InsetLatex::Draw(LyXFont font, LyXScreen &scr,
 	// Draw it as a box with the LaTeX text
 	x += 1;
 
-	//scr.drawFilledRectangle(int(x), baseline - Ascent(font) + 1,
-	//	     Width(font)-2, Ascent(font) + Descent(font)-2,
-	//	     FL_GRAY80);
 	scr.fillRectangle(gc_lighted, int(x), baseline - Ascent(font) +1 ,
 			  Width(font) - 2, Ascent(font) + Descent(font) -2);
 	
-	//scr.drawRectangle(int(x), baseline - Ascent(font) + 1,
-	//	     Width(font)-2, Ascent(font)+Descent(font)-2,
-	//	     FL_RED);
 	scr.drawRectangle(gc_foot,int(x), baseline - Ascent(font) + 1,
 			  Width(font)-2, Ascent(font)+Descent(font)-2);
 	
@@ -81,49 +75,46 @@ void InsetLatex::Draw(LyXFont font, LyXScreen &scr,
 }
 
 
-void InsetLatex::Write(FILE *file)
+void InsetLatex::Write(FILE * file)
 {
 	fprintf(file, "Latex %s\n", contents.c_str());
 }
 
 
-void InsetLatex::Read(LyXLex &lex)
+void InsetLatex::Read(LyXLex & lex)
 {
-	FILE *file = lex.getFile();
-	int i = 0;
-	char c='\0';
-	char tmp[100];
+	FILE * file = lex.getFile();
+	char c = 0;
+	string tmp;
 	while (!feof(file) && (c = fgetc(file)) != '\n') {
-		tmp[i]=c;
-		i++;
+		tmp += char(c);
 	}
-	tmp[i]='\0';
 	contents = tmp;
 }
 
 
-int InsetLatex::Latex(FILE *file, signed char /*fragile*/)
+int InsetLatex::Latex(FILE * file, signed char /*fragile*/)
 {
 	fprintf(file, "%s", contents.c_str());
 	return 0;
 }
 
 
-int InsetLatex::Latex(string &file, signed char /*fragile*/)
+int InsetLatex::Latex(string & file, signed char /*fragile*/)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatex::Linuxdoc(string &file)
+int InsetLatex::Linuxdoc(string & file)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatex::DocBook(string &file)
+int InsetLatex::DocBook(string & file)
 {
 	file += contents;
 	return 0;
@@ -136,9 +127,9 @@ bool InsetLatex::Deletable() const
 }
 
 
-Inset* InsetLatex::Clone()
+Inset * InsetLatex::Clone()
 {
-	InsetLatex *result = new InsetLatex(contents);
+	InsetLatex * result = new InsetLatex(contents);
 	return result;
 }
 

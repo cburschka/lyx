@@ -24,15 +24,13 @@ public:
 	///
 	LyXRC();
 	///
-	~LyXRC();
-	///
 	int Read (string const & filename);
 	///
         void Print();
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;
 	///
-	int ReadBindFile(string name = "cua");
+	int ReadBindFile(string const & name = "cua");
 	///
 	Toolbar toolbar;
 	///

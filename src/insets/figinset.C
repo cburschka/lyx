@@ -611,7 +611,7 @@ static void runqueue()
 					XInternAtom(tempdisp, "GHOSTVIEW", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeAppend, 
-					(unsigned char *) tbuf,
+					reinterpret_cast<unsigned char*>(tbuf),
 					strlen(tbuf));
 			
 			switch (p->data->flags & 3) {
@@ -641,7 +641,7 @@ static void runqueue()
 					XInternAtom(tempdisp, "GHOSTVIEW_COLORS", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeReplace, 
-					(unsigned char *) tbuf,
+					reinterpret_cast<unsigned char*>(tbuf),
 					strlen(tbuf));
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);

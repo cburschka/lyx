@@ -57,7 +57,7 @@ static LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 //static int number_index, unit_index;
 int number_index, unit_index;
 
-static inline void advance (string & data, unsigned int n)
+static inline void lyx_advance (string & data, unsigned int n)
 {
 	data.erase(0, n);
 }
@@ -73,19 +73,19 @@ static char nextToken (string & data)
 	if (data.empty())
 		return '\0';
 	else if (data[0] == '+') {
-		advance (data, 1);
+		lyx_advance (data, 1);
 		return '+';
 	}
 	else if (prefixIs(data, "plus")) {
-		advance (data, 4);
+		lyx_advance (data, 4);
 		return '+';
 	}
 	else if (data[0] == '-') {
-		advance (data, 1);
+		lyx_advance (data, 1);
 		return '-';
 	}
         else if (prefixIs(data, "minus")) {
-		advance (data, 5);
+		lyx_advance (data, 5);
 		return '-';
 	}
 	else {
@@ -97,7 +97,7 @@ static char nextToken (string & data)
                         string buffer = data.substr(0, i + 1);
 			if (sscanf (buffer.c_str(),
 				    "%f", &number[number_index]) == 1) {
-				advance (data, i + 1);
+				lyx_advance (data, i + 1);
 				++number_index;
 				return 'n';
 			} else 
@@ -108,7 +108,7 @@ static char nextToken (string & data)
 			string buffer = data.substr(0, i + 1);
 			unit[unit_index] = unitFromString (buffer);
 			if (unit[unit_index] != LyXLength::UNIT_NONE) {
-				advance (data, i + 1);
+				lyx_advance (data, i + 1);
 				++unit_index;
 				return 'u';
 			} else
@@ -165,11 +165,11 @@ bool isValidGlueLength (string const & data, LyXGlueLength * result)
 	short val_sign = 1; // positive as default
 	switch(buffer[0]) {
 	case '-':
-		advance(buffer, 1);
+		lyx_advance(buffer, 1);
 		val_sign = -1;
 		break;
 	case '+':
-		advance(buffer, 1);
+		lyx_advance(buffer, 1);
 		// fall through
 	default:
 		// no action
@@ -229,11 +229,11 @@ bool isValidLength(string const & data, LyXLength * result)
 	short val_sign = 1; // positive as default
 	switch(buffer[0]) {
 	case '-':
-		advance(buffer, 1);
+		lyx_advance(buffer, 1);
 		val_sign = -1;
 		break;
 	case '+':
-		advance(buffer, 1);
+		lyx_advance(buffer, 1);
 		// fall through
 	default:
 		// no action

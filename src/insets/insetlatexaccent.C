@@ -60,7 +60,7 @@ void InsetLatexAccent::checkContents()
 {
         candisp = false;
 
-	if (contents.empty() || contents.length()<2) return;
+	if (contents.empty() || contents.length() < 2) return;
 
 	// REMOVE IN 0.13
 	// Dirty Hack for backward compability. remove in 0.13 (Lgb)
@@ -239,17 +239,17 @@ void InsetLatexAccent::checkContents()
 				remdot = true;
 			else
 				return;
-		} else if ( (ic=='i'|| ic=='j') && contents[4]=='}') {
+		} else if ( (ic == 'i'|| ic == 'j') && contents[4] == '}') {
 		    // Do a rewrite: \<foo>{i} --> \<foo>{\i}
-		    string temp=contents;
+		    string temp = contents;
 		    temp.erase(3, string::npos);
-		    temp+='\\';
-			temp+=char(ic);
+		    temp += '\\';
+		    temp += char(ic);
 		    for(string::size_type j = 4; j < contents.length(); ++j)
 				temp+=contents[j];
 		    contents=temp;
 		    i++;
-			remdot=true;
+			remdot = true;
 		}    
 
 		// demand a '}' at the end
@@ -267,7 +267,7 @@ void InsetLatexAccent::checkContents()
 }
 
 
-int InsetLatexAccent::Ascent(LyXFont const &font) const
+int InsetLatexAccent::Ascent(LyXFont const & font) const
 {
 	int max;
 	if (candisp) {
@@ -283,7 +283,7 @@ int InsetLatexAccent::Ascent(LyXFont const &font) const
 }
 
 
-int InsetLatexAccent::Descent(LyXFont const &font) const
+int InsetLatexAccent::Descent(LyXFont const & font) const
 {
 	int max;
 	if (candisp) {
@@ -299,7 +299,7 @@ int InsetLatexAccent::Descent(LyXFont const &font) const
 }
 
 
-int InsetLatexAccent::Width(LyXFont const &font) const
+int InsetLatexAccent::Width(LyXFont const & font) const
 {
 	if (candisp)
 		return font.textWidth(&ic, 1);
@@ -308,11 +308,10 @@ int InsetLatexAccent::Width(LyXFont const &font) const
 }
 
 
-
 bool InsetLatexAccent::DisplayISO8859_9(LyXFont font,
-			    LyXScreen &scr,
+			    LyXScreen & scr,
 			    int baseline, 
-			    float &x)
+			    float & x)
 {
 	unsigned char tmpic = ic;
 	
@@ -354,9 +353,9 @@ bool InsetLatexAccent::DisplayISO8859_9(LyXFont font,
 
 
 void InsetLatexAccent::Draw(LyXFont font,
-			    LyXScreen &scr,
+			    LyXScreen & scr,
 			    int baseline, 
-			    float &x)
+			    float & x)
 {
 	if (lyxrc->font_norm=="iso8859-9")
 		if (DisplayISO8859_9 (font, scr, baseline, x))	
@@ -368,7 +367,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 		int asc = Ascent(font);
 		int desc = Descent(font);
 		int wid = Width(font);
-		float x2 = x+(float(wid)/2);
+		float x2 = x + float(wid/2);
 		float hg35;
 		int hg, y;
 		if (plusasc) {
@@ -567,19 +566,11 @@ void InsetLatexAccent::Draw(LyXFont font,
 		}
 		}
 	} else {
-		//scr.drawFilledRectangle(int(x+1), baseline - Ascent(font)+1,
-		//			Width(font)-2,
-		//			Ascent(font)+Descent(font)-2,
-		//			FL_GRAY80);
 		scr.fillRectangle(gc_lighted,
 				  int(x+1), baseline - Ascent(font)+1,
 				  Width(font)-2,
 				  Ascent(font)+Descent(font)-2);
 		
-		//scr.drawRectangle(int(x), baseline - Ascent(font),
-		//		  Width(font)-1,
-		//		  Ascent(font)+Descent(font)-1,
-		//		  FL_GRAY80);
 		scr.drawRectangle(gc_lighted,
 				  int(x), baseline - Ascent(font),
 				  Width(font)-1,
@@ -590,13 +581,13 @@ void InsetLatexAccent::Draw(LyXFont font,
 }
 
 
-void InsetLatexAccent::Write(FILE *file)
+void InsetLatexAccent::Write(FILE * file)
 {
 	fprintf(file, "\\i %s\n", contents.c_str());
 }
 
 
-void InsetLatexAccent::Read(LyXLex &lex)
+void InsetLatexAccent::Read(LyXLex & lex)
 {
 	lex.EatLine();
 	contents = lex.GetString();
@@ -604,28 +595,28 @@ void InsetLatexAccent::Read(LyXLex &lex)
 }
 
 
-int InsetLatexAccent::Latex(FILE *file, signed char /*fragile*/)
+int InsetLatexAccent::Latex(FILE * file, signed char /*fragile*/)
 {
 	fprintf(file, "%s", contents.c_str());
 	return 0;
 }
 
 
-int InsetLatexAccent::Latex(string &file, signed char /*fragile*/)
+int InsetLatexAccent::Latex(string & file, signed char /*fragile*/)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::Linuxdoc(string &file)
+int InsetLatexAccent::Linuxdoc(string & file)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::DocBook(string &file)
+int InsetLatexAccent::DocBook(string & file)
 {
 	file += contents;
 	return 0;
@@ -646,7 +637,7 @@ bool InsetLatexAccent::DirectWrite() const
 
 Inset* InsetLatexAccent::Clone()
 {
-	InsetLatexAccent *result = new InsetLatexAccent(contents);
+	InsetLatexAccent * result = new InsetLatexAccent(contents);
 	return result;
 }
 
@@ -657,7 +648,7 @@ Inset::Code InsetLatexAccent::LyxCode() const
 }
 
 
-bool InsetLatexAccent::IsEqual(Inset* other)
+bool InsetLatexAccent::IsEqual(Inset * other)
 {
 	if (other && other->LyxCode() == Inset::ACCENT_CODE){
 		InsetLatexAccent* otheraccent = (InsetLatexAccent*) other;

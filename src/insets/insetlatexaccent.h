@@ -34,42 +34,42 @@ public:
 	///
 	InsetLatexAccent(string const & string);
 	///
-	InsetLatexAccent(InsetLatexAccent const&);
+	InsetLatexAccent(InsetLatexAccent const &);
 	///
 	~InsetLatexAccent();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	bool DisplayISO8859_9(LyXFont font, LyXScreen &scr,
-			      int baseline, float &x);
+	bool DisplayISO8859_9(LyXFont font, LyXScreen & scr,
+			      int baseline, float & x);
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	///
 	bool Deletable() const;
 	///
 	bool DirectWrite() const;
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///
 	Inset::Code LyxCode()const;
 	///
-	bool IsEqual(Inset* other);
+	bool IsEqual(Inset * other);
 	///
 	inline bool CanDisplay();
 private:
@@ -145,4 +145,3 @@ bool InsetLatexAccent::CanDisplay()
 }
 
 #endif
-

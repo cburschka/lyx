@@ -4,13 +4,13 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 1996 Matthias Ettrich
- *           and the LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
-#ifndef _BUFFERPARAMS_H
-#define _BUFFERPARAMS_H
+#ifndef BUFFERPARAMS_H
+#define BUFFERPARAMS_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -22,6 +22,7 @@
 #include "Spacing.h"
 #include "Bullet.h"
 #include "insets/insetquotes.h"
+#include "layout.h"
 
 /**
   This class contains all the parameters for this a buffer uses. Some
@@ -34,8 +35,6 @@ public:
 	//@{
 	///
 	BufferParams();
-	// ///
-	//BufferParams(const BufferParams&);
 	//@}
 
 	/// Dummy destructor to shut up gcc
@@ -65,7 +64,7 @@ public:
 	///
   	string fontsize; 
 	///
- 	signed char textclass;
+ 	LyXTextClassList::ClassList::size_type textclass;
 
 	/* this are for the PaperLayout */
    ///
@@ -105,9 +104,9 @@ public:
 	///
 	Spacing spacing;
 	///
-	signed char secnumdepth;
+	int secnumdepth;
 	///
-	signed char tocdepth;
+	int tocdepth;
 	///
 	string language;
 	///
@@ -119,9 +118,9 @@ public:
 	///
 	string float_placement;
 	///
-	char columns; // add approp. signedness
+	unsigned int columns;
 	///
-	char sides; // add approp. signedness
+	LyXTextClass::PageSides sides;
 	///
 	string pagestyle;
 	///

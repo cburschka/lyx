@@ -113,9 +113,8 @@ private:
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
 	///
-	void ParseString(string str);
+	void ParseString(string const &);
 	///
 	string DispString() const;
 };
-
 #endif

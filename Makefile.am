@@ -22,3 +22,4 @@ rpmdist: dist
 	ln -s images/lyx.xpm . ; \
 	rpm -ta ${PACKAGE}-${VERSION}.tar.gz ; \
 	rm lyx.xpm
+

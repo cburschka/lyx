@@ -284,7 +284,7 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st):
     ws = new int[nc]; 
     v_align = 0;
     h_align = new char[nc+1];
-    for (int i =0; i<nc; i++) h_align[i] = 'c'; 
+    for (int i =0; i < nc; i++) h_align[i] = 'c'; 
     h_align[nc] = '\0';
     nr = 0;
     row = 0;
@@ -292,10 +292,10 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st):
     if (n>0) {
 	    row = new MathedRowSt(nc+1);
 	MathedXIter it(this);
-	for (int i=1; i<n; i++) it.addRow();
+	for (int j = 1; j < n; j++) it.addRow();
 	nr = n;
 	if (nr==1 && nc>1) {
-	    for (int i=0; i<nc-1; i++) 
+	    for (int j = 0; j < nc - 1; j++) 
 	      it.Insert('T', LM_TC_TAB);
 	}
     } else if (n<0) {
@@ -515,8 +515,8 @@ MathedInset *MathAccentInset::Clone()
 }
 
 
-MathBigopInset::MathBigopInset(char const* name, int id, short st): 
-  MathedInset(name, LM_OT_BIGOP, st), sym(id)
+MathBigopInset::MathBigopInset(char const* nam, int id, short st): 
+  MathedInset(nam, LM_OT_BIGOP, st), sym(id)
 {
    lims = -1;
 }
@@ -527,8 +527,8 @@ MathedInset *MathBigopInset::Clone()
    return p;
 }
  
-MathDotsInset::MathDotsInset(char const* name, int id, short st):
-  MathedInset(name, LM_OT_DOTS, st), code(id)
+MathDotsInset::MathDotsInset(char const* nam, int id, short st):
+  MathedInset(nam, LM_OT_DOTS, st), code(id)
 {
 }
 

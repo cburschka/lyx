@@ -44,7 +44,7 @@ BufferParams::BufferParams()
 	fonts = "default";
 	inputenc = "latin1";
 	graphicsDriver = "default";
-	sides = 1;
+	sides = LyXTextClass::OneSide;
 	columns = 1;
 	pagestyle = "default";
 	for(int iter = 0; iter < 4; iter++) {
@@ -112,7 +112,7 @@ void BufferParams::writeFile(FILE *file)
 
  	// the textclass
  	fprintf(file, "\\textclass %s\n",
- 		lyxstyle.NameOfClass(textclass).c_str());
+ 		textclasslist.NameOfClass(textclass).c_str());
 	
 	// then the the preamble
 	if (!preamble.empty()) {
@@ -222,14 +222,14 @@ void BufferParams::writeFile(FILE *file)
 
 
 void BufferParams::useClassDefaults() {
-	LyXTextClass *tclass = lyxstyle.TextClass(textclass);
+	LyXTextClass const & tclass = textclasslist.TextClass(textclass);
 
-	sides = tclass->sides;
-	columns = tclass->columns;
-	pagestyle = tclass->pagestyle;
-	options = tclass->options;
-	secnumdepth = tclass->secnumdepth;
-	tocdepth = tclass->tocdepth;
+	sides = tclass.sides();
+	columns = tclass.columns();
+	pagestyle = tclass.pagestyle();
+	options = tclass.options();
+	secnumdepth = tclass.secnumdepth();
+	tocdepth = tclass.tocdepth();
 }
 
 

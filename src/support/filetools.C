@@ -604,7 +604,7 @@ bool AbsolutePath(string const & path)
 #ifndef __EMX__
 	return (!path.empty() && path[0] == '/');
 #else
-	return (!path.empty() && (path[0]=='/' || (isalpha((unsigned char) path[0]) && path.length()>1 && path[1]==':')));
+	return (!path.empty() && (path[0]=='/' || (isalpha(static_cast<unsigned char>(path[0])) && path.length()>1 && path[1]==':')));
 #endif
 }
 
@@ -751,10 +751,10 @@ string ReplaceEnvironmentPath(string const & path)
 		// Check for variable names
 		// Situation ${} is detected as "No Environmentvariable"
 		const char * cp1 = res1_contents+1;
-		bool result = isalpha((unsigned char) *cp1) || (*cp1 == UnderscoreChar);
+		bool result = isalpha(*cp1) || (*cp1 == UnderscoreChar);
 		++cp1;
 		while (*cp1 && result) {
-			result = isalnum((unsigned char) *cp1) || 
+			result = isalnum(*cp1) || 
 				(*cp1 == UnderscoreChar); 
 			++cp1;
 		}

@@ -1200,6 +1200,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 
 	if (!n) return npos;
 	size_type ii = min(rep->sz - 1, i);
+
 	for (int t = ii; t >= 0; --t) {
 		if(memchr(ptr, rep->s[t], n) == 0) return t;
 	}
@@ -1675,10 +1676,10 @@ istream & getline(istream & is, lyxstring & s,
 		  lyxstring::value_type delim)
 {
 	// very bad solution
-	char tmp;
+	char tmp = 0;
 	s.erase();
 	while(is) {
-		is >> tmp;
+		is.get(tmp);
 		if (tmp != delim) {
 			s += tmp;
 		} else {

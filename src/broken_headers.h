@@ -9,8 +9,8 @@
 *======================================================
  A few prototypes missing from Sun and SCO 3.2v4 header files */
 
-#ifndef _BROKEN_HEADERS_H
-#define _BROKEN_HEADERS_H
+#ifndef BROKEN_HEADERS_H
+#define BROKEN_HEADERS_H
 
 #ifdef __cplusplus
 extern "C" {

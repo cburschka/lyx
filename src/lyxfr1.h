@@ -7,8 +7,9 @@
 #endif
 
 #include FORMS_H_LOCATION
+#include "lyxparagraph.h"
+
 class 	LyXText;
-class	LyXParagraph;
 
 /**
   LyXFindReplace1"
@@ -53,8 +54,12 @@ protected:
 	    \end{itemize}
 	*/
 	int CompareChars(char chSearch, char chText);
-
+#ifdef NEW_TEXT
 	/// returns true if the specified string is at the specified position 
-	bool IsSearchStringInText(LyXParagraph *par, int pos);
+	bool IsSearchStringInText(LyXParagraph * par, LyXParagraph::size_type pos);
+#else
+	/// returns true if the specified string is at the specified position 
+	bool IsSearchStringInText(LyXParagraph * par, int pos);
+#endif
 };
 #endif

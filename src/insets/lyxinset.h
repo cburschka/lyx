@@ -4,11 +4,13 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 the LyX Team.
  *
- *======================================================*/
-#ifndef _LYXINSET_H
-#define _LYXINSET_H
+ * ======================================================*/
+
+#ifndef LYXINSET_H
+#define LYXINSET_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -77,21 +79,22 @@ public:
 	};
 
 	///
-	virtual ~Inset(){};
+	virtual ~Inset() {}
 	///
-	virtual int Ascent(LyXFont const &font) const=0;
+	virtual int Ascent(LyXFont const & font) const = 0;
 	///
-	virtual int Descent(LyXFont const &font) const=0;
+	virtual int Descent(LyXFont const & font) const = 0;
 	///
-	virtual int Width(LyXFont const& font) const=0;
+	virtual int Width(LyXFont const & font) const = 0;
 	///
 	virtual LyXFont ConvertFont(LyXFont font);
 	///
-	virtual void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x)=0;
+	virtual void Draw(LyXFont font, LyXScreen & scr,
+			  int baseline, float & x) = 0;
 	///
 	//virtual void setBuffer(Buffer const&) {;}
 	/// what appears in the minibuffer when opening
-	virtual char const* EditMessage() {return _("Opened inset");}
+	virtual char const * EditMessage() {return _("Opened inset");}
 	///
 	virtual void Edit(int, int);
 	///
@@ -99,21 +102,21 @@ public:
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(FILE *file)=0;
+	virtual void Write(FILE * file)=0;
 	///
-	virtual void Read(LyXLex &lex)=0;
+	virtual void Read(LyXLex & lex)=0;
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	virtual int Latex(FILE *file, signed char fragile)=0;
-	virtual int Latex(string &file, signed char fragile)=0;
+	virtual int Latex(FILE * file, signed char fragile) = 0;
+	virtual int Latex(string & file, signed char fragile) = 0;
 	///
 	virtual int Linuxdoc(string &/*file*/) = 0;
 	///
 	virtual int DocBook(string &/*file*/) = 0;
 	/// Updates needed features for this inset.
-	virtual void Validate(LaTeXFeatures &features) const;
+	virtual void Validate(LaTeXFeatures & features) const;
 	///
 	virtual bool Deletable() const;
 
@@ -126,12 +129,12 @@ public:
 	}
 
 	/// used for autocorrection
-	virtual bool IsEqual(Inset* /*other*/){
+	virtual bool IsEqual(Inset * /*other*/){
 		return false;
 	}
 
 	///
-	virtual Inset* Clone()=0;
+	virtual Inset * Clone() = 0;
 
 	/// returns true to override begin and end inset in file
 	virtual bool DirectWrite() const;
@@ -178,34 +181,32 @@ public:
 class UpdatableInset: public Inset {
 public:
 	///
-	virtual ~UpdatableInset() { };
+	virtual ~UpdatableInset() {}
 	///
 	virtual unsigned char Editable() const;
    
 	/// may call ToggleLockedInsetCursor
 	virtual void ToggleInsetCursor();
 	///
-	virtual void GetCursorPos(int&, int&) { }
+	virtual void GetCursorPos(int &, int &) {}
 	///
 	virtual void InsetButtonPress(int x, int y, int button);
 	///
 	virtual void InsetButtonRelease(int x, int y, int button);
 	
 	///
-	virtual void InsetKeyPress(XKeyEvent *ev);
+	virtual void InsetKeyPress(XKeyEvent * ev);
 	///
 	virtual void InsetMotionNotify(int x, int y, int state);
 	///
 	virtual void InsetUnlock();
    
 	///  An updatable inset could handle lyx editing commands
-	virtual bool LocalDispatch(int, char const*) { return false; };
+	virtual bool LocalDispatch(int, char const *) { return false; };
 	//
 	bool isCursorVisible() const { return cursor_visible; }
 protected:
 	///
 	bool cursor_visible;
 };
-
-
 #endif

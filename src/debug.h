@@ -48,12 +48,14 @@ struct Debug {
 				     PARSER | LYXRC | KBMAP | LATEX |
 				     MATHED | FONT | TCLASS | LYXVC |
 				     LYXSERVER | ROFF);
-
+	///
+	friend inline void operator|=(Debug::type & d1, Debug::type d2);
+	
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
 	static Debug::type value(string const & val) {
-		int l = Debug::NONE;
+		type l = Debug::NONE;
 		string v(val);
 		while (!v.empty()) {
 			string::size_type st = v.find(',');
@@ -78,9 +80,14 @@ struct Debug {
 			if (st == string::npos) break;
 			v.erase(0, st + 1);
 		}
-		return Debug::type(l);
+		return l;
 	}
 };
+///
+inline void operator|=(Debug::type & d1, Debug::type d2)
+{
+	d1 = static_cast<Debug::type>(d1 | d2);
+}
 
 
 #include "support/DebugStream.h"

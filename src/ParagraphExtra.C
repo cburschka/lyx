@@ -171,9 +171,8 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
             *widthp = fl_get_input(fd->input_pextra_widthp);
         LyXText
             *text = current_view->currentBuffer()->text;
-        int
-            type = PEXTRA_NONE,
-            alignment = 0;
+        int type = PEXTRA_NONE;
+	int alignment = 0;
         bool
             hfill = false,
             start_minipage = false;
@@ -196,10 +195,8 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
         }
         text->SetParagraphExtraOpt(type,width,widthp,alignment,hfill,
                                    start_minipage);
-//        current_view->redoCurrentBuffer();
 	current_view->currentBuffer()->update(1);
 	minibuffer->Set(_("ParagraphExtra layout set"));
-//	current_view->currentBuffer()->markDirty();
     }
     return;
 }

@@ -173,7 +173,7 @@ int kb_sequence::parse(char const*s)
 	if(!s[0]) return 1;
 	
 	while(s[i]) {
-		if(s[i] && ((unsigned char) s[i]) <= ' ') i++;
+		if(s[i] && (s[i]) <= ' ') i++;
 		if(!s[i]) break;
 		
 		if(s[i+1]=='-')	{ // is implicit that s[i]==true
@@ -212,7 +212,7 @@ int kb_sequence::parse(char const*s)
 			}
 		} else {
 			int j = 0;
-			for(j = i; s[j] && ((unsigned char)s[j])>' '; j++)
+			for(j = i; s[j] && (s[j])>' '; j++)
 				tbuf[j-i] = s[j];    // (!!!check bounds :-)
 			
 			tbuf[j-i] = '\0';

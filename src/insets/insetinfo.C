@@ -52,26 +52,26 @@ InsetInfo::~InsetInfo()
 }
 
 
-int InsetInfo::Ascent(LyXFont const &font) const
+int InsetInfo::Ascent(LyXFont const & font) const
 {
-	return font.maxAscent()+1;
+	return font.maxAscent() + 1;
 }
 
 
-int InsetInfo::Descent(LyXFont const &font) const
+int InsetInfo::Descent(LyXFont const & font) const
 {
-	return font.maxDescent()+1;
+	return font.maxDescent() + 1;
 }
 
 
-int InsetInfo::Width(LyXFont const &font) const
+int InsetInfo::Width(LyXFont const & font) const
 {
 	return 6 + font.textWidth(_("Note"), strlen(_("Note")));
 }
 
 
-void InsetInfo::Draw(LyXFont font, LyXScreen &scr,
-		     int baseline, float &x)
+void InsetInfo::Draw(LyXFont font, LyXScreen & scr,
+		     int baseline, float & x)
 {
 	/* Info-insets are never LaTeX, so just correct the font */
 	font.setLatex(LyXFont::OFF);
@@ -90,13 +90,13 @@ void InsetInfo::Draw(LyXFont font, LyXScreen &scr,
 }
 
 
-void InsetInfo::Write(FILE *file)
+void InsetInfo::Write(FILE * file)
 {
 	fprintf(file, "Info %s", contents.c_str());
 }
 
 
-void InsetInfo::Read(LyXLex &lex)
+void InsetInfo::Read(LyXLex & lex)
 {
 	string tmp = lex.GetString(); // should be "Info"
 	if (tmp != "Info")
@@ -153,12 +153,11 @@ unsigned char InsetInfo::Editable() const
 }
 
 
-void InsetInfo::CloseInfoCB(FL_OBJECT *, long data)
+void InsetInfo::CloseInfoCB(FL_OBJECT * ob, long)
 {
-	InsetInfo *inset = (InsetInfo*) data;
-//	inset->contents = fl_get_input(inset->strobj);
+	InsetInfo * inset = static_cast<InsetInfo*>(ob->u_vdata);
 	string tmp = fl_get_input(inset->strobj);
-	Buffer *buffer = current_view->currentBuffer();
+	Buffer * buffer = current_view->currentBuffer();
 	if(tmp != inset->contents && !(buffer->isReadonly()) ) {
 		buffer->markDirty();
 		inset->contents = tmp;
@@ -170,11 +169,13 @@ void InsetInfo::CloseInfoCB(FL_OBJECT *, long data)
 	}
 }
 
+
 // This is just a wrapper.
-extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT *, long data) 
+extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data) 
 {
-  	InsetInfo::CloseInfoCB(0, data);
+  	InsetInfo::CloseInfoCB(ob, data);
 }
+
 
 void InsetInfo::Edit(int, int)
 {
@@ -193,8 +194,9 @@ void InsetInfo::Edit(int, int)
 		obj = fl_add_button(FL_NORMAL_BUTTON,130,140,120,30,idex(_("Close|#C^[")));
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
 		fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
-		fl_set_object_callback(obj, C_InsetInfo_CloseInfoCB, (long)this);
-		fl_set_object_shortcut(obj, scex(_("Close|#C^[")), (long)this);
+		fl_set_object_callback(obj, C_InsetInfo_CloseInfoCB, 0);
+		obj->u_vdata = this;
+		fl_set_object_shortcut(obj, scex(_("Close|#C^[")), 1);
 		fl_end_form();
 		fl_set_form_atclose(form, CancelCloseBoxCB, 0);
 	}
@@ -215,7 +217,7 @@ void InsetInfo::Edit(int, int)
 
 Inset* InsetInfo::Clone()
 {
-	InsetInfo *result = new InsetInfo(contents);
+	InsetInfo * result = new InsetInfo(contents);
 	return result;
 }
 

@@ -4,13 +4,13 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *                        1996-1998 LyX Team
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1996-1999 the LyX Team.
  * 
  *======================================================*/
 
-#ifndef _INSET_LOF_H
-#define _INSET_LOF_H
+#ifndef INSET_LOF_H
+#define INSET_LOF_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -28,9 +28,9 @@ public:
 	///
 	InsetLOF(): InsetCommand("listoffigures") {}
 	///
-	InsetLOF(Buffer *b): InsetCommand("listoffigures"),owner(b) {}
+	InsetLOF(Buffer * b): InsetCommand("listoffigures"),owner(b) {}
         ///
-        Inset* Clone() { return new InsetLOF(owner); }
+        Inset * Clone() { return new InsetLOF(owner); }
     	///
 	string getScreenLabel() const { return _("List of Figures"); }
         
@@ -45,7 +45,6 @@ public:
 	Inset::Code LyxCode() const { return Inset::LOF_CODE; }
 private:
 	///
-	Buffer *owner;
+	Buffer * owner;
 };
-
 #endif

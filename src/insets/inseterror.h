@@ -8,8 +8,8 @@
  *
  *======================================================*/
 
-#ifndef _INSET_ERROR_H
-#define _INSET_ERROR_H
+#ifndef INSET_ERROR_H
+#define INSET_ERROR_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -34,35 +34,35 @@ public:
 	///
 	~InsetError();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening
-	char const* EditMessage() {return _("Opened error");}
+	char const * EditMessage() {return _("Opened error");}
 	///
 	void Edit(int, int);
 	///
 	unsigned char Editable() const;
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///
 	Inset::Code LyxCode() const { return Inset::NO_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file
@@ -73,8 +73,8 @@ private:
 	///
 	string contents;
 	///
-	FL_FORM *form;
+	FL_FORM * form;
 	///
-	FL_OBJECT *strobj;
+	FL_OBJECT * strobj;
 };
 #endif

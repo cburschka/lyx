@@ -11,6 +11,7 @@
 #ifndef BACK_STACK_H
 #define BACK_STACK_H
 
+#include <stack>
 #include "LString.h"
 
 // Created by Alejandro Aguilar Sierra, 970806
@@ -18,13 +19,15 @@
 /**  Utility to get back from a reference or from a child document.
  */
 class BackStack {
-public:
+private:
 	///
 	struct BackStackItem {
+		BackStackItem(string const & f, int xx, int yy)
+			: fname(f), x(xx), y(yy) {}
 		///
-		void set(string f, int xx, int yy) {
-			fname = f;  x = xx;  y = yy;
-		}
+		//void set(string f, int xx, int yy) {
+		//	fname = f;  x = xx;  y = yy;
+		//}
 		/// Filename
 		string fname;
 		/// Cursor x-position
@@ -32,35 +35,27 @@ public:
 		/// Cursor y-position
 		int y;
 	};
-	///
-	BackStack(int n) : item(new BackStackItem[n]) , i(0), imax(n) {}
-	///
-	~BackStack() {
-		delete[] item;
-	}
+public:
 	///
 	void push(string f, int x, int y) {
-		if (i < imax) 
-			item[i++].set(f, x, y);
+		BackStackItem bit(f, x, y);
+		stakk.push(bit);
 	}
 	///
-	string & pop(int *x, int *y) {
-		if (i > 0) i--;
-		*x = item[i].x;
-		*y = item[i].y;
-		return item[i].fname;
+	string pop(int * x, int * y) {
+		BackStackItem bit = stakk.top();
+		*x = bit.x;
+		*y = bit.y;
+		stakk.pop();
+		return bit.fname;
 	}
 	///
 	bool empty() const {
-		return i == 0;
+		return stakk.empty();
 	}
 private:
 	///
-	BackStackItem *item;
-	///
-	int i;
-	///
-	int imax;
+	stack<BackStackItem> stakk;
 };
 
 #endif

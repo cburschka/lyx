@@ -7,19 +7,26 @@
  *	    Copyright (C) 1995 Matthias Ettrich
  *
  *======================================================*/
-#ifndef _LYXCURSOR_H
-#define _LYXCURSOR_H
 
-class LyXParagraph;
+#ifndef LYXCURSOR_H
+#define LYXCURSOR_H
+
+#include "lyxparagraph.h"
+
 struct Row;
 
 /** All these variavles should be explained. Matthias?
  */
 struct LyXCursor {
 	///
-	LyXParagraph *par;
+	LyXParagraph * par;
+#ifdef NEW_TEXT
+	///
+	LyXParagraph::size_type pos;
+#else
 	///
 	int pos;
+#endif
 	///
 	int x;
 	///
@@ -27,7 +34,7 @@ struct LyXCursor {
 	///
 	long y;
 	///
-	Row *row;
+	Row * row;
 };
 
 #endif

@@ -265,9 +265,9 @@ int mathed_char_height(short type, int size, byte c, int& asc, int& des)
 
 
 // In a near future maybe we use a better fonts renderer
-void MathedInset::drawStr(short type, int size, int x, int y, byte* s, int ls)
+void MathedInset::drawStr(short type, int siz, int x, int y, byte* s, int ls)
 {
-    mathed_set_font(type, size);
+    mathed_set_font(type, siz);
     byte sx[80];
     if (MathIsBinary(type)) {
 	byte *ps = &sx[0];
@@ -281,7 +281,7 @@ void MathedInset::drawStr(short type, int size, int x, int y, byte* s, int ls)
 	s = &sx[0];
     }
     GC gc = (type==LM_TC_TEX) ? latexGC: mathGC;
-    XDrawString(fl_display, pm, gc, x, y, (char*)s, ls);
+    XDrawString(fl_display, pm, gc, x, y, reinterpret_cast<char*>(s), ls);
     XFlush(fl_display);
 }
 
@@ -621,25 +621,25 @@ int InsetFormula::GetNumberOfLabels() const
 string InsetFormula::getLabel(int il) const
 {
 //#warning This is dirty, I know. Ill clean it at 0.11
-    // Correction, the only way to clean this is with a new kernel: 0.13.
+	// Correction, the only way to clean this is with a new kernel: 0.13.
 	if (par->GetType()==LM_OT_MPARN) {
-       string label;
-       MathMatrixInset *mt = (MathMatrixInset*)par;
-       int nl=0;
-       MathedRowSt const* crow = mt->getRowSt();
-       while (crow) {
-	   if (crow->getLabel()) {
-	       if (nl==il) {
-		   label = crow->getLabel();
-		   break;
-	       }
-	       nl++;
-	   }
-	   crow = crow->getNext();
-       }
-       return label;
-   }
-   return label;
+		string lab;
+		MathMatrixInset * mt = (MathMatrixInset*)par;
+		int nl=0;
+		MathedRowSt const * crow = mt->getRowSt();
+		while (crow) {
+			if (crow->getLabel()) {
+				if (nl==il) {
+					lab = crow->getLabel();
+					break;
+				}
+				nl++;
+			}
+			crow = crow->getNext();
+		}
+		return lab;
+	}
+	return label;
 }
 
 void InsetFormula::UpdateLocal()

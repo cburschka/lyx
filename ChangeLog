@@ -24,6 +24,10 @@
 
 1999-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/layout.C (less_textclass_desc): functor for use in sorting
+	of textclasses. 
+	(LyXTextClass::Read): sort the textclasses after reading.
+	
 	* src/support/filetools.C (SpaceLess): new version of the
 	SpaceLess functions. What problems does this one give? Please
 	report.
@@ -68,6 +72,12 @@
 
 	* added patch for OS/2 from SMiyata.
 
+1999-10-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (CutSelection): make space_wrapped a bool
+	(CutSelection): dont declare int i until we have to.
+	(alphaCounter): return a char const *.
+
 1999-10-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/syscall.C (Systemcalls::kill): 
@@ -79,6 +89,11 @@
 
 1999-10-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/layout.[Ch] + several files: access to class variables
+	limited and made accessor functions instead a lot of code changed
+	becuase of this. Also instead of returning pointers often a const
+	reference is returned instead.
+	
 	* src/form1.C (create_form_Figure): added a couple fo "no-c-format"
 
 	* src/Makefile.am (dist-hook): added used to remove the CVS from
@@ -92,6 +107,32 @@
 	rep->sz to the first if.
 
 1999-10-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/layout.[Ch] src/BufferView.C src/LaTeXFeatures.C
+	src/LyXView.C src/buffer.C src/bufferparams.C
+	src/lyx_cb.C src/lyxfunc.C src/paragraph.C src/text.C 
+	src/text2.C src/insets/insetinclude.C:
+	lyxlayout renamed to textclasslist.
+
+	* src/layout.C: some lyxerr changes.
+
+	* src/layout.[Ch] (LyXLayout::Read): changed second paramter to
+	LyXTextClass. rewrote LT_COPYSTYLE, rewrote LT_OBSOLETEDBY
+	(LyXLayoutList): removed all traces of this class.
+	(LyXTextClass::Read): rewrote LT_STYLE
+	(LyXTextClass::hasLayout): new function
+	(LyXTextClass::GetLayout): rewritten to return an iterator + has
+	both const and nonconst version.
+	(LyXTextClass::delete_layout): new function.
+	(LyXTextClassList::Style): bug fix. do the right thing if layout
+	is to big.
+	(LyXTextClassList::NumberOfLayout): new acces to layoutlist.
+	(LyXTextClassList::NameOfLayout): ditto 
+	(LyXTextClassList::Load): ditto
+
+	* src/buffer.C (makeLaTeXFile): new access to layoutlist
+
+	* src/LaTeXFeatures.C (getTClassPreamble): new access to layoutlist
 
 	* src/LyXAction.C (LookupFunc): added a workaround for sun
 	compiler, on the other hand...we don't know if the current code
@@ -122,7 +163,129 @@
 	* src/lyx_cb.C (MenuFax): subst fix
 	(PrintApplyCB): subst fix
 
+1999-10-26  Juergen Vigna  <jug@sad.it>
+
+	* src/table.C (TexEndOfCell) + (DocBookEndOfCell): removed some #if 0
+
+	(Read): Cleaned up this code so now we read only format vestion >= 5
+
 1999-10-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (PutEnvPath): subst fix for EMX, how
+	come nobody has complained about this one?
+
+	* src/insets/insetinclude.C (Latex): subst fix
+
+	* src/insets/insetbib.C (getKeys): subst fix
+
+	* src/lyx_main.C (init): subst fix
+
+	* src/layout.C (Read): subst fix
+
+	* src/buffer.C (RoffAsciiTable): subst fix
+
+	* src/lyx_cb.C (MenuFax): subst fix.
+
+	* src/layout.[hC] + some other files: rewrote to use
+	std::container to store textclasses and layouts in.
+	Simplified, removed a lot of code. Make all classes
+	assignable. Further simplifications and review of type
+	use still to be one. 
+
+	* src/menus.C (ShowFileMenu/ShowFileMenu2): Use the iterators from
+	lastfiles to create the lastfiles partr of the menu.
+
+	* src/lastfiles.[Ch]: rewritten to use deque to store the
+	lastfiles in. Uses fstream for reading and writing. Simplifies
+	code.
+
+	* src/support/syscall.C: remove explicit cast.
+
+	* src/BufferView.C (CursorToggleCB): removed code snippets that
+	were commented out.
+	use explicat C++ style casts instead of C style casts. also use
+	u_vdata instea of passing pointers in longs.
+
+	* src/PaperLayout.C: removed code snippets that were commented out.
+
+	* src/lyx_gui_misc.C: removed code snippets that were commented out. 
+
+	* src/lyx_main.C: removed code snippets that wer commented out.
+
+	* src/paragraph.C: removed code snippets that were commented out.
+
+	* src/lyxvc.C (logClose): use static_cast
+	(logUpdate): ditto
+	(viewLog): remove explicit cast to void*
+	(showLog): removed old commented code
+
+	* src/menus.C: use static_cast instead of C style casts. use
+	u_vdata instead of u_ldata. remove explicit cast to (long) for
+	pointers. Removed old code that was commented out.
+
+	* src/insets/inset.C: removed old commented func
+
+	* src/insets/insetref.C (InsetRef): removed old code that had been
+	commented out for a long time.
+	(Edit): ditto
+	(escape): removed C style cast
+
+	* src/insets/insetlatexaccent.C (Draw): removed old commented code
+
+	* src/insets/insetlatex.C (Draw): removed old commented code
+	(Read): rewritten to use string
+
+	* src/insets/insetlabel.C (escape): removed C style cast
+
+	* src/insets/insetindex.h: removed vdata and ldata from FD_index_form
+
+	* src/insets/insetindex.C: use static_cast and u_vdata, removed
+	old commented code.
+
+	* src/insets/insetinclude.h: removed a couple of stupid bools
+
+	* src/insets/insetinclude.C (include_cb): use static_cast and u_data.
+	(Clone): remove C style cast
+	(getKeys): changed list to lst because of std::list
+
+	* src/insets/inseterror.C (Draw): removed som old commented code.
+
+	* src/insets/insetcommand.C (Draw): removed some old commented code.
+
+	* src/insets/insetbib.C (bibitem_cb): removed code that has been
+	commented out forever.
+	(bibitem_cb): use static_cast instead of C style cast
+	use of vdata changed to u_vdata.
+
+	* src/insets/inseturl.C (C_InsetUrl_CloseUrlCB): forward the data
+	parameter.
+	(CloseUrlCB): use static_cast instead of C style cast.
+	(CloseUrlCB): added a fl_free form...it seemed to be missing.
+
+	* src/insets/insetinfo.C (Edit): pass object in u_vdata instead
+	(C_InsetInfo_CloseInfoCB): forward the ob parameter
+	(CloseInfoCB): static_cast from ob->u_vdata instead.
+	(Edit): removed bogus arg from fl_set_object_shortcut, set to 1
+	instead. 
+
+	* src/insets/inseterror.C (Edit): pass object in u_vdata instead
+	(C_InsetError_CloseErrorCB): forward the ob parameter
+	(CloseErrorCB): static_cast from ob->u_vdata instead.
+
+	* src/vspace.h: include LString.h since we use string in this class.
+
+	* src/vspace.C (lyx_advance): changed name from advance because of
+	nameclash with stl. And since we cannot use namespaces yet...I
+	used a lyx_ prefix instead. Expect this to change when we begin
+	using namespaces.
+
+	* src/BufferView.[Ch] (BufferView::~BufferView): removed 
+
+	* src/BackStack.h: rewrote to use std::stack. made BackStackItem
+	and removed now defunct constructor and deconstructor.
+
+	* src/BufferView.h: have backstack as a object not as a pointer.
+	removed initialization from constructor. added include for BackStack 
 
 	* development/lyx.spec.in (%build): add CFLAGS also.
 
@@ -207,6 +370,13 @@
 	lyxstring, since DEC cxx complains otherwise.
 
 1999-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+1999-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/LaTeX.C (run): made run_bibtex also depend on files with
+	extension ".bst"
+	(runBibTeX): added scans for "\\bibstyle", now also ".bst" files
+	are put into the dependency file.
 
 	* src/spellchecker.C (create_ispell_pipe): removed old #warning,
 	the code has shown itself to work
@@ -316,6 +486,21 @@
 
 1999-10-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/LaTeX.C (run): added a check in 0 sumchange so that if it
+	was a bib file that had been changed we ensure that bibtex is run.
+	(runBibTeX): enhanced to extract the names of the bib files and
+	getting their absolute path and enter them into the dep file.
+	(findtexfile): static func that is used to look for tex-files,
+	checks for absolute patchs and tries also with kpsewhich.
+	Alternative ways of finding the correct files are wanted. Will
+	probably be moved.
+	(do_popen): function that runs a command using popen and returns
+	the whole output of that command in a string. Should be moved to
+	somewhere else.
+
+	* src/DepTable.[Ch] (extchanged): new function that returns true if a
+	file with extension ext has changed.
+
 	* src/insets/figinset.C: added ifdef guards around the fl_free
 	code that jug commented out. Now it is commented out when
 	compiling with XForms == 0.89.
@@ -358,6 +543,27 @@
 	as it is not used anymore.
 
 1999-10-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (getline): reads now _all_ chars. uses
+	get instead of >>
+
+	* src/Literate.h: some funcs moved from public to private to make
+	interface clearer. Unneeded args removed.
+
+	* src/Literate.C (scanLiterateLogFile): rewritten to use iostream
+	instead of lyxlex.
+	(scanBuildLogFile): ditto
+
+	* src/LaTeX.C (scanLogFile): merged LaTeX Error handling into
+	normal TeX Error. Still room for improvement.
+
+	* src/LaTeX.[Ch]: removed scanError. Wrong place and not needed.
+
+	* src/buffer.C (insertErrors): changes to make the error
+	desctription show properly.
+
+	* src/LaTeX.C (deplog): removed the test for file in lyx doc dir.
+	could never happen
 
 	* src/support/lyxstring.C (helper): changed to use
 	sizeof(object->rep->ref).
@@ -469,7 +675,19 @@
 	* src/lyxrc.C (Read): RC_PRINTEXSTRAOPTIONS now uses
 	LyXLex::next() and not eatline() to get its argument.
 
+1999-10-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/DepTable.[Ch]: rewritten to store the dependencies in a map
+	instead, use fstreams for io of the depfile, removed unneeded
+	functions and variables. 
+
+	* src/LaTeX.[Ch] (class TeXErrors): rewrote to store the errors in a
+	vector instead, removed all functions and variables that is not in
+	use.
+
 1999-10-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.C (insertErrors): use new interface to TeXError
 
 	* Makefile.am (rpmdist): added a rpmdist target
 

@@ -17,7 +17,7 @@
 #include "support/lstrings.h"
 
 Systemcalls::Systemcalls() {
-	pid = (pid_t) 0; // No child yet
+	pid = 0; // No child yet
 }
 
 Systemcalls::Systemcalls(Starttype how, string const & what, Callbackfct cback)

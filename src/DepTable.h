@@ -15,18 +15,19 @@
 #define DEP_TABLE_H
 
 #include "LString.h"
-#include <cstdio>
+#include <map>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 ///
 class DepTable {
 public:
-	///
-	DepTable();
-	///
 	/** This one is a little bit harder since we need the absolute
 	  filename. Should we insert files with .sty .cls etc as
 	  extension? */
-	void insert(string const &f,
+	void insert(string const & f,
 		    bool upd = false,
 		    unsigned long one = 0,
 		    unsigned long two = 0);
@@ -39,25 +40,15 @@ public:
 	void read(string const &f);
 	/// returns true if any of the files has changed
 	bool sumchange();
-	///
-	bool haschanged(string const &fil);
+	/// return true if fil has changed.
+	bool haschanged(string const & fil);
+	/// return true if a file with extension ext has changed.
+	bool extchanged(string const & ext);
 private:
 	///
-	DepTable(string const &f,
-		 bool upd,
-		 unsigned long one,
-		 unsigned long two);
+	typedef map<string, pair<unsigned long, unsigned long> > DepList;
 	///
-	string file;
-	/// The files new checksum
-	unsigned long new_sum;
-	/// The files old checksum
-	unsigned long old_sum;
-	///
-	DepTable *next;
-		
-	///
-	void write(FILE *f);
+	DepList deplist;
 };
 
 #endif

@@ -6,10 +6,10 @@
  * 	 
  *	    Copyright (C) 1997 LyX Team (this file was created this year)
  * 
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_URL_H
-#define _INSET_URL_H
+#ifndef INSET_URL_H
+#define INSET_URL_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -34,17 +34,19 @@ public:
 	};
 	
 	///
-	InsetUrl(): InsetCommand("url"), fd_form_url(0) { flag = InsetUrl::URL; }
+	InsetUrl(): InsetCommand("url"), fd_form_url(0) {
+		flag = InsetUrl::URL;
+	}
 	///
 	InsetUrl(string const &);
 	///
-	InsetUrl(InsetCommand const&);
+	InsetUrl(InsetCommand const &);
 	///
-	InsetUrl(string const &,string const &,string const &);
+	InsetUrl(string const &, string const &, string const &);
 	///
 	~InsetUrl();
         ///
-        Inset* Clone() { return new InsetUrl(getCommand()); }
+        Inset * Clone() { return new InsetUrl(getCommand()); }
 	///
 	Inset::Code LyxCode() const { return Inset::URL_CODE; }
 	///
@@ -56,32 +58,32 @@ public:
 		return 1;
 	}
 	///
-	char const* EditMessage() {return "Opened Url";}
+	char const * EditMessage() {return "Opened Url";}
         ///
 	bool Display() const { return false; }
 	///
 	string getScreenLabel() const;
 	///
-	InsetUrl::Url_Flags getFlag() { return flag; }
+	InsetUrl::Url_Flags getFlag() const { return flag; }
 	///
 	void setFlag(InsetUrl::Url_Flags f) { flag = f; }
         ///
         void gotoLabel();
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	///
 	static void CloseUrlCB(FL_OBJECT *, long data);
 private:
 	///
         Url_Flags flag;
 	///
-        FD_form_url *fd_form_url;
+        FD_form_url * fd_form_url;
 };
 
 #endif

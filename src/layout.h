@@ -1,19 +1,22 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*
-*======================================================*/
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ====================================================== */
 
-#ifndef _LAYOUT_H
-#define _LAYOUT_H
+#ifndef LAYOUT_H
+#define LAYOUT_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include <vector>
 
 #include "definitions.h"
 #include "lyxlex.h"
@@ -21,7 +24,7 @@
 #include "Spacing.h"
 
 /// Reads the style files
-void LyXSetStyle();
+extern void LyXSetStyle();
 
 /// The different output types
 enum OutputType {
@@ -50,7 +53,9 @@ enum LYX_MARGIN_TYPE {
 };
 
 ///
-enum LYX_ALIGNMENT {
+enum LyXAlignment {
+	///
+	LYX_ALIGN_NONE = 0,
 	///
 	LYX_ALIGN_BLOCK = 1,
 	///
@@ -64,6 +69,9 @@ enum LYX_ALIGNMENT {
 	///
         LYX_ALIGN_SPECIAL = 32
 };
+inline void operator|=(LyXAlignment & la1, LyXAlignment la2) {
+	la1 = static_cast<LyXAlignment>(la1 | la2);
+}
 
 /// The different LaTeX-Types
 enum LYX_LATEX_TYPES {
@@ -123,25 +131,28 @@ enum LYX_LABEL_TYPES {
 
 
 /* Fix labels are printed flushright, manual labels flushleft. 
-* MARGIN_MANUAL and MARGIN_FIRST_DYNAMIC are *only* for LABEL_MANUAL,
-* MARGIN_DYNAMIC and MARGIN_STATIC are *not* for LABEL_MANUAL. 
-* This seems a funny restriction, but I think other combinations are
-* not needed, so I will not change it yet. 
-* Correction: MARGIN_FIRST_DYNAMIC also usable with LABEL_STATIC */
+ * MARGIN_MANUAL and MARGIN_FIRST_DYNAMIC are *only* for LABEL_MANUAL,
+ * MARGIN_DYNAMIC and MARGIN_STATIC are *not* for LABEL_MANUAL. 
+ * This seems a funny restriction, but I think other combinations are
+ * not needed, so I will not change it yet. 
+ * Correction: MARGIN_FIRST_DYNAMIC also usable with LABEL_STATIC
+ */
 
 
 /* There is a parindent and a parskip. Which one is used depends on the 
-* paragraph_separation-flag of the text-object. 
-* BUT: parindent is only thrown away, if a parskip is defined! So if you
-* want a space between the paragraphs and a parindent at the same time, 
-* you should set parskip to zero and use topsep, parsep and bottomsep.
-* 
-* The standard layout is an exception: its parindent is only set, if the 
-* previous paragraph is standard too. Well, this is LateX and it is good! */ 
+ * paragraph_separation-flag of the text-object. 
+ * BUT: parindent is only thrown away, if a parskip is defined! So if you
+ * want a space between the paragraphs and a parindent at the same time, 
+ * you should set parskip to zero and use topsep, parsep and bottomsep.
+ * 
+ * The standard layout is an exception: its parindent is only set, if the 
+ * previous paragraph is standard too. Well, this is LateX and it is good!
+ */ 
 
 
 /// Attributes of a layout/paragraph environment
-class LyXLayoutList;
+class LyXTextClass;
+
 ///
 class LyXLayout {
 public:
@@ -149,45 +160,41 @@ public:
 	LyXLayout ();
 
 	///
-	~LyXLayout ();
+	bool Read (LyXLex &, LyXTextClass const &);
 
-	///
-	void Copy (LyXLayout const &l);
-
-	///
-	bool Read (LyXLex&, LyXLayoutList *);
-
-	/// Name of the layout/paragraph environment
-	string name;
-
-	/// Name of an layout that has replaced this layout. 
-	/** This is used to rename a layout, while keeping backward
-	    compatibility 
-	*/
-	string obsoleted_by;
-
-	/// Default font for this layout/environment
-	/** The main font for this kind of environment. If an attribute has
-	LyXFont::INHERITED_*, it means that the value is specified by
-	the defaultfont for the entire layout. If we are nested, the font 
-	is inherited from the font in the environment one level up until the 
-	font is resolved. The values LyXFont::IGNORE_* and LyXFont::TOGGLE 
-	are illegal here.
+	string const & name() const { return name_; }
+	void name(string const & n) { name_ = n; }
+	string const & obsoleted_by() const { return obsoleted_by_; }
+	string const & latexname() const { return latexname_; }
+	string const & labelstring() const { return labelstring_; }
+	string const & preamble() const { return preamble_; }
+	string const & latexparam() const { return latexparam_; }
+	string const & labelstring_appendix() const { return labelstring_appendix_; }
+	/** Default font for this layout/environment.
+	    The main font for this kind of environment. If an attribute has
+	    LyXFont::INHERITED_*, it means that the value is specified by
+	    the defaultfont for the entire layout. If we are nested, the
+	    font is inherited from the font in the environment one level
+	    up until the font is resolved. The values LyXFont::IGNORE_*
+	    and LyXFont::TOGGLE are illegal here.
 	*/
 	LyXFont font;
 
-	/// Default font for labels
-	/** Interpretation the same as for font above */
+	/** Default font for labels.
+	    Interpretation the same as for font above
+	*/
 	LyXFont labelfont;
 
-	/// Resolved version of the font for this layout/environment
-	/** This is a resolved version the default font. The font is resolved
-	against the defaultfont of the entire layout. */
+	/** Resolved version of the font for this layout/environment.
+	    This is a resolved version the default font. The font is resolved
+	    against the defaultfont of the entire layout.
+	*/
 	LyXFont resfont;
 
-	/// Resolved version of the font used for labels
-	/** This is a resolved version the label font. The font is resolved
-	against the defaultfont of the entire layout. */
+	/** Resolved version of the font used for labels.
+	    This is a resolved version the label font. The font is resolved
+	    against the defaultfont of the entire layout.
+	*/
 	LyXFont reslabelfont;
 
 	/// Text that dictates how wide the left margin is on the screen
@@ -202,23 +209,10 @@ public:
 	/// Text that dictates how much space to leave before a potential label
 	string labelindent;
 
-	/// Text that dictates the width of the indentation of indented paragraphs
+	/** Text that dictates the width of the indentation of
+	    indented paragraphs.
+	*/
 	string parindent;
-
-	/// Label string. "Abstract", "Reference", "Caption"...
-	string labelstring;
-
-	/// Label string inside appendix. "Appendix", ...
-	string labelstring_appendix;
-
-	/// LaTeX name for environment
-	string latexname;
-
-	/// LaTeX parameter for environment
-        string latexparam;   //arrae970411
-
-        /// Macro definitions needed for this layout
-	string preamble;
 
 	///
 	float parskip;
@@ -242,10 +236,10 @@ public:
 	Spacing spacing;
 
 	///
-	char align; // add approp. signedness
+	LyXAlignment align; // add approp. signedness
 
 	///
-	char alignpossible; // add approp. signedness
+	LyXAlignment alignpossible; // add approp. signedness
 
 	///
 	char labeltype; // add approp. signedness
@@ -290,192 +284,238 @@ public:
 	LYX_LATEX_TYPES latextype;
 	/// Does this object belong in the title part of the document?
 	bool intitle;
-};
-
-
-///
-class LyXLayoutList {
-public:
-	///
-	LyXLayoutList();
-	///
-	~LyXLayoutList();
-	///
-	void Add (LyXLayout *l);
-	///
-	bool Delete (string const &name);
-        ///
-	LyXLayout *GetLayout (string const &name);
-	///
-	LyXLayout *ToAr();
-	///
-	int GetNum();
-	///
-	void Clean(); 
 private:
-	///
-	struct LyXLayoutL {
-		///
-		LyXLayout* layout;
-		///
-		LyXLayoutL *next;
-	};
-	///
-	LyXLayoutL * l;
-	///
-	LyXLayoutL *eol;
-	///
-	int num_layouts;
+	/// Name of the layout/paragraph environment
+	string name_;
+
+	/** Name of an layout that has replaced this layout.
+	    This is used to rename a layout, while keeping backward
+	    compatibility 
+	*/
+	string obsoleted_by_;
+
+	/// LaTeX name for environment
+	string latexname_;
+
+	/// Label string. "Abstract", "Reference", "Caption"...
+	string labelstring_;
+
+	/// Label string inside appendix. "Appendix", ...
+	string labelstring_appendix_;
+
+	/// LaTeX parameter for environment
+        string latexparam_;
+
+        /// Macro definitions needed for this layout
+	string preamble_;
 };
 
 
 ///
-class LyXTextClass  {
+class LyXTextClass {
 public:
+	///
+	typedef vector<LyXLayout> LayoutList;
+
 	///
 	LyXTextClass (string const & = string(), 
 		      string const & = string(), 
 		      string const & = string());
+
 	///
-	~LyXTextClass();
+	LayoutList::const_iterator begin() const { return layoutlist.begin(); }
+	///
+	LayoutList::const_iterator end() const { return layoutlist.end(); }
+	
+	///
+	bool Read(string const & filename, bool merge = false);
 
-	/// Not a real copy, just reference!
-	void Copy (LyXTextClass const &l);
+	///
+	bool hasLayout(string const & name) const;
 
-	/// Reads a textclass structure from file
-	int Read (string const & filename, LyXLayoutList *list = 0);
+	///
+	LyXLayout const & GetLayout(string const & vname) const;
+
+	///
+	LyXLayout & GetLayout(string const & vname);
 
 	/// Sees to that the textclass structure has been loaded
 	void load();
 
 	///
-	string name;
+	string const & name() const { return name_; }
 	///
-	string latexname;
+	string const & latexname() const { return latexname_; }
 	///
-	string description;
-        ///
-        OutputType output_type;
-
-	/// Specific class options
-        string opt_fontsize;
+	string const & description() const { return description_; }
 	///
-        string opt_pagestyle;
+	string const & opt_fontsize() const { return opt_fontsize_; }
 	///
-	string options;
+	string const & opt_pagestyle() const { return opt_pagestyle_; }
+	///
+	string const & options() const { return options_; }
+	///
+	string const & pagestyle() const { return pagestyle_; }
+	///
+	string const & preamble() const { return preamble_; }
 
 	/// Packages that are already loaded by the class
-	bool provides_amsmath;
+	enum Provides {
+		nothing = 0,
+		amsmath = 1,
+		makeidx = 2,
+		url = 4
+	};
+	bool provides(Provides p) const { return provides_ & p; }
+	
 	///
-	bool provides_makeidx;
-	/// 
-	bool provides_url;
-    
-	/// Base font. This one has to be fully instantiated.
-	/** Base font. The paragraph and layout fonts are resolved against
-	this font. Attributes LyXFont::INHERIT, LyXFont::IGNORE, and 
-	LyXFont::TOGGLE are extremely illegal.
-	*/
-	LyXFont defaultfont;
-	/// Array of styles in this textclass
-	LyXLayout* style;
+	unsigned int columns() const { return columns_; }
 	///
-	unsigned char number_of_defined_layouts;
+	enum PageSides {
+		OneSide,
+		TwoSides
+	};
 	///
-	unsigned char columns;
+	PageSides sides() const { return sides_; }
 	///
-	unsigned char sides;
+	int secnumdepth() const { return secnumdepth_; }
 	///
-	signed char secnumdepth;
+	int tocdepth() const { return tocdepth_; }
+
+        ///
+        OutputType outputType() const { return outputType_; }
+
 	///
-	signed char tocdepth;
-	///
-	string pagestyle;
-	///
-	string preamble;
-	///
+	LyXFont const & defaultfont() const { return defaultfont_; }
+
 	/// Text that dictates how wide the left margin is on the screen
-	string leftmargin;
-        ///
+	string const & leftmargin() const { return leftmargin_; }
+
 	/// Text that dictates how wide the right margin is on the screen
-	string rightmargin;
+	string const & rightmargin() const { return rightmargin_; }
         ///
-	char maxcounter; // add approp. signedness
+	int maxcounter() const { return maxcounter_; }
+	///
+	LayoutList::size_type numLayouts() const { return layoutlist.size(); }
+	///
+	LyXLayout const & operator[](LayoutList::size_type i) const {
+		return layoutlist[i];
+	}
 private:
+	///
+	bool delete_layout(string const &);
+	///
+	bool do_readStyle(LyXLex &, LyXLayout &);
+	///
+	string name_;
+	///
+	string latexname_;
+	///
+	string description_;
+	/// Specific class options
+        string opt_fontsize_;
+	///
+        string opt_pagestyle_;
+	///
+	string options_;
+	///
+	string pagestyle_;
+	///
+	string preamble_;
+	///
+	Provides provides_;
+	///
+	unsigned int columns_;
+	///
+	PageSides sides_;
+	///
+	int secnumdepth_;
+	///
+	int tocdepth_;
+        ///
+        OutputType outputType_;
+	/** Base font. The paragraph and layout fonts are resolved against
+	    this font. This has to be fully instantiated. Attributes
+	    LyXFont::INHERIT, LyXFont::IGNORE, and LyXFont::TOGGLE are
+	    extremely illegal.
+	*/
+	LyXFont defaultfont_;
+	/// Text that dictates how wide the left margin is on the screen
+	string leftmargin_;
+
+	/// Text that dictates how wide the right margin is on the screen
+	string rightmargin_;
+        ///
+	int maxcounter_; // add approp. signedness
+
+	///
+	LayoutList layoutlist;
+
 	/// Has this layout file been loaded yet?
 	bool loaded;
 };
+
+///
+inline void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
+{
+	p1 = static_cast<LyXTextClass::Provides>(p1 | p2);
+}
 
 
 ///
 class LyXTextClassList {
 public:
 	///
-	LyXTextClassList();
-
-	///
-	~LyXTextClassList();
-
+	typedef vector<LyXTextClass> ClassList;
 	/// Gets layout structure from layout number and textclass number
-	LyXLayout *Style(char textclass, char layout);
+	LyXLayout const & Style(ClassList::size_type textclass,
+				LyXTextClass::LayoutList::size_type layout) const;
 
 	/// Gets layout number from textclass number and layout name
-	char NumberOfLayout(char textclass, string const & name); // add approp. signedness
+	pair<bool, LyXTextClass::LayoutList::size_type>
+	NumberOfLayout(ClassList::size_type textclass,
+		       string const & name) const;
 
 	/// Gets a layout name from layout number and textclass number
-	string NameOfLayout(char textclass, char layout); // add approp. signedness
+	string const &
+	NameOfLayout(ClassList::size_type textclass,
+		     LyXTextClass::LayoutList::size_type layout) const;
 
-	/// Gets textclass number from name
-	/** Returns -1 if textclass name does not exist */
-	signed char NumberOfClass(string const & textclass);
-
-	///
-	string NameOfClass(char number); // add approp. signedness
-
-	///
-	string LatexnameOfClass(char number); // add approp. signedness
+	/** Gets textclass number from name.
+	    Returns -1 if textclass name does not exist
+	*/
+	pair<bool, ClassList::size_type>
+	NumberOfClass(string const & textclass) const;
 
 	///
-	string DescOfClass(char number); // add approp. signedness
+	string const & NameOfClass(ClassList::size_type number) const;
 
 	///
-	LyXTextClass * TextClass(char textclass); // add approp. signedness
+	string const & LatexnameOfClass(ClassList::size_type number) const;
 
-	/// Read textclass list
-	/** Returns false if this fails */
+	///
+	string const & DescOfClass(ClassList::size_type number) const;
+
+	///
+	LyXTextClass const & TextClass(ClassList::size_type textclass) const;
+
+	/** Read textclass list.
+	    Returns false if this fails
+	*/
 	bool Read();
 
-	/// Load textclass
-	/** Returns false if this fails */
-	bool Load(const char number);
+	/** Load textclass.
+	    Returns false if this fails
+	*/
+	bool Load(ClassList::size_type number) const;
 private:
 	///
-	struct LyXTextClassL {
-		///
-		LyXTextClass * textclass;
-		///
-		LyXTextClassL * next;
-	};
-
+	mutable ClassList classlist;
 	///
-	LyXTextClassL * l;
-
-	///
-	int num_textclass;
-
-	/// After reading, this arrays holds the textclasses
-	LyXTextClass * ar;
-
-	/// Add a textclass to list
-	void Add (LyXTextClass *l);
-
-	/// Convert final linked list to array
-	/** We read the textclasses into a linked list. After the reading,
-	the list is converted to an array, and the linked list is nuked. */
-	void ToAr();
+	void Add (LyXTextClass const &);
 };
 
 /// Should not be declared here!! (Lgb) Why not? (Asger)
-extern LyXTextClassList lyxstyle;
+extern LyXTextClassList textclasslist;
  
 #endif

@@ -5,24 +5,20 @@
  *           LyX, The Document Processor 	 
  *	     Copyright (C) 1995 Matthias Ettrich
  *
- *           This file is Copyright (C) 1996-1998
- *           Lars Gullik Bjønnes
- *
  *======================================================
  */
 
-#ifndef _LITERATE_H
-#define _LITERATE_H
+#ifndef LITERATE_H
+#define LITERATE_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "LString.h"
-#include "DepTable.h"
-
+class MiniBuffer;
+	
 ///
-class Literate: public LaTeX {
+class Literate : public LaTeX {
 public:
 	Literate(string const & cmd, string const & file, string const & path,
 		 string const & litfile,
@@ -32,16 +28,17 @@ public:
         /// runs literate and latex
         int weave(TeXErrors &, MiniBuffer *);
 
-        ///
-        int scanLiterateLogFile(TeXErrors &);
-
         /// runs literate and build
         int build(TeXErrors &, MiniBuffer *);
 
-        ///
-        int scanBuildLogFile(TeXErrors &);
 
 private:
+        ///
+        int scanLiterateLogFile();
+
+        ///
+        int scanBuildLogFile();
+
         ///
         string litfile;
         

@@ -5,12 +5,12 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1996-1998 The LyX Team.
+ *          Copyright (C) 1996-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_LATEXCOMMAND_H
-#define _INSET_LATEXCOMMAND_H
+#ifndef INSET_LATEXCOMMAND_H
+#define INSET_LATEXCOMMAND_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -35,29 +35,29 @@ public:
 	///
 	~InsetCommand();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	/// Parse the command.
-	void scanCommand(string const &cmd);
+	void scanCommand(string const & cmd);
 	/// Will not be used when lyxf3
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	/// 
-	virtual int Latex(FILE *file, signed char fragile);
+	virtual int Latex(FILE * file, signed char fragile);
 	///
-	virtual int Latex(string &file, signed char fragile);
+	virtual int Latex(string & file, signed char fragile);
 	///
-	virtual int Linuxdoc(string &file);
+	virtual int Linuxdoc(string & file);
 	///
-	virtual int DocBook(string &file);
+	virtual int DocBook(string & file);
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///  
 	Inset::Code LyxCode() const
 	{
@@ -78,15 +78,15 @@ public:
 	/// Build the complete LaTeX command
 	string getCommand() const;
 	///
-	string const &getCmdName() const {
+	string const & getCmdName() const {
 		return command;
 	}
 	///
-	string const &getOptions() const {
+	string const & getOptions() const {
 		return options;
 	}
 	///
-	string const &getContents() const {
+	string const & getContents() const {
 		return contents;
 	}
 	///

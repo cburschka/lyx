@@ -4,12 +4,13 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 the LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_INFO_H
-#define _INSET_INFO_H
+#ifndef INSET_INFO_H
+#define INSET_INFO_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -36,27 +37,27 @@ public:
 	///
 	~InsetInfo();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	/// what appears in the minibuffer when opening
-	char const* EditMessage() {return "Opened note";}
+	char const * EditMessage() {return "Opened note";}
 	///
 	void Edit(int, int);
 	///
@@ -64,16 +65,15 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///
 	static void CloseInfoCB(FL_OBJECT *, long data);
 private:
 	///
 	string contents;
 	///
-	FL_FORM *form;
+	FL_FORM * form;
 	///
-	FL_OBJECT *strobj;
+	FL_OBJECT * strobj;
 };
-
 #endif

@@ -13,10 +13,10 @@
 #include "gettext.h"
 #include "lyx_cb.h"
 
-extern FD_form_sendto *fd_form_sendto;
-extern BufferView *current_view;
-extern int MakeDVIOutput(Buffer *buffer);
-extern bool MenuRunDvips(Buffer *buffer, bool wait);
+extern FD_form_sendto * fd_form_sendto;
+extern BufferView * current_view;
+extern int MakeDVIOutput(Buffer * buffer);
+extern bool MenuRunDvips(Buffer * buffer, bool wait);
 
 // Whereas this feature is under the menu item File->Export->Custom,
 // I kept the old name sendto in the code because I am lazy (JMarc)
@@ -82,7 +82,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
 					      ftypeext, true));
     if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
-    command = subst(command, "$$FName",fname);
+    command = subst(command, "$$FName", fname);
     command += " &"; // execute in background
     // push directorypath, if necessary 
     string path = OnlyPath(buffer->getFileName());

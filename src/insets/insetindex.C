@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -15,24 +15,16 @@
 #include "LString.h"
 #include "lyx_gui_misc.h" // WarnReadonly()
  
-extern BufferView *current_view;
-extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+extern BufferView * current_view;
+extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 
-FD_index_form *index_form = 0;
+FD_index_form * index_form = 0;
 
 extern "C" void index_cb(FL_OBJECT *, long data)
 {
-	InsetIndex *inset = (InsetIndex*)index_form->vdata;
+	InsetIndex * inset = static_cast<InsetIndex*>(index_form->index_form->u_vdata);
 	
 	switch (data) {
-// -       case 0: fl_hide_form(index_form->index_form); break;
-// -       case 1: 
-// -       {
-// -               inset->setContents(fl_get_input(index_form->key));
-// -               fl_hide_form(index_form->index_form);
-// -               UpdateInset(inset);
-// -               break;
-// -       }
 	case 1: // OK
 		if(!current_view->currentBuffer()->isReadonly()) {
 			string tmp = fl_get_input(index_form->key);
@@ -50,9 +42,9 @@ extern "C" void index_cb(FL_OBJECT *, long data)
 
 
 static
-FD_index_form *create_form_index_form()
+FD_index_form * create_form_index_form()
 {
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	FD_index_form *fdui = (FD_index_form *) fl_calloc(1, sizeof(FD_index_form));
 
 	fdui->index_form = fl_bgn_form(FL_NO_BOX, 258, 196);
@@ -89,7 +81,7 @@ InsetIndex::~InsetIndex()
 {
 	if(index_form && index_form->index_form
 	   && index_form->index_form->visible
-	   && index_form->vdata == this)
+	   && index_form->index_form->u_vdata == this)
 		fl_hide_form(index_form->index_form);
 }
 
@@ -102,7 +94,7 @@ void InsetIndex::Edit(int, int)
 	if (!index_form)
 		index_form = create_form_index_form();
 	
-	index_form->vdata = this;
+	index_form->index_form->u_vdata = this;
 	fl_set_input(index_form->key, getContents().c_str());
 	if (index_form->index_form->visible) {
 		fl_raise_form(index_form->index_form);
@@ -131,7 +123,7 @@ InsetPrintIndex::InsetPrintIndex()
 }
 
 
-InsetPrintIndex::InsetPrintIndex(Buffer *o)
+InsetPrintIndex::InsetPrintIndex(Buffer * o)
 	: InsetCommand("printindex"), owner(o)
 {
 }
@@ -148,7 +140,7 @@ string InsetPrintIndex::getScreenLabel() const
 }
 
 
-void InsetPrintIndex::Validate(LaTeXFeatures &features) const
+void InsetPrintIndex::Validate(LaTeXFeatures & features) const
 {
 	features.makeidx = true;
 }

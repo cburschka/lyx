@@ -29,3 +29,4 @@ libsupport_a_SOURCES = \
 	syscontr.h \
 	syssingleton.C \
 	textutils.h
+

@@ -299,11 +299,7 @@ LyXRC::LyXRC()
 }
 
 
-LyXRC::~LyXRC()
-{
-}
-
-int LyXRC::ReadBindFile(string name)
+int LyXRC::ReadBindFile(string const & name)
 {
 	hasBindFile = true;
 	string tmp = i18nLibFileSearch("bind",name,"bind");

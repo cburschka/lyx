@@ -60,8 +60,8 @@ private:
 class BufferStorage_Iter {
 public:
 	///
-	BufferStorage_Iter(const BufferStorage & bs)
-	{ cs=&bs; index=0;}
+	BufferStorage_Iter(BufferStorage const & bs)
+	{ cs =& bs; index = 0;}
 	/// next
 	Buffer* operator() ();
 	///

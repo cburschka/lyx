@@ -1,27 +1,27 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright (C) 1995 Matthias Ettrich
+ *           Copyright (C) 1995-1998 The LyX Team.
+ *
+ * ======================================================*/
 
-#ifndef _BUFFER_VIEW_H
-#define _BUFFER_VIEW_H
+#ifndef BUFFER_VIEW_H
+#define BUFFER_VIEW_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include FORMS_H_LOCATION
+#include "BackStack.h"
 
 class LyXView;
 class Buffer;
 class LyXScreen;
-class BackStack;
 class Inset;
 
 ///
@@ -29,8 +29,6 @@ class BufferView {
 public:
 	///
 	BufferView(LyXView *owner, int ,int ,int, int);
-        ///
-        ~BufferView();
 	///
 	Buffer *currentBuffer() { return _buffer; }
 	///
@@ -152,7 +150,7 @@ private:
 	///
 	FL_OBJECT *timer_cursor;
         ///
-        BackStack *backstack;
+        BackStack backstack;
 	///
 	int last_click_x, last_click_y;
 };

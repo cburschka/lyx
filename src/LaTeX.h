@@ -21,65 +21,23 @@
 
 #include "LString.h"
 #include "DepTable.h"
+#include <vector>
+#include <fstream>
 
-class LyXLex;
 class MiniBuffer;
 
 ///
 class TeXErrors {
-public:
-	///
-	TeXErrors() {
-		errors = 0;
-		next_error = 0;
-		status = 0;
-		number_of_errors = 0;
-	}
-	///
-	~TeXErrors(); 
-	///
-	void scanError(LyXLex &);
-	///
-	bool getFirstError(int *line, string *text);
-	///
-	bool getNextError(int *line, string *text);
-	///
-	void insertError(int line, string const &error_desc,
-			 string const &error_text);
-	///
-	void printErrors();
-	///
-	void printWarnings();
-	///
-	void printStatus();
-	///
-	int getStatus() { return status; }
 private:
-	///
-	friend class LaTeX;
-	///
-	int status;
-	///
-	int number_of_errors;
 	///
 	struct Error {
 		///
-		Error () {
-			next_error = 0;
-			error_in_line = 0;
-		}
+		Error () : error_in_line(0) {}
 		///
-		Error(int line, string const &desc, string const &text) {
-			next_error = 0;
-			error_in_line = line;
-			error_desc = desc;
-			error_text = text;
-		}
-		///
-		~Error() {
-		}
-		///
-		Error *next_error;
+		Error(int line, string const & desc, string const & text)
+			: error_in_line(line),
+			  error_desc(desc),
+			  error_text(text) {}
 		/// what line in the TeX file the error occured in
 		int error_in_line;
 		/// The kind of error
@@ -87,10 +45,19 @@ private:
 		/// The line/cmd that caused the error.
 		string error_text;
 	};
+public:
 	///
-	Error *errors;
+	typedef vector<Error> Errors;
 	///
-	Error *next_error;
+	Errors::const_iterator begin() const { return errors.begin(); }
+	///
+	Errors::const_iterator end() const { return errors.end(); }
+	///
+	void insertError(int line, string const & error_desc,
+			 string const & error_text);
+private:
+	///
+	Errors errors;
 };
 
 
@@ -98,10 +65,10 @@ private:
 class LaTeX {
 public:
 	/** All the different files produced by TeX.
-	  
-	  This is the files mentioned on page 208-9 in Lamports book +
-	  .ltx and .tex files.
-	 */
+	    
+	    This is the files mentioned on page 208-9 in Lamports book +
+	    .ltx and .tex files.
+	*/
 	enum TEX_FILES {
 		///
 		NO_FILES = 0,
@@ -175,9 +142,9 @@ public:
 	
 
 	/**
-	  cmd = the latex command, file = name of the (temporary) latex file,
-	  path = name of the files original path.
-	  */
+	   cmd = the latex command, file = name of the (temporary) latex file,
+	   path = name of the files original path.
+	*/
 	LaTeX(string const & cmd, string const & file, string const & path);
 	
 	/// runs LaTeX several times
@@ -189,19 +156,13 @@ public:
 	/// use this for running LaTeX once
 	int operator() ();
 protected:
-	/** The dependency file.
-	  
-	  We store the file dependencies in this file.
-	  the depency file is on the format:
-	  <file> <new checksum> <old checksum>
-	*/
+	/// The dependency file.
 	string depfile;
 
-	///
-	LaTeX() {}
-	
-	///
-	LaTeX(LaTeX const &) {}
+	/// unavail
+	LaTeX(LaTeX const &);
+	/// unavail
+	LaTeX & operator=(LaTeX const &);
 	
 	///
 	void deplog(DepTable & head);
@@ -216,7 +177,7 @@ protected:
 	bool runMakeIndex(string const &);
 
 	///
-	bool runBibTeX(string const &);
+	bool runBibTeX(string const &, DepTable &);
 	
 	///
 	string cmd;

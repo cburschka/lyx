@@ -291,20 +291,20 @@ void LyXView::updateLayoutChoice()
 
 	// If textclass is different, we need to update the list
 	if (toolbar->combox->empty() ||
-	    (last_textclass != currentBuffer()->params.textclass)) {
+	    (last_textclass != int(currentBuffer()->params.textclass))) {
 		toolbar->combox->clear();
 		for (int i = 0;
-		     lyxstyle.NameOfLayout(currentBuffer()->
+		     textclasslist.NameOfLayout(currentBuffer()->
 					   params.textclass, i) !="@@end@@";
 		     i++) {
-			LyXLayout *layout = lyxstyle.
+			LyXLayout const & layout = textclasslist.
 				Style(currentBuffer()->params.textclass, i);
-			if (layout->obsoleted_by.empty())
-				toolbar->combox->addline(layout->name.c_str());
+			if (layout.obsoleted_by().empty())
+				toolbar->combox->addline(layout.name().c_str());
 			else
-				toolbar->combox->addline(("@N"+layout->name).c_str());
+				toolbar->combox->addline(("@N"+layout.name()).c_str());
 		}
-		last_textclass = currentBuffer()->params.textclass;
+		last_textclass = int(currentBuffer()->params.textclass);
 		current_layout = 0;
 	}
 	// we need to do this.
@@ -325,9 +325,9 @@ void LyXView::UpdateDocumentClassChoice()
 	int i;
 	if (fd_form_document) {
 		fl_clear_choice(fd_form_document->choice_class);
-		for (i = 0; lyxstyle.DescOfClass (i)!="@@end@@"; i++) {
+		for (i = 0; textclasslist.DescOfClass (i)!="@@end@@"; i++) {
 			fl_addto_choice(fd_form_document->choice_class,
-					lyxstyle.DescOfClass(i).c_str());
+					textclasslist.DescOfClass(i).c_str());
 		}
 	}
 }

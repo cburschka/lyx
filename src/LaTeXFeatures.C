@@ -77,7 +77,7 @@ LaTeXFeatures::LaTeXFeatures(int n)
 string LaTeXFeatures::getPackages(BufferParams const &params)
 {
 	string packages;
-	LyXTextClass *tclass = lyxstyle.TextClass(params.textclass);
+	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 
 	// color.sty
 	if (color) {
@@ -90,7 +90,7 @@ string LaTeXFeatures::getPackages(BufferParams const &params)
 		
 	// makeidx.sty
 	if (makeidx) {
-		if (! tclass->provides_makeidx
+		if (! tclass.provides(LyXTextClass::makeidx)
 		    && params.language != "french") // french provides
 						    // \index !
 			packages += "\\usepackage{makeidx}\n";
@@ -167,7 +167,7 @@ string LaTeXFeatures::getPackages(BufferParams const &params)
 		packages += "\\usepackage{floatflt}\n";
 
 	// url.sty
-	if (url && ! tclass->provides_url)
+	if (url && ! tclass.provides(LyXTextClass::url))
 		packages += "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
 			    "                      {\\newcommand{\\url}{\\texttt}}\n";
 	
@@ -226,24 +226,22 @@ string LaTeXFeatures::getMacros(BufferParams const & /* params */)
 }
 
 
-string LaTeXFeatures::getTClassPreamble(BufferParams const &params)
+string LaTeXFeatures::getTClassPreamble(BufferParams const & params)
 {
 	// the text class specific preamble 
-	LyXTextClass *tclass = lyxstyle.TextClass(params.textclass);
-	string tcpreamble = tclass->preamble;
+	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	string tcpreamble = tclass.preamble();
 
-	int l;
-	for (l = 0 ; l < tclass->number_of_defined_layouts ; l++) {
-		if (layout[l] 
-		    && !tclass->style[l].preamble.empty())
-			tcpreamble += tclass->style[l].preamble;
+	for (LyXTextClass::LayoutList::const_iterator cit = tclass.begin();
+	     cit != tclass.end(); ++cit) {
+		tcpreamble += (*cit).preamble();
 	}
 
 	return tcpreamble;
 }	
 
 
-void LaTeXFeatures::showStruct(BufferParams &params) {
+void LaTeXFeatures::showStruct(BufferParams & params) {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	// packs
 	       << "\n***** Packages:" << getPackages(params)

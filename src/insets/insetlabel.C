@@ -30,9 +30,9 @@ InsetLabel::~InsetLabel()
 }
 
 
-Inset* InsetLabel::Clone()
+Inset * InsetLabel::Clone()
 {
-	InsetLabel *result = new InsetLabel(getCommand());
+	InsetLabel * result = new InsetLabel(getCommand());
 	return result;
 }
 
@@ -48,28 +48,28 @@ string InsetLabel::getLabel(int) const
 	return contents;
 }
 
-int InsetLabel::Latex(FILE *file, signed char /*fragile*/)
+int InsetLabel::Latex(FILE * file, signed char /*fragile*/)
 {
 	fprintf(file, "%s", escape(getCommand()).c_str());
 	return 0;
 }
 
 
-int InsetLabel::Latex(string &file, signed char /*fragile*/)
+int InsetLabel::Latex(string & file, signed char /*fragile*/)
 {
 	file += escape(getCommand());
 	return 0;
 }
 
 
-int InsetLabel::Linuxdoc(string &file)
+int InsetLabel::Linuxdoc(string & file)
 {
 	file += "<label id=\"" + getContents() +"\" >";
 	return 0;
 }
 
 
-int InsetLabel::DocBook(string &file)
+int InsetLabel::DocBook(string & file)
 {
 	file += "<anchor id=\"" + getContents() +"\" >";
 	return 0;
@@ -82,14 +82,14 @@ string InsetLabel::escape(string const & lab) const {
 	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	string enc;
-	for (string::size_type i=0; i<lab.length(); i++) {
-		unsigned char c=lab[i];
-		if (c >= 128 || c=='=' || c=='%') {
+	for (string::size_type i=0; i < lab.length(); ++i) {
+		unsigned char c = lab[i];
+		if (c >= 128 || c == '=' || c == '%') {
 			enc += '=';
-			enc += hexdigit[c>>4];
+			enc += hexdigit[c >> 4];
 			enc += hexdigit[c & 15];
 		} else {
-			enc += (char) c;
+			enc += c;
 		}
 	}
 	return enc;

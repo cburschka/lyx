@@ -35,7 +35,7 @@ InsetCommand::~InsetCommand()
 }
 
 
-int InsetCommand::Ascent(LyXFont const&font) const
+int InsetCommand::Ascent(LyXFont const & font) const
 {
 	LyXFont f = font;
 	f.decSize();
@@ -43,7 +43,7 @@ int InsetCommand::Ascent(LyXFont const&font) const
 }
 
 
-int InsetCommand::Descent(LyXFont const&font) const
+int InsetCommand::Descent(LyXFont const & font) const
 {
 	LyXFont f = font;
 	f.decSize();
@@ -51,7 +51,7 @@ int InsetCommand::Descent(LyXFont const&font) const
 }
 
 
-int InsetCommand::Width(LyXFont const&font) const
+int InsetCommand::Width(LyXFont const & font) const
 {
 	LyXFont f = font;
 	f.decSize();
@@ -60,15 +60,12 @@ int InsetCommand::Width(LyXFont const&font) const
 }
 
 
-void InsetCommand::Draw(LyXFont font, LyXScreen &scr,
-		      int baseline, float &x)
+void InsetCommand::Draw(LyXFont font, LyXScreen & scr,
+		      int baseline, float & x)
 {
 	// Draw it as a box with the LaTeX text
 	x += 3;
 
-	//scr.drawFilledRectangle(int(x), baseline - Ascent(font) + 1,
-	//	     Width(font) - 2, Ascent(font) + Descent(font)-2,
-	//	     FL_GRAY80);
 	scr.fillRectangle(gc_lighted,
 			  int(x), baseline - Ascent(font) + 1,
 			  Width(font) - 6,
@@ -80,9 +77,6 @@ void InsetCommand::Draw(LyXFont font, LyXScreen &scr,
 			h = (Ascent(font)+Descent(font)-2);
 		scr.drawFrame(FL_UP_FRAME, int(x), y, w, h, FL_BLACK, -1);
 	} else {
-		//scr.drawRectangle(int(x), baseline - Ascent(font)+1,
-		//	     Width(font)-2, Ascent(font)+Descent(font)-2,
-		//	     FL_BLACK);
 		scr.drawRectangle(gc_note_frame,
 				  int(x), baseline - Ascent(font)+1,
 				  Width(font)-6,
@@ -100,13 +94,13 @@ void InsetCommand::Draw(LyXFont font, LyXScreen &scr,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetCommand::Write(FILE *file)
+void InsetCommand::Write(FILE * file)
 {
 	fprintf(file, "LatexCommand %s\n", getCommand().c_str());
 }
 
 
-void InsetCommand::scanCommand(string const &cmd)
+void InsetCommand::scanCommand(string const & cmd)
 {
 	string tcommand, toptions, tcontents;
 
@@ -170,7 +164,7 @@ void InsetCommand::scanCommand(string const &cmd)
 
 
 // This function will not be necessary when lyx3
-void InsetCommand::Read(LyXLex &lex)
+void InsetCommand::Read(LyXLex & lex)
 {    
 	if (lex.EatLine()) {
 		string t = lex.GetString();
@@ -180,14 +174,14 @@ void InsetCommand::Read(LyXLex &lex)
 }
 
 
-int InsetCommand::Latex(FILE *file, signed char /*fragile*/)
+int InsetCommand::Latex(FILE * file, signed char /*fragile*/)
 {
 	fprintf(file, "%s", getCommand().c_str());
 	return 0;
 }
 
 
-int InsetCommand::Latex(string &file, signed char /*fragile*/)
+int InsetCommand::Latex(string & file, signed char /*fragile*/)
 {
 	file += getCommand();
 	return 0;
@@ -206,9 +200,9 @@ int InsetCommand::DocBook(string &/*file*/)
 }
 
 
-Inset* InsetCommand::Clone()
+Inset * InsetCommand::Clone()
 {
-	InsetCommand *result = new InsetCommand(command, contents, options);
+	InsetCommand * result = new InsetCommand(command, contents, options);
 	return result;
 }
 

@@ -50,6 +50,7 @@
 #include "lyx_gui_misc.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/LAssert.h"
 #include "lyxscreen.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -61,6 +62,7 @@
 #include "support/syscall.h"
 #include "support/lstrings.h"
 #include "support/path.h"
+#include "layout.h"
 
 extern bool cursor_follows_scrollbar;
 
@@ -68,12 +70,12 @@ extern void InsertAsciiFile(string const &, bool);
 extern void math_insert_symbol(char const*);
 extern Bool math_insert_greek(char const); // why "Bool"?
 extern BufferList bufferlist;
-extern LyXServer *lyxserver;
+extern LyXServer * lyxserver;
 extern short greek_kb_flag;
-extern FD_form_toc *fd_form_toc;
+extern FD_form_toc * fd_form_toc;
 extern bool selection_possible;
 
-extern kb_keymap *toplevel_keymap;
+extern kb_keymap * toplevel_keymap;
 
 extern void BeforeChange();
 extern void MenuWrite(Buffer*);
@@ -1074,7 +1076,7 @@ string LyXFunc::Dispatch(int ac,
 
 		// Pretend we got the name instead.
 		Dispatch(int(LFUN_LAYOUT), 
-			 lyxstyle.NameOfLayout(owner->currentBuffer()->
+			 textclasslist.NameOfLayout(owner->currentBuffer()->
 					       text->parameters->
 					       textclass,
 					       sel).c_str());
@@ -1090,11 +1092,11 @@ string LyXFunc::Dispatch(int ac,
 		// and current buffer's textclass (number). */    
 		int layoutno = -1;
 		layoutno =
-			lyxstyle.NumberOfLayout(owner->
+			textclasslist.NumberOfLayout(owner->
 						currentBuffer()->
 						text->parameters->
 						textclass,
-						argument);
+						argument).second;
 
 		// see if we found the layout number:
 		if (layoutno == -1) {
@@ -1201,7 +1203,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_UPCASE_WORD:
 		owner->currentBuffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->ChangeWordCase(2);
+		owner->currentBuffer()->text->ChangeWordCase(LyXText::text_uppercase);
 		owner->currentBuffer()->update(1);
 		SetUpdateTimer();
 		break;
@@ -1209,7 +1211,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LOWCASE_WORD:
 		owner->currentBuffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->ChangeWordCase(0);
+		owner->currentBuffer()->text->ChangeWordCase(LyXText::text_lowercase);
 		owner->currentBuffer()->update(1);
 		SetUpdateTimer();
 		break;
@@ -1217,7 +1219,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_CAPITALIZE_WORD:
 		owner->currentBuffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->ChangeWordCase(1);
+		owner->currentBuffer()->text->ChangeWordCase(LyXText::text_capitalization);
 		owner->currentBuffer()->update(1);
 		SetUpdateTimer();
 		break;
@@ -1845,8 +1847,14 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_CHARATCURSOR:
 	{
+#ifdef NEW_TEXT
+		LyXParagraph::size_type pos =
+		  owner->currentBuffer()->text->cursor.pos;
+		if(pos < owner->currentBuffer()->text->cursor.par->size())
+#else
 		int pos = owner->currentBuffer()->text->cursor.pos;
 		if(pos < owner->currentBuffer()->text->cursor.par->last)
+#endif
 			dispatch_buffer = owner->currentBuffer()->text->
 				cursor.par->text[pos];
 		else
@@ -2205,7 +2213,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INDEX_INSERT:
 	case LFUN_INDEX_INSERT_LAST:
 	{
-		InsetIndex *new_inset = new InsetIndex();
+		InsetIndex * new_inset = new InsetIndex();
 		if (!argument.empty()) {
   			string lsarg(argument);
 			new_inset->setContents(lsarg);
@@ -2217,19 +2225,25 @@ string LyXFunc::Dispatch(int ac,
 		  
 		  // grab a word
 
-		  int lastpos =owner->currentBuffer()->text->cursor.pos-1;
-
+#ifdef NEW_TEXT
+		  LyXParagraph::size_type lastpos =
+			  owner->currentBuffer()->text->cursor.pos - 1;
+		  // If this can't happen, let's make sure that it really don't
+		  Assert(owner->currentBuffer()->text->cursor.pos - 1 >= 0);
+#else
+		  int lastpos =owner->currentBuffer()->text->cursor.pos - 1;
 		  //this shouldn't happen, but let's be careful
 		  if (lastpos < 0) lastpos=0;
-		  
+#endif
 		  // get the current word
 		  // note that this must be done before 
 		  // inserting the inset, or the inset will break
 		  // the word
-		  string curstring(owner->currentBuffer()->text->cursor.par->GetWord(lastpos));
+		  string curstring(owner->currentBuffer()
+				   ->text->cursor.par->GetWord(lastpos));
 
 		  //make the new inset and write the current word into it
-		  InsetIndex *new_inset = new InsetIndex();
+		  InsetIndex * new_inset = new InsetIndex();
 
 		  new_inset->setContents(curstring);
 
@@ -2825,13 +2839,17 @@ void LyXFunc::CloseBuffer()
 }
 
 
-Inset* LyXFunc::getInsetByCode(Inset::Code code)
+Inset * LyXFunc::getInsetByCode(Inset::Code code)
 {
 	bool found = false;
-	Inset* inset = 0;
+	Inset * inset = 0;
 	LyXCursor cursor = owner->currentBuffer()->text->cursor;
+#ifdef NEW_TEXT
+	LyXParagraph::size_type pos = cursor.pos;
+#else
 	int pos = cursor.pos;
-	LyXParagraph *par = cursor.par;
+#endif
+	LyXParagraph * par = cursor.par;
 	
 	while (par && !found) {
 		while ((inset = par->ReturnNextInsetPointer(pos))){

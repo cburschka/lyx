@@ -3,9 +3,9 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997-1998 LyX Team
+ *           Copyright (C) 1997-1999 LyX Team
  * 
- *======================================================*/
+ * ======================================================*/
 
 
 // Created by asierra 970813
@@ -25,10 +25,10 @@
 #include "commandtags.h"
 
 
-extern BufferView *current_view;
+extern BufferView * current_view;
 
 
-InsetParent::InsetParent(string fn, Buffer* owner): InsetCommand("lyxparent")
+InsetParent::InsetParent(string fn, Buffer * owner): InsetCommand("lyxparent")
 {
     if (owner)
 	setContents(MakeAbsPath(fn, OnlyPath(owner->getFileName())));
@@ -43,7 +43,7 @@ void InsetParent::Edit(int, int)
 }
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(FILE *file, signed char fragile)
+int InsetParent::Latex(FILE * file, signed char fragile)
 {
     fprintf(file, "%%#{lyx}");
     InsetCommand::Latex(file, fragile);
@@ -51,7 +51,7 @@ int InsetParent::Latex(FILE *file, signed char fragile)
 }
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(string &file, signed char fragile)
+int InsetParent::Latex(string & file, signed char fragile)
 {
     file += "%%#{lyx}";
     InsetCommand::Latex(file, fragile);

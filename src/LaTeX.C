@@ -13,16 +13,12 @@
 
 #include <config.h>
 
-#include <cstdio>
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "support/filetools.h"
 #include "LaTeX.h"
-#include "lyxlex.h"
 #include "support/FileInfo.h"
 #include "debug.h"
 #include "support/lyxlib.h"
@@ -32,6 +28,19 @@
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"
+
+// TODO: in no particular order
+// - get rid of the extern BufferList and the call to
+//   BufferList::updateIncludedTeXfiles, this should either
+//   be done before calling LaTeX::funcs or in a completely
+//   different way.
+// - the bibtex command options should be supported.
+// - the makeindex style files should be taken care of with
+//   the dependency mechanism.
+// - makeindex commandline options should be supported
+// - somewhere support viewing of bibtex and makeindex log files.
+// - we should perhaps also scan the bibtex log file
+// - we should perhaps also scan the bibtex log file
 
 extern BufferList bufferlist;
 
@@ -57,173 +66,17 @@ const texfile_struct all_files[] = {
 	{ LaTeX::TEX, ".tex"}
 };
 
-// This should perhaps be placed in LyXLex
-static
-string readLine(FILE *file)
-{
-	if (feof(file))
-		return string();
-
-	int i = 0;
-	char s[512];
-
-	do {
-		s[i] = fgetc(file);
-		i++;
-	} while (!feof(file) && s[i-1] != '\n' && i<510);
-	s[i] = '\0';
-	string tmp;
-	if (i == 1 && feof(file))
-		;
-	else
-		tmp = s;
-
-	return tmp;
-}
-
-
 
 /*
  * CLASS TEXERRORS
  */
 
-// I did not leave this inlined because DEC cxx does not like
-// variables declarations in inlined code (JMarc)
-TeXErrors::~TeXErrors()
+void TeXErrors::insertError(int line, string const & error_desc,
+			    string const & error_text)
 {
-	Error *tmp;
-	while (errors) {
-		tmp = errors->next_error;
-		delete errors;
-		errors = tmp;
-	}
+        Error newerr(line, error_desc, error_text);
+	errors.push_back(newerr);
 }
-
-
-void TeXErrors::scanError(LyXLex &lex)
-{
-	string token = lex.GetString();
-	// Sometimes the error string goes over more than one
-	// line, and we need to get them all.
-	string errstr;
-	string tmp = frontStrip(readLine(lex.getFile()));
-	if (tmp == "\n" || tmp.empty()) {
-		tmp = frontStrip(readLine(lex.getFile()));
-		if (contains(tmp, "See the LaTeX manual")) {
-			do {
-				tmp = readLine(lex.getFile());
-			} while (!tmp.empty() && !contains(tmp, "..."));
-		}
-		tmp = frontStrip(readLine(lex.getFile()));
-	}
-
-	while ((tmp != "\n" || !contains(errstr, "l."))
-		&& !prefixIs(tmp, "! ")
-		&& !contains(tmp, "(job aborted")
-		&& !tmp.empty()) {
-		errstr += tmp;
-		tmp = frontStrip(readLine(lex.getFile()));
-	}
-	lyxerr.debug() << "tmp: " << errstr << endl;
-	int line = 0;
-	// unfortunately the error line is not always given
-	// by "l.###" in the beginning of the error string
-	// therefore we must search for "l.###" in the error
-	// msg.
-	if (contains(errstr, "l.")) {
-		// We make a const copy to make [] fast. (Asger)
-		string const es(errstr);
-		for (string::size_type i = 2; i < es.length(); ++i) {
-			if (es[i-2] == 'l' && es[i-1] == '.' &&
-			    (es[i] >= '0' && es[i]<= '9')) {
-				line = atoi(es.c_str() + i);
-				break;
-			}
-		}
-	}
-	insertError(line, token, errstr);
-
-	if (prefixIs(tmp, "! ")) {
-		scanError(lex);
-	}
-}
-
-
-bool TeXErrors::getFirstError(int *line, string *text)
-{
-        next_error = errors;
-        if (next_error) {
-                *line = next_error->error_in_line;
-                *text = next_error->error_desc + "\n" + next_error->error_text;
-                next_error = next_error->next_error;
-                return true;
-        }
-        return false;
-}
-
-
-bool TeXErrors::getNextError(int *line, string *text)
-{
-        if (next_error) {
-                *line = next_error->error_in_line;
-                *text = next_error->error_desc + "\n" + next_error->error_text;
-                next_error = next_error->next_error;
-                return true;
-        }
-        return false;
-}
-
-
-void TeXErrors::insertError(int line, string const &error_desc,
-			    string const &error_text)
-{
-        Error *newerr = new Error(line, error_desc, error_text);
-        if (errors) {
-                Error *tmperr = errors;
-                while (tmperr->next_error) tmperr = tmperr->next_error;
-                tmperr->next_error = newerr;
-        } else {
-                errors = newerr;
-        }
-}
-
-
-void TeXErrors::printErrors()
-{
-        lyxerr << "Printing errors." << endl;
-        if (errors) {
-                Error *tmperr = errors;
-                do {
-                        lyxerr << "Error in line "
-			       << tmperr->error_in_line
-			       << ": " << tmperr->error_desc
-			       << '\n' << tmperr->error_text << endl;
-                        tmperr = tmperr->next_error;
-                } while (tmperr);
-        }
-}
-
-
-void TeXErrors::printWarnings()
-{
-}
-
-
-void TeXErrors::printStatus()
-{
-        lyxerr << "Error struct:"
-	       << "\n   status: " << status
-	       << "\n   no err: " << number_of_errors << endl;
-        if (status == LaTeX::NO_ERRORS)  lyxerr << "NO_ERRORS" << endl;
-        if (status & LaTeX::NO_LOGFILE)  lyxerr << "NO_LOGFILE" << endl;
-        if (status & LaTeX::NO_OUTPUT)   lyxerr << "NO_OUTPUT" << endl;
-        if (status & LaTeX::UNDEF_REF)   lyxerr << "UNDEF_REF" << endl;
-	if (status & LaTeX::RERUN)       lyxerr << "RERUN" << endl;
-        if (status & LaTeX::TEX_ERROR)   lyxerr << "TEX_ERROR" << endl;
-        if (status & LaTeX::TEX_WARNING) lyxerr << "TEX_WARNING" << endl;
-        if (status & LaTeX::NO_FILE)     lyxerr << "NO_FILE" << endl;
-}
-
 
 /*
  * CLASS LaTeX
@@ -239,7 +92,7 @@ LaTeX::LaTeX(string const & latex, string const & f, string const & p)
 }
 
 
-int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
+int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	// We know that this function will only be run if the lyx buffer
 	// has been changed. We also know that a newly written .tex file
 	// is always different from the previous one because of the date
@@ -274,6 +127,7 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 	//             remake the dependency file.
 	//
 	FileInfo fi(depfile);
+	bool run_bibtex = false;
 	if (fi.exist()) {
 		// Read the dep file:
 		head.read(depfile);
@@ -283,6 +137,8 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 		lyxerr[Debug::LATEX] << "Dependency file exists" << endl;
 		if (head.sumchange()) {
 			++count;
+			if (head.extchanged(".bib")
+			    || head.extchanged(".bst")) run_bibtex = true;
 			lyxerr[Debug::LATEX]
 				<< "Dependency file has changed\n"
 				<< "Run #" << count << endl; 
@@ -322,20 +178,24 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 	// run makeindex
 	if (head.haschanged(ChangeExtension(file, ".idx", true))) {
 		// no checks for now
+		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		minib->Set(_("Running MakeIndex."));
 		minib->Store();
 		rerun=runMakeIndex(ChangeExtension(file,".idx",true));
 	}
 
 	// run bibtex
-	if (scanres & LaTeX::UNDEF_CIT || scanres & LaTeX::RERUN) {
+	if (scanres & LaTeX::UNDEF_CIT
+	    || scanres & LaTeX::RERUN
+	    || run_bibtex) {
 		// Here we must scan the .aux file and look for
 		// "\bibdata" and/or "\bibstyle". If one of those
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
+		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
 		minib->Set(_("Running BibTeX."));
 		minib->Store();
-		rerun = runBibTeX(ChangeExtension(file, ".aux", true));
+		rerun = runBibTeX(ChangeExtension(file, ".aux", true), head);
 	}
 	
 	// 1
@@ -379,6 +239,7 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 	// run makeindex if the <file>.idx has changed or was generated.
 	if (head.haschanged(ChangeExtension(file, ".idx", true))) {
 		// no checks for now
+		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		minib->Set(_("Running MakeIndex."));
 		minib->Store();
 		rerun = runMakeIndex(ChangeExtension(file, ".idx", true));
@@ -447,59 +308,124 @@ bool LaTeX::runMakeIndex(string const &file)
 }
 
 
-bool LaTeX::runBibTeX(string const &file)
+typedef pair<int, string> cmdret;
+static cmdret do_popen(string const & cmd)
 {
-	LyXLex lex(0, 0);
-	string token;
-	if (!lex.setFile(file)) {
-		// unable to open .aux file
-		// return at once
-		return false;
+	// One question is if we should use popen or
+	// create our own popen based on fork,exec,pipe
+	// of course the best would be to have a
+	// pstream (process stream), with the
+	// variants ipstream, opstream and
+	FILE * inf = popen(cmd.c_str(), "r");
+	string ret;
+	int c = fgetc(inf);
+	while (c != EOF) {
+		ret += static_cast<char>(c);
+		c = fgetc(inf);
 	}
+	int pret = pclose(inf);
+	return make_pair(pret, ret);
+}
 
-	while (lex.IsOK()) {
-		if (lex.EatLine())
-			token=lex.GetString();
-		else // blank line in the file being read
-			continue;
 
+static string findtexfile(string const & fil, string const & format)
+{
+	// If fil is a file with absolute path we just return it
+	if (AbsolutePath(fil)) return fil;
+
+	// Check in the current dir.
+	if (FileInfo(OnlyFilename(fil)).exist())
+	  return OnlyFilename(fil);
+	
+	// No we try to find it using kpsewhich.
+	string kpsecmd = "kpsewhich --format=" + format + " " + fil;
+	cmdret c = do_popen(kpsecmd);
+
+	lyxerr << "kpse status = " << c.first << "\n"
+	       << "kpse result = `" << strip(c.second, '\n') << "'" << endl;
+	return c.first == 0 ? strip(c.second, '\n') : string();
+}
+
+
+bool LaTeX::runBibTeX(string const & file, DepTable & dep)
+{
+	ifstream ifs(file.c_str());
+	string token;
+	bool using_bibtex = false;
+	while (getline(ifs, token)) {
 		if (contains(token, "\\bibdata{")) {
-			// run bibtex and
-			string tmp="bibtex ";
-			tmp += ChangeExtension(file, string(), true);
-			Systemcalls one;
-			one.startscript(Systemcalls::System, tmp);
-			return true;
+			using_bibtex = true;
+			string::size_type a = token.find("\\bibdata{") + 9;
+			string::size_type b = token.find_first_of("}", a);
+			string data = token.substr(a, b - a);
+			// data is now all the bib files separated by ','
+			// get them one by one and pass them to the helper
+			do {
+				b = data.find_first_of(',', 0);
+				string l;
+				if (b == string::npos)
+					l = data;
+				else {
+					l = data.substr(0, b - 0);
+					data.erase(0, b + 1);
+				}
+				string full_l =
+					findtexfile(
+						ChangeExtension(l,"bib",false),
+						"bib");
+				lyxerr << "data = `"
+				       << full_l << "'" << endl;
+				if (!full_l.empty()) {
+					// add full_l to the dep file.
+					dep.insert(full_l, true);
+				}
+			} while (b != string::npos);
+		} else if (contains(token, "\\bibstyle{")) {
+			using_bibtex = true;
+			string::size_type a = token.find("\\bibstyle{") + 10;
+			string::size_type b = token.find_first_of("}", a);
+			string style = token.substr(a, b - a);
+			// token is now the style file
+			// pass it to the helper
+			string full_l =
+				findtexfile(
+					ChangeExtension(style, "bst", false),
+					"bst");
+			lyxerr << "style = `"
+			       << full_l << "'" << endl;
+			if (!full_l.empty()) {
+				// add full_l to the dep file.
+				dep.insert(full_l, true);
+			}
 		}
-		
+	}
+	if (using_bibtex) {
+		// run bibtex and
+		string tmp= "bibtex ";
+		tmp += ChangeExtension(file, string(), true);
+		Systemcalls one;
+		one.startscript(Systemcalls::System, tmp);
+		return true;
 	}
 	// bibtex was not run.
 	return false;
 }
 
 
-int LaTeX::scanLogFile(TeXErrors &terr)
+int LaTeX::scanLogFile(TeXErrors & terr)
 {
 	int retval = NO_ERRORS;
 	string tmp = ChangeExtension(file, ".log", true);
-	
-	LyXLex lex(0, 0);
-	if (!lex.setFile(tmp)) {
-		// unable to open file
-		// return at once
-		retval |= NO_LOGFILE;
-		return retval;
-	}
+	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
+	ifstream ifs(tmp.c_str());
 
 	string token;
-	while (lex.IsOK()) {
-		if (lex.EatLine())
-			token = lex.GetString();
-		else // blank line in the file being read
+	while (getline(ifs, token)) {
+		lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+		
+		if (token.empty())
 			continue;
 
-		lyxerr[Debug::LATEX] << token << endl;
-		
 		if (prefixIs(token, "LaTeX Warning:")) {
 			// Here shall we handle different
 			// types of warnings
@@ -528,55 +454,41 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 				// at least longtable.sty might use this.
 				retval |= RERUN;
 			}
-		} else if (prefixIs(token, "! LaTeX Error:")) {
-			// Here shall we handle different
-			// types of errors
-			retval |= LATEX_ERROR;
-			lyxerr[Debug::LATEX] << "LaTeX Error." << endl;
-			// this is not correct yet
-			terr.scanError(lex);
-			num_errors++;
 		} else if (prefixIs(token, "! ")) {
 			// Ok, we have something that looks like a TeX Error
 			// but what do we really have.
 
 			// Just get the error description:
-			string desc(token);
-			desc.erase(0, 2);
-
-			if (contains(desc, "Undefined control sequence")) {
-				retval |= TEX_ERROR;
-				lyxerr[Debug::LATEX] << "TeX Error." << endl;
-				terr.scanError(lex);
-				num_errors++;
-			} else {
-				// get the next line
-				lex.next();
-				string tmp = lex.GetString();
-				if (prefixIs(tmp, "l.")) {
+			string desc(token, 2);
+			if (contains(token, "LaTeX Error:"))
+				retval |= LATEX_ERROR;
+			// get the next line
+			string tmp;
+			getline(ifs, tmp);
+			if (prefixIs(tmp, "l.")) {
 				// we have a latex error
-					retval |=  TEX_ERROR;
-					lyxerr[Debug::LATEX]
-						<<"TeX Error." << endl;
+				retval |=  TEX_ERROR;
 				// get the line number:
-					int line = 0;
-					sscanf(tmp.c_str(), "l.%d", &line);
+				int line = 0;
+				sscanf(tmp.c_str(), "l.%d", &line);
 				// get the rest of the message:
-					string errstr;
-					lex.EatLine();
-					tmp = lex.GetString();
-					while ((tmp != "\n" || !contains(errstr, "l."))
-					       && !prefixIs(tmp, "! ")
-					       && !contains(tmp, "(job aborted")
-					       && !tmp.empty()) {
-						errstr += tmp;
-						errstr += "\n";
-						lex.EatLine();
-						tmp = lex.GetString();
-					}
-					terr.insertError(line, desc, errstr);
-					num_errors++;
+				string errstr(tmp, tmp.find(' '));
+				errstr += '\n';
+				getline(ifs, tmp);
+				while (!contains(errstr, "l.")
+				       && !tmp.empty()
+				       && !prefixIs(tmp, "! ")
+				       && !contains(tmp, "(job aborted")) {
+					errstr += tmp;
+					errstr += "\n";
+					getline(ifs, tmp);
 				}
+				lyxerr[Debug::LATEX]
+					<< "line: " << line << '\n'
+					<< "Desc: " << desc << '\n'
+					<< "Text: " << errstr << endl;
+				terr.insertError(line, desc, errstr);
+				num_errors++;
 			}
 		} else {
 			// information messages, TeX warnings and other
@@ -596,7 +508,8 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 				retval |= TOO_MANY_ERRORS;
 			}
 		}
-	}	
+	}
+	lyxerr[Debug::LATEX] << "Log line: " << token << endl;
 	return retval;
 }
 
@@ -608,33 +521,28 @@ void LaTeX::deplog(DepTable & head)
 	// dependency file.
 
 	string logfile = ChangeExtension(file, ".log", true);
-	FilePtr in(logfile, FilePtr::read);
-	bool not_eof = true;
-	if (in()) while (not_eof) { // We were able to open the file
+	
+	ifstream ifs(logfile.c_str());
+	while (ifs) {
 		// Now we read chars until we find a '('
-		int c;
-		do {
-			c = fgetc(in());
-		} while (c != EOF && c != '(');
-		if (c == EOF) { 
-			// Nothing more we can do
-			not_eof = false; 
-			continue;
-		} 
-
+		char c = 0;
+		while(ifs.get(c)) {
+			if (c == '(') break;
+		};
+		if (!ifs) break;
+		
 		// We now have c == '(', we now read the the sequence of
-		// chars until reaching EOL, or ' ' and put that into a string.
-
+		// chars until reaching EOL, ' ' or ')' and put that
+		// into a string.
 		string foundfile;
-		c = fgetc(in());
-		while (c != '\n' && c != ' ' && c != ')') {
-			foundfile += char(c);
-			c = fgetc(in());
+		while (ifs.get(c)) {
+			if (c == '\n' || c == ' ' || c == ')')
+				break;
+			foundfile += c;
 		}
-		if (foundfile.empty()) continue;
-
 		lyxerr[Debug::LATEX] << "Found file: " 
 				     << foundfile << endl;
+		
 		// Ok now we found a file.
 		// Now we should make sure that
 		// this is a file that we can
@@ -677,23 +585,6 @@ void LaTeX::deplog(DepTable & head)
 			}
 			continue;
 		}
-
-		// (3) the foundfile can be
-		//     found in the same dir
-		//     as the .lyx file and
-		//     should be inserted.
-		Path p(path);
-		if (FileInfo(foundfile).exist()) {
-			lyxerr << "LyX Strange: this should actually never"
-				" happen anymore, this it should be"
-				" handled by the Absolute check."
-			       << endl;
-			lyxerr[Debug::LATEX] << "Same Directory file: " 
-					     << foundfile << endl;
-			head.insert(foundfile);
-			continue;
-		}
-		
 		lyxerr[Debug::LATEX]
 			<< "Not a file or we are unable to find it."
 			<< endl;
@@ -701,12 +592,12 @@ void LaTeX::deplog(DepTable & head)
 }
 
 
-void LaTeX::deptex(DepTable &head)
+void LaTeX::deptex(DepTable & head)
 {
 	int except = AUX|LOG|DVI|BBL|IND|GLO; 
 	string tmp;
 	FileInfo fi;
-	for (int i = 0; i < file_count; i++) {
+	for (int i = 0; i < file_count; ++i) {
 		if (!(all_files[i].file & except)) {
 			tmp = ChangeExtension(file,
 					      all_files[i].extension,

@@ -49,9 +49,6 @@ extern FD_form_sendto * fd_form_sendto;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_toc * fd_form_toc;
 extern FD_form_ref * fd_form_ref;
-#if 0
-extern FD_form_url * fd_form_url;
-#endif
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern FD_LaTeXLog * fd_latex_log;
 extern FD_form_spell_check * fd_form_spell_check;
@@ -129,11 +126,6 @@ void CloseAllBufferRelatedPopups()
 	if (fd_form_ref->form_ref->visible) {
 		fl_hide_form(fd_form_ref->form_ref);
 	}
-#if 0
-	if (fd_form_url->form_url->visible) {
-		fl_hide_form(fd_form_url->form_url);
-	}
-#endif
 	if (fd_form_paper->form_paper->visible) {
 		fl_hide_form(fd_form_paper->form_paper);
 	}
