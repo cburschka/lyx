@@ -1,3 +1,10 @@
+2005-03-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: remove hack when GNU gettext utilities are not
+	available; remove calls to AC_C_CONST and AC_C_INLINE (already
+	required by AM_INTL_SUBDIR; remove ALL_LINGUAS variable (see
+	po/LINGUAS instead); do not AC_SUBST LINGUAS.
+
 2005-03-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* autogen.sh: remove autom4te.cache directories

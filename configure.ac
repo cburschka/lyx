@@ -22,10 +22,6 @@ LYX_VERSION_SUFFIX
 
 AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
-# The list of languages known to LyX
-# This is needed by GNU gettext
-ALL_LINGUAS="bg ca cs da de es eu fi fr he hu it nl nn no pl pt ro ru sk sl sv tr wa"
-
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
   chmod 755 ${srcdir}/${file}
@@ -240,18 +236,7 @@ fi
 ### Setup GNU gettext
 dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
-# Some tests that may be useful for gettext
-AC_C_CONST
-AC_C_INLINE
-# Do the real setup now
 AM_GNU_GETTEXT
-# a hack for those who try to change LyX, but do not have gettext installed
-case  "${XGETTEXT}" in
- *:) XGETTEXT='cp ${srcdir}/lyx.pot ./${PACKAGE}.po ; :'
-esac
-
-AC_SUBST(LINGUAS)
-
 AC_LANG_POP(C)
 
 # some standard header files
