@@ -73,7 +73,7 @@ def change_insetgraphics(lines):
 	    if lyxsize_type not in ["2", "scale"] or \
 	       get_value(lines, "lyxscale", i, j) == "100":
 		j = del_token(lines, "lyxscale", i, j)
-	
+
 	i = i+1
 
 def change_tabular(lines):

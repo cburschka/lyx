@@ -57,6 +57,8 @@ What's new
 
 - add autoconf 2.59 as an supported version.
 
+- enable lyx to read documents from versions 0.10 and 0.12
+
 ** Bug fixes
 
 - fix crash when saving file containing a table (only with some
@@ -104,3 +106,5 @@ What's new
 - fix problems with non-GNU make program
 
 - fix convertion of old tables (out of range error)
+
+- fix importing of old files

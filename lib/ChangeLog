@@ -1,3 +1,17 @@
+2004-02-09  José Matos  <jamatos@lyx.org>
+
+	* lyx2lyx/error.py: 
+	* lyx2lyx/lyx2lyx: 
+	* lyx2lyx/parser_tools.py: fix header, update copyright notice.
+	* lyx2lyx/lyxconvert_210.py: new file to read documents from
+	0.10 and 0.12 releases.
+	* lyx2lyx/lyxconvert_215.py: fix cases where \layout is not the
+	first element in the document body.
+	* lyx2lyx/lyxconvert_216.py:
+	* lyx2lyx/lyxconvert_217.py:
+	* lyx2lyx/lyxconvert_220.py: whitespaces changes.
+	* lyx2lyx/lyxconvert_218.py: support old style ERT's.
+
 2004-02-09  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* layouts/aguplus.inc:
@@ -6,11 +20,11 @@
 
 2004-02-03  José Matos  <jamatos@lyx.org>
 
-	* lyx2lyx/lyxconvert216.py: one line fix for out of range error.
+	* lyx2lyx/lyxconvert_216.py: one line fix for out of range error.
 
 2004-02-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
-	* lyx2lyx/lyxconvert2*.py: quiet encoding warning in python 2.3
+	* lyx2lyx/lyxconvert_2*.py: quiet encoding warning in python 2.3
 
 2004-01-22  José Matos  <jamatos@lyx.org>
 

@@ -1,5 +1,6 @@
 # This file is part of lyx2lyx
-# Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
+# -*- coding: iso-8859-1 -*-
+# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -173,22 +174,13 @@ def find_nonempty_line(lines, start, end = 0):
 	    return i
     return -1
 
-def set_comment(lines, number):
-    x = int(number)
-    if x < 216:
-	# It is not worth the trouble to handle this case
-	return
-    elif x < 220:
-	version = "1.1"
-    else:
-	version = str((x-220)/10.0+1.2)
-
+def set_comment(lines, version):
     lines[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version
     if lines[1][0] == '#':
 	del lines[1]
 
 def set_format(lines, number):
     if int(number) <= 217:
-	number = float(number)/100
+        number = float(number)/100
     i = find_token(lines, "\\lyxformat", 0)
     lines[i] = "\\lyxformat %s" % number

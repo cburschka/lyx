@@ -64,7 +64,7 @@ def table_update(lines):
     if res:
         val = res.groups()
         lines[1] = '<features rotate="%s" islongtable="%s" endhead="%s" endfirsthead="%s" endfoot="%s" endlastfoot="%s">' % (bool_table(val[0]), bool_table(val[1]), val[2], val[3], val[4], val[5])
-        
+
     if lines[2]=="":
         del lines[2]
     i = 2
@@ -82,7 +82,7 @@ def table_update(lines):
             col_info.append(lines[i])
             del lines[i]
             continue
-        
+
         if lines[i] == '</column>' or lines[i] == '<column>':
             del lines[i]
             continue
