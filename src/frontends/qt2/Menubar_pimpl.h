@@ -28,6 +28,7 @@
 class LyXView;
 class QtView;
 class QMenuData;
+class QPopupMenu;
 class Menu;
 class MenuItem;
 class MenuBackend;
@@ -64,7 +65,10 @@ public:
 
 private:
 	/// create a menu
-	void makeMenu(QMenuData * parent, MenuItem const * item, Menu const & menu);
+	QPopupMenu * createMenu(QMenuData * parent, MenuItem const * item);
+ 
+	/// populate a menu (recursively)
+	void fillMenu(QMenuData * qmenu, Menu const & menu);
  
 	/// special handling updating a submenu label
 	void updateSubmenu(MenuItemInfo const & i);

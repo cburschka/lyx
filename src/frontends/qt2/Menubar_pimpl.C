@@ -75,36 +75,39 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 		Menu tomenu;
 		Menu const frommenu = menubackend_.getMenu(m->submenuname());
 		menubackend_.expand(frommenu, tomenu, owner_->buffer());
-		makeMenu(owner_->menuBar(), m, tomenu);
+		fillMenu(createMenu(owner_->menuBar(), m), tomenu);
 	}
 }
 
 
-void Menubar::Pimpl::makeMenu(QMenuData * parent, MenuItem const * item, Menu const & menu)
+QPopupMenu * Menubar::Pimpl::createMenu(QMenuData * parent, MenuItem const * item)
 {
 	// FIXME: does this leak or not ?
 	QPopupMenu * pm = new QPopupMenu();
 	int const parentid = parent->insertItem(getLabel(*item).c_str(), pm);
+
+	MenuItemInfo const info(parent, parentid, item);
+	items_[item->label()] = info;
+	return pm;
+}
+
  
+void Menubar::Pimpl::fillMenu(QMenuData * qmenu, Menu const & menu)
+{
 	Menu::const_iterator m = menu.begin();
 	Menu::const_iterator end = menu.end();
 	for (; m != end; ++m) {
-		// FIXME: handle the special stuff here
 		if (m->kind() == MenuItem::Separator) {
-			pm->insertSeparator();
+			qmenu->insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
-			makeMenu(pm, m, *m->submenu());
+			fillMenu(createMenu(qmenu, m), *m->submenu());
 		} else {
-			pm->insertItem(getLabel(*m).c_str(), m->action());
-			MenuItemInfo const info(pm, m->action(), m);
+			qmenu->insertItem(getLabel(*m).c_str(), m->action());
+			MenuItemInfo const info(qmenu, m->action(), m);
 			items_[m->label()] = info;
 			updateItem(info);
 		}
 	}
-
-	MenuItemInfo const info(parent, parentid, item);
-	items_[item->label()] = info;
-	updateSubmenu(info);
 }
 
  
