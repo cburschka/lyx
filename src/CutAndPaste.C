@@ -347,7 +347,6 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 	pos = last_paste->size();
 
 	// Maybe some pasting.
-#warning CHECK! Are we comparing last_paste to the wrong list here? (Lgb)
 	if (boost::next(last_paste) != pars.end() &&
 	    paste_the_end) {
 		if (boost::next(last_paste)->hasSameLayout(*last_paste)) {

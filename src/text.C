@@ -92,7 +92,7 @@ void LyXText::updateRowPositions()
 	for (height = 0; pit != end; ++pit) {
 		RowList::iterator rit = pit->rows.begin();
 		RowList::iterator rend = pit->rows.end();
-		for ( ; rit != rend ; rit = ++rit) {
+		for ( ; rit != rend ; ++rit) {
 			rit->y(height);
 			height += rit->height();
 		}

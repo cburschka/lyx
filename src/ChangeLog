@@ -1,3 +1,7 @@
+2003-09-15  Alfredo Braunstein  <abraunst@libero.it>
+
+	* CutAndPaste.C (pasteSelection): remove an outdated #warning
+	* text.C (updateRowPositions): remove an unusual nop
 
 2003-09-12  André Pönitz  <poenitz@gmx.net>
 
