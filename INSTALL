@@ -364,8 +364,27 @@ notify us.
 
     cxx V6.2 will compile LyX out of the box.
     cxx V6.3-020 is also known to work, although there is a bug in
-    /usr/include/cxx/deque. See Angus Leeming <leeming@lyx.org> for the
-    patch.
+    /usr/include/cxx/deque that will break compilation in FormPreferences.C.
+    Compaq are investigating, but a patch that works /now/ is: 
+
+--- /usr/include/cxx/deque_safe Mon Mar  4 21:09:50 2002
++++ /usr/include/cxx/deque      Mon Mar  4 21:09:00 2002
+@@ -570,9 +570,11 @@
+       {
+         if (size() >= x.size())
+           erase(copy(x.begin(), x.end(), begin()), end());
+-        else
+-          copy(x.begin() + size(), x.end(),
+-               inserter(*this,copy(x.begin(),x.begin()+size(),begin())));
++        else {
++         const_iterator mid = x.begin() + difference_type(size());
++         copy(x.begin(), mid, begin());
++         insert(end(), mid, x.end());
++       }
+       }
+       return *this;
+     }
+
     At the time of writing, cxx V6.5-026 is the latest cxx compiler. It is
     /not/ recommended. Not only do the bugs in the system header files still
     exist, but the compiler itself appears to be both buggy and extremely
