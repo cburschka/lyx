@@ -155,6 +155,7 @@ void FormDocument::build()
     dialog->inputEncCO->insertItem( _( "latin1" ) );
     dialog->inputEncCO->insertItem( _( "latin2" ) );
     dialog->inputEncCO->insertItem( _( "latin5" ) );
+    dialog->inputEncCO->insertItem( _( "latin9" ) );
     dialog->inputEncCO->insertItem( _( "koi8-r" ) );
     dialog->inputEncCO->insertItem( _( "koi8-u" ) );
     dialog->inputEncCO->insertItem( _( "cp866" ) );

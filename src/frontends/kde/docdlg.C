@@ -146,6 +146,7 @@ DocDialog::DocDialog(FormDocument * form, QWidget * parent, char const * name, b
 	language->combo_encoding->insertItem(_("latin1"));
 	language->combo_encoding->insertItem(_("latin2"));
 	language->combo_encoding->insertItem(_("latin5"));
+	language->combo_encoding->insertItem(_("latin9"));
 	language->combo_encoding->insertItem(_("koi8-r"));
 	language->combo_encoding->insertItem(_("koi8-u"));
 	language->combo_encoding->insertItem(_("cp866"));

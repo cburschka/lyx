@@ -1,5 +1,9 @@
 #
-# Character definition file for iso8859-1 character set
+# Character definition file for iso8859-15 character set
+# Modified (c)2001 by Adrien Rebollo, adrien.rebollo@gmx.fr
+# From :
+#
+# "Character definition file for iso8859-1 character set"
 #
 # (c)1996 by Ivan Schreter, schreter@ccsun.tuke.sk
 #
@@ -8,13 +12,16 @@
 
 160	"\nobreakspace{}"
 161	"\textexclamdown{}"
-#162	"\textcent{}"
+162	"\cent{}" # cent sign, to use with package wasysym
 163	"\pounds{}"	# pound sign
 #164	"\textcurrency{}"
-#165	"\textyen{}"
+164	"\euro{}" # euro sign, to use with package eurofont
+165	"\yen{}" # yen sign, to use with package amssymb
 #166	"\textbrokenbar{}"
+166	"\v{S}"
 167	"\S{}"		# paragraph
-168	"\"{}"	# umlaut
+#168	"\"{}"	# umlaut
+168	"\v{s}"
 169	"\copyright{}"
 170	"\textordfeminine{}"
 171	"\guillemotleft{}"
@@ -24,26 +31,31 @@
 175	"\={}"
 176	"\textdegree{}"	# circle
 177	"$\pm$"
-178	"$\mathtwosuperior$"
+178	"$\mathtwosuperios$"
 179	"$\maththreesuperior$"
-180	"\'{}"	# acute
+#180	"\'{}"	# acute
+180	"\v{Z}"
 181	"$\mu$"	# micro
 182	"\P{}"
-183	"$\cdot$" # or \textperiodcentered
-184	"\c{}"	# cedilla
+183	"$\cdot$" #{[ or \textperiodcentered
+#184	"\c{}"	# cedilla # or "\c\ "
+184	"\v{z}"
 185	"$\mathonesuperior$"
 186	"\textordmasculine{}"
 187	"\guillemotright{}"
-188	"\textonequarter{}"
-189	"\textonehalf{}"
-190	"\textthreequarters{}"            # "0BE
+#188	"\textonequarter{}"
+188	"\OE{}"
+#189	"\textonehalf{}"
+189	"\oe{}"
+#190	"\textthreequarters{}"            # "0BE
+190	"\"{Y}"
 191	"\textquestiondown{}"		# mirrored ?
 192	"\`{A}"
 193	"\'{A}"
 194	"\^{A}"
 195	"\~{A}"
 196	"\"{A}"
-197	"\r{A}"		# A with circle
+197	"\AA{}"		# A with circle # or "\r{A}"
 198	"\AE{}"		# AE cat'ed together
 199	"\c{C}"		# C cedilla
 200	"\`{E}"
@@ -75,7 +87,7 @@
 226	"\^{a}"
 227	"\~{a}"
 228	"\"{a}"
-229	"\r{a}"		# a with circle
+229	"\aa{}"		# a with circle # or "\r{a}"
 230	"\ae{}"
 231	"\c{c}"		# c cedilla
 232	"\`{e}"

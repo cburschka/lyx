@@ -1,0 +1,270 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\begin_preamble
+\usepackage{eurofont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\end_preamble
+\language english
+\inputencoding latin9
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Currency symbols and LyX
+\layout Author
+
+by Adrien Rebollo
+\layout Standard
+
+To obtain the main currency symbols with LaTeX, we need to use special packages.
+ Here we give a brief description of how to display and print the euro,
+ cent, yen and general currency symbols.
+ The dollar and the pound need no special trick, so we won't speak about
+ them.
+\layout Section
+
+The euro symbol
+\layout Standard
+
+To print the euro symbol, you need to get the eurofont package, available
+ at 
+\begin_inset LatexCommand \url{/macros/latex/contrib/supported/eurofont}
+
+\end_inset 
+
+ in the CTAN.
+ You'll need therefore to add to the LaTeX preamble of your LyX document
+ the command : 
+\family typewriter 
+
+\backslash 
+usepackage{eurofont}
+\family default 
+.
+ See the preamble of this document to figure out.
+ Then you obtain the euro symbol by typing 
+\family typewriter 
+
+\backslash 
+euro{}
+\family default 
+ in TeX mode, like this : 
+\latex latex 
+
+\backslash 
+euro{}
+\latex default 
+.
+\layout Standard
+
+There is another problem with the euro symbol : it is not included in the
+ latin1 character encoding.
+ So to have the glyph displayed on screen you should select iso8859-15 screen
+ fonts.
+ In the 
+\family sans 
+Edit\SpecialChar \menuseparator
+Preferences
+\family default 
+ popup, you enter 
+\family typewriter 
+iso8859-15
+\family default 
+ in the 
+\family sans 
+Screen\SpecialChar ~
+fonts\SpecialChar \menuseparator
+Encoding
+\family default 
+ field, and of course you'll have to choose fonts that are available on
+ your system in this encoding.
+ You also need to choose an appropriate keymap file : 
+\family typewriter 
+european.kmap
+\family default 
+ and 
+\family typewriter 
+francais.kmap
+\family default 
+ should normally support the euro symbol at its usual place.
+ Select your keymap in the 
+\family sans 
+Language\SpecialChar \menuseparator
+Keymap
+\family default 
+ fields.
+\layout Standard
+
+The last step is to tell LyX that the encoding of your document is latin9.
+ You do this in the 
+\family sans 
+Format\SpecialChar \menuseparator
+Document
+\family default 
+ popup.
+ It requires your LaTeX distribution to have the appropriate 
+\family typewriter 
+latin9.def
+\family default 
+ file for the 
+\family typewriter 
+inputenc
+\family default 
+ package.
+ It is in my tetex-1.0 distribution, and I have understood that it is provided
+ by the 
+\family typewriter 
+latex2html
+\family default 
+ program, which you can grab here : 
+\begin_inset LatexCommand \url{http://saftsack.fs.uni-bayreuth.de/~latex2ht/}
+
+\end_inset 
+
+.
+\layout Standard
+
+If you see an euro symbol here : ¤, and not some horrible glyph, that's
+ OK.
+ Now try to view the DVI file.
+ If LaTeX doesn't complain and the printed version seems fine, you're done.
+\layout Section
+
+The cent symbol
+\layout Standard
+
+The cent symbol is currently not available with LaTeX natively.
+ You need to have the package wasysym, which should be included in your
+ distribution.
+ You can get it at 
+\begin_inset LatexCommand \url{/macro/latex/contrib/supported/wasysym}
+
+\end_inset 
+
+ in the CTAN.
+ Then you insert the command : 
+\family typewriter 
+
+\backslash 
+usepackage{wasysym}
+\family default 
+ in your LaTeX preamble.
+ If your keymap allows the direct display of the cent symbol, great, if
+ not you'll have to type 
+\family typewriter 
+
+\backslash 
+cent{}
+\family default 
+ in TeX mode, like this : 
+\latex latex 
+
+\backslash 
+cent{}
+\latex default 
+.
+\layout Section
+
+The yen symbol
+\layout Standard
+
+For the yen, it is the same story as above, but with the package amssymb,
+ or amsfonts, available at 
+\begin_inset LatexCommand \url{/fonts/amsfonts}
+
+\end_inset 
+
+ in the CTAN, and typing 
+\family typewriter 
+
+\backslash 
+yen{}
+\family default 
+, like this : 
+\latex latex 
+
+\backslash 
+yen{}
+\latex default 
+.
+\layout Section
+
+The general currency symbol
+\layout Standard
+
+You know, it is the horrible little mix of cross and circle.
+ You cannot obtain it on screen together with the euro symbol, because it
+ is the latin1 character replaced by the euro in latin9.
+ But you can always obtain it by including the 
+\family typewriter 
+wasysym
+\family default 
+ package in the preamble, and by typing 
+\family typewriter 
+
+\backslash 
+currency{}
+\family default 
+ in TeX mode : 
+\latex latex 
+
+\backslash 
+currency{}
+\latex default 
+.
+ 
+\layout Section
+
+The vertical broken bar
+\layout Standard
+
+Of course it is not a currency symbol, but it is one that you can't obtain
+ with plain LaTeX, so let's tell something about it.
+ You must include the 
+\family typewriter 
+wasysym
+\family default 
+ package, and type 
+\family typewriter 
+
+\backslash 
+brokenvert{}
+\family default 
+ in TeX mode : 
+\latex latex 
+
+\backslash 
+brokenvert{}
+\latex default 
+.
+\layout Section
+
+Conclusion
+\layout Standard
+
+Here we are, view the DVI, and complain to 
+\begin_inset LatexCommand \url{adrien.rebollo@gmx.fr}
+
+\end_inset 
+
+ if you run into problems.
+\the_end

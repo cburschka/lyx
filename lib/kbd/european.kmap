@@ -53,11 +53,16 @@
 \kxmod umlaut s "\\ss{}"
 \kxmod umlaut S "\\ss{}"
 #
+# french characters
+#
+\kmod ¬ "\\oe{}"
+#
 # special characters
 #
 \kxmod umlaut $ "\\pounds{}"	# pound
 \kxmod umlaut \# "\\S{}"	# paragraph
 \kxmod umlaut ~ "\\b{}"		# degree
+\kmod ¤ "\\euro{}"	# euro sign, to use with package eurofont
 #
 # \kxmod acute ' '
 # \kxmod grave ` `

@@ -175,7 +175,7 @@ void FormDocument::build()
     // the document language form
     language_.reset(build_doc_language());
     fl_addto_choice(language_->choice_inputenc,
-		    "default|auto|latin1|latin2|latin5"
+		    "default|auto|latin1|latin2|latin5|latin9"
 		    "|koi8-r|koi8-u|cp866|cp1251|iso88595");
 
     // The language is a combo-box and has to be inserted manually
