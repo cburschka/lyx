@@ -1,5 +1,11 @@
 2004-08-15  José Matos  <jamatos@lyx.org>
 
+	* lyx_1_4.py (normalize_papersize, denormalize_papersize):
+	\papersize Default -> \papersize default
+	\papersize Custom -> \papersize custom
+
+2004-08-15  José Matos  <jamatos@lyx.org>
+
 	* LyX.py: new file that gathers all the knowleadge of the LyX file
 	format. This can be used as library.
 

@@ -1445,6 +1445,32 @@ def remove_begin_body(body, opt):
 
 
 ##
+# \papersize
+#
+def normalize_papersize(header):
+    i = find_token(header, '\\papersize', 0)
+    if i == -1:
+        return
+
+    tmp = split(header[i])
+    if tmp[1] == "Default":
+        header[i] = '\\papersize default'
+        return
+    if tmp[1] == "Custom":
+        header[i] = '\\papersize custom'
+
+
+def denormalize_papersize(header):
+    i = find_token(header, '\\papersize', 0)
+    if i == -1:
+        return
+
+    tmp = split(header[i])
+    if tmp[1] == "custom":
+        header[i] = '\\papersize Custom'
+
+
+##
 # Convertion hub
 #
 def convert(file):
@@ -1529,10 +1555,12 @@ def convert(file):
         convert_bullets(file.header, file)
         add_begin_header(file.header, file)
         add_begin_body(file.body, file)
+        normalize_papersize(file.header)
         file.format = 236
 
 def revert(file):
     if file.format > 235:
+        denormalize_papersize(file.header)
         remove_begin_body(file.body, file)
         remove_begin_header(file.header, file)
         revert_bullets(file.header, file)

@@ -27,7 +27,7 @@ char const * const string_quotes_language[] = {
 
 
 char const * const string_papersize[] = {
-	"Default", "Custom", "letterpaper", "executivepaper", "legalpaper",
+	"default", "custom", "letterpaper", "executivepaper", "legalpaper",
 	"a3paper", "a4paper", "a5paper", "b3paper", "b4paper", "b5paper", ""
 };
 
