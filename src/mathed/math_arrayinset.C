@@ -2,6 +2,8 @@
 #pragma implementation
 #endif
 
+#include <iterator>
+
 #include "math_arrayinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"

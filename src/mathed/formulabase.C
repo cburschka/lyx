@@ -56,7 +56,8 @@ namespace {
 // local global
 int sel_x;
 int sel_y;
-bool sel_flag;
+int last_x;
+int last_y;
 
 
 void handleFont(BufferView * bv, MathTextCodes t) 
@@ -134,9 +135,6 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
-	sel_x = 0;
-	sel_y = 0;
-	sel_flag = false;
 }
 
 
@@ -198,21 +196,21 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 
 void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 {
-	if (!isCursorVisible()) {
-		if (mathcursor) {
-			int x;
-			int y;
-			mathcursor->getPos(x, y);
-			int asc = 0;
-			int des = 0;
-			MathMetricsInfo mi(bv, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
-			math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
-			//bv->fitLockedInsetCursor(x, y, asc, des);
-			//metrics(bv);
-			//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
-		}
-		toggleInsetCursor(bv);
+	if (isCursorVisible())
+		return;
+	if (mathcursor) {
+		int x;
+		int y;
+		mathcursor->getPos(x, y);
+		int asc = 0;
+		int des = 0;
+		MathMetricsInfo mi(bv, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
+		//bv->fitLockedInsetCursor(x, y, asc, des);
+		//metrics(bv);
+		//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
 	}
+	toggleInsetCursor(bv);
 }
 
 
@@ -244,46 +242,54 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 void InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int x, int y, int /*button*/)
+					  int /*x*/, int /*y*/, int /*button*/)
 {
-	if (mathcursor) {
-		hideInsetCursor(bv);
-		mathcursor->setPos(x + xo_, y + yo_);
-		//lyxerr << "insetButtonRelease: " << x + xo_ << " " << y + yo_ << "\n";
-		showInsetCursor(bv);
-		sel_flag = false;
-		bv->updateInset(this, false);
-	}
+	if (!mathcursor)
+		return;
+	hideInsetCursor(bv);
+	showInsetCursor(bv);
+	bv->updateInset(this, false);
 }
 
 
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, int /*button*/)
 {
+	if (!mathcursor)
+		return;
 	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_ << "\n";
-	sel_flag = false;
 	sel_x = x + xo_;
 	sel_y = y + yo_;
-	if (mathcursor) 
-		mathcursor->selStart();
+	last_x = x;
+	last_y = y;
+	mathcursor->setPos(x + xo_, y + yo_);
+	mathcursor->selStart();
 	bv->updateInset(this, false);
 }
 
 
 void InsetFormulaBase::insetMotionNotify(BufferView * bv,
-					 int x, int y, int /*button*/)
+					 int x, int y, int button)
 {
-	//lyxerr << "insetMotionNotify: " << x + xo_ << " " << y + yo_ << "\n";
-	if (abs(x - sel_x) > 4 && !sel_flag) 
-		sel_flag = true;
+	if (!mathcursor)
+		return;
 
-	if (sel_flag) {
+	if (abs(x - last_x) < 2 && abs(y - last_y) < 2) {
+		//lyxerr << "insetMotionNotify: ignored\n";
+		return;
+	}
+	last_x = x;
+	last_y = y;
+	
+	//lyxerr << "insetMotionNotify: " << x + xo_ << " " << y + yo_
+	//	<< ' ' << button << "\n";
+	if (button == 256) {
 		hideInsetCursor(bv);
 		mathcursor->setPos(x + xo_, y + xo_);
 		showInsetCursor(bv);
-		mathcursor->getPos(x, y);
-		if (sel_x != x || sel_y != y)
-			bv->updateInset(this, false);
+		bv->updateInset(this, false);
+	} else {
+		insetButtonPress(bv, x, y, button);
 	}
 }
 

@@ -369,7 +369,7 @@ void MathCursor::last()
 }
 
 
-void MathCursor::setPos(int x, int y)
+void MathCursor::setPos(int x, int y, bool respect_anchor)
 {
 	//dump("setPos 1");
 	//lyxerr << "MathCursor::setPos x: " << x << " y: " << y << "\n";
@@ -408,6 +408,17 @@ void MathCursor::setPos(int x, int y)
 			pushRight(prevAtom());
 		else 
 			break;
+
+		if (respect_anchor) {
+			if (Cursor_.size() > Anchor_.size()) {
+				popLeft();
+				break;
+			}
+			if (Anchor_[Cursor_.size() - 1].par_ != Cursor_.back().par_) {
+				popLeft();
+				break;
+			}
+		}
 	}
 	//dump("setPos 2");
 }
