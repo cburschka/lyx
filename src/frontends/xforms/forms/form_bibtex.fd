@@ -45,7 +45,7 @@ label: Database:|#D
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: database
+name: input_database
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -81,7 +81,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 2
 
@@ -99,7 +99,7 @@ label: Style:|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: style
+name: input_style
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -117,7 +117,7 @@ label: Browse...|#B
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: database_browse
+name: button_database_browse
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -135,7 +135,7 @@ label: Browse...|#r
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: style_browse
+name: button_style_browse
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -153,7 +153,7 @@ label: Add bibliography to TOC|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bibtotoc
+name: check_bibtotoc
 callback: C_FormBaseInputCB
 argument: 0
 

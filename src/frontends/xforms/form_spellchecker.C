@@ -40,49 +40,49 @@ FD_form_spellchecker * FormSpellchecker::build_spellchecker()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Spellchecker Options...|#O");
-    fdui->options = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 210, 220, 30, idex(_(dummy)));
+    fdui->button_options = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 210, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Start spellchecking|#S");
-    fdui->start = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 10, 220, 30, idex(_(dummy)));
+    fdui->button_start = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 10, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Insert in personal dictionary|#I");
-    fdui->insert = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 50, 220, 30, idex(_(dummy)));
+    fdui->button_insert = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 50, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Ignore word|#g");
-    fdui->ignore = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 110, 220, 30, idex(_(dummy)));
+    fdui->button_ignore = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 110, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Accept word in this session|#A");
-    fdui->accept = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 80, 220, 30, idex(_(dummy)));
+    fdui->button_accept = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 80, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Stop spellchecking|#T");
-    fdui->stop = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 180, 220, 30, idex(_(dummy)));
+    fdui->button_stop = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 180, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Close Spellchecker|#C^[");
-    fdui->done = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 240, 220, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 240, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -97,7 +97,7 @@ FD_form_spellchecker * FormSpellchecker::build_spellchecker()
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT|FL_ALIGN_INSIDE);
   {
     char const * const dummy = N_("Replace word|#R");
-    fdui->replace = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 140, 220, 30, idex(_(dummy)));
+    fdui->button_replace = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 140, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -17,7 +17,7 @@ struct FD_form_tabular_create {
 	FL_FORM *form;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *slider_columns;
 	FL_OBJECT *slider_rows;
 };

@@ -39,13 +39,13 @@ void FormSpellchecker::build()
 	setPrehandler(dialog_->input);
 
 	// Manage the buttons
-	bc().setCancel(dialog_->done);
-	bc().addReadOnly(dialog_->replace);
-	bc().addReadOnly(dialog_->accept);
-	bc().addReadOnly(dialog_->insert);
-	bc().addReadOnly(dialog_->ignore);
-	bc().addReadOnly(dialog_->start);
-	bc().addReadOnly(dialog_->stop);
+	bc().setCancel(dialog_->button_close);
+	bc().addReadOnly(dialog_->button_replace);
+	bc().addReadOnly(dialog_->button_accept);
+	bc().addReadOnly(dialog_->button_insert);
+	bc().addReadOnly(dialog_->button_ignore);
+	bc().addReadOnly(dialog_->button_start);
+	bc().addReadOnly(dialog_->button_stop);
 	bc().addReadOnly(dialog_->browser);
 }
 
@@ -60,28 +60,28 @@ void FormSpellchecker::update()
 
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 {
-	if (obj == dialog_->replace) {
+	if (obj == dialog_->button_replace) {
 		string const tmp = getStringFromInput(dialog_->input);
 		controller().replace(tmp);
 
-	} else if (obj == dialog_->start) {
+	} else if (obj == dialog_->button_start) {
 		controller().check();
 		stop(false);
 
-	} else if (obj == dialog_->stop) {
+	} else if (obj == dialog_->button_stop) {
 		controller().stop();
 		stop(true);
 
-	} else if (obj == dialog_->ignore) {
+	} else if (obj == dialog_->button_ignore) {
 		controller().check();
 
-	} else if (obj == dialog_->accept) {
+	} else if (obj == dialog_->button_accept) {
 		controller().ignoreAll();
 
-	} else if (obj == dialog_->insert) {
+	} else if (obj == dialog_->button_insert) {
 		controller().insert();
 
-	} else if (obj == dialog_->options) {
+	} else if (obj == dialog_->button_options) {
 		controller().options();
 
 	} else if (obj == dialog_->browser) {
@@ -144,12 +144,12 @@ void FormSpellchecker::showMessage(const char * msg)
 
 void FormSpellchecker::stop(bool stop)
 {
-	setEnabled(dialog_->start, stop);
-	setEnabled(dialog_->replace, !stop);
-	setEnabled(dialog_->ignore, !stop);
-	setEnabled(dialog_->accept, !stop);
-	setEnabled(dialog_->insert, !stop);
-	setEnabled(dialog_->stop, !stop);
+	setEnabled(dialog_->button_start, stop);
+	setEnabled(dialog_->button_replace, !stop);
+	setEnabled(dialog_->button_ignore, !stop);
+	setEnabled(dialog_->button_accept, !stop);
+	setEnabled(dialog_->button_insert, !stop);
+	setEnabled(dialog_->button_stop, !stop);
 	setEnabled(dialog_->browser, !stop);
 	setEnabled(dialog_->input, !stop);
 }

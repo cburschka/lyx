@@ -17,10 +17,10 @@ struct FD_form_url {
 	~FD_form_url();
 
 	FL_FORM *form;
-	FL_OBJECT *url;
-	FL_OBJECT *name;
-	FL_OBJECT *radio_html;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *input_url;
+	FL_OBJECT *input_name;
+	FL_OBJECT *check_html;
+	FL_OBJECT *button_close;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_restore;

@@ -27,7 +27,7 @@ FD_form_bibtex * FormBibtex::build_bibtex()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 160, "");
   {
     char const * const dummy = N_("Database:|#D");
-    fdui->database = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 245, 30, idex(_(dummy)));
+    fdui->input_database = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 245, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -37,33 +37,33 @@ FD_form_bibtex * FormBibtex::build_bibtex()
     fl_set_object_callback(obj, C_FormBaseOKCB, 3);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 120, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 120, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
   {
     char const * const dummy = N_("Style:|#S");
-    fdui->style = obj = fl_add_input(FL_NORMAL_INPUT, 90, 45, 245, 30, idex(_(dummy)));
+    fdui->input_style = obj = fl_add_input(FL_NORMAL_INPUT, 90, 45, 245, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Browse...|#B");
-    fdui->database_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 10, 100, 29, idex(_(dummy)));
+    fdui->button_database_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 10, 100, 29, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Browse...|#r");
-    fdui->style_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 45, 100, 30, idex(_(dummy)));
+    fdui->button_style_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 45, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Add bibliography to TOC|#A");
-    fdui->radio_bibtotoc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 90, 80, 30, 30, idex(_(dummy)));
+    fdui->check_bibtotoc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 90, 80, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);

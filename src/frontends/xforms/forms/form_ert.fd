@@ -62,7 +62,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_alignment
+name:
 callback: 
 argument: 
 
@@ -152,7 +152,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 

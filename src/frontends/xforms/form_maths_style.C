@@ -32,7 +32,7 @@ FD_form_maths_style * FormMathsStyle::build_maths_style()
   fdui->bmtable_style1 = obj = fl_add_bmtable(FL_PUSH_BUTTON, 8, 10, 60, 60, "");
     fl_set_object_lcolor(obj, FL_BLUE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 90, 206, 80, 30, _("Close"));
+  fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 90, 206, 80, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   fdui->bmtable_style2 = obj = fl_add_bmtable(FL_PUSH_BUTTON, 8, 70, 60, 120, "");

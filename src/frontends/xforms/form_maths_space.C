@@ -25,8 +25,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
   fdui->form = fl_bgn_form(FL_NO_BOX, 259, 149);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 259, 149, "");
-
-  fdui->spaces = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Thin|#T");
     fdui->button_thin = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 10, 120, 30, idex(_(dummy)));
@@ -71,7 +70,7 @@ FD_form_maths_space * FormMathsSpace::build_maths_space()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 5);
   fl_end_group();
 
-  fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 92, 110, 80, 30, _("Close"));
+  fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 92, 110, 80, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   fl_end_form();

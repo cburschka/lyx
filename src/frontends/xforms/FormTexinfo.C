@@ -36,7 +36,7 @@ void FormTexinfo::build() {
 	// courier medium
 	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);
 	// with Path is default
-	fl_set_button(dialog_->button_fullPath, 1);
+	fl_set_button(dialog_->check_fullpath, 1);
 	updateStyles(ControlTexinfo::cls);
 
 	// set up the tooltips
@@ -50,7 +50,7 @@ void FormTexinfo::build() {
 	tooltips().initTooltip(dialog_->button_texhash, str);
 
 	str = N_("View full path or only file name. Full path is needed to view the contents of a file.");
-	tooltips().initTooltip(dialog_->button_fullPath, str);
+	tooltips().initTooltip(dialog_->check_fullpath, str);
 
 	str = N_("Shows the installed LaTeX Document classes. Remember, that these classes are only available in LyX if a corresponding LyX layout file exists!");
 	tooltips().initTooltip(dialog_->radio_cls, str);
@@ -79,9 +79,9 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 		controller().rescanStyles();
 		updateStyles(activeStyle);
 
-	} else if (ob == dialog_->button_fullPath) {
+	} else if (ob == dialog_->check_fullpath) {
 		setEnabled(dialog_->button_view,
-			   fl_get_button(dialog_->button_fullPath));
+			   fl_get_button(dialog_->check_fullpath));
 		updateStyles(activeStyle);
 
 	} else if (ob == dialog_->button_texhash) {
@@ -108,7 +108,7 @@ void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	fl_clear_browser(dialog_->browser); 
 
-	bool const withFullPath = fl_get_button(dialog_->button_fullPath);
+	bool const withFullPath = fl_get_button(dialog_->check_fullpath);
 
 	string const str = 
 		controller().getContents(whichStyle, withFullPath);

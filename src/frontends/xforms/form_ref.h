@@ -27,7 +27,7 @@ struct FD_form_ref {
 	FL_OBJECT *button_go;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *button_apply;
 };
 

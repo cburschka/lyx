@@ -31,8 +31,7 @@ FD_form_print * FormPrint::build_print()
   fdui->input_file = obj = fl_add_input(FL_NORMAL_INPUT, 90, 265, 230, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-
-  fdui->group_radio_printto = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Printer|#P");
     fdui->radio_printer = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 225, 80, 30, idex(_(dummy)));
@@ -63,13 +62,12 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 350, 100, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 350, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
-
-  fdui->group_radio_pages = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("All Pages|#G");
     fdui->radio_all_pages = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 30, 160, 30, idex(_(dummy)));
@@ -96,8 +94,7 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
 
-
-  fdui->group_radio_order = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Normal Order|#N");
     fdui->radio_order_normal = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 180, 30, 150, 30, idex(_(dummy)));
@@ -126,7 +123,7 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Collated|#C");
-    fdui->radio_collated = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 115, 140, 30, idex(_(dummy)));
+    fdui->check_collated = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 115, 140, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

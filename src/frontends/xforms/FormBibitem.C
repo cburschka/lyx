@@ -30,25 +30,25 @@ void FormBibitem::build()
 {
 	dialog_.reset(build_bibitem());
 
-	fl_set_input_return(dialog_->key,   FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->label, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_key,   FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_label, FL_RETURN_CHANGED);
 
-	setPrehandler(dialog_->key);
-	setPrehandler(dialog_->label);
+	setPrehandler(dialog_->input_key);
+	setPrehandler(dialog_->input_label);
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->key);
-	bc().addReadOnly(dialog_->label);
+	bc().addReadOnly(dialog_->input_key);
+	bc().addReadOnly(dialog_->input_label);
 }
 
 
 ButtonPolicy::SMInput FormBibitem::input(FL_OBJECT *, long)
 {
 	// minimal validation 
-	if (!compare(fl_get_input(dialog_->key), ""))
+	if (!compare(fl_get_input(dialog_->input_key), ""))
 		return ButtonPolicy::SMI_NOOP;
 
 	return ButtonPolicy::SMI_VALID;
@@ -57,15 +57,15 @@ ButtonPolicy::SMInput FormBibitem::input(FL_OBJECT *, long)
 
 void FormBibitem::update()
 {
-	fl_set_input(dialog_->key,
+	fl_set_input(dialog_->input_key,
 		     controller().params().getContents().c_str());
-	fl_set_input(dialog_->label,
+	fl_set_input(dialog_->input_label,
 		     controller().params().getOptions().c_str());
 }
 
 
 void FormBibitem::apply()
 {
-	controller().params().setContents(fl_get_input(dialog_->key));
-	controller().params().setOptions(fl_get_input(dialog_->label));
+	controller().params().setContents(fl_get_input(dialog_->input_key));
+	controller().params().setOptions(fl_get_input(dialog_->input_label));
 }

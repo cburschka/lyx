@@ -24,7 +24,7 @@ FD_form_citation * FormCitation::build_citation()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 680, 440);
   fdui->form->u_vdata = this;
-  fdui->box = obj = fl_add_box(FL_UP_BOX, 0, 0, 680, 440, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 680, 440, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   {
     char const * const dummy = N_("Inset keys|#I");
@@ -85,14 +85,14 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_resize(obj, FL_RESIZE_NONE);
   {
     char const * const dummy = N_("Regular Expression|#R");
-    fdui->button_search_type = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 385, 90, 30, 30, idex(_(dummy)));
+    fdui->check_search_type = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 385, 90, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
   {
     char const * const dummy = N_("Case sensitive|#C");
-    fdui->button_search_case = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 385, 120, 30, 30, idex(_(dummy)));
+    fdui->check_search_case = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 385, 120, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -128,7 +128,7 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Full author list|#F");
-    fdui->button_full_author_list = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 375, 240, 30, 30, idex(_(dummy)));
+    fdui->check_full_author_list = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 375, 240, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -136,7 +136,7 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Upper case|#U");
-    fdui->button_force_uppercase = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 515, 240, 30, 30, idex(_(dummy)));
+    fdui->check_force_uppercase = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 515, 240, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -184,7 +184,7 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 580, 400, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 580, 400, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

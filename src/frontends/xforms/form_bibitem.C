@@ -27,7 +27,7 @@ FD_form_bibitem * FormBibitem::build_bibitem()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
   {
     char const * const dummy = N_("Key:|#K");
-    fdui->key = obj = fl_add_input(FL_NORMAL_INPUT, 80, 10, 130, 30, idex(_(dummy)));
+    fdui->input_key = obj = fl_add_input(FL_NORMAL_INPUT, 80, 10, 130, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -37,14 +37,14 @@ FD_form_bibitem * FormBibitem::build_bibitem()
     fl_set_object_callback(obj, C_FormBaseOKCB, 3);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
   {
     char const * const dummy = N_("Label:|#L");
-    fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_(dummy)));
+    fdui->input_label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

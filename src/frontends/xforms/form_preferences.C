@@ -48,7 +48,7 @@ FD_form_preferences * FormPreferences::build_preferences()
     fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 370, 390, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 370, 390, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -333,8 +333,7 @@ FD_form_colors * FormPreferences::build_colors()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_slider_size(obj, 0.15);
-
-  fdui->group_radio_printto = fl_bgn_group();
+ fl_bgn_group();
   fdui->radio_hsv = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 250, 220, 30, 30, _("HSV"));
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
@@ -450,8 +449,7 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
     fl_set_counter_bounds(obj, 0, 1200);
     fl_set_counter_value(obj, 300);
     fl_set_counter_step(obj, 1, 1);
-
-  fdui->radio_button_group_display = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("in Monochrome|#M");
     fdui->radio_display_monochrome = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 285, 35, 30, 30, idex(_(dummy)));

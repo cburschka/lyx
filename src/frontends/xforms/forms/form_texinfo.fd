@@ -11,7 +11,7 @@ SnapGrid: 1
 Name: form_texinfo
 Width: 513
 Height: 312
-Number of Objects: 12
+Number of Objects: 14
 
 --------------------
 class: FL_BOX
@@ -64,6 +64,24 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
 name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
 callback: 
 argument: 
 
@@ -121,6 +139,24 @@ gravity: FL_NorthEast FL_NorthEast
 name: radio_bst
 callback: C_FormBaseInputCB
 argument: 0
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_FRAME
@@ -190,7 +226,7 @@ label: Show Path|#P
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
-name: button_fullPath
+name: check_fullpath
 callback: C_FormBaseInputCB
 argument: 2
 

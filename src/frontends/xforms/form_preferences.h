@@ -45,7 +45,7 @@ struct FD_form_preferences {
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *text_warning;
 };
 struct FD_form_inner_tab {
@@ -100,7 +100,6 @@ struct FD_form_colors {
 	FL_OBJECT *slider_red;
 	FL_OBJECT *slider_green;
 	FL_OBJECT *slider_blue;
-	FL_OBJECT *group_radio_printto;
 	FL_OBJECT *radio_hsv;
 	FL_OBJECT *radio_rgb;
 	FL_OBJECT *text_color_values;
@@ -120,7 +119,6 @@ struct FD_form_lnf_misc {
 	FL_OBJECT *check_dialogs_iconify_with_main;
 	FL_OBJECT *counter_wm_jump;
 	FL_OBJECT *counter_autosave;
-	FL_OBJECT *radio_button_group_display;
 	FL_OBJECT *radio_display_monochrome;
 	FL_OBJECT *radio_display_grayscale;
 	FL_OBJECT *radio_display_color;

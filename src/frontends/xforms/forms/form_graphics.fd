@@ -45,7 +45,7 @@ label: Tabbed folder
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: tabFolder
+name: tabfolder
 callback: 
 argument: 
 
@@ -99,7 +99,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 
@@ -339,7 +339,7 @@ label: Draft mode|#D
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_draft
+name: check_draft
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -375,7 +375,7 @@ label: Don't unzip, when exporting to LaTeX|#u
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_nounzip
+name: check_nounzip
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -453,7 +453,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_size
+name:
 callback: 
 argument: 
 
@@ -471,7 +471,7 @@ label: Original size|#O
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_asis
+name: radio_asis
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -489,7 +489,7 @@ label: Scale|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_scale
+name: radio_scale
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -507,7 +507,7 @@ label: Custom|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_wh
+name: radio_wh
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -873,7 +873,7 @@ label: Clip to bounding box|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_clip
+name: check_clip
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1047,7 +1047,7 @@ label: Original size|#O
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_lyxasis
+name: radio_lyxasis
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1065,7 +1065,7 @@ label: Scale|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_lyxscale
+name: radio_lyxscale
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1083,7 +1083,7 @@ label: Custom|#u
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_lyxwh
+name: radio_lyxwh
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1137,7 +1137,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_display
+name:
 callback: 
 argument: 
 

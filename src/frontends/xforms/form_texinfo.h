@@ -20,7 +20,7 @@ struct FD_form_texinfo {
 	FL_OBJECT *radio_bst;
 	FL_OBJECT *button_rescan;
 	FL_OBJECT *button_view;
-	FL_OBJECT *button_fullPath;
+	FL_OBJECT *check_fullpath;
 	FL_OBJECT *button_texhash;
 	FL_OBJECT *button_close;
 };

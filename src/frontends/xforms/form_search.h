@@ -16,13 +16,13 @@ struct FD_form_search {
 	FL_FORM *form;
 	FL_OBJECT *input_search;
 	FL_OBJECT *input_replace;
-	FL_OBJECT *findnext;
-	FL_OBJECT *findprev;
-	FL_OBJECT *replace;
-	FL_OBJECT *button_cancel;
-	FL_OBJECT *casesensitive;
-	FL_OBJECT *matchword;
-	FL_OBJECT *replaceall;
+	FL_OBJECT *button_findnext;
+	FL_OBJECT *button_findprev;
+	FL_OBJECT *button_replace;
+	FL_OBJECT *button_close;
+	FL_OBJECT *check_casesensitive;
+	FL_OBJECT *check_matchword;
+	FL_OBJECT *button_replaceall;
 };
 
 #endif /* FD_form_search_h_ */

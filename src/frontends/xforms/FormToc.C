@@ -42,7 +42,7 @@ void FormToc::build()
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
         // Manage the cancel/close button
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 }
 
 

@@ -22,7 +22,7 @@ struct FD_form_maths_matrix {
 	FL_OBJECT *input_halign;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 };
 
 #endif /* FD_form_maths_matrix_h_ */

@@ -116,7 +116,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 
@@ -188,7 +188,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: include_grp
+name:
 callback: 
 argument: 
 
@@ -206,7 +206,7 @@ label: Verbatim|#V
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_verbatim
+name: radio_verbatim
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -224,7 +224,7 @@ label: Use input|#i
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_useinput
+name: radio_useinput
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -242,7 +242,7 @@ label: Use include|#U
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_useinclude
+name: radio_useinclude
 callback: C_FormBaseInputCB
 argument: 0
 

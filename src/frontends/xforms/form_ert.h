@@ -16,11 +16,10 @@ struct FD_form_ert {
 	~FD_form_ert();
 
 	FL_FORM *form;
-	FL_OBJECT *group_alignment;
 	FL_OBJECT *radio_open;
 	FL_OBJECT *radio_collapsed;
 	FL_OBJECT *radio_inlined;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 };

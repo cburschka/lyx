@@ -80,7 +80,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_radio_printto
+name:
 callback: 
 argument: 
 
@@ -188,7 +188,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 
@@ -206,7 +206,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_radio_pages
+name:
 callback: 
 argument: 
 
@@ -296,7 +296,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_radio_order
+name:
 callback: 
 argument: 
 
@@ -404,7 +404,7 @@ label: Collated|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_collated
+name: check_collated
 callback: C_FormBaseInputCB
 argument: 0
 

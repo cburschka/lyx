@@ -17,7 +17,6 @@ struct FD_form_citation {
 	~FD_form_citation();
 
 	FL_FORM *form;
-	FL_OBJECT *box;
 	FL_OBJECT *browser_cite;
 	FL_OBJECT *browser_bib;
 	FL_OBJECT *button_add;
@@ -27,20 +26,20 @@ struct FD_form_citation {
 	FL_OBJECT *browser_info;
 	FL_OBJECT *frame_search;
 	FL_OBJECT *input_search;
-	FL_OBJECT *button_search_type;
-	FL_OBJECT *button_search_case;
+	FL_OBJECT *check_search_type;
+	FL_OBJECT *check_search_case;
 	FL_OBJECT *button_previous;
 	FL_OBJECT *button_next;
 	FL_OBJECT *frame_style;
 	FL_OBJECT *choice_style;
-	FL_OBJECT *button_full_author_list;
-	FL_OBJECT *button_force_uppercase;
+	FL_OBJECT *check_full_author_list;
+	FL_OBJECT *check_force_uppercase;
 	FL_OBJECT *input_before;
 	FL_OBJECT *input_after;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 };
 
 #endif /* FD_form_citation_h_ */

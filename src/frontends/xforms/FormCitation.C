@@ -91,13 +91,13 @@ void updateStyle(FD_form_citation * dialog, string command)
 	// Use this to initialise the GUI
 	if (cit == styles.end()) {
 		fl_set_choice(dialog->choice_style, 1);
-		fl_set_button(dialog->button_full_author_list, 0);
-		fl_set_button(dialog->button_force_uppercase, 0);
+		fl_set_button(dialog->check_full_author_list, 0);
+		fl_set_button(dialog->check_force_uppercase, 0);
 	} else {
 		int const i = int(cit - styles.begin());
 		fl_set_choice(dialog->choice_style, i+1);
-		fl_set_button(dialog->button_full_author_list,  cs.full);
-		fl_set_button(dialog->button_force_uppercase, cs.forceUCase);
+		fl_set_button(dialog->check_full_author_list,  cs.full);
+		fl_set_button(dialog->check_force_uppercase, cs.forceUCase);
 	}
 }
 
@@ -116,8 +116,8 @@ void FormCitation::apply()
 		ControlCitation::getCiteStyles();
 
 	int const choice = fl_get_choice(dialog_->choice_style) - 1;
-	bool const full  = fl_get_button(dialog_->button_full_author_list);
-	bool const force = fl_get_button(dialog_->button_force_uppercase);
+	bool const full  = fl_get_button(dialog_->check_full_author_list);
+	bool const force = fl_get_button(dialog_->check_force_uppercase);
 
 	string const command =
 		biblio::getCiteCommand(styles[choice], full, force);
@@ -147,8 +147,8 @@ void FormCitation::build()
 	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_search, FL_RETURN_END);
 
-	fl_set_button(dialog_->button_search_case, 0);
-	fl_set_button(dialog_->button_search_type, 0);
+	fl_set_button(dialog_->check_search_case, 0);
+	fl_set_button(dialog_->check_search_type, 0);
 
 	setPrehandler(dialog_->input_search);
 	setPrehandler(dialog_->input_before);
@@ -157,7 +157,7 @@ void FormCitation::build()
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
 	bc().addReadOnly(dialog_->button_add);
@@ -167,8 +167,8 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->choice_style);
 	bc().addReadOnly(dialog_->input_before);
 	bc().addReadOnly(dialog_->input_after);
-	bc().addReadOnly(dialog_->button_full_author_list);
-	bc().addReadOnly(dialog_->button_force_uppercase);
+	bc().addReadOnly(dialog_->check_full_author_list);
+	bc().addReadOnly(dialog_->check_force_uppercase);
 
 	//set up the tooltip mechanism
 	string str = N_("Add the selected entry to the current citation reference.");
@@ -196,10 +196,10 @@ void FormCitation::build()
 	tooltips().initTooltip(dialog_->choice_style, str);
 
 	str = N_("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
-	tooltips().initTooltip(dialog_->button_full_author_list, str);
+	tooltips().initTooltip(dialog_->check_full_author_list, str);
 
 	str = N_("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
-	tooltips().initTooltip(dialog_->button_force_uppercase, str);
+	tooltips().initTooltip(dialog_->check_force_uppercase, str);
 
 	str = N_("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");
 	tooltips().initTooltip(dialog_->input_before, str);
@@ -211,10 +211,10 @@ void FormCitation::build()
 	tooltips().initTooltip(dialog_->input_search, str);
 
 	str = N_("Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\".");
-	tooltips().initTooltip(dialog_->button_search_case, str);
+	tooltips().initTooltip(dialog_->check_search_case, str);
 
 	str = N_("Activate if you want to enter Regular Expressions.");
-	tooltips().initTooltip(dialog_->button_search_type, str);
+	tooltips().initTooltip(dialog_->check_search_type, str);
 }
 
 
@@ -223,9 +223,9 @@ void FormCitation::findBiblio(biblio::Direction const dir)
 	string const str = fl_get_input(dialog_->input_search);
 	biblio::InfoMap const & theMap = controller().bibkeysInfo();
 	bool const caseSensitive =
-		fl_get_button(dialog_->button_search_case);
+		fl_get_button(dialog_->check_search_case);
 	biblio::Search const type =
-		fl_get_button(dialog_->button_search_type) ?
+		fl_get_button(dialog_->check_search_type) ?
 		biblio::REGEX : biblio::SIMPLE;
 
 	vector<string>::const_iterator start = bibkeys.begin();
@@ -404,8 +404,8 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->input_search) {
 		findBiblio(biblio::FORWARD);
 	} else if (ob == dialog_->choice_style ||
-		   ob == dialog_->button_full_author_list ||
-		   ob == dialog_->button_force_uppercase ||
+		   ob == dialog_->check_full_author_list ||
+		   ob == dialog_->check_force_uppercase ||
 		   ob == dialog_->input_before ||
 		   ob == dialog_->input_after) {
 		activate = ButtonPolicy::SMI_VALID;
@@ -446,8 +446,8 @@ void FormCitation::update()
 	updateStyle(dialog_.get(), controller().params().getCmdName());
 
 	bool const natbib = controller().usingNatbib();
-	setEnabled(dialog_->button_full_author_list, natbib);
-	setEnabled(dialog_->button_force_uppercase, natbib);
+	setEnabled(dialog_->check_full_author_list, natbib);
+	setEnabled(dialog_->check_force_uppercase, natbib);
 	setEnabled(dialog_->choice_style, natbib);
 	
 	// No keys have been selected yet, so...

@@ -31,7 +31,7 @@ FD_form_maths_delim * FormMathsDelim::build_maths_delim()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 168, 268, 70, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 168, 268, 70, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -49,8 +49,7 @@ FD_form_maths_delim * FormMathsDelim::build_maths_delim()
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 12, 268, 70, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 0);
-
-  fdui->lado = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("()\nBoth|#B");
     fdui->radio_both = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 80, 8, 80, 30, idex(_(dummy)));

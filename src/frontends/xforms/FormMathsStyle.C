@@ -75,7 +75,7 @@ void FormMathsStyle::build()
 	fl_set_bmtable_maxitems(dialog_->bmtable_font2, 3);
 	bc().addReadOnly(dialog_->bmtable_font2);
 
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	}
 
 

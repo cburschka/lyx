@@ -165,7 +165,7 @@ void FormPreferences::build()
 	// Manage the restore, save, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
 	// Allow the base class to control messages

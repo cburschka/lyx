@@ -1,3 +1,36 @@
+2002-03-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* forms/*.fd (except form_filedialog.fd which is v. scary :-():
+	housekeeping changes.
+	1. Ensure that all radio buttons are wrapped up within a group.
+	2. Rename all button_cancel as button_close.
+	3. Ensure that all objects follow the naming scheme outlined in
+	   forms/README
+	   
+	class             | prefix
+	------------------+-------
+	FL_BROWSER        | browser
+	FL_BUTTON         | button
+	FL_PIXMAPBUTTON   | button
+	FL_CHECKBUTTON    | check
+	FL_CHOICE         | choice
+	FL_COUNTER        | counter
+	FL_DIAL           | dial
+	FL_INPUT          | input
+	FL_FRAME          | frame
+	FL_LABELFRAME     | frame
+	FL_ROUND3DBUTTON,
+	RADIO_BUTTON      | radio
+	FL_SLIDER         | slider
+	FL_VALSLIDER      | slider
+	FL_TABFOLDER      | tabfolder
+	FL_TEXT           | text
+
+	The only exceptions to this are objects that are to be converted
+	in the sed scripts. At the moment this applies only to bmtable:
+
+	Convert an FL_BUTTON to a FL_BMTABLE by using prefix "bmtable".
+
 2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* doxygen fixes.

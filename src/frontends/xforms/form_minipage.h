@@ -19,11 +19,10 @@ struct FD_form_minipage {
 	FL_FORM *form;
 	FL_OBJECT *input_width;
 	FL_OBJECT *choice_width_units;
-	FL_OBJECT *group_alignment;
 	FL_OBJECT *radio_top;
 	FL_OBJECT *radio_middle;
 	FL_OBJECT *radio_bottom;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_restore;

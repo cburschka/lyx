@@ -37,8 +37,7 @@ FD_form_minipage * FormMinipage::build_minipage()
   fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 150, 30, 60, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-
-  fdui->group_alignment = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Top|#T");
     fdui->radio_top = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 249, 30, 152, 30, idex(_(dummy)));
@@ -67,7 +66,7 @@ FD_form_minipage * FormMinipage::build_minipage()
 
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 130, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 130, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -44,7 +44,7 @@ label: Close|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: close
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 
@@ -62,7 +62,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: tabbed_folder
+name: tabfolder
 callback: 
 argument: 
 

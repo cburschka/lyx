@@ -80,7 +80,7 @@ label: Top of the page|#T
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_top
+name: check_top
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -98,7 +98,7 @@ label: Bottom of the page|#B
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bottom
+name: check_bottom
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -116,7 +116,7 @@ label: Page of floats|#P
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_page
+name: check_page
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -134,7 +134,7 @@ label: Here, if possible|#i
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_here
+name: check_here
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -152,44 +152,26 @@ label: Here, definitely|#H
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_here_definitely
+name: check_here_definitely
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 160 70 30
+box: 10 160 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Cancel|^[
+label: Restore|#R
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
-callback: C_FormBaseCancelCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 200 160 70 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Apply|#A
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_apply
-callback: C_FormBaseApplyCB
+name: button_restore
+callback: C_FormBaseRestoreCB
 argument: 0
 
 --------------------
@@ -213,19 +195,37 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 160 80 30
+box: 200 160 70 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Restore|#R
+label: Apply|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_restore
-callback: C_FormBaseRestoreCB
+name: button_apply
+callback: C_FormBaseApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 280 160 70 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|^[
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_close
+callback: C_FormBaseCancelCB
 argument: 0
 
 ==============================

@@ -41,7 +41,7 @@ void FormMathsSpace::build()
 
 	space_ = -1;
 
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
 	bc().addReadOnly(dialog_->button_thin);
 	bc().addReadOnly(dialog_->button_medium);

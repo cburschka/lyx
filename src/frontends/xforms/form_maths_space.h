@@ -14,14 +14,13 @@ struct FD_form_maths_space {
 	~FD_form_maths_space();
 
 	FL_FORM *form;
-	FL_OBJECT *spaces;
 	FL_OBJECT *button_thin;
 	FL_OBJECT *button_medium;
 	FL_OBJECT *button_thick;
 	FL_OBJECT *button_negative;
 	FL_OBJECT *button_quadratin;
 	FL_OBJECT *button_twoquadratin;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 };
 
 #endif /* FD_form_maths_space_h_ */

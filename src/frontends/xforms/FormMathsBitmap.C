@@ -90,15 +90,15 @@ void FormMathsBitmap::build()
 	x_ = (form_->w - 90) / 2;
 	y_ += 10;
 
-	FL_OBJECT * button_cancel =
+	FL_OBJECT * button_close =
 		fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30, idex(_(label)));
-	fl_set_button_shortcut(button_cancel, scex(_(label)), 1);
-	fl_set_object_lsize(button_cancel, FL_NORMAL_SIZE);
-	fl_set_object_callback(button_cancel, C_FormBaseDeprecatedCancelCB, 0);
+	fl_set_button_shortcut(button_close, scex(_(label)), 1);
+	fl_set_object_lsize(button_close, FL_NORMAL_SIZE);
+	fl_set_object_callback(button_close, C_FormBaseDeprecatedCancelCB, 0);
 
 	fl_end_form();
 
-	bc().setCancel(button_cancel);
+	bc().setCancel(button_close);
 }
 
 

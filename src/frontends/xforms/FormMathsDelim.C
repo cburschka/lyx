@@ -70,7 +70,7 @@ void FormMathsDelim::build()
 
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
 	bc().addReadOnly(dialog_->bmtable);
 	bc().addReadOnly(dialog_->radio_right);

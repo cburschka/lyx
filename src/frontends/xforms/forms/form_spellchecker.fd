@@ -98,7 +98,7 @@ label: Spellchecker Options...|#O
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: options
+name: button_options
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -116,7 +116,7 @@ label: Start spellchecking|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: start
+name: button_start
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -134,7 +134,7 @@ label: Insert in personal dictionary|#I
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: insert
+name: button_insert
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -152,7 +152,7 @@ label: Ignore word|#g
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: ignore
+name: button_ignore
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -170,7 +170,7 @@ label: Accept word in this session|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: accept
+name: button_accept
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -188,7 +188,7 @@ label: Stop spellchecking|#T
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: stop
+name: button_stop
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -206,7 +206,7 @@ label: Close Spellchecker|#C^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: done
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 
@@ -260,7 +260,7 @@ label: Replace word|#R
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: replace
+name: button_replace
 callback: C_FormBaseInputCB
 argument: 0
 

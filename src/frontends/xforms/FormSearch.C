@@ -29,30 +29,32 @@ void FormSearch::build()
 	dialog_.reset(build_search());
 	
 	// Manage the ok, apply and cancel/close buttons
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().addReadOnly(dialog_->input_replace);
-	bc().addReadOnly(dialog_->replace);
-	bc().addReadOnly(dialog_->replaceall);
+	bc().addReadOnly(dialog_->button_replace);
+	bc().addReadOnly(dialog_->button_replaceall);
 }
 
 
 ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * obj, long)
 {
-	if (obj == dialog_->findnext || obj == dialog_->findprev) {
-		bool const forward = (obj == dialog_->findnext);
+	if (obj == dialog_->button_findnext ||
+	    obj == dialog_->button_findprev) {
+		bool const forward = (obj == dialog_->button_findnext);
 	
 		controller().find(fl_get_input(dialog_->input_search),
-				  fl_get_button(dialog_->casesensitive),
-				  fl_get_button(dialog_->matchword),
+				  fl_get_button(dialog_->check_casesensitive),
+				  fl_get_button(dialog_->check_matchword),
 				  forward);
 
-	} else if (obj == dialog_->replace || obj == dialog_->replaceall) {
-		bool const all = (obj == dialog_->replaceall);
+	} else if (obj == dialog_->button_replace ||
+		   obj == dialog_->button_replaceall) {
+		bool const all = (obj == dialog_->button_replaceall);
 	
 		controller().replace(fl_get_input(dialog_->input_search),
 				     fl_get_input(dialog_->input_replace),
-				     fl_get_button(dialog_->casesensitive),
-				     fl_get_button(dialog_->matchword),
+				     fl_get_button(dialog_->check_casesensitive),
+				     fl_get_button(dialog_->check_matchword),
 				     all);
 	}
    

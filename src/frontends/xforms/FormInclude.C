@@ -39,13 +39,13 @@ void FormInclude::build()
 
 	// Manage the ok and cancel buttons
 	bc().setOK(dialog_->button_ok);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
 	bc().addReadOnly(dialog_->button_browse);
-	bc().addReadOnly(dialog_->check_verbatim);
+	bc().addReadOnly(dialog_->radio_verbatim);
 	bc().addReadOnly(dialog_->check_typeset);
-	bc().addReadOnly(dialog_->check_useinput);
-	bc().addReadOnly(dialog_->check_useinclude);
+	bc().addReadOnly(dialog_->radio_useinput);
+	bc().addReadOnly(dialog_->radio_useinclude);
 }
 
 
@@ -54,9 +54,9 @@ void FormInclude::update()
 	if (controller().params().noload) {
 		fl_set_input(dialog_->input_filename, "");
 		fl_set_button(dialog_->check_typeset, 0);
-		fl_set_button(dialog_->check_useinput, 0);
-		fl_set_button(dialog_->check_useinclude, 1);
-		fl_set_button(dialog_->check_verbatim, 0);
+		fl_set_button(dialog_->radio_useinput, 0);
+		fl_set_button(dialog_->radio_useinclude, 1);
+		fl_set_button(dialog_->radio_verbatim, 0);
 		fl_set_button(dialog_->check_visiblespace, 0);
 		fl_deactivate_object(dialog_->check_visiblespace);
 		fl_set_object_lcol(dialog_->check_visiblespace, FL_INACTIVE);
@@ -71,10 +71,10 @@ void FormInclude::update()
 	fl_set_button(dialog_->check_typeset,
 		      int(controller().params().noload));
 
-	fl_set_button(dialog_->check_useinput, cmdname == "input");
-	fl_set_button(dialog_->check_useinclude, cmdname == "include");
+	fl_set_button(dialog_->radio_useinput, cmdname == "input");
+	fl_set_button(dialog_->radio_useinclude, cmdname == "include");
 	if (cmdname == "verbatiminput" || cmdname == "verbatiminput*") {
-		fl_set_button(dialog_->check_verbatim, 1);
+		fl_set_button(dialog_->radio_verbatim, 1);
 		fl_set_button(dialog_->check_visiblespace, cmdname == "verbatiminput*");
 		setEnabled(dialog_->check_visiblespace, true);
 	} else {
@@ -83,7 +83,7 @@ void FormInclude::update()
 	}
  
 	if (cmdname.empty())
-		fl_set_button(dialog_->check_useinclude, 1);
+		fl_set_button(dialog_->radio_useinclude, 1);
 }
 
 
@@ -97,11 +97,11 @@ void FormInclude::apply()
 	else
 	    controller().params().cparams.setContents("");
 
-	if (fl_get_button(dialog_->check_useinput))
+	if (fl_get_button(dialog_->radio_useinput))
 		controller().params().flag = InsetInclude::INPUT;
-	else if (fl_get_button(dialog_->check_useinclude))
+	else if (fl_get_button(dialog_->radio_useinclude))
 		controller().params().flag = InsetInclude::INCLUDE;
-	else if (fl_get_button(dialog_->check_verbatim)) {
+	else if (fl_get_button(dialog_->radio_verbatim)) {
 		if (fl_get_button(dialog_->check_visiblespace))
 			controller().params().flag = InsetInclude::VERBAST;
 		else
@@ -116,9 +116,9 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 
 	if (ob == dialog_->button_browse) {
 		ControlInclude::Type type;
-		if (fl_get_button(dialog_->check_useinput))
+		if (fl_get_button(dialog_->radio_useinput))
 			type = ControlInclude::INPUT;
-		else if (fl_get_button(dialog_->check_verbatim))
+		else if (fl_get_button(dialog_->radio_verbatim))
 			type = ControlInclude::VERBATIM;
 		else
 			type = ControlInclude::INCLUDE;
@@ -138,11 +138,11 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 			action = ButtonPolicy::SMI_NOOP;
 		}
 
-	} else if (ob == dialog_->check_verbatim) {
+	} else if (ob == dialog_->radio_verbatim) {
 		setEnabled(dialog_->check_visiblespace, true);
 
-	} else if (ob == dialog_->check_useinclude ||
-		   ob == dialog_->check_useinput) {
+	} else if (ob == dialog_->radio_useinclude ||
+		   ob == dialog_->radio_useinput) {
 		fl_set_button(dialog_->check_visiblespace, 0);
 		setEnabled(dialog_->check_visiblespace, false);
 

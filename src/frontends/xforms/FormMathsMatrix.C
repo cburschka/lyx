@@ -79,7 +79,7 @@ void FormMathsMatrix::build()
 
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
 	bc().addReadOnly(dialog_->slider_rows);
 	bc().addReadOnly(dialog_->slider_columns);

@@ -30,13 +30,13 @@ void FormError::build()
 	dialog_.reset(build_error());
 
         // Manage the cancel/close button
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 }
 
 
 void FormError::update()
 {
 	string const txt = formatted(controller().params(),
-				     dialog_->message->w - 10);
-	fl_set_object_label(dialog_->message, txt.c_str());
+				     dialog_->frame_message->w - 10);
+	fl_set_object_label(dialog_->frame_message, txt.c_str());
 }

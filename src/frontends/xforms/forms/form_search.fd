@@ -98,7 +98,7 @@ label: Forwards >|#F^s
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: findnext
+name: button_findnext
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -116,7 +116,7 @@ label:  < Backwards|#B^r
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: findprev
+name: button_findprev
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -134,7 +134,7 @@ label: Replace|#R#r
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: replace
+name: button_replace
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -152,7 +152,7 @@ label: Close|^[
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 
@@ -170,7 +170,7 @@ label: Case sensitive|#s#S
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
-name: casesensitive
+name: check_casesensitive
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -188,7 +188,7 @@ label: Match word|#M#m
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
-name: matchword
+name: check_matchword
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -206,7 +206,7 @@ label: Replace All|#A#a
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: replaceall
+name: button_replaceall
 callback: C_FormBaseInputCB
 argument: 0
 

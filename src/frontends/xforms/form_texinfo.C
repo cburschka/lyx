@@ -34,6 +34,7 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 345, 15, 155, 100, "");
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
+ fl_bgn_group();
   {
     char const * const dummy = N_("LaTeX Classes|#C");
     fdui->radio_cls = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 350, 20, 30, 30, idex(_(dummy)));
@@ -65,6 +66,8 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fl_end_group();
+
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 345, 122, 155, 128, "");
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
   {
@@ -85,7 +88,7 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_callback(obj, C_FormBaseInputCB, 2);
   {
     char const * const dummy = N_("Show Path|#P");
-    fdui->button_fullPath = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 350, 209, 30, 30, idex(_(dummy)));
+    fdui->check_fullpath = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 350, 209, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -44,7 +44,7 @@ label: Key:|#K
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: key
+name: input_key
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -80,7 +80,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 2
 
@@ -98,7 +98,7 @@ label: Label:|#L
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: label
+name: input_label
 callback: C_FormBaseInputCB
 argument: 0
 

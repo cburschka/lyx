@@ -44,7 +44,7 @@ FD_form_include * FormInclude::build_include()
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 170, 100, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 170, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -70,11 +70,10 @@ FD_form_include * FormInclude::build_include()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-
-  fdui->include_grp = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Verbatim|#V");
-    fdui->check_verbatim = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_(dummy)));
+    fdui->radio_verbatim = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -82,7 +81,7 @@ FD_form_include * FormInclude::build_include()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Use input|#i");
-    fdui->check_useinput = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
+    fdui->radio_useinput = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -90,7 +89,7 @@ FD_form_include * FormInclude::build_include()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Use include|#U");
-    fdui->check_useinclude = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
+    fdui->radio_useinclude = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);

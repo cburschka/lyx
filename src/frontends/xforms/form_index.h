@@ -21,7 +21,7 @@ struct FD_form_index {
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 };
 
 #endif /* FD_form_index_h_ */

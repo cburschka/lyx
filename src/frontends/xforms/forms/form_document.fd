@@ -45,7 +45,7 @@ label: Tabbed folder
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: tabbed_folder
+name: tabfolder
 callback: 
 argument: 
 
@@ -63,7 +63,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
+name: button_close
 callback: C_FormBaseDeprecatedCancelCB
 argument: INPUT
 
@@ -339,7 +339,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_radio_orientation
+name:
 callback: 
 argument: 
 
@@ -939,7 +939,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_doc_sides
+name:
 callback: 
 argument: 
 
@@ -1011,7 +1011,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_doc_columns
+name:
 callback: 
 argument: 
 
@@ -1083,7 +1083,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: group_doc_sep
+name:
 callback: 
 argument: 
 
@@ -1402,7 +1402,7 @@ label: Section number depth
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: slider_secnumdepth
+name: counter_secnumdepth
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
@@ -1420,7 +1420,7 @@ label: Table of contents depth
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: slider_tocdepth
+name: counter_tocdepth
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
@@ -1608,7 +1608,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_depth
+name:
 callback: 
 argument: 
 
@@ -1735,7 +1735,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel
+name:
 callback: 
 argument: 
 
@@ -1775,6 +1775,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_maths
 callback: C_FormBaseDeprecatedInputCB
 argument: BULLETPANEL2
+
+--------------------
+class: FL_ROUND3DBUTTON
+type: RADIO_BUTTON
+box: 15 165 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Ding 1|#D
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NoGravity FL_NoGravity
+name: radio_bullet_panel_ding1
+callback: C_FormBaseDeprecatedInputCB
+argument: BULLETPANEL6
 
 --------------------
 class: FL_ROUND3DBUTTON
@@ -1829,24 +1847,6 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_ding4
 callback: C_FormBaseDeprecatedInputCB
 argument: BULLETPANEL5
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 15 165 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Ding 1|#D
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_ding1
-callback: C_FormBaseDeprecatedInputCB
-argument: BULLETPANEL6
 
 --------------------
 class: FL_END_GROUP

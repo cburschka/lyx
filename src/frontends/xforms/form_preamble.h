@@ -18,7 +18,7 @@ struct FD_form_preamble {
 	FL_FORM *form;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *input_preamble;
 };
 

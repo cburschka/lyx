@@ -40,7 +40,7 @@ void FormSendto::build()
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
 	// Set up the tooltip mechanism
 	string str = N_("Export the buffer to this format before running the command below on it.");

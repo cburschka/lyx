@@ -44,7 +44,7 @@ void FormTabularCreate::build()
         // Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 }
 
 

@@ -17,7 +17,6 @@ struct FD_form_paragraph {
 	~FD_form_paragraph();
 
 	FL_FORM *form;
-	FL_OBJECT *group_radio_alignment;
 	FL_OBJECT *radio_align_right;
 	FL_OBJECT *radio_align_left;
 	FL_OBJECT *radio_align_block;
@@ -39,7 +38,7 @@ struct FD_form_paragraph {
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *text_warning;
 	FL_OBJECT *choice_value_space_above;
 	FL_OBJECT *choice_value_space_below;

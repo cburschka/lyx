@@ -45,7 +45,7 @@ label: Tabbed folder
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: tabFolder
+name: tabfolder
 callback: 
 argument: 
 
@@ -267,7 +267,7 @@ label: Longtable|#L
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_longtable
+name: check_longtable
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -285,7 +285,7 @@ label: Rotate 90°|#9
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_rotate_tabular
+name: check_rotate_tabular
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -311,7 +311,7 @@ argument:
 Name: form_column_options
 Width: 505
 Height: 225
-Number of Objects: 19
+Number of Objects: 23
 
 --------------------
 class: FL_BOX
@@ -435,7 +435,7 @@ label: Top|#t
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_top
+name: check_border_top
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -453,7 +453,7 @@ label: Bottom|#b
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_bottom
+name: check_border_bottom
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -471,7 +471,7 @@ label: Left|#l
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_left
+name: check_border_left
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -489,9 +489,27 @@ label: Right|#r
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_right
+name: check_border_right
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
+callback: 
+argument: 
 
 --------------------
 class: FL_ROUND3DBUTTON
@@ -510,6 +528,7 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+	value: 1
 
 --------------------
 class: FL_ROUND3DBUTTON
@@ -548,8 +567,44 @@ callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
+callback: 
+argument: 
+
+--------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 330 135 155 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -564,10 +619,11 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+	value: 1
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 330 160 155 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -585,7 +641,7 @@ argument: 0
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 330 185 155 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -600,6 +656,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_INPUT
@@ -659,7 +733,7 @@ argument:
 Name: form_cell_options
 Width: 505
 Height: 225
-Number of Objects: 23
+Number of Objects: 27
 
 --------------------
 class: FL_BOX
@@ -783,7 +857,7 @@ label: Top|#t
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_top
+name: check_border_top
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -801,7 +875,7 @@ label: Bottom|#b
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_bottom
+name: check_border_bottom
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -819,7 +893,7 @@ label: Left|#l
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_left
+name: check_border_left
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -837,9 +911,27 @@ label: Right|#r
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_border_right
+name: check_border_right
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
+callback: 
+argument: 
 
 --------------------
 class: FL_ROUND3DBUTTON
@@ -858,6 +950,7 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+	value: 1
 
 --------------------
 class: FL_ROUND3DBUTTON
@@ -896,8 +989,44 @@ callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
+callback: 
+argument: 
+
+--------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 350 135 125 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -912,10 +1041,11 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+	value: 1
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 350 160 125 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -933,7 +1063,7 @@ argument: 0
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 350 185 125 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -948,6 +1078,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_INPUT
@@ -999,7 +1147,7 @@ label: Multicolumn|#M
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_multicolumn
+name: check_multicolumn
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1017,7 +1165,7 @@ label: Use Minipage|#s
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_useminipage
+name: check_useminipage
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1035,7 +1183,7 @@ label: Rotate 90°|#9
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_rotate_cell
+name: check_rotate_cell
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1203,7 +1351,7 @@ label: On
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_lt_firsthead
+name: check_lt_firsthead
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1221,7 +1369,7 @@ label: On
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_lt_head
+name: check_lt_head
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1239,7 +1387,7 @@ label: On
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_lt_foot
+name: check_lt_foot
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1257,7 +1405,7 @@ label: On
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_lt_lastfoot
+name: check_lt_lastfoot
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -1275,7 +1423,7 @@ label: Page break on the current row|#B
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_lt_newpage
+name: check_lt_newpage
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 

@@ -156,14 +156,13 @@ void FormParagraph::build()
     // Manage the ok, apply, restore and cancel/close buttons
     bc_.setOK(dialog_->button_ok);
     bc_.setApply(dialog_->button_apply);
-    bc_.setCancel(dialog_->button_cancel);
+    bc_.setCancel(dialog_->button_close);
     bc_.setRestore(dialog_->button_restore);
 
-    bc_.addReadOnly (dialog_->group_radio_alignment);
-    // bc_.addReadOnly (dialog_->radio_align_right);
-    // bc_.addReadOnly (dialog_->radio_align_left);
-    // bc_.addReadOnly (dialog_->radio_align_block);
-    // bc_.addReadOnly (dialog_->radio_align_center);
+    bc_.addReadOnly (dialog_->radio_align_right);
+    bc_.addReadOnly (dialog_->radio_align_left);
+    bc_.addReadOnly (dialog_->radio_align_block);
+    bc_.addReadOnly (dialog_->radio_align_center);
     bc_.addReadOnly (dialog_->check_lines_top);
     bc_.addReadOnly (dialog_->check_lines_bottom);
     bc_.addReadOnly (dialog_->check_pagebreaks_top);

@@ -13,8 +13,8 @@ struct FD_form_error {
 	~FD_form_error();
 
 	FL_FORM *form;
-	FL_OBJECT *message;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *frame_message;
+	FL_OBJECT *button_close;
 };
 
 #endif /* FD_form_error_h_ */

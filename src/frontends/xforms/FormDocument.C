@@ -72,7 +72,7 @@ void FormDocument::redraw()
 	else
 		return;
 
-	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabbed_folder);
+	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder);
 	if (outer_form && outer_form->visible)
 		fl_redraw_form(outer_form);
 }
@@ -95,7 +95,7 @@ void FormDocument::build()
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 	bc().addReadOnly (dialog_->button_save_defaults);
 	bc().addReadOnly (dialog_->button_reset_defaults);
@@ -160,7 +160,6 @@ void FormDocument::build()
 	fl_addto_choice(paper_->choice_foot_skip_units,     units.c_str());
 
 	bc().addReadOnly (paper_->choice_paperpackage);
-	bc().addReadOnly (paper_->group_radio_orientation);
 	bc().addReadOnly (paper_->radio_portrait);
 	bc().addReadOnly (paper_->radio_landscape);
 	bc().addReadOnly (paper_->choice_papersize);
@@ -185,7 +184,7 @@ void FormDocument::build()
 	fl_addto_form(class_->form);
 	combo_doc_class.reset(new Combox(FL_COMBOX_DROPLIST));
 	combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400,
-			     dialog_->tabbed_folder);
+			     dialog_->tabfolder);
 	combo_doc_class->shortcut("#C",1);
 	combo_doc_class->setcallback(ComboInputCB, this);
 	fl_end_form();
@@ -245,7 +244,7 @@ void FormDocument::build()
 	fl_addto_form(language_->form);
 	combo_language.reset(new Combox(FL_COMBOX_DROPLIST));
 	combo_language->add(obj->x, obj->y, obj->w, obj->h, 400,
-			    dialog_->tabbed_folder);
+			    dialog_->tabfolder);
 	combo_language->shortcut("#L",1);
 	combo_language->setcallback(ComboInputCB, this);
 	fl_end_form();
@@ -269,12 +268,12 @@ void FormDocument::build()
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
 	setPrehandler(options_->input_float_placement);
 
-	fl_set_counter_bounds(options_->slider_secnumdepth,-2,5);
-	fl_set_counter_bounds(options_->slider_tocdepth,-1,5);
-	fl_set_counter_step(options_->slider_secnumdepth,1,1);
-	fl_set_counter_step(options_->slider_tocdepth,1,1);
-	fl_set_counter_precision(options_->slider_secnumdepth, 0);
-	fl_set_counter_precision(options_->slider_tocdepth, 0);
+	fl_set_counter_bounds(options_->counter_secnumdepth,-2,5);
+	fl_set_counter_bounds(options_->counter_tocdepth,-1,5);
+	fl_set_counter_step(options_->counter_secnumdepth,1,1);
+	fl_set_counter_step(options_->counter_tocdepth,1,1);
+	fl_set_counter_precision(options_->counter_secnumdepth, 0);
+	fl_set_counter_precision(options_->counter_tocdepth, 0);
 	for (n=0; tex_graphics[n][0]; ++n) {
 		fl_addto_choice(options_->choice_postscript_driver,
 				tex_graphics[n]);
@@ -282,8 +281,8 @@ void FormDocument::build()
 	fl_addto_choice(options_->choice_citation_format,
 			_(" Author-year | Numerical "));
 
-	bc_.addReadOnly (options_->slider_secnumdepth);
-	bc_.addReadOnly (options_->slider_tocdepth);
+	bc_.addReadOnly (options_->counter_secnumdepth);
+	bc_.addReadOnly (options_->counter_tocdepth);
 	bc_.addReadOnly (options_->check_use_amsmath);
 	bc_.addReadOnly (options_->check_use_natbib);
 	bc_.addReadOnly (options_->choice_citation_format);
@@ -300,21 +299,30 @@ void FormDocument::build()
 	setPrehandler(bullets_->input_bullet_latex);
 	fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
+	bc_.addReadOnly(bullets_->radio_bullet_depth_1);
+	bc_.addReadOnly(bullets_->radio_bullet_depth_2);
+	bc_.addReadOnly(bullets_->radio_bullet_depth_3);
+	bc_.addReadOnly(bullets_->radio_bullet_depth_4);
+	bc_.addReadOnly(bullets_->radio_bullet_panel_standard);
+	bc_.addReadOnly(bullets_->radio_bullet_panel_maths);
+	bc_.addReadOnly(bullets_->radio_bullet_panel_ding1);
+	bc_.addReadOnly(bullets_->radio_bullet_panel_ding2);
+	bc_.addReadOnly(bullets_->radio_bullet_panel_ding3);
+	bc_.addReadOnly(bullets_->radio_bullet_panel_ding4);
+
 	bc().addReadOnly (bullets_->bmtable_bullet_panel);
 	bc().addReadOnly (bullets_->choice_bullet_size);
 	bc().addReadOnly (bullets_->input_bullet_latex);
-	bc().addReadOnly (bullets_->radio_bullet_depth);
-	bc().addReadOnly (bullets_->radio_bullet_panel);
 
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("Document"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Document"),
 			   class_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("Paper"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Paper"),
 			   paper_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("Language"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Language"),
 			   language_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("Extra"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Extra"),
 			   options_->form);
-	fbullet = fl_addto_tabfolder(dialog_->tabbed_folder,_("Bullets"),
+	fbullet = fl_addto_tabfolder(dialog_->tabfolder,_("Bullets"),
 				     bullets_->form);
 	if ((XpmVersion < 4) || (XpmVersion == 4 && XpmRevision < 7)) {
 		lyxerr << _("Your version of libXpm is older than 4.7.\n"
@@ -914,12 +922,12 @@ bool FormDocument::options_apply(BufferParams & params)
 	params.use_numerical_citations  =
 		fl_get_choice(options_->choice_citation_format)-1;
 
-	int tmpchar = int(fl_get_counter_value(options_->slider_secnumdepth));
+	int tmpchar = int(fl_get_counter_value(options_->counter_secnumdepth));
 	if (params.secnumdepth != tmpchar)
 		redo = true;
 	params.secnumdepth = tmpchar;
    
-	params.tocdepth = int(fl_get_counter_value(options_->slider_tocdepth));
+	params.tocdepth = int(fl_get_counter_value(options_->counter_tocdepth));
 
 	params.float_placement =
 		fl_get_input(options_->input_float_placement);
@@ -1090,8 +1098,8 @@ void FormDocument::options_update(BufferParams const & params)
 	fl_set_choice(options_->choice_citation_format,
 		      int(params.use_numerical_citations)+1);
 	setEnabled(options_->choice_citation_format, params.use_natbib);
-	fl_set_counter_value(options_->slider_secnumdepth, params.secnumdepth);
-	fl_set_counter_value(options_->slider_tocdepth, params.tocdepth);
+	fl_set_counter_value(options_->counter_secnumdepth, params.secnumdepth);
+	fl_set_counter_value(options_->counter_tocdepth, params.tocdepth);
 	if (!params.float_placement.empty())
 		fl_set_input(options_->input_float_placement,
 			     params.float_placement.c_str());

@@ -58,15 +58,15 @@ void FormAboutlyx::build()
 			    controller().getCredits(ss).str().c_str());
 
 	// stack tabs
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("Copyright and Version"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Copyright and Version"),
 		       version_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("License and Warranty"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("License and Warranty"),
 		       license_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder,_("Credits"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Credits"),
 		       credits_->form);
 
 	// Manage the cancel/close button
-	bc().setCancel(dialog_->close);
+	bc().setCancel(dialog_->button_close);
 }
 
 

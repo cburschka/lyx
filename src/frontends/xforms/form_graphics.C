@@ -26,7 +26,7 @@ FD_form_graphics * FormGraphics::build_graphics()
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 510, 345, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->tabFolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 500, 270, _("Tabbed folder"));
+  fdui->tabfolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 500, 270, _("Tabbed folder"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -43,7 +43,7 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 415, 310, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 415, 310, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -137,7 +137,7 @@ FD_form_file * FormGraphics::build_file()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Draft mode|#D");
-    fdui->button_draft = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 195, 30, 30, idex(_(dummy)));
+    fdui->check_draft = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 195, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -153,7 +153,7 @@ FD_form_file * FormGraphics::build_file()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Don't unzip, when exporting to LaTeX|#u");
-    fdui->button_nounzip = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 175, 195, 30, 30, idex(_(dummy)));
+    fdui->check_nounzip = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 175, 195, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -186,11 +186,10 @@ FD_form_size * FormGraphics::build_size()
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 355, 10, 135, 50, "");
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 10, 480, 225, _("Output size"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-
-  fdui->radio_size = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Original size|#O");
-    fdui->button_asis = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 25, 30, 30, 30, idex(_(dummy)));
+    fdui->radio_asis = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 25, 30, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -199,7 +198,7 @@ FD_form_size * FormGraphics::build_size()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Scale|#S");
-    fdui->button_scale = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 25, 80, 30, 30, idex(_(dummy)));
+    fdui->radio_scale = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 25, 80, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -208,7 +207,7 @@ FD_form_size * FormGraphics::build_size()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Custom|#C");
-    fdui->button_wh = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 25, 130, 30, 30, idex(_(dummy)));
+    fdui->radio_wh = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 25, 130, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -339,7 +338,7 @@ FD_form_bbox * FormGraphics::build_bbox()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Clip to bounding box|#C");
-    fdui->button_clip = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 200, 30, 30, idex(_(dummy)));
+    fdui->check_clip = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 200, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -414,7 +413,7 @@ FD_form_lyxview * FormGraphics::build_lyxview()
  fl_bgn_group();
   {
     char const * const dummy = N_("Original size|#O");
-    fdui->button_lyxasis = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 25, 30, 30, idex(_(dummy)));
+    fdui->radio_lyxasis = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 25, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -423,7 +422,7 @@ FD_form_lyxview * FormGraphics::build_lyxview()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Scale|#S");
-    fdui->button_lyxscale = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 90, 30, 30, idex(_(dummy)));
+    fdui->radio_lyxscale = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 90, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -432,7 +431,7 @@ FD_form_lyxview * FormGraphics::build_lyxview()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Custom|#u");
-    fdui->button_lyxwh = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 155, 30, 30, idex(_(dummy)));
+    fdui->radio_lyxwh = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 155, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_color(obj, FL_COL1, FL_YELLOW);
@@ -445,8 +444,7 @@ FD_form_lyxview * FormGraphics::build_lyxview()
   obj = fl_add_text(FL_NORMAL_TEXT, 420, 95, 25, 30, _("%"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-
-  fdui->radio_display = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Default|#f");
     fdui->radio_pref = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 20, 25, 30, 30, idex(_(dummy)));

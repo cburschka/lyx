@@ -29,44 +29,44 @@ void FormUrl::build()
 {
 	dialog_.reset(build_url());
 
-	fl_set_input_return(dialog_->name, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->url,  FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_name, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_url,  FL_RETURN_CHANGED);
 
-	setPrehandler(dialog_->name);
-	setPrehandler(dialog_->url);
+	setPrehandler(dialog_->input_name);
+	setPrehandler(dialog_->input_url);
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
-	bc().addReadOnly(dialog_->name);
-	bc().addReadOnly(dialog_->url);
-	bc().addReadOnly(dialog_->radio_html);
+	bc().addReadOnly(dialog_->input_name);
+	bc().addReadOnly(dialog_->input_url);
+	bc().addReadOnly(dialog_->check_html);
 }
 
 
 void FormUrl::update()
 {
-	fl_set_input(dialog_->url,
+	fl_set_input(dialog_->input_url,
 		     controller().params().getContents().c_str());
-	fl_set_input(dialog_->name,
+	fl_set_input(dialog_->input_name,
 		     controller().params().getOptions().c_str());
 
 	if (controller().params().getCmdName() == "url")
-		fl_set_button(dialog_->radio_html, 0);
+		fl_set_button(dialog_->check_html, 0);
 	else
-		fl_set_button(dialog_->radio_html, 1);
+		fl_set_button(dialog_->check_html, 1);
 }
 
 
 void FormUrl::apply()
 {
-	controller().params().setContents(fl_get_input(dialog_->url));
-	controller().params().setOptions(fl_get_input(dialog_->name));
+	controller().params().setContents(fl_get_input(dialog_->input_url));
+	controller().params().setOptions(fl_get_input(dialog_->input_name));
 
-	if (fl_get_button(dialog_->radio_html))
+	if (fl_get_button(dialog_->check_html))
 		controller().params().setCmdName("htmlurl");
 	else
 		controller().params().setCmdName("url");

@@ -15,7 +15,7 @@ struct FD_form_maths_deco {
 
 	FL_FORM *form;
 	FL_OBJECT *bmtable_deco1;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *bmtable_deco2;
 };
 

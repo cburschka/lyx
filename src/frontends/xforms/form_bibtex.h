@@ -15,13 +15,13 @@ struct FD_form_bibtex {
 	~FD_form_bibtex();
 
 	FL_FORM *form;
-	FL_OBJECT *database;
+	FL_OBJECT *input_database;
 	FL_OBJECT *button_ok;
-	FL_OBJECT *button_cancel;
-	FL_OBJECT *style;
-	FL_OBJECT *database_browse;
-	FL_OBJECT *style_browse;
-	FL_OBJECT *radio_bibtotoc;
+	FL_OBJECT *button_close;
+	FL_OBJECT *input_style;
+	FL_OBJECT *button_database_browse;
+	FL_OBJECT *button_style_browse;
+	FL_OBJECT *check_bibtotoc;
 };
 
 #endif /* FD_form_bibtex_h_ */

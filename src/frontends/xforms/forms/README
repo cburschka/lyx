@@ -14,8 +14,33 @@ updating the source incredibly easy.
 Name all buttons and other form components that are likely to cause a callback.
 The names should be of the form:  button_ok, radio_group_item and so on.
 
+Being more explicit (Angus, 12 Mar 2002):
+	class             | prefix
+	------------------+-------
+	FL_BROWSER        | browser
+	FL_BUTTON         | button
+	FL_PIXMAPBUTTON   | button
+	FL_CHECKBUTTON    | check
+	FL_CHOICE         | choice
+	FL_COUNTER        | counter
+	FL_DIAL           | dial
+	FL_INPUT          | input
+	FL_FRAME          | frame
+	FL_LABELFRAME     | frame
+	FL_ROUND3DBUTTON,
+	RADIO_BUTTON      | radio
+	FL_SLIDER         | slider
+	FL_VALSLIDER      | slider
+	FL_TABFOLDER      | tabfolder
+	FL_TEXT           | text
+
+The only exceptions to this are objects that are to be converted in the sed
+scripts. At the moment this applies only to bmtable:
+
+	Convert an FL_BUTTON to a FL_BMTABLE by using prefix "bmtable".
+
 Enter the full name of the callback eg.:
-        C_FormCopyrightOkCB
+        C_FormBaseOkCB
 
 That is, they all have the same format: C_##FormName##CallbackName.
 Your code will then need to use the appropriate macro to setup this C callback

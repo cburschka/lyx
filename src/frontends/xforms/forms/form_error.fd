@@ -44,7 +44,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
-name: message
+name: frame_message
 callback: 
 argument: 
 
@@ -62,7 +62,7 @@ label: Close|^[^M
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_South FL_South
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 

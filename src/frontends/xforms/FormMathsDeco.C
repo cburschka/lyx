@@ -61,7 +61,7 @@ void FormMathsDeco::build()
 			    deco2_width, deco2_height, deco2_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_deco2, 10);
 
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().addReadOnly(dialog_->bmtable_deco1);
 	bc().addReadOnly(dialog_->bmtable_deco2);
 }

@@ -15,10 +15,10 @@ struct FD_form_bibitem {
 	~FD_form_bibitem();
 
 	FL_FORM *form;
-	FL_OBJECT *key;
+	FL_OBJECT *input_key;
 	FL_OBJECT *button_ok;
-	FL_OBJECT *button_cancel;
-	FL_OBJECT *label;
+	FL_OBJECT *button_close;
+	FL_OBJECT *input_label;
 };
 
 #endif /* FD_form_bibitem_h_ */

@@ -37,33 +37,33 @@ void FormFloat::build()
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
-	bc().addReadOnly(dialog_->radio_top);
-	bc().addReadOnly(dialog_->radio_bottom);
-	bc().addReadOnly(dialog_->radio_page);
-	bc().addReadOnly(dialog_->radio_here);
-	bc().addReadOnly(dialog_->button_here_definitely);
+	bc().addReadOnly(dialog_->check_top);
+	bc().addReadOnly(dialog_->check_bottom);
+	bc().addReadOnly(dialog_->check_page);
+	bc().addReadOnly(dialog_->check_here);
+	bc().addReadOnly(dialog_->check_here_definitely);
 }
 
 
 void FormFloat::apply()
 {
 	string placement;
-	if (fl_get_button(dialog_->button_here_definitely)) {
+	if (fl_get_button(dialog_->check_here_definitely)) {
 		placement += "H";
 	} else {
-		if (fl_get_button(dialog_->radio_top)) {
+		if (fl_get_button(dialog_->check_top)) {
 			placement += "t";
 		}
-		if (fl_get_button(dialog_->radio_bottom)) {
+		if (fl_get_button(dialog_->check_bottom)) {
 			placement += "b";
 		}
-		if (fl_get_button(dialog_->radio_page)) {
+		if (fl_get_button(dialog_->check_page)) {
 			placement += "p";
 		}
-		if (fl_get_button(dialog_->radio_here)) {
+		if (fl_get_button(dialog_->check_here)) {
 			placement += "h";
 		}
 	}
@@ -97,27 +97,27 @@ void FormFloat::update()
 			here = true;
 		}
 	}
-	fl_set_button(dialog_->radio_top, top);
-	fl_set_button(dialog_->radio_bottom, bottom);
-	fl_set_button(dialog_->radio_page, page);
-	fl_set_button(dialog_->radio_here, here);
-	fl_set_button(dialog_->button_here_definitely, here_definitely);
-	setEnabled(dialog_->button_here_definitely, controller().params().allow_here_definitely);
+	fl_set_button(dialog_->check_top, top);
+	fl_set_button(dialog_->check_bottom, bottom);
+	fl_set_button(dialog_->check_page, page);
+	fl_set_button(dialog_->check_here, here);
+	fl_set_button(dialog_->check_here_definitely, here_definitely);
+	setEnabled(dialog_->check_here_definitely, controller().params().allow_here_definitely);
 }
 
 
 ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 {
-	if (ob == dialog_->button_here_definitely) {
-		if (fl_get_button(dialog_->button_here_definitely)) {
-			fl_set_button(dialog_->radio_top,    false);
-			fl_set_button(dialog_->radio_bottom, false);
-			fl_set_button(dialog_->radio_page,   false);
-			fl_set_button(dialog_->radio_here,   false);
+	if (ob == dialog_->check_here_definitely) {
+		if (fl_get_button(dialog_->check_here_definitely)) {
+			fl_set_button(dialog_->check_top,    false);
+			fl_set_button(dialog_->check_bottom, false);
+			fl_set_button(dialog_->check_page,   false);
+			fl_set_button(dialog_->check_here,   false);
 		}
 	} else {
-		if (fl_get_button(dialog_->button_here_definitely)) {
-			fl_set_button(dialog_->button_here_definitely, false);
+		if (fl_get_button(dialog_->check_here_definitely)) {
+			fl_set_button(dialog_->check_here_definitely, false);
 		}
 	}
 

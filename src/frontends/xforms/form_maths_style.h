@@ -16,7 +16,7 @@ struct FD_form_maths_style {
 	FL_FORM *form;
 	FL_OBJECT *bmtable_font2;
 	FL_OBJECT *bmtable_style1;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *bmtable_style2;
 	FL_OBJECT *bmtable_font1;
 	FL_OBJECT *button_reset;

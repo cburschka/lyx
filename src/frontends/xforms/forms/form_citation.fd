@@ -26,7 +26,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: box
+name:
 callback: 
 argument: 
 
@@ -206,7 +206,7 @@ label: Regular Expression|#R
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_SouthWest FL_SouthWest
-name: button_search_type
+name: check_search_type
 callback: 
 argument: 
 
@@ -224,7 +224,7 @@ label: Case sensitive|#C
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
-name: button_search_case
+name: check_search_case
 callback: 
 argument: 
 
@@ -314,7 +314,7 @@ label: Full author list|#F
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_full_author_list
+name: check_full_author_list
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -332,7 +332,7 @@ label: Upper case|#U
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_force_uppercase
+name: check_force_uppercase
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -458,7 +458,7 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
-name: button_cancel
+name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
 

@@ -100,7 +100,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|#C^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 455, 270, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 455, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -28,11 +28,11 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
   fdui->form = fl_bgn_form(FL_NO_BOX, 465, 500);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 500, "");
-  fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 20, 15, 435, 365, _("Tabbed folder"));
+  fdui->tabfolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 20, 15, 435, 365, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 460, 100, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 460, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -121,8 +121,7 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 245, 15, 180, 120, _("Orientation"));
-
-  fdui->group_radio_orientation = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Portrait|#r");
     fdui->radio_portrait = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 40, 120, 30, idex(_(dummy)));
@@ -319,8 +318,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-
-  fdui->group_doc_sides = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("One|#n");
     fdui->radio_doc_sides_one = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 300, 30, 120, 30, idex(_(dummy)));
@@ -339,8 +337,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
 
-
-  fdui->group_doc_columns = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("One|#e");
     fdui->radio_doc_columns_one = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 300, 120, 110, 30, idex(_(dummy)));
@@ -359,8 +356,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
 
-
-  fdui->group_doc_sep = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Indent|#I");
     fdui->radio_doc_indent = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 50, 260, 110, 30, idex(_(dummy)));
@@ -483,11 +479,11 @@ FD_form_doc_options * FormDocument::build_doc_options()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->slider_secnumdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 200, 75, 80, 30, _("Section number depth"));
+  fdui->counter_secnumdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 200, 75, 80, 30, _("Section number depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->slider_tocdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 200, 115, 80, 30, _("Table of contents depth"));
+  fdui->counter_tocdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 200, 115, 80, 30, _("Table of contents depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
@@ -575,8 +571,7 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_FIXED_STYLE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUTBULLETLATEX);
-
-  fdui->radio_bullet_depth = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("1|#1");
     fdui->radio_bullet_depth_1 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 150, 35, 55, 30, idex(_(dummy)));
@@ -619,8 +614,7 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
   obj = fl_add_text(FL_NORMAL_TEXT, 145, 10, 85, 20, _("Bullet Depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-
-  fdui->radio_bullet_panel = fl_bgn_group();
+ fl_bgn_group();
   {
     char const * const dummy = N_("Standard|#S");
     fdui->radio_bullet_panel_standard = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 105, 90, 30, idex(_(dummy)));
@@ -642,6 +636,16 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL2);
+  {
+    char const * const dummy = N_("Ding 1|#D");
+    fdui->radio_bullet_panel_ding1 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 165, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_boxtype(obj, FL_UP_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL6);
   {
     char const * const dummy = N_("Ding 2|#i");
     fdui->radio_bullet_panel_ding2 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 195, 90, 30, idex(_(dummy)));
@@ -672,16 +676,6 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL5);
-  {
-    char const * const dummy = N_("Ding 1|#D");
-    fdui->radio_bullet_panel_ding1 = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 15, 165, 90, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_UP_BOX);
-    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETPANEL6);
   fl_end_group();
 
   fl_end_form();

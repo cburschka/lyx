@@ -17,8 +17,8 @@ struct FD_form_aboutlyx {
 	~FD_form_aboutlyx();
 
 	FL_FORM *form;
-	FL_OBJECT *close;
-	FL_OBJECT *tabbed_folder;
+	FL_OBJECT *button_close;
+	FL_OBJECT *tabfolder;
 };
 struct FD_form_tab_version {
 	~FD_form_tab_version();

@@ -18,14 +18,13 @@ struct FD_form_include {
 	FL_OBJECT *button_browse;
 	FL_OBJECT *check_typeset;
 	FL_OBJECT *button_ok;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 	FL_OBJECT *button_load;
 	FL_OBJECT *input_filename;
 	FL_OBJECT *check_visiblespace;
-	FL_OBJECT *include_grp;
-	FL_OBJECT *check_verbatim;
-	FL_OBJECT *check_useinput;
-	FL_OBJECT *check_useinclude;
+	FL_OBJECT *radio_verbatim;
+	FL_OBJECT *radio_useinput;
+	FL_OBJECT *radio_useinclude;
 };
 
 #endif /* FD_form_include_h_ */

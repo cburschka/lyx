@@ -53,7 +53,7 @@ void FormPrint::build()
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_cancel);
+	bc().setCancel(dialog_->button_close);
 
 	// allow controlling of input and ok/apply (de)activation
 	fl_set_input_return(dialog_->input_printer,
@@ -132,7 +132,7 @@ void FormPrint::apply()
 			       string(fl_get_input(dialog_->input_file)),
 			       wp, from, to,
 			       static_cast<bool>(order_.getButton()),
-			       !static_cast<bool>(fl_get_button(dialog_->radio_collated)),
+			       !static_cast<bool>(fl_get_button(dialog_->check_collated)),
 			       strToInt(fl_get_input(dialog_->input_count)));
 
 	controller().params() = pp;

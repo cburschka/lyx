@@ -20,7 +20,7 @@ struct FD_form_sendto {
 	FL_OBJECT *input_command;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_close;
 };
 
 #endif /* FD_form_sendto_h_ */
