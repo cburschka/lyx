@@ -27,7 +27,7 @@ Menuset
 #
     Menu "file_nobuffer"
 	Item "New...|N" "buffer-new"
-	Item "New from template...|t" "buffer-new-template"
+	Item "New from Template...|T" "buffer-new-template"
 	Item "Open...|O" "buffer-open"
 	Separator
 	Submenu "Import|I" "file_import"
@@ -39,14 +39,14 @@ Menuset
 
     Menu "file"
 	Item "New...|N" "buffer-new"
-	Item "New from template...|t" "buffer-new-template"
+	Item "New from Template...|T" "buffer-new-template"
 	Item "Open...|O" "buffer-open"
 	Separator
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
 	Item "Save As...|A" "buffer-write-as"
-	Item "Revert to saved|d" "buffer-reload"
-	Submenu "Version control|V" "file_vc"
+	Item "Revert to Saved|d" "buffer-reload"
+	Submenu "Version Control|V" "file_vc"
 	Separator
 	Submenu "Import|I" "file_import"
 	Submenu "Insert|r" "file_insert"
@@ -64,8 +64,8 @@ Menuset
 	OptItem "Register|R" "vc-register"
 	OptItem "Check In Changes|I" "vc-check-in"
 	OptItem "Check Out for Edit|O" "vc-check-out"
-	OptItem "Revert to last version|l" "vc-revert"
-	OptItem "Undo last check in|U" "vc-undo-last"
+	OptItem "Revert to Last Version|L" "vc-revert"
+	OptItem "Undo Last Check In|U" "vc-undo-last"
 	OptItem "Show History|H" "vc-history"
     End
 
@@ -75,10 +75,10 @@ Menuset
 
     Menu "file_insert"
 	Item "File...|F" "buffer-child-insert"
-	Item "LyX file...|X" "file-insert"
-	Item "Ascii as lines...|l" "file-insert-ascii lines"
-	Item "Ascii as paragraphs...|p" "file-insert-ascii paragraphs"
-	Item "External material...|E" "external-insert"
+	Item "LyX Document...|X" "file-insert"
+	Item "Ascii as Lines...|L" "file-insert-ascii lines"
+	Item "Ascii as Paragraphs...|P" "file-insert-ascii paragraphs"
+	Item "External Material...|E" "external-insert"
     End
 
 
@@ -101,7 +101,7 @@ Menuset
 	Item "Cut|C" "cut"
 	Item "Copy|o" "copy"
 	Item "Paste|a" "paste"
-	Submenu "Paste external selection|x" "edit_paste"
+	Submenu "Paste External Selection|x" "edit_paste"
 	Separator
 	Item "Find & Replace...|F" "find-replace"
 	Submenu "Tabular|T" "edit_tabular"
@@ -109,7 +109,7 @@ Menuset
 	Separator
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
-	Item "Remove all Error boxes|E" "error-remove-all"
+	Item "Remove All Error Boxes|E" "error-remove-all"
 	Separator
 	Item "Preferences...|P" "dialog-preferences"
 	Item "Reconfigure|R" "reconfigure"
@@ -125,8 +125,8 @@ Menuset
 	Item "Melt|M" "melt"
 	Item "Open All Figures/Tables|F" "floats-operate openfig"
 	Item "Close All Figures/Tables|T" "floats-operate closefig"
-	Item "Open All Footnotes/Margin Notes|A" "floats-operate openfoot"
-	Item "Close All Footnotes/Margin Notes|C" "floats-operate closefoot"
+	Item "Open All Footnotes/Marginal Notes|A" "floats-operate openfoot"
+	Item "Close All Footnotes/Marginal Notes|C" "floats-operate closefoot"
     End
 
     Menu "edit_tabular"
@@ -156,18 +156,18 @@ Menuset
 # INSERT MENU
 #
     Menu "insert"
-	Item "Math text|t" "math-mode"
-	Item "Math display|d" "math-display"
-	Item "Math panel...|p" "math-panel"
+	Item "Math Text|T" "math-mode"
+	Item "Math Display|D" "math-display"
+	Item "Math Panel...|P" "math-panel"
 	Separator
-	Submenu "Special character|S" "insert_special"
-	Item "Citation reference...|C" "citation-insert"
-	Item "Cross reference...|r" "reference-insert"
+	Submenu "Special Character|S" "insert_special"
+	Item "Citation Reference...|C" "citation-insert"
+	Item "Cross Reference...|R" "reference-insert"
 	Item "Label...|L" "label-insert"
 	Item "Footnote|F" "footnote-insert"
-	Item "Marginal note|M" "marginpar-insert"
-	Item "Index entry...|I" "index-insert"
-	Item "Index entry of last word|w" "index-insert-last"
+	Item "Marginal Note|M" "marginpar-insert"
+	Item "Index Entry...|I" "index-insert"
+	Item "Index Entry of Last Word|W" "index-insert-last"
 	Item "URL...|U" "url-insert"
 	Item "Note...|N" "note-insert"
 	Separator
@@ -182,22 +182,22 @@ Menuset
 	Item "Superscript|S" "command-sequence math-insert ^;math-mode;"
 	Item "Subscript|u" "command-sequence math-insert _;math-mode;"
 	Item "HFill|H" "hfill-insert"
-	Item "Hyphenation point|p" "hyphenation-point-insert"
-	Item "Protected blank|b" "protected-space-insert"
+	Item "Hyphenation Point|P" "hyphenation-point-insert"
+	Item "Protected Blank|B" "protected-space-insert"
 	Item "Linebreak|L" "break-line"
 	Item "Ellipsis|i" "dots-insert"
-	Item "End of sentence|E" "end-of-sentence-period-insert"
+	Item "End of Sentence|E" "end-of-sentence-period-insert"
 	Item "Ordinary Quote|Q" "quote-insert"
 	Item "Menu Separator|M" "menu-separator-insert"
     End
 
     Menu "insert_floats"
-	Item "Figure float|F" "buffer-float-insert figure"
-	Item "Table float|T" "buffer-float-insert table"
-	Item "Wide figure float|W" "buffer-float-insert wide-fig"
-	Item "Wide table float|d" "buffer-float-insert wide-tab"
+	Item "Figure Float|F" "buffer-float-insert figure"
+	Item "Table Float|T" "buffer-float-insert table"
+	Item "Wide Figure Float|W" "buffer-float-insert wide-fig"
+	Item "Wide Table Float|d" "buffer-float-insert wide-tab"
 	Separator
-	Item "Algorithm float|A" "buffer-float-insert algorithm"
+	Item "Algorithm Float|A" "buffer-float-insert algorithm"
     End
 
     Menu "insert_toc"
@@ -206,7 +206,7 @@ Menuset
 	Item "List of Tables|T" "lot-insert"
 	Item "List of Algorithms|A" "loa-insert"
 	Item "Index List|I" "index-print"
-	Item "BibTeX reference...|B" "bibtex-insert"
+	Item "BibTeX Reference...|B" "bibtex-insert"
     End
 
 #
@@ -223,11 +223,11 @@ Menuset
 	Item "Bold Style|B" "font-bold"
 	Item "TeX Style|X" "tex-mode"
 	Separator
-	Item "Change environment depth|v" "depth-increment"
-	Item "LaTeX preamble...|L" "layout-preamble"
+	Item "Change Environment Depth|v" "depth-increment"
+	Item "LaTeX Preamble...|L" "layout-preamble"
 	Item "Toggle Appendix|A" "appendix"
 	Separator
-	Item "Save layout as default|S" "layout-save-default"
+	Item "Save Layout as Default|S" "layout-save-default"
     End
 
 
@@ -236,10 +236,10 @@ Menuset
 #
     Menu "view"
 	ViewFormats
-	OptItem "Build program|B" "build-program"
+	OptItem "Build Program|B" "build-program"
 	Submenu "Update|U" "update"
 	Separator
-	Item "LaTeX log file|L" "latex-view-log"
+	Item "LaTeX Logfile|L" "latex-view-log"
 	Item "Table of Contents|T" "toc-view"
     End
 
@@ -272,7 +272,7 @@ Menuset
 	Item "Customization|C" "help-open Customization"
 	Item "Reference Manual|R" "help-open Reference"
 	Item "FAQ|F" "help-open FAQ"
-	Item "Table of contents|a" "help-open TOC"
+	Item "Table of Contents|a" "help-open TOC"
 	Item "Known Bugs|K" "help-open BUGS"
 	Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 	Separator
