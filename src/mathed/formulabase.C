@@ -632,6 +632,11 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 		break;
 
+	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+		//lyxerr << "LFUN ignored\n";
+		break;
+
 	case -1:
 	case LFUN_INSERT_MATH:
 	case LFUN_SELFINSERT:
