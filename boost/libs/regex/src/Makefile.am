@@ -19,4 +19,4 @@ libboostregex_la_SOURCES = \
 #	posix_api.cpp \
 #	wide_posix_api.cpp \
 #	regex_debug.cpp
-#	winstances.cpp \
+#	winstances.cpp

@@ -154,7 +154,7 @@ bool isLetter(PosIterator & cur)
 	return !cur.at_end()
 		&& cur.pit()->isLetter(cur.pos())
 		&& !isDeletedText(*cur.pit(), cur.pos())
-		&& (!cur.inset() || cur.inset()->allowSpellCheck()); 
+		&& (!cur.inset() || cur.inset()->allowSpellCheck());
 }
 
 
@@ -163,7 +163,7 @@ WordLangTuple nextWord(PosIterator & cur, PosIterator const & end,
 {
 	// skip until we have real text (will jump paragraphs)
 	for (; cur != end && !isLetter(cur); ++cur, ++progress);
-	
+
 	if (cur == end)
 		return WordLangTuple(string(), string());
 
@@ -195,8 +195,8 @@ void ControlSpellchecker::check()
 	PosIterator const beg = buffer()->pos_iterator_begin();
 	PosIterator const end = buffer()->pos_iterator_end();
 
-	int start = distance(beg, cur);
-	int const total = start + distance(cur, end);
+	int start = std::distance(beg, cur);
+	int const total = start + std::distance(cur, end);
 
 	if (cur != buffer()->pos_iterator_begin())
 		for (; cur != end && isLetter(cur); ++cur, ++start);
@@ -235,9 +235,9 @@ void ControlSpellchecker::check()
 
 	if (!word_.word().empty()) {
 		int const size = word_.word().size();
-		advance(cur, -size);
+		std::advance(cur, -size);
 		bufferview()->putSelectionAt(cur, size, false);
-		advance(cur, size);
+		std::advance(cur, size);
 	} else {
 		showSummary();
 		endSession();

@@ -78,7 +78,7 @@ namespace lyx {
 namespace find {
 
 string const find2string(string const & search,
- 			 bool casesensitive, bool matchword, bool forward)
+			 bool casesensitive, bool matchword, bool forward)
 {
 	ostringstream ss;
 	ss << search << '\n'
@@ -88,7 +88,7 @@ string const find2string(string const & search,
 
 	return ss.str();
 }
- 
+
 
 string const replace2string(string const & search, string const & replace,
 			    bool casesensitive, bool matchword,
@@ -155,7 +155,7 @@ void replace(BufferView * bv, FuncRequest const & ev)
 			     casesensitive, matchword) :
 		::replace(bv, search, replace,
 			  casesensitive, matchword, forward);
- 
+
 	if (replace_count == 0) {
 		lv->message(_("String not found!"));
 	} else {
@@ -180,10 +180,10 @@ bool findNextChange(BufferView * bv)
 
 	if (!findChange(cur, endit))
 		return false;
-	
+
 	ParagraphList::iterator pit = cur.pit();
 	pos_type pos = cur.pos();
-	
+
 	Change orig_change = pit->lookupChangeFull(pos);
 	pos_type parsize = pit->size();
 	pos_type end = pos;
@@ -243,7 +243,7 @@ public:
 
 		return true;
 	}
-	
+
 private:
 	// search string
 	string str;
@@ -328,9 +328,9 @@ int replaceAll(BufferView * bv,
 
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
-	
+
 	recordUndo(Undo::ATOMIC, bv->text(), 0, buf.paragraphs().size() - 1);
-	
+
 	PosIterator cur = buf.pos_iterator_begin();
 	PosIterator const end = buf.pos_iterator_end();
 	MatchString const match(searchstr, cs, mw);
@@ -345,7 +345,7 @@ int replaceAll(BufferView * bv,
 			= cur.pit()->getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.pit()->erase(pos, pos + ssize);
 		cur.pit()->insert(pos, replacestr, font);
-		advance(cur, rsize + striked);
+		std::advance(cur, rsize + striked);
 		++num;
 	}
 
@@ -359,7 +359,7 @@ int replaceAll(BufferView * bv,
 
 
 bool stringSelected(BufferView * bv,
-		    string const & searchstr, 
+		    string const & searchstr,
 		    bool cs, bool mw, bool fw)
 {
 	LyXText * text = bv->getLyXText();
@@ -395,7 +395,7 @@ int replace(BufferView * bv,
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();
-	
+
 	return 1;
 }
 

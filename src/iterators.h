@@ -25,7 +25,9 @@ class BufferView;
 class PosIterator;
 
 
-class ParIterator {
+class ParIterator  : public std::iterator<
+	std::forward_iterator_tag,
+	ParagraphList::value_type> {
 public:
 	///
 	ParIterator(ParagraphList::iterator pit, ParagraphList const & pl);
@@ -77,7 +79,9 @@ bool operator==(ParIterator const & iter1, ParIterator const & iter2);
 bool operator!=(ParIterator const & iter1, ParIterator const & iter2);
 
 
-class ParConstIterator {
+class ParConstIterator : public std::iterator<
+	std::forward_iterator_tag,
+	ParagraphList::value_type> {
 public:
 	///
 	ParConstIterator(ParagraphList::iterator pit, ParagraphList const & pl);

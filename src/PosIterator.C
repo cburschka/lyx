@@ -33,7 +33,7 @@ PosIterator & PosIterator::operator++()
 	BOOST_ASSERT(!stack_.empty());
 	while (true) {
 		PosIteratorItem & p = stack_.back();
-		
+
 		if (p.pos < p.pit->size()) {
 			if (InsetBase * inset = p.pit->getInset(p.pos)) {
 				if (LyXText * text = inset->getText(p.index)) {
@@ -49,10 +49,10 @@ PosIterator & PosIterator::operator++()
 			++p.pit;
 			p.pos = 0;
 		}
-		
+
 		if (p.pit != p.pl->end() || stack_.size() == 1)
 			return *this;
-		
+
 		stack_.pop_back();
 	}
 	return *this;
@@ -62,9 +62,9 @@ PosIterator & PosIterator::operator++()
 PosIterator & PosIterator::operator--()
 {
 	BOOST_ASSERT(!stack_.empty());
-	
+
 	// try to go one position backwards: if on the start of the
-	// ParagraphList, pops an item 
+	// ParagraphList, pops an item
 	PosIteratorItem & p = stack_.back();
 	if (p.pos > 0) {
 		--p.pos;
@@ -105,10 +105,10 @@ bool operator!=(PosIterator const & lhs, PosIterator const & rhs)
 
 bool operator==(PosIterator const & lhs, PosIterator const & rhs)
 {
-	
+
 	PosIteratorItem const & li = lhs.stack_.back();
 	PosIteratorItem const & ri = rhs.stack_.back();
-	
+
 	return (li.pl == ri.pl && li.pit == ri.pit &&
 		(li.pit == li.pl->end() || li.pos == ri.pos));
 }
@@ -132,7 +132,7 @@ PosIterator::PosIterator(BufferView & bv)
 	LyXText * text = bv.getLyXText();
 	lyx::pos_type pos = bv.cursor().pos();
 	ParagraphList::iterator pit = text->cursorPar();
-	
+
 	ParIterator par = bv.buffer()->par_iterator_begin();
 	ParIterator end = bv.buffer()->par_iterator_end();
 	for ( ; par != end; ++par) {
@@ -150,22 +150,4 @@ InsetBase * PosIterator::inset() const
 		return 0;
 	PosIteratorItem const & pi = stack_[stack_.size() - 2];
 	return pi.pit->getInset(pi.pos);
-}
-
-
-int distance(PosIterator const & cur, PosIterator const & end)
-{
-	int count = 0;
-	for (PosIterator p = cur; p != end; ++p, ++count)
-		;
-	return count;
-}
-
-
-void advance(PosIterator & cur, int howmuch)
-{
-	for (int i = 0; i < howmuch; ++i)
-		++cur;
-	for (int i = 0; i > howmuch; --i)
-		--cur;
 }

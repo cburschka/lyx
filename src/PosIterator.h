@@ -35,7 +35,9 @@ struct PosIteratorItem {
 };
 
 
-class PosIterator {
+class PosIterator : public std::iterator<
+	std::bidirectional_iterator_tag,
+        ParagraphList::value_type> {
 public:
 	PosIterator(BufferView & bv);
 	PosIterator(ParIterator & par, lyx::pos_type pos);
@@ -52,7 +54,7 @@ public:
 	InsetBase * inset() const;
 	friend PosIterator ParIterator::asPosIterator(lyx::pos_type) const;
 	friend ParIterator::ParIterator(PosIterator const &);
-	
+
 private:
 	PosIterator() {};
 	//this is conceptually a stack, but we need random access sometimes
@@ -63,8 +65,4 @@ private:
 bool operator!=(PosIterator const &, PosIterator const &);
 bool operator==(PosIterator const &, PosIterator const &);
 
-int distance(PosIterator const &, PosIterator const &);
-void advance(PosIterator &, int);
-
 #endif
-

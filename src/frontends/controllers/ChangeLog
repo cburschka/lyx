@@ -1,3 +1,8 @@
+2004-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* ControlSpellchecker.C (check): use std::distance and
+	std::advance
+
 2004-01-25  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSearch.[Ch]: derive from Dialog::Controller rather than

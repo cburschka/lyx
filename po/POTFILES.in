@@ -27,9 +27,7 @@ src/frontends/controllers/ControlLog.C
 src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrefs.C
 src/frontends/controllers/ControlPrint.C
-src/frontends/controllers/ControlSearch.C
 src/frontends/controllers/ControlSpellchecker.C
-src/frontends/controllers/ControlThesaurus.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/character.C
 src/frontends/controllers/frnt_lang.C
@@ -141,7 +139,7 @@ src/frontends/xforms/xformsBC.h
 src/frontends/xforms/xforms_helpers.C
 src/gettext.h
 src/importer.C
-src/insets/inset.C
+src/insets/insetbase.C
 src/insets/insetbibtex.C
 src/insets/insetbox.C
 src/insets/insetbranch.C
@@ -185,6 +183,7 @@ src/mathed/formulabase.C
 src/mathed/formulamacro.C
 src/mathed/math_hullinset.C
 src/mathed/math_macrotemplate.C
+src/mathed/math_nestinset.C
 src/mathed/math_parboxinset.C
 src/mathed/ref_inset.C
 src/output.C
@@ -194,6 +193,9 @@ src/output_plaintext.C
 src/paragraph.C
 src/paragraph_funcs.C
 src/rowpainter.C
+src/support/globbing.C
+src/support/path_defines.C
+src/tex2lyx/lengthcommon.C
 src/text.C
 src/text2.C
 src/text3.C

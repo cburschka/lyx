@@ -1,4 +1,11 @@
+2004-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* lyxfind.C (replaceAll): use std::advance
+
+	* iterators.h: inherit from std::iterator.
+
+	* PosIterator.C (advance, distance): remove
+	* PosIterator.h: interit from std::iterator.
 
 2004-01-26  André Pönitz  <poenitz@gmx.net>
 
@@ -102,7 +109,7 @@
 
 	* lyxcursor.[hC]: remove, it's CursorSlice now.
 
-	* Makefile.am: 
+	* Makefile.am:
 	* BufferView_pimpl.[Ch]:
 	* bufferview_funcs.C:
 	* cursor_slice.C:
@@ -122,7 +129,7 @@
 
 	* BufferView_pimpl.C (MenuInsertLyXFile):
 	* lyx_cb.C (WriteAs, getContentsOfAsciiFile):
-	* lyxfunc.C (menuNew, open, doImport): 
+	* lyxfunc.C (menuNew, open, doImport):
 	FileFilterList change to the FileDialog open and save functions.
 
 2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
