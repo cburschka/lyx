@@ -8,7 +8,7 @@
 # author Angus Leeming
 # with much advice from members of the preview-latex project:
 # David Kastrup, dak@gnu.org and
-# Jan-Ã…ke Larsson, jalar@mai.liu.se.
+# Jan-Åke Larsson, jalar@mai.liu.se.
 
 # Full author contact details are available in file CREDITS
 
