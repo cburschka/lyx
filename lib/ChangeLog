@@ -1,3 +1,14 @@
+2003-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* doc/LaTeXConfig.lyx.in: update wrt g-brief2 changes; remove bad
+	tokens (some 1.4.0 format file got pasted by mistake)
+
+2003-12-22  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* layouts/g-brief2-en.layout: fix spelling, 
+ 	remove obsolete style; rename file to g-brief2.layout
+	* layouts/g-brief2-de.layout: remove file
+
 2003-12-12  Ronald Florence  <ron@18james.com>
 
 	* reLyX/reLyX.in: search for library in

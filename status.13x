@@ -64,6 +64,11 @@ What's new
 
 - output useful info on receipt of LFUN_GETLAYOUT.
 
+- add debug output if unable to open an ofstream to output the graphics
+  conversion script.
+
+- add debug output if unable to open preferences.xform for read/write.
+
 - add a couple of forgotten MacOSX-related files
 
 - a better fix for badly placed math symbols with LyX/Mac
@@ -72,7 +77,3 @@ What's new
 
 - fix problems with non-GNU make program
 
-- add debug output if unable to open an ofstream to output the graphics
-  conversion script.
-
-- add debug output if unable to open preferences.xform for read/write.
