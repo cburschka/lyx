@@ -46,14 +46,11 @@ using std::find_if;
 using std::reverse;
 using std::sort;
 
-extern string system_lyxdir;
-
 namespace {
 
 string const token_from("$$i");
 string const token_base("$$b");
 string const token_to("$$o");
-string const token_lib("$$s");
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -627,15 +624,16 @@ bool Converters::convert(Buffer const * buffer,
 				runLaTeX(buffer, latex_command_);
 			}
 
-			string const infile2 = (conv.original_dir)
+			string infile2 = (conv.original_dir)
 				? infile : MakeRelPath(infile, path);
-			string const outfile2 = (conv.original_dir)
+			string outfile2 = (conv.original_dir)
 				? outfile : MakeRelPath(outfile, path);
+
 			string command = conv.command;
 			command = subst(command, token_from, QuoteName(infile2));
 			command = subst(command, token_base, QuoteName(from_base));
 			command = subst(command, token_to, QuoteName(outfile2));
-			command = subst(command, token_lib, system_lyxdir + "scripts");
+			command = LibScriptSearch(command);
 
 			if (!conv.parselog.empty())
 				command += " 2> " + QuoteName(infile2 + ".out");
