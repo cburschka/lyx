@@ -22,7 +22,9 @@ MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                3
 
-# Change a bit Part and Part*
+
+# Change Part and Part* a bit
+
 Style Part
 	Align                 Left
 	AlignPossible         Left
@@ -56,6 +58,7 @@ Style LandscapeSlide
 	      LabelSep        "MMMMMMM"
 End
 
+
 Style PortraitSlide
 	      CopyStyle       Standard
 	      LatexType       Environment
@@ -65,23 +68,28 @@ Style PortraitSlide
 	      LabelString     "Portrait Slide"
 End
 
+
 Style Slide
 	      Obsoletedby     LandscapeSlide
 End
 
+
 Style Slide*
 	      Obsoletedby     PortraitSlide
 End
+
 
 Style SlideHeading
 	      CopyStyle       Section
 	      LatexName       slideheading
 End
 
+
 Style SlideSubHeading
 	      CopyStyle       Subsection
 	      LatexName       slidesubheading
 End
+
 
 Style ListOfSlides
 	      KeepEmpty       1
@@ -92,6 +100,7 @@ Style ListOfSlides
 	      LabelString     "List Of Slides"
 End
 
+
 Style SlideContents
 	      KeepEmpty       1
 	      Align           Center
@@ -101,6 +110,7 @@ Style SlideContents
 	      LabelString     "Slidecontents"
 End
 
+
 Style ProgressContents
 	      KeepEmpty       1
 	      Align           Center
@@ -109,4 +119,3 @@ Style ProgressContents
 	      Labeltype       Static
 	      LabelString     "Progress Contents"
 End
-

@@ -17,7 +17,7 @@ DefaultFont
 	Color                 None
 EndFont
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -29,7 +29,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-# My Address style
+
 Style My_Address
 	Margin                Right_Address_Box
 	LatexType             Command
@@ -41,7 +41,7 @@ Style My_Address
 	AlignPossible         Left
 End
 
-# Send_To_Address style definition
+
 Style Send_To_Address
 	Margin                Static
 	LatexType             Command
@@ -55,7 +55,7 @@ Style Send_To_Address
 	LabelType             No_Label
 End
 
-# Opening style definition
+
 Style Opening
 	Margin                Static
 	LatexType             Command
@@ -71,7 +71,6 @@ Style Opening
 	LabelType             Static
 	LabelString           Opening:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -79,7 +78,7 @@ Style Opening
 	EndFont
 End
 
-# Signature style definition
+
 Style Signature
 	Margin                Static
 	LatexType             Command
@@ -94,7 +93,6 @@ Style Signature
 	LabelType             Static
 	LabelString           Signature:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -102,7 +100,7 @@ Style Signature
 	EndFont
 End
 
-# Closing style definition
+
 Style Closing
 	Margin                Static
 	LatexType             Command
@@ -117,7 +115,6 @@ Style Closing
 	LabelType             Static
 	LabelString           Closing:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -125,7 +122,7 @@ Style Closing
 	EndFont
 End
 
-# cc style definition
+
 Style cc
 	Margin                Static
 	LatexType             Command
@@ -141,7 +138,7 @@ Style cc
 	LabelString           cc:
 End
 
-# encl style definition
+
 Style encl
 	Margin                Static
 	LatexType             Command
@@ -158,7 +155,7 @@ Style encl
 	Spacing               Other 1.5
 End
 
-# Telephone style definition
+
 Style Location
 	Margin                Static
 	LatexType             Command
@@ -175,7 +172,7 @@ Style Location
 	Spacing               Other 1.5
 End
 
-# Telephone style definition
+
 Style Telephone
 	Margin                Static
 	LatexType             Command
@@ -191,4 +188,3 @@ Style Telephone
 	LabelString           Telephone:
 	Spacing               Other 1.5
 End
-

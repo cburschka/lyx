@@ -11,13 +11,16 @@ Input stdclass.inc
 # Global parameters.
 Sides           2
 
+
 # Page styles
 ClassOptions
 	PageStyle     empty|plain|outer|headings|myheadings|uheadings|myuheadings
 End
 
+
 # There is no abstract environment in book.cls
 NoStyle Abstract
+
 	      
 # a few changes to the bibliography
 Style Bibliography

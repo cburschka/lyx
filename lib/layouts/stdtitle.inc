@@ -7,7 +7,7 @@
 # This include files contains all layouts that handle the title area
 # a document, like title, author and such.
 
-# Title style definition
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -22,14 +22,12 @@ Style Title
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Size                Largest
 	EndFont
-
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -44,14 +42,12 @@ Style Author
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Size                Large
 	EndFont
-
 End
 
-# Date style definition
+
 Style Date
 	Margin                Dynamic
 	LatexType             Command
@@ -66,10 +62,7 @@ Style Date
 	AlignPossible         Center
 	LabelType             No_Label
 
-
-	# standard font definition
 	Font 
 	  Size                Large
 	EndFont
-
 End

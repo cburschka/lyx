@@ -3,19 +3,22 @@
 # The tugboat journal (TUGboat) textclass definition file.
 # Journal of the TeX User Group http://www.tug.org
 # Author : Herbert Voss <voss@perce.de> 2001/08/13
-#
+
+
 # General textclass parameters
 Columns                 2
 Sides                   2
 #SecNumDepth                            #no counting
 #TocDepth               -1
 MaxCounter              Counter_Section
-#
+
+
 ClassOptions
 	FontSize              default         #only 11pt
 	PageStyle             ""              # controlled by class
 End
-#
+
+
 DefaultFont                             # only for screen
 	Family                Roman
 	Series                Medium
@@ -23,10 +26,8 @@ DefaultFont                             # only for screen
 	Size                  Normal
 	Color                 None
 EndFont
-#
-#
-# Standard style definition
-#
+
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -38,11 +39,11 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 End
-#
-#
+
+
 Input stdlists.inc
 
-# Section style definition
+
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -58,7 +59,6 @@ Style Section
 	AlignPossible         Block, Left
 	LabelType             Counter_Section
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -66,7 +66,7 @@ Style Section
 
 End
 
-# Subsection style definition
+
 Style Subsection
 	Margin                Dynamic
 	LatexType             Command
@@ -81,7 +81,6 @@ Style Subsection
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Counter_Subsection
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -89,7 +88,6 @@ Style Subsection
 End
 
 
-# Subsubsection style definition
 Style Subsubsection
 	Margin                Dynamic
 	LatexType             Command
@@ -105,7 +103,6 @@ Style Subsubsection
 	AlignPossible         Block, Left
 	LabelType             Counter_SubSubSection
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -113,7 +110,7 @@ Style Subsubsection
 
 End
 
-# Paragraph style definition
+
 Style Paragraph
 	Margin                Dynamic
 	LatexType             Command
@@ -129,7 +126,6 @@ Style Paragraph
 	AlignPossible         Block, Left
 	LabelType             Counter_Paragraph
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -138,16 +134,18 @@ End
 
 
 #Input stdstarsections.inc
-#
+
 Input stdstruct.inc
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
+
 #
 # Create and Overwrite some styles
 #
-# Title style definition
+
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -161,14 +159,13 @@ Style Title
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	# standard font definition
 	TextFont 
 	  Series              Bold
 	  Size                Normal
 	EndFont
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -184,9 +181,8 @@ Style Author
 	AlignPossible         Left
 	LabelType             No_Label
 End
-#
-#
-# Abstract style definition
+
+
 Style Abstract 
 	Margin                Static
 	LatexType             Environment
@@ -204,11 +200,9 @@ Style Abstract
 	LabelType             Top_Environment
 	LabelString           Abstract
 	LabelBottomSep    0.5
-	# standard font definition
 	TextFont 
 	  Size                Normal
 	EndFont
-	# label font definition
 	LabelFont 
 	  Size                Normal
 	  Series              Bold

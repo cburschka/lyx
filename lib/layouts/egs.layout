@@ -13,7 +13,7 @@ Sides                   1
 PageStyle               Plain
 MaxCounter              Counter_Section
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -25,7 +25,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-# Section style definition
+
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -40,18 +40,16 @@ Style Section
 	AlignPossible         Block, Left
 	LabelType             Counter_Section
 
-	# standard font definition
 	Font
 	  Series              Bold
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Series              Bold
 	EndFont
 End
 
-# Subsection style definition
+
 Style Subsection
 	Margin                Dynamic
 	LatexType             Command
@@ -69,10 +67,9 @@ Style Subsection
 	Font
 	  Shape               Up
 	EndFont
-
 End
 
-# Paragraph style definition
+
 Style Paragraph
 	Margin                Dynamic
 	LatexType             Command
@@ -86,20 +83,18 @@ Style Paragraph
 	AlignPossible         Block, Left
 	LabelType             Counter_Paragraph
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Normal
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Normal
 	EndFont
 End
 
-# Subparagraph style definition
+
 Style Subparagraph
 	Margin                Dynamic
 	LatexType             Command
@@ -114,20 +109,18 @@ Style Subparagraph
 	AlignPossible         Block, Left
 	LabelType             Counter_SubParagraph
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Normal
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Normal
 	EndFont
 End
 
-# Quotation style definition
+
 Style Quotation
 	Margin                Static
 	LatexType             Environment
@@ -145,7 +138,7 @@ Style Quotation
 	AlignPossible         Block, Left, Right, Center
 End
 
-# Quote style definition
+
 Style Quote
 	Margin                Static
 	LatexType             Environment
@@ -161,7 +154,7 @@ Style Quote
 	LabelType             No_Label
 End
 
-# List style definition
+
 Style List
 	Margin                Manual
 	LatexType             List_Environment
@@ -178,7 +171,7 @@ Style List
 	LabelString           00.00.0000
 End
 
-# Enumerate style definition
+
 Style Enumerate
 	Margin                Static
 	LatexType             Item_Environment
@@ -196,7 +189,7 @@ Style Enumerate
 	LabelType             Counter_EnumI
 End
 
-# Itemize style definition
+
 Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
@@ -214,7 +207,7 @@ Style Itemize
 	LabelString           *
 End
 
-# Description style definition
+
 Style Description
 	Margin                First_Dynamic
 	LatexType             Item_environment
@@ -232,13 +225,12 @@ Style Description
 	LabelType             Manual
 	LabelString           MM
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Verse style definition
+
 Style Verse
 # LaTeX type is first dynamic because of LaTeX implementation.
 # In LyX this does not make sense.
@@ -257,7 +249,7 @@ Style Verse
 	LabelType             No_Label
 End
 
-# Right Address style
+
 Style Right_Address
 	Margin                Right_Address_Box
 	LatexType             Command
@@ -269,7 +261,7 @@ Style Right_Address
 	AlignPossible         Left
 End
 
-# Address style definition
+
 Style Address
 	Margin                Static
 	LatexType             Command
@@ -282,7 +274,7 @@ Style Address
 	LabelType             No_Label
 End
 
-# Title style definition
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -298,17 +290,14 @@ Style Title
 	Fill_Top              1
 	Fill_Bottom           1
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-
 End
 
 
-# Title style definition
 Style LaTeX_Title
 	Margin                Static
 	LatexType             Command
@@ -323,16 +312,14 @@ Style LaTeX_Title
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -349,16 +336,14 @@ Style Author
 	LabelType             Static
 	LabelString           Author:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
-# Affiliation style definition
+
 Style Affil
 	Margin                Static
 	LatexType             Command
@@ -375,7 +360,6 @@ Style Affil
 	LabelType             Static
 	LabelString           Affilation:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -384,7 +368,7 @@ Style Affil
 
 End
 
-# journal name style definition
+
 Style Journal
 	Margin                Static
 	LatexType             Command
@@ -401,16 +385,14 @@ Style Journal
 	LabelType             Static
 	LabelString           Journal:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
-# msnumber style definition
+
 Style msnumber
 	Margin                Static
 	LatexType             Command
@@ -428,17 +410,14 @@ Style msnumber
 	LabelType             Static
 	LabelString           MS_number:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
 
-# FirstAuthor style definition
 Style FirstAuthor
 	Margin                Static
 	LatexType             Command
@@ -455,7 +434,6 @@ Style FirstAuthor
 	LabelType             Static
 	LabelString           1st_author_surname:
  
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -464,7 +442,7 @@ Style FirstAuthor
 
 End
 
-# Recieved style definition
+
 Style Received
 	Margin                Static
 	LatexType             Command
@@ -481,16 +459,14 @@ Style Received
 	LabelType             Static
 	LabelString           Received:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
-# Accepted style definition
+
 Style Accepted
 	Margin                Static
 	LatexType             Command
@@ -507,18 +483,14 @@ Style Accepted
 	LabelType             Static
 	LabelString           Accepted:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
-#
-#
-# offsets style definition
+
 Style Offsets
 	Margin                Static
 	LatexType             Command
@@ -535,16 +507,14 @@ Style Offsets
 	LabelType             Static
 	LabelString           reprint_reqs_to:
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
-# Date style definition
+
 Style Date
 	Margin                Dynamic
 	LatexType             Command
@@ -558,10 +528,9 @@ Style Date
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 End
 
-# Abstract style definition
+
 Style Abstract 
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -578,13 +547,12 @@ Style Abstract
 	LabelType             Static
 	LabelString           Abstract.  
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End 
 
-# Acknowledgement(s) style definitions
+
 Style Acknowledgements
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -601,7 +569,6 @@ Style Acknowledgements
 	LabelType             Static
 	LabelString           Acknowledgements. 
 
-	# font & label font definition
 	Font 
 	  Size                Small
 	EndFont
@@ -611,6 +578,7 @@ Style Acknowledgements
 	  Size                Small
 	EndFont
 End 
+
 
 Style Acknowledgement
 	Margin                First_Dynamic
@@ -628,7 +596,6 @@ Style Acknowledgement
 	LabelType             Static
 	LabelString           Acknowledgement. 
 
-	# font & label font definition
 	Font 
 	  Size                Small
 	EndFont
@@ -638,8 +605,8 @@ Style Acknowledgement
 	  Size                Small
 	EndFont
 End 
-#
-# Bibliography style definition
+
+
 Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
@@ -657,13 +624,12 @@ Style Bibliography
 	LabelString           References 
 	LabelBottomSep    0.7
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Caption style definition
+
 Style Caption
 	Margin                First_Dynamic
 	LatexType             Command
@@ -676,13 +642,12 @@ Style Caption
 	LabelType             Sensitive
 	LabelString           Caption
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Section* style definition
+
 Style Section*
 	Margin                Static
 	LatexType             Command
@@ -697,15 +662,13 @@ Style Section*
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Series              Bold
 #    Size               Larger
 	EndFont
-
 End
 
-# Subsection* style definition
+
 Style Subsection*
 	Margin                Static
 	LatexType             Command
@@ -719,10 +682,9 @@ Style Subsection*
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-
 End
 
-# LaTeX style definition
+
 Style LaTeX
 	Margin                Static
 	LatexType             Paragraph
@@ -736,16 +698,12 @@ Style LaTeX
 	LabelType             No_Label
 	FreeSpacing           1
 
-	# standard font definition
 	Font 
 	  Color               red
 	EndFont
-
 End
 
 
-
-# Lyx-Code style definition
 Style LyX-Code
 	Margin                Static
 	LatexType             Environment
@@ -760,12 +718,11 @@ Style LyX-Code
 	LabelType             No_Label
 	FreeSpacing           1
 
-	# standard font definition
 	Font 
 	  Family              Typewriter
 	EndFont
-
 End
+
 
 Input stdfloats.inc
 Input stdcounters.inc

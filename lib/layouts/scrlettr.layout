@@ -3,7 +3,7 @@
 # KOMA scrlettr textclass definition file. 
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1999/2/17.
 
-# Standard style definition
+
 Style Standard
 	LatexName             dummy
 	ParSep                0.4
@@ -22,7 +22,7 @@ End
 # Delete List
 NoStyle List
 
-# Labeling style definition
+
 Style Labeling
 	Margin                Manual
 	LatexType             List_Environment
@@ -44,7 +44,7 @@ Input stdlayouts.inc
 # Delete Caption
 NoStyle Caption
 
-# Letter style definition
+
 Style Letter
 	LatexType             Command
 	LatexName             letter
@@ -66,7 +66,7 @@ Style Letter
 	EndFont
 End
 
-# Opening style definition
+
 Style Opening
 	CopyStyle             Letter
 	LatexName             lyxopening
@@ -77,7 +77,7 @@ Style Opening
 	EndPreamble
 End
 
-# Closing style definition
+
 Style Closing
 	LatexType             Command
 	LatexName             closing
@@ -89,7 +89,7 @@ Style Closing
 	AlignPossible         Left
 End
 
-# PS style definition
+
 Style PS
 	LatexType             Command
 	LatexName             ps
@@ -100,7 +100,7 @@ Style PS
 	AlignPossible         Left
 End
 
-# CC style definition
+
 Style CC
 	LatexType             Command
 	LatexName             cc
@@ -115,14 +115,14 @@ Style CC
 	LabelString           "cc:"
 End
 
-# Encl style definition
+
 Style Encl
 	CopyStyle             CC
 	LatexName             encl
 	LabelString           "encl:"
 End
 
-# Name style definition
+
 Style Name
 	LatexType             Command
 	LatexName             name
@@ -144,77 +144,77 @@ Style Name
 	EndFont
 End
 
-# Signature style definition
+
 Style Signature
 	CopyStyle             Name
 	LatexName             signature
 	LabelString           "Signature:"
 End
 
-# Address style definition
+
 Style Address
 	CopyStyle             Name
 	LatexName             address
 	LabelString           "Address:"
 End
 
-# Telephone style definition
+
 Style Telephone
 	CopyStyle             Name
 	LatexName             telephone
 	LabelString           "Telephone:"
 End
 
-# Place style definition
+
 Style Place
 	CopyStyle             Name
 	LatexName             place
 	LabelString           "Place:"
 End
 
-# Date style definition
+
 Style Date
 	CopyStyle             Name
 	LatexName             date
 	LabelString           "Date:"
 End
 
-# Backaddress style definition
+
 Style Backaddress
 	CopyStyle             Name
 	LatexName             backaddress
 	LabelString           "Backaddress:"
 End
 
-# Specialmail style definition
+
 Style Specialmail
 	CopyStyle             Name
 	LatexName             specialmail
 	LabelString           "Specialmail:"
 End
 
-# Location style definition
+
 Style Location
 	CopyStyle             Name
 	LatexName             location
 	LabelString           "Location:"
 End
 
-# Title style definition
+
 Style Title
 	CopyStyle             Name
 	LatexName             title
 	LabelString           "Title:"
 End
 
-# Subject style definition
+
 Style Subject
 	CopyStyle             Name
 	LatexName             subject
 	LabelString           "Subject:"
 End
 
-# Yourref style definition
+
 Style Yourref
 	CopyStyle             Name
 	LatexName             yourref
@@ -229,28 +229,28 @@ Style Yourref
 	EndFont
 End
 
-# Yourmail style definition
+
 Style Yourmail
 	CopyStyle             Yourref
 	LatexName             yourmail
 	LabelString           "Your letter of:"
 End
 
-# Myref style definition
+
 Style Myref
 	CopyStyle             Yourref
 	LatexName             myref
 	LabelString           "Our ref.:"
 End
 
-# Customer style definition
+
 Style Customer
 	CopyStyle             Yourref
 	LatexName             customer
 	LabelString           "Customer no.:"
 End
 
-# Invoice style definition
+
 Style Invoice
 	CopyStyle             Yourref
 	LatexName             invoice

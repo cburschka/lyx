@@ -10,6 +10,7 @@
 # Version 1  2002-09-24  -  First version from scratch.
 # Version 2  2003-03-03  -  Updated for LyX 1.3.0.
 
+
 # Input general definitions
 Input stdclass.inc
 Input stdsections.inc
@@ -23,6 +24,7 @@ Input stdstruct.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
+
 # General class settings
 MaxCounter              Counter_Section
 SecNumDepth             3
@@ -35,7 +37,7 @@ ClassOptions
 	PageStyle             ""
 End
 
-# Title style redefinition
+
 Style Title
 	Align                 Center
 	AlignPossible         Center
@@ -44,7 +46,7 @@ Style Title
 	EndFont
 End
 
-# Author style redefinition
+
 Style Author
 	Align                 Center
 	AlignPossible         Center
@@ -54,7 +56,7 @@ Style Author
 	EndFont
 End
 
-# Address style definition
+
 Style Address
 	LatexType             Command
 	InTitle               1
@@ -71,6 +73,7 @@ Style Address
 	EndFont
 End
 
+
 # Abstract style redefinition
 Style Abstract
 	LatexType             Environment
@@ -82,6 +85,7 @@ Style Abstract
 	EndFont
 End
 
+
 # Section style redefinition
 Style Section
 	Align                 Block
@@ -90,6 +94,7 @@ Style Section
 	  Size                Normal
 	EndFont
 End
+
 
 # Section* style redefinition
 Style Section*
@@ -100,6 +105,7 @@ Style Section*
 	EndFont
 End
 
+
 # Subsection style redefinition
 Style Subsection
 	Align                 Block
@@ -109,6 +115,7 @@ Style Subsection
 	  Size                Normal
 	EndFont
 End
+
 
 # Subsubection style redefinition
 Style Subsubsection
@@ -121,7 +128,7 @@ Style Subsubsection
 	EndFont
 End
 
-# Theorem style definition
+
 Style Theorem
 	LatexType             Environment
 	LatexName             theorem
@@ -137,7 +144,7 @@ Style Theorem
 	EndFont
 End
 
-# Proof style definition
+
 Style Proof
 	LatexType             Environment
 	LatexName             proof
@@ -153,6 +160,7 @@ Style Proof
 	EndFont
 End
 
+
 # Bibliography style redefinition
 Style Bibliography
 	Align                 Block
@@ -162,7 +170,7 @@ Style Bibliography
 	EndFont
 End
 
-# Appendix style definition
+
 Style Appendix
 	Margin                Static
 	LatexType             Command

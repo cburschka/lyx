@@ -6,28 +6,7 @@
 # This include files contains various standard environments for lists,
 # quotations and such.
 
-# LaTeX style definition
-#Style LaTeX
-#  Margin               Static
-#  LatexType            Paragraph
-#  LatexName            dummy
-#  NewLine              0
-#  ParIndent            MM
-#  ParSkip              0.4
-#  ParSep               0.5
-#  Align                        Block
-#  AlignPossible                Block, Left, Right, Center
-#  LabelType            No_Label
-#  FreeSpacing          1
-#
-#  # standard font definition
-#  Font 
-#    Latex              Latex
-#  EndFont
-#
-#End
 
-# Quotation style definition
 Style Quotation
 	Margin                Static
 	LatexType             Environment
@@ -45,7 +24,7 @@ Style Quotation
 	AlignPossible         Block, Left, Right, Center
 End
 
-# Quote style definition
+
 Style Quote
 	Margin                Static
 	LatexType             Environment
@@ -61,7 +40,7 @@ Style Quote
 	LabelType             No_Label
 End
 
-# Verse style definition
+
 Style Verse
 # LaTeX type is first dynamic because of LaTeX implementation.
 # In LyX this does not make sense.
@@ -80,7 +59,7 @@ Style Verse
 	LabelType             No_Label
 End
 
-# Caption style definition
+
 Style Caption
 	Margin                First_Dynamic
 	LatexType             Command
@@ -95,10 +74,7 @@ Style Caption
 	LabelString   Caption
 	OptionalArgs          1
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
-
-

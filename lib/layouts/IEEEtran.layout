@@ -13,7 +13,8 @@
 # IEEEtran.cls can be obtained from the www.ieee.org website -- look for
 # the author information area.  There is a LaTeX 2.09 IEEEtran.sty available
 # also but LyX doesn't support 2.09 stuff so don't get that one.
-#
+
+
 # Input general definitions
 
 Columns                 1
@@ -22,9 +23,11 @@ MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                3
 
+
 ClassOptions
 	FontSize              9|10|11|12
 End  
+
 
 DefaultFont
 	Family                Roman
@@ -34,7 +37,7 @@ DefaultFont
 	Color                 None
 EndFont
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -46,12 +49,10 @@ Style Standard
 	LabelType             No_Label
 End
 
-##
-## stdlists
-##
+
 Input stdlists.inc
 
-# 
+
 # First cut at theorem environment support.
 # What other theorem-like environments are needed?
 # How many of these should be discarded?
@@ -60,8 +61,8 @@ Input stdlists.inc
 # IEEE Transactions.
 # OH!  and all theorems are numbered.  Is that a problem?
 # Tell me:  rae@lyx.org
-#
-# Theorem-numbered style *Template* declaration
+
+
 Style TheoremTemplate
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -78,7 +79,7 @@ Style TheoremTemplate
 	EndFont
 End
 
-# Proof style declaration
+
 Style Proof
 	CopyStyle             TheoremTemplate
 	LatexName             proof
@@ -86,7 +87,7 @@ Style Proof
 	EndLabelType          Filled_Box
 End
 
-# Theorem-numbered style declaration
+
 Style Theorem
 	CopyStyle             TheoremTemplate
 	LatexName             thm
@@ -97,7 +98,7 @@ Style Theorem
 	EndPreamble
 End  
 
-# Lemma-numbered style declaration
+
 Style Lemma
 	CopyStyle             TheoremTemplate
 	LatexName             lemma
@@ -108,7 +109,7 @@ Style Lemma
 	EndPreamble
 End  
 
-# Corollary-numbered style declaration
+
 Style Corollary
 	CopyStyle             TheoremTemplate
 	LatexName             cor
@@ -119,7 +120,7 @@ Style Corollary
 	EndPreamble
 End
 
-# Proposition-numbered style declaration
+
 Style Proposition
 	CopyStyle             TheoremTemplate
 	LatexName             prop
@@ -130,7 +131,7 @@ Style Proposition
 	EndPreamble
 End  
 
-# Conjecture-numbered style declaration
+
 Style Conjecture
 	CopyStyle             TheoremTemplate
 	LatexName             conject
@@ -141,7 +142,7 @@ Style Conjecture
 	EndPreamble
 End  
 
-# Criterion-numbered style declaration
+
 Style Criterion
 	CopyStyle             TheoremTemplate
 	LatexName             criter
@@ -152,7 +153,7 @@ Style Criterion
 	EndPreamble
 End  
 
-# Fact-numbered style declaration
+
 Style Fact
 	CopyStyle             TheoremTemplate
 	LatexName             fact
@@ -163,7 +164,7 @@ Style Fact
 	EndPreamble
 End  
 
-# Axiom-numbered style declaration
+
 Style Axiom
 	CopyStyle             TheoremTemplate
 	LatexName             axi
@@ -174,7 +175,7 @@ Style Axiom
 	EndPreamble
 End  
 
-# Definition-numbered style declaration
+
 Style Definition
 	CopyStyle             TheoremTemplate
 	LatexName             definitn
@@ -185,7 +186,7 @@ Style Definition
 	EndPreamble
 End
 
-# Example-numbered style declaration
+
 Style Example
 	CopyStyle             TheoremTemplate
 	LatexName             example
@@ -196,7 +197,7 @@ Style Example
 	EndPreamble
 End
 
-# Condition-numbered style declaration
+
 Style Condition
 	CopyStyle             TheoremTemplate
 	LatexName             condition
@@ -207,7 +208,7 @@ Style Condition
 	EndPreamble
 End
 
-# Problem-numbered style declaration
+
 Style Problem
 	CopyStyle             TheoremTemplate
 	LatexName             problem
@@ -218,7 +219,7 @@ Style Problem
 	EndPreamble
 End
 
-# Exercise-numbered style declaration
+
 Style Exercise
 	CopyStyle             TheoremTemplate
 	LatexName             exacise
@@ -229,7 +230,7 @@ Style Exercise
 	EndPreamble
 End
 
-# Remark-numbered style declaration
+
 Style Remark
 	CopyStyle             TheoremTemplate
 	LatexName             remrk
@@ -240,7 +241,7 @@ Style Remark
 	EndPreamble
 End
 
-# Claim-numbered style declaration
+
 Style Claim
 	CopyStyle             TheoremTemplate
 	LatexName             claim
@@ -251,7 +252,7 @@ Style Claim
 	EndPreamble
 End
 
-# Note-numbered style declaration
+
 Style Note
 	CopyStyle             TheoremTemplate
 	LatexName             note
@@ -262,7 +263,7 @@ Style Note
 	EndPreamble
 End
 
-# Notation-numbered style declaration
+
 Style Notation
 	CopyStyle             TheoremTemplate
 	LatexName             notation
@@ -273,7 +274,7 @@ Style Notation
 	EndPreamble
 End
 
-# Case-numbered style declaration
+
 Style Case
 	CopyStyle             TheoremTemplate
 	LatexName             case
@@ -286,11 +287,10 @@ End
 
 NoStyle TheoremTemplate
 
-##
-## stdsections and stdstarsections
-##
+
 Input stdsections.inc
 Input stdstarsections.inc
+
 
 NoStyle                 Part
 NoStyle                 Part*
@@ -298,6 +298,7 @@ NoStyle                 Chapter
 NoStyle                 Chapter*
 NoStyle                 Subparagraph
 NoStyle                 Subparagraph*
+
 
 Style Section
 	Align                 Center
@@ -317,12 +318,14 @@ Style Subsection
 	EndFont
 End
 
+
 Style Subsubsection
 	Font
 	   Shape              Up
 	   Size               Normal
 	EndFont
 End
+
 
 Style Section*
 	Align                 Center
@@ -342,6 +345,7 @@ Style Subsection*
 	EndFont
 End
 
+
 Style Subsubsection*
 	Font
 	   Shape              Up
@@ -349,11 +353,10 @@ Style Subsubsection*
 	EndFont
 End
 
-##
-## stdstruct
-##
+
 Input stdtitle.inc
 Input stdstruct.inc
+
 
 Style Abstract
 	Margin                First_Dynamic
@@ -365,19 +368,18 @@ Style Abstract
 	LabelString           "Abstract---"
 #  LabelBottomSep        0.0
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Small
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Shape               Italic
 	  Series              Medium
 	  Size                Small
 	EndFont
 End 
+
 
 Style Keywords
 	Margin                Dynamic
@@ -391,7 +393,6 @@ Style Keywords
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Keywords---"
-	# label font definition
 	TextFont
 	  Shape               Up
 	  Size                Small
@@ -402,15 +403,15 @@ Style Keywords
 	EndFont
 End
 
-# Bibliography style definition
+
 Style Bibliography
-	# label font definition
 	LabelFont
 	  Shape               Smallcaps             
 	  Series              Medium
 	  Size                Normal
 	EndFont
 End
+
 
 Style Appendix
 	Margin                Static
@@ -424,7 +425,6 @@ Style Appendix
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Appendix"
-	# label font definition
 	TextFont
 	  Shape               Up
 	  Size                Normal
@@ -434,6 +434,7 @@ Style Appendix
 	  Size                Normal
 	EndFont
 End
+
 
 Style Appendices
 	Margin                Static
@@ -447,7 +448,6 @@ Style Appendices
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Appendices"
-	# label font definition
 	TextFont
 	  Shape               Up
 	  Size                Small
@@ -457,6 +457,7 @@ Style Appendices
 	  Size                Normal
 	EndFont
 End
+
 
 Style Biography
 	LaTeXType             Environment
@@ -468,16 +469,16 @@ Style Biography
 	EndFont
 End
 
-##
-##  stdlayouts
-##
+
 Input stdlayouts.inc
+
 
 Style Caption
 	LabelFont
 	  Series              Medium
 	EndFont
 End
+
 
 Style Footernote
 	Margin                Static
@@ -491,7 +492,6 @@ Style Footernote
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Footernote"
-	# label font definition
 	TextFont
 	  Shape               Up
 	  Size                Small
@@ -502,6 +502,7 @@ Style Footernote
 	EndFont
 End
 
+
 Style MarkBoth
 	LaTeXType             Command
 	LaTeXName             markboth
@@ -509,9 +510,9 @@ Style MarkBoth
 	AlignPossible         Center
 End
 
-##
+
 ## Others
-##
+
 Input stdfloats.inc
 Input stdcounters.inc
 Input lyxmacros.inc

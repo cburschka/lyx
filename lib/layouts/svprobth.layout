@@ -33,9 +33,7 @@ End
 
 ## Now, some cosmetic changes wrt the default style.
 
-# Title style definition
 Style Title
-	# standard font definition
 	Font 
 	  Family              Roman
 	  Series              Bold
@@ -43,9 +41,8 @@ Style Title
 	EndFont
 End
 
-# Subtitle style definition
+
 Style Subtitle
-	# standard font definition
 	Font 
 	  Family              Roman
 	  Series              Bold
@@ -53,9 +50,8 @@ Style Subtitle
 	EndFont
 End
 
-# Author style definition
+
 Style Author
-	# standard font definition
 	Font 
 	  Series              Medium
 	  Shape               Up

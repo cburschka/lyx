@@ -3,16 +3,17 @@
 # KOMA scrlettr2 textclass definition file.
 # Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/17.
 
-# Standard style definition
+
 Style Standard
 	LatexName             dummy
 	ParSep                0.4
 	AlignPossible         Block, Left, Right, Center
 End
 
+
 Input stdlists.inc
 
-# Modify Description
+
 Style Description
 	LabelFont
 	  Family              Sans
@@ -22,7 +23,7 @@ End
 # Delete List
 NoStyle List
 
-# Labeling style definition
+
 Style Labeling
 	Margin                Manual
 	LatexType             List_Environment
@@ -41,10 +42,9 @@ End
 
 Input stdlayouts.inc
 
-# Delete Caption
 NoStyle Caption
 
-# Letter style definition
+
 Style Address
 	LatexType             Command
 	LatexName             begin
@@ -72,7 +72,7 @@ Style Address
 	EndFont
 End
 
-# NextLetter style definition
+
 # Start new letter
 Style NextAddress
 	LatexType             Command
@@ -96,7 +96,7 @@ Style NextAddress
 	EndFont
 End
 
-# Opening style definition
+
 Style Opening
 	LatexType             Command
 	LatexName             opening
@@ -118,7 +118,7 @@ Style Opening
 	EndFont
 End
 
-# Closing style definition
+
 Style Closing
 	CopyStyle             Opening
 	LatexType             Command
@@ -126,7 +126,7 @@ Style Closing
 	LabelString           "Closing:"
 End
 
-# PS style definition
+
 Style PS
 	CopyStyle             Opening
 	LatexType             Command
@@ -134,7 +134,7 @@ Style PS
 	LabelString           "Post Scriptum:"
 End
 
-# CC style definition
+
 Style CC
 	CopyStyle             Opening
 	LatexType             Command
@@ -142,14 +142,14 @@ Style CC
 	LabelString           "cc:"
 End
 
-# Encl style definition
+
 Style Encl
 	CopyStyle             Opening
 	LatexName             encl
 	LabelString           "encl:"
 End
 
-# Name style definition
+
 Style Name
 	LatexType             Command
 	LatexName             setkomavar
@@ -172,7 +172,7 @@ Style Name
 	EndFont
 End
 
-# Signature style definition
+
 Style Signature
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -180,7 +180,7 @@ Style Signature
 	LabelString           "Signature:"
 End
 
-# Address style definition
+
 Style SenderAddress
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -188,7 +188,7 @@ Style SenderAddress
 	LabelString           "Sender Address:"
 End
 
-# Telephone style definition
+
 Style Telephone
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -196,7 +196,7 @@ Style Telephone
 	LabelString           "Sender Phone:"
 End
 
-# Fax style definition
+
 Style Fax
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -205,7 +205,7 @@ Style Fax
 End
 
 
-# E-Mail style definition
+
 Style E-Mail
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -213,7 +213,7 @@ Style E-Mail
 	LabelString           "Sender E-Mail:"
 End
 
-# URL style definition
+
 Style URL
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -221,7 +221,7 @@ Style URL
 	LabelString           "Sender URL:"
 End
 
-# Bank style definition
+
 Style Bank
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -229,7 +229,7 @@ Style Bank
 	LabelString           "Bank:"
 End
 
-# Logo style definition
+
 Style Logo
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -237,7 +237,7 @@ Style Logo
 	LabelString           "Logo:"
 End
 
-# Place style definition
+
 Style Place
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -245,7 +245,7 @@ Style Place
 	LabelString           "Place:"
 End
 
-# Date style definition
+
 Style Date
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -253,7 +253,7 @@ Style Date
 	LabelString           "Date:"
 End
 
-# Backaddress style definition
+
 Style Backaddress
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -261,7 +261,7 @@ Style Backaddress
 	LabelString           "Backaddress:"
 End
 
-# Specialmail style definition
+
 Style Specialmail
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -269,7 +269,7 @@ Style Specialmail
 	LabelString           "Specialmail:"
 End
 
-# Location style definition
+
 Style Location
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -277,7 +277,7 @@ Style Location
 	LabelString           "Location:"
 End
 
-# Title style definition
+
 Style Title
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -285,7 +285,7 @@ Style Title
 	LabelString           "Title:"
 End
 
-# Subject style definition
+
 Style Subject
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -293,7 +293,7 @@ Style Subject
 	LabelString           "Subject:"
 End
 
-# Yourref style definition
+
 Style Yourref
 	CopyStyle             Name
 	LatexName             setkomavar
@@ -309,7 +309,7 @@ Style Yourref
 	EndFont
 End
 
-# Yourmail style definition
+
 Style Yourmail
 	CopyStyle             Yourref
 	LatexName             setkomavar
@@ -317,7 +317,7 @@ Style Yourmail
 	LabelString           "Your letter of:"
 End
 
-# Myref style definition
+
 Style Myref
 	CopyStyle             Yourref
 	LatexName             setkomavar
@@ -325,7 +325,7 @@ Style Myref
 	LabelString           "Our ref.:"
 End
 
-# Customer style definition
+
 Style Customer
 	CopyStyle             Yourref
 	LatexName             setkomavar
@@ -333,7 +333,7 @@ Style Customer
 	LabelString           "Customer no.:"
 End
 
-# Invoice style definition
+
 Style Invoice
 	CopyStyle             Yourref
 	LatexName             setkomavar
@@ -343,4 +343,3 @@ End
 
 ### Finally a few obsolete definitions for compatibility
 Input obsolete.inc
-

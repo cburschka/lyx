@@ -4,19 +4,22 @@
 # Die TeXnische Komoedie (dtk), 
 # the journal of the German TeX User Group http://www.dante.de.
 # Author : Herbert Voss <voss@lyx.org> 2001/08/13
-#
+
+
 # General textclass parameters
 Columns                 1
 Sides                   2
 SecNumDepth             -1              #no counting
 TocDepth                -1
 MaxCounter              Counter_EnumI   #no counting of sections
-#
+
+
 ClassOptions
 	FontSize              default         #only 10pt in fact of A5
 	PageStyle             ""              # controlled by class
 End
-#
+
+
 DefaultFont                             # only for screen
 	Family                Roman
 	Series                Medium
@@ -24,9 +27,8 @@ DefaultFont                             # only for screen
 	Size                  Normal
 	Color                 None
 EndFont
-#
-# Standard style definition
-#
+
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -37,20 +39,21 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 End
-#
-#
+
+
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
-#
+
+
 NoStyle Chapter
 NoStyle Chapter*
-#
+
+
 Input stdtitle.inc
 Input stdstruct.inc
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
+
 # no lyxmacros!
-
-

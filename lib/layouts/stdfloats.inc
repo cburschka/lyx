@@ -14,6 +14,7 @@ Float
 	ListName              "List of Tables"
 	LaTeXBuiltin          true
 End
+
 	
 Float
 	Type                  figure
@@ -25,6 +26,7 @@ Float
 	ListName              "List of Figures"
 	LaTeXBuiltin          true
 End
+
 
 Float
 	Type                  algorithm

@@ -8,7 +8,7 @@
 # document classes, but not for letters. It should be Input after
 # modying the style of the regular sectionning layouts.
 
-# Part* style definition
+
 Style Part*
 	CopyStyle             Part
 	Margin                Static
@@ -16,7 +16,7 @@ Style Part*
 	LabelType             No_Label
 End
 
-# Chapter* style definition
+
 Style Chapter*
 	CopyStyle             Chapter
 	Margin                Static
@@ -25,7 +25,7 @@ Style Chapter*
 	OptionalArgs          0
 End
 
-# Section* style definition
+
 Style Section*
 	CopyStyle             Section
 	Margin                Static
@@ -34,7 +34,7 @@ Style Section*
 	OptionalArgs          0
 End
 
-# Subsection* style definition
+
 Style Subsection*
 	CopyStyle             Subsection
 	Margin                Static
@@ -43,7 +43,7 @@ Style Subsection*
 	OptionalArgs          0
 End
 
-# Subsubsection* style definition
+
 Style Subsubsection*
 	CopyStyle             Subsubsection
 	Margin                Static
@@ -52,7 +52,7 @@ Style Subsubsection*
 	OptionalArgs          0
 End
 
-# Paragraph* style definition
+
 Style Paragraph*
 	CopyStyle             Paragraph
 	Margin                Static
@@ -61,7 +61,7 @@ Style Paragraph*
 	OptionalArgs          0
 End
 
-# Subparagraph* style definition
+
 Style Subparagraph*
 	CopyStyle             Subparagraph
 	Margin                Static
@@ -69,4 +69,3 @@ Style Subparagraph*
 	LabelType             No_Label
 	OptionalArgs          0
 End
-

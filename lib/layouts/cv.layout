@@ -10,7 +10,7 @@ SecNumDepth             -1
 TocDepth                -1
 MaxCounter              Counter_Section
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -22,7 +22,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-# Section style definition
+
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -38,14 +38,13 @@ Style Section
 	AlignPossible         Block, Left
 	LabelType             No_Label
 
-	# standard font definition
 	Font
 	  Family              Sans 
 	  Series              Bold
 	EndFont
 End
 
-# Section style definition
+
 Style Subsection
 	CopyStyle             Section
 	LatexName             subsection
@@ -53,12 +52,12 @@ Style Subsection
 	LeftMargin            MMM
 End
 
-# we used to have this version with wrong case
+
 Style SubSection
 	ObsoletedBy           Subsection
 End
 
-# Topic style definition
+
 Style Topic
 	Margin                Manual
 	LatexType             Item_environment
@@ -75,14 +74,13 @@ Style Topic
 	LabelType             Manual
 	LabelString           MMMMM
 
-	# label font definition
 	LabelFont 
 	  Family              Sans
 	  Shape               Slanted
 	EndFont
 End
 
-# Itemize style definition
+
 Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
@@ -100,7 +98,7 @@ Style Itemize
 	LabelString           *
 End
 
-# Left header
+
 Style Left_Header
 	CopyStyle             Standard
 	LatexType             Command
@@ -119,14 +117,14 @@ Style Left_Header
 
 End
 
-# Right header
+
 Style Right_Header
 	CopyStyle             "Left Header"
 	LatexName             rightheader
 	Margin                Right_Address_Box
 End
 
-# Title
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -141,16 +139,14 @@ Style Title
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-
 End
 
-# Bibliography style definition
+
 Style Bibliography
 	CopyStyle             Topic
 	LatexName             thebibliography
@@ -158,11 +154,9 @@ Style Bibliography
 	LabelString           ""
 	LabelBottomSep        0.7
 
-	# standard font definition
 	LabelFont
 	  Size                Tiny
 	EndFont
-	
 End
 
 Input stdfloats.inc

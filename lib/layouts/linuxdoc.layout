@@ -3,6 +3,7 @@
 # LinuxDoc textclass definition file. 
 # Author : Pascal André <andre@via.ecp.fr>
 
+
 # General textclass parameters
 Columns                 1
 Sides                   1
@@ -11,10 +12,11 @@ MaxCounter              Counter_Section
 OutputType              linuxdoc
 DefaultStyle            Standard
 
+
 Input stdcounters.inc
 Input stdfloats.inc
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -25,7 +27,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-# Quote style definition
+
 Style Quote
 	Margin                Static
 	LatexType             Environment
@@ -37,7 +39,7 @@ Style Quote
 	LabelType             No_Label
 End
 
-# Title style definition
+
 Style Title
 	Margin                Static
 	LatexType             Paragraph
@@ -50,14 +52,12 @@ Style Title
 	Fill_Top              1
 	Fill_Bottom           1
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Family              Sans
 	  Series              Bold
@@ -65,7 +65,7 @@ Style Title
 	EndFont
 End
 
-# Section style definition
+
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -78,20 +78,18 @@ Style Section
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Counter_Section
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Larger
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Larger
 	EndFont
 End
 
-# Subsection style definition
+
 Style Subsection
 	Margin                Dynamic
 	LatexType             Command
@@ -105,20 +103,18 @@ Style Subsection
 	AlignPossible         Block, Left
 	LabelType             Counter_Subsection
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Large
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Large
 	EndFont
 End
 
-# Subsubsection style definition
+
 Style Subsubsection
 	Margin                Dynamic
 	LatexType             Command
@@ -132,18 +128,16 @@ Style Subsubsection
 	AlignPossible         Block, Left
 	LabelType             Counter_SubSubSection
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Paragraph style definition
+
 Style Paragraph
 	Margin                Dynamic
 	LatexType             Command
@@ -156,18 +150,16 @@ Style Paragraph
 	AlignPossible         Block, Left
 	LabelType             Counter_Paragraph
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Subparagraph style definition
+
 Style Subparagraph
 	Margin                Dynamic
 	LatexType             Command
@@ -181,18 +173,16 @@ Style Subparagraph
 	AlignPossible         Block, Left
 	LabelType             Counter_SubParagraph
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Enumerate style definition
+
 Style Enumerate
 	Margin                Static
 	LatexType             Item_Environment
@@ -208,7 +198,7 @@ Style Enumerate
 	LabelType             Counter_EnumI
 End
 
-# Itemize style definition
+
 Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
@@ -225,7 +215,7 @@ Style Itemize
 	LabelString           *
 End
 
-# Description style definition
+
 Style Description
 	Margin                First_Dynamic
 	LatexType             Item_environment
@@ -242,13 +232,12 @@ Style Description
 	LabelType             Manual
 	LabelString           MM
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Verbatim style definition
+
 Style Verbatim
 	Margin                Static
 	LatexType             environment
@@ -264,18 +253,16 @@ Style Verbatim
 	FreeSpacing           1
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Family              Typewriter
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Family              Typewriter
 	EndFont
 End
 
-# Code style definition
+
 Style Code
 	Margin                Static
 	LatexType             Environment
@@ -293,7 +280,7 @@ Style Code
 	FreeSpacing           1
 End
 
-# Author style definition
+
 Style Author
 	Margin                Dynamic
 	LatexType             Paragraph
@@ -307,18 +294,16 @@ Style Author
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Size                Larger
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Size                Larger
 	EndFont
 End
 
-# Date style definition
+
 Style Date
 	Margin                Dynamic
 	LatexType             Paragraph
@@ -332,18 +317,16 @@ Style Date
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Size                Large
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Size                Large
 	EndFont
 End
 
-# Abstract style definition
+
 Style Abstract
 	Margin                Static
 	LatexType             Paragraph
@@ -358,18 +341,16 @@ Style Abstract
 	AlignPossible         Block
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Shape               Italic
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Shape               Italic
 	EndFont
 End 
 
-# SGML style definition
+
 Style SGML
 	Margin                Static
 	LatexType             Paragraph
@@ -385,7 +366,7 @@ Style SGML
 	PassThru              1
 End
 
-# Caption style definition
+
 Style Caption
 	Margin                First_Dynamic
 	LatexType             Paragraph
@@ -400,7 +381,6 @@ Style Caption
 	LabelString		Caption
 	OptionalArgs          1
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont

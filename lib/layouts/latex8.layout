@@ -3,20 +3,25 @@
 # Latex8 textclass definition file.
 # Author : Allan Rae <rae@elec.uq.edu.au>
 
+
 Preamble
 	\usepackage{latex8}
 	\usepackage{times}
 EndPreamble
 
+
 # Input general definitions
 Input stdclass.inc
+
 
 Columns                 1
 MaxCounter              Counter_Section
 
+
 ClassOptions
 	 FontSize             10
 End
+
 
 NoStyle Part
 NoStyle Part*
@@ -29,12 +34,14 @@ NoStyle Subsubsection*
 NoStyle Paragraph
 NoStyle Subparagraph
 
+
 Style Title
 	Font
 	  Series              Bold
 	  Size                Larger
 	EndFont
 End
+
 
 Style Section
 	TopSep                1.0
@@ -43,12 +50,14 @@ Style Section
 	latexname             "Section"
 End
 
+
 Style Subsection
 	TopSep                1.0
 	BottomSep             1.0
 	ParSep                1.0
 	latexname             "SubSection"
 End
+
 
 Style Email
 	Margin                Dynamic
@@ -64,7 +73,6 @@ Style Email
 	AlignPossible         Center
 	LabelType             Static
 	LabelString           "E-mail:"
-	# standard font definition
 	Font 
 	  Size                Large
 	  Family              Typewriter
@@ -74,6 +82,7 @@ Style Email
 	  Family              Roman
 	EndFont
 End
+
 
 Style Affiliation
 	Margin                Dynamic
@@ -88,18 +97,17 @@ Style Affiliation
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	# standard font definition
 	Font 
 	  Size                Large
 	EndFont
 End
+
 
 # Abstract style redefinition
 Style Abstract 
 	LeftMargin            ""
 	RightMargin           ""
 
-	# standard font definition
 	Font
 	  Size                Normal
 	  Shape               Italic
@@ -112,11 +120,13 @@ Style Abstract
 	EndFont
 End
 
+
 Style Caption
 	Font
 	  Series              Bold
 	EndFont
 End
+
 
 Style Bibliography
 	LabelFont

@@ -7,7 +7,7 @@
 # all environment classes. Some of these are a bit peculiar and might
 # be removed later.
 
-# Lyx-Code style definition
+
 Style LyX-Code
 	Margin                Static
 	LatexType             Environment
@@ -43,7 +43,7 @@ Style LyX-Code
 
 End
 
-# Address style definition
+
 Style Address
 	Margin                Static
 	LatexType             Command
@@ -66,7 +66,7 @@ Style Address
 
 End
 
-# Right Address style
+
 Style Right_Address
 	Margin                Right_Address_Box
 	LatexType             Command

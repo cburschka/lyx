@@ -12,14 +12,15 @@
 # Based on ejour2.layout.
 # ejour2 made originally by Martin Vermeer based on article.layout.
 # Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
-#
+
+
 # General textclass parameters
 Columns                 1
 Sides                   1
 PageStyle               Plain
 MaxCounter              Counter_Section
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -34,15 +35,14 @@ End
 # The standard sections
 Input stdsections.inc
 
-# Chapter style definition
+
 Style Chapter
 	Align         Center
 	AlignPossible Block,Left,Center
 End
 
-# Section style definition
+
 Style Section
-	# standard font definition
 	LabelFont
 	  Series              Bold
 	  Size                Large
@@ -53,7 +53,7 @@ Style Section
 	EndFont
 End
 
-# Subsection style definition
+
 Style Subsection
 	LabelType             Counter_Subsection
 	LabelFont
@@ -62,18 +62,16 @@ Style Subsection
 	EndFont
 End
 
-# Subsubsection style definition
+
 Style Subsubsection
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Normal
 	EndFont
 End
 
-# Paragraph style definition
+
 Style Paragraph
-# standard font definition
 	Font 
 	  Series              Medium
 	  Shape               Italic
@@ -81,9 +79,8 @@ Style Paragraph
 	EndFont
 End
 
-# Subparagraph style definition
+
 Style Subparagraph
-	# standard font definition
 	Font
 	  Series              Medium
 	  Shape               Up
@@ -91,19 +88,22 @@ Style Subparagraph
 	EndFont
 End
 
+
 # Now define the starred versions from the normal ones.
 Input stdstarsections.inc
+
 
 # Remove the ones that we do not want
 NoStyle         Part
 NoStyle         Part*
 NoStyle         Chapter
 
+
 # Some standard things
 Input stdlayouts.inc
 Input stdlists.inc
 
-# Title style definition
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -120,16 +120,14 @@ Style Title
 	Fill_Top              1
 	Fill_Bottom           1
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-
 End
 
-# Title style definition
+
 Style Subtitle
 	Margin                Static
 	LatexType             Command
@@ -145,16 +143,14 @@ Style Subtitle
 	AlignPossible         Left
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Large
 	EndFont
-
 End
 
-# Title_Running style definition
+
 Style Running_LaTeX_Title
 	Margin                Static
 	InTitle               1
@@ -172,16 +168,14 @@ Style Running_LaTeX_Title
 	LabelType             Static
 	LabelString           "Running title: "
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Red
 	EndFont
-
 End
 
-# TOC_Title style definition
+
 Style TOC_Title
 	CopyStyle             "Running LaTeX Title"
 	LatexName             toctitle
@@ -189,7 +183,7 @@ Style TOC_Title
 	LabelString           "TOC title: "
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -205,7 +199,6 @@ Style Author
 	AlignPossible         Left
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Shape               Italic
@@ -213,7 +206,7 @@ Style Author
 
 End
 
-# AuthorRunning style definition
+
 Style Author_Running
 	CopyStyle             "Running LaTeX Title"
 	LatexName             authorrunning
@@ -221,7 +214,7 @@ Style Author_Running
 	LabelString           "Author Running: "
 End
 
-# TOC_Author style definition
+
 Style TOC_Author
 	CopyStyle             "Running LaTeX Title"
 	LatexName             tocauthor
@@ -229,7 +222,7 @@ Style TOC_Author
 	LabelString           "TOC Author: "
 End
 
-# Institute style definition
+
 Style Institute
 	Margin                Static
 	LatexType             Command
@@ -244,16 +237,12 @@ Style Institute
 	AlignPossible         Left
 	LabelType             No_Label
 
-	# Std. font definition
 	Font 
 	  Size                Small
 	EndFont
-
 End
 
-#
-#
-# Correspondence address style definition
+
 Style Email
 	CopyStyle             "Running LaTeX Title"
 	LatexName             email   
@@ -261,7 +250,7 @@ Style Email
 	LabelString           "Email: "
 End
 
-# Abstract style definition
+
 Style Abstract 
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -278,15 +267,12 @@ Style Abstract
 	LabelType             Top_Environment
 	LabelString           Abstract. 
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End 
 
 
-#
-# Bibliography style definition
 Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
@@ -304,11 +290,9 @@ Style Bibliography
 	LabelString           References 
 	LabelBottomSep    0.7
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
-
 End
 
 # Mathematics-like definitions:
@@ -329,13 +313,11 @@ Style Case
 	LabelType             Static
 	LabelString           Case #. 
 
-	# font & label font definition
-
 	LabelFont 
 	  Shape               Italic
 	EndFont
-
 End
+
 
 Style Claim
 	CopyStyle             Case
@@ -343,11 +325,13 @@ Style Claim
 	LabelString           "Claim. " 
 End
 
+
 Style Conjecture
 	CopyStyle             Case
 	LatexName             conjecture
 	LabelString           "Conjecture #. " 
 End
+
 
 Style Corollary
 	CopyStyle             Case
@@ -366,11 +350,13 @@ Style Corollary
 
 End
 
+
 Style Definition
 	CopyStyle             Corollary
 	LatexName             definition
 	LabelString           "Definition #. "
 End
+
 
 Style Example
 	CopyStyle             Case
@@ -378,11 +364,13 @@ Style Example
 	LabelString           "Example #. "
 End
 
+
 Style Exercise
 	CopyStyle             Case
 	LatexName             exercise
 	LabelString           "Exercise #. "
 End
+
 
 Style Lemma
 	CopyStyle             Corollary
@@ -390,11 +378,13 @@ Style Lemma
 	LabelString           "Lemma #. "
 End
 
+
 Style Note
 	CopyStyle             Case
 	LatexName             note
 	LabelString           "Note #. "
 End
+
 
 Style Problem
 	CopyStyle             Exercise
@@ -402,11 +392,13 @@ Style Problem
 	LabelString           "Problem #. "
 End
 
+
 Style Proof
 	CopyStyle             Claim
 	LatexName             proof
 	LabelString           "Proof. "
 End
+
 
 Style Property
 	CopyStyle             Case
@@ -414,11 +406,13 @@ Style Property
 	LabelString           "Property #. "
 End
 
+
 Style Proposition
 	CopyStyle             Corollary
 	LatexName             proposition
 	LabelString           "Proposition #. "
 End
+
 
 Style Question
 	CopyStyle             Case
@@ -426,11 +420,13 @@ Style Question
 	LabelString           "Question #. "
 End
 
+
 Style Remark
 	CopyStyle             Case
 	LatexName             remark
 	LabelString           "Remark #. "
 End
+
 
 Style Solution
 	CopyStyle             Case
@@ -438,14 +434,17 @@ Style Solution
 	LabelString           "Solution #. "
 End
 
+
 Style Theorem
 	CopyStyle             Corollary
 	LatexName             theorem
 	LabelString           "Theorem #. "
 End
 
+
 Input stdfloats.inc
 Input stdcounters.inc
+
 
 #Finally a few older definitions for compatibility
 Input obsolete.inc

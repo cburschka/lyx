@@ -13,12 +13,14 @@
 #             Need of ERT is considerably minimized.
 # 2003-03-03  Updated for lyx 1.3.0.
 
+
 # General textclass parameters
 Columns                 1
 Sides                   2
 MaxCounter              Counter_Section
 SecNumDepth             4
 PageStyle               Plain
+
 
 DefaultFont
 	Family                Roman
@@ -28,10 +30,11 @@ DefaultFont
 	Color                 None
 EndFont
 
+
 Preamble
 EndPreamble
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -43,6 +46,7 @@ Style Standard
 	LabelType             No_Label
 End
 
+
 Input stdsections.inc
 NoStyle Chapter
 NoStyle Part
@@ -51,7 +55,7 @@ Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
-# Section style definition
+
 Style Section
 	Align                 Center
 	AlignPossible         Center
@@ -60,7 +64,7 @@ Style Section
 	EndFont
 End
 
-# Subsection style definition
+
 Style Subsection
 	Font 
 	  Series              Medium
@@ -69,7 +73,7 @@ Style Subsection
 	EndFont
 End
 
-# Subsubection style definition
+
 Style Subsubsection
 	Font 
 	  Series              Medium
@@ -78,7 +82,7 @@ Style Subsubsection
 	EndFont
 End
 
-# Paragraph style definition
+
 Style Paragraph
 	Font 
 	  Series              Medium
@@ -87,7 +91,7 @@ Style Paragraph
 	EndFont
 End
 
-# Subparagraph style definition
+
 Style Subparagraph
 	LeftMargin            ""
 	NextNoIndent          1
@@ -101,7 +105,7 @@ End
 Input stdlayouts.inc
 NoStyle Verse
 
-# Title style definition
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -119,7 +123,7 @@ Style Title
 	EndFont
 End
 
-# Subtitle style definition
+
 Style Subtitle
 	Margin                Static
 	LatexType             Command
@@ -140,7 +144,7 @@ Style Subtitle
 	EndFont
 End
 
-# Date style definition
+
 Style Date
 	Margin                Dynamic
 	LatexType             Command
@@ -157,7 +161,7 @@ Style Date
 	EndFont
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -175,7 +179,7 @@ Style Author
 	EndFont
 End
 
-# Address style definition
+
 Style Address
 	Margin                Static
 	LatexType             Command
@@ -191,7 +195,7 @@ Style Address
 	EndFont
 End
 
-# AddressForOffprints style definition
+
 Style AddressForOffprints
 	LatexType             Environment
 	LatexName             ao
@@ -210,7 +214,7 @@ Style AddressForOffprints
 	EndFont
 End
 
-# RunningTitle style definition
+
 Style RunningTitle
 	LatexType             Command
 	LatexName             runningtitle
@@ -233,7 +237,7 @@ Style RunningTitle
 	EndFont
 End 
 
-# RunningAuthor style definition
+
 Style RunningAuthor
 	Margin                Dynamic
 	LatexType             Command
@@ -255,7 +259,7 @@ Style RunningAuthor
 	EndFont
 End 
 
-# Abstract style definition
+
 Style Abstract 
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -279,7 +283,7 @@ Style Abstract
 	EndFont
 End 
 
-# Keywords style definition
+
 Style Keywords
 	Margin                First_Dynamic
 	LatexType             Command
@@ -299,7 +303,7 @@ Style Keywords
 	EndFont
 End 
 
-# Acknowledgements style definition
+
 Style Acknowledgements
 	Margin                Static
 	LatexType             Environment
@@ -320,7 +324,7 @@ Style Acknowledgements
 	EndFont
 End
 
-# Appendix style definition
+
 Style Appendix
 	Margin                Static
 	LatexType             Command
@@ -341,7 +345,7 @@ Style Appendix
 	EndFont
 End
 
-# References style definition
+
 Style References
 	Margin                First_Dynamic   
 	LatexType             Item_Environment        

@@ -21,6 +21,7 @@ Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
+
 NoStyle                   Chapter
 NoStyle                   Chapter*
 NoStyle                   Part
@@ -29,6 +30,7 @@ NoStyle                   Paragraph
 NoStyle                   Paragraph*
 NoStyle                   Subparagraph
 NoStyle                   Subparagraph*
+
 
 DefaultFont
 	Family                Roman
@@ -50,10 +52,10 @@ Style Title
 	ParSep                1
 	Align                 Left
 	Font                  
-	  Size                Largest
-	              Series              Bold        
+		Size		Largest
+		Series		Bold        
 	EndFont               
-End                     
+End
 
 
 Style Author
@@ -101,7 +103,6 @@ Style Abstract
 End 
 
 
-# Bibliography style definition
 Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
@@ -123,6 +124,7 @@ Style Bibliography
 	  Size                Larger
 	EndFont
 End
+
 
 Style Standard
 	Margin                Static

@@ -14,6 +14,7 @@
 # Contributed by Garst R. Reese with lots of help from the LyX Team
 # Based on course given by Lars Davidson
 
+
 # General textclass parameters
 Columns                 1
 Sides                   1
@@ -23,6 +24,7 @@ TocDepth                2
 ClassOptions
 FontSize                12
 End
+
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
@@ -36,7 +38,8 @@ EndFont
 
 DefaultStyle   Dialogue
 
-# Dialogue style definition. Actor dialog
+
+# Actor dialog
 Style Dialogue
 	Margin                Static
 	LatexType             Command
@@ -51,7 +54,8 @@ Style Dialogue
 	LabelType             No_Label
 End
 
-# More: Use to break a long Dialogue
+
+# Use to break a long Dialogue
 Style More
 	Margin                Static
 	LatexType             Command
@@ -77,7 +81,6 @@ EndFont
 End
 
 
-
 # FADE_IN: and FADE_OUT: usually stand alone. If you want a more complicated
 # FADE_IN e.g. FADE_IN on STELLA:, use the Narrative Style.
 Style FADE_IN:
@@ -93,6 +96,7 @@ Style FADE_IN:
 	LabelType             Static
 	LabelString           "FADE IN: "
 End
+
 
 # Scene headings (ALL CAPS) This is a general case, probably not needed
 # example:
@@ -111,6 +115,7 @@ Style INT.
 	LabelType             Static
 	LabelString           "INT. "
 End
+
 
 Style EXT.
 	Margin                Dynamic
@@ -141,6 +146,7 @@ Style Description
 	LabelType             No_Label
 End
 
+
 # Speaker style definition, identifies speaker  ALL CAPS
 # Use this also for THE END
 Style Speaker
@@ -155,6 +161,7 @@ Style Speaker
 	AlignPossible         Left
 	LabelType             No_Label
 End
+
 
 # Parenthetical instruction to speaker (in parenthises, l.c.)
 # The ( and ) will automatically appear on screen, so don't type any.
@@ -174,15 +181,15 @@ Style Parenthetical
 	EndLabelType          Static
 	EndLabelString        )
 
-Font
-	Family                Typewriter
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 Blue
-EndFont
-
+	Font
+		Family		Typewriter
+		Series		Medium
+		Shape		Up
+		Size		Normal
+		Color		Blue
+	EndFont
 End
+
 
 # Used when the same speaker continues after a narrative. Don't type
 # anything.
@@ -199,16 +206,15 @@ Style Continuing
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "(continuing)"
-
-Font
-	Family                Typewriter
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 Green
-EndFont
-
+	Font
+		Family		Typewriter
+		Series		Medium
+		Shape		Up
+		Size		Normal
+		Color		Green
+	EndFont
 End
+
 
 # Narrative description of action
 Style Narrative
@@ -225,8 +231,6 @@ Style Narrative
 End
 
 
-
-
 # Transition style definition ALL CAPS
 Style Transition
 	Margin                Static
@@ -239,6 +243,7 @@ Style Transition
 	AlignPossible         Right
 	LabelType             No_Label
 End
+
 
 Style TITLE_OVER:
 	Margin                Dynamic
@@ -254,6 +259,7 @@ Style TITLE_OVER:
 	LabelString           "TITLE OVER: "
 End
 
+
 Style INTERCUT
 	Margin                Dynamic
 	LatexType             Command
@@ -267,6 +273,7 @@ Style INTERCUT
 	LabelType             Static
 	LabelString           "INTERCUT WITH: "
 End
+
 
 Style FADE_OUT
 	Margin                Dynamic
@@ -282,6 +289,7 @@ Style FADE_OUT
 	LabelString           "FADE OUT "
 End
 
+
 # Same as Standard, Standard deprecated 
 Style General
 	Margin                Static
@@ -293,6 +301,7 @@ Style General
 	AlignPossible         Block, Left, Right, Center
 	Labeltype             No_Label
 End
+
 
 # General Left aligned CAPS
 Style Scene
@@ -307,7 +316,7 @@ Style Scene
 	LabelType             No_Label
 End
 
-# Right Address style
+
 Style Right_Address
 	Margin                Right_Address_Box
 	LatexType             Command
@@ -330,8 +339,8 @@ Style Author
 	ParSep                1.5
 	Align                 Center
 	AlignPossible         Left, Right, Center
-
 End
+
 
 Style Title
 	Margin                Static
@@ -343,8 +352,8 @@ Style Title
 	ParSep                1.5
 	Align                 Center
 	AlignPossible         Left, Right, Center
-
 End
+
 
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
@@ -353,6 +362,7 @@ End
 Style FADE_OUT:
 ObsoletedBy "FADE OUT"
 End
+
 
 # For shooting scripts only, puts CONTINUED in rfoot, CONTINUED: in
 # nextpage lhead and clears that rfoot. It is used when a scene continues
@@ -368,6 +378,7 @@ End
 #  LatexType            Command
 #  LatexName            endcontinued
 #End
+
  
 Input stdtitle.inc
 Input stdstruct.inc
@@ -377,5 +388,3 @@ Input stdcounters.inc
 NoStyle Abstract
 NoStyle Bibliography
 NoStyle Date
-
-

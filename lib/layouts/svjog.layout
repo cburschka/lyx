@@ -28,7 +28,7 @@ ClassOptions
 	Other         jog
 End
 
-# Abstract style definition
+
 Style Abstract 
 	Margin                First_Dynamic
 	LatexType             Command
@@ -46,7 +46,6 @@ Style Abstract
 	LabelType             Top_Environment
 	LabelString           Abstract. 
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont

@@ -15,6 +15,7 @@ ClassOptions
 	Other "draft|final"
 End
 
+
 Style Standard
 	Margin         Dynamic
 	LatexType      Paragraph
@@ -30,13 +31,15 @@ Style Standard
 	LabelType      No_Label
 End
 
+
 Input stdlists.inc
 Input stdlayouts.inc
 Input stdcounters.inc
 Input stdfloats.inc
 
+
 Style Section
-	      CopyStyle      Standard
+	CopyStyle      Standard
 	Margin         First_Dynamic
 	LatexType      Command
 	LatexName      section
@@ -53,17 +56,20 @@ Style Section
 	EndFont
 End
 
+
 Style Subsection
 	CopyStyle      Section
 	LatexName      subsection
 	LabelType      Counter_Subsection
 End
 
+
 Style Subsubsection
 	CopyStyle      Subsection
 	LatexName      subsubsection
 	LabelType      Counter_Subsubsection
 End
+
 
 Style Paragraph
 	CopyStyle      Subsubsection
@@ -75,11 +81,13 @@ Style Paragraph
 	EndFont
 End
 
+
 Style Section*
 	CopyStyle      Section
 	LatexName      section*
 	LabelType      No_Label
 End
+
 
 Style Subsection*
 	CopyStyle      Subsection
@@ -87,11 +95,13 @@ Style Subsection*
 	LabelType      No_Label
 End
 
+
 Style Subsubsection*
 	CopyStyle      Subsubsection
 	LatexName      subsubsection*
 	LabelType      No_Label
 End
+
 
 Style Paragraph*
 	CopyStyle      Paragraph
@@ -116,8 +126,9 @@ Style Title
 	EndFont
 End
 
+
 Style Author
-	      CopyStyle      Title
+	CopyStyle      Title
 	LatexName      author
 	Font 
 	  Size         Normal
@@ -126,10 +137,12 @@ Style Author
 	EndFont
 End
 
+
 Style Date
-	      CopyStyle      Author
+	CopyStyle      Author
 	LatexName      date
 End
+
 
 Style Abstract
 	Margin         First_Dynamic
@@ -156,17 +169,20 @@ Style Abstract
 	EndFont
 End
 
+
 Style Keywords
 	CopyStyle      Abstract
 	LatexName      keywords
 	LabelString    "Key words."
 End  
 
+
 Style AMS
 	CopyStyle      Abstract
 	LatexName      AMS
 	LabelString    "AMS subject classifications."
 End  
+
 
 Style Bibliography
 	Margin         Dynamic
@@ -186,8 +202,9 @@ Style Bibliography
 	EndFont
 End
 
+
 Style Theorem
-	      CopyStyle      Standard
+	CopyStyle      Standard
 	LabelSep       xx
 	LabelType      Static
 	LabelString    "Theorem #."
@@ -200,11 +217,13 @@ Style Theorem
 	EndFont
 End
 
+
 Style Lemma
 	CopyStyle      Theorem
 	LatexName      lemma
 	LabelString    "Lemma #."
 End  
+
 
 Style Corollary
 	CopyStyle      Theorem
@@ -212,11 +231,13 @@ Style Corollary
 	LabelString    "Corollary #."
 End  
 
+
 Style Proposition
 	CopyStyle      Theorem
 	LatexName      proposition
 	LabelString    "Proposition #."
 End  
+
 
 Style Definition
 	CopyStyle      Theorem
@@ -230,6 +251,7 @@ Style Definition
 	  Series       Bold
 	EndFont
 End
+
 
 Style Proof
 	CopyStyle      Theorem
@@ -250,7 +272,8 @@ Style Theorem*
 	CopyStyle      Theorem
 	LatexName      theorem*
 	LabelString    "Theorem."
- End
+End
+
 
 Style Lemma*
 	CopyStyle      Lemma
@@ -258,17 +281,20 @@ Style Lemma*
 	LabelString    "Lemma."
 End  
 
+
 Style Corollary*
 	CopyStyle      Corollary
 	LatexName      corollary*
 	LabelString    "Corollary."
 End  
 
+
 Style Proposition*
 	CopyStyle      Proposition
 	LatexName      proposition*
 	LabelString    "Proposition."
 End  
+
 
 Style Definition*
 	CopyStyle      Definition

@@ -23,7 +23,7 @@ DefaultFont
 	Color                 None
 EndFont
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -34,6 +34,7 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 End
+
 
 Input stdlists.inc
 Input stdsections.inc

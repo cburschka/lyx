@@ -7,7 +7,7 @@
 
 Input stdlayouts.inc
 
-# SGML style definition
+
 Style SGML
 	Margin                Static
 	LatexType             Paragraph
@@ -23,22 +23,24 @@ Style SGML
 	PassThru              1
 End
 
-# Verbatim style definition
+
 Style Literal
 	LatexType             Environment
 	LatexName             literallayout
 	PassThru              1
 End
 
-# Quote style definition
+
 Style Quotation
 	LatexType             Environment
 	LatexName             blockquote
 	LatexParam            para
 End
 
+
 # Quote should be an inline element
 NoStyle Quote
+
 
 NoStyle Verse
 

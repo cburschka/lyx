@@ -19,7 +19,7 @@ MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                3
 
-# Section-numbered style definition
+
 Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
@@ -29,7 +29,7 @@ Style Section
 	EndFont
 End
 
-# Section-unnumbered style definition
+
 Style Section*
 	Align                 Center
 	AlignPossible         Block, Center, Left
@@ -39,6 +39,7 @@ Style Section*
 	EndFont
 End
 
+
 Style Keywords
 	Margin                First_Dynamic
 	NextNoIndent          1
@@ -46,11 +47,11 @@ Style Keywords
 	LatexName             keywords
 	LabelType             Static
 	LabelString           "Keywords: "
-	# label font definition
 	LabelFont
 	  Series              Bold
 	EndFont
 End
+
 
 Style Authorinfo
 	Margin                Dynamic
@@ -70,7 +71,7 @@ Style Authorinfo
 	EndFont
 End  
 
-# Abstract style definition changes: 
+
 Style Abstract
 	LeftMargin            ""
 	RightMargin           ""

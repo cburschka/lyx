@@ -6,14 +6,16 @@
 # This include files contains all obsolete layouts, kept for
 # historical reasons 
 
-# Title style definition
+
 Style LaTeX_Title
 	ObsoletedBy           Title
 End
 
+
 Style LaTeX
 	ObsoletedBy   Standard
 End
+
 
 Style Comment
 	ObsoletedBy   Standard

@@ -13,7 +13,7 @@ DefaultStyle            Standard
 
 Input stdcounters.inc
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -25,7 +25,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-# Quote style definition
+
 Style Quote
 	Margin                Static
 	LatexType             Environment
@@ -37,7 +37,7 @@ Style Quote
 	LabelType             No_Label
 End
 
-# Subsection style definition
+
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -52,20 +52,18 @@ Style Section
 	AlignPossible         Block, Left
 	LabelType             Counter_Subsection
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Large
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Large
 	EndFont
 End
 
-# Enumerate style definition
+
 Style Enumerate
 	Margin                Static
 	LatexType             Item_Environment
@@ -82,7 +80,7 @@ Style Enumerate
 	LabelType             Counter_EnumI
 End
 
-# Itemize style definition
+
 Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
@@ -100,7 +98,8 @@ Style Itemize
 	LabelString           *
 End
 
-# Description style definition
+
+
 Style Description
 	Margin                First_Dynamic
 	LatexType             Item_environment
@@ -118,13 +117,12 @@ Style Description
 	LabelType             Manual
 	LabelString           MM
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Verbatim style definition
+
 Style Verbatim
 	Margin                Static
 	LatexType             environment
@@ -140,18 +138,16 @@ Style Verbatim
 	AlignPossible         Block
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Family              Typewriter
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Family              Typewriter
 	EndFont
 End
 
-# Code style definition
+
 Style Code
 	Margin                Static
 	LatexType             Environment
@@ -169,7 +165,7 @@ Style Code
 	FreeSpacing           1
 End
 
-# SGML style definition
+
 Style SGML
 	Margin                Static
 	LatexType             Paragraph

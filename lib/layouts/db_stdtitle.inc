@@ -7,21 +7,21 @@
 
 Input stdtitle.inc
 
-# Title style definition
+
 Style Title
 	LatexType             Command
 	LatexName             articleinfo
 	LatexParam            "2|"
 End
 
-# Author style definition
+
 Style Author
 	LatexType             Environment
 	LatexName             author
 	KeepEmpty             1
 End
 
-# Authorgroup
+
 Style Authorgroup
 	CopyStyle             Author
 	LatexType             Environment
@@ -29,7 +29,7 @@ Style Authorgroup
 	LatexParam            author
 End
 
-# first name style definition
+
 Style FirstName
 	Margin                Static
 	LatexType             Paragraph
@@ -41,7 +41,7 @@ Style FirstName
 	LabelType             No_Label
 End
 
-# surname style definition
+
 Style Surname
 	Margin                Static
 	LatexType             Paragraph
@@ -53,7 +53,7 @@ Style Surname
 	LabelType             No_Label
 End
 
-# Date style definition
+
 Style Date
 	LatexType             Paragraph
 	LatexName             date
@@ -61,7 +61,7 @@ Style Date
 	AlignPossible         Left,Center
 End
 
-# Revision History style definition
+
 Style RevisionHistory
 	Margin                Static
 	LatexType             Command
@@ -82,7 +82,7 @@ Style RevisionHistory
  
 End
 
-# Revision style definition
+
 Style Revision
 	Margin                Dynamic
 	LatexType             Command
@@ -98,7 +98,7 @@ Style Revision
  
 End
 
-# RevisionRemark style definition
+
 Style RevisionRemark
 	Margin                Static
 	LatexType             Paragraph
@@ -113,5 +113,4 @@ Style RevisionRemark
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
- 
 End

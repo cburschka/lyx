@@ -5,10 +5,12 @@
 # Enhanced (fonts & centering):  Jean-Marc Lasgouttes
 # To do: Define class specific options.
 
+
 # General textclass parameters
 Columns                 1
 Sides                   1
 MaxCounter              Counter_Section
+
 
 DefaultFont
 	Family                Sans
@@ -18,13 +20,14 @@ DefaultFont
 	Color                 None
 EndFont
 
+
 ClassOptions
 	FontSize   17|20|25|30
 	PageStyle  "empty|plain|foilheadings|fancy"
 	Other      "dvips"
 End
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -36,7 +39,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-# foilhead style definition
+
 Style Foilhead
 	Margin                Static
 	LatexType             Command
@@ -50,41 +53,37 @@ Style Foilhead
 	AlignPossible         Center
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Size                Large
 	EndFont
-
 End
 
 
-# Shortfoilhead style definition
 Style ShortFoilhead
 	CopyStyle             Foilhead
 	LatexParam            "[-0.5in]"
 End
 
 
-# landscape foilhead style definition
 Style Rotatefoilhead
 	CopyStyle             Foilhead
 	LatexName             rotatefoilhead
 End
 
 
-# ShortRotatefoilhead style definition
 Style ShortRotatefoilhead
 	CopyStyle             Rotatefoilhead
 	LatexParam            "[-0.5in]"
 End
 
+
 # then a few lists
 Input stdlists.inc
 
+
 # We add there a few additional lists that look good in foils.
 
-# TickList style definition
 Style TickList
 	Margin                Static
 	LatexType             Item_Environment
@@ -107,7 +106,7 @@ Style TickList
 	EndPreamble
 End
 
-# CrossList style definition
+
 Style CrossList
 	Margin                Static
 	LatexType             Item_Environment
@@ -130,11 +129,12 @@ Style CrossList
 	EndPreamble
 End
 
+
 # Then the Titles stuff.
 Input stdtitle.inc
 Input stdstruct.inc
 
-# Title style definition. 
+
 Style Title
 	Font 
 	  Series              Bold
@@ -142,21 +142,21 @@ Style Title
 	EndFont
 End
 
-# Author style definition
+
 Style Author
 	Font 
 	  Size                Large
 	EndFont
 End
 
-# Date style definition
+
 Style Date
 	Font 
 	  Size                Large
 	EndFont
 End
 
-# Abstract style definition
+
 Style Abstract
 	Font 
 	  Size                Normal
@@ -168,6 +168,7 @@ Style Abstract
 	  Series              Bold
 	EndFont
 End
+
 
 # Header definitions:
 Style My_Logo
@@ -190,15 +191,17 @@ Style My_Logo
 
 End
 
+
 Style Restriction
- CopyStyle              "My Logo"
+	CopyStyle              "My Logo"
 	LatexName     Restriction
 	LeftMargin        Restriction:xx
 	LabelString       "Restriction:"
 End
 
+
 Style Left_Header
- CopyStyle              "My Logo"
+	CopyStyle              "My Logo"
 	LatexName     leftheader
 	LeftMargin        Left_Header:xx
 	LabelString       "Left Header:"
@@ -206,21 +209,20 @@ End
 
 
 Style Right_Header
- CopyStyle              "My Logo"
+	CopyStyle              "My Logo"
 	LatexName     rightheader
 	LeftMargin        Right_Header:xx
 	LabelString       "Right Header:"
 End
 
 Style Right_Footer
- CopyStyle              "My Logo"
+	CopyStyle              "My Logo"
 	LatexName     rightfooter
 	LeftMargin        Right_Footer:xx
 	LabelString       "Right Footer:"
 End
 
 
-# Bibliography style definition
 Style Bibliography
 	LabelFont 
 	  Size                Larger
@@ -228,7 +230,7 @@ Style Bibliography
 	EndFont
 End
 
-# Theorem-numbered style declaration
+
 Style Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -245,70 +247,63 @@ Style Theorem
 	LabelType             Static
 	LabelString           "Theorem #."
 
-	
-	# standard font definition
 	TextFont
 	  Shape               Slanted
 	  Size                Normal
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Series              Bold
 	EndFont
 End
 
-# Lemma-numbered style declaration
+
 Style Lemma
 	CopyStyle             Theorem
 	LatexName             Lemma
 	LabelString           "Lemma #."
 End  
 
-# Corollary-numbered style declaration
+
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             Corollary
 	LabelString           "Corollary #."
 End  
 
-# Proposition-numbered style declaration
+
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             Proposition
 	LabelString           "Proposition #."
 End  
 
-# Definition-numbered style declaration
+
 Style Definition
 	CopyStyle             Theorem
 	LatexName             Definition
 	LabelString           "Definition #."
 
-	# standard font definition
 	Font
 	  Shape               Up
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
 End
 
-# Proof style declaration
+
 Style Proof
 	CopyStyle             Theorem
 	LatexName             Proof
 	LabelString           "Proof."
 	
-	# standard font definition
 	Font
 	  Shape               Up
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Shape               Up
 	  Series              Bold
@@ -316,45 +311,46 @@ Style Proof
 End  
 
 
-# Theorem-numbered style declaration
 Style Theorem*
 	CopyStyle             Theorem
 	LatexName             Theorem*
 	LabelString           "Theorem."
- End
+End
 
-# Lemma-numbered style declaration
+
 Style Lemma*
 	CopyStyle             Lemma
 	LatexName             Lemma*
 	LabelString           "Lemma."
 End  
 
-# Corollary-numbered style declaration
+
 Style Corollary*
 	CopyStyle             Corollary
 	LatexName             Corollary*
 	LabelString           "Corollary."
 End  
 
-# Proposition-numbered style declaration
+
 Style Proposition*
 	CopyStyle             Proposition
 	LatexName             Proposition*
 	LabelString           "Proposition."
 End  
 
-# Definition-numbered style declaration
+
 Style Definition*
 	CopyStyle             Definition
 	LatexName             Definition*
 	LabelString           "Definition."
 End
 
+
 # all the standard LaTeX environments
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
+
 
 # Finally add a few weird LyX environments.
 Input lyxmacros.inc

@@ -10,6 +10,7 @@ ClassOptions
 	FontSize   11
 End  
 
+
 Style Title
 	LatexType             Command
 	LatexName             settitle
@@ -19,6 +20,7 @@ Style Title
 	EndPreamble
 End
 
+
 Style Author
 	LatexType             Command
 	LatexName             setauthor
@@ -27,6 +29,7 @@ Style Author
 \newcommand{\setauthor}[1]{\def\theAuthor{#1}}
 	EndPreamble
 End
+
 
 Style Address
 	LatexType             Command
@@ -42,6 +45,7 @@ Style Address
 	EndFont
 End
 
+
 Style FrontMatter
 	CopyStyle             LaTeX
 	LaTeXType             Command
@@ -52,7 +56,7 @@ Style FrontMatter
 	EndPreamble
 End
 
-# Abstract style definition
+
 Style Abstract 
 	LatexType             Command
 	LatexName             setabstract
@@ -66,7 +70,7 @@ Style Abstract
 	EndPreamble
 End
 
-# Keyword style definition
+
 Style Keyword
 	Align                 Center
 	AlignPossible         Center
@@ -80,17 +84,16 @@ Style Keyword
 	LabelString           "Key words:"
 	LabelSep              xx
 	
-	# standard font definition
 	Font 
 	  Size                Small
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Shape               Italic
 	  Size                Small
 	EndFont
 End
+
 
 Preamble
 \usepackage{entcsmacro,ifthen}

@@ -8,7 +8,6 @@
 # a document, like abstract, bibliography and such.
 
 
-# Abstract style definition
 Style Abstract 
 	Margin                Static
 	LatexType             Environment
@@ -27,19 +26,17 @@ Style Abstract
 	LabelString           Abstract
 	LabelBottomSep    0.5
 
-	# standard font definition
 	Font 
 	  Size                Small
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Large
 	EndFont
 End 
 
-# Bibliography style definition
+
 Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
@@ -57,7 +54,6 @@ Style Bibliography
 	LabelString           References
 	LabelBottomSep    0.7
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Larger

@@ -7,7 +7,9 @@
 #                    resembles more closelly the produced paper doc. (more WYSIWYG)
 #
 
+
 OutputType              literate
+
 
 Style Scrap
 	Margin                First_Dynamic
@@ -32,5 +34,4 @@ Style Scrap
 	  Color               latex
 	  Family              Typewriter
 	EndFont
-
 End

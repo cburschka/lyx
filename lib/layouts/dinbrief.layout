@@ -11,7 +11,7 @@ Input letter.layout
 
 # Redefine some stuff
 
-# My Address style
+
 Style My_Address
 	Margin                Static
 	LeftMargin            Unterschr
@@ -27,7 +27,7 @@ Style My_Address
 	Spacing               Other 0.9
 End
 
-# Send To Adress style changes
+
 Style Send_To_Address
 	Margin                Static
 	BottomSep             0.1
@@ -44,7 +44,7 @@ Style Send_To_Address
 	Spacing               Other 0.9
 End
 
-# Opening style definition
+
 Style Opening
 	LeftMargin            Unterschr
 	LabelString           Anrede:
@@ -57,7 +57,7 @@ Style Opening
 	EndFont
 End
 
-# Signature style definition
+
 Style Signature
 	LeftMargin            Unterschr
 	LabelString           Unterschrift:
@@ -70,7 +70,7 @@ Style Signature
 	EndFont
 End
 
-# Closing style definition
+
 Style Closing
 	LeftMargin            Unterschr
 	LabelString           Gruﬂ:
@@ -83,7 +83,7 @@ Style Closing
 	EndFont
 End
 
-# encl style definition
+
 Style encl
 	LabelString           Anlagen:
 	LeftMargin            Unterschr
@@ -96,7 +96,7 @@ Style encl
 	EndFont
 End
 
-# ps style definition
+
 Style ps
 	Margin                Static
 	LatexType             Command
@@ -118,7 +118,7 @@ Style ps
 	EndFont
 End
 
-# ps style definition
+
 Style cc
 	LabelString           Verteiler:
 	LeftMargin            Unterschr
@@ -156,7 +156,7 @@ Style Betreff
 	EndFont
 End
 
-# Stadt style definition
+
 Style Stadt
 	Margin                Right_Address_Box
 	LatexType             Command
@@ -175,6 +175,7 @@ Style Stadt
 	  Color               blue
 	EndFont
 End
+
 
 # Data style definition
 Style Datum

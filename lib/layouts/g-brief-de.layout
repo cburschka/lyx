@@ -7,13 +7,12 @@
 # Input stdletter.inc
 
 
-
-
 # General textclass parameters
 Columns                 1
 Sides                   1
 PageStyle               Empty
 DefaultStyle            Brieftext
+
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
@@ -26,8 +25,6 @@ DefaultFont
 EndFont
 
 
-
-# Brieftext style definition
 Style Brieftext
 	Margin                Static
 	LatexType             Environment
@@ -46,9 +43,6 @@ Style Brieftext
 End
 
 
-
-
-
 # Name und Titel des Absenders
 Style Name
 	Margin                Static
@@ -61,13 +55,13 @@ Style Name
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Name:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # Unterschrift des Absenders
 Style Unterschrift
@@ -81,13 +75,13 @@ Style Unterschrift
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Unterschrift:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # Strasse
 Style Strasse
@@ -101,13 +95,13 @@ Style Strasse
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Strasse:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # Zusatz
 Style Zusatz
@@ -121,13 +115,13 @@ Style Zusatz
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Zusatz:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # Ort
 Style Ort
@@ -141,13 +135,13 @@ Style Ort
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Ort:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # Land
 Style Land
@@ -161,13 +155,13 @@ Style Land
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Land:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # RetourAdresse
 Style RetourAdresse
@@ -181,7 +175,6 @@ Style RetourAdresse
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           RetourAdresse:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -202,13 +195,13 @@ Style MeinZeichen
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           MeinZeichen:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # IhrZeichen
 Style IhrZeichen
@@ -223,7 +216,6 @@ Style IhrZeichen
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           IhrZeichen:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -244,7 +236,6 @@ Style IhrSchreiben
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           IhrSchreiben:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -253,11 +244,6 @@ Style IhrSchreiben
 End
 
 
-
-
-
-
-# Telefon
 Style Telefon
 	Margin                Static
 	LatexType             Command
@@ -270,7 +256,6 @@ Style Telefon
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Telefon:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -278,7 +263,7 @@ Style Telefon
 	EndFont
 End
 
-# Telefax
+
 Style Telefax
 	Margin                Static
 	LatexType             Command
@@ -290,7 +275,6 @@ Style Telefax
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Telefax:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -298,7 +282,7 @@ Style Telefax
 	EndFont
 End
 
-# Telex
+
 Style Telex
 	Margin                Static
 	LatexType             Command
@@ -310,7 +294,6 @@ Style Telex
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Telex:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -331,7 +314,6 @@ Style EMail
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           EMail:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -351,7 +333,6 @@ Style HTTP
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           HTTP:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -359,7 +340,7 @@ Style HTTP
 	EndFont
 End
 
-# Bank
+
 Style Bank
 	Margin                Static
 	LatexType             Command
@@ -372,7 +353,6 @@ Style Bank
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Bank:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -380,7 +360,7 @@ Style Bank
 	EndFont
 End
 
-# BLZ
+
 Style BLZ
 	Margin                Static
 	LatexType             Command
@@ -392,7 +372,6 @@ Style BLZ
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           BLZ:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -400,7 +379,7 @@ Style BLZ
 	EndFont
 End
 
-# Konto
+
 Style Konto
 	Margin                Static
 	LatexType             Command
@@ -412,7 +391,6 @@ Style Konto
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Konto:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -420,7 +398,7 @@ Style Konto
 	EndFont
 End
 
-# Postvermerk
+
 Style Postvermerk
 	Margin                Static
 	LatexType             Command
@@ -432,7 +410,6 @@ Style Postvermerk
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Postvermerk:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -441,7 +418,6 @@ Style Postvermerk
 End
 
 
-# Adresse
 Style Adresse
 	Margin                Static
 	LatexType             Command
@@ -454,7 +430,6 @@ Style Adresse
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Adresse:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -475,13 +450,13 @@ Style Datum
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Datum:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 End
+
 
 # Oggetto style definition
 Style Betreff
@@ -497,7 +472,6 @@ Style Betreff
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Betreff:
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -521,7 +495,6 @@ Style Anrede
 	LabelType             Static
 	LabelString           Anrede:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -530,9 +503,6 @@ Style Anrede
 End
 
 
-
-
-# Anlagen style definition
 Style Anlagen
 	Margin                Static
 	LatexType             Command
@@ -546,7 +516,6 @@ Style Anlagen
 	LabelType             Static
 	LabelString           Anlagen:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -555,7 +524,6 @@ Style Anlagen
 End
 
 
-# Verteiler style definition
 Style Verteiler
 	Margin                Static
 	LatexType             Command
@@ -569,7 +537,6 @@ Style Verteiler
 	LabelType             Static
 	LabelString           Verteiler:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -578,9 +545,6 @@ Style Verteiler
 End
 
 
-
-
-# Gruss style definition
 Style Gruss
 	Margin                Static
 	LatexType             Command
@@ -595,29 +559,21 @@ Style Gruss
 	LabelType             Static
 	LabelString           Gruﬂ:
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
 	EndFont
 
-	#define the environment lyxGruss
 	Preamble
 	\newcommand{\LyxGruss}[1]
 	  { \Gruss{#1}{0.5cm} }
 	EndPreamble
-
-
 End
-
 
 
 Input stdfloats.inc
 Input stdcounters.inc
-
-
-
 
 
 # Input lyxmacros.inc

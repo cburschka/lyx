@@ -22,7 +22,7 @@ Sides                   1
 PageStyle               Plain
 MaxCounter              Counter_Section
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -34,12 +34,11 @@ Style Standard
 	LabelType             No_Label
 End
 
-# The standard sections
+
 Input stdsections.inc
 
-# Section style definition
+
 Style Section
-	# standard font definition
 	Font
 	  Series              Medium
 	  Series              Bold
@@ -47,7 +46,7 @@ Style Section
 	EndFont
 End
 
-# Subsection style definition
+
 Style Subsection
 	Font
 	  Series              Medium
@@ -56,9 +55,8 @@ Style Subsection
 	EndFont
 End
 
-# Subsubsection style definition
+
 Style Subsubsection
-	# standard font definition
 	Font 
 	  Series              Medium
 	  Shape               Up
@@ -66,9 +64,8 @@ Style Subsubsection
 	EndFont
 End
 
-# Paragraph style definition
+
 Style Paragraph
-# standard font definition
 	Font 
 	  Series              Medium
 	  Shape               Italic
@@ -76,9 +73,8 @@ Style Paragraph
 	EndFont
 End
 
-# Subparagraph style definition
+
 Style Subparagraph
-	# standard font definition
 	Font
 	  Series              Medium
 	  Shape               Up
@@ -86,7 +82,7 @@ Style Subparagraph
 	EndFont
 End
 
-# Now define the starred versions from the normal ones.
+
 Input stdstarsections.inc
 
 # Remove the ones that we do not want
@@ -99,7 +95,7 @@ NoStyle         Chapter*
 Input stdlayouts.inc
 Input stdlists.inc
 
-# Headnote style definition
+
 Style Headnote
 	Margin                Static
 	LatexType             Command
@@ -117,7 +113,6 @@ Style Headnote
 	LabelType             Static
 	LabelString           "Headnote (optional): "
 
-	# standard font definition
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -126,7 +121,7 @@ Style Headnote
 
 End
 
-# Dedication style definition (optional) 
+
 Style Dedication
 	CopyStyle             Headnote
 	LatexName             dedication
@@ -134,7 +129,7 @@ Style Dedication
 	LabelString           Dedication:
 End
 
-# Title style definition
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -151,16 +146,14 @@ Style Title
 	Fill_Top              1
 	Fill_Bottom           1
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-
 End
 
-# Subtitle style definition
+
 Style Subtitle
 	Margin                Static
 	LatexType             Command
@@ -176,16 +169,13 @@ Style Subtitle
 	AlignPossible         Left
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Large
 	EndFont
-
 End
 
-# Title_Running style definition
 Style Running_LaTeX_Title
 	CopyStyle             Headnote
 	LatexName             titlerunning
@@ -193,7 +183,7 @@ Style Running_LaTeX_Title
 	LabelString           "Running title: "
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -209,15 +199,13 @@ Style Author
 	AlignPossible         Left
 	LabelType             No_Label
 
-	# standard font definition
 	Font 
 	  Series              Bold
 	  Shape               Italic
 	EndFont
-
 End
 
-# AuthorRunning style definition
+
 Style Author_Running
 	CopyStyle             Headnote
 	LatexName             authorrunning
@@ -225,7 +213,7 @@ Style Author_Running
 	LabelString           "Author Running: "
 End
 
-# Institute style definition
+
 Style Institute
 	Margin                Static
 	LatexType             Command
@@ -240,7 +228,6 @@ Style Institute
 	AlignPossible         Left
 	LabelType             No_Label
 
-	# Std. font definition
 	Font 
 	  Size                Small
 	EndFont
@@ -252,7 +239,7 @@ Style Date
 	LatexName             date
 End
 
-#
+
 # Correspondence address style definition
 Style Mail
 	CopyStyle             Headnote
@@ -268,7 +255,7 @@ Style Offprints
 	LabelString           "Offprints: "
 End
 
-# Abstract style definition
+
 Style Abstract 
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -285,13 +272,12 @@ Style Abstract
 	LabelType             Top_Environment
 	LabelString           Abstract. 
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End 
 
-# Keywords style definition
+
 Style  Keywords
 	Margin                First_Dynamic
 	LatexType             Command
@@ -308,13 +294,12 @@ Style  Keywords
 	LabelType             Static
 	LabelString           "Key words: " 
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End 
 
-# Acknowledgement(s) style definitions
+
 Style Acknowledgements
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -331,7 +316,6 @@ Style Acknowledgements
 	LabelType             Static
 	LabelString           Acknowledgements. 
 
-	# font & label font definition
 	Font 
 	  Size                Small
 	EndFont
@@ -348,8 +332,7 @@ Style Acknowledgement
 	LabelString           Acknowledgement. 
 End 
 
-#
-# Bibliography style definition
+
 Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
@@ -367,11 +350,9 @@ Style Bibliography
 	LabelString           References 
 	LabelBottomSep        0.7
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
-
 End
 
 # Mathematics-like definitions:
@@ -392,13 +373,11 @@ Style Claim
 	LabelType             Static
 	LabelString           Claim. 
 
-	# font & label font definition
-
 	LabelFont 
 	  Shape               Italic
 	EndFont
-
 End
+
 
 Style Conjecture
 	CopyStyle             Claim
@@ -406,12 +385,12 @@ Style Conjecture
 	LabelString           "Conjecture #. " 
 End
 
+
 Style Corollary
 	CopyStyle             Claim
 	LatexName             corollary
 	LabelString           "Corollary #. " 
 
-	# font & label font definition
 	Font 
 	  Shape               Italic
 	EndFont
@@ -420,8 +399,8 @@ Style Corollary
 	  Shape               Up
 	  Series              Bold
 	EndFont
-
 End
+
 
 Style Definition
 	CopyStyle             Corollary
@@ -429,11 +408,13 @@ Style Definition
 	LabelString           "Definition #. "
 End
 
+
 Style Example
 	CopyStyle             Claim
 	LatexName             example
 	LabelString           "Example #. "
 End
+
 
 Style Exercise
 	CopyStyle             Claim
@@ -449,11 +430,13 @@ Style Exercise
 
 End
 
+
 Style Lemma
 	CopyStyle             Corollary
 	LatexName             lemma
 	LabelString           "Lemma #. "
 End
+
 
 Style Note
 	CopyStyle             Claim
@@ -461,11 +444,13 @@ Style Note
 	LabelString           "Note #. "
 End
 
+
 Style Problem
 	CopyStyle             Exercise
 	LatexName             problem
 	LabelString           "Problem #. "
 End
+
 
 Style Proof
 	CopyStyle             Claim
@@ -473,11 +458,13 @@ Style Proof
 	LabelString           "Proof. "
 End
 
+
 Style Property
 	CopyStyle             Claim
 	LatexName             property
 	LabelString           "Property #. "
 End
+
 
 Style Proposition
 	CopyStyle             Claim
@@ -485,11 +472,13 @@ Style Proposition
 	LabelString           "Proposition_#. "
 End
 
+
 Style Question
 	CopyStyle             Claim
 	LatexName             question        
 	LabelString           "Question #. "
 End
+
 
 Style Remark
 	CopyStyle             Claim
@@ -497,11 +486,13 @@ Style Remark
 	LabelString           "Remark #. "
 End
 
+
 Style Solution
 	CopyStyle             Exercise
 	LatexName             solution
 	LabelString           "Solution #. "
 End
+
 
 Style Theorem
 	CopyStyle             Corollary
@@ -509,6 +500,6 @@ Style Theorem
 	LabelString           "Theorem #. "
 End
 
+
 #Finally a few older definitions for compatibility
 Input obsolete.inc
-

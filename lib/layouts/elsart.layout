@@ -36,6 +36,7 @@ End
 TitleLatexType Environment
 TitleLatexName frontmatter
 
+
 DefaultFont
 	Family        Roman
 	Series        Medium
@@ -90,7 +91,6 @@ Input stdfloats.inc
 Input stdcounters.inc
 
 
-# Title style definition
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -103,7 +103,6 @@ Style Title
 	ParSep                0.7
 	Align                 Center
 	LabelType             No_Label
-# standard font definition
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -111,7 +110,7 @@ Style Title
 	EndFont
 End
 
-# Author style definition
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -125,13 +124,12 @@ Style Author
 	ParSep                0
 	Align                 Center
 	AlignPossible         Center
-	# standard font definition
 	Font 
 	  Series              Bold
 	EndFont
 End
 
-# Author Adress
+
 Style Author_Address
 	Margin                Static
 	LatexType             Command
@@ -145,6 +143,7 @@ Style Author_Address
 	  Shape               Italic
 	EndFont
 End
+
 
 Style Author_Email
 	Margin                Static
@@ -164,6 +163,7 @@ Style Author_Email
 	  Family              Roman
 	EndFont
 End
+
 
 Style Author_URL
 	Margin                Static
@@ -185,6 +185,7 @@ Style Author_URL
 	EndFont
 End
 
+
 # thanks is like a footnote
 Style Thanks
 	Margin                Static
@@ -197,6 +198,7 @@ Style Thanks
 	  Shape               Italic
 	EndFont       
 End
+
 
 # new Abstract style definition
 Style Abstract 
@@ -218,12 +220,10 @@ Style Abstract
 	LabelString           Abstract
 	LabelBottomSep        0.5
 
-	# standard font definition
 	Font 
 	  Size                Small
 	EndFont
 
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Large
@@ -258,7 +258,7 @@ End
 # - Acknowledgement
 # - Case
 
-# Theorem-numbered style declaration
+
 Style Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -276,20 +276,17 @@ Style Theorem
 	LabelType             Static
 	LabelString           "Theorem #."
 
-	
-	# standard font definition
 	Font
 	  Shape               Italic
 	  Size                Normal
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
+End
 
-End  
 
 # Proof style declaration - from email by Stacy Prowell (sprowell@cs.utk.edu)
 Style Proof
@@ -311,19 +308,17 @@ Style Proof
 	#  make the label all caps, like it is in the output.
 	LabelString           "PROOF."
 
-	# standard font definition
 	Font
 	  Shape               Up
 	  Size                Normal
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Series              Bold
 	EndFont
 End
 
-# Lemma-numbered style declaration
+
 Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
@@ -335,7 +330,7 @@ Style Lemma
 #  EndPreamble
 End
 
-# Corollary-numbered style declaration
+
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
@@ -347,7 +342,7 @@ Style Corollary
 #  EndPreamble
 End  
 
-# Proposition-numbered style declaration
+
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
@@ -359,7 +354,7 @@ Style Proposition
 #  EndPreamble
 End  
 
-# Criterion-numbered style declaration
+
 Style Criterion
 	CopyStyle             Theorem
 	LatexName             crit
@@ -371,7 +366,7 @@ Style Criterion
 #  EndPreamble
 End  
 
-# Algorithm-numbered style declaration
+
 Style Algorithm
 	CopyStyle             Theorem
 	LatexName             alg
@@ -383,18 +378,16 @@ Style Algorithm
 #  EndPreamble
 End  
 
-# Definition-numbered style declaration
+
 Style Definition
 	CopyStyle             Theorem
 	LatexName             defn
 	LabelString           "Definition #."
 	
-	# standard font definition
 	Font
 	  Shape               Up
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Shape               Up
 	  Series              Bold
@@ -406,7 +399,7 @@ Style Definition
 #  EndPreamble
 End  
 
-# Conjecture-numbered style declaration
+
 Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conj
@@ -418,7 +411,7 @@ Style Conjecture
 #  EndPreamble
 End
 
-# Example-numbered style declaration
+
 Style Example
 	CopyStyle             Theorem
 	LatexName             exmp
@@ -430,7 +423,7 @@ Style Example
 #  EndPreamble
 End  
 
-# Problem-numbered style declaration
+
 Style Problem
 	CopyStyle             Theorem
 	LatexName             prob
@@ -442,7 +435,7 @@ Style Problem
 #  EndPreamble
 End  
 
-# Remark-numbered style declaration
+
 Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
@@ -450,7 +443,7 @@ Style Remark
 
 End  
 
-# Note-numbered style declaration
+
 Style Note
 	CopyStyle             Theorem
 	LatexName             note
@@ -458,7 +451,7 @@ Style Note
 
 End  
 
-# Claim-numbered style declaration
+
 Style Claim
 	CopyStyle             Theorem
 	LatexName             claim
@@ -466,7 +459,7 @@ Style Claim
 
 End  
 
-# Summary-numbered style declaration
+
 Style Summary
 	CopyStyle             Theorem
 	LatexName             summ
@@ -474,7 +467,7 @@ Style Summary
 
 End  
 
-# Case-numbered style declaration
+
 Style Case
 	CopyStyle             Theorem
 	LatexName             case
@@ -482,7 +475,7 @@ Style Case
 
 End  
 
-# Acknowledgement-numbered style declaration
+
 #Style Acknowledgement
 #  CopyStyle            Theorem
 #  LatexName            ack
@@ -504,9 +497,8 @@ Style Acknowledgement
 	LabelString           "Acknowledgement #."
 	parsep                0.3
 
-LabelFont
-	Size                  large
-	Series                Bold
-EndFont
-
+	LabelFont
+		Size                  large
+		Series                Bold
+	EndFont
 End

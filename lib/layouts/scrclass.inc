@@ -9,7 +9,7 @@ SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
 
-# Standard style definition
+
 Style Standard
 	LatexName             dummy
 	ParIndent             MM
@@ -31,7 +31,7 @@ End
 # Delete List
 NoStyle List
 
-# Labeling style definition
+
 Style Labeling
 	Margin                Manual
 	LatexType             List_Environment
@@ -104,37 +104,37 @@ End
 
 Input stdstarsections.inc
 
-# Addpart Style Definition
+
 Style Addpart
 	CopyStyle             Part*
 	LatexName             addpart
 End
 
-# Addchap Style Definition
+
 Style Addchap
 	CopyStyle             Chapter*
 	LatexName             addchap
 End
 
-# Addsec Style Definition
+
 Style Addsec
 	CopyStyle             Section*
 	LatexName             addsec
 End
 
-# Addchap* Style Definition
+
 Style Addchap*
 	CopyStyle             Chapter*
 	LatexName             addchap*
 End
 
-# Addsec* Style Definition
+
 Style Addsec*
 	CopyStyle             Section*
 	LatexName             addsec*
 End
 
-# Minisec style definition
+
 Style Minisec
 	LatexType             Command
 	LatexName             minisec
@@ -176,25 +176,25 @@ Style Date
 	EndFont
 End
 
-# Subject style definition
+
 Style Subject
 	CopyStyle             Author
 	LatexName             subject
 End
 
-# Publishers style definition
+
 Style Publishers
 	CopyStyle             Author
 	LatexName             publishers
 End
 
-# Dedication style definition
+
 Style Dedication
 	CopyStyle             Author
 	LatexName             dedication
 End
 
-# Titlehead style definition
+
 Style Titlehead
 	CopyStyle             Author
 	LatexName             titlehead
@@ -206,19 +206,19 @@ Style Titlehead
 	EndFont
 End
 
-# Uppertitleback style definition
+
 Style Uppertitleback
 	CopyStyle             Titlehead
 	LatexName             uppertitleback
 End
 
-# Lowertitleback style definition
+
 Style Lowertitleback
 	CopyStyle             Titlehead
 	LatexName             lowertitleback
 End
 
-# Extratitle style definition
+
 Style Extratitle
 	CopyStyle             Titlehead
 	LatexName             extratitle
@@ -242,19 +242,19 @@ End
 
 Input stdlayouts.inc
 
-# Captionabove style definition
+
 Style Captionabove
 	CopyStyle            Caption
 	LatexName            captionabove
 End
 
-# Captionbelow style definition
+
 Style Captionbelow
 	CopyStyle            Caption
 	LatexName            captionbelow
 End
 
-# Dictum style definition
+
 Style Dictum
 	Margin               Right_Address_Box
 	LatexType            Command

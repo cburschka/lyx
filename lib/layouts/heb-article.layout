@@ -13,9 +13,11 @@ Preamble
 \AtBeginDocument{\make@lr\thetheorem}
 EndPreamble
 
+
 Style Abstract
 	LabelString           "ריצקת"
 End
+
 
 Style Theorem
 	Margin                First_Dynamic
@@ -33,17 +35,16 @@ Style Theorem
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           ".# טפשמ"
-	# standard font definition
 	Font
 	  Shape               Up
 	  Size                Normal
 	EndFont
-	# label font definition
 	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
 End
+
 
 Style Lemma
 	CopyStyle             Theorem
@@ -54,6 +55,7 @@ Style Lemma
 	EndPreamble
 End
 
+
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             corollary
@@ -62,6 +64,7 @@ Style Corollary
 \newtheorem{corollary}[theorem]{\R{מסקנה}}
 	EndPreamble
 End
+
 
 Style Claim
 	CopyStyle             Theorem
@@ -72,6 +75,7 @@ Style Claim
 	EndPreamble
 End
 
+
 Style Definition
 	CopyStyle             Theorem
 	LatexName             definition
@@ -81,6 +85,7 @@ Style Definition
 	EndPreamble
 End
 
+
 Style Remarks
 	CopyStyle             Theorem
 	LatexName             remark
@@ -89,6 +94,7 @@ Style Remarks
 \newtheorem{remark}[theorem]{\R{הערה}}
 	EndPreamble
 End
+
 
 Style Proof
 	Margin                First_Dynamic
@@ -107,12 +113,10 @@ Style Proof
 	LabelType             Static
 	LabelString           ":החכוה"
 	EndLabelType          Filled_Box
-	# standard font definition
 	Font
 	  Shape               Up
 	  Size                Normal
 	EndFont
-	# label font definition
 	LabelFont
 	  Shape               Up
 	  Series              Bold

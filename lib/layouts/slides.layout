@@ -20,6 +20,7 @@ DefaultFont
 	Color        None
 EndFont
 
+
 ClassOptions
 	FontSize   |
 	Pagestyle  plain|headings|empty
@@ -62,13 +63,6 @@ Preamble
 EndPreamble
 
 
-############################
-#
-# Standard style definition
-# Always comes first.
-#
-############################
-
 Style Standard
 	Margin            Static
 	LatexType         Paragraph
@@ -88,7 +82,7 @@ End
 #
 ##############################
 
-# Slide style definition
+
 Style Slide
 	LatexType         Command
 	LatexName         lyxnewslide
@@ -127,7 +121,7 @@ Style Slide
 	EndPreamble
 End
 
-# Overlay style definition
+
 Style Overlay
 	LatexType         Command
 	LatexName         lyxnewoverlay
@@ -169,7 +163,7 @@ Style Overlay
 	EndPreamble
 End
 
-## Note style definition
+
 Style Note
 	LatexType         Command
 	LatexName         lyxnewnote
@@ -211,7 +205,7 @@ Style Note
 	EndPreamble
 End
 
-## Invisible environment
+
 Style InvisibleText
 	LatexType         Command
 	LatexName         lyxinvisible
@@ -240,7 +234,7 @@ Style InvisibleText
 	EndPreamble
 End
 
-## Visible environment
+
 Style VisibleText
 	LatexType         Command
 	LatexName         lyxvisible

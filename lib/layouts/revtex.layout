@@ -20,7 +20,7 @@ ClassOptions
 	Other                 "aps,manuscript"
 End
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -38,12 +38,11 @@ Input stdsections.inc
 
 # Redefine some of the section styles.
 
-# Section-numbered style definition
+
 Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
 
-	# standard font definition
 	Font
 	  Series              Medium
 	  Shape               Smallcaps
@@ -51,38 +50,37 @@ Style Section
 	EndFont
 End
 
-# Subsection-numbered style definition
+
 Style Subsection
-	# standard font definition
 	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
 End
 
-# Subsubsection-numbered style definition
+
 Style Subsubsection
-	# standard font definition
 	Font
 	  Shape               Italic
 	  Size                Normal
 	EndFont
 End
 
-# Paragraph-numbered style definition
+
 Style Paragraph
 	TopSep                0.7
 	ParSep                0.4
 
-	# standard font definition
 	Font
 	  Shape               Italic
 	  Size                Normal
 	EndFont
 End
 
+
 # then define the unumbered sections, based on the numbered ones.
 Input stdstarsections.inc
+
 
 # remove the layouts that do not make sense.
 NoStyle         Chapter
@@ -100,38 +98,34 @@ Input stdlists.inc
 Input stdtitle.inc
 Input stdstruct.inc
 
-# Title style definition
+
 Style Title
-	# standard font definition
 	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
 End
 
-# Author style definition
 # Same as stdstruct.inc except the font
 Style Author
-	# standard font definition
 	Font
 	  Size                Large
 	  Shape               Smallcaps
 	EndFont
 End
 
-# Date style definition
+
 Style Date
 	LabelType             Static
 	LabelString           "Date: "
 
-	# standard font definition
 	LabelFont
 	  Shape               Italic
 	  Size                Large
 	EndFont
 End
 
-# Address style definition
+
 Style Address
 	Margin                Dynamic
 	LatexType             Command
@@ -150,17 +144,15 @@ Style Address
 	EndFont
 End  
 
-# Abstract style definition
+
 Style Abstract 
 	ItemSep               0.2
 	ParSep                0.3
 
-	# standard font definition
 	Font
 	  Size                Normal
 	EndFont
 
-	# label font definition
 	LabelFont
 	  Size                Large
 	EndFont
