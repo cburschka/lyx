@@ -35,6 +35,7 @@
 #include "math_charinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
+#include "math_fracinset.h"
 #include "math_funcinset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
@@ -1261,21 +1262,9 @@ void MathCursor::interpret(string const & s)
 
 	char c = s[0];
 
-	lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
+	//lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
 	//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
 	//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
-
-	latexkeys const * l = in_word_set(s.substr(1));
-	if (l) {
-		lastcode_ = LM_TC_VAR;
-		niceInsert(createMathInset(l));
-		return;
-	}
-
-	if (MathMacroTable::hasTemplate(s.substr(1))) {
-		niceInsert(new MathMacro(MathMacroTable::provideTemplate(s.substr(1))));
-		return;
-	}
 
 	if (s.size() > 8 && s.substr(0, 8) == "\\matrix ") {
 		int m = 1;
@@ -1287,10 +1276,32 @@ void MathCursor::interpret(string const & s)
 		m = std::max(1, m);
 		n = std::max(1, n);
 		v_align += 'c';
-		MathArrayInset * pp = new MathArrayInset(m, n);
-		pp->valign(v_align[0]);
-		pp->halign(h_align);
-		niceInsert(pp);
+		MathArrayInset * p = new MathArrayInset(m, n);
+		p->valign(v_align[0]);
+		p->halign(h_align);
+		niceInsert(p);
+		return;
+	}
+
+	if (s == "\\over") {
+		MathArray ar = array();
+		MathFracInset * p = new MathFracInset;
+		p->cell(0).swap(array());
+		pos() = 0;
+		niceInsert(p);
+		down();
+		return;
+	}
+
+	latexkeys const * l = in_word_set(s.substr(1));
+	if (l) {
+		lastcode_ = LM_TC_VAR;
+		niceInsert(createMathInset(l));
+		return;
+	}
+
+	if (MathMacroTable::hasTemplate(s.substr(1))) {
+		niceInsert(new MathMacro(MathMacroTable::provideTemplate(s.substr(1))));
 		return;
 	}
 

@@ -7,6 +7,9 @@
 		math_cursor.C:
 		math_hash.C: simplifications
 
+	* math_parser.C:
+		math_cursor.C: reading support for TeX style \over
+
 2001-08-10  André Pönitz  <poenitz@gmx.net>
 
 	*	math_scopeinset.[Ch]: new inset for {} blocks

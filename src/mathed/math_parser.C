@@ -30,6 +30,7 @@
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
+#include "math_fracinset.h"
 #include "math_funcinset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
@@ -99,6 +100,7 @@ lexcode_enum lexcode[256];
 
 
 const unsigned char LM_TK_OPEN  = '{';
+const unsigned char LM_TK_CLOSE = '}';
 
 enum {
 	FLAG_BRACE      = 1 << 0,  //  an opening brace needed
@@ -184,9 +186,13 @@ void lexInit()
 class Parser {
 public:
 	///
-	Parser(LyXLex & lex) : is_(lex.getStream()), lineno_(lex.getLineNo()) {}
+	Parser(LyXLex & lex)
+		: is_(lex.getStream()), lineno_(lex.getLineNo()), putback_token_(0)
+	{}
 	///
-	Parser(istream & is) : is_(is), lineno_(0) {}
+	Parser(istream & is)
+		: is_(is), lineno_(0), putback_token_(0)
+	{}
 
 	///
 	MathMacroTemplate * parse_macro();
@@ -196,6 +202,8 @@ public:
 	void parse_into(MathArray & array, unsigned flags);
 	///
 	int lineno() const { return lineno_; }
+	///
+	void putback(int token);
 
 private:
 	///
@@ -230,7 +238,16 @@ private:
 	string curr_label_;
 	///
 	string curr_skip_;
+
+	///
+	int putback_token_;
 };
+
+
+void Parser::putback(int token)
+{
+	putback_token_ = token;
+}
 
 
 unsigned char Parser::getuchar()
@@ -291,6 +308,12 @@ int Parser::yylex()
 		lexInit();
 		init_done = true;
 	}
+
+	if (putback_token_) {
+		int token = putback_token_;
+		putback_token_ = 0;
+		return token;
+	}
 	
 	while (is_.good()) {
 		unsigned char c = getuchar();
@@ -299,29 +322,45 @@ int Parser::yylex()
 		if (lexcode[c] == LexNewLine) {
 			++lineno_; 
 			continue;
-		} else if (lexcode[c] == LexComment) {
+		}
+
+		if (lexcode[c] == LexComment) {
 			do {
 				c = getuchar();
 			} while (c != '\n' && is_.good());  // eat comments
-		} else if (lexcode[c] == LexOther) {
+		}
+
+		if (lexcode[c] == LexOther) {
 			ival_ = c;
 			return LM_TK_STR;
-		} else if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace) {
+		}
+
+		if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace) {
 			ival_ = c;
 			return LM_TK_ALPHA;
-		} else if (lexcode[c] == LexBOP) {
+		}
+
+		if (lexcode[c] == LexBOP) {
 			ival_ = c;
 			return LM_TK_BOP;
-		} else if (lexcode[c] == LexMath) {
+		}
+
+		if (lexcode[c] == LexMath) {
 			ival_ = 0;
 			return LM_TK_MATH;
-		} else if (lexcode[c] == LexSelf) {
+		}
+
+		if (lexcode[c] == LexSelf) {
 			return c;
-		} else if (lexcode[c] == LexArgument) {
+		}
+
+		if (lexcode[c] == LexArgument) {
 			c = getuchar();
 			ival_ = c - '0';
 			return LM_TK_ARGUMENT; 
-		} else if (lexcode[c] == LexESC)   {
+		}
+
+		if (lexcode[c] == LexESC)   {
 			c = getuchar();
 			//lyxerr << "reading second byte: '" << c << "' code: " << lexcode[c] << endl;
 			string s;
@@ -575,6 +614,15 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			}
 		}
 
+		if (flags & FLAG_BLOCK) {
+			if (t == LM_TK_CLOSE || t == '&' ||
+			    t == LM_TK_NEWLINE || t == LM_TK_END) {
+				putback(t);
+				return;
+			}
+		}
+
+
 		switch (t) {
 			
 		case LM_TK_MATH:
@@ -769,8 +817,10 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 
 		case LM_TK_OVER:
 		{
-			MathArray ar;
-			parse_into(ar, FLAG_BLOCK);
+			MathFracInset * p = new MathFracInset;
+			p->cell(0).swap(array);
+			array.push_back(p);
+			parse_into(p->cell(1), FLAG_BLOCK);
 			break;
 		}
 		
