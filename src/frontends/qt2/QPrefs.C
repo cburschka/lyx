@@ -305,10 +305,9 @@ findPos(std::vector<A> const & vec, A const & val)
 	return std::distance(vec.begin(), it);
 }
 
-void setComboxFont(QComboBox * cb,
-		   string const & family, string const & foundry)
+void setComboxFont(QComboBox * cb, string const & family,
+		string const & foundry, QFont::StyleHint hint)
 {
-
 	string const name = makeFontName(family, foundry);
 	for (int i = 0; i < cb->count(); ++i) {
 		if (fromqstr(cb->text(i)) == name) {
@@ -318,10 +317,23 @@ void setComboxFont(QComboBox * cb,
 	}
 
 	// Try matching without foundary name
+
+	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
-		// We count in reverse in order to prefer the Xft foundry
 		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
 		if (compare_no_case(tmp.first, family) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	// Try the hint
+	QFont font;
+	font.setStyleHint(hint);
+	QFontInfo fi(font);
+
+	for (int i = cb->count() - 1; i >= 0; --i) {
+		if (cb->text(i) == fi.family()) {
 			cb->setCurrentItem(i);
 			return;
 		}
@@ -411,6 +423,7 @@ void QPrefs::update_contents()
 		case grfx::ColorDisplay:	item = 2; break;
 		case grfx::GrayscaleDisplay:	item = 1; break;
 		case grfx::MonochromeDisplay:	item = 0; break;
+		default: break;
 	}
 	displaymod->displayGraphicsCO->setCurrentItem(item);
 
@@ -465,12 +478,12 @@ void QPrefs::update_contents()
 
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
-	setComboxFont(fontmod->screenRomanCO,
-		      rc.roman_font_name, rc.roman_font_foundry);
-	setComboxFont(fontmod->screenSansCO,
-		      rc.sans_font_name, rc.sans_font_foundry);
-	setComboxFont(fontmod->screenTypewriterCO,
-		      rc.typewriter_font_name, rc.typewriter_font_foundry);
+	setComboxFont(fontmod->screenRomanCO, rc.roman_font_name,
+			rc.roman_font_foundry, QFont::Serif);
+	setComboxFont(fontmod->screenSansCO, rc.sans_font_name,
+			rc.sans_font_foundry, QFont::SansSerif);
+	setComboxFont(fontmod->screenTypewriterCO, rc.typewriter_font_name,
+			rc.typewriter_font_foundry, QFont::TypeWriter);
 
 	dialog_->select_roman(fontmod->screenRomanCO->currentText());
 	dialog_->select_sans(fontmod->screenSansCO->currentText());

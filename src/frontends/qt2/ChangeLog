@@ -1,3 +1,8 @@
+2002-12-19  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: if we can't find the font family, use
+	  StyleHint to get one close by
+
 2002-12-18  Alfredo Braunstein <abraunst@libero.it>
  
  	* QRef.C (redoRefs): small bug fix (wrong label was selected)
