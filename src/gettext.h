@@ -51,7 +51,7 @@ void gettext_init(string const & localedir);
 ///
 #  define locale_init()
 ///
-#  define gettext_init(package, localedir)
+#  define gettext_init(localedir)
 
 #endif
 

@@ -367,7 +367,7 @@ string const LaTeXFeatures::getMacros()
 			// effect. (Lgb)
 		}
 	}
-	macros += floats.str();
+	macros += floats.str().c_str();
 
 	for (LanguageList::const_iterator cit = UsedLanguages.begin();
 	     cit != UsedLanguages.end(); ++cit)
