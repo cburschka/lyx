@@ -106,7 +106,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	if (authors.size() == 2)
 		msg = familyName(authors[0]) + _(" and ") + familyName(authors[1]);
 	else if (authors.size() > 2)
-		msg = familyName(authors[0]) + _("et al.");
+		msg = familyName(authors[0]) + _(" et al.");
 	else
 		msg = familyName(authors[0]);
 	return msg;

@@ -1,3 +1,8 @@
+2005-02-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* biblio.C (getAbbreviatedAuthor): add missing space before `et
+	al.' in the non boost:format case
+
 2005-01-17  Angus Leeming  <leeming@lyx.org>
 
 	* tex_helpers.C (rescanTexStyles): prepend the name of the
