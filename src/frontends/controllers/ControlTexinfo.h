@@ -22,7 +22,7 @@ class ControlTexinfo : public Dialog::Controller {
 public:
 	///
 	ControlTexinfo(Dialog &);
-	///
+	/// Nothing to initialise in this case.
 	virtual bool initialiseParams(string const &) { return true; }
 	///
 	virtual void clearParams() {}

@@ -29,7 +29,7 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	virtual bool initialiseParams(string const & params);
+	virtual bool initialiseParams(string const & data);
 	///
 	virtual void clearParams();
 	///

@@ -149,6 +149,20 @@ ButtonController & Dialog::bc() const
 }
 
 
+void Dialog::setController(Controller * i)
+{
+	Assert(i && !controller_ptr_.get());
+	controller_ptr_.reset(i);
+}
+
+
+void Dialog::setView(View * v)
+{
+	Assert(v && !view_ptr_.get());
+	view_ptr_.reset(v);
+}
+
+
 Dialog::Controller::Controller(Dialog & parent)
 	: parent_(parent)
 {}
@@ -185,15 +199,5 @@ string const & Dialog::View::getTitle() const
 }
 
 
-void Dialog::setController(Controller * i)
-{
-	Assert(i && !controller_ptr_.get());
-	controller_ptr_.reset(i);
-}
-
-
-void Dialog::setView(View * v)
-{
-	Assert(v && !view_ptr_.get());
-	view_ptr_.reset(v);
-}
+void Dialog::View::partialUpdate(int)
+{}

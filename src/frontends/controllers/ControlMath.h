@@ -23,6 +23,7 @@ class ControlMath : public Dialog::Controller {
 public:
 	ControlMath(Dialog &);
 
+	/// Nothing to initialise in this case.
 	virtual bool initialiseParams(string const &) { return true; }
 	virtual void clearParams() {}
 	virtual void dispatchParams() {}
@@ -42,9 +43,11 @@ public:
 	void dispatchMatrix(string const & str) const;
 	/// Insert a delimiter
 	void dispatchDelim(string const & str) const;
-	/// switch between display and inline
+	/// Wwitch between display and inline
 	void dispatchToggleDisplay() const;
-	/// a request to launch dialog \param name.
+	/** A request to the kernel to launch a dialog.
+	 *  \param name the dialog identifier.
+	 */
 	void showDialog(string const & name) const;
 };
 

@@ -21,7 +21,7 @@ class ControlChanges : public Dialog::Controller {
 public:
 	///
 	ControlChanges(Dialog &);
-	///
+	/// Nothing to initialise in this case.
 	virtual bool initialiseParams(string const &) { return true; }
 	///
 	virtual void clearParams() {}
