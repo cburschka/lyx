@@ -75,6 +75,16 @@ void LyXVC::buffer(Buffer * buf)
 
 void LyXVC::registrer()
 {
+	string const filename = owner_->fileName();
+ 
+	// there must be a file to save
+	if (!IsFileReadable(filename)) {
+		Alert::alert(_("File not saved"),
+			_("You must save the file"),
+			_("before it can be registered."));
+		return;
+	}
+
 	// it is very likely here that the vcs is not created yet...
 	if (!vcs) {
 		string const cvs_entries = "CVS/Entries";
@@ -82,16 +92,16 @@ void LyXVC::registrer()
 		if (IsFileReadable(cvs_entries)) {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< MakeDisplayPath(owner_->fileName())
+				<< MakeDisplayPath(filename)
 				<< " with CVS" << endl;
-			vcs = new CVS(cvs_entries, owner_->fileName());
+			vcs = new CVS(cvs_entries, filename);
 
 		} else {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< MakeDisplayPath(owner_->fileName())
+				<< MakeDisplayPath(filename)
 				<< " with RCS" << endl;
-			vcs = new RCS(owner_->fileName());
+			vcs = new RCS(filename);
 		}
 
 		vcs->owner(owner_);
@@ -100,7 +110,7 @@ void LyXVC::registrer()
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() &&
 	    Alert::askQuestion(_("Changes in document:"),
-			MakeDisplayPath(vcs->owner()->fileName(), 50),
+			MakeDisplayPath(filename, 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
 			->getLyXFunc()->dispatch(LFUN_MENUWRITE);

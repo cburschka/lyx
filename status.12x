@@ -37,22 +37,22 @@ What's new
 
 - re-read correctly graphics insets when file name contains a comma
 
+- do not ignore zero-length vertical spacing with 'keep' flag.
+
 - fix drawing problems for collapsed ERT insets
 
+- fix rotation angle of images to be the same as in latex output
+
 - disable 'Load' button of 'include file' dialog for verbatim include
+
+- fix translation of "reset" and "no change" in language combobox
 
 - only use the amsmath package when it is needed
 
 - make sure to use the graphicx package with the RasterBitmap and XFig
   external templates.
 
-- fix rotation angle of images to be the same as in latex output
-
-- do not ignore zero-length vertical spacing with 'keep' flag.
-
 - fix interaction between sixpack and LyX via lyxserver
-
-- fix translation of "reset" and "no change" in language combobox
 
 - fix command line crash and give useful exit status on some errors
 
@@ -60,6 +60,9 @@ What's new
 
 - make latex import script (reLyX) honor the LYX_DIR_12x envirnment
   variable, like the rest of LyX
+
+- rework the configuration script wrt xforms 1.0.  This version is now
+  supported. 
 
 - honor --with-extra-XXX when searching for AikSaurus library
 
