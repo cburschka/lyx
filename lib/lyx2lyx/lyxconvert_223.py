@@ -118,9 +118,34 @@ def convert_comment(lines):
                 i = i + 1
 
 
+def convert_minipage(lines):
+    pos = ["t","c","","b"]
+    inner_pos = ["c","t","b","s"]
+
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset Minipage", i)
+        if i == -1:
+            return
+
+        lines[i] = "\\begin_inset Frameless"
+
+        i = i + 1
+
+        # convert old to new position using the pos list
+        if lines[i][:8] == "position":
+            lines[i] = "position " + pos[int(lines[i][9])]
+            i = i + 1
+
+        # do the same for the inner_position
+        if lines[i][:14] == "inner_position":
+            lines[i] = "inner_pos " +  inner_pos[int(lines[i][15])]
+            i = i + 1
+        
 def convert(header, body):
     convert_external(body)
     convert_comment(body)
+    convert_minipage(body)
 
 if __name__ == "__main__":
     pass
