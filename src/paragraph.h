@@ -127,13 +127,15 @@ public:
 				  OutputParams const & runparams,
 				  lyx::depth_type depth) const;
 
+	/// Get the id of the paragraph, usefull for docbook
+	std::string getDocbookId() const;
+
 	///
 	void simpleDocBookOnePar(Buffer const & buf,
 				 std::ostream &,
 				 LyXFont const & outerfont,
 				 OutputParams const & runparams,
-				 lyx::depth_type depth,
-				 bool labelid) const;
+				 lyx::depth_type depth) const;
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;

@@ -46,6 +46,7 @@ pair<bool, string> escapeChar(char c)
 	case '>':
 		str = "&gt;";
 		break;
+#if 0
 	case '$':
 		str = "&dollar;";
 		break;
@@ -76,6 +77,7 @@ pair<bool, string> escapeChar(char c)
 	case '\\':
 		str = "&bsol;";
 		break;
+#endif
 	default:
 		str = c;
 		break;

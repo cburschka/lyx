@@ -143,6 +143,6 @@ int InsetLabel::linuxdoc(Buffer const &, ostream & os,
 int InsetLabel::docbook(Buffer const &, ostream & os,
 			OutputParams const &) const
 {
-	os << "<anchor id=\"" << getContents() << "\">";
+	os << "<!-- anchor id=\"" << getContents() << "\" -->";
 	return 0;
 }

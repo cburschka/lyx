@@ -1070,8 +1070,15 @@ void Buffer::makeDocBookFile(string const & fname,
 			ofs << "<?xml version=\"1.0\" encoding=\""
 			    << params().language->encoding()->Name() << "\"?>\n";
 
-		ofs << subst(tclass.class_header(), "#", top_element);
+		ofs << "<!DOCTYPE " << top_element << " ";
 
+		if (! tclass.class_header().empty()) ofs << tclass.class_header();
+		else if (runparams.flavor == OutputParams::XML)
+			ofs << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
+			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
+		else
+			ofs << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
+		
 		string preamble = params().preamble;
 		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
@@ -1086,7 +1093,10 @@ void Buffer::makeDocBookFile(string const & fname,
 
 	string top = top_element;
 	top += " lang=\"";
-	top += params().language->code();
+	if (runparams.flavor == OutputParams::XML)
+		top += params().language->code();
+	else
+		top += params().language->code().substr(0,2);
 	top += '"';
 
 	if (!params().options.empty()) {

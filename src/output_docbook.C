@@ -67,7 +67,7 @@ void docbookParagraphs(Buffer const & buf,
 	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
 
-    Counters & counters = buf.params().getLyXTextClass().counters();
+	Counters & counters = buf.params().getLyXTextClass().counters();
 
 	for (; par != pend; ++par) {
 
@@ -93,8 +93,10 @@ void docbookParagraphs(Buffer const & buf,
 			environment_inner[depth].erase();
 		}
 
-		string ls = "";
-		bool labelid = false;
+		string ls = par->getDocbookId();
+		if (!ls.empty())
+			ls = " id = \"" + ls + "\"";
+
 		// Write opening SGML tags.
 		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
@@ -103,6 +105,7 @@ void docbookParagraphs(Buffer const & buf,
 				int i = counters.value("para");
 				ls = subst(style->latexparam(), "#", tostr(i));
 			}
+
 			sgml::openTag(os, depth + command_depth,
 				    false, style->latexname(), ls);
 			break;
@@ -144,20 +147,8 @@ void docbookParagraphs(Buffer const & buf,
 			if (style->latexparam().find('#') != string::npos) {
 				counters.step(style->counter);
 			}
-			// treat label as a special case for
-			// more WYSIWYM handling.
-			// This is a hack while paragraphs can't have
-			// attributes, like id in this case.
-			if (par->size() && par->isInset(0)) {
-				InsetBase * inset = par->getInset(0);
-				if (inset->lyxCode() == InsetOld::LABEL_CODE) {
-					command_name += " id=\"";
-					command_name += (static_cast<InsetCommand *>(inset))->getContents();
-					command_name += '"';
-					labelid = true;
-				}
-			}
-			if (!labelid && !style->latexparam().empty()) {
+
+			if (!style->latexparam().empty()) {
 				ls = style->latexparam();
 				if (ls.find('#') != string::npos) {
 					string el = expandLabel(buf.params().getLyXTextClass(),
@@ -198,7 +189,7 @@ void docbookParagraphs(Buffer const & buf,
 				environment_inner[depth] = "!-- --";
 				// outputs <environment_stack[depth] latexparam()>
 				sgml::openTag(os, depth + command_depth, false,
-						environment_stack[depth], style->latexparam());
+						environment_stack[depth], style->latexparam() + ls);
 			} else {
 				sgml::closeEnvTags(os, false, environment_inner[depth],
 					style->itemtag(), command_depth + depth);
@@ -223,13 +214,13 @@ void docbookParagraphs(Buffer const & buf,
 			break;
 		default:
 			sgml::openTag(os, depth + command_depth,
-				    false, style->latexname());
+				    false, style->latexname(), ls);
 			break;
 		}
 
 		par->simpleDocBookOnePar(buf, os,
 			outerFont(par - const_cast<ParagraphList&>(paragraphs).begin(), paragraphs),
-			runparams, depth + 1 + command_depth, labelid);
+			runparams, depth + 1 + command_depth);
 
 		// write closing SGML tags
 		switch (style->latextype) {

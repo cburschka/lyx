@@ -1,3 +1,14 @@
+2004-05-14  José Matos  <jamatos@lyx.org>
+
+	* buffer.C (makeDocBookFile): add a default Formal Public Identifier
+	if the textclass does not provide it. Have it different for sgml and
+	xml.
+	support the language of document.
+	* output_docbook.C (docbookParagraphs):
+	* paragraph.[Ch] (getDocbookId): new function that gets the id of the
+	first anchor as the id of the paragraph, remove special case code.
+	* sgml.C (escapeChar): escape only < & >.
+
 2004-05-14  Angus Leeming  <leeming@lyx.org>
 
 	* bufferparams.h: move biblio::CiteEngine enum here to minimize

@@ -1,3 +1,9 @@
+2004-05-14  José Matos  <jamatos@lyx.org>
+
+	* layouts/agu_stdclass.inc:
+	* layouts/db_stdclass.inc: remove !DOCTYPE from the Formal Public
+	Identifier since this is an invariant.
+
 2004-05-13  José Matos  <jamatos@lyx.org>
 
 	* configure.m4: add support for docbook-xml.

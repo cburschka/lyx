@@ -1325,12 +1325,27 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 }
 
 
+string Paragraph::getDocbookId() const
+{
+	for (pos_type i = 0; i < size(); ++i) {
+		if (isInset(i)) {
+			InsetBase const * inset = getInset(i);
+			InsetBase::Code lyx_code = inset->lyxCode();
+			if (lyx_code == InsetBase::LABEL_CODE) {
+				return static_cast<InsetCommand const *>(inset)->getContents();
+			}
+		}
+
+	}
+	return string();
+}
+
+
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    ostream & os,
 				    LyXFont const & outerfont,
 				    OutputParams const & runparams,
-				    lyx::depth_type depth,
-				    bool labelid) const
+				    lyx::depth_type depth) const
 {
 	bool emph_flag = false;
 
@@ -1392,15 +1407,11 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);
-			// don't print the inset in position 0 if desc_on == 3 (label)
-			//if (i || desc_on != 3) {
-			if (!labelid) {
-				if (style->latexparam() == "CDATA")
-					os << "]]>";
-				inset->docbook(buf, os, runparams);
-				if (style->latexparam() == "CDATA")
-					os << "<![CDATA[";
-			}
+			if (style->latexparam() == "CDATA")
+				os << "]]>";
+			inset->docbook(buf, os, runparams);
+			if (style->latexparam() == "CDATA")
+				os << "<![CDATA[";
 		} else {
 			char c = getChar(i);
 			bool ws;

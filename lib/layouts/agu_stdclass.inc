@@ -15,7 +15,7 @@ TocDepth                3
 DefaultStyle            Standard
 
 ClassOptions
-	Header              "<!DOCTYPE # PUBLIC &quot;-//AGU//DTD article American Geophysical Union DTD version 3.42//EN&quot; &quot;AGU-Article-3.42.dtd&quot; "
+	Header              "PUBLIC &quot;-//AGU//DTD article American Geophysical Union DTD version 3.42//EN&quot; &quot;AGU-Article-3.42.dtd&quot; "
 End
 
 Style Standard
