@@ -675,7 +675,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_PROTECTEDSPACE:
 	case LFUN_MATH_SPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->insert(MathAtom(new MathSpaceInset(1)));
+		mathcursor->insert(MathAtom(new MathSpaceInset(",")));
 		updateLocal(bv, true);
 		break;
 

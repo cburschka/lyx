@@ -34,17 +34,23 @@ MathAtom::MathAtom(MathInset * p)
 {}
 
 
-MathAtom::MathAtom(MathAtom const & p)
-	: nucleus_(p.nucleus_ ? p.nucleus_->clone() : 0)
+MathAtom::MathAtom(MathAtom const & at)
+	: nucleus_(at.nucleus_ ? at.nucleus_->clone() : 0)
 {}
 
 
-void MathAtom::operator=(MathAtom const & p)
+void MathAtom::operator=(MathAtom const & at)
 {
-	if (&p == this)
+	if (&at == this)
 		return;
-	MathAtom tmp(p);
+	MathAtom tmp(at);
 	std::swap(tmp.nucleus_, nucleus_);
+}
+
+
+void MathAtom::operator=(MathInset * p)
+{
+	reset(p);
 }
 
 

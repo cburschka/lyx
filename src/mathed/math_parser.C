@@ -881,8 +881,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			MathArray ar;
 			parse_into(ar, FLAG_RIGHT, mathmode);
 			string r = getToken().asString();
-			cell->push_back(MathAtom(new MathDelimInset(l, r)));
-			cell->back()->cell(0) = ar;
+			cell->push_back(MathAtom(new MathDelimInset(l, r, ar)));
 		}
 
 		else if (t.cs() == "right") {

@@ -54,7 +54,7 @@ void MathStringInset::maplize(MapleStream & os) const
 	// insert '*' between adjacent chars if type is LM_TC_VAR
 	os << str_[0];
 	for (string::size_type i = 1; i < str_.size(); ++i)
-		os << '*' << str_[i];
+		os << str_[i];
 }
 
 
@@ -68,7 +68,7 @@ void MathStringInset::octavize(OctaveStream & os) const
 	// insert '*' between adjacent chars if type is LM_TC_VAR
 	os << str_[0];
 	for (string::size_type i = 1; i < str_.size(); ++i)
-		os << '*' << str_[i];
+		os << str_[i];
 }
 
 

@@ -1419,9 +1419,10 @@ bool MathCursor::interpret(char c)
 			return true;
 		}
 
-		// leave macro mode and try again
+		// leave macro mode and try again if necessary
 		macroModeClose();
-		interpret(c);
+		if (c != ' ')
+			interpret(c);
 		return true;
 	}
 

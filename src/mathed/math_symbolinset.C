@@ -115,6 +115,8 @@ void MathSymbolInset::maplize(MapleStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';
+	else if (name() == "infty")
+		os << "infinity";
 	else
 		os << name();
 }

@@ -11,6 +11,13 @@ MathExFuncInset::MathExFuncInset(string const & name)
 {}
 
 
+MathExFuncInset::MathExFuncInset(string const & name, MathArray const & ar)
+	: MathNestInset(1), name_(name)
+{
+	cell(0) = ar;
+}
+
+
 MathInset * MathExFuncInset::clone() const
 {
 	return new MathExFuncInset(*this);

@@ -14,6 +14,8 @@ public:
 	///
 	explicit MathSpaceInset(int sp);
 	///
+	explicit MathSpaceInset(string const & name);
+	///
 	MathInset * clone() const;
 	///
 	MathSpaceInset const * asSpaceInset() const { return this; }

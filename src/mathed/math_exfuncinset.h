@@ -12,6 +12,8 @@ public:
 	///
 	explicit MathExFuncInset(string const & name);
 	///
+	MathExFuncInset(string const & name, MathArray const & ar);
+	///
 	MathInset * clone() const;
 	///
 	void metrics(MathMetricsInfo & st) const;

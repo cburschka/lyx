@@ -46,6 +46,8 @@ public:
 	/// assignment invokes nucleus_->clone()
 	void operator=(MathAtom const &);
 	/// change inset under the hood
+	void operator=(MathInset * p);
+	/// change inset under the hood
 	void reset(MathInset * p);
 	/// access to the inset (checked with gprof)
 	MathInset * nucleus() const { return nucleus_; }

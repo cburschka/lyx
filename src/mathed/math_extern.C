@@ -331,15 +331,29 @@ void extractExps(MathArray & ar)
 		if (!sup || sup->hasDown())
 			continue;
 
-		// create a proper exp-inset as replacement
-		MathExFuncInset * func = new MathExFuncInset("exp");
-		func->cell(0) = sup->cell(1);
-
-		// clean up
-		(*it).reset(func);
+		// create a proper exp-inset as replacement 
+		*it = new MathExFuncInset("exp", sup->cell(1));
 		ar.erase(it + 1);
 	}
 	//lyxerr << "\nExps to: " << ar << "\n";
+}
+
+
+//
+// extract det(...)  from |matrix|
+//
+void extractDets(MathArray & ar)
+{
+	//lyxerr << "\ndet from: " << ar << "\n";
+	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathDelimInset * del = (*it)->asDelimInset();
+		if (!del)
+			continue;
+		if (!del->isAbs())
+			continue;
+		*it = new MathExFuncInset("det", del->cell(0));
+	}
+	//lyxerr << "\ndet to: " << ar << "\n";
 }
 
 
@@ -404,9 +418,7 @@ bool testCloseParan(MathInset * p)
 
 MathInset * replaceDelims(const MathArray & ar)
 {
-	MathDelimInset * del = new MathDelimInset("(", ")");
-	del->cell(0) = ar;
-	return del;
+	return new MathDelimInset("(", ")", ar);
 }
 
 
@@ -761,6 +773,7 @@ void extractStructure(MathArray & ar)
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);
+	extractDets(ar);
 	extractIntegrals(ar);
 	extractSums(ar);
 	extractDiff(ar);
@@ -911,6 +924,7 @@ namespace {
 		ms << ar;
 		string expr = os.str().c_str();
 		lyxerr << "ar: '" << ar << "'\n";
+		lyxerr << "ms: '" << os.str() << "'\n";
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way by using mint

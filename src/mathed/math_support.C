@@ -525,28 +525,6 @@ void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 }
 
 
-string convertDelimToLatexName(string const & name)
-{
-	if (name == "(")
-		return name;
-	if (name == "[")
-		return name;
-	if (name == ".")
-		return name;
-	if (name == ")")
-		return name;
-	if (name == "]")
-		return name;
-	if (name == "/")
-		return name;
-	if (name == "|")
-		return name;
-	return "\\" + name + " ";
-}
-
-
-
-
 struct fontinfo {
 	string cmd_;
 	LyXFont::FONT_FAMILY family_;

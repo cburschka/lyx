@@ -14,10 +14,42 @@
 
 using std::max;
 
+namespace {
+
+string convertDelimToLatexName(string const & name)
+{
+	if (name == "(")
+		return name;
+	if (name == "[")
+		return name;
+	if (name == ".")
+		return name;
+	if (name == ")")
+		return name;
+	if (name == "]")
+		return name;
+	if (name == "/")
+		return name;
+	if (name == "|")
+		return name;
+	return "\\" + name + " ";
+}
+
+}
+
+
 
 MathDelimInset::MathDelimInset(string const & l, string const & r)
 	: MathNestInset(1), left_(l), right_(r)
 {}
+
+
+MathDelimInset::MathDelimInset
+		(string const & l, string const & r, MathArray const & ar)
+	: MathNestInset(1), left_(l), right_(r)
+{
+	cell(0) = ar;
+}
 
 
 MathInset * MathDelimInset::clone() const

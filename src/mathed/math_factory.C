@@ -321,8 +321,8 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathUndersetInset);
 		if (inset == "decoration")
 			return MathAtom(new MathDecorationInset(l->name));
-		//if (inset == "space")
-		//	return MathAtom(new MathSpaceInset(l->id));
+		if (inset == "space")
+			return MathAtom(new MathSpaceInset(l->name));
 		if (inset == "dots")
 			return MathAtom(new MathDotsInset(l->name));
 		if (inset == "box")

@@ -39,8 +39,6 @@ void drawChar(MathPainterInfo & pain,
 
 void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 
-string convertDelimToLatexName(string const & name);
-
 void augmentFont(LyXFont & f, string const & cmd);
 
 
