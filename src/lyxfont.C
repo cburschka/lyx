@@ -542,10 +542,11 @@ LyXFont & LyXFont::setLyXFamily(string const & fam)
 	string const s = ascii_lowercase(fam);
 
 	int i = 0;
-	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") ++i;
-	if (s == LyXFamilyNames[i]) {
+	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error")
+		++i;
+	if (s == LyXFamilyNames[i])
 		setFamily(LyXFont::FONT_FAMILY(i));
-	} else
+	else
 		lyxerr << "LyXFont::setLyXFamily: Unknown family `"
 		       << s << '\'' << endl;
 	return *this;

@@ -17,6 +17,7 @@
 
 #include "BufferView.h"
 #include "debug.h"
+#include "dimension.h"
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
@@ -88,7 +89,6 @@ void InsetCollapsable::write(Buffer const * buf, ostream & os) const
 }
 
 
-
 void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 {
 	if (lex.isOK()) {
@@ -108,64 +108,31 @@ void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetCollapsable::ascent_collapsed() const
+void InsetCollapsable::dimension_collapsed(Dimension & dim) const
 {
-	int width = 0;
-	int ascent = 0;
-	int descent = 0;
-	font_metrics::buttonText(label, labelfont, width, ascent, descent);
-	return ascent;
+	font_metrics::buttonText(label, labelfont, dim.w, dim.a, dim.d);
+	dim.w += 2 * TEXT_TO_INSET_OFFSET;
 }
 
 
-int InsetCollapsable::descent_collapsed() const
+int InsetCollapsable::height_collapsed() const
 {
-	int width = 0;
-	int ascent = 0;
-	int descent = 0;
-	font_metrics::buttonText(label, labelfont, width, ascent, descent);
-	return descent;
+	Dimension dim;
+	font_metrics::buttonText(label, labelfont, dim.w, dim.a, dim.d);
+	return dim.a + dim.d;
 }
 
 
-//int InsetCollapsable::width_collapsed(Painter & pain) const
-int InsetCollapsable::width_collapsed() const
+void InsetCollapsable::dimension(BufferView * bv, LyXFont const & font,
+	Dimension & dim) const
 {
-	int width;
-	int ascent;
-	int descent;
-	font_metrics::buttonText(label, labelfont, width, ascent, descent);
-	return width + 2 * TEXT_TO_INSET_OFFSET;
-}
-
-
-int InsetCollapsable::ascent(BufferView * /*bv*/, LyXFont const &) const
-{
-	return ascent_collapsed();
-}
-
-
-int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
-{
-	if (collapsed_)
-		return descent_collapsed();
-
-	return descent_collapsed()
-		+ inset.descent(bv, font)
-		+ inset.ascent(bv, font)
-		+ TEXT_TO_BOTTOM_OFFSET;
-}
-
-
-int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
-{
-	if (collapsed_)
-		return width_collapsed();
-
-	int const collapsed_width = width_collapsed();
-	int const contents_width = inset.width(bv, font);
-
-	return max(collapsed_width, contents_width);
+	dimension_collapsed(dim);
+	if (collapsed_) 
+		return;
+	Dimension insetdim;
+	inset.dimension(bv, font, insetdim);
+	dim.d += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
+	dim.w = max(dim.w, insetdim.width());
 }
 
 
@@ -174,7 +141,9 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 {
 	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
 			baseline, label, labelfont);
-	x += width_collapsed();
+	Dimension dim;
+	dimension_collapsed(dim);
+	x += dim.w;
 }
 
 
@@ -187,12 +156,14 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	if (nodraw())
 		return;
 
+	Dimension dim_collapsed;
+	dimension_collapsed(dim_collapsed);
+
 	Painter & pain = bv->painter();
 
-	button_length = width_collapsed();
-	button_top_y = -ascent(bv, f);
-	button_bottom_y = -ascent(bv, f) + ascent_collapsed() +
-		descent_collapsed();
+	button_length   = dim_collapsed.width();
+	button_top_y    = -ascent(bv, f);
+	button_bottom_y = -ascent(bv, f) + dim_collapsed.height();
 
 	if (!isOpen()) {
 		draw_collapsed(pain, baseline, x);
@@ -207,15 +178,16 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	top_x = int(x);
 	top_baseline = baseline;
 
-	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
+	int const bl = baseline - ascent(bv, f) + dim_collapsed.ascent();
 
 	if (inlined) {
 		inset.draw(bv, f, baseline, x);
 	} else {
 		draw_collapsed(pain, bl, old_x);
-		inset.draw(bv, f, bl + descent_collapsed() + inset.ascent(bv, f), x);
+		int const yy = bl + dim_collapsed.descent() + inset.ascent(bv, f);
+		inset.draw(bv, f, yy, x);
 		// contained inset may be shorter than the button
-		if (x < (top_x + button_length + TEXT_TO_INSET_OFFSET))
+		if (x < top_x + button_length + TEXT_TO_INSET_OFFSET)
 			x = top_x + button_length + TEXT_TO_INSET_OFFSET;
 	}
 }
@@ -259,9 +231,7 @@ FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 	LyXFont font(LyXFont::ALL_SANE);
 	FuncRequest cmd1 = cmd;
 	cmd1.y = ascent(cmd.view(), font) + cmd.y -
-	    (ascent_collapsed() +
-	     descent_collapsed() +
-	     inset.ascent(cmd.view(), font));
+	    (height_collapsed() + inset.ascent(cmd.view(), font));
 	return cmd1;
 }
 
@@ -394,9 +364,7 @@ Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				} else {
 					LyXFont font(LyXFont::ALL_SANE);
 					cmd1.y = ascent(bv, font) + cmd.y -
-						(ascent_collapsed() +
-						descent_collapsed() +
-						inset.ascent(bv, font));
+						(height_collapsed() + inset.ascent(bv, font));
 				}
 				inset.localDispatch(cmd);
 			}

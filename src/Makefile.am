@@ -121,6 +121,8 @@ lyx_SOURCES = \
 	counters.h \
 	debug.C \
 	debug.h \
+	dimension.C \
+	dimension.h \
 	encoding.C \
 	encoding.h \
 	exporter.C \

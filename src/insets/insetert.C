@@ -306,7 +306,7 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 		if (status_ == Inlined)
 			inset.localDispatch(cmd1);
 		else if (!collapsed_ && (cmd.y > button_bottom_y)) {
-			cmd1.y -= ascent_collapsed() + descent_collapsed();
+			cmd1.y -= height_collapsed();
 			inset.localDispatch(cmd1);
 		}
 	}
@@ -552,30 +552,13 @@ bool InsetERT::checkInsertChar(LyXFont & /* font */)
 }
 
 
-int InsetERT::ascent(BufferView * bv, LyXFont const & font) const
+void InsetERT::dimension(BufferView * bv, LyXFont const & font,
+	Dimension & dim) const
 {
-	if (!inlined())
-		return InsetCollapsable::ascent(bv, font);
-
-	return inset.ascent(bv, font);
-}
-
-
-int InsetERT::descent(BufferView * bv, LyXFont const & font) const
-{
-	if (!inlined())
-		return InsetCollapsable::descent(bv, font);
-
-	return inset.descent(bv, font);
-}
-
-
-int InsetERT::width(BufferView * bv, LyXFont const & font) const
-{
-	if (!inlined())
-		return InsetCollapsable::width(bv, font);
-
-	return inset.width(bv, font);
+	if (inlined()) 
+		inset.dimension(bv, font, dim);
+	else
+		InsetCollapsable::dimension(bv, font, dim);
 }
 
 

@@ -28,7 +28,7 @@ struct keyword_item {
 class LyXLex : boost::noncopyable {
 public:
 	///
-	LyXLex (keyword_item *, int);
+	LyXLex(keyword_item *, int);
 	///
 	~LyXLex();
 

@@ -1,4 +1,3 @@
-
 #include "insetbase.h"
 
 

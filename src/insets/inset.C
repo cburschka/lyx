@@ -13,14 +13,13 @@
 
 #include <config.h>
 
-
 #include "inset.h"
-
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxtext.h"
+#include "dimension.h"
 
 #include "frontends/Painter.h"
 #include "frontends/mouse_state.h"
@@ -146,5 +145,29 @@ int Inset::latexTextWidth(BufferView * bv) const
 	if (owner())
 		return (owner()->latexTextWidth(bv));
 	return bv->workWidth();
+}
+
+
+int Inset::ascent(BufferView * bv, LyXFont const & font) const
+{
+	Dimension dim;
+	dimension(bv, font, dim);
+	return dim.ascent();
+}
+
+
+int Inset::descent(BufferView * bv, LyXFont const & font) const
+{
+	Dimension dim;
+	dimension(bv, font, dim);
+	return dim.descent();
+}
+
+
+int Inset::width(BufferView * bv, LyXFont const & font) const
+{
+	Dimension dim;
+	dimension(bv, font, dim);
+	return dim.width();
 }
 

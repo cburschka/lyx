@@ -12,9 +12,10 @@
 
 #include <config.h>
 
-
 #include "insetspecialchar.h"
+
 #include "debug.h"
+#include "dimension.h"
 #include "LaTeXFeatures.h"
 #include "BufferView.h"
 #include "frontends/Painter.h"
@@ -24,6 +25,7 @@
 
 using std::ostream;
 using std::max;
+
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
 	: kind_(k)
@@ -36,51 +38,23 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 }
 
 
-int InsetSpecialChar::ascent(BufferView *, LyXFont const & font) const
+void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
+	Dimension & dim) const
 {
-	return font_metrics::maxAscent(font);
-}
+	dim.a = font_metrics::maxAscent(font);
+	dim.d = font_metrics::maxDescent(font);
 
-
-int InsetSpecialChar::descent(BufferView *, LyXFont const & font) const
-{
-	return font_metrics::maxDescent(font);
-}
-
-
-int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
-{
+	char const * s = 0;
 	switch (kind_) {
-	case HYPHENATION:
-	{
-		int w = font_metrics::width('-', font);
-		if (w > 5)
-			w -= 2; // to make it look shorter
-		return w;
+		case LIGATURE_BREAK:      s = "|";     break;
+		case END_OF_SENTENCE:     s = ".";     break;
+		case LDOTS:               s = ". . ."; break;
+		case MENU_SEPARATOR:      s = " x ";   break;
+		case PROTECTED_SEPARATOR: s = "x";     break;
 	}
-	case LIGATURE_BREAK:
-	{
-		return font_metrics::width('|', font);
-	}
-	case END_OF_SENTENCE:
-	{
-		return font_metrics::width('.', font);
-	}
-	case LDOTS:
-	{
-		return font_metrics::width(". . .", font);
-	}
-	case MENU_SEPARATOR:
-	{
-		return font_metrics::width(" x ", font);
-	}
-	case PROTECTED_SEPARATOR:
-	{
-		return font_metrics::width('x', font);
-	}
-
-	}
-	return 1; // To shut up gcc
+	dim.w = font_metrics::width('x', font);
+	if (kind_ == HYPHENATION && dim.w > 5)
+		dim.w -= 2; // to make it look shorter
 }
 
 

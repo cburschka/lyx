@@ -28,10 +28,12 @@
 
 using std::ostream;
 
+
 InsetGraphicsParams::InsetGraphicsParams()
 {
 	init();
 }
+
 
 InsetGraphicsParams::InsetGraphicsParams(InsetGraphicsParams const & igp)
 {
@@ -40,6 +42,7 @@ InsetGraphicsParams::InsetGraphicsParams(InsetGraphicsParams const & igp)
 	//    init();
 	copy(igp);
 }
+
 
 InsetGraphicsParams &
 InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
@@ -50,6 +53,7 @@ InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 	copy(params);
 	return *this;
 }
+
 
 void InsetGraphicsParams::init()
 {
@@ -73,6 +77,7 @@ void InsetGraphicsParams::init()
 	special.erase();		// additional userdefined stuff
 }
 
+
 void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 {
 	filename = igp.filename;
@@ -94,6 +99,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	subcaptionText = igp.subcaptionText;
 	special = igp.special;
 }
+
 
 bool operator==(InsetGraphicsParams const & left,
 		InsetGraphicsParams const & right)
@@ -123,11 +129,13 @@ bool operator==(InsetGraphicsParams const & left,
 	return false;
 }
 
+
 bool operator!=(InsetGraphicsParams const & left,
 		InsetGraphicsParams const & right)
 {
 	return	!(left == right);
 }
+
 
 void InsetGraphicsParams::Write(ostream & os) const
 {

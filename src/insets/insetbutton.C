@@ -12,9 +12,9 @@
 
 #include <config.h>
 
-
 #include "insetbutton.h"
 #include "debug.h"
+#include "dimension.h"
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "frontends/LyXView.h"
@@ -27,69 +27,22 @@ using std::ostream;
 using std::endl;
 
 
-int InsetButton::ascent(BufferView * bv, LyXFont const &) const
+void InsetButton::dimension(BufferView * bv, LyXFont const &,
+	Dimension & dim) const
 {
 	lyx::Assert(bv);
 
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 
-	int width;
-	int ascent;
-	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-	if (editable()) {
-		font_metrics::buttonText(s, font, width, ascent, descent);
-	} else {
-		font_metrics::rectText(s, font, width, ascent, descent);
-	}
-
-	return ascent;
-}
-
-
-int InsetButton::descent(BufferView * bv, LyXFont const &) const
-{
-	lyx::Assert(bv);
-
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-
-	int width;
-	int ascent;
-	int descent;
-	string const s = getScreenLabel(bv->buffer());
-
-	if (editable()) {
-		font_metrics::buttonText(s, font, width, ascent, descent);
-	} else {
-		font_metrics::rectText(s, font, width, ascent, descent);
-	}
-
-	return descent;
-}
-
-
-int InsetButton::width(BufferView * bv, LyXFont const &) const
-{
-	lyx::Assert(bv);
-
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-
-	int width;
-	int ascent;
-	int descent;
-	string const s = getScreenLabel(bv->buffer());
-
-	if (editable()) {
-		font_metrics::buttonText(s, font, width, ascent, descent);
-	} else {
-		font_metrics::rectText(s, font, width, ascent, descent);
-	}
-
-	return width + 4;
+	if (editable()) 
+		font_metrics::buttonText(s, font, dim.w, dim.a, dim.d);
+	else 
+		font_metrics::rectText(s, font, dim.w, dim.a, dim.d);
+	
+	dim.w += 4;
 }
 
 

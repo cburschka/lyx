@@ -26,33 +26,23 @@ public:
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	virtual
-	bool display() const;
+	virtual bool display() const;
 	///
-	virtual
-	bool needFullRow() const;
+	virtual bool needFullRow() const;
 	///
-	virtual
-	Inset::Code lyxCode() const;
+	virtual Inset::Code lyxCode() const;
 	///
-	virtual
-	string const editMessage() const;
+	virtual string const editMessage() const;
 	///
-	virtual
-	void draw(BufferView * bv, LyXFont const & f,
+	virtual void draw(BufferView * bv, LyXFont const & f,
 			  int baseline, float & x) const;
 	///
-	virtual
-	int latex(Buffer const * buf, std::ostream & os,
+	virtual int latex(Buffer const * buf, std::ostream & os,
 			  bool fragile, bool free_spc) const;
 	///
-	virtual
 	int ascii(Buffer const * buf, std::ostream & os, int linelen) const;
 	///
-	virtual
 	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
-protected:
-private:
 };
 
 
@@ -75,4 +65,5 @@ Inset::Code InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }
+
 #endif

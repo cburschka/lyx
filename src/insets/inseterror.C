@@ -13,6 +13,7 @@
 #include "inseterror.h"
 
 #include "BufferView.h"
+#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxfont.h"
@@ -54,27 +55,14 @@ dispatch_result InsetError::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetError::ascent(BufferView *, LyXFont const & font) const
+void InsetError::dimension(BufferView *, LyXFont const & font,
+	Dimension & dim) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return font_metrics::maxAscent(efont) + 1;
-}
-
-
-int InsetError::descent(BufferView *, LyXFont const & font) const
-{
-	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	return font_metrics::maxDescent(efont) + 1;
-}
-
-
-int InsetError::width(BufferView *, LyXFont const & font) const
-{
-	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	return 6 + font_metrics::width(_("Error"), efont);
+	dim.a = font_metrics::maxAscent(efont) + 1;
+	dim.d = font_metrics::maxDescent(efont) + 1;
+	dim.w = 6 + font_metrics::width(_("Error"), efont);
 }
 
 

@@ -22,7 +22,6 @@ struct LaTeXFeatures;
 
 
 /** Quotes.
-
   Used for the various quotes. German, English, French, all either
   double or single **/
 class InsetQuotes : public Inset {
@@ -68,13 +67,11 @@ public:
 	InsetQuotes(string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
+	///
+	Inset * clone(Buffer const &, bool same_id = false) const;
 
 	///
-	int ascent(BufferView *, LyXFont const &) const;
-	///
-	int descent(BufferView *, LyXFont const &) const;
-	///
-	int width(BufferView *, LyXFont const &) const;
+	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &) const;
 #if 0
@@ -96,8 +93,6 @@ public:
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures &) const;
-	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	Inset::Code lyxCode() const;
 	// should this inset be handled like a normal charater

@@ -161,10 +161,7 @@ Buffer::~Buffer()
 string const Buffer::getLatexName(bool no_path) const
 {
 	string const name = ChangeExtension(MakeLatexName(fileName()), ".tex");
-	if (no_path)
-		return OnlyFilename(name);
-	else
-		return name;
+	return no_path ? OnlyFilename(name) : name;
 }
 
 

@@ -21,6 +21,7 @@
 #include "support/LAssert.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/tostr.h"
 #include "support/lstrings.h" // frontStrip, strip
 
 #include "lyx_forms.h"
@@ -196,9 +197,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 		fl_set_input(input, "");
 		fl_set_choice_text(choice, default_unit.c_str());
 	} else {
-		ostringstream buffer;
-		buffer << len.value();
-		fl_set_input(input, buffer.str().c_str());
+		fl_set_input(input, tostr(len.value()).c_str());
 
 		// Set the choice to the desired unit, if present in the choice.
 		// Else set the choice to the default unit.
@@ -220,7 +219,8 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 string formatted(string const & sin, int w, int size, int style)
 {
 	string sout;
-	if (sin.empty()) return sout;
+	if (sin.empty())
+		return sout;
 
 	string::size_type curpos = 0;
 	string line;

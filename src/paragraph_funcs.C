@@ -41,6 +41,7 @@ using lyx::pos_type;
 using std::endl;
 using std::ostream;
 
+
 void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
 		    ParagraphList::iterator par,

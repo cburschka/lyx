@@ -15,12 +15,10 @@
 #define DIMENSION_H
 
 
-#include <iosfwd>
-
 class LyXFont;
 
 /// Simple wrapper around three ints
-class Dimension {
+struct Dimension {
 public:
 	/// constructor
 	Dimension() : w(0), a(0), d(0) {}
@@ -43,6 +41,15 @@ public:
 	int width() const { return w; }
 
 public:
+	/// these are intentionally public as things like
+	///
+	///   dim.a += 20; 
+	///
+	/// are used all over the place and "hiding" those behind
+	///
+	///   dim.ascent(dim.ascent() + 20);
+	///
+	/// makes the code neither faster nor clearer
 	/// width
 	int w;
 	/// ascent
@@ -50,7 +57,5 @@ public:
 	/// descent
 	int d;
 };
-
-std::ostream & operator<<(std::ostream & os, Dimension const & dim);
 
 #endif

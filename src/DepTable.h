@@ -25,8 +25,7 @@ public:
 	/** This one is a little bit harder since we need the absolute
 	  filename. Should we insert files with .sty .cls etc as
 	  extension? */
-	void insert(string const & f,
-		    bool upd = false);
+	void insert(string const & f, bool upd = false);
 	///
 	void update();
 

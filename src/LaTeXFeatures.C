@@ -176,11 +176,11 @@ int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 
 }
 
+
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
 	LyXTextClass const & tclass = params.getLyXTextClass();
-
 
 	//
 	//  These are all the 'simple' includes.  i.e

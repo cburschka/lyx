@@ -12,14 +12,11 @@
 #ifndef INSETFOOTLIKE_H
 #define INSETFOOTLIKE_H
 
-
 #include "insetcollapsable.h"
 
 // To have this class is probably a bit overkill... (Lgb)
 
-/** The footnote inset
-
-*/
+// The footnote inset
 class InsetFootlike : public InsetCollapsable {
 public:
 	///

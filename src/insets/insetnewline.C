@@ -10,23 +10,19 @@
 
 #include <config.h>
 
+#include "insetnewline.h"
 
 #include "BufferView.h"
+#include "debug.h"
+#include "dimension.h"
 #include "paragraph.h"
 #include "lyxtext.h"
-#include "insetnewline.h"
 #include "support/LOstream.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 
-#include "debug.h"
-
 using std::ostream;
 using std::endl;
-
-InsetNewline::InsetNewline()
-	: Inset()
-{}
 
 
 void InsetNewline::read(Buffer const *, LyXLex &)
@@ -41,21 +37,12 @@ void InsetNewline::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetNewline::ascent(BufferView *, LyXFont const & font) const
+void InsetNewline::dimension(BufferView *, LyXFont const & font,
+	Dimension & dim) const
 {
-	return font_metrics::maxAscent(font);
-}
-
-
-int InsetNewline::descent(BufferView *, LyXFont const & font) const
-{
-	return font_metrics::maxDescent(font);
-}
-
-
-int InsetNewline::width(BufferView *, LyXFont const & font) const
-{
-	return font_metrics::width('n', font);
+	dim.a = font_metrics::maxAscent(font);
+	dim.d = font_metrics::maxDescent(font);
+	dim.w = font_metrics::width('n', font);
 }
 
 

@@ -12,7 +12,6 @@
 #include "BufferView.h"
 #include "BufferView_pimpl.h"
 
-#include "BufferView_pimpl.h"
 #include "LaTeX.h"
 #include "ParagraphParameters.h"
 #include "WordLangTuple.h"

@@ -1,6 +1,24 @@
 
 2003-05-19  André Pönitz  <poenitz@gmx.net>
 
+	* inset.[Ch]:
+	* insetbutton.[Ch]:
+	* insetcollapsable.[Ch]:
+	* inseterror.[Ch]:
+	* insetert.[Ch]:
+	* insetfoot.[Ch]:
+	* insetgraphics.[Ch]:
+	* insetgraphicsParams.[Ch]:
+	* insetlatexaccent.[Ch]:
+	* insetminipage.[Ch]:
+	* insetnewline.[Ch]:
+	* insetquotes.[Ch]:
+	* insetspecialchar.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]: dimensions() instead of ascend/descend/width
+	
+2003-05-19  André Pönitz  <poenitz@gmx.net>
+
 	* insetenv.[Ch]:
 	* insettext.C: more insetenv 
 

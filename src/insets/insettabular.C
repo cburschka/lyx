@@ -17,10 +17,12 @@
 #include "BufferView.h"
 #include "lfuns.h"
 #include "debug.h"
+#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
+#include "Lsstream.h"
 #include "lyx_cb.h"
 #include "lyxfunc.h"
 #include "lyxlength.h"
@@ -242,21 +244,12 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetTabular::ascent(BufferView *, LyXFont const &) const
+void InsetTabular::dimension(BufferView *, LyXFont const &,
+	Dimension & dim) const
 {
-	return tabular->GetAscentOfRow(0);
-}
-
-
-int InsetTabular::descent(BufferView *, LyXFont const &) const
-{
-	return tabular->GetHeightOfTabular() - tabular->GetAscentOfRow(0) + 1;
-}
-
-
-int InsetTabular::width(BufferView *, LyXFont const &) const
-{
-	return tabular->GetWidthOfTabular() + (2 * ADD_TO_TABULAR_WIDTH);
+	dim.a = tabular->GetAscentOfRow(0);
+	dim.d = tabular->GetHeightOfTabular() - tabular->GetAscentOfRow(0) + 1;
+	dim.w = tabular->GetWidthOfTabular() + 2 * ADD_TO_TABULAR_WIDTH;
 }
 
 

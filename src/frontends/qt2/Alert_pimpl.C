@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include <qmessagebox.h>
 #include <qlabel.h>
 #include <qlineedit.h>

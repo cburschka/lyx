@@ -45,18 +45,14 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
-	int ascent(BufferView *, LyXFont const &) const;
+	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
-	int descent(BufferView *, LyXFont const &) const;
-	///
-	int width(BufferView *, LyXFont const &) const;
-	///
-	void draw(BufferView *, const LyXFont &, int , float &) const;
+	void draw(BufferView *, const LyXFont &, int, float &) const;
 	/// draw, either inlined (no button) or collapsed/open
 	void draw(BufferView * bv, LyXFont const & f,
 	          int baseline, float & x, bool inlined) const;
 	///
-	void update(BufferView *, bool =false);
+	void update(BufferView *, bool = false);
 	///
 	EDITABLE editable() const;
 	///
@@ -181,13 +177,11 @@ protected:
 	virtual BufferView * view() const;
 
 	///
-	int ascent_collapsed() const;
+	void dimension_collapsed(Dimension &) const;
 	///
-	int descent_collapsed() const;
+	int height_collapsed() const;
 	///
-	int width_collapsed() const;
-	///
-	void draw_collapsed(Painter & pain, int , float &) const;
+	void draw_collapsed(Painter & pain, int, float &) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 

@@ -16,8 +16,10 @@
 
 #include "BufferView.h"
 #include "debug.h"
+#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "Lsstream.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
@@ -27,7 +29,6 @@
 #include "frontends/Dialogs.h"
 
 #include "support/LOstream.h"
-#include "support/lstrings.h"
 
 using std::ostream;
 using std::endl;
@@ -217,50 +218,28 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
+void InsetMinipage::dimension(BufferView * bv, LyXFont const & font,
+	Dimension & dim) const
 {
 	if (collapsed_)
-		return ascent_collapsed();
+		dimension_collapsed(dim);
 	else {
-		// Take placement into account.
-		int i = 0;
+		Dimension d;
+		InsetCollapsable::dimension(bv, font, dim);
 		switch (params_.pos) {
 		case top:
-			i = InsetCollapsable::ascent(bv, font);
+			dim.a = d.a;
+			dim.d = d.d;
 			break;
 		case center:
-			i = (InsetCollapsable::ascent(bv, font)
-			     + InsetCollapsable::descent(bv, font)) / 2;
+			dim.a = d.height() / 2;
+			dim.d = dim.a;
 			break;
 		case bottom:
-			i = InsetCollapsable::descent(bv, font);
+			dim.a = d.d;
+			dim.d = d.a;
 			break;
 		}
-		return i;
-	}
-}
-
-
-int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
-{
-	if (collapsed_)
-		return descent_collapsed();
-	else {
-		// Take placement into account.
-		int i = 0;
-		switch (params_.pos) {
-		case top:
-			i = InsetCollapsable::descent(bv, font);
-			break;
-		case center:
-			i = (InsetCollapsable::ascent(bv, font)
-			     + InsetCollapsable::descent(bv, font)) / 2;
-			break;
-		case bottom:
-			i = InsetCollapsable::ascent(bv, font);
-			break;
-		}
-		return i;
 	}
 }
 

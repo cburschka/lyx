@@ -18,12 +18,12 @@
 #include "LString.h"
 #include "LColor.h"
 #include "insetbase.h"
-#include "frontends/mouse_state.h"
 #include "support/types.h"
 
 #include <vector>
 
 class LyXFont;
+class Dimension;
 class Buffer;
 class Painter;
 class LyXText;
@@ -157,11 +157,13 @@ public:
 	///
 	Inset(Inset const & in, bool same_id = false);
 	///
-	virtual int ascent(BufferView *, LyXFont const &) const = 0;
+	virtual void dimension(BufferView *, LyXFont const &, Dimension &) const = 0;
 	///
-	virtual int descent(BufferView *, LyXFont const &) const = 0;
+	int ascent(BufferView *, LyXFont const &) const;
 	///
-	virtual int width(BufferView *, LyXFont const &) const = 0;
+	int descent(BufferView *, LyXFont const &) const;
+	///
+	int width(BufferView *, LyXFont const &) const;
 	///
 	virtual void draw(BufferView *, LyXFont const &, int baseline, float & x) const = 0;
 	/// update the inset representation

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "insetfoot.h"
 #include "gettext.h"
 #include "lyxfont.h"

@@ -126,29 +126,22 @@ void InsetFormulaMacro::read(std::istream & is)
 string InsetFormulaMacro::prefix() const
 {
 #if USE_BOOST_FORMAT
-	return boost::io::str(boost::format(_(" Macro: %s: ")) % getInsetName());
+	return STRCONV(boost::io::str(boost::format(_(" Macro: %s: ")) %
+		STRCONV(getInsetName())));
 #else
 	return _(" Macro: ") + getInsetName() + ": ";
 #endif
 }
 
 
-int InsetFormulaMacro::ascent(BufferView *, LyXFont const &) const
+void InsetFormulaMacro::dimension(BufferView * bv, LyXFont const & font,
+	Dimension & dim) const
 {
-	return par()->ascent() + 5;
-}
-
-
-int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
-{
-	return par()->descent() + 5;
-}
-
-
-int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
-{
-	metrics(bv, f);
-	return 10 + font_metrics::width(prefix(), f) + par()->width();
+	metrics(bv, font);
+	dim = par()->dimensions();
+	dim.a += 5;
+	dim.d += 5;
+	dim.w += 10 + font_metrics::width(prefix(), font);
 }
 
 

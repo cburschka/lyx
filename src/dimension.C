@@ -10,10 +10,9 @@
 
 
 #include <config.h>
-#include "dimension.h"
-#include "math_support.h"
 
-#include <iostream>
+#include "dimension.h"
+#include "frontends/font_metrics.h"
 
 
 void Dimension::operator+=(Dimension const & dim)
@@ -26,15 +25,9 @@ void Dimension::operator+=(Dimension const & dim)
 }
 
 
-std::ostream & operator<<(std::ostream & os, Dimension const & dim)
-{
-	os << " (" << dim.w << 'x' << dim.a << '-' << dim.d << ") ";
-	return os;
-}
-
-
 void Dimension::clear(LyXFont const & font)
 {
-	math_font_max_dim(font, a, d);
+	a = font_metrics::maxAscent(font);
+	d = font_metrics::maxDescent(font);
 	w = 0;
 }

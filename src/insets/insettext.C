@@ -16,11 +16,13 @@
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "debug.h"
+#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "intl.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
+#include "Lsstream.h"
 #include "lyxfont.h"
 #include "lyxcursor.h"
 #include "lyxfind.h"
@@ -296,47 +298,29 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetText::ascent(BufferView * bv, LyXFont const &) const
+void InsetText::dimension(BufferView * bv, LyXFont const &,
+	Dimension & dim) const
 {
-	insetAscent = getLyXText(bv)->rows().begin()->ascent_of_text() +
-		TEXT_TO_INSET_OFFSET;
-	return insetAscent;
-}
-
-
-int InsetText::descent(BufferView * bv, LyXFont const &) const
-{
-	LyXText * llt = getLyXText(bv);
-	insetDescent = llt->height - llt->rows().begin()->ascent_of_text() +
-		TEXT_TO_INSET_OFFSET;
-	return insetDescent;
-}
-
-
-int InsetText::width(BufferView * bv, LyXFont const &) const
-{
-	insetWidth = max(textWidth(bv), (int)getLyXText(bv)->width) +
-		(2 * TEXT_TO_INSET_OFFSET);
-	insetWidth = max(insetWidth, 10);
-	return insetWidth;
+	LyXText * text = getLyXText(bv);
+	dim.a = text->rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
+	dim.d = text->height - dim.a + TEXT_TO_INSET_OFFSET;
+	dim.w = max(textWidth(bv), int(text->width)) + 2 * TEXT_TO_INSET_OFFSET;
+	dim.w = max(dim.w, 10);
 }
 
 
 int InsetText::textWidth(BufferView * bv, bool fordraw) const
 {
-	int w;
-	if (!autoBreakRows) {
-		w = -1;
-	} else {
-		w = getMaxWidth(bv, this);
-	}
-	if (fordraw) {
-		return max(w - (2 * TEXT_TO_INSET_OFFSET),
+	int w = autoBreakRows ? getMaxWidth(bv, this) : -1;
+
+	if (fordraw)
+		return max(w - 2 * TEXT_TO_INSET_OFFSET,
 			   (int)getLyXText(bv)->width);
-	} else if (w < 0) {
-	    return -1;
-	}
-	return w - (2 * TEXT_TO_INSET_OFFSET);
+
+	if (w < 0)
+    return -1;
+
+	return w - 2 * TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -2626,14 +2610,13 @@ void InsetText::getDrawFont(LyXFont & font) const
 }
 
 
-void InsetText::appendParagraphs(Buffer * buffer,
-				 ParagraphList & plist)
+void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 {
 #warning FIXME Check if Changes stuff needs changing here. (Lgb)
 // And it probably does. You have to take a look at this John. (Lgb)
 #warning John, have a look here. (Lgb)
-	BufferParams const & bparams = buffer->params;
 #if 0
+	BufferParams const & bparams = buffer->params;
 	Paragraph * buf;
 	Paragraph * tmpbuf = newpar;
 	Paragraph * lastbuffer = buf = new Paragraph(*tmpbuf, false);

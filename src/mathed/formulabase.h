@@ -13,9 +13,7 @@
 #ifndef INSET_FORMULABASE_H
 #define INSET_FORMULABASE_H
 
-
 #include "insets/updatableinset.h"
-#include "frontends/mouse_state.h"
 #include "lyxfont.h"
 
 #include <boost/weak_ptr.hpp>
@@ -25,17 +23,14 @@ class Buffer;
 class BufferView;
 class MathAtom;
 
+
 /// An abstract base class for all math related LyX insets
 class InsetFormulaBase : public UpdatableInset {
 public:
 	///
 	InsetFormulaBase();
 	///
-	virtual int ascent(BufferView *, LyXFont const &) const = 0;
-	///
-	virtual int descent(BufferView *, LyXFont const &) const = 0;
-	///
-	virtual int width(BufferView *, LyXFont const &) const = 0;
+	Inset * clone(Buffer const &, bool same_id = false) const = 0;
 	///
 	virtual void draw(BufferView *,LyXFont const &, int, float &) const = 0;
 	/// lowest x coordinate
@@ -52,8 +47,6 @@ public:
 	// Don't use this for AMS validation as long as there is no
 	// user-accessible way to override "false positives"
 	virtual void validate(LaTeXFeatures &) const;
-	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const = 0;
 	///
 	virtual Inset::Code lyxCode() const;
 	/// what appears in the minibuffer when opening

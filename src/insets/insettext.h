@@ -86,11 +86,7 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
-	int ascent(BufferView *, LyXFont const &) const;
-	///
-	int descent(BufferView *, LyXFont const &) const;
-	///
-	int width(BufferView *, LyXFont const & f) const;
+	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
 	int textWidth(BufferView *, bool fordraw = false) const;
 	///

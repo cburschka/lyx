@@ -13,6 +13,7 @@
 #include "insetlatexaccent.h"
 
 #include "debug.h"
+#include "dimension.h"
 #include "lyxrc.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
@@ -262,48 +263,34 @@ void InsetLatexAccent::checkContents()
 }
 
 
-int InsetLatexAccent::ascent(BufferView *, LyXFont const & font) const
+void InsetLatexAccent::dimension(BufferView *, LyXFont const & font,
+	Dimension & dim) const
 {
-	// This function is a bit too simplistix and is just a
+	// This function is a bit too simplistic and is just a
 	// "try to make a fit for all accents" approach, to
 	// make it better we need to know what kind of accent is
 	// used and add to max based on that.
-	int max;
 	if (candisp) {
 		if (ic == ' ')
-			max = font_metrics::ascent('a', font);
+			dim.a = font_metrics::ascent('a', font);
 		else
-			max = font_metrics::ascent(ic, font);
+			dim.a = font_metrics::ascent(ic, font);
 		if (plusasc)
-			max += (font_metrics::maxAscent(font) + 3) / 3;
-	} else
-		max = font_metrics::maxAscent(font) + 4;
-	return max;
-}
+			dim.a += (font_metrics::maxAscent(font) + 3) / 3;
 
-
-int InsetLatexAccent::descent(BufferView *, LyXFont const & font) const
-{
-	int max;
-	if (candisp) {
 		if (ic == ' ')
-			max = font_metrics::descent('a', font);
+			dim.d = font_metrics::descent('a', font);
 		else
-		max = font_metrics::descent(ic, font);
+			dim.d = font_metrics::descent(ic, font);
 		if (plusdesc)
-		max += 3;
-	} else
-		max = font_metrics::maxDescent(font) + 4;
-	return max;
-}
+			dim.d += 3;
 
-
-int InsetLatexAccent::width(BufferView *, LyXFont const & font) const
-{
-	if (candisp)
-		return font_metrics::width(ic, font);
-	else
-		return font_metrics::width(contents, font) + 4;
+		dim.w = font_metrics::width(ic, font);
+	} else {
+		dim.a = font_metrics::maxAscent(font) + 4;
+		dim.d = font_metrics::maxDescent(font) + 4;
+		dim.w = font_metrics::width(contents, font) + 4;
+	}
 }
 
 

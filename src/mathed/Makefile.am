@@ -5,8 +5,6 @@ noinst_LTLIBRARIES = libmathed.la
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
-	dimension.C \
-	dimension.h \
 	textpainter.C \
 	textpainter.h \
 	formulabase.C \

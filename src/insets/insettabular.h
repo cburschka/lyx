@@ -50,6 +50,7 @@
 #include "LString.h"
 #include "lyxcursor.h"
 #include "FuncStatus.h"
+#include "frontends/mouse_state.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -85,11 +86,7 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
-	int ascent(BufferView *, LyXFont const &) const;
-	///
-	int descent(BufferView *, LyXFont const &) const;
-	///
-	int width(BufferView *, LyXFont const & f) const;
+	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
 	void draw(BufferView *, const LyXFont &, int , float &) const;
 	///

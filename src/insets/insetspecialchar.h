@@ -48,11 +48,7 @@ public:
 	///
 	Kind kind() const;
 	///
-	int ascent(BufferView *, LyXFont const &) const;
-	///
-	int descent(BufferView *, LyXFont const &) const;
-	///
-	int width(BufferView *, LyXFont const &) const;
+	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &) const;
 	///

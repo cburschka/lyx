@@ -60,6 +60,7 @@ TODO
 #include "graphics/GraphicsParams.h"
 
 #include "lyxtext.h"
+#include "dimension.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
@@ -88,11 +89,11 @@ TODO
 #include "support/tostr.h"
 #include "support/systemcall.h"
 #include "support/os.h"
+#include "support/lstrings.h"
 
 #include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
-#include "support/BoostFormat.h"
 
 #include <algorithm> // For the std::max
 
@@ -287,45 +288,36 @@ bool InsetGraphics::imageIsDrawable() const
 }
 
 
-int InsetGraphics::ascent(BufferView *, LyXFont const &) const
+void InsetGraphics::dimension(BufferView *, LyXFont const & font,
+	Dimension & dim) const
 {
 	cache_->old_ascent = 50;
 	if (imageIsDrawable())
 		cache_->old_ascent = cache_->loader.image()->getHeight();
-	return cache_->old_ascent;
-}
-
-
-int InsetGraphics::descent(BufferView *, LyXFont const &) const
-{
-	return 0;
-}
-
-
-int InsetGraphics::width(BufferView *, LyXFont const & font) const
-{
+	dim.a = cache_->old_ascent;
+	dim.d = 0;
 	if (imageIsDrawable())
-		return cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
+		dim.w = cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
+	else {
+		int font_width = 0;
 
-	int font_width = 0;
+		LyXFont msgFont(font);
+		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
-	LyXFont msgFont(font);
-	msgFont.setFamily(LyXFont::SANS_FAMILY);
+		string const justname = OnlyFilename(params().filename);
+		if (!justname.empty()) {
+			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
+			font_width = font_metrics::width(justname, msgFont);
+		}
 
-	string const justname = OnlyFilename (params().filename);
-	if (!justname.empty()) {
-		msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-		font_width = font_metrics::width(justname, msgFont);
+		string const msg = statusMessage();
+		if (!msg.empty()) {
+			msgFont.setSize(LyXFont::SIZE_TINY);
+			font_width = std::max(font_width, font_metrics::width(msg, msgFont));
+		}
+
+		dim.w = std::max(50, font_width + 15);
 	}
-
-	string const msg = statusMessage();
-	if (!msg.empty()) {
-		msgFont.setSize(LyXFont::SIZE_TINY);
-		int const msg_width = font_metrics::width(msg, msgFont);
-		font_width = std::max(font_width, msg_width);
-	}
-
-	return std::max(50, font_width + 15);
 }
 
 
@@ -633,15 +625,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 				<< temp_file
 				<< (success ? " succeeded\n" : " failed\n");
 			if (!success) {
-#if USE_BOOST_FORMAT
-				boost::format fmt(_("Could not copy the file\n%1$s\ninto the temporary directory."));
-				fmt % orig_file_with_path;
-				string str = fmt.str();
-#else
-				string str = _("Could not copy the file\n");
-				str += orig_file_with_path;
-				str += _("\ninto the temporary directory.");
-#endif
+				string str = bformat(_("Could not copy the file\n%1$s\n"
+					"into the temporary directory."), orig_file_with_path);
 				Alert::error(_("Graphics display failed"), str);
 				return orig_file;
 			}
@@ -677,16 +662,9 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
 		if (!IsFileReadable(ChangeExtension(outfile_base, to))) {
-#if USE_BOOST_FORMAT
-			boost::format fmt(_("No information for converting %1$s format files to %1$s.\n"
-				"Try defining a convertor in the preferences."));
-			fmt % from % to;
-			string str = fmt.str();
-#else
-			string str = _("No information for converting ");
-			str += from + _(" format files to ") + to;
-			str += _(".\nTry defining a convertor in the preferences.");
-#endif
+			string str = bformat(_("No information for converting %1$s "
+				"format files to %1$s.\n"
+				"Try defining a convertor in the preferences."), from, to);
 			Alert::error(_("Could not convert image"), str);
 		}
 	}

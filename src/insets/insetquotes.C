@@ -10,28 +10,25 @@
 
 #include <config.h>
 
-
 #include "insetquotes.h"
 
-#include "support/LAssert.h"
-#include "support/lstrings.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
 #include "frontends/Painter.h"
 #include "buffer.h"
 #include "debug.h"
+#include "dimension.h"
 #include "frontends/font_metrics.h"
 #include "language.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "paragraph.h"
 #include "lyxlex.h"
+#include "support/LAssert.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 using std::endl;
-
-// Quotes. Used for the various quotes. German, English, French,
-// Danish, Polish, all either double or single.
 
 namespace {
 
@@ -73,9 +70,7 @@ InsetQuotes::InsetQuotes(string const & str)
 }
 
 
-InsetQuotes::InsetQuotes(quote_language l,
-			 quote_side s,
-			 quote_times t)
+InsetQuotes::InsetQuotes(quote_language l, quote_side s, quote_times t)
 	: language_(l), side_(s), times_(t)
 {}
 
@@ -174,33 +169,22 @@ string const InsetQuotes::dispString(Language const * loclang) const
 }
 
 
-int InsetQuotes::ascent(BufferView *, LyXFont const & font) const
+void InsetQuotes::dimension(BufferView *, LyXFont const & font,
+	Dimension & dim) const
 {
-	return font_metrics::maxAscent(font);
-}
+	dim.a = font_metrics::maxAscent(font);
+	dim.d = font_metrics::maxDescent(font);
+	dim.w = 0;
 
-
-int InsetQuotes::descent(BufferView *, LyXFont const & font) const
-{
-	return font_metrics::maxDescent(font);
-}
-
-
-int InsetQuotes::width(BufferView *, LyXFont const & font) const
-{
 	string const text = dispString(font.language());
-	int w = 0;
-
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
-			w += font_metrics::width('i', font);
+			dim.w += font_metrics::width('i', font);
 		else if (i == 0 || text[i] != text[i - 1])
-			w += font_metrics::width(text[i], font);
+			dim.w += font_metrics::width(text[i], font);
 		else
-			w += font_metrics::width(',', font);
+			dim.w += font_metrics::width(',', font);
 	}
-
-	return w;
 }
 
 

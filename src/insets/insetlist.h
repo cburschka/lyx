@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef InsetList_H
-#define InsetList_H
+#ifndef INSETLIST_H
+#define INSETLIST_H
 
 
 #include "insetcollapsable.h"

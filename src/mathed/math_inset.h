@@ -22,11 +22,9 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-
 #include <config.h>
 
 #include "LString.h"
-#include "frontends/mouse_state.h"
 #include "insets/insetbase.h"
 #include "math_data.h"
 

@@ -62,7 +62,6 @@ void ControlDocument::apply()
 	if (!bufferIsAvailable())
 		return;
 
-
 	classApply();
 
 	view().apply();

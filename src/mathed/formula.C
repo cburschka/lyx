@@ -34,6 +34,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "funcrequest.h"
+#include "Lsstream.h"
 
 #include "support/LOstream.h"
 #include "support/LAssert.h"
@@ -275,29 +276,21 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 }
 
 
-int InsetFormula::ascent(BufferView *, LyXFont const &) const
-{
-	return preview_->previewReady() ?
-		preview_->pimage()->ascent() : 1 + par_->ascent();
-}
-
-
-int InsetFormula::descent(BufferView *, LyXFont const &) const
-{
-	if (!preview_->previewReady())
-		return 1 + par_->descent();
-
-	int const descent = preview_->pimage()->descent();
-	return display() ? descent + 12 : descent;
-}
-
-
-int InsetFormula::width(BufferView * bv, LyXFont const & font) const
+void InsetFormula::dimension(BufferView * bv, LyXFont const & font,
+	Dimension & dim) const
 {
 	metrics(bv, font);
-	return preview_->previewReady() ?
-		1 + preview_->pimage()->width() : par_->width();
+	if (preview_->previewReady()) {
+		dim.a = preview_->pimage()->ascent();
+		int const descent = preview_->pimage()->descent();
+		dim.d = display() ? descent + 12 : descent;
 		// insert a one pixel gap in front of the formula
+		dim.w = 1 + preview_->pimage()->width();
+	} else {
+		dim = par_->dimensions();
+		dim.a += 1;
+		dim.d += 1;
+	}
 }
 
 

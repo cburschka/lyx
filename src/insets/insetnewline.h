@@ -18,7 +18,7 @@
 class InsetNewline : public Inset {
 public:
 
-	InsetNewline();
+	InsetNewline() {}
 
 	virtual Inset * clone(Buffer const &, bool = false) const {
 		return new InsetNewline;
@@ -26,11 +26,7 @@ public:
 
 	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
 
-	virtual int ascent(BufferView *, LyXFont const &) const;
-
-	virtual int descent(BufferView *, LyXFont const &) const;
-
-	virtual int width(BufferView *, LyXFont const &) const;
+	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 
 	virtual void draw(BufferView *, LyXFont const &,
 	                  int baseline, float & x) const;

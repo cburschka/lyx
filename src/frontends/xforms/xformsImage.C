@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "xformsImage.h"
 #include "graphics/GraphicsParams.h"
 #include "Color.h"

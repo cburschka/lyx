@@ -1,6 +1,19 @@
 
 2003-05-19  André Pönitz  <poenitz@gmx.net>
 
+	* dimension.[Ch]: promote from mathed/dimension.[Ch]
+
+	* Makefile.am:
+	* BufferView.C:
+	* DepTable.h:
+	* LaTeXFeatures.C:
+	* buffer.C:
+	* lyxfont.C:
+	* lyxlex.h:
+	* paragraph_funcs.C: dimensions() instead of ascend/descend/width
+
+2003-05-19  André Pönitz  <poenitz@gmx.net>
+
 	* buffer.C:
 	* lyxlayout.[Ch]:
 	* lyxtextclass.[Ch]:
