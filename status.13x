@@ -27,6 +27,18 @@ What's new
 
 - fix possible crash when changing text class [bug #1050]
 
+- fix math bug where formulas containing for example a \prettyref
+  would not be parsed correctly [bug #1126]
+
+- fix bad conversion of tables from LyX 1.0 [bug #1045]
+
+- convert old files (0.11 series) correctly, suppressing space
+  between number and units [bug #763]
+
+- fix docbook export with nested environments [bug #821]
+
+- output newline and hfill correctly in docbook [bug #1148]
+
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
 - fix bug where browsing for files in graphics inset would always
@@ -44,11 +56,3 @@ What's new
 
 - fix compilation on HP-UX 11.x
 
-- fix docbook export [bug #821]
-
-- fix lyx2lyx bad convertion of 2.15 format tables [bug #1045]
-
-- convert old files (0.11 series) correctly, suppressing space
-  between number and units [bug #763]
-
-- output newline and hfill correctly, fixes bug #1148
