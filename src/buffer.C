@@ -1889,11 +1889,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		case Paragraph::META_HFILL: 
 			buffer << "\t";
 			break;
-			
-		case '\\':
-			buffer << "\\";
-			break;
-			
+
 		default:
 			if ((linelen > 0) && (currlinelen > (linelen - 10)) &&
 			    (c == ' ') && ((i + 2) < par->size()))
@@ -1909,11 +1905,11 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 						buffer << "  ";
 					currlinelen += (ltype_depth-depth)*2;
 				}
-			} else if (c != '\0')
+			} else if (c != '\0') {
 				buffer << c;
-			else if (c == '\0')
+				++currlinelen;
+			} else
 				lyxerr[Debug::INFO] << "writeAsciiFile: NULL char in structure." << endl;
-			++currlinelen;
 			break;
 		}
 	}

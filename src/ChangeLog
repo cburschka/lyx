@@ -1,5 +1,7 @@
 2001-10-01  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* buffer.C (asciiParagraph): Treat '\\' as other chars.
+
 	* paragraph.C (asString): Do not ignore newline/hfill chars when
  	copying to the clipboard.
 
