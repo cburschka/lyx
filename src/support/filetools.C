@@ -26,6 +26,7 @@ using std::pair;
 #endif
 
 #include "filetools.h"
+#include "LSubstring.h"
 #include "lyx_gui_misc.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
@@ -70,7 +71,7 @@ bool IsSGMLFilename(string const & filename)
 
 
 // Substitutes spaces with underscores in filename (and path)
-string SpaceLess(string const & file)
+string MakeLatexName(string const & file)
 {
 	string name = OnlyFilename(file);
 	string path = OnlyPath(file);
@@ -89,6 +90,18 @@ string SpaceLess(string const & file)
 		name[pos++] = '_';
 	}
 	return AddName(path, name);
+}
+
+// Substitutes spaces with underscores in filename (and path)
+string QuoteName(string const & name)
+{
+#ifdef WITH_WARNINGS
+#warning Add proper emx support here!
+#endif
+  	string qname = name;
+	while (qname.find("'") != string::npos) 
+	  LSubstring(qname,"'") = "\\'";
+	return '\'' + qname + '\'';
 }
 
 

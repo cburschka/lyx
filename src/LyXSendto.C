@@ -78,8 +78,8 @@ void SendtoApplyCB(FL_OBJECT *, long)
 	    return;
 	}
     }
-    string fname = SpaceLess(ChangeExtension(buffer->getFileName(), 
-					      ftypeext, true));
+
+    string fname = ChangeExtension(buffer->getLatexName(), ftypeext, true);
     if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
     command = subst(command, "$$FName", fname);

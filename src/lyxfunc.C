@@ -398,30 +398,32 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
         if (disable)
                 flag |= LyXFunc::Disabled;
 
-	func_status box = LyXFunc::ToggleOff;
-	LyXFont font = buf->text->real_current_font;
-	switch (action) {
-	case LFUN_EMPH:
-		if (font.emph() == LyXFont::ON)
-			box = LyXFunc::ToggleOn;
-		break;
-	case LFUN_NOUN:
-		if (font.noun() == LyXFont::ON)
-			box = LyXFunc::ToggleOn;
-		break;
-	case LFUN_BOLD:
-		if (font.series() == LyXFont::BOLD_SERIES)
-			box = LyXFunc::ToggleOn;
-		break;
-	case LFUN_TEX:
-		if (font.latex() == LyXFont::ON)
-			box = LyXFunc::ToggleOn;
-		break;
-	default:
-		box = LyXFunc::OK;
-		break;
+	if (buf) {
+		func_status box = LyXFunc::ToggleOff;
+		LyXFont font = buf->text->real_current_font;
+		switch (action) {
+		case LFUN_EMPH:
+			if (font.emph() == LyXFont::ON)
+				box = LyXFunc::ToggleOn;
+			break;
+		case LFUN_NOUN:
+			if (font.noun() == LyXFont::ON)
+				box = LyXFunc::ToggleOn;
+			break;
+		case LFUN_BOLD:
+			if (font.series() == LyXFont::BOLD_SERIES)
+				box = LyXFunc::ToggleOn;
+			break;
+		case LFUN_TEX:
+			if (font.latex() == LyXFont::ON)
+				box = LyXFunc::ToggleOn;
+			break;
+		default:
+			box = LyXFunc::OK;
+			break;
+		}
+		flag |= box;
 	}
-	flag |= box;
 
 
 	return flag;
@@ -801,9 +803,9 @@ string LyXFunc::Dispatch(int ac,
 			// latex, but the html file name can be
 			// anything.
 			string result = ChangeExtension(file, ".html", false);
-			file = ChangeExtension(SpaceLess(file), ".tex", false);
+			string infile = owner->buffer()->getLatexName();
 			string tmp = lyxrc->html_command;
-			tmp = subst(tmp, "$$FName", file);
+			tmp = subst(tmp, "$$FName", infile);
 			tmp = subst(tmp, "$$OutName", result);
 			Systemcalls one;
 			int res = one.startscript(Systemcalls::System, tmp);
@@ -812,7 +814,7 @@ string LyXFunc::Dispatch(int ac,
 					   + MakeDisplayPath(result) +'\'');
 			} else {
 				setErrorMessage(N_("Unable to convert to HTML the file `")
-						+ MakeDisplayPath(file) 
+						+ MakeDisplayPath(infile) 
 						+ '\'');
 			}
 		}

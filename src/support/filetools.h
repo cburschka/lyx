@@ -208,8 +208,11 @@ bool PutEnv(string const & envstr);
 ///
 bool PutEnvPath(string const & envstr);
 
-/// Substitutes spaces with underscores in filename (and path)
-string SpaceLess(string const & file);
+/// Substitutes active latex characters with underscores in filename
+string MakeLatexName(string const & file);
+
+/// Put the name in quotes suitable for the current shell
+string QuoteName(string const & file);
 
 /** Returns an unique name to be used as a temporary file. If given,
   'mask' should the prefix to the temporary file, the rest of the

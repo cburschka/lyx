@@ -557,7 +557,7 @@ bool RunScript(Buffer * buffer, bool wait,
 		return false;
 	/* get DVI-Filename */
 	if (name.empty())
-		name = ChangeExtension(buffer->getFileName(),
+		name = ChangeExtension(buffer->getLatexName(),
 				       ".dvi", true);
 
 	path = OnlyPath(name);
@@ -566,7 +566,8 @@ bool RunScript(Buffer * buffer, bool wait,
 	}
 	Path p(path);
 
-	cmd = command + ' ' + SpaceLess(name);
+	cmd = command + ' ' + QuoteName(name);
+
 	Systemcalls one;
 
 	if (need_shell) {
@@ -624,7 +625,7 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 		return false;
         }
 	// Generate postscript file
-	string ps = ChangeExtension (buffer->getFileName(),
+	string psname = ChangeExtension (buffer->getFileName(),
 				      ".ps_tmp", true);
 
 	string paper;
@@ -661,7 +662,7 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 
 	// Make postscript file.
 	string command = "dvips " + lyxrc->print_to_file + ' ';
-	command += SpaceLess(ps);
+	command += QuoteName(psname);
 	if (buffer->params.use_geometry
 	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
 	    && !lyxrc->print_paper_dimension_flag.empty()
@@ -815,9 +816,7 @@ void MenuMakeLaTeX(Buffer * buffer)
 {
 	if (buffer->text) {
 		// Get LaTeX-Filename
-		string s = SpaceLess(ChangeExtension(
-						buffer->getFileName(),
-						".tex", false));
+	  string s = buffer->getLatexName();
 
 		FileInfo fi(s);
 		if (fi.readable() &&
@@ -3314,7 +3313,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 		orientationflag = lyxrc->print_landscape_flag + ' ';
    
-	string ps_file = SpaceLess(fl_get_input(fd_form_print->input_file));
+	string ps_file = fl_get_input(fd_form_print->input_file);
 	string printer = strip(fl_get_input(fd_form_print->input_printer));
 
 	string printerflag;
@@ -3378,12 +3377,11 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 		command += " " + lyxrc->print_paper_flag + " " + paper + " ";
 	}
 	if (fl_get_button(fd_form_print->radio_file))
-		command += lyxrc->print_to_file + '\"'
-			+ MakeAbsPath(ps_file, path)
-			+ '\"';
+		command += lyxrc->print_to_file 
+		           + QuoteName(MakeAbsPath(ps_file, path));
 	else if (!lyxrc->print_spool_command.empty())
 		command += lyxrc->print_to_file 
-			+ '\"' + ps_file + '\"';
+			+ QuoteName(ps_file);
 	
 	// push directorypath, if necessary 
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){

@@ -1,4 +1,31 @@
-1999-12-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+1999-12-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (getStatus): do not query current font if no
+	buffer exists.
+
+	* src/lyx_cb.C (RunScript): use QuoteName
+	(MenuRunDvips): ditto
+	(PrintApplyCB): ditto
+
+	* src/support/filetools.[Ch] (QuoteName): new function. Add quotes
+	around argument, so that it works well with the current shell.
+	Does not work properly with OS/2 shells currently.
+
+	* src/LaTeXLog.C (ShowLatexLog): use Buffer::getLatexName
+	* src/LyXSendto.C (SendtoApplyCB): ditto
+	* src/lyxfunc.C (Dispatch): ditto
+	* src/buffer.C (runLaTeX): ditto
+	(runLiterate): ditto
+	(buildProgram): ditto
+	(runChktex): ditto
+	* src/lyx_cb.C (RunScript): ditto
+	(MenuMakeLaTeX): ditto
+	
+	* src/buffer.h (getLatexName): new method 
+
+	* src/support/filetools.C (MakeLatexName): renamed from SpaceLess
+
+1999-12-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* images/sqrt.xpm: change name of the sqrt icon to sqrt_xpm.
 	* src/mathed/math_panel.C (mathed_get_pixmap_from_icon): ditto
@@ -11,7 +38,7 @@
 	few "using".
 
 	* src/bmtable.C (fl_set_bmtable_data): add a const_cast.
-
+	
 1999-12-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/formula.C (LocalDispatch): fix small whitspace bug

@@ -32,6 +32,7 @@
 #include "bufferparams.h"
 #include "texrow.h"
 #include "lyxtext.h"
+#include "support/filetools.h"
 
 class LyXRC;
 class TeXErrors;
@@ -230,6 +231,11 @@ public:
 
 	///
 	string getFileName() const { return filename; }
+
+	/// A transformed version of the file name, adequate for LaTeX  
+	string getLatexName() const {
+		return ChangeExtension(MakeLatexName(filename), ".tex", true); 
+	}
 
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(string const & newfile);

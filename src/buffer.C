@@ -3161,7 +3161,7 @@ int Buffer::runLaTeX()
 	ProhibitInput();
 
 	// get LaTeX-Filename
-	string name = SpaceLess(ChangeExtension (filename, ".tex", true));
+	string name = getLatexName();
 
 	string path = OnlyPath(filename);
 
@@ -3224,9 +3224,10 @@ int Buffer::runLiterate()
 	ProhibitInput();
 
 	// get LaTeX-Filename
-	string name = SpaceLess(ChangeExtension (filename, ".tex", true));
+	string name = getLatexName();
         // get Literate-Filename
-        string lit_name = SpaceLess(ChangeExtension (filename, lyxrc->literate_extension, true));
+        string lit_name = ChangeExtension (getLatexName(), 
+					   lyxrc->literate_extension, true);
 
 	string path = OnlyPath(filename);
 
@@ -3292,9 +3293,10 @@ int Buffer::buildProgram()
         ProhibitInput();
  
         // get LaTeX-Filename
-        string name = SpaceLess(ChangeExtension (filename, ".tex", true));
+        string name = getLatexName();
         // get Literate-Filename
-        string lit_name = SpaceLess(ChangeExtension (filename, lyxrc->literate_extension, true));
+        string lit_name = ChangeExtension(getLatexName(), 
+					  lyxrc->literate_extension, true);
  
         string path = OnlyPath(filename);
  
@@ -3362,7 +3364,7 @@ int Buffer::runChktex()
 	ProhibitInput();
 
 	// get LaTeX-Filename
-	string name = SpaceLess(ChangeExtension (filename, ".tex", true));
+	string name = getLatexName();
 	string path = OnlyPath(filename);
 
 	string org_path = path;
