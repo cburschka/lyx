@@ -1,3 +1,8 @@
+2001-02-16  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in: grep -E isn't necessary anymore and the awk is
+	superfluous to the generation of POTFILES.in
+
 2001-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* da.po: update from Claus Hindsgaul

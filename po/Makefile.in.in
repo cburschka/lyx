@@ -232,8 +232,7 @@ update-po: Makefile
 ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
-	     grep -l -E "_\(\".*\"\)" `find src -name \*.[hHC]` | \
-	     awk 'BEGIN {FS= ":"} {print $$1}' | \
+	     grep -l "_(\".*\")" `find src -name \*.[hHC]` | \
 	     sed -e '/xforms.forms/d' | \
 	     sort -f -d | uniq ) > $@-t \
 	&& echo "src/ext_l10n.h" >> $@-t \
