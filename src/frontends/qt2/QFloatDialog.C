@@ -58,22 +58,26 @@ void QFloatDialog::tbhpClicked()
 
 void QFloatDialog::heredefinitelyClicked()
 {
+	if (heredefinitelyCB->isChecked());
+		ignoreCB->setEnabled(false);
+
 	topCB->setChecked(false);
 	bottomCB->setChecked(false);
 	pageCB->setChecked(false);
 	herepossiblyCB->setChecked(false);
+	ignoreCB->setChecked(false);
 }
 
 
 void QFloatDialog::spanClicked()
 {
 	bool const span(spanCB->isChecked());
- 
+
 	if (!defaultsCB->isChecked()) {
 	 	herepossiblyCB->setEnabled(!span);
 	 	heredefinitelyCB->setEnabled(!span);
 	}
- 
+
 	if (!span)
 		return;
  

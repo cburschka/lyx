@@ -135,7 +135,7 @@ void QCitationDialog::slotCiteHighlighted(int sel)
 		// Put into browser_info the additional info associated
 		// with the selected browser_cite key
 		infoML->clear();
-		infoML->setText(biblio::getInfo(theMap, form_->bibkeys[sel]).c_str());
+		infoML->setText(biblio::getInfo(theMap, form_->citekeys[sel]).c_str());
 	}
 }
 

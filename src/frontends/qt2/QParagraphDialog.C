@@ -31,8 +31,9 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	
 
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
-	valueAbove->setValidator(new QDoubleValidator(valueAbove));
-	valueBelow->setValidator(new QDoubleValidator(valueBelow));
+	// disabled to allow glue spacing for latexperts 
+	//valueAbove->setValidator(new QDoubleValidator(valueAbove));
+	//valueBelow->setValidator(new QDoubleValidator(valueBelow));
 }
 
 void QParagraphDialog::closeEvent(QCloseEvent * e)
