@@ -54,6 +54,8 @@ developers to request a version for your system.  You can get it from
 In addition, you must have libXpm version 4.7 (or newer; 4.8 rumoured
 to work).
 
+You will also probably need GNU m4 (perhaps installed as gm4).
+ 
 libXpm can be found at:
 	    http://www.funet.fi/pub/Linux/sunsite/X11/libs/!INDEX.html
 	    (or similar locations at other sunsites like sunsite.unc.edu)
@@ -306,6 +308,15 @@ notify us.
 	are needed for compilation). A 'make symlinks' in linux kernel
 	sources fixes that. 
 
+  o if you are using the standard compiler that comes with RedHat Linux 7.0
+    (rpm versions 69 or below), it is known to miscompile LyX under some
+    circumstances. Compiling without optimisation seems to work :
+
+	CXXFLAGS="-g"
+	./configure ...
+
+    You must use at least gcc 2.96-69 to compile LyX (check "rpm -q gcc").
+ 
   o if you get an error message when compiling LyX that looks like this :
 
     ../../src/minibuffer.h:17: using directive `Object' introduced
@@ -313,17 +324,6 @@ notify us.
 
     then you need to upgrade the version of the xforms library you have
     installed.
-
-  o If you are using RedHat 7.0 and the option --with-frontend=kde, you
-    will need to configure LyX as follows :
-
-	export QTDIR=/usr/lib/qt-1.45
-	export CC="egcs -L/usr/lib"
-	export CXX="egcs++ -L/usr/lib"
-	./configure --with-frontend=kde 
-
-    If you your version of gcc-c++ is > 2.96-69, you may not need to do
-    this.
 
   o It is possible to compile lyx with Tru64 Unix cxx compiler
     version 6.2, provided one uses
