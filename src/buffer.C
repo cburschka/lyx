@@ -298,7 +298,6 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		inset = new InsetLatexAccent;
 		inset->Read(lex);
 		par->InsertChar(pos, LyXParagraph::META_INSET); 
-			
 		par->InsertInset(pos, inset);
 		par->SetFont(pos, font);
 		++pos;

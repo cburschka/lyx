@@ -1,3 +1,8 @@
+2000-03-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text2.C (InsertStringA): don't forget to insert a META_INSET
+	character when inserting an inset.
+
 2000-03-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/bufferparams.C (readLanguage): now takes "default" into

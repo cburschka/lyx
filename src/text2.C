@@ -2677,6 +2677,7 @@ void LyXText::InsertStringA(char const * s)
 #if 1
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+				par->InsertChar(pos, LyXParagraph::META_INSET);
 				par->InsertInset(pos, new_inset);
 #else
 				par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
@@ -2687,6 +2688,7 @@ void LyXText::InsertStringA(char const * s)
 #if 1
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+				par->InsertChar(pos, LyXParagraph::META_INSET);
 				par->InsertInset(pos, new_inset);
 #else
 					par->InsertChar(a, LyXParagraph::META_PROTECTED_SEPARATOR);
@@ -2727,6 +2729,7 @@ void LyXText::InsertStringA(char const * s)
 #if 1
 					InsetSpecialChar * new_inset =
 						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+					par->InsertChar(pos, LyXParagraph::META_INSET);
 					par->InsertInset(pos, new_inset);
 #else
                                         par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
