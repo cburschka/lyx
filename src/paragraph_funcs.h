@@ -20,6 +20,7 @@ class BufferParams;
 class TexRow;
 class LatexRunParams;
 class LyXLex;
+class InsetOld;
 
 ///
 void breakParagraph(BufferParams const & bparams,
@@ -73,5 +74,9 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 
 LyXFont const outerFont(ParagraphList::iterator pit,
 			ParagraphList const & plist);
+
+/// find outermost paragraph containing an inset
+ParagraphList::iterator outerPar(Buffer & buf, InsetOld * inset);
+
 
 #endif // PARAGRAPH_FUNCS_H

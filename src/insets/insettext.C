@@ -247,7 +247,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 int InsetText::textWidth() const
 {
-		return textwidth_;
+	return textwidth_;
 }
 
 

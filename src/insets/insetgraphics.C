@@ -68,6 +68,8 @@ TODO
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "paragraph_funcs.h"
+#include "lyxtext.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -168,8 +170,10 @@ InsetGraphics::~InsetGraphics()
 void InsetGraphics::statusChanged()
 {
 	BufferView * bv = graphic_->view();
-	if (bv)
+	if (bv) {
+		bv->text->redoParagraph(outerPar(*bv->buffer(), this));
 		bv->updateInset();
+	}
 }
 
 

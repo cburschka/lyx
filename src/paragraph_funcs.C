@@ -25,6 +25,7 @@
 #include "Lsstream.h"
 
 #include "support/lstrings.h"
+#include "support/LAssert.h"
 
 #include "insets/insetoptarg.h"
 #include "insets/insetcommandparams.h"
@@ -1045,3 +1046,21 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 
 	return tmpfont;
 }
+
+
+ParagraphList::iterator outerPar(Buffer & buf, InsetOld * inset)
+{
+	ParIterator pit = buf.par_iterator_begin();
+	ParIterator end = buf.par_iterator_end();
+	for ( ; pit != end; ++pit) {
+		InsetList::iterator ii = pit->insetlist.begin();
+		InsetList::iterator iend = pit->insetlist.end();
+		for ( ; ii != iend; ++ii)
+			if (ii->inset == inset)
+				return pit.outerPar();
+	}
+	lyxerr << "outerPar: should not happen\n";
+	Assert(false);
+	return end.pit(); // shut up compiler
+}
+

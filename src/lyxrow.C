@@ -38,24 +38,6 @@ Row::Row(pos_type pos)
 {}
 
 
-void Row::y(unsigned int newy)
-{
-	y_ = newy;
-}
-
-
-unsigned int Row::y() const
-{
-	return y_;
-}
-
-
-unsigned short Row::height() const
-{
-	return height_;
-}
-
-
 void Row::pos(pos_type p)
 {
 	pos_ = p;
@@ -92,12 +74,6 @@ int Row::fill() const
 }
 
 
-void Row::height(unsigned short h)
-{
-	height_ = h;
-}
-
-
 void Row::width(unsigned int w)
 {
 	width_ = w;
@@ -110,13 +86,13 @@ unsigned int Row::width() const
 }
 
 
-void Row::ascent_of_text(unsigned short a)
+void Row::ascent_of_text(unsigned int a)
 {
 	ascent_of_text_ = a;
 }
 
 
-unsigned short Row::ascent_of_text() const
+unsigned int Row::ascent_of_text() const
 {
 	return ascent_of_text_;
 }

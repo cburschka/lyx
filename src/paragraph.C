@@ -66,7 +66,7 @@ using lyx::pos_type;
 
 
 Paragraph::Paragraph()
-	: pimpl_(new Paragraph::Pimpl(this))
+	: pimpl_(new Paragraph::Pimpl(this)), y(0)
 {
 	enumdepth = 0;
 	itemdepth = 0;
@@ -75,7 +75,7 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & lp)
-	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
+	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this)), y(0)
 {
 	enumdepth = 0;
 	itemdepth = 0;

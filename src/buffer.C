@@ -2190,6 +2190,7 @@ ParIterator Buffer::par_iterator_end()
 	return ParIterator(paragraphs.end(), paragraphs);
 }
 
+
 ParConstIterator Buffer::par_iterator_begin() const
 {
 	return ParConstIterator(const_cast<ParagraphList&>(paragraphs).begin(), paragraphs);

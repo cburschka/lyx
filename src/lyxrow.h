@@ -37,17 +37,17 @@ public:
 	///
 	int fill() const;
 	///
-	void height(unsigned short h);
+	void height(unsigned int h) { height_ = h; }
 	///
-	unsigned short height() const;
+	unsigned int height() const { return height_; }
 	///
 	void width(unsigned int w);
 	///
 	unsigned int width() const;
 	///
-	void ascent_of_text(unsigned short a);
+	void ascent_of_text(unsigned int a);
 	///
-	unsigned short ascent_of_text() const;
+	unsigned int ascent_of_text() const;
 	///
 	void top_of_text(unsigned int top);
 	///
@@ -59,9 +59,9 @@ public:
 	/// return true if this row is the start of a paragraph
 	bool isParStart() const;
 	/// return the cached y position
-	unsigned int y() const;
+	unsigned int y() const { return y_; }
 	/// cache the y position
-	void y(unsigned int newy);
+	void y(unsigned int newy) { y_ = newy; }
 	///
 	float x() const;
 	///
@@ -89,7 +89,7 @@ private:
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill_;
 	///
-	unsigned short height_;
+	unsigned int height_;
 	///
 	unsigned int width_;
 	/// cached y position
