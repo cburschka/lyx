@@ -1792,7 +1792,7 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 		cur.ix(cur.x());
 	//if the cursor is in a visible row, anchor to it
 	int topy = top_y();
-	if (topy < y && y < topy + bv()->workHeight()) 
+	if (topy < y && y < topy + bv()->workHeight())
 		anchor_row(row);
 }
 

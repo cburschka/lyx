@@ -300,7 +300,7 @@ int LyXText::singleWidth(Paragraph * par,
 }
 
 
-lyx::pos_type LyXText::log2vis(lyx::pos_type pos) const 
+lyx::pos_type LyXText::log2vis(lyx::pos_type pos) const
 {
 	if (bidi_start == -1)
 		return pos;
@@ -309,7 +309,7 @@ lyx::pos_type LyXText::log2vis(lyx::pos_type pos) const
 }
 
 
-lyx::pos_type LyXText::vis2log(lyx::pos_type pos) const 
+lyx::pos_type LyXText::vis2log(lyx::pos_type pos) const
 {
 	if (bidi_start == -1)
 		return pos;
@@ -318,7 +318,7 @@ lyx::pos_type LyXText::vis2log(lyx::pos_type pos) const
 }
 
 
-lyx::pos_type LyXText::bidi_level(lyx::pos_type pos) const 
+lyx::pos_type LyXText::bidi_level(lyx::pos_type pos) const
 {
 	if (bidi_start == -1)
 		return 0;
@@ -327,7 +327,7 @@ lyx::pos_type LyXText::bidi_level(lyx::pos_type pos) const
 }
 
 
-bool LyXText::bidi_InRange(lyx::pos_type pos) const 
+bool LyXText::bidi_InRange(lyx::pos_type pos) const
 {
 	return bidi_start == -1 ||
 		(bidi_start <= pos && pos <= bidi_end);
