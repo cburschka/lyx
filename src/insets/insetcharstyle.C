@@ -153,7 +153,7 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			if (cmd.button() == mouse_button::button3)
 				has_label_ = !has_label_;
 			else
-				InsetText::dispatch(cur, cmd);
+				InsetText::priv_dispatch(cur, cmd);
 			break;
 
 		default:

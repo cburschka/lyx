@@ -4,6 +4,8 @@
 	InsetText methods rather than outputVerbatim (escapes special
 	characters) [bug 1731]
 	* insetcharstyle.C (outputVerbatim): remove this function.
+	* insetcharstyle.C (priv_dispatch): fix typo in LFUN_MOUSE_PRESS, 
+	which caused an infinite loop.
 
 2004-10-29  José Matos  <jamatos@lyx.org>
 
