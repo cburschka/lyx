@@ -284,8 +284,10 @@ MathMacroTemplate::MathMacroTemplate(char const * nm, int na, int flg):
 	for (int i = 0; i < nargs; ++i) {
 	    args[i].setNumber(i + 1);
 	}
-    } else 
+    } else {
       tcode = LM_TC_INSET;
+      args = 0;
+    }
 }
 
 

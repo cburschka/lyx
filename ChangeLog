@@ -1,3 +1,8 @@
+2000-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_macro.C (MathMacroTemplate): initialize args to
+	0 when there are no arguments.
+
 2000-10-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/text.C (Backspace): Make sure that the row of the cursor is
