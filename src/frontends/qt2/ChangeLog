@@ -1,3 +1,7 @@
+2003-12-30  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QGraphicsDialogBase.ui: add missing signal/slot (bug 1469)
+
 2003-12-08  Ronald Florence  <ron@18james.com>
 
 	* QWorkArea.C (checkAppleEventForMissingParams) 
@@ -15,17 +19,6 @@
 
 	* QDocument.C: use geometry on custom, A3, B3 and B4
 	papersizes.
-
-2003-12-01  Angus Leeming  <leeming@lyx.org>
-
-        * QContentPane.[Ch] (SyntheticMouseEvent): a new, helper struct.
-        (QContentPane): store an instance of SyntheticMouseEvent and
-        add a slot, generateSyntheticMouseEvent, that is invoked by the
-        SyntheticMouseEvent::timeout.
-        (mouseMoveEvent): initialize synthetic_mouse_event_ when the
-        mouse button is depressed and the cursor is outside of the work area.
-        (generateSyntheticMouseEvent): if the scrollbar value is different
-        from the cached value, then dispatch a 'synthetic' mouse event.
 
 2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

@@ -77,3 +77,6 @@ What's new
 
 - fix problems with non-GNU make program
 
+- fix bug where changing the height unit in the graphics dialog did not
+  activate the ok/apply buttons [Qt only].
+
