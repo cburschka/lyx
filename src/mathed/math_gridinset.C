@@ -45,6 +45,7 @@ int MathGridInset::index(int row, int col) const
 }
 
 
+
 void MathGridInset::halign(string const & hh)
 {
 	int n = hh.size();
@@ -54,25 +55,44 @@ void MathGridInset::halign(string const & hh)
 		colinfo_[i].h_align_ = hh[i];
 }
 
+
 void MathGridInset::halign(char h, int col)
 {
 	colinfo_[col].h_align_ = h;
 }
+
 
 char MathGridInset::halign(int col) const
 {
 	return colinfo_[col].h_align_;
 }
 
+
+
 void MathGridInset::valign(char c)
 {
 	v_align_ = c;
 }
 
+
 char MathGridInset::valign() const
 {
 	return v_align_;
 }
+
+
+
+void MathGridInset::vskip(LyXLength const & skip, int row)
+{
+	rowinfo_[row].skip_ = skip;
+}
+
+
+LyXLength MathGridInset::vskip(int row) const
+{
+	return rowinfo_[row].skip_;
+}
+
 
 void MathGridInset::metrics(MathStyles st) const
 {
@@ -220,6 +240,9 @@ string MathGridInset::eolString(int row) const
 	if (row == nrows() - 1)	
 		return "";
 
+	if (rowinfo_[row].skip_ != LyXLength())
+		return "\\\\[" + rowinfo_[row].skip_.asLatexString() + "]\n";
+
 	// make sure an upcoming '[' does not break anything
 	MathArray const & c = cell(index(row + 1, 0));
 	if (c.size() && (*c.begin())->getChar() == '[')
@@ -242,6 +265,7 @@ void MathGridInset::addRow(int row)
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert(cells_.begin() + (row + 1) * ncols(), ncols(), MathXArray());
 }
+
 
 void MathGridInset::appendRow()
 {

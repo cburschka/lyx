@@ -3,6 +3,7 @@
 #define MATH_GRID_H
 
 #include "math_nestinset.h"
+#include "vspace.h"
 #include "LString.h"
 
 #ifdef __GNUG__
@@ -31,6 +32,8 @@ class MathGridInset : public MathNestInset {
 		bool upperline_;
 		/// hline below this row?
 		bool lowerline_;
+		/// distance
+		LyXLength skip_;
 	};
 
 	// additional per-row information
@@ -70,6 +73,10 @@ public:
 	void valign(char c);
 	///
 	char valign() const;
+	///
+	void vskip(LyXLength const &, int row);
+	///
+	LyXLength vskip(int row) const;
 	///
 	void resize(short int type, int cols);
 	///

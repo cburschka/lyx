@@ -237,8 +237,10 @@ private:
 
 	///
 	bool   curr_num_;
-	//
+	///
 	string curr_label_;
+	///
+	string curr_skip_;
 };
 
 
@@ -410,6 +412,10 @@ void Parser::parse_lines(MathGridInset * p, int col, bool numbered, bool outmost
 			MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
 			m->numbered(row, curr_num_);
 			m->label(row, curr_label_);
+			if (curr_skip_.size()) {
+				m->vskip(LyXLength(curr_skip_), row);
+				curr_skip_.erase();
+			}
 		}
 
 #ifdef WITH_WARNINGS
@@ -673,7 +679,7 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		
 		case LM_TK_NEWLINE:
 		{
-			lexArg('['); // ignore things like  \\[5pt] for a while
+			curr_skip_ = lexArg('[');
 			if (flags & FLAG_NEWLINE) {
 				flags &= ~FLAG_NEWLINE;
 				--plevel;
