@@ -1647,7 +1647,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    
    height += row_ptr->height();
    float x, dummy;
-   PrepareToPrint(bview, row_ptr, x, dummy, dummy, dummy);
+   PrepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
    row_ptr->width(maxwidth+x);
    if (inset_owner) {
 	   Row * r = firstrow;
@@ -3688,18 +3688,15 @@ void LyXText::Backspace(BufferView * bview)
 		}
 		
 		// break the cursor row again
-		z = NextBreakPoint(bview, row, workWidth(bview));
-		
-		if (z != RowLast(row) || 
-		    (row->next() && row->next()->par() == row->par() &&
-		     RowLast(row) == row->par()->Last() - 1)){
+		if (row->next() && row->next()->par() == row->par() &&
+		    (RowLast(row) == row->par()->Last() - 1 ||
+		     NextBreakPoint(bview, row, workWidth(bview)) != RowLast(row))) {
 			
 			/* it can happen that a paragraph loses one row
 			 * without a real breakup. This is when a word
 			 * is to long to be broken. Well, I don t care this 
 			 * hack ;-) */ 
-			if (row->next() && row->next()->par() == row->par() &&
-			    RowLast(row) == row->par()->Last() - 1)
+			if (RowLast(row) == row->par()->Last() - 1)
 				RemoveRow(row->next());
 			
 			refresh_y = y;
@@ -3710,10 +3707,7 @@ void LyXText::Backspace(BufferView * bview)
 			SetCursor(bview, cursor.par(), cursor.pos(), false, cursor.boundary());
 			// cursor MUST be in row now
 			
-			if (row->next() && row->next()->par() == row->par())
-				need_break_row = row->next();
-			else
-				need_break_row = 0;
+			need_break_row = row->next();
 		} else  {
 			// set the dimensions of the row
 			row->fill(Fill(bview, row, workWidth(bview)));
@@ -3734,9 +3728,9 @@ void LyXText::Backspace(BufferView * bview)
 
 	lastpos = cursor.par()->Last();
 	if (cursor.pos() == lastpos) {
-		SetCurrentFont(bview);
 		if (IsBoundary(bview->buffer(), cursor.par(), cursor.pos()) != cursor.boundary())
 			SetCursor(bview, cursor.par(), cursor.pos(), false, !cursor.boundary());
+		SetCurrentFont(bview);
 	}
 	
 	// check, wether the last characters font has changed.
@@ -4764,14 +4758,21 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 	}
 #endif
 
-
 	if (vc > last + 1)  // This shouldn't happen.
 		vc = last + 1;
 
 	boundary = false;
+	bool lastrow = (!row->next() || row->next()->par() != row->par());
+	bool rtl = (lastrow)
+		? row->par()->isRightToLeftPar(bview->buffer()->params)
+		: false;
 
 	if (row->pos() > last)  // Row is empty?
 		c = row->pos();
+	else if (lastrow &&
+		 ( (rtl && vc == row->pos()&& x < tmpx - 5) ||
+		   (!rtl && vc == last + 1 && x > tmpx + 5) ))
+		c = last + 1;
 	else if (vc == row->pos() ||
 		 (row->par()->table
 		  && vc <= last && row->par()->IsNewline(vc-1)) ) {

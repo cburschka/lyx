@@ -40,6 +40,7 @@
 #include "Painter.h"
 #include "font.h"
 #include "debug.h"
+#include "lyxrc.h"
 
 //#define USE_OLD_CUT_AND_PASTE 1
 
@@ -2867,6 +2868,15 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 	current_font =
 		cursor.par()->GetFontSettings(bview->buffer()->params, pos);
 	real_current_font = GetFont(bview->buffer(), cursor.par(), pos);
+
+	if (cursor.pos() == cursor.par()->Last() &&
+	    IsBoundary(bview->buffer(), cursor.par(), cursor.pos()) &&
+	    !cursor.boundary()) {
+		Language const * lang =
+			cursor.par()->getParLanguage(bview->buffer()->params);
+		current_font.setLanguage(lang);
+		real_current_font.setLanguage(lang);
+	}
 }
 
 
@@ -2934,10 +2944,7 @@ void LyXText::CursorLeftIntern(BufferView * bview, bool internal) const
 			SetCursor(bview, cursor.par(), cursor.pos() + 1, true, true);
 	} else if (cursor.par()->Previous()) { // steps into the above paragraph.
 		LyXParagraph * par = cursor.par()->Previous();
-		LyXParagraph::size_type pos = par->Last();
-		SetCursor(bview, par, pos);
-		if (IsBoundary(bview->buffer(), par, pos))
-			SetCursor(bview, par, pos, false, true);
+		SetCursor(bview, par, par->Last());
 	}
 }
 
@@ -2959,15 +2966,14 @@ void LyXText::CursorRight(BufferView * bview, bool internal) const
 
 void LyXText::CursorRightIntern(BufferView * bview, bool internal) const
 {
-	if (cursor.pos() < cursor.par()->Last()) {
-		if (!internal && cursor.boundary() &&
-		    (!cursor.par()->table || !cursor.par()->IsNewline(cursor.pos())))
-			SetCursor(bview, cursor.par(), cursor.pos(), true, false);
-		else {
-			SetCursor(bview, cursor.par(), cursor.pos() + 1, true, false);
-			if (!internal && IsBoundary(bview->buffer(), cursor.par(), cursor.pos()))
-				SetCursor(bview, cursor.par(), cursor.pos(), true, true);
-		}
+	if (!internal && cursor.boundary() &&
+	    (!cursor.par()->table || !cursor.par()->IsNewline(cursor.pos())))
+		SetCursor(bview, cursor.par(), cursor.pos(), true, false);
+	else if (cursor.pos() < cursor.par()->Last()) {
+		SetCursor(bview, cursor.par(), cursor.pos() + 1, true, false);
+		if (!internal &&
+		    IsBoundary(bview->buffer(), cursor.par(), cursor.pos()))
+			SetCursor(bview, cursor.par(), cursor.pos(), true, true);
 	} else if (cursor.par()->Next())
 		SetCursor(bview, cursor.par()->Next(), 0);
 }

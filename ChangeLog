@@ -1,3 +1,23 @@
+2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/text.C (GetColumnNearX): Better behavior when a RTL
+	paragraph is ended by LTR text.
+
+	* src/text2.C (SetCurrentFont,CursorLeftIntern,CursorRightIntern):
+	Ditto
+
+2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/WorkArea.C  (request_clipboard_cb): Set clipboard_read to
+        true when clipboard is empty.
+                                        
+2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* text.C (Backspace): Prevent rebreaking of a row if it is the last
+	row of the paragraph.
+	(SetHeightOfRow): Call to PrepareToPrint with 7th argument = false 
+	to prevent calculation of bidi tables
+
 2000-07-07  Juergen Vigna  <jug@sad.it>
 
 	* src/screen.C (ToggleSelection): added y_offset and x_offset
