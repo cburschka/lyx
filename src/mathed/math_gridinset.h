@@ -155,10 +155,6 @@ public:
 	///
 	bool idxLast(LCursor &) const;
 	///
-	bool idxHome(LCursor &) const;
-	///
-	bool idxEnd(LCursor &) const;
-	///
 	bool idxDelete(idx_type & idx);
 	/// pulls cell after pressing erase
 	void idxGlue(idx_type idx);

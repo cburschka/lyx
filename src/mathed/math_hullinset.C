@@ -851,12 +851,14 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_MATH_MUTATE: {
 		lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
-		row_type r = cur.row();
-		col_type c = cur.col();
+		row_type row = cur.row();
+		col_type col = cur.col();
 		mutate(cmd.argument);
-		cur.idx() = r * ncols() + c;
-		if (cur.idx() >= nargs())
-			cur.idx() = nargs() - 1;
+		cur.idx() = row * ncols() + col;
+		if (cur.idx() > cur.lastidx()) {
+			cur.idx() = cur.lastidx();
+			cur.pos() = cur.lastpos();
+		}
 		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
 		//cur.dispatched(FINISHED);

@@ -77,6 +77,8 @@ class MathInset : public InsetBase {
 public:
 	/// identification as math inset
 	MathInset * asMathInset() { return this; }
+	/// this is overridden in math text insets (i.e. mbox)
+	bool inMathed() const { return true; }
 
 	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);

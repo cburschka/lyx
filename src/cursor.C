@@ -921,45 +921,6 @@ bool LCursor::inNucleus()
 }
 
 
-bool LCursor::left()
-{
-	autocorrect() = false;
-	clearTargetX();
-	if (inMacroMode()) {
-		macroModeClose();
-		return true;
-	}
-
-	if (pos() != 0 && openable(prevAtom())) {
-		posLeft();
-		push(nextAtom().nucleus());
-		inset()->idxLast(*this);
-		return true;
-	}
-
-	return posLeft() || idxLeft() || popLeft() || selection();
-}
-
-
-bool LCursor::right()
-{
-	autocorrect() = false;
-	clearTargetX();
-	if (inMacroMode()) {
-		macroModeClose();
-		return true;
-	}
-
-	if (pos() != lastpos() && openable(nextAtom())) {
-		pushLeft(nextAtom().nucleus());
-		inset()->idxFirst(*this);
-		return true;
-	}
-
-	return posRight() || idxRight() || popRight() || selection();
-}
-
-
 bool positionable(CursorBase const & cursor, CursorBase const & anchor)
 {
 	// avoid deeper nested insets when selecting
@@ -988,28 +949,6 @@ void LCursor::setScreenPos(int x, int y)
 	clearTargetX();
 }
 
-
-
-bool LCursor::home()
-{
-	autocorrect() = false;
-	macroModeClose();
-	if (!inset()->idxHome(*this))
-		return popLeft();
-	clearTargetX();
-	return true;
-}
-
-
-bool LCursor::end()
-{
-	autocorrect() = false;
-	macroModeClose();
-	if (!inset()->idxEnd(*this))
-		return popRight();
-	clearTargetX();
-	return true;
-}
 
 
 void LCursor::plainErase()
@@ -1143,7 +1082,7 @@ bool LCursor::backspace()
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
 		selection() = true;
-		left();
+		--pos();
 	} else {
 		--pos();
 		plainErase();
@@ -1182,7 +1121,7 @@ bool LCursor::erase()
 
 	if (pos() != lastpos() && inset()->nargs() > 0) {
 		selection() = true;
-		right();
+		++pos();
 	} else {
 		plainErase();
 	}
@@ -1232,8 +1171,8 @@ void LCursor::macroModeClose()
 	string const name = s.substr(1);
 
 	// prevent entering of recursive macros
-	if (formula()->lyxCode() == InsetOld::MATHMACRO_CODE
-			&& formula()->getInsetName() == name)
+	InsetBase const * macro = innerInsetOfType(InsetBase::MATHMACRO_CODE);
+	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
 	niceInsert(createMathInset(name));
@@ -1544,27 +1483,6 @@ void LCursor::bruteFind2(int x, int y)
 }
 
 
-bool LCursor::idxLineLast()
-{
-	idx() -= idx() % ncols();
-	idx() += ncols() - 1;
-	pos() = lastpos();
-	return true;
-}
-
-
-bool LCursor::idxLeft()
-{
-	return inset()->idxLeft(*this);
-}
-
-
-bool LCursor::idxRight()
-{
-	return inset()->idxRight(*this);
-}
-
-
 bool LCursor::script(bool up)
 {
 	// Hack to get \\^ and \\_ working
@@ -1849,13 +1767,13 @@ void LCursor::handleFont(string const & font)
 
 bool LCursor::inMathed() const
 {
-	return formula();
+	return current_ && inset()->inMathed();
 }
 
 
 bool LCursor::inTexted() const
 {
-	return !formula();
+	return !inMathed();
 }
 
 

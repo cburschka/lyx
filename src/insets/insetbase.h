@@ -67,6 +67,8 @@ public:
 	virtual MathInset * asMathInset() { return 0; }
 	/// identification as non-math inset
 	virtual UpdatableInset * asUpdatableInset() { return 0; }
+	/// true for 'math' math inset, but not for e.g. mbox 
+	virtual bool inMathed() const { return false; }
 
 	// the real dispatcher
 	void dispatch(LCursor & cur, FuncRequest const & cmd);
@@ -126,11 +128,6 @@ public:
 	virtual bool idxFirst(LCursor &) const { return false; }
 	/// Target pos when we enter the inset from the right by pressing "Left"
 	virtual bool idxLast(LCursor &) const { return false; }
-
-	/// Where should we go if we press home?
-	virtual bool idxHome(LCursor &) const { return false; }
-	/// Where should we go if we press end?
-	virtual bool idxEnd(LCursor &) const { return false; }
 
 	/// Delete a cell and move cursor
 	virtual bool idxDelete(idx_type &) { return false; }

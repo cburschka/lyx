@@ -164,26 +164,6 @@ bool MathNestInset::idxLast(LCursor & cur) const
 }
 
 
-bool MathNestInset::idxHome(LCursor & cur) const
-{
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
-	if (cur.pos() == 0)
-		return false;
-	cur.pos() = 0;
-	return true;
-}
-
-
-bool MathNestInset::idxEnd(LCursor & cur) const
-{
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
-	if (cur.lastpos() == cur.lastpos())
-		return false;
-	cur.pos() = cur.lastpos();
-	return true;
-}
-
-
 void MathNestInset::dump() const
 {
 	WriteStream os(lyxerr);
@@ -351,6 +331,7 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	lyxerr << "MathNestInset: request: " << cmd << std::endl;
+	CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
 
@@ -423,15 +404,38 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
+		lyxerr << "mathnest RIGHT: from:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
-		if (!cur.right()) 
+		cur.autocorrect() = false;
+		cur.clearTargetX();
+		if (cur.inMacroMode())
+			cur.macroModeClose();
+		else if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
+			cur.pushLeft(cur.nextAtom().nucleus());
+			cur.inset()->idxFirst(cur);
+		} else if (cur.posRight() || idxRight(cur)
+			|| cur.popRight() || cur.selection())
+			;
+		else
 			cur.dispatched(FINISHED_RIGHT);
+		lyxerr << "mathnest RIGHT: to:\n" << cur << endl;
 		break;
 
 	case LFUN_LEFTSEL:
 	case LFUN_LEFT:
 		cur.selHandle(cmd.action == LFUN_LEFTSEL);
-		if (!cur.left())
+		cur.autocorrect() = false;
+		cur.clearTargetX();
+		if (cur.inMacroMode())
+			cur.macroModeClose();
+		else if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
+			cur.posLeft();
+			cur.push(cur.nextAtom().nucleus());
+			cur.inset()->idxLast(cur);
+		} else if (cur.posLeft() || idxLeft(cur)
+			|| cur.popLeft() || cur.selection())
+			;
+		else
 			cur.dispatched(FINISHED_LEFT);
 		break;
 
@@ -450,10 +454,12 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDSEL:
-		cur.home();
+		cur.pos() = 0;
+		cur.idx() = 0;
 		cur.resetAnchor();
 		cur.selection() = true;
-		cur.end();
+		cur.pos() = cur.lastpos();
+		cur.idx() = cur.lastidx();
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -462,32 +468,43 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DOWN_PARAGRAPH:
 		break;
 
+	case LFUN_HOMESEL:
+	case LFUN_HOME:
 	case LFUN_WORDLEFTSEL:
 	case LFUN_WORDLEFT:
-		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL);
-		if (!cur.home())
+		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL || cmd.action == LFUN_HOMESEL);
+		cur.macroModeClose();
+		if (cur.pos() != 0) {
+			cur.pos() = 0;
+		} else if (cur.col() != 0) {
+			cur.idx() -= cur.col();
+			cur.pos() = 0;
+		} else if (cur.idx() != 0) {
+			cur.idx() = 0;
+			cur.pos() = 0;
+		} else {
 			cur.dispatched(FINISHED_LEFT);
+		}
 		break;
 
 	case LFUN_WORDRIGHTSEL:
 	case LFUN_WORDRIGHT:
-		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL);
-		if (!cur.end())
-			cur.dispatched(FINISHED_RIGHT);
-		break;
-
-	case LFUN_HOMESEL:
-	case LFUN_HOME:
-		cur.selHandle(cmd.action == LFUN_HOMESEL);
-		if (!cur.home())
-			cur.dispatched(FINISHED_LEFT);
-		break;
-
 	case LFUN_ENDSEL:
 	case LFUN_END:
-		cur.selHandle(cmd.action == LFUN_ENDSEL);
-		if (!cur.end())
+		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL || cmd.action == LFUN_ENDSEL);
+		cur.macroModeClose();
+		cur.clearTargetX();
+		if (cur.pos() != cur.lastpos()) {
+			cur.pos() = cur.lastpos();
+		} else if (cur.col() != cur.lastcol()) {
+			cur.idx() = cur.idx() - cur.col() + cur.lastcol();
+			cur.pos() = cur.lastpos();
+		} else if (cur.idx() != cur.lastidx()) {
+			cur.idx() = cur.lastidx();
+			cur.pos() = cur.lastpos();
+		} else {
 			cur.dispatched(FINISHED_RIGHT);
+		}
 		break;
 
 	case LFUN_PRIORSEL:

@@ -35,6 +35,8 @@ public:
 
 	///
 	void write(WriteStream & os) const;
+	///
+	bool inMathed() const { return false; }
 
 	///
 	LyXText * getText(int) const;	

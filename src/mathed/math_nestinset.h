@@ -60,11 +60,6 @@ public:
 	/// target pos when we enter the inset from the right by pressing "Left"
 	bool idxLast(LCursor &) const;
 
-	/// where should we go if we press home?
-	bool idxHome(LCursor &) const;
-	/// where should we go if we press end?
-	bool idxEnd(LCursor &) const;
-
 	/// number of cells currently governed by us
 	idx_type nargs() const;
 	/// access to the lock

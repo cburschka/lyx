@@ -135,8 +135,7 @@ namespace {
 		lyxerr << "selection is: '" << sel << "'" << endl;
 
 		if (sel.empty()) {
-			cur.insert(new MathHullInset);
-			cur.dispatch(FuncRequest(LFUN_RIGHT));
+			cur.insert(new MathHullInset); // activates inset
 			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
@@ -152,12 +151,10 @@ namespace {
 					sel.find("\\def") == string::npos)
 			{
 				cur.insert(new MathHullInset);
-				cur.dispatch(FuncRequest(LFUN_RIGHT));
 				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			} else {
 				cur.insert(new InsetFormulaMacro(sel));
-				cur.dispatch(FuncRequest(LFUN_RIGHT));
 			}
 		}
 		cur.message(N_("Math editor mode"));

@@ -826,46 +826,6 @@ bool MathGridInset::idxLast(LCursor & cur) const
 }
 
 
-bool MathGridInset::idxHome(LCursor & cur) const
-{
-	if (cur.pos() > 0) {
-		cur.pos() = 0;
-		return true;
-	}
-	if (cur.col() > 0) {
-		cur.idx() -= cur.idx() % ncols();
-		cur.pos() = 0;
-		return true;
-	}
-	if (cur.idx() > 0) {
-		cur.idx() = 0;
-		cur.pos() = 0;
-		return true;
-	}
-	return false;
-}
-
-
-bool MathGridInset::idxEnd(LCursor & cur) const
-{
-	if (cur.pos() < cur.lastpos()) {
-		cur.pos() = cur.lastpos();
-		return true;
-	}
-	if (cur.col() < ncols() - 1) {
-		cur.idx() = cur.idx() - cur.idx() % ncols() + ncols() - 1;
-		cur.pos() = cur.lastpos();
-		return true;
-	}
-	if (cur.idx() < nargs() - 1) {
-		cur.idx() = nargs() - 1;
-		cur.pos() = cur.lastpos();
-		return true;
-	}
-	return false;
-}
-
-
 bool MathGridInset::idxDelete(idx_type & idx)
 {
 	// nothing to do if we have just one row
@@ -1047,154 +1007,183 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	//lyxerr << "*** MathGridInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
-		case LFUN_MOUSE_RELEASE:
-			//if (cmd.button() == mouse_button::button3) {
-			//	GridInsetMailer(*this).showDialog();
-			//	return DispatchResult(true, true);
-			//}
-			MathNestInset::priv_dispatch(cur, cmd);
-			return;
+	case LFUN_MOUSE_RELEASE:
+		//if (cmd.button() == mouse_button::button3) {
+		//	GridInsetMailer(*this).showDialog();
+		//	return DispatchResult(true, true);
+		//}
+		MathNestInset::priv_dispatch(cur, cmd);
+		return;
 
-		case LFUN_INSET_DIALOG_UPDATE:
-			GridInsetMailer(*this).updateDialog(&cur.bv());
-			return;
+	case LFUN_INSET_DIALOG_UPDATE:
+		GridInsetMailer(*this).updateDialog(&cur.bv());
+		return;
 
-		// insert file functions
-		case LFUN_DELETE_LINE_FORWARD:
-			//autocorrect_ = false;
-			//macroModeClose();
-			//if (selection_) {
-			//	selDel();
-			//	return;
-			//}
-			if (nrows() > 1)
+	// insert file functions
+	case LFUN_DELETE_LINE_FORWARD:
+		//autocorrect_ = false;
+		//macroModeClose();
+		//if (selection_) {
+		//	selDel();
+		//	return;
+		//}
+		if (nrows() > 1)
+			delRow(cur.row());
+		if (cur.idx() > cur.lastidx())
+			cur.idx() = cur.lastidx();
+		if (cur.pos() > cur.lastpos())
+			cur.pos() = cur.lastpos();
+		return;
+
+	case LFUN_CELL_SPLIT:
+		////recordUndo(cur, Undo::ATOMIC);
+		splitCell(cur);
+		return;
+
+	case LFUN_BREAKLINE: {
+		////recordUndo(cur, Undo::INSERT);
+		row_type const r = cur.row();
+		addRow(r);
+
+		// split line
+		for (col_type c = col(cur.idx()) + 1; c < ncols(); ++c)
+			swap(cell(index(r, c)), cell(index(r + 1, c)));
+
+		// split cell
+		splitCell(cur);
+		swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
+		if (cur.idx() > 0)
+			--cur.idx();
+		cur.idx() = cur.lastpos();
+
+		//mathcursor->normalize();
+		cur.dispatched(FINISHED_LEFT);
+		return;
+	}
+
+	case LFUN_TABULAR_FEATURE: {
+		//lyxerr << "handling tabular-feature " << cmd.argument << endl;
+		istringstream is(cmd.argument);
+		string s;
+		is >> s;
+		if (s == "valign-top")
+			valign('t');
+		else if (s == "valign-middle")
+			valign('c');
+		else if (s == "valign-bottom")
+			valign('b');
+		else if (s == "align-left")
+			halign('l', col(cur.idx()));
+		else if (s == "align-right")
+			halign('r', col(cur.idx()));
+		else if (s == "align-center")
+			halign('c', col(cur.idx()));
+		else if (s == "append-row")
+			for (int i = 0, n = extractInt(is); i < n; ++i)
+				addRow(cur.row());
+		else if (s == "delete-row")
+			for (int i = 0, n = extractInt(is); i < n; ++i) {
 				delRow(cur.row());
-			if (cur.idx() > cur.lastidx())
-				cur.idx() = cur.lastidx();
-			if (cur.pos() > cur.lastpos())
-				cur.pos() = cur.lastpos();
+				if (cur.idx() > nargs())
+					cur.idx() -= ncols();
+			}
+		else if (s == "copy-row")
+			for (int i = 0, n = extractInt(is); i < n; ++i)
+				copyRow(cur.row());
+		else if (s == "swap-row")
+			swapRow(cur.row());
+		else if (s == "append-column")
+			for (int i = 0, n = extractInt(is); i < n; ++i) {
+				row_type r = cur.row();
+				col_type c = col(cur.idx());
+				addCol(c);
+				cur.idx() = index(r, c);
+			}
+		else if (s == "delete-column")
+			for (int i = 0, n = extractInt(is); i < n; ++i) {
+				row_type r = cur.row();
+				col_type c = col(cur.idx());
+				delCol(col(cur.idx()));
+				cur.idx() = index(r, c);
+				if (cur.idx() > nargs())
+					cur.idx() -= ncols();
+			}
+		else if (s == "copy-column")
+			copyCol(col(cur.idx()));
+		else if (s == "swap-column")
+			swapCol(col(cur.idx()));
+		else {
+			cur.notdispatched();
 			return;
+		}
+		lyxerr << "returning FINISHED_LEFT" << endl;
+		return;
+	}
 
-		case LFUN_CELL_SPLIT:
-			////recordUndo(cur, Undo::ATOMIC);
-			splitCell(cur);
-			return;
+	case LFUN_PASTE: {
+		//lyxerr << "pasting '" << cmd.argument << "'" << endl;
+		MathGridInset grid(1, 1);
+		mathed_parse_normal(grid, cmd.argument);
+		if (grid.nargs() == 1) {
+			// single cell/part of cell
+			cur.cell().insert(cur.pos(), grid.cell(0));
+			cur.pos() += grid.cell(0).size();
+		} else {
+			// multiple cells
+			col_type const numcols =
+				min(grid.ncols(), ncols() - col(cur.idx()));
+			row_type const numrows =
+				min(grid.nrows(), nrows() - cur.row());
+			for (row_type r = 0; r < numrows; ++r) {
+				for (col_type c = 0; c < numcols; ++c) {
+					idx_type i = index(r + cur.row(), c + col(cur.idx()));
+					cell(i).insert(0, grid.cell(grid.index(r, c)));
+				}
+				// append the left over horizontal cells to the last column
+				idx_type i = index(r + cur.row(), ncols() - 1);
+				for (MathInset::col_type c = numcols; c < grid.ncols(); ++c)
+					cell(i).append(grid.cell(grid.index(r, c)));
+			}
+			// append the left over vertical cells to the last _cell_
+			idx_type i = nargs() - 1;
+			for (row_type r = numrows; r < grid.nrows(); ++r)
+				for (col_type c = 0; c < grid.ncols(); ++c)
+					cell(i).append(grid.cell(grid.index(r, c)));
+		}
+		return;
+	}
 
-		case LFUN_BREAKLINE: {
-			////recordUndo(cur, Undo::INSERT);
-			row_type const r = cur.row();
-			addRow(r);
-
-			// split line
-			for (col_type c = col(cur.idx()) + 1; c < ncols(); ++c)
-				swap(cell(index(r, c)), cell(index(r + 1, c)));
-
-			// split cell
-			splitCell(cur);
-			swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
-			if (cur.idx() > 0)
-				--cur.idx();
-			cur.idx() = cur.lastpos();
-
-			//mathcursor->normalize();
+	case LFUN_HOMESEL:
+	case LFUN_HOME:
+	case LFUN_WORDLEFTSEL:
+	case LFUN_WORDLEFT:
+		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL || cmd.action == LFUN_HOMESEL);
+		cur.macroModeClose();
+		if (cur.pos() != 0)
+			cur.pos() = 0;
+		else if (cur.idx() != 0)
+			cur.idx() = 0;
+		else
 			cur.dispatched(FINISHED_LEFT);
-			return;
-		}
+		break;
 
-		case LFUN_TABULAR_FEATURE: {
-			//lyxerr << "handling tabular-feature " << cmd.argument << endl;
-			istringstream is(cmd.argument);
-			string s;
-			is >> s;
-			if (s == "valign-top")
-				valign('t');
-			else if (s == "valign-middle")
-				valign('c');
-			else if (s == "valign-bottom")
-				valign('b');
-			else if (s == "align-left")
-				halign('l', col(cur.idx()));
-			else if (s == "align-right")
-				halign('r', col(cur.idx()));
-			else if (s == "align-center")
-				halign('c', col(cur.idx()));
-			else if (s == "append-row")
-				for (int i = 0, n = extractInt(is); i < n; ++i)
-					addRow(cur.row());
-			else if (s == "delete-row")
-				for (int i = 0, n = extractInt(is); i < n; ++i) {
-					delRow(cur.row());
-					if (cur.idx() > nargs())
-						cur.idx() -= ncols();
-				}
-			else if (s == "copy-row")
-				for (int i = 0, n = extractInt(is); i < n; ++i)
-					copyRow(cur.row());
-			else if (s == "swap-row")
-				swapRow(cur.row());
-			else if (s == "append-column")
-				for (int i = 0, n = extractInt(is); i < n; ++i) {
-					row_type r = cur.row();
-					col_type c = col(cur.idx());
-					addCol(c);
-					cur.idx() = index(r, c);
-				}
-			else if (s == "delete-column")
-				for (int i = 0, n = extractInt(is); i < n; ++i) {
-					row_type r = cur.row();
-					col_type c = col(cur.idx());
-					delCol(col(cur.idx()));
-					cur.idx() = index(r, c);
-					if (cur.idx() > nargs())
-						cur.idx() -= ncols();
-				}
-			else if (s == "copy-column")
-				copyCol(col(cur.idx()));
-			else if (s == "swap-column")
-				swapCol(col(cur.idx()));
-			else {
-				cur.notdispatched();
-				return;
-			}
-			lyxerr << "returning FINISHED_LEFT" << endl;
-			return;
-		}
+	case LFUN_WORDRIGHTSEL:
+	case LFUN_WORDRIGHT:
+	case LFUN_ENDSEL:
+	case LFUN_END:
+		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL || cmd.action == LFUN_ENDSEL);
+		cur.macroModeClose();
+		cur.clearTargetX();
+		if (cur.pos() != cur.lastpos())
+			cur.pos() = cur.lastpos();
+		else if (cur.idx() != cur.lastidx())
+			cur.idx() = cur.lastidx();
+		else
+			cur.dispatched(FINISHED_RIGHT);
+		break;
 
-		case LFUN_PASTE: {
-			//lyxerr << "pasting '" << cmd.argument << "'" << endl;
-			MathGridInset grid(1, 1);
-			mathed_parse_normal(grid, cmd.argument);
-			if (grid.nargs() == 1) {
-				// single cell/part of cell
-				cur.cell().insert(cur.pos(), grid.cell(0));
-				cur.pos() += grid.cell(0).size();
-			} else {
-				// multiple cells
-				col_type const numcols =
-					min(grid.ncols(), ncols() - col(cur.idx()));
-				row_type const numrows =
-					min(grid.nrows(), nrows() - cur.row());
-				for (row_type r = 0; r < numrows; ++r) {
-					for (col_type c = 0; c < numcols; ++c) {
-						idx_type i = index(r + cur.row(), c + col(cur.idx()));
-						cell(i).insert(0, grid.cell(grid.index(r, c)));
-					}
-					// append the left over horizontal cells to the last column
-					idx_type i = index(r + cur.row(), ncols() - 1);
-					for (MathInset::col_type c = numcols; c < grid.ncols(); ++c)
-						cell(i).append(grid.cell(grid.index(r, c)));
-				}
-				// append the left over vertical cells to the last _cell_
-				idx_type i = nargs() - 1;
-				for (row_type r = numrows; r < grid.nrows(); ++r)
-					for (col_type c = 0; c < grid.ncols(); ++c)
-						cell(i).append(grid.cell(grid.index(r, c)));
-			}
-			return;
-		}
-
-		default:
-			MathNestInset::priv_dispatch(cur, cmd);
-			return;
+	default:
+		MathNestInset::priv_dispatch(cur, cmd);
+		return;
 	}
 }

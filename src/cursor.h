@@ -190,8 +190,12 @@ public:
 	size_t nrows() const;
 	/// return the grid row of the current cell
 	row_type row() const;
-	/// return the grid row of the current cell
+	/// return the last row of the current grid
+	row_type lastrow() const { return nrows() - 1; }
+	/// return the grid column of the current cell
 	col_type col() const;
+	/// return the last column of the current grid
+	col_type lastcol() const { return ncols() - 1; }
 	/// the inset just behind the cursor
 	InsetBase * nextInset();
 	/// the inset just in front of the cursor
@@ -362,14 +366,6 @@ public:
 	bool erase();
 	/// return false for empty math insets
 	bool backspace();
-	/// called for LFUN_HOME etc
-	bool home();
-	/// called for LFUN_END etc
-	bool end();
-	/// called for LFUN_RIGHT and LFUN_RIGHTSEL
-	bool right();
-	/// called for LFUN_LEFT etc
-	bool left();
 	/// called for LFUN_UP etc
 	bool up();
 	/// called for LFUN_DOWN etc
@@ -451,12 +447,6 @@ public:
 	std::string getPossibleLabel();
 
 private:
-	/// moves cursor index one cell to the left
-	bool idxLeft();
-	/// moves cursor index one cell to the right
-	bool idxRight();
-	/// moves cursor to end of last cell of current line
-	bool idxLineLast();
 	/// moves position somehow up or down
 	bool goUpDown(bool up);
 	/// moves position closest to (x, y) in given box
@@ -470,6 +460,7 @@ private:
 	std::string macroName();
 	/// where in the curent cell does the macro name start?
 	int macroNamePos();
+public:
 	/// can we enter the inset?
 	bool openable(MathAtom const &) const;
 };
