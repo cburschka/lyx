@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: qgridview.cpp,v 1.1 2002/10/09 08:59:02 leuven Exp $
+** $Id: qgridview.C,v 1.1 2003/01/13 10:39:18 larsbj Exp $
 **
 ** Implementation of QGridView class
 **

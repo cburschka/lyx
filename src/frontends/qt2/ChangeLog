@@ -1,15 +1,33 @@
+2003-01-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* qgridview.cpp: rename to...
+	* qgridview.C: ...this
+	
+	* Makefile.am: distcheck ready 
+
+	* Makefile.dialogs: simplify
+
+	* Rename a lot of files from *Dialog.ui to *DialogBase.ui
+
+	* ui/Makefile.am: simplify and distcheck ready, make sure to dist
+	all the ui files.
+
+	* ui/moc/Makefile.am: simplify and distcheck ready
+
+	* moc/Makefile.am: simplify and distcheck ready
+
 2003-01-12  Edwin Leuven  <e.leuven@uva.nl>
 
 	* ui/QPreambleDialog.ui:
 	* QPreamble.[Ch]:
-        * QPreambleDialog.[Ch]:
+	* QPreambleDialog.[Ch]:
 	* Dialogs.C:
 	* Dialogs_impl.h:
 	* Makefile.dialogs: Remove preamble dialog
 
 2003-01-12  Alfredo Braunstein <abraunst@libero.it>
 
-	* QSpellcheckerDialog.C (spellcheck,update_contents): enable/disable 
+	* QSpellcheckerDialog.C (spellcheck,update_contents): enable/disable
 	  elements of the dialog.
 
 2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>

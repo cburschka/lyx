@@ -1,295 +1,114 @@
 # this is the master file from which the dialog file rules are generated
 
-DIALOGS = \
-	QAbout \
-	QAskForText \
-	QBibitem \
-	QBibtex \
-	QCharacter \
-	QCitation \
-	QDocument \
-	QError \
-	QERT \
-	QExternal \
-	QFloat \
-	QGraphics \
-	QInclude \
-	QIndex \
-	QLog \
-	QMath \
-	QMinipage \
-	QParagraph \
-	QPrefs \
-	QPrint \
-	QRef \
-	QSearch \
-	QSendto \
-	QShowFile \
-	QSpellchecker \
-	QTabularCreate \
-	QTabular \
-	QTexinfo \
-	QThesaurus \
-	QToc \
-	QURL \
-	QVCLog \
-	QWrap
- 
-DIALOGSOURCES = \
-	QAbout.h QAboutDialog.h \
-	QAbout.C QAboutDialog.C \
-	QBibitem.h QBibitemDialog.h \
-	QBibitem.C QBibitemDialog.C \
-	QBibtex.h QBibtexDialog.h \
-	QBibtex.C QBibtexDialog.C \
-	QCharacter.h QCharacterDialog.h \
-	QCharacter.C QCharacterDialog.C \
-	QCitation.h QCitationDialog.h \
-	QCitation.C QCitationDialog.C \
-	QDocument.h QDocumentDialog.h \
-	QDocument.C QDocumentDialog.C \
-	QDelimiterDialog.h QDelimiterDialog.C \
-	QError.h QErrorDialog.h \
-	QError.C QErrorDialog.C \
-	QERT.h QERTDialog.h \
-	QERT.C QERTDialog.C \
-	QExternal.h QExternalDialog.h \
-	QExternal.C QExternalDialog.C \
-	QFloat.h QFloatDialog.h \
-	QFloat.C QFloatDialog.C \
-	QGraphics.h QGraphicsDialog.h \
-	QGraphics.C QGraphicsDialog.C \
-	QInclude.h QIncludeDialog.h \
-	QInclude.C QIncludeDialog.C \
-	QIndex.h QIndexDialog.h \
-	QIndex.C QIndexDialog.C \
-	QLog.h QLogDialog.h \
-	QLog.C QLogDialog.C \
-	QMath.h QMathDialog.h \
-	QMath.C QMathDialog.C \
-	QMathMatrixDialog.h QMathMatrixDialog.C \
-	QMinipage.h QMinipageDialog.h \
-	QMinipage.C QMinipageDialog.C \
-	QParagraph.h QParagraphDialog.h \
-	QParagraph.C QParagraphDialog.C \
-	QPrefs.h QPrefsDialog.h \
-	QPrefs.C QPrefsDialog.C \
-	QPrint.h QLPrintDialog.h \
-	QPrint.C QLPrintDialog.C \
-	QRef.h QRefDialog.h \
-	QRef.C QRefDialog.C \
-	QSearch.h QSearchDialog.h \
-	QSearch.C QSearchDialog.C \
-	QSendto.h QSendtoDialog.h \
-	QSendto.C QSendtoDialog.C \
-	QShowFile.h QShowFileDialog.h \
-	QShowFile.C QShowFileDialog.C \
-	QSpellchecker.h QSpellcheckerDialog.h \
-	QSpellchecker.C QSpellcheckerDialog.C \
-	QTabularCreate.h QTabularCreateDialog.h \
-	QTabularCreate.C QTabularCreateDialog.C \
-	QTabular.h QTabularDialog.h \
-	QTabular.C QTabularDialog.C \
-	QTexinfo.h QTexinfoDialog.h \
-	QTexinfo.C QTexinfoDialog.C \
-	QThesaurus.h QThesaurusDialog.h \
-	QThesaurus.C QThesaurusDialog.C \
-	QToc.h QTocDialog.h \
-	QToc.C QTocDialog.C \
-	QURL.h QURLDialog.h \
-	QURL.C QURLDialog.C \
-	QVCLog.h QVCLogDialog.h \
-	QVCLog.C QVCLogDialog.C \
-	QWrap.h QWrapDialog.h \
-	QWrap.C QWrapDialog.C
- 
-MOCDIALOGS = \
-	QAboutDialog_moc.C \
-	QBibitemDialog_moc.C \
-	QBibtexDialog_moc.C \
-	QCharacterDialog_moc.C \
-	QCitationDialog_moc.C \
-	QDocumentDialog_moc.C \
-	QDelimiterDialog_moc.C \
-	QErrorDialog_moc.C \
-	QERTDialog_moc.C \
-	QExternalDialog_moc.C \
-	QFloatDialog_moc.C \
-	QGraphicsDialog_moc.C \
-	QIncludeDialog_moc.C \
-	QIndexDialog_moc.C \
-	QLogDialog_moc.C \
-	QMathDialog_moc.C \
-	QMathMatrixDialog_moc.C \
-	QMinipageDialog_moc.C \
-	QParagraphDialog_moc.C \
-	QPrefsDialog_moc.C \
-	QLPrintDialog_moc.C \
-	QRefDialog_moc.C \
-	QSearchDialog_moc.C \
-	QSendtoDialog_moc.C \
-	QShowFileDialog_moc.C \
-	QSpellcheckerDialog_moc.C \
-	QTabularCreateDialog_moc.C \
-	QTabularDialog_moc.C \
-	QTexinfoDialog_moc.C \
-	QThesaurusDialog_moc.C \
-	QTocDialog_moc.C \
-	QURLDialog_moc.C \
-	QVCLogDialog_moc.C \
-	QWrapDialog_moc.C
- 
-UIDIALOGS = \
-	QAboutDialogBase.h \
-	QAboutDialogBase.C \
-	QAskForTextDialog.h \
-	QAskForTextDialog.C \
-	QBibitemDialogBase.h \
-	QBibitemDialogBase.C \
-	QBibtexDialogBase.h \
-	QBibtexDialogBase.C \
-	QCharacterDialogBase.h \
-	QCharacterDialogBase.C \
-	QCitationDialogBase.h \
-	QCitationDialogBase.C \
-	QDocumentDialogBase.h \
-	QDocumentDialogBase.C \
-	QDelimiterDialogBase.h \
-	QDelimiterDialogBase.C \
-	QErrorDialogBase.C \
-	QErrorDialogBase.h \
-	QERTDialogBase.C \
-	QERTDialogBase.h \
-	QExternalDialogBase.C \
-	QExternalDialogBase.h \
-	QFloatDialogBase.C \
-	QFloatDialogBase.h \
-	QGraphicsDialogBase.C \
-	QGraphicsDialogBase.h \
-	QIncludeDialogBase.h \
-	QIncludeDialogBase.C \
-	QIndexDialogBase.h \
-	QIndexDialogBase.C \
-	QLogDialogBase.h \
-	QLogDialogBase.C \
-	QMathDialogBase.h \
-	QMathDialogBase.C \
-	QMathMatrixDialogBase.h \
-	QMathMatrixDialogBase.C \
-	QMinipageDialogBase.h \
-	QMinipageDialogBase.C \
-	QParagraphDialogBase.h \
-	QParagraphDialogBase.C \
-	QPrefsDialogBase.h \
-	QPrefsDialogBase.C \
-	QPrintDialogBase.h \
-	QPrintDialogBase.C \
-	QRefDialogBase.h \
-	QRefDialogBase.C \
-	QSearchDialogBase.h \
-	QSearchDialogBase.C \
-	QSendtoDialogBase.h \
-	QSendtoDialogBase.C \
-	QShowFileDialogBase.h \
-	QShowFileDialogBase.C \
-	QSpellcheckerDialogBase.h \
-	QSpellcheckerDialogBase.C \
-	QTabularCreateDialogBase.h \
-	QTabularCreateDialogBase.C \
-	QTabularDialogBase.h \
-	QTabularDialogBase.C \
-	QTexinfoDialogBase.h \
-	QTexinfoDialogBase.C \
-	QThesaurusDialogBase.h \
-	QThesaurusDialogBase.C \
-	QTocDialogBase.h \
-	QTocDialogBase.C \
-	QURLDialogBase.h \
-	QURLDialogBase.C \
-	QVCLogDialogBase.h \
-	QVCLogDialogBase.C \
-	QWrapDialogBase.h \
-	QWrapDialogBase.C \
-	ClassModuleBase.h ClassModuleBase.C \
-	PackagesModuleBase.h PackagesModuleBase.C \
-	PaperModuleBase.h PaperModuleBase.C \
-	MarginsModuleBase.h MarginsModuleBase.C \
-	LanguageModuleBase.h LanguageModuleBase.C \
-	NumberingModuleBase.h NumberingModuleBase.C \
-	BiblioModuleBase.h BiblioModuleBase.C \
-	PreambleModuleBase.h PreambleModuleBase.C \
-	BulletsModuleBase.h BulletsModuleBase.C \
-	QPrefAsciiModule.h QPrefAsciiModule.C \
-	QPrefDateModule.h QPrefDateModule.C \
-	QPrefKeyboardModule.h QPrefKeyboardModule.C \
-	QPrefLatexModule.h QPrefLatexModule.C \
-	QPrefScreenFontsModule.h QPrefScreenFontsModule.C \
-	QPrefColorsModule.h QPrefColorsModule.C \
-	QPrefDisplayModule.h QPrefDisplayModule.C \
-	QPrefPathsModule.h QPrefPathsModule.C \
-	QPrefSpellcheckerModule.h QPrefSpellcheckerModule.C \
-	QPrefConvertersModule.h QPrefConvertersModule.C \
-	QPrefFileformatsModule.h QPrefFileformatsModule.C \
-	QPrefLanguageModule.h QPrefLanguageModule.C \
-	QPrefPrinterModule.h QPrefPrinterModule.C \
-	QPrefUIModule.h QPrefUIModule.C
- 
- UIMOCDIALOGS = \
-	QAboutDialogBase_moc.C \
-	QAskForTextDialog_moc.C \
-	QBibitemDialogBase_moc.C \
-	QBibtexDialogBase_moc.C \
-	QCharacterDialogBase_moc.C \
-	QCitationDialogBase_moc.C \
-	QDocumentDialogBase_moc.C \
-	QDelimiterDialogBase_moc.C \
-	QErrorDialogBase_moc.C \
-	QERTDialogBase_moc.C \
-	QExternalDialogBase_moc.C \
-	QFloatDialogBase_moc.C \
-	QGraphicsDialogBase_moc.C \
-	QIncludeDialogBase_moc.C \
-	QIndexDialogBase_moc.C \
-	QLogDialogBase_moc.C \
-	QMathDialogBase_moc.C \
-	QMathMatrixDialogBase_moc.C \
-	QMinipageDialogBase_moc.C \
-	QParagraphDialogBase_moc.C \
-	QPrefsDialogBase_moc.C \
-	QPrintDialogBase_moc.C \
-	QRefDialogBase_moc.C \
-	QSearchDialogBase_moc.C \
-	QSendtoDialogBase_moc.C \
-	QShowFileDialogBase_moc.C \
-	QSpellcheckerDialogBase_moc.C \
-	QTabularCreateDialogBase_moc.C \
-	QTabularDialogBase_moc.C \
-	QTexinfoDialogBase_moc.C \
-	QThesaurusDialogBase_moc.C \
-	QTocDialogBase_moc.C \
-	QURLDialogBase_moc.C \
-	QVCLogDialogBase_moc.C \
-	QWrapDialogBase_moc.C \
-	ClassModuleBase_moc.C \
-	PackagesModuleBase_moc.C \
-	PaperModuleBase_moc.C \
-	MarginsModuleBase_moc.C \
-	LanguageModuleBase_moc.C \
-	NumberingModuleBase_moc.C \
-	BiblioModuleBase_moc.C \
-	PreambleModuleBase_moc.C \
-	BulletsModuleBase_moc.C \
-	QPrefAsciiModule_moc.C \
-	QPrefDateModule_moc.C \
-	QPrefKeyboardModule_moc.C \
-	QPrefLatexModule_moc.C \
-	QPrefScreenFontsModule_moc.C \
-	QPrefColorsModule_moc.C \
-	QPrefDisplayModule_moc.C \
-	QPrefPathsModule_moc.C \
-	QPrefSpellcheckerModule_moc.C \
-	QPrefConvertersModule_moc.C \
-	QPrefFileformatsModule_moc.C \
-	QPrefLanguageModule_moc.C \
-	QPrefPrinterModule_moc.C \
-	QPrefUIModule_moc.C
+UIFILES = \
+	BiblioModuleBase.ui \
+	BulletsModuleBase.ui \
+	ClassModuleBase.ui \
+	LanguageModuleBase.ui \
+	MarginsModuleBase.ui \
+	NumberingModuleBase.ui \
+	PackagesModuleBase.ui \
+	PaperModuleBase.ui \
+	PreambleModuleBase.ui \
+	QAboutDialogBase.ui \
+	QAskForTextDialog.ui \
+	QBibitemDialogBase.ui \
+	QBibtexDialogBase.ui \
+	QCharacterDialogBase.ui \
+	QCitationDialogBase.ui \
+	QDelimiterDialogBase.ui \
+	QDocumentDialogBase.ui \
+	QErrorDialogBase.ui \
+	QERTDialogBase.ui \
+	QExternalDialogBase.ui \
+	QFloatDialogBase.ui \
+	QGraphicsDialogBase.ui \
+	QIncludeDialogBase.ui \
+	QIndexDialogBase.ui \
+	QLogDialogBase.ui \
+	QMathDialogBase.ui \
+	QMathMatrixDialogBase.ui \
+	QMinipageDialogBase.ui \
+	QParagraphDialogBase.ui \
+	QPrefAsciiModule.ui \
+	QPrefColorsModule.ui \
+	QPrefConvertersModule.ui \
+	QPrefDateModule.ui \
+	QPrefDisplayModule.ui \
+	QPrefFileformatsModule.ui \
+	QPrefKeyboardModule.ui \
+	QPrefLanguageModule.ui \
+	QPrefLatexModule.ui \
+	QPrefPathsModule.ui \
+	QPrefPrinterModule.ui \
+	QPrefScreenFontsModule.ui \
+	QPrefsDialogBase.ui \
+	QPrefSpellcheckerModule.ui \
+	QPrefUIModule.ui \
+	QPrintDialogBase.ui \
+	QRefDialogBase.ui \
+	QSearchDialogBase.ui \
+	QSendtoDialogBase.ui \
+	QShowFileDialogBase.ui \
+	QSpellcheckerDialogBase.ui \
+	QTabularCreateDialogBase.ui \
+	QTabularDialogBase.ui \
+	QTexinfoDialogBase.ui \
+	QThesaurusDialogBase.ui \
+	QTocDialogBase.ui \
+	QURLDialogBase.ui \
+	QVCLogDialogBase.ui \
+	QWrapDialogBase.ui
+
+MOCFILES = \
+	BulletsModule.C BulletsModule.h \
+	emptytable.C emptytable.h \
+	FileDialog_private.C FileDialog_private.h \
+	iconpalette.C iconpalette.h \
+	io_callback.C io_callback.h \
+	lengthcombo.C lengthcombo.h \
+	QAboutDialog.C QAboutDialog.h \
+	QBibitemDialog.C QBibitemDialog.h \
+	QBibtexDialog.C QBibtexDialog.h \
+	QBrowseBox.C QBrowseBox.h \
+	QCharacterDialog.C QCharacterDialog.h \
+	QCitationDialog.C QCitationDialog.h \
+	QCommandBuffer.C QCommandBuffer.h \
+	QCommandEdit.C QCommandEdit.h \
+	QContentPane.C QContentPane.h \
+	QDelimiterDialog.C QDelimiterDialog.h \
+	QDocumentDialog.C QDocumentDialog.h \
+	QErrorDialog.C QErrorDialog.h \
+	QERTDialog.C QERTDialog.h \
+	QExternalDialog.C QExternalDialog.h \
+	QFloatDialog.C QFloatDialog.h \
+	QGraphicsDialog.C QGraphicsDialog.h \
+	qgridview.C qgridview.h \
+	QIncludeDialog.C QIncludeDialog.h \
+	QIndexDialog.C QIndexDialog.h \
+	QLogDialog.C QLogDialog.h \
+	QLPopupMenu.C QLPopupMenu.h \
+	QLPrintDialog.C QLPrintDialog.h \
+	QMathDialog.C QMathDialog.h \
+	QMathMatrixDialog.C QMathMatrixDialog.h \
+	QMinipageDialog.C QMinipageDialog.h \
+	QParagraphDialog.C QParagraphDialog.h \
+	QPrefsDialog.C QPrefsDialog.h \
+	QRefDialog.C QRefDialog.h \
+	QSearchDialog.C QSearchDialog.h \
+	QSendtoDialog.C QSendtoDialog.h \
+	qsetborder.C qsetborder.h \
+	QShowFileDialog.C QShowFileDialog.h \
+	QSpellcheckerDialog.C QSpellcheckerDialog.h \
+	Qt2Base.C Qt2Base.h \
+	QTabularCreateDialog.C QTabularCreateDialog.h \
+	QTabularDialog.C QTabularDialog.h \
+	QTexinfoDialog.C QTexinfoDialog.h \
+	QThesaurusDialog.C QThesaurusDialog.h \
+	QTocDialog.C QTocDialog.h \
+	qttableview.C qttableview.h \
+	QtView.C QtView.h \
+	QURLDialog.C QURLDialog.h \
+	QVCLogDialog.C QVCLogDialog.h \
+	QWrapDialog.C QWrapDialog.h \
+	Toolbar_pimpl.C Toolbar_pimpl.h
