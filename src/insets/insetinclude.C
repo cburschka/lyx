@@ -72,7 +72,7 @@ public:
 	///
 	bool previewWanted() const;
 	///
-	string const latexString() const;
+	string const latexString(Buffer const &) const;
 	///
 	InsetInclude const & parent() const {
 		return dynamic_cast<InsetInclude const &>(inset());
@@ -600,15 +600,12 @@ bool InsetInclude::PreviewImpl::previewWanted() const
 }
 
 
-string const InsetInclude::PreviewImpl::latexString() const
+string const InsetInclude::PreviewImpl::latexString(Buffer const & buffer) const
 {
-	if (!view() || !view()->buffer())
-		return string();
-
 	ostringstream os;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	parent().latex(*view()->buffer(), os, runparams);
+	parent().latex(buffer, os, runparams);
 
 	return os.str();
 }

@@ -46,7 +46,7 @@ private:
 	///
 	bool previewWanted() const;
 	///
-	string const latexString() const;
+	string const latexString(Buffer const &) const;
 	///
 	InsetFormula const & parent() const
 	{
@@ -313,7 +313,7 @@ bool InsetFormula::PreviewImpl::previewWanted() const
 }
 
 
-string const InsetFormula::PreviewImpl::latexString() const
+string const InsetFormula::PreviewImpl::latexString(Buffer const &) const
 {
 	ostringstream ls;
 	WriteStream wi(ls, false, false);

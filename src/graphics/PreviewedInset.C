@@ -65,7 +65,7 @@ void PreviewedInset::addPreview(PreviewLoader & ploader)
 	if (!Previews::activated() || !previewWanted())
 		return;
 
-	snippet_ = support::trim(latexString());
+	snippet_ = support::trim(latexString(ploader.buffer()));
 	if (snippet_.empty())
 		return;
 

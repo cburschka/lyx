@@ -1,3 +1,8 @@
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewedInset.C (latexString): add a Buffer const & arg.
+	* PreviewedInset.C (addPreview): pass the buffer to latexString.
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewedInset.[Ch] (c-tor) move out of line.

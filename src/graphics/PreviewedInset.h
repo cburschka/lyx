@@ -20,8 +20,10 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
-class InsetOld;
+class Buffer;
 class BufferView;
+class InsetOld;
+
 
 namespace lyx {
 namespace graphics {
@@ -73,7 +75,7 @@ private:
 	/// Does the owning inset want a preview?
 	virtual bool previewWanted() const = 0;
 	/// a wrapper to Inset::latex
-	virtual string const latexString() const = 0;
+	virtual string const latexString(Buffer const &) const = 0;
 
 	///
 	InsetOld & inset_;
