@@ -24,6 +24,7 @@
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qapplication.h>
+#include <qcursor.h>
 
 using std::endl;
 
@@ -86,6 +87,7 @@ QContentPane::QContentPane(QWorkArea * parent)
 {
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
+	setCursor(ibeamCursor);
 
 	// stupid moc strikes again
 	connect(wa_->scrollbar_, SIGNAL(valueChanged(int)),
