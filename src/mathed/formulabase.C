@@ -560,14 +560,14 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
-		bv->lockedInsetStoreUndo(Undo::DELETE);
+		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->backspace();
 		updateLocal(bv, true);
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
-		bv->lockedInsetStoreUndo(Undo::DELETE);
+		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->erase();
 		bv->updateInset(this, true);
 		break;
