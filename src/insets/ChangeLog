@@ -19,6 +19,8 @@
 
 	* insettext.C (localDispatch): merge cases with default branch
 
+	* insettext.C (frame_x,y,w,h): replace member with automatic variables
+
 2003-08-04  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.[Ch] (updateLocal): remove 'what' argument by assuimng it

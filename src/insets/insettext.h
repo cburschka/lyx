@@ -308,8 +308,6 @@ private:
 	UpdatableInset * the_locking_inset;
 	///
 	mutable ParagraphList::iterator old_par;
-	///
-	mutable int last_drawn_width;
 
 	/// some funny 'temporarily saved state'
 	mutable TextCursor sstate;
@@ -317,10 +315,6 @@ private:
 	///
 	// to remember old painted frame dimensions to clear it on the right spot!
 	///
-	mutable int frame_x;
-	mutable int frame_y;
-	mutable int frame_w;
-	mutable int frame_h;
 	mutable bool in_insetAllowed;
 	///
 	// these are used to check for mouse movement in Motion selection code

@@ -173,7 +173,6 @@ void InsetText::init(InsetText const * ins)
 	drawTextYOffset = 0;
 	locked = false;
 	old_par = paragraphs.end();
-	last_drawn_width = -1;
 	sstate.cursor.par(paragraphs.end());
 	in_insetAllowed = false;
 }
@@ -321,9 +320,6 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	top_baseline = baseline;
 	top_y = baseline - dim_.asc;
 
-	if (last_drawn_width != dim_.wid)
-		last_drawn_width = dim_.wid;
-
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
 		inset_x = cix() - x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
@@ -363,16 +359,16 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 void InsetText::drawFrame(Painter & pain, int x) const
 {
-	static int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
-	frame_x = x + ttoD2;
-	frame_y = top_baseline - dim_.asc + ttoD2;
-	frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
-	frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
+	int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
+	int const frame_x = x + ttoD2;
+	int const frame_y = top_baseline - dim_.asc + ttoD2;
+	int const frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
+	int const frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
 	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frame_color);
 }
 
 
-void InsetText::updateLocal(BufferView * bv, bool mark_dirty)
+void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 {
 	if (!bv)
 		return;
@@ -381,15 +377,11 @@ void InsetText::updateLocal(BufferView * bv, bool mark_dirty)
 		collapseParagraphs(bv);
 
 	text_.partialRebreak();
-	bool flag = mark_dirty || text_.selection.set();
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
 	bv->fitCursor();
-
-	if (flag)
-		bv->updateInset();
-
+	bv->updateInset();
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
