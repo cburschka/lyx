@@ -1,67 +1,13 @@
-Index: src/DepTable.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/DepTable.C,v
-retrieving revision 1.41
-diff -u -r1.41 DepTable.C
---- src/DepTable.C	13 Oct 2003 01:01:33 -0000	1.41
-+++ src/DepTable.C	19 Jan 2005 10:35:54 -0000
-@@ -26,7 +26,9 @@
- #include <fstream>
- 
- #ifndef CXX_GLOBAL_CSTD
-+# ifndef _WIN32
- using std::time;
-+# endif
- #endif
- 
- using lyx::support::ltrim;
-Index: src/buffer.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/buffer.C,v
-retrieving revision 1.609
-diff -u -r1.609 buffer.C
---- src/buffer.C	31 Jan 2005 10:42:17 -0000	1.609
-+++ src/buffer.C	31 Jan 2005 11:08:10 -0000
-@@ -77,7 +77,11 @@
- #include <boost/bind.hpp>
- #include <boost/filesystem/operations.hpp>
- 
--#include <utime.h>
-+#ifdef _WIN32
-+# include <windows.h>
-+#else
-+# include <utime.h>
-+#endif
- 
- #include <iomanip>
- #include <stack>
-Index: src/cursor.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/cursor.C,v
-retrieving revision 1.119
-diff -u -r1.119 cursor.C
---- src/cursor.C	18 Jan 2005 14:15:55 -0000	1.119
-+++ src/cursor.C	31 Jan 2005 11:08:09 -0000
-@@ -58,7 +58,9 @@
- using std::vector;
- using std::endl;
- #ifndef CXX_GLOBAL_CSTD
-+# ifndef _WIN32
- using std::isalpha;
-+# endif
- #endif
- using std::min;
- using std::swap;
 Index: src/ispell.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/ispell.C,v
-retrieving revision 1.25
-diff -u -r1.25 ispell.C
---- src/ispell.C	20 Jan 2005 16:17:36 -0000	1.25
-+++ src/ispell.C	23 Jan 2005 12:09:37 -0000
-@@ -24,11 +24,17 @@
- 
+retrieving revision 1.5.2.5
+diff -u -p -r1.5.2.5 ispell.C
+--- src/ispell.C	7 Dec 2004 10:48:23 -0000	1.5.2.5
++++ src/ispell.C	4 Feb 2005 15:51:27 -0000
+@@ -21,12 +21,20 @@
  #include "support/forkedcall.h"
+ #include "support/lstrings.h"
  
 +#ifdef _WIN32
 +# include "support/os_win32.h"
@@ -71,70 +17,16 @@ diff -u -r1.25 ispell.C
  #ifdef HAVE_SYS_SELECT_H
  #include <sys/select.h>
  #endif
--#include <sys/time.h>
-+#ifndef _WIN32
-+# include <sys/time.h>
+ #include <sys/time.h>
+ 
++#ifdef HAVE_UNISTD_H
++# include <unistd.h>
 +#endif
- 
- using boost::shared_ptr;
- 
-@@ -88,6 +94,7 @@
- 	}
- 
- 	// child process
-+#ifndef _WIN32
- 	dup2(pipein[0], STDIN_FILENO);
- 	dup2(pipeout[1], STDOUT_FILENO);
- 	dup2(pipeerr[1], STDERR_FILENO);
-@@ -180,6 +187,7 @@
- 
- 	lyxerr << "LyX: Failed to start ispell!" << endl;
- 	_exit(0);
-+#endif
- }
- 
- 
-@@ -191,6 +199,7 @@
- {
- 	lyxerr[Debug::GUI] << "Created ispell" << endl;
- 
-+#ifndef _WIN32
- 	// static due to the setvbuf. Ugly.
- 	static char o_buf[BUFSIZ];
- 
-@@ -275,6 +284,7 @@
- 	close(pipeerr[1]);
- 	child_->kill();
- 	child_.reset(0);
-+#endif
- }
- 
- 
-@@ -295,18 +305,23 @@
- 		fclose(out);
- 	}
- 
-+#ifndef _WIN32
- 	close(pipein[0]);
- 	close(pipein[1]);
- 	close(pipeout[0]);
- 	close(pipeout[1]);
- 	close(pipeerr[0]);
- 	close(pipeerr[1]);
-+#endif
- 	delete [] str;
- }
- 
- 
- bool ISpell::select(bool & err_read)
- {
-+#ifdef _WIN32
-+	return false;
-+#else
- 	fd_set infds;
- 	struct timeval tv;
- 	int retval = 0;
-@@ -316,11 +331,15 @@
++
+ #ifndef CXX_GLOBAL_CSTD
+ using std::strcpy;
+ using std::strlen;
+@@ -309,11 +317,15 @@ bool ISpell::select(bool & err_read)
  	tv.tv_sec = 2;
  	tv.tv_usec = 0;
  
@@ -150,42 +42,34 @@ diff -u -r1.25 ispell.C
  
  	// error
  	if (retval <= 0)
-@@ -335,6 +354,7 @@
- 	fgets(buf, BUFSIZ, in);
- 	err_read = false;
- 	return false;
-+#endif
- }
- 
- 
 Index: src/lyx_cb.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyx_cb.C,v
-retrieving revision 1.247
-diff -u -r1.247 lyx_cb.C
---- src/lyx_cb.C	31 Jan 2005 10:42:18 -0000	1.247
-+++ src/lyx_cb.C	31 Jan 2005 10:57:53 -0000
-@@ -44,6 +44,10 @@
- #include "support/path.h"
+retrieving revision 1.190.2.3
+diff -u -p -r1.190.2.3 lyx_cb.C
+--- src/lyx_cb.C	10 Jan 2005 19:17:24 -0000	1.190.2.3
++++ src/lyx_cb.C	4 Feb 2005 15:51:28 -0000
+@@ -37,6 +37,10 @@
  #include "support/systemcall.h"
+ #include "support/lstrings.h"
  
 +#ifdef _WIN32
 +# include "support/os_win32.h" // fork()
 +#endif
 +
- #include <boost/shared_ptr.hpp>
- #include <boost/filesystem/operations.hpp>
+ #include "BoostFormat.h"
  
+ #include <fstream>
 Index: src/lyxserver.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyxserver.C,v
-retrieving revision 1.59
-diff -u -r1.59 lyxserver.C
---- src/lyxserver.C	20 Jan 2005 15:07:36 -0000	1.59
-+++ src/lyxserver.C	21 Jan 2005 09:47:31 -0000
-@@ -54,6 +54,10 @@
- #include <sys/stat.h>
- #include <fcntl.h>
+retrieving revision 1.48.2.3
+diff -u -p -r1.48.2.3 lyxserver.C
+--- src/lyxserver.C	20 Jan 2005 10:47:28 -0000	1.48.2.3
++++ src/lyxserver.C	4 Feb 2005 15:51:28 -0000
+@@ -51,6 +51,10 @@
+ #include "support/lyxlib.h"
+ #include "frontends/lyx_gui.h"
  
 +#ifdef _WIN32
 +# include "support/os_win32.h" // F_SETFL, O_NONBLOCK, fcntl
@@ -194,311 +78,50 @@ diff -u -r1.59 lyxserver.C
  #ifdef __EMX__
  #include <cstdlib>
  #include <io.h>
-@@ -182,6 +186,8 @@
- 	// Imported handles can be used both with OS/2 APIs and emx
- 	// library functions.
- 	fd = _imphandle(os2fd);
-+#elif defined(_WIN32)
-+
- #else
- 	if (::access(filename.c_str(), F_OK) == 0) {
- 		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
-@@ -236,10 +242,12 @@
- 	}
- #endif
- 
-+#ifndef _WIN32
- 	if (::close(fd) < 0) {
- 		lyxerr << "LyXComm: Could not close pipe " << filename
- 		       << '\n' << strerror(errno) << endl;
- 	}
-+#endif
- 
- // OS/2 pipes are deleted automatically
- #ifndef __EMX__
-@@ -275,7 +283,13 @@
- 	errno = 0;
- 	int status;
- 	// the single = is intended here.
--	while ((status = ::read(infd, charbuf, charbuf_size - 1))) {
-+	while ((status = 
-+#ifndef _WIN32
-+		::read(infd, charbuf, charbuf_size - 1)
-+#else
-+		-1
-+#endif
-+		)) {
- 
- 		if (status > 0) {
- 			charbuf[status] = '\0'; // turn it into a c string
-@@ -332,6 +346,9 @@
- 
- 	if (pipename.empty()) return;
- 
-+#ifdef _WIN32
-+	return;
-+#else
- 	if (!ready) {
- 		lyxerr << "LyXComm: Pipes are closed. Could not send "
- 		       << msg << endl;
-@@ -342,6 +359,7 @@
- 		closeConnection();
- 		openConnection();
- 	}
-+#endif
- #ifdef __EMX__
- 	APIRET rc;
- 	int errnum;
-Index: src/lyxsocket.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyxsocket.C,v
-retrieving revision 1.6
-diff -u -r1.6 lyxsocket.C
---- src/lyxsocket.C	23 Jul 2004 19:01:48 -0000	1.6
-+++ src/lyxsocket.C	19 Jan 2005 11:18:01 -0000
-@@ -68,7 +68,9 @@
- LyXServerSocket::~LyXServerSocket()
- {
- 	lyx_gui::unregister_socket_callback(fd_);
-+#ifndef _WIN32
- 	::close(fd_);
-+#endif
- 	lyx::support::unlink(address_);
- 	lyxerr[Debug::LYXSERVER] << "lyx: Server socket quitting" << endl;
- }
-@@ -155,7 +157,11 @@
- {
- 	string const linen(line + '\n');
- 	int const size = linen.size();
-+#ifndef _WIN32
- 	int const written = ::write(fd_, linen.c_str(), size);
-+#else
-+	int const written = -1;
-+#endif
- 	if (written < size) { // Allways mean end of connection.
- 		if ((written == -1) && (errno == EPIPE)) {
- 			// The program will also receive a SIGPIPE
-@@ -194,7 +200,9 @@
- 
- LyXDataSocket::~LyXDataSocket()
- {
-+#ifndef _WIN32
- 	::close(fd_);
-+#endif
- 
- 	lyx_gui::unregister_socket_callback(fd_);
- 	lyxerr[Debug::LYXSERVER] << "lyx: Data socket " << fd_ << " quitting."
-@@ -216,7 +224,13 @@
- 	int count;
- 
- 	// read and store characters in buffer
--	while ((count = ::read(fd_, charbuf, charbuf_size - 1)) > 0) {
-+	while ((count = 
-+#ifndef _WIN32
-+		::read(fd_, charbuf, charbuf_size - 1)
-+#else
-+		0
-+#endif
-+		) > 0) {
- 		buffer_.append(charbuf, charbuf + count);
- 	}
- 
-@@ -250,7 +264,11 @@
- {
- 	string const linen(line + '\n');
- 	int const size = linen.size();
-+#ifndef _WIN32
- 	int const written = ::write(fd_, linen.c_str(), size);
-+#else
-+	int const written = -1;
-+#endif
- 	if (written < size) { // Allways mean end of connection.
- 		if ((written == -1) && (errno == EPIPE)) {
- 			// The program will also receive a SIGPIPE
-Index: src/client/client.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/client/client.C,v
-retrieving revision 1.7
-diff -u -r1.7 client.C
---- src/client/client.C	20 Jan 2005 15:38:13 -0000	1.7
-+++ src/client/client.C	21 Jan 2005 09:43:09 -0000
-@@ -25,12 +25,14 @@
- # include <unistd.h>
- #endif
- 
-+#ifndef _WIN32
- // select()
--#include <sys/select.h>
-+# include <sys/select.h>
- 
- // socket(), connect()
--#include <sys/socket.h>
--#include <sys/un.h>
-+# include <sys/socket.h>
-+# include <sys/un.h>
-+#endif
- 
- // fcntl()
- #include <fcntl.h>
-Index: src/frontends/LyXView.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/frontends/LyXView.C,v
-retrieving revision 1.49
-diff -u -r1.49 LyXView.C
---- src/frontends/LyXView.C	20 Jan 2005 15:38:14 -0000	1.49
-+++ src/frontends/LyXView.C	21 Jan 2005 09:43:10 -0000
-@@ -39,7 +39,9 @@
- 
- #include <boost/bind.hpp>
- 
--#include <sys/time.h>
-+#ifndef _WIN32
-+# include <sys/time.h>
-+#endif
- #ifdef HAVE_UNISTD_H
- # include <unistd.h>
- #endif
-Index: src/support/filetools.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/filetools.C,v
-retrieving revision 1.204
-diff -u -r1.204 filetools.C
---- src/support/filetools.C	31 Jan 2005 10:42:23 -0000	1.204
-+++ src/support/filetools.C	31 Jan 2005 11:08:10 -0000
-@@ -1153,6 +1153,11 @@
- 
- cmd_ret const RunCommand(string const & cmd)
- {
-+#ifdef _WIN32
-+	// TODO: Implement this, or merge it into forkedcall.
-+	// Used for lyx2lyx in buffer.C, echo in math_extern and kpse in this file
-+	return make_pair(-1, string());
-+#else
- 	// FIXME: replace all calls to RunCommand with ForkedCall
- 	// (if the output is not needed) or the code in ispell.C
- 	// (if the output is needed).
-@@ -1193,6 +1198,7 @@
- 	sigprocmask(SIG_SETMASK, &oldMask, 0);
- 
- 	return make_pair(pret, ret);
-+#endif
- }
- 
- 
 Index: src/support/forkedcall.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcall.C,v
-retrieving revision 1.21
-diff -u -r1.21 forkedcall.C
---- src/support/forkedcall.C	20 Jan 2005 15:38:14 -0000	1.21
-+++ src/support/forkedcall.C	25 Jan 2005 12:41:14 -0000
-@@ -30,6 +30,10 @@
- #include "support/lyxlib.h"
- #include "support/filetools.h"
- #include "support/os.h"
+retrieving revision 1.11.2.5
+diff -u -p -r1.11.2.5 forkedcall.C
+--- src/support/forkedcall.C	3 Feb 2005 14:56:11 -0000	1.11.2.5
++++ src/support/forkedcall.C	4 Feb 2005 15:51:29 -0000
+@@ -30,6 +30,9 @@
+ #include "lyxlib.h"
+ #include "filetools.h"
+ #include "os.h"
 +#ifdef _WIN32
 +#include "os_win32.h"
-+#include <process.h>
 +#endif
- 
  #include "debug.h"
+ #include "frontends/Timeout.h"
  
-@@ -41,7 +45,9 @@
- #include <csignal>
- #include <cstdlib>
+@@ -38,7 +41,9 @@
+ #include <vector>
+ #include <cerrno>
  #include <sys/types.h>
 -#include <sys/wait.h>
-+#ifndef _WIN32
++#ifdef HAVE_SYS_WAIT_H
 +# include <sys/wait.h>
 +#endif
+ #include <csignal>
+ #include <cstdlib>
  #ifdef HAVE_UNISTD_H
- # include <unistd.h>
- #endif
-@@ -70,7 +76,9 @@
- 		if (secs > 0) {
- 			new Murder(secs, pid);
- 		} else if (pid != 0) {
-+#ifdef SIGKILL
- 			lyx::support::kill(pid, SIGKILL);
-+#endif
- 		}
- 	}
- 
-@@ -78,7 +86,9 @@
- 	void kill()
- 	{
- 		if (pid_ != 0) {
-+#ifdef SIGKILL
- 			lyx::support::kill(pid_, SIGKILL);
-+#endif
- 		}
- 		lyxerr << "Killed " << pid_ << std::endl;
- 		delete this;
-@@ -152,14 +162,16 @@
- 	if (!pid())
- 		return false;
- 
-+#ifndef _WIN32
- 	// Un-UNIX like, but we don't have much use for
- 	// knowing if a zombie exists, so just reap it first.
- 	int waitstatus;
- 	waitpid(pid(), &waitstatus, WNOHANG);
- 
- 	// Racy of course, but it will do.
--	if (::kill(pid(), 0) && errno == ESRCH)
-+	if (lyx::kill(pid(), 0) && errno == ESRCH)
- 		return false;
-+#endif
- 	return true;
- }
- 
-@@ -178,6 +190,7 @@
- 		Murder::killItDead(0, pid());
- 
- 	} else {
-+#ifdef SIGHUP
- 		int ret = lyx::support::kill(pid(), SIGHUP);
- 
- 		// The process is already dead if wait_for_death is false
-@@ -186,6 +199,7 @@
- 		if (wait_for_death) {
- 			Murder::killItDead(tolerance, pid());
- 		}
-+#endif
- 	}
- }
- 
-@@ -195,6 +209,7 @@
- {
- 	// We'll pretend that the child returns 1 on all error conditions.
- 	retval_ = 1;
-+#ifndef _WIN32
- 	int status;
- 	bool wait = true;
- 	while (wait) {
-@@ -223,6 +238,7 @@
- 			wait = false;
- 		}
- 	}
-+#endif
- 	return retval_;
- }
- 
-@@ -299,7 +315,12 @@
- 		std::cout << *ait << std::endl;
- 	argv.push_back(0);
+@@ -312,7 +317,13 @@ int Forkedcall::generateChild()
+ 			lyxerr << '\t'<< *ait << '\n';
+ 	lyxerr << "</command>" << std::endl;
  
 -#ifndef __EMX__
-+#ifdef __EMX
++#if defined (__EMX__)
 +	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
 +				   argv[0], &*argv.begin());
-+#elif defined(_WIN32)
-+	pid_t const cpid = spawnvp(_P_NOWAIT, argv[0], &*argv.begin());
-+#else
++#elif defined (_WIN32)
++ 	pid_t cpid = spawnvp(_P_NOWAIT,
++			     argv[0], &*argv.begin());
++#else // POSIX
  	pid_t const cpid = ::fork();
  	if (cpid == 0) {
  		// Child
-@@ -310,9 +331,6 @@
+@@ -323,9 +334,6 @@ int Forkedcall::generateChild()
  		       << strerror(errno) << endl;
  		_exit(1);
  	}
@@ -508,295 +131,169 @@ diff -u -r1.21 forkedcall.C
  #endif
  
  	if (cpid < 0) {
-Index: src/support/forkedcall.h
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcall.h,v
-retrieving revision 1.19
-diff -u -r1.19 forkedcall.h
---- src/support/forkedcall.h	26 Sep 2004 14:19:47 -0000	1.19
-+++ src/support/forkedcall.h	17 Jan 2005 12:17:09 -0000
-@@ -31,6 +31,10 @@
- 
- #include <sys/types.h>
- 
-+#ifdef _WIN32
-+typedef int pid_t;
-+#endif
-+
- namespace lyx {
- namespace support {
- 
 Index: src/support/forkedcontr.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcontr.C,v
-retrieving revision 1.27
-diff -u -r1.27 forkedcontr.C
---- src/support/forkedcontr.C	20 Jan 2005 15:38:14 -0000	1.27
-+++ src/support/forkedcontr.C	21 Jan 2005 09:51:07 -0000
-@@ -19,14 +19,22 @@
- 
+retrieving revision 1.6.2.4
+diff -u -p -r1.6.2.4 forkedcontr.C
+--- src/support/forkedcontr.C	19 Jan 2005 20:38:23 -0000	1.6.2.4
++++ src/support/forkedcontr.C	4 Feb 2005 15:51:29 -0000
+@@ -19,6 +19,10 @@
+ #include "lyxfunctional.h"
  #include "debug.h"
  
 +#ifdef _WIN32
 +#include "os_win32.h"
-+#include <windows.h>
 +#endif
 +
- #include <boost/bind.hpp>
+ #include "frontends/Timeout.h"
  
- #include <cerrno>
- #include <cstdlib>
-+
+ #include <boost/bind.hpp>
+@@ -28,7 +32,9 @@
  #ifdef HAVE_UNISTD_H
- # include <unistd.h>
+ #include <unistd.h>
  #endif
 -#include <sys/wait.h>
-+#ifndef _WIN32
++#ifdef HAVE_SYS_WAIT_H
 +# include <sys/wait.h>
 +#endif
  
- using boost::bind;
- 
-@@ -176,7 +184,9 @@
- 	ForkedcallsController::Data & store =
- 		fcc.reaped_children[++fcc.current_child];
- 	// Clean up the child process.
-+#ifndef _WIN32
- 	store.pid = wait(&store.status);
-+#endif
- }
- 
- } // namespace anon
-@@ -193,11 +203,12 @@
- ForkedcallsController::ForkedcallsController()
- 	: reaped_children(50), current_child(-1)
- {
-+#ifndef _WIN32
- 	signal(SIGCHLD, child_handler);
--
- 	sigemptyset(&oldMask);
- 	sigemptyset(&newMask);
- 	sigaddset(&newMask, SIGCHLD);
-+#endif
- }
- 
- 
-@@ -206,7 +217,9 @@
- // I want to print or something.
- ForkedcallsController::~ForkedcallsController()
- {
-+#ifndef _WIN32
- 	signal(SIGCHLD, SIG_DFL);
-+#endif
- }
- 
- 
-@@ -215,6 +228,7 @@
- 	forkedCalls.push_back(newcall.clone());
- 
- 	if (forkedCalls.size() > reaped_children.size()) {
-+#ifndef _WIN32
- 		// Block the SIGCHLD signal.
- 		sigprocmask(SIG_BLOCK, &newMask, &oldMask);
- 
-@@ -222,6 +236,7 @@
- 
- 		// Unblock the SIGCHLD signal and restore the old mask.
- 		sigprocmask(SIG_SETMASK, &oldMask, 0);
-+#endif
- 	}
- }
- 
-@@ -255,8 +270,10 @@
- 	if (current_child == -1)
- 		return;
- 
-+#ifndef _WIN32
- 	// Block the SIGCHLD signal.
- 	sigprocmask(SIG_BLOCK, &newMask, &oldMask);
-+#endif
- 
- 	for (int i = 0; i != 1 + current_child; ++i) {
- 		Data & store = reaped_children[i];
-@@ -312,8 +329,10 @@
- 	// Reset the counter
- 	current_child = -1;
- 
-+#ifndef _WIN32
- 	// Unblock the SIGCHLD signal and restore the old mask.
- 	sigprocmask(SIG_SETMASK, &oldMask, 0);
-+#endif
- }
- 
- } // namespace support
-Index: src/support/forkedcontr.h
+ using std::vector;
+ using std::endl;
+Index: src/support/kill.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcontr.h,v
-retrieving revision 1.18
-diff -u -r1.18 forkedcontr.h
---- src/support/forkedcontr.h	7 Nov 2004 13:22:51 -0000	1.18
-+++ src/support/forkedcontr.h	23 Jan 2005 12:25:33 -0000
-@@ -19,7 +19,10 @@
- #include <boost/shared_ptr.hpp>
- 
+RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/kill.C,v
+retrieving revision 1.7
+diff -u -p -r1.7 kill.C
+--- src/support/kill.C	10 Jun 2002 17:31:57 -0000	1.7
++++ src/support/kill.C	4 Feb 2005 15:51:29 -0000
+@@ -5,7 +5,40 @@
+ #include <sys/types.h>
  #include <csignal>
--//#include <sys/types.h> // needed for pid_t
-+#ifdef _WIN32
-+typedef int pid_t;
-+#endif
-+#include <sys/types.h> // needed for pid_t
- #include <list>
- #include <vector>
- 
-@@ -79,8 +82,10 @@
- 	/// The child processes
- 	ListType forkedCalls;
- 
-+#ifndef _WIN32
- 	/// Used to block SIGCHLD signals.
- 	sigset_t newMask, oldMask;
-+#endif
- };
- 
- } // namespace support
-Index: src/support/socktools.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/socktools.C,v
-retrieving revision 1.6
-diff -u -r1.6 socktools.C
---- src/support/socktools.C	20 Jan 2005 15:38:14 -0000	1.6
-+++ src/support/socktools.C	21 Jan 2005 09:43:42 -0000
-@@ -15,8 +15,10 @@
- 
- #include "debug.h"
- 
-+#ifndef _WIN32
- #include <sys/socket.h>
- #include <sys/un.h>
-+#endif
- #include <fcntl.h>
- #ifdef HAVE_UNISTD_H
- # include <unistd.h>
-@@ -48,6 +50,7 @@
- // special file 'name' will be created in the filesystem.
- int listen(string const & name, int queue)
- {
-+#ifndef _WIN32
- 	int fd; // File descriptor for the socket
- 	sockaddr_un addr; // Structure that hold the socket address
- 
-@@ -105,14 +108,17 @@
- 		lyx::support::unlink(name);
- 		return -1;
- 	}
--
- 	return fd;
-+#else
-+	return -1;
-+#endif
- }
- 
- // Returns a file descriptor for a new connection from the socket
- // descriptor 'sd' (or -1 in case of error)
- int accept(int sd)
- {
-+#ifndef _WIN32
- 	int fd;
- 
- 	// Returns the new file descriptor or -1 in case of error
-@@ -132,6 +138,9 @@
- 		return -1;
- 	}
- 	return fd;
-+#else
-+	return -1;
-+#endif
- }
- 
- } // namespace socktools
-Index: src/support/tempname.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/tempname.C,v
-retrieving revision 1.25
-diff -u -r1.25 tempname.C
---- src/support/tempname.C	20 Jan 2005 15:38:14 -0000	1.25
-+++ src/support/tempname.C	24 Jan 2005 07:51:08 -0000
-@@ -30,6 +30,10 @@
- # include <sys/stat.h>
- #endif
  
 +#ifdef _WIN32
-+# include <io.h>
++#include "debug.h"
++#include "os.h"
++
++#include <windows.h>
++#include <errno.h>
++
++using std::endl;
++#endif //_WIN32
++
+ int lyx::kill(int pid, int sig)
+ {
++#ifdef _WIN32
++	if (pid == (int)GetCurrentProcessId())
++		return -(raise(sig));
++	else{
++		HANDLE hProcess;
++		if (!(hProcess =
++		OpenProcess(PROCESS_ALL_ACCESS, TRUE, pid))) {
++			lyxerr << "kill OpenProcess failed!" << endl;
++			return -1;
++		}
++		else {
++			if (!TerminateProcess(hProcess, sig)){
++				lyxerr << "kill process failed!" << endl;
++				CloseHandle(hProcess);
++				return -1;
++			}
++		CloseHandle(hProcess);
++		}
++	}
++	return 0;
++
++#else
+ 	return ::kill(pid, sig);
++#endif	
+ }
+Index: src/support/os_win32.h
+===================================================================
+RCS file: src/support/os_win32.h
+diff -N src/support/os_win32.h
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/support/os_win32.h	4 Feb 2005 15:51:29 -0000
+@@ -0,0 +1,82 @@
++/**
++ * \file os_win32.h
++ * Copyright Ruurd A. Reitsma
++ * This file is part of LyX, the document processor.
++ * Licence details can be found in the file COPYING.
++ *
++ * \author Ruurd A. Reitsma
++ *
++ * Full author contact details are available in file CREDITS.
++ *
++ * Temporary kludges to enable LyX to compile on Windows.
++ * In almost all cases, this code papers over cracks that result
++ * in diminished functionality compared to the *nix code.
++ */
++
++#ifndef _OS_WIN32_H_
++#define _OS_WIN32_H_
++
++//Avoid zillions of windows includes
++#ifndef WIN32_LEAN_AND_MEAN
++#define WIN32_LEAN_AND_MEAN
 +#endif
 +
- using boost::scoped_array;
- 
- using std::string;
-@@ -42,6 +46,9 @@
- {
- #if defined(HAVE_MKSTEMP)
- 	return ::mkstemp(templ);
-+#elif defined(_WIN32)
-+	::_mktemp(templ);
-+	return (int) ::fopen(templ, "w");
- #elif defined(HAVE_MKTEMP)
- 	// This probably just barely works...
- 	::mktemp(templ);
-@@ -58,7 +65,9 @@
- {
- 	string const tmpdir(dir.empty() ? package().temp_dir() : dir);
- 	string tmpfl(AddName(tmpdir, mask));
-+#ifndef _WIN32
- 	tmpfl += convert<string>(getpid());
++#ifdef __cplusplus
++extern "C" {
 +#endif
- 	tmpfl += "XXXXXX";
- 
- 	// The supposedly safe mkstemp version
-@@ -69,7 +78,11 @@
- 	int const tmpf = make_tempfile(tmpl.get());
- 	if (tmpf != -1) {
- 		string const t(tmpl.get());
-+#ifdef _WIN32
-+		::fclose((FILE *) tmpf);
-+#else
- 		::close(tmpf);
++
++//fcntl.h
++#define FD_CLOEXEC	1	/* posix */
++#define	F_DUPFD		0	/* Duplicate fildes */
++#define	F_GETFD		1	/* Get fildes flags (close on exec) */
++#define	F_SETFD		2	/* Set fildes flags (close on exec) */
++#define	F_GETFL		3	/* Get file flags */
++#define	F_SETFL		4	/* Set file flags */
++#define O_NONBLOCK      0x4000
++inline int fcntl (int, int, ...) {return -1;}
++
++//signal.h
++#define SIGHUP 1
++#define SIGKILL 9
++
++//unistd.h
++inline int fork () {return -1;}
++#define pipe(a) _pipe(a,0,0)
++
++
++//sys/wait.h
++#define waitpid(a,b,c) cwait(b,a,c)
++#define WNOHANG 1
++#define WUNTRACED 2
++#define WIFEXITED(a) 0
++#define WEXITSTATUS(a) 0
++#define WIFSIGNALED(a) 0
++#define WTERMSIG(a) 0
++#define WIFSTOPPED(a) 0
++#define WSTOPSIG(a) 0
++
++//sys/types.h
++#define fd_set int
++
++//sys/select.h
++#define FD_ZERO(a)
++#define FD_SET(a,b)
++#define FD_ISSET(fd, set) 0
++
++#ifndef __MINGW32__ //already defined in mingw headers
++
++#define	_S_IFBLK	0x3000
++#define	S_IFIFO		_S_IFIFO
++#define	S_IFBLK		_S_IFBLK
++#define	S_ISFIFO(m)	(((m) & S_IFMT) == S_IFIFO)
++#define	S_ISBLK(m)	(((m) & S_IFMT) == S_IFBLK)
++#define popen(a,b) _popen(a,b)
++#define pclose(a) _pclose(a)
++
++#endif //!__MINGW32
++
++#ifdef __cplusplus
++}
 +#endif
- 		lyxerr[Debug::FILES] << "Temporary file `" << t
- 				     << "' created." << endl;
- 		return t;
-Index: src/support/userinfo.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/userinfo.C,v
-retrieving revision 1.9
-diff -u -r1.9 userinfo.C
---- src/support/userinfo.C	20 Jan 2005 15:38:14 -0000	1.9
-+++ src/support/userinfo.C	21 Jan 2005 09:43:42 -0000
-@@ -15,7 +15,9 @@
- 
- #include <boost/assert.hpp>
- 
--#include <pwd.h>
-+#ifndef _WIN32
-+# include <pwd.h>
-+#endif
- #ifdef HAVE_UNISTD_H
- # include <unistd.h>
- #endif
-@@ -28,6 +30,7 @@
- 
- string const user_name()
- {
-+#ifndef _WIN32
- 	struct passwd * pw(getpwuid(geteuid()));
- 	BOOST_ASSERT(pw);
- 
-@@ -35,6 +38,9 @@
- 	if (name.empty())
- 		name = pw->pw_name;
- 	return name;
-+#else
-+	return "dummy";
-+#endif
- }
- 
- 
++
++#endif //_OS_WIN32_H_
