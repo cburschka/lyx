@@ -59,6 +59,9 @@ What's new
 
 - the Home/End keys no longer mark the document as "(changed)"
 
+- the window title no longer wrongly marks document paths as coming from ~/
+  [bug 993]
+
 - fix reading of subcaptions (in graphics inset) that contain explicit
   double quote characters [bug #656]
 
