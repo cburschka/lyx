@@ -338,8 +338,6 @@ void Combox::hide(int who)
 	}
         XUngrabPointer(fl_get_display(), 0);
 	XFlush(fl_get_display());
-	if (!who && browser && label && callback)
-	    callback(sel, cb_arg, this);
         if (form) {
 		fl_hide_form(form);
 		XSetInputFocus(fl_get_display(), save_window,
@@ -352,6 +350,8 @@ void Combox::hide(int who)
 			fl_redraw_object(button);
 		}
 	} 
+	if (!who && browser && label && callback)
+	    callback(sel, cb_arg, this);
         if (_post) _post();
 }
 
