@@ -15,7 +15,7 @@
 
 #include "ControlTabularCreate.h"
 #include "GTableCreate.h"
-#include "support/filetools.h"
+#include "ghelpers.h"
 #include "support/lstrings.h"
 
 using std::string;
@@ -27,8 +27,7 @@ GTableCreate::GTableCreate(Dialog & parent)
 
 void GTableCreate::doBuild()
 {
-	string const gladeName =
-		lyx::support::LibFileSearch("glade", "tableCreate", "glade");
+	string const gladeName = findGladeFile("tableCreate");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	Gtk::Button * ok;
 	Gtk::Button * apply;

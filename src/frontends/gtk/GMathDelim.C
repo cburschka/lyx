@@ -15,8 +15,10 @@
 
 #include "ControlMath.h"
 #include "GMathDelim.h"
-#include "support/filetools.h"
+#include "ghelpers.h"
+
 #include "support/lstrings.h"
+
 #include "delim.xbm"
 #include "delim0.xpm"
 
@@ -88,8 +90,7 @@ GMathDelim::GMathDelim(Dialog & parent) :
 
 void GMathDelim::doBuild()
 {
-	string const gladeName =
-		lyx::support::LibFileSearch("glade", "mathDelim", "glade");
+	string const gladeName = findGladeFile("mathDelim");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	Gtk::Button * ok;
 	Gtk::Button * apply;

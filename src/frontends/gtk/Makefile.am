@@ -15,6 +15,8 @@ libgtk_la_LIBADD = xforms.lo @GTK_FRONTEND_LIBS@ @XFORMS_LIBS@
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libgtk_la_SOURCES = \
+	ghelpers.C \
+	ghelpers.h \
 	lyx_gui.C \
 	GtkmmX.h \
 	xftFontLoader.C \

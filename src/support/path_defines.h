@@ -20,6 +20,11 @@ namespace support {
 
 std::string const & lyx_localedir();
 
+/* The absolute path to the top of the lyx build tree.
+ * (Make-time value.)
+ */
+std::string const & top_srcdir();
+
 /// The absolute path to the lyx support files we're actually going to use.
 std::string const & system_lyxdir();
 

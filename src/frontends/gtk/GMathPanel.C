@@ -15,7 +15,8 @@
 
 #include "ControlMath.h"
 #include "GMathPanel.h"
-#include "support/filetools.h"
+#include "ghelpers.h"
+
 #include "support/lstrings.h"
 
 #include "deco.xpm"
@@ -98,8 +99,7 @@ GMathPanel::GMathPanel(Dialog & parent)
 
 void GMathPanel::doBuild()
 {
-	string const gladeName =
-		lyx::support::LibFileSearch("glade", "mathPanel", "glade");
+	string const gladeName = findGladeFile("mathPanel");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	Gtk::Button * close;
 	Gtk::VBox * vbox;

@@ -14,7 +14,8 @@
 
 #include "GPrint.h"
 #include "ControlPrint.h"
-#include "support/filetools.h"
+#include "ghelpers.h"
+
 #include "PrinterParams.h"
 #include "support/lstrings.h"
 
@@ -122,7 +123,7 @@ void GPrint::onFromToEdit()
 
 void GPrint::doBuild()
 {
-	string const gladeName = LibFileSearch("glade", "print", "glade");
+	string const gladeName = findGladeFile("print");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	xml_->get_widget("Printer", printer_);
 	xml_->get_widget("File", file_);

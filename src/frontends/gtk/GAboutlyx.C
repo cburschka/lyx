@@ -16,7 +16,7 @@
 
 #include "ControlAboutlyx.h"
 #include "GAboutlyx.h"
-#include "support/filetools.h"
+#include "ghelpers.h"
 #include "version.h"
 
 using std::ostringstream;
@@ -145,8 +145,7 @@ GAboutlyx::GAboutlyx(Dialog & parent)
 
 void GAboutlyx::doBuild()
 {
-	string const gladeName =
-		lyx::support::LibFileSearch("glade", "aboutlyx", "glade");
+	string const gladeName = findGladeFile("aboutlyx");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	Gtk::Label * version;
 	Gtk::Label * credits;

@@ -1,3 +1,20 @@
+2004-04-27  Angus Leeming  <leeming@lyx.org>
+
+	* ghelpers.[Ch]: new files.
+	(findGladeFile): search the top_srcdir() as welll as LibFileSearch
+	when looking for glade files.
+
+	* Makefile.am: add new files.
+
+	* GAboutlyx.C (doBuild):
+	* GMathDelim.C (doBuild):
+	* GMathPanel.C (doBuild):
+	* GPrint.C (doBuild):
+	* GTableCreate.C (doBuild):
+	* GText.C (doBuild):
+	* GUrl.C (doBuild): use findGladeFile in preference to LibFileSearch.
+	Prevents crash when using a not-installed lyx executable.
+
 2004-04-20  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (SUBDIRS): add gimages.

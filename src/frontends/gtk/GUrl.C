@@ -15,7 +15,7 @@
 
 #include "ControlCommand.h"
 #include "GUrl.h"
-#include "support/filetools.h"
+#include "ghelpers.h"
 #include "support/lstrings.h"
 
 using std::string;
@@ -28,8 +28,7 @@ GUrl::GUrl(Dialog & parent)
 
 void GUrl::doBuild()
 {
-	string const gladeName =
-		lyx::support::LibFileSearch("glade", "url", "glade");
+	string const gladeName = findGladeFile("url");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	Gtk::Button * restore;
 	Gtk::Button * ok;

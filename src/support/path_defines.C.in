@@ -50,21 +50,21 @@ string const & lyx_dir()
 	return ld;
 }
 
-
-/* The absolute path to the top of the lyx build tree.
- * (Make-time value.)
- */
-string const & lyx_top_srcdir()
-{
-	static string const lts = "%TOP_SRCDIR%";
-	return lts;
-}
-
 } // namespace anon
 
 
 namespace lyx {
 namespace support {
+
+
+/* The absolute path to the top of the lyx build tree.
+ * (Make-time value.)
+ */
+string const & top_srcdir()
+{
+	static string const lts = "%TOP_SRCDIR%";
+	return lts;
+}
 
 
 /* The absolute path to the system-level lyx locale directory.
@@ -149,7 +149,7 @@ bool setLyxPaths()
 
 	string const buildlyxdir = MakeAbsPath("../lib", binpath);
 	if (!FileSearch(buildlyxdir, "lyxrc.defaults").empty()) {
-		searchpath += AddPath(lyx_top_srcdir(), "lib") + ';';
+		searchpath += AddPath(top_srcdir(), "lib") + ';';
 		build_lyxdir(buildlyxdir);
 		lyxerr[Debug::INIT] << "Checking whether LyX is run in "
 			"place... yes" << endl;
@@ -233,7 +233,7 @@ bool setLyxPaths()
 	} while (followlink);
 
 	// <absolute top srcdir>/lib
-	searchpath += AddPath(lyx_top_srcdir(), "lib") + ';';
+	searchpath += AddPath(top_srcdir(), "lib") + ';';
 	// Hardcoded dir
 	searchpath += lyx_dir();
 

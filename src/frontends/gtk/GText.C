@@ -13,9 +13,9 @@
 #include <libglademm.h>
 
 #include "support/lstrings.h"
-#include "support/filetools.h"
 #include "ControlCommand.h"
 #include "GText.h"
+#include "ghelpers.h"
 #include "IdSc.h"
 
 using std::string;
@@ -42,8 +42,7 @@ void GText::update()
 
 void GText::doBuild()
 {
-	string const gladeName =
-		lyx::support::LibFileSearch("glade", "text", "glade");
+	string const gladeName = findGladeFile("text");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 	Gtk::Label * label;
 	Gtk::Button * restore;
