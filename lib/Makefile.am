@@ -15,7 +15,7 @@ EXAMPLES = examples/*.lyx examples/*.fen
 HELP = help/*.hlp
 IMAGES = images/*.xpm
 KBD = kbd/*.kmap kbd/*.cdef
-LAYOUT = layouts/*.layout layouts/*.inc 
+LAYOUT = layouts/*.layout layouts/*.inc
 LYXSCRIPTS = configure configure.cmd scripts/*
 TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls tex/*.sty
@@ -28,11 +28,11 @@ LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(HELP) $(IMAGES) \
 	$(KBD) $(LAYOUT) $(TEMPL) $(UI) $(TEXSUPPORT) $(LYXSCRIPTS)
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
-               textclass.lst packages.lst external_templates \
-               encodings languages symbols
+	       textclass.lst packages.lst external_templates \
+	       encodings languages symbols
 
 LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
-             templates tex ui xfonts
+	     templates tex ui xfonts
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 	external_templates $(LYXLIBDIRS) \
@@ -53,8 +53,8 @@ libinstalldirs:
 install-xfonts:
 	files=`sed -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; \
 	for i in $${files} ; do \
-	  ln -s `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
-	done 
+	  ln -sf `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
+	done
 	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir
 	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale
 
@@ -64,7 +64,7 @@ install-data-local: libinstalldirs install-xfonts
 	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
-install-exec-local: libinstalldirs 
+install-exec-local: libinstalldirs
 	files=`cd ${srcdir} ; echo $(LYXSCRIPTS)` ; \
 	for i in $${files} ; do \
 	   $(INSTALL_SCRIPT) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \

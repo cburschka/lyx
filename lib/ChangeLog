@@ -1,10 +1,14 @@
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (install-xfonts): force link
+
 2002-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ui/default.ui: Change "What's this?" to "Tooltips".
 
 2002-03-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* create_fonts_dir: 
+	* create_fonts_dir:
 	* fonts-xlfd: removed
 
 	* configure.m4: add a replacement for the create_fonts_dir script.
@@ -14,7 +18,7 @@
 	removes it if it is not.
 
 	* Makefile.am (install-xfonts): new target to install the X font
-	directory 
+	directory
 
 	* layouts/svjour.inc: remove ProvidesAmsMath
 
@@ -34,16 +38,16 @@
 
 	* images/depth-increment.xpm:
 	* images/depth-decrement.xpm: new icons
-	
+
 	* images/footnote-insert.xpm:
 	* images/marginalnote.xpm: small facelift
-	
+
 	* images/depth-next.xpm:
 	* images/marginpar-insert.xpm: removed
-	
-	* bind/sv_menus.bind: 
-	* bind/sciword.bind: 
-	* ui/old-default.ui: 
+
+	* bind/sv_menus.bind:
+	* bind/sciword.bind:
+	* ui/old-default.ui:
 	* ui/default.ui: replace depth-next with depth-increment
 
 2002-03-14  Kayvan A. Sylvan  <kayvan@sylvan.com>
@@ -53,7 +57,7 @@
 
 2002-03-14  Allan Rae  <rae@lyx.org>
 
-	* bind/sv_menus.bind: 
+	* bind/sv_menus.bind:
 	* bind/xemacs.bind: figure inset replaced by graphics inset
 
 2002-03-12  Kayvan A. Sylvan  <kayvan@sylvan.com>
@@ -93,7 +97,7 @@
 
 	* layouts/obsolete.inc: obsolete LaTeX
 	* layouts/g-brief-en.layout: add DefaultStyle
-	
+
 2002-03-06  Herbert Voss  <voss@perce.de>
 
 	* layouts/g-brief-de.layout: add DefaultStyle
@@ -110,14 +114,14 @@
 2002-03-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* CREDITS: document that Martin Vermeer is also a very good bug
-	hunter 
+	hunter
 
 2002-03-05  Jose Abilio Oliveira Matos  <jamatos@novalis.fc.up.pt>
 
 	* layouts/db_stdclass.inc:
-	* layouts/linuxdoc.layout: 
+	* layouts/linuxdoc.layout:
 	* layouts/manpage.layout: set DefaultStyle
-	
+
 
 2002-03-04  Herbert Voss  <voss@perce.de>
 
@@ -148,7 +152,7 @@
 
 	* ui/default.ui: fix shortcut for Insert>Math>Inline formula.
 
-	* chkconfig.ltx: do not check for graphics anymore, only graphicx. 
+	* chkconfig.ltx: do not check for graphics anymore, only graphicx.
 
 	* doc/LaTeXConfig.lyx.in: remove info about graphics package, now
 	that figinset is dead.
@@ -188,7 +192,7 @@
 2002-01-29  Herbert Voss  <voss@lyx.org>
 
 	* ui/default.ui: delete old figure entries
-	
+
 	* help/TexInfo.hlp:
 	* help/Graphics.hlp: update
 
@@ -226,7 +230,7 @@
 
 	* layouts/kluwer.layout: remove caption layout
 
-2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>	
+2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* examples/MathLabeling.lyx:
 	* examples/nl_MathLabeling.lyx: removed, since they are useless.
@@ -305,7 +309,7 @@
 	* tex/hollywood.cls:
 	* layouts/hollywood.layout:
 	* examples/script_form.lyx: updated hollywood class and support
-	files. 
+	files.
 
 2001-11-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -318,9 +322,9 @@
 
 2001-11-23  Panayotis "PAP" Papasotiriou  <papasot@physics.upatras.gr>
 
-	* templates/kluwer.lyx: 
+	* templates/kluwer.lyx:
 	* layouts/kluwer.layout: new textclass for journals edited by
-	Kluwer.  
+	Kluwer.
 
 	* doc/LaTeXConfig.lyx.in: update
 
@@ -329,14 +333,14 @@
 	* examples/chess-article.lyx: Fixed comments. Removed hacks
 	caused by my lack of understanding of TeX macros and LyX layouts.
 	This version is	immensely cleaner.
-	
+
 	* examples/chessgame.lyx: Minimized ERT while still showing off
 	the external chess material insets.
-	
+
 	* tex/lyxskak.sty: Added LyX supporting macros. Added better embedded
 	comment handling into skak framework. Fixed some bugs in skak.sty!
-	
-	* layouts/chess.layout: Fixed up layout. Removed kludges in previous 
+
+	* layouts/chess.layout: Fixed up layout. Removed kludges in previous
 	version. Added Subvariation, Subsubvariation, etc.
 
 2001-11-13  André Pönitz  <poenitz@gmx.net>
@@ -351,7 +355,7 @@
 
 2001-11-05  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
-	* layouts/chess.layout: 
+	* layouts/chess.layout:
 	* examples/chess-article.lyx: a new class and example for writing
 	articles about chess.
 
@@ -363,8 +367,8 @@
 
 2001-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* examples/iecc05.fen: 
-	* examples/iecc07.fen: 
+	* examples/iecc05.fen:
+	* examples/iecc07.fen:
 	* examples/iecc12.fen:
 	* lib/examples/chessgame.lyx: an example for the new chess support.
 
@@ -382,15 +386,15 @@
 2001-10-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: remove BUGS.lyx mention
- 
+
 2001-10-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/default.ui: remove Known Bugs entry
- 
+
 2001-10-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* scripts/fen2latex.py: Simplified greatly. Now uses skak.
-	
+
 	* scripts/fen2ascii.py: New file added. Makes a nice ascii
 	representation of the chess position.
 
@@ -406,7 +410,7 @@
 
 	* layouts/db_lyxmacros.inc:
 	* layouts/db_stdtitle.inc: moved docbook supported version to v4.1.
-	
+
 2001-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* examples/it_splash.lyx: update from Claudio Coco
@@ -421,7 +425,7 @@
 	* reLyX/MakePreamble.pm (translate_preamble): Cleaned the code for babel.
 	Now the last language in the document option is the document language.
 	Code clean, remove unused variables.
-	
+
 	* reLyX/BasicLyx.pm: Added support for the lyx menu separator.
 
 2001-10-17  José Matos  <jamatos@fep.up.pt>
@@ -460,14 +464,14 @@
 
 2001-10-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
-	* kbd/iso8859-4.cdef: 
+	* kbd/iso8859-4.cdef:
 	* kbd/iso8859-9.cdef: new files
 
 2001-10-05  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* kbd/iso8859-3.cdef: new file
 
-	* kbd/iso8859-1.cdef: 
+	* kbd/iso8859-1.cdef:
 	* kbd/iso8859-15.cdef: update
 
 2001-10-03  José Matos  <jamatos@fep.up.pt>
@@ -488,7 +492,7 @@
 	* layouts/hollywood.layout:
 	* examples/script_form.lyx:
 	* templates/hollywood.lyx: updated hollywood class and support
-	files. 
+	files.
 
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -527,9 +531,9 @@
 
 2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* layouts/dinbrief.layout: 
-	* layouts/egs.layout: 
-	* layouts/iletter.layout: 
+	* layouts/dinbrief.layout:
+	* layouts/egs.layout:
+	* layouts/iletter.layout:
 	* layouts/stdletter.inc: remove bogus use of the now defunct Latex
 	tag
 
@@ -563,9 +567,9 @@
 
 	* configure:
 	* configure.m4: add converters for XPM to allow inline display
- 
+
 	* Makefile.am: add rule for configure
- 
+
 2001-08-31  José Matos  <jamatos@fep.up.pt>
 	* reLyX/reLyX.in: added debug statement.
 	Moved the insertion in @maybe_dir to push.
@@ -581,7 +585,7 @@
 2001-08-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/default.ui: sanitise math/tabular entries
- 
+
 2001-07-25  André Pönitz <poenitz@gmx.net>
 
 	* bind/math.bind:
@@ -604,7 +608,7 @@
 
 	* bind/cua.bind:
 	* ui/default.ui: entries for thesaurus
- 
+
 2001-07-25  André Pönitz <poenitz@gmx.net>
 
 	* bind/math.bind:  new LFUN 'math-space'
@@ -617,7 +621,7 @@
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (dist-hook): only try to get lyxdoc if not already
-	present. 
+	present.
 
 2001-07-23  juergen.sp@t-online.de  <Jürgen Spitzmüller>
 
@@ -625,18 +629,18 @@
 
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* ui/default.ui: 
-	* bind/cua.bind: 
-	* bind/emacs.bind: 
+	* ui/default.ui:
+	* bind/cua.bind:
+	* bind/emacs.bind:
 	* bind/xemacs.bind: fix binding for raw double quote
 
 2001-07-22  José Matos  <jamatos@fep.up.pt>
 
 	* reLyX/MakePreamble.pm (translate_preamble): add lots of options
-	to convert from latex to lyx preamble. That means support for language, 
+	to convert from latex to lyx preamble. That means support for language,
 	geometry, several \usepackages. Almost all the options that are present
 	in Layout->Document.
-	
+
 2001-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ui/default.ui: change 'hyphenation break' to 'ligature break'.
@@ -654,10 +658,10 @@
 
 2001-07-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* bind/xemacs.bind: 
-	* bind/sciword.bind: 
-	* bind/emacs.bind: 
-	* bind/cua.bind: 
+	* bind/xemacs.bind:
+	* bind/sciword.bind:
+	* bind/emacs.bind:
+	* bind/cua.bind:
 	* ui/default.ui: use inset-toggle instead of open-stuff
 
 2001-07-12  Kayvan A. Sylvan  <kayvan@sylvan.com>
@@ -709,26 +713,26 @@
 
 2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* layouts/extletter.layout: 
-	* layouts/extreport.layout: 
-	* layouts/extbook.layout: 
-	* layouts/extarticle.layout: new files from Herbert Voss. 
+	* layouts/extletter.layout:
+	* layouts/extreport.layout:
+	* layouts/extbook.layout:
+	* layouts/extarticle.layout: new files from Herbert Voss.
 
 	* bind/hu_menus.bind: removed.
 
-	* bind/pt_menus.bind: 
-	* bind/fi_menus.bind: 
-	* bind/de_menus.bind: 
+	* bind/pt_menus.bind:
+	* bind/fi_menus.bind:
+	* bind/de_menus.bind:
 	* bind/menus.bind: fix M-s bindings to use LyX names for fonts and
 	not GUI names.
 
 2001-06-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* CREDITS: add Michael Schmitt
- 
+
 2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* examples/nl_MathLabeling.lyx: 
+	* examples/nl_MathLabeling.lyx:
 	* examples/nl_multicol.lyx: new translations from Tino meinen.
 
 2001-06-26  The LyX Project  <lyx@violet.home.sad.it>
@@ -776,9 +780,9 @@
 
 2001-06-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* doc/LaTeXConfig.lyx.in: 
+	* doc/LaTeXConfig.lyx.in:
 	* layouts/encts.layout: new textclass, from Reuben Thomas
-	
+
 	* CREDITS: add Zvezdan Petkovic and Reuben Thomas
 
 2001-05-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -806,7 +810,7 @@
 	* encodings: add iso8859-15 support.
 
 	* kbd/iso8859-1.cdef: cleanup
-	
+
 2001-05-22  Peter Suetterlin  <P.Suetterlin@astro.uu.nl>
 
 	* templates/aa.lyx: rename from aapaper.lyx
@@ -882,7 +886,7 @@
 2001-03-21  José Abílio Matos  <jamatos@fep.up.pt>
 
 	* layouts/linuxdoc.layout: add support for CDATA section in code.
-	
+
 2001-03-19  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* ui/default.ui: cleanup the entries for the NEW_INSETS changes.
@@ -950,19 +954,19 @@
 
 2001-02-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* bind/emacs.bind: 
-	* bind/xemacs.bind: add bookmark commands. 
-	
+	* bind/emacs.bind:
+	* bind/xemacs.bind: add bookmark commands.
+
 2001-02-07  Allan Rae  <rae@lyx.org>
 
-	* bind/emacs.bind: 
+	* bind/emacs.bind:
 	* bind/xemacs.bind: Someone forgot to do the other bind files when they
 	changed the reference-back into a bookmark-goto. naughty naughty.
 
 2001-02-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* kbd/thai-kedmanee.kmap: new Thai keymap, contributed by Chanop
-	Silpa-Anan. 
+	Silpa-Anan.
 
 2001-02-03  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -971,21 +975,21 @@
 2001-02-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: fix permissions on configure and configure.cmd
-	(from Albert Chin) 
+	(from Albert Chin)
 
 	* CREDITS: add Albert Chin
 
 2001-02-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* bind/cua.bind: change the bookmark bindings to C-[123] and
-	C-M-[123]. 
+	C-M-[123].
 
 2001-01-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* examples/fr_MathLabeling.lyx: 
-	* examples/fr_Minipage.lyx: 
+	* examples/fr_MathLabeling.lyx:
+	* examples/fr_Minipage.lyx:
 	* examples/fr_TableExamples.lyx: new translations from Adrien
-	Rebollo. 
+	Rebollo.
 
 2001-01-29  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -1006,7 +1010,7 @@
 	* layouts/docbook-chapter.layout
 	* layouts/docbook-section.layout: new files, useful for
 	document inclusion.
-	
+
 	* layouts/docbook.layout
 	* layouts/docbook-book.layout: updated to use the modular support.
 
@@ -1041,8 +1045,8 @@
 
 	* examples/fr_ItemizeBullets.lyx: new translation.
 
-	* examples/fr_splash.lyx: 
-	* examples/fr_exemple_lyxifie.lyx: 
+	* examples/fr_splash.lyx:
+	* examples/fr_exemple_lyxifie.lyx:
 	* examples/fr_exemple_brut.lyx: updated.
 
 	* bind/cua.bind: change C-k from font-noun to line-delete-forward.
@@ -1053,14 +1057,14 @@
 
 2001-01-24  John Levon  <moz@compsoc.man.ac.uk>
 
- 	* Makefile.am: make configure and configure.cmd installed
- 	  by hand, to avoid name changes when --with-lyx-suffix
- 	  is used.
- 
- 	* configure:
- 	* configure.m4: support --with-lyx-suffix for the lyxrc.defaults
+	* Makefile.am: make configure and configure.cmd installed
+	  by hand, to avoid name changes when --with-lyx-suffix
+	  is used.
+
+	* configure:
+	* configure.m4: support --with-lyx-suffix for the lyxrc.defaults
 	  reLyX and noweb2lyx scripts
- 
+
 	* reLyX/configure.in: support --with-lyx-suffix
 
 2001-01-23  Dekel Tsur  <dekelts@tau.ac.il>
@@ -1074,4 +1078,4 @@
 2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* languages: Add extra_options field. It is used to fix the ~n
-        problem with Spanish.
+	problem with Spanish.
