@@ -23,8 +23,10 @@
 #include "Lsstream.h"
 
 #include <cstdlib>
+#include <iomanip>
 
 using std::abs;
+using std::setprecision;
 
 LyXLength::LyXLength()
 	: val_(0), unit_(LyXLength::UNIT_NONE)
@@ -59,33 +61,31 @@ string const LyXLength::asString() const
 
 string const LyXLength::asLatexString() const
 {
-	char buffer[80];
+	ostringstream buffer;
 	switch (unit_) {
 	case PTW:
-		snprintf(buffer, 78, "%.2f\\textwidth", val_/100.0);
+		buffer << setprecision(2) << val_/100.0 << "\\textwidth";
 		break;
 	case PCW:
-		snprintf(buffer, 78, "%.2f\\columnwidth", val_/100.0);
+		buffer << setprecision(2) << val_/100.0 << "\\columnwidth";
 		break;
 	case PPW:
-		snprintf(buffer, 78, "%.2f\\paperwidth", val_/100.0);
+		buffer << setprecision(2) << val_/100.0 << "\\paperwidth";
 		break;
 	case PLW:
-		snprintf(buffer, 78, "%.2f\\linewidth", val_/100.0);
+		buffer << setprecision(2) << val_/100.0 << "\\linewidth";
 		break;
 	case PPH:
-		snprintf(buffer, 78, "%.2f\\paperheight", val_/100.0);
+		buffer << setprecision(2) << val_/100.0 << "\\paperheight";
 		break;
 	case PTH:
-		snprintf(buffer, 78, "%.2f\\textheight", val_/100.0);
+		buffer << setprecision(2) << val_/100.0 << "\\textheight";
 		break;
 	default:
-		snprintf(buffer, 78, "%f%s", val_, unit_name[unit_]);
+		buffer << setprecision(2) << val_ << unit_name[unit_];
 	  break;
 	}
-	// paranoia
-	buffer[79] = 0;
-	return buffer;
+	return STRCONV(buffer.str());
 }
 
 
