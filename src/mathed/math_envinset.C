@@ -7,6 +7,7 @@
 #include "math_envinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "support/LOstream.h"
 
 
 MathEnvInset::MathEnvInset(string const & name)

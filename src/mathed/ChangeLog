@@ -1,3 +1,9 @@
+2002-07-08  Angus Leeming  <leeming@lyx.org>
+
+	* math_scriptinset.h: remove class:: from method declaration.
+
+	* math_envinset.C: #include "LOstream.h"
+
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* formula.[Ch] (generatePreview): instantiate new virtual method.
