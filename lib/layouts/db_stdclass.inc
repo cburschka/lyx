@@ -43,3 +43,5 @@ Input db_stdtitle.inc
 Input db_stdstruct.inc
 Input db_lyxmacros.inc
 Input db_stdlayouts.inc
+Input stdcounters.inc
+Input stdfloats.inc

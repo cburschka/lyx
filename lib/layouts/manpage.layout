@@ -11,6 +11,8 @@ MaxCounter		Counter_Section
 OutputType		linuxdoc
 DefaultStyle		Standard
 
+Input stdcounters.inc
+
 # Standard style definition
 Style Standard
   Margin  		Static
