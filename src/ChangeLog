@@ -1,3 +1,8 @@
+2002-03-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (breakParagraph): use default layout not layout of
+	prev paragraph.
+
 2002-03-06  Juergen Vigna  <jug@sad.it>
 
 	* buffer.C (parseSingleLyXformat2Token): changed "%" to "p%" as
