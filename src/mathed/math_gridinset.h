@@ -179,7 +179,7 @@ public:
 
 protected:
 	/// returns proper 'end of line' code for LaTeX
-	string eolString(row_type row) const;
+	string eolString(row_type row, bool fragile = false) const;
 	/// returns proper 'end of column' code for LaTeX
 	string eocString(col_type col) const;
 	/// extract number of columns from alignment string

@@ -108,8 +108,10 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 		"sh " + script_file + " " +
 		OnlyFilename(from_file) + " " + to_format;
 
+	// We do not use ChangeExtension here because this is a
+	// basename, which may nevertheless contain a dot
 	string const to_file =
-		ChangeExtension(to_file_base, formats.extension(to_format));
+		to_file_base + '.' + formats.extension(to_format);
 
 	// Launch the conversion process.
 	ConvProcessPtr shared_ptr;

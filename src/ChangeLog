@@ -1,3 +1,8 @@
+2002-07-01  André Pönitz <poenitz@gmx.net>
+
+	* lyxfunc.C (getStatus):  fix menu feedback for alignat, xalignat
+	and xxalignat environments
+
 2002-07-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* paragraph.C (startTeXParParams):

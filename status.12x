@@ -44,6 +44,8 @@ What's new
 
 - re-read correctly graphics insets when file name contains a comma
 
+- fix latex output when the name of a graphics file contains several "."
+
 - fix rotation angle of images to be the same as in latex output
 
 - fix the graphics inset file browser to use the right list of
@@ -73,6 +75,10 @@ What's new
 - disable 'Load' button of 'include file' dialog for verbatim include
 
 - highlight the search string on opening the Find&Replace dialog
+
+- fix key bindings for super/subscripts in maths
+
+- fix menu feedback for alignat, xalignat and xxalignat environments
 
 - fix translation of "reset" and "no change" in language combobox
 

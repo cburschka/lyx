@@ -1,3 +1,8 @@
+2002-07-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* GraphicsConverter.C (convert): do not use ChangeExtension
+	because to_file_base may contain a dot.
+
 2002-06-21  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsCacheItem.C: convert .ps as .eps to avoid
