@@ -38,6 +38,11 @@ public:
 	std::vector<string> const getBufferList() const;
 	///
 	int getBufferNum() const;
+
+private:
+	/** disconnect from the inset when the Apply button is pressed.
+	 Allows easy insertion of multiple references. */
+	virtual bool disconnectOnApply() { return true; }
 };
 
 #endif // CONTROLREF_H
