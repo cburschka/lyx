@@ -1,3 +1,26 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* os.h:
+	* os_os2.C:
+	* os_unix.C:
+	* os_win32.C (binpath, binname, homepath, setTmpDir, getTmpDir, warn):
+	removed. Remove also all code to set the associated data variables.
+
+	* package.{C.in,h}: new files to ascertain the paths to the
+	various directories used by LyX. Does nothing with these paths,
+	just determines the strings themselves.
+
+	* path_defines.{C.in,h}: removed.
+
+	* Makefile.am: remove path_defines.{C.in,h}. Add package.{C.in,h}.
+
+	* filetools.C[Ch] (GetEnvPath): remove.
+	(getEnvPath): replacement. Returns a vector<string> of paths.
+
+	* filetools.C:
+	* tempname.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
 2005-01-07  Angus Leeming  <leeming@lyx.org>
 
 	* convert.C (string>): add specialization for long.

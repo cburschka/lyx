@@ -36,7 +36,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 
 #include "lyx_forms.h"
 
@@ -48,7 +48,7 @@
 #include <iomanip>
 
 using lyx::support::AddName;
-using lyx::support::user_lyxdir;
+using lyx::support::package;
 
 using lyx::frontend::fontloader;
 using lyx::frontend::getRGBColor;
@@ -179,7 +179,6 @@ void parse_init(int & argc, char * argv[])
 
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;
-		os::warn("Unable to access X display, exiting");
 		::exit(1);
 	}
 
@@ -204,7 +203,8 @@ void parse_init(int & argc, char * argv[])
 
 void parse_lyxrc()
 {
-	XformsColor::read(AddName(user_lyxdir(), "preferences.xform"));
+	XformsColor::read(AddName(package().user_support(),
+				  "preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())
 		lyxrc.popup_font_encoding = lyxrc.font_norm;
@@ -302,7 +302,7 @@ void start(string const & batch, vector<string> const & files)
 
 	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
 	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
-			  os::internal_path(os::getTmpDir() + "/lyxsocket"));
+			  os::internal_path(package().temp_dir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
 		bind(&BufferView::loadLyXFile, view->view(), _1, true));

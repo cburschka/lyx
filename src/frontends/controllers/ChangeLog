@@ -1,3 +1,11 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* ControlAboutlyx.C:
+	* ControlGraphics.C:
+	* helper_funcs.C:
+	* tex_helpers.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
 2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ControlTabularCreate.C (dispatchParams):

@@ -18,8 +18,8 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/package.h"
 #include "support/path.h"
-#include "support/path_defines.h"
 
 namespace support = lyx::support;
 
@@ -54,7 +54,7 @@ Template::Format::Format()
 
 TemplateManager::TemplateManager()
 {
-	readTemplates(support::user_lyxdir());
+	readTemplates(support::package().user_support());
 	if (lyxerr.debugging(Debug::EXTERNAL)) {
 		dumpPreambleDefs(lyxerr);
 		lyxerr << '\n';

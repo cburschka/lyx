@@ -29,16 +29,7 @@ enum shell_type {
 
 // do some work just once
 void init(int argc, char * argv[]);
-// returns path of LyX binary
-std::string const & binpath();
-// returns name of LyX binary
-std::string const & binname();
-//
-void setTmpDir(std::string const & p);
-//
-std::string const & getTmpDir();
-// Returns the user's home directory ($HOME in the unix world).
-std::string const & homepath();
+
 // Returns the name of the NULL device (/dev/null, null).
 std::string const & nulldev();
 //
@@ -56,8 +47,6 @@ bool is_absolute_path(std::string const & p);
 // returns a string suitable to be passed to popen when
 // same for popen().
 	char const * popen_read_mode();
-//
-void warn(std::string const & mesg);
 
 } // namespace os
 } // namespace support

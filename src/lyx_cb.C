@@ -39,9 +39,8 @@
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/lyxlib.h"
-#include "support/os.h"
+#include "support/package.h"
 #include "support/path.h"
-#include "support/path_defines.h"
 #include "support/systemcall.h"
 
 #include <boost/shared_ptr.hpp>
@@ -62,17 +61,14 @@ using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::Path;
+using lyx::support::package;
 using lyx::support::QuoteName;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
 using lyx::support::split;
-using lyx::support::system_lyxdir;
 using lyx::support::Systemcall;
 using lyx::support::tempName;
 using lyx::support::unlink;
-using lyx::support::user_lyxdir;
-
-namespace os = lyx::support::os;
 
 using boost::shared_ptr;
 
@@ -205,11 +201,11 @@ void QuitLyX()
 	bufferlist.closeAll();
 
 	// do any other cleanup procedures now
-	lyxerr[Debug::INFO] << "Deleting tmp dir " << os::getTmpDir() << endl;
+	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
 
-	if (destroyDir(os::getTmpDir()) != 0) {
+	if (destroyDir(package().temp_dir()) != 0) {
 		string msg = bformat(_("Could not remove the temporary directory %1$s"),
-			os::getTmpDir());
+			package().temp_dir());
 		Alert::warning(_("Could not remove temporary directory"), msg);
 	}
 
@@ -444,8 +440,9 @@ void Reconfigure(BufferView * bv)
 	bv->owner()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	Path p(user_lyxdir());
-	string const configure_script = AddName(system_lyxdir(), "configure");
+	Path p(package().user_support());
+	string const configure_script =
+		AddName(package().system_support(), "configure");
 	string const configure_command = "sh " + QuoteName(configure_script);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);

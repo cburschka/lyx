@@ -49,8 +49,8 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/package.h"
 #include "support/path.h"
-#include "support/path_defines.h"
 
 #include <boost/bind.hpp>
 
@@ -67,15 +67,10 @@ using lyx::support::FileSearch;
 using lyx::support::GetEnv;
 using lyx::support::i18nLibFileSearch;
 using lyx::support::LibFileSearch;
+using lyx::support::package;
 using lyx::support::Path;
 using lyx::support::QuoteName;
 using lyx::support::rtrim;
-using lyx::support::setLyxPaths;
-using lyx::support::system_lyxdir;
-using lyx::support::user_lyxdir;
-
-using lyx::support::os::getTmpDir;
-using lyx::support::os::setTmpDir;
 
 namespace os = lyx::support::os;
 
@@ -101,6 +96,12 @@ BufferList bufferlist;
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 namespace {
+
+// Filled with the command line arguments "foo" of "-sysdir foo" or
+// "-userdir foo".
+string cl_system_support;
+string cl_user_support;
+
 
 void showFileError(string const & error)
 {
@@ -188,6 +189,8 @@ void LyX::priv_exec(int & argc, char * argv[])
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
 	bool const want_gui = easyParse(argc, argv);
+
+	lyx::support::init_package(argv[0], cl_system_support, cl_user_support);
 
 	if (want_gui)
 		lyx_gui::parse_init(argc, argv);
@@ -340,12 +343,36 @@ void LyX::init(bool gui)
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
 
-	bool const explicit_userdir = setLyxPaths();
+#if defined (USE_MACOSX_PACKAGING)
+	// Set PATH for LyX/Mac 
+ 	//
+ 	// LyX/Mac is a relocatable application bundle; here we add to
+ 	// the PATH so it can find binaries like reLyX inside its own
+ 	// application bundle, and also append PATH elements that it
+	// needs to run latex, previewers, etc.
+	string oldpath = GetEnv("PATH");
+	string newpath = "PATH=" + oldpath + ":" + package().binary_dir() + ":";
+	newpath += "/sw/bin:/usr/local/bin:"
+		"/usr/local/teTeX/bin/powerpc-apple-darwin-current";
+	PutEnv(newpath);
+	lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. " 
+		"Setting PATH to: " << GetEnv("PATH") << endl;
+#endif
+
+	// Set the locale_dir.
+	string const & locale_dir = package().locale_dir();
+	FileInfo fi(locale_dir);
+	if (fi.isOK() && fi.isDir()) {
+		lyxerr[Debug::INIT] 
+			<< "Setting locale directory to "
+			<< locale_dir << endl;
+		//gettext_init(locale_dir);
+ 	}
 
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.
 	if (gui) {
-		queryUserLyXDir(explicit_userdir);
+		queryUserLyXDir(package().explicit_user_support());
 	} else {
 		first_start = false;
 	}
@@ -353,12 +380,16 @@ void LyX::init(bool gui)
 	// Disable gui when easyparse says so
 	lyx_gui::use_gui = gui;
 
+	lyxrc.tempdir_path = package().temp_dir();
+	lyxrc.document_path = package().document_dir();
+ 
 	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = AddPath(system_lyxdir(), "templates");
+		lyxrc.template_path = AddPath(package().system_support(),
+					      "templates");
 	}
 
 	if (lyxrc.lastfiles.empty()) {
-		lyxrc.lastfiles = AddName(user_lyxdir(), "lastfiles");
+		lyxrc.lastfiles = AddName(package().user_support(), "lastfiles");
 	}
 
 	if (lyxrc.roman_font_name.empty())
@@ -406,8 +437,10 @@ void LyX::init(bool gui)
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
 
-	setTmpDir(createLyXTmpDir(lyxrc.tempdir_path));
-	if (getTmpDir().empty()) {
+	package().document_dir() = lyxrc.document_path;
+
+	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
+	if (package().temp_dir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
 		             bformat(_("Could not create a temporary directory in\n"
 		                       "%1$s. Make sure that this\n"
@@ -422,7 +455,7 @@ void LyX::init(bool gui)
 	}
 
 	if (lyxerr.debugging(Debug::INIT)) {
-		lyxerr << "LyX tmp dir: `" << getTmpDir() << '\'' << endl;
+		lyxerr << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
 	}
 
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
@@ -528,20 +561,20 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 
 void LyX::queryUserLyXDir(bool explicit_userdir)
 {
-	string const configure_script = AddName(system_lyxdir(), "configure");
+	string const configure_script = AddName(package().system_support(), "configure");
 	string const configure_command = "sh " + QuoteName(configure_script);
 
 	// Does user directory exist?
-	FileInfo fileInfo(user_lyxdir());
+	FileInfo fileInfo(package().user_support());
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
 		FileInfo script(configure_script);
-		FileInfo defaults(AddName(user_lyxdir(), "lyxrc.defaults"));
+		FileInfo defaults(AddName(package().user_support(), "lyxrc.defaults"));
 		if (defaults.isOK() && script.isOK()
 		    && defaults.getModificationTime() < script.getModificationTime()) {
 			lyxerr << _("LyX: reconfiguring user directory")
 			       << endl;
-			Path p(user_lyxdir());
+			Path p(package().user_support());
 			::system(configure_command.c_str());
 			lyxerr << "LyX: " << _("Done!") << endl;
 		}
@@ -550,19 +583,34 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	first_start = !explicit_userdir;
 
-	lyxerr << bformat(_("LyX: Creating directory %1$s"
-				  " and running configure..."), user_lyxdir()) << endl;
+	// If the user specified explicitly a directory, ask whether
+	// to create it. If the user says "no", then exit.
+	if (explicit_userdir &&
+	    !Alert::prompt(
+		    _("Missing LyX support directory"),
+		    bformat(_("You have specified a non-existent user "
+			      "LyX directory, %1$s.\n"
+			      "It is needed to keep your own configuration."),
+			    package().user_support()),
+		    1, 0,
+		    _("&Create directory."),
+		    _("&Exit LyX."))) {
+		lyxerr << _("No user LyX directory. Exiting.") << endl;
+		exit(1);
+	}
 
-	if (!createDirectory(user_lyxdir(), 0755)) {
-		// Failed, let's use $HOME instead.
-		user_lyxdir(os::homepath());
-		lyxerr << bformat(_("Failed. Will use %1$s instead."),
-			user_lyxdir()) << endl;
-		return;
+	lyxerr << bformat(_("LyX: Creating directory %1$s"
+			    " and running configure..."), package().user_support()) << endl;
+
+	if (!createDirectory(package().user_support(), 0755)) {
+		// Failed, so let's exit.
+		lyxerr << _("Failed to create directory. Exiting.")
+		       << endl;
+		exit(1);
 	}
 
 	// Run configure in user lyx directory
-	Path p(user_lyxdir());
+	Path p(package().user_support());
 	::system(configure_command.c_str());
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
@@ -763,7 +811,7 @@ int parse_sysdir(string const & arg, string const &)
 		lyxerr << _("Missing directory for -sysdir switch") << endl;
 		exit(1);
 	}
-	system_lyxdir(arg);
+	cl_system_support = arg;
 	return 1;
 }
 
@@ -773,7 +821,7 @@ int parse_userdir(string const & arg, string const &)
 		lyxerr << _("Missing directory for -userdir switch") << endl;
 		exit(1);
 	}
-	user_lyxdir(arg);
+	cl_user_support = arg;
 	return 1;
 }
 

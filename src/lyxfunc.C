@@ -84,7 +84,7 @@
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
 #include "support/path.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 #include "support/systemcall.h"
 #include "support/convert.h"
 #include "support/os.h"
@@ -108,6 +108,7 @@ using lyx::support::IsFileReadable;
 using lyx::support::isStrInt;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
+using lyx::support::package;
 using lyx::support::Path;
 using lyx::support::QuoteName;
 using lyx::support::rtrim;
@@ -115,13 +116,10 @@ using lyx::support::split;
 using lyx::support::strToInt;
 using lyx::support::strToUnsignedInt;
 using lyx::support::subst;
-using lyx::support::system_lyxdir;
 using lyx::support::Systemcall;
 using lyx::support::token;
 using lyx::support::trim;
-using lyx::support::user_lyxdir;
 using lyx::support::prefixIs;
-using lyx::support::os::getTmpDir;
 
 using std::endl;
 using std::make_pair;
@@ -1069,7 +1067,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			int row;
 			istringstream is(argument);
 			is >> file_name >> row;
-			if (prefixIs(file_name, getTmpDir())) {
+			if (prefixIs(file_name, package().temp_dir())) {
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
 				view()->setBuffer(bufferlist.getBufferFromTmp(file_name));
@@ -1294,7 +1292,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_SAVEPREFERENCES: {
-			Path p(user_lyxdir());
+			Path p(package().user_support());
 			lyxrc.write("preferences", false);
 			break;
 		}
@@ -1398,7 +1396,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_SAVE_AS_DEFAULT: {
 			string const fname =
-				AddName(AddPath(user_lyxdir(), "templates/"),
+				AddName(AddPath(package().user_support(), "templates/"),
 					"defaults.lyx");
 			Buffer defaults(fname);
 
@@ -1661,7 +1659,7 @@ void LyXFunc::open(string const & fname)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir(), "examples"))));
+				  string(AddPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
@@ -1737,7 +1735,7 @@ void LyXFunc::doImport(string const & argument)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir(), "examples"))));
+				  string(AddPath(package().system_support(), "examples"))));
 
 		string const filter = formats.prettyName(format)
 			+ " (*." + formats.extension(format) + ')';

@@ -20,7 +20,7 @@
 #include "frontends/FileDialog.h"
 
 #include "support/filetools.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 
 using std::pair;
 using std::vector;
@@ -40,9 +40,8 @@ using support::MakeAbsPath;
 using support::MakeRelPath;
 using support::OnlyFilename;
 using support::OnlyPath;
+using support::package;
 using support::prefixIs;
-using support::system_lyxdir;
-using support::user_lyxdir;
 
 namespace frontend {
 
@@ -116,10 +115,10 @@ string const browseLibFile(string const & dir,
 			   FileFilterList const & filters)
 {
 	pair<string,string> const dir1(_("System files|#S#s"),
-				       AddName(system_lyxdir(), dir));
+				       AddName(package().system_support(), dir));
 
 	pair<string,string> const dir2(_("User files|#U#u"),
-				       AddName(user_lyxdir(), dir));
+				       AddName(package().user_support(), dir));
 
 	string const result = browseFile(LibFileSearch(dir, name, ext), title,
 				   filters, false, dir1, dir2);

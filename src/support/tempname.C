@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
-#include "support/filetools.h"
+
 #include "support/convert.h"
-#include "support/os.h"
+#include "support/filetools.h"
+#include "support/package.h"
 
 #include "debug.h"
 
@@ -53,7 +54,7 @@ int make_tempfile(char * templ)
 
 string const lyx::support::tempName(string const & dir, string const & mask)
 {
-	string const tmpdir(dir.empty() ? os::getTmpDir() : dir);
+	string const tmpdir(dir.empty() ? package().temp_dir() : dir);
 	string tmpfl(AddName(tmpdir, mask));
 	tmpfl += convert<string>(getpid());
 	tmpfl += "XXXXXX";

@@ -16,7 +16,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 
 #include "debug.h"
 #include "gettext.h"
@@ -160,7 +160,6 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;
-		os::warn("Unable to access X display, exiting");
 		::exit(1);
 	}
 

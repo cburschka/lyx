@@ -27,7 +27,7 @@
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
-#include "support/os.h"
+#include "support/package.h"
 
 #include <boost/bind.hpp>
 
@@ -40,6 +40,7 @@ using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::removeAutosaveFile;
+using lyx::support::package;
 using lyx::support::prefixIs;
 
 using boost::bind;
@@ -55,7 +56,6 @@ using std::vector;
 using std::back_inserter;
 using std::transform;
 
-namespace os = lyx::support::os;
 
 BufferList::BufferList()
 {}
@@ -319,7 +319,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	// 2) In HOME directory.
-	string s = AddName(os::homepath(), buf->fileName());
+	string s = AddName(package().home_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {

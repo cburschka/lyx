@@ -227,6 +227,12 @@ dnl qt build will fail without moc or uic
   esac
 done
 
+### Check how the files should be packaged
+LYX_USE_PACKAGING
+# fix the value of the prefixes.
+test "x$prefix" = xNONE && prefix=$default_prefix
+test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+
 ### Setup GNU gettext
 dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
@@ -310,6 +316,7 @@ VERSION_INFO="Configuration\n\
   C++ Compiler flags:             ${CPPFLAGS} ${CXXFLAGS}\n\
   Linker flags:                   ${LDFLAGS}\n\
 ${FRONTEND_INFO}\
+  Packaging:                      ${lyx_use_packaging}\n\
   LyX binary dir:                 ${real_bindir}\n\
   LyX files dir:                  ${real_datadir}\n"
 

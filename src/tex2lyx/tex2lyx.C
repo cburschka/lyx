@@ -17,11 +17,11 @@
 
 #include "debug.h"
 #include "lyxtextclass.h"
-#include "support/path_defines.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/package.h"
 
 #include <boost/function.hpp>
 
@@ -51,8 +51,6 @@ using lyx::support::isStrUnsignedInt;
 using lyx::support::ltrim;
 using lyx::support::rtrim;
 using lyx::support::strToUnsignedInt;
-using lyx::support::system_lyxdir;
-using lyx::support::user_lyxdir;
 using lyx::support::IsFileReadable;
 using lyx::support::IsFileWriteable;
 
@@ -249,13 +247,19 @@ int parse_syntaxfile(string const & arg, string const &)
 }
 
 
+// Filled with the command line arguments "foo" of "-sysdir foo" or
+// "-userdir foo".
+string cl_system_support;
+string cl_user_support;
+
+
 int parse_sysdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
 		cerr << "Missing directory for -sysdir switch" << endl;
 		exit(1);
 	}
-	system_lyxdir(arg);
+	cl_system_support = arg;
 	return 1;
 }
 
@@ -266,7 +270,7 @@ int parse_userdir(string const & arg, string const &)
 		cerr << "Missing directory for -userdir switch" << endl;
 		exit(1);
 	}
-	user_lyxdir(arg);
+	cl_user_support = arg;
 	return 1;
 }
 
@@ -381,7 +385,7 @@ int main(int argc, char * argv[])
 	}
 
 	lyx::support::os::init(argc, argv);
-	lyx::support::setLyxPaths();
+	lyx::support::init_package(argv[0], cl_system_support, cl_user_support);
 
 	string const system_syntaxfile = lyx::support::LibFileSearch("reLyX", "syntax.default");
 	if (system_syntaxfile.empty()) {

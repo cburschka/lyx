@@ -28,8 +28,8 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/lyxlib.h"
+#include "support/package.h"
 #include "support/path.h"
-#include "support/path_defines.h"
 
 #include "support/std_ostream.h"
 
@@ -109,7 +109,8 @@ string const doSubstitution(InsetExternalParams const & params,
 		                        relToParentPath);
 	}
 	result = support::subst(result, "$$Tempname", params.tempname());
-	result = support::subst(result, "$$Sysdir", support::system_lyxdir());
+	result = support::subst(result, "$$Sysdir",
+				support::package().system_support());
 
 	// Handle the $$Contents(filename) syntax
 	if (support::contains(result, "$$Contents(\"")) {

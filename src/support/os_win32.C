@@ -13,8 +13,6 @@
 #include <config.h>
 
 #include "support/os.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 
 #include "debug.h"
 
@@ -28,69 +26,16 @@
 # include <direct.h> // _getdrive
 #endif
 
-using namespace lyx::support;
 using std::endl;
 using std::string;
-
-
-namespace {
-
-string binpath_;
-string binname_;
-string tmpdir_;
-string homepath_;
-string nulldev_;
-
-}
 
 
 namespace lyx {
 namespace support {
 namespace os {
 
-void init(int /* argc */, char * argv[])
-{
-	static bool initialized = false;
-	if (initialized)
-		return;
-	initialized = true;
-
-	string tmp = internal_path(argv[0]);
-	binname_ = OnlyFilename(tmp);
-	tmp = ExpandPath(tmp); // This expands ./ and ~/
-
-	if (!is_absolute_path(tmp)) {
-		string binsearchpath = GetEnvPath("PATH");
-		// This will make "src/lyx" work always :-)
-		binsearchpath += ";.";
-		tmp = internal_path(argv[0]);
-		tmp = FileOpenSearch(binsearchpath, tmp);
-	}
-
-	tmp = MakeAbsPath(OnlyPath(tmp));
-
-	// In case we are running in place and compiled with shared libraries
-	if (suffixIs(tmp, "/.libs/"))
-		tmp.erase(tmp.length()-6, string::npos);
-	binpath_ = tmp;
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	tmpdir_ = "/tmp";
-	homepath_ = GetEnvPath("HOME");
-	nulldev_ = "/dev/null";
-#else
-	tmpdir_ = string();
-	homepath_ = GetEnvPath("HOMEDRIVE") + GetEnvPath("HOMEPATH");
-	nulldev_ = "nul";
-#endif
-}
-
-
-void warn(string const & mesg)
-{
-	MessageBox(0, mesg.c_str(), "LyX error",
-	MB_OK|MB_ICONSTOP|MB_SYSTEMMODAL);
-}
+void init(int, char *[])
+{}
 
 
 string current_root()
@@ -129,6 +74,7 @@ string::size_type common_path(string const & p1, string const & p2)
 string external_path(string const & p)
 {
 	string dos_path;
+
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	// Translate from cygwin path syntax to dos path syntax
 	if (is_absolute_path(p)) {
@@ -196,38 +142,13 @@ char const * popen_read_mode()
 }
 
 
-string const & binpath()
-{
-	return binpath_;
-}
-
-
-string const & binname()
-{
-	return binname_;
-}
-
-
-void setTmpDir(string const & p)
-{
-	tmpdir_ = p;
-}
-
-
-string const & getTmpDir()
-{
-	return tmpdir_;
-}
-
-
-string const & homepath()
-{
-	return homepath_;
-}
-
-
 string const & nulldev()
 {
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	static string const nulldev_ = "/dev/null";
+#else
+	static string const nulldev_ = "nul";
+#endif
 	return nulldev_;
 }
 

@@ -27,8 +27,8 @@
 #include "support/lstrings.h"
 #include "support/FileInfo.h"
 #include "support/forkedcontr.h"
+#include "support/package.h"
 #include "support/path.h"
-#include "support/path_defines.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 
@@ -38,6 +38,7 @@
 
 #include <boost/assert.hpp>
 #include <boost/regex.hpp>
+#include <boost/tokenizer.hpp>
 
 #include <fcntl.h>
 
@@ -188,8 +189,10 @@ string const FileOpenSearch(string const & path, string const & name,
 		path_element = os::internal_path(path_element);
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
-		path_element = subst(path_element, "$$LyX", system_lyxdir());
-		path_element = subst(path_element, "$$User", user_lyxdir());
+		path_element = subst(path_element, "$$LyX",
+				     package().system_support());
+		path_element = subst(path_element, "$$User",
+				     package().user_support());
 
 		real_file = FileSearch(path_element, name, ext);
 
@@ -294,16 +297,18 @@ string const FileSearch(string const & path, string const & name,
 string const LibFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	string fullname = FileSearch(AddPath(user_lyxdir(), dir), name, ext);
+	string fullname = FileSearch(AddPath(package().user_support(), dir),
+				     name, ext);
 	if (!fullname.empty())
 		return fullname;
 
-	if (!build_lyxdir().empty())
-		fullname = FileSearch(AddPath(build_lyxdir(), dir), name, ext);
+	if (!package().build_support().empty())
+		fullname = FileSearch(AddPath(package().build_support(), dir),
+				      name, ext);
 	if (!fullname.empty())
 		return fullname;
 
-	return FileSearch(AddPath(system_lyxdir(), dir), name, ext);
+	return FileSearch(AddPath(package().system_support(), dir), name, ext);
 }
 
 
@@ -386,6 +391,30 @@ string const GetEnv(string const & envname)
 	char const * const ch = getenv(envname.c_str());
 	string const envstr = !ch ? "" : ch;
 	return envstr;
+}
+
+
+vector<string> const getEnvPath(string const & name)
+{
+	typedef boost::char_separator<char> Separator;
+	typedef boost::tokenizer<Separator> Tokenizer;
+
+#if defined (__EMX__) || defined (_WIN32)
+	Separator const separator(";");
+#else
+	Separator const separator(":");
+#endif
+
+	string const env_var = GetEnv(name);
+	Tokenizer const tokens(env_var, separator);
+	Tokenizer::const_iterator it = tokens.begin();
+	Tokenizer::const_iterator const end = tokens.end();
+
+	std::vector<string> vars;
+	for (; it != end; ++it)
+		vars.push_back(os::internal_path(*it));
+
+	return vars;
 }
 
 
@@ -495,9 +524,12 @@ string const createBufferTmpDir()
 {
 	static int count;
 	// We are in our own directory.  Why bother to mangle name?
-	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
-	// of EMX mkstemp().
-	string const tmpfl = os::getTmpDir() + "/lyx_tmpbuf" + convert<string>(count++);
+	// In fact I wrote this code to circumvent a problematic behaviour
+	// (bug?) of EMX mkstemp().
+	string const tmpfl =
+		package().temp_dir() + "/lyx_tmpbuf" +
+		convert<string>(count++);
+
 	if (mkdir(tmpfl, 0777)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;
@@ -690,7 +722,7 @@ string const ExpandPath(string const & path)
 		return getcwd() + '/' + RTemp;
 	}
 	if (Temp == "~") {
-		return os::homepath() + '/' + RTemp;
+		return package().home_dir() + '/' + RTemp;
 	}
 	if (Temp == "..") {
 		return MakeAbsPath(copy);
@@ -1111,7 +1143,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
 
-	string const home(os::homepath());
+	string const home(package().home_dir());
 
 	// replace /home/blah with ~/
 	if (prefixIs(str, home))

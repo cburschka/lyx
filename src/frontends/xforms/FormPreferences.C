@@ -29,7 +29,7 @@
 #include "lyxfont.h"
 
 #include "support/lstrings.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 #include "support/filetools.h"
 
 #include "lyx_forms.h"
@@ -50,10 +50,10 @@ namespace lyx {
 
 using support::AddName;
 using support::ChangeExtension;
+using support::package;
 using support::rtrim;
 using support::strToDbl;
 using support::trim;
-using support::user_lyxdir;
 
 namespace frontend {
 
@@ -305,7 +305,7 @@ void FormPreferences::apply()
 	// The "Save" button has been pressed.
 	if (dialog().isClosing() && colors_.modifiedXformsPrefs) {
 		string const filename =
-			AddName(user_lyxdir(), "preferences.xform");
+			AddName(package().user_support(), "preferences.xform");
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 }

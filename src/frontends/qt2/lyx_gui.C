@@ -29,6 +29,7 @@
 
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/package.h"
 #include "debug.h"
 
 // Dear Lord, deliver us from Evil, aka the Qt headers
@@ -55,6 +56,7 @@
 #include <qtextcodec.h>
 
 using lyx::support::ltrim;
+using lyx::support::package;
 
 using lyx::frontend::QtView;
 
@@ -229,7 +231,7 @@ void start(string const & batch, vector<string> const & files)
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
 	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
-			  os::internal_path(os::getTmpDir() + "/lyxsocket"));
+			  os::internal_path(package().temp_dir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
 		 bind(&BufferView::loadLyXFile, view.view(), _1, true));

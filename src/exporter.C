@@ -33,7 +33,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "support/os.h"
+#include "support/package.h"
 
 using lyx::support::AddName;
 using lyx::support::bformat;
@@ -43,6 +43,7 @@ using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
+using lyx::support::package;
 using lyx::support::prefixIs;
 
 using std::find;
@@ -103,7 +104,7 @@ CopyStatus copyFile(string const & format,
 	// overwrite themselves. This check could be changed to
 	// boost::filesystem::equivalent(sourceFile, destFile) if export to
 	// other directories than the document directory is desired.
-	if (!prefixIs(OnlyPath(sourceFile), lyx::support::os::getTmpDir()))
+	if (!prefixIs(OnlyPath(sourceFile), package().temp_dir()))
 		return ret;
 
 	if (!force) {

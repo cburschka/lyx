@@ -4,13 +4,13 @@ noinst_LTLIBRARIES = libsupport.la
 
 CLEANFILES += path_defines.C
 
-EXTRA_DIST = path_defines.C.in os_unix.C os_win32.C os_os2.C
+EXTRA_DIST = package.C.in os_unix.C os_win32.C os_os2.C
 
 if USE_COMPRESSION
 COMPRESSION = gzstream.C gzstream.h
 endif
 
-BUILT_SOURCES = path_defines.C
+BUILT_SOURCES = package.C
 
 AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
@@ -60,8 +60,8 @@ libsupport_la_SOURCES = \
 	os2_errortable.h \
 	path.C \
 	path.h \
-	path_defines.C \
-	path_defines.h \
+	package.C \
+	package.h \
 	putenv.C \
 	rename.C \
 	rmdir.C \
@@ -80,20 +80,19 @@ libsupport_la_SOURCES = \
 	unlink.C
 
 
-path_defines.C: build_path_defines
+package.C: build_package
 
-build_path_defines: path_defines.C.in
-	@rm -f tmp_path_defines ;\
+build_package: package.C.in
+	@rm -f tmp_package ;\
 	ABS_SRCDIR=`cd $(top_srcdir) && pwd` ;\
 	ABS_BUILDDIR=`cd ../.. && pwd` ;\
 	sed "s,%LYX_DIR%,$(pkgdatadir), ;\
 		s,%LOCALEDIR%,$(datadir)/locale, ;\
-		s,%BUILDDIR%,$${ABS_BUILDDIR}, ;\
 		s,%TOP_SRCDIR%,$${ABS_SRCDIR}," \
-		$(srcdir)/path_defines.C.in > tmp_path_defines ;\
-	if cmp -s tmp_path_defines path_defines.C ; then \
-		rm -f tmp_path_defines ;\
+		$(srcdir)/package.C.in > tmp_package ;\
+	if cmp -s tmp_package package.C ; then \
+		rm -f tmp_package ;\
 	else \
-		rm -f path_defines.C ;\
-		mv tmp_path_defines path_defines.C ;\
+		rm -f package.C ;\
+		mv tmp_package package.C ;\
 	fi

@@ -11,11 +11,11 @@
 
 #include "messages.h"
 #include "support/filetools.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 
 #include <boost/regex.hpp>
 
-using lyx::support::lyx_localedir;
+using lyx::support::package;
 
 using std::string;
 
@@ -41,7 +41,7 @@ public:
 		//lyxerr << "Messages: language(" << l
 		//       << ") in dir(" << dir << ")" << std::endl;
 
-		cat_gl = mssg_gl.open(PACKAGE, loc_gl, lyx_localedir().c_str());
+		cat_gl = mssg_gl.open(PACKAGE, loc_gl, package().locale_dir().c_str());
 
 	}
 
@@ -96,7 +96,7 @@ public:
 
 		char * old = strdup(setlocale(LC_ALL, 0));
 		char * n = setlocale(LC_ALL, lang_.c_str());
-		bindtextdomain(PACKAGE, lyx_localedir().c_str());
+		bindtextdomain(PACKAGE, package().locale_dir().c_str());
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
 		// Some english words have different translations, depending

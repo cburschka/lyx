@@ -25,11 +25,11 @@
 
 #include "insets/insetgraphics.h"
 
+#include "support/convert.h"
 #include "support/FileInfo.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/path_defines.h"
-#include "support/convert.h"
+#include "support/package.h"
 #include "support/types.h"
 
 using std::make_pair;
@@ -44,9 +44,8 @@ using support::FileFilterList;
 using support::FileInfo;
 using support::IsFileReadable;
 using support::MakeAbsPath;
+using support::package;
 using support::readBB_from_PSFile;
-using support::system_lyxdir;
-using support::user_lyxdir;
 
 namespace frontend {
 
@@ -85,11 +84,11 @@ string const ControlGraphics::browse(string const & in_name) const
 	string const title = _("Select graphics file");
 
 	// Does user clipart directory exist?
-	string clipdir = AddName (user_lyxdir(), "clipart");
+	string clipdir = AddName (package().user_support(), "clipart");
 	FileInfo fileInfo(clipdir);
 	if (!(fileInfo.isOK() && fileInfo.isDir()))
 		// No - bail out to system clipart directory
-		clipdir = AddName (system_lyxdir(), "clipart");
+		clipdir = AddName (package().system_support(), "clipart");
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog

@@ -115,8 +115,13 @@ std::string const LibScriptSearch(std::string const & command);
 ///
 std::string const GetEnv(std::string const & envname);
 
-/// A helper function.
-std::string const GetEnvPath(std::string const & name);
+/** Return the contents of the environment variable \c name,
+ *  split using the OS-dependent token separating elements.
+ *  Each element is then passed through os::internal_path to
+ *  guarantee that it is in the form of a unix-stype path.
+ *  If the environment variable is not set, then returns an empty vector.
+ */
+std::vector<std::string> const getEnvPath(std::string const & name);
 
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);

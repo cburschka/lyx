@@ -16,10 +16,10 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/systemcall.h"
-#include "support/path.h"
 #include "support/lyxalgo.h"
-#include "support/path_defines.h"
+#include "support/package.h"
+#include "support/path.h"
+#include "support/systemcall.h"
 
 #include <boost/cregex.hpp>
 #include <fstream>
@@ -34,12 +34,11 @@ using support::GetFileContents;
 using support::getVectorFromString;
 using support::LibFileSearch;
 using support::OnlyFilename;
-using support::Path;
+using support::package;
 using support::Path;
 using support::split;
 using support::Systemcall;
 using support::token;
-using support::user_lyxdir;
 
 namespace frontend {
 
@@ -48,7 +47,7 @@ namespace frontend {
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
-	Path p(user_lyxdir());
+	Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
 			LibFileSearch("scripts", "TeXFiles.sh"));
@@ -58,7 +57,7 @@ void rescanTexStyles()
 void texhash()
 {
 	// Run texhash in user lyx directory
-	Path p(user_lyxdir());
+	Path p(package().user_support());
 
 	//path to texhash through system
 	Systemcall one;

@@ -23,7 +23,7 @@
 #include "debug.h"
 
 #include "support/filetools.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 
 using std::string;
 using std::vector;
@@ -144,7 +144,7 @@ string const findGladeFile(string const & name)
 
 	// Second, search in the src tree.
 	string const dir =
-		lyx::support::AddPath(lyx::support::top_srcdir(),
+		lyx::support::AddPath(lyx::support::package().top_srcdir(),
 				      "src/frontends/gtk/glade");
 
 	filename = lyx::support::ChangeExtension(name, ".glade");

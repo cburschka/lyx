@@ -16,7 +16,7 @@
 #include "version.h"
 
 #include "support/filetools.h" // FileSearch
-#include "support/path_defines.h"
+#include "support/package.h"
 
 #include <fstream>
 #include <sstream>
@@ -30,8 +30,7 @@ namespace lyx {
 
 using support::FileSearch;
 using support::MakeDisplayPath;
-using support::system_lyxdir;
-using support::user_lyxdir;
+using support::package;
 
 namespace frontend {
 
@@ -43,7 +42,7 @@ ControlAboutlyx::ControlAboutlyx(Dialog & parent)
 
 void ControlAboutlyx::getCredits(ostream & ss) const
 {
-	string const name = FileSearch(system_lyxdir(), "CREDITS");
+	string const name = FileSearch(package().system_support(), "CREDITS");
 
 	bool found(!name.empty());
 
@@ -90,10 +89,10 @@ string const ControlAboutlyx::getVersion() const
 	   << lyx_release_date
 	   << "\n"
 	   << _("Library directory: ")
-	   << MakeDisplayPath(system_lyxdir())
+	   << MakeDisplayPath(package().system_support())
 	   << "\n"
 	   << _("User directory: ")
-	   << MakeDisplayPath(user_lyxdir());
+	   << MakeDisplayPath(package().user_support());
 
 	return ss.str();
 }

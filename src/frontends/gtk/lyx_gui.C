@@ -54,7 +54,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
-#include "support/path_defines.h"
+#include "support/package.h"
 
 #include <gtkmm.h>
 
@@ -71,6 +71,8 @@ namespace os = lyx::support::os;
 
 using std::ostringstream;
 using std::string;
+
+using lyx::support::package;
 
 using lyx::frontend::colorCache;
 using lyx::frontend::GView;
@@ -181,7 +183,6 @@ void parse_init_xforms(int & argc, char * argv[])
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting"
 		       << std::endl;
-		lyx::support::os::warn("Unable to access X display, exiting");
 		::exit(1);
 	}
 
@@ -212,8 +213,8 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 void parse_lyxrc_xforms()
 {
-	XformsColor::read(lyx::support::AddName(
-				  lyx::support::user_lyxdir(), "preferences.xform"));
+	XformsColor::read(lyx::support::AddName(package().user_support(),
+						"preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())
 		lyxrc.popup_font_encoding = lyxrc.font_norm;
@@ -345,7 +346,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
 	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
-			  os::internal_path(os::getTmpDir() + "/lyxsocket"));
+			  os::internal_path(package().temp_dir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
 		 bind(&BufferView::loadLyXFile, view.view(), _1, true));

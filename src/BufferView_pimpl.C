@@ -65,11 +65,11 @@
 
 #include "graphics/Previews.h"
 
+#include "support/convert.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
-#include "support/path_defines.h"
-#include "support/convert.h"
+#include "support/package.h"
 #include "support/types.h"
 
 #include <boost/bind.hpp>
@@ -86,8 +86,8 @@ using lyx::support::ForkedcallsController;
 using lyx::support::IsDirWriteable;
 using lyx::support::MakeDisplayPath;
 using lyx::support::MakeAbsPath;
+using lyx::support::package;
 using lyx::support::strToUnsignedInt;
-using lyx::support::system_lyxdir;
 
 using std::endl;
 using std::istringstream;
@@ -779,7 +779,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir(), "examples"))));
+				  string(AddPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,

@@ -21,25 +21,17 @@
 #define INCL_DOSERRORS
 #include <os2.h>
 
-#include <boost/scoped_array.hpp>
 
-using boost::scoped_array;
+namespace lyx {
+namespace support {
+namespace os {
 
 namespace {
 
-string binpath_;
-string binname_;
-string tmpdir_;
-string homepath_;
-string nulldev_;
-
-os::shell_type shell_ = os::UNIX;
+shell_type shell_ = UNIX;
 unsigned long cp_ = 0;
 
 }
-
-
-namespace os {
 
 
 void init(int argc, char * argv[])
@@ -50,16 +42,6 @@ void init(int argc, char * argv[])
 	APIRET rc = DosGetInfoBlocks(&ptib, &ppib);
 	if (rc != NO_ERROR)
 		exit(rc);
-	scoped_array<char> tmp(new char[256]);
-	// This is the only reliable way to retrieve the executable name.
-	rc = DosQueryModuleName(ppib->pib_hmte, 256L, tmp);
-	if (rc != NO_ERROR)
-		exit(rc);
-	string p = tmp.get();
-	p = internal_path(p);
-	binname_ = OnlyFilename(p);
-	binname_.erase(binname_.length()-4, string::npos);
-	binpath_ = OnlyPath(p);
 
 	// OS/2 cmd.exe has another use for '&'
 	string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
@@ -89,16 +71,6 @@ void init(int argc, char * argv[])
 	// CPList[1] == system default codepage, the rest are auxilary.
 	// Once cp_ is correctly set, you can call other routines.
 	cp_ = CPList[1];
-
-	tmpdir_ = "/tmp";
-	homepath_ = GetEnvPath("HOME");
-	nulldev_ = "null";
-}
-
-
-void warn(string const & /*mesg*/)
-{
-	return;
 }
 
 
@@ -218,38 +190,9 @@ char const * popen_read_mode()
 }
 
 
-string const & binpath()
-{
-	return binpath_;
-}
-
-
-string const & binname()
-{
-	return binname_;
-}
-
-
-void setTmpDir(string const & p)
-{
-	tmpdir_ = p;
-}
-
-
-string const & getTmpDir()
-{
-	return tmpdir_;
-}
-
-
-string const & homepath()
-{
-	return homepath_;
-}
-
-
 string const & nulldev()
 {
+	static string const nulldev_ = "null";
 	return nulldev_;
 }
 
@@ -259,4 +202,6 @@ shell_type shell()
 	return shell_;
 }
 
-} // end namespace os
+} // namespace os
+} // namespace support
+} // namespace lyx

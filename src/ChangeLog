@@ -1,3 +1,16 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: remove the lyx_main.C special casing.
+
+	* BufferView_pimpl.C:
+	* bufferlist.C:
+	* exporter.C:
+	* lyx_cb.C:
+	* lyx_main.C:
+	* lyxfunc.C:
+	* messages.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
 2005-01-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* CutAndPaste.C (pasteSelectionHelper): fix bug 1332 (preserve the
