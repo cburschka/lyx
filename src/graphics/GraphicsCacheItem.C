@@ -325,18 +325,22 @@ string const findTargetFormat(string const & from)
 	lyx::Assert(!formats.empty());
 
 	// First ascertain if we can load directly with no conversion
-	FormatList::const_iterator it1 = formats.begin();
+	FormatList::const_iterator it  = formats.begin();
 	FormatList::const_iterator end = formats.end();
-	for (; it1 != end; ++it1) {
-		if (from == *it1)
-			return *it1;
+	for (; it != end; ++it) {
+		if (from == *it)
+			return *it;
 	}
 
 	// So, we have to convert to a loadable format. Can we?
-	FormatList::const_iterator it2 = formats.begin();
-	for (; it2 != end; ++it2) {
-		if (grfx::Converter::isReachable(from, *it2))
-			return *it2;
+	it = formats.begin();
+	for (; it != end; ++it) {
+		if (grfx::Converter::isReachable(from, *it))
+			return *it;
+		else
+			lyxerr[Debug::GRAPHICS]
+				<< "Unable to convert from " << from
+				<< " to " << *it << std::endl;
 	}
 
 	// Failed! so we have to try to convert it to XPM format
