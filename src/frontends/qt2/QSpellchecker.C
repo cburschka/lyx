@@ -99,8 +99,8 @@ void QSpellchecker::partialUpdate(int id)
 	case 0:
 		dialog_->spellcheckPR->setProgress(controller().getProgress());
 		break;
-	case 1:
-	{
+ 
+	case 1: {
 		dialog_->wordED->setText(controller().getWord().c_str());
 		dialog_->suggestionsLB->clear();
 
@@ -110,6 +110,7 @@ void QSpellchecker::partialUpdate(int id)
 		}
 	}
 		break;
+ 
 	case 2:
 		dialog_->spellcheckPB->setEnabled(true);
 		hide();

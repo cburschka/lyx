@@ -98,6 +98,7 @@ void QSpellcheckerDialog::replaceChanged(QString const & str)
 
 void QSpellcheckerDialog::closeEvent(QCloseEvent * e)
 {
+	form_->stop();
 	form_->slotWMHide();
 	e->accept();
 }
