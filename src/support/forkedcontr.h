@@ -29,6 +29,8 @@ class Timeout;
 
 class ForkedcallsController : public SigC::Object {
 public:
+	/// We need this to avoid warnings.
+	ForkedcallsController();
 	/** This d-tor should really be private, but making it public
 	 *   allows egcs 1.1 to compile the class.
 	 */
@@ -63,8 +65,6 @@ public:
 	SigC::Signal0<void> childrenChanged;
 	
 private:
-	/// Can't create multiple instances of ForkedcallsController.
-	ForkedcallsController();
 	///
 	ForkedcallsController(ForkedcallsController const &);
 
