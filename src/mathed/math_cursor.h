@@ -140,8 +140,6 @@ public:
 	///
 	void interpret(char);
 	///
-	void setSize(MathStyles);
-	///
 	bool toggleLimits();
 	///
 	// Macro mode methods

@@ -189,16 +189,6 @@ void MathInset::getXY(int & x, int & y) const
 }
 
 
-/*
-void MathInset::userSetSize(MathStyles sz)
-{
-	if (sz >= 0) {
-		size_ = sz;      
-		flag = flag & ~LMPF_FIXED_SIZE;
-	}
-}
-*/
-
 void MathInset::writeNormal(std::ostream & os) const
 {
 	os << "[unknown ";

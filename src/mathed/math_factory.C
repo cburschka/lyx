@@ -76,7 +76,8 @@ MathAtom createMathInset(string const & s)
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
 		return MathAtom(new MathMacroArgument(s[1] - '0'));
 
-	if (s.size() == 3 && s[0] == '\\' && s[1] == '#' && s[2] >= '1' && s[2] <= '9')
+	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
+			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
 
 	latexkeys const * l = in_word_set(s);
@@ -86,5 +87,6 @@ MathAtom createMathInset(string const & s)
 	if (MathMacroTable::has(s)) 
 		return MathAtom(new MathMacro(s));
 
+	//cerr << "creating inset 2 with name: '" << s << "'\n";
 	return MathAtom(new MathFuncInset(s));
 }

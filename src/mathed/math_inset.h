@@ -203,9 +203,6 @@ public:
 	virtual void delCol(col_type) {}
 
 	///
-	virtual void userSetSize(MathStyles &) {}
-
-	///
 	virtual void getXY(int & x, int & y) const;
 	///
 	virtual bool covers(int x, int y) const;

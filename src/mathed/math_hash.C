@@ -10,7 +10,10 @@
 
 namespace {
 
-struct latexkeys_a {
+std::map<string, latexkeys> theWordList;
+
+
+struct key_type {
 	///
 	char const * name;
 	///
@@ -19,7 +22,7 @@ struct latexkeys_a {
 	unsigned int id;
 };
 
-latexkeys_a wordlist_array[] = 
+key_type wordlist_array[] = 
 {
 	{"!",  LM_TK_SPACE, 0},
 	{"#",  LM_TK_SPECIAL, '#'},
@@ -134,9 +137,6 @@ latexkeys_a wordlist_array[] =
 };
 
 
-std::map<string, latexkeys> wordlist;
-
-
 
 MathTokenEnum tokenEnum(const string & font)
 {
@@ -166,10 +166,7 @@ MathSymbolTypes symbolType(const string & type)
 }
 
 
-} // namespace anon
-
-
-void ReadSymbols(string const & filename)
+void readSymbols(string const & filename)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
@@ -184,35 +181,37 @@ void ReadSymbols(string const & filename)
 			tmp.id = lex.getInteger();
 		if (lex.next())
 			tmp.type = symbolType(lex.getString());
-		if (wordlist.find(tmp.name) != wordlist.end())
-			lyxerr << "ReadSymbols: token " << tmp.name
+		if (theWordList.find(tmp.name) != theWordList.end())
+			lyxerr << "readSymbols: token " << tmp.name
 			       << " already exists.\n";
 		else
-			wordlist[tmp.name] = tmp;
+			theWordList[tmp.name] = tmp;
 	}
 }
-
 
 void initSymbols()
 {
 	unsigned const n = sizeof(wordlist_array) / sizeof(wordlist_array[0]);
-	for (latexkeys_a * p = wordlist_array; p != wordlist_array + n; ++p) {
+	for (key_type * p = wordlist_array; p != wordlist_array + n; ++p) {
 		latexkeys tmp;
 		tmp.name          = p->name;
 		tmp.token         = p->token;
 		tmp.id            = p->id;
 		tmp.type          = LMB_NONE;
 		tmp.latex_font_id = 0;
-		wordlist[p->name] = tmp;
+		theWordList[p->name] = tmp;
 	}
 
-	lyxerr[Debug::MATHED] << "Reading symbols file\n";
+	lyxerr[Debug::MATHED] << "reading symbols file\n";
 	string const file = LibFileSearch(string(), "symbols");
 	if (file.empty())
 		lyxerr << "Could not find symbols file\n";
 	else
-		ReadSymbols(file);
+		readSymbols(file);
 }
+
+
+} // namespace anon
 
 
 latexkeys const * in_word_set(string const & str)
@@ -224,6 +223,6 @@ latexkeys const * in_word_set(string const & str)
 		initialized = true;
 	}
 
-	std::map<string, latexkeys>::iterator it = wordlist.find(str);
-	return (it != wordlist.end()) ? &(it->second) : 0;
+	std::map<string, latexkeys>::iterator it = theWordList.find(str);
+	return (it != theWordList.end()) ? &(it->second) : 0;
 }

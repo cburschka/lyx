@@ -39,7 +39,6 @@
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
-#include "math_parser.h"
 
 #define FILEDEBUG 0
 
@@ -640,12 +639,6 @@ bool MathCursor::toggleLimits()
 }
 
 
-void MathCursor::setSize(MathStyles size)
-{
-	par()->userSetSize(size);
-}
-
-
 void MathCursor::macroModeClose()
 {
 	string s = macroName();
@@ -1234,8 +1227,6 @@ bool MathCursor::idxRight()
 void MathCursor::interpret(string const & s)
 {
 	//lyxerr << "interpret 1: '" << s << "'\n";
-	//lyxerr << "in: " << in_word_set(s) << " \n";
-
 	if (s.empty())
 		return;
 

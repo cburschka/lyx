@@ -26,7 +26,6 @@
 #include "formulamacro.h"
 #include "commandtags.h"
 #include "math_cursor.h"
-#include "math_parser.h"
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "lyxfunc.h"
@@ -503,12 +502,13 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_SIZE:
+#if 0
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-			latexkeys const * l = in_word_set(arg);
-			mathcursor->setSize(MathStyles(l ? l->id : static_cast<unsigned int>(-1)));
+			mathcursor->setSize(arg);
 			updateLocal(bv, true);
 		}
+#endif
 		break;
 
 	case LFUN_INSERT_MATRIX:

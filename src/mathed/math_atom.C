@@ -81,13 +81,3 @@ MathInset * MathAtom::operator->() const
 {
 	return nucleus();
 }
-
-/*
-void MathAtom::userSetSize(MathStyles sz)
-{
-	if (sz >= 0) {
-		size_ = sz;      
-		flag = flag & ~LMPF_FIXED_SIZE;
-	}
-}
-*/

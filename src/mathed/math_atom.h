@@ -15,6 +15,15 @@ Exactly where the subscript and superscript are drawn depends on the
 size, and type, of the nucleus they are attached to.  
 
 Jules
+
+--
+
+Ok: Implementing it thusly is not feasible since cursor movement gets
+hackish. We use MathAtom only as a wrapper around MathInset * with value
+semantics.
+
+Andre'
+
 */
 
 class MathInset;
