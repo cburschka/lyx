@@ -11,14 +11,14 @@
 
 MetricsBase::MetricsBase()
 	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"),
-	  restrictwidth(false), textwidth(0)
+	  textwidth(0)
 {}
 
 
 
 MetricsBase::MetricsBase(BufferView * b, LyXFont const & f, int w)
 	: bv(b), font(f), style(LM_ST_TEXT), fontname("mathnormal"),
-	  restrictwidth(false), textwidth(w)
+	  textwidth(w)
 {}
 
 
@@ -149,7 +149,6 @@ WidthChanger::WidthChanger(MetricsBase & mb, int w)
 	:	Changer<MetricsBase>(mb)
 {
 	save_ = mb;
-	mb.restrictwidth = true;
 	mb.textwidth     = w;
 }
 

@@ -1053,12 +1053,12 @@ dispatch_result MathGridInset::dispatch
 			return DISPATCHED_POP;
 
 		case LFUN_CELL_SPLIT:
-			//bv->lockedInsetStoreUndo(Undo::EDIT);
+			//recordUndo(bv, Undo::ATOMIC);
 			splitCell(idx, pos);
 			return DISPATCHED_POP;
 
 		case LFUN_BREAKLINE: {
-			//bv->lockedInsetStoreUndo(Undo::INSERT);
+			//recordUndo(bv, Undo::INSERT);
 			row_type const r = row(idx);
 			addRow(r);
 

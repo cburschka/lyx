@@ -124,7 +124,8 @@ void InsetFormulaBase::handleFont
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	bv->lockedInsetStoreUndo(Undo::EDIT);
+	recordUndo(bv, Undo::ATOMIC);
+
 	if (mathcursor->inset()->name() == font)
 		mathcursor->handleFont(font);
 	else {
@@ -395,7 +396,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_TABULAR_FEATURE:
 	case LFUN_PASTESELECTION:
 	case LFUN_MATH_LIMITS:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->dispatch(cmd);
 		break;
 
@@ -479,7 +480,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		if (!mathcursor->backspace()) {
 			result = FINISHED;
 			remove_inset = true;
@@ -488,7 +489,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		if (!mathcursor->erase()) {
 			result = FINISHED;
 			remove_inset = true;
@@ -515,13 +516,13 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		is >> n;
 		if (was_macro)
 			mathcursor->macroModeClose();
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->selPaste(n);
 		break;
 	}
 
 	case LFUN_CUT:
-		bv->lockedInsetStoreUndo(Undo::DELETE);
+		recordUndo(bv, Undo::DELETE);
 		mathcursor->selCut();
 		break;
 
@@ -536,7 +537,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		if (cmd.argument.empty()) {
 			// do superscript if LyX handles
 			// deadkeys
-			bv->lockedInsetStoreUndo(Undo::EDIT);
+			recordUndo(bv, Undo::ATOMIC);
 			mathcursor->script(true);
 		}
 		break;
@@ -580,14 +581,14 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_SIZE:
 #if 0
 		if (!arg.empty()) {
-			bv->lockedInsetStoreUndo(Undo::EDIT);
+			recordUndo(bv, Undo::ATOMIC);
 			mathcursor->setSize(arg);
 		}
 #endif
 		break;
 
 	case LFUN_INSERT_MATRIX: {
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		unsigned int m = 1;
 		unsigned int n = 1;
 		string v_align;
@@ -605,7 +606,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_SUPERSCRIPT:
 	case LFUN_SUBSCRIPT:
 	{
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->script(cmd.action == LFUN_SUPERSCRIPT);
 		break;
 	}
@@ -621,14 +622,14 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		if (rs.empty())
 			rs = ')';
 
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->handleNest(MathAtom(new MathDelimInset(ls, rs)));
 		break;
 	}
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->insert(MathAtom(new MathSpaceInset(",")));
 		break;
 
@@ -643,7 +644,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->interpret('\\');
 		break;
 
@@ -657,14 +658,14 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
+		recordUndo(bv, Undo::ATOMIC);
 		mathcursor->niceInsert(argument);
 		break;
 
 	case -1:
 	case LFUN_SELFINSERT:
 		if (!argument.empty()) {
-			bv->lockedInsetStoreUndo(Undo::EDIT);
+			recordUndo(bv, Undo::ATOMIC);
 			if (argument.size() == 1)
 				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
 			else

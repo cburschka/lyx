@@ -104,7 +104,7 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 			// This is a regular char. Go on if we either don't care for
 			// the width limit or have not reached that limit.
 			curr += cell(0)[i].width_;
-			if (!mi.base.restrictwidth || curr + safe <= mi.base.textwidth)
+			if (curr + safe <= mi.base.textwidth)
 				continue;
 		}
 

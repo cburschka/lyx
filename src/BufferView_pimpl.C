@@ -1377,7 +1377,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	}
 
 	// not quite sure if we want this...
-	setCursorParUndo(bv_);
+	recordUndo(bv_, Undo::ATOMIC);
 	freezeUndo();
 
 	beforeChange(bv_->text);

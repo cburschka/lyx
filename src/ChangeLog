@@ -1,3 +1,15 @@
+2003-07-25  Asger Alstrup  <alstrup@diku.dk>
+
+	* undo_funcs.h: Removed setCursorParUndo to simplify things a bit.
+	Renamed setUndo family to recordUndo. Renamed FINISH to ATOMIC
+	which I think is a bit clearer. EDIT is gone, since it was
+	premature optimisation, and broken for mathed anyway.
+	* undo_funcs.C (performUndoOrRedo): Cleaned up and made it work
+	with cursor positioning in insets as well (math insets still do not
+	work, but that's a different story anyway.) It mysteriously
+	crashes sometimes with undo in the first paragraph, but I'm fairly
+	confident that this is a compiler bug.
+
 2003-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph.C (Paragraph): adjust for new clone return type

@@ -277,8 +277,8 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << "\n";
-	if (mi.base.textwidth)
-		textwidth_ = mi.base.textwidth;
+    
+	textwidth_ = mi.base.textwidth;
 	BufferView * bv = mi.base.bv;
 	setViewCache(bv);
 	text_.metrics(mi, dim);
@@ -967,7 +967,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			 * true (on). */
 #if 0
 			// This should not be needed here and is also WRONG!
-			setUndo(bv, Undo::INSERT, text_.cursor.par());
+			recordUndo(bv, Undo::INSERT, text_.cursor.par());
 #endif
 			bv->switchKeyMap();
 			if (lyxrc.auto_region_delete) {
@@ -1681,7 +1681,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 
 	if (text_.selection.set())
-		setUndo(bv, Undo::EDIT, text_.cursor.par());
+		recordUndo(bv, Undo::ATOMIC, text_.cursor.par());
 
 	if (selectall) {
 		text_.cursorTop();

@@ -32,7 +32,7 @@ public:
 	Paragraph & operator*() const;
 	///
 	ParagraphList::iterator operator->() const;
-	///
+	/// This gives us the top-most parent paragraph
 	ParagraphList::iterator outerPar() const;
 	///
 	ParagraphList::iterator pit() const;

@@ -763,7 +763,7 @@ dispatch_result MathHullInset::dispatch
 		case LFUN_MATH_NUMBER:
 			//lyxerr << "toggling all numbers\n";
 			if (display()) {
-				//bv->lockedInsetStoreUndo(Undo::INSERT);
+				//recordUndo(bv, Undo::INSERT);
 				bool old = numberedType();
 				if (type_ == "multline")
 					numbered(nrows() - 1, !old);
@@ -777,7 +777,7 @@ dispatch_result MathHullInset::dispatch
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
 				row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
-				//bv->lockedInsetStoreUndo(Undo::INSERT);
+				//recordUndo(bv, Undo::INSERT);
 				bool old = numbered(r);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 				numbered(r, !old);

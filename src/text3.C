@@ -425,7 +425,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		for (; tmp != end; ++tmp) {
 			if (tmp->params().startOfAppendix()) {
-				setUndo(bv, Undo::EDIT, tmp);
+				recordUndo(bv, Undo::ATOMIC, tmp);
 				tmp->params().startOfAppendix(false);
 				int tmpy;
 				setHeightOfRow(getRow(tmp, 0, tmpy));
@@ -433,7 +433,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		}
 
-		setUndo(bv, Undo::EDIT, pit);
+		recordUndo(bv, Undo::ATOMIC, pit);
 		pit->params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
@@ -1021,7 +1021,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_TRANSPOSE_CHARS:
 		update();
-		setUndo(bv, Undo::FINISH, cursor.par());
+		recordUndo(bv, Undo::ATOMIC, cursor.par());
 		if (transposeChars(cursor))
 			checkParagraph(cursor.par(), cursor.pos());
 		if (inset_owner)
@@ -1522,7 +1522,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// ...or maybe the SetCursorParUndo()
 			// below isn't necessary at all anylonger?
 			if (inset_hit->lyxCode() == Inset::REF_CODE)
-				setCursorParUndo(bv);
+				recordUndo(bv, Undo::ATOMIC);
 
 			bv->owner()->message(inset_hit->editMessage());
 

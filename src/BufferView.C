@@ -594,16 +594,6 @@ int BufferView::unlockInset(UpdatableInset * inset)
 }
 
 
-void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
-{
-	if (!theLockingInset())
-		return; // shouldn't happen
-	if (kind == Undo::EDIT) // in this case insets would not be stored!
-		kind = Undo::FINISH;
-	setUndo(this, kind, text->cursor.par());
-}
-
-
 void BufferView::updateInset(Inset * inset)
 {
 	pimpl_->updateInset(inset);

@@ -11,7 +11,6 @@
 #define BUFFER_VIEW_H
 
 #include "LString.h"
-#include "undo.h"
 
 #include "insets/inset.h"
 
@@ -175,8 +174,6 @@ public:
 
 	/// FIXME
 	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
-	/// FIXME
-	void lockedInsetStoreUndo(Undo::undo_kind kind);
 	/// FIXME
 	void toggleSelection(bool = true);
 	/// FIXME: my word !

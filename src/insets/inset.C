@@ -30,6 +30,8 @@
 #include "support/lstrings.h"
 
 
+#include "debug.h"
+
 // Initialization of the counter for the inset id's,
 unsigned int Inset::inset_id = 0;
 
@@ -43,10 +45,10 @@ Inset::Inset()
 
 Inset::Inset(Inset const & in)
 	: InsetBase(),
-	top_x(0), top_baseline(0), scx(0), owner_(0),
+	top_x(0), top_baseline(0), scx(0), id_(in.id_), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
 {
-	id_ = inset_id++;
+	lyxerr << "inset id: " << id_ << std::endl;
 }
 
 

@@ -328,7 +328,7 @@ protected:
 	mutable int top_baseline;
 	///
 	mutable int scx;
-	///
+	/// Used to identify the inset for cursor positioning when undoing
 	unsigned int id_;
 	///
 	static unsigned int inset_id;

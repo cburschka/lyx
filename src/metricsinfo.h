@@ -36,11 +36,9 @@ struct MetricsBase {
 	LyXFont font;
 	/// current math style (display/text/script/..)
 	Styles style;
-	/// name of current font
+	/// name of current font - mathed specific
 	string fontname;
-	/// if this is set...
-	bool restrictwidth;
-	/// ... this is valid
+	/// This is the width available in pixels
 	int textwidth;
 };
 

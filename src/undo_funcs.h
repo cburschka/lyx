@@ -17,13 +17,13 @@
 class BufferView;
 class Paragraph;
 
-/// returns false if no undo possible
+/// This will undo the last action - returns false if no undo possible
 bool textUndo(BufferView *);
 
-/// returns false if no redo possible
+/// This will redo the last undo - returns false if no redo possible
 bool textRedo(BufferView *);
 
-/// makes sure the next operation will be stored
+/// Makes sure the next operation will be stored
 void finishUndo();
 
 /**
@@ -42,17 +42,14 @@ void unFreezeUndo();
  * This is called before you make the changes to the paragraph, and it
  * will record the original information of the paragraphs in the undo stack.
  */
-void setUndo(BufferView *, Undo::undo_kind kind,
+void recordUndo(BufferView *, Undo::undo_kind kind,
 		    ParagraphList::iterator first, ParagraphList::iterator last);
 /// Convienience: Prepare undo when change in a single paragraph.
-void setUndo(BufferView *, Undo::undo_kind kind,
+void recordUndo(BufferView *, Undo::undo_kind kind,
 		    ParagraphList::iterator first);
 
 /// Convienience: Prepare undo for the paragraph that contains the cursor
-void setUndo(BufferView *, Undo::undo_kind kind);
-
-/// Convienience: Prepare and finish undo for the paragraph that contains the cursor
-void setCursorParUndo(BufferView *);
+void recordUndo(BufferView *, Undo::undo_kind kind);
 
 /// Are we avoiding tracking undos currently ?
 extern bool undo_frozen;
