@@ -12,13 +12,11 @@
 #include "debug.h"
 #include "buffer.h"
 
-using std::ostream;
 using std::vector;
-using std::endl;
 
 string const InsetTOC::getScreenLabel() const 
 {
-	string cmdname( getCmdName() );
+	string const cmdname( getCmdName() );
 	if (cmdname == "tableofcontents" )
 		return _("Table of Contents");
 	else if (cmdname == "listofalgorithms" )
@@ -32,12 +30,12 @@ string const InsetTOC::getScreenLabel() const
 
 Inset::Code InsetTOC::LyxCode() const
 {
-	string cmdname( getCmdName() );
-	if (cmdname == "tableofcontents" )
+	string const cmdname(getCmdName());
+	if (cmdname == "tableofcontents")
 		return Inset::TOC_CODE;
-	else if (cmdname == "listofalgorithms" )
+	else if (cmdname == "listofalgorithms")
 		return Inset::LOA_CODE;
-	else if (cmdname == "listoffigures" )
+	else if (cmdname == "listoffigures")
 		return Inset::LOF_CODE; 
 	else
 		return Inset::LOT_CODE;
@@ -50,9 +48,9 @@ void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
+int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 {
-	os << getScreenLabel() << endl << endl;
+	os << getScreenLabel() << "\n\n";
 
 #if 0
 	Buffer::TocType type;
@@ -75,7 +73,7 @@ int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
 #else
 #warning Fix Me! (Lgb)
 	string type;
-	string cmdname = getCmdName();
+	string const cmdname = getCmdName();
 	if (cmdname == "tableofcontents" )
 		type = "TOC";
 	else if (cmdname == "listofalgorithms" )
@@ -93,15 +91,15 @@ int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
 		Buffer::SingleList::const_iterator end = cit->second.end();
 		for (; ccit != end; ++ccit)
 			os << string(4 * ccit->depth, ' ')
-			   << ccit->str << endl;
+			   << ccit->str << "\n";
 	}
 #endif
-	os << endl;
+	os << "\n";
 	return 0;
 }
 
 
-int InsetTOC::Linuxdoc(Buffer const *, ostream & os) const
+int InsetTOC::Linuxdoc(Buffer const *, std::ostream & os) const
 {
 	if (getCmdName() == "tableofcontents" )
 		os << "<toc>";
@@ -109,7 +107,7 @@ int InsetTOC::Linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetTOC::DocBook(Buffer const *, ostream & os) const
+int InsetTOC::DocBook(Buffer const *, std::ostream & os) const
 {
 	if (getCmdName() == "tableofcontents" )
 		os << "<toc></toc>";
