@@ -349,7 +349,7 @@ void lyxstringInvariant::helper() const
 	Assert(object->rep->res);  // always some space allocated
 	Assert(object->rep->sz <= object->rep->res);
 	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
-	Assert(object->rep->ref < static_cast<size_t>(1 << (8 * sizeof(object->rep->ref) - 1)));
+	Assert(object->rep->ref < static_cast<size_t>(1) << (8 * sizeof(object->rep->ref) - 1));
 	// if it does ever == then we should be generating a new copy
 	// and starting again.  (Is char always 8-bits?)
 }

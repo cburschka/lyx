@@ -1,5 +1,9 @@
 1999-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/support/LRegex.C: use regex_t instead of re_pattern_buffer.
+
+	* src/support/lyxstring.C (helper): fix bogus cast in assertion.
+
 	* src/{mathed,insets}/Makefile.am (CXXLINK): add $(LDFLAGS) to the
 	link line, so that Irix users (for example) can set it explicitely to
 	"-n32".

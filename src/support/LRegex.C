@@ -13,7 +13,7 @@ using std::make_pair;
 ///
 struct LRegex::Impl {
 	///
-	re_pattern_buffer * preg;
+	regex_t * preg;
 	
 	///
 	int error_code;
@@ -23,7 +23,7 @@ struct LRegex::Impl {
 	
 	///
 	Impl(string const & regex) 
-		: preg(new re_pattern_buffer), error_code(0)
+		: preg(new regex_t), error_code(0)
 	{
 		error_code = regcomp(preg, regex.c_str(), REG_EXTENDED);
 	}
