@@ -1,5 +1,8 @@
 2001-01-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* INSTALL (Problems): update description of the "missing linux
+	kernel sources" problem.
+
 	* src/frontends/xforms/FormPreferences.C (GetFrom): fix crash when
 	there is no format defined. 
 	(GetTo): ditto.
