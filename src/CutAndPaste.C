@@ -133,7 +133,7 @@ pitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 
 	// paste the paragraphs again, if possible
 	if (all_erased && 
-	    (startpit->hasSameLayout(&*boost::next(startpit)) ||
+	    (startpit->hasSameLayout(*boost::next(startpit)) ||
 	     boost::next(startpit)->empty())) {
 #warning current_view used here.
 // should we pass buffer or buffer->params around?
@@ -289,7 +289,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 
 	// make the buf exactly the same layout than
 	// the cursor paragraph
-	paragraphs.begin()->makeSameLayout(*par);
+	paragraphs.begin()->makeSameLayout(**par);
 
 	// find the end of the buffer
 	ParagraphList::iterator lastbuffer = paragraphs.begin();
@@ -325,14 +325,14 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	pos = lastbuffer->size();
 	// maybe some pasting
 	if (lastbuffer->next() && paste_the_end) {
-		if (lastbuffer->next()->hasSameLayout(&*lastbuffer)) {
+		if (lastbuffer->next()->hasSameLayout(*lastbuffer)) {
 			mergeParagraph(current_view->buffer()->params,
 				       current_view->buffer()->paragraphs, lastbuffer);
 		} else if (!lastbuffer->next()->size()) {
-			lastbuffer->next()->makeSameLayout(&*lastbuffer);
+			lastbuffer->next()->makeSameLayout(*lastbuffer);
 			mergeParagraph(current_view->buffer()->params, current_view->buffer()->paragraphs, lastbuffer);
 		} else if (!lastbuffer->size()) {
-			lastbuffer->makeSameLayout(lastbuffer->next());
+			lastbuffer->makeSameLayout(*lastbuffer->next());
 			mergeParagraph(current_view->buffer()->params,
 				       current_view->buffer()->paragraphs, lastbuffer);
 		} else

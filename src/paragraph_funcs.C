@@ -149,7 +149,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 	// create a new paragraph
 	ParagraphList::iterator tmp = paragraphs.insert(boost::next(par),
 							new Paragraph);
-	tmp->makeSameLayout(&*par);
+	tmp->makeSameLayout(*par);
 
 	// When can pos > Last()?
 	// I guess pos == Last() is possible.
@@ -457,7 +457,7 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (pit == paragraphs.begin() || !boost::prior(pit)->hasSameLayout(&*pit))) {
+			&& (pit == paragraphs.begin() || !boost::prior(pit)->hasSameLayout(*pit))) {
 			os << pit->params().spacing().writeEnvirBegin() << '\n';
 			texrow.newline();
 		}
@@ -637,7 +637,7 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (boost::next(pit) == paragraphs.end()|| !boost::next(pit)->hasSameLayout(&*pit))) {
+			&& (boost::next(pit) == paragraphs.end()|| !boost::next(pit)->hasSameLayout(*pit))) {
 			os << pit->params().spacing().writeEnvirEnd() << '\n';
 			texrow.newline();
 		}

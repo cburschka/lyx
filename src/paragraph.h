@@ -106,10 +106,10 @@ public:
 			     TexRow & texrow, bool moving_arg);
 
 	///
-	bool hasSameLayout(Paragraph const * par) const;
+	bool hasSameLayout(Paragraph const & par) const;
 
 	///
-	void makeSameLayout(Paragraph const * par);
+	void makeSameLayout(Paragraph const & par);
 
 	///
 	Inset * inInset() const;

@@ -664,11 +664,11 @@ Paragraph const * Paragraph::previous() const
 #endif
 
 
-void Paragraph::makeSameLayout(Paragraph const * par)
+void Paragraph::makeSameLayout(Paragraph const & par)
 {
-	layout(par->layout());
+	layout(par.layout());
 	// move to pimpl?
-	params() = par->params();
+	params() = par.params();
 }
 
 
@@ -687,11 +687,11 @@ int Paragraph::stripLeadingSpaces()
 }
 
 
-bool Paragraph::hasSameLayout(Paragraph const * par) const
+bool Paragraph::hasSameLayout(Paragraph const & par) const
 {
 	return
-		par->layout() == layout() &&
-		params().sameLayout(par->params());
+		par.layout() == layout() &&
+		params().sameLayout(par.params());
 }
 
 
