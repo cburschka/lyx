@@ -28,6 +28,7 @@
 #include "Lsstream.h"
 #include "FormPreferences.h"
 #include "form_preferences.h"
+#include "ButtonController.tmpl"
 #include "input_validators.h"
 #include "LyXView.h"
 #include "language.h"

@@ -1,3 +1,9 @@
+2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormMathsPanel.C:
+	* FormPreferences.C: #include "ButtonController.tmpl" to instantiate
+	the button controller for IgnorantPolicy and PreferencesPolicy.
+
 2002-01-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* forms/form_tabular.fd: text_info field was too small. Enlarge it.

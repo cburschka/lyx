@@ -1,5 +1,13 @@
 2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ButtonController.tmpl: added // -*- C++ -*-
+
+	* ControlCitation.C: #include "ControlInset.tmpl" to instantiate
+	ControlInset<InsetCommand, InsetCommandParams>::showInset, createInset.
+	Needed in _one_ of the ControlCommand-derived classes only.
+
+2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlInset.h:
 	* ControlSearch.h: #include LString.h
 

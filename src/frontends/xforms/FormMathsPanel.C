@@ -36,6 +36,8 @@
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
 
+#include "ButtonController.tmpl"
+
 #include "deco.xpm"
 #include "delim.xpm"
 #include "equation.xpm"
