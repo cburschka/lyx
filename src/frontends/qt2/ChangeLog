@@ -111,10 +111,16 @@
 	* QFloatDialog.C:
 	* ui/QFloatDialog.ui: fix bug 527 and more 
  
+2002-09-12  Angus Leeming  <leeming@lyx.org>
+
+	* iconpalette.C (resizeEvent): compile fix.
+
+	* QInclude.C (update_contents): remove lyxerr call.
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.C: fix bug 531 (emph())
- 
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C:

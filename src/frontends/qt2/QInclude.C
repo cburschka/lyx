@@ -55,8 +55,6 @@ void QInclude::update_contents()
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
 
-	lyxerr << cmdname << endl;
- 
 	if (cmdname == "input")
 		dialog_->typeCO->setCurrentItem(0);
 	else if (!cmdname.empty()) {
