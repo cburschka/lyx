@@ -335,7 +335,7 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 
 void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "MathNestInset: request: " << cmd << std::endl;
+	//lyxerr << "MathNestInset: request: " << cmd << std::endl;
 	//CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
@@ -739,11 +739,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.insert(MathAtom(new MathSpaceInset(",")));
 		break;
 
-	case LFUN_UNDO:
-#warning look here
-		//cur.bv().owner()->message(_("Invalid action in math mode!"));
-		break;
-
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		recordUndo(cur, Undo::ATOMIC);
@@ -890,12 +885,14 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	return ret;
 }
 
+
 void MathNestInset::edit(LCursor & cur, bool left)
 {
 	cur.push(*this);
 	cur.idx() = left ? 0 : cur.lastidx();
 	cur.pos() = left ? 0 : cur.lastpos();
 	cur.resetAnchor();
+	lyxerr << "MathNestInset::edit, cur:\n" << cur << endl;
 }
 
 

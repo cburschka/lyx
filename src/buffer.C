@@ -25,6 +25,7 @@
 #include "format.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "insetiterator.h"
 #include "iterators.h"
 #include "language.h"
 #include "LaTeX.h"
@@ -65,10 +66,9 @@
 #include "support/path.h"
 #include "support/textutils.h"
 #include "support/tostr.h"
+#include "support/std_sstream.h"
 
 #include <boost/bind.hpp>
-
-#include "support/std_sstream.h"
 
 #include <iomanip>
 #include <stack>
@@ -458,7 +458,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 	bool space_inserted = true;
 	bool autobreakrows = !pars[par].inInset() ||
 		static_cast<InsetText *>(pars[par].inInset())->getAutoBreakRows();
-	for(string::const_iterator cit = str.begin();
+	for (string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
 			if (autobreakrows && (!pars[par].empty() || pars[par].allowEmpty())) {
@@ -1183,15 +1183,17 @@ void Buffer::getLabelList(std::vector<string> & list) const
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
 	Buffer const * tmp = getMasterBuffer();
+	if (!tmp) {
+		lyxerr << "getMasterBuffer() failed!" << endl;
+		BOOST_ASSERT(tmp);
+	}
 	if (tmp != this) {
 		tmp->getLabelList(list);
 		return;
 	}
 
-	for (inset_iterator it = inset_const_iterator_begin();
-	     it != inset_const_iterator_end(); ++it) {
-		it->getLabelList(*this, list);
-	}
+	for (InsetIterator it(inset()); it; ++it)
+		it.nextInset()->getLabelList(*this, list);
 }
 
 
@@ -1202,13 +1204,13 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]
 	Buffer const * tmp = getMasterBuffer();
+	BOOST_ASSERT(tmp);
 	if (tmp != this) {
 		tmp->fillWithBibKeys(keys);
 		return;
 	}
 
-	for (inset_iterator it = inset_const_iterator_begin();
-		it != inset_const_iterator_end(); ++it) {
+	for (InsetIterator it(inset()); it; ++it) {
 		if (it->lyxCode() == InsetOld::BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				dynamic_cast<InsetBibtex const &>(*it);
@@ -1297,17 +1299,6 @@ bool Buffer::isMultiLingual() const
 			return true;
 
 	return false;
-}
-
-
-void Buffer::inset_iterator::setParagraph()
-{
-	while (pit != par_type(pars_->size())) {
-		it = (*pars_)[pit].insetlist.begin();
-		if (it != (*pars_)[pit].insetlist.end())
-			return;
-		++pit;
-	}
 }
 
 
@@ -1484,96 +1475,4 @@ Buffer const * Buffer::getMasterBuffer() const
 	}
 
 	return this;
-}
-
-
-Buffer::inset_iterator::inset_iterator(ParagraphList & pars, base_type p)
-	: pit(p), pars_(&pars)
-{
-	setParagraph();
-}
-
-
-Buffer::inset_iterator Buffer::inset_iterator_begin()
-{
-	return inset_iterator(paragraphs(), 0);
-}
-
-
-Buffer::inset_iterator Buffer::inset_iterator_end()
-{
-	return inset_iterator(paragraphs(), paragraphs().size());
-}
-
-
-Buffer::inset_iterator Buffer::inset_const_iterator_begin() const
-{
-	ParagraphList & pars = const_cast<ParagraphList&>(paragraphs());
-	return inset_iterator(pars, 0);
-}
-
-
-Buffer::inset_iterator Buffer::inset_const_iterator_end() const
-{
-	ParagraphList & pars = const_cast<ParagraphList&>(paragraphs());
-	return inset_iterator(pars, pars.size());
-}
-
-
-Buffer::inset_iterator & Buffer::inset_iterator::operator++()
-{
-	if (pit != par_type(pars_->size())) {
-		++it;
-		if (it == (*pars_)[pit].insetlist.end()) {
-			++pit;
-			setParagraph();
-		}
-	}
-	return *this;
-}
-
-
-Buffer::inset_iterator Buffer::inset_iterator::operator++(int)
-{
-	inset_iterator tmp = *this;
-	++*this;
-	return tmp;
-}
-
-
-Buffer::inset_iterator::reference Buffer::inset_iterator::operator*()
-{
-	return *it->inset;
-}
-
-
-Buffer::inset_iterator::pointer Buffer::inset_iterator::operator->()
-{
-	return it->inset;
-}
-
-
-lyx::par_type Buffer::inset_iterator::getPar() const
-{
-	return pit;
-}
-
-
-lyx::pos_type Buffer::inset_iterator::getPos() const
-{
-	return it->pos;
-}
-
-
-bool operator==(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2)
-{
-	return iter1.pit == iter2.pit && iter1.it == iter2.it;
-}
-
-
-bool operator!=(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2)
-{
-	return !(iter1 == iter2);
 }

@@ -14,6 +14,8 @@
 #include "math_macrotemplate.h"
 #include "debug.h"
 
+#include <boost/assert.hpp>
+
 
 using std::string;
 using std::endl;
@@ -42,6 +44,7 @@ MathAtom & MathMacroTable::provide(string const & name)
 	if (pos == macro_table.end()) {
 		lyxerr << "MathMacroTable::provideTemplate: no template with name '"
 		       << name << "' available." << endl;
+		BOOST_ASSERT(false);
 	}
 	return pos->second;
 }
@@ -49,6 +52,8 @@ MathAtom & MathMacroTable::provide(string const & name)
 
 void MathMacroTable::create(MathAtom const & at)
 {
+	lyxerr << "MathMacroTable::create: '"
+		<< at->asMacroTemplate()->name() << "'" << endl;
 	macro_table[at->asMacroTemplate()->name()] = at;
 }
 

@@ -14,6 +14,7 @@
 #include "PreviewLoader.h"
 
 #include "buffer.h"
+#include "insetiterator.h"
 #include "lyxrc.h"
 #include "paragraph.h"
 
@@ -82,10 +83,7 @@ void Previews::generateBufferPreviews(Buffer const & buffer) const
 {
 	PreviewLoader & ploader = loader(buffer);
 
-	Buffer::inset_iterator it  = buffer.inset_const_iterator_begin();
-	Buffer::inset_iterator end = buffer.inset_const_iterator_end();
-
-	for (; it != end; ++it)
+	for (InsetIterator it(buffer.inset()); it; ++it)
 		it->addPreview(ploader);
 
 	ploader.startLoading();

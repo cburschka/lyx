@@ -168,6 +168,8 @@ public:
 	void update();
 	/// the event was not (yet) dispatched
 	void undispatched();
+	/// the event was already dispatched
+	void dispatched();
 	/// don't call update() when done
 	void noUpdate();
 

@@ -286,58 +286,6 @@ public:
 	TexRow & texrow();
 	TexRow const & texrow() const;
 
-	class inset_iterator {
-	public:
-		typedef std::input_iterator_tag iterator_category;
-		typedef InsetBase value_type;
-		typedef ptrdiff_t difference_type;
-		typedef InsetBase * pointer;
-		typedef InsetBase & reference;
-		typedef lyx::par_type base_type;
-
-		///
-		inset_iterator(ParagraphList & pars, base_type p);
-
-		/// prefix ++
-		inset_iterator & operator++();
-		/// postfix ++
-		inset_iterator operator++(int);
-		///
-		reference operator*();
-		///
-		pointer operator->();
-
-		///
-		lyx::par_type getPar() const;
-		///
-		lyx::pos_type getPos() const;
-		///
-		friend
-		bool operator==(inset_iterator const & iter1,
-				inset_iterator const & iter2);
-	private:
-		///
-		void setParagraph();
-		///
-		lyx::par_type pit;
-		///
-		InsetList::iterator it;
-	public:
-		ParagraphList * pars_;
-	};
-
-	/// return an iterator to all *top-level* insets in the buffer
-	inset_iterator inset_iterator_begin();
-
-	/// return the end of all *top-level* insets in the buffer
-	inset_iterator inset_iterator_end();
-
-	/// return a const iterator to all *top-level* insets in the buffer
-	inset_iterator inset_const_iterator_begin() const;
-
-	/// return the const end of all *top-level* insets in the buffer
-	inset_iterator inset_const_iterator_end() const;
-
 	///
 	ParIterator par_iterator_begin();
 	///
@@ -375,11 +323,5 @@ private:
 	/// The pointer never changes although *pimpl_'s contents may.
 	boost::scoped_ptr<Impl> const pimpl_;
 };
-
-bool operator==(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2);
-
-bool operator!=(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2);
 
 #endif

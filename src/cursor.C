@@ -1335,6 +1335,12 @@ void LCursor::undispatched()
 }
 
 
+void LCursor::dispatched()
+{
+	disp_.dispatched(true);
+}
+
+
 void LCursor::noUpdate()
 {
 	disp_.update(false);

@@ -17,6 +17,7 @@
 #include "converter.h"
 #include "debug.h"
 #include "format.h"
+#include "insetiterator.h"
 #include "LColor.h"
 #include "lyxrc.h"
 #include "outputparams.h"
@@ -599,10 +600,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	   << "\n";
 
 	// Loop over the insets in the buffer and dump all the math-macros.
-	Buffer::inset_iterator it  = buffer_.inset_const_iterator_begin();
-	Buffer::inset_iterator end = buffer_.inset_const_iterator_end();
-
-	for (; it != end; ++it)
+	for (InsetIterator it(buffer_.inset()); it; ++it)
 		if (it->lyxCode() == InsetOld::MATHMACRO_CODE)
 			it->latex(buffer_, os, runparams);
 

@@ -31,6 +31,8 @@ using std::advance;
 
 using lyx::par_type;
 
+using std::endl;
+
 
 namespace {
 
@@ -156,8 +158,11 @@ bool textUndoOrRedo(BufferView & bv,
 	DocumentIterator dit =
 		undo.cursor.asDocumentIterator(&bv.buffer()->inset());
 	if (dit.inMathed()) {
-		// not much to be done
+		// Easy way out: store a full cell.
+		otherstack.top().array = asString(dit.cell());
 	} else {
+		// As cells might be too large in texted, store just a part
+		// of the paragraph list.
 		otherstack.top().pars.clear();
 		LyXText * text = dit.text();
 		BOOST_ASSERT(text);
