@@ -27,6 +27,8 @@ FD_form_preferences * FormPreferences::build_preferences()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 470, 500, "");
   fdui->tabfolder_prefs = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 10, 455, 375, "");
     fl_set_object_boxtype(obj, FL_FLAT_BOX);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Apply|#A");
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 270, 390, 90, 30, idex(_(dummy)));
