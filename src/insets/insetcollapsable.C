@@ -381,6 +381,24 @@ int InsetCollapsable::latex(Buffer const * buf, ostream & os,
 	return inset.latex(buf, os, fragile, free_spc);
 }
 
+
+int InsetCollapsable::ascii(Buffer const *buf, std::ostream & os, int ll) const
+{
+	return inset.ascii(buf, os, ll);
+}
+
+
+int InsetCollapsable::linuxdoc(Buffer const *buf, std::ostream & os) const
+{
+	return inset.linuxdoc(buf, os);
+}
+
+
+int InsetCollapsable::docbook(Buffer const *buf, std::ostream & os) const
+{
+	return inset.docbook(buf, os);
+}
+
 #if 0
 int InsetCollapsable::getMaxWidth(BufferView * bv,
                                   UpdatableInset const * in) const

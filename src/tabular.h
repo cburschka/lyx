@@ -290,44 +290,13 @@ public:
 	void Read(Buffer const *, LyXLex &);
 	///
 	void OldFormatRead(LyXLex &, string const &);
-	//
-	// helper function for Latex returns number of newlines
 	///
-	int TeXTopHLine(std::ostream &, int row) const;
+	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
-	int TeXBottomHLine(std::ostream &, int row) const;
+	int docBook(Buffer const * buf, std::ostream & os) const;
 	///
-	int TeXCellPreamble(std::ostream &, int cell) const;
-	///
-	int TeXCellPostamble(std::ostream &, int cell) const;
-	///
-	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
-	                             bool fragile, bool fp) const;
-	///
-	bool isValidRow(int const row) const;
-	///
-	int TeXRow(std::ostream &, int const row, Buffer const * buf,
-	           bool fragile, bool fp) const;
-	///
-	int Latex(Buffer const *, std::ostream &, bool, bool) const;
-	/// auxiliary function for docbook rows
-	int docbookRow(Buffer const * buf, std::ostream & os, int row) const;
-	///
-	int DocBook(Buffer const * buf, std::ostream & os) const;
-	///
-	// helper function for Latex returns number of newlines
-	///
-	int AsciiTopHLine(std::ostream &, int row,
-			  std::vector<unsigned int> const &) const;
-	///
-	int AsciiBottomHLine(std::ostream &, int row,
-			     std::vector<unsigned int> const &) const;
-	///
-	int AsciiPrintCell(Buffer const *, std::ostream &,
-			   int cell, int row, int column,
-			   std::vector<unsigned int> const &) const;
-	///
-	int Ascii(Buffer const *, std::ostream &) const;
+	int ascii(Buffer const *, std::ostream &, int const depth,
+	          bool onlydata, unsigned char delim) const;
 	///
 	bool IsMultiColumn(int cell, bool real = false) const;
 	///
@@ -577,6 +546,39 @@ private:
 	BoxType UseParbox(int cell) const;
 	///
 	void setHeaderFooterRows(int header, int fheader, int footer, int lfooter);
+	///
+	// helper function for Latex returns number of newlines
+	///
+	int TeXTopHLine(std::ostream &, int row) const;
+	///
+	int TeXBottomHLine(std::ostream &, int row) const;
+	///
+	int TeXCellPreamble(std::ostream &, int cell) const;
+	///
+	int TeXCellPostamble(std::ostream &, int cell) const;
+	///
+	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
+	                             bool fragile, bool fp) const;
+	///
+	bool isValidRow(int const row) const;
+	///
+	int TeXRow(std::ostream &, int const row, Buffer const * buf,
+	           bool fragile, bool fp) const;
+	///
+	// helper function for ASCII returns number of newlines
+	///
+	int asciiTopHLine(std::ostream &, int row,
+	                  std::vector<unsigned int> const &) const;
+	///
+	int asciiBottomHLine(std::ostream &, int row,
+	                     std::vector<unsigned int> const &) const;
+	///
+	int asciiPrintCell(Buffer const *, std::ostream &,
+	                   int cell, int row, int column,
+	                   std::vector<unsigned int> const &,
+					   bool onlydata) const;
+	/// auxiliary function for docbook
+	int docbookRow(Buffer const * buf, std::ostream & os, int row) const;
 };
 
 #endif

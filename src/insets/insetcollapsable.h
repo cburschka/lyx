@@ -103,11 +103,11 @@ public:
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int) const { return 0; }
+	int ascii(Buffer const *, std::ostream &, int) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &) const { return 0; }
+	int docbook(Buffer const *, std::ostream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

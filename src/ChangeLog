@@ -1,5 +1,11 @@
 2001-12-27  Juergen Vigna  <jug@sad.it>
 
+	* buffer.C (asciiParagraph): more fixes.
+
+	* tabular.C (ascii): make ascii export support export of only the
+	data separated by a column-delimiter.
+	(ascii): better support for ascii export.
+
 	* buffer.C (asciiParagraph): rewrote to hopefully work as expected!
 
 2001-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

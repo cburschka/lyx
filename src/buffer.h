@@ -151,8 +151,8 @@ public:
 	///
 	void writeFileAscii(std::ostream &, int);
 	///
-	string const asciiParagraph(Paragraph const *,
-				    unsigned int linelen) const;
+	string const asciiParagraph(Paragraph const *, unsigned int linelen,
+	                            bool noparbreak = false) const;
 	///
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,

@@ -1,3 +1,15 @@
+2001-12-27  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (ascii): export as tab-separated-values if the
+	function was not called from export (f.ex.: clipboard).
+
+	* insetcollapsable.h: added default support for ascii, linuxdoc and
+	docbook export (the insettext is exported by default!)
+
+	* insettabular.C (copySelection): suff the clipboard with the tabular
+	data in a tab separated format, seems more naturals then with all the
+	formating.
+
 2001-12-24  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insetMotionNotify): added a mouse_x & mouse_y position

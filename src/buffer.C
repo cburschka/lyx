@@ -1768,7 +1768,8 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 
 
 string const Buffer::asciiParagraph(Paragraph const * par,
-                                    unsigned int linelen) const
+                                    unsigned int linelen,
+                                    bool noparbreak) const
 {
 	ostringstream buffer;
 	ostringstream word;
@@ -1777,8 +1778,6 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 	Paragraph::depth_type ltype_depth = 0;
 	string::size_type currlinelen = 0;
 	bool ref_printed = false;
-
-	int noparbreak = 0;
 //	if (!par->previous()) {
 #if 0
 	// begins or ends a deeper area ?
@@ -1907,7 +1906,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 			if (inset) {
 				if (linelen > 0)
 					buffer << word.str();
-				if (inset->ascii(this, buffer)) {
+				if (inset->ascii(this, buffer, linelen)) {
 					// to be sure it breaks paragraph
 					currlinelen += linelen;
 				}
@@ -1999,7 +1998,7 @@ void Buffer::writeFileAscii(ostream & ofs, int linelen)
 {
 	Paragraph * par = paragraph;
 	while (par) {
-		ofs << asciiParagraph(par, linelen);
+		ofs << asciiParagraph(par, linelen, par->previous() == 0);
 		par = par->next();
 	}
 	ofs << "\n";

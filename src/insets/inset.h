@@ -191,7 +191,7 @@ public:
 			  bool free_spc) const = 0;
 	///
 	virtual int ascii(Buffer const *,
-			  std::ostream &, int linelen = 0) const = 0;
+	                  std::ostream &, int linelen = 0) const = 0;
 	///
 	virtual int linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///

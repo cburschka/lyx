@@ -2181,7 +2181,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 }
 
 
-int LyXTabular::Latex(Buffer const * buf,
+int LyXTabular::latex(Buffer const * buf,
 					  ostream & os, bool fragile, bool fp) const
 {
 	int ret = 0;
@@ -2323,7 +2323,7 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 }	
 
 
-int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
+int LyXTabular::docBook(Buffer const * buf, ostream & os) const
 {
 	int ret = 0;
 
@@ -2407,20 +2407,11 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 	return ret;
 }
 
-
-namespace {
-
-	inline
-	void print_n_chars(ostream & os, unsigned char ch, int n)
-	{
-		os << string(n, ch);
-	}
-
-} // namespace anon
-
-
-int LyXTabular::AsciiTopHLine(ostream & os, int row,
-							  vector<unsigned int> const & clen) const
+//--
+// ASCII export function and helpers
+//--
+int LyXTabular::asciiTopHLine(ostream & os, int row,
+                              vector<unsigned int> const & clen) const
 {
 	int const fcell = GetFirstCellInRow(row);
 	int const n = NumberOfCellsInRow(fcell) + fcell;
@@ -2451,7 +2442,7 @@ int LyXTabular::AsciiTopHLine(ostream & os, int row,
 		int len = clen[column];
 		while (IsPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
-		print_n_chars(os, ch, len);
+		os << string(len, ch);
 		if (TopLine(i)) {
 			if (RightLine(i))
 				os << "-+";
@@ -2466,8 +2457,8 @@ int LyXTabular::AsciiTopHLine(ostream & os, int row,
 }
 
 
-int LyXTabular::AsciiBottomHLine(ostream & os, int row,
-								 vector<unsigned int> const & clen) const
+int LyXTabular::asciiBottomHLine(ostream & os, int row,
+                                 vector<unsigned int> const & clen) const
 {
 	int const fcell = GetFirstCellInRow(row);
 	int const n = NumberOfCellsInRow(fcell) + fcell;
@@ -2498,7 +2489,7 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 		int len = clen[column];
 		while (IsPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
-		print_n_chars(os, ch, len);
+		os << string(len, ch);
 		if (BottomLine(i)) {
 			if (RightLine(i))
 				os << "-+";
@@ -2513,13 +2504,19 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 }
 
 
-int LyXTabular::AsciiPrintCell(Buffer const * buf, ostream & os,
-			       int cell, int row, int column,
-			       vector<unsigned int> const & clen) const
+int LyXTabular::asciiPrintCell(Buffer const * buf, ostream & os,
+                               int cell, int row, int column,
+                               vector<unsigned int> const & clen,
+                               bool onlydata) const
 {
 	ostringstream sstr;
 	int ret = GetCellInset(cell)->ascii(buf, sstr, 0);
 
+	if (onlydata) {
+		os << sstr.str();
+		return ret;
+	}
+	
 	if (LeftLine(cell))
 		os << "| ";
 	else
@@ -2560,7 +2557,8 @@ int LyXTabular::AsciiPrintCell(Buffer const * buf, ostream & os,
 }
 
 
-int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
+int LyXTabular::ascii(Buffer const * buf, ostream & os, int const depth,
+					  bool onlydata, unsigned char delim) const
 {
 	int ret = 0;
 
@@ -2569,49 +2567,68 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 	//+---------------------------------------------------------------------
 	vector<unsigned int> clen(columns_);
 
-	// first all non (real) multicolumn cells!
-	for (int j = 0; j < columns_; ++j) {
-		clen[j] = 0;
-		for (int i = 0; i < rows_; ++i) {
-			int cell = GetCellNumber(i, j);
-			if (IsMultiColumn(cell, true))
-				continue;
-			ostringstream sstr;
-			GetCellInset(cell)->ascii(buf, sstr, 0);
-			if (clen[j] < sstr.str().length())
-				clen[j] = sstr.str().length();
+	if (!onlydata) {
+		// first all non (real) multicolumn cells!
+		for (int j = 0; j < columns_; ++j) {
+			clen[j] = 0;
+			for (int i = 0; i < rows_; ++i) {
+				int cell = GetCellNumber(i, j);
+				if (IsMultiColumn(cell, true))
+					continue;
+				ostringstream sstr;
+				GetCellInset(cell)->ascii(buf, sstr, 0);
+				if (clen[j] < sstr.str().length())
+					clen[j] = sstr.str().length();
+			}
 		}
-	}
-	// then all (real) multicolumn cells!
-	for (int j = 0; j < columns_; ++j) {
-		for (int i = 0; i < rows_; ++i) {
-			int cell = GetCellNumber(i, j);
-			if (!IsMultiColumn(cell, true) || IsPartOfMultiColumn(i, j))
-				continue;
-			ostringstream sstr;
-			GetCellInset(cell)->ascii(buf, sstr, 0);
-			int len = int(sstr.str().length());
-			int const n = cells_in_multicolumn(cell);
-			for (int k = j; (len > 0) && (k < (j + n - 1)); ++k)
-				len -= clen[k];
-			if (len > int(clen[j + n - 1]))
-				clen[j + n - 1] = len;
+		// then all (real) multicolumn cells!
+		for (int j = 0; j < columns_; ++j) {
+			for (int i = 0; i < rows_; ++i) {
+				int cell = GetCellNumber(i, j);
+				if (!IsMultiColumn(cell, true) || IsPartOfMultiColumn(i, j))
+					continue;
+				ostringstream sstr;
+				GetCellInset(cell)->ascii(buf, sstr, 0);
+				int len = int(sstr.str().length());
+				int const n = cells_in_multicolumn(cell);
+				for (int k = j; (len > 0) && (k < (j + n - 1)); ++k)
+					len -= clen[k];
+				if (len > int(clen[j + n - 1]))
+					clen[j + n - 1] = len;
+			}
 		}
 	}
 	int cell = 0;
 	for (int i = 0; i < rows_; ++i) {
-		AsciiTopHLine(os, i, clen);
+		if (!onlydata) {
+			if (asciiTopHLine(os, i, clen)) {
+				for (int j = 0; j < depth; ++j)
+					os << "  ";
+			}
+		}
 		for (int j = 0; j < columns_; ++j) {
 			if (IsPartOfMultiColumn(i,j))
 				continue;
-			ret += AsciiPrintCell(buf, os, cell, i, j, clen);
+			if (onlydata && j > 0)
+				os << delim;
+			ret += asciiPrintCell(buf, os, cell, i, j, clen, onlydata);
 			++cell;
 		}
 		os << endl;
-		AsciiBottomHLine(os, i, clen);
+		if (!onlydata) {
+			for (int j = 0; j < depth; ++j)
+				os << "  ";
+			if (asciiBottomHLine(os, i, clen)) {
+				for (int j = 0; j < depth; ++j)
+					os << "  ";
+			}
+		}
 	}
 	return ret;
 }
+//--
+// end ascii export
+//--
 
 
 InsetText * LyXTabular::GetCellInset(int cell) const

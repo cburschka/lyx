@@ -34,6 +34,7 @@
 #include "BufferView.h"
 #include "undo_funcs.h"
 #include "lyxlength.h"
+#include "ParagraphParameters.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
@@ -1188,22 +1189,24 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 
 
 int InsetTabular::latex(Buffer const * buf, ostream & os,
-			bool fragile, bool fp) const
+                        bool fragile, bool fp) const
 {
-	return tabular->Latex(buf, os, fragile, fp);
+	return tabular->latex(buf, os, fragile, fp);
 }
 
 
-int InsetTabular::ascii(Buffer const * buf, ostream & os, int) const
+int InsetTabular::ascii(Buffer const * buf, ostream & os, int ll) const
 {
-	// This should be changed to a real ascii export
-	return tabular->Ascii(buf, os);
+	if (ll > 0)
+		return tabular->ascii(buf, os, (int)parOwner()->params().depth(),
+		                      false,0);
+	return tabular->ascii(buf, os, 0, false,0);
 }
 
 
 int InsetTabular::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return tabular->Ascii(buf,os);
+	return tabular->ascii(buf,os, (int)parOwner()->params().depth(), false, 0);
 }
 
 
@@ -1222,7 +1225,7 @@ int InsetTabular::docbook(Buffer const * buf, ostream & os) const
 		os << "<informaltable>\n";
 		ret++;
 	}
-	ret+= tabular->DocBook(buf,os);
+	ret+= tabular->docBook(buf,os);
 	if (!master) {
 		os << "</informaltable>\n";
 		ret++;
@@ -2449,7 +2452,8 @@ bool InsetTabular::copySelection(BufferView * bv)
 				    true, true);
 
 	ostringstream sstr;
-	paste_tabular->Ascii(bv->buffer(), sstr);
+	paste_tabular->ascii(bv->buffer(), sstr,
+	                     (int)parOwner()->params().depth(), true, '\t');
 	bv->stuffClipboard(sstr.str().c_str());
 	return true;
 }

@@ -1428,7 +1428,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 	unsigned int lines = 0;
 	
 	while (p) {
-		string const tmp = buf->asciiParagraph(p, linelen);
+		string const tmp = buf->asciiParagraph(p, linelen, p->previous()==0);
 		lines += countChar(tmp, '\n');
 		os << tmp;
 		p = p->next();
