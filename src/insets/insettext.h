@@ -397,5 +397,7 @@ private:
 	mutable int frame_h;
 	///
 	bool in_update; /* as update is not reentrant! */
+	mutable BufferView * do_resize;
+	mutable bool do_reinit;
 };
 #endif

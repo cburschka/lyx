@@ -1,5 +1,9 @@
 2001-08-13  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C: fixed problem when reinitializing LyXText by not doing
+	it while lt is in use and post this to the next possible time in
+	getLyXText().
+
 	* insetert.C (InsetERT): init status_ also in the 3rd constructor.
 
 	* insettabular.C (tabularFeatures): fixed fix where deleting the

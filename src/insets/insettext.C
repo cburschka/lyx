@@ -129,7 +129,8 @@ InsetText::InnerCache::InnerCache(boost::shared_ptr<LyXText> t)
 
 
 InsetText::InsetText()
-	: UpdatableInset(), lt(0), in_update(false)
+	: UpdatableInset(), lt(0), in_update(false), do_resize(0),
+	  do_reinit(false)
 {
 	par = new Paragraph;
 	init();
@@ -137,7 +138,8 @@ InsetText::InsetText()
 
 
 InsetText::InsetText(InsetText const & in, bool same_id)
-	: UpdatableInset(in, same_id), lt(0), in_update(false)
+	: UpdatableInset(in, same_id), lt(0), in_update(false), do_resize(0),
+	  do_reinit(false)
 {
 	par = 0;
 	init(&in, same_id);
@@ -1851,7 +1853,7 @@ Row * InsetText::crow(BufferView * bv) const
 
 
 LyXText * InsetText::getLyXText(BufferView const * lbv,
-					  bool const recursive) const
+                                bool const recursive) const
 {
 	if (!recursive && (cached_bview == lbv))
 		return cached_text.get();
@@ -1863,6 +1865,10 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 	Cache::iterator it = cache.find(bv);
 
 	if (it != cache.end()) {
+		if (do_reinit)
+			reinitLyXText();
+		else if (do_resize)
+			resizeLyXText(do_resize);
 		if (lt || !it->second.remove) {
 			lyx::Assert(it->second.text.get());
 			cached_text = it->second.text;
@@ -1917,6 +1923,13 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 
 void InsetText::resizeLyXText(BufferView * bv, bool force) const
 {
+	if (lt) {
+		// we cannot resize this because we are in use!
+		// so do this on the next possible getLyXText()
+		do_resize = bv;
+		return;
+	}
+	do_resize = false;
 //	lyxerr << "InsetText::resizeLyXText\n";
 	if (!par->next() && !par->size()) // no data, resize not neccessary!
 		return;
@@ -1957,6 +1970,14 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 void InsetText::reinitLyXText() const
 {
+	if (lt) {
+		// we cannot resize this because we are in use!
+		// so do this on the next possible getLyXText()
+		do_reinit = true;
+		return;
+	}
+	do_reinit = false;
+	do_resize = false;
 //	lyxerr << "InsetText::reinitLyXText\n";
 	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
 		lyx::Assert(it->second.text.get());
