@@ -5,7 +5,7 @@ noinst_LTLIBRARIES = libcontrollers.la
 INCLUDES = -I$(top_srcdir)/src \
 	$(BOOST_INCLUDES)
 
-EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl
+EXTRA_DIST = BCView.tmpl ControlDialog.tmpl
 
 libcontrollers_la_SOURCES= \
 	Dialog.C \
@@ -20,9 +20,10 @@ libcontrollers_la_SOURCES= \
 	frnt_lang.h \
 	tex_helpers.C \
 	tex_helpers.h \
+	BCView.h \
+	BCView.C \
+	ButtonController.C \
 	ButtonController.h \
-	ButtonControllerBase.C \
-	ButtonControllerBase.h \
 	ButtonPolicies.C \
 	ButtonPolicies.h \
 	ControlAboutlyx.C \
@@ -102,6 +103,7 @@ libcontrollers_la_SOURCES= \
 	ControlWrap.h \
 	GUI.h \
 	ViewBase.h \
+	ViewBase.C \
 	helper_funcs.C \
 	helper_funcs.h
 

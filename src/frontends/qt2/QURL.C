@@ -17,6 +17,7 @@
 #include "QURL.h"
 #include "QURLDialog.h"
 #include "Qt2BC.h"
+#include "ButtonController.h"
 
 #include <qcheckbox.h>
 #include <qpushbutton.h>
@@ -34,11 +35,11 @@ void QURL::build_dialog()
 {
 	dialog_.reset(new QURLDialog(this));
 
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->urlED);
-	bc().addReadOnly(dialog_->nameED);
-	bc().addReadOnly(dialog_->hyperlinkCB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->urlED);
+	bcview().addReadOnly(dialog_->nameED);
+	bcview().addReadOnly(dialog_->hyperlinkCB);
 }
 
 

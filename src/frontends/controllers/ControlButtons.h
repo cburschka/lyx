@@ -28,9 +28,10 @@
 
 
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
 
 class ViewBase;
-class ButtonControllerBase;
+class ButtonController;
 
 /** Abstract base class for Controllers with a ButtonController.
  */
@@ -39,7 +40,7 @@ public:
 	///
 	ControlButtons();
 	///
-	virtual ~ControlButtons() {}
+	virtual ~ControlButtons();
 
 	/** These functions are called by the view when the appropriate buttons
 	 *  are pressed.
@@ -57,12 +58,10 @@ public:
 	bool IconifyWithMain() const;
 
 	///
-	ButtonControllerBase & bc();
+	ButtonController & bc();
 
 	///
 	void setView(ViewBase &);
-	///
-	void setButtonController(ButtonControllerBase &);
 	/** When Applying it's useful to know whether the dialog is about
 	    to close or not (no point refreshing the display for example). */
 	bool isClosing() const { return is_closing_; }
@@ -84,9 +83,9 @@ protected:
 private:
 	///
 	bool is_closing_;
-	/// We own neither of these pointers.
-	ButtonControllerBase * bc_ptr_;
 	///
+	boost::scoped_ptr<ButtonController> bc_ptr_;
+	/// We do not own this pointer.
 	ViewBase * view_ptr_;
 };
 

@@ -12,14 +12,20 @@
 
 
 #include "ControlButtons.h"
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
+#include "BCView.h"
 #include "ViewBase.h"
 #include "lyxrc.h"
 #include "support/LAssert.h"
 
 
 ControlButtons::ControlButtons()
-	: emergency_exit_(false), is_closing_(false), bc_ptr_(0), view_ptr_(0)
+	: emergency_exit_(false), is_closing_(false),
+	  bc_ptr_(new ButtonController), view_ptr_(0)
+{}
+
+
+ControlButtons::~ControlButtons()
 {}
 
 
@@ -60,10 +66,10 @@ bool ControlButtons::IconifyWithMain() const
 }
 
 
-ButtonControllerBase & ControlButtons::bc()
+ButtonController & ControlButtons::bc()
 {
-	lyx::Assert(bc_ptr_);
-	return *bc_ptr_;
+	lyx::Assert(bc_ptr_.get());
+	return *bc_ptr_.get();
 }
 
 
@@ -77,10 +83,4 @@ ViewBase & ControlButtons::view()
 void ControlButtons::setView(ViewBase & v)
 {
 	view_ptr_ = &v;
-}
-
-
-void ControlButtons::setButtonController(ButtonControllerBase & bc)
-{
-	bc_ptr_ = &bc;
 }

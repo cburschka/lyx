@@ -96,7 +96,7 @@ void FormMathsBitmap::build()
 	     it < bitmaps_.end(); ++it) {
 		FL_OBJECT * obj = buildBitmap(*it);
 
-		bc().addReadOnly(obj);
+		bcview().addReadOnly(obj);
 		y_close = max(y_close, obj->y + obj->h);
 	}
 	bitmaps_.clear();
@@ -116,7 +116,7 @@ void FormMathsBitmap::build()
 	fdui->form->fdui = fdui;
 
 	dialog_.reset(fdui);
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 }
 
 

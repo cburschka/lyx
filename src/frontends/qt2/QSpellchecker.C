@@ -38,7 +38,7 @@ void QSpellchecker::build_dialog()
 {
 	dialog_.reset(new QSpellcheckerDialog(this));
 
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 	dialog_->wordED->setReadOnly(true);
 }
 

@@ -34,10 +34,10 @@ void QThesaurus::build_dialog()
 {
 	dialog_.reset(new QThesaurusDialog(this));
 
-	bc().setCancel(dialog_->closePB);
-	bc().setApply(dialog_->replacePB);
-	bc().addReadOnly(dialog_->replaceED);
-	bc().addReadOnly(dialog_->replacePB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().setApply(dialog_->replacePB);
+	bcview().addReadOnly(dialog_->replaceED);
+	bcview().addReadOnly(dialog_->replacePB);
 }
 
 

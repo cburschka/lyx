@@ -39,14 +39,14 @@ void QMinipage::build_dialog()
 {
 	dialog_.reset(new QMinipageDialog(this));
 
-	bc().setRestore(dialog_->restorePB);
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
+	bcview().setRestore(dialog_->restorePB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
 
-	bc().addReadOnly(dialog_->widthED);
-	bc().addReadOnly(dialog_->unitsLC);
-	bc().addReadOnly(dialog_->valignCO);
+	bcview().addReadOnly(dialog_->widthED);
+	bcview().addReadOnly(dialog_->unitsLC);
+	bcview().addReadOnly(dialog_->valignCO);
 }
 
 

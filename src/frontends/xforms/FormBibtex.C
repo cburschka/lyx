@@ -44,18 +44,18 @@ void FormBibtex::build()
 	dialog_.reset(build_bibtex(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->input_database);
-	bc().addReadOnly(dialog_->button_database_browse);
-	bc().addReadOnly(dialog_->button_style_browse);
-	bc().addReadOnly(dialog_->button_rescan);
-	bc().addReadOnly(dialog_->input_style);
-	bc().addReadOnly(dialog_->check_bibtotoc);
+	bcview().addReadOnly(dialog_->input_database);
+	bcview().addReadOnly(dialog_->button_database_browse);
+	bcview().addReadOnly(dialog_->button_style_browse);
+	bcview().addReadOnly(dialog_->button_rescan);
+	bcview().addReadOnly(dialog_->input_style);
+	bcview().addReadOnly(dialog_->check_bibtotoc);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_database);

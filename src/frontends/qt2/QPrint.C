@@ -42,8 +42,8 @@ void QPrint::build_dialog()
 {
 	dialog_.reset(new QLPrintDialog(this));
 
-	bc().setOK(dialog_->printPB);
-	bc().setCancel(dialog_->closePB);
+	bcview().setOK(dialog_->printPB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

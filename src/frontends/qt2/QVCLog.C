@@ -38,7 +38,7 @@ void QVCLog::build_dialog()
 {
 	dialog_.reset(new QVCLogDialog(this));
 
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

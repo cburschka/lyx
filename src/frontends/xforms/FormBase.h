@@ -86,7 +86,7 @@ protected:
 	void clearMessage();
 
 	///
-	xformsBC & bc();
+	xformsBC & bcview();
 
 private:
 	/// Pointer to the actual instantiation of xform's form

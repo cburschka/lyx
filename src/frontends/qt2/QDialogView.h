@@ -56,7 +56,7 @@ protected:
 	virtual bool isValid();
 
 	///
-	Qt2BC & bc();
+	Qt2BC & bcview();
 
 	/// are we updating ?
 	bool updating_;

@@ -13,6 +13,7 @@
 
 
 #include "xformsBC.h"
+#include "ButtonController.h"
 #include "FormForks.h"
 #include "ControlForks.h"
 #include "forms/form_forks.h"
@@ -45,9 +46,9 @@ void FormForks::build() {
 	fl_clear_browser(dialog_->browser_kill);
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 	bc().invalid();
 
 	// Set up the tooltip mechanism

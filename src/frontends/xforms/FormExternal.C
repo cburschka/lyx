@@ -59,13 +59,13 @@ void FormExternal::build()
 	setPrehandler(dialog_->input_filename);
 	setPrehandler(dialog_->input_parameters);
 
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->input_filename);
-	bc().addReadOnly(dialog_->button_filenamebrowse);
-	bc().addReadOnly(dialog_->input_parameters);
+	bcview().addReadOnly(dialog_->input_filename);
+	bcview().addReadOnly(dialog_->button_filenamebrowse);
+	bcview().addReadOnly(dialog_->input_parameters);
 }
 
 

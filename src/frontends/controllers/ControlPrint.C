@@ -14,7 +14,7 @@
 #include "ControlPrint.h"
 
 #include "ViewBase.h"
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
 
 #include "buffer.h"
 #include "gettext.h"

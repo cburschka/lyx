@@ -35,19 +35,19 @@ void QFloat::build_dialog()
 {
 	dialog_.reset(new QFloatDialog(this));
 
-	bc().setCancel(dialog_->closePB);
-	bc().setApply(dialog_->applyPB);
-	bc().setOK(dialog_->okPB);
-	bc().setRestore(dialog_->restorePB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setRestore(dialog_->restorePB);
 
-	bc().addReadOnly(dialog_->topCB);
-	bc().addReadOnly(dialog_->bottomCB);
-	bc().addReadOnly(dialog_->herepossiblyCB);
-	bc().addReadOnly(dialog_->heredefinitelyCB);
-	bc().addReadOnly(dialog_->pageCB);
-	bc().addReadOnly(dialog_->ignoreCB);
-	bc().addReadOnly(dialog_->defaultsCB);
-	bc().addReadOnly(dialog_->spanCB);
+	bcview().addReadOnly(dialog_->topCB);
+	bcview().addReadOnly(dialog_->bottomCB);
+	bcview().addReadOnly(dialog_->herepossiblyCB);
+	bcview().addReadOnly(dialog_->heredefinitelyCB);
+	bcview().addReadOnly(dialog_->pageCB);
+	bcview().addReadOnly(dialog_->ignoreCB);
+	bcview().addReadOnly(dialog_->defaultsCB);
+	bcview().addReadOnly(dialog_->spanCB);
 }
 
 

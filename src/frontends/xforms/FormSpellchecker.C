@@ -37,10 +37,10 @@ void FormSpellchecker::build()
 	dialog_.reset(build_spellchecker(this));
 
 	// Manage the buttons
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->button_replace);
+	bcview().addReadOnly(dialog_->button_replace);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_replacement);

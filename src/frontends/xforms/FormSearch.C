@@ -32,12 +32,12 @@ void FormSearch::build()
 	dialog_.reset(build_search(this));
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->input_replace);
-	bc().addReadOnly(dialog_->button_replace);
-	bc().addReadOnly(dialog_->button_replaceall);
+	bcview().addReadOnly(dialog_->input_replace);
+	bcview().addReadOnly(dialog_->button_replace);
+	bcview().addReadOnly(dialog_->button_replaceall);
 
 	// set up the tooltips
 	string str = _("Enter the string you want to find.");

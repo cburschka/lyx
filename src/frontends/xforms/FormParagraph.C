@@ -74,35 +74,35 @@ void FormParagraph::build()
 	dialog_.reset(build_paragraph(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->check_line_above);
-	bc().addReadOnly(dialog_->check_pagebreak_above);
-	bc().addReadOnly(dialog_->choice_space_above);
-	bc().addReadOnly(dialog_->input_space_above);
-	bc().addReadOnly(dialog_->check_space_above);
+	bcview().addReadOnly(dialog_->check_line_above);
+	bcview().addReadOnly(dialog_->check_pagebreak_above);
+	bcview().addReadOnly(dialog_->choice_space_above);
+	bcview().addReadOnly(dialog_->input_space_above);
+	bcview().addReadOnly(dialog_->check_space_above);
 
-	bc().addReadOnly(dialog_->check_noindent);
-	bc().addReadOnly(dialog_->choice_linespacing);
-	bc().addReadOnly(dialog_->input_linespacing);
+	bcview().addReadOnly(dialog_->check_noindent);
+	bcview().addReadOnly(dialog_->choice_linespacing);
+	bcview().addReadOnly(dialog_->input_linespacing);
 
-	bc().addReadOnly(dialog_->check_line_below);
-	bc().addReadOnly(dialog_->check_pagebreak_below);
-	bc().addReadOnly(dialog_->choice_space_below);
-	bc().addReadOnly(dialog_->input_space_below);
-	bc().addReadOnly(dialog_->check_space_below);
+	bcview().addReadOnly(dialog_->check_line_below);
+	bcview().addReadOnly(dialog_->check_pagebreak_below);
+	bcview().addReadOnly(dialog_->choice_space_below);
+	bcview().addReadOnly(dialog_->input_space_below);
+	bcview().addReadOnly(dialog_->check_space_below);
 
-	bc().addReadOnly(dialog_->input_labelwidth);
+	bcview().addReadOnly(dialog_->input_labelwidth);
 
 	// check validity of "length + unit" input
-	addCheckedGlueLength(bc(),
+	addCheckedGlueLength(bcview(),
 			     dialog_->input_space_above,
 			     dialog_->choice_space_above);
-	addCheckedGlueLength(bc(),
+	addCheckedGlueLength(bcview(),
 			     dialog_->input_space_below,
 			     dialog_->choice_space_below);
 

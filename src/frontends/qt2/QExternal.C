@@ -38,12 +38,12 @@ void QExternal::build_dialog()
 {
 	dialog_.reset(new QExternalDialog(this));
 
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->externalCO);
-	bc().addReadOnly(dialog_->fileED);
-	bc().addReadOnly(dialog_->browsePB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->externalCO);
+	bcview().addReadOnly(dialog_->fileED);
+	bcview().addReadOnly(dialog_->browsePB);
 
 	std::vector<string> templates(controller().getTemplates());
 

@@ -76,19 +76,6 @@
 #include "ButtonController.h"
 
 
-typedef ButtonController<OkCancelPolicy, xformsBC>
-	OkCancelBC;
-
-typedef ButtonController<OkCancelReadOnlyPolicy, xformsBC>
-	OkCancelReadOnlyBC;
-
-typedef ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC>
-	OkApplyCancelReadOnlyBC;
-
-typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC>
-	NoRepeatedApplyReadOnlyBC;
-
-
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "citation",
@@ -127,89 +114,90 @@ Dialog * Dialogs::build(string const & name)
 		return 0;
 
 	Dialog * dialog = new Dialog(lyxview_, name);
+	dialog->bc().view(new xformsBC(dialog->bc()));
 
 	if (name == "about") {
 		dialog->setController(new ControlAboutlyx(*dialog));
 		dialog->setView(new FormAboutlyx(*dialog));
-		dialog->setButtonController(new OkCancelBC);
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "bibitem") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormBibitem(*dialog));
-		dialog->setButtonController(new OkCancelReadOnlyBC);
+		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new FormBibtex(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "changes") {
 		dialog->setController(new ControlChanges(*dialog));
 		dialog->setView(new FormChanges(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new FormCitation(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "error") {
 		dialog->setController(new ControlError(*dialog));
 		dialog->setView(new FormError(*dialog));
-		dialog->setButtonController(new OkCancelBC);
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "ert") {
 		dialog->setController(new ControlERT(*dialog));
 		dialog->setView(new FormERT(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "external") {
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new FormExternal(*dialog));
-		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new FormFloat(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "graphics") {
 		dialog->setController(new ControlGraphics(*dialog));
 		dialog->setView(new FormGraphics(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));
 		dialog->setView(new FormInclude(*dialog));
-		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormText(*dialog,
 					     _("Index"), _("Keyword:|#K")));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormText(*dialog,
 					     _("Label"), _("Label:|#L")));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new FormMinipage(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new FormRef(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new FormTabular(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabularcreate") {
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new FormTabularCreate(*dialog));
-		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));
 		dialog->setView(new FormToc(*dialog));
-		dialog->setButtonController(new OkCancelBC);
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormUrl(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new FormWrap(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	}
 
 	return dialog;

@@ -18,6 +18,7 @@
 #include "forms/form_maths_delim.h"
 #include "ControlMath.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 
 #include "bmtable.h"
 
@@ -70,15 +71,15 @@ void FormMathsDelim::build()
 			    delim_width, delim_height, delim_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable, 23);
 
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->bmtable);
-	bc().addReadOnly(dialog_->radio_right);
-	bc().addReadOnly(dialog_->radio_left);
-	bc().addReadOnly(dialog_->radio_both);
-	bc().addReadOnly(dialog_->button_pix);
+	bcview().addReadOnly(dialog_->bmtable);
+	bcview().addReadOnly(dialog_->radio_right);
+	bcview().addReadOnly(dialog_->radio_left);
+	bcview().addReadOnly(dialog_->radio_both);
+	bcview().addReadOnly(dialog_->button_pix);
 }
 
 

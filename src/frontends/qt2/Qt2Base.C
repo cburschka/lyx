@@ -17,6 +17,7 @@
 #include "QtLyXView.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
+#include "ButtonController.h"
 #include "ControlButtons.h"
 #include "support/LAssert.h"
 
@@ -26,10 +27,10 @@ Qt2Base::Qt2Base(QString const & t)
 {}
 
 
-Qt2BC & Qt2Base::bc()
+Qt2BC & Qt2Base::bcview()
 {
-	return static_cast<Qt2BC &>(getController().bc());
-	// return dynamic_cast<Qt2BC &>(getController().bc());
+	return static_cast<Qt2BC &>(bc().view());
+	// return dynamic_cast<Qt2BC &>(bc());
 }
 
 

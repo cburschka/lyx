@@ -22,6 +22,7 @@
 #include "QTabularDialog.h"
 #include "QTabular.h"
 #include "Qt2BC.h"
+#include "ButtonController.h"
 
 #include <qpushbutton.h>
 #include <qlineedit.h>
@@ -41,39 +42,39 @@ void QTabular::build_dialog()
 {
 	dialog_.reset(new QTabularDialog(this));
 
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 
-	bc().addReadOnly(dialog_->multicolumnCB);
-	bc().addReadOnly(dialog_->rotateCellCB);
-	bc().addReadOnly(dialog_->rotateTabularCB);
-	bc().addReadOnly(dialog_->specialAlignmentED);
-	bc().addReadOnly(dialog_->widthED);
-	bc().addReadOnly(dialog_->widthUnit);
-	bc().addReadOnly(dialog_->hAlignCB);
-	bc().addReadOnly(dialog_->vAlignCB);
-	bc().addReadOnly(dialog_->columnAddPB);
-	bc().addReadOnly(dialog_->columnDeletePB);
-	bc().addReadOnly(dialog_->rowAddPB);
-	bc().addReadOnly(dialog_->rowDeletePB);
-	bc().addReadOnly(dialog_->borderSetPB);
-	bc().addReadOnly(dialog_->borderUnsetPB);
-	bc().addReadOnly(dialog_->borders);
-	bc().addReadOnly(dialog_->longTabularCB);
-	bc().addReadOnly(dialog_->headerStatusCB);
-	bc().addReadOnly(dialog_->headerBorderAboveCB);
-	bc().addReadOnly(dialog_->headerBorderBelowCB);
-	bc().addReadOnly(dialog_->firstheaderStatusCB);
-	bc().addReadOnly(dialog_->firstheaderBorderAboveCB);
-	bc().addReadOnly(dialog_->firstheaderBorderBelowCB);
-	bc().addReadOnly(dialog_->firstheaderNoContentsCB);
-	bc().addReadOnly(dialog_->footerStatusCB);
-	bc().addReadOnly(dialog_->footerBorderAboveCB);
-	bc().addReadOnly(dialog_->footerBorderBelowCB);
-	bc().addReadOnly(dialog_->lastfooterStatusCB);
-	bc().addReadOnly(dialog_->lastfooterBorderAboveCB);
-	bc().addReadOnly(dialog_->lastfooterBorderBelowCB);
-	bc().addReadOnly(dialog_->lastfooterNoContentsCB);
-	bc().addReadOnly(dialog_->newpageCB);
+	bcview().addReadOnly(dialog_->multicolumnCB);
+	bcview().addReadOnly(dialog_->rotateCellCB);
+	bcview().addReadOnly(dialog_->rotateTabularCB);
+	bcview().addReadOnly(dialog_->specialAlignmentED);
+	bcview().addReadOnly(dialog_->widthED);
+	bcview().addReadOnly(dialog_->widthUnit);
+	bcview().addReadOnly(dialog_->hAlignCB);
+	bcview().addReadOnly(dialog_->vAlignCB);
+	bcview().addReadOnly(dialog_->columnAddPB);
+	bcview().addReadOnly(dialog_->columnDeletePB);
+	bcview().addReadOnly(dialog_->rowAddPB);
+	bcview().addReadOnly(dialog_->rowDeletePB);
+	bcview().addReadOnly(dialog_->borderSetPB);
+	bcview().addReadOnly(dialog_->borderUnsetPB);
+	bcview().addReadOnly(dialog_->borders);
+	bcview().addReadOnly(dialog_->longTabularCB);
+	bcview().addReadOnly(dialog_->headerStatusCB);
+	bcview().addReadOnly(dialog_->headerBorderAboveCB);
+	bcview().addReadOnly(dialog_->headerBorderBelowCB);
+	bcview().addReadOnly(dialog_->firstheaderStatusCB);
+	bcview().addReadOnly(dialog_->firstheaderBorderAboveCB);
+	bcview().addReadOnly(dialog_->firstheaderBorderBelowCB);
+	bcview().addReadOnly(dialog_->firstheaderNoContentsCB);
+	bcview().addReadOnly(dialog_->footerStatusCB);
+	bcview().addReadOnly(dialog_->footerBorderAboveCB);
+	bcview().addReadOnly(dialog_->footerBorderBelowCB);
+	bcview().addReadOnly(dialog_->lastfooterStatusCB);
+	bcview().addReadOnly(dialog_->lastfooterBorderAboveCB);
+	bcview().addReadOnly(dialog_->lastfooterBorderBelowCB);
+	bcview().addReadOnly(dialog_->lastfooterNoContentsCB);
+	bcview().addReadOnly(dialog_->newpageCB);
 }
 
 

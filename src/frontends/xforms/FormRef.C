@@ -54,14 +54,14 @@ void FormRef::build()
 	setPrehandler(dialog_->input_ref);
 
 	// Manage the ok and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
-	bc().addReadOnly(dialog_->button_update);
-	bc().addReadOnly(dialog_->input_name);
-	bc().addReadOnly(dialog_->input_ref);
+	bcview().addReadOnly(dialog_->button_update);
+	bcview().addReadOnly(dialog_->input_name);
+	bcview().addReadOnly(dialog_->input_ref);
 
 	// set up the tooltips
 	string str = _("Select a document for references.");

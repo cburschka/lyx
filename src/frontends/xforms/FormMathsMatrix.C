@@ -18,6 +18,7 @@
 #include "forms/form_maths_matrix.h"
 #include "ControlMath.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
@@ -72,14 +73,14 @@ void FormMathsMatrix::build()
 			    C_FormMathsMatrixAlignFilter);
 	setPrehandler(dialog_->input_halign);
 
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->slider_rows);
-	bc().addReadOnly(dialog_->slider_columns);
-	bc().addReadOnly(dialog_->choice_valign);
-	bc().addReadOnly(dialog_->input_halign);
+	bcview().addReadOnly(dialog_->slider_rows);
+	bcview().addReadOnly(dialog_->slider_columns);
+	bcview().addReadOnly(dialog_->choice_valign);
+	bcview().addReadOnly(dialog_->input_halign);
 }
 
 

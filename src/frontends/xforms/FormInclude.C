@@ -38,8 +38,8 @@ void FormInclude::build()
 	dialog_.reset(build_include(this));
 
 	// Manage the ok and cancel buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setCancel(dialog_->button_close);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_filename);
@@ -47,10 +47,10 @@ void FormInclude::build()
 	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->button_browse);
-	bc().addReadOnly(dialog_->radio_useinput);
-	bc().addReadOnly(dialog_->radio_useinclude);
-	bc().addReadOnly(dialog_->radio_verbatim);
+	bcview().addReadOnly(dialog_->button_browse);
+	bcview().addReadOnly(dialog_->radio_useinput);
+	bcview().addReadOnly(dialog_->radio_useinclude);
+	bcview().addReadOnly(dialog_->radio_verbatim);
 
 	type_.init(dialog_->radio_useinput,   ControlInclude::INPUT);
 	type_.init(dialog_->radio_useinclude, ControlInclude::INCLUDE);

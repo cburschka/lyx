@@ -31,9 +31,9 @@ void FormPreamble::build()
 	dialog_.reset(build_preamble(this));
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_preamble);

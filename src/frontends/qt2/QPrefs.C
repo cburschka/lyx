@@ -71,10 +71,10 @@ void QPrefs::build_dialog()
 {
 	dialog_.reset(new QPrefsDialog(this));
 
-	bc().setOK(dialog_->savePB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().setRestore(dialog_->restorePB);
+	bcview().setOK(dialog_->savePB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().setRestore(dialog_->restorePB);
 
 	QPrefLanguageModule * langmod(dialog_->languageModule);
 

@@ -15,6 +15,7 @@
 #include "FormPreferences.h"
 #include "forms/form_preferences.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 
 #include "combox.h"
 #include "Color.h"
@@ -163,10 +164,10 @@ void FormPreferences::build()
 	dialog_.reset(build_preferences(this));
 
 	// Manage the restore, save, apply and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);

@@ -18,7 +18,6 @@
 #include "ControlDialog_impl.h"
 
 #include "ButtonController.h"
-#include "ButtonPolicies.h"
 
 #include "LString.h"
 #include <boost/shared_ptr.hpp>
@@ -26,6 +25,7 @@
 
 
 class GUIMathSub;
+class BCView;
 
 
 class ControlMath : public ControlDialogBD {
@@ -39,7 +39,8 @@ public:
 	void insertSymbol(string const & sym, bool bs = true) const;
 
 	///
-	void addDaughter(void * key, ViewBase * v, ButtonControllerBase * bc);
+	void addDaughter(void * key, ViewBase * v,
+			 BCView * bc, ButtonPolicy * bcpolicy);
 	///
 	void showDaughter(void *);
 
@@ -86,7 +87,8 @@ public:
 	GUIMathSub(LyXView & lv, Dialogs & d,
 		   ControlMath const & p,
 		   ViewBase * v,
-		   ButtonControllerBase * bc);
+		   BCView * bcview,
+		   ButtonPolicy * bcpolicy);
 	///
 	ControlMathSub & controller() { return controller_; }
 
@@ -94,7 +96,7 @@ private:
 	///
 	ControlMathSub controller_;
 	///
-	boost::scoped_ptr<ButtonControllerBase> bc_;
+	boost::scoped_ptr<ButtonController> bc_;
 	///
 	boost::scoped_ptr<ViewBase> view_;
 };

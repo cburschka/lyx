@@ -14,6 +14,8 @@
 #include "ControlMath.h"
 #include "ViewBase.h"
 
+#include "BCView.h"
+
 #include "debug.h"
 #include "funcrequest.h"
 
@@ -50,12 +52,13 @@ void ControlMath::insertSymbol(string const & sym, bool bs) const
 
 
 void ControlMath::addDaughter(void * key, ViewBase * v,
-			      ButtonControllerBase * bc)
+			      BCView * bcview, ButtonPolicy * bcpolicy)
 {
 	if (daughters_.find(key) != daughters_.end())
 		return;
 
-	daughters_[key] = DaughterPtr(new GUIMathSub(lv_, d_, *this, v, bc));
+	daughters_[key] = DaughterPtr(new GUIMathSub(lv_, d_, *this,
+						     v, bcview, bcpolicy));
 }
 
 
@@ -104,12 +107,14 @@ void ControlMathSub::insertSymbol(string const & sym, bool bs) const
 GUIMathSub::GUIMathSub(LyXView & lv, Dialogs & d,
 		       ControlMath const & p,
 		       ViewBase * v,
-		       ButtonControllerBase * bc)
-	: controller_(lv, d, p), bc_(bc), view_(v)
+		       BCView * bcview,
+		       ButtonPolicy * bcpolicy)
+	: controller_(lv, d, p), view_(v)
 {
 	controller_.setView(*view_);
-	controller_.setButtonController(*bc_);
 	view_->setController(controller_);
+	controller_.bc().view(bcview);
+	controller_.bc().bp(bcpolicy);
 }
 
 

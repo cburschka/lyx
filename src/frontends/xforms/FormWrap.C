@@ -36,17 +36,17 @@ void FormWrap::build()
 	dialog_.reset(build_wrap(this));
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->input_width);
-	bc().addReadOnly(dialog_->choice_width_units);
+	bcview().addReadOnly(dialog_->input_width);
+	bcview().addReadOnly(dialog_->choice_width_units);
 
 	// check validity of "length + unit" input
-	addCheckedGlueLength(bc(), dialog_->input_width);
+	addCheckedGlueLength(bcview(), dialog_->input_width);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_width);

@@ -14,7 +14,7 @@
 #include "ControlCharacter.h"
 
 #include "ViewBase.h"
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
 
 #include "buffer.h"
 #include "bufferview_funcs.h" // ToggleAndShow

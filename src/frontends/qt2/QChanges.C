@@ -33,9 +33,9 @@ void QChanges::build_dialog()
 {
 	dialog_.reset(new QChangesDialog(this));
 
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->acceptPB);
-	bc().addReadOnly(dialog_->rejectPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->acceptPB);
+	bcview().addReadOnly(dialog_->rejectPB);
 }
 
 

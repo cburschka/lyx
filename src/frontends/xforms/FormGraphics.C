@@ -79,23 +79,23 @@ void FormGraphics::build()
 	dialog_.reset(build_graphics(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// the file section
 	file_.reset(build_graphics_file(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(file_->button_browse);
-	bc().addReadOnly(file_->check_aspectratio);
-	bc().addReadOnly(file_->check_draft);
-	bc().addReadOnly(file_->check_nounzip);
+	bcview().addReadOnly(file_->button_browse);
+	bcview().addReadOnly(file_->check_aspectratio);
+	bcview().addReadOnly(file_->check_draft);
+	bcview().addReadOnly(file_->check_nounzip);
 
 	// check validity of "length + unit" input
-	addCheckedGlueLength(bc(), file_->input_width);
-	addCheckedGlueLength(bc(), file_->input_height);
+	addCheckedGlueLength(bcview(), file_->input_width);
+	addCheckedGlueLength(bcview(), file_->input_height);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(file_->input_filename);
@@ -166,11 +166,11 @@ void FormGraphics::build()
 	bbox_.reset(build_graphics_bbox(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(bbox_->button_getBB);
-	bc().addReadOnly(bbox_->check_clip);
+	bcview().addReadOnly(bbox_->button_getBB);
+	bcview().addReadOnly(bbox_->check_clip);
 
 	// check validity of "length + unit" input
-	addCheckedLyXLength(bc(), bbox_->input_bb_x1, bbox_->text_X);
+	addCheckedLyXLength(bcview(), bbox_->input_bb_x1, bbox_->text_X);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(bbox_->input_bb_x0);
@@ -217,10 +217,10 @@ void FormGraphics::build()
 	extra_.reset(build_graphics_extra(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(extra_->input_rotate_angle);
-	bc().addReadOnly(extra_->choice_origin);
-	bc().addReadOnly(extra_->check_subcaption);
-	bc().addReadOnly(extra_->input_special);
+	bcview().addReadOnly(extra_->input_rotate_angle);
+	bcview().addReadOnly(extra_->choice_origin);
+	bcview().addReadOnly(extra_->check_subcaption);
+	bcview().addReadOnly(extra_->input_special);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(extra_->input_rotate_angle);

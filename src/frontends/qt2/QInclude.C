@@ -37,12 +37,12 @@ void QInclude::build_dialog()
 {
 	dialog_.reset(new QIncludeDialog(this));
 
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->filenameED);
-	bc().addReadOnly(dialog_->browsePB);
-	bc().addReadOnly(dialog_->visiblespaceCB);
-	bc().addReadOnly(dialog_->typeCO);
+	bcview().setOK(dialog_->okPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->filenameED);
+	bcview().addReadOnly(dialog_->browsePB);
+	bcview().addReadOnly(dialog_->visiblespaceCB);
+	bcview().addReadOnly(dialog_->typeCO);
 }
 
 

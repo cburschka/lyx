@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "Dialogs_impl.h"
+#include "ButtonController.h"
 
 
 void Dialogs::init_pimpl()

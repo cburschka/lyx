@@ -12,7 +12,7 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "ButtonController.h"
+#include "BCView.h"
 
 #include <boost/utility.hpp>
 
@@ -32,8 +32,6 @@ private:
 	///
 	Controller controller_;
 	///
-	ButtonController<Policy, GUIbc> bc_;
-	///
 	GUIview view_;
 };
 
@@ -45,8 +43,9 @@ GUI<Controller, GUIview, Policy, GUIbc>::GUI(LyXView & lv, Dialogs & d)
 	  view_()
 {
 	controller_.setView(view_);
-	controller_.setButtonController(bc_);
 	view_.setController(controller_);
+	controller_.bc().view(new GUIbc(controller_.bc()));
+	controller_.bc().bp(new Policy);
 }
 
 #endif // GUI_H

@@ -52,24 +52,24 @@ void FormMathsStyle::build()
 	fl_set_bmtable_data(dialog_->bmtable_style1, 1, 1,
 			    style1_width, style1_height, style1_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_style1, 1);
-	bc().addReadOnly(dialog_->bmtable_style1);
+	bcview().addReadOnly(dialog_->bmtable_style1);
 
 	fl_set_bmtable_data(dialog_->bmtable_style2, 1, 3,
 			    style2_width, style2_height, style2_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_style2, 3);
-	bc().addReadOnly(dialog_->bmtable_style2);
+	bcview().addReadOnly(dialog_->bmtable_style2);
 
 	fl_set_bmtable_data(dialog_->bmtable_font1, 1, 5,
 			    font1_width, font1_height, font1_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_font1, 5);
-	bc().addReadOnly(dialog_->bmtable_font1);
+	bcview().addReadOnly(dialog_->bmtable_font1);
 
 	fl_set_bmtable_data(dialog_->bmtable_font2, 1, 3,
 			    font2_width, font2_height, font2_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_font2, 3);
-	bc().addReadOnly(dialog_->bmtable_font2);
+	bcview().addReadOnly(dialog_->bmtable_font2);
 
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 }
 
 

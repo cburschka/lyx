@@ -83,21 +83,21 @@ void QCitation::build_dialog()
 	dialog_->searchCaseCB->setChecked(false);
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().setRestore(dialog_->restorePB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().setRestore(dialog_->restorePB);
 
-	bc().addReadOnly(dialog_->addPB);
-	bc().addReadOnly(dialog_->delPB);
-	bc().addReadOnly(dialog_->upPB);
-	bc().addReadOnly(dialog_->downPB);
-	bc().addReadOnly(dialog_->citationStyleCO);
-	bc().addReadOnly(dialog_->forceuppercaseCB);
-	bc().addReadOnly(dialog_->fulllistCB);
+	bcview().addReadOnly(dialog_->addPB);
+	bcview().addReadOnly(dialog_->delPB);
+	bcview().addReadOnly(dialog_->upPB);
+	bcview().addReadOnly(dialog_->downPB);
+	bcview().addReadOnly(dialog_->citationStyleCO);
+	bcview().addReadOnly(dialog_->forceuppercaseCB);
+	bcview().addReadOnly(dialog_->fulllistCB);
 	// add when enabled !
-	//bc().addReadOnly(dialog_->textBeforeED);
-	bc().addReadOnly(dialog_->textAfterED);
+	//bcview().addReadOnly(dialog_->textBeforeED);
+	bcview().addReadOnly(dialog_->textAfterED);
 }
 
 

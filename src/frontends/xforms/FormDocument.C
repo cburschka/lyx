@@ -16,6 +16,7 @@
 #include "FormDocument.h"
 #include "forms/form_document.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 
 #include "bmtable.h"
 #include "checkedwidgets.h"
@@ -81,32 +82,32 @@ void FormDocument::build()
 	setMessageWidget(dialog_->text_warning);
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// the document class form
 	class_.reset(build_document_class(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(class_->radio_doc_indent);
-	bc().addReadOnly(class_->radio_doc_skip);
-	bc().addReadOnly(class_->choice_doc_pagestyle);
-	bc().addReadOnly(class_->choice_doc_fonts);
-	bc().addReadOnly(class_->choice_doc_fontsize);
-	bc().addReadOnly(class_->radio_doc_sides_one);
-	bc().addReadOnly(class_->radio_doc_sides_two);
-	bc().addReadOnly(class_->radio_doc_columns_one);
-	bc().addReadOnly(class_->radio_doc_columns_two);
-	bc().addReadOnly(class_->input_doc_extra);
-	bc().addReadOnly(class_->input_doc_skip);
-	bc().addReadOnly(class_->choice_doc_skip);
-	bc().addReadOnly(class_->choice_doc_spacing);
-	bc().addReadOnly(class_->input_doc_spacing);
+	bcview().addReadOnly(class_->radio_doc_indent);
+	bcview().addReadOnly(class_->radio_doc_skip);
+	bcview().addReadOnly(class_->choice_doc_pagestyle);
+	bcview().addReadOnly(class_->choice_doc_fonts);
+	bcview().addReadOnly(class_->choice_doc_fontsize);
+	bcview().addReadOnly(class_->radio_doc_sides_one);
+	bcview().addReadOnly(class_->radio_doc_sides_two);
+	bcview().addReadOnly(class_->radio_doc_columns_one);
+	bcview().addReadOnly(class_->radio_doc_columns_two);
+	bcview().addReadOnly(class_->input_doc_extra);
+	bcview().addReadOnly(class_->input_doc_skip);
+	bcview().addReadOnly(class_->choice_doc_skip);
+	bcview().addReadOnly(class_->choice_doc_spacing);
+	bcview().addReadOnly(class_->input_doc_spacing);
 
 	// check validity of "length + unit" input
-	addCheckedGlueLength(bc(), class_->input_doc_skip,
+	addCheckedGlueLength(bcview(), class_->input_doc_skip,
 			     class_->choice_doc_skip);
 
 	// trigger an input event for cut&paste with middle mouse button.
@@ -164,38 +165,38 @@ void FormDocument::build()
 			    fl_unsigned_float_filter);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->button_save_defaults);
-	bc().addReadOnly(dialog_->button_reset_defaults);
+	bcview().addReadOnly(dialog_->button_save_defaults);
+	bcview().addReadOnly(dialog_->button_reset_defaults);
 
 	// the document paper form
 	paper_.reset(build_document_paper(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(paper_->choice_paperpackage);
-	bc().addReadOnly(paper_->radio_portrait);
-	bc().addReadOnly(paper_->radio_landscape);
-	bc().addReadOnly(paper_->choice_papersize);
-	bc().addReadOnly(paper_->check_use_geometry);
-	bc().addReadOnly(paper_->input_custom_width);
-	bc().addReadOnly(paper_->input_custom_height);
-	bc().addReadOnly(paper_->input_top_margin);
-	bc().addReadOnly(paper_->input_bottom_margin);
-	bc().addReadOnly(paper_->input_inner_margin);
-	bc().addReadOnly(paper_->input_outer_margin);
-	bc().addReadOnly(paper_->input_head_height);
-	bc().addReadOnly(paper_->input_head_sep);
-	bc().addReadOnly(paper_->input_foot_skip);
+	bcview().addReadOnly(paper_->choice_paperpackage);
+	bcview().addReadOnly(paper_->radio_portrait);
+	bcview().addReadOnly(paper_->radio_landscape);
+	bcview().addReadOnly(paper_->choice_papersize);
+	bcview().addReadOnly(paper_->check_use_geometry);
+	bcview().addReadOnly(paper_->input_custom_width);
+	bcview().addReadOnly(paper_->input_custom_height);
+	bcview().addReadOnly(paper_->input_top_margin);
+	bcview().addReadOnly(paper_->input_bottom_margin);
+	bcview().addReadOnly(paper_->input_inner_margin);
+	bcview().addReadOnly(paper_->input_outer_margin);
+	bcview().addReadOnly(paper_->input_head_height);
+	bcview().addReadOnly(paper_->input_head_sep);
+	bcview().addReadOnly(paper_->input_foot_skip);
 
 	// check validity of "length + unit" input
-	addCheckedGlueLength(bc(), paper_->input_custom_width);
-	addCheckedGlueLength(bc(), paper_->input_custom_height);
-	addCheckedGlueLength(bc(), paper_->input_top_margin);
-	addCheckedGlueLength(bc(), paper_->input_bottom_margin);
-	addCheckedGlueLength(bc(), paper_->input_inner_margin);
-	addCheckedGlueLength(bc(), paper_->input_outer_margin);
-	addCheckedGlueLength(bc(), paper_->input_head_height);
-	addCheckedGlueLength(bc(), paper_->input_head_sep);
-	addCheckedGlueLength(bc(), paper_->input_foot_skip);
+	addCheckedGlueLength(bcview(), paper_->input_custom_width);
+	addCheckedGlueLength(bcview(), paper_->input_custom_height);
+	addCheckedGlueLength(bcview(), paper_->input_top_margin);
+	addCheckedGlueLength(bcview(), paper_->input_bottom_margin);
+	addCheckedGlueLength(bcview(), paper_->input_inner_margin);
+	addCheckedGlueLength(bcview(), paper_->input_outer_margin);
+	addCheckedGlueLength(bcview(), paper_->input_head_height);
+	addCheckedGlueLength(bcview(), paper_->input_head_sep);
+	addCheckedGlueLength(bcview(), paper_->input_foot_skip);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(paper_->input_custom_width);
@@ -241,10 +242,10 @@ void FormDocument::build()
 	language_.reset(build_document_language(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(language_->choice_inputenc);
-	bc().addReadOnly(language_->choice_quotes_language);
-	bc().addReadOnly(language_->radio_single);
-	bc().addReadOnly(language_->radio_double);
+	bcview().addReadOnly(language_->choice_inputenc);
+	bcview().addReadOnly(language_->choice_quotes_language);
+	bcview().addReadOnly(language_->radio_single);
+	bcview().addReadOnly(language_->radio_double);
 
 	fl_addto_choice(language_->choice_inputenc,
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
@@ -279,13 +280,13 @@ void FormDocument::build()
 	options_.reset(build_document_options(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(options_->counter_secnumdepth);
-	bc().addReadOnly(options_->counter_tocdepth);
-	bc().addReadOnly(options_->choice_ams_math);
-	bc().addReadOnly(options_->check_use_natbib);
-	bc().addReadOnly(options_->choice_citation_format);
-	bc().addReadOnly(options_->input_float_placement);
-	bc().addReadOnly(options_->choice_postscript_driver);
+	bcview().addReadOnly(options_->counter_secnumdepth);
+	bcview().addReadOnly(options_->counter_tocdepth);
+	bcview().addReadOnly(options_->choice_ams_math);
+	bcview().addReadOnly(options_->check_use_natbib);
+	bcview().addReadOnly(options_->choice_citation_format);
+	bcview().addReadOnly(options_->input_float_placement);
+	bcview().addReadOnly(options_->choice_postscript_driver);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(options_->input_float_placement);
@@ -306,19 +307,19 @@ void FormDocument::build()
 	bullets_.reset(build_document_bullet(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(bullets_->radio_bullet_depth_1);
-	bc().addReadOnly(bullets_->radio_bullet_depth_2);
-	bc().addReadOnly(bullets_->radio_bullet_depth_3);
-	bc().addReadOnly(bullets_->radio_bullet_depth_4);
-	bc().addReadOnly(bullets_->radio_bullet_panel_standard);
-	bc().addReadOnly(bullets_->radio_bullet_panel_maths);
-	bc().addReadOnly(bullets_->radio_bullet_panel_ding1);
-	bc().addReadOnly(bullets_->radio_bullet_panel_ding2);
-	bc().addReadOnly(bullets_->radio_bullet_panel_ding3);
-	bc().addReadOnly(bullets_->radio_bullet_panel_ding4);
-	bc().addReadOnly(bullets_->bmtable_bullet_panel);
-	bc().addReadOnly(bullets_->choice_bullet_size);
-	bc().addReadOnly(bullets_->input_bullet_latex);
+	bcview().addReadOnly(bullets_->radio_bullet_depth_1);
+	bcview().addReadOnly(bullets_->radio_bullet_depth_2);
+	bcview().addReadOnly(bullets_->radio_bullet_depth_3);
+	bcview().addReadOnly(bullets_->radio_bullet_depth_4);
+	bcview().addReadOnly(bullets_->radio_bullet_panel_standard);
+	bcview().addReadOnly(bullets_->radio_bullet_panel_maths);
+	bcview().addReadOnly(bullets_->radio_bullet_panel_ding1);
+	bcview().addReadOnly(bullets_->radio_bullet_panel_ding2);
+	bcview().addReadOnly(bullets_->radio_bullet_panel_ding3);
+	bcview().addReadOnly(bullets_->radio_bullet_panel_ding4);
+	bcview().addReadOnly(bullets_->bmtable_bullet_panel);
+	bcview().addReadOnly(bullets_->choice_bullet_size);
+	bcview().addReadOnly(bullets_->input_bullet_latex);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(bullets_->input_bullet_latex);

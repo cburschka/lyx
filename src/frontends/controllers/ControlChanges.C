@@ -17,7 +17,6 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "lyxfind.h"
-#include "lyxfunc.h"
 #include "author.h"
 #include "support/lstrings.h"
 

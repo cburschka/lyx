@@ -18,6 +18,7 @@
 #include "QtLyXView.h"
 #include "QDialogView.h"
 #include "Qt2BC.h"
+#include "ButtonController.h"
 #include "support/LAssert.h"
 
 
@@ -26,9 +27,9 @@ QDialogView::QDialogView(Dialog & parent, QString const & t)
 {}
 
 
-Qt2BC & QDialogView::bc()
+Qt2BC & QDialogView::bcview()
 {
-	return static_cast<Qt2BC &>(dialog().bc());
+	return static_cast<Qt2BC &>(dialog().bc().view());
 }
 
 

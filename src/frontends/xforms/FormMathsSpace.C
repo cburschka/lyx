@@ -37,16 +37,16 @@ void FormMathsSpace::build()
 
 	space_ = -1;
 
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->button_negative);
-	bc().addReadOnly(dialog_->button_negmedspace);
-	bc().addReadOnly(dialog_->button_negthickspace);
-	bc().addReadOnly(dialog_->button_thin);
-	bc().addReadOnly(dialog_->button_medium);
-	bc().addReadOnly(dialog_->button_thick);
-	bc().addReadOnly(dialog_->button_quadratin);
-	bc().addReadOnly(dialog_->button_twoquadratin);
+	bcview().addReadOnly(dialog_->button_negative);
+	bcview().addReadOnly(dialog_->button_negmedspace);
+	bcview().addReadOnly(dialog_->button_negthickspace);
+	bcview().addReadOnly(dialog_->button_thin);
+	bcview().addReadOnly(dialog_->button_medium);
+	bcview().addReadOnly(dialog_->button_thick);
+	bcview().addReadOnly(dialog_->button_quadratin);
+	bcview().addReadOnly(dialog_->button_twoquadratin);
 }
 
 

@@ -12,17 +12,15 @@
 #ifndef VIEWBASE_H
 #define VIEWBASE_H
 
-#include "support/LAssert.h"
+class ControlButtons;
+class ButtonController;
 
 #include <boost/utility.hpp>
-
-class ControlButtons;
-
 
 class ViewBase : boost::noncopyable {
 public:
 	///
-	ViewBase() : controller_ptr_(0) {}
+	ViewBase();
 	///
 	virtual ~ViewBase() {}
 
@@ -50,22 +48,17 @@ public:
 	/** This should be set by the GUI class that owns both the controller
 	 *  and the view
 	 */
-	void setController(ControlButtons & c) { controller_ptr_ = &c; }
+	void setController(ControlButtons &);
 
 	///
-	ControlButtons & getController() {
-		lyx::Assert(controller_ptr_);
-		return *controller_ptr_;
-	}
+	ControlButtons & getController();
 	///
-	ControlButtons const & getController() const {
-		lyx::Assert(controller_ptr_);
-		return *controller_ptr_;
-	}
+	ControlButtons const & getController() const;
+	///
+	ButtonController & bc();
 protected:
 	/// We don't own this.
 	ControlButtons * controller_ptr_;
 };
-
 
 #endif // VIEWBASE_H

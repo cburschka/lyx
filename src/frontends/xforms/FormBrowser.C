@@ -25,5 +25,5 @@ void FormBrowser::build()
 	dialog_.reset(build_browser(this));
 
 	// Manage the close button
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 }

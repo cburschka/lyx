@@ -45,7 +45,7 @@ void QToc::build_dialog()
 	dialog_.reset(new QTocDialog(this));
 
 	// Manage the cancel/close button
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

@@ -15,6 +15,7 @@
 
 #include "Dialog.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 #include "xforms_resize.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h" // formatted
@@ -83,9 +84,9 @@ void FormDialogView::redraw()
 }
 
 
-xformsBC & FormDialogView::bc()
+xformsBC & FormDialogView::bcview()
 {
-	return static_cast<xformsBC &>(dialog().bc());
+	return static_cast<xformsBC &>(dialog().bc().view());
 }
 
 

@@ -40,7 +40,7 @@ void QLog::build_dialog()
 {
 	dialog_.reset(new QLogDialog(this));
 
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

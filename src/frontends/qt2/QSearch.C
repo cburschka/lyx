@@ -37,13 +37,13 @@ void QSearch::build_dialog()
 {
 	dialog_.reset(new QSearchDialog(this));
 
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->replaceCO);
-	bc().addReadOnly(dialog_->replacePB);
-	bc().addReadOnly(dialog_->replaceallPB);
-	bc().addReadOnly(dialog_->caseCB);
-	bc().addReadOnly(dialog_->wordsCB);
-	bc().addReadOnly(dialog_->backwardsCB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->replaceCO);
+	bcview().addReadOnly(dialog_->replacePB);
+	bcview().addReadOnly(dialog_->replaceallPB);
+	bcview().addReadOnly(dialog_->caseCB);
+	bcview().addReadOnly(dialog_->wordsCB);
+	bcview().addReadOnly(dialog_->backwardsCB);
 
 	dialog_->replacePB->setEnabled(false);
 	dialog_->replaceallPB->setEnabled(false);

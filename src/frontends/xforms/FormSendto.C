@@ -38,9 +38,9 @@ void FormSendto::build()
 	setPrehandler(dialog_->input_command);
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
 	// Set up the tooltip mechanism
 	string str = _("Export the buffer to this format before running the command below on it.");

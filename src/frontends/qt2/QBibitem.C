@@ -37,10 +37,10 @@ void QBibitem::build_dialog()
 {
 	dialog_.reset(new QBibitemDialog(this));
 
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->keyED);
-	bc().addReadOnly(dialog_->labelED);
+	bcview().setOK(dialog_->okPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->keyED);
+	bcview().addReadOnly(dialog_->labelED);
 }
 
 

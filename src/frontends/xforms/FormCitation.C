@@ -134,21 +134,21 @@ void FormCitation::build()
 	dialog_.reset(build_citation(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->button_add);
-	bc().addReadOnly(dialog_->button_del);
-	bc().addReadOnly(dialog_->button_up);
-	bc().addReadOnly(dialog_->button_down);
-	bc().addReadOnly(dialog_->choice_style);
-	bc().addReadOnly(dialog_->input_before);
-	bc().addReadOnly(dialog_->input_after);
-	bc().addReadOnly(dialog_->check_full_author_list);
-	bc().addReadOnly(dialog_->check_force_uppercase);
+	bcview().addReadOnly(dialog_->button_add);
+	bcview().addReadOnly(dialog_->button_del);
+	bcview().addReadOnly(dialog_->button_up);
+	bcview().addReadOnly(dialog_->button_down);
+	bcview().addReadOnly(dialog_->choice_style);
+	bcview().addReadOnly(dialog_->input_before);
+	bcview().addReadOnly(dialog_->input_after);
+	bcview().addReadOnly(dialog_->check_full_author_list);
+	bcview().addReadOnly(dialog_->check_force_uppercase);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_search);

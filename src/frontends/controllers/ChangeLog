@@ -1,5 +1,18 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	Flatten the ButtonController tree by splitting it into a Controller
+	and a View.
+
+	* BCView.[Ch], BCView.tmpl: new files containing the View part of the
+	ButtonController.
+
+	* ButtonController.[Ch]: just the controller, which needs know only
+	two methods of the View, refresh and refreshReadOnly.
+
+	* lots of files: associated changes.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* ControlChanges.[Ch]: rewrite to use the Dialog-based scheme.
 
 2003-03-09  Angus Leeming  <leeming@lyx.org>

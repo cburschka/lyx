@@ -29,6 +29,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
 

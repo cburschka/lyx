@@ -36,9 +36,9 @@ void FormTabularCreate::build()
 	dialog_.reset(build_tabular_create(this));
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
 	// set up the tooltips
 	string str = _("Number of columns in the tabular.");

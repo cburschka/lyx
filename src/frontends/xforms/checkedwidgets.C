@@ -22,17 +22,17 @@
 #include FORMS_H_LOCATION
 
 
-void addCheckedLyXLength(ButtonControllerBase & bc,
+void addCheckedLyXLength(BCView & bcview,
 			 FL_OBJECT * input, FL_OBJECT * label)
 {
-	bc.addCheckedWidget(new CheckedLyXLength(input, label));
+	bcview.addCheckedWidget(new CheckedLyXLength(input, label));
 }
 
 
-void addCheckedGlueLength(ButtonControllerBase & bc,
+void addCheckedGlueLength(BCView & bcview,
 			  FL_OBJECT * input, FL_OBJECT * label)
 {
-	bc.addCheckedWidget(new CheckedGlueLength(input, label));
+	bcview.addCheckedWidget(new CheckedGlueLength(input, label));
 }
 
 

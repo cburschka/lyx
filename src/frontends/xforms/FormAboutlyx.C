@@ -75,5 +75,5 @@ void FormAboutlyx::build()
 	setPrehandler(dialog_->tabfolder);
 
 	// Manage the cancel/close button
-	bc().setCancel(dialog_->button_close);
+	bcview().setCancel(dialog_->button_close);
 }

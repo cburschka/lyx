@@ -16,13 +16,14 @@
 
 #include "forms_fwd.h"
 
-
-#include "ButtonController.h"
+#include "BCView.h"
+#include "gettext.h"
 
 class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT> {
 public:
 	///
-	xformsBC(string const &, string const &);
+	xformsBC(ButtonController const &,
+		 string const & = _("Cancel"), string const & = _("Close"));
 
 private:
 	/// Updates the button sensitivity (enabled/disabled)

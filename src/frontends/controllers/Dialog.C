@@ -13,12 +13,18 @@
 
 #include "Dialog.h"
 
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
+#include "BCView.h"
 #include "support/LAssert.h"
 
 
 Dialog::Dialog(LyXView & lv, string const & name)
-	: is_closing_(false), kernel_(lv), name_(name)
+	: is_closing_(false), kernel_(lv), name_(name),
+	  bc_ptr_(new ButtonController)
+{}
+
+
+Dialog::~Dialog()
 {}
 
 
@@ -123,7 +129,7 @@ void Dialog::redraw()
 }
 
 
-ButtonControllerBase & Dialog::bc() const
+ButtonController & Dialog::bc() const
 {
 	lyx::Assert(bc_ptr_.get());
 	return *bc_ptr_.get();
@@ -141,13 +147,6 @@ Dialog::View & Dialog::view() const
 {
 	lyx::Assert(view_ptr_.get());
 	return *view_ptr_.get();
-}
-
-
-void Dialog::setButtonController(ButtonControllerBase * bc)
-{
-	lyx::Assert(bc && !bc_ptr_.get());
-	bc_ptr_.reset(bc);
 }
 
 

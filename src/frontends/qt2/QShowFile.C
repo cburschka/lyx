@@ -34,7 +34,7 @@ void QShowFile::build_dialog()
 {
 	dialog_.reset(new QShowFileDialog(this));
 
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

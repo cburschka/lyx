@@ -46,21 +46,21 @@ void FormFloat::build()
 	dialog_.reset(build_float(this));
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().setRestore(dialog_->button_restore);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().setRestore(dialog_->button_restore);
 
 	// disable for read-only documents
-	bc().addReadOnly(dialog_->radio_default);
-	bc().addReadOnly(dialog_->radio_here_definitely);
-	bc().addReadOnly(dialog_->radio_alternatives);
-	bc().addReadOnly(dialog_->check_top);
-	bc().addReadOnly(dialog_->check_bottom);
-	bc().addReadOnly(dialog_->check_page);
-	bc().addReadOnly(dialog_->check_here);
-	bc().addReadOnly(dialog_->check_force);
-	bc().addReadOnly(dialog_->check_wide);
+	bcview().addReadOnly(dialog_->radio_default);
+	bcview().addReadOnly(dialog_->radio_here_definitely);
+	bcview().addReadOnly(dialog_->radio_alternatives);
+	bcview().addReadOnly(dialog_->check_top);
+	bcview().addReadOnly(dialog_->check_bottom);
+	bcview().addReadOnly(dialog_->check_page);
+	bcview().addReadOnly(dialog_->check_here);
+	bcview().addReadOnly(dialog_->check_force);
+	bcview().addReadOnly(dialog_->check_wide);
 
 	placement_.init(dialog_->radio_default,         DOCUMENT_DEFAULTS);
 	placement_.init(dialog_->radio_here_definitely, HERE_DEFINITELY);

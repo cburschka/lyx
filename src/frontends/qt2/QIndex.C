@@ -17,6 +17,7 @@
 #include "QIndexDialog.h"
 #include "QIndex.h"
 #include "Qt2BC.h"
+#include "ButtonController.h"
 #include <qlabel.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -36,9 +37,9 @@ void QIndex::build_dialog()
 
 	dialog_->keywordLA->setText(label_);
 
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->keywordED);
+	bcview().setOK(dialog_->okPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->keywordED);
 }
 
 

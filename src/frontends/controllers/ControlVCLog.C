@@ -13,7 +13,7 @@
 
 
 #include "ControlVCLog.h"
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
 #include "buffer.h"
 #include "lyxrc.h"
 #include "gettext.h"

@@ -15,6 +15,7 @@
 
 #include "ControlButtons.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 #include "xforms_resize.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h" // formatted
@@ -81,10 +82,9 @@ void FormBase::redraw()
 }
 
 
-xformsBC & FormBase::bc()
+xformsBC & FormBase::bcview()
 {
-	return static_cast<xformsBC &>(getController().bc());
-	// return dynamic_cast<GUIbc &>(controller_ptr_->bc());
+	return static_cast<xformsBC &>(bc().view());
 }
 
 

@@ -18,8 +18,9 @@
 #include FORMS_H_LOCATION
 
 
-xformsBC::xformsBC(string const & cancel, string const & close)
-	: GuiBC<FL_OBJECT, FL_OBJECT>(cancel, close)
+xformsBC::xformsBC(ButtonController const & parent,
+		   string const & cancel, string const & close)
+	: GuiBC<FL_OBJECT, FL_OBJECT>(parent, cancel, close)
 {}
 
 

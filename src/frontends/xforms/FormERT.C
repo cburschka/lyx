@@ -32,13 +32,13 @@ void FormERT::build()
 	dialog_.reset(build_ert(this));
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->radio_open);
-	bc().addReadOnly(dialog_->radio_collapsed);
-	bc().addReadOnly(dialog_->radio_inlined);
+	bcview().addReadOnly(dialog_->radio_open);
+	bcview().addReadOnly(dialog_->radio_collapsed);
+	bcview().addReadOnly(dialog_->radio_inlined);
 }
 
 

@@ -14,6 +14,7 @@
 
 #include "ToolbarDefaults.h"
 #include "debug.h"
+#include "gettext.h"
 #include "lyxfunc.h"
 #include "FuncStatus.h"
 #include "BufferView.h"

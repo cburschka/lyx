@@ -49,15 +49,15 @@ void QRef::build_dialog()
 {
 	dialog_.reset(new QRefDialog(this));
 
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->refsLB);
-	bc().addReadOnly(dialog_->sortCB);
-	bc().addReadOnly(dialog_->nameED);
-	bc().addReadOnly(dialog_->referenceED);
-	bc().addReadOnly(dialog_->typeCO);
-	bc().addReadOnly(dialog_->bufferCO);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->refsLB);
+	bcview().addReadOnly(dialog_->sortCB);
+	bcview().addReadOnly(dialog_->nameED);
+	bcview().addReadOnly(dialog_->referenceED);
+	bcview().addReadOnly(dialog_->typeCO);
+	bcview().addReadOnly(dialog_->bufferCO);
 }
 
 

@@ -15,6 +15,7 @@
 
 
 #include "Qt2Base.h"
+#include "LString.h"
 #include <vector>
 
 class ControlParagraph;

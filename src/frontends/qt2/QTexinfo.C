@@ -42,7 +42,7 @@ void QTexinfo::build_dialog()
 
 	updateStyles(ControlTexinfo::cls);
 
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

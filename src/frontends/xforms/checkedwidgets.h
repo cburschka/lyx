@@ -13,13 +13,13 @@
 #define CHECKEDWIDGETS_H
 
 
-#include "ButtonControllerBase.h"
+#include "BCView.h"
 #include "forms_fwd.h"
 
-void addCheckedLyXLength(ButtonControllerBase & bc,
+void addCheckedLyXLength(BCView & bcview,
 			 FL_OBJECT * input, FL_OBJECT * label = 0);
 
-void addCheckedGlueLength(ButtonControllerBase & bc,
+void addCheckedGlueLength(BCView & bcview,
 			  FL_OBJECT * input, FL_OBJECT * label = 0);
 
 class CheckedLyXLength : public CheckedWidget {

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "Qt2BC.h"
 #include "debug.h"
 #include "qt_helpers.h"
@@ -20,8 +19,9 @@
 #include <qlineedit.h>
 
 
-Qt2BC::Qt2BC(string const & cancel, string const & close)
-	: GuiBC<QButton, QWidget>(cancel, close)
+Qt2BC::Qt2BC(ButtonController const & parent,
+	     string const & cancel, string const & close)
+	: GuiBC<QButton, QWidget>(parent, cancel, close)
 {}
 
 

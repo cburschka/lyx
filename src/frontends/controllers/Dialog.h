@@ -23,7 +23,7 @@
 
 
 class LyXView;
-class ButtonControllerBase;
+class ButtonController;
 
 
 class Dialog : boost::noncopyable {
@@ -32,6 +32,8 @@ public:
 	 *  itself to the kernel.
 	 */
 	Dialog(LyXView &, string const & name);
+	///
+	~Dialog();
 
 	///
 	string const & name() const { return name_; }
@@ -94,13 +96,11 @@ public:
 	void setController(Controller *);
 	///
 	void setView(View *);
-	///
-	void setButtonController(ButtonControllerBase *);
 
 	///
 	Controller & controller() const;
 	///
-	ButtonControllerBase & bc() const;
+	ButtonController & bc() const;
 	///
 	View & view() const;
 	//@}
@@ -116,7 +116,7 @@ private:
 	///
 	string name_;
 	///
-	boost::scoped_ptr<ButtonControllerBase> bc_ptr_;
+	boost::scoped_ptr<ButtonController> bc_ptr_;
 	///
 	boost::scoped_ptr<Controller> controller_ptr_;
 	///
@@ -195,6 +195,11 @@ public:
 	Controller & getController() { return p_.controller(); }
 	///
 	Controller const & getController() const { return p_.controller(); }
+
+	///
+	ButtonController & bc() { return p_.bc(); }
+	///
+	ButtonController const & bc() const { return p_.bc(); }
 
 protected:
 	///

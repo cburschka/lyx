@@ -13,7 +13,6 @@
 
 #include "Dialogs.h"
 #include "controllers/Dialog.h"
-#include "controllers/ButtonControllerBase.h"
 #include <boost/bind.hpp>
 
 

@@ -158,10 +158,10 @@ void QDocument::build_dialog()
 	dialog_->setMargins(0);
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().setRestore(dialog_->restorePB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().setRestore(dialog_->restorePB);
 }
 
 

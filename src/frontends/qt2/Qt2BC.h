@@ -15,7 +15,8 @@
 #define QT2BC_H
 
 
-#include "ButtonController.h"
+#include "BCView.h"
+#include "gettext.h"
 
 class QWidget;
 class QButton;
@@ -29,7 +30,8 @@ class QButton;
 class Qt2BC : public GuiBC<QButton, QWidget> {
 public:
 	///
-	Qt2BC(string const &, string const &);
+	Qt2BC(ButtonController const &,
+	      string const & = _("Cancel"), string const & = _("Close"));
 private:
 	/// Updates the button sensitivity (enabled/disabled)
 	void setButtonEnabled(QButton *, bool enabled);

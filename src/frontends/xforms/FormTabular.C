@@ -16,6 +16,7 @@
 
 #include "ControlTabular.h"
 #include "xformsBC.h"
+#include "ButtonController.h"
 #include "insets/insettabular.h"
 
 #include "FormTabular.h"

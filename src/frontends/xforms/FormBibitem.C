@@ -38,11 +38,11 @@ void FormBibitem::build()
 	setPrehandler(dialog_->input_label);
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->button_ok);
-	bc().setCancel(dialog_->button_close);
+	bcview().setOK(dialog_->button_ok);
+	bcview().setCancel(dialog_->button_close);
 
-	bc().addReadOnly(dialog_->input_key);
-	bc().addReadOnly(dialog_->input_label);
+	bcview().addReadOnly(dialog_->input_key);
+	bcview().addReadOnly(dialog_->input_label);
 
 	// set up the tooltips
 	string str = _("Key used within LyX document.");

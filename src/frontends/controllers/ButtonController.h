@@ -5,8 +5,6 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming
- * \author Baruch Even
  *
  * Full author contact details are available in file CREDITS
  */
@@ -15,72 +13,71 @@
 #define BUTTONCONTROLLER_H
 
 
-#include "ButtonControllerBase.h"
-#include "gettext.h"
-#include <list>
+#include "ButtonPolicies.h"
 
-/** A templatised instantiation of the ButtonController requiring the
- *  gui-frontend widgets.
- *  The template declarations are in ButtonController.tmpl, which should
- *  be #included in the gui-frontend BC class, see e.g. xforms/xformsBC.C
+#include "LString.h"
+#include <boost/scoped_ptr.hpp>
+
+
+/** Controls the activation of the OK, Apply and Cancel buttons.
+ *
+ * Actually supports 4 buttons in all and it's up to the user to decide on
+ * the activation policy and which buttons correspond to which output of the
+ * state machine.
+ * Author: Allan Rae <rae@lyx.org>.
+ * This class stripped of xforms-specific code by
+ * Angus Leeming <leeming@lyx.org>
  */
-template <class Button, class Widget>
-class GuiBC : public ButtonControllerBase {
+class BCView;
+
+class ButtonController : boost::noncopyable {
 public:
 	///
-	GuiBC(string const & cancel, string const & close);
+	~ButtonController();
 
 	///
-	void setOK(Button * obj) { okay_ = obj; }
+	BCView & view() const;
 	///
-	void setApply(Button * obj) { apply_ = obj; }
-	///
-	void setCancel(Button * obj) { cancel_ = obj; }
-	///
-	void setRestore(Button * obj) { restore_ = obj; }
-	///
-	void addReadOnly(Widget * obj) { read_only_.push_back(obj); }
-	///
-	void eraseReadOnly() { read_only_.clear(); }
+	void view(BCView *);
 
-	/// Refresh the status of the Ok, Apply, Restore, Cancel buttons.
+	///
+	ButtonPolicy & bp() const;
+	///
+	void bp(ButtonPolicy *);
+
+	///
+	void input(ButtonPolicy::SMInput);
+	///
+	void ok();
+	///
+	void apply();
+	///
+	void cancel();
+	///
+	void restore();
+	///
+	void hide();
+
+	///
 	void refresh();
-	/// Refresh the status of any widgets in the read_only list
+	///
 	void refreshReadOnly();
+
+	/// Passthrough function -- returns its input value
+	bool readOnly(bool = true);
+	///
+	void readWrite();
+
+	///
+	void valid(bool = true);
+	///
+	void invalid();
+
 private:
-	/// Enable/Disable a widget
-	virtual void setWidgetEnabled(Widget * obj, bool enable) = 0;
-	/// Enable/Disable a button
-	virtual void setButtonEnabled(Button * obj, bool enable) = 0;
-	/// Set the Label on the button
-	virtual void setButtonLabel(Button * obj, string const & label) = 0;
-
-	Button * okay_;
-	Button * apply_;
-	Button * cancel_;
-	Button * restore_;
-
-	typedef std::list<Widget *> Widgets;
-	Widgets read_only_;
+	///
+	boost::scoped_ptr<ButtonPolicy> bp_;
+	///
+	boost::scoped_ptr<BCView> view_;
 };
-
-
-template <class BP, class GUIBC>
-class ButtonController: public GUIBC {
-public:
-	///
-	ButtonController(string const & = _("Cancel"),
-			 string const & = _("Close"));
-	///
-	~ButtonController() {}
-	///
-	virtual ButtonPolicy & bp() { return bp_; }
-protected:
-	///
-	BP bp_;
-};
-
-
-#include "ButtonController.tmpl"
 
 #endif // BUTTONCONTROLLER_H

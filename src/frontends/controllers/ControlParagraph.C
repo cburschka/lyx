@@ -14,7 +14,7 @@
 
 #include "ControlParagraph.h"
 
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
 #include "ViewBase.h"
 
 #include "buffer.h"

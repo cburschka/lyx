@@ -16,7 +16,7 @@
 #include "debug.h"
 #include "qt_helpers.h"
 #include "LyXView.h"
-#include "ButtonControllerBase.h"
+#include "ButtonController.h"
 #include "ControlAboutlyx.h"
 
 #include <qlabel.h>
@@ -106,6 +106,6 @@ void QAbout::build_dialog()
 	dialog_->setMinimumSize(dialog_->sizeHint());
 
 	// Manage the cancel/close button
-	bc().setCancel(dialog_->closePB);
+	bcview().setCancel(dialog_->closePB);
 	bc().refresh();
 }

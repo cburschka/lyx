@@ -50,8 +50,8 @@ void FormThesaurus::build()
 	setPrehandler(dialog_->input_replace);
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setCancel(dialog_->button_close);
-	bc().addReadOnly(dialog_->input_replace);
+	bcview().setCancel(dialog_->button_close);
+	bcview().addReadOnly(dialog_->input_replace);
 
 	fl_set_input_return(dialog_->input_entry, FL_RETURN_END_CHANGED);
 }

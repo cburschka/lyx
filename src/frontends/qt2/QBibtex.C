@@ -46,15 +46,15 @@ void QBibtex::build_dialog()
 {
 	dialog_.reset(new QBibtexDialog(this));
 
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->databaseLB);
-	bc().addReadOnly(dialog_->databasePB);
-	bc().addReadOnly(dialog_->stylePB);
-	bc().addReadOnly(dialog_->styleCB);
-	bc().addReadOnly(dialog_->bibtocCB);
-	bc().addReadOnly(dialog_->databasePB);
-	bc().addReadOnly(dialog_->deletePB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().addReadOnly(dialog_->databaseLB);
+	bcview().addReadOnly(dialog_->databasePB);
+	bcview().addReadOnly(dialog_->stylePB);
+	bcview().addReadOnly(dialog_->styleCB);
+	bcview().addReadOnly(dialog_->bibtocCB);
+	bcview().addReadOnly(dialog_->databasePB);
+	bcview().addReadOnly(dialog_->deletePB);
 }
 
 

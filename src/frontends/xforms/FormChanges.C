@@ -28,9 +28,9 @@ void FormChanges::build()
 {
 	dialog_.reset(build_changes(this));
 
-	bc().setCancel(dialog_->button_close);
-	bc().addReadOnly(dialog_->button_accept);
-	bc().addReadOnly(dialog_->button_reject);
+	bcview().setCancel(dialog_->button_close);
+	bcview().addReadOnly(dialog_->button_accept);
+	bcview().addReadOnly(dialog_->button_reject);
 }
 
 

@@ -67,11 +67,11 @@ void QParagraph::build_dialog()
 	}
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().setRestore(dialog_->restorePB);
-	bc().addReadOnly(dialog_->paragraphTab);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
+	bcview().setRestore(dialog_->restorePB);
+	bcview().addReadOnly(dialog_->paragraphTab);
 }
 
 

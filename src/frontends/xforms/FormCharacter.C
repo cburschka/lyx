@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "xformsBC.h"
+#include "ButtonController.h"
 #include "ControlCharacter.h"
 #include "FormCharacter.h"
 #include "forms/form_character.h"
@@ -112,9 +113,9 @@ void FormCharacter::build()
 	combo_language2_->select(1);
 
 	// Manage the ok, apply and cancel/close buttons
-	bc().setApply(dialog_->button_apply);
-	bc().setCancel(dialog_->button_close);
-	bc().addReadOnly(dialog_->check_toggle_all);
+	bcview().setApply(dialog_->button_apply);
+	bcview().setCancel(dialog_->button_close);
+	bcview().addReadOnly(dialog_->check_toggle_all);
 }
 
 

@@ -41,9 +41,9 @@ void QSendto::build_dialog()
 	dialog_.reset(new QSendtoDialog(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
+	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
+	bcview().setCancel(dialog_->closePB);
 }
 
 

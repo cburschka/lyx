@@ -75,10 +75,9 @@ FormMathsBitmap * FormMathsPanel::addDaughter(void * key,
 	FormMathsBitmap * const view =
 		new FormMathsBitmap(title, std::vector<string>(data, end));
 
-	typedef ButtonController<IgnorantPolicy, xformsBC> BC;
-	BC * const bc = new BC;
-
-	controller().addDaughter(key, view, bc);
+	controller().addDaughter(key, view,
+				 new xformsBC(controller().bc()),
+				 new IgnorantPolicy);
 	return view;
 }
 
@@ -112,17 +111,22 @@ void FormMathsPanel::build()
 	fl_set_pixmap_data(dialog_->button_equation,
 			   const_cast<char**>(equation));
 
-	typedef ButtonController<IgnorantPolicy, xformsBC> BC_ignorant;
-	typedef ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> BC_ok;
-
 	controller().addDaughter(dialog_->button_delim,
-				 new FormMathsDelim, new BC_ok);
+				 new FormMathsDelim,
+				 new xformsBC(controller().bc()),
+				 new OkApplyCancelReadOnlyPolicy);
 	controller().addDaughter(dialog_->button_matrix,
-				 new FormMathsMatrix, new BC_ok);
+				 new FormMathsMatrix,
+				 new xformsBC(controller().bc()),
+				 new OkApplyCancelReadOnlyPolicy);
 	controller().addDaughter(dialog_->button_space,
-				 new FormMathsSpace, new BC_ignorant);
+				 new FormMathsSpace,
+				 new xformsBC(controller().bc()),
+				 new IgnorantPolicy);
 	controller().addDaughter(dialog_->button_style,
-				 new FormMathsStyle,  new BC_ignorant);
+				 new FormMathsStyle,
+				 new xformsBC(controller().bc()),
+				 new IgnorantPolicy);
 
 	FormMathsBitmap * bitmap;
 	bitmap = addDaughter(dialog_->button_deco,

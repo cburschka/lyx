@@ -15,12 +15,15 @@
  * see, e.g., xforms/xformsBC.C
  */
 
-#include "ButtonController.h"
+#include "BCView.h"
+#include "ButtonPolicies.h"
 #include "debug.h"
 
 template <class Button, class Widget>
-GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
-	: ButtonControllerBase(cancel, close),
+GuiBC<Button, Widget>::GuiBC(ButtonController const & parent,
+			     string const & cancel, string const & close)
+	: BCView(parent),
+	  cancel_label_(cancel), close_label_(close),
 	  okay_(0), apply_(0), cancel_(0), restore_(0)
 {}
 
@@ -70,10 +73,3 @@ void GuiBC<Button, Widget>::refreshReadOnly()
 		setWidgetEnabled(*iter, enable);
 	}
 }
-
-
-template <class BP, class GUIBC>
-ButtonController<BP, GUIBC>::ButtonController(string const & cancel,
-					      string const & close)
-	: GUIBC(cancel, close)
-{}

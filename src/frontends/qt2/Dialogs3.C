@@ -78,18 +78,6 @@
 #include "qt_helpers.h"
 
 
-typedef ButtonController<OkCancelPolicy, Qt2BC>
-	OkCancelBC;
-
-typedef ButtonController<OkCancelReadOnlyPolicy, Qt2BC>
-	OkCancelReadOnlyBC;
-
-typedef ButtonController<OkApplyCancelReadOnlyPolicy, Qt2BC>
-	OkApplyCancelReadOnlyBC;
-
-typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-	NoRepeatedApplyReadOnlyBC;
-
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
@@ -127,91 +115,92 @@ Dialog * Dialogs::build(string const & name)
 		return 0;
 
 	Dialog * dialog = new Dialog(lyxview_, name);
+	dialog->bc().view(new Qt2BC(dialog->bc()));
 
 	if (name == "about") {
 		dialog->setController(new ControlAboutlyx(*dialog));
 		dialog->setView(new QAbout(*dialog));
-		dialog->setButtonController(new OkCancelBC);
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "bibitem") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QBibitem(*dialog));
-		dialog->setButtonController(new OkCancelReadOnlyBC);
+		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new QBibtex(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "changes") {
 		dialog->setController(new ControlChanges(*dialog));
 		dialog->setView(new QChanges(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new QCitation(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "error") {
 		dialog->setController(new ControlError(*dialog));
 		dialog->setView(new QError(*dialog));
-		dialog->setButtonController(new OkCancelBC);
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "ert") {
 		dialog->setController(new ControlERT(*dialog));
 		dialog->setView(new QERT(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "external") {
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new QExternal(*dialog));
-		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new QFloat(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "graphics") {
 		dialog->setController(new ControlGraphics(*dialog));
 		dialog->setView(new QGraphics(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));
 		dialog->setView(new QInclude(*dialog));
-		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
 					   qt_("LyX: Insert Index Entry"),
 					   qt_("&Keyword")));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
 					   qt_("LyX: Insert Label"),
 					   qt_("&Label")));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new QMinipage(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new QRef(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new QTabular(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabularcreate") {
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new QTabularCreate(*dialog));
-		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));
 		dialog->setView(new QToc(*dialog));
-		dialog->setButtonController(new OkCancelBC);
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QURL(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new QWrap(*dialog));
-		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	}
 
 	return dialog;
