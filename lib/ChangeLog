@@ -1,3 +1,16 @@
+2002-07-10  Andrew Zabolotny  <zap@cobra.ru>
+
+	* bind/emacs.bind: 
+	* bind/xemacs.bind: 
+	* bind/sciword.bind: 
+	* bind/cua.bind: better support for selection from numeric keypad
+
+	* kbd/cp1251.cdef:
+	* kbd/ibm866.cdef:
+	* kbd/koi8-r.cdef:
+	* kbd/koi8-t.cdef:
+	* kbd/koi8-u.cdef: new encoding definitions
+
 2002-07-10  John Levon  <moz@compsoc.man.ac.uk>
 
 	* bind/sciword.bind: disable M-x c to allow M-x
