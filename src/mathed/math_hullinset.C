@@ -402,7 +402,9 @@ void MathHullInset::footer_write(WriteStream & os) const
 
 bool MathHullInset::colChangeOK() const
 {
-	return type_ == "align" || type_ == "alignat" || type_ == "xalignat";
+	return
+		type_ == "align" || type_ == "alignat" ||
+		type_ == "xalignat" || type_ == "xxalignat";
 }
 
 

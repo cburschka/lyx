@@ -214,12 +214,11 @@ Dimension const & MathArray::metrics(MathMetricsInfo & mi) const
 	clean_  = true;
 	drawn_  = false;
 
-	if (empty()) {
-		mathed_char_dim(mi.base.font, 'I', dim_);
+	mathed_char_dim(mi.base.font, 'I', dim_);
+	if (empty()) 
 		return dim_;
-	}
 
-	dim_.clear();
+	dim_.w = 0;
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->metrics(mi);
 		dim_ += (*it)->dimensions();
