@@ -918,13 +918,13 @@ void BufferView::Pimpl::workAreaResize()
 			// to the start of the document on vertical
 			// resize
 			fitCursor();
-		} else {
-			screen().redraw(bv_->text, bv_);
 		}
-	} else {
-		screen().redraw(bv_->text, bv_);
 	}
 
+	if (widthChange || heightChange) {
+		repaint();
+	}
+ 
 	// always make sure that the scrollbar is sane.
 	updateScrollbar();
 	owner_->updateLayoutChoice();
