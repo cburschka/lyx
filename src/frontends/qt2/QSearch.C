@@ -54,7 +54,8 @@ void QSearch::find(string const & str, bool casesens,
 
 
 void QSearch::replace(string const & findstr, string const & replacestr,
-	bool casesens, bool words, bool all)
+	bool casesens, bool words, bool backwards, bool all)
 {
-	controller().replace(findstr, replacestr, casesens, words, all);
+	controller().replace(findstr, replacestr, casesens, words,
+			     !backwards, all);
 }

@@ -271,6 +271,9 @@ public:
 					lyx::pos_type endpos,
 					LyXFont_size def_size) const;
 	///
+	void insert(lyx::pos_type pos, std::string const & str,
+		    LyXFont const & font);
+	///
 	void insertChar(lyx::pos_type pos, value_type c);
 	///
 	void insertChar(lyx::pos_type pos, value_type c, LyXFont const &, Change change = Change(Change::INSERTED));

@@ -32,8 +32,8 @@ void ControlSearch::find(string const & search,
 			 bool casesensitive, bool matchword, bool forward)
 {
 	bool const found = lyx::find::find(bufferview(), search,
-					    forward, casesensitive,
-					    matchword);
+					   casesensitive, matchword,
+					   forward);
 
 	if (!found)
 		lv_.message(_("String not found!"));
@@ -41,16 +41,17 @@ void ControlSearch::find(string const & search,
 
 
 void ControlSearch::replace(string const & search, string const & replace,
-			    bool casesensitive, bool matchword, bool all)
+			    bool casesensitive, bool matchword,
+			    bool forward, bool all)
 {
 	// If not replacing all instances of the word, then do not
 	// move on to the next instance once the present instance has been
 	// changed
-	bool const once = !all;
-	int const replace_count =
-		lyx::find::replace(bufferview(),
-				    search, replace, true, casesensitive,
-				    matchword, all, once);
+	int const replace_count = all ?
+		lyx::find::replaceAll(bufferview(), search, replace,
+				      casesensitive, matchword)
+		: lyx::find::replace(bufferview(), search, replace,
+				     casesensitive, matchword, forward);
 
 	if (replace_count == 0) {
 		lv_.message(_("String not found!"));

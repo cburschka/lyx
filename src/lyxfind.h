@@ -7,6 +7,7 @@
  * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author Jürgen Vigna
+ * \author Alfredo Braunstein
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -24,48 +25,49 @@ class LyXText;
 namespace lyx {
 namespace find {
 
-enum SearchResult {
-	//
-	SR_NOT_FOUND = 0,
-	//
-	SR_FOUND,
-	//
-	SR_FOUND_NOUPDATE
-};
-
+/**
+ * This function replaces an ocurrence of \param search with the
+ * string \param replace
+ *
+ *  \param bv the BufferView in which the search is to be performed,
+ *         starting at the current cursor position.
+ *  \param search the string we're looking for.
+ *  \param replace if \c search is found, replace it with this.
+ *  \param cs perform a case-sensitive search for \c search.
+ *  \param mw match whole words only.
+ *  \param fw search forward from the current cursor position.
+ */
 
 int replace(BufferView * bv,
-	       std::string const &, std::string const &,
-	       bool, bool = true, bool = false,
-	       bool = false, bool = false);
-
+	    std::string const & search, std::string const & replace,
+	    bool cs, bool mw, bool fw);
 /**
- * This function is called as a general interface to find some
- * text from the actual cursor position in whatever direction
- * we want to go. This does also update the screen.
- */
-bool find(BufferView *,
-	     std::string const & searchstr, bool forward,
-	     bool casesens = true, bool matchwrd = false);
-
-/**
- * This function does search from the cursor position inside the
- * passed LyXText parameter and regards this LyXText as the root
- * LyXText. It will NOT update any screen stuff. It will however
- * set the cursor to the new position inside LyXText, before
- * returning to the calling function.
+ * This function replaces all ocurrences of \param search with
+ * the string \param replace
+ *
+ *  \param bv the BufferView in which the search is to be performed,
+ *         starting at the current cursor position.
+ *  \param search the string we're looking for.
+ *  \param replace if \c search is found, replace it with this.
+ *  \param cs perform a case-sensitive search for \c search.
+ *  \param mw match whole words only.
  */
 
-SearchResult find(BufferView *, LyXText * text,
-		     std::string const & searchstr, bool forward,
-		     bool casesens = true, bool matchwrd = false);
+int replaceAll(BufferView * bv,
+	       std::string const & search, std::string const & replace,
+	       bool cs, bool mw);
+
+/**
+ * This function is called as a general interface to find some text
+ * from the actual cursor position in whatever direction we want to
+ * go. This does also update the screen.
+ */
+bool find(BufferView *, std::string const & search, 
+	  bool cs, bool mw, bool fw);
+
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
-
-SearchResult findNextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
-
-SearchResult nextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
 
 } // namespace find
 } // namespace lyx

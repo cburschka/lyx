@@ -28,7 +28,8 @@ public:
 
 	/// Replaces occurence of string
 	void replace(std::string const & search, std::string const & replace,
-		     bool casesensitive, bool matchword, bool all);
+		     bool casesensitive, bool matchword,
+		     bool forward, bool all);
 private:
 	/// not needed.
 	virtual void apply() {}

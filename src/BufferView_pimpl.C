@@ -418,8 +418,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->text->fullRebreak();
 		update();
 	} else {
-		lyxerr << "text not available!" << endl;
-			lyxerr << "no text in cache!" << endl;
 			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
 			bv_->text->init(bv_);
 	}

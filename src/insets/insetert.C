@@ -445,6 +445,8 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 				break;
 			result = inset.dispatch(cmd);
 		} else {
+			// Is the following line correct? Ab
+			open(bv);
 			result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
 		}
 		set_latex_font(bv);

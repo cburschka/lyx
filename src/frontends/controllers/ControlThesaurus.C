@@ -48,7 +48,7 @@ void ControlThesaurus::replace(string const & newstr)
 	 */
 	int const replace_count =
 		lyx::find::replace(kernel().bufferview(), oldstr_, newstr,
-				    true, true, true, false, true);
+				   true /*cs*/, true /*mw*/, true /*fw*/);
 
 	oldstr_ = newstr;
 

@@ -527,42 +527,6 @@ void InsetCollapsable::markErased()
 }
 
 
-bool InsetCollapsable::nextChange(BufferView * bv, lyx::pos_type & length)
-{
-	bool found = inset.nextChange(bv, length);
-
-	if (first_after_edit && !found)
-		close(bv);
-	else if (!found)
-		first_after_edit = false;
-	return found;
-}
-
-
-bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
-				     bool cs, bool mw)
-{
-	bool found = inset.searchForward(bv, str, cs, mw);
-	if (first_after_edit && !found)
-		close(bv);
-	else if (!found)
-		first_after_edit = false;
-	return found;
-}
-
-
-bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
-				      bool cs, bool mw)
-{
-	bool found = inset.searchBackward(bv, str, cs, mw);
-	if (first_after_edit && !found)
-		close(bv);
-	else if (!found)
-		first_after_edit = false;
-	return found;
-}
-
-
 void InsetCollapsable::addPreview(PreviewLoader & loader) const
 {
 	inset.addPreview(loader);

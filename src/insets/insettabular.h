@@ -169,14 +169,6 @@ public:
 	///
 	void markErased();
 
-	/// find next change
-	bool nextChange(BufferView *, lyx::pos_type & length);
-	///
-	bool searchForward(BufferView *, std::string const &,
-			   bool = true, bool = false);
-	bool searchBackward(BufferView *, std::string const &,
-			    bool = true, bool = false);
-
 	// this should return true if we have a "normal" cell, otherwise true.
 	// "normal" means without width set!
 	bool forceDefaultParagraphs(InsetOld const * in) const;

@@ -136,29 +136,3 @@ LyXCursor const & InsetOld::cursor(BufferView * bv) const
 		return owner()->getLyXText(bv, false)->cursor;
 	return bv->text->cursor;
 }
-
-
-bool UpdatableInset::nextChange(BufferView * bv, lyx::pos_type &)
-{
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<UpdatableInset *>(this));
-	return false;
-}
-
-
-bool UpdatableInset::searchForward(BufferView * bv, string const &,
-				   bool, bool)
-{
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<UpdatableInset *>(this));
-	return false;
-}
-
-
-bool UpdatableInset::searchBackward(BufferView * bv, string const &,
-				    bool, bool)
-{
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<UpdatableInset *>(this));
-	return false;
-}

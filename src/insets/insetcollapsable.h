@@ -133,14 +133,6 @@ public:
 
 	void markErased();
 
-	bool nextChange(BufferView * bv, lyx::pos_type & length);
-
-	///
-	bool searchForward(BufferView * bv, std::string const & str,
-			   bool = true, bool = false);
-	bool searchBackward(BufferView * bv, std::string const & str,
-			    bool = true, bool = false);
-
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 

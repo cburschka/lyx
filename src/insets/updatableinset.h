@@ -89,18 +89,6 @@ public:
 	///
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
 
-	/// find the next change in the inset
-	virtual bool nextChange(BufferView * bv, lyx::pos_type & length);
-
-	///
-	// needed for search/replace functionality
-	///
-	virtual bool searchForward(BufferView *, std::string const &,
-				   bool = true, bool = false);
-	///
-	virtual bool searchBackward(BufferView *, std::string const &,
-				    bool = true, bool = false);
-
 protected:
 	///  An updatable inset could handle lyx editing commands
 	virtual

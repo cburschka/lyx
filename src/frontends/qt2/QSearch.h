@@ -39,8 +39,9 @@ private:
 	void find(std::string const & str, bool casesens,
 		  bool words, bool backwards);
 
-	void replace(std::string const & findstr, std::string const & replacestr,
-		bool casesens, bool words, bool all);
+	void replace(std::string const & findstr,
+		     std::string const & replacestr,
+		     bool casesens, bool words, bool backwards, bool all);
 };
 
 #endif // QSEARCH_H

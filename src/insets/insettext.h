@@ -168,15 +168,7 @@ public:
 	 * for the (empty) paragraph contained.
 	 */
 	void markNew(bool track_changes = false);
-	/// find next change
-	bool nextChange(BufferView *, lyx::pos_type & length);
 
-	///
-	bool searchForward(BufferView *, std::string const &,
-			   bool = true, bool = false);
-	///
-	bool searchBackward(BufferView *, std::string const &,
-			    bool = true, bool = false);
 	///
 	bool checkInsertChar(LyXFont &);
 	///

@@ -94,7 +94,7 @@ void QSearchDialog::replaceClicked()
 	form_->replace(find, replace,
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
-		false);
+		backwardsCB->isChecked(), false);
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
@@ -106,7 +106,7 @@ void QSearchDialog::replaceallClicked()
 		fromqstr(replaceCO->currentText()),
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
-		true);
+		false, true);
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
