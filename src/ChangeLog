@@ -1,3 +1,15 @@
+2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ColorHandler.C (LyXColorHandler): use GUIRunTime instead of
+	calling directly xforms functions.
+
+	* Painter.C (Painter): 
+	* lyx_cb.C (MenuWrite): 
+	* FontInfo.C (query): use GUIRunTime::x11Display() instead of
+	fl_display.
+
+	* lyx_gui.C: remove bogus guiruntime extern declaration.
+
 2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C (redoHeightOfParagraph): comment out stuff we don't need
@@ -20,7 +32,7 @@
 	* XFormsView.[Ch]: new files
 
 	* LyXView.[Ch]: make LyXView a base class for the gui handling for
-	the main window. Move the gui dependand stuff to XFormsView
+	the main window. Move the gui dependent stuff to XFormsView
 
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

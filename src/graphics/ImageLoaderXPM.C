@@ -14,9 +14,9 @@
 #include <config.h>
 #include "ImageLoaderXPM.h"
 #include "frontends/support/LyXImage.h"
+#include "frontends/GUIRunTime.h"
 #include "support/filetools.h"
 
-#include FORMS_H_LOCATION
 #include XPM_H_LOCATION
 #include <iostream>
 #include <fstream>
@@ -58,13 +58,13 @@ ImageLoaderXPM::loadableFormats() const
 ImageLoader::Result 
 ImageLoaderXPM::runImageLoader(string const & filename)
 {
-	Display * display = fl_get_display();
+	Display * display = GUIRunTime::x11Display();
 
 //(BE 2000-08-05)
 #ifdef WITH_WARNINGS
 #warning This might be a dirty thing, but I dont know any other solution.
 #endif
-	Screen * screen = ScreenOfDisplay(display, fl_screen);
+	Screen * screen = ScreenOfDisplay(display, GUIRunTime::x11Screen());
 
 	Pixmap pixmap;
 	Pixmap mask;

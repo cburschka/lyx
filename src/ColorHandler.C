@@ -15,22 +15,23 @@
 
 #include <cmath>
 
-#include FORMS_H_LOCATION
-#include "debug.h"
-
+#include "frontends/GUIRunTime.h"
 #include "ColorHandler.h"
 #include "LColor.h"
 #include "gettext.h"
+#include "debug.h"
 
 using std::endl;
 
 LyXColorHandler::LyXColorHandler() 
 {
-	display = fl_get_display();
-	drawable = XCreatePixmap(display, fl_root, 10, 10,
-				 fl_get_visual_depth());
+	display = GUIRunTime::x11Display();
+	drawable = XCreatePixmap(display,
+				 RootWindow(display, GUIRunTime::x11Screen()),
+				 10, 10,
+				 GUIRunTime::x11VisualDepth());
 	
-	colormap = fl_state[fl_get_vclass()].colormap;
+	colormap = GUIRunTime::x11Colormap();
 	// Clear the GC cache
 	for (int i = 0; i <= LColor::ignore; ++i) {
 		colorGCcache[i] = 0;

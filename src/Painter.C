@@ -19,11 +19,11 @@
 
 #include <cmath>
 
-#include FORMS_H_LOCATION
 #include "Painter.h"
 #include "LString.h"
 #include "debug.h"
 #include "lyxfont.h"
+#include "frontends/GUIRunTime.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "WorkArea.h"
@@ -41,7 +41,7 @@ using std::max;
 Painter::Painter(WorkArea & wa)
 	: PainterBase(wa)
 {
-	display = fl_get_display();
+	display = GUIRunTime::x11Display();
 }
 
 

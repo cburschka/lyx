@@ -11,8 +11,6 @@
 #include <config.h>
 #include <cmath>	// fabs()
 
-#include FORMS_H_LOCATION
-
 #ifdef __GNUG__
 #pragma implementation "FontInfo.h"
 #endif
@@ -21,6 +19,7 @@
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
 #include "support/lstrings.h"
+#include "frontends/GUIRunTime.h"
 
 using std::endl;
 
@@ -119,7 +118,8 @@ void FontInfo::query()
 
 	char ** list = 0;
 	if (lyxrc.use_gui)
-		list = XListFonts(fl_get_display(), pattern.c_str(), 100, &matches);
+		list = XListFonts(GUIRunTime::x11Display(), pattern.c_str(),
+				  100, &matches);
 
 	if (list == 0) {
 		// No fonts matched

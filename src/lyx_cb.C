@@ -15,8 +15,6 @@
 #include <utility> 
 #include <iostream>
 
-#include FORMS_H_LOCATION
-
 #include "lyx_cb.h"
 #include "lyx_gui_misc.h"
 #include "lyx_main.h"
@@ -27,6 +25,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "frontends/FileDialog.h"
+#include "frontends/GUIRunTime.h"
 #include "insets/insetlabel.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
@@ -134,7 +133,7 @@ void ShowMessage(Buffer const * buf,
 bool MenuWrite(BufferView * bv, Buffer * buffer)
 {
 	// FIXME: needed ?
-	XFlush(fl_get_display());
+	XFlush(GUIRunTime::x11Display());
  
 	if (!buffer->save()) {
 		string const fname = buffer->fileName();

@@ -23,6 +23,7 @@
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"
 #include "LyXView.h"
+#include "frontends/GUIRunTime.h"
 
 using std::endl;
 
@@ -84,7 +85,7 @@ void FontLoader::unload()
 				}
 				for (int i4 = 0; i4 < 10; ++i4) {
 					if (fontstruct[i1][i2][i3][i4]) {
-						XFreeFont(fl_get_display(), fontstruct[i1][i2][i3][i4]);
+						XFreeFont(GUIRunTime::x11Display(), fontstruct[i1][i2][i3][i4]);
 						fontstruct[i1][i2][i3][i4] = 0;
 					}
 				}
@@ -252,14 +253,14 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 	current_view->owner()->messagePush(_("Loading font into X-Server..."));
 
-	fs = XLoadQueryFont(fl_get_display(), font.c_str());
+	fs = XLoadQueryFont(GUIRunTime::x11Display(), font.c_str());
 	
 	if (fs == 0) {
 		if (font == "fixed") {
 			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;
 		} else {
 			lyxerr << "Could not get font. Using 'fixed'." << endl;
-			fs = XLoadQueryFont(fl_get_display(), "fixed");
+			fs = XLoadQueryFont(GUIRunTime::x11Display(), "fixed");
 		}
 	} else if (lyxerr.debugging(Debug::FONT)) {
 		// Tell user the font matching
