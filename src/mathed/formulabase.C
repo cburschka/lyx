@@ -571,7 +571,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_MODE:
-#if 0
+#if 1
 		handleFont(bv, arg, LM_TC_TEXTRM);
 #endif
 
