@@ -2284,6 +2284,57 @@ int LyXTabular::Latex(Buffer const * buf,
 }
 
 
+int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
+{
+	int ret = 0;
+	int cell = GetFirstCellInRow(row);
+	
+	os << "<row>\n";
+	for (int j = 0; j < columns_; ++j) {
+		if (IsPartOfMultiColumn(row, j))
+			continue;
+
+		os << "<entry align=\"";
+		switch (GetAlignment(cell)) {
+		case LYX_ALIGN_LEFT:
+			os << "left";
+			break;
+		case LYX_ALIGN_RIGHT:
+			os << "right";
+			break;
+		default:
+			os << "center";
+			break;
+		}
+
+		os << "\" valign=\"";
+		switch (GetVAlignment(cell)) {
+		case LYX_VALIGN_TOP:
+			os << "top";
+			break;
+		case LYX_VALIGN_BOTTOM:
+			os << "bottom";
+			break;
+		case LYX_VALIGN_CENTER:
+			os << "middle";
+		}
+		os << "\"";
+
+		if (IsMultiColumn(cell)) {
+			os << " namest=\"col" << j << "\" ";
+			os << "nameend=\"col" << j + cells_in_multicolumn(cell) - 1<< "\"";
+		}
+
+		os << ">";
+		ret += GetCellInset(cell)->docbook(buf, os);
+		os << "</entry>\n";
+		++cell;
+	}
+	os << "</row>\n";
+	return ret;
+}	
+
+
 int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 {
 	int ret = 0;
@@ -2313,54 +2364,45 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 	}
 
 	//+---------------------------------------------------------------------
+	//+                      Long Tabular case                             +
+	//+---------------------------------------------------------------------
+
+	if ( IsLongTabular() ) {
+		// Header
+		if( endhead || endfirsthead ) {
+			os << "<thead>\n";
+			if( endfirsthead ) {
+				docbookRow( buf, os, abs( endfirsthead) - 1);
+			}
+			if( endhead && abs( endhead) != abs( endfirsthead)) {
+				docbookRow( buf, os, abs( endhead) - 1);
+			}
+			os << "</thead>\n";
+		}
+
+		// Footer
+		if( endfoot || endlastfoot ) {
+			os << "<tfoot>\n";
+			if( endfoot ) {
+				docbookRow( buf, os, abs( endfoot) - 1);
+			}
+			if( endlastfoot && abs( endlastfoot) != endfoot) {
+				docbookRow( buf, os, abs( endlastfoot) - 1);
+			}
+			os << "</tfoot>\n";
+		}
+	}
+	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
 	//+---------------------------------------------------------------------
 
-	int cell = 0;
 	os << "<tbody>\n";
 	for (int i = 0; i < rows_; ++i) {
-		os << "<row>\n";
-		for (int j = 0; j < columns_; ++j) {
-			if (IsPartOfMultiColumn(i, j))
-				continue;
-		
-			os << "<entry align=\"";
-			switch (GetAlignment(cell)) {
-			case LYX_ALIGN_LEFT:
-				os << "left";
-				break;
-			case LYX_ALIGN_RIGHT:
-				os << "right";
-				break;
-			default:
-				os << "center";
-				break;
-			}
-		
-			os << "\" valign=\"";
-			switch (GetVAlignment(cell)) {
-			case LYX_VALIGN_TOP:
-				os << "top";
-				break;
-			case LYX_VALIGN_BOTTOM:
-				os << "bottom";
-				break;
-			case LYX_VALIGN_CENTER:
-				os << "middle";
-			}
-			os << "\"";
-		
-			if (IsMultiColumn(cell)) {
-				os << " namest=\"col" << j << "\" ";
-				os << "nameend=\"col" << j + cells_in_multicolumn(cell) - 1<< "\"";
-			}
-		
-			os << ">";
-			ret += GetCellInset(cell)->docbook(buf, os);
-			os << "</entry>";
-			++cell;
+		if(!IsLongTabular() || (
+		   i != abs(endhead) - 1 && i != abs(endfirsthead) - 1 &&
+		   i != abs(endfoot) - 1 && i != abs(endlastfoot) - 1)) {
+			docbookRow( buf, os, i);
 		}
-		os << "</row>\n";
 	}
 	os << "</tbody>\n";
 	//+---------------------------------------------------------------------

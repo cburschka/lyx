@@ -279,6 +279,8 @@ public:
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
 	int Latex(Buffer const *, std::ostream &, bool, bool) const;
+	/// auxiliary function for docbook rows
+	int docbookRow(Buffer const * buf, std::ostream & os, int row) const;
 	///
 	int DocBook(Buffer const * buf, std::ostream & os) const;
 	///

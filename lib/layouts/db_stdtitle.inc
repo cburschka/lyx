@@ -57,6 +57,8 @@ End
 Style Date
   LatexType		Paragraph
   LatexName		date
+  Align			Left
+  AlignPossible		Left,Center
 End
 
 # Revision History style definition

@@ -1151,15 +1151,33 @@ int InsetTabular::ascii(Buffer const * buf, ostream & os, int) const
 }
 
 
-int InsetTabular::linuxdoc(Buffer const *, ostream &) const
+int InsetTabular::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return 0;
+	return tabular->Ascii(buf,os);
 }
 
 
 int InsetTabular::docbook(Buffer const * buf, ostream & os) const
 {
-	return tabular->DocBook(buf,os);
+	int ret = 0;
+	Inset * master;
+
+	// if the table is inside a float it doesn't need the informaltable
+	// wrapper. Search for it.
+	for(master = owner();
+	    master && master->lyxCode() != Inset::FLOAT_CODE;
+	    master = master->owner());
+
+	if (!master) {
+		os << "<informaltable>\n";
+		ret++;
+	}
+	ret+= tabular->DocBook(buf,os);
+	if (!master) {
+		os << "</informaltable>\n";
+		ret++;
+	}
+	return ret;
 }
 
 
