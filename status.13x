@@ -67,6 +67,8 @@ What's new
 
 - squash a potential bug in the PreviewLoader before it bites
 
+- fix possible crash on exit when there are many previews
+
 - don't cause a warning message to complain about starting an already running
   timer. Just don't start it ;-)
 

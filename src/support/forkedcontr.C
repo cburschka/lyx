@@ -87,8 +87,9 @@ void ForkedcallsController::timer()
 {
 	ListType::size_type start_size = forkedCalls.size();
 
-	for (ListType::iterator it = forkedCalls.begin();
-	     it != forkedCalls.end(); ++it) {
+	ListType::iterator it  = forkedCalls.begin();
+	ListType::iterator end = forkedCalls.end();
+	while (it != end) {
 		ForkedProcess * actCall = *it;
 
 		pid_t pid = actCall->pid();
@@ -106,7 +107,6 @@ void ForkedcallsController::timer()
 
 		} else if (waitrpid == 0) {
 			// Still running. Move on to the next child.
-			continue;
 
 		} else if (WIFEXITED(stat_loc)) {
 			// Ok, the return value goes into retval.
@@ -134,15 +134,17 @@ void ForkedcallsController::timer()
 		}
 
 		if (remove_it) {
-			// Emit signal and remove the item from the list
+			forkedCalls.erase(it);
+
 			actCall->emitSignal();
 			delete actCall;
-			// erase returns the next iterator, so decrement it
-			// to continue the loop.
-			ListType::iterator prev = it;
-			--prev;
-			forkedCalls.erase(it);
-			it = prev;
+
+			/* start all over: emiting the signal can result
+			 * in changing the list (Ab)
+			 */
+			it = forkedCalls.begin();
+		} else {
+			++it;
 		}
 	}
 

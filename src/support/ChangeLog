@@ -1,3 +1,8 @@
+2003-03-06  Alfredo Braunstein <abraunst@libero.it>
+
+	* forkedcontr.C (timer): reworked the loop to allow running changes 
+	on the list.
+	
 2003-02-27  Ling Li  <ling@caltech.edu>
 
 	* lyxalgo.h (eliminate_duplicates): re-written to avoid the initial
