@@ -197,7 +197,7 @@ void FormPreferences::build()
 			   _("Lang Opts"),
 			   lang_opts_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Converters"),
+			   _("Conversion"),
 			   converters_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Inputs"),
