@@ -218,6 +218,8 @@ libxforms_la_SOURCES = \
 	XFormsView.h \
 	XPainter.C \
 	XPainter.h \
+	XWorkArea.h \
+	XWorkArea.C \
 	xfont_loader.C \
 	xfont_loader.h \
 	xfont_metrics.C \
