@@ -1,3 +1,13 @@
+2002-05-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms_resize.h: improve the doc++ comments.
+
+	* xforms_resize.C (get_tabfolder_numfolders): new helper function,
+	wrapping fl_get_tabfolder_numfolders if it exists and otherwise
+	providing this info "somehow".
+	Constify a few variables.
+	whitespace changes.
+
 2002-05-06  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.C (show):

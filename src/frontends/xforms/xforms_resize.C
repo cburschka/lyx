@@ -58,10 +58,8 @@ double scale_to_fit_tabs(FL_FORM * form)
 
 	for (; it != end; ++it) {
 		folder = find_tabfolder(*it);
-		if (!folder)
-			continue;
-		double folder_scale = scale_to_fit_tabs(folder);
-		scale = std::max(scale, folder_scale);
+		if (folder)
+			scale = std::max(scale, scale_to_fit_tabs(folder));
 	}
 
 	return scale;
@@ -128,10 +126,10 @@ double scale_to_fit_tabs(FL_OBJECT * folder)
 
 	// Ascertain the style parameters of the tabs.
 	int label_style = FL_BOLD_STYLE;
-	int label_size  = FL_NORMAL_SIZE;
-	int box_width   = 1;
+	int label_size	= FL_NORMAL_SIZE;
+	int box_width	= 1;
 	// Hard-coded within xforms' fl_create_tabfolder in tabfolder.c.
-	int const tab_padding =  12;
+	int const tab_padding =	12;
 
 	for (FL_OBJECT * ob = parent->first; ob; ob = ob->next) {
 		if (!ob->label)
@@ -146,7 +144,7 @@ double scale_to_fit_tabs(FL_OBJECT * folder)
 
 		label_style = ob->lstyle;
 		label_size  = ob->lsize;
-		
+
 		if (ob->boxtype == FL_UP_BOX || ob->boxtype == FL_DOWN_BOX)
 			box_width = FL_abs(ob->bw);
 
@@ -177,8 +175,42 @@ double scale_to_fit_tabs(FL_OBJECT * folder)
 	}
 
 	// Compare this length to the width of the tabfolder
-	double scale = double(length) / double(folder->w);
+	double const scale = double(length) / double(folder->w);
 	return std::max(double(1), scale);
+}
+
+
+// A nasty hack for older xforms versions
+int get_tabfolder_numfolders(FL_OBJECT * folder)
+{
+#if FL_REVISION > 88
+	return fl_get_tabfolder_numfolders(folder);
+#else
+	if (folder->objclass != FL_TABFOLDER)
+		return 0;
+
+	fl_freeze_form(folder->form);
+	int const saved_folder_id = fl_get_folder_number(folder);
+
+	int num_folders = 0;
+	FL_FORM const * old_leaf = 0;
+	for (;;) {
+		int const id = num_folders + 1;
+		fl_set_folder_bynumber(folder, id);
+		FL_FORM const * const leaf = fl_get_folder(folder);
+		if (!leaf || leaf == old_leaf) {
+			// unable to increment succesfully.
+			break;
+		}
+		old_leaf = leaf;
+		++num_folders;
+	}
+
+	fl_set_folder_bynumber(folder, saved_folder_id);
+	fl_unfreeze_form(folder->form);
+
+	return num_folders;
+#endif
 }
 
 
@@ -189,9 +221,9 @@ vector<FL_FORM *> const leaves_in_tabfolder(FL_OBJECT * folder)
 		return vector<FL_FORM *>();
 
 	fl_freeze_form(folder->form);
-	int const folder_id = fl_get_folder_number(folder);
+	int const saved_folder_id = fl_get_folder_number(folder);
 
-	int const size = fl_get_tabfolder_numfolders(folder);
+	int const size = get_tabfolder_numfolders(folder);
 	vector<FL_FORM *> leaves(size);
 
 	for (int i = 0; i < size; ++i) {
@@ -199,7 +231,7 @@ vector<FL_FORM *> const leaves_in_tabfolder(FL_OBJECT * folder)
 		leaves[i] = fl_get_folder(folder);
 	}
 
-	fl_set_folder_bynumber(folder, folder_id);
+	fl_set_folder_bynumber(folder, saved_folder_id);
 	fl_unfreeze_form(folder->form);
 
 	return leaves;
@@ -213,20 +245,20 @@ vector<string> const tab_names(FL_OBJECT * folder)
 		return vector<string>();
 
 	fl_freeze_form(folder->form);
-	int const folder_id = fl_get_folder_number(folder);
+	int const saved_folder_id = fl_get_folder_number(folder);
 
-	int const size = fl_get_tabfolder_numfolders(folder);
+	int const size = get_tabfolder_numfolders(folder);
 	vector<string> names(size);
 
 	for (int i = 0; i < size; ++i) {
 		fl_set_folder_bynumber(folder, i+1);
 
-		const char * const name = fl_get_folder_name(folder);
+		char const * const name = fl_get_folder_name(folder);
 		if (name)
 			names[i] = name;
 	}
 
-	fl_set_folder_bynumber(folder, folder_id);
+	fl_set_folder_bynumber(folder, saved_folder_id);
 	fl_unfreeze_form(folder->form);
 
 	return names;

@@ -492,7 +492,7 @@ string const InsetERT::get_new_label() const
 		la += inset.paragraph()->getChar(j);
 		++i;
 	}
-	if (i > 0 && j < p_siz) {
+	if (inset.paragraph()->next() || (i > 0 && j < p_siz)) {
 		la += "...";
 	}
 	if (la.empty()) {
@@ -708,4 +708,16 @@ int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 	if (!text->firstRow()->next() && rw < w)
 		return -1;
 	return w;
+}
+
+
+void InsetERT::update(BufferView * bv, LyXFont const & font,
+                      bool reinit)
+{
+	if (inset.need_update & InsetText::INIT ||
+		inset.need_update & InsetText::FULL)
+	{
+		setButtonLabel();
+	}
+	InsetCollapsable::update(bv, font, reinit);
 }
