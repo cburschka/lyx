@@ -12,6 +12,13 @@
 #ifndef QCONTENTPANE_H
 #define QCONTENTPANE_H
 
+#ifdef emit
+#undef emit
+#endif
+
+#include "funcrequest.h"
+#include "frontends/Timeout.h"
+
 #include <qwidget.h>
 #include <qpixmap.h>
 
@@ -37,6 +44,27 @@ struct double_click {
 	double_click(QMouseEvent * e)
 		: x(e->x()), y(e->y()),
 		state(e->button()), active(true) {}
+};
+
+
+/** Qt only emits mouse events when the mouse is being moved, but
+ *  we want to generate 'pseudo' mouse events when the mouse button is
+ *  pressed and the mouse cursor is below the bottom, or above the top
+ *  of the work area. In this way, we'll be able to continue scrolling
+ *  (and selecting) the text.
+ *
+ *  This struct stores all the parameters needed to make this happen.
+ */
+struct SyntheticMouseEvent
+{
+	SyntheticMouseEvent();
+
+	FuncRequest cmd;
+	Timeout timeout;
+	bool restart_timeout;
+	int x_old;
+	int y_old;
+	double scrollbar_value_old;
 };
 
 
@@ -76,6 +104,10 @@ public slots:
 
 	void scrollBarChanged(int);
 private:
+	/// The slot connected to SyntheticMouseEvent::timeout.
+	void generateSyntheticMouseEvent();
+	SyntheticMouseEvent synthetic_mouse_event_;
+
 	///
 	bool track_scrollbar_;
 	/// owning widget

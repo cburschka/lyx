@@ -1,3 +1,14 @@
+2003-12-01  Angus Leeming  <leeming@lyx.org>
+
+	* QContentPane.[Ch] (SyntheticMouseEvent): a new, helper struct.
+	(QContentPane): store an instance of SyntheticMouseEvent and
+	add a slot, generateSyntheticMouseEvent, that is invoked by the
+	SyntheticMouseEvent::timeout.
+	(mouseMoveEvent): initialize synthetic_mouse_event_ when the
+	mouse button is depressed and the cursor is outside of the work area.
+	(generateSyntheticMouseEvent): if the scrollbar value is different
+	from the cached value, then dispatch a 'synthetic' mouse event.
+
 2003-12-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QVSpace.C: remove VSPACE::NONE, remove restore button.
