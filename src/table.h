@@ -18,7 +18,7 @@
 
 #include "lyxlex.h"
 #include "LString.h"
-
+#include "support/LOstream.h"
 
 /* The features the text class offers for tables */ 
 

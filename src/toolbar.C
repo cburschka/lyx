@@ -336,7 +336,9 @@ void Toolbar::set(bool doingmain)
 #endif
 
 			// set the bubble-help (Matthias)
+#ifdef WITH_WARNINGS
 #warning This is dangerous!
+#endif
 			obj->u_vdata = const_cast<char*>(item->help.c_str());
 			// we need to know what toolbar this item
 			// belongs too. (Lgb)

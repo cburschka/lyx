@@ -186,7 +186,7 @@ void LyXAction::init()
 		{ LFUN_FILE_NEW, "file-new", "", NoBuffer },
 		{ LFUN_FILE_OPEN, "file-open", "", NoBuffer },
 		{ LFUN_MENUSEARCH, "find-replace", N_("Find & Replace"),
-		  Noop },
+		  ReadOnly },
 		{ LFUN_BOLD, "font-bold", N_("Toggle bold"), Noop },
 		{ LFUN_CODE, "font-code", N_("Toggle code style"), Noop },
 		{ LFUN_DEFAULT, "font-default", N_("Default font style"),

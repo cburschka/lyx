@@ -1,3 +1,16 @@
+1999-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/toolbar.C (set): condition #warning on WITH_WARNINGS
+
+	* src/table.h: add the LOstream.h header
+	* src/debug.h: ditto
+	
+	* src/LyXAction.h: change the explaination of the ReadOnly
+	attribute: is indicates that the function _can_ be used.
+
+	* src/LyXAction.C (init): find-replace _can_ be used in read-only
+	mode. 
+
 1999-12-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfont.C (ascent): Make sure that char is _always_ used as

@@ -4,6 +4,7 @@
 #define LYXDEBUG_H
 
 #include "LString.h"
+#include "support/LOstream.h"
 #include "support/lstrings.h"
 
 /** Ideally this should have been a namespace, but since we try to be

@@ -45,7 +45,7 @@ public:
 	enum func_attrib {
 		/// nothing special about this func
 		Noop = 0,
-		/// can not be used in RO mode (perhaps this should change)
+		/// can be used in RO mode (perhaps this should change)
 		ReadOnly = 1, // ,
                 /// Can be used when there is no document open
                 NoBuffer = 2,
