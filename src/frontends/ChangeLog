@@ -1,6 +1,12 @@
+
+2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* screen.C (showCursor): draw half cursors
+
 2004-11-26  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* Painter.C: adjust * screen.[Ch] (fitCursor): remove,
+	* Painter.C: adjust 
+	* screen.[Ch] (fitCursor): remove,
 	(showCursor): adjust, (redraw): adjust
 
 2004-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>

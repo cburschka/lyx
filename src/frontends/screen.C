@@ -183,8 +183,8 @@ void LyXScreen::showCursor(BufferView & bv)
 	y -= ascent;
 	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
 
-	// if it doesn't fit entirely on the screen, don't try to show it
-	if (y < 0 || y + h > workarea().workHeight())
+	// if it doesn't touch the screen, don't try to show it
+	if (y + h < 0 || y >= workarea().workHeight())
 		return;
 
 	cursor_visible_ = true;
